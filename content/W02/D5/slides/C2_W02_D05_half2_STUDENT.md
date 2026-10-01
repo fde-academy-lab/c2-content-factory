@@ -18,7 +18,7 @@ numbers, the director's edit in pairs, the interview drill, and the close.
 *When a director takes the workbook in the room, what can they break, and which checks catch it before anyone reads a wrong number? The chief of staff's last condition rides on it.*
 
 ```notes
-LIVE. Thirty minutes. Notebook C2_W02_D05_06_director_proof beside it; the reference workbook,
+LIVE, thirty minutes, with notebook C2_W02_D05_06_director_proof beside it; the reference workbook,
 demos/C2_W02_D05_deck_pack_STUDENT.xlsx, open in Excel.
 ```
 
@@ -311,7 +311,7 @@ to be rerun.
 | An assumption? | A yellow input: Rs 500 costs Rs 5,500 for Mumbai |
 | What is released? | Hold what fails, ship the rest |
 
-**Kavya's review.** "A director who filters, sorts or asks a what-if should see a number move, and never a number lie."
+**Kavya's review.** "A director who filters, sorts or asks a what-if should see the right numbers move, and see a wrong one turn red before anyone reads it out."
 
 **In the interview.** [F] You filter a list and its total does not move; what is the foot doing?
 
@@ -326,7 +326,7 @@ screen, SUBTOTAL(103) counts it; Mumbai Rs 7,14,890 against Rs 1,56,790.
 *Can you build the three deliverables and the Checks tab from the two exports, alone? The chief of staff opens it on Monday.*
 
 ```notes
-LIVE. Fifty minutes, unguided. The support TA answers environment problems only. The brief is
+LIVE, fifty minutes, unguided. The support TA answers environment problems only. The brief is
 exercises/unguided/C2_W02_D05_escalated_STUDENT.md; the notebook is
 notebooks/C2_W02_D05_ex1_escalated_case_STUDENT.ipynb. Solutions open at the debrief.
 ```
@@ -374,7 +374,7 @@ SELF-STUDY, leave on screen during the case. The reference workbook in demos/ ha
 *Which wrong numbers did this room produce, in the order the day produced them? Every one was plausible.*
 
 ```notes
-LIVE. Fifteen minutes. Collect the room's wrong numbers during the case and show the ones that actually
+LIVE, fifteen minutes. Collect the room's wrong numbers during the case and show the ones that actually
 appeared; the table on S18 is the list most rooms produce.
 ```
 
@@ -447,7 +447,7 @@ since the room has found it. BREAK, 10 minutes, after this slide.
 *A director wants five lakh typed into the source; can the sheet show that number and still be the one Finance signs? Pairs defend the rule, then swap.*
 
 ```notes
-LIVE. Forty minutes in pairs: one plays the director, one defends the rule, then they swap. The brief is
+LIVE, forty minutes in pairs: one plays the director, one defends the rule, then they swap. The brief is
 exercises/unguided/C2_W02_D05_director_edit_STUDENT.md; the notebook is
 notebooks/C2_W02_D05_ex2_second_case_STUDENT.ipynb.
 ```
@@ -549,7 +549,7 @@ five letters. Close with one pair's three lines aloud.
 *Can you answer twelve screen questions aloud, each in under a minute?*
 
 ```notes
-LIVE. Twenty minutes in pairs: one asks, one answers in under a minute, then swap.
+LIVE, twenty minutes in pairs: one asks, one answers in under a minute, then swap.
 ```
 
 ---
@@ -604,7 +604,7 @@ LIVE, 4 minutes. Read the example aloud and ask one pair to redo their weakest a
 *What can the chief of staff trust on Monday? The sentence, the day's six lines, the Kahoot and tomorrow.*
 
 ```notes
-LIVE. Fifteen minutes: the sentence (2), the six lines (2), the Kahoot (9), tomorrow (2).
+LIVE, fifteen minutes: the sentence (2), the six lines (2), the Kahoot (9), tomorrow (2).
 ```
 
 ---

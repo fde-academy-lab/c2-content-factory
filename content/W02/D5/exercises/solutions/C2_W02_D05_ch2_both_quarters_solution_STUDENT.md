@@ -134,7 +134,7 @@ a deadline far enough away for the warehouse team to answer first.
 
 ## Why is option c in item 3, Remove Duplicates before the flag, the wrong answer worth arguing about?
 
-Because the tool has a name that promises the fix. On Kalpa's export, 450 orders sit on two rows: 400
+The tool's name promises the fix, which is why the room reaches for it. On Kalpa's export, 450 orders sit on two rows: 400
 paid in two instalments, whose rows differ in the amount paid, and 50 posted twice by the gateway,
 whose rows are identical. Remove Duplicates takes out the 50 copies, the total moves from
 Rs 39,40,95,490 to Rs 39,40,57,740, and the analyst believes the export is clean. The grain is fixed

@@ -131,7 +131,7 @@ notebook ran this route, and collected and booked both tied to the rupee.
 
 ## Why is option a in item 3, a SUMIFS per order in the workbook, the wrong answer worth arguing about?
 
-Because it computes the right number. A SUMIFS adds every payment, so it does not fall into the
+Option a computes the right number. A SUMIFS adds every payment, so it does not fall into the
 lookup's trap, and on Kalpa's export it reaches the warehouse's Rs 19,66,82,820. What it lacks is a
 record: each month somebody refreshes it by hand, nobody else can rerun it, and an export that arrives
 short gives a short answer with no warning. Kept as a check against the warehouse's join, the same

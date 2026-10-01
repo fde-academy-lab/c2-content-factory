@@ -138,7 +138,7 @@ segment, and all twelve cells matched.
 
 ## Why is option d in item 3, the averaged leaf taken as what the tree needs, the wrong answer worth arguing about?
 
-Because it looks like care. The analyst saw that the Sum of the column meant nothing, switched to
+It is the answer a careful analyst gives. The analyst saw that the Sum of the column meant nothing, switched to
 Average, and got a number that looks like a basket size. On Kalpa's table the same move reads
 Business at Rs 11,66,786 an order against revenue over orders of Rs 10,45,740, 11.6 percent high,
 and a director who multiplies 39 customers by 4.82 orders by Rs 11.67 lakh gets Rs 2.28 crore more

@@ -130,7 +130,7 @@ that would change chapter 4's choice of card.
 
 ## Why is option a in item 2, down 41.7 percent with the right base beside it, the wrong answer worth arguing about?
 
-Because the base is printed and the arithmetic still fails. The change belongs to the earlier period:
+In option a the base is printed and the arithmetic still fails. The change belongs to the earlier period:
 the fall of Rs 1,72,390 is 29.4 percent of Q1's Rs 5,85,770. Divided by Q2's smaller Rs 4,13,380, the
 same fall reads 41.7 percent, a number that is larger, more alarming and still looks precise. The
 check is to divide the change by the period the card says it is measured on.

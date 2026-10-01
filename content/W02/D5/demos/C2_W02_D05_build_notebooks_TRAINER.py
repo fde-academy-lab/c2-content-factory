@@ -724,9 +724,9 @@ kit.check("the export counted once ties to the warehouse to the rupee, both quar
 kit.check("the order counts tie too", all(int(orders[orders["quarter"] == r["quarter"]]["order_id"].nunique()) == r["orders"] for r in wq))
 '''),
         md('''
-> **Kavya's review.** "Two exports, two grains. Say the grain before you pivot, count rows against ids,
-> and tie the grand total to the warehouse; a pivot that has not been tied has not been built. Remove
-> Duplicates is a cleaning step with no record, and it did not even clean."
+> **Kavya's review.** "The two exports came at two grains. Say the grain before you pivot, count rows
+> against ids, and tie the grand total to the warehouse before the pivot goes anywhere. Remove
+> Duplicates is a cleaning step with no record, and here it did not even clean."
 '''),
         md('''
 ### In the interview: how would you answer these three questions aloud?
@@ -1975,8 +1975,8 @@ HOLD names what does not tie and asks for the export to be rerun.
         md('''
 > **Kavya's review.** "Give the room a sheet it can change and cannot break silently: inputs in yellow,
 > every other cell a formula, SUBTOTAL at every foot, and a Checks tab whose release holds whatever does
-> not tie. A director who filters, sorts or asks a what-if should see a number move, and never a number
-> lie."
+> not tie. A director who filters, sorts or asks a what-if should see the right numbers move, and see
+> a wrong one turn red before anyone reads it out."
 '''),
         md('''
 ### In the interview: how would you answer these three questions aloud?
@@ -2119,7 +2119,7 @@ kit.check("your company change matches the warehouse's, measured on Q1", abs(car
 kit.check("your Retail-Plus share matches its part of the warehouse's Q2", abs(card("Retail-Plus")["share"] - wp["Q2"] / w["Q2"] * 100) < 1e-9)''',
      {5: "(q2 - q1) / q1 * 100", 6: "q2 / company_q2 * 100"},
      "TODO 5: a divides by the current quarter, which reads Retail-Plus at 41.7 percent where it fell 29.4; b is a share of the two quarters together; c is a ratio of about 98 that a card would misprint as a percentage. TODO 6: b shares out the scope's own two quarters; c is the change's share, not the scope's; d is the ratio again."),
-    ('''## Part 4. What ships on Monday, and what is held?
+    ('''## Part 4. What ships on Monday, and what, if anything, is held?
 
 **Where this is used at work:** a release note says what a stakeholder can rely on and what waits, and
 why. The tree was tied in part 1. The protect list comes from a different export, which has to tie on
@@ -2314,12 +2314,12 @@ def ex1(solution):
 
 **Who needs the answer.** The chief of staff opens this file in front of Meera and her directors on
 Monday. A number that does not tie, a lookup that answers with a neighbour, or a card without its
-period goes into the meeting's decisions, and the release note is what tells her which parts she can
-rely on.
+period goes into the meeting's decisions, and the release note is what tells the chief of staff which
+parts to rely on.
 
 **The questions on the way.** Five parts, each a question: does the tree tie; does the list hold the
 right fifty and does the lookup say when an id is missing; does the card carry its period, comparison
-and base; what ships and what is held; do the numbers agree a second way.
+and base; what ships and what, if anything, is held; do the numbers agree a second way.
 
 **What you have.** Two exports in `../data/`: the customer table, one row per customer who ordered
 between April and September 2026 with that customer's orders and revenue summed, and the raw export,
@@ -2337,12 +2337,12 @@ of the letter you pick; the checks after each part test what your lines computed
     close = md(f'''
 ## What do you post, and what can the chief of staff trust?
 
-Post your ten letters in order as one line, then two sentences to the chief of staff: what she can
-rely on in Monday's file, and what is held and why.{" The key is `" + EX1_KEY + "`." if solution else ""}
+Post your ten letters in order as one line, then two sentences to the chief of staff: what Monday's
+file can be relied on for, and anything held, with its reason.{" The key is `" + EX1_KEY + "`." if solution else ""}
 ''')
     route = code('''
 kit.vflow(["1. does the tree tie to the warehouse", "2. the right fifty, and an honest lookup",
-           "3. a card with its period, comparison and base", "4. what ships and what is held",
+           "3. a card with its period, comparison and base", "4. what ships on Monday",
            "5. the same numbers a second way"], title="The five parts of Monday's file")''')
     return [head, setup_cell, route] + case_cells(EX1_STEPS, solution) + [close, code("kit.check_summary()")]
 
@@ -2360,8 +2360,8 @@ def ex2(solution):
 
 **Who needs the answer.** The director wants a number to discuss; the chief of staff needs a card that
 still matches Finance's books after the meeting; Anand's analyst will compare the deck with the
-warehouse next week. A figure typed over the source gives the room a fall of 14.6 percent while
-Finance's books say 29.4, and the next refresh wipes the figure and its reason.
+warehouse next week. A figure typed over the source gives the room a fall that Finance's books do not
+show, and the next refresh wipes the figure and its reason.
 
 **The questions on the way.** What the card shows after the edit; which comparison catches it; which
 cells the typed-over check flags; what Monday's refresh does to the figure; and where the director's

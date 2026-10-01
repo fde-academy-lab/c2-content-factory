@@ -125,7 +125,7 @@ on that source; a typed-over formula holds the whole file.
 
 ## Why is option b in item 6, holding only the typed-over cell, the wrong answer worth arguing about?
 
-Because it sounds precise. It holds exactly the cell that is wrong and ships the rest, which is the
+Option b sounds precise: it holds exactly the cell that is wrong and ships the rest, which is the
 right rule for a failing source check, where one part sits on one export. A typed-over formula is
 different: the figure feeds the tree's totals, the card's change and anything else that reads it, so
 the damage is not confined to the cell. The test is to ask which numbers read the failing thing, and

@@ -133,7 +133,7 @@ would meet a count of zero and disagree. In Excel, `=COUNTIF(A:A, "C-0195")` rea
 
 ## Why is option a in item 3, XLOOKUP for every laptop, the wrong answer worth arguing about?
 
-Because XLOOKUP is the better formula wherever it computes: exact by default, with the not-found words
+XLOOKUP is the better formula wherever it computes: exact by default, with the not-found words
 built in. The mistake is assuming every laptop that opens the file has it. A lookup that shows #NAME?
 on two laptops in the CEO's office has failed as surely as one that returns a neighbour, only more
 loudly. The fact to ask for before choosing is the Excel version on the oldest laptop in the room.

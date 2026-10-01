@@ -113,7 +113,7 @@ Transition: chapter 1, the first deliverable, from the table Marketing already h
 *Which segment carries Kalpa's revenue, and which leaf of the tree separates the segments? Page two of Monday's deck rides on it.*
 
 ```notes
-LIVE. Thirty minutes. Notebook C2_W02_D05_01_segment_tree runs beside it as the second route.
+LIVE, thirty minutes, with notebook C2_W02_D05_01_segment_tree beside it as the second route.
 Excel live on data/C2_W02_D05_customer_table_STUDENT.csv.
 ```
 
@@ -484,7 +484,7 @@ Transition: the chief of staff asked for both quarters, so the raw export.
 *How much did revenue fall from Q1 to Q2, and in which segment and which leaf? The growth plan funds the branch this answer names.*
 
 ```notes
-LIVE. Thirty minutes. Notebook C2_W02_D05_02_both_quarters beside it; Excel live on
+LIVE, thirty minutes, with notebook C2_W02_D05_02_both_quarters beside it; Excel live on
 data/C2_W02_D05_raw_export_STUDENT.csv.
 ```
 
@@ -802,7 +802,7 @@ disagree. Here it does not.
 | Which leaf fell? | Business most in rupees; Retail-Plus 29.4% on frequency |
 | Warehouse agrees? | To the rupee, both quarters |
 
-**Kavya's review.** "Two exports, two grains. Say the grain, count rows against ids, tie the total to the warehouse; a pivot that has not been tied has not been built."
+**Kavya's review.** "The two exports came at two grains. Say the grain, count rows against ids, and tie the total to the warehouse before the pivot goes anywhere."
 
 **In the interview.** [F] Your pivot shows a different total from the warehouse; where do you look first?
 
@@ -820,7 +820,7 @@ Retail-Plus protect first?
 *Which fifty Retail-Plus members go on the protect list, and when the chief of staff types an id, does the sheet answer for that member? Retention offers ride on it.*
 
 ```notes
-LIVE. Thirty minutes. Notebook C2_W02_D05_03_member_lookup beside it; Excel live on the customer
+LIVE, thirty minutes, with notebook C2_W02_D05_03_member_lookup beside it; Excel live on the customer
 table.
 ```
 
@@ -957,7 +957,7 @@ label: Step 3 | title: Find it | body: Any id in the export and not in the table
 label: Step 4 | title: Say it | body: What your answer means for the list and the lookup. | tone: dark
 ```
 
-**The rule.** A list built on a table that has not been tied has not been built. In Excel: SUM the table's orders and revenue, set them beside the raw export counted once, and COUNTIF each export id in the table.
+**The rule.** The list's source ties to the warehouse before the list ships. In Excel: SUM the table's orders and revenue, set them beside the raw export counted once, and COUNTIF each export id in the table.
 
 ```notes
 LIVE, 5 minutes; the notebook's empty cell holds the same lines for self-study. TRAINER: the day sheet has what they
@@ -1099,7 +1099,7 @@ slide.
 *What must sit beside the front-page number so a director reads it right in two minutes? The meeting's first decision is made from it.*
 
 ```notes
-LIVE. Thirty minutes. Notebook C2_W02_D05_04_front_page beside it.
+LIVE, thirty minutes, with notebook C2_W02_D05_04_front_page beside it.
 ```
 
 ---
@@ -1337,7 +1337,7 @@ LIVE, 3 minutes. One learner answers aloud with the card as the example.
 *Which of the week's steps belong in the workbook, which must never be done there, and how do the two stay in step? Every number Finance relies on depends on it.*
 
 ```notes
-LIVE. Thirty minutes. Notebook C2_W02_D05_05_operating_rule beside it.
+LIVE, thirty minutes, with notebook C2_W02_D05_05_operating_rule beside it.
 ```
 
 ---
