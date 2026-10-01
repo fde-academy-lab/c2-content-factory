@@ -29,10 +29,10 @@ cannot print a column the groups do not pin down; `LIMIT` cuts after `ORDER BY`.
 |---|---|---|
 | `count(*)` over orders | 1,000 | Order rows |
 | `count(DISTINCT customer_id)` over orders | 301 | Customers who bought |
-| `count(*)` over customers | 340 | Members Kalpa holds |
+| `count(*)` over customers | 340 | Customers Kalpa holds |
 
 Per quarter, `count(*) AS customers` printed 538 and 462 at 1.00 order each; counted once, 244 and
-227 bought. A `.sql` file sends back 2 rows where an export copies 1,340.
+227 bought. A `.sql` file sends back 2 rows where an export copies 1,000.
 
 **Crux:** A count says what it counts: order rows are count(*), customers are count(DISTINCT customer_id).
 
@@ -71,7 +71,8 @@ whole numbers said it halved.
 | `coalesce(..., 0)` written in | Rs 5,474 | Rs 3,863 | -29.4% |
 
 The first averages 91 members in Q1 and 76 in Q2, since `avg` skips `NULL`; the second averages the
-same 107 in both. Named steps, `WITH book AS (...), q1 AS (...)`, read top down and rerun anywhere.
+same 107 in both. Named steps, `WITH book AS (...), q1 AS (...)`, read top down, rerun anywhere and
+cost one edit when a column is renamed.
 
 **Crux:** An average names who is inside it, so write the zero on purpose.
 
@@ -80,7 +81,7 @@ same 107 in both. Named steps, `WITH book AS (...), q1 AS (...)`, read top down 
 | Retail-Plus in the half-year | Customers |
 |---|---|
 | Q1 plus Q2, added | 167 |
-| Members on the book | 120 |
+| Members on the customer table | 120 |
 | Counted from the orders | 107 |
 | Bought in both quarters | 60 |
 
@@ -97,4 +98,4 @@ joining date of 25 December 2025. On Monday `LIMIT 5` with no `ORDER BY` drew fi
 3,900, and after a reload that changed no value it drew Rs 4,590. `ORDER BY order_id LIMIT 5` draws
 the same five, Rs 3,900, both times.
 
-**Crux:** Order every list on a column no two rows share, and print the book's fingerprint beside the numbers.
+**Crux:** Order every audit sample on a column no two rows share, and print the book's fingerprint beside the numbers.

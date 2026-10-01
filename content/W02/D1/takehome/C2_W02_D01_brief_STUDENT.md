@@ -22,7 +22,7 @@ and the regional team's budget for the next half-year is set from this sheet.
 4. Do East's numbers add up the way the analyst will add them?
 5. Which five orders will the analyst trace, and what does the run print beside them?
 6. Which two more questions would the analyst ask?
-7. Which channel is losing Kalpa's consumers, once the Business orders are read apart?
+7. Is the store booming and the web collapsing, as Marketing says?
 8. In what order does a query run, written from memory?
 9. Where do you practise tonight?
 
@@ -105,8 +105,8 @@ one impossible total is enough to send the whole report back.
 
 ## 5. Which five orders will the analyst trace, and what does the run print beside them?
 
-Where this is used at work: an audit sample that cannot be drawn twice cannot be audited, and a
-fingerprint beside the numbers tells a changed book from a changed query.
+Where this is used at work: whenever an auditor traces a sample of orders and reruns the query the
+next week, and a fingerprint beside the numbers tells a changed book from a changed query.
 
 1. Return five delivered Q2 web orders for the analyst to trace against the ERP, the system Finance
    books orders in, so that every run returns the same five.
@@ -124,10 +124,10 @@ comment line above each stating the question, the reading of revenue (booked or 
 denominator. Each must run unchanged and use nothing beyond the day's clauses, and one of them must
 use named steps.
 
-## 7. Which channel is losing Kalpa's consumers, once the Business orders are read apart?
+## 7. Is the store booming and the web collapsing, as Marketing says?
 
-Where this is used at work: a budget moved between channels on the strength of a channel total is
-the most expensive misreading a marketing plan can make.
+Where this is used at work: whenever a channel's budget is about to move on the strength of its
+total.
 
 This is the day's second case, on the national warehouse, in pairs or alone. Its brief is
 `exercises/unguided/C2_W02_D01_second_case_STUDENT.md` and its notebook
@@ -136,8 +136,8 @@ the line you send Anand.
 
 ## 8. In what order does a query run, written from memory?
 
-Where this is used at work: every refusal the database gives you, and most wrong numbers that run
-without complaint, are explained by this order.
+Where this is used at work: the `GROUP BY` refusal, the choice between `WHERE` and `HAVING`, and an
+unsorted `LIMIT` all follow from this order, and a reviewer asks for it.
 
 At the top of your `.sql` file, as a comment, write from memory the order in which the database runs
 a query's clauses, from the table it reads to the rows it cuts, with one line per clause on what it
@@ -146,8 +146,8 @@ pin down.
 
 ## 9. Where do you practise tonight?
 
-Where this is used at work: the interview screens that open with SQL ask these exact clauses in
-their first ten minutes.
+Where this is used at work: today's interview drill opens on these clauses, tagged [S], asked
+everywhere.
 
 SQLBolt's interactive lessons 1 to 4 (SELECT, filtering and sorting), the review page after them,
 and lesson 12 on the order of execution: https://sqlbolt.com/ (checked 30 September 2026). The

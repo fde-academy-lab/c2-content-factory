@@ -2,8 +2,12 @@
 
 Run from the repository root, with the warehouse's Postgres running:
     python3 content/W02/D1/internal/C2_W02_D01_takehome_data_INTERNAL.py           write, load, check
-    python3 content/W02/D1/internal/C2_W02_D01_takehome_data_INTERNAL.py --check   rebuild in memory,
-                                                                                   compare, load, check
+    python3 content/W02/D1/internal/C2_W02_D01_takehome_data_INTERNAL.py --check   rebuild in memory and
+                                                                                   compare only; touches
+                                                                                   no database
+    python3 content/W02/D1/internal/C2_W02_D01_takehome_data_INTERNAL.py --check --load
+                                                                                   compare, then load into
+                                                                                   kalpa and assert
 
 It writes content/W02/D1/data/C2_W02_D01_takehome_STUDENT.sql. The file creates a schema named
 takehome holding two tables, takehome.customers and takehome.orders, so the warehouse's public tables
@@ -229,13 +233,18 @@ EXPECTED_FINGER = [["362", "22183760", "112", "2026-09-30"]]
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--check", action="store_true", help="compare with the file on disk instead of writing")
+    ap.add_argument("--check", action="store_true",
+                    help="compare a fresh build with the file on disk, read-only: no write, no database")
+    ap.add_argument("--load", action="store_true",
+                    help="with --check, also load the file into the warehouse and assert the self-check's numbers")
     a = ap.parse_args()
     text = render(*build())
     if a.check:
         if OUT.read_text(encoding="utf-8") != text:
             sys.exit(f"{OUT.name} is stale: rerun this script without --check")
         print(f"{OUT.name} matches a fresh build")
+        if not a.load:
+            return
     else:
         OUT.write_text(text, encoding="utf-8")
         print(f"wrote {OUT.relative_to(ROOT)}")

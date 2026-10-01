@@ -40,9 +40,10 @@ parts ran in the afternoon; its last three run in the practice lab with the inte
 **What the sheet measures.** The book is the warehouse's two quarters of orders, the one copy
 everybody reads; Q1 is April to June 2026 and Q2 is July to September 2026. Revenue is booked
 revenue, every order at its amount, whatever its status, and the sheet carries Week 1 Monday's tree:
-customers who bought, times orders per customer, times revenue per order. Kalpa's segments are
-Business (corporate buyers whose orders are worth lakhs), Retail-Core (everyday shoppers),
-Retail-Plus (the paid membership tier) and Student.
+customers who bought, times orders per customer, times revenue per order. Last week's books, Rs 1.90
+crore for Q1, described the 186-order extract the team was handed; from today the book of record is
+the warehouse. Kalpa's segments are Business (corporate buyers whose orders are worth lakhs of rupees
+or more), Retail-Core (everyday shoppers), Retail-Plus (the paid membership tier) and Student.
 
 ```mermaid
 flowchart LR
@@ -56,20 +57,21 @@ flowchart LR
     class T unknown
 ```
 
-This week map is the programme's own construction.
 
 **The outcome tie.** Tuesday's booked-against-collected report starts from today's Q2 booked revenue,
 Rs 9,84,00,000 on 462 orders, and the Week 2 Saturday paper asks today's questions as items: the run
 order, `WHERE` against `HAVING`, the `GROUP BY` refusal and `LIMIT` without `ORDER BY`.
 
 **What was left out.** Channels wait for the second case and Finance's delivered-only definition for
-the escalated case. Joins arrive tomorrow; today used one join line only to look up each order's
-segment.
-The tentative IITGN faculty session after the afternoon's chapter runs on a topic of its own, which these notes do not cover.
+the escalated case. Week 1 met both measures, booked revenue and delivered revenue, and Thursday's
+per-member work used delivered; today's suite starts from booked revenue, the reading of last week's
+tree, and the escalated case reruns it on delivered. Joins arrive tomorrow; today used one join line
+only to look up each order's segment. The IITGN faculty session after the afternoon's chapter,
+tentative, runs on a topic of its own.
 
 ---
 
-## Which picture should you be able to redraw?
+## In what order does the database run a query's clauses, drawn once?
 
 ```mermaid
 flowchart LR
@@ -82,8 +84,8 @@ flowchart LR
 
 Call it the run order. A query is written SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY, LIMIT, and
 the database runs it in the order of the arrows. It is the logical order: the database may fetch rows
-any way it likes, so long as the result is the one this order describes. Most of the day's refusals
-and wrong numbers follow from it. `WHERE` cannot test a count that does not exist yet, `SELECT`
+any way it likes, so long as the result is the one this order describes. The `GROUP BY` refusal,
+the choice between `WHERE` and `HAVING`, and an unsorted `LIMIT` all follow from it. `WHERE` cannot test a count that does not exist yet, `SELECT`
 cannot print a column the groups do not pin down, and `LIMIT` cuts after `ORDER BY`, so a limit with
 no sort cuts wherever the rows happened to fall.
 
@@ -116,7 +118,7 @@ its review turned up (report of 16 January 2013, page 124). The losses reached a
 
 | Option | Sized on this book, every Monday |
 |---|---|
-| A. Export the tables, compute in pandas | 1,340 rows leave the warehouse, and the analyst can rerun only the copy |
+| A. Export the tables, compute in pandas | 1,000 order rows leave the warehouse, since the quarter totals read only orders, and the analyst can rerun only the copy |
 | B. A `.sql` file run in place | 2 rows come back, and a renamed column stops it with an error |
 | C. A saved view | 2 rows; it follows a rename and needs the right to create objects |
 
@@ -138,9 +140,10 @@ extract; revenue per order rose from Rs 1,85,874 to Rs 2,12,987.
 
 The quickest query, `count(*) AS customers`, prints 538 and 462 at 1.00 order each: nobody came back,
 the frequency branch Meera was told to fix is empty, and the Rs 12 crore case for new customers
-returns. `count(*)` counts rows, a row of `orders` is an order, and the label is a promise the query
-does not keep. The check counts one table three ways, each named for what it counts: 1,000 order
-rows, 301 customers who bought, and 340 members on the customer table. The fix,
+returns. `count(*)` counts rows, a row of `orders` is an order, and the label `AS customers` names
+the column and changes nothing the query counts. The check counts the orders table two ways and sets
+the customer table's count beside them, each named for what it counts: 1,000 order rows and 301
+customers who bought, beside 340 customers on the customer table. The fix,
 `count(DISTINCT customer_id)` per quarter, gives 244 and 227 customers at 2.20 and 2.04 orders each,
 and removes 294 and 235 customers who do not exist.
 
@@ -218,9 +221,10 @@ leaves, 244 customers to 227, down 7.0 percent, with orders per customer down 7.
 
 ### Where did the book's 17 fewer Q2 customers come from?
 
-From 131 customers moving. The second route builds the change from each customer's own history,
-with no distinct count per quarter: 244, less the 74 who bought only in Q1 (`HAVING max(quarter) =
-'Q1'` on one row per customer), plus the 57 who bought only in Q2, is 227. `HAVING` tests each
+From 131 customers moving. The second route builds the change from each customer's own history:
+244, less the 74 who bought only in Q1 (`HAVING max(quarter) = 'Q1'` on one row per customer), plus
+the 57 who bought only in Q2, is 227. The histories tie out both quarters on their own: 170 who
+bought in both plus 74 is Q1's 244, and 170 plus 57 is Q2's 227. `HAVING` tests each
 customer's group once it exists, which `WHERE` cannot do, since it sees one order at a time.
 
 ### What goes on Anand's sheet about last week's note?
@@ -253,7 +257,8 @@ budget to the wrong segment.
 **IN THE FIELD.** Eternal, which owns Zomato, Blinkit and District, reported B2C net order value up 54
 percent year on year to Rs 31,120 crore in the quarter to 30 June 2026, with food delivery up a little
 over 20 percent, quick commerce 86 percent and going-out 60 percent (shareholders' letter for Q1 FY27,
-22 July 2026). Kalpa's 1.6 percent hides four stories the same way.
+22 July 2026). Kalpa's 1.6 percent fall adds four segments' changes, from Student up 33.9 percent to
+Retail-Plus down 29.4.
 
 ### One query per segment, one grouped query, or pandas?
 
@@ -303,14 +308,14 @@ count(DISTINCT o.customer_id), 2)` with the counts beside it, gives Retail-Plus 
 down 22.0 percent where the hurried query said 50, and Retail-Core 1.95 then 2.01, up 3.0 where it
 said 100.
 
-**WATCH OUT.** A spreadsheet stores every number as a decimal, so the Excel habit expects 1.84 from
-140 / 76, and a database with whole numbers on both sides prints 1.
+**WATCH OUT.** A spreadsheet stores every number as a floating-point value, so the Excel habit
+expects 1.84 from 140 / 76, and a database with whole numbers on both sides prints 1.
 
 ### Does the average of each customer's own order count agree?
 
 Yes. The second route averages each customer's own order count in Python, 471 rows of one customer
-and quarter, without dividing two counts, and agrees in all eight segment-quarters, Retail-Plus Q2 at
-1.84.
+and quarter: a sum of counts over a number of customers, both from a different query, divided with
+Python's true division. It agrees in all eight segment-quarters, Retail-Plus Q2 at 1.84.
 
 > **Kavya's review.** "Divide in numeric and round on purpose, and keep the counts beside every
 > ratio, so anyone reading the sheet can multiply it back."
@@ -331,12 +336,14 @@ leaves out the members who stopped says spend per member fell 15.5 percent when 
 1. Nested subqueries, named steps or temporary tables?
 2. How did customers, frequency and order value move in each segment?
 3. How much less did each Retail-Plus member spend?
-4. Does a member count taken from the customer table give the same change?
+4. Does revenue over the members who bought, counted on their own, give the same levels?
 
 **IN THE FIELD.** GitLab's data team publishes its SQL style guide: "Prefer CTEs over sub-queries as
 CTEs make SQL more readable ...", and each CTE should "perform a single, logical unit of work" (GitLab
-handbook, SQL Style Guide). The sentence goes on to call CTEs more performant, a claim resting on a
-test in Snowflake; on Postgres the reason to name steps is the reader.
+handbook, SQL Style Guide). The sentence goes on to call CTEs more performant, a claim the guide makes
+with no test beside it; on Postgres the reason to name steps is the reader. The same guide says not
+to use `USING` in joins because it "produces inaccurate results in Snowflake"; on Postgres `USING` is
+exact, and today's lookup line uses it.
 
 ### Nested subqueries, named steps or temporary tables?
 
@@ -344,9 +351,9 @@ A named step, a common table expression or CTE, is written with `WITH` and read 
 
 | Option | Sized on this suite |
 |---|---|
-| A. Nested subqueries | 1 statement and 0 rows written, read from the inside out |
-| B. Named steps, `WITH ... AS` | 1 statement and 0 rows written, read from the top down |
-| C. Temporary tables | 4 rows written, and a new session fails with `UndefinedTable` |
+| A. Nested subqueries | 1 statement and 0 rows written, read from the inside out; a renamed `segment` is 4 edits |
+| B. Named steps, `WITH ... AS` | 1 statement and 0 rows written, read from the top down; a renamed `segment` is 1 edit |
+| C. Temporary tables, one per quarter | 3 statements and 8 rows written, and a new session fails with `UndefinedTable`; 4 edits |
 
 The call is B: "Temporary tables are automatically dropped at the end of a session ..." (PostgreSQL 16
 documentation, CREATE TABLE), so the analyst's new session finds nothing. A step many queries reuse
@@ -382,11 +389,14 @@ Retail-Core flips to down 1.8.
 **WATCH OUT.** The warehouse holds no missing value in any column; these `NULL`s were made by the
 query, which is why nobody sees them coming.
 
-### Does a member count taken from the customer table give the same change?
+### Does revenue over the members who bought, counted on their own, give the same levels?
 
-Yes. The second route divides each quarter's revenue by the tier's 120 members on the customer table:
-Rs 4,881 then Rs 3,445, down 29.4 percent, at different levels and with the same change, since both
-routes keep one fixed group of members.
+Yes. The second route never builds a row per member and never averages: it counts the members who
+bought in either quarter in a step of its own, 107, and divides each quarter's Retail-Plus revenue by
+that count, Rs 5,85,770 and Rs 4,13,380 over 107, which is Rs 5,474 then Rs 3,863, the fix's own
+levels. A step that dropped or doubled a member would leave the two routes apart. Over the tier's
+120 members on the customer table, bought or not, the change is the same 29.4 percent at Rs 4,881
+then Rs 3,445: any fixed base keeps the revenue ratio, so only the level says which base is read.
 
 > **Kavya's review.** "An average names who is inside it. Put the zero in on purpose, and write the
 > count of members beside the average."
@@ -420,7 +430,7 @@ app's daily users would count that person twice.
 |---|---|
 | A. Add each segment's two quarter rows | 8 rows read, assuming every measure adds across quarters |
 | B. Count the half-year from the orders | 1,000 rows read, with the same definition over a wider window |
-| C. `GROUPING SETS`, every window in one query | 1,000 rows read once, with one more feature to audit |
+| C. `GROUPING SETS`, every window in one query | 1,000 rows read, with one more feature to audit |
 | D. No half-year at all | 0 rows, until someone adds the quarters by hand |
 
 None costs a noticeable second on a book this size, so what separates them is what each assumes. The
@@ -471,7 +481,7 @@ the query did.
 1. How can a run show that it computed the same thing as last week's?
 2. What fingerprint does this Monday's run leave?
 3. Which five orders will the analyst trace against the ERP?
-4. Does a sort in Python pick the same five?
+4. Does a count with no sort confirm the five?
 5. What does the Monday suite tell Anand?
 
 **IN THE FIELD.** Netflix's data engineers called their pattern write, audit, publish: a run's new
@@ -486,7 +496,7 @@ data is written first to an audit table and checked against earlier runs. In Mic
 |---|---|
 | A. Rerun and compare by eye | Nothing stored, and it catches whatever someone notices |
 | B. A fingerprint block in the suite | 7 numbers on read access, which tell a changed book from a changed query |
-| C. Snapshot each Monday's outputs | About 18 rows a Monday, and it needs write access |
+| C. Snapshot each Monday's outputs | 18 rows a Monday, and it needs write access |
 | D. Write, audit, publish | A staging table per run, write access and a scheduler |
 
 The call is B, with an `ORDER BY` on a unique column in every list. A schema the team can write to
@@ -511,75 +521,78 @@ check sets the fingerprint beside the samples: the book held still while the fiv
 `ORDER BY order_id LIMIT 5`, draws the same five, Rs 3,900, before and after.
 
 **WATCH OUT.** Sixty Codespaces holding identical data often draw the same five, so the habit
-survives until the first reload; a sort on a column rows can share, such as the date, still leaves
-ties.
+survives until the first reload.
 
-### Does a sort in Python pick the same five?
+### Does a count with no sort confirm the five?
 
-Yes. The second route fetches all 94 delivered Q2 app candidates in any order and sorts them in
-Python by `order_id`: the same five, averaging Rs 780.
+Yes. The second route never sorts and never cuts: it counts the delivered Q2 app candidates whose id
+sits at or below a sample's last id. Exactly five of the 94 sit at or below KR-00547, worth Rs 3,900,
+the ordered sample's own total, so the five are the first five by order id. Seven sit at or below
+KR-00553, the unordered rerun's last id, so the count catches the rerun that skipped KR-00542 and
+KR-00544.
 
 ### What does the Monday suite tell Anand?
 
 It tells him that booked revenue fell 1.6 percent, that Retail-Plus carries the fall in orders, and
-that a rerun on the same book repeats, with one caveat about last week's extract; the last section
-gives the sentence in full.
+that a rerun on the same book repeats, with one caveat about last week's extract. The sentence to
+Anand closes these notes.
 
-> **Kavya's review.** "A run that cannot be repeated cannot be audited. Order every list on a column
-> no two rows share, and print the book's fingerprint beside the numbers."
+> **Kavya's review.** "Order every audit sample on a column no two rows share, and print the book's
+> fingerprint beside the numbers, so a difference next Monday says whether the book moved or the
+> query did."
 
-It will, once every list is ordered on a unique key and the fingerprint prints beside the numbers:
+It will, once every audit sample is ordered on a unique key and the fingerprint prints beside the numbers:
 1,000 orders, Rs 19,84,00,000 and 301 customers, and the same five orders, Rs 3,900.
 
 ---
 
 ## What do the escalated case and the second case ask?
 
-**The escalated case** asks whether the suite holds on Anand's own definition: "Finance counts the
+**The escalated case** asks whether the suite holds on Finance's definition: "Finance counts the
 orders that reached the customer and stayed there. Run me the same suite on delivered orders, and
 tell me whether the story changes." Delivered means the order reached the customer and was not
 returned or cancelled. Its five parts climb the chapters, from the delivered book and each segment's
 frequency to Retail-Plus's branches, the tie-outs and a run that repeats; parts 1 and 2 ran in the
 afternoon and parts 3 to 5 run in the practice lab. Every number changes on the new definition.
 
-**The second case** asks which channel is losing Kalpa's consumers once the Business orders are read
-apart. Marketing says the store is booming and the web is collapsing and wants the budget moved, and
-Anand wants the same numbers for app, web and store first. Business books about 99 percent of the
-rupees, so each channel's total holds two businesses in one line. It runs in the take-home.
+**The second case** asks whether the store is booming and the web collapsing, as Marketing says.
+Marketing read the channel totals and wants budget moved from the web to the stores, and Anand wants
+the same numbers for app, web and store first. It runs in the take-home.
 
 ---
 
 ## What will an interviewer ask, and what does a strong answer sound like?
 
 The tags are this programme's own calibration for 0 to 3 year Indian-market candidates: [S] a staple
-asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator. Each chapter's first
-question is its design question (which way, sized how, and what would switch it), answered in the
-chapter.
-
-**[S] WHERE against HAVING, one sentence each.** "WHERE keeps or drops rows before any group exists;
-HAVING keeps or drops groups after they form, so it can test `count(DISTINCT customer_id) < 30`." A
-weak answer calls HAVING a second WHERE.
+asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator. The thirteen run in
+the practice lab's drill in this order, and the design question comes last: four ways to produce one
+of today's numbers, which would you choose, sized how, and what would make you switch.
 
 **[S] Explain the logical order in which a SQL query runs.** "FROM and the lookup, then WHERE, GROUP
 BY, HAVING, SELECT, ORDER BY and LIMIT; the planner may fetch rows another way, but the result follows
 this order, which is why SELECT cannot print a column the groups do not pin down." A weak answer
 recites the written order.
 
+**[S] WHERE against HAVING, one sentence each.** "WHERE keeps or drops rows before any group exists;
+HAVING keeps or drops groups after they form, so it can test `count(DISTINCT customer_id) < 30`." A
+weak answer calls HAVING a second WHERE.
+
+**[F] What do `count(*)`, `count(customer_id)` and `count(DISTINCT customer_id)` each count?**
+"`count(*)` counts rows, `count(customer_id)` counts the rows whose customer id is filled in, and
+`count(DISTINCT customer_id)` counts the different ids. On Kalpa's orders the first two give 1,000,
+since no order lacks a customer, and the third 301." A weak answer says the second one counts
+customers.
+
 **[F] Why would you compute a KPI in the warehouse rather than in a notebook?** "The warehouse holds
 the one copy everybody reads, so Monday's number and the auditor's rerun come from the same book; an
-export ages the day it lands, and here it moves 1,340 rows to answer what the query answers with two.
+export ages the day it lands, and here it moves 1,000 rows to answer what the query answers with two.
 I explore in a notebook that reads the warehouse and report from the saved query." A weak answer says
 SQL is faster.
 
-**[F] What does LIMIT without ORDER BY return?** "Whichever rows the database reaches first, which
-can change with no change to the data; at Kalpa a reload moved the audit sample from Rs 3,900 to
-Rs 4,590. I order on a column no two rows share, then limit." A weak answer says five at random.
-
-**[D] An analyst must audit your query: what changes in how you write it, and what would you refuse
-to compute in a notebook?** "A named step and a comment for every number, ratios in numeric with
-their counts, every list ordered on a unique key, tie-outs and the book's fingerprint in the suite.
-I refuse to compute the reported number on an export in a notebook, because the analyst cannot rerun
-it on the book." A weak answer stops at formatting.
+**[F] Your total matches last week's; is your analysis the same?** "Not yet. Kalpa's revenue fell 1.6
+percent in last week's extract and in the book, while customers were flat in one and down 7.0
+percent in the other: two trees multiplied to the same 0.984. I set every leaf beside its twin as a
+change before I say two sources agree." A weak answer says yes because the total matches.
 
 **[F] Orders per customer reads 1 for a segment; what do you check first?** "Integer division: 140
 orders over 76 customers truncates to 1. I multiply back, 1 times 76 is 76, then cast one side to
@@ -590,20 +603,38 @@ avg skips missing values, so members who bought nothing left Q2's Retail-Plus av
 15.5 percent while revenue fell 29.4. I count who is inside each average and write the zero on
 purpose." A weak answer says customers spent less.
 
+**[F] When would you use a CTE instead of a subquery?** "When a step deserves a name, is read more
+than once, or someone else has to read the query from the top down. A CTE runs inside one statement
+and writes nothing, so an auditor reruns it whole, and a lookup written once is one edit when a
+column is renamed: one against four on today's comparison." A weak answer says CTEs are always
+faster.
+
 **[F] Why can you not add two quarters' customer counts to get the half-year's?** "A customer who
 bought in both sits in both counts: Retail-Plus 91 plus 76 less the 60 in both is 107, where adding
 gives 167 in a tier of 120. Orders and rupees add, since each order sits in one quarter." A weak
 answer adds and moves on.
 
+**[F] What does LIMIT without ORDER BY return?** "Whichever rows the database reaches first, which
+can change with no change to the data; at Kalpa a reload moved the audit sample from Rs 3,900 to
+Rs 4,590. I order on a column no two rows share, then limit." A weak answer says five at random.
+
+**[F] Your KPI moved 30 percent overnight and the data did not change; what do you suspect?** "The
+run, then the query. If the book's fingerprint matches, I check the run's parameters, the date window
+and the time zone, and what it depends on, a view, a deploy or a cached result. Then today's
+suspects: a changed definition, a shifted denominator, integer division, and an unordered LIMIT when
+the number comes from a sample." A weak answer blames the pipeline before checking the book.
+
 **[D] Two analysts report different customer counts for one quarter; how do you settle it?** "I set
 the definitions side by side before the numbers, recompute both from the source of record with each
 definition in the query, agree which one answers the question, and store that query. At Kalpa, 538
-order rows, 244 buyers and 340 members were true answers to three different questions." A weak
-answer picks the newer number.
+order rows, 244 buyers and 340 customers on the customer table were true answers to three different
+questions." A weak answer picks the newer number.
 
-**[F] Your KPI moved 30 percent overnight and the data did not change; what do you suspect?** "The
-query. If the book's fingerprint matches, I look for an unordered LIMIT, a changed definition, a
-shifted denominator or integer division." A weak answer blames the pipeline before checking the book.
+**[D] An analyst must audit your query: what changes in how you write it, and what would you refuse
+to compute in a notebook?** "A named step and a comment for every number, ratios in numeric with
+their counts, every audit sample ordered on a unique key, tie-outs and the book's fingerprint in the
+suite. I refuse to compute the reported number on an export in a notebook, because the analyst cannot
+rerun it on the book." A weak answer stops at formatting.
 
 ---
 
@@ -611,7 +642,7 @@ shifted denominator or integer division." A weak answer blames the pipeline befo
 
 | Term | What it means here | Where | Example |
 |---|---|---|---|
-| The book | The warehouse's two quarters of orders, the one copy everybody reads | Chapter 1 | 1,000 orders |
+| The book | The warehouse's two quarters of orders, the one copy everybody reads; last week's books described a 186-order extract | Chapter 1 | 1,000 orders |
 | Customers who bought | Customers with an order in the window, each counted once | Chapter 1 | 244 in Q1 |
 | HAVING | Keeps or drops groups after GROUP BY has formed them | Chapter 3 | Student flagged |
 | Integer division | Two whole numbers divided to a whole number, cut towards zero | Chapter 3 | 140 / 76 prints 1 |
@@ -620,7 +651,7 @@ shifted denominator or integer division." A weak answer blames the pipeline befo
 | Booked revenue | Every order at its amount, whatever its status | Chapter 1 | Rs 9,84,00,000 in Q2 |
 | Run order | FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, then LIMIT | The picture | SELECT runs fifth |
 | Warehouse | Kalpa's Postgres database of seven tables, queried in place | Chapter 1 | kalpa |
-| Schema | The tables a database holds, with their columns and types | Chapter 1 | orders |
+| Schema | A named area inside the database that holds tables and views; the team reads the public schema and has none of its own | Chapter 1 | public |
 | View | A query saved inside the warehouse | Chapter 1 | Blocks a drop |
 | Revenue tree | Customers who bought, times orders per customer, times revenue per order | Chapter 2 | 0.984 |
 | Segment | A customer's group, kept on the customer table | Chapter 3 | Retail-Plus |
@@ -629,7 +660,7 @@ shifted denominator or integer division." A weak answer blames the pipeline befo
 | Thin group | A group of fewer than thirty customers, whose rate is flagged | Chapter 3 | Student |
 | NULL | A missing value, which avg skips | Chapter 4 | No Q2 order |
 | coalesce | The first value that is not NULL, used to write Rs 0 on purpose | Chapter 4 | `coalesce(x, 0)` |
-| Spend per member | Rupees a member spent in a quarter, averaged over the members | Chapter 4 | Rs 5,474 |
+| Spend per member | Rupees a Retail-Plus member spent in a quarter, averaged over the members who bought in either quarter | Chapter 4 | Rs 5,474 over 107 |
 | Temporary table | A table that lives only in the session that made it | Chapter 4 | `UndefinedTable` |
 | Tie-out | A sum an auditor checks, such as the segments against the book | Chapter 5 | 244 |
 | Half-year | April to September 2026, its customers counted from the orders | Chapter 5 | 107 |
@@ -657,7 +688,7 @@ shifted denominator or integer division." A weak answer blames the pipeline befo
 | 11 | PostgreSQL Exercises, aggregates, https://pgexercises.com/questions/aggregates/ (checked 30 September 2026) | 30 minutes | Practice |
 | 12 | Chapter 1: JPMorgan's task force report, https://ypfsresourcelibrary.blob.core.windows.net/fcic/YPFS/JPMorgan%20Management%20Task%20Force%20Regarding%202012%20CIO%20Losses%201-16-13.pdf (checked 30 September 2026) | 15 minutes, pages 7 and 124 | A model moved by hand |
 | 13 | Chapter 2: Airbnb's post, archived, https://web.archive.org/web/20260809070448/https://medium.com/airbnb-engineering/how-airbnb-achieved-metric-consistency-at-scale-f23cc53dea70 (checked 30 September 2026) | 12 minutes | Two teams, two answers |
-| 14 | Chapter 3: Eternal's Q1 FY27 letter, https://www.eternal.com/blog/q1fy27 (checked 30 September 2026) | 10 minutes | Three businesses, one total |
+| 14 | Chapter 3: Eternal's Q1 FY27 shareholders' letter, https://drive.google.com/file/d/1jb9KWd4Ap4RTKHFHxzEOO7jgQqVZEGcd/view (checked 1 October 2026), linked from https://www.eternal.com/blog/q1fy27 (checked 30 September 2026) | 10 minutes, pages 3 and 4 | Three businesses, one total |
 | 15 | Chapter 4: GitLab's SQL Style Guide, https://handbook.gitlab.com/handbook/enterprise-data/platform/sql-style-guide/ (checked 30 September 2026) | 15 minutes | CTEs and comments |
 | 16 | Chapter 5: Meta's Form 10-K for 2025, https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm (checked 30 September 2026) | 10 minutes, Item 7 | One person, counted once |
 | 17 | Chapter 6: Michelle Ufford's talk, https://www.youtube.com/watch?v=fXHdeBnpXrg (checked 30 September 2026) | One talk | Write, audit, publish |
@@ -671,7 +702,7 @@ shifted denominator or integer division." A weak answer blames the pipeline befo
 3. Divide in numeric, round on purpose, and keep the counts beside the ratio.
 4. An average names who is inside it, so write the zero on purpose.
 5. Orders and rupees add across quarters; customers are counted again from the orders.
-6. Order every list on a column no two rows share, and print the book's fingerprint beside the numbers.
+6. Order every audit sample on a column no two rows share, and print the book's fingerprint beside the numbers.
 
 ---
 
@@ -680,8 +711,9 @@ shifted denominator or integer division." A weak answer blames the pipeline befo
 Yes. The sentence to Anand: "Anand, the Monday suite now runs on the warehouse itself. Booked revenue
 fell 1.6 percent, from Rs 10.00 crore to Rs 9.84 crore, and Retail-Plus carries the fall in orders:
 its revenue is down 29.4 percent because 16.5 percent fewer members bought and each ordered 22.0
-percent less often. Every count says what it counts, every ratio multiplies back, and each run prints
-the book's fingerprint, so a rerun on the same book gives the same answer. One caveat: last week's
+percent less often, while each order was worth 8.4 percent more. The counts are named for what they
+count and printed beside every ratio, and each run prints the book's fingerprint, so a rerun on the
+same book gives the same answer. One caveat: last week's
 extract showed customers flat, and the full book shows 7.0 percent fewer customers in Q2."
 
 Anand's next question is already in: how much of what was booked was collected? It stays open until

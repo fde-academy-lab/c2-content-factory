@@ -32,8 +32,9 @@ flowchart LR
 ## In what order does the database run a query's clauses?
 
 Seven boxes go up left to right, drawn once and left up all day. A query is written SELECT, FROM, WHERE,
-GROUP BY, HAVING, ORDER BY, LIMIT, and it runs as the arrows show; most of the day's refusals and
-wrong numbers are explained by this order. SELECT is drawn dark because it comes fifth.
+GROUP BY, HAVING, ORDER BY, LIMIT, and it runs as the arrows show; the GROUP BY refusal, the choice
+between WHERE and HAVING, and an unsorted LIMIT all follow from this order. SELECT is drawn dark
+because it comes fifth.
 
 ```mermaid
 flowchart LR
@@ -76,8 +77,8 @@ This is the day's first-use step, taken before chapter 1's first query. The step
 Learn's quickstart for the PostgreSQL extension,
 https://learn.microsoft.com/en-us/azure/postgresql/development/vs-code-extension/quickstart-connect-query (checked 30 September 2026),
 and the settings come from the Codespace's own configuration, which installs the extension
-(`ms-ossdata.vscode-pgsql`) and loads the warehouse into a database called `kalpa`. The extension's
-screens were not run in this build, so the labels below are the quickstart's.
+(`ms-ossdata.vscode-pgsql`) and loads the warehouse into a database called `kalpa`. The labels below
+are the quickstart's, not verified in a Codespace.
 
 | Step | What you do | What you should see |
 |---|---|---|
@@ -113,16 +114,17 @@ flowchart LR
 
 ---
 
-## What does each count count on one table?
+## What do two counts of the orders table say, beside the customer table's count?
 
 Chapter 1's check goes up next. The hurried query's `count(*) AS customers` said 538 and 462
-customers, 1.00 order each, so three counts, each named for what it counts, go up side by side.
+customers, 1.00 order each, so the orders table is counted two ways and the customer table's count
+goes up beside them, each named for what it counts.
 Under them the room writes the fix per quarter: 244 and 227 customers who bought, 2.20 and 2.04
 orders each.
 
 ```mermaid
 flowchart LR
-    R["<b>order rows</b><br/>count(*)<br/>1,000"] --- B["<b>customers who bought</b><br/>count(DISTINCT customer_id)<br/>301"] --- K["<b>members on the book</b><br/>count(*) over customers<br/>340"]
+    R["<b>order rows</b><br/>count(*)<br/>1,000"] --- B["<b>customers who bought</b><br/>count(DISTINCT customer_id)<br/>301"] --- K["<b>on the customer table</b><br/>count(*) over customers<br/>340"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class R,K known
@@ -148,7 +150,8 @@ flowchart LR
 ```
 
 The second route goes up beside it as a bridge: Q1's 244 customers, less the 74 who bought in Q1 and
-not in Q2, plus the 57 who bought in Q2 and not in Q1, is 227.
+not in Q2, plus the 57 who bought in Q2 and not in Q1, is 227. The same histories tie out both
+quarters: 170 who bought in both plus 74 is 244, and 170 plus 57 is 227.
 
 ```mermaid
 flowchart LR
@@ -255,7 +258,7 @@ The day's answer goes up as one chain, the evidence in the order Anand reads it 
 
 ```mermaid
 flowchart LR
-    B["<b>the book</b><br/>down 1.6%"] --> S["<b>the segment</b><br/>Retail-Plus<br/>down 29.4%"] --> R["<b>the branches</b><br/>customers -16.5%,<br/>frequency -22.0%"] --> A["<b>the audit</b><br/>sums tie out;<br/>runs repeat"] --> C["<b>the caveat</b><br/>customers fell 7.0%"]
+    B["<b>the book</b><br/>down 1.6%"] --> S["<b>the segment</b><br/>Retail-Plus<br/>down 29.4%"] --> R["<b>the branches</b><br/>customers -16.5%,<br/>frequency -22.0%,<br/>order value +8.4%"] --> A["<b>the audit</b><br/>sums tie out;<br/>runs repeat"] --> C["<b>the caveat</b><br/>customers fell 7.0%"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class B,S,R,A known
@@ -268,7 +271,7 @@ flowchart LR
 
 The run order is still up with SELECT drawn dark, and the tree beside it carries the day's numbers on
 its leaves: 244 and 227 customers who bought, 2.20 and 2.04 orders each, Rs 10,00,00,000 and
-Rs 9,84,00,000. Under them sit the three counts, the two trees that multiply to 0.984 with the bridge
+Rs 9,84,00,000. Under them sit the two counts beside the customer table's, the two trees that multiply to 0.984 with the bridge
 from 244 to 227, the HAVING test with Student flagged and the multiply-back check, the named steps
 with 107, 91 and 76 written beside them, the half-year with 107 of 120 ringed, and the sample that
 moved beside the fingerprint that held. The chain to Anand runs across the bottom, and beside it the
@@ -279,6 +282,6 @@ six lines the cheat sheet prints:
 3. Divide in numeric, round on purpose, and keep the counts beside the ratio.
 4. An average names who is inside it, so write the zero on purpose.
 5. Orders and rupees add across quarters; customers are counted again from the orders.
-6. Order every list on a column no two rows share, and print the book's fingerprint beside the numbers.
+6. Order every audit sample on a column no two rows share, and print the book's fingerprint beside the numbers.
 
 Tomorrow's question goes in the corner, left open: how much of what was booked was collected?

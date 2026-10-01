@@ -33,7 +33,7 @@ the customer table.
 
 | Segment | Q1 orders, customers, orders per customer | Q2 orders, customers, orders per customer | Change |
 |---|---|---|---|
-| Business | 18, 9, 2.00 | 17, 8, 2.13 | +6.2% |
+| Business | 18, 9, 2.00 | 17, 8, 2.13 | +6.3% |
 | Retail-Core | 80, 42, 1.90 | 79, 40, 1.98 | +3.7% |
 | Retail-Plus | 80, 34, 2.35 | 53, 26, 2.04 | -13.4% |
 | Student | 16, 10, 1.60 | 19, 11, 1.73 | +8.0% |

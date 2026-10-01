@@ -193,5 +193,5 @@ same thing whatever the orders look like next quarter.
 Eternal, the company behind Zomato and Blinkit, defines its headline B2C net order value over its
 consumer-facing businesses, food delivery, quick commerce and going-out, and reports Hyperpure, its
 supplies business for restaurants and other businesses, as a segment of its own, B2B (shareholders'
-letter for Q1 FY27, 22 July 2026). Kalpa's channel sheet makes the same cut on a smaller book: the
+letter for Q1 FY27, 22 July 2026, pages 3 and 26). Kalpa's channel sheet makes the same cut on a smaller book: the
 Business segment's orders on one line, the consumers' on another.

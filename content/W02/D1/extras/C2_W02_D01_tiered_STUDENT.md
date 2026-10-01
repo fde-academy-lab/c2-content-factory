@@ -134,7 +134,9 @@ Student's share rests on 15 customers and goes on the sheet flagged.
 
 This one is for you if you finished the take-home and every number matched.
 
-**Who needs the answer.** Anand's analyst writes back to the team.
+**Who needs the answer.** Anand's analyst signs the suite each Monday and wants to know, before she
+reads it, whether a number has gone wrong; a suite that cannot tell her leaves her to recheck every
+line by hand.
 
 > "Your suite is right today. What tells me, next Monday, that one of its numbers has gone wrong
 > before I read it?"
@@ -184,8 +186,7 @@ ORDER  BY check_name;
 
 ### Would each check catch the mistake it guards against?
 
-A check that can never fail proves nothing. In a copy of the suite, make each mistake on purpose and
-watch its check turn to FAIL: drop the `::numeric` from the ratio, label `count(*)` as customers, and
+In a copy of the suite, make each mistake on purpose and watch its check turn to FAIL: drop the `::numeric` from the ratio, label `count(*)` as customers, and
 build the half-year by adding each segment's two quarter rows.
 
 ### Did your checks land where they should?

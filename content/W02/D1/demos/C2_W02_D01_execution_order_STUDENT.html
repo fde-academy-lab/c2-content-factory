@@ -156,7 +156,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   <p class="quote">&ldquo;I want these numbers every Monday, for every segment and channel, computed from the warehouse
     itself. No notebooks, no exports, nothing a person can mistype.&rdquo;</p>
   <p class="who">Anand Iyer, finance controller, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre</p>
-  <p class="promise">This page makes the day's decisions move. Walk the six chapter questions to the answer Anand
+  <p class="promise">Walk the six chapter questions to the answer Anand
     reads, then build the Retail-Plus line of his sheet yourself: four choices, each one a trap from the day, and the
     sheet and Kavya's review redraw as you flip them. The sheet's figures are the warehouse's own results from the
     day's queries; the four experiment cards use invented values, and each card says so.</p>
@@ -205,7 +205,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
             <div class="row">
               <button class="btn" type="button" data-set="count" data-val="rows" aria-pressed="false">count(*), order rows</button>
               <button class="btn" type="button" data-set="count" data-val="distinct" aria-pressed="true">count(DISTINCT customer_id)</button>
-              <button class="btn" type="button" data-set="count" data-val="book" aria-pressed="false">members on the book</button>
+              <button class="btn" type="button" data-set="count" data-val="book" aria-pressed="false">members on the customer table</button>
             </div></div>
           <div class="choice"><p class="q">2. How is orders per customer divided?</p>
             <div class="row">
@@ -298,7 +298,7 @@ LIMIT  5;</div>
           <div class="result" id="expBResult" hidden>
             <p><b>What happened.</b> With coalesce the average falls from Rs 150 to Rs 100, because the member who stopped is
               back in the count.</p>
-            <p><b>Why it matters.</b> The members a retention team most needs to hear about are the ones avg drops silently.</p>
+            <p><b>Why it matters.</b> At Kalpa the same skip left 31 Retail-Plus members out of Q2's average, which then fell 15.5 percent where spend fell 29.4.</p>
             <p class="rule">Put count(*) beside every average, and say whether a NULL means zero.</p>
           </div>
           <p class="waiting" id="expBWait">What happened appears here after the run.</p>
@@ -307,7 +307,7 @@ LIMIT  5;</div>
         <article class="card exp" id="expC">
           <div class="part-label">Experiment C &middot; invented rows</div>
           <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">Which of three counts belongs under orders per customer?</h3>
-          <p><b>Situation.</b> A small table of six orders, placed by four of the five members on the book.</p>
+          <p><b>Situation.</b> A small table of six orders, placed by four of the five customers on the customer table.</p>
           <p><b>Hypothesis.</b> count(*), count(DISTINCT customer_id) and the customers table give 6, 4 and 5.</p>
           <p><b>Watch for.</b> Which count belongs under orders per customer.</p>
           <div class="holder" id="expCPic"></div>
@@ -337,8 +337,8 @@ LIMIT  5;</div>
           </div>
           <div class="result" id="expDResult" hidden>
             <p><b>What happened.</b> The first three became O-3, O-4 and O-5. No value changed; only where the rows sit did.</p>
-            <p><b>Why it matters.</b> An audit sample that cannot be rerun cannot be audited.</p>
-            <p class="rule">Order every list on a unique key, then limit.</p>
+            <p><b>Why it matters.</b> At Kalpa the same drift moved the analyst's five traced orders from Rs 3,900 to Rs 4,590 on a book that had not changed.</p>
+            <p class="rule">Order every audit sample on a unique key, then limit.</p>
           </div>
           <p class="waiting" id="expDWait">What happened appears here after the run.</p>
         </article>
@@ -865,18 +865,18 @@ LIMIT  5;</div>
     { t: "What is Anand asking for?", x: "Last week's revenue tree every Monday, for every segment and channel, computed in the warehouse and never on an export. His analyst reruns every query line by line.",
       pic: function () { return K.flow(["the warehouse\n1,000 orders", "the .sql files\nthe Monday suite", "the analyst\nreruns each line", "Anand's sheet\nevery Monday"], 3); } },
     { t: "Chapter 1. What does the book say?", x: "Q1 booked 538 orders and Rs 10.00 crore, Q2 462 orders and Rs 9.84 crore, down 1.6 percent. 244 customers bought in Q1 and 227 in Q2, each counted once; count(*) would have called the 538 order rows customers and put orders per customer at 1.00.",
-      pic: function () { return K.columns(["order rows", "members on the book", "who bought"], [["count", [1000, 340, 301]]], { title: "One table counted three ways, the half-year's counts", lit: [2] }); } },
+      pic: function () { return K.columns(["order rows", "customer table", "who bought"], [["count", [1000, 340, 301]]], { title: "Orders counted two ways, beside the customer table", lit: [2] }); } },
     { t: "Chapter 2. Same story as Week 1?", x: "Revenue, orders and revenue per order agree with last week's file within half a point. The customer leaf does not: flat in the file, down 7.0 percent in the book, from 244 to 227, because 74 customers stopped and 57 started.",
       pic: function () { return K.columns(["revenue", "orders", "customers", "orders per customer", "revenue per order"], [["last week's file", [98.4, 86.0, 100.0, 86.0, 114.4]], ["the book", [98.4, 85.9, 93.0, 92.3, 114.6]]], { title: "Q2 as an index on Q1 = 100: the customer leaves part company", fmt: function (v) { return v.toFixed(1); }, lit: [2, 3] }); } },
     { t: "Chapter 3. Which segment moved?", x: "One GROUP BY gives eight rows. Retail-Plus revenue fell 29.4 percent, and its customers ordered 2.36 then 1.84 times, down 22.0 percent. Divided as whole numbers, the same ratio prints 2 then 1, and the sheet would say halved.",
       pic: function () { return K.columns(["Core Q1", "Core Q2", "Plus Q1", "Plus Q2"], [["whole numbers", [1, 2, 2, 1]], ["numeric", [1.95, 2.01, 2.36, 1.84]]], { title: "Orders per customer, two divisions", fmt: function (v) { return String(v); }, lit: [3] }); } },
-    { t: "Chapter 4. Which branch moved?", x: "Named steps put Q1 beside Q2. In Retail-Plus, customers fell to 0.835 of Q1, orders per customer to 0.780 and revenue per order rose to 1.084, so frequency fell furthest. Each member spent 29.4 percent less, Rs 5,474 to Rs 3,863 over 107 members, where an avg that skipped the 31 who stopped said 15.5 percent.",
+    { t: "Chapter 4. Which branch moved?", x: "Named steps put Q1 beside Q2. In Retail-Plus, customers fell to 0.835 of Q1, orders per customer to 0.780 and revenue per order rose to 1.084, so frequency fell furthest. Each member spent 29.4 percent less, Rs 5,474 to Rs 3,863 over 107 members, where an avg that skipped the 31 who stopped said 15.5 percent; revenue over the 107 counted on their own gives the same levels.",
       pic: function () { return K.columns(["Q1", "Q2"], [["NULLs skipped", [6437, 5439]], ["Rs 0 counted", [5474, 3863]]], { title: "Spend per Retail-Plus member, two averages", fmt: K.rupees }); } },
     { t: "Chapter 5. Does the suite add up?", x: "The four segments add back to the book in each quarter. Retail-Plus's two quarters added give 167 buyers in a tier of 120 members; counted from the orders, 107 bought in the half-year, because 60 bought in both: 91 plus 76 less 60 is 107.",
-      pic: function () { return K.columns(["Q1 buyers", "Q2 buyers", "Q1 plus Q2", "half-year, counted", "members"], [["Retail-Plus", [91, 76, 167, 107, 120]]], { title: "Retail-Plus customers: added, counted and on the book", lit: [2] }); } },
-    { t: "Chapter 6. Same answer next week?", x: "The book's fingerprint held through a reload: 1,000 order rows, Rs 19,84,00,000 and 301 customers. LIMIT 5 with no ORDER BY drew Rs 3,900, then Rs 4,590 on the analyst's rerun; ORDER BY order_id draws the same five, Rs 3,900, on every run.",
+      pic: function () { return K.columns(["Q1 buyers", "Q2 buyers", "Q1 plus Q2", "half-year, counted", "members"], [["Retail-Plus", [91, 76, 167, 107, 120]]], { title: "Retail-Plus customers: added, counted and on the customer table", lit: [2] }); } },
+    { t: "Chapter 6. Same answer next week?", x: "The book's fingerprint held through a reload: 1,000 order rows, Rs 19,84,00,000 and 301 customers. LIMIT 5 with no ORDER BY drew Rs 3,900, then Rs 4,590 on the analyst's rerun; ORDER BY order_id draws the same five, Rs 3,900, on every run, and exactly five candidates sit at or below its last id.",
       pic: function () { return K.columns(["your run", "the analyst's rerun"], [["LIMIT 5 alone", [3900, 4590]], ["ORDER BY order_id", [3900, 3900]]], { title: "The five-order audit sample, two runs", fmt: K.rupees, lit: [1] }); } },
-    { t: "What does the Monday suite tell Anand?", x: "Booked revenue fell 1.6 percent, from Rs 10.00 crore to Rs 9.84 crore, and Retail-Plus carries the fall in orders: its revenue is down 29.4 percent because 16.5 percent fewer members bought and each ordered 22.0 percent less often. Every count says what it counts, every ratio multiplies back, and each run prints the book's fingerprint.",
+    { t: "What does the Monday suite tell Anand?", x: "Booked revenue fell 1.6 percent, from Rs 10.00 crore to Rs 9.84 crore, and Retail-Plus carries the fall in orders: its revenue is down 29.4 percent because 16.5 percent fewer members bought and each ordered 22.0 percent less often, while each order was worth 8.4 percent more. The counts are named for what they count and printed beside every ratio, and each run prints the book's fingerprint.",
       pic: function () { return K.flow(["1. the book\ndown 1.6%", "2. Week 1\ncustomers part", "3. segments\nPlus down 29.4%", "4. branches\nfrequency 0.780", "5. the sums\n107 buyers", "6. the rerun\nthe same five"], 5, { width: 120 }); } }
   ];
   var walkAt = 0;
@@ -929,7 +929,7 @@ LIMIT  5;</div>
     if (custBad) verdict = "The sheet says every member ordered exactly once in each quarter, so frequency never moved: the branch Meera was told to fix vanishes.";
     else if (divBad) verdict = "The sheet says Retail-Plus frequency halved, from " + freq[0] + " to " + freq[1] + ", and the head of Retail-Plus plans for members who order once a quarter.";
     else verdict = "Retail-Plus frequency fell " + pct(freq[0], freq[1]).replace("-", "") + ", from " + freq[0].toFixed(2) + " to " + freq[1].toFixed(2) + ", the branch the sentence to Anand leads with.";
-    if (state.count === "book" && !divBad) verdict = "Over all 120 members on the book, Retail-Plus orders per member fell from " + freq[0].toFixed(2) + " to " + freq[1].toFixed(2) + ": honest for a different question, how often Kalpa's members order, whether or not they bought.";
+    if (state.count === "book" && !divBad) verdict = "Over all 120 members on the customer table, Retail-Plus orders per member fell from " + freq[0].toFixed(2) + " to " + freq[1].toFixed(2) + ": honest for a different question, how often Kalpa's members order, whether or not they bought.";
     $("sheetVerdict").textContent = verdict;
 
     var broken = [];
@@ -1046,7 +1046,7 @@ LIMIT  5;</div>
 
   var cOn = false;
   function drawC() {
-    var cats = cOn ? ["count(*)", "count(DISTINCT id)", "members on the book"] : ["count(*), labelled customers"];
+    var cats = cOn ? ["count(*)", "count(DISTINCT id)", "customer table"] : ["count(*), labelled customers"];
     var vals = cOn ? [6, 4, 5] : [6];
     K.draw("expCPic", K.columns(cats, [["what each returns", vals]],
       { title: cOn ? "Invented: three counts, three questions" : "Invented: one count, read as customers", lit: cOn ? [1] : [] }));
@@ -1054,7 +1054,7 @@ LIMIT  5;</div>
   $("expCRun").addEventListener("click", function () { cOn = !cOn; toggle("expCRun", "expCResult", "expCWait", cOn);
     $("expCRun").textContent = cOn ? "Read every count as rows" : "Count three ways"; drawC(); });
   $("expCSeq").addEventListener("click", function () {
-    showSeq("Experiment C, the sequence", K.flow(["6 order rows", "4 distinct buyers", "5 members on the book", "6 / 4 = 1.50"], 3),
+    showSeq("Experiment C, the sequence", K.flow(["6 order rows", "4 distinct buyers", "5 on the customer table", "6 / 4 = 1.50"], 3),
       "Invented values. Orders per customer divides by the buyers.");
   });
   drawC();
