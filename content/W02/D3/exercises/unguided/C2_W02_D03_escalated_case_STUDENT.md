@@ -8,7 +8,7 @@ are this brief's own design items, one at the end of each part, answered here.
 
 > "We start calling on Monday. Send me each segment's protect list under the head of Retail-Plus's
 > rule, with its count; the members we ring first; how much of each segment's Q2 revenue the lists
-> cover; and one line Meera can take into the leadership meeting on whether Q2 is on track."
+> cover; and one sentence Meera can take into the leadership meeting on whether Q2 is on track."
 >
 > The marketing lead, Kalpa Retail
 
@@ -16,10 +16,10 @@ Kalpa Retail sells to four segments: Business, its corporate buyers, whose order
 Retail-Core, its everyday shoppers; Retail-Plus, its paid membership tier; and Student. The head of
 Retail-Plus has asked that members who spent the same be ranked the same and that every list say how
 many made it: "If two members spent the same, I want them ranked the same, and I want to know how many
-made the top fifty, not forty-nine because of a tie." Marketing wants to ring the listed members whose
-monthly spend fell two months running, in calendar months, and one member, C-0216, has already said
-that their "fall" was a holiday in August. Meera Raghavan, Kalpa Retail's CEO, wants to know whether Q2
-is on track against the plan line, by the total and week by week.
+made the top fifty, not forty-nine because of a tie." The line is the last place a list keeps,
+fiftieth on a top fifty. Marketing wants to ring the listed members whose monthly spend fell two months
+running. Meera Raghavan, Kalpa Retail's CEO, wants to know whether Q2 is on track against the plan line,
+by the total and week by week.
 
 Q2 is July to September 2026. A member's Q2 revenue is booked revenue, every Q2 order at its amount
 whatever its status, Rs 9,84,00,000 for the quarter, and a member's monthly spend is their booked revenue
@@ -46,8 +46,8 @@ number before it leaves the team.
 
 **Who needs the answer.** The marketing lead needs it because the team starts calling on Monday, the
 head of Retail-Plus needs it to answer the tier's members for every call and every count, and Meera
-needs one line to carry into the leadership meeting. A list with the wrong count, a call to a member who was travelling,
-or a quarter reported short of plan when it landed on it each costs a decision.
+needs one sentence to carry into the leadership meeting. A list with the wrong count, a call to a member
+whose spend never fell, or a quarter misread against plan each costs a decision.
 
 **The questions on the way.**
 
@@ -79,18 +79,18 @@ builds each member's Q2 revenue, places every member inside their segment with
 `FUNCTION OVER (PARTITION BY segment ORDER ...)`, keeps places 1 to 50, and prints each list's count
 beside the segment's buyers.
 
-### Q1. Which function gives members who spent the same the same place, and skips the places they use up?
+### Q1. Which function puts the head of Retail-Plus's rule into the window?
 
-The head of Retail-Plus wants members who spent the same ranked the same. Which function gives
-members who spent the same the same place, and skips the places they use up?
+The head of Retail-Plus wants members who spent the same ranked the same, and a list that says how many
+made the top fifty. Which function puts that rule into the window?
 
-a) `row_number()`
+a) `row_number()`, which gives every member a place of their own, ties too
 
-b) `dense_rank()`
+b) `dense_rank()`, which gives tied members one number and skips none
 
-c) `rank()`
+c) `rank()`, which gives tied members one number and skips the places used
 
-d) `count(*)`, which counts the members up to and including each one's figure
+d) `count(*)`, which counts the members at or above each one's own figure
 
 ### Q2. Which ORDER BY inside the window lets two members who spent the same tie?
 
@@ -116,7 +116,7 @@ b) Drop the Student list, 20 calls, so the other three lists fit inside the week
 
 c) Ring the 150 listed members with the most Q2 revenue across the four lists, Business first and the rest after
 
-d) Keep the lists, ring each in place order up to 150, and name the rest: your Retail-Plus count less 45
+d) Keep the four lists, ring each in place order up to 150 calls, and name the rest: your Retail-Plus count less 45
 
 ## Part 2. Which listed members does Marketing ring first?
 
@@ -152,18 +152,20 @@ c) `coalesce(spend_1_back, 0) > spend AND coalesce(spend_2_back, 0) > spend_1_ba
 
 d) `month_1_back < month AND month_2_back < month_1_back`
 
-### Q12. How should the team build a list of members who went quiet, sized in rows?
+### Q12. How should the team build this Monday's list of members who went quiet, sized in rows?
 
-Marketing also wants the members who went quiet: they bought in July and in August and placed no
-order in September. How should the team build that list, sized in rows?
+For this Monday's calls Marketing also wants the members who went quiet: they bought in July and in
+August and placed no order in September. The monthly table holds one row per member per month with an
+order, 752 rows for the 301 members who ever bought, and a calendar of every member and month would hold
+301 times 6 rows. How should the team build that list, sized in rows?
 
-a) A calendar of every member and month left empty, 1,806 rows, read as a flag of its own beside the falling-spend flag
+a) A calendar of every member and month, 1,806 rows, with September left empty where no order came
 
-b) The monthly table the flag reads, 752 rows, keeping the members whose September spend is NULL
+b) The 752-row monthly table, keeping members with July and August rows and no September row, by NOT EXISTS
 
-c) The same calendar with zero in every empty month, 1,806 rows, so a quiet September counts as a fall to zero in the flag
+c) The calendar with zero in every empty month, 1,806 rows, so a quiet September reads as a fall to zero
 
-d) The falling-spend flag with its calendar condition removed, 752 rows, since members with gaps include the quiet ones
+d) The falling-spend flag with its calendar condition removed, 752 rows, since members with gaps went quiet
 
 ## Part 3. How much of each segment's Q2 revenue does its list carry?
 
@@ -192,9 +194,9 @@ a) the list's revenue over the book's Q2 revenue, Rs 9,84,00,000
 
 b) the list's members over the segment's members who bought
 
-c) the list's revenue over the segment's revenue
+c) the list's revenue over its own segment's whole Q2 revenue
 
-d) the last listed member's revenue over the first's
+d) the list's revenue over the four lists' revenue together
 
 ### Q13. What does widening Retail-Core's list to seventy-five buy, sized per call?
 
@@ -218,9 +220,9 @@ since the two can disagree.
 In the practice lab: markers 7 and 8 in the notebook, then item 14 here. The notebook adds up Q2's
 orders by plan week and runs booked and plan to date side by side, one row per plan week.
 
-### Q7. Which expression gives every Q2 order a plan week, including 1 to 5 July?
+### Q7. Which expression gives every Q2 order a plan week that the plan line holds?
 
-Which expression gives every Q2 order a plan week, including the orders of 1 to 5 July?
+Which expression gives every Q2 order a plan week, one of the thirteen weeks the plan line holds?
 
 a) `date_trunc('week', order_date)::date`, the Monday that starts each order's own calendar week
 
@@ -228,7 +230,7 @@ b) `greatest(date_trunc('week', order_date)::date, (SELECT min(week_start) FROM 
 
 c) `date_trunc('month', order_date)::date`, which files each order under the first day of its month
 
-d) `(order_date - 5)`, which shifts every order by the five days between 1 July and the plan's first Monday
+d) `(order_date - 5)`, which moves every order back five days before it meets a plan week
 
 ### Q8. Which comparison counts the weeks that ran below plan, each week on its own?
 
@@ -238,33 +240,33 @@ a) `booked_to_date < plan_to_date`
 
 b) `booked < plan_revenue`
 
-c) `booked_to_date < plan_revenue`
+c) `booked < plan_to_date`
 
 d) `sum(booked) < sum(plan_revenue)` over the seven weeks
 
-### Q14. Which way answers Meera's "where were we on 19 August?", and what does it say?
+### Q14. Which way answers Meera's "where were we on 9 September?", and what does it say?
 
-Before the leadership meeting Meera asks: "Where were we on 19 August?" Which way answers her, sized,
+Before the leadership meeting Meera asks: "Where were we on 9 September?" Which way answers her, sized,
 and what does it say?
 
-a) The running total's row for the week of 17 August, the plan week that holds 19 August: Rs 6,87,36,590
+a) The running total's row for the week of 7 September, the plan week that has 9 September: Rs 8,19,30,010
 
-b) The row for the week of 10 August, the last plan week finished by 19 August: Rs 6,32,84,780
+b) The row for the week of 31 August, the last plan week finished by 9 September: Rs 7,53,96,740
 
-c) One plain SUM of the Q2 orders dated on or before 19 August, the 462 orders read once: Rs 6,57,78,430
+c) One plain SUM of the Q2 orders dated on or before 9 September, the 462 orders read once: Rs 7,57,80,560
 
-d) Thirteen plain sums, one per plan week, 6,006 order reads, then the week that holds 19 August: Rs 6,87,36,590
+d) The plan to date on the running total's row for the week of 7 September, one row read: Rs 7,56,92,300
 
 ## Part 5. What goes to Marketing and Meera?
 
-This comes up at work whenever the line a stakeholder carries into a meeting is the only part of the analysis
-most people read, so every number in it has to hold on its own.
+This comes up at work whenever a stakeholder carries one sentence of an analysis into a meeting, so every
+number in that sentence has to hold on its own.
 
 In the practice lab: markers 9 and 10 in the notebook, then item 15 here.
 
-### Q9. Which line goes to Meera for the leadership meeting?
+### Q9. Which sentence goes to Meera for the leadership meeting?
 
-Which line goes to Meera for the leadership meeting?
+Which sentence goes to Meera for the leadership meeting?
 
 a) "Q2 closed Rs 15,39,810 short of plan on the running total, so the next quarter should open on a recovery campaign to win it back."
 
@@ -274,9 +276,9 @@ c) "Q2 closed on plan, Rs 10 ahead; the mid-quarter lead came from one July week
 
 d) "Q2 revenue to date stood at about nine times the weekly plan by mid-quarter, well ahead of every target the plan line set."
 
-### Q10. Which line goes to Marketing with the lists?
+### Q10. Which sentence goes to Marketing with the lists?
 
-Which line goes to Marketing with the lists?
+Which sentence goes to Marketing with the lists?
 
 a) "Every segment's list holds exactly fifty members, cut by a tiebreaker stated in advance, so each list is the same size for the calls."
 
@@ -286,25 +288,25 @@ c) "The lists hold 155 members in all, fifty per segment where possible, ranked 
 
 d) "Each list ranks members with DENSE_RANK, so members who spent the same share a place and no number is skipped."
 
-### Q15. Which check should run before Meera's line leaves the team, sized?
+### Q15. Which check should run before Meera's sentence leaves the team, sized?
 
-Before Meera's line leaves the team, Kavya asks for one check that would catch a running total that
+Before Meera's sentence leaves the team, Kavya asks for one check that would catch a running total that
 lost rows on the way. Which check fits, sized?
 
 a) Set the last plan to date beside the plan line's own total, Rs 9,83,99,990, one row a side
 
 b) Count the running total's rows beside the plan's 13 weeks, so that no plan week can go missing
 
-c) Run the running total a second time and set the two closes side by side
+c) Run the running total a second time and set the two closes side by side, two runs of one build
 
-d) Set the last booked to date beside Q2's total from one plain SUM of the orders, Rs 9,84,00,000
+d) A plain SUM of Q2's orders, 462 rows read, set beside the running total's last booked to date
 
 ## Which rules does the case keep?
 
 - The data is the warehouse's orders, customers and plan_line tables, read where they live; nothing is
   exported.
 - Retail-Plus's count is the one your own run gives, and this brief never prints it. If it is not
-  fifty, your line names the members at the line and their figure.
+  fifty, your sentence to Marketing names the members tied at the line and their figure.
 - Work alone. The support TA answers environment problems only.
 - The debrief in the practice lab replays the room's wrong answers from all five parts, so post your
   letters before it starts.

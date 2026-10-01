@@ -1,10 +1,12 @@
-# Which answers hold in the practice lab on a tie, GROUP BY against a window, and Kavya's drill, and why?
+# Which answers hold in the practice lab on a tie, GROUP BY against a window, and the eight-member drill, and why?
 
 Answers: 1c 2b 3d 4a 5b 6c 7a 8d 9b 10c
 
 The practice lab set asked for three habits on numbers the chapters never used: predict what the
 ranking functions do to a tie before running them, say whether an ask needs GROUP BY or a window and
 how many rows it returns, and run the whole day end to end on Kavya's drill of eight invented members.
+Kavya Nair is the senior analyst on Kalpa Retail's data team, and the line is the last place a list
+keeps, fifth on a top five.
 Two of the ten items are design items: 5, the build sized for an ask by city, and 10, the second route
 to a count. Problem 3's queries are the problem's own design work, and a model build is below.
 
@@ -14,13 +16,13 @@ first, then the flag's months, then the running total's last row.
 
 **The questions on the way.**
 
-- Which idea does this set test?
-- Why is each key right, item by item?
-- What does a model build of Kavya's drill look like?
-- Which wrong answer is worth arguing about?
-- Where does this show up at work?
+- What does the lab test about predicting a ranking, choosing GROUP BY or a window, and running the day end to end?
+- Why is each of the lab's ten keys right, and each other letter wrong?
+- What does a model build of the eight-member drill look like?
+- Why is taking V-04 off the call list worth arguing about?
+- Where do the lab's three habits show up in Marketing's week?
 
-## Which idea does this set test?
+## What does the lab test about predicting a ranking, choosing GROUP BY or a window, and running the day end to end?
 
 Each of the day's tools has a shape that can be known before it runs. A ranking function's numbers
 follow from where the ties sit, so its count at any line can be predicted. An ask's answer is either
@@ -29,11 +31,11 @@ asks for the whole chain on new numbers: a list under the head's rule with its c
 calendar months, the calls where the two meet, a running total whose rows step one at a time, and a
 count reached a second way with no window.
 
-## Why is each key right, item by item?
+## Why is each of the lab's ten keys right, and each other letter wrong?
 
 ### Q1. Which RANK column comes back for the seven invented members?
 
-Kind: predict the output, on invented numbers. The key is c, "1, 2, 2, 4, 5, 5, 5". H and J share
+This item asks you to predict the output, on invented numbers. The key is c, "1, 2, 2, 4, 5, 5, 5". H and J share
 second place and the next place skips to 4 for K; L, M and N share fifth, the place after K.
 
 - a, "1, 2, 2, 3, 4, 4, 4": DENSE_RANK's column, which skips nothing.
@@ -43,7 +45,7 @@ second place and the next place skips to 4 for K; L, M and N share fifth, the pl
 
 ### Q2. Which DENSE_RANK column comes back for the seven invented members?
 
-Kind: predict the output, on invented numbers. The key is b, "1, 2, 2, 3, 4, 4, 4". Four different
+This item asks you to predict the output, on invented numbers. The key is b, "1, 2, 2, 3, 4, 4, 4". Four different
 figures, Rs 6,450, Rs 5,980, Rs 5,120 and Rs 4,870, get the numbers 1 to 4.
 
 - a, "1, 2, 2, 4, 5, 5, 5": RANK's column, carried over.
@@ -52,7 +54,7 @@ figures, Rs 6,450, Rs 5,980, Rs 5,120 and Rs 4,870, get the numbers 1 to 4.
 
 ### Q3. How many members do RANK and DENSE_RANK ship for a top four, and then for a top five?
 
-Kind: predict the number. The key is d, "RANK 4 then 7, and DENSE_RANK 7 both times". At four, RANK ships
+This item asks you to predict the number. The key is d, "RANK 4 then 7, and DENSE_RANK 7 both times". At four, RANK ships
 G, H, J and K, whose numbers are 1, 2, 2 and 4; at five it ships all seven, since L, M and N share
 fifth. DENSE_RANK's largest number is 4, so all seven are inside four and inside five.
 
@@ -63,36 +65,43 @@ fifth. DENSE_RANK's largest number is 4, so all seven are inside four and inside
 
 ### Q4. Which pattern of GROUP BY (G) and window (W) answers the six asks, in order?
 
-Kind: match the question to the method. The key is a, "W, G, G, W, W, G". Ask 1 keeps members and
+This item asks you to match each question to its method. The key is a, "W, G, G, W, W, G". Ask 1 keeps members and
 numbers them inside each city, a window: 18 rows. Ask 2 is one row per segment, GROUP BY: 4 rows. Ask 3
 is a GROUP BY with HAVING on the count: 2 rows, Retail-Core with 96 buyers and Retail-Plus with 76. Ask 4
-keeps every member's September row and reads the row before it, LAG in a window. Ask 5 keeps all 227
+keeps every month a member bought in and sets beside it the member's month before, which is LAG in a
+window: one row per member-month, the rows you started with. Ask 5 keeps all 227
 buyers and adds the segment's total beside each, a window sum: 227 rows. Ask 6 is one row per segment:
 4 rows.
 
-- b, "W, G, G, G, W, G": pictures ask 4 as a table with August and September as columns; the ask keeps
-  each member's own row and sets the month before beside it, which is LAG's job.
+- b, "W, G, G, G, W, G": pictures ask 4 as a table with a column per month, one row per member; the ask
+  keeps every month a member bought in as its own row and sets the month before beside it, which a
+  grouped row cannot do and LAG does.
 - c, "G, G, G, W, W, G": answers ask 1 with GROUP BY, which can return each city's top figure and never
   the three members who booked it.
 - d, "W, G, W, W, G, G": reads "which segments" in ask 3 as a ranking, and answers ask 5 with GROUP BY,
   which would collapse the 227 buyers into four rows.
 
-### Q5. Which build fits ask 1, and how many rows does it return?
+### Q5. Which build fits ask 1, and how many queries and order reads does it take?
 
-Kind: a design item, the best-fit build with its size. The key is b, "One query ranking members in a
-window partitioned by city, places 1 to 3 kept outside: 18 rows, 462 read". Six cities times three
-places is 18 rows, since no city has two members tied at third, and the Q2 orders are read once.
+This is a design item: it asks for the best-fit build with its size. The key is b, "One query ranking
+members in a window partitioned by city, places 1 to 3 kept outside: one query reading 462". It reads
+the 462 Q2 orders once, numbers the members inside each city, and keeps places 1 to 3, which returns 18
+rows, six cities times three places, since no city has two members tied at third. A seventh city needs
+no change.
 
-- a, "Six sorted queries, one per city, each with LIMIT 3, glued with UNION ALL: 18 rows, 2,772 order
-  rows read": the right rows at six times the reading, and six queries to edit when a city opens.
-- c, "`GROUP BY city` with `max(q2_revenue)`: 6 rows, each city's top figure, 462 order rows read":
-  returns one figure per city and no members.
-- d, "`GROUP BY city, customer_id` sorted by Q2 revenue with `LIMIT 18`: 18 rows from across the whole
-  book": LIMIT counts across the book, so the cities with the biggest spenders take every row.
+- a, "Six sorted queries, one per city, each with LIMIT 3, glued with UNION ALL: six queries reading
+  2,772 order rows": the same 18 rows at six times the reading, 462 Q2 orders read by each of the six
+  queries, and six queries to edit when a city opens.
+- c, "`GROUP BY city` with `max(q2_revenue)`: one query reading 462 rows, returning each city's top
+  figure alone": six rows, one figure per city and no member, where the ask wants three members per
+  city.
+- d, "`GROUP BY city, customer_id` sorted by Q2 revenue with `LIMIT 18`: one query reading 462, the
+  book's top 18": LIMIT counts across the whole book, so the cities with the biggest spenders take
+  every one of the 18 rows.
 
 ### Q6. How many members does the top five ship under the head of Retail-Plus's rule, and why?
 
-Kind: predict the number, on invented numbers. The key is c, "Six, since V-05 and V-08 tie at fifth on
+This item asks you to predict the number, on invented numbers. The key is c, "Six, since V-05 and V-08 tie at fifth on
 Rs 5,400 and both of them ship". The Q2 totals are V-03 Rs 9,600, V-01 and V-06 Rs 7,800 each, V-02
 Rs 6,900, V-05 and V-08 Rs 5,400 each, V-04 Rs 4,700 and V-07 Rs 3,900. RANK gives 1, 2, 2, 4, 5, 5, so
 six members are at or inside fifth, and the list says so.
@@ -106,7 +115,7 @@ six members are at or inside fifth, and the list says so.
 
 ### Q7. Which member on the hurried flag would a call wrongly accuse, and why?
 
-Kind: spot the plausible wrong output, on invented numbers. The key is a, "V-02, since LAG compared their
+This item asks you to spot the plausible wrong output, on invented numbers. The key is a, "V-02, since LAG compared their
 September with July and their July with May". V-02 bought in May, July and September, so LAG read July
 as their last month and May as the one before; Rs 3,000 below Rs 3,900 below Rs 4,500 looks like two
 falls running, across two months with no order.
@@ -121,7 +130,7 @@ falls running, across two months with no order.
 
 ### Q8. Who does Marketing ring first: listed under the head's rule and flagged on calendar months?
 
-Kind: choose the decision. The key is d, "V-03 and V-05". The checked flag holds for V-03, V-04 and
+This item asks you to choose the decision. The key is d, "V-03 and V-05". The checked flag holds for V-03, V-04 and
 V-05; the list under the head's rule holds V-03, V-01, V-06, V-02, V-05 and V-08, so the calls are the
 two members on both.
 
@@ -130,26 +139,28 @@ two members on both.
 - b, "V-03, V-04 and V-05": takes DENSE_RANK's list of seven, which carries V-04.
 - c, "V-03 alone": takes whole ties only's list of four, which drops V-05.
 
-### Q9. What do V-05's and V-08's rows of the running total show, and what makes each row its own step?
+### Q9. What do V-01's and V-06's rows of the running total show, and what makes each row its own step?
 
-Kind: fix the logic, on invented numbers. The key is b, "Rs 42,900 on both, since they are peers on
-Rs 5,400; add the member id to the ORDER BY". Rows that share the ORDER BY value are peers, and the
-running total gives each of them the sum through the last of them: Rs 42,900 on both rows, as V-01 and
-V-06 both show Rs 25,200. With `ORDER BY q2_revenue DESC, member` the rows step Rs 37,500 then
-Rs 42,900, and the last row, V-07's Rs 51,500, equals a plain sum of the eight, which closes the loop.
+This item asks you to fix the logic, on invented numbers. The key is b, "Rs 25,200 on both, since the
+two are peers on Rs 7,800; add the member id to the ORDER BY". Rows that share the window's ORDER BY
+value are peers, and under the default frame the running total gives each of them the sum through the
+last of them: V-03's Rs 9,600 plus Rs 7,800 twice is Rs 25,200 on both rows, on every run. With
+`ORDER BY q2_revenue DESC, member` the two rows step Rs 17,400 then Rs 25,200, and the last row, V-07's
+Rs 51,500, equals a plain sum of the eight, which closes the loop.
 
-- a, "Rs 37,500 and Rs 42,900, since each row adds its own Rs 5,400, so nothing needs changing": those
+- a, "Rs 17,400 and Rs 25,200, since each row adds its own Rs 7,800, so nothing needs changing": those
   are the figures after the fix, and the window as written gives peers one figure.
-- c, "Rs 5,400 on both, since a running total restarts at a tie; add `PARTITION BY q2_revenue`": a tie
+- c, "Rs 7,800 on both, since a running total restarts at a tie; add `PARTITION BY q2_revenue`": a tie
   does not restart anything, and a partition by revenue would make every figure a total of its own
   tie.
-- d, "Rs 42,900 on both, since the total belongs on every row; drop the ORDER BY from the window": with
-  no ORDER BY every row shows the grand total, Rs 51,500, and nothing runs.
+- d, "Rs 25,200 on both, since the total belongs on every row; drop the ORDER BY from the window": the
+  figure is right and the fix is wrong, since with no ORDER BY every row shows the grand total,
+  Rs 51,500, and nothing runs.
 
 ### Q10. Which route reaches the head's count for a top two with no window, and what does it give?
 
-Kind: a design item, the independent second route. The key is c, "Count the members who booked at
-least the second member's Rs 7,800: 3". A sort with `OFFSET 1` finds the second member's figure, and
+This is a design item: it asks for the independent second route. The key is c, "Count the members who
+booked at least the second member's Rs 7,800 in Q2: 3". A sort with `OFFSET 1` finds the second member's figure, and
 every member at or above it counts: V-03, V-01 and V-06. The tie at the line is counted whole, as RANK
 ships it, by a sort and a comparison that no slip in a window could move.
 
@@ -157,10 +168,11 @@ ships it, by a sort and a comparison that no slip in a window could move.
   DENSE_RANK's logic.
 - b, "Count the members who booked more than the second member's Rs 7,800: 1": "more than" drops both
   members on the line's own figure.
-- d, "Rerun the list with `rank()` in a window and count the rows it ships: 3": the right number
-  through a window, which the item rules out, since it shares the code it should check.
+- d, "Sort the eight by Q2 revenue, keep two rows with `LIMIT 2` and count them: 2": a route with no
+  window, and it cuts the tie at the line the way ROW_NUMBER does, dropping V-06 or V-01 on equal
+  spend, so it reaches ROW_NUMBER's count and never the head's.
 
-## What does a model build of Kavya's drill look like?
+## What does a model build of the eight-member drill look like?
 
 The build below is one version that answers every part, and each named step opens with a comment
 saying what it is for.
@@ -253,17 +265,18 @@ A TA reading your file checks four things, in this order: the list's count says 
 the flag carries the months LAG read, the calls are the overlap of the two, and the running total's
 last row equals a sum you counted without it.
 
-## Which wrong answer is worth arguing about?
+## Why is taking V-04 off the call list worth arguing about?
 
-Item 7, option b. Because V-04 is not on the top five, a careful analyst most wants to take V-04 off
-the call list, and the argument sounds like rigour. V-04's three months are a real fall in
+Item 7's option b, taking V-04 off the call list because V-04 is not on the top five, is the wrong
+answer a careful analyst most wants to give, and the argument sounds like rigour. V-04's three months are a real fall in
 calendar months, so the flag is right, and being off the list is a separate decision about
 who gets rung this week. The flag and the list answer two different questions, and item 8 is where
 the answers meet.
 
-## Where does this show up at work?
+## Where do the lab's three habits show up in Marketing's week?
 
-Analyst interviews at data teams often ask for the three functions on a tie, then hand over an ask and
-ask "GROUP BY or a window, and how many rows?", and close on a small end-to-end problem like Kavya's
-drill, where the interviewer watches for the count, the months behind a flag and the last row of a
-running total.
+Every Monday call list Marketing receives rests on the same three moves: the count a tie rule ships,
+said before the list runs; the shape of each answer, one row per group or one per row, decided before
+the query is written; and the chain from the list to the flag to the calls to the running total, each
+with its check, run on numbers nobody has seen before. The drill is that chain at a size you can check
+by hand.

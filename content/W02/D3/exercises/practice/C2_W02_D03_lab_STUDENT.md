@@ -1,4 +1,4 @@
-# Can you rank a tie, choose GROUP BY or a window, and run the whole day on Kavya's drill, in an hour?
+# Can you rank a tie, choose GROUP BY or a window, and run the whole day on eight invented members, in an hour?
 
 This is the TA-led practice lab set: three problems that climb in difficulty over about an hour, ten
 minutes each for problems 1 and 2 and about forty for problem 3. Work alone for problems 1 and 2 and in pairs for
@@ -18,7 +18,8 @@ customer_id, segment, city, country, joined_date). Q2 is July to September 2026,
 revenue is the booked amount of every Q2 order the member placed, whatever its status. Kalpa's members
 live in six cities and belong to four segments: Business, Retail-Core, Retail-Plus (the paid
 membership tier) and Student. The head of Retail-Plus's rule for a list is that members who spent the
-same share a place, the places they use up are skipped, and the list says how many it ships.
+same share a place, the places they use up are skipped, and the list says how many it ships. The
+line is the last place a list keeps, fifth on a top five.
 `ROW_NUMBER` gives every member a number of their own, `RANK` gives tied members one number and skips
 the numbers they use up, and `DENSE_RANK` gives them one number and skips nothing. GROUP BY returns one
 row per group; a window keeps every row and adds a value computed from the rows around it. A member's
@@ -35,7 +36,7 @@ returns, and run the whole chain on fresh numbers with its checks.
 
 - What do RANK and DENSE_RANK give seven invented members, and how many does each ship at four and at five?
 - Which of six asks need GROUP BY and which a window, and which build fits the ask by city?
-- What does Kavya's drill say about the list, the calls, the running total and its second route?
+- What do eight invented members say about the list, the calls, the running total and its second route?
 
 **What you post.** One line of ten letters in item order, no spaces, then your problem 3 queries
 pasted below it:
@@ -108,7 +109,7 @@ Work alone for ten minutes. No city has two members tied at third place by Q2 re
 | Ask 1 | The three members who spent most in Q2 in each city |
 | Ask 2 | The number of members who bought in Q2, segment by segment |
 | Ask 3 | The segments with more than fifty members buying in Q2 |
-| Ask 4 | Every member's September spend beside the same member's August spend |
+| Ask 4 | Each month a member bought in, beside what the same member spent in the month they last bought before it |
 | Ask 5 | Every Q2 buyer's Q2 revenue beside the Q2 total of the buyer's segment |
 | Ask 6 | The average Q2 revenue per buying member, one line per segment |
 
@@ -124,19 +125,19 @@ c) G, G, G, W, W, G
 
 d) W, G, W, W, G, G
 
-### Q5. Which build fits ask 1, and how many rows does it return?
+### Q5. Which build fits ask 1, and how many queries and order reads does it take?
 
-Which build fits ask 1, sized in the rows it returns and the order rows it reads?
+Which build fits ask 1, sized in the queries it takes and the Q2 order rows it reads?
 
-a) Six sorted queries, one per city, each with LIMIT 3, glued with UNION ALL: 18 rows, 2,772 order rows read
+a) Six sorted queries, one per city, each with LIMIT 3, glued with UNION ALL: six queries reading 2,772 order rows
 
-b) One query ranking members in a window partitioned by city, places 1 to 3 kept outside: 18 rows, 462 read
+b) One query ranking members in a window partitioned by city, places 1 to 3 kept outside: one query reading 462
 
-c) `GROUP BY city` with `max(q2_revenue)`: 6 rows, each city's top figure, 462 order rows read
+c) `GROUP BY city` with `max(q2_revenue)`: one query reading 462 rows, returning each city's top figure alone
 
-d) `GROUP BY city, customer_id` sorted by Q2 revenue with `LIMIT 18`: 18 rows from across the whole book
+d) `GROUP BY city, customer_id` sorted by Q2 revenue with `LIMIT 18`: one query reading 462, the book's top 18
 
-## Problem 3. What does Kavya's drill say about the list, the calls, the running total and its second route?
+## Problem 3. What do eight invented members say about the list, the calls, the running total and its second route?
 
 This comes up at work whenever a whole analysis has to be run end to end on data nobody has explained, with
 every check in place before a line leaves.
@@ -157,14 +158,14 @@ check by hand. Their monthly spend is below, with a blank where a member placed 
 | V-08 | | | Rs 1,500 | Rs 2,100 | Rs 1,800 |
 
 Build it in one SQL file, as named steps on one `VALUES` list of (member, month, spend), a row only
-for a month with an order:
+for a month with an order, in four steps:
 
-- **The list.** Each member's Q2 revenue, July to September, ranked under the head of Retail-Plus's
-  rule, with a top five.
-- **The flag.** LAG over each member's own months, read at September, with the check that the two
-  rows before September are August and July.
-- **The calls.** The members on the list whose checked flag holds.
-- **The running total.** All eight members' Q2 revenue accumulated from the biggest down.
+1. Rank each member's Q2 revenue, July to September, under the head of Retail-Plus's rule, and keep a
+   top five.
+2. Flag members with LAG over each member's own months, read at September, and check that the two rows
+   before September are August and July.
+3. List the calls, which are the members on the list whose checked flag holds.
+4. Accumulate all eight members' Q2 revenue from the biggest down.
 
 ### Q6. How many members does the top five ship under the head of Retail-Plus's rule, and why?
 
@@ -203,19 +204,19 @@ c) V-03 alone
 
 d) V-03 and V-05
 
-### Q9. What do V-05's and V-08's rows of the running total show, and what makes each row its own step?
+### Q9. What do V-01's and V-06's rows of the running total show, and what makes each row its own step?
 
 All eight members' Q2 revenue is accumulated from the biggest down with
-`sum(q2_revenue) OVER (ORDER BY q2_revenue DESC)`. What do V-05's and V-08's rows show, and what makes
+`sum(q2_revenue) OVER (ORDER BY q2_revenue DESC)`. What do V-01's and V-06's rows show, and what makes
 each row its own step?
 
-a) Rs 37,500 and Rs 42,900, since each row adds its own Rs 5,400, so nothing needs changing
+a) Rs 17,400 and Rs 25,200, since each row adds its own Rs 7,800, so nothing needs changing
 
-b) Rs 42,900 on both, since they are peers on Rs 5,400; add the member id to the ORDER BY
+b) Rs 25,200 on both, since the two are peers on Rs 7,800; add the member id to the ORDER BY
 
-c) Rs 5,400 on both, since a running total restarts at a tie; add `PARTITION BY q2_revenue`
+c) Rs 7,800 on both, since a running total restarts at a tie; add `PARTITION BY q2_revenue`
 
-d) Rs 42,900 on both, since the total belongs on every row; drop the ORDER BY from the window
+d) Rs 25,200 on both, since the total belongs on every row; drop the ORDER BY from the window
 
 ### Q10. Which route reaches the head's count for a top two with no window, and what does it give?
 
@@ -226,6 +227,6 @@ a) Count the different Q2 figures at or above the second member's Rs 7,800: 2
 
 b) Count the members who booked more than the second member's Rs 7,800: 1
 
-c) Count the members who booked at least the second member's Rs 7,800: 3
+c) Count the members who booked at least the second member's Rs 7,800 in Q2: 3
 
-d) Rerun the list with `rank()` in a window and count the rows it ships: 3
+d) Sort the eight by Q2 revenue, keep two rows with `LIMIT 2` and count them: 2

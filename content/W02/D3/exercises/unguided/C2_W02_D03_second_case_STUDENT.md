@@ -12,11 +12,13 @@ answered here.
 >
 > The marketing lead, Kalpa Retail
 
-Retail-Core is Kalpa Retail's everyday shoppers: 96 of them ordered in Q2 (July to September 2026),
+Retail-Core is Kalpa Retail's everyday shoppers: 96 of them ordered in Q2 (July to September 2026, after Q1,
+April to June),
 193 orders worth Rs 3,66,250, every order booked at its amount whatever its status. Ranked by Q2
 revenue under the head of Retail-Plus's rule, which gives members who spent the same one place and
 skips the places they use up, Retail-Core's top fifty holds 50 members, because nobody ties at the
-line: the fiftieth, C-0005, booked Rs 2,980 and the 51st, C-0092, Rs 2,950. Frequency is the number of
+line, the last place the list keeps: the fiftieth, C-0005, booked Rs 2,980 and the 51st, C-0092,
+Rs 2,950. Frequency is the number of
 Q2 orders a member placed. `ROW_NUMBER` gives every member a number of their own, `RANK` gives tied
 members one number and skips the numbers they use up, and `DENSE_RANK` gives them one number and skips
 nothing, so it numbers the different values. A second key in a window's ORDER BY decides between members
@@ -43,18 +45,18 @@ The 27 Retail-Core members with two Q2 orders, by customer id, with their Q2 rev
 | C-0045 | Rs 5,200 | C-0116 | Rs 4,770 | C-0147 | Rs 4,780 |
 
 **Who needs the answer.** The marketing lead needs it to decide which Retail-Core members the member
-team protects, and the head of Retail-Plus needs to see the list keep their rule. A ranking on a count can tie
-dozens of members at once, so a rule chosen for rupee amounts has to be read again before the list
-ships.
+team protects, and the head of Retail-Plus needs to see the list keep their rule. A list with the wrong
+count, or with members picked by nothing the business chose, spends the member team's calls on the
+wrong people.
 
 **The questions on the way.**
 
 - How many Q2 orders did each Retail-Core member place, and where do the ties fall?
 - How many members does each rule ship when the list is ranked by orders alone?
 - Why does that rule ship the number it ships?
-- Which second key breaks the crowd of ties, and how many members does the list ship then?
+- Which second key decides between members with the same number of orders, and how many members does the list ship then?
 - How many members do the two lists share, and how far apart are they in rupees?
-- What do you tell the marketing lead?
+- Is frequency falling in Retail-Core, and what do you tell the marketing lead?
 
 **What you post.** One line of ten letters in item order, no spaces, items 1 to 7 from the notebook's
 markers and items 8 to 10 from this brief, in this shape:
@@ -63,15 +65,15 @@ markers and items 8 to 10 from this brief, in this shape:
 Post exactly this shape: xxxxxxxxxx
 ```
 
-Beside the letters, post one line for the marketing lead in your own words: the rule, the count it
+Beside the letters, post one sentence for the marketing lead in your own words: the rule, the count it
 ships, and how far the frequency list sits from the list ranked by revenue.
 
 ---
 
 ## Step 1. How many Q2 orders did each Retail-Core member place, and where do the ties fall?
 
-This comes up at work whenever a frequency metric goes on a list, since a count ties far more often than a
-rupee amount does.
+This comes up at work whenever a list is ranked on how often customers buy, in place of how much they
+spend.
 
 Marker 1 in the notebook.
 
@@ -79,24 +81,25 @@ Marker 1 in the notebook.
 
 Which expression counts a member's Q2 orders?
 
-a) `count(*)`, one per order row the member placed
+a) `count(*)`, which counts one for every order row the member placed
 
-b) `count(DISTINCT o.customer_id)`
+b) `count(DISTINCT o.customer_id)`, so no member is counted twice
 
-c) `sum(o.amount)`
+c) `count(DISTINCT o.order_date)`, so a day with two orders counts once
 
-d) `count(DISTINCT date_trunc('month', o.order_date))`
+d) `count(DISTINCT date_trunc('month', o.order_date))`, the months with an order
 
 ## Step 2. How many members does each rule ship when the list is ranked by orders alone?
 
-This comes up at work whenever a tie rule chosen for rupee amounts meets a metric that is a count.
+This comes up at work whenever a rule written for one metric is applied to another, and its count has to
+be read again.
 
 Marker 2 in the notebook.
 
-### Q2. Which window gives members with the same number of orders the same place, and skips the places they use up?
+### Q2. Which window puts the head of Retail-Plus's rule on the orders count?
 
-Which window gives members with the same number of orders the same place, and skips the places they
-use up?
+The marketing lead wants the same rule as the head of Retail-Plus, now on the number of Q2 orders.
+Which window puts that rule on the orders count?
 
 a) `row_number() OVER (ORDER BY q2_orders DESC, customer_id)`
 
@@ -104,7 +107,7 @@ b) `rank() OVER (ORDER BY q2_orders DESC)`
 
 c) `dense_rank() OVER (ORDER BY q2_orders DESC)`
 
-d) `rank() OVER (ORDER BY q2_revenue DESC)`
+d) `rank() OVER (ORDER BY q2_orders)`
 
 ## Step 3. Why does that rule ship the number it ships?
 
@@ -113,22 +116,23 @@ sentence.
 
 Marker 3 in the notebook.
 
-### Q3. Why does RANK on orders alone ship 51 members?
+### Q3. Why does the head's rule, on orders alone, ship more than fifty members?
 
-Why does RANK on orders alone ship 51 members?
+Why does the head of Retail-Plus's rule, applied to the orders count alone, ship more than fifty
+members?
 
-a) 24 members placed three or more orders, and the 27 members with two orders all share 25th place
+a) 24 members placed three or more orders, and the 27 members with two orders all share the 25th place
 
-b) RANK skips a number after every tie, and those skipped numbers count as extra members on the list
+b) The rule skips a number after every tie, and those skipped numbers count as extra members on the list
 
-c) One member placed eight orders, so RANK counts that member several times on the list
+c) The rule numbers the 27 two-order members 25 to 51 by id, one place each, and keeps every one of them
 
-d) The 45 members with one order share a place, and RANK adds one of them to make the list even
+d) The 45 members with one order share a place, and the rule adds one of them to make the list even
 
-## Step 4. Which second key breaks the crowd of ties, and how many members does the list ship then?
+## Step 4. Which second key decides between members with the same number of orders, and how many members does the list ship then?
 
-This comes up at work whenever a ranking on a count needs a second key, which is a business choice with a
-reason.
+This comes up at work whenever a ranking needs a second key to decide between members level on the first,
+which is a business choice with a reason.
 
 Marker 4 in the notebook, then item 8 here.
 
@@ -175,7 +179,7 @@ b) A LEFT JOIN from the revenue list to the frequency list, counting all the row
 
 c) UNION ALL of the two lists, counting the rows
 
-d) The two list counts subtracted, 50 less 50
+d) The revenue list EXCEPT the frequency list, counting the rows it returns
 
 ### Q9. Which route confirms the number of members on both lists a second way, and what does it give?
 
@@ -202,41 +206,43 @@ Markers 6 and 7 in the notebook, then item 10 here.
 
 How far apart are the two lists in the Q2 revenue they carry?
 
-a) Rs 40
+a) Rs 40, the difference between the Q2 revenue the two lists carry
 
-b) Rs 2,950
+b) Rs 2,950, the Q2 revenue of the frequency list's fiftieth member
 
-c) About Rs 1.2 lakh
+c) Rs 1,09,900, the Q2 revenue of the 27 members with two orders
 
-d) Nothing, since both lists hold fifty members
+d) Rs 2,980, the Q2 revenue of the revenue list's fiftieth member
 
-### Q7. Which line goes to the marketing lead?
+### Q7. Which sentence goes to the marketing lead?
 
-Which line goes to the marketing lead?
+Which sentence goes to the marketing lead?
 
-a) "Rank Retail-Core by orders alone under RANK: 51 members ship, which honours the tie rule and protects the frequency that fell."
+a) "Rank Retail-Core by orders alone under RANK: the list runs past fifty, which honours the tie rule and protects the frequency that fell."
 
-b) "Rank by orders with Q2 revenue as the second key: fifty ship, 49 are on the revenue list too, and the lists differ by Rs 40."
+b) "Rank by orders with Q2 revenue as the second key: fifty ship, and the list is almost the revenue list, member for member and in rupees."
 
 c) "Rank Retail-Core with DENSE_RANK on orders, so that every member who ordered the same shares a place on the list."
 
 d) "Keep the revenue list, since ranking by orders would drop the members whose quarters carry the most revenue."
 
-### Q10. Which fact would send the team back to the list ranked by revenue alone?
+### Q10. Is frequency falling in Retail-Core too, and which measure says so?
 
-Which fact, if it held, would send the team back to Retail-Core's list ranked by Q2 revenue alone?
+The marketing lead asked for the frequency list "before it spreads". Before the sentence goes out,
+Kavya asks whether Retail-Core's frequency has started to fall from Q1 to Q2 the way Retail-Plus's did.
+Which measure answers it, and what does it give?
 
-a) Two two-order members, C-0060 and C-0121, booked the same Rs 4,120, so revenue cannot separate every pair
+a) Total Retail-Core orders, Q1 against Q2: 199 then 193, so frequency is falling there too
 
-b) RANK on orders alone shipped 51 members, one more than the fifty the marketing lead asked for
+b) Orders per buying member, Q1 against Q2: 2.01 then 1.95, so it falls as Retail-Plus's did
 
-c) Retail-Core's orders per member fell from Q1 to Q2, the way Retail-Plus's did, so frequency is spreading
+c) Members with one Q2 order, 45 of 96, nearly half, so frequency in Retail-Core is already low
 
-d) The frequency list carried a fifth less of Retail-Core's Q2 revenue, a real cost in coverage
+d) Orders per buying member, Q1 against Q2: 1.95 then 2.01, so it has not started to fall yet
 
 ## Which rules does the case keep?
 
 - The data is the warehouse's orders and customers tables, read where they live; nothing is exported.
-- Every count in your line says which rule produced it.
+- Every count in your sentence says which rule produced it.
 - Work in pairs or alone; if you pair, both names go on the post and each of you can explain every
   letter.

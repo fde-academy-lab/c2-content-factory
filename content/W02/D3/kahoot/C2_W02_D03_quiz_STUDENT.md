@@ -22,8 +22,8 @@ the room leaves.
 - What does PARTITION BY segment restart?
 - What does LAG return on a member's first month?
 - Which ORDER BY gives a running total one step per order, the same on every run?
-- What does ROW_NUMBER do to a tie at the line of a top-four list?
-- Which function ranks members who spent the same the same, with the count said?
+- What does ROW_NUMBER do when the fourth and fifth members of a top four spent the same?
+- Which function ranks members who spent the same the same, running past fifty only for a tie at fiftieth?
 - What does LAG call "last month" for a member who skipped August?
 - Your LEFT join grew the row count: what is the cause, and what is the check?
 
@@ -40,49 +40,49 @@ the room leaves.
 ---
 
 ## Q2. A ranking uses PARTITION BY segment: what does the partition restart?
-*Tests: the partition sets the group a window's calculation starts again in.*
+*Tests: what PARTITION BY does to a ranking.*
 
 - The order in which the query returns its final rows to the screen
 - The number of rows the query returns once the window has run
 - Nothing at all, since it only sorts the rows inside each segment
-- The numbering, which starts again at 1 in each segment  <- correct
+- The numbering, which goes back to 1 at the start of each segment  <- correct
 
 ---
 
 ## Q3. LAG(spend) OVER (PARTITION BY customer_id ORDER BY month) on a member's first month returns what?
-*Tests: LAG reads the previous row of the partition, and a first row has none.*
+*Tests: what LAG returns at the start of a partition.*
 
-- NULL, since the member has no earlier row  <- correct
+- NULL, since nothing comes before the member's first row  <- correct
 - Zero, since no spend was recorded before that month
 - The last month of whichever member sorts just above
-- The same month's spend, read a second time over
+- That month's own spend, since LAG falls back to the current row
 
 ---
 
 ## Q4. Which ORDER BY gives a running total over Q2's orders one step per order, the same on every run?
-*Tests: a running total is repeatable only when its ORDER BY is unique, since rows sharing a value are summed together.*
+*Tests: which order gives a running total a step of its own for every order.*
 
-- ORDER BY order_date, so the orders run in date order
-- ORDER BY amount DESC, so the biggest orders come first
-- ORDER BY order_date, order_id  <- correct
-- No ORDER BY, since a sum adds up in any order at all
+- ORDER BY order_date, so the orders run in the order they were booked
+- ORDER BY amount DESC, so the biggest orders take the first steps
+- ORDER BY order_date, order_id, so each order holds its own place  <- correct
+- No ORDER BY, since a sum comes out the same in any order at all
 
 ---
 
-## Q5. An invented top four is cut with ROW_NUMBER, and the fourth and fifth members spent the same: what happens to the fifth?
-*Tests: ROW_NUMBER always ships the line and breaks a tie by whatever else its ORDER BY names.*
+## Q5. An invented top four is cut with ROW_NUMBER ordered by spend and then customer id, and the fourth and fifth members spent the same: what happens to the fifth?
+*Tests: what ROW_NUMBER does when a tie falls across the last place a list keeps.*
 
 - The fifth joins the list too, since the two spent the same amount
-- Left off by the tiebreaker, and the list still says four  <- correct
+- The fifth is left off by the customer id, and the list ships four  <- correct
 - Both tied members are left off, and the list ships three
-- The query stops with an error until the tie is resolved
+- The list ships four, and which of the two makes it changes each run
 
 ---
 
-## Q6. The head of Retail-Plus wants members who spent the same ranked the same, with the count said: which function?
-*Tests: the tie rule is a business choice written as a function name.*
+## Q6. The head of Retail-Plus wants members who spent the same ranked the same, with no list running past fifty unless members tie at fiftieth: which function?
+*Tests: matching the head of Retail-Plus's rule to a function.*
 
-- RANK, and say how many made it  <- correct
+- RANK, which shares a place at a tie and skips the place after it  <- correct
 - DENSE_RANK, since its numbers never skip a place on the list
 - ROW_NUMBER, with the customer id as a tiebreaker in the ORDER BY
 - LIMIT 50 after an ORDER BY on Q2 revenue, biggest first
@@ -90,19 +90,19 @@ the room leaves.
 ---
 
 ## Q7. An invented member bought in July and September and not in August: what does LAG, partitioned by member and ordered by month, call "last month" for September?
-*Tests: LAG reads the previous row, and a month with no order has no row.*
+*Tests: what LAG reads across a month with no order.*
 
 - August, since August is the calendar month before September
 - Nothing, since the August row comes back NULL from the window
 - June, since LAG reads two months back by default on a monthly table
-- July, the member's previous row  <- correct
+- July, since LAG reads the member's previous row and August has none  <- correct
 
 ---
 
 ## Q8. Tuesday, one level up: your LEFT join of orders to payments grew the row count; what is the cause, and what is the check?
 *Tests: Tuesday's rule that a join is done only when its row count is explained.*
 
-- A LEFT join always adds the unmatched rows twice, so the check is to use INNER
-- The payments table holds NULLs, so the check is COALESCE on every amount
-- An order with more than one payment row; count rows before and after  <- correct
-- The orders table has duplicate ids, so the check is SELECT DISTINCT on the result
+- Each unpaid order adds a row of NULLs, so the check is an INNER join
+- The payments table holds NULLs, so the check is COALESCE on amounts
+- An order with two or more payment rows; count rows before and after  <- correct
+- The orders table repeats some ids, so the check is SELECT DISTINCT

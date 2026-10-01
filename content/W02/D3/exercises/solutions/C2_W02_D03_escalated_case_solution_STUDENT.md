@@ -1,71 +1,73 @@
 # Which answers hold in the escalated case on what Marketing gets on Monday, and why?
 
-Answers: 1c 2b 3b 4a 5a 6c 7b 8b 9c 10b 11d 12a 13d 14c 15d
+Answers: 1c 2b 3b 4a 5a 6c 7b 8b 9c 10b 11d 12b 13d 14c 15d
 
 The marketing lead starts calling on Monday and wants each segment's protect list under the head of
 Retail-Plus's rule with its count, the members to ring first, the share of each segment's Q2 revenue
-the lists carry, and one line for Meera on whether Q2 is on track. The case asks each learner to build
+the lists carry, and one sentence for Meera on whether Q2 is on track. The case asks each learner to build
 all of it alone in five parts: items 1 to 10 are the ten markers of
 `notebooks/C2_W02_D03_ex1_escalated_case_STUDENT.ipynb`, and items 11 to 15 are the brief's design
 items, one per part. The executed solution, `C2_W02_D03_ex1_escalated_case_solution_STUDENT.ipynb` in
 this folder, runs every marker; where a part's answer for Retail-Plus is the count your own run gave,
 it checks that count without printing it, and so does this page. Five of the fifteen items are design
-items: 11 to 15.
+items: 11 to 15. The line, in a list, is the last place it keeps, fiftieth on a top fifty.
 
 **Who needs the answer.** You need it before the debrief, to check your fifteen letters and your two numbers.
-The debrief replays the room's wrong answers aloud, and a line you cannot defend here is the one the
+The debrief replays the room's wrong answers aloud, and a sentence you cannot defend here is the one the
 marketing lead or Meera sends back.
 
 **The questions on the way.**
 
-- Which idea does this case test?
-- Which numbers should you have reached, part by part?
-- Why is each key right, item by item?
-- Which wrong answers does the debrief replay?
-- Where does this show up at work?
+- What does the escalated case test, part by part, about Marketing's Monday pack?
+- Which numbers should your Monday pack have reached, part by part?
+- Why is each of the case's fifteen keys right, and each other letter wrong?
+- Which wrong letters does the lab's debrief replay, and in what order?
+- What does Kalpa's marketing lead act on from this pack?
 
-## Which idea does this case test?
+## What does the escalated case test, part by part, about Marketing's Monday pack?
 
 The case runs the whole day on one deliverable, with nothing to copy. A list states its rule and its
 count, and the rule lets members who spent the same share a place. A flag reads a member's own months,
 in calendar months, so a month with no order breaks the run. A share names the whole it was cut from.
 A running total closes on the quarter's own total before it says ahead or behind, and the run rate
 reads each week against its own plan. The design items put each part under a constraint the chapters
-did not meet: a cap on calls, a second flag, a wider list, a reading on one date, and the check
-before the line leaves.
+did not meet: a cap on calls, a second list of members who went quiet, a wider list, a reading on one
+date, and the check before Meera's sentence leaves.
 
-## Which numbers should you have reached, part by part?
+## Which numbers should your Monday pack have reached, part by part?
 
 | Part | Number | What it means |
 |---|---|---|
-| 1 | Business 35 and Student 20, every Q2 buyer in both; Retail-Core 50, with nobody tied at its line (the fiftieth booked Rs 2,980 and the 51st Rs 2,950); Retail-Plus, the count your own run gave | Under the head's rule a list holds fifty, or every buyer where a segment has fewer, and runs past fifty only when members tie at its line, which the line to Marketing then names. |
+| 1 | Business 35 and Student 20, every Q2 buyer in both; Retail-Core 50, with nobody tied at its line (the fiftieth booked Rs 2,980 and the 51st Rs 2,950); Retail-Plus, the count your own run gave | Under the head's rule a list holds fifty, or every buyer where a segment has fewer, and runs past fifty only when members tie at its line, which the sentence to Marketing then names. |
 | 2 | 9 members flagged on three calendar months, each lower, all 9 on a protect list; C-0216 not among them | Without the calendar condition the flag holds 16, and 7 of those step over a month with no order. |
 | 3 | Business 100.0 percent, Retail-Core 76.1 percent (Rs 2,78,740 of Rs 3,66,250), Student 100.0 percent; Retail-Plus, the share your own run gave | Half of Retail-Core's buyers carry three quarters of its rupees. |
-| 4 | Close Rs 9,84,00,000 against Rs 9,83,99,990, Rs 10 ahead; mid-quarter Rs 6,87,36,590 against Rs 5,29,84,610, Rs 1,57,51,980 ahead; 6 of the 7 full weeks from 10 August below plan | On track by the total, below plan by the run rate since 10 August. |
-| 5 | The two lines chosen at markers 9 and 10 | Each number in them holds on its own. |
+| 4 | Close Rs 9,84,00,000 against Rs 9,83,99,990, Rs 10 ahead; mid-quarter Rs 6,87,36,590 against Rs 5,29,84,610, Rs 1,57,51,980 ahead; 6 of the 7 full weeks from 10 August below plan | On track by the total, and below plan by the run rate in six of the seven full weeks from 10 August. |
+| 5 | The two sentences chosen at markers 9 and 10 | Each number in them holds on its own. |
 
 The two numbers to post beside the letters are 9, the members Marketing rings first, and
 Rs 1,57,51,980, Q2's lead over plan to date at mid-quarter.
 
-## Why is each key right, item by item?
+## Why is each of the case's fifteen keys right, and each other letter wrong?
 
-### Q1. Which function gives members who spent the same the same place, and skips the places they use up?
+### Q1. Which function puts the head of Retail-Plus's rule into the window?
 
-Kind: choose the rule. The key is c, `rank()`. Members who spent the same share a place, and the next
-member's place skips the numbers they used, 1, 1, 3, so no member is dropped by a coin toss and a tie
-at the line ships whole.
+This item asks you to choose the rule. The key is c, "`rank()`, which gives tied members one number and
+skips the places used". Members who spent the same share a place, and the next member's place skips
+the numbers they used, 1, 1, 3, so no member is dropped by a coin toss, a tie at the line ships whole,
+and a list runs past fifty only when members tie at fiftieth.
 
-- a, `row_number()`: gives every member a place of their own, so one of two members who spent the same
-  is left off by whatever decides between them.
-- b, `dense_rank()`: shares the place and skips nothing, so its numbers count spend figures; Retail-Core
-  ships 52 under it, two members who tie with nobody at the line.
-- d, "`count(*)`, which counts the members up to and including each one's figure": with an ORDER BY,
+- a, "`row_number()`, which gives every member a place of their own, ties too": one of two members who
+  spent the same is left off by whatever decides between them, which the head refused.
+- b, "`dense_rank()`, which gives tied members one number and skips none": its numbers count spend
+  figures, so a list can run past fifty with nobody tied at the line; Retail-Core ships 52 under it,
+  two of them members who tie with nobody.
+- d, "`count(*)`, which counts the members at or above each one's own figure": with an ORDER BY,
   `count(*)` counts each member's peers in, so a tie that straddles the line pushes both members past
   it. That is whole ties only, the rule that ships short of fifty whenever a tie sits on the line.
 
 ### Q2. Which ORDER BY inside the window lets two members who spent the same tie?
 
-Kind: fix the logic. The key is b, `ORDER BY q2_revenue DESC`. Members are ordered by what they spent,
+This item asks you to fix the logic. The key is b, `ORDER BY q2_revenue DESC`. Members are ordered by what they spent,
 highest first, and two who spent the same are peers, so RANK gives them one place.
 
 - a, `ORDER BY q2_revenue DESC, customer_id`: the customer id breaks every tie, so RANK ships exactly
@@ -78,10 +80,11 @@ highest first, and two who spent the same are peers, so RANK gives them one plac
 
 ### Q11. Which plan fits 150 calls this week, sized in calls?
 
-Kind: a design item, the best-fit plan sized in calls; the count rests on your own Retail-Plus run.
+This is a design item: it asks for the best-fit plan sized in calls, and the count rests on your own
+Retail-Plus run.
 
-The key is d, "Keep the lists, ring each in place order up to 150, and name the rest: your Retail-Plus
-count less 45". The lists are the head's rule applied, and the cap limits this week's calls. Business 35,
+The key is d, "Keep the four lists, ring each in place order up to 150 calls, and name the rest: your
+Retail-Plus count less 45". The lists are the head's rule applied, and the cap limits this week's calls. Business 35,
 Retail-Core 50 and Student 20 make 105, so with Retail-Plus's count the lists hold 105 plus that count,
 which is that count less 45 more than the week's 150. Those members, the lowest places on the lists,
 are named and carried to next week.
@@ -97,7 +100,7 @@ are named and carried to next week.
 
 ### Q3. Which window keeps each member's months to themselves?
 
-Kind: fix the logic. The key is b, `OVER (PARTITION BY customer_id ORDER BY month)`. The partition
+This item asks you to fix the logic. The key is b, `OVER (PARTITION BY customer_id ORDER BY month)`. The partition
 restarts LAG for every member, so LAG returns NULL on a member's first month and never reaches into another
 member's months; the check cell counts 0 rows that cross.
 
@@ -112,8 +115,8 @@ member's months; the check cell counts 0 rows that cross.
 
 ### Q4. Which condition keeps a flag only for three calendar months in a row?
 
-Kind: fix the logic. The key is a, `month_1_back = DATE '2026-08-01' AND month_2_back = DATE
-'2026-07-01'`. The flag holds only when the two rows before September are August and July, so a member
+This item asks you to fix the logic. The key is a, `month_1_back = DATE '2026-08-01' AND month_2_back =
+DATE '2026-07-01'`. The flag holds only when the two rows before September are August and July, so a member
 who skipped either month is not flagged: 9 members, every one of them on a list.
 
 - b, `spend_1_back IS NOT NULL AND spend_2_back IS NOT NULL`: true for every member with two earlier
@@ -123,30 +126,31 @@ who skipped either month is not flagged: 9 members, every one of them on a list.
 - d, `month_1_back < month AND month_2_back < month_1_back`: earlier rows always hold earlier months,
   so the condition is always true and keeps the 16.
 
-### Q12. How should the team build a list of members who went quiet, sized in rows?
+### Q12. How should the team build this Monday's list of members who went quiet, sized in rows?
 
-Kind: a design item, the best-fit build sized in rows.
+This is a design item: it asks for the best-fit build, sized in rows.
 
-The key is a, "A calendar of every member and month left empty, 1,806 rows, read as a flag of its own
-beside the falling-spend flag". A member who went quiet has no September row in the monthly table, so
-only a table with a row for every member in every month, 301 times 6, can show the empty September as
-a row a query can find. It is a second flag with its own name: across the book, 27 members bought in
-July and in August and placed no order in September. Mixed into the falling-spend flag, it would tell
-a member their spend fell when they simply did not order.
+The key is b, "The 752-row monthly table, keeping members with July and August rows and no September
+row, by NOT EXISTS". A member who went quiet has no September row, and an absence is something a query
+can test on the rows that exist: keep the members with a July row and an August row, and drop any
+member for whom a September row exists. It reads the 752 rows the flag already uses and returns 27
+members, who bought in July and in August and placed no order in September. Kept as a list of its own,
+it never tells a member their spend fell when they simply did not order.
 
-- b, "The monthly table the flag reads, 752 rows, keeping the members whose September spend is NULL":
-  a member with no September order has no September row at all, so there is no NULL to keep and the
-  list comes back empty.
-- c, "The same calendar with zero in every empty month, 1,806 rows, so a quiet September counts as a
-  fall to zero in the flag": mixes two signals, and the zero-filled flag names 26 members, 17 of them
-  for a September with no order.
-- d, "The falling-spend flag with its calendar condition removed, 752 rows, since members with gaps
-  include the quiet ones": brings back the 7 members who skipped a month, and every one of them
-  ordered in September, so none of them went quiet.
+- a, "A calendar of every member and month, 1,806 rows, with September left empty where no order came":
+  it finds the same 27, at 1,806 rows, two and a half times the reading, to answer one week's
+  question. A calendar earns its rows when Marketing wants a row for every member in every month, such
+  as a monthly dashboard with the quiet months shown as blanks.
+- c, "The calendar with zero in every empty month, 1,806 rows, so a quiet September reads as a fall to
+  zero": mixes two signals into one flag, which then names 26 members, 17 of them for a September with
+  no order, and calls each of them a fall.
+- d, "The falling-spend flag with its calendar condition removed, 752 rows, since members with gaps went
+  quiet": brings back the 7 members who skipped a month, and every one of them ordered in September,
+  so none of them went quiet.
 
 ### Q5. Which expression puts the segment's whole Q2 revenue beside every member's row?
 
-Kind: choose the window. The key is a, `sum(q2_revenue) OVER (PARTITION BY segment)`. With a partition
+This item asks you to choose the window. The key is a, `sum(q2_revenue) OVER (PARTITION BY segment)`. With a partition
 and no ORDER BY, the sum covers the whole segment and every member's row carries it: Rs 3,66,250 on
 each Retail-Core row.
 
@@ -160,20 +164,22 @@ each Retail-Core row.
 
 ### Q6. Which share answers "how much of each segment's revenue does its list cover"?
 
-Kind: choose the measure. The key is c, "the list's revenue over the segment's revenue". The ask is
-about revenue, and about each segment's own: Retail-Core's fifty carry Rs 2,78,740 of Rs 3,66,250, 76.1
-percent.
+This item asks you to choose the measure. The key is c, "the list's revenue over its own segment's
+whole Q2 revenue". The ask is about revenue, and about each segment's own: Retail-Core's fifty carry
+Rs 2,78,740 of Rs 3,66,250, 76.1 percent.
 
 - a, "the list's revenue over the book's Q2 revenue, Rs 9,84,00,000": Retail-Core's list would read
   0.3 percent, which only says that Business books the rupees.
 - b, "the list's members over the segment's members who bought": counts heads, 52.1 percent for
   Retail-Core, where the rupees on the list are 76.1 percent.
-- d, "the last listed member's revenue over the first's": compares two members, and says nothing
-  about how much of the segment the list covers.
+- d, "the list's revenue over the four lists' revenue together": a share of the lists, not of the
+  segment, so it says how the protect budget splits across the lists and nothing about how much of
+  each segment's own revenue a list covers; Business's list would carry nearly all of it and every
+  retail list close to nothing.
 
 ### Q13. What does widening Retail-Core's list to seventy-five buy, sized per call?
 
-Kind: a design item, the sizing of the alternative.
+This is a design item: it asks you to size the alternative.
 
 The key is d, "Rs 60,300 more for 25 more calls, about Rs 2,412 a call against about Rs 5,575 a call on
 the first fifty". The first fifty carry Rs 2,78,740 over 50 members, about Rs 5,575 each; places 51 to
@@ -190,9 +196,9 @@ whether a call is worth that.
 - c, "Rs 60,300 more at the same rupees per call as the first fifty, so the 25 calls cost nothing more
   per rupee": the rupees are right and the rupees per call fall by more than half.
 
-### Q7. Which expression gives every Q2 order a plan week, including 1 to 5 July?
+### Q7. Which expression gives every Q2 order a plan week that the plan line holds?
 
-Kind: fix the logic. The key is b, `greatest(date_trunc('week', order_date)::date, (SELECT
+This item asks you to fix the logic. The key is b, `greatest(date_trunc('week', order_date)::date, (SELECT
 min(week_start) FROM plan_line))`. Q2 starts on Wednesday 1 July and the plan on Monday 6 July, so the
 25 orders of 1 to 5 July fall under Monday 29 June, a week the plan line does not have. `greatest()`
 moves them onto the plan's first Monday, and the running total closes on Rs 9,84,00,000.
@@ -203,42 +209,44 @@ moves them onto the plan's first Monday, and the running total closes on Rs 9,84
 - c, "`date_trunc('month', order_date)::date`, which files each order under the first day of its
   month": no plan week starts on the first of a month, so every week books nothing and Q2 reads as
   having booked nothing at all.
-- d, "`(order_date - 5)`, which shifts every order by the five days between 1 July and the plan's first
-  Monday": a shifted date lands on a plan Monday only on some days, so most orders find no week and the
-  close reads Rs 1,02,62,270.
+- d, "`(order_date - 5)`, which moves every order back five days before it meets a plan week": a moved
+  date lands on a plan Monday only for the orders placed on a Saturday, so most orders find no week and
+  the close reads Rs 1,02,62,270.
 
 ### Q8. Which comparison counts the weeks that ran below plan, each week on its own?
 
-Kind: choose the comparison. The key is b, `booked < plan_revenue`. Each week's booking against its
+This item asks you to choose the comparison. The key is b, `booked < plan_revenue`. Each week's booking against its
 own plan: from the week of 10 August, six of the seven full weeks booked below Rs 75,69,230, and only
 the week of 14 September booked above it.
 
 - a, `booked_to_date < plan_to_date`: the to-date reading, which stays ahead in all seven weeks
   because of the lead built in July, so it counts 0.
-- c, `booked_to_date < plan_revenue`: sets a quarter's bookings to date beside one week's plan, the
-  nine-times mistake, and counts 0.
+- c, `booked < plan_to_date`: sets one week's bookings beside the plan to date, which grows every week,
+  so every week from 10 August reads below plan and the count is 7 of 7.
 - d, "`sum(booked) < sum(plan_revenue)` over the seven weeks": one comparison for all seven weeks
   together, which says the stretch fell short and cannot say how many weeks did.
 
-### Q14. Which way answers Meera's "where were we on 19 August?", and what does it say?
+### Q14. Which way answers Meera's "where were we on 9 September?", and what does it say?
 
-Kind: a design item, the switch to a plain sum for one date, sized.
+This is a design item: it asks for the switch to a plain sum for one date, sized.
 
-The key is c, "One plain SUM of the Q2 orders dated on or before 19 August, the 462 orders read once:
-Rs 6,57,78,430". A single reading on a date Meera names is one sum with the date in WHERE; it adds up
-268 orders. The figure sits between the to-date readings at the end of the weeks of 10 and 17 August,
-as a Wednesday's should.
+The key is c, "One plain SUM of the Q2 orders dated on or before 9 September, the 462 orders read once:
+Rs 7,57,80,560". A single reading on a date Meera names is one sum with the date in WHERE, and it adds
+up the 357 orders placed by then. The figure sits between the to-date readings at the end of the weeks
+of 31 August and 7 September, as a Wednesday's should.
 
-- a, "The running total's row for the week of 17 August, the plan week that holds 19 August:
-  Rs 6,87,36,590": that row runs to 23 August, four days past her date.
-- b, "The row for the week of 10 August, the last plan week finished by 19 August: Rs 6,32,84,780":
-  stops on 16 August and misses three days of orders.
-- d, "Thirteen plain sums, one per plan week, 6,006 order reads, then the week that holds 19 August:
-  Rs 6,87,36,590": thirteen times the work to reach the same wrong date as option a.
+- a, "The running total's row for the week of 7 September, the plan week that has 9 September:
+  Rs 8,19,30,010": that row runs to 13 September, four days past her date, and carries the 25 orders of
+  10 to 13 September, Rs 61,49,450.
+- b, "The row for the week of 31 August, the last plan week finished by 9 September: Rs 7,53,96,740":
+  stops on 6 September and misses the 17 orders of 7 to 9 September, Rs 3,83,820.
+- d, "The plan to date on the running total's row for the week of 7 September, one row read:
+  Rs 7,56,92,300": reads the plan column, which says what Q2 was meant to book by 13 September, and
+  Meera asked what it had booked by 9 September.
 
-### Q9. Which line goes to Meera for the leadership meeting?
+### Q9. Which sentence goes to Meera for the leadership meeting?
 
-Kind: choose the line. The key is c, "Q2 closed on plan, Rs 10 ahead; the mid-quarter lead came from
+This item asks you to choose the sentence. The key is c, "Q2 closed on plan, Rs 10 ahead; the mid-quarter lead came from
 one July week, and six of seven weeks since 10 August ran below." It carries the close, Rs 9,84,00,000
 against Rs 9,83,99,990, the source of the lead, the week of 13 July, which booked Rs 2,66,28,920 against
 its Rs 75,69,230, and the run rate since 10 August.
@@ -246,15 +254,15 @@ its Rs 75,69,230, and the run rate since 10 August.
 - a, "Q2 closed Rs 15,39,810 short of plan on the running total, so the next quarter should open on a
   recovery campaign to win it back": the close of a running total that lost the orders of 1 to 5 July.
 - b, "Q2 closed on plan and stood Rs 1.58 crore ahead at mid-quarter, so the quarter needs no action
-  from the leadership meeting at all": both numbers are right, and the line hides the run rate that has
-  sat below plan since 10 August.
+  from the leadership meeting at all": both numbers are right, and the sentence hides the run rate, six of
+  the seven full weeks from 10 August below plan.
 - d, "Q2 revenue to date stood at about nine times the weekly plan by mid-quarter, well ahead of every
   target the plan line set": Rs 6,87,36,590 to date beside one week's Rs 75,69,230; to date goes beside
   to date.
 
-### Q10. Which line goes to Marketing with the lists?
+### Q10. Which sentence goes to Marketing with the lists?
 
-Kind: choose the line. The key is b, "Each list holds fifty, or every buyer where a segment has fewer,
+This item asks you to choose the sentence. The key is b, "Each list holds fifty, or every buyer where a segment has fewer,
 and a list above fifty names the members tied at its line." It states the head's rule as the count it
 ships and says what a reader sees when a list runs past fifty.
 
@@ -266,35 +274,35 @@ ships and says what a reader sees when a list runs past fifty.
 - d, "Each list ranks members with DENSE_RANK, so members who spent the same share a place and no
   number is skipped": DENSE_RANK ships 52 in Retail-Core, two members who tie with nobody.
 
-### Q15. Which check should run before Meera's line leaves the team, sized?
+### Q15. Which check should run before Meera's sentence leaves the team, sized?
 
-Kind: a design item, the check that closes the loop.
+This is a design item: it asks for the check that would catch a running total that lost rows.
 
-The key is d, "Set the last booked to date beside Q2's total from one plain SUM of the orders,
-Rs 9,84,00,000". A running total that lost rows closes short of a total counted without it, and the
-plain sum shares no join, no week and no window with it, so the two rows either agree or show the
-missing rupees.
+The key is d, "A plain SUM of Q2's orders, 462 rows read, set beside the running total's last booked to
+date". A running total that lost rows closes short of a total counted without it, Rs 9,84,00,000, and
+the plain sum shares no join, no week and no window with it, so the two figures either agree or show
+the missing rupees.
 
 - a, "Set the last plan to date beside the plan line's own total, Rs 9,83,99,990, one row a side":
   checks the plan side, which a lost order cannot touch.
 - b, "Count the running total's rows beside the plan's 13 weeks, so that no plan week can go missing":
   the plan-first build has all 13 weeks and still lost five days of orders.
-- c, "Run the running total a second time and set the two closes side by side": the same build twice
-  loses the same rows twice.
+- c, "Run the running total a second time and set the two closes side by side, two runs of one build":
+  the same build twice loses the same rows twice.
 
-## Which wrong answers does the debrief replay?
+## Which wrong letters does the lab's debrief replay, and in what order?
 
-Item 7, option a, first, with item 9, option a: the build that reports Q2 Rs 15,39,810 short of plan
-is the line most likely to reach Meera, and item 15's check catches it in one row. Then item 3, option
+Item 7's option a goes first, with item 9's option a: the build that reports Q2 Rs 15,39,810 short of
+plan is the sentence most likely to reach Meera, and item 15's check catches it in one row. Then item 3, option
 c, with item 4, option a: together they flag 9 members, the right count from a window that crosses
 members, and the check cell's 300 crossings show why a right count does not prove a right window. Then item
 2, option a, if anyone chose it: the customer id inside the ORDER BY turns the head's rule into
 ROW_NUMBER. Last, item 8, option a: to date and the run rate answer different questions, and Meera
 needs both.
 
-## Where does this show up at work?
+## What does Kalpa's marketing lead act on from this pack?
 
-The data team sends Kalpa's marketing lead three things to act on: who to protect, who to call first,
-and whether the quarter can pay for it. Each becomes a number someone repeats in a meeting, so
-each goes out with its rule, its count and the check that closed it, the way this case's five parts
-end.
+The marketing lead acts on the lists, which decide who is protected, and on the calls, which decide who
+hears from the member team first. Meera acts on the quarter's reading against plan. Each of those
+becomes a number someone repeats in a meeting, so each leaves the team with its rule, its count and
+the check that closed it.

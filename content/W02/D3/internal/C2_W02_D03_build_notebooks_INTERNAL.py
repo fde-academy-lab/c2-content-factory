@@ -264,15 +264,15 @@ def ch1():
         ## The options: which ways could the team build a ranked list, and what would each cost?
 
         A team could hand Marketing a ranked list in four ways. They differ in what one row of the
-        answer is, in what leaves the warehouse, and in how much work the per-segment list Marketing
-        asked for would take.
+        answer is, and in what the four segment lists Marketing asked for would take: how many
+        queries, and how many rows leave the warehouse.
 
-        | Option | What one row of the answer is | What leaves the warehouse | Its place on the list | The per-segment list needs |
-        |---|---|---|---|---|
-        | A. Sort the Q2 order rows and keep fifty | an order | 50 order rows | the row's position on screen | nothing it can do, since an order is not a member |
-        | B. Group by member, sort, keep fifty with LIMIT | a member | 50 member rows | the row's position on screen | one query per segment, glued together |
-        | C. Group by member, number the members in a window, keep places 1 to 50 | a member, with its place | 50 member rows | a column a later step can count or filter | one more phrase in the same query |
-        | D. Export the orders to a spreadsheet and sort by hand | whatever the sort gives | every Q2 order row | typed by hand | four filtered sorts by hand |
+        | Option | What one row of the answer is | Its place on the list | For the four segment lists |
+        |---|---|---|---|
+        | A. Sort the Q2 order rows and keep fifty | an order | the row's position on screen | four sorts of order rows, so each list holds orders |
+        | B. Group by member, sort, keep fifty with LIMIT | a member | the row's position on screen | one sorted query per segment, four glued together |
+        | C. Group by member, number the members in a window, keep places 1 to 50 | a member, with its place | a column a later step can count or filter | one query, with one more phrase |
+        | D. Export the orders to a spreadsheet and sort by hand | whatever the sort gives | typed by hand | every Q2 order row out, and four sorts by hand |
 
         A window function computes a value for each row from related rows and keeps every row,
         where GROUP BY collapses each group to one. `row_number() OVER (ORDER BY q2_revenue DESC)`
@@ -290,35 +290,39 @@ def ch1():
             q2_orders = rows(Q["c1_q2_book"])[0]["orders"]
             segments = rows(Q["c1_segments"])
             per_segment_rows = sum(min(50, s["members_who_bought"]) for s in segments)
-            sizing = [("A. sort the orders", 50, "order", "not possible"),
-                      ("B. group, sort, LIMIT", 50, "member", f"{len(segments)} queries"),
-                      ("C. group, number in a window", 50, "member and place", "1 query"),
+            per_segment_orders = sum(min(50, s["orders"]) for s in segments)
+            sizing = [("A. sort the orders", per_segment_orders, "order", f"{len(segments)} queries"),
+                      ("B. group, sort, LIMIT", per_segment_rows, "member", f"{len(segments)} queries"),
+                      ("C. group, number in a window", per_segment_rows, "member and place", "1 query"),
                       ("D. export and sort by hand", q2_orders, "order, by hand", f"{len(segments)} sorts by hand")]
-            kit.table(["option", "rows that leave the warehouse", "one row is", "per-segment list"],
+            kit.table(["option", "rows that leave the warehouse", "one row is", "for the four segment lists"],
                       [(o, n, unit, extra) for o, n, unit, extra in sizing],
-                      caption=f"Sized on this warehouse: {q2_orders} Q2 orders, {len(segments)} segments, "
-                              f"{per_segment_rows} rows in a per-segment list")
+                      caption=f"Sized on this warehouse for the four segment lists: {q2_orders} Q2 orders, "
+                              f"{len(segments)} segments, at most fifty rows from each")
             kit.bars([(o, n) for o, n, _, _ in sizing],
-                     title="Rows that leave the warehouse for one list of fifty: the export moves every Q2 order",
+                     title="Rows that leave the warehouse for the four segment lists",
                      lit=(2,))
             '''),
         md("""
         **What happened.** The answer is b. LIMIT counts rows across the whole result, so option B
-        needs one sorted query per segment, four in all, glued together; option C numbers the
-        members once and restarts the numbering per segment with one more phrase, which chapter 2
-        writes. Option D moves all 462 Q2 order rows out of the warehouse, which the data platform
-        lead's rule, "query it, do not export it", rules out, and option A answers in orders.
+        needs one sorted query per segment, four in all, glued together, to move the same 155 rows
+        that option C moves in one query; option C numbers the members once and restarts the
+        numbering per segment with one more phrase, which chapter 2 writes. Option A moves 188 rows
+        that are orders, fifty from each segment's orders and Student's 38, so each list still names
+        orders. Option D moves all 462 Q2 order rows out of the warehouse, which the data platform
+        lead's rule, "query it, do not export it", rules out.
 
         **The best-fit call.** Option C, because Marketing's ask is per segment and the place has to
         be a column that a later step can count and filter, which option B's screen position is
-        not. **What would change the call:** if Marketing wanted one overall list to read by eye
-        and nothing more, option B is shorter and returns the same fifty members, and the place as
+        not. What would change the call is Marketing wanting one overall list to read by eye and
+        nothing more: then option B is shorter and returns the same fifty members, and the place as
         a column would earn nothing.
         """),
         code(r'''
             kit.check("Q2 holds 462 orders", q2_orders == 462, f"{q2_orders} orders")
             kit.check("four segments bought in Q2", len(segments) == 4, ", ".join(s["segment"] for s in segments))
-            kit.check("the export moves more rows than either query", sizing[3][1] > sizing[2][1], f"{sizing[3][1]} against 50")
+            kit.check("the export moves more rows than either query", sizing[3][1] > sizing[2][1], f"{sizing[3][1]} against {sizing[2][1]}")
+            kit.check("the four segment lists hold 155 members", per_segment_rows == 155, f"{per_segment_rows} rows")
             '''),
         md("""
         **The day's picture.** GROUP BY keeps one row per group, so it answers how much each group
@@ -569,12 +573,12 @@ def ch1():
         Retail-Plus and 4 Retail-Core. The Python route moved 462 rows out of the warehouse to reach
         what the query sent back in 50, so it runs as the check and the query is what Marketing gets.
 
+        Kavya Nair is the senior analyst on Kalpa Retail's data team, who checks every number before
+        it leaves the team, and her review closes each chapter.
+
         > **Kavya's review.** Say what one row of your list is before you say who is on it. A top
         > fifty of orders and a top fifty of members look alike on screen and send Marketing to
         > different people.
-
-        Kavya Nair is the senior analyst on Kalpa Retail's data team, who checks every number before
-        it leaves the team.
 
         ### In the interview: how is a window different from GROUP BY, and what is one row of your answer?
 
@@ -605,11 +609,12 @@ def ch1():
             kit.check("the fifty carry more than 99 percent of Q2", carried / 98400000 > 0.99, f"{100 * carried / 98400000:.2f}%")
             '''),
         md("""
-        ## What did this chapter answer?
+        ## So which fifty members spent the most in Q2?
 
         1. **Which way, at what cost?** Group by member and number the members in a window, option
-           C: fifty member rows leave the warehouse, the place is a column, and the per-segment list
-           is one phrase away, where the export would move all 462 Q2 order rows.
+           C: one query moves the four segment lists' 155 rows with the place as a column, where
+           option B needs four glued queries for the same rows and the export moves all 462 Q2 order
+           rows.
         2. **What did each member book?** One row for each of the 227 members who bought, carrying
            all 462 orders and Rs 9,84,00,000.
         3. **Which fifty spent the most?** 35 Business members, every Business buyer, then 11
@@ -931,7 +936,7 @@ def ch2():
         Retail-Core's fifty carry 76.1 percent of the segment's Q2 revenue and Retail-Plus's fifty
         carry 85.5 percent.
 
-        ## What did this chapter answer?
+        ## So which fifty members lead each of the four segments?
 
         1. **Which way, at what cost?** PARTITION BY segment: one query reading the 462 Q2 orders
            once, where four glued queries read them four times and counting who spent more works
@@ -1238,7 +1243,7 @@ def ch3():
             kit.check("more orders first keeps D, who placed three", ("D", 7400, 3) in capped and ("E", 7400, 2) not in capped)
             '''),
         md("""
-        ## What did this chapter answer?
+        ## So when two members tie at fiftieth place, how many does a list ship, and which rule?
 
         1. **Which rule?** RANK, with its count and reason in the report; ROW_NUMBER with a stated
            tiebreaker only under a hard cap.
@@ -1578,7 +1583,7 @@ def ch4():
                       [r["two_falls_ending_here"] for r in anywhere if r["month"] == "2026-09"] == [16])
             '''),
         md("""
-        ## What did this chapter answer?
+        ## So whose monthly spend fell two months running?
 
         1. **Which way, at what cost?** LAG in a window: one pass over 752 member-months, where a
            self-join or a lookup per row works through 1,504.
@@ -1927,7 +1932,7 @@ def ch5():
         July, peaked at Rs 2,16,69,660 at the end of the week of 3 August and shrank from there to Rs
         10 at the close.
 
-        ## What did this chapter answer?
+        ## So has Q2 kept pace with the plan line, and where was it at mid-quarter?
 
         1. **Which way, at what cost?** A running SUM in a window over weekly totals: the Q2 orders
            once, where plain sums per week read them 6,006 times.
@@ -2235,7 +2240,7 @@ def ch6():
         Left empty, the calendar flags the same nine. Zero-filled, it flags 26, and 17 of them had no
         September order at all, which is a different question, who went quiet, answered by accident.
 
-        ## What did this chapter answer?
+        ## So which listed members does Marketing call first, and does each flag hold up?
 
         1. **Which reading of "last month"?** The calendar month before, checked on LAG's own rows:
            752 rows, where a calendar reads 1,806 and a zero-filled one flags 26.
@@ -2290,18 +2295,32 @@ def case():
 
         > "We start calling on Monday. Send me each segment's protect list under the head of
         > Retail-Plus's rule, with its count; the members we ring first; how much of each segment's Q2
-        > revenue the lists cover; and one line Meera can take into the leadership meeting on whether
-        > Q2 is on track."
+        > revenue the lists cover; and one sentence Meera can take into the leadership meeting on
+        > whether Q2 is on track."
         > The marketing lead, Kalpa Retail
 
         **The situation.** Kalpa Retail sells to four segments: Business (corporate buyers, whose
         orders run to lakhs), Retail-Core (everyday shoppers), Retail-Plus (the paid membership tier)
         and Student. The head of Retail-Plus has asked that members who spent the same be ranked the
-        same and that every list say how many made it. Marketing wants to ring members whose monthly
-        spend fell two months running, in calendar months, and one member has already said their
-        "fall" was a holiday. Meera Raghavan, Kalpa Retail's CEO, wants to know whether Q2 is on track
-        against the plan line, by the total and week by week. This notebook builds all of it, part by
-        part, with nothing taken from elsewhere.
+        same and that every list say how many made the top fifty. The line is the last place a list
+        keeps, fiftieth on a top fifty. Marketing wants to ring the listed members whose monthly spend
+        fell two months running. Meera Raghavan, Kalpa Retail's CEO, wants to know whether Q2 is on
+        track against the plan line, by the total and week by week. This notebook builds all of it,
+        part by part, with nothing taken from elsewhere.
+
+        **Who needs the answer.** The marketing lead needs it because the team starts calling on
+        Monday, the head of Retail-Plus needs it to answer the tier's members for every call and every
+        count, and Meera needs one sentence to carry into the leadership meeting. A list with the wrong
+        count, a call to a member whose spend never fell, or a quarter misread against plan each costs
+        a decision.
+
+        **The questions on the way.**
+
+        - Which members make each segment's list under the head of Retail-Plus's rule, and how many in each?
+        - Which listed members does Marketing ring first?
+        - How much of each segment's Q2 revenue does its list carry?
+        - Is Q2 on track by the total and by the run rate?
+        - What goes to Marketing and Meera?
 
         **The data.** Kalpa's Postgres warehouse holds `orders` (1,000 rows: order_id, customer_id,
         order_date, quarter, channel, amount, status), `customers` (340 rows, one per member, with the
@@ -2330,7 +2349,7 @@ def case():
         code(r'''
             kit.side_by_side(
                 kit.ladder(["Each segment's list and its count", "The members to ring first", "The share each list carries",
-                            "Q2 against plan, total and run rate", "The line to Marketing and Meera"], lit=0, show=False),
+                            "Q2 against plan, total and run rate", "The sentences to Marketing and Meera"], lit=0, show=False),
                 kit.flow(["rank inside each segment", "flag three calendar months", "share of the segment", "to date against plan"],
                          lit=0, show=False),
             )
@@ -2342,11 +2361,11 @@ def case():
         each list's count, so every list Kalpa ships states its rule and its count.
         """),
         code(r'''
-            # TODO 1. Which function gives members who spent the same the same place, and skips the places they use up?
-            #   a) row_number()
-            #   b) dense_rank()
-            #   c) rank()
-            #   d) count(*), which counts the members up to and including each one's figure
+            # TODO 1. Which function puts the head of Retail-Plus's rule into the window?
+            #   a) row_number(), which gives every member a place of their own, ties too
+            #   b) dense_rank(), which gives tied members one number and skips none
+            #   c) rank(), which gives tied members one number and skips the places used
+            #   d) count(*), which counts the members at or above each one's own figure
             FUNCTION = {"a": "row_number()", "b": "dense_rank()", "c": "rank()", "d": "count(*)"}[__TODO1__]
 
             # TODO 2. Which ORDER BY inside the window lets two members who spent the same tie?
@@ -2461,8 +2480,12 @@ def case():
             kit.check("the flag finds members to ring", len(to_ring) > 0)
             kit.check("no flag compares a member with another member's month",
                       all(r["member_1_back"] == r["customer_id"] == r["member_2_back"] for r in flagged))
-            kit.check("every flag reads July and August before September",
-                      all(str(r["month_2_back"]) == "2026-07-01" and str(r["month_1_back"]) == "2026-08-01" for r in flagged))
+            bought_in = {}
+            for r in rows("""SELECT DISTINCT customer_id, extract(month FROM order_date)::int AS m FROM orders
+                             WHERE order_date >= DATE '2026-07-01'"""):
+                bought_in.setdefault(r["customer_id"], set()).add(r["m"])
+            kit.check("every flagged member placed an order in each of the three months the flag compares",
+                      all({7, 8, 9} <= bought_in.get(r["customer_id"], set()) for r in flagged))
             kit.check("every flagged member's three months each fall", all(r["september"] < r["before"] < r["earlier"] for r in flagged))
             kit.check("the member on holiday, C-0216, is not rung", "C-0216" not in {r["customer_id"] for r in to_ring})
             '''),
@@ -2486,8 +2509,8 @@ def case():
             # TODO 6. Which share answers "how much of each segment's revenue does its list cover"?
             #   a) the list's revenue over the book's Q2 revenue, Rs 9,84,00,000
             #   b) the list's members over the segment's members who bought
-            #   c) the list's revenue over the segment's revenue
-            #   d) the last listed member's revenue over the first's
+            #   c) the list's revenue over its own segment's whole Q2 revenue
+            #   d) the list's revenue over the four lists' revenue together
             SHARE = __TODO6__
 
             share_sql = f"""WITH q2 AS ({Q2_SPEND})
@@ -2503,9 +2526,10 @@ def case():
                 kept = [m for m in mine if m["place"] <= 50]
                 parts.append({"segment": seg, "list_revenue": sum(m["q2_revenue"] for m in kept), "listed": len(kept),
                               "bought": len(mine), "segment_total": mine[0]["segment_total"]})
+            all_lists = sum(r["list_revenue"] for r in parts)
             def share_of(r):
                 return {"a": r["list_revenue"] / book, "b": r["listed"] / r["bought"],
-                        "c": r["list_revenue"] / r["segment_total"], "d": None}[SHARE]
+                        "c": r["list_revenue"] / r["segment_total"], "d": r["list_revenue"] / all_lists}[SHARE]
             shares = [(r["segment"], share_of(r)) for r in parts]
             print("Shares computed for:", ", ".join(s for s, v in shares if v is not None))
             '''),
@@ -2527,10 +2551,11 @@ def case():
         code(r'''
             seg_rev = {r["segment"]: r["q2_revenue"] for r in rows(f"SELECT segment, sum(q2_revenue) AS q2_revenue FROM ({Q2_SPEND}) q2 GROUP BY 1")}
             kit.check("every row carries its segment's whole Q2 revenue", all(m["segment_total"] == seg_rev[m["segment"]] for m in members))
-            kit.check("every share is a fraction of its own segment", all(v is not None and 0 < v <= 1 for _, v in shares))
-            core = next(r for r in parts if r["segment"] == "Retail-Core")
-            kit.check("each share counts rupees, so Retail-Core's is above its share of members",
-                      dict(shares).get("Retail-Core") is not None and dict(shares)["Retail-Core"] > core["listed"] / core["bought"])
+            second = {r["segment"]: float(r["share"]) for r in rows(f"""WITH q2 AS ({Q2_SPEND}),
+                placed AS (SELECT segment, q2_revenue, rank() OVER (PARTITION BY segment ORDER BY q2_revenue DESC) AS place FROM q2)
+                SELECT segment, sum(q2_revenue) FILTER (WHERE place <= 50) / sum(q2_revenue) AS share FROM placed GROUP BY segment""")}
+            kit.check("each segment's share agrees with a second count made straight from the warehouse",
+                      all(v is not None and abs(v - second[s]) < 1e-9 for s, v in shares))
             '''),
         md("""
         ## Part 4. Is Q2 on track by the total and by the run rate?
@@ -2539,11 +2564,11 @@ def case():
         week is running, and the two can disagree.
         """),
         code(r'''
-            # TODO 7. Which expression gives every Q2 order a plan week, including 1 to 5 July?
+            # TODO 7. Which expression gives every Q2 order a plan week that the plan line holds?
             #   a) date_trunc('week', order_date)::date, the Monday that starts each order's own calendar week
             #   b) greatest(date_trunc('week', order_date)::date, (SELECT min(week_start) FROM plan_line))
             #   c) date_trunc('month', order_date)::date, which files each order under the first day of its month
-            #   d) (order_date - 5), which shifts every order by the five days between 1 July and the plan's first Monday
+            #   d) (order_date - 5), which moves every order back five days before it meets a plan week
             WEEK = {"a": "date_trunc('week', order_date)::date",
                     "b": "greatest(date_trunc('week', order_date)::date, (SELECT min(week_start) FROM plan_line))",
                     "c": "date_trunc('month', order_date)::date",
@@ -2570,13 +2595,13 @@ def case():
             # TODO 8. Which comparison counts the weeks that ran below plan, each week on its own?
             #   a) booked_to_date < plan_to_date
             #   b) booked < plan_revenue
-            #   c) booked_to_date < plan_revenue
+            #   c) booked < plan_to_date
             #   d) sum(booked) < sum(plan_revenue) over the seven weeks
             RUN_RATE = __TODO8__
             since = [w for w in weeks if "2026-08-10" <= str(w["week_start"]) <= "2026-09-21"]
             below = {"a": sum(w["booked_to_date"] < w["plan_to_date"] for w in since),
                      "b": sum(w["booked"] < w["plan_revenue"] for w in since),
-                     "c": sum(w["booked_to_date"] < w["plan_revenue"] for w in since),
+                     "c": sum(w["booked"] < w["plan_to_date"] for w in since),
                      "d": int(sum(w["booked"] for w in since) < sum(w["plan_revenue"] for w in since))}[RUN_RATE]
             print(f"Close: {kit.rupees(weeks[-1]['booked_to_date'])} against {kit.rupees(weeks[-1]['plan_to_date'])}; "
                   f"mid-quarter: {kit.rupees(weeks[6]['booked_to_date'] - weeks[6]['plan_to_date'])} ahead; "
@@ -2587,24 +2612,29 @@ def case():
             kit.check("the running total closes on Q2's own total", weeks[-1]["booked_to_date"] == q2_total)
             kit.check("every plan week carries a to-date that never falls", all(b["booked_to_date"] >= a["booked_to_date"]
                                                                                for a, b in zip(weeks, weeks[1:])))
-            kit.check("the run-rate count reads the seven full weeks from 10 August, one week at a time",
-                      below == sum(w["booked"] < w["plan_revenue"] for w in since) and len(since) == 7)
+            short_weeks = rows("""SELECT count(*) AS n FROM (
+                SELECT p.week_start, p.plan_revenue, (SELECT coalesce(sum(o.amount), 0) FROM orders o
+                       WHERE o.order_date BETWEEN p.week_start AND p.week_start + 6) AS week_booked
+                FROM plan_line p WHERE p.week_start BETWEEN DATE '2026-08-10' AND DATE '2026-09-21') x
+                WHERE week_booked < plan_revenue""")[0]["n"]
+            kit.check("your count of weeks below plan agrees with a count made week by week from the orders",
+                      below == short_weeks and len(since) == 7)
             '''),
         md("""
         ## Part 5. What goes to Marketing and Meera?
 
-        Where this is used at work: Meera takes one line into the leadership meeting, so each number
-        in it has to hold on its own.
+        Where this is used at work: Meera takes one sentence into the leadership meeting, so each
+        number in it has to hold on its own.
         """),
         code(r'''
-            # TODO 9. Which line goes to Meera for the leadership meeting?
+            # TODO 9. Which sentence goes to Meera for the leadership meeting?
             #   a) "Q2 closed Rs 15,39,810 short of plan on the running total, so the next quarter should open on a recovery campaign to win it back."
             #   b) "Q2 closed on plan and stood Rs 1.58 crore ahead at mid-quarter, so the quarter needs no action from the leadership meeting at all."
             #   c) "Q2 closed on plan, Rs 10 ahead; the mid-quarter lead came from one July week, and six of seven weeks since 10 August ran below."
             #   d) "Q2 revenue to date stood at about nine times the weekly plan by mid-quarter, well ahead of every target the plan line set."
             MEERA = __TODO9__
 
-            # TODO 10. Which line goes to Marketing with the lists?
+            # TODO 10. Which sentence goes to Marketing with the lists?
             #   a) "Every segment's list holds exactly fifty members, cut by a tiebreaker stated in advance, so each list is the same size for the calls."
             #   b) "Each list holds fifty, or every buyer where a segment has fewer, and a list above fifty names the members tied at its line."
             #   c) "The lists hold 155 members in all, fifty per segment where possible, ranked by Q2 revenue across the whole book."
@@ -2613,8 +2643,18 @@ def case():
             print("To Meera:", MEERA, "| To Marketing:", MARKETING)
             '''),
         code(r'''
-            kit.check("both lines are chosen", MEERA in "abcd" and MARKETING in "abcd")
-            kit.check("the run rate the lines rest on reads each week on its own", RUN_RATE in "abcd")
+            # What each sentence claims, set against what this notebook computed.
+            close_gap = weeks[-1]["booked_to_date"] - weeks[-1]["plan_to_date"]
+            meera_says = {"a": (-1539810, None), "b": (10, None), "c": (10, 6), "d": (None, None)}
+            kit.check("the sentence to Meera carries the close and the weeks below plan this notebook computed",
+                      meera_says[MEERA] == (close_gap, below))
+            marketing_says = {
+                "a": all(counts.get(s, 0) == 50 for s in buyers),
+                "b": all(counts.get(s, 0) in (min(50, buyers[s]), at_or_above[s]) for s in buyers),
+                "c": False,
+                "d": FUNCTION == "dense_rank()",
+            }
+            kit.check("the sentence to Marketing describes the lists part 1 built", marketing_says[MARKETING])
             kit.check_summary()
             '''),
     ]
@@ -2639,8 +2679,23 @@ def second():
         **The situation.** Retail-Core is Kalpa Retail's everyday shoppers, 96 of whom ordered in Q2
         (July to September 2026). Ranked by Q2 revenue, booked revenue of every order whatever its
         status, Retail-Core's top fifty under RANK holds 50 members, because no two members share the
-        fiftieth figure. Frequency is how many orders a member placed in the quarter. Under RANK,
-        members who spent, or ordered, the same share a place, and the list says how many made it.
+        fiftieth figure. The line is the last place a list keeps, fiftieth on a top fifty. Frequency is
+        how many orders a member placed in the quarter. Under RANK, members who spent, or ordered, the
+        same share a place, and the list says how many made it.
+
+        **Who needs the answer.** The marketing lead needs it to decide which Retail-Core members the
+        member team protects, and the head of Retail-Plus needs to see the list keep their rule. A list
+        with the wrong count, or with members picked by nothing the business chose, spends the member
+        team's calls on the wrong people.
+
+        **The questions on the way.**
+
+        - How many Q2 orders did each Retail-Core member place, and where do the ties fall?
+        - How many members does each rule ship when the list is ranked by orders alone?
+        - Why does that rule ship the number it ships?
+        - Which second key decides between members with the same number of orders, and how many members does the list ship then?
+        - How many members do the two lists share, and how far apart are they in rupees?
+        - Is frequency falling in Retail-Core, and what do you tell the marketing lead?
 
         **The data.** Kalpa's Postgres warehouse holds `orders` (1,000 rows: order_id, customer_id,
         order_date, quarter, channel, amount, status) and `customers` (340 rows, one per member, with
@@ -2660,21 +2715,21 @@ def second():
         """),
         code(CASE_SETUP),
         code(r'''
-            kit.flow(["orders per member", "rank by orders", "a second key", "the two lists compared", "the line"], lit=1)
+            kit.flow(["orders per member", "rank by orders", "a second key", "the two lists compared", "the sentence"], lit=1)
             '''),
         md("""
         ## Step 1. How many Q2 orders did each Retail-Core member place, and where do the ties fall?
 
-        Where this is used at work: a frequency metric is a count, and counts tie far more often than
-        rupee amounts do.
+        Where this is used at work: a list ranked on how often customers buy, in place of how much
+        they spend.
         """),
         code(r'''
             # TODO 1. Which expression counts a member's Q2 orders?
-            #   a) count(*), one per order row the member placed
-            #   b) count(DISTINCT o.customer_id)
-            #   c) sum(o.amount)
-            #   d) count(DISTINCT date_trunc('month', o.order_date))
-            ORDERS = {"a": "count(*)", "b": "count(DISTINCT o.customer_id)", "c": "sum(o.amount)",
+            #   a) count(*), which counts one for every order row the member placed
+            #   b) count(DISTINCT o.customer_id), so no member is counted twice
+            #   c) count(DISTINCT o.order_date), so a day with two orders counts once
+            #   d) count(DISTINCT date_trunc('month', o.order_date)), the months with an order
+            ORDERS = {"a": "count(*)", "b": "count(DISTINCT o.customer_id)", "c": "count(DISTINCT o.order_date)",
                       "d": "count(DISTINCT date_trunc('month', o.order_date))"}[__TODO1__]
             core = rows(f"""SELECT o.customer_id, {ORDERS} AS q2_orders, sum(o.amount) AS q2_revenue
                             FROM orders o JOIN customers c USING (customer_id)
@@ -2695,35 +2750,33 @@ def second():
         md("""
         ## Step 2. How many members does each rule ship when the list is ranked by orders alone?
 
-        Where this is used at work: a tie rule chosen for rupee amounts has to be read again when the
-        metric becomes a count.
+        Where this is used at work: a rule written for one metric is applied to another, and its count
+        has to be read again.
         """),
         code(r'''
-            # TODO 2. Which window gives members with the same number of orders the same place, and skips the places they use up?
+            # TODO 2. Which window puts the head of Retail-Plus's rule on the orders count?
             #   a) row_number() OVER (ORDER BY q2_orders DESC, customer_id)
             #   b) rank() OVER (ORDER BY q2_orders DESC)
             #   c) dense_rank() OVER (ORDER BY q2_orders DESC)
-            #   d) rank() OVER (ORDER BY q2_revenue DESC)
+            #   d) rank() OVER (ORDER BY q2_orders)
             RULE = {"a": "row_number() OVER (ORDER BY q2_orders DESC, customer_id)", "b": "rank() OVER (ORDER BY q2_orders DESC)",
-                    "c": "dense_rank() OVER (ORDER BY q2_orders DESC)", "d": "rank() OVER (ORDER BY q2_revenue DESC)"}[__TODO2__]
+                    "c": "dense_rank() OVER (ORDER BY q2_orders DESC)", "d": "rank() OVER (ORDER BY q2_orders)"}[__TODO2__]
             base = f"""SELECT o.customer_id, count(*) AS q2_orders, sum(o.amount) AS q2_revenue
                        FROM orders o JOIN customers c USING (customer_id)
                        WHERE o.quarter = 'Q2' AND c.segment = 'Retail-Core' GROUP BY o.customer_id"""
             ranked = rows(f"SELECT customer_id, q2_orders, q2_revenue, {RULE} AS place FROM ({base}) b")
             chosen = sum(1 for r in ranked if r["place"] <= 50)
-            all_rules = rows(f"""SELECT count(*) FILTER (WHERE rn <= 50) AS row_number_ships, count(*) FILTER (WHERE rk <= 50) AS rank_ships,
-                                        count(*) FILTER (WHERE dr <= 50) AS dense_rank_ships
-                                 FROM (SELECT row_number() OVER (ORDER BY q2_orders DESC, customer_id) AS rn,
-                                              rank() OVER (ORDER BY q2_orders DESC) AS rk,
-                                              dense_rank() OVER (ORDER BY q2_orders DESC) AS dr FROM ({base}) b) x""")[0]
-            kit.bars([("row_number", all_rules["row_number_ships"]), ("rank", all_rules["rank_ships"]),
-                      ("dense_rank", all_rules["dense_rank_ships"]), ("your rule", chosen)],
-                     title="Rows each rule ships when Retail-Core is ranked by Q2 orders alone", lit=(3,))
+            kit.bars([("the fifty asked for", 50), ("your rule", chosen)],
+                     title="Rows your rule ships when Retail-Core is ranked by Q2 orders alone", lit=(1,))
             '''),
         code(r'''
+            # A count with no window: every member who ordered at least as often as the fiftieth member.
+            expected = rows(f"""SELECT count(*) AS n FROM ({base}) b
+                                WHERE q2_orders >= (SELECT q2_orders FROM ({base}) c ORDER BY q2_orders DESC OFFSET 49 LIMIT 1)""")[0]["n"]
             same_orders_same_place = all(len({r["place"] for r in ranked if r["q2_orders"] == n}) == 1 for n in spread)
             kit.check("members with the same number of orders share a place under your rule", same_orders_same_place)
-            kit.check("your rule ships what the head of Retail-Plus's rule ships on these counts", chosen == all_rules["rank_ships"])
+            kit.check("your rule ships every member who ordered at least as often as the fiftieth member, and nobody else",
+                      chosen == expected)
             kit.check("your rule ranks by orders, so the member with most orders is first",
                       min(ranked, key=lambda r: r["place"])["q2_orders"] == max(spread))
             '''),
@@ -2734,11 +2787,11 @@ def second():
         above fifty goes out with its reason in one sentence.
         """),
         code(r'''
-            # TODO 3. Why does RANK on orders alone ship 51 members?
-            #   a) 24 members placed three or more orders, and the 27 members with two orders all share 25th place
-            #   b) RANK skips a number after every tie, and those skipped numbers count as extra members on the list
-            #   c) One member placed eight orders, so RANK counts that member several times on the list
-            #   d) The 45 members with one order share a place, and RANK adds one of them to make the list even
+            # TODO 3. Why does the head's rule, on orders alone, ship more than fifty members?
+            #   a) 24 members placed three or more orders, and the 27 members with two orders all share the 25th place
+            #   b) The rule skips a number after every tie, and those skipped numbers count as extra members on the list
+            #   c) The rule numbers the 27 two-order members 25 to 51 by id, one place each, and keeps every one of them
+            #   d) The 45 members with one order share a place, and the rule adds one of them to make the list even
             WHY = __TODO3__
             print("your reason:", WHY)
             '''),
@@ -2747,14 +2800,18 @@ def second():
             three_or_more = sum(v for k, v in spread.items() if k >= 3)
             two = spread.get(2, 0)
             print(f"members with three or more orders: {three_or_more}; members with two: {two}")
-            kit.check("the members with three or more orders and the members with two add to RANK's count",
-                      three_or_more + two == all_rules["rank_ships"])
+            '''),
+        code(r'''
+            # Each reason, tested against the counts step 1 found.
+            above_two = sum(v for k, v in spread.items() if k > 2)
+            reason_holds = {"a": above_two + spread.get(2, 0) == expected, "b": False, "c": False, "d": False}
+            kit.check("your reason accounts for the count the rule ships", reason_holds.get(WHY, False))
             '''),
         md("""
-        ## Step 4. Which second key breaks the crowd of ties, and how many members does the list ship then?
+        ## Step 4. Which second key decides between members with the same number of orders, and how many members does the list ship then?
 
-        Where this is used at work: when a ranking on a count crowds members into ties, the second
-        key that separates them is a business choice with a reason.
+        Where this is used at work: the second key that decides between members level on the first is
+        a business choice with a reason.
         """),
         code(r'''
             # TODO 4. Which ORDER BY ranks by orders first, then lets revenue separate members with the same orders?
@@ -2776,7 +2833,7 @@ def second():
         code(r'''
             kit.check("the frequency list puts orders first", max(r["q2_orders"] for r in freq_list) == max(spread)
                       and min(r["q2_orders"] for r in freq_list) >= 2)
-            kit.check("the second key leaves no crowd at the line", len(freq_list) <= 50)
+            kit.check("the list ships no more than fifty", len(freq_list) <= 50)
             two_kept = [r["q2_revenue"] for r in freq_list if r["q2_orders"] == 2]
             two_left = [r["q2_revenue"] for r in core if r["q2_orders"] == 2 and r["customer_id"] not in {f["customer_id"] for f in freq_list}]
             kit.check("among members with two orders, the list keeps the ones who spent more",
@@ -2793,11 +2850,11 @@ def second():
             #   a) An INNER JOIN of the two lists on customer_id, counting the rows it returns
             #   b) A LEFT JOIN from the revenue list to the frequency list, counting all the rows it returns
             #   c) UNION ALL of the two lists, counting the rows
-            #   d) The two list counts subtracted, 50 less 50
+            #   d) The revenue list EXCEPT the frequency list, counting the rows it returns
             BOTH = __TODO5__
             f_ids, r_ids = {r["customer_id"] for r in freq_list}, {r["customer_id"] for r in rev_list}
             shared = {"a": len(f_ids & r_ids), "b": len(r_ids), "c": len(freq_list) + len(rev_list),
-                      "d": len(freq_list) - len(rev_list)}[BOTH]
+                      "d": len(r_ids - f_ids)}[BOTH]
             only_freq = sorted(f_ids - r_ids)
             only_rev = sorted(r_ids - f_ids)
             kit.bars([("by orders, then revenue", sum(r["q2_revenue"] for r in freq_list)),
@@ -2809,7 +2866,11 @@ def second():
                       caption=f"Members on both lists, by your query: {shared}")
             '''),
         code(r'''
-            kit.check("your count of shared members is the overlap of the two lists", shared == len(f_ids & r_ids))
+            second_count = rows(f"""WITH b AS ({base}),
+                f AS (SELECT customer_id FROM (SELECT customer_id, rank() OVER (ORDER BY {ORDER}) AS p FROM b) x WHERE p <= 50),
+                r AS (SELECT customer_id FROM (SELECT customer_id, rank() OVER (ORDER BY q2_revenue DESC) AS p FROM b) x WHERE p <= 50)
+                SELECT count(*) AS n FROM f WHERE EXISTS (SELECT 1 FROM r WHERE r.customer_id = f.customer_id)""")[0]["n"]
+            kit.check("your count of shared members agrees with a second count made in the warehouse", shared == second_count)
             kit.check("each list has members the other lacks", bool(only_freq) and bool(only_rev))
             '''),
         md("""
@@ -2820,24 +2881,28 @@ def second():
         """),
         code(r'''
             # TODO 6. How far apart are the two lists in the Q2 revenue they carry?
-            #   a) Rs 40
-            #   b) Rs 2,950
-            #   c) About Rs 1.2 lakh
-            #   d) Nothing, since both lists hold fifty members
+            #   a) Rs 40, the difference between the Q2 revenue the two lists carry
+            #   b) Rs 2,950, the Q2 revenue of the frequency list's fiftieth member
+            #   c) Rs 1,09,900, the Q2 revenue of the 27 members with two orders
+            #   d) Rs 2,980, the Q2 revenue of the revenue list's fiftieth member
             GAP = __TODO6__
 
-            # TODO 7. Which line goes to the marketing lead?
-            #   a) "Rank Retail-Core by orders alone under RANK: 51 members ship, which honours the tie rule and protects the frequency that fell."
-            #   b) "Rank by orders with Q2 revenue as the second key: fifty ship, 49 are on the revenue list too, and the lists differ by Rs 40."
+            # TODO 7. Which sentence goes to the marketing lead?
+            #   a) "Rank Retail-Core by orders alone under RANK: the list runs past fifty, which honours the tie rule and protects the frequency that fell."
+            #   b) "Rank by orders with Q2 revenue as the second key: fifty ship, and the list is almost the revenue list, member for member and in rupees."
             #   c) "Rank Retail-Core with DENSE_RANK on orders, so that every member who ordered the same shares a place on the list."
             #   d) "Keep the revenue list, since ranking by orders would drop the members whose quarters carry the most revenue."
-            LINE = __TODO7__
-            print("gap:", GAP, "| line:", LINE)
+            SENTENCE = __TODO7__
+            print("gap:", GAP, "| sentence:", SENTENCE)
             '''),
         code(r'''
             carried_gap = abs(sum(r["q2_revenue"] for r in freq_list) - sum(r["q2_revenue"] for r in rev_list))
-            kit.check("the gap you chose is the gap the two lists carry", {"a": 40, "b": 2950, "c": 120000, "d": 0}.get(GAP) == carried_gap)
-            kit.check("the line is chosen", LINE in "abcd")
+            kit.check("the gap you chose is the gap the two lists carry", {"a": 40, "b": 2950, "c": 109900, "d": 2980}.get(GAP) == carried_gap)
+            # What each sentence claims, set against the frequency list step 4 built.
+            sentence_holds = {"a": len(freq_list) > 50,
+                              "b": len(freq_list) == 50 and second_count >= 45 and carried_gap < 1000,
+                              "c": False, "d": False}
+            kit.check("the sentence you chose describes the frequency list you built", sentence_holds.get(SENTENCE, False))
             kit.check_summary()
             '''),
     ]
