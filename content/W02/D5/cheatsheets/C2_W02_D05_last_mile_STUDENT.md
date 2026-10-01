@@ -1,122 +1,106 @@
-# The last mile
+# Week 2 Friday: What can a director open, change and still trust?
 
-Kalpa Retail, Week 2 Friday. A sheet lies silently at its grain, its lookup, its total and its card,
-so each deliverable ships with the check that catches its lie, and the warehouse keeps the number.
+Meera's chief of staff wants three things for Monday's growth review that open without a login, the
+revenue tree by segment for both quarters, the top-fifty protect list with a lookup, and one
+front-page number with its trend, on a sheet that recalculates when a director changes an
+assumption.
 
-## Panel 1: The sheet a director opens, and its four silent lies
+## Panel 1: Where can a number go wrong between the warehouse and a director?
 
 ```mermaid
-flowchart TB
-    S["<b>the sheet a director opens</b>"]
-    S --> G["<b>the grain</b><br/>rows or orders"]
-    S --> L["<b>the lookup</b><br/>found or neighbour"]
-    S --> V["<b>the total</b><br/>visible or all"]
-    S --> C["<b>the card</b><br/>period and base"]
-    G --> G2["<b>count each order once</b><br/>tie to the warehouse"]
-    L --> L2["<b>exact match</b><br/>says not in the table"]
-    V --> V2["<b>SUBTOTAL(109)</b><br/>adds what is on screen"]
-    C --> C2["<b>period, comparison, base</b><br/>and the scope printed"]
-    classDef bad fill:#FCEBF0,stroke:#D63A6A,color:#1A0F5C
-    classDef good fill:#E8F5EE,stroke:#1F8A5B,color:#1A0F5C
-    class G,L,V,C bad
-    class G2,L2,V2,C2 good
+flowchart LR
+    W["<b>the warehouse</b><br/>owns the number"] --> E["<b>the export</b><br/>one grain, dated"]
+    E --> X["<b>the workbook</b><br/>tree, list, card"]
+    X --> D["<b>the director</b><br/>slices, asks what-ifs"]
+    X -.->|"the Checks tab ties back"| W
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class W known
 ```
 
-Each red box prints a plausible number and no error, and the green box under it is the fix. On
-Friday's exports a Sum over 1,450 payment rows read Rs 39.41 crore against the warehouse's Rs 19.84
-crore, C-0195 came back as a neighbour's Rs 16,740, Mumbai's foot read Rs 7,14,890 for Rs 1,56,790
-on screen, and a bare Rs 19.84 crore read as a doubled quarter.
+The warehouse, Kalpa's Postgres database of one row per order, owns Q1's Rs 10,00,00,000 and Q2's
+Rs 9,84,00,000. Each box can print a wrong number with no error: the export can repeat rows, the
+workbook can answer a lookup with the wrong row or add rows nobody sees, and the director can read a
+number against the wrong period. Every number ties back to the warehouse before a director reads it.
 
-**Crux:** Every lie is silent, so every deliverable ships with its check, and one that fails its
-check is held with its reason.
+## Panel 2: Which segment carries the revenue, and which leaf separates the tiers?
 
-## Panel 2: The grain check, and the fix formula
+Revenue is customers times orders per customer times revenue per order.
 
-| Check | What Friday's raw export showed |
+| Segment | Share | Orders per customer | Revenue per order |
+|---|---|---|---|
+| Business | 99.1% | 4.82 | Rs 10,45,740 |
+| Retail-Plus | 0.5% | 3.29 | Rs 2,801 |
+| Retail-Core | 0.4% | 2.99 | Rs 1,886 |
+
+Averaged per customer, Business reads Rs 11,66,786 an order, and the tree multiplies back Rs 2.28
+crore over.
+
+**Crux:** Every leaf of the tree is a ratio of the pivot's sums, and the tree multiplies back to its revenue before it goes on a page.
+
+## Panel 3: How does the tree for both quarters tie to the warehouse?
+
+| Check | What the raw export showed |
 |---|---|
-| Rows against ids | 1,450 rows hold 1,000 orders. |
-| Total against the warehouse | Rs 39,40,95,490 stands against Rs 19,84,00,000. |
-| Remove Duplicates | It leaves 1,400 rows at Rs 39,40,57,740. |
+| Rows against ids | 1,450 payment rows hold 1,000 orders. |
+| Total against the warehouse | Rs 39.41 crore stands against Rs 19.84 crore. |
+| Remove Duplicates | 1,400 rows still total Rs 39.41 crore. |
+
+Flag each order's first row with `=IF(COUNTIF($A$2:A2,A2)=1,1,0)` and add only flagged rows: Q1
+reads Rs 10.00 crore and Q2 Rs 9.84 crore, down 1.6 percent, and Retail-Plus falls 29.4 percent as
+orders per customer drop from 2.36 to 1.84.
+
+**Crux:** Say the grain before you pivot: count rows against keys, count each order once, and tie the total to the warehouse.
+
+## Panel 4: Does the lookup answer for the member typed in?
 
 ```
-flag: =IF(COUNTIF($A$2:A2,A2)=1,1,0)
-tree: =SUMIFS(order_amount, segment, "Retail-Plus",
-              quarter, "Q2", flag, 1)
-```
-
-Counted once per order, the tree ties to the rupee: Rs 10.00 crore in Q1, Rs 9.84 crore in Q2.
-
-**Crux:** A pivot is only as honest as the rows under it: say the grain, count rows against ids, tie
-the total to the warehouse.
-
-## Panel 3: A lookup has two exits
-
-```
-=XLOOKUP(id, ids, revenue, "not in the table")
-=IFERROR(INDEX(revenue, MATCH(id, ids, 0)),
+=XLOOKUP(id, A:A, E:E, "not in the table")
+=IFERROR(INDEX(E:E, MATCH(id, A:A, 0)),
          "not in the table")
-=VLOOKUP("C-0195", table, 5)   4th argument left out
+=VLOOKUP("C-0195", A2:F301, 5)   4th argument left out
 ```
 
-XLOOKUP matches exactly by default and shows if_not_found for a missing id. VLOOKUP with
-range_lookup left out matches approximately, so C-0195 returned C-0194's Rs 16,740 at rank 15. Test
-every lookup with an id you know is missing. LibreOffice 24.2 returns #NAME? for XLOOKUP, so a sheet
-that must open anywhere uses the INDEX and MATCH line.
+Left out, VLOOKUP's fourth argument means approximate match, so C-0195, a member with no row,
+returned C-0194's Rs 16,740 at rank 15. XLOOKUP needs Excel 2021, 2024 or Microsoft 365. The fifty
+run from Rs 25,840 to a cut-off of Rs 8,580, and the list ships once its source ties.
 
-**Crux:** A lookup that cannot find an id says so; an approximate match answers with a neighbour.
+**Crux:** A lookup that cannot find an id says so: an exact match with a not-found path, tested with an id you know is missing.
 
-## Panel 4: The foot of a filtered list
+## Panel 5: What must sit beside the front-page number?
 
-| At the foot | Rows a filter hid | Rows hidden by hand |
-|---|---|---|
-| `SUM` | Added | Added |
-| `SUBTOTAL(9, r)` | Left out | Added |
-| `SUBTOTAL(109, r)` | Left out | Left out |
+> All segments, Q2, July to September 2026: Rs 9.84 crore, down 1.6 percent on Q1, April to June
+> 2026 (Rs 10.00 crore); 100.0 percent of company revenue in Q2.
 
-Mumbai's 11 members spent Rs 1,56,790 while a SUM foot read Rs 7,14,890. `=SUBTOTAL(102, r)` counts
-the visible numbers the foot should be adding.
+A bare Rs 19.84 crore is two quarters and reads as up 98.4 percent. Retail-Plus's 29.4 percent is
+Rs 1.72 lakh on Rs 5.86 lakh, 0.4 percent of revenue, and divided by Q2 it would read 41.7. Without
+Business the card reads down 17.3 percent, so each card prints its scope.
 
-**Crux:** The foot of a filtered list adds only what the director can see: SUBTOTAL(109), never
-SUM.
+**Crux:** One number reaches the front page with its period, its comparison and its base, and every percentage carries its rupees.
 
-## Panel 5: The card and its parts
-
-> Q2, July to September 2026: Rs 9.84 crore, down 1.6 percent on Q1, April to June 2026 (Rs 10.00
-> crore).
-
-A change is Q2 minus Q1 over Q1: Retail-Plus is down 29.4 percent, and 41.7 if divided by Q2. A bare
-Rs 19.84 crore reads as a doubled quarter.
-
-| Scope, a yellow input | The card says |
-|---|---|
-| All segments | Rs 9.84 crore, down 1.6%; 100.0% of revenue |
-| All except Business | Rs 8.15 lakh, down 17.3%; 0.8% of revenue |
-| Retail-Plus | Rs 4.13 lakh, down 29.4%; 0.4% of revenue |
-
-**Crux:** One number reaches the front page with its period, its comparison and its base.
-
-## Panel 6: The operating rule
+## Panel 6: Which tool owns which step, and how do the two stay in step?
 
 | Tool | What it owns |
 |---|---|
-| The warehouse | It owns the number, and every join, dedupe and cleaning step. |
-| pandas | It owns the analyst's iteration. |
-| Excel | It owns the last mile, and takes what-ifs as labelled inputs. |
+| The warehouse | It owns the number and every join, dedupe and rank. |
+| pandas | It owns the analyst's iteration until Finance relies on it. |
+| The workbook | It presents, slices, looks up and takes labelled what-ifs. |
 
-The drift check ties the sheet's Q2 total to the warehouse's at every refresh.
+A lookup doing Tuesday's join read Rs 11,83,81,974 collected, Rs 8.00 crore "outstanding"; every
+payment added gives Rs 19,66,82,820, Rs 17,17,180 short. A drift check ties the workbook's totals to
+the warehouse on every refresh.
 
-**Crux:** The warehouse owns the number, pandas owns the iteration, Excel owns the last mile, and
-nobody types over the source.
+**Crux:** The warehouse owns the number and every join, dedupe and rank; pandas owns the iteration; the workbook owns the last mile, and nobody types over the source.
 
-## Panel 7: The director's what-if
+## Panel 7: What can a director change without breaking the sheet?
 
-Typed over Q2, five lakh reads down 14.6 percent against Finance's 29.4 until Monday's refresh wipes
-it, so the what-if goes into a yellow input beside the actual:
-
-| Line | Retail-Plus, Q2 on Q1 | Where it comes from |
+| The foot | Rows a filter hides | Rows hidden by hand |
 |---|---|---|
-| Actual | -29.4% | The export |
-| Scenario | -14.6% | A yellow input of Rs 5,00,000 |
+| `SUM` | It adds them. | It adds them. |
+| `SUBTOTAL(9, r)` | It leaves them out. | It adds them. |
+| `SUBTOTAL(109, r)` | It leaves them out. | It leaves them out. |
 
-**Crux:** Say yes to the question and no to the edit: the what-if sits beside the actual, never over
-it.
+Filtered to Mumbai, SUM read Rs 7,14,890 while the eleven on screen spent Rs 1,56,790. A what-if
+goes in a yellow cell, and `=B1*SUBTOTAL(103, A2:A51)` prices a Rs 500 voucher at Rs 5,500 for
+Mumbai. Five checks feed one release that holds what fails.
+
+**Crux:** A director gets yellow inputs, formulas everywhere else, SUBTOTAL at every foot, and a Checks tab whose release holds whatever does not tie.
