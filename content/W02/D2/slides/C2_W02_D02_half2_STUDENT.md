@@ -31,9 +31,30 @@ Transition: one slide of what the morning settled, then chapter 6.
 
 ```notes
 LIVE, 1 minute. Read the five lines as the room's own findings; each learner's collected figure,
-gap and lists are on their own page from chapter 5. Five wrong reports appeared on the way, each
-plausible: the fan-out draft, the plain JOIN, the quarter in WHERE, each order's gap added up, and
-posted read as collected. Chapter 6 builds the checks that stop all five, every Monday.
+gap and lists are on their own page from chapter 5. Five wrong pages appeared on the way, each
+plausible: chapter 2's fan-out draft, chapter 3's plain JOIN draft and its LEFT JOIN that still read
+posted as collected, chapter 4's quarter in WHERE, and chapter 5's gap added up order by order.
+Chapter 6 builds the checks that stop all five, every Monday.
+```
+
+---
+
+## S1b. Five orders and seven payments, every row checkable by hand
+*Which invented tables does chapter 6 test its checks on?*
+
+| order_id | channel | amount | What happened to it |
+|---|---|---|---|
+| T-1 | app | 1,000 | Paid once, in full (P-1) |
+| T-2 | web | 2,000 | Paid in two instalments, 1,200 and 800 (P-2, P-3) |
+| T-3 | store | 1,500 | Paid once, and the gateway posted that payment twice (P-4, P-5) |
+| T-4 | app | 800 | Never paid |
+| T-5 | store | 500 | Paid once, in full (P-6) |
+
+P-7 is a payment of 600 against T-9, an order the orders table does not hold. Booked is 5,800; collected, each payment counted once, is 5,000; the feed posted 6,500 against these five orders; the gap is 800, which is T-4.
+
+```notes
+LIVE, folded into the minute of S1. These are chapter 1's tables, the ones every chapter traced by
+hand; the afternoon's wrong pages are all written on them.
 ```
 
 ---
@@ -72,7 +93,7 @@ stand between them and Anand: which of the day's wrong reports each check would 
 
 ---
 
-## S3. A PASS is worth its power to fail
+## S3. A PASS on a wrong number is forwarded with more trust
 *What does a PASS stamp cost when the check behind it could not fail?*
 
 ```cards
@@ -92,13 +113,11 @@ their own work that has never failed, and what that proves.
 *Which real company's checks read its own records back to it?*
 
 ```timeline
+label: 2016 to 2018 | title: The check that could not fail | body: EY had not checked directly with Singapore's OCBC Bank and relied on documents and screenshots from a trustee and from Wirecard itself, the FT reported. | tone: dark
 label: 18 June 2020 | title: No sign-off | body: EY refused to sign off on the accounts, saying it was unable to confirm the money existed.
 label: 22 June 2020 | title: 1.9 billion euros | body: Wirecard said there was "a prevailing likelihood" that its trust account balances did not exist.
 label: 25 June 2020 | title: Insolvency | body: Wirecard filed for insolvency.
-label: 2016 to 2018 | title: The check that could not fail | body: EY had not checked directly with Singapore's OCBC Bank and relied on documents and screenshots from a trustee and from Wirecard itself, the FT reported. | tone: dark
 ```
-
-A check built only on documents the company supplies can confirm only what the company says.
 
 ```notes
 LIVE, 2 minutes. Sources: BBC News, 18, 22 and 25 June 2020; the FT's report republished by the
@@ -116,15 +135,16 @@ builds reads Kalpa's own tables, so name what they cannot see.
 | Option | What it does | Wrong reports it stops, of 5 | Time on Kalpa's Q2 |
 |---|---|---|---|
 | A. Read the report | A person looks at the page | depends on the reader | minutes of a person |
-| B. Plausibility checks | Collected at most booked, no negative gap, every channel present | 1 | 3 ms, the report alone |
-| C. Tie-back checks | Every figure recomputed from one table alone and compared | 5 | 5 ms, report and sources |
-| D. An independent recomputation | The same figures from the raw rows by another tool | 5 | 3 ms, the raw rows |
+| B. Plausibility checks | Collected at most booked, no negative gap, every channel present | 3 | milliseconds, the report alone |
+| C. Tie-back checks | Every figure recomputed from one table alone and compared | 5 | milliseconds, report and sources |
+| D. An independent recomputation | The same figures from the raw rows by another tool | 5 | milliseconds, the raw rows |
 
-**Sized.** The notebook rebuilds the day's five wrong reports on the invented tables and counts how many each option stops.
+**The five wrong pages.** Chapter 2's fan-out draft, chapter 3's plain JOIN draft and its LEFT JOIN that still read posted as collected, chapter 4's quarter in WHERE, and chapter 5's gap summed order by order, each written on the invented tables.
 
 ```notes
 LIVE, 2 minutes. A is not sized, since what it catches depends on who reads. B costs the same as C
-and stops one report in five. Hold the call for the next slide.
+and stops three pages in five; which two it misses is S12's question, so do not say. Hold the call
+for the next slide.
 ```
 
 ---
@@ -159,9 +179,9 @@ the SQL and the same error in the checks would still be caught.
 ## S7. Question: do the hurried checks pass the report?
 *Do the checks a hurried analyst writes pass a report that hides an unpaid order?*
 
-**The plausible wrong answer.** A hurried validation checks what a finance reader expects of any collections report: collected is at most booked, the gap is not negative, and all three channels are on the page. It runs on chapter 3's plain JOIN report, which dropped T-4.
+**The plausible wrong answer.** A hurried validation checks what a finance reader expects of any collections report: collected is at most booked, the gap is not negative, and all three channels are on the page. It runs on the page written with chapter 4's mistake, the quarter's dates on payments placed in WHERE, which dropped T-4.
 
-| The plain JOIN report, invented | Figure |
+| The quarter-in-WHERE page, invented | Figure |
 |---|---|
 | Orders | 4 |
 | Booked | 5,000 |
@@ -181,7 +201,7 @@ LIVE, 2 minutes. Take letters. Most rooms expect at least one check to catch it.
 
 ```mermaid
 flowchart LR
-    R["<b>the plain JOIN report</b><br/>T-4 dropped"] --> C["<b>3 plausibility checks</b>"]
+    R["<b>the quarter-in-WHERE page</b><br/>T-4 dropped"] --> C["<b>3 plausibility checks</b>"]
     C --> P["<b>3 of 3 pass</b>"]
     P --> L["<b>the number leaves</b><br/>with a PASS on it"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
@@ -215,17 +235,17 @@ tests the report against itself, which is the Wirecard pattern in miniature.
 ---
 
 ## S10. Question: which tie-back checks fail it?
-*Which checks tie the report back to the two tables, and which of them fail the plain JOIN report?*
+*Which checks tie the report back to the two tables, and which of them fail the quarter-in-WHERE page?*
 
 | Tie-back check | Computed from |
 |---|---|
 | Orders on the report equal orders in the table | orders alone |
 | Booked equals booked from orders alone | orders alone |
 | The gap equals booked less collected | the report's own columns |
-| The gap equals the unpaid list's total | the anti-join, NOT EXISTS |
+| The gap equals the never-paid and paid-short lists | the anti-join, and each order's instalments against its booked |
 | Collected plus posted twice equals posted from payments alone | payments alone |
 
-**Question.** On the plain JOIN report, which checks fail? a) none; b) orders, booked and the unpaid list; c) only the gap; d) all five.
+**Question.** On the same page, which checks fail? a) none; b) orders, booked and the two lists; c) only the gap; d) all five.
 
 ```notes
 LIVE, 2 minutes. Each tie-back check recomputes one figure from a single table and compares it with
@@ -234,64 +254,64 @@ the report. Take letters.
 
 ---
 
-## S11. Answer: orders, booked and the unpaid list fail
+## S11. Answer: orders, booked and the two lists fail
 *What does the tie-back suite say about the report the hurried suite passed?*
 
-| Tie-back check | On the plain JOIN report |
+| Tie-back check | On the quarter-in-WHERE page |
 |---|---|
 | Orders on the report equal orders in the table | FAIL, 4 against 5 |
 | Booked equals booked from orders alone | FAIL, 5,000 against 5,800 |
 | The gap equals booked less collected | PASS |
-| The gap equals the unpaid list's total | FAIL, 0 against a list worth 800 |
+| The gap equals the never-paid and paid-short lists | FAIL, 0 against 800 never paid and 0 paid short |
 | Collected plus posted twice equals posted from payments alone | PASS |
 
-The answer is b. The report's own arithmetic passes; only checks that look outside it can say it is wrong.
+The answer is b. The page's own arithmetic passes; only checks that look outside it can say it is wrong.
 
 ```notes
-LIVE, 2 minutes. This is the fix for the hurried suite: the same report, checked against the two
-tables, fails three ways.
+LIVE, 2 minutes. This is the fix for the hurried suite: the same page, checked against the two
+tables, fails three ways. The gap is tied to both lists, the orders never paid and the orders paid
+in part, since a part-paid order is a gap too; on these tables nothing is paid short.
 ```
 
 ---
 
-## S12. Question: how many wrong reports get through?
+## S12. Question: which two wrong pages get through?
 *Does the suite fail every wrong report the day has met?*
 
-```mermaid
-flowchart LR
-    W["<b>five wrong reports</b><br/>fan-out, plain JOIN,<br/>quarter in WHERE,<br/>gap summed per order,<br/>posted as collected"] --> P["<b>plausibility suite</b><br/>lets through?"]
-    W --> T["<b>tie-back suite</b><br/>lets through?"]
-    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    class W bad
-    class P,T unknown
-```
+| Wrong page, invented | Where the day met it | Orders | Booked | Collected | Gap |
+|---|---|---|---|---|---|
+| The fan-out draft | Chapter 2 | 7 | 5,800 | 8,500 | minus 2,700 |
+| The plain JOIN draft | Chapter 3 | 4 | 5,000 | 6,500 | minus 1,500 |
+| Posted as collected | Chapter 3, after the LEFT JOIN | 5 | 5,800 | 6,500 | minus 700 |
+| The quarter in WHERE | Chapter 4 | 4 | 5,000 | 5,000 | 0 |
+| The gap summed per order | Chapter 5 | 5 | 5,800 | 5,000 | 0 |
 
-**Question.** Of the day's five wrong reports, how many does the plausibility suite let through? a) none; b) one; c) four; d) all five.
+**Question.** The plausibility suite stops three of the five. Which two does it let through? a) the fan-out and plain JOIN drafts; b) the quarter in WHERE and the summed gap; c) posted as collected and the quarter in WHERE; d) the fan-out draft and the summed gap.
 
 ```notes
-LIVE, 1 minute. The notebook's setup cell rebuilt all five on the invented tables, exactly as each
-chapter's trap wrote them. Take letters.
+LIVE, 1 minute. Each page is one of the day's mistakes written with its chapter's figures, and
+every page carries all three channels. Take letters.
 ```
 
 ---
 
-## S13. Answer: four get through the hurried suite
-*Which wrong reports does each suite stop?*
+## S13. Answer: the two pages that hide T-4 get through
+*Which wrong pages does each suite stop?*
 
-| Wrong report | Plausibility suite | Tie-back suite |
+| Wrong page | Plausibility suite | Tie-back suite |
 |---|---|---|
-| The fan-out draft | passes | fails on orders and booked |
-| The plain JOIN | passes | fails 3 of 5 |
-| The quarter in WHERE | passes | fails |
-| Each order's gap added up | passes | fails on the gap |
-| Posted read as collected | fails: 6,500 exceeds 5,800 | fails |
+| The fan-out draft | fails: 8,500 exceeds 5,800 | fails on orders, the two lists and posted |
+| The plain JOIN draft | fails: 6,500 exceeds 5,000 | fails 4 of 5, all but the page's own arithmetic |
+| Posted as collected | fails: 6,500 exceeds 5,800 | fails on the two lists and posted |
+| The quarter in WHERE | passes | fails on orders, booked and the two lists |
+| The gap summed per order | passes | fails on both gap checks |
 
-The answer is c. The fan-out draft inflates booked and collected together, so its gap, 800, is even right, and only the orders and booked checks stop it. **The check.** The tie-back suite fails every wrong report on at least one check and passes the true report on all five.
+The answer is b. Every page with more cash on it than was booked fails the hurried suite at once; a page that hides T-4 loses its booked and its cash together, or loses the gap to a NULL, so nothing on it looks wrong. **The check.** The tie-back suite fails every wrong page on at least one check and passes the true page on all five.
 
 ```notes
-LIVE, 2 minutes. The fan-out row is the one to dwell on: a correct gap sitting on a wrong report.
-Kavya's rule follows from this slide: do not send a PASS you have never seen fail.
+LIVE, 2 minutes. Dwell on the last two rows: the mistakes that hide an unpaid order are the quiet
+ones, and they are the ones Anand's question is about. Kavya's rule follows from this slide: do not
+send a PASS you have never seen fail.
 ```
 
 ---
@@ -304,7 +324,7 @@ Kavya's rule follows from this slide: do not send a PASS you have never seen fai
 | Orders on the report equal orders in the table | PASS | 462 against 462 |
 | Booked equals booked from orders alone | PASS | Rs 9,84,00,000 against Rs 9,84,00,000 |
 | The gap equals booked less collected | PASS | equal, figures on your own page |
-| The gap equals the unpaid list's total | PASS | equal, figures on your own page |
+| The gap equals the never-paid and paid-short lists | PASS | equal, figures on your own page |
 | Collected plus posted twice equals posted | PASS | equal, figures on your own page |
 
 The page may leave the team, and every one of the 1,428 payment rows sits on a Q1 order, a Q2 order or no order at all.
@@ -373,7 +393,7 @@ there may be no time to fix it. Take letters.
 | Orders against the table | The join dropped or repeated an order | Booked; collected held | You |
 | Booked against orders alone | A fan-out or a dropped order | Booked from orders alone; collected held | You |
 | The gap against booked less collected | A NULL fell out of a sum | The page with the gap recomputed | You |
-| The gap against the unpaid list | A list or a bar is wrong | Booked and collected, the gap provisional | You, with Kavya |
+| The gap against the two lists | A list or a bar is wrong | Booked and collected, the gap provisional | You, with Kavya |
 | Collected plus posted twice against posted | The feed changed | Booked; collected held; the lead told | The platform lead |
 
 The answer is b. **The rule.** Booked always leaves, because it ties to the orders table alone; an unreconciled collected figure never leaves; the open line, which check failed, what it means and when it will close, goes with it.
@@ -391,14 +411,16 @@ before a joined number reaches Finance, and say what you do when it fails at the
 
 | Question | The answer, with its number |
 |---|---|
-| Can hurried checks miss an order? | Yes: they pass the plain JOIN page 3 of 3, because each reads the page alone |
+| Can hurried checks miss an order? | Yes: they pass the quarter-in-WHERE page 3 of 3, because each reads the page alone |
 | Which checks tie to the tables? | Five checks recompute orders, booked, the gap and posted from one table each |
-| Does the suite stop all five? | Plausibility lets 4 of 5 through; the tie-back suite stops all 5 |
+| Does the suite stop all five? | Plausibility lets 2 of 5 through, both hiding T-4; the tie-back suite stops all 5 |
 | Does Kalpa's Q2 page pass? | Yes, 5 of 5: 462 against 462, Rs 9,84,00,000 against Rs 9,84,00,000 |
 | Does Python reach the same? | Yes: orders, booked, collected and the gap all match |
 | What leaves when a check fails? | Booked leaves with the open line; collected is held; the owner hears that day |
 
 **Kavya's review.** "A check that cannot fail is decoration. For every check, tell me which wrong report it would have stopped, and do not send me a PASS you have never seen fail."
+
+**In the interview.** [D] Design the validation you run before a joined number reaches Finance, and say what you do when it fails late on reporting day. And [S] if you could keep only one check, which would you keep?
 
 ```notes
 LIVE, 1 minute. The day's answer, for Anand: Q2 booked Rs 9,84,00,000; collected, each payment
@@ -480,8 +502,10 @@ label: Tonight | title: The take-home | body: A second book in its own schema, c
 ```
 
 ```notes
-SELF-STUDY. The TA runs the lab from the practice set and these slides. Name the order once and move
-on to the Kahoot.
+SELF-STUDY. The TA runs the lab from the practice set and these slides, in this order: the escalated
+case's parts 3 to 5 (30 minutes) and the debrief of wrong letters (10), the practice set's problems 1
+to 3 (35), the second case in pairs (40), the drill (20), and problem 4 on the warehouse (25, or
+tonight). Name the order once and move on to the Kahoot.
 ```
 
 ---
@@ -503,7 +527,7 @@ flowchart LR
     class F bet
 ```
 
-In pairs in the lab: four parts in `notebooks/C2_W02_D02_ex2_second_case_STUDENT.ipynb` and its brief in `exercises/unguided/C2_W02_D02_second_case_STUDENT.md`.
+In pairs in the lab, four parts: is every payment row in the feed accounted for; which payments match no order; which instalments were posted more than once, in either quarter; and is there a pattern the gateway team can act on. The notebook is `notebooks/C2_W02_D02_ex2_second_case_STUDENT.ipynb`.
 
 ```notes
 SELF-STUDY, 40 minutes in the lab. This question starts from payments, because it is about every row
@@ -534,8 +558,8 @@ left row with NULLs where nothing matched; both repeat a left row once per match
 row count grows when the join key repeats on the other table: count rows before and after, count that
 table's rows per key, and bring it to the key's grain before the join. Orders with no payment come
 from a LEFT JOIN that keeps the rows whose payment key IS NULL, or from NOT EXISTS, with the list's
-booked total checked against its bar; never NOT IN, which returns nothing once the subquery holds a
-NULL. When revenue doubles and every row looks fine, look at the grain: every row is real and the
+booked total checked against total booked less total collected, less anything paid short, each
+computed without the list; never NOT IN, which returns nothing once the subquery holds a NULL. When revenue doubles and every row looks fine, look at the grain: every row is real and the
 sum runs per payment, so bring the many side to one row per order and recompute each table alone.
 The validation design is counts, tie-backs to each table alone, one independent recomputation and a
 test of the suite on known wrong reports; when a check fails late on reporting day, booked leaves
@@ -559,8 +583,8 @@ report says so.
 | [S] | If you could keep only one check before a joined number leaves, which would you keep? |
 
 ```notes
-SELF-STUDY. The design question is the [D] rows: which approach, sized how, and what would make you
-switch. A strong answer names the check, the number it compares and the wrong report it stops.
+SELF-STUDY, inside the drill's 20 minutes, sixty seconds an answer. The design question is the [D]
+rows: which approach, sized how, and what would make you switch. A strong answer names the check, the number it compares and the wrong report it stops.
 Each answer in one breath, in the table's order. A condition on the right-hand table goes in ON; in
 WHERE it runs after the join, drops the NULL rows and turns the LEFT JOIN into an INNER one.
 HAVING COUNT(*) > 1 by order finds every order with more than one payment row, legitimate
@@ -571,7 +595,9 @@ moves with definitions, so each error gets its own bar. A gap that looks too sma
 channel and by order, since a small total can be one large invoice, and by age, since an old unpaid
 order is overdue; the cost of chasing is set against the cash, and the large, old orders go first.
 The one check to keep is orders on the report against orders in the table: it reads no rupee and
-catches a fan-out and a dropped order alike.
+catches both ways a join goes wrong, a fan-out and a dropped order. It misses what goes wrong after
+the join, posted read as collected and the gap summed past a NULL, which is why the gap's tie-back to
+the two lists comes second.
 ```
 
 ---
@@ -635,7 +661,7 @@ star the one they would have broken this morning.
 ```stats
 value: 8 | label: items | note: ungraded, scored on correctness and speed
 value: 1 | label: from Monday | note: WHERE against HAVING, one level up
-value: 10 min | label: the Kahoot | note: then the tentative faculty block
+value: 6 min | label: the Kahoot | note: then tomorrow's question and the tentative faculty block
 ```
 
 The items: which side a LEFT JOIN keeps; a row count to predict; what an INNER join does to unpaid orders; the anti-join in words; the first check after a doubled total; what HAVING COUNT(*) > 1 finds; where WHERE and HAVING go; a WHERE on the payments side.

@@ -4,7 +4,7 @@
 -- Run it against the warehouse: psql -d kalpa -f this_file.sql
 
 -- Setup: the two invented tables
-DROP TABLE IF EXISTS tiny_orders, tiny_payments;
+DROP TABLE IF EXISTS pg_temp.tiny_orders, pg_temp.tiny_payments;
 CREATE TEMP TABLE tiny_orders (
     order_id  text PRIMARY KEY,
     channel   text NOT NULL,

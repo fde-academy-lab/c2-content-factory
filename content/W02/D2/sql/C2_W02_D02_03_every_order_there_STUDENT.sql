@@ -4,7 +4,7 @@
 -- Run it against the warehouse: psql -d kalpa -f this_file.sql
 
 -- Setup: the two invented tables
-DROP TABLE IF EXISTS tiny_orders, tiny_payments;
+DROP TABLE IF EXISTS pg_temp.tiny_orders, pg_temp.tiny_payments;
 CREATE TEMP TABLE tiny_orders (
     order_id  text PRIMARY KEY,
     channel   text NOT NULL,
@@ -122,7 +122,7 @@ LEFT JOIN posted_per_order p    ON p.order_id = o.order_id
 )
 SELECT sum(booked)                                                    AS booked,
        sum(booked) FILTER (WHERE collected IS NULL)                   AS never_paid,
-       sum(booked - collected) FILTER (WHERE collected < booked)      AS paid_short,
+       coalesce(sum(booked - collected) FILTER (WHERE collected < booked), 0) AS paid_short,
        sum(collected)                                                 AS collected,
        sum(posted - collected)                                        AS posted_twice,
        sum(posted)                                                    AS posted
@@ -153,7 +153,7 @@ WHERE o.quarter = 'Q2'
 )
 SELECT sum(booked)                                                    AS booked,
        sum(booked) FILTER (WHERE collected IS NULL)                   AS never_paid,
-       sum(booked - collected) FILTER (WHERE collected < booked)      AS paid_short,
+       coalesce(sum(booked - collected) FILTER (WHERE collected < booked), 0) AS paid_short,
        sum(collected)                                                 AS collected,
        sum(posted - collected)                                        AS posted_twice,
        sum(posted)                                                    AS posted

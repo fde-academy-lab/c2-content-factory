@@ -4,7 +4,7 @@
 -- Run it against the warehouse: psql -d kalpa -f this_file.sql
 
 -- Setup: the two invented tables
-DROP TABLE IF EXISTS tiny_orders, tiny_payments;
+DROP TABLE IF EXISTS pg_temp.tiny_orders, pg_temp.tiny_payments;
 CREATE TEMP TABLE tiny_orders (
     order_id  text PRIMARY KEY,
     channel   text NOT NULL,
@@ -148,6 +148,14 @@ SELECT coalesce(o.quarter, 'no order') AS home, count(*) AS payment_rows
 FROM payments p
 LEFT JOIN orders o ON o.order_id = p.order_id
 GROUP BY coalesce(o.quarter, 'no order');
+
+-- The second route: all Q2 orders less the paid ones, count and total
+SELECT (SELECT count(*) FROM orders WHERE quarter = 'Q2')
+         - (SELECT count(DISTINCT order_id) FROM payments
+             WHERE order_id IN (SELECT order_id FROM orders WHERE quarter = 'Q2')) AS unpaid_orders,
+       (SELECT sum(amount) FROM orders WHERE quarter = 'Q2')
+         - (SELECT sum(amount) FROM orders
+             WHERE quarter = 'Q2' AND order_id IN (SELECT order_id FROM payments)) AS unpaid_booked;
 
 -- The second route: posted above booked, Kalpa's Q2
 WITH posted_per_order AS (

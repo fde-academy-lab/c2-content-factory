@@ -4,7 +4,7 @@
 -- Run it against the warehouse: psql -d kalpa -f this_file.sql
 
 -- Setup: the two invented tables
-DROP TABLE IF EXISTS tiny_orders, tiny_payments;
+DROP TABLE IF EXISTS pg_temp.tiny_orders, pg_temp.tiny_payments;
 CREATE TEMP TABLE tiny_orders (
     order_id  text PRIMARY KEY,
     channel   text NOT NULL,
@@ -76,18 +76,36 @@ LEFT JOIN posted_per_order p    ON p.order_id = o.order_id
 WHERE o.quarter = 'Q2';
 
 -- A report to test, invented: fan-out draft
-SELECT count(*) AS orders, sum(o.amount) AS booked,
+SELECT count(*) AS orders,
+       (SELECT sum(amount) FROM tiny_orders) AS booked,
        sum(o.amount) FILTER (WHERE p.payment_id IS NOT NULL) AS collected,
-       sum(o.amount) - sum(o.amount) FILTER (WHERE p.payment_id IS NOT NULL) AS gap,
+       (SELECT sum(amount) FROM tiny_orders)
+           - sum(o.amount) FILTER (WHERE p.payment_id IS NOT NULL) AS gap,
        array_agg(DISTINCT o.channel) AS channels
 FROM tiny_orders o
 LEFT JOIN tiny_payments p ON p.order_id = o.order_id;
 
--- A report to test, invented: plain JOIN
-SELECT count(*) AS orders, sum(booked) AS booked, sum(collected) AS collected,
-       sum(booked) - sum(collected) AS gap, array_agg(DISTINCT channel) AS channels
-FROM tiny_per_order
-WHERE collected IS NOT NULL;
+-- A report to test, invented: plain JOIN draft
+WITH posted_per_order AS (
+    SELECT order_id, sum(amount) AS posted
+    FROM tiny_payments
+    GROUP BY order_id
+)
+SELECT count(*) AS orders, sum(o.amount) AS booked, sum(pp.posted) AS collected,
+       sum(o.amount) - sum(pp.posted) AS gap, array_agg(DISTINCT o.channel) AS channels
+FROM tiny_orders o
+JOIN posted_per_order pp ON pp.order_id = o.order_id;
+
+-- A report to test, invented: posted as collected
+WITH posted_per_order AS (
+    SELECT order_id, sum(amount) AS posted
+    FROM tiny_payments
+    GROUP BY order_id
+)
+SELECT count(*) AS orders, sum(o.amount) AS booked, sum(pp.posted) AS collected,
+       sum(o.amount) - sum(pp.posted) AS gap, array_agg(DISTINCT o.channel) AS channels
+FROM tiny_orders o
+LEFT JOIN posted_per_order pp ON pp.order_id = o.order_id;
 
 -- A report to test, invented: quarter in WHERE
 WITH per_order AS (
@@ -108,11 +126,6 @@ SELECT count(*) AS orders, sum(booked) AS booked, sum(collected) AS collected,
        sum(booked - collected) AS gap, array_agg(DISTINCT channel) AS channels
 FROM tiny_per_order;
 
--- A report to test, invented: posted as collected
-SELECT count(*) AS orders, sum(booked) AS booked, sum(posted) AS collected,
-       sum(booked) - sum(posted) AS gap, array_agg(DISTINCT channel) AS channels
-FROM tiny_per_order;
-
 -- A report to test, invented: true report
 SELECT count(*) AS orders, sum(booked) AS booked, sum(coalesce(collected, 0)) AS collected,
        sum(booked - coalesce(collected, 0)) AS gap, array_agg(DISTINCT channel) AS channels
@@ -126,6 +139,14 @@ SELECT (SELECT count(*) FROM tiny_orders o)                           AS orders,
        (SELECT sum(amount) FROM tiny_orders o WHERE
             NOT EXISTS (SELECT 1 FROM tiny_payments p
                         WHERE p.order_id = o.order_id))                   AS never_paid,
+       (SELECT sum(o.amount - c.collected)
+          FROM tiny_orders o
+          JOIN (SELECT order_id, sum(amount) AS collected
+                  FROM (SELECT order_id, instalment_no, max(amount) AS amount
+                          FROM tiny_payments
+                         GROUP BY order_id, instalment_no) AS once
+                 GROUP BY order_id) AS c ON c.order_id = o.order_id
+         WHERE c.collected < o.amount)                              AS paid_short,
        (SELECT sum(extra)
           FROM (SELECT sum(p.amount) - max(p.amount) AS extra
                 FROM tiny_payments p JOIN tiny_orders o ON o.order_id = p.order_id
@@ -144,6 +165,14 @@ SELECT (SELECT count(*) FROM orders o WHERE o.quarter = 'Q2')                   
        (SELECT sum(amount) FROM orders o WHERE o.quarter = 'Q2' AND
             NOT EXISTS (SELECT 1 FROM payments p
                         WHERE p.order_id = o.order_id))                   AS never_paid,
+       (SELECT sum(o.amount - c.collected)
+          FROM orders o
+          JOIN (SELECT order_id, sum(amount) AS collected
+                  FROM (SELECT order_id, instalment_no, max(amount) AS amount
+                          FROM payments
+                         GROUP BY order_id, instalment_no) AS once
+                 GROUP BY order_id) AS c ON c.order_id = o.order_id
+         WHERE o.quarter = 'Q2' AND c.collected < o.amount)                              AS paid_short,
        (SELECT sum(extra)
           FROM (SELECT sum(p.amount) - max(p.amount) AS extra
                 FROM payments p JOIN orders o ON o.order_id = p.order_id WHERE o.quarter = 'Q2'
