@@ -103,9 +103,9 @@ rather than `"many_to_one"`.
   guide's section "Merge key uniqueness":
   https://pandas.pydata.org/docs/user_guide/merging.html (verified 1 Oct 2026).
 - **Watch.** Corey Schafer, "Python Pandas Tutorial (Part 8): Grouping and Aggregating - Analyzing
-  and Exploring Your Data": https://www.youtube.com/watch?v=txMdrV1Ut64 (title and channel verified 1
-  Oct 2026). pandas 3.0 came out in January 2026, so where a call in the video differs from today's
-  notebooks, the notebooks are current.
+  and Exploring Your Data", its title and channel checked 1 Oct 2026:
+  https://www.youtube.com/watch?v=txMdrV1Ut64 (verified 1 Oct 2026). pandas 3.0 came out in January
+  2026, so where a call in the video differs from today's notebooks, the notebooks are current.
 - **Redo.** Rerun the guided carve from chapter 1 on the snapshot, and compare its three numbers with
   part 2.
 - **Recap.** Write the four guards from memory on a card, each with the failure it catches. Saturday's

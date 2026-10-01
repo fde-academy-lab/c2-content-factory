@@ -70,7 +70,7 @@ the merge, should equal the customers marked as reached.
 Used at work in every retention team's weekly list, where each flag must mean the same thing every
 week.
 
-Fourteen minutes, markers 6 to 9: the table's as-of date, the condition that marks a customer
+Fourteen minutes, markers 6 to 9: the table's as-of date, the condition that flags a customer
 lapsed, the previous monthly reading of the same customer, and the test that keeps a fall only when
 the readings are July and August. The checks compare the win-back list and the falling flag with the
 warehouse's own queries.

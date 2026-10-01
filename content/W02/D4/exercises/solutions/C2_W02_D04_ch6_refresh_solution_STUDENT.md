@@ -2,7 +2,7 @@
 
 Answers: 1b 2c 3d 4a 5a
 
-The growth team sends a win-back code to every customer the Monday table marks as lapsed: no order in
+The growth team sends a win-back code to every customer the Monday table flags as lapsed: no order in
 the 60 days before the table's as-of date, the last date the data covers. Recency is the days from a
 customer's last order to that date, and the warehouse's last order is dated 28 September 2026.
 Chapter 6 made the table rebuild itself in one function that counts recency to the data's own last

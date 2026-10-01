@@ -30,7 +30,7 @@ label: Chapter 6 | title: Will Monday rebuild it? | body: Can the table rebuild 
 ```notes
 LIVE, 3 minutes. Read the six questions in order and say that each one is the question the previous
 answer raises. Chapters 1 to 5 run this morning, chapter 6 opens the afternoon. Ask the room which
-question they expect to be hardest; most say the tool choice, and most rooms lose the most marks on
+question they expect to be hardest; most say the tool choice, and most rooms trip hardest on
 chapter 1's missing customers. Keep this slide's order on the board all day.
 ```
 

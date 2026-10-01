@@ -696,7 +696,7 @@ def ch2():
 
         | Option | How it works | Keeps the date the sale reached them |
         |---|---|---|
-        | a) A yes-or-no flag | `isin` marks each customer whose id appears anywhere in the feed | No |
+        | a) A yes-or-no flag | `isin` flags each customer whose id appears anywhere in the feed | No |
         | b) A plain merge | `merge(how="left")` on `customer_id` adds the feed's columns to each customer's row | Yes |
         | c) A merge, counted | The same merge, with the rows counted before and after, Tuesday's habit | Yes |
         | d) A rule, then a guarded merge | Keep one feed row per customer, the first date, then merge with `validate="one_to_one"`, which refuses to run if a customer appears twice | Yes |
@@ -910,7 +910,7 @@ def ch2():
         ## 6. Does a count with no merge at all give the same reach and spend?
 
         The reach and the reached spend came from a sorted feed, a rule and a merge. Two routes share
-        none of that code. `isin` marks each customer whose id appears anywhere in the feed, and a flag
+        none of that code. `isin` flags each customer whose id appears anywhere in the feed, and a flag
         cannot multiply a row. The warehouse keeps its own copy of the feed, `campaign_exposure`: it
         counts the distinct customers in it, and it sums the orders of customers `IN` it, and `IN` only
         asks whether a customer is there, however often.
@@ -2013,7 +2013,7 @@ def ch6():
         > The data platform lead, Kalpa Retail
         ''', '''
         **Who needs the answer.** The growth team, who act on Monday's table with no analyst watching
-        the run: the win-back code goes to every customer the table marks as lapsed. A refresh that
+        the run: the win-back code goes to every customer the table flags as lapsed. A refresh that
         counts days from the wrong date sends the code to customers who bought a few weeks ago, and a
         refresh that ships a broken table sends Monday's offers to the wrong people before anyone
         looks.

@@ -235,7 +235,7 @@ and 60 in Retail-Plus.
 
 ### Does a count with no merge at all give the same reach and spend?
 
-It does: 130 customers and Rs 8,78,980, three ways. `isin` marks any customer whose id appears in the
+It does: 130 customers and Rs 8,78,980, three ways. `isin` flags any customer whose id appears in the
 feed and cannot multiply a row, and the warehouse's own copy of the feed answers in SQL, where `IN` only
 asks whether a customer is there. The table records whom the sale reached; whether it changed what they
 spent is Week 1 Thursday's separate test, which found the reached customers skewed towards those buying
@@ -482,7 +482,7 @@ explanation, and a pandas notebook is refused for Finance.
 ## Chapter 6. Can the table rebuild itself every Monday and refuse to ship when something breaks?
 
 **Who needs the answer.** The growth team, who act on Monday's table with no analyst watching the run:
-the win-back code goes to every customer the table marks as lapsed, no order in the 60 days before the
+the win-back code goes to every customer the table flags as lapsed, no order in the 60 days before the
 table's as-of date. A refresh that counts from the wrong date sends codes to customers who bought weeks
 ago, and a broken table that ships sends Monday's offers to the wrong people before anyone looks. The
 metric is the win-back list; a customer who never ordered is not on it and gets the first-order nudge.

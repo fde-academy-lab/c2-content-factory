@@ -8,7 +8,7 @@ minutes; the rest are the practice lab's stretch or tonight's work.
 >
 > The growth team, Kalpa Retail
 
-The growth team sends a win-back code to every customer the Monday table marks as lapsed: no order in
+The growth team sends a win-back code to every customer the Monday table flags as lapsed: no order in
 the 60 days before the table's as-of date, the last date the data covers. Recency is the number of
 days from a customer's last order to that date. A customer who never ordered is not lapsed and gets
 the first-order nudge instead. The warehouse's last order is dated 28 September 2026, and nothing
