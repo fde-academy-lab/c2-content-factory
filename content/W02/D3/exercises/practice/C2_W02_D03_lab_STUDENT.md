@@ -1,86 +1,232 @@
-# Practice lab: rank, compare, accumulate
+# Can you rank a tie, choose GROUP BY or a window, and run the whole day on eight invented members, in an hour?
 
-About an hour, with a TA in the room. Four problems climb in difficulty: two on paper, one query on
-the warehouse, and one that uses all three of the morning's rounds on a question nobody has asked
-yet. Work in a fresh SQL file of your own; the warehouse is the same one the morning used. Q2
-revenue per member is the booked amount of the member's Q2 orders, all statuses, the definition
-Monday's suite used for the Rs 9,84,00,000 quarter.
+This is the TA-led practice lab set: three problems that climb in difficulty over about an hour, ten
+minutes each for problems 1 and 2 and about forty for problem 3. Work alone for problems 1 and 2 and in pairs for
+problem 3. The lab also hosts the escalated case's parts 3 to 5, from
+`exercises/unguided/C2_W02_D03_escalated_case_STUDENT.md`, its debrief and the interview drill aloud;
+the TA runs those around this set.
 
-Solutions open at the close of the lab, in `../solutions/C2_W02_D03_lab_solution_STUDENT.md` and
-`../solutions/C2_W02_D03_lab_solution_STUDENT.sql`.
+> "Retail-Plus frequency is the problem, so we want to protect our best members before they drift.
+> Give us the top fifty customers by Q2 revenue in each segment, and flag anyone whose monthly spend
+> has fallen for two months running."
+>
+> The marketing lead, Kalpa Retail
 
-## P1. Predict three rankings on a tie (paper, about 10 minutes)
+Kalpa Retail's warehouse is a Postgres database: `orders` (1,000 rows, one per order: order_id,
+customer_id, order_date, quarter, channel, amount, status) and `customers` (340 rows, one per member:
+customer_id, segment, city, country, joined_date). Q2 is July to September 2026, and a member's Q2
+revenue is the booked amount of every Q2 order the member placed, whatever its status. Kalpa's members
+live in six cities and belong to four segments: Business, Retail-Core, Retail-Plus (the paid
+membership tier) and Student. The head of Retail-Plus's rule for a list is that members who spent the
+same share a place, the places they use up are skipped, and the list says how many it ships. The
+line is the last place a list keeps, fifth on a top five.
+`ROW_NUMBER` gives every member a number of their own, `RANK` gives tied members one number and skips
+the numbers they use up, and `DENSE_RANK` gives them one number and skips nothing. GROUP BY returns one
+row per group; a window keeps every row and adds a value computed from the rows around it. A member's
+monthly spend is their booked revenue in one calendar month, and the falling-spend flag reads September
+below August and August below July, in calendar months. Problems 1 and 3 run on invented members,
+labelled invented; problem 2 runs on the warehouse.
 
-Seven invented members spent the amounts below in Q2. They exist only for this problem.
+**Who needs the answer.** The marketing lead needs it, because these habits build Marketing's lists
+and calls, and you need it in an analyst interview, where the same three moves come up on tables nobody has seen: say what a ranking
+gives on a tie before running it, say whether an ask needs GROUP BY or a window and how many rows it
+returns, and run the whole chain on fresh numbers with its checks.
 
-| Member (invented) | Q2 spend |
+**The questions on the way.**
+
+- What do RANK and DENSE_RANK give seven invented members, and how many does each ship at four and at five?
+- Which of six asks need GROUP BY and which a window, and which build fits the ask by city?
+- What do eight invented members say about the list, the calls, the running total and its second route?
+
+**What you post.** One line of ten letters in item order, no spaces, then your problem 3 queries
+pasted below it:
+
+```
+Post exactly this shape: xxxxxxxxxx
+```
+
+---
+
+## Problem 1. What do three ranking functions give seven invented members, and how many does each ship?
+
+This comes up at work every time a ranked list meets a tie, since a count you predicted is the cheapest check
+there is.
+
+Work alone for ten minutes. Write your answers on paper first, then type the seven members into a `VALUES`
+list and check them.
+
+| Member (invented) | G | H | J | K | L | M | N |
+|---|---|---|---|---|---|---|---|
+| Q2 spend | Rs 6,450 | Rs 5,980 | Rs 5,980 | Rs 5,120 | Rs 4,870 | Rs 4,870 | Rs 4,870 |
+
+### Q1. Which RANK column comes back for the seven invented members?
+
+The seven are ranked with `rank() OVER (ORDER BY spend DESC)`. Which column comes back for G, H, J, K,
+L, M and N, in that order?
+
+a) 1, 2, 2, 3, 4, 4, 4
+
+b) 1, 2, 3, 4, 5, 6, 7
+
+c) 1, 2, 2, 4, 5, 5, 5
+
+d) 1, 2, 2, 4, 5, 6, 7
+
+### Q2. Which DENSE_RANK column comes back for the seven invented members?
+
+The same seven are ranked with `dense_rank() OVER (ORDER BY spend DESC)`. Which column comes back?
+
+a) 1, 2, 2, 4, 5, 5, 5
+
+b) 1, 2, 2, 3, 4, 4, 4
+
+c) 1, 2, 2, 3, 4, 5, 6
+
+d) 1, 1, 1, 2, 3, 3, 3
+
+### Q3. How many members do RANK and DENSE_RANK ship for a top four, and then for a top five?
+
+Marketing asks for a top four from the seven, then widens it to a top five. How many members does RANK
+ship each time, and how many does DENSE_RANK ship?
+
+a) RANK 4 then 5, and DENSE_RANK 4 then 5
+
+b) RANK 4 then 7, and DENSE_RANK 4 then 5
+
+c) RANK 5 then 7, and DENSE_RANK 7 both times
+
+d) RANK 4 then 7, and DENSE_RANK 7 both times
+
+## Problem 2. Which of Marketing's asks need GROUP BY, which need a window, and which build fits the ask by city?
+
+This comes up at work whenever a stakeholder's ask arrives and the first question is whether its answer is one
+row per group or one row per row you started with.
+
+Work alone for ten minutes. No city has two members tied at third place by Q2 revenue.
+
+| Ask | What Marketing wants |
 |---|---|
-| G | Rs 6,450 |
-| H | Rs 5,980 |
-| J | Rs 5,980 |
-| K | Rs 5,120 |
-| L | Rs 4,870 |
-| M | Rs 4,870 |
-| N | Rs 4,870 |
+| Ask 1 | The three members who spent most in Q2 in each city |
+| Ask 2 | The number of members who bought in Q2, segment by segment |
+| Ask 3 | The segments with more than fifty members buying in Q2 |
+| Ask 4 | Each month a member bought in, beside what the same member spent in the month they last bought before it |
+| Ask 5 | Every Q2 buyer's Q2 revenue beside the Q2 total of the buyer's segment |
+| Ask 6 | The average Q2 revenue per buying member, one line per segment |
 
-1. Write the ROW_NUMBER, RANK and DENSE_RANK columns for all seven, ordered by spend from the top,
-   with the member name breaking a tie for ROW_NUMBER.
-2. Marketing asks for a top four. Write how many members each rule ships: ROW_NUMBER, RANK,
-   DENSE_RANK, and "whole ties only", which drops a tie that crosses the line.
-3. Marketing changes its mind and asks for a top five. Write the four counts again.
-4. In one sentence, say which of the two lists would surprise a segment head who asked for "ties
-   ranked the same", and under which rule.
+### Q4. Which pattern of GROUP BY (G) and window (W) answers the six asks, in order?
 
-When your paper is done, type the invented members into a `VALUES` list and check it.
+Which pattern answers asks 1 to 6, in order?
 
-## P2. GROUP BY or window for six asks (paper, about 10 minutes)
+a) W, G, G, W, W, G
 
-For each ask, write G if GROUP BY answers it or W if it needs a window, and one sentence on how many
-rows the answer has and why.
+b) W, G, G, G, W, G
 
-1. The Store Operations lead asks how many members placed a Q2 order in each city.
-2. Marketing asks for every Q2 order with its channel's average order value beside it, so a
-   reviewer can spot unusually large orders.
-3. Anand asks for the average Q2 order value in each channel, one line per channel, for the board
-   pack.
-4. Meera asks which cities booked more than Rs 50,00,000 in Q2.
-5. The city managers ask for the three biggest members by Q2 revenue in each city.
-6. The Retail-Plus team asks for each member's September spend beside the same member's August
-   spend.
+c) G, G, G, W, W, G
 
-## P3. Thank-you vouchers for Retail-Core (warehouse, about 15 minutes)
+d) W, G, W, W, G, G
 
-The Retail-Core lead writes: "We want to send a thank-you voucher for the five biggest Retail-Core
-orders of Q2 in each channel, app, store and web. If two orders are the same size, both get a
-voucher, and tell me how many vouchers I am printing."
+### Q5. Which build fits ask 1, and how many queries and order reads does it take?
 
-1. Write the query that lists the orders, with the channel, the position, the order, the member
-   and the amount.
-2. Count the orders the list ships in each channel and in all, and count them again under
-   ROW_NUMBER and DENSE_RANK so you can say what the other rules would have printed.
-3. Count the distinct members who get a voucher, because a member with two orders on the list
-   raises a question the lead will ask.
-4. Write the one sentence the lead reads: the rule, the number of vouchers, and the reason for any
-   channel that is not five.
+Which build fits ask 1, sized in the queries it takes and the Q2 order rows it reads?
 
-## P4. The Retail-Core at-risk list (warehouse, about 25 minutes)
+a) Six sorted queries, one per city, each with LIMIT 3, glued with UNION ALL: six queries reading 2,772 order rows
 
-The Retail-Core lead follows up: "Marketing's list covered every segment. I want my own version:
-who on my top fifty is drifting, how much of the list's revenue they carry, and whether my segment
-was on pace through the quarter."
+b) One query ranking members in a window partitioned by city, places 1 to 3 kept outside: one query reading 462
 
-This problem uses all three rounds. Write each step as a CTE with one comment line above it that
-says the question and the denominator.
+c) `GROUP BY city` with `max(q2_revenue)`: one query reading 462 rows, returning each city's top figure alone
 
-1. The Retail-Core protect list, ranked so that tied members share a place: how many members does
-   it carry, and what share of Retail-Core's Q2 revenue is on it?
-2. The at-risk members: listed members who spent less in August than in July and less again in
-   September than in August, with a month that has no order breaking the run. How many are there,
-   and how much Q2 revenue do they carry? Count, too, how many a flag without the month check
-   would have named.
-3. Retail-Core's running total by week through Q2: in which week did the segment pass half its Q2
-   total, and what share had it booked by the end of the week of 17 August, the seventh plan week?
-4. The check: does the running total close on Retail-Core's Q2 total? Say how much a running total
-   that started on 6 July, the plan's first week, would have missed, and why.
-5. Three sentences for the Retail-Core lead: the list, the at-risk members and what their flag
-   means, and the segment's pace.
+d) `GROUP BY city, customer_id` sorted by Q2 revenue with `LIMIT 18`: one query reading 462, the book's top 18
+
+## Problem 3. What do eight invented members say about the list, the calls, the running total and its second route?
+
+This comes up at work whenever a whole analysis has to be run end to end on data nobody has explained, with
+every check in place before a line leaves.
+
+Work in pairs for about forty minutes. Kavya Nair, the senior analyst on Kalpa Retail's data team, hands every
+new analyst the same drill: the whole day on eight members, every number invented, small enough to
+check by hand. Their monthly spend is below, with a blank where a member placed no order:
+
+| Member (invented) | May | June | July | August | September |
+|---|---|---|---|---|---|
+| V-01 | | | Rs 2,700 | Rs 2,950 | Rs 2,150 |
+| V-02 | Rs 4,500 | | Rs 3,900 | | Rs 3,000 |
+| V-03 | | | Rs 4,100 | Rs 3,200 | Rs 2,300 |
+| V-04 | | | Rs 2,050 | Rs 1,550 | Rs 1,100 |
+| V-05 | | | Rs 2,300 | Rs 1,750 | Rs 1,350 |
+| V-06 | | Rs 4,000 | Rs 3,500 | | Rs 4,300 |
+| V-07 | | | Rs 2,100 | Rs 1,800 | |
+| V-08 | | | Rs 1,500 | Rs 2,100 | Rs 1,800 |
+
+Build it in one SQL file, as named steps on one `VALUES` list of (member, month, spend), a row only
+for a month with an order, in four steps:
+
+1. Rank each member's Q2 revenue, July to September, under the head of Retail-Plus's rule, and keep a
+   top five.
+2. Flag members with LAG over each member's own months, read at September, and check that the two rows
+   before September are August and July.
+3. List the calls, which are the members on the list whose checked flag holds.
+4. Accumulate all eight members' Q2 revenue from the biggest down.
+
+### Q6. How many members does the top five ship under the head of Retail-Plus's rule, and why?
+
+How many members does the top five ship under the head of Retail-Plus's rule, and why?
+
+a) Five: V-03, V-01, V-06, V-02 and V-05, with V-08 left off by their id
+
+b) Four, since the tie at fifth straddles the line and both of its members drop
+
+c) Six, since V-05 and V-08 tie at fifth on Rs 5,400 and both of them ship
+
+d) Seven, since the ties at second and at fifth each save the list a number
+
+### Q7. Which member on the hurried flag would a call wrongly accuse, and why?
+
+A hurried flag, LAG over each member's own months with no calendar check, names four members: V-02,
+V-03, V-04 and V-05. Which of them would a call wrongly accuse of falling two months running, and why?
+
+a) V-02, since LAG compared their September with July and their July with May
+
+b) V-04, since they stand off the top five and Marketing does not ring them
+
+c) V-05, since their September fell by less than their August did
+
+d) V-03, since their fall began in July, before the two months Marketing named
+
+### Q8. Who does Marketing ring first: listed under the head's rule and flagged on calendar months?
+
+Who does Marketing ring first, taking the members on the list whose calendar-checked flag holds?
+
+a) V-02, V-03 and V-05
+
+b) V-03, V-04 and V-05
+
+c) V-03 alone
+
+d) V-03 and V-05
+
+### Q9. What do V-01's and V-06's rows of the running total show, and what makes each row its own step?
+
+All eight members' Q2 revenue is accumulated from the biggest down with
+`sum(q2_revenue) OVER (ORDER BY q2_revenue DESC)`. What do V-01's and V-06's rows show, and what makes
+each row its own step?
+
+a) Rs 17,400 and Rs 25,200, since each row adds its own Rs 7,800, so nothing needs changing
+
+b) Rs 25,200 on both, since the two are peers on Rs 7,800; add the member id to the ORDER BY
+
+c) Rs 7,800 on both, since a running total restarts at a tie; add `PARTITION BY q2_revenue`
+
+d) Rs 25,200 on both, since the total belongs on every row; drop the ORDER BY from the window
+
+### Q10. Which route reaches the head's count for a top two with no window, and what does it give?
+
+Kavya changes the drill to a top two and asks for the head of Retail-Plus's count reached with no
+window at all. Which route does that, and what does it give?
+
+a) Count the different Q2 figures at or above the second member's Rs 7,800: 2
+
+b) Count the members who booked more than the second member's Rs 7,800: 1
+
+c) Count the members who booked at least the second member's Rs 7,800 in Q2: 3
+
+d) Sort the eight by Q2 revenue, keep two rows with `LIMIT 2` and count them: 2

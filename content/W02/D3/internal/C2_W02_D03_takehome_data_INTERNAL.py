@@ -1,7 +1,7 @@
 """Write the take-home's second sample: a Kalpa warehouse nobody has queried, in its own schema.
 
-The take-home runs the day's three rounds on data the room has not seen, so no number from the
-morning can be pasted across. The sample comes from data/generate_client_zero.py, which is imported
+The take-home asks the day's questions again on data the room has not seen, so no number from
+the day can be pasted across. The sample comes from data/generate_client_zero.py, which is imported
 and rerun with a different seed, its own Q1 and Q2 totals, fewer Q2 orders and its own weekly plan,
 so its tables and segments are the warehouse's and no headline number is: the order count, the Q2
 order count, both quarter totals, the plan line and the close all differ from the day's. Two things

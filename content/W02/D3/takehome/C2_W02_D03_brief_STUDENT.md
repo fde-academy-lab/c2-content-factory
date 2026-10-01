@@ -1,123 +1,194 @@
-# Take-home: the same three questions on a warehouse nobody has queried
+# Which twenty Retail-Core members does Marketing ring this month, who among them is slipping, and where does a new extract's Q2 stand against plan?
 
-Three parts, about two hours in all. Part 1 runs the day's three rounds on a second sample of the
-Kalpa warehouse with a new ask, so nothing from the morning can be pasted across. Part 2 is a
-ranking question of your own and the GROUP BY query that pretends to answer it. Part 3 is three
-short problems on PostgreSQL Exercises.
-
-Thursday opens by walking one learner's Part 1 in front of the room, starting from their row
-counts, so bring the counts as well as the queries.
-
----
-
-## Before you start: load the sample, about five minutes
-
-The sample has the warehouse's shape (customers, orders and the plan line) and none of its headline
-numbers: its order count, its Q2 total, its plan line and where Q2 closes against plan are its own.
-It loads into its own schema, `takehome`, so the warehouse you used today stays as it was. From the
-repository root, in the Codespace terminal:
-
-```
-psql -d kalpa -f content/W02/D3/data/C2_W02_D03_takehome_STUDENT.sql
-```
-
-Query it as `takehome.orders`, `takehome.customers` and `takehome.plan_line`, or run
-`SET search_path = takehome;` at the top of your file. Work in one `.sql` file of your own, and under
-every query paste the result it returned as a comment. That pasted output is part of what you bring.
-
-Q2 revenue per member means what it meant today: the booked amount of the member's Q2 orders in
-every status, the definition Monday's suite used for the quarter total.
-
----
-
-## Part 1. Marketing's second list, about seventy-five minutes
-
-Marketing has read today's protect list and now wants a smaller one for the tier below:
+This is the take-home for Week 2, Wednesday, and it takes about two and three quarter hours in all:
+Marketing's second list on a sample nobody has queried (about seventy-five minutes), a ranking question of your own (thirty
+minutes), the second case (forty minutes, in pairs or alone), and three PostgreSQL Exercises problems
+(twenty minutes). The self-check, `takehome/C2_W02_D03_selfcheck_STUDENT.md`, lists the numbers to
+reach; open it only after each part is done. Thursday opens by walking one learner's first part in
+front of the room, starting from their row counts, so bring the counts as well as the queries.
 
 > "Run the same exercise for Retail-Core on the new extract. We can only call twenty members this
 > month, so give us the top twenty Retail-Core members by Q2 revenue, with ties ranked the same the
 > way the head of Retail-Plus wanted, and tell us how many that is. Flag anyone on the list whose
 > monthly spend has fallen two months running. And put the running total against the plan line in
 > front of Meera again, from this extract."
+> The marketing lead, Kalpa Retail
 
-1. **Check the base first.** Count the Q2 orders, the Q2 total and the Retail-Core Q2 buyers. Write
-   one comment line saying which number the running total in step 5 must close on.
-2. **The list under four rules.** Rank Retail-Core by Q2 revenue with ROW_NUMBER, RANK and
-   DENSE_RANK in one query, filter in a CTE, and count what a top twenty ships under each, plus
-   "whole ties only", the rule that keeps a tie only when all of it fits. Then read the rows either
-   side of position twenty with all three functions side by side.
-3. **Your rule, defended.** Choose the rule you would ship and write two comment lines: the count it
-   ships and why, in words Marketing can repeat, and what the rule you rejected would have done to a
-   member at the line. If your chosen count differs from twenty, the sentence must say why in the
-   same line.
-4. **The falling-spend flag.** Build one row per member per month. Flag a member whose September
-   spend is below August's and August's below July's, three ways, and count each across the whole
-   book before you apply it to your list:
-   - LAG with no PARTITION BY, and a second count of flagged rows whose row two back belongs to
-     another member;
-   - LAG with PARTITION BY customer_id, and a second count of flagged rows whose previous two rows
-     are not August and July;
-   - the flag that requires the previous two rows to be August and July.
+**Who needs the answer.** The marketing lead's member team rings the members on this list with a
+retention offer, twenty calls this month. A list that drops a member at the line, the last place it keeps, by a coin toss, or
+names more members than it says, spends the calls badly, and a flag that reads a holiday as a fall
+rings a loyal member to tell them they are drifting. Meera Raghavan, Kalpa Retail's CEO, reads the plan
+line to decide whether the quarter needs action.
 
-   Then count how many members on your list carry the last flag. Write one comment line for the
-   member on your list who says he was on holiday: what your definition does with a month in which
-   he placed no order, and why you did not fill that month with zero.
-5. **The running total against plan.** Accumulate Q2 booked revenue by day with an order that
-   cannot tie, accumulate the plan line, and read booked to date against plan to date at the last
-   day of each plan week. Read two lines aloud to yourself: where Q2 stood at the end of the seventh
-   plan week, and where it closed. Then check that the last booked-to-date equals the Q2 total from
-   step 1. If it does not, find the rupees that went missing before you write anything else.
-6. **Three sentences to Marketing and Meera**, as a comment: the tie rule and the count it ships,
-   how many listed members carry the flag and what it means for a member with a month off, and where
-   Q2 stood against plan at mid-quarter and at the close.
+**The questions on the way.**
+1. How many Q2 orders, rupees and Retail-Core buyers does the sample hold?
+2. How many members does each tie rule put on a top twenty?
+3. Which rule do you ship, and what do you tell Marketing about its count?
+4. Whose spend fell two months running, read three ways?
+5. Where does this extract's Q2 stand against its plan line, at mid-quarter and at the close?
+6. What three sentences go to Marketing and Meera?
+7. What ranking question would a Kalpa stakeholder ask, and what does a hurried GROUP BY return for it?
+8. Should Retail-Core's protect list rank members by how often they ordered in Q2?
+9. Which window clauses do three PostgreSQL Exercises problems need?
 
----
+## What is the second sample, and how do you load it?
 
-## Part 2. A ranking question of your own, about thirty minutes
+The sample is a second extract of a Kalpa Retail warehouse, built for this take-home. It has the
+shape you queried today and none of its numbers: its order count, its Q2 total, its plan line and
+where its Q2 closes against plan are its own, so nothing from the day can be pasted across. Q2 is July
+to September 2026. Q2 revenue per member means what it meant today: the booked amount of the
+member's Q2 orders, every order at its amount whatever its status. Kalpa Retail sells to four
+segments: Business (corporate buyers), Retail-Core (everyday shoppers), Retail-Plus (the paid
+membership tier) and Student. Monthly spend is a member's booked revenue in one calendar month.
 
-1. **Recap first, from memory, before you run anything.** In a comment, write what ROW_NUMBER, RANK
-   and DENSE_RANK return for five members whose spend is Rs 9,000, Rs 8,000, Rs 8,000, Rs 8,000 and
-   Rs 6,000, sorted from the largest. Then run the three functions on those five invented values and
-   write one line on anything you got wrong.
-2. **Build.** Write one ranking question of your own on the `takehome` schema, a question a Kalpa
-   stakeholder would actually ask (for example, a member's best month, the top three per channel or
-   the largest order per city), and answer it with a window function.
-3. **Its GROUP BY impostor.** Write the GROUP BY query a hurried analyst would send for the same
-   question, run both, and write a comment of two or three sentences on why they differ, naming the
-   rows the impostor loses or the question it answers instead.
+Load it once, from the repository's root in your Codespace's terminal:
 
----
+```
+psql -d kalpa -f content/W02/D3/data/C2_W02_D03_takehome_STUDENT.sql
+```
 
-## Part 3. PostgreSQL Exercises, about twenty minutes
+It creates a schema named `takehome`, a named area of the warehouse of its own, and leaves the
+warehouse you used today exactly as it was. Write every table name with the schema in front of it, or
+run `SET search_path = takehome;` at the top of your file.
 
-The site has no separate window functions category; its window questions sit in the Aggregation
-category. Do the first three, each on the site's own database in the browser:
+| Table | One row per | Columns |
+|---|---|---|
+| `takehome.orders` | order | order_id, customer_id, order_date, quarter, channel, amount (rupees), status |
+| `takehome.customers` | member | customer_id, segment, city, country, joined_date |
+| `takehome.plan_line` | plan week | week_start, the Monday it starts, and plan_revenue |
 
-- Produce a list of members with a count of all members on every row: https://pgexercises.com/questions/aggregates/countmembers.html (verified 29 Sep 2026)
-- Produce a numbered list of members: https://pgexercises.com/questions/aggregates/nummembers.html (verified 29 Sep 2026)
-- Output the facility id that has the most slots booked, with every tied result: https://pgexercises.com/questions/aggregates/fachours4.html (verified 29 Sep 2026)
+Work in one `.sql` file of your own, each query under a comment line that states its question, and
+paste the result each query returned as a comment beneath it. That pasted output is part of what you
+bring.
 
-Solve each before you open the site's answer. Then write one line per problem: the window clause
-your answer used. For the third, add which of today's three functions the site's answer uses to keep
-every tied facility, whether DENSE_RANK would have returned the same rows at position one, and why
-ROW_NUMBER would have failed the question.
+## 1. How many Q2 orders, rupees and Retail-Core buyers does the sample hold?
 
----
+At work, Kavya Nair, the senior analyst who checks every number before it leaves Kalpa's data team,
+reads a ranked list or a running total against the counts of the data it was built from, so those
+counts come first.
 
-## What makes this hard to shortcut
+Count the Q2 orders, the Q2 total and the Retail-Core members who placed a Q2 order. Write one comment
+line saying which of these numbers your running total in section 5 must close on.
 
-Part 1 runs on a sample no assistant has seen, and its counts either match the self-check or they
-do not; the pasted outputs show which query produced which number. Part 2 starts from your own
-memory and ends on your own question, and Part 3 asks what one specific answer on the site does.
+## 2. How many members does each tie rule put on a top twenty?
 
----
+At work, the head of Retail-Plus asked for the count beside the list, so a list
+cut at a number says how many it ships and why.
 
-## What to bring on Thursday
+Rank Retail-Core's members by Q2 revenue with ROW_NUMBER, RANK and DENSE_RANK in one query, compute
+the places in a named step, and count what a top twenty ships under each, plus "whole ties only", the
+rule that keeps a tie only when all of it fits. `count(*) OVER (PARTITION BY q2_revenue)` gives each
+member the number who share their figure, so `rank + tied_with - 1` is the last place a tie reaches.
+Then read the members either side of twentieth place with all three functions side by side.
 
-| Part | What to bring |
+## 3. Which rule do you ship, and what do you tell Marketing about its count?
+
+At work, the marketing lead repeats the tie rule to the member team who make the
+calls, so the reason has to be one they can say.
+
+Choose the rule you would ship and write two comment lines: the count it ships and why, in words
+Marketing can repeat, and what the rule you rejected would have done to a member at the line. If your
+count differs from twenty, the same line says why. Marketing said twenty calls this month: write a
+third line on whether that budget is a hard cap, and if it is, which tiebreaker you would state in
+advance and why it is a business reason.
+
+## 4. Whose spend fell two months running, read three ways?
+
+At work, the member team rings a customer only when that customer's own history
+shows the drift, so the definition is written down before the first call.
+
+Build one row per member per month. Flag a member whose September spend is below August's and August's
+below July's, three ways, and count each across the whole book before you apply it to your list:
+
+- LAG with no PARTITION BY, with a second count of the flags whose row two back belongs to another
+  member;
+- LAG with PARTITION BY customer_id, with a second count of the flags whose two rows before September
+  are not August and July;
+- the flag that requires the two rows before September to be August and July.
+
+Then count how many members on your list carry the last flag. Write one comment line for a member on
+your list who says they were on holiday in August: what your definition does with a month in which
+they placed no order, and why you did not fill that month with zero.
+
+## 5. Where does this extract's Q2 stand against its plan line, at mid-quarter and at the close?
+
+At work, Meera reads the quarter while it runs, so the to-date figure has to be
+complete before anyone says ahead or behind.
+
+Accumulate Q2 booked revenue and the plan line, and read booked to date against plan to date at the end
+of each plan week. Read two lines to yourself: where Q2 stood at the end of the seventh plan week, and
+where it closed. Then check that the last booked to date equals the Q2 total from section 1; if it
+does not, find the rupees that went missing before you write anything else. Last, count how many of
+the full plan weeks booked below their own week's plan.
+
+## 6. What three sentences go to Marketing and Meera?
+
+At work, Meera and the marketing lead carry these sentences into the leadership
+meeting, where nobody reads the queries behind them.
+
+Write three sentences as a comment: the tie rule and the count it ships; how many listed members carry the
+flag and what it means for a member with a month off; and where Q2 stood against plan at mid-quarter
+and at the close, by its total and by its weekly run.
+
+## 7. What ranking question would a Kalpa stakeholder ask, and what does a hurried GROUP BY return for it?
+
+At work, Kalpa's data team chooses between GROUP BY and a window before writing
+any SQL, by naming the question GROUP BY cannot answer.
+
+1. **From memory first, before you run anything.** In a comment, write what ROW_NUMBER, RANK and
+   DENSE_RANK return for five invented members whose spend is Rs 9,000, Rs 8,000, Rs 8,000, Rs 8,000
+   and Rs 6,000, sorted from the largest. Then run the three functions on those five values and write
+   one line on anything you got wrong.
+2. **Build.** Write one ranking question of your own on the `takehome` schema, one a Kalpa stakeholder
+   would ask in those words, such as a member's best month, the top three members per channel, or the
+   largest order per city, and answer it with a window function.
+3. **The hurried GROUP BY.** Write the GROUP BY query a hurried analyst would send for the same
+   question, run both, and write two or three sentences on why they differ, naming the rows the
+   GROUP BY query loses or the question it answers instead.
+
+## 8. Should Retail-Core's protect list rank members by how often they ordered in Q2?
+
+At work, before Marketing argues over two definitions of a best customer, the data
+team measures how much the list changes.
+
+This is the day's second case, on the day's own warehouse, forty minutes in pairs or alone. The brief,
+`exercises/unguided/C2_W02_D03_second_case_STUDENT.md`, carries the marketing lead's ask, the data and
+every definition; you work in `notebooks/C2_W02_D03_ex2_second_case_STUDENT.ipynb`, whose seven
+lettered markers are the brief's first seven items. Post your ten letters with your partner's name.
+
+## 9. Which window clauses do three PostgreSQL Exercises problems need?
+
+At work, Kavya reviews a colleague's query by reading it and saying why it works,
+and these three answers are practice at that.
+
+PostgreSQL Exercises has no separate window functions category; its window questions sit in the
+Aggregation category. Do these three on the site's own database in the browser, each before you open
+the site's answer:
+
+- Produce a list of member names, with each row containing the total member count:
+  https://pgexercises.com/questions/aggregates/countmembers.html (checked 1 October 2026)
+- Produce a numbered list of members, ordered by their date of joining:
+  https://pgexercises.com/questions/aggregates/nummembers.html (checked 1 October 2026)
+- Output the facility id that has the highest number of slots booked, with every tied result output:
+  https://pgexercises.com/questions/aggregates/fachours4.html (checked 1 October 2026)
+
+Then write one line per problem: the window clause your answer used. For the third, add which of
+today's functions the site's answer uses to keep every tied facility, whether DENSE_RANK would have
+returned the same rows at the top, and what ROW_NUMBER would have done to a facility that tied for
+the most slots.
+
+## What makes this hard to shortcut?
+
+The first six sections run on a sample no assistant has seen, and their counts either match the
+self-check or they do not; the pasted outputs show which query produced which number. Section 7
+starts from your own memory and ends on your own question, section 8 is checked by its notebook, and
+section 9 asks what one specific answer on the site does.
+
+## What do you bring on Thursday?
+
+| Section | What to bring |
 |---|---|
-| 1 | Your `.sql` file with every result pasted under its query, and your three sentences |
-| 2 | The recap comment with the line on what you got wrong, and your question with its impostor and the comment on why they differ |
-| 3 | Your three lines on the PostgreSQL Exercises problems |
-
-`takehome/C2_W02_D03_selfcheck_STUDENT.md` tells you whether each Part 1 number is right.
+| 1 to 6 | Your `.sql` file with every result pasted under its query, your rule and its reason, and your three sentences |
+| 7 | The recap comment with the line on what you got wrong, and your question with its hurried GROUP BY and why they differ |
+| 8 | Your ten letters, posted with your partner's name |
+| 9 | Your three lines on the PostgreSQL Exercises problems |
