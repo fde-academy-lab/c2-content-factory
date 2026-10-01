@@ -50,7 +50,7 @@ flowchart LR
 |---|---|---|---|
 | 1 | 01, 02 | One decision and one trade-off, and every number on the card agrees with every other; the trap is a total or a base read wrongly | 3, then 18 minutes |
 | 2 | 03, 04 | Two heads want different things on the same numbers, so the argument is about weight; the trap hides inside an average or inside a small sample | 3, then 18 |
-| 3 | 05, 06 | One number on the card is a claim or a ranking whose fairness is the real question | 3, then 18 |
+| 3 | 05, 06 | One number on the card is a claim or a ranking, and whether it is fair decides the card | 3, then 18 |
 | 4 | 07, 08 | Three heads send numbers on different bases, and the group has to put them on one footing before it can choose | 4, then 17 |
 | 5 | 09, 10 | Several heads, numbers that pull different ways, a cost that is not money and a rule of law or contract that bounds every option; no position wins on every count | 4, then 17 |
 

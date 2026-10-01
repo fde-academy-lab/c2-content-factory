@@ -26,9 +26,10 @@ What do you owe Dr Menon when time is called?
 A denial is a payer's decision, after it has processed a claim, not to pay all or part of it. The
 initial denial rate is the claims a payer refuses on its first answer, out of the claims sent. The
 model would score each claim before it leaves Kalpa, and a person would review the risky ones.
-Denial rates move with the payers as well as with the lab: insurers selling plans on HealthCare.gov
-denied 19 percent of in-network claims in 2024, from 3 percent at one insurer to 36 percent at
-another (KFF, 24 March 2026, checked 1 October 2026).
+Denial rates move with the payers as well as with the lab. In 2024, insurers selling plans on
+HealthCare.gov denied 19 percent of in-network claims, those from providers under contract with
+them, and the rate ran from 3 percent at one insurer to 36 percent at another (KFF, 24 March 2026,
+checked 1 October 2026).
 
 ## What do the numbers on the table say?
 

@@ -27,8 +27,9 @@ unusual?
 
 Medicaid is each state's coverage for people on low incomes, run with federal money. Kalpa bills
 two Texas Medicaid managed-care plans, companies that run Medicaid coverage under contracts with
-the state's Health and Human Services Commission (HHSC), and its lawyers read Kalpa's contracts with
-them as passing the state's own clause down to Kalpa. Offshore claim work is common: AGS Health, an
+the state's Health and Human Services Commission (HHSC). Kalpa's lawyers read its contracts with the
+two plans as passing the state's own clause down to Kalpa. Kalpa's Global Capability Centre (GCC) in
+Bengaluru already works the claims of every other payer. Offshore claim work is common: AGS Health, an
 Indian revenue-cycle firm with more than 15,000 professionals worldwide and a centre in Bengaluru
 among others, works claims for US hospitals and health systems (company page, checked 1 October
 2026).
@@ -41,8 +42,9 @@ that it keeps its contracts.
 **The questions on the way.** What may not leave the US? Does logging in from Bengaluru count? Who
 can lift the ban?
 
-Section 4.10 of the state's Managed Care Uniform Terms and Conditions, version 1.3, binds each plan
-and "all Subcontractors, vendors, agents, and service Providers of or for the MCO": they "must not
+Section 4.10 of the state's Managed Care Uniform Terms and Conditions, version 1.3, binds each plan,
+which the clause calls the MCO, the managed care organisation, and "all Subcontractors, vendors,
+agents, and service Providers of or for the MCO": they "must not
 allow any Confidential Information that the MCO receives from or on behalf of HHSC to be moved
 outside the United States by any means (physical or electronic) at any time, for any period of
 time, for any reason", and "must not permit any person to have remote access to HHSC information,

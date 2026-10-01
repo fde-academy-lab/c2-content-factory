@@ -32,9 +32,9 @@ answer, the remittance, back to the lab. On 21 February 2024 an attack "encrypte
 significant portions of Change Healthcare's functionality", stopping "claims transmittals and
 payment" at a company that "annually processes 15 billion health care transactions" (American
 Hospital Association, checked 1 October 2026). On 9 March 2024 Medicare offered providers whose
-claims had stopped an advance of up to thirty days of their average Medicare payments, taken back
-out of their next Medicare payments, all of each payment until it is repaid, for up to 90 days (CMS
-fact sheet, 9 March 2024, checked 1 October 2026).
+claims had stopped an advance of up to thirty days of their average Medicare payments. It takes the
+advance back out of their next Medicare payments, all of each payment until it is repaid, for up to
+90 days (CMS fact sheet, 9 March 2024, checked 1 October 2026).
 
 ## What do the numbers on the table say?
 
@@ -52,7 +52,7 @@ way out cost, and how fast does it work?
 | Cash in the bank today | $75,000 | Illustration (the finance head) |
 | A week's costs, less the money still arriving at the centres' desks and from plans that pay by other routes | about $18,000 a week | Illustration (the finance head) |
 | Kalpa's average Medicare payments, August to October 2023 | about $25,000 a month | Illustration (the finance head) |
-| A second clearinghouse, ready to sign this week | enrolling Kalpa with each payer takes 5 to 15 working days, at $0.40 a claim | Illustration (the vendor) |
+| A second clearinghouse, ready to sign this week | enrolling Kalpa with each payer, so that the payer accepts claims sent through the new company, takes 5 to 15 working days; it charges $0.40 a claim | Illustration (the vendor) |
 | What its draft agreement says | it may use the claims it handles to build and sell benchmarking products | Illustration (the vendor's draft) |
 | Keying claims into the large plans' own websites by hand | about 8 minutes of staff time a claim | Illustration (the revenue cycle head) |
 
@@ -84,7 +84,7 @@ something.
 - **The compliance and privacy official:** "Not one claim goes to a new company until its agreement
   is signed, and their draft lets them sell products built on our patients' claims."
 - **The lab director:** "Whatever you choose, the lab keeps testing. Doctors are waiting for
-  results, whatever happens to the invoices."
+  results, and our invoices are not their problem."
 
 ---
 

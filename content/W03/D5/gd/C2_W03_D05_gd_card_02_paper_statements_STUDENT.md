@@ -23,12 +23,13 @@ they bring in.
 **The questions on the way.** Why does a patient owe anything once the plan has paid? Why do older
 patients receive fewer statements?
 
-After a health plan pays its share of a claim, the patient may still owe part of it, a deductible,
-coinsurance or a copay, and Kalpa sends them a statement, a bill for that share. Most of Kalpa's
-patients aged 65 and over are on Medicare, the federal programme for that age, and Medicare.gov
+After a health plan pays its share of a claim, the patient may still owe part of it. That share can
+be a deductible (what a patient pays each year before the plan starts paying), coinsurance (a
+percentage) or a copay (a fixed sum), and Kalpa sends the patient a statement, a bill for it. Most
+of Kalpa's patients aged 65 and over are on Medicare, the federal programme for that age, and Medicare.gov
 tells them "You usually pay nothing for Medicare-covered diagnostic laboratory tests" (checked
 1 October 2026), so they receive fewer statements than their share of the register. Patients'
-shares are slow money: at Quest Diagnostics, patients brought 12 percent of 2025's diagnostic net
+shares take longer to collect than plans' payments: at Quest Diagnostics, patients brought 12 percent of 2025's diagnostic net
 revenues but 20 percent of the money owed to Quest at the year's end (Form 10-K for 2025, checked
 1 October 2026).
 

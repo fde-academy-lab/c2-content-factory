@@ -25,7 +25,7 @@ where Kalpa draws blood, and the phone team.
 **The questions on the way.** Which ways can a patient book? Does a real lab book patients online
 at scale?
 
-A patient books a visit online, by phone, or by coming to a centre without booking. The operations
+A patient books a visit online or by phone, or comes to a centre without booking. The operations
 head wants to close the phone line and point callers to online booking. Quest Diagnostics' patient
 portal had more than 45 million registered users at the end of 2025 and lets patients schedule
 appointments and receive appointment reminders (Form 10-K for 2025, checked 1 October 2026).

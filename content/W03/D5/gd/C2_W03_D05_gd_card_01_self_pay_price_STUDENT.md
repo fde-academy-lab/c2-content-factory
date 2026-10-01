@@ -22,8 +22,8 @@ called?
 **The questions on the way.** What is a self-pay patient? Does a real lab sell tests this way?
 
 A self-pay patient pays Kalpa directly instead of through a health plan, because they have no plan
-or their plan will not pay for this panel, so Kalpa's list price is their price. January is when
-people want their numbers checked. Quest Diagnostics, a US lab company with about 2,400 patient
+or their plan will not pay for this panel, so Kalpa's list price is their price. The marketing head
+expects people to want their numbers checked as a new year starts. Quest Diagnostics, a US lab company with about 2,400 patient
 service centres, sells tests straight to consumers at QuestHealth.com, which its annual report
 calls consumer-initiated services (Form 10-K for 2025, checked 1 October 2026).
 

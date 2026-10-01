@@ -47,7 +47,7 @@ dollars Kalpa would be paid? What does each plan cost?
 | What | Number | Where it comes from |
 |---|---|---|
 | The hospital's prices for 40 common outreach tests, against Kalpa's list prices for the same tests | about twice Kalpa's | Assumption (the payer contracting head's comparison) |
-| What health plans allow Kalpa, as a share of its list prices | about 45 percent | Assumption (the payer contracting head) |
+| What health plans' contracts allow Kalpa for a test, the plan's and the patient's shares together, as a share of its list price | about 45 percent | Assumption (the payer contracting head) |
 | What one Kalpa patient brings in a year, in what the plans and the patient pay | $240 | Assumption (the finance head) |
 | An online order's average value, paid in full by the patient | $95 | Assumption (the marketing head) |
 | Online buyers who live near one of Kalpa's twelve patient service centres, where their blood would be drawn | 55 percent | Assumption (the marketing head's survey) |
