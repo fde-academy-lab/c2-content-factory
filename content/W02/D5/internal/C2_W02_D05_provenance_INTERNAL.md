@@ -77,6 +77,7 @@ the escalated case were looked at and draw every dot at its value.
 | Three customers of one invented segment (Rs 9,00,000 once, Rs 3,00,000 once, ten orders of Rs 1,00,000) | The chapter 1 set, item 3 |
 | A store's July export (20 single orders worth Rs 50,000, 5 instalment orders of Rs 10,000, 2 gateway orders of Rs 1,500) | The chapter 2 set, items 1 and 2 |
 | An app channel's share moving from 20 to 25 percent | The chapter 4 set, item 3 |
+| A September plan of Rs 3,00,00,000, against which September's real Rs 2,64,40,430 is 11.9 percent short | The chapter 4 set, item 6 |
 | Four orders (Rs 10,000 in two instalments, Rs 6,000 once, Rs 4,000 in two instalments, Rs 2,000 unpaid), and a Monday on which the workbook's Q2 reads Rs 9.79 crore | The chapter 5 set, items 2 and 5 |
 | Five rows of Rs 100 to Rs 500, one filtered and one hidden by hand | The chapter 6 set, item 3 |
 | An app-channel export by quarter (Q1: six single orders worth Rs 30,000 and two instalment orders of Rs 20,000; Q2: five single orders worth Rs 17,000, one instalment order of Rs 40,000 and one gateway order of Rs 3,000) | The practice lab, problem 3 |

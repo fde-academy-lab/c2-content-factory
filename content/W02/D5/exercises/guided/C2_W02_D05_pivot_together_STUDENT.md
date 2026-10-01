@@ -42,15 +42,15 @@ Open the customer table in Excel. Freeze the top row (View, Freeze Panes, Freeze
 the filter (Data, Filter). Before anything else, say the grain aloud: what one row stands for, how many
 rows there are, and over which months each row's revenue is added up.
 
-**What you should see.** 300 data rows and six columns, with `last_order_date` the only date.
+You should see 300 data rows and six columns, with `last_order_date` the only date.
 
 ## Step 2. Which segment carries the revenue in the pivot on the customer table?
 
 Select any cell in the table, then Insert, PivotTable, New Worksheet. Drag `segment` to Rows,
 `revenue` to Values (Sum), `customer_id` to Values (Count) and `orders` to Values (Sum).
 
-**What you should see.** Business Rs 19,65,99,040 from 39 customers; Retail-Plus Rs 9,77,410 from
-106; Retail-Core Rs 7,39,320 from 131; Student Rs 62,490 from 24.
+The pivot should read Business Rs 19,65,99,040 from 39 customers, Retail-Plus Rs 9,77,410 from 106,
+Retail-Core Rs 7,39,320 from 131 and Student Rs 62,490 from 24.
 
 ## Step 3. What do the leaves beside the pivot say, and do they multiply back?
 
@@ -58,9 +58,9 @@ In the two columns to the right of the pivot, type `=orders/customers` and `=rev
 cell formulas pointing at the pivot's own cells, and fill them down. Then multiply one segment's three
 leaves back.
 
-**What you should see.** Retail-Plus at 3.29 orders per customer and Rs 2,801 per order; Retail-Core
-at 2.99 and Rs 1,886. Multiplied back, 106 times 3.29 times Rs 2,801 is about Rs 9.77 lakh, the
-segment's revenue.
+The leaves should read Retail-Plus at 3.29 orders per customer and Rs 2,801 per order, and
+Retail-Core at 2.99 and Rs 1,886. Multiplied back, 106 times 3.29 times Rs 2,801 is about Rs 9.77
+lakh, the segment's revenue.
 
 ## Step 4. What does the same pivot say on the raw export, by quarter?
 
@@ -68,7 +68,7 @@ Open the raw export. Read its column names and say what you think one row stands
 `quarter` with `=IF(MONTH(E2)<=6,"Q1","Q2")`, where column E holds `order_date`, and fill it down.
 Insert a PivotTable with `segment` in Rows, `quarter` in Columns and `order_amount` in Values (Sum).
 
-**Write down what you see.** The grand total: ______________. Q2's total: ______________.
+Write down what you see. The grand total: ______________. Q2's total: ______________.
 Retail-Core, Q1 to Q2, up or down: ______________. Leave the pivot on screen and fix nothing yet.
 
 ## Step 5. How many rows and how many orders does the raw export hold, and what does that say about the pivot?
@@ -77,7 +77,7 @@ In an empty cell, count the rows: `=COUNTA(A2:A1451)`. Then add a helper column 
 `=IF(COUNTIF($A$2:A2,A2)=1,1,0)`, fill it down, and add it up: the helper is 1 on the first row of
 each order id and 0 on any repeat, so its sum counts the orders.
 
-**Write down what you see.** Rows: ______________. Orders: ______________. Set the pivot's grand total
+Write down what you see. Rows: ______________. Orders: ______________. Set the pivot's grand total
 from step 4 beside the warehouse's two quarters, Rs 19,84,00,000, and write one sentence on why they
 differ: ______________________________________________.
 
@@ -86,11 +86,11 @@ differ: ______________________________________________.
 Point the pivot's source at the range that includes the helper column, refresh it (right-click,
 Refresh), drag the helper into Filters and keep only 1. Read the grand total and each quarter again.
 
-**What you should see.** Rs 10,00,00,000 in Q1 and Rs 9,84,00,000 in Q2, the warehouse to the rupee.
+The pivot should now read Rs 10,00,00,000 in Q1 and Rs 9,84,00,000 in Q2, the warehouse to the rupee.
 Write Retail-Core's two quarters and its change: ______________.
 
-**The line for the tree.** One sentence on what one row of the raw export stands for, and how the
-tree on page two counts each order once.
+Last, write the line for the tree: one sentence on what one row of the raw export stands for, and
+how the tree on page two counts each order once.
 
 ---
 

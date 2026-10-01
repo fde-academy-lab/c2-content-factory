@@ -19,13 +19,13 @@ its number.
 
 **The questions on the way.**
 
-- Which idea does the second case test: where does a director's what-if go so the actual stays?
+- Which skill does the second case test?
 - Which numbers stand behind the pair's three lines?
 - Why does each of the five keys hold, from the moved card to the labelled scenario?
-- What three lines held the line?
-- Where did pairs go wrong in the role play, and why does each move fail?
+- Which three lines answer the director and keep Finance's number?
+- Which role-play moves fail, and why?
 
-## Which idea does the second case test: where does a director's what-if go so the actual stays?
+## Which skill does the second case test?
 
 A director's assumption is a fair question, and a sheet is a good place to answer it, as long as the
 assumption sits in its own labelled input beside the number Finance books. Typed over the source, the
@@ -112,7 +112,7 @@ the number Finance books.
   over cells.
 - d, the two lines with their labels swapped: the page then calls the scenario the actual.
 
-## What three lines held the line?
+## Which three lines answer the director and keep Finance's number?
 
 "Yes: here is the card with your assumption, Retail-Plus back to Rs 5.00 lakh, as a labelled scenario
 line, down 14.6 percent on Q1. The actual stays at Rs 4.13 lakh, down 29.4 percent, because it is the
@@ -121,7 +121,7 @@ sheet's quarters with the warehouse's control totals every time it recalculates,
 shows up as a Rs 86,620 drift before anyone reads it, and Monday's refresh would have wiped it with no
 record of why."
 
-## Where did pairs go wrong in the role play, and why does each move fail?
+## Which role-play moves fail, and why?
 
 | The move | Why it fails |
 |---|---|

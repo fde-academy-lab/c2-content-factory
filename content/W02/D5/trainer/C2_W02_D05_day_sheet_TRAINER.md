@@ -107,8 +107,8 @@ flowchart LR
 | Kahoot and tomorrow, 15 | SECTION 11, S28 to S31 | `kahoot/C2_W02_D05_quiz_STUDENT.md` | Two learners read their sentence before S28; the six lines (S29); the Kahoot (S30); Saturday and Monday, with Monday's question left open (S31) | S28 read by the trainer alone |
 
 **Which letters are keys?** The escalated case `cbdadacbba`, the second case `acbda`. The chapter
-sets: chapter 1 `cdabac`, chapter 2 `acbadb`, chapter 3 `dbcbac`, chapter 4 `cbbcda`, chapter 5
-`badbac`, chapter 6 `cdbcad`. The practice lab `acabcabcbccababadb`. The Kahoot, inline in its file:
+sets: chapter 1 `cdabac`, chapter 2 `acbabd`, chapter 3 `dbcbac`, chapter 4 `cbbcda`, chapter 5
+`badbac`, chapter 6 `cdbbad`. The practice lab `acabcabcbccababadb`. The Kahoot, inline in its file:
 b, d, a, c, c, a, d, b. Reasons for every letter are in `exercises/solutions/`.
 
 ---

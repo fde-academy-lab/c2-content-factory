@@ -6,11 +6,10 @@ the return question from Thursday, one level up.
 The day built the three things Meera's chief of staff opens on Monday without a login: the revenue
 tree by segment for both quarters, the protect list of fifty Retail-Plus members with a lookup by id,
 and one front-page number with its trend, in a workbook a director can change in the room. The
-warehouse is the database that holds one row per order and is the source of truth; the raw export
-held one row per payment. A lookup returns a value from the row that matches an id, and its match
-type decides what happens when the id is missing. A front-page card prints its number with its
-period, its comparison and its base. Anand Iyer is Kalpa Retail's finance controller. On Thursday the
-team built one row per customer in pandas, where `merge` joins two tables on a key.
+warehouse is the database that holds one row per order and is the source of truth, and the deck was
+built from two exports of it. A lookup returns a value from the row that matches an id. Anand Iyer is
+Kalpa Retail's finance controller. On Thursday the team built one row per customer in pandas, where
+`merge` joins two tables on a key.
 
 **Who needs the answer.** The trainer, closing the day. Each item is one of the day's calls made in
 seconds, and an item most of the room misses is the check most likely to be skipped on Monday, so it
@@ -94,8 +93,8 @@ director's what-if; counting each order once for Finance; a member lookup on a l
 *Tests: SUM adds the rows a filter hid; SUBTOTAL(109) adds only the rows on screen.*
 
 - SUBTOTAL(109) over the revenue column
-- AVERAGE over the revenue column
-- COUNT over the member ids
+- SUBTOTAL(9) over the revenue column
+- SUMIFS on the city over the revenue column
 - SUM over the revenue column  <- correct
 
 ---

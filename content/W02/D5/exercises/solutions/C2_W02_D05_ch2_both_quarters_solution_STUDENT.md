@@ -108,11 +108,11 @@ A design item, set as an order of steps. Each step runs once, a pivot sums every
 exists, and the deck takes the pivot as it stands at the end.
 
 The key is b, "Count rows against ids, flag first rows, pivot, tie to the warehouse". The count says
-what one row stands for (today, 1,450 rows for 1,000 orders, so a row is a payment), the flag marks
-each order's first row, the pivot sums only the flagged rows, and the tie compares the pivot's two
-quarters with the warehouse. The warehouse never saw the export or the flag, so a flag that missed an
-order or kept a repeat would disagree with it. Chapter 2's notebook ran that tie, and both quarters
-matched to the rupee, with the order counts.
+what one row stands for (today, 1,450 rows for 1,000 orders, so a row is a payment), the flag sets 1
+on each order's first row, the pivot sums only the flagged rows, and the tie compares the pivot's
+two quarters with the warehouse. The warehouse never saw the export or the flag, so a pivot whose
+flag missed an order or kept a repeat would disagree with it. Chapter 2's notebook ran that tie, and both
+quarters matched to the rupee, with the order counts.
 
 - a, "Pivot, tie to the warehouse, count rows against ids, flag first rows": the only pivot runs on
   every payment row, so the tie fails and the deck still carries a total near twice Finance's.

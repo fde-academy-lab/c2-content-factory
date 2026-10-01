@@ -15,8 +15,8 @@ booked revenue it holds. Counted once per order and tied to the warehouse, reven
 in Q1 and Rs 9,84,00,000 in Q2. A card is the number with what it needs to be read right: its period
 (the months it covers), its comparison (the figure it is set against), its base (the rupees a
 percentage is taken of, and the number's share of the whole), and a sentence on what moved it. A
-change is measured on the earlier period: Q2 minus Q1, divided by Q1. The front page has two slots:
-the company's card first, and one segment's card beneath it in the second. Kalpa's segments are
+change is measured on the earlier period: Q2 minus Q1, divided by Q1. Beneath the company's card,
+the front page has a second slot, which carries one segment's card. Kalpa's segments are
 Retail-Core (everyday shoppers), Retail-Plus (the paid membership tier), Business (corporate buyers
 invoiced in large amounts) and Student.
 

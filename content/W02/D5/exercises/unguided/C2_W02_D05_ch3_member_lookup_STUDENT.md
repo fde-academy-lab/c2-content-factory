@@ -13,12 +13,12 @@ holds one row per customer who ordered in those months; the head of Retail-Plus 
 retention offer. On the table, member ids sit in column A, rows 2 to 301, and revenue in column E. A
 lookup takes an id and returns a value from the same row. `VLOOKUP(id, table, column, range_lookup)`
 gives an exact match when range_lookup is FALSE, and #N/A when the id is missing; left out or TRUE, it
-gives an approximate match, which expects the first column to be sorted. `INDEX(E:E, MATCH(id, A:A,
-0))` is an exact match, and `IFERROR(x, "not in the table")` shows those words where x would be an
-error. `XLOOKUP(id, A:A, E:E, "not in the table")`
-is exact by default and takes the not-found words as its fourth argument; Microsoft says it is not
-available in Excel 2016 and Excel 2019, and LibreOffice 24.2 shows #NAME? for it. COUNTIF counts the
-rows holding a value, and SUMIFS adds the values on the rows that meet a condition.
+gives an approximate match, which expects the first column to be sorted.
+`INDEX(E:E, MATCH(id, A:A, 0))` is an exact match, and `IFERROR(x, "not in the table")` shows those
+words where x would be an error. `XLOOKUP(id, A:A, E:E, "not in the table")` is exact by default and
+takes the not-found words as its fourth argument; Microsoft says it is not available in Excel 2016
+and Excel 2019, and LibreOffice 24.2 shows #NAME? for it. COUNTIF counts the rows holding a value, and
+SUMIFS adds the values on the rows that meet a condition.
 
 **Who needs the answer.** The head of Retail-Plus spends a retention offer on each of the fifty, and
 the chief of staff reads a member's line aloud when a director names one. A lookup that answers with

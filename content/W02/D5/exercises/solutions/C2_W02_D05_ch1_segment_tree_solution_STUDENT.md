@@ -25,12 +25,12 @@ analyst who reviews every line, multiplies the leaves back and sends it home.
 
 ## Which skill does the chapter 1 set test?
 
-The skill is building a tree that multiplies back to the revenue it explains, which happens only when
-every leaf is a ratio of two sums: orders over customers, revenue over orders. The design items ask how the
-tree should reach a director (a pivot that re-slices, or formulas that recalculate the moment an
-input changes), which fact would switch that call, and which second route could catch the pivot when
-it is wrong. The other items ask the room to read the leaves, to see what an average of ratios does,
-and to see why a table with one row per customer cannot split two quarters.
+The skill is building a tree that multiplies back to the revenue it explains, which happens only
+when every leaf is a ratio of two sums: orders over customers, revenue over orders. The design items
+ask how the tree should reach a director (a pivot that re-slices, or formulas that recalculate the
+moment an input changes), which fact would switch that call, and which second route could catch the
+pivot when it is wrong. The other items ask the room to read the leaves, to see what an average of
+ratios does, and to see why a table with one row per customer cannot split two quarters.
 
 ## Why does each of the six keys hold, from the formula count to the second route?
 
@@ -92,11 +92,11 @@ A design item. The ask already says the sheet must recalculate when a director c
 assumption, and so far every assumption sits in an input cell the tree does not read, so the tree can
 stay a pivot while the inputs beside it are formulas.
 
-The key is b, "A director's typed assumption must move the tree's own cells at once".
-A PivotTable recalculates only when someone presses Refresh and cannot read an input cell at all,
-while a SUMIFS grid recalculates the moment a cell it reads changes. Once an assumption feeds the
-tree's own cells, the tree belongs in formulas. Chapter 6 builds the yellow input cells that take such
-an assumption.
+The key is b, "A director's typed assumption must move the tree's own cells at once". A PivotTable
+recalculates only when someone presses Refresh, and its values come only from its source rows, while
+a SUMIFS grid recalculates the moment a cell it reads changes. Once an assumption feeds the tree's
+own cells, the tree belongs in formulas. Chapter 6 builds the yellow input cells that take such an
+assumption.
 
 - a, "The table grows from 300 rows to 3,000 rows before Monday's first refresh": a PivotTable handles 3,000
   rows with no change, so size does not switch the call.
@@ -138,17 +138,18 @@ segment, and all twelve cells matched.
   total is the sum of its rows by construction, so this check cannot fail.
 - d, "A SUM of the table's whole revenue column, compared with the pivot's grand total": a different
   calculator on the same table, and it checks one number. A pivot that split the segments wrongly or
-  counted the wrong customers still matches the grand total, so eleven of the twelve cells go unchecked.
+  counted the wrong customers still matches the grand total, so eleven of the twelve cells go
+  unchecked.
 
 ## Why is the averaged leaf (item 3, d) the most tempting wrong answer?
 
 It is the hurried analyst's answer, and it looks careful: the analyst saw that the Sum of the column
-meant nothing, switched to Average, and got a number that looks like a basket size. On Kalpa's table the same move reads
-Business at Rs 11,66,786 an order against revenue over orders of Rs 10,45,740, 11.6 percent high,
-and a director who multiplies 39 customers by 4.82 orders by Rs 11.67 lakh gets Rs 2.28 crore more
-than Business sold. The average of ratios is furthest out where customers differ most in size, and
-Business baskets run from Rs 3.34 lakh to Rs 66.98 lakh. The check is the multiply-back, and the fix
-is a ratio of the pivot's own sums.
+meant nothing, switched to Average, and got a number that looks like a basket size. On Kalpa's table
+the same move reads Business at Rs 11,66,786 an order against revenue over orders of Rs 10,45,740,
+11.6 percent high, and a director who multiplies 39 customers by 4.82 orders by Rs 11.67 lakh gets
+Rs 2.28 crore more than Business sold. The average of ratios is furthest out where customers differ
+most in size, and Business baskets run from Rs 3.34 lakh to Rs 66.98 lakh. The check is the
+multiply-back, and the fix is a ratio of the pivot's own sums.
 
 ## Where does Costco face the same question about its paid tier?
 

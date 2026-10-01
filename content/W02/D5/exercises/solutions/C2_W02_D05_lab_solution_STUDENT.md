@@ -16,18 +16,18 @@ one you will repeat on a real deadline.
 
 **The questions on the way.**
 
-- Which idea does the lab test: that the day's checks travel to cases nobody has seen?
+- Which skill does the practice lab test?
 - How do the invented export's rows add up, three ways?
 - Why does each of the eighteen keys hold, problem by problem?
 
-## Which idea does the lab test: that the day's checks travel to cases nobody has seen?
+## Which skill does the practice lab test?
 
-Problem 1 is the operating rule applied to requests the team really receives: whoever has to trust a
-number, and how often it is rebuilt, decides where it lives. Problem 2 is three cards a director
-misreads: one with no period or comparison, one with no base, and one whose comparison points the
-wrong way. Problem 3 runs chapter 2's grain and chapter 4's card on an export small enough to hold in
-your head. Problem 4 is the day's checks on a sheet somebody else built, which is how the traps arrive
-in real work.
+The skill is carrying the day's checks to cases nobody has seen. Problem 1 is the operating rule
+applied to requests the team really receives: whoever has to trust a number, and how often it is
+rebuilt, decides where it lives. Problem 2 is three cards a director misreads: one with no period or
+comparison, one with no base, and one whose comparison points the wrong way. Problem 3 runs chapter
+2's grain and chapter 4's card on an export small enough to hold in your head. Problem 4 is the
+day's checks on a sheet somebody else built, which is how the traps arrive in real work.
 
 ## How do the invented export's rows add up, three ways?
 
@@ -55,15 +55,17 @@ last mile.
 - a, "SQL in the warehouse": a director in the room has no login and no query.
 - b, "pandas in a notebook": a director does not run a notebook in a meeting.
 
-### Q3. Counting each order once in the payment export before any total is computed: which tool owns it?
+### Q3. Counting each order once in the payment export every week, before any total is computed: which tool owns it?
 
-The key is a, "SQL in the warehouse". A dedupe Finance relies on is cleaning, and it belongs where it
-can be rerun and audited, ideally as an export that arrives at the order grain.
+The key is a, "SQL in the warehouse". A dedupe that runs every week under a number Finance relies on
+is cleaning, and it belongs where it can be rerun and audited, ideally as an export that arrives at
+the order grain.
 
-- b, "pandas in a notebook": fine for a one-off look, and wrong for the number the deck uses every
-  week.
-- c, "Excel on the export": the first-row flag met Friday's deadline, and as a standing step it is a
-  cleaning job with no record.
+- b, "pandas in a notebook": fine for a one-off look, and wrong for a step that runs every week under
+  the deck's number.
+- c, "Excel on the export": the first-row flag met Friday's deadline once, and as a weekly step it is a
+  cleaning job with no record, which on next quarter's 145,000 rows also costs about 10.5 billion
+  comparisons.
 
 ### Q4. Trying five definitions of an active member this afternoon, to see which one separates the members who stopped buying: which tool owns it?
 
@@ -83,18 +85,20 @@ The key is c, "Excel on the export". A lookup on a finished table, on a laptop, 
 ### Q6. The booked-against-collected report Finance signs every month: which tool owns it?
 
 The key is a, "SQL in the warehouse". Finance signs it, and its join of one order to several payments
-is the step a sheet gets wrong most quietly.
+is the step a sheet gets wrong with no error showing.
 
 - b, "pandas in a notebook": holds a signed number in a place nobody else reruns.
 - c, "Excel on the export": a lookup there reported Rs 8 crore outstanding that customers had paid.
 
-### Q7. A one-off look at whether returns cluster in one city, for a hypothesis nobody has funded yet: which tool owns it?
+### Q7. A one-off look at whether returns cluster in one city, for a hypothesis nobody has funded yet, when returns sit in neither of the exports the workbook reads: which tool owns it?
 
-The key is b, "pandas in a notebook". An unfunded hypothesis is exploration, and it needs a join of
-returns to cities that a notebook keeps reproducible.
+The key is b, "pandas in a notebook". An unfunded hypothesis is the analyst's iteration, and since
+returns sit in neither export, the look needs returns joined to cities, which a notebook keeps
+reproducible.
 
-- a, "SQL in the warehouse": builds a standing job for a question that may die tomorrow.
-- c, "Excel on the export": has no reproducible way to join returns to cities.
+- a, "SQL in the warehouse": the rule gives the warehouse what Finance relies on, and a hypothesis
+  nobody has funded moves upstream only once someone relies on it.
+- c, "Excel on the export": returns sit in neither export, so the sheet has nothing to count.
 
 ### Q8. A what-if on next quarter's Retail-Plus recovery, asked for in the growth review: which tool owns it?
 
@@ -109,8 +113,8 @@ which a director changes in the room.
 The key is b, "Which months grew, and against which, since neither is named". With no period and no
 comparison, the card is read against whatever the director remembers.
 
-- a, "Nothing, since a percentage carries its own meaning": a percentage carries no period and no
-  comparison.
+- a, "The rounding, since 12 percent could be anything from 11.5 to 12.4": half a point either way
+  changes no decision, while the missing months change every reading of the card.
 - c, "The size of the business, since there is no chart drawn beside it": a chart helps once the period is
   known, and does not supply it.
 - d, "The segment, since the card does not say which one it means": "Revenue" with no segment reads as

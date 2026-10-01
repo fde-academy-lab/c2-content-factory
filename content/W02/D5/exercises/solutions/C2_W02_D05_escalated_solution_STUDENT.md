@@ -21,14 +21,14 @@ director takes apart on Monday.
 
 **The questions on the way.**
 
-- Which idea does the escalated case test: every check of the day, with no trainer choosing the step?
+- Which skill does the escalated case test?
 - Which numbers should you have reached in each of the five parts?
 - Why does each of the ten keys hold, from one row per order to the warehouse's own query?
 - What do two good sentences to the chief of staff say?
 - Which wrong numbers does the debrief replay, and what replaces each?
 - Where does a release note like this one come up again at work?
 
-## Which idea does the escalated case test: every check of the day, with no trainer choosing the step?
+## Which skill does the escalated case test?
 
 The case runs the whole day at once: say the grain and count each order once, rank inside the segment
 the ask names, look up with an exact match that says when an id is missing, measure a change on the
@@ -158,7 +158,8 @@ does not pass.
   guards a different part.
 - c, ship a part only when every check in the file passes: one failing source would hold the tree and
   the card, which tie.
-- d, ship everything because every number is a formula: recalculating is not the same as being right.
+- d, ship everything because every number is a formula: formulas recalculate whether or not their inputs
+  tie, so a number that recalculates can still be wrong.
 
 ### Q9. Which total is what SUBTOTAL(109) shows at the foot of the list filtered to Mumbai?
 

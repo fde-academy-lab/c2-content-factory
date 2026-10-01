@@ -11,14 +11,15 @@ minutes; the rest are the practice lab's stretch or tonight's work.
 
 Kalpa's Q1 runs from April to June 2026 and its Q2 from July to September 2026. The warehouse is the
 Postgres database the team queried on Monday: it holds one row per order and is the source of truth
-every sheet ties back to, and it puts revenue, booked order value in rupees, at Rs 10,00,00,000 in Q1
-and Rs 9,84,00,000 in Q2. The raw export the data team sent for the deck holds one row per payment,
-with the order's amount repeated on every row of that order, so an order paid in two instalments
-sits on two rows, and so does an order the payment gateway posted twice. Excel's Remove Duplicates
-deletes the rows that are identical in every column ticked. A first-row flag,
+every sheet ties back to, and it puts revenue, booked order value in rupees, at Rs 10,00,00,000 in
+Q1 and Rs 9,84,00,000 in Q2; Finance, Kalpa's finance team, owns that booked revenue and keeps the
+books it comes from. The raw export the data team sent for the deck holds one row per payment, with
+the order's amount repeated on every row of that order, so an order paid in two instalments sits on
+two rows, and so does an order the payment gateway posted twice. Excel's Remove Duplicates deletes
+the rows that are identical in every column ticked. A first-row flag,
 `=IF(COUNTIF($A$2:A2,A2)=1,1,0)` filled down beside the order ids in column A, is 1 on the first row
-of each order and 0 on the rest, so adding only the flagged rows counts each order once. Kalpa's four
-segments are Retail-Core, Retail-Plus (the paid membership tier), Business and Student, and the
+of each order and 0 on the rest, so adding only the flagged rows counts each order once. Kalpa's
+four segments are Retail-Core, Retail-Plus (the paid membership tier), Business and Student, and the
 revenue tree splits revenue into customers, orders per customer and revenue per order.
 
 **Who needs the answer.** The chief of staff needs the tree for both quarters on page two, and Meera

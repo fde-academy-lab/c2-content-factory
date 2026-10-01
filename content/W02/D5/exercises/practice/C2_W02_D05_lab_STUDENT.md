@@ -32,7 +32,7 @@ sheet ten minutes before a meeting.
 - What does a hurried pivot print on an invented export, and what does the honest card say?
 - Which repair does a regional team's sheet need first, item by item?
 
-**What you post.** One line of eighteen letters in item order, no spaces, in this shape:
+Post one line of eighteen letters in item order, no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxxxxxxxxxxxxxxx
@@ -58,7 +58,7 @@ a) SQL in the warehouse
 b) pandas in a notebook
 c) Excel on the export
 
-### Q3. Counting each order once in the payment export before any total is computed: which tool owns it?
+### Q3. Counting each order once in the payment export every week, before any total is computed: which tool owns it?
 
 a) SQL in the warehouse
 b) pandas in a notebook
@@ -82,7 +82,7 @@ a) SQL in the warehouse
 b) pandas in a notebook
 c) Excel on the export
 
-### Q7. A one-off look at whether returns cluster in one city, for a hypothesis nobody has funded yet: which tool owns it?
+### Q7. A one-off look at whether returns cluster in one city, for a hypothesis nobody has funded yet, when returns sit in neither of the exports the workbook reads: which tool owns it?
 
 a) SQL in the warehouse
 b) pandas in a notebook
@@ -104,7 +104,7 @@ Twelve minutes. Three draft cards for the front page; for each, pick what a dire
 
 ### Q9. The card reads "Revenue up 12 percent". What will a director misread?
 
-a) Nothing, since a percentage carries its own meaning
+a) The rounding, since 12 percent could be anything from 11.5 to 12.4
 b) Which months grew, and against which, since neither is named
 c) The size of the business, since there is no chart drawn beside it
 d) The segment, since the card does not say which one it means
@@ -151,10 +151,10 @@ d) Down 10.0 percent, Rs 1,00,000 against Rs 1,10,000
 
 ### Q14. Counted once per order, which card goes on the front page?
 
-a) "App channel, Q2: Rs 60,000, down 14.3 percent on Q1 (Rs 70,000)"
-b) "App channel, Q2: Rs 60,000, down 16.7 percent on Q1 (Rs 70,000)"
-c) "App channel: Rs 1,30,000 across the half-year, down Rs 10,000"
-d) "App channel, Q2: Rs 60,000, down 9.1 percent on Q1 (Rs 70,000)"
+a) App channel, Q2: Rs 60,000, down 14.3 percent on Q1 (Rs 70,000)
+b) App channel, Q2: Rs 60,000, down 16.7 percent on Q1 (Rs 70,000)
+c) App channel: Rs 1,30,000 across the half-year, down Rs 10,000
+d) App channel, Q2: Rs 60,000, down 9.1 percent on Q1 (Rs 70,000)
 
 ---
 
