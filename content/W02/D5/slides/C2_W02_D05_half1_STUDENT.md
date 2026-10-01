@@ -1009,7 +1009,7 @@ flowchart LR
 The answer is c. Left out, the fourth argument "will always be TRUE or approximate match" (Microsoft Support, VLOOKUP, checked 30 September 2026), which returns the largest id not above the one asked for. **What breaks:** a director hears that C-0195 spent Rs 16,740 and sits at rank 15, and a retention offer goes to someone who placed no order between April and September.
 
 ```notes
-LIVE, 4 minutes. Run it live. Nothing on screen is red: that is the whole trap. The check that catches
+LIVE, 4 minutes. Run it live. Nothing on screen turns red, which is why the trap works. The check that catches
 it: test every lookup with an id you know is missing, and print the id returned beside the id asked
 for.
 ```
@@ -1395,7 +1395,7 @@ value: ~1,400 | label: cases per template | note: several rows per test result
 
 ```notes
 LIVE, 2 minutes. GOV.UK statement of 4 October 2020 and BBC News of 5 October 2020, both checked 30
-September 2026. Rows past the old format's limit were dropped, not rejected: nothing was red.
+September 2026. Rows past the old format's limit were dropped without an error.
 ```
 
 ---
