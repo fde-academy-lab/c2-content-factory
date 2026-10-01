@@ -18,30 +18,31 @@ on a wrong number.
 **The questions on the way.**
 
 - Which plausibility checks fail report X?
-- Which of these checks stops report Y?
+- Which one of these checks does report Y pass?
 - Which pair of checks stops report Z?
 - Which two checks would you keep if you could run only two?
-- What goes to Anand when the payments check fails late?
+- Which figures leave for Anand when two checks fail late?
 - Which source makes a check Kalpa's own tables cannot pass alone?
 
 An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
 
 - **Plausibility checks** read the report alone: collected is at most booked, the gap is not
   negative, every channel is present.
-- **Tie-back checks** recompute a figure from one source table alone and compare it with the report:
-  orders against the orders table; booked against the orders table; the gap against booked less
-  collected; the gap against the unpaid list's total; collected plus posted twice against posted from
-  the payments table alone.
+- **Tie-back checks** recompute a figure outside the report and compare it with the report: orders
+  against the orders table; booked against the orders table; the gap against booked less collected;
+  the gap against the never-paid and paid-short lists; collected plus posted twice against posted
+  from the payments table alone.
 
-The invented book: 10 orders, booked 50,000. Two orders were never paid, worth 4,000, so collected,
-each payment counted once, is 46,000. One payment of 1,000 was posted twice, so the payments table
-holds 47,000 against these orders.
+The invented book: 10 orders, booked 50,000. Two orders were never paid, worth 4,000, and no order was
+paid short, so collected, each payment counted once, is 46,000. One payment of 1,000 was posted twice,
+so the payments table holds 47,000 against these orders. Every report below carries all three
+channels.
 
 | Report | Orders on it | Booked | Collected | Gap |
 |---|---|---|---|---|
 | The true report | 10 | 50,000 | 46,000 | 4,000 |
-| X, written with a plain JOIN | 8 | 46,000 | 46,000 | 0 |
-| Y, the fan-out draft, 14 rows | 14 | 65,000 | 61,000 | 4,000 |
+| X, the quarter's dates in WHERE | 8 | 46,000 | 46,000 | 0 |
+| Y, the fan-out draft, its 14 rows read as orders | 14 | 50,000 | 61,000 | minus 11,000 |
 | Z, posted read as collected | 10 | 50,000 | 47,000 | 3,000 |
 
 Post one line, six letters in item order, no spaces:
@@ -61,14 +62,15 @@ b) the gap check alone
 c) all three
 d) the channel check alone
 
-### Q2. Which of these checks stops report Y?
+### Q2. Which one of these checks does report Y pass?
 
-Report Y's gap of 4,000 is right. Which one of these checks stops it?
+Report Y took its booked from the orders table, as chapter 2's draft did, and summed each order's
+amount on every payment row for collected. Which one of these checks does it pass?
 
-a) the gap against the unpaid list's own total
+a) the gap against the never-paid and paid-short lists
 b) booked on the page against booked from orders alone
-c) the gap against booked less collected
-d) collected at most booked, on every channel the page shows
+c) collected at most booked, on every channel the page shows
+d) orders on the page against orders in the table
 
 ### Q3. Which pair of checks stops report Z?
 
@@ -76,7 +78,7 @@ Report Z passes the orders and booked checks. Which pair of checks stops it?
 
 a) orders against the table, and a gap that is not negative
 b) the gap against booked less collected, and collected at most booked on every channel
-c) the gap against the unpaid list, and collected plus posted twice against posted
+c) the gap against the two lists, and collected plus posted twice against posted
 d) booked against orders alone, and every channel present
 
 ### Q4. Which two checks would you keep if you could run only two? (Design)
@@ -86,16 +88,18 @@ A new analyst can run only two checks late on reporting day. Which pair stops al
 a) orders against the table, and booked against orders alone
 b) collected at most booked, and a gap that is not negative
 c) the gap against booked less collected, and every channel present on the page
-d) booked against orders alone, and the gap against the unpaid list
+d) booked against orders alone, and the gap against the two lists
 
-### Q5. What goes to Anand when the payments check fails late? (Design)
+### Q5. Which figures leave for Anand when two checks fail late? (Design)
 
-At the end of reporting day, "collected plus posted twice against posted from the payments table alone" fails for the first time. What goes to Anand that day?
+Late on reporting day the suite runs on a new week's page. Orders, booked and the gap against booked
+less collected pass. The gap against the two lists fails, 3,000 against 4,000, and collected plus
+posted twice fails, 48,000 against 47,000. Which figures leave for Anand that day?
 
-a) the whole page, with a footnote that one check failed
-b) booked, the open line naming the check, collected held
-c) nothing at all, until the platform lead repairs the feed
-d) last week's collected figure beside this week's booked
+a) booked, collected and the gap, with a footnote naming both checks
+b) booked alone, with the open line; collected and the gap held
+c) booked and the gap, since the gap's arithmetic passed; collected held
+d) nothing at all, until both checks pass again
 
 ### Q6. Which source makes a check Kalpa's own tables cannot pass alone? (Design)
 

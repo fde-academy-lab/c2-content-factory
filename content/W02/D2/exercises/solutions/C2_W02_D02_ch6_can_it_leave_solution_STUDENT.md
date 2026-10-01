@@ -5,8 +5,9 @@ Answers: 1a 2b 3c 4d 5b 6c
 ## What does this set test?
 
 The set tests whether a check can fail at all, which check stops each wrong report, and what leaves
-the team on the day a check fails. Items 4, 5 and 6 are design items: the two checks
-that cover three wrong reports, the reporting-day rule, and the source outside Kalpa's own tables.
+the team on the day checks fail. Items 4, 5 and 6 are design items: the two checks that cover three
+wrong reports, which figures leave when two checks fail together, and the source outside Kalpa's own
+tables.
 
 ## What did the set give you to work from?
 
@@ -21,20 +22,20 @@ on a wrong number.
 
 - **Plausibility checks** read the report alone: collected is at most booked, the gap is not
   negative, every channel is present.
-- **Tie-back checks** recompute a figure from one source table alone and compare it with the report:
-  orders against the orders table; booked against the orders table; the gap against booked less
-  collected; the gap against the unpaid list's total; collected plus posted twice against posted from
-  the payments table alone.
+- **Tie-back checks** recompute a figure outside the report and compare it with the report: orders
+  against the orders table; booked against the orders table; the gap against booked less collected;
+  the gap against the never-paid and paid-short lists; collected plus posted twice against posted
+  from the payments table alone.
 
-The invented book: 10 orders, booked 50,000. Two orders were never paid, worth 4,000, so collected,
-each payment counted once, is 46,000. One payment of 1,000 was posted twice, so the payments table
-holds 47,000 against these orders.
+The invented book: 10 orders, booked 50,000. Two orders were never paid, worth 4,000, and no order was
+paid short, so collected, each payment counted once, is 46,000. One payment of 1,000 was posted twice,
+so the payments table holds 47,000 against these orders. Every report carries all three channels.
 
 | Report | Orders on it | Booked | Collected | Gap |
 |---|---|---|---|---|
 | The true report | 10 | 50,000 | 46,000 | 4,000 |
-| X, written with a plain JOIN | 8 | 46,000 | 46,000 | 0 |
-| Y, the fan-out draft, 14 rows | 14 | 65,000 | 61,000 | 4,000 |
+| X, the quarter's dates in WHERE | 8 | 46,000 | 46,000 | 0 |
+| Y, the fan-out draft, its 14 rows read as orders | 14 | 50,000 | 61,000 | minus 11,000 |
 | Z, posted read as collected | 10 | 50,000 | 47,000 | 3,000 |
 
 ## Why does each key hold, item by item?
@@ -43,27 +44,27 @@ holds 47,000 against these orders.
 
 Of the three plausibility checks, which ones fail report X?
 
-The key is a, "none of the three". X is consistent with itself: collected 46,000 is at most booked 46,000, the gap of 0 is not negative, and the channels of its eight orders are all present.
+The key is a, "none of the three". X is consistent with itself: collected 46,000 is at most booked 46,000, the gap of 0 is not negative, and all three channels are on it. Only a check against the tables sees the two missing orders.
 
-- b, "the gap check alone": 0 is not negative.
-- c, "all three": nothing on X contradicts itself; only a check against the tables can see the two missing orders.
-- d, "the channel check alone": nothing on X contradicts itself; only a check against the tables can see the two missing orders.
+- b, "the gap check alone": 0 is not negative, so the gap check passes.
+- c, "all three": nothing on X contradicts itself, so none of the three can fail.
+- d, "the channel check alone": every report carries all three channels, so the channel check passes.
 
-### Q2. Which of these checks stops report Y?
+### Q2. Which one of these checks does report Y pass?
 
-Report Y's gap of 4,000 is right. Which one of these checks stops it?
+Report Y took its booked from the orders table, as chapter 2's draft did, and summed each order's amount on every payment row for collected. Which one of these checks does it pass?
 
-The key is b, "booked on the page against booked from orders alone". Y repeats the multi-row orders, so its booked reads 65,000 against 50,000 in the orders table.
+The key is b, "booked on the page against booked from orders alone". Y's booked came from the orders table, so it matches the table's 50,000; the fan-out sits in collected and in the row count, which is why booked alone cannot be trusted to catch it.
 
-- a, "the gap against the unpaid list's own total": Y's gap equals the unpaid list's 4,000.
-- c, "the gap against booked less collected": 65,000 less 61,000 is 4,000, so it passes.
-- d, "collected at most booked, on every channel the page shows": 61,000 is at most 65,000.
+- a, "the gap against the never-paid and paid-short lists": Y's gap of minus 11,000 is far from the lists' 4,000.
+- c, "collected at most booked, on every channel the page shows": 61,000 exceeds 50,000.
+- d, "orders on the page against orders in the table": 14 rows read as orders against 10 in the table.
 
 ### Q3. Which pair of checks stops report Z?
 
 Report Z passes the orders and booked checks. Which pair of checks stops it?
 
-The key is c, "the gap against the unpaid list, and collected plus posted twice against posted". Z's gap of 3,000 misses the unpaid list's 4,000, and its collected 47,000 plus 1,000 posted twice is 48,000 against 47,000 in payments.
+The key is c, "the gap against the two lists, and collected plus posted twice against posted". Z's gap of 3,000 misses the lists' 4,000, and its collected 47,000 plus 1,000 posted twice is 48,000 against 47,000 in payments.
 
 - a, "orders against the table, and a gap that is not negative": Z has all ten orders and a gap above zero.
 - b, "the gap against booked less collected, and collected at most booked on every channel": 50,000 less 47,000 is 3,000, and 47,000 is at most 50,000.
@@ -73,21 +74,21 @@ The key is c, "the gap against the unpaid list, and collected plus posted twice 
 
 A new analyst can run only two checks late on reporting day. Which pair stops all three wrong reports, X, Y and Z?
 
-The key is d, "booked against orders alone, and the gap against the unpaid list". Booked against orders stops X (46,000) and Y (65,000); the gap against the unpaid list stops Z (3,000 against 4,000). Together they cover all three.
+The key is d, "booked against orders alone, and the gap against the two lists". Booked against orders stops X (46,000 against 50,000); the gap against the lists stops Y (minus 11,000) and Z (3,000), each against 4,000. Together they cover all three, though Y passes the booked check.
 
 - a, "orders against the table, and booked against orders alone": Z passes both, with ten orders and the right booked.
-- b, "collected at most booked, and a gap that is not negative": all three reports pass both.
-- c, "the gap against booked less collected, and every channel present on the page": all three reports pass both.
+- b, "collected at most booked, and a gap that is not negative": X passes both, with 46,000 against 46,000 and a gap of 0.
+- c, "the gap against booked less collected, and every channel present on the page": all three reports pass both, since each gap is its own booked less its own collected.
 
-### Q5. What goes to Anand when the payments check fails late? (Design)
+### Q5. Which figures leave for Anand when two checks fail late? (Design)
 
-At the end of reporting day, "collected plus posted twice against posted from the payments table alone" fails for the first time. What goes to Anand that day?
+Late on reporting day the suite runs on a new week's page. Orders, booked and the gap against booked less collected pass. The gap against the two lists fails, 3,000 against 4,000, and collected plus posted twice fails, 48,000 against 47,000. Which figures leave for Anand that day?
 
-The key is b, "booked, the open line naming the check, collected held". Booked ties to the orders table alone and leaves; collected, which this check guards, is held; the open line names the failed check, what it means and when it closes, and the platform lead hears that day.
+The key is b, "booked alone, with the open line; collected and the gap held". Both failures point at collected: plus the 1,000 posted twice it overshoots posted by 1,000, so a repeat sits inside it, and the gap, computed from that collected, misses the lists by the same 1,000. Booked ties to the orders table alone and passed, so it leaves with the open line naming both checks; collected and the gap wait, and the platform lead hears that day, since the posted check is the feed's.
 
-- a, "the whole page, with a footnote that one check failed": puts an unreconciled figure on the CEO's page with a footnote nobody reads.
-- c, "nothing at all, until the platform lead repairs the feed": withholds booked, which is reconciled.
-- d, "last week's collected figure beside this week's booked": mixes two weeks on one page.
+- a, "booked, collected and the gap, with a footnote naming both checks": puts two unreconciled figures on the CEO's page behind a footnote.
+- c, "booked and the gap, since the gap's arithmetic passed; collected held": the gap's own arithmetic only says it equals booked less collected, and with collected wrong the gap is wrong by the same 1,000.
+- d, "nothing at all, until both checks pass again": withholds booked, which ties to the orders table alone and passed.
 
 ### Q6. Which source makes a check Kalpa's own tables cannot pass alone? (Design)
 
@@ -101,15 +102,15 @@ The key is c, "the gateway's settlement file of what reached the bank". A settle
 
 ## Which item is worth arguing about?
 
-Item 5's option a, the footnote, feels honest, and it is how a wrong figure reaches a leadership page
-with a PASS stamp beside it. The rule separates what is reconciled from what is not, so the reader
-never has to judge a footnote: booked goes out that day, collected waits, and the open line says when
-it will follow.
+Item 5's option c feels careful: the gap's own arithmetic passed, so why hold it? The gap is booked
+less collected, so it inherits every error in collected; a check that the gap equals its own
+subtraction passes whatever collected says. Only the tie-back to the two lists tests the gap against
+something collected did not produce.
 
 ## Where does this pattern live in production?
 
 Wirecard's auditor, EY, refused to sign off on its 2019 accounts in June 2020, saying it was unable to
 confirm that the money existed, and people with first-hand knowledge told the Financial Times that
-from 2016 to 2018 the auditor had not checked directly with Singapore's OCBC Bank (BBC News, 18 June
-2020; the FT, republished by the Irish Times, 26 June 2020; both checked 1 Oct 2026). A check that
-reads a company's own records back to it cannot fail.
+from 2016 to 2018 the auditor had not checked directly with Singapore's OCBC Bank, relying instead on
+documents from Wirecard and its trustee (BBC News, 18 June 2020; the FT, republished by the Irish
+Times, 26 June 2020; both checked 1 Oct 2026). No check outside the company confirmed the cash.
