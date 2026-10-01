@@ -28,8 +28,6 @@ how does a chair recognise a finding? How do the grades close in 30 minutes? How
 run? How does the interview question sound in one breath? What moves when the day goes wrong? Which
 file serves which moment, and what follows the day?
 
----
-
 ## Which questions does Saturday answer, in the order the day asks them?
 
 **Who needs the answer.** Every member of staff, before the opening: each part of the day answers
@@ -55,8 +53,6 @@ Questions 1 to 4 are Dr Menon's four, in the order the presentation format deck,
 `slides/C2_W03_SAT_presentation_format_STUDENT.md`, teaches the groups to answer them. The chair asks
 the group each one if the group has not answered it by the end of its 17 minutes.
 
----
-
 ## What does Saturday start from, and where does it stop?
 
 **Who needs the answer.** The Programme Head, who decides what to cut when the day runs late.
@@ -73,8 +69,6 @@ What comes after it? What is cut first?
 | **Cut first** | A room's reserve, then the changeover from three minutes to one, then the week close from 15 minutes to 10. Never a group's question time below 8 minutes, never grade closure below 20, and never a group moved out of its sub-problem's run. |
 
 The day stops when the closure is signed and the nine improvements are on the board.
-
----
 
 ## Who runs what today?
 
@@ -94,8 +88,6 @@ once.
 
 Each panel reads its pages of the question bank, `trainer/C2_W03_SAT_question_bank_TRAINER.md`,
 before the first slot: about 15 minutes for its own sub-problems and the headline.
-
----
 
 ## How does one presentation slot run?
 
@@ -131,8 +123,6 @@ presentation and defence score is entered. The group's 34 marks do not wait.
 
 A slot is 17 minutes of the group's answer, 8 to 10 of the panel's questions and 3 of changeover:
 28 to 30 minutes.
-
----
 
 ## How do the two rooms fill the 300 minutes?
 
@@ -216,8 +206,6 @@ work until the week close."
 At the likely load each room hears three groups in 90 minutes, and at the heaviest the leader's room
 hears five or six and the expert's room four or three, with closure after lunch in every shape.
 
----
-
 ## How does a demo run cold, and what happens when it fails?
 
 **Who needs the answer.** The Academic TA, who prepares every machine, and each chair, who applies
@@ -239,15 +227,13 @@ executed notebook, and the panel scores the live demo in presentation and defenc
 The other 34 marks of the mini project are scored from the executed run, so a failed demo costs its
 own marks and never the analysis.
 
-**The machine, not the code.** If the hardware or the Codespace fails before the demo starts, the
+**When the machine fails before the code runs.** If the hardware or the Codespace fails before the demo starts, the
 Academic TA swaps in a spare machine; if none works, the group presents, and its demo runs cold in the
 room's reserve before the same panel. Until it runs, the chair records "machine failed: demo waits for
 the reserve", and no member's presentation and defence is scored.
 
 A demo that still fails after its two minutes costs presentation and defence its demo and leaves the
 group's 34 to the executed run.
-
----
 
 ## How are scores recorded as the day rolls?
 
@@ -286,8 +272,6 @@ costs is the panel's call: the sheet stops full marks and sets no number.
 Every score is entered once, in the changeover after its slot, and the closure workbook receives it
 from the scoring sheet.
 
----
-
 ## What is planted in the files, and how will a chair recognise a finding?
 
 **Who needs the answer.** Both chairs and the trainer, who must recognise a finding when a group
@@ -319,8 +303,6 @@ never the plant.
 Each question's plant is one plausible wrong number and one Weeks 1 and 2 move that exposes it, and
 the chair's job is to hear which of the two a group brought.
 
----
-
 ## How do the grades close in 30 minutes?
 
 **Who needs the answer.** The Programme Head, who signs the closure, and every learner, whose Build 1
@@ -349,8 +331,6 @@ Programme Head's decision, and no source in this repository sets it.
 
 Closure is done when the Sign-off sheet reads CLOSED, after 30 minutes at most.
 
----
-
 ## How does the week close run in 15 minutes?
 
 **Who needs the answer.** The trainer, who runs it, and the room, which leaves with one change to make
@@ -368,8 +348,6 @@ found and the words to say, are `trainer/C2_W03_SAT_week_close_notes_TRAINER.md`
 | 12 to 15 | The bridge: Monday is Week 4, back in Kalpa Retail, where Meera's growth plan needs its metric |
 
 The close ends on nine sentences on the board and Monday's question left open.
-
----
 
 ## How does the interview question sound in one breath?
 
@@ -391,8 +369,6 @@ what it cannot show: why patients booked less."
 
 What makes it strong: the claim with its denominator first, then Week 1 Friday's three moves (restate,
 bound, offer the test), and the edge of the evidence said before anyone else says it.
-
----
 
 ## What moves when the day goes wrong?
 
@@ -419,8 +395,6 @@ bound, offer the test), and the edge of the evidence said before anyone else say
 Cut in this order and stop as soon as the room is back on time: the reserve, the changeover, the
 week close's 15 minutes down to 10.
 
----
-
 ## Which file serves which moment of the day?
 
 **Who needs the answer.** Whoever is holding the room when a file is needed.
@@ -437,8 +411,6 @@ week close's 15 minutes down to 10.
 | Grade closure | `rubrics/C2_W03_SAT_grade_closure_TRAINER.xlsx` | The Programme Head, both scribes |
 | The week close | `slides/C2_W03_SAT_week_close_STUDENT.md` and `trainer/C2_W03_SAT_week_close_notes_TRAINER.md` | The trainer |
 | Checking a number | `internal/C2_W03_SAT_witness_INTERNAL.py` | Anyone |
-
----
 
 ## What follows the day?
 

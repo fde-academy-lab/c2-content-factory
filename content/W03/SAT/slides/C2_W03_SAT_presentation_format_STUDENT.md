@@ -37,7 +37,7 @@ flowchart TB
     class Q2 bet
 ```
 
-Your group answers one of the five questions Dr Menon's heads asked on Monday, and your slot is where her answer is tested.
+Kalpa Health runs a laboratory and two patient service centres, where blood is drawn, in each of six US metro areas and bills its patients' payers in dollars; your group answers one of the five questions its COO's heads asked on Monday.
 
 ```notes
 LIVE, 1 minute, at the opening; SELF-STUDY, 1 minute, on Wednesday night. Read the day's question,
@@ -153,7 +153,8 @@ flowchart LR
 LIVE, 1 minute, at the opening. Seventeen minutes is a hard stop: the scribe shows a card at five
 minutes left and at one minute left, and stops the group at 17. The panel then has 8 to 10 minutes,
 and three minutes of changeover close a slot of 28 to 30. Groups overrun on part 3, because cleaning
-is where the week went; the clock takes the overrun out of the analysis, never out of the questions.
+is where the week went; the clock takes the overrun out of the analysis, and the panel's questions keep
+their full time.
 Transition: what Dr Menon's team has already said.
 ```
 
@@ -409,7 +410,7 @@ label: 5 | title: Differently | body: What one change does your group take into 
 
 ```notes
 SELF-STUDY, 1 minute. Twenty-eight of the mini project's 40 marks sit on what these ten minutes
-show, so each part is built to be scored, never to fill time.
+show, so build each part to earn its marks.
 Transition: the translation.
 ```
 
@@ -450,12 +451,12 @@ Transition: the words.
 
 | Kalpa Health | Kalpa Retail | Where the pair stops fitting |
 |---|---|---|
-| A booking | An order | A booking can be a phlebotomist's visit to a patient's home |
+| A booking | An order | A booking can be a home collection, when a phlebotomist, who draws blood, visits the patient |
 | A test | An item | It runs in a laboratory, often far from where the patient was seen |
 | A no-show | A cancellation | The patient says nothing in advance; the centre learns it when nobody arrives |
 | A claim | An order's invoice | It goes to a payer, who pays weeks later what its contract allows |
 | A posting | A payment | It arrives from the payer weeks after the claim, through the posting system |
-| A payer | No twin | The patient is often not the one who pays |
+| A payer | No twin | Whoever pays the claim: a health plan, Medicare, Medicaid, or the patient when self-paying |
 
 ```notes
 SELF-STUDY, 1 minute. The first three pairs are the ones Monday's worksheet seeded; your map carries
@@ -582,8 +583,8 @@ flowchart LR
 
 ```notes
 SELF-STUDY, 1 minute. The change comes from your challenges log: the entry that cost the most time is
-usually the change worth naming. It names a behaviour, never a feeling, and the week close asks for
-the same sentence.
+usually the change worth naming. It names something the group will do on day one, and the week close
+asks for the same sentence.
 Transition: section 4, the live demo.
 ```
 
@@ -625,7 +626,7 @@ Transition: the three rules.
 
 ```cards
 icon: snowflake | eyebrow: Rule 1 | title: Cold | body: A fresh Codespace or a restarted kernel, run all, with no output kept from an earlier run.
-icon: file-text | eyebrow: Rule 2 | title: Raw files | body: The files exactly as Dr Menon's team sent them, read from the data folder, never a tidied copy.
+icon: file-text | eyebrow: Rule 2 | title: Raw files | body: The files exactly as Dr Menon's team sent them, read straight from the data folder with no hand edits.
 icon: play | eyebrow: Rule 3 | title: One run | body: One press, top to bottom, with two minutes to recover if it fails, as in front of a client. | tone: dark
 ```
 
@@ -738,7 +739,7 @@ Transition: what a failure costs.
 
 ---
 
-## D29. A failed demo costs its own marks, never the 34
+## D29. A failed demo costs its own marks and leaves the 34
 *What does a demo that still fails cost, and what does it leave standing?*
 
 ```stats
@@ -850,7 +851,7 @@ flowchart LR
     class R,B,T known
 ```
 
-On the invented figures the claim stands as stated, draw to result, and the test settles how much of the 4 hours is the courier's.
+On the invented figures the claim holds as stated, draw to result, and the test settles how much of the 4 hours is the courier's.
 
 ```notes
 SELF-STUDY, 1 minute. The figures are invented, on the lab director's question, which none of your
@@ -892,8 +893,8 @@ Transition: the answer.
 **In the interview.** [S] Present a finding to a panel and take a challenge on your caveat: restate, bound, and offer the test.
 
 ```notes
-SELF-STUDY, 1 minute. The answer is c. Under challenge, narrow and name the check; never defend
-blindly and never fold.
+SELF-STUDY, 1 minute. The answer is c. Under challenge, narrow the claim and name the check, the move
+between defending blindly and folding.
 Transition: when two answers are both honest.
 ```
 
@@ -1047,7 +1048,7 @@ Transition: the last hour before your slot.
 label: 1 | title: One cold run | body: Restart and run all on the raw files; every number on your slides appears in the output.
 label: 2 | title: One sentence | body: Each member says the claim, with its denominator and window, alone.
 label: 3 | title: One caveat | body: Each member says the fact that would change the claim, and the test that would settle it.
-label: 4 | title: One slide first | body: Open on the one-slide answer, never on the cleaning. | tone: dark
+label: 4 | title: One slide first | body: Open on the one-slide answer; the cleaning comes in part 3. | tone: dark
 ```
 
 **In the interview.** [S] Present a finding to a panel and take a challenge on your caveat.

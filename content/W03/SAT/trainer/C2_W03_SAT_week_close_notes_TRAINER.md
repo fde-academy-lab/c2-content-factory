@@ -21,8 +21,6 @@ said.
 found? What did the data hold, so you can recognise a finding when a chair describes it? What do you
 say on each slide? What do you do when the close goes wrong?
 
----
-
 ## What does the close need in hand before it starts?
 
 **Who needs the answer.** The trainer, in the minutes before grade closure ends.
@@ -38,8 +36,6 @@ table?
 
 The close needs one list from each chair and a place to write nine sentences.
 
----
-
 ## How do you collect what the room found?
 
 **Who needs the answer.** The trainer, who says in the close only what groups found, in their own
@@ -48,16 +44,14 @@ words.
 **The questions on the way.** Who fills the list, when, and with what?
 
 At the end of each room's last slot, ask the chair for one line per group on the list below. It takes
-two minutes and lets the close name what the room found rather than what the data held. Keep it on
-paper; it is never committed.
+two minutes and lets the close name only what the room found. Keep it on paper; it is never
+committed.
 
 | Group | Question | What the group found, in the chair's words | Found it, found part of it, or stopped at the first cut |
 |---|---|---|---|
 | G1 to G9 | 1 to 5 | One line | One of the three |
 
 The list is the only source the close quotes from.
-
----
 
 ## What did the data hold, so you can recognise a finding when a chair describes it?
 
@@ -85,8 +79,6 @@ A chair's line that names the number in the right-hand column with what it count
 that repeats the head's own number (5 percent, two metros down, 9 percent, the worst centre) is the
 first cut.
 
----
-
 ## What do you say on each slide?
 
 **Who needs the answer.** The trainer, slide by slide, in 15 minutes.
@@ -113,8 +105,8 @@ in it."
 
 **S8 and S9, 8 minutes.** Two minutes in groups, then each group reads its one sentence and you write it
 up exactly as said. Push back on any sentence that names a virtue ("communicate better") with one
-question: "What would I see you doing differently on day one of Build 2?" Take the rewrite, never an
-argument. The nine sentences go to the Programme Head for Build 2's first-day sheet; Build 2 opens on
+question: "What would I see you doing differently on day one of Build 2?" Take the rewrite and move
+on. The nine sentences go to the Programme Head for Build 2's first-day sheet; Build 2 opens on
 Tuesday 10 November.
 
 **S11, 2 minutes.** Read Meera's words from the slide. "This week you asked which branch is short. On
@@ -126,8 +118,6 @@ reorders per member." Stop there; Monday opens on it.
 
 Every live slide asks the room one thing, and the only findings said aloud are the ones a group said
 first.
-
----
 
 ## What do you do when the close goes wrong?
 

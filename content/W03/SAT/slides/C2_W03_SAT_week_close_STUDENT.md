@@ -29,7 +29,7 @@ flowchart LR
     class B bet
 ```
 
-Each group's answer to Dr Menon is its own one-slide answer, said to the panel today; these fifteen minutes are about the method that produced it.
+Kalpa Health is the US diagnostics business the week was built on; each group's answer to its COO, Dr Menon, is its own one-slide answer, said to the panel today, and these fifteen minutes are about the method behind it.
 
 ```notes
 LIVE, 30 seconds. Read the three questions. The middle one is the room's work and takes eight of the
@@ -218,7 +218,7 @@ because this week [what it cost us, from the challenges log].
 ```notes
 LIVE, 2 minutes in groups, then the reading. Push back on any sentence that names a feeling or a
 virtue with one question: "What would I see you doing differently on day one of Build 2?" Take the
-rewrite, never an argument.
+rewrite and move on.
 Transition: the nine sentences.
 ```
 

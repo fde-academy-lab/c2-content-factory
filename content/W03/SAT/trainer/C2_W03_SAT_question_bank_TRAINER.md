@@ -8,9 +8,9 @@ Posts to <!-- sync:module:W03/SAT -->Module 1: Foundations of AI and Data<!-- /s
 
 **Who needs the answer.** The two panel chairs, who hear each group for 25 to 30 minutes, ask for 8
 to 10 of them, and then score every member on presentation and defence and the group on the four
-group criteria. A question that hands a group the finding scores what the panel knows rather than
-what the group did; a panel that never asks the question that would expose a wrong number lets that
-number reach Dr Menon's board.
+group criteria. A question that hands a group the finding gives it marks for the panel's knowledge,
+and a panel that never asks the question that would expose a wrong number lets that number reach Dr
+Menon's board.
 
 **The questions on the way.** What did Dr Menon ask, and which question did each group take? How
 does the panel ask without handing over the answer? What does every group's headline rest on? For
@@ -20,8 +20,6 @@ separates two honest answers? Which questions suit any group? How is what the pa
 and what does a failed demo cost? What does the panel do when a slot goes wrong?
 
 Read the first three sections and the sections for your own room's questions: about 15 minutes.
-
----
 
 ## What did Dr Menon ask, and which question did each group take?
 
@@ -69,10 +67,8 @@ The domain dossier the room read on Monday,
 full; section 3 follows one claim from list price to cash, and section 5 gives each revenue-cycle
 metric's formula.
 
-Dr Menon's question is the week's, and each group's answer is one part of it: which part of the
-business is short, measured how, and what should she do next.
-
----
+Dr Menon asked why test volumes grew 5 percent against a plan of 18, and each of the nine groups took
+one of her five heads' questions.
 
 ## How does the panel ask without handing a group the answer?
 
@@ -114,8 +110,6 @@ that line each group got.
 The panel asks for the evidence first, then the caveat, then the quiet member, and lets the group's
 own answers show how far along the line it got.
 
----
-
 ## What does every group's headline number rest on?
 
 **Who needs the answer.** Every chair, for every group: each brief opens on Dr Menon's 5 percent,
@@ -151,8 +145,6 @@ quarter.
 
 Every reading of test volumes without the contract grows between 3.2 and 8.6 percent, so every
 honest headline is short of the plan of 18, and a group's job was to say which reading it used.
-
----
 
 ## Which branch of billed revenue is short, and how much of the gap does it explain?
 
@@ -254,8 +246,6 @@ metros that fell."
 Sub-problem 1's answer: without the one employer claim, billed revenue grew 8.3 percent, and the
 short branches are Chicago and Philadelphia by metro, or Medicaid and self-pay by payer.
 
----
-
 ## How far did bookings really fall in Chicago and Philadelphia, and why?
 
 **Who needs the answer.** The patient service centres' operations head, who decides this month
@@ -338,8 +328,6 @@ not to book.
 
 Sub-problem 2's answer: bookings in Chicago and Philadelphia fell 12.2 percent, and the old export
 alone doubles that to 23.0 because both metros moved to a new booking system on 18 September.
-
----
 
 ## Which claims are unpaid, how many dollars is that, and can finance trust the figure?
 
@@ -437,8 +425,6 @@ working.
 Sub-problem 3's answer: Kalpa Health collected $801,314 net on $2,201,099 billed; 398 claims worth
 $253,165 have no posting at all, and the figure finance can trust drops 280 double posts first.
 
----
-
 ## Is KH-ATL-03 really worse at no-shows than the other eleven centres?
 
 **Who needs the answer.** The patient service centres' operations head, who decides between a second
@@ -504,9 +490,8 @@ then the chance check on 79 slots.
 **The caveat challenge.** "Chance gives your gap one time in five, so you call it noise. But 19 is a
 quarter worse than 15. Do you tell the operations head to do nothing?" Listen for "not proven either
 way": 79 slots cannot separate this centre from the rest in either direction, so the group proposes a
-cheap step, such as reminder calls, and a re-count next quarter, rather than a closure. A strong group
-adds that a missed draw can mean a missed diagnosis, which is a reason for the reminders, never for a
-closure on this evidence.
+cheap step, such as reminder calls, and a re-count next quarter. A strong group adds that a missed
+draw can mean a missed diagnosis, which argues for the reminders and against acting on 79 slots alone.
 
 **The quietest member.** "Why did you leave out the walk-ins, and what happens to every other
 centre's rate when you do?" The others' rate moves from 7.9 to 15.1 percent, which closes most of
@@ -521,8 +506,6 @@ missed?" Group A's claim does not survive the denominator question; a Group A th
 
 Sub-problem 4's answer: on the slots a patient could miss, KH-ATL-03 runs 19.0 percent against 15.1,
 a gap chance gives one time in five, so the centre is not shown to be worse.
-
----
 
 ## Did the free at-home collection offer lift bookings 9 percent?
 
@@ -618,8 +601,6 @@ claim.
 Sub-problem 5's answer: the 9.0 percent is real arithmetic and a comparison of metros; inside Dallas,
 Atlanta and Phoenix offered patients booked less, so the files do not support extending the offer.
 
----
-
 ## Which questions suit any group?
 
 **Who needs the answer.** Either chair, for the minutes left after the sub-problem questions, and for
@@ -634,14 +615,12 @@ and what does a strong answer do for each?
 | The reconciliation | "Rows in, rows kept, rows set aside: do they add up?" | Gives three counts that add up, from the decisions log |
 | The decision you would defend | "Which row of your decisions log would you defend to Dr Menon's finance head?" | Reads the reason, and the reason says more than the issue |
 | The demo | "Change one input and rerun that cell: what should move?" | Predicts the direction before it runs, then checks |
-| Differently | "If you started again on Monday, what would you do first?" | Names a behaviour from the challenges log, never a feeling |
+| Differently | "If you started again on Monday, what would you do first?" | Names a behaviour from the challenges log, with the entry that earned it |
 | The cost of an error | "What changes because a wrong number here can mean a missed diagnosis rather than a missed sale?" | Names a check it ran twice, or a claim it narrowed, because of it |
 | The interview angle | [S] "Present your finding to me as if I were the panel, and I will challenge your caveat." | Restates the claim, bounds it, and offers the test that would settle the rest |
 
 The interview move the week asks for is the one Week 1 Friday rehearsed: restate the claim with its
 denominator, bound what the data can and cannot say, and offer the test that would change it.
-
----
 
 ## How does the panel score what it heard, and what does a failed demo cost?
 
@@ -686,8 +665,6 @@ defence, since full marks there begin with a demo that runs cold.
 The panel scores the group's 34 from the executed run in every case, and the live demo only ever
 moves presentation and defence.
 
----
-
 ## What does the panel do when a slot goes wrong?
 
 **Who needs the answer.** The chair of the room where it happens, in the minute it happens.
@@ -704,10 +681,6 @@ voice, a wrong claim defended, or a group asking for the right answer?
 | One member answers every question | Name the next person for each question, and put the quietest-member question to whoever has spoken least; the scribe flags anyone still silent for the separate questions in the room's reserve |
 | A group's claim is wrong and it defends it | Ask the question that would break it once, let the answer stand, and move on; never argue a claim in the room |
 | A group asks the panel for the right answer | Say that the week close carries what the room found, and ask what evidence would change the group's mind |
-
-In every case the panel keeps its questions and leaves the findings to the groups.
-
----
 
 ## Where does every number on this page come from?
 
