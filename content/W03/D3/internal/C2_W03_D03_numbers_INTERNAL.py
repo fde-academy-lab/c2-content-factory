@@ -133,6 +133,20 @@ put("ny claims and billed by site", {k: (int(v["count"]), round(v["sum"], 2)) fo
 put("ny site kinds", dict(zip(sites.loc[sites["metro"] == "New York", "site_code"],
                               sites.loc[sites["metro"] == "New York", "kind"])))
 
+# Why New York's mean claim fell, for the run sheet's plant table only (TRAINER): the home
+# collections, and the collection fee a claim carries above the list prices booked.
+listed = lines[lines["line"].isin(["test", "panel"])].assign(
+    v=lambda d: d["price_each"].astype(float) * d["quantity"].astype(int)).groupby("booking_id")["v"].sum()
+m["fee"] = (m["amt"] - m["booking_id"].map(listed)).round(2)
+home = m[m["channel"] == "at-home"]
+put("ny home claims by quarter, their mean", (home.groupby("q_c").size().to_dict(),
+                                              home.groupby("q_c")["amt"].mean().round(2).to_dict()))
+put("ny home claims with no fee, by quarter; all from offered patients",
+    (home[home["fee"] == 0].groupby("q_c").size().to_dict(),
+     bool(home.loc[home["fee"] == 0, "patient_id"].isin(campaign["patient_id"]).all())))
+put("ny other claims' mean by quarter", m[m["channel"] != "at-home"].groupby("q_c")["amt"].mean().round(2).to_dict())
+put("ny claims with a $20 fee line", int((m["fee"] == 20).sum()))
+
 # The sizing cell's four options, on the New York files as exported.
 put("ny option rows read: totals, claims tree, reconciled tree, export tree",
     (len(nyc), len(nyc), len(ny_raw) + len(nyc), len(ny_raw)))
