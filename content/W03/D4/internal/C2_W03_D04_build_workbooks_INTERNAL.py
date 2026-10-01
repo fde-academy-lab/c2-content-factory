@@ -41,11 +41,49 @@ assert sum(n for _, n in GROUPS) == facts["cohort"]["students"]["value"]
 assert len(GROUPS) == facts["cohort"]["build_groups"]["value"]
 ASSESSORS = [("Programme Head", "in person"), ("Academic TA", "in person"), ("Principal Advisor", "online")]
 SETS = {"A": ("T01-L1", "T04-L2", "T07-L3"), "B": ("T02-L1", "T05-L2", "T08-L3"),
-        "C": ("T03-L1", "T06-L2", "T09-L3"), "D": ("T04-L1", "T07-L2", "T10-L3"),
-        "E": ("T05-L1", "T08-L2", "T01-L3"), "F": ("T06-L1", "T09-L2", "T02-L3"),
-        "G": ("T07-L1", "T10-L2", "T03-L3"), "H": ("T08-L1", "T01-L2", "T04-L3")}
-SWAPS = [("T04-L2", "4", "T02-L2"), ("T07-L2", "3", "T02-L2"), ("T09-L2", "3", "T02-L2"),
-         ("T04-L3", "5", "T05-L3")]
+        "C": ("T03-L1", "T06-L2", "T09-L3"), "D": ("T09-L1", "T02-L2", "T10-L3"),
+        "E": ("T10-L1", "T08-L2", "T05-L3"), "F": ("T06-L1", "T09-L2", "T02-L3"),
+        "G": ("T05-L1", "T10-L2", "T03-L3"), "H": ("T08-L1", "T01-L2", "T04-L3")}
+RESERVES = ("T04-L1", "T07-L1", "T03-L2", "T07-L2", "T01-L3", "T06-L3")
+# The questions that rehearse each sub-problem's viva, from the question bank's swap table: a learner
+# from that sub-problem is asked the question at the same level from the set four letters on instead.
+CLOSE = {"1": {"T01-L1", "T01-L2", "T01-L3"},
+         "2": {"T02-L1", "T02-L2", "T03-L2"},
+         "3": {"T03-L1", "T03-L3", "T06-L3", "T07-L1", "T07-L2", "T07-L3", "T09-L2"},
+         "4": {"T04-L1", "T04-L2"},
+         "5": {"T02-L3", "T04-L1", "T04-L3"}}
+LETTERS = "ABCDEFGH"
+
+
+def far(letter):
+    return LETTERS[(LETTERS.index(letter) + 4) % 8]
+
+
+SWAPS = [(q, sp, SETS[far(letter)][lev]) for sp, close in CLOSE.items()
+         for letter, qs in SETS.items() for lev, q in enumerate(qs) if q in close]
+
+
+def asked(letter, sp):
+    swap = {(q, s): r for q, s, r in SWAPS}
+    return tuple(swap.get((q, sp), q) for q in SETS[letter])
+
+
+# The swap rule's promises, checked before any sheet is written: every question asked sits away from
+# the learner's sub-problem, no seat holds two questions from one family, no two seats among any four
+# consecutive set letters (one group's seats) share a question, and every sub-problem keeps a clean
+# reserve at each level.
+assert len({q for qs in SETS.values() for q in qs} | set(RESERVES)) == 30
+for sp, close in CLOSE.items():
+    for i, letter in enumerate(LETTERS):
+        seat = asked(letter, sp)
+        assert not set(seat) & close, (sp, letter, seat)
+        assert len({q[:3] for q in seat}) == 3, (sp, letter, seat)
+        window = [asked(LETTERS[(i + k) % 8], sp) for k in range(4)]
+        for lev in range(3):
+            assert len({w[lev] for w in window}) == 4, (sp, letter, lev)
+    for lev in range(3):
+        assert any(r not in close for r in RESERVES if r.endswith(f"L{lev + 1}")), (sp, lev)
+assert len(SWAPS) == 11
 SUBPROBLEMS = ["1 revenue", "2 bookings", "3 billing", "4 no-shows", "5 campaign"]
 # This pack's reading of the approved rubric, as the assessors' guide prints it; it sets no marks.
 FULL_MARKS = [
@@ -109,8 +147,10 @@ def build_roster():
         11: ("Each seat's set letter picks its three technical questions from the Sets sheet, consecutive letters "
              "within a group, so no two group-mates meet the same set. Its seat number picks its viva probe: seat "
              "1 takes P1. Where a set's question sits close to the group's own sub-problem, the Sets sheet's swap "
-             "table puts the reserve in its place, and the Seats, Roster and Grid sheets print the swapped question."),
-        12: "Print the Grid sheet for the huddle: one row per slot, one column per assessor.",
+             "table puts the question at the same level from the set four letters on in its place, and the Seats, "
+             "Roster and Grid sheets print the question asked."),
+        12: ("Print the Grid sheet for the huddle: one row per slot, one column per assessor. Print the Seat list "
+             "sheet for the learners: it shows each seat's slot, minutes and assessor and nothing else."),
         14: "What moves when a learner is absent?",
         15: ("Known before the day: set that seat's present flag to no. The queue closes up and the day ends one "
              "slot sooner for one assessor. Then read the clash count on Settings: above zero means two group-mates "
@@ -153,15 +193,19 @@ def build_roster():
                  '"block 2, minute "&((ROUNDUP(B14/B12,0)-B9)*B8-B4)))'),
                 (18, "Close starts at", '="block 2, minute "&(B5-B7)'),
                 (19, "Slots where two group-mates are out at once", '=COUNTIF(Roster!L2:L43,"yes")'),
-                (20, "Assessor minutes in mocks", "=B14*B3")]
+                (20, "Assessor minutes in mocks", "=B14*B3"),
+                (21, "Seats asked two questions from one family", '=COUNTIF(Seats!M2:M36,"repeat")'),
+                (22, "Seats sharing a question with a group-mate", '=COUNTIF(Seats!N2:N36,"yes")')]
     for row, label, formula in computed:
         put(st, f"A{row}", label)
         put(st, f"B{row}", formula)
     put(st, "C19", "Zero by default. Above zero after an absence: swap call orders on Seats.")
-    put(st, "A22", "Load per assessor", bold=True)
-    header(st, 23, ["Assessor", "Mode", "Learners", "Minutes in mocks", "Last mock ends at"])
+    put(st, "C21", "Zero for every allocation. Above zero means a set or a swap on the Sets sheet was edited.")
+    put(st, "C22", "Zero for every allocation. Above zero means a set or a swap on the Sets sheet was edited.")
+    put(st, "A24", "Load per assessor", bold=True)
+    header(st, 25, ["Assessor", "Mode", "Learners", "Minutes in mocks", "Last mock ends at"])
     for i, (name, mode) in enumerate(ASSESSORS):
-        r = 24 + i
+        r = 26 + i
         put(st, f"A{r}", name)
         put(st, f"B{r}", mode)
         put(st, f"C{r}", f'=COUNTIFS(Roster!B2:B43,A{r},Roster!H2:H43,"G*")')
@@ -169,9 +213,9 @@ def build_roster():
         last = f'_xlfn.MAXIFS(Roster!M2:M43,Roster!B2:B43,A{r},Roster!H2:H43,"G*")'
         put(st, f"E{r}", f'=IF(C{r}=0,"no mocks",IF({last}>$B$5,"block 2, minute "&({last}-$B$5),'
                          f'"block 1, minute "&{last}))')
-    put(st, "A27", "Total")
-    put(st, "C27", "=SUM(C24:C26)")
-    put(st, "D27", "=SUM(D24:D26)")
+    put(st, "A29", "Total")
+    put(st, "C29", "=SUM(C26:C28)")
+    put(st, "D29", "=SUM(D26:D28)")
 
     sets = wb.create_sheet("Sets")
     widths(sets, {"A": 8, "B": 12, "C": 12, "D": 12, "F": 16, "G": 14, "I": 90})
@@ -187,10 +231,13 @@ def build_roster():
         put(sets, f"G{i + 2}", instead)
     put(sets, "I1", "What the two tables do", HEAD, bold=True)
     put(sets, "I2", ("A swap key is a question and the first digit of a group's sub-problem. When a seat's set "
-                     "holds that question and its group took that sub-problem, the seat is asked the reserve "
-                     "beside it, so the technical half never rehearses the learner's own viva."))
-    put(sets, "I3", "The reserves are T09-L1, T10-L1, T02-L2, T03-L2, T05-L3 and T06-L3.")
-    put(sets, "I4", "T03-L2 is never asked of a learner whose group took sub-problem 2.")
+                     "holds that question and its group took that sub-problem, the seat is asked the question "
+                     "beside it: the one at the same level from the set four letters on, which no group-mate "
+                     "meets, so the technical half never rehearses the learner's own viva."))
+    put(sets, "I3", ("The reserves are T04-L1, T07-L1, T03-L2, T07-L2, T01-L3 and T06-L3, and the question bank's "
+                     "reserve table says which of them each sub-problem may take."))
+    put(sets, "I4", ("The Seats sheet flags a seat asked two questions from one family and a question two "
+                     "group-mates share; Settings counts both, and both read zero."))
 
     gr = wb.create_sheet("Groups")
     widths(gr, {"A": 8, "B": 30, "C": 10, "D": 10, "E": 14, "F": 20})
@@ -212,11 +259,14 @@ def build_roster():
     put(gr, "E11", "=SUM(E2:E10)")
 
     se = wb.create_sheet("Seats")
-    widths(se, {c: 12 for c in "ABCDEFGHIJKL"})
+    widths(se, {c: 12 for c in "ABCDEFGHIJKLMN"})
     se.column_dimensions["F"].width = 18
+    se.column_dimensions["N"].width = 20
     header(se, 1, ["Call order", "Group", "Seat", "Seat label", "Set", "Sub-problem", "Present",
-                   "Queue position", "Viva probe", "L1", "L2", "L3"])
+                   "Queue position", "Viva probe", "L1", "L2", "L3", "One family twice",
+                   "Shares a question with a group-mate"])
     queue = [(g, s) for s in range(1, 5) for g, n in GROUPS if s <= n]
+    last_swap = len(SWAPS) + 1
     for i, (g, s) in enumerate(queue):
         r = i + 2
         put(se, f"A{r}", i + 1)
@@ -231,7 +281,12 @@ def build_roster():
         put(se, f"I{r}", f'="P"&C{r}')
         for col, src in (("J", "B"), ("K", "C"), ("L", "D")):
             base = f"INDEX(Sets!{src}$2:{src}$9,MATCH(E{r},Sets!A$2:A$9,0))"
-            put(se, f"{col}{r}", f'=IFERROR(INDEX(Sets!G$2:G$5,MATCH({base}&"|"&LEFT(F{r},1),Sets!F$2:F$5,0)),{base})')
+            put(se, f"{col}{r}", f'=IFERROR(INDEX(Sets!G$2:G${last_swap},MATCH({base}&"|"&LEFT(F{r},1),'
+                                 f'Sets!F$2:F${last_swap},0)),{base})')
+        put(se, f"M{r}", f'=IF(OR(LEFT(J{r},3)=LEFT(K{r},3),LEFT(J{r},3)=LEFT(L{r},3),LEFT(K{r},3)=LEFT(L{r},3)),'
+                         f'"repeat","ok")')
+        put(se, f"N{r}", f'=IF(COUNTIFS(B$2:B$36,B{r},J$2:J$36,J{r})+COUNTIFS(B$2:B$36,B{r},K$2:K$36,K{r})'
+                         f'+COUNTIFS(B$2:B$36,B{r},L$2:L$36,L{r})>3,"yes","no")')
 
     ro = wb.create_sheet("Roster")
     cols = ["Slot", "Assessor", "Mode", "Block", "Starts, minute of block", "Ends, minute of block",
@@ -274,6 +329,26 @@ def build_roster():
         put(gd, f"D{r}", f"=Roster!F{first}")
         for a, col in enumerate("EFG"):
             put(gd, f"{col}{r}", f"=Roster!R{first + a}")
+
+    # The learners' copy: slot, minutes and assessor only, since the Grid's set, probe and question ids
+    # would tell a learner mocked early what the learners after them will be asked.
+    sl = wb.create_sheet("Seat list")
+    header(sl, 1, ["Seat", "Slot", "Block", "Starts, minute of block", "Ends, minute of block", "Assessor",
+                   "Where"])
+    widths(sl, {"A": 8, "B": 26, "C": 7, "D": 12, "E": 12, "F": 20, "G": 46})
+    r = 2
+    for g, n in GROUPS:
+        for s_ in range(1, n + 1):
+            m = f"MATCH(A{r},Roster!$H$2:$H$43,0)"
+            put(sl, f"A{r}", f"{g}-S{s_}")
+            put(sl, f"B{r}", f'=IFERROR(INDEX(Roster!$A$2:$A$43,{m}),"not placed: see the trainer")')
+            for col, src in (("C", "D"), ("D", "E"), ("E", "F"), ("F", "B")):
+                put(sl, f"{col}{r}", f'=IFERROR(INDEX(Roster!${src}$2:${src}$43,{m}),"")')
+            put(sl, f"G{r}", f'=IFERROR(IF(INDEX(Roster!$C$2:$C$43,{m})="online",'
+                             f'"online, from your own laptop in the quiet room","in person"),"")')
+            r += 1
+    put(sl, f"A{r + 1}", ("The trainer calls each learner five minutes before their slot. Every time is a minute "
+                          "inside one of the day's two 180-minute blocks."))
     wb.save(ROSTER)
 
 
@@ -404,7 +479,10 @@ ROSTER_YAML = """# How does Mock R1's roster prove it computes, and that its ver
 
 Read by `scripts/xlsx_recalc.py`. It recalculates the roster through LibreOffice, asserts the day's
 verdicts as shipped, then changes one input at a time and asserts that the verdicts move. The
-workbook is written by `content/W03/D4/internal/C2_W03_D04_build_workbooks_INTERNAL.py`.
+workbook is written by `content/W03/D4/internal/C2_W03_D04_build_workbooks_INTERNAL.py`. Five flips
+put every group on one sub-problem in turn and assert that no seat is asked two questions from one
+family and no two group-mates share a question; two more edit a set and assert that both checks
+catch it.
 
 ```yaml
 workbook: C2_W03_D04_roster_TRAINER.xlsx
@@ -412,10 +490,15 @@ verdicts:
   - {sheet: Settings, cell: B16, expect: "fits: 36 slots for 35 learners"}
   - {sheet: Settings, cell: B17, expect: "block 2, minute 145"}
   - {sheet: Settings, cell: B19, expect: "0"}
-  - {sheet: Settings, cell: C27, expect: "35"}
-  - {sheet: Settings, cell: E26, expect: "block 2, minute 120"}
+  - {sheet: Settings, cell: B21, expect: "0"}
+  - {sheet: Settings, cell: B22, expect: "0"}
+  - {sheet: Settings, cell: C29, expect: "35"}
+  - {sheet: Settings, cell: E28, expect: "block 2, minute 120"}
   - {sheet: Grid, cell: E2, expect: "G1-S1, set A, P1: T01-L1, T04-L2, T07-L3"}
   - {sheet: Grid, cell: G13, expect: "spare"}
+  - {sheet: Seat list, cell: B2, expect: "1"}
+  - {sheet: Seat list, cell: F2, expect: "Programme Head"}
+  - {sheet: Seat list, cell: G10, expect: "online, from your own laptop in the quiet room"}
 flips:
   - name: the mock slot grows to 25 minutes
     set: [{sheet: Settings, cell: B3, value: 25}]
@@ -426,19 +509,55 @@ flips:
     set: [{sheet: Seats, cell: G2, value: "no"}]
     verdicts:
       - {sheet: Settings, cell: B16, expect: "fits: 36 slots for 34 learners"}
-      - {sheet: Settings, cell: C27, expect: "34"}
+      - {sheet: Settings, cell: C29, expect: "34"}
+      - {sheet: Seat list, cell: B2, expect: "not placed: see the trainer"}
   - name: the changeover shrinks to 2 minutes
     set: [{sheet: Settings, cell: B4, value: 2}]
     verdicts:
       - {sheet: Settings, cell: B16, expect: "fits: 42 slots for 35 learners"}
-  - name: G1 takes the no-show question, so its set A seat is asked the reserve
+  - name: G1 takes the no-show question, so its set A seat is asked set E's L2
     set: [{sheet: Groups, cell: B2, value: "4 no-shows"}]
     verdicts:
-      - {sheet: Grid, cell: E2, expect: "G1-S1, set A, P1: T01-L1, T02-L2, T07-L3"}
-  - name: G6 takes the offer question, so its set H seat is asked the reserve
+      - {sheet: Grid, cell: E2, expect: "G1-S1, set A, P1: T01-L1, T08-L2, T07-L3"}
+  - name: G6 takes the offer question, so its set H seat is asked set D's L3
     set: [{sheet: Groups, cell: B7, value: "5 campaign"}]
     verdicts:
-      - {sheet: Grid, cell: G9, expect: "G6-S3, set H, P3: T08-L1, T01-L2, T05-L3"}
+      - {sheet: Grid, cell: G9, expect: "G6-S3, set H, P3: T08-L1, T01-L2, T10-L3"}
+  - name: every group takes the revenue question
+    set: [{sheet: Groups, cell: B2, value: "1 revenue"}, {sheet: Groups, cell: B3, value: "1 revenue"}, {sheet: Groups, cell: B4, value: "1 revenue"}, {sheet: Groups, cell: B5, value: "1 revenue"}, {sheet: Groups, cell: B6, value: "1 revenue"}, {sheet: Groups, cell: B7, value: "1 revenue"}, {sheet: Groups, cell: B8, value: "1 revenue"}, {sheet: Groups, cell: B9, value: "1 revenue"}, {sheet: Groups, cell: B10, value: "1 revenue"}]
+    verdicts:
+      - {sheet: Settings, cell: B21, expect: "0"}
+      - {sheet: Settings, cell: B22, expect: "0"}
+      - {sheet: Grid, cell: E2, expect: "G1-S1, set A, P1: T10-L1, T04-L2, T07-L3"}
+  - name: every group takes the bookings question
+    set: [{sheet: Groups, cell: B2, value: "2 bookings"}, {sheet: Groups, cell: B3, value: "2 bookings"}, {sheet: Groups, cell: B4, value: "2 bookings"}, {sheet: Groups, cell: B5, value: "2 bookings"}, {sheet: Groups, cell: B6, value: "2 bookings"}, {sheet: Groups, cell: B7, value: "2 bookings"}, {sheet: Groups, cell: B8, value: "2 bookings"}, {sheet: Groups, cell: B9, value: "2 bookings"}, {sheet: Groups, cell: B10, value: "2 bookings"}]
+    verdicts:
+      - {sheet: Settings, cell: B21, expect: "0"}
+      - {sheet: Settings, cell: B22, expect: "0"}
+  - name: every group takes the billing question
+    set: [{sheet: Groups, cell: B2, value: "3 billing"}, {sheet: Groups, cell: B3, value: "3 billing"}, {sheet: Groups, cell: B4, value: "3 billing"}, {sheet: Groups, cell: B5, value: "3 billing"}, {sheet: Groups, cell: B6, value: "3 billing"}, {sheet: Groups, cell: B7, value: "3 billing"}, {sheet: Groups, cell: B8, value: "3 billing"}, {sheet: Groups, cell: B9, value: "3 billing"}, {sheet: Groups, cell: B10, value: "3 billing"}]
+    verdicts:
+      - {sheet: Settings, cell: B21, expect: "0"}
+      - {sheet: Settings, cell: B22, expect: "0"}
+      - {sheet: Grid, cell: E2, expect: "G1-S1, set A, P1: T01-L1, T04-L2, T05-L3"}
+  - name: every group takes the no-show question
+    set: [{sheet: Groups, cell: B2, value: "4 no-shows"}, {sheet: Groups, cell: B3, value: "4 no-shows"}, {sheet: Groups, cell: B4, value: "4 no-shows"}, {sheet: Groups, cell: B5, value: "4 no-shows"}, {sheet: Groups, cell: B6, value: "4 no-shows"}, {sheet: Groups, cell: B7, value: "4 no-shows"}, {sheet: Groups, cell: B8, value: "4 no-shows"}, {sheet: Groups, cell: B9, value: "4 no-shows"}, {sheet: Groups, cell: B10, value: "4 no-shows"}]
+    verdicts:
+      - {sheet: Settings, cell: B21, expect: "0"}
+      - {sheet: Settings, cell: B22, expect: "0"}
+  - name: every group takes the offer question
+    set: [{sheet: Groups, cell: B2, value: "5 campaign"}, {sheet: Groups, cell: B3, value: "5 campaign"}, {sheet: Groups, cell: B4, value: "5 campaign"}, {sheet: Groups, cell: B5, value: "5 campaign"}, {sheet: Groups, cell: B6, value: "5 campaign"}, {sheet: Groups, cell: B7, value: "5 campaign"}, {sheet: Groups, cell: B8, value: "5 campaign"}, {sheet: Groups, cell: B9, value: "5 campaign"}, {sheet: Groups, cell: B10, value: "5 campaign"}]
+    verdicts:
+      - {sheet: Settings, cell: B21, expect: "0"}
+      - {sheet: Settings, cell: B22, expect: "0"}
+  - name: set A is edited to hold two questions from one family
+    set: [{sheet: Sets, cell: B2, value: "T07-L1"}]
+    verdicts:
+      - {sheet: Settings, cell: B21, expect: "5"}
+  - name: set B is edited to share its L1 with set A
+    set: [{sheet: Sets, cell: B3, value: "T01-L1"}]
+    verdicts:
+      - {sheet: Settings, cell: B22, expect: "8"}
 ```
 """
 
@@ -509,8 +628,8 @@ if __name__ == "__main__":
 # python3 content/W03/D4/internal/C2_W03_D04_build_workbooks_INTERNAL.py
 #     Writes the two workbooks and the two manifests, prints one line naming them, and exits 0.
 # python3 scripts/xlsx_recalc.py content/W03/D4
-#     Recalculates both workbooks through LibreOffice and reports 7 verdicts and 5 flips for the roster
-#     and 6 verdicts and 3 flips for the scoring sheet, all passing.
+#     Recalculates both workbooks through LibreOffice and reports 12 verdicts and 12 flips for the
+#     roster and 6 verdicts and 3 flips for the scoring sheet, all passing.
 # The same build after facts.yaml changes a mock criterion's marks so the total is no longer 30
 #     The script stops on its assert, because a mock that no longer adds to the approved 30 marks must
 #     be settled in facts.yaml before any sheet is rebuilt.
