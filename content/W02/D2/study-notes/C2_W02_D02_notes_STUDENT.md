@@ -501,8 +501,8 @@ Pick a letter for each, then check the key below.
    order. How many rows does a LEFT JOIN from orders return? a) exactly five; b) exactly seven;
    c) seven or more; d) twelve.
 2. Booked after your join is 1.5 times booked from the orders table. What do you check first? a) the
-   date filter on the orders table; b) the currency the amounts are stored in; c) the spelling of the
-   channel names; d) whether the payments key repeats.
+   date filter on the orders table; b) whether a NULL amount fell out of the sum; c) whether the orders
+   table repeats an order id; d) whether the payments key repeats.
 3. A LEFT JOIN from orders to payments has `WHERE p.method = 'card'`. What happens to an order with no
    payment? a) it is dropped from the result; b) it stays, with NULL payment columns; c) it appears
    twice; d) it raises an error.
@@ -515,6 +515,8 @@ Pick a letter for each, then check the key below.
 
 Key: 1b 2d 3a 4c 5a 6d. If you missed 1, reread chapter 1's key counts: with every order paid at least
 once and every payment matched, each order appears once per payment and never alone, so seven rows.
+If you picked c in 2, booked from the orders table alone already counts a repeated order id, so the
+gap between the two figures comes from the join.
 Item 6 comes from Monday, where WHERE filters rows before grouping and HAVING filters the groups after
 it.
 
