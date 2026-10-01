@@ -3,11 +3,13 @@
 Every piece of work in the order it runs, and the take-home after it. The day climbs one Kalpa case,
 Anand's booked against collected for Q2, in six chapters, and each chapter has a short set of its
 own: its first two items close the chapter live, and the rest open the TA-led practice lab or are
-worked tonight. Every stem is a question Anand, his analyst, the platform lead or Kavya would ask,
-and about a third of the items ask you to design the analysis before you judge one.
+worked tonight. Every stem is a question one of four people would ask: Anand Iyer, the finance
+controller; his analyst, who audits the statement; the data platform lead, who owns the payments
+feed; or Kavya Nair, the team's senior analyst, who reviews every number before it leaves the team.
+About a third of the items ask you to design the analysis before you judge one.
 
-On a faculty day the trainer keeps the morning and the afternoon's first hour; the tentative IITGN
-block W2-2 follows, and the rest of the escalated case, the second case and the interview drill run
+Today the trainer keeps the morning and the afternoon's first hour; the tentative IITGN block W2-2
+follows, and the rest of the escalated case, the second case and the interview drill run
 in the practice lab or go home with the take-home.
 
 | When | File | What it asks | You answer with |

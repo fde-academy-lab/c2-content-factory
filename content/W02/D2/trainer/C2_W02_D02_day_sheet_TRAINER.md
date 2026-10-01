@@ -208,12 +208,12 @@ between 8 April and 23 September. `trainer/C2_W02_D02_case_key_TRAINER.ipynb` pr
 | [F] | Revenue doubled after a join and every row looks fine; where do you look? | At the grain: every row is real and the sum runs at the payment's grain, so aggregate the many side first and recompute each table alone. |
 | [D] | Design the validation you run before a joined number reaches Finance, and say what you do when it fails at the end of reporting day. | Counts, tie-backs to each table alone, one independent recomputation and a test of the suite on known wrong reports; when one fails late, booked leaves with the open line named and collected is held. |
 | [S] | When is an INNER join the honest choice? | When unmatched rows are outside the question by definition, such as days to the first payment for paid orders, and the report says so. |
-| [F] | A filter on the right-hand table of a LEFT JOIN: WHERE or ON? | ON; in WHERE it runs after the join, drops the NULL rows and turns the LEFT JOIN into an INNER one. |
+| [F] | A filter on the right-hand table of a LEFT JOIN: WHERE or ON, and what changes? | ON; in WHERE it runs after the join, drops the NULL rows and turns the LEFT JOIN into an INNER one. |
 | [F] | HAVING COUNT(*) > 1 on payments by order: what does it find, and what does it wrongly include? | Every order with more than one payment row, legitimate instalments included; the retry grain is order and instalment. |
 | [F] | How do you reconcile a total after a join back to its source table? | Recompute it from the source alone and explain every rupee of difference as a named move with its list. |
 | [D] | Two errors cancel and the total looks right: how would you find them? | Count first, then split the difference into moves with definitions, so each error gets its own bar. |
-| [D] | Anand says the gap is too small to matter; how do you decide whether to chase it? | Size it by channel and order, since Rs 17.5 lakh is mostly two business invoices; check age, since a July order is overdue; weigh the cost of chasing against the cash. |
-| [S] | If you could keep only one check before a joined number leaves, which? | Orders on the report against orders in the table: no rupee, and it catches a fan-out and a dropped order alike. |
+| [D] | Anand says the gap is too small to matter: how do you decide whether to chase it? | Size it by channel and order, since Rs 17.5 lakh is mostly two business invoices; check age, since a July order is overdue; weigh the cost of chasing against the cash. |
+| [S] | If you could keep only one check before a joined number leaves, which would you keep? | Orders on the report against orders in the table: no rupee, and it catches a fan-out and a dropped order alike. |
 
 ---
 

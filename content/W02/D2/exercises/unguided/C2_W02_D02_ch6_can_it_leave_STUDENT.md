@@ -11,7 +11,7 @@ numbers comes from Kalpa's warehouse.
 
 ## What do you need to know before the items?
 
-**Who needs the answer.** Kavya, who reviews every number before it leaves the team; Anand, who
+**Who needs the answer.** Kavya Nair, the team's senior analyst, who reviews every number before it leaves the team; Anand, who
 forwards it to the CEO; and you, who sign it. A check that cannot fail puts a PASS on a wrong number.
 
 - **Plausibility checks** read the report alone: collected is at most booked, the gap is not

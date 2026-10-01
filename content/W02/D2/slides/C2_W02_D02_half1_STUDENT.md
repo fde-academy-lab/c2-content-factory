@@ -52,7 +52,7 @@ value: 462 | label: Q2 orders | note: one row each in the orders table
 value: ? | label: collected in Q2 | note: today's question
 ```
 
-**Your role.** You sign off the collected number, and Anand will ask how you know it is not double-counted before he uses it.
+**Your role.** You sign off the collected number, and Anand will ask how you know it is not double-counted before he uses it. Kavya Nair, the team's senior analyst, reviews every number before it leaves the team.
 
 ```notes
 LIVE, 4 minutes. Anand Iyer is Kalpa Retail's finance controller: he owns the books, the monthly
@@ -857,8 +857,10 @@ flowchart LR
 
 ```notes
 LIVE, 3 minutes. This route would catch a fan-out the first missed, because it sums each table at
-its own grain and never multiplies anything. Interview [F]: revenue doubled after a join and every
-row looks fine, where do you look? At the grain: which key repeats on the many side.
+its own grain and never multiplies anything. The interview tags mark how often a question comes up:
+[S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
+Interview [F]: revenue doubled after a join and every row looks fine; where do you look? At the
+grain: which key repeats on the many side.
 ```
 
 ---

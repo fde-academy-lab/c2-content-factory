@@ -103,7 +103,7 @@ arrived, each payment counted once; **posted** is every payment row the feed hol
 
 ---
 
-## When payments are attached to orders, which rows does each join keep, drop or repeat?
+## Chapter 1. When payments are attached to orders, which rows does each join keep, drop or repeat?
 
 **Who needs the answer.** Anand's analyst, who audits the statement order by order, and you, since you
 sign the collected number. A join that drops an unpaid order hides it from the collections team, and a
@@ -154,7 +154,7 @@ T-3 twice, so what a total does to an order that appears twice is chapter 2's qu
 
 ---
 
-## Why does the first join on Kalpa's Q2 report nearly twice the bookings as collected, and how do we attach payments so that nothing counts twice?
+## Chapter 2. Why does the first join on Kalpa's Q2 report nearly twice the bookings as collected, and how do we attach payments so that nothing counts twice?
 
 **Who needs the answer.** Anand, who would read a collected figure twice his books as collections
 running ahead and stand his collections team down; the data platform lead, who hears about a wrong
@@ -214,7 +214,7 @@ booked order is still in the report.
 
 ---
 
-## Once nothing counts twice, is every booked order still in the report, and can every rupee between booked and posted be named?
+## Chapter 3. Once nothing counts twice, is every booked order still in the report, and can every rupee between booked and posted be named?
 
 **Who needs the answer.** Anand, who asked which orders make the gap, so an order missing from the
 report is an order nobody chases, and his analyst, who reads the reconciliation above the number. A
@@ -267,7 +267,7 @@ behind each move.
 
 ---
 
-## Which Q2 orders were never paid, and which payments did the gateway post twice?
+## Chapter 4. Which Q2 orders were never paid, and which payments did the gateway post twice?
 
 **Who needs the answer.** The collections team, who ring every customer on the unpaid list, and the
 platform lead and Finance, who reverse or refund what is on the double-paid list. A wrong unpaid list
@@ -323,7 +323,7 @@ and a retry is one order and instalment twice; next comes the page Anand signs.
 
 ---
 
-## What goes on the report by channel that Anand signs, and does its gap column tell the truth?
+## Chapter 5. What goes on the report by channel that Anand signs, and does its gap column tell the truth?
 
 **Who needs the answer.** Anand, who signs the page and sends it to the CEO's Monday page, and the
 channel heads, who chase their own unpaid orders from it. A gap column that reads zero stands every one
@@ -369,9 +369,9 @@ leaves is the last question.
 
 ---
 
-## Which checks must pass before the collected number leaves the team, and what does Anand get when one fails at the end of reporting day?
+## Chapter 6. Which checks must pass before the collected number leaves the team, and what does Anand get when one fails at the end of reporting day?
 
-**Who needs the answer.** Kavya, who reviews every number before it leaves the team; Anand, who forwards
+**Who needs the answer.** Kavya Nair, the team's senior analyst, who reviews every number before it leaves the team; Anand, who forwards
 it; and you, who sign it. A validation that cannot fail puts a PASS stamp on a wrong number, and a
 stamped wrong number is harder to withdraw than an unstamped one.
 
@@ -415,10 +415,11 @@ leaves; and the open line goes with it: which check failed, what it means and wh
 owner hears the same day: you for the joins and the gap, the platform lead when collected plus posted
 twice stops matching posted, which means the feed changed.
 
-**The answer to the day.** Q2 booked Rs 9,84,00,000; collected, each payment counted once, is the
-figure on your own page; the gap is the orders nobody paid, named by channel; the repeats and the
-payments with no order go to the platform lead; and every figure ties back to the two tables through
-checks that have each been seen to fail.
+**The answer.** Five tie-back checks must pass before collected leaves the team: orders and booked
+against `orders` alone, the gap against booked less collected and against the unpaid list, and
+collected plus posted twice against posted from `payments` alone. Each has been seen to fail on a
+wrong report the day met, and all five pass on Kalpa's Q2 page. When one fails late on reporting day,
+booked leaves with the open line beside it and collected waits until the check closes.
 
 ---
 
@@ -436,25 +437,33 @@ checks that have each been seen to fail.
 
 Pick a letter for each, then check the key below.
 
-1. Five orders, seven payments, and every payment matches an order. How many rows can a LEFT JOIN from
-   orders return? a) exactly five; b) exactly seven; c) seven or more; d) twelve.
+1. Five orders and seven payments: every order has at least one payment, and every payment matches an
+   order. How many rows does a LEFT JOIN from orders return? a) exactly five; b) exactly seven;
+   c) seven or more; d) twelve.
 2. Booked after your join is 1.5 times booked from the orders table. What do you check first? a) the
-   date filter; b) whether the payments key repeats; c) the currency of the amounts; d) the channel names.
+   date filter on the orders table; b) the currency the amounts are stored in; c) the spelling of the
+   channel names; d) whether the payments key repeats.
 3. A LEFT JOIN from orders to payments has `WHERE p.method = 'card'`. What happens to an order with no
-   payment? a) it stays with NULLs; b) it is dropped; c) it appears twice; d) it raises an error.
-4. One order has instalment 1 for Rs 1,200 and instalment 2 for Rs 800. What is it? a) a retry; b) a
-   fan-out bug in the table; c) a legitimate instalment pair; d) an orphan payment.
+   payment? a) it is dropped from the result; b) it stays, with NULL payment columns; c) it appears
+   twice; d) it raises an error.
+4. One order has instalment 1 for Rs 1,200 and instalment 2 for Rs 800. What is it? a) a gateway retry
+   posted twice; b) a duplicate the feed wrote by mistake; c) two real instalments of one order; d) a
+   payment that matches no order.
 5. A report must keep every order and show every payment that matches no order. Which join? a) FULL
    OUTER; b) INNER; c) LEFT from orders; d) RIGHT from orders.
-6. Where does a filter on a group's total go? a) WHERE; b) ON; c) HAVING; d) ORDER BY.
+6. Where does a filter on a group's total go? a) WHERE; b) ON; c) ORDER BY; d) HAVING.
 
-Key: 1b 2b 3b 4c 5a 6c. If you missed 1, reread chapter 1's key counts: with every payment matched and
-none orphaned, each order appears once per payment and never alone, so seven rows. Item 6 comes from
-Monday, where WHERE filters rows before grouping and HAVING filters the groups after it.
+Key: 1b 2d 3a 4c 5a 6d. If you missed 1, reread chapter 1's key counts: with every order paid at least
+once and every payment matched, each order appears once per payment and never alone, so seven rows.
+Item 6 comes from Monday, where WHERE filters rows before grouping and HAVING filters the groups after
+it.
 
 ---
 
 ## Which interview questions does today answer?
+
+The tags mark how often a question comes up: [S] a staple asked everywhere, [F] frequent in GCC and
+product screens, [D] a differentiator. The drill asks these twelve aloud, in this order.
 
 **[S] INNER against LEFT join: what does each drop or keep?** Tested: whether you frame a join by its
 unmatched rows. Strong: INNER keeps only rows that found a match on both sides, so an order with no
@@ -493,7 +502,7 @@ collected; tell the owner that day. Weak: sending the number with a caveat in sm
 question by definition and the output says so, such as days to the first payment for paid orders.
 For Anand's question it is dishonest, since his question is about every booked order.
 
-**[F] A filter on the right-hand table of a LEFT JOIN: WHERE or ON?** Strong: ON, where it decides which
+**[F] A filter on the right-hand table of a LEFT JOIN: WHERE or ON, and what changes?** Strong: ON, where it decides which
 right rows attach and every left row survives; in WHERE it runs after the join, rejects the NULLs of
 unmatched rows and turns the LEFT JOIN into an INNER one. The one right-table condition that belongs in
 WHERE is the anti-join's `IS NULL`.
@@ -502,6 +511,13 @@ WHERE is the anti-join's `IS NULL`.
 Strong: every order with more than one payment row, which wrongly includes every legitimate
 multi-instalment order. A retry is the same instalment posted again, so group by order and instalment,
 and prove the list by its surplus equalling posted less collected.
+
+**[F] How do you reconcile a total after a join back to its source table?** Strong: recompute the
+total from the source table alone, with no join, and compare: booked after the join against booked
+from `orders`, posted after the join against the payments table's own total for the same orders.
+Explain every rupee of difference as a named move in a bridge with the rows behind it listed; a
+difference with no list behind it means the join is wrong. Weak: setting the joined total beside last
+quarter's and calling it close enough.
 
 **[D] Two errors cancel and the total looks right: how would you find them?** Strong: never let a total
 prove itself. Count first, since rows in against rows out finds a dropped or repeated row even when the
@@ -513,6 +529,11 @@ it before judging it. Split it by channel and by order, since a small total can 
 check how old each unpaid order is, since an order unpaid for weeks is overdue rather than early; set
 the cost of chasing against the cash each order carries; recommend chasing the large and old ones
 first, and say what you would drop.
+
+**[S] If you could keep only one check before a joined number leaves, which would you keep?** Strong:
+orders on the report against orders in the source table. It reads no rupee, it catches a fan-out and
+a dropped order alike, and it runs in a millisecond; every other check can be added once that one
+passes. Weak: collected at most booked, which the fan-out draft passes because it inflates both.
 
 ---
 
@@ -569,3 +590,18 @@ and it keeps the rows while it does so. The pre-read ships tonight.
 | 4 | jOOQ blog, "The Difference Between SQL's JOIN .. ON Clause and the Where Clause", 9 April 2019, https://blog.jooq.org/the-difference-between-sqls-join-on-clause-and-the-where-clause/ (checked 30 Sep 2026) | 10 minutes | The same trap from a library author who meets it in other people's queries |
 | 5 | SQLBolt, lessons 6 to 8, https://sqlbolt.com/lesson/select_queries_with_joins, https://sqlbolt.com/lesson/select_queries_with_outer_joins and https://sqlbolt.com/lesson/select_queries_with_nulls (checked 30 Sep 2026) | 30 minutes | Tonight's practice: joins, outer joins and the NULLs they create |
 | 6 | PostgreSQL Exercises, the joins category, https://pgexercises.com/questions/joins/ (checked 30 Sep 2026) | 40 minutes | Stretch practice on a second schema, with worked answers |
+
+---
+
+## So, what did Kalpa collect against what it booked in Q2, and how do you know nothing is counted twice?
+
+Q2 booked Rs 9,84,00,000 over 462 orders, read from the orders table alone. Collected is the cash
+that arrived with each payment counted once: your page reaches it by bringing payments to one row per
+order and instalment before a LEFT JOIN from orders, and 462 rows in against 462 rows out shows that no
+order was lost or repeated on the way. The gap between booked and collected is the orders nobody paid,
+which your anti-join lists by channel, largest first, with a total equal to the bridge's never-paid
+bar. The gateway's repeats sit apart from it: a retry is one order and instalment posted twice, its
+surplus equals posted less collected, and that list goes to the platform lead with the payments that
+match no order. You know nothing is counted twice because five tie-back checks pass on the page, and
+each of them has been seen to fail on a wrong report first. The figures themselves are the ones your
+own queries printed; the sentence to Anand carries them in that order.

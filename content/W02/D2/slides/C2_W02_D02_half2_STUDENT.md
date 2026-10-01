@@ -53,7 +53,7 @@ C2_W02_D02_06_can_it_leave_STUDENT.ipynb.
 ## S2. Answer in six steps, from a PASS to a rule
 *Who needs chapter 6's answer, and which smaller questions lead to it?*
 
-**Who needs the answer.** Kavya, who reviews every number before it leaves the team; Anand, who forwards it to the CEO's Monday page; and you, who sign it. A validation that cannot fail puts a PASS stamp on a wrong number, and a stamped wrong number is harder to withdraw than an unstamped one.
+**Who needs the answer.** Kavya Nair, the team's senior analyst, who reviews every number before it leaves the team; Anand, who forwards it to the CEO's Monday page; and you, who sign it. A validation that cannot fail puts a PASS stamp on a wrong number, and a stamped wrong number is harder to withdraw than an unstamped one.
 
 ```timeline
 label: 1 | title: Hurried checks? | body: Do they pass a report that hides an unpaid order?

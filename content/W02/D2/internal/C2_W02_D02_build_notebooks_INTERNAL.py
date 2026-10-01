@@ -538,6 +538,8 @@ on both of its lines, 1,200 of 2,000 on one and 800 of 2,000 on the other, when 
 Before any total is read from this join, chapter 2 has to answer what a total does to an order
 that appears twice.
 
+Kavya Nair, the team's senior analyst, reviews every number before it leaves the team.
+
 > **Kavya's review.** "Tell me the grain of each table, and which rows your join drops, before you
 > tell me any total. Start from the table whose every row must survive."
 """),
@@ -569,16 +571,16 @@ the keys on each side first, and the join's row count is known before it runs. I
 place only, when the join condition is more than key equality, such as the date condition chapter 4
 meets; there the prediction has to include the condition.
 
-### [S] INNER against LEFT join: what does each drop or keep?
+### In the interview: what does each join keep, and when is an INNER join the honest choice?
 
-An INNER JOIN keeps only the rows that match on both sides and drops the rest from both tables. A
+The tags mark how often a question comes up: [S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
+
+**[S] INNER against LEFT join: what does each drop or keep?** An INNER JOIN keeps only the rows that match on both sides and drops the rest from both tables. A
 LEFT JOIN keeps every row of the left table and fills the right-hand columns with NULL where nothing
 matched. Both repeat a left row once for every matching right row, and that last clause is the one
 an interviewer is listening for, because it is where a total goes wrong.
 
-### [S] When is an INNER join the honest choice?
-
-When the unmatched rows are outside the question by definition, and the report says so: "for the
+**[S] When is an INNER join the honest choice?** When the unmatched rows are outside the question by definition, and the report says so: "for the
 orders that were paid, how many days passed before the first payment?" asks only about matches. For
 Anand's question it is dishonest, since his question is about every booked order, paid or not.
 
@@ -937,6 +939,8 @@ it is the collected figure Anand asked for.
 """),
         empty(),
         md("""
+Kavya Nair, the team's senior analyst, reviews every number before it leaves the team.
+
 > **Kavya's review.** "A join is a multiplication until you prove it is not. Bring the many side to
 > the grain of the question before you join, and show me rows in and rows out beside the total."
 """),
@@ -967,17 +971,17 @@ kit.check("posted from payments alone equals posted after the fixed join", poste
 alone equals the fixed join's posted to the rupee. The second route would catch a fan-out the first
 missed, because it sums each table at its own grain and never multiplies anything.
 
-### [F] Revenue doubled after a join and every row looks fine: where do you look?
+### In the interview: why did revenue double after a join, and what made the row count grow?
 
-At the grain, not at the rows. Each row is right, and the sum runs at the join's grain, so the first
+The tags mark how often a question comes up: [S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
+
+**[F] Revenue doubled after a join and every row looks fine; where do you look?** At the grain, not at the rows. Each row is right, and the sum runs at the join's grain, so the first
 question is which key repeats on the many side. Count rows before and after the join, list the keys
 that repeat with `GROUP BY key HAVING count(*) > 1` on the many side, then bring that side to the
 key's grain in a CTE before joining, and prove it with rows in equal to rows out and the total
 recomputed from the source table alone.
 
-### [S] Your join grew the row count: name the cause and the check.
-
-The cause is a key that is unique on one side and repeats on the other, usually a one-to-many
+**[S] Your join grew the row count; name the cause and the check.** The cause is a key that is unique on one side and repeats on the other, usually a one-to-many
 relationship read as one-to-one. The check is the count before and after the join, plus a count of
 the repeated keys on the many side; the growth must equal the extra rows those keys explain, or
 something else is wrong too.
@@ -1426,6 +1430,8 @@ step, and lands on what the payments table holds against Q2's orders, counted wi
 figures in between are yours, from the cell above; each move now needs the list of orders behind
 it, which is chapter 4.
 
+Kavya Nair, the team's senior analyst, reviews every number before it leaves the team.
+
 > **Kavya's review.** "Rows in, rows out and the difference explained, written above the number. If
 > the count does not close, the number does not leave the team, and if the gap has two causes, it
 > gets two bars."
@@ -1461,16 +1467,16 @@ kit.check("the cap method reaches the bridge's collected on Kalpa's Q2", kalpa_c
 the rupee on Kalpa's Q2. So the feed holds no retry under a new instalment number and no genuine
 overpayment, and collected can be trusted on either count.
 
-### [F] How do you reconcile a total after a join back to its source table?
+### In the interview: how do you reconcile a joined total, and find two errors that cancel?
 
-Recompute the total from the source table alone, without the join, and compare. Booked after the
+The tags mark how often a question comes up: [S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
+
+**[F] How do you reconcile a total after a join back to its source table?** Recompute the total from the source table alone, without the join, and compare. Booked after the
 join must equal booked from `orders`; posted after the join must equal the payments table's own
 total for the same orders. Any difference is explained as a named move in a bridge, with the rows
 behind it listed, or the join is wrong.
 
-### [D] Two errors cancel and the total looks right: how would you find them?
-
-Never trust a total to prove itself. Count first: rows in against rows out finds a dropped or
+**[D] Two errors cancel and the total looks right: how would you find them?** Never trust a total to prove itself. Count first: rows in against rows out finds a dropped or
 repeated row even when the rupees balance. Then split the difference into moves that each have a
 definition, so an unpaid order and a repeated payment each get their own bar; errors that cancel in
 one number cannot cancel in two bars.
@@ -1976,6 +1982,8 @@ kit.check("every payment row is on a Q1 order, a Q2 order or no order, and they 
 kit.check("the orphan query finds exactly the rows on no order", len(orphan_rows) == homes.get("no order", 0),
           "count unprinted")"""),
         md("""
+Kavya Nair, the team's senior analyst, reviews every number before it leaves the team.
+
 > **Kavya's review.** "Two payment rows are not a double payment. Show me what makes a retry a retry
 > before anyone rings a customer, and show me that each list adds up to its bar."
 """),
@@ -2016,23 +2024,21 @@ kit.check("Kalpa: posted above booked flags the same orders as the instalment me
 the same unpaid orders by NOT EXISTS, and the same double-paid orders whether the retry is found by
 its instalment number or by its cash exceeding its booking.
 
-### [F] How do you find orders with no payment?
+### In the interview: how do you find the unpaid orders and the double-paid ones?
 
-With an anti-join: a LEFT JOIN from orders to payments that keeps the rows where the payment side is
+The tags mark how often a question comes up: [S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
+
+**[F] How do you find orders with no payment?** With an anti-join: a LEFT JOIN from orders to payments that keeps the rows where the payment side is
 NULL, or NOT EXISTS, which says the same thing in the order of the sentence. Then check the list:
 its booked total must equal booked less collected for the orders never paid, or the list is wrong.
 Avoid NOT IN, which returns nothing once the subquery holds a single NULL.
 
-### [F] A filter on the right-hand table of a LEFT JOIN: WHERE or ON, and what changes?
-
-ON. In ON the filter decides which right-hand rows count as a match, and every left row survives; in
+**[F] A filter on the right-hand table of a LEFT JOIN: WHERE or ON, and what changes?** ON. In ON the filter decides which right-hand rows count as a match, and every left row survives; in
 WHERE it runs after the join, the unmatched rows carry NULL, NULL fails the filter, and the LEFT
 JOIN behaves as an INNER one. The only right-table condition that belongs in WHERE is the anti-join's
 `IS NULL`.
 
-### [F] HAVING COUNT(*) > 1 on payments by order: what does it find, and what does it wrongly include?
-
-It finds every order with more than one payment row, which includes orders legitimately paid in
+**[F] HAVING COUNT(*) > 1 on payments by order: what does it find, and what does it wrongly include?** It finds every order with more than one payment row, which includes orders legitimately paid in
 instalments. The retry grain is the order and the instalment, and the proof is that the list's
 surplus equals posted less collected.
 
@@ -2359,6 +2365,8 @@ kit.check("the page's gaps add to never paid plus paid short",
 kit.check("the page's posted twice adds to its bar", sum(r["posted_twice"] for r in page_rows) == kb["posted_twice"],
           "equal to the rupee")"""),
         md("""
+Kavya Nair, the team's senior analyst, reviews every number before it leaves the team.
+
 > **Kavya's review.** "Every rupee on the page ties back to a bar, and every bar to a list. Write the
 > definition of collected above the table, so nobody reads it as posted."
 """),
@@ -2397,17 +2405,17 @@ from your own page:
 > Rs ___ was posted twice by gateway retries and ___ payments match no order; both lists go to the
 > platform lead. Every figure ties back to the orders and payments tables."
 
-### [D] Anand says the gap is too small to matter: how do you decide whether to chase it?
+### In the interview: is a small gap worth chasing, and why does the page show booked and collected?
 
-Size it before judging it. Split it by channel and by order, since a small total can be one large
+The tags mark how often a question comes up: [S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
+
+**[D] Anand says the gap is too small to matter: how do you decide whether to chase it?** Size it before judging it. Split it by channel and by order, since a small total can be one large
 invoice; check how old each unpaid order is, since at Kalpa a paid order is paid within days of
 being booked, so an unpaid order from July is overdue rather than early; and set the cost of chasing,
 a call or a reminder, against the cash each order carries. Then recommend chasing the large and old
 ones first, and say what you would drop.
 
-### [F] Why does the page show booked and collected, and not only the gap?
-
-Because the gap cannot be checked on its own. With booked and collected beside it, anyone can
+**[F] Why does the page show booked and collected, and not only the gap?** Because the gap cannot be checked on its own. With booked and collected beside it, anyone can
 subtract and see the gap is right, and the same subtraction exposes a NULL that fell out of it; a
 gap column alone hides exactly the error this chapter staged.
 
@@ -2567,7 +2575,8 @@ def chapter6():
     cells = [
         title_cell(
             n,
-            "Kavya, who reviews every number before it leaves the team; Anand, who forwards it to "
+            "Kavya Nair, the team's senior analyst, who reviews every number before it leaves the team; "
+            "Anand, who forwards it to "
             "the CEO's Monday page; and you, who sign it. A validation that cannot fail puts a PASS "
             "stamp on a wrong number, and a stamped wrong number is harder to withdraw than an "
             "unstamped one.",
@@ -2833,9 +2842,11 @@ owners = {"orders on the report equal orders in the table": "you", "booked equal
 kit.check("every tie-back check has a named owner for the day it fails", set(owners) == {n_ for n_, _ in TIE_BACK},
           f"{len(owners)} checks, {len(set(owners.values()))} owners")"""),
         md("""
-### [D] Design the validation you run before a joined number reaches Finance, and say what you do when it fails at the end of reporting day.
+### In the interview: what runs before a joined number reaches Finance, and which one check would you keep?
 
-Four layers, each run every time. First the counts: rows in against rows out, and orders on the
+The tags mark how often a question comes up: [S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
+
+**[D] Design the validation you run before a joined number reaches Finance, and say what you do when it fails at the end of reporting day.** Four layers, each run every time. First the counts: rows in against rows out, and orders on the
 report against orders in the table. Then the tie-backs: booked recomputed from `orders` alone, posted
 from `payments` alone, and each bar of the bridge equal to the total of its named list. Then one
 independent recomputation, in another tool from the raw rows, or against the gateway's settlement
@@ -2845,9 +2856,7 @@ reporting day, send what is reconciled, booked, which ties to orders alone, with
 stated, which check failed, what it means and when it will close; hold the collected figure; and
 tell the owner the same day. An unreconciled number never leaves with a PASS on it.
 
-### [S] Your join grew the row count: which single check would you keep if you could keep only one?
-
-Orders on the report against orders in the source table. It needs no rupee, it catches a fan-out
+**[S] If you could keep only one check before a joined number leaves, which would you keep?** Orders on the report against orders in the source table. It needs no rupee, it catches a fan-out
 and a dropped order alike, and it runs in a millisecond; every other check can be added once that
 one passes.
 
