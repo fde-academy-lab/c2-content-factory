@@ -234,8 +234,8 @@ wrong row calls a lapsed member one of the best.
 **The questions on the way.** Which lookup should answer "find this member"? Who makes the list, and
 where does it stop? Does the list's source table tie to the warehouse? What does a lookup with its
 fourth argument left out return for an id the table does not hold? What does an exact match with a
-not-found path return, and what if the list is re-sorted? Does an independent count agree with the
-lookup?
+not-found path return, and what if the list is re-sorted? Does the warehouse's own count agree with
+the lookup?
 
 In 2003 TransAlta lost 24 million US dollars on New York transmission bids after "a cut-and-paste
 error in an Excel spreadsheet" missed in "our final sorting and ranking of bids" (The Globe and
@@ -279,7 +279,7 @@ It returns "not in the table" for C-0195 and keeps Rs 25,840 for C-0152 and Rs 1
 any order; the list sorted by revenue steps down in id 24 times in 49, and an approximate match
 needs its first column sorted.
 
-### Does an independent count agree with the lookup?
+### Does the warehouse's own count agree with the lookup?
 
 The warehouse's own orders, which never saw the customer table, agree: none for C-0195, and
 Rs 25,840 for C-0152. With no login, the same check in Excel is a COUNTIF of the id in the raw
