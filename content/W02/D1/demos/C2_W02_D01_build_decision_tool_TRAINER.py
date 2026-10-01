@@ -96,7 +96,7 @@ plus_q2 = next(r for r in seg if r["segment"] == "Retail-Plus" and r["quarter"] 
 wb = Workbook()
 start = wb.active
 start.title = "Start"
-start["A1"] = "The Monday numbers: the decision tool"
+start["A1"] = "Which four decisions stand behind the Retail-Plus line of Anand's sheet?"
 start["A1"].font = TITLE
 start.column_dimensions["A"].width = 110
 lines = [
@@ -104,7 +104,7 @@ lines = [
     "Yellow cells are inputs; every other number and sentence is a live formula. The figures are the warehouse's own results from the day's queries.",
     "Each tab carries one planted defect in one formula. Read the tab's check line first, find the cell, fix it, and watch the verdict change.",
     "The Export tab releases the line for Anand only when all four tabs pass their checks, so fixing one tab does not clear it.",
-    "Customers: which count is a customer. Division: integers or numeric. Average: who is in the average. Sample: can the analyst rerun your five orders.",
+    "Customers asks which count is a customer. Division asks how often each segment's customers ordered, with the fraction kept. Average asks who is inside the average spend per member. Sample asks whether the analyst can rerun your five orders.",
 ]
 for i, text in enumerate(lines, 3):
     start.cell(row=i, column=1, value=text).alignment = WRAP
@@ -136,7 +136,7 @@ put(ws, "A16", "Fixed, for the Export tab", NOTE)
 put(ws, "B16", '=IF(AND(B12=ROUND(B9/B11,2),B10<>"order rows"),1,0)')
 
 # ---------------------------------------------------------------- Division
-ws = sheet(wb, "Division", "Integers or numeric?",
+ws = sheet(wb, "Division", "How often did each segment's customers order, with the fraction kept?",
            "Orders per customer for every segment and quarter, as Postgres prints it in integers and as it really is.")
 head(ws, 4, ["Segment", "Quarter", "Orders", "Customers", "Integers", "Honest, 2 places"])
 for i, r in enumerate(seg, 5):
@@ -163,7 +163,7 @@ put(ws, "C20", '=IF(C14>0,"Fix the honest column, which still drops the fraction
 put(ws, "A21", "Fixed, for the Export tab", NOTE); put(ws, "C21", "=IF(C14=0,1,0)")
 
 # ---------------------------------------------------------------- Average
-ws = sheet(wb, "Average", "Who is in the average?",
+ws = sheet(wb, "Average", "Who is inside the average spend per Retail-Plus member?",
            "Spend per Retail-Plus member. avg skips NULLs, so a member with no Q2 order leaves the denominator unless you decide otherwise.")
 head(ws, 4, ["Measure", "Q1", "Q2"])
 put(ws, "A5", "Spend, Rs"); put(ws, "B5", float(member["s1"])); put(ws, "C5", float(member["s2"]))
@@ -215,7 +215,7 @@ put(ws, "A19", "Fixed, for the Export tab", NOTE)
 put(ws, "B19", '=IF(AND(E6="yes",B15>0),0,IF(INDEX(E5:E7,MATCH(B14,D5:D7,0))="yes",1,0))')
 
 # ---------------------------------------------------------------- Export
-ws = sheet(wb, "Export", "Anand's line, assembled",
+ws = sheet(wb, "Export", "Is the Retail-Plus line ready for Anand's sheet?",
            "Released only when every tab's check passes. Paste the line under the Retail-Plus row of the Monday sheet.")
 ws.column_dimensions["B"].width = 110
 put(ws, "A4", "Tabs fixed", BOLD); put(ws, "B4", "=Customers!B16+Division!C21+Average!B18+Sample!B19")
