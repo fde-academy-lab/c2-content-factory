@@ -19,13 +19,13 @@ its number.
 
 **The questions on the way.**
 
-- Which idea does the second case test: that a what-if sits beside the actual and never over it?
+- Which idea does the second case test: where does a director's what-if go so the actual stays?
 - Which numbers stand behind the pair's three lines?
 - Why does each of the five keys hold, from the moved card to the labelled scenario?
 - What three lines held the line?
 - Where did pairs go wrong in the role play, and why does each move fail?
 
-## Which idea does the second case test: that a what-if sits beside the actual and never over it?
+## Which idea does the second case test: where does a director's what-if go so the actual stays?
 
 A director's assumption is a fair question, and a sheet is a good place to answer it, as long as the
 assumption sits in its own labelled input beside the number Finance books. Typed over the source, the
@@ -38,7 +38,7 @@ next refresh with nobody able to say why it was there.
 |---|---|---|
 | 1 | The card moves from down 29.4 percent to down 14.6 percent | Rs 5,00,000 against Q1's Rs 5,85,770, a fall Finance's books do not show |
 | 2 | The drift on Q2 is Rs 86,620 | The typed Rs 5,00,000 less the export's Rs 4,13,380, caught against the warehouse's Q2 |
-| 3 | One cell flagged | The Q2 cell holds a typed figure where a formula should be |
+| 3 | One cell flagged, and none after an honest change to the yellow input | The Q2 cell holds a typed figure where a formula should be; the input B1 is meant to change |
 | 4 | Monday's refresh restores Rs 4,13,380 | The typed figure, and any record of why it was there, is gone |
 | 5 | Two lines on the card: actual down 29.4 percent, the director's scenario down 14.6 percent | The question is answered and the actual stays |
 
@@ -66,21 +66,23 @@ warehouse's Q2: zero on the clean sheet, Rs 86,620 on the edited one.
 
 - a, `drift = lambda s: len(s) - 4`: counts segments, which an edit never changes.
 - b, `drift = lambda s: int(s["Q1"].sum()) - wq["Q1"]`: looks at the quarter nobody touched.
-- d, `drift = lambda s: 0 if s is sheet else 1`: compares the sheet with itself by name, so it fires
-  on any copy and says nothing about the numbers.
+- d, `drift = lambda s: change(int(s["Q1"].sum()), int(s["Q2"].sum()))`: the sheet's own fall from
+  Q1 to Q2, the trend the card reports, so it is never zero on a clean sheet and compares nothing with
+  the warehouse.
 
 ### Q3. Which rule flags a figure typed over a formula?
 
-Outside the yellow inputs, every cell should hold a formula.
+The notebook's model has three cells: B1, a yellow input holding the director's scenario figure, and
+B2 and B3, which read the export.
 
 The key is b, the rule that flags a cell outside the inputs whose content is not a formula, which is
-what ISFORMULA tests in a sheet. It flags nothing on the clean sheet and the one typed cell on the
-edited sheet.
+what ISFORMULA tests in a sheet. It flags nothing on the sheet as built, nothing when the director
+changes B1 from Rs 5,00,000 to Rs 4,50,000, and B3 alone once a figure is typed over its formula.
 
-- a, flagging every cell that holds a number: it would flag every yellow input too, which a director
-  is allowed to change.
-- c, flagging every cell that differs from one saved copy: it breaks after any honest change, such as
-  next week's refresh.
+- a, flagging every cell that holds a number: it flags the yellow input B1 on a sheet nobody has
+  touched.
+- c, flagging every cell that differs from one saved copy: it flags the director's honest change to
+  B1, and every cell a fresh export moves.
 - d, flagging the input cells: those are the cells a director is meant to change.
 
 ### Q4. Which line is Monday's refresh?
@@ -114,9 +116,10 @@ the number Finance books.
 
 "Yes: here is the card with your assumption, Retail-Plus back to Rs 5.00 lakh, as a labelled scenario
 line, down 14.6 percent on Q1. The actual stays at Rs 4.13 lakh, down 29.4 percent, because it is the
-number Finance books and the one Anand's analyst will check next week. Every refresh compares the
-sheet's quarters with the warehouse's, and a typed figure would have shown up as a Rs 86,620 drift
-and disappeared on Monday with no record of why."
+number Finance books and the one Anand's analyst will check next week. The Checks tab compares the
+sheet's quarters with the warehouse's control totals every time it recalculates, so a typed figure
+shows up as a Rs 86,620 drift before anyone reads it, and Monday's refresh would have wiped it with no
+record of why."
 
 ## Where did pairs go wrong in the role play, and why does each move fail?
 

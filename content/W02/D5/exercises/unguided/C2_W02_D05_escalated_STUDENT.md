@@ -16,7 +16,8 @@ in front of her and the directors. Kalpa sells to four segments: Retail-Core, it
 Retail-Plus, its paid membership tier; Business, corporate buyers invoiced in large amounts; and
 Student. Revenue is booked order value in rupees. Q1 runs from April to June 2026 and Q2 from July to
 September 2026, and the warehouse, the Postgres database that holds one row per order and is the
-source of truth, books Rs 10,00,00,000 in Q1 and Rs 9,84,00,000 in Q2.
+source of truth, books 538 orders and Rs 10,00,00,000 in Q1 and 462 orders and Rs 9,84,00,000 in Q2.
+Those two pairs are Finance's control totals.
 
 You have two exports. The customer table holds one row per customer who ordered between April and
 September, with that customer's segment, city, orders and revenue added up over the half-year. The
@@ -48,8 +49,8 @@ Used at work on every tree a director sees, which has to reproduce the number Fi
 anyone slices it.
 
 Ten minutes, the notebook's markers 1 and 2: which line leaves one row per order, and how customers
-are counted in each segment and quarter. The checks after the part compare your quarters with the
-warehouse's, orders and rupees, and your Retail-Plus customer counts with the warehouse's.
+are counted in each segment and quarter. The checks after the part compare your quarters with
+Finance's control totals, orders and rupees, and your Retail-Plus customer counts with the warehouse's.
 
 ## Part 2. Does your protect list hold the right fifty, and does your lookup say when an id is missing?
 
@@ -66,17 +67,17 @@ Used at work on every front page read in two minutes by people who read nothing 
 
 Ten minutes, markers 5 and 6: which formula is the change from Q1 to Q2, and which share goes beside
 the number. The card's scope, all segments, all except Business, or Retail-Plus alone, is the input
-a director changes, and the checks compare your company change and your Retail-Plus share with the
-warehouse's.
+a director changes, and the checks compare your Retail-Plus change and your shares with the
+warehouse's figures.
 
 ## Part 4. What ships on Monday, and what, if anything, is held?
 
 Used at work in every release note that tells a stakeholder what to rely on and what waits.
 
 Ten minutes, markers 7 and 8: which comparison says whether the protect list's source table ties,
-and which rule turns the day's checks into Monday's release. Part 1 tied the tree; the protect list
-comes from a different export, which has to tie on its own before the list ships. The checks test
-that your release holds exactly the parts whose checks fail.
+and which rule turns any set of checks into Monday's release. Part 1 checked the tree; the protect
+list was built from the customer table, a different export. The checks compare your source verdict with
+the warehouse's count of customers who ordered, and run your rule on three invented sets of checks.
 
 ## Part 5. Do your numbers agree when reached a second way?
 
@@ -84,12 +85,14 @@ Used at work on every number that matters, which is reached twice by routes that
 
 Ten minutes, markers 9 and 10: which total is what the foot of the list shows when a director filters
 it to Mumbai, and which query is the warehouse's own route to the two quarters of booked revenue.
+The checks compare your foot with the warehouse's revenue for the list's Mumbai members, and your
+query's two quarters with your tree's.
 
 ## Which rules does the escalated case keep, from the files it reads to what the release says?
 
 - The data is the day's two exports in `data/` and the warehouse; nothing in them is to be edited.
 - Every check reads what your lines computed, so a letter that passes the check has done the work.
-- The release ships a part only when every check behind it passes, and says why a held part waits.
+- The release says, for each part, whether it ships, and why a held part waits.
 - If you finish early, build the same five parts in a workbook: every number a formula over the two
   exports pasted in as values, the inputs in yellow cells, and a Checks tab that reads PASS or HOLD.
 - The support TA answers environment problems only.

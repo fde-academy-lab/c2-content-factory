@@ -16,9 +16,11 @@ Retail-Plus booked Rs 5,85,770 in Q1 and Rs 4,13,380 in Q2, down 29.4 percent, a
 card prints that change. The team's operating rule, written this morning, says the warehouse owns the
 number, pandas owns the analyst's iteration, and the workbook owns the last mile: presenting,
 slicing, looking up and taking what-ifs as labelled inputs, on an export that ties, with nobody typing
-over the source. A drift check compares the sheet's totals with the warehouse's on every refresh.
+over the source. A drift check on the workbook's Checks tab compares the sheet's totals with the
+warehouse's control totals, which travel with each export, every time the sheet recalculates.
 ISFORMULA says whether a cell holds a formula or a typed figure, and a yellow input cell holds an
-assumption a director may change. Monday's refresh rebuilds the sheet from a fresh export. Kavya
+assumption a director may change. Every Monday the chief of staff refreshes the sheet from the week's
+export before anyone opens it. Kavya
 Nair, the senior analyst on the team, asked this morning: "Which parts belong in Excel, which parts
 must never be in Excel, and how do you keep the two from drifting apart?"
 
@@ -60,13 +62,13 @@ Used at work in the note that follows any meeting where an assumption was asked 
 
 Ten minutes, together: one line that says yes to the director's question and shows where the answer
 sits, one that says why the actual stays as Finance books it, and one that names the check that ties
-the sheet back to the warehouse on every refresh.
+the sheet back to the warehouse every time it recalculates.
 
 ## Which rules does the pair keep while it answers the director?
 
 - The director's question is fair and gets an answer in the room; only the edit is refused.
 - Every number the pair quotes comes from the notebook's output or the brief above.
-- The actual and the scenario both appear, each labelled, and neither replaces the other.
+- Whatever the pair does, the number Finance books still reads as Finance books it after the meeting.
 - The support TA answers environment problems only.
 
 ## How does the pair post its five letters and its three lines?

@@ -57,7 +57,8 @@ order and drops every repeat, instalment or gateway copy alike: 1,000 rows, one 
 - a, `orders = raw.drop_duplicates()`: removes only rows identical in every column, so the 400
   instalment orders keep both rows, since their rows differ in the amount paid.
 - b, `orders = raw.drop_duplicates("customer_id")`: keeps one order per customer and loses the rest.
-- d, `orders = raw[raw["paid_amount"] > 0]`: drops nothing that repeats and keeps every payment row.
+- d, `orders = raw[raw["paid_amount"] > 0]`: drops the 30 orders nobody has paid for and keeps every
+  repeat payment row.
 
 ### Q2. How are customers counted in each segment and quarter?
 
@@ -94,8 +95,8 @@ id with a not-found value, the notebook's form of `=XLOOKUP(id, ids, revenue, "n
   largest id not above the one asked for, which is VLOOKUP with its fourth argument left out, and
   returns C-0194's Rs 16,740 for C-0195.
 - c, `lookup = lambda m: by_id["revenue"].iloc[0]`: returns the first member's revenue for every id.
-- d, `lookup = lambda m: by_id["revenue"].asof(m)`: another approximate match, with the same
-  neighbour for a missing id.
+- d, `lookup = lambda m: by_id["revenue"].get(m, 0)`: an exact match that answers a missing id with
+  0, which reads aloud as a member who spent nothing, the `IFERROR(..., 0)` habit.
 
 ### Q5. Which is the change from Q1 to Q2?
 
@@ -133,19 +134,25 @@ export counted once ties to the warehouse to the rupee, so comparing the custome
 comparing the list's source with Finance. On the day's files the two do not match, so the list's
 source does not tie.
 
+Options a, b and d all read True on the day's table, so each would ship the list on a source nobody
+compared with anything outside it. The notebook's check compares your verdict with the warehouse's
+count of customers who ordered.
+
 - a, `source_ties = len(table) == 300`: counts the table's rows against a number the table itself
   gave, which cannot fail.
 - b, comparing the list's total with the same fifty taken again: compares the list with itself.
 - d, `source_ties = int(table["revenue"].sum()) > int(seg_q["Q2"].sum())`: compares a half-year with a
   quarter, which any half-year passes.
 
-### Q8. Which rule turns the checks into Monday's release?
+### Q8. Which rule turns any set of checks into Monday's release?
 
 A design item. Each part sits on its own checks: the tree and the front page on the tree's tie, the
 protect list on its source and its lookup.
 
 The key is b, ship a part only when every check behind it passes. The tree and the front page ship,
-and the protect list is held until its source ties.
+and the protect list is held until its source ties. The notebook's check runs your rule on three
+invented sets of checks as well as the day's, so a rule that happens to give the right answer once
+does not pass.
 
 - a, ship a part when two or more checks pass anywhere: a release is not a vote, since each check
   guards a different part.
@@ -158,7 +165,8 @@ and the protect list is held until its source ties.
 The foot must add only the rows on screen.
 
 The key is b, the revenue of the protect-list rows whose city is Mumbai: Rs 1,56,790 for eleven
-members. A SUMIFS on the city, which ignores the filter, agrees.
+members. The warehouse's revenue for the same eleven members agrees, and so does a SUMIFS on the city,
+which ignores the filter.
 
 - a, the whole list's revenue: Rs 7,14,890, which is what a SUM at the foot shows.
 - c, the rows the filter hid: the opposite of what is on screen.
