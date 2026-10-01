@@ -1535,8 +1535,8 @@ payment, and 450 orders sit on two rows: 400 paid in two instalments, whose seco
 never reads, and 50 that the gateway posted twice, whose two rows are the same payment. **The check
 that catches it:** count the rows each order has, and read any order with two rows before trusting its
 first. **The fix.** Add every payment once. In the sheet that is `=SUMIFS(G:G, A:A, A2)` over the rows
-left once the gateway's exact copies are gone; in the warehouse it is Tuesday's join, one row per
-payment.
+left once the gateway's exact copies are gone; in the warehouse it is Tuesday's join, which counts each
+instalment of an order once, so the gateway's second posting drops out there too.
 
 **Predict before you run.** With every payment added once, collected is short of booked by about: a)
 Rs 8.00 crore; b) Rs 17.5 lakh; c) nothing; d) Rs 39 crore.
@@ -1546,10 +1546,17 @@ paid_rows = raw.drop(columns=["quarter", "first_row"]).drop_duplicates()   # a g
 collected = int(paid_rows["paid_amount"].sum())                             # =SUMIFS(G:G, A:A, A2), every payment once
 copies = len(raw) - len(paid_rows)
 second_inst = collected - looked_up
+
+
+def exact(v):
+    """Every rupee on the bars, so the three add up by eye; whole crores on the axis."""
+    return kit.rupees(v) if v % 10_000_000 else money(v)
+
+
 kit.bridge(("collected, by lookup", looked_up), [("second instalments of 400 orders", second_inst)],
-           end_label="collected, every payment once", fmt=money, lit=(0,),
+           end_label="collected, every payment once", fmt=exact, lit=(0,),
            title="What the lookup left out: the second instalments")
-kit.stats([(money(collected), "collected, every payment once", "the warehouse's join, or SUMIFS on the payments"),
+kit.stats([(money(collected), "collected, every payment once", "SUMIFS without the copies, or Tuesday's join"),
            (money(booked - collected), "short of booked", f"{(booked - collected) / booked * 100:.1f} percent"),
            (f"{copies}", "gateway copies set aside", "the same payment, posted twice")])
 kit.check("the lookup and the sum differ on exactly the orders with two rows",
@@ -2170,18 +2177,18 @@ def card(scope):
     #   a) q2 / company_q2 * 100
     #   b) q2 / (q1 + q2) * 100
     #   c) (q2 - q1) / company_q2 * 100
-    #   d) q2 / q1 * 100
+    #   d) q2 / int(seg_q.sum().sum()) * 100
     share = __TODO6__
     return {"scope": scope, "Q1": q1, "Q2": q2, "change": change, "share": share}
 
 
-kit.table(["Scope", "Q2", "Change on Q1", "Share of Q2 revenue"],
+kit.table(["Scope", "Q2", "Change on Q1", "Share of company revenue"],
           [(s, money(card(s)["Q2"]), f"{card(s)['change']:+.1f}%", f"{card(s)['share']:.1f}%") for s in SCOPES])''',
-     '''kit.check("your Retail-Plus change matches the warehouse's figures for the tier", round(card("Retail-Plus")["change"], 1) == -29.4)
-kit.check("your shares put all segments at the whole of Q2, and Retail-Plus where the warehouse puts it",
+     '''kit.check("your Retail-Plus change matches chapter 4's, which the warehouse reproduced", round(card("Retail-Plus")["change"], 1) == -29.4)
+kit.check("your shares match chapter 4's, for all segments and for Retail-Plus",
           round(card("All segments")["share"], 1) == 100.0 and round(card("Retail-Plus")["share"], 2) == 0.42)''',
      {5: "(q2 - q1) / q1 * 100", 6: "q2 / company_q2 * 100"},
-     "TODO 5: a divides by the current quarter, which reads Retail-Plus at 41.7 percent where it fell 29.4; b is a share of the two quarters together; c is a ratio of about 98 that a card would misprint as a percentage. TODO 6: b shares out the scope's own two quarters; c is the change's share, not the scope's; d is the ratio again."),
+     "TODO 5: a divides by the current quarter, which reads Retail-Plus down 41.7 percent where it fell 29.4; b measures the fall against both quarters together, a base no card names; c is a ratio, about 98 for all segments and 71 for Retail-Plus, that a card would misprint as a percentage. TODO 6: b shares out the scope's own two quarters; c is the change's share, not the scope's; d divides one quarter by the company's two, so every share reads about half what it is and all segments come to 49.6 percent."),
     ('''## Part 4. What ships on Monday, and what, if anything, is held?
 
 Used at work in every release note, which says what a stakeholder can rely on, what waits, and why.
@@ -2247,7 +2254,7 @@ w_mumbai = warehouse("SELECT coalesce(sum(o.amount), 0) AS revenue FROM orders o
 kit.check("your foot equals the warehouse's revenue for the list's Mumbai members", foot == int(w_mumbai))
 kit.check("the query you picked agrees with your tree, both quarters", all(second[q] == int(yours.loc[q, "revenue"]) for q in ["Q1", "Q2"]))''',
      {9: 'int(protect.loc[visible, "revenue"].sum())', 10: '"SELECT quarter, sum(amount) AS revenue FROM orders GROUP BY quarter"'},
-     "TODO 9: a is SUM, which adds the rows the filter hid; c adds exactly the hidden rows; d adds every Mumbai customer in every segment. TODO 10: b is collected money, which differs from booked; c counts orders; d leaves out returned and cancelled orders, which booked revenue counts."),
+     "TODO 9: a is SUM, which adds the rows the filter hid; c adds exactly the hidden rows; d adds every Mumbai customer in every segment. TODO 10: b adds every payment row as the gateway posted it, double posts included, so Q1 reads Rs 10,00,17,000, above booked, and Q2 leaves out the orders nobody paid for; c counts orders; d leaves out returned and cancelled orders, which booked revenue counts."),
 ]
 EX1_KEY = "cbdadacbba"
 
@@ -2272,12 +2279,12 @@ edited.loc["Retail-Plus", "Q2"] = typed_q2
 #   d) shown = typed_q2 / export_q2 * 100
 shown = __TODO1__
 kit.bars([("from the export", round(-change(export_q1, export_q2), 1)), ("after the typed figure", round(-shown, 1))],
-         fmt=lambda v: f"down {v:.1f}%", title="Retail-Plus, Q2 on Q1, before and after the edit")''',
+         fmt=lambda v: f"down {v:.1f}%", title="Retail-Plus's card before and after the edit")''',
      '''kit.check("the card you computed moved when the cell changed", shown != change(export_q1, export_q2))
-kit.check("it moved by exactly what the typed figure added, on the Q1 base",
+kit.check("it moved by exactly what the typed figure added",
           abs((shown - change(export_q1, export_q2)) * export_q1 / 100 - (typed_q2 - export_q2)) < 1e-6)''',
      {1: "change(export_q1, typed_q2)"},
-     "b is the card before the edit; the sheet reads the cell, not the export. c measures the typed figure against the export's Q2. d is a ratio of the two Q2 figures, which no card prints."),
+     "b is the card before the edit; the sheet reads the cell, not the export. c measures the export's Q2 against the typed figure, which no card prints. d is a ratio of two Q2 figures, which no card prints either."),
     ('''## Step 2. Which comparison catches the edit?
 
 Used at work on every Checks tab, whose checks run every time the sheet recalculates.
@@ -2290,9 +2297,8 @@ A check has to stay quiet on a clean sheet and fire on an edited one.''',
 #   c) drift = lambda s: int(s["Q2"].sum()) - wq["Q2"]
 #   d) drift = lambda s: change(int(s["Q1"].sum()), int(s["Q2"].sum()))
 drift = __TODO2__
-kit.bridge(("the warehouse, Q2", wq["Q2"]), [("the typed figure", int(drift(edited)))],
-           end_label="the sheet, Q2", fmt=kit.rupees, lo=97_000_000,
-           title="The drift, in rupees; the axis starts at Rs 9.70 crore")''',
+kit.bars([("the sheet as exported", int(drift(sheet))), ("the edited sheet", int(drift(edited)))],
+         fmt=kit.rupees, title="What your check reads on the sheet as exported and on the edited one")''',
      '''kit.check("your check stays quiet on the sheet as exported", drift(sheet) == 0)
 kit.check("your check stays quiet on a fresh copy of it", drift(sheet.copy()) == 0)
 kit.check("your check fires on the edited sheet", drift(edited) != 0, kit.rupees(int(drift(edited))))''',
@@ -2347,9 +2353,9 @@ The director's figure is still sitting in Retail-Plus's Q2 cell.''',
 #   d) refreshed = orders.pivot_table(index="segment", columns="quarter", values="order_amount", aggfunc="sum")
 refreshed = __TODO4__
 kit.bars([("after the edit", int(edited.loc["Retail-Plus", "Q2"])), ("after the refresh", int(refreshed.loc["Retail-Plus", "Q2"]))],
-         fmt=kit.rupees, title="Retail-Plus Q2: the refresh restores the export and loses the edit")''',
-     '''kit.check("your refreshed sheet ties to the warehouse again", drift(refreshed) == 0)
-kit.check("the typed figure left no trace after your refresh", int(refreshed.loc["Retail-Plus", "Q2"]) != typed_q2)''',
+         fmt=kit.rupees, title="Retail-Plus's Q2 cell after the edit and after your refresh")''',
+     '''kit.check("your refreshed sheet's Q2 matches the warehouse's", drift(refreshed) == 0)
+kit.check("Retail-Plus's Q2 cell after your refresh is not the director's figure", int(refreshed.loc["Retail-Plus", "Q2"]) != typed_q2)''',
      {4: 'orders.pivot_table(index="segment", columns="quarter", values="order_amount", aggfunc="sum")'},
      "a and b keep the typed figure, which is the drift the rule exists to stop; c keeps the edited value wherever the two differ, which is exactly the typed cell."),
     ('''## Step 5. Where does the director's assumption go?

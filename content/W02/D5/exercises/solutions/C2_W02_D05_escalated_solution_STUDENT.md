@@ -109,7 +109,8 @@ down 29.4 percent.
   percent where it fell 29.4.
 - b, `(q1 - q2) / (q1 + q2) * 100`: measures the fall against both quarters together, a base no card
   names.
-- c, `q2 / q1 * 100`: a ratio of about 98 that a card would misprint as a percentage change.
+- c, `q2 / q1 * 100`: a ratio, about 98 for all segments and 71 for Retail-Plus, that a card would
+  misprint as a percentage change.
 
 ### Q6. Which share goes beside the number?
 
@@ -123,7 +124,9 @@ as small in rupees.
   size in the company.
 - c, `(q2 - q1) / company_q2 * 100`: the change's share of company revenue, a useful number that is
   not the scope's base.
-- d, `q2 / q1 * 100`: the same ratio as item 5's option c.
+- d, `q2 / int(seg_q.sum().sum()) * 100`: divides one quarter by the company's two, so the base
+  covers a different period from the number; every share reads about half what it is, so all
+  segments, which are the whole company, come to 49.6 percent.
 
 ### Q7. Which comparison says whether the list's source table ties?
 
@@ -181,7 +184,9 @@ The key is a, `SELECT quarter, sum(amount) AS revenue FROM orders GROUP BY quart
 orders table never saw the export, and it gives Rs 10,00,00,000 and Rs 9,84,00,000, the tree's
 numbers to the rupee.
 
-- b, the payments joined to orders and summed: that is collected money, which differs from booked.
+- b, the payments joined to orders and summed: it adds every payment row as the gateway posted it,
+  double posts included, so Q1 reads Rs 10,00,17,000, above booked, and Q2 leaves out the orders
+  nobody paid for.
 - c, `count(*)` by quarter: counts orders, a number the tree can match without its rupees being
   right.
 - d, the same sum restricted to delivered orders: booked revenue counts every order at the price

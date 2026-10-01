@@ -67,8 +67,8 @@ Used at work on every front page read in two minutes by people who read nothing 
 
 Ten minutes, markers 5 and 6: which formula is the change from Q1 to Q2, and which share goes beside
 the number. The card's scope, all segments, all except Business, or Retail-Plus alone, is the input
-a director changes, and the checks compare your Retail-Plus change and your shares with the
-warehouse's figures.
+a director changes, and the checks compare your Retail-Plus change and your shares with chapter 4's
+figures, which the warehouse reproduced.
 
 ## Part 4. What ships on Monday, and what, if anything, is held?
 
