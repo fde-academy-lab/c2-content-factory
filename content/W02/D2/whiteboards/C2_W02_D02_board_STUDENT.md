@@ -15,12 +15,14 @@ comes from and what one row of that table stands for.
 
 ```mermaid
 flowchart LR
-    O["<b>orders</b><br/>one row per order"] -->|"order_id"| P["<b>payments</b><br/>one row per payment event"]
-    P -.-> Q["<b>can order_id repeat here?</b><br/>instalments, retries"]
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    O["<b>orders</b><br/>one row per order"] -->|"paid once"| M1["<b>one match</b><br/>one row out"]
+    O -->|"two payment rows"| M2["<b>two matches</b><br/>two rows out"]
+    O -->|"never paid"| M0["<b>no match</b><br/>kept or dropped?"]
+    P["<b>payments</b><br/>one row per payment"] -->|"its order is missing"| X["<b>a payment alone</b><br/>kept or dropped?"]
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    class O,P known
-    class Q unknown
+    class M2 bad
+    class M0,X unknown
 ```
 
 The platform lead's remark goes beside the payments box in the room's words: the feed sometimes
@@ -160,8 +162,9 @@ Beside it: `sum(booked - coalesce(collected, 0))`, with the coalesce circled aro
 
 ## Which checks stop the day's wrong reports?
 
-Chapter 6. A grid goes up with the day's five wrong reports as rows and the two suites as columns:
-the plausibility suite lets four through and the tie-back suite stops all five. Under it, the
+Chapter 6. A grid goes up with the day's five wrong pages as rows and the two suites as columns: the
+plausibility suite lets through the two that hide T-4, the quarter in WHERE and the summed gap, and
+the tie-back suite stops all five. Under it, the
 reporting-day rule in one line: booked leaves with the open line named, and collected is held.
 
 ---

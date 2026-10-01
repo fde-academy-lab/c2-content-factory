@@ -49,13 +49,12 @@ flowchart LR
     class W,H,F unknown
 ```
 
-The map of the week is the programme's own construction, drawn from the Week 2 plan: Monday is done,
-today is the dark box, and the dashed boxes are still to come. Monday rebuilt Week 1's revenue tree as
+Monday is done, today is the dark box, and the dashed boxes are still to come. Monday rebuilt Week 1's revenue tree as
 queries on one table, `orders`, where one row is one order, so every sum was a sum of orders.
 
 **The outcome tie.** Every later number this week is computed on joined tables, so the count check
-you wrote today is the check they inherit: a list of members or a customer table is only as honest as
-the join underneath it.
+you wrote today is the check they inherit: a customer table built on a join that drops or repeats
+rows carries the error into every figure computed from it.
 
 **What was left out.** Self-joins, CROSS JOIN beyond a mention, and how a database runs a join fast.
 The afternoon's tentative IITGN faculty session W2-2, on intervals and t-tests, has its own material.
@@ -85,21 +84,22 @@ A seventh payment, P-7, pays 600 against T-9, an order that is not in the orders
 ```mermaid
 flowchart LR
     B["<b>booked</b><br/>5,800, five orders"] --> U["<b>less never paid</b><br/>800, T-4"]
-    U --> C["<b>collected</b><br/>5,000"]
+    U --> S["<b>less paid short</b><br/>0"]
+    S --> C["<b>collected</b><br/>5,000"]
     C --> R["<b>plus posted twice</b><br/>1,500, T-3"]
     R --> P["<b>posted in the feed</b><br/>6,500"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class B,P known
-    class U,R bad
+    class U,S,R bad
     class C bet
 ```
 
 Booked comes from `orders` alone, posted from `payments` alone, and collected sits between them,
 reached by moves that each have a list behind them. Anand asked for the dark box. Three words hold
-all day: **booked** is every order at its amount, whatever its status; **collected** is the cash that
-arrived, each payment counted once; **posted** is every payment row the feed holds, repeats included.
+all day: **booked** is every order at its amount, whatever its status, cancelled and returned orders
+included, as Monday set it; **collected** is the cash that arrived, each payment counted once; **posted** is every payment row the feed holds, repeats included.
 
 ---
 
@@ -109,9 +109,9 @@ arrived, each payment counted once; **posted** is every payment row the feed hol
 sign the collected number. A join that drops an unpaid order hides it from the collections team, and a
 join that repeats a paid order sends them after a customer who paid in full.
 
-**The questions on the way.** What is one row of each table? How many rows does each join return on
-five orders? Which join answers Anand? What does a statement started from payments tell him? Can the
-counts be predicted from the keys alone?
+**The questions on the way.** What is one row of orders, and one row of payments? Which of the four
+joins answers Anand? What does a statement that starts from payments tell Anand? Can the row counts be
+predicted from the keys alone?
 
 **Who else faces this.** Razorpay, the Indian payment gateway, builds its Orders API around the same
 shape: it "combines multiple payment attempts for a single order", and asking for one order's payments
@@ -166,16 +166,15 @@ T-3 twice, so what a total does to an order that appears twice is chapter 2's qu
 running ahead and stand his collections team down; the data platform lead, who hears about a wrong
 warehouse number first; and you, because the way chosen here carries every later chapter.
 
-**The questions on the way.** Which orders own two payment rows? What does a first draft report? Why
-is it wrong when every row is right? Which of four fixes, sized? Does the fix keep 462 orders? Do the
-two tables, summed alone, agree?
+**The questions on the way.** Which Kalpa orders own two payment rows, and why? What does a first draft
+of collected report for Q2? Why is the first draft wrong when every row on it is right? Which of four
+ways stops the double count, and what does each cost? Do the two tables, each summed alone, agree with
+the fixed join?
 
 **Who else faces this.** Shopify creates a transaction "for every order that results in an exchange
 of money", and one order can carry an authorization, its capture, a sale, a void or a refund (Shopify's
-REST Admin API reference, a legacy API since 1 October 2024, checked 1 Oct 2026). dbt Labs names the
-mechanism: "Fan-out joins are when one row in a table is joined to multiple rows in another table,
-resulting in more output rows than input rows", and its metrics layer, MetricFlow, restricts such
-joins (docs.getdbt.com, Joins, last updated 8 Sep 2026, checked 1 Oct 2026).
+REST Admin API reference, a legacy API since 1 October 2024, checked 1 Oct 2026). Any report that sums
+an order's money rows has to decide which of them count as cash, and how often.
 
 ### Which Kalpa orders own two payment rows, and why?
 
@@ -195,9 +194,12 @@ sits beside it. The draft reports Rs 19,29,04,410 collected, 1.96 times booked, 
 
 A sum over a join runs at the join's grain, here the payment, whatever column it names. KR-00595's
 Rs 4,01,000 rides on both of its rows, so the draft counts Rs 8,02,000 for it. This is a **fan-out**:
-a key that repeats on one side multiplies the rows of the other. Two checks catch it and neither needs
-a second table: rows out against orders in, 678 against 462, and collected against booked, since cash
-cannot exceed bookings.
+a key that repeats on one side multiplies the rows of the other. dbt Labs names the same mechanism:
+"Fan-out joins are when one row in a table is joined to multiple rows in another table, resulting in
+more output rows than input rows", and its metrics layer, MetricFlow, "restricts the use of fan-out
+and chasm joins" (docs.getdbt.com, Joins, last updated 8 Sep 2026, checked 1 Oct 2026). Two checks
+catch it and neither needs a second table: rows out against orders in, 678 against 462, and collected
+against booked, since cash cannot exceed bookings.
 
 ### Which of four ways stops the double count, and what does each cost?
 
@@ -232,12 +234,12 @@ booked order is still in the report.
 
 **Who needs the answer.** Anand, who asked which orders make the gap, so an order missing from the
 report is an order nobody chases, and his analyst, who reads the reconciliation above the number. A
-report that loses an order and carries a repeated payment can show a gap of zero, and nobody acts on a
-zero.
+report that loses an order and carries a repeated payment can show a surplus, or a gap that looks
+closed, and nobody chases an order on a page that reads fully collected.
 
-**The questions on the way.** Can the report gain rows now? What does a plain JOIN draft report? Which
-check catches it without a rupee? Which moves carry booked to posted? Does the bridge close on Q2? Does
-a capped count reach the same collected?
+**The questions on the way.** Which of four proofs shows Anand the gap is honest? What does a first
+draft with a plain JOIN report? Which moves carry booked to what the feed posted? Does collected come
+out the same when each order is capped at its booked amount?
 
 **Who else faces this.** Stripe's payout reconciliation report lets a merchant match each payout in
 the bank with "the batches of payments and other transactions that they relate to", itemizing every
@@ -246,8 +248,9 @@ of a missing-row failure is Public Health England, which left 15,841 positive CO
 daily figures reported between 25 September and 2 October 2020 (PHE statement, GOV.UK, 4 October 2020).
 The results arrived as CSV files and were pulled into Excel templates in the old XLS format; each
 result took several rows, so a template held about 1,400 cases, and once it was full further cases
-were left off (BBC News, 5 October 2020; both checked 1 Oct 2026). No row that arrived was wrong, and a
-count of rows sent against rows loaded would have caught the loss.
+were left off (BBC News, 5 October 2020; both checked 1 Oct 2026). No row that arrived was wrong; the
+loss sat in the rows that never loaded, which is what a count of rows sent against rows loaded
+measures.
 
 ### Which of four proofs shows Anand the gap is honest?
 
@@ -282,8 +285,9 @@ table's own total for Q2 orders; each learner reads its six figures on their own
 The second route never reads an instalment number: for each paid order it takes the smaller of what
 the feed posted and what was booked, 5,000 on the invented tables again, and the same figure on Kalpa's
 Q2. The two methods fail in different places: the instalment method would count a retry written under
-a new instalment number, and the cap would throw away a genuine overpayment. Where they agree, neither
-blind spot is in the data.
+a new instalment number, and the cap would throw away a genuine overpayment. Agreement rules out
+either one alone; only a retry with both blind spots at once, a new instalment number on an order also
+paid short, or two errors of the same size could pass both.
 
 **The answer.** Every Q2 order is still in the report, the count proves it without a rupee, and every
 rupee between booked and posted sits in a named move, which raises the question of which orders stand
@@ -298,9 +302,9 @@ platform lead and Finance, who reverse or refund what is on the double-paid list
 chases a customer who paid or misses one who did not; a wrong double-paid list reverses a real second
 instalment and rings a business buyer who paid on time.
 
-**The questions on the way.** Which orders have no payment at all? What happens when "paid in Q2" goes
-in WHERE? Where does that condition belong? What does HAVING COUNT(*) > 1 flag? What makes a retry a
-retry? Do a second method and a second list agree?
+**The questions on the way.** Which of four ways finds the unpaid orders? What happens to the unpaid
+list when "paid in Q2" goes into WHERE? Which orders does HAVING COUNT(*) > 1 flag, and are they
+double-paid? Do a second method and a second list reach the same orders?
 
 **Who else faces this.** Stripe builds its API so that a retried request cannot charge twice: the
 client sends an idempotency key, and "subsequent requests with the same key return the same result"
@@ -320,7 +324,7 @@ feed makes it return no rows at all, without an error. The call is the LEFT JOIN
 list is the report's own rows with nothing on the payments side, with every column Anand
 wants beside each order. On the invented tables it returns T-4 alone, 800, the never-paid bar exactly.
 
-### What happens to that list when "paid in Q2" goes into WHERE?
+### What happens to the unpaid list when "paid in Q2" goes into WHERE?
 
 This is the chapter's first trap. Anand talks about cash that came in during Q2, so a teammate adds
 `WHERE p.paid_date BETWEEN '2026-07-01' AND '2026-09-30'` beside the anti-join's condition. The list
@@ -329,7 +333,11 @@ NULL in every payment column; NULL BETWEEN two dates is unknown, and WHERE keeps
 is thrown away after the join kept it. The check: the list's total, 0, against its bar, 800. The fix
 moves the condition into ON, which decides which payments count as a match before the join: 7 rows,
 and T-4 is back. The PostgreSQL manual puts it the same way: a restriction in ON is processed before
-the join, one in WHERE after it, and the difference matters a lot with outer joins.
+the join, one in WHERE after it, and the difference matters a lot with outer joins. The two lists
+answer different questions: with the dates in ON the list holds the orders not paid within Q2, so an
+order paid on 3 October would sit on it; for "never paid", no date condition belongs on payments at
+all. They hold the same orders on Kalpa's Q2 only because no payment in the warehouse lands after 30
+September.
 
 ### Which orders does HAVING COUNT(*) > 1 flag, and are they double-paid?
 
@@ -344,11 +352,13 @@ and checks it against the bar, and a third query lists the payments that match n
 
 ### Do a second method and a second list reach the same orders?
 
-Yes. NOT EXISTS, which never builds the joined rows, gives the same unpaid orders, and a route that
+Yes. The unpaid list is checked a way that builds no anti-join: count the orders, take away those
+that appear in payments, and do the same with booked; what is left equals the list's count and total,
+and a WHERE that empties the anti-join or a NULL that silences NOT IN cannot reach it. A route that
 never reads an instalment number, an order whose posted cash exceeds its booking, flags the same
 double-paid orders. The instalment method would miss a retry filed under a new instalment number, and
-the booked method would miss a retry on an order paid short; when both agree, neither gap is in the
-data.
+the booked method would miss a retry on an order paid short; when both agree, only a retry with both
+blind spots at once could still hide.
 
 **The answer.** The unpaid list is the report's own LEFT JOIN, the condition on payments sits in ON,
 and a retry is one order and instalment twice; next comes the page Anand signs.
@@ -362,9 +372,9 @@ channel heads, who chase their own unpaid orders from it. A gap column that read
 of them down, and a page that does not add back to the bridge cannot be defended when his analyst
 audits it.
 
-**The questions on the way.** What must a line per channel carry? Which of four forms fits? What does
-the gap column say when each order's gap is added up? Why is it wrong? Does the fixed page add back to
-the bridge? Does the unpaid list by channel give the same gap?
+**The questions on the way.** Which of four report forms fits a finance controller? What does the gap
+column say when each order's gap is added up? Does the fixed page add back to the bridge, and does a
+second route agree?
 
 **Who else faces this.** Infosys reports days sales outstanding every quarter, money owed by
 customers over revenue per day on the last twelve months' revenue: 63 days for the quarter ended 30
@@ -413,9 +423,9 @@ leaves is the last question.
 leaves the team; Anand, who forwards it; and you, who sign it. A validation that cannot fail puts a PASS stamp on a wrong number, and a
 stamped wrong number is harder to withdraw than an unstamped one.
 
-**The questions on the way.** Do the hurried checks pass a report that hides an unpaid order? Which
-checks tie back to the tables? Does the suite fail every wrong report of the day? Does it pass Kalpa's
-page? Does a second tool agree? What does Anand get when a check fails late?
+**The questions on the way.** Why do the hurried checks pass a report that hides an order? Does the
+suite fail every wrong report the day met? Does a second tool, working from the raw rows, agree? What
+does Anand get when a check fails at the end of reporting day?
 
 **Who else faces this.** Wirecard, a German payments company, collapsed in June 2020 over cash it
 reported and did not have. Its auditor, EY, refused to sign off on the accounts on 18 June; on 22
@@ -428,22 +438,26 @@ Singapore's OCBC Bank and relied on documents and screenshots from a trustee and
 ### Why do the hurried checks pass a report that hides an order?
 
 Three plausibility checks, collected at most booked, a gap that is not negative and every channel
-present, pass the plain JOIN report 3 of 3: its 4 orders book 5,000, collect 5,000 and show a gap of 0,
-all consistent with each other. Each check tests the report against itself, so none can see what the
-report left out. The fix is five tie-back checks, each recomputing one figure from one table alone:
-orders against `orders`, booked against `orders`, the gap against booked less collected, the gap
-against the unpaid list, and collected plus posted twice against posted from `payments`. On the plain
-JOIN report three of them fail.
+present, pass the page written with chapter 4's mistake, the quarter's dates in WHERE, 3 of 3: its 4
+orders book 5,000, collect 5,000 and show a gap of 0, all consistent with each other. Each check tests
+the page against itself, so none can see what the page left out. The fix is five tie-back checks,
+each recomputing one figure outside the page: orders against `orders`, booked against `orders`, the
+gap against booked less collected, the gap against the never-paid and paid-short lists, and collected
+plus posted twice against posted from `payments`. The gap is tied to both lists, since an order paid
+in part is a gap too. On that page three of them fail.
 
 ### Does the suite fail every wrong report the day met?
 
-The day produced five plausible wrong reports: the fan-out draft, the plain JOIN, the quarter in WHERE,
-each order's gap added up, and posted read as collected. The plausibility suite lets four through and
-stops only the last, whose collected of 6,500 exceeds booked. The fan-out draft is the sharpest case:
-it inflates booked and collected together, so its gap is right, and only the orders and booked checks
-stop it. The tie-back suite fails every wrong report on at least one check and passes the true report
-on all five. On Kalpa's Q2 page all five pass: 462 against 462, Rs 9,84,00,000 against Rs 9,84,00,000,
-and the gap and the retries tied to their lists.
+The day produced five plausible wrong pages, each written on the invented tables: chapter 2's fan-out
+draft, chapter 3's plain JOIN draft and its LEFT JOIN that still read posted as collected, chapter 4's
+quarter in WHERE, and chapter 5's gap summed per order. The plausibility suite stops three, each with
+more cash on it than was booked: the fan-out draft's 8,500 against 5,800, and posted read as
+collected, 6,500 against 5,000 and against 5,800. It lets through the two that hide T-4, the quarter
+in WHERE and the summed gap, because a missing order lowers the page's figures together, or loses the
+gap to a NULL, and nothing on it looks wrong. The tie-back suite fails every wrong page on at least one
+check, the fan-out draft on orders, the two lists and posted, and passes the true page on all five. On
+Kalpa's Q2 page all five pass: 462 against 462, Rs 9,84,00,000 against Rs 9,84,00,000, the gap equal
+to the never-paid and paid-short lists, and the retries equal to posted less collected.
 
 ### Does a second tool, working from the raw rows, agree?
 
@@ -451,8 +465,8 @@ Two plain SELECTs fetch each table's rows, and Python counts them with Week 1's 
 order and instalment so that a repeat overwrites itself and counts once. It shares no join, no GROUP BY
 and no NULL rule with the SQL page, and it reaches the same orders, booked, collected and gap on both
 the invented tables and Kalpa's Q2. A settlement file from the gateway would be stronger still, since
-it comes from outside Kalpa's own tables; Wirecard's collapse in 2020 turned on checks that read a
-company's own records back to it.
+it comes from outside Kalpa's own tables. Wirecard's auditor relied for years on documents from
+Wirecard and its trustee, so the missing cash went unconfirmed.
 
 ### What does Anand get when a check fails at the end of reporting day?
 
@@ -462,8 +476,8 @@ owner hears the same day: you for the joins and the gap, the platform lead when 
 twice stops matching posted, which means the feed changed.
 
 **The answer.** Five tie-back checks must pass before collected leaves the team: orders and booked
-against `orders` alone, the gap against booked less collected and against the unpaid list, and
-collected plus posted twice against posted from `payments` alone. Each has been seen to fail on a
+against `orders` alone, the gap against booked less collected and against the never-paid and
+paid-short lists, and collected plus posted twice against posted from `payments` alone. Each has been seen to fail on a
 wrong report the day met, and all five pass on Kalpa's Q2 page. When one fails late on reporting day,
 booked leaves with the open line beside it and collected waits until the check closes.
 
@@ -526,8 +540,8 @@ DISTINCT", which hides the symptom and merges two genuine rows that happen to sh
 
 **[F] How do you find orders with no payment?** Strong: LEFT JOIN payments and keep the rows whose
 payment key IS NULL, or NOT EXISTS, which reads as the business sentence; check the list's total
-against booked less collected for the orders never paid; avoid NOT IN, which returns nothing once the
-subquery holds a NULL. Weak: an INNER JOIN and an eyeball of what is missing.
+against total booked less total collected, less anything paid in part, each computed without the list;
+avoid NOT IN, which returns nothing once the subquery holds a NULL. Weak: an INNER JOIN and an eyeball of what is missing.
 
 **[F] Revenue doubled after a join and every row looks fine; where do you look?** Strong: every row
 looks fine because every row is real; the problem is how often each order appears. Compare rows out
@@ -537,10 +551,11 @@ Weak: reading rows one by one for a bad value.
 
 **[D] Design the validation you run before a joined number reaches Finance, and say what you do when
 it fails at the end of reporting day.** Strong: four layers, run every time. The counts: rows in
-against rows out, and orders on the report against the table. The tie-backs: booked from `orders`
-alone, posted from `payments` alone, and each bar of the bridge equal to its list. One independent
-recomputation, in another tool from the raw rows, or against the gateway's settlement file when there
-is one. And a test of the suite itself against the known wrong reports, each seen to fail. When a
+against rows out, orders on the report against the table, the join key unique on its one side, and
+the keys that match nothing counted on the other. The tie-backs: booked from `orders` alone, posted
+from `payments` alone, and each bar of the bridge equal to its list. One independent recomputation,
+in another tool from the raw rows, or against the gateway's settlement file when there is one, once
+the feed is shown complete up to the quarter's cut-off. And a test of the suite itself against the known wrong reports, each seen to fail. When a
 check fails late on reporting day, send what reconciles, booked, with the open line stated; hold
 collected; tell the owner that day. Weak: sending the number with a caveat in small print.
 
@@ -551,7 +566,7 @@ For Anand's question it is dishonest, since his question is about every booked o
 **[F] A filter on the right-hand table of a LEFT JOIN: WHERE or ON, and what changes?** Strong: ON, where it decides which
 right rows attach and every left row survives; in WHERE it runs after the join, rejects the NULLs of
 unmatched rows and turns the LEFT JOIN into an INNER one. The one right-table condition that belongs in
-WHERE is the anti-join's `IS NULL`.
+WHERE is the anti-join's `IS NULL`, unless the question wants matched rows only.
 
 **[F] HAVING COUNT(*) > 1 on payments by order: what does it find, and what does it wrongly include?**
 Strong: every order with more than one payment row, which wrongly includes every legitimate
@@ -565,21 +580,26 @@ Explain every rupee of difference as a named move in a bridge with the rows behi
 difference with no list behind it means the join is wrong. Weak: setting the joined total beside last
 quarter's and calling it close enough.
 
-**[D] Two errors cancel and the total looks right: how would you find them?** Strong: never let a total
-prove itself. Count first, since rows in against rows out finds a dropped or repeated row even when the
+**[D] Two errors cancel and the total looks right: how would you find them?** Strong: a total that
+balances can still hide two errors, so count first, since rows in against rows out finds a dropped or repeated row even when the
 rupees balance; then split the difference into moves with definitions, so an unpaid order and a
 repeated payment each get their own bar.
 
 **[D] Anand says the gap is too small to matter: how do you decide whether to chase it?** Strong: size
-it before judging it. Split it by channel and by order, since a small total can be one large invoice;
-check how old each unpaid order is, since an order unpaid for weeks is overdue rather than early; set
-the cost of chasing against the cash each order carries; recommend chasing the large and old ones
-first, and say what you would drop.
+it before judging it. Put it as a share of booked, then split it by channel and by order, since a
+small total can be one large invoice, and ask whether the unpaid orders cluster in one channel; check
+how old each unpaid order is, since an order unpaid for weeks is overdue rather than early; set the
+cost of chasing against the cash each order carries; recommend chasing the large and old ones first,
+and say what you would drop. Keep booked and collected beside the gap while you argue it, since a gap
+on its own cannot be checked.
 
 **[S] If you could keep only one check before a joined number leaves, which would you keep?** Strong:
-orders on the report against orders in the source table. It reads no rupee, it catches a fan-out and
-a dropped order alike, and it runs in a millisecond; every other check can be added once that one
-passes. Weak: collected at most booked, which the fan-out draft passes because it inflates both.
+orders on the report against orders in the source table. A join goes wrong in two ways, a fan-out and
+a dropped order, and this check catches both without reading a rupee, in a millisecond. Name what it
+misses: on the day's five wrong pages it stops three, and lets through posted read as collected and
+the gap summed past a NULL, which go wrong after the join; the gap's tie-back to the never-paid and
+paid-short lists is the second check you add. Weak: collected at most booked, which passes every page
+that hides an unpaid order.
 
 ---
 
@@ -610,19 +630,19 @@ and it keeps the rows while it does so. The pre-read ships tonight.
 | Term | What it means here | Where it appeared | Example |
 |---|---|---|---|
 | Grain | What one row of a table stands for, said before any join | Chapter 1 | One order per row in `orders`; one payment event per row in `payments` |
-| INNER JOIN | Keeps only the rows that match on both sides | Chapter 1 | Six rows on the invented tables; T-4 and P-7 vanish |
-| LEFT JOIN | Keeps every row of the first table, with NULLs where nothing matched | Chapters 1 and 3 | Seven rows; T-4 stays with an empty payment |
-| FULL OUTER JOIN | Keeps unmatched rows from both sides | Chapter 1 | Eight rows; T-4 and P-7 both stay |
-| Fan-out | A join repeating a row once per match on a side whose key repeats | Chapter 2 | 462 Q2 orders become 678 rows, and summed booked nearly doubles |
-| Booked | Every order at its amount, whatever its status | All day | Rs 9,84,00,000 over 462 Q2 orders |
-| Collected | The cash that arrived, each payment counted once | All day | 5,000 on the invented tables |
-| Posted | Every payment row the feed holds, repeats included | Chapters 2 and 3 | 6,500 on the invented tables |
-| Row-count reconciliation | Rows in, rows out and the difference named, above the number | Chapter 3 | 462 in, 462 out after the fix |
 | Revenue bridge | Booked walked to posted in named moves, each a list of orders | Chapter 3 | 5,800 less 800 is 5,000, plus 1,500 is 6,500 |
 | Anti-join | The rows of one table with no partner in the other | Chapter 4 | The unpaid list: T-4 on the invented tables |
 | Gateway retry | The same order and instalment posted twice by the payment feed | Chapter 4 | T-3's instalment 1, P-4 and P-5 |
 | coalesce | Returns its first argument that is not NULL | Chapter 5 | `coalesce(collected, 0)` keeps an unpaid order in the gap |
-| Tie-back check | A figure recomputed from one source table alone and compared | Chapter 6 | Booked on the page against booked from `orders` |
+| Tie-back check | A figure recomputed outside the report, from the source tables, and compared | Chapter 6 | Booked on the page against booked from `orders` |
+| Booked | Every order at its amount, whatever its status, cancelled and returned orders included, as Monday set it | All day | Rs 9,84,00,000 over 462 Q2 orders |
+| Collected | The cash that arrived, each payment counted once | All day | 5,000 on the invented tables |
+| Posted | Every payment row the feed holds, repeats included | Chapters 2 and 3 | 6,500 on the invented tables |
+| INNER JOIN | Keeps only the rows that match on both sides | Chapter 1 | Six rows on the invented tables; T-4 and P-7 vanish |
+| LEFT JOIN | Keeps every row of the first table, with NULLs where nothing matched | Chapters 1 and 3 | Seven rows; T-4 stays with an empty payment |
+| FULL OUTER JOIN | Keeps unmatched rows from both sides | Chapter 1 | Eight rows; T-4 and P-7 both stay |
+| Fan-out | A join repeating a row once per match on a side whose key repeats | Chapter 2 | 462 Q2 orders become 678 rows, and summed booked nearly doubles |
+| Row-count reconciliation | Rows in, rows out and the difference named, above the number | Chapter 3 | 462 in, 462 out after the fix |
 
 ---
 
@@ -645,8 +665,8 @@ Q2 booked Rs 9,84,00,000 over 462 orders, read from the orders table alone. Coll
 that arrived with each payment counted once: your page reaches it by bringing payments to one row per
 order and instalment before a LEFT JOIN from orders, and 462 rows in against 462 rows out shows that no
 order was lost or repeated on the way. The gap between booked and collected is the orders nobody paid,
-which your anti-join lists by channel, largest first, with a total equal to the bridge's never-paid
-bar. The gateway's repeats sit apart from it: a retry is one order and instalment posted twice, its
+since nothing on Q2 was paid short; your anti-join lists them by channel, largest first, with a total
+equal to the bridge's never-paid bar. The gateway's repeats sit apart from it: a retry is one order and instalment posted twice, its
 surplus equals posted less collected, and that list goes to the platform lead with the payments that
 match no order. You know nothing is counted twice because five tie-back checks pass on the page, and
 each of them has been seen to fail on a wrong report first. The figures themselves are the ones your

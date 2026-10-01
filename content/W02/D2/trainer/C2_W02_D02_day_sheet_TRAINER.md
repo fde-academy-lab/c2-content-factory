@@ -24,12 +24,12 @@ channel, and how do we know nothing is counted twice?
 
 | Chapter | The chapter's question | The smaller questions on the way |
 |---|---|---|
-| 1. What does a join keep? | When payments are attached to orders, which rows does each join keep, drop or repeat? | What is one row of each table? How many rows does each join return on five orders? Which join answers Anand? What does a statement started from payments tell him? Can the keys predict the counts? |
-| 2. Why twice the bookings? | Why does the first join on Kalpa's Q2 report nearly twice the bookings as collected, and how do we attach payments so that nothing counts twice? | Which orders own two payment rows? What does a first draft report? Why is it wrong when every row is right? Which of four fixes, sized? Does the fix keep 462 orders? Do the two tables, summed alone, agree? |
-| 3. Is every order there? | Once nothing counts twice, is every booked order still in the report, and can every rupee between booked and posted be named? | Can the report gain rows now? What does a plain JOIN draft report? Which check needs no rupee? Which moves carry booked to posted? Does the bridge close on Q2? Does a capped count agree? |
-| 4. Which orders, exactly? | Which Q2 orders were never paid, and which payments did the gateway post twice? | Which orders have no payment? What happens with the quarter in WHERE? Where does it belong? What does HAVING COUNT(*) > 1 flag? What makes a retry a retry? Do second methods agree? |
-| 5. What does Anand sign? | What goes on the report by channel that Anand signs, and does its gap column tell the truth? | What must a line carry? Which of four forms? What does the gap column say? Why is it wrong? Does the page add back to the bridge? Does the unpaid list by channel agree? |
-| 6. Can the number leave? | Which checks must pass before the collected number leaves the team, and what does Anand get when one fails at the end of reporting day? | Do hurried checks pass a report that hides an order? Which checks tie back? Does the suite fail every wrong report? Does it pass Kalpa's page? Does a second tool agree? What does Anand get when a check fails late? |
+| 1. What does a join keep? | When payments are attached to orders, which rows does each join keep, drop or repeat? | Which join keeps every order? What is one row of each table? How many rows does each return? What does payments-first show? Can the keys predict the counts? |
+| 2. Why twice the bookings? | Why does the first join on Kalpa's Q2 report nearly twice the bookings as collected, and how do we attach payments so that nothing counts twice? | Which orders own two rows? What does the draft collect? Why is the draft's sum wrong? Which of four fixes fits? Does the fix keep 462 orders? Do the two tables agree alone? |
+| 3. Is every order there? | Once nothing counts twice, is every booked order still in the report, and can every rupee between booked and posted be named? | Which proof runs first? Can the fixed report gain rows? What does a plain JOIN report? Which check needs no rupee? Does the bridge close on Q2? Does capping each order agree? |
+| 4. Which orders, exactly? | Which Q2 orders were never paid, and which payments did the gateway post twice? | Which orders have no payment? What does a date in WHERE do? Where does the date belong? Which orders does HAVING flag? What makes a retry a retry? Do second routes agree? |
+| 5. What does Anand sign? | What goes on the report by channel that Anand signs, and does its gap column tell the truth? | Which of four page forms fits? What must a channel line carry? What does the gap column say? Why does the gap column read 0? Does the page match the bridge? Does the unpaid list agree? |
+| 6. Can the number leave? | Which checks must pass before the collected number leaves the team, and what does Anand get when one fails at the end of reporting day? | Can hurried checks miss an order? Which checks tie to the tables? Does the suite stop all five? Does Kalpa's Q2 page pass? Does Python reach the same? What leaves when a check fails? |
 
 ---
 
@@ -107,7 +107,7 @@ the keys, the reasons and the checks, and never a planted figure.
 | 4 | The quarter's dates in WHERE on the anti-join | 6 rows, an empty list against a bar of 800 | 648 rows, 432 orders, an empty unpaid list | "Every Q2 order was paid within the quarter" | The list's total against its bar | The dates move into ON: all 30 unpaid orders return |
 | 4 | `GROUP BY order_id HAVING count(*) > 1` | T-2 and T-3, 2,300 claimed against 1,500 | 216 orders, Rs 9,62,59,340 booked, Rs 9,62,80,090 posted | A refund review of real second instalments | The list's surplus against posted less collected | Group by order and instalment: 28 retries, Rs 20,750 |
 | 5 | `sum(booked - collected)` by channel | app 0 against a true 800 | Rs 0 on every channel against a true Rs 17,54,930 | A page that says nothing is outstanding | The gap against booked less collected as two sums | `sum(booked - coalesce(collected, 0))` |
-| 6 | Three plausibility checks | 3 of 3 pass the plain JOIN report; 4 of 5 wrong reports get through | the suite passes Kalpa's plain JOIN page too | A PASS stamp on a wrong number | Tie-back checks against the two tables | Five tie-back checks, each seen to fail |
+| 6 | Three plausibility checks | 3 of 3 pass the quarter-in-WHERE page; 2 of the 5 wrong pages get through, the two that hide T-4 | the suite passes Kalpa's quarter-in-WHERE page too | A PASS stamp on a wrong number | Tie-back checks against the two tables | Five tie-back checks, each seen to fail |
 
 The WHERE-against-ON behaviour and every Kalpa number above were rechecked on PostgreSQL 16.14 on
 30 September 2026 and again on 1 October 2026. Run the Kalpa versions of the chapter 3, 4 and 5 traps live from the chapter's sql
@@ -128,7 +128,7 @@ you keep if you could keep only one?
 
 ## What is planted, and what if nobody finds it?
 
-The discovery is the lesson, and naming a plant spends it. Nothing in any learner file names these.
+A learner who is told where a plant is never has to find it, so nothing in any learner file names these.
 
 | Planted | Where it is | What the room should do | If nobody finds it |
 |---|---|---|---|
@@ -205,16 +205,16 @@ between 8 April and 23 September. `trainer/C2_W02_D02_case_key_TRAINER.ipynb` pr
 |---|---|---|
 | [S] | INNER against LEFT join: what does each drop or keep? | INNER keeps only matched rows; LEFT keeps every left row with NULLs where nothing matched; both repeat a left row once per matching right row. |
 | [S] | Your join grew the row count; name the cause and the check. | A key that repeats on the other table; count rows before and after, count that table's rows per key, and bring it to the key's grain before the join. |
-| [F] | How do you find orders with no payment? | A LEFT JOIN keeping the rows whose payment key IS NULL, or NOT EXISTS, and a check that the list's booked total equals its bar; never NOT IN. |
+| [F] | How do you find orders with no payment? | A LEFT JOIN keeping the rows whose payment key IS NULL, or NOT EXISTS, and a check that the list's booked total equals total booked less total collected, less anything paid in part, computed without the list; never NOT IN. |
 | [F] | Revenue doubled after a join and every row looks fine; where do you look? | At the grain: every row is real and the sum runs at the payment's grain, so aggregate the many side first and recompute each table alone. |
-| [D] | Design the validation you run before a joined number reaches Finance, and say what you do when it fails at the end of reporting day. | Counts, tie-backs to each table alone, one independent recomputation and a test of the suite on known wrong reports; when one fails late, booked leaves with the open line named and collected is held. |
+| [D] | Design the validation you run before a joined number reaches Finance, and say what you do when it fails at the end of reporting day. | Counts, including a unique key on the one side and the unmatched keys on the other; tie-backs to each table alone; one independent recomputation on a feed shown complete to the cut-off; and a test of the suite on known wrong reports. When one fails late, booked leaves with the open line named and collected is held. |
 | [S] | When is an INNER join the honest choice? | When unmatched rows are outside the question by definition, such as days to the first payment for paid orders, and the report says so. |
-| [F] | A filter on the right-hand table of a LEFT JOIN: WHERE or ON, and what changes? | ON; in WHERE it runs after the join, drops the NULL rows and turns the LEFT JOIN into an INNER one. |
+| [F] | A filter on the right-hand table of a LEFT JOIN: WHERE or ON, and what changes? | ON; in WHERE it runs after the join, drops the NULL rows and turns the LEFT JOIN into an INNER one, which is right only when the question wants matched rows. |
 | [F] | HAVING COUNT(*) > 1 on payments by order: what does it find, and what does it wrongly include? | Every order with more than one payment row, legitimate instalments included; the retry grain is order and instalment. |
 | [F] | How do you reconcile a total after a join back to its source table? | Recompute it from the source alone and explain every rupee of difference as a named move with its list. |
 | [D] | Two errors cancel and the total looks right: how would you find them? | Count first, then split the difference into moves with definitions, so each error gets its own bar. |
-| [D] | Anand says the gap is too small to matter: how do you decide whether to chase it? | Size it by channel and order, since Rs 17.5 lakh is mostly two business invoices; check age, since a July order is overdue; weigh the cost of chasing against the cash. |
-| [S] | If you could keep only one check before a joined number leaves, which would you keep? | Orders on the report against orders in the table: no rupee, and it catches a fan-out and a dropped order alike. |
+| [D] | Anand says the gap is too small to matter: how do you decide whether to chase it? | Size it as a share of booked, then by channel and order, since Rs 17.5 lakh is mostly two business invoices; check age, since a July order is overdue; weigh the cost of chasing against the cash; keep booked and collected beside the gap. |
+| [S] | If you could keep only one check before a joined number leaves, which would you keep? | Orders on the report against orders in the table: no rupee, and it catches both ways a join fails; it misses posted read as collected and the gap summed past a NULL, so the gap's tie-back to the two lists comes second. |
 
 ---
 

@@ -548,10 +548,13 @@ as the date condition chapter 4 meets. Count the keys first on real data, every 
 
 **Kavya's review.** "Tell me the grain of each table, and which rows your join drops, before you tell me any total. Start from the table whose every row must survive."
 
+**In the interview.** [S] INNER against LEFT join: what does each drop or keep? And [S] when is an INNER join the honest choice?
+
 ```notes
-LIVE, 1 minute. Read the five lines, then Kavya's review. Mark the "never paid" arrow on the board
-drawing with LEFT. The question this leaves: the right join still lists T-2 and T-3 twice, so what
-does a total over those rows report on Kalpa's Q2? That is chapter 2.
+LIVE, 1 minute. Read the five lines, then Kavya's review. The interview tags: [S] a staple asked
+everywhere, [F] frequent in GCC and product screens, [D] a differentiator. Mark the "never paid"
+arrow on the board drawing with LEFT. The question this leaves: the chosen LEFT JOIN still lists T-2
+and T-3 twice, so what does a total over those rows report on Kalpa's Q2? That is chapter 2.
 ```
 
 ---
@@ -604,24 +607,20 @@ ahead of bookings. That sentence is the cost.
 
 ---
 
-## S27. Shopify and dbt name the same multiplication
-*Which real companies build their data around one order owning several money rows?*
+## S27. Shopify keeps several money rows on one order
+*Which real company builds its data around one order owning several money rows?*
 
 ```cards
 icon: shopping-cart | eyebrow: Shopify | title: Several transactions per order | body: A transaction for "every order that results in an exchange of money": an authorization, its capture, a sale, a void or a refund can all sit on one order.
-icon: database | eyebrow: dbt Labs | title: Fan-out, named | body: "Fan-out joins are when one row in a table is joined to multiple rows in another table, resulting in more output rows than input rows."
-icon: shield-check | eyebrow: What they do about it | title: Restrict it | body: MetricFlow, dbt's metrics layer, restricts fan-out joins, so a metric cannot be summed at the wrong grain. | tone: dark
+icon: file-text | eyebrow: Two of them | title: Agreed, then taken | body: An authorization is money the customer has agreed to pay; a capture takes that same money.
+icon: circle-help | eyebrow: The question for any report | title: Which rows are cash? | body: A report that sums an order's money rows has to decide which of them count as cash, and how often. | tone: dark
 ```
 
-A report that adds every Shopify transaction of an order counts an authorised and captured payment twice.
-
 ```notes
-LIVE, 2 minutes. Sources: Shopify developer documentation, the REST Admin API's Transaction resource
-(a legacy API since 1 October 2024, whose transaction kinds the GraphQL Admin API keeps), and dbt's
-MetricFlow documentation (Joins, last updated 8 Sep 2026), both checked 1 Oct 2026; URLs in the
-provenance.
-An authorization is money the customer has agreed to pay; a capture takes that same money. dbt
-builds a whole metrics layer to stop the mistake this chapter stages.
+LIVE, 2 minutes. Source: Shopify developer documentation, the REST Admin API's Transaction resource
+(a legacy API since 1 October 2024, whose transaction kinds the GraphQL Admin API keeps), checked
+1 Oct 2026; URL in the provenance. Leave the question on the dark card open: the room meets the
+answer on Kalpa's data in four slides.
 ```
 
 ---
@@ -656,20 +655,19 @@ they are. Take letters, then run level 1 of notebook 2.
 flowchart LR
     B["<b>KR-00595</b><br/>booked once<br/>Rs 4,01,000"] --> I1["<b>instalment 1</b><br/>Rs 2,40,600"]
     B --> I2["<b>instalment 2</b><br/>Rs 1,60,400"]
-    I1 --> J["<b>a join</b><br/>writes the order<br/>on two rows"]
+    I1 --> J["<b>together</b><br/>Rs 4,01,000,<br/>the booked amount"]
     I2 --> J
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    class B,I1,I2 known
-    class J bad
+    class B,I1,I2,J known
 ```
 
 The answer is b. Kalpa settles its large business invoices in two parts, as Anand said, so every one of Q2's ten largest orders owns two payment rows. **The check.** 10 of 10 carry instalments 1 and 2.
 
 ```notes
 LIVE, 2 minutes. KR-00595 is a typical business order from the store channel, booked at Rs 4,01,000
-and paid in two instalments that add back to it: two real payments in two rows for one order. An
-order that owns two payment rows comes out of a join twice.
+and paid in two instalments that add back to it: two real payments in two rows for one order. Do not
+say yet what a join does with the two rows; the next slide asks.
 ```
 
 ---
@@ -702,7 +700,7 @@ a condition. Most rooms pick a, which is the answer the query was written to giv
 ```stats
 value: Rs 19,29,04,410 | label: collected, first draft | note: the order amount beside each payment row
 value: Rs 9,84,00,000 | label: booked | note: Monday's number, orders alone
-value: 1.96 x | label: collected over booked | note: which cash cannot be
+value: 1.96 x | label: collected over booked | note: more than cash can be
 value: 678 | label: rows out | note: from 462 Q2 orders in
 ```
 
@@ -734,8 +732,24 @@ flowchart LR
 A sum over a join runs at the join's grain, here the payment, whatever column it names. This is a **fan-out**: a key that repeats on one side multiplies the rows of the other. **The check that catches it.** Rows out against orders in, 678 against 462, or collected against booked, since cash cannot exceed bookings.
 
 ```notes
-LIVE, 4 minutes. Now name it: fan-out. Either check is enough, and neither needs a second table.
-Mark the "two matches" arrow on the board drawing with the word fan-out.
+LIVE, 4 minutes with the next slide. Now name it: fan-out. Either check is enough, and neither needs
+a second table. Mark the "two matches" arrow on the board drawing with the word fan-out.
+```
+
+---
+
+## S32b. dbt names the fan-out, and restricts it
+*Who else names the doubling the room just found, and what do they do about it?*
+
+```cards
+icon: database | eyebrow: dbt Labs | title: Fan-out, named | body: "Fan-out joins are when one row in a table is joined to multiple rows in another table, resulting in more output rows than input rows."
+icon: shield-check | eyebrow: What dbt does | title: Restrict it | body: MetricFlow, dbt's metrics layer, "restricts the use of fan-out and chasm joins". | tone: dark
+icon: shopping-cart | eyebrow: Back to Shopify | title: The same trap | body: A report that adds every Shopify transaction of an order counts an authorised and captured payment twice.
+```
+
+```notes
+LIVE, inside S32's four minutes. Source: dbt's MetricFlow documentation, Joins, last updated 8 Sep
+2026, checked 1 Oct 2026; URL in the provenance.
 ```
 
 ---
@@ -880,6 +894,8 @@ grain: which key repeats on the many side.
 
 **Kavya's review.** "A join is a multiplication until you prove it is not. Bring the many side to the grain of the question before you join, and show me rows in and rows out beside the total."
 
+**In the interview.** [F] Revenue doubled after a join and every row looks fine; where do you look? And [S] your join grew the row count; name the cause and the check.
+
 ```notes
 LIVE, 1 minute. The question this leaves: the fixed join keeps every order and its posted column is
 what the feed recorded. Is every booked order still there when the report is written, and what,
@@ -901,7 +917,7 @@ route (2), the close (1). Notebook 3, C2_W02_D02_03_every_order_there_STUDENT.ip
 ## S39. Answer in six steps, from rows to rupees
 *Who needs chapter 3's answer, and which smaller questions lead to it?*
 
-**Who needs the answer.** Anand, who asked which orders make the gap, so an order missing from the report is an order nobody chases, and his analyst, who reads the reconciliation above the number before the number. A report that loses an order and carries a repeated payment can show a gap of zero, and nobody acts on a zero.
+**Who needs the answer.** Anand, who asked which orders make the gap, so an order missing from the report is an order nobody chases, and his analyst, who reads the reconciliation above the number before the number. A report that loses an order and carries a repeated payment can show a surplus, or a gap that looks closed, and nobody chases an order on a page that reads fully collected.
 
 ```timeline
 label: 1 | title: Which proof runs first? | body: Four proofs, run on a draft with two errors.
@@ -926,7 +942,7 @@ feed holds; collected counts each payment once.
 ```cards
 icon: eye | eyebrow: A wrong total | title: Visible | body: It disagrees with Monday's booked figure or breaks a rule such as cash above bookings, and someone asks.
 icon: eye-off | eyebrow: A missing order | title: Invisible | body: Every number left in the report is correct for the orders that remain, so nothing looks wrong.
-icon: triangle-alert | eyebrow: The cost to Anand | title: The order nobody rings | body: A repeated payment can offset the dropped order, and the report shows a gap of zero, which reads as fully collected. | tone: dark
+icon: triangle-alert | eyebrow: The cost to Anand | title: The order nobody rings | body: A repeated payment can offset the dropped order, and the report shows a surplus, or a gap that looks closed, which reads as fully collected. | tone: dark
 ```
 
 ```notes
@@ -946,7 +962,7 @@ value: 15,841 | label: positive cases PHE left out | note: of the daily figures,
 value: about 1,400 | label: cases per XLS template | note: each result took several of its 65,000 rows; later cases were left off
 ```
 
-Stripe's payout reconciliation report lets a merchant match each deposit in the bank to the payments behind it. At Public Health England no row that arrived was wrong; a count of rows sent against rows loaded would have caught the loss on the first day.
+Stripe's payout reconciliation report lets a merchant match each deposit in the bank to the payments behind it. At Public Health England no row that arrived was wrong; the loss sat in the rows that never loaded, which is what a count of rows sent against rows loaded measures.
 
 ```notes
 LIVE, 2 minutes. Sources: Stripe documentation, Payout reconciliation report, which "helps you match
@@ -1169,7 +1185,7 @@ flowchart LR
     class C bet
 ```
 
-The answer is c. **The check.** Booked less never paid less paid short equals collected, and collected plus posted twice equals posted. On Kalpa's Q2 the same bridge closes at every step and lands on the payments table's own total for Q2 orders.
+The answer is c. Each move is one bar of the bridge chart, with a list of orders behind it. **The check.** Booked less never paid less paid short equals collected, and collected plus posted twice equals posted. On Kalpa's Q2 the same bridge closes at every step and lands on the payments table's own total for Q2 orders.
 
 ```notes
 LIVE, 4 minutes. Each move has one order behind it, and each is a question for a different person:
@@ -1192,7 +1208,7 @@ written above the chart, so two analysts draw the same bridge.
 | T-5 | 500 | 500 | 500 |
 | **Collected** | | | **5,000** |
 
-**The check.** The cap gives 5,000 on the invented tables and agrees with the bridge to the rupee on Kalpa's Q2. The two methods fail in different places: the instalment method would count a retry written under a new instalment number, and the cap would throw away a genuine overpayment. Where they agree, neither blind spot is in the data.
+**The check.** The cap gives 5,000 on the invented tables and agrees with the bridge to the rupee on Kalpa's Q2. The two methods fail in different places: the instalment method would count a retry written under a new instalment number, and the cap would throw away a genuine overpayment. Agreement rules out either one alone; only a retry with both blind spots at once, or two errors of the same size, could pass both.
 
 ```notes
 LIVE, 2 minutes. Here the INNER JOIN is the honest choice, because the question is about paid orders
@@ -1215,6 +1231,8 @@ total looks right; how would you find them? Count first, then split the differen
 | Does capping each order agree? | Yes: 5,000 again, and the same collected on Kalpa's Q2 |
 
 **Kavya's review.** "Rows in, rows out and the difference explained, written above the number. If the count does not close, the number does not leave the team, and if the gap has two causes, it gets two bars."
+
+**In the interview.** [F] How do you reconcile a total after a join back to its source table? And [D] two errors cancel and the total looks right: how would you find them?
 
 ```notes
 LIVE, 1 minute. The question this leaves: each bar of the bridge is a total, and Anand asked which
@@ -1260,7 +1278,7 @@ orders never paid, and the cash posted twice. Each list is right only when its t
 *Whom does Anand chase, and whom does he refund?*
 
 ```cards
-icon: phone | eyebrow: The unpaid list | title: The collections team | body: Rings every customer on it; each large business invoice on it is several lakh rupees Kalpa is owed.
+icon: phone | eyebrow: The unpaid list | title: The collections team | body: Rings every customer on it; every order on it is cash Kalpa is owed.
 icon: repeat | eyebrow: The double-paid list | title: The platform lead and Finance | body: The lead fixes the feed; Finance checks with the bank whether a customer was charged twice and refunds them.
 icon: triangle-alert | eyebrow: A wrong list costs | title: A call, or cash left | body: A name on the wrong list is a phone call to a customer who did nothing wrong, and a name missing is money left where it is. | tone: dark
 ```
@@ -1272,15 +1290,13 @@ customer, or an overdue invoice nobody chased.
 
 ---
 
-## S56. Stripe and the RBI treat a retry as money owed
+## S56. Stripe blocks double charges; the RBI times reversals
 *Which real company and which regulator deal with a payment posted twice?*
 
 ```cards
 icon: key-round | eyebrow: Stripe | title: Idempotency keys | body: The client sends a key with a request; Stripe saves the first result, and "subsequent requests with the same key return the same result", so a retry cannot charge twice.
 icon: landmark | eyebrow: Reserve Bank of India | title: Five days to reverse | body: A card payment debited online and never confirmed to the merchant's system must be reversed automatically within five days, or the bank pays Rs 100 a day of delay (RBI/2019-20/67). | tone: dark
 ```
-
-A payment posted twice can be money a customer is owed back, on a regulator's clock.
 
 ```notes
 LIVE, 2 minutes. Sources: Stripe API reference, Idempotent requests; RBI circular RBI/2019-20/67 of
@@ -1294,7 +1310,7 @@ feed lacks that, the data team finds the repeats.
 ## S57. Four anti-joins, sized on this data
 *Which of four ways finds the unpaid orders, and what does each cost here?*
 
-| Option | Written as | Carries the order's columns | With one NULL payment id |
+| Option | Written as | Carries the order's columns | With one payment whose order_id is NULL |
 |---|---|---|---|
 | A. LEFT JOIN, keep the misses | `LEFT JOIN payments p ... WHERE p.order_id IS NULL` | yes | still finds T-4 |
 | B. NOT EXISTS | `WHERE NOT EXISTS (SELECT 1 FROM payments p WHERE ...)` | yes | still finds T-4 |
@@ -1457,14 +1473,17 @@ WHERE p.order_id IS NULL;
 | in WHERE | 6 | none |
 | in ON | 7 | T-4, 800 |
 
-**What changed.** Moving one line changed the whole list. ON decides which payment rows count as a match, before the join; WHERE decides which joined rows survive, after it.
+**What changed.** Moving one line changed the whole list. ON decides which payment rows count as a match, before the join; WHERE decides which joined rows survive, after it. With the dates in ON, the list answers "not paid within Q2"; for "never paid", no date condition belongs on payments at all.
 
 ```notes
 LIVE, 2 minutes. The PostgreSQL manual says a restriction in ON is processed before the join and a
 restriction in WHERE after it, and that the difference matters a lot with outer joins (PostgreSQL 16
 documentation, section 7.2.1.1, Joined Tables, checked 1 Oct 2026). The rule to keep: in a LEFT JOIN, a
 condition on the right-hand table goes in ON, and the one right-table condition that belongs in
-WHERE is the anti-join's IS NULL.
+WHERE is the anti-join's IS NULL, unless the question wants matched rows only. Say what the ON list
+answers: orders not paid within Q2, so an order paid on 3 October would sit on it. For "never paid"
+no date condition belongs on payments at all; the two lists match on Kalpa's Q2 only because no
+payment in the warehouse lands after 30 September.
 ```
 
 ---
@@ -1483,7 +1502,7 @@ GROUP BY o.order_id
 HAVING count(*) > 1;
 ```
 
-**Question.** Anand will ask the payments team to reverse the second payment on every order it returns. How long is the list? a) a handful of small card payments; b) 216 orders, including every one of Q2's ten largest invoices; c) no rows, since payment ids are unique; d) all 462 Q2 orders.
+**Question.** Anand will ask the payments team to reverse the second payment on every order it returns. How long is the list? a) a handful of orders, each paid twice; b) 216 orders, including every one of Q2's ten largest invoices; c) no rows, since payment ids are unique; d) all 462 Q2 orders.
 
 ```notes
 LIVE, 2 minutes. HAVING filters groups after GROUP BY, as Monday taught. Take letters.
@@ -1497,7 +1516,7 @@ LIVE, 2 minutes. HAVING filters groups after GROUP BY, as Monday taught. Take le
 ```stats
 value: 216 | label: Q2 orders flagged | note: more than one payment row each
 value: 10 of 10 | label: largest Q2 orders on it | note: all paid in instalments 1 and 2
-value: 2,300 | label: surplus it claims, invented | note: against a posted-twice bar of 1,500
+value: 2,300 | label: surplus it claims, invented | note: T-2's 800 plus T-3's 1,500, against a bar of 1,500
 ```
 
 The answer is b. **Why it is wrong.** Two payment rows can be two instalments or one payment posted twice, and a count of rows cannot tell them apart. **The check.** The list's surplus must equal the posted-twice bar, and on the invented tables it claims 2,300 against 1,500.
@@ -1549,8 +1568,8 @@ cell; the check after it confirms the double-paid list matches its bar and that 
 
 ```mermaid
 flowchart TB
-    U1["<b>unpaid, route 1</b><br/>LEFT JOIN,<br/>keep the misses"] --> U["<b>the same<br/>unpaid orders</b>"]
-    U2["<b>unpaid, route 2</b><br/>NOT EXISTS"] --> U
+    U1["<b>unpaid, route 1</b><br/>LEFT JOIN,<br/>keep the misses"] --> U["<b>the same count<br/>and total</b>"]
+    U2["<b>unpaid, route 2</b><br/>all orders less<br/>the paid ones"] --> U
     D1["<b>double-paid, route 1</b><br/>order and<br/>instalment"] --> D["<b>the same<br/>double-paid orders</b>"]
     D2["<b>double-paid, route 2</b><br/>posted above<br/>booked"] --> D
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
@@ -1559,12 +1578,14 @@ flowchart TB
     class U,D bet
 ```
 
-NOT EXISTS never builds the joined rows. The second double-paid route never reads an instalment number: an order whose posted cash exceeds its booking was paid more than once. **The check.** Both routes agree with the first, on the invented tables and on Kalpa's Q2.
+The second unpaid route builds no anti-join: count the orders, take away those that appear in payments, and do the same with booked. The second double-paid route never reads an instalment number: an order whose posted cash exceeds its booking was paid more than once. **The check.** Both routes agree with the first, on the invented tables and on Kalpa's Q2.
 
 ```notes
-LIVE, 2 minutes. The instalment method would miss a retry the feed wrote under a new instalment
-number, and the booked method would miss a retry on an order paid short; when both find the same
-orders, neither gap is in the data. Interview [F]: how do you find orders with no payment?
+LIVE, 2 minutes. A WHERE that empties the anti-join, or a NULL that silences NOT IN, cannot reach the
+subtraction. The instalment method would miss a retry the feed wrote under a new instalment number,
+and the booked method would miss a retry on an order paid short; when both find the same orders,
+only a retry with both blind spots at once could still hide. Interview [F]: how do you find orders
+with no payment?
 ```
 
 ---
@@ -1579,9 +1600,11 @@ orders, neither gap is in the data. Interview [F]: how do you find orders with n
 | Where does the date belong? | In ON: 7 rows, and T-4 is back |
 | Which orders does HAVING flag? | 216 Q2 orders, the ten largest invoices among them: instalments too |
 | What makes a retry a retry? | One order and instalment posted twice: T-3's 1,500, the bar |
-| Do second routes agree? | Yes: NOT EXISTS and posted above booked reach the same orders |
+| Do second routes agree? | Yes: subtraction gives the same count and total; posted above booked, the same orders |
 
 **Kavya's review.** "Two payment rows are not a double payment. Show me what makes a retry a retry before anyone rings a customer, and show me that each list adds up to its bar."
+
+**In the interview.** [F] How do you find orders with no payment? And [F] what does HAVING COUNT(*) > 1 by order find, and wrongly include?
 
 ```notes
 LIVE, 1 minute. The question this leaves: Anand has the bridge and its two lists. What goes on the
@@ -1631,8 +1654,6 @@ icon: layout-grid | eyebrow: By channel | title: Who chases | body: The store, a
 icon: list | eyebrow: By order | title: Whom to chase | body: A channel total cannot be chased; the orders behind the gap can.
 icon: file-check | eyebrow: The proof | title: Above the number | body: His analyst audits the page, so the reconciliation sits above the table. | tone: dark
 ```
-
-A report that says nothing is outstanding closes the question for everyone who reads it.
 
 ```notes
 LIVE, 1 minute. Anand signs the report and it goes to Meera Raghavan's Monday page, so every figure on
@@ -1715,7 +1736,9 @@ flowchart LR
     class O,G,L known
 ```
 
-**Question.** On the invented tables, which channel carries booked of 1,800? a) web; b) store; c) app; d) none, every channel books 2,000.
+Each line carries the orders, booked, collected and the gap, under a definition line: collected is cash received against Q2 orders, each payment counted once.
+
+**Question.** On the invented tables, which channel's line carries booked of 1,800? a) web; b) store; c) app; d) none, every channel books 2,000.
 
 ```notes
 LIVE, 1 minute. The report is built from chapter 3's table of one row per order, grouped by channel,
@@ -1894,10 +1917,14 @@ cannot be checked on its own.
 
 **Kavya's review.** "Every rupee on the page ties back to a bar, and every bar to a list. Write the definition of collected above the table, so nobody reads it as posted."
 
+**In the interview.** [D] Anand says the gap is too small to matter: how do you decide whether to chase it?
+
 ```notes
 LIVE, 1 minute. The page ends on one sentence each learner writes from their own figures: "Q2 booked
-Rs 9,84,00,000 and collected Rs ___, each payment counted once; the gap of Rs ___ is ___ orders
-nobody has paid, listed by channel; separately, Rs ___ was posted twice and ___ payments match no
-order, and both lists go to the platform lead." The question this leaves: the page is right today,
+Rs 9,84,00,000 and collected Rs ___, each payment counted once. The gap of Rs ___ is ___ orders
+nobody has paid, listed by channel, largest first. Separately, Rs ___ was posted twice by gateway
+retries and ___ payments match no order; both lists go to the platform lead. Every figure ties back
+to the orders and payments tables through checks that have each been seen to fail." Its last clause
+is earned in chapter 6. The question this leaves: the page is right today,
 so what must pass every Monday before the number leaves? That opens the afternoon.
 ```

@@ -39,18 +39,26 @@ Chapter 6 builds the checks that stop all five, every Monday.
 
 ---
 
-## S1b. Five orders and seven payments, every row checkable by hand
+## S1b. Five orders, seven payments, every row checkable
 *Which invented tables does chapter 6 test its checks on?*
 
-| order_id | channel | amount | What happened to it |
-|---|---|---|---|
-| T-1 | app | 1,000 | Paid once, in full (P-1) |
-| T-2 | web | 2,000 | Paid in two instalments, 1,200 and 800 (P-2, P-3) |
-| T-3 | store | 1,500 | Paid once, and the gateway posted that payment twice (P-4, P-5) |
-| T-4 | app | 800 | Never paid |
-| T-5 | store | 500 | Paid once, in full (P-6) |
+```mermaid
+flowchart LR
+    T1["<b>T-1</b> app 1,000"] --- P1["P-1 1,000"]
+    T2["<b>T-2</b> web 2,000"] --- P2["P-2 1,200, instalment 1"]
+    T2 --- P3["P-3 800, instalment 2"]
+    T3["<b>T-3</b> store 1,500"] --- P4["P-4 1,500, instalment 1"]
+    T3 --- P5["P-5 1,500, instalment 1 again"]
+    T4["<b>T-4</b> app 800, never paid"]
+    T5["<b>T-5</b> store 500"] --- P6["P-6 500"]
+    P7["P-7 600, for T-9, not an order"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class T1,T2,T3,T5,P1,P2,P3,P4,P6 known
+    class T4,P7,P5 bad
+```
 
-P-7 is a payment of 600 against T-9, an order the orders table does not hold. Booked is 5,800; collected, each payment counted once, is 5,000; the feed posted 6,500 against these five orders; the gap is 800, which is T-4.
+T-2 paid in two instalments, the gateway posted T-3's one payment twice, T-4 was never paid, and P-7 names an order the orders table does not hold. Booked is 5,800; collected, each payment counted once, is 5,000; the feed posted 6,500 against these five orders; the gap is 800, which is T-4.
 
 ```notes
 LIVE, folded into the minute of S1. These are chapter 1's tables, the ones every chapter traced by
@@ -411,16 +419,16 @@ before a joined number reaches Finance, and say what you do when it fails at the
 
 | Question | The answer, with its number |
 |---|---|
-| Can hurried checks miss an order? | Yes: they pass the quarter-in-WHERE page 3 of 3, because each reads the page alone |
+| Can hurried checks miss an order? | Yes: 3 of 3 pass the quarter-in-WHERE page, which hides T-4 |
 | Which checks tie to the tables? | Five checks recompute orders, booked, the gap and posted from one table each |
-| Does the suite stop all five? | Plausibility lets 2 of 5 through, both hiding T-4; the tie-back suite stops all 5 |
+| Does the suite stop all five? | Plausibility lets 2 of 5 through; the tie-back suite stops all 5 |
 | Does Kalpa's Q2 page pass? | Yes, 5 of 5: 462 against 462, Rs 9,84,00,000 against Rs 9,84,00,000 |
 | Does Python reach the same? | Yes: orders, booked, collected and the gap all match |
 | What leaves when a check fails? | Booked leaves with the open line; collected is held; the owner hears that day |
 
 **Kavya's review.** "A check that cannot fail is decoration. For every check, tell me which wrong report it would have stopped, and do not send me a PASS you have never seen fail."
 
-**In the interview.** [D] Design the validation you run before a joined number reaches Finance, and say what you do when it fails late on reporting day. And [S] if you could keep only one check, which would you keep?
+**In the interview.** [D] Design the validation a joined number passes before Finance, and what you do when it fails late. And [S] which one check would you keep?
 
 ```notes
 LIVE, 1 minute. The day's answer, for Anand: Q2 booked Rs 9,84,00,000; collected, each payment

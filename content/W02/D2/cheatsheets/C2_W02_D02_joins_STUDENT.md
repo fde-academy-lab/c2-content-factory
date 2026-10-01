@@ -9,14 +9,15 @@ row the feed holds.
 ```mermaid
 flowchart LR
     B["<b>booked</b><br/>5,800 over 5 orders"] --> U["<b>less never paid</b><br/>800, order T-4"]
-    U --> C["<b>collected</b><br/>5,000"]
+    U --> S["<b>less paid short</b><br/>0"]
+    S --> C["<b>collected</b><br/>5,000"]
     C --> R["<b>plus posted twice</b><br/>1,500, T-3 retry"]
     R --> P["<b>posted in the feed</b><br/>6,500"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class B,P known
-    class U,R bad
+    class U,S,R bad
     class C bet
 ```
 
@@ -70,7 +71,8 @@ LEFT JOIN payments p
 WHERE p.order_id IS NULL   -- the anti-join
 ```
 
-Avoid `NOT IN`: one NULL id in the subquery and it returns no rows at all. `NOT EXISTS` reads as
+With the dates in ON the list means "not paid within Q2"; for "never paid", leave dates off
+payments. Avoid `NOT IN`: one NULL id in the subquery and it returns no rows at all. `NOT EXISTS` reads as
 Anand's sentence and stays correct.
 
 **Crux:** In a LEFT JOIN, a condition on the right-hand table goes in ON.
@@ -82,7 +84,7 @@ Anand's sentence and stays correct.
 | Instalments 1 and 2 | The customer paid as asked | Count both |
 | Instalment 1, twice | The gateway retried | Count it once; list the surplus |
 
-`GROUP BY order_id HAVING count(*) > 1` flags every instalment order too, 216 in Q2. Group by
+`GROUP BY order_id HAVING count(*) > 1` flags 216 Q2 orders, every instalment order among them. Group by
 `order_id, instalment_no`, and the list's surplus, `sum(amount) - max(amount)`, must equal posted less
 collected.
 
@@ -95,8 +97,8 @@ collected.
 | Orders against the orders table | a dropped or repeated order |
 | Booked against `orders` alone | a fan-out |
 | Gap against booked less collected | a NULL gap; use `coalesce(collected, 0)` |
-| Gap against the unpaid list | a wrong list |
-| Collected plus twice against posted | a retry inside collected |
+| Gap against never-paid plus paid-short | a dropped order, a wrong list |
+| Collected plus posted twice against posted | a retry inside collected |
 
 When one fails late on reporting day, booked leaves with the open line named; collected is held.
 
