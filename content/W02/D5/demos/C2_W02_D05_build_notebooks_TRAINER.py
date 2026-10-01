@@ -120,8 +120,8 @@ wrong way puts a tree on the page that does not multiply back to its own revenue
 director who checks the arithmetic stops trusting every page after it.
 
 **The questions on the way.**
-1. What does one row of the customer table stand for?
-2. Which way should a director get the tree: a PivotTable, a formula grid, pasted numbers or a live dashboard?
+1. Which way should a director get the tree: a PivotTable, a formula grid, pasted numbers or a live dashboard?
+2. What does one row of the customer table stand for?
 3. Which segment carries the revenue?
 4. Which leaf separates Retail-Plus from Retail-Core?
 5. What does a leaf averaged customer by customer say?
@@ -135,7 +135,8 @@ Business (corporate buyers invoiced in large amounts) and Student. The retail do
 `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`, carries the tree and the segments
 in more depth; nothing here needs it.
 
-**Where the week stands.** Monday's queries on the warehouse put Kalpa's revenue at Rs 10,00,00,000
+Monday's queries on the warehouse, the Postgres database that holds one row per order and that every
+sheet ties back to, put Kalpa's revenue at Rs 10,00,00,000
 in Q1 (April to June 2026) and Rs 9,84,00,000 in Q2 (July to September 2026). Thursday built one row
 per customer in pandas and exported it as a CSV for Marketing. This chapter opens that export the
 way a director's Excel does.
@@ -322,12 +323,16 @@ kit.stats([(kit.rupees(round(avg_b)), "Business, averaged per customer", "what t
            (f"{change(true_b, avg_b):+.1f}%", "the averaged leaf's error", "on every Business order")])
 '''),
         md('''
+**What happened.** The answer is c: Rs 11,66,786, 11.6 percent above revenue over orders,
+Rs 10,45,740.
+
 **Why it is wrong.** The average gives every customer one vote, whatever they bought. Business
-customers differ twentyfold in basket size, from Rs 3.34 lakh to Rs 66.98 lakh an order, and the
-customers with one or two huge orders count as much as a customer with eleven ordinary ones. Revenue
-per order is the page's claim about orders, so each order should weigh the same, and only revenue
-divided by orders does that. **The check that catches it** is the one from question 3: multiply the
-leaves back. With the averaged leaf, Business no longer multiplies back to its own revenue.
+customers differ twentyfold in basket size, from Rs 3.34 lakh to Rs 66.98 lakh an order, and a
+customer with two huge orders counts as much as a customer with eleven ordinary ones. Revenue per
+order is the page's claim about orders, so each order should weigh the same, and only revenue
+divided by orders does that. **The check that catches it** is the multiply-back from the question on
+which leaf separates the tiers: with the averaged leaf, Business no longer multiplies back to its own
+revenue.
 '''),
         code('''
 rebuilt_avg = b_orders * avg_b
@@ -407,7 +412,7 @@ kit.check("every cell of the pivot matches the plain count", agree, "12 cells co
 > by Rs 11.67 lakh gets more than Business sold, and after that nobody reads page three."
 '''),
         md('''
-### In the interview: how would you answer these three questions aloud?
+### In the interview: why does a leaf fail to multiply back, and why hand a director a pivot?
 
 **[D] A leaf of your tree does not multiply back to the revenue. What happened, and what do you fix?**
 The leaf was averaged over the rows instead of divided over the totals. An average of per-customer
@@ -431,11 +436,13 @@ the grand total to a number someone upstream owns.
 
 Revenue over orders is an average of each customer's revenue per order, weighted by that customer's
 orders: a customer with eleven orders counts eleven times. The plain Average weights every customer
-once. The two agree only when every customer has the same number of orders, or when customers with
-many orders buy at the same basket size as customers with few. Retail-Core members order two to four
-times each at baskets between Rs 820 and Rs 3,000, so the two leaves differ by Rs 2. Business accounts
-order between once and eleven times at baskets twentyfold apart, and the ones that ordered once or
-twice carry the largest baskets, so the unweighted average runs 11.6 percent high.
+once. The two agree only when every customer has the same number of orders, or when how often a
+customer orders has nothing to do with how big the basket is. Retail-Core members order anywhere from
+once to fourteen times, at baskets between Rs 820 and Rs 3,000, and the number of orders tells you
+nothing about the basket (a correlation of 0.01), so the two leaves differ by Rs 2. Business accounts
+order between once and eleven times at baskets twentyfold apart, and the accounts with fewer orders
+lean towards larger baskets (a correlation of -0.18; the two largest belong to accounts with two and
+four orders), so the unweighted average runs 11.6 percent high.
 
 **A spreadsheet that divided by the wrong total.** In January 2013 JPMorgan Chase's own task force
 reported on the 2012 losses in its Chief Investment Office. In the spreadsheet behind a new risk
@@ -443,14 +450,15 @@ model, "after subtracting the old rate from the new rate, the spreadsheet divide
 instead of their average, as the modeler had intended", which "likely had the effect of muting
 volatility by a factor of two and of lowering the VaR" (Report of JPMorgan Chase & Co. Management
 Task Force Regarding 2012 CIO Losses, 16 January 2013, page 128, read from the Yale Program on
-Financial Stability archive, checked 30 September 2026). A ratio built on the wrong total, in a sheet
-nobody multiplied back, is the same failure as the averaged leaf, at a bank's scale.
+Financial Stability archive, checked 30 September 2026). The bank divided by the wrong total, and the
+averaged leaf weights its customers wrongly; both are ratios that nobody checked against their parts,
+the bank's at a far larger scale.
 '''),
         md('''
-## What did this chapter answer, one question at a time?
+## Which segment carries the revenue, and which leaf separates the tiers, question by question?
 
-1. One row of the customer table is one customer who ordered in the two quarters: 300 rows, 300 ids.
-2. The PivotTable, with each leaf computed beside it from its sums, because a director re-slices in the room; formulas take over where a director's input must recalculate at once.
+1. The PivotTable, with each leaf computed beside it from its sums, because a director re-slices in the room; formulas take over where a director's input must recalculate at once.
+2. One row of the customer table is one customer who ordered in the two quarters: 300 rows, 300 ids.
 3. Business carries 99.1 percent of the half-year's revenue: 39 customers, Rs 19,65,99,040.
 4. Revenue per order separates the tiers: Retail-Plus Rs 2,801 against Retail-Core's Rs 1,886, where orders per customer differ by 10 percent.
 5. A leaf averaged per customer reads Business at Rs 11,66,786 an order, 11.6 percent high, and the tree multiplies back Rs 2.28 crore over; revenue over orders fixes it.
@@ -483,7 +491,7 @@ puts nearly twice Finance's revenue in front of the directors and can call a fal
 which sends the plan after the wrong segment.
 
 **The questions on the way.**
-1. Which quarter does each row of the export belong to?
+1. Which way should the team split revenue by quarter, and what does each way cost?
 2. What does the pivot say for Q1 and Q2?
 3. Why does it read nearly double, and does Remove Duplicates fix it?
 4. What does the tree say when each order counts once?
@@ -515,7 +523,7 @@ created; Monday and Tuesday queried it.
                     "4. each order counted once", "5. which segment and leaf fell",
                     "a second route\nthe warehouse's own quarters"]),
         md('''
-## Which ways could the team split revenue by quarter, and what does each cost?
+## Which way should the team split revenue by quarter, and what does each way cost?
 
 | Option | How it splits | What it assumes |
 |---|---|---|
@@ -729,7 +737,7 @@ kit.check("the order counts tie too", all(int(orders[orders["quarter"] == r["qua
 > Duplicates is a cleaning step with no record, and here it did not even clean."
 '''),
         md('''
-### In the interview: how would you answer these three questions aloud?
+### In the interview: where do you look first when a pivot disagrees with the warehouse?
 
 **[F] Your pivot shows a different total from the warehouse. Where do you look first?** At the grain:
 rows against distinct keys. A payment, item or event export repeats its parent's amount, and a Sum
@@ -743,7 +751,7 @@ gateway copies went, and the total moved from Rs 39,40,95,490 to Rs 39,40,57,740
 grain: count each order once by its key.
 
 **[D] The export grows a hundredfold. Which of today's formulas do you replace, and with what?** The
-running COUNTIF flag. It compares each row with every row above it, so 1,450 rows cost 1,051,975
+running COUNTIF flag. It compares each row with every row from the first down to its own, so 1,450 rows cost 1,051,975
 comparisons and 145,000 rows cost about 10.5 billion, which freezes a laptop. I sort by order id and
 flag a row whose id differs from the row above, one comparison a row, or I ask the warehouse for an
 order-grain export and stop fixing the grain in a sheet at all.
@@ -761,9 +769,9 @@ which is chapter 5's.
 
 '''),
         md('''
-## What did this chapter answer, one question at a time?
+## How far did revenue fall, where, and does the warehouse agree, question by question?
 
-1. Each row gets Kalpa's quarter from its order date: 772 rows in Q1, 678 in Q2.
+1. A quarter column and the pivot, since a split on the last order date moves Rs 8.04 crore of Q1 into Q2; the column puts 772 rows in Q1 and 678 in Q2.
 2. The pivot on the export's rows reads Rs 19,94,36,150 for Q1 and Rs 19,46,59,340 for Q2, and calls Retail-Core up 1.0 percent.
 3. It doubles because one row is one payment: 1,450 rows for 1,000 orders; Remove Duplicates removes only the 50 identical gateway copies and leaves Rs 39,40,57,740.
 4. Each order counted once: Q1 Rs 10,00,00,000, Q2 Rs 9,84,00,000, down 1.6 percent; Retail-Core is down 1.8 percent.
@@ -805,9 +813,9 @@ answers with the wrong member's row tells a director that someone who has stoppe
 best, and spends an offer on the wrong person.
 
 **The questions on the way.**
-1. Who makes the list, and where does it stop?
-2. Does the list's source table tie to the warehouse?
-3. Which lookup should answer "find this member"?
+1. Which lookup should answer "find this member"?
+2. Who makes the list, and where does it stop?
+3. Does the list's source table tie to the warehouse?
 4. What does a lookup with its fourth argument left out return for an id the table does not hold?
 5. What does an exact match with a not-found path return, and what if the list is re-sorted?
 6. Does an independent count agree with the lookup?
@@ -826,10 +834,11 @@ wrong item is expensive at any scale.
 '''),
         md('''
 **Setup.** The cell loads the customer table and the raw export from `../data/`, the same two CSVs
-chapters 1 and 2 used. The protect list is built from the customer table, one row per customer, since
-that is the table the chief of staff will refresh every Monday.
+chapters 1 and 2 used, and defines `warehouse()`, which asks the Kalpa warehouse a question in SQL for
+the second route. The protect list is built from the customer table, one row per customer, since that
+is the table the chief of staff will refresh every Monday.
 '''),
-        setup(HELPERS, LOAD_TABLE, LOAD_RAW, last='print(len(table), "customer rows and", f"{len(raw):,}", "export rows loaded")'),
+        setup(HELPERS, LOAD_TABLE, LOAD_RAW, WAREHOUSE, last='print(len(table), "customer rows and", f"{len(raw):,}", "export rows loaded")'),
         mapcell(3, ["the options\nfour lookups", "1. who makes the list", "2. your turn\ndoes its source tie",
                     "3. the trap\nthe fourth argument left out", "4. an exact match, found or not",
                     "5. the list re-sorted", "a second route\nan independent count"]),
@@ -898,8 +907,8 @@ kit.stats([(f"{len(plus)}", "Retail-Plus members", "in the customer table"),
            (kit.rupees(int(protect["revenue"].sum())), "the fifty together", "April to September")])
 kit.strip(plus["revenue"].tolist(), markers=[("the cut-off, rank 50", cut, "bad")], fmt=kit.rupees,
           title="Revenue of all 106 Retail-Plus members; the fifty to the right of the line make the list")
-kit.table(["Rank", "Member", "City", "Revenue"],
-          [(int(r["rank"]), r.customer_id, r.city, kit.rupees(r.revenue)) for _, r in plus.iloc[47:52].iterrows()],
+kit.table(["Rank", "City", "Revenue"],
+          [(int(r["rank"]), r.city, kit.rupees(r.revenue)) for _, r in plus.iloc[47:52].iterrows()],
           caption="Either side of the boundary")
 kit.check("the list holds exactly fifty members", len(protect) == 50)
 kit.check("no tie sits across the boundary, so the list ships fifty", cut > nxt, f"{kit.rupees(cut)} against {kit.rupees(nxt)}")
@@ -970,7 +979,7 @@ kit.check("the neighbour's row sits inside the top fifty, so the answer looks pl
           f"rank {int(rank.iloc[0])}")
 '''),
         md('''
-## 4. What does an exact match with a not-found path return?
+## 4. What does an exact match with a not-found path return, and what if the list is re-sorted?
 
 The fix is an exact match that says so when an id is missing: `=XLOOKUP(id, A:A, E:E, "not in the
 table")`, or `=IFERROR(INDEX(E:E, MATCH(id, A:A, 0)), "not in the table")` where the file must open in
@@ -1003,8 +1012,8 @@ kit.check("the exact lookup finds a member who is there", find("C-0152") == 2584
 "not in the table", which is the answer that makes somebody check the export. For members who are in
 the table the two lookups agree, which is why a lookup tested only on present ids looks fine.
 
-**And when the list is re-sorted?** The room will see the list sorted by revenue, not by id. An exact
-match does not care about order. An approximate match assumes it: Microsoft's page says "If range_lookup
+The room will see the list sorted by revenue, and an exact match gives the same answer in any order.
+An approximate match assumes the ids are sorted: Microsoft's page says "If range_lookup
 is TRUE or left out, the first column needs to be sorted alphabetically or numerically. If the first
 column isn't sorted, the return value might be something you don't expect" (Microsoft Support, VLOOKUP
 function, checked 30 September 2026). The cell below counts how far the list's ids are from sorted.
@@ -1020,27 +1029,27 @@ kit.check("the list sorted by revenue is far from sorted by id", steps_down > 10
 kit.check("an exact match returns the same answers in any order", same)
 '''),
         md('''
-## A second route: does an independent count agree with the lookup?
+## A second route: does the warehouse's own count agree with the lookup?
 
-The lookup and the check must not share a method, so the second route counts instead of matching. In
-Excel, `=COUNTIF(A:A, "C-0195")` counts the rows holding the id, and `=SUMIFS(E:E, A:A, "C-0152")` adds
-the revenue of the rows that do. A count of zero has to meet a not-found answer, and a one has to meet
-the same revenue.
+The lookup and the check must not share a method or a source, so the second route counts orders in
+the warehouse, which never saw the customer table. In Excel, with no login, the same idea is
+`=COUNTIF` of the id in the raw export's customer column, a different export from the list's. No
+orders has to meet a not-found answer, and an order count has to meet the same revenue.
 '''),
         code('''
-def countif(member):
-    return int((table["customer_id"] == member).sum())
+def orders_in_warehouse(member):
+    """The warehouse's own count and revenue for one id, from the orders table."""
+    row = warehouse(f"SELECT count(*) AS n, coalesce(sum(amount), 0) AS revenue FROM orders WHERE customer_id = '{member}'")[0]
+    return int(row["n"]), int(row["revenue"])
 
 
-def sumifs(member):
-    return int(table.loc[table["customer_id"] == member, "revenue"].sum())
-
-
-kit.table(["Id", "COUNTIF", "SUMIFS", "The lookup"],
-          [(m, countif(m), kit.rupees(sumifs(m)), find(m) if isinstance(find(m), str) else kit.rupees(find(m)))
-           for m in ["C-0195", "C-0152"]])
-kit.check("a count of zero meets a not-found answer", countif("C-0195") == 0 and isinstance(find("C-0195"), str))
-kit.check("a count of one meets the same revenue", countif("C-0152") == 1 and sumifs("C-0152") == find("C-0152"))
+kit.table(["Id", "Orders in the warehouse", "Revenue in the warehouse", "The lookup"],
+          [(m, *orders_in_warehouse(m)[:1], kit.rupees(orders_in_warehouse(m)[1]),
+            find(m) if isinstance(find(m), str) else kit.rupees(find(m))) for m in ["C-0195", "C-0152"]])
+kit.check("no orders in the warehouse meets a not-found answer",
+          orders_in_warehouse("C-0195")[0] == 0 and isinstance(find("C-0195"), str))
+kit.check("the warehouse's revenue meets the lookup's for a member who is there",
+          orders_in_warehouse("C-0152")[1] == find("C-0152"))
 '''),
         md('''
 > **Kavya's review.** "A lookup that cannot find an id says so. A lookup that answers with somebody
@@ -1048,7 +1057,7 @@ kit.check("a count of one meets the same revenue", countif("C-0152") == 1 and su
 > missing, and tie the list's table before anyone reads from it."
 '''),
         md('''
-### In the interview: how would you answer these three questions aloud?
+### In the interview: which argument returns a neighbour, and how do you test a lookup?
 
 **[F] Your lookup returned a member for an id that does not exist. Which argument was wrong?** The
 match type. VLOOKUP's fourth argument, left out, means an approximate match, which returns the
@@ -1058,7 +1067,9 @@ MATCH, and I test every lookup with an id I know is missing.
 
 **[S] What do you test a lookup with before a director uses it?** Three ids: one I know is present,
 one I know is missing, and the first id on a re-sorted list. The present id proves the found path, the
-missing id proves the not-found path, and the re-sort proves the lookup does not depend on order.
+missing id proves the not-found path, and the re-sort proves the lookup does not depend on order. When
+the ids come from another system I add three more: one stored as text where the table holds numbers,
+one with a trailing space, and one that appears twice, since each breaks an exact match in its own way.
 
 **[D] XLOOKUP or INDEX and MATCH for a file that goes to the CEO's office?** XLOOKUP where every laptop
 runs Excel 2021, 2024 or Microsoft 365, since it is exact by default and takes a not-found message.
@@ -1076,11 +1087,11 @@ member ids, which are labels and not amounts, returns a neighbour, so the questi
 lookup is whether the key is a band edge or a name.
 '''),
         md('''
-## What did this chapter answer, one question at a time?
+## Who is on the protect list, and does the lookup answer for the member typed, question by question?
 
-1. Fifty of 106 Retail-Plus members make the list, from Rs 25,840 down to a cut-off of Rs 8,580; the fifty-first spent Rs 8,520, so no tie crosses the boundary.
-2. Whether the list's source ties is the room's own answer, from the your-turn cell, and it decides whether the list ships.
-3. XLOOKUP with its fourth argument on Microsoft 365, and IFERROR around INDEX and MATCH where the file must open anywhere.
+1. XLOOKUP with its fourth argument on Microsoft 365, and IFERROR around INDEX and MATCH where the file must open anywhere.
+2. Fifty of 106 Retail-Plus members make the list, from Rs 25,840 down to a cut-off of Rs 8,580; the fifty-first spent Rs 8,520, so no tie crosses the boundary.
+3. Whether the list's source ties is the room's own answer, from the your-turn cell, and it decides whether the list ships.
 4. VLOOKUP with its fourth argument left out returned C-0194's Rs 16,740, rank 15, for C-0195, which has no row.
 5. The exact match says "not in the table" for C-0195 and finds C-0152 at Rs 25,840; it gives the same answers on the re-sorted list.
 6. COUNTIF finds zero rows for C-0195 and one for C-0152, agreeing with the lookup both times.
@@ -1116,8 +1127,9 @@ def ch4():
 
 **Week 2, Friday. Chapter 4 of 6.** Chapter 2 tied the quarters to the warehouse: Rs 10.00 crore in Q1
 and Rs 9.84 crore in Q2, down 1.6 percent; in rupees Business carries Rs 14.30 lakh of the Rs 16.00
-lakh fall, and the steepest fall is Retail-Plus, down 29.4 percent. Chapter 3 built the protect list.
-The chief of staff's third ask is one number on the front page with its trend, and the number is
+lakh fall, and the steepest fall is Retail-Plus, down 29.4 percent. Chapter 3 built the protect list,
+fifty members from C-0152 at Rs 25,840 down to Rs 8,580, with a lookup that answers "not in the table"
+for C-0195. The chief of staff's third ask is one number on the front page with its trend, and the number is
 revenue, Q2 against Q1. Which metric belongs on a growth review's front page at all is a question for a
 later week; this chapter is about making the one asked for impossible to misread.
 
@@ -1129,8 +1141,8 @@ and a percentage without its base turns a Rs 1.72 lakh fall into a crisis the me
 on.
 
 **The questions on the way.**
-1. What does a director read in a card that says "Revenue Rs 19.84 crore"?
-2. Which form should the card take?
+1. Which form should the card take?
+2. What does a director read in a card that says "Revenue Rs 19.84 crore"?
 3. What does the card say with its period, comparison and base?
 4. What does "Retail-Plus revenue down 29.4 percent" leave out?
 5. What does the trend beside the number show, and what happens when a director changes the scope?
@@ -1325,24 +1337,26 @@ kit.check("the Retail-Plus change matches the warehouse", abs(rp["change"] - cha
 > months, against what and out of how much, it goes back."
 '''),
         md('''
-### In the interview: how would you answer these three questions aloud?
+### In the interview: how do you present one number so a director cannot misread it?
 
 **[F] How do you present one number so it is not misread?** With its period, its comparison and its
 base, and one sentence on what moved it. Here: Q2, July to September 2026, Rs 9.84 crore, down 1.6
 percent on Q1's Rs 10.00 crore; Business invoices carry most of the rupees, and Retail-Plus fell 29.4
-percent because members ordered less often.
+percent because members ordered less often. I compare with the previous quarter because the warehouse
+holds two quarters; with a year of history I would set the quarter beside the same quarter a year
+earlier, as DMart's release does, since a retailer's quarters have seasons.
 
 **[F] A director says revenue doubled; your card says Rs 19.84 crore. What is missing?** The period. It
 is two quarters added together, read against one quarter from memory; the card needs its months and its
 comparison, and then it reads down 1.6 percent.
 
-**[D] A segment fell 29 percent and is 0.4 percent of revenue. Does it go on the front page, and how?**
-Only with its base and its share, and in the sentence beside the headline rather than as the headline:
-Rs 4.13 lakh, down 29.4 percent on Rs 5.86 lakh, 0.4 percent of revenue. It matters because it is the
-paid tier and the fall is in how often members buy; it is small in rupees, and the card says both.
+**[D] A segment fell 29 percent and is 0.4 percent of revenue. How do you write it so the room reads
+its size right?** With its base and its share, in the sentence beside the headline: Rs 4.13 lakh, down
+29.4 percent on Rs 5.86 lakh, 0.4 percent of revenue. It matters because it is the paid tier and the
+fall is in how often members buy; it is small in rupees, and the sentence says both.
 '''),
         md('''
-### Depth: a percentage or percentage points?
+### Depth: when is a change in a share said in points, and when in percent?
 
 A change in a rate is quoted in points, a change in an amount in percent. If the share of revenue from
 the consumer segments moved from 0.99 percent in Q1 to 0.83 percent in Q2, it fell by 0.16 percentage
@@ -1351,10 +1365,10 @@ card that shows a share says which it means. The consumer shares here come from 
 quarters: Rs 9.86 lakh of Rs 10.00 crore, and Rs 8.15 lakh of Rs 9.84 crore.
 '''),
         md('''
-## What did this chapter answer, one question at a time?
+## What does the card carry so a director reads it right, question by question?
 
-1. "Revenue Rs 19.84 crore" is two quarters, and a director who remembers Q1's Rs 10.00 crore reads it as up 98.4 percent.
-2. Option d: the quarter against the last, with its base, its sentence and its trend.
+1. Option d: the quarter against the last, with its base, its sentence and its trend.
+2. "Revenue Rs 19.84 crore" is two quarters, and a director who remembers Q1's Rs 10.00 crore reads it as up 98.4 percent.
 3. "Q2, July to September 2026: Rs 9.84 crore, down 1.6 percent on Q1, April to June 2026 (Rs 10.00 crore)."
 4. The base and the share: Rs 1.72 lakh on Rs 5.86 lakh, 0.4 percent of revenue; divided by Q2 by mistake it reads 41.7 percent.
 5. The company line jumps in July on corporate invoices; without Business, revenue is down 17.3 percent, and each scope prints its own name.
@@ -1376,7 +1390,14 @@ def ch5():
 **Week 2, Friday. Chapter 5 of 6.** Chapters 1 to 4 built the chief of staff's three deliverables: the
 tree by segment for both quarters, tied to the warehouse's Rs 10.00 crore and Rs 9.84 crore; the protect
 list of fifty with a lookup that says when an id is missing; and the front-page card with its period,
-comparison and base. Kavya's challenge is the rule behind them.
+comparison and base, which reads down 1.6 percent and prints Retail-Plus's 29.4 percent fall as
+Rs 1.72 lakh, 0.4 percent of revenue. Kavya's challenge is the rule behind them.
+
+Three tools did the week's work. The warehouse is the Postgres database that holds one row per order
+and one per payment, the source of truth anyone can query and rerun. pandas is the Python library for
+tables, where an analyst tries an idea, checks it and tries again before anyone relies on the result;
+that trying is what this chapter calls the analyst's iteration. The workbook is the Excel file a
+director opens. A dedupe is any step that makes each order or payment count once.
 
 > **Kavya asks.** "Everything you built this week has to survive a room that only has Excel. Which parts
 > belong in Excel, which parts must never be in Excel, and how do you keep the two from drifting apart?"
@@ -1389,8 +1410,8 @@ step done in the wrong tool ships a number nobody can rerun, and a join done in 
 unpaid money that customers have paid.
 
 **The questions on the way.**
-1. What did each day of the week build, and what does each step touch?
-2. Where could the week's work live?
+1. Where could the week's work live?
+2. What did each day of the week build, and what does each step touch?
 3. What does booked against collected say when a lookup does the join?
 4. Why is it wrong, and what does adding every payment say?
 5. Where does each of the week's steps belong?
@@ -1415,8 +1436,8 @@ counts each order once the way chapter 2 did, and defines `warehouse()`.
         setup(HELPERS, LOAD_RAW, WAREHOUSE, COUNT_ONCE,
               last='print(f"{len(raw):,} payment rows, {len(orders):,} orders")'),
         mapcell(5, ["the options\nfour places the work could live", "1. what each day's step touches",
-                    "2. the trap\na lookup doing a join", "3. every payment added",
-                    "4. where each step belongs", "a second route\nthe warehouse's join",
+                    "2. the trap\na lookup doing a join", "3. every payment added once",
+                    "4. where each step belongs", "a second route\nbooked less unpaid",
                     "5. how the two stay in step"]),
         md('''
 ## Where could the week's work live, and what does each arrangement cost?
@@ -1444,7 +1465,8 @@ kit.bars([("a) SUMIFS in the workbook", len(orders) * len(raw)), ("b) warehouse 
 '''),
         md('''
 **The best-fit call: b, the split.** The warehouse owns every join, dedupe and rank, because a query
-can be rerun and audited; pandas owns the analyst's iteration; the workbook owns the room. **The fact
+can be rerun and audited; pandas owns the analyst's iteration; the workbook owns what a director
+sees and changes in the meeting. **The fact
 that would change it:** a one-off question nobody audits and nobody reruns can live in a sheet, and a
 question Finance will rely on every week cannot.
 '''),
@@ -1458,8 +1480,8 @@ quarter; b) booked against collected; c) the top fifty per segment; d) Friday's 
 steps = [
     ("Monday", "the tree by segment and quarter", "orders", "a GROUP BY"),
     ("Tuesday", "booked against collected", "orders and payments", "a join, one order to several payments"),
-    ("Wednesday", "the top fifty per segment, falling spend", "orders", "window functions"),
-    ("Thursday", "the customer table", "orders, customers, exposure", "a validated merge in pandas"),
+    ("Wednesday", "the top fifty per segment, falling spend", "orders", "window functions: a rank or a running total over rows, in SQL"),
+    ("Thursday", "the customer table", "orders, customers, campaign exposure", "a merge in pandas, checked to stay one row per customer"),
     ("Friday", "the pivot, the lookup, the card", "the two exports", "presentation in the workbook"),
 ]
 counts = {"orders": warehouse("SELECT count(*) AS n FROM orders")[0]["n"], "payments": payments}
@@ -1470,7 +1492,8 @@ kit.bars([("Tuesday: orders and payments", counts["orders"] + counts["payments"]
 kit.check("Tuesday's join reads more rows than any single table", counts["orders"] + counts["payments"] > len(raw))
 '''),
         md('''
-**What happened.** The answer is b. Tuesday's report joins 1,000 orders to 1,428 payments, and it is
+**What happened.** The answer is b. Tuesday's report joins 1,000 orders to 1,428 payment rows, eight of
+which match no order, and it is
 the one step where one row on one side meets several on the other. That is the step to watch when
 somebody offers to "just do it in the sheet".
 '''),
@@ -1500,7 +1523,7 @@ kit.columns(["app", "store", "web"], [("booked", [int(by_channel[c]) for c in ["
         md('''
 **What happened: the plausible wrong answer.** The answer is b. The lookup says Rs 11,83,81,974
 collected against Rs 19,84,00,000 booked, Rs 8.00 crore outstanding, 40.3 percent. Every formula is an
-exact match and every row looks right. **The decision it would mislead:** Anand's collections team
+exact match and every row looks right. On that figure Anand's collections team
 chases Rs 8 crore from accounts that have paid, most of them corporate buyers, and the board pack
 reports a cash problem Kalpa does not have.
 '''),
@@ -1508,33 +1531,36 @@ reports a cash problem Kalpa does not have.
 ## 3. Why is it wrong, and what does adding every payment say?
 
 **Why it is wrong.** A lookup returns the first row that matches and stops. The export has one row per
-payment, and 450 orders have two, so the lookup takes the first instalment and ignores the second.
-**The check:** count the rows each order has; any order with more than one row needs its payments
-added, never looked up. **The fix:** add every payment per order, `=SUMIFS(G:G, A:A, A2)` in the sheet or
-the warehouse's join, which Tuesday wrote.
+payment, and 450 orders sit on two rows: 400 paid in two instalments, whose second payment the lookup
+never reads, and 50 that the gateway posted twice, whose two rows are the same payment. **The check
+that catches it:** count the rows each order has, and read any order with two rows before trusting its
+first. **The fix:** add every payment once. In the sheet that is `=SUMIFS(G:G, A:A, A2)` over the rows
+left once the gateway's exact copies are gone; in the warehouse it is Tuesday's join, one row per
+payment.
 
-**Predict before you run.** Added up properly, collected is short of booked by about: a) Rs 8.00 crore;
-b) Rs 17 lakh; c) nothing; d) Rs 39 crore.
+**Predict before you run.** With every payment added once, collected is short of booked by about: a)
+Rs 8.00 crore; b) Rs 17.5 lakh; c) nothing; d) Rs 39 crore.
 '''),
         code('''
-collected = int(raw.groupby("order_id")["paid_amount"].sum().sum())
-second_inst = int(raw[(raw["first_row"] == 0) & (raw["paid_amount"] != raw["order_amount"])]["paid_amount"].sum())
-second_copy = int(raw[(raw["first_row"] == 0) & (raw["paid_amount"] == raw["order_amount"])]["paid_amount"].sum())
-kit.bridge(("collected, by lookup", looked_up),
-           [("second instalments of 400 orders", second_inst), ("second posts of 50 gateway copies", second_copy)],
-           end_label="collected, every payment", fmt=money, lit=(0,),
-           title="What the lookup left out")
-kit.stats([(money(collected), "collected, every payment", "SUMIFS or the warehouse's join"),
-           (money(booked - collected), "short of booked", f"{(booked - collected) / booked * 100:.1f} percent")])
+paid_rows = raw.drop(columns=["quarter", "first_row"]).drop_duplicates()   # a gateway copy is one payment, posted twice
+collected = int(paid_rows["paid_amount"].sum())                             # =SUMIFS(G:G, A:A, A2), every payment once
+copies = len(raw) - len(paid_rows)
+second_inst = collected - looked_up
+kit.bridge(("collected, by lookup", looked_up), [("second instalments of 400 orders", second_inst)],
+           end_label="collected, every payment once", fmt=money, lit=(0,),
+           title="What the lookup left out: the second instalments")
+kit.stats([(money(collected), "collected, every payment once", "the warehouse's join, or SUMIFS on the payments"),
+           (money(booked - collected), "short of booked", f"{(booked - collected) / booked * 100:.1f} percent"),
+           (f"{copies}", "gateway copies set aside", "the same payment, posted twice")])
 kit.check("the lookup and the sum differ on exactly the orders with two rows",
           int((raw.groupby("order_id").size() > 1).sum()) == 450)
-kit.check("adding every payment leaves collected within 1 percent of booked", (booked - collected) / booked < 0.01)
+kit.check("every payment added once leaves collected within 1 percent of booked", (booked - collected) / booked < 0.01)
 '''),
         md('''
-**What happened.** The answer is b. Adding every payment gives Rs 19,66,82,820 collected, Rs 17,17,180
-short of booked, 0.9 percent. **What changed:** Rs 7,83,00,846 of "outstanding" money disappears, the
-second instalments of 400 orders and the second posts of 50 gateway copies. The real gaps are Tuesday's:
-orders nobody has paid for, and payments posted twice that are owed back. The join belongs where Tuesday
+**What happened.** The answer is b. Every payment added once gives Rs 19,66,45,070 collected,
+Rs 17,54,930 short of booked, 0.9 percent, which is exactly Tuesday's list of orders nobody has paid
+for. **What changed:** Rs 7,82,63,096 of "outstanding" money disappears, the second instalments of 400
+orders, and the 50 gateway copies count once, as the payments they are. The join belongs where Tuesday
 did it, in the warehouse, and a SUMIFS in the sheet is only a check against it.
 '''),
         md('''
@@ -1549,7 +1575,7 @@ rule = [
     ("the tree by segment and quarter", "warehouse", "Finance audits it; a GROUP BY anyone can rerun"),
     ("counting each order once", "warehouse", "a grain fix is cleaning; the export should arrive at the order grain"),
     ("booked against collected", "warehouse", "a join, one order to several payments"),
-    ("the top fifty with a tie rule", "warehouse", "a rank Finance and Marketing both rely on"),
+    ("the top fifty, with a rule for members tied at fifty", "warehouse", "a rank Finance and Marketing both rely on"),
     ("the customer table", "pandas", "the analyst's weekly iteration, until Finance relies on it"),
     ("the pivot, the lookup, the card", "workbook", "presentation on an export that ties"),
     ("a director's what-if", "workbook", "a labelled input beside the actual, never over it"),
@@ -1563,30 +1589,39 @@ kit.check("every step lives in exactly one place", all(sum(r[1] == t for t in to
         md('''
 **What happened.** The answer is b. The first-row flag in chapter 2 was the right move for Friday's
 deadline, and it is a cleaning step with no record; next week the export should arrive at the order
-grain from the warehouse, and the flag becomes a check. **The rule, in three lines:** the warehouse owns
+grain from the warehouse, and the flag becomes a check. Written as the team's rule, in three lines: the warehouse owns
 the number and every join, dedupe and rank Finance relies on; pandas owns the analyst's iteration until
 Finance relies on it; the workbook owns the last mile, presenting, slicing, looking up and taking
 what-ifs as labelled inputs, on an export that ties, and nobody types over the source.
 '''),
         md('''
-## A second route: does the warehouse reach the same collected figure by its own join?
+## A second route: does booked less the orders nobody paid for give the same collected figure?
 
-The export's payments were written from the warehouse, so the second route asks the warehouse's
-payments table directly, joined to the orders it belongs to.
+A second route has to be able to disagree, so it never adds a payment. It starts from the warehouse's
+booked revenue and takes away the orders that have no payment at all, Tuesday's unpaid list, found
+with an anti-join: every order with no matching row in the payments table.
 '''),
         code('''
-w = warehouse("SELECT sum(p.amount) AS collected FROM payments p JOIN orders o USING (order_id)")[0]["collected"]
 wb = warehouse("SELECT sum(amount) AS booked FROM orders")[0]["booked"]
-kit.table(["Figure", "The export, every payment added", "The warehouse's join"],
-          [("booked", kit.rupees(booked), kit.rupees(wb)), ("collected", kit.rupees(collected), kit.rupees(w))])
-kit.check("collected ties to the warehouse's join to the rupee", collected == w)
+unpaid = warehouse("SELECT count(*) AS n, sum(amount) AS amount FROM orders o "
+                   "WHERE NOT EXISTS (SELECT 1 FROM payments p WHERE p.order_id = o.order_id)")[0]
+kit.table(["Figure", "The export, every payment once", "The warehouse, booked less unpaid"],
+          [("booked", kit.rupees(booked), kit.rupees(wb)),
+           ("unpaid orders", "", f"{unpaid['n']} orders, {kit.rupees(unpaid['amount'])}"),
+           ("collected", kit.rupees(collected), kit.rupees(wb - unpaid["amount"]))])
+kit.bridge(("booked, the warehouse", wb), [("orders nobody has paid for", -unpaid["amount"])],
+           end_label="collected", fmt=money, lo=196_000_000,
+           title="Booked less the unpaid list; the axis starts at Rs 19.60 crore")
+kit.check("collected ties to booked less the unpaid list, to the rupee", collected == wb - unpaid["amount"])
 kit.check("booked ties too", booked == wb)
 '''),
         md('''
 ## 5. How do the workbook and the warehouse stay in step?
 
-With a drift check that runs on every refresh: the workbook's control totals, orders and booked revenue
-per quarter, against the warehouse's. A mismatch holds the deck until someone knows why. The cell below
+With a drift check that runs on every refresh. The workbook needs no login for it: the data platform
+lead sends the warehouse's control totals, orders and booked revenue per quarter, on a small tab
+beside each export, and the Checks tab compares the workbook's own totals with them, live. A mismatch
+holds the deck until someone knows why. The cell below
 runs it twice: on this export, and on the same export as it would have looked if it had been pulled a
 week early, before the last week of September's orders arrived.
 
@@ -1625,21 +1660,24 @@ workbook to a director and builds the tab that runs it.
         md('''
 > **Kavya's review.** "Excel presents; it does not clean, join or compute the source of truth, because a
 > sheet with a typed-over cell has no audit trail. The warehouse owns the numbers, pandas owns your
-> iteration, Excel owns the last mile, and the drift check keeps the last mile honest."
+> iteration, Excel owns the last mile, and the drift check holds the deck whenever the workbook stops
+> tying to the warehouse."
 '''),
         md('''
-### In the interview: how would you answer these three questions aloud?
+### In the interview: SQL, pandas or Excel, and why can a lookup not stand in for a join?
 
 **[S] SQL, pandas or Excel: how do you choose?** By who has to trust the number and who has to rerun
-it. Anything Finance audits, or anything that joins, dedupes or ranks, is SQL in the warehouse, rerun
-by anyone with the query. The analyst's weekly iteration is pandas until Finance relies on it. The room's
-last mile is Excel on an export that ties, where a director can slice and ask what-ifs.
+it. Anything Finance relies on, and every join, dedupe or rank behind it, is SQL in the warehouse,
+rerun by anyone with the query. The analyst's iteration is pandas until Finance relies on it, so
+Thursday's customer table could be built in pandas and moves upstream once Marketing depends on it
+every Monday. The room's last mile is Excel on an export that ties, where a director can slice and
+ask what-ifs.
 
 **[F] A lookup does a join in a sheet and collected falls by 40 percent. What happened?** The lookup
 returned the first payment of each order and ignored the rest. Here 450 orders had two payment rows, so
-collected read Rs 11.84 crore against Rs 19.84 crore booked; adding every payment gives Rs 19.67 crore,
-0.9 percent short. One-to-many relations are joined in the warehouse, and a SUMIFS in the sheet is only
-a check.
+collected read Rs 11.84 crore against Rs 19.84 crore booked; adding every payment once gives Rs 19.66
+crore, 0.9 percent short, which is exactly the orders nobody has paid for. One-to-many relations are
+joined in the warehouse, and a SUMIFS in the sheet is only a check.
 
 **[D] Kavya asks for the operating rule in three lines. Say it.** The warehouse owns the number and every
 join, dedupe and rank Finance relies on. pandas owns the analyst's iteration until Finance relies on it.
@@ -1654,17 +1692,17 @@ The BBC's account of the Public Health England loss says each XLS template "coul
 each template was limited to about 1,400 cases" (BBC News, 5 October 2020, checked 30 September 2026).
 Microsoft's documentation gives the old format's limit exactly: "Excel 2003 supports a maximum of 65,536
 rows per worksheet" (Microsoft Learn, Work around the Excel 2003 row limitation, checked 30 September
-2026). Rows past the limit were dropped rather than rejected, which is the same silence as a lookup that
-takes one payment of two: nothing is red, and the total is smaller than the truth. A drift check against
-an upstream count is what turns a silent loss into a held release.
+2026). Rows past the limit were dropped with no error, and a lookup that takes one payment of two
+fails the same way: nothing turns red, and the total comes out smaller than the truth. A drift check
+against an upstream count is what turns a silent loss into a held release.
 '''),
         md('''
-## What did this chapter answer, one question at a time?
+## Where does each of the week's steps live, and how do the two stay in step, question by question?
 
-1. Tuesday's booked against collected is the heaviest step, a join of 1,000 orders to 1,428 payments; the rest read one table.
-2. Option b, the split: the warehouse computes and cleans, pandas iterates, the workbook presents.
+1. Option b, the split: the warehouse computes and cleans, pandas iterates, the workbook presents.
+2. Tuesday's booked against collected is the heaviest step, a join of 1,000 orders to 1,428 payment rows, eight of which match no order; the rest read one table.
 3. A lookup doing the join says Rs 11,83,81,974 collected, "Rs 8.00 crore outstanding", 40.3 percent.
-4. It took the first payment of 450 two-row orders; adding every payment gives Rs 19,66,82,820, Rs 17,17,180 short, 0.9 percent.
+4. It took the first payment of 450 two-row orders; every payment added once gives Rs 19,66,45,070, Rs 17,54,930 short, 0.9 percent, exactly the orders nobody has paid for.
 5. Joins, dedupes, ranks and anything Finance audits live in the warehouse; the customer table in pandas; the pivot, lookup, card and what-ifs in the workbook.
 6. A drift check on every refresh ties the workbook's quarters to the warehouse: today's export ships, a week-early export is held.
 
@@ -1695,8 +1733,8 @@ budget from the list. A total that keeps counting rows a filter has hidden sizes
 whole list, and a number typed over a formula becomes a figure nobody can trace.
 
 **The questions on the way.**
-1. What will a director do to the workbook?
-2. How could the team protect it?
+1. How could the team protect it?
+2. What will a director do to the workbook?
 3. What does the list's total say when a director filters it to one city?
 4. What do SUBTOTAL(109) and SUBTOTAL(103) say?
 5. Where does a director's assumption go, so the sheet recalculates honestly?
@@ -1979,7 +2017,7 @@ HOLD names what does not tie and asks for the export to be rerun.
 > a wrong one turn red before anyone reads it out."
 '''),
         md('''
-### In the interview: how would you answer these three questions aloud?
+### In the interview: what do you give a stakeholder who wants to poke the numbers?
 
 **[S] A stakeholder wants to poke the numbers themselves. What do you give them, and what do you never
 give them?** A workbook on a reconciled export, with the inputs they may change in yellow, a lookup that
@@ -2007,10 +2045,10 @@ that the export under it is short. Protection limits what a director can change;
 whether the numbers can be trusted.
 '''),
         md('''
-## What did this chapter answer, one question at a time?
+## What can a director break, and which checks catch it, question by question?
 
-1. A director filters, sorts, types over cells, changes inputs and pastes new exports; three of the five change a number's meaning with no error.
-2. Option c: yellow inputs, every other cell a formula, and a Checks tab; locking or a PDF fails the brief.
+1. Option c: yellow inputs, every other cell a formula, and a Checks tab; locking or a PDF fails the brief.
+2. A director filters, sorts, types over cells, changes inputs and pastes new exports; three of the five change a number's meaning with no error.
 3. Filtered to Mumbai, SUM at the foot still reads Rs 7,14,890 while the eleven on screen spent Rs 1,56,790.
 4. SUBTOTAL(109) reads Rs 1,56,790 and SUBTOTAL(103) counts 11 of 50; SUMIFS on the city agrees.
 5. An assumption goes in a yellow input that formulas read: a Rs 500 voucher costs Rs 5,500 for Mumbai's eleven.
