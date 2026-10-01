@@ -1,8 +1,8 @@
 # GD card 07: Where should the board's $2 million for growth go: a hospital's outreach lab, a seventh metro, or tests sold online?
 
-Build 1, Friday's group discussion. Read the card alone in four minutes; the rules and the scoring
-are at its end. Kalpa Health and its people are fictional, and the facts about a real company were
-checked on 1 October 2026.
+This card is for Friday's group discussion in Build 1, and you read it alone in five minutes.
+Kalpa Health and its people are fictional, and the facts about a real company were checked on
+1 October 2026.
 
 > "The board has approved $2 million for growth next year, and I can back one plan. Finance wants to
 > buy a hospital's outreach lab in Phoenix, operations wants a seventh metro, and marketing wants to
@@ -10,56 +10,52 @@ checked on 1 October 2026.
 > do I back?"
 > Dr Priya Menon, COO, Kalpa Health
 
-**Who needs the answer.** Dr Menon, who takes one plan to the board in December. Back the
-biggest-looking number on the weakest evidence, and $2 million buys a year the board remembers.
+**Who needs the answer.** Dr Menon, who takes one plan to the board in December; $2 million put
+behind the weakest evidence may not come back for years.
 
-**The questions on the way.** What is each plan? What does each head's number count, and what is it
-worth in dollars Kalpa would be paid? How good is the evidence behind each? What do you owe
-Dr Menon when time is called?
+**The questions on the way.** What would each plan buy, what does each cost and what has each head
+sent, what do the three heads claim, and what do you owe Dr Menon when time is called?
 
-## What is each plan?
+## What would each plan buy, and do real labs buy outreach labs?
 
 **Who needs the answer.** The three heads, each of whom has staked a year's work on a plan.
 
-**The questions on the way.** What is an outreach lab? Do real labs buy them?
+**The questions on the way.** What is an outreach lab, and what has a real lab paid for one?
 
 An outreach lab is the part of a hospital's laboratory that tests samples sent by doctors' offices
-in the community. Quest Diagnostics bought Allina Health's outreach lab business, in Minnesota and
-Wisconsin, for $230 million in September 2024, and its annual report notes that "Historically,
+in the community. Quest Diagnostics bought select assets of Allina Health's outreach laboratory
+business for $230 million in September 2024, and its annual report notes that "Historically,
 hospitals were able to negotiate higher reimbursement rates with health plans than commercial
-clinical laboratories for comparable services" (Form 10-K for 2025, checked 1 October 2026). Kalpa
-runs a laboratory and two patient service centres, where blood is drawn, in each of six metros.
+clinical laboratories for comparable services" (Form 10-K for 2025). Kalpa runs a laboratory and two
+patient service centres, where blood is drawn, in each of six metros.
 
-## What do the numbers on the table say?
+## What does each plan cost, and what has each head sent Dr Menon?
 
-**Who needs the answer.** The finance head, who will check every figure you quote against these
-lines.
+**Who needs the answer.** The finance head, who has to show the board what the $2 million returns.
 
-**The questions on the way.** What does each head's number count? Which lines turn each number into
-dollars Kalpa would be paid? What does each plan cost?
+**The questions on the way.** What has each head sent, and what do prices, buyers and costs add?
 
-| The plan, and whose it is | The number sent to Dr Menon | What the number counts | Where it comes from |
+| The plan, and whose it is | The number sent to Dr Menon | The head's note on it | Where it comes from |
 |---|---|---|---|
-| Buy the outreach lab business of a Phoenix hospital system (the finance head) | $3.2 million a year | The hospital's billed charges for its outreach tests in 2025, at the hospital's own prices | Assumption |
-| Open a seventh metro, Houston (the operations head) | 900 new patients in year one | Patients | Assumption |
-| Sell tests online to patients who pay for themselves (the marketing head) | 2 percent of 40,000 website visitors a month buy | A conversion rate from a web vendor's benchmark for health retail sites | Assumption |
+| Buy a Phoenix hospital system's outreach lab business (the finance head) | $3.2 million a year | The hospital's billed charges, its list prices before any plan's discount, for its 2025 outreach tests | Assumption |
+| Open a seventh metro, Houston (the operations head) | 900 new patients in year one | New patients | Assumption |
+| Sell tests online to patients who pay for themselves (the marketing head) | 2 percent of 40,000 website visitors a month buy | A web vendor's benchmark for health retail sites | Assumption |
 
 | What | Number | Where it comes from |
 |---|---|---|
-| The hospital's prices for 40 common outreach tests, against Kalpa's list prices for the same tests | about twice Kalpa's | Assumption (the payer contracting head's comparison) |
-| What health plans' contracts allow Kalpa for a test, the plan's and the patient's shares together, as a share of its list price | about 45 percent | Assumption (the payer contracting head) |
-| What one Kalpa patient brings in a year, in what the plans and the patient pay | $240 | Assumption (the finance head) |
+| The hospital's prices for 40 common outreach tests, against Kalpa's list prices | about twice Kalpa's | Assumption (the payer contracting head, who negotiates Kalpa's prices with plans) |
+| What plans allow Kalpa for a test, their share and the patient's together, as a share of Kalpa's list price | about 45 percent | Assumption (the payer contracting head) |
+| What one Kalpa patient brings in a year, from the plans and the patient | $240 | Assumption (the finance head) |
 | An online order's average value, paid in full by the patient | $95 | Assumption (the marketing head) |
-| Online buyers who live near one of Kalpa's twelve patient service centres, where their blood would be drawn | 55 percent | Assumption (the marketing head's survey) |
+| Online buyers near one of Kalpa's twelve patient service centres, the only places their blood can be drawn | 55 percent | Assumption (the marketing head's survey) |
 | Price of each plan | outreach lab $1.8 million; Houston $2.0 million; online store $0.6 million | Assumption (the three heads) |
 | Cost of performing tests, as a share of what Kalpa is paid for them | about two thirds | Assumption (the finance head's rule of thumb) |
 
-## What does each head claim?
+## What do the finance, operations and marketing heads claim?
 
-**Who needs the answer.** Your group, which has to put three numbers on one footing before it can
-compare them.
+**Who needs the answer.** Your group, which tells Dr Menon which one plan to back.
 
-**The questions on the way.** What is each head's evidence, and what is it worth?
+**The questions on the way.** What does each head want her to do, and on what evidence?
 
 - **The finance head:** "A hospital's book of business is real money from real doctors. A website is
   a guess."
@@ -71,24 +67,27 @@ compare them.
 
 ## What do you owe Dr Menon when time is called, and how is each of you scored?
 
-**Who needs the answer.** Each of you: Dr Menon acts on one position, and the panel scores every
-learner alone on what they said and did in the seventeen minutes.
+**Who needs the answer.** Each of you, since Dr Menon acts on the one position your group hands over
+and the chair scores every learner alone.
 
-**The questions on the way.** What does the group hand over? How does the round run? What earns
-the marks?
+**The questions on the way.** What does the group hand over? How does the round run? What earns the
+marks?
 
-When time is called, the group gives Dr Menon one position, or the point where it splits, named out
-loud; the one number that carries the position, and where on this card that number comes from; and
-the fact that would change the group's mind, with the main risk of its position.
+The chair's opening says all of this before the clock starts, so your reading minutes are for the
+case above. When time is called, the group gives Dr Menon one position, or the point where it splits,
+named out loud; the one number that carries the position, and where on this card that number comes
+from; and the fact that would change the group's mind, with the main risk of its position.
 
 | Part | Minutes | What happens |
 |---|---|---|
-| Read | 4 | Each of you reads the card alone and may write. |
-| Discuss | 17 | The four of you talk to each other. The chair answers no question about the numbers, so state any assumption out loud. |
-| The panel's questions | 4 | The chair puts two questions, each to a learner by name. |
+| Read | 5 | Each of you reads the card alone and may write. |
+| Discuss | 16 | You talk to each other while the chair listens. The chair answers no question about the numbers, so state any assumption out loud. |
+| The chair's two questions | 4 | The chair puts two questions, each to a learner by name. |
 
 You have pen and paper and one phone calculator in the middle of the table. A row whose source says
-assumption or illustration is yours to challenge: say what you would use instead, and why.
+assumption or illustration is yours to challenge: say what you would use instead, and why. The
+chair scores each of you alone on what you say in the discussion and in answer to the two
+questions, against this rubric:
 
 <!-- sync:rubric:W03/gd -->
 **Group discussion, 30 marks.** Each learner is scored alone.

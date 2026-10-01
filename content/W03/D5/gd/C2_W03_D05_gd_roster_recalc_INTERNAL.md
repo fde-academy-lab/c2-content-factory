@@ -1,9 +1,9 @@
 # Recalc manifest for the Build 1 GD roster
 
 `scripts/xlsx_recalc.py` reads this file, rebuilds the roster through LibreOffice, asserts the
-verdicts as shipped, then flips three decisions and asserts that the verdicts move: the group count
-rising to the tracker's fifteen, a sub-problem 5 group drawn to the slot carrying card 05, and
-rounds running long. Written by `internal/C2_W03_D05_build_gd_roster_INTERNAL.py`; rebuild both
+verdicts as shipped, then flips four decisions and asserts that the verdicts move: the group count
+rising to the tracker's fifteen, a sub-problem 5 group drawn to the slot carrying card 05, a draw
+position mistyped as 10, and rounds running long. Written by `internal/C2_W03_D05_build_gd_roster_INTERNAL.py`; rebuild both
 together.
 
 ```yaml
@@ -14,6 +14,8 @@ verdicts:
   - {sheet: Check, cell: B10, expect: "no group meets its own sub-problem"}
   - {sheet: Check, cell: B12, expect: "every round ends inside its block"}
   - {sheet: Check, cell: B13, expect: "every group sits exactly one GD"}
+  - {sheet: Check, cell: B15, expect: "every slot has a group drawn"}
+  - {sheet: Check, cell: B17, expect: "every draw position is between 1 and 9"}
   - {sheet: Roster, cell: H10, expect: "165"}
   - {sheet: Roster, cell: M8, expect: "3 and 5"}
   - {sheet: "Friday block two", cell: B16, expect: "block two fits with 33 minutes of slack"}
@@ -29,6 +31,12 @@ flips:
     verdicts:
       - {sheet: Roster, cell: N8, contains: "swap"}
       - {sheet: Check, cell: B10, expect: "1 clash: swap within the level or use card 08"}
+  - name: G9's draw position is mistyped as 10
+    set: [{sheet: Inputs, cell: C21, value: 10}]
+    verdicts:
+      - {sheet: Roster, cell: K12, expect: "no group drawn"}
+      - {sheet: Check, cell: B15, expect: "slots with no group drawn: 1; check the draw positions on Inputs"}
+      - {sheet: Check, cell: B17, expect: "draw positions outside 1 to 9: 1; retype them on Inputs"}
   - name: rounds run 35 minutes
     set: [{sheet: Inputs, cell: B3, value: 35}]
     verdicts:
