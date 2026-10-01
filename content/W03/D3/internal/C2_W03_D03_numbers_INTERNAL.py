@@ -215,6 +215,7 @@ put("sp1 Q2 mean, Q3 mean, Q3 mean without contract, medians",
      round(q3c.loc[q3c["employer_account"] == "", "amt"].mean(), 2),
      float(q2c["amt"].median()), float(q3c["amt"].median())))
 put("sp1 largest retail claim", float(claims.loc[claims["employer_account"] == "", "amt"].max()))
+put("sp1 smallest claim; amounts that convert as written", (float(claims["amt"].min()), int(co_all.notna().sum())))
 put("sp1 old-export completed, new-system done, claims",
     (int((legacy["status"] == "completed").sum()), int((new["status"] == "completed").sum()), len(claims)))
 claim_lines = claims.loc[claims["employer_account"] == "", "line_items"].astype(int)
@@ -303,6 +304,16 @@ paid_net = postings["paid"].sum() - double["paid"].sum()
 put("sp3 billed all, paid net share", (round(billed_all, 2), round(paid_net / billed_all, 4)))
 contractual = postings.loc[(postings["posting"] == "payment") & ~postings.index.isin(double.index), "adjustment_amount"].astype(float).sum()
 put("sp3 contractual adjustments on payments (double posts excluded)", round(contractual, 2))
+denied_posted = set(den_post["claim"])
+put("sp3 the gap between billed and paid: no posting, denied with a posting, patient shares",
+    (round(unposted["amt"].sum(), 2),
+     round(claims.loc[claims["claim_id"].isin(denied_posted), "amt"].sum(), 2),
+     round(postings.loc[(postings["posting"] == "payment") & ~postings.index.isin(double.index),
+                        "patient_responsibility"].astype(float).sum(), 2)))
+put("sp3 the gap, billed less paid net of double posts", round(billed_all - paid_net, 2))
+put("sp3 unposted claims by service month", claims[claims["claim_id"].isin(unposted["claim_id"])]
+    .assign(month=lambda d: d["service_date"].str[:7]).groupby("month").size().to_dict())
+put("sp3 key examples: first posting refs", postings["claim_ref"].head(3).tolist())
 
 # ---------------------------------------------------------------- sub-problem 4, no-shows
 small = register["site_code"] == "KH-ATL-03"
@@ -313,6 +324,8 @@ put("sp4 rows, centres, kinds, dates", (len(register), register["site_code"].nun
                                         (register["visit_date"].min(), register["visit_date"].max())))
 per_centre = register.groupby("site_code").agg(rows=("kind", "size"), walk_ins=("kind", lambda s: int((s == "walk-in").sum())))
 put("sp4 rows per centre", per_centre["rows"].to_dict())
+put("sp4 attended Y and N; kind by centre at KH-ATL-03", (register["attended"].value_counts().to_dict(),
+                                                         register[small]["kind"].value_counts().to_dict()))
 put("sp4 small all, others all, small scheduled, others scheduled",
     ((int((small & miss).sum()), int(small.sum())), (int((~small & miss).sum()), int((~small).sum())),
      (int((small & sched & miss).sum()), int((small & sched).sum())),
@@ -375,6 +388,11 @@ put("sp5 bookings per patient offered, rest (patients, bookings)",
 put("sp5 lift overall and by metro", (lift(patients), {c: lift(patients[patients["metro"] == c])
                                                        for c in sorted(patients["metro"].unique())}))
 camp = ("Dallas", "Atlanta", "Phoenix")
+home5 = both[(both["channel"] == "at-home") & (both["booking_date"] <= "2026-09-14")].merge(
+    campaign[campaign["took_up"] == "Y"], on="patient_id", suffixes=("", "_o"))
+used = set(home5.loc[home5["booking_date"] >= home5["offered_on"], "patient_id"])
+put("sp5 accepted with a home collection between offer and 14 September, accepted without",
+    (len(used), int((campaign["took_up"] == "Y").sum()) - len(used)))
 put("sp5 offered share, campaign metros and elsewhere",
     (round(patients[patients["metro"].isin(camp)]["offered"].mean(), 4),
      round(patients[~patients["metro"].isin(camp)]["offered"].mean(), 4)))
@@ -497,6 +515,12 @@ if __name__ == "__main__":
         ("register two-row bookings", OUT["sp4 register: distinct bookings, bookings with two rows"][1], 253),
         ("New York permutation p", OUT["sp5 New York permutation p, two-sided"], 0.0302),
         ("SQL route", OUT["ny second route in SQL"], [("Q2", 977, 174910.0), ("Q3", 1055, 184485.0)]),
+        ("New York fee claims", OUT["ny claims with a $20 fee line"], 219),
+        ("the gap's parts", OUT["sp3 the gap between billed and paid: no posting, denied with a posting, patient shares"],
+         (253165.0, 222108.0, 32594.87)),
+        ("the gap", OUT["sp3 the gap, billed less paid net of double posts"], 1399785.44),
+        ("accepted and used, accepted without", OUT["sp5 accepted with a home collection between offer and 14 September, accepted without"],
+         (259, 689)),
     ]
     for name, mine, theirs in spine:
         if not same(mine, theirs):

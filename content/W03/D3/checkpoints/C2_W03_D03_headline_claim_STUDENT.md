@@ -1,71 +1,155 @@
-# The headline claim: one sentence Dr Menon can carry into her board meeting
+# What one sentence can your group give Dr Menon tonight, with its number, its denominator, its period and its caveat?
 
-Dr Priya Menon wants one sentence per sub-problem by the end of today. She will read it in two
-minutes and repeat it to her board without you in the room. So it has to hold up on its own: the
-number, what the number counts, over which period, and what would change it.
+- **For:** every group, at the close of Wednesday 21 October
+- **From:** Dr Priya Menon, chief operating officer (COO) of Kalpa Health
+- **Data:** the ten files in `content/W03/D1/data/`, exported on Friday 16 October 2026
 
-Write it today, before it is fully tested, because tomorrow is for testing it.
+Kalpa Health and everyone in it are fictional, and every record in the files is synthetic. Kalpa
+Health is a US diagnostics business in six US metro areas, billing its patients' payers in dollars,
+with its analytics work run from Kalpa's Global Capability Centre (GCC) in Bengaluru, where you work
+as trainee engineers. Q2 is April to June 2026 and Q3 is July to September 2026.
+
+> "I want one answer per question: a sentence I can carry into the board meeting, the evidence
+> behind it, what would change it, and what you would have me do."
+> Dr Priya Menon, COO, Kalpa Health, in her briefing note of Monday 19 October
+
+Each group took one of her heads' five questions on Monday, and each states its headline claim at
+today's close, in about a minute. It is stated today, before it is fully tested, because Thursday's
+mock and the panel on Friday and Saturday test it; a claim first stated on Thursday has had no
+testing at all.
+
+**Who needs the answer.** Dr Menon, who repeats the sentence to her board with nobody there to
+explain it, so a number without its base or its period becomes the board's number. Then every member
+of your group: tomorrow's viva and the weekend's panel start from the sentence you pin tonight.
+
+**The questions on the way.**
+1. What must one sentence carry for Dr Menon to repeat it safely?
+2. What does a finished claim look like, on a question no group holds?
+3. Which wrong versions of that claim would a hurried analyst send, and what is wrong with each?
+4. Which six tests does your sentence pass before you pin it?
+5. What does your group say at the close if its claim is not ready?
+6. How is the claim scored, and when?
+7. What do you take home tonight?
 
 ---
 
-## The shape: the Week 1 Thursday note
+## What must one sentence carry for Dr Menon to repeat it safely?
 
-Four parts, in this order. The claim comes first, because a COO reads two minutes and stops.
+**Who needs the answer.** The member who says your claim aloud at the close, and Dr Menon, who has
+two minutes and no chart.
+
+**The questions on the way.** Which parts go in the sentence? Which go on the lines below it? In
+what order?
+
+The sentence carries four things, and the reason that connects them:
+
+| Part | What it is | Why Dr Menon needs it |
+|---|---|---|
+| **The number** | The change or the level you found, in its unit: dollars, bookings, claims, visits, patients or a rate | It is what she will repeat |
+| **The denominator** | What every rate or average is out of, both sides of any comparison, in counts someone can check | A rate with no base cannot be checked or compared |
+| **The period** | Which weeks or quarters, and whether the windows are the same length | "Up 8 percent" over unequal windows is a different number from the pace |
+| **The caveat** | The one thing that would change the claim, on its own line below the sentence | A stated risk survives the panel; a hidden one does not |
+
+The shape is Week 1 Thursday's note, claim first, because a COO reads the first line and may stop:
 
 ```
-CLAIM      one sentence: the number, its denominators, the period, and the reason
-EVIDENCE   what you computed, from which files, on how many rows after your identity rule
+CLAIM      one sentence: the number, what it counts, its denominators, the period, and the reason
+EVIDENCE   what you computed, from which files, on how many rows after which identity rule
 CAVEAT     the one thing that would change the claim, on its own line
 ACTION     what Dr Menon should do, and what it costs or what it needs next
 ```
 
-The sentence you say at the close is the CLAIM line. The CAVEAT is on the line below it, never
-folded into it.
+The sentence you say at the close is the CLAIM line. The CAVEAT goes on the line below it and is
+never folded into the claim.
 
----
+## What does a finished claim look like, on a question no group holds?
 
-## One worked example, from the trainer's New York slice
+**Who needs the answer.** Every group, as a model of shape rather than of content: it answers a
+question none of the five briefs asks.
 
-This is the claim from this morning's parallel build. It answers a question none of the five briefs
-asks, so treat it as a model of shape.
+**The questions on the way.** What did the trainer's parallel build find? How do the four parts sit
+on the page?
+
+This morning's parallel build took one metro's billed revenue, New York's, from Q2 to Q3. Billed
+revenue is the dollars on the claims at Kalpa Health's list prices, what it asked the payers for;
+the payers pay a contracted share of it weeks later. The build kept one row per booking, converted
+every amount, matched the claims one to one to the completed bookings and split billed revenue into
+claims times the mean claim, the average dollars on one claim.
 
 | Part | New York, Q2 against Q3 |
 |---|---|
-| **Claim** | New York's billed revenue rose 5.5 percent, from $174,910 on 977 claims in Q2 to $184,485 on 1,055 in Q3, because it billed more claims at a slightly lower mean. |
-| **Evidence** | 2,128 rows of the old export reduced to 2,095 bookings by one identity rule; the 2,032 completed ones matched one to one to 2,032 claims; billed revenue split into 78 more claims (plus $13,964) and a mean $4.16 lower (minus $4,389). |
-| **Caveat** | This is billed revenue, which is not the same as money collected, and Q3 is one day longer than Q2: per day, billed revenue rose 4.3 percent. Why the mean claim fell is not yet known. |
-| **Action** | Treat New York as growing modestly on volume, and open the branch below the claim before deciding whether the lower mean is a price, a mix or a fee question. |
+| **Claim** | New York's billed revenue rose 5.5 percent, from $174,910 on 977 claims in Q2 to $184,485 on 1,055 claims in Q3, because it billed 78 more claims at a mean claim $4.16 lower. |
+| **Evidence** | The old booking export's 2,128 New York rows are 2,095 bookings under one identity rule; the 2,032 completed bookings match the 2,032 claims one to one; every amount converts; the same totals come out of SQL run on the raw files; the change splits into $13,964 from more claims and minus $4,389 from the lower mean. |
+| **Caveat** | Billed revenue is list price, which the payers do not pay in full, so this is not money collected; and Q3 has 92 days to Q2's 91, so per day billed revenue rose 4.3 percent. Why the mean claim fell is not yet known. |
+| **Action** | Report New York as growing on claim volume, and open the branch below the mean claim before calling the lower mean a price or a mix change. |
 
-The claim carries two denominators (claims in each quarter), the period (Q2 against Q3) and the
-reason (more claims, lower mean). The number alone, "New York up 5.5 percent", would not survive one
-question from the finance head.
+The claim names its unit (billed revenue, claims), carries both denominators (977 and 1,055
+claims), its period (Q2 against Q3) and its reason (more claims at a lower mean). "New York up 5.5
+percent" alone would not survive one question from the finance head.
 
----
+## Which wrong versions of that claim would a hurried analyst send, and what is wrong with each?
 
-## Six tests before you pin the claim
+**Who needs the answer.** Every group, before it reads its own sentence the same way: each wrong
+version below is a plausible number the New York build met this morning.
 
-Read your sentence against each test. A claim that fails one is not ready, and the fix is almost
-always a smaller claim.
+**The questions on the way.** What does each sentence count? Over which period? Could anyone rebuild
+it from the raw files?
+
+| The sentence | What is wrong with it | The test below it fails |
+|---|---|---|
+| "New York grew 5.5 percent." | No unit, no base and no period: 5.5 percent of what, out of what, from when? | 2, 3 and 4 |
+| "New York's bookings grew 4.8 percent from Q2 to Q3." | It counted the export's rows as bookings; 33 bookings appear on two rows, and counted once each the bookings grew 6.8 percent | 2 |
+| "New York's billed revenue grew 3.3 percent, from $179,499 to $185,354." | The totals come from a join that matched some claims twice, so they count export rows, $5,458 more than the claims themselves hold | 2 |
+| "New York collected $184,485 in Q3, up 5.5 percent." | It calls billed revenue money collected; the payers pay a contracted share, and later | 2 |
+| "New York is growing at 8.0 percent a quarter on claims." | Q3 has a day more than Q2; per day the claims grew 6.8 percent | 4 |
+
+## Which six tests does your sentence pass before you pin it?
+
+**Who needs the answer.** Your group, before the close: a claim that fails one test is not ready, and
+the fix is almost always a smaller claim.
+
+**The questions on the way.** Does it reproduce? Does it say what it counts? Does it carry its
+bases? Do its windows match? Does it say what it cannot? Is it a claim and not a plan?
 
 | Test | The question to put to your sentence |
 |---|---|
 | **1. It reproduces** | Does one notebook or SQL file, run cold from the raw files, print every number in the sentence? |
-| **2. It names what it counts** | For every number: bookings, claims, tests, patients, visits or dollars, and counted after which identity rule? |
+| **2. It names what it counts** | For every number: bookings, claims, tests, patients, visits, postings or dollars, and counted after which identity rule? |
 | **3. It carries its denominators** | Does every rate show its base, both sides of any comparison, in counts someone can check? |
-| **4. The windows match** | Are the two periods the same length and the same kind? If not, is that said, or is the rate per day? |
-| **5. It says what it can't** | Is there one caveat, on its own line, that names what would change the claim, and would Kavya Nair accept it as the real risk? |
-| **6. It is the claim, not the plan** | Is it one sentence Dr Menon can repeat without a chart, and does it stop before recommending more than the evidence carries? |
+| **4. The windows match** | Are the two periods the same length and the same kind? If not, does the sentence say so, or give the rate per day? |
+| **5. It says what it cannot** | Is there one caveat, on its own line, that names what would change the claim, and would Kavya Nair, the senior analyst on your team, accept it as the real risk? |
+| **6. It is a claim and not a plan** | Can Dr Menon repeat it without a chart, and does it stop before recommending more than the evidence carries? |
 
 **Kavya's review.** A claim that passes all six has the count you started from, every row you set
-aside with its reason, and a second way to the same total. If any of the three is missing, say so in
-the caveat: a stated gap survives the panel and a hidden one does not.
+aside with its reason, and a second way to reach the same total. If one of the three is missing,
+say so in the caveat: a gap you state survives the panel, and a gap the panel finds costs the claim.
 
----
+## What does your group say at the close if its claim is not ready?
 
-## How the claim is scored
+**Who needs the answer.** A group whose build is behind, which still owes Dr Menon a sentence and
+owes the trainer its blocker.
 
-The mini project's rubric, approved for learners to see. The claim you pin today is the one "The
-claim" row scores, and the six tests above are the checks behind its full-marks line.
+**The questions on the way.** Is a smaller claim acceptable? When is "not yet" the answer? What does
+a blocker sound like?
+
+A smaller claim that keeps its denominators and its caveat is a finished claim: one metro instead of
+six, one quarter's count instead of a full tree. Week 1 Thursday's "not yet" is also an answer, if it
+says what would turn it, the way the New York build left its own open question: "Not yet: New York's
+mean claim fell $4.16, and we will know whether that is price or mix once the branch below the claim
+is opened." If your group has neither, name the blocker
+in one sentence: which of this morning's three checkpoint questions you still cannot answer, and what
+is in the way. The Academic TA starts the open build time at the tables that named one.
+
+## How is the claim scored, and when?
+
+**Who needs the answer.** Every member: the claim is scored once for the group at its
+presentation, on Friday 23 or Saturday 24 October, and every member defends its caveat alone.
+
+**The questions on the way.** Which criterion scores it? What do full marks look like?
+
+The mini project's rubric, which the requester approved on 29 September 2026 for learners to see.
+The sentence you pin tonight is the one its fourth criterion, the claim, scores, and the six tests
+above are what its full-marks line asks for.
 
 <!-- sync:rubric:W03/mini-project -->
 **Mini project, 40 marks.** The first four criteria are scored once for the group, and every member receives those 34 marks; presentation and defence is scored for each learner on 6 marks, so a silent teammate cannot ride the group's score.
@@ -79,30 +163,23 @@ claim" row scores, and the six tests above are the checks behind its full-marks 
 | Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |
 <!-- /sync:rubric:W03/mini-project -->
 
----
+## What do you take home tonight?
 
-## At the close
+**Who needs the answer.** Your group, before Thursday's mock, where each member's viva starts from
+tonight's sentence.
 
-Each group gets about a minute. One member says the CLAIM line, and a different member says the
-CAVEAT. If your group has no claim yet, name the blocker in one sentence instead: which of this
-morning's three questions you still cannot answer, and what is in the way.
+**The questions on the way.** What is tonight's task? What does every group ship by the end of the
+week?
 
----
+Tonight's task is the presentation skeleton on the same four parts, claim, evidence, caveat and
+action, with one line under each, and closing whatever gap in the evidence today's claim exposed.
+The trainer hands out the presentation format at the close. By the end of the week every group
+ships:
 
-## Tonight: the presentation skeleton
-
-Your group leaves with the presentation format,
-`content/W03/SAT/slides/C2_W03_SAT_presentation_format_STUDENT.md`. Tonight's task is the skeleton on
-the claim, evidence, caveat, action shape, and closing the evidence gaps today's claim exposed.
-
-What every group ships by the end of the week:
-
-| Deliverable | What it is |
+| What | What it holds |
 |---|---|
-| The presentation | A slot of 25 to 30 minutes, with a live demo run cold on your own Kalpa Health files, and the panel's questions |
-| The one-slide answer | The slide Dr Menon carries into her board meeting: claim, evidence, caveat, action |
-| The reproduction | The notebook or SQL that reproduces every number from the raw files, top to bottom |
-| The decisions log | In the Week 1 Wednesday shape: Field, Issue, Rows, Decision, Reason, with at least one row you kept (`briefs/C2_W03_D01_decisions_log_STUDENT.xlsx`) |
-| The challenges log | Every obstacle and question as it happened (`briefs/C2_W03_D01_challenges_log_STUDENT.xlsx`) |
-
-Both logs are the ones Monday's pack handed out, in `content/W03/D1/briefs/`.
+| The presentation | A slot of 25 to 30 minutes, with a live demo run cold on your own copy of the Kalpa Health files, and the panel's questions to every member |
+| The one-slide answer | The slide Dr Menon carries into her board meeting: claim, evidence, caveat and action |
+| The reproduction | The notebook or SQL that rebuilds every number from the raw files, top to bottom |
+| The decisions log | Every cleaning and matching call in the Week 1 Wednesday shape (field, issue, rows, decision, reason), with at least one row kept as it was, in `content/W03/D1/briefs/C2_W03_D01_decisions_log_STUDENT.xlsx` |
+| The challenges log | Every obstacle and open question, dated as it happened, in `content/W03/D1/briefs/C2_W03_D01_challenges_log_STUDENT.xlsx` |
