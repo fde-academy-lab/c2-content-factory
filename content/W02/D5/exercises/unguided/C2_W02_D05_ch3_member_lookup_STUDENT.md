@@ -13,9 +13,9 @@ holds one row per customer who ordered in those months; the head of Retail-Plus 
 retention offer. On the table, member ids sit in column A, rows 2 to 301, and revenue in column E. A
 lookup takes an id and returns a value from the same row. `VLOOKUP(id, table, column, range_lookup)`
 gives an exact match when range_lookup is FALSE, and #N/A when the id is missing; left out or TRUE, it
-gives an approximate match, which returns the largest id not above the one asked for and assumes the
-first column is sorted. `INDEX(E:E, MATCH(id, A:A, 0))` is an exact match, and `IFERROR(x, "not in
-the table")` shows those words where x would be an error. `XLOOKUP(id, A:A, E:E, "not in the table")`
+gives an approximate match, which expects the first column to be sorted. `INDEX(E:E, MATCH(id, A:A,
+0))` is an exact match, and `IFERROR(x, "not in the table")` shows those words where x would be an
+error. `XLOOKUP(id, A:A, E:E, "not in the table")`
 is exact by default and takes the not-found words as its fourth argument; Microsoft says it is not
 available in Excel 2016 and Excel 2019, and LibreOffice 24.2 shows #NAME? for it. COUNTIF counts the
 rows holding a value, and SUMIFS adds the values on the rows that meet a condition.
@@ -36,7 +36,7 @@ spends an offer on the wrong person.
 
 Item 4's tiers are invented; the other items use the customer table's own ids and numbers.
 
-**What you post.** One line of six letters in item order, no spaces, in this shape:
+Post one line of six letters in item order, no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxxx
@@ -58,18 +58,21 @@ d) An approximate match returned the nearest id below the one asked for
 
 ### Q2. Which formula returns a member's revenue or the words "not in the table", and nothing else?
 
-Revenue sits in column E and ids in column A of the customer table, rows 2 to 301. Which formula
-returns C-0195's revenue when C-0195 is in the table, and the words "not in the table" when it is not?
+Revenue sits in column E and ids in column A of the customer table, rows 2 to 301, and the chief of
+staff types an id into cell H1. Which formula returns that member's revenue when the id is in the
+table, and the words "not in the table" when it is not?
 
-a) `=VLOOKUP("C-0195",A:E,5)`
-b) `=IFERROR(INDEX(E:E,MATCH("C-0195",A:A,0)),"not in the table")`
-c) `=INDEX(E:E,MATCH("C-0195",A:A,1))`
-d) `=IFERROR(VLOOKUP("C-0195",$A$2:$E$301,5,TRUE),"not in the table")`
+a) `=VLOOKUP(H1,A:E,5)`
+b) `=IFERROR(INDEX(E:E,MATCH(H1,A:A,0)),"not in the table")`
+c) `=INDEX(E:E,MATCH(H1,A:A,1))`
+d) `=IFERROR(VLOOKUP(H1,$A$2:$E$301,5,TRUE),"not in the table")`
 
 ### Q3. Which lookup ships to an office where two laptops run Excel 2019?
 
 The protect list goes to the CEO's office. Two of its laptops run Excel 2019 and the rest run
-Microsoft 365, and any of them may open the file in Monday's meeting. Which lookup ships?
+Microsoft 365, and any of them may open the file in Monday's meeting. There a director names an id,
+the chief of staff types it and reads the cell aloud, so the cell has to answer in words the room can
+hear: a revenue figure, or "not in the table". Which lookup ships?
 
 a) XLOOKUP with its fourth argument, since it is exact by default and names a missing id
 b) VLOOKUP with FALSE, since #N/A is an honest answer for an id the table lacks
@@ -105,4 +108,4 @@ these is one?
 a) An XLOOKUP beside the INDEX and MATCH, compared with it cell by cell
 b) The lookup's answer compared with the rank column on the very row it returned
 c) A COUNTIF of the id, which must read zero where the lookup says not found
-d) The table sorted by id, and the row for the id read off it by eye
+d) Conditional formatting that colours the lookup's cell red whenever it shows #N/A

@@ -8,8 +8,8 @@ from April to September 2026, taken from the customer table, which holds one row
 ordered in those months; it runs from C-0152 at Rs 25,840 down to a cut-off of Rs 8,580, and the
 fifty-first member spent Rs 8,520, so no tie crosses the boundary. A VLOOKUP with its fourth argument
 left out is an approximate match, which returns the largest id not above the one asked for; an exact
-match returns the member asked for or says the id is missing. Three of the six items are design
-items: 3, 4 and 6.
+match returns the member asked for or says the id is missing. Two of the six items are design
+items: 3 and 6.
 
 **Who needs the answer.** You, checking your six letters after the lab or tonight. A lookup you
 cannot defend is the one that tells a director, in front of the room, that a member who stopped
@@ -17,18 +17,19 @@ buying is one of Kalpa's best.
 
 **The questions on the way.**
 
-- Which idea does the chapter 3 set test: that a lookup has to fail visibly on an id it does not hold?
+- Which skill does the chapter 3 set test?
 - Why does each of the six keys hold, from C-0195 to the second route?
-- Why is option a in item 3, XLOOKUP for every laptop, the wrong answer worth arguing about?
+- Why is XLOOKUP for every laptop (item 3, a) the most tempting wrong answer?
 - Where did TransAlta, the Canadian power company, pay for a row that answered for the wrong item?
 
-## Which idea does the chapter 3 set test: that a lookup has to fail visibly on an id it does not hold?
+## Which skill does the chapter 3 set test?
 
-A lookup is read aloud in rooms where nobody sees the formula, so its one unforgivable answer is
-somebody else's row. An exact match with a not-found path says when an id is missing; an approximate
-match never does, and returns a neighbour that looks plausible. The design items ask which exact
-lookup fits the office's software, where an approximate match is the right tool, and which second
-route can catch a lookup that is wrong.
+The skill is building a lookup that says so when an id is missing. A lookup is read aloud in rooms
+where nobody sees the formula, so the worst answer it can give is somebody else's row. An exact match
+with a not-found path says when an id is missing; an approximate match never does, and returns a
+neighbour that looks plausible. The design items ask which exact lookup fits the office's software
+and which second route can catch a lookup that is wrong; item 4 asks where an approximate match is the
+right tool.
 
 ## Why does each of the six keys hold, from C-0195 to the second route?
 
@@ -52,21 +53,23 @@ Rs 16,740, and nothing on the screen turned red.
 
 ### Q2. Which formula returns a member's revenue or the words "not in the table", and nothing else?
 
-Revenue sits in column E and ids in column A, rows 2 to 301.
+Revenue sits in column E and ids in column A, rows 2 to 301, and the chief of staff types the id
+into H1.
 
-The key is b, `=IFERROR(INDEX(E:E,MATCH("C-0195",A:A,0)),"not in the table")`. MATCH with 0 is an
-exact match: it finds the id or returns #N/A, and IFERROR turns the #N/A into the words.
+The key is b, `=IFERROR(INDEX(E:E,MATCH(H1,A:A,0)),"not in the table")`. MATCH with 0 is an exact
+match: it finds the id or returns #N/A, and IFERROR turns the #N/A into the words.
 
-- a, `=VLOOKUP("C-0195",A:E,5)`: the fourth argument is left out, so this is the approximate match
-  that returned C-0194's row.
-- c, `=INDEX(E:E,MATCH("C-0195",A:A,1))`: MATCH with 1 is approximate too, and returns the largest id
-  not above C-0195.
-- d, `=IFERROR(VLOOKUP("C-0195",$A$2:$E$301,5,TRUE),"not in the table")`: TRUE asks for the
-  approximate match, which finds a neighbour and raises no error, so IFERROR never fires.
+- a, `=VLOOKUP(H1,A:E,5)`: the fourth argument is left out, so this is the approximate match that
+  returned C-0194's row for C-0195.
+- c, `=INDEX(E:E,MATCH(H1,A:A,1))`: MATCH with 1 is approximate too, and returns the largest id not
+  above the one typed.
+- d, `=IFERROR(VLOOKUP(H1,$A$2:$E$301,5,TRUE),"not in the table")`: TRUE asks for the approximate
+  match, which finds a neighbour and raises no error, so IFERROR never fires.
 
 ### Q3. Which lookup ships to an office where two laptops run Excel 2019?
 
-A design item. Any of the office's laptops may open the file in the meeting, and two run Excel 2019.
+A design item. Any of the office's laptops may open the file in the meeting, two run Excel 2019, and
+the chief of staff reads the cell aloud, so it has to answer in words.
 
 The key is c, "IFERROR around INDEX and MATCH with 0, which every version computes". It is exact,
 says "not in the table" when an id is missing, and computes in Excel 2016, 2019 and Microsoft 365 and
@@ -76,15 +79,15 @@ ran Microsoft 365, XLOOKUP with its fourth argument would be the cleaner formula
 - a, "XLOOKUP with its fourth argument, since it is exact by default and names a missing id": both
   are true, and Microsoft's page says XLOOKUP "is not available in Excel 2016 and Excel 2019"
   (Microsoft Support, XLOOKUP function, checked 30 September 2026), so two laptops show #NAME?.
-- b, "VLOOKUP with FALSE, since #N/A is an honest answer for an id the table lacks": honest, and a
-  director reads #N/A as a broken sheet, so the meeting stops on the error instead of the answer.
+- b, "VLOOKUP with FALSE, since #N/A is an honest answer for an id the table lacks": honest, and
+  read aloud it answers nothing, so the director hears an error code and the meeting stops on it.
 - d, "VLOOKUP with its fourth argument left out, since every version of Excel has it": every version
   has it, and every version gives the approximate match that answers with a neighbour.
 
 ### Q4. Which match type fits a discount tier, and which fits a member id?
 
-A design item. Invented tiers start at Rs 0, Rs 1,000, Rs 2,500 and Rs 5,000; an order of Rs 2,700
-needs its tier, and the same sheet looks members up by id.
+Invented tiers start at Rs 0, Rs 1,000, Rs 2,500 and Rs 5,000; an order of Rs 2,700 needs its tier,
+and the same sheet looks members up by id.
 
 The key is b, "Approximate for the tier, and exact for the member id". A tier table holds the lower
 edge of each band, sorted, so "the largest value not above Rs 2,700" is exactly the band the order
@@ -128,10 +131,11 @@ would meet a count of zero and disagree. In Excel, `=COUNTIF(A:A, "C-0195")` rea
   mistake, such as both being given an approximate match type.
 - b, "The lookup's answer compared with the rank column on the very row it returned": the rank sits on the
   row the lookup returned, so a wrong row brings its own consistent rank.
-- d, "The table sorted by id, and the row for the id read off it by eye": a person reading fifty rows
-  in a meeting is not a check that runs every time the sheet changes.
+- d, "Conditional formatting that colours the lookup's cell red whenever it shows #N/A": a different
+  tool, and it reads the lookup's own answer, so it fails with it: an approximate match returns a
+  neighbour with no error, and the cell never turns red.
 
-## Why is option a in item 3, XLOOKUP for every laptop, the wrong answer worth arguing about?
+## Why is XLOOKUP for every laptop (item 3, a) the most tempting wrong answer?
 
 XLOOKUP is the better formula wherever it computes: exact by default, with the not-found words
 built in. The mistake is assuming every laptop that opens the file has it. A lookup that shows #NAME?

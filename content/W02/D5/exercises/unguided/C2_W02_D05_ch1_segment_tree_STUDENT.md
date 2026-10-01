@@ -32,14 +32,14 @@ and the first director who checks the arithmetic stops trusting every page after
 - How many formulas does a SUMIFS grid need once a director asks for the tree by city as well?
 - Which leaf carries most of the gap between a Retail-Plus member's spend and a Retail-Core shopper's?
 - What does an averaged revenue-per-order column read for three invented customers?
-- Which fact would move the tree from a PivotTable to a grid of formulas?
+- Which fact would favour a grid of SUMIFS formulas over a PivotTable for the tree itself?
 - What happens to Q2 when the customer table is split on each customer's last order date?
 - Which check can disagree with the pivot when the pivot is wrong?
 
 Every number in item 3 is invented; items 1, 2 and 5 use the customer table's own shape and
 numbers, and items 4 and 6 use none.
 
-**What you post.** One line of six letters in item order, no spaces, in this shape:
+Post one line of six letters in item order, no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxxx
@@ -84,14 +84,15 @@ b) Rs 1,83,333, since an Average of the column and a ratio of sums agree
 c) Rs 13,00,000, the Sum, and the tree needs Rs 4,33,333
 d) Rs 4,33,333 on the pivot, and the tree needs Rs 4,33,333 too
 
-### Q4. Which fact would move the tree from a PivotTable to a grid of SUMIFS formulas?
+### Q4. Which fact would favour a grid of SUMIFS formulas over a PivotTable for the tree itself?
 
-The team chose a PivotTable for page two, with each leaf computed beside it from the pivot's sums,
-because a director re-slices in the room. Which fact, if it turned out to be true on Monday, would
-move the tree to a grid of SUMIFS formulas?
+The chief of staff's ask says the sheet must recalculate when a director changes an assumption. So
+far every assumption the directors have raised sits in its own input cell beside the tree, and the
+tree's twelve cells read none of them. Which fact, if it turned out to be true on Monday, would
+favour a grid of SUMIFS formulas over a PivotTable for the tree itself?
 
 a) The table grows from 300 rows to 3,000 rows before Monday's first refresh
-b) A director will type an assumption and expect the tree to move at once
+b) A director's typed assumption must move the tree's own cells at once
 c) A director wants the tree sliced by city as well as by segment, in the room
 d) The deck has to open on a laptop that has no login to the warehouse
 
@@ -115,5 +116,5 @@ customers, orders and revenue for each of the four segments?
 
 a) A second PivotTable on the same table, with the fields dragged in another order
 b) The pivot's grand total compared with the sum of its own four segment rows
-c) A COUNTIF and two SUMIFS per segment beside the pivot, on the table's cells
-d) A screenshot of last week's pivot compared with this week's, cell by cell
+c) A COUNTIF and two SUMIFS per segment, beside the pivot, on the table's own cells
+d) A SUM of the table's whole revenue column, compared with the pivot's grand total

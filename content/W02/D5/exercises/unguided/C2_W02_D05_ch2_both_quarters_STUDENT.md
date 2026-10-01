@@ -32,12 +32,12 @@ call a falling segment healthy, which sends the plan after the wrong segment.
 - How many rows does Remove Duplicates leave on the same export, and what does the Sum then show?
 - How many comparisons does the running COUNTIF make on next quarter's export, and what replaces it?
 - Which decision would the pivot on the payment rows have misled for Retail-Core?
-- Which check can disagree with the flagged pivot when the flag is wrong?
-- What do you do when an order-grain export arrives two days after the deck is due?
+- In which order do the four steps run on next quarter's export?
+- What do you do for Monday when an order-grain export arrives two days after the deck is due?
 
 Every number in items 1 and 2 is invented; items 3 to 6 use Kalpa's own export and warehouse.
 
-**What you post.** One line of six letters in item order, no spaces, in this shape:
+Post one line of six letters in item order, no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxxx
@@ -69,10 +69,10 @@ d) 34 rows, and Rs 1,56,000
 
 ### Q3. How many comparisons does the running COUNTIF make on next quarter's export, and what replaces it?
 
-The first-row flag compares each row's order id with every id above it, so row 2 makes one
-comparison, row 3 two, and so on: on today's 1,450 rows that is 1,051,975 comparisons. The data
-team says next quarter's export will have 145,000 rows. About how many comparisons will the flag
-make then, and what should replace it?
+The first-row flag compares each row's order id with every id from the first row down to its own,
+so the first data row makes one comparison, the second two, and so on: on today's 1,450 rows that is
+1,051,975 comparisons. The data team says next quarter's export will have 145,000 rows. About how
+many comparisons will the flag make then, and what should replace it?
 
 a) About 145,000, one a row, so the flag can stay as it is in the sheet
 b) About 10.5 billion, so sort by order id and compare each row with the one above
@@ -83,29 +83,35 @@ d) About 105 million, a hundred times today's, so the flag can stay on a fast la
 
 On the payment rows, the pivot says Retail-Core, Kalpa's everyday shoppers, grew 1.0 percent from Q1
 to Q2. Counted once per order, Retail-Core fell 1.8 percent, from Rs 3,73,070 to Rs 3,66,250. Which
-decision would the first reading have misled?
+decision would that 1.0 percent rise have misled?
 
 a) Leaving Retail-Core out of the growth plan as the segment that needs nothing
-b) Moving Business's invoices into the next quarter to smooth out the company line
-c) Pausing the Student segment's campaigns until the next growth review
-d) Asking Finance to restate Q1 for the whole company before Monday's deck
+b) Cutting Retail-Core's campaign budget, since the pivot showed it shrinking
+c) Asking Finance to restate Retail-Core's Q1, since the books must have missed orders
+d) Funding Retail-Core first, since a 1.8 percent fall is the steepest of the four
 
-### Q5. Which check can disagree with the flagged pivot when the flag is wrong?
+### Q5. In which order do the four steps run on next quarter's export?
 
-The flagged pivot says Q1 is Rs 10,00,00,000 and Q2 is Rs 9,84,00,000. A second route has to share
-none of the flagged pivot's steps, so it can fail when the flag is wrong. Which of these is one?
+Next quarter's payment export arrives, and the tree for both quarters has to reach the deck tied to
+the warehouse. Four steps make it: count the rows against the distinct order ids; flag each order's
+first row; pivot, which sums order_amount by quarter and segment over the flagged rows once a flag
+exists and over every row before that; and tie to the warehouse, which compares the totals that
+exist at that moment with the warehouse's two quarters. Each step runs once, and the deck takes the
+pivot as it stands after the last step. In which order do the steps run?
 
-a) A pivot on the flagged rows with quarter in Rows and segment in Columns
-b) The count of flags compared with the count of rows that carry a 1
-c) The export's paid_amount column, summed by the quarter of each payment date
-d) The warehouse's own orders table, one row per order, summed by quarter
+a) Pivot, tie to the warehouse, count rows against ids, flag first rows
+b) Count rows against ids, flag first rows, pivot, tie to the warehouse
+c) Count rows against ids, pivot, flag first rows, tie to the warehouse
+d) Tie to the warehouse, count rows against ids, flag first rows, pivot
 
-### Q6. What do you do when an order-grain export arrives two days after the deck is due?
+### Q6. What do you do for Monday when an order-grain export arrives two days after the deck is due?
 
 The data platform lead, who owns the warehouse, offers an export with one row per order, which needs
-no flag. It arrives on Wednesday, two days after Monday's growth review. What do you do for Monday?
+no flag, from Wednesday on, two days after Monday's growth review. Today's flag on 1,450 rows ties to
+the warehouse to the rupee, and next quarter's payment export will hold about 145,000 rows. What do
+you do for Monday, and after it?
 
-a) Wait for Wednesday's export and send the tree two days late, since only it is exact
-b) Build Monday's tree on the flag, tie it to the warehouse, and switch on Wednesday
-c) Build Monday's tree from the customer table split on each customer's last order date
-d) Run Remove Duplicates for Monday, and use Wednesday's export only if the totals differ
+a) Wait for Wednesday's export and send the tree two days late, since a flag leaves no record
+b) Send the warehouse's two quarter totals on Monday, and the tree by segment on Wednesday
+c) Build Monday's tree on the flag, and keep the flag every quarter since it tied this time
+d) Build Monday's tree on the flag, tie it to the warehouse, and switch on Wednesday

@@ -18,15 +18,15 @@ analyst who reviews every line, multiplies the leaves back and sends it home.
 
 **The questions on the way.**
 
-- Which idea does the chapter 1 set test: that a tree is only as good as the sums its leaves are divided from?
+- Which skill does the chapter 1 set test?
 - Why does each of the six keys hold, from the formula count to the second route?
-- Why is option d in item 3, the averaged leaf taken as what the tree needs, the wrong answer worth arguing about?
+- Why is the averaged leaf (item 3, d) the most tempting wrong answer?
 - Where does Costco face the same question about its paid tier?
 
-## Which idea does the chapter 1 set test: that a tree is only as good as the sums its leaves are divided from?
+## Which skill does the chapter 1 set test?
 
-A tree on a page has to multiply back to the revenue it explains, and that only happens when every
-leaf is a ratio of two sums: orders over customers, revenue over orders. The design items ask how the
+The skill is building a tree that multiplies back to the revenue it explains, which happens only when
+every leaf is a ratio of two sums: orders over customers, revenue over orders. The design items ask how the
 tree should reach a director (a pivot that re-slices, or formulas that recalculate the moment an
 input changes), which fact would switch that call, and which second route could catch the pivot when
 it is wrong. The other items ask the room to read the leaves, to see what an average of ratios does,
@@ -86,19 +86,22 @@ gives each customer one vote, so two customers with one order each outvote C's t
   answer. Multiply it back and three customers with 12 orders at Rs 4,33,333 make Rs 52,00,000
   against the Rs 22,00,000 the segment sold.
 
-### Q4. Which fact would move the tree from a PivotTable to a grid of SUMIFS formulas?
+### Q4. Which fact would favour a grid of SUMIFS formulas over a PivotTable for the tree itself?
 
-A design item. The pivot was chosen because a director re-slices in the room.
+A design item. The ask already says the sheet must recalculate when a director changes an
+assumption, and so far every assumption sits in an input cell the tree does not read, so the tree can
+stay a pivot while the inputs beside it are formulas.
 
-The key is b, "A director will type an assumption and expect the tree to move at once". A
-PivotTable recalculates only when someone presses Refresh, while a SUMIFS grid recalculates the
-moment a cell it reads changes, so a number fed by a director's input belongs in formulas. Chapter 6
-builds the yellow input cells that take such an assumption.
+The key is b, "A director's typed assumption must move the tree's own cells at once".
+A PivotTable recalculates only when someone presses Refresh and cannot read an input cell at all,
+while a SUMIFS grid recalculates the moment a cell it reads changes. Once an assumption feeds the
+tree's own cells, the tree belongs in formulas. Chapter 6 builds the yellow input cells that take such
+an assumption.
 
 - a, "The table grows from 300 rows to 3,000 rows before Monday's first refresh": a PivotTable handles 3,000
   rows with no change, so size does not switch the call.
-- c, "A director wants the tree sliced by city as well as by segment, in the room": slicing is the reason the
-  pivot was chosen, so it argues for the pivot.
+- c, "A director wants the tree sliced by city as well as by segment, in the room": slicing by any
+  column is what a pivot does with one drag, so this fact argues for the pivot.
 - d, "The deck has to open on a laptop that has no login to the warehouse": both a pivot and a grid open
   without a login, so this rules out a live dashboard and leaves the call where it was.
 
@@ -123,7 +126,7 @@ row per order, which chapter 2 takes from the raw export.
 
 A design item. A second route shares none of the first route's steps.
 
-The key is c, "A COUNTIF and two SUMIFS per segment beside the pivot, on the table's cells".
+The key is c, "A COUNTIF and two SUMIFS per segment, beside the pivot, on the table's own cells".
 The formulas read the table's own cells by a different calculator, so a pivot that summed the wrong
 field, dropped a segment or averaged where it should add would disagree with them. Chapter 1's
 notebook ran the same route in Python, reading the CSV as text and keeping a running total per
@@ -133,13 +136,14 @@ segment, and all twelve cells matched.
   calculator on the same table makes the same mistake twice.
 - b, "The pivot's grand total compared with the sum of its own four segment rows": a pivot's grand
   total is the sum of its rows by construction, so this check cannot fail.
-- d, "A screenshot of last week's pivot compared with this week's, cell by cell": a difference from
-  last week is news about the business, and an unchanged wrong number would pass.
+- d, "A SUM of the table's whole revenue column, compared with the pivot's grand total": a different
+  calculator on the same table, and it checks one number. A pivot that split the segments wrongly or
+  counted the wrong customers still matches the grand total, so eleven of the twelve cells go unchecked.
 
-## Why is option d in item 3, the averaged leaf taken as what the tree needs, the wrong answer worth arguing about?
+## Why is the averaged leaf (item 3, d) the most tempting wrong answer?
 
-It is the answer a careful analyst gives. The analyst saw that the Sum of the column meant nothing, switched to
-Average, and got a number that looks like a basket size. On Kalpa's table the same move reads
+It is the hurried analyst's answer, and it looks careful: the analyst saw that the Sum of the column
+meant nothing, switched to Average, and got a number that looks like a basket size. On Kalpa's table the same move reads
 Business at Rs 11,66,786 an order against revenue over orders of Rs 10,45,740, 11.6 percent high,
 and a director who multiplies 39 customers by 4.82 orders by Rs 11.67 lakh gets Rs 2.28 crore more
 than Business sold. The average of ratios is furthest out where customers differ most in size, and

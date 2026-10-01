@@ -1,6 +1,6 @@
 # What can a director open on Monday without a login, change in the room, and still trust?
 
-**Week 2, Friday. Study notes, read after the session.** Reading time: about 25 minutes.
+**Week 2, Friday. Study notes, read after the session.** Reading time: about 30 minutes.
 
 > "Monday's growth review deck needs three things I can open on my laptop without a login: the
 > revenue tree by segment for both quarters, the top-fifty protect list with a lookup so I can find
@@ -18,9 +18,15 @@ keep the two from drifting apart?"
 
 ## What can you do now that you could not this morning?
 
+**Who needs the answer.** You do, before the take-home has you rebuild all three deliverables on a
+rehearsal copy of the exports, where a half-learned skill shows up as a number you cannot explain.
+
+**The questions on the way.** Can you count each order once and tie a pivot? Can you build a tree, a
+lookup and a card a director reads right, and a workbook that checks itself?
+
 1. You can say what one row of an export stands for, and tie a pivot to the warehouse.
 2. You can build a revenue tree from a pivot's own sums, and multiply it back.
-3. You can count each order once in an export that repeats orders, which Remove Duplicates cannot do.
+3. You can count each order once in an export where Remove Duplicates cannot.
 4. You can build a lookup that says "not in the table", and test it with a missing id.
 5. You can put one number on a front page with its period, comparison and base.
 6. You can say what the warehouse, pandas and the workbook each own, and give a director a workbook
@@ -30,9 +36,15 @@ keep the two from drifting apart?"
 
 ## Where does today sit in the week, and what does each of the chief of staff's numbers measure?
 
-Six chapters on one Kalpa case were worked in full, and the afternoon added the escalated case,
-built alone, and the second case, argued in pairs. Sheet protection that still allows filtering,
-approximate match on price bands, and a running COUNTIF on a far larger export were only named.
+**Who needs the answer.** You do, since each deliverable rests on a query or a table from earlier in
+the week, and a definition you cannot state is one the chief of staff cannot defend.
+
+**The questions on the way.** What did the room work, and what did it only name? What did each day
+build, and what does each deliverable measure?
+
+The room worked six chapters on one Kalpa case in full, built the escalated case alone and argued the
+second case in pairs, and only named sheet protection that still allows filtering, approximate match
+on price bands, and a faster first-row flag for an export a hundred times larger.
 
 ```mermaid
 flowchart LR
@@ -46,24 +58,24 @@ flowchart LR
 
 Monday's queries on the warehouse, the Postgres database of one row per order, put revenue at
 Rs 10,00,00,000 in Q1 (April to June 2026, 538 orders) and Rs 9,84,00,000 in Q2 (July to September
-2026, 462 orders). Tuesday joined orders to payments for Anand Iyer, the finance controller,
-Wednesday ranked members with window functions, and Thursday built one row per customer in pandas.
-
-Revenue is booked order value in rupees, and the revenue tree splits it into three leaves that
-multiply back to it: customers, orders per customer and revenue per order. The segments are
-Retail-Core (everyday shoppers), Retail-Plus (the paid membership tier), Business (corporate buyers
-invoiced in large amounts) and Student. The chief of staff's tree gives each segment's revenue in
-both quarters. The protect list names the fifty Retail-Plus members with the highest revenue, and
-the head of Retail-Plus sends each of them a retention offer. The front-page number is Q2 revenue
-against Q1, with six months as its trend.
-
-Build 1 opens on Monday 19 October in Kalpa Health, where each group's claim needs its number,
-period and base, tied to its source. Which metric belongs on a front page at all is a later week's
-question.
+2026, 462 orders). Revenue is booked order value in rupees, and the revenue tree splits it into leaves that multiply
+back to it: customers, orders per customer and revenue per order. The segments are Retail-Core
+(everyday shoppers), Retail-Plus (the paid membership tier), Business (corporate buyers invoiced in
+large amounts) and Student. The tree gives each segment's revenue in both quarters, the protect list
+names the fifty Retail-Plus members with the highest revenue for a retention offer, and the
+front-page number is Q2 revenue against Q1 with six months as its trend. Build 1 opens on Monday 19
+October in Kalpa Health, where each claim needs its number, period and base; which metric belongs on
+a front page at all is a later week's question.
 
 ---
 
 ## Which one drawing sorts the day, from the warehouse to the director?
+
+**Who needs the answer.** The chief of staff does, since every number in Monday's file travels this
+line, and one that goes wrong on the way reaches a director with no error beside it.
+
+**The questions on the way.** Where can a number go wrong, and what ties the workbook back to the
+warehouse?
 
 ```mermaid
 flowchart LR
@@ -75,12 +87,10 @@ flowchart LR
     class W known
 ```
 
-Every number in the chief of staff's file travels this line, and each box can print a wrong number
-with no error. A leaf can be averaged where it should be divided (chapter 1), the export can repeat
-rows (chapter 2), the workbook can answer for the wrong
-row or add rows nobody sees (chapters 3 and 6), and the director can read a number against the wrong
-period (chapter 4). The dashed arrow ties every number back to the warehouse before a director reads
-it, and chapter 5 decides which step belongs in which box.
+A leaf can be averaged where it should be divided (chapter 1), the export can repeat rows (chapter
+2), the workbook can answer for the wrong row or add rows nobody sees (chapters 3 and 6), and the
+director can read a number against the wrong period (chapter 4). The dashed arrow is the Checks tab
+tying every number back to the warehouse, and chapter 5 decides which step belongs in which box.
 
 ---
 
@@ -92,68 +102,61 @@ to its revenue loses them at the first check.
 
 **The questions on the way.**
 
-1. What does one row of the customer table stand for?
-2. Which way should a director get the tree: a PivotTable, a formula grid, pasted numbers or a live dashboard?
+1. Which way should a director get the tree: a PivotTable, a formula grid, pasted numbers or a live dashboard?
+2. What does one row of the customer table stand for?
 3. Which segment carries the revenue?
 4. Which leaf separates Retail-Plus from Retail-Core?
 5. What does a leaf averaged customer by customer say?
 6. Can this table split Q1 from Q2, and does a second calculator agree with the pivot?
 
-The metric is revenue from April to September 2026, split into the tree's leaves. Costco asks
-Kalpa's question of its own paid tier: Executive members, 38.7 million of 81.0 million paid members,
-made up "approximately 73.6% of worldwide net sales in 2025" (Costco Form 10-K, fiscal 2025,
+Costco asks the same question of its paid tier: Executive members, 38.7 million of 81.0 million paid
+members, made up "approximately 73.6% of worldwide net sales in 2025" (Costco Form 10-K, fiscal 2025,
 sec.gov, checked 30 September 2026).
-
-### What does one row of the customer table stand for?
-
-One row is one customer who ordered in the two quarters. Thursday's table holds 300 rows and 300
-distinct ids, each with that customer's orders and revenue summed, so a pivot's Sum adds each
-customer once.
 
 ### Which way should a director get the tree: a PivotTable, a formula grid, pasted numbers or a live dashboard?
 
 | Option | What it costs on this table |
 |---|---|
-| a) A PivotTable | One pivot and 8 leaf formulas slice any column and recalculate on Refresh. |
-| b) A SUMIFS grid | Its 12 formulas read 3,600 cells and recalculate at once. |
-| c) Pasted values | Nothing on the sheet can answer a new question. |
-| d) A live dashboard | It needs the login the brief rules out. |
+| a) A PivotTable | One pivot and 8 leaf formulas, slicing any column and recalculating on Refresh |
+| b) A SUMIFS grid | Twelve formulas reading 3,600 cells and recalculating at once |
+| c) Pasted values | No formulas, so no new question answered in the room |
+| d) A live dashboard | A login for every director, which the brief rules out |
 
-The call is a, with the leaves beside it as ratios of its sums, because a director re-slices first.
-An assumption to change would switch it to formulas, which recalculate at once.
+The call is a, with each leaf beside it as a ratio of its sums, because a director re-slices first. A
+director who changes an assumption would move what it feeds into formulas, which recalculate at once
+where a pivot waits for Refresh.
+
+### What does one row of the customer table stand for?
+
+One row is one customer who ordered between April and September, Thursday's export: 300 rows hold
+300 distinct ids, so a pivot's Sum adds each customer once.
 
 ### Which segment carries the revenue?
 
-Business carries it: 39 buyers with 188 orders bring in Rs 19,65,99,040, 99.1 percent of the
-half-year, against 0.5 percent for Retail-Plus, 0.4 for Retail-Core and 0.03 for Student.
+Business does: 39 buyers with 188 orders bring in Rs 19,65,99,040, 99.1 percent of the half-year.
 
 ### Which leaf separates Retail-Plus from Retail-Core?
 
-Revenue per order separates them, Rs 2,801 against Rs 1,886, 48.5 percent higher, while orders per
-customer differ by 10 percent, 3.29 against 2.99, so the paid tier fills bigger baskets.
+Revenue per order does, Rs 2,801 against Rs 1,886, 48.5 percent higher, while orders per customer
+differ by 10 percent, 3.29 against 2.99.
 
 ### What does a leaf averaged customer by customer say?
 
-It says Business sells at Rs 11,66,786 an order, the plausible wrong answer, 11.6 percent above
-revenue over orders, Rs 10,45,740. A per-customer `=revenue/orders` column averaged in the pivot
-gives each buyer one vote, while Business baskets run from Rs 3.34 lakh to Rs 66.98 lakh. The check,
-multiplying the leaves back, lands Rs 2.28 crore above what Business sold. The fix divides the
-pivot's sums, since formulas for calculated fields "operate on the sum of the underlying data"
-(Microsoft Support, Calculate values in a PivotTable, checked 30 September 2026), and Business
-returns to Rs 10,45,740 with its tree tied to the rupee.
+It says Business sells at Rs 11,66,786 an order, 11.6 percent above revenue over orders, Rs 10,45,740:
+the plausible wrong answer. A per-customer `=revenue/orders` column averaged in the pivot gives each
+buyer one vote, and Business baskets run from Rs 3.34 lakh to Rs 66.98 lakh. Multiplying the leaves
+back catches it, Rs 2.28 crore above what Business sold, and the fix divides the pivot's sums, as a
+calculated field does: such fields "operate on the sum of the underlying data" (Microsoft Support,
+Calculate values in a PivotTable, checked 30 September 2026).
 
 ### Can this table split Q1 from Q2, and does a second calculator agree with the pivot?
 
-It cannot split them: last_order_date is a recency, and a split on it puts Rs 17.88 crore in Q2
-against Monday's Rs 9.84 crore. A second calculator agrees: a running total per segment, read from
-the CSV with Python's csv module, matches all 12 cells, as a COUNTIF and two SUMIFS per segment
-would in Excel.
+The table cannot split them, since last_order_date is a recency and a split on it puts Rs 17.88 crore
+in Q2. A running total per segment, read from the CSV with Python's csv module, matches all 12 cells
+of the pivot.
 
-> **Kavya's review.** "Say what one row is before you pivot, and make every leaf a ratio of the
-> pivot's own sums, then multiply the tree back before it goes on a page."
-
-Business carries 99.1 percent of the revenue, and the basket separates the consumer tiers, Rs 2,801
-an order against Rs 1,886. Both quarters need the export that carries order dates.
+Business carries 99.1 percent of the revenue and the basket separates the consumer tiers; the
+quarters need the export with order dates.
 
 ---
 
@@ -165,49 +168,47 @@ directors.
 
 **The questions on the way.**
 
-1. Which quarter does each row of the export belong to?
+1. Which way should the team split revenue by quarter, and what does each way cost?
 2. What does the pivot say for Q1 and Q2?
 3. Why does it read nearly double, and does Remove Duplicates fix it?
 4. What does the tree say when each order counts once?
 5. Which segment and which leaf fell?
 6. Does the warehouse reach the same quarters by its own route?
 
-The metric is revenue by quarter, tied to Monday's warehouse. The raw export has 1,450 rows of
-order_id, customer_id, segment, channel, order_date, order_amount, paid_amount and paid_date.
+The raw export carries the order dates, in 1,450 rows that include order_amount and paid_amount.
 Razorpay, the payment gateway, says its orders feature "Combines multiple payment attempts for a
 single order" (Razorpay documentation, Orders, checked 30 September 2026).
 
-### Which quarter does each row of the export belong to?
+### Which way should the team split revenue by quarter, and what does each way cost?
 
 | Option | What it costs here |
 |---|---|
-| a) Split the customer table on last order date | It moves Rs 8.04 crore of Q1 revenue into Q2. |
-| b) A SUMIFS grid per segment and quarter | Its 8 formulas run 34,800 tests and slice nothing else. |
-| c) A quarter column, then the pivot | Its 1,450 formulas run once, and any column can slice it. |
-| d) The warehouse team's tree | It is exact, and each new question waits a day. |
+| a) Split the customer table on last order date | Rs 8.04 crore of Q1 revenue moved into Q2 |
+| b) A SUMIFS grid per segment and quarter | Eight formulas running 34,800 tests and slicing nothing else |
+| c) A quarter column, then the pivot | One formula filled down 1,450 rows, after which any column slices it |
+| d) The warehouse team's tree | An exact answer, with a day's wait for each new question |
 
-The call is c: `=IF(MONTH(E2)<=6,"Q1","Q2")` filled down puts 772 rows in Q1 and 678 in Q2. A
-deadline far enough away for the warehouse team would switch it to d.
+The call is c: `=IF(MONTH(E2)<=6,"Q1","Q2")` puts 772 rows in Q1 and 678 in Q2. A deadline far
+enough away for the warehouse team would switch it to d.
 
 ### What does the pivot say for Q1 and Q2?
 
 It says Rs 19,94,36,150 for Q1 and Rs 19,46,59,340 for Q2, Rs 39,40,95,490 in all, with Retail-Core
-up 1.0 percent. That is the plausible wrong answer, nearly twice Finance's Rs 9.84 crore for Q2, and
-nothing on the sheet is red.
+up 1.0 percent: the plausible wrong answer, nearly twice Finance's Rs 9.84 crore for Q2, with
+nothing on the sheet red.
 
 ### Why does it read nearly double, and does Remove Duplicates fix it?
 
-One row is one payment, the order's amount repeated on each, and the check is rows against order
-ids, 1,450 against 1,000. Four hundred instalment orders have two rows that differ in paid_amount,
-and fifty gateway double posts have two identical rows, so Remove Duplicates removes only those
-fifty, Rs 37,750, and 1,400 rows still total Rs 39,40,57,740.
+One row is one payment, the order's amount repeated on each; the check is rows against order ids,
+1,450 against 1,000. Four hundred instalment orders have two rows that differ in paid_amount and
+fifty gateway double posts two identical rows, so Remove Duplicates drops only the fifty copies,
+Rs 37,750, and 1,400 rows still total Rs 39,40,57,740.
 
 ### What does the tree say when each order counts once?
 
 It says Q1 Rs 10,00,00,000 and Q2 Rs 9,84,00,000, down 1.6 percent, tied to the rupee. The first-row
-flag, `=IF(COUNTIF($A$2:A2,A2)=1,1,0)`, takes Rs 19,56,95,490 out of the total and turns Retail-Core
-from up 1.0 percent to down 1.8. The export repeated each order once per payment, the same shape
-Tuesday's join of orders to payments produced in SQL.
+flag, `=IF(COUNTIF($A$2:A2,A2)=1,1,0)`, compares each row with every row from the first down to its
+own, takes Rs 19,56,95,490 out of the total and turns Retail-Core from up 1.0 percent to down 1.8.
 
 ### Which segment and which leaf fell?
 
@@ -220,19 +221,15 @@ Tuesday's join of orders to payments produced in SQL.
 
 Business carries Rs 14,29,840 of the Rs 16,00,000 fall, a few invoices landing in one quarter or the
 next. Retail-Plus fell steepest: customers who ordered went from 91 to 76 and orders per customer
-from 2.36 to 1.84, the frequency branch Week 1 found, while the basket rose from Rs 2,725 to
-Rs 2,953.
+from 2.36 to 1.84, Week 1's frequency branch, while the basket rose from Rs 2,725 to Rs 2,953.
 
 ### Does the warehouse reach the same quarters by its own route?
 
-It does. Monday's `SELECT quarter, count(*), sum(amount) FROM orders GROUP BY quarter`, which never
+It does: Monday's `SELECT quarter, count(*), sum(amount) FROM orders GROUP BY quarter`, which never
 saw the export, gives Rs 10,00,00,000 on 538 orders and Rs 9,84,00,000 on 462.
 
-> **Kavya's review.** "Say the grain before you pivot, count rows against ids, and tie the grand
-> total to the warehouse before the pivot goes anywhere."
-
-Revenue fell Rs 16,00,000, 1.6 percent. Business carries Rs 14.30 lakh of it, and Retail-Plus fell
-steepest, 29.4 percent, because its members ordered less often.
+Revenue fell 1.6 percent, mostly Business rupees, and Retail-Plus fell steepest because its members
+ordered less often.
 
 ---
 
@@ -244,67 +241,64 @@ wrong row calls a lapsed member one of the best.
 
 **The questions on the way.**
 
-1. Who makes the list, and where does it stop?
-2. Does the list's source table tie to the warehouse?
-3. Which lookup should answer "find this member"?
+1. Which lookup should answer "find this member"?
+2. Who makes the list, and where does it stop?
+3. Does the list's source table tie to the warehouse?
 4. What does a lookup with its fourth argument left out return for an id the table does not hold?
 5. What does an exact match with a not-found path return, and what if the list is re-sorted?
 6. Does an independent count agree with the lookup?
 
-The metric is each member's revenue from April to September, cut off at fifty. In 2003 TransAlta
-lost 24 million US dollars on New York transmission bids after "a cut-and-paste error in an Excel
-spreadsheet that we did not detect when we did our final sorting and ranking of bids" (The Globe and
+In 2003 TransAlta lost 24 million US dollars on New York transmission bids after "a cut-and-paste
+error in an Excel spreadsheet" missed in "our final sorting and ranking of bids" (The Globe and
 Mail, 4 June 2003, checked 30 September 2026).
+
+### Which lookup should answer "find this member"?
+
+| Option | What it does for an id with no row |
+|---|---|
+| a) `=VLOOKUP(id, A:F, 5)` | Another member's row, with nothing red |
+| b) `=VLOOKUP(id, A:F, 5, FALSE)` | #N/A, which a director reads as a broken sheet |
+| c) `=IFERROR(INDEX(E:E, MATCH(id, A:A, 0)), "not in the table")` | "not in the table", in any Excel |
+| d) `=XLOOKUP(id, A:A, E:E, "not in the table")` | The same words, in Excel 2021, 2024 or Microsoft 365 |
+
+The call is d on the room's Microsoft 365 and c wherever the file travels, since XLOOKUP "is not
+available in Excel 2016 and Excel 2019" (Microsoft Support, XLOOKUP function, checked 30 September
+2026). The Excel version on the chief of staff's laptop decides between them.
 
 ### Who makes the list, and where does it stop?
 
-The list takes fifty of the 106 Retail-Plus members, ranked with `=RANK.EQ(E2, E$2:E$107)`, from
-C-0152 at Rs 25,840 down to a cut-off of Rs 8,580. The fifty-first spent Rs 8,520, so no tie crosses
-the line, and the fifty together spent Rs 7,14,890.
+Fifty of the 106 Retail-Plus members make it, ranked with `=RANK.EQ(E2, E$2:E$107)`, from C-0152 at
+Rs 25,840 down to a cut-off of Rs 8,580. The fifty-first spent Rs 8,520, so no tie crosses the line,
+and the fifty together spent Rs 7,14,890.
 
 ### Does the list's source table tie to the warehouse?
 
 That answer is yours. The list comes from the customer table, which has to tie on its own before the
 list ships, and chapter 3's notebook leaves an empty cell for the comparison.
 
-### Which lookup should answer "find this member"?
-
-| Option | What it does for an id with no row |
-|---|---|
-| a) `=VLOOKUP(id, A:F, 5)` | It returns another member's row. |
-| b) `=VLOOKUP(id, A:F, 5, FALSE)` | It shows #N/A, which a director reads as a broken sheet. |
-| c) `=IFERROR(INDEX(E:E, MATCH(id, A:A, 0)), "not in the table")` | It says "not in the table" in any Excel. |
-| d) `=XLOOKUP(id, A:A, E:E, "not in the table")` | It says the same, in Excel 2021, 2024 or Microsoft 365. |
-
-The call is d on the room's Microsoft 365 and c wherever the file travels, since XLOOKUP "is not
-available in Excel 2016 and Excel 2019" (Microsoft Support, XLOOKUP function, checked 30 September
-2026). The Excel version on the chief of staff's laptop decides between them.
-
 ### What does a lookup with its fourth argument left out return for an id the table does not hold?
 
-It returns C-0194's Rs 16,740, rank 15 on the list, and nothing turns red: the plausible wrong
-answer. C-0195, a Retail-Plus member with no orders in the two quarters, has no row, and the fourth
-argument left out means "TRUE or approximate match" (Microsoft Support, VLOOKUP function, checked 30
-September 2026), the largest id not above the one asked for. The check is to test with an id you
-know is missing.
+It returns C-0194's Rs 16,740, rank 15 on the list, with nothing red: the plausible wrong answer.
+C-0195, a Retail-Plus member with no orders in the two quarters, has no row, and the fourth argument
+left out means "TRUE or approximate match" (Microsoft Support, VLOOKUP function, checked 30 September
+2026), the largest id not above the one asked for. The check tests with an id you know is missing
+and prints the id returned beside the id asked for.
 
 ### What does an exact match with a not-found path return, and what if the list is re-sorted?
 
-It returns "not in the table" for C-0195, so its line changes from rank 15 to a prompt to check the
-export, while C-0152 and C-0194 keep Rs 25,840 and Rs 16,740. It answers the same in any order,
-which matters because the list sorted by revenue steps down in id 24 times in 49.
+It returns "not in the table" for C-0195 and keeps Rs 25,840 for C-0152 and Rs 16,740 for C-0194, in
+any order; the list sorted by revenue steps down in id 24 times in 49, and an approximate match
+needs its first column sorted.
 
 ### Does an independent count agree with the lookup?
 
-It does: `=COUNTIF(A:A, "C-0195")` gives 0, and `=SUMIFS(E:E, A:A, "C-0152")` gives Rs 25,840.
-Approximate match belongs to bands, where Rs 2,700 against invented tiers at Rs 0, Rs 1,000 and
-Rs 2,500 falls in the Rs 2,500 tier.
+The warehouse's own orders, which never saw the customer table, agree: none for C-0195, and
+Rs 25,840 for C-0152. With no login, the same check in Excel is a COUNTIF of the id in the raw
+export's customer column. Approximate match is built for bands: Rs 2,700 against invented tiers at
+Rs 0, Rs 1,000 and Rs 2,500 falls in the Rs 2,500 tier.
 
-> **Kavya's review.** "A lookup that answers with somebody else's row is worse than no lookup,
-> because nobody in the room can tell."
-
-The fifty run from Rs 25,840 to Rs 8,580, and the sheet answers for the member typed in only through
-an exact match with a not-found path. The list ships once its source ties.
+The fifty run from Rs 25,840 to Rs 8,580, the sheet answers for the member typed in only through an
+exact match with a not-found path, and the list ships once its source ties.
 
 ---
 
@@ -316,34 +310,34 @@ happened.
 
 **The questions on the way.**
 
-1. What does a director read in a card that says "Revenue Rs 19.84 crore"?
-2. Which form should the card take?
+1. Which form should the card take?
+2. What does a director read in a card that says "Revenue Rs 19.84 crore"?
 3. What does the card say with its period, comparison and base?
 4. What does "Retail-Plus revenue down 29.4 percent" leave out?
 5. What does the trend beside the number show, and what happens when a director changes the scope?
 6. Does the warehouse reach the same change by its own route?
 
-The metric is Q2 revenue against Q1. Avenue Supermarts, which runs DMart, headlined its quarter to
-30 June 2025 as "Standalone Total Revenue up by 16.2% at Rs.15,932 Crore", against Rs 13,712 crore a
-year earlier (Avenue Supermarts press release, 11 July 2025, checked 30 September 2026).
-
-### What does a director read in a card that says "Revenue Rs 19.84 crore"?
-
-A director reads revenue up 98.4 percent: the two quarters added and set against Q1's Rs 10.00
-crore, while revenue fell 1.6 percent. The check is to read the card aloud and ask which months, and
-against what; the fix puts the period and the comparison on the card.
+Avenue Supermarts, which runs DMart, headlined its quarter to 30 June 2025 as "Standalone Total
+Revenue up by 16.2% at Rs.15,932 Crore", against Rs 13,712 crore a year earlier (Avenue Supermarts
+press release, 11 July 2025, checked 30 September 2026).
 
 ### Which form should the card take?
 
 | Option | What a director must bring to read it right |
 |---|---|
-| a) "Revenue Rs 19.84 crore" | The director must know it covers two quarters. |
-| b) "Q2 revenue Rs 9.84 crore" | The director must remember Q1's figure. |
-| c) Q2 against Q1, both figures shown | The director needs nothing else. |
-| d) c, with a sentence and a six-month line | The director needs nothing, and the next question is answered. |
+| a) "Revenue Rs 19.84 crore" | The knowledge that it covers two quarters |
+| b) "Q2 revenue Rs 9.84 crore" | Q1's figure, from memory |
+| c) Q2 against Q1, both figures shown | Nothing |
+| d) c, with a sentence and a six-month line | Nothing, and the next question answered too |
 
 The call is d, about fifty words and one small line chart. A board that reviews every month against
 its plan would switch the comparison to the plan.
+
+### What does a director read in a card that says "Revenue Rs 19.84 crore"?
+
+A director reads revenue up 98.4 percent, the two quarters added and set against Q1's Rs 10.00 crore,
+when revenue fell 1.6 percent. The check reads the card aloud and asks which months, and against
+what; the fix puts the period and the comparison on the card.
 
 ### What does the card say with its period, comparison and base?
 
@@ -354,11 +348,11 @@ frequency.
 
 ### What does "Retail-Plus revenue down 29.4 percent" leave out?
 
-It leaves out its base and its share: the fall is Rs 1.72 lakh on Rs 5.86 lakh, and Retail-Plus is
-0.4 percent of Q2 revenue. Divided by Q2 by mistake, it reads 41.7 percent. The check puts rupees
-and a share beside every percentage, and the fix reads "Retail-Plus, Q2: Rs 4.13 lakh, down 29.4
-percent on Q1 (Rs 5.86 lakh); 0.4 percent of company revenue". A share moves in points: the consumer
-share went from 0.99 percent to 0.83, down 0.16 points, a 16 percent fall in the share.
+It leaves out its base and its share: Rs 1.72 lakh on Rs 5.86 lakh, 0.4 percent of Q2 revenue, and
+divided by Q2 by mistake the same change reads 41.7 percent. The check puts rupees and a share beside
+every percentage, and the fix reads "Retail-Plus, Q2: Rs 4.13 lakh, down 29.4 percent on Q1
+(Rs 5.86 lakh); 0.4 percent of company revenue". A share moves in points: the consumer share went
+from 0.99 percent to 0.83, down 0.16 points, a 16 percent fall in the share.
 
 ### What does the trend beside the number show, and what happens when a director changes the scope?
 
@@ -368,53 +362,51 @@ revenue fell from Rs 9.86 lakh to Rs 8.15 lakh, down 17.3 percent, so each card 
 
 ### Does the warehouse reach the same change by its own route?
 
-It does: the warehouse's orders, joined to its customers, give -1.6 percent for the company and
+The warehouse's orders, joined to its customers, give the same -1.6 percent for the company and
 -29.4 percent for Retail-Plus.
 
-> **Kavya's review.** "If the card cannot say which months, against what and out of how much, it goes
-> back."
-
-Beside the number sit its period, comparison and base: Q2, Rs 9.84 crore, down 1.6 percent on Q1's
+Beside Rs 9.84 crore sit its period, Q2, its comparison, down 1.6 percent, and its base, Q1's
 Rs 10.00 crore, with rupees beside every percentage.
 
 ---
 
 ## Chapter 5. Which of the week's steps belong in the workbook, which must never be done there, and how do the two stay in step?
 
-**Who needs the answer.** Kavya signs the team's operating rule, and Anand Iyer's analyst audits
-every number Finance relies on; a join done in the wrong tool reports paid money as unpaid.
+**Who needs the answer.** Kavya signs the team's operating rule, and an analyst of Anand Iyer, the
+finance controller, audits every number Finance relies on; a join done in the wrong tool reports paid
+money as unpaid.
 
 **The questions on the way.**
 
-1. What did each day of the week build, and what does each step touch?
-2. Where could the week's work live?
+1. Where could the week's work live?
+2. What did each day of the week build, and what does each step touch?
 3. What does booked against collected say when a lookup does the join?
 4. Why is it wrong, and what does adding every payment say?
 5. Where does each of the week's steps belong?
 6. How do the workbook and the warehouse stay in step?
 
-The test case is Tuesday's booked against collected, one order joined to several payments. Public
-Health England reported in October 2020 that "15,841 cases between 25 September and 2 October were
-not included in the reported daily COVID-19 cases" (GOV.UK, 4 October 2020, checked 30 September
-2026), after a step of its pipeline ran through spreadsheet templates.
-
-### What did each day of the week build, and what does each step touch?
-
-Monday's tree and Wednesday's top fifty read the orders table, Thursday merged in pandas, and Friday
-reads the exports. Tuesday's booked against collected joins 1,000 orders to 1,428 payments, the one
-step where one row meets several.
+The test case is Tuesday's booked against collected: the value of the orders against the money
+received for them. Public Health England reported in October 2020 that "15,841 cases between 25
+September and 2 October were not included in the reported daily COVID-19 cases" (GOV.UK, 4 October
+2020, checked 30 September 2026), after a step of its pipeline ran through spreadsheet templates.
 
 ### Where could the week's work live?
 
 | Option | What collected per order costs |
 |---|---|
-| a) Everything in the workbook | It runs 1,450,000 tests a recalculation, rerun by hand. |
-| b) The split: the warehouse computes, pandas iterates, the workbook presents | It runs one GROUP BY over 1,428 payments that anyone can rerun. |
-| c) pandas pastes values | It runs one groupby, and nothing recalculates in the room. |
-| d) A dashboard on the warehouse | It runs a query a view, and every director needs a login. |
+| a) Everything in the workbook | 1,450,000 tests a recalculation, rerun by hand |
+| b) The split: the warehouse computes, pandas iterates, the workbook presents | One GROUP BY over 1,428 payment rows, rerun by anyone |
+| c) pandas pastes values | One groupby, and nothing that recalculates in the room |
+| d) A dashboard on the warehouse | One query a view, and a login for every director |
 
-The call is b. A one-off question that nobody audits or reruns would switch it, since such a
+The call is b. Only a one-off question that nobody audits or reruns would switch it, since such a
 question can live in a sheet.
+
+### What did each day of the week build, and what does each step touch?
+
+Monday's tree and Wednesday's top fifty read the orders table, Thursday merged in pandas, and Friday
+reads the exports. Tuesday's booked against collected is the one step where one row meets several:
+1,000 orders joined to 1,428 payment rows, 8 of which match no order.
 
 ### What does booked against collected say when a lookup does the join?
 
@@ -424,30 +416,32 @@ Anand's team would chase Rs 8 crore from accounts that have paid.
 
 ### Why is it wrong, and what does adding every payment say?
 
-A lookup stops at the first matching row, and 450 orders have two payment rows; the check counts
-rows per order. Adding every payment, with `=SUMIFS(G:G, A:A, A2)` as a check and the join in the
-warehouse, gives Rs 19,66,82,820, Rs 17,17,180 short, 0.9 percent, so Rs 7,83,00,846 of
-"outstanding" disappears. The warehouse's own join agrees to the rupee.
+A lookup stops at the first matching row, and 450 orders have two payment rows: 400 instalment
+orders, whose second payment it never reads, and 50 gateway copies, one payment posted twice. The
+check counts rows per order. The fix adds every payment once: drop the 50 copies, add the rows left
+with `=SUMIFS(G:G, A:A, A2)`, and keep the join itself in the warehouse. Collected is Rs 19,66,45,070,
+Rs 17,54,930 short of booked, 0.9 percent, exactly Tuesday's unpaid list of 30 orders, and
+Rs 7,82,63,096 of "outstanding" disappears, the second instalments of the 400 instalment orders. The
+second route never adds a payment: booked less the orders with no payment in the warehouse, found
+with an anti-join (NOT EXISTS), gives the same Rs 19,66,45,070.
 
 ### Where does each of the week's steps belong?
 
-The warehouse owns the number and every join, dedupe and rank Finance relies on, counting each order
-once among them. pandas owns the analyst's iteration until Finance relies on it. The workbook owns
-the last mile, presenting, slicing, looking up and taking labelled what-ifs on an export that ties,
-and nobody types over the source.
+The warehouse owns the number and every join, dedupe and rank Finance relies on. pandas owns the
+analyst's iteration until Finance relies on it. The workbook owns the last mile, presenting,
+slicing, looking up and taking labelled what-ifs on an export that ties, and nobody types over the
+source.
 
 ### How do the workbook and the warehouse stay in step?
 
-A drift check on every refresh ties the workbook's orders and revenue per quarter to the
-warehouse's: today's export ships, and the same export pulled a week early falls short in Q2 and is
-held. Public Health England's templates, in a format with "a maximum of 65,536 rows per worksheet"
-(Microsoft Learn, checked 30 September 2026), dropped rows without an error.
+A drift check on the workbook's Checks tab keeps them in step. A workbook with no login cannot query
+the warehouse, so the data platform lead sends the warehouse's control totals, orders and booked
+revenue per quarter, on a small tab beside each export, and the Checks tab compares the workbook's
+totals with them, live. Today's export ships, the same export pulled a week early falls short in Q2
+and is held, and a figure typed over in the workbook breaks the match as soon as it is typed.
 
-> **Kavya's review.** "The warehouse owns the numbers, pandas owns your iteration, Excel owns the last
-> mile, and the drift check keeps the last mile honest."
-
-Joins, dedupes and ranks stay in the warehouse, where collected is Rs 17,17,180 short of booked; the
-workbook presents, and a drift check keeps the two in step.
+Joins, dedupes and ranks that Finance relies on stay in the warehouse, where collected is
+Rs 17,54,930 short of booked; the workbook presents, tied to the control totals by a live check.
 
 ---
 
@@ -458,56 +452,57 @@ in the room, and a total that counts rows a filter has hidden sizes it on the wh
 
 **The questions on the way.**
 
-1. What will a director do to the workbook?
-2. How could the team protect it?
+1. How could the team protect the workbook?
+2. What will a director do to the workbook?
 3. What does the list's total say when a director filters it to one city?
 4. What do SUBTOTAL(109) and SUBTOTAL(103) say?
 5. Where does a director's assumption go, so the sheet recalculates honestly?
 6. Which checks does the Checks tab run, and what does its release hold?
 
-The metric is the list's total by city, which sizes each city's budget. In 2008 a law firm
-reformatting Barclays's purchase of Lehman Brothers contracts into a PDF exposed hidden rows, and
-Barclays asked the court to exclude 179 contracts (Computerworld, 14 October 2008, checked 30
-September 2026).
+In 2008 a law firm reformatting Barclays's purchase of Lehman Brothers contracts into a PDF exposed
+hidden rows, and Barclays asked the court to exclude 179 contracts (Computerworld, 14 October 2008,
+checked 30 September 2026).
+
+### How could the team protect the workbook?
+
+| Option | What a wrong number looks like |
+|---|---|
+| a) Protect every cell | Nothing goes wrong, and no what-if can be asked |
+| b) Send a PDF | Nothing goes wrong, and nothing recalculates |
+| c) Yellow inputs, formulas elsewhere, a Checks tab | A red check, and a release that holds |
+| d) A copy for each director | Copies that disagree by the end of the meeting |
+
+The call is c, the only way a director can filter, sort, type and ask what-ifs and still see a wrong
+number turn red. A board pack nobody is meant to change would go as a PDF.
 
 ### What will a director do to the workbook?
 
 A director will filter, sort, type over a cell, change an assumption and paste in a new export. A
 filter under a SUM, a one-column sort and a typed-over formula change a number's meaning with no
-error, while a yellow input cell, the one kind a director is meant to change, recalculates in the
-open.
-
-### How could the team protect it?
-
-| Option | What a wrong number looks like |
-|---|---|
-| a) Protect every cell | Nothing goes wrong, and no what-if can be asked. |
-| b) Send a PDF | Nothing goes wrong, and nothing recalculates. |
-| c) Yellow inputs, formulas elsewhere, a Checks tab | A check turns red and the release holds. |
-| d) A copy for each director | The copies disagree by the end of the meeting. |
-
-The call is c, the only way a director can do all five things and still see a wrong number turn red.
-A board pack nobody is meant to change would go as a PDF.
+error, while a yellow input recalculates in the open.
 
 ### What does the list's total say when a director filters it to one city?
 
 It still says Rs 7,14,890, the whole list, while the eleven Mumbai members on screen spent
-Rs 1,56,790: the plausible wrong answer from `=SUM(E2:E51)`, which adds hidden rows and would size a
-Mumbai budget 4.6 times too big. The check counts rows on screen against rows the total adds, and
-the fix is Excel's SUBTOTAL function.
+Rs 1,56,790: the plausible wrong answer from `=SUM(E2:E51)`, which would size a Mumbai budget 4.6
+times too big. The check counts rows on screen against rows the total adds.
 
 ### What do SUBTOTAL(109) and SUBTOTAL(103) say?
 
-`=SUBTOTAL(109, E2:E51)` reads Rs 1,56,790 and `=SUBTOTAL(103, A2:A51)` counts 11 of 50, because
+`=SUBTOTAL(109, E2:E51)` reads Rs 1,56,790 and `=SUBTOTAL(103, A2:A51)` counts 11 of 50, since
 SUBTOTAL "ignores any rows that are not included in the result of a filter" (Microsoft Support,
-SUBTOTAL function, checked 30 September 2026). The second route,
-`=SUMIFS(E2:E51, C2:C51, "Mumbai")`, agrees.
+SUBTOTAL function, checked 30 September 2026).
 
 | The foot | Rows a filter hides | Rows hidden by hand |
 |---|---|---|
-| `SUM` | It adds them. | It adds them. |
-| `SUBTOTAL(9, ...)` | It leaves them out. | It adds them. |
-| `SUBTOTAL(109, ...)` | It leaves them out. | It leaves them out. |
+| `SUM` | Added | Added |
+| `SUBTOTAL(9, ...)` | Left out | Added |
+| `SUBTOTAL(109, ...)` | Left out | Left out |
+
+The second route, `=SUMIFS(E2:E51, C2:C51, "Mumbai")`, reads the city and never the screen, so it
+agrees at Rs 1,56,790 while only the filter is on. With Mumbai's smallest member, Rs 9,390, also
+hidden by hand, SUBTOTAL(109) drops to Rs 1,47,400 and SUMIFS holds Rs 1,56,790, and the gap says the
+screen shows less than the whole city.
 
 ### Where does a director's assumption go, so the sheet recalculates honestly?
 
@@ -519,50 +514,52 @@ Mumbai's eleven, and Rs 750 makes it Rs 8,250 in front of the room, with the lis
 The tab runs five: the tree's quarters and the list's source against the warehouse, the lookup on a
 known missing id, SUBTOTAL(103) against the rows the foot adds, and ISFORMULA outside the yellow
 inputs. On invented records, a source Rs 1,200 short gives "Hold the protect list; ship the rest",
-and a typed-over formula holds the whole workbook.
+and a typed-over formula holds the whole workbook. Formulas recalculate whether or not their inputs
+tie, so the release reads the checks.
 
-> **Kavya's review.** "A director who filters, sorts or asks a what-if should see the right numbers
-> move, and see a wrong one turn red before anyone reads it out."
-
-SUBTOTAL at the foot, yellow inputs and five checks catch the breaks the chapter staged, and
-filtered to Mumbai the foot reads Rs 1,56,790 for eleven members.
-
----
-
-## What does the escalated case ask, and which rule does it test?
-
-Alone, you build the chief of staff's file from the two exports in five parts: does the tree tie,
-does the list hold the right fifty with an honest lookup, does the card carry its period, comparison
-and base, what ships and what, if anything, is held, and do the numbers agree a second way. It tests the release:
-each part ships on its own check, and a part whose check fails is held with its reason.
-
-## What does the second case ask, and which rule does it test?
-
-In pairs, a director asks: "Retail-Plus will be back at five lakh next quarter; I have spoken to the
-team. Type five lakh into Q2 so the card stops frightening people, and fix the source later." It
-tests chapter 5's rule under pressure: yes to the question, no to the edit.
+A director's filter, one-column sort or typed-over formula changes a number with no error, and
+SUBTOTAL at the foot, Rs 1,56,790 for Mumbai's eleven, with five checks feeding one release, catches
+each before it is read.
 
 ---
 
-## Where do today's checks decide something at work?
+## What do the afternoon's two cases ask, and which rule does each test?
 
-- When a dashboard disagrees with Finance's report, the first minute goes on rows against keys.
-- When someone reads names off a ranked list in a meeting, its lookup has been tried on a missing id.
-- When a stakeholder asks for "the spreadsheet", they get inputs and checks, and the joins stay
-  upstream.
+**Who needs the answer.** The chief of staff does on Monday, when the file has to say what ships and
+a director asks for a figure the source does not hold.
+
+**The questions on the way.** What does each case ask, and which rule settles it?
+
+Alone, the escalated case builds the chief of staff's file from the two exports in five parts: does
+the tree tie, does the list hold the right fifty with an honest lookup, does the card carry its
+period, comparison and base, what ships and what, if anything, is held, and do the numbers agree a
+second way. It tests the release, where each part ships on its own check and a part whose check
+fails is held with its reason.
+
+In pairs, the second case meets a director who wants five lakh typed into Retail-Plus's Q2 "so the
+card stops frightening people", and the source fixed later. It tests chapter 5's rule under
+pressure: the director's figure belongs in a yellow input, and the source stays Finance's.
 
 ---
 
 ## Can you answer four questions on today's traps without writing anything?
 
+**Who needs the answer.** You do, tonight, since each miss names the chapter to reread before the
+take-home rebuilds all three deliverables on new data.
+
+**The questions on the way.** What comes first when a pivot reads double? What made a lookup answer
+for a missing member? Which Retail-Plus line can go on a front page? What sits at a foot that ignores
+a filter?
+
 Pick a letter for each, then check the key.
 
 1. An export holds 1,450 rows for 1,000 order ids, and its pivot reads nearly twice the warehouse.
-   What comes first? a) Remove Duplicates on every column; b) a first-row flag, then a tie to the
-   warehouse; c) the total divided by 1.45; d) Business filtered out.
+   What comes first? a) Remove Duplicates with every column ticked, then a fresh pivot; b) a first-row
+   flag, then a tie to the warehouse; c) the total divided by 1.45; d) Business filtered out.
 2. `=VLOOKUP("C-0195", A2:F301, 5)` returns Rs 16,740 for a member with no row. What is at fault?
-   a) the quotes around the id; b) the column number; c) the range; d) the fourth argument, left out.
-3. Which Retail-Plus line can go on the front page? a) down 41.7 percent, measured on Q2's
+   a) the quotes around the id; b) the column number; c) the range, which ends at row 301; d) the
+   fourth argument, left out.
+3. Which Retail-Plus line can go on the front page? a) down 41.7 percent, measured against Q2's
    Rs 4.13 lakh; b) down 29.4 percent, the steepest fall of the four; c) Rs 4.13 lakh, down 29.4
    percent on Q1's Rs 5.86 lakh; d) a sharp fall in Q2 as members left the paid tier.
 4. Filtered to eleven Mumbai members, the list's foot still reads Rs 7,14,890. What sits at the
@@ -575,108 +572,136 @@ met again inside an export.
 
 ## What will an interviewer ask, and what does a strong answer sound like?
 
+**Who needs the answer.** An interviewer at a GCC or product company does, and an answer with no
+number from your own file in it costs you the question.
+
+**The questions on the way.** How would you answer the five anchors, and the seven follow-ups on the
+day's traps?
+
 The tags are this programme's own calibration for 0 to 3 year Indian-market candidates: [S] a staple
 asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator. The first five are
 the day's anchors, and a strong answer gives the mechanism, the check, Kalpa's number and the
 decision.
 
-**[S] SQL, pandas or Excel: how do you choose?** I choose by who must trust the number and who must
-rerun it: SQL in the warehouse for anything Finance audits or that joins, dedupes or ranks, pandas
-for the analyst's iteration, Excel for the room on an export that ties. A sheet doing Kalpa's join
-reported Rs 8.00 crore outstanding where the warehouse's join leaves Rs 17,17,180.
+**[S] SQL, pandas or Excel: how do you choose?** By who must trust the number and who must rerun it:
+anything Finance relies on, with every join, dedupe or rank behind it, goes in SQL in the warehouse;
+the analyst's iteration stays in pandas until Finance relies on it, as Thursday's customer table did;
+the last mile goes in Excel, on an export that ties. A sheet doing Kalpa's join reported Rs 8.00
+crore outstanding where the warehouse leaves Rs 17,54,930.
 
 **[S] A stakeholder wants to poke the numbers themselves; what do you give them, and what do you
-never give them?** I give them yellow inputs, formulas elsewhere, an honest lookup, SUBTOTAL feet
-and a Checks tab, on a reconciled export, and never the source to edit, a lookup that can return
-somebody else's row, or a number without its period and base. Kalpa's Rs 500 voucher cost Rs 5,500
-for Mumbai with the list untouched.
+never give them?** Yellow inputs, formulas elsewhere, an honest lookup, SUBTOTAL feet and a Checks
+tab on a reconciled export, so Kalpa's Rs 500 voucher priced Mumbai at Rs 5,500 with the list
+untouched; never the source to edit, a lookup that can return somebody else's row, or a number
+without its period and base.
 
-**[F] Your pivot shows a different total from the warehouse; where do you look first?** I look at
-the grain first, rows against distinct keys: Kalpa's export had 1,450 rows for 1,000 orders, so the
-pivot read Rs 39,40,95,490 against Rs 19,84,00,000. Counting each order once tied both quarters; the
-period, the filters and missing keys come next.
+**[F] Your pivot shows a different total from the warehouse; where do you look first?** At the grain,
+rows against distinct keys: Kalpa's 1,450 rows held 1,000 orders, so the pivot read Rs 39,40,95,490
+against Rs 19,84,00,000. The period, the filters and missing keys come next.
 
-**[F] How do you present one number so it is not misread?** I give it its period, its comparison and
-its base, and a sentence on what moved it: Q2, July to September 2026, Rs 9.84 crore, down 1.6
-percent on Q1's Rs 10.00 crore, with rupees beside every percentage, since Retail-Plus's 29.4
-percent is Rs 1.72 lakh.
+**[F] How do you present one number so it is not misread?** With its period, comparison and base and
+a sentence on what moved it: Q2, Rs 9.84 crore, down 1.6 percent on Q1's Rs 10.00 crore. Q1 is the
+comparison because the warehouse holds two quarters; with a year of history I would use the same
+quarter last year, as DMart does, since a retailer's quarters have seasons.
 
 **[D] Two directors change assumptions in the room and the sheet recalculates differently for each;
-what did you get right, and what do you fix?** The assumptions were inputs over one source, so both
-answers are honest. The fix is the label: each answer prints its assumption and scope, so down 1.6
-percent for all segments and down 17.3 percent without Business are never read as one figure.
+what did you get right, and what do you fix?** Both answers are honest, since each assumption was an
+input over one source, and the fix is a label, so down 1.6 percent for all segments and down 17.3
+percent without Business each print their scope. I also rule out a pivot that waits for Refresh
+beside formulas that recalculate at once, and an input one director changed that is still changed
+when the next opens the file.
 
-**[D] A leaf of your tree does not multiply back to its revenue; what happened?** It was an average
-of per-customer ratios, which gives each customer one vote: Business read Rs 11,66,786 an order
-against Rs 10,45,740, and the tree came back Rs 2.28 crore over. The fix divides the pivot's sums.
+**[D] A leaf of your tree does not multiply back to its revenue; what happened?** It averaged
+per-customer ratios, one vote per customer, so Business read Rs 11,66,786 an order against
+Rs 10,45,740; I divide the pivot's sums. JPMorgan Chase's task force on its 2012 losses found a
+related failure, where the bank divided by the wrong total: a risk spreadsheet "divided by their sum
+instead of their average" (task force report, 16 January 2013, page 128, checked 30 September 2026).
 
-**[S] Why does Remove Duplicates not fix an export at the payment grain?** It removes only rows that
-are identical in every column. Kalpa's 400 instalment orders sit on two rows that differ in the
-amount paid, so both stay; only the 50 gateway copies went, and the total moved from Rs 39,40,95,490
-to Rs 39,40,57,740 on 1,400 rows. The fix names the grain and counts each order once by its key.
+**[S] Why does Remove Duplicates not fix an export at the payment grain?** It removes only rows
+identical in every column, so both rows of an instalment order stay: on Kalpa's export only the 50
+gateway copies went, leaving Rs 39,40,57,740. Counting each order once by its key fixes it.
 
-**[D] The export grows a hundredfold; which formula do you replace, and with what?** I replace the
-running COUNTIF flag, which makes 1,051,975 comparisons on 1,450 rows and about 10.5 billion on
-145,000: I sort by order id and compare each row with the one above, or ask the warehouse for an
-order-grain export.
+**[D] The export grows a hundredfold; which formula do you replace, and with what?** The running
+COUNTIF flag, which compares each row with every row from the first down to its own: 1,051,975
+comparisons on 1,450 rows, about 10.5 billion on 145,000. I sort by order id and compare each row
+with the one above, or ask the warehouse for an order-grain export.
 
 **[F] Your lookup returned a member for an id that does not exist; which argument was wrong?** The
-fourth, range_lookup, was wrong: left out, it defaults to approximate match, and C-0195 came back as
-C-0194's Rs 16,740. I use an exact match with a not-found path, tested with an id I know is missing.
+fourth, range_lookup, which left out means approximate match, so C-0195 came back as C-0194's
+Rs 16,740. I use an exact match with a not-found path, tested on a present id, a missing id and a
+re-sorted list, and on ids from another system also one stored as text, one with a trailing space
+and one that appears twice.
 
 **[F] A lookup does a join in a sheet and collected falls by 40 percent; what happened?** It took
-each order's first payment, and 450 orders had two, so collected read Rs 11,83,81,974 where adding
-every payment gives Rs 19,66,82,820. The join belongs in the warehouse.
+each order's first payment row, and 450 orders had two, so collected read Rs 11,83,81,974 where
+every payment added once gives Rs 19,66,45,070. The join belongs in the warehouse.
 
 **[F] You filter a list and its total does not move; what is the foot doing?** It is a SUM adding
-hidden rows: filtered to Mumbai it read Rs 7,14,890 while the eleven on screen spent Rs 1,56,790.
-SUBTOTAL(109) adds what is on screen.
+hidden rows, Rs 7,14,890 where Mumbai's eleven spent Rs 1,56,790; SUBTOTAL(109) adds what is on
+screen.
 
 **[D] A director wants to type over the source in the room; what do you say, and what do you build?**
-I say yes to the question and no to the edit: the director's figure goes in a yellow input that feeds
-a labelled scenario line beside the actual, so Retail-Plus reads down 29.4 percent as Finance books it
-and down 14.6 percent on the director's Rs 5,00,000. A drift check ties the sheet's quarters to the
-warehouse on every refresh, so a typed figure would have shown as a Rs 86,620 gap.
+I say yes to the question and no to the edit: the figure goes in a yellow input feeding a labelled
+scenario line, so Retail-Plus reads down 29.4 percent as Finance books it and down 14.6 percent on
+the director's Rs 5,00,000. The Checks tab's live comparison with the warehouse's control totals,
+which travel on a small tab beside each export, would show a typed figure at once as a Rs 86,620 gap.
 
 ---
 
 ## Which words did today use, and what does each mean?
 
+**Who needs the answer.** You do, whenever the chief of staff or Finance uses one of these words and
+expects you to know it, since a word read loosely, such as a payment row taken for an order, changes
+the number you send.
+
+**The questions on the way.** What does each word mean in plain terms, and which of today's numbers
+shows it?
+
 | Term | What it means | Where today used it |
 |---|---|---|
-| Grain | It is what one row stands for: a customer, an order or a payment. | The raw export held one row per payment. |
-| Revenue tree | It splits revenue into customers, orders per customer and order size. | Retail-Plus was 106 customers, 3.29 orders each, Rs 2,801 an order. |
-| Control total | It is the owner's total, which every sheet built from the data must match. | The warehouse's quarters were the day's control totals. |
-| First-row flag | It puts 1 on each order's first row, so a sum counts every order once. | It brought Rs 39.41 crore back to Rs 19.84 crore. |
-| Approximate match | It returns the largest id not above the one asked for, with no warning. | It answered C-0195 with C-0194's row. |
-| SUBTOTAL(109) | It adds only the rows on screen, leaving out filtered and hidden rows. | It read Rs 1,56,790 for Mumbai. |
-| Yellow input | It is the one kind of cell a director may change; formulas read it. | A Rs 500 voucher in B1 cost Rs 5,500 for Mumbai. |
-| Drift check | It ties the workbook's control totals to the warehouse on every refresh. | It held an export pulled a week early. |
+| Grain | What one row stands for: a customer, an order or a payment | The raw export, one row per payment |
+| Revenue tree | Revenue split into customers, orders per customer and order size | Retail-Plus: 106 customers, 3.29 orders each, Rs 2,801 an order |
+| Control total | The owner's total, which every sheet built from the data must match | The warehouse's Rs 10,00,00,000 for Q1 and Rs 9,84,00,000 for Q2 |
+| First-row flag | A 1 on each order's first row, so a sum counts every order once | Rs 39.41 crore brought back to Rs 19.84 crore |
+| Approximate match | The largest id not above the one asked for, returned with no warning | C-0195 answered with C-0194's row |
+| SUBTOTAL(109) | A total of the rows on screen, leaving out filtered and hidden rows | Rs 1,56,790 for Mumbai |
+| Yellow input | The one kind of cell a director may change, read by formulas | A Rs 500 voucher in B1, Rs 5,500 for Mumbai |
+| Drift check | The Checks tab's live comparison with the warehouse's control totals | An export pulled a week early, held |
 
 ---
 
 ## What should you read next, and in what order?
 
+**Who needs the answer.** You do, over the weekend, since the list runs in chapter order and each item
+deepens one chapter before the take-home asks you to rebuild it.
+
+**The questions on the way.** Which reading deepens which chapter, and how long does each take?
+
 | Order | What | Time | Why |
 |---|---|---|---|
-| 1 | Microsoft Support, Create a PivotTable, https://support.microsoft.com/en-us/office/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576 (checked 1 October 2026) | 15 minutes | It rebuilds chapter 1's pivot. |
-| 2 | Microsoft Support, Calculate values in a PivotTable, https://support.microsoft.com/en-us/excel/calculate-values-in-a-pivottable (checked 1 October 2026) | 10 minutes | It explains why a calculated field divides sums. |
-| 3 | Costco's Form 10-K for fiscal 2025, https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm (checked 1 October 2026) | 10 minutes | It reports sales by member tier. |
-| 4 | Razorpay, About Orders, https://razorpay.com/docs/payments/orders/ (checked 1 October 2026) | 10 minutes | It shows one order beside several payment attempts. |
-| 5 | Microsoft Support, VLOOKUP function, https://support.microsoft.com/en-us/office/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1 (checked 1 October 2026) | 10 minutes | It documents the approximate-match default. |
-| 6 | Microsoft Support, XLOOKUP function, https://support.microsoft.com/en-au/office/xlookup-function-b7fd680e-6d10-43e6-84f9-88eae8bf5929 (checked 1 October 2026) | 15 minutes | It names the not-found argument. |
-| 7 | The Globe and Mail on TransAlta, https://www.theglobeandmail.com/report-on-business/human-error-costs-transalta-24-million-on-contract-bids/article18285651/ (checked 1 October 2026) | 5 minutes | Misaligned rows cost 24 million US dollars. |
-| 8 | Public Health England's statement, https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases (checked 1 October 2026) | 5 minutes | A spreadsheet step lost 15,841 cases. |
-| 9 | Microsoft Support, SUBTOTAL function, https://support.microsoft.com/en-us/office/subtotal-function-7b027003-f060-4ade-9040-e478765b9939 (checked 1 October 2026) | 5 minutes | It says which hidden rows 9 and 109 leave out. |
-| 10 | Computerworld on Barclays and Lehman, https://www.computerworld.com/article/1561181/excel-error-leaves-barclays-with-more-lehman-assets-than-it-bargained-for.html (checked 1 October 2026) | 5 minutes | Hidden rows became 179 unwanted contracts. |
-| 11 | Exponent, data analyst interview questions, https://www.tryexponent.com/blog/top-data-analyst-interview-questions (checked 1 October 2026) | 25 minutes | It asks chapter 2's question in an interview. |
-| 12 | Chandoo on YouTube, Complete Excel Tutorial for Data Analysis in 4 Hours (with FREE Files), https://www.youtube.com/watch?v=7QNgqq154gE (checked 1 October 2026) | About 4 hours | Its pivot and lookup parts practise chapters 1 to 3. |
+| 1 | Microsoft Support, Create a PivotTable, https://support.microsoft.com/en-us/office/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576 (checked 1 October 2026) | 15 minutes | Chapter 1's pivot, built step by step |
+| 2 | Microsoft Support, Calculate values in a PivotTable, https://support.microsoft.com/en-us/excel/calculate-values-in-a-pivottable (checked 1 October 2026) | 10 minutes | The reason a calculated field divides sums |
+| 3 | Costco's Form 10-K for fiscal 2025, https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm (checked 1 October 2026) | 10 minutes | Sales reported by member tier |
+| 4 | Razorpay, About Orders, https://razorpay.com/docs/payments/orders/ (checked 1 October 2026) | 10 minutes | One order beside several payment attempts |
+| 5 | Microsoft Support, VLOOKUP function, https://support.microsoft.com/en-us/office/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1 (checked 1 October 2026) | 10 minutes | The approximate-match default, in Microsoft's words |
+| 6 | Microsoft Support, XLOOKUP function, https://support.microsoft.com/en-au/office/xlookup-function-b7fd680e-6d10-43e6-84f9-88eae8bf5929 (checked 1 October 2026) | 15 minutes | The not-found argument |
+| 7 | The Globe and Mail on TransAlta, https://www.theglobeandmail.com/report-on-business/human-error-costs-transalta-24-million-on-contract-bids/article18285651/ (checked 1 October 2026) | 5 minutes | Misaligned rows that cost 24 million US dollars |
+| 8 | Public Health England's statement, https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases (checked 1 October 2026) | 5 minutes | A spreadsheet step that lost 15,841 cases |
+| 9 | Microsoft Support, SUBTOTAL function, https://support.microsoft.com/en-us/office/subtotal-function-7b027003-f060-4ade-9040-e478765b9939 (checked 1 October 2026) | 5 minutes | The hidden rows that 9 and 109 leave out |
+| 10 | Computerworld on Barclays and Lehman, https://www.computerworld.com/article/1561181/excel-error-leaves-barclays-with-more-lehman-assets-than-it-bargained-for.html (checked 1 October 2026) | 5 minutes | Hidden rows that became 179 unwanted contracts |
+| 11 | Exponent, data analyst interview questions, https://www.tryexponent.com/blog/top-data-analyst-interview-questions (checked 1 October 2026) | 25 minutes | Chapter 2's question, asked in an interview |
+| 12 | Chandoo on YouTube, Complete Excel Tutorial for Data Analysis in 4 Hours (with FREE Files), https://www.youtube.com/watch?v=7QNgqq154gE (checked 1 October 2026) | About 4 hours | Pivot and lookup parts that practise chapters 1 to 3 |
 
 ---
 
 ## Which six lines from today's chapters are worth keeping?
 
-One line per chapter, in chapter order.
+**Who needs the answer.** You do, each time a number leaves your hands, since each line is the check
+that caught one of today's wrong numbers.
+
+**The questions on the way.** What makes a tree safe to print, and what comes before a pivot? What
+must a lookup and a front-page number carry? Which tool owns which step, and what does a director
+get?
 
 1. Every leaf of the tree is a ratio of the pivot's sums, and the tree multiplies back to its revenue before it goes on a page.
 2. Say the grain before you pivot: count rows against keys, count each order once, and tie the total to the warehouse.
@@ -688,6 +713,12 @@ One line per chapter, in chapter order.
 ---
 
 ## So, what can a director open on Monday without a login, change in the room, and still trust?
+
+**Who needs the answer.** The chief of staff does, before opening the deck, since a director who
+changes an assumption in the room trusts whatever the sheet shows next.
+
+**The questions on the way.** What does the sentence to the chief of staff say, and how far can a
+director trust each part?
 
 The sentence to the chief of staff: "The tree and the front page tie to Finance: Q2, July to
 September 2026, Rs 9.84 crore, down 1.6 percent on Q1's Rs 10.00 crore. Business invoices carry most

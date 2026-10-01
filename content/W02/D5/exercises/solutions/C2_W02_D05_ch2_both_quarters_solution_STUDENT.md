@@ -1,6 +1,6 @@
 # Which answers hold in the chapter 2 set on how far revenue fell from Q1 to Q2, and why?
 
-Answers: 1a 2c 3b 4a 5d 6b
+Answers: 1a 2c 3b 4a 5b 6d
 
 Meera's chief of staff asked for the revenue tree by segment for both quarters, Q1 (April to June
 2026) and Q2 (July to September 2026), and every number on the deck has to tie to the warehouse,
@@ -17,18 +17,18 @@ or a deck held back for an export that could wait.
 
 **The questions on the way.**
 
-- Which idea does the chapter 2 set test: that a total is only right at the grain it was asked at?
+- Which skill does the chapter 2 set test?
 - Why does each of the six keys hold, from the invented July to Wednesday's export?
-- Why is option c in item 3, Remove Duplicates before the flag, the wrong answer worth arguing about?
+- Why is Remove Duplicates before the flag (item 3, c) the most tempting wrong answer?
 - Where does Razorpay, the Indian payment gateway, meet the same two grains?
 
-## Which idea does the chapter 2 set test: that a total is only right at the grain it was asked at?
+## Which skill does the chapter 2 set test?
 
-A Sum adds one value per row, so the question before any pivot is what one row stands for. On an
-export with one row per payment, the order's amount repeats, and the Sum counts it once per payment.
-The live items size that on an invented store; the design items ask what a flag costs at a hundred
-times the rows, which route can disagree with the flag, and how to ship on time while the right export
-is on its way.
+The skill is naming the grain before any total. A Sum adds one value per row, so the question before
+any pivot is what one row stands for; on an export with one row per payment, the order's amount
+repeats, and the Sum counts it once per payment. The live items size that on an invented store; the
+design items ask what a flag costs at a hundred times the rows, in which order the steps run so the
+pivot is tied before it ships, and how to ship on time while the right export is on its way.
 
 ## Why does each of the six keys hold, from the invented July to Wednesday's export?
 
@@ -66,14 +66,15 @@ differ in paid_date.
 
 ### Q3. How many comparisons does the running COUNTIF make on next quarter's export, and what replaces it?
 
-A design item. The flag compares each row with every row above it: 1,450 rows cost 1,051,975
-comparisons today.
+A design item. The flag compares each row with every row from the first down to its own: 1,450 rows
+cost 1,051,975 comparisons today.
 
-The key is b, "About 10.5 billion, so sort by order id and compare each row with the one above". Row
-n makes n minus 1 comparisons, so n rows make about n squared over 2: 145,000 times 145,001 over 2 is
-about 10.5 billion, enough to freeze a laptop. Sorted by order id, a row is an order's first exactly
-when its id differs from the row above, `=IF(A3<>A2,1,0)`, one comparison a row. The better move is
-upstream: ask the warehouse for an export at the order grain, and keep the flag as a check.
+The key is b, "About 10.5 billion, so sort by order id and compare each row with the one above". The
+k-th row makes k comparisons, so n rows make n(n+1)/2: 1,450 times 1,451 over 2 is 1,051,975, and
+145,000 times 145,001 over 2 is about 10.5 billion, enough to freeze a laptop. Sorted by order id, a
+row is an order's first exactly when its id differs from the row above, `=IF(A3<>A2,1,0)`, one
+comparison a row. The better move is upstream: ask the warehouse for an export at the order grain,
+and keep the flag as a check.
 
 - a, "About 145,000, one a row, so the flag can stay as it is in the sheet": the running range grows
   with every row, so the count grows with the square of the rows.
@@ -93,46 +94,56 @@ The key is a, "Leaving Retail-Core out of the growth plan as the segment that ne
 growth plan funds the branches that fell, so a segment shown rising is the one it leaves alone, and
 here that segment fell.
 
-- b, "Moving Business's invoices into the next quarter to smooth out the company line": Business is not
-  the segment the wrong reading flattered, and no reading justifies moving invoices.
-- c, "Pausing the Student segment's campaigns until the next growth review": Student's reading is not
-  the one in question.
-- d, "Asking Finance to restate Q1 for the whole company before Monday's deck": Finance's Q1 is right;
-  the pivot is what is wrong.
+- b, "Cutting Retail-Core's campaign budget, since the pivot showed it shrinking": the pivot showed
+  Retail-Core growing, so it argued against a cut; the fall is what the count once per order shows.
+- c, "Asking Finance to restate Retail-Core's Q1, since the books must have missed orders": a rise of
+  1.0 percent says nothing about missing orders, and the books are right, since the pivot added
+  payments.
+- d, "Funding Retail-Core first, since a 1.8 percent fall is the steepest of the four": that acts on
+  the fall the pivot hid, and the steepest fall is Retail-Plus's, 29.4 percent.
 
-### Q5. Which check can disagree with the flagged pivot when the flag is wrong?
+### Q5. In which order do the four steps run on next quarter's export?
 
-A design item. A second route shares none of the flagged pivot's steps.
+A design item, set as an order of steps. Each step runs once, a pivot sums every row until a flag
+exists, and the deck takes the pivot as it stands at the end.
 
-The key is d, "The warehouse's own orders table, one row per order, summed by quarter". The warehouse
-never saw the export or the flag, so a flag that missed an order or kept a repeat would disagree with
-it. Chapter 2's notebook ran this route, and both quarters tied to the rupee, with the order counts.
+The key is b, "Count rows against ids, flag first rows, pivot, tie to the warehouse". The count says
+what one row stands for (today, 1,450 rows for 1,000 orders, so a row is a payment), the flag marks
+each order's first row, the pivot sums only the flagged rows, and the tie compares the pivot's two
+quarters with the warehouse. The warehouse never saw the export or the flag, so a flag that missed an
+order or kept a repeat would disagree with it. Chapter 2's notebook ran that tie, and both quarters
+matched to the rupee, with the order counts.
 
-- a, "A pivot on the flagged rows with quarter in Rows and segment in Columns": the same flagged rows
-  rearranged repeat the flag's mistake.
-- b, "The count of flags compared with the count of rows that carry a 1": the two counts are the same
-  thing counted twice, so they cannot disagree.
-- c, "The export's paid_amount column, summed by the quarter of each payment date": that is collected
-  money by payment date, which differs from booked revenue by order date even when every step is
-  right, so a mismatch proves nothing.
+- a, "Pivot, tie to the warehouse, count rows against ids, flag first rows": the only pivot runs on
+  every payment row, so the tie fails and the deck still carries a total near twice Finance's.
+- c, "Count rows against ids, pivot, flag first rows, tie to the warehouse": the count showed that
+  rows repeat, and the pivot still ran before the flag existed, so the tie compares a pivot of
+  payment rows and fails.
+- d, "Tie to the warehouse, count rows against ids, flag first rows, pivot": the tie runs before any
+  pivot exists, so the pivot the deck takes is never compared with anything outside it.
 
-### Q6. What do you do when an order-grain export arrives two days after the deck is due?
+### Q6. What do you do for Monday when an order-grain export arrives two days after the deck is due?
 
-A design item. The right export arrives on Wednesday, and the deck goes on Monday.
+A design item. The order-grain export arrives two days after the deck, today's flag ties to the
+rupee, and next quarter's export will be a hundred times the size.
 
-The key is b, "Build Monday's tree on the flag, tie it to the warehouse, and switch on Wednesday". The
+The key is d, "Build Monday's tree on the flag, tie it to the warehouse, and switch on Wednesday". The
 flag gives the right tree today, and the tie to the warehouse proves it; the order-grain export then
-replaces a cleaning step that has no record with one that has. The fact that would change the call is
-a deadline far enough away for the warehouse team to answer first.
+replaces a cleaning step that has no record with one that has, before next quarter's 145,000 rows
+cost the flag about 10.5 billion comparisons. The fact that would change the call is a deadline far
+enough away for the warehouse team to answer first.
 
-- a, "Wait for Wednesday's export and send the tree two days late, since only it is exact": the
-  flagged tree, tied to the warehouse to the rupee, is exact too.
-- c, "Build Monday's tree from the customer table split on each customer's last order date": that
-  split puts Rs 17.88 crore in Q2, since a customer who bought in both quarters lands wholly in Q2.
-- d, "Run Remove Duplicates for Monday, and use Wednesday's export only if the totals differ": Remove
-  Duplicates leaves Kalpa's export at Rs 39,40,57,740, nearly twice the warehouse.
+- a, "Wait for Wednesday's export and send the tree two days late, since a flag leaves no record":
+  the record matters for a step that repeats, and Monday's flagged tree, tied to the warehouse to the
+  rupee, is exact, so a late tree only misses the meeting it was asked for.
+- b, "Send the warehouse's two quarter totals on Monday, and the tree by segment on Wednesday": the
+  ask is the tree by segment on page two, which the tied flag gives today, and two totals cannot show
+  which segment fell.
+- c, "Build Monday's tree on the flag, and keep the flag every quarter since it tied this time": a tie
+  proves today's export only, and next quarter the flag is about 10.5 billion comparisons of cleaning
+  with no record.
 
-## Why is option c in item 3, Remove Duplicates before the flag, the wrong answer worth arguing about?
+## Why is Remove Duplicates before the flag (item 3, c) the most tempting wrong answer?
 
 The tool's name promises the fix, which is why the room reaches for it. On Kalpa's export, 450 orders sit on two rows: 400
 paid in two instalments, whose rows differ in the amount paid, and 50 posted twice by the gateway,

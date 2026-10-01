@@ -16,17 +16,18 @@ meeting where nobody has time to ask.
 
 **The questions on the way.**
 
-- Which idea does the chapter 4 set test: that a number is read against whatever the card leaves out?
+- Which skill does the chapter 4 set test?
 - Why does each of the six keys hold, from the bare total to the monthly review?
-- Why is option a in item 2, down 41.7 percent with the right base beside it, the wrong answer worth arguing about?
+- Why is down 41.7 percent with the right base beside it (item 2, a) the most tempting wrong answer?
 - Where does Avenue Supermarts, DMart's owner, put all four parts in its first two lines?
 
-## Which idea does the chapter 4 set test: that a number is read against whatever the card leaves out?
+## Which skill does the chapter 4 set test?
 
-A director reads a bare number against whatever they remember, and a bare percentage against
-whatever they fear. The card closes those gaps by printing the period, the comparison and the base
-beside the number, and measuring every change on the earlier period. The design items ask how the
-card changes when a director changes its scope, and which fact would change its comparison.
+The skill is writing a card a director cannot misread. A director reads a bare number against
+whatever they remember, and a bare percentage against whatever they fear. The card closes those gaps
+by printing the period, the comparison and the base beside the number, and measuring every change on
+the figure it is compared with. The design items ask what the card prints when a director changes its
+scope, and which comparison it carries when the board reviews each month against a plan.
 
 ## Why does each of the six keys hold, from the bare total to the monthly review?
 
@@ -79,20 +80,22 @@ change is quoted in points: 25 less 20 is 5 points, and the line names where it 
 
 ### Q4. Which card answers a director who asks for the number without Business?
 
-A design item. Without Business, revenue was Rs 9.86 lakh in Q1 and Rs 8.15 lakh in Q2, down 17.3
-percent, 0.8 percent of company revenue.
+A design item. Without Business, revenue was Rs 9.86 lakh in Q1 and Rs 8.15 lakh in Q2, and the
+company booked Rs 9.84 crore in Q2.
 
-The key is c, "A second card beside it, its scope in its heading: Rs 8.15 lakh, down 17.3 percent".
-The director's question is fair, so it gets its own card, headed All except Business, with its own
-period, comparison and base, beside the company card. Down 1.6 percent for all segments and down 17.3
-percent without Business are then never read as one figure.
+The key is c, "A second card, headed All except Business: Rs 8.15 lakh, down 17.3 percent, 0.8 percent of company revenue".
+The director's question is fair, so it gets its own card beside the company card, with its own scope,
+period, comparison and base. Rs 8.15 lakh against Q1's Rs 9.86 lakh is down 17.3 percent, and Rs 8.15
+lakh over the company's Q2 of Rs 9.84 crore is 0.8 percent. Down 1.6 percent for all segments and
+down 17.3 percent without Business are then never read as one figure.
 
 - a, "The company card, replaced by a new line: Q2 revenue down 17.3 percent on Q1": the line
   drops its scope, so the room reads a 17.3 percent fall in the whole company.
 - b, "The company card left as it is, since Business is part of the revenue Finance signs": true, and
   it refuses a fair question, which sends the director back to typing over cells.
-- d, "The company card, with Business's Q2 replaced by its Q1 figure to smooth the line": that is an
-  invented number in a card that claims to be the actual.
+- d, "A second card, headed All except Business: Rs 8.15 lakh, down 17.3 percent, 0.4 percent of company revenue":
+  the share is taken of Rs 19.84 crore, the two quarters added together, so the card halves the
+  consumer segments' weight in Q2.
 
 ### Q5. What is the honest reading of July's jump on the company line?
 
@@ -111,24 +114,26 @@ company line, while the consumer line, which the invoices do not touch, fell fro
 - c, "The rise is seasonal, and it will come back next July without any action": one half-year holds
   one July, which cannot show a season.
 
-### Q6. What changes on the card when the board moves to a monthly review against the plan?
+### Q6. Which comparison does September's card carry when the board reviews each month against its plan?
 
-A design item. The board will review each month against the plan line, the revenue the year's plan
-set for that month.
+A design item. The board now reviews each month against its plan line. September's revenue was
+Rs 2,64,40,430, August's Rs 2,69,02,240, and September's plan, an invented figure, is Rs 3,00,00,000.
 
-The key is a, "Its period becomes the month, and its comparison the plan for that month". The
-card's comparison is whatever the readers judge the number against; for a quarterly growth review
-that is the previous quarter, and for a monthly review against plan it is the plan. This is the fact
-that would change chapter 4's choice of card.
+The key is a, "September against its plan: Rs 2.64 crore, 11.9 percent below the plan's Rs 3.00 crore".
+A card's comparison is whatever its readers judge the number against, and this board judges each
+month against its plan: September fell short by Rs 35,59,570, which is 11.9 percent of the plan's
+Rs 3,00,00,000. A board that reviews against plan is the fact that would move chapter 4's card off
+the quarter against the last.
 
-- b, "Nothing changes, since the quarter against the last quarter still answers it": it answers the
-  old review's question, and the board has asked a new one.
-- c, "It drops its comparison, since the plan line sits on the next page of the deck": a card with no
-  comparison is read against memory, which is the misreading the card exists to stop.
-- d, "Its base becomes the plan, and the period stays the quarter it was before": the plan is what
-  the month is compared with, and a monthly review needs the month as its period.
+- b, "September against August: Rs 2.64 crore, down 1.7 percent on August's Rs 2.69 crore": the
+  arithmetic holds, Rs 4,61,810 on August's Rs 2,69,02,240, and the comparison is one this board no
+  longer judges by; it belongs on the trend line beside the card.
+- c, "Q2 against Q1: Rs 9.84 crore, down 1.6 percent, since the deck already prints it": it answers
+  the old quarterly review, and the board has asked a monthly question against its plan.
+- d, "September against its plan: Rs 2.64 crore, 13.5 percent below the plan's Rs 3.00 crore": the
+  shortfall is divided by the actual Rs 2,64,40,430 instead of the plan it is measured against.
 
-## Why is option a in item 2, down 41.7 percent with the right base beside it, the wrong answer worth arguing about?
+## Why is down 41.7 percent with the right base beside it (item 2, a) the most tempting wrong answer?
 
 In option a the base is printed and the arithmetic still fails. The change belongs to the earlier period:
 the fall of Rs 1,72,390 is 29.4 percent of Q1's Rs 5,85,770. Divided by Q2's smaller Rs 4,13,380, the
