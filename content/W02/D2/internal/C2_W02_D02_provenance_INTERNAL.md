@@ -97,7 +97,7 @@ and each learner fills the sentence to Anand from their own page.
 7. **The window dedupe is named and sized as an option and never built**, since window functions are
    Wednesday's; its sizing says what it keeps (one posting per order and instalment) and why the draft
    stays inflated.
-8. **The afternoon deck runs 33 slides** on a faculty day: chapter 6 (30), the escalated case's first
+8. **The afternoon deck runs 34 slides** on a faculty day: chapter 6 (30), the escalated case's first
    two parts (20) and the close with the Kahoot (10) are live; the lab's order, the second case and
    the drill are slides marked D, with each drill answer in one breath in their notes.
 9. **No decision workbook.** The volume table does not list one, and the companion carries the day's
@@ -121,14 +121,36 @@ and each learner fills the sentence to Anand from their own page.
     interview answers, the self-test and the day's answer. Nothing was cut to reach a count.
 16. **The pre-read gives two checks for tonight** (the warehouse loads; the six sql files run), both
     under ten minutes, and says two.
+17. **Chapter 2 runs the need, the build and the trap before its options**, against the standard's
+    fixed order, because its four options are fixes for a doubling the room has to find first; naming
+    them earlier gives the discovery away. For the same reason dbt's fan-out definition sits after the
+    room finds the doubling (morning S32b, notebook 2's third level).
+18. **Chapter 6 tests the day's five mistakes written into one page form** (orders, booked, collected,
+    gap) on the invented tables: chapter 2's fan-out draft, chapter 3's plain JOIN draft and its LEFT
+    JOIN that still reads posted as collected, chapter 4's quarter in WHERE and chapter 5's gap summed
+    per order. Chapter 2's draft never reported an order count, so its page counts the join's rows as
+    orders, as its 678 rows would read. Chapter 1's payments-first statement and chapter 4's HAVING list
+    are a statement and a list, not pages, and stay out of the five.
+19. **The gap ties back to the never-paid and paid-short lists together**, everywhere the suite
+    appears, since a part-paid order is a gap too (tonight's take-home has one); on Kalpa's Q2 nothing
+    is paid short, so the two lists equal the never-paid list.
+20. **Chapter 4's second route for the unpaid list is subtraction** (all Q2 orders less the paid
+    ones, count and total), since NOT EXISTS is the same anti-join and builds the same plan on
+    PostgreSQL 16.
+21. **The interview's extra chapter 5 question folds into the [D] answer** on a small gap, so the
+    drill, the notes and the day sheet keep the same twelve questions.
+22. **The second case's ask leaves the audit's scope to the pair.** The platform lead asks about the
+    rows in the feed without naming the quarters, so choosing both quarters is the pair's design call;
+    the earlier wording printed it.
 
 ## Invented material
 
 The two tiny tables (orders T-1 to T-5, payments P-1 to P-7, P-7 against T-9), labelled invented
 wherever they appear; each chapter set's own tables (A-, Q-, U-, V-, W- and report X, Y, Z ids); the
 companion's larger sample of twelve orders; the practice lab's six web orders and five refunds; the
-take-home book in its own schema; the Kahoot's 800-order shop; the five wrong reports chapter 6 rebuilds
-on the tiny tables. Every Kalpa person is fictional, as `docs/07_Client_Zero.md` sets them.
+take-home book in its own schema; the Kahoot's 800-order shop; the five wrong pages chapter 6 writes on
+the tiny tables; the escalated case's instalment posted three times at Rs 1,500, which tests the
+surplus expression. Every Kalpa person is fictional, as `docs/07_Client_Zero.md` sets them.
 
 ## Links, each checked on 1 October 2026
 
@@ -149,7 +171,7 @@ Every page was fetched on 1 Oct 2026 and each quote compared word for word with 
 | https://www.bbc.co.uk/news/business-53093305 | Chapter 6: EY unable to confirm the money existed, 18 Jun 2020 | checked 1 Oct 2026, 200 |
 | https://www.bbc.co.uk/news/business-53132953 | Chapter 6: "a prevailing likelihood" the 1.9 billion euros did not exist, 22 Jun 2020 | checked 1 Oct 2026, 200 |
 | https://www.bbc.co.uk/news/business-53176003 | Chapter 6: insolvency filing, 25 Jun 2020 | checked 1 Oct 2026, 200 |
-| https://www.irishtimes.com/business/financial-services/ey-failed-to-ask-for-wirecard-bank-statements-for-three-years-1.4289546 | Chapter 6: the FT's report that EY did not check with OCBC from 2016 to 2018 and relied on documents and screenshots | checked 1 Oct 2026, 200; Olaf Storbeck, 26 Jun 2020, copyright the Financial Times |
+| https://www.irishtimes.com/business/financial-services/ey-failed-to-ask-for-wirecard-bank-statements-for-three-years-1.4289546 | Chapter 6: the FT's report that EY did not check with OCBC from 2016 to 2018 and relied on documents and screenshots; Wirecard's claim of up to 1 billion euros in cash at OCBC; the 1.9 billion later said to sit in banks in the Philippines | checked 1 Oct 2026, 200; Olaf Storbeck, 26 Jun 2020, copyright the Financial Times |
 | https://www.youtube.com/watch?v=aY7z4HcHm5M | Notes reading 1: Data with Baraa, "SQL Joins Basics (Visually Explained) \| INNER, LEFT, RIGHT, FULL \| #SQL Course 8" | checked 1 Oct 2026, 200 through oEmbed and the watch page; 40:18; published 20 Mar 2025 |
 | https://www.postgresql.org/docs/16/tutorial-join.html | Notes reading 2: 2.6 Joins Between Tables | checked 1 Oct 2026, 200 |
 | https://www.postgresql.org/docs/16/queries-table-expressions.html | Chapter 4 and notes reading 3: 7.2.1.1 Joined Tables: "a restriction placed in the ON clause is processed before the join, while a restriction placed in the WHERE clause is processed after the join", and the difference "matters a lot with outer joins" | checked 1 Oct 2026, 200 |

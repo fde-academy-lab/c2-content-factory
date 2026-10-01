@@ -1,7 +1,7 @@
 # What did a second book collect net of refunds, by channel, and how do you prove it is not double-counted?
 
 The take-home has four parts, about two hours in all, and a fifth if the practice lab ran out of
-time. Part 1 is the day's case on a book you have not seen, and the self-check marks it number by
+time. Part 1 is the day's case on a book you have not seen, and the self-check tests it number by
 number.
 Part 2 is a join question of your own, and parts 3 and 4 are short. On a faculty day the tentative
 IITGN block W2-2 takes the afternoon's last two hours, so whatever the lab did not reach comes home as
