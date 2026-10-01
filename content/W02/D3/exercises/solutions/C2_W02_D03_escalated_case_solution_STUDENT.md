@@ -107,8 +107,8 @@ member's months; the check cell counts 0 rows that cross.
 - a, `OVER (PARTITION BY segment ORDER BY month)`: lines up every member of a segment by month, so
   LAG compares a member with whichever member's row sorts just before; the check cell counts more than
   700 rows that cross, and with the calendar condition the flag finds nobody to ring.
-- c, "`OVER (ORDER BY customer_id, month)`, since the sort keeps a member's months together": the sort
-  keeps them together and LAG still runs from one member's last row into the next member's first. The
+- c, "`OVER (ORDER BY customer_id, month)`": the sort keeps each member's months together, and LAG
+  still runs from one member's last row into the next member's first. The
   check cell counts 300 rows that cross, one at every boundary between members.
 - d, `OVER (PARTITION BY month ORDER BY customer_id)`: each window holds one month of every member, so
   LAG compares a member with the member whose id sorts before theirs in the same month.
@@ -266,8 +266,7 @@ This item asks you to choose the sentence. The key is b, "Each list holds fifty,
 and a list above fifty names the members tied at its line." It states the head's rule as the count it
 ships and says what a reader sees when a list runs past fifty.
 
-- a, "Every segment's list holds exactly fifty members, cut by a tiebreaker stated in advance, so each
-  list is the same size for the calls": describes ROW_NUMBER under a hard cap, which the head of
+- a, "Every segment's list holds exactly fifty, cut by a tiebreaker stated in advance, so each list is the same size for the calls": describes ROW_NUMBER under a hard cap, which the head of
   Retail-Plus did not ask for, and Business and Student hold fewer than fifty buyers.
 - c, "The lists hold 155 members in all, fifty per segment where possible, ranked by Q2 revenue across
   the whole book": a list ranked across the whole book is chapter 1's Business list.

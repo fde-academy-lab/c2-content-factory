@@ -28,7 +28,7 @@ LAG reads rows and Marketing speaks in calendar months, so a flag's definition h
 with no order means before the flag runs. The design items size the four readings of "last month",
 choose a second route that reads calendar months with no window, and name the business fact under which
 zero would be the honest value. The other two items read what LAG compares for a member with gaps and
-what a zero-filled calendar does to a member who stopped buying.
+the order in which the call list's steps have to run.
 
 ## Why is each call-first key right, and each other letter wrong?
 
@@ -71,25 +71,21 @@ flag that reads calendar months asks for August and July, and Y-01 has neither, 
   fell", gets the first half right, and the calendar flag exists to drop exactly this member, whose falls
   run across empty months.
 
-### Q3. What does the book say about an invented member with no September order, and which flag should name them?
+### Q3. In what order should the team build Monday's call list from the warehouse?
 
-This item asks you to spot the plausible wrong output on invented numbers.
+This item asks you to order the analysis, where each step needs what an earlier step made.
 
-The key is c, "Nothing to compare, since they placed no September order; a separate went-quiet list
-names them". Y-02 has no September row, so the falling-spend flag has no September spend to set beside
-August. Filled with zero, their September reads as Rs 0 below Rs 1,800 below Rs 2,300, a fall twice
-running that never happened. What the book does show is a member who bought in July and August and
-then nothing, which is a different question with its own list. That list needs no calendar: a NOT
-EXISTS or a HAVING over the 752-row monthly table finds the members who bought in July and August and
-placed no September order, 27 of them on Kalpa's book, and a calendar left empty finds the same 27.
+The key is c, "Q, S, R, P". The flag compares months, so the monthly totals come first (Q). LAG then
+sets each member's two earlier months beside every row (S), and only then can a filter keep the
+September rows that fell twice with August and July behind them (R). The members it keeps are joined to
+the protect lists and sorted by place (P), which gives Marketing the nine.
 
-- Option a, "A fall to zero, so the falling-spend flag names them and Marketing rings them about that
-  fall", would send a call describing a September spend they never had.
-- Option b, "A fall to zero once their August is checked against July, so the flag names them with a
-  note", gets the August check right, and the September reading is still a zero someone wrote in.
-- Option d, "An unknown, so their July and August are dropped as well, and they leave the book until
-  they buy", throws away two real months to hide one empty one, and loses a member who may most need
-  a call.
+- Option a, "S, Q, R, P", runs LAG on order rows before any monthly total exists, so the value beside a
+  row is the member's previous order, and two orders in one month can read as a fall inside a month.
+- Option b, "Q, R, S, P", keeps the September rows before LAG runs. LAG then sees one row per member and
+  finds nothing before it, so every value one row back is NULL and nobody is flagged.
+- Option d, "S, R, Q, P", flags falls between single orders and only then totals by month, so it names
+  members whose orders shrank, which is not the monthly fall Marketing asked about.
 
 ### Q4. Which route confirms the nine calendar-month flags with no window, and what does it read?
 

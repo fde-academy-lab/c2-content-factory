@@ -87,7 +87,7 @@ b) `count(DISTINCT o.customer_id)`, so no member is counted twice
 
 c) `count(DISTINCT o.order_date)`, so a day with two orders counts once
 
-d) `count(DISTINCT date_trunc('month', o.order_date))`, the months with an order
+d) `count(DISTINCT date_trunc('month', o.order_date))`, months with orders
 
 ## Step 2. How many members does each rule ship when the list is ranked by orders alone?
 
@@ -154,7 +154,7 @@ d) `ORDER BY q2_orders DESC`
 id decide among members with the same number of orders. Using the table of two-order members, which
 member does it leave off, and what does that cost?
 
-a) C-0070, who booked Rs 2,730, the least of the 27, so the id rule and a spend rule leave off the same member
+a) C-0070, who booked Rs 2,730, the least of the 27, so the id rule cuts the member a spend rule would
 
 b) C-0092, who booked Rs 2,950, since they are the member a list ranked by revenue alone also leaves off
 
@@ -175,7 +175,7 @@ Which query counts the members who are on both lists?
 
 a) An INNER JOIN of the two lists on customer_id, counting the rows it returns
 
-b) A LEFT JOIN from the revenue list to the frequency list, counting all the rows it returns
+b) A LEFT JOIN from the revenue list to the frequency list, counting every row
 
 c) UNION ALL of the two lists, counting the rows
 
@@ -189,7 +189,7 @@ that, and what does it give?
 
 a) UNION ALL of the two lists' ids, 100 rows, less one list's 50, which gives 50 shared
 
-b) The frequency list's members with two or more Q2 orders, counted with a filter, which gives 50
+b) A filter on the frequency list for members with two or more Q2 orders, which gives 50
 
 c) A UNION of the two lists' ids, 51 different members, so 50 plus 50 less 51 gives 49
 

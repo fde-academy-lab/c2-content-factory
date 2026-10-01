@@ -36,7 +36,7 @@ each chapter's map slide lists its smaller questions, and its last slide answers
 | Part | Its question | The smaller questions, in order |
 |---|---|---|
 | The ask | What does Marketing want, and what can GROUP BY not give it? | Who is asking, and what does each want by Monday? What does each need, and what does a wrong answer cost? Can one GROUP BY answer all three? What does each ask need a window to add to every row? |
-| Chapter 1 | Which fifty members spent the most in Q2? | Which way, at what cost? What did each member book in Q2? Which fifty members spent the most? What does the quickest list, the fifty biggest orders, give Marketing? Which segments does the list of fifty reach? Does a sort in Python pick the same fifty? |
+| Chapter 1 | Which fifty members spent the most in Q2? | Which way, at what cost? What did each member book in Q2? Which fifty members spent the most, and which segments do they reach? What does the quickest list, the fifty biggest orders, give Marketing? Does a sort in Python pick the same fifty? |
 | Chapter 2 | Which fifty members lead each of the four segments? | Which way, at what cost? Can GROUP BY return each segment's top fifty? What does numbering the whole book once give each segment? What does PARTITION BY restart, and how many members does each list hold? Does one sorted query per segment pick the same members? |
 | Chapter 3 | When two members tie at fiftieth place, how many does a list ship, and which rule did the head of Retail-Plus ask for? | Which rule, at what cost? What do the three functions give on one tie? How many rows does each rule ship at a tie on the line? How many Retail-Core members does each rule ship? How many does your own segment's list ship? Does a count with no window agree with RANK? |
 | Chapter 4 | Whose monthly spend fell two months running? | Which way, at what cost? What did each member spend each month? What does LAG put beside one member's months? What does LAG read with no PARTITION BY? How many fell twice, months kept apart? Does a Python walk agree? |
@@ -93,8 +93,8 @@ chapter's last minutes if the chapter ran to time: items 2 and 3 in chapter 1, s
 155 that chapter 2's S30 asks the room to predict, and items 1 and 2 in every other chapter. The rest
 are the practice lab's or tonight's.
 
-**The one runtime error, two minutes, never a trap slot.** Somebody writes the place filter in
-WHERE. Postgres 16 prints, with two spaces after the colon:
+**What happens at the day's one runtime error?** It gets two minutes and never a trap slot.
+Somebody writes the place filter in WHERE, and Postgres 16 prints, with two spaces after the colon:
 
 ```text
 ERROR:  window functions are not allowed in WHERE
@@ -129,7 +129,7 @@ flowchart LR
 |---|---|---|---|---|
 | Chapter 6, 30 | Cover, S1, SECTION 6, S2 to S16 | Notebook 06 | Four readings of "last month" sized (S5); all 16 flagged are on a list (S8); C-0216's July read as last month (S10); 16 calls (S11), 7 over an empty month (S12), 9 after the check (S13); the calendar join's same nine (S14) | S4 to its quote; S14 to its stats line |
 | Escalated case, parts 1 and 2, 20 | SECTION 7, S17 and S18 | `notebooks/C2_W02_D03_ex1_escalated_case_STUDENT.ipynb`, `exercises/unguided/C2_W02_D03_escalated_case_STUDENT.md` | Three minutes on the brief, seventeen alone: every learner ships part 1, each segment's list with its count, and starts part 2, the members to ring | Nothing; start on time |
-| The close, 10 | SECTION 8, S19 to S21 and S26 | `kahoot/C2_W02_D03_quiz_STUDENT.md` | The day's answer after two learners read theirs (S19); the six lines read together (S20); eight Kahoot items with a reason aloud after each (S21); the growth team's ask left open (S26) | S20 read by you alone |
+| The close, 10 | SECTION 8, S19 to S21 and S26 | `kahoot/C2_W02_D03_quiz_STUDENT.md` | The day's answer after two learners read theirs (S19); the six rules read together (S20); eight Kahoot items with a reason aloud after each (S21); the growth team's ask left open (S26) | S20 read by you alone |
 
 D22 to D25 stay self-study: the interview drill on two slides, the second case and the day's wrong
 numbers.
@@ -150,7 +150,7 @@ Retail-Plus list ship, and what is the reason in your sentence?
 | 2. Per segment | One query per segment with UNION ALL (4 queries, 1,848 order rows), count who spent more (16,617 member pairs), PARTITION BY segment (1 query, 462 rows), GROUP BY segment with LIMIT (cannot list members) | PARTITION BY; a database with no window functions, such as MySQL before 8.0, leaves UNION ALL | Four sorted queries with LIMIT 50 glued by UNION ALL: the same 155 members |
 | 3. The tie | ROW_NUMBER with a stated tiebreaker (4 on the invented top four), RANK (5), DENSE_RANK (5), whole ties only (3) | RANK with its count and reason; a hard cap, such as fifty seats, makes ROW_NUMBER with a stated tiebreaker honest | Members at or above the fiftieth member's figure, by sort and OFFSET: RANK's count in every segment, 50 for Retail-Core |
 | 4. Falling spend | LAG (752 member-months once), self-join twice (1,504), a lookup per row (1,504), spreadsheet columns (1,806 cells) | LAG; no window functions leaves a lookup per row | A Python walk over the 752 member-months: the same 16 |
-| 5. The plan | Running SUM in a window (462 orders once), a plain SUM per week (6,006 reads), a self-join of weeks (91 pairs), a spreadsheet column (462 exported) | The running SUM; one reading on a date Meera names makes a plain SUM with that date in WHERE shorter | Thirteen plain SUMs to each week's last day: equal in all thirteen weeks |
+| 5. The plan | Running SUM in a window (462 orders once), a plain SUM per week (6,006 reads), a self-join of weeks (462 orders into weekly totals, then 91 pairs), a spreadsheet column (462 exported) | The running SUM; one reading on a date Meera names makes a plain SUM with that date in WHERE shorter | Thirteen plain SUMs to each week's last day: equal in all thirteen weeks |
 | 6. The calls | LAG over own months (752 rows, steps over a gap), LAG with a calendar check (752, breaks the run), a zero-filled calendar (1,806, a quiet month reads as a fall: 26 flagged, 17 with no September order), a calendar left empty (1,806, 9) | The calendar check on LAG; Marketing wanting "went quiet" as its own signal makes the empty calendar worth its rows | A self-join on calendar months: the same 9 |
 
 ---
@@ -183,7 +183,7 @@ Retail-Core and on C-0216 and C-0010, and leave the planted records to empty you
 
 | Planted | Where it is | What the room should do | If nobody finds it |
 |---|---|---|---|
-| An exact Q2 tie at fiftieth place in Retail-Plus | C-0185 and C-0242, both on Rs 3,350, at places 50 and 51 under ROW_NUMBER with the customer id; 52nd is C-0259 on Rs 3,200. ROW_NUMBER 50, RANK 51, DENSE_RANK 52, whole ties only 49 | Run block c3_your_segment in notebook 03's step 3 (S46) and in the case's part 1, see four different counts, read places 44 to 56 to find why, and write the sentence for the head of Retail-Plus: 51, because two tie at fiftieth | Ask: "Do your four numbers agree? Read the members at the line before you write the sentence." |
+| An exact Q2 tie at fiftieth place in Retail-Plus | C-0185 and C-0242, both on Rs 3,350, at places 50 and 51 under ROW_NUMBER with the customer id; 52nd is C-0259 on Rs 3,200. ROW_NUMBER 50, RANK 51, DENSE_RANK 52, whole ties only 49 | Run block c3_retail_plus_rules in notebook 03's step 3 (S46) and in the case's part 1, see four different counts, read places 44 to 56 to find why, and write the sentence for the head of Retail-Plus: 51, because two tie at fiftieth | Ask: "Do your four numbers agree? Read the members at the line before you write the sentence." |
 | The natural tie at 48th in Retail-Plus, which nobody planted and which makes DENSE_RANK ship 52 | C-0189 and C-0206, both on Rs 3,480 | Predict 51 for DENSE_RANK, get 52, and find the second tie higher up in the dense_rank column | Ask: "Read the dense_rank column from 44 to 54. Where does it fail to climb?" |
 | Three Retail-Plus members whose spend fell in each Q2 month | C-0161 (July Rs 4,200, August Rs 3,100, September Rs 1,900; place 12), C-0175 (Rs 4,400, Rs 2,900, Rs 1,600; place 13) and C-0171 (Rs 3,800, Rs 2,600, Rs 1,400; place 16) | Find them among the nine in notebook 06's last your-turn cell and in the case's part 2, and see that all three are on Retail-Plus's list | Ask: "List the nine with their segment and place. Which segment carries three of them?" |
 | The plan line as a small table | plan_line, 13 weeks from Monday 6 July, Rs 75,69,230 a week, Rs 9,83,99,990 in all | The plan line is the scenario and may be named; its missing first five days are chapter 5's trap, shown on S68 to S70 | |

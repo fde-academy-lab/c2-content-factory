@@ -159,7 +159,7 @@ SELECT s.segment,
 FROM   (SELECT DISTINCT segment FROM q2) s
 ORDER  BY s.segment;
 
--- name: c3_your_segment
+-- name: c3_retail_plus_rules
 -- Your turn: the four counts for one segment. Change the segment's name on the last line.
 WITH q2 AS (
     SELECT c.segment, o.customer_id, sum(o.amount) AS q2_revenue

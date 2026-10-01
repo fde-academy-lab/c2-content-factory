@@ -23,31 +23,31 @@ real calls.
 ## What does the top-fifty set test about building and checking a ranked list?
 
 A ranked list is first a decision about what one row is, and only then a sort. The design items choose
-the build for Marketing's four per-segment lists by what each build costs on Q2's data, pick the second
+the build for a top twenty-five in each segment by what each build costs on Q2's data, pick the second
 route, a different way to the same list, that could notice a missing member, and name the ask that
 would make the fifty biggest orders the right list. The other items catch a list of orders sent as a
 list of members and predict which segments a whole-book list reaches when it is trimmed.
 
 ## Why is each top-fifty key right, and each other letter wrong?
 
-### Q1. Which build fits Marketing's per-segment ask, and what does it cost on Q2's data?
+### Q1. Which build fits a top twenty-five in each segment, and what does it cost on Q2's data?
 
 This is a design item: it asks for the best-fit build, judged on a cost you have to check against the
 segment table.
 
-The key is c, "Number the members in a window that restarts in each segment: one query, and 155 rows
+The key is c, "Number the members in a window that restarts in each segment: one query, and 95 rows
 leave". Numbering members makes one row a member, and a window that starts again at 1 in each segment
 hands Marketing all four lists from one query. The cost checks against the table: each list keeps its
-fifty biggest spenders, or all of them where a segment has fewer than fifty buyers, so Business gives
-35, Retail-Core 50, Retail-Plus 50 and Student 20, which is 155 rows.
+twenty-five biggest spenders, or all of them where a segment has fewer than twenty-five buyers, so
+Business, Retail-Core and Retail-Plus give 25 each and Student 20, which is 95 rows.
 
-- Option a, "Sort each segment's Q2 orders by amount and keep the top fifty: 188 rows leave the
-  warehouse", carries the right cost, and the cost is the warning. Fifty Business, fifty Retail-Core and
-  fifty Retail-Plus orders and all 38 Student orders make 188 rows, yet four lists of members can hold
-  at most 155 people. The rows are orders: Business's fifty name 28 members, and the four lists name
-  131 members in all.
-- Option b, "Rank members in four LIMIT 50 queries glued with UNION ALL, each reading all 462 Q2 orders",
-  returns the same 155 members as c at four times the reading, 1,848 order rows, and leaves four
+- Option a, "Sort each segment's Q2 orders by amount and keep twenty-five: 100 rows leave the
+  warehouse", carries the right cost, and the cost is the warning. Every segment placed at least
+  twenty-five Q2 orders, Student's 38 included, so the four sorts keep 100 rows, yet four lists of
+  members can hold at most 95 people. The rows are orders: the 100 name 85 members, and Business's
+  twenty-five name only 20.
+- Option b, "Rank members in four LIMIT 25 queries glued with UNION ALL, each reading all 462 Q2 orders",
+  returns the same 95 members as c at four times the reading, 1,848 order rows, and leaves four
   queries to edit whenever a segment is added or renamed.
 - Option d, "Export the 462 Q2 orders and sort each segment by hand: four sorts, and every row leaves",
   moves all 462 order rows out of the warehouse, which breaks the data platform lead's rule, "query it,

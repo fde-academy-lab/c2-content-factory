@@ -125,7 +125,7 @@ falls running, across two months with no order.
   rung, and says nothing about whether the flag is right.
 - c, "V-05, since their September fell by less than their August did": the flag counts a fall of any
   size, and Rs 2,300, Rs 1,750 and Rs 1,350 fall twice running in calendar months.
-- d, "V-03, since their fall began in July, before the two months Marketing asked about": two months
+- d, "V-03, since their fall began in July, before the two months Marketing named": two months
   running means September below August and August below July, which is exactly V-03's quarter.
 
 ### Q8. Who does Marketing ring first: listed under the head's rule and flagged on calendar months?

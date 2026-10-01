@@ -55,14 +55,14 @@ the room leaves.
 - NULL, since nothing comes before the member's first row  <- correct
 - Zero, since no spend was recorded before that month
 - The last month of whichever member sorts just above
-- That month's own spend, since LAG falls back to the current row
+- The month's own spend, since LAG falls back to that row
 
 ---
 
 ## Q4. Which ORDER BY gives a running total over Q2's orders one step per order, the same on every run?
 *Tests: which order gives a running total a step of its own for every order.*
 
-- ORDER BY order_date, so the orders run in the order they were booked
+- ORDER BY order_date, so orders run in the order they were booked
 - ORDER BY amount DESC, so the biggest orders take the first steps
 - ORDER BY order_date, order_id, so each order holds its own place  <- correct
 - No ORDER BY, since a sum comes out the same in any order at all

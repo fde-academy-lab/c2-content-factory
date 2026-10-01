@@ -21,27 +21,45 @@ every number before it leaves the team.
 
 ## What can you do now that you could not this morning?
 
+**Who needs the answer.** You do, before the practice lab and tonight's take-home, which ask for each
+of these six on numbers the chapters never used; a line you cannot do yet names the chapter to read
+again.
+
+**The questions on the way.**
+- Which of the six could you do tonight with no notebook open?
+
 1. You can tell a GROUP BY question from a window question, and write a window as a function, a
    partition and an order.
 2. You can build each segment's top fifty in a named step and say what one row of it is.
 3. You can predict the three ranking functions on a tie and state the rule, the count and the
    members at the line, the last place a list keeps.
 4. You can set a member's month beside their own earlier months with LAG and check what it read.
-5. You can build a running total that closes on the quarter's total and repeats on every run.
+5. You can build a running total that closes on the quarter's total and gives every order its own step.
 6. You can size the ways to answer each question and name what would switch your choice.
 
 ---
 
 ## Where does today sit in the week, and what do Marketing's three asks measure?
 
+**Who needs the answer.** You do, to read every number today on the definition it was built on, and
+the marketing lead's member team, whose calls go to the members these measures pick out.
+
+**The questions on the way.**
+- What did the session cover, and where do the two cases run?
+- What do Q2 revenue, monthly spend and the plan line measure?
+- How does today feed Thursday and the Saturday paper?
+
 **What the session covered.** Six chapters on one case, each with its options, its trap and a
 second route; LEAD was named and not used. The escalated case, Marketing's Monday package of lists,
-calls, revenue shares and a line for Meera, ran parts 1 and 2 in the afternoon, and parts 3 to 5 run
+calls, revenue shares and a sentence for Meera, ran parts 1 and 2 in the afternoon, and parts 3 to 5 run
 in the TA-led practice lab. The second case, Retail-Core ranked by how often members ordered, is the
 take-home.
 
 **What the asks measure.** Q2 is July to September 2026, and Q2 revenue per member is booked revenue,
-every Q2 order at its amount whatever its status: Rs 9,84,00,000 on 462 orders. Of Kalpa's 340
+every Q2 order at its amount whatever its status: Rs 9,84,00,000 on 462 orders. That is the
+definition the week agreed on Monday, so every list and running total today reconciles to Monday's
+total. Rs 3,18,34,910 of it sits in cancelled and returned orders, and on delivered orders alone
+Retail-Core's list would keep 38 of its 50 members, so a report names the definition it uses. Of Kalpa's 340
 members, 227 ordered in Q2, in four segments: Business (corporate buyers), Retail-Core (everyday
 shoppers), Retail-Plus (the paid tier) and Student. Monthly spend is a member's booked revenue in a
 calendar month, and the plan line holds 13 weeks from Monday 6 July at Rs 75,69,230 each.
@@ -59,7 +77,7 @@ flowchart LR
     class H unknown
 ```
 
-This week map is the programme's own construction. Section 4 of the
+Section 4 of the
 [retail dossier](../../../W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md) says what Marketing
 and the head of Retail-Plus ask the data team, and section 5 works through the numbers that run
 Kalpa Retail, among them how often a customer orders.
@@ -75,6 +93,13 @@ own, which these notes do not cover.
 ---
 
 ## What does a window keep that GROUP BY throws away, in one picture?
+
+**Who needs the answer.** You do, before every query today: each of Marketing's three asks needs a
+column beside every row, and GROUP BY cannot give one.
+
+**The questions on the way.**
+- What does GROUP BY keep, and what does a window keep?
+- Why can WHERE not test a window's value?
 
 ```mermaid
 flowchart LR
@@ -109,10 +134,9 @@ others twice.
 
 1. Which ways could the team build a ranked list, and what would each cost?
 2. What did each member book in Q2?
-3. Which fifty members spent the most?
+3. Which fifty members spent the most, and which segments do they reach?
 4. What does the quickest list, the fifty biggest orders, give Marketing?
-5. Which segments does the list of fifty members reach?
-6. Does a sort in Python pick the same fifty members?
+5. Does a sort in Python pick the same fifty members?
 
 **IN THE FIELD.** Starbucks Rewards members made 59 percent of the money tendered at Starbucks'
 company-operated US stores in the quarter to 28 June 2026 (Starbucks' card, loyalty and mobile
@@ -120,15 +144,15 @@ dashboard, Q3 fiscal 2026, checked 1 October 2026).
 
 ### Which ways could the team build a ranked list, and what would each cost?
 
-| Option | One row of the answer is | Leaves the warehouse | The per-segment list needs |
+| Option | One row of the answer is | The per-segment list needs | Order rows read for it |
 |---|---|---|---|
-| A. Sort the Q2 order rows and keep fifty | an order | 50 order rows | nothing it can do, since an order is no member |
-| B. Group by member, sort, keep fifty with LIMIT | a member | 50 rows | four queries glued together |
-| C. Group by member in a named step, number the members in a window, keep places 1 to 50 | a member and its place | 50 rows | one more phrase in the same query |
-| D. Export the orders to a spreadsheet and sort by hand | whatever the sort gives | all 462 Q2 order rows | four sorts by hand |
+| A. Sort the Q2 order rows and keep fifty | an order | four sorts, keeping 188 rows that are still orders | 1,848, the 462 four times |
+| B. Group by member, sort, keep fifty with LIMIT | a member | four queries glued together | 1,848, the 462 four times |
+| C. Group by member in a named step, number the members in a window, keep places 1 to 50 | a member and its place | one more phrase in the same query | 462, once |
+| D. Export the orders to a spreadsheet and sort by hand | whatever the sort gives | four sorts by hand | all 462, exported |
 
-The call is C, because the ask is per segment and the place must be a column a later step can
-filter. One list read by eye would switch it to B, and D breaks the data platform lead's rule,
+The call is C, because the ask is per segment, C reads the orders once, and the place must be a
+column a later step can filter. One list read by eye would switch it to B, and D breaks the data platform lead's rule,
 "query it, do not export it".
 
 ### What did each member book in Q2?
@@ -142,12 +166,13 @@ One row per member who ordered gives 227 rows, carrying all 462 orders and Rs 9,
 | Retail-Core | 96 | 193 | Rs 3,66,250 | about Rs 3,800 |
 | Student | 20 | 38 | Rs 35,770 | about Rs 1,800 |
 
-### Which fifty members spent the most?
+### Which fifty members spent the most, and which segments do they reach?
 
 A named step, written `WITH q2_spend AS (...)`, adds up each member's Q2,
 `row_number() OVER (ORDER BY q2_revenue DESC, customer_id)` numbers the members with the id settling
 equal spend, and the query outside keeps places 1 to 50: every Business buyer, 35, then 11
-Retail-Plus and 4 Retail-Core.
+Retail-Plus and 4 Retail-Core. The list reaches three segments of four: all 35 Business buyers,
+Retail-Plus 11 of 76, Retail-Core 4 of 96 and no Student.
 
 | Place | Member | Segment | Q2 revenue |
 |---|---|---|---|
@@ -164,10 +189,6 @@ them five times. One row of the orders table is an order, so a member with five 
 five places, and the protect budget would reach nobody in the tier Marketing worries about. The
 check is `count(DISTINCT customer_id)` beside `count(*)`, 28 for 50, and ranking members on their
 summed orders fixes it, reaching 22 more.
-
-### Which segments does the list of fifty members reach?
-
-It reaches three: all 35 Business buyers, Retail-Plus 11 of 76, Retail-Core 4 of 96 and no Student.
 
 ### Does a sort in Python pick the same fifty members?
 
@@ -340,7 +361,7 @@ and C-0094 come off.
 
 ### How many members does the head's own list ship, counted in your own run?
 
-Each learner runs block `c3_your_segment` in notebook 03's empty cell and writes the head's
+Each learner runs block `c3_retail_plus_rules` in notebook 03's empty cell and writes the head's
 sentence: the count under RANK and, if it is not fifty, the members at the line and their figure.
 
 ### Does a count with no window agree with RANK?
@@ -385,7 +406,7 @@ The flag reads September: September below August, and August below July.
 | C. A correlated subquery per month | looks up the month before, twice per row | 1,504 lookups |
 | D. Months as spreadsheet columns, read by eye | a person reads across each row | 1,806 cells, 301 members times six months |
 
-The call is LAG, which reads the rows in one pass with `lag(spend, 2)` in the same line as
+The call is LAG, which reads the rows in one pass with `lag(spend, 2)` in the same statement as
 `lag(spend, 1)`. A database with no window functions, such as MySQL before 8.0, would switch it to a
 lookup per row, option C, a correlated subquery that finds each member's previous month with an
 order.
@@ -474,7 +495,7 @@ August.
 |---|---|---|
 | A. A running SUM in a window | weekly totals, then `sum() OVER (ORDER BY week)` | 462 orders, once |
 | B. A plain SUM up to each week's end | every order dated up to each week's last day | 6,006 order reads, 13 times 462 |
-| C. A self-join of weeks | each week with itself and every week before | 91 week pairs |
+| C. A self-join of weeks | each week with itself and every week before | 462 orders into 13 weekly totals, then 91 week pairs |
 | D. A spreadsheet with a cumulative column | an export and a formula copied down | 462 rows exported |
 
 The call is the running SUM, booked and plan side by side; one reading on a date Meera names, such
@@ -484,7 +505,7 @@ as 19 August, would switch it to a plain SUM.
 
 The quickest build starts from `plan_line`, LEFT JOINs each week's booked revenue by
 `date_trunc('week', order_date)` and accumulates both sides. It closes at Rs 9,68,60,180 against a
-plan of Rs 9,83,99,990, and the line to Meera says Q2 closed Rs 15,39,810 short of plan.
+plan of Rs 9,83,99,990, and the message to Meera says Q2 closed Rs 15,39,810 short of plan.
 
 ### Does the running total close on Monday's Q2 total?
 
@@ -582,7 +603,8 @@ October 2026). Marriott and Hilton extended elite status into early 2022 (releas
 | D. The same calendar, left empty | the calendar month before | 1,806 | stays empty, so no reading |
 
 Members buy in 2.5 of six months, so an empty month is normal, and zero-filling flags 26, 17 of them
-only for a quiet September. The call is B, and a separate "went quiet" flag would switch it to D.
+only for a quiet September. The call is B, and a monthly dashboard with a row for every member in
+every month, quiet months shown as blanks, would switch it to D.
 
 ### How many of the flagged members are on the protect list?
 
@@ -625,6 +647,14 @@ made.
 ---
 
 ## What will an interviewer ask, and what does a strong answer sound like?
+
+**Who needs the answer.** You do, for analytics screens: each question below carries the programme's
+tag for how often it comes up, and a strong answer quotes a number from today's run.
+
+**The questions on the way.**
+- Which staples, tagged [S], should you answer without a pause?
+- Which frequent questions, tagged [F], turn on today's wrong numbers?
+- Which differentiators, tagged [D], ask for a judgment the day's numbers support?
 
 Tags, this programme's calibration for 0 to 3 year Indian-market candidates: [S] a staple asked
 everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
@@ -694,7 +724,13 @@ July." A weak answer reads the trend before closing the loop.
 
 ---
 
-## Which six lines from today's chapters are worth keeping?
+## Which six rules from today's chapters are worth keeping?
+
+**Who needs the answer.** You do, as six checks to run before any ranked list, flag or running total
+leaves your hands.
+
+**The questions on the way.**
+- Which rule does each chapter leave behind?
 
 1. Say what one row of the list is before you rank it: fifty orders named only 28 members.
 2. "In each segment" is a PARTITION BY: fifty, or every buyer, in each segment.
@@ -707,11 +743,17 @@ July." A weak answer reads the trend before closing the loop.
 
 ## Which words did today use, and what does each mean?
 
+**Who needs the answer.** You do, whenever a term below turns up in a brief, a set or an interview,
+since each is defined here the way today used it.
+
+**The questions on the way.**
+- What does each term mean here, and where did it first appear?
+
 | Term | What it means here | Where it first appears | Example |
 |---|---|---|---|
 | Window function | Computes over related rows and keeps every row, adding one column | The picture | `row_number() OVER (...)` |
 | PARTITION BY | Says whose rows belong together; the window restarts in each partition | Chapter 2 | Places restart at 1 per segment |
-| ROW_NUMBER | Numbers rows 1, 2, 3 with no repeats; a tiebreaker column decides ties | Chapter 1 | 1 to 6 on six invented members |
+| ROW_NUMBER | Numbers rows 1, 2, 3 with no repeats; the next ORDER BY column decides ties, or the database picks when there is none | Chapter 1 | 1 to 6 on six invented members |
 | RANK | Tied rows share a place, and the places they use up are skipped | Chapter 3 | 1, 1, 3 |
 | DENSE_RANK | Tied rows share a place and nothing is skipped; it numbers distinct values | Chapter 3 | 52 for Retail-Core's top fifty |
 | LAG | Reads a value from an earlier row in the window's order; NULL if none | Chapter 4 | `lag(spend, 2)` |
@@ -740,13 +782,20 @@ July." A weak answer reads the trend before closing the loop.
 | Mid-quarter | The end of the seventh plan week, the week of 17 August | Chapter 5 | Rs 1,57,51,980 ahead |
 | Run rate | Each week's booked revenue against that week's plan | Chapter 5 | 6 of 7 weeks below |
 | greatest() | The larger of its arguments | Chapter 5 | Moves 1 to 5 July onto 6 July |
-| Deterministic | Giving the same figure on every run | Chapter 5 | `ORDER BY order_date, order_id` |
+| Deterministic | Giving every row the same figure on every run, whatever frame the window uses | Chapter 5 | `ORDER BY order_date, order_id` |
 | Calendar check | Testing that LAG's two rows before September are August and July | Chapter 6 | 16 flags to 9 |
 | Zero-filled calendar | Every member in every month, with Rs 0 where no order was placed | Chapter 6 | 26 flags, 17 with no September order |
 
 ---
 
 ## What should you read next, and in what order?
+
+**Who needs the answer.** You do, tonight and before the Saturday paper: the documentation and one
+video come first, then three practice problems on new data, then tutorials for cross-checks.
+
+**The questions on the way.**
+- Which source explains the window, and which video shows it?
+- Which three PostgreSQL Exercises problems use today's functions on new data?
 
 | Order | What | Time | Why |
 |---|---|---|---|
@@ -765,11 +814,19 @@ July." A weak answer reads the trend before closing the loop.
 
 ## So, which members should Marketing protect before they drift, and is Q2 on track against the plan line?
 
+**Who needs the answer.** The marketing lead and the head of Retail-Plus act on it next week, and
+Meera Raghavan takes its last sentence into the leadership meeting.
+
+**The questions on the way.**
+- Which members does each segment's list hold, and under which rule?
+- Which members are called first?
+- Did Q2 close on plan, and how did the weeks run after mid-quarter?
+
 The day's answer, to Marketing and the head of Retail-Plus:
 
 > "Each segment's protect list is its top fifty by Q2 revenue under RANK, so members who spent the
 > same share a place: Business and Student list every Q2 buyer, 35 and 20, Retail-Core lists 50, and
-> Retail-Plus lists the count your own run gave, with the reason in the same line if it is not fifty.
+> Retail-Plus lists the count your own run gave, with the reason in the same sentence if it is not fifty.
 > Call the nine members whose spend fell in August and again in September first; a month with no
 > order is no reading, so the member on holiday is not one of them. Q2 closed on plan,
 > Rs 9,84,00,000 against Rs 9,83,99,990, and the Rs 1.58 crore lead at mid-quarter came from one week

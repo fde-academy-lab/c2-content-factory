@@ -132,7 +132,7 @@ flowchart LR
 
 ## What do ROW_NUMBER, RANK and DENSE_RANK give on one tie?
 
-Chapter 3 works on six invented members, so the mechanism shows on numbers nobody has to trust.
+Chapter 3 works on six invented members, few enough to number by hand and check.
 Pairs fill in the three columns on paper before the table is completed on the board.
 
 | Member (invented) | A | B | C | D | E | F |
@@ -377,7 +377,7 @@ in four segments, 155 members; the place filter waiting for the outer query; the
 their three columns and the invented top four with 4, 5, 5 and 3; Retail-Core's DENSE_RANK running
 two behind to 52; LAG reading the month before, and C-0132 reading C-0131's July; the running total,
 the missing week of 29 June, and the lead's five readings; and C-0216's empty August beside the 16
-flags that became 9. The chain to Marketing runs across the bottom, and beside it the six lines the
+flags that became 9. The chain to Marketing runs across the bottom, and beside it the six rules the
 cheat sheet prints:
 
 1. Say what one row of the list is before you rank it: fifty orders named only 28 members.

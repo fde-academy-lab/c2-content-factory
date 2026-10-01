@@ -56,7 +56,7 @@ shoppers), Retail-Plus (the paid membership tier) and Student. Then what each on
 
 ---
 
-## S3. Lists, a tie rule, a flag and the plan: four answers
+## S3. A wrong answer costs offers, members or a campaign
 *What does each person need from the data team, and what does a wrong answer cost them?*
 
 **The client asks.** "Give us the top fifty customers by Q2 revenue in each segment, and flag anyone whose monthly spend has fallen for two months running."
@@ -155,7 +155,7 @@ run beside it, and the notebook's numbered sections are the questions on the nex
 
 ---
 
-## S7. Answering it for Marketing: six questions on the way
+## S7. Answering it for Marketing: five questions on the way
 *Who needs the top fifty, and which questions lead to it?*
 
 **Who needs the answer.** The marketing lead spends the protect budget, a call from the member team and a renewal offer, on the members this list names. A list built on the wrong unit sends offers to the wrong people: each best member it misses is one nobody calls, and each one it repeats is a call made twice.
@@ -163,15 +163,14 @@ run beside it, and the notebook's numbered sections are the questions on the nex
 ```timeline
 label: 1 | title: Which way, at what cost? | body: Four ways to rank
 label: 2 | title: What did each member book? | body: One row per member
-label: 3 | title: Which fifty spent most? | body: Numbered in a window
+label: 3 | title: Which fifty, from which segments? | body: Numbered in a window
 label: 4 | title: What does the quick list give? | body: The fifty biggest orders
-label: 5 | title: Which segments does it reach? | body: Counted by segment
-label: 6 | title: Does Python agree? | body: A sort with no SQL | tone: dark
+label: 5 | title: Does Python agree? | body: A sort with no SQL | tone: dark
 ```
 
 ```notes
-LIVE, 1 minute. Read the six questions. Each gets its answer before the next is asked, and the
-chapter's last slide answers all six beside the review of Kavya Nair, the senior analyst who checks
+LIVE, 1 minute. Read the five questions. Each gets its answer before the next is asked, and the
+chapter's last slide answers all five beside the review of Kavya Nair, the senior analyst who checks
 every number before it leaves the team. Then the need.
 ```
 
@@ -215,24 +214,25 @@ which is the dashboard's word. Then four ways Kalpa could rank.
 
 ---
 
-## S10. Group, then number in a window: one query, 155 rows
+## S10. Group, then number in a window: one query, one read
 *How could the team build a ranked list, and what would each way cost?*
 
-| Option | One row is | For the four segment lists | Leaves the warehouse |
+| Option | One row is | For the four segment lists | Order rows read |
 |---|---|---|---|
-| A. Sort the Q2 orders, keep 50 | an order | 4 sorts, each a list of orders | 188 order rows |
-| B. Group by member, sort, LIMIT 50 | a member | 4 queries glued | 155 rows |
-| C. Group, number in a window, keep 1 to 50 | a member and its place | 1 query | 155 rows |
-| D. Export and sort by hand | anything | 4 sorts by hand | all 462 Q2 orders |
+| A. Sort the Q2 orders, keep 50 | an order | 4 sorts, 188 orders kept | 1,848, the 462 four times |
+| B. Group by member, sort, LIMIT 50 | a member | 4 queries glued | 1,848, the 462 four times |
+| C. Group, number in a window, keep 1 to 50 | a member and its place | 1 query | 462, once |
+| D. Export and sort by hand | anything | 4 sorts by hand | all 462, exported |
 
-**The call.** C, because Marketing's ask is per segment and the place has to be a column a later step can count. What would switch it: one overall list to read by eye, where B is shorter and returns the same fifty.
+**The call.** C, because Marketing's ask is per segment, C reads the orders once, and the place has to be a column a later step can count. What would switch it: one overall list to read by eye, where B is shorter and returns the same fifty.
 
 ```notes
 LIVE, 4 minutes. LIMIT counts rows across the whole result, so B needs one query per segment, four
-in all, to move the same 155 rows C moves in one: fifty from Retail-Core and Retail-Plus, and every
-buyer in Business, 35, and Student, 20. A moves 188 rows, fifty of each segment's orders and Student's
-38, and every row is an order, which the chapter comes back to. D breaks the data platform lead's
-rule, "query it, do not export it". Then the picture of option C.
+in all, and each reads the 462 Q2 orders again: 1,848 reads, where C reads them once. A reads as
+much and keeps 188 rows, fifty of each segment's orders and Student's 38, and every row is an order,
+which the chapter comes back to. D breaks the data platform lead's rule, "query it, do not export
+it". Do not say how many members the four lists hold, since S30 asks the room. Then the picture of
+option C.
 ```
 
 ---
@@ -299,7 +299,7 @@ on Rs 35,770. Ask what that gap does to one list across the whole book. Then pre
 ---
 
 ## S14. Question: how many segments reach the fifty?
-*Which fifty members spent the most?*
+*Which fifty members spent the most, and which segments do they reach?*
 
 ```sql
 WITH q2_spend AS (...),
@@ -318,7 +318,7 @@ LIVE, 2 minutes. Letters in chat. Then the answer.
 ---
 
 ## S15. Answer: 35 Business, 11 Retail-Plus, 4 Retail-Core
-*Which fifty members spent the most?*
+*Which fifty members spent the most, and which segments do they reach?*
 
 ```stats
 value: 35 | label: Business | note: every Business buyer in Q2
@@ -434,12 +434,11 @@ the check and the query is what Marketing gets. Then the chapter's answers.
 
 | The question on the way | The answer |
 |---|---|
-| 1. Which way, at what cost? | Group, then number in a window: one query, 155 rows |
+| 1. Which way, at what cost? | Group, then number in a window: one query, one read |
 | 2. What did each member book? | 227 rows, all 462 orders and Rs 9,84,00,000 |
-| 3. Which fifty spent most? | 35 Business, 11 Retail-Plus, 4 Retail-Core |
+| 3. Which fifty, from which segments? | 35 Business, 11 Retail-Plus, 4 Retail-Core; Student none |
 | 4. What does the quick list give? | 50 orders naming 28 members, all Business |
-| 5. Which segments does it reach? | Three; Student none |
-| 6. Does Python agree? | Yes, member for member |
+| 5. Does Python agree? | Yes, member for member |
 
 **Kavya's review.** "Say what one row of your list is before you say who is on it. A top fifty of orders and a top fifty of members look alike on screen and send Marketing to different people."
 
@@ -578,7 +577,7 @@ WHERE  o.quarter = 'Q2'
 GROUP  BY c.segment;
 ```
 
-**Question.** How many rows come back, as a letter? a) 4; b) 155, fifty or every buyer per segment; c) 200, fifty per segment; d) 50.
+**Question.** How many rows come back, as a letter? a) 4; b) 227, one per member who bought; c) 200, fifty per segment; d) 50.
 
 ```notes
 LIVE, 2 minutes. Letters in chat. Then the answer, and the second attempt.
@@ -702,8 +701,7 @@ flowchart LR
 ```notes
 LIVE, 2 minutes, and never longer. Somebody writes the filter in WHERE; Postgres prints "ERROR:
 window functions are not allowed in WHERE". Read the last line, point at Monday's drawing of the
-order a query runs in, move the place into a CTE, and move on. It is an error met on the way, and it
-gets its two minutes and no more. Then a second route with no window.
+order a query runs in, move the place into a CTE, and move on. Then a second route with no window.
 ```
 
 ---
@@ -989,7 +987,7 @@ LIVE, 2 minutes. Then the head of Retail-Plus's own segment, which the room coun
 ```python
 # rows() runs a named query from the chapter's .sql file; this one counts
 # the rows each of the four rules ships for Retail-Plus's top fifty
-mine = rows(Q["c3_your_segment"])[0]
+mine = rows(Q["c3_retail_plus_rules"])[0]
 mine
 ```
 
@@ -1145,8 +1143,8 @@ LIVE, 4 minutes. The book holds 752 member-months, one row per member per month 
 
 ---
 
-## S53. LAG reads the row before, inside its window
-*What does LAG put beside each row?*
+## S53. 752 member-months, and LAG reads the row before
+*What did each member spend in each month?*
 
 ```mermaid
 flowchart LR
@@ -1159,7 +1157,7 @@ flowchart LR
     class F bet
 ```
 
-`lag(spend, 1) OVER (PARTITION BY customer_id ORDER BY month)` reads the previous row inside the member's own months, and `lag(spend, 2)` two rows back. LEAD reads the next row the same way; nothing today needs it.
+The monthly table holds one row per member per month with an order: 752 member-months for 301 members, 118 of them with a September order. `lag(spend, 1) OVER (PARTITION BY customer_id ORDER BY month)` reads the previous row inside the member's own months, and `lag(spend, 2)` two rows back. LEAD reads the next row the same way; nothing today needs it.
 
 ```notes
 LIVE, 1 minute. Then predict on one member.

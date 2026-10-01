@@ -36,7 +36,7 @@ whether frequency is falling in Retail-Core at all.
 |---|---|---|
 | 1 | 96 members, 193 orders: 1 member with 8 orders, 2 with 7, 2 with 5, 5 with 4, 14 with 3, 27 with 2 and 45 with 1 | Seven different counts for 96 members, so ties are everywhere. |
 | 2 | Ranked by orders alone: ROW_NUMBER 50, RANK 51, DENSE_RANK 96, whole ties only 24 | DENSE_RANK has only seven numbers to give, so every member is inside fifty. |
-| 3 | 24 members with three or more orders, then the 27 with two all at place 25 | RANK ships 24 plus 27, one over the line. |
+| 3 | 24 members with three or more orders, then the 27 with two all at place 25 | RANK ships 24 plus 27, one over fifty. |
 | 4 | Orders first, Q2 revenue second: RANK ships 50, and the two-order member left off is C-0070, who booked Rs 2,730, the least of the 27 | The second key breaks the crowd with a reason. |
 | 5 | 49 members on both lists: C-0092 (two orders, Rs 2,950) only on the frequency list, C-0072 (one order, Rs 2,990) only on the revenue list | One member swaps each way. |
 | 6 | The frequency list carries Rs 2,78,700 and 146 orders, the revenue list Rs 2,78,740 and 145 orders | The change costs Rs 40 of covered revenue and buys one more order. |
@@ -59,7 +59,7 @@ count is the member's orders: 193 across 96 members.
 - c, "`count(DISTINCT o.order_date)`, so a day with two orders counts once": three Retail-Core members
   placed two Q2 orders on the same day, so their counts fall by one and the counts no longer add back to
   the segment's 193 orders.
-- d, "`count(DISTINCT date_trunc('month', o.order_date))`, the months with an order": 1 to 3 for every
+- d, "`count(DISTINCT date_trunc('month', o.order_date))`, months with orders": 1 to 3 for every
   member, a different measure that ties even more.
 
 ### Q2. Which window puts the head of Retail-Plus's rule on the orders count?
@@ -111,8 +111,7 @@ C-0147, goes, though they spent Rs 2,050 more than C-0070, who stays. The rule s
 member nobody would choose over the one it drops, and its only reason is the order the ids were
 issued in.
 
-- a, "C-0070, who booked Rs 2,730, the least of the 27, so the id rule and a spend rule leave off the
-  same member": that is what a spend key does; C-0070's id is low, so the id rule keeps them.
+- a, "C-0070, who booked Rs 2,730, the least of the 27, so the id rule cuts the member a spend rule would": that is what a spend key does; C-0070's id is low, so the id rule keeps them.
 - b, "C-0092, who booked Rs 2,950, since they are the member a list ranked by revenue alone also leaves
   off": C-0092 is off the revenue list, a different list, and their id is lower than C-0147's, so the id
   rule keeps them.
@@ -124,7 +123,7 @@ issued in.
 This item asks you to choose the query. The key is a, "An INNER JOIN of the two lists on customer_id, counting the rows
 it returns". The join keeps a member only when their id is on both lists: 49.
 
-- b, "A LEFT JOIN from the revenue list to the frequency list, counting all the rows it returns": keeps
+- b, "A LEFT JOIN from the revenue list to the frequency list, counting every row": keeps
   every revenue-list row whether or not it matched, 50.
 - c, "UNION ALL of the two lists, counting the rows": stacks the two lists, 100 rows.
 - d, "The revenue list EXCEPT the frequency list, counting the rows it returns": EXCEPT keeps the
@@ -142,7 +141,7 @@ alone.
 
 - a, "UNION ALL of the two lists' ids, 100 rows, less one list's 50, which gives 50 shared": taking
   one list away from the stack leaves the other list, whoever is on it.
-- b, "The frequency list's members with two or more Q2 orders, counted with a filter, which gives 50":
+- b, "A filter on the frequency list for members with two or more Q2 orders, which gives 50":
   every member on the frequency list has two or more orders by construction, so the filter returns 50
   whatever the overlap.
 - d, "Retail-Core's 96 buyers less the 45 who are on neither list, which gives 51 shared": 51 is the

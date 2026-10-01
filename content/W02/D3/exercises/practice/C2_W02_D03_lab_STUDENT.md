@@ -190,7 +190,7 @@ b) V-04, since they stand off the top five and Marketing does not ring them
 
 c) V-05, since their September fell by less than their August did
 
-d) V-03, since their fall began in July, before the two months Marketing asked about
+d) V-03, since their fall began in July, before the two months Marketing named
 
 ### Q8. Who does Marketing ring first: listed under the head's rule and flagged on calendar months?
 

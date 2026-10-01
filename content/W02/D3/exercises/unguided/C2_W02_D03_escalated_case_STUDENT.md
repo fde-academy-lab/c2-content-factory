@@ -136,7 +136,7 @@ a) `OVER (PARTITION BY segment ORDER BY month)`
 
 b) `OVER (PARTITION BY customer_id ORDER BY month)`
 
-c) `OVER (ORDER BY customer_id, month)`, since the sort keeps a member's months together
+c) `OVER (ORDER BY customer_id, month)`
 
 d) `OVER (PARTITION BY month ORDER BY customer_id)`
 
@@ -280,7 +280,7 @@ d) "Q2 revenue to date stood at about nine times the weekly plan by mid-quarter,
 
 Which sentence goes to Marketing with the lists?
 
-a) "Every segment's list holds exactly fifty members, cut by a tiebreaker stated in advance, so each list is the same size for the calls."
+a) "Every segment's list holds exactly fifty, cut by a tiebreaker stated in advance, so each list is the same size for the calls."
 
 b) "Each list holds fifty, or every buyer where a segment has fewer, and a list above fifty names the members tied at its line."
 

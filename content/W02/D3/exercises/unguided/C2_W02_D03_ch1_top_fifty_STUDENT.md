@@ -51,7 +51,7 @@ nobody rang, and every member it repeats is a call made twice.
 
 **The questions on the way.**
 
-- Which build fits Marketing's per-segment ask, and what does it cost on Q2's data?
+- Which build fits a top twenty-five in each segment, and what does it cost on Q2's data?
 - What is wrong with the colleague's top ten, and which check catches it?
 - If Marketing trimmed the whole-book list to forty, which segments would it reach?
 - Which second route could catch a member wrongly left off the fifty, and how many rows does it move?
@@ -70,16 +70,17 @@ Post exactly this shape: xxxxx
 This comes up at work whenever a stakeholder asks for a ranked list and a team will act on everything it
 holds.
 
-### Q1. Which build fits Marketing's per-segment ask, and what does it cost on Q2's data?
+### Q1. Which build fits a top twenty-five in each segment, and what does it cost on Q2's data?
 
-Marketing asked for a list in each of the four segments. Each build below carries its cost for all
-four lists, worked from the segment table above. Which build fits the ask, judged on those costs?
+Suppose Marketing asked for each segment's top twenty-five members by Q2 revenue. Each build below
+carries its cost for all four lists, worked from the segment table above. Which build fits the ask,
+judged on those costs?
 
-a) Sort each segment's Q2 orders by amount and keep the top fifty: 188 rows leave the warehouse
+a) Sort each segment's Q2 orders by amount and keep twenty-five: 100 rows leave the warehouse
 
-b) Rank members in four LIMIT 50 queries glued with UNION ALL, each reading all 462 Q2 orders
+b) Rank members in four LIMIT 25 queries glued with UNION ALL, each reading all 462 Q2 orders
 
-c) Number the members in a window that restarts in each segment: one query, and 155 rows leave
+c) Number the members in a window that restarts in each segment: one query, and 95 rows leave
 
 d) Export the 462 Q2 orders and sort each segment by hand: four sorts, and every row leaves
 

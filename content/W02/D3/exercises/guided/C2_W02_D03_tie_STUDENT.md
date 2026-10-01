@@ -204,6 +204,6 @@ c) "Retail-Core's list holds 50 under ROW_NUMBER, cut by customer id, so it is t
 d) "Retail-Core's list holds 50 under whole ties only, so no tie anywhere on the list is ever split."
 
 **Your turn, after the build.** Section 3 of `notebooks/C2_W02_D03_03_tie_rule_STUDENT.ipynb` ends on an
-empty cell for the head's own segment, Retail-Plus. Run block `c3_your_segment` there, read the
+empty cell for the head's own segment, Retail-Plus. Run block `c3_retail_plus_rules` there, read the
 members around fiftieth place if your four counts differ, and write the same kind of sentence for the
 head's list. The TA reads the sentences in the practice lab.

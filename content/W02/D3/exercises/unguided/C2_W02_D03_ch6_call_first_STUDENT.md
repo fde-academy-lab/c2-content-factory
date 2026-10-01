@@ -33,7 +33,7 @@ costs their goodwill and perhaps their renewal.
 
 - Which reading of "last month" fits the flag, sized in the rows it reads?
 - Which months does chapter 4's flag compare for an invented member with gaps, and does a flag that reads calendar months keep them?
-- What does the book say about an invented member with no September order, and which flag should name them?
+- In what order should the team build Monday's call list from the warehouse?
 - Which route confirms the nine calendar-month flags with no window, and what does it read?
 - Which fact would make filling an empty month with zero the honest reading?
 
@@ -82,20 +82,31 @@ c) September against nothing, since LAG returns NULL across empty months, so nei
 
 d) September against June and April, so both flags keep them, since each month they ordered fell
 
-### Q3. What does the book say about an invented member with no September order, and which flag should name them?
+## In what order is Monday's call list built?
 
-Every number in this item is invented. Y-02 bought in July (Rs 2,300) and August (Rs 1,800) and placed
-no order in September. An analyst fills every empty month with zero and reports Y-02 among the members
-whose spend fell two months running. What does the book say about Y-02's September, and which flag
-should name them?
+This comes up at work whenever a query is written as named steps and each step needs what an earlier
+one made.
 
-a) A fall to zero, so the falling-spend flag names them and Marketing rings them about that fall
+### Q3. In what order should the team build Monday's call list from the warehouse?
 
-b) A fall to zero once their August is checked against July, so the flag names them with a note
+The four steps below are lettered P to S and listed out of order.
 
-c) Nothing to compare, since they placed no September order; a separate went-quiet list names them
+| Step | What it does |
+|---|---|
+| P | Join the members the flag keeps to each segment's protect list under RANK, and sort them by place |
+| Q | Add up each member's spend in each calendar month, one row per member and month |
+| R | Keep the September rows that fell twice and whose two rows before are August and July |
+| S | Set the spend and the month one and two rows back beside every row, partitioned by member and ordered by month |
 
-d) An unknown, so their July and August are dropped as well, and they leave the book until they buy
+Which order of the four steps builds the list?
+
+a) S, Q, R, P
+
+b) Q, R, S, P
+
+c) Q, S, R, P
+
+d) S, R, Q, P
 
 ## How do you prove the call list without the window?
 

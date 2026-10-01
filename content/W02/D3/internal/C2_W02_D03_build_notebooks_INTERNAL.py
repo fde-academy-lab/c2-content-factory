@@ -230,10 +230,9 @@ def ch1():
         **The questions on the way.**
         1. Which ways could the team build a ranked list, and what would each cost?
         2. What did each member book in Q2?
-        3. Which fifty members spent the most?
+        3. Which fifty members spent the most, and which segments do they reach?
         4. What does the quickest list, the fifty biggest orders, give Marketing?
-        5. Which segments does the list of fifty members reach?
-        6. Does a sort in Python pick the same fifty members?
+        5. Does a sort in Python pick the same fifty members?
 
         **The metric at stake.** Q2 revenue per member: the booked amount of every Q2 order the
         member placed, whatever its status, which is how Monday's suite reached Rs 9,84,00,000 for
@@ -256,16 +255,15 @@ def ch1():
         setup("01_top_fifty"),
         where(1, ["the options\nfour ways to rank",
                   "one row per member\nwhat each booked",
-                  "the fifty\nnumbered in a window",
+                  "the fifty, by segment\nnumbered in a window",
                   "the quickest list\nthe fifty biggest orders",
-                  "who is on it\nsegment by segment",
                   "a second route\na sort in Python"]),
         md("""
         ## The options: which ways could the team build a ranked list, and what would each cost?
 
         A team could hand Marketing a ranked list in four ways. They differ in what one row of the
         answer is, and in what the four segment lists Marketing asked for would take: how many
-        queries, and how many rows leave the warehouse.
+        queries, and how many order rows the warehouse reads to answer them.
 
         | Option | What one row of the answer is | Its place on the list | For the four segment lists |
         |---|---|---|---|
@@ -278,51 +276,52 @@ def ch1():
         where GROUP BY collapses each group to one. `row_number() OVER (ORDER BY q2_revenue DESC)`
         numbers the members from the biggest down.
 
-        **Predict before you run.** For the per-segment list Marketing asked for, how many queries
-        does option B need, against option C?
+        **Predict before you run.** For the four segment lists, how many order rows does option B
+        read, against option C?
 
-        - a) One each, since both group by member.
-        - b) Four for B, one per segment, against one for C.
-        - c) Fifty for B, one per place, against one for C.
-        - d) None for either, since LIMIT 50 already works per segment.
+        - a) 462 each, since both group the same Q2 orders by member.
+        - b) 1,848 for B, the 462 read once for each segment, against 462 for C.
+        - c) 200 for B, fifty for each segment, against 50 for C.
+        - d) 50 for B, against 462 for C.
         """),
         code(r'''
             q2_orders = rows(Q["c1_q2_book"])[0]["orders"]
             segments = rows(Q["c1_segments"])
-            per_segment_rows = sum(min(50, s["members_who_bought"]) for s in segments)
             per_segment_orders = sum(min(50, s["orders"]) for s in segments)
-            sizing = [("A. sort the orders", per_segment_orders, "order", f"{len(segments)} queries"),
-                      ("B. group, sort, LIMIT", per_segment_rows, "member", f"{len(segments)} queries"),
-                      ("C. group, number in a window", per_segment_rows, "member and place", "1 query"),
-                      ("D. export and sort by hand", q2_orders, "order, by hand", f"{len(segments)} sorts by hand")]
-            kit.table(["option", "rows that leave the warehouse", "one row is", "for the four segment lists"],
+            sizing = [("A. sort the orders", len(segments) * q2_orders, "order",
+                       f"{len(segments)} sorts, {per_segment_orders} orders kept"),
+                      ("B. group, sort, LIMIT", len(segments) * q2_orders, "member", f"{len(segments)} queries glued"),
+                      ("C. group, number in a window", q2_orders, "member and place", "1 query"),
+                      ("D. export and sort by hand", q2_orders, "order, by hand",
+                       f"{len(segments)} sorts by hand, every row exported")]
+            kit.table(["option", "order rows read", "one row is", "for the four segment lists"],
                       [(o, n, unit, extra) for o, n, unit, extra in sizing],
                       caption=f"Sized on this warehouse for the four segment lists: {q2_orders} Q2 orders, "
-                              f"{len(segments)} segments, at most fifty rows from each")
-            kit.bars([(o, n) for o, n, _, _ in sizing],
-                     title="Rows that leave the warehouse for the four segment lists",
+                              f"{len(segments)} segments")
+            kit.bars([(o, n) for o, n, _, _ in sizing[:3]],
+                     title="Order rows each query option reads for the four segment lists",
                      lit=(2,))
             '''),
         md("""
         **What happened.** The answer is b. LIMIT counts rows across the whole result, so option B
-        needs one sorted query per segment, four in all, glued together, to move the same 155 rows
-        that option C moves in one query; option C numbers the members once and restarts the
-        numbering per segment with one more phrase, which chapter 2 writes. Option A moves 188 rows
-        that are orders, fifty from each segment's orders and Student's 38, so each list still names
-        orders. Option D moves all 462 Q2 order rows out of the warehouse, which the data platform
-        lead's rule, "query it, do not export it", rules out.
+        needs one sorted query per segment, four in all, glued together, and each reads all 462 Q2
+        orders again: 1,848 reads, where option C reads them once, numbers the members and restarts
+        the numbering per segment with one more phrase, which chapter 2 writes. Option A reads as
+        much as B and keeps 188 rows that are orders, fifty from each segment's orders and Student's
+        38, so each list still names orders. Option D moves all 462 Q2 order rows out of the
+        warehouse, which the data platform lead's rule, "query it, do not export it", rules out.
 
-        **The best-fit call.** Option C, because Marketing's ask is per segment and the place has to
-        be a column that a later step can count and filter, which option B's screen position is
-        not. What would change the call is Marketing wanting one overall list to read by eye and
+        **The best-fit call.** Option C, because Marketing's ask is per segment, option C reads the
+        orders once, and the place has to be a column that a later step can count and filter, which
+        option B's screen position is not. What would change the call is Marketing wanting one overall list to read by eye and
         nothing more: then option B is shorter and returns the same fifty members, and the place as
         a column would earn nothing.
         """),
         code(r'''
             kit.check("Q2 holds 462 orders", q2_orders == 462, f"{q2_orders} orders")
             kit.check("four segments bought in Q2", len(segments) == 4, ", ".join(s["segment"] for s in segments))
-            kit.check("the export moves more rows than either query", sizing[3][1] > sizing[2][1], f"{sizing[3][1]} against {sizing[2][1]}")
-            kit.check("the four segment lists hold 155 members", per_segment_rows == 155, f"{per_segment_rows} rows")
+            kit.check("option B reads the Q2 orders once for each segment", sizing[1][1] == 4 * q2_orders, f"{sizing[1][1]} reads")
+            kit.check("option A keeps 188 order rows, fifty a segment and Student's 38", per_segment_orders == 188, f"{per_segment_orders} rows")
             '''),
         md("""
         **The day's picture.** GROUP BY keeps one row per group, so it answers how much each group
@@ -380,7 +379,7 @@ def ch1():
             kit.check("no member appears twice", len({m["customer_id"] for m in members}) == len(members))
             '''),
         md("""
-        ## 2. Which fifty members spent the most?
+        ## 2. Which fifty members spent the most, and which segments do they reach?
 
         Option C in full: a named step adds up each member's Q2, a window numbers the members from
         the biggest down, and the outer query keeps places 1 to 50. The customer id after the
@@ -432,6 +431,31 @@ def ch1():
                       {r["customer_id"] for r in fifty} == {r["customer_id"] for r in fifty_b})
             kit.check("the places run from 1 to 50 with no gap", [r["position"] for r in fifty] == list(range(1, 51)))
             kit.check("every Business buyer is on the list", by_segment.get("Business") == 35, f"{by_segment.get('Business')} of 35")
+            '''),
+        md("""
+        Marketing's ask says "in each segment", so the list is counted by segment, with every segment
+        in the count, including one with nobody on the list, and each count is set beside the
+        members who bought.
+        """),
+        code(r'''
+            reach = run("c1_list_by_segment", "The one list of fifty, counted by segment", echo=False)
+            kit.columns([r["segment"] for r in reach],
+                        [("on the list of fifty", [r["on_the_list"] for r in reach]),
+                         ("members who bought in Q2", [r["members_who_bought"] for r in reach])],
+                        title="One list across the book reaches Business in full and Student not at all")
+            '''),
+        md("""
+        **What the count shows.** Business has all 35 of its buyers on the list, Retail-Plus 11 of
+        its 76, Retail-Core 4 of its 96 and Student none of its 20. The
+        tier Marketing is worried about gets eleven places, because any Business buyer outranks
+        every retail member. Marketing asked for fifty in each segment, and that is chapter 2's
+        question.
+        """),
+        code(r'''
+            got = {r["segment"]: r["on_the_list"] for r in reach}
+            kit.check("the counts add back to fifty", sum(got.values()) == 50, str(got))
+            kit.check("the Student line is printed with nobody on it", got.get("Student") == 0)
+            kit.check("Retail-Plus holds 11 places of 50", got.get("Retail-Plus") == 11)
             '''),
         md("""
         ## 3. What does the quickest list, the fifty biggest orders, give Marketing?
@@ -496,39 +520,6 @@ def ch1():
                       members_on_orders_list <= members_on_member_list)
             kit.check("the fix reaches 22 more members", len(members_on_member_list - members_on_orders_list) == 22,
                       f"{len(members_on_member_list - members_on_orders_list)} more")
-            '''),
-        md("""
-        ## 4. Which segments does the list of fifty members reach?
-
-        The member list is the right unit, and Marketing's ask also says "in each segment". Count
-        the list by segment, with every segment in the count, including one with nobody on the list.
-
-        **Predict before you run.** How many Student members are on the one list of fifty?
-
-        - a) None.
-        - b) About five, since Student is about a tenth of the members.
-        - c) All twenty Student members who bought.
-        - d) Fifty, one list per segment.
-        """),
-        code(r'''
-            reach = run("c1_list_by_segment", "The one list of fifty, counted by segment", echo=False)
-            kit.columns([r["segment"] for r in reach],
-                        [("on the list of fifty", [r["on_the_list"] for r in reach]),
-                         ("members who bought in Q2", [r["members_who_bought"] for r in reach])],
-                        title="One list across the book reaches Business in full and Student not at all")
-            '''),
-        md("""
-        **What happened.** The answer is a: no Student member. Business has all 35 of its buyers on
-        the list, Retail-Plus 11 of its 76, Retail-Core 4 of its 96 and Student none of its 20. The
-        tier Marketing is worried about gets eleven places, because any Business buyer outranks
-        every retail member. Marketing asked for fifty in each segment, and that is chapter 2's
-        question.
-        """),
-        code(r'''
-            got = {r["segment"]: r["on_the_list"] for r in reach}
-            kit.check("the counts add back to fifty", sum(got.values()) == 50, str(got))
-            kit.check("the Student line is printed with nobody on it", got.get("Student") == 0)
-            kit.check("Retail-Plus holds 11 places of 50", got.get("Retail-Plus") == 11)
             '''),
         md("""
         ## A second route: does a sort in Python pick the same fifty members?
@@ -612,18 +603,16 @@ def ch1():
         ## So which fifty members spent the most in Q2?
 
         1. **Which way, at what cost?** Group by member and number the members in a window, option
-           C: one query moves the four segment lists' 155 rows with the place as a column, where
-           option B needs four glued queries for the same rows and the export moves all 462 Q2 order
-           rows.
+           C: one query reads the 462 Q2 orders once and keeps the place as a column, where option B
+           needs four glued queries and 1,848 reads, and the export moves all 462 Q2 order rows.
         2. **What did each member book?** One row for each of the 227 members who bought, carrying
            all 462 orders and Rs 9,84,00,000.
-        3. **Which fifty spent the most?** 35 Business members, every Business buyer, then 11
-           Retail-Plus and 4 Retail-Core.
+        3. **Which fifty spent the most, and which segments do they reach?** 35 Business members,
+           every Business buyer, then 11 Retail-Plus and 4 Retail-Core: three segments of four, and
+           Student none.
         4. **What does the quickest list give?** Fifty orders naming only 28 members, all Business;
            counting members beside rows catches it, and ranking members fixes it.
-        5. **Which segments does the list reach?** Three of four: Retail-Plus holds 11 places and
-           Student none.
-        6. **Does Python agree?** Yes, member for member, after moving 462 rows to do it.
+        5. **Does Python agree?** Yes, member for member, after moving 462 rows to do it.
 
         Chapter 2 asks the question Marketing put: which fifty members lead each segment?
         """),
@@ -738,7 +727,7 @@ def ch2():
         **Predict before you run.** How many rows does `GROUP BY c.segment` return?
 
         - a) 4.
-        - b) 155, fifty or every buyer per segment.
+        - b) 227, one per member who bought.
         - c) 200, fifty for each of four segments.
         - d) 50.
         """),
@@ -974,7 +963,7 @@ def ch3():
         defend the list to its members and to Marketing. A member left off by a coin toss, with the
         same spend as the member kept, has a fair complaint; a list labelled fifty that carries
         fifty-two has spent two calls nobody planned; a list that drops both members of a tie at the
-        line is the forty-nine the head has already refused.
+        line, the last place the list keeps, is the forty-nine the head has already refused.
 
         **The questions on the way.**
         1. Which rules could cut a list at fifty, and what does each do at a tie?
@@ -1162,11 +1151,11 @@ def ch3():
         ## 4. How many members does Retail-Plus's list ship under the head's rule, counted in your own run?
 
         **Your turn.** The head of Retail-Plus asked about their own tier. Type these lines into the
-        empty cell below and run it. The query is block `c3_your_segment` of the chapter's `.sql`
+        empty cell below and run it. The query is block `c3_retail_plus_rules` of the chapter's `.sql`
         file, and it counts the rows each rule ships for Retail-Plus:
 
         ```python
-        mine = rows(Q["c3_your_segment"])[0]
+        mine = rows(Q["c3_retail_plus_rules"])[0]
         mine
         ```
 
@@ -2443,7 +2432,7 @@ def case():
                 FROM ({Q2_SPEND}) q2) x WHERE n = 50""")}
             at_or_above = {s: sum(1 for r in rows(f"SELECT segment, q2_revenue FROM ({Q2_SPEND}) q2")
                                   if r["segment"] == s and r["q2_revenue"] >= fiftieth.get(s, 0)) for s in buyers}
-            print("Segments with a fiftieth member to measure the line against:", ", ".join(sorted(fiftieth)))
+            print("Segments with a fiftieth member, the last place a top fifty keeps:", ", ".join(sorted(fiftieth)))
             '''),
         code(r'''
             last_kept = {}
@@ -2473,7 +2462,7 @@ def case():
             # TODO 3. Which window keeps each member's months to themselves?
             #   a) OVER (PARTITION BY segment ORDER BY month)
             #   b) OVER (PARTITION BY customer_id ORDER BY month)
-            #   c) OVER (ORDER BY customer_id, month), since the sort keeps a member's months together
+            #   c) OVER (ORDER BY customer_id, month)
             #   d) OVER (PARTITION BY month ORDER BY customer_id)
             WINDOW = {"a": "OVER (PARTITION BY segment ORDER BY month)",
                       "b": "OVER (PARTITION BY customer_id ORDER BY month)",
@@ -2675,7 +2664,7 @@ def case():
             MEERA = __TODO9__
 
             # TODO 10. Which sentence goes to Marketing with the lists?
-            #   a) "Every segment's list holds exactly fifty members, cut by a tiebreaker stated in advance, so each list is the same size for the calls."
+            #   a) "Every segment's list holds exactly fifty, cut by a tiebreaker stated in advance, so each list is the same size for the calls."
             #   b) "Each list holds fifty, or every buyer where a segment has fewer, and a list above fifty names the members tied at its line."
             #   c) "The lists hold 155 members in all, fifty per segment where possible, ranked by Q2 revenue across the whole book."
             #   d) "Each list ranks members with DENSE_RANK, so members who spent the same share a place and no number is skipped."
@@ -2768,7 +2757,7 @@ def second():
             #   a) count(*), which counts one for every order row the member placed
             #   b) count(DISTINCT o.customer_id), so no member is counted twice
             #   c) count(DISTINCT o.order_date), so a day with two orders counts once
-            #   d) count(DISTINCT date_trunc('month', o.order_date)), the months with an order
+            #   d) count(DISTINCT date_trunc('month', o.order_date)), months with orders
             ORDERS = {"a": "count(*)", "b": "count(DISTINCT o.customer_id)", "c": "count(DISTINCT o.order_date)",
                       "d": "count(DISTINCT date_trunc('month', o.order_date))"}[__TODO1__]
             core = rows(f"""SELECT o.customer_id, {ORDERS} AS q2_orders, sum(o.amount) AS q2_revenue
@@ -2888,7 +2877,7 @@ def second():
         code(r'''
             # TODO 5. Which query counts the members who are on both lists?
             #   a) An INNER JOIN of the two lists on customer_id, counting the rows it returns
-            #   b) A LEFT JOIN from the revenue list to the frequency list, counting all the rows it returns
+            #   b) A LEFT JOIN from the revenue list to the frequency list, counting every row
             #   c) UNION ALL of the two lists, counting the rows
             #   d) The revenue list EXCEPT the frequency list, counting the rows it returns
             BOTH = __TODO5__

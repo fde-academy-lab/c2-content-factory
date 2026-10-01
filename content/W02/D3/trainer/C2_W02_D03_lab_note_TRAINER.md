@@ -107,8 +107,9 @@ corrects it.
    all, so item 11's calls carried to next week are 6, Retail-Plus's 51 less 45. Retail-Plus's list
    carries Rs 3,56,780 of Rs 4,13,380 under RANK, 86.3 percent, against Rs 3,53,430, 85.5 percent, under
    ROW_NUMBER. C-0185 is also one of the seven members whose flag stepped over an empty month (April
-   Rs 3,880, May Rs 6,990, June Rs 2,690, July Rs 1,900, no August, September Rs 1,450), so the member on
-   the line of the list is a member on the edge of the flag as well; keep that for anyone who notices.
+   Rs 3,880, May Rs 6,990, June Rs 2,690, July Rs 1,900, no August, September Rs 1,450). Say this only
+   if a learner notices it: the member at Retail-Plus's line is also one of the flags the calendar
+   check removes.
    If nobody found the tie: "Change the segment to Retail-Plus and count what each rule ships. Do the
    four numbers agree?"
 5. **Which nine members does Marketing ring first?** Ask the room to list the nine with their segment
@@ -119,7 +120,8 @@ corrects it.
    12 and 16. The seven flags the calendar check removes are C-0282, C-0271 and C-0281 of Business,
    C-0060 and C-0054 of Retail-Core, and C-0216 and C-0185 of Retail-Plus. If nobody notices the
    Retail-Plus three: "Which segment carries three of the nine, and what did those three do in each
-   month of Q2?" It is the frequency fall the marketing lead opened the day with, now on a call list.
+   month of Q2?" Those three are the Retail-Plus frequency fall the marketing lead raised at the start
+   of the day, and all three are on the call list.
 6. **Who chose option a on item 8, and where did item 9's July week come from?** To date and the run rate answer different questions,
    and Meera needs both. If a learner asks where the July week's money came from, send the room to sort
    that week's orders by amount and let them find it: KR-00667, one Business order of Rs 1,98,57,600 on
