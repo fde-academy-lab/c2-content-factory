@@ -1,4 +1,4 @@
-# What did Build 1 prove, and what changes first in Build 2?
+# What did Build 1 train, and what changes first in Build 2?
 
 Week 3, Build 1. The week close.
 
@@ -7,8 +7,8 @@ Quote: Which branch of my business is short, and what do I do next?
 Who: Dr Priya Menon, COO, Kalpa Health, to the data and AI team at Kalpa's Global Capability Centre
 
 ```notes
-LIVE, 30 seconds, after grade closure; the last 15 minutes of the week. Four minutes on what the week
-trained, eight on the nine improvements, three on Monday. Dr Menon asked which branch of her business
+LIVE, 30 seconds with S1, after grade closure; the last 15 minutes of the week. Four minutes on what
+the week trained, the cover and S1 included, eight on the nine improvements, three on Monday. Dr Menon asked which branch of her business
 is short and what to tell her board, and every group gave her an answer today, before a panel that had
 never seen its work. Kalpa Health and everyone in it are fictional, and every record in its files is
 synthetic.
@@ -18,7 +18,7 @@ Transition: the three questions that close the week.
 ---
 
 ## S1. Three questions close Build 1 in fifteen minutes
-*What did Build 1 prove, and what does each group change first in Build 2?*
+*What did Build 1 train, and what does each group change first in Build 2?*
 
 ```mermaid
 flowchart LR
@@ -29,11 +29,11 @@ flowchart LR
     class B bet
 ```
 
-Kalpa Health is the US diagnostics business the week was built on; each group's answer to its COO, Dr Menon, is its own one-slide answer, said to the panel today, and these fifteen minutes are about the method behind it.
+Kalpa Health is the US diagnostics business the week was built on; each group's answer to its COO, Dr Menon, is its one-slide answer (claim, evidence, caveat and action), said today to a panel of an industry expert or a senior industry leader, and these fifteen minutes are about the method behind it.
 
 ```notes
-LIVE, 30 seconds. Read the three questions. The middle one is the room's work and takes eight of the
-fifteen minutes.
+LIVE, inside the cover's 30 seconds. Read the three questions. The middle one is the room's work and
+takes eight of the fifteen minutes.
 Transition: question 1, what the week trained.
 ```
 
@@ -43,18 +43,18 @@ Transition: question 1, what the week trained.
 *Which moves from Weeks 1 and 2 did the week carry into a business you had never seen, and what changed on the way?*
 
 ```notes
-LIVE, 4 minutes over S3, S4 and S6; D2 and D5 are read alone. Nothing new was taught this week,
-and that is the point to land: the method transferred, the vocabulary changed, and the cost of an
-error rose.
+LIVE, 3 minutes 30 seconds over S3, S4 and S6, after the cover's 30 seconds; D2 and D5 are read
+alone. Nothing new was taught this week; the room used the moves of Weeks 1 and 2 on a business with
+new words and costlier errors.
 Transition: who needs the answer.
 ```
 
 ---
 
-## D2. The same moves answered a business nobody had seen
+## D2. Every learner will be asked how they handled new data
 *Who needs to know what the week trained, and which questions come on the way?*
 
-**Who needs the answer.** Every learner, who will be asked in an interview how they handled data from a business they did not know, and whose honest answer is now a story from this week with a number in it.
+**Who needs the answer.** Every learner, who will be asked in an interview how they handled data from a business they did not know; an answer with no number and no decision in it sounds like a guess.
 
 ```timeline
 label: 1 | title: The moves | body: Which moves from Weeks 1 and 2 did the week use?
@@ -64,7 +64,8 @@ label: 4 | title: The questions | body: Which interview questions can you now an
 ```
 
 ```notes
-SELF-STUDY, 1 minute. Four questions, answered in order.
+SELF-STUDY, 1 minute. Four questions, answered in order. Watch for a learner who answers with the
+tool they used; the interviewer is asking for the move and the number.
 Transition: the moves.
 ```
 
@@ -103,7 +104,7 @@ Transition: what changed.
 
 ---
 
-## S4. A new domain changed the words and the cost of error
+## S4. New words and costlier errors, with the same moves
 *What changed between Kalpa Retail and Kalpa Health, and what stayed?*
 
 | What | In Kalpa Retail | In Kalpa Health |
@@ -114,11 +115,11 @@ Transition: what changed.
 | Who pays, and when | The shopper, at the till | A plan, Medicare, Medicaid or the patient, weeks later |
 | The cost of an error | A missed sale | A missed diagnosis, or a claim never paid |
 
-**In the interview.** [S] You have joined a healthcare company; how would you apply what you did in retail to our data? [F] What changes when the cost of an error is a missed diagnosis rather than a missed sale?
+**In the interview.** [S] You have joined a healthcare company; how would you apply what you did in retail to our data? [F] What changes when the cost of an error is a missed diagnosis rather than a missed sale? ([S] marks a staple asked everywhere, [F] a question frequent in GCC and product screens.)
 
 ```notes
-LIVE, 1 minute. "The words changed and the cost of being wrong rose; the moves stayed, and that is the
-week." These are Monday's two interview questions, asked again now that the room can answer them from
+LIVE, 1 minute. "The words changed and the cost of being wrong rose, while the moves stayed the
+same." These are Monday's two interview questions, asked again now that the room can answer them from
 its own work. Take one answer to the [F] question and ask what the group checked twice because of it.
 Transition: who does this work for real.
 ```
@@ -134,12 +135,12 @@ icon: receipt | eyebrow: A revenue-cycle firm | title: AGS Health | body: More t
 icon: landmark | eyebrow: Fictional, like Kalpa | title: Kalpa's GCC | body: One company's own centre in Bengaluru, serving Kalpa Health among Kalpa Group's five business units. | tone: dark
 ```
 
-Claims, postings and denials read from Bengaluru for a US laboratory are the daily work of both kinds of team (UnitedHealth Group careers, India; agshealth.com; both read on 1 October 2026).
+Optum India runs healthcare operations, technology and analytics for UnitedHealth Group, and AGS Health does billing and coding for large US hospitals and health systems, both from Indian cities (UnitedHealth Group careers, India; agshealth.com; both read on 1 October 2026).
 
 ```notes
 SELF-STUDY, 1 minute. Optum India calls itself UnitedHealth Group's largest Global Capability
 Center, providing healthcare operations, technology, analytics and support services; AGS Health is a
-revenue-cycle management firm working for US providers. Kalpa's GCC is the first kind: one company's
+revenue-cycle management firm whose clients include large US hospitals and health systems. Kalpa's GCC is the first kind: one company's
 own centre. Monday's domain dossier, section 2, has both.
 Transition: the questions the week equips you to answer.
 ```
@@ -165,14 +166,14 @@ Transition: the questions the week equips you to answer.
 LIVE, 1 minute. Tags: [S] staple asked everywhere, [F] frequent in GCC and product screens, [D] a
 differentiator, as the curriculum calibrates them for 0 to 3 year candidates in the Indian market.
 Tell the room to write their own one-breath answer to each tonight, from their own group's work,
-because each answer is now a true story with a number in it.
+since each answer is now a true story with a number in it.
 Transition: section 2, the one change per group.
 ```
 
 ---
 
 ## SECTION 2: What changes first in Build 2?
-*What one change does each group make on day one of Build 2, and which entry in its challenges log earns it?*
+*What one change does each group make on day one of Build 2, and which entry in its challenges log, the dated record of where it got stuck, earns it?*
 
 ```notes
 LIVE, 8 minutes over S8 and S9, with D7 read alone. Two minutes in groups to agree the sentence, then
@@ -182,10 +183,10 @@ Transition: who needs the change.
 
 ---
 
-## D7. Nine sentences become Build 2's first-day sheet
+## D7. Build 2's first day needs one change per group
 *Who needs each group's change, and which questions come on the way?*
 
-**Who needs the answer.** Each group, on Tuesday 10 November, when Build 2 opens in Kalpa Financial Services; a change named as a feeling gives that first day nothing to do differently.
+**Who needs the answer.** Each group, on Tuesday 10 November, when Build 2 opens in Kalpa Financial Services, the Kalpa business whose lending question arrives in Week 5; a change named as a feeling gives that first day nothing to do differently.
 
 ```timeline
 label: 1 | title: The entry | body: Which challenges-log entry cost your group the most time?
@@ -196,12 +197,13 @@ label: 4 | title: The board | body: Where do the nine sentences go after today? 
 
 ```notes
 SELF-STUDY, 1 minute. Build 2 opens on Tuesday 10 November, after the Monday holiday for Diwali.
+Watch for a sentence with no day in it; a change with no day is not planned.
 Transition: the sentence.
 ```
 
 ---
 
-## S8. One improvement, one sentence, two minutes
+## S8. Each group turns its costliest entry into one sentence
 *How does a group turn its costliest challenge into one change for Build 2?*
 
 ```code
@@ -262,7 +264,7 @@ Transition: who needs Monday's answer.
 ## D10. Meera's growth plan needs the number it chases
 *Who needs Monday's answer, and which questions come on the way?*
 
-**Who needs the answer.** Meera Raghavan, CEO of Kalpa Retail, who is building a growth plan on frequency and wants one number the whole company chases, with the numbers that stop anyone gaming it.
+**Who needs the answer.** Meera Raghavan, CEO of Kalpa Retail, who is building a growth plan on frequency and wants one number the whole company chases, with the numbers that stop anyone gaming it; a target chosen badly moves while the business stands still.
 
 ```timeline
 label: 1 | title: Her ask | body: What does Meera ask on Monday, in her words?
@@ -271,13 +273,14 @@ label: 3 | title: The week in three lines | body: What does the week leave you w
 ```
 
 ```notes
-SELF-STUDY, 1 minute. Three questions, answered on the last two slides.
+SELF-STUDY, 1 minute. Three questions, answered on the last two slides. Watch for a learner who
+hears Monday as new material; it opens on the move this week used most.
 Transition: Meera's ask.
 ```
 
 ---
 
-## S11. Monday opens back in Kalpa Retail, on Meera's number
+## S11. Meera asks for one number; ask first what it counts
 *What does Meera ask on Monday, and which move from this week carries into it?*
 
 **The client asks.** "One number the whole company chases, and the numbers that stop us gaming it. If the target moves and the business does not, I want to know before the board does." Meera Raghavan, CEO, Kalpa Retail
@@ -293,14 +296,14 @@ flowchart LR
 
 ```notes
 LIVE, 2 minutes. Read Meera's words from the slide. Say the three proposals without judging them:
-marketing wants orders per month, operations wants app sessions, and the head of Retail-Plus wants
-reorders per member. Stop there; Monday opens on it.
+marketing wants orders per month, operations wants app sessions, and the head of Retail-Plus, Kalpa
+Retail's paid membership tier, wants reorders per member. Stop there; Monday opens on it.
 Transition: the week in three lines.
 ```
 
 ---
 
-## S12. The week in three lines, and Monday left open
+## S12. Count first, name the denominator, hold the caveat
 *What does Build 1 leave you with, in lines you can say aloud?*
 
 ```timeline

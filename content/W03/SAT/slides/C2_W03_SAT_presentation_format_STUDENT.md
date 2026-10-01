@@ -3,28 +3,29 @@
 Week 3, Build 1. The presentation.
 
 Kicker: WEEK 3  ·  BUILD 1  ·  THE PRESENTATION
-Quote: My dashboard says test volumes grew 5 percent from Q2 to Q3. The plan the board approved asks for 18. Which branch of my business is short, and what do I do next?
+Quote: Which branch of my business is short, and what do I do next?
 Who: Dr Priya Menon, COO, Kalpa Health, to the data and AI team at Kalpa's Global Capability Centre
 
 ```notes
 SELF-STUDY from Wednesday's close, when each group receives this deck with its headline claim
 pinned; LIVE for 30 seconds at the opening of each expert day. Read Dr Menon's words once. Kalpa
 Health and everyone in it are fictional, and every record in its ten files is synthetic. The deck is
-the skeleton each group builds its 25 to 30 minutes on, and every slide marked S is shown at the
-opening; the D slides are read alone, while the group builds.
+the skeleton each group builds its slot on, and every slide marked S is shown at the opening; the D
+slides are read alone, while the group builds. Her dashboard says test volumes grew 5 percent from Q2
+to Q3 against a plan of 18, and D6 carries the numbers.
 Transition: the six questions the deck answers.
 ```
 
 ---
 
-## S1. Six questions turn her ask into your 30 minutes
+## S1. Six questions turn her ask into your slot
 *Which branch of Kalpa Health is short, and does your answer hold when a panel tests it live on the raw files?*
 
 ```mermaid
 flowchart TB
     subgraph R1[" "]
         direction LR
-        Q1["<b>1</b><br/>What will the<br/>panel ask?"] --> Q2["<b>2</b><br/>What goes on<br/>one slide?"] --> Q3["<b>3</b><br/>How is the<br/>claim earned?"]
+        Q1["<b>1</b><br/>What does<br/>Dr Menon need?"] --> Q2["<b>2</b><br/>What goes on<br/>one slide?"] --> Q3["<b>3</b><br/>How is the<br/>claim earned?"]
     end
     subgraph R2[" "]
         direction LR
@@ -37,23 +38,23 @@ flowchart TB
     class Q2 bet
 ```
 
-Kalpa Health runs a laboratory and two patient service centres, where blood is drawn, in each of six US metro areas and bills its patients' payers in dollars; your group answers one of the five questions its COO's heads asked on Monday.
+Kalpa Health runs a laboratory and two patient service centres, where blood is drawn, in each of six US metro areas, and bills whoever pays for each patient's tests (a health plan, Medicare, Medicaid or the patient) in dollars; your group answers one of the five questions its COO's heads asked on Monday.
 
 ```notes
 LIVE, 1 minute, at the opening; SELF-STUDY, 1 minute, on Wednesday night. Read the day's question,
 then the six in order. The dark box is the one slide Dr Menon carries into her board meeting, and
 every other part of the slot exists to earn it.
-Transition: question 1, what the panel will ask.
+Transition: question 1, what Dr Menon needs.
 ```
 
 ---
 
-## SECTION 1: What will the panel ask?
-*What does Dr Menon need from your 25 to 30 minutes, and in what order will the panel ask for it?*
+## SECTION 1: What does Dr Menon need?
+*What does Dr Menon need from your slot, who will hear you, and how do the minutes split?*
 
 ```notes
-SELF-STUDY, about 5 minutes over D2 to D6, with S4 and S5 shown at the opening. The section sets
-who the slot is for. A group that forgets its listener builds a tour of its notebook.
+SELF-STUDY, about 6 minutes over the section's slides, with its two S slides shown at the opening.
+The section sets who the slot is for. A group that forgets its listener builds a tour of its notebook.
 Transition: who needs the answer.
 ```
 
@@ -67,18 +68,19 @@ Transition: who needs the answer.
 ```timeline
 label: 1 | title: The panel | body: Who sits on the panel, and what has it seen before your slot?
 label: 2 | title: Her questions | body: Which four questions does Dr Menon ask every group?
-label: 3 | title: The minutes | body: How do the 25 to 30 minutes of a slot split?
+label: 3 | title: The minutes | body: How do your 17 minutes and the panel's 8 to 10 split?
 label: 4 | title: Her heads' numbers | body: Which numbers has her team already given you? | tone: dark
 ```
 
 ```notes
 SELF-STUDY, 1 minute. Four questions, each answered on its own slide before the next is asked.
+Watch for a group that plans its slot in its notebook's order; the slot runs in Dr Menon's order.
 Transition: who sits on the panel.
 ```
 
 ---
 
-## D3. Two panels hear you, and neither has seen your work
+## D3. One of two panels hears you; neither has seen the work
 *Who sits on the panel, and what have they seen before your slot?*
 
 ```mermaid
@@ -128,8 +130,8 @@ Transition: how the minutes split.
 
 ---
 
-## S5. Seventeen minutes are yours, then the panel's eight
-*How do the 25 to 30 minutes of a slot split, part by part?*
+## S5. Your 17 minutes, then the panel's 8 to 10
+*How do the group's 17 minutes and the panel's 8 to 10 split, part by part?*
 
 ```mermaid
 flowchart LR
@@ -150,9 +152,10 @@ flowchart LR
 | 6. What you would do differently | 1 | One change, specific enough for Build 2 to act on |
 
 ```notes
-LIVE, 1 minute, at the opening. Seventeen minutes is a hard stop: the scribe shows a card at five
-minutes left and at one minute left, and stops the group at 17. The panel then has 8 to 10 minutes,
-and three minutes of changeover close a slot of 28 to 30. Groups overrun on part 3, because cleaning
+LIVE, 1 minute, at the opening. Seventeen minutes is a hard stop: the scribe, a trainer or TA who
+keeps the room's clock, shows a card at five minutes left and at one minute left, and stops the group
+at 17. The panel then has 8 to 10 minutes, so a slot is 25 to 27 minutes in the room, and 28 to 30
+with the three-minute changeover that follows it. Groups overrun on part 3, because cleaning
 is where the week went; the clock takes the overrun out of the analysis, and the panel's questions keep
 their full time.
 Transition: what Dr Menon's team has already said.
@@ -183,18 +186,38 @@ Transition: section 2, the one slide she carries.
 
 ---
 
+## D7. Dr Menon needs her four answers inside 17 minutes
+*What are the answers to the section's four questions, in one line each?*
+
+| The question | The answer in one line |
+|---|---|
+| Who hears you? | One of two panels, the industry expert or the senior industry leader, neither of whom has seen your work |
+| What does Dr Menon ask? | What did you find, how sure are you, what would change your mind, and what do I do on Monday, in that order |
+| How do the minutes split? | Seventeen are yours, the one-slide answer first and the demo inside them, and the panel takes 8 to 10 |
+| Where does your answer start? | From her heads' own numbers, with what each one counts said before you agree or disagree |
+
+**Kavya's review.** Plan the slot in her order, and cut any slide that answers a question she has not asked yet.
+
+```notes
+SELF-STUDY, 1 minute. The section's four answers on one slide, the one a group photographs.
+Watch for a slot whose first slide is the data; the first slide is the claim.
+Transition: section 2, the one slide she carries.
+```
+
+---
+
 ## SECTION 2: What goes on one slide?
 *What does the one slide Dr Menon carries into her board meeting say, and why does it come first?*
 
 ```notes
-SELF-STUDY, about 6 minutes over D7 to D14. The one-slide answer is Week 1 Thursday's note, moved onto
+SELF-STUDY, about 7 minutes over the section's slides. The one-slide answer is Week 1 Thursday's note, moved onto
 a slide and said to a panel that will push on every part of it.
 Transition: who needs the one slide.
 ```
 
 ---
 
-## D7. One slide carries her answer into the boardroom
+## D8. Dr Menon needs one slide she can carry to her board
 *Who needs the one-slide answer, and which questions come on the way?*
 
 **Who needs the answer.** Dr Menon, who reads for two minutes and stops; the slide she carries is the only part of your work her board sees, so a missing part costs her a question she cannot answer in the room.
@@ -208,13 +231,14 @@ label: 5 | title: Caveat and action | body: What makes a caveat, and what makes 
 ```
 
 ```notes
-SELF-STUDY, 1 minute. Five questions, answered in order on the slides that follow.
+SELF-STUDY, 1 minute. Five questions, answered in order on the slides that follow. Watch for a
+draft slide whose first line is about cleaning; the claim goes first.
 Transition: the four parts.
 ```
 
 ---
 
-## D8. Claim, evidence, caveat, action, in that order
+## D9. Claim, evidence, caveat, action, in that order
 *Which four parts make the one-slide answer, in the order Week 1 Thursday's note set them?*
 
 ```mermaid
@@ -236,14 +260,15 @@ icon: arrow-right | eyebrow: Action | title: Monday's move | body: Who does what
 ```
 
 ```notes
-SELF-STUDY, 1 minute. The claim comes first because a COO reads two minutes and stops. The caveat is
-a statement about this claim, so "the data may have quality issues" is no caveat at all.
+SELF-STUDY, 1 minute. The claim comes first because a COO reads two minutes and stops. A caveat
+names one fact about this claim that a reader could check; "the data may have quality issues" names
+no fact, so nobody can check it.
 Transition: what one sentence must carry.
 ```
 
 ---
 
-## D9. A claim carries a number, a denominator and a period
+## D10. One claim sentence carries five slots, caveat included
 *What must one sentence carry before a board can repeat it?*
 
 ```code
@@ -263,82 +288,84 @@ Transition: what one sentence must carry.
 
 ```notes
 SELF-STUDY, 1 minute. The skeleton is the rubric's claim criterion, word for word: one sentence
-carries its number, denominator, period and caveat, plus an action Dr Menon can take. Fill it in for
-your own claim before you build a single chart.
+carries its number, denominator, period and caveat, plus an action Dr Menon can take. That sentence
+leads the slide, and the four parts on the slide before expand it: the evidence shows how the number was computed,
+the caveat line names the fact, and the action line names who acts. Fill the skeleton in for your
+own claim before you build a single chart.
 Transition: how a real lab says it.
 ```
 
 ---
 
-## D10. Quest states its growth as a count and a rate
+## D11. Quest states its growth as a count and a rate
 *How does a listed US laboratory state a quarter's growth, with its denominator?*
 
 ```stats
-value: 10.2% | label: revenues, Q2 2026 on 2025 | note: $3.04 billion in the quarter
+value: 10.3% | label: laboratory revenues, Q2 2026 on 2025 | note: $2,978 million, diagnostic information services
 value: 13.1% | label: more requisitions | note: the count: doctors' orders for tests
 value: 2.8% | label: less revenue per requisition | note: the rate: dollars per order
 ```
 
-Quest Diagnostics told its second quarter of 2026 as a count and a rate, so a reader sees that volume grew faster than revenue because each order brought in less (Quest's second-quarter 2026 results, 23 July 2026).
+Quest Diagnostics printed its laboratory business's second quarter of 2026 as a total beside a count and a rate, so a reader sees that volume grew faster than revenue as each order brought in less (Quest's second-quarter 2026 results, 23 July 2026).
 
 ```notes
 SELF-STUDY, 1 minute. Quest Diagnostics is a US laboratory company with patient service centres and
 laboratories, the shape Kalpa Health copies; Monday's domain dossier has it in section 2. A requisition is
-a doctor's order for tests, the nearest thing to a Kalpa Health booking. The point for your slide: a
-growth number reaches a board with the count it rests on and the rate per unit beside it, so nobody
-reads a price change as more patients.
+a doctor's order for tests, the nearest thing to a Kalpa Health booking. The three figures do not
+multiply exactly (1.131 times 0.972 is 1.099), and the release does not show how they combine, so read
+them as three views of one quarter. The point for your slide: a growth number reaches a board with the
+count it rests on and the rate per unit beside it, so nobody reads a price change as more patients.
 Transition: which of four sentences Dr Menon can carry.
 ```
 
 ---
 
-## D11. Question: which sentence can Dr Menon carry?
+## D12. Question: which sentence can Dr Menon carry?
 *Which of four sentences, on one invented quarter at a Kalpa Health laboratory, can a board repeat?*
 
 **Question.** The lab director's invented quarter: median turnaround, from draw to released result, 22 hours in Q2 and 18 in Q3 on 9,400 tests, and 14 in Q3 when timed from the sample's arrival at the lab. Which sentence can Dr Menon carry? Answer as a letter.
 
-a) Turnaround improved sharply across the laboratory in Q3, and the lab director's team deserves the credit for it.
-b) Median draw-to-result time fell from 22 to 18 hours, Q2 to Q3, on 9,400 tests, courier included; keep the evening run.
-c) Our turnaround analysis shows promising signs which may possibly point to faster results for doctors in coming quarters.
-d) Turnaround is down to 18 hours in Q3, so the evening courier run can stop from Q4 and its whole cost can be saved.
+a) Turnaround fell from 22 hours to 18 across the whole laboratory in Q3, the sharpest gain of the year, and the lab director's team has earned the credit for every hour of it.
+b) Median draw-to-result fell from 22 to 18 hours, Q2 to Q3, on 9,400 tests, part of it maybe the courier's; the lab director keeps the evening run, at its present cost, through Q4.
+c) Our analysis of 9,400 tests in Q3 shows promising signs which may possibly point towards faster results for doctors, and for their patients, over the coming quarters.
+d) Turnaround is down to 18 hours in Q3 on 9,400 tests, so the evening courier run can stop from the start of Q4 and its whole cost can come straight out of the laboratory's running budget.
 
 ```notes
 SELF-STUDY, 2 minutes. The figures are invented, and they sit on the lab director's question, which
-is none of the five your groups took. Choose before the next slide. Most readers split between b and
-d, because d sounds decisive.
+is none of the five your groups took. Choose before the next slide.
 Transition: the answer.
 ```
 
 ---
 
-## D12. Answer: b, the one sentence with all five parts
+## D13. Answer: b, the one sentence that fills all five slots
 *Which sentence can Dr Menon carry, and why does each other one fail?*
 
 | Option | Why it holds or fails |
 |---|---|
-| a | A verdict with no number, no denominator and no window; a board member's first question breaks it |
-| b | Holds: the measure, the window, the count, what the number includes, and an action |
-| c | Hedges every word, so nobody can act on it and nobody can disagree with it |
-| d | An action with no evidence and no caveat, and it cuts the courier run whose hours sit inside the 18 |
+| a | Numbers with no count, no caveat and no action, and credit nobody tested; a board member's first question breaks it |
+| b | Holds: number, 22 to 18 hours; denominator, 9,400 tests; period, Q2 to Q3; caveat, part may be the courier's; action, who, what, until when and at what cost |
+| c | A count with no number, no period and no action, and every word hedged, so nobody can act on it or disagree with it |
+| d | A number and an action with no Q2 to compare and no caveat, and the action cuts the courier run whose hours sit inside the 18 |
 
 **Kavya's review.** Read your claim aloud and ask what you counted, out of what, over which window, and what would change it; if any is missing, the panel will ask for it.
 
 ```notes
-SELF-STUDY, 1 minute. The answer is b. Option d is the tempting one: the action is the fourth part,
-and it cannot stand without the three before it, least of all when the claim's own caveat (courier
-hours included) is what the action would remove.
+SELF-STUDY, 1 minute. The answer is b. Most readers split between b and d, because d sounds
+decisive: the action is the last slot, and it cannot stand without the others, least of all when the
+claim's own caveat, the courier's share, is what the action would remove.
 Transition: what makes a caveat.
 ```
 
 ---
 
-## D13. A caveat names the fact that would change the claim
+## D14. A caveat names the fact that would change the claim
 *What separates a caveat from a disclaimer that protects nobody?*
 
 | A disclaimer | A caveat, on the invented turnaround quarter |
 |---|---|
-| "The data may have quality issues." | "If the lab's clock and the draw site's clock disagree by an hour, the fall is 3 hours, not 4." |
-| "Results may vary." | "Timed from arrival at the lab, Q3 reads 14 hours, so most of the gain could be the courier's." |
+| "The data may have quality issues." | "If the draw sites' clocks moved by an hour in July, between the quarters, the fall could be 3 hours, not 4." |
+| "Results may vary." | "Timed from arrival at the lab, Q3 reads 14 hours, so part of the gain could be the courier's." |
 | "Further analysis is needed." | "One quarter of 9,400 tests; a second quarter at 18 or below would settle it." |
 
 ```mermaid
@@ -359,7 +386,7 @@ Transition: what makes an action.
 
 ---
 
-## D14. An action names who does what, by when, at what cost
+## D15. An action names who does what, by when, at what cost
 *What makes an action one Dr Menon can take on Monday?*
 
 | An action nobody can take | An action Dr Menon can take |
@@ -377,46 +404,69 @@ flowchart LR
 
 ```notes
 SELF-STUDY, 1 minute. The invented quarter again. An action names a person or a role, a move, a date
-and a cost, and "wait and measure" is an action when it carries all four. The one-slide answer is
-done when its action passes this test.
+and a cost, and "wait and measure" is an action when it carries all four. Option b's action passes:
+the lab director, the evening run kept, through Q4, at its present cost. The one-slide answer is done
+when its action passes this test.
+Transition: section 3, how the claim is earned.
+```
+
+---
+
+## D16. One sentence leads, and four parts back it
+*What are the answers to the section's five questions, in one line each?*
+
+| The question | The answer in one line |
+|---|---|
+| Which four parts make the slide? | Claim, evidence, caveat and action, in the order Week 1 Thursday's note set them |
+| What must the claim sentence carry? | Its number, denominator, period and caveat, plus an action |
+| How does a listed lab say it? | As a total beside a count and a rate per unit, as Quest did for its second quarter of 2026 |
+| Which sentence can she carry? | The one that fills all five slots, b on the invented quarter |
+| What makes a caveat, and an action? | A caveat names one checkable fact that would move the claim; an action names who, what, by when and at what cost |
+
+**Kavya's review.** Read the slide aloud in two minutes; if a board member could still ask "per what?" or "so what do I do?", the slide is not done.
+
+```notes
+SELF-STUDY, 1 minute. The section's five answers on one slide. Watch for a claim sentence with the
+action missing; a group that cannot name who acts on Monday has stopped at the finding.
 Transition: section 3, how the claim is earned.
 ```
 
 ---
 
 ## SECTION 3: How is the claim earned?
-*How do the translation, the data made trustworthy and the analysis earn your claim in ten minutes?*
+*How do the translation, the data made trustworthy, the analysis and one change for Build 2 earn your claim in ten minutes?*
 
 ```notes
-SELF-STUDY, about 7 minutes over D15 to D21. Parts 2, 3, 4 and 6 of the slot. Each exists to support
+SELF-STUDY, about 8 minutes over the section's slides. Parts 2, 3, 4 and 6 of the slot. Each exists to support
 the claim already on screen, so a slide here that does not connect to the claim gets cut.
 Transition: who needs the body of the slot.
 ```
 
 ---
 
-## D15. Ten minutes earn the claim your first two stated
+## D17. The panel scores 28 of 40 marks from these ten minutes
 *Who needs the body of your slot, and which questions come on the way?*
 
-**Who needs the answer.** The panel, which scores the translation (8 marks), the data made trustworthy (10) and the analysis (10) from these ten minutes, and Dr Menon, whose board will ask how sure the team is.
+**Who needs the answer.** The panel, which scores the translation (8 marks), the data made trustworthy (10) and the analysis (10) from these ten minutes, and Dr Menon, whose board will ask how sure the team is; a part the group skips is marks the panel cannot give.
 
 ```timeline
 label: 1 | title: The translation | body: How do you show her question is one you have answered before?
 label: 2 | title: The words | body: Which Kalpa Health words play the part of words you know?
 label: 3 | title: The data | body: Which log rows show the data can be trusted?
 label: 4 | title: The charts | body: Which rules let a chart carry one message?
-label: 5 | title: Differently | body: What one change does your group take into Build 2? | tone: dark
+label: 5 | title: Differently | body: What one change does your group take into Build 2, the second build week? | tone: dark
 ```
 
 ```notes
 SELF-STUDY, 1 minute. Twenty-eight of the mini project's 40 marks sit on what these ten minutes
-show, so build each part to earn its marks.
+show, so build each part to earn its marks. Watch for a translation slide that names a tool where it
+should name a move.
 Transition: the translation.
 ```
 
 ---
 
-## D16. The translation maps her words onto a move you own
+## D18. The translation maps her words onto a move you own
 *How do you show that her question is one you have answered before?*
 
 ```mermaid
@@ -446,8 +496,8 @@ Transition: the words.
 
 ---
 
-## D17. The vocabulary map pairs each new word with an old one
-*Which Kalpa Health words play the part of words you learned in Kalpa Retail?*
+## D19. The vocabulary map pairs each new word with an old one
+*Which Kalpa Health words play the part of words you learned in Kalpa Retail, the business of Weeks 1 and 2?*
 
 | Kalpa Health | Kalpa Retail | Where the pair stops fitting |
 |---|---|---|
@@ -467,7 +517,7 @@ Transition: the data made trustworthy.
 
 ---
 
-## D18. Three log rows carry the data's three minutes
+## D20. Show the calls that moved most, and one row kept
 *Which rows of your decisions log show the panel that the data can be trusted?*
 
 ```mermaid
@@ -484,57 +534,59 @@ flowchart LR
 
 | Field | Issue | Rows | Decision | Reason |
 |---|---|---|---|---|
-| `age_band`, an invented row | 14 rows blank | 14 | Kept, labelled unknown | Dropping them would take 14 patients' bookings out of every count, and no claim splits by age |
+| The column, as the file names it | What you saw, with its count | How many rows the call touches | Drop, fill, flag or keep | What the call changes in the counts or dollars, and what it cannot change |
 
 ```notes
 SELF-STUDY, 1 minute. The log's shape is Week 1 Wednesday's: field, issue, rows, decision, reason.
-Show the three calls that moved the most rows or dollars, and one row you kept, since the row you
-kept is the one an auditor asks about. Say the reconciliation as counts: rows in, rows kept, rows set
-aside. The row here is invented to show the shape, and the real files' age bands have no blanks.
-Transition: a question on reasons.
+Show the calls that moved the most rows or dollars, three at most, and one row you kept, since the row
+you kept is the one an auditor asks about. Say the reconciliation as counts: rows in, rows kept, rows
+set aside.
+Transition: a question on a row an auditor would send back.
 ```
 
 ---
 
-## D19. Question: which reason would an auditor accept?
-*Which of four reasons for the same invented call would an auditor accept?*
+## D21. Question: which cell would an auditor send back?
+*Which cell of one invented decisions-log row fails an auditor's reading?*
 
-**Question.** The invented call: 14 blank age bands, kept and labelled unknown. Which reason would an auditor accept? Answer as a letter.
+**Question.** The invented row reads: field `age_band`; issue, 14 rows blank; rows, 14; decision, kept and labelled unknown; reason, "the 14 rows were blank, so they needed cleaning before use". Which cell would an auditor send back? Answer as a letter.
 
-a) Dropping them would remove 14 patients' bookings from every count, and no claim we make splits by age.
-b) The 14 age bands were blank, so they were inconsistent with the rest and needed cleaning before use.
-c) Keeping blank rows and labelling them unknown follows the usual data-cleaning best practice for a column.
-d) Fourteen rows out of 6,700 patients is too few to change any number we report, so the call does not matter.
+a) The reason, which restates the issue and never says what keeping the rows changes.
+b) The rows, since a call that touches 14 of 6,700 patients is too small to log at all.
+c) The decision, since blank values must be dropped before anything at all is counted.
+d) The field, since a column with blanks has to be renamed before a call is logged on it.
 
 ```notes
-SELF-STUDY, 1 minute. Choose before the next slide. The test of a reason is whether it says what the
-row changes in the answer.
+SELF-STUDY, 1 minute. Choose before the next slide. The row is invented, and the real files' age
+bands have no blanks.
 Transition: the answer.
 ```
 
 ---
 
-## D20. Answer: a, the reason says what the call changes
-*Which reason would an auditor accept, and why does each other one fail?*
+## D22. Answer: a, the reason must say what the call changes
+*Which cell would an auditor send back, and why does each other criticism fail?*
 
 | Option | Why it holds or fails |
 |---|---|
-| a | Holds: it names what dropping would do to the counts, and why keeping cannot touch the claim |
-| b | Restates the issue as its own reason, which an auditor reads as no reason at all |
-| c | Appeals to a habit, and says nothing about these rows or this answer |
-| d | Asserts the size is harmless without showing which numbers it would move |
+| a | The cell to send back: a reason says what the call changes, here that 14 patients' bookings stay in every count |
+| b | Fails: every call goes in the log whatever its size, since an auditor cannot check a call nobody wrote down |
+| c | Fails: drop, fill or flag is a choice made with its reason, as Week 1 Wednesday set it |
+| d | Fails: the field's name is the column as the file writes it, and renaming it would break every query that reads it |
 
-**Kavya's review.** A reason that restates the issue is no reason; say what the call changes in the counts or the dollars, and what it cannot change.
+**Kavya's review.** A reason says what the call changes in the counts or the dollars, and what it cannot change.
 
 ```notes
-SELF-STUDY, 1 minute. The answer is a. Option d is the tempting one, because small sounds safe; the
-auditor's question is which number the 14 rows sit in, and size alone never answers it.
+SELF-STUDY, 1 minute. The answer is a. Read each cell as an auditor would, asking what it lets a
+stranger check: the reason is the only cell that says what the call changes. Option b is the
+tempting one, because small sounds safe; the auditor's question is which number the 14 rows sit in,
+and only the reason can answer it.
 Transition: the charts.
 ```
 
 ---
 
-## D21. Each chart states its finding and its denominator
+## D23. Each chart states its finding and its denominator
 *Which rules let a chart carry one message the panel can read without you?*
 
 ```mermaid
@@ -565,7 +617,7 @@ Transition: the last minute of the body.
 
 ---
 
-## D22. One change for Build 2, specific enough to act on
+## D24. One change for Build 2, specific enough to act on
 *What does the last minute of your slot say, and what makes it usable?*
 
 | A change nobody can act on | A change Build 2 can act on |
@@ -583,8 +635,30 @@ flowchart LR
 
 ```notes
 SELF-STUDY, 1 minute. The change comes from your challenges log: the entry that cost the most time is
-usually the change worth naming. It names something the group will do on day one, and the week close
-asks for the same sentence.
+usually the change worth naming. The challenges log is your group's dated record of every time it was
+stuck, what it tried and what it decided. The change names something the group will do on day one of
+Build 2, and the week close asks for the same sentence.
+Transition: section 4, the live demo.
+```
+
+---
+
+## D25. A mapped move and logged rows earn the claim
+*What are the answers to the section's five questions, in one line each?*
+
+| The question | The answer in one line |
+|---|---|
+| How do you show the transfer? | Name her question's shape and the Weeks 1 and 2 move that answers it, in your own words |
+| Which words map to which? | Each Kalpa Health term beside the Kalpa Retail term it plays, and where the pair stops fitting |
+| Which log rows earn trust? | The calls that moved the most rows or dollars, one row you kept, and rows in against kept and set aside |
+| Which rules make a chart carry? | A title that states the finding, the denominator in view, matching windows, and a number the demo prints |
+| What goes into Build 2? | One behaviour from your challenges log, specific enough to do on day one |
+
+**Kavya's review.** If a slide in these ten minutes connects to no word of the claim, cut it.
+
+```notes
+SELF-STUDY, 1 minute. The section's five answers on one slide. Watch for a body that runs longer than
+ten minutes; the overrun comes out of the analysis.
 Transition: section 4, the live demo.
 ```
 
@@ -594,34 +668,35 @@ Transition: section 4, the live demo.
 *How does the live demo prove your number from the raw files, and what happens if it fails in front of the panel?*
 
 ```notes
-SELF-STUDY, about 5 minutes over D23 to D29, with S24 and S26 shown at the opening. The demo is the
+SELF-STUDY, about 6 minutes over the section's slides, with its two S slides shown at the opening. The demo is the
 evidence that the claim came from the data.
 Transition: who needs the demo.
 ```
 
 ---
 
-## D23. The demo is the claim's evidence, shown live
+## D26. The panel trusts a number it watched arrive
 *Who needs the live demo, and which questions come on the way?*
 
-**Who needs the answer.** The panel, which trusts a number it watched arrive from the raw files more than one pasted on a slide, and every member, whose presentation and defence score begins with the demo.
+**Who needs the answer.** The panel, which trusts a number it watched arrive from the raw files more than one pasted on a slide, and every member, whose presentation and defence score begins with the demo; a demo that still fails after its two minutes costs each member that share of the marks.
 
 ```timeline
 label: 1 | title: The rules | body: What makes a live demo prove your number?
 label: 2 | title: Cold | body: What does a cold run mean on the day?
 label: 3 | title: A failure | body: What happens if the demo fails in front of the panel?
-label: 4 | title: Your plan | body: Which plan for a failure meets the rule?
+label: 4 | title: The order | body: In which order does the demo run on the day?
 label: 5 | title: The cost | body: What does a failed demo cost, and what does it leave? | tone: dark
 ```
 
 ```notes
-SELF-STUDY, 1 minute. Five questions, each with its own slide.
+SELF-STUDY, 1 minute. Five questions, each with its own slide. Watch for a group that has only ever
+run its notebook warm; Friday's two cold runs are where it finds out.
 Transition: the three rules.
 ```
 
 ---
 
-## S24. Three rules make the demo prove your number
+## S27. Three rules make the demo prove your number
 *What makes a live demo prove the number on your one-slide answer?*
 
 ```cards
@@ -647,7 +722,7 @@ Transition: what cold means.
 
 ---
 
-## D25. Cold means a fresh start on Friday's frozen commit
+## D28. Cold means a fresh start on Friday's frozen commit
 *What does a cold run mean on the day of your slot?*
 
 ```timeline
@@ -668,7 +743,7 @@ Transition: what happens if it fails.
 
 ---
 
-## S26. Two minutes to recover, then the executed notebook
+## S29. Two minutes to recover, then the executed notebook
 *What happens if the live demo fails in front of the panel?*
 
 ```mermaid
@@ -695,51 +770,51 @@ LIVE, 1 minute, at the opening. The rule, word for word: a group's demo runs onc
 files. If it fails, the group has two minutes to recover it live, as it would in front of a client.
 If it still fails, the group presents from its executed notebook, and the panel scores the live demo
 in presentation and defence as not run cold. The other 34 marks of the mini project are scored from
-the executed run.
-Transition: a question on plans.
+the executed run. The mini project is Build 1's group grade, 40 marks.
+Transition: a question on the order of the day.
 ```
 
 ---
 
-## D27. Question: which plan meets the demo rule?
-*Four groups say what they will do if a cell fails on the cold run; which plan meets the rule?*
+## D30. Question: in which order does the demo run?
+*In which order do five steps of a demo run, from Friday's commit to the fallback?*
 
-**Question.** Which plan meets the demo rule? Answer as a letter.
+**Question.** Five steps, shuffled: (1) present from the executed notebook; (2) check that the Codespace is on Friday's frozen commit; (3) run all on the raw files, in front of the panel; (4) recover live, for up to two minutes; (5) restart the kernel, so no output is kept. In which order does a group take them on the day? Answer as a letter.
 
-a) Skip the live run and open Friday's saved notebook, scrolling through the charts it holds.
-b) Switch to a cleaned extract saved on Thursday night, since the raw files are what broke the run.
-c) Keep debugging live for as long as it takes, so the panel sees every output in the end.
-d) Fix the cell live inside two minutes; if it still fails, present from the executed notebook.
+a) 5, 2, 3, 1, 4
+b) 2, 3, 5, 4, 1
+c) 3, 2, 5, 4, 1
+d) 2, 5, 3, 4, 1
 
 ```notes
-SELF-STUDY, 1 minute. Choose before the next slide. Most readers split between c and d; the two-minute
-limit is what separates them.
+SELF-STUDY, 1 minute. Choose before the next slide, and write the order down before you look.
 Transition: the answer.
 ```
 
 ---
 
-## D28. Answer: d, two minutes, then the executed notebook
-*Which plan meets the demo rule, and which rule does each other plan break?*
+## D31. Answer: d, commit, restart, run, then two minutes
+*In which order does the demo run, and what goes wrong in each other order?*
 
-| Option | Which rule it breaks, or why it holds |
+| Option | What goes wrong, or why it holds |
 |---|---|
-| a | Gives up the live run a client would watch, and shows outputs nothing ran in front of the panel |
-| b | Breaks the raw files rule: the extract hides every cleaning call the panel wants to see made |
-| c | Breaks the two-minute limit: open-ended debugging eats the slot and the panel's questions |
-| d | Holds: two minutes to recover live, then the executed notebook, and the analysis keeps its 34 |
+| a | Restarts before checking the commit, and falls back to the notebook before the two minutes to recover |
+| b | Runs before the restart, so output kept from an earlier run can pass for a cold result |
+| c | Runs before the commit is checked, so the panel may watch code that Friday's freeze never held |
+| d | Holds: the frozen commit checked, a clean restart, the run, two minutes to recover, then the executed notebook |
 
 **Kavya's review.** Rehearse the failure as well as the run: know which cell breaks most often and what you type in the two minutes.
 
 ```notes
-SELF-STUDY, 1 minute. The answer is d. Option a is the comfortable one, and it scores like a failed
-demo without the two minutes in which a group can recover.
+SELF-STUDY, 1 minute. The answer is d. Two steps decide it: the restart comes before the run, and the
+fallback comes only after the two minutes. Option b is the one a hurried group takes, and its "cold"
+run can print a number an earlier, warm run left behind.
 Transition: what a failure costs.
 ```
 
 ---
 
-## D29. A failed demo costs its own marks and leaves the 34
+## D32. A failed demo costs its own marks; the 34 stand
 *What does a demo that still fails cost, and what does it leave standing?*
 
 ```stats
@@ -748,12 +823,33 @@ value: 6 | label: each learner's own | note: presentation and defence, where the
 value: 2 min | label: to recover live | note: then the executed notebook
 ```
 
-Full marks on presentation and defence begin with "the live demo runs cold", so a demo that still fails keeps a learner below them; a machine that fails before the demo starts is swapped, and the demo then runs cold in the room's reserve, before the same panel.
+Full marks on presentation and defence begin with "the live demo runs cold", so a demo that still fails keeps a learner below them; a machine that fails before the demo starts is swapped for a spare and the demo runs in the slot, and only if no spare works does it run cold in the room's reserve, the spare minutes each room keeps after its slots, before the same panel.
 
 ```notes
 SELF-STUDY, 1 minute. How far below full marks is the panel's call, and the analysis keeps every mark
-it earned. A hardware or Codespace failure is the machine's, so the group gets its cold run later in
-the same room.
+it earned. A hardware or Codespace failure is the machine's, so the group gets its cold run on a
+spare in the slot, or later in the same room if no spare works.
+Transition: section 5, whether the claim holds.
+```
+
+---
+
+## D33. Run once, cold, and fall back after two minutes
+*What are the answers to the section's five questions, in one line each?*
+
+| The question | The answer in one line |
+|---|---|
+| What makes the demo prove the number? | One cold run on the raw files, with the number on your slide in its output |
+| What does cold mean on the day? | Friday's frozen commit, a fresh start with nothing kept, the raw files, and run all |
+| What if it fails? | Two minutes to recover live, then the executed notebook |
+| In which order does the day run? | Check the commit, restart, run all, recover for up to two minutes, then fall back |
+| What does a failure cost? | The live demo's share of each member's presentation and defence; the group's 34 stand on the executed run |
+
+**Kavya's review.** Run the demo cold twice before your slot, and once more in the last hour.
+
+```notes
+SELF-STUDY, 1 minute. The section's five answers on one slide. Watch for a group that has never
+rehearsed the two minutes; the recovery is a skill, and it is practised.
 Transition: section 5, whether the claim holds.
 ```
 
@@ -763,34 +859,35 @@ Transition: section 5, whether the claim holds.
 *How do you hold your claim when the panel challenges its caveat, and when are two groups' different answers both honest?*
 
 ```notes
-SELF-STUDY, about 6 minutes over D30 to D37, with S31 shown at the opening. The panel's eight to ten
+SELF-STUDY, about 7 minutes over the section's slides, with its S slide shown at the opening. The panel's eight to ten
 minutes test whether the answer survives, and every member answers.
 Transition: who needs the answers.
 ```
 
 ---
 
-## D30. The panel's questions test the edge of your evidence
+## D34. Every member answers the panel alone
 *Who needs your answers to the panel, and which questions come on the way?*
 
-**Who needs the answer.** Every member: presentation and defence is scored for each learner on 6 marks, and the panel chooses who answers, so a member who knows one slice of the work answers for all of it.
+**Who needs the answer.** Every member: presentation and defence is scored for each learner on 6 marks, and the panel chooses who answers, so a member who knows one slice of the work answers for all of it, and loses their own marks if they cannot.
 
 ```timeline
 label: 1 | title: Five kinds | body: Which kinds of question does the panel ask?
 label: 2 | title: Three moves | body: How do you hold a caveat without folding or overclaiming?
-label: 3 | title: Which reply | body: Which reply holds when the caveat is attacked?
+label: 3 | title: Narrowing | body: Does narrowing a claim under challenge cost marks?
 label: 4 | title: Two answers | body: When are two groups' different numbers both honest?
 label: 5 | title: Every member | body: What must each member explain alone? | tone: dark
 ```
 
 ```notes
-SELF-STUDY, 1 minute. Five questions, answered in order.
+SELF-STUDY, 1 minute. Five questions, answered in order. Watch for a group that has rehearsed only
+its talk; the panel's questions are half the slot.
 Transition: the five kinds.
 ```
 
 ---
 
-## S31. The panel asks five kinds of question
+## S35. The panel asks five kinds of question
 *Which kinds of question should every group expect in its eight to ten minutes?*
 
 | Kind | What it sounds like |
@@ -801,7 +898,7 @@ Transition: the five kinds.
 | The other group | "Another group on your question reached a different claim. Can both be honest?" |
 | Differently | "If you started again on Monday, what would you do first?" |
 
-**In the interview.** [S] Present a finding to a panel and take a challenge on your caveat.
+**In the interview.** [S] Present a finding to a panel and take a challenge on your caveat. ([S] marks a staple question, asked in screens everywhere.)
 
 ```notes
 LIVE, 1 minute, at the opening. The quietest-member question goes to whoever has spoken least; every
@@ -812,7 +909,7 @@ Transition: how to hold a caveat.
 
 ---
 
-## D32. Restate, bound, offer the test
+## D36. Restate, bound, offer the test
 *How do you hold a caveat without folding or overclaiming, as Week 1 Friday rehearsed it?*
 
 ```mermaid
@@ -837,7 +934,7 @@ Transition: the three moves on one invented challenge.
 
 ---
 
-## D33. The three moves, said to one invented challenge
+## D37. The claim holds once the courier's share is bounded
 *How do the three moves sound when a panel pushes on the invented turnaround claim?*
 
 ```mermaid
@@ -862,45 +959,45 @@ Transition: a question on replies.
 
 ---
 
-## D34. Question: the panel says your caveat undoes your claim
-*The panel says "your caveat is so large your claim means nothing"; which reply holds?*
+## D38. Question: does narrowing your claim cost marks?
+*True or false, with its reason: does narrowing a claim under challenge cost presentation and defence marks?*
 
-**Question.** Which reply is the strongest? Answer as a letter.
+**Question.** The panel says your caveat undoes your claim, and you narrow the claim to the part you measured, with its number and the test that would settle the rest. True or false, with its reason: the narrowing costs you marks on presentation and defence. Answer as a letter.
 
-a) We checked the data very carefully over three days, so we stand by the claim exactly as we stated it.
-b) That is fair, and it is a limitation of the data the client gave us, which we noted in our own log.
-c) It holds for the part we measured; here is that number, and here is the test that settles the rest.
-d) Every analysis carries caveats, so ours is no weaker than any other group's claim on this question.
+a) True, because the rubric rewards the claim a group stated, and narrowing it concedes the panel was right.
+b) True, because a narrowing shows a caveat the group should have stated before its slot began.
+c) False, because full marks ask each member to answer a challenge on the caveat, and narrowing answers it.
+d) False, because the panel scores only the group's 34 marks, and never one member's defence alone.
 
 ```notes
-SELF-STUDY, 1 minute. Choose before the next slide. The strong reply narrows the claim and names the
-check that would settle it.
+SELF-STUDY, 1 minute. Choose before the next slide, and judge the reason as well as the verdict.
 Transition: the answer.
 ```
 
 ---
 
-## D35. Answer: c narrows the claim and names the test
-*Which reply holds under the challenge, and why does each other one fail?*
+## D39. Answer: c, the narrowing is the answer the rubric asks
+*Is narrowing a loss of marks, and why does each other reason fail?*
 
 | Option | Why it holds or fails |
 |---|---|
-| a | Defends with effort instead of evidence, and ignores what the challenge asked |
-| b | Agrees and stops, which hands the claim away with nothing in its place |
-| c | Holds: keeps what the evidence supports, gives the number, names the settling test |
-| d | Deflects to other groups and says nothing about this claim |
+| a | The rubric scores the answer to a challenge on the caveat; a claim kept unchanged earns nothing for being unchanged |
+| b | A caveat named in the room and answered with a number is the defence the criterion describes |
+| c | Holds: the narrowed claim, its number and the settling test answer the challenge full marks ask for |
+| d | The right verdict on a wrong reason: presentation and defence is scored for each learner, on 6 marks |
 
 **In the interview.** [S] Present a finding to a panel and take a challenge on your caveat: restate, bound, and offer the test.
 
 ```notes
-SELF-STUDY, 1 minute. The answer is c. Under challenge, narrow the claim and name the check, the move
-between defending blindly and folding.
+SELF-STUDY, 1 minute. The answer is c. Two options say false, and only c gives a reason the rubric
+supports. Under challenge, narrow the claim and name the check, the move between defending blindly
+and folding.
 Transition: when two answers are both honest.
 ```
 
 ---
 
-## D36. Two groups can reach two honest claims
+## D40. Both stand when each says what it timed
 *When can two groups' different numbers from the same files both be honest?*
 
 ```mermaid
@@ -927,7 +1024,7 @@ Transition: what every member explains alone.
 
 ---
 
-## D37. Every member explains three things alone
+## D41. Every member explains three things alone
 *What must each member be able to explain without a teammate?*
 
 ```cards
@@ -940,48 +1037,71 @@ The panel puts its question to whoever has spoken least, and the rest of the gro
 
 ```notes
 SELF-STUDY, 1 minute. A member who cannot answer is questioned again alone, in the room's reserve,
-before that member's presentation and defence is scored; the group's 34 do not wait.
+the spare minutes the room keeps after its slots, before that member's presentation and defence is
+scored; the group's 34 do not wait.
+Transition: section 6, how the slot is scored.
+```
+
+---
+
+## D42. Narrow, give the number, and offer the test
+*What are the answers to the section's five questions, in one line each?*
+
+| The question | The answer in one line |
+|---|---|
+| Which kinds of question come? | The evidence, the caveat challenge, the quietest member, the other group, and what you would do differently |
+| How do you hold a caveat? | Restate the claim with its denominator, bound it, and offer the test that would change your mind |
+| Does narrowing cost marks? | No: a narrowed claim with its number and its test is the answer full marks ask for |
+| When are two answers both honest? | When each says what it counted, so one sentence can carry both numbers |
+| What must each member explain? | The claim, one logged decision and one chart, alone |
+
+**Kavya's review.** Say the caveat before the panel finds it, and its challenge becomes a question you have already answered.
+
+```notes
+SELF-STUDY, 1 minute. The section's five answers on one slide. Watch for a member who can say the
+claim and not the caveat; the caveat is what the panel tests.
 Transition: section 6, how the slot is scored.
 ```
 
 ---
 
 ## SECTION 6: How is it scored?
-*How is the mini project scored, what closes with it today, and what does every group ship before its slot?*
+*How is the mini project scored, what closes with it on Saturday, and what does every group ship before its slot?*
 
 ```notes
-SELF-STUDY, about 4 minutes over D38 to S42. Learners may see the rubrics, which the requester
+SELF-STUDY, about 4 minutes over the section's slides. Learners may see the rubrics, which were
 approved on 29 September 2026.
 Transition: who needs the scoring.
 ```
 
 ---
 
-## D38. The rubric is public, so aim the slot at it
+## D43. Every learner needs the rubric: 34 shared, 6 alone
 *Who needs the scoring, and which questions come on the way?*
 
-**Who needs the answer.** Every learner: 34 of the mini project's 40 marks are the group's, which every member receives, and 6 are each learner's own, so the group builds the slot to the rubric and every member answers for it.
+**Who needs the answer.** Every learner: 34 of the mini project's 40 marks are the group's, which every member receives, and 6 are each learner's own, so a member who leaves the rubric to the others can lose their own 6.
 
 ```timeline
 label: 1 | title: What ships | body: What does every group ship before its slot?
 label: 2 | title: The rubric | body: How is the mini project scored?
-label: 3 | title: The other two | body: Which other Build 1 scores close today?
+label: 3 | title: The other two | body: Which other Build 1 scores close on Saturday?
 label: 4 | title: The last hour | body: What do you check before you walk in? | tone: dark
 ```
 
 ```notes
-SELF-STUDY, 1 minute. Four questions, in order.
+SELF-STUDY, 1 minute. Four questions, in order. Watch for a member who has not read the last row of
+the rubric; it is the one scored for each learner alone.
 Transition: what every group ships.
 ```
 
 ---
 
-## D39. Every group ships five things before its slot
+## D44. Every group ships five things before its slot
 *What does every group bring to its slot, and where does each piece live?*
 
 | What | Where it lives |
 |---|---|
-| The presentation, 25 to 30 minutes with the panel, the live demo inside it | Built on this skeleton, one-slide answer first |
+| The presentation, 17 minutes before the panel's 8 to 10, the live demo inside it | Built on this skeleton, one-slide answer first |
 | The one-slide answer Dr Menon carries into her board meeting | Claim, evidence, caveat and action, on one slide |
 | The notebook or SQL that reproduces every number from the raw files | Runs cold, top to bottom, on the files in the data folder |
 | The decisions log | `briefs/C2_W03_D01_decisions_log_STUDENT.xlsx`, in the Week 1 Wednesday shape |
@@ -997,7 +1117,7 @@ Transition: the rubric.
 
 ---
 
-## D40. The mini project is 40 marks, and 6 are yours alone
+## D45. The mini project is 40 marks, and 6 are yours alone
 *How is the mini project scored?*
 
 <!-- sync:rubric:W03/mini-project -->
@@ -1021,27 +1141,27 @@ Transition: the other two scores.
 
 ---
 
-## D41. Three Build 1 scores close for every learner today
+## D46. Every learner's three Build 1 scores close on Saturday
 *Which Build 1 scores close on Saturday, and out of how many marks?*
 
 ```stats
 value: 40 | label: the mini project | note: the group's 34 and your own 6
 value: 30 | label: the group discussion | note: rounds on Friday and Saturday morning
-value: 30 | label: Mock R1 | note: Thursday 22 October, each learner alone
+value: 30 | label: the first mock interview | note: Mock R1, Thursday 22 October, each learner alone
 ```
 
 Every Build 1 grade closes on Saturday 24 October; how and when you see your scores is the Programme Head's to tell you.
 
 ```notes
 SELF-STUDY, 1 minute. The marks per event are locked, and the three rubrics are public. The GD rounds
-ran on Friday 23 October and close on the morning of Saturday 24 October; Mock R1 ran on Thursday 22
+run on Friday 23 October and close on the morning of Saturday 24 October; Mock R1 runs on Thursday 22
 October. No score is read aloud in the room.
 Transition: the last hour before your slot.
 ```
 
 ---
 
-## S42. Before you walk in: one cold run, one claim
+## S47. Before you walk in: one cold run, one claim
 *What does your group check in the last hour before its slot?*
 
 ```timeline
@@ -1050,6 +1170,28 @@ label: 2 | title: One sentence | body: Each member says the claim, with its deno
 label: 3 | title: One caveat | body: Each member says the fact that would change the claim, and the test that would settle it.
 label: 4 | title: One slide first | body: Open on the one-slide answer; the cleaning comes in part 3. | tone: dark
 ```
+
+**Kavya's review.** Every number on your slides appears in the cold run's output, or it comes off the slide.
+
+```notes
+LIVE, 1 minute, at the opening; SELF-STUDY, 1 minute, on the night before. Read the four checks. A
+group that cannot run cold in the last hour still has its two minutes and its executed notebook, and
+it knows the rule.
+Transition: the answers that close the deck.
+```
+
+---
+
+## S48. Your slot is ready when all four answers hold
+*What are the answers to the section's four questions, and to the day's?*
+
+| The question | The answer in one line |
+|---|---|
+| What does every group ship? | The presentation, the one-slide answer, the notebook or SQL, and both logs |
+| How is the mini project scored? | 34 marks once for the group and 6 for each learner, the live demo inside the 6 |
+| Which other scores close on Saturday? | The group discussion and Mock R1, 30 marks each |
+| What do you check in the last hour? | One cold run, the claim and the caveat said alone by each member, and the one-slide answer first |
+| The day's question: is your branch short, and does the answer hold? | It holds when the claim carries its denominator, every member can defend its caveat, and its number arrives live from the raw files |
 
 **In the interview.** [S] Present a finding to a panel and take a challenge on your caveat.
 
