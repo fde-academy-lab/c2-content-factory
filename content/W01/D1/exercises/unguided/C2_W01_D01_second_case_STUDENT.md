@@ -1,12 +1,23 @@
-# The second case: does one channel change the recommendation?
+# Where does revenue come from, by customer type and channel, and does it change the branch?
 
 > "Where does revenue come from, by customer type and channel? The store team says they carry the
 > business. Should the growth plan be store-led?"
 > Meera Raghavan, CEO, Kalpa Retail
 
-Forty-five minutes, in pairs, on the same 30 orders. Work in
-`notebooks/C2_W01_D01_ex2_second_case_STUDENT.ipynb`, which splits revenue by channel and by
-customer type and then by status. Argue each item with your partner before you record it.
+**Who needs the answer.** Meera asked where revenue comes from, and anyone who drafts a channel plan
+from her answer depends on it. A channel plan read off the wrong share puts the budget in the wrong
+channel.
+
+**The questions on the way.** Where does booked revenue come from by channel, and what should happen
+before a share becomes a plan? What share does store hold once the view keeps the three consumer
+segments? What does each channel keep once its rupees are split by status? Does the channel view
+change the branch? How many customers does one segment hold?
+
+You have twenty-five minutes, in pairs, on the same 30 orders. Work in
+`notebooks/C2_W01_D01_ex2_second_case_STUDENT.ipynb`, which splits revenue by channel, by customer
+type and by status. Argue each item with your partner before you record it. Items marked **Design**
+ask for the best-fit approach, a sizing, the fact that would switch the choice, or the second route
+that would confirm a number.
 
 The items continue the afternoon's numbering from the escalated case, so this brief holds items 11
 to 16.
@@ -17,62 +28,112 @@ Post one line, six letters in item order, no spaces:
 Post exactly this shape: xxxxxx
 ```
 
+---
+
+## What did the morning find, and what does the file say by channel?
+
+The chapters answered Meera on the booked reading of Kalpa Retail's 30 orders from 1 July to 26
+September 2026: Rs 5,44,810 booked, 23 customers at 1.30 orders each, and frequency as the branch to
+open first. The escalated case then rebuilt that answer on Anand's delivered reading.
+
+Every order carries a channel, app, web or store, and a segment: Retail-Core, Retail-Plus, Student or
+Business. Meera's growth plan concerns the three consumer segments, Retail-Core, Retail-Plus and
+Student, so the consumer view keeps the orders whose segment is one of those three; it booked
+Rs 64,810 this quarter. The segment is recorded on each order, so a customer who bought on two tiers
+appears under both.
+
+Booked revenue by channel, on all 30 orders:
+
+| Channel | Orders | Booked revenue | Share of booked revenue |
+|---|---|---|---|
+| App | 10 | Rs 18,600 | 3.4 percent |
+| Web | 10 | Rs 27,290 | 5.0 percent |
+| Store | 10 | Rs 4,98,920 | 91.6 percent |
+| All channels | 30 | Rs 5,44,810 | 100 percent |
+
+The pairs' route through the file:
+
 ```mermaid
 flowchart LR
-    R["<b>booked revenue</b><br/>all 30 orders"] --> A["<b>app</b><br/>10 orders"]
-    R --> W["<b>web</b><br/>10 orders"]
-    R --> S["<b>store</b><br/>10 orders"]
-    S --> T["<b>the order your round 3 sort<br/>put at the top</b>"]
-    S --> N["<b>store's other 9 orders</b>"]
+    C["<b>booked revenue</b><br/>by channel"] --> O["<b>the orders</b><br/>behind each share"]
+    O --> V["<b>the consumer view</b><br/>three segments"]
+    V --> S["<b>each channel</b><br/>by status"]
+    S --> B["<b>the branch</b>"]
 ```
 
 ---
 
-### Q11. The channel slide says "Store brings 91.6 percent of revenue, so the growth plan should be store-led." What is the first thing wrong with it?
+## What should happen before a channel's share becomes a plan?
 
-a) The share should be taken on delivered orders, which lifts it higher still
-b) Store's share is really 33 percent, since it holds 10 of the 30 orders
-c) One order carries most of store's share, so it says little about store
-d) Nothing, since the rupees add up and store is the largest channel
+The store team has told Meera it carries the business, and a store-led plan would move Kalpa's
+growth budget on the strength of one share.
 
-### Q12. Recomputed on the 29 orders other than the one your round 3 sort put at the top, which total Rs 64,810, what share does store hold?
+### Q11. The channel slide says: "Store brings 91.6 percent of revenue, so the growth plan should be store-led." What should the team do before anyone plans around that share?
 
-a) 29 percent, Rs 18,920 of Rs 64,810
-b) 92 percent, the same share as before
-c) 15 percent, Rs 9,870 of Rs 64,810
-d) 31 percent, 9 of the 29 orders
-
-### Q13. On those 29 orders web leads booked revenue with Rs 27,290. What does splitting web by status add?
-
-a) Nothing, since web is the largest of these channels on every definition
-b) Web's lead grows once the cancelled orders are taken out of it
-c) Web delivered all 10 of its orders, so its lead is clean
-d) Half of web's orders came back: 5 returned, Rs 14,970
-
-### Q14. Which statement about store's 9 orders on the same base holds?
-
-a) All 9 were delivered, so store is the cleanest of the channels
-b) 4 of the 9 were cancelled, Rs 9,050, and 5 were delivered, Rs 9,870
-c) 5 of the 9 were returned, Rs 14,970, the same leak as web shows
-d) Only one order is left in store once the top of the sort is set aside, since the rest were cancelled
-
-### Q15. Does the channel view change the branch Meera opens first?
-
-a) No; frequency stays first, with web returns and store cancellations named
-b) Yes; the plan should turn store-led, since store carries nine rupees in ten
-c) Yes; web should get the Rs 12 crore, since it leads these 29 orders on revenue
-d) No; and the channel view adds nothing worth putting in the note at all
-
-### Q16. The head of Retail-Plus asks how many of his customers bought in the quarter. Which answer holds?
-
-a) 10, one for each Retail-Plus order placed in the quarter
-b) 8, the distinct ids on its orders, noting one also bought as Retail-Core
-c) 23, since any customer in the file could have bought on the Retail-Plus tier
-d) 12, which is Rs 27,320 divided by the typical order of Rs 2,205
+a) Take store's share on delivered orders, since delivered is what stayed sold
+b) Report store's share of orders instead, 10 of 30, since orders are fairer
+c) Count the orders behind store's rupees, before any plan follows the share
+d) Nothing more, since the channels' rupees add up to the booked total
 
 ---
 
-## Hands-on
+## What share does store hold once the view keeps the three consumer segments?
+
+Whoever drafts Kalpa's channel plan states the base each share is read on before it reaches
+Meera.
+
+### Q12. Design. Meera's growth plan concerns the three consumer segments, which book Rs 64,810 of the Rs 5,44,810. On which base should a channel plan read store's share, and what share does store hold there?
+
+a) The consumer view: 29.2 percent, Rs 18,920 of Rs 64,810
+b) All 30 orders: 91.6 percent, Rs 4,98,920 of Rs 5,44,810
+c) The consumer view: 15.2 percent, Rs 9,870 of Rs 64,810
+d) All 30 orders by count: 33.3 percent, 10 of the 30 orders
+
+---
+
+## What does each channel keep once its rupees are split by status?
+
+Anand's books keep only what stayed delivered, so before a channel's lead goes into the note, its
+rupees are split into delivered, returned and cancelled, as chapter 1 split the whole file.
+
+### Q13. In the consumer view, web leads booked revenue with Rs 27,290. What does splitting web's rupees by status add?
+
+a) Nothing, since web leads the consumer view on every reading of sales
+b) Web's lead grows once its cancelled orders are taken out of it
+c) Web kept everything it booked, so its lead holds on delivered orders too
+d) More than half of web's booked rupees came back as returns, Rs 14,970
+
+### Q14. In the consumer view, what does splitting store's booked rupees by status show?
+
+a) Every rupee was delivered, so store is the cleanest channel in the view
+b) Close to half never left the shelf, since those orders were cancelled
+c) Close to half came back as returns after the orders were delivered
+d) A small part was cancelled and a small part returned, under a tenth each
+
+---
+
+## Does the channel view change the branch, and how many customers does one segment hold?
+
+Kavya reviews the note before it reaches Meera, and the head of Retail-Plus reads it for what it
+says about his own members.
+
+### Q15. Design. Three plans are on the table: store-led, on store's 91.6 percent of booked revenue; web-led, on web's lead in the consumer view; or frequency first, as the chapters found. Which does the evidence support, and what goes in the note?
+
+a) Frequency first, with the leaks the status split found named in the note
+b) Store-led, since store carries 91.6 percent of all booked revenue
+c) Web-led, since web books the most of any channel in the consumer view
+d) Frequency first, with the channel split left out of the note as a side issue
+
+### Q16. The head of Retail-Plus asks how many of his customers bought in the quarter, and his segment's 10 orders sit in the file. Which answer holds?
+
+a) 10, one for each Retail-Plus order placed in the quarter
+b) 8, the distinct ids on its orders, one of whom also bought as Retail-Core
+c) 23, since any customer in the file could have bought on the tier
+d) 12, which is Rs 27,320 of Retail-Plus revenue over the typical order, Rs 2,205
+
+---
+
+## How do the notebook's picks go into your post?
 
 Each of the notebook's seven TODO cells carries a lettered choice above its placeholder. Post your
 seven picks as a second line, in TODO order, and run the notebook top to bottom: every check should

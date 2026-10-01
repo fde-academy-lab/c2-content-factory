@@ -329,9 +329,9 @@ authorisation in its vocabulary. The build week keeps its shape from `docs/detai
    - record a decision that the Build 1 rubric's "rupees" reads "dollars";
    - run the sync.
 3. **The Week 3 packs** (`D1`, `D3`, `D4`, `D5` and `SAT`) are rebuilt by cloud sessions in parallel,
-   on the latest Opus at max effort, to standard v3: question headings with who needs the answer and
-   the questions on the way, every file standing on its own, the humanizer's read and decks in depth.
-   Each reads the new dossier, the regenerated data and the spine, and goes as deep as the Week 2 days:
+   on the latest Opus at max effort, to standard v3, each from the Build 1 day prompt below with its
+   fills. Each reads the dossier, the regenerated data and the spine, and goes as deep as the Week 2
+   days:
    - the sub-problem briefs sized with options;
    - the checkpoint questions;
    - the mock bank's viva prompts per sub-problem;
@@ -339,6 +339,165 @@ authorisation in its vocabulary. The build week keeps its shape from `docs/detai
    - the panel's question bank.
 
    Build weeks keep their own shape and carry no practice set.
+
+### The Build 1 day prompt
+
+````markdown
+Raise the Build 1 {DAY} pack for Cohort 2 ({DATE}) to standard v3, in Kalpa Health's US setting. One session, one day pack.
+
+**Already decided, so do not stop for approval.**
+- The requester approved the Build 1 spine, `docs/detailing/W03_build1_spine.md`, and its three rubrics on 29 September 2026.
+- The requester set Kalpa Health in the US on 30 September 2026 (client zero section 1c, addendum `health-us-facing`) and raised the standard the same day.
+- The decisions are `chapter-standard`, `four-domains`, `question-ladder`, `self-contained`, `humanizer` and `opus-max` in `data/programme/facts.yaml`.
+
+The spine is this day's gate 2. State the envelope and continuity in your first message, then build straight through every pass without waiting.
+
+**Read before building, in this order.**
+1. `CLAUDE.md`.
+2. `.claude/skills/day-pack-builder/references/the-standard.md`, above all the question ladder, "Weekly and build-week variations" and the depth loop.
+3. `docs/detailing/W03_build1_spine.md` in full: the week, the day's row, the rule for a demo that fails, the rubrics, and the data pack with its plants.
+4. The {DAY} row in `docs/curriculum/W3_Build_1.md`, all columns in order.
+5. The day's line in `docs/programme/calendar.md`, and section 1c of `docs/07_Client_Zero.md`.
+6. The US healthcare dossier, `content/W03/D1/study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`, with its card and its trainer story, and the data dictionary in `content/W03/D1/briefs/`.
+7. The data pack in `content/W03/D1/data/`, and `python3 data/generate_kalpa_health.py --witness` for every number a file quotes.
+8. `.claude/skills/day-pack-builder/SKILL.md` and its references, "A build day" in `content/README.md`, and `.claude/skills/humanizer/SKILL.md`.
+
+Then read the skills CLAUDE.md routes to for each family, each in full before the pass that uses it.
+
+**The setting.** Kalpa Health is a US diagnostics and revenue-cycle business run from Kalpa's GCC in Bengaluru:
+- six US metro areas and their patient service centres;
+- payers: commercial plans, Medicare, Medicaid and self-pay;
+- claims and remittances in dollars, with seven denial categories;
+- calendar Q2 and Q3 of 2026, in a data export taken on Friday 16 October 2026.
+
+Every file speaks that language: dollars, payers, the data pack's metros and sites, and Q2 to Q3. A comparison with Indian practice is welcome where it helps the room, labelled as one. Each file carries what it needs from the dossier in its own words (a term's one-line meaning, a metric's formula, a role) and links to the dossier's section for more. A real company (Quest Diagnostics, Labcorp, an Indian revenue-cycle firm or GCC) appears only with each fact checked today with WebSearch and WebFetch, and its URL and date recorded in the provenance. A figure you cannot check stays out, or appears as a labelled illustrative number. Kalpa Health stays the case.
+
+**The build-week shape.** A build week ships the build-week pack in place of the teaching manifest: the room builds, and the pack carries no notebook chapters, practice set, Kahoot or test. What it does carry:
+- each group's problem, sized well enough to start;
+- questions that push the group's thinking every day;
+- assessments scored by the rubrics in `data/programme/facts.yaml`, carried as `sync:rubric:W03/mock`, `sync:rubric:W03/gd` or `sync:rubric:W03/mini-project`.
+
+Build 1 is the Week 1 and 2 method in a domain the room has never seen, so every brief, question and prompt names the Week 1 or 2 move it asks for.
+
+**Every heading is a question, and every file stands on its own.** The question ladder in `the-standard.md` is the form.
+- The day asks one question, in Dr Menon's words or the room's, and each section of a file asks the question the one before it raised.
+- Under each main heading of a learner file, **Who needs the answer.** names the person, the decision and the cost of a wrong answer, and **The questions on the way.** lists the smaller questions.
+- No heading is a bare label: "Brief 3: billing" becomes the question the claims and the postings disagree on. Read each file's headings alone, in order; they must tell its argument.
+- Each brief, worksheet, checkpoint sheet, GD card, deck and trainer sheet is understood with nothing else open: its scenario, its terms, its numbers and its rules are on the page.
+
+**Plants stay unnamed.** The spine's plants are TRAINER ONLY: the headline's dashboard count, the employer contract, the system switch with its re-export and date format, the claim-key formats with the double posts, the walk-ins, and the campaign's targeting. No STUDENT file names one, hints at its size or reuses its planted value in an example. The trainer files carry each plant with its witness number. Decision `plants-once-found` covers only a regular week's Saturday paper, so it does not reach Build 1.
+
+**The decks, in depth.** A learner who missed the room follows the deck alone:
+- after the cover, one slide asks the day's question;
+- each section opens on its question and a map;
+- each slide carries an italic question subtitle and an action title that answers it;
+- most slides carry a picture;
+- the notes say what the trainer says.
+
+A SECTION opener asks its question with the question mark, which the deck check allows.
+
+**This day.** {SPECIFICS}
+
+**What exists.** `content/W03/{FOLDER}` holds the pack the first Build 1 wave built on 29 September 2026 in the India setting; #202 moved the data and #204 the dossier to the US. {EXISTS} Keep every file that already meets the bar, rename or delete the ones you replace, and leave no orphan.
+
+**The depth loop.** Passes 2 (domain) and 3 (problem first) are yours. Before pass 5, run the humanizer in file mode over every prose file. For passes 4 (rigor) and 5 (pedagogy and language), launch one fresh reviewer subagent each with the Agent tool and `model: opus`, read-only, once:
+- the rigor reviewer recomputes every number a file quotes from the data pack and checks every STUDENT file for a plant;
+- the pedagogy reviewer runs the headings-only read on every file, opens three files at random alone, looks at every rendered slide, and lists every humanizer pattern still present.
+
+Fix every finding. A second round runs only when a fix changed a number, a key or a rule other files repeat, and it checks only those changes. Log the passes in the provenance.
+
+**Boundaries.**
+- Write only under `content/W03/{FOLDER}/`.
+- Do not edit shared files: `scripts/`, `.claude/`, `docs/`, `data/`, `CLAUDE.md`, `prompts/` or `wiki/`. Do not touch another day's folder either, because four other sessions are building Build 1 in parallel, and the data pack and its generator belong to the orchestrating session.
+- If a shared tool or the data lacks something, work around it inside the day folder and name the change you would ask for in your final report.
+
+**Proof.**
+- `python3 scripts/verify.py content/W03/{FOLDER} --execute` and `python3 scripts/sync_programme.py --check` both pass with zero failures.
+- Every workbook recalculates with `scripts/xlsx_recalc.py`, and every script and notebook runs cold on `content/W03/D1/data/`.
+- Every deck is built with `scripts/build_deck.py`, rendered through LibreOffice and looked at slide by slide.
+- Every question set with options passes `scripts/distractor_audit.py`.
+- The llm-tic-scrubber scanner is clean on every markdown file, and the humanizer's read and the headings-only read are done on every file.
+
+**Ship.** Commit in small commits whose messages say what changed, and push to `{BRANCH}` after each finished file family. Do not open a pull request. Finish with a report containing:
+- the day's question ladder;
+- each file with the question it answers;
+- every number quoted, with its witness source;
+- the depth loop's findings and fixes;
+- the verify output;
+- everything that departs from the spine or the row, and why.
+````
+
+### The Build 1 fills
+
+#### Build 1 Monday
+
+- `{DAY}`: Monday; `{DATE}`: Mon 19 Oct 2026; `{FOLDER}`: `D1`; `{BRANCH}`: `w03-d1`
+- `{SPECIFICS}`: The day runs as the spine's Monday row gives it:
+  - the Programme Head's online introduction (60);
+  - the allocation (30);
+  - each group translating its sub-problem into the Week 1 and 2 method in its own words;
+  - the close (15).
+
+  The room meets US healthcare today, so the day also carries the domain's story (45), from the dossier's trainer story. It runs after the introduction and before the allocation, so groups choose knowing the domain, and its minutes come from the translation block; the day sheet names that block. The pack:
+  - **Dr Menon's briefing note:** her question, the plan of 18 against the 5 she sees, and the questions she is asking, in her words.
+  - **The five sub-problem briefs, each sized with options:** the business question, who needs the answer and what a wrong one costs, the files it needs with their row counts, two to four ways a group could answer it sized on rows, hours and error, the Week 1 or 2 move each way needs, and what a finished answer looks like against the mini project rubric.
+  - **The data dictionary:** every file's grain and columns, and the export date.
+  - **The group files:** the translation worksheet, the challenges log and the decisions log.
+  - **The introduction deck, in depth:** Dr Menon's question, the domain in brief, each sub-problem as a question with its files, the method map from Weeks 1 and 2, the allocation, the translation, and the week's graded events with their days.
+  - **The trainer day sheet:** the day's question ladder, the grid, both ways to allocate nine groups, each brief's plants with their witness numbers, and the module sync block.
+
+  The dossier, the card and the trainer story merged in #204 stay as they are, and the day sheet and the deck use them.
+- `{EXISTS}`: Every file above exists from the first wave. The day sheet and parts of the deck still read the India setting and "Q1 to Q2"; the briefs and the data dictionary predate the US data, the export date and standard v3.
+
+#### Build 1 Wednesday
+
+- `{DAY}`: Wednesday; `{DATE}`: Wed 21 Oct 2026; `{FOLDER}`: `D3`; `{BRANCH}`: `w03-d3`
+- `{SPECIFICS}`: The day runs as the spine's Wednesday row gives it:
+  - the daily checkpoint (30), three questions per sub-problem;
+  - the trainer's parallel build on a smaller slice, in the open (60);
+  - build time;
+  - each group's headline claim with its denominators and caveat (20).
+
+  The pack:
+  - **The checkpoint questions:** three per sub-problem, each naming the Week 1 or 2 move it probes, with a TRAINER guide saying what a strong and a weak answer sound like and the follow-up for each.
+  - **The parallel build:** the New York revenue tree, executed cold, with its run sheet.
+  - **The headline-claim sheet:** the claim, its denominator, its period and its caveat.
+  - **The catch-up plan:** for a group that is behind.
+  - **The trainer day sheet:** the day's question ladder and the grid.
+- `{EXISTS}`: Every file above exists from the first wave. The run sheet and the checkpoint guide still carry the India setting.
+
+#### Build 1 Thursday
+
+- `{DAY}`: Thursday; `{DATE}`: Thu 22 Oct 2026; `{FOLDER}`: `D4`; `{BRANCH}`: `w03-d4`
+- `{SPECIFICS}`: The day runs as the spine's Thursday row gives it: mock R1 for every learner, about 20 minutes each, a technical half on Weeks 1 and 2 and a viva on the group's work, with build completion around the roster. The pack:
+  - **The mock question bank:** model answers and each question's Week 1 or 2 tag (TRAINER).
+  - **The viva prompts per sub-problem:** climbing from what the group did to why, and to what would change the call (TRAINER).
+  - **The mock brief (STUDENT):** the format, the timing and what the `W03/mock` rubric scores, and never the questions.
+  - **The roster and the scoring sheet:** copying the `W03/mock` rubric.
+  - **The trainer day sheet:** the day's question ladder and the grid.
+- `{EXISTS}`: Every file above exists from the first wave. The viva prompts and the question bank still carry the India setting.
+
+#### Build 1 Friday
+
+- `{DAY}`: Friday; `{DATE}`: Fri 23 Oct 2026; `{FOLDER}`: `D5`; `{BRANCH}`: `w03-d5`
+- `{SPECIFICS}`: The day runs as the spine's Friday row gives it: expert day one, with GD rounds at about 30 minutes per group, a build freeze, two cold demo runs and the first presentations. The GD rounds run on prompts that climb in complexity, a thread separate from the projects. The pack:
+  - **The GD prompts with facilitation notes (TRAINER).**
+  - **One GD card per prompt (STUDENT):** the situation with its exhibit, each stakeholder's position and the question the group must settle. Each card is set in US healthcare at Kalpa Health, or at a named company or a public case where that is more relatable, with every fact checked and dated. The cards climb from one trade-off to a call with several stakeholders and a compliance edge.
+  - **The GD scoring sheet and roster:** copying the `W03/gd` rubric.
+  - **The cold demo checklist and the cold-run script:** run on the data pack, with the spine's rule for a demo that fails.
+  - **The trainer day sheet:** the day's question ladder and the grid.
+- `{EXISTS}`: Every file above exists from the first wave. The ten GD cards, the prompts and the facilitation notes still carry the India setting. The cold-run script already pins the regenerated remittances file.
+
+#### Build 1 Saturday
+
+- `{DAY}`: Saturday; `{DATE}`: Sat 24 Oct 2026; `{FOLDER}`: `SAT`; `{BRANCH}`: `w03-sat`
+- `{SPECIFICS}`: The day runs as the spine's Saturday row gives it: expert day two with the flown-in leader, the remaining GDs, presentations with live demos at 25 to 30 minutes per group, grade closure, and one improvement per group named for Build 2. The pack:
+  - **The presentation format deck (STUDENT).**
+  - **The panel's question bank per sub-problem (TRAINER).**
+  - **The closure run sheet.**
+  - **The week-close deck and its notes.**
+  - **The mini project scoring and grade closure workbooks:** copying the `W03/mini-project` rubric, each applying the spine's rule for a demo that fails.
+- `{EXISTS}`: Every file above exists from the first wave. The panel's question bank and the week-close notes still carry the India setting.
 
 ## 5. Done
 

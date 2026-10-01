@@ -1,11 +1,13 @@
-# The reconciliation, as it goes up on the board
+# How does the board show, drawing by drawing, which Q1 figure is right?
 
 Week 1, Wednesday. Seven drawings, in the order they go up, each drawn with the room before the
-screen shows the same thing. Each chapter adds one. The last section is what the board holds when the day ends.
+screen shows the same thing, and each headed by the question it answers. Kalpa's dashboard reads Q1
+at Rs 2.1 crore from an orders CSV out of the ERP, the enterprise resource planning system Finance
+books orders in; the books, Finance's own record, say Rs 1.9 crore.
 
-## First drawing: two figures, and four ways an export could produce either
+## How could an export read Rs 20 lakh above the books?
 
-Drawn in the first twenty minutes, before any file is opened.
+The first drawing, made in the first twenty minutes, before any file is opened.
 
 ```mermaid
 flowchart LR
@@ -19,7 +21,9 @@ flowchart LR
 
 The room adds one way per branch. The lit branch goes first because a count is the cheapest check.
 
-## Second drawing: the four moves of the day
+## Which four moves does the day make, and in what order?
+
+The second drawing, which stays up all day, since every chapter points back at one of its boxes.
 
 ```mermaid
 flowchart LR
@@ -29,9 +33,9 @@ flowchart LR
     C -.-> L["<b>decisions log</b><br/>a reason per act"]
 ```
 
-This one stays up all day. Every chapter points back at one of its boxes.
+## Which of the profile's counts do not fit 201 rows?
 
-## Third drawing: the profile, three counts per field
+The third drawing: three counts per field, present, convertible and distinct.
 
 | Field | Present | Convertible | Distinct |
 |---|---|---|---|
@@ -39,12 +43,14 @@ This one stays up all day. Every chapter points back at one of its boxes.
 | amount | 201 | 200 | 161 |
 | status | 200 | text | 3 |
 
-Drawn in chapter 1. Circle the three counts that do not fit 201. Each is a question for a later chapter, written beside the
+In chapter 1 the room circles the three counts that do not fit 201: order_id's 186 distinct, amount's
+200 convertible and status's 200 present. Each is a question for a later chapter, written beside the
 table and ticked off as it is answered.
 
-## Fourth drawing: four keys, one file
+## Which key says two rows are one order without removing a real one?
 
-Drawn in chapter 2, as a table the room fills in before the notebook sizes it.
+The fourth drawing, made in chapter 2 as a table the room fills in before the notebook sizes it. The
+order_id is the answer: 15 rows, and no real order removed.
 
 | Key | Rows flagged | Real orders removed |
 |---|---|---|
@@ -53,9 +59,12 @@ Drawn in chapter 2, as a table the room fills in before the notebook sizes it.
 | order_id | 15 | none |
 | Fuzzy: customer and amount, 60 days | 15 | one, Rs 17,71,000 |
 
-Beside it: "same count, other rows".
+Beside it goes the line "same count, other rows", and under the first two keys the line "the file line
+is where a row sat, never what the order is".
 
-## Fifth drawing: which copy stays
+## When two rows share an order_id, which copy stays?
+
+The fifth drawing, made in chapter 3, shows which copy stays in each kind of pair.
 
 ```mermaid
 flowchart TB
@@ -64,10 +73,9 @@ flowchart TB
     K --> D["<b>valid, a field disagrees</b><br/>keep the first, log, ask the source"]
 ```
 
-Drawn in chapter 3, beside the words "the file line is where a row sat, not
-what the order is".
+## Which moves walk Q1 from Rs 2,09,98,210 down to the books?
 
-## Sixth drawing: the bridge
+The sixth drawing, the bridge: a walk from one total to another, one move per cause.
 
 ```mermaid
 flowchart LR
@@ -76,14 +84,15 @@ flowchart LR
     B -.->|"equals"| K["<b>the books</b>"]
 ```
 
-Drawn in chapter 5. Under it, the two equations: rows 201 = 186 + 15, and rupees 2,09,98,210 less
+It goes up in chapter 5 with two equations under it: rows 201 = 186 + 15, and rupees 2,09,98,210 less
 19,98,210 = 1,90,00,000. Beside it, Monday's tree recomputed as Q2's multiple of Q1: customers
 x1.000, orders per customer x0.860, revenue per order x1.144, revenue x0.984, with Tuesday's x1.000,
 x0.754, x1.180 and x0.890 written above and crossed through.
 
-## Seventh drawing: the replay
+## Can the clean file be rebuilt from the raw export and the log alone?
 
-Drawn in chapter 6, after lunch.
+The seventh drawing, made in chapter 6, after lunch. Yes: 201 rows less the 15 logged lines give the
+186 orders.
 
 ```mermaid
 flowchart LR
@@ -92,12 +101,12 @@ flowchart LR
     C -.->|"equals"| P["<b>the clean file</b>"]
 ```
 
-Beside it: "a log is finished when a stranger can replay it".
+Beside it goes the line "a log is finished when a stranger can replay it".
 
-## What is on the board when the day ends
+## What is on the board when the day ends?
 
 The four moves across the top; the profile table with its three circled counts, each ticked; the
-four keys; the copy tree; the bridge with its two equations; the replay; and in the corner, Tuesday's two numbers crossed
-through and replaced: revenue -11.0% becomes -1.6%, orders per customer x0.754 becomes x0.860, and
-Retail-Plus -49.0% becomes -35.0%. Tomorrow's
-question is written under them, unanswered: is -35.0% on 22 members real, or chance?
+four keys; the copy tree; the bridge with its two equations; the replay; and in the corner, Tuesday's
+numbers crossed through and replaced: revenue -11.0% becomes -1.6%, orders per customer x0.754
+becomes x0.860, and Retail-Plus -49.0% becomes -35.0%. Tomorrow's question is written under them,
+unanswered: is the -35.0% fall real, or chance?
