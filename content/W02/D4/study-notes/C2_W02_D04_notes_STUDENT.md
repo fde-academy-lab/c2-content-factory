@@ -40,7 +40,7 @@ per customer with `groupby`, the campaign feed attached with a validated merge, 
 reshaped with `pivot_table`, one question asked in three tools, the tool-choice note, and the Monday
 refresh with its guards. Three ideas were only named: `transform`, which gives every row its group's
 value the way a window function does; `indicator=True`, pandas' version of Tuesday's anti-join; and
-`pivot`, which refuses to reshape where `pivot_table` quietly averages.
+`pivot`, which refuses to reshape where `pivot_table` averages without a word.
 
 Monday queried the v4 warehouse, Kalpa Retail's Postgres database: 1,000 orders over Q1 (April to
 June 2026) and Q2 (July to September), worth Rs 19,84,00,000 at the prices charged, from a customer
@@ -82,7 +82,7 @@ flowchart LR
 
 The customer list decides how many rows there are. The orders and the campaign platform's feed only
 add columns, and the flags are computed from those columns. Every chapter today lights one arrow, and
-every trap is the table quietly changing what one row stands for. The three numbers on the right are
+every trap is the table changing, without an error, what one row stands for. The three numbers on the right are
 checked every Monday before the table leaves: 340 rows, Rs 19,84,00,000 of spend, and the as-of date,
 28 September 2026, the last date the data covers.
 
@@ -136,8 +136,7 @@ pandas can sum, and `parse_dates` makes `order_date` a real date that chapter 6 
 It does, on all 301 customers who ordered. `groupby` splits the orders into one group per customer,
 applies a calculation to each group and combines one row per customer: Week 1's accumulator written
 once, and SQL's `GROUP BY`. One `agg` call computes all three numbers, each name on the left becoming a
-column. The largest spender, a Business account, bought Rs 2,23,10,600, which is why spend is always
-read by segment: Business holds 99.1 percent of it.
+column. The largest spender, a Business account, bought Rs 2,23,10,600, so spend is always read by segment: Business holds 99.1 percent of it.
 
 ### How many customers on the list have never ordered?
 
@@ -149,8 +148,7 @@ filter runs. A half-fix makes it worse: merged back onto the list, the 39 arrive
 frequency, the column turns `float64`, and a missing value is never equal to 0. **The fix** starts from
 the customer list, merges with `how="left"` and `validate="one_to_one"`, fills the count and the spend
 with 0 on purpose and turns the count back into whole numbers. The 39 split 19 Retail-Core, 13
-Retail-Plus, 6 Student and 1 Business, and spend does not move, which is why a spend check alone would
-never have caught it.
+Retail-Plus, 6 Student and 1 Business, and spend does not move, so a spend check alone would never have caught it.
 
 ### Does SQL, run on its own, give all 340 customers the same three numbers?
 
@@ -261,7 +259,7 @@ metric is Retail-Plus spend by month and its change from Q1 to Q2.
 **The questions on the way.**
 
 1. Which of three shapes should answer the head of Retail-Plus, and what does each cost?
-2. In how many member-months did Retail-Plus actually buy?
+2. In how many member-months did Retail-Plus buy?
 3. How far did the tier fall, read from a one-line pivot?
 4. What does one row of the pivot stand for?
 5. Which shape compares a member's quarters, and which follows the tier's trend?
@@ -285,7 +283,7 @@ wide table is what the head of Retail-Plus reads along a member's row. The fact 
 the view running every Monday for Finance, which moves it into the warehouse with a table of months in
 place of hand-typed columns.
 
-### In how many member-months did Retail-Plus actually buy?
+### In how many member-months did Retail-Plus buy?
 
 In 266, far fewer than 107 members times 6 months, because a month with no order has no row. The tier
 took Rs 5,85,770 in Q1 and Rs 4,13,380 in Q2.
@@ -388,8 +386,7 @@ rows, and 107 against the 130 reached shows the gap without reading a row.
 
 From the customer list, where every customer has one, whether or not they ever ordered. Then plain
 Python, SQL and pandas all say 107 of 130 bought, 82 percent: 56 of 70 in Retail-Core, 80 percent, and
-51 of 60 in Retail-Plus, 85 percent. The tools never disagreed about arithmetic; they disagreed about
-rows.
+51 of 60 in Retail-Plus, 85 percent. The tools disagreed about which rows they counted, and their arithmetic was right throughout.
 
 ### Does counting sets, with no grouping at all, find the same customers who never bought?
 

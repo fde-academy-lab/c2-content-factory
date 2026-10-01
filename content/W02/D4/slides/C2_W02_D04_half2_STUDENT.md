@@ -1,9 +1,9 @@
-# Will the Monday table rebuild itself and hold?
+# Will Monday's table rebuild itself and hold?
 
 Week 2, Day 4. Half two.
 
 Kicker: WEEK 2  ·  THURSDAY  ·  HALF TWO
-Quote: The warehouse queries are fine for Finance, but Marketing's analysts live in Python. Build them the table in pandas, from the warehouse, and make it refreshable in one run.
+Quote: Build them the table in pandas, from the warehouse, and make it refreshable in one run.
 Who: The data platform lead, Kalpa Retail
 
 ```notes
@@ -74,7 +74,7 @@ value: 65,536 | label: rows per .XLS sheet | note: the old format's limit
 value: CSV files | label: fetched automatically | note: from commercial laboratories
 ```
 
-**What breaks.** A refresh that never counts rows in against rows out loses them without a sound, and a week of decisions rests on the short number.
+**What breaks.** A refresh that never counts rows in against rows out loses them without an error, and a week of decisions rests on the short number.
 
 ```notes
 LIVE, 2 minutes. Sources, checked 1 Oct 2026: Public Health England's statement of 4 October 2020,
@@ -248,8 +248,8 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 3 minutes. Each guard is compared with a number the warehouse gives on its own, never a number
-the notebook computed, which is what makes it a guard.
+LIVE, 3 minutes. Each guard is compared with a number the warehouse gives on its own, so a slip in the
+notebook cannot pass its own check.
 ```
 
 ---
@@ -265,7 +265,7 @@ guard_failures(repeated)
 **Question.** As a letter? a) only the unique-key guard; b) the unique-key and row-count guards; c) the unique-key, row-count and spend guards; d) all four.
 
 ```notes
-LIVE, 2 minutes. A guard is proved the only way a guard can be: by making it fire.
+LIVE, 2 minutes. Prove each guard by making it fire on a copy broken on purpose.
 ```
 
 ---
@@ -280,7 +280,7 @@ LIVE, 2 minutes. A guard is proved the only way a guard can be: by making it fir
 | Recency counted to the run day | smallest recency is 0 |
 | Customers with no orders dropped | rows equal the list |
 
-**What breaks.** Nothing, which is the point: every broken copy trips a guard, and the honest one trips none.
+**What breaks.** Nothing ships broken: every broken copy trips a guard, and the honest table trips none.
 
 ```notes
 LIVE, 3 minutes. The answer is c. The repeated customer's recency is the same, so the recency guard

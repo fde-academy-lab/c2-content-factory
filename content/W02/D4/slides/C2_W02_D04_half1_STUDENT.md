@@ -284,7 +284,7 @@ value: float64 | label: amount | note: a number pandas can sum
 
 ```notes
 LIVE, 2 minutes. The answer is b. pandas 2 said object for text; pandas 3 says str, checked on 3.0.6
-on 30 Sep 2026. The count check is Monday's habit: the frame holds 538 Q1 and 462 Q2 orders.
+on 1 Oct 2026. The count check is Monday's habit: the frame holds 538 Q1 and 462 Q2 orders.
 ```
 
 ---
@@ -820,7 +820,7 @@ column into columns; the next slides show what it does with repeats.
 ---
 
 ## S38. How many member-months did Retail-Plus buy in?
-*In how many member-months did Retail-Plus actually buy?*
+*In how many member-months did Retail-Plus buy?*
 
 ```mermaid
 flowchart LR
@@ -925,7 +925,7 @@ wide = plus.pivot_table(index="customer_id", columns="month", values="amount",
 ```stats
 value: Rs 9,99,150 | label: grand total | note: equals the orders
 value: -29.4% | label: Q1 to Q2 | note: Rs 1,72,390, not Rs 74,752
-value: Rs 97,638 | label: the fall the average hid | note: how often, not how much
+value: Rs 97,638 | label: the fall the average hid | note: lost when each cell averaged
 ```
 
 ```notes
@@ -1050,8 +1050,8 @@ label: 6 | title: Do sets agree? | body: No grouping at all | tone: dark
 ```
 
 ```notes
-LIVE, 1 minute. Kavya's challenge, word for word: "You did the tree in plain Python in Week 1 and in SQL
-on Monday. Answer it three ways, then tell me why they agree, or why they do not."
+LIVE, 1 minute. Kavya's challenge for this chapter: answer the question in plain Python, in SQL and in
+pandas, then say why the three agree, or why they do not.
 ```
 
 ---
@@ -1210,7 +1210,7 @@ value: 107 of 130 | label: all reached | note: 82 percent, in all three tools
 
 ```notes
 LIVE, 3 minutes. Ask for the Retail-Plus share as a letter first: 100, 85, 80 or 51 percent. The
-answer is 85. The disagreement was about where the segment came from, never about the arithmetic.
+answer is 85. The tools disagreed because the hurried versions read the segment from the orders.
 ```
 
 ---
@@ -1383,7 +1383,7 @@ label: plain Python | value: 19 | caption: about two hundredths
 
 ```notes
 LIVE, 2 minutes. The answer is c. The bars show one run in thousandths of a second; the numbers vary
-each time. Say it plainly: a sizing that does not separate the options decides nothing.
+each time. Tell the room that a sizing which scores every option the same decides nothing.
 ```
 
 ---

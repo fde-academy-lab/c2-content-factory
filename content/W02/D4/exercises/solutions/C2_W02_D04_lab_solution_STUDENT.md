@@ -143,8 +143,7 @@ Among the 301 who ordered, `idxmax` names the app for 149, the store for 92 and 
 the app's lead is mostly ties broken by column order: with ties set aside, the counts are 77, 66 and
 60. A rule the growth team can use: name a channel only when it leads outright, write "mixed" for a
 tie and "none" for a customer with no orders, and send those offers by the growth team's default
-channel. Any rule works if it is written down; a tie quietly broken by alphabetical order is the one
-that does not.
+channel. Any rule works if it is written down; a tie broken by the columns' alphabetical order, with nobody told, does not.
 
 ## Which numbers should problem 4 reach, and what line goes to the head of Retail-Plus?
 

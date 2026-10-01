@@ -406,7 +406,7 @@ def ch1():
         In Week 1 you built spend per customer with a dictionary: start empty, visit every order, add
         its amount to that customer's running total. `groupby` makes the same three moves. It splits
         the orders into one group per customer, applies a sum to each group and combines the results
-        into one row per customer, which is why the move is called split, apply, combine. The cell
+        into one row per customer: split, apply, combine. The cell
         below runs the loop and the one line side by side and compares them customer by customer.
 
         **Predict before you run.** How many rows will spend per customer have? a) 1,000, one per
@@ -526,8 +526,7 @@ def ch1():
         '''),
         md('''
         The nudge list moves from 0 to 39 customers: 19 in Retail-Core, 13 in Retail-Plus, 6 among the
-        Students and 1 Business account. Spend does not move, since a customer who never ordered adds
-        nothing to it, which is exactly why a spend check alone would not have caught the gap.
+        Students and 1 Business account. Spend does not move, since a customer who never ordered adds nothing to it, so a spend check alone would not have caught the gap.
 
         > **Kavya's review.** "The table's spine is the customer list, never the orders. Every Monday I
         > want three numbers before the table leaves: rows against the customer list, spend against
@@ -797,8 +796,7 @@ def ch2():
         **What happened.** The answer is c, Rs 34,700.
 
         **Why it is wrong.** C-9002 appears twice in the feed, so the merge gives C-9002 two rows and
-        the sum counts its Rs 8,600 twice. Every row looks right on its own, which is why reading the
-        table never catches it. The slide overstates what the reached customers spent by a third, and
+        the sum counts its Rs 8,600 twice. Every row looks right on its own, so reading the table never catches it. The slide overstates what the reached customers spent by a third, and
         the case for November rests on money nobody paid. The check that catches it is Tuesday's: four
         customers went in and five rows came out.
         '''),
@@ -1004,7 +1002,7 @@ def ch2():
 # ============================================================================= chapter 3
 C3_LADDER = [
     "Which of three shapes should answer the head of Retail-Plus, and what does each cost?",
-    "In how many member-months did Retail-Plus actually buy?",
+    "In how many member-months did Retail-Plus buy?",
     "How far did the tier fall, read from a one-line pivot?",
     "What does one row of the pivot stand for?",
     "Which shape compares a member's quarters, and which follows the tier's trend?",
@@ -1095,10 +1093,10 @@ def ch3():
         '''),
 
         md('''
-        ## 2. In how many member-months did Retail-Plus actually buy?
+        ## 2. In how many member-months did Retail-Plus buy?
 
         Before any pivot, the grain the head of Retail-Plus asked about is member and month. Two keys
-        in the `groupby` give one row for each member and month that actually has orders, with that
+        in the `groupby` give one row for each member and month that has orders, with that
         month's orders added up.
 
         **Predict before you run.** How many rows does the long table have? a) 355, one per order;
@@ -1226,11 +1224,11 @@ def ch3():
                     title="Three row counts, and only one answers the head of Retail-Plus")
         kit.check("the member view has one row per member who ordered", len(wide) == plus["customer_id"].nunique() == 107)
         kit.check("the order-indexed pivot has one row per order", len(by_order) == len(plus) == 355)
-        kit.check("its total is right, which is why it survives a glance", by_order.sum().sum() == plus["amount"].sum())
+        kit.check("its total is right, so it survives a glance", by_order.sum().sum() == plus["amount"].sum())
         '''),
         md('''
         **What happened.** The answer is b, 355 rows, one per Retail-Plus order. Its totals are right,
-        which is why it survives a glance, but its rows are orders, so "who is drifting" cannot be read
+        so it survives a glance, but its rows are orders, so "who is drifting" cannot be read
         from it at all. The member view has 107 rows. The 13 members on the list who never ordered are
         in neither view, which is a decision to state when the view goes to the head of Retail-Plus.
         '''),
@@ -1818,7 +1816,7 @@ def ch5():
         same eight rows, four segments by two quarters, so the note calls the cost equal and picks
         pandas for Finance, because its chain is short and the growth team already uses it.
 
-        **Predict before you run.** How many rows did the pandas route actually move out of the
+        **Predict before you run.** How many rows did the pandas route move out of the
         warehouse to produce its eight? a) 8; b) 340; c) 1,000; d) 1,340.
         '''),
         code('''
@@ -2037,7 +2035,7 @@ def ch6():
              "makes the table rebuild itself every Monday and stop when a check fails."),
         md('''
         **Setup.** The next cell finds the helper and opens the warehouse connection. Everything else
-        this chapter needs is built inside the refresh function, which is the point.
+        this chapter needs is built inside the refresh function, so one call rebuilds the table.
         '''),
         code(SETUP + "import pandas as pd\n\nENG = kit.engine()\nprint(\"connected to the warehouse\", kit.WAREHOUSE[\"dbname\"])\n"),
         mapcell(6, ["1. the options\\nby hand, report, guard or view", "2. the function\\ntold two things",
@@ -2218,7 +2216,7 @@ def ch6():
         **What happened.** The answer is c: a repeated row breaks the unique key, adds a row and adds
         that customer's spend a second time, so three guards fire; the recency guard does not, because
         the repeated customer's recency is the same. Each broken copy trips at least one guard and the
-        honest table trips none, which is what makes the guards worth running. In the refresh, a guard
+        honest table trips none, so the guards tell a broken Monday from an honest one. In the refresh, a guard
         that fails raises an error, so the table is not written.
         '''),
 
@@ -2304,7 +2302,7 @@ def ch6():
         found two traps on the way: reading another customer's month without `PARTITION BY`, and counting
         a skipped month as a fall. In pandas, `groupby("customer_id")["spend"].shift(1)` is `LAG`
         partitioned by customer, and shifting the month the same way lets the check require that the two
-        earlier readings are really the two calendar months before. The cell compares the pandas flag with
+        earlier readings are the two calendar months before. The cell compares the pandas flag with
         the warehouse's, customer by customer, without listing anyone.
         '''),
         cq('''
