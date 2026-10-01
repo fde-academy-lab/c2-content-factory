@@ -36,8 +36,8 @@ carries the same plants.
 **Who needs the answer.** Each assessor, before the first viva: the five probes come in a fixed
 order, and each one is the evidence for one row of the rubric.
 
-**The questions on the way.** Which probes, for how long? Which seat takes which probe? What do you
-listen for in every answer?
+**The questions on the way.** Which probes, for how long? Which probe does each seat take? When do
+you ask to see the work? What do you listen for in every answer?
 
 The viva climbs in three steps, the way an interviewer moves from a candidate's work to their
 judgement: what the group did, why it did it that way rather than another, and what would change its
@@ -66,23 +66,28 @@ The rubric, rendered from `data/programme/facts.yaml`:
 | Project viva | What they would do differently | 3 |
 <!-- /sync:rubric:W03/mock -->
 
-**Rotate the plant probe by seat, so group-mates meet different ones.** Each sub-problem carries four
-probes, P1 to P4. Seat 1 takes P1, seat 2 takes P2, seat 3 takes P3 and seat 4 takes P4; the roster
+### Which probe does each seat take?
+
+Each sub-problem carries four plant probes, P1 to P4, rotated by seat so that group-mates meet
+different ones. Seat 1 takes P1, seat 2 takes P2, seat 3 takes P3 and seat 4 takes P4; the roster
 prints each seat's probe beside its set letter. The opener, the translation probe, the caveat
 challenge and the looking-back probe stay the same for every learner, because a learner's own words
 are what they test, and group-mates' answers to them should differ. A learner racing through can
 take the headline probe, H, as a second "why" probe.
 
-**Ask to see the work at least once.** The learner has the group's notebook or SQL, the decisions log
-and the challenges log open. Ask for the cell or the log line behind one number. A learner who finds
-it in under a minute built it or read it closely; a learner who searches and cannot find it carried
-it.
+### When do you ask to see the work?
 
-**Read every answer against three things.** Each probe below gives what a learner who **did the
-work** says, with the number, the unit and the check; what a learner who **carried it**, presenting a
-group-mate's work, says, which is usually the right headline without the mechanism; and **the
-follow-up** that tells them apart, because it moves the case one step past the headline. The
-expected answer to a follow-up is in brackets after it. Note a carried answer as it happened; never
+At least once in every viva. The learner has the group's notebook or SQL, the decisions log and the
+challenges log open. Ask for the cell or the log line behind one number. A learner who finds it in under a
+minute built it or read it closely; a learner who searches and cannot find it carried it.
+
+### What do you listen for in every answer?
+
+Each probe below gives three columns: what a learner who did the work says, with the number, the
+unit and the check; what a learner who carried it, presenting a group-mate's work, says, which is
+usually the right headline without the mechanism; and the follow-up that tells them apart, because
+it moves the case one step past the headline. The expected answer to a follow-up is in brackets
+after it. Note a carried answer as it happened; never
 argue with the learner in the room, and never correct a number.
 
 ---
@@ -105,8 +110,8 @@ defend."** This is the row's interview angle for the day.
 
 ## What does Dr Menon's 5 percent count, and which number does each group put beside it?
 
-**Who needs the answer.** The assessor of any group, since every brief told the group to rebuild Dr
-Menon's figure before explaining it, the Week 1 Tuesday move of confirming a number first.
+**Who needs the answer.** The assessor of any group, since every group started from Dr Menon's 5
+percent, and confirming a number before explaining it is the Week 1 Tuesday move.
 
 **The questions on the way.** What is planted in the headline? What does the probe ask? What separates
 the answers?
@@ -365,7 +370,7 @@ what makes a second posting a repeat.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| No: 280 pairs, the same claim and the same amount, both electronic remittances, 0 to 2 minutes apart, $19,204.63, which is a file loaded twice; counted once, listed for the posting team to confirm | "We removed duplicate payments" | "A payer really does pay the same amount on two different claims. How does your rule avoid removing that?" (The rule is the same claim and the same amount minutes apart; two claims are two keys.) |
+| No: 280 pairs, the same claim and the same amount, both electronic remittances, 0 to 2 minutes apart, $19,204.63, which is a file loaded twice; counted once, listed for the posting team to confirm | "We removed duplicate payments" | "Sometimes a payer does pay the same amount on two different claims. How does your rule avoid removing that?" (The rule is the same claim and the same amount minutes apart; two claims are two keys.) |
 
 **P2, seat 2. "Which claims have no posting at all, and how many dollars is that?"** The move: Week 2
 Tuesday, the rows with no partner, found by an anti-join.

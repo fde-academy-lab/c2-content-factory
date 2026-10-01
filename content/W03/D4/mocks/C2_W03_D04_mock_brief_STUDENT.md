@@ -4,9 +4,10 @@ Kalpa Health, Kalpa Group and everyone in them are fictional, and every record i
 is synthetic.
 
 **Who needs the answer.** You, before your slot. Mock R1 is a mock interview: one assessor questions
-you alone for about 20 minutes, the way a GCC's first-round screen would, while your group keeps
-building. A learner who walks in knowing how the 20 minutes run spends them answering. A learner who
-does not spends the first five working out what is being asked.
+you alone for about 20 minutes while your group keeps building, the way a first-round screen runs at
+a Global Capability Centre (GCC), the offshore centre where a global company does its own work. A
+learner who knows how the 20 minutes run spends them answering, and one who does not loses the first
+five minutes working out what is being asked.
 
 **The questions on the way.** What is Mock R1, and where does it sit in Dr Menon's week? How are the
 20 minutes spent? What does the technical half ask, and what will it never ask? What does the viva
@@ -29,7 +30,7 @@ service centres, where a phlebotomist draws patients' blood, in each of six US m
 each patient's payer in dollars: a commercial health plan, Medicare (the federal programme for people
 aged 65 and over), Medicaid (each state's programme for people on low incomes) or the patient, who
 pays for themselves (self-pay). Its revenue-cycle and analytics work runs from Kalpa's GCC in
-Bengaluru, where you work as a trainee engineer in the data and AI team. It reports in calendar
+Bengaluru, where you are a trainee engineer in the data and AI team. It reports in calendar
 quarters: Q2 is April to June 2026 and Q3 is July to September 2026.
 
 Its COO, Dr Priya Menon, wrote to your team: her dashboard shows test volumes up 5 percent from Q2 to
@@ -51,8 +52,9 @@ and the assessor you sit with, are on the seat list the trainer hands out at the
 and your group-mates' slots are spread through the day, so your group is never more than one person
 short.
 
-Mock R1 is one 20-minute conversation, alone, on two things: the method you learned in Weeks 1 and 2,
-and what your group did with it in Kalpa Health.
+Mock R1 is worth 30 of your Build 1 marks: one 20-minute conversation, alone, on the method you
+learned in Weeks 1 and 2 and on what your group did with it in Kalpa Health, sitting between
+Wednesday's headline claim and Friday's build freeze.
 
 ---
 
@@ -73,7 +75,8 @@ flowchart LR
 
 1. The assessor opens with your seat, your group and your group's question, and says how the two
    halves run.
-2. The technical half runs for about nine minutes, and the assessor says when it ends.
+2. The technical half runs for about nine minutes. The assessor says when it ends and moves straight
+   on to your group's work, so keep your notebook and logs on screen.
 3. The viva runs for about eight minutes, on your group's files, notebook and logs.
 4. The assessor closes. You may ask one question about the mock itself; the assessor does not give
    a score in the room.
@@ -144,12 +147,16 @@ moves from your work to your judgement:
    through the analysis you did on unfamiliar data and one decision you would defend."
 2. **Why that way, rather than another?** A question on one decision your group made, the numbers
    behind it and the alternative you did not take.
-3. **What would change your call?** Your group's headline claim from Wednesday and its caveat, the one
-   thing that could make the claim wrong. The assessor then pushes on the caveat the way Dr Menon or
-   one of her heads would, and you hold it, give it up or change it, with a number either way.
+3. **What would change your call?** Your group's headline claim, the one sentence with its number,
+   what the number is out of, its quarter and its caveat that your group stated at Wednesday's close.
+   The caveat is the one thing that could make the claim wrong. The assessor pushes on it the way Dr
+   Menon or one of her heads would, and you hold it, give it up or change it, with a number either
+   way.
 
 Last comes the question your challenges log answers: what you would do differently if you started
-again tomorrow.
+again tomorrow. The challenges log is where your group records each time it was stuck, what it tried
+and what it decided; the decisions log holds every cleaning or matching call, with the rows it moved
+and its reason.
 
 The assessor will ask you at least once to show where a number comes from: the cell in your notebook,
 the query, or the line in your decisions log. You answer for the whole group's work, including the
@@ -189,8 +196,8 @@ You are scored alone, 15 marks on each half:
 | Defending a caveat under challenge | Holding your group's caveat with a number when it is pushed, and saying what would change it |
 | What they would do differently | A real step you would move or change, taken from your own log |
 
-Three of the six rows reward what happens after your first answer: the follow-up, the caveat under a
-push, and looking back.
+Three of the six rows, 12 of the 30 marks, reward what happens after your first answer: the
+follow-up, the caveat under a push, and looking back.
 
 ---
 
@@ -268,7 +275,11 @@ By the end of today your group's build should be complete enough to freeze on Fr
 - the decisions log and the challenges log are current;
 - the one-slide answer for Dr Menon is drafted: the claim, the evidence, the caveat and the action.
 
-The trainer checks each group's progress through the day. Tonight's task is the presentation draft
-and one rehearsal of the demo, start to finish, on the raw files. On Friday the build freezes, and
-each group runs its demo cold twice. Every Build 1 score, the mock's among them, closes on Saturday
-24 October, when each group's presentation ends the week.
+The trainer visits each group three times during the day, for a few minutes each: once to ask who
+is out when and what would stop your notebook running cold; once to pick one number from your
+one-slide answer and ask what it is out of, which cell makes it and what would make it wrong; and
+once to watch your notebook run from a fresh start on a machine that is not its author's, then ask
+which sentence of your answer is the caveat. Tonight's task is the presentation draft and one
+rehearsal of the demo, start to finish, on the raw files. On Friday the build freezes, and each group
+runs its demo cold twice. Every Build 1 grade, the mock's among them, closes on Saturday 24 October,
+the last day of the presentations.
