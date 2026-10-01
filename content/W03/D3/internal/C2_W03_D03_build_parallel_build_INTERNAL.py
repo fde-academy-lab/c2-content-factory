@@ -58,7 +58,7 @@ cells = [
     **The questions on the way.**
     1. How could a team find what moved New York's billed revenue, and what does each way cost?
     2. How many New York bookings does the export hold, once a row stops counting as a booking?
-    3. Does every New York amount convert to dollars, or is the total quietly short?
+    3. Does every New York amount convert to dollars, or does the total come out short without a warning?
     4. Do the claims and the completed bookings describe the same visits, one to one?
     5. Did more claims or a bigger mean claim carry the change, and does it hold per day?
     6. Which New York site billed the extra claims, and where does this build stop?
@@ -116,8 +116,9 @@ kit.side_by_side(
     Billed revenue is what Kalpa Health asked the payers for, at list prices. At Kalpa Retail an
     order's amount was what the shopper paid at the till; at Kalpa Health the payers pay a contracted
     share of a claim weeks later, so billed revenue is a request, and the money that arrives is a
-    smaller number for a different decision. The finance head's question is what moved the billed
-    number, and four ways could answer it.
+    smaller number for a different decision. The domain dossier, `content/W03/D1/study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`,
+    follows one claim from the list price to the cash in its section 3, for more depth. The finance
+    head's question is what moved the billed number, and four ways could answer it.
 
     | Option | What the team does | Rows it reads | What it can say | What it assumes |
     |---|---|---|---|---|
@@ -212,7 +213,7 @@ kit.check("rows and bookings disagree on New York's growth", round(wrong, 3) != 
     **What happened.** The answer is b. The export holds 2,128 New York rows and 2,095 distinct
     `booking_id` values, so 33 ids appear on two rows each. The claims pass the same test: 2,032
     rows and 2,032 distinct claim ids. `channel`, how the patient booked, is blank on 43 rows; this
-    tree splits by site, so the column is logged as not used rather than cleaned. The billed amounts
+    tree splits by site, so the column is logged as not used and left as it is. The billed amounts
     were read as text, which section 3 deals with.
 
     **The plausible wrong answer.** Count rows per quarter and call them bookings, as the last table
@@ -251,7 +252,7 @@ kit.check("the kept rows hold one row per booking id", clean["booking_id"].is_un
 
     # ----------------------------------------------------------------- 3: amounts
     md("""
-    ## 3. Does every New York amount convert to dollars, or is the total quietly short?
+    ## 3. Does every New York amount convert to dollars, or does the total come out short without a warning?
 
     Revenue can only be summed once every amount is a number, and a conversion that fails without a
     message costs more than one that stops the run. The `billed_amount` column was read as text. The quick fix is
@@ -586,7 +587,7 @@ kit.vflow([f"Billed revenue\\n{usd(q2['sum'])} to {usd(q3['sum'])}, +5.5%",
     > cancelled, and SQL lands on the same 2,032 claims and $359,395. Now tell me why the mean fell
     > before anyone calls it price."
 
-    ### In the interview
+    ### In the interview: how do you reconcile two systems' ids, and how do you say a finding in one sentence?
 
     **[F] Two systems export the same entity with different id formats; how do you reconcile them?**
     "I profile both keys before any join: the shapes each system writes and how many rows carry

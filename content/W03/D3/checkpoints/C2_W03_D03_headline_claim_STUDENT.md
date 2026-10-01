@@ -64,17 +64,20 @@ never folded into the claim.
 
 ## What does a finished claim look like, on a question no group holds?
 
-**Who needs the answer.** Every group, as a model of shape rather than of content: it answers a
-question none of the five briefs asks.
+**Who needs the answer.** Every group, as a model of the claim's shape: it answers a question none
+of the five briefs asks, so its numbers belong to no group.
 
 **The questions on the way.** What did the trainer's parallel build find? How do the four parts sit
 on the page?
 
 This morning's parallel build took one metro's billed revenue, New York's, from Q2 to Q3. Billed
 revenue is the dollars on the claims at Kalpa Health's list prices, what it asked the payers for;
-the payers pay a contracted share of it weeks later. The build kept one row per booking, converted
-every amount, matched the claims one to one to the completed bookings and split billed revenue into
-claims times the mean claim, the average dollars on one claim.
+the payers pay a contracted share of it weeks later, a road the domain dossier,
+`content/W03/D1/study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`, follows from list price
+to cash in its section 3. The build kept one row per booking under an
+identity rule, one written rule for what makes two rows one record (here, one booking id is one
+booking), converted every amount, matched the claims one to one to the completed bookings and split
+billed revenue into claims times the mean claim, the average dollars on one claim.
 
 | Part | New York, Q2 against Q3 |
 |---|---|

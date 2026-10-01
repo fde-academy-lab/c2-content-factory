@@ -10,7 +10,9 @@ where a phlebotomist draws patients' blood, in each of six US metro areas, billi
 payers in dollars (commercial health plans, Medicare, Medicaid and patients who pay for themselves).
 Its revenue-cycle and analytics work runs from Kalpa's Global Capability Centre (GCC) in Bengaluru,
 where you work as trainee engineers in the data and AI team. Q2 is April to June 2026 and Q3 is July
-to September 2026.
+to September 2026. Every term the questions use is explained beside them; the domain dossier,
+`content/W03/D1/study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`, carries the whole business, with its
+words in section 6 and its numbers and their formulas in section 5, for more depth.
 
 > "My dashboard says test volumes grew 5 percent from Q2 to Q3. The plan the board approved asks for
 > 18. Which branch of my business is short, and what do I do next?"
@@ -72,6 +74,11 @@ each number in your claim be counted over?
 > from, and which branch of it is short?"
 > The finance head, Kalpa Health
 
+A claim is the bill for one completed booking, sent to the patient's payer at Kalpa Health's list
+prices, plus any collection fee for a home draw, and billed revenue is the dollars on the claims. A
+branch is one part of the revenue tree: a count or a ratio whose change shows how much of the growth
+it carries.
+
 **Who needs the answer.** The finance head, who writes the board's page on where the plan's growth
 went; a branch named on a number nobody can rebuild sends the recovery effort to the wrong place.
 
@@ -96,6 +103,9 @@ went; a branch named on a number nobody can rebuild sends the recovery effort to
 > to know how far they fell, and why."
 > The patient service centres' operations head, Kalpa Health
 
+A booking is one patient's visit to have one or more tests done, and it ends completed or cancelled.
+A field team is operations staff sent to a metro to see on the ground what is happening.
+
 **Who needs the answer.** The operations head, who decides this month whether to send a field team
 or cut staff; a fall read too large cuts staff that patients still need.
 
@@ -118,6 +128,10 @@ or cut staff; a fall read too large cuts staff that patients still need.
 > "The claims we billed say one thing and the posting system says another. Which claims are unpaid,
 > how much money is that, and can I trust the figure I report?"
 > The finance head, Kalpa Health
+
+A remittance is a payer's answer to a claim, and the posting system records it as postings, one row
+each: money received (a payment), a refusal (a denial) or money taken back (a reversal). A payer's
+filing deadline is the time after the service within which it must receive the claim.
 
 **Who needs the answer.** The finance head, who reports the collections figure at the quarter's
 close under their own name; a claim chased late can pass its payer's filing deadline and never be
@@ -143,6 +157,10 @@ paid.
 > report. I am being asked to add a receptionist there or close it. Is the centre really worse?"
 > The patient service centres' operations head, Kalpa Health
 
+The visit register records each Q3 visit a booking brought to a patient service centre. A no-show is
+a visit the register marks as not attended, and the report's no-show rate is the share of a centre's
+Q3 visits marked that way.
+
 **Who needs the answer.** The operations head, who chooses between a receptionist, reminder calls
 and a closure notice; a centre closed on a rate read wrongly takes a neighbourhood's nearest blood
 draw away.
@@ -165,6 +183,11 @@ draw away.
 > "Our free at-home collection offer lifted bookings 9 percent. I want to offer it to every patient
 > in all six metros. Can you confirm it worked?"
 > The marketing head, Kalpa Health
+
+The offer was a free collection at home, where a phlebotomist draws the sample in the patient's home
+with the visit's fee waived. Offered means on marketing's list, and the report's lift is the offered
+patients' bookings per patient over the weeks the offer ran, divided by every other registered
+patient's over the same weeks, minus one.
 
 **Who needs the answer.** The marketing head, who wants the offer for every patient, and Dr Menon,
 who signs its cost; every free collection sends a phlebotomist to a patient's home, so an offer

@@ -83,7 +83,7 @@ error on every row, since every day in them is past the twelfth; ask it to read 
 ## Brief 3, billing: what does each answer sound like, and what comes next?
 
 **Who needs the answer.** The finance head, and the billing groups, whose figure the board sees at
-the quarter's close; the plants behind this brief are the posting system's three key shapes, the
+the quarter's close; the plants behind this brief are the three shapes the posting system writes a claim in, the
 double posts from repeated ERA loads, the unpaid employer claim and the denials posted with nothing
 paid.
 

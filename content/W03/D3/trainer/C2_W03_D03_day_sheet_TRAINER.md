@@ -54,7 +54,7 @@ which watches the moves its own build needs run once on a question no brief asks
 |---|---|---|
 | 1 | Which of four ways could answer it, and what does each cost? | The claims grow 8.0 percent and the export's rows 4.8, so only a reconciliation can say which counts New York; it reads 4,160 rows against 2,032. |
 | 2 | How many New York bookings does the export hold? | 2,095 in 2,128 rows: 33 ids twice, 26 of the extra rows in Q2, so bookings grew 6.8 percent where rows grew 4.8. |
-| 3 | Does every amount convert, or is the total quietly short? | Six dollar-text amounts; coerce leaves billed revenue $903 short, $668 in Q2 and $235 in Q3. |
+| 3 | Does every amount convert, or does the total come out short without a warning? | Six dollar-text amounts; coerce leaves billed revenue $903 short, $668 in Q2 and $235 in Q3. |
 | 4 | Do the claims and the completed bookings describe the same visits? | Yes: 2,095 = 2,032 completed + 63 cancelled, and 2,032 claims match one to one; the raw join fans out to 2,065 rows and $5,458 too much. |
 | 5 | More claims, or a bigger mean claim? | More claims at a lower mean: 977 to 1,055 claims, $179.03 to $174.87; plus $13,964 and minus $4,389; per day, claims up 6.8 percent and billed revenue 4.3. |
 | 6 | Which site carried it, and where does the build stop? | KH-NYC-02, 69 of the 78 extra claims; the build stops at what a claim holds. |
