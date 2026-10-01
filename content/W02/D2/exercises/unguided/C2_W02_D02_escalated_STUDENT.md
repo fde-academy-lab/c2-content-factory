@@ -42,6 +42,10 @@ postings. A page that drops an order or keeps a repeat fails each of them.
 | 4 | Which payments did the gateway post twice? | The double-paid list, retries only, with its surplus against posted less collected | The lab |
 | 5 | What does the page say, and which check proves it? | One line per channel, the check that proves collected holds no payment twice, and the sentence to Anand | The lab |
 
+Two of the eight choices are design items, marked (Design) in the notebook: the grain the payments
+reach before they meet the orders (part 2) and the check that proves collected holds no payment twice
+(part 5).
+
 ## What are the rules for the case?
 
 - Work alone, from the warehouse. Nothing needs cleaning, and every query runs on `orders` and

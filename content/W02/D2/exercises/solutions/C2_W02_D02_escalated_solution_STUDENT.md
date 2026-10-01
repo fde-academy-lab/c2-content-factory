@@ -47,7 +47,7 @@ The key is a, `orders o WHERE o.quarter = 'Q2'`. The baseline is every Q2 order 
 
 ### Item 2, part 2. What grain should the payments CTE have before it meets the orders? (Design)
 
-The key is b, "each instalment once, then summed per order". Each instalment once, then summed per order: a two-instalment order counts both parts and a retried instalment counts once.
+The key is b, "each instalment once, then summed per order". A two-instalment order keeps both of its parts, and a retried instalment counts once, so collected holds cash and no repeat.
 
 - a, "every payment row summed per order, as the feed posted it": counts a retried instalment twice, so collected carries the repeats.
 - c, "one row per payment, joined straight to the orders": is no grain at all and fans out.
@@ -63,11 +63,11 @@ The key is d, `LEFT JOIN`. The LEFT JOIN with orders first keeps every Q2 order 
 
 ### Item 4, part 3. Which condition keeps only the Q2 orders nothing matched?
 
-The key is a, `p.order_id IS NULL`. After the LEFT JOIN an unpaid order carries NULL on the payment side, so `p.order_id IS NULL` keeps exactly the orders nothing matched.
+The key is a, `p.order_id IS NULL`. After the LEFT JOIN an unpaid order carries NULL on every payment column, so testing the payment's key keeps exactly the orders nothing matched.
 
 - b, `p.paid_date NOT BETWEEN '2026-07-01' AND '2026-09-30'`: is unknown for a NULL date, so it keeps nothing an unpaid order carries.
-- c, `p.amount = 0`: looks for a zero payment, and an unpaid order has no payment row.
-- d, `o.amount > 0 AND p.amount IS NOT NULL`: keeps the paid orders.
+- c, `p.amount < o.amount`: compares one payment row with the whole order, so it lists the orders paid in instalments and loses the unpaid ones, whose amount is NULL.
+- d, `p.payment_id IS NOT NULL`: keeps the rows that found a payment, the opposite of the list.
 
 ### Item 5, part 4. Which query lists the payments the gateway posted twice?
 
@@ -79,7 +79,7 @@ The key is c, `GROUP BY p.order_id, p.instalment_no HAVING count(*) > 1`. A retr
 
 ### Item 6, part 4. How much was posted beyond one payment of each repeated instalment?
 
-The key is b, `sum(p.amount) - max(p.amount)`. What lies beyond one payment of a repeated instalment is its sum less one posting, `sum(p.amount) - max(p.amount)`.
+The key is b, `sum(p.amount) - max(p.amount)`. It takes everything posted for the instalment and removes one posting, which leaves exactly what was posted beyond one payment, however many times the gateway retried.
 
 - a, `sum(p.amount)`: is everything posted, including the one payment that belongs there.
 - c, `max(p.amount)`: is one payment, which equals the surplus of a pair posted at one amount and nothing else; the check on an invented instalment posted three times at Rs 1,500 gives 1,500 where 3,000 lies beyond one payment.
@@ -87,7 +87,7 @@ The key is b, `sum(p.amount) - max(p.amount)`. What lies beyond one payment of a
 
 ### Item 7, part 5. Which expression gives each channel's gap with the unpaid orders in it?
 
-The key is c, `sum(booked - coalesce(collected, 0))`. `sum(booked - coalesce(collected, 0))` counts an unpaid order's whole booked amount in the gap.
+The key is c, `sum(booked - coalesce(collected, 0))`. An order with no payment counts as nothing collected, so its whole booked amount stays in the gap.
 
 - a, `sum(booked - collected)`: lets an unpaid order's NULL fall out of the sum, so the gap loses the orders it exists to show.
 - b, `sum(booked) - sum(coalesce(posted, 0))`: subtracts posted, which still holds the repeats.
@@ -95,7 +95,7 @@ The key is c, `sum(booked - coalesce(collected, 0))`. `sum(booked - coalesce(col
 
 ### Item 8, part 5. Which check proves that collected holds no payment twice? (Design)
 
-The key is b, "collected plus the surplus posted twice equals posted from payments alone". Collected plus the surplus posted twice must equal posted from the payments table alone; a page that counted a repeat as collected fails it.
+The key is b, "collected plus the surplus posted twice equals posted from payments alone". It sets the page against the payments table's own total, which no join can change; a page that counted a repeat as collected fails it.
 
 - a, "collected is at most booked on every channel": passes a page that dropped unpaid orders, and passes one with the repeats inside collected, since on every channel the repeats are smaller than the gap, so collected stays below booked.
 - c, "the gap is not negative on any channel": passes a page that dropped unpaid orders, and passes one with the repeats inside collected for the same reason.

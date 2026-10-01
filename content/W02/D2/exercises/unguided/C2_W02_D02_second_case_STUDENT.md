@@ -19,7 +19,8 @@ Finance must know whether any customer was charged twice. A fix aimed at the wro
 costs weeks and leaves the fault in place; a repeat deleted from the warehouse removes the evidence
 Finance needs.
 
-- Anand's question was about every booked order; this one is about every row the feed holds.
+- **Posted** is every payment row the feed holds, repeats included; **collected** counts each order
+  and instalment once; a retry's **surplus** is what was posted beyond one payment of it.
 - A **retry** is the same order and instalment posted more than once; a second instalment has its own
   instalment number and is real cash.
 - The **suspense list** holds the payments a finance team sets aside until it finds the order they
@@ -36,11 +37,13 @@ Finance needs.
 | 3 | Which instalments did the feed post more than once? | The retry list, with its surplus against posted less collected |
 | 4 | Is there a pattern the gateway team can act on? | The window of dates, what the retries share, and the request |
 
+Two of the four choices are design items, marked (Design) in the notebook: which rows the retry list
+covers (part 3) and which dates tell the gateway team when the retries happened (part 4).
+
 ## What are the rules for the case?
 
 - Work in pairs; both partners run the notebook, and one posts.
-- Start from the table whose every row must survive, and keep the raw rows: nothing is deleted from
-  the warehouse.
+- Keep the raw rows: nothing is deleted from the warehouse.
 - The request to the platform lead names what the retries share, if anything, and when they
   happened, since a fix request that says only "the feed double-posts" does not get scheduled.
 

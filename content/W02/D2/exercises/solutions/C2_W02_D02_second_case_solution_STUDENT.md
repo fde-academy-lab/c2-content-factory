@@ -25,7 +25,8 @@ Finance must know whether any customer was charged twice. A fix aimed at the wro
 costs weeks and leaves the fault in place; a repeat deleted from the warehouse removes the evidence
 Finance needs.
 
-- Anand's question was about every booked order; this one is about every row the feed holds.
+- **Posted** is every payment row the feed holds, repeats included; **collected** counts each order
+  and instalment once; a retry's **surplus** is what was posted beyond one payment of it.
 - A **retry** is the same order and instalment posted more than once; a second instalment has its own
   instalment number and is real cash.
 - The **suspense list** holds the payments a finance team sets aside until it finds the order they
@@ -37,7 +38,7 @@ Finance needs.
 
 ### Item 1, part 1. Which join accounts for every payment row the feed holds?
 
-The key is c, `payments p LEFT JOIN orders o ON o.order_id = p.order_id`. `payments LEFT JOIN orders` keeps every payment row, so each lands on a Q1 order, a Q2 order or no order, and the three add to the table.
+The key is c, `payments p LEFT JOIN orders o ON o.order_id = p.order_id`. Starting from the payments keeps every row the feed holds, so each lands on a Q1 order, a Q2 order or no order, and the three add to the table.
 
 - a, `orders o LEFT JOIN payments p ON p.order_id = o.order_id`: starts from orders, so a payment with no order never appears, and an unpaid order adds a row the feed does not hold.
 - b, `orders o JOIN payments p ON p.order_id = o.order_id`: keeps only payments that match an order.
@@ -45,11 +46,11 @@ The key is c, `payments p LEFT JOIN orders o ON o.order_id = p.order_id`. `payme
 
 ### Item 2, part 2. Which condition keeps only the payments that match no order?
 
-The key is b, `o.order_id IS NULL`. After that join a payment with no order carries NULL on the order side, so `o.order_id IS NULL` keeps exactly those rows.
+The key is b, `o.order_id IS NULL`. After that join a payment with no order carries NULL on every order column, so testing the order's own key keeps exactly those rows.
 
 - a, `p.order_id IS NULL`: tests the payment's own order id, which the table never leaves empty.
 - c, `o.quarter NOT IN ('Q1', 'Q2')`: is unknown for a NULL quarter, so it keeps nothing.
-- d, `p.amount > 0 AND o.amount IS NULL AND o.quarter = 'Q2'`: adds a Q2 test no unmatched row can pass.
+- d, `p.order_id NOT IN (SELECT order_id FROM orders WHERE quarter = 'Q2')`: keeps every payment that is not on a Q2 order, so Q1's payments join the ones with no order.
 
 ### Item 3, part 3. Which rows should the retry list cover for the platform lead? (Design)
 
@@ -61,11 +62,11 @@ The key is d, "both quarters, all the feed holds". The platform lead repairs one
 
 ### Item 4, part 4. Which dates tell the gateway team when the retries happened? (Design)
 
-The key is a, "the first and last paid_date on the retry list". The first and last `paid_date` on the retry list bound the days the fault ran, and each end is a real retry.
+The key is a, "the first and last paid_date on the retry list". The window then starts and ends on a real retry and holds every one, so it bounds the days the fault ran and nothing more.
 
 - b, "the first and last day of the quarters the orders belong to": describes the quarters, so the window starts and ends on days with no retry.
 - c, "the first and last paid_date of every payment in the feed": describes the feed, so the window starts and ends on days with no retry.
-- d, "the paid_date of the first retry, since the rest repeat it": assumes every retry happened on one day, which the list does not show.
+- d, "the first and last paid_date of the Q2 retries only": stops at Anand's quarter, so the earlier retries fall outside the window.
 
 ## What should your request satisfy?
 

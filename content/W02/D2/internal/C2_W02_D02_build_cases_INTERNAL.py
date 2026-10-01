@@ -18,6 +18,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from nb_make import SETUP, md, code, empty, build  # noqa: E402
 
 DAY = ROOT / "content" / "W02" / "D2"
+import hashlib  # noqa: E402
+import c2kit  # noqa: E402
 spec = importlib.util.spec_from_file_location("chapters", DAY / "internal" / "C2_W02_D02_build_notebooks_INTERNAL.py")
 chapters = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(chapters)
@@ -52,6 +54,12 @@ def show(rows, caption="", money=()):
 
 def crore(v):
     return f"{v:.2f}"
+
+
+def fingerprint(value):
+    """A short fingerprint of a result, so a check can compare it without printing the answer."""
+    import hashlib
+    return hashlib.sha256(repr(value).encode()).hexdigest()[:16]
 '''
 
 HOW_E = """**How this notebook works.** Each part has lettered TODOs, each with four options, and a check after
@@ -95,10 +103,12 @@ E_TODOS = {
     4: ("Which condition keeps only the Q2 orders nothing matched?",
         {"a": "p.order_id IS NULL",
          "b": "p.paid_date NOT BETWEEN '2026-07-01' AND '2026-09-30'",
-         "c": "p.amount = 0",
-         "d": "o.amount > 0 AND p.amount IS NOT NULL"},
-        "a", "b is unknown for a NULL date, so it keeps nothing an unpaid order carries; c looks for a "
-             "zero payment, and an unpaid order has no payment row at all; d keeps the paid orders."),
+         "c": "p.amount < o.amount",
+         "d": "p.payment_id IS NOT NULL"},
+        "a", "b is unknown for a NULL date, so it keeps nothing an unpaid order carries; c compares one "
+             "payment row with the whole order, so it lists the orders paid in instalments and loses the "
+             "unpaid ones, whose amount is NULL; d keeps the rows that found a payment, the opposite of "
+             "the list."),
     5: ("Which query lists the payments the gateway posted twice?",
         {"a": "GROUP BY p.order_id HAVING count(*) > 1",
          "b": "GROUP BY p.order_id, p.paid_date HAVING count(*) > 1",
@@ -129,15 +139,20 @@ E_TODOS = {
 }
 
 
+E_DESIGN = (2, 8)
+S_DESIGN = (3, 4)
+
+
 def todo_block(n):
     prompt, options, key, _ = E_TODOS[n]
-    lines = [f"# TODO {n}. {prompt}"] + [f"#   {k}) {v}" for k, v in options.items()]
+    mark = " (Design)" if n in E_DESIGN else ""
+    lines = [f"# TODO {n}. {prompt}{mark}"] + [f"#   {k}) {v}" for k, v in options.items()]
     return "\n".join(lines)
 
 
 def escalated(solution=False, key=False):
     fill = {n: (repr(E_TODOS[n][2]) if solution else f"__TODO{n}__") for n in E_TODOS}
-    why = {n: f"**Why the other letters fail.** The key is {E_TODOS[n][2]}. {E_TODOS[n][3]}" for n in E_TODOS}
+    why = {n: f"**Why the other letters fail, TODO {n}.** The key is {E_TODOS[n][2]}. {E_TODOS[n][3]}" for n in E_TODOS}
     cells = [
         md(f"""
 # The escalated case: which Q2 orders and channels make the gap, and how do you prove the collected figure counts no payment twice?
@@ -166,6 +181,15 @@ payment of it.
 {HOW_E if not solution else SOLVED}
 """),
         code(HELPERS + """
+# Reference figures for the checks, computed once by a route no choice below uses: each paid order's
+# posted cash, capped at what it was booked for, as chapter 3's second route did.
+REF = run(\"\"\"
+WITH posted AS (SELECT order_id, sum(amount) AS amount FROM payments GROUP BY order_id)
+SELECT sum(least(p.amount, o.amount)) AS collected,
+       coalesce(sum(o.amount - p.amount) FILTER (WHERE p.amount < o.amount), 0) AS paid_short
+FROM orders o
+JOIN posted p ON p.order_id = o.order_id
+WHERE o.quarter = 'Q2'\"\"\")[0]
 print("Connected to", kit.WAREHOUSE["dbname"], "with", one("SELECT count(*) FROM orders WHERE quarter = 'Q2'"), "Q2 orders.")"""),
         code("""kit.vflow(["1. booked, orders alone", "2. collected at order grain\\nrows in = rows out",
            "3. the unpaid list\\ntotal = the gap", "4. the double-paid list\\nsurplus = posted less collected",
@@ -174,8 +198,8 @@ print("Connected to", kit.WAREHOUSE["dbname"], "with", one("SELECT count(*) FROM
         md("""
 ## Part 1. What did Q2 book, by channel, from orders alone?
 
-Every later figure reconciles to this one, so it comes from the orders table with no join. A finance
-team already holds this number, so at work you write it down before any query that joins.
+Every later figure reconciles to this one. A finance team already holds this number, so at work you
+write it down first.
 """),
         code(todo_block(1) + f"""
 options_1 = {E_TODOS[1][1]!r}
@@ -223,7 +247,7 @@ choice_3 = {fill[3]}
 
 part2 = run(f\"\"\"
 WITH collected_per_order AS ({{options_2[choice_2]}})
-SELECT o.channel, count(*) AS rows_out, sum(o.amount) AS booked, sum(coalesce(c.collected, 0)) AS collected
+SELECT o.channel, count(*) AS rows_out, sum(o.amount) AS booked, sum(c.collected) AS collected
 FROM (SELECT * FROM orders WHERE quarter = 'Q2') o
 {{options_3[choice_3]}} collected_per_order c ON c.order_id = o.order_id
 GROUP BY o.channel
@@ -231,15 +255,12 @@ ORDER BY o.channel\"\"\")
 kit.flow(["payments\\nas the feed posted them", "your grain\\nTODO 2", "your join\\nTODO 3",
           "rows out against 462"], kinds=["plain", "plain", "plain", "good"], title="Part 2, the method")"""),
         code("""posted_alone = one("SELECT sum(amount) FROM payments WHERE order_id IN (SELECT order_id FROM orders WHERE quarter = 'Q2')")
-repeats = one(\"\"\"SELECT coalesce(sum(extra), 0) FROM (SELECT sum(p.amount) - max(p.amount) AS extra
-    FROM payments p JOIN orders o ON o.order_id = p.order_id WHERE o.quarter = 'Q2'
-    GROUP BY p.order_id, p.instalment_no) r\"\"\")
 rows_out = sum(r["rows_out"] for r in part2)
-collected = sum(r["collected"] for r in part2)
+collected = sum((r["collected"] or 0) for r in part2)
 kit.check("rows out equal rows in", rows_out == orders_in, f"{rows_out} rows out, {orders_in} in")
-kit.check("booked after the join equals booked from Part 1", sum(r["booked"] for r in part2) == booked)
-kit.check("Part 2's collected reconciles to what the feed posted against Q2 orders",
-          collected + repeats == posted_alone, "equal, figures unprinted")"""),
+kit.check("booked after the join equals booked from Part 1", sum((r["booked"] or 0) for r in part2) == booked)
+kit.check("Part 2's collected equals the reference figure from the setup cell", collected == REF["collected"],
+          "equal, figures unprinted")"""),
     ]
     if solution:
         cells.append(md(why[2] + "\n\n" + why[3]))
@@ -265,20 +286,14 @@ choice_4 = {fill[4]}
 unpaid = run(f\"\"\"
 SELECT o.order_id, o.channel, o.status, o.amount AS booked
 FROM orders o
-LEFT JOIN payments p ON p.order_id = o.order_id
+{{options_3[choice_3]}} payments p ON p.order_id = o.order_id
 WHERE o.quarter = 'Q2'
   AND {{options_4[choice_4]}}
 ORDER BY o.amount DESC\"\"\")
-kit.flow(["LEFT JOIN\\nevery Q2 order", "keep the misses", "the unpaid list\\nits total against the gap"],
+kit.flow(["your Part 2 join\\nthe Q2 orders", "your condition\\nTODO 4", "the unpaid list\\nits total against the gap"],
          kinds=["plain", "plain", "good"], title="Part 3, the method")"""),
         code("""gap_from_part2 = booked - collected
-paid_short = one(\"\"\"SELECT coalesce(sum(o.amount - c.collected), 0)
-    FROM orders o
-    JOIN (SELECT order_id, sum(amount) AS collected
-            FROM (SELECT order_id, instalment_no, max(amount) AS amount FROM payments
-                  GROUP BY order_id, instalment_no) i
-           GROUP BY order_id) c ON c.order_id = o.order_id
-    WHERE o.quarter = 'Q2' AND c.collected < o.amount\"\"\")
+paid_short = REF["paid_short"]
 paid_ids = one("SELECT count(*) FROM payments WHERE order_id = ANY(%s)", ([r["order_id"] for r in unpaid],))
 kit.check("the unpaid list's booked total equals the gap from Part 2, less anything paid short",
           sum(r["booked"] for r in unpaid) == gap_from_part2 - paid_short, "equal, figures unprinted")
@@ -331,21 +346,28 @@ kit.flow(["payments on Q2 orders", "grouped as\\nTODO 5 says", "surplus as\\nTOD
         code("""kit.check("the list's surplus equals posted less collected, both from Part 2's figures",
           sum(r["posted_twice"] for r in double_paid) == posted_alone - collected, "equal, figures unprinted")
 kit.check("every row on the list was posted more than once", all(r["times_posted"] > 1 for r in double_paid))
-triple = one(f"SELECT {options_6[choice_6]} FROM (VALUES (1500.00), (1500.00), (1500.00)) AS p(amount)")
-kit.check("your surplus expression also holds on an invented instalment posted three times at Rs 1,500",
-          triple == 3000, "tested on the invented case")"""),
+TRIPLE = "(VALUES (1500.00), (1500.00), (1500.00)) AS p(amount)"   # one instalment of 1,500, posted three times
+triple = one(f"SELECT {options_6[choice_6]} FROM {TRIPLE}")
+triple_ref = one(f"SELECT sum(p.amount) - least(sum(p.amount), 1500.00) FROM {TRIPLE}")
+kit.check("your surplus expression agrees with the capped route on an invented instalment posted three times",
+          triple == triple_ref, "tested on the invented case")"""),
     ]
     if solution:
         cells.append(md(why[5] + "\n\n" + why[6]))
     cells += [
         md("""
-**Your turn.** Show the list and its surplus by channel:
+**Your turn.** Show the list and its surplus by channel, and count the payments that match no order,
+which the sentence to Anand needs:
 
 ```python
 show(double_paid, "Part 4: Q2 instalments posted more than once", money=["posted_twice"])
+print(one("SELECT count(*) FROM payments p LEFT JOIN orders o ON o.order_id = p.order_id "
+          "WHERE o.order_id IS NULL"), "payments match no order")
 ```
 """),
-        _turn(key, 'show(double_paid, "Part 4: Q2 instalments posted more than once", money=["posted_twice"])'),
+        _turn(key, 'show(double_paid, "Part 4: Q2 instalments posted more than once", money=["posted_twice"])\n'
+                   'print(one("SELECT count(*) FROM payments p LEFT JOIN orders o ON o.order_id = p.order_id "\n'
+                   '          "WHERE o.order_id IS NULL"), "payments match no order")'),
         md("""
 ## Part 5. What does the page say, and which check proves it?
 
@@ -360,20 +382,18 @@ choice_7 = {fill[7]}
 choice_8 = {fill[8]}
 
 page = run(f\"\"\"
-WITH per_instalment AS (
-    SELECT order_id, instalment_no, max(amount) AS amount FROM payments GROUP BY order_id, instalment_no
-),
+WITH collected_per_order AS ({{options_2[choice_2]}}),
+posted_per_order AS (SELECT order_id, sum(amount) AS posted FROM payments GROUP BY order_id),
 per_order AS (
-    SELECT o.order_id, o.channel, o.amount AS booked,
-           (SELECT sum(amount) FROM per_instalment i WHERE i.order_id = o.order_id) AS collected,
-           (SELECT sum(amount) FROM payments p WHERE p.order_id = o.order_id)       AS posted
-    FROM orders o
-    WHERE o.quarter = 'Q2'
+    SELECT o.order_id, o.channel, o.amount AS booked, c.collected, p.posted
+    FROM (SELECT * FROM orders WHERE quarter = 'Q2') o
+    {{options_3[choice_3]}} collected_per_order c ON c.order_id = o.order_id
+    {{options_3[choice_3]}} posted_per_order p ON p.order_id = o.order_id
 )
-SELECT channel, count(*) AS orders, sum(booked) AS booked, sum(coalesce(collected, 0)) AS collected,
+SELECT channel, count(*) AS orders, sum(booked) AS booked, sum(collected) AS collected,
        {{options_7[choice_7]}} AS gap,
        count(*) FILTER (WHERE collected IS NULL) AS unpaid_orders,
-       sum(coalesce(posted, 0) - coalesce(collected, 0)) AS posted_twice
+       sum(posted) - sum(collected) AS posted_twice
 FROM per_order
 GROUP BY channel
 ORDER BY channel\"\"\")
@@ -382,20 +402,21 @@ ORDER BY channel\"\"\")
 def run_check(letter, rows, surplus):
     # the four candidate checks, as code, so the choice can be tested on two pages
     if letter == "a":
-        return all(r["collected"] <= r["booked"] for r in rows)
+        return all((r["collected"] or 0) <= (r["booked"] or 0) for r in rows)
     if letter == "b":
-        return sum(r["collected"] for r in rows) + surplus == posted_alone
+        return sum((r["collected"] or 0) for r in rows) + surplus == posted_alone
     if letter == "c":
         return all(r["gap"] is not None and r["gap"] >= 0 for r in rows)
     return len(rows) == 3 and all(r["orders"] > 0 for r in rows)
 
 
-surplus = sum(r["posted_twice"] for r in double_paid)
-padded = [dict(r, collected=r["collected"] + r["posted_twice"], gap=(r["gap"] or 0) - r["posted_twice"]) for r in page]
+surplus = sum((r["posted_twice"] or 0) for r in double_paid)
+padded = [dict(r, collected=(r["collected"] or 0) + (r["posted_twice"] or 0),
+               gap=(r["gap"] or 0) - (r["posted_twice"] or 0)) for r in page]
 kit.vflow(["the page", "gaps against the two lists", "the check you chose", "the sentence to Anand"],
           kinds=["plain", "good", "good", "known"], title="Part 5, what must hold before the page leaves")"""),
         code("""kit.check("the page's orders add to 462 and its booked to Rs 9,84,00,000",
-          sum(r["orders"] for r in page) == 462 and sum(r["booked"] for r in page) == booked)
+          sum(r["orders"] for r in page) == 462 and sum((r["booked"] or 0) for r in page) == booked)
 kit.check("the page's gaps add to the unpaid list's total plus anything paid short",
           sum(r["gap"] or 0 for r in page) == sum(r["booked"] for r in unpaid) + paid_short, "equal, figures unprinted")
 kit.check("the check you chose passes this page and fails a copy of it whose collected is wrong",
@@ -406,7 +427,7 @@ kit.check("the check you chose passes this page and fails a copy of it whose col
     cells += [
         md("""
 **Your turn.** Show the page, then write the sentence to Anand under it from your own figures; the
-count of payments that match no order is the one chapter 4's your-turn cell printed:
+count of payments that match no order is the one your Part 4 cell printed:
 
 ```python
 show(page, "Q2: booked against collected, by channel", money=["booked", "collected", "gap", "posted_twice"])
@@ -451,9 +472,10 @@ S_TODOS = {
         {"a": "p.order_id IS NULL",
          "b": "o.order_id IS NULL",
          "c": "o.quarter NOT IN ('Q1', 'Q2')",
-         "d": "p.amount > 0 AND o.amount IS NULL AND o.quarter = 'Q2'"},
+         "d": "p.order_id NOT IN (SELECT order_id FROM orders WHERE quarter = 'Q2')"},
         "b", "a tests the payment's own order id, which the table never leaves empty; c is unknown for a "
-             "NULL quarter, so it keeps nothing; d adds a Q2 test that no unmatched row can pass."),
+             "NULL quarter, so it keeps nothing; d keeps every payment that is not on a Q2 order, so "
+             "Q1's payments join the ones with no order."),
     3: ("Which rows should the retry list cover for the platform lead?",
         {"a": "Q2 orders only, the quarter Anand asked about",
          "b": "Q1 orders only, since Q2 is already on Anand's page",
@@ -466,19 +488,37 @@ S_TODOS = {
         {"a": "the first and last paid_date on the retry list",
          "b": "the first and last day of the quarters the orders belong to",
          "c": "the first and last paid_date of every payment in the feed",
-         "d": "the paid_date of the first retry, since the rest repeat it"},
+         "d": "the first and last paid_date of the Q2 retries only"},
         "a", "b and c describe the quarters and the feed, so the window they give starts and ends on days "
-             "with no retry; d assumes every retry happened on one day, which the list does not show."),
+             "with no retry; d stops at Anand's quarter, so the earlier retries fall outside it."),
 }
+
+
+def _key_fingerprints():
+    """The fingerprints the second case's checks compare with, computed from the warehouse with the keys."""
+    rows = c2kit.sql("""
+SELECT p.order_id, p.instalment_no, min(p.paid_date) AS paid_date
+FROM payments p
+JOIN orders o ON o.order_id = p.order_id
+GROUP BY p.order_id, o.quarter, p.instalment_no
+HAVING count(*) > 1""")
+    pairs = sorted((r["order_id"], r["instalment_no"]) for r in rows)
+    dates = [r["paid_date"] for r in rows]
+    fp = lambda v: hashlib.sha256(repr(v).encode()).hexdigest()[:16]  # noqa: E731
+    return fp(pairs), fp((str(min(dates)), str(max(dates))))
+
+
+FP_RETRIES, FP_WINDOW = _key_fingerprints()
 
 
 def second_case(solution=False, key=False):
     fill = {n: (repr(S_TODOS[n][2]) if solution else f"__TODO{n}__") for n in S_TODOS}
-    why = {n: f"**Why the other letters fail.** The key is {S_TODOS[n][2]}. {S_TODOS[n][3]}" for n in S_TODOS}
+    why = {n: f"**Why the other letters fail, TODO {n}.** The key is {S_TODOS[n][2]}. {S_TODOS[n][3]}" for n in S_TODOS}
 
     def block(n):
         prompt, options, _, _ = S_TODOS[n]
-        return "\n".join([f"# TODO {n}. {prompt}"] + [f"#   {k}) {v}" for k, v in options.items()])
+        mark = " (Design)" if n in S_DESIGN else ""
+        return "\n".join([f"# TODO {n}. {prompt}{mark}"] + [f"#   {k}) {v}" for k, v in options.items()])
 
     cells = [
         md(f"""
@@ -503,10 +543,11 @@ the evidence Finance needs.
 3. Which instalments did the feed post more than once?
 4. Is there a pattern the gateway team can act on?
 
-**What you already have.** Anand's question was about every booked order; this one is about every
-row the feed holds. Chapter 4 found the Q2 side of the repeats for Anand. The warehouse's `payments`
-table holds 1,428 rows, paid between April and September, and the suspense list is the set of
-payments a finance team holds aside until it finds the order they belong to.
+**What you already have.** Chapter 4 found the Q2 side of the repeats for Anand. **Posted** is every
+payment row the feed holds, repeats included; **collected** counts each order and instalment once;
+a retry's **surplus** is what was posted beyond one payment of it. The warehouse's `payments` table
+holds 1,428 rows, paid between April and September, and the suspense list is the set of payments a
+finance team holds aside until it finds the order they belong to.
 
 {HOW_S if not solution else SOLVED}
 """),
@@ -589,9 +630,9 @@ print(len(orphans), "payments,", kit.rupees(sum(r["amount"] for r in orphans)))
         md("""
 ## Part 3. Which instalments did the feed post more than once?
 
-Every order and instalment the feed posted more than once goes on the retry list, with the order's
-quarter beside it. The platform lead uses it to repair the feed, and Finance to check with the bank
-whether any customer was charged twice.
+The retry list names each order and instalment posted more than once, with its quarter. The platform
+lead uses it to repair the feed, and Finance to check with the bank whether any customer was charged
+twice.
 """),
         code(block(3) + f"""
 options_3 = {{
@@ -613,11 +654,14 @@ HAVING count(*) > 1
 ORDER BY o.quarter, p.order_id\"\"\")
 kit.flow(["payments on matched orders", "the rows\\nTODO 3 keeps", "one order and\\ninstalment, twice",
           "against posted\\nless collected"], kinds=["plain", "plain", "plain", "good"], title="Part 3, the method")"""),
-        code("""posted_matched = one("SELECT sum(p.amount) FROM payments p JOIN orders o ON o.order_id = p.order_id")
-collected_matched = one(\"\"\"SELECT sum(amount) FROM (SELECT p.order_id, p.instalment_no, max(p.amount) AS amount
-    FROM payments p JOIN orders o ON o.order_id = p.order_id GROUP BY p.order_id, p.instalment_no) i\"\"\")
+        code(f"""scope = options_3[choice_3]
+posted_in = one(f"SELECT coalesce(sum(p.amount), 0) FROM payments p JOIN orders o ON o.order_id = p.order_id {{scope}}")
+collected_in = one(f\"\"\"SELECT coalesce(sum(amount), 0) FROM (SELECT p.order_id, p.instalment_no, max(p.amount) AS amount
+    FROM payments p JOIN orders o ON o.order_id = p.order_id {{scope}} GROUP BY p.order_id, p.instalment_no) i\"\"\")
+kit.check("the list's surplus equals posted less collected over the rows it covers",
+          sum(r["posted_twice"] for r in retries) == posted_in - collected_in, "figures unprinted")
 kit.check("the retry list passes the platform lead's reconciliation",
-          sum(r["posted_twice"] for r in retries) == posted_matched - collected_matched, "figures unprinted")
+          fingerprint(sorted((r["order_id"], r["instalment_no"]) for r in retries)) == {FP_RETRIES!r}, "list unprinted")
 kit.check("every row on the list was posted more than once", all(r["times_posted"] > 1 for r in retries))"""),
     ]
     if solution:
@@ -647,27 +691,30 @@ scheduled; one that says "the feed double-posts" does not.
         code(block(4) + f"""
 from datetime import date
 retry_dates = [r["paid_date"] for r in retries]
+q2_dates = [r["paid_date"] for r in retries if r["quarter"] == "Q2"] or [date(2026, 7, 1)]
 options_4 = {{
     "a": (min(retry_dates), max(retry_dates)),
     "b": (date(2026, 4, 1), date(2026, 9, 30)),
     "c": (one("SELECT min(paid_date) FROM payments"), one("SELECT max(paid_date) FROM payments")),
-    "d": (min(retry_dates), min(retry_dates)),
+    "d": (min(q2_dates), max(q2_dates)),
 }}
 choice_4 = {fill[4]}
 window = options_4[choice_4]
 
-pattern = run(\"\"\"
+pattern = run(f\"\"\"
 SELECT method, count(*) AS instalments, sum(extra) AS posted_twice
 FROM (SELECT p.order_id, p.instalment_no, min(p.method) AS method, sum(p.amount) - max(p.amount) AS extra
       FROM payments p JOIN orders o ON o.order_id = p.order_id
+      {{options_3[choice_3]}}
       GROUP BY p.order_id, p.instalment_no HAVING count(*) > 1) r
 GROUP BY method
 ORDER BY method\"\"\")
 kit.vflow(["the retry list", "its dates and its methods", "the integration to fix", "the request"],
           kinds=["plain", "plain", "good", "known"], title="Part 4: from a list to a request")"""),
-        code("""kit.check("the window you chose passes the gateway team's test",
-          all(window[0] <= d <= window[1] for d in retry_dates) and window[0] in retry_dates and window[1] in retry_dates,
-          "window unprinted")
+        code(f"""kit.check("every retry on your list falls inside the window you chose",
+          all(window[0] <= d <= window[1] for d in retry_dates), "window unprinted")
+kit.check("the window you chose passes the gateway team's test",
+          fingerprint((str(window[0]), str(window[1]))) == {FP_WINDOW!r}, "window unprinted")
 kit.check("the method breakdown adds back to the whole retry list", sum(r["instalments"] for r in pattern) == len(retries)
           and sum(r["posted_twice"] for r in pattern) == sum(r["posted_twice"] for r in retries), "equal, figures unprinted")"""),
     ]
