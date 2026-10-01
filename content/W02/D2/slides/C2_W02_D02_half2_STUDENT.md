@@ -57,12 +57,12 @@ C2_W02_D02_06_can_it_leave_STUDENT.ipynb.
 **Who needs the answer.** Kavya Nair, the team's senior analyst, who reviews every number before it leaves the team; Anand, who forwards it to the CEO's Monday page; and you, who sign it. A validation that cannot fail puts a PASS stamp on a wrong number, and a stamped wrong number is harder to withdraw than an unstamped one.
 
 ```timeline
-label: 1 | title: Hurried checks? | body: Do they pass a report that hides an unpaid order?
-label: 2 | title: Tie back how? | body: Which checks read the two tables.
-label: 3 | title: Every wrong one? | body: The suite against the day's five wrong reports.
-label: 4 | title: Kalpa's Q2? | body: Does the suite pass the real page?
-label: 5 | title: A second tool? | body: The same numbers from the raw rows.
-label: 6 | title: When one fails? | body: What Anand gets at the end of reporting day. | tone: dark
+label: 1 | title: Can hurried checks miss an order? | body: Three plausibility checks on a page that hides one.
+label: 2 | title: Which checks tie to the tables? | body: Five checks, each read from one table alone.
+label: 3 | title: Does the suite stop all five? | body: The day's five wrong reports, one by one.
+label: 4 | title: Does Kalpa's Q2 page pass? | body: The suite on the real page.
+label: 5 | title: Does Python reach the same? | body: The same numbers from the raw rows.
+label: 6 | title: What leaves when a check fails? | body: What Anand gets late on reporting day. | tone: dark
 ```
 
 ```notes
@@ -391,12 +391,12 @@ before a joined number reaches Finance, and say what you do when it fails at the
 
 | Question | The answer, with its number |
 |---|---|
-| Hurried checks? | They pass the plain JOIN report 3 of 3, because each reads the report alone |
-| Tie back how? | Five checks recompute orders, booked, the gap and posted from one table each |
-| Every wrong one? | Plausibility lets 4 of 5 through; the tie-back suite stops all 5 |
-| Kalpa's Q2? | 5 of 5 pass: 462 against 462, Rs 9,84,00,000 against Rs 9,84,00,000 |
-| A second tool? | Python from the raw rows matches on orders, booked, collected and the gap |
-| When one fails? | Booked leaves with the open line; collected is held; the owner hears that day |
+| Can hurried checks miss an order? | Yes: they pass the plain JOIN page 3 of 3, because each reads the page alone |
+| Which checks tie to the tables? | Five checks recompute orders, booked, the gap and posted from one table each |
+| Does the suite stop all five? | Plausibility lets 4 of 5 through; the tie-back suite stops all 5 |
+| Does Kalpa's Q2 page pass? | Yes, 5 of 5: 462 against 462, Rs 9,84,00,000 against Rs 9,84,00,000 |
+| Does Python reach the same? | Yes: orders, booked, collected and the gap all match |
+| What leaves when a check fails? | Booked leaves with the open line; collected is held; the owner hears that day |
 
 **Kavya's review.** "A check that cannot fail is decoration. For every check, tell me which wrong report it would have stopped, and do not send me a PASS you have never seen fail."
 

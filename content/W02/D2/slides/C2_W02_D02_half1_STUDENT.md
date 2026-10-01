@@ -176,11 +176,11 @@ runs beside it, and the guided trace sheet is on every desk.
 **Who needs the answer.** Anand's analyst, who audits the statement order by order, and you, since you sign the collected number. A join that drops an unpaid order hides it from the collections team, and a join that repeats a paid order sends them after a customer who paid in full.
 
 ```timeline
-label: 1 | title: What is one row? | body: Of orders, and of payments, in the warehouse.
-label: 2 | title: How many rows? | body: Each of the four joins, on five invented orders.
-label: 3 | title: Which join? | body: The one that answers Anand about every booked order.
-label: 4 | title: Payments first? | body: What a statement started from payments tells him.
-label: 5 | title: From the keys? | body: The row counts, predicted before any join runs. | tone: dark
+label: 1 | title: Which join keeps every order? | body: Four joins, sized on five invented orders.
+label: 2 | title: What is one row of each table? | body: Of orders, and of payments, in the warehouse.
+label: 3 | title: How many rows does each return? | body: INNER, LEFT, RIGHT and FULL, traced by hand.
+label: 4 | title: What does payments-first show? | body: A statement started from the payments table.
+label: 5 | title: Can the keys predict the counts? | body: Every row count, before any join runs. | tone: dark
 ```
 
 ```notes
@@ -540,11 +540,11 @@ as the date condition chapter 4 meets. Count the keys first on real data, every 
 
 | Question | The answer, with its number |
 |---|---|
-| What is one row? | One order in orders, 1,000 of them; one payment event in payments, up to two per order id |
-| How many rows? | INNER 6, LEFT 7, RIGHT 7, FULL 8 on five orders and seven payments |
-| Which join? | LEFT JOIN with orders first: all five orders, nothing that is not an order |
-| Payments first? | 4 of 5 orders and 7,100 against 5,800: the unpaid order vanishes |
-| From the keys? | a x b per key, plus the orphans: 6, 7, 7 and 8 predicted |
+| Which join keeps every order? | LEFT JOIN with orders first: all five orders, nothing that is not an order |
+| What is one row of each table? | One order in orders, 1,000 of them; one payment event in payments, up to two per order id |
+| How many rows does each return? | INNER 6, LEFT 7, RIGHT 7, FULL 8 on five orders and seven payments |
+| What does payments-first show? | 4 of 5 orders and 7,100 against 5,800: the unpaid order vanishes |
+| Can the keys predict the counts? | Yes: a x b per key, plus the orphans, predicts 6, 7, 7 and 8 |
 
 **Kavya's review.** "Tell me the grain of each table, and which rows your join drops, before you tell me any total. Start from the table whose every row must survive."
 
@@ -572,12 +572,12 @@ the first draft and its number (5), why it is wrong (4), the four options and th
 **Who needs the answer.** Anand, who would read a collected figure twice his books as collections running ahead and stand his collections team down; the data platform lead, who hears about a wrong warehouse number first; and you, because the way chosen here carries every later chapter of the day.
 
 ```timeline
-label: 1 | title: Two rows, why? | body: Which Kalpa orders own two payment rows.
-label: 2 | title: The first draft? | body: What it reports as collected for Q2.
-label: 3 | title: Why wrong? | body: When every row on it is right.
-label: 4 | title: Which fix? | body: Four ways to stop the double count, sized.
-label: 5 | title: 462 kept? | body: Orders and Rs 9,84,00,000 after the fix.
-label: 6 | title: Tables agree? | body: Each table summed alone, against the join. | tone: dark
+label: 1 | title: Which orders own two rows? | body: Q2's ten largest, and why each owns two.
+label: 2 | title: What does the draft collect? | body: The first draft's collected for Q2.
+label: 3 | title: Why is the draft's sum wrong? | body: When every row on it is right.
+label: 4 | title: Which of four fixes fits? | body: Each way to stop the double count, sized.
+label: 5 | title: Does the fix keep 462 orders? | body: And Rs 9,84,00,000 booked.
+label: 6 | title: Do the two tables agree alone? | body: Each table summed alone, against the join. | tone: dark
 ```
 
 ```notes
@@ -871,12 +871,12 @@ grain: which key repeats on the many side.
 
 | Question | The answer, with its number |
 |---|---|
-| Two rows, why? | Large business invoices are paid in two instalments: 10 of Q2's 10 largest orders |
-| The first draft? | Rs 19,29,04,410 collected against Rs 9,84,00,000 booked, 1.96 times |
-| Why wrong? | The order amount rides on every payment row: 462 orders become 678 rows |
-| Which fix? | One row per order first; DISTINCT loses Rs 20,32,780 of bookings |
-| 462 kept? | Yes: 462 rows and Rs 9,84,00,000, Monday's figures exactly |
-| Tables agree? | Yes: booked and posted, each summed alone, match the join |
+| Which orders own two rows? | Large business invoices are paid in two instalments: 10 of Q2's 10 largest orders |
+| What does the draft collect? | Rs 19,29,04,410 against Rs 9,84,00,000 booked, 1.96 times |
+| Why is the draft's sum wrong? | The order amount rides on every payment row: 462 orders become 678 rows |
+| Which of four fixes fits? | One row per order first; DISTINCT loses Rs 20,32,780 of bookings |
+| Does the fix keep 462 orders? | Yes: 462 rows and Rs 9,84,00,000, Monday's figures exactly |
+| Do the two tables agree alone? | Yes: booked and posted, each summed alone, match the join |
 
 **Kavya's review.** "A join is a multiplication until you prove it is not. Bring the many side to the grain of the question before you join, and show me rows in and rows out beside the total."
 
@@ -904,12 +904,12 @@ route (2), the close (1). Notebook 3, C2_W02_D02_03_every_order_there_STUDENT.ip
 **Who needs the answer.** Anand, who asked which orders make the gap, so an order missing from the report is an order nobody chases, and his analyst, who reads the reconciliation above the number before the number. A report that loses an order and carries a repeated payment can show a gap of zero, and nobody acts on a zero.
 
 ```timeline
-label: 1 | title: Gain or lose? | body: What the join can now do to the row count.
-label: 2 | title: A plain JOIN? | body: What a first draft reports on the invented tables.
-label: 3 | title: No rupee read? | body: The check that catches it first.
-label: 4 | title: Which moves? | body: From booked to what the feed posted.
-label: 5 | title: Q2 closes? | body: The same bridge on Kalpa's warehouse.
-label: 6 | title: Capped? | body: Collected a second way, each order at its booked. | tone: dark
+label: 1 | title: Which proof runs first? | body: Four proofs, run on a draft with two errors.
+label: 2 | title: Can the fixed report gain rows? | body: What the join can now do to the row count.
+label: 3 | title: What does a plain JOIN report? | body: A first draft on the invented tables.
+label: 4 | title: Which check needs no rupee? | body: The count that catches the dropped order.
+label: 5 | title: Does the bridge close on Q2? | body: Booked to posted in named moves.
+label: 6 | title: Does capping each order agree? | body: Collected a second way, each order at its booked. | tone: dark
 ```
 
 ```notes
@@ -1207,12 +1207,12 @@ total looks right; how would you find them? Count first, then split the differen
 
 | Question | The answer, with its number |
 |---|---|
-| Gain or lose? | It can only lose rows now; Kalpa's Q2 keeps 462 of 462 |
-| A plain JOIN? | 4 orders, booked 5,000, posted 6,500: a gap of minus 1,500 |
-| No rupee read? | Orders in the report against the table, 4 against 5 |
-| Which moves? | 5,800 less 800 never paid, less 0 paid short, is 5,000; plus 1,500 twice is 6,500 |
-| Q2 closes? | Yes, at every step, and posted equals the payments table's own total |
-| Capped? | 5,000 again, and the same collected on Kalpa's Q2 |
+| Which proof runs first? | The count, then the bridge with a list behind each move |
+| Can the fixed report gain rows? | No: it can only lose rows now, and Kalpa's Q2 keeps 462 of 462 |
+| What does a plain JOIN report? | 4 orders, booked 5,000, posted 6,500: a gap of minus 1,500 |
+| Which check needs no rupee? | Orders in the report against the table, 4 against 5 |
+| Does the bridge close on Q2? | Yes: 5,800 less 800 never paid and 0 paid short is 5,000, plus 1,500 posted twice is 6,500, and every step closes on Kalpa's Q2 |
+| Does capping each order agree? | Yes: 5,000 again, and the same collected on Kalpa's Q2 |
 
 **Kavya's review.** "Rows in, rows out and the difference explained, written above the number. If the count does not close, the number does not leave the team, and if the gap has two causes, it gets two bars."
 
@@ -1241,12 +1241,12 @@ C2_W02_D02_04_which_orders_STUDENT.ipynb.
 **Who needs the answer.** The collections team, who ring every customer on the unpaid list, and the platform lead and Finance, who reverse or refund what is on the double-paid list. A wrong unpaid list chases a customer who paid or misses one who did not; a wrong double-paid list reverses a real second instalment and rings a business buyer who paid on time.
 
 ```timeline
-label: 1 | title: No payment? | body: The orders nothing matched.
-label: 2 | title: Paid in Q2? | body: The list with the quarter in WHERE.
-label: 3 | title: Where does it go? | body: A condition on the payments table.
-label: 4 | title: Two rows? | body: What HAVING COUNT(*) > 1 flags.
-label: 5 | title: A retry is? | body: The grain of a double payment, and each list against its bar.
-label: 6 | title: A second list? | body: Other methods, the same orders. | tone: dark
+label: 1 | title: Which orders have no payment? | body: The orders nothing matched.
+label: 2 | title: What does a date in WHERE do? | body: The unpaid list with the quarter in WHERE.
+label: 3 | title: Where does the date belong? | body: A condition on the payments table.
+label: 4 | title: Which orders does HAVING flag? | body: What HAVING COUNT(*) > 1 returns by order.
+label: 5 | title: What makes a retry a retry? | body: Its grain, and each list against its bar.
+label: 6 | title: Do second routes agree? | body: Other methods, the same orders. | tone: dark
 ```
 
 ```notes
@@ -1574,12 +1574,12 @@ orders, neither gap is in the data. Interview [F]: how do you find orders with n
 
 | Question | The answer, with its number |
 |---|---|
-| No payment? | An anti-join: T-4 at 800 on the invented tables, the bar exactly |
-| Paid in Q2? | In WHERE, the join shrinks to 6 rows and the list comes back empty |
-| Where does it go? | In ON: 7 rows, and T-4 is back |
-| Two rows? | 216 Q2 orders, the ten largest invoices among them: instalments too |
-| A retry is? | One order and instalment posted twice: T-3's 1,500, the bar |
-| A second list? | NOT EXISTS and posted above booked reach the same orders |
+| Which orders have no payment? | An anti-join: T-4 at 800 on the invented tables, the bar exactly |
+| What does a date in WHERE do? | The join shrinks to 6 rows and the list comes back empty |
+| Where does the date belong? | In ON: 7 rows, and T-4 is back |
+| Which orders does HAVING flag? | 216 Q2 orders, the ten largest invoices among them: instalments too |
+| What makes a retry a retry? | One order and instalment posted twice: T-3's 1,500, the bar |
+| Do second routes agree? | Yes: NOT EXISTS and posted above booked reach the same orders |
 
 **Kavya's review.** "Two payment rows are not a double payment. Show me what makes a retry a retry before anyone rings a customer, and show me that each list adds up to its bar."
 
@@ -1607,12 +1607,12 @@ C2_W02_D02_05_what_anand_signs_STUDENT.ipynb.
 **Who needs the answer.** Anand, who signs the report and sends it on to the CEO's Monday page, and the channel heads, who chase their own unpaid orders from it. A gap column that reads zero stands every one of them down, and a report that does not add back to the bridge cannot be defended when his analyst audits it.
 
 ```timeline
-label: 1 | title: A line carries? | body: What each channel's line needs before Anand signs.
-label: 2 | title: Which form? | body: Four report forms for a finance controller.
-label: 3 | title: The gap column? | body: What it says when each order's gap is added up.
-label: 4 | title: Why wrong? | body: And the check that catches it.
-label: 5 | title: Adds back? | body: The fixed page against the bridge on Q2.
-label: 6 | title: Same gap? | body: The unpaid list, grouped by channel. | tone: dark
+label: 1 | title: Which of four page forms fits? | body: Sized on what Anand reads, acts on and audits.
+label: 2 | title: What must a channel line carry? | body: What each line needs before Anand signs.
+label: 3 | title: What does the gap column say? | body: When each order's gap is added up.
+label: 4 | title: Why does the gap column read 0? | body: And the check that catches it.
+label: 5 | title: Does the page match the bridge? | body: The fixed page against the bridge on Q2.
+label: 6 | title: Does the unpaid list agree? | body: The unpaid list, grouped by channel. | tone: dark
 ```
 
 ```notes
@@ -1885,12 +1885,12 @@ cannot be checked on its own.
 
 | Question | The answer, with its number |
 |---|---|
-| A line carries? | Orders, booked, collected and the gap, under a definition line |
-| Which form? | By channel, reconciled above, with both lists beneath |
-| The gap column? | 0 on every channel, invented and Kalpa alike |
-| Why wrong? | An unpaid order's gap is NULL and sum() skips it; coalesce fixes it |
-| Adds back? | Yes: 462 orders, Rs 9,84,00,000, and each gap and list equal to its bar |
-| Same gap? | Yes: the unpaid list by channel matches every channel |
+| Which of four page forms fits? | By channel, reconciled above, with both lists beneath |
+| What must a channel line carry? | Orders, booked, collected and the gap, under a definition line |
+| What does the gap column say? | 0 on every channel, invented and Kalpa alike |
+| Why does the gap column read 0? | An unpaid order's gap is NULL and sum() skips it; coalesce fixes it |
+| Does the page match the bridge? | Yes: 462 orders, Rs 9,84,00,000, and each gap and list equal to its bar |
+| Does the unpaid list agree? | Yes: the unpaid list by channel matches every channel |
 
 **Kavya's review.** "Every rupee on the page ties back to a bar, and every bar to a list. Write the definition of collected above the table, so nobody reads it as posted."
 
