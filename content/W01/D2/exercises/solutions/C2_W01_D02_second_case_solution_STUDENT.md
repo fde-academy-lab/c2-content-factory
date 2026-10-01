@@ -1,45 +1,88 @@
-# Solution: the second case, the hypothesis Marketing attacks
+# Solution: Marketing's new deck says members spend 7 percent more per order and the web fell hardest: does either claim hold, and whom does the tier call first?
 
-Answers: 1c 2a 3d 4b 5c 6d
+Answers: 1d 2b 3c 4a
 
-## The idea being tested
+The executed notebook is `solutions/C2_W01_D02_ex2_second_case_solution_STUDENT.ipynb`, and its
+lettered TODOs run a c b d. Three of the four items are design items: 1, 2 and 4.
 
-A cause handed over by a stakeholder is a hypothesis, and the data in hand can test it before any
-new data is asked for: did the fall start after the cause, and did it fall where the cause acts?
-When the file cannot settle it, the answer names the data that would, and says which of the two
-hypotheses each piece of data tests.
+The marketing lead's new deck says Retail-Plus members, Kalpa Retail's paid membership tier, spend 7
+percent more per order, so the tier is healthy and the answer is still acquisition, and that the
+tier's web orders fell hardest, 24 to 9, so the website is to blame. The head of Retail-Plus asks
+which members to call first. The tier's same 22 members placed 51 orders in Q1 and 26 in Q2, in
+booked revenue, every order placed before any cancellation or return.
 
-## Item by item
+## What does the second case test?
 
-| Item | Key | Why it holds | Why the others fail |
-|---|---|---|---|
-| 1 | c | The set of Q2 customer ids sits wholly inside the Q1 set: all 69 bought in both quarters, none lost and none new, so a flat count hides no churn here. | a: a rate cannot show which people bought. b: sign-ups are not buyers, and no new buyer appears in the orders. d: delivered orders are a different definition, and the ids still overlap. |
-| 2 | a | Retail-Plus is Rs 65,250 of the Rs 70,280 consumer fall, 93 percent, and 25 of the 28 lost orders; the same 22 members went from 51 orders to 26, and those who ordered three times now order once. | b answers a behaviour question with rupees. c: its revenue per order rose because small orders fell away, and paying more is not what happened. d waits when the evidence is already in the file. |
-| 3 | d | Six weeks back from this week reaches late August. The monthly counts fell in July, from 14 in April and 13 in June to 9, before the break the complaint dates. After 24 August, Retail-Plus placed 8 orders, against 18 from 1 July to 24 August; whether the break deepened the fall rests on eight orders, which is Thursday's kind of question. | a reads the lowest month as proof of the cause. b miscounts six weeks. c: monthly counts can say whether the fall started before or after a date, which is the first test. |
-| 4 | b | Web fell from 24 to 9, store from 14 to 9 and app from 13 to 8. Every channel fell together, which an app-only cause would not produce. | a: the app fell too, so "no effect" is more than the data says. c credits the whole app fall to the break with no timing. d swaps one unproved cause for another. |
-| 5 | c | H1 needs the app's reorder events and failures by week, the release that broke it, and whether members who used reorder in Q1 fell more than those who did not. H2 needs the tier's change log for benefits, prices and delivery terms, renewals and members' support tickets. | a: more of the same file carries none of the fields that separate the two. b: stated reasons are weak evidence and 22 answers settle neither. d tests a third cause nobody has proposed. |
-| 6 | d | A season repeats: if last year's Q2 shows the same dip for members and not for Retail-Core, the season is the story; if last year held flat, it is not. Retail-Core kept 95 percent of its Q1 orders this year against Retail-Plus's 51, which already argues against a season that hit everyone. | a: more months of this year cannot separate a season from anything else. b tests the other hypothesis. c: a season is tested by its repetition, which the data can show. |
+Find what a number is made of before agreeing or disagreeing with it. Marketing's 7 percent is one
+leaf of the tier's tree, and the leaves multiply to a tier whose revenue fell about 45 percent. The
+website claim fails on a segment that uses the same website, and the tier's call list comes from
+orders per member, Q1 against Q2.
 
-The comparison segment: Retail-Core ordered 13, 12, 13, 12, 12 and 12 times across the six months,
-flat, which is what a segment untouched by either cause looks like.
+## Part 1. Does 7 percent more per order make the tier healthy?
 
-## The part worth arguing about
+### Q1. What does the tier's own tree say to Marketing's 7 percent? (Design)
 
-Item 3. The complaint is real and the button may well be broken. The point is narrower: the fall
-began before the break, so the break cannot be the whole story, and it may have deepened a fall
-already under way. The sentence that holds in the room is "the reorder feature is a hypothesis; the
-fall began in July, before the break the complaint dates, so we are asking for the app's reorder
-logs."
+The tier's leaves are put back together, members times orders per member times revenue per order.
 
-## Where the pattern lives in production
+The key is d, "The same 22 members ordered half as often, so tier revenue fell about 45 percent".
+Members held at 22, orders per member fell to 0.510 of Q1 and revenue per order rose to 1.070 of it,
+and 1.000 times 0.510 times 1.070 is about 0.55. Counted directly, Rs 1,43,550 to Rs 78,300 is 0.545,
+about 45 percent down.
 
-Product analytics teams run this test every time a stakeholder arrives with a cause: check the
-timing against the change log, check whether the metric moved only where the cause acts, and name
-the event data that would settle it. The interview version is "a stakeholder hands you a cause; how
-do you test it with the data you have and name the data you need?"
+- a, "The tier is healthy, since 7 percent more per order outweighs the fall in orders": one leaf
+  rose inside a tier whose orders halved, and tier revenue still fell about 45 percent.
+- b, "Tier revenue fell about 42 percent, orders down 49 and value up 7, so it is minor": it adds
+  minus 49 and plus 7 as if percentages added, which is Monday's error of adding two 10 percent lifts
+  to make 20 percent when together they make 21, turned round on a fall and a rise.
+- c, "New, richer members joined, so acquisition is already working inside the tier": the members
+  are the same 22 in both quarters, as chapter 5's overlap of ids showed.
 
-## Hands-on picks
+## Part 2. Is the web's fall the website's fault?
 
-The executed solution, `exercises/solutions/C2_W01_D02_05_second_case_solution_STUDENT.ipynb`,
-carries the set overlap, the monthly and channel counts and the split at 24 August, each with the
-check it passes.
+### Q2. Which number tests a fault across the whole website? (Design)
+
+Marketing blames the website for the tier's web orders falling from 24 to 9.
+
+The key is b, "Retail-Core web orders on the same website, which held at 13 and 12". A broken
+website hurts everyone who uses it, so a comparison segment on the same website is the test, and
+Retail-Core's web orders held.
+
+- a, "Retail-Plus app orders, 13 to 8, since the app shares the website's servers": the app is a
+  different channel, and it fell too.
+- c, "Retail-Plus web orders by month, to see when the members' fall began": timing says when the
+  members' fall began and nothing about whether a fault hit everyone on the site.
+- d, "The total of all web orders, 44 to 30, since it covers every segment": the total mixes the
+  members' fall into everyone else's orders.
+
+## Part 3. Which members does the tier call first?
+
+### Q3. Which of four member lists does the head of Retail-Plus call first?
+
+The head of Retail-Plus asks which of his members to call first.
+
+The key is c, "The 7 who fell from three orders to one, since they slowed most". Seven members fell
+from three orders a quarter to one, the largest drop per member, and eleven more fell by one order.
+
+- a, "Members with no order in Q2, since they have stopped altogether": every member ordered in Q2,
+  so the list is empty.
+- b, "Members who ordered once in Q1, since they are the least attached": they had the least to lose.
+- d, "The 11 who fell by one order, since they are the largest group that slowed": the seven carry
+  14 of the 25 lost orders against the eleven's 11, so the larger group is the smaller loss.
+
+## Part 4. Which one request goes first?
+
+### Q4. Which request goes first, with the button capped at about 4 of 25 lost orders? (Design)
+
+The tier lost 25 orders between the quarters, and chapter 6 capped the reorder button at about 4 of
+them.
+
+The key is a, "The tier's July change log, renewals and support tickets". Most of the 25 lost orders
+fall outside the button's ceiling, and the fall began in July, before the break, so the tier's July
+change log tests the cause behind the larger part.
+
+- b, "The app's reorder logs by week since the 25 August release": it tests the smaller part, after
+  the break, and it is the second request.
+- c, "Marketing's new-member sign-ups by month from July": it measures acquisition, which the overlap
+  of ids ruled out.
+- d, "This export again, cut by city, channel and week from July": the export raised the question
+  and cannot test a cause, whatever month it starts from.

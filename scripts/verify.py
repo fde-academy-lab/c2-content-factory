@@ -59,9 +59,11 @@ TEACHING_DIRS = {
     "exercises", "exercises/guided", "exercises/unguided", "exercises/practice", "exercises/solutions",
     "takehome", "kahoot", "preread", "extras", "data", "trainer", "internal", "corrections",
 }
+# A build week can open a domain (US healthcare enters on Build 1 Monday, decision four-domains in
+# data/programme/facts.yaml), so a build day may also carry the domain's dossier and its card.
 BUILD_DIRS = {
     "briefs", "rubrics", "gd", "parallel-build", "checkpoints", "mocks", "trainer", "internal",
-    "data", "slides",
+    "data", "slides", "study-notes", "cheatsheets",
 }
 SAT_RECAP_DIRS = {"paper", "answer-key", "discussion", "internal"}
 

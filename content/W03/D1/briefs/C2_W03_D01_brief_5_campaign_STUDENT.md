@@ -1,4 +1,4 @@
-# Brief 5: The free home-collection campaign
+# Brief 5: The free at-home collection campaign
 
 **For:** the group allocated sub-problem 5
 **Client:** Dr Priya Menon, COO, Kalpa Health, and the marketing head
@@ -10,18 +10,18 @@ Kalpa Health and everyone in it are fictional.
 
 ## The question, as it was put
 
-> "Our free home-collection offer lifted bookings 9 percent. I want to offer it to every patient in all six cities. Can you confirm it worked?"
+> "Our free at-home collection offer lifted bookings 9 percent. I want to offer it to every patient in all six metros. Can you confirm it worked?"
 > The marketing head, Kalpa Health
 
 ## The decision it feeds
 
-Whether the free home-collection offer goes to every patient in all six cities, stays with the patients it reached, or stops. Every
+Whether the free at-home collection offer goes to every patient in all six metros, stays with the patients it reached, or stops. Every
 free collection costs Kalpa Health a phlebotomist's visit, so an offer extended on a lift it did not cause
 spends that money for nothing.
 
 ## The symptom, as the business sees it
 
-The marketing head's campaign report says patients offered free home collection booked 9 percent
+The marketing head's campaign report says patients offered free at-home collection booked 9 percent
 more than patients who were not offered it, over the weeks the offer ran.
 
 ## The files that bear on it
@@ -30,7 +30,7 @@ more than patients who were not offered it, over the weeks the offer ran.
 - `C2_W03_D01_bookings_legacy_STUDENT.csv`
 - `C2_W03_D01_bookings_newsys_STUDENT.csv`
 - `C2_W03_D01_patients_STUDENT.csv`
-- `C2_W03_D01_clinics_STUDENT.csv`
+- `C2_W03_D01_sites_STUDENT.csv`
 
 Every group holds all ten files, and you may use any of them. The ones above are where this question
 starts.
@@ -44,7 +44,7 @@ to answer each one from your own work.
 2. Would the offered patients have booked anyway? What in your analysis answers that?
 3. What else changed in the same weeks, and how did you rule it in or out?
 4. If marketing ran the offer again, how should it be run so the answer is clean?
-5. What should the marketing head do about the other cities, and what is the caveat?
+5. What should the marketing head do about the other metros, and what is the caveat?
 
 ## What your group ships
 
@@ -67,7 +67,7 @@ against this rubric:
 | Criterion | Marks | What full marks look like |
 |---|---|---|
 | The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
-| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and dollars reconcile across files. |
 | The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
 | The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
 | Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |

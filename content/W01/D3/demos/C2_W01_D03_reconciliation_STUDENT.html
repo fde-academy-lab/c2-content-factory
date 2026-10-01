@@ -156,13 +156,12 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 <header class="hero">
   <span class="kicker">Week 1 &middot; Wednesday &middot; Companion</span>
   <h1>Which Q1 figure is right?</h1>
-  <p class="quote">&ldquo;Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9. Until your numbers match ours,
-    Finance will not act on a drop measured from an ERP export.&rdquo;</p>
+  <p class="quote">"Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9. Until your numbers match ours,
+    Finance will not act on a drop measured from an ERP export."</p>
   <p class="who">Anand Iyer, finance controller, Kalpa Retail</p>
-  <p class="promise">This page makes the day's decisions move. Walk the reconciliation one rung at a time, then set
-    each cleaning decision yourself and watch Q1, Q2, the bridge and the verdict to Anand change. The simulator's
-    numbers are totals computed in advance from the day's export for every combination of decisions; the page holds
-    no record from it. The four experiments run on invented records, and each says so.</p>
+  <p class="promise">Walk the reconciliation one chapter at a time, then set each cleaning decision yourself and
+    watch Q1, Q2, the bridge and the verdict to Anand change. The simulator's numbers are totals computed in advance
+    from the day's export for every combination of decisions, and the four experiments run on invented records.</p>
 </header>
 
 <div class="page">
@@ -179,16 +178,17 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   <main>
     <section class="part" id="walk">
       <p class="eyebrow">01 &middot; The guided walk</p>
-      <h2>From the dashboard's figure to the books, one rung at a time</h2>
-      <p class="lede">Each step lights the rung the reconciliation is on and redraws Q1 with the decisions made so far.
+      <h2>How does the dashboard's figure walk to the books, one chapter at a time?</h2>
+      <p class="lede">Each step lights the chapter the reconciliation is on and redraws Q1 with the decisions made so far.
         The totals come from the day's export.</p>
       <div class="card"><div class="holder" id="walkMap"></div></div>
       <div class="walk" style="margin-top:16px">
         <div class="card narration" aria-live="polite">
           <div class="step" id="walkStep">Step 0 of 5</div>
-          <h3 id="walkTitle">Two figures, one quarter</h3>
-          <p id="walkText">The dashboard reads Q1 from the ERP export and gets about Rs 2.1 crore. Finance's books say
-            Rs 1.9 crore. Both are honest arithmetic on something; the walk finds what.</p>
+          <h3 id="walkTitle">Why do two figures disagree about one quarter?</h3>
+          <p id="walkText">The dashboard reads Q1 from an export of the ERP, the enterprise resource planning system
+            Finance books orders in, and gets about Rs 2.1 crore. Finance's books say Rs 1.9 crore. Both are honest
+            arithmetic on something; the walk finds what.</p>
           <div class="holder" id="walkChart"></div>
           <div class="row">
             <button class="btn primary" id="walkNext" type="button">Next</button>
@@ -200,7 +200,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
     <section class="part" id="sim">
       <p class="eyebrow">02 &middot; The simulator</p>
-      <h2>Make the five decisions yourself</h2>
+      <h2>What happens to Q1, Q2 and the verdict when you make each decision?</h2>
       <p class="lede">Every setting below is a decision somebody makes in a cleaning pass. Change one and the numbers,
         the bridge and the verdict to Anand redraw. The verdict is ready only when both reconciliations hold and
         nothing real was removed.</p>
@@ -254,13 +254,13 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
     <section class="part" id="experiments">
       <p class="eyebrow">03 &middot; Experiment cards</p>
-      <h2>Four experiments, one change each</h2>
+      <h2>What does one change do to the numbers, on invented records?</h2>
       <p class="lede">Read the situation and the hypothesis, decide what you expect, then run. Every record in these
         cards is invented to isolate one mechanism.</p>
       <div class="grid2">
         <article class="card exp" id="expA">
           <div class="part-label">Experiment A &middot; invented records</div>
-          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">A failure turned into zero</h3>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">What happens when a failure is turned into zero?</h3>
           <p><b>Situation.</b> Five invented order amounts reach a profile, and one of them reads "n/a". The profile
             either logs the failure or turns it into 0.</p>
           <p><b>Hypothesis.</b> The coerced profile will report every amount convertible and a smaller total, and
@@ -275,14 +275,14 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
             <p><b>What happened.</b> <span id="expAWhat"></span></p>
             <p><b>Why it matters.</b> A zero is a claim that the order was worth nothing. On the day's file the same
               move reports every amount convertible and a Q1 that reads as the dashboard's figure.</p>
-            <p class="rule">A failure is counted and logged, never turned into a number.</p>
+            <p class="rule">A failure is logged, never turned into a number.</p>
           </div>
           <p class="waiting" id="expAWait">What happened appears here after the run.</p>
         </article>
 
         <article class="card exp" id="expB">
           <div class="part-label">Experiment B &middot; invented records</div>
-          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">The line number in the key</h3>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">Why does a dedupe with the file line find nothing?</h3>
           <p><b>Situation.</b> Five invented rows, two of them exported twice, each carrying the file line it came
             from for the rejects log.</p>
           <p><b>Hypothesis.</b> A whole-record dedupe finds no duplicates while the line is in the record, and finds
@@ -297,14 +297,14 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
             <p><b>What happened.</b> <span id="expBWhat"></span></p>
             <p><b>Why it matters.</b> A dedupe that reports zero sends Finance hunting for revenue that was never
               earned. The count of distinct keys against rows is what catches it.</p>
-            <p class="rule">Say what makes two rows one order before counting duplicates.</p>
+            <p class="rule">Say what makes two rows one order before you count duplicates.</p>
           </div>
           <p class="waiting" id="expBWait">What happened appears here after the run.</p>
         </article>
 
         <article class="card exp" id="expC">
           <div class="part-label">Experiment C &middot; invented records</div>
-          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">A fence around the tail</h3>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">What does a fence around the largest orders remove?</h3>
           <p><b>Situation.</b> Eight invented Business orders, one of them twice the next. A fence at a multiple of
             the median decides what counts as an outlier.</p>
           <p><b>Hypothesis.</b> A tight fence removes real revenue and turns a small dip into a collapse.</p>
@@ -320,14 +320,14 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
             <p><b>What happened.</b> <span id="expCWhat"></span></p>
             <p><b>Why it matters.</b> On the day's file, removing the largest Q2 order turns a 1.6 percent dip into a
               17.1 percent fall, and Finance's books still hold that order.</p>
-            <p class="rule">Large is not wrong: check the record, keep it, and show it both ways.</p>
+            <p class="rule">A large order is a question about its record: check it, keep it, and show Q2 both ways.</p>
           </div>
           <p class="waiting" id="expCWait">What happened appears here after the run.</p>
         </article>
 
         <article class="card exp" id="expD">
           <div class="part-label">Experiment D &middot; invented records</div>
-          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">Counts that reconcile</h3>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">Can the rows reconcile while the rupees miss?</h3>
           <p><b>Situation.</b> Four invented rows, one pair sharing an id: the first copy's amount is unreadable and
             the second's is Rs 2,600. The books say Rs 9,600.</p>
           <p><b>Hypothesis.</b> Keeping the first copy reconciles the rows and leaves the rupees Rs 2,600 short.</p>
@@ -340,8 +340,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
           <div class="result" id="expDResult" hidden>
             <p><b>What happened.</b> <span id="expDWhat"></span></p>
             <p><b>Why it matters.</b> On the day's file the same pass reconciles 201 rows and lands Rs 1,790 short of
-              the books, which rounds to 1.9 crore and fails an analyst who ties out to the rupee.</p>
-            <p class="rule">Reconcile twice, in rows and in rupees, to the books.</p>
+              the books, which rounds to 1.9 crore and fails an analyst who ties out, matching every figure to the books line by line.</p>
+            <p class="rule">Reconcile twice, in rows and in rupees, to the books, and hand over a log a stranger can replay.</p>
           </div>
           <p class="waiting" id="expDWait">What happened appears here after the run.</p>
         </article>
@@ -366,38 +366,46 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
     <section class="part" id="glossary">
       <p class="eyebrow">05 &middot; Glossary</p>
-      <h2>The day's words, and where each first mattered</h2>
+      <h2>What does each of the day's words mean, and where did it first matter?</h2>
       <div class="card">
         <dl class="gloss">
           <dt>Profile</dt><dd>Three counts per field before any total: present, convertible to the type it needs, and
-            distinct.<span class="where">Half one, S7 to S10; notebook 01, section 2.</span></dd>
+            distinct.<span class="where">Half one, S11 to S13; notebook 01, section 2.</span></dd>
           <dt>Convertible</dt><dd>A value the field's type accepts, such as an amount int() can read.<span
-            class="where">Half one, S9; notebook 01, section 2.</span></dd>
-          <dt>Rejects log</dt><dd>Every row set aside, with its file line, the field, the value and the reason.<span
-            class="where">Half one, S15; notebook 01, section 3.</span></dd>
+            class="where">Half one, S11; notebook 01, section 2.</span></dd>
+          <dt>Rejects log</dt><dd>Every row whose value failed with no valid copy to stand for it, with its file line, the
+            field, the value and the reason; after the identity rule it is empty on this export.<span
+            class="where">Half one, S18 and S60; notebooks 01 and 04.</span></dd>
           <dt>Decisions log</dt><dd>Every cleaning act with its reason, so an analyst can follow the pass.<span
-            class="where">Half one, S5 and S29; notebook 03, section 3.</span></dd>
+            class="where">Half two, S6 to S8; notebook 06, section 2.</span></dd>
           <dt>Identity rule</dt><dd>What makes two rows the same thing; for an order, the ERP's order_id.<span
-            class="where">Half one, S21; notebook 02, section 3.</span></dd>
+            class="where">Half one, S26 and S40; notebooks 02 and 03.</span></dd>
           <dt>Duplicate</dt><dd>A second row for the same thing under the identity rule, whether or not every field
-            matches.<span class="where">Half one, S19 to S23; notebook 02.</span></dd>
+            matches.<span class="where">Half one, S23 to S33; notebook 02.</span></dd>
           <dt>Drop, default, keep and flag</dt><dd>The three decisions for a missing or malformed value, each moving a
-            different number.<span class="where">Half one, S28 and S29; notebook 03, section 1.</span></dd>
-          <dt>Outlier</dt><dd>A value far from the rest, which is a question about a record and never a reason to delete
-            it.<span class="where">Half one, S30 and S31; notebook 03, section 2.</span></dd>
-          <dt>Reconciliation</dt><dd>Proof that the clean data is the same data: input equals clean plus rejected, in
-            rows and in rupees.<span class="where">Half one, S32 to S34; notebook 03, section 3.</span></dd>
+            different number.<span class="where">Half one, S52 and S53; notebook 04, sections 1 and 2.</span></dd>
+          <dt>Outlier</dt><dd>A value far from the rest, which raises a question about its record before anything is
+            removed.<span class="where">Half one, S73 and S74; notebook 05, section 4.</span></dd>
+          <dt>Reconciliation</dt><dd>Proof that the clean data is the same data: input equals kept plus set aside plus
+            rejected, in rows and in rupees.<span class="where">Half one, S69; half two, S10 to S14; notebooks 05 and
+            06.</span></dd>
           <dt>Revenue bridge</dt><dd>A total walked to another total, one move per cause, each backed by the rows that
-            carry it.<span class="where">Half one, S35; notebook 03, section 3.</span></dd>
+            carry it.<span class="where">Half one, S69; notebook 05, section 2.</span></dd>
+          <dt>ERP</dt><dd>The enterprise resource planning system Finance books orders in; the day's CSV and JSON feed are
+            its exports.<span class="where">Half one, S2; notebook 01, section 1.</span></dd>
+          <dt>Extract</dt><dd>One pull of rows out of the ERP; the CSV was stitched from two during Q1's migration to a new
+            system.<span class="where">Half one, S2 and S19; notebooks 01 and 03.</span></dd>
+          <dt>Tie out</dt><dd>Match every figure to the books, line by line, so a rupee's difference is a finding.<span
+            class="where">Half one, S2; half two, S1 and S19.</span></dd>
+          <dt>Booked value</dt><dd>Every order at the price charged, whatever its status: the revenue in every Q1 and Q2
+            figure on this page.<span class="where">Half one, S8; notebook 01.</span></dd>
           <dt>JSONDecodeError</dt><dd>The error json raises when a file stops being valid JSON, naming the line and
-            column.<span class="where">Half one, S16; notebook 01, section 4.</span></dd>
+            column.<span class="where">Half one, S19; notebook 01, section 5.</span></dd>
         </dl>
       </div>
       <p class="foot">Week 1, Wednesday. The same decisions live in the workbook beside this page,
         C2_W01_D03_decision_tool_STUDENT.xlsx, where each tab hides one formula defect to find first and the Export
-        tab assembles the note to Anand. Kalpa Retail and everyone in it are fictional. The simulator's totals were
-        computed in advance from the day's export; the experiment records are invented. The page stores nothing and
-        calls no network.</p>
+        tab assembles the note to Anand. Kalpa Retail and everyone in it are fictional.</p>
     </section>
   </main>
 </div>
@@ -901,25 +909,28 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   }
 
   /* ---------------------------------------------------------------- the walk */
-  var RUNGS = ["the profile", "the copies", "the identity rule", "missing and malformed", "the bridge"];
+  var RUNGS = ["1. What did the ERP send?", "2. Which rows repeat?", "3. Which copy stays?",
+               "4. Drop, fill or flag?", "5. Can we prove the 1.9?", "6. Can the analyst replay it?"];
   var WALK = [
-    { t: "Two figures, one quarter", lit: null, d: { amt: "zero", key: "line", pref: "first", bulk: "keep", status: "flag" },
-      x: "The dashboard reads Q1 from the ERP export and gets about Rs 2.1 crore. Finance's books say Rs 1.9 crore. Both are honest arithmetic on something; the walk finds what." },
-    { t: "Profile, and log the failure", lit: 0, d: { amt: "log", key: "line", pref: "first", bulk: "keep", status: "flag" },
-      x: "The profile counts 201 rows and 186 distinct order ids, and one amount that will not convert. Logging it instead of zeroing it leaves Q1 at Rs 2,09,98,210 and removes the order worth Rs 0." },
-    { t: "A dedupe that finds nothing", lit: 1, d: { amt: "log", key: "line", pref: "first", bulk: "keep", status: "flag" },
-      x: "With the file line in every record, a whole-record dedupe reports zero duplicates and Q1 does not move. The 15-row gap between rows and order ids says the key is wrong." },
-    { t: "The identity rule, the copy that validates", lit: 2, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
-      x: "One row per order_id, keeping the copy whose fields validate. Fifteen rows are set aside and Q1 lands on Rs 1,90,00,000, the books." },
-    { t: "Keep what is real, flag what is unknown", lit: 3, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
-      x: "The order with no status is kept and flagged, and the largest Q2 order, a Business account with orders in both quarters, is kept and shown both ways. Q2 stays at Rs 1,87,00,000." },
-    { t: "Reconciled in rows and rupees", lit: 4, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
-      x: "201 rows in equals 186 kept plus 15 set aside, and Q1 as exported less the set-aside rupees equals the books to the rupee. On clean data the drop is 1.6 percent and Retail-Plus frequency falls 35.0 percent." }
+    { t: "Why do two figures disagree about one quarter?", lit: null, d: { amt: "zero", key: "line", pref: "first", bulk: "keep", status: "flag" },
+      x: "The dashboard reads Q1 from an export of the ERP, the enterprise resource planning system Finance books orders in, and gets about Rs 2.1 crore. Finance's books say Rs 1.9 crore. Both are honest arithmetic on something; the walk finds what, one chapter at a time." },
+    { t: "What did the ERP send?", lit: 0, d: { amt: "log", key: "line", pref: "first", bulk: "keep", status: "flag" },
+      x: "The profile counts 201 rows and 186 distinct order ids, and one amount that will not convert. Logging it instead of zeroing it leaves Q1 at Rs 2,09,98,210, the dashboard's figure, honestly labelled." },
+    { t: "Which rows repeat?", lit: 1, d: { amt: "log", key: "order_id", pref: "first", bulk: "keep", status: "flag" },
+      x: "With the file line in every record, a whole-record dedupe finds nothing. Keyed on order_id, 15 orders appear twice. Keeping the first copy of each lands Q1 close to the books, and chapter 3 asks why it is not exact." },
+    { t: "Which copy stays?", lit: 2, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
+      x: "Keeping the copy whose amount converts, then the first, sets 15 rows aside and lands Q1 on Rs 1,90,00,000, the books to the rupee." },
+    { t: "Drop, fill or flag?", lit: 3, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
+      x: "The order with no status is kept and flagged, and an amount that fails is rejected to the log, never zeroed. Q2 stays at Rs 1,87,00,000." },
+    { t: "Can we prove the 1.9?", lit: 4, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
+      x: "Q1 as exported less the corporate and consumer copies equals the books. The largest Q2 order, a real Business account, stays. On clean data the drop is 1.6 percent and Retail-Plus frequency falls 35.0 percent." },
+    { t: "Can the analyst replay it?", lit: 5, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
+      x: "201 rows in equals 186 kept plus 15 set aside, the rupees tie to the books, and the raw export less the logged lines rebuilds the clean file." }
   ];
   var walkAt = 0;
   function showWalk() {
     var w = WALK[walkAt], o = outcome(w.d);
-    K.draw("walkMap", K.flow(RUNGS, w.lit === null ? -1 : w.lit, { title: "The five rungs; the lit one is this step's" }));
+    K.draw("walkMap", K.flow(RUNGS, w.lit === null ? -1 : w.lit, { title: "The six chapter questions; the lit one is this step's" }));
     bridgeFor(o, "walkChart", "Q1 in rupees, from the export to this step's pass");
     $("walkStep").textContent = "Step " + walkAt + " of " + (WALK.length - 1);
     $("walkTitle").textContent = w.t;
@@ -949,7 +960,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     var reasons = [];
     if (o.zeros) reasons.push("An order sits at Rs 0: a failure became a number, and Finance booked that order at a value.");
     if (o.kept > expected) reasons.push("The file still counts " + (o.kept - expected) + " order" + (o.kept - expected > 1 ? "s" : "") + " twice: the key is not the identity rule.");
-    if (o.gap !== 0) reasons.push("Q1 misses the books by " + R(Math.abs(o.gap)) + ", so the rupee reconciliation fails even where the rows tie out.");
+    if (o.gap !== 0) reasons.push("Q1 misses the books by " + R(Math.abs(o.gap)) + ", so the rupee reconciliation fails even where the rows tie out, matching line for line.");
     if (d.bulk === "remove") reasons.push("A real Business order was removed, so the drop reads " + o.drop.toFixed(1) + " percent instead of 1.6.");
     if (d.status === "drop") reasons.push("A booked order was dropped for a missing status, which moves revenue on a guess.");
     if (d.status === "default") reasons.push("The missing status was defaulted to delivered, a fact nobody recorded.");
@@ -1003,7 +1014,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   function reveal(key, text) { $(key + "What").textContent = text; $(key + "Result").hidden = false; $(key + "Wait").hidden = true; }
 
   /* ---------------------------------------------------------------- experiment A */
-  var A_TEXT = ["2400", "1300", "n/a", "3100", "1800"];
+  var A_TEXT = ["2500", "1300", "n/a", "3100", "1800"];
   var aOn = false;
   function drawA() {
     var vals = [], fails = 0;
@@ -1021,8 +1032,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     this.textContent = aOn ? "Log the failure instead" : "Coerce the failure to 0";
     drawA();
     reveal("expA", aOn
-      ? "The coerced profile reports five of five amounts convertible, a total of Rs 8,600, and a dot at Rs 0 that no order was ever worth."
-      : "The logged profile reports four amounts, a total of Rs 8,600, and one failure with its reason; nothing sits at Rs 0.");
+      ? "The coerced profile reports five of five amounts convertible, a total of Rs 8,700, and a dot at Rs 0 that no order was ever worth."
+      : "The logged profile reports four amounts, a total of Rs 8,700, and one failure with its reason; nothing sits at Rs 0.");
   });
   $("expASeq").addEventListener("click", function () {
     openSeq("Experiment A, as a sequence", ["the file", "convert", "the log"], [
@@ -1109,7 +1120,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   var WHY = {
     cSame: ["same", "Identical copies carry the same value; keep the first, set the other aside with the reason \"second copy of the order\"."],
     cBad: ["bad", "Keep the copy whose amount converts. Keeping the first would keep the one that cannot be summed and lose the order's value."],
-    cDiff: ["diff", "No rule inside the file can say which value is true. Keep the first extract's row, log the disagreement, and ask the ERP team."]
+    cDiff: ["diff", "No rule inside the file can say which value is true. Keep the row from the first extract, the first pull of rows out of the ERP, log the disagreement, and ask the ERP team."]
   };
   function drawCopy(lit) {
     function n(id, label) { return ["", { label: label, kind: lit === id ? "lit" : "plain" }]; }

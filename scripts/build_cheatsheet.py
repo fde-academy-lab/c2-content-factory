@@ -163,6 +163,7 @@ class MermaidError(RuntimeError):
 
 
 _MMDC_HELP = []
+_MMDC_VERSION = []
 
 # A PNG renders at twice its CSS size, so an exhibit printed at its natural size holds about 200
 # pixels to the inch. Callers that size a picture from its pixels divide by this first.
@@ -183,6 +184,22 @@ def mmdc_has(flag):
             said = ""
         _MMDC_HELP.append(said)
     return flag in _MMDC_HELP[0]
+
+
+def mmdc_version():
+    """The installed mermaid-cli's version, read once per run, for every render cache's key.
+
+    Two versions draw the same fence differently (under 12.0.0 a card printed on two pages that
+    11.17.0 printed on one), so a picture cached under one version is never reused under another.
+    """
+    if not _MMDC_VERSION:
+        try:
+            said = subprocess.run(["mmdc", "--version"], capture_output=True, text=True,
+                                  timeout=120).stdout.strip() if shutil.which("mmdc") else ""
+        except (OSError, subprocess.SubprocessError):
+            said = ""
+        _MMDC_VERSION.append(said.splitlines()[-1] if said else "none")
+    return _MMDC_VERSION[0]
 
 
 def mmdc_page(pixels, config):
@@ -221,8 +238,8 @@ def render_mermaid(code, fmt="svg", config=None):
 
     Returns None when mmdc is not installed, and raises MermaidError when it is installed and
     writes nothing, so a failed render is never mistaken for a finished page. Renders are cached
-    by content hash and by format, so rebuilding a sheet re-renders only what changed and a week
-    of sheets sharing a diagram renders it once. The labels go through svg_labels first, so what
+    by content hash, format and mermaid-cli version, so rebuilding a sheet re-renders only what
+    changed, a week of sheets sharing a diagram renders it once, and a new mermaid-cli redraws all. The labels go through svg_labels first, so what
     the hash covers is what mmdc draws. A PNG renders at PNG_SCALE, and the scale is in its key. A
     caller with its own palette, such as the Saturday paper, passes its mermaid config; the default
     is the sheets' shared theme.
@@ -231,7 +248,7 @@ def render_mermaid(code, fmt="svg", config=None):
     base = config or MERMAID_CONFIG
     flags, config = mmdc_page(2400, base) if fmt == "png" else ([], base)
     tag = f"scale={PNG_SCALE} {' '.join(flags)}" if fmt == "png" else ""
-    key = hashlib.sha256((body + fmt + config + tag).encode()).hexdigest()[:16]
+    key = hashlib.sha256((body + fmt + config + tag + mmdc_version()).encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
     out = CACHE / f"{key}.{fmt}"
     if out.exists():

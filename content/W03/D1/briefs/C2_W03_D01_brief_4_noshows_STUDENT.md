@@ -1,7 +1,7 @@
-# Brief 4: The no-show rate looks worse in one clinic
+# Brief 4: The no-show rate looks worse at one patient service centre
 
 **For:** the group allocated sub-problem 4
-**Client:** Dr Priya Menon, COO, Kalpa Health, and the clinics' operations head
+**Client:** Dr Priya Menon, COO, Kalpa Health, and the patient service centres' operations head
 **Read first:** `C2_W03_D01_briefing_note_STUDENT.md`
 
 Kalpa Health and everyone in it are fictional.
@@ -10,25 +10,25 @@ Kalpa Health and everyone in it are fictional.
 
 ## The question, as it was put
 
-> "KH-HYD-03 has the worst no-show rate on my monthly report. I am being asked to add a receptionist there or close it. Is the clinic really worse?"
-> The clinics' operations head, Kalpa Health
+> "KH-ATL-03 has the worst no-show rate on my monthly report. I am being asked to add a receptionist there or close it. Is the centre really worse?"
+> The patient service centres' operations head, Kalpa Health
 
 ## The decision it feeds
 
-Whether KH-HYD-03 gets a second receptionist, a change to its reminder calls, or a closure notice. A
-clinic closed on a rate read wrongly loses a neighbourhood its clinic; a real problem left
+Whether KH-ATL-03 gets a second receptionist, a change to its reminder calls, or a closure notice. A
+centre closed on a rate read wrongly loses a neighbourhood its centre; a real problem left
 alone keeps costing slots every day.
 
 ## The symptom, as the business sees it
 
-The operations head's monthly report ranks the twelve walk-in clinics by no-show rate for Q2, and
-KH-HYD-03 sits at the bottom. The clinic's manager says their patients are no different from anyone
+The operations head's monthly report ranks the twelve patient service centres by no-show rate for Q3,
+and KH-ATL-03 sits at the bottom. The centre's manager says their patients are no different from anyone
 else's.
 
 ## The files that bear on it
 
 - `C2_W03_D01_appointments_STUDENT.csv`
-- `C2_W03_D01_clinics_STUDENT.csv`
+- `C2_W03_D01_sites_STUDENT.csv`
 
 Every group holds all ten files, and you may use any of them. The ones above are where this question
 starts.
@@ -38,10 +38,10 @@ starts.
 The panel reads your one-slide answer and then asks questions like these. Every member should be able
 to answer each one from your own work.
 
-1. What is KH-HYD-03's no-show rate, on what denominator, and against which comparison?
+1. What is KH-ATL-03's no-show rate, on what denominator, and against which comparison?
 2. Could chance alone produce the gap you see? How did you check, and what did the check say?
-3. What would a fair comparison between two clinics need, and did yours have it?
-4. What should the operations head do about KH-HYD-03, and what evidence would change your advice?
+3. What would a fair comparison between two centres need, and did yours have it?
+4. What should the operations head do about KH-ATL-03, and what evidence would change your advice?
 5. If a patient's missed test were a missed diagnosis, what would you want checked before acting?
 
 ## What your group ships
@@ -65,7 +65,7 @@ against this rubric:
 | Criterion | Marks | What full marks look like |
 |---|---|---|
 | The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
-| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and dollars reconcile across files. |
 | The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
 | The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
 | Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |

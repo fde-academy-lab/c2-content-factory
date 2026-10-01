@@ -1,102 +1,122 @@
-# The second case: the hypothesis Marketing attacks
+# Marketing's new deck says members spend 7 percent more per order and the web fell hardest: does either claim hold, and whom does the tier call first?
 
-Forty-five minutes, in pairs. One of you speaks for the numbers; the other plays the two voices below
-and pushes back as hard as they would. Swap after Part 3.
-
-> "A flat customer count can hide churn replaced by new customers, which is exactly why we need the
-> acquisition budget. And Retail-Plus is Rs 65,250 out of a Rs 23 lakh fall. It does not matter."
-> (the marketing lead)
+> "Retail-Plus members spend 7 percent more every time they order, so the tier is healthy and the
+> answer is still acquisition. And Retail-Plus web orders fell hardest, 24 to 9, so this is the
+> website team's problem, not the tier's and not the app's."
 >
-> "It is the broken reorder button. My members have been complaining for six weeks. Fix the app and
-> the tier comes back." (the head of Retail-Plus)
+> The marketing lead, Kalpa Retail
 
-Work in `notebooks/C2_W01_D02_05_second_case_STUDENT.ipynb`. It opens on the class file and has a
-cell for each test below. Your job is to name a cause as a hypothesis, with the evidence that would
-settle it, and to hold that line against both voices.
+> "Fine. Which of my members do I call first?"
+>
+> The head of Retail-Plus, Kalpa Retail
 
-Each part ends in one item, and the stretch adds a sixth. Post one line per pair at the end, six letters in order, no spaces:
+Retail-Plus is Kalpa Retail's paid membership tier, and its members order through three channels:
+the app, the website and the stores. Acquisition is winning new customers, the work Marketing wants
+Rs 12 crore for. Revenue here is booked revenue, every order placed at the price charged before any
+cancellation or return, and Monday's revenue tree splits it into three leaves that multiply: revenue
+= customers x orders per customer x revenue per order, where for the tier the customers are its
+members. Kalpa's other consumer segments are Retail-Core, shoppers who place many small orders, and
+Student, small discounted baskets.
+
+The morning found that the same 22 members of the tier placed 26 orders in Q2 against 51 in Q1, and
+chapter 5 found that 18 of the 23 customers who ordered less in Q2 were members. Chapter 6 found that
+the tier's fall began in July, before the app's reorder button broke, and capped what the button can
+explain at about 4 of the tier's 25 lost orders. The break date comes from a member's complaint that
+the button had been broken for six weeks: six weeks back from the week of 6 October is about 25
+August, and the day works from that date until the app's release log confirms it.
+
+**Who needs the answer.** The head of Retail-Plus decides which members his team calls first, and
+Meera Raghavan, Kalpa Retail's CEO, decides whether Marketing's new deck changes anything about the
+Rs 12 crore acquisition budget. A claim agreed with before anyone finds what it is made of sends the
+budget to acquisition, and a call list built on the wrong number spends the tier's calls on the wrong
+members.
+
+**The questions on the way.**
+
+- Does 7 percent more per order make the tier healthy?
+- Is the web's fall the website's fault?
+- Which members does the tier call first?
+- Which one request goes first?
+
+You work in pairs for forty minutes. One of you answers the marketing lead, the other answers the
+head of Retail-Plus, from the same file, and together you write one reply. Work in
+`notebooks/C2_W01_D02_ex2_second_case_STUDENT.ipynb`, which has a lettered `TODO` for each part and a
+check that says whether your pick holds. Each part ends in one item below.
+
+**What you post.** Each pair posts one line at the end, four letters in item order with no spaces,
+in this shape:
 
 ```
-Post exactly this shape: xxxxxx
+Post exactly this shape: xxxx
 ```
 
 ```mermaid
 flowchart TD
-    C["<b>a claimed cause</b>"] --> T1["<b>timing</b><br/>did the fall start after it?"]
-    C --> T2["<b>where</b><br/>did it fall where the cause acts?"]
-    T1 --> H["<b>a hypothesis</b><br/>with the data that settles it"]
-    T2 --> H
+    M["<b>Marketing's two numbers</b>"] --> T1["<b>what is each made of?</b>"]
+    H["<b>the tier's question</b>"] --> T2["<b>orders per member,<br/>Q1 to Q2</b>"]
+    T1 --> R["<b>one reply</b><br/>and one data request"]
+    T2 --> R
 ```
 
 ---
 
-## Part 1. Churn hidden behind a flat count?
+## Part 1. Does 7 percent more per order make the tier healthy?
 
-Compare the sets of customer ids that bought in Q1 and in Q2.
+At work this comes up whenever a stakeholder brings one number as proof that a group is healthy.
 
-### Q1. The marketing lead says a flat count of 69 can hide churn replaced by new customers. Which check settles it, and what does it show?
+### Q1. What does the tier's own tree say to Marketing's 7 percent? (Design)
 
-a) Customers per week in each quarter; the rate held level, so no churn could have taken place
-b) New sign-ups in the CRM for Q2; there were some, so churn was replaced and acquisition works
-c) The overlap of customer ids; all 69 who bought in Q2 bought in Q1, so none lost and none new
-d) The count again on delivered orders; it fell from 54 to 50, so churn is real and hidden here
+Put the tier's leaves back together: members, times orders per member, times revenue per order. What
+does its own tree say to Marketing?
 
----
-
-## Part 2. Does Retail-Plus matter?
-
-### Q2. "Retail-Plus is Rs 65,250 out of a Rs 23 lakh fall. It does not matter." What is the answer in the room?
-
-a) It is 93 percent of the consumer fall and 25 of 28 lost orders; the same 22 members buy half as often
-b) It does not matter in rupees, so the note to Meera should lead with Business and leave Retail-Plus out of it
-c) It matters because its revenue per order rose 7.0 percent, which shows its members are paying more
-d) It matters only if the tier's revenue falls again next quarter, so the answer is to wait and watch
+a) The tier is healthy, since 7 percent more per order outweighs the fall in orders
+b) Tier revenue fell about 42 percent, orders down 49 and value up 7, so it is minor
+c) New, richer members joined, so acquisition is already working inside the tier
+d) The same 22 members ordered half as often, so tier revenue fell about 45 percent
 
 ---
 
-## Part 3. Did the fall start after the break?
+## Part 2. Is the web's fall the website's fault?
 
-Retail-Plus orders by month: April 14, May 24, June 13, July 9, August 9, September 8. The complaint
-says the reorder feature has been broken for six weeks, counted back from this week.
+At work this comes up whenever a team is blamed for a fall that shows up in its own channel.
 
-### Q3. The head of Retail-Plus says the broken reorder button is the cause. What does the timing say?
+### Q2. Which number tests a fault across the whole website? (Design)
 
-a) The break explains the fall, since September has the fewest orders of any month in the file
-b) The break came first, since six weeks back from this week reaches into the early part of July
-c) Timing cannot be read from monthly counts, so the question has to wait for the app's own logs
-d) The fall began in July, before a break dated late August, so it cannot be the whole story
+Marketing blames the website for the tier's web orders falling from 24 to 9. Which number tests a
+site-wide website fault?
 
----
-
-## Part 4. Did it fall where the cause acts?
-
-Retail-Plus orders by channel, Q1 then Q2: web 24 to 9, store 14 to 9, app 13 to 8.
-
-### Q4. A broken app feature acts in the app. What does the channel split say about it?
-
-a) The app fell least of the three channels, so the break has had no effect on the tier's orders at all
-b) Every channel fell; an app-only cause would show the app falling first and alone, which it did not
-c) The app fell by 5 orders, which is the break's full effect, and the other channels are noise
-d) Web fell most, so the cause is the website, and the app complaint can be closed as unrelated
+a) Retail-Plus app orders, 13 to 8, since the app shares the website's servers
+b) Retail-Core web orders on the same website, which held at 13 and 12
+c) Retail-Plus web orders by month, to see when the members' fall began
+d) The total of all web orders, 44 to 30, since it covers every segment
 
 ---
 
-## Part 5. Two hypotheses, and the data that settles each
+## Part 3. Which members does the tier call first?
 
-H1: the broken reorder feature. H2: something that changed for members in July.
+At work this comes up whenever a team has fewer calls to make than customers who slowed.
 
-### Q5. Which request for data would settle the two hypotheses?
+### Q3. Which of four member lists does the head of Retail-Plus call first?
 
-a) This file's orders for Q3 as they arrive, since more orders of the same kind will settle both of them
-b) A survey of all 22 members asking why they order less, since members know their own reasons
-c) For H1, reorder events and failures by week and the release date; for H2, the tier's change log
-d) The marketing lead's campaign calendar for both quarters, since campaigns explain when orders arrive
+The head of Retail-Plus asks which of his members to call first. Which list goes first?
 
-## Stretch. A rival to both hypotheses
+a) Members with no order in Q2, since they have stopped altogether
+b) Members who ordered once in Q1, since they are the least attached
+c) The 7 who fell from three orders to one, since they slowed most
+d) The 11 who fell by one order, since they are the largest group that slowed
 
-### Q6. A pair points out that July opens the monsoon quarter, so a seasonal dip would also start in July. Which evidence settles the season?
+---
 
-a) Retail-Plus orders for August and September again, to see whether they keep falling
-b) The reorder feature's failure log, since a season would show up as failed reorders
-c) Nothing, since weather is outside Kalpa's control and cannot be tested from data
-d) Last year's Q2 for Retail-Plus against Retail-Core, beside this year's two quarters
+## Part 4. Which one request goes first?
+
+At work this comes up whenever two data requests compete and only one can go out first.
+
+### Q4. Which request goes first, with the button capped at about 4 of 25 lost orders? (Design)
+
+The tier lost 25 orders between the quarters, and chapter 6 capped the button at about 4 of them.
+Which request goes first?
+
+a) The tier's July change log, renewals and support tickets
+b) The app's reorder logs by week since the 25 August release
+c) Marketing's new-member sign-ups by month from July
+d) This export again, cut by city, channel and week from July

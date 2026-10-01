@@ -1,40 +1,38 @@
-# Which branch moved, and how you would know
+# Which branch moved from Q1 to Q2?
 
-**Week 1, Tuesday. Study notes, read after the session.** A drop is investigated on a fixed ladder:
-confirm it on matched windows, decompose it along the tree, find the segment, separate mix from
-rate, and hand over a cause as a hypothesis with the evidence that would settle it. Reading time:
-about 30 minutes.
-
----
-
-## What you can now do
-
-1. You can check whether a drop is real before explaining it, by comparing two windows of the same
-   length or by turning both into a rate per week.
-2. You can split a change in revenue into customers, orders per customer and revenue per order, and
-   show that the three multiply back to the total.
-3. You can group records by a key with a dictionary accumulator and describe each group by its
-   median, its smallest and largest values, and its range.
-4. You can write a function that returns its answer, apply it to every segment and quarter, and
-   count the groups that went in against the groups that came out.
-5. You can roll a rate up from segments with its weights, and say how much of a change came from the
-   mix of orders and how much from behaviour inside each segment.
-6. You can hand a stakeholder a cause as a hypothesis, test it on timing and channel with the data
-   you have, and name the data you would ask for.
+**Week 1, Tuesday. Study notes, read after the session.** Meera Raghavan, Kalpa Retail's CEO, asked
+it in her own words: Q2 came in below Q1, so are we losing customers, or are the ones we have buying
+less? The day climbs to her answer in six chapters, each asking the question the answer before it
+raised. Every chapter weighs two to four ways of answering, sizes them, picks one, and reaches the
+same number a second way. Reading time: about 40 minutes.
 
 ---
 
-## Where this sits
+## What will you be able to do once you have read these notes?
 
-**What the session covered.** Worked in full: Meera's question about which branch moved, the
-five-rung ladder, matched windows and rates per week, the tree decomposed on two closed quarters,
-the missing discount field, grouping with a dictionary, `tree_for` and `describe` as functions, the
-weighted roll-up, the segment split, mix against rate, a helper that returned nothing, and two
-hypotheses tested on timing and channel. Around them, the business and system context: what each
-branch costs and who owns it, where in the pipeline a fake drop is made, how retailers keep periods
-comparable, why the bridge depends on the order of its steps, three ways past a missing key, and the
-middle half of a group against its range. Mentioned only: `try` and `except` as one way to meet a
-`KeyError`, and the test of whether a difference could be chance, which is Thursday's work.
+1. You can check whether a drop is real before explaining it, and choose between closed quarters,
+   the same weeks of each, a rate per week and last year's quarter, saying what would switch you.
+2. You can split a change in revenue into customers, orders per customer and revenue per order, show
+   that they multiply back, and put rupees on each branch with a bridge whose order you state.
+3. You can decide between copying code, writing a function and grouping by a key, and roll a rate up
+   from segments with its weights.
+4. You can say how much of a blended rate's change came from the mix and how much from behaviour
+   inside each segment.
+5. You can test a stakeholder's claim in its own terms, catch a helper that drops a group, and judge
+   a segment against the business it belongs to.
+6. You can hand over a cause as a hypothesis with a ceiling, tested on timing, a comparison segment
+   and the channel it predicts, and name the data that would settle it.
+
+---
+
+## Where does Tuesday sit in the week, and what does it lean on?
+
+Kalpa Retail is the first business most of the room has worked in. How a retailer earns, who owns
+which lever and why periods are compared like with like is told in Monday's domain dossier,
+`content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`. Today uses four of its parts: section 2 on Retail-Plus, the
+paid tier, and why memberships buy frequency; section 5's revenue tree, average order value (whose
+trap is today's chapter 4) and frequency; section 5's same-store sales, which is chapter 1's matched
+windows; and section 4 on who asks for which number.
 
 ```mermaid
 flowchart LR
@@ -46,27 +44,23 @@ flowchart LR
     class T today
 ```
 
-This map of the week is this programme's own construction, drawn from the Week 1 rows.
-
-**The outcome tie.** Thursday's one-page note to Meera names a branch, a segment and a hypothesis,
-and today produced all three from the orders file as it was exported.
-
-**What was left out.** Whether the export itself can be trusted waits for Wednesday, when Finance
-compares its books with the dashboard, and tomorrow's reconciliation may change tonight's numbers.
-Whether a fall on a few dozen orders is larger than chance would produce waits for Thursday.
+Whether the export itself can be trusted waits for Wednesday, when Finance
+compares its books with the dashboard; tomorrow's reconciliation may change tonight's numbers.
+Whether the differences found today are real waits for Thursday.
 
 ---
 
-## The picture to remember: the ladder beside the tree
+## Which picture holds the whole day?
 
 ```mermaid
 flowchart LR
-    subgraph LAD["the ladder"]
+    subgraph LAD["the six chapters"]
         direction TB
-        R1["1 is the drop real"] --> R2["2 which branch"]
-        R2 --> R3["3 which segment"]
-        R3 --> R4["4 mix or rate"]
-        R4 --> R5["5 a hypothesis"]
+        R1["1 is the drop real?"] --> R2["2 which branch moved?"]
+        R2 --> R3["3 which segment moved?"]
+        R3 --> R4["4 did customers pay more?"]
+        R4 --> R5["5 were customers lost?"]
+        R5 --> R6["6 did the button do it?"]
     end
     subgraph TREE["the tree, Q1 to Q2"]
         direction LR
@@ -77,480 +71,571 @@ flowchart LR
     LAD --> TREE
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef moved fill:#FBE3EA,stroke:#D63A6A,color:#1A0F5C
-    class R5 bet
+    class R6 bet
     class F moved
 ```
 
-Read the ladder from the top: each rung is a question that must be answered before the next one is
-worth asking. The tree beside it is Monday's tree with Tuesday's numbers written in, and the branch
-shaded is the one that moved. The running thread through every section below is one sentence to
-Meera, which starts as "revenue fell" and ends as a claim with its evidence and its caveat.
+Read the ladder from the top: each chapter answers a question that must be settled before the next
+one is worth asking. The tree beside it is Monday's tree with Tuesday's numbers written in, and the
+shaded branch is the one that moved. One sentence to Meera runs through every chapter: it starts as
+"revenue fell" and ends as a claim with its evidence, its caveat and its ceiling.
 
-The seven lines the day comes down to, in the order the ladder meets them:
+The eight lines the day comes down to:
 
 1. Confirm the drop on matched windows before you explain it.
 2. A rate without its denominator is a rumour.
 3. Decompose along the tree: customers, orders per customer, revenue per order.
 4. Missing means unknown until someone chooses a default and writes down why.
 5. Roll a rate up with its weights; never average the averages.
-6. A function returns its answer; count the groups in and the groups out.
-7. Name the cause as a hypothesis, with the evidence that would settle it.
+6. A blended rate can move while no segment moves; split mix from rate.
+7. A function returns its answer; count the groups in and the groups out.
+8. Name the cause as a hypothesis, with its ceiling and the evidence that would settle it.
 
 ---
 
-## Before the ladder: what each branch costs, and where a fake drop is made
+## Chapter 1. Did revenue really fall from Q1 to Q2, and by how much, once both sides cover the same weeks?
 
-**Every branch has a lever, an owner and a price.** Customers move with acquisition campaigns, which
-the marketing lead owns and which cost spend before any repeat order. Orders per customer move with
-retention, reminders and features such as reorder, which the tier and product owners own. Revenue per
-order moves with range and bundles, which merchandising owns. Price and discounts move volume or give
-away margin. So the branch that moved decides whose problem the fall is, and a branch that stayed flat
-takes a budget off the table.
+**Who needs the answer.** Meera decides whether Marketing's Rs 12 crore acquisition request is
+urgent, and the request rests on a slide saying revenue fell by a quarter. Overstate the fall and
+crores move in a hurry on a lever nobody has checked; understate it and a real leak runs another
+quarter.
 
-**IN THE FIELD.** Harvard Business Review summarised the price gap in 2014: depending on the study and
-the industry, acquiring a new customer costs 5 to 25 times more than retaining one, and Bain's Frederick
-Reichheld found that raising retention by 5 percent lifted profits by 25 to 95 percent (Amy Gallo, "The
-Value of Keeping the Right Customers", checked 29 Sep 2026). These are estimates across industries,
-never Kalpa's numbers; their use here is to say that a fall in frequency puts the cheaper lever on the
-table before the Rs 12 crore.
+**The questions on the way.**
 
-**A fake drop has an address.** Every number on a dashboard passed through four hands, and each one can
-manufacture a fall that the business never had:
+1. Which of four ways should size the fall, and what does each leave out?
+2. How far did revenue fall between the two closed quarters?
+3. Why does Marketing's slide say 25.9 percent?
+4. How far apart are the quarters per week, with the window stated?
+5. What do the same eleven weeks of each quarter say?
+6. Does adding revenue up by month give the same fall?
 
-```mermaid
-flowchart LR
-    C["<b>checkout</b><br/>app, web, store"] --> O["<b>order system</b>"]
-    O --> E["<b>export</b>"]
-    E --> T["<b>dashboard tile</b>"]
-    C -.-> F1["a channel down"]
-    O -.-> F2["returns post later<br/>a field left empty"]
-    E -.-> F3["a window cut short"]
-    T -.-> F4["averages averaged"]
-    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    class F1,F2,F3,F4 bad
-```
+**The need.** The metric is the change in booked revenue, every order placed before any
+cancellation or return, between two quarters. Kalpa's financial year opens in April, so Q1 is April
+to June and Q2 July to September, and both have closed.
 
-Today's three system traps live at three of these addresses: the window at the export and the tile,
-the empty field in the order system, and the roll-up at the tile. The fifth way a total misleads, a
-few very large orders, is the business being lumpy rather than a fault in the pipeline, and it shows
-up in rungs 1 and 3. Checking the pipeline first is the cheapest investigation there is.
+**Who else faces this.** Retailers compare like with like on purpose. DMart reports like-for-like
+growth, sales growth counted only on stores open in both periods, and only on stores open at least 24
+months, 8.1 percent in FY26. Target defines comparable sales, its own like-for-like measure, against a
+prior period of equivalent length, and its 53-week fiscal 2023 carried an extra week worth
+$1,715 million. The National Retail Federation's 4-5-4 calendar gives comparable months the same
+weeks and weekends.
 
----
+### Which of four ways should size the fall, and what does each leave out?
 
-## Rung 1: a drop is real only when the windows match
-
-**The worked case.** Marketing's deck said revenue fell 25.9 percent. It had set the Q2 dashboard
-tile, cut on 15 September, against the whole of Q1: Rs 1,55,59,950 on 70 orders against Rs
-2,10,00,000 on 114 orders.
-
-**The trap, and the decision it misleads.** A 25.9 percent fall reads as a crisis, and a crisis
-rushes the Rs 12 crore acquisition budget through before anyone asks which branch is short.
-
-**Why it is wrong.** Q1 runs 13 weeks, 1 April to 30 June, and the cut Q2 runs 11 weeks, 1 July to
-15 September. Two fewer weeks of trading lower any total, whether or not anything changed.
-
-**The check.** For each window, print the first and last order date and count the weeks covered.
-Thirteen against eleven shows in one line of output.
-
-**The fix.** Two fixes are honest. Once Q2 has closed, compare the two closed quarters, both 13
-weeks: Rs 2,10,00,000 against Rs 1,87,00,000, a fall of 11.0 percent, or Rs 23,00,000. While a
-quarter is still open, turn both into a rate per week: Q1 made Rs 16,15,385 a week and Q2 to 15
-September made Rs 14,14,541 a week, a fall of 12.4 percent.
-
-**The harder variant the room ran.** Compare the same eleven weeks of each quarter: Q1 up to 16 June
-is Rs 1,87,51,440 on 97 orders, and against Q2 to 15 September that is a fall of 17.0 percent. The
-per-week figure said 12.4 percent, because a few large Business orders land unevenly inside a
-quarter. The rule: once a quarter has closed, compare closed quarters, and a quarter-to-date
-comparison uses the same weeks of both. The sentence to Meera now has its first clause:
-
-> Revenue fell 11.0 percent between two closed quarters, Rs 2.10 crore to Rs 1.87 crore.
-
-**Why the two fair figures disagree.** Twenty Business orders carry 98.9 percent of Q1's revenue, so
-one of them landing in week 11 instead of week 12 moves a partial window by lakhs. A rate per week
-assumes revenue arrives evenly, and lumpy revenue does not. The fewer and larger the orders, the more a
-short window depends on which week they fell in, which is why closed quarters win once both are closed.
-
-**IN THE FIELD.** Retailers settled this long ago. Like-for-like, or same-store, sales compare only the
-outlets open in both periods. The US National Retail Federation's 4-5-4 calendar splits every quarter
-into 13 whole weeks of 4, 5 and 4 weeks, so comparable months hold the same number of Saturdays and
-Sundays; retailers derived it in the 1930s because a month with an extra weekend read as growth (NRF,
-4-5-4 calendar, checked 29 Sep 2026). Even perfect windows leave one thing in a quarter-on-quarter
-comparison: the season. Q1 is April to June and Q2 is July to September, monsoon, and only last year's
-Q2 would remove that. The file does not hold it, so the honest note asks the platform team for it.
-
-**WATCH OUT.** A dashboard tile is a query frozen at its last refresh, it rarely says where it was cut,
-and the tell is a last order date weeks before the quarter's last day.
-
-**CALLBACK.** Week 1, Monday said every number leaves with its definition and its window; today the
-window was worth 15 percentage points.
-
----
-
-## A rate carries its numerator, its denominator and its window
-
-Every figure on the tree today is a rate, and a stakeholder can check each of its three parts:
-the numerator, the denominator and the window. A rate without its denominator is a rumour. "Orders
-per customer fell 24.6 percent" becomes checkable when it says 114 orders over 69 customers against
-86 over 69, both over a closed 13-week quarter, and the reader sees at once that customers did not
-change, which is half of today's answer.
-
-**IN THE FIELD.** Interview guides for analysts list "Sales dropped last month. How would you
-investigate?" among the standard case questions (Brit Institute, analyst case study questions,
-checked 29 Sep 2026), and a strong answer asks which window and which denominator before offering a
-cause.
-
----
-
-## Rung 2: decompose along the tree, and let the branches multiply
-
-**The worked case.** Grouping the orders by quarter with a dictionary accumulator gives the three
-branches:
-
-| Branch | Q1 | Q2 | Change |
+| Option | Rows read | Answer | What it leaves out |
 |---|---|---|---|
-| Customers | 69 | 69 | The count did not change. |
-| Orders per customer | 114 over 69, 1.65 | 86 over 69, 1.25 | It fell 24.6 percent. |
-| Revenue per order | Rs 1,84,211 | Rs 2,17,442 | It rose 18.0 percent. |
+| A. Closed quarters as totals | 200 | minus 11.0 percent | Nothing, once both quarters have closed |
+| B. The same 11 weeks of each | 167 | minus 17.0 percent | The last two weeks of each quarter |
+| C. A rate per day or per week | 200 | minus 11.9 percent per day | Where the weeks sit, once a quarter is cut |
+| D. The same quarter last year | 0 | cannot run | Everything, until last year's export arrives |
 
-The dictionary accumulator is Monday's accumulator with a key:
+What separates them is the question each answers and what each leaves out. The call is A, because
+both quarters closed at 13 weeks each. Q2 still open would switch it to B, and a question about the
+monsoon would switch it to D and a data request.
 
-```python
-orders_by_quarter = {}
-for order in ORDERS:
-    q = order["quarter"]
-    orders_by_quarter[q] = orders_by_quarter.get(q, 0) + 1
-```
+### How far did revenue fall between the two closed quarters?
 
-Customers are counted the same way, with each `customer_id` as a key: `orders_by_customer[q][cid] =
-orders_by_customer[q].get(cid, 0) + 1`, and the number of keys is the number of customers. Monday
-checked a list of ids already seen before adding one, which means comparing against every id each
-time, so the work grows with the square of the customers. A dictionary key, like a set member, answers
-"seen before?" in one step on average (Python wiki, TimeComplexity, checked 29 Sep 2026). At 200 rows
-nobody notices; at a million orders a list-based distinct count needs about half a million million
-comparisons.
+A dictionary keyed by quarter adds revenue in one pass. Revenue fell from Rs 2,10,00,000 to
+Rs 1,87,00,000, which is Rs 23,00,000 and 11.0 percent, on two windows of 13 weeks.
 
-The product check proves the tree is complete: 1.000 times 0.754 times 1.180 is 0.890, and Rs 1.87
-crore over Rs 2.10 crore is also 0.890. When the ratios of the branches multiply back to the ratio of
-the totals, no branch is missing.
+### Why does Marketing's slide say 25.9 percent?
 
-The revenue bridge turns the same finding into rupees. Start at Q1's Rs 2,10,00,000. Customers add
-nothing. Orders per customer take away Rs 51,57,895, which is 28 fewer orders at Q1's Rs 1,84,211 each.
-Revenue per order adds back Rs 28,57,895, which is 86 orders each worth Rs 33,231 more. The bridge
-ends at Q2's Rs 1,87,00,000.
+Marketing's Q2 figure is a dashboard tile read on 15 September: Rs 1,55,59,950 against all of Q1
+gives minus 25.9 percent, with correct arithmetic. The tile holds 11 weeks against 13, and the check
+that catches it in a minute is the first and last order date of each window. The fix is the closed
+quarters, and a bridge shows where the extra fall went: the last two weeks of Q2, which the tile had
+not reached, held 16 orders and Rs 31,40,050. The fall Meera acts on shrank from Rs 54,40,050 to
+Rs 23,00,000.
 
-**The order of the steps is a choice.** The bridge above moved frequency first, at Q1's order value.
-Moving order value first gives a different split of the same Rs 23,00,000:
+### How far apart are the quarters per week, with the window stated?
 
-| Order of the steps | Orders per customer | Revenue per order |
+A rate per week puts unequal windows on one scale if it names its numerator, its denominator and its
+window: Rs 16,15,385 a week in Q1 against Rs 14,14,541 on the tile, minus 12.4 percent. It fixes the
+length of the two windows and leaves their position, so the tile's first eleven weeks still stand
+against all of Q1. Per day on the closed quarters the fall is 11.9 percent, because Q2 has 92 days and
+Q1 has 91.
+
+### What do the same eleven weeks of each quarter say?
+
+The first eleven weeks of each quarter, 1 April to 16 June against 1 July to 15 September, give
+minus 17.0 percent. That differs from the per-week minus 12.4 because a few lakh-sized Business
+orders make weeks lumpy, so which weeks a cut includes moves the answer. While a quarter is open, send
+the same weeks of both with the cut date in the sentence; once it closes, compare closed quarters.
+
+### Does adding revenue up by month give the same fall?
+
+Key the accumulator by the month in the order date instead of the quarter field, and add the months
+back: April to June give Rs 2,10,00,000 and July to September Rs 1,87,00,000, the same minus 11.0
+percent. Agreement shows that the quarter field and the dates give each quarter the same total, in
+aggregate only, since two mislabelled orders of equal value would cancel out. Use the month key once a
+question moves inside a quarter.
+
+So the drop is real: revenue fell 11.0 percent, Rs 23,00,000, between two closed quarters of 13
+weeks each, and Marketing's 25.9 percent compared 11 weeks with 13.
+
+---
+
+## Chapter 2. Which branch of the revenue tree carries the Rs 23,00,000 fall: customers, how often they buy, or what each order is worth?
+
+**Who needs the answer.** Meera decides which owner gets the problem. Customers belong to Marketing
+and cost acquisition spend; orders per customer belong to the tier and product owners, working on
+people already won; revenue per order belongs to merchandising, the team that chooses the range and
+the pack sizes; price and discounts belong to Finance with Marketing. A wrong split sends crores to the
+wrong owner for a quarter.
+
+**The questions on the way.**
+
+1. Which of four ways should split the fall between the branches?
+2. Did the number of customers fall?
+3. Which leaf of the tree moved against Kalpa?
+4. How many rupees does each branch carry, one leaf at a time?
+5. What share of orders carried a discount, once a missing discount counts as unknown?
+6. Does a split that chooses no order put the fall on the same branch?
+
+**The need.** Meera asks whether Kalpa is losing customers or whether the ones it has buy less. The
+metric is the rupees each branch carries of the Rs 23,00,000 fall.
+
+**Who else faces this.** Blinkit, the quick-commerce app, reports orders and net average order
+value, the average order after discounts, side by side: 273.9 million orders at Rs 525 in the fourth
+quarter of FY26, about Rs 14,386 crore of net order value. Walmart splits U.S. comparable sales into
+transactions and average ticket, the average spend per transaction, every quarter: in the quarter to
+31 July 2026, up 2.6 percent, made of transactions up 1.5 and ticket up 1.1.
+
+### Which of four ways should split the fall between the branches?
+
+| Option | Frequency is charged | Depends on order? |
 |---|---|---|
-| Frequency first, at Q1's order value | minus Rs 51,57,895 | plus Rs 28,57,895 |
-| Order value first, at Q1's orders | minus Rs 60,88,372 | plus Rs 37,88,372 |
-| Symmetric, the logarithmic split | minus Rs 55,88,480 | plus Rs 32,88,480 |
+| A. Leaf percentages only | no rupees, since percentages do not add | no |
+| B. A bridge in the tree's order | minus Rs 51,57,895 | yes |
+| B, with the order reversed | minus Rs 60,88,372 | yes |
+| C. A symmetric logarithmic split | minus Rs 55,88,480 | no |
+| D. Customer by customer | 69 rows to read before any total | no |
 
-Every row lands on the same total. The difference is the part of the change where both branches moved
-at once: whichever branch goes second is charged for it. The symmetric row avoids choosing, by giving
-each branch its share of the total's logarithmic change: the revenue ratio 0.890 is the product
-0.754 times 1.180, so its logarithm, minus 0.116, is the sum of minus 0.282 and plus 0.166, and each
-branch takes its part of the rupee change in that proportion (B. W. Ang, "The LMDI approach to
-decomposition analysis: a practical guide", Energy Policy, 2005, checked through Crossref 29 Sep 2026).
-Whichever row you use, frequency is the branch that cost money; what you owe Finance is the name of
-the order you used, so they can rebuild your bridge.
+The call is B with its order written beside it, because it adds exactly and a CEO can follow it, and
+in every order frequency carries the fall. A split that Finance rebuilds every month would go
+symmetric, so nobody argues about order, and "which customers?" goes to D.
 
-So the customer branch did not move and frequency fell, which is the opposite of Marketing's claim.
-The larger revenue per order softened the fall and did not cause it. The sentence to Meera gains its
-second clause:
+### Did the number of customers fall?
 
-> Customers held at 69, and orders per customer fell from 1.65 to 1.25.
+No. A dictionary of customer ids per quarter counts 69 customers in both, while orders fell from 114
+to 86.
 
-**The harder variant the room ran.** Finance counts only delivered orders. On that definition revenue
-went from Rs 1,45,04,970 to Rs 1,28,64,680, a fall of 11.3 percent; customers went from 54 to 50;
-orders per customer from 1.50 to 1.14, a fall of 24.0 percent; and revenue per order rose 26.0
-percent. Frequency still carries the fall, so the finding does not depend on which definition of
-revenue is used. One caution goes with the delivered figure: returns keep arriving after a quarter
-closes, so a delivered total for the newest quarter can only fall as they post. Lead with booked and
-give delivered with the date it was read.
+### Which leaf of the tree moved against Kalpa?
 
-**CALLBACK.** Week 1, Monday drew the tree with five leaves and said a budget moves only after the
-short branch is found; today found it.
+Orders per customer fell from 1.65 to 1.25, down 24.6 percent, while revenue per order rose from
+Rs 1,84,211 to Rs 2,17,442, up 18.0 percent. The leaves multiply: 1.000 times 0.754 times 1.180 is
+0.890, the revenue ratio. Adding the percentages would have said minus 6.6.
 
----
+### How many rupees does each branch carry, one leaf at a time?
 
-## Missing is unknown until someone decides what it means
+The bridge moves one leaf at a time to its Q2 value, customers first, holding the leaves not yet
+moved at Q1: customers Rs 0, frequency minus Rs 51,57,895, order value plus Rs 28,57,895. Marketing's
+branch carries no rupees on this file.
 
-The tree's last branch is discounts, and the file has a discount field on most orders but not all of
-them.
+### What share of orders carried a discount, once a missing discount counts as unknown?
 
-**The worked case.** Reading the field with `order["discount"]` stops on the first record that lacks
-it with `KeyError: 'discount'`, a runtime error read from its last line in two minutes. The hurried
-fix is the dangerous part.
+Meera's fourth branch is price, and Marketing's monsoon plan starts from the share of orders carrying
+a discount. Indexing the missing field raises `KeyError`, a runtime error that takes two minutes. The
+trap is what the quick fix decides: `order.get("discount", 0)` reads every blank as zero, and 50.0
+percent of Q2's orders carry a discount, 43 of 86, so Marketing extends the discount to "the other
+half". The check splits the 43 without one: 17 record Rs 0 and 26 carry no field at all. The fix
+writes the rule down, "absent means not recorded; reported separately; never counted as zero",
+reports 71.7 percent over the 60 orders that record the field, gives the range the blanks allow,
+50.0 to 80.2 percent, and bounds the branch: at Rs 150 on every Q2 order, the largest recorded, it
+holds at most Rs 12,900 of a Rs 23,00,000 fall. Discounts leave the list of causes.
 
-**The trap, and the decision it misleads.** Marketing's monsoon plan starts from one number, the
-share of orders that carry a discount. `order.get("discount", 0)` makes the error go away by reading
-every absent field as zero, and the count of orders with a discount above zero gives 42.1 percent of
-Q1's 114 orders and 50.0 percent of Q2's 86, which is 43 of them. The story writes itself: half of
-Q2's orders went without a discount, so extend the monsoon discount to the other half.
+### Does a split that chooses no order put the fall on the same branch?
 
-**Why it is wrong.** An absent field means nobody recorded a discount, which could be zero or could be
-Rs 150. Reading it as zero files every unrecorded order beside the orders where someone wrote Rs 0,
-and turns a gap in the record into a fact about the customer. The mechanism is clear on three
-invented orders: with discounts of Rs 100, Rs 0 and one with no field, the share with a discount is
-1 of 3, 33 percent, when the absent one is read as zero, and 1 of 2, 50 percent, over the two that
-recorded it.
+Yes. Split the fall symmetrically, each leaf taking a share in proportion to its logarithmic change,
+so that no order is chosen at all: frequency minus Rs 55,88,480, order value plus Rs 32,88,480,
+customers nothing. The Rs 4,30,585 between the two frequency figures is the part where frequency and
+order value moved together. Keep the bridge for Meera; go symmetric when someone rebuilds the split
+every month.
 
-**The check.** Split the orders the hurried reading called "no discount" into recorded zeros and
-records with no field, quarter by quarter. In Q1, 34 orders record Rs 0 and 32 carry no field; in Q2,
-17 record Rs 0 and 26 carry no field. Of the 43 Q2 orders read as "no discount", only 17 are known
-to have had none.
-
-**The fix.** Treat a blank as unknown, and write the rule where the next person will read it: absent
-means not recorded, it is reported separately, and it is never counted as zero. Over the orders that
-record the field, 48 of 82 carried a discount in Q1, 58.5 percent, and 43 of 60 in Q2, 71.7 percent.
-Across all orders the blanks allow a range, 42.1 to 70.2 percent in Q1 and 50.0 to 80.2 percent in
-Q2, and the hurried figure is the bottom of that range reported as the fact. "The other half" of Q2's
-orders does not exist, so the extension goes back to Marketing until someone finds which system left
-26 records blank. Then bound the branch in rupees. The largest recorded discount is Rs 150, so even if
-every Q2 order carried Rs 150, the discount branch could explain at most Rs 12,900, which is 86 times
-150, against a fall of Rs 23,00,000. The discount branch did not move revenue, and the proof needs no
-guess about the missing values.
-
-**Three ways past a missing key, and the decision each makes quietly.**
-
-| Way past it | Python's name for the style | What it decides |
-|---|---|---|
-| `if "discount" in order:` | Look before you leap, LBYL | Orders without the field are skipped |
-| `try:` with `except KeyError:` | Easier to ask forgiveness than permission, EAFP | Whatever the `except` branch does |
-| `order.get("discount", 0)` | A default | Absent becomes zero rupees |
-
-Both style names come from the Python glossary (checked 29 Sep 2026). None of the three is wrong as
-code; each one answers "what does absent mean?", and the answer needs the same written reason wherever
-it sits.
-
-**Absence is rarely random.** A field is missing because some system, channel or batch did not write
-it, and those records may sell differently from the rest, so the recorded orders may not speak for the
-missing ones. Statisticians separate values missing completely at random from values missing for a
-reason connected to the data (Donald Rubin, "Inference and missing data", Biometrika, 1976, checked
-through Crossref 29 Sep 2026). The working question is plainer: which system left it empty, and does
-that system's business look like everyone else's? The bound above is the safe move precisely because
-it needs no answer to that question.
-
-**WATCH OUT.** A default of zero is a decision that looks like no decision. The tell is a total that
-got smaller when the code was fixed.
+So the branch that moved is orders per customer, 1.65 to 1.25, which carries Rs 51,57,895 of the
+fall in the tree's order; customers held at 69, and discounts can carry at most Rs 12,900.
 
 ---
 
-## Rung 3: functions, and the segment the fall sits in
+## Chapter 3. Which of the four customer segments carries the fall in orders per customer, measured the same way for every segment and quarter?
 
-The same five numbers are now needed for four segments in two quarters, and eight copies of one loop
-are eight chances to make a different mistake, so the loop becomes a function.
+**Who needs the answer.** The head of Retail-Plus, the paid membership tier, decides whether his tier
+needs rescuing; his renewals are the metric of his job, so orders per member is his number. A wrong
+answer costs a tier nobody protects, or a quarter spent fixing one that was fine.
 
-**The worked case.** `tree_for(rows)` takes a list of orders and returns a dictionary of revenue,
-orders, customers, orders per customer and revenue per order. `describe(amounts)` returns the median,
-the smallest and largest values and the range. Run on each whole quarter, `tree_for` reproduces
-rung 2's figures exactly, which is the test a function must pass before it is trusted on anything
-new. Run on two segments, it gives:
+**The questions on the way.**
 
-| Segment and quarter | Orders | Customers | Per customer | Median order | Range |
-|---|---|---|---|---|---|
-| Retail-Core, Q1 | 38 | 34 | 1.12 | Rs 2,325 | Rs 860 to Rs 3,000, so Rs 2,140 |
-| Retail-Core, Q2 | 36 | 34 | 1.06 | Rs 2,080 | Rs 890 to Rs 2,950, so Rs 2,060 |
-| Business, Q1 | 20 | 11 | 1.82 | Rs 9,83,780 | Rs 2,03,060 to Rs 17,84,000, so Rs 15,80,940 |
-| Business, Q2 | 17 | 11 | 1.55 | Rs 9,52,000 | Rs 2,17,000 to Rs 29,45,460, so Rs 27,28,460 |
+1. Which way should compute the same numbers for eight groups: copy the loop, write a function, or
+   group by key?
+2. Does the function reproduce chapter 2's numbers?
+3. How did Retail-Core move?
+4. What did Business orders look like in Q2?
+5. How far did orders per customer fall with the segments rolled up?
+6. Does one pass grouped by quarter and segment agree with the function for all eight groups?
 
-The Business rows show why a group is described by a typical value and a spread:
+**The need.** He forwards a member's complaint about the app's reorder button and asks whether his
+tier is slipping. The same five numbers are needed for four segments in two quarters.
 
-| Business | Median | Middle half of the sorted orders | Range | Mean |
-|---|---|---|---|---|
-| Q1, 20 orders | Rs 9,83,780 | Rs 8,02,750 wide | Rs 15,80,940 | Rs 10,38,559 |
-| Q2, 17 orders | Rs 9,52,000 | Rs 9,08,000 wide | Rs 27,28,460 | Rs 10,90,674 |
-| Change | down 3.2 percent | up 13.1 percent | up 72.6 percent | up 5.0 percent |
+**Who else faces this.** Costco reports its renewal rate, the share of members who pay again for
+another year, twice: 92.3 percent in the United States and Canada and 89.8 percent worldwide at the
+end of fiscal 2025, because a blend would hide where renewals are weaker.
 
-The median needs half the orders to move before it moves; the middle half, between the first and third
-quartiles, ignores the extremes; the range is built from the two extremes and nothing else. One order
-of Rs 29,45,460 stretched the range by 72.6 percent and lifted the mean by Rs 1,15,924; without it, Q2's
-mean is Rs 9,74,750, below Q1's. A mean that rose 5 percent could be sold as "Business orders got
-bigger", and the middle half says they did not. The statistics module computes the same figures with
-`statistics.median` and `statistics.quantiles` (Python documentation, checked 29 Sep 2026).
+### Which way should compute the same numbers for eight groups: copy the loop, write a function, or group by key?
 
-A function that prints its answer instead of returning it hands back `None`: the screen looks right
-and every caller receives nothing. The Python tutorial says a function without a `return` statement
-returns `None` (Python documentation, "More Control Flow Tools", checked 29 Sep 2026).
+| Option | Lines | Places to edit | Rows read |
+|---|---|---|---|
+| A. Copy the loop per group | 72 | 8 | 1,600 |
+| B. A function, `tree_for(rows)` | 21 | 1 | 200 |
+| C. Group by a key in one pass | 14 | 1 | 200 |
 
-**The trap, and the decision it misleads.** With four segments' orders per customer in hand, the
-quick company figure is their plain average: 1.94 in Q1 and 1.82 in Q2, "frequency fell only 6.0
-percent, so it is not the branch, and Marketing may be right".
+The call is B, because the same numbers will be asked for a channel, a month and delivered orders
+before the day ends, and a function answers each with one line. Millions of rows with every group
+needed at once would switch it to C, which is `groupby` in Week 2.
 
-**Why it is wrong.** Each segment counts once in a plain average, whatever its size, so Student with
-2 customers weighs as much as Retail-Core with 34. The mechanism on invented numbers: 30 customers
-buying 1.1 times each and 2 customers buying 3.5 times each have a plain average of 2.3, while the
-32 customers placed 40 orders between them, which is 1.25 each.
+### Does the function reproduce chapter 2's numbers?
 
-**The check.** A roll-up must reproduce the total it came from. Rung 2 said 1.65 and 1.25; the plain
-average says 1.94 and 1.82, so it fails the check before anyone argues about it.
+Yes. `tree_for` returns a dictionary, so its answer can go into a table, a chart or a check, and it
+earns trust by reproducing chapter 2: 114 orders, 69 customers and 1.65 in Q1; 86, 69 and 1.25 in Q2.
 
-**The fix.** Weight by customers, which is the same as total orders over total customers: 1.65 to
-1.25, a fall of 24.6 percent, the figure rung 2 already had. The general rule is a ratio of totals,
-never a mean of ratios. Its commonest home is a report that stores each segment's average and later
-averages those averages at the next level up, silently, at every level of the hierarchy; store the
-numerators and denominators, and divide last.
+### How did Retail-Core move?
 
-**The finding.** Running `tree_for` on all four segments in both quarters shows where the fall sits:
-Retail-Plus, the paid-membership tier, where the same 22 members placed 51 orders in Q1 and 26 in Q2.
-Orders per member fell from 2.32 to 1.18, a fall of 49.0 percent. The other segments moved far less.
+`describe` returns a group's median, smallest and largest values and range. Retail-Core's 34
+customers slipped from 1.12 to 1.06 orders each, minus 5.3 percent, and its median order fell from
+Rs 2,325 to Rs 2,080.
 
-**ORIGIN.** The admissions case at the University of California, Berkeley, is the standard warning
-about rolling rates up: in fall 1973, 44 percent of men and 35 percent of women who applied were
-admitted overall, while department by department few units showed a bias against women (Bickel,
-Hammel and O'Connell, Science, 1975). The aggregate and the parts told different stories because the
-weights differed.
+### What did Business orders look like in Q2?
 
----
+Business's median barely moved, Rs 9,83,780 to Rs 9,52,000, while one order of Rs 29,45,460 widened
+the range by about 73 percent. Its 11 customers fell 15.0 percent, on three orders.
 
-## Rung 4: mix against rate, and the helper that returned nothing
+### How far did orders per customer fall with the segments rolled up?
 
-**The worked case.** Per segment, Q1 then Q2:
+Averaging the four segments' orders per customer gives 1.94 then 1.82, minus 6.0 percent on the
+unrounded figures, 1.9385 to 1.8215: "frequency
+is not the branch, Marketing may be right". A 2-customer segment votes as much as a 34-customer one.
+The check is that a roll-up must reproduce the company figure, 1.65 and 1.25, and this one does not.
+The fix is total orders over total customers, 114 over 69 then 86 over 69, minus 24.6 percent,
+counting four groups in and 69 customers back.
 
-| Segment | Customers | Orders | Orders per customer | Revenue per order |
-|---|---|---|---|---|
-| Retail-Core | 34, 34 | 38, 36 | 1.12 to 1.06, down 5.3 percent | Rs 2,117 to Rs 2,014 |
-| Retail-Plus | 22, 22 | 51, 26 | 2.32 to 1.18, down 49.0 percent | Rs 2,815 to Rs 3,012 |
-| Business | 11, 11 | 20, 17 | 1.82 to 1.55, down 15.0 percent | Rs 10,38,559 to Rs 10,90,674 |
-| Student | 2, 2 | 5, 7 | 2.50 to 3.50, up 40.0 percent | Rs 962 to Rs 1,104 |
+### Does one pass grouped by quarter and segment agree with the function for all eight groups?
 
-Counted in orders, Retail-Plus is 25 of the 28 orders lost, which is 89 percent. Counted in rupees,
-the picture changes: Business accounts for Rs 22,29,720 of the Rs 23,00,000 fall, 97 percent, while
-Retail-Plus accounts for Rs 65,250. Among the consumer segments, which fell from Rs 2,28,820 to Rs
-1,58,540, Retail-Plus is Rs 65,250 of the Rs 70,280 fall, or 93 percent. Inside Retail-Plus, the
-members who ordered three times in Q1 now order once: in Q1, 3 members ordered once, 9 twice and 10
-three times; in Q2, 18 ordered once, 4 twice and none three times. Every member still bought.
+Yes. One pass over the 200 orders, adding into `totals[(quarter, segment)]`, gives the same revenue,
+orders and customers as `tree_for` for all eight groups. It prints agreement and no segment's
+numbers. Keep the function while groups are asked for one at a time; switch to the pass by key when
+every group is needed at once on a large file.
 
-**Mix against rate.** An overall rate is a weighted blend of the segments' rates, so it moves when the
-rates move and also when the weights move. Hold each segment's Q1 revenue per order fixed and apply
-Q2's mix of orders, and revenue per order would have been Rs 2,07,112. Mix therefore explains Rs 22,902
-of the Rs 33,231 rise, about 69 percent, and the change within segments explains Rs 10,330. The order
-shares show why: Retail-Plus fell from 44.7 to 30.2 percent of orders, and Business rose from 17.5 to
-19.8 percent. Revenue per order rose mainly because small Retail-Plus orders disappeared, and only about a
-third of the rise came from orders getting larger inside a segment.
-
-**The trap, and the decision it misleads.** A colleague's helper from last quarter:
-
-```python
-def pct_change(before, after):
-    change = 100 * (after - before) / before
-    if abs(change) > 30:
-        print(f"  check by hand: {change:+.1f}%")
-    else:
-        return round(change, 1)
-```
-
-The summary built on it keeps the segments whose change is negative, and it reports Retail-Core at
-minus 5.3 and Business at minus 15.0: "orders per customer fell in every segment, most in Business,
-15.0 percent". Business accounts get the attention first, and the head of Retail-Plus is told his
-tier is not in the table.
-
-**Why it is wrong.** For any change over 30 percent the helper prints a line and returns `None`, and
-the filter drops `None` without complaint. Two lines, "check by hand: -49.0%" and "check by hand:
-+40.0%", scroll past with no segment name beside them. Retail-Plus and Student are gone.
-
-**The check.** Count the groups in and the ones that came back with no number: four segments went in
-and two came back as `None`, which `None in changes.values()` answers in one line. Then compare the
-falls table with the helper fixed: three rows against the broken two. The bug dropped one fall,
-Retail-Plus; Student rose 40.0 percent, so the filter for falls leaves it out either way.
-
-**The fix.** Return the change every time, and put the flag in a separate column, so a large change
-is reported and marked instead of silently removed.
-
-**WATCH OUT.** A summary shorter than its input is the tell. Any time a table has fewer rows than
-the groups that went into it, find out where the missing ones went before reading the rest.
+So Retail-Core fell 5.3 percent and Business 15.0, neither near the company's 24.6, and the weighted
+roll-up puts the rest in the two segments your own run of all four opens; that run names where orders
+per member fell furthest.
 
 ---
 
-## Rung 5: a cause is a hypothesis with its evidence
+## Chapter 4. Revenue per order rose 18 percent while revenue fell: did customers pay more, or did the mix of orders change?
 
-The second case put two voices against the same numbers, and the job was to say what each claim
-would need.
+**Who needs the answer.** Meera and Finance decide whether a price rise goes into the plan, on
+Marketing's reading of the 18 percent. A wrong reading raises prices on customers who never paid
+more, and costs volume in the tier whose orders already halved.
 
-**Marketing's first pushback.** "A flat count can hide churn replaced by new customers, which is why
-we need acquisition." This is a fair objection, because 69 and 69 could be 10 lost and 10 new. The
-check is the overlap of customer ids: every one of the 69 Q2 customers also bought in Q1, so none
-were lost and none were new. The acquisition branch did not move.
+**The questions on the way.**
 
-**Marketing's second pushback.** "Retail-Plus is Rs 65,250 out of a Rs 23 lakh fall; it does not
-matter." The answer puts both measures on the table: Retail-Plus is 93 percent of the consumer fall
-and 25 of the 28 lost orders, and every one of its 22 members bought less often, while the rupee fall
-in Business rests on three orders out of twenty, each worth lakhs, which is too few orders to call a
-trend.
+1. Which of four readings can put rupees on "customers paid more" and on "the mix changed"?
+2. How many of the 28 lost orders were Retail-Plus?
+3. Did any segment's own revenue per order rise 18 percent?
+4. Did customers pay 18 percent more, or did the mix move the blend?
+5. What is the rate part made of?
+6. Does a back-of-envelope split, Business against everyone else, put the same share of the rise on
+   the mix?
 
-**The head of Retail-Plus.** "It is the broken reorder button." Two tests use data already in the
-file. On timing, Retail-Plus placed 14, 24 and 13 orders in April, May and June, and 9, 9 and 8 in
-July, August and September. A complaint that the feature has been broken for six weeks dates the break
-to late August, and the fall had already begun in July. Retail-Plus placed 18 orders from 1 July to 24
-August and 8 from 25 August to 30 September, so whether the break deepened the fall rests on eight
-orders, which is Thursday's kind of question. On channel, Retail-Plus orders fell on every channel,
-web from 24 to 9, store from 14 to 9 and app from 13 to 8. A cause confined to the app would have shown
-the app falling first and alone, and it did not. Retail-Core, the comparison segment, ran 13, 12, 13,
-12, 12 and 12 orders a month, flat across both quarters.
+**The need.** Your run showed Retail-Plus: the same 22 members placed 26 orders in Q2 against 51 in
+Q1. Marketing reads the 18 percent rise in revenue per order as customers paying more. Revenue per
+order is a blend across segments whose orders differ several hundredfold: a Q1 Business order averaged
+Rs 10,38,559 and a consumer order Rs 2,434.
 
-**Two hypotheses, each with the evidence that would settle it.**
+**Who else faces this.** Swiggy reported the average order value of Instamart, its quick-commerce
+store, up 14 percent in a quarter to Rs 697 in the quarter to September 2025, and put it down to
+non-grocery categories and large packs taking a larger share of gross order value, the value of
+orders before discounts. The average order grew because the mix of what people bought moved.
 
-| Hypothesis | The evidence that would settle it |
-|---|---|
-| The broken reorder feature cut members' orders. | The app's reorder events and failures by week, the date of the release that broke it, and whether members who used reorder in Q1 fell further than those who did not. |
-| Something changed for members in July. | The tier's change log for benefits, prices and delivery terms, the renewal record, and members' support tickets by week. |
+### Which of four readings can put rupees on "customers paid more" and on "the mix changed"?
 
-Neither can be settled from this file, and saying which data to ask for is part of the answer. The
-sentence to Meera is now whole:
+A, the blended change, gives the size and no cause; B, each segment's own revenue per order, says
+whether any segment paid more; C, the split of the rise into mix and rate, puts rupees on each and
+makes them add to the Rs 33,231 rise; D, each segment's median order, gives the typical order and no
+rupees. The call is C, built on B. Segments of similar order size, or shares that held, would make
+mix negligible and B enough.
 
-> Revenue fell 11.0 percent between two closed quarters, Rs 2.10 crore to Rs 1.87 crore on the export
-> as it stands. Customers held at 69, and every one of them bought in both quarters, so acquisition is
-> not the branch that moved; orders per customer fell from 1.65 to 1.25. In behaviour the fall sits in
-> Retail-Plus, where the same 22 members placed 26 orders against 51; in rupees most of it is three
-> fewer Business orders, which tomorrow's reconciliation checks before anyone acts. The broken reorder
-> feature is a hypothesis: the fall began in July, before the break the complaint dates, so we are
-> asking for the app's reorder logs.
+### How many of the 28 lost orders were Retail-Plus?
+
+Twenty-five. Retail-Plus lost 25 orders, Business 3 and Retail-Core 2, while Student gained 2. The
+orders that vanished were about three thousand rupees each.
+
+### Did any segment's own revenue per order rise 18 percent?
+
+No. Retail-Core fell 4.9 percent, Retail-Plus rose 7.0, Business 5.0 and Student 14.8, so the blend
+rose further than any segment in it.
+
+### Did customers pay 18 percent more, or did the mix move the blend?
+
+"Revenue per order rose 18.0 percent, so customers pay 18 percent more" would put a price rise on
+the tier whose orders already halved. The check is the per-segment table: no segment rose 18
+percent. The fix prices Q2's order mix at Q1's segment rates, which gives Rs 2,07,112, so the mix
+explains Rs 22,902 of the rise, about 69 percent, and the rate inside segments Rs 10,330, which leaves
+the price rise without the evidence it rested on. Retail-Plus fell from 44.7 to 30.2 percent of
+orders.
+
+### What is the rate part made of?
+
+Almost all Business: Rs 10,302 of the Rs 10,330, from 17 orders that each grew about Rs 52,000 on
+average, one large order driving it, as chapter 3's range showed. The consumer segments' own revenue
+per order moved by a few hundred rupees at most.
+
+### Does a back-of-envelope split, Business against everyone else, put the same share of the rise on the mix?
+
+Yes. Business's share of orders rose from 17.5 to 19.8 percent, and a Q1 Business order was worth
+Rs 10,36,125 more than a consumer order, so the mix is about Rs 23,000, 69.3 percent of the rise. The
+envelope uses no consumer rate, so it could have disagreed with the four-segment split, and it lands
+within one percent. Report the four-segment split, which names each segment.
+
+So customers did not pay more in any way that matters: about 69 percent of the rise in revenue per
+order is mix, the small member orders that left, and most of the rest is Business's lakh-sized
+orders.
 
 ---
 
-## Where this shows up in the work
+## Chapter 5. Marketing says the flat count hides customers lost and replaced: were any lost, who slowed instead, and which segment fell most?
 
-**A leadership review with a budget waiting on the answer.** A fall is on the first slide and a spend
-is proposed to fix it. The first deliverable is the matched comparison and the tree, because a Rs 12
-crore bet on the wrong branch costs more than a day of checking.
+**Who needs the answer.** Meera decides whether to release the Rs 12 crore acquisition budget, which
+Marketing now rests on churn, customers who stop buying, hiding in a flat count. A wrong answer spends
+crores replacing customers who never left, while the ones who slowed keep slowing.
 
-**A segment owner who wants a yes or a no.** The head of a tier asks whether his tier is slipping.
-The answer carries both measures, orders and rupees, and says which one is being quoted, because a
-segment can be small in rupees and still be where customer behaviour changed.
+**The questions on the way.**
 
-**A summary table built by someone else's code.** A table arrives with fewer rows than the segments
-that went in. The first move is to count groups in and groups out, and the second is to read any
-helper the table depends on for a branch that prints instead of returning.
+1. Which of four tests can see customers lost and customers new?
+2. How many of Q1's 69 customers are missing from Q2?
+3. Who placed fewer orders in Q2?
+4. Which segment's orders per customer fell most?
+5. Is Retail-Plus too small to matter at Rs 65,250?
+6. Do each customer's first and last order dates find anyone lost or new?
+
+**The need.** Marketing pushes back three ways: a flat count can hide churn replaced by new
+customers; Retail-Plus is Rs 65,250 of a Rs 23 lakh fall; and last quarter's summary script says
+Business fell most. The metric is retention and its mirror, new customers.
+
+**Who else faces this.** Harvard Business Review summarised the studies behind the retention
+argument: acquiring a customer costs 5 to 25 times more than retaining one, and Bain's Frederick
+Reichheld found a 5 percent rise in retention lifting profits 25 to 95 percent. Those are estimates
+across industries and say nothing about Kalpa's own costs, so the reply asks Finance for Kalpa's own
+acquisition cost. Swiggy
+reports its users and their frequency apart: in the quarter to September 2025 its monthly transacting
+users, the people who ordered at least once in a month, rose 34.0 percent to 22.9 million while orders
+per user a month fell from 4.53 to 4.10, a growing count beside a falling frequency that new users
+alone could produce.
+
+### Which of four tests can see customers lost and customers new?
+
+A, compare the counts, cannot see churn because a count is net; B, the overlap of ids as sets, names
+lost and new; C, customer by customer, also names who slowed; D, sign-ups from Marketing's CRM, its
+customer database, sees only new customers, from a second system. The call is B, then C. One person
+holding a store id and an app id would make the overlap invent churn, and the ids would need joining
+first.
+
+### How many of Q1's 69 customers are missing from Q2?
+
+None. The overlap is 69 in both quarters, none only in Q1, none only in Q2.
+
+### Who placed fewer orders in Q2?
+
+Customer by customer, 23 placed fewer orders in Q2 and 18 of them are Retail-Plus members; 44
+ordered exactly as often as before.
+
+### Which segment's orders per customer fell most?
+
+Retail-Plus, 2.32 to 1.18, minus 49.0 percent. The summary script runs cleanly and prints
+`{'Retail-Core': -5.3, 'Business': -15.0}`, "most in Business". Its helper prints a warning for any
+change above 30 percent and returns nothing, so Python hands back `None`, and `if ch and ch < 0`
+drops every `None` without a word. Retail-Plus is exactly the change the script was written to flag,
+and it vanished. The check counts groups in and out: four in, two back. The fix returns the change
+every time and puts the flag in its own column: Retail-Plus minus 49.0 percent, Business minus 15.0
+on three orders, Student plus 40.0.
+
+### Is Retail-Plus too small to matter at Rs 65,250?
+
+No. Business orders run to lakhs, so a consumer segment is judged against the consumer business:
+Rs 2,28,820 to Rs 1,58,540, a fall of Rs 70,280, of which Retail-Plus is Rs 65,250, 93 percent, and 25
+of the 28 lost orders. The rupee fall in Business is three orders out of twenty, each worth lakhs, so
+one account ordering early or late moves it by lakhs.
+
+### Do each customer's first and last order dates find anyone lost or new?
+
+No one. Every first order in the export falls in Q1 and every last order in Q2, so none is new and
+none lost, from the dates alone and without the quarter field. The route could have disagreed with
+the overlap, and it adds a warning the overlap cannot: a first order in this export is only the
+first since 1 April.
+
+So no customer was lost and none is new. Twenty-three existing customers bought less often, 18 of
+them members, and Retail-Plus fell 49.0 percent per member while the broken script said Business.
 
 ---
 
-## Try this yourself
+## Chapter 6. How much of the Retail-Plus fall can the broken reorder button explain, and what evidence goes in Meera's memo?
 
-No writing: pick a letter for each, then check the key.
+**Who needs the answer.** The head of Retail-Plus and engineering decide what to fix first, and Meera
+decides what the board hears as the cause. Blame the button for everything and the tier keeps falling
+for a reason nobody looked for; dismiss it and members keep failing to reorder.
 
-1. Q1 covers 13 weeks and the Q2 tile covers 11. The fair comparison is: a) the two totals; b) the
-   two totals adjusted by 10 percent; c) closed quarters, or a rate per week on both; d) the two
-   medians.
+**The questions on the way.**
+
+1. Which of four tests of a cause run today, and in which order?
+2. When did Retail-Plus orders drop below every Q1 month?
+3. How many orders can the button have cost the tier?
+4. Could a season that hit every customer explain the fall?
+5. Did only the app channel fall, as a broken app feature predicts?
+6. Does a pace corrected by Retail-Core's own change stay inside the ceiling?
+
+**The need.** The head of Retail-Plus says the broken reorder button, six weeks old, caused the fall;
+Meera wants one page of what we know and what we guess. The metric is Retail-Plus orders per week
+before and after the break, taken at the complaint's word as 25 August.
+
+**Who else faces this.** Sonos rolled out a redesigned app in 2024; its chief executive said the
+app's rollout had required it to reduce its fiscal 2024 guidance, the revenue it had told investors to
+expect, and its annual report set out short-term costs of up to $30 million to fix it.
+
+### Which of four tests of a cause run today, and in which order?
+
+A, before and after the break, can rule out the button as the whole story; B, a comparison segment,
+Retail-Core, can rule out a season that hit everyone; C, the channel the cause predicts, can rule out
+an app-only cause; D, the app's reorder logs, is a data request that settles it later. The call is A,
+B and C now, timing first, and D requested today. A break date earlier than the complaint says would
+flip A's verdict.
+
+### When did Retail-Plus orders drop below every Q1 month?
+
+In July, before the break. A counting function that takes any key, `count_by(rows, key)`, is chapter
+1's accumulator grown: by month, Retail-Plus placed 9 orders in July against at least 13 in every Q1
+month, while Retail-Core held level.
+
+### How many orders can the button have cost the tier?
+
+The hurried memo charges the button with the tier's whole quarter: 51 orders to 26, so "the button
+cost 25 orders and Rs 65,250". Engineering fixes it, recovers a handful, and the real problem runs
+another quarter. The check splits Q2 at the break and gives each side its window: 3.92 orders a week
+in Q1, 2.29 before the break, 1.51 after. The fix charges the button with no more than the fall after
+the break beyond the pace already set: at 18 orders in the 55 days before the break, the 37 days after
+would have carried about 12.1 orders, and the tier placed 8, so the button explains at most about 4
+orders, about Rs 12,400.
+
+The ceiling rests on its baseline. Over only the 37 days just before the break, 19 July to 24 August,
+the tier placed 15 orders; at that pace the 37 days after would have carried 15, and the ceiling is
+7.0. Either way it sits far below the 25 orders the hurried memo charges, so the call holds, and the
+memo names the baseline it used, the 55 days.
+
+### Could a season that hit every customer explain the fall?
+
+Not one that hit every customer. Retail-Core kept 95 percent of its Q1 orders against Retail-Plus's 51, so a season that hit
+everyone does not fit. A season that hit members harder still fits, and last year's Q2 by segment
+tests it.
+
+### Did only the app channel fall, as a broken app feature predicts?
+
+No. Every Retail-Plus channel fell, web 24 to 9, store 14 to 9, app 13 to 8, so an app-only cause does
+not fit; something touched members in every channel.
+
+### Does a pace corrected by Retail-Core's own change stay inside the ceiling?
+
+Yes. Retail-Core placed 22 orders in the 55 days before 25 August and 14 in the 37 after, a pace
+0.946 of what it had been. Scaled by that, the tier's expected 12.1 becomes 11.5 against 8 placed,
+about 3.5 orders, which lands inside the ceiling of about 4, as a ceiling should. Write the ceiling in
+the memo; bring the corrected route when someone argues for the season.
+
+### What goes in Meera's memo, and what settles each hypothesis?
+
+The memo's claim, as it goes to Meera and the head of Retail-Plus: "Revenue fell 11.0 percent between two closed quarters, Rs 2.10 crore to Rs 1.87 crore
+on the export as it stands. Customers held at 69, all of them buying in both quarters, so acquisition
+is not the branch that moved; orders per customer fell from 1.65 to 1.25. In behaviour the fall sits
+in Retail-Plus, where the same 22 members placed 26 orders against 51, and revenue per order rose
+mainly because those small orders disappeared. In rupees most of the fall is three fewer Business
+orders, each worth lakhs, so one account's timing moves it by lakhs. The fall began in July, before the
+button broke, and hit every channel, so the button explains at most about 4 orders on the tier's
+pace over the 55 days before the break. Two hypotheses
+remain: the button deepened the fall after 25 August, settled by the reorder logs by week and the
+release date; and something changed for members in July, settled by the tier's change log, renewals
+and support tickets. Last year's Q2 by segment rules the season in or out."
+
+So the button can explain at most about 4 of the tier's 25 lost orders on the 55-day baseline, 7.0
+on the shorter one. The fall began in July and hit every channel, and the memo hands over two
+hypotheses with the data that settles each.
+
+---
+
+## Did the story survive delivered orders and Marketing's new deck?
+
+**Who needs the answer.** Meera, whose board pack counts only the orders that reached customers and
+stayed, needs to know whether the branch and the segment hold on that definition; the head of
+Retail-Plus needs to know whom to call first, while Marketing's new deck asks him to call his tier
+healthy. A wrong answer sends the board a story that changes with the definition, or spends the
+tier's calls on the wrong members.
+
+**The questions on the way.**
+
+1. Does the story survive when revenue counts only delivered orders?
+2. Does Marketing's new deck hold, and whom does the tier call first?
+
+### Does the story survive when revenue counts only delivered orders?
+
+The escalated case reruns the ladder alone on delivered orders, the board's definition: orders
+that reached the customer and were not returned. The drop survives, minus 11.3 percent; frequency
+still carries the most rupees; Retail-Plus falls 42.6 percent per member. One branch moves that held
+on booked orders: customers with a delivered order fall from 54 to 50. All 19 who left the delivered
+count booked again in Q2 and had those orders cancelled or returned, so the branch is cancellations
+and returns, to be split by reason between the teams that deliver orders and the teams that own the
+product, and acquisition still has nothing to replace. On delivered orders the mix explains 44
+percent of the rise in revenue per order, with Business's larger delivered orders carrying the rate.
+
+### Does Marketing's new deck hold, and whom does the tier call first?
+
+The second case takes Marketing's new deck apart in pairs. The members' 7 percent more per order
+is one leaf, and the tier's leaves multiply to 1.000 times 0.510 times 1.070, about 0.55, so its
+revenue fell about 45 percent; counted directly, Q2's tier revenue is 0.545 of Q1's. The web claim
+fails because Retail-Core's web orders held at 13 and 12 on the same website, and the tier's call list
+starts with the 7 members who went from three orders a quarter to one.
+
+---
+
+## Can you answer six questions without writing?
+
+Pick a letter for each, then check the key.
+
+1. Q1 covers 13 weeks and the Q2 tile covers 11, and Q2 is still open. The fair comparison is: a) the
+   two totals as they stand, since both are called quarters; b) the two totals, with Q2 scaled up by 13
+   over 11; c) the same weeks of both, with a rate per week beside them; d) the two medians, since a
+   median is moved by neither the calendar nor a large order.
 2. Customers are flat and orders per customer fell 24.6 percent. Marketing's acquisition plan targets:
-   a) the branch that moved; b) the branch that did not move; c) revenue per order; d) discounts.
+   a) the branch that moved, since frequency needs new customers; b) the branch that did not move,
+   since customers held at 69; c) revenue per order, which rose 18 percent; d) discounts, which half
+   the orders seemed to lack.
 3. Four segments average 1.94 orders per customer, and the company figure is 1.65. The difference
-   comes from: a) rounding; b) a missing field; c) a bad window; d) weights, since small segments
-   count once each.
+   comes from: a) rounding, since each segment's rate is shown to two decimals; b) a missing field that
+   drops some orders; c) a window cut short on one quarter; d) weights, since small segments count once
+   each.
 4. A function prints its result and has no `return`. A variable set to its call holds: a) the printed
-   text; b) `None`; c) zero; d) an error.
+   text, as a string; b) `None`, the value of no return; c) zero, the default for a number; d) an
+   error, raised at the call.
 5. Some orders carry no discount field. In the share of orders with a discount they count as: a) no
-   discount; b) the average discount; c) unknown, reported separately; d) the largest discount.
+   discount, so zero rupees each; b) the average discount of the recorded orders; c) unknown, reported
+   separately; d) the largest discount anyone recorded.
 6. From Monday: the mean order doubled and the median did not move. The first check is: a) read the
-   top of the sorted list; b) recount the customers; c) change the window; d) drop the largest order.
+   top of the sorted list; b) recount the customers, since the mean divides by them; c) change the
+   window to the full quarter; d) drop the largest order and recompute.
 
-Key: 1c 2b 3d 4b 5c 6a. If you missed 1, reread rung 1; 2, rung 2; 3, the roll-up in rung 3; 4, the
-functions in rung 3; 5, the section on missing values; 6, Monday's notes on the average that lies.
+Key: 1c 2b 3d 4b 5c 6a. If you missed 1, reread chapter 1; 2, chapter 2; 3, chapter 3's roll-up; 4,
+chapter 5's summary script; 5, chapter 2's discount; 6, Monday's notes on the average that lies.
 
 ---
 
-## Where this gets tested
+## How do interviewers ask about a sales drop, and what does a strong answer say?
+
+The tags mark how often a question comes up: [S] a staple asked everywhere, [F] frequent in GCC and
+product screens, [SV] a service-major screen opener, [D] a differentiator.
 
 **1. [S] Sales dropped 15 percent last month; how would you investigate?** Tested: order before
 opinion. Strong: confirm the drop on matched windows and one definition; decompose along the tree into
@@ -569,11 +654,10 @@ difference between showing and handing back. Strong: printing sends text to the 
 from the summary; return the value and let the caller decide what to print. Weak: "printing is slower".
 
 **4. [F] What has to match before a quarter-on-quarter comparison is fair?** Tested: like with like.
-Strong: the same length of window or a rate per week or per day, the same definition of revenue, the
-same segments, and the same denominators; once a quarter closes, compare closed quarters; and say that
-a quarter-on-quarter comparison still carries the season, which only the same quarter last year
-removes. Weak:
-comparing whatever totals the dashboard shows.
+Strong: the same weeks on both sides, which means closed quarters once both have closed and, while
+one is open, the same weeks of each with a rate per week beside them; the same definition of revenue,
+the same segments, and the same denominators; and say that a quarter-on-quarter comparison still
+carries the season, which only the same quarter last year removes. Weak: comparing whatever totals the dashboard shows.
 
 **5. [D] Marketing insists the answer is acquisition and your data says frequency; how do you make the
 case in the room?** Tested: judgement under pressure. Strong: agree the goal, show the tree with
@@ -590,8 +674,9 @@ together.
 
 **7. [F] Revenue per order rose 18 percent while revenue fell; did prices go up?** Tested: mix against
 rate. Strong: not necessarily, since an average across segments moves when the mix of orders moves;
-hold each segment's rate fixed at the old mix to separate the two, and here about 69 percent of the rise
-came from small Retail-Plus orders disappearing. Weak: "yes, prices went up".
+price the later period's mix at the earlier period's segment rates to separate the two, and here
+about 69 percent of the rise came from small Retail-Plus orders disappearing. Weak: "yes, prices went
+up".
 
 **8. [S] A field is missing on some records; do you fill it with zero?** Tested: missing against zero.
 Strong: only if absent truly means zero and someone has written that down; otherwise report the count
@@ -608,40 +693,46 @@ Tested: counts against identities. Strong: no, since losses can be replaced by n
 same count; compare the sets of customer ids to count lost, retained and new. Weak: "yes, the number
 did not change".
 
-**11. [D] The fall is in rupees in one segment and in behaviour in another; which do you put in front
-of the CEO first?** Tested: judging what the decision needs. Strong: put both, each labelled, and
-lead with the one that is actionable and stable; a rupee fall resting on three large orders is thin
-evidence of a trend, while every member of a tier halving their orders is a pattern, so name each with
-its size and its caveat. Weak: choosing the bigger rupee number without saying how many orders it rests
-on.
+**11. [D] The design question: the same metrics are needed for every segment and quarter; do you
+copy the code, write a function or group by a key?** Tested: sizing a choice. Strong: a function when
+groups are asked one at a time and the definition may change, since there is one place to edit and it
+answers any subset; one pass by key when the file is large and every group is needed at once; copying
+means eight edits and one forgotten. Weak: "a function, because it is cleaner", with no cost named.
 
 **12. [D] A stakeholder hands you a cause; how do you test it with the data you have and name the data
-you need?** Tested: hypothesis discipline. Strong: restate the cause as a hypothesis, test what the
-file can test, which is timing against the fall and whether the channel the cause lives in fell first
-and alone, and then name the data that would settle it, such as event logs and release dates. Weak:
-accepting or rejecting the cause on instinct.
+you need?** Tested: hypothesis discipline, with an order of tests and a point to stop. Strong: restate
+the cause as a hypothesis and test what the file can test, timing first because it is cheap and can
+rule a cause out, then a comparison group and whether the channel the cause lives in fell first and
+alone; stop when the export can only cap the cause, here at about 4 orders on the 55-day baseline and
+7.0 on the 37 days before the break, and name the data that would settle it, such as event logs and
+release dates. Weak: accepting or rejecting the cause on instinct, or running every test at once.
 
 ---
 
-## Glossary
+## What do the day's words mean?
 
 | Term | What it means here | Where it appeared | Example |
 |---|---|---|---|
-| Matched windows | Two periods of the same length compared, or both turned into a rate | Round 1; notebook 01 | Two closed 13-week quarters, a fall of 11.0 percent |
-| Rate | A numerator over a denominator in a stated window | Round 1; notebook 01 | Rs 16,15,385 a week in Q1 |
-| Like-for-like | A comparison that holds the outlets, the weeks and the weekends equal | Round 1; the retail calendar | Two closed 13-week quarters |
-| Decomposition | A change split along the tree into branches that multiply | Round 2; notebook 02 | 1.000 times 0.754 times 1.180 is 0.890 |
-| Bridge | A change in rupees moved one branch at a time from start to end | Round 2; notebook 02 | Orders per customer took away Rs 51,57,895 |
-| Middle half | The spread between the first and third quartiles of the sorted values | Round 3; `describe` | Business, Rs 8,02,750 wide in Q1 |
-| Default | The value used when a field is absent, with its written reason | Round 2; notebook 02 | Absent discount reported separately, never counted as zero |
-| Function | A named block that takes inputs and returns one answer | Round 3; notebook 03 | `tree_for(rows)` returns a dictionary of the tree |
-| Weighted roll-up | A company rate built from totals, so each group counts by its size | Round 3; notebook 03 | 114 orders over 69 customers is 1.65 |
-| Mix against rate | An overall rate split into a change of weights and a change inside groups | Escalated case; notebook 04 | Mix explains about 69 percent of the rise in revenue per order |
-| Hypothesis | A named cause stated with the evidence that would settle it | Second case; notebook 05 | The reorder feature, settled by the app's reorder logs |
+| Matched windows | Two periods of the same length compared, or both turned into a rate | Chapter 1 | Two closed 13-week quarters, a fall of 11.0 percent |
+| Rate | A numerator over a denominator in a stated window | Chapter 1 | Rs 16,15,385 a week in Q1 |
+| Like-for-like | A comparison that holds the outlets, the weeks and the weekends equal | Chapter 1; DMart, Target, NRF | Two closed 13-week quarters |
+| Decomposition | A change split along the tree into branches that multiply | Chapter 2 | 1.000 times 0.754 times 1.180 is 0.890 |
+| Bridge | A change in rupees moved one branch at a time from start to end | Chapter 2 | Orders per customer took away Rs 51,57,895 |
+| Range | The largest value less the smallest, set by two orders alone | Chapter 3; `describe` | Business, Rs 15,80,940 in Q1 |
+| Mix | Each segment's share of orders | Chapter 4 | Retail-Plus, 44.7 to 30.2 percent of orders |
+| Rate part | The change inside segments, mix held still | Chapter 4 | Rs 10,330 of the Rs 33,231 rise |
+| Default | The value used when a field is absent, with its written reason | Chapter 2 | Absent discount reported separately, never counted as zero |
+| Function | A named block that takes inputs and returns one answer | Chapter 3 | `tree_for(rows)` returns a dictionary of the tree |
+| Weighted roll-up | A company rate built from totals, so each group counts by its size | Chapter 3 | 114 orders over 69 customers is 1.65 |
+| Mix against rate | An overall rate split into a change of weights and a change inside groups | Chapter 4 | Mix explains about 69 percent of the rise in revenue per order |
+| Hypothesis | A named cause stated with the evidence that would settle it | Chapter 6 | The reorder feature, settled by the app's reorder logs |
+| Ceiling | The most a cause could explain, given what else was already moving | Chapter 6 | The button, at most about 4 orders on its stated baseline |
+| Id overlap | Customer ids in both periods, only the first, only the second | Chapter 5 | 69, 0 and 0 |
+| Second route | The same answer reached by an independent method, one that could have disagreed | Every chapter | The symmetric split puts the fall on frequency, as the bridge did |
 
 ---
 
-## Go deeper
+## What should you read next, and in what order?
 
 | Order | What | Time | Why this one |
 |---|---|---|---|
@@ -656,5 +747,23 @@ accepting or rejecting the cause on instinct.
 | 9 | Python documentation, the statistics module, `median`, https://docs.python.org/3/library/statistics.html (verified 29 Sep 2026) | 5 minutes | The library median to check your own against |
 | 10 | Harvard Business Review, Amy Gallo, "The Value of Keeping the Right Customers", https://hbr.org/2014/10/the-value-of-keeping-the-right-customers (verified 29 Sep 2026) | 5 minutes | What each branch costs to move |
 | 11 | National Retail Federation, the 4-5-4 calendar, https://nrf.com/resources/4-5-4-calendar (verified 29 Sep 2026) | 5 minutes | How retailers keep periods comparable |
-| 12 | Python documentation, glossary, EAFP and LBYL, https://docs.python.org/3/glossary.html (verified 29 Sep 2026) | 5 minutes | The two styles for meeting a missing key |
-| 13 | Python wiki, TimeComplexity, https://wiki.python.org/moin/TimeComplexity (verified 29 Sep 2026) | 10 minutes | Why a dictionary key beats a list scan |
+| 12 | Costco, fourth quarter fiscal 2025 results (renewal rates), https://www.sec.gov/Archives/edgar/data/909832/000090983225000093/costex9928-k92525.htm (verified 30 Sep 2026) | 5 minutes | A blended rate reported beside its segment |
+| 13 | Walmart, earnings release for the second quarter of fiscal 2027, https://stock.walmart.com/_assets/_921ff28c537145729fbc2553b7f43fac/walmart/db/938/9996/earnings_release/Earnings+Release+(FY27+Q2).pdf (verified 30 Sep 2026) | 10 minutes | Transactions and average ticket, the tree in a results table |
+| 14 | Swiggy, Q2 FY2026 shareholder letter, https://www.swiggy.com/corporate/wp-content/uploads/2025/10/Q2-FY2026-Shareholder-letter.pdf (verified 30 Sep 2026) | 10 minutes | An order value that rose on its mix, said as a mix |
+| 15 | Target, fourth quarter and full year 2023 results, https://corporate.target.com/press/release/2024/03/target-corporation-reports-fourth-quarter-and-full-year-2023-earnings (verified 30 Sep 2026) | 5 minutes | A 53-week year and comparable periods of equal length |
+| 16 | Sonos, third quarter fiscal 2024 results, https://investors.sonos.com/news-and-events/investor-news/latest-news/2024/Sonos-Reports-Third-Quarter-Fiscal-2024-Results/ (verified 30 Sep 2026) | 5 minutes | A company tying its reduced guidance to a broken app, in its own results |
+
+---
+
+## So which branch moved from Q1 to Q2?
+
+Orders per customer. Revenue fell 11.0 percent between two closed quarters, Rs 2,10,00,000 to
+Rs 1,87,00,000. Customers held at 69, every one of them buying in both quarters, so acquisition has no
+lost customer to replace; orders per customer fell from 1.65 to 1.25, which carries Rs 51,57,895 of
+the fall in the tree's order. In behaviour the fall sits in Retail-Plus, where the same 22 members
+placed 26 orders against 51; in rupees most of it is three fewer Business orders, each worth lakhs,
+which one account's timing moves. Revenue per order rose mainly because those small member orders
+left, about 69 percent of the rise being mix. The fall began in July, before the reorder button broke,
+so the button explains at most about 4 orders on the 55 days before the break, or 7.0 on the 37 days
+just before it, and the memo asks for the tier's July change log, the app's reorder logs and last
+year's Q2 by segment.

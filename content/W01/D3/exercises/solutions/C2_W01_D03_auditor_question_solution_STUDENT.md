@@ -1,31 +1,117 @@
-# Solution: the second case, the auditor's question
+# Which answers hold in the second case on the auditor's 14 rows, and why?
 
-Answers: 1c 2a 3d 4b 5c
+Answers: 1b 2c 3a 4d 5c
 
-The notebook's own letters, in order, are in its solution twin,
-`exercises/solutions/C2_W01_D03_ex2_auditor_solution_STUDENT.ipynb`: 1b 2a 3b 4b 5c.
+The internal auditor on Kalpa Retail's finance team asks why 14 Q1 rows were set aside from the
+export of orders out of the ERP, the enterprise resource planning system Finance books orders in, and
+how she can know nothing else went, and the team answers from its log and from its reconciliation to
+the books, Finance's own record of Q1 at Rs 1,90,00,000.
 
-## The idea being tested
+The notebook's own letters, in order, are in its solution notebook,
+`exercises/solutions/C2_W01_D03_ex2_auditor_solution_STUDENT.ipynb`: 1c 2d 3b 4a 5c.
 
-A decisions log is only as good as the questions it can answer from somebody who was not in the
-room. Each item is a question an auditor asks, answered from the log and the file.
+Three of the five items are design items: 2, 3 and 5.
 
-## Item by item
+## What does the second case test?
 
-| Item | Key | Why it holds | Why the others fail |
-|---|---|---|---|
-| 1 | c | The auditor asked about Q1, and 114 Q1 rows in less 100 orders kept is 14. | a: counts both quarters and gives 15. b: the rejects log holds the unreadable amount only. d: counts orders, not rows. |
-| 2 | a | A copy is the same order_id, and every one of the 14 has its twin in the clean file. | b: two orders can share an amount. c: a line number says where a row sat, not what it is. d: a customer with two orders has two orders. |
-| 3 | d | Rows and rupees by segment show two Business rows carrying about 98 percent of the Rs 19,98,210. | a: hides where the money sits. b: hides the other rows. c: the wrong quarter. |
-| 4 | b | "Set aside with a reason" is what happened, and each reason is in the log. | a: "dropped" tells an auditor the rows are gone. c: the log exists to show them. d: deleting evidence is the one thing an auditor never forgives. |
-| 5 | c | It states the rule, the evidence and both reconciliations. | a: they were not deleted and were not errors. b: reverses the finding. d: copies are not outliers, which were a separate decision. |
+The auditor was not in the room, so the log has to answer her questions on its own. The notebook
+walks her first question; these five are the ones she asks next, about the log's shape, where the rule
+could have gone wrong, and what happens when the step moves to someone else.
 
-## The part worth arguing about
+## Which letter answers each of her next five questions, and why do the others fail?
 
-Item 4. It is one word, and it is the whole case: an auditor reads "dropped" as "lost", and the
-rest of the conversation is spent recovering from it.
+### Q1. Why does the set-aside log hold 15 lines when the auditor asked about 14?
 
-## Where the pattern lives in production
+The auditor counts 15 lines in the set-aside log and asks why her question was about 14.
 
-Internal audit, statutory audit and data governance reviews all ask this question of any pipeline
-that removes rows. A log with a reason per row and two reconciliations answers it in ten minutes.
+The key is b, "A Q2 copy, set aside by the same rule as the 14 copies in Q1". The identity rule, one
+row kept per order_id, set aside 15 rows, 14 in Q1 and 1 in Q2, and named for each the twin that stayed,
+the other row of the same order. The unreadable copy is one of the 14, and the largest order and the
+missing status were kept and flagged.
+
+- a, "The unreadable amount, which the log keeps apart from the copies": the unreadable amount is one of
+  the 14 Q1 copies, set aside with its twin named, and the rejects log is empty.
+- c, "The largest Q2 order, taken out of Q2 as an outlier": the largest Q2 order was kept and flagged,
+  and it is still in Q2.
+- d, "The order with no status, which the pass could not place": the order with no status was kept and
+  flagged.
+
+### Q2 (Design). Which four set-aside rows should the auditor re-perform?
+The auditor will repeat the work herself on four of the 15 set-aside rows, with an hour to do it, and
+wants the four that test the rule hardest.
+
+The key is c, "One row from each pair that differed, and the two Business rows". The rule made a
+choice only where copies differed, and the two Business rows, Kalpa's sales to companies, carry 98.5
+percent of the rupees, so those four test the choice and the money. The walk's step 4 found two pairs
+that differ, so 13 of the 15 are identical copies, which test neither.
+
+- a, "Four drawn at random, so that no row is favoured over another": with 13 of the 15 identical
+  copies, four drawn at random test mostly the easy case.
+- b, "The first four lines of the log, since the log runs in file order": file order has no bearing on
+  risk.
+- d, "The four largest by rupees, since the money is what she signs for": the largest rows test the
+  money and leave the rule's choice between differing copies untested.
+
+### Q3 (Design). Would your evidence catch a real order set aside as a copy?
+If one of the 14 had been a real second order that the ERP numbered with a repeated id, what in the
+evidence would have shown it?
+
+The key is a, "The rupees would miss the books by the real order's amount". Rows would still tie, since
+the order would be logged as set aside. Finance booked it, so Q1 as exported less the rupees set aside
+would fall below the books by its amount, and the bridge, the walk from the export's total to the books
+one cause at a time, would not close.
+
+- b, "The rows would not tie, since a real order would be gone": a row logged as set aside still counts
+  in the rows equation.
+- c, "Nothing, since the order would share an id with a kept row": the rupee tie to the books would
+  catch it.
+- d, "The profile would show a sixteenth id on more than one row": the profile, which counts each
+  field's present, convertible and distinct values, already sees the repeated id as one of the 15, so
+  its count does not change.
+
+### Q4. What do you change in a log whose 14 lines say only "dropped"?
+
+A colleague's set-aside log for another export reads, on each of its 14 lines, only the order_id and
+the word "dropped", and the auditor reads it tomorrow.
+
+The key is d, "Each line, to name the kept row it copies and why this one went". An auditor reads
+"dropped" as gone without a trace, so each line has to say which kept row the removed one copies and
+why it left the clean file, and then she can follow every one of the 14.
+
+- a, "Only the word, since the decisions log already holds each reason": the decisions log holds each
+  rule once, and the auditor needs each row's own reason and the row that stayed.
+- b, "Relabel all 14 lines 'removed as duplicates', one rule for all": a blanket label on all 14 still
+  hides which row stayed for each order and why.
+- c, "Leave the word, and add a line saying the rupees tie to the books": the rupee tie proves the
+  totals, and her question was why each row went.
+
+### Q5 (Design). What must the reconciliation still carry if the ERP team removes copies at source?
+The auditor suggests that next quarter the ERP team remove the copies before the export leaves the ERP.
+
+The key is c, "The ERP team's own log of rows removed, and both totals tied". Moving the step upstream
+moves the log with it: the question "why those rows" needs the ERP team's list of what they removed,
+and the team's rows and rupees still tie to the books.
+
+- a, "Nothing new, since a clean export needs no set-aside log": "why those rows" still needs an answer.
+- b, "The row count the ERP team reports, since the rupees follow the rows": rows can tie while the
+  rupees miss.
+- d, "A fuzzy match on the export, to catch copies the ERP team missed": a fuzzy match on customer and
+  amount removed a real order today.
+
+## Which letters does the notebook take?
+
+The notebook's five letters: 1c 2d 3b 4a 5c. The last check also runs your evidence on a colleague's
+pass that kept the first copy of every pair and came out Rs 1,790 short of the books, and the evidence
+has to fail there.
+
+## Why is item 3 worth arguing about?
+
+The rows equation cannot see a real order set aside by mistake, because the row is still accounted
+for. Only the rupee tie to an independent total, Finance's books, catches it, which is why the
+reconciliation is done twice.
+
+## Where else is the auditor's question asked?
+
+Internal audit, statutory audit and data governance reviews ask it of any pipeline that removes rows.
+A log with a reason per row, the kept line named for every copy and two reconciliations answers it in
+minutes, whoever runs the step.

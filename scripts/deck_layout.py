@@ -364,7 +364,7 @@ def section_slide(slide, prs, number, title, promise, chapters, current, footer,
     footer_band(slide, footer, index, total, section=True)
 
 
-def title_slide(slide, prs, meta, chapters, total):
+def title_slide(slide, prs, meta, chapters, total, numbers=None):
     """The deck's cover: the institute, the day, the headline, and the client's words."""
     background(slide, prs, "dark")
     slide.shapes.add_picture(str(brand.LOGO), Inches(MARGIN + 0.1), Inches(0.62), Inches(1.15),
@@ -386,12 +386,16 @@ def title_slide(slide, prs, meta, chapters, total):
     if meta.get("who"):
         y = label(slide, MARGIN + 0.1, y + 0.06, WIDTH - 1.2, clean(meta["who"]), 11, LILAC)
     if chapters:
+        # Each chapter keeps the numeral its SECTION heading wrote, so an afternoon deck that opens
+        # on chapter 6 lists 06 first, and a strip that runs out of width starts a second row
+        # rather than dropping the chapters that did not fit.
+        numbers = numbers or list(range(1, len(chapters) + 1))
         x, cy = MARGIN + 0.1, max(y + 0.35, 5.7)
-        for i, c in enumerate(chapters, start=1):
+        for num, c in zip(numbers, chapters):
             w = min(2.6, 0.62 + len(c) * 9 * CHAR_W / 96)
             if x + w > SLIDE_W - MARGIN:
-                break
-            label(slide, x, cy, 0.4, f"{i:02d}", 13, LAV, font=brand.TITLE_FONT)
+                x, cy = MARGIN + 0.1, cy + 0.46
+            label(slide, x, cy, 0.4, f"{num:02d}", 13, LAV, font=brand.TITLE_FONT)
             label(slide, x + 0.42, cy + 0.04, w - 0.42, c, 9, WHITE)
             x += w + 0.2
     footer_band(slide, meta.get("footer", ""), 1, total, section=True)

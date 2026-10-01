@@ -1,120 +1,172 @@
-# The escalated case: the reconciliation Anand can audit
+# Can you run the whole pass alone and send Anand a reconciliation his analyst can audit?
 
 > "Send the reconciliation and the log before the day closes. My analyst checks it tonight, and she ties out to
 > the rupee."
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
-Sixty minutes, alone. Run the full pass on the ERP export, `data/C2_W01_D03_orders_STUDENT.csv`, in
-the notebook `notebooks/C2_W01_D03_hands_on_STUDENT.ipynb`, and answer the ten items below as you
-reach each part. Then write the note to Finance.
+The export is `data/C2_W01_D03_orders_STUDENT.csv`, Kalpa Retail's Q1 and Q2 orders from the ERP, the
+enterprise resource planning system Finance books orders in, and the books are Finance's own record of
+Q1, Rs 1,90,00,000 to the rupee. The team's dashboard, reading the same export, puts Q1 at Rs 2.1
+crore, Rs 20 lakh above the books. To tie out is to match every figure to the books, line by line, so
+a rupee's difference is a finding. Revenue in every figure is booked value, every order at the price
+charged, whatever its status, and Retail-Plus is Kalpa's paid membership tier.
 
-**What you post.** Three things, in this order: the notebook's eight letters; this brief's ten
+A profile counts, for every field, the values present, the values that convert and the distinct
+values. The identity rule decides when two rows are one order and which copy stays, a copy's twin being
+the other row of the same order. The app's JSON feed is a second file cut from the same extract as the
+CSV, an extract being one pull of rows out of the ERP. Monday's revenue tree is revenue = customers x
+orders per customer x revenue per order, with each branch read as Q2's multiple of Q1, and on Tuesday
+the team read it on the export as delivered: customers x1.000, orders per customer x0.754, revenue per
+order x1.180 and revenue x0.890, down 11.0 percent.
+
+**Who needs the answer.** Anand Iyer, the finance controller, decides whether Finance accepts the
+team's Q1 figure, and his analyst ties out every line of the reconciliation tonight. Marketing's
+rescue campaign for Retail-Plus waits on the recomputed numbers. A reconciliation she cannot follow
+becomes a finding against the team, and a number nobody recomputes leaves Marketing planning on
+Tuesday's reading.
+
+**The questions on the way.**
+
+- What can you tell Anand from the profile and the feed?
+- How does the identity rule treat repeated orders, today and next month?
+- How do you decide on an unusual order and on amounts in new formats?
+- Where did every row go, and what proves a re-sent export?
+- What does the clean file change in Monday's tree, and what does Anand read first?
+
+Fifty minutes, alone. Clean the export with the day's pass in the notebook
+`notebooks/C2_W01_D03_ex1_escalated_case_STUDENT.ipynb`. This time you write the identity rule yourself
+and recompute Monday's tree on the clean file. The ten items below are the questions Anand, his analyst
+and Marketing send once your numbers land, and a number an item calls the day's comes from your own
+run. Then write the note to Finance.
+
+**What you post.** Three things, in this order: the notebook's nine letters; this brief's ten
 letters; the note to Finance in under 120 words, numbers first.
 
 ```
-Post exactly this shape: notebook xxxxxxxx · brief xxxxxxxxxx · then the note
+Post exactly this shape: notebook xxxxxxxxx · brief xxxxxxxxxx · then the note
 ```
 
 ---
 
-## Part 1. Read and profile
+## Part 1. What can you tell Anand from the profile and the feed?
 
-### Q1
+Used at work whenever a new file lands and a stakeholder asks what is in it.
 
-Your profile shows `order_id` present on every row and distinct on fewer. Anand has asked which Q1
-figure is right. What does that gap tell you to do before any total?
+### Q1. Which one line goes to Anand after the profile?
 
-a) Report both totals and let Finance choose between them
-b) Find out whether some orders sit on more than one row
-c) Drop every row whose order_id appears more than once
-d) Ask the ERP team to resend the file without the gap
+Your profile of the day's export shows order_id distinct on 186 of 201 rows, amount convertible on
+200 and status present on 200. Anand asks for one line before you go further. Which line can you
+defend at this point?
 
-### Q2
+a) Your 1.9 crore is right; the export carries fifteen extra rows.
+b) The export is clean apart from one amount and one missing status.
+c) The gap is fifteen orders at about Rs 1.3 lakh each, Rs 20 lakh.
+d) The export counts some orders twice; the rupees wait on the rule.
 
-The app's JSON feed fails to parse part way through. How does it enter today's reconciliation?
+### Q2. Which sentence about the JSON feed can the note carry?
 
-a) In place of the CSV, since it is the app's own format
-b) Merged into the CSV, so no order is lost between them
-c) Not at all, since a file that fails once proves nothing
-d) As a second witness for the orders it completely holds
+The JSON feed yields 119 complete records. 118 of their amounts convert and match the clean file, and
+the 119th is unreadable in the feed as it is in the CSV. Which sentence about the feed can the note
+carry?
 
-## Part 2. Convert with a log
+a) The feed confirms the export's amounts for 118 of its orders.
+b) The feed repeats the CSV's extract, so it cannot vouch for any amount.
+c) The feed covers 59 percent of the export, so it can stand in for it.
+d) The feed and the CSV disagree on one amount, so one of them is corrupt.
 
-### Q3
+## Part 2. How does the identity rule treat repeated orders, today and next month?
 
-One amount will not convert. Which record of it goes to Anand's analyst?
+Used at work wherever two extracts or two systems can send the same order twice.
 
-a) Its line, value and reason, in the log
-b) A zero in its place, so the quarter's total can run
-c) The segment median in its place, with a footnote
-d) Nothing, since one amount cannot move a crore
+### Q3 (Design). Which identity rule fits once two systems number their own orders?
+From next month the export stitches the app's orders and the stores' orders, and each system numbers
+its orders from KR-00001. In a test month, 312 order ids appear in both systems. Which identity rule
+goes in the log, and what would today's rule cost?
 
-### Q4
+a) order_id alone, as today, since the log records every row it sets aside
+b) The whole record less the line, as real orders never fully match
+c) The system and order_id together; today's rule drops 312 real orders
+d) customer_id, amount and date, since a customer rarely repeats an order
 
-After conversion, the rows you accepted plus the rows you logged must equal what?
+### Q4. How many repeated orders go to the ERP team as a question?
 
-a) The distinct order ids in the file
-b) The rows in Finance's books for the quarter
-c) Every row the file holds
-d) The rows the dashboard used for its figure
+The identity rule on the day's export keeps the copy whose amount converts, then the first. Chapter 3
+found that of the 15 repeated orders, 13 have identical copies and 2 have copies that differ. How many
+of the 15 does the log send to the ERP team as a question?
 
-## Part 3. The identity rule
+a) 15, one for every repeated order
+b) 2, one for each pair whose copies differ
+c) 1, for the pair whose valid copies disagree
+d) 0, since the rule settles every pair itself
 
-### Q5
+## Part 3. How do you decide on an unusual order and on amounts in new formats?
 
-Some rows share an order_id with another row. Which rule decides the clean file?
+Used at work in every month-end close, when one order or one format does not fit last month's rules.
 
-a) Keep every row, and flag the pairs for Finance
-b) One row per order_id, the valid copy kept
-c) One row per whole record, since that is the default
-d) One row per customer per day, to be safe
+### Q5 (Design). What goes in the note about a large order the business says will not recur?
+The head of Kalpa's Business segment, its sales to companies, says the largest Q2 order, the day's
+Rs 29,45,460, was a one-off event order that will not recur. Anand wants Q2 as booked, and Marketing
+wants a base for planning Q3. What goes in the note?
 
-### Q6
+a) Q2 as booked, with the order; the Q3 plan built from Q2 without it
+b) Q2 without the order, since it will not recur and would mislead
+c) Q2 with it, and the Q3 plan built from Q2 as booked, order and all
+d) Q2 with the order capped at the next largest, for both readers
 
-A pair of rows shares an id, both valid, and one field disagrees. What does the log say?
+### Q6 (Design). Which change to convert() fits amounts with paise and separators?
+Next month about 40 percent of amounts will carry paise, `2310.50`, and a few a thousands separator,
+`1,150`. The day's `convert()` accepts whole numbers only. Which change fits, judged by what each
+leaves out of revenue?
 
-a) The kept copy, the field that differs, and a question
-b) Nothing, since the pair shares an id and is one order
-c) That the pair was averaged into one row
-d) That both rows were set aside until the ERP team replies
+a) Keep int(), and send every amount it refuses to the rejects log
+b) Wrap int() in try, and return 0 for anything it refuses
+c) Cut every amount at the dot before int(), and log the rest
+d) Read commas and paise by one rule; log whatever still fails
 
-## Part 4. Two decisions
+## Part 4. Where did every row go, and what proves a re-sent export?
 
-### Q7
+Used at work whenever a source system re-sends a file or a count differs from the one reported before.
 
-One order has no status. Revenue is booked value. What happens to it?
+### Q7. Where did the one amount that fails to convert go?
 
-a) It is dropped, since its fate is unknown
-b) It is defaulted to delivered, the common case
-c) It moves to the rejects log with the unreadable amount
-d) It is kept and flagged, out of every status count
+After the identity rule, converting the day's 186 kept amounts logs nothing, yet chapter 1's profile
+counted one amount that fails. A colleague says the pass lost a reject. Where did that amount go?
 
-### Q8
+a) To the set-aside log, as a copy, with its readable twin named
+b) Into the clean file as text, since conversion skips kept rows
+c) Nowhere, since the rule converted it while it compared copies
+d) Out of the pass, since profile() drops a row once it fails
 
-The largest Q2 order sits far above the next. Which check decides whether it stays?
+### Q8 (Design). What do you run on a Q1 export re-sent with the copies removed?
+The ERP team offers to re-send the Q1 export tomorrow with the copies removed at source. What do you
+run on it, and what should it show?
 
-a) Whether it is more than three times the median
-b) Whether it lies above the 95th percentile of Q2
-c) Whether the record and its buyer check out
-d) Whether removing it makes the quarters look alike
+a) Nothing new, since today's bridge already explains the whole gap
+b) Only a row count, expecting 100 rows, since the rupees follow
+c) Every step again: 100 orders, nothing set aside, Q1 on the books
+d) Only the bridge, since copies were the one cause found today
 
-## Part 5. Reconcile, bridge, recompute
+## Part 5. What does the clean file change in Monday's tree, and what does Anand read first?
 
-### Q9
+Used at work at the end of every reconciliation, when corrected numbers reach the people who acted on
+the old ones.
 
-Which pair of checks goes at the top of the note?
+### Q9. Which branch of Monday's tree moves furthest from Tuesday's reading?
 
-a) Rows in equal kept plus set aside; Q1 equals the books
-b) Q1 rounds to 1.9 crore, and the rows kept equal the distinct ids
-c) The rejects log is empty, and Q2 is unchanged by cleaning
-d) The dashboard's figure is explained, and the JSON feed agrees
+Recomputed on the clean file, which branch of Monday's tree moves furthest from Tuesday's reading of
+the Q1 to Q2 change?
 
-### Q10
+a) Revenue per order: x1.144 on the clean file against x1.180
+b) Orders per customer: x0.860 on the clean file against x0.754
+c) Customers: the copies counted some of the 69 buyers twice
+d) Orders per customer: x0.763 on the clean file against x0.754
 
-On clean data, Tuesday's Retail-Plus fall is smaller than first reported. Where does that go in the note?
+### Q10. In what order does the note to Finance run?
 
-a) Last, since Anand asked about Q1 and not about Retail-Plus
-b) After the reconciliation, smaller number first
-c) Nowhere, since Marketing will read it in Thursday's page
-d) First, since a changed finding matters more than a total
+The note to Finance has 120 words. Which order of content fits Anand's question?
+
+a) Which figure is right; both reconciliations; what was flagged; what changed downstream
+b) What changed downstream; which figure is right; both reconciliations; what was flagged
+c) Both reconciliations; what was flagged; which figure is right; what changed downstream
+d) What was flagged; both reconciliations; what changed downstream; which figure is right

@@ -1,13 +1,23 @@
-# Kahoot, Week 1 Tuesday
+# Can you make seven of Tuesday's calls and one of Monday's at speed?
 
-Eight items, ungraded, scored on correctness and speed together. The last item returns to Monday,
-one level up.
-
-Each item names what it tests, so an item dropped for time says what was lost.
+The quiz has eight items, ungraded and scored on correctness and speed together. Every item comes
+from the day's case: Kalpa Retail's booked revenue, every order placed before any cancellation or
+return, fell from Q1 to Q2, and the day climbed the investigation one rung at a time, each rung a
+question settled before the next. The last item returns to Monday, one level up.
 
 ---
 
-## Q1. Revenue per customer fell 8 percent. Which two numbers do you compute next?
+## Q1. When sales fall, which rung of the investigation comes first?
+*Tests: a drop is confirmed on matched windows before anyone explains it.*
+
+- Split the fall by segment to find where it sits
+- Confirm the drop is real on windows that match  <- correct
+- Name the likeliest cause and test it against the data
+- Decompose revenue into customers, frequency and order value
+
+---
+
+## Q2. Revenue per customer fell 8 percent: which two numbers do you compute next?
 *Tests: revenue per customer splits into two branches, and both are needed.*
 
 - Customers and revenue, since the rate is built from both
@@ -17,67 +27,57 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q2. Q1 has 13 weeks of orders and Q2 has 11. Which comparison is fair?
-*Tests: a comparison across periods needs matched windows or a rate.*
+## Q3. With 13 weeks of orders in Q1 and 11 in Q2, which comparison is fair?
+*Tests: while a quarter is still open, the fair comparison is the same weeks of both quarters, with a rate per week beside them, since a rate alone fixes the length and leaves the position.*
 
-- A rate per week, or the same 11 weeks of each quarter  <- correct
-- The two totals as they stand, since both are quarters
+- The same 11 weeks of each quarter, with a rate per week beside them  <- correct
+- The two totals as they stand, since both windows are called quarters
 - Q2's total scaled up by 13 over 11, then the two totals
-- Q1's last 11 weeks against Q2, the most recent weeks of each
+- Q1's last 11 weeks against Q2's first 11, the most recent weeks of Q1
 
 ---
 
-## Q3. After `result = revenue_for(seg)`, result holds None although the total printed. What went wrong?
-*Tests: a function that prints hands back None, and the table built on it breaks.*
-
-- The segment had no orders, so the total was zero
-- The function was called before it had been defined
-- The function prints its total and returns nothing  <- correct
-- The variable name result is reserved in Python
-
----
-
-## Q4. A segment's median order is Rs 1,200 and its range is Rs 80,000. What do you say about it?
+## Q4. What do you say about a segment whose median order is Rs 1,200 and whose range is Rs 80,000?
 *Tests: a typical value and a spread describe a group together.*
 
-- Most orders are small; a few large ones stretch the range  <- correct
+- Most orders are small, and a few large ones stretch the range  <- correct
 - Most orders sit near Rs 80,000, with a few small ones below
 - The typical order is about Rs 40,000, halfway up the range
 - The segment's figures must be wrong, since the gap is too wide
 
 ---
 
-## Q5. Customers held flat, and orders per customer fell in one segment only. Which hypothesis goes in the note?
+## Q5. Why does `result = revenue_for(seg)` hold None when the total printed?
+*Tests: a function that prints hands back None, and the table built on it breaks.*
+
+- The segment had no orders, so the total was zero
+- The function was called before it had been defined
+- The function prints its total and returns nothing  <- correct
+- The return sits inside the loop, so it stopped after one order
+
+---
+
+## Q6. Revenue per order rose 18 percent while no segment's own rose that far: what happened?
+*Tests: a blended rate can move while no segment moves; split mix from rate.*
+
+- Customers in every segment paid about 18 percent more
+- Small orders fell out of the mix, lifting the blend  <- correct
+- The segments' figures were rounded, hiding the rise
+- Business customers alone paid 18 percent more per order
+
+---
+
+## Q7. Customers held flat and one segment's orders per customer fell: which hypothesis goes in the note?
 *Tests: a cause is a hypothesis with the evidence that would settle it.*
 
 - Marketing lost customers, so the acquisition budget is the fix
 - Prices rose across the company, so every customer bought less
 - The segment's buyers left, and new buyers replaced them
-- That segment's buyers changed; timing and its data test why  <- correct
+- That segment's buyers slowed, and its timing and data test why  <- correct
 
 ---
 
-## Q6. Of 100 invented orders, 40 record a discount, 20 record Rs 0 and 40 have no field. What share had a discount?
-*Tests: missing means unknown until someone chooses a default and writes down why.*
-
-- 40 percent, since the orders with no field had no discount
-- 40 of the 60 that record it, with 40 orders reported apart  <- correct
-- 80 percent, since the orders with no field were discounted too
-- 60 percent, the orders that record the field in any amount
-
----
-
-## Q7. Moved first, frequency costs Rs 51.6 lakh; moved second, Rs 60.9 lakh. What goes beside the bridge?
-*Tests: a bridge's split depends on the order of its steps, so the order is written down.*
-
-- The larger figure, since it is the more cautious reading
-- The order of the steps, or the symmetric split  <- correct
-- The average of the two, about Rs 56 lakh, to be fair
-- Nothing yet, since two figures mean one of them is wrong
-
----
-
-## Q8. Return to Monday. The mean order doubled and the median did not move. What is your first check?
+## Q8. Back to Monday: the mean order doubled and the median held, so what is your first check?
 *Tests: a mean pulled away from the median points at a few extreme values.*
 
 - Recompute the median, since it should have doubled as well
