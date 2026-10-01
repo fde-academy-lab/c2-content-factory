@@ -11,7 +11,7 @@ rejection.
 
 ## Run the scanner first
 
-    python3 scripts/tic_scan.py <file.md|file.pptx|file.docx>
+    python3 scripts/tic_scan.py <file.md|file.pptx|file.docx|folder> [more ...]
 
 It reports each hit with a line or slide number and the class of tic. Fix
 every hit before showing the work.
