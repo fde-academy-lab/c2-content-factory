@@ -65,7 +65,8 @@ def challenges():
     wb = Workbook()
     log = wb.active
     log.title = "Log"
-    title(log, "Challenges log", "One row every time the group is stuck. Fill the yellow cells; "
+    title(log, "Where did the group get stuck, and what did it decide?",
+          "One row every time the group is stuck. Fill the yellow cells; "
           "the grey columns and the Summary sheet compute themselves.")
     head = ["#", "Day", "Opened (date)", "Sub-problem", "What stopped us", "Where it showed "
             "(file, column or step)", "What we tried", "What we decided, and why", "Status",
@@ -99,7 +100,8 @@ def challenges():
                                 "resolved once it has, with the date in the next column", "GCC")
 
     summ = wb.create_sheet("Summary")
-    title(summ, "Where the group stands", "Every value on this sheet is a formula over the Log sheet.")
+    title(summ, "How many challenges are still open, and which one goes to the checkpoint?",
+          "Every value on this sheet is a formula over the Log sheet.")
     rng = lambda col: f"Log!{col}{first}:{col}{last}"
     rows = [
         ("Entries logged", f"=COUNTA({rng('E')})"),
@@ -124,8 +126,8 @@ def challenges():
     widths(summ, {"A": 46, "B": 60})
 
     ex = wb.create_sheet("Example")
-    title(ex, "Entry one, as another group might write it",
-          "Copy the shape, not the words. Your entry one is about your own first stop.")
+    title(ex, "What does a good entry one look like?",
+          "Another group's entry one. Copy its shape; your entry is about your own first stop.")
     for c, h in enumerate(head, 1):
         ex.cell(row=4, column=c, value=h)
     style_header(ex, 4, len(head))
@@ -157,7 +159,7 @@ def challenges():
         "Summary counts the log for you and says what to take to the next checkpoint.",
         "A challenge that needed a cleaning or matching decision also goes in the decisions log.",
     ]
-    how["A1"] = "How to use this log"
+    how["A1"] = "How do you fill this log?"
     how["A1"].font = Font(name=FONT, bold=True, size=14, color=INK)
     for i, t in enumerate(lines, 3):
         how.cell(row=i, column=1, value=f"{i - 2}. {t}").font = Font(name=FONT)
@@ -179,7 +181,8 @@ def decisions():
     wb = Workbook()
     log = wb.active
     log.title = "Log"
-    title(log, "Decisions log", "The Week 1 Wednesday shape, one row per decision, plus the file "
+    title(log, "Which rows did the group change, remove or keep on purpose, and why?",
+          "The Week 1 Wednesday shape, one row per decision, plus the file "
           "and the kind of decision so the Reconcile sheet can count rows out.")
     head = ["#", "Day", "File", "Field", "Issue", "Rows", "Decision", "Kind", "Reason"]
     for c, h in enumerate(head, 1):
@@ -207,7 +210,7 @@ def decisions():
                                 "or filled.", "GCC")
 
     rec = wb.create_sheet("Reconcile")
-    title(rec, "Input equals clean plus removed, file by file",
+    title(rec, "Do rows in equal clean rows plus rows removed, file by file?",
           "Rows in are counted from the files. Type the rows in your clean output; the rest is "
           "computed from the Log sheet.")
     head2 = ["File", "Rows in", "Rows removed (from the log)", "Rows in your clean output",
@@ -246,8 +249,8 @@ def decisions():
     widths(rec, {"A": 20, "B": 14, "C": 16, "D": 16, "E": 14, "F": 52})
 
     ex = wb.create_sheet("Example")
-    title(ex, "Rows from the Week 1 Wednesday log, in Kalpa Retail",
-          "The shape you already know. Your rows are about Kalpa Health's files.")
+    title(ex, "Which rows did the Week 1 Wednesday log hold for Kalpa Retail?",
+          "The shape you already know, in rupees. Your rows are about Kalpa Health's files, in dollars.")
     head3 = ["Field", "Issue", "Rows", "Decision", "Reason"]
     for c, h in enumerate(head3, 1):
         ex.cell(row=4, column=c, value=h)
@@ -286,7 +289,7 @@ def decisions():
         "before anyone acts on a number built from that file.",
         "Your notebook or SQL must reproduce every count in this log from the raw files.",
     ]
-    how["A1"] = "How to use this log"
+    how["A1"] = "How do you fill this log?"
     how["A1"].font = Font(name=FONT, bold=True, size=14, color=INK)
     for i, t in enumerate(lines, 3):
         how.cell(row=i, column=1, value=f"{i - 2}. {t}").font = Font(name=FONT)
