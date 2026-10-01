@@ -12,8 +12,9 @@ drivers at step 3, and the pair writes the tool-choice note together.
 > Kavya Nair, senior analyst, Kalpa Retail data team
 
 Week 1's revenue tree splits revenue into numbers that multiply: customers, times orders per
-customer, times the value of each order. On Week 1's 69 customers the branch that moved was orders
-per customer, which fell from 1.65 to 1.25 between the quarters. The question all three tools answer
+customer, times the value of each order. On Week 1's clean file of 69 customers the branch that moved
+was orders per customer, which fell from 1.449 to 1.246 between the quarters, and in Retail-Plus from
+1.82 to 1.18, a fall of 35 percent. The question all three tools answer
 is that branch for Kalpa's paid membership tier on the warehouse's 1,000 orders: **Retail-Plus
 orders per member, Q1 against Q2**. Q1 is April to June 2026 and Q2 is July to September. A member
 counts in a quarter if they ordered in it, and orders per member is a quarter's orders divided by
@@ -76,14 +77,14 @@ Used at work in every tool-choice discussion, and in the design question of an a
 Fourteen minutes, markers 5 and 6, then the note: which size tells the three routes apart, which
 route should own a number Finance reruns every Monday, and the pair's tool-choice note.
 
-The note has one line per tool, each naming the job the tool owns, the reason, and the rows that tool
-fetched from the warehouse for today's two numbers, then one line naming the tool the pair would
-refuse for Finance's numbers and why.
+The note has one line per tool, each naming the job the tool owns, the reason, and that tool's
+figure on the size the pair chose in marker 5, then one line naming the tool the pair would refuse
+for Finance's numbers and why.
 
 ## Which rules does the pair keep?
 
 - The three tools must agree to three decimal places before the note is written.
-- Every line of the note carries a number: the rows a route fetched, or who reruns the number.
+- Every line of the note carries a number from the pair's sizing, or names who reruns the number.
 - The refusal names a tool and a reason a finance controller would accept.
 - The support TA answers environment problems only.
 

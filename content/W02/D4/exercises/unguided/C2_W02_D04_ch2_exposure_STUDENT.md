@@ -82,13 +82,14 @@ d) They return 340, 340, 340 and 340 rows.
 ### Q3. Which way should attach the app team's push feed, sized on what a repeat would cost?
 
 Kalpa's app team sends a feed of the customers its October push notification reached: 2,000 rows
-naming 1,900 customers, because 100 were sent twice. The stores team wants one answer from it today:
+naming 1,900 customers, because 100 were sent twice, and each row carries a customer's id and no
+send date. The stores team wants one answer from it today:
 how many of its 12,000 loyalty customers the push reached, city by city. A typical reached
 customer's spend is Rs 5,100. Which way fits the ask, and what does it cost?
 
 a) A plain left merge fits, at 12,100 rows and Rs 5.1 lakh counted twice in any spend sum.
 b) A merge counted before and after fits, at 12,100 rows, with the excess found afterwards.
-c) The first-touch rule and a validated merge fit, at 12,000 rows and a date rule unused.
+c) The first-touch rule and a validated merge fit, keeping each customer's earliest send.
 d) The `isin` flag fits, at 12,000 rows, with nothing counted twice and no rule to choose.
 
 ### Q4. In which order does Monday's attach step run, so a repeat never reaches the table?

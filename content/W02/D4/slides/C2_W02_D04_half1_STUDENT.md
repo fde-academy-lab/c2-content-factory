@@ -913,7 +913,7 @@ wide = plus.pivot_table(index="customer_id", columns="month", values="amount",
 
 ```stats
 value: Rs 9,99,150 | label: grand total | note: equals the orders
-value: -29.4% | label: Q1 to Q2 | note: Rs 1,72,390, not Rs 74,752
+value: -29.4% | label: Q1 to Q2 | note: Rs 1,72,390 in rupees
 value: Rs 97,638 | label: the fall the average hid | note: lost when each cell averaged
 ```
 
@@ -1403,7 +1403,7 @@ value: 0.010 s | label: pandas | note: the median of 30 runs
 value: 0.017 s | label: plain Python | note: the median of 30 runs
 ```
 
-**What breaks.** Speed ranks SQL first, by about a hundredth of a second, and a hundredth of a second on a number Finance reads once a week decides nothing. The size that grows with the business is the rows each route moves.
+**What it means.** Speed ranks SQL first, by about a hundredth of a second, and a hundredth of a second on a number Finance reads once a week decides nothing. The size that grows with the business is the rows each route moves.
 
 ```notes
 LIVE, 2 minutes. The answer is c. The stats are medians of 30 timed runs on the machine that built

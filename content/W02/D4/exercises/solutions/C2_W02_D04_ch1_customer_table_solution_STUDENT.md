@@ -67,7 +67,7 @@ pandas' `mean` skips missing values unless told otherwise, so the line divides 1
 - d, "It prints 3.32, an average over all 340 customers on the list": The number is right and the
   base is wrong, and the growth team would read 3.32 as the typical customer on its list.
 
-### Q3. What does a teammate's fix print with the order-built table on the left of the merge?
+### Q3. What does a teammate's fix of the nudge list print?
 
 `rfm`, which holds the 301 who ordered, sits on the left of a left merge.
 
@@ -124,7 +124,8 @@ second route chapter 1 already checked against the pandas table, customer by cus
   nudge has nobody to go to.
 - d, "pandas `groupby` should stay, with its table written into the warehouse every Monday": It
   moves every order out of the warehouse and the table back in each Monday, keeps the definition in
-  a notebook, and leaves the dashboard reading a copy as old as the last Monday run.
+  a notebook, and leaves the dashboard reading a copy as old as the last Monday run, so on six
+  mornings a week Marketing opens numbers without the previous day's orders.
 
 ## Why is option c in item 3, the chapter's own half-fix, the wrong answer worth arguing about?
 

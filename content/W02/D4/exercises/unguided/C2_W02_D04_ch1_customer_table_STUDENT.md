@@ -33,7 +33,7 @@ offer.
 
 - Which way should compute the numbers when the orders run to crores, and what does it move?
 - What does the average orders per customer read before anyone fills the gaps?
-- What does a teammate's fix print with the order-built table on the left of the merge?
+- What does a teammate's fix of the nudge list print?
 - Which count could the growth team's lead run herself to confirm the 39 before the nudge goes out?
 - Which way should build the table once a dashboard on the warehouse is its only reader?
 
@@ -76,7 +76,7 @@ b) It prints 3.32, an average over the 301 who ordered, since `mean` skips the g
 c) It prints `nan`, since one missing frequency leaves the whole column's mean missing.
 d) It prints 3.32, an average over all 340 customers on the list.
 
-### Q3. What does a teammate's fix print with the order-built table on the left of the merge?
+### Q3. What does a teammate's fix of the nudge list print?
 
 A teammate fixes the first-order nudge list this way:
 
@@ -108,8 +108,9 @@ d) Fetch every order's customer id, and check the list against them in a Python 
 
 Next quarter a dashboard that the data platform lead builds on the warehouse becomes the growth
 team's only view of the table. It reads every number straight from Postgres whenever someone opens
-it, and the sale flag and the months view move into it too. The orders stay at about 500 a quarter,
-as they are now. Which way should build the table's three numbers then?
+it, Marketing opens it every morning expecting the previous day's orders in it, and the sale flag and
+the months view move into it too. The orders stay at about 500 a quarter, as they are now. Which way
+should build the table's three numbers then?
 
 a) pandas `groupby` should stay, since 500 orders a quarter move in a fraction of a second.
 b) A SQL `GROUP BY` on the orders should build them, sending one row per customer who ordered.

@@ -137,8 +137,8 @@ The key is b, `monthly.groupby("customer_id")`. The earlier readings belong to t
 which is `LAG` with `PARTITION BY customer_id`, and the grouping feeds the spend and the month alike.
 
 - a, `monthly`: shifts the whole frame, so a customer's first months read the previous customer's
-  spend and month; on Kalpa's orders the flag then lands on one customer who never fell, 10 flagged
-  where Wednesday's query flags 9.
+  spend and month; on Kalpa's orders the flag then lands on a customer who never fell, and the check
+  against Wednesday's query catches it.
 - c, `monthly.groupby("month_num")`: compares different customers in the same month.
 - d, `monthly.groupby(["customer_id", "month_num"])`: puts each customer-month in a group of its
   own, so there is no earlier reading and nobody is flagged.

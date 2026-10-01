@@ -100,8 +100,10 @@ plain Python.
 ### Q6. Which route should own a number Finance reruns every Monday?
 
 A design item. The key is c, "SQL", because it runs where the data lives. Finance's number lives
-where Finance can rerun and audit it, and the query sends only its answer. The check ties the choice
-to the size chosen in Q5: the route that moves the fewest rows is the one Finance can rerun.
+where Finance can rerun and audit it, and the query sends only its answer. Two separate facts point
+the same way here: SQL is the route Anand's analyst can rerun without anyone's notebook, and on the
+size chosen in Q5 it fetches the fewest rows. The check asks for the route the chosen size ranks
+first, so a pair that sized the routes wrongly finds out at this step too.
 
 - a, "pandas", since the growth team's table already holds the numbers: it runs on a copy, depends on
   the order its cells ran in, and Finance cannot rerun it without the analyst's environment.

@@ -362,7 +362,7 @@ January 2021, checked 1 Oct 2026).
 
 | Option | Rows moved for this question | Lines of logic | Where it runs |
 |---|---|---|---|
-| a) Plain Python | 1,000 | 6 | The analyst's machine |
+| a) Plain Python | 1,340, the orders and the customer list | 6 | The analyst's machine |
 | b) SQL | 2 | 10 | The warehouse |
 | c) pandas | 0, the table is in memory | 3 | The analyst's machine |
 

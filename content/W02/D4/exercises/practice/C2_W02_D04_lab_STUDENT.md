@@ -50,20 +50,20 @@ prediction shows you which idea to go back to.
 
 What does `customers.groupby("city").size()` return?
 
-a) 340 rows, one per customer
-b) 4 rows, one per segment
-c) 6 rows, one per city
-d) 301 rows, one per customer who ordered
+a) It returns 340 rows, one per customer.
+b) It returns 4 rows, one per segment.
+c) It returns 6 rows, one per city.
+d) It returns 301 rows, one per customer who ordered.
 
 ### Q2. How many rows does a count per customer and quarter return?
 
 Kalpa's 301 customers who ordered placed 1,000 orders across the two quarters, Q1 and Q2. What does
 `orders.groupby(["customer_id", "quarter"]).size()` return?
 
-a) 471 rows, one per customer and quarter that has orders
-b) 602 rows, the 301 customers who ordered times 2 quarters
-c) 680 rows, every customer on the list times 2 quarters
-d) 1,000 rows, one per order, each in its quarter
+a) It returns 471 rows, one per customer and quarter that has orders.
+b) It returns 602 rows, the 301 customers who ordered times 2 quarters.
+c) It returns 680 rows, every customer on the list times 2 quarters.
+d) It returns 1,000 rows, one per order, each in its quarter.
 
 ### Q3. What shape is revenue by channel with the two quarters side by side?
 
@@ -74,10 +74,10 @@ shape is this, as rows by columns?
 orders.pivot_table(index="channel", columns="quarter", values="amount", aggfunc="sum")
 ```
 
-a) 2 by 3, a quarter per row and a channel per column
-b) 6 by 1, one row per channel and quarter
-c) 1,000 by 2, the quarters written onto each order
-d) 3 by 2, a channel per row and a quarter per column
+a) It is 2 by 3, a quarter per row and a channel per column.
+b) It is 6 by 1, one row per channel and quarter.
+c) It is 1,000 by 2, the quarters written onto each order.
+d) It is 3 by 2, a channel per row and a quarter per column.
 
 ### Q4. What shape is each customer's first and last order date?
 
@@ -88,10 +88,10 @@ columns?
 orders.groupby("customer_id").agg(first=("order_date", "min"), last=("order_date", "max"))
 ```
 
-a) 340 by 2, one row per customer on the list
-b) 301 by 2, one row per customer who ordered
-c) 2 by 301, one row per measure
-d) 1,000 by 2, the dates written onto each order
+a) It is 340 by 2, one row per customer on the list.
+b) It is 301 by 2, one row per customer who ordered.
+c) It is 2 by 301, one row per measure.
+d) It is 1,000 by 2, the dates written onto each order.
 
 ---
 
@@ -104,38 +104,38 @@ Ten minutes, alone. For each ask, choose the tool and the form it takes.
 
 ### Q5. Which tool should compute the head of Retail-Plus's protect list, refreshed weekly and read by three teams?
 
-a) SQL, a query in the warehouse that every team reads
-b) pandas, a notebook the analyst reruns and emails each week
-c) Plain Python, a script with the ranking written out as a loop
-d) pandas, a CSV the analyst writes to a shared folder weekly
+a) SQL should, as a query in the warehouse that every team reads.
+b) pandas should, as a notebook the analyst reruns and emails each week.
+c) Plain Python should, as a script with the ranking written out as a loop.
+d) pandas should, as a CSV the analyst writes to a shared folder weekly.
 
 ### Q6. Which tool should answer how many customers a 45-day win-back line would hold, asked once in a meeting?
 
-a) SQL, a new view in the warehouse for the 45-day list
-b) Plain Python, a loop over the customer table's rows
-c) pandas, the customer table in memory and one changed number
-d) SQL, the win-back query mailed to the platform lead to rerun
+a) SQL should, as a new view in the warehouse for the 45-day list.
+b) Plain Python should, as a loop over the customer table's rows.
+c) pandas should, with the table in memory and one number changed.
+d) SQL should, as the win-back query mailed to the platform lead to rerun.
 
 ### Q7. Which tool should explain to a reviewer, step by step, why the win-back list holds 111 and not 166?
 
-a) SQL, two queries whose counts differ by 55, run one after the other
-b) Plain Python, both recency counts side by side, dates printed
-c) pandas, the refresh run again, with its four guards printing PASS
-d) SQL, one query with the two counts in two columns
+a) SQL should, as two queries whose counts differ by 55, run one after the other.
+b) Plain Python should, printing both recency counts side by side with dates.
+c) pandas should, by running the refresh again with its four guards printing PASS.
+d) SQL should, as one query with the two counts in two columns.
 
 ### Q8. Which tool should hold the monthly revenue by segment that Finance reconciles against its books?
 
-a) pandas, a notebook with its outputs saved for Finance to read
-b) Plain Python, a script that prints the table to the terminal
-c) pandas, a CSV sent to Finance on the first of each month
-d) SQL, a view defined in the warehouse
+a) pandas should, as a notebook with its outputs saved for Finance to read.
+b) Plain Python should, as a script that prints the table to the terminal.
+c) pandas should, as a CSV sent to Finance on the first of each month.
+d) SQL should, as a view defined in the warehouse.
 
 ### Q9. Which tool should match a one-off list of 40 customer ids, emailed by the head of Retail-Plus, to the customer table this afternoon?
 
-a) pandas, the 40 ids as a frame merged with `validate`
-b) SQL, once the platform lead loads the list into a warehouse table
-c) Plain Python, a loop that searches the table for each id in turn
-d) SQL, a new permanent table of the 40 ids in the warehouse
+a) pandas should, with the 40 ids as a frame merged with `validate`.
+b) SQL should, once the platform lead loads the list into a warehouse table.
+c) Plain Python should, as a loop that searches the table for each id in turn.
+d) SQL should, as a new permanent table of the 40 ids in the warehouse.
 
 ---
 

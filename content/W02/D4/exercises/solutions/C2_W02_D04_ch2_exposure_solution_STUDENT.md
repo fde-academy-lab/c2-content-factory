@@ -62,8 +62,8 @@ side, and the 130 are already among the 340, so it adds nothing. Right keeps the
 
 ### Q3. Which way should attach the app team's push feed, sized on what a repeat would cost?
 
-Item 3 is a design item: 2,000 rows name 1,900 customers, and the stores team wants a count of
-reached customers by city, today.
+Item 3 is a design item: 2,000 rows name 1,900 customers with no send date, and the stores team
+wants a count of reached customers by city, today.
 
 The key is d, "The `isin` flag fits, at 12,000 rows, with nothing counted twice and no rule to
 choose". The ask is yes or no per customer, and a flag is set once however often the feed repeats a
@@ -73,9 +73,10 @@ customer, so the table stays at 12,000 rows and no spend is counted twice.
   100 repeated customers add 100 rows, and at Rs 5,100 each any sum of spend grows by Rs 5,10,000.
 - b, "A merge counted before and after fits, at 12,100 rows, with the excess found afterwards": The
   count finds the 100 extra rows once the wrong table exists, and the ask never needed a merge.
-- c, "The first-touch rule and a validated merge fit, at 12,000 rows and a date rule unused": It is
-  safe, and it costs a rule about dates for an ask that never reads a date. When the ask needs the
-  date, as Monday's table does, this is the way.
+- c, "The first-touch rule and a validated merge fit, keeping each customer's earliest send": The
+  rule keeps each customer's earliest send, and this feed carries no send date, so the rule cannot be
+  applied as written. The ask needs only yes or no per customer, which the flag gives with no rule.
+  When an ask needs the date, as Monday's table does, the rule and the validated merge come back.
 
 ### Q4. In which order does Monday's attach step run, so a repeat never reaches the table?
 
@@ -118,8 +119,8 @@ the feed, it returns Rs 8,78,980.
 
 Chapter 2 chose the first-touch rule and a validated merge for Monday's table, so a learner who
 remembers the call picks it again. The call rested on a fact: Monday's table needs the date the sale
-reached each customer. The stores team's ask needs only yes or no, and the flag answers it with no
-rule to defend. When a later ask needs the date again, the rule and the validated merge come back.
+reached each customer. The stores team's ask needs only yes or no, this feed carries no send date
+for the rule to sort by, and the flag answers the ask with no rule to defend. When a later ask needs the date again, the rule and the validated merge come back.
 
 ## Where does one event arriving twice come up at work?
 

@@ -1936,8 +1936,8 @@ def ch5():
         I choose by who has to trust and rerun the number. Finance's number goes in SQL, because it runs
         where the data lives, moves only its answer and Finance can rerun it from the query. The
         analyst's iterative work goes in pandas, reading SQL's answers. A one-off I must explain line by
-        line goes in plain Python. On 1,000 rows speed separates nothing, so I size by rows moved: SQL 8,
-        pandas 1,340."
+        line goes in plain Python. On 1,000 rows the three finish hundredths of a second apart, too
+        little to decide a weekly number, so I size by rows moved: SQL 8, pandas 1,340."
 
         **[D] Which tool would you refuse for Finance's numbers, and why?** "A pandas notebook run by
         hand. It moves every order to one machine, depends on the order its cells were run in, and
@@ -1968,7 +1968,8 @@ def ch5():
 
         1. SQL computes Finance's Monday revenue, because Anand's analyst reruns it where the data lives;
            pandas and plain Python would put it on the analyst's machine.
-        2. Speed separates nothing on 1,000 orders: all three routes finish well inside a second.
+        2. On 1,000 orders all three routes finish in hundredths of a second, SQL first, a gap too small
+           to decide a weekly number.
         3. Each route returns 8 rows, but SQL moves 8 and pandas 1,340, which is the size that separates
            them.
         4. SQL owns Finance's revenue, pandas the customer table and the months view, plain Python the
@@ -2396,9 +2397,9 @@ def twin(cells, answers, why, solution):
             text = textwrap.dedent(text).strip("\n")
             if solution and "__TODO" in text:
                 paras = [x for x in text.split("\n\n") if "__TODO" not in x]
-                paras.insert(1, "**The solution twin.** Every placeholder is filled with its key, the "
-                                "notebook runs clean from a fresh kernel, and a line under each step says "
-                                "why the other letters fail.")
+                paras.insert(1, "**How to read this copy.** Each placeholder holds its key, so the "
+                                "notebook runs clean from a fresh kernel, and the paragraph under each "
+                                "step says why each other letter fails. Sit the case first.")
                 text = "\n\n".join(paras)
             out.append(md(text))
             continue
@@ -2492,7 +2493,8 @@ def escalated(solution):
         in_list = kit.sql("SELECT count(*) AS n FROM customers")[0]["n"]
         kit.check("one row for every customer on the list", len(table) == in_list, f"{len(table)} rows")
         kit.check("spend adds back to the warehouse", table["spend"].sum() == orders["amount"].sum())
-        kit.check("frequency is a whole number with no gaps", table["frequency"].dtype == "int64")
+        kit.check("every customer has a frequency, and the frequencies add up to the warehouse's orders",
+                  table["frequency"].notna().all() and table["frequency"].sum() == len(orders))
         """, 1),
         ("md", """
         ## Step 2. Which customers did the sale reach, one row each, and does a second count agree?
@@ -2534,9 +2536,12 @@ def escalated(solution):
         earliest = exposure.groupby("customer_id")["exposed_date"].min()
         kit.check("each reached customer carries the first date the feed gives",
                   (first_touch.set_index("customer_id")["exposed_date"].sort_index() == earliest.reindex(sorted(first_touch["customer_id"]))).all())
-        with kit.expect_error() as raw:
+        try:
             table[["customer_id"]].merge(exposure, on="customer_id", how="left", validate=PROMISE)
-        kit.check("the promise you chose would have stopped the raw feed", raw.name == "MergeError")
+            raw_error = None
+        except Exception as error:                     # keep only the kind of error, never its message
+            raw_error = type(error).__name__
+        kit.check("the promise you chose would have stopped the raw feed", raw_error == "MergeError")
         kit.check("the second count agrees with the reached flags",
                   int(second_count(exposure, first_touch, table)) == int(table["reached"].sum()))
         lost = first_touch.iloc[1:]                                   # a merge that lost one reached customer
@@ -2596,10 +2601,15 @@ def escalated(solution):
         print("both flags are set")
         """, 3),
         ("code", """
+        def refresh_query(n):
+            \"\"\"The n-th query in chapter 6's sql/C2_W02_D04_06_refresh_STUDENT.sql, the warehouse's own count.\"\"\"
+            text = (kit.data_dir().parent / "sql" / "C2_W02_D04_06_refresh_STUDENT.sql").read_text(encoding="utf-8")
+            return [query for query in text.split(";") if query.strip()][n]
+
         kit.check("the smallest recency is 0 days", table["recency_days"].min() == 0)
-        by_sql = int(kit.sql(\"\"\"@WINBACK@\"\"\")[0]["win_back"])
+        by_sql = int(kit.sql(refresh_query(1))[0]["win_back"])
         kit.check("the win-back list matches the warehouse's own count", int(table["lapsed"].sum()) == by_sql)
-        wednesday = {r["customer_id"] for r in kit.sql(\"\"\"@FALLING_LIST@\"\"\")}
+        wednesday = {r["customer_id"] for r in kit.sql(refresh_query(2).replace("SELECT count(*) AS falling", "SELECT customer_id"))}
         kit.check("pandas flags exactly the customers Wednesday's calendar-checked LAG flags",
                   set(table.loc[table["falling"], "customer_id"]) == wednesday)
         kit.check("both flags are booleans", table["lapsed"].dtype == bool and table["falling"].dtype == bool)
@@ -2711,8 +2721,7 @@ def escalated(solution):
         what you bring to Friday.
         """, 0),
     ]
-    subs = {"WINBACK": q("c6", 1), "FALLING_LIST": q("c6", 2).replace("SELECT count(*) AS falling", "SELECT customer_id")}
-    cells = [(k, _fill(textwrap.dedent(t), subs), s) for k, t, s in cells]
+    cells = [(k, textwrap.dedent(t), s) for k, t, s in cells]
     answers = {1: "customers", 2: 'table["frequency"].fillna(0).astype("int64")',
                3: 'ordered.drop_duplicates("customer_id", keep="first")',
                4: '"one_to_one"', 5: 'exposure["customer_id"].nunique()', 6: 'orders["order_date"].max()',
@@ -2729,7 +2738,8 @@ def escalated(solution):
            "reached. 2a leaves 39 missing counts, which a filter for 0 never finds; 2c invents orders "
            "for customers who placed none; 2d removes nothing from the table's rows, since `assign` "
            "lines the shorter column up by index and leaves the gaps missing. Each wrong letter fails "
-           "the row check or the type check under the step.",
+           "the row check, or the check that every customer has a frequency adding up to the "
+           "warehouse's 1,000 orders.",
         2: "**Keys 3a, 4d and 5c.** 3a keeps each customer's first send once the feed is sorted by "
            "date, which is the growth team's rule. 3b drops every copy of a repeated customer, so they "
            "read as never reached and the second count disagrees; 3c keeps the last date, which the "
@@ -2780,12 +2790,6 @@ def escalated(solution):
            "by customer, so it is also a second route to the three numbers.",
     }
     return twin(cells, answers, why, solution)
-
-
-def _fill(text, subs):
-    for name, value in subs.items():
-        text = text.replace(f"@{name}@", value)
-    return text
 
 
 # ----------------------------------------------------------------------------- the second case
@@ -2852,6 +2856,9 @@ def second_case(solution):
         """, 1),
         ("md", """
         ## Step 2. Does SQL, where the data lives, give the same number?
+
+        If SQL disagrees with plain Python, the cause can sit in marker 1 as well as in markers 2 and 3:
+        each side has to count the same members.
         """, 0),
         ("code", """
         # TODO 2. Which expression gives orders per member, to three places?
@@ -2907,7 +2914,7 @@ def second_case(solution):
         ## Step 4. Which tool would you sign for each job, and which size tells the three apart?
 
         The three agree, so the choice is about who has to trust, rerun or audit the number, and about
-        what each route cost to reach it. A size that gives all three the same score separates nothing.
+        what each route cost to reach it.
         """, 0),
         ("code", """
         # TODO 5. Which size tells the three routes apart, listed as plain Python, SQL, pandas?
@@ -2935,8 +2942,7 @@ def second_case(solution):
         kit.check("the three tools agree on both quarters",
                   all(abs(py[qq] - pn[qq]) < 1e-9 and abs(py[qq] - sq[qq]) < 0.001 for qq in ("Q1", "Q2")))
         kit.check("the size you chose tells the three routes apart", len(set(size.values())) == 3)
-        kit.check("on that size, SQL is the smallest", min(size, key=size.get) == "SQL")
-        kit.check("Finance's number goes to the route that runs where Finance can rerun it and moves the fewest rows",
+        kit.check("the home you chose for Finance's number is the route your size ranks first",
                   finance_home == min(size, key=size.get))
         fall = pn["Q2"] / pn["Q1"] - 1
         kit.bridge(("Q1, orders per member", round(pn["Q1"], 3)), [("the change", round(pn["Q2"] - pn["Q1"], 3))],

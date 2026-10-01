@@ -14,9 +14,8 @@ customers who bought, meaning reached customers with at least one order between 
 of the sale is a separate test. A customer's segment is one of Kalpa Retail's four: Retail-Core,
 Retail-Plus, Student or Business.
 
-Chapter 4 asked the question in plain Python, SQL and pandas, and the three agreed once each read a
-customer's segment from the customer list, where every customer has one: 107 of the 130 reached
-customers bought, 82 percent, made up of 56 of 70 in Retail-Core and 51 of 60 in Retail-Plus. A set
+Chapter 4 asked the question in plain Python, SQL and pandas, and the three agreed once they shared
+one definition of a customer's segment: 107 of the 130 reached customers bought, 82 percent, made up of 56 of 70 in Retail-Core and 51 of 60 in Retail-Plus. A set
 difference in plain Python, the reached customers less the customers with an order, with no grouping
 at all, found the same 107. Kavya's rule when two tools disagree is to look for the rows one of them
 dropped before looking at the code.

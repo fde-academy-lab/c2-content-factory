@@ -32,101 +32,101 @@ per row has to say what it does when no single value wins.
 
 ### Q1. How many rows does a count of customers per city return?
 
-The key is c, "6 rows, one per city". `groupby` makes one group per distinct key, and Kalpa's
+The key is c, "It returns 6 rows, one per city". `groupby` makes one group per distinct key, and Kalpa's
 customers live in six cities.
 
-- a, "340 rows, one per customer": `size` collapses each group to one row.
-- b, "4 rows, one per segment": the segment is a different column.
-- d, "301 rows, one per customer who ordered": the customer list holds everyone, buyers or not.
+- a, "It returns 340 rows, one per customer": `size` collapses each group to one row.
+- b, "It returns 4 rows, one per segment": The segment is a different column.
+- d, "It returns 301 rows, one per customer who ordered": The customer list holds everyone, buyers or not.
 
 ### Q2. How many rows does a count per customer and quarter return?
 
-The key is a, "471 rows, one per customer and quarter that has orders". A group exists only for a
+The key is a, "It returns 471 rows, one per customer and quarter that has orders". A group exists only for a
 pair that appears in the rows, so a customer who ordered in one quarter has one row: 244 customers
 ordered in Q1 and 227 in Q2, and 244 plus 227 is 471.
 
-- b, "602 rows, the 301 customers who ordered times 2 quarters": assumes every customer ordered in
-  both quarters.
-- c, "680 rows, every customer on the list times 2 quarters": a group needs a row to exist.
-- d, "1,000 rows, one per order, each in its quarter": `size` collapses each pair's orders to one row.
+- b, "It returns 602 rows, the 301 customers who ordered times 2 quarters": It assumes every customer ordered
+  in both quarters.
+- c, "It returns 680 rows, every customer on the list times 2 quarters": A group needs a row to exist.
+- d, "It returns 1,000 rows, one per order, each in its quarter": `size` collapses each pair's orders to one row.
 
 ### Q3. What shape is revenue by channel with the two quarters side by side?
 
-The key is d, "3 by 2, a channel per row and a quarter per column". The index decides the rows and
+The key is d, "It is 3 by 2, a channel per row and a quarter per column". The index decides the rows and
 the columns argument the columns.
 
-- a, "2 by 3, a quarter per row and a channel per column": the transpose.
-- b, "6 by 1, one row per channel and quarter": the long shape a `groupby` on both keys gives.
-- c, "1,000 by 2, the quarters written onto each order": a pivot folds the orders into its cells.
+- a, "It is 2 by 3, a quarter per row and a channel per column": It is the transpose, with quarters on the rows and channels on the columns.
+- b, "It is 6 by 1, one row per channel and quarter": It is the long shape a `groupby` on both keys gives.
+- c, "It is 1,000 by 2, the quarters written onto each order": A pivot folds the orders into its cells.
 
 ### Q4. What shape is each customer's first and last order date?
 
-The key is b, "301 by 2, one row per customer who ordered". Built from the orders, the result knows
+The key is b, "It is 301 by 2, one row per customer who ordered". Built from the orders, the result knows
 only the customers who placed one.
 
-- a, "340 by 2, one row per customer on the list": the 39 who never ordered have no group.
-- c, "2 by 301, one row per measure": each named aggregate becomes a column.
-- d, "1,000 by 2, the dates written onto each order": that is a `transform`, which this is not.
+- a, "It is 340 by 2, one row per customer on the list": The 39 who never ordered have no group.
+- c, "It is 2 by 301, one row per measure": Each named aggregate becomes a column.
+- d, "It is 1,000 by 2, the dates written onto each order": That shape comes from a `transform`, which this is not.
 
 ### Q5. Which tool should compute the head of Retail-Plus's protect list, refreshed weekly and read by three teams?
 
-The key is a, "SQL, a query in the warehouse that every team reads". Three teams reading one list
+The key is a, "SQL should, as a query in the warehouse that every team reads". Three teams reading one list
 need one definition where all three can run it.
 
-- b, "pandas, a notebook the analyst reruns and emails each week": three copies of an email, each
-  ageing from the moment it is sent.
-- c, "Plain Python, a script with the ranking written out as a loop": a weekly ranking read by three
-  teams is not a line-by-line explanation.
-- d, "pandas, a CSV the analyst writes to a shared folder weekly": a copy that ages, and a list that
-  depends on one analyst's machine.
+- b, "pandas should, as a notebook the analyst reruns and emails each week": It makes three copies of an email,
+  each ageing from the moment it is sent.
+- c, "Plain Python should, as a script with the ranking written out as a loop": A weekly ranking read by three
+  teams needs no line-by-line explanation.
+- d, "pandas should, as a CSV the analyst writes to a shared folder weekly": It is a copy that ages, and a list
+  that depends on one analyst's machine.
 
 ### Q6. Which tool should answer how many customers a 45-day win-back line would hold, asked once in a meeting?
 
-The key is c, "pandas, the customer table in memory and one changed number". The question is asked
+The key is c, "pandas should, with the table in memory and one number changed". The question is asked
 once, the table is already built, and the answer is one changed threshold away: 144 at 45 days
 against 111 at 60.
 
-- a, "SQL, a new view in the warehouse for the 45-day list": a permanent object for a question asked
-  once.
-- b, "Plain Python, a loop over the customer table's rows": works, and is slower to write than one
-  comparison on a column.
-- d, "SQL, the win-back query mailed to the platform lead to rerun": moves a one-minute question to
+- a, "SQL should, as a new view in the warehouse for the 45-day list": It builds a permanent object for a question
+  asked once.
+- b, "Plain Python should, as a loop over the customer table's rows": It works, and it is slower to write than
+  one comparison on a column.
+- d, "SQL should, as the win-back query mailed to the platform lead to rerun": It moves a one-minute question to
   someone else's queue.
 
 ### Q7. Which tool should explain to a reviewer, step by step, why the win-back list holds 111 and not 166?
 
-The key is b, "Plain Python, both recency counts side by side, dates printed". The reviewer
+The key is b, "Plain Python should, printing both recency counts side by side with dates". The reviewer
 needs to see one customer's last order, the two dates it was counted to, and the two results.
 
-- a, "SQL, two queries whose counts differ by 55, run one after the other": shows the two totals and
+- a, "SQL should, as two queries whose counts differ by 55, run one after the other": It shows the two totals and
   hides the step that differs.
-- c, "pandas, the refresh run again, with its four guards printing PASS": a pass says the table
+- c, "pandas should, by running the refresh again with its four guards printing PASS": A pass says the table
   keeps its checks, and it never shows the 166, the dates or the step where the two counts part.
-- d, "SQL, one query with the two counts in two columns": the same totals in one place.
+- d, "SQL should, as one query with the two counts in two columns": It puts the same totals in one place, and still hides the step that differs.
 
 ### Q8. Which tool should hold the monthly revenue by segment that Finance reconciles against its books?
 
-The key is d, "SQL, a view defined in the warehouse". Finance reconciles from the warehouse, and a
+The key is d, "SQL should, as a view defined in the warehouse". Finance reconciles from the warehouse, and a
 view holds the definition where Finance's analyst can rerun it.
 
-- a, "pandas, a notebook with its outputs saved for Finance to read": a copy, on one machine, that
+- a, "pandas should, as a notebook with its outputs saved for Finance to read": It is a copy, on one machine, that
   Finance cannot rerun.
-- b, "Plain Python, a script that prints the table to the terminal": nothing for Finance to rerun
+- b, "Plain Python should, as a script that prints the table to the terminal": It leaves nothing for Finance to rerun
   against its books.
-- c, "pandas, a CSV sent to Finance on the first of each month": a copy that ages from the moment it
+- c, "pandas should, as a CSV sent to Finance on the first of each month": It is a copy that ages from the moment it
   is written.
 
 ### Q9. Which tool should match a one-off list of 40 customer ids, emailed by the head of Retail-Plus, to the customer table this afternoon?
 
-The key is a, "pandas, the 40 ids as a frame merged with `validate`". The table
+The key is a, "pandas should, with the 40 ids as a frame merged with `validate`". The table
 lives in pandas, the list is small and arrives once, and `validate` stops the merge if the email
 repeats an id.
 
-- b, "SQL, once the platform lead loads the list into a warehouse table": a one-afternoon question
+- b, "SQL should, once the platform lead loads the list into a warehouse table": A one-afternoon question
   waits in another team's queue.
-- c, "Plain Python, a loop that searches the table for each id in turn": works, and checks nothing
+- c, "Plain Python should, as a loop that searches the table for each id in turn": It works, and it checks nothing
   about repeated ids.
-- d, "SQL, a new permanent table of the 40 ids in the warehouse": a permanent object in a shared
+- d, "SQL should, as a new permanent table of the 40 ids in the warehouse": It puts a permanent object in a shared
   warehouse for one afternoon's list, which is the platform lead's to create.
 
 ## Which numbers should problem 3 reach, and what rule goes to the growth team?

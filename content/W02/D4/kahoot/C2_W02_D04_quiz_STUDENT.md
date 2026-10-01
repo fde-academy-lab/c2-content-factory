@@ -84,7 +84,7 @@ seconds, and an item most of the room misses is the one to say again before the 
 - Each customer with no match in the feed gained an empty row
 - The left merge added the feed's unmatched rows to the table
 - Some customers appear more than once in the campaign feed  <- correct
-- Each of 120 reached customers gained a second row for its date
+- The merge had no validate, which pandas needs to keep one row per key
 
 ---
 
