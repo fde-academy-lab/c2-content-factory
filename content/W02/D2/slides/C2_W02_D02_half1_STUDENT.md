@@ -204,8 +204,8 @@ icon: triangle-alert | eyebrow: A wrong join costs | title: A missed or a false 
 LIVE, 2 minutes. orders holds what was booked, one row per order with its channel, quarter, status
 and amount; payments holds what arrived, one row per payment event with its order, date, amount,
 method and instalment number. A join has to decide what to do with an order that found no payment
-and with an order that found two, before it adds anything. At Kalpa's size one large business
-invoice is several lakh rupees, so a dropped order is real money.
+and with an order that found two, before it adds anything. At Kalpa's size a single order can be
+worth lakhs of rupees, so a dropped order is real money.
 ```
 
 ---

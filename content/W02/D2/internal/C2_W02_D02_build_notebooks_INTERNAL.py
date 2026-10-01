@@ -340,7 +340,7 @@ things before it adds anything up: what to do with an order that found no paymen
 with an order that found two.
 
 The decision rides on money Anand can act on. An order the statement drops is an order nobody
-chases, and at Kalpa's size one large business invoice can be worth several lakh rupees. An order
+chases, and at Kalpa's size a single order can be worth lakhs of rupees. An order
 the statement lists twice looks short-paid on one of its lines, and a collections clerk who
 follows the statement rings a customer who has paid in full. {DOSSIER}
 """),
