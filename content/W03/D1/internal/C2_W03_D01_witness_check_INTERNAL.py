@@ -14,6 +14,7 @@ import csv
 import datetime as dt
 import math
 import pathlib
+import random
 import sys
 
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
@@ -237,6 +238,116 @@ W["campaign_metros_prior_change"] = (count(camp_metros, pre_lo, pre_hi) / 62
 W["campaign_metros_window_change"] = count(camp_metros, lo, hi) / count(camp_metros, pre_lo, pre_hi) - 1
 W["other_metros_window_change"] = (count(("New York",), lo, hi) / count(("New York",), pre_lo, pre_hi) - 1)
 
+# Further numbers the trainer day sheet quotes, each recomputed from the files the way a group would.
+X = {}
+for m in ("Dallas", "Phoenix", "New York", "Chicago", "Atlanta", "Philadelphia"):
+    retail_b = [b for b in bookings if b["metro"] == m and b["channel"] != "employer"]
+    q2 = sum(1 for b in retail_b if quarter(b["date"]) == "Q2")
+    q3_old = sum(1 for b in retail_b if quarter(b["date"]) == "Q3" and b["system"] == "legacy")
+    q3_all = sum(1 for b in retail_b if quarter(b["date"]) == "Q3")
+    X[f"bookings_{m}_Q2"], X[f"bookings_{m}_Q3_old_export"], X[f"bookings_{m}_Q3_both"] = q2, q3_old, q3_all
+    X[f"bookings_{m}_change_old_export"] = q3_old / q2 - 1
+    X[f"bookings_{m}_change_both"] = q3_all / q2 - 1
+copies = {}
+for r in legacy:
+    copies.setdefault(r["booking_id"], []).append(r)
+repeated = {k: v for k, v in copies.items() if len(v) > 1}
+X["repeated_ids"] = len(repeated)
+X["repeated_first_date"] = min(v[0]["booking_date"] for v in repeated.values())
+X["repeated_last_date"] = max(v[0]["booking_date"] for v in repeated.values())
+X["repeated_copies_differing_in_updated_at"] = sum(1 for v in repeated.values()
+                                                   if v[0]["updated_at"] != v[1]["updated_at"])
+X["repeated_copies_differing_in_channel"] = sum(1 for v in repeated.values()
+                                                if v[0]["channel"] != v[1]["channel"])
+X["legacy_rows_empty_channel"] = sum(1 for r in legacy if r["channel"] == "")
+X["legacy_rows_empty_channel_on_repeated_ids"] = sum(1 for r in legacy if r["channel"] == ""
+                                                     and r["booking_id"] in repeated)
+X["legacy_rows_employer_channel"] = sum(1 for r in legacy if r["channel"] == "employer")
+contract = [c for c in claims if c["employer_account"]][0]
+X["contract_claim"] = contract["claim_id"]
+X["contract_service_date"] = contract["service_date"]
+X["contract_metro"] = contract["metro"]
+X["contract_screenings"] = max(int(t["quantity"]) for t in lines if t["panel_code"] == "PNL-EMP")
+X["contract_tests_per_screening"] = sum(1 for t in lines if t["panel_code"] == "PNL-EMP"
+                                        and t["line"] == "component")
+q2_amounts = sorted(dollars(c["billed_amount"]) for c in claims if quarter(iso(c["service_date"])) == "Q2")
+X["q2_billed"] = sum(q2_amounts)
+X["q2_mean_claim"] = X["q2_billed"] / len(q2_amounts)
+X["billed_growth_with_contract"] = W["q3_billed"] / X["q2_billed"] - 1
+X["billed_growth_without_contract"] = W["q3_billed_without_contract"] / X["q2_billed"] - 1
+X["claim_refs_as_claim_ids"] = sum(1 for p in postings if p["claim_ref"].startswith("KH-CLM-"))
+X["claim_refs_as_CLM_numbers"] = sum(1 for p in postings if p["claim_ref"].startswith("CLM-"))
+X["claim_refs_as_bare_digits"] = sum(1 for p in postings if p["claim_ref"].isdigit())
+rates = {}
+for a in appointments:
+    s = rates.setdefault(a["site_code"], [0, 0, 0, 0])
+    s[0] += 1
+    s[1] += a["attended"] == "N"
+    if a["kind"] == "scheduled":
+        s[2] += 1
+        s[3] += a["attended"] == "N"
+others = {k: v for k, v in rates.items() if k != small}
+X["next_worst_rate_all_visits"] = max(v[1] / v[0] for v in others.values())
+X["next_worst_rate_scheduled"] = max(v[3] / v[2] for v in others.values())
+X["centres_in_register"] = len(rates)
+for m in ("New York", "Chicago", "Philadelphia"):
+    X[f"lift_{m}"] = (per_patient([x for x in off if x["metro"] == m])
+                      / per_patient([x for x in rest if x["metro"] == m]) - 1)
+before = {}
+for b in bookings:
+    if before_lo <= b["date"] < lo and b["channel"] != "employer":
+        before[b["patient"]] = before.get(b["patient"], 0) + 1
+for m in camp_metros:
+    o = [x for x in off if x["metro"] == m]
+    r = [x for x in rest if x["metro"] == m]
+    X[f"gap_before_offer_{m}"] = (sum(before.get(x["patient_id"], 0) for x in o) / len(o)
+                                  / (sum(before.get(x["patient_id"], 0) for x in r) / len(r)) - 1)
+ny = [x for x in patients if x["metro"] == "New York"]
+ny_counts = [in_window.get(x["patient_id"], 0) for x in ny]
+ny_labels = [x["patient_id"] in offered for x in ny]
+
+
+def ny_lift(labels):
+    o = [c for c, l in zip(ny_counts, labels) if l]
+    r = [c for c, l in zip(ny_counts, labels) if not l]
+    return (sum(o) / len(o)) / (sum(r) / len(r)) - 1
+
+
+observed = ny_lift(ny_labels)
+shuffler = random.Random(20261019)
+as_large = 0
+for _ in range(10000):
+    shuffled = ny_labels[:]
+    shuffler.shuffle(shuffled)
+    as_large += abs(ny_lift(shuffled)) >= abs(observed)
+X["new_york_permutation_p_two_sided"] = as_large / 10000
+marked_denied = {c["claim_id"] for c in claims if c["denial_category"]}
+posted_at_all = {m for m in matched if m}
+X["claims_marked_denied"] = len(marked_denied)
+X["denied_claims_with_no_posting"] = len(marked_denied - posted_at_all)
+X["denial_postings_paying_nothing"] = sum(1 for p in postings if p["posting"] == "denial"
+                                          and float(p["paid_amount"]) == 0)
+X["paid_share_of_billed"] = W["paid_net_of_double_posts"] / W["billed_all"]
+
+DAY_SHEET = {
+    "bookings_Chicago_change_old_export": -0.243, "bookings_Chicago_change_both": -0.130,
+    "bookings_Philadelphia_change_old_export": -0.215, "bookings_Philadelphia_change_both": -0.112,
+    "bookings_Dallas_change_both": 0.077, "bookings_Phoenix_change_both": 0.130,
+    "bookings_New York_change_both": 0.068, "bookings_Atlanta_change_both": 0.212,
+    "repeated_ids": 180, "legacy_rows_empty_channel": 180, "legacy_rows_employer_channel": 1,
+    "contract_screenings": 1200, "contract_tests_per_screening": 5,
+    "q2_billed": 970098, "q2_mean_claim": 176.13, "billed_growth_with_contract": 0.269,
+    "billed_growth_without_contract": 0.083, "claim_refs_as_claim_ids": 216,
+    "claim_refs_as_CLM_numbers": 2269, "claim_refs_as_bare_digits": 8858,
+    "next_worst_rate_all_visits": 0.096, "next_worst_rate_scheduled": 0.168,
+    "centres_in_register": 12, "lift_New York": 0.235, "lift_Chicago": -0.048,
+    "lift_Philadelphia": 0.006, "gap_before_offer_Dallas": 0.014,
+    "gap_before_offer_Atlanta": -0.052, "gap_before_offer_Phoenix": -0.061,
+    "new_york_permutation_p_two_sided": 0.03, "claims_marked_denied": 1175,
+    "denied_claims_with_no_posting": 38, "denial_postings_paying_nothing": 1137,
+    "paid_share_of_billed": 0.364,
+}
+
 # The spine's figures, rounded as the spine prints them.
 SPINE = {
     "dashboard_q2_to_q3": 0.051, "booked_q2_to_q3": 0.078, "performed_q2_to_q3": 0.086,
@@ -275,14 +386,29 @@ for key, value in W.items():
     ok = abs(float(value) - want) <= tol
     fails += not ok
     print(f"{'PASS' if ok else 'FAIL'}  {key}: {shown} (spine {want})")
-print("RESULT:", "FAIL" if fails else "PASS", f"({fails} drifts from the spine)")
+print("The day sheet's further numbers:")
+for key, value in X.items():
+    want = DAY_SHEET.get(key)
+    shown = f"{value:.4f}" if isinstance(value, float) else str(value)
+    if want is None:
+        print(f"      {key}: {shown}")
+        continue
+    tol = 0.0006 if isinstance(want, float) and abs(want) < 1 else 0.6
+    if key == "new_york_permutation_p_two_sided":
+        tol = 0.006
+    ok = abs(float(value) - want) <= tol
+    fails += not ok
+    print(f"{'PASS' if ok else 'FAIL'}  {key}: {shown} (day sheet {want})")
+print("RESULT:", "FAIL" if fails else "PASS", f"({fails} drifts from the spine and the day sheet)")
 sys.exit(1 if fails else 0)
 
 # Test inputs and expected outcomes
 # --------------------------------
 # python3 content/W03/D1/internal/C2_W03_D01_witness_check_INTERNAL.py
-#     Reads the ten CSV files, prints every number with the spine's figure beside it, and ends on
-#     "RESULT: PASS (0 drifts from the spine)" with exit 0 while the data pack is unchanged.
+#     Reads the ten CSV files, prints every number with the spine's figure or the day sheet's beside
+#     it, and ends on "RESULT: PASS (0 drifts from the spine and the day sheet)" with exit 0 while the
+#     data pack is unchanged. The New York permutation test shuffles with seed 20261019, so its p
+#     prints the same on every run.
 # The same command after the data pack is regenerated with a different seed
 #     One FAIL line per number that moved, and exit 1, which means the day sheet's numbers need
 #     rewriting before the pack ships again.
