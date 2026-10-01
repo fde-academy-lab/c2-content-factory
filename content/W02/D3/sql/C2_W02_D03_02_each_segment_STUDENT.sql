@@ -21,7 +21,8 @@ GROUP  BY c.segment
 ORDER  BY c.segment;
 
 -- name: c2_groupby_limit
--- Second attempt with GROUP BY: one group per member, sorted, LIMIT 50. Counted by segment.
+-- The second attempt with GROUP BY makes one group per member, sorts the groups by Q2 revenue and
+-- keeps fifty with LIMIT 50; the outer query counts the fifty by segment.
 WITH fifty AS (
     SELECT c.segment, o.customer_id, sum(o.amount) AS q2_revenue
     FROM   orders o
@@ -81,7 +82,7 @@ GROUP  BY segment
 ORDER  BY segment;
 
 -- name: c2_first_three
--- The question: what do the first three positions of each consumer segment look like?
+-- The question: what do the first three positions of Retail-Core, Retail-Plus and Student look like?
 WITH q2_spend AS (
     SELECT c.segment, o.customer_id, sum(o.amount) AS q2_revenue
     FROM   orders o

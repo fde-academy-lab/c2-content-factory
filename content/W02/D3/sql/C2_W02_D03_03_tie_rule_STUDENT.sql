@@ -1,5 +1,5 @@
--- Kalpa Retail, Week 2 Wednesday, chapter 3: when two members spent the same at the line, how many
--- does each segment's list ship, and which rule did the head of Retail-Plus ask for?
+-- Kalpa Retail, Week 2 Wednesday, chapter 3: when two members tie at fiftieth place, how many does
+-- each segment's list ship, and which rule did the head of Retail-Plus ask for?
 --
 -- "Ties matter. If two members spent the same, I want them ranked the same, and I want to know how
 --  many made the top fifty, not forty-nine because of a tie." The head of Retail-Plus, the owner of
@@ -113,7 +113,8 @@ WHERE  segment = 'Retail-Core' AND tied_with > 1 AND row_number <= 50
 ORDER  BY row_number;
 
 -- name: c3_all_counts
--- The same four counts for every segment, for the checks. Your own segment's line is yours to read.
+-- The same four counts for every segment, for the checks. The Retail-Plus line is yours to read and
+-- report in your own sentence.
 WITH q2 AS (
     SELECT c.segment, o.customer_id, sum(o.amount) AS q2_revenue
     FROM   orders o

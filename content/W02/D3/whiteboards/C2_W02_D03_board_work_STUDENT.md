@@ -159,9 +159,10 @@ flowchart LR
 
 ## How many rows does each rule ship when two members tie at the line?
 
-A second invented list goes up as a chain, a top four with D and E tied at fourth. Under it the
-room writes what each rule ships: ROW_NUMBER 4, RANK 5, DENSE_RANK 5 and whole ties only 3. Every
-rule ships exactly the line when nobody ties at it.
+A second invented list goes up as a chain, a top four with D and E tied at fourth, which is the line,
+the last place a top four keeps. Under it the room writes what each rule ships: ROW_NUMBER 4, RANK 5,
+DENSE_RANK 5 and whole ties only 3. With nobody tied at the line, ROW_NUMBER, RANK and whole ties
+only would each ship exactly four, and DENSE_RANK could still ship more if a tie sat higher up.
 
 ```mermaid
 flowchart LR
@@ -358,7 +359,7 @@ The day's answer goes up as one chain, in the order Marketing reads it.
 flowchart LR
     L["<b>the lists</b><br/>top fifty per segment<br/>under RANK, counts said"] --> C["<b>the calls</b><br/>nine members,<br/>three months lower"]
     C --> Q["<b>Q2</b><br/>closed Rs 10 ahead,<br/>on plan"]
-    Q --> R["<b>the run rate</b><br/>below plan<br/>since 10 August"]
+    Q --> R["<b>the run rate</b><br/>6 of 7 full weeks<br/>from 10 August below plan"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class L,C,Q known

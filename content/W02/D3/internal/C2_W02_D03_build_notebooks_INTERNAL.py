@@ -501,7 +501,7 @@ def ch1():
         ## 4. Which segments does the list of fifty members reach?
 
         The member list is the right unit, and Marketing's ask also says "in each segment". Count
-        the list by segment, with every segment on the line, including one with nobody on the list.
+        the list by segment, with every segment in the count, including one with nobody on the list.
 
         **Predict before you run.** How many Student members are on the one list of fifty?
 
@@ -720,8 +720,8 @@ def ch2():
         Option D cannot answer at all, which section 1 shows.
 
         **The best-fit call.** Option C, PARTITION BY segment: one query, one pass, and a new segment
-        needs no change. **What would change the call:** a database with no window functions, such
-        as a MySQL server older than version 8.0, the first release line to ship them, which leaves
+        needs no change. What would change the call is a database with no window functions, such as
+        a MySQL server older than version 8.0, the first release line to ship them, which leaves
         option A, four sorted queries glued together.
         """),
         code(r'''
@@ -746,9 +746,9 @@ def ch2():
             first = run("c2_groupby_segment", "Attempt 1: GROUP BY segment", money=("q2_revenue",))
             second = run("c2_groupby_limit", "Attempt 2: GROUP BY segment and member, LIMIT 50, counted by segment")
             kit.columns([r["segment"] for r in first],
-                        [("members who bought", [r["members_who_bought"] for r in first]),
-                         ("rows attempt 2 returned", [next((s["on_the_list"] for s in second if s["segment"] == r["segment"]), 0)
-                                                      for r in first])],
+                        [("rows attempt 2 returned", [next((s["on_the_list"] for s in second if s["segment"] == r["segment"]), 0)
+                                                      for r in first]),
+                         ("members who bought", [r["members_who_bought"] for r in first])],
                         title="GROUP BY returns one row per group, and LIMIT counts across the whole result")
             '''),
         md("""
@@ -831,7 +831,7 @@ def ch2():
         """),
         code(r'''
             fixed = run("c2_partitioned", "PARTITION BY segment: the numbering restarts in each segment")
-            run("c2_first_three", "The first three places in each consumer segment", money=("q2_revenue",), echo=False)
+            run("c2_first_three", "The first three places in each segment", money=("q2_revenue",), echo=False)
             kit.columns([r["segment"] for r in fixed],
                         [("on the segment's list", [r["on_the_segment_list"] for r in fixed]),
                          ("members who bought", [r["members_who_bought"] for r in fixed])],
@@ -950,8 +950,8 @@ def ch2():
         5. **Do four sorted queries agree?** Yes, member for member in every segment.
 
         Each list was cut at fifty by `row_number()`, with the customer id deciding any two members
-        who booked the same. Chapter 3 asks the head of Retail-Plus's question: when two members
-        spent the same at the line, who makes the list?
+        who booked the same. Chapter 3 asks the head of Retail-Plus's question: when two members tie
+        at fiftieth place, who makes the list?
         """),
         code("kit.check_summary()"),
     ]
@@ -961,7 +961,7 @@ def ch2():
 def ch3():
     return [
         md(f"""
-        # When two members spent the same at the line, how many does a list ship, and which rule did the head of Retail-Plus ask for?
+        # When two members tie at fiftieth place, how many does a list ship, and which rule did the head of Retail-Plus ask for?
 
         **Week 2, Wednesday. Chapter 3 of 6.** Chapter 2 built one list per segment; this chapter
         decides what happens when the fiftieth place is shared.
@@ -978,15 +978,16 @@ def ch3():
 
         **The questions on the way.**
         1. Which rules could cut a list at fifty, and what does each do at a tie?
-        2. What do ROW_NUMBER, RANK and DENSE_RANK give on one tie?
-        3. How many rows does each rule ship when two members tie at the line?
+        2. How many rows does each rule ship when two members tie at the line?
+        3. What do ROW_NUMBER, RANK and DENSE_RANK give on one tie?
         4. How many Retail-Core members does each rule ship?
-        5. How many does your own segment's list ship under the head's rule?
+        5. How many members does Retail-Plus's list ship under the head's rule, counted in your own run?
         6. Does a count with no window agree with RANK?
 
         **The metric at stake.** The count of members on each segment's list, beside Q2 revenue per
         member, the booked amount of every Q2 order whatever its status (Q2 is July to September
-        2026). Two members tie when their Q2 revenue is the same to the rupee. The retail dossier,
+        2026). Two members tie when their Q2 revenue is the same to the rupee. The line is the last
+        place a list keeps, fiftieth on a top fifty. The retail dossier,
         `{DOSSIER}`, section 4, says what the head of Retail-Plus owns: the tier's members, their
         fees and their renewals.
 
@@ -1000,13 +1001,16 @@ def ch3():
         setup_note("03_tie_rule"),
         setup("03_tie_rule"),
         where(3, ["the options\nfour rules at the line",
-                  "three functions\none tie, invented",
                   "a tie at the line\ninvented top four",
+                  "three functions\none tie, invented",
                   "Retail-Core\nfour counts",
-                  "your segment\nyour own run",
+                  "Retail-Plus\nyour own run",
                   "a second route\na count with no window"]),
         md("""
         ## The options: which rules could cut a list at fifty, and what does each do at a tie?
+
+        The line is the last place a list keeps, fiftieth on a top fifty, and two members tie at the
+        line when the member at fiftieth and the member just below spent the same.
 
         | Rule | At a tie on the line | Meets "ranked the same, and say how many"? | What it costs |
         |---|---|---|---|
@@ -1019,8 +1023,21 @@ def ch3():
         each member the number of members who share their figure, and `rank + tied_with - 1` is the
         last place the tie reaches; the rule keeps a tie only when that place is inside the line.
 
-        **Predict before you run.** On an invented top four where the fourth and fifth members spent
-        the same, how many rows does RANK ship?
+        **The best-fit call.** RANK, with the count and its reason in the report. It is the only rule
+        that both ranks equal spend equally and never drops a member at the line, and the head of
+        Retail-Plus asked for the count. What would change the call is a hard cap that cannot
+        stretch, such as fifty seats at a members' dinner or fifty gift boxes already packed. Then
+        ROW_NUMBER with a tiebreaker the business states in advance, such as more Q2 orders first,
+        is honest, as long as the report names who was left off and why. Section 1 sizes each rule
+        in the rows it ships when a tie sits on the line.
+        """),
+        md("""
+        ## 1. How many rows does each rule ship when two members tie at the line?
+
+        An invented top four, labelled invented: A to F spent Rs 9,100, 8,800, 8,200, 7,400, 7,400 and
+        6,900, so D and E tie at fourth, on the line of a top four.
+
+        **Predict before you run.** How many rows does RANK ship for the top four?
 
         - a) 4.
         - b) 5.
@@ -1036,23 +1053,17 @@ def ch3():
         md("""
         **What happened.** The answer is b: RANK ships 5, because the two members tied at fourth
         share fourth place. ROW_NUMBER ships 4 and leaves one of the pair off by its tiebreaker,
-        DENSE_RANK ships 5 here, and whole ties only ships 3, dropping both tied members. The members
-        are invented: A to F, on Rs 9,100, 8,800, 8,200, 7,400, 7,400 and 6,900.
-
-        **The best-fit call.** RANK, with the count and its reason in the report. It is the only rule
-        that both ranks equal spend equally and never drops a member at the line, and the head of
-        Retail-Plus asked for the count. **What would change the call:** a hard cap that cannot
-        stretch, such as fifty seats at a members' dinner or fifty gift boxes already packed. Then
-        ROW_NUMBER with a tiebreaker the business states in advance, such as more Q2 orders first,
-        is honest, as long as the report names who was left off and why.
+        DENSE_RANK ships 5 here, and whole ties only ships 3, dropping both tied members. At a tie on
+        the line the rules ship different counts, so the report states its count; this is the
+        forty-nine or fifty-one the head of Retail-Plus spoke of, at four in place of fifty.
         """),
         code(r'''
             kit.check("RANK ships five for the invented top four", line["rank_ships"] == 5)
-            kit.check("ROW_NUMBER always ships exactly the line", line["row_number_ships"] == 4)
+            kit.check("ROW_NUMBER always ships exactly the list size", line["row_number_ships"] == 4)
             kit.check("whole ties only runs short", line["whole_ties_only_ships"] == 3)
             '''),
         md("""
-        ## 1. What do ROW_NUMBER, RANK and DENSE_RANK give on one tie?
+        ## 2. What do ROW_NUMBER, RANK and DENSE_RANK give on one tie?
 
         Six invented members, labelled invented: A and B spent Rs 7,500 each, C Rs 6,000, D and E
         Rs 5,200 each and F Rs 4,100.
@@ -1086,7 +1097,7 @@ def ch3():
                       six[-1]["rank"] - six[-1]["dense_rank"] == 2)
             '''),
         md("""
-        ## 2. How many Retail-Core members does each rule ship?
+        ## 3. How many Retail-Core members does each rule ship?
 
         The same four counts now run on Kalpa. Retail-Core, the everyday shoppers, has 96 Q2
         buyers, so its top fifty is a real cut. A hurried analyst reads "ties ranked the same" and
@@ -1148,7 +1159,7 @@ def ch3():
                       [r["q2_revenue"] for r in near if r["row_number"] == 50] != [r["q2_revenue"] for r in near if r["row_number"] == 51])
             '''),
         md("""
-        ## 3. How many does your own segment's list ship under the head's rule?
+        ## 4. How many members does Retail-Plus's list ship under the head's rule, counted in your own run?
 
         **Your turn.** The head of Retail-Plus asked about their own tier. Type these lines into the
         empty cell below and run it. The query is block `c3_your_segment` of the chapter's `.sql`
@@ -1198,17 +1209,17 @@ def ch3():
             '''),
         md("""
         **What happened.** The answer is b: 50 members booked Rs 2,980 or more, which is RANK's
-        count, and the two routes agree in every segment, including the one you counted yourself. The
+        count, and the two routes agree in every segment, Retail-Plus included, whose count you read in
+        your own run. The
         second route uses a sort and a plain comparison, so a slip in a window's PARTITION BY or ORDER
         BY could not move it.
 
-        > **Kavya's review.** A tie rule is a business decision written as a function name. State
-        > the rule, the count it ships and the members at the line in the same sentence, before
-        > anybody asks why the list holds more or fewer than fifty.
+        > **Kavya's review.** A tie rule is a business decision. State the rule, the count it ships
+        > and the members at the line in one sentence.
 
         ### In the interview: what do the three functions do on a tie, and how long is a top-N list?
 
-        **[S] RANK, DENSE_RANK and ROW_NUMBER on a tie.** ROW_NUMBER gives every row its own number
+        **[S] What do RANK, DENSE_RANK and ROW_NUMBER give on a tie?** ROW_NUMBER gives every row its own number
         and breaks a tie by whatever else the ORDER BY names, or arbitrarily if nothing does. RANK
         gives tied rows the same number and skips the numbers they used up, 1, 1, 3. DENSE_RANK gives
         tied rows the same number without a gap, 1, 1, 2, so it numbers distinct values.
@@ -1221,13 +1232,17 @@ def ch3():
         and hides the tie.
 
         **[F] Your top-ten list came back with eleven rows. What do you tell the stakeholder, and is
-        it a bug?** It is the tie rule working: two members share tenth place and the rule the
-        stakeholder chose keeps both. I say the count and the reason in the same line, name the two
-        members, and offer the hard-cap alternative with the tiebreaker it would need.
+        it a bug?** I find out before I answer: which function cut the list, what sits at tenth and
+        eleventh place, and whether any id repeats. Under RANK with two customers sharing tenth
+        place, it is the rule working, and I say the count and the reason in the same sentence, name
+        the two customers and offer the hard-cap alternative with its tiebreaker. Under DENSE_RANK,
+        ties higher up can push the list past ten with nobody tied at tenth, which is the wrong rule
+        for a top ten. ROW_NUMBER cannot ship eleven, so eleven rows there mean a repeated customer,
+        usually a join that fanned out, and that is a bug.
 
         ### Depth: which tiebreaker would you defend under a hard cap?
 
-        Under a hard cap the list ships exactly the line, and the tiebreaker decides who is left
+        Under a hard cap the list ships exactly its size, and the tiebreaker decides who is left
         off, so it has to be a business reason. On the invented top four, D and E tie on Rs 7,400. If
         D placed three Q2 orders and E two (invented too), "more orders first" keeps D, a reason the
         head of a tier built on frequency could defend; "lower customer id first" keeps whoever was
@@ -1247,14 +1262,14 @@ def ch3():
 
         1. **Which rule?** RANK, with its count and reason in the report; ROW_NUMBER with a stated
            tiebreaker only under a hard cap.
-        2. **What do the three functions give on one tie?** On six invented members, ROW_NUMBER 1 to
-           6, RANK 1, 1, 3, 4, 4, 6 and DENSE_RANK 1, 1, 2, 3, 3, 4.
-        3. **How many rows at a tie on the line?** On an invented top four, 4 under ROW_NUMBER, 5
+        2. **How many rows at a tie on the line?** On an invented top four, 4 under ROW_NUMBER, 5
            under RANK, 5 under DENSE_RANK and 3 under whole ties only.
+        3. **What do the three functions give on one tie?** On six invented members, ROW_NUMBER 1 to
+           6, RANK 1, 1, 3, 4, 4, 6 and DENSE_RANK 1, 1, 2, 3, 3, 4.
         4. **How many Retail-Core members?** 50 under ROW_NUMBER, RANK and whole ties only; 52 under
            DENSE_RANK, whose numbers run two behind after two ties higher up.
-        5. **How many in your own segment?** The count your own run gave, with its reason in your
-           sentence.
+        5. **How many in Retail-Plus, by your own run?** The count your own run gave, with its reason
+           in your sentence.
         6. **Does a count with no window agree?** Yes: the members at or above the fiftieth
            member's figure are RANK's count in every segment, 50 for Retail-Core.
 
@@ -1296,10 +1311,11 @@ def ch4():
         that month below the one before it. The retail dossier, `{DOSSIER}`, section 5, has how
         often a customer orders and why a membership tier watches it.
 
-        **What chapters 1 to 3 found.** Each segment has its own protect list of fifty members, or
+        **What did chapters 1 to 3 find?** Each segment has its own protect list of fifty members, or
         every buyer where a segment has fewer than fifty, cut by RANK so that members who spent the
-        same share a place, as the head of Retail-Plus asked. That list says who matters most; this
-        chapter asks whose spend is slipping.
+        same share a place, as the head of Retail-Plus asked: Business 35 and Student 20, every Q2
+        buyer in both, Retail-Core 50, and Retail-Plus the count each learner read in their own run.
+        That list says who matters most; this chapter asks whose spend is slipping.
 
         {COMPANY[4]}
         """),
@@ -1348,9 +1364,10 @@ def ch4():
         up twice per row, 1,504 each; the spreadsheet holds 1,806 cells for someone to read.
 
         **The best-fit call.** Option A, LAG in a window: one pass, one statement, and `lag(spend, 2)`
-        reaches two months back in the same line as `lag(spend, 1)`. **What would change the call:**
-        a database with no window functions, such as a MySQL server older than version 8.0, which
-        leaves the self-join, option B.
+        reaches two months back in the same statement as `lag(spend, 1)`. What would change the call
+        is a database with no window functions, such as a MySQL server older than version 8.0, which
+        leaves a lookup per row, option C, a correlated subquery that finds each member's previous
+        month with an order.
         """),
         code(r'''
             kit.check("752 member-months for 301 members", (size["member_months"], size["members"]) == (752, 301))
@@ -1489,8 +1506,8 @@ def ch4():
         """),
         code(r'''
             fixed = rows(Q["c4_partitioned"])[0]["members_flagged"]
-            kit.bridge(("flagged with no PARTITION BY", hurried), [("compared with another member", -checked["compared_with_another_member"])],
-                       end_label="flagged with PARTITION BY", title="The fix takes the four borrowed months out of the flag",
+            kit.bridge(("no partition: flagged", hurried), [("compared with another member", -checked["compared_with_another_member"])],
+                       end_label="partitioned: flagged", title="The fix takes the four borrowed months out of the flag",
                        fmt=lambda v: f"{v:,.0f}")
             '''),
         md("""
@@ -1554,9 +1571,12 @@ def ch4():
         own.
 
         **[F] LAG returned a value for a customer's very first month. What went wrong, and how do you
-        check for it in ten thousand rows?** The window has no PARTITION BY, so LAG crossed from the
-        previous customer's last row. Carry `lag(customer_id)` beside the value and count the rows
-        where it differs from the row's own customer; the count must be zero.
+        check for it in ten thousand rows?** Most often the window has no PARTITION BY, so LAG
+        crossed from the previous customer's last row. Carry `lag(customer_id)` beside the value and
+        count the rows where it differs from the row's own customer; the count must be zero. Two other
+        causes give the same symptom, so read the window's call too: a default argument, as in
+        `lag(spend, 1, 0)`, puts a value on the first row where NULL belongs, and an ORDER BY month
+        DESC inside the window makes the first month read the month after it.
 
         ### Depth: which months fell two running anywhere in the six, and what does LEAD read?
 
@@ -1628,7 +1648,7 @@ def ch5():
         3. Does the running total close on Monday's Q2 total?
         4. Where did Q2 stand at mid-quarter, and how has each week run since?
         5. Can a running total by order say which order took Q2 past Rs 3.5 crore?
-        6. Does a plain sum up to each week's end agree?
+        6. Does a plain sum up to each week's end agree with the running total?
 
         **The metric at stake.** Booked revenue to date against plan to date. Booked revenue is
         every order at its amount whatever its status, and Monday's suite put Q2, July to September
@@ -1675,20 +1695,27 @@ def ch5():
             plan = rows(Q["c5_plan"])
             span = rows(Q["c5_q2_span"])[0]
             weeks = len(plan)
-            sizing = [("A. running SUM in a window", span["orders"]), ("B. plain SUM per week", weeks * span["orders"]),
-                      ("C. self-join of weeks", weeks * (weeks + 1) // 2), ("D. spreadsheet export", span["orders"])]
-            kit.table(["option", "rows or pairs worked through"], [(o, f"{n:,}") for o, n in sizing],
+            pairs = weeks * (weeks + 1) // 2
+            sizing = [("A. running SUM in a window", span["orders"], f"{weeks} weekly rows"),
+                      ("B. plain SUM per week", weeks * span["orders"], f"{weeks} sums"),
+                      ("C. self-join of weeks", span["orders"], f"{pairs} week pairs"),
+                      ("D. spreadsheet export", span["orders"], f"{span['orders']} exported rows and a formula on each")]
+            kit.table(["option", "order rows read", "then works through"], [(o, f"{n:,}", then) for o, n, then in sizing],
                       caption=f"Sized on Q2: {span['orders']} orders and {weeks} plan weeks")
-            kit.bars(sizing, title="Rows each option works through to fill thirteen weeks", lit=(0,))
+            touched = [("A. running SUM in a window", span["orders"] + weeks), ("B. plain SUM per week", weeks * span["orders"]),
+                       ("C. self-join of weeks", span["orders"] + pairs), ("D. spreadsheet export", 2 * span["orders"])]
+            kit.bars(touched, title="Rows each option touches: the orders it reads, plus the weeks or pairs after them",
+                     lit=(0,))
             '''),
         md("""
         **What happened.** The answer is c: 6,006 order reads, the 462 Q2 orders once for each of the
         13 plan weeks. The window reads the orders once and accumulates 13 weekly totals; the
-        self-join works through 91 week pairs; the spreadsheet exports all 462 orders, which the data
-        platform lead's rule, "query it, do not export it", rules out.
+        self-join also reads the orders once, for the same weekly totals, and then works through 91
+        week pairs; the spreadsheet exports all 462 orders, which the data platform lead's rule,
+        "query it, do not export it", rules out.
 
         **The best-fit call.** Option A, a running SUM in a window, booked and plan side by side in
-        one table. **What would change the call:** a single reading on a day Meera names, such as
+        one table. What would change the call is a single reading on a day Meera names, such as
         "where were we on 19 August?", which is one plain SUM with the date in WHERE, option B for
         one week.
         """),
@@ -1723,10 +1750,10 @@ def ch5():
             print(Q["c5_plan_first"])
             hurried = rows(Q["c5_plan_first"])
             kit.line([str(r["week_start"])[5:] for r in hurried],
-                     [("plan to date", [r["plan_to_date"] / 1e7 for r in hurried], "plan"),
-                      ("booked to date, plan-first build", [r["booked_to_date"] / 1e7 for r in hurried], "bad")],
-                     title="The plan-first build: booked to date in Rs crore, finishing below plan",
-                     fmt=lambda v: f"{v:.2f}")
+                     [("on plan", [0 for _ in hurried], "plan"),
+                      ("booked less plan, to date, plan-first build", [(r["booked_to_date"] - r["plan_to_date"]) / 1e5 for r in hurried], "bad")],
+                     title="The plan-first build: booked to date less plan to date, Rs lakh, finishing below plan",
+                     fmt=lambda v: f"{v:,.1f}", lo=-50)
             last = hurried[-1]
             kit.stats([(kit.rupees(last["booked_to_date"]), "booked to date", "the plan-first build's close"),
                        (kit.rupees(last["plan_to_date"]), "plan to date", "thirteen weeks"),
@@ -1736,8 +1763,8 @@ def ch5():
         md("""
         **The plausible wrong answer.** Q2 closed at Rs 9,68,60,180 against a plan of Rs 9,83,99,990,
         Rs 15,39,810 short. The answer to the prediction, as the table reports it, is b. Sent to
-        Meera, that line says the quarter missed plan, and the next quarter opens on a campaign to
-        recover Rs 15 lakh.
+        Meera, that sentence says the quarter missed plan, and the next quarter opens on a campaign
+        to recover Rs 15 lakh.
 
         ## 2. Does the running total close on Monday's Q2 total?
 
@@ -1803,11 +1830,11 @@ def ch5():
                       ("booked to date", [r["booked_to_date"] / 1e7 for r in fixed], "lit")],
                      title="Booked to date against plan to date, Rs crore: ahead from mid-July, level at the close",
                      fmt=lambda v: f"{v:.2f}")
-            kit.columns([str(r["week_start"])[5:] for r in fixed],
-                        [("plan for the week", [r["plan_revenue"] / 1e5 for r in fixed]),
-                         ("booked in the week", [r["booked"] / 1e5 for r in fixed])],
-                        title="Each week on its own, Rs lakh: one July week far above plan, most weeks since mid-August below",
-                        fmt=lambda v: f"{v:,.0f}")
+            kit.line([str(r["week_start"])[5:] for r in fixed],
+                     [("plan for the week", [r["plan_revenue"] / 1e5 for r in fixed], "plan"),
+                      ("booked in the week", [r["booked"] / 1e5 for r in fixed], "lit")],
+                     title="Each week on its own, Rs lakh: one July week far above plan, most weeks since mid-August below",
+                     fmt=lambda v: f"{v:,.0f}")
             '''),
         md("""
         **What happened.** The answer is b. At the end of the week of 17 August, booked to date was
@@ -1850,17 +1877,19 @@ def ch5():
             kit.line([r["order_id"][-3:] for r in peers],
                      [("by date alone", [r["by_date_alone"] / 1e7 for r in peers], "bad"),
                       ("by date and order id", [r["by_date_and_id"] / 1e7 for r in peers], "lit")],
-                     title="22 July in Rs crore: one flat value for twelve orders, or one step per order",
+                     title="22 July's orders by the last three digits of their id, Rs crore: one flat value, or one step per order",
                      fmt=lambda v: f"{v:.3f}", lo=3.4)
             '''),
         md("""
         **What happened.** The answer is b: by date alone, all twelve orders of 22 July show
         Rs 3,76,90,290, the day's closing total, so no row can say which order crossed Rs 3.5 crore.
         With the order id added to the ORDER BY, every row is its own step, from Rs 3,45,16,000 to
-        Rs 3,76,90,290, and the step past Rs 3.5 crore is KR-00580's, Rs 8,55,000. The order id makes
-        the running total the same on every run and on every learner's machine; it does not make it
-        the true order of the day, since the warehouse records a date and no time. Say which tiebreak
-        the figure uses.
+        Rs 3,76,90,290, and the step past Rs 3.5 crore is KR-00580's, Rs 8,55,000. By date alone the
+        figures repeat on every run too, since every peer shows the day's close; what the order id
+        adds is one step per order, so a row can name the order that crossed a line. It does not
+        make that the true order of the day, since the warehouse records a date and no time, so say
+        which tiebreak the figure uses. Written with a ROWS frame, a running total ordered by date
+        alone would let the twelve figures change from run to run, which the order id prevents too.
         """),
         code(r'''
             kit.check("by date alone, the twelve orders share one value", len({r["by_date_alone"] for r in peers}) == 1 and len(peers) == 12)
@@ -1868,7 +1897,7 @@ def ch5():
             kit.check("both versions finish the day on the same total", peers[-1]["by_date_alone"] == peers[-1]["by_date_and_id"])
             '''),
         md("""
-        ## A second route: does a plain sum up to each week's end agree?
+        ## A second route: does a plain sum up to each week's end agree with the running total?
 
         Option B, with no window: for each plan week, one plain SUM of every Q2 order dated on or
         before the week's last day. It reads the orders 13 times, and it shares no code with the
@@ -1903,10 +1932,14 @@ def ch5():
         ### In the interview: what makes a running total trustworthy?
 
         **[F] What makes a running total deterministic, and how would you notice one that was not?**
-        Its ORDER BY has to be unique within the window, such as the date plus the order id. Rows
-        that share an ORDER BY value are peers and show the same cumulative figure, which is the
-        tell: a flat run of identical values across rows, or a figure that cannot say which row
-        crossed a line.
+        With Postgres's default frame, a running total ordered by date alone repeats on every run:
+        rows that share the date are peers, and each shows the total through the last of them, so
+        the figures are coarse and stable, and no row can say which order crossed a line. Written
+        with a ROWS frame, or numbered with row_number, over an ORDER BY that is not unique, the
+        peers' figures can change from run to run, since the database may take tied rows in any
+        order. An ORDER BY that is unique, the date plus the order id, gives every row its own step
+        under either frame. The tells are a flat run of identical values under the default frame,
+        and two runs that disagree row by row under a ROWS frame.
 
         **[D] Your running total closes below the quarter's total. What do you check first?** Check
         whether every row made it in: compare the last cumulative value with the independent total,
@@ -1922,15 +1955,17 @@ def ch5():
         """),
         code(r'''
             gap = [(str(r["week_start"])[5:], (r["booked_to_date"] - r["plan_to_date"]) / 1e5) for r in fixed]
-            kit.bars(gap, title="Booked to date less plan to date at each plan week's end, Rs lakh",
-                     fmt=lambda v: f"{v:,.1f}", lit=(6,))
+            kit.line([g[0] for g in gap], [("on plan", [0 for _ in gap], "plan"),
+                                           ("booked less plan, to date", [g[1] for g in gap], "lit")],
+                     title="Booked to date less plan to date at each plan week's end, Rs lakh",
+                     fmt=lambda v: f"{v:,.1f}", lo=-50)
             kit.check("the lead peaked at the end of the week of 3 August",
                       max(gap, key=lambda g: g[1])[0] == "08-03")
             '''),
         md("""
-        The lead was Rs 24.7 lakh behind after the first plan week, jumped ahead in the week of 13
-        July, peaked at Rs 2,16,69,660 at the end of the week of 3 August and shrank from there to Rs
-        10 at the close.
+        Q2 stood Rs 24.7 lakh behind plan after the first plan week, moved ahead in the week of 13
+        July, led by Rs 2,16,69,660 at its peak at the end of the week of 3 August, and the lead
+        fell to Rs 10 at the close, growing again only in the week of 14 September.
 
         ## So has Q2 kept pace with the plan line, and where was it at mid-quarter?
 
@@ -2040,10 +2075,10 @@ def ch6():
         through the 752 rows that exist and D through 1,806, every member in every month.
 
         **The best-fit call.** Option B: LAG with a check that the two rows before September are
-        August and July. It reads only the rows that exist and adds two columns. **What would change
-        the call:** if Marketing also wants "went quiet" as a signal of its own, a member who bought
-        in July and August and nothing in September, the calendar of option D makes those empty months
-        rows a query can count.
+        August and July. It reads only the rows that exist and adds two columns. What would change
+        the call is Marketing wanting a row for every member in every month, with the quiet months
+        shown as blanks, such as a monthly dashboard of each member's buying: only option D's
+        calendar gives the empty months as rows.
         """),
         code(r'''
             kit.check("2.5 months with an order per member", float(per["months_with_an_order_each"]) == 2.5)
@@ -2072,9 +2107,10 @@ def ch6():
             kit.check("every flagged member is on a protect list", both["flagged_on_the_list"] == both["members_flagged"] == 16)
             '''),
         md("""
-        **What happened.** The answer is a: all 16 flagged members are on a protect list, since a
-        member whose spend can fall twice from a high month is a member who spent a lot. Marketing's
-        call sheet would read 16 names.
+        **What happened.** The answer is a: all 16 flagged members are on a protect list. That is a
+        fact of this quarter's data, with two of them in the last three places of their list, so the
+        overlap is read from the data each time, never assumed. Marketing's call sheet would read 16
+        names.
 
         ## 2. What did LAG compare for the member who says they were on holiday?
 
@@ -2089,12 +2125,14 @@ def ch6():
         - d) None, since their August is empty.
         """),
         code(r'''
-            his = run("c6_holiday_member", "C-0216: each month with the months LAG read",
-                      money=("spend", "spend_1_back", "spend_2_back"), echo=False)
+            c0216_rows = run("c6_holiday_member", "C-0216: each month with the months LAG read",
+                             money=("spend", "spend_1_back", "spend_2_back"), echo=False)
             labels = ["2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09"]
-            spent = {str(r["month"])[:7]: r["spend"] for r in his}
-            kit.line(labels, [("C-0216's monthly spend", [spent.get(m) for m in labels], "lit")],
-                     title="C-0216 bought in May, July and September: no June, no August", fmt=kit.rupees)
+            spent = {str(r["month"])[:7]: r["spend"] for r in c0216_rows}
+            # One series per month with an order, so no line is drawn across an empty month.
+            kit.line(labels, [(m, [spent[m] if x == m else None for x in labels], "lit") for m in labels if m in spent],
+                     title="C-0216 bought in May, July and September: no June, no August, so nothing joins them",
+                     fmt=kit.rupees)
             '''),
         md("""
         **What happened.** The answer is b. C-0216 bought in May (Rs 6,440), July (Rs 4,300) and
@@ -2104,7 +2142,7 @@ def ch6():
         own rows agree that August is simply empty.
         """),
         code(r'''
-            sep = his[-1]
+            sep = c0216_rows[-1]
             kit.check("LAG read July as last month for September", str(sep["month_1_back"]) == "2026-07-01")
             kit.check("and May as the month before that", str(sep["month_2_back"]) == "2026-05-01")
             kit.check("C-0216 has no August row", "2026-08" not in spent)
@@ -2127,15 +2165,16 @@ def ch6():
             gaps = rows(Q["c6_gap_check"])[0]
             kept = rows(Q["c6_calendar_flag"])[0]["members_flagged"]
             kit.bridge(("chapter 4's flag", gaps["members_flagged"]),
-                       [("compared across a month with no order", -gaps["across_a_month_with_no_order"])],
+                       [("across an empty month", -gaps["across_a_month_with_no_order"])],
                        end_label="flag with the calendar check", title="Seven of the sixteen flags step over an empty month",
                        fmt=lambda v: f"{v:,.0f}")
             kit.check("seven flags step over a month with no order", gaps["across_a_month_with_no_order"] == 7)
             kit.check("the calendar check keeps nine", kept == 9 == gaps["members_flagged"] - gaps["across_a_month_with_no_order"])
             '''),
         md("""
-        **What happened.** Seven of the sixteen flags compare September with a month before the one
-        before it, because the member placed no order in July or August. C-0216 is one of the seven.
+        **What happened.** Seven of the sixteen flags read rows further back than the calendar's two
+        months, because the member placed no order in July or in August, so LAG's previous row was
+        not the month before. C-0216 is one of the seven.
 
         **The fix, and what it changed.** Option B: the flag holds only when the two rows before
         September are August and July.
@@ -2175,13 +2214,12 @@ def ch6():
 
         ## 4. Who does Marketing call first?
 
-        All nine flagged members are on a protect list, since the list is wider than the flag. One of
-        them shows what a fall that holds up looks like: C-0010 of Retail-Core, first on the
-        Retail-Core list.
+        All nine flagged members are on a protect list, as all sixteen were. One of them shows what a
+        fall that holds up looks like: C-0010 of Retail-Core, first on the Retail-Core list.
         """),
         code(r'''
-            his = run("c6_genuine_fall", "C-0010, the top of Retail-Core's list, in each Q2 month", money=("spend",), echo=False)
-            kit.columns([str(r["month"])[:7] for r in his], [("C-0010's monthly spend, Rs", [r["spend"] for r in his])],
+            c0010_rows = run("c6_genuine_fall", "C-0010, the top of Retail-Core's list, in each Q2 month", money=("spend",), echo=False)
+            kit.columns([str(r["month"])[:7] for r in c0010_rows], [("C-0010's monthly spend, Rs", [r["spend"] for r in c0010_rows])],
                         title="A fall that holds up: July, August and September each lower", fmt=kit.rupees)
             calls = rows(Q["c6_call_list"])
             kit.check("nine members to call, all on a protect list", len(calls) == 9)
@@ -2197,7 +2235,7 @@ def ch6():
         calls = run("c6_call_list", "Marketing's first calls", money=("july", "august", "september"))
         ```
 
-        Read the nine before you write the line to Marketing: which segments they come from, how high
+        Read the nine before you write the sentence to Marketing: which segments they come from, how high
         on each list they stand, and how far each one's spend fell.
         """),
         empty(),
@@ -2219,10 +2257,12 @@ def ch6():
         read a quiet month as a fall to zero, and Kalpa's members buy in about 2.5 of six months, so
         zeros would flag 26 members here, 17 of them only for a quiet September.
 
-        **[D] Marketing also wants members who went quiet. How would you build that flag?** Build it
-        on a calendar of every member and every month, left empty where there is no order, so a quiet
-        month becomes a row the query can see: bought in July and August, nothing in September. It
-        is a second flag with its own name, never mixed into the falling-spend flag.
+        **[D] Marketing also wants members who went quiet. Why is that a second flag, never part of
+        the falling-spend flag?** A member with no September order has no September reading, so the
+        falling-spend flag cannot see them, and a zero would turn them into a fall. Going quiet is a
+        question of its own, bought in July and August and nothing in September, with its own name
+        and its own definition, and the build that answers it is chosen by what Marketing will do
+        with it.
 
         ### Depth: what would a zero-filled calendar have flagged?
 
@@ -2232,8 +2272,8 @@ def ch6():
         code(r'''
             kit.columns(["left empty", "zero-filled"],
                         [("members flagged", [cal["flagged_empty_months"], cal["flagged_zero_months"]]),
-                         ("of them with no September order", [0, cal["zero_flags_with_no_september_order"]])],
-                        title="One calendar, two readings of an empty month")
+                         ("no September order", [0, cal["zero_flags_with_no_september_order"]])],
+                        title="One calendar, two readings of an empty month", width=500)
             kit.check("the calendar left empty agrees with the checked LAG", cal["flagged_empty_months"] == 9)
             '''),
         md("""
@@ -2255,11 +2295,11 @@ def ch6():
         **The day's answer, to Marketing and the head of Retail-Plus.** Each segment's protect list is
         its top fifty by Q2 revenue under RANK, so members who spent the same share a place: Business
         and Student list every Q2 buyer, 35 and 20, Retail-Core lists 50, and Retail-Plus lists the
-        count your own run gave, with the reason in the same line if it is not fifty. Call the nine
+        count your own run gave, with the reason in the same sentence if it is not fifty. Call the nine
         members whose spend fell in August and again in September first; a month with no order is no
         reading, so the member on holiday is not one of them. Q2 closed on plan, Rs 9,84,00,000 against
-        Rs 9,83,99,990, and the Rs 1.58 crore lead at mid-quarter came from one week in July, so the
-        weekly run rate has sat below plan since 10 August.
+        Rs 9,83,99,990, and the Rs 1.58 crore lead at mid-quarter came from one week in July; six of
+        the seven full weeks from 10 August booked below plan.
         """),
         code("kit.check_summary()"),
     ]
@@ -2357,7 +2397,7 @@ def case():
         md("""
         ## Part 1. Which members make each segment's list under the head of Retail-Plus's rule, and how many in each?
 
-        Where this is used at work: the head of Retail-Plus asked for ties ranked the same and for
+        At work, the head of Retail-Plus asked for ties ranked the same and for
         each list's count, so every list Kalpa ships states its rule and its count.
         """),
         code(r'''
@@ -2426,7 +2466,7 @@ def case():
         md("""
         ## Part 2. Which listed members does Marketing ring first?
 
-        Where this is used at work: Marketing's member team rings a member whose own months show the
+        At work, Marketing's member team rings a member whose own months show the
         drift, and the data team writes the flag's definition down before the first call goes out.
         """),
         code(r'''
@@ -2492,7 +2532,7 @@ def case():
         md("""
         ## Part 3. How much of each segment's Q2 revenue does its list carry?
 
-        Where this is used at work: the marketing lead asked how much of each segment's Q2 revenue the
+        At work, the marketing lead asked how much of each segment's Q2 revenue the
         lists cover, so each list carries its share of the segment it was cut from.
         """),
         code(r'''
@@ -2560,7 +2600,7 @@ def case():
         md("""
         ## Part 4. Is Q2 on track by the total and by the run rate?
 
-        Where this is used at work: Meera reads the quarter twice, by the total so far and by how each
+        At work, Meera reads the quarter twice, by the total so far and by how each
         week is running, and the two can disagree.
         """),
         code(r'''
@@ -2587,10 +2627,10 @@ def case():
                      [("plan to date", [w["plan_to_date"] / 1e7 for w in weeks], "plan"),
                       ("booked to date", [w["booked_to_date"] / 1e7 for w in weeks], "lit")],
                      title="Q2 to date against plan to date, Rs crore", fmt=lambda v: f"{v:.2f}")
-            kit.columns([str(w["week_start"])[5:] for w in weeks],
-                        [("plan for the week", [w["plan_revenue"] / 1e5 for w in weeks]),
-                         ("booked in the week", [w["booked"] / 1e5 for w in weeks])],
-                        title="Each plan week on its own, Rs lakh", fmt=lambda v: f"{v:,.0f}")
+            kit.line([str(w["week_start"])[5:] for w in weeks],
+                     [("plan for the week", [w["plan_revenue"] / 1e5 for w in weeks], "plan"),
+                      ("booked in the week", [w["booked"] / 1e5 for w in weeks], "lit")],
+                     title="Each plan week on its own, Rs lakh", fmt=lambda v: f"{v:,.0f}")
 
             # TODO 8. Which comparison counts the weeks that ran below plan, each week on its own?
             #   a) booked_to_date < plan_to_date
@@ -2623,7 +2663,7 @@ def case():
         md("""
         ## Part 5. What goes to Marketing and Meera?
 
-        Where this is used at work: Meera takes one sentence into the leadership meeting, so each
+        At work, Meera takes one sentence into the leadership meeting, so each
         number in it has to hold on its own.
         """),
         code(r'''
@@ -2720,8 +2760,8 @@ def second():
         md("""
         ## Step 1. How many Q2 orders did each Retail-Core member place, and where do the ties fall?
 
-        Where this is used at work: a list ranked on how often customers buy, in place of how much
-        they spend.
+        At work, a list is sometimes ranked on how often customers buy, in place of how much they
+        spend, and its count has to be read again.
         """),
         code(r'''
             # TODO 1. Which expression counts a member's Q2 orders?
@@ -2750,7 +2790,7 @@ def second():
         md("""
         ## Step 2. How many members does each rule ship when the list is ranked by orders alone?
 
-        Where this is used at work: a rule written for one metric is applied to another, and its count
+        At work, a rule written for one metric is applied to another, and its count
         has to be read again.
         """),
         code(r'''
@@ -2783,7 +2823,7 @@ def second():
         md("""
         ## Step 3. Why does that rule ship the number it ships?
 
-        Where this is used at work: the marketing lead asked to be told how many made it, so a count
+        At work, the marketing lead asked to be told how many made it, so a count
         above fifty goes out with its reason in one sentence.
         """),
         code(r'''
@@ -2810,7 +2850,7 @@ def second():
         md("""
         ## Step 4. Which second key decides between members with the same number of orders, and how many members does the list ship then?
 
-        Where this is used at work: the second key that decides between members level on the first is
+        At work, the second key that decides between members level on the first is
         a business choice with a reason.
         """),
         code(r'''
@@ -2842,7 +2882,7 @@ def second():
         md("""
         ## Step 5. How many members do the two lists share, and how far apart are they in rupees?
 
-        Where this is used at work: before a team argues over two definitions, it measures how much
+        At work, before a team argues over two definitions, it measures how much
         the answer changes.
         """),
         code(r'''
@@ -2876,7 +2916,7 @@ def second():
         md("""
         ## Step 6. What do you tell the marketing lead?
 
-        Where this is used at work: a definition argument ends when someone says what changes, by how
+        At work, a definition argument ends when someone says what changes, by how
         much, and which choice they recommend.
         """),
         code(r'''

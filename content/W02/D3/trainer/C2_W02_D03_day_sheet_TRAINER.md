@@ -38,7 +38,7 @@ each chapter's map slide lists its smaller questions, and its last slide answers
 | The ask | What does Marketing want, and what can GROUP BY not give it? | Who is asking, and what does each want by Monday? What does each need, and what does a wrong answer cost? Can one GROUP BY answer all three? What does each ask need a window to add to every row? |
 | Chapter 1 | Which fifty members spent the most in Q2? | Which way, at what cost? What did each member book in Q2? Which fifty members spent the most? What does the quickest list, the fifty biggest orders, give Marketing? Which segments does the list of fifty reach? Does a sort in Python pick the same fifty? |
 | Chapter 2 | Which fifty members lead each of the four segments? | Which way, at what cost? Can GROUP BY return each segment's top fifty? What does numbering the whole book once give each segment? What does PARTITION BY restart, and how many members does each list hold? Does one sorted query per segment pick the same members? |
-| Chapter 3 | When two members spent the same at the line, how many does a list ship, and which rule did the head of Retail-Plus ask for? | Which rule, at what cost? What do the three functions give on one tie? How many rows does each rule ship at a tie on the line? How many Retail-Core members does each rule ship? How many does your own segment's list ship? Does a count with no window agree with RANK? |
+| Chapter 3 | When two members tie at fiftieth place, how many does a list ship, and which rule did the head of Retail-Plus ask for? | Which rule, at what cost? What do the three functions give on one tie? How many rows does each rule ship at a tie on the line? How many Retail-Core members does each rule ship? How many does your own segment's list ship? Does a count with no window agree with RANK? |
 | Chapter 4 | Whose monthly spend fell two months running? | Which way, at what cost? What did each member spend each month? What does LAG put beside one member's months? What does LAG read with no PARTITION BY? How many fell twice, months kept apart? Does a Python walk agree? |
 | Chapter 5 | Has Q2 revenue kept pace with the plan line week by week, and where did it stand at mid-quarter? | Which way, at what cost? How much had Q2 booked by each plan week's end? Does the running total close on Monday's Q2 total? Where was Q2 at mid-quarter, and how has each week run since? Can a running total by order say which order crossed Rs 3.5 crore? Does a plain sum agree? |
 | Chapter 6 | Which listed members does Marketing call first, and does each flag hold up when a member says they were on holiday? | Which reading of "last month", at what cost? How many flagged members are on the list? What did LAG compare for the member on holiday? How many of the sixteen flags step over a month with no order? Does a calendar join agree? Who does Marketing call first? |
@@ -51,8 +51,8 @@ revenue under RANK, so members who spent the same share a place: Business and St
 buyer, 35 and 20, Retail-Core lists 50, and Retail-Plus lists 51, because two members tie at fiftieth
 on Rs 3,350. Ring the nine members whose spend fell in August and again in September first; a month
 with no order is no reading, so the member on holiday is not one of them. Q2 closed on plan, Rs 10
-ahead, and the Rs 1.58 crore lead at mid-quarter came from one July week, so the weekly run rate has
-sat below plan since 10 August." On the slide the Retail-Plus count is left to each learner's own
+ahead, and the Rs 1.58 crore lead at mid-quarter came from one July week; six of the seven full weeks
+from 10 August booked below plan." On the slide the Retail-Plus count is left to each learner's own
 run; have two learners read theirs first.
 
 ---
@@ -69,7 +69,7 @@ run; have two learners read theirs first.
 
 ---
 
-## How does the morning's 180 minutes run?
+## How do the morning's 180 minutes run?
 
 ```mermaid
 flowchart LR
@@ -88,8 +88,10 @@ flowchart LR
 | Chapter 4, 30 | SECTION 4, S49 to S61 | Notebook 04 | NULL on a first month (S55); 20 flags with no partition, 4 borrowed (S57), the check (S58), 16 with PARTITION BY (S59) | S60 to its stats line |
 | Chapter 5, 30 | SECTION 5, S62 to S76 | Notebook 05 | The plan-first close Rs 15,39,810 short (S68); the check against Monday's total and the five missing days (S69); Rs 10 ahead after the fix (S70); Rs 1.58 crore ahead at mid-quarter from one July week, six of seven weeks below since 10 August (S72) | S73 and S74 to one sentence |
 
-Each chapter's set (`exercises/unguided/C2_W02_D03_ch{n}_*_STUDENT.md`) runs its first items live in
-the chapter's last minutes if the chapter ran to time; the rest are the practice lab's or tonight's.
+Each chapter's set (`exercises/unguided/C2_W02_D03_ch{n}_*_STUDENT.md`) runs two items live in the
+chapter's last minutes if the chapter ran to time: items 2 and 3 in chapter 1, since item 1 prints the
+155 that chapter 2's S30 asks the room to predict, and items 1 and 2 in every other chapter. The rest
+are the practice lab's or tonight's.
 
 **The one runtime error, two minutes, never a trap slot.** Somebody writes the place filter in
 WHERE. Postgres 16 prints, with two spaces after the colon:
@@ -107,7 +109,7 @@ One learner each, under thirty seconds. After chapter 1: what is one row of your
 prove it? After chapter 2: what does PARTITION BY segment restart, and how many members did the four
 lists hold? After chapter 3: which function did the head of Retail-Plus ask for, and how many members
 did your Retail-Plus list ship? After chapter 4: what did LAG read for a member's first row with no
-PARTITION BY? After chapter 5: what must the last booked-to-date equal before you say ahead or behind?
+PARTITION BY? After chapter 5: what must the last booked to date equal before you say ahead or behind?
 After chapter 6: what does the flag do with a month in which the member placed no order?
 
 ---
@@ -147,7 +149,7 @@ Retail-Plus list ship, and what is the reason in your sentence?
 | 1. The top fifty | Sort the orders (an order per row), GROUP BY with LIMIT (50 rows, place on screen only, 4 queries per segment), number members in a window (50 rows, place as a column, 1 query per segment), export and sort (462 rows leave) | The window; one overall list read by eye makes GROUP BY with LIMIT shorter | Python sums the 462 Q2 order rows per member and sorts: the same fifty in the same order |
 | 2. Per segment | One query per segment with UNION ALL (4 queries, 1,848 order rows), count who spent more (16,617 member pairs), PARTITION BY segment (1 query, 462 rows), GROUP BY segment with LIMIT (cannot list members) | PARTITION BY; a database with no window functions, such as MySQL before 8.0, leaves UNION ALL | Four sorted queries with LIMIT 50 glued by UNION ALL: the same 155 members |
 | 3. The tie | ROW_NUMBER with a stated tiebreaker (4 on the invented top four), RANK (5), DENSE_RANK (5), whole ties only (3) | RANK with its count and reason; a hard cap, such as fifty seats, makes ROW_NUMBER with a stated tiebreaker honest | Members at or above the fiftieth member's figure, by sort and OFFSET: RANK's count in every segment, 50 for Retail-Core |
-| 4. Falling spend | LAG (752 member-months once), self-join twice (1,504), a lookup per row (1,504), spreadsheet columns (1,806 cells) | LAG; no window functions leaves the self-join | A Python walk over the 752 member-months: the same 16 |
+| 4. Falling spend | LAG (752 member-months once), self-join twice (1,504), a lookup per row (1,504), spreadsheet columns (1,806 cells) | LAG; no window functions leaves a lookup per row | A Python walk over the 752 member-months: the same 16 |
 | 5. The plan | Running SUM in a window (462 orders once), a plain SUM per week (6,006 reads), a self-join of weeks (91 pairs), a spreadsheet column (462 exported) | The running SUM; one reading on a date Meera names makes a plain SUM with that date in WHERE shorter | Thirteen plain SUMs to each week's last day: equal in all thirteen weeks |
 | 6. The calls | LAG over own months (752 rows, steps over a gap), LAG with a calendar check (752, breaks the run), a zero-filled calendar (1,806, a quiet month reads as a fall: 26 flagged, 17 with no September order), a calendar left empty (1,806, 9) | The calendar check on LAG; Marketing wanting "went quiet" as its own signal makes the empty calendar worth its rows | A self-join on calendar months: the same 9 |
 
@@ -162,7 +164,7 @@ Retail-Plus list ship, and what is the reason in your sentence?
 | 3 | DENSE_RANK for "ties ranked the same" on Retail-Core | 52 members sent as the top fifty | Two members, C-0092 on Rs 2,950 and C-0094 on Rs 2,910, who tie with nobody, are called as top fifty | Read places 46 to 54 with all three functions; ties at places 31 and 32 (Rs 4,540) and 37 and 38 (Rs 4,120) | RANK: 50, the same fifty as ROW_NUMBER |
 | 3, invented | A top four cut at a tie at fourth | 4, 5, 5 or 3 rows by rule | The forty-nine or fifty-one the head refused, at four | Count the rows each rule ships | RANK, with the count said |
 | 4 | LAG OVER (ORDER BY customer_id, month), no partition | 20 flagged, 4 comparing another member's month (C-0070, C-0117, C-0132, C-0335) | Four members rung about a fall in someone else's account | Carry lag(customer_id), count where it differs | PARTITION BY customer_id: 16 |
-| 5 | plan_line LEFT JOIN weekly booked on date_trunc('week'), running sums | Closes Rs 9,68,60,180 against Rs 9,83,99,990, "Rs 15,39,810 short of plan" | Meera told Q2 missed plan; a recovery campaign for a gap that is not there | Last booked-to-date against Monday's Rs 9,84,00,000: Rs 15,39,820 short; Q2's orders fall under 14 Mondays, the plan has 13 | The first plan week carries 1 to 5 July (25 orders, Rs 15,39,820): closes Rs 10 ahead |
+| 5 | plan_line LEFT JOIN weekly booked on date_trunc('week'), running sums | Closes Rs 9,68,60,180 against Rs 9,83,99,990, "Rs 15,39,810 short of plan" | Meera told Q2 missed plan; a recovery campaign for a gap that is not there | Last booked to date against Monday's Rs 9,84,00,000: Rs 15,39,820 short; Q2's orders fall under 14 Mondays, the plan has 13 | The first plan week carries 1 to 5 July (25 orders, Rs 15,39,820): closes Rs 10 ahead |
 | 6 | Chapter 4's flag shipped as it stands | 16 calls, 7 of them stepping over a month with no order, C-0216 among them | A loyal member told their spend fell when they were away | Carry lag(month), count flags whose rows before September are not August and July | The calendar check: 9 |
 
 Two more wrong readings sit in the Kahoot, the exercises and the debrief. A cumulative actual set
@@ -257,15 +259,15 @@ Every fact was checked on 1 October 2026; the URLs are in the provenance.
 
 | Tag | Question | The answer in one breath |
 |---|---|---|
-| [S] | RANK, DENSE_RANK and ROW_NUMBER on a tie. | ROW_NUMBER gives every row its own number and breaks a tie by whatever else its ORDER BY names; RANK gives tied rows the same number and skips the places they use, 1, 1, 3; DENSE_RANK gives them the same number with no gap, 1, 1, 2. |
+| [S] | What do RANK, DENSE_RANK and ROW_NUMBER give on a tie? | ROW_NUMBER gives every row its own number and breaks a tie by whatever else its ORDER BY names, or arbitrarily when nothing else is named; RANK gives tied rows the same number and skips the places they use, 1, 1, 3; DENSE_RANK gives them the same number with no gap, 1, 1, 2. |
 | [S] | Top-3 per group: GROUP BY or a window, and why? | A window: GROUP BY collapses each group to one row and LIMIT counts across the whole result, so you number rows inside PARTITION BY the group in a CTE and keep places up to three outside it. |
 | [S] | What is the difference between GROUP BY and a window function? | GROUP BY returns one row per group; a window keeps every row and adds a column computed over related rows, such as a place, a previous month or a total so far. |
 | [F] | How would you find customers whose spend fell two months in a row? | One row per customer per month, lag 1 and lag 2 over a window partitioned by the customer and ordered by month, a check that the lagged months are the calendar months before, and keep the rows that fall twice. |
 | [F] | Why can a window function not sit inside WHERE, and what do you do instead? | WHERE filters rows before the window is computed, so the value does not exist yet; compute it in a CTE or subquery and filter outside. |
 | [F] | A top-fifty list has fifty rows but twenty-eight names: what happened? | It ranked order rows, so a customer with several big orders took several places; check distinct customers against rows, and rank customers after adding up their orders. |
-| [F] | Your top-ten list came back with eleven rows: is it a bug? | No, the tie rule is working: two customers share tenth place and RANK keeps both; say the count and the reason in the same line and offer the hard-cap alternative with its tiebreaker. |
-| [F] | LAG returned a value for a customer's very first month: what went wrong? | The window has no PARTITION BY, so LAG crossed from the previous customer; carry lag(customer_id) beside the value and count where it differs, which must be zero. |
-| [F] | What makes a running total deterministic, and how would you notice one that was not? | An ORDER BY that is unique in the window, such as the date plus the order id; peers sharing a value show the same cumulative figure, which is the tell. |
+| [F] | Your top-ten list came back with eleven rows: is it a bug? | Check first which function cut the list, who sits at tenth and eleventh, and whether any id repeats. Under RANK with two customers sharing tenth, the rule is working: say the count and the reason in the same sentence and offer the hard-cap alternative with its tiebreaker. Under DENSE_RANK, ties higher up can push the list past ten with nobody tied at tenth. ROW_NUMBER cannot ship eleven, so eleven rows there mean a repeated customer, usually a join that fanned out, and that is a bug. |
+| [F] | LAG returned a value for a customer's very first month: what went wrong? | Most often the window has no PARTITION BY, so LAG crossed from the previous customer; carry lag(customer_id) beside the value and count where it differs, which must be zero. A default argument such as lag(spend, 1, 0), or ORDER BY month DESC inside the window, gives the same symptom, so read the call too. |
+| [F] | What makes a running total deterministic, and how would you notice one that was not? | An ORDER BY that is unique in the window, such as the date plus the order id. Ordered by date alone under the default frame, peers share one figure on every run, which is stable and too coarse to say which order crossed a line; with a ROWS frame over the date alone, tied rows can come in a different order on each run, and two runs that disagree row by row are the tell. |
 | [D] | Your running total closes below the quarter's total: what do you check first? | Whether every row made it in: the last cumulative value against the independent total, then rows outside the join's calendar, here 25 orders of 1 to 5 July, Rs 15,39,820. |
 | [F] | Revenue to date is nine times the plan by week seven: what is the likely mistake? | A cumulative actual beside one week's plan; accumulate the plan too and compare to date with to date. |
 | [D] | The business says ties rank the same: which function, and how many rows might the top-N report ship? | RANK, which can ship more than N when a tie straddles the line, so the report says the count; DENSE_RANK can ship more even with no tie at the line; ROW_NUMBER always ships N and hides the tie. |

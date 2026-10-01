@@ -5,11 +5,11 @@ Answers: 1d 2a 3c 4b 5d
 Chapter 6 read the rows behind chapter 4's 16 flags. All 16 sit on a protect list. C-0216 bought in
 May, July and September, so LAG compared their September with July and their July with May, four months
 apart, and called a holiday a fall. Seven of the 16 flags step over a month with no order in the same
-way; the check that the two rows before September are August and July keeps 9, and a self-join of
-each member's September to their own August and July by calendar month keeps the same 9. A calendar
-filled with zero would have flagged 26 members, 17 of whom simply placed no September order. Members
-buy in about 2.5 of the six months, so an empty month is the usual state. Three of the five items are
-design items: 1, 4 and 5.
+way; a check that the months LAG read are August and July keeps 9, and a self-join of each member's
+September to their own August and July by calendar month keeps the same 9. A calendar filled with zero
+would have flagged 26 members, 17 of whom simply placed no September order. Members buy in about 2.5 of
+the six months, so an empty month is the usual state. Three of the five items are design items: 1, 4
+and 5.
 
 **Who needs the answer.** You need it to check your five letters after the lab or tonight. Every flag that
 survives becomes a phone call to a member, and a flag built on an empty month accuses a loyal member
@@ -17,115 +17,125 @@ of drifting.
 
 **The questions on the way.**
 
-- Which idea does this set test?
-- Why is each key right, item by item?
-- Which wrong answer is worth arguing about?
-- Where does this show up at work?
+- What does the call-first set test about what an empty month means?
+- Why is each call-first key right, and each other letter wrong?
+- Why is item 4's Python walk worth arguing about?
+- Where have real companies had to decide what a gap in a customer's buying means?
 
-## Which idea does this set test?
+## What does the call-first set test about what an empty month means?
 
-A flag's definition has to say what an empty month is before it runs, because LAG reads rows and the
-stakeholder speaks in calendar months. The design items size the four readings, choose a second route
-that reads calendar months with no window, and name the business fact under which zero would be the
-honest value. The other items read what LAG compares for a member with gaps and what a zero-filled
-calendar does to a member who went quiet.
+LAG reads rows and Marketing speaks in calendar months, so a flag's definition has to say what a month
+with no order means before the flag runs. The design items size the four readings of "last month",
+choose a second route that reads calendar months with no window, and name the business fact under which
+zero would be the honest value. The other two items read what LAG compares for a member with gaps and
+what a zero-filled calendar does to a member who stopped buying.
 
-## Why is each key right, item by item?
+## Why is each call-first key right, and each other letter wrong?
 
 ### Q1. Which reading of "last month" fits the flag, sized in the rows it reads?
 
-Kind: a design item, the best-fit reading with its size.
+This is a design item: it asks for the reading that fits Marketing's words, with its size.
 
-The key is d, "LAG with a check that the two rows before September are August and July: 752 rows". It
-reads only the rows that exist and adds two columns, `lag(month, 1)` and `lag(month, 2)`, so a member
-who skipped August or July breaks the run and is not flagged, which is what "two months running" says.
+The key is d, "LAG on the 752 rows, with a flag kept only if `lag(month, 1)` is August and
+`lag(month, 2)` July". It reads only the rows that exist and adds two columns, the months LAG read, so
+a member who skipped August or July breaks the run and is not flagged, which is what "two months
+running" says. On this book it keeps 9 of chapter 4's 16.
 
-- a, "A calendar of every member and month, zero-filled: 1,806 rows, a month with no order reading as
-  zero": a quiet month becomes a fall to zero, which flags 26 members, 17 of them for a September with
-  no order.
-- b, "A calendar of every member and month, left empty: 752 rows, since empty months add no rows": the
-  reading is right and the size is wrong; a calendar holds a row for every member in every month, 301
-  times 6, 1,806.
-- c, "LAG over each member's own months, as chapter 4 built it: 752 rows, with no check needed": steps
-  over empty months, which is how 7 of the 16 flags compared months two or more apart.
+- Option a, "A calendar of every member and month, zero-filled: 1,806 rows, with an empty month read as
+  zero", turns a quiet month into a fall to zero, which flags 26 members, 17 of them for a September
+  with no order.
+- Option b, "A calendar of every member and month, left empty: 752 rows, since empty months add no
+  rows", has the right reading and the wrong size, since a calendar holds a row for every member in
+  every month, empty or not, 301 times 6, 1,806.
+- Option c, "LAG over each member's own months, as chapter 4 built it: 752 rows, each beside the month
+  before", sets each row beside the member's previous row, which is the month before only when the
+  member bought in it, so it steps over empty months, and 7 of the 16 flags compared months two or more
+  apart.
 
-### Q2. Which months does chapter 4's flag compare for an invented member with gaps, and does the checked flag keep them?
+### Q2. Which months does chapter 4's flag compare for an invented member with gaps, and does a flag that reads calendar months keep them?
 
-Kind: predict the output, on invented numbers.
+This item asks you to predict the output on invented numbers.
 
-The key is a, "September against June and April, so chapter 4's flag fires and the checked flag drops
-them". Y-01 has three rows. LAG reads the previous row, so their September sits beside June, Rs 2,700, and
-June beside April, Rs 3,600, and Rs 1,300 below Rs 2,700 below Rs 3,600 fires chapter 4's flag. The
-check asks whether the two rows before September are August and July; they are June and April, so the
-checked flag leaves them off.
+The key is a, "September against June and April, so chapter 4's flag fires and the calendar flag drops
+them". Y-01 has three rows. LAG reads the previous row, so their September sits beside June, Rs 2,700,
+and June beside April, Rs 3,600, and Rs 1,300 below Rs 2,700 below Rs 3,600 fires chapter 4's flag. A
+flag that reads calendar months asks for August and July, and Y-01 has neither, so it leaves them off.
 
-- b, "September against August and July, each read as zero, so both flags keep them": the monthly table
-  has no August or July row for Y-01, so LAG never sees a zero, and Rs 1,300 against zero would be a
-  rise.
-- c, "September against nothing, since LAG returns NULL across empty months, so neither flag fires":
-  LAG returns NULL only before a member's first row; across a gap it reads the last row there is.
-- d, "September against June and April, so both flags keep them, since each month they ordered fell": the
-  first half is right, and the checked flag exists to drop exactly this member.
+- Option b, "September against August and July, read as zero, so chapter 4's flag cannot fire on a
+  rise", assumes the empty months hold zeros, but the monthly table has no August or July row for Y-01,
+  so LAG never sees a zero; it reads June and April, and the flag fires.
+- Option c, "September against nothing, since LAG returns NULL across empty months, so neither flag
+  fires", misplaces LAG's NULL, which comes only before a member's first row; across a gap LAG reads the
+  last row there is.
+- Option d, "September against June and April, so both flags keep them, since each month they ordered
+  fell", gets the first half right, and the calendar flag exists to drop exactly this member, whose falls
+  run across empty months.
 
 ### Q3. What does the book say about an invented member with no September order, and which flag should name them?
 
-Kind: spot the plausible wrong output, on invented numbers.
+This item asks you to spot the plausible wrong output on invented numbers.
 
-The key is c, "Nothing to compare, since they placed no September order; a separate quiet signal would
-name them". Y-02 has no September row, so the falling-spend flag has no September spend to set beside
+The key is c, "Nothing to compare, since they placed no September order; a separate went-quiet list
+names them". Y-02 has no September row, so the falling-spend flag has no September spend to set beside
 August. Filled with zero, their September reads as Rs 0 below Rs 1,800 below Rs 2,300, a fall twice
 running that never happened. What the book does show is a member who bought in July and August and
-then nothing, which is a different question with its own name and its own list.
+then nothing, which is a different question with its own list. That list needs no calendar: a NOT
+EXISTS or a HAVING over the 752-row monthly table finds the members who bought in July and August and
+placed no September order, 27 of them on Kalpa's book, and a calendar left empty finds the same 27.
 
-- a, "A fall to zero, so the falling-spend flag names them and Marketing rings them about a falling
-  spend": the call would describe a September they never had.
-- b, "A fall to zero once their August is checked against July, so the flag names them with a note": the
-  August check holds and the September reading is still the zero someone wrote in.
-- d, "An unknown, so their July and August are dropped as well and they leave the book until they order":
-  throws away two real months to hide one empty one, and loses the member who may most need a call.
+- Option a, "A fall to zero, so the falling-spend flag names them and Marketing rings them about that
+  fall", would send a call describing a September spend they never had.
+- Option b, "A fall to zero once their August is checked against July, so the flag names them with a
+  note", gets the August check right, and the September reading is still a zero someone wrote in.
+- Option d, "An unknown, so their July and August are dropped as well, and they leave the book until
+  they buy", throws away two real months to hide one empty one, and loses a member who may most need
+  a call.
 
-### Q4. Which route confirms the checked flags with no window, and what does it read?
+### Q4. Which route confirms the nine calendar-month flags with no window, and what does it read?
 
-Kind: a design item, the independent second route.
+This is a design item: it asks for the independent second route and what it reads.
 
-The key is b, "A self-join of each member's September row to their own August and July rows by calendar
-month". It joins rows by date with no window: a member with no August or no July row has nothing to
-join to, so a gap breaks the run by construction. In the chapter it kept the same 9 members as the
-checked LAG, and it would disagree if the check on `lag(month)` were written wrong.
+The key is b, "A self-join of each member's September row to their own August and July rows: 359 rows
+read". It joins rows by date with no window: the 118 September rows meet the 122 August rows and the
+119 July rows, 359 member-months, and a member with no August or no July row has nothing to join to, so
+a gap breaks the run by construction. In the chapter it kept the same 9 members as the flag that checks
+the months LAG read, and it would disagree if that check were written wrong.
 
-- a, "The Python walk from chapter 4, through the 752 member-months grouped by member and sorted: 752
-  rows": the walk reads the previous row, as LAG does, so it agrees with chapter 4's 16 and shares the
-  very reading the check corrects.
-- c, "The calendar zero-filled and read with LAG over each member's six months: 1,806 rows": reads a
-  quiet month as zero and flags 26.
-- d, "The checked LAG query rerun after the platform's overnight reload, set beside the first: 752
-  rows": the same query twice repeats whatever it got wrong.
+- Option a, "A walk in Python that sorts each member's months and sets each beside the one before: 752
+  rows", shares no window, but it reads the previous row, as LAG does, so it finds chapter 4's 16 and
+  repeats the very reading the month check corrects.
+- Option c, "The calendar zero-filled and read with LAG over each member's six months: 1,806 rows",
+  uses a window and reads a quiet month as zero, so it flags 26.
+- Option d, "The flag's own LAG query rerun after the overnight reload, set beside the first run: 752
+  rows", runs the same query twice, so it repeats whatever the query got wrong.
 
 ### Q5. Which fact would make filling an empty month with zero the honest reading?
 
-Kind: a design item, the fact that would switch the call.
+This is a design item: it asks for the fact that would switch the reading.
 
 The key is d, "Every member is billed every month by default, so a month with no charge means they
 cancelled". Where every member is expected to pay every month, an empty month is a real zero, a lapse,
 and a fall to zero is the strongest signal there is. Kalpa's members buy when they choose, about 2.5
 months in six, so an empty month says nothing about their spend.
 
-- a, "Members buy in about 2.5 of six months, so most of their months are empty anyway": that is the
-  reason zero misleads here, since most zeros would be ordinary quiet months.
-- b, "The calendar holds 1,806 rows, so every member already has a row to fill for each of the six
-  months": the calendar's size says nothing about what an empty month means.
-- c, "Marketing wants more members to ring, and zeros would add 17 more calls this week": 26 flags
-  against the checked 9, and the 17 extra calls describe falls that did not happen.
+- Option a, "Members buy in about 2.5 of the six months, so most of a member's months are empty
+  anyway", is the reason zero misleads here, since most zeros would be ordinary quiet months.
+- Option b, "The calendar holds 1,806 rows, so each member already has a row to fill for each of six
+  months", describes the table's size, which says nothing about what an empty month means.
+- Option c, "A lost member costs Kalpa more than a wasted call, so reading a quiet month as a fall is
+  safer", weighs the cost of an error, which can decide how long a call list runs or whether a
+  went-quiet list goes out as well; it leaves the meaning of an empty month where it was, and the 17
+  extra calls would tell members their spend fell when it did not.
 
-## Which wrong answer is worth arguing about?
+## Why is item 4's Python walk worth arguing about?
 
-Item 4, option a. The Python walk was chapter 4's second route and it agreed with LAG member for
-member, so it feels like the safe check. It agrees because it reads "the month before" the same way
-LAG does, as the previous row, so it repeats the reading that put C-0216 on the call list. A second
-route has to be independent of the assumption under test, and here the assumption is what an empty
-month means.
+Item 4's option a, the Python walk, feels like the safe check, since it was chapter 4's second route and
+it agreed with LAG member for member. It agreed because it reads "the month before" the same way LAG
+does, as the previous row, so it repeats the reading that put C-0216 on the call list. A second route
+has to be independent of the assumption under test, and here the assumption is what an empty month
+means.
 
-## Where does this show up at work?
+## Where have real companies had to decide what a gap in a customer's buying means?
 
 Shopify's data team warned merchants that "far too often businesses define churn as no purchases after
 N days", and read a customer's gap against that customer's own history (Cam Davidson-Pilon, "How

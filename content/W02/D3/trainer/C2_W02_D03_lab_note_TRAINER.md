@@ -43,8 +43,9 @@ The lab's own length is set for the day; its work comes to about 110 minutes, in
 | 3. The practice set | 60 | Alone for problems 1 and 2, pairs for problem 3 | Three rankings predicted on an invented tie (10), GROUP BY or a window for six of Marketing's asks (10), and Kavya's drill on eight invented members (40) |
 | 4. The interview drill aloud | 15 | Pairs | Sixty seconds an answer, the partner timing and asking one follow-up, the [D] questions last |
 
-Learners who finish the set early take the stretch: the chapter sets' items not run live, items 3
-onward of each set in `exercises/unguided/`, chapters 4 to 6 first. Whatever is left is tonight's work
+Learners who finish the set early take the stretch: the chapter sets' items not run live in
+`exercises/unguided/`, which are items 1, 4 and 5 of chapter 1's set and items 3 to 5 of every other
+set, chapters 4 to 6 first. Whatever is left is tonight's work
 beside the take-home and the second case.
 
 ## What goes first when the lab runs short?
@@ -88,16 +89,16 @@ Cut in this order, and stop as soon as the lab fits.
 Take the wrong letters in this order, each with a learner who chose it saying why before anyone
 corrects it.
 
-1. **Item 7, option a, with item 9, option a.** The plan-first build closes at Rs 9,68,60,180 and
+1. **Who chose option a on item 7 and option a on item 9?** The plan-first build closes at Rs 9,68,60,180 and
    reports Q2 Rs 15,39,810 short of plan. Set beside Monday's Rs 9,84,00,000 it is Rs 15,39,820 short of
    the quarter itself: the 25 orders of 1 to 5 July fall under Monday 29 June, which `plan_line` does not
    have. Item 15's check catches it in one row.
-2. **Item 3, option c, with item 4, option a.** Together they flag 9, the right count, from a window
+2. **Who chose option c on item 3 with option a on item 4?** Together they flag 9, the right count, from a window
    that runs across members; the check cell reports 300 rows that cross, one at every boundary between
    the 301 members, which is why the right count did not prove the window right.
-3. **Item 2, option a.** The customer id inside the ORDER BY turns RANK into ROW_NUMBER. In Retail-Plus
+3. **Who chose option a on item 2?** The customer id inside the ORDER BY turns RANK into ROW_NUMBER. In Retail-Plus
    that keeps C-0185 and drops C-0242, the planted pair below, by id alone.
-4. **The Retail-Plus count, from every learner's own run.** Read two or three learners' sentences
+4. **What Retail-Plus count did each learner's own run give?** Read two or three learners' sentences
    aloud before saying anything. Then name the plant: C-0185 and C-0242 both booked Rs 3,350 and tie at
    fiftieth, so RANK ships 51. DENSE_RANK ships 52, because a natural tie at 48th, C-0189 and C-0206 on
    Rs 3,480, and the tie at fiftieth each save it a number, so its 50 lands on the 52nd member, C-0259
@@ -110,7 +111,7 @@ corrects it.
    the line of the list is a member on the edge of the flag as well; keep that for anyone who notices.
    If nobody found the tie: "Change the segment to Retail-Plus and count what each rule ships. Do the
    four numbers agree?"
-5. **The nine members Marketing rings first.** Ask the room to list the nine with their segment
+5. **Which nine members does Marketing ring first?** Ask the room to list the nine with their segment
    before naming anything. Three are the planted Retail-Plus fall: C-0161 (July Rs 4,200, August
    Rs 3,100, September Rs 1,900), C-0175 (Rs 4,400, Rs 2,900, Rs 1,600) and C-0171 (Rs 3,800, Rs 2,600,
    Rs 1,400), at places 12, 13 and 16 on Retail-Plus's list. The other six are C-0293, C-0276 and
@@ -119,7 +120,7 @@ corrects it.
    C-0060 and C-0054 of Retail-Core, and C-0216 and C-0185 of Retail-Plus. If nobody notices the
    Retail-Plus three: "Which segment carries three of the nine, and what did those three do in each
    month of Q2?" It is the frequency fall the marketing lead opened the day with, now on a call list.
-6. **Item 8, option a, then item 9's July week.** To date and the run rate answer different questions,
+6. **Who chose option a on item 8, and where did item 9's July week come from?** To date and the run rate answer different questions,
    and Meera needs both. If a learner asks where the July week's money came from, send the room to sort
    that week's orders by amount and let them find it: KR-00667, one Business order of Rs 1,98,57,600 on
    13 July 2026, from C-0286, whose Q2 total is Rs 2,08,64,600. Without it the week of 13 July booked
@@ -133,7 +134,7 @@ In pairs, sixty seconds an answer, the partner asking one follow-up. The answers
 notebook's "In the interview" section and in the day sheet; the drill asks the questions only, the
 [D] questions last.
 
-1. [S] RANK, DENSE_RANK and ROW_NUMBER on a tie.
+1. [S] What do RANK, DENSE_RANK and ROW_NUMBER give on a tie?
 2. [S] Top three per group: GROUP BY or a window, and why?
 3. [S] What is the difference between GROUP BY and a window function?
 4. [F] Marketing asks for the top fifty customers; your list has fifty rows but only twenty-eight

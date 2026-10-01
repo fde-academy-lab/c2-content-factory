@@ -1,11 +1,11 @@
-# How do ROW_NUMBER, RANK and DENSE_RANK treat a tie, and what does the head of Retail-Plus's rule ship for Retail-Core, built together on one screen?
+# How do ROW_NUMBER, RANK and DENSE_RANK treat a tie, and what does the head of Retail-Plus's rule ship for Retail-Core?
 
 You build this one with the trainer in chapter 3, in about fifteen minutes. The trainer types each step on the
 projector and says aloud what each function does to the tie; you type the same step in your own
 query tab on the warehouse, or run the same block from `sql/C2_W02_D03_03_tie_rule_STUDENT.sql`, and
 compare. Steps 1 and 2 run on invented members, labelled invented, so the mechanism fits on one
-screen; step 3 runs on Kalpa's Retail-Core members; step 4 applies the head of Retail-Plus's rule.
-Answer each item before you run its step.
+screen; step 3 runs on Kalpa's Retail-Core members; step 4 is the sentence the head of Retail-Plus
+reads. Answer each item before you run its step, then run the step and look where it tells you.
 
 > "Ties matter. If two members spent the same, I want them ranked the same, and I want to know how
 > many made the top fifty, not forty-nine because of a tie."
@@ -13,14 +13,15 @@ Answer each item before you run its step.
 > The head of Retail-Plus, Kalpa Retail
 
 Q2 is July to September 2026, and a member's Q2 revenue is the booked amount of every Q2 order the
-member placed, whatever its status. Two members tie when their Q2 revenue is the same to the rupee. A
-list "ships" the members whose number is at or inside the line. Chapter 2 cut each segment's list with
-`row_number()`, letting the customer id decide between two members who booked the same, and the head
-of Retail-Plus is asking whether that is fair. Three window functions number a list: `ROW_NUMBER`,
-`RANK` and `DENSE_RANK`. A fourth rule, whole ties only, keeps a tie only when all of it fits inside the
-line, using `tied_with = count(*) OVER (PARTITION BY q2_revenue)`, the number of members who share a
-figure: a member ships when `rank + tied_with - 1` is at or inside the line. Retail-Core, Kalpa's
-everyday shoppers, has 96 Q2 buyers.
+member placed, whatever its status. Two members tie when their Q2 revenue is the same to the rupee.
+The line is the last place a list keeps, fourth on a top four and fiftieth on a top fifty, and a list
+"ships" the members whose number is at or inside the line. Chapter 2 cut each segment's list with
+`row_number()`, which breaks a tie by whatever else its ORDER BY names, there the customer id, or
+arbitrarily if nothing does, and the head of Retail-Plus is asking whether that is fair. Three window
+functions number a list: `ROW_NUMBER`, `RANK` and `DENSE_RANK`. A fourth rule, whole ties only, keeps a
+tie only when all of it fits inside the line, using `tied_with = count(*) OVER (PARTITION BY q2_revenue)`,
+the number of members who share a figure: a member ships when `rank + tied_with - 1` is at or inside
+the line. Retail-Core, Kalpa's everyday shoppers, has 96 Q2 buyers.
 
 **Who needs the answer.** The head of Retail-Plus needs it to defend every count to the tier's members,
 and a count you cannot explain in one sentence is one the head cannot defend. You need to say, for any
@@ -29,12 +30,12 @@ list, which rule made its count and which members stand at its line.
 **The questions on the way.**
 
 - What does DENSE_RANK give the six invented members?
-- How many members does each rule ship at an invented line of four?
+- How many members does each rule ship on an invented top four?
 - How many Retail-Core members does DENSE_RANK put on a top fifty, and why?
-- Which statement about Retail-Core's line holds?
+- Which statement about Retail-Core's fiftieth place holds?
 - Which sentence goes to the head of Retail-Plus about Retail-Core's list?
 
-**What you post.** One line of five letters in item order, no spaces, in this shape:
+**What you post.** Five letters in item order, with no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxx
@@ -75,12 +76,9 @@ c) 1, 1, 1, 2, 2, 3
 
 d) 1, 1, 2, 3, 3, 4
 
-What you should see: `row_number` 1 to 6, with A ahead of B only because the member name sorts A
-first; `rank` gives A and B 1 and skips 2, as a race reports a shared first place; `dense_rank` numbers
-the different spend figures and never skips, so by F its number sits two below F's place among the
-members.
+Then run step 1 and read the three columns side by side, member by member, against your answer.
 
-## How many members does each rule ship at a line?
+## How many members does each rule ship when a tie sits on the line?
 
 This comes up at work whenever a top-N list arrives longer or shorter than N and somebody has to say why.
 
@@ -107,7 +105,7 @@ SELECT count(*) FILTER (WHERE rn <= 4)                 AS row_number_ships,
 FROM   r;
 ```
 
-### Q2. How many members does each rule ship at an invented line of four?
+### Q2. How many members does each rule ship on an invented top four?
 
 Before step 2 runs, how many members does each rule ship, in the order ROW_NUMBER, RANK, DENSE_RANK
 and whole ties only?
@@ -120,9 +118,7 @@ c) 4, 5, 6 and 3
 
 d) 4, 5, 5 and 5
 
-What you should see: one row reading 4, 5, 5 and 3. ROW_NUMBER keeps D and leaves E off by the name;
-RANK keeps both; whole ties only drops both, which is the forty-nine the head of Retail-Plus warned
-about, at a line of four.
+Then run step 2 and read its one row of four counts against your answer.
 
 ## How long is Retail-Core's list under each rule?
 
@@ -167,48 +163,33 @@ c) 51, since one tie inside the list costs it one number
 
 d) 48, since each tie inside the list takes away one member
 
-What you should see: 50, 50, 52 and 50.
+Then run step 3 and set its four counts beside your answer.
 
-**Step 3, read the line.** The trainer runs blocks `c3_core_line` and `c3_core_ties` of the same file:
-places 46 to 54 with all three functions side by side, then the ties inside the first fifty.
+**Step 3, read the members at the line.** The trainer runs blocks `c3_core_line` and `c3_core_ties` of
+the same file. The first prints places 46 to 54 of Retail-Core with ROW_NUMBER, RANK and DENSE_RANK side
+by side; the second lists each member inside the first fifty who shares a Q2 figure with another
+member, with their places. Read both before the next item.
 
-| Place | RANK | DENSE_RANK | Member | Q2 revenue |
-|---|---|---|---|---|
-| 46 | 46 | 44 | C-0007 | Rs 3,100 |
-| 47 | 47 | 45 | C-0127 | Rs 3,030 |
-| 48 | 48 | 46 | C-0054 | Rs 3,000 |
-| 49 | 49 | 47 | C-0072 | Rs 2,990 |
-| 50 | 50 | 48 | C-0005 | Rs 2,980 |
-| 51 | 51 | 49 | C-0092 | Rs 2,950 |
-| 52 | 52 | 50 | C-0094 | Rs 2,910 |
-| 53 | 53 | 51 | C-0048 | Rs 2,870 |
-| 54 | 54 | 52 | C-0074 | Rs 2,810 |
+### Q4. Which statement about Retail-Core's fiftieth place holds?
 
-Two ties sit inside the first fifty: C-0044 and C-0132 on Rs 4,540 at places 31 and 32, and C-0060 and
-C-0121 on Rs 4,120 at places 37 and 38.
+Reading what the two blocks print, which statement about Retail-Core's fiftieth place holds?
 
-### Q4. Which statement about Retail-Core's line holds?
+a) Two members tie at fiftieth, so RANK ships 51 and ROW_NUMBER drops one by id
 
-Reading places 46 to 54 and the two ties inside the first fifty, which statement about Retail-Core's
-line holds?
+b) Nobody ties at fiftieth, so DENSE_RANK ships the same fifty members as RANK
 
-a) The two ties inside the list each push RANK one place further on, so RANK ships 52
+c) Nobody ties at fiftieth, so RANK and ROW_NUMBER ship the same fifty members
 
-b) DENSE_RANK's 50 falls on C-0092, the 51st member, so DENSE_RANK ships 51
-
-c) Nobody ties at fiftieth, and DENSE_RANK's 50 falls on C-0094, the 52nd member
-
-d) Nobody ties at fiftieth, so all four rules ship the same fifty members
+d) C-0092 ties with C-0005 at fiftieth, so whole ties only ships forty-nine
 
 ## What does the head of Retail-Plus's rule ship, and what goes in the sentence?
 
 This comes up at work whenever a count leaves the team, since the sentence beside it is what its reader
 repeats.
 
-**Step 4, the head's rule applied.** The head asked for two things: members who spent the same ranked
-the same, and the number that made the list. RANK does the first, because tied members share a place
-and everyone at or inside the line ships; the second is a sentence in the report, beside the list.
-Said aloud: the rule, the count and the members at the line go in one sentence.
+**Step 4, the sentence to the head.** The head asked for two things: members who spent the same ranked
+the same, and the number that made the list. Nothing runs in this step; you choose the sentence the head
+reads beside Retail-Core's list.
 
 ### Q5. Which sentence goes to the head of Retail-Plus about Retail-Core's list?
 
@@ -218,7 +199,7 @@ a) "Retail-Core's list holds 52 under DENSE_RANK, which keeps every tie together
 
 b) "Retail-Core's list holds 50 under RANK; nobody ties at fiftieth, where C-0005 booked Rs 2,980."
 
-c) "Retail-Core's list holds 50 under ROW_NUMBER, cut by customer id, so it is the same size on every run."
+c) "Retail-Core's list holds 50 under ROW_NUMBER, cut by customer id, so it is the same each run."
 
 d) "Retail-Core's list holds 50 under whole ties only, so no tie anywhere on the list is ever split."
 

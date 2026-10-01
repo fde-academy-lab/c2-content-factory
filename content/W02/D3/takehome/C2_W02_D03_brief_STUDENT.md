@@ -1,8 +1,7 @@
 # Which twenty Retail-Core members does Marketing ring this month, who among them is slipping, and where does a new extract's Q2 stand against plan?
 
 This is the take-home for Week 2, Wednesday, and it takes about two and three quarter hours in all:
-Marketing's second list
-on a sample nobody has queried (about seventy-five minutes), a ranking question of your own (thirty
+Marketing's second list on a sample nobody has queried (about seventy-five minutes), a ranking question of your own (thirty
 minutes), the second case (forty minutes, in pairs or alone), and three PostgreSQL Exercises problems
 (twenty minutes). The self-check, `takehome/C2_W02_D03_selfcheck_STUDENT.md`, lists the numbers to
 reach; open it only after each part is done. Thursday opens by walking one learner's first part in
@@ -16,7 +15,7 @@ front of the room, starting from their row counts, so bring the counts as well a
 > The marketing lead, Kalpa Retail
 
 **Who needs the answer.** The marketing lead's member team rings the members on this list with a
-retention offer, twenty calls this month. A list that drops a member at the line by a coin toss, or
+retention offer, twenty calls this month. A list that drops a member at the line, the last place it keeps, by a coin toss, or
 names more members than it says, spends the calls badly, and a flag that reads a holiday as a fall
 rings a loyal member to tell them they are drifting. Meera Raghavan, Kalpa Retail's CEO, reads the plan
 line to decide whether the quarter needs action.
@@ -28,7 +27,7 @@ line to decide whether the quarter needs action.
 4. Whose spend fell two months running, read three ways?
 5. Where does this extract's Q2 stand against its plan line, at mid-quarter and at the close?
 6. What three sentences go to Marketing and Meera?
-7. What ranking question would a Kalpa stakeholder ask, and what does its GROUP BY impostor return?
+7. What ranking question would a Kalpa stakeholder ask, and what does a hurried GROUP BY return for it?
 8. Should Retail-Core's protect list rank members by how often they ordered in Q2?
 9. Which window clauses do three PostgreSQL Exercises problems need?
 
@@ -64,16 +63,16 @@ bring.
 
 ## 1. How many Q2 orders, rupees and Retail-Core buyers does the sample hold?
 
-Where this is used at work: Kavya Nair, the senior analyst who checks every number before it leaves
-Kalpa's data team, reads a ranked list or a running total against the base it was built from, so
-the base is counted first.
+At work, Kavya Nair, the senior analyst who checks every number before it leaves Kalpa's data team,
+reads a ranked list or a running total against the counts of the data it was built from, so those
+counts come first.
 
 Count the Q2 orders, the Q2 total and the Retail-Core members who placed a Q2 order. Write one comment
 line saying which of these numbers your running total in section 5 must close on.
 
 ## 2. How many members does each tie rule put on a top twenty?
 
-Where this is used at work: the head of Retail-Plus asked for the count beside the list, so a list
+At work, the head of Retail-Plus asked for the count beside the list, so a list
 cut at a number says how many it ships and why.
 
 Rank Retail-Core's members by Q2 revenue with ROW_NUMBER, RANK and DENSE_RANK in one query, compute
@@ -84,7 +83,7 @@ Then read the members either side of twentieth place with all three functions si
 
 ## 3. Which rule do you ship, and what do you tell Marketing about its count?
 
-Where this is used at work: the marketing lead repeats the tie rule to the member team who make the
+At work, the marketing lead repeats the tie rule to the member team who make the
 calls, so the reason has to be one they can say.
 
 Choose the rule you would ship and write two comment lines: the count it ships and why, in words
@@ -95,7 +94,7 @@ advance and why it is a business reason.
 
 ## 4. Whose spend fell two months running, read three ways?
 
-Where this is used at work: the member team rings a customer only when that customer's own history
+At work, the member team rings a customer only when that customer's own history
 shows the drift, so the definition is written down before the first call.
 
 Build one row per member per month. Flag a member whose September spend is below August's and August's
@@ -113,7 +112,7 @@ they placed no order, and why you did not fill that month with zero.
 
 ## 5. Where does this extract's Q2 stand against its plan line, at mid-quarter and at the close?
 
-Where this is used at work: Meera reads the quarter while it runs, so the to-date figure has to be
+At work, Meera reads the quarter while it runs, so the to-date figure has to be
 complete before anyone says ahead or behind.
 
 Accumulate Q2 booked revenue and the plan line, and read booked to date against plan to date at the end
@@ -124,16 +123,16 @@ the full plan weeks booked below their own week's plan.
 
 ## 6. What three sentences go to Marketing and Meera?
 
-Where this is used at work: Meera and the marketing lead carry these sentences into the leadership
+At work, Meera and the marketing lead carry these sentences into the leadership
 meeting, where nobody reads the queries behind them.
 
 Write three sentences as a comment: the tie rule and the count it ships; how many listed members carry the
 flag and what it means for a member with a month off; and where Q2 stood against plan at mid-quarter
 and at the close, by its total and by its weekly run.
 
-## 7. What ranking question would a Kalpa stakeholder ask, and what does its GROUP BY impostor return?
+## 7. What ranking question would a Kalpa stakeholder ask, and what does a hurried GROUP BY return for it?
 
-Where this is used at work: Kalpa's data team chooses between GROUP BY and a window before writing
+At work, Kalpa's data team chooses between GROUP BY and a window before writing
 any SQL, by naming the question GROUP BY cannot answer.
 
 1. **From memory first, before you run anything.** In a comment, write what ROW_NUMBER, RANK and
@@ -143,13 +142,13 @@ any SQL, by naming the question GROUP BY cannot answer.
 2. **Build.** Write one ranking question of your own on the `takehome` schema, one a Kalpa stakeholder
    would ask in those words, such as a member's best month, the top three members per channel, or the
    largest order per city, and answer it with a window function.
-3. **Its GROUP BY impostor.** Write the GROUP BY query a hurried analyst would send for the same
+3. **The hurried GROUP BY.** Write the GROUP BY query a hurried analyst would send for the same
    question, run both, and write two or three sentences on why they differ, naming the rows the
-   impostor loses or the question it answers instead.
+   GROUP BY query loses or the question it answers instead.
 
 ## 8. Should Retail-Core's protect list rank members by how often they ordered in Q2?
 
-Where this is used at work: before Marketing argues over two definitions of a best customer, the data
+At work, before Marketing argues over two definitions of a best customer, the data
 team measures how much the list changes.
 
 This is the day's second case, on the day's own warehouse, forty minutes in pairs or alone. The brief,
@@ -159,7 +158,7 @@ lettered markers are the brief's first seven items. Post your ten letters with y
 
 ## 9. Which window clauses do three PostgreSQL Exercises problems need?
 
-Where this is used at work: Kavya reviews a colleague's query by reading it and saying why it works,
+At work, Kavya reviews a colleague's query by reading it and saying why it works,
 and these three answers are practice at that.
 
 PostgreSQL Exercises has no separate window functions category; its window questions sit in the
@@ -190,6 +189,6 @@ section 9 asks what one specific answer on the site does.
 | Section | What to bring |
 |---|---|
 | 1 to 6 | Your `.sql` file with every result pasted under its query, your rule and its reason, and your three sentences |
-| 7 | The recap comment with the line on what you got wrong, and your question with its impostor and why they differ |
+| 7 | The recap comment with the line on what you got wrong, and your question with its hurried GROUP BY and why they differ |
 | 8 | Your ten letters, posted with your partner's name |
 | 9 | Your three lines on the PostgreSQL Exercises problems |

@@ -1086,7 +1086,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
       x: "Numbering the whole book once and splitting it gives Retail-Plus 11 places and Student none. PARTITION BY segment restarts the numbering in every segment: 35 Business, 50 Retail-Core, 50 Retail-Plus and 20 Student, 155 in all.",
       c: "Each segment's list holds fifty, or every buyer where a segment has fewer." },
     { t: "Chapter 3: who makes it at a tie?", lit: 2, code: "rank() OVER (PARTITION BY segment ORDER BY q2_revenue DESC)",
-      x: "When two members spent the same at the line, each rule ships a different count. In Retail-Core, ROW_NUMBER, RANK and whole ties only ship 50, and DENSE_RANK ships 52 because two ties higher up compress its numbering.",
+      x: "The rules part ways at a tie. In Retail-Core, with nobody tied at fiftieth place, ROW_NUMBER, RANK and whole ties only ship 50, and DENSE_RANK ships 52 because two ties higher up compress its numbering.",
       c: "Count the rows each rule ships, and read the places either side of the line with all three functions side by side." },
     { t: "Chapter 4: whose monthly spend fell two months running?", lit: 3, code: "lag(spend, 1) OVER (PARTITION BY customer_id ORDER BY month)",
       x: "LAG with no PARTITION BY flags 20 members, 4 of them compared with another member's month. Partitioned by member, the flag keeps 16.",

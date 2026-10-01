@@ -54,7 +54,7 @@ Check each list against the smaller of 50 and its buyers.
 
 **Crux:** "In each segment" is a PARTITION BY: fifty, or every buyer, in each segment.
 
-## Panel 4: When members tie at the line, how many does each rule ship?
+## Panel 4: When members tie at the last place kept, how many does each rule ship?
 
 | Invented | A | B | C | D | E | F |
 |---|---|---|---|---|---|---|
@@ -65,12 +65,12 @@ Check each list against the smaller of 50 and its buyers.
 
 | Ships | ROW_NUMBER | RANK | DENSE_RANK | Whole ties |
 |---|---|---|---|---|
-| Invented top 4 | 4 | 5 | 5 | 3 |
+| This table's top 4 | 4 | 5 | 6 | 3 |
 | Retail-Core top 50 | 50 | 50 | 52 | 50 |
 
 Two ties higher up leave DENSE_RANK two behind, so its 50 is Retail-Core's 52nd member.
 
-**Crux:** RANK keeps a tie at the line and says the count; DENSE_RANK can run past the line with no tie at it.
+**Crux:** RANK keeps a tie at the line, the last place a list keeps, and says the count; DENSE_RANK can run past the line with no tie at it.
 
 ## Panel 5: Whose monthly spend fell two months running?
 
@@ -89,14 +89,14 @@ The quick flag names 20 members, 4 of them read from another member's months; th
 
 ## Panel 6: Did Q2 close on plan, and where was it at mid-quarter?
 
-| Booked to date | At the close | Against plan |
+| Build | Booked to date at the close | Against plan |
 |---|---|---|
 | Plan weeks LEFT JOIN weekly | Rs 9,68,60,180 | Rs 15,39,810 short |
 | 1 to 5 July moved onto 6 July | Rs 9,84,00,000 | Rs 10 ahead |
 
 The plan line has no week for 1 to 5 July, so the first build drops 25 orders. At mid-quarter Q2
 stood Rs 1,57,51,980 ahead on one July week; six of seven full weeks since 10 August ran below
-plan. Add `order_id` to make it repeat.
+plan. Adding `order_id` after the date in the window's ORDER BY gives each order its own step.
 
 **Crux:** A running total is done when its last value equals the quarter's total.
 

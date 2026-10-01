@@ -53,7 +53,7 @@ Rs 1,57,51,980, Q2's lead over plan to date at mid-quarter.
 
 This item asks you to choose the rule. The key is c, "`rank()`, which gives tied members one number and
 skips the places used". Members who spent the same share a place, and the next member's place skips
-the numbers they used, 1, 1, 3, so no member is dropped by a coin toss, a tie at the line ships whole,
+the numbers they used, 1, 1, 3, so no member is dropped by a coin toss, a tie at the line, the last place a list keeps, ships whole,
 and a list runs past fifty only when members tie at fiftieth.
 
 - a, "`row_number()`, which gives every member a place of their own, ties too": one of two members who

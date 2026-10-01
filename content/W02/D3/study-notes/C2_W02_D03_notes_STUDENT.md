@@ -25,7 +25,7 @@ every number before it leaves the team.
    partition and an order.
 2. You can build each segment's top fifty in a named step and say what one row of it is.
 3. You can predict the three ranking functions on a tie and state the rule, the count and the
-   members at the line.
+   members at the line, the last place a list keeps.
 4. You can set a member's month beside their own earlier months with LAG and check what it read.
 5. You can build a running total that closes on the quarter's total and repeats on every run.
 6. You can size the ways to answer each question and name what would switch your choice.
@@ -263,7 +263,7 @@ rule chapter 3 questions.
 
 ---
 
-## Chapter 3. When two members spent the same at the line, how many does a list ship, and which rule did the head of Retail-Plus ask for?
+## Chapter 3. When two members tie at fiftieth place, how many does a list ship, and which rule did the head of Retail-Plus ask for?
 
 **Who needs the answer.** The head of Retail-Plus defends the list: a member dropped by a coin toss
 has a fair complaint, a "top fifty" of fifty-two spends calls nobody planned, and
@@ -316,8 +316,11 @@ checked 1 October 2026).
 
 ### How many rows does each rule ship when two members tie at the line?
 
-On the invented top four the rules ship 4, 5, 5 and 3, and every rule ships exactly the line when
-nobody ties at it.
+A second invented list makes a top four: A to F spent Rs 9,100, 8,800, 8,200, 7,400, 7,400 and
+6,900, so D and E tie at fourth, on the line. ROW_NUMBER ships 4, RANK 5, DENSE_RANK 5 and whole ties
+only 3. With nobody tied at the line, ROW_NUMBER, RANK and whole ties only each ship exactly four, and
+DENSE_RANK can still ship more when a tie sits higher up: on the table above, a top four under
+DENSE_RANK ships all six members.
 
 ### How many Retail-Core members does each rule ship?
 
@@ -345,9 +348,8 @@ sentence: the count under RANK and, if it is not fifty, the members at the line 
 Yes, in every segment. Counting members at or above the fiftieth member's figure, found with OFFSET
 49, gives Retail-Core 50 at Rs 2,980, and every buyer in Business and Student, 35 and 20.
 
-> **Kavya's review.** "A tie rule is a business decision written as a function name. State the
-> rule, the count it ships and the members at the line in the same sentence, before anybody asks
-> why the list holds more or fewer than fifty."
+> **Kavya's review.** "A tie rule is a business decision. State the rule, the count it ships and
+> the members at the line in one sentence."
 
 The head's rule is RANK, with its count and reason: 50 for Retail-Core, and Retail-Plus's count from
 your own run.
@@ -384,8 +386,9 @@ The flag reads September: September below August, and August below July.
 | D. Months as spreadsheet columns, read by eye | a person reads across each row | 1,806 cells, 301 members times six months |
 
 The call is LAG, which reads the rows in one pass with `lag(spend, 2)` in the same line as
-`lag(spend, 1)`. A database with no window functions, such as MySQL before 8.0, would switch it to
-the self-join.
+`lag(spend, 1)`. A database with no window functions, such as MySQL before 8.0, would switch it to a
+lookup per row, option C, a correlated subquery that finds each member's previous month with an
+order.
 
 ### What did each member spend in each month?
 
@@ -456,7 +459,7 @@ campaign or move budget; a false gap sends Marketing after it with discounts.
 3. Does the running total close on Monday's Q2 total?
 4. Where did Q2 stand at mid-quarter, and how has each week run since?
 5. Can a running total by order say which order took Q2 past Rs 3.5 crore?
-6. Does a plain sum up to each week's end agree?
+6. Does a plain sum up to each week's end agree with the running total?
 
 **IN THE FIELD.** Five weeks into its 2022 second quarter, on 7 June, Target cut its operating
 margin guide from a range centred on 5.3 percent to "a range around 2%", and the quarter closed at
@@ -533,7 +536,7 @@ section 3.5, checked 1 October 2026), and all twelve show the day's close, Rs 3,
 order id added, KR-00580's Rs 8,55,000 is the step from Rs 3,45,16,000 to Rs 3,53,71,000; the
 warehouse holds no time of day, so the report names the id as its tiebreak.
 
-### Does a plain sum up to each week's end agree?
+### Does a plain sum up to each week's end agree with the running total?
 
 Yes, in all 13 weeks, from plain SUMs that share no code with the window and read 6,006 order rows.
 
@@ -583,7 +586,8 @@ only for a quiet September. The call is B, and a separate "went quiet" flag woul
 
 ### How many of the flagged members are on the protect list?
 
-All 16 are, since a spend that can fall twice from a high month belongs to a member who spent a lot.
+All 16 are, two of them in the last three places of their list. The overlap is read from the data
+each time the lists are drawn, never assumed.
 
 ### What did LAG compare for the member who says they were on holiday?
 
@@ -625,9 +629,10 @@ made.
 Tags, this programme's calibration for 0 to 3 year Indian-market candidates: [S] a staple asked
 everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
 
-**[S] RANK, DENSE_RANK and ROW_NUMBER on a tie.** "On 7,500, 7,500 and 6,000, ROW_NUMBER gives 1, 2,
-3, breaking the tie by the next ORDER BY column; RANK gives 1, 1, 3; DENSE_RANK gives 1, 1, 2. Our
-Retail-Core top fifty shipped 52 under DENSE_RANK." A weak answer gives no example.
+**[S] What do RANK, DENSE_RANK and ROW_NUMBER give on a tie?** "On 7,500, 7,500 and 6,000,
+ROW_NUMBER gives 1, 2, 3, breaking the tie by the next ORDER BY column, or arbitrarily when there is
+none; RANK gives 1, 1, 3; DENSE_RANK gives 1, 1, 2. Our Retail-Core top fifty shipped 52 under
+DENSE_RANK." A weak answer gives no example.
 
 **[S] Top-3 per group: GROUP BY or a window, and why?** "A window, since GROUP BY collapses each
 group to one row and LIMIT counts across the whole result. I number rows with PARTITION BY the group
@@ -650,18 +655,25 @@ CTE and filter outside." A weak answer calls it a syntax rule.
 so a big customer took several places. count(DISTINCT customer_id) beside count(*) catches it, and
 ranking customers on their summed orders fixes it." A weak answer sends the 28 names.
 
-**[F] Your top-ten list came back with eleven rows: is it a bug?** "The tie rule is working: two
-customers share tenth place. I state the count and the reason, and offer a hard cap with its
-tiebreaker." A weak answer cuts it to ten and says nothing.
+**[F] Your top-ten list came back with eleven rows: is it a bug?** "I check before I answer: which
+function cut the list, who sits at tenth and eleventh, and whether any id repeats. Under RANK with two
+customers sharing tenth place, the rule is working, so I state the count and the reason and offer a
+hard cap with its tiebreaker. Under DENSE_RANK, ties higher up can push the list past ten with nobody
+tied at tenth. ROW_NUMBER cannot ship eleven, so eleven rows there mean a repeated customer, usually
+a join that fanned out, and that is a bug." A weak answer cuts it to ten and says nothing.
 
-**[F] LAG returned a value for a customer's very first month: what went wrong?** "The window has no
-PARTITION BY customer, so LAG crossed customers. I count flags where lag(customer_id) differs from
-the row's own; it must be zero, and ours was four." A weak answer eyeballs the first rows.
+**[F] LAG returned a value for a customer's very first month: what went wrong?** "Most often the
+window has no PARTITION BY customer, so LAG crossed customers. I count flags where lag(customer_id)
+differs from the row's own; it must be zero, and ours was four. A default argument such as
+lag(spend, 1, 0), or ORDER BY month DESC inside the window, gives the same symptom, so I read the
+call too." A weak answer eyeballs the first rows.
 
 **[F] What makes a running total deterministic, and how would you notice one that was not?** "An
-ORDER BY no two rows share, such as the date and then the order id. Peers share one figure, which
-is the tell: our twelve orders of 22 July all showed Rs 3,76,90,290." A weak answer adds no
-tiebreaker.
+ORDER BY no two rows share, such as the date and then the order id. Ordered by date alone under the
+default frame, peers share one figure on every run, which is stable and too coarse: our twelve orders
+of 22 July all showed Rs 3,76,90,290. With a ROWS frame over the date alone, tied rows can come in a
+different order on each run, so two runs disagree row by row, and that is the one that was not
+deterministic." A weak answer adds no tiebreaker.
 
 **[F] Revenue to date is nine times the plan by week seven: what is the likely mistake?** "A
 cumulative actual beside one week's plan. To date against to date, our mid-quarter stood
@@ -703,7 +715,7 @@ July." A weak answer reads the trend before closing the loop.
 | RANK | Tied rows share a place, and the places they use up are skipped | Chapter 3 | 1, 1, 3 |
 | DENSE_RANK | Tied rows share a place and nothing is skipped; it numbers distinct values | Chapter 3 | 52 for Retail-Core's top fifty |
 | LAG | Reads a value from an earlier row in the window's order; NULL if none | Chapter 4 | `lag(spend, 2)` |
-| Running total | A sum over every row up to and including this one, in the window's order | Chapter 5 | Booked to date |
+| Running total | A sum over every row up to and including this one in the window's order, and under the default frame over every later row that shares its ORDER BY value | Chapter 5 | Booked to date |
 | Peers | Rows with the same ORDER BY value; a running sum adds them all at once | Chapter 5 | The twelve orders of 22 July |
 | OVER | The clause that makes a function a window function | The picture | `rank() OVER (ORDER BY q2_revenue DESC)` |
 | ORDER BY in a window | Which row comes before which inside a partition | Chapter 1 | `ORDER BY q2_revenue DESC, customer_id` |
@@ -761,6 +773,6 @@ The day's answer, to Marketing and the head of Retail-Plus:
 > Call the nine members whose spend fell in August and again in September first; a month with no
 > order is no reading, so the member on holiday is not one of them. Q2 closed on plan,
 > Rs 9,84,00,000 against Rs 9,83,99,990, and the Rs 1.58 crore lead at mid-quarter came from one week
-> in July, so the weekly run rate has sat below plan since 10 August."
+> in July; six of the seven full weeks from 10 August booked below plan."
 
 Thursday's ask, one table per customer refreshed every Monday in pandas, stays open until then.

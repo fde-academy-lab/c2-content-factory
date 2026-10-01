@@ -1,7 +1,7 @@
 # Which fifty members spent the most in Q2?
 
-Chapter 1's set holds five items. Items 1 and 2 run live in chapter 1's last minutes if the chapter ran to
-time; items 3 to 5 are the practice lab's stretch or tonight's work.
+Chapter 1's set holds five items. Items 2 and 3 run live in chapter 1's last minutes if the chapter ran to
+time; items 1, 4 and 5 are the practice lab's stretch or tonight's work.
 
 > "Retail-Plus frequency is the problem, so we want to protect our best members before they drift.
 > Give us the top fifty customers by Q2 revenue in each segment, and flag anyone whose monthly spend
@@ -12,15 +12,17 @@ time; items 3 to 5 are the practice lab's stretch or tonight's work.
 The marketing lead owns acquisition and campaigns at Kalpa Retail, and this quarter's protect budget,
 a call from the member team and a renewal offer, goes to the members a ranked list names. Kalpa sells
 to four segments: Business, its corporate buyers, whose orders run to lakhs; Retail-Core, its everyday
-shoppers; Retail-Plus, its paid membership tier; and Student. A member is one customer on the
-customers table, and the segment lives on the customer, so each order finds it with one line,
-`JOIN customers c USING (customer_id)`. Q2 is July to September 2026. A member's Q2 revenue is the
-booked amount of every Q2 order the member placed, whatever its status, which is how Monday's suite
-counted Rs 9,84,00,000 on 462 orders from 227 members who bought. GROUP BY collapses each group to one
-row. A window function such as `row_number() OVER (ORDER BY q2_revenue DESC, customer_id)` computes a
-value for every row from the rows around it and keeps every row, here each member's place, with the
-customer id deciding between two members who booked the same. The book is Kalpa's Postgres warehouse,
-and the data platform lead's rule is "query it, do not export it".
+shoppers; Retail-Plus, its paid membership tier; and Student. Taken together, the four segments are
+the book. A member is one customer on the customers table, and the segment lives on the customer, so
+each order finds it with one join, `JOIN customers c USING (customer_id)`. Q2 is July to September
+2026. A member's Q2 revenue is the booked amount of every Q2 order the member placed, whatever its
+status, which is how Monday's suite counted Rs 9,84,00,000 on 462 orders from 227 members who bought.
+GROUP BY collapses each group to one row. A window function such as
+`row_number() OVER (ORDER BY q2_revenue DESC, customer_id)` computes a value for every row from the
+rows around it and keeps every row, here each member's place; `row_number()` breaks a tie by whatever
+else its ORDER BY names, here the customer id, or arbitrarily if nothing does. The warehouse is Kalpa's
+Postgres database, and the data platform lead's rule for it is "query it, do not export it". A second
+route is a different way of reaching the same answer, used to check the first.
 
 | Segment | Members who bought in Q2 | Q2 orders | Q2 revenue | Per member who bought |
 |---|---|---|---|---|
@@ -49,13 +51,13 @@ nobody rang, and every member it repeats is a call made twice.
 
 **The questions on the way.**
 
-- Which build fits Marketing's per-segment ask, and what does each build cost?
+- Which build fits Marketing's per-segment ask, and what does it cost on Q2's data?
 - What is wrong with the colleague's top ten, and which check catches it?
 - If Marketing trimmed the whole-book list to forty, which segments would it reach?
 - Which second route could catch a member wrongly left off the fifty, and how many rows does it move?
-- Which fact would make the shorter build, GROUP BY with LIMIT 50, the better call?
+- Which fact would make the fifty biggest Q2 orders the right list to hand over?
 
-**What you post.** One line of five letters in item order, no spaces, in this shape:
+**What you post.** Five letters in item order, with no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxx
@@ -63,24 +65,23 @@ Post exactly this shape: xxxxx
 
 ---
 
-## How should the team build a ranked list of members?
+## How should the team build a ranked list, and check it before anyone is rung?
 
-This comes up at work whenever a stakeholder asks for a ranked list and the team has to decide what one row of
-the answer is and where the work runs.
+This comes up at work whenever a stakeholder asks for a ranked list and a team will act on everything it
+holds.
 
-### Q1. Which build fits Marketing's per-segment ask, and what does each build cost?
+### Q1. Which build fits Marketing's per-segment ask, and what does it cost on Q2's data?
 
-Marketing asked for a list in each of the four segments, and four builds could hand it a ranked
-list. Which build fits, sized in the rows that leave the warehouse and the work the per-segment list
-adds?
+Marketing asked for a list in each of the four segments. Each build below carries its cost for all
+four lists, worked from the segment table above. Which build fits the ask, judged on those costs?
 
-a) Sort the Q2 order rows by amount and keep fifty: 50 rows leave, and each segment's list is one more filter
+a) Sort each segment's Q2 orders by amount and keep the top fifty: 188 rows leave the warehouse
 
-b) Group by member, sort and keep fifty with LIMIT: 50 rows leave, and each segment's list is one more phrase
+b) Rank members in four LIMIT 50 queries glued with UNION ALL, each reading all 462 Q2 orders
 
-c) Group by member and number the members in a window: 50 rows leave, and each segment's list is one more phrase
+c) Number the members in a window that restarts in each segment: one query, and 155 rows leave
 
-d) Export the Q2 orders and sort them by hand in a spreadsheet: 462 rows leave, and each segment's list is four sorts
+d) Export the 462 Q2 orders and sort each segment by hand: four sorts, and every row leaves
 
 ### Q2. What is wrong with the colleague's top ten, and which check catches it?
 
@@ -102,26 +103,27 @@ rows below.
 
 What is wrong with the list, and which check catches it before anyone is rung?
 
-a) Each row is an order, so six members fill ten places; a count of distinct members beside the rows reads 6 for 10
+a) Each row is an order, so six members fill ten places; grouping the list by member shows P three times
 
-b) Each row is a member, so the list is right; a count of its rows beside Marketing's ask reads 10 for 10
+b) Each row is a member, and P's row was loaded three times over; a check for duplicate rows catches it
 
-c) Each row is an order, so P's three orders inflate the list's total; its sum beside Q2's total catches it
+c) Each row is an order, so P's three orders inflate the list's total; its sum beside Q2's total shows it
 
-d) Each row is a member, and P shows three times because of a tie; a tiebreaker in the ORDER BY removes the repeats
+d) Each row is a member, and P shows three times because of a tie; a tiebreaker in the ORDER BY clears it
 
 ## Which segments does one list across the whole book reach?
 
-This comes up at work whenever one list is cut across groups whose members differ in size by a hundred times.
+This comes up at work whenever one list is cut across groups whose members' spend differs by a hundred
+times.
 
 ### Q3. If Marketing trimmed the whole-book list to forty, which segments would it reach?
 
 The table of places 33 to 40 at the top of this set comes from one ranking of all 227 members. If
 Marketing trimmed that one list to forty members, how many would come from each segment?
 
-a) 6 Business, 17 Retail-Core, 13 Retail-Plus and 4 Student, in proportion to the members who bought
+a) 28 Business, 9 Retail-Plus and 3 Retail-Core, and no Student
 
-b) 35 Business and 5 Retail-Plus, since a Retail-Plus member outspends a Retail-Core one on average
+b) 35 Business and 5 Retail-Plus, and no Retail-Core or Student
 
 c) 35 Business, 2 Retail-Plus and 3 Retail-Core, and no Student
 
@@ -137,23 +139,27 @@ Kavya Nair, the senior analyst on Kalpa Retail's data team, checks every number 
 team, and wants the fifty confirmed by a route that would notice a member who belongs on the list and
 is missing from it. Which route does that, and how many rows does it move?
 
-a) Pull the fifty rows the query returned into a spreadsheet and sort them again by revenue: 50 rows
+a) Pull the query's fifty rows into a spreadsheet and sort them again by revenue: 50 rows
 
-b) Pull the 462 Q2 order rows into Python, total each member in a dictionary and sort: 462 rows
+b) Pull all 462 Q2 order rows into Python, total each member and sort the totals: 462 rows
 
 c) Run the same window query again tomorrow and set the two lists side by side: 50 rows each
 
-d) Add up the fifty members' Q2 revenue and set it beside the quarter's Rs 9,84,00,000: one row
+d) Add up the fifty members' Q2 revenue and set it beside Q2's Rs 9,84,00,000: one row
 
-### Q5. Which fact would make the shorter build, GROUP BY with LIMIT 50, the better call?
+## When is the quickest list the right list?
 
-GROUP BY member, ORDER BY revenue and LIMIT 50 is the shortest build that returns fifty members.
-Which fact, if it held, would make it the better build?
+This comes up at work whenever a quick build fails one ask and someone asks which ask it would suit.
 
-a) The book grows past 10,000 orders next year, and a window over that many rows runs too slowly
+### Q5. Which fact would make the fifty biggest Q2 orders the right list to hand over?
 
-b) Marketing wants a list in each segment, and LIMIT 50 can be written once for each of the four
+Sorting the Q2 orders by amount and keeping the first fifty is the quickest list a team could build.
+Which fact, if it held, would make those fifty orders the right list to hand over?
 
-c) Marketing wants one overall list to read by eye, and no later step uses the place
+a) The fifty biggest orders all come from different members, so no member's name repeats
 
-d) Two members tie at fiftieth place, and LIMIT 50 keeps exactly fifty rows whatever the tie
+b) Business orders run to lakhs, so the largest orders come from the members who spent most
+
+c) Marketing wants a thank-you note for each of the fifty largest Q2 orders, one per order
+
+d) The fifty biggest orders carry most of Q2's revenue, so the list covers most of the money

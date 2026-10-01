@@ -10,20 +10,19 @@ time; items 3 to 5 are the practice lab's stretch or tonight's work.
 
 A member's monthly spend is the booked revenue of their orders in one calendar month, and the monthly
 table holds a row only for a month with an order: 752 member-months for the 301 members who bought
-between April and September 2026, so a member orders in about 2.5 of the six months. Chapter 4's flag,
-LAG over each member's own months with `PARTITION BY customer_id`, found 16 members whose September was
-below their month before and that month below the one before it, and all 16 are on a protect list,
-each segment's top fifty by Q2 revenue under the head of Retail-Plus's rule. Marketing's words, "fallen
-for two months running", read as calendar months: September below August, and August below July. LAG
-reads the previous row, so where a member skipped a month it reads the last month they did buy in. The
-calendar check keeps a flag only when `lag(month, 1)` is August and `lag(month, 2)` is July. A calendar
-is a table with a row for every member in every month, 301 times 6, 1,806 rows, either left empty where
-there was no order or filled with zero.
+between April and September 2026, so a member orders in about 2.5 of the six months. `lag(spend, 1)`
+reads the spend on the row before, in the window's order, and `lag(spend, 2)` the row before that.
+Chapter 4's flag, LAG over each member's own months with `PARTITION BY customer_id ORDER BY month`,
+found 16 members whose September was below their month before and that month below the one before it,
+and all 16 are on a protect list, each segment's top fifty by Q2 revenue under the head of Retail-Plus's
+rule, where members who spent the same share a place. Marketing's words, "fallen for two months
+running", read as calendar months: September below August, and August below July. A calendar is a table
+with a row for every member in every month, either left empty where there was no order or filled with
+zero.
 
-| C-0216, Retail-Plus, place 23 on the list | May | July | September |
-|---|---|---|---|
-| Monthly spend | Rs 6,440 | Rs 4,300 | Rs 2,540 |
-| The month `lag(month, 1)` read | none | May | July |
+| C-0216, Retail-Plus, place 23 on the list | April | May | June | July | August | September |
+|---|---|---|---|---|---|---|
+| Monthly spend | no order | Rs 6,440 | no order | Rs 4,300 | no order | Rs 2,540 |
 
 **Who needs the answer.** The marketing lead's member team needs it, since it rings the flagged
 members on the protect list this week, and so does the head of Retail-Plus, who answers to the tier's
@@ -33,12 +32,12 @@ costs their goodwill and perhaps their renewal.
 **The questions on the way.**
 
 - Which reading of "last month" fits the flag, sized in the rows it reads?
-- Which months does chapter 4's flag compare for an invented member with gaps, and does the checked flag keep them?
+- Which months does chapter 4's flag compare for an invented member with gaps, and does a flag that reads calendar months keep them?
 - What does the book say about an invented member with no September order, and which flag should name them?
-- Which route confirms the checked flags with no window, and what does it read?
+- Which route confirms the nine calendar-month flags with no window, and what does it read?
 - Which fact would make filling an empty month with zero the honest reading?
 
-**What you post.** One line of five letters in item order, no spaces, in this shape:
+**What you post.** Your five letters in item order, with no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxx
@@ -56,28 +55,28 @@ are empty.
 Four ways could read "last month" for a member's September. Which fits Marketing's words, sized in the
 rows it reads?
 
-a) A calendar of every member and month, zero-filled: 1,806 rows, a month with no order reading as zero
+a) A calendar of every member and month, zero-filled: 1,806 rows, with an empty month read as zero
 
 b) A calendar of every member and month, left empty: 752 rows, since empty months add no rows
 
-c) LAG over each member's own months, as chapter 4 built it: 752 rows, with no check needed
+c) LAG over each member's own months, as chapter 4 built it: 752 rows, each beside the month before
 
-d) LAG with a check that the two rows before September are August and July: 752 rows
+d) LAG on the 752 rows, with a flag kept only if `lag(month, 1)` is August and `lag(month, 2)` July
 
 ## What does the flag compare for a member with empty months?
 
 This comes up at work whenever a customer pushes back on a flag and the rows behind it have to be read before
 anyone replies.
 
-### Q2. Which months does chapter 4's flag compare for an invented member with gaps, and does the checked flag keep them?
+### Q2. Which months does chapter 4's flag compare for an invented member with gaps, and does a flag that reads calendar months keep them?
 
 Every number in this item is invented. Y-01 bought in April (Rs 3,600), June (Rs 2,700) and September
 (Rs 1,300), and in no other month. Which months does chapter 4's flag compare for their September, and
-does the checked flag keep them?
+does a flag that reads Marketing's calendar months keep them?
 
-a) September against June and April, so chapter 4's flag fires and the checked flag drops them
+a) September against June and April, so chapter 4's flag fires and the calendar flag drops them
 
-b) September against August and July, each read as zero, so both flags keep them
+b) September against August and July, read as zero, so chapter 4's flag cannot fire on a rise
 
 c) September against nothing, since LAG returns NULL across empty months, so neither flag fires
 
@@ -90,32 +89,33 @@ no order in September. An analyst fills every empty month with zero and reports 
 whose spend fell two months running. What does the book say about Y-02's September, and which flag
 should name them?
 
-a) A fall to zero, so the falling-spend flag names them and Marketing rings them about a falling spend
+a) A fall to zero, so the falling-spend flag names them and Marketing rings them about that fall
 
 b) A fall to zero once their August is checked against July, so the flag names them with a note
 
-c) Nothing to compare, since they placed no September order; a separate quiet signal would name them
+c) Nothing to compare, since they placed no September order; a separate went-quiet list names them
 
-d) An unknown, so their July and August are dropped as well and they leave the book until they order
+d) An unknown, so their July and August are dropped as well, and they leave the book until they buy
 
 ## How do you prove the call list without the window?
 
 This comes up at work whenever a call list is about to go out and the definition behind it has to be confirmed
 by a route that could disagree.
 
-### Q4. Which route confirms the checked flags with no window, and what does it read?
+### Q4. Which route confirms the nine calendar-month flags with no window, and what does it read?
 
-Kavya Nair, the senior analyst who checks every number before it leaves the team, wants the checked
-flags confirmed by a route that shares no window with them and would disagree if the calendar check
-were wrong. Which route does that, and what does it read?
+The flag that reads calendar months names nine members. Kavya Nair, the senior analyst who checks every
+number before it leaves the team, wants the nine confirmed by a route that shares no window with that
+flag and would disagree with it if it misread an empty month. Which route does that, and what does it
+read?
 
-a) The Python walk from chapter 4, through the 752 member-months grouped by member and sorted: 752 rows
+a) A walk in Python that sorts each member's months and sets each beside the one before: 752 rows
 
-b) A self-join of each member's September row to their own August and July rows by calendar month
+b) A self-join of each member's September row to their own August and July rows: 359 rows read
 
 c) The calendar zero-filled and read with LAG over each member's six months: 1,806 rows
 
-d) The checked LAG query rerun after the platform's overnight reload, set beside the first: 752 rows
+d) The flag's own LAG query rerun after the overnight reload, set beside the first run: 752 rows
 
 ## When is zero the right reading of an empty month?
 
@@ -124,13 +124,13 @@ say what the gap means.
 
 ### Q5. Which fact would make filling an empty month with zero the honest reading?
 
-Filling an empty month with zero turns a quiet month into a fall. Which fact, if it held, would make
-zero the honest reading of an empty month?
+Kalpa's monthly table holds no row for a month in which a member placed no order. Which fact, if it
+held, would make zero the honest reading of such an empty month?
 
-a) Members buy in about 2.5 of six months, so most of their months are empty anyway
+a) Members buy in about 2.5 of the six months, so most of a member's months are empty anyway
 
-b) The calendar holds 1,806 rows, so every member already has a row to fill for each of the six months
+b) The calendar holds 1,806 rows, so each member already has a row to fill for each of six months
 
-c) Marketing wants more members to ring, and zeros would add 17 more calls this week
+c) A lost member costs Kalpa more than a wasted call, so reading a quiet month as a fall is safer
 
 d) Every member is billed every month by default, so a month with no charge means they cancelled

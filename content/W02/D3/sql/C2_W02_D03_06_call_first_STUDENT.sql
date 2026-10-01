@@ -107,7 +107,7 @@ WHERE  month = DATE '2026-09-01'
   AND  spend_1_back < spend_2_back;
 
 -- name: c6_calendar_ids
--- The fixed flag's members, for the comparison with the second route. Counted in the notebook.
+-- The fixed flag's members, which the notebook counts and sets beside the second route's members.
 WITH monthly AS (
     SELECT customer_id, date_trunc('month', order_date)::date AS month, sum(amount) AS spend
     FROM   orders
@@ -130,8 +130,9 @@ WHERE  month = DATE '2026-09-01'
   AND  spend_1_back < spend_2_back;
 
 -- name: c6_calendar_table
--- Two more ways to read "last month": a calendar of every member who ever bought and every month,
--- with a month that has no order either left empty (NULL) or filled with zero. Counted both ways.
+-- The question: what do two more readings of "last month" give? Both build a calendar of every member
+-- who ever bought and every month, one leaving a month with no order empty (NULL) and one filling it
+-- with zero, and the query counts the flags each way.
 WITH monthly AS (
     SELECT customer_id, date_trunc('month', order_date)::date AS month, sum(amount) AS spend
     FROM   orders
@@ -189,7 +190,8 @@ WHERE  sep.month = DATE '2026-09-01'
   AND  aug.spend < jul.spend;
 
 -- name: c6_genuine_fall
--- The question: what does a fall that holds up look like? C-0010 of Retail-Core, one listed member.
+-- The question: what does a fall that holds up look like? C-0010 of Retail-Core, a listed member,
+-- shows one.
 WITH monthly AS (
     SELECT customer_id, date_trunc('month', order_date)::date AS month, sum(amount) AS spend
     FROM   orders

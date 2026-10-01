@@ -9,26 +9,26 @@ Who: The head of Retail-Plus, Kalpa Retail, to the data and AI team at Kalpa's G
 ```notes
 LIVE, one minute. Read the head of Retail-Plus's words aloud. The morning built the protect lists,
 the falling flag and the plan line; the afternoon decides who Marketing rings first and hands the
-room a case to run alone. The trainer's part of the afternoon is 60 minutes: chapter 6 (30), the
-escalated case's first two parts (20) and the Kahoot (10). The tentative IITGN block follows. Then
-what the morning established.
+room a case to run alone. The trainer's part of the afternoon is 60 minutes: chapter 6 with this
+cover and the morning's answers (30), the escalated case's first two parts (20) and the close with
+the Kahoot (10). The tentative IITGN block follows. Then what the morning established.
 ```
 
 ---
 
-## S1. The morning answered five questions with numbers
+## S1. A list per segment, RANK, 16 flags, Q2 on plan
 *What did the morning's five chapters establish, with their numbers?*
 
 | Chapter | What it answered |
 |---|---|
 | 1. Who are the top fifty? | One list across the book: 35 Business, 11 Retail-Plus, 4 Retail-Core, no Student |
 | 2. Top fifty per segment? | PARTITION BY segment: fifty, or every buyer, in each segment |
-| 3. Who makes it at a tie? | RANK, with the count and its reason; DENSE_RANK can run past the line |
+| 3. Who makes it at a tie? | RANK, with the count and its reason; DENSE_RANK can run past fifty |
 | 4. Whose spend is falling? | 16 members, with each member's months kept apart; 20 without |
 | 5. On track against plan? | Q2 closed Rs 10 ahead; Rs 1.58 crore ahead at mid-quarter, from one July week |
 
 ```notes
-LIVE, 2 minutes. Read the five answers as one story. Q2 is July to September 2026; revenue is
+LIVE, 1 minute. Read the five answers as one story. Q2 is July to September 2026; revenue is
 booked revenue, every order at its amount whatever its status, Rs 9,84,00,000 for the quarter.
 Then chapter 6.
 ```
@@ -39,16 +39,16 @@ Then chapter 6.
 *Which listed members does Marketing call first, and does each flag hold up when a member says they were on holiday?*
 
 ```notes
-LIVE. Thirty minutes: the need and the company (4), the options and the call (5), the list and
-the member on holiday (6), the trap, its check and its fix (8, never cut), the second route (3),
-the calls (2) and the close (2). Notebook 6 and sql/C2_W02_D03_06_call_first_STUDENT.sql run
-beside it.
+LIVE. Twenty-eight minutes after the cover and the morning's answers: the map, the need and the
+company (5), the options and the picture (4), the list and the member on holiday (7), the trap, its
+check and its fix (6, never cut), the second route (2), the calls (2) and the close (2). Notebook 06
+and sql/C2_W02_D03_06_call_first_STUDENT.sql run beside it.
 ```
 
 ---
 
 ## S2. Answered in six questions, before the first call
-*Who needs this answer, and which questions lead to it?*
+*Who needs the call list, and which questions lead to it?*
 
 **Who needs the answer.** The member team rings the flagged members on the protect lists this week, and the head of Retail-Plus answers to the tier's members for every call. A call that tells a loyal member their spend is falling when they were away costs their goodwill and maybe their renewal.
 
@@ -76,7 +76,7 @@ icon: calendar | eyebrow: The metric | title: The falling flag | body: September
 icon: triangle-alert | eyebrow: A wrong call costs | title: A loyal member accused | body: Their goodwill, maybe their renewal, and a week of calls spent on false alarms. | tone: dark
 ```
 
-**The client asks.** "Is your flag wrong about them, and how many others?"
+**The client asks.** "C-0216 rang our help line to say they were travelling in August and have not stopped buying. Is your flag wrong about them, and how many others?"
 
 ```notes
 LIVE, 2 minutes. The member is C-0216 of Retail-Plus. Monthly spend is a member's booked revenue in
@@ -122,10 +122,10 @@ for members set to downgrade in 2020 or 2021 (release of 27 October 2020). Then 
 | C. Calendar, zero-filled | the calendar month before | 1,806 | a fall to zero |
 | D. Calendar, left empty | the calendar month before | 1,806 | no reading |
 
-**The call.** B: the rows that exist, plus two columns. What would switch it: Marketing also wanting "went quiet" as its own signal, which D's calendar makes into rows a query can count.
+**The call.** B, because it reads only the rows that exist and adds two columns. What would switch it: a monthly dashboard with a row for every member in every month, quiet months shown as blanks, which only D's calendar gives.
 
 ```notes
-LIVE, 4 minutes. Members buy in 2.5 of the six months on average, 752 member-months for 301
+LIVE, 3 minutes. Members buy in 2.5 of the six months on average, 752 member-months for 301
 members, so a month with no order is the usual state. A zero-filled calendar flags 26 members, 17
 of whom simply placed no September order. 1,806 is 301 members times six months. Then the picture.
 ```
@@ -181,7 +181,7 @@ value: 16 | label: members flagged | note: chapter 4's partitioned LAG
 value: 16 | label: on a protect list | note: each segment's top fifty under RANK
 ```
 
-**The check.** A member whose spend can fall twice from a high month is a member who spent a lot, so the flag sits inside the lists.
+**The check.** All 16 sit inside the lists this quarter, two of them in the last three places of their list, so the overlap is read from the data every time, never assumed.
 
 ```notes
 LIVE, 1 minute. The answer is a. Then the member on holiday.
@@ -247,7 +247,7 @@ stands. Then why it is wrong.
 
 ```mermaid
 flowchart LR
-    F["<b>16 flags</b><br/>LAG over own months"] -->|"rows before September<br/>not August and July"| G["<b>7 step over<br/>an empty month</b>"]
+    F["<b>16 flags</b><br/>LAG over own months"] --> G["<b>7 step over<br/>an empty month</b><br/>rows before September<br/>not August and July"]
     F --> K["<b>9 read three<br/>calendar months</b>"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -255,11 +255,12 @@ flowchart LR
     class K bet
 ```
 
-**The check.** Carry lag(month) beside lag(spend) and count the flags whose two rows before September are not August and July: seven, C-0216 among them.
+**The check.** Carry lag(month) beside lag(spend) and count the flags whose two rows before September are not August and July: seven. The member on holiday is one of the seven.
 
 ```notes
-LIVE, 3 minutes. Marketing asked about calendar months, and LAG counts rows. Wherever a member
-skipped a month, LAG steps over the gap, so a holiday reads as a fall. Then the fix.
+LIVE, 2 minutes. Marketing asked about calendar months, and LAG counts rows. Wherever a member
+skipped a month, LAG steps over the gap, so a holiday reads as a fall. C-0216 is one of the seven.
+Then the fix.
 ```
 
 ---
@@ -301,7 +302,7 @@ value: 9 = 9 | label: members | note: the same ones as the checked LAG
 ```
 
 ```notes
-LIVE, 3 minutes. A missing month has no row to join to, so a gap breaks the run here by
+LIVE, 2 minutes. A missing month has no row to join to, so a gap breaks the run here by
 construction. The two routes share no window and agree because both read calendar months. Then the
 calls.
 ```
@@ -315,7 +316,9 @@ calls.
 |---|---|---|---|
 | Monthly spend | Rs 7,840 | Rs 4,080 | Rs 1,990 |
 
-**The client asks.** "Who do we ring first?" All nine flagged members are on a protect list. Run block c6_call_list in your own notebook and read the nine before you write the line to Marketing.
+**The client asks.** "Who do we ring first?"
+
+All nine flagged members are on a protect list. Run block c6_call_list in your own notebook and read the nine before you write the sentence to Marketing.
 
 ```notes
 LIVE, 2 minutes. C-0010 is a fall that holds up: three consecutive months, each lower. The nine are
@@ -363,25 +366,26 @@ exercises/unguided/C2_W02_D03_escalated_case_STUDENT.md.
 ## S17. Answer it in five parts: two now, three in the lab
 *Which parts does the case ask for, and which runs where?*
 
-**The client asks.** "We start calling on Monday. Send me each segment's protect list under the head of Retail-Plus's rule, with its count; the members we ring first; how much of each segment's Q2 revenue the lists cover; and one line Meera can take into the leadership meeting on whether Q2 is on track."
+**The client asks.** "We start calling on Monday. Send me each segment's protect list under the head of Retail-Plus's rule, with its count; the members we ring first; how much of each segment's Q2 revenue the lists cover; and one sentence Meera can take into the leadership meeting on whether Q2 is on track."
 
 ```timeline
 label: Part 1, now | title: Each segment's list | body: The head's rule and each count
 label: Part 2, now | title: The members to ring | body: Three calendar months, each lower
 label: Part 3, lab | title: The share each list carries | body: Of its own segment's revenue
 label: Part 4, lab | title: Q2 against plan | body: By the total and week by week
-label: Part 5, lab | title: The lines to send | body: To Marketing and to Meera | tone: dark
+label: Part 5, lab | title: The sentences to send | body: To Marketing and to Meera | tone: dark
 ```
 
 ```notes
-LIVE, 3 minutes. Read the marketing lead's message. Each part holds two lettered markers; each
+LIVE, 2 minutes. Read the marketing lead's message. Each part holds two lettered markers; each
 marker is a choice the learner writes into the code, and the check cell after it says whether the
-part behaves. Seventeen minutes alone; the support TA answers environment problems only.
+part behaves. Seventeen minutes alone; the support TA answers environment problems only. Then the
+rules the case keeps.
 ```
 
 ---
 
-## S18. Every choice is yours, and the checks read it
+## S18. Keep the head's rule, calendar months, closed loops
 *Which rules does the case have to keep, whatever the numbers turn out to be?*
 
 ```cards
@@ -391,7 +395,7 @@ icon: circle-check | eyebrow: Every part | title: Close every loop | body: Count
 ```
 
 ```notes
-LIVE, 2 minutes. The cards repeat the morning's rules and give away none of the case's answers.
+LIVE, 1 minute. The cards repeat the morning's rules and give away none of the case's answers.
 Then go: seventeen minutes, parts 1 and 2. After the case, the close.
 ```
 
@@ -401,7 +405,7 @@ Then go: seventeen minutes, parts 1 and 2. After the case, the close.
 *What did the day answer, and what does the growth team ask next?*
 
 ```notes
-LIVE. Ten minutes: the day's answer (2), the six lines (1), the Kahoot (6) and tomorrow (1).
+LIVE. Ten minutes: the day's answer (2), the six rules (1), the Kahoot (6) and tomorrow (1).
 ```
 
 ---
@@ -411,18 +415,18 @@ LIVE. Ten minutes: the day's answer (2), the six lines (1), the Kahoot (6) and t
 
 **The client asks.** "Who do we protect, who do we ring first, and are we on track?"
 
-> "Each segment's list is its top fifty by Q2 revenue under RANK, so members who spent the same share a place, with every list's count and its reason. Ring the nine members whose spend fell in August and again in September first. Q2 closed on plan, Rs 10 ahead, and the Rs 1.58 crore lead at mid-quarter came from one July week, so the weekly run rate has sat below plan since 10 August."
+> "Each segment's list is its top fifty by Q2 revenue under RANK, so members who spent the same share a place, with every list's count and its reason. Ring the nine members whose spend fell in August and again in September first. Q2 closed on plan, Rs 10 ahead, and the Rs 1.58 crore lead at mid-quarter came from one July week; six of the seven full weeks from 10 August booked below plan."
 > The day's answer, to Marketing and the head of Retail-Plus
 
 ```notes
-LIVE, 2 minutes. Ask two learners to read their own line first, including the Retail-Plus count
-their run gave and its reason; then read this one. Then the six lines worth keeping.
+LIVE, 2 minutes. Ask two learners to read their own sentence first, including the Retail-Plus count
+their run gave and its reason; then read this one. Then the six rules worth keeping.
 ```
 
 ---
 
-## S20. Six lines worth keeping, one per chapter
-*Which line does each chapter leave Marketing's list with?*
+## S20. Six rules worth keeping, one per chapter
+*Which rule does each chapter leave Marketing's list with?*
 
 ```mermaid
 flowchart LR
@@ -437,19 +441,19 @@ flowchart LR
 
 1. Say what one row of the list is before you rank it: fifty orders named only 28 members.
 2. "In each segment" is a PARTITION BY: fifty, or every buyer, in each segment.
-3. RANK keeps a tie at the line and says the count; DENSE_RANK can run past the line with no tie at it.
+3. RANK keeps a tie at the line, the last place a list keeps, and says the count; DENSE_RANK can run past the line with no tie at it.
 4. Tell the window whose rows belong together, or LAG reads another member's month.
 5. A running total is done when its last value equals the quarter's total.
 6. A month with no order is no reading: check that LAG read the calendar months before.
 
 ```notes
-LIVE, 1 minute. Read them together. The cheat sheet prints these six lines word for word. Then the
+LIVE, 1 minute. Read them together. The cheat sheet prints these six rules word for word. Then the
 Kahoot.
 ```
 
 ---
 
-## S21. The Kahoot: eight items, none of them graded
+## S21. Eight decisions, from tie rules to Tuesday's join
 *Which of the day's decisions can the room make in twenty seconds each?*
 
 | Item | What it asks |
@@ -458,14 +462,15 @@ Kahoot.
 | 2 | What PARTITION BY restarts |
 | 3 | What LAG returns on a member's first month |
 | 4 | Which ORDER BY makes a running total repeatable |
-| 5 | What ROW_NUMBER does to a tie at the line |
+| 5 | What ROW_NUMBER does when the fourth and fifth tie |
 | 6 | The function for "ties ranked the same" |
 | 7 | A month with no order, read by LAG |
 | 8 | Tuesday, one level up: a LEFT join grew the rows |
 
 ```notes
-LIVE, 6 minutes, kahoot/C2_W02_D03_quiz_STUDENT.md. Twenty seconds an item; after each, one learner
-says why the right answer holds. Item 8 is Tuesday's return question. Then tomorrow's ask, left open.
+LIVE, 6 minutes, kahoot/C2_W02_D03_quiz_STUDENT.md. None of the eight is graded. Twenty seconds an
+item; after each, one learner says why the right answer holds. Item 8 is Tuesday's return question.
+Then tomorrow's ask, left open.
 ```
 
 ---
@@ -475,7 +480,7 @@ says why the right answer holds. Item 8 is Tuesday's return question. Then tomor
 
 | Tag | Question |
 |---|---|
-| [S] | RANK, DENSE_RANK and ROW_NUMBER on a tie. |
+| [S] | What do RANK, DENSE_RANK and ROW_NUMBER give on a tie? |
 | [S] | Top-3 per group: GROUP BY or a window, and why? |
 | [S] | What is the difference between GROUP BY and a window function? |
 | [F] | How would you find customers whose spend fell two months in a row? |
@@ -487,10 +492,24 @@ says why the right answer holds. Item 8 is Tuesday's return question. Then tomor
 | [F] | Revenue to date is nine times the plan by week seven: what is the likely mistake? |
 
 ```notes
-SELF-STUDY, and the practice lab's drill. [S] is a staple asked everywhere and [F] frequent at global
-capability centres and product companies; D23 carries the three differentiators. Each question is
-answered in full in its chapter's notebook and in the study notes; in the lab, pairs ask each other
-aloud.
+SELF-STUDY, ten minutes of the practice lab's fifteen-minute drill. [S] is a staple asked everywhere
+and [F] frequent at global capability centres and product companies; D23 carries the three
+differentiators. In the lab, pairs ask each other aloud. The answers in one breath, in order:
+ROW_NUMBER numbers every row, breaking a tie by the rest of its ORDER BY or arbitrarily; RANK shares
+the number and skips, 1, 1, 3; DENSE_RANK shares it and skips nothing, 1, 1, 2. A window partitioned
+by the group, numbered in a CTE and filtered outside, since GROUP BY collapses each group and LIMIT
+counts across the result. GROUP BY returns one row per group; a window keeps every row and adds a
+column. One row per customer per month, lag 1 and lag 2 partitioned by customer and ordered by
+month, a check that the lagged months are the calendar months before, and the rows that fall twice.
+WHERE filters before the window is computed, so compute it in a CTE and filter outside. It ranked
+order rows; check distinct customers against rows and rank customers after adding up their orders.
+Find out first: RANK with a tie at tenth is the rule working, DENSE_RANK can run past ten with ties
+above, and ROW_NUMBER cannot ship eleven, so a repeated id there is a fanned-out join. Most often the
+window has no PARTITION BY; a default argument in lag() or a descending ORDER BY gives the same
+symptom. Under the default frame a date-only running total repeats on every run but gives peers one
+figure; a ROWS frame over a non-unique order can change between runs; the date plus the order id
+gives every row its own step. A cumulative actual beside one week's plan; compare to date with to
+date.
 ```
 
 ---
@@ -508,8 +527,13 @@ Each one asks for a judgment the day's numbers support: the count a tie rule shi
 order, and the running total that has to close on the quarter's own total.
 
 ```notes
-SELF-STUDY, and the practice lab's drill, asked last. [D] marks a differentiator. The answers are in
-chapter 3's, chapter 6's and chapter 5's notebooks and in the study notes.
+SELF-STUDY, the last five minutes of the practice lab's drill. [D] marks a differentiator. The
+answers in one breath: RANK, and the report can ship more than N when a tie straddles the line, so it
+states the count; DENSE_RANK can ship more even with no tie at the line; ROW_NUMBER always ships N and
+hides the tie. A month with no order is no reading, so it breaks the run; a zero would read a quiet
+month as a fall, and here zeros flag 26 members, 17 of them for a quiet September alone. Whether
+every row made it in: the last cumulative value against the independent total, then rows outside
+the join's calendar, here 25 orders of 1 to 5 July, Rs 15,39,820.
 ```
 
 ---
@@ -549,8 +573,8 @@ exercises/unguided/C2_W02_D03_second_case_STUDENT.md.
 | 6 | 16 calls, 7 over an empty month | Carry the month LAG read |
 
 ```notes
-SELF-STUDY, and the lab's debrief of the room's wrong answers. Each line is a trap the day staged on
-purpose, and the room met each wrong number before anyone named the mistake.
+SELF-STUDY, ten minutes, and the lab's debrief of the room's wrong answers. Each row is a trap the
+day staged on purpose, and the room met each wrong number before anyone named the mistake.
 ```
 
 ---

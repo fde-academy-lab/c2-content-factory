@@ -15,7 +15,7 @@ Rs 9,84,00,000, every order at its amount whatever its status, which is Monday's
 To date means every week up to and including the one on the row, so booked to date and plan to date
 both accumulate. A running total is a window: `sum(booked) OVER (ORDER BY week_start)` keeps every
 week's row and carries the sum of every row up to and including it. Rows that share the window's ORDER
-BY value are peers, and a running total gives peers the same figure. Mid-quarter is the end of the
+BY value are peers, and by default a running total gives peers the same figure. Mid-quarter is the end of the
 seventh plan week, the week of 17 August, which ends on 23 August. Chapter 5's running total, with the
 plan's first week carrying Q2's first five days, closes on Rs 9,84,00,000 against Rs 9,83,99,990.
 
@@ -50,7 +50,7 @@ below plan.
 - Which ORDER BY names the order that took Q2 past Rs 3.5 crore, and what does it promise?
 - Which route confirms the thirteen to-date figures without the window, and what does it read?
 
-**What you post.** One line of five letters in item order, no spaces, in this shape:
+**What you post.** Your five letters in item order, with no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxx
@@ -64,20 +64,20 @@ This comes up at work whenever a stakeholder wants a figure to date at every poi
 
 ### Q1. Which way should give Meera booked to date at the end of every day, sized in order rows read?
 
-Meera now wants booked to date at the end of each of Q2's 92 days as well as at each plan week's end.
-Which way fits, sized in the order rows it reads?
+Meera now wants booked to date at the end of every day of Q2, from 1 July to 30 September, as well as
+at each plan week's end. Which way fits, sized in the order rows it reads?
 
-a) A running SUM over daily totals: the 462 Q2 orders read once, then 92 daily rows
+a) A running SUM over a calendar of Q2's days, joined to daily totals: 462 orders read, then 92 rows
 
 b) A plain SUM up to each day's end: the 462 orders read once for every day, 42,504 order reads
 
-c) A self-join of each day to every earlier day: 4,278 day pairs, fewer rows than any window reads
+c) A self-join of each day to every day up to it: the 462 orders read once, then 4,278 pairs of days
 
-d) The 462 orders exported with a cumulative column copied down a sheet: 462 rows and no query to keep
+d) A running SUM over the daily totals, one row per date with an order: 462 orders read, then 84 rows
 
 ## Does a running total say what it seems to say?
 
-This comes up at work whenever a to-date line goes to someone who decides on it.
+This comes up at work whenever a to-date figure goes to someone who decides on it.
 
 ### Q2. What happened to the running total that closes on Rs 4,90,020, and which check catches it?
 
@@ -90,26 +90,26 @@ a) Q2 fell Rs 9,79,09,970 short of plan because its last week booked so little; 
 
 b) The last week holds only 28 September, so the close is partial; reading the week of 21 September fixes it
 
-c) Each week is now its own window, so each row shows one week; set the last row beside Rs 9,84,00,000
+c) Each week is now its own window, so a row shows one week; booked to date should never drop, yet it does
 
-d) The plan side ran on and the booked side did not, so dropping the plan's running sum makes the two match
+d) The plan side ran on and the booked side did not, so dropping the plan's running sum makes them match
 
 ### Q3. Where did Q2 stand against plan to date at the end of the week of 31 August?
 
 Meera reads the end of the week of 31 August, the ninth plan week. Using the table at the top of this
 set, where did Q2 stand against plan?
 
-a) About ten times plan: Rs 7,53,96,740 booked to date against the ninth week's plan of Rs 75,69,230
+a) About ten times plan: Rs 7,53,96,740 booked to date against a week's plan of Rs 75,69,230
 
 b) Rs 72,73,670 ahead: Rs 7,53,96,740 booked to date against Rs 6,81,23,070 planned to date
 
-c) Rs 41,32,060 behind: the week booked Rs 34,37,170 against its own Rs 75,69,230
+c) Rs 41,32,060 behind: the week booked Rs 34,37,170 against its own plan of Rs 75,69,230
 
-d) Rs 6,78,27,510 ahead: Rs 7,53,96,740 less the week's plan of Rs 75,69,230
+d) Rs 1,48,42,900 ahead: Rs 7,53,96,740 booked to date against Rs 6,05,53,840 planned to date
 
-## Can a running total name the row that crossed a line?
+## Can a running total name the order that took Q2 past a round figure?
 
-This comes up at work whenever someone asks which sale, or which day, took a total past a mark.
+This comes up at work whenever someone asks which sale, or which day, took a total past a round figure.
 
 ### Q4. Which ORDER BY names the order that took Q2 past Rs 3.5 crore, and what does it promise?
 
@@ -118,13 +118,13 @@ Meera asks which order took Q2 past Rs 3.5 crore. A running total of Q2's orders
 order ids run KR-00557, KR-00580, KR-00601, KR-00604, KR-00607, KR-00713, KR-00761, KR-00782,
 KR-00832, KR-00853, KR-00919 and KR-00979. Which ORDER BY names the order, and what does it promise?
 
-a) `order_date, amount DESC`: each order its own step, in the order the day's sales happened
+a) `order_date, amount DESC`: each order its own step, in the order that the day's sales happened
 
-b) `order_id` alone: each order its own step, since the order ids were issued in date order
+b) `order_id` alone: each order its own step, since the order ids were all issued in date order
 
-c) `order_date` with `PARTITION BY order_date`: each day restarts its total, so each order shows its own step
+c) `order_date` with `PARTITION BY order_date`: each day restarts, so each order shows its own step
 
-d) `order_date, order_id`: each order its own step, the same on every run, in id order within the day
+d) `order_date, order_id`: each order its own step, and the id is the stated tiebreak inside a day
 
 ## How do you prove a running total without the window?
 
@@ -141,6 +141,6 @@ a) The weekly booked column added up in a spreadsheet and set beside the last ro
 
 b) Thirteen plain sums of the Q2 orders dated up to each week's last day: 6,006 order reads
 
-c) The same window rerun with `ORDER BY week_start DESC` and read from the bottom up: 13 rows
+c) A running total redone with `ORDER BY week_start DESC`, read from the bottom up: 13 rows
 
-d) The last plan to date set beside the plan line's own total, Rs 9,83,99,990: one row
+d) The last plan to date set beside the plan line's own total of Rs 9,83,99,990: one row

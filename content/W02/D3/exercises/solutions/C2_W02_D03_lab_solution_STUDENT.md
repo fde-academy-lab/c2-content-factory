@@ -4,9 +4,9 @@ Answers: 1c 2b 3d 4a 5b 6c 7a 8d 9b 10c
 
 The practice lab set asked for three habits on numbers the chapters never used: predict what the
 ranking functions do to a tie before running them, say whether an ask needs GROUP BY or a window and
-how many rows it returns, and run the whole day end to end on Kavya's drill of eight invented members.
-Kavya Nair is the senior analyst on Kalpa Retail's data team, and the line is the last place a list
-keeps, fifth on a top five.
+how many rows it returns, and run the whole day end to end on eight invented members, the drill that
+Kavya Nair, the senior analyst on Kalpa Retail's data team, gives every new analyst. The line is the
+last place a list keeps, fifth on a top five.
 Two of the ten items are design items: 5, the build sized for an ask by city, and 10, the second route
 to a count. Problem 3's queries are the problem's own design work, and a model build is below.
 
@@ -178,7 +178,7 @@ The build below is one version that answers every part, and each named step open
 saying what it is for.
 
 ```sql
--- Kavya's drill, part 1: the list, the flag and the calls, in one query of named steps.
+-- Problem 3, part 1: the list, the flag and the calls, in one query of named steps.
 WITH months (member, month, spend) AS (
     VALUES ('V-01', DATE '2026-07-01', 2700), ('V-01', DATE '2026-08-01', 2950), ('V-01', DATE '2026-09-01', 2150),
            ('V-02', DATE '2026-05-01', 4500), ('V-02', DATE '2026-07-01', 3900), ('V-02', DATE '2026-09-01', 3000),

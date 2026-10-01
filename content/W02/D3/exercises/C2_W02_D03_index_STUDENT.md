@@ -12,8 +12,9 @@ raised. The marketing lead owns acquisition and campaigns at Kalpa Retail, the h
 the paid membership tier and has asked that members who spent the same be ranked the same, and Meera
 Raghavan, the CEO, wants Q2 (July to September 2026) read against the plan line. The warehouse is
 Kalpa's Postgres database. The day climbs one case in six chapters, and each chapter has a short set of
-its own: items 1 and 2 run live in the chapter's last minutes if the chapter ran to time, and the rest
-are the practice lab's stretch or tonight's work. Every stem is a question a Kalpa stakeholder or Kavya
+its own: two of its items run live in the chapter's last minutes if the chapter ran to time, items 2
+and 3 in chapter 1 and items 1 and 2 in every other chapter, and the rest are the practice lab's
+stretch or tonight's work. Every stem is a question a Kalpa stakeholder or Kavya
 Nair, the team's senior analyst, would ask, and more than a third of the day's items ask you to design
 the analysis before you judge one: the best-fit way with its size, the fact that would switch it, or a
 second route to the same number.
@@ -36,7 +37,7 @@ having practised it.
 |---|---|
 | 1 | Which fifty members spent the most in Q2? |
 | 2 | Which fifty members lead each of the four segments? |
-| 3 | When two members spent the same at the line, how many does a list ship, and which rule did the head of Retail-Plus ask for? |
+| 3 | When two members tie at fiftieth place, how many does a list ship, and which rule did the head of Retail-Plus ask for? |
 | 4 | Whose monthly spend fell two months running? |
 | 5 | Has Q2 revenue kept pace with the plan line week by week, and where did it stand at mid-quarter? |
 | 6 | Which listed members does Marketing call first, and does each flag hold up when a member says they were on holiday? |
@@ -45,15 +46,15 @@ having practised it.
 
 | When | File | The question it asks | Items | Solution |
 |---|---|---|---|---|
-| Items 1 and 2 live in chapter 1's last minutes; items 3 to 5 in the practice lab or tonight | `unguided/C2_W02_D03_ch1_top_fifty_STUDENT.md` | Which fifty members spent the most in Q2? | Five letters; items 1, 4 and 5 are design | `solutions/C2_W02_D03_ch1_top_fifty_solution_STUDENT.md` |
+| Items 2 and 3 live in chapter 1's last minutes; items 1, 4 and 5 in the practice lab or tonight | `unguided/C2_W02_D03_ch1_top_fifty_STUDENT.md` | Which fifty members spent the most in Q2? | Five letters; items 1, 4 and 5 are design | `solutions/C2_W02_D03_ch1_top_fifty_solution_STUDENT.md` |
 | Items 1 and 2 live in chapter 2's last minutes; items 3 to 5 in the practice lab or tonight | `unguided/C2_W02_D03_ch2_each_segment_STUDENT.md` | Which fifty members lead each of the four segments? | Five letters; items 1, 4 and 5 are design | `solutions/C2_W02_D03_ch2_each_segment_solution_STUDENT.md` |
-| Chapter 3, with the trainer, about fifteen minutes | `guided/C2_W02_D03_tie_STUDENT.md` | How do ROW_NUMBER, RANK and DENSE_RANK treat a tie, and what does the head of Retail-Plus's rule ship for Retail-Core, built together on one screen? | Five letters; none is a design item, since the trainer chooses every step | `solutions/C2_W02_D03_tie_solution_STUDENT.md` |
-| Items 1 and 2 live in chapter 3's last minutes; items 3 to 5 in the practice lab or tonight | `unguided/C2_W02_D03_ch3_tie_rule_STUDENT.md` | When two members spent the same at the line, how many does a list ship, and which rule did the head of Retail-Plus ask for? | Five letters; items 4 and 5 are design | `solutions/C2_W02_D03_ch3_tie_rule_solution_STUDENT.md` |
+| Chapter 3, with the trainer, about fifteen minutes | `guided/C2_W02_D03_tie_STUDENT.md` | How do ROW_NUMBER, RANK and DENSE_RANK treat a tie, and what does the head of Retail-Plus's rule ship for Retail-Core? | Five letters; none is a design item, since the trainer chooses every step | `solutions/C2_W02_D03_tie_solution_STUDENT.md` |
+| Items 1 and 2 live in chapter 3's last minutes; items 3 to 5 in the practice lab or tonight | `unguided/C2_W02_D03_ch3_tie_rule_STUDENT.md` | When two members tie at fiftieth place, how many does a list ship, and which rule did the head of Retail-Plus ask for? | Five letters; items 4 and 5 are design | `solutions/C2_W02_D03_ch3_tie_rule_solution_STUDENT.md` |
 | Items 1 and 2 live in chapter 4's last minutes; items 3 to 5 in the practice lab or tonight | `unguided/C2_W02_D03_ch4_falling_spend_STUDENT.md` | Whose monthly spend fell two months running? | Five letters; items 1, 4 and 5 are design | `solutions/C2_W02_D03_ch4_falling_spend_solution_STUDENT.md` |
 | Items 1 and 2 live in chapter 5's last minutes; items 3 to 5 in the practice lab or tonight | `unguided/C2_W02_D03_ch5_against_plan_STUDENT.md` | Has Q2 revenue kept pace with the plan line week by week, and where did it stand at mid-quarter? | Five letters; items 1 and 5 are design | `solutions/C2_W02_D03_ch5_against_plan_solution_STUDENT.md` |
 | Items 1 and 2 live in chapter 6's last minutes; items 3 to 5 in the practice lab or tonight | `unguided/C2_W02_D03_ch6_call_first_STUDENT.md` | Which listed members does Marketing call first, and does each flag hold up when a member says they were on holiday? | Five letters; items 1, 4 and 5 are design | `solutions/C2_W02_D03_ch6_call_first_solution_STUDENT.md` |
 | The escalated case, alone: parts 1 and 2 in the afternoon, 20 minutes, and parts 3 to 5 in the practice lab | `unguided/C2_W02_D03_escalated_case_STUDENT.md` with `../notebooks/C2_W02_D03_ex1_escalated_case_STUDENT.ipynb` | What does Marketing get on Monday: each segment's list with its count, the members to ring first, the share of revenue the lists carry, and Q2 against plan? | Fifteen letters, the notebook's ten markers and five of the brief's own; items 11 to 15 are design | `solutions/C2_W02_D03_escalated_case_solution_STUDENT.md` and the executed `solutions/C2_W02_D03_ex1_escalated_case_solution_STUDENT.ipynb` |
-| The TA-led practice lab, after the day | `practice/C2_W02_D03_lab_STUDENT.md` | Can you rank a tie, choose GROUP BY or a window, and run the whole day on Kavya's drill, in an hour? | Ten letters and the drill's queries; items 5 and 10 are design, and the drill's queries are its design work | `solutions/C2_W02_D03_lab_solution_STUDENT.md` |
+| The TA-led practice lab, after the day | `practice/C2_W02_D03_lab_STUDENT.md` | Can you rank a tie, choose GROUP BY or a window, and run the whole day on eight invented members, in an hour? | Ten letters and the drill's queries; items 5 and 10 are design, and the drill's queries are its design work | `solutions/C2_W02_D03_lab_solution_STUDENT.md` |
 | The take-home, in pairs or alone, about forty minutes | `unguided/C2_W02_D03_second_case_STUDENT.md` with `../notebooks/C2_W02_D03_ex2_second_case_STUDENT.ipynb` | Should Retail-Core's protect list rank members by how often they ordered in Q2, instead of by how much they spent? | Ten letters, the notebook's seven markers and three of the brief's own, and one line for the marketing lead; items 8 to 10 are design | `solutions/C2_W02_D03_second_case_solution_STUDENT.md` and the executed `solutions/C2_W02_D03_ex2_second_case_solution_STUDENT.ipynb` |
 | Tonight | `../takehome/C2_W02_D03_brief_STUDENT.md` | The take-home brief, on a second sample of the warehouse | Queries of your own, with the checks that prove them | `../takehome/C2_W02_D03_selfcheck_STUDENT.md`, opened once each part is done |
 

@@ -56,7 +56,7 @@ shoppers), Retail-Plus (the paid membership tier) and Student. Then what each on
 
 ---
 
-## S3. Each ask needs its own kind of answer
+## S3. Lists, a tie rule, a flag and the plan: four answers
 *What does each person need from the data team, and what does a wrong answer cost them?*
 
 **The client asks.** "Give us the top fifty customers by Q2 revenue in each segment, and flag anyone whose monthly spend has fallen for two months running."
@@ -76,8 +76,8 @@ wants to start typing; the thinking comes first. Then the question on the next s
 
 ---
 
-## S4. Question: can one GROUP BY answer all three?
-*Which tool every analyst already knows could produce a top fifty per segment?*
+## S4. Question: can one GROUP BY give each top fifty?
+*Can GROUP BY, the tool the room already knows, return each segment's top fifty?*
 
 ```mermaid
 flowchart LR
@@ -98,7 +98,7 @@ the answer.
 ---
 
 ## S5. Answer: no, GROUP BY collapses what the asks keep
-*Which tool every analyst already knows could produce a top fifty per segment?*
+*Can GROUP BY, the tool the room already knows, return each segment's top fifty?*
 
 ```mermaid
 flowchart LR
@@ -156,7 +156,7 @@ run beside it, and the notebook's numbered sections are the questions on the nex
 ---
 
 ## S7. Answering it for Marketing: six questions on the way
-*Who needs this answer, and which questions lead to it?*
+*Who needs the top fifty, and which questions lead to it?*
 
 **Who needs the answer.** The marketing lead spends the protect budget, a call from the member team and a renewal offer, on the members this list names. A list built on the wrong unit sends offers to the wrong people: each best member it misses is one nobody calls, and each one it repeats is a call made twice.
 
@@ -182,7 +182,7 @@ every number before it leaves the team. Then the need.
 
 ```cards
 icon: megaphone | eyebrow: Who asks | title: The marketing lead | body: Spends the protect budget, a call and a renewal offer, on the members this list names.
-icon: indian-rupee | eyebrow: The metric | title: Q2 revenue per member | body: Booked revenue of every Q2 order the member placed, whatever its status. Q2 booked Rs 9,84,00,000.
+icon: banknote | eyebrow: The metric | title: Q2 revenue per member | body: Booked revenue of every Q2 order the member placed, whatever its status. Q2 booked Rs 9,84,00,000.
 icon: triangle-alert | eyebrow: A wrong list costs | title: Calls to the wrong people | body: A best member nobody rings, or one member rung twice. | tone: dark
 ```
 
@@ -215,22 +215,24 @@ which is the dashboard's word. Then four ways Kalpa could rank.
 
 ---
 
-## S10. Group, then number in a window: 50 rows leave
+## S10. Group, then number in a window: one query, 155 rows
 *How could the team build a ranked list, and what would each way cost?*
 
-| Option | One row is | Leaves the warehouse | Per-segment list |
+| Option | One row is | For the four segment lists | Leaves the warehouse |
 |---|---|---|---|
-| A. Sort the Q2 orders, keep 50 | an order | 50 order rows | impossible |
-| B. Group by member, sort, LIMIT 50 | a member | 50 rows | 4 queries glued |
-| C. Group, number in a window, keep 1 to 50 | a member and its place | 50 rows | 1 more phrase |
-| D. Export and sort by hand | anything | all 462 Q2 orders | 4 sorts by hand |
+| A. Sort the Q2 orders, keep 50 | an order | 4 sorts, each a list of orders | 188 order rows |
+| B. Group by member, sort, LIMIT 50 | a member | 4 queries glued | 155 rows |
+| C. Group, number in a window, keep 1 to 50 | a member and its place | 1 query | 155 rows |
+| D. Export and sort by hand | anything | 4 sorts by hand | all 462 Q2 orders |
 
 **The call.** C, because Marketing's ask is per segment and the place has to be a column a later step can count. What would switch it: one overall list to read by eye, where B is shorter and returns the same fifty.
 
 ```notes
 LIVE, 4 minutes. LIMIT counts rows across the whole result, so B needs one query per segment, four
-in all. D breaks the data platform lead's rule, "query it, do not export it". A answers in orders,
-which the chapter comes back to. Then the picture of option C.
+in all, to move the same 155 rows C moves in one: fifty from Retail-Core and Retail-Plus, and every
+buyer in Business, 35, and Student, 20. A moves 188 rows, fifty of each segment's orders and Student's
+38, and every row is an order, which the chapter comes back to. D breaks the data platform lead's
+rule, "query it, do not export it". Then the picture of option C.
 ```
 
 ---
@@ -241,8 +243,8 @@ which the chapter comes back to. Then the picture of option C.
 ```mermaid
 flowchart LR
     O["<b>462 Q2 orders</b>"] --> S["<b>q2_spend</b><br/>GROUP BY member<br/>227 rows"]
-    S --> N["<b>ranked</b><br/>row_number() OVER<br/>(ORDER BY q2_revenue DESC)"]
-    N --> K["<b>WHERE position <= 50</b><br/>in the outer query"]
+    S --> N["<b>ranked</b><br/>row_number() OVER<br/>(ORDER BY q2_revenue<br/>DESC, customer_id)"]
+    N --> K["<b>WHERE</b><br/>position <= 50,<br/>in the outer query"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class S,N known
@@ -315,7 +317,7 @@ LIVE, 2 minutes. Letters in chat. Then the answer.
 
 ---
 
-## S15. Answer: three, and every Business buyer is on it
+## S15. Answer: 35 Business, 11 Retail-Plus, 4 Retail-Core
 *Which fifty members spent the most?*
 
 ```stats
@@ -328,8 +330,9 @@ value: 0 | label: Student | note: of 20 who bought
 **The check.** Place 35, the last Business member, booked Rs 2,25,000; place 36, the first retail member, Rs 21,740, about a tenth of it. Option B's LIMIT returns the same fifty members.
 
 ```notes
-LIVE, 2 minutes. The answer is b. Ranked across the whole book, any Business buyer outranks every
-retail member. Hold that thought for chapter 2. First, the list a hurried analyst sends.
+LIVE, 2 minutes. The answer is b: three segments, and every Business buyer is on the list. Ranked
+across the whole book, any Business buyer outranks every retail member. Hold that thought for
+chapter 2. First, the list a hurried analyst sends.
 ```
 
 ---
@@ -420,9 +423,8 @@ value: 462 | label: rows moved | note: to say what the query said in 50
 
 ```notes
 LIVE, 2 minutes. A slip in the window's ORDER BY could not move this list, since the two share no
-code; that is what makes it a second route. It moves 462 rows out of the warehouse to confirm what
-the query returns in 50, so it runs as the check and the query is what Marketing gets. Then the
-chapter's answers.
+code. It moves 462 rows out of the warehouse to confirm what the query returns in 50, so it runs as
+the check and the query is what Marketing gets. Then the chapter's answers.
 ```
 
 ---
@@ -432,7 +434,7 @@ chapter's answers.
 
 | The question on the way | The answer |
 |---|---|
-| 1. Which way, at what cost? | Group, then number in a window: 50 rows leave |
+| 1. Which way, at what cost? | Group, then number in a window: one query, 155 rows |
 | 2. What did each member book? | 227 rows, all 462 orders and Rs 9,84,00,000 |
 | 3. Which fifty spent most? | 35 Business, 11 Retail-Plus, 4 Retail-Core |
 | 4. What does the quick list give? | 50 orders naming 28 members, all Business |
@@ -463,7 +465,7 @@ LIVE. Thirty minutes. Notebook C2_W02_D03_02_each_segment and its .sql file run 
 ---
 
 ## S21. Answering it per segment: five questions on the way
-*Who needs this answer, and which questions lead to it?*
+*Who needs a list per segment, and which questions lead to it?*
 
 **Who needs the answer.** The marketing lead spends each segment's protect budget on that segment's own members, and the head of Retail-Plus wants the tier's best members rung before they drift. A list that hands Retail-Plus a few places and Student none leaves the tier Marketing worries about mostly unprotected.
 
@@ -515,8 +517,8 @@ flowchart LR
 **What breaks.** Amazon says the overall rank "doesn't always indicate how well an item is selling in relation to similar items", so it keeps best-seller lists by category and subcategory.
 
 ```notes
-LIVE, 2 minutes. Source: Amazon's help page on Best Sellers Rank, checked 1 October 2026; its lists
-say "updated frequently". JEE Advanced does the same with people: it publishes a rank list
+LIVE, 2 minutes. Source: Amazon's help page on Best Sellers Rank, checked 1 October 2026. JEE
+Advanced does the same with people: it publishes a rank list
 inside each category beside the common list, and in 2026 the OBC-NCL rank 1 stood third on the
 common list and the GEN-EWS rank 1 sixth (the results release of 1 June 2026). Then the options.
 ```
@@ -601,7 +603,7 @@ leads each one. Then the quickest per-segment list.
 
 ---
 
-## S28. Wrong answer: Retail-Plus 11, Student none
+## S28. The plausible wrong answer: Retail-Plus 11, Student 0
 *What does numbering the whole book once give each segment?*
 
 ```sql
@@ -700,8 +702,8 @@ flowchart LR
 ```notes
 LIVE, 2 minutes, and never longer. Somebody writes the filter in WHERE; Postgres prints "ERROR:
 window functions are not allowed in WHERE". Read the last line, point at Monday's drawing of the
-order a query runs in, move the place into a CTE, and move on. It is an error met on the way, never
-a trap. Then a second route with no window.
+order a query runs in, move the place into a CTE, and move on. It is an error met on the way, and it
+gets its two minutes and no more. Then a second route with no window.
 ```
 
 ---
@@ -754,33 +756,33 @@ two members who booked the same. Then chapter 3, the head of Retail-Plus's quest
 ---
 
 ## SECTION 3: Who makes it at a tie?
-*When two members spent the same at the line, how many does a list ship, and which rule did the head of Retail-Plus ask for?*
+*When two members tie at fiftieth place, how many does a list ship, and which rule did the head of Retail-Plus ask for?*
 
 ```notes
 LIVE. Thirty minutes. Notebook C2_W02_D03_03_tie_rule, its .sql file, the guided build
-(exercises/guided/C2_W02_D03_tie_STUDENT.md) and the companion page run beside it. Never cut the
-tie demonstration.
+(exercises/guided/C2_W02_D03_tie_STUDENT.md) and the companion page's section 04, the tie, run beside
+it; the page's later parts stay folded until after chapter 6. Never cut the tie demonstration.
 ```
 
 ---
 
 ## S35. Answering the head's rule: six questions on the way
-*Who needs this answer, and which questions lead to it?*
+*Who needs the tie rule, and which questions lead to it?*
 
-**Who needs the answer.** The head of Retail-Plus will defend the list to the tier's members and to Marketing. A member left off by a coin toss, with the same spend as the member kept, has a fair complaint; a list labelled fifty that carries fifty-two has spent two calls nobody planned; a list that drops both members of a tie is the forty-nine the head refused.
+**Who needs the answer.** The head of Retail-Plus will defend the list to the tier's members and to Marketing. The line is the last place a list keeps, fiftieth on a top fifty. A member left off at the line by a coin toss has a fair complaint; a list labelled fifty that carries fifty-two has spent two calls nobody planned; a list that drops both members of a tie is the forty-nine the head refused.
 
 ```timeline
 label: 1 | title: Which rule, at what cost? | body: Four rules at the line
-label: 2 | title: One tie, three functions? | body: Six invented members
-label: 3 | title: A tie at the line? | body: An invented top four
-label: 4 | title: How many in Retail-Core? | body: Four counts on Kalpa
-label: 5 | title: How many in your segment? | body: Your own run
+label: 2 | title: A tie at the line? | body: An invented top four
+label: 3 | title: One tie, three functions? | body: Six invented members
+label: 4 | title: Retail-Core's counts? | body: Four counts on Kalpa
+label: 5 | title: Retail-Plus's count? | body: Your own run
 label: 6 | title: Does a plain count agree? | body: No window at all | tone: dark
 ```
 
 ```notes
 LIVE, 1 minute. Chapter 2's lists were cut by row_number, with the customer id deciding any two
-members who booked the same. Read the six questions. Then the need.
+members who booked the same. Read the six questions, and say what the line is. Then the need.
 ```
 
 ---
@@ -810,7 +812,7 @@ writes its tiebreaker down, and a race that shows the head's rule.
 flowchart LR
     U["<b>upgrade requests</b><br/>a few seats"] --> T["<b>status tier, upgrade type,<br/>Loyalty Points, 12 months</b>"]
     T -->|"still equal"| K["<b>booking code, then<br/>date and time of request</b>"]
-    J["<b>Tokyo 2020 high jump</b><br/>two cleared 2.37 m"] --> R["<b>places 1, 1, 3</b><br/>two golds, no silver"]
+    J["<b>Tokyo 2020 high jump</b><br/>three cleared 2.37 m"] --> R["<b>places 1, 1, 3</b><br/>two golds, no silver"]
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class K,R bet
@@ -823,9 +825,9 @@ flowchart LR
 LIVE, 2 minutes. aa.com, upgrades for status members, checked 1 October 2026: "If the upgrade type
 and 12-month Loyalty Point value are the same, we'll look at the booking code then date / time of
 the request to determine priority." Tokyo 2020 men's high jump final, 1 August 2021: Barshim of
-Qatar and Tamberi of Italy both cleared 2.37 m and shared the gold, and Nedasekau of Belarus was
-placed third with the bronze; no silver (World Athletics results, checked 1 October 2026). Then
-the four rules.
+Qatar and Tamberi of Italy both cleared 2.37 m and shared the gold, and Nedasekau of Belarus, who
+also cleared 2.37 m, was placed third with the bronze; no silver (World Athletics results, checked
+1 October 2026). Then the four rules.
 ```
 
 ---
@@ -833,26 +835,62 @@ the four rules.
 ## S38. RANK: ties share a place and the count is said
 *Which rules could cut a list at fifty, and what does each do at a tie?*
 
-| Rule | At a tie on the line | Invented top four ships | Meets the head's ask? |
-|---|---|---|---|
-| A. ROW_NUMBER, stated tiebreaker | one in, one out | 4 | No: equal spend, different places |
-| B. RANK | both in; next place skipped, 1, 1, 3 | 5 | Yes, with the count said |
-| C. DENSE_RANK | both in; nothing skipped, 1, 1, 2 | 5 | Can run past fifty even untied |
-| D. Whole ties only | both out unless all fit | 3 | Runs short: the forty-nine |
+| Rule | At a tie on the line | Meets the head's ask? |
+|---|---|---|
+| A. ROW_NUMBER, stated tiebreaker | one in, one out | No: equal spend, different places |
+| B. RANK | both in; next place skipped, 1, 1, 3 | Yes, with the count said |
+| C. DENSE_RANK | both in; nothing skipped, 1, 1, 2 | Can run past fifty even untied |
+| D. Whole ties only | both out unless all fit | Runs short: the forty-nine |
 
 **The call.** B, RANK, with the count and its reason in the report. What would switch it: a hard cap, such as fifty seats at a members' dinner, where ROW_NUMBER with a tiebreaker stated in advance is honest.
 
 ```notes
-LIVE, 4 minutes. The invented top four: A Rs 9,100, B 8,800, C 8,200, D 7,400, E 7,400, F 6,900,
-with D and E tied at fourth. Whole ties only has no function of its own: count(*) OVER (PARTITION
-BY q2_revenue) gives each member the number who share their figure, and rank + tied_with - 1 is the
+LIVE, 3 minutes. Whole ties only has no function of its own: count(*) OVER (PARTITION BY
+q2_revenue) gives each member the number who share their figure, and rank + tied_with - 1 is the
 last place the tie reaches. A good tiebreaker under a cap is a business reason, such as more Q2
-orders first. Then predict the three functions.
+orders first. Then each rule's count on an invented top four.
 ```
 
 ---
 
-## S39. Question: what does RANK give six members?
+## S39. Question: how many rows at a tie on the line?
+*How many rows does each rule ship when two members tie at the line?*
+
+```mermaid
+flowchart LR
+    A["<b>A 9,100</b>"] --> B["<b>B 8,800</b>"] --> C["<b>C 8,200</b>"] --> D["<b>D 7,400</b>"] --> E["<b>E 7,400</b>"] --> F["<b>F 6,900</b>"]
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class D,E bad
+```
+
+**Question.** Marketing wants a top four from these invented members, and D and E tie at fourth, on the line of a top four. How many rows does RANK ship, as a letter? a) 4; b) 5; c) 3; d) 6.
+
+```notes
+LIVE, 2 minutes. Letters in chat. Then the four counts.
+```
+
+---
+
+## S40. Answer: RANK ships 5; the rules ship 4, 5, 5, 3
+*How many rows does each rule ship when two members tie at the line?*
+
+```stats
+value: 4 | label: ROW_NUMBER | note: one of D and E left off
+value: 5 | label: RANK | note: both kept, fourth shared
+value: 5 | label: DENSE_RANK | note: both kept here
+value: 3 | label: Whole ties only | note: both left off
+```
+
+**The check.** At a tie on the line the four rules ship four counts, 4, 5, 5 and 3, so the report states its count; with no tie anywhere on the list, all four ship the list's size.
+
+```notes
+LIVE, 2 minutes. The answer is b. This is the forty-nine or fifty-one the head of Retail-Plus
+spoke of, at four in place of fifty. Then the numbering behind those counts, on six members.
+```
+
+---
+
+## S41. Question: what does RANK give six members?
 *What do ROW_NUMBER, RANK and DENSE_RANK give on one tie?*
 
 | Member | A | B | C | D | E | F |
@@ -862,13 +900,13 @@ orders first. Then predict the three functions.
 **Question.** What does RANK give the six, in order, as a letter? a) 1, 2, 3, 4, 5, 6; b) 1, 1, 3, 4, 4, 6; c) 1, 1, 2, 3, 3, 4; d) 1, 1, 1, 2, 2, 3.
 
 ```notes
-LIVE, 3 minutes. Pairs write all three columns on paper first, ROW_NUMBER, RANK and DENSE_RANK,
+LIVE, 2 minutes. Pairs write all three columns on paper first, ROW_NUMBER, RANK and DENSE_RANK,
 then letters in chat for RANK. The members are invented. Then the answer.
 ```
 
 ---
 
-## S40. Answer: 1, 1, 3, 4, 4, 6 skips a place
+## S42. Answer: 1, 1, 3, 4, 4, 6 skips a place
 *What do ROW_NUMBER, RANK and DENSE_RANK give on one tie?*
 
 | Function | A | B | C | D | E | F |
@@ -881,49 +919,12 @@ then letters in chat for RANK. The members are invented. Then the answer.
 
 ```notes
 LIVE, 2 minutes. The answer is b. ROW_NUMBER puts A ahead of B only because the tiebreaker sorts A
-first. Then the line itself.
+first. Then the same four counts on Kalpa.
 ```
 
 ---
 
-## S41. Question: how many rows at a tie on the line?
-*How many rows does each rule ship when two members tie at the line?*
-
-```mermaid
-flowchart LR
-    A["<b>A 9,100</b>"] --> B["<b>B 8,800</b>"] --> C["<b>C 8,200</b>"] --> D["<b>D 7,400</b>"] --> E["<b>E 7,400</b>"] --> F["<b>F 6,900</b>"]
-    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    class D,E bad
-```
-
-**Question.** Marketing wants a top four from these invented members, and D and E tie at fourth. How many rows does RANK ship, as a letter? a) 4; b) 5; c) 3; d) 6.
-
-```notes
-LIVE, 2 minutes. Letters in chat. Then the four counts.
-```
-
----
-
-## S42. Answer: RANK ships 5; the rules ship 4, 5, 5, 3
-*How many rows does each rule ship when two members tie at the line?*
-
-```stats
-value: 4 | label: ROW_NUMBER | note: one of D and E left off
-value: 5 | label: RANK | note: both kept, fourth shared
-value: 5 | label: DENSE_RANK | note: both kept here
-value: 3 | label: Whole ties only | note: both left off
-```
-
-**The check.** Every rule ships the line exactly when nobody ties at it. At a tie on the line the rules ship different counts, so the report states its count.
-
-```notes
-LIVE, 2 minutes. The answer is b. This is the forty-nine or fifty-one the head of Retail-Plus
-spoke of, at four instead of fifty. Then the same four counts on Kalpa.
-```
-
----
-
-## S43. Wrong answer: DENSE_RANK ships 52 for Retail-Core
+## S43. The plausible wrong answer: DENSE_RANK ships 52
 *How many Retail-Core members does each rule put on a top-fifty list?*
 
 ```stats
@@ -934,7 +935,7 @@ value: 50 | label: Whole ties only | note: no tie at the line
 ```
 
 ```notes
-LIVE, 3 minutes, notebook 03, step 2. Retail-Core, the everyday shoppers, has 96 Q2 buyers.
+LIVE, 2 minutes, notebook 03, step 3. Retail-Core, the everyday shoppers, has 96 Q2 buyers.
 Ask first: a hurried analyst reads "ties ranked the same" and picks DENSE_RANK because its numbers
 never skip; how many members does it ship? Then run it. The decision it misleads: a list labelled
 top fifty that carries 52, two of whom tie with nobody. Then why.
@@ -986,14 +987,18 @@ LIVE, 2 minutes. Then the head of Retail-Plus's own segment, which the room coun
 *How many members does the Retail-Plus list ship under the head's rule?*
 
 ```python
-mine = rows(Q["c3_your_segment"])[0]     # the four counts for Retail-Plus
+# rows() runs a named query from the chapter's .sql file; this one counts
+# the rows each of the four rules ships for Retail-Plus's top fifty
+mine = rows(Q["c3_your_segment"])[0]
 mine
 ```
 
-**The client asks.** "I want to know how many made the top fifty." Write the sentence the head of Retail-Plus reads: how many members the list carries under RANK and, if it is not fifty, why.
+**The client asks.** "I want to know how many made the top fifty."
+
+Run the cell, then write the sentence the head of Retail-Plus reads: how many members the list carries under RANK and, if it is not fifty, why.
 
 ```notes
-LIVE, 4 minutes. Every learner runs the cell in notebook 03's step 3 and writes the sentence
+LIVE, 4 minutes. Every learner runs the cell in notebook 03's step 4 and writes the sentence
 before anyone shares a number. If a learner's four numbers differ, point them at the notebook's
 instruction to read the members around fiftieth place with block c3_core_line changed to
 Retail-Plus. Do not read any count aloud; the day sheet carries it for the debrief. Then a second
@@ -1014,7 +1019,7 @@ WHERE  segment = 'Retail-Core'
 
 ```stats
 value: 50 = 50 | label: Retail-Core | note: members at or above Rs 2,980, and RANK's count
-value: 4 of 4 | label: segments agree | note: your own segment among them
+value: 4 of 4 | label: segments agree | note: Retail-Plus, from your run, among them
 ```
 
 ```notes
@@ -1026,20 +1031,20 @@ PARTITION BY could not move it. Then the chapter's answers.
 ---
 
 ## S48. RANK, with its count and reason in the report
-*So when two members spend the same at the line, how many does a list ship, and which rule?*
+*So when two members tie at fiftieth place, how many does a list ship, and which rule?*
 
 | The question on the way | The answer |
 |---|---|
 | 1. Which rule, at what cost? | RANK; ROW_NUMBER only under a hard cap |
-| 2. One tie, three functions? | 1 to 6; 1, 1, 3, 4, 4, 6; 1, 1, 2, 3, 3, 4 |
-| 3. A tie at the line? | Top four: 4, 5, 5 and 3 rows |
-| 4. How many in Retail-Core? | 50 under RANK; 52 under DENSE_RANK |
-| 5. How many in your segment? | The count your own run gave, with its reason |
-| 6. Does a plain count agree? | Yes, in every segment: 50 for Retail-Core |
+| 2. A tie at the line? | Top four: 4, 5, 5 and 3 rows |
+| 3. One tie, three functions? | RANK 1, 1, 3; DENSE_RANK 1, 1, 2 |
+| 4. Retail-Core's counts? | 50 under RANK; 52 under DENSE_RANK |
+| 5. Retail-Plus's count? | Your run's count, with its reason |
+| 6. Does a plain count agree? | Yes, in every segment |
 
-**Kavya's review.** "A tie rule is a business decision written as a function name. State the rule, the count it ships and the members at the line in the same sentence, before anybody asks why the list holds more or fewer than fifty."
+**Kavya's review.** "A tie rule is a business decision. State the rule, the count it ships and the members at the line in one sentence."
 
-**In the interview.** [S] RANK, DENSE_RANK and ROW_NUMBER on a tie. [D] The business says ties rank the same: which function, and how many rows might a top-N report ship?
+**In the interview.** [S] What do RANK, DENSE_RANK and ROW_NUMBER give on a tie? [D] The business says ties rank the same: which function, and how many rows might a top-N report ship?
 
 ```notes
 LIVE, 2 minutes. One breath for the second: RANK, and the report can ship more than N when a tie
@@ -1060,7 +1065,7 @@ file run beside it.
 ---
 
 ## S49. Answering the flag: six questions on the way
-*Who needs this answer, and which questions lead to it?*
+*Who needs the falling flag, and which questions lead to it?*
 
 **Who needs the answer.** The marketing lead's member team will ring each flagged member with a retention offer. A flag that names the wrong member costs a call and tells a loyal customer they are slipping; a fall the flag misses is a member nobody rang until they had gone.
 
@@ -1131,7 +1136,7 @@ month with the month before.
 | C. A lookup per row | a correlated subquery, twice per row | 1,504 lookups |
 | D. Months as spreadsheet columns | a person reads across each row | 1,806 cells |
 
-**The call.** A: one pass, and lag(spend, 2) reaches two months back in the same line. What would switch it: a database with no window functions, such as MySQL before 8.0, which leaves the self-join.
+**The call.** A: one pass, and lag(spend, 2) reaches two months back in the same statement. What would switch it: a database with no window functions, such as MySQL before 8.0, which leaves a lookup per row, option C.
 
 ```notes
 LIVE, 4 minutes. The book holds 752 member-months, one row per member per month with an order, for
@@ -1147,7 +1152,7 @@ LIVE, 4 minutes. The book holds 752 member-months, one row per member per month 
 flowchart LR
     J["<b>July</b><br/>spend"] --> A["<b>August</b><br/>lag 1: July"]
     A --> S["<b>September</b><br/>lag 1: August<br/>lag 2: July"]
-    S --> F{"<b>September below August,<br/>August below July?</b>"}
+    S --> F["<b>September below August,<br/>August below July?</b>"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class J,A,S known
@@ -1185,6 +1190,8 @@ LIVE, 2 minutes. C-0040 of Retail-Core bought in all six months. Letters in chat
 | Apr | Rs 7,980 | NULL | NULL |
 | May | Rs 3,170 | Rs 7,980 | NULL |
 | Jun | Rs 1,320 | Rs 3,170 | Rs 7,980 |
+| Jul | Rs 4,260 | Rs 1,320 | Rs 3,170 |
+| Aug | Rs 4,770 | Rs 4,260 | Rs 1,320 |
 | Sep | Rs 4,520 | Rs 4,770 | Rs 4,260 |
 
 **The check.** June sits below May and May below April, so a flag read at June would fire. September is below August but August is above July, so the flag read at September does not fire for C-0040.
@@ -1195,7 +1202,7 @@ LIVE, 2 minutes. The answer is b. Then the quickest version of the flag.
 
 ---
 
-## S56. Question: does the quick flag flag more or fewer?
+## S56. Question: more or fewer flags with no PARTITION BY?
 *What does LAG read when the window has no PARTITION BY?*
 
 ```sql
@@ -1213,7 +1220,7 @@ LIVE, 2 minutes. Letters in chat, then run it. Then the answer.
 
 ---
 
-## S57. Answer: more: 20 flagged, the plausible wrong answer
+## S57. Answer: more, 20 flagged: the plausible wrong answer
 *What does LAG read when the window has no PARTITION BY?*
 
 ```stats
@@ -1275,11 +1282,14 @@ LIVE, 2 minutes. Then a second route that shares no window.
 *Does a walk through each member's months in Python find the same members?*
 
 ```python
-months = {}
+months, flagged, SEP = {}, [], date(2026, 9, 1)
 for r in rows:                                   # 752 member-months, unordered
     months.setdefault(r["customer_id"], []).append((r["month"], r["spend"]))
 for cid, ms in months.items():
     ms.sort()                                    # each member's months, in order
+    if len(ms) >= 3 and ms[-1][0] == SEP:        # the last row is September
+        if ms[-1][1] < ms[-2][1] < ms[-3][1]:    # below the row before, twice
+            flagged.append(cid)
 ```
 
 ```stats
@@ -1328,15 +1338,15 @@ LIVE. Thirty minutes. Notebook C2_W02_D03_05_against_plan and its .sql file run 
 ---
 
 ## S62. Answering Meera: six questions on the way
-*Who needs this answer, and which questions lead to it?*
+*Who needs Q2 against plan, and which questions lead to it?*
 
-**Who needs the answer.** Meera Raghavan decides at mid-quarter whether to hold the plan, push a campaign or move budget. A quarter reported behind plan when it is on plan sends Marketing after a gap that is not there, and a lead that one week made hides a run rate below plan.
+**Who needs the answer.** Meera Raghavan decides at mid-quarter whether to hold the plan, push a campaign or move budget. A quarter reported behind plan when it is on plan sends Marketing after a gap that is not there, and a lead that one week made hides a run rate, how each week books against its own week's plan, that is below plan.
 
 ```timeline
 label: 1 | title: Which way, at what cost? | body: Four ways to accumulate
 label: 2 | title: How much by each week's end? | body: The plan's weeks
 label: 3 | title: Does it close on Q2? | body: Against Monday's total
-label: 4 | title: Where at mid-quarter? | body: And each week since
+label: 4 | title: Where at week 7 of 13? | body: Mid-quarter, and each week since
 label: 5 | title: Which order crossed? | body: A running total by order
 label: 6 | title: Does a plain sum agree? | body: No window at all | tone: dark
 ```
@@ -1366,16 +1376,16 @@ Then a company that read its quarter while it ran.
 
 ---
 
-## S64. Target cut its Q2 guide five weeks in
+## S64. Target cut its Q2 margin forecast five weeks in
 *Has a real company had to read its quarter while it was still running?*
 
 ```stats
-value: 5.3% | label: the guide before | note: centred on Q1's margin, 18 May 2022
-value: ~2% | label: the guide on 7 June | note: about five weeks into Q2
+value: 5.3% | label: forecast before | note: centred on Q1's margin, 18 May 2022
+value: ~2% | label: forecast on 7 June | note: about five weeks into Q2
 value: 1.2% | label: where Q2 closed | note: released 17 August 2022
 ```
 
-**What breaks.** A quarter read only at its end leaves nothing to act on, which is why Meera wants Q2 week by week.
+**What breaks.** The figure is Target's operating margin, the share of sales left as operating profit, and its forecast for the quarter is called guidance. A quarter read only at its end leaves nothing to act on, which is why Meera wants Q2 week by week.
 
 ```notes
 LIVE, 2 minutes. Target's second quarter of 2022 began on 1 May 2022. On 7 June 2022 Target said it
@@ -1393,14 +1403,15 @@ markdowns to clear excess inventory. Sources: Target's releases of 18 May, 7 Jun
 |---|---|---|
 | A. A running SUM in a window | weekly totals, then sum() OVER (ORDER BY week) | 462 orders, once |
 | B. A plain SUM per week's end | every order up to each week's last day | 6,006 order reads |
-| C. A self-join of weeks | each week with every week before | 91 week pairs |
+| C. A self-join of weeks | each week with every week before | 462 orders, then 91 week pairs |
 | D. A spreadsheet column | an export, a formula copied down | 462 rows exported |
 
 **The call.** A, booked and plan side by side in one table. What would switch it: one reading on a day Meera names, such as "where were we on 19 August?", which is one plain SUM with that date in WHERE.
 
 ```notes
-LIVE, 4 minutes. 6,006 is the 462 Q2 orders read once for each of the 13 plan weeks; 91 is 13 times
-14 over 2. Then the picture of a running total.
+LIVE, 4 minutes. 6,006 is the 462 Q2 orders read once for each of the 13 plan weeks. The self-join
+reads the orders once for the weekly totals too, then works through 91 week pairs, 13 times 14 over
+2. Then the picture of a running total.
 ```
 
 ---
@@ -1446,7 +1457,7 @@ the Monday its orders fall in. Letters in chat, then run it. Then the answer.
 
 ---
 
-## S68. Answer: Rs 15,39,810 short, as the table says
+## S68. Answer: Rs 15,39,810 short: the plausible wrong answer
 *How much had Q2 booked by the end of each plan week?*
 
 ```stats
@@ -1455,7 +1466,7 @@ value: Rs 9,83,99,990 | label: plan to date | note: thirteen weeks
 value: Rs 15,39,810 | label: short of plan | note: the plausible wrong answer
 ```
 
-**What breaks.** Sent to Meera, the line says Q2 missed plan, and the next quarter opens on a campaign to recover Rs 15 lakh.
+**What breaks.** Sent to Meera, the report says Q2 missed plan, and the next quarter opens on a campaign to recover Rs 15 lakh.
 
 ```notes
 LIVE, 2 minutes, notebook 05, section 1. The answer the table gives is b. Ask the room what they
@@ -1477,7 +1488,7 @@ flowchart LR
     class K known
 ```
 
-**The check.** The last booked to date has to equal Monday's Q2 total, Rs 9,84,00,000. It is Rs 15,39,820 short, and Q2's orders fall under 14 Mondays where the plan has 13.
+**The check.** The last booked to date has to equal Monday's Q2 total, Rs 9,84,00,000. It is Rs 15,39,820 short of it, Rs 10 more than the shortfall against plan, since Q2 beat its plan by Rs 10; Q2's orders fall under 14 Mondays where the plan has 13.
 
 ```notes
 LIVE, 2 minutes. A LEFT JOIN that starts from the plan's weeks keeps only the plan's weeks, so the
@@ -1566,7 +1577,7 @@ adds all of a row's peers at once. Letters in chat. Then the answer.
 | KR-00580 | Rs 8,55,000 | Rs 3,76,90,290 | Rs 3,53,71,000 |
 | KR-00979 | Rs 970 | Rs 3,76,90,290 | Rs 3,76,90,290 |
 
-**The rule.** The order id makes every row its own step and the figure the same on every run. It does not make it the true order of the day, since the warehouse records a date and no time, so say which tiebreak the figure uses.
+**The rule.** By date alone the figure repeats on every run, and all twelve peers share it, so no row can name the order that crossed. The order id gives every row its own step; it does not make that the true order of the day, since the warehouse records no time, so say which tiebreak the figure uses.
 
 ```notes
 LIVE, 2 minutes. The answer is b. By date alone, all twelve orders show the day's closing total, so
@@ -1606,7 +1617,7 @@ chapter's answers.
 | 1. Which way, at what cost? | A running SUM in a window: 462 rows read once |
 | 2. How much by each week's end? | The plan-first build: Rs 15,39,810 short |
 | 3. Does it close on Q2? | Once 1 to 5 July count: Rs 10 ahead |
-| 4. Where at mid-quarter? | Rs 1.58 crore ahead, from one July week |
+| 4. Where at week 7 of 13? | Rs 1.58 crore ahead, from one July week |
 | 5. Which order crossed? | Only a unique tiebreak can say |
 | 6. Does a plain sum agree? | Yes, in all thirteen weeks |
 

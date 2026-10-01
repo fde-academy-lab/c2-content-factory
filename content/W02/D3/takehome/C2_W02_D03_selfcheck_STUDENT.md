@@ -12,15 +12,15 @@ psql -d kalpa -f content/W02/D3/data/C2_W02_D03_takehome_STUDENT.sql
 is a query to fix tonight, and the fix beside it names the usual cause.
 
 **The questions on the way.**
-- Do the base, the four tie counts, the three flags and the plan line match?
+- Do the sample's counts, the four tie counts, the three flags and the plan line match?
 - Does your recap of the three functions match, and does your own question pass its four checks?
 - Do your three lines on the PostgreSQL Exercises problems name what the site's answers do?
 
-## Do the base, the four tie counts, the three flags and the plan line match?
+## Do the sample's counts, the four tie counts, the three flags and the plan line match?
 
 | # | Checkpoint | What you should see | If it does not match |
 |---|---|---|---|
-| 1 | The base | 454 Q2 orders, a Q2 total of Rs 9,23,60,000 and 98 Retail-Core members with a Q2 order | A total well above Rs 9,23,60,000 means Q1 crept in, so filter on the quarter; a different buyer count means you counted order rows instead of distinct members. |
+| 1 | The sample's counts | 454 Q2 orders, a Q2 total of Rs 9,23,60,000 and 98 Retail-Core members with a Q2 order | A total well above Rs 9,23,60,000 means Q1 crept in, so filter on the quarter; a different buyer count means you counted order rows instead of distinct members. |
 | 2 | A top twenty under ROW_NUMBER | 20 members | ROW_NUMBER can never ship more than twenty; if you have more, the filter sits on the wrong column. |
 | 3 | A top twenty under RANK | 21 members | If you get 20, check that you ranked Retail-Core's members by their Q2 total, with no tiebreaker after the revenue in RANK's ORDER BY. |
 | 4 | A top twenty under DENSE_RANK | 22 members | If you expected it to match RANK, read the dense_rank column either side of twentieth place and see where it stops leaving gaps. |
@@ -45,9 +45,9 @@ your RANK line ended on 3, you wrote DENSE_RANK's answer under RANK's name.
 Read your own question back and answer each check yes or no. Two noes means rewrite it.
 
 1. Would a Kalpa stakeholder ask your question in those words?
-2. Does your window query return a different number of rows from its GROUP BY impostor, and does your
-   comment say which rows differ?
-3. Does your comment say what question the impostor answers instead?
+2. Does your window query return a different number of rows from the hurried GROUP BY query, and does
+   your comment say which rows differ?
+3. Does your comment say what question the GROUP BY query answers instead?
 4. Did you run both queries and paste both results?
 
 The second case checks itself: every step of its notebook ends on a check cell, and a step whose check
