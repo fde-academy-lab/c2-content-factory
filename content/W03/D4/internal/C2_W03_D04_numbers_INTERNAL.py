@@ -142,6 +142,12 @@ check("employer screenings", max(int(t["quantity"]) for t in lines if t["panel_c
 check("tests per screening", sum(1 for t in lines if t["panel_code"] == "PNL-EMP" and t["line"] == "component"), 5)
 check("tests booked with the contract in, change",
       round((moved["booked"]["Q3"] + employer_tests) / moved["booked"]["Q2"] - 1, 3), 0.336)
+check("the contract is one booking", len(employer_ids), 1)
+employer_done = sum(tests_on.get(b["id"], 0) for b in bookings if b["channel"] == "employer" and b["done"])
+check("tests performed with the contract in, change",
+      round((moved["performed"]["Q3"] + employer_done) / moved["performed"]["Q2"] - 1, 3), 0.353)
+check("bookings with the contract in, change",
+      round((moved["bookings"]["Q3"] + len(employer_ids)) / moved["bookings"]["Q2"] - 1, 3), 0.056)
 
 print("\n== Sub-problem 1, revenue")
 contract = [c for c in claims if c["employer_account"]]
@@ -228,6 +234,27 @@ for metro, (q2, q3, change) in {"Chicago": (124097, 115997, -0.065), "Philadelph
 payer_short = sorted(round(v[0] * 1.18 - v[1]) for v in branch["payer_type"].values())
 check("smallest payer shortfall", payer_short[0], 16044)
 check("largest payer shortfall", payer_short[-1], 28437)
+shortfall = plan - sum(q3_retail)
+q2_billed = sum(v[0] for v in branch["payer_type"].values())
+for payer, (change, own_plan) in {"commercial": (0.130, 0.042), "Medicare": (0.060, 0.102),
+                                  "Medicaid": (0.016, 0.139), "self-pay": (-0.022, 0.171)}.items():
+    v = branch["payer_type"][payer]
+    check(f"{payer} billed change", round(v[1] / v[0] - 1, 3), change)
+    check(f"{payer} short of its own plan", round((v[0] * 1.18 - v[1]) / (v[0] * 1.18), 3), own_plan)
+medicaid = branch["payer_type"]["Medicaid"]
+check("Medicaid's share of the shortfall", round((medicaid[0] * 1.18 - medicaid[1]) / shortfall, 3), 0.253)
+check("Medicaid's share of Q2 billing", round(medicaid[0] / q2_billed, 3), 0.149)
+check("Chicago and Philadelphia's share of Q2 billing",
+      round((branch["metro"]["Chicago"][0] + branch["metro"]["Philadelphia"][0]) / q2_billed, 3), 0.245)
+four = {}
+for c in retail_claims:
+    if c["metro"] not in ("Chicago", "Philadelphia"):
+        v = four.setdefault(c["payer_type"], [0.0, 0.0])
+        v[0 if quarter(iso(c["service_date"])) == "Q2" else 1] += dollars(c["billed_amount"])
+check("commercial billed change outside the two metros", round(four["commercial"][1] / four["commercial"][0] - 1, 3), 0.208)
+rest_four = sorted(round(v[1] / v[0] - 1, 3) for k, v in four.items() if k != "commercial")
+check("the other payers outside the two metros, lowest change", rest_four[0], 0.035)
+check("the other payers outside the two metros, highest change", rest_four[-1], 0.076)
 price = {c["code"]: float(c["list_price_usd"]) for c in catalogue}
 wel = sorted({t["test_code"] for t in lines if t["panel_code"] == "PNL-WEL" and t["line"] == "component"})
 check("tests in the whole-body wellness panel", len(wel), 12)
@@ -276,6 +303,11 @@ check("pairs differing only in updated_at", diffs.get(("updated_at",), 0), 29)
 check("pairs differing only in channel", diffs.get(("channel",), 0), 5)
 check("pairs differing in both", diffs.get(("channel", "updated_at"), 0), 1)
 check("rows left by a whole-row dedupe", len({tuple(r.values()) for r in legacy}), 11584)
+channel_only = [v for v in repeated.values() if tuple(c for c in v[0] if v[0][c] != v[1][c]) == ("channel",)]
+check("channel-only pairs whose two copies share updated_at",
+      sum(1 for v in channel_only if v[0]["updated_at"] == v[1]["updated_at"]), 5)
+check("channel-only pairs with one copy's channel blank",
+      sum(1 for v in channel_only if (v[0]["channel"] == "") != (v[1]["channel"] == "")), 5)
 check("new system bookings", len(newsys), 153)
 check("new system first date", min(iso(r["created"]) for r in newsys).isoformat(), "2026-09-18")
 check("new system last date", max(iso(r["created"]) for r in newsys).isoformat(), "2026-09-30")
@@ -364,6 +396,8 @@ check("billed on denied claims", sum(dollars(c["billed_amount"]) for c in denied
 check("denied claims with no posting", sum(1 for c in denied if c["claim_id"] not in posted), 38)
 check("eligibility or coverage denials", sum(1 for c in denied if c["denial_category"] == "eligibility or coverage"), 283)
 check("missing or invalid information denials", sum(1 for c in denied if c["denial_category"] == "missing or invalid information"), 272)
+for cat, want in {"eligibility or coverage": 269, "missing or invalid information": 265}.items():
+    check(f"denial postings, {cat}", sum(1 for p in postings if p["posting"] == "denial" and p["reason_category"] == cat), want)
 billed_all = sum(dollars(c["billed_amount"]) for c in claims)
 paid_raw = sum(float(p["paid_amount"]) for p in postings)
 paid_net = paid_raw - sum(float(x["paid_amount"]) for v in doubles for x in v[1:])
@@ -532,12 +566,14 @@ print("\n== The technical half's invented arithmetic, question by question")
 check("T01-L3 orders per practice change", round(108 / 120 - 1, 3), -0.100)
 check("T01-L3 fewer requisitions", 600 * (120 - 108), 7200)
 check("T02-L1 points of the fall from one plan's missing Friday", round(0.70 * (1 - 4 / 5) * 100, 1), 14.0)
+check("T02-L3 points the mix takes back from a 3 percent rate rise", round(3.0 - 0.5, 1), 2.5)
 check("T03-L3 pickups set aside", 130 + 70 + 20, 220)
 check("T03-L3 matched plus set aside", 3960 + 220, 4180)
 check("T03-L3 dollars at $16 a stop", [130 * 16, 70 * 16, 20 * 16, 220 * 16], [2080, 1120, 320, 3520])
 check("T04-L2 one draw moves the rate, points", 100 / 25, 4.0)
 check("T04-L2 chance of 2 or more in 25 at 4 percent", round(tail(25, 2, 0.04), 2), 0.26, 0.006)
 check("T04-L2 chance of 8 or more in 100 at 4 percent", round(tail(100, 8, 0.04), 3), 0.048, 0.0006)
+check("T04-L3 the other payers' fall, in points, against Medicare's 2.5", round(5.8 - 3.6, 1), 2.2)
 check("T04-L3 denials prevented a month", round(0.025 * 4000), 100)
 check("T04-L3 forgone a month by a fifth held back", round(0.025 * 4000 / 5), 20)
 check("T05-L2 late share, month before", round(1900 / 42000 * 100, 1), 4.5)
@@ -554,7 +590,12 @@ ranks, ties = [], [70, 69, 68] + [65] * 21 + [61, 61, 58]
 for i, v in enumerate(ties):
     ranks.append(1 + sum(1 for w in ties if w > v))
 check("T08-L3 rows RANK ships at a tie on 25th", sum(1 for r in ranks if r <= 25), 26)
-check("T09-L3 days read a week late", [d + 7 for d in (83, 89)], [90, 96])
+broken = [(v, -i) for i, v in enumerate(ties)]
+check("T08-L3 rows RANK ships once a unique tie-break is in the ORDER BY",
+      sum(1 for x in broken if 1 + sum(1 for y in broken if y > x) <= 25), 25)
+check("T09-L3 true counts that cross 'more than 90' when read a week late", [d for d in range(60, 91) if d + 7 > 90],
+      list(range(84, 91)))
+check("T09-L3 they read as", [d + 7 for d in (84, 90)], [91, 97])
 
 print("\n== The day's grid")
 SLOT, CHANGE, BLOCK, HUDDLE, CLOSE, ASSESSORS = 20, 5, 180, 10, 15, 3
@@ -637,6 +678,92 @@ spoken = [line for line in bank.splitlines() if line.startswith("| Ask |") or li
 check("spoken rows in the bank, an ask and a follow-up for 30 questions", len(spoken), 60)
 spoken_text = "\n".join(spoken)
 check("plant words or planted values in the technical half's spoken rows", plant_hits(spoken_text), [])
+
+
+def said_aloud(text):
+    """The words an assessor reads to a learner: every quoted question inside bold, and every quoted
+    question in a table's push or follow-up column, with the bracketed answer for the assessor removed."""
+    said = []
+    for para in re.split(r"\n\s*\n", text):
+        flat = " ".join(para.split())
+        for bold in re.findall(r"\*\*(.+?)\*\*", flat):
+            said += re.findall(r'"([^"]+)"', bold)
+    header = None
+    for line in text.splitlines():
+        if not line.startswith("|"):
+            header = None
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if header is None:
+            header = cells
+            continue
+        if set(cells) <= {"---"}:
+            continue
+        for name in ("The push", "The follow-up"):
+            if name in header:
+                said += re.findall(r'"([^"]+)"', re.sub(r"\([^()]*\)", "", cells[header.index(name)]))
+    return said
+
+
+viva = (DAY / "mocks" / "C2_W03_D04_viva_prompts_TRAINER.md").read_text(encoding="utf-8")
+probes = said_aloud(viva)
+check("questions the viva reads aloud: 28 probes, 28 follow-ups, 10 pushes and 15 caveat follow-ups", len(probes), 81)
+check("plant words or planted values in anything the viva reads aloud", plant_hits("\n".join(probes)), [])
+stuck, inside = [], False
+for line in sheet.splitlines():
+    if line.startswith("### Which one question goes to a group that is stuck?"):
+        inside = True
+    elif line.startswith("#"):
+        inside = False
+    elif inside and line.startswith("| ") and not line.startswith("| Sub-problem"):
+        stuck += re.findall(r'"([^"]+)"', line)
+check("stuck-group questions on the day sheet", len(stuck), 9)
+# A column's name says where to look and never what is there, so claim_ref may be named.
+check("plant words or planted values in the stuck-group questions",
+      [h for h in plant_hits("\n".join(stuck)) if h != "claim_ref"], [])
+
+print("\n== The swap rule: the bank's tables against the rule they state")
+SETS_PRINTED = {}
+for line in bank.splitlines():
+    m = re.match(r"\| ([A-H]) \| (T\d\d-L1) \| (T\d\d-L2) \| (T\d\d-L3) \|$", line)
+    if m:
+        SETS_PRINTED[m.group(1)] = (m.group(2), m.group(3), m.group(4))
+check("sets printed in the bank", "".join(sorted(SETS_PRINTED)), "ABCDEFGH")
+RESERVES = {q for q in (f"T{f:02d}-L{lev}" for f in range(1, 11) for lev in (1, 2, 3))
+            if all(q not in qs for qs in SETS_PRINTED.values())}
+check("reserves, the six questions in no set", sorted(RESERVES),
+      ["T01-L3", "T03-L2", "T04-L1", "T06-L3", "T07-L1", "T07-L2"])
+CLOSE = {"1": {"T01-L1", "T01-L2", "T01-L3"}, "2": {"T02-L1", "T02-L2", "T03-L2"},
+         "3": {"T03-L1", "T03-L3", "T06-L3", "T07-L1", "T07-L2", "T07-L3", "T09-L2"},
+         "4": {"T04-L1", "T04-L2"}, "5": {"T02-L3", "T04-L1", "T04-L3"}}
+LETTERS = "ABCDEFGH"
+derived = sorted((sp, q, SETS_PRINTED[LETTERS[(LETTERS.index(x) + 4) % 8]][lev])
+                 for sp, close in CLOSE.items() for x, qs in SETS_PRINTED.items()
+                 for lev, q in enumerate(qs) if q in close)
+printed_swaps = sorted((m.group(1), m.group(2), m.group(4)) for m in
+                       re.finditer(r"^\| (\d) [a-z -]+? \| (T\d\d-L\d), .+? \| ([A-H]) \| .+? \| (T\d\d-L\d) \|$",
+                                   bank, re.M))
+check("the bank's swap table is the far-set rule applied to every question close to a sub-problem",
+      printed_swaps, derived)
+swap = {(sp, q): r for sp, q, r in derived}
+ok_family, ok_window, ok_clean = True, True, True
+for sp, close in CLOSE.items():
+    seats = {x: tuple(swap.get((sp, q), q) for q in qs) for x, qs in SETS_PRINTED.items()}
+    for i, x in enumerate(LETTERS):
+        ok_clean &= not set(seats[x]) & close
+        ok_family &= len({q[:3] for q in seats[x]}) == 3
+        for lev in range(3):
+            ok_window &= len({seats[LETTERS[(i + k) % 8]][lev] for k in range(4)}) == 4
+check("no learner is asked a question close to their own sub-problem", ok_clean, True)
+check("no seat holds two questions from one family", ok_family, True)
+check("no two seats among any four consecutive letters share a question", ok_window, True)
+reserve_rows = {}
+for m in re.finditer(r"^\| (\d) [a-z -]+? \| (T[^|]+?) \| (T[^|]+?) \| (T[^|]+?) \|$", bank, re.M):
+    reserve_rows[m.group(1)] = [re.findall(r"T\d\d-L\d", m.group(k)) for k in (2, 3, 4)]
+want_rows = {sp: [[r for r in sorted(RESERVES, key=lambda q: (q not in ("T04-L1", "T07-L2", "T06-L3"), q))
+                   if r.endswith(f"L{lev}") and r not in close] for lev in (1, 2, 3)]
+             for sp, close in CLOSE.items()}
+check("the bank's reserve table offers each sub-problem only reserves away from it", reserve_rows, want_rows)
 
 print("\nRESULT:", "FAIL" if FAILS else "PASS", f"({len(FAILS)} drifts)")
 for label in FAILS:
