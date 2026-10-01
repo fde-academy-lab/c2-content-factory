@@ -111,7 +111,7 @@ The key is b, "LEFT JOIN, every order kept". Every order, refunded or not, is th
 - c, "Anti-join, unmatched orders": returns only unrefunded orders.
 - d, "FULL JOIN, both sides' orphans": adds refunds with no order to a report about orders.
 
-### Q7. Kavya asks: "Which Q1 web orders have no refund at all, so we can sample them for the satisfaction survey?" Which join answers it?
+### Q7. Kavya Nair, the team's senior analyst, asks: "Which Q1 web orders have no refund at all, so we can sample them for the satisfaction survey?" Which join answers it?
 
 The key is c, "Anti-join, unmatched orders". "No refund at all" is the anti-join: LEFT JOIN, then keep the rows where the refund key IS NULL.
 
@@ -135,7 +135,7 @@ The key is a, "INNER JOIN, matched pairs only". Reasons exist only on refund row
 - c, "Anti-join, unmatched orders": returns orders with no reason at all.
 - d, "FULL JOIN, both sides' orphans": adds R-5, a reason on an order the desk did not send.
 
-#### Problem 3. What is wrong with a refund rate of 16.3 percent?
+#### Problem 3. Is 16.3 percent the right Q1 refund rate for these six orders?
 
 Anand wants the Q1 refund rate on these web orders: refunded value over booked value. A teammate
 sends this, and reports 16.3 percent:
@@ -154,21 +154,21 @@ WHERE r.refund_date BETWEEN '2026-04-01' AND '2026-06-28';
 |---|---|---|---|
 | 4 | 1,15,900 | 18,900 | 16.3 |
 
-### Q10. What is wrong with the booked figure of 1,15,900, which is what the rate divides by?
+### Q10. Which orders make up the booked figure of 1,15,900 that the rate divides by?
 
-The key is c, "The WHERE drops unrefunded orders, and W-3 counts twice". The WHERE on refund_date removes every order whose refund columns are NULL, which is W-1, W-4 and W-6, and W-3's two refunds put its 48,000 into booked twice.
+The key is c, "the refunded orders, with W-3 counted twice". The WHERE on refund_date removes every order whose refund columns are NULL, which is W-1, W-4 and W-6, and W-3's two refunds put its 48,000 into booked twice: 12,500 + 48,000 + 48,000 + 7,400 is 1,15,900.
 
-- a, "Nothing, since 1,15,900 is what the orders table holds": the orders table holds 75,600.
-- b, "The WHERE drops the unrefunded orders, and nothing more": misses the repeated W-3.
-- d, "W-3 counts twice, and every order is otherwise present": misses the three dropped orders.
+- a, "all six orders, each of them counted once": the six orders once each book 3,200 + 12,500 + 48,000 + 1,900 + 7,400 + 2,600, which is 75,600, the figure the rate should divide by.
+- b, "the three refunded orders, each counted once": 12,500 + 48,000 + 7,400 is 67,900, which sees the dropped orders and misses W-3 written twice.
+- d, "all six orders, with W-3 counted twice": 75,600 + 48,000 is 1,23,600, which sees W-3 twice and misses the three dropped orders.
 
-### Q11. With both faults fixed, what is the honest Q1 refund rate on these orders?
+### Q11. What Q1 refund rate should Anand be given for these six orders?
 
-The key is b, "25.0 percent, 18,900 refunded over 75,600 booked". Refunds summed per order in the window, joined in with a LEFT join: 18,900 refunded over 75,600 booked is 25.0 percent.
+The key is b, "25.0 percent, 18,900 over 75,600". The numerator is the four refunds on the desk's orders, 1,500 + 6,000 + 4,000 + 7,400, which is 18,900, and the denominator is the six orders counted once each, 75,600. Refunds summed per order in the window and joined with a LEFT join give exactly that: 18,900 over 75,600 is 25.0 percent.
 
-- a, "15.3 percent, once the date filter moves into the ON clause": moving the filter into ON restores the three orders and leaves W-3 doubled, so booked is 1,23,600.
-- c, "16.3 percent, since the refunded total never changed": the refunded total was right all along, and the denominator was the fault.
-- d, "26.2 percent, counting the W-7 refund in the total": R-5 belongs to an order outside this book, so it cannot sit in this rate.
+- a, "15.3 percent, 18,900 over 1,23,600": moves the date filter into ON, which restores the three dropped orders and leaves W-3 doubled, so the denominator is 1,23,600.
+- c, "16.3 percent, 18,900 over 1,15,900": the teammate's rate; the refunded total was right all along, and the denominator is the fault.
+- d, "26.2 percent, 19,800 over 75,600": adds R-5's 900 to the refunds, and R-5 belongs to W-7, an order outside this book, so it cannot sit in this rate.
 
 The corrected query for problem 3:
 
@@ -307,7 +307,7 @@ The invariants your Q1 output must satisfy:
 |---|---|
 | Rows out equals the Q1 order count from query 1 | Payments were brought to one row per order before the join, so nothing repeats |
 | Booked after the join equals booked from query 1, per channel | The same, in rupees |
-| Booked minus collected equals the unpaid list's booked total, per channel | With retries removed, the only reason an order's collected differs from its booked is that nothing arrived |
+| Booked minus collected equals the unpaid list's booked total, per channel | The gap is the never-paid orders plus what the orders paid short still owe, so it equals the unpaid list alone only when no order is paid short; if this check reads false, look for an order paid in part before you suspect the join |
 | Collected plus the surplus on the double-paid list equals the feed's total against Q1 orders | Every posting against a Q1 order is either counted once in collected or named as a surplus |
 | The double-paid list is shorter than `GROUP BY order_id HAVING COUNT(*) > 1` | The shorter list holds retries only; the longer one also holds every two-instalment order |
 | In the stretch, the refunds step joins at order grain | An order refunded twice would otherwise repeat in the join, as W-3 did in problem 3 |

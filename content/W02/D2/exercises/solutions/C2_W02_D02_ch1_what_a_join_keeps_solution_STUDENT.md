@@ -1,13 +1,14 @@
 # Solution: which rows does each join keep, drop or repeat?
 
-Answers: 1b 2a 3b 4a 5c 6d
+Answers: 1b 2a 3c 4a 5c 6d
 
 ## What does this set test?
 
 The set tests which rows survive a join, counted by hand on tables the chapter never used, and which
-table a question has to start from. Items 3, 5 and 6 are design items: the join a different question
-needs, a row count predicted from the keys alone, and the one question an INNER join answers
-honestly.
+table a question has to start from. Items 3, 5 and 6 are design items: four ways to answer the
+platform lead, each with the count it reports, where two report the same count and only one of them
+counts what he asked about; a row count predicted from the keys alone; and four figures read off one
+INNER join, where only one is also the true answer to its question.
 
 ## What did the set give you to work from?
 
@@ -20,7 +21,8 @@ honestly.
 collected number. A join that drops an unpaid order hides it from the collections team.
 
 - **Booked** is every order at its amount. **Collected** is the cash that arrived, each payment counted
-  once. **Posted** is every payment row the feed holds, repeats included.
+  once. **Posted** is every payment row the feed holds, repeats included. A **retry** is one payment
+  the gateway posted twice.
 - The **grain** of a table is what one row stands for: one order in `orders`, one payment event in
   `payments`.
 - **INNER JOIN** keeps only the pairs that match. **LEFT JOIN** keeps every row of the table named
@@ -53,11 +55,11 @@ The invented `payments`:
 
 `orders o JOIN payments p ON p.order_id = o.order_id`, on the two tables above. How many rows come back?
 
-The key is b, "5, one for each matching pair". A-1 matches once, A-2 twice (Q-2 and its repeat Q-3), A-3 twice (two instalments): 1 + 2 + 2 is 5. A-4 and Q-6 find no partner.
+The key is b, "5, as A-2 and A-3 each come out twice". A-1 matches Q-1 once, A-2 matches Q-2 and its repeat Q-3, and A-3 matches its two instalments, Q-4 and Q-5: 1 + 2 + 2 is 5. A-4 has no payment and Q-6's order, A-7, is not in `orders`, so neither appears.
 
-- a, "4, one for each order that has a payment": counts orders, and a join writes one row per matching pair.
-- c, "6, one for each payment row": counts payment rows, and Q-6 matches nothing.
-- d, "7, every order and every payment": adds both sides, which no join does.
+- a, "4, one row for each order, A-1 to A-4": counts orders, when A-4 has no payment to pair with and A-2 and A-3 each pair twice.
+- c, "6, one row for each payment, Q-1 to Q-6": counts payment rows, and Q-6 matches no order.
+- d, "3, one row each for A-1, A-2 and A-3": counts the paid orders once each, and a join writes one row for every matching pair, so A-2 and A-3 come out twice.
 
 ### Q2. What does the LEFT join, orders first, add?
 
@@ -71,13 +73,13 @@ The key is a, "A-4, and 6 rows". The LEFT join keeps the 5 pairs and adds A-4, t
 
 ### Q3. Which query answers the platform lead's question? (Design)
 
-The data platform lead asks: "Is every payment row in the feed explained by an order we booked?" Which query answers him?
+The data platform lead owns the payments feed and asks: "How many payment rows in the feed sit on an order id we never booked?" A teammate tries four ways on the two tables above. Which way, with the count it reports, answers him?
 
-The key is b, "payments LEFT JOIN orders, reading the order columns". "Every payment row" must all survive, so the query starts from `payments` and reads the order columns; Q-6 shows NULL there.
+The key is c, "payments LEFT JOIN orders, rows with no order: 1". A payment row on an order id nobody booked shows up only in a query that keeps every payment row and then looks for an empty order side, and the one such row is Q-6, 500 against A-7.
 
-- a, "orders LEFT JOIN payments, reading the payment columns": starts from orders, so Q-6 never appears.
-- c, "orders INNER JOIN payments, counting the matched rows": drops Q-6 too.
-- d, "orders LEFT JOIN payments WHERE the payment is NULL": lists unpaid orders, which is Anand's question; the lead asked about payments.
+- a, "orders LEFT JOIN payments, rows with no payment: 1": starts from orders, so its one empty row is an order with no payment, A-4, which belongs on Anand's unpaid list; Q-6 never appears, and the count of 1 only looks like the answer.
+- b, "payments JOIN orders, rows with no order: 0": the INNER join has already dropped Q-6 before the filter looks for an empty order side, so the filter finds nothing.
+- d, "payment rows less order rows, 6 less 4: 2": counts every extra payment row as unexplained, and the 2 nets three different rows against one missing row: Q-3's repeat, A-3's second instalment and Q-6, less A-4, which has no payment row, so 1 + 1 + 1 less 1 is 2.
 
 ### Q4. What is wrong with a statement that reads 116 percent collected?
 
@@ -101,13 +103,13 @@ The key is c, "6". INNER writes a x b per key: X gives 1 x 3 = 3. LEFT adds Y on
 
 ### Q6. Which question is an INNER join the honest choice for? (Design)
 
-Each question below is asked of Kalpa's orders and payments. For which one is an INNER join the honest choice?
+A teammate answers four questions from the rows of `orders o JOIN payments p ON p.order_id = o.order_id` on the tables above, and writes beside each the figure those rows give. For which question is that figure also the true answer?
 
-The key is d, "For paid orders only, how many days until the first payment?". Days to the first payment exist only for orders that were paid, so the unmatched orders are outside the question by definition.
+The key is d, "store cash received: 2,400". The join's store rows are A-3's two instalments, Q-4 and Q-5, 1,400 + 1,000, which is 2,400. Store's one order was paid, and Q-6 sits on A-7, which nobody booked under any channel, so the feed holds no other store cash and the true answer is 2,400 as well: the INNER join loses nothing this question needs.
 
-- a, "How many Q2 orders were never paid at all?": needs the orders nobody paid, which INNER drops.
-- b, "What did each channel book in the quarter?": needs every order, paid or not.
-- c, "Which payment rows match no order in the orders table at all?": needs payments with no order, which INNER drops.
+- a, "app orders booked: 1": the join holds A-1 alone for app, and app booked A-1 and A-4, so the true answer is 2; the INNER join hides the unpaid A-4.
+- b, "share of booked orders paid: 100 percent": every order in the join has a payment by construction, so the join reads 3 of 3; Kalpa booked four orders and three were paid, so the true share is 3 of 4, 75 percent.
+- c, "payment rows with no booked order: 0": the join keeps only payment rows that found an order, so it can only read 0; the feed holds one such row, Q-6, so the true answer is 1.
 
 ## Which item is worth arguing about?
 

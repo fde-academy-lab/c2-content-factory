@@ -26,7 +26,8 @@ collected number. A join that drops an unpaid order hides it from the collection
 An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
 
 - **Booked** is every order at its amount. **Collected** is the cash that arrived, each payment counted
-  once. **Posted** is every payment row the feed holds, repeats included.
+  once. **Posted** is every payment row the feed holds, repeats included. A **retry** is one payment
+  the gateway posted twice.
 - The **grain** of a table is what one row stands for: one order in `orders`, one payment event in
   `payments`.
 - **INNER JOIN** keeps only the pairs that match. **LEFT JOIN** keeps every row of the table named
@@ -65,10 +66,10 @@ Post exactly this shape: xxxxxx
 
 `orders o JOIN payments p ON p.order_id = o.order_id`, on the two tables above. How many rows come back?
 
-a) 4, one for each order that has a payment
-b) 5, one for each matching pair
-c) 6, one for each payment row
-d) 7, every order and every payment
+a) 4, one row for each order, A-1 to A-4
+b) 5, as A-2 and A-3 each come out twice
+c) 6, one row for each payment, Q-1 to Q-6
+d) 3, one row each for A-1, A-2 and A-3
 
 ### Q2. What does the LEFT join, orders first, add?
 
@@ -81,12 +82,12 @@ d) no order, and 7 rows
 
 ### Q3. Which query answers the platform lead's question? (Design)
 
-The data platform lead asks: "Is every payment row in the feed explained by an order we booked?" Which query answers him?
+The data platform lead owns the payments feed and asks: "How many payment rows in the feed sit on an order id we never booked?" A teammate tries four ways on the two tables above. Which way, with the count it reports, answers him?
 
-a) orders LEFT JOIN payments, reading the payment columns
-b) payments LEFT JOIN orders, reading the order columns
-c) orders INNER JOIN payments, counting the matched rows
-d) orders LEFT JOIN payments WHERE the payment is NULL
+a) orders LEFT JOIN payments, rows with no payment: 1
+b) payments JOIN orders, rows with no order: 0
+c) payments LEFT JOIN orders, rows with no order: 1
+d) payment rows less order rows, 6 less 4: 2
 
 ### Q4. What is wrong with a statement that reads 116 percent collected?
 
@@ -108,12 +109,12 @@ d) 7
 
 ### Q6. Which question is an INNER join the honest choice for? (Design)
 
-Each question below is asked of Kalpa's orders and payments. For which one is an INNER join the honest choice?
+A teammate answers four questions from the rows of `orders o JOIN payments p ON p.order_id = o.order_id` on the tables above, and writes beside each the figure those rows give. For which question is that figure also the true answer?
 
-a) How many Q2 orders were never paid at all?
-b) What did each channel book in the quarter?
-c) Which payment rows match no order in the orders table at all?
-d) For paid orders only, how many days until the first payment?
+a) app orders booked: 1
+b) share of booked orders paid: 100 percent
+c) payment rows with no booked order: 0
+d) store cash received: 2,400
 
 ---
 

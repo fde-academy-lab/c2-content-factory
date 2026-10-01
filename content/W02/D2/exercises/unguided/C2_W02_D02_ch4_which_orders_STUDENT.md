@@ -25,6 +25,8 @@ list means a call to a customer who did nothing wrong.
 
 An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
 
+- **Booked** is every order at its amount. **Collected** is the cash that arrived, each order and
+  instalment counted once. The **gap** is booked less collected.
 - An **anti-join** keeps the rows of one table that have no partner in the other, for example a LEFT
   JOIN that keeps only the rows where the payment side is NULL.
 - **Never paid** means an order with no payment row at all. A **retry** is one order and instalment
@@ -94,16 +96,16 @@ The dates move into the join: `LEFT JOIN payments p ON p.order_id = o.order_id A
 a) V-4
 b) V-4 and V-5
 c) no orders
-d) V-5 and V-9
+d) V-4, V-5 and V-9
 
 ### Q4. Where does V-5 belong for Anand's never-paid question? (Design)
 
-V-5 was paid on 3 October, three days after the quarter closed. On the definitions above, which list does V-5 belong on when the collections team asks for the orders never paid?
+V-5 was paid by R-6 on 3 October, three days after the quarter closed. Anand's analyst ties the never-paid list's total to the gap, and since every order paid here was paid in full, the two must agree before the page goes out. Which treatment of V-5 and R-6 answers Anand's never-paid question and lets the list and the gap agree?
 
-a) on the double-paid list, since it was paid late
-b) on the unpaid list, since nothing arrived within Q2
-c) on no list, since it was paid after Q2 closed
-d) on the list of payments that match no order
+a) V-5 on the list, R-6 left out of collected
+b) V-5 on the list, R-6 kept in collected
+c) V-5 off the list, R-6 left out of collected
+d) V-5 off the list, R-6 kept in collected
 
 ### Q5. What does the double-paid list hold, grouped the right way?
 
@@ -116,12 +118,21 @@ d) V-3's instalment 1, and 1,200
 
 ### Q6. Which way of writing the unpaid list stays correct once the feed sends NULL ids? (Design)
 
-The feed will soon carry refund rows whose `order_id` is NULL. Which way of writing the unpaid list stays correct?
+The feed will soon carry refund rows whose `order_id` is NULL. A teammate offers four ways to write Anand's never-paid list:
 
-a) NOT IN, since it checks each order id against every id in the list
-b) NOT EXISTS or the LEFT JOIN, since a NULL id matches no order
-c) NOT IN and NOT EXISTS alike, since both read one subquery
-d) none of them, since a NULL id breaks every anti-join
+| Way | What keeps an order on the list |
+|---|---|
+| NOT IN | `o.order_id NOT IN (SELECT order_id FROM payments)` |
+| NOT EXISTS | `NOT EXISTS (SELECT 1 FROM payments p WHERE p.order_id = o.order_id)` |
+| NOT EXISTS in Q2 | the same, with `AND p.paid_date BETWEEN '2026-07-01' AND '2026-09-30'` inside |
+| The LEFT JOIN | `LEFT JOIN payments p ON p.order_id = o.order_id` with `WHERE p.paid_date BETWEEN '2026-07-01' AND '2026-09-30' AND p.order_id IS NULL` |
+
+Which way still returns exactly the orders never paid once those rows arrive?
+
+a) NOT IN, against the order_ids in payments
+b) NOT EXISTS, for a payment row at any date
+c) NOT EXISTS, for a payment row dated in Q2
+d) the LEFT JOIN, with Q2's dates kept in WHERE
 
 ---
 

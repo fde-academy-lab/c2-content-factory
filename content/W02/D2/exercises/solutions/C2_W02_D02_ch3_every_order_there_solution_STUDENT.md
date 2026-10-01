@@ -1,13 +1,14 @@
 # Solution: is every booked order still in the report?
 
-Answers: 1b 2a 3c 4b 5a 6c
+Answers: 1b 2a 3c 4b 5a 6d
 
 ## What does this set test?
 
 The set tests the count that catches a dropped order, the bridge that separates two causes netted
 into one gap, and a second route whose blind spot differs from the first. Items 2, 5 and 6 are
-design items: the proof to run first under time pressure, where two independent methods part
-company, and the order the proofs run in before the number leaves, which is an ordering item.
+design items: four checks worked through on one report, where only the count sees an order with no
+payment; where two independent methods part company; and the order the proofs run in, worked out
+from what each compares and what it costs, which is an ordering item.
 
 ## What did the set give you to work from?
 
@@ -21,9 +22,10 @@ repeated payment can show a gap of zero, and nobody chases a zero.
 
 - **Booked** is every order at its amount. **Collected** counts each order and instalment once.
   **Posted** is every payment row the feed holds, repeats included.
-- The **gap** is booked less collected. A **bridge** walks from booked to posted in named moves:
-  **never paid** (an order with no payment row at all), **paid short** (collected below booked) and
-  **posted twice** (posted less collected).
+- The **gap** is booked less collected. A **bridge** runs from booked to what the feed posted in
+  named moves, and each move is one **bar** of the bridge chart: **never paid** (an order with no
+  payment row at all), **paid short** (collected below booked) and **posted twice** (posted less
+  collected).
 - A plain `JOIN` in SQL is an INNER JOIN.
 
 Six invented orders, with every payment row the feed holds:
@@ -41,23 +43,32 @@ Six invented orders, with every payment row the feed holds:
 
 ### Q1. What does a plain JOIN report on these six orders?
 
-A teammate sums the payments to one row per order and joins them to the orders with a plain `JOIN`. The report shows the orders it holds and booked less posted. What does it show?
+A teammate sums the payments to one row per order and joins them to the orders with a plain `JOIN`. The report shows the orders it holds and booked less posted, which it labels the gap. What does it show?
 
 The key is b, "4 orders, a gap of minus 1,000". The plain JOIN keeps U-1, U-2, U-4 and U-5: booked 7,700 against posted 8,700, so booked less posted is minus 1,000. U-3 and U-6, never paid, are gone.
 
-- a, "6 orders, a gap of 300": 300 is the six orders' booked less posted, which only a LEFT JOIN keeps.
-- c, "4 orders, a gap of 0": forgets U-2's repeat inside posted.
-- d, "6 orders, a gap of minus 1,000": keeps six orders, which a plain JOIN cannot.
+- a, "all 6 orders, a gap of 300": 300 is the six orders' booked less posted, 9,000 less 8,700, which only a LEFT JOIN keeps.
+- c, "4 orders, a gap of 500": counts U-2's payment once, which gives booked less collected on the four orders, 7,700 less 7,200; the report reads booked less posted, and posted carries U-2's repeat.
+- d, "all 6 orders, a gap of minus 1,000": keeps six orders, which a plain JOIN cannot, and on six orders booked less posted is 300.
 
-### Q2. Which check catches a dropped order without reading a rupee? (Design)
+### Q2. Which of four checks would stop the plain JOIN's report? (Design)
 
-Anand's analyst has ten minutes before the report goes out. Which check catches a dropped order without reading any rupee figure?
+Before the teammate's report from item 1 goes out, Anand's analyst can run four checks on it:
 
-The key is a, "orders in the report against orders in the table". Orders in the report against the table, 4 against 6, needs no rupee, runs in a moment and fails the moment one order goes missing.
+| Check | What it compares |
+|---|---|
+| The count | orders on the report against orders in the table |
+| The fan-out check | rows on the report against the distinct order ids on it |
+| The posted tie-back | posted on the report against posted from the payments alone |
+| The payment-row count | payment rows summed into the report against payment rows in the feed |
 
-- b, "the report's gap against last quarter's gap, as a ratio": compares two totals that can both be wrong.
-- c, "every line of the statement, read and ticked one by one": catches it only if someone reads every line in ten minutes.
-- d, "a gap that comes out positive on every single channel": a positive gap says nothing about a missing order.
+Which of them stop the report?
+
+The key is a, "only the count, as the other three balance". The count reads 4 orders against 6 in the table and stops the report. The fan-out check reads 4 rows against 4 order ids, the posted tie-back 8,700 against 8,700 from the payments alone, and the payment-row count 6 rows against the feed's 6. U-3 and U-6 have no payment, so every check that reads only the report or the payments balances without them, and only a check that starts from the orders table sees them missing.
+
+- b, "only the posted tie-back, as posted runs high": posted on the report is 8,700, the feed's own total, so the tie-back balances; posted runs high only against booked, 8,700 against 7,700, which is U-2's repeated 1,500 less U-5's 500 short, and that comparison is a different check.
+- c, "the count and the payment-row count": the report sums U-1's one row, U-2's two, U-4's two and U-5's one, 6 rows, and the feed holds 6, so the payment-row count balances.
+- d, "none of them, as every check balances": the count does not balance, 4 orders against 6.
 
 ### Q3. What is collected, each payment counted once?
 
@@ -91,19 +102,28 @@ The key is a, "a retry the feed wrote under a new instalment number". The instal
 
 ### Q6. In what order should the proofs run before the number goes to Anand? (Design)
 
-The report on these six orders has to reach Anand within the hour, and his analyst has three proofs to run before the number itself goes out. Which order catches a dropped order and a repeated payment before anyone reads the number?
+Before the number goes to Anand, his analyst runs three proofs on the report and stops at the first one that fails:
 
-The key is c, "the count, then the bridge and its lists, then the number". The count needs no rupee and fails the moment an order goes missing, so it runs first; the bridge then names each rupee between booked and posted with a list behind each move, and only after both does the number go out.
+| Proof | What it compares | Minutes |
+|---|---|---|
+| The count | orders on the report against orders in the table | 1 |
+| The bridge | the report's booked, walked bar by bar to its posted | 10 |
+| The lists | each list of orders, its total against its bar | 15 |
 
-- a, "the number, then the bridge, then the count if it looks odd": reads the number first, so a gap that looks plausible leaves before anything has checked it.
-- b, "the bridge, then the number, then the count at the close": runs the bridge on a report that may have dropped an order, and leaves the count to the quarter's close.
-- d, "the whole statement first, then the count, then the number": the whole statement is the auditors' appendix at the close, and it asks a reader to tick every line where the count catches the same dropped order in one line.
+In what order should the three proofs run?
+
+The key is d, "the count first, then the bridge, then the lists". The count costs a minute and stops a report that lost an order at once, while the bridge, built on the report's own figures, still closes on item 1's report (booked 7,700 less 500 paid short is collected 7,200, plus 1,500 posted twice is posted 8,700), so a report that lost two orders passes it. With the count first, that report stops at minute 1. Each list is checked against its bar, and the bars come from the bridge, so the bridge runs before the lists.
+
+- a, "the bridge, then its lists, and the count at the close": on item 1's report the bridge closes after 10 minutes, and the unpaid list, written from the orders table, catches the loss only at minute 25 (1,300 against a never-paid bar of 0), where the count would have stopped it at minute 1.
+- b, "the count, then the lists, and the bridge to finish": the count is right to go first, and each list is checked against its bar, which does not exist until the bridge has run, so the lists have nothing to tie to.
+- c, "the bridge, then the count, then the lists": the bridge closes on a report missing two orders, so 10 minutes pass before the count stops it at minute 11, where the count first stops it at minute 1.
 
 ## Which item is worth arguing about?
 
-On item 1, option c, a pair who spots the dropped orders sometimes expects the gap to vanish to zero.
-It comes out negative because U-2's repeated posting sits inside posted, which is the second error in
-the same draft. One of the two faults drops rupees and the other adds them.
+On item 1, option c, a pair who spots the dropped orders sometimes counts U-2's payment once and
+reads 500, which is booked less collected on the four orders. The report shows booked less posted,
+and posted carries U-2's repeated 1,500, which turns the 500 into minus 1,000. One of the draft's two
+faults drops rupees and the other adds them.
 
 ## Where does this pattern live in production?
 

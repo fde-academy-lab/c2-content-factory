@@ -104,7 +104,7 @@ The key is b, "One row with NULL in every payment column". The LEFT join keeps T
 The key is d, "RIGHT and FULL, which keep every payment row". RIGHT keeps every payment row, and FULL keeps every row on both sides, so both show P-7.
 
 - a, "LEFT, which keeps every row that has a key": LEFT keeps every order, and P-7 has no order.
-- b, "INNER, which keeps every payment it can read": INNER keeps only matched pairs.
+- b, "RIGHT alone, since it keeps every payment row": RIGHT does show P-7, and FULL keeps every row on both sides, so it shows P-7 as well.
 - c, "Only the FULL join, since P-7 matches nothing": FULL shows it, and RIGHT shows it too.
 
 ## Which part is worth arguing about?

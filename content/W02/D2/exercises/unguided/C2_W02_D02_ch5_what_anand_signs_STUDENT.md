@@ -1,8 +1,8 @@
 # What goes on the report by channel that Anand signs, and does its gap column tell the truth?
 
-The chapter 5 set has six items on six invented orders, so none of its numbers comes from Kalpa's
-warehouse. Items 1 and 2 close the chapter live; the rest open the TA-led practice lab or are worked
-tonight.
+The chapter 5 set has six items. Items 1 to 4 run on six invented orders and items 5 and 6 on
+invented figures of their own, so none of its numbers comes from Kalpa's warehouse. Items 1 and 2
+close the chapter live; the rest open the TA-led practice lab or are worked tonight.
 
 > **The client asks.** "If there is a gap, I want to know which orders and which channel."
 >
@@ -28,8 +28,11 @@ An item marked Design asks for the best-fit approach, a sizing, the fact that wo
 - **Booked** is every order at its amount; **collected** counts each payment once; the **gap** is
   booked less collected. An order nobody paid has NULL in `collected`.
 - `sum()` skips NULLs without saying so. `coalesce(x, 0)` returns x, or 0 when x is NULL.
-- The bridge's moves are **never paid** (no payment row at all), **paid short** (collected below
-  booked) and **posted twice** (the same instalment written more than once).
+- The **bridge** runs from booked to what the feed posted in named moves, and each move is one
+  **bar** of the bridge chart: **never paid** (no payment row at all), **paid short** (collected
+  below booked) and **posted twice** (the same instalment written more than once).
+- The **unpaid list** names every order never paid. The **paid-short list** names every order
+  collected below its booked, with the amount still owed.
 
 Six invented orders, one row each, after the payments were brought to one row per order:
 
@@ -88,21 +91,21 @@ d) 400, paid short
 
 ### Q5. Which page does Anand get? (Design)
 
-Anand has five minutes before he forwards the page, and his analyst audits it next week. Which page does he get?
+Anand forwards the page to the CEO's Monday numbers, each channel head chases every rupee of their own gap from it, and his analyst audits it next week. On a full quarter, invented for this item, the page draws on 1,500 orders in three channels, and the bridge's bars hold 24 orders never paid, 6 orders paid short and 15 instalments posted twice. The table by channel takes 3 lines, the reconciliation above it 3 more, and any list or statement a line for each order or instalment it names; the page has to fit one printed sheet of about 60 lines. Which page does he get?
 
-a) one number: the total gap of 2,100
-b) a table by channel with its gaps
-c) the table by channel, reconciled above, with both lists
-d) the whole statement, one line for each of the six orders
+a) the table by channel, with its gap column and nothing else
+b) the table, reconciled above, with the unpaid list
+c) the table, reconciled above, with a list behind each bar
+d) the table, reconciled above, with every order's line beneath
 
 ### Q6. What does the difference between two routes to the gap tell you? (Design)
 
-A second route groups the unpaid list by channel: app 700, store 0, web 1,000. The fixed page says app 700, store 400, web 1,000. What does the difference tell you?
+A month later, on a new set of invented orders, the fixed page gives each channel's gap as app 2,300, store 1,200 and web 2,400. The second route, the unpaid list grouped by channel, gives app 1,700, store 1,200 and web 1,500. That month's paid-short list holds one order, an app order that still owes 600. What does the difference between the two routes tell you?
 
-a) store's 400 is paid short, which no unpaid list holds
-b) the page double counts W-3's retry inside store's gap
-c) the unpaid list dropped a store order it should have kept
-d) the coalesce fix added 400 that store never booked
+a) app's 600 is paid short, and web's 900 is unexplained
+b) both differences are paid short, which no unpaid list holds
+c) web's 900 is a retry that the page counts inside its gap
+d) the unpaid list lost 1,500 of app and web orders
 
 ---
 

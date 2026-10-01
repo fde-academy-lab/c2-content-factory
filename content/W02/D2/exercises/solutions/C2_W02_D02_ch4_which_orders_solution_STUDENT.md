@@ -1,13 +1,14 @@
 # Solution: which orders were never paid, and which payments were posted twice?
 
-Answers: 1a 2c 3b 4c 5a 6b
+Answers: 1a 2c 3b 4d 5a 6b
 
 ## What does this set test?
 
 The set tests the anti-join, what a condition on the payments table does in WHERE and in ON, and the
-grain of a double payment, on tables the chapter never used. Items 4 and 6 are design items: which
-list a late payment belongs on under the day's definitions, and which way of writing the list
-survives a change to the feed.
+grain of a double payment, on tables the chapter never used. Items 4 and 6 are design items: where a
+late payment goes once the never-paid list has to agree with the gap, worked out in rupees for four
+treatments, and which of four ways of writing the list survives a change to the feed, each worked
+through on the tables.
 
 ## What did the set give you to work from?
 
@@ -19,6 +20,8 @@ survives a change to the feed.
 platform lead and Finance reverse or refund what is on the double-paid list. A name on the wrong
 list means a call to a customer who did nothing wrong.
 
+- **Booked** is every order at its amount. **Collected** is the cash that arrived, each order and
+  instalment counted once. The **gap** is booked less collected.
 - An **anti-join** keeps the rows of one table that have no partner in the other, for example a LEFT
   JOIN that keeps only the rows where the payment side is NULL.
 - **Never paid** means an order with no payment row at all. A **retry** is one order and instalment
@@ -85,17 +88,17 @@ The key is b, "V-4 and V-5". In ON the dates decide which payments count as a ma
 
 - a, "V-4": forgets V-5, whose payment falls outside the ON condition.
 - c, "no orders": that was the WHERE version.
-- d, "V-5 and V-9": V-9 is not an order.
+- d, "V-4, V-5 and V-9": V-9 is a payment's order id and not an order, so a LEFT JOIN from orders never lists it, wherever the dates sit.
 
 ### Q4. Where does V-5 belong for Anand's never-paid question? (Design)
 
-V-5 was paid on 3 October, three days after the quarter closed. On the definitions above, which list does V-5 belong on when the collections team asks for the orders never paid?
+V-5 was paid by R-6 on 3 October, three days after the quarter closed. Anand's analyst ties the never-paid list's total to the gap, and since every order paid here was paid in full, the two must agree before the page goes out. Which treatment of V-5 and R-6 answers Anand's never-paid question and lets the list and the gap agree?
 
-The key is c, "on no list, since it was paid after Q2 closed". Never paid means no payment row at all, and V-5 has one; it was collected late, which raises a question about days to pay and gives no reason to chase the customer.
+The key is d, "V-5 off the list, R-6 kept in collected". Never paid means no payment row at all, and V-5 has R-6, so it stays off the list, paid though late; R-6 is cash that arrived against a booked order, so collected counts it. Booked is 7,600 (1,000 + 3,000 + 600 + 2,200 + 800) and collected is 5,400 (V-1's 1,000, V-2's 1,800 and 1,200, V-3's 600 once and V-5's 800), so the gap is 2,200; the list holds V-4 alone at 2,200, and the two agree.
 
-- a, "on the double-paid list, since it was paid late": a late payment is a single payment, so it has no second posting to put on that list.
-- b, "on the unpaid list, since nothing arrived within Q2": the ON version answers "not paid within Q2", a different question from never paid.
-- d, "on the list of payments that match no order": V-5 is in the orders table.
+- a, "V-5 on the list, R-6 left out of collected": answers a different question, not paid within Q2. Leaving R-6 out makes collected 4,600 and the gap 3,000, and V-5 on the list makes the list 3,000 as well, so the two agree, and the list sends the collections team to ring V-5's customer, who paid.
+- b, "V-5 on the list, R-6 kept in collected": the list reads 2,200 + 800, which is 3,000, against a gap of 2,200, so the two sit 800 apart, and the extra 800 is a customer who paid.
+- c, "V-5 off the list, R-6 left out of collected": the gap reads 3,000 against a list of 2,200, so the two sit 800 apart, and 800 of the gap has no order behind it.
 
 ### Q5. What does the double-paid list hold, grouped the right way?
 
@@ -109,20 +112,30 @@ The key is a, "V-3's instalment 1, and 600". By order and instalment only V-3's 
 
 ### Q6. Which way of writing the unpaid list stays correct once the feed sends NULL ids? (Design)
 
-The feed will soon carry refund rows whose `order_id` is NULL. Which way of writing the unpaid list stays correct?
+The feed will soon carry refund rows whose `order_id` is NULL. A teammate offers four ways to write Anand's never-paid list:
 
-The key is b, "NOT EXISTS or the LEFT JOIN, since a NULL id matches no order". NOT EXISTS and the LEFT JOIN that keeps the misses both treat a NULL id as no match, so the list stays the same.
+| Way | What keeps an order on the list |
+|---|---|
+| NOT IN | `o.order_id NOT IN (SELECT order_id FROM payments)` |
+| NOT EXISTS | `NOT EXISTS (SELECT 1 FROM payments p WHERE p.order_id = o.order_id)` |
+| NOT EXISTS in Q2 | the same, with `AND p.paid_date BETWEEN '2026-07-01' AND '2026-09-30'` inside |
+| The LEFT JOIN | `LEFT JOIN payments p ON p.order_id = o.order_id` with `WHERE p.paid_date BETWEEN '2026-07-01' AND '2026-09-30' AND p.order_id IS NULL` |
 
-- a, "NOT IN, since it checks each order id against every id in the list": `x NOT IN (..., NULL)` is never true, so NOT IN returns no rows at all.
-- c, "NOT IN and NOT EXISTS alike, since both read one subquery": the two read one subquery and still differ, since NOT IN breaks on the NULL and NOT EXISTS does not.
-- d, "none of them, since a NULL id breaks every anti-join": NOT EXISTS and the LEFT JOIN are untouched.
+Which way still returns exactly the orders never paid once those rows arrive?
+
+The key is b, "NOT EXISTS, for a payment row at any date". A NULL `order_id` never equals an order id, so the refund rows match no order, and NOT EXISTS returns V-4 alone, 2,200, before and after they arrive.
+
+- a, "NOT IN, against the order_ids in payments": once the subquery holds a NULL, `x NOT IN (..., NULL)` is never true, so the list comes back empty and V-4 drops off it.
+- c, "NOT EXISTS, for a payment row dated in Q2": the date condition asks a different question, not paid within Q2, so V-5, paid on 3 October, joins V-4 and the list reads 3,000 against a gap of 2,200.
+- d, "the LEFT JOIN, with Q2's dates kept in WHERE": the dates in WHERE throw away V-4's NULL row, as in item 2, so the list is empty whether or not the refund rows arrive.
 
 ## Which item is worth arguing about?
 
-On item 4, option b, the collections head may well want the orders not paid within the quarter, and
-the ON version of item 3 gives exactly that list. It is a different question from Anand's "never
-paid", and the day's rule is to write the question beside the list, so each of the two lists carries
-its own one-line definition.
+On item 4, option a, the collections head may well want the orders not paid within the quarter, and
+leaving R-6 out of collected with V-5 on the list answers that question consistently: list and gap
+both read 3,000, the same list the ON version of item 3 returns. It is a different question from
+Anand's "never paid", and the day's rule is to write the question beside the list, so each of the
+two lists carries its own one-line definition.
 
 ## Where does this pattern live in production?
 

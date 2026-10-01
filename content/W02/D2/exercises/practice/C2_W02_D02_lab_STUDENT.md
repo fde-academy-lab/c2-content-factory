@@ -123,7 +123,7 @@ b) LEFT JOIN, every order kept
 c) Anti-join, unmatched orders
 d) FULL JOIN, both sides' orphans
 
-### Q7. Kavya asks: "Which Q1 web orders have no refund at all, so we can sample them for the satisfaction survey?" Which join answers it?
+### Q7. Kavya Nair, the team's senior analyst, asks: "Which Q1 web orders have no refund at all, so we can sample them for the satisfaction survey?" Which join answers it?
 
 a) INNER JOIN, matched pairs only
 b) LEFT JOIN, every order kept
@@ -146,7 +146,7 @@ d) FULL JOIN, both sides' orphans
 
 ---
 
-## Problem 3. What is wrong with a refund rate of 16.3 percent?
+## Problem 3. Is 16.3 percent the right Q1 refund rate for these six orders?
 
 Allow about 15 minutes. At work, even a plausible rate gets read back to the rows that made it.
 
@@ -167,22 +167,22 @@ WHERE r.refund_date BETWEEN '2026-04-01' AND '2026-06-28';
 |---|---|---|---|
 | 4 | 1,15,900 | 18,900 | 16.3 |
 
-### Q10. What is wrong with the booked figure of 1,15,900, which is what the rate divides by?
+### Q10. Which orders make up the booked figure of 1,15,900 that the rate divides by?
 
-a) Nothing, since 1,15,900 is what the orders table holds
-b) The WHERE drops the unrefunded orders, and nothing more
-c) The WHERE drops unrefunded orders, and W-3 counts twice
-d) W-3 counts twice, and every order is otherwise present
+a) all six orders, each of them counted once
+b) the three refunded orders, each counted once
+c) the refunded orders, with W-3 counted twice
+d) all six orders, with W-3 counted twice
 
-### Q11. With both faults fixed, what is the honest Q1 refund rate on these orders?
+### Q11. What Q1 refund rate should Anand be given for these six orders?
 
-a) 15.3 percent, once the date filter moves into the ON clause
-b) 25.0 percent, 18,900 refunded over 75,600 booked
-c) 16.3 percent, since the refunded total never changed
-d) 26.2 percent, counting the W-7 refund in the total
+a) 15.3 percent, 18,900 over 1,23,600
+b) 25.0 percent, 18,900 over 75,600
+c) 16.3 percent, 18,900 over 1,15,900
+d) 26.2 percent, 19,800 over 75,600
 
-Then write the corrected query yourself, so that it returns six rows, booked 75,600 and the rate you
-chose. Put the reconciliation above it as a comment block: orders in, rows out, and the difference.
+Then write the corrected query yourself and check that it returns the rate you chose. Put the
+reconciliation above it as a comment block: orders in, rows out, and the difference.
 
 ---
 

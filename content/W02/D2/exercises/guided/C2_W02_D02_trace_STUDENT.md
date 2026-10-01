@@ -170,6 +170,6 @@ d) Two rows, one for the order and one for its payment
 ### Q4. Which of the four joins show payment P-7, the one the platform lead will ask about?
 
 a) LEFT, which keeps every row that has a key
-b) INNER, which keeps every payment it can read
+b) RIGHT alone, since it keeps every payment row
 c) Only the FULL join, since P-7 matches nothing
 d) RIGHT and FULL, which keep every payment row

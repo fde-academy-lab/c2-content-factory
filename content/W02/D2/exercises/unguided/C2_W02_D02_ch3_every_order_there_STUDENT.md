@@ -17,7 +17,7 @@ repeated payment can show a gap of zero, and nobody chases a zero.
 **The questions on the way.**
 
 - What does a plain JOIN report on these six orders?
-- Which check catches a dropped order without reading a rupee?
+- Which of four checks would stop the plain JOIN's report?
 - What is collected, each payment counted once?
 - What is the gap, and what is it made of?
 - Where would two ways of counting collected disagree?
@@ -27,9 +27,10 @@ An item marked Design asks for the best-fit approach, a sizing, the fact that wo
 
 - **Booked** is every order at its amount. **Collected** counts each order and instalment once.
   **Posted** is every payment row the feed holds, repeats included.
-- The **gap** is booked less collected. A **bridge** walks from booked to posted in named moves:
-  **never paid** (an order with no payment row at all), **paid short** (collected below booked) and
-  **posted twice** (posted less collected).
+- The **gap** is booked less collected. A **bridge** runs from booked to what the feed posted in
+  named moves, and each move is one **bar** of the bridge chart: **never paid** (an order with no
+  payment row at all), **paid short** (collected below booked) and **posted twice** (posted less
+  collected).
 - A plain `JOIN` in SQL is an INNER JOIN.
 
 Six invented orders, with every payment row the feed holds:
@@ -53,21 +54,30 @@ Post exactly this shape: xxxxxx
 
 ### Q1. What does a plain JOIN report on these six orders?
 
-A teammate sums the payments to one row per order and joins them to the orders with a plain `JOIN`. The report shows the orders it holds and booked less posted. What does it show?
+A teammate sums the payments to one row per order and joins them to the orders with a plain `JOIN`. The report shows the orders it holds and booked less posted, which it labels the gap. What does it show?
 
-a) 6 orders, a gap of 300
+a) all 6 orders, a gap of 300
 b) 4 orders, a gap of minus 1,000
-c) 4 orders, a gap of 0
-d) 6 orders, a gap of minus 1,000
+c) 4 orders, a gap of 500
+d) all 6 orders, a gap of minus 1,000
 
-### Q2. Which check catches a dropped order without reading a rupee? (Design)
+### Q2. Which of four checks would stop the plain JOIN's report? (Design)
 
-Anand's analyst has ten minutes before the report goes out. Which check catches a dropped order without reading any rupee figure?
+Before the teammate's report from item 1 goes out, Anand's analyst can run four checks on it:
 
-a) orders in the report against orders in the table
-b) the report's gap against last quarter's gap, as a ratio
-c) every line of the statement, read and ticked one by one
-d) a gap that comes out positive on every single channel
+| Check | What it compares |
+|---|---|
+| The count | orders on the report against orders in the table |
+| The fan-out check | rows on the report against the distinct order ids on it |
+| The posted tie-back | posted on the report against posted from the payments alone |
+| The payment-row count | payment rows summed into the report against payment rows in the feed |
+
+Which of them stop the report?
+
+a) only the count, as the other three balance
+b) only the posted tie-back, as posted runs high
+c) the count and the payment-row count
+d) none of them, as every check balances
 
 ### Q3. What is collected, each payment counted once?
 
@@ -98,12 +108,20 @@ d) an order paid once, in full, such as U-1
 
 ### Q6. In what order should the proofs run before the number goes to Anand? (Design)
 
-The report on these six orders has to reach Anand within the hour, and his analyst has three proofs to run before the number itself goes out. Which order catches a dropped order and a repeated payment before anyone reads the number?
+Before the number goes to Anand, his analyst runs three proofs on the report and stops at the first one that fails:
 
-a) the number, then the bridge, then the count if it looks odd
-b) the bridge, then the number, then the count at the close
-c) the count, then the bridge and its lists, then the number
-d) the whole statement first, then the count, then the number
+| Proof | What it compares | Minutes |
+|---|---|---|
+| The count | orders on the report against orders in the table | 1 |
+| The bridge | the report's booked, walked bar by bar to its posted | 10 |
+| The lists | each list of orders, its total against its bar | 15 |
+
+In what order should the three proofs run?
+
+a) the bridge, then its lists, and the count at the close
+b) the count, then the lists, and the bridge to finish
+c) the bridge, then the count, then the lists
+d) the count first, then the bridge, then the lists
 
 ---
 
