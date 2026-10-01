@@ -113,6 +113,12 @@ join that repeats a paid order sends them after a customer who paid in full.
 five orders? Which join answers Anand? What does a statement started from payments tell him? Can the
 counts be predicted from the keys alone?
 
+**Who else faces this.** Razorpay, the Indian payment gateway, builds its Orders API around the same
+shape: it "combines multiple payment attempts for a single order", and asking for one order's payments
+returns "all the authorised or failed payments for that order" (Razorpay documentation, About Orders
+and Fetch Payments for an Order, checked 1 Oct 2026). A merchant who sets the two lists side by side
+meets this chapter's question.
+
 ### What is one row of orders, and one row of payments?
 
 The grain of a table is what one row stands for. In the warehouse, `orders` holds 1,000 rows and 1,000
@@ -163,6 +169,13 @@ warehouse number first; and you, because the way chosen here carries every later
 **The questions on the way.** Which orders own two payment rows? What does a first draft report? Why
 is it wrong when every row is right? Which of four fixes, sized? Does the fix keep 462 orders? Do the
 two tables, summed alone, agree?
+
+**Who else faces this.** Shopify creates a transaction "for every order that results in an exchange
+of money", and one order can carry an authorization, its capture, a sale, a void or a refund (Shopify's
+REST Admin API reference, a legacy API since 1 October 2024, checked 1 Oct 2026). dbt Labs names the
+mechanism: "Fan-out joins are when one row in a table is joined to multiple rows in another table,
+resulting in more output rows than input rows", and its metrics layer, MetricFlow, restricts such
+joins (docs.getdbt.com, Joins, last updated 8 Sep 2026, checked 1 Oct 2026).
 
 ### Which Kalpa orders own two payment rows, and why?
 
@@ -226,6 +239,16 @@ zero.
 check catches it without a rupee? Which moves carry booked to posted? Does the bridge close on Q2? Does
 a capped count reach the same collected?
 
+**Who else faces this.** Stripe's payout reconciliation report lets a merchant match each payout in
+the bank with "the batches of payments and other transactions that they relate to", itemizing every
+payment, refund, dispute and fee inside it (Stripe documentation, checked 1 Oct 2026). The public case
+of a missing-row failure is Public Health England, which left 15,841 positive COVID-19 cases out of the
+daily figures reported between 25 September and 2 October 2020 (PHE statement, GOV.UK, 4 October 2020).
+The results arrived as CSV files and were pulled into Excel templates in the old XLS format; each
+result took several rows, so a template held about 1,400 cases, and once it was full further cases
+were left off (BBC News, 5 October 2020; both checked 1 Oct 2026). No row that arrived was wrong, and a
+count of rows sent against rows loaded would have caught the loss.
+
 ### Which of four proofs shows Anand the gap is honest?
 
 Four proofs, run on an invented draft with two errors at once: one number, booked less posted, shows a
@@ -278,6 +301,14 @@ instalment and rings a business buyer who paid on time.
 **The questions on the way.** Which orders have no payment at all? What happens when "paid in Q2" goes
 in WHERE? Where does that condition belong? What does HAVING COUNT(*) > 1 flag? What makes a retry a
 retry? Do a second method and a second list agree?
+
+**Who else faces this.** Stripe builds its API so that a retried request cannot charge twice: the
+client sends an idempotency key, and "subsequent requests with the same key return the same result"
+(Stripe API reference, Idempotent requests, checked 1 Oct 2026). The Reserve Bank of India puts a clock
+on the other side: when an online card payment debits a customer and the merchant's system never
+receives the confirmation, the debit must be reversed within five days of the transaction, with Rs 100
+of compensation for each day of delay after that (RBI/2019-20/67, in force from 15 October 2019,
+checked 1 Oct 2026).
 
 ### Which of four ways finds the unpaid orders?
 
@@ -335,6 +366,12 @@ audits it.
 the gap column say when each order's gap is added up? Why is it wrong? Does the fixed page add back to
 the bridge? Does the unpaid list by channel give the same gap?
 
+**Who else faces this.** Infosys reports days sales outstanding every quarter, money owed by
+customers over revenue per day on the last twelve months' revenue: 63 days for the quarter ended 30
+June 2026, against 67 at 31 March 2026 and 70 a year earlier (Infosys fact sheet, Exhibit 99.4 to the
+Form 6-K furnished to the US SEC on 28 July 2026, checked 1 Oct 2026). A finance team that publishes a
+collections figure every quarter answers for it, which is Anand's position when he signs.
+
 ### Which of four report forms fits a finance controller?
 
 One number puts 1 line in front of Anand and lets him act on nothing. A table by channel puts 4 and
@@ -379,6 +416,14 @@ stamped wrong number is harder to withdraw than an unstamped one.
 **The questions on the way.** Do the hurried checks pass a report that hides an unpaid order? Which
 checks tie back to the tables? Does the suite fail every wrong report of the day? Does it pass Kalpa's
 page? Does a second tool agree? What does Anand get when a check fails late?
+
+**Who else faces this.** Wirecard, a German payments company, collapsed in June 2020 over cash it
+reported and did not have. Its auditor, EY, refused to sign off on the accounts on 18 June; on 22
+June Wirecard said there was "a prevailing likelihood" that 1.9 billion euros of trust account balances
+did not exist; on 25 June it filed for insolvency (BBC News, checked 1 Oct 2026). People with
+first-hand knowledge told the Financial Times that from 2016 to 2018 EY had not checked directly with
+Singapore's OCBC Bank and relied on documents and screenshots from a trustee and from Wirecard itself
+(FT, republished by the Irish Times, 26 June 2020, checked 1 Oct 2026).
 
 ### Why do the hurried checks pass a report that hides an order?
 
@@ -585,12 +630,12 @@ and it keeps the rows while it does so. The pre-read ships tonight.
 
 | Order | What | Time | Why this one |
 |---|---|---|---|
-| 1 | Data with Baraa, "SQL Joins Basics (Visually Explained)", SQL Course 8, YouTube, https://www.youtube.com/watch?v=aY7z4HcHm5M (checked 30 Sep 2026) | 40 minutes | The four joins drawn row by row, the way the invented tables were traced |
-| 2 | PostgreSQL 16 documentation, 2.6 Joins Between Tables, https://www.postgresql.org/docs/16/tutorial-join.html (checked 30 Sep 2026) | 15 minutes | The outer join introduced on a row with no match, in the database you use |
-| 3 | PostgreSQL 16 documentation, 7.2.1.1 Joined Tables, https://www.postgresql.org/docs/16/queries-table-expressions.html (checked 30 Sep 2026) | 20 minutes | The documented difference between a condition in ON and one in WHERE |
-| 4 | jOOQ blog, "The Difference Between SQL's JOIN .. ON Clause and the Where Clause", 9 April 2019, https://blog.jooq.org/the-difference-between-sqls-join-on-clause-and-the-where-clause/ (checked 30 Sep 2026) | 10 minutes | The same trap from a library author who meets it in other people's queries |
-| 5 | SQLBolt, lessons 6 to 8, https://sqlbolt.com/lesson/select_queries_with_joins, https://sqlbolt.com/lesson/select_queries_with_outer_joins and https://sqlbolt.com/lesson/select_queries_with_nulls (checked 30 Sep 2026) | 30 minutes | Tonight's practice: joins, outer joins and the NULLs they create |
-| 6 | PostgreSQL Exercises, the joins category, https://pgexercises.com/questions/joins/ (checked 30 Sep 2026) | 40 minutes | Stretch practice on a second schema, with worked answers |
+| 1 | Data with Baraa, "SQL Joins Basics (Visually Explained)", SQL Course 8, YouTube, 20 March 2025, https://www.youtube.com/watch?v=aY7z4HcHm5M (checked 1 Oct 2026) | 40 minutes | The four joins drawn row by row, the way the invented tables were traced |
+| 2 | PostgreSQL 16 documentation, 2.6 Joins Between Tables, https://www.postgresql.org/docs/16/tutorial-join.html (checked 1 Oct 2026) | 15 minutes | The outer join introduced on a row with no match, in the database you use |
+| 3 | PostgreSQL 16 documentation, 7.2.1.1 Joined Tables, https://www.postgresql.org/docs/16/queries-table-expressions.html (checked 1 Oct 2026) | 20 minutes | The documented difference between a condition in ON and one in WHERE |
+| 4 | jOOQ blog, "The Difference Between SQL's JOIN .. ON Clause and the Where Clause", 9 April 2019, https://blog.jooq.org/the-difference-between-sqls-join-on-clause-and-the-where-clause/ (checked 1 Oct 2026) | 10 minutes | The same trap from a library author who meets it in other people's queries |
+| 5 | SQLBolt, lessons 6 to 8, https://sqlbolt.com/lesson/select_queries_with_joins, https://sqlbolt.com/lesson/select_queries_with_outer_joins and https://sqlbolt.com/lesson/select_queries_with_nulls (checked 1 Oct 2026) | 30 minutes | Tonight's practice: joins, outer joins and the NULLs they create |
+| 6 | PostgreSQL Exercises, the joins category, https://pgexercises.com/questions/joins/ (checked 1 Oct 2026) | 40 minutes | Stretch practice on a second schema, with worked answers |
 
 ---
 

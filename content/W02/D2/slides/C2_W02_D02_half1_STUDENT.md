@@ -223,7 +223,7 @@ A merchant who puts Razorpay's two lists side by side meets chapter 1's question
 
 ```notes
 LIVE, 1 minute. Source: Razorpay documentation, About Orders and Fetch Payments for an Order, checked
-30 Sep 2026 (URLs in the provenance). The phrases in quotes are Razorpay's own. Say it plainly: an
+1 Oct 2026 (URLs in the provenance). The phrases in quotes are Razorpay's own. Say it plainly: an
 Indian gateway builds its API around the fact that one order can own many payment rows, so every
 merchant's data team has to choose a join.
 ```
@@ -616,9 +616,10 @@ icon: shield-check | eyebrow: What they do about it | title: Restrict it | body:
 A report that adds every Shopify transaction of an order counts an authorised and captured payment twice.
 
 ```notes
-LIVE, 2 minutes. Sources: Shopify developer documentation, the REST Admin API's Transaction resource,
-and dbt's MetricFlow documentation (Joins, last updated 8 Sep 2026), both checked 30 Sep 2026; URLs in
-the provenance.
+LIVE, 2 minutes. Sources: Shopify developer documentation, the REST Admin API's Transaction resource
+(a legacy API since 1 October 2024, whose transaction kinds the GraphQL Admin API keeps), and dbt's
+MetricFlow documentation (Joins, last updated 8 Sep 2026), both checked 1 Oct 2026; URLs in the
+provenance.
 An authorization is money the customer has agreed to pay; a capture takes that same money. dbt
 builds a whole metrics layer to stop the mistake this chapter stages.
 ```
@@ -890,7 +891,7 @@ rupee by rupee, separates booked from posted? That is chapter 3.
 *Once nothing counts twice, is every booked order still in the report, and can every rupee between booked and posted be named?*
 
 ```notes
-LIVE. Chapter 3 runs 30 minutes: the map, the need and PHE (4), the four proofs and the call (5),
+LIVE. Chapter 3 runs 30 minutes: the map, the need, Stripe and PHE (4), the four proofs and the call (5),
 the grain check on Q2 (3), the plain JOIN trap, its check and fix (8), the bridge (7), the second
 route (2), the close (1). Notebook 3, C2_W02_D02_03_every_order_there_STUDENT.ipynb.
 ```
@@ -936,22 +937,28 @@ and was not.
 
 ---
 
-## S41. Public Health England lost 15,841 cases
-*Which real organisation reported numbers where every row that arrived was right and some never arrived?*
+## S41. Stripe itemizes payouts; PHE lost 15,841 cases
+*Which real company builds this proof in, and which public case shows what its absence costs?*
 
 ```stats
-value: 15,841 | label: positive cases left out | note: of the daily figures, 25 Sep to 2 Oct 2020
-value: about 65,000 | label: rows an XLS template holds | note: the old Excel format the files were loaded into
-value: about 1,400 | label: cases per template | note: the rest never arrived
+value: every row | label: inside a Stripe payout | note: each payment, refund, dispute and fee, itemized against the deposit
+value: 15,841 | label: positive cases PHE left out | note: of the daily figures, 25 Sep to 2 Oct 2020
+value: about 1,400 | label: cases per XLS template | note: each result took several of its 65,000 rows; later cases were left off
 ```
 
-No row that arrived was wrong. A count of rows sent against rows loaded, run on the first day, would have caught it.
+Stripe's payout reconciliation report lets a merchant match each deposit in the bank to the payments behind it. At Public Health England no row that arrived was wrong; a count of rows sent against rows loaded would have caught the loss on the first day.
 
 ```notes
-LIVE, 2 minutes. Sources: PHE statement on GOV.UK, 4 October 2020, and BBC News, 5 October 2020, both
-checked 30 Sep 2026; URLs in the provenance. The results arrived as CSV files and were loaded into
-templates in the old XLS format. This is the dropped-order failure at national scale, and the count
-check is the fix.
+LIVE, 2 minutes. Sources: Stripe documentation, Payout reconciliation report, which "helps you match
+the payouts you receive in your bank account with the batches of payments and other transactions
+that they relate to" and itemizes "every payment, refund, dispute, fee, and other balance
+transaction included in the payout"; PHE's statement on GOV.UK, 4 October 2020, and BBC News,
+5 October 2020; all checked 1 Oct 2026. The testing firms' results arrived as CSV files and were
+pulled into Excel templates in the old XLS format, which holds about 65,000 rows; each result took
+several rows, so a template held about 1,400 cases, and once it was full further cases were left off.
+They reached the dashboards and the contact tracers only after the fault was found. Stripe is the
+bridge built into a product; PHE is the dropped-order failure at national scale, and the count check
+is its fix.
 ```
 
 ---
@@ -1277,7 +1284,7 @@ A payment posted twice can be money a customer is owed back, on a regulator's cl
 
 ```notes
 LIVE, 2 minutes. Sources: Stripe API reference, Idempotent requests; RBI circular RBI/2019-20/67 of
-20 September 2019, in force from 15 October 2019; both checked 30 Sep 2026, URLs in the provenance.
+20 September 2019, in force from 15 October 2019; both checked 1 Oct 2026, URLs in the provenance.
 Stripe builds its API so the gateway retry the platform lead mentioned cannot double-charge; where a
 feed lacks that, the data team finds the repeats.
 ```
@@ -1455,7 +1462,7 @@ WHERE p.order_id IS NULL;
 ```notes
 LIVE, 3 minutes. The PostgreSQL manual says a restriction in ON is processed before the join and a
 restriction in WHERE after it, and that the difference matters a lot with outer joins (PostgreSQL 16
-documentation, section 7.2.1.1, Joined Tables, checked 30 Sep 2026). The rule to keep: in a LEFT JOIN, a
+documentation, section 7.2.1.1, Joined Tables, checked 1 Oct 2026). The rule to keep: in a LEFT JOIN, a
 condition on the right-hand table goes in ON, and the one right-table condition that belongs in
 WHERE is the anti-join's IS NULL.
 ```
@@ -1645,7 +1652,7 @@ Days sales outstanding is money owed by customers divided by revenue per day. A 
 
 ```notes
 LIVE, 2 minutes. Source: the Infosys fact sheet, Exhibit 99.4 to the Form 6-K furnished to the US SEC
-on 28 July 2026, checked 30 Sep 2026; URL in the provenance. The retail dossier carries the same idea for Kalpa as days
+on 28 July 2026, checked 1 Oct 2026; URL in the provenance. The retail dossier carries the same idea for Kalpa as days
 of receivables: money owed by customers and payment partners over net revenue per day (section 3).
 ```
 

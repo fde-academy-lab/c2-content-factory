@@ -101,7 +101,7 @@ A check built only on documents the company supplies can confirm only what the c
 
 ```notes
 LIVE, 2 minutes. Sources: BBC News, 18, 22 and 25 June 2020; the FT's report republished by the
-Irish Times on 26 June 2020, attributed to people with first-hand knowledge; all checked 30 Sep 2026,
+Irish Times on 26 June 2020, attributed to people with first-hand knowledge; all checked 1 Oct 2026,
 URLs in the provenance. Wirecard claimed up to 1 billion euros in cash at OCBC; the 1.9 billion was
 later said to sit in banks in the Philippines. The point for the day: every check this chapter
 builds reads Kalpa's own tables, so name what they cannot see.
