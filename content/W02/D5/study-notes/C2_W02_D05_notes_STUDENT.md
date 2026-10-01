@@ -76,7 +76,8 @@ flowchart LR
 ```
 
 Every number in the chief of staff's file travels this line, and each box can print a wrong number
-with no error. The export can repeat rows (chapters 1 and 2), the workbook can answer for the wrong
+with no error. A leaf can be averaged where it should be divided (chapter 1), the export can repeat
+rows (chapter 2), the workbook can answer for the wrong
 row or add rows nobody sees (chapters 3 and 6), and the director can read a number against the wrong
 period (chapter 4). The dashed arrow ties every number back to the warehouse before a director reads
 it, and chapter 5 decides which step belongs in which box.
@@ -205,7 +206,8 @@ fifty, Rs 37,750, and 1,400 rows still total Rs 39,40,57,740.
 
 It says Q1 Rs 10,00,00,000 and Q2 Rs 9,84,00,000, down 1.6 percent, tied to the rupee. The first-row
 flag, `=IF(COUNTIF($A$2:A2,A2)=1,1,0)`, takes Rs 19,56,95,490 out of the total and turns Retail-Core
-from up 1.0 percent to down 1.8, undoing the shape Tuesday's LEFT JOIN made in SQL.
+from up 1.0 percent to down 1.8. The export repeated each order once per payment, the same shape
+Tuesday's join of orders to payments produced in SQL.
 
 ### Which segment and which leaf fell?
 
@@ -218,7 +220,7 @@ from up 1.0 percent to down 1.8, undoing the shape Tuesday's LEFT JOIN made in S
 
 Business carries Rs 14,29,840 of the Rs 16,00,000 fall, a few invoices landing in one quarter or the
 next. Retail-Plus fell steepest: customers who ordered went from 91 to 76 and orders per customer
-from 2.36 to 1.84, the frequency branch Week 1 Tuesday found, while the basket rose from Rs 2,725 to
+from 2.36 to 1.84, the frequency branch Week 1 found, while the basket rose from Rs 2,725 to
 Rs 2,953.
 
 ### Does the warehouse reach the same quarters by its own route?
@@ -522,8 +524,8 @@ and a typed-over formula holds the whole workbook.
 > **Kavya's review.** "A director who filters, sorts or asks a what-if should see the right numbers
 > move, and see a wrong one turn red before anyone reads it out."
 
-SUBTOTAL, yellow inputs and five checks catch every silent break, and filtered to Mumbai the foot
-reads Rs 1,56,790 for eleven members.
+SUBTOTAL at the foot, yellow inputs and five checks catch the breaks the chapter staged, and
+filtered to Mumbai the foot reads Rs 1,56,790 for eleven members.
 
 ---
 
@@ -531,7 +533,7 @@ reads Rs 1,56,790 for eleven members.
 
 Alone, you build the chief of staff's file from the two exports in five parts: does the tree tie,
 does the list hold the right fifty with an honest lookup, does the card carry its period, comparison
-and base, what ships and what is held, and do the numbers agree a second way. It tests the release:
+and base, what ships and what, if anything, is held, and do the numbers agree a second way. It tests the release:
 each part ships on its own check, and a part whose check fails is held with its reason.
 
 ## What does the second case ask, and which rule does it test?
