@@ -818,7 +818,7 @@ best, and spends an offer on the wrong person.
 3. Does the list's source table tie to the warehouse?
 4. What does a lookup with its fourth argument left out return for an id the table does not hold?
 5. What does an exact match with a not-found path return, and what if the list is re-sorted?
-6. Does an independent count agree with the lookup?
+6. Does the warehouse's own count agree with the lookup?
 
 **The metric at stake.** Each member's revenue across the two quarters, April to September 2026, and
 the list's cut-off, the revenue of the fiftieth member. The head of Retail-Plus sizes the retention
@@ -1094,7 +1094,7 @@ lookup is whether the key is a band edge or a name.
 3. Whether the list's source ties is the room's own answer, from the your-turn cell, and it decides whether the list ships.
 4. VLOOKUP with its fourth argument left out returned C-0194's Rs 16,740, rank 15, for C-0195, which has no row.
 5. The exact match says "not in the table" for C-0195 and finds C-0152 at Rs 25,840; it gives the same answers on the re-sorted list.
-6. COUNTIF finds zero rows for C-0195 and one for C-0152, agreeing with the lookup both times.
+6. The warehouse holds no orders for C-0195 and Rs 25,840 for C-0152, agreeing with the lookup both times.
 
 The next question is chapter 4's: the chief of staff's third ask is the one number on the front page.
 '''),
@@ -1445,7 +1445,7 @@ counts each order once the way chapter 2 did, and defines `warehouse()`.
 | Option | Who does what | What it assumes |
 |---|---|---|
 | a) Everything in the workbook | Joins, dedupes, ranks and the card, all as formulas over the exports | The author reruns every step by hand each Monday |
-| b) The split | The warehouse computes and cleans; pandas iterates; the workbook presents | Each tool does only what it is best at, and the three are tied on every refresh |
+| b) The split | The warehouse computes and cleans; pandas iterates; the workbook presents | Each tool does only what it is best at, and a drift check ties the three together |
 | c) pandas does it all and pastes values | A notebook writes the numbers into the workbook as values | Nobody changes an assumption in the room |
 | d) A dashboard on the warehouse | Every number live from the warehouse | Every director has a login, which the brief rules out |
 '''),
@@ -1618,11 +1618,10 @@ kit.check("booked ties too", booked == wb)
         md('''
 ## 5. How do the workbook and the warehouse stay in step?
 
-With a drift check that runs on every refresh. The workbook needs no login for it: the data platform
-lead sends the warehouse's control totals, orders and booked revenue per quarter, on a small tab
-beside each export, and the Checks tab compares the workbook's own totals with them, live. A mismatch
-holds the deck until someone knows why. The cell below
-runs it twice: on this export, and on the same export as it would have looked if it had been pulled a
+With a drift check that runs every time the sheet recalculates. The workbook needs no login for it:
+the data platform lead sends the warehouse's control totals, orders and booked revenue per quarter, on a
+small tab beside each export, and the Checks tab compares the workbook's own totals with them, live. A
+mismatch holds the deck until someone knows why. The cell below runs it twice: on this export, and on the same export as it would have looked if it had been pulled a
 week early, before the last week of September's orders arrived.
 
 **Predict before you run.** The check on the early export: a) passes, since every row in it is real; b)
@@ -1647,7 +1646,7 @@ kit.table(["Export", "Quarter", "Orders in it", "Warehouse orders", "Revenue in 
           [("today", *r[:3], kit.rupees(r[3]), kit.rupees(r[4]), verdict_today) for r in today]
           + [("a week early", *r[:3], kit.rupees(r[3]), kit.rupees(r[4]), verdict_early) for r in week_early])
 kit.flow(["refresh the export", "control totals\\nagainst the warehouse", f"today: {verdict_today}", f"a week early: {verdict_early}"],
-         kinds=["plain", "lit", "good", "bad"], title="The drift check, run on every refresh")
+         kinds=["plain", "lit", "good", "bad"], title="The drift check, live on the Checks tab")
 kit.check("today's export ties, so the deck ships", verdict_today == "ship")
 kit.check("the early export is caught", verdict_early == "hold")
 '''),
@@ -1682,7 +1681,7 @@ joined in the warehouse, and a SUMIFS in the sheet is only a check.
 **[D] Kavya asks for the operating rule in three lines. Say it.** The warehouse owns the number and every
 join, dedupe and rank Finance relies on. pandas owns the analyst's iteration until Finance relies on it.
 Excel owns the last mile, on an export that ties, with what-ifs as labelled inputs, and a drift check on
-every refresh ties the sheet back to the warehouse.
+the Checks tab compares the sheet with the warehouse's control totals every time it recalculates.
 '''),
         md('''
 ### Depth: why did a row limit lose cases instead of stopping the job?
@@ -1704,7 +1703,7 @@ against an upstream count is what turns a silent loss into a held release.
 3. A lookup doing the join says Rs 11,83,81,974 collected, "Rs 8.00 crore outstanding", 40.3 percent.
 4. It took the first payment of 450 two-row orders; every payment added once gives Rs 19,66,45,070, Rs 17,54,930 short, 0.9 percent, exactly the orders nobody has paid for.
 5. Joins, dedupes, ranks and anything Finance audits live in the warehouse; the customer table in pandas; the pivot, lookup, card and what-ifs in the workbook.
-6. A drift check on every refresh ties the workbook's quarters to the warehouse: today's export ships, a week-early export is held.
+6. A drift check on the Checks tab compares the workbook's quarters with the warehouse's control totals every time the sheet recalculates: today's export ships, a week-early export is held.
 
 The next question is chapter 6's: what happens when a director takes the workbook in the room.
 '''),
@@ -1723,7 +1722,7 @@ quarters tied to the warehouse, the protect list of fifty from Rs 25,840 down to
 that says when an id is missing, and the front-page card with its period, comparison and base. Chapter 5
 found that a lookup doing the join reads Rs 11.84 crore collected where adding every payment once gives
 Rs 19.66 crore, and set the rule: the warehouse owns the number, pandas the iteration, the workbook the
-last mile, with a drift check on every refresh. The chief of staff's last condition is the hardest: "If a director changes
+last mile, with a drift check live on the Checks tab. The chief of staff's last condition is the hardest: "If a director changes
 an assumption in the room, the sheet must recalculate in front of them."
 
 {ASK}
@@ -2464,7 +2463,8 @@ Rs 5,85,770 in Q1 and Rs 4,13,380 in Q2, down 29.4 percent.
 ## What do you say to the director, in three lines?
 
 Post your five letters in order as one line, then the three lines one partner says to the director:
-yes to the question, no to the edit, and the check that keeps the sheet honest.{" The key is `" + EX2_KEY + "`." if solution else ""}
+one that answers the director's question, one that says why the actual stays as Finance books it, and
+one that names the check that ties the sheet to the warehouse.{" The key is `" + EX2_KEY + "`." if solution else ""}
 ''')
     route = code('''
 kit.flow(["the director's figure", "the card moves", "the drift check fires", "the refresh wipes it", "a labelled scenario"],

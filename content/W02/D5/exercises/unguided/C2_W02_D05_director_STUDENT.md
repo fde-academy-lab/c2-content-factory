@@ -53,7 +53,7 @@ Used at work in every review where a senior person wants a number to say somethi
 
 Fifteen minutes, seven each way and a minute to swap. The director pushes three times: "It is only one
 cell"; "Finance will never see this deck"; "We will fix the source later." The partner holding the
-rule answers each push from the numbers in part 1, says yes to the question and no to the edit, and
+rule answers each push from the numbers in part 1, answers the director's question, refuses the edit, and
 never argues about whether Retail-Plus will recover.
 
 ## Part 3. Which three lines does the pair say to the director?
