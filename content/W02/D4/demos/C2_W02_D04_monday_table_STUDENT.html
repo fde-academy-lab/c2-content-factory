@@ -144,44 +144,49 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   .checks li{margin:4px 0;font-size:14.5px}
   .checks .ok{color:var(--green);font-weight:700}
   .checks .no{color:var(--rose);font-weight:700}
-  select{font:15px var(--sans);padding:6px 8px;border:1px solid var(--line);border-radius:8px;color:var(--ink)}
+  select{font:15px var(--sans);padding:6px 8px;border:1px solid var(--line);border-radius:8px;color:var(--ink);
+         max-width:100%}
+  main,.grid2>*{min-width:0}
   .ctl{margin:12px 0}
   .ctl label{display:block;font-size:14.5px;color:var(--night);margin-bottom:4px}
+  .exp h3{font:400 20px var(--serif);color:var(--ink);margin:0}
 </style>
 </head>
 <body>
 <header class="hero">
   <span class="kicker">Week 2 &middot; Thursday &middot; Companion</span>
-  <h1>The Monday table</h1>
-  <p class="quote">&ldquo;The warehouse queries are fine for Finance, but Marketing's analysts live in Python. Build them the
-    table in pandas, from the warehouse, and make it refreshable in one run.&rdquo;</p>
-  <p class="who">The data platform lead, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre</p>
+  <h1>Can Marketing act on Monday's table without checking it?</h1>
+  <p class="quote">&ldquo;One table, one row per customer, refreshed every Monday: how recently each customer bought, how
+    often, how much, their segment, whether the monsoon sale reached them, and the flags we act on.&rdquo;</p>
+  <p class="who">The growth team, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre. The data
+    platform lead adds: build it in pandas, from the warehouse, refreshable in one run.</p>
   <p class="promise">Every number the growth team reads from the table was decided by a default somebody did or did not
-    write down. This page lets you flip each default and watch the number and the decision move. Figures marked Kalpa
-    come from the warehouse as of 28 September 2026; figures marked invented isolate one mechanism and say so.</p>
+    write down. Flip each default here and watch the number and the decision move. Figures marked Kalpa come from the
+    warehouse, whose last order is dated 28 September 2026: 1,000 orders, 340 customers and Rs 19,84,00,000 of spend
+    over April to September. Figures marked invented isolate one mechanism and say so.</p>
 </header>
 
 <div class="page">
   <nav class="rail" aria-label="Sections">
     <div class="label">On this page</div>
-    <a href="#walk" data-part="walk"><span class="n">01</span>The walk</a>
-    <a href="#sim" data-part="sim"><span class="n">02</span>Flip the defaults</a>
-    <a href="#experiments" data-part="experiments"><span class="n">03</span>Four experiments</a>
-    <a href="#glossary" data-part="glossary"><span class="n">04</span>Glossary</a>
+    <a href="#walk" data-part="walk"><span class="n">01</span>How is the table built?</a>
+    <a href="#sim" data-part="sim"><span class="n">02</span>Which default moves which number?</a>
+    <a href="#experiments" data-part="experiments"><span class="n">03</span>What does one change do?</a>
+    <a href="#glossary" data-part="glossary"><span class="n">04</span>What do the words mean?</a>
     <p class="jumped" id="jumped">You are at the top of the page.</p>
   </nav>
 
   <main>
     <section class="part" id="walk">
       <p class="eyebrow">01 &middot; The guided walk</p>
-      <h2>Building the table, one move at a time</h2>
-      <p class="lede">Five moves take 1,000 order rows to one row per customer. Each step lights the move and shows
-        where Kavya's three checks stand: rows against the customer list, spend against Monday's book, and the as-of
-        date. Kalpa figures.</p>
+      <h2>How does the table go from 1,000 orders to one trustworthy row per customer?</h2>
+      <p class="lede">Six chapters, six moves. Each step lights its move and shows where the day's three checks stand:
+        rows against the customer list of 340, spend against the warehouse's Rs 19,84,00,000, and recency counted to
+        the data's last date. Kalpa figures.</p>
       <div class="card"><div class="holder" id="walkFlow"></div></div>
       <div class="walk" style="margin-top:16px">
         <div class="card narration" aria-live="polite">
-          <div class="step" id="walkStep">Step 1 of 5</div>
+          <div class="step" id="walkStep">Step 1 of 6</div>
           <h3 id="walkTitle"></h3>
           <p id="walkText"></p>
           <ul class="checks" id="walkChecks"></ul>
@@ -195,21 +200,21 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
     <section class="part" id="sim">
       <p class="eyebrow">02 &middot; The simulator</p>
-      <h2>Flip the defaults, watch the decision</h2>
-      <p class="lede">Four controls, one per default the day met. Each redraws its number and says what the growth
-        team would do with it.</p>
+      <h2>Which default moves which number, and which decision does it change?</h2>
+      <p class="lede">Five controls, one per default the day met. Each redraws its number and says what the growth team,
+        the marketing lead, the head of Retail-Plus or Finance would do with it.</p>
 
       <div class="grid2">
         <div class="card">
-          <div class="part-label">A &middot; Recency and the win-back list &middot; Kalpa</div>
-          <div class="ctl"><label for="asOf">Recency measured from</label>
+          <div class="part-label">A &middot; Who is on the win-back list? &middot; Kalpa</div>
+          <div class="ctl"><label for="asOf">Recency counted to</label>
             <select id="asOf">
               <option value="0">28 September, the data's last order</option>
+              <option value="17">15 October, the day of this session</option>
               <option value="21">19 October, the first Monday refresh</option>
               <option value="28">26 October, a week later</option>
-              <option value="35">2 November, two weeks later</option>
             </select></div>
-          <div class="slider"><label for="thr">Win-back threshold, days without an order <b id="thrV">60</b></label>
+          <div class="slider"><label for="thr">Win-back line, days without an order <b id="thrV">60</b></label>
             <input type="range" id="thr" min="30" max="120" step="5" value="60"></div>
         </div>
         <div class="card">
@@ -221,11 +226,11 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
       <div class="grid2" style="margin-top:18px">
         <div class="card">
-          <div class="part-label">B &middot; The exposure merge &middot; invented feed</div>
-          <p class="note">Twelve invented customers, six of them reached by the sale. The campaign platform re-sends some
-            rows; each re-sent row repeats a reached customer.</p>
+          <div class="part-label">B &middot; What does a re-sent row do? &middot; invented feed</div>
+          <p class="note">Four invented customers, the same four as notebook 02, and the sale reached three of them. The
+            campaign platform sends some rows again; each re-sent row repeats a reached customer.</p>
           <div class="slider"><label for="resent">Re-sent rows in the feed <b id="resentV">0</b></label>
-            <input type="range" id="resent" min="0" max="6" step="1" value="0"></div>
+            <input type="range" id="resent" min="0" max="3" step="1" value="0"></div>
           <div class="ctl"><label for="validate">The merge's validate argument</label>
             <select id="validate">
               <option value="none">None, the default</option>
@@ -241,7 +246,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
       <div class="grid2" style="margin-top:18px">
         <div class="card">
-          <div class="part-label">C &middot; The months view &middot; Kalpa</div>
+          <div class="part-label">C &middot; How far did the segment fall? &middot; Kalpa</div>
           <div class="ctl"><label for="seg">Segment</label>
             <select id="seg">
               <option value="Retail-Plus">Retail-Plus</option>
@@ -263,11 +268,11 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
       <div class="grid2" style="margin-top:18px">
         <div class="card">
-          <div class="part-label">D &middot; Reach and conversion &middot; Kalpa</div>
-          <div class="ctl"><label for="spine">The table the reach count starts from</label>
+          <div class="part-label">D &middot; How many of the reached bought? &middot; Kalpa</div>
+          <div class="ctl"><label for="spine">Where each customer's segment comes from</label>
             <select id="spine">
-              <option value="list">The customer list, segment on every row</option>
-              <option value="orders">The order rows, merged onto the feed</option>
+              <option value="list">The customer list, a segment on every row</option>
+              <option value="orders">The customer's orders, which non-buyers do not have</option>
             </select></div>
           <div class="ctl"><label for="dropna">groupby's dropna</label>
             <select id="dropna">
@@ -282,46 +287,64 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         </div>
       </div>
 
+      <div class="grid2" style="margin-top:18px">
+        <div class="card">
+          <div class="part-label">E &middot; Which tool should own Finance's number? &middot; Kalpa, then scaled</div>
+          <div class="ctl"><label for="sizeBy">Size each tool by</label>
+            <select id="sizeBy">
+              <option value="moved">the rows it moves out of the warehouse</option>
+              <option value="returned">the rows in its answer</option>
+            </select></div>
+          <div class="slider"><label for="scale">Orders table, times today's 1,000 <b id="scaleV">1</b></label>
+            <input type="range" id="scale" min="0" max="3" step="1" value="0"></div>
+        </div>
+        <div class="card">
+          <div class="holder" id="toolChart"></div>
+          <p class="verdict" id="toolVerdict"></p>
+        </div>
+      </div>
+
       <div class="card strip" style="margin-top:18px"><b class="tag">Kavya's review</b><span id="review">Every control
-        above is set the way the table ships: data's last date, validate on, aggfunc written, segment from the customer
-        list. Change one and this line says which check would catch it.</span></div>
+        above is set the way the table ships: recency to the data's last date, validate on, aggfunc written, the segment
+        from the customer list, and tools sized by the rows they move. Change one and this line says which check would
+        catch it.</span></div>
     </section>
 
     <section class="part" id="experiments">
       <p class="eyebrow">03 &middot; Experiment cards</p>
-      <h2>Four experiments, one change each</h2>
+      <h2>What does one change do to one number, experiment by experiment?</h2>
       <p class="lede">Read the situation and the hypothesis, decide what you expect, then run. Each card says whether its
         numbers are Kalpa's or invented.</p>
       <div class="grid2">
         <article class="card exp" id="expA">
           <div class="part-label">Experiment A &middot; Kalpa</div>
-          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">The refresh runs a week late</h3>
+          <h3>What happens when the refresh runs a week later on the same data?</h3>
           <p><b>Situation.</b> The table is built on data that ends 28 September. The refresh runs on 19 October, then
             again on 26 October, with no new data loaded in between.</p>
-          <p><b>Hypothesis.</b> With recency measured from the run day, the 60-day list grows every week though nobody
+          <p><b>Hypothesis.</b> With recency counted to the run day, the 60-day list grows every week though nobody
             bought anything less.</p>
           <div class="row"><button class="btn" id="expARun" type="button" aria-pressed="false">Run the two Mondays</button></div>
           <div class="result" id="expAResult" hidden><p><b>What happened.</b> <span id="expAWhat"></span></p>
-            <p class="rule">Measure recency from the data's last date, and write that date into the table.</p></div>
+            <p class="rule">Count recency to the data's last date, and write that date into the table.</p></div>
           <p class="waiting" id="expAWait">What happened appears here after the run.</p>
         </article>
         <article class="card exp" id="expB">
           <div class="part-label">Experiment B &middot; invented feed</div>
-          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">Three rows re-sent, validate off</h3>
-          <p><b>Situation.</b> Six invented customers were reached; the platform re-sends three of their rows. The merge
-            runs with no validate argument.</p>
-          <p><b>Hypothesis.</b> Reached spend rises by exactly the three customers' spend, and nothing errors.</p>
-          <div class="row"><button class="btn" id="expBRun" type="button" aria-pressed="false">Re-send three rows</button></div>
+          <h3>What does a merge with no validate do when every reached row arrives twice?</h3>
+          <p><b>Situation.</b> The sale reached three of the four invented customers, and the platform sends each of
+            their rows a second time. The merge runs with no validate argument.</p>
+          <p><b>Hypothesis.</b> Reached spend doubles exactly, and nothing errors.</p>
+          <div class="row"><button class="btn" id="expBRun" type="button" aria-pressed="false">Send every reached row twice</button></div>
           <div class="result" id="expBResult" hidden><p><b>What happened.</b> <span id="expBWhat"></span></p>
             <p class="rule">Count the rows before and after every merge, and let validate= say it loudly.</p></div>
           <p class="waiting" id="expBWait">What happened appears here after the run.</p>
         </article>
         <article class="card exp" id="expC">
           <div class="part-label">Experiment C &middot; Kalpa</div>
-          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">The default mean on Retail-Core</h3>
-          <p><b>Situation.</b> The head of Retail-Core asks whether her segment grew from Q1 to Q2. The pivot leaves out
+          <h3>Can the default mean report Retail-Core moving the wrong way?</h3>
+          <p><b>Situation.</b> Kavya asks whether the Retail-Core segment grew from Q1 to Q2. The pivot leaves out
             aggfunc.</p>
-          <p><b>Hypothesis.</b> The averaged pivot does not only shrink the change; it can report the wrong direction.</p>
+          <p><b>Hypothesis.</b> The averaged pivot can shrink the change, and it can also report the wrong direction.</p>
           <div class="row"><button class="btn" id="expCRun" type="button" aria-pressed="false">Pivot Retail-Core both ways</button></div>
           <div class="result" id="expCResult" hidden><p><b>What happened.</b> <span id="expCWhat"></span></p>
             <p class="rule">Write aggfunc every time, and check the grand total against the orders.</p></div>
@@ -329,45 +352,62 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         </article>
         <article class="card exp" id="expD">
           <div class="part-label">Experiment D &middot; Kalpa</div>
-          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">Reach from the order rows</h3>
-          <p><b>Situation.</b> The reach table starts from the feed and takes each customer's segment from their order
-            rows. groupby runs with its default.</p>
-          <p><b>Hypothesis.</b> Reached customers who never ordered lose their segment and vanish, so conversion reads
-            perfect.</p>
+          <h3>What happens to reached customers whose segment is read from their orders?</h3>
+          <p><b>Situation.</b> The reach table takes each reached customer's segment from their orders. groupby runs with
+            its default.</p>
+          <p><b>Hypothesis.</b> Reached customers who never ordered lose their segment and vanish, so the share who bought
+            reads perfect.</p>
           <div class="row"><button class="btn" id="expDRun" type="button" aria-pressed="false">Group by segment</button></div>
           <div class="result" id="expDResult" hidden><p><b>What happened.</b> <span id="expDWhat"></span></p>
             <p class="rule">Take the segment from the customer list, and check that the groups add back to the rows.</p></div>
           <p class="waiting" id="expDWait">What happened appears here after the run.</p>
+        </article>
+        <article class="card exp" id="expE">
+          <div class="part-label">Experiment E &middot; Kalpa, then scaled</div>
+          <h3>Does the tool choice change when the orders table grows a thousand times?</h3>
+          <p><b>Situation.</b> Finance's Monday revenue is eight numbers, four segments by two quarters. SQL, pandas and
+            plain Python all return the same eight.</p>
+          <p><b>Hypothesis.</b> SQL moves eight rows whatever the size of the orders table, while pandas moves every order
+            and every customer.</p>
+          <div class="row"><button class="btn" id="expERun" type="button" aria-pressed="false">Grow the orders table</button></div>
+          <div class="result" id="expEResult" hidden><p><b>What happened.</b> <span id="expEWhat"></span></p>
+            <p class="rule">Size a route by the rows it moves and by who must rerun it.</p></div>
+          <p class="waiting" id="expEWait">What happened appears here after the run.</p>
         </article>
       </div>
     </section>
 
     <section class="part" id="glossary">
       <p class="eyebrow">04 &middot; Glossary</p>
-      <h2>The day's words, and where each first mattered</h2>
+      <h2>What do the day's words mean, and where did each first matter?</h2>
       <div class="card">
         <dl class="gloss">
-          <dt>Grain</dt><dd>What one row of a table is: here, one customer.<span class="where">Half one, S1; notebook 1.</span></dd>
-          <dt>Split, apply, combine</dt><dd>What groupby does: split rows by a key, apply a calculation to each group,
-            combine one result per key.<span class="where">Half one, S7; notebook 1, section 2.</span></dd>
-          <dt>Named aggregation</dt><dd>An agg call where each output column is named, with its source column and function
-            as a tuple.<span class="where">Half one, S11; notebook 1, section 3.</span></dd>
+          <dt>Grain</dt><dd>What one row of a table is: here, one customer on the list.<span class="where">The morning's
+            opening; chapter 1.</span></dd>
           <dt>Spine</dt><dd>The table every other source is attached to, here the customer list, so no customer can go
-            missing.<span class="where">Half one, S4 and S10.</span></dd>
-          <dt>As-of date</dt><dd>The data's last loaded date, from which recency is measured and which the table
-            carries.<span class="where">Half one, S14 and S15; notebook 1, section 4.</span></dd>
-          <dt>Fan-out</dt><dd>A merge that multiplies rows because a key repeats on one side.<span class="where">Half one,
-            S24; notebook 2, section 2.</span></dd>
-          <dt>validate=</dt><dd>The merge argument that raises MergeError when the keys break the stated promise.<span
-            class="where">Half one, S25; notebook 2, section 2.</span></dd>
-          <dt>First touch</dt><dd>The rule that keeps one exposure per customer, the earliest.<span class="where">Half
-            one, S26; notebook 2, section 3.</span></dd>
-          <dt>dropna</dt><dd>groupby's argument that decides whether a missing key forms a group; the default drops
-            it.<span class="where">Half one, S29; notebook 2, section 4.</span></dd>
+            missing.<span class="where">Chapter 1, notebook 01, question 4.</span></dd>
+          <dt>Split, apply, combine</dt><dd>What groupby does: split rows by a key, apply a calculation to each group,
+            combine one result per key.<span class="where">Chapter 1, notebook 01, question 3.</span></dd>
+          <dt>RFM</dt><dd>Recency, frequency and monetary value: when a customer last bought, how often, and how
+            much.<span class="where">Chapter 1.</span></dd>
+          <dt>Fan-out</dt><dd>A merge that multiplies rows because a key repeats on one side.<span class="where">Chapter 2,
+            notebook 02, question 3.</span></dd>
+          <dt>validate=</dt><dd>The merge argument that raises MergeError when the keys break the stated
+            promise.<span class="where">Chapter 2, notebook 02, question 4.</span></dd>
+          <dt>First touch</dt><dd>The rule that keeps one exposure per customer, the earliest.<span class="where">Chapter 2,
+            notebook 02, question 5.</span></dd>
           <dt>aggfunc</dt><dd>What pivot_table does with several values in one cell; the default is the mean.<span
-            class="where">Half one, S35; notebook 3, section 2.</span></dd>
-          <dt>Wide and long</dt><dd>A column per month to compare across a row, or a row per month to follow a
-            trend.<span class="where">Half one, S33; notebook 3, section 4.</span></dd>
+            class="where">Chapter 3, notebook 03, question 3.</span></dd>
+          <dt>Wide and long</dt><dd>A column per month to compare along a row, or a row per month to follow a
+            trend.<span class="where">Chapter 3, notebook 03, question 5.</span></dd>
+          <dt>dropna</dt><dd>groupby's argument that decides whether a missing key forms a group; the default drops
+            it, where SQL's GROUP BY keeps a NULL group.<span class="where">Chapter 4, notebook 04, question 4.</span></dd>
+          <dt>Rows moved</dt><dd>The rows a route pulls out of the warehouse to produce its answer, the size that separates
+            SQL from pandas.<span class="where">Chapter 5, notebook 05, question 3.</span></dd>
+          <dt>As-of date</dt><dd>The data's last loaded date, which recency is counted to and which the table
+            carries.<span class="where">Chapter 6, notebook 06, question 3.</span></dd>
+          <dt>Guard</dt><dd>A check that raises an error so a table that fails it is never written.<span class="where">Chapter
+            6, notebook 06, question 4.</span></dd>
         </dl>
       </div>
     </section>
@@ -849,39 +889,42 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   var DATA = {"recency":[0,0,0,0,1,1,1,1,1,1,2,2,3,3,3,3,4,4,4,4,4,4,5,5,5,6,6,6,6,7,7,7,7,7,7,7,7,8,8,8,8,8,8,9,9,9,9,10,10,11,11,11,12,12,12,12,12,12,12,13,13,13,13,13,13,13,14,14,14,14,14,15,16,16,16,16,16,16,17,17,17,17,17,17,17,18,18,18,18,18,19,19,20,20,21,21,21,21,22,22,22,23,23,23,23,23,23,23,24,24,24,24,24,25,26,26,26,27,31,31,32,33,33,33,33,33,34,34,36,36,37,37,37,38,38,40,40,40,40,41,41,41,41,42,42,43,43,44,44,44,45,45,45,45,45,45,45,46,46,46,46,46,46,47,48,48,48,49,49,50,51,52,52,52,53,53,53,53,54,54,54,55,55,55,55,56,56,57,58,58,62,62,63,63,64,64,66,66,67,69,71,71,73,73,76,76,78,78,80,80,81,82,83,83,84,85,85,85,87,87,87,88,88,88,88,89,89,92,92,93,95,95,96,96,98,99,100,102,102,102,102,104,104,105,106,106,106,108,109,113,113,115,116,116,116,117,118,119,123,124,124,124,125,126,129,130,133,133,134,135,137,138,139,140,141,141,147,148,149,153,154,155,156,159,161,162,163,163,164,166,168,169,169,170,173,174,176,177,178,180,180],"Retail-Plus":{"sum":[187540,201100,197130,149170,139640,124570],"mean":[146922,133385,131712,128570,112362,96335]},"Retail-Core":{"sum":[126140,121000,125930,129830,124660,111760],"mean":[99643,81544,99702,96452,98873,89735]},"Student":{"sum":[8760,9220,8740,11730,11940,12100],"mean":[7585,8155,7515,11060,7972,10455]}};
   function $(id) { return document.getElementById(id); }
   function pct(x) { return (x >= 0 ? "+" : "") + (Math.round(x * 1000) / 10).toFixed(1) + "%"; }
+  function num(n) { return Math.round(n).toLocaleString("en-IN"); }
 
   /* ---------------------------------------------------------------- the rail */
   var rail = document.querySelectorAll(".rail a");
   Array.prototype.forEach.call(rail, function (a) {
     a.addEventListener("click", function () {
       Array.prototype.forEach.call(rail, function (b) { b.classList.toggle("on", b === a); });
-      $("jumped").textContent = "You jumped to " + a.textContent.replace(/^\d+/, "").trim() + ".";
+      $("jumped").textContent = "You jumped to: " + a.textContent.replace(/^\d+/, "").trim();
     });
   });
 
   /* ---------------------------------------------------------------- the walk */
-  var STEPS = ["read_sql\n1,000 orders", "groupby, agg\n301 customers", "merge onto list\n340 rows",
-               "first touch, validate\n340 rows", "recency, flags\nas of 28 Sep"];
+  var STEPS = ["1. customer list\n340 rows", "2. first touch\n130 reached", "3. months pivot\nsummed",
+               "4. three tools\none definition", "5. the owner\nSQL for Finance", "6. the refresh\nguarded"];
   var WALK = [
-    { t: "Read the warehouse into pandas", c: [1, 1, 0],
-      x: "read_sql runs the query in Postgres and returns 1,000 order rows, the same count as Monday's first query. Spend is Rs 19,84,00,000." },
-    { t: "groupby: the Week 1 accumulator, automated", c: [0, 1, 0],
-      x: "Split by customer, apply max, count and sum, combine: 301 rows. Thirty-nine customers never ordered, so groupby never saw them, and the rows check fails." },
-    { t: "Attach the aggregates to the customer list", c: [1, 1, 0],
-      x: "customers.merge(rfm, how='left', validate='one_to_one') gives 340 rows. The 39 get frequency 0 and spend 0, and frequency is turned back into an integer." },
-    { t: "Attach the sale's exposure, one per customer", c: [1, 1, 0],
-      x: "Sort the feed by date, keep each customer's first exposure, merge with validate='one_to_one'. Rows stay 340 and spend stays on the book." },
-    { t: "Recency from the data's last date, and the flags", c: [1, 1, 1],
-      x: "Recency is measured from 28 September, the last order loaded, and the table carries the date. The smallest recency is 0, and all three checks pass." }
+    { t: "Chapter 1: how recently, how often and how much has each customer bought?", c: [1, 1, 0],
+      x: "groupby on the 1,000 orders gives 301 rows, one per customer who ordered. Starting from the customer list and merging with how='left' and validate='one_to_one' gives 340, and the 39 who never ordered get a frequency of 0 on purpose." },
+    { t: "Chapter 2: which customers did the monsoon sale reach?", c: [1, 1, 0],
+      x: "One row per reached customer, their first exposure, merged with validate='one_to_one'. The table stays at 340 rows and Rs 19,84,00,000, and 130 customers are reached, who spent Rs 8,78,980." },
+    { t: "Chapter 3: how far did Retail-Plus fall from Q1 to Q2?", c: [1, 1, 0],
+      x: "pivot_table with aggfunc='sum' and fill_value=0: Rs 5,85,770 to Rs 4,13,380, a fall of 29.4 percent. Left to its default mean, the pivot says 18 percent." },
+    { t: "Chapter 4: do plain Python, SQL and pandas agree on how many of the reached bought?", c: [1, 1, 0],
+      x: "With the segment read from the customer list, all three say 107 of 130, 82 percent. Read from the orders, pandas drops the 23 reached customers with no segment and says 100 percent." },
+    { t: "Chapter 5: which tool owns which number?", c: [1, 1, 0],
+      x: "Finance's eight numbers go to SQL, which moves 8 rows where pandas moves 1,340. The growth team's table stays in pandas, reading from the warehouse, and reconciles with Finance's query in every segment." },
+    { t: "Chapter 6: can the table rebuild itself every Monday?", c: [1, 1, 1],
+      x: "One function with guards, recency counted to 28 September and carried as the as-of date: 111 on the win-back list, the smallest recency 0, and a run that fails a guard writes nothing." }
   ];
   var walkAt = 0;
   function showWalk() {
     var w = WALK[walkAt];
-    K.draw("walkFlow", K.flow(STEPS, walkAt, { title: "The Monday table, move by move" }));
+    K.draw("walkFlow", K.flow(STEPS, walkAt, { title: "The Monday table, chapter by chapter" }));
     $("walkStep").textContent = "Step " + (walkAt + 1) + " of " + WALK.length;
     $("walkTitle").textContent = w.t;
     $("walkText").textContent = w.x;
-    var names = ["rows equal the customer list", "spend equals Monday's book", "recency from the data's last date"];
+    var names = ["rows equal the customer list", "spend equals the warehouse", "recency counted to the data's last date"];
     $("walkChecks").innerHTML = names.map(function (n, i) {
       return "<li><span class='" + (w.c[i] ? "ok'>PASS" : "no'>NOT YET") + "</span> " + n + "</li>";
     }).join("");
@@ -900,34 +943,34 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     $("thrV").textContent = thr;
     var honest = listSize(0, thr), shown = listSize(shift, thr);
     $("recBig").textContent = shown;
-    K.draw("recChart", K.columns(["from the data's last date", "as this refresh measures it"],
-      [["customers on the list", [honest, shown]]], { title: "Win-back list at " + thr + " days", width: 460 }));
+    K.draw("recChart", K.columns(["counted to 28 September", "as this refresh counts"],
+      [["customers on the list", [honest, shown]]], { title: "The win-back list at " + thr + " days", width: 460 }));
     $("recVerdict").textContent = shift === 0
       ? honest + " customers have not ordered in the " + thr + " days to 28 September. The smallest recency is 0, so the check passes."
-      : (shown - honest) + " active customers would get a win-back discount. The smallest recency reads " + shift + " days, which is the check that catches it.";
+      : (shown - honest) + " customers who ordered within " + thr + " days of the data's last date would get a win-back code. The smallest recency reads " + shift + " days, which is the check that catches it.";
     review();
   }
   $("asOf").addEventListener("change", showRec);
   $("thr").addEventListener("input", showRec);
 
   /* ---------------------------------------------------------------- B: merge, invented */
-  var SPEND = [9300, 12400, 4200, 8600, 7700, 5100];   /* six invented reached customers */
+  var SPEND = [8600, 12400, 5100];   /* notebook 02's invented reached customers, C-9002 first */
   function showMerge() {
     var k = Number($("resent").value), v = $("validate").value;
     $("resentV").textContent = k;
     var right = SPEND.reduce(function (a, b) { return a + b; }, 0);
     var extra = SPEND.slice(0, k).reduce(function (a, b) { return a + b; }, 0);
     if (v === "one_to_one" && k > 0) {
-      K.draw("mergeChart", K.columns(["rows in", "rows out"], [["rows", [12, 12]]], { title: "The merge stopped before a table existed", width: 420 }));
+      K.draw("mergeChart", K.columns(["rows in", "rows out"], [["rows", [4, 0]]], { title: "The merge stopped before a table existed", width: 420 }));
       $("mergeVerdict").textContent = "MergeError: the refresh stops, and nothing reaches Marketing until the feed has a rule.";
       $("mergeLine").textContent = "MergeError: Merge keys are not unique in right dataset; not a one-to-one merge";
     } else {
       K.draw("mergeChart", K.bridge(["reached, counted once", right], [["re-sent rows", extra]],
-        { endLabel: "what the slide says", title: "Invented feed: reached customers' spend", lit: [0] }));
+        { endLabel: "what the slide says", title: "Invented feed: the reached customers' spend", lit: [0] }));
       $("mergeVerdict").textContent = k === 0
-        ? "12 rows in, 12 out: the merge kept the grain, and reached spend is " + K.rupees(right) + "."
-        : "12 rows in, " + (12 + k) + " out: reached spend reads " + K.rupees(right + extra) + ", " + K.rupees(extra) + " too high, and nothing errored.";
-      $("mergeLine").textContent = "len(table) = 12, len(merged) = " + (12 + k);
+        ? "4 rows in, 4 out: the merge kept the grain, and reached spend is " + K.rupees(right) + "."
+        : "4 rows in, " + (4 + k) + " out: reached spend reads " + K.rupees(right + extra) + ", " + K.rupees(extra) + " too high, and nothing errored.";
+      $("mergeLine").textContent = "len(table) = 4, len(merged) = " + (4 + k);
     }
     review();
   }
@@ -960,7 +1003,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     if (sp === "orders" && dn) { cats.push("(missing)"); reached.push(rows[2][0]); bought.push(rows[2][1]); }
     var r = reached.reduce(function (a, b) { return a + b; }, 0), b = bought.reduce(function (a, c) { return a + c; }, 0);
     $("reachBig").textContent = Math.round(100 * b / r) + "%";
-    K.draw("reachChart", K.columns(cats, [["reached", reached], ["bought", bought]], { title: "Reach per segment, as grouped", width: 460 }));
+    K.draw("reachChart", K.columns(cats, [["reached", reached], ["bought", bought]], { title: "Reached and bought per segment, as grouped", width: 460 }));
     $("reachVerdict").textContent = sp === "list"
       ? "130 reached, 107 bought: 82 percent, with every customer in a segment."
       : (dn ? "The missing group appears: 23 reached customers who never ordered have no segment. The groups add back to 130."
@@ -970,12 +1013,32 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   $("spine").addEventListener("change", showReach);
   $("dropna").addEventListener("change", showReach);
 
+  /* ---------------------------------------------------------------- E: the tool that owns Finance's number */
+  function toolRows(scale, by) {
+    if (by === "returned") return [8, 8, 8];
+    return [8, 1000 * scale + 340, 1000 * scale];
+  }
+  function showTool() {
+    var scale = Math.pow(10, Number($("scale").value)), by = $("sizeBy").value;
+    $("scaleV").textContent = num(scale);
+    var rows = toolRows(scale, by);
+    K.draw("toolChart", K.columns(["SQL", "pandas", "plain Python"], [[by === "moved" ? "rows moved" : "rows in the answer", rows]],
+      { title: "Finance's eight numbers, " + num(1000 * scale) + " orders", width: 460 }));
+    $("toolVerdict").textContent = by === "returned"
+      ? "All three tie at 8 rows, so this size separates nothing, and a note that chooses on it picks pandas for its short chain and puts Finance's number on one analyst's machine."
+      : "SQL moves 8 rows; pandas moves " + num(rows[1]) + " and plain Python " + num(rows[2]) + ". Finance's number goes to SQL, which Anand's analyst reruns where the data lives.";
+    review();
+  }
+  $("sizeBy").addEventListener("change", showTool);
+  $("scale").addEventListener("input", showTool);
+
   function review() {
     var off = [];
-    if ($("asOf").value !== "0") off.push("recency is off the data's date, and the smallest-recency check catches it");
+    if ($("asOf").value !== "0") off.push("recency is off the data's last date, and the smallest-recency check catches it");
     if ($("validate").value !== "one_to_one" && $("resent").value !== "0") off.push("the merge multiplied rows, and rows in against rows out catches it");
     if ($("agg").value !== "sum") off.push("the pivot averaged, and its grand total against the orders catches it");
     if ($("spine").value !== "list" && $("dropna").value === "true") off.push("groupby dropped a missing segment, and groups adding back to rows catches it");
+    if ($("sizeBy").value !== "moved") off.push("the tools are sized by their answers, and counting the rows each route fetched catches it");
     $("review").textContent = off.length ? "Not yet: " + off.join("; ") + "." :
       "Every control is set the way the table ships, so all of the day's checks pass.";
   }
@@ -990,12 +1053,12 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     });
   }
   card("expA", function () {
-    return "From 19 October the 60-day list holds " + listSize(21, 60) + " customers, and from 26 October " + listSize(28, 60) +
-      ", against " + listSize(0, 60) + " measured from 28 September. The data did not change between the two Mondays.";
+    return "Counted to 19 October the 60-day list holds " + listSize(21, 60) + " customers, and counted to 26 October " + listSize(28, 60) +
+      ", against " + listSize(0, 60) + " counted to 28 September. The data did not change between the two Mondays.";
   });
   card("expB", function () {
-    var extra = SPEND.slice(0, 3).reduce(function (a, b) { return a + b; }, 0);
-    return "Twelve rows went in and fifteen came out, and reached spend rose by " + K.rupees(extra) + ", the three customers' whole spend, with no error.";
+    var extra = SPEND.reduce(function (a, b) { return a + b; }, 0);
+    return "Four rows went in and seven came out, and reached spend read " + K.rupees(2 * extra) + ", twice the true " + K.rupees(extra) + ", with no error and no warning.";
   });
   card("expC", function () {
     return "Averaged, Retail-Core reads " + pct(change(DATA["Retail-Core"].mean)) + "; summed, it reads " + pct(change(DATA["Retail-Core"].sum)) + ". The default reversed the story.";
@@ -1003,8 +1066,12 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   card("expD", function () {
     return "The groups show 107 reached and 107 bought, 100 percent. With dropna=False a missing group of 23 appears, and from the customer list the answer is 107 of 130, 82 percent.";
   });
+  card("expE", function () {
+    return "At 1,000 orders pandas moves " + num(toolRows(1, "moved")[1]) + " rows; at 10,00,000 orders it moves " + num(toolRows(1000, "moved")[1]) +
+      ". SQL moves 8 rows at both sizes, the answer itself.";
+  });
 
-  showRec(); showMerge(); showPivot(); showReach();
+  showRec(); showMerge(); showPivot(); showReach(); showTool();
 })();
 </script>
 </body>
