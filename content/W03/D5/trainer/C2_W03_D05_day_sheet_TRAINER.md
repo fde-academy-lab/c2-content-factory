@@ -1,7 +1,8 @@
-# Day sheet, Build 1 Friday: will Kalpa Health's numbers hold when someone argues with them, and when someone else runs them?
+# Day sheet, Build 1 Friday: will each group's numbers hold when someone argues with them, and when someone else runs them?
 
-**TRAINER ONLY.** Nothing on this page reaches a learner. It names every plant in the Kalpa Health
-data with its witness number, and a learner who reads it has lost the week.
+**TRAINER ONLY.** Nothing on this page reaches a learner. It names every plant, a problem built into
+the Kalpa Health data for a group to find, with its witness number, the count the data generator
+prints to prove the plant is there, and a learner who reads it has lost the week.
 
 Posts to <!-- sync:module:W03/D5 -->Module 1: Foundations of AI and Data<!-- /sync:module:W03/D5 -->, on <!-- sync:day-date:W03/D5 -->Fri 23 Oct 2026<!-- /sync:day-date:W03/D5 -->.
 
@@ -22,13 +23,13 @@ question stands behind it: her dashboard shows test volumes up 5 percent from Q2
 plan of 18, and she wants to know which branch of Kalpa Health is short. Ask each part's question
 before its answer is shown or heard.
 
-| Part | Its question | The smaller questions, in the order the part takes them |
-|---|---|---|
-| 1. The opening, 15 minutes | How does Friday run, and who chairs which room? | Who chairs each GD stream? How is the GD order drawn? What does a group do while it is out of its GD? When do the builds freeze? |
-| 2. The GD rounds, seven today and two on Saturday | Can a group take a position on a Kalpa Health decision it has never seen, and hold it with one number from the exhibit? | What does the card decide, and on which metric? Which number carries the position? What would change the group's mind? What does the panel ask? |
-| 3. Cold run one and the roll call | Does every number on a group's slide come out of the raw files when a fresh machine runs its code? | Do the ten raw files match the export? Does the notebook run top to bottom in a fresh kernel? Is every slide number printed? How long does the run take? |
-| 4. The first tranche of presentations | Does a group's one-slide answer survive the panel's challenge on its caveat? | What did the group find? How sure is it? What would change its mind? What should Dr Menon do on Monday? |
-| 5. Run two, the freeze and the draw | Which commit does each group stand behind on Saturday, and what may still change after it? | Is run two logged? Which hash did the TA record? In which order does Saturday run? |
+| Part | Its question | The smaller questions, in the order the part takes them | What the room should reach |
+|---|---|---|---|
+| 1. The opening, 15 minutes | How does Friday run, and who chairs which room? | Who chairs each GD stream? How is the GD order drawn? What does a group do while it is out of its GD? When do the builds freeze? | Each group knows its GD slot, its room and its chair, runs its demo cold while out of its GD, and knows the builds freeze when the open build time closes |
+| 2. The GD rounds, seven today and two on Saturday | Can a group take a position on a Kalpa Health decision it has never seen, and hold it with one number from the exhibit? | What does the card decide, and on which metric? Which number carries the position? What would change the group's mind? What does the chair ask? | One position, one number from the card with where it came from, and the fact that would change the group's mind, said aloud by named learners |
+| 3. Cold run one and the roll call | Does every number on a group's slide come out of the raw files when a fresh machine runs its code? | Do the ten raw files match the export? Does the notebook run top to bottom in a fresh kernel? Is every slide number printed? How long does the run take? | A logged line for every group: minutes, slide numbers reproduced out of the total, what broke and the fix |
+| 4. The first tranche of presentations | Does a group's one-slide answer survive the panel's challenge on its caveat? | What did the group find? How sure is it? What would change its mind? What should Dr Menon do on Monday? | Up to three groups' claims heard with their number, denominator, period and caveat, and every presenting learner asked a challenge |
+| 5. Run two, the freeze and the draw | Which commit does each group stand behind on Saturday, and what may still change after it? | Is run two logged? Which hash did the TA record? In which order does Saturday run? | A second logged run and a recorded commit for every group, and Saturday's order on the board |
 
 **What the room hears at the close, in answer to the day's question.** No new number for Dr Menon,
 and none is due: every group has argued one Kalpa Health decision with one number in front of a
@@ -40,26 +41,27 @@ stranger would get from the raw files.
 
 | | |
 |---|---|
-| **Start from** | Dr Menon's question is four days old, and the five questions her heads asked on Monday are in each group's brief. Every group stated its headline claim with its denominators and caveat at Wednesday's close, and every learner sat Mock R1 on Thursday. Thursday's last check watched each notebook run once from a kernel restart. |
+| **Start from** | Dr Menon's question is four days old, and the five questions her heads asked on Monday are in each group's brief. Every group stated its headline claim with its denominators and caveat at Wednesday's close, and every learner sat Mock R1 on Thursday, the first mock interview: a technical half on Weeks 1 and 2 and a viva on the group's Kalpa Health work. Thursday's last check watched each notebook run once from a kernel restart. |
 | **Go as far as** | Every group through its GD or rostered for Saturday morning; a first tranche of up to three presentations heard and scored; every group's cold run one read aloud at the roll call; run two logged before the freeze; every frozen hash recorded; Saturday's order drawn. |
 | **Stop before** | Any teaching. A trainer who answers a group's analysis question today has done its work for it. Any confirmation or denial of a plant, in a GD, a presentation or a corridor. |
 | **Comes later** | Saturday: the remaining two GD rounds, the other presentations before the industry expert and the senior industry leader, grade closure, and one improvement per group named for Build 2. |
-| **Cut first** | The slack at the end of block two. Never a GD round, never the roll call, never run two. |
+| **Cut first** | Cut the slack at the end of block two first; never cut a GD round, the roll call or run two. |
 
 ## Who runs what today?
 
 | Role | Today |
 |---|---|
-| The industry expert | Arrives for two days. Opens block one, chairs stream A's five GD rounds in the GD room, writes up the morning's notes, then chairs the first tranche. |
-| The Principal Advisor | Online. Chairs stream B's two Friday rounds and one Saturday round, from the second room's laptop. |
+| The industry expert | Arrives for two days. Opens block one, chairs stream A's five GD rounds in the GD room, enters their scores from the evidence pages, then chairs the first tranche. |
+| The Principal Advisor | Chairs stream B's two Friday rounds and one Saturday round online, from the second room's laptop, and scores them from the evidence pages. |
 | The trainer | Keeps time and hands out cards in the GD room, runs the first tranche's clock, the roll call and the freeze rule. |
-| The Academic TA | Hosts the online room, keeps its time, gathers both streams' evidence notes, and records the frozen hashes after the open build time. |
-| The Programme Head | Draws the GD order and the tranche's clusters at the opening, and Saturday's order at the close. |
+| The Academic TA | Hosts the online room, keeps its time, types stream B's scores, and records the frozen commits after the open build time. |
+| The Support TA | Where the TA roster has them on site, keeps the floor during block one's cold runs and points a stuck group to the checklist's table of usual breaks, fixing nothing for it. |
+| The Programme Head | Draws the GD order and the tranche's clusters, the groups on one sub-problem, at the opening, and Saturday's order at the close. |
 
 Nine groups from 35 learners, eight of four and one of three, is the Programme Head's stated plan
 (`data/programme/facts.yaml`, cohort, status stated), and Thursday's and Saturday's sheets seat it
-the same way; the tracker's build anatomy plans fifteen groups, and the last section but two says
-how the roster stretches.
+the same way; the tracker's build anatomy plans fifteen groups, and the section "What if the
+Programme Head runs more than nine groups?" says how the roster stretches.
 
 ## How do block one's 180 minutes run?
 
@@ -80,7 +82,7 @@ flowchart LR
 | 75 to 105 | Round 3: stream A card 05 | The expert | Fixes and logs |
 | 105 to 135 | Round 4: stream A card 06 | The expert | Fixes and logs |
 | 135 to 165 | Round 5: stream A card 07 | The expert | Fixes and logs |
-| 165 to 180 | The expert writes up the morning's evidence notes | The industry expert | Build |
+| 165 to 180 | The expert enters stream A's GD scores from the evidence pages | The industry expert | Build |
 
 **The opening, in words to say.** The Programme Head, then the expert:
 
@@ -94,7 +96,8 @@ flowchart LR
 
 Then the Programme Head draws the GD order: nine chits, one per group, drawn one by one, the first
 chit drawn taking slot 1. The trainer types the positions into the roster's Inputs sheet and reads
-its Check sheet before round 1; a clash is fixed by the swap the next section gives.
+its Check sheet before round 1; a clash is fixed by the swap given under "How do the GD rounds run
+today, and which card does each slot carry?".
 
 ## How do block two's 180 minutes run?
 
@@ -116,8 +119,8 @@ flowchart LR
 | 147 to 180 | Saturday handover and slack | The trainer, the Academic TA |
 
 After block two the time is open build time with the TAs. Each group runs cold run two as its last
-act before the freeze. The roster workbook's "Friday block two" sheet recomputes these ends when the
-tranche's size changes.
+act before the freeze. The roster workbook's "Friday block two" sheet recomputes these end minutes
+when the tranche's size changes.
 
 ## What does the industry expert read on arrival?
 
@@ -161,15 +164,17 @@ shape; and the challenges log.
 **What is planted in the data, so your questions land.** Never say any of this to a learner; a group
 finds each plant by profiling, reconciling, splitting and asking what the denominator was. The
 numbers are the generator's witness (`python3 data/generate_kalpa_health.py --witness`, run 1
-October 2026), as the spine and Monday's day sheet give them; percentages are changes from Q2 to Q3
-unless a row says otherwise.
+October 2026), as the spine and Monday's day sheet give them, with one difference: the retail denial
+rate is 10.3 percent here, where both print 10.4, since 1,175 of 11,355 is 10.35 percent and the
+witness's four-place 0.1035 rounds up a second time. Percentages are changes from Q2 to Q3 unless a
+row says otherwise.
 
 | Question | The plant | The numbers | The question that tests whether a group found it |
 |---|---|---|---|
 | The headline, every group | Dr Menon's 5 percent is her dashboard's count: tests booked in the old booking system only, a panel counted as its component tests | 5.1 percent on the dashboard's count (23,213 to 24,406 tests); 7.8 percent in tests booked across both systems, 8.6 percent in tests performed and 5.6 percent in bookings, all without the employer contract, whose 1,200 wellness screenings add 6,000 tests to Q3; every reading is short of 18 | "Five percent of what, counted where?" |
 | 1 Revenue | One employer wellness contract in Q3, and panels billed as one claim line | Claim KH-CLM-007802, account EMP-0007, Dallas, $180,000 for 1,200 screenings, 14.6 percent of Q3 billed charges of $1,231,001; the Q3 mean claim is $210.50 with it and $179.75 without, against a median of $150; 22,152 claim lines bill 46,867 tests on the completed bookings behind them (48,235 counting cancelled bookings); 60 billed amounts are text such as "$265.00" | "Which one claim moves your Q3 average most?" Then: "What does one claim line count?" |
 | 2 Bookings | Chicago and Philadelphia moved to the new booking system on 18 September, and the old system's export carries only its own bookings; the old export repeats rows from a mid-quarter re-export; the new system writes dates month first | The two metros fall 23.0 percent in the old export (1,415 to 1,090 bookings) and 12.2 percent across both systems (1,415 to 1,243); the old export holds 11,729 rows over 11,549 booking ids, 180 of them twice | "How many rows, and how many distinct booking ids?" Then: "Where are Chicago's bookings after mid-September?" |
-| 3 Billing | The posting system keys claims as bare digits or CLM-numbers, duplicate ERA loads double-post, the employer claim is unpaid, and denials post with nothing paid | An exact join matches 216 of 11,343 postings, 1.9 percent, and every posting matches once normalised; 280 double posts worth $19,204.63; 105 reversals; 398 claims with no posting, the employer claim among them; 1,137 denial postings, and the claims file marks 1,175 of the 11,355 retail claims denied, 10.3 percent (Medicaid 14.9, commercial 11.3, Medicare 8.8, self-pay none), billing $230,132; paid net of double posts is $801,314 against $2,201,099 billed | "Show me five `claim_ref` values beside five `claim_id` values." |
+| 3 Billing | The posting system keys claims as bare digits or CLM-numbers, duplicate ERA loads (the electronic remittance files a payer sends) double-post, the employer claim is unpaid, and denials post with nothing paid | An exact join matches 216 of 11,343 postings, 1.9 percent, and every posting matches once normalised; 280 double posts worth $19,204.63; 105 reversals; 398 claims with no posting, the employer claim among them; 1,137 denial postings, and the claims file marks 1,175 of the 11,355 retail claims denied, 10.3 percent (Medicaid 14.9, commercial 11.3, Medicare 8.8, self-pay none), billing $230,132; paid net of double posts is $801,314 against $2,201,099 billed | "Show me five `claim_ref` values beside five `claim_id` values." |
 | 4 No-shows | KH-ATL-03 runs by appointment while the other centres' visit counts include walk-ins, who cannot miss a slot; the visit register is drawn from the bookings, so a rebooked patient's missed slot is a row beside the kept one | KH-ATL-03: 80 visits, 79 scheduled and 1 walk-in. On all visits 18.8 percent against 7.9 percent for the other eleven centres; on scheduled visits 19.0 percent (15 of 79) against 15.1 percent, a gap chance produces with probability 0.21 | "What is each centre's rate out of?" Then: "Could chance do it on 79 slots?" |
 | 5 Campaign | The offer went at random to half the patients in three metros already rising, Dallas, Atlanta and Phoenix, and to a fifth of the patients elsewhere, and inside the three metros an offered patient booked less while the offer ran | Offered patients book 9.0 percent more overall and less in every campaign metro (Dallas minus 10.8, Atlanta minus 19.9, Phoenix minus 13.0 percent); before the offer the two groups booked within about 6 percent of each other; the campaign metros rose 6.9 percent in the two months before the offer; outside them the gaps are chance, New York's plus 23.5 percent among them, a false positive at p of about 0.03 | "Does the lift hold inside Dallas alone?" Then: "What share of each metro's patients got the offer?" |
 
@@ -185,21 +190,22 @@ call with several heads and a rule of law or contract; the arithmetic and what f
 on each card are in `gd/C2_W03_D05_gd_prompts_TRAINER.md`, and the running of a round is in
 `gd/C2_W03_D05_gd_facilitation_TRAINER.md`.
 
-| Slot | Day and stream | Card | The card's question | Level | Kept from |
+| Slot | Day and stream | Card | The card's question | Level | Kept from the groups on sub-problem |
 |---|---|---|---|---|---|
 | 1 | Friday, A | 01 | Should Kalpa cut the self-pay price of its Whole-body wellness panel from $299 to $249? | 1 | none |
-| 2 | Friday, B | 02 | Should Kalpa stop posting paper statements and bill patients by text and email only? | 1 | none |
+| 2 | Friday, B | 02 | Should Kalpa stop mailing paper statements and bill patients by text and email only? | 1 | none |
 | 3 | Friday, A | 03 | Should Kalpa promise same-day results in all six metros? | 2 | none |
 | 4 | Friday, B | 04 | Should Kalpa close its phone booking line and move every patient online? | 2 | none |
-| 5 | Friday, A | 05 | Is a vendor's "30 percent fewer denials" good enough to buy on? | 3 | sub-problems 3 and 5 |
-| 6 | Friday, A | 06 | Should the lab director rank the six labs monthly on turnaround? | 3 | sub-problem 4 |
+| 5 | Friday, A | 05 | Is a vendor's "30 percent fewer denials" good enough to buy on? | 3 | 3 and 5 |
+| 6 | Friday, A | 06 | Should the lab director rank the six labs monthly on turnaround? | 3 | 4 |
 | 7 | Friday, A | 07 | Where should the board's $2 million for growth go? | 4 | none |
-| 8 | Saturday, A | 09 | What does Dr Menon do in the week the clearinghouse is down? | 5 | sub-problem 3 |
-| 9 | Saturday, B | 10 | Should Kalpa move its Texas Medicaid claim work to Bengaluru? | 5 | none |
+| 8 | Saturday, A | 09 | What does Dr Menon do in the week the clearinghouse is down? | 5 | 3 |
+| 9 | Saturday, B | 10 | Should Kalpa move its Texas Medicaid claim work to Bengaluru? | 5 | 3 |
 | The spare | | 08 | Should Kalpa sign a plan's preferred-lab offer in Dallas? | 4 | none |
 
-Cards 07 to 10 read for four minutes and discuss for seventeen; the rest read for three and discuss
-for eighteen; every round is 30 minutes. The roster (`gd/C2_W03_D05_gd_roster_TRAINER.xlsx`) flags
+A sub-problem is one of the five questions above, numbered as in that table. Cards 01 to 04 read for
+four minutes and discuss for seventeen, cards 05 to 08 read for five and discuss for sixteen, and
+cards 09 and 10 read for six and discuss for fifteen; every round is 30 minutes. The roster (`gd/C2_W03_D05_gd_roster_TRAINER.xlsx`) flags
 a group drawn to a card it is kept from; swap with the other card of the level if that card's own
 flag allows, or use card 08. Never hand a group a card it is kept from.
 
@@ -218,20 +224,22 @@ September 2026:
 | Lands a conclusion | 6 | The discussion ends on a recommendation and its main risk. |
 <!-- /sync:rubric:W03/gd -->
 
-The Principal Advisor's and the expert's scores are in the sheet before the close of block two, so
-the Programme Head can read its Summary before Saturday.
+The expert enters stream A's scores in the write-up at the end of block one; the Principal Advisor
+sends stream B's to the Academic TA, who types them; both chairs settle any gap in block two's
+GD-notes slot, so the sheet is complete before block two closes and the Programme Head can read its
+Summary before Saturday.
 
 ## How does the first tranche run, and how is it scored?
 
 **Who.** Whole sub-problem clusters, so the panel hears the groups on one question back to back. At
 the opening, after the GD draw, the Programme Head draws sub-problem chits until the tranche holds
-up to three presentations; a cluster that would take it past three is put back, and the tranche runs
-short sooner than split a cluster.
+up to three presentations; a cluster that would take it past three is put back, and no cluster is
+split, so the tranche may hold fewer than three.
 
 **Running order and timing.** Each group presents in the Saturday format,
 `content/W03/SAT/slides/C2_W03_SAT_presentation_format_STUDENT.md`, inside a 30-minute slot. The
-trainer shows cards at 5 minutes and at 1 minute left of the group's time and at the end of the
-slot. The demo runs cold on the group's own files, a kernel restarted in front of the panel and the
+trainer holds up a 5-minute sign and a 1-minute sign before the end of the group's time, and calls
+the end of the slot. The demo runs cold on the group's own files, a kernel restarted in front of the panel and the
 notebook run from the top.
 
 **A demo that fails in the room.** The spine's rule holds on both expert days. The demo runs once,
@@ -258,13 +266,16 @@ the requester approved on 29 September 2026:
 | Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |
 <!-- /sync:rubric:W03/mini-project -->
 
-## How do the two cold runs run, and what does the roll call hear?
+## When does each group run its demo cold, and what does the roll call hear?
 
-**Run one.** Each group runs while it is out of its GD, in a new Codespace, on the ten raw files,
+**Run one.** Each group runs it whenever it is not in its GD, and a group not finished by the end of
+block one runs it in block two's GD-notes slot, after the first tranche. It runs in a new Codespace,
+on the ten raw files,
 with `checkpoints/C2_W03_D05_cold_run_STUDENT.py`, following
 `checkpoints/C2_W03_D05_cold_demo_checklist_STUDENT.md`. The script checks the raw files' checksums,
 runs the notebook top to bottom in a fresh kernel, times it and looks for every number on the
-group's slide in what the notebook prints; it ends on one line the group pastes into its log.
+group's slide in what the notebook prints; it ends on one line the group pastes into its log, which
+carries the branch and the commit the run used.
 
 **The roll call, three minutes a group.** Each group reads its run-one line aloud: the minutes, how
 many slide numbers were reproduced, what broke and the fix. Ask one question of each: "Which number
@@ -274,7 +285,7 @@ nothing broken is asked how long the demo runs live.
 **Run two.** The last act before the freeze, logged the same way. The TA checks every group has a
 second line.
 
-## How does the freeze work, and how is it checked?
+## When do the builds freeze, and how does the TA prove which commit each group demos?
 
 **The rule, said aloud at the close of block two.** "The builds freeze when the open build time
 closes. The last commit each group pushes before then is the commit it demos on Saturday. After the
@@ -282,9 +293,9 @@ freeze your slide's wording may change and no number may. An error you find afte
 said on Saturday as a caveat, with the right number, and logged."
 
 **The check.**
-1. When the open build time closes, the Academic TA takes each group's latest commit hash on its
-   default branch and writes it in the table below, with how many minutes after the close it was
-   recorded.
+1. When the open build time closes, the Academic TA takes the latest commit on the branch the group
+   named in its run-two log line, checks it against the commit that line records, and writes it in
+   the table below, with how many minutes after the close it was recorded.
 2. A group with no second cold-run line logged by then has its demo run from the frozen commit by
    the TA first thing on Saturday, before the presentations start.
 3. On Saturday, before each presentation, the TA checks the Codespace is on the frozen hash with
@@ -317,34 +328,37 @@ said on Saturday as a caveat, with the right number, and logged."
 
 | What goes wrong | What to do |
 |---|---|
-| The expert arrives late | The Principal Advisor takes rounds 1 and 2 of stream B online as planned; the trainer opens stream A's round 1 with card 01, and the expert takes over from round 2. Move the unplayed stream A round to stream B's free time after round 2. |
-| The Principal Advisor's connection fails | The Academic TA pauses the clock; past five minutes, the round moves to stream A after round 5 and runs in the expert's write-up time. |
-| A group is one learner short | The GD runs with three, and the chair notes it; the absent learner's GD is the Programme Head's decision. |
+| The expert arrives late | Stream B runs as planned. The trainer holds stream A's first round, and its group runs cold run one meanwhile. Once the expert arrives, stream A picks up at the next slot that has not started, and every round the expert missed runs in stream B after slot 4, in slot order, chaired by the Principal Advisor. |
+| The link to the Principal Advisor drops during a round | The Academic TA pauses the clock. Back within two minutes, the round goes on; if not, the TA restarts the clock, writes the evidence page for the rest of the round and puts the card's two questions, and the Principal Advisor scores from that page. |
+| The call fails before a stream B round | The round moves to Saturday morning, straight after slot 9; read the roster's Check sheet again for the new end minutes. |
+| A group is one learner short | The GD runs with the learners present, and the chair notes it; the absent learner's GD is the Programme Head's decision. |
 | A group is drawn to a card it is kept from | Swap within the level if the other card's flag allows, or use card 08. |
 | A group's cold run fails and it cannot find why | A TA sits with it for ten minutes on the checklist's table of usual breaks. If it still fails, the group logs it and, on Saturday, presents under the rule for a demo that fails. |
 | A group asks to keep building after the freeze | The rule holds for every group; a fix after the freeze becomes a caveat on Saturday. |
 | The tranche overruns | Cut from the slack at the end of block two, never from the roll call. |
 | A learner asks whether the GD card's numbers are Kalpa's real figures | "Use the card": each row says where its number comes from. |
 
-## What if the Programme Head runs more groups?
+## What if the Programme Head runs more than nine groups?
 
 At 30 minutes a group, fifteen groups need 450 minutes of GD. The roster's Check sheet names the
 stretch for any count: up to twelve groups, stream B runs more Friday rounds in block one; up to
 sixteen, both streams also run up to three Saturday rounds each, which moves Saturday's presentations
 back by up to 60 minutes; past sixteen, a third chair is needed. With more than ten groups, cards are
-reused across half-days and never within one. Change the group count on the Inputs sheet and add the
-groups' rows below the ninth.
+reused across half-days and never within one. The roster seats nine groups: change the group count
+on the Inputs sheet to read the stretch, and seat each extra round by hand in the time the Check
+sheet names. The Check sheet also flags a slot no group was drawn to and a draw position outside 1
+to 9, which is how a mistyped draw shows.
 
-## How is the interview question answered in one breath?
+## How does a trainee answer "take a position and defend it with one number" in one breath?
 
-**[F]** Take a position in a group discussion and defend it with one number.
+**[F]** How would you take a position in a group discussion and defend it with one number?
 
 **A strong answer, in a trainee's voice.** "In our GD, the revenue cycle head wanted to buy a
 denial-prediction model because a vendor said it cut a lab's denials 30 percent. I took the
 position that we should pilot before we buy, and defended it with one number: against labs that did
 not buy the model over the same months, the fall was about 19 percent, and the model needed 24 to
 cover its price. I said what would change my mind, a three-month pilot with half our claims held
-back that fell 24 percent or more, and the number did the arguing for me."
+back that fell 24 percent or more."
 
 What makes it strong: a position stated first, one number with where it came from and what it is
 compared with, the condition that would change the speaker's mind, and no second number competing
