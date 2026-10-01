@@ -157,7 +157,8 @@ Option a can compute the right number. A SUMIFS adds every payment, so it does n
 lookup's trap, and over the export with the gateway's 50 copies dropped it reaches Rs 19,66,45,070,
 the warehouse's figure. What it lacks is a record: each month somebody refreshes it by hand, nobody
 else can rerun it, and an export that arrives short gives a short answer with no warning. Kept as a
-check beside the warehouse's join, the same formula is exactly what the rule asks for.
+check beside Tuesday's join in the warehouse, which counts each instalment once, the same formula is
+exactly what the rule asks for.
 
 ## Where did Public Health England lose cases to a step that lived in a spreadsheet?
 

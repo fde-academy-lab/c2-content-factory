@@ -971,7 +971,8 @@ PAGE = r"""<!doctype html>
          " percent, exactly the orders nobody has paid for. The warehouse owns every join, dedupe and rank, pandas the analyst's iteration and the workbook the last mile, with a drift check live on the Checks tab.",
       d: function () {
         return K.bridge(["collected, by lookup", C5.lookup], [["second instalments of 400 orders", C5.secondInst]],
-          { fmt: money, endLabel: "collected, every payment once", lit: [0], title: "What the lookup left out of collected" });
+          { fmt: function (v) { return v % 1e7 ? R(v) : money(v); }, endLabel: "collected, every payment once", lit: [0],
+            title: "What the lookup left out of collected" });
       } },
     { t: "When a director takes the workbook in the room, what can they break, and which checks catch it before anyone reads a wrong number?",
       x: "Filtered to Mumbai, a foot written as SUM still reads " + R(PROTECT_SUM) + " while the " + MUMBAI.length + " members on screen spent " + R(MUMBAI_SUM) +
@@ -1295,7 +1296,7 @@ PAGE = r"""<!doctype html>
   Object.keys(COLIDS).forEach(function (id) {
     $(id).addEventListener("click", function () {
       S.collect = COLIDS[id]; press(Object.keys(COLIDS), id);
-      $("c5Said").textContent = S.collect === "every" ? "Collected now adds every payment of each order once, as SUMIFS over the export's distinct rows or the warehouse's join does."
+      $("c5Said").textContent = S.collect === "every" ? "Collected now adds every payment of each order once, as SUMIFS over the export's distinct rows does, or Tuesday's join, which counts each instalment once."
         : "Collected now comes from a lookup that stops at the first payment row of each order.";
       ch5();
     });

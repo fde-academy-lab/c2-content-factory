@@ -1555,8 +1555,8 @@ Transition: what does adding every payment once say?
 
 ```mermaid
 flowchart LR
-    L["<b>lookup</b><br/>Rs 11.84 crore"] --> M["<b>+ 400 second instalments</b><br/>Rs 7.83 crore"]
-    M --> S["<b>collected, each payment once</b><br/>Rs 19.66 crore"]
+    L["<b>lookup</b><br/>Rs 11,83,81,974"] --> M["<b>+ 400 second instalments</b><br/>Rs 7,82,63,096"]
+    M --> S["<b>collected, each payment once</b><br/>Rs 19,66,45,070"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class S known
 ```
