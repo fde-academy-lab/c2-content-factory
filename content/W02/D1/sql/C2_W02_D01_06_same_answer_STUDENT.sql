@@ -2,7 +2,7 @@
 -- from the same book?
 --
 -- Anand's analyst reruns the suite every Monday and traces five delivered Q2 app orders against the
--- ERP, the system Finance books orders in. If a rerun disagrees with the last run, he has to know
+-- ERP, the system Finance books orders in. If a rerun disagrees with the last run, she has to know
 -- whether the book changed or the query did. This file leaves a fingerprint of the book with every
 -- run, and draws the five orders so that every run draws the same five.
 --
@@ -56,10 +56,17 @@ ORDER  BY order_id
 LIMIT  5;
 ROLLBACK;
 
+-- name: c6_up_to_last
+-- The second route, with no sort and no LIMIT: count the candidates whose id sits at or below the
+-- last id on the analyst's list, KR-00547. If the list is the first five by order id, the count is 5
+-- and the rupees are the list's own; a list that skipped an order makes the count run above 5.
+SELECT count(*) AS candidates_up_to_it, sum(amount) AS rupees
+FROM   orders
+WHERE  quarter = 'Q2' AND channel = 'app' AND status = 'delivered'
+  AND  order_id <= 'KR-00547';
+
 -- name: c6_candidates
--- The second route: every delivered Q2 app order, for Python to sort on its own. The rows arrive in
--- whatever order the database reaches them, which does not matter here, since Python sorts them all
--- before it takes five.
+-- Every delivered Q2 app order: the candidates the audit sample is drawn from.
 SELECT order_id, amount
 FROM   orders
 WHERE  quarter = 'Q2' AND channel = 'app' AND status = 'delivered';

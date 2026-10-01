@@ -220,31 +220,35 @@ def ch1():
 
         - a) The same number, since both answer the same question.
         - b) A few more for A, since pandas needs a header row.
-        - c) Every row of the two tables the tree needs for A, and one row per quarter for B.
+        - c) Every row of the orders table for A, since the quarter totals read only orders, and one
+          row per quarter for B.
         - d) Fewer for A, since an export is compressed.
         """),
         code(r'''
             orders_rows =kit.sql("SELECT count(*) AS n FROM orders")[0]["n"]
             customers_rows = kit.sql("SELECT count(*) AS n FROM customers")[0]["n"]
             query_rows = len(kit.sql(Q["c1_book"]))
-            sizing = [("A. export and pandas", orders_rows + customers_rows),
+            sizing = [("A. export and pandas", orders_rows),
                       ("B. a .sql file", query_rows),
                       ("C. a saved view", query_rows)]
             kit.table(["option", "rows that leave the warehouse each Monday"],
                       [(o, f"{n:,}") for o, n in sizing],
                       caption="Sized on this warehouse: the rows each option moves for the quarter totals")
-            kit.bars(sizing, title="Rows moved each Monday: the export copies both tables the tree needs",
+            kit.bars(sizing, title="Rows moved each Monday: the export copies the whole orders table",
                      lit=(1,))
+            print(f"The segment lines in chapter 3 read the customers table too: an export for them copies "
+                  f"{orders_rows + customers_rows:,} rows against the query's 8.")
             '''),
         md("""
-        **What happened.** The answer is c. An export copies all 1,000 order rows and all 340 customer
-        rows, 1,340 in all, before Python adds anything up; the query and the view send back two rows,
-        one per quarter. The copy is also a second version of the book, and the analyst cannot tell
-        whether it still matches the first.
+        **What happened.** The answer is c. The quarter totals read only the orders table, so an export
+        copies all 1,000 order rows before Python adds anything up; the query and the view send back two
+        rows, one per quarter. The segment lines of chapter 3 also need the customers table, and their
+        export would copy 1,340 rows against 8. The copy is also a second version of the book, and the
+        analyst cannot tell whether it still matches the first.
 
         **The best-fit call.** Option B, a `.sql` file queried every Monday. The platform lead granted
         read access, and saving a view needs the right to create objects in the warehouse. The file
-        moves two rows where an export moves 1,340, the analyst reruns the same file on the same book,
+        moves two rows where an export moves 1,000, the analyst reruns the same file on the same book,
         and a renamed column stops it with an error instead of a quiet wrong number. The notebook you
         are reading runs the same file, so it is where the team thinks, and the number on Anand's sheet
         still comes from the query. **What would change the call:** once the suite stops changing and
@@ -252,7 +256,8 @@ def ch1():
         records which columns the Monday numbers depend on and refuses a change that would break them.
         """),
         code(r'''
-            kit.check("an export moves every row of both tables", sizing[0][1] == 1340, f"{sizing[0][1]:,} rows")
+            kit.check("an export moves every row of the orders table", sizing[0][1] == orders_rows == 1000,
+                      f"{sizing[0][1]:,} rows")
             kit.check("the query moves one row per quarter", query_rows == 2, f"{query_rows} rows")
             '''),
         md("""
@@ -471,7 +476,7 @@ def ch1():
         Monday's number and the auditor's rerun come from the same book, and a renamed column stops
         the query with an error. An export is a second copy that starts ageing the moment it lands,
         and every number computed from it has to be traced back to it. On this warehouse the export
-        moves 1,340 rows to answer what the query answers with two. Exploration and charts stay in a
+        moves 1,000 rows to answer what the query answers with two. Exploration and charts stay in a
         notebook that reads the warehouse; the reported number comes from the saved query.
 
         **[F] What is the difference between `count(*)`, `count(customer_id)` and
@@ -518,7 +523,7 @@ def ch1():
         ## So how many orders, rupees and customers did each quarter book?
 
         1. **Where should the Monday numbers be computed?** In a `.sql` file queried every Monday: two
-           rows reach the screen where an export copies 1,340, the analyst reruns the same file on the
+           rows reach the screen where an export copies 1,000, the analyst reruns the same file on the
            same book, and a view takes over once the suite settles and a schema is granted.
         2. **What does the warehouse hold?** Seven tables; today's tree needs `orders` and `customers`,
            and the segment lives on the customer.
@@ -813,7 +818,9 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
         The first route subtracted two distinct counts, 244 less 227. The second route builds the same
         change from each customer's own history: Q1's customers, less the ones who bought in Q1 and not
         in Q2, plus the ones who bought in Q2 and not in Q1. It uses three `HAVING` filters on one row
-        per customer, with no distinct count per quarter anywhere in it.
+        per customer, and two tie-outs rebuild each quarter from those histories: the customers who
+        bought in both quarters plus those who stopped must give Q1's 244, and the customers in both
+        plus those who arrived must give Q2's 227.
 
         **Predict before you run.** How many of Q1's 244 customers bought nothing in Q2?
 
@@ -838,7 +845,9 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
         md("""
         **What happened.** The answer is b. 74 of Q1's customers bought nothing in Q2 and 57 customers
         bought in Q2 who had not bought in Q1: 244 less 74 plus 57 is 227, the same number the first
-        route reached by subtracting two counts. The net fall of 17 hides 131 customers moving.
+        route reached by subtracting two counts. The histories also tie out each quarter: 170 who
+        bought in both plus 74 who stopped is Q1's 244, and 170 plus 57 who arrived is Q2's 227. The
+        net fall of 17 hides 131 customers moving.
 
         ## 6. What goes on Anand's sheet about last week's note?
 
@@ -1234,10 +1243,11 @@ def ch3():
 
         ## 5. A second route: does the average of each customer's own order count agree?
 
-        The first route divided two counts. The second route never divides counts: it asks the
-        warehouse for each customer's own number of orders in each quarter, one row per customer and
-        quarter, and averages those numbers in Python. If the division was right, the average of the
-        individual counts must equal it.
+        The first route divided the segment's orders by its distinct customers inside one query. The
+        second route asks the warehouse for each customer's own number of orders in each quarter, one
+        row per customer and quarter, and averages those numbers in Python: a sum of counts over a
+        number of customers, both from a different query, divided with Python's true division. If the
+        first route's division was right, the average of the individual counts must equal it.
 
         **Predict before you run.** For Retail-Plus in Q2, what is the average of the 76 customers' own
         order counts?
@@ -1357,7 +1367,7 @@ def ch4():
         1. Nested subqueries, named steps or temporary tables?
         2. How did customers, frequency and order value move in each segment?
         3. How much less did each Retail-Plus member spend?
-        4. Does a member count taken from the customer table give the same change?
+        4. Does revenue over the members who bought, counted on their own, give the same levels?
 
         **The metric at stake.** Each branch of the tree as a ratio, Q2 over Q1: customers who bought,
         orders per customer and revenue per order, which multiply to revenue. And spend per member: the
@@ -1373,25 +1383,27 @@ def ch4():
         **A real company with the same question.** GitLab's data team publishes the SQL style guide it
         writes to: "Prefer CTEs over sub-queries as CTEs make SQL more readable ...", each CTE should
         "perform a single, logical unit of work", and a calculation should carry "a brief description
-        of what's going on" (GitLab handbook, SQL Style Guide, checked 30 September 2026). The guide
-        also calls CTEs more
-        performant on GitLab's own warehouse; on Postgres the reason to name steps is the reader.
+        of what's going on" (GitLab handbook, SQL Style Guide, checked 30 September 2026). The
+        performance claim is the guide's own, with no test beside it; on Postgres the reason to name
+        steps is the reader. The same guide says not to use `USING` in joins because it "produces
+        inaccurate results in Snowflake"; on Postgres `USING` is exact, and today's lookup line uses
+        it.
         """),
         setup_note("04_which_branch"),
         setup("04_which_branch"),
         where(4, ["the options\nsubquery, CTE or temporary table", "each branch\nQ2 over Q1 per segment",
-                  "spend per member\nwho is inside the average", "a second route\nthe tier's own count"]),
+                  "spend per member\nwho is inside the average", "a second route\nrevenue over the buyers"]),
         md("""
         ## 1. The options: nested subqueries, named steps or temporary tables?
 
         The comparison needs the same leaves computed twice, once per quarter, and then set side by
         side. Three ways to write it:
 
-        | Option | How the analyst reads it | Rows written into the warehouse | What a rerun needs |
-        |---|---|---|---|
-        | A. Nested subqueries, each quarter inside the main query | From the innermost bracket outwards | None | The one statement |
-        | B. CTEs, `WITH book AS (...), q1 AS (...), q2 AS (...)`, each a named step | From the top down, one step at a time, each with its comment | None: Postgres works each step out while the query runs | The one statement |
-        | C. Temporary tables, one `CREATE TEMP TABLE` per step | Several statements, run in order | One temporary table per step, for the session | Every statement, in the same session, in order |
+        | Option | How the analyst reads it | Rows written into the warehouse | What a rerun needs | Places to edit if `segment` is renamed |
+        |---|---|---|---|---|
+        | A. Nested subqueries, each quarter inside the main query | From the innermost bracket outwards | None | The one statement | Every subquery that names it |
+        | B. CTEs, `WITH book AS (...), q1 AS (...), q2 AS (...)`, each a named step | From the top down, one step at a time, each with its comment | None: Postgres works each step out while the query runs | The one statement | The one step that looks it up |
+        | C. Temporary tables, one `CREATE TEMP TABLE` per quarter, then a query that joins them | Three statements, run in order | One temporary table per quarter, for the session | Every statement, in the same session, in order | Every statement that names it |
 
         A session is one connection to the warehouse, from the moment it opens until it closes; a
         notebook's kernel and a VS Code query tab each hold their own.
@@ -1415,20 +1427,26 @@ def ch4():
                 conn.close()
             with kit.expect_error() as gone:
                 kit.sql(Q["c4_temp_read"])
-            kit.table(["option", "statements to run", "rows written", "a rerun in a new session"],
-                      [("A. nested subqueries", 1, 0, "works"),
-                       ("B. CTEs", 1, 0, "works"),
-                       ("C. temporary tables", 2, len(same_session), gone.name or "works")],
+            places = {"A": Q["c4_nested"].count("c.segment"), "B": Q["c4_branches"].count("c.segment"),
+                      "C": 2 * Q["c4_temp_step"].count("c.segment")}
+            kit.table(["option", "statements to run", "rows written", "a rerun in a new session",
+                       "places to edit if segment is renamed"],
+                      [("A. nested subqueries", 1, 0, "works", places["A"]),
+                       ("B. CTEs", 1, 0, "works", places["B"]),
+                       ("C. temporary tables, one per quarter", 3, 2 * len(same_session), gone.name or "works", places["C"])],
                       caption="Sized on this warehouse: the three ways to write the comparison")
             '''),
         md("""
         **What happened.** The answer is c. In the session that made it, the temporary table held four
-        rows, one per segment; a new session, which is what the analyst opens, finds no such table and
-        stops with `UndefinedTable`. Nested subqueries and CTEs are single statements, so the analyst
-        reruns exactly what the team ran.
+        rows, one per segment, so two quarters write 8; a new session, which is what the analyst opens,
+        finds no such table and stops with `UndefinedTable`. Nested subqueries and CTEs are single
+        statements, so the analyst reruns exactly what the team ran. Counted in the query text, a
+        renamed `segment` column is four edits in the nested version, one in the CTE version, whose
+        `book` step is the only place that looks it up, and four across the temporary tables.
 
         **The best-fit call.** Option B, CTEs. The analyst reads the steps in the order they happen,
-        each with a name and a one-line comment, and one statement reruns anywhere. Postgres computes a
+        each with a name and a one-line comment, one statement reruns anywhere, and a rename costs one
+        edit. Postgres computes a
         CTE once per run even when two later steps read it, and writes nothing into the warehouse.
         **What would change the call:** a step that many queries reuse over millions of rows in one long
         session is cheaper as a temporary table, computed once and read many times; that is a
@@ -1438,6 +1456,8 @@ def ch4():
             kit.check("the temporary table answered in its own session", len(same_session) == 4)
             kit.check("a new session cannot see it", gone.name == "UndefinedTable", gone.name)
             kit.check("the nested version returns one row per segment", len(nested) == 4)
+            kit.check("a renamed segment is one edit in the named steps against four in the nested version",
+                      (places["B"], places["A"]) == (1, 4), f"B {places['B']}, A {places['A']}, C {places['C']}")
             '''),
         md("""
         ## 2. How did customers, frequency and order value move in each segment?
@@ -1570,44 +1590,47 @@ def ch4():
         to down 1.8, and Business from up 1.4 to down 1.4. Only Student rose, by 33.9 percent, on 24
         members, which chapter 3 flagged as too few for a rate.
 
-        ## 4. A second route: does a member count taken from the customer table give the same change?
+        ## 4. A second route: does revenue over the members who bought, counted on their own, give the same levels?
 
-        The first route averaged one row per member built from the orders. The second never averages:
-        it divides each quarter's Retail-Plus revenue by the tier's members on the customer table,
-        bought or not, counted in a subquery, which gives revenue per tier member. Its base is 120
-        members where the first route's was 107, so its levels differ, and if both are fair its change
-        must match.
+        The first route built one row per member from the orders and averaged it with Rs 0 said on
+        purpose. The second never builds a row per member and never averages: it counts the members who
+        bought in either quarter in a step of its own, `count(DISTINCT customer_id)` over the tier's
+        orders, and divides each quarter's Retail-Plus revenue by that count. If the first route's step
+        dropped or doubled a member, its count and its levels would sit apart from these.
 
-        **Predict before you run.** Over the tier's members on the customer table, how does revenue per
-        tier member move?
+        **Predict before you run.** Retail-Plus booked Rs 5,85,770 in Q1 and Rs 4,13,380 in Q2. Over
+        the members who bought in either quarter, counted on their own, what does each quarter's
+        revenue per member come to?
 
-        - a) Down 15.5 percent.
-        - b) Down 29.4 percent.
-        - c) Down more than 29.4 percent, since the base is larger.
-        - d) It cannot be computed without a join.
+        - a) Rs 6,437 then Rs 5,439, the hurried levels.
+        - b) Rs 5,474 then Rs 3,863, the fix's own levels.
+        - c) Rs 4,881 then Rs 3,445.
+        - d) It cannot be computed without averaging one row per member.
         """),
         code(r'''
-            tier = {r["quarter"]: {k: num(v) for k, v in r.items()}
-                    for r in run("c4_per_member_of_the_tier", "Retail-Plus revenue over every member of the tier",
-                                 money=("revenue", "revenue_per_tier_member"))}
-            kit.line(["Q1", "Q2"],
-                     [("over the 107 who bought, Rs 0 said", [fixed["q1_average"], fixed["q2_average"]], "good"),
-                      ("over the tier's 120 members", [tier["Q1"]["revenue_per_tier_member"], tier["Q2"]["revenue_per_tier_member"]], "lit"),
-                      ("the hurried average", [hurried["q1_average"], hurried["q2_average"]], "bad")],
-                     fmt=lambda v: kit.rupees(v), title="Two fair bases fall together; the hurried average falls half as far")
+            route = {r["quarter"]: {k: num(v) for k, v in r.items()}
+                     for r in run("c4_revenue_over_buyers", "Each quarter's revenue over the members who bought, counted on their own",
+                                  money=("revenue", "revenue_per_member"))}
+            kit.columns(["Q1", "Q2"],
+                        [("the fix: the average with Rs 0 said", [fixed["q1_average"], fixed["q2_average"]]),
+                         ("the route: revenue over the buyers", [route["Q1"]["revenue_per_member"], route["Q2"]["revenue_per_member"]]),
+                         ("the hurried average", [hurried["q1_average"], hurried["q2_average"]])],
+                        fmt=kit.rupees, title="Two routes reach the same levels; the hurried average sits above both")
             '''),
         code(r'''
-            route2 = pct(tier["Q1"]["revenue_per_tier_member"], tier["Q2"]["revenue_per_tier_member"])
-            kit.check("the tier holds 120 members", tier["Q1"]["members_in_the_tier"] == 120)
-            kit.check("the second route falls 29.4 percent, as the fixed average does", round(route2, 1) == -29.4, f"{route2:.1f}%")
+            kit.check("the route counts the same members as the fix's step, each once",
+                      route["Q1"]["members_who_bought"] == fixed["members"],
+                      f"{route['Q1']['members_who_bought']} against {fixed['members']}")
+            kit.check("the route reaches the fix's levels in both quarters, to the rupee",
+                      all(abs(route[q]["revenue_per_member"] - fixed[f"{q.lower()}_average"]) <= 1 for q in ("Q1", "Q2")))
             kit.check("the product of the branches gives the same fall",
                       round(100 * (p["customers_ratio"] * p["frequency_ratio"] * p["order_value_ratio"] - 1), 1) == -29.4)
             '''),
         md("""
-        **What happened.** The answer is b. Over the tier's 120 members, revenue per tier member went
-        from Rs 4,881 to Rs 3,445, down 29.4 percent: the same change as the fixed average over 107 members,
-        and the same as the product of the three branches. Any fixed group of members gives the same
-        change; only an average whose members change between quarters gives a different one.
+        **What happened.** The answer is b. 107 members bought in either quarter, counted once each from
+        the orders, and Rs 5,85,770 and Rs 4,13,380 over them are Rs 5,474 and Rs 3,863, the fix's own
+        levels, reached without a row per member or an average. Had the fix's step dropped or doubled a
+        member, it would not count 107, and its levels would not match these.
 
         > **Kavya's review.** An average names who is inside it. Put the zero in on purpose, and write
         > the count of members beside the average, so the reader sees that Q1 and Q2 are over the same
@@ -1624,9 +1647,27 @@ def ch4():
 
         **[F] When would you use a CTE instead of a subquery?** When a step deserves a name, when the
         same step is read more than once, or when someone else has to read the query from the top down.
-        A CTE runs as part of one statement and writes nothing, so an auditor reruns it whole; a
-        temporary table lives only in the session that made it.
+        A CTE runs as part of one statement and writes nothing, so an auditor reruns it whole, and a
+        lookup written once is one edit when a column is renamed: here a renamed `segment` costs one
+        edit in the CTE version against four in the nested one. A temporary table lives only in the
+        session that made it.
 
+        ### Depth: why does any fixed base give the same change, and what does it miss?
+
+        Dividing both quarters by the same number keeps the revenue ratio. Over the tier's 120 members
+        on the customer table, bought or not, revenue per tier member goes from Rs 4,881 to Rs 3,445,
+        down the same 29.4 percent. A matching change proves only that the two quarters share a base;
+        the level is what says which base the head of Retail-Plus is reading. The 13 members who bought
+        nothing in either quarter are in the 120 and out of the 107.
+        """),
+        code(r'''
+            tier = {r["quarter"]: {k: num(v) for k, v in r.items()}
+                    for r in run("c4_per_member_of_the_tier", "Revenue per tier member, over every member on the customer table",
+                                 money=("revenue", "revenue_per_tier_member"))}
+            kit.check("any fixed base gives the same 29.4 percent fall",
+                      round(pct(tier["Q1"]["revenue_per_tier_member"], tier["Q2"]["revenue_per_tier_member"]), 1) == -29.4)
+            '''),
+        md("""
         ### Depth: why is a quarter with no orders a NULL and not a zero?
 
         `sum` over no rows returns `NULL`, not zero, and a `CASE` with no `ELSE` returns `NULL` for every
@@ -1645,8 +1686,9 @@ def ch4():
            revenue per order 1.084, which multiply to 0.706: frequency fell furthest, 22.0 percent.
         3. **How much less did each Retail-Plus member spend?** Rs 5,474 then Rs 3,863 over the same 107
            members, down 29.4 percent; the average that skipped missing quarters said 15.5 percent.
-        4. **Does the customer table's count agree?** Yes: revenue per tier member went from Rs 4,881 to
-           Rs 3,445 over the tier's 120 members, down 29.4 percent, the same change.
+        4. **Does a count taken on its own give the same levels?** Yes: each quarter's revenue over the
+           107 members who bought, counted once each from the orders, is Rs 5,474 then Rs 3,863, the
+           fix's own levels.
 
         Chapter 5 adds the suite's numbers up the way Anand's analyst will.
         """),
@@ -2038,18 +2080,25 @@ def ch6():
         numbers does it store?
 
         - a) 2, one row count per table.
-        - b) About 8: four numbers for each of the two tables.
+        - b) Seven: four for orders and three for customers, which has no rupees.
         - c) About 20, one per output row.
         - d) 1,340, one per row read.
         """),
         code(r'''
             fp = run("c6_fingerprint", "The book's fingerprint", money=("rupees",))
             numbers = sum(1 for r in fp for k, v in r.items() if k != "table_name" and v is not None)
-            outputs = 8 + 4 + 4 + 2
+            suite = {}
+            for stem in ("01_book", "03_which_segment", "04_which_branch", "05_does_it_add_up"):
+                suite.update(blocks(stem))
+            parts = [(label, len(kit.sql(suite[name]))) for label, name in
+                     (("the book", "c1_book"), ("segment-quarters", "c3_segments"),
+                      ("branches", "c4_branches"), ("half-years", "c5_half_year"))]
+            outputs = sum(n for _, n in parts)
             kit.table(["option", "numbers stored per run", "access"],
                       [("A. by eye", 0, "read"), ("B. fingerprint", numbers, "read"),
-                       ("C. snapshot", f"about {outputs} rows", "write"), ("D. write, audit, publish", "a staging table", "write and a scheduler")],
-                      caption="Sized on this suite: its outputs are about 18 rows a Monday")
+                       ("C. snapshot", f"{outputs} rows a Monday", "write"), ("D. write, audit, publish", "a staging table", "write and a scheduler")],
+                      caption="Sized on this suite: its outputs are " + ", ".join(f"{n} {label}" for label, n in parts)
+                              + f", {outputs} rows a Monday")
             kit.flow(["the fingerprint\nwhat the book holds", "the suite\nevery number", "the sample\nfive ordered orders",
                       "next Monday\nfingerprints compared"], kinds=["lit", None, None, "good"],
                      title="Option B: the run carries the book's fingerprint beside its numbers")
@@ -2196,25 +2245,34 @@ def ch6():
         and KR-00547 before and after the reload, Rs 3,900 both times. The analyst now traces the orders
         you traced.
 
-        ## 4. A second route: does a sort in Python pick the same five?
+        ## 4. A second route: are they the first five by order id, counted without a sort?
 
-        The first route asked the database to sort and cut. The second route asks it for every
-        delivered Q2 app order, in whatever order it reaches them, and sorts them in Python before
-        taking five. If the fixed query is right, both routes name the same orders.
+        The first route asked the database to sort and cut. The second route never sorts and never cuts:
+        it counts the delivered Q2 app orders whose id sits at or below the last id on a sample. If the
+        sample is the first five by order id, exactly five candidates sit there and their rupees are the
+        sample's own; if the sample skipped an order, the count runs above five. A rerun of the ordered
+        query could only repeat it, and this count can disagree with it.
 
-        **Predict before you run.** How many candidate orders does Python sort before it takes five?
+        **Predict before you run.** The analyst's unordered rerun drew KR-00545, KR-00546, KR-00547,
+        KR-00549 and KR-00553. How many candidates sit at or below KR-00553?
 
-        - a) 5.
-        - b) About 20.
-        - c) About 100.
-        - d) All 1,000 orders.
+        - a) 5, the five the rerun drew.
+        - b) 6.
+        - c) 7.
+        - d) 94, every candidate.
         """),
         code(r'''
+            route = Q["c6_up_to_last"]
+            print(route)
+            last_fixed = fixed[-1]["order_id"]
+            last_rerun = max(r["order_id"] for r in second)
+            on_fixed = kit.sql(route)[0]
+            on_rerun = kit.sql(route.replace(f"'{last_fixed}'", f"'{last_rerun}'"))[0]
+            kit.table(["sample", "its last id", "candidates at or below it", "their rupees"],
+                      [("the ordered five", last_fixed, on_fixed["candidates_up_to_it"], kit.rupees(num(on_fixed["rupees"]))),
+                       ("the unordered rerun", last_rerun, on_rerun["candidates_up_to_it"], kit.rupees(num(on_rerun["rupees"])))],
+                      caption="The second route: a count with no sort, set against each sample")
             candidates = kit.sql(Q["c6_candidates"])
-            python_five = sorted(candidates, key=lambda r: r["order_id"])[:5]
-            kit.table(["the database's ORDER BY", "Python's sorted()"],
-                      [(a["order_id"], b["order_id"]) for a, b in zip(fixed, python_five)],
-                      caption=f"Two routes to the audit sample, from {len(candidates)} candidates")
             small = [num(r["amount"]) for r in candidates if num(r["amount"]) < 5000]
             kit.strip(small, markers=[("the five's average", 780, "good")], fmt=kit.rupees, lo=0, hi=5000,
                       lit=tuple(i for i, r in enumerate(r for r in candidates if num(r["amount"]) < 5000)
@@ -2223,14 +2281,19 @@ def ch6():
             print(f"{len(candidates)} candidates, {len(small)} of them under Rs 5,000")
             '''),
         code(r'''
-            kit.check("Python's five are the database's five",
-                      [r["order_id"] for r in python_five] == [r["order_id"] for r in fixed])
-            kit.check("Python's five total the same Rs 3,900", sum(num(r["amount"]) for r in python_five) == 3900)
+            kit.check("exactly five candidates sit at or below the ordered sample's last id, worth its Rs 3,900",
+                      on_fixed["candidates_up_to_it"] == 5
+                      and num(on_fixed["rupees"]) == sum(num(r["amount"]) for r in fixed) == 3900)
+            kit.check("the count catches the unordered rerun: more than five sit at or below its last id",
+                      on_rerun["candidates_up_to_it"] > 5, f"{on_rerun['candidates_up_to_it']} candidates")
             '''),
         md("""
-        **What happened.** The answer is c: Python sorted 94 delivered Q2 app orders and took the same
-        five, Rs 3,900. The dots are the 80 candidates under Rs 5,000, with the sampled five drawn dark
-        and the marker at their average, Rs 780; the other 14 are Business orders worth lakhs, off this
+        **What happened.** The answer is c: seven. The rerun's five stop at KR-00553, and seven
+        candidates sit at or below it, so the rerun skipped KR-00542 and KR-00544 and is not the first
+        five. The ordered five stop at KR-00547 with exactly five candidates at or below it, worth
+        Rs 3,900, the sample's own total, so the count agrees with the ordered query and disagrees with
+        the unordered one. The dots are the 80 candidates under Rs 5,000, with the sampled five drawn
+        dark and the marker at their average, Rs 780; the other 14 are large Business orders, off this
         scale.
 
         ## 5. What does the Monday suite tell Anand?
@@ -2241,7 +2304,7 @@ def ch6():
         code(r'''
             kit.vflow(["the book\nRs 10.00 crore to Rs 9.84 crore, down 1.6%",
                        "the segment\nRetail-Plus down 29.4%, 75 of the 76 fewer orders",
-                       "the branches\ncustomers down 16.5%, orders each down 22.0%",
+                       "the branches\ncustomers down 16.5%, orders each down 22.0%,\neach order up 8.4%",
                        "the audit\nsegments add up; each customer counted once",
                        "the run\nthe fingerprint printed; every list ordered"],
                       kinds=["lit", None, "bad", "good", "good"],
@@ -2257,7 +2320,8 @@ def ch6():
         **The sentence to Anand.** "Anand, the Monday suite now runs on the warehouse itself. Booked
         revenue fell 1.6 percent, from Rs 10.00 crore to Rs 9.84 crore, and Retail-Plus carries the fall
         in orders: its revenue is down 29.4 percent because 16.5 percent fewer members bought and each
-        ordered 22.0 percent less often. The counts are named for what they count and printed beside
+        ordered 22.0 percent less often, while each order was worth 8.4 percent more. The counts are
+        named for what they count and printed beside
         every ratio, and each run prints the book's fingerprint, so a rerun on the same book gives the
         same answer.
         One caveat: last week's extract showed customers flat, and the full book shows 7.0 percent fewer
@@ -2275,9 +2339,12 @@ def ch6():
         columns, that no two rows share, and then limit.
 
         **[F] Your KPI moved 30 percent overnight and the data did not change; what do you suspect?**
-        The query. Check the book's fingerprint first: if the rows and rupees are the same, look for an
-        unordered `LIMIT`, a definition that changed between runs, a denominator that shifted (a count of
-        rows where people were meant, an average that skips missing values), or integer division.
+        The run, then the query. Check the book's fingerprint first. If the rows and rupees are the
+        same, check the run's parameters (the date window, the time zone) and anything it depends on
+        that changed overnight (a view, a deploy, a cached result). Then look for today's suspects: a
+        definition that changed between runs, a denominator that shifted (a count of rows where people
+        were meant, an average that skips missing values), integer division, and, when the number is
+        computed on a sample, an unordered `LIMIT`.
 
         ### Depth: what does Netflix's audit check, and what would Kalpa's add?
 
@@ -2300,10 +2367,12 @@ def ch6():
         3. **Which five orders will the analyst trace?** KR-00542, KR-00544, KR-00545, KR-00546 and
            KR-00547, Rs 3,900, once the query orders by `order_id`; without it the rerun drew a
            different five worth Rs 4,590.
-        4. **Does Python's sort agree?** Yes: sorting the 94 candidates in Python gives the same five.
+        4. **Does a count with no sort confirm the five?** Yes: exactly five of the 94 candidates sit at
+           or below KR-00547, worth Rs 3,900, while seven sit at or below the unordered rerun's last
+           id, so the count catches the sample that drifted.
         5. **What does the suite tell Anand?** The book fell 1.6 percent; Retail-Plus carries the fall
-           in orders, down 29.4 percent on fewer members buying and each buying less often; and every
-           number now reruns the same on the same book.
+           in orders, down 29.4 percent on fewer members buying and each buying less often, while each
+           order grew 8.4 percent larger; and every number now reruns the same on the same book.
 
         Tomorrow Anand asks the next question: how much of what was booked was actually collected.
         """),

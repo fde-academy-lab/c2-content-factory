@@ -149,9 +149,30 @@ FROM   member_spend
 GROUP  BY segment
 ORDER  BY segment;
 
+-- name: c4_revenue_over_buyers
+-- The second route, with no row per member and no average: each quarter's Retail-Plus revenue over
+-- the members who bought in either quarter, counted once each from the orders in their own step.
+WITH tier_orders AS (       -- step 1: Retail-Plus's orders in both quarters
+    SELECT o.customer_id, o.quarter, o.amount
+    FROM   orders o
+    JOIN   customers c USING (customer_id)
+    WHERE  c.segment = 'Retail-Plus'
+),
+buyers AS (                 -- step 2: the members who bought in either quarter, each counted once
+    SELECT count(DISTINCT customer_id) AS members
+    FROM   tier_orders
+)
+SELECT quarter,                                                   -- step 3: revenue over those members
+       sum(amount)                                       AS revenue,
+       (SELECT members FROM buyers)                      AS members_who_bought,
+       round(sum(amount) / (SELECT members FROM buyers)) AS revenue_per_member
+FROM   tier_orders
+GROUP  BY quarter
+ORDER  BY quarter;
+
 -- name: c4_per_member_of_the_tier
--- The second route, revenue per tier member: Retail-Plus revenue in each quarter over every member
--- of the tier on the customer table, bought or not. The count comes from the customer table, in a subquery.
+-- A fixed base for comparison, revenue per tier member: Retail-Plus revenue in each quarter over every
+-- member of the tier on the customer table, bought or not, counted in a subquery.
 SELECT o.quarter,
        sum(o.amount)                                                     AS revenue,
        (SELECT count(*) FROM customers WHERE segment = 'Retail-Plus')    AS members_in_the_tier,
