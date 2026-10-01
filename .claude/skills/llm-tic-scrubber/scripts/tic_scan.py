@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Scan a deliverable for machine-written phrasing. Usage: tic_scan.py <file>"""
+"""Scan deliverables for machine-written phrasing.
+
+Usage: tic_scan.py <file or folder> [more files or folders ...]
+
+A folder is scanned for its .md, .pptx and .docx files, recursively. One file prints as it always
+has; several print one block per file with hits and a closing count. The exit code is 1 when any
+file has a hit.
+"""
 import re, sys, os
 
 PATTERNS = [
@@ -39,9 +46,10 @@ def get_text(path):
         sys.exit("unsupported file type: "+e)
     return out
 
-def main():
-    if len(sys.argv)<2: sys.exit(__doc__)
-    path=sys.argv[1]; chunks=get_text(path); hits=[]
+FOLDER_TYPES = (".md", ".pptx", ".docx")
+
+def scan(path):
+    chunks=get_text(path); hits=[]
     for loc,txt in chunks:
         for name,pat,flags in PATTERNS:
             for m in re.finditer(pat,txt,flags|re.I):
@@ -50,13 +58,47 @@ def main():
     for lab in REPEAT_LABELS:
         n=blob.count(lab)
         if n>2: hits.append(("whole file","repeated label",f'"{lab}" x{n}',"used more than twice"))
-    if not hits:
-        print(f"tic_scan: clean, {len(chunks)} text runs checked"); return 0
-    print(f"tic_scan: {len(hits)} hit(s)\n")
+    return chunks, hits
+
+def print_hits(hits):
     for loc,name,frag,ctx in hits:
         print(f"  {loc:<12} [{name}] {frag}")
         if ctx!=frag: print(f"  {'':<12}    in: {ctx}")
-    print("\nSee SKILL.md for the rewrite of each pattern.")
-    return 1
+
+def expand(args):
+    files=[]
+    for a in args:
+        if os.path.isdir(a):
+            for root,dirs,names in os.walk(a):
+                dirs.sort()
+                files += [os.path.join(root,n) for n in sorted(names)
+                          if os.path.splitext(n)[1].lower() in FOLDER_TYPES]
+        else:
+            files.append(a)
+    return files
+
+def main():
+    args=sys.argv[1:]
+    if not args: sys.exit(__doc__)
+    files=expand(args)
+    if len(args)==1 and not os.path.isdir(args[0]):
+        chunks,hits=scan(files[0])
+        if not hits:
+            print(f"tic_scan: clean, {len(chunks)} text runs checked"); return 0
+        print(f"tic_scan: {len(hits)} hit(s)\n")
+        print_hits(hits)
+        print("\nSee SKILL.md for the rewrite of each pattern.")
+        return 1
+    dirty=0
+    for f in files:
+        chunks,hits=scan(f)
+        if hits:
+            dirty+=1
+            print(f"{f}: {len(hits)} hit(s)")
+            print_hits(hits)
+            print()
+    print(f"tic_scan: {len(files)-dirty} of {len(files)} files clean")
+    if dirty: print("See SKILL.md for the rewrite of each pattern.")
+    return 1 if dirty else 0
 
 if __name__=="__main__": sys.exit(main())

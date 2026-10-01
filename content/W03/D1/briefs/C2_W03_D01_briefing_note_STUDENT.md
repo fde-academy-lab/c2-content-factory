@@ -1,78 +1,153 @@
-# Briefing note: Kalpa Health, from Dr Priya Menon
+# Which branch of Kalpa Health is short of the plan, and what should I tell the board?
 
-**From:** Dr Priya Menon, COO, Kalpa Health
-**To:** the data and AI team, Kalpa's Global Capability Centre, Bengaluru
-**Re:** Q3 volumes, and five questions my team cannot answer
+- **From:** Dr Priya Menon, chief operating officer (COO) of Kalpa Health
+- **To:** the data and AI team at Kalpa's Global Capability Centre (GCC), Bengaluru
+- **Re:** Q3 test volumes, and five questions my heads cannot answer
+- **With it:** ten data files, exported on Friday 16 October 2026
 
-Kalpa Health and everyone in it are fictional. Any resemblance to a real company is coincidental.
+Kalpa Health, Kalpa Group and everyone in them are fictional. Every record in the files is
+synthetic, so no real patient's information is in them.
+
+> "My dashboard says test volumes grew 5 percent from Q2 to Q3. The plan the board approved asks for
+> 18. Which branch of my business is short, and what do I do next?"
+> Dr Priya Menon, COO, Kalpa Health
+
+**Who needs the answer.** I do, before I take the second half's plan to the board. If you name the
+wrong branch, I move staff and money into a part of the business that was never short, and the part
+that was short keeps falling for another quarter.
+
+**The questions on the way.** What business is Kalpa Health, and what does my 5 percent measure?
+Which five questions are my heads asking, and what will each answer decide? Which files has my data
+team sent, and what is in each? How does your week run, and how is it scored? Who checks your work
+before it reaches me?
 
 ---
 
-## What I am looking at
+## What business is Kalpa Health, and what does my 5 percent measure?
 
-My dashboard shows test volumes up 5 percent from Q2 to Q3. The plan the board approved for the year
-asks for 18. I present to the board shortly, and I cannot tell them which branch of the business is
-short, because every head I ask gives me a different reason and a different number.
+**Who needs the answer.** Every group, before it takes a question. My heads use words most of you
+have never needed, and an answer built on the wrong meaning of "a test" or "revenue" answers a
+question I did not ask.
 
-We run diagnostic laboratories and patient service centres in six US metros: Dallas, Phoenix, New
-York, Chicago, Atlanta and Philadelphia. Each metro has one laboratory and two patient service
-centres. Patients book tests or panels by walking in, online, by phone, or for collection at home,
-and our employer accounts book wellness screenings for their staff. We report in calendar quarters,
-so Q2 is April to June and Q3 is July to September 2026.
+**The questions on the way.** Where do we work, and who pays us? What do I mean by Q2 and Q3? What
+does my dashboard show, and against what?
 
-> "I do not need a dashboard. I need to know where the 13 points went, and what to do next."
-> Dr Priya Menon
+### Where do we work, and who pays us?
 
-## What my team is asking
+We run diagnostic laboratories and patient service centres in six US metro areas: Dallas, Phoenix,
+New York, Chicago, Atlanta and Philadelphia. A patient service centre is where a phlebotomist, the
+person trained to draw blood, takes patients' samples, and the laboratory runs the tests. Each metro
+has one laboratory and two patient service centres, so we have eighteen sites, and patients book at
+all eighteen. A patient books one
+or more tests, or a panel, which is several tests ordered under one name. They book by walking in,
+online, by phone, or for a collection at home, when a phlebotomist visits the patient instead.
 
-Each of my heads has raised a question with me. I have written each one the way it was put to me.
+We bill in dollars. A claim is the bill we send to whoever pays for a patient's tests: a commercial
+health plan, Medicare (the federal programme for people aged 65 and over), Medicaid (each state's
+programme for people on low incomes) or the patient, who then pays for themselves (self-pay). A
+claim goes out at our list prices, plus any collection fee for a home draw. The payer answers with a remittance, which says what its
+contract allows, what it pays, what the patient owes and what it refuses to pay, which is a denial.
+Our revenue-cycle and analytics work runs from the GCC in Bengaluru, and that is why these questions
+come to you.
 
-| # | Who is asking | What they asked me |
+The domain dossier, `study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`, tells the business in
+full, with every word my heads use, and its one-page card is
+`cheatsheets/C2_W03_D01_us_healthcare_domain_card_STUDENT.pdf`.
+
+### What do I mean by Q2 and Q3?
+
+We report in calendar quarters, the way a US business does. Q2 is April to June 2026, and Q3 is July
+to September 2026. Every figure in this note and every file my team sent uses those two quarters.
+
+### What does my dashboard show, and against what?
+
+My dashboard shows test volumes up 5 percent from Q2 to Q3. The plan the board approved asks for test
+volumes to grow 18 percent, so I am 13 percentage points short. By a branch I mean one of the parts
+my business splits into, such as a payer, a metro or a kind of test; a branch is never a single site. Every head I ask names a different cause and backs it
+with a different number, and nobody has yet shown me which cause the numbers support.
+
+Kalpa Health is a US laboratory business in six metros, paid in dollars by four kinds of payer, and
+my 5 percent is my dashboard's growth in tests from Q2 to Q3, against a plan of 18.
+
+---
+
+## Which five questions are my heads asking, and what will each answer decide?
+
+**Who needs the answer.** Each group, at the allocation. The question you take is one of these five,
+and the decision it feeds is what your answer will be judged against.
+
+**The questions on the way.** Who is asking? What did they ask, in their own words? What will they
+decide with your answer? What does a wrong answer cost them?
+
+| # | Who is asking | What they asked me, word for word | What your answer decides | What a wrong answer costs |
+|---|---|---|---|---|
+| 1 | The finance head | "The board will ask me where the plan's growth went. Where does our lab revenue actually come from, and which branch of it is short?" | Where the second half's recovery effort and money go | Money goes to a branch that was never short, and the short one keeps falling |
+| 2 | The patient service centres' operations head | "Bookings fell in two of our metros in Q3. Before I send a field team or cut staff there, I need to know how far they fell, and why." | Whether to send a field team, cut staff, or leave the two metros alone | Staff are cut where patients still need them, or a real decline runs on for another quarter |
+| 3 | The finance head | "The claims we billed say one thing and the posting system says another. Which claims are unpaid, how much money is that, and can I trust the figure I report?" | The collections figure reported at the quarter's close, and which claims the revenue-cycle team chases first | A wrong figure reaches the board under the finance head's name, and claims are chased after their payers' filing deadlines have passed |
+| 4 | The patient service centres' operations head | "KH-ATL-03, one of our two Atlanta patient service centres, has the worst no-show rate on my Q3 report. I am being asked to add a receptionist there or close it. Is the centre really worse?" | A second receptionist, new reminder calls, or a closure notice for KH-ATL-03 | A neighbourhood loses its centre on a rate read wrongly, or a real problem keeps costing slots every day |
+| 5 | The marketing head | "Our free at-home collection offer lifted bookings 9 percent. I want to offer it to every patient in all six metros. Can you confirm it worked?" | Whether the offer goes to every patient in all six metros, stays as it is, or stops | Every free collection costs us a phlebotomist's visit, so an offer extended on a lift it did not cause spends that money for nothing |
+
+I want one answer per question: a sentence I can carry into the board meeting, the evidence behind
+it, what would change it, and what you would have me do.
+
+---
+
+## Which files has my data team sent, and what is in each?
+
+**Who needs the answer.** Every group, before it counts anything. Each file comes from a different
+system, and a group that counts the wrong file, or counts the right one the wrong way, answers with
+confidence and is wrong.
+
+**The questions on the way.** Which system wrote each file? How many rows came out? Where are the
+files, and who else holds them?
+
+My data team exported every file on Friday 16 October 2026, as each system gives it, and has
+written up every file and column in the data dictionary,
+`briefs/C2_W03_D01_data_dictionary_STUDENT.md`. They have not checked the files against that
+description, so what the files hold beyond it is yours to find.
+
+| File | The system it comes from | Rows |
 |---|---|---|
-| 1 | The finance head | "The board will ask me where the plan's growth went. Where does our lab revenue actually come from, and which branch of it is short?" |
-| 2 | The patient service centres' operations head | "Bookings fell in two of our metros in Q3. Before I send a field team or cut staff there, I need to know how far they fell, and why." |
-| 3 | The finance head | "The claims say one thing and the collections say another. Which claims are unpaid, how much money is that, and can I trust the figure I report?" |
-| 4 | The patient service centres' operations head | "KH-ATL-03, one of our Atlanta patient service centres, has the worst no-show rate on my monthly report. I am being asked to add a receptionist there or close it. Is the centre really worse?" |
-| 5 | The marketing head | "Our free at-home collection offer lifted bookings 9 percent. I want to offer it to every patient in all six metros. Can you confirm it worked?" |
+| `C2_W03_D01_patients_STUDENT.csv` | The patient register | 6,700 |
+| `C2_W03_D01_sites_STUDENT.csv` | The site list, laboratories and patient service centres | 18 |
+| `C2_W03_D01_test_catalogue_STUDENT.csv` | The price list of tests and panels | 16 |
+| `C2_W03_D01_bookings_legacy_STUDENT.csv` | The booking system we have used since before Q2 | 11,729 |
+| `C2_W03_D01_bookings_newsys_STUDENT.csv` | The new booking system | 153 |
+| `C2_W03_D01_booking_tests_STUDENT.csv` | The tests and panels on each booking | 51,456 |
+| `C2_W03_D01_claims_STUDENT.csv` | The billing system's export of claims | 11,356 |
+| `C2_W03_D01_remittances_STUDENT.csv` | The posting system: payers' remittances and the centres' card and cash desks | 11,343 |
+| `C2_W03_D01_appointments_STUDENT.csv` | The patient service centres' visit register for Q3 | 7,133 |
+| `C2_W03_D01_campaign_STUDENT.csv` | Marketing's list for the free at-home collection offer | 2,381 |
 
-I want one answer per question: a sentence I can carry into the board meeting, the evidence behind it,
-what would change it, and what you would have me do.
+The rows exclude each file's header line. The files are in `data/` beside this note, and every group
+holds the same bytes, so one group's count can be checked against another's.
 
-## What my data team has sent you
+---
 
-Ten files, exported as each system gives them. My data team has written up every file and column in
-the data dictionary (`C2_W03_D01_data_dictionary_STUDENT.md`). They have told me two things they
-already know, and they are in the dictionary too: two metros changed booking systems in Q3, and the
-posting system has a different id format from the claims export.
+## How does your week run, and how is it scored?
 
-| File | The system it comes from |
-|---|---|
-| `C2_W03_D01_patients_STUDENT.csv` | The patient register |
-| `C2_W03_D01_sites_STUDENT.csv` | The site list, laboratories and patient service centres |
-| `C2_W03_D01_test_catalogue_STUDENT.csv` | The test and panel price list |
-| `C2_W03_D01_bookings_legacy_STUDENT.csv` | The booking system we have used since before Q2 |
-| `C2_W03_D01_bookings_newsys_STUDENT.csv` | The new booking system |
-| `C2_W03_D01_booking_tests_STUDENT.csv` | The tests and panels on each booking |
-| `C2_W03_D01_claims_STUDENT.csv` | The billing export |
-| `C2_W03_D01_remittances_STUDENT.csv` | The posting system: payers' remittances and the centres' cash desks |
-| `C2_W03_D01_appointments_STUDENT.csv` | The patient service centres' visit register, Q3 |
-| `C2_W03_D01_campaign_STUDENT.csv` | The free at-home collection offer: who was offered it, and who took it up |
+**Who needs the answer.** Every learner, today. Each graded event has its own day, and a group that
+learns on Thursday what Saturday's panel asks has lost three days.
 
-They are in `data/` beside this pack, and every group holds the same files.
+**The questions on the way.** What happens on each day? When is each event scored, and on what?
 
-## How this week runs for you
+### What happens on each day?
 
-You are the analysts I will question. Each group takes one of the five questions, and the Programme
-Head allocates them on Monday 19 October. Each group presents to a panel on Friday 23 October where
-the roster allows, or on Saturday 24 October, with a live demo run on these files, and the panel will
-ask for your opinion, your evidence and what you would have done differently. Your group's brief
-(`C2_W03_D01_brief_{n}_{name}_STUDENT.md`) says what your question feeds and what you ship.
+You are the analysts I will question. Each group takes one of the five questions on Monday 19
+October, when the Programme Head allocates them, and writes it in its own words before anyone opens
+a notebook. Tuesday 20 October is Dussehra, a holiday. On Wednesday 21 October each group answers a
+short checkpoint and states its headline claim. On Thursday 22 October every learner sits a mock
+interview, and the builds are finished around it. On Friday 23 October an industry expert runs group
+discussions and the first presentations, and on Saturday 24 October the presentations close with a
+live demo on these files, in front of a panel that asks for your opinion, your evidence and what you
+would have done differently.
 
-Before anyone opens a notebook, write my question in your own words and say which part of the method
-you already know answers it. That is Monday's work, in the translation worksheet
-(`C2_W03_D01_translation_worksheet_STUDENT.md`).
+Your group's brief, `briefs/C2_W03_D01_brief_{n}_{name}_STUDENT.md`, says what your question feeds,
+the ways a group could answer it and what you ship. The translation worksheet,
+`briefs/C2_W03_D01_translation_worksheet_STUDENT.md`, is Monday's work: my question in your words,
+mapped onto the method you already own.
 
-## How you are scored
+### When is each event scored, and on what?
 
 <!-- sync:rubric:W03 -->
 **Mini project, 40 marks.** The first four criteria are scored once for the group, and every member receives those 34 marks; presentation and defence is scored for each learner on 6 marks, so a silent teammate cannot ride the group's score.
@@ -108,8 +183,16 @@ you already know answers it. That is Monday's work, in the translation worksheet
 Mock R1 runs for every learner on Thursday 22 October. The GD rounds run on Friday 23 October and close on the morning of Saturday 24 October. The presentations run on Friday 23 October where the roster allows and on Saturday 24 October, when every Build 1 grade closes.
 <!-- /sync:rubric:W03 -->
 
-## Who checks your work
+---
 
-My team will review everything before it reaches me. Kavya Nair, the senior analyst on your team at the GCC, checks
-each group's work before it leaves the team: the baseline, the denominator, the evidence, and a second way
-to reach the same number.
+## Who checks your work before it reaches me?
+
+**Who needs the answer.** Every group, before anything leaves the team. I will act on what reaches
+me, so whatever is wrong in it becomes my mistake in front of the board.
+
+**The questions on the way.** Who reviews it? Which four things does every review ask for?
+
+Kavya Nair, the senior analyst on your team at the GCC, checks each group's work before it leaves
+the team. Every review asks for four things: the baseline your number is compared with, the
+denominator every rate is out of, the evidence behind each claim, and a second way to reach the same
+number. Work that answers all four reaches me; work that misses one goes back to the group.

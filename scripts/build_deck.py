@@ -164,15 +164,28 @@ def diagram_for(lines):
     return None
 
 
+COMMENT_LINE = re.compile(r"^\s*<!--.*-->\s*$")
+
+
 def parse(md):
-    slides, cur = [], None
+    """Split the markdown into (title, body lines) slides at each `## ` heading.
+
+    A whole-line HTML comment outside a code fence, such as a sync block's opening and closing
+    markers, is the source talking to itself, so it never reaches a slide; the lines between the
+    markers do.
+    """
+    slides, cur, fenced = [], None, False
     for line in md.splitlines():
+        if line.strip().startswith("```"):
+            fenced = not fenced
         m = re.match(r"^## (.+)$", line)
         if m:
             if cur:
                 slides.append(cur)
             cur = (m.group(1).strip(), [])
         elif cur is not None and line.strip() != "---":
+            if not fenced and COMMENT_LINE.match(line):
+                continue
             cur[1].append(line)
     if cur:
         slides.append(cur)
