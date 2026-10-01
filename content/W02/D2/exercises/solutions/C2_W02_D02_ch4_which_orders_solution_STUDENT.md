@@ -18,7 +18,7 @@ to the feed.
 | 3 | predict | b | In ON the dates decide which payments count as a match, before the join: V-4 has none and V-5's only payment is outside the window, so both keep NULL payment columns and both are listed. | a: forgets V-5, whose payment falls outside the ON condition. c: that was the WHERE version. d: V-9 is not an order. |
 | 4 | design | c | Never paid means no payment row at all, and V-5 has one; it was collected late, which is a question about days to pay, never a reason to chase the customer. | a: a late payment is one payment, not two. b: the ON version answers "not paid within Q2", a different question from never paid. d: V-5 is in the orders table. |
 | 5 | predict | a | By order and instalment only V-3's instalment 1 was posted twice, and sum less max is 1,200 less 600: 600 beyond one payment. | b: V-2's two rows are two instalments, real cash. c: V-2's instalment 2 was posted once. d: counts both of V-3's postings as surplus. |
-| 6 | design | b | NOT EXISTS and the LEFT JOIN that keeps the misses both treat a NULL id as no match, so the list stays the same. | a: `x NOT IN (..., NULL)` is never true, so NOT IN returns no rows at all. c: NOT IN breaks and NOT EXISTS does not. d: two of the ways are untouched. |
+| 6 | design | b | NOT EXISTS and the LEFT JOIN that keeps the misses both treat a NULL id as no match, so the list stays the same. | a: `x NOT IN (..., NULL)` is never true, so NOT IN returns no rows at all. c: the two read one subquery and still differ, since NOT IN breaks on the NULL and NOT EXISTS does not. d: NOT EXISTS and the LEFT JOIN are untouched. |
 
 ## Which item is worth arguing about?
 

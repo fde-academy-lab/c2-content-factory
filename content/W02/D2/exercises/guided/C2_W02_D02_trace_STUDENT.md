@@ -163,7 +163,7 @@ d) None, since an INNER join keeps each order once
 ### Q3. What does the LEFT join show for T-4, and what does that mean for Anand?
 
 a) Nothing, since T-4 has no payment to join to
-b) One row with NULL payment columns: booked, never paid
+b) One row with NULL in every payment column
 c) One row with a paid amount of zero, already filled in
 d) Two rows, one for the order and one for its payment
 

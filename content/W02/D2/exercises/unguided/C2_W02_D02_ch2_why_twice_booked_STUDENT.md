@@ -54,7 +54,7 @@ d) 545: every order plus every payment row
 
 The draft sums `o.amount` over that join, `FILTER (WHERE p.payment_id IS NOT NULL)`, and reports collected well above Rs 20,00,000. Every row on it is a real order beside a real payment. Why is the total wrong?
 
-a) the sum runs at the payment's grain: each amount repeats per row
+a) the sum runs per payment row, repeating each order's amount
 b) FILTER counts the unpaid orders as paid, each at its booked amount
 c) the LEFT JOIN adds NULL rows, and sum() counts each as an order
 d) the feed stores each amount twice, once for every instalment
@@ -73,8 +73,8 @@ Four ways a team could stop the double count on this week:
 Which fix gives Anand an honest booked figure and keeps the repeats visible for a double-paid list?
 
 a) B, since DISTINCT removes every repeat, whatever caused it
-b) C, since it removes the retries and the second instalments
-c) A: one row per order, and the count of payment rows kept
+b) C, since it keeps one posting per instalment and drops every retry row
+c) A, since it joins one row per order and keeps each order's row count
 d) D, since only a repaired feed can ever be trusted
 
 ### Q4. How much booking does DISTINCT lose?
@@ -82,7 +82,7 @@ d) D, since only a repaired feed can ever be trusted
 In the invented week, 160 of the 400 orders share their amount with at least one other order, across 60 distinct amounts. How many orders' amounts does `sum(DISTINCT o.amount)` leave out of booked?
 
 a) 60, one for each amount that repeats
-b) 100: all but one per shared amount
+b) 100, all but one per shared amount
 c) 160, every order that shares an amount
 d) none, since DISTINCT keeps every order
 

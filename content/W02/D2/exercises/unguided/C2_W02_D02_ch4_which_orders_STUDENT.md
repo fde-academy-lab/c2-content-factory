@@ -91,7 +91,7 @@ V-5 was paid on 3 October, three days after the quarter closed. On the definitio
 
 a) on the double-paid list, since it was paid late
 b) on the unpaid list, since nothing arrived within Q2
-c) on no list: it was paid, three days after the close
+c) on no list, since it was paid after Q2 closed
 d) on the list of payments that match no order
 
 ### Q5. What does the double-paid list hold, grouped the right way?
@@ -107,10 +107,10 @@ d) V-3's instalment 1, and 1,200
 
 The feed will soon carry refund rows whose `order_id` is NULL. Which way of writing the unpaid list stays correct?
 
-a) NOT IN, since it compares every single order id
-b) NOT EXISTS, or LEFT JOIN keeping the misses
-c) either, since both read the same subquery
-d) neither, since a NULL id breaks every anti-join
+a) NOT IN, since it checks each order id against every id in the list
+b) NOT EXISTS or the LEFT JOIN, since a NULL id matches no order
+c) NOT IN and NOT EXISTS alike, since both read one subquery
+d) none of them, since a NULL id breaks every anti-join
 
 ---
 

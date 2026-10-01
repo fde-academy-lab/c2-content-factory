@@ -91,5 +91,5 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 - They stay, since the join was written as a LEFT one
 - They vanish, since a NULL date fails the WHERE  <- correct
-- They stay, with the date filled in as today's
+- They stay, and only the June payments drop out
 - They raise an error, since NULL cannot be compared

@@ -44,19 +44,19 @@ Post exactly this shape: xxxxxx
 
 Of the three plausibility checks, which ones fail report X?
 
-a) none
-b) the gap check
+a) none of the three
+b) the gap check alone
 c) all three
-d) the channel check
+d) the channel check alone
 
 ### Q2. Which of these checks stops report Y?
 
 Report Y's gap of 4,000 is right. Which one of these checks stops it?
 
 a) the gap against the unpaid list's own total
-b) booked against orders alone, 65,000 to 50,000
+b) booked on the page against booked from orders alone
 c) the gap against booked less collected
-d) collected at most booked, on every channel shown
+d) collected at most booked, on every channel the page shows
 
 ### Q3. Which pair of checks stops report Z?
 
