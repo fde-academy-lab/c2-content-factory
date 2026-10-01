@@ -17,8 +17,8 @@ explain is separated from the part that still needs a look.
 > Anand Iyer, finance controller, Kalpa Retail
 
 **Who needs the answer.** Anand signs the page and sends it to the CEO's Monday numbers, and the
-channel heads chase their own unpaid orders from it. A gap column that reads zero stands every one of
-them down.
+channel heads chase their own unpaid orders from it. A wrong gap column sends a channel after
+customers who paid, or stands it down while its orders sit unpaid.
 
 - **Booked** is every order at its amount; **collected** counts each payment once; the **gap** is
   booked less collected. An order nobody paid has NULL in `collected`.

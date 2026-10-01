@@ -81,16 +81,16 @@ yourself."""
 # Each TODO is (number, prompt, {letter: option text}, key, fills-the-slot-with, why the others fail).
 E_TODOS = {
     1: ("Which rows give the baseline that booked is reconciled to?",
-        {"a": "orders o WHERE o.quarter = 'Q2'",
-         "b": "orders o WHERE o.quarter = 'Q2' AND o.status = 'delivered'",
-         "c": "orders o JOIN payments p ON p.order_id = o.order_id WHERE o.quarter = 'Q2'",
-         "d": "orders o LEFT JOIN payments p ON p.order_id = o.order_id WHERE o.quarter = 'Q2'"},
+        {"a": "each Q2 order once, at its amount, paid or not",
+         "b": "the Q2 orders delivered to their customers",
+         "c": "the Q2 orders that found a payment, one row per payment",
+         "d": "each Q2 order, once for every payment row beside it"},
         "a", "b keeps only delivered orders, which is a different definition from Monday's booked; c "
              "drops every unpaid order and repeats every two-instalment order; d keeps every order "
              "and still repeats the two-instalment ones, so its sum is the fan-out."),
     2: ("What grain should the payments CTE have before it meets the orders?",
         {"a": "every payment row summed per order, as the feed posted it",
-         "b": "each instalment once, then summed per order",
+         "b": "each instalment counted once, then summed per order",
          "c": "one row per payment, joined straight to the orders",
          "d": "only the earliest payment row of each order, summed"},
         "b", "a counts a retried instalment twice, so collected carries the repeats; c is no grain at "
@@ -104,11 +104,11 @@ E_TODOS = {
         {"a": "p.order_id IS NULL",
          "b": "p.paid_date NOT BETWEEN '2026-07-01' AND '2026-09-30'",
          "c": "p.amount < o.amount",
-         "d": "p.payment_id IS NOT NULL"},
+         "d": "o.order_id IS NULL"},
         "a", "b is unknown for a NULL date, so it keeps nothing an unpaid order carries; c compares one "
              "payment row with the whole order, so it lists the orders paid in instalments and loses the "
-             "unpaid ones, whose amount is NULL; d keeps the rows that found a payment, the opposite of "
-             "the list."),
+             "unpaid ones, whose amount is NULL; d tests the orders side of the join, which a LEFT JOIN "
+             "from orders never leaves NULL, so the list comes back empty."),
     5: ("Which query lists the payments the gateway posted twice?",
         {"a": "GROUP BY p.order_id HAVING count(*) > 1",
          "b": "GROUP BY p.order_id, p.paid_date HAVING count(*) > 1",
@@ -202,7 +202,12 @@ Every later figure reconciles to this one. A finance team already holds this num
 write it down first.
 """),
         code(todo_block(1) + f"""
-options_1 = {E_TODOS[1][1]!r}
+options_1 = {{
+    "a": "orders o WHERE o.quarter = 'Q2'",
+    "b": "orders o WHERE o.quarter = 'Q2' AND o.status = 'delivered'",
+    "c": "orders o JOIN payments p ON p.order_id = o.order_id WHERE o.quarter = 'Q2'",
+    "d": "orders o LEFT JOIN payments p ON p.order_id = o.order_id WHERE o.quarter = 'Q2'",
+}}
 choice_1 = {fill[1]}
 
 baseline = run(f\"\"\"
@@ -215,7 +220,7 @@ kit.columns([r["channel"] for r in baseline], [("booked, Rs crore", [float(r["bo
             fmt=crore, title="Q2 booked by channel, from orders alone")"""),
         code("""orders_in = sum(r["orders_in"] for r in baseline)
 booked = sum(r["booked"] for r in baseline)
-kit.check("the baseline holds all 462 Q2 orders", orders_in == 462, f"{orders_in} orders")
+kit.check("the baseline holds all 462 Q2 orders", orders_in == 462, "count unprinted")
 kit.check("booked is Monday's Rs 9,84,00,000", booked == 98400000, kit.rupees(booked))
 kit.check("three channels, app, store and web", [r["channel"] for r in baseline] == ["app", "store", "web"])"""),
     ]
@@ -257,7 +262,7 @@ kit.flow(["payments\\nas the feed posted them", "your grain\\nTODO 2", "your joi
         code("""posted_alone = one("SELECT sum(amount) FROM payments WHERE order_id IN (SELECT order_id FROM orders WHERE quarter = 'Q2')")
 rows_out = sum(r["rows_out"] for r in part2)
 collected = sum((r["collected"] or 0) for r in part2)
-kit.check("rows out equal rows in", rows_out == orders_in, f"{rows_out} rows out, {orders_in} in")
+kit.check("rows out equal rows in", rows_out == orders_in, "counts unprinted")
 kit.check("booked after the join equals booked from Part 1", sum((r["booked"] or 0) for r in part2) == booked)
 kit.check("Part 2's collected equals the reference figure from the setup cell", collected == REF["collected"],
           "equal, figures unprinted")"""),
@@ -348,9 +353,8 @@ kit.flow(["payments on Q2 orders", "grouped as\\nTODO 5 says", "surplus as\\nTOD
 kit.check("every row on the list was posted more than once", all(r["times_posted"] > 1 for r in double_paid))
 TRIPLE = "(VALUES (1500.00), (1500.00), (1500.00)) AS p(amount)"   # one instalment of 1,500, posted three times
 triple = one(f"SELECT {options_6[choice_6]} FROM {TRIPLE}")
-triple_ref = one(f"SELECT sum(p.amount) - least(sum(p.amount), 1500.00) FROM {TRIPLE}")
-kit.check("your surplus expression agrees with the capped route on an invented instalment posted three times",
-          triple == triple_ref, "tested on the invented case")"""),
+kit.check("your surplus expression holds on an invented instalment posted three times",
+          fingerprint(int(triple)) == """ + repr(FP_TRIPLE) + """, "tested on the invented case, figure unprinted")"""),
     ]
     if solution:
         cells.append(md(why[5] + "\n\n" + why[6]))
@@ -361,13 +365,13 @@ which the sentence to Anand needs:
 
 ```python
 show(double_paid, "Part 4: Q2 instalments posted more than once", money=["posted_twice"])
-print(one("SELECT count(*) FROM payments p LEFT JOIN orders o ON o.order_id = p.order_id "
-          "WHERE o.order_id IS NULL"), "payments match no order")
+print(one("SELECT count(*) FROM payments p WHERE NOT EXISTS "
+          "(SELECT 1 FROM orders o WHERE o.order_id = p.order_id)"), "payments match no order")
 ```
 """),
         _turn(key, 'show(double_paid, "Part 4: Q2 instalments posted more than once", money=["posted_twice"])\n'
-                   'print(one("SELECT count(*) FROM payments p LEFT JOIN orders o ON o.order_id = p.order_id "\n'
-                   '          "WHERE o.order_id IS NULL"), "payments match no order")'),
+                   'print(one("SELECT count(*) FROM payments p WHERE NOT EXISTS "\n'
+                   '          "(SELECT 1 FROM orders o WHERE o.order_id = p.order_id)"), "payments match no order")'),
         md("""
 ## Part 5. What does the page say, and which check proves it?
 
@@ -407,19 +411,23 @@ def run_check(letter, rows, surplus):
         return sum((r["collected"] or 0) for r in rows) + surplus == posted_alone
     if letter == "c":
         return all(r["gap"] is not None and r["gap"] >= 0 for r in rows)
-    return len(rows) == 3 and all(r["orders"] > 0 for r in rows)
+    return len(rows) == 3 and all(r["orders"] > 0 and (r["collected"] or 0) > 0 for r in rows)
 
 
 surplus = sum((r["posted_twice"] or 0) for r in double_paid)
-padded = [dict(r, collected=(r["collected"] or 0) + (r["posted_twice"] or 0),
-               gap=(r["gap"] or 0) - (r["posted_twice"] or 0)) for r in page]
+posted_ch = {{r["channel"]: r["posted"] for r in run(\"\"\"
+SELECT o.channel, sum(p.amount) AS posted
+FROM payments p JOIN orders o ON o.order_id = p.order_id
+WHERE o.quarter = 'Q2' GROUP BY o.channel\"\"\")}}
+padded = [dict(r, collected=posted_ch.get(r["channel"], 0),
+               gap=(r["booked"] or 0) - posted_ch.get(r["channel"], 0)) for r in page]
 kit.vflow(["the page", "gaps against the two lists", "the check you chose", "the sentence to Anand"],
           kinds=["plain", "good", "good", "known"], title="Part 5, what must hold before the page leaves")"""),
         code("""kit.check("the page's orders add to 462 and its booked to Rs 9,84,00,000",
           sum(r["orders"] for r in page) == 462 and sum((r["booked"] or 0) for r in page) == booked)
 kit.check("the page's gaps add to the unpaid list's total plus anything paid short",
           sum(r["gap"] or 0 for r in page) == sum(r["booked"] for r in unpaid) + paid_short, "equal, figures unprinted")
-kit.check("the check you chose passes this page and fails a copy of it whose collected is wrong",
+kit.check("the check you chose passes this page and fails a copy of it whose collected reads posted",
           run_check(choice_8, page, surplus) and not run_check(choice_8, padded, surplus), "tested on both pages")"""),
     ]
     if solution:
@@ -466,8 +474,8 @@ S_TODOS = {
          "b": "orders o JOIN payments p ON p.order_id = o.order_id",
          "c": "payments p LEFT JOIN orders o ON o.order_id = p.order_id",
          "d": "payments p JOIN orders o ON o.order_id = p.order_id AND o.quarter IN ('Q1', 'Q2')"},
-        "c", "a starts from orders, so a payment with no order never appears and an unpaid order adds a "
-             "row the feed does not hold; b and d keep only payments that match an order."),
+        "c", "a starts from orders, so the payments with no order never appear and the homes fall short "
+             "of the table; b and d keep only payments that match an order."),
     2: ("Which condition keeps only the payments that match no order?",
         {"a": "p.order_id IS NULL",
          "b": "o.order_id IS NULL",
@@ -477,18 +485,18 @@ S_TODOS = {
              "NULL quarter, so it keeps nothing; d keeps every payment that is not on a Q2 order, so "
              "Q1's payments join the ones with no order."),
     3: ("Which rows should the retry list cover for the platform lead?",
-        {"a": "Q2 orders only, the quarter Anand asked about",
-         "b": "Q1 orders only, since Q2 is already on Anand's page",
-         "c": "payments made from 1 July only, whatever order they pay",
-         "d": "both quarters, all the feed holds"},
+        {"a": "the Q2 orders alone, the quarter Anand asked about",
+         "b": "the Q1 orders alone, since Q2 is already on Anand's page",
+         "c": "the payments made from 1 July, whatever order they pay",
+         "d": "the orders of both quarters, everything the feed holds"},
         "d", "a and b split one fault across two reports and leave the platform lead half of it, though "
-             "the lead repairs one feed that carries both quarters; c cuts by payment date, which is not "
-             "how the feed files a retry."),
+             "the lead repairs one feed that carries both quarters; c cuts by payment date, which on this "
+             "feed keeps the same Q2 retries as a and loses Q1's."),
     4: ("Which dates tell the gateway team when the retries happened?",
-        {"a": "the first and last paid_date on the retry list",
+        {"a": "the first and last paid_date of the retries on the list",
          "b": "the first and last day of the quarters the orders belong to",
          "c": "the first and last paid_date of every payment in the feed",
-         "d": "the first and last paid_date of the Q2 retries only"},
+         "d": "the first and last paid_date of the Q2 retries alone"},
         "a", "b and c describe the quarters and the feed, so the window they give starts and ends on days "
              "with no retry; d stops at Anand's quarter, so the earlier retries fall outside it."),
 }
@@ -509,6 +517,9 @@ HAVING count(*) > 1""")
 
 
 FP_RETRIES, FP_WINDOW = _key_fingerprints()
+FP_TRIPLE = hashlib.sha256(repr(int(c2kit.sql(
+    "SELECT " + E_TODOS[6][1][E_TODOS[6][2]] + " AS v FROM (VALUES (1500.00), (1500.00), (1500.00)) AS p(amount)"
+)[0]["v"])).encode()).hexdigest()[:16]
 
 
 def second_case(solution=False, key=False):
@@ -672,13 +683,13 @@ kit.check("every row on the list was posted more than once", all(r["times_posted
 
 ```python
 show(retries, "Part 3: instalments posted more than once", money=["posted_twice"])
-for q in ("Q1", "Q2"):
+for q in sorted({r["quarter"] for r in retries}):
     rows = [r for r in retries if r["quarter"] == q]
     print(q, len(rows), kit.rupees(sum(r["posted_twice"] for r in rows)))
 ```
 """),
         _turn(key, 'show(retries, "Part 3: instalments posted more than once", money=["posted_twice"])\n'
-                   'for q in ("Q1", "Q2"):\n'
+                   'for q in sorted({r["quarter"] for r in retries}):\n'
                    '    rows = [r for r in retries if r["quarter"] == q]\n'
                    '    print(q, len(rows), kit.rupees(sum(r["posted_twice"] for r in rows)))'),
         md("""

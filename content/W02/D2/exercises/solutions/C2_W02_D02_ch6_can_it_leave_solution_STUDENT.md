@@ -6,7 +6,7 @@ Answers: 1a 2b 3c 4d 5b 6c
 
 The set tests whether a check can fail at all, which check stops each wrong report, and what leaves
 the team on the day checks fail. Items 4, 5 and 6 are design items: the two checks that cover three
-wrong reports, which figures leave when two checks fail together, and the source outside Kalpa's own
+wrong reports, which figures leave when checks fail late, and the source outside Kalpa's own
 tables.
 
 ## What did the set give you to work from?
@@ -26,6 +26,7 @@ on a wrong number.
   against the orders table; booked against the orders table; the gap against booked less collected;
   the gap against the never-paid and paid-short lists; collected plus posted twice against posted
   from the payments table alone.
+- An **open line** names a failed check, what it means and when it will close.
 
 The invented book: 10 orders, booked 50,000. Two orders were never paid, worth 4,000, and no order was
 paid short, so collected, each payment counted once, is 46,000. One payment of 1,000 was posted twice,
@@ -52,9 +53,9 @@ The key is a, "none of the three". X is consistent with itself: collected 46,000
 
 ### Q2. Which one of these checks does report Y pass?
 
-Report Y took its booked from the orders table, as chapter 2's draft did, and summed each order's amount on every payment row for collected. Which one of these checks does it pass?
+Report Y summed each order's amount on every payment row for collected, as chapter 2's draft did. Which one of these checks does it pass?
 
-The key is b, "booked on the page against booked from orders alone". Y's booked came from the orders table, so it matches the table's 50,000; the fan-out sits in collected and in the row count, which is why booked alone cannot be trusted to catch it.
+The key is b, "booked on the page against booked from orders alone". Y's booked is 50,000, the orders table's own figure: the fan-out reached its collected and its row count and never its booked, which is why the booked check alone cannot be trusted to catch a fan-out.
 
 - a, "the gap against the never-paid and paid-short lists": Y's gap of minus 11,000 is far from the lists' 4,000.
 - c, "collected at most booked, on every channel the page shows": 61,000 exceeds 50,000.
@@ -80,15 +81,15 @@ The key is d, "booked against orders alone, and the gap against the two lists". 
 - b, "collected at most booked, and a gap that is not negative": X passes both, with 46,000 against 46,000 and a gap of 0.
 - c, "the gap against booked less collected, and every channel present on the page": all three reports pass both, since each gap is its own booked less its own collected.
 
-### Q5. Which figures leave for Anand when two checks fail late? (Design)
+### Q5. Which figures leave for Anand when checks fail late? (Design)
 
-Late on reporting day the suite runs on a new week's page. Orders, booked and the gap against booked less collected pass. The gap against the two lists fails, 3,000 against 4,000, and collected plus posted twice fails, 48,000 against 47,000. Which figures leave for Anand that day?
+Late on reporting day the suite runs on a new week's page, from a book of its own. Orders on the page match the table, and the gap equals the page's booked less its collected. Booked fails, 62,000 against 60,000 from the orders table; the gap against the two lists fails, 4,000 against 5,500; and collected plus posted twice fails, 58,500 against 55,000 in payments. Which figures leave for Anand that day?
 
-The key is b, "booked alone, with the open line; collected and the gap held". Both failures point at collected: plus the 1,000 posted twice it overshoots posted by 1,000, so a repeat sits inside it, and the gap, computed from that collected, misses the lists by the same 1,000. Booked ties to the orders table alone and passed, so it leaves with the open line naming both checks; collected and the gap wait, and the platform lead hears that day, since the posted check is the feed's.
+The key is b, "booked from orders alone, with the open line; collected and the gap held". The page's booked is wrong, 62,000 against 60,000, and booked recomputed from the orders table alone is right by construction, so that figure leaves, with the open line naming the three failed checks. Collected, plus the 500 the page shows as posted twice, overshoots what the payments table holds by 3,500, so it is held, and the gap, 1,500 short of the two lists, is held with it. The platform lead hears that day, since the posted check is the feed's.
 
-- a, "booked, collected and the gap, with a footnote naming both checks": puts two unreconciled figures on the CEO's page behind a footnote.
-- c, "booked and the gap, since the gap's arithmetic passed; collected held": the gap's own arithmetic only says it equals booked less collected, and with collected wrong the gap is wrong by the same 1,000.
-- d, "nothing at all, until both checks pass again": withholds booked, which ties to the orders table alone and passed.
+- a, "booked, collected and the gap, with an open line naming each failed check": an open line explains a held figure and never licenses one, so this puts the page's wrong booked and two unreconciled figures on the CEO's page.
+- c, "booked and the gap, since the gap's own arithmetic passed; collected held": the gap's own arithmetic only says it equals the page's booked less its collected, so it carries both their errors, and the gap fails its tie-back to the two lists by 1,500.
+- d, "nothing at all, until every check on the page passes again": withholds booked from the orders table, which ties to that table alone and is right whatever the page did.
 
 ### Q6. Which source makes a check Kalpa's own tables cannot pass alone? (Design)
 

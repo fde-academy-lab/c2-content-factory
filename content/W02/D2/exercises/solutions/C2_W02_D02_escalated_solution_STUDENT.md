@@ -39,15 +39,15 @@ postings. A page that drops an order or keeps a repeat fails each of them.
 
 ### Item 1, part 1. Which rows give the baseline that booked is reconciled to?
 
-The key is a, `orders o WHERE o.quarter = 'Q2'`. The baseline is every Q2 order at its amount, from the orders table alone, which is Monday's booked: 462 orders and Rs 9,84,00,000.
+The key is a, "each Q2 order once, at its amount, paid or not", which the notebook runs as `orders o WHERE o.quarter = 'Q2'`. The baseline is every Q2 order at its amount, from the orders table alone, which is Monday's booked: 462 orders and Rs 9,84,00,000.
 
-- b, `orders o WHERE o.quarter = 'Q2' AND o.status = 'delivered'`: keeps only delivered orders, a different definition from Monday's.
-- c, `orders o JOIN payments p ON p.order_id = o.order_id WHERE o.quarter = 'Q2'`: drops every unpaid order and repeats every two-instalment one.
-- d, `orders o LEFT JOIN payments p ON p.order_id = o.order_id WHERE o.quarter = 'Q2'`: keeps every order and still repeats the two-instalment ones, so its sum is the fan-out.
+- b, "the Q2 orders delivered to their customers", run as `orders o WHERE o.quarter = 'Q2' AND o.status = 'delivered'`: keeps only delivered orders, a different definition from Monday's.
+- c, "the Q2 orders that found a payment, one row per payment", run as `orders o JOIN payments p ON p.order_id = o.order_id WHERE o.quarter = 'Q2'`: drops every unpaid order and repeats every two-instalment one.
+- d, "each Q2 order, once for every payment row beside it", run as `orders o LEFT JOIN payments p ON p.order_id = o.order_id WHERE o.quarter = 'Q2'`: keeps every order and still repeats the two-instalment ones, so its sum is the fan-out.
 
 ### Item 2, part 2. What grain should the payments CTE have before it meets the orders? (Design)
 
-The key is b, "each instalment once, then summed per order". A two-instalment order keeps both of its parts, and a retried instalment counts once, so collected holds cash and no repeat.
+The key is b, "each instalment counted once, then summed per order". A two-instalment order keeps both of its parts, and a retried instalment counts once, so collected holds cash and no repeat.
 
 - a, "every payment row summed per order, as the feed posted it": counts a retried instalment twice, so collected carries the repeats.
 - c, "one row per payment, joined straight to the orders": is no grain at all and fans out.
@@ -67,7 +67,7 @@ The key is a, `p.order_id IS NULL`. After the LEFT JOIN an unpaid order carries 
 
 - b, `p.paid_date NOT BETWEEN '2026-07-01' AND '2026-09-30'`: is unknown for a NULL date, so it keeps nothing an unpaid order carries.
 - c, `p.amount < o.amount`: compares one payment row with the whole order, so it lists the orders paid in instalments and loses the unpaid ones, whose amount is NULL.
-- d, `p.payment_id IS NOT NULL`: keeps the rows that found a payment, the opposite of the list.
+- d, `o.order_id IS NULL`: tests the orders side of the join, which a LEFT JOIN from orders never leaves NULL, so the list comes back empty.
 
 ### Item 5, part 4. Which query lists the payments the gateway posted twice?
 

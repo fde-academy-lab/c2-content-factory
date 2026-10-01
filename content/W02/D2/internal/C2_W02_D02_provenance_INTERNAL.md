@@ -97,7 +97,7 @@ and each learner fills the sentence to Anand from their own page.
 7. **The window dedupe is named and sized as an option and never built**, since window functions are
    Wednesday's; its sizing says what it keeps (one posting per order and instalment) and why the draft
    stays inflated.
-8. **The afternoon deck runs 34 slides** on a faculty day: chapter 6 (30), the escalated case's first
+8. **The afternoon deck runs 33 slides after its cover**, 34 in the .pptx, on a faculty day: chapter 6 (30), the escalated case's first
    two parts (20) and the close with the Kahoot (10) are live; the lab's order, the second case and
    the drill are slides marked D, with each drill answer in one breath in their notes.
 9. **No decision workbook.** The volume table does not list one, and the companion carries the day's
@@ -116,7 +116,7 @@ and each learner fills the sentence to Anand from their own page.
     and wording since 1 Oct 2026; the notebooks gather each chapter's under an In the interview heading.
 14. **The Kahoot's second item uses an invented shop** (800 orders, 70 with two payment rows), since the
     row's plan quotes 50 two-payment orders, the retry plant's count.
-15. **The study notes run to about 7,000 words** by `wc -w` against 4,000 to 5,000, counting tables,
+15. **The study notes run to about 8,300 words** (8,345 by `wc -w` on 1 Oct 2026) against 4,000 to 5,000, counting tables,
     code and links, as the Week 1 notes do: six chapters as worked cases with their companies, twelve
     interview answers, the self-test and the day's answer. Nothing was cut to reach a count.
 16. **The pre-read gives two checks for tonight** (the warehouse loads; the six sql files run), both
@@ -142,6 +142,9 @@ and each learner fills the sentence to Anand from their own page.
 22. **The second case's ask leaves the audit's scope to the pair.** The platform lead asks about the
     rows in the feed without naming the quarters, so choosing both quarters is the pair's design call;
     the earlier wording printed it.
+23. **The design share is counted on the sets and the cases**, as the standard's volume table counts
+    exercises: 20 design items of 48. The lab's item 11, which sizes three fixes of one query against
+    each other, is marked Design too, so the share is 21 of 63 with the trace and the lab counted.
 
 ## Invented material
 
@@ -153,7 +156,9 @@ the tiny tables; the escalated case's instalment posted three times at Rs 1,500,
 surplus expression; the chapter 2 set's booked by row type (Rs 12,40,000, Rs 6,30,000, Rs 40,000 and
 Rs 90,000); the chapter 3 set's four checks and the proofs' minutes (1, 10 and 15); the chapter 5
 set's full quarter (1,500 orders, bars of 24, 6 and 15, a sheet of about 60 lines) and its later
-month's gaps; and the chapter 6 set's book of ten orders and its reports X, Y and Z. Every Kalpa person is fictional, as `docs/07_Client_Zero.md` sets them.
+month's gaps; the chapter 6 set's book of ten orders and its reports X, Y and Z, and item 5's page
+from a new week's book (booked 60,000, the two lists 5,500, posted 55,000; the page shows booked
+62,000, collected 58,000, a gap of 4,000 and 500 posted twice). Every Kalpa person is fictional, as `docs/07_Client_Zero.md` sets them.
 
 ## Links, each checked on 1 October 2026
 

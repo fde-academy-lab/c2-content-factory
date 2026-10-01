@@ -7,7 +7,8 @@ problems 1 to 3, the second case in pairs (`unguided/C2_W02_D02_second_case_STUD
 interview drill aloud; problem 4 and whatever is left go home with the take-home. The set has four
 problems, and they climb in difficulty. The first three run on small invented tables written for this
 lab; the fourth runs on the warehouse, on a quarter the day never touched. Work alone first, then
-compare with a neighbour before the TA walks the answers.
+compare with a neighbour before the TA walks the answers. An item marked Design asks you to size
+competing fixes and choose one.
 
 The question over the whole lab is the one Anand asked in the morning, turned to a new corner of the
 book: what did we book, what happened to it afterwards, and how do you know the number is not
@@ -160,7 +161,7 @@ SELECT count(*) AS rows_out,
        round(100.0 * -sum(r.amount) / sum(o.amount), 1) AS refund_rate
 FROM lab_orders o
 LEFT JOIN lab_refunds r ON r.order_id = o.order_id
-WHERE r.refund_date BETWEEN '2026-04-01' AND '2026-06-28';
+WHERE r.refund_date BETWEEN '2026-04-01' AND '2026-06-30';
 ```
 
 | rows_out | booked | refunded | refund_rate |
@@ -174,7 +175,7 @@ b) the three refunded orders, each counted once
 c) the refunded orders, with W-3 counted twice
 d) all six orders, with W-3 counted twice
 
-### Q11. What Q1 refund rate should Anand be given for these six orders?
+### Q11. What Q1 refund rate should Anand be given for these six orders? (Design)
 
 a) 15.3 percent, 18,900 over 1,23,600
 b) 25.0 percent, 18,900 over 75,600

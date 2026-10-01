@@ -108,7 +108,7 @@ A teammate answers four questions from the rows of `orders o JOIN payments p ON 
 The key is d, "store cash received: 2,400". The join's store rows are A-3's two instalments, Q-4 and Q-5, 1,400 + 1,000, which is 2,400. Store's one order was paid, and Q-6 sits on A-7, which nobody booked under any channel, so the feed holds no other store cash and the true answer is 2,400 as well: the INNER join loses nothing this question needs.
 
 - a, "app orders booked: 1": the join holds A-1 alone for app, and app booked A-1 and A-4, so the true answer is 2; the INNER join hides the unpaid A-4.
-- b, "share of booked orders paid: 100 percent": every order in the join has a payment by construction, so the join reads 3 of 3; Kalpa booked four orders and three were paid, so the true share is 3 of 4, 75 percent.
+- b, "share of booked orders paid: 100 percent": every order in the join has a payment by construction, so the join reads 3 of 3; the invented tables book four orders and three were paid, so the true share is 3 of 4, 75 percent.
 - c, "payment rows with no booked order: 0": the join keeps only payment rows that found an order, so it can only read 0; the feed holds one such row, Q-6, so the true answer is 1.
 
 ## Which item is worth arguing about?

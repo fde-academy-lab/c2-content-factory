@@ -17,9 +17,9 @@ from what each compares and what it costs, which is an ordering item.
 > Anand Iyer, finance controller, Kalpa Retail
 
 **Who needs the answer.** Anand chases the orders that make the gap, and his analyst reads the
-reconciliation above the number before the number itself. A report that drops an order and keeps a
-repeated payment can show a surplus, or a gap that looks closed, and nobody chases an order on a page
-that reads fully collected.
+reconciliation above the number before the number itself. A wrong gap sends the collections team
+after customers who paid, or leaves an unpaid order unchased, and nobody can tell which from the
+number alone.
 
 - **Booked** is every order at its amount. **Collected** counts each order and instalment once.
   **Posted** is every payment row the feed holds, repeats included.
@@ -95,7 +95,7 @@ The key is b, "1,800: 1,300 never paid and 500 paid short". Booked 9,000 less co
 
 A second route to collected takes, for each paid order, the smaller of what the feed posted and what was booked. The first route counts each order and instalment once. On which kind of order would the two routes disagree?
 
-The key is a, "a retry the feed wrote under a new instalment number". The instalment route would count a retry written under a new instalment number as a second instalment, while the cap stops at booked, so only there do they part.
+The key is a, "a retry the feed wrote under a new instalment number". The instalment route would count a retry written under a new instalment number as a second instalment, while the cap stops at booked, so of the four kinds only this one parts them. They would also part on a genuine overpayment, which the cap throws away and the instalment route counts, and none of the options describes one.
 
 - b, "an order paid in two instalments of different amounts": both routes count two genuine instalments in full.
 - c, "an order that was never paid at all, such as U-3": both give an unpaid order nothing.
@@ -107,9 +107,9 @@ Before the number goes to Anand, his analyst runs three proofs on the report and
 
 | Proof | What it compares | Minutes |
 |---|---|---|
+| The lists | each list of orders, its total against its bar | 15 |
 | The count | orders on the report against orders in the table | 1 |
 | The bridge | the report's booked, walked bar by bar to its posted | 10 |
-| The lists | each list of orders, its total against its bar | 15 |
 
 In what order should the three proofs run?
 

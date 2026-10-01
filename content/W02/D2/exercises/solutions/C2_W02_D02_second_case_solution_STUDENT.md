@@ -40,7 +40,7 @@ Finance needs.
 
 The key is c, `payments p LEFT JOIN orders o ON o.order_id = p.order_id`. Starting from the payments keeps every row the feed holds, so each lands on a Q1 order, a Q2 order or no order, and the three add to the table.
 
-- a, `orders o LEFT JOIN payments p ON p.order_id = o.order_id`: starts from orders, so a payment with no order never appears, and an unpaid order adds a row the feed does not hold.
+- a, `orders o LEFT JOIN payments p ON p.order_id = o.order_id`: starts from orders, so the payments with no order never appear and the homes fall short of the table.
 - b, `orders o JOIN payments p ON p.order_id = o.order_id`: keeps only payments that match an order.
 - d, `payments p JOIN orders o ON o.order_id = p.order_id AND o.quarter IN ('Q1', 'Q2')`: keeps only payments that match an order.
 
@@ -54,19 +54,19 @@ The key is b, `o.order_id IS NULL`. After that join a payment with no order carr
 
 ### Item 3, part 3. Which rows should the retry list cover for the platform lead? (Design)
 
-The key is d, "both quarters, all the feed holds". The platform lead repairs one feed, and that feed carries both quarters, so the retry list covers everything it holds.
+The key is d, "the orders of both quarters, everything the feed holds". The platform lead repairs one feed, and that feed carries both quarters, so the retry list covers everything it holds.
 
-- a, "Q2 orders only, the quarter Anand asked about": splits one fault across two reports and leaves the lead half of it.
-- b, "Q1 orders only, since Q2 is already on Anand's page": splits one fault across two reports and leaves the lead half of it.
-- c, "payments made from 1 July only, whatever order they pay": cuts by payment date, which is not how the feed files a retry.
+- a, "the Q2 orders alone, the quarter Anand asked about": splits one fault across two reports and leaves the lead half of it.
+- b, "the Q1 orders alone, since Q2 is already on Anand's page": splits one fault across two reports and leaves the lead half of it.
+- c, "the payments made from 1 July, whatever order they pay": cuts by payment date, which on this feed keeps the same Q2 retries as a and loses Q1's, so it leaves the lead the same half of the fault.
 
 ### Item 4, part 4. Which dates tell the gateway team when the retries happened? (Design)
 
-The key is a, "the first and last paid_date on the retry list". The window then starts and ends on a real retry and holds every one, so it bounds the days the fault ran and nothing more.
+The key is a, "the first and last paid_date of the retries on the list". The window then starts and ends on a real retry and holds every one, so it bounds the days the fault ran and nothing more.
 
 - b, "the first and last day of the quarters the orders belong to": describes the quarters, so the window starts and ends on days with no retry.
 - c, "the first and last paid_date of every payment in the feed": describes the feed, so the window starts and ends on days with no retry.
-- d, "the first and last paid_date of the Q2 retries only": stops at Anand's quarter, so the earlier retries fall outside the window.
+- d, "the first and last paid_date of the Q2 retries alone": stops at Anand's quarter, so the earlier retries fall outside the window.
 
 ## What should your request satisfy?
 

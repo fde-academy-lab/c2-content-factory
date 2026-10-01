@@ -88,7 +88,7 @@ C2_W02_D02_06_can_it_leave_STUDENT.ipynb.
 ```timeline
 label: 1 | title: Can hurried checks miss an order? | body: Three plausibility checks on a page that hides one.
 label: 2 | title: Which checks tie to the tables? | body: Five checks, each read outside the report.
-label: 3 | title: Does the suite stop all five? | body: The day's five wrong reports, one by one.
+label: 3 | title: Do the two suites stop all five? | body: The day's five wrong reports, one by one.
 label: 4 | title: Does Kalpa's Q2 page pass? | body: The suite on the real page.
 label: 5 | title: Does Python reach the same? | body: The same numbers from the raw rows.
 label: 6 | title: What leaves when a check fails? | body: What Anand gets late on reporting day. | tone: dark
@@ -162,7 +162,7 @@ for the next slide.
 
 ```mermaid
 flowchart LR
-    C["<b>C. tie-back suite</b><br/>each figure from<br/>one table alone"] --> N["<b>the number leaves</b>"]
+    C["<b>C. tie-back suite</b><br/>each figure from<br/>outside the report"] --> N["<b>the number leaves</b>"]
     D["<b>D. recompute</b><br/>another tool,<br/>the raw rows"] --> N
     S["<b>a settlement file</b><br/>from the gateway<br/>and the bank"] -.-> X["<b>the strongest check</b><br/>a source outside<br/>Kalpa's tables"]
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -237,8 +237,8 @@ LIVE, 2 minutes. Say the wrong output exactly: 3 of 3 passed. This is the chapte
 **The check that catches it.** One that looks outside the report: orders on the report against orders in the table, 4 against 5.
 
 ```notes
-LIVE, 2 minutes. The report is internally consistent and externally wrong. Every plausibility check
-tests the report against itself, which is the Wirecard pattern in miniature.
+LIVE, 2 minutes. The report agrees with itself and disagrees with the tables. Every plausibility
+check tests the report against itself, which is the Wirecard pattern in miniature.
 ```
 
 ---
@@ -285,7 +285,7 @@ in part, since a part-paid order is a gap too; on these tables nothing is paid s
 ---
 
 ## S12. Question: which two wrong pages get through?
-*Does the suite fail every wrong report the day has met?*
+*Do the two suites stop every wrong report the day has met?*
 
 | Wrong page, invented | Where the day met it | Orders | Booked | Collected | Gap |
 |---|---|---|---|---|---|
@@ -365,7 +365,7 @@ A repeat of the same instalment overwrites itself in the dictionary and counts o
 ```notes
 LIVE, 2 minutes. The route shares no join, no GROUP BY and no NULL rule with the SQL report, so a
 mistake in one is unlikely to repeat in the other. Its own blind spot: it assumes a retry repeats the
-same amount, which chapter 3's cap method checked. Each route covers a place the other cannot see.
+same amount, which chapter 3's cap method checked.
 ```
 
 ---
@@ -375,17 +375,19 @@ same amount, which chapter 3's cap method checked. Each route covers a place the
 
 ```mermaid
 flowchart LR
-    F["<b>a check fails</b><br/>late on<br/>reporting day"] --> A["<b>a) nothing</b><br/>until it is fixed"]
-    F --> B["<b>b) booked</b><br/>with the open line,<br/>collected held"]
-    F --> C["<b>c) collected</b><br/>with a footnote"]
-    F --> D["<b>d) last week's</b><br/>collected"]
+    F["<b>a check fails</b><br/>late on<br/>reporting day"] --> A["<b>a) nothing</b><br/>until the check<br/>is fixed"]
+    F --> B["<b>b) booked</b><br/>from orders alone,<br/>collected held"]
+    F --> C["<b>c) collected</b><br/>with an open line<br/>on the failure"]
+    F --> D["<b>d) last week's</b><br/>collected, which<br/>passed every check"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     class F bad
     class A,B,C,D unknown
 ```
 
-**Question.** Which does the team send? a) nothing until the check is fixed; b) booked, which ties to orders alone, with the open line named and collected held; c) the collected figure with a footnote saying one check failed; d) last week's collected figure.
+An open line names a failed check, what it means and when it will close.
+
+**Question.** Which does the team send? a) nothing, until the check is fixed and the open line is closed; b) booked from orders alone, with the open line; collected held; c) collected, with an open line saying that one check failed; d) last week's collected, which passed every check.
 
 ```notes
 LIVE, 1 minute. A failed check is information, and the day it fails matters: late on reporting day
@@ -400,7 +402,7 @@ there may be no time to fix it. Take letters.
 | The check that fails | What it means | What Anand gets that day | Who fixes it |
 |---|---|---|---|
 | Orders against the table | The join dropped or repeated an order | Booked; collected held | You |
-| Booked against orders alone | A fan-out or a dropped order | Booked from orders alone; collected held | You |
+| Booked against orders alone | A fan-out that reached booked, or a dropped order | Booked from orders alone; collected held | You |
 | The gap against booked less collected | A NULL fell out of a sum | The page with the gap recomputed | You |
 | The gap against the two lists | A list or a bar is wrong | Booked and collected, the gap provisional | You, with Kavya |
 | Collected plus posted twice against posted | The feed changed | Booked; collected held; the lead told | The platform lead |
@@ -422,7 +424,7 @@ before a joined number reaches Finance, and say what you do when it fails at the
 |---|---|
 | Can hurried checks miss an order? | Yes: 3 of 3 pass the quarter-in-WHERE page, which hides T-4 |
 | Which checks tie to the tables? | Five checks recompute orders, booked, the gap and posted outside the page |
-| Does the suite stop all five? | Plausibility lets 2 of 5 through; the tie-back suite stops all 5 |
+| Do the two suites stop all five? | Plausibility lets 2 of 5 through; the tie-back suite stops all 5 |
 | Does Kalpa's Q2 page pass? | Yes, 5 of 5: 462 against 462, Rs 9,84,00,000 against Rs 9,84,00,000 |
 | Does Python reach the same? | Yes: orders, booked, collected and the gap all match |
 | What leaves when a check fails? | Booked leaves with the open line; collected is held; the owner hears that day |
@@ -569,9 +571,10 @@ from a LEFT JOIN that keeps the rows whose payment key IS NULL, or from NOT EXIS
 booked total checked against total booked less total collected, less anything paid short, each
 computed without the list; never NOT IN, which returns nothing once the subquery holds a NULL. When revenue doubles and every row looks fine, look at the grain: every row is real and the
 sum runs per payment, so bring the many side to one row per order and recompute each table alone.
-The validation design is counts, tie-backs to each table alone, one independent recomputation and a
-test of the suite on known wrong reports; when a check fails late on reporting day, booked leaves
-with the open line named and collected is held. An INNER join is honest when the unmatched rows are
+The validation design is counts, including a unique key on the one side and the unmatched keys on
+the other; tie-backs to each table alone; one independent recomputation on a feed shown complete to
+the cut-off; and a test of the suite on known wrong reports. When a check fails late on reporting
+day, booked leaves with the open line named and collected is held. An INNER join is honest when the unmatched rows are
 outside the question by definition, such as days to the first payment for paid orders, and the
 report says so.
 ```
@@ -599,13 +602,15 @@ HAVING COUNT(*) > 1 by order finds every order with more than one payment row, l
 instalments included; a retry is one order and instalment posted twice. A joined total is reconciled
 by recomputing it from the source table alone and naming every rupee of difference as a move with
 its list. Two errors that cancel are found by counting first and then splitting the difference into
-moves with definitions, so each error gets its own bar. A gap that looks too small is sized by
-channel and by order, since a small total can be one large invoice, and by age, since an old unpaid
-order is overdue; the cost of chasing is set against the cash, and the large, old orders go first.
-The one check to keep is orders on the report against orders in the table: it reads no rupee and
-catches both ways a join goes wrong, a fan-out and a dropped order. It misses what goes wrong after
-the join, posted read as collected and the gap summed past a NULL, which is why the gap's tie-back to
-the two lists comes second.
+moves with definitions, so each error gets its own bar. A gap that looks too small is sized as a
+share of booked, then by channel and by order, since a small total can be one large invoice, and by
+age, since an old unpaid order is overdue; the cost of chasing is set against the cash, the large,
+old orders go first, and booked and collected stay beside the gap. The one check to keep is orders
+on the report against orders in the table: it reads no rupee and catches both ways a join goes
+wrong, a fan-out and a dropped order. It misses what goes wrong after the join, posted read as
+collected and the gap summed past a NULL, which is why the gap's tie-back to the two lists is added
+second. That tie-back stops all five wrong pages and still comes second, because the lists are
+queries of their own that can carry the page's mistake, while the count reads nothing but orders.
 ```
 
 ---

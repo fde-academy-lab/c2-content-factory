@@ -1547,7 +1547,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
       x: "The double-paid list is written as GROUP BY order_id HAVING COUNT(*) > 1, and it names T-2 and T-3. The decision it would mislead is a refund call to both customers, and T-2's second row is its second instalment, paid on time." },
     { r: 3, view: "list", list: "dupInst", s: S("LEFT", "order", "on", "pay"), lit: 1, t: "What makes a retry a retry?",
       x: "A retry is the same instalment posted twice, so the list groups by order_id and instalment_no and keeps only T-3, with Rs 1,500 posted twice, the posted-twice bar exactly. T-2 leaves the list, because its two rows are two different instalments. Kavya closes chapter 4: \"" + KAVYA_CH[3] + "\"" },
-    { r: 4, view: "join", s: S("LEFT", "once", "on", "pay"), lit: 4, t: "Why would the gap column read zero?",
+    { r: 4, view: "join", s: S("LEFT", "once", "on", "pay"), lit: 4, t: "Is the gap column right, and which check proves it?",
       x: "Add each order's gap, booked less collected, and T-4's collected is NULL, so its gap is NULL and sum() skips it: app's gap column would say 0 against a true Rs 800. Written as sum(booked - coalesce(collected, 0)), T-4 counts its whole Rs 800, and the gap below is Rs 800 again. Kavya closes chapter 5: \"" + KAVYA_CH[4] + "\"" },
     { r: 4, view: "join", s: S("LEFT", "once", "on", "pay"), lit: 4, t: "What does the sentence to Anand say?",
       x: "In Q2 the invented book shows Rs 5,800 booked on five orders and Rs 5,000 collected, each payment counted once. The gap of Rs 800 is one order, T-4 on app, with no payment. The feed posted Rs 1,500 twice on T-3 when the gateway retried, and that copy is left out. Five orders in, five rows out." },

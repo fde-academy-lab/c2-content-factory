@@ -110,7 +110,7 @@ d) each retry were posted a day after the payment it repeats
 
 ### Q6. Which check proves the fixed join added and lost nothing?
 
-The fixed join returns 400 rows. Which second check proves that it neither added nor lost anything?
+The fixed join is ready for the week's report. Which second check proves that it neither added nor lost anything?
 
 a) the fixed join returns as many rows as the payments table holds
 b) the join's collected sits at or below its booked, as it must

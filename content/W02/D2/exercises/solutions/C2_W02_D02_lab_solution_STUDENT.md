@@ -6,8 +6,9 @@ Answers: 1b 2d 3a 4c 5a 6b 7c 8d 9a 10c 11b
 
 The lab moves the day's three habits to a table the day never used: count rows before trusting a
 join, keep every condition on the right-hand table in the ON clause, and bring the right-hand table to
-the left-hand table's grain before summing. Problem 4 then runs the whole escalated case on Q1, where
-the numbers are yours to find.
+the left-hand table's grain before summing. Item 11 is the design item: each of its rates is what one
+way of fixing the teammate's query returns, so choosing it means sizing the fixes against each other.
+Problem 4 then runs the whole escalated case on Q1, where the numbers are yours to find.
 
 ## What did the lab give you to work from?
 
@@ -147,7 +148,7 @@ SELECT count(*) AS rows_out,
        round(100.0 * -sum(r.amount) / sum(o.amount), 1) AS refund_rate
 FROM lab_orders o
 LEFT JOIN lab_refunds r ON r.order_id = o.order_id
-WHERE r.refund_date BETWEEN '2026-04-01' AND '2026-06-28';
+WHERE r.refund_date BETWEEN '2026-04-01' AND '2026-06-30';
 ```
 
 | rows_out | booked | refunded | refund_rate |
@@ -162,7 +163,7 @@ The key is c, "the refunded orders, with W-3 counted twice". The WHERE on refund
 - b, "the three refunded orders, each counted once": 12,500 + 48,000 + 7,400 is 67,900, which sees the dropped orders and misses W-3 written twice.
 - d, "all six orders, with W-3 counted twice": 75,600 + 48,000 is 1,23,600, which sees W-3 twice and misses the three dropped orders.
 
-### Q11. What Q1 refund rate should Anand be given for these six orders?
+### Q11. What Q1 refund rate should Anand be given for these six orders? (Design)
 
 The key is b, "25.0 percent, 18,900 over 75,600". The numerator is the four refunds on the desk's orders, 1,500 + 6,000 + 4,000 + 7,400, which is 18,900, and the denominator is the six orders counted once each, 75,600. Refunds summed per order in the window and joined with a LEFT join give exactly that: 18,900 over 75,600 is 25.0 percent.
 
@@ -180,7 +181,7 @@ The corrected query for problem 3:
 WITH refunded_per_order AS (
     SELECT order_id, -sum(amount) AS refunded
     FROM lab_refunds
-    WHERE refund_date BETWEEN '2026-04-01' AND '2026-06-28'
+    WHERE refund_date BETWEEN '2026-04-01' AND '2026-06-30'
     GROUP BY order_id
 )
 SELECT count(*) AS rows_out,

@@ -103,11 +103,11 @@ The key is b, "each row carried the gateway's reference, repeated on a retry". A
 
 ### Q6. Which check proves the fixed join added and lost nothing?
 
-The fixed join returns 400 rows. Which second check proves that it neither added nor lost anything?
+The fixed join is ready for the week's report. Which second check proves that it neither added nor lost anything?
 
 The key is d, "each table summed alone equals the join's booked and posted". Booked recomputed from `orders` alone and posted from `payments` alone never join, so they cannot fan out; if the fixed join added or lost anything, one of them disagrees.
 
-- a, "the fixed join returns as many rows as the payments table holds": 400 orders against 515 payment rows would fail on a correct join.
+- a, "the fixed join returns as many rows as the payments table holds": a correct fixed join returns one row for each of the week's 400 orders, against 515 payment rows, so this check fails on a join that is right.
 - b, "the join's collected sits at or below its booked, as it must": it holds whether or not the join went wrong here. Collected is Rs 19,10,000 (booked less the never-paid Rs 90,000); dropping every unpaid order takes booked down to that and no lower, and keeping the ten retries lifts collected to Rs 19,50,000, still under Rs 20,00,000, so the check cannot fail on either fault.
 - c, "the fixed query runs cold, top to bottom, with no error": a query can run cleanly and still be wrong.
 

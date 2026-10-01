@@ -255,20 +255,20 @@ sheet carries them with blank rows to fill.
 ## S11. Four joins, sized on five orders
 *Which of the four joins answers Anand, and what does each cost on these tables?*
 
-| Option | Rows out | Booked orders on it | T-4, never paid | P-7, no order |
-|---|---|---|---|---|
-| A. INNER JOIN | 6 | 4 of 5 | dropped | dropped |
-| B. LEFT JOIN, orders first | 7 | 5 of 5 | kept | dropped |
-| C. RIGHT JOIN, payments kept | 7 | 4 of 5 | dropped | kept |
-| D. FULL OUTER JOIN | 8 | 5 of 5 | kept | kept |
+| Option | What it keeps | T-4, never paid | P-7, no order |
+|---|---|---|---|
+| A. INNER JOIN | only the pairs that match | dropped | dropped |
+| B. LEFT JOIN, orders first | every order, matched or not | kept | dropped |
+| C. RIGHT JOIN, payments kept | every payment, matched or not | dropped | kept |
+| D. FULL OUTER JOIN | both sides, matched or not | kept | kept |
 
-**Sized.** Every option runs in under 3 milliseconds on these tables, so the rows each one keeps decide the call. All four list T-2 and T-3 twice.
+**Sized.** Every option runs in under 3 milliseconds on these tables, so what each one keeps decides the call; how many rows each returns comes later, traced by hand.
 
 ```notes
-LIVE, 2 minutes. The sizing cell in notebook 1 measures each option: rows out, how many of the five
-booked orders reach the statement, what happens to T-4 and to P-7, and the time. Ask which column
-decides the call. The answer is the booked-orders column, because Anand's question is about every
-order Kalpa booked. The repeated T-2 and T-3 are chapter 2's problem.
+LIVE, 2 minutes. The sizing cell in notebook 1 runs each option on the invented tables and reports
+what happens to T-4 and to P-7, and the time; the row counts wait for the hand trace. Ask which column
+decides the call. The answer is the T-4 column, because Anand's question is about every order Kalpa
+booked. What an order with two payment rows does to a total is chapter 2's problem.
 ```
 
 ---
@@ -292,7 +292,7 @@ flowchart LR
 **The fact that would change the call.** A question about every payment the feed holds starts from payments; a question about both sides at once is a FULL OUTER JOIN.
 
 ```notes
-LIVE, 1 minute. B is the only option that keeps all five orders and nothing that is not an order.
+LIVE, 1 minute. B is the only option that keeps T-4 and nothing that is not an order.
 Name the switch facts aloud: the platform lead's question tonight, in the second case, keeps every
 payment and so starts from payments. FULL OUTER is named here and parked.
 ```
@@ -315,7 +315,7 @@ flowchart LR
 **Question.** Does an `order_id` ever appear on more than one row of payments? a) never, each order is paid once; b) yes, up to twice; c) yes, up to five times; d) only for cancelled orders.
 
 ```notes
-LIVE, 1 minute. The grain of a table is what one row stands for. Take letters, then run level 1 of
+LIVE, 1 minute. The grain of a table is what one row stands for. Take letters, then run level 2 of
 notebook 1.
 ```
 
@@ -579,7 +579,7 @@ label: 1 | title: Which orders own two rows? | body: Q2's ten largest, and why e
 label: 2 | title: What does the draft collect? | body: The first draft's collected for Q2.
 label: 3 | title: Why is the draft's sum wrong? | body: When every row on it is right.
 label: 4 | title: Which of four fixes fits? | body: Each way to stop the double count, sized.
-label: 5 | title: Does the fix keep 462 orders? | body: And Rs 9,84,00,000 booked.
+label: 5 | title: Does the fix keep each order once? | body: KR-00595 first, then Q2 against Monday's booked.
 label: 6 | title: Do the two tables agree alone? | body: Each table summed alone, against the join. | tone: dark
 ```
 
@@ -801,8 +801,8 @@ posting stays visible for chapter 4 instead of vanishing. Say the call and its r
 
 ---
 
-## S35. Question: how many rows does the fix return?
-*Does the chosen way keep 462 orders and Rs 9,84,00,000 booked?*
+## S35. Question: what does the fix show for KR-00595?
+*Does the chosen way keep every Q2 order once, with Monday's booked?*
 
 ```sql
 WITH posted_per_order AS (
@@ -816,7 +816,7 @@ LEFT JOIN posted_per_order pp ON pp.order_id = o.order_id
 WHERE o.quarter = 'Q2';
 ```
 
-**Question.** How many rows does it return? a) 678; b) 462; c) 216; d) 1,000.
+**Question.** What does the fixed join show for KR-00595, the order S32 traced? a) one row, posted Rs 4,01,000, payment_rows 2; b) two rows, posted Rs 2,40,600 and Rs 1,60,400; c) one row, posted Rs 8,02,000, payment_rows 2; d) one row, posted Rs 2,40,600, payment_rows 1.
 
 ```notes
 LIVE, 1 minute. A CTE, WITH ... AS, is a named subquery the main query reads, which Monday met.
@@ -826,7 +826,7 @@ order with no payment row gets NULL there. Take letters.
 
 ---
 
-## S36. Answer: 462 rows and Rs 9,84,00,000 booked
+## S36. Answer: KR-00595 once, and every Q2 order once
 *What changed, and what does the posted column now hold?*
 
 ```mermaid
@@ -842,11 +842,11 @@ flowchart LR
     class O bet
 ```
 
-The answer is b: 462 rows for 462 orders, and booked after the join is Rs 9,84,00,000, Monday's figure to the rupee. **What changed.** The 216 extra rows are gone, and each order's amount is summed once.
+The answer is a: KR-00595 comes out once, its posted Rs 4,01,000 from its two instalments. The whole join returns 462 rows for 462 orders, and booked after the join is Rs 9,84,00,000, Monday's figure to the rupee. **What changed.** The 216 extra rows are gone, and each order's amount is summed once.
 
 ```notes
-LIVE, 3 minutes. The three checks in the notebook pass: rows out equal orders in, booked equals
-Monday's, no order twice. The posted total is each learner's own to read in the empty your-turn cell;
+LIVE, 3 minutes. The four checks in the notebook pass: KR-00595 once with both instalments in posted,
+rows out equal orders in, booked equals Monday's, no order twice. The posted total is each learner's own to read in the empty your-turn cell;
 they write it down as "posted against Q2 orders", and chapter 3 asks what it is made of.
 ```
 
@@ -889,7 +889,7 @@ grain: which key repeats on the many side.
 | What does the draft collect? | Rs 19,29,04,410 against Rs 9,84,00,000 booked, 1.96 times |
 | Why is the draft's sum wrong? | The order amount rides on every payment row: 462 orders become 678 rows |
 | Which of four fixes fits? | One row per order first; DISTINCT loses Rs 20,32,780 of bookings |
-| Does the fix keep 462 orders? | Yes: 462 rows and Rs 9,84,00,000, Monday's figures exactly |
+| Does the fix keep each order once? | Yes: KR-00595 once with both instalments, and 462 rows and Rs 9,84,00,000, Monday's figures exactly |
 | Do the two tables agree alone? | Yes: booked and posted, each summed alone, match the join |
 
 **Kavya's review.** "A join is a multiplication until you prove it is not. Bring the many side to the grain of the question before you join, and show me rows in and rows out beside the total."
@@ -917,7 +917,7 @@ route (2), the close (1). Notebook 3, C2_W02_D02_03_every_order_there_STUDENT.ip
 ## S39. Answer in six steps, from rows to rupees
 *Who needs chapter 3's answer, and which smaller questions lead to it?*
 
-**Who needs the answer.** Anand, who asked which orders make the gap, so an order missing from the report is an order nobody chases, and his analyst, who reads the reconciliation above the number before the number. A report that loses an order and carries a repeated payment can show a surplus, or a gap that looks closed, and nobody chases an order on a page that reads fully collected.
+**Who needs the answer.** Anand, who asked which orders make the gap, so an order missing from the report is an order nobody chases, and his analyst, who reads the reconciliation above the number before the number. A wrong gap sends the collections team after customers who paid, or leaves an unpaid order unchased, and nobody can tell which from the number alone.
 
 ```timeline
 label: 1 | title: Which proof runs first? | body: Four proofs, run on a draft with two errors.
@@ -942,7 +942,7 @@ feed holds; collected counts each payment once.
 ```cards
 icon: eye | eyebrow: A wrong total | title: Visible | body: It disagrees with Monday's booked figure or breaks a rule such as cash above bookings, and someone asks.
 icon: eye-off | eyebrow: A missing order | title: Invisible | body: Every number left in the report is correct for the orders that remain, so nothing looks wrong.
-icon: triangle-alert | eyebrow: The cost to Anand | title: The order nobody rings | body: A repeated payment can offset the dropped order, and the report shows a surplus, or a gap that looks closed, which reads as fully collected. | tone: dark
+icon: triangle-alert | eyebrow: The cost to Anand | title: The order nobody rings | body: The one order a report drops is the one the collections team never rings, and nothing on the page says it is gone. | tone: dark
 ```
 
 ```notes
@@ -979,21 +979,22 @@ is its fix.
 
 ---
 
-## S42. Four proofs, run on a draft with two errors
+## S42. Four proofs, sized on a draft with two errors
 *Which of four proofs shows Anand the gap is honest, and what does each catch?*
 
 | Option | What Anand reads | Catches the dropped order | Catches the repeat inside |
 |---|---|---|---|
-| A. One number, booked less posted | 1 line: a gap of minus 1,500 | no | no |
-| B. The count: rows in, rows out, the difference named | 4 lines: 4 of 5 orders | yes | no |
+| A. One number, booked less posted | 1 line | no | no |
+| B. The count: rows in, rows out, the difference named | 4 lines | yes | no |
 | C. The bridge, a list behind each move | 5 bars and 2 lists | yes | yes |
-| D. The whole statement, one line per order | every line | if read | if read |
+| D. The whole statement, one line per order | every line, 462 on Kalpa's Q2 | if read | if read |
 
 **Sized.** All four compute in seconds, so what separates them is what the reader can check. D catches everything only if someone reads 462 lines on Kalpa's Q2.
 
 ```notes
 LIVE, 3 minutes. The invented draft carries two errors at once: it joined with a plain JOIN, and it
-counts T-3's repeated payment inside collected. Notebook 3 runs each proof against it.
+counts T-3's repeated payment inside collected. Notebook 3 sizes each proof against it; what the
+draft itself reports is the third question's.
 ```
 
 ---
@@ -1208,7 +1209,7 @@ written above the chart, so two analysts draw the same bridge.
 | T-5 | 500 | 500 | 500 |
 | **Collected** | | | **5,000** |
 
-**The check.** The cap gives 5,000 on the invented tables and agrees with the bridge to the rupee on Kalpa's Q2. The two methods fail in different places: the instalment method would count a retry written under a new instalment number, and the cap would throw away a genuine overpayment. Agreement rules out either one alone; only a retry with both blind spots at once, or two errors of the same size, could pass both.
+**The check.** The cap gives 5,000 on the invented tables and agrees with the bridge to the rupee on Kalpa's Q2. The two methods fail in different places: the instalment method would count a retry written under a new instalment number, and the cap would throw away a genuine overpayment. Agreement rules out either one alone; only a retry under a new instalment number on an order still paid short, or two errors of the same size, could pass both.
 
 ```notes
 LIVE, 2 minutes. Here the INNER JOIN is the honest choice, because the question is about paid orders
@@ -1312,10 +1313,10 @@ feed lacks that, the data team finds the repeats.
 
 | Option | Written as | Carries the order's columns | With one payment whose order_id is NULL |
 |---|---|---|---|
-| A. LEFT JOIN, keep the misses | `LEFT JOIN payments p ... WHERE p.order_id IS NULL` | yes | still finds T-4 |
-| B. NOT EXISTS | `WHERE NOT EXISTS (SELECT 1 FROM payments p WHERE ...)` | yes | still finds T-4 |
-| C. NOT IN | `WHERE o.order_id NOT IN (SELECT order_id FROM payments)` | yes | finds 0 orders, where it found 1 |
-| D. EXCEPT | `SELECT order_id FROM orders EXCEPT SELECT ...` | ids only | still finds T-4 |
+| A. LEFT JOIN, keep the misses | `LEFT JOIN payments p ... WHERE p.order_id IS NULL` | yes | unchanged |
+| B. NOT EXISTS | `WHERE NOT EXISTS (SELECT 1 FROM payments p WHERE ...)` | yes | unchanged |
+| C. NOT IN | `WHERE o.order_id NOT IN (SELECT order_id FROM payments)` | yes | returns no rows at all |
+| D. EXCEPT | `SELECT order_id FROM orders EXCEPT SELECT ...` | ids only | unchanged |
 
 **Sized.** All four take a few milliseconds and return the same Q2 list on today's warehouse, so what separates them is what each assumes.
 
@@ -1627,13 +1628,13 @@ C2_W02_D02_05_what_anand_signs_STUDENT.ipynb.
 ## S70. Answer in six steps, from lists to a page
 *Who needs chapter 5's answer, and which smaller questions lead to it?*
 
-**Who needs the answer.** Anand, who signs the report and sends it on to the CEO's Monday page, and the channel heads, who chase their own unpaid orders from it. A gap column that reads zero stands every one of them down, and a report that does not add back to the bridge cannot be defended when his analyst audits it.
+**Who needs the answer.** Anand, who signs the report and sends it on to the CEO's Monday page, and the channel heads, who chase their own unpaid orders from it. A wrong gap column sends a channel after customers who paid, or stands it down while its orders sit unpaid, and a report that does not add back to the bridge cannot be defended when his analyst audits it.
 
 ```timeline
 label: 1 | title: Which of four page forms fits? | body: Sized on what Anand reads, acts on and audits.
-label: 2 | title: What must a channel line carry? | body: What each line needs before Anand signs.
+label: 2 | title: What does each channel book? | body: And what its line must carry before Anand signs.
 label: 3 | title: What does the gap column say? | body: When each order's gap is added up.
-label: 4 | title: Why does the gap column read 0? | body: And the check that catches it.
+label: 4 | title: Is the gap column right? | body: And the check that proves it.
 label: 5 | title: Does the page match the bridge? | body: The fixed page against the bridge on Q2.
 label: 6 | title: Does the unpaid list agree? | body: The unpaid list, grouped by channel. | tone: dark
 ```
@@ -1726,7 +1727,7 @@ team to chase without telling them whom; D answers everything and asks Anand to 
 ---
 
 ## S75. Question: which channel books 1,800?
-*What must a line per channel carry for Anand to sign it?*
+*What does each channel book, and what must its line carry?*
 
 ```mermaid
 flowchart LR
@@ -1807,7 +1808,7 @@ on Kalpa's Q2 and prints the three zeros. This is the chapter's trap.
 ---
 
 ## S79. Why it is wrong: NULL leaves the sum
-*Why does an unpaid order drop out of the gap, and which check catches it?*
+*Is the gap column right, and which check proves it?*
 
 ```mermaid
 flowchart LR
@@ -1897,8 +1898,8 @@ The second route never computes a per-order gap, so a NULL cannot fall out of it
 ```notes
 LIVE, 3 minutes. Nothing on Kalpa's Q2 was paid short, so the gap by channel must equal the unpaid
 list by channel. The refunds line answers the one part of Anand's message the page has not touched.
-Interview [F]: why does the page show booked and collected, and not only the gap? Because the gap
-cannot be checked on its own.
+This is part of the interview's [D] answer on a small gap: keep booked and collected beside the gap,
+since a gap on its own cannot be checked.
 ```
 
 ---
@@ -1909,9 +1910,9 @@ cannot be checked on its own.
 | Question | The answer, with its number |
 |---|---|
 | Which of four page forms fits? | By channel, reconciled above, with both lists beneath |
-| What must a channel line carry? | Orders, booked, collected and the gap, under a definition line |
+| What does each channel book? | Kalpa's three channels add to Rs 9,84,00,000, and each line carries orders, booked, collected and the gap |
 | What does the gap column say? | 0 on every channel, invented and Kalpa alike |
-| Why does the gap column read 0? | An unpaid order's gap is NULL and sum() skips it; coalesce fixes it |
+| Is the gap column right? | No: an unpaid order's gap is NULL and sum() skips it; two sums catch it and coalesce fixes it |
 | Does the page match the bridge? | Yes: 462 orders, Rs 9,84,00,000, and each gap and list equal to its bar |
 | Does the unpaid list agree? | Yes: the unpaid list by channel matches every channel |
 

@@ -25,11 +25,11 @@ channel, and how do we know nothing is counted twice?
 | Chapter | The chapter's question | The smaller questions on the way |
 |---|---|---|
 | 1. What does a join keep? | When payments are attached to orders, which rows does each join keep, drop or repeat? | Which join keeps every order? What is one row of each table? How many rows does each return? What does payments-first show? Can the keys predict the counts? |
-| 2. Why twice the bookings? | Why does the first join on Kalpa's Q2 report nearly twice the bookings as collected, and how do we attach payments so that nothing counts twice? | Which orders own two rows? What does the draft collect? Why is the draft's sum wrong? Which of four fixes fits? Does the fix keep 462 orders? Do the two tables agree alone? |
+| 2. Why twice the bookings? | Why does the first join on Kalpa's Q2 report nearly twice the bookings as collected, and how do we attach payments so that nothing counts twice? | Which orders own two rows? What does the draft collect? Why is the draft's sum wrong? Which of four fixes fits? Does the fix keep each order once? Do the two tables agree alone? |
 | 3. Is every order there? | Once nothing counts twice, is every booked order still in the report, and can every rupee between booked and posted be named? | Which proof runs first? Can the fixed report gain rows? What does a plain JOIN report? Which check needs no rupee? Does the bridge close on Q2? Does capping each order agree? |
 | 4. Which orders, exactly? | Which Q2 orders were never paid, and which payments did the gateway post twice? | Which orders have no payment? What does a date in WHERE do? Where does the date belong? Which orders does HAVING flag? What makes a retry a retry? Do second routes agree? |
-| 5. What does Anand sign? | What goes on the report by channel that Anand signs, and does its gap column tell the truth? | Which of four page forms fits? What must a channel line carry? What does the gap column say? Why does the gap column read 0? Does the page match the bridge? Does the unpaid list agree? |
-| 6. Can the number leave? | Which checks must pass before the collected number leaves the team, and what does Anand get when one fails at the end of reporting day? | Can hurried checks miss an order? Which checks tie to the tables? Does the suite stop all five? Does Kalpa's Q2 page pass? Does Python reach the same? What leaves when a check fails? |
+| 5. What does Anand sign? | What goes on the report by channel that Anand signs, and does its gap column tell the truth? | Which of four page forms fits? What does each channel book? What does the gap column say? Is the gap column right? Does the page match the bridge? Does the unpaid list agree? |
+| 6. Can the number leave? | Which checks must pass before the collected number leaves the team, and what does Anand get when one fails at the end of reporting day? | Can hurried checks miss an order? Which checks tie to the tables? Do the two suites stop all five? Does Kalpa's Q2 page pass? Does Python reach the same? What leaves when a check fails? |
 
 ---
 
@@ -188,8 +188,10 @@ minus 1,500 on 4 orders, and the LEFT fix alone minus 700.
 | The Kahoot | 1b 2c 3a 4d 5a 6b 7d 8b |
 
 The day's items: 36 in the chapter sets, 8 in the escalated case, 4 in the second case, 4 in the
-trace and 11 in the lab. Design items: 16 in the chapter sets, 2 in the escalated case (items 2 and 8)
-and 2 in the second case (items 3 and 4), 20 of the 48 in the sets and cases. Every file passes the distractor audit.
+trace and 11 in the lab. Design items: 16 in the chapter sets, 2 in the escalated case (items 2 and 8),
+2 in the second case (items 3 and 4) and 1 in the lab (item 11): 20 of the 48 in the sets and cases,
+which the standard counts, and 21 of the 63 with the trace and the lab. Every file passes the
+distractor audit.
 
 **The case figures.** The escalated case's lists and page carry the plant figures above: 30 unpaid
 orders, Rs 17,54,930, by channel as in the numbers table; 28 retried instalments, Rs 20,750. The
@@ -214,7 +216,7 @@ between 8 April and 23 September. `trainer/C2_W02_D02_case_key_TRAINER.ipynb` pr
 | [F] | How do you reconcile a total after a join back to its source table? | Recompute it from the source alone and explain every rupee of difference as a named move with its list. |
 | [D] | Two errors cancel and the total looks right: how would you find them? | Count first, then split the difference into moves with definitions, so each error gets its own bar. |
 | [D] | Anand says the gap is too small to matter: how do you decide whether to chase it? | Size it as a share of booked, then by channel and order, since Rs 17.5 lakh is mostly two business invoices; check age, since a July order is overdue; weigh the cost of chasing against the cash; keep booked and collected beside the gap. |
-| [S] | If you could keep only one check before a joined number leaves, which would you keep? | Orders on the report against orders in the table: no rupee, and it catches both ways a join fails; it misses posted read as collected and the gap summed past a NULL, so the gap's tie-back to the two lists comes second. |
+| [S] | If you could keep only one check before a joined number leaves, which would you keep? | Orders on the report against orders in the table: no rupee, and it catches both ways a join fails; it misses posted read as collected and the gap summed past a NULL, so the gap's tie-back to the two lists comes second, and second even though it stops all five pages, since the lists can carry the page's own mistake while the count reads only `orders`. |
 
 ---
 

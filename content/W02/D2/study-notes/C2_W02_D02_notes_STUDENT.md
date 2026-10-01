@@ -234,8 +234,8 @@ booked order is still in the report.
 
 **Who needs the answer.** Anand, who asked which orders make the gap, so an order missing from the
 report is an order nobody chases, and his analyst, who reads the reconciliation above the number. A
-report that loses an order and carries a repeated payment can show a surplus, or a gap that looks
-closed, and nobody chases an order on a page that reads fully collected.
+wrong gap sends the collections team after customers who paid, or leaves an unpaid order unchased,
+and nobody can tell which from the number alone.
 
 **The questions on the way.** Which of four proofs shows Anand the gap is honest? What does a first
 draft with a plain JOIN report? Which moves carry booked to what the feed posted? Does collected come
@@ -368,9 +368,9 @@ and a retry is one order and instalment twice; next comes the page Anand signs.
 ## Chapter 5. What goes on the report by channel that Anand signs, and does its gap column tell the truth?
 
 **Who needs the answer.** Anand, who signs the page and sends it to the CEO's Monday page, and the
-channel heads, who chase their own unpaid orders from it. A gap column that reads zero stands every one
-of them down, and a page that does not add back to the bridge cannot be defended when his analyst
-audits it.
+channel heads, who chase their own unpaid orders from it. A wrong gap column sends a channel after
+customers who paid, or stands it down while its orders sit unpaid, and a page that does not add back
+to the bridge cannot be defended when his analyst audits it.
 
 **The questions on the way.** Which of four report forms fits a finance controller? What does the gap
 column say when each order's gap is added up? Does the fixed page add back to the bridge, and does a
@@ -423,8 +423,8 @@ leaves is the last question.
 leaves the team; Anand, who forwards it; and you, who sign it. A validation that cannot fail puts a PASS stamp on a wrong number, and a
 stamped wrong number is harder to withdraw than an unstamped one.
 
-**The questions on the way.** Why do the hurried checks pass a report that hides an order? Does the
-suite fail every wrong report the day met? Does a second tool, working from the raw rows, agree? What
+**The questions on the way.** Why do the hurried checks pass a report that hides an order? Do the two
+suites stop every wrong report the day met? Does a second tool, working from the raw rows, agree? What
 does Anand get when a check fails at the end of reporting day?
 
 **Who else faces this.** Wirecard, a German payments company, collapsed in June 2020 over cash it
@@ -446,7 +446,7 @@ gap against booked less collected, the gap against the never-paid and paid-short
 plus posted twice against posted from `payments`. The gap is tied to both lists, since an order paid
 in part is a gap too. On that page three of them fail.
 
-### Does the suite fail every wrong report the day met?
+### Do the two suites stop every wrong report the day met?
 
 The day produced five plausible wrong pages, each written on the invented tables: chapter 2's fan-out
 draft, chapter 3's plain JOIN draft and its LEFT JOIN that still read posted as collected, chapter 4's
@@ -600,8 +600,11 @@ orders on the report against orders in the source table. A join goes wrong in tw
 a dropped order, and this check catches both without reading a rupee, in a millisecond. Name what it
 misses: on the day's five wrong pages it stops three, and lets through posted read as collected and
 the gap summed past a NULL, which go wrong after the join; the gap's tie-back to the never-paid and
-paid-short lists is the second check you add. Weak: collected at most booked, which passes every page
-that hides an unpaid order.
+paid-short lists is the second check you add. That tie-back stops all five pages and still comes
+second, because the lists are queries of their own that can carry the page's mistake: a date in WHERE
+drops the unpaid order from the page and empties the unpaid list with it, so the two still agree. The
+count reads nothing but `orders`. Weak: collected at most booked, which passes every page that hides an
+unpaid order.
 
 ---
 

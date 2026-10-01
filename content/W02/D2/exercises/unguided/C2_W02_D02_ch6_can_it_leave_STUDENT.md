@@ -21,7 +21,7 @@ on a wrong number.
 - Which one of these checks does report Y pass?
 - Which pair of checks stops report Z?
 - Which two checks would you keep if you could run only two?
-- Which figures leave for Anand when two checks fail late?
+- Which figures leave for Anand when checks fail late?
 - Which source makes a check Kalpa's own tables cannot pass alone?
 
 An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
@@ -32,6 +32,7 @@ An item marked Design asks for the best-fit approach, a sizing, the fact that wo
   against the orders table; booked against the orders table; the gap against booked less collected;
   the gap against the never-paid and paid-short lists; collected plus posted twice against posted
   from the payments table alone.
+- An **open line** names a failed check, what it means and when it will close.
 
 The invented book: 10 orders, booked 50,000. Two orders were never paid, worth 4,000, and no order was
 paid short, so collected, each payment counted once, is 46,000. One payment of 1,000 was posted twice,
@@ -64,8 +65,8 @@ d) the channel check alone
 
 ### Q2. Which one of these checks does report Y pass?
 
-Report Y took its booked from the orders table, as chapter 2's draft did, and summed each order's
-amount on every payment row for collected. Which one of these checks does it pass?
+Report Y summed each order's amount on every payment row for collected, as chapter 2's draft did.
+Which one of these checks does it pass?
 
 a) the gap against the never-paid and paid-short lists
 b) booked on the page against booked from orders alone
@@ -90,16 +91,18 @@ b) collected at most booked, and a gap that is not negative
 c) the gap against booked less collected, and every channel present on the page
 d) booked against orders alone, and the gap against the two lists
 
-### Q5. Which figures leave for Anand when two checks fail late? (Design)
+### Q5. Which figures leave for Anand when checks fail late? (Design)
 
-Late on reporting day the suite runs on a new week's page. Orders, booked and the gap against booked
-less collected pass. The gap against the two lists fails, 3,000 against 4,000, and collected plus
-posted twice fails, 48,000 against 47,000. Which figures leave for Anand that day?
+Late on reporting day the suite runs on a new week's page, from a book of its own. Orders on the page
+match the table, and the gap equals the page's booked less its collected. Booked fails, 62,000
+against 60,000 from the orders table; the gap against the two lists fails, 4,000 against 5,500; and
+collected plus posted twice fails, 58,500 against 55,000 in payments. Which figures leave for Anand
+that day?
 
-a) booked, collected and the gap, with a footnote naming both checks
-b) booked alone, with the open line; collected and the gap held
-c) booked and the gap, since the gap's arithmetic passed; collected held
-d) nothing at all, until both checks pass again
+a) booked, collected and the gap, with an open line naming each failed check
+b) booked from orders alone, with the open line; collected and the gap held
+c) booked and the gap, since the gap's own arithmetic passed; collected held
+d) nothing at all, until every check on the page passes again
 
 ### Q6. Which source makes a check Kalpa's own tables cannot pass alone? (Design)
 

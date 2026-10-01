@@ -139,7 +139,7 @@ instalment twice" catches only T-3.
 
 ---
 
-## Why does the gap column read zero?
+## Is the gap column right, and which check proves it?
 
 Chapter 5. T-4's row, traced through the hurried gap.
 

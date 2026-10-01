@@ -11,9 +11,9 @@ tonight.
 ## What do you need to know before the items?
 
 **Who needs the answer.** Anand chases the orders that make the gap, and his analyst reads the
-reconciliation above the number before the number itself. A report that drops an order and keeps a
-repeated payment can show a surplus, or a gap that looks closed, and nobody chases an order on a page
-that reads fully collected.
+reconciliation above the number before the number itself. A wrong gap sends the collections team
+after customers who paid, or leaves an unpaid order unchased, and nobody can tell which from the
+number alone.
 
 **The questions on the way.**
 
@@ -113,9 +113,9 @@ Before the number goes to Anand, his analyst runs three proofs on the report and
 
 | Proof | What it compares | Minutes |
 |---|---|---|
+| The lists | each list of orders, its total against its bar | 15 |
 | The count | orders on the report against orders in the table | 1 |
 | The bridge | the report's booked, walked bar by bar to its posted | 10 |
-| The lists | each list of orders, its total against its bar | 15 |
 
 In what order should the three proofs run?
 
