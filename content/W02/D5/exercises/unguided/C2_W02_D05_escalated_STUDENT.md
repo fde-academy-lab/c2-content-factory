@@ -1,7 +1,9 @@
-# The escalated case: Monday's deck pack, end to end
+# Can you build Monday's file alone in fifty minutes and say, part by part, what the chief of staff can trust it for?
 
-Sixty minutes, alone, at the start of the afternoon. No hints. The solution, the deck pack workbook in
-`demos/` and the executed hands-on notebook, opens at the debrief.
+The escalated case: fifty minutes, alone, straight after chapter 6. You work in
+`notebooks/C2_W02_D05_ex1_escalated_case_STUDENT.ipynb`, which loads the day's two exports and the
+warehouse, asks for ten lettered choices in five parts with a check after each part, and ends on two
+sentences to the chief of staff.
 
 > "Build me the file I open on Monday: the tree by segment for both quarters, the protect list with
 > the lookup, and the front-page number with its trend. I will change things in the room. Tell me
@@ -9,103 +11,97 @@ Sixty minutes, alone, at the start of the afternoon. No hints. The solution, the
 >
 > Meera's chief of staff, Kalpa Retail
 
-You have the two exports in `data/`: `C2_W02_D05_customer_table_STUDENT.csv`, one row per customer,
-and `C2_W02_D05_raw_export_STUDENT.csv`, one row per payment. Monday's warehouse numbers are Rs 10.00
-crore for Q1 and Rs 9.84 crore for Q2. Build in one new Excel workbook, with the two exports pasted
-in as values on their own tabs and every other number a formula.
+Meera Raghavan, Kalpa Retail's CEO, runs Monday's growth review, and her chief of staff opens one file
+in front of her and the directors. Kalpa sells to four segments: Retail-Core, its everyday shoppers;
+Retail-Plus, its paid membership tier; Business, corporate buyers invoiced in large amounts; and
+Student. Revenue is booked order value in rupees. Q1 runs from April to June 2026 and Q2 from July to
+September 2026, and the warehouse, the Postgres database that holds one row per order and is the
+source of truth, books 538 orders and Rs 10,00,00,000 in Q1 and 462 orders and Rs 9,84,00,000 in Q2.
+Those two pairs are Finance's control totals.
 
----
+You have two exports. The customer table holds one row per customer who ordered between April and
+September, with that customer's segment, city, orders and revenue added up over the half-year. The
+raw export holds one row per payment, with the order's amount repeated on every row of that order, so
+an order paid in two instalments, or posted twice by the payment gateway, sits on two rows. The
+revenue tree splits revenue into customers, orders per customer and revenue per order. The protect
+list is the fifty Retail-Plus members with the highest revenue, and the lookup finds a member by id.
+C-0195 is a Retail-Plus member who placed no orders in the two quarters, so it has no row in the
+customer table. The front-page card prints its number with its period, its comparison and its base,
+and measures a change on the earlier quarter. A release note says which parts ship on Monday and
+which are held, and why.
 
-## Part 1. The tree, fifteen minutes
+**Who needs the answer.** The chief of staff opens this file in front of Meera and her directors on
+Monday. A number that does not tie, a lookup that answers with somebody else's row, or a card without
+its period goes into the meeting's decisions, and the release note is what tells the chief of staff
+which parts to rely on.
 
-The revenue tree by segment for Q1 and Q2: customers, orders per customer, revenue per order and
-revenue. Count each order once. The tab's total ties to the warehouse to the rupee, and a cell on the
-tab says whether it does.
+**The questions on the way.**
 
-## Part 2. The protect list and the lookup, twelve minutes
+- Does your tree for both quarters tie to the warehouse to the rupee?
+- Does your protect list hold the right fifty, and does your lookup say when an id is missing?
+- Does your front-page card carry its period, its comparison and its base for any scope a director picks?
+- What ships on Monday, and what, if anything, is held?
+- Do your numbers agree when reached a second way?
 
-The fifty Retail-Plus members with the highest revenue across both quarters, from the customer table,
-with the list size in a yellow cell. A lookup by member id that returns the member's revenue and
-place on the list, or the words "not in the table", and test it before you trust it. The foot of
-the list adds only the rows on screen.
+## Part 1. Does your tree for both quarters tie to the warehouse to the rupee?
 
-## Part 3. The front-page card, twelve minutes
+Used at work on every tree a director sees, which has to reproduce the number Finance owns before
+anyone slices it.
 
-Q2 revenue with its period, its comparison with Q1 and its share of company revenue, as one sentence
-built by formula, and a monthly trend beside it. The card's scope sits in a yellow cell with the
-choices all segments, all except Business and each segment.
+Ten minutes, the notebook's markers 1 and 2: which line leaves one row per order, and how customers
+are counted in each segment and quarter. The checks after the part compare your quarters with
+Finance's control totals, orders and rupees, and your Retail-Plus customer counts with the warehouse's.
 
-## Part 4. What ships, six minutes
+## Part 2. Does your protect list hold the right fifty, and does your lookup say when an id is missing?
 
-A tab of checks, one per deliverable, each saying whether its numbers tie to the warehouse, and a
-release sentence saying what goes into Monday's deck and what is held, with the reason. Write the
-two-line note you would send the data platform lead about anything held.
+Used at work wherever a list a manager acts on, or a lookup a director types into, is read aloud in a
+room where nobody sees the formula.
 
-## Part 5. The numbers a second way, fifteen minutes
+Ten minutes, markers 3 and 4: which line gives the fifty Retail-Plus members with the highest revenue,
+and which lookup returns a member's revenue or a sentence when the id is not in the table. The checks
+test your list and your lookup on C-0152, a member who is there, and on C-0195.
 
-Open `notebooks/C2_W02_D05_ex1_hands_on_STUDENT.ipynb`. Seven lettered `TODO` markers across six
-steps reach your sheet's numbers in pandas, and each step ends on checks. Run it from the top; it
-stops at the first placeholder until you fill it, which is intended. Post the seven letters in one
-line.
+## Part 3. Does your front-page card carry its period, its comparison and its base for any scope a director picks?
 
----
+Used at work on every front page read in two minutes by people who read nothing else.
 
-## Eight items on the calls you made
+Ten minutes, markers 5 and 6: which formula is the change from Q1 to Q2, and which share goes beside
+the number. The card's scope, all segments, all except Business, or Retail-Plus alone, is the input
+a director changes, and the checks compare your Retail-Plus change and your shares with chapter 4's
+figures, which the warehouse reproduced.
 
-Post exactly this shape, the letters in item order, no spaces: `xxxxxxxx`
+## Part 4. What ships on Monday, and what, if anything, is held?
 
-### Q1. Which export does the tree by quarter have to come from?
+Used at work in every release note that tells a stakeholder what to rely on and what waits.
 
-a) The customer table, split on each customer's last order date
-b) The customer table, with each customer's revenue halved per quarter
-c) The raw export, filtered to rows with a payment date in the quarter
-d) The raw export, counted once per order and split on the order date
+Ten minutes, markers 7 and 8: which comparison says whether the protect list's source table ties,
+and which rule turns any set of checks into Monday's release. Part 1 checked the tree; the protect
+list was built from the customer table, a different export. The checks compare your source verdict with
+the warehouse's count of customers who ordered, and run your rule on three invented sets of checks.
 
-### Q2. Before the Tree tab ships, what must its total equal?
+## Part 5. Do your numbers agree when reached a second way?
 
-a) Rs 19,84,00,000, the warehouse's two quarters
-b) Rs 39,40,95,490, the export's column total
-c) The customer table's revenue column total, both quarters
-d) The paid_amount column's total in the export
+Used at work on every number that matters, which is reached twice by routes that could disagree.
 
-### Q3. The customer table's revenue does not tie to the warehouse. What happens to the protect list on Monday?
+Ten minutes, markers 9 and 10: which total is what the foot of the list shows when a director filters
+it to Mumbai, and which query is the warehouse's own route to the two quarters of booked revenue.
+The checks compare your foot with the warehouse's revenue for the list's Mumbai members, and your
+query's two quarters with your tree's.
 
-a) It ships, since its ranking uses a formula that recalculates
-b) It is held, and the data platform lead is asked to rerun the export
-c) It ships with a footnote saying the table may be incomplete
-d) It is rebuilt by hand from the raw export by the analyst in the meeting
+## Which rules does the escalated case keep, from the files it reads to what the release says?
 
-### Q4. Which pair of ids tests the lookup before the chief of staff uses it?
+- The data is the day's two exports in `data/` and the warehouse; nothing in them is to be edited.
+- Every check reads what your lines computed, so a letter that passes the check has done the work.
+- The release says, for each part, whether it ships, and why a held part waits.
+- If you finish early, build the same five parts in a workbook: every number a formula over the two
+  exports pasted in as values, the inputs in yellow cells, and a Checks tab that reads PASS or HOLD.
+- The support TA answers environment problems only.
 
-a) C-0152 and C-0194, the top of the list and a mid-list member
-b) C-0001 and C-0340, the first and the last ids in the customer table
-c) C-0152 and C-0195, a member on the list and an id not in the table
-d) C-0195 and C-0999, two ids nobody has ever looked up in a meeting
+## How do you post your ten letters and your two sentences?
 
-### Q5. A director changes the card's scope to all except Business. What else must change on the card, by formula?
+One line of ten letters in the order of the notebook's markers, then two sentences to the chief of
+staff pasted below it: what Monday's file can be relied on for, and anything held, with its reason.
 
-a) Only the number, since the comparison and the base belong to the whole company
-b) The number and the comparison, and the base stays at 100 percent
-c) Nothing, since the scope is a label for the reader of the card
-d) The number, the comparison, the base and the scope printed in the sentence
-
-### Q6. Which cells may a director type into in the room?
-
-a) The yellow input cells, and nothing else
-b) Any cell on the Tree and FrontPage tabs
-c) The Raw tab, to correct a row they know is wrong
-d) The card sentence, to soften its wording
-
-### Q7. The foot of the protect list reads the same with and without a city filter. What does that tell you?
-
-a) The list has no members outside the chosen city
-b) The foot is SUBTOTAL(109) and the filter hid no rows
-c) The foot is SUM, or no filter was actually applied to it
-d) The foot is correct, since the two totals agree with each other
-
-### Q8. What is the one sentence to the chief of staff about what the file can be trusted for?
-
-a) "Everything recalculates live, so every number is right whatever you change"
-b) "The tree and the card tie to Finance; the list is held until its export ties"
-c) "The numbers are approximate, so treat the whole file as a guide for discussion"
-d) "The file is final; please do not change any cell before Monday's meeting"
+```
+Post exactly this shape: xxxxxxxxxx
+```

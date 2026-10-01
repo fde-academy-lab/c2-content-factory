@@ -1,95 +1,170 @@
-# Provenance: Week 2 Day 5
+# Provenance: Week 2, Friday
 
-**INTERNAL.** What this pack is built from, what was verified and when, every decision that departs
-from a source, and everything invented.
+**INTERNAL.** Where every part of the Friday pack came from, what was verified and when, every
+decision that departs from a source, and everything invented. Built on 29 September 2026 in three
+50-minute rounds, and raised on 30 September and 1 October 2026 to standard v3: six chapters, each
+with its options sized, its best-fit call, its trap and a second route, one notebook per chapter,
+every heading a question, every file readable alone, and every prose file through the humanizer's
+read.
 
----
+## Sources, in the order they were read
 
-## The sources
+| Source | What it gave the pack |
+|---|---|
+| The requester's day prompt, `prompts/week_revamp_W02_W03.md` section 3 with the Week 2 Friday fills, and the resume notice of 1 October 2026 | The three asks as chapters, the sixth chapter on a workbook a director can break, the four traps, the second case as the operating rule defended against a director, LibreOffice-safe formulas, Week 4's traps kept untaught, and the instruction to re-execute every notebook that draws a strip once main's `c2kit.strip` fix (#213) was merged |
+| `docs/detailing/W01_W02_spine.md`, Friday's row, the campus day and the afternoon-and-lab table | The case, the five rungs, the four traps, the escalated case, the second case and the lab set |
+| `.claude/skills/day-pack-builder/references/the-standard.md` | The bar, the chapter, the question ladder, the volume per family, the depth loop |
+| `docs/curriculum/W2_Data_manipulation.md`, the Fri 16 Oct 2026 row, all columns in order | Scenario, thinking, agenda, outcomes, trainer notes, plants, exercises, after-class tasks, interview angle, references and the Kahoot plan |
+| `docs/programme/calendar.md` | W02/D5, Fri 16 Oct 2026, teaching, M1, no faculty block; W02/SAT the recap paper; W03/D1 Build 1, the online project introduction |
+| `docs/07_Client_Zero.md` (v2.2, with the GCC addendum) | Version v4, the stakeholders (Meera Raghavan, Anand Iyer as finance controller, Kavya Nair), and Build 1's Kalpa Health |
+| `data/programme/facts.yaml`, decisions `chapter-standard`, `four-domains`, `question-ladder`, `self-contained`, `humanizer`, `opus-max`, `plants-once-found`, `anand-finance-controller` | The grid, the retail domain linked from Monday's dossier, the forms every file follows |
+| `content/W01/D4` on main, raised to standard v3 | The model for the chapter form, the scenario sets, the solutions, the day sheet and this file |
+| `content/W03/D1/briefs/C2_W03_D01_briefing_note_STUDENT.md` on main | The pre-read's Build 1 setting: Kalpa Health in six US metros, Q2 against Q3 of 2026, volumes up 5 percent against a plan of 18 |
 
-Built on 29 September 2026 from, in the ground-truth order CLAUDE.md sets:
-
-1. The requester's brief for this session, which approved the Weeks 1 and 2 spine and set the
-   Friday traps, the Excel-first bar and the LibreOffice facts below.
-2. `docs/detailing/W01_W02_spine.md`, approved 29 September 2026: Friday's row in the Week 2 table,
-   the campus day, and the afternoon-and-lab table.
-3. `docs/curriculum/W2_Data_manipulation.md`, the Friday 16 October 2026 row, read in column order;
-   `docs/programme/calendar.md` (W02/D5, teaching, M1, no faculty block; W03/D1 Build 1, online
-   project introduction).
-4. `docs/07_Client_Zero.md` at v2.2 with the GCC addendum of 28 September 2026: data version v4, the
-   stakeholders, and the Build 1 seed (Dr Priya Menon; 5 percent growth against a plan of 18; five
-   sub-problems).
-5. `.claude/skills/day-pack-builder/references/the-standard.md` for form and volume, with
-   `content/W01/D1` as the model for form.
-
-## The data
+## Data
 
 Every file in `data/` comes from `data/generate_client_zero.py`; nothing is hand-edited.
 
-| File | How it was written |
-|---|---|
-| `C2_W02_D05_customer_table_STUDENT.csv`, `C2_W02_D05_raw_export_STUDENT.csv` | The class exports, version v4, as the generator writes them (`python3 data/generate_client_zero.py --version v4 ...`); already in the folder at the start of the session and not regenerated |
-| `C2_W02_D05_takehome_customer_table_STUDENT.csv`, `C2_W02_D05_takehome_raw_export_STUDENT.csv` | `demos/C2_W02_D05_build_takehome_data_TRAINER.py`, which loads the generator, sets its seed to 20261016 and calls its own `build_v4` and `_v4_exports`, because the generator has no take-home switch for v4 and this session may not edit it |
+| File | How it was written | Read by |
+|---|---|---|
+| `C2_W02_D05_customer_table_STUDENT.csv`, `C2_W02_D05_raw_export_STUDENT.csv` | The class exports, version v4, as the generator writes them; in the folder since 29 September 2026 and not regenerated | Notebooks 01 to 06, ex1, ex2, the companion page, both workbooks |
+| `C2_W02_D05_takehome_customer_table_STUDENT.csv`, `C2_W02_D05_takehome_raw_export_STUDENT.csv` | `demos/C2_W02_D05_build_takehome_data_TRAINER.py`, which loads the generator, sets its seed to 20261016 and calls its own `build_v4` and `_v4_exports`, because the generator has no take-home switch for v4 and a day session may not edit it | The take-home and its self-check, every number of which was recomputed from these files on 1 October 2026 |
+| The warehouse | `bash .devcontainer/load_warehouse.sh`, which loads `content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql` into Postgres 16 (customers 340, orders 1,000, payments 1,428, refunds 12, campaign_exposure 136, plan_line 13 on 1 October 2026) | Every notebook's second route, both case notebooks |
 
-| Planted | Where it is used |
-|---|---|
-| The raw export at the payment grain: 400 instalment orders and 50 gateway retries, each on two rows | Round 1's trap (notebook 1, half one S12 to S17, the guided file, the deck pack's count-mode flip, the decision tool's Pivot tab defaults) |
-| C-0170 absent from the clean table (Retail-Plus, 6 orders, Rs 21,740, rank 5 if present) | Round 1's harder variant (S18, an empty your-turn cell in notebook 1), round 2's live lookup (S28, an empty your-turn cell in notebook 2), the deck pack's Checks tab (which computes the gap but never the id), the debrief |
-| The approximate match on C-0170 returning C-0169 (rank 50, Rs 8,580) | Round 2's live moment only; named here, in the day sheet and in the deck pack manifest |
-| Take-home: C-0172 absent (Retail-Plus, 6 orders, Rs 14,740, rank 20 if present) | The take-home's self-check reconciliation line, which states that the table must tie, never the id |
+The six chapter notebooks and the two case notebooks, each case a TODO twin and an executed
+solution, are written and executed cold by `demos/C2_W02_D05_build_notebooks_TRAINER.py` (all, or any
+by key: c1 to c6, ex1, ex2). On 1 October 2026, after `origin/main` was merged with main's #213 fix
+to `scripts/c2kit.py`, all eight were rebuilt and executed cold; the strips in chapters 1 and 3 and in
+the escalated case were looked at and draw every dot at its value.
 
-C-0170 and C-0169 appear only in `trainer/`, in this file and in the INTERNAL recalc manifest.
+## Plants, and where each is used
+
+| Planted | Where the room meets it | Kept out of |
+|---|---|---|
+| The raw export at the payment grain: 450 orders on two rows, 400 instalment orders (186 Business, 174 Retail-Plus, 40 Retail-Core) and 50 gateway retries (30 Student, 20 Retail-Core, Rs 37,750) | Chapter 2: notebook 2 sections 2 to 4, morning S26 to S31, the guided sheet's steps 4 to 6, where the totals are blanks the room fills | Every file before chapter 2 states the grain of the customer table only; after chapter 2, files state the rule the room drew, count each order once |
+| C-0170 absent from the customer table (Retail-Plus, 6 orders, all in Q2, Rs 21,740, rank 5 if present), so the table sums to Rs 19,83,78,260 and 994 orders | Chapter 3's empty your-turn cell (notebook 3, morning S41); the escalated case's TODO 7, whose check compares the learner's verdict with the warehouse's count of customers who ordered; the debrief at afternoon S20; the extras' stretch, whose Q2 list holds C-0170 | Every STUDENT file: no file names the id, prints the table's grand total or its gap, or says which member is missing; the deck pack's Checks tab says the table does not match and prints neither the gap nor the id |
+| The approximate match on C-0170 returning C-0169 (rank 50, Rs 8,580) | Said aloud at the debrief only, from the day sheet | Every learner file; the lookup trap is taught on C-0195 returning C-0194 |
+| Take-home: C-0172 absent (Retail-Plus, 6 orders, Rs 14,740, rank 20 if present); 311 customers, so ranges sized for Friday's 300 rows miss C-0327 to C-0340 | The take-home's self-check, which asks for the Checks tab's verdict and the evidence behind it, and its line of 311 customers, which catches ranges sized for Friday's 300 rows | The id is named only in the day sheet |
 
 ## Decisions that depart from a source
 
 | Decision | The source says | Why |
 |---|---|---|
-| The tree for both quarters is built from the raw export counted once per order | The row: "the chief of staff's three asks are all buildable from the clean export" | The clean customer table has no quarter column; its revenue is summed across April to September. Only the raw export carries order dates, so the quarter split has to come from it. This makes rung 2's fix the source of deliverable 1. |
-| The double count is 450 orders, of which 50 are the double-paid retries | The row: "double-counts the fifty double-paid orders"; the spine: "a pivot double-counting the double-paid orders" | The raw export has one row per payment, so the 400 instalment orders also appear twice and carry most of the rupees. The day stages both: Remove Duplicates removes the 50 identical copies and leaves the total at Rs 39.41 crore, which becomes the round's second level. |
-| The protect list is the top fifty Retail-Plus members by two-quarter revenue | Wednesday's row: the top fifty by Q2 revenue per segment | The customer table carries two-quarter revenue only. The two-quarter list has no tie at fifty (Rs 8,580 against Rs 8,520), so Wednesday's tie rule is referred to and not re-staged. |
-| The lookup trap is taught on C-0195 in learner files | The row: the lookup trap fires on the one absent member | C-0195 is a Retail-Plus member with no orders in the two quarters, so an approximate match returns C-0194 (rank 15, Rs 16,740). It shows the mechanism on real data without naming the plant, and the room meets C-0170 live. |
-| The front-page number is Q2 revenue against Q1, with the consumer trend beside it | The row names "one number on the front page with its trend" and leaves the number open | The growth review asks what moved, and Monday's warehouse numbers are the quarters. The company's monthly line is Business invoice timing, so the trend is the consumer line, labelled. |
-| XLOOKUP is taught; every workbook computes with INDEX and MATCH | The row: "XLOOKUP for find this member" | LibreOffice 24.2.7.2 returns #NAME? for XLOOKUP (the requester, 29 September 2026, and reproduced in this session), and `xlsx_recalc.py` proves workbooks there. The one XLOOKUP cell in the deck pack (Protect!F8) carries the `_xlfn` prefix and is labelled as computed in Excel and not proved here. |
-| The practice lab set lives in `exercises/practice/` and is audited directly | `verify.py` audits guided, unguided, kahoot and exercises folders | `distractor_audit.py` does not include `practice/` when given a folder, so the set was audited by file path. |
-| Kalpa's chief of staff and the director are unnamed | The row names neither | Roles only, since no locked source names them. |
+| The six chapters are the spine's five rungs and a sixth on the workbook a director can break | The spine lists five rungs; the 29 September pack ran three rounds | The day prompt's Friday fill names the sixth chapter; it carries the row's "a director who changes an assumption in the room" and SUM under a filter, the spine's own trap |
+| The tree for both quarters is built from the raw export counted once per order | The row: "the chief of staff's three asks are all buildable from the clean export" | The customer table has no quarter, and chapter 1 shows that a split on its last order date puts Rs 17.88 crore in Q2; only the raw export carries order dates |
+| The double count is 450 orders, of which 50 are the double-paid retries | The row: "double-counts the fifty double-paid orders" | The raw export has one row per payment, so the 400 instalment orders also appear twice and carry most of the rupees; Remove Duplicates removes the 50 identical copies and leaves the total at Rs 39,40,57,740, which becomes chapter 2's second level |
+| The protect list is the top fifty Retail-Plus members by two-quarter revenue | Wednesday's row ranks by Q2 revenue per segment | The customer table carries two-quarter revenue only; the two-quarter list has no tie at fifty (Rs 8,580 against Rs 8,520), so Wednesday's tie rule is referred to; the extras' stretch ranks on Q2 alone, where a tie at Rs 3,350 sits across the boundary |
+| The lookup trap is taught on C-0195 | The row: the lookup trap fires on the one absent member | C-0195 is a Retail-Plus member with no orders in the two quarters, so an approximate match returns C-0194 (rank 15, Rs 16,740) on real data without naming the plant; the room's own tie in chapter 3 finds the absent member |
+| The front-page number is Q2 revenue against Q1, with the trend and a scope a director picks | The row names "one number on the front page with its trend" and leaves the number open | The growth review asks what moved, and Monday's warehouse numbers are the quarters; which metric belongs on a front page is Week 4's metric design and stays untaught |
+| Chapter 5's test case is booked against collected, with a lookup doing the join | The row's chapter 5 is the operating rule | Tuesday's join is the week's one step where one order meets several rows, which is the step a sheet gets wrong most quietly; the spine's traps for Friday do not include it, so it is chapter 5's own trap |
+| XLOOKUP is taught; every workbook computes with INDEX and MATCH | The row: "XLOOKUP for find this member" | LibreOffice 24.2.7.2 returns #NAME? for XLOOKUP and `xlsx_recalc.py` proves workbooks there; Microsoft says XLOOKUP is not available in Excel 2016 and 2019, which chapter 3 turns into its version fact |
+| The escalated case is the notebook's ten markers in five parts, with a workbook build as the early finishers' stretch | The row's unguided task: the three deliverables in Excel | The standard asks for the escalated case as a TODO twin with its executed solution; the take-home asks for the Excel build from fresh exports |
+| The second case runs as the notebook's five markers, a role play and three lines | The 29 September brief added six operating-rule items | The operating rule is chapter 5's set; the second case keeps the director's edit and the defence of the rule, as the spine names it |
+| The Kahoot's fifth item calls the tool for five asks in one option string | The row: "warehouse, pandas or Excel for five asks, called fast" | Kahoot answers are single options, so the five calls are one ordered string |
+| The deck pack's Checks tab computes the source tie as a formula, so the release reads "Hold the protect list until the customer table reconciles to the warehouse" whenever the workbook is opened, its finding says only that the table's orders and revenue do not match the warehouse's, and the companion page carries no member ids beyond the four its lookup answers (C-0152, C-0194, C-0195 and C-0999, which is not in the table and whose approximate match returns the last id, C-0340) | The row's plant list names the absent member as the room's own finding | The deck pack is the escalated case's Excel solution and the trainer opens its Checks tab only from chapter 6, after chapter 3's your-turn tie; neither file prints the absent id or the gap, which the second round found the Checks tab printing until 1 October 2026, and the companion builder refuses to write a page that contains it, its approximate-match neighbour, the table's grand total or its gap |
+| Kalpa's chief of staff, the director and the head of Retail-Plus are unnamed, and the chief of staff takes no pronoun | The row names none of them | Roles only, since no locked source names them |
+| Collected is every payment added once: Rs 19,66,45,070, Rs 17,54,930 short of booked, exactly Tuesday's 30 unpaid orders, and the second route is booked less the warehouse's unpaid orders | The 29 September pack and the first build of chapter 5 added every payment row, Rs 19,66,82,820 | Pass 4 found the 50 gateway copies counted twice; they are one payment posted twice, which chapter 2 already teaches, and Tuesday's day sheet separates collected each payment once from the posted feed with the gap equal to the unpaid list. Every file that repeats the figure was corrected on 1 October 2026 |
+| The drift check compares the workbook, live on its Checks tab, with the warehouse's control totals, which the data platform lead sends on a small tab beside each export | The row's operating rule asks for the two to be kept in step and names no mechanism | A workbook that needs no login cannot query the warehouse, and a check that runs only when the sheet is refreshed never sees a figure the refresh wipes; the control-totals tab is the pack's proposal, not a Kalpa fact |
+| The case notebooks' checks test behaviour: the escalated case against Finance's control totals, the warehouse and three invented sets of checks, the second case on a three-cell model with a yellow input and an honest change | The standard: a check under a TODO never prints or tests the key's words | Pass 4 ran wrong letters that passed every check and found check cells that printed keys; every wrong letter of every marker was then run and each fails a check |
+| The morning deck folds Costco into the stakes slide and moves chapter 1's quarter-split predict onto the fix slide, so it runs S1 to S72 and chapter 1 takes 15 slides; chapters 2 and 6 take 15 | The standard asks for about 10 to 14 slides a chapter | Five build steps, each with a predict and its answer, plus the map, the stakes, the options, the trap's fix, the second route and the close, do not fit 14 without dropping a predict; the extra slide is a predict or an answer, never filler |
 
-## Invented
+## Invented, and labelled so wherever it appears
 
-| What | Where | Labelled |
-|---|---|---|
-| Members C-0401 to C-0409 and C-0501 to C-0508 | The decision tool's Lookup and Visible total tabs; the companion's experiments B and C | "invented" on the tab and the card |
-| Three orders of Rs 1,000, Rs 2,000 and Rs 4,000 | The companion's experiment A | "invented rows" |
-| A segment falling from Rs 500 to Rs 400 | The companion's experiment D | "invented numbers" |
-| The app-channel export (Rs 20,000 of single orders, two instalment orders, one gateway copy) | The practice lab, problem 3 | "an invented export" |
-| A regional team's sheet, including C-0888 and a Chennai filter | The practice lab, problem 4 | Framed as a scenario |
-| The director's Rs 5,00,000 | The second case | A stated assumption |
-| The draft cards "Revenue up 12 percent", "Retail-Plus lost 15 members", "Q2 orders 462, up from 538" | The practice lab, problem 2 | Draft cards; 462 and 538 are the real quarterly order counts, and 15 is the real fall in Retail-Plus customers (91 to 76) |
+| What | Where |
+|---|---|
+| Five records short of an invented control total by Rs 1,200, and a two-cell sheet with one figure typed over its formula | Notebook 6, the Checks tab's release; afternoon S13 and S14 |
+| Discount tiers at Rs 0, Rs 1,000, Rs 2,500 and Rs 5,000, and an order of Rs 2,700 | Notebook 3's depth section; the chapter 3 set, item 4 |
+| Three customers of one invented segment (Rs 9,00,000 once, Rs 3,00,000 once, ten orders of Rs 1,00,000) | The chapter 1 set, item 3 |
+| A store's July export (20 single orders worth Rs 50,000, 5 instalment orders of Rs 10,000, 2 gateway orders of Rs 1,500) | The chapter 2 set, items 1 and 2 |
+| An app channel's share moving from 20 to 25 percent | The chapter 4 set, item 3 |
+| A September plan of Rs 3,00,00,000, against which September's real Rs 2,64,40,430 is 11.9 percent short | The chapter 4 set, item 6 |
+| Four orders (Rs 10,000 in two instalments, Rs 6,000 once, Rs 4,000 in two instalments, Rs 2,000 unpaid), and a Monday on which the workbook's Q2 reads Rs 9.79 crore | The chapter 5 set, items 2 and 5 |
+| Five rows of Rs 100 to Rs 500, one filtered and one hidden by hand | The chapter 6 set, item 3 |
+| An app-channel export by quarter (Q1: six single orders worth Rs 30,000 and two instalment orders of Rs 20,000; Q2: five single orders worth Rs 17,000, one instalment order of Rs 40,000 and one gateway order of Rs 3,000) | The practice lab, problem 3 |
+| A regional team's sheet, including C-0888, a Chennai filter, Rs 4.10 crore against Rs 2.05 crore and a segment from Rs 4.00 lakh to Rs 3.20 lakh | The practice lab, problem 4 |
+| The app-channel export of the recovery drill (13 rows, 10 orders) | The extras' recovery |
+| A merge that turns 1,000 customers into 1,120 rows, the invented numbers of Thursday's Kahoot, item 6 | The Kahoot's item 8, the return question, and afternoon S30, each saying so |
+| The director's Rs 5,00,000 | The second case, as the director's stated assumption |
+| A three-cell model of the tree's Retail-Plus row with a yellow input B1, changed honestly from Rs 5,00,000 to Rs 4,50,000 | The second case, step 3, to test the typed-over rule |
+| Three sets of checks (tree, source and lookup passing or failing) with the release each should give | The escalated case, part 4's check on the learner's release rule |
+| Eight experiment cards on invented records: A, three orders worth Rs 7,000 on five payment rows; B, three corporate buyers worth Rs 30,00,000 on 12 orders; C, members C-0401 to C-0409 with C-0405 missing; D, a segment falling from Rs 500 to Rs 400; E, three orders booked at Rs 10,000, Rs 20,000 and Rs 6,000; F, eight members worth Rs 60,000, three of them in Mumbai worth Rs 25,500 (C-0501 to C-0508); G, five records worth Rs 11,000 against a control total; H, a two-cell sheet of Rs 500 and Rs 400 | The companion page, each card labelled invented |
+| Members C-0401 to C-0409 (C-0405 returning C-0404 under an approximate match), members C-0501 to C-0508 under a Mumbai filter, nine payment rows for six orders, and a collected column that takes the first payment only | The decision tool's Lookup, Director, Quarters and Rule tabs, each labelled invented; its Tree tab reads the real Business rows and its Card tab Retail-Plus's real quarters |
 
 ## Links, each with its check date
 
+Every real-world fact in the notebooks was checked by the session that wrote them on 30 September
+2026; this session fetched each source again on 1 October 2026 and matched the quote, except where the
+row says otherwise.
+
 | Source | Checked | Used for |
 |---|---|---|
-| Microsoft Support, Create a PivotTable: https://support.microsoft.com/en-us/office/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576 | verified 29 September 2026 | Pivot steps; "PivotTables built on that data source need to be refreshed" |
-| Microsoft Support, XLOOKUP: https://support.microsoft.com/en-au/office/xlookup-function-b7fd680e-6d10-43e6-84f9-88eae8bf5929 | verified 29 September 2026 | Exact match is the default; if_not_found is the fourth argument; #N/A when it is missing |
-| Microsoft Support, VLOOKUP: https://support.microsoft.com/en-us/office/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1 | verified 29 September 2026 | range_lookup defaults to approximate match when omitted |
-| Microsoft Support, SUBTOTAL: https://support.microsoft.com/en-us/office/subtotal-function-7b027003-f060-4ade-9040-e478765b9939 | verified 29 September 2026 | 109 ignores rows hidden by hand; 9 includes them; filtered rows are excluded by both |
-| Exponent, data analyst interview questions: https://www.tryexponent.com/blog/top-data-analyst-interview-questions | verified 13 Sep 2026 on the row; not re-fetched | Interview calibration |
-| Chandoo on YouTube, Complete Excel Tutorial for Data Analysis in 4 Hours (with FREE Files): https://www.youtube.com/watch?v=7QNgqq154gE | verified 30 September 2026: YouTube's oEmbed endpoint returns the title "Complete Excel Tutorial for Data Analysis in 4 Hours (with FREE Files)" and the author "Chandoo" | The study notes' Go deeper entry 6, the video on pivots and lookups. Its chapter list and running time were not read, because YouTube answered the watch page with its automated-traffic check, so the notes give the length as the title's four hours |
-| Chandoo.org, FREE 4 Hours Complete Excel Course: https://chandoo.org/wp/complete-excel-course-free/ | verified 30 September 2026 | The author's own page for the video, which links it as the four-hour course video and lists the lookup functions VLOOKUP, INDEX+MATCH and XLOOKUP and the pivot table topics (creating, sorting and filtering, slicers and timelines, grouping) among what the course teaches; entry 6's description rests on this page |
+| Costco, Form 10-K for the fiscal year ended 31 August 2025: https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm | checked 1 October 2026 | Chapter 1: 81.0 million paid members, 38.7 million Executive, "approximately 73.6% of worldwide net sales in 2025" |
+| Report of JPMorgan Chase & Co. Management Task Force Regarding 2012 CIO Losses, 16 January 2013, Yale Program on Financial Stability archive: https://ypfsresourcelibrary.blob.core.windows.net/fcic/YPFS/JPMorgan%20Management%20Task%20Force%20Regarding%202012%20CIO%20Losses%201-16-13.pdf | checked 1 October 2026, printed page 128 | Chapter 1's depth: "divided by their sum instead of their average" and "muting volatility by a factor of two" |
+| Microsoft Support, Calculate values in a PivotTable: https://support.microsoft.com/en-us/excel/calculate-values-in-a-pivottable | checked 1 October 2026 | Chapter 1's fix: "Formulas for calculated fields operate on the sum of the underlying data for any fields in the formula" |
+| Microsoft Support, Create a PivotTable: https://support.microsoft.com/en-us/office/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576 | checked 1 October 2026 | The guided sheet's steps; "any PivotTables that were built on that data source need to be refreshed" |
+| Razorpay documentation, About Orders: https://razorpay.com/docs/payments/orders/ | checked 1 October 2026 | Chapter 2: "Combines multiple payment attempts for a single order" |
+| Razorpay documentation, Enable Partial Payments (Payment Links): https://razorpay.com/docs/payments/payment-links/partial-payments/ | checked 1 October 2026 | Chapter 2: "Each partial payment would have a unique payment_id, but will be tied to the same order_id" |
+| Razorpay API reference, Create an Order: https://razorpay.com/docs/api/orders/create/ | checked 1 October 2026 | Chapter 2's depth: the `attempts` field, "The number of payment attempts, successful and failed, that have been made against this order", and `amount_paid` |
+| The Globe and Mail on TransAlta, 4 June 2003: https://www.theglobeandmail.com/report-on-business/human-error-costs-transalta-24-million-on-contract-bids/article18285651/ | checked 1 October 2026 | Chapter 3: "misaligned the rows of information in the spreadsheet"; Steve Snyder's "cut-and-paste error in an Excel spreadsheet"; the morning deck's 10 percent, from "wiping out 10 per cent of the company's profit this year", which the second round's builder matched on 1 October 2026 |
+| Microsoft Support, VLOOKUP function: https://support.microsoft.com/en-us/office/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1 | checked 1 October 2026 | Chapter 3: "If you don't specify anything, the default value will always be TRUE or approximate match"; the first column "needs to be sorted alphabetically or numerically" |
+| Microsoft Support, Look up values with VLOOKUP, INDEX, or MATCH: https://support.microsoft.com/en-us/excel/look-up-values-with-vlookup-index-or-match | checked 1 October 2026 | Chapter 3: an approximate match "finds the largest value less than or equal to" the one asked for |
+| Microsoft Support, XLOOKUP function: https://support.microsoft.com/en-au/office/xlookup-function-b7fd680e-6d10-43e6-84f9-88eae8bf5929 | checked 1 October 2026 | Chapter 3: "XLOOKUP is not available in Excel 2016 and Excel 2019"; the if_not_found argument |
+| Avenue Supermarts, press release on results for the quarter ended 30 June 2025, 11 July 2025, as filed with BSE: https://www.bseindia.com/xml-data/corpfiling/AttachHis/a1df88b0-1e3c-4bf7-8336-51eabde7b953.pdf | checked 30 September 2026 by the session that wrote chapter 4; BSE refused this session's fetch on 1 October 2026 | Chapter 4's headline: "Standalone Total Revenue up by 16.2% at Rs.15,932 Crore", against Rs 13,712 crore |
+| Avenue Supermarts, investor presentation for the quarter ended 30 June 2025: https://api.dmartindia.com/corporate/content/file/v1/2/n3r8YXSIV43th6Z7M9eaRyiX1752240093/Investor%20Presentation%20for%20the%20year%20ended%2030%20June,%202025.pdf | checked 1 October 2026 | The same two figures, Rs 15,932 crore and Rs 13,712 crore, in the company's own revenue chart |
+| GOV.UK, PHE statement on delayed reporting of COVID-19 cases, 4 October 2020: https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases | checked 1 October 2026 | Chapter 5: "15,841 cases between 25 September and 2 October were not included in the reported daily COVID-19 cases" |
+| BBC News, 5 October 2020, "Excel: Why using Microsoft's tool caused Covid-19 results to be lost" | checked 30 September 2026 by the session that wrote chapter 5; bbc.co.uk and bbc.com refuse this session's fetch, so no URL is recorded here and the files cite the article by name and date | Chapter 5: templates of "about 65,000 rows"; "about 1,400 cases" per template |
+| Microsoft Learn, Work around the Excel 2003 row limitation: https://learn.microsoft.com/en-us/sql/reporting-services/report-builder/work-around-the-excel-2003-row-limitation?view=sql-server-ver17 | checked 1 October 2026 | Chapter 5's depth: "Excel 2003 supports a maximum of 65,536 rows per worksheet" |
+| Microsoft Support, SUBTOTAL function: https://support.microsoft.com/en-us/office/subtotal-function-7b027003-f060-4ade-9040-e478765b9939 | checked 1 October 2026 | Chapter 6: SUBTOTAL "ignores any rows that are not included in the result of a filter, no matter which function_num value you use"; 101 to 111 also ignore rows hidden by hand |
+| Computerworld on Barclays and Lehman Brothers, 14 October 2008: https://www.computerworld.com/article/1561181/excel-error-leaves-barclays-with-more-lehman-assets-than-it-bargained-for.html | checked 1 October 2026 | Chapter 6: contracts "marked as 'hidden'" added in reformatting; Barclays sought to exclude 179 contracts |
+| Exponent, data analyst interview questions: https://www.tryexponent.com/blog/top-data-analyst-interview-questions | checked 1 October 2026 by the notes' builder | Interview calibration, from the row |
+| Chandoo on YouTube, Complete Excel Tutorial for Data Analysis in 4 Hours (with FREE Files): https://www.youtube.com/watch?v=7QNgqq154gE | verified 1 October 2026 through YouTube's oEmbed endpoint, which returns the title and the author, Chandoo; the watch page answered with an automated-traffic check and chandoo.org with 403, so the video's chapter list was not read and the notes give its length as the title's four hours | The notes' reading path, the video on pivots and lookups |
 
 ## Checked in this session, and not verified in Excel
 
 On LibreOffice 24.2.7.2, 29 September 2026: `SUM` over three rows with one hidden by hand returned 60
 and `SUBTOTAL(109)` 40; `_xlfn.XLOOKUP` returned #NAME?; an approximate `VLOOKUP` for a missing
 C-0120 among C-0118, C-0119 and C-0121 returned C-0119's value; `COUNTIFS` with a text criterion
-`"<"&"C-0120"` compared text. Excel itself was not available, so these are not verified in Excel: the
-menu names in the guided file beyond the PivotTable page, Excel reading the export's ISO dates as
-dates, the `_xlfn.XLOOKUP` cell computing in Excel, and the charts in the deck pack rendering as drawn.
+compared text. Excel itself was not available, so these are not verified in Excel: the menu names in
+the guided sheet beyond the PivotTable page, Excel reading the export's ISO dates as dates, the
+`_xlfn.XLOOKUP` cell computing in Excel, and the charts in the deck pack rendering as drawn.
 
 ## Tool versions
 
-Python 3.11.15; pandas 3.0.6; openpyxl 3.1.5; python-pptx 1.0.2; nbclient 0.11.0; LibreOffice
-24.2.7.2; Playwright 1.63.0 with Chromium from `/opt/pw-browsers`; mermaid-cli 11.17.0, installed in
-the session's scratch space and put first on `PATH` for the deck and cheat-sheet builds, because the
-container's mermaid-cli 12.0.0 rejects the `-w` flag that `scripts/build_deck.py` passes and every
-diagram fell back to text.
+Python 3.11.15; pandas 3.0.6; openpyxl 3.1.5; python-pptx 1.0.2; nbclient 0.11.0; psycopg2-binary
+2.9.13, installed in the session on 1 October 2026 because the notebooks' warehouse route needs it;
+PostgreSQL 16, started in the session; LibreOffice 24.2.7.2 with the Carlito font installed in the
+session (`fonts-crosextra-carlito`); Playwright with Chromium from `/root/.cache/ms-playwright`;
+mermaid-cli 11.17.0, installed in the session's scratch space and put first on `PATH` for the deck and
+cheat-sheet builds, because `setup.sh` pins 11 and the container carries 12.0.0.
+
+The second round and the final proofs ran on 1 October 2026 in a fresh container with the same
+versions, each set up again in that session: psycopg2-binary 2.9.13; PostgreSQL 16.14 with the v4
+warehouse loaded by `load_warehouse.sh` to the same six counts; LibreOffice 24.2.7.2 with
+`fonts-crosextra-carlito`; mermaid-cli 11.17.0 first on `PATH`. The decks rebuilt there reproduced
+every committed picture except the two slides the round changed, S68 in the morning and S30 in the
+afternoon.
+
+## The depth loop
+
+| Pass | Who ran it | What it found | What changed |
+|---|---|---|---|
+| 2, domain, and 3, problem first | The builder, 30 September and 1 October 2026, before either reviewer read the pack | The builder's own reads against the standard's lists | Their fixes are in the commits of those two days and are not itemised here |
+| Humanizer, file mode | The builder, on every prose file before pass 5 | Contrast tells in the decks' notes and stock refrains | Rewritten as plain statements; code, data, paths and links left as they were |
+| 4, rigor | A fresh read-only reviewer, 1 October 2026, at commit 90289b6 | Fifteen findings. The most severe: chapter 5's collected figure counted the 50 gateway copies twice (Rs 19,66,82,820 where every payment once gives Rs 19,66,45,070); the case notebooks' checks let three wrong letters through and printed four keys; notebook 3's boundary table printed the plant's neighbour; the take-home self-check printed the fresh table's totals; context lines that handed over keys; second routes that reused the first route's mask; interview answers a strong interviewer would push back on | Chapter 5 recomputed in every file that repeats it, with the gap shown equal to Tuesday's unpaid list and a second route of booked less the unpaid orders; the case checks test behaviour against Finance's control totals, the warehouse and invented scenarios, and all 45 wrong letters of the two cases were run and each fails a check; the boundary table prints rank, city and revenue with no ids; the self-check asks for the Checks tab's verdict; chapter 3's second route moved to the warehouse and chapter 6's to a row hidden by hand; the answers carry their qualifiers; the exercise sets' contexts name no key and their weak distractors were rewritten |
+| 5, pedagogy and language | A fresh read-only reviewer, 1 October 2026, at commit 90289b6 | Ladders out of build order; seven predicts missing from the decks; notes that did not end on a transition; map, need and close subtitles shared across chapters; beat labels outside the standard; refrains and sayings; a pronoun for Kavya on the companion page; the board written to the trainer; generic headings in the pre-read and take-home; a cover strip over the footer | Each fixed in place. The study notes stay at about 7,000 words, the length of the Week 1 model notes (7,272 and 7,666 words), and say about 35 minutes of reading |
+| Second round, on the fixes since pass 4 | A fresh read-only reviewer, 1 October 2026, at commit b06287c, after `origin/main` was merged | Every changed key holds (chapter 2 `acbabd`, chapter 6 `cdbbad`) and no item has two defensible answers. All 45 wrong letters of the two cases fail a check in their own part, and none raises. Collected Rs 19,66,45,070 and the gap Rs 17,54,930 recompute from the warehouse and from the raw export, and the gap equals the 30 unpaid orders' booked value. No learner file keeps a vanished figure, and both workbooks recalculate. Eight findings: the second case's question notebook stated keys in a chart under marker 2, a chart title under marker 4 and a check label after marker 1; the escalated case's item 10 called the payments join collected money; four places named the warehouse's join as the source of collected without Tuesday's rule; chapter 5's bridge printed Rs 11.84 crore and Rs 7.83 crore landing on Rs 19.66 crore; the deck pack's Checks tab printed the planted gap whenever a learner opened it; the escalated case's item 6 was answered by its own table header, and two check labels called constants the warehouse's figures; two why lines described a wrong option inaccurately; the exercise index still said fresh export | The second case draws the learner's check on the clean and the edited sheet under neutral titles and labels. Item 10 says the join adds every payment row as posted, Rs 10,00,17,000 in Q1. The notebook, the day sheet, the companion page and the chapter 5 solution name Tuesday's join, which counts each instalment once. The bridge prints every rupee on its bars in notebook 5, on S68 and on the companion page, so the parts add up. The Checks tab says only that the table does not match. Item 6's header reads share of company revenue, and its weak distractor, the ratio again, became the share of the company's two quarters, so the item needs the base's period to match the number's. The why lines and the index were corrected. The escalated case's three invented check sets stay in sight, because they are the behaviour item 8 asks for, and computing them inside the check would re-derive the key. After the fixes all 45 wrong letters were run again: each fails its own part's check, none raises, and the key fills reproduce the solutions' code |
+| The builder's checks after the merge | The builder, 1 October 2026 | Main's rebuilt Thursday pack labels its Kahoot's 1,000 customers and 1,120 rows invented, while Friday's Kahoot item 8 and afternoon S30 called them Thursday's merge. The morning deck's TransAlta 10 percent had no quote in this file | Both Friday files now say the figures are the invented numbers of Thursday's Kahoot, and the invented table lists them. The Globe and Mail's "wiping out 10 per cent of the company's profit this year" was matched and recorded |
+
+## The final proofs, 1 October 2026
+
+| Proof | What it returned |
+|---|---|
+| `python3 scripts/verify.py content/W02/D5 --execute`, at commit 82c7fad | PASS with 0 failures. All 60 files carry the day's stem in a valid folder. The six chapter notebooks and both case solutions run cold and clean, and the two TODO twins are skipped as designed. nb_check counts 10 notebooks with 89 checks passing and none failing; distractor_audit passes 8 files; xlsx_recalc recalculates the decision tool (15 verdicts, 17 flips) and the deck pack (16 verdicts, 12 flips); html_sweep clicks 70 controls with none inert and no console error; deck_md_check passes both decks, 77 and 37 slides; deck_check renders 116 slides with no box overflowing |
+| `python3 scripts/sync_programme.py --check` | Every output is current |
+| `python3 scripts/build_companion.py content/W02/D5 --check` | The companion page's inlined library is current |
+| `python3 scripts/xlsx_recalc.py` on each manifest | The decision tool and the deck pack each pass with 0 failures |
+| The case notebooks' wrong letters, run in a scratch harness | With the keys, 11 of 11 and 12 of 12 checks pass; each of the 45 wrong letters fails its own part's check, and none raises |
+| The llm-tic-scrubber scanner on the folder | 37 of 37 files clean |
+| The decks, built with `scripts/build_deck.py` and rendered through LibreOffice | All 116 slides were looked at before the round, and S68 and S30 again after it; nothing overflows or clips, and no slide prints mermaid source |
+| The cheat sheet, rebuilt in scratch with main's `scripts/build_cheatsheet.py` | Seven panels on one page, with every panel heading and vocabulary term printed; its text matches the committed PDF's except the date's format, so the committed sheet stands |
+| `.sql` files | The pack has none; every notebook's queries ran against PostgreSQL 16.14 in the cold runs |

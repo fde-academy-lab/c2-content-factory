@@ -1,75 +1,81 @@
-# The second case: the director who wants to edit the source
+# A director wants five lakh typed into Q2: can the sheet show the director's number and still be the one Finance signs?
 
-Forty-five minutes, in pairs. One of you plays the director, the other defends the operating rule;
-then you swap. The solution opens at the close of the session.
+The second case: forty minutes, in pairs, after the debrief and the break. One partner works the
+scene in `notebooks/C2_W02_D05_ex2_second_case_STUDENT.ipynb` while the other plays the director;
+then you swap for the role play, and you finish together on three lines to the director.
 
 > "Retail-Plus will be back at five lakh next quarter; I have spoken to the team. Type five lakh into
 > Q2 so the card stops frightening people, and fix the source later."
 >
-> A director, Kalpa Retail, in the room on Monday
+> A director of Kalpa Retail, in the room on Monday, with the sheet on the projector
 
-Kavya's challenge from the morning is the brief: "Which parts belong in Excel, which must never be in
-Excel, and how do you keep the two from drifting apart?"
+Retail-Plus is Kalpa Retail's paid membership tier. Counted once per order, the raw export ties to the
+warehouse, the database that holds one row per order and is the source of truth: revenue was
+Rs 10,00,00,000 in Q1 (April to June 2026) and Rs 9,84,00,000 in Q2 (July to September 2026).
+Retail-Plus booked Rs 5,85,770 in Q1 and Rs 4,13,380 in Q2, down 29.4 percent, and the front-page
+card prints that change. The team's operating rule, written this morning, says the warehouse owns the
+number, pandas owns the analyst's iteration, and the workbook owns the last mile: presenting,
+slicing, looking up and taking what-ifs as labelled inputs, on an export that ties, with nobody typing
+over the source. A drift check on the workbook's Checks tab compares the sheet's totals with the
+warehouse's control totals, which travel with each export, every time the sheet recalculates.
+ISFORMULA says whether a cell holds a formula or a typed figure, and a yellow input cell holds an
+assumption a director may change. Every Monday the chief of staff refreshes the sheet from the week's
+export before anyone opens it. Kavya
+Nair, the senior analyst on the team, asked this morning: "Which parts belong in Excel, which parts
+must never be in Excel, and how do you keep the two from drifting apart?"
 
----
+**Who needs the answer.** The director wants a number to discuss; the chief of staff needs a card
+that still matches Finance's books after the meeting; and the analyst who audits for Anand Iyer,
+Kalpa Retail's finance controller, will compare the deck with the warehouse next week. A figure typed
+over the source gives the room one fall while Finance's books say another, and the next refresh wipes
+the figure and its reason with it.
 
-## Part 1. The scene, played out, fifteen minutes
+**The questions on the way.**
 
-Open `notebooks/C2_W02_D05_ex2_hands_on_STUDENT.ipynb`. Four lettered `TODO` markers play the scene
-on the tree: the edit, the check that catches it, the refresh that wipes it, and where the director's
-assumption belongs. Each answer is the letter itself, as a string, and each step ends on checks.
+- What does the card show once the director's figure sits in the Q2 cell?
+- Which comparison tells a typed figure from the export's own?
+- Which cells does a check on formulas flag?
+- What does Monday's refresh leave of the typed figure?
+- Where does the director's assumption go, so the room gets its answer and Finance keeps its number?
+- What do you say to the director, in three lines?
 
-## Part 2. The role play, twenty minutes
+## Part 1. What happens to the card, the checks and the refresh when the director's figure goes in?
 
-Ten minutes each way. The director pushes three times: "It is only one cell"; "Finance will never
-see this deck"; "We will fix the source later." The defender says yes to the question and no to the
-edit, in three lines: what they will show, why the actual stays, and the check that ties the sheet
-back to the warehouse.
+Used at work whenever a stakeholder asks for a number on a shared sheet to be changed in the room.
 
-## Part 3. The operating rule, ten minutes
+Fifteen minutes, the notebook's markers 1 to 5: what the card shows after the edit, which comparison
+catches it, which cells a check on formulas flags, what Monday's refresh does to the figure, and
+where the director's assumption belongs. Each step ends on checks that test what your lines computed.
 
-Six items, then the team's rule in three lines, one per tool, which is also tonight's recap.
+## Part 2. Can you hold the line while the director pushes three times?
 
-Post exactly this shape, the letters in item order, no spaces: `xxxxxx`
+Used at work in every review where a senior person wants a number to say something it does not.
 
-### Q1. The director asks for five lakh in the Q2 cell. What do you say first?
+Fifteen minutes, seven each way and a minute to swap. The director pushes three times: "It is only one
+cell"; "Finance will never see this deck"; "We will fix the source later." The partner holding the
+rule answers each push from the numbers in part 1, answers the director's question, refuses the edit, and
+never argues about whether Retail-Plus will recover.
 
-a) No, since the sheet must match Finance's books exactly
-b) Yes, I will type it in now and fix the source after the meeting
-c) Yes: I will show five lakh as your scenario, beside the actual
-d) Only if Finance signs off on the change in writing first
+## Part 3. Which three lines does the pair say to the director?
 
-### Q2. Where does the director's five lakh go in the workbook?
+Used at work in the note that follows any meeting where an assumption was asked for.
 
-a) Over the Q2 cell, with a comment saying who changed it
-b) In the raw export, before the Tree tab reads it
-c) In a separate copy of the workbook for the director
-d) In a yellow input that feeds a labelled scenario line
+Ten minutes, together: one line that says yes to the director's question and shows where the answer
+sits, one that says why the actual stays as Finance books it, and one that names the check that ties
+the sheet back to the warehouse every time it recalculates.
 
-### Q3. Which check shows the same day that a sheet has drifted from its source?
+## Which rules does the pair keep while it answers the director?
 
-a) The sheet's Q2 total against the warehouse's Q2 total
-b) The number of rows on the Tree tab against four segments
-c) The card's sentence against the sentence sent last week
-d) The file's saved date against the export's creation date
+- The director's question is fair and gets an answer in the room; only the edit is refused.
+- Every number the pair quotes comes from the notebook's output or the brief above.
+- Whatever the pair does, the number Finance books still reads as Finance books it after the meeting.
+- The support TA answers environment problems only.
 
-### Q4. Somebody typed over the Q2 cell anyway. What does Monday's refresh from a fresh export do?
+## How does the pair post its five letters and its three lines?
 
-a) Keeps the typed value, since Excel protects manual entries
-b) Wipes it without a trace, and the reason for it with it
-c) Writes the typed value back into the warehouse
-d) Flags the cell in red so the owner can decide
+One line of five letters in the order of the notebook's markers, then the three lines to the
+director pasted below it.
 
-### Q5. Which of the week's steps must never be done in Excel?
-
-a) Removing the double-paid rows from the export
-b) Slicing the tree by segment in front of the room
-c) Looking up a member by id for a director
-d) Showing the front-page number's trend
-
-### Q6. Finance audits the front-page revenue number, and a director explores it in the room. Who owns it?
-
-a) Excel, since the director uses it there
-b) pandas, since an analyst rebuilds it weekly
-c) The warehouse computes it; Excel presents it read-only
-d) Whoever last refreshed the export on Monday morning before the review
+```
+Post exactly this shape: xxxxx
+```

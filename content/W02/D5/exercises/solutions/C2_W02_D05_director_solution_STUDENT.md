@@ -1,38 +1,131 @@
-# Solution: the director who wants to edit the source
+# Which answers hold in the second case on the director's five lakh, and why?
 
-Answers: 1c 2d 3a 4b 5a 6c
+Answers: 1a 2c 3b 4d 5a
 
-Hands-on picks, the notebook's four letters in order: `badb`
+A director of Kalpa Retail asked, in the room, for Rs 5,00,000 to be typed into Retail-Plus's Q2 cell
+so the front-page card would stop frightening people, and for the source to be fixed later.
+Retail-Plus, the paid membership tier, booked Rs 5,85,770 in Q1 (April to June 2026) and Rs 4,13,380
+in Q2 (July to September 2026), down 29.4 percent; counted once per order the export ties to the
+warehouse, Rs 10,00,00,000 in Q1 and Rs 9,84,00,000 in Q2. The team's operating rule gives the number
+to the warehouse and the last mile to the workbook, with what-ifs as labelled inputs and nobody
+typing over the source. The pair worked the scene in
+`notebooks/C2_W02_D05_ex2_second_case_STUDENT.ipynb`, five lettered choices, and the executed
+solution, `C2_W02_D05_ex2_second_case_solution_STUDENT.ipynb` in this folder, runs every key. Two of
+the five items are design items: 2 and 5.
 
-## The idea being tested
+**Who needs the answer.** You and your partner, checking your five letters and your three lines after
+the case. The director will ask again on Monday, and the line that holds is the one you can say with
+its number.
 
-The director's question is legitimate and the edit is not. A typed-over cell makes the card compute
-from a hope: Retail-Plus reads down 14.6 percent where the export says 29.4. The sheet then disagrees
-with Finance's books until Monday's refresh wipes the edit and nobody can say why the two differed.
-A labelled input beside the source gives the director the number to discuss and keeps the number
-Finance signs.
+**The questions on the way.**
 
-## The rule, in three lines
+- Which skill does the second case test?
+- Which numbers stand behind the pair's three lines?
+- Why does each of the five keys hold, from the moved card to the labelled scenario?
+- Which three lines answer the director and keep Finance's number?
+- Which role-play moves fail, and why?
 
-1. The warehouse owns the number: anything Finance audits, and anything that needs a join, a dedupe
-   or a cleaning step.
-2. pandas owns the iteration: the analyst's question that changes daily, until Finance relies on it.
-3. Excel owns the last mile: it presents, slices and looks up an export, takes what-ifs as labelled
-   inputs, and nobody types over the source.
+## Which skill does the second case test?
 
-## What a strong defence sounds like
+A director's assumption is a fair question, and a sheet is a good place to answer it, as long as the
+assumption sits in its own labelled input beside the number Finance books. Typed over the source, the
+same figure moves the card, fails the drift check, flags on the formula check and disappears at the
+next refresh with nobody able to say why it was there.
 
-"Yes, I will show five lakh as your scenario, on its own line beside the actual. The actual comes
-from the export Finance ties to, and typing over it breaks that tie for a week, until the refresh
-wipes it. Every refresh ties the sheet back to the warehouse, so a drift shows the same day."
+## Which numbers stand behind the pair's three lines?
 
-## Item by item
+| Step | Number | What it means |
+|---|---|---|
+| 1 | The card moves from down 29.4 percent to down 14.6 percent | Rs 5,00,000 against Q1's Rs 5,85,770, a fall Finance's books do not show |
+| 2 | The drift on Q2 is Rs 86,620 | The typed Rs 5,00,000 less the export's Rs 4,13,380, caught against the warehouse's Q2 |
+| 3 | One cell flagged, and none after an honest change to the yellow input | The Q2 cell holds a typed figure where a formula should be; the input B1 is meant to change |
+| 4 | Monday's refresh restores Rs 4,13,380 | The typed figure, and any record of why it was there, is gone |
+| 5 | Two lines on the card: actual down 29.4 percent, the director's scenario down 14.6 percent | The question is answered and the actual stays |
 
-| Item | Key | Why it holds | Why the others fail |
-|---|---|---|---|
-| 1 | c | It answers the question the director is asking and keeps the source intact. | a refuses a legitimate question, and the director types over the cell anyway. b is the edit. d turns a scenario into a sign-off process nobody needs. |
-| 2 | d | A labelled input is a what-if; the actual line still ties to the warehouse. | a is the edit with a note on it. b edits the source of truth. c makes two versions of one deck that will drift apart. |
-| 3 | a | The warehouse's Q2 is the control total; an edit moves the sheet's Q2 and nothing else. | b counts rows, which an edit never changes. c compares wording. d compares dates, which say nothing about numbers. |
-| 4 | b | The refresh rebuilds the tree from the export, so the typed value and any record of why it was typed are gone. | a describes a protection Excel does not apply to a rebuilt range. c never happens. d describes a feature nobody built. |
-| 5 | a | Removing rows is a cleaning step with no audit trail in a sheet, and the next export brings the rows back. | b, c and d are the last mile Excel owns. |
-| 6 | c | Finance's audit decides the owner; the room decides only who presents. | a lets the room own an audited number. b is the iteration, which ends once Finance relies on it. d names a person where a system belongs. |
+## Why does each of the five keys hold, from the moved card to the labelled scenario?
+
+### Q1. Which line is the card the room now sees for Retail-Plus?
+
+The director's Rs 5,00,000 sits in the Q2 cell, and the card reads the cell.
+
+The key is a, `shown = change(export_q1, typed_q2)`. The card recalculates from whatever sits in its
+cells, so it measures the typed Rs 5,00,000 against Q1's Rs 5,85,770: down 14.6 percent.
+
+- b, `shown = change(export_q1, export_q2)`: the card before the edit; the sheet reads the cell, not
+  the export.
+- c, `shown = change(typed_q2, export_q2)`: measures the export's Q2 against the typed figure, which
+  no card prints.
+- d, `shown = typed_q2 / export_q2 * 100`: a ratio of two Q2 figures, which no card prints either.
+
+### Q2. Which comparison catches a figure typed into the sheet?
+
+A design item. The check has to stay quiet on the sheet as exported and fire on the edited one.
+
+The key is c, `drift = lambda s: int(s["Q2"].sum()) - wq["Q2"]`. The sheet's Q2 total against the
+warehouse's Q2: zero on the clean sheet, Rs 86,620 on the edited one.
+
+- a, `drift = lambda s: len(s) - 4`: counts segments, which an edit never changes.
+- b, `drift = lambda s: int(s["Q1"].sum()) - wq["Q1"]`: looks at the quarter nobody touched.
+- d, `drift = lambda s: change(int(s["Q1"].sum()), int(s["Q2"].sum()))`: the sheet's own fall from
+  Q1 to Q2, the trend the card reports, so it is never zero on a clean sheet and compares nothing with
+  the warehouse.
+
+### Q3. Which rule flags a figure typed over a formula?
+
+The notebook's model has three cells: B1, a yellow input holding the director's scenario figure, and
+B2 and B3, which read the export.
+
+The key is b, the rule that flags a cell outside the inputs whose content is not a formula, which is
+what ISFORMULA tests in a sheet. It flags nothing on the sheet as built, nothing when the director
+changes B1 from Rs 5,00,000 to Rs 4,50,000, and B3 alone once a figure is typed over its formula.
+
+- a, flagging every cell that holds a number: it flags the yellow input B1 on a sheet nobody has
+  touched.
+- c, flagging every cell that differs from one saved copy: it flags the director's honest change to
+  B1, and every cell a fresh export moves.
+- d, flagging the input cells: those are the cells a director is meant to change.
+
+### Q4. Which line is Monday's refresh?
+
+A refresh rebuilds the sheet from a fresh export.
+
+The key is d, `refreshed = orders.pivot_table(index="segment", columns="quarter", values="order_amount", aggfunc="sum")`.
+The sheet is computed again from the export, so Q2 returns to Rs 4,13,380 and the drift check reads
+zero; the typed figure and its reason are gone without a trace.
+
+- a, `refreshed = edited.copy()`: keeps the typed figure, which is the drift the rule exists to stop.
+- b, `refreshed = edited.fillna(0)`: keeps it too.
+- c, `refreshed = sheet.where(edited == sheet, edited)`: keeps the edited value wherever the two
+  differ, which is exactly the typed cell.
+
+### Q5. Which card answers the director and keeps the number Finance signs?
+
+A design item. The question is fair: what would the card say if Retail-Plus came back to Rs 5,00,000?
+
+The key is a, a card with two labelled lines: the actual, down 29.4 percent, and the director's
+scenario, down 14.6 percent, read from a yellow input. The room gets its answer, and the actual stays
+the number Finance books.
+
+- b, a card whose only line, labelled actual, reads the director's figure: the edit again under a new
+  name.
+- c, a card with the actual alone: it refuses a fair question and sends the director back to typing
+  over cells.
+- d, the two lines with their labels swapped: the page then calls the scenario the actual.
+
+## Which three lines answer the director and keep Finance's number?
+
+"Yes: here is the card with your assumption, Retail-Plus back to Rs 5.00 lakh, as a labelled scenario
+line, down 14.6 percent on Q1. The actual stays at Rs 4.13 lakh, down 29.4 percent, because it is the
+number Finance books and the one Anand's analyst will check next week. The Checks tab compares the
+sheet's quarters with the warehouse's control totals every time it recalculates, so a typed figure
+shows up as a Rs 86,620 drift before anyone reads it, and Monday's refresh would have wiped it with no
+record of why."
+
+## Which role-play moves fail, and why?
+
+| The move | Why it fails |
+|---|---|
+| "No, the sheet must match Finance" and nothing more | It refuses a fair question, and the director types the figure in anyway |
+| Typing the figure with a comment saying who changed it | The comment is lost at the next refresh, and the card shows the scenario as the actual all week |
+| A separate copy of the workbook for the director | Two files leave the meeting, and nobody can later say which one the deck came from |
+| Arguing about whether Retail-Plus will recover | It is the director's assumption to make; the pair's job is where the assumption sits |
