@@ -1,7 +1,9 @@
-# Recalc manifest for the Mock R1 scoring sheet
+# How does Mock R1's scoring sheet prove it computes, and that its checks move?
 
 Read by `scripts/xlsx_recalc.py`. The sheet ships blank, so the checks as shipped read its empty state,
-and the flips enter marks and assert that the totals, the status and the calibration check move.
+and the flips enter marks and assert that the totals, the status and the calibration check move. The
+workbook is written by `content/W03/D4/internal/C2_W03_D04_build_workbooks_INTERNAL.py`, which copies
+the criteria from `data/programme/facts.yaml`.
 
 ```yaml
 workbook: C2_W03_D04_mock_scoring_sheet_TRAINER.xlsx
@@ -31,7 +33,7 @@ flips:
     verdicts:
       - {sheet: Scores, cell: M2, expect: "check: a mark is above its maximum"}
       - {sheet: Assessors, cell: B7, expect: "1"}
-  - name: two assessors score the same half three marks apart
+  - name: two assessors score the technical half four marks apart
     set:
       - {sheet: Scores, cell: D2, value: 8}
       - {sheet: Scores, cell: E2, value: 4}
