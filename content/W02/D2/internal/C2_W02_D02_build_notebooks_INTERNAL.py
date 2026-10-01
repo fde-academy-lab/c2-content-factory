@@ -350,9 +350,9 @@ follows the statement rings a customer who has paid in full. {DOSSIER}
 ## Which of the four joins answers Anand, and what does each cost on five orders?
 
 There are four ways to attach payments to orders, and each keeps a different set of rows. The cell
-below measures each one on the invented tables: how many rows it returns, how many of the five booked
-orders reach the statement, what happens to T-4 (never paid) and to P-7 (a payment with no order),
-and how long it takes.
+below runs each one on the invented tables and reports what happens to T-4 (never paid) and to P-7 (a
+payment with no order), and how long it takes. How many rows each returns is traced by hand at levels
+2 and 3.
 
 | Option | What it keeps | The question it answers |
 |---|---|---|
@@ -372,25 +372,22 @@ for name, join in [("A. INNER", "JOIN"), ("B. LEFT, orders first", "LEFT JOIN"),
         FROM tiny_orders o {join} tiny_payments p ON p.order_id = o.order_id\"\"\")
     secs = time.perf_counter() - t0
     booked_ids = {r["order_id"] for r in rows if r["order_id"]}
-    repeated = sorted({i for i in booked_ids if sum(1 for r in rows if r["order_id"] == i) > 1})
-    sizing.append((name, len(rows), f"{len(booked_ids)} of 5",
-                   "kept" if "T-4" in booked_ids else "dropped",
+    sizing.append((name, "kept" if "T-4" in booked_ids else "dropped",
                    "kept" if any(r["payment_id"] == "P-7" for r in rows) else "dropped",
-                   ", ".join(repeated), f"{secs * 1000:.1f} ms"))
-kit.table(["Option", "Rows out", "Booked orders on it", "T-4, never paid", "P-7, no order",
-           "Orders listed twice", "Time"], sizing,
-          caption="Four joins on the invented tables: 5 orders in, 7 payments in")
-kit.bars([(s[0], s[1]) for s in sizing], lit=[1],
-         title="Rows each join returns from 5 orders and 7 payments")
-kit.check("only B and D keep all five booked orders",
-          [s[2] for s in sizing] == ["4 of 5", "5 of 5", "4 of 5", "5 of 5"], [s[2] for s in sizing])
+                   f"{secs * 1000:.1f} ms"))
+kit.table(["Option", "T-4, never paid", "P-7, no order", "Time"], sizing,
+          caption="Four joins on the invented tables: what each keeps of the two rows that find no partner")
+kit.matrix([s[0] for s in sizing], ["T-4, never paid", "P-7, no order"], [[s[1], s[2]] for s in sizing],
+           title="Which join keeps the order nobody paid, and the payment no order claims")
+kit.check("only B and D keep T-4, the order nobody paid",
+          [s[1] for s in sizing] == ["dropped", "kept", "dropped", "kept"], "B and D")
 """),
         md("""
 **The best-fit call.** Option B, the LEFT JOIN with orders on the left, fits best, because Anand's
-question is about every order Kalpa booked: B is the only option that keeps all five orders and
-nothing that is not an order. Every option runs in a few milliseconds here, so the choice rests on
-the rows each one keeps. The table also shows what B does not fix: T-2 and T-3 come out twice,
-which chapter 2 has to deal with before any total is read.
+question is about every order Kalpa booked: B is the only option that keeps T-4 and nothing that is
+not an order. Every option runs in a few milliseconds here, so the choice rests on the rows each one
+keeps. B does not fix everything: an order with two payment rows still comes out twice, which chapter
+2 has to deal with before any total is read.
 
 **The fact that would change the call.** The data platform lead asks a different question: is
 every payment in the feed explained by a booked order? That question keeps every payment, so it
@@ -700,7 +697,7 @@ def chapter2():
               "What does a first draft of collected report for Q2?",
               "Why is the first draft wrong when every row on it is right?",
               "Which of four ways stops the double count, and what does each cost on this data?",
-              "Does the chosen way keep 462 orders and Rs 9,84,00,000 booked?",
+              "Does the chosen way keep every Q2 order once, with Monday's booked?",
               "Do the two tables, each summed alone, agree with the fixed join?"]
     cells = [
         title_cell(
@@ -792,7 +789,7 @@ c) about Rs 19.3 crore; d) about Rs 4.9 crore.
 draft = run(\"\"\"{Q2['draft']}\"\"\")[0]
 kit.stats([(kit.rupees(draft["collected"]), "collected, first draft", "the order amount beside each payment row"),
            (kit.rupees(booked_q2["booked"]), "booked", "Monday's number, orders alone"),
-           (f'{{draft["collected"] / booked_q2["booked"]:.2f}} x', "collected over booked", "which cannot be")])
+           (f'{{draft["collected"] / booked_q2["booked"]:.2f}} x', "collected over booked", "more than cash can be")])
 by_ch = run(\"\"\"{Q2['draft_by_channel']}\"\"\")
 bk_ch = {{r["channel"]: r for r in run(\"\"\"{Q2['booked_by_channel']}\"\"\")}}
 kit.columns([r["channel"] for r in by_ch],
@@ -891,7 +888,7 @@ join, exactly. And if Anand asked per payment, say to match each line of the ban
 payment would be the right grain and nothing would be summed first.
 """),
         md("""
-## 4. Does the chosen way keep 462 orders and Rs 9,84,00,000 booked?
+## 4. Does the chosen way keep every Q2 order once, with Monday's booked?
 
 ```sql
 WITH posted_per_order AS (
@@ -908,9 +905,15 @@ WHERE o.quarter = 'Q2';
 `posted` is everything the feed holds against an order, instalments and any repeat alike, and an
 order with no payment row gets NULL there.
 
-**Predict before you run.** How many rows does it return? a) 678; b) 462; c) 216; d) 1,000.
+**Predict before you run.** What does the fixed join show for KR-00595, the order level 3 traced?
+a) one row, posted Rs 4,01,000, payment_rows 2; b) two rows, posted Rs 2,40,600 and Rs 1,60,400;
+c) one row, posted Rs 8,02,000, payment_rows 2; d) one row, posted Rs 2,40,600, payment_rows 1.
 """),
         code("""
+kr = [r for r in fixed if r["order_id"] == "KR-00595"]
+show(kr, "KR-00595 after the fix", money=["booked", "posted"])
+kit.check("KR-00595 comes out once, with both instalments in posted",
+          len(kr) == 1 and kr[0]["posted"] == kr[0]["booked"] and kr[0]["payment_rows"] == 2, "one row, two payment rows")
 kit.stats([(f"{len(fixed)}", "rows out", "one per Q2 order"),
            (kit.rupees(booked_a), "booked after the join", "Monday's figure"),
            (f'{len({r["order_id"] for r in fixed})}', "distinct orders", "none repeated")])
@@ -923,7 +926,8 @@ kit.check("booked after the fixed join equals Monday's booked", booked_a == book
           kit.rupees(booked_a))
 kit.check("no order appears twice", len({r["order_id"] for r in fixed}) == len(fixed), f"{len(fixed)}")"""),
         md("""
-**What happened.** The answer is b: 462 rows for 462 orders, and booked after the join is
+**What happened.** The answer is a: KR-00595 comes out once, its posted Rs 4,01,000 from its two
+instalments. The whole join returns 462 rows for 462 orders, and booked after the join is
 Rs 9,84,00,000, Monday's figure to the rupee. The 216 extra rows are gone, and the order amount is
 summed once per order. The `posted` column now holds what the feed recorded against each order.
 
@@ -988,9 +992,9 @@ something else is wrong too.
 
 ### Depth: why is SUM(DISTINCT ...) a tempting fix that fails?
 
-It makes the doubled number go away, which feels like proof. It removes repeated values, and two
-different orders of the same amount are two orders: on Kalpa's Q2 it loses Rs 20,32,780 of real
-bookings. It would also remove a genuine second payment that happened to match the first. A fix
+It makes the doubled number go away, which feels like proof. DISTINCT removes repeated values, and
+two different orders of the same amount are two orders: on Kalpa's Q2 it loses Rs 20,32,780 of real
+bookings, and it would also remove a genuine second payment that happened to match the first. A fix
 that works on the grain says which rows it merged and why; DISTINCT cannot say either.
 """),
         md("""
@@ -1200,9 +1204,10 @@ either reads as "fully collected". {DOSSIER}
         md("""
 ## Which of four proofs shows Anand the gap is honest, and what does each catch?
 
-A team could prove the report in four ways before Anand reads it. The cell below runs each one
-against a first draft on the invented tables that carries two errors at once: it joined with a
-plain JOIN, and it counts T-3's repeated payment inside collected.
+A team could prove the report in four ways before Anand reads it. The cell below sizes each one
+against a first draft on the invented tables that carries two errors at once: it joined with a plain
+JOIN, and it counts T-3's repeated payment inside collected. What the draft itself reports is level
+2's question.
 
 | Option | What Anand reads | What it assumes |
 |---|---|---|
@@ -1212,23 +1217,21 @@ plain JOIN, and it counts T-3's repeated payment inside collected.
 | D. The whole statement, one line per order | Every order | That someone reads every line |
 """),
         code(f"""
-draft = run(\"\"\"{Q3['tiny_inner']}\"\"\")[0]
 tiny_orders_n = one("SELECT count(*) FROM tiny_orders")
-tiny_booked = one("SELECT sum(amount) FROM tiny_orders")
 sizing = [
-    ("A. one number", f'gap {{int(draft["gap"]):,}}', "1", "no", "no"),
-    ("B. count reconciliation", f'{{draft["orders"]}} of {{tiny_orders_n}} orders', "4", "yes", "no"),
-    ("C. the bridge with its lists", "never paid 800, posted twice 1,500", "5 bars and 2 lists", "yes", "yes"),
-    ("D. the whole statement", "5 lines, T-4 empty, T-3 twice", "every line", "if read", "if read"),
+    ("A. one number", "1", "no", "no"),
+    ("B. count reconciliation", "4", "yes", "no"),
+    ("C. the bridge with its lists", "5 bars and 2 lists", "yes", "yes"),
+    ("D. the whole statement", "every line, 462 on Kalpa's Q2", "if read", "if read"),
 ]
-kit.table(["Option", "What it shows on the draft", "Lines Anand reads", "Catches the dropped order",
-           "Catches the repeat inside"], sizing, caption="Four proofs, run against a draft with two errors")
+kit.table(["Option", "Lines Anand reads", "Catches the dropped order", "Catches the repeat inside"], sizing,
+          caption="Four proofs, sized against a draft with two errors")
 kit.matrix(["A. one number", "B. count", "C. bridge", "D. statement"],
            ["the dropped order", "the repeat inside collected"],
            [["missed", "missed"], ["caught", "missed"], ["caught", "caught"], ["caught if read", "caught if read"]],
            title="What each proof catches on the invented draft")
-kit.check("the draft reports fewer orders than the table holds", draft["orders"] < tiny_orders_n,
-          f'{{draft["orders"]}} of {{tiny_orders_n}}')"""),
+kit.check("only the bridge catches both errors without a person reading every line",
+          [s[0] for s in sizing if s[2] == "yes" and s[3] == "yes"] == ["C. the bridge with its lists"], "C")"""),
         md("""
 **The best-fit call.** Run B, then C: the count reconciliation first, because it needs no rupee and
 catches a dropped or repeated order in one line, then the bridge, because it is the only proof here
@@ -1295,6 +1298,8 @@ JOIN posted_per_order pp ON pp.order_id = o.order_id;
 report? a) 800; b) 0; c) minus 1,500; d) minus 700.
 """),
         code("""
+draft = run(\"\"\"""" + Q3['tiny_inner'] + """\"\"\")[0]
+tiny_booked = one("SELECT sum(amount) FROM tiny_orders")
 kit.stats([(f'{draft["orders"]}', "orders in the report", "of 5 in the table"),
            (f'{int(draft["booked"]):,}', "booked, as reported", "of 5,800"),
            (f'{int(draft["posted"]):,}', "posted, as reported", "every payment row matched"),
@@ -1468,8 +1473,9 @@ kit.check("the cap method reaches the bridge's collected on Kalpa's Q2", kalpa_c
           "equal to the rupee")"""),
         md("""
 **What happened.** Both methods give 5,000 on the invented tables, order by order, and they agree to
-the rupee on Kalpa's Q2. So the feed holds no retry under a new instalment number and no genuine
-overpayment, and collected can be trusted on either count.
+the rupee on Kalpa's Q2. Neither blind spot shows on its own, so collected stands on two methods; only
+a retry under a new instalment number on an order still paid short, or two errors of the same size,
+could pass both.
 
 ### In the interview: how do you reconcile a joined total, and find two errors that cancel?
 
@@ -1731,7 +1737,7 @@ name missing is money left where it is. {DOSSIER}
 ## Which of four ways finds the unpaid orders, and what does each cost here?
 
 An order that nothing matched is found with an anti-join: keep the rows of one table that have no
-partner in the other. SQL offers four ways to write one.
+partner in the other. SQL has four ways to write one.
 
 | Option | Written as | What it assumes |
 |---|---|---|
@@ -1757,16 +1763,15 @@ for name, q in [("A. LEFT JOIN ... IS NULL", \"\"\"{Q4['kalpa_anti']}\"\"\"),
 not_in_clean = run(\"\"\"{Q4['tiny_not_in']}\"\"\")
 not_in_null = run(\"\"\"{Q4['tiny_not_in_null']}\"\"\")
 kit.table(["Option", "Carries the order's columns", "With one NULL payment, invented", "Time on Kalpa's Q2"],
-          [("A. LEFT JOIN ... IS NULL", "yes", "still finds T-4", f'{{timed["A. LEFT JOIN ... IS NULL"][1] * 1000:.1f}} ms'),
-           ("B. NOT EXISTS", "yes", "still finds T-4", f'{{timed["B. NOT EXISTS"][1] * 1000:.1f}} ms'),
-           ("C. NOT IN", "yes", f"finds {{len(not_in_null)}} orders, where it found {{len(not_in_clean)}}",
-            f'{{timed["C. NOT IN"][1] * 1000:.1f}} ms'),
-           ("D. EXCEPT", "ids only", "still finds T-4", f'{{timed["D. EXCEPT"][1] * 1000:.1f}} ms')],
+          [("A. LEFT JOIN ... IS NULL", "yes", "unchanged", f'{{timed["A. LEFT JOIN ... IS NULL"][1] * 1000:.1f}} ms'),
+           ("B. NOT EXISTS", "yes", "unchanged", f'{{timed["B. NOT EXISTS"][1] * 1000:.1f}} ms'),
+           ("C. NOT IN", "yes", "returns no rows at all", f'{{timed["C. NOT IN"][1] * 1000:.1f}} ms'),
+           ("D. EXCEPT", "ids only", "unchanged", f'{{timed["D. EXCEPT"][1] * 1000:.1f}} ms')],
           caption="Four anti-joins, sized")
 kit.matrix(["A. LEFT ... IS NULL", "B. NOT EXISTS", "C. NOT IN", "D. EXCEPT"],
            ["a clean feed", "a feed with one NULL order id"],
-           [["finds T-4", "finds T-4"], ["finds T-4", "finds T-4"], ["finds T-4", "finds nothing"],
-            ["finds T-4, ids only", "finds T-4, ids only"]],
+           [["finds the unpaid order", "unchanged"], ["finds the unpaid order", "unchanged"],
+            ["finds the unpaid order", "finds nothing"], ["ids only", "ids only, unchanged"]],
            title="Invented: NOT IN goes silent when the subquery holds a NULL")
 lists = [v[0] for v in timed.values()]
 kit.check("all four anti-joins return the same Q2 list on Kalpa", all(l == lists[0] for l in lists),
@@ -2194,7 +2199,7 @@ CH5_STEPS = ["the need: a page Anand can sign", "the options: four report forms,
 def chapter5():
     n = 5
     ladder = ["Which of four report forms fits a finance controller?",
-              "What must a line per channel carry for Anand to sign it?",
+              "What does each channel book, and what must its line carry?",
               "What does the gap column say when each order's gap is added up?",
               "Why does the gap column read zero, and which check catches it?",
               "Does the fixed report add back to the bridge on Kalpa's Q2?",
@@ -2267,7 +2272,7 @@ store team to chase without telling them whom; D answers everything and asks Ana
 order by order, D travels with the signed page as an appendix file; the page itself stays C.
 """),
         md("""
-## 1. What must a line per channel carry for Anand to sign it?
+## 1. What does each channel book, and what must its line carry?
 
 Each channel gets one line with the orders booked, booked, collected and the gap, and a definition
 line sits above the table, "collected: cash received against Q2 orders, each payment counted once;
@@ -2631,7 +2636,7 @@ def chapter6():
     n = 6
     ladder = ["Do the checks a hurried analyst writes pass a report that hides an unpaid order?",
               "Which checks tie the report back to the two tables?",
-              "Does the suite fail every wrong report the day has met?",
+              "Do the two suites stop every wrong report the day has met?",
               "Does the tie-back suite pass Kalpa's Q2 report?",
               "Does a second tool, working from the raw rows, reach the same numbers?",
               "What does Anand get when a check fails at the end of reporting day?"]
@@ -2751,7 +2756,7 @@ payment once, so an error in the SQL and the same error in the checks would stil
 Plausibility checks cost the same and stop three of the five.
 
 **The fact that would change the call.** A settlement file from the gateway, the list of what
-actually reached Kalpa's bank, would be a source outside Kalpa's own tables, and reconciling to it
+reached Kalpa's bank, would be a source outside Kalpa's own tables, and reconciling to it
 would become the strongest check of all; until the platform lead supplies one, every check here
 reads Kalpa's own records.
 """),
@@ -2775,7 +2780,7 @@ kit.flow(["the quarter-in-WHERE page\\nT-4 dropped", "3 plausibility checks", "3
 kit.check("the plausibility suite passes the report that hides T-4", all(ok for _, ok in verdicts), "3 of 3")"""),
         md("""
 **What happened.** The answer is d: all three pass. The page shows 4 orders, booked 5,000, collected
-5,000 and a gap of 0, and every one of those is internally consistent.
+5,000 and a gap of 0, and every one of those agrees with the others.
 
 **Why it is wrong.** Each check tests the report against itself. The missing order took its booked
 amount with it, so collected is still at most booked, the gap is still not negative, and T-4's
@@ -2791,7 +2796,7 @@ Each tie-back check recomputes one figure outside the report and compares it wit
 | Check | Computed from | Catches |
 |---|---|---|
 | Orders on the report equal orders in the table | `orders` alone | A dropped or repeated order |
-| Booked equals booked from orders alone | `orders` alone | A fan-out, a dropped order |
+| Booked equals booked from orders alone | `orders` alone | A fan-out that reached booked, a dropped order |
 | The gap equals booked less collected | The report's own columns | A NULL that fell out of a sum |
 | The gap equals the never-paid and paid-short lists | The anti-join, and each order's instalments against its booked | A dropped order, a NULL gap, a wrong list |
 | Collected plus posted twice equals posted from payments alone | `payments` alone | A retry inside collected, a fan-out |
@@ -2808,10 +2813,10 @@ kit.check("the tie-back suite fails the quarter-in-WHERE page on orders, booked 
         md("""
 **What happened.** The answer is b: orders (4 against 5), booked (5,000 against 5,800) and the two
 lists (a gap of 0 against 800 never paid and nothing paid short) all fail, while the page's own
-arithmetic and its collected figure pass. The page is internally correct and externally wrong, and
-only a check that looks outside it can say so.
+arithmetic and its collected figure pass. The page agrees with itself and disagrees with the tables,
+and only a check that looks outside it can say so.
 
-## 3. Does the suite fail every wrong report the day has met?
+## 3. Do the two suites stop every wrong report the day has met?
 
 **Predict before you run.** The plausibility suite stops three of the day's five wrong pages. Which
 two does it let through? a) the fan-out and plain JOIN drafts; b) the quarter in WHERE and the summed
@@ -2893,8 +2898,7 @@ kit.check("Kalpa's Q2: Python from the raw rows matches the SQL report on all fo
         md("""
 **What happened.** The two tools agree on all four figures, on the invented tables (5 orders, booked
 5,800, collected 5,000, gap 800) and on Kalpa's Q2. The Python route has its own blind spot, since
-it assumes a retry repeats the same amount, which chapter 3's cap method checked; each route covers
-a place the other cannot see.
+it assumes a retry repeats the same amount, which chapter 3's cap method checked.
 
 ## 5. What does Anand get when a check fails at the end of reporting day?
 
@@ -2918,7 +2922,7 @@ and it puts an unreconciled figure on the CEO's page.
 | The check that fails | What it means | What Anand gets that day | Who fixes it |
 |---|---|---|---|
 | Orders on the report against the table | The join dropped or repeated an order | Booked, and "collected held: the join lost or repeated orders" | You |
-| Booked against orders alone | A fan-out or a dropped order | Booked from orders alone; collected held | You |
+| Booked against orders alone | A fan-out that reached booked, or a dropped order | Booked from orders alone; collected held | You |
 | The gap against booked less collected | A NULL fell out of a sum | The page, with the gap recomputed from the two columns | You |
 | The gap against the never-paid and paid-short lists | A list or a bar is wrong | Booked and collected, the gap marked provisional | You, with Kavya |
 | Collected plus posted twice against posted | The feed changed, or a retry arrived in a new shape | Booked; collected held; the platform lead told the same day | The platform lead |
@@ -2950,7 +2954,9 @@ tell the owner the same day. An unreconciled number never leaves with a PASS on 
 fan-out and a dropped order, and this check catches both without reading a rupee, in a millisecond.
 It misses what goes wrong after the join: on the day's five wrong pages it stops three, and lets
 through posted read as collected and the gap summed past a NULL, which is why the gap's tie-back to
-the never-paid and paid-short lists is the second check added.
+the never-paid and paid-short lists is the second check added. That tie-back stops all five pages,
+yet it comes second, because the lists are queries of their own that can carry the page's mistake (a
+date in WHERE empties the page and the list together), while the count reads nothing but `orders`.
 
 ### Depth: why is a settlement file stronger than any check on Kalpa's own tables?
 
