@@ -124,9 +124,9 @@ as small in rupees.
   size in the company.
 - c, `(q2 - q1) / company_q2 * 100`: the change's share of company revenue, a useful number that is
   not the scope's base.
-- d, `q2 / int(seg_q.sum().sum()) * 100`: divides one quarter by the company's two, so the base
-  covers a different period from the number; every share reads about half what it is, so all
-  segments, which are the whole company, come to 49.6 percent.
+- d, `q2 / int(seg_q.sum().sum()) * 100`: divides one quarter by the company's two quarters, a base
+  from a different period than the number. Every share reads about half what it is, and all segments,
+  which are the whole company, come to 49.6 percent.
 
 ### Q7. Which comparison says whether the list's source table ties?
 

@@ -2188,7 +2188,7 @@ kit.table(["Scope", "Q2", "Change on Q1", "Share of company revenue"],
 kit.check("your shares match chapter 4's, for all segments and for Retail-Plus",
           round(card("All segments")["share"], 1) == 100.0 and round(card("Retail-Plus")["share"], 2) == 0.42)''',
      {5: "(q2 - q1) / q1 * 100", 6: "q2 / company_q2 * 100"},
-     "TODO 5: a divides by the current quarter, which reads Retail-Plus down 41.7 percent where it fell 29.4; b measures the fall against both quarters together, a base no card names; c is a ratio, about 98 for all segments and 71 for Retail-Plus, that a card would misprint as a percentage. TODO 6: b shares out the scope's own two quarters; c is the change's share, not the scope's; d divides one quarter by the company's two, so every share reads about half what it is and all segments come to 49.6 percent."),
+     "TODO 5: a divides by the current quarter, which reads Retail-Plus down 41.7 percent where it fell 29.4; b measures the fall against both quarters together, a base no card names; c is a ratio, about 98 for all segments and 71 for Retail-Plus, that a card would misprint as a percentage. TODO 6: b shares out the scope's own two quarters; c is the change as a share of company revenue, a different number from the scope's share; d divides one quarter by the company's two quarters, a base from a different period, so every share reads about half what it is and all segments come to 49.6 percent."),
     ('''## Part 4. What ships on Monday, and what, if anything, is held?
 
 Used at work in every release note, which says what a stakeholder can rely on, what waits, and why.
