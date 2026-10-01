@@ -2404,7 +2404,7 @@ parts to rely on.
 right fifty and does the lookup say when an id is missing; does the card carry its period, comparison
 and base; what ships and what, if anything, is held; do the numbers agree a second way.
 
-**What you have.** Two exports in `../data/`: the customer table, one row per customer who ordered
+You have two exports in `../data/`: the customer table, one row per customer who ordered
 between April and September 2026 with that customer's orders and revenue summed, and the raw export,
 one row per payment with the order's amount repeated on each. The warehouse, which Monday's queries
 read, holds one row per order and is the source of truth. Finance's control totals, which the warehouse
@@ -2412,7 +2412,7 @@ reproduces, are 538 orders and Rs 10,00,00,000 for Q1 (April to June 2026) and 4
 Rs 9,84,00,000 for Q2 (July to September 2026). Revenue is booked order value in rupees. C-0195 is a
 Retail-Plus member who placed no orders in the two quarters.
 
-**How it works.** {HOW_SOLVED.format(n="Ten", where="across five parts", unit="part") if solution else HOW_TWIN.format(n="Ten", where="across five parts", unit="part")}
+{HOW_SOLVED.format(n="Ten", where="across five parts", unit="part") if solution else HOW_TWIN.format(n="Ten", where="across five parts", unit="part")}
 ''')
     setup_cell = setup(HELPERS, LOAD_TABLE, LOAD_RAW, WAREHOUSE,
                        last='FINANCE = {"Q1": (538, 10_00_00_000), "Q2": (462, 9_84_00_000)}   # Finance\'s control totals: orders, rupees\n'
@@ -2450,12 +2450,12 @@ show, and the next refresh wipes the figure and its reason.
 cells the typed-over check flags; what Monday's refresh does to the figure; and where the director's
 assumption belongs.
 
-**What you have.** The raw export in `../data/`, one row per payment with the order's amount repeated
+You have the raw export in `../data/`, one row per payment with the order's amount repeated
 on each; counted once per order it ties to the warehouse, Rs 10,00,00,000 in Q1 (April to June 2026) and
 Rs 9,84,00,000 in Q2 (July to September 2026). Retail-Plus, Kalpa's paid membership tier, booked
 Rs 5,85,770 in Q1 and Rs 4,13,380 in Q2, down 29.4 percent.
 
-**How it works.** {HOW_SOLVED.format(n="Five", where="in five steps", unit="step") if solution else HOW_TWIN.format(n="Five", where="in five steps", unit="step")}
+{HOW_SOLVED.format(n="Five", where="in five steps", unit="step") if solution else HOW_TWIN.format(n="Five", where="in five steps", unit="step")}
 ''')
     setup_cell = setup(HELPERS, LOAD_RAW, WAREHOUSE, COUNT_ONCE,
                        last='print(f"{len(orders):,} orders, each counted once, from {len(raw):,} export rows")')
