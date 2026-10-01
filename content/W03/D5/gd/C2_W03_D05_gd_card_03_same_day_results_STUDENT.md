@@ -9,7 +9,7 @@ checked on 1 October 2026.
 > I do?"
 > Dr Priya Menon, COO, Kalpa Health
 
-**Who needs the answer.** Dr Menon, who signs off the spring campaign this month. A promise one lab
+**Who needs the answer.** Dr Menon, who signs off the spring advertising this month. A promise one lab
 breaks loses the doctors who believed it, and a second shift bought where it is not needed costs
 $32,000 a month.
 

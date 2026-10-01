@@ -17,7 +17,7 @@ called?
 
 ## Who pays this price, and why is it on the table now?
 
-**Who needs the answer.** The marketing head, who briefs a January campaign on Monday.
+**Who needs the answer.** The marketing head, who briefs January's advertising on Monday.
 
 **The questions on the way.** What is a self-pay patient? Does a real lab sell tests this way?
 
