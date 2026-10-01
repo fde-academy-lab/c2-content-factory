@@ -66,8 +66,8 @@ order, `WHERE` against `HAVING`, the `GROUP BY` refusal and `LIMIT` without `ORD
 the escalated case. Week 1 met both measures, booked revenue and delivered revenue, and Thursday's
 per-member work used delivered; today's suite starts from booked revenue, the reading of last week's
 tree, and the escalated case reruns it on delivered. Joins arrive tomorrow; today used one join line
-only to look up each order's segment. The IITGN faculty session after the afternoon's chapter,
-tentative, runs on a topic of its own.
+only to look up each order's segment. The tentative IITGN faculty session after the afternoon's
+chapter runs on a topic of its own.
 
 ---
 

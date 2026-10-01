@@ -20,11 +20,17 @@ the pack departs from a source, and the depth loop that checked it.
 
 ## Where does the data come from, and how is it proved?
 
-The warehouse file `data/C2_W02_D01_warehouse_v4_STUDENT.sql` is the generator's output, unchanged:
-a fresh run of `python3 data/generate_client_zero.py --version v4 --out <folder> --stem C2_W02_D01`
-writes a byte-identical file (md5 951e4e8906ae1aaec38df82caaa011b2, checked 30 Sep 2026). It loads
-1,000 orders, 340 customers, 1,428 payments, 136 exposure rows, a 13-row plan line and 12 refunds
-through `bash .devcontainer/load_warehouse.sh`.
+The warehouse file `data/C2_W02_D01_warehouse_v4_STUDENT.sql` is the generator's output with its
+header cut to two lines. A fresh run of `python3 data/generate_client_zero.py --version v4 --out
+<folder> --stem C2_W02_D01` writes md5 951e4e8906ae1aaec38df82caaa011b2, whose lines 2 to 4 named the
+loader as `psql -f data/warehouse_v4.sql`, which does not exist, and described why payments carry no
+foreign key and the exposure table no primary key: Tuesday's orphan payments and Thursday's re-sent
+customers, two plants a learner file must not name. Those three lines were replaced with one, using
+`sed -i '2,4c\-- Written by data/generate_client_zero.py --version v4, and loaded by: bash
+.devcontainer/load_warehouse.sh'`; line 1 and every line from the generator's line 5 onward are
+unchanged (checked by diff on 1 Oct 2026), and the shipped file's md5 is
+a3977a5ad1021474ecc5adf68f3c97cd. It loads 1,000 orders, 340 customers, 1,428 payments, 136 exposure
+rows, a 13-row plan line and 12 refunds through `bash .devcontainer/load_warehouse.sh`.
 
 Last week's extract, `data/C2_W02_D01_week1_orders_STUDENT.csv`, is byte-identical to a fresh
 `python3 data/generate_client_zero.py --version v3 --out <folder> --stem C2_W02_D01` orders file and to
@@ -42,7 +48,7 @@ The take-home's second book, `data/C2_W02_D01_takehome_STUDENT.sql`, is written 
 schema `takehome` with 126 members and 362 orders of Kalpa Retail East, an invented region, and
 leaves the warehouse's public tables untouched (seven before and after the load). The script loads
 the file and asserts every number the self-check prints; `--check` rebuilds it in memory and
-compares. Its three witnesses (integer ratios equal in both quarters, twelve Retail-Plus members who
+compares without touching any database, and `--check --load` also loads it and asserts. Its three witnesses (integer ratios equal in both quarters, twelve Retail-Plus members who
 stopped after Q1, quarters added past the members) are named in the day sheet only.
 
 ## Which plants exist, and where is each used?
@@ -50,7 +56,7 @@ stopped after Q1, quarters added past the members) are named in the day sheet on
 | Planted in v4 | Used today | Where it is named |
 |---|---|---|
 | The warehouse holds 1,000 orders where last week's extract held 186 (the generator's Monday witness) | Chapters 1 and 2 | The row's own scenario states "one thousand orders" to learners, so the count is in STUDENT files; the day sheet names it as the witness |
-| The two largest bulk orders, KR-00667 (Rs 1,98,57,600, Q2) and KR-00124 (Rs 1,22,77,440, Q1) | Only if a learner sorts by amount | Day sheet only; no learner file lists the largest orders' ids or amounts. Learner files say Business books about 99 percent of the rupees, a fact of the world rather than a plant |
+| The two largest bulk orders, KR-00667 (Rs 1,98,57,600, Q2) and KR-00124 (Rs 1,22,77,440, Q1) | Only if a learner sorts by amount | Day sheet only; no learner file lists the largest orders' ids or amounts. The notes' chapter 3 says Business books 99 percent of the rupees, a fact of the world rather than a plant; the second case's brief no longer says it, since it announced that case's key |
 | 450 orders with two payment rows (400 instalments, 50 gateway retries), 30 delivered orders never paid, 8 orphan payments | No | Day sheet only, marked "do not raise" |
 | The tie at the fiftieth Retail-Plus position, the three members whose spend falls month on month | No | Day sheet only |
 | 6 duplicated keys in the exposure table, the unused campaigns table | No; chapter 1's schema read lists the tables without comment | Day sheet only |
@@ -70,11 +76,15 @@ says what the count shows and never says how the generator drew the file.
 | The morning deck's cover quote ends at "Nothing a person can mistype." | The row's full message | The full message printed three lines and pushed the cover's chapter strip into its footer; slide S2 carries the message in full |
 | The take-home runs on a second book written inside the day folder | The standard: a second sample from `data/generate_client_zero.py` | The shared generator writes no second Week 2 sample and `data/` is not this session's to edit, so a seeded script in `internal/` writes one into its own schema; the shared-tool change to ask for is a `--version v4-takehome` in the generator |
 | The Kahoot's return question asks for a fair comparison in words the room used on Week 1 Thursday | The row: "say in one line what a fair comparison would need" | Kahoot items are four-option choices, so the one line became the key: like for like, each segment apart or a held-back group |
+| The exercise index names no channel for posting letters | The pedagogy reviewer asked for one | The conflict `exercise-channel` in `data/programme/facts.yaml` is open (the spec of 13 September against the handover of 27 September), and a STUDENT file never states an open fact, so the index says the trainer names where each line goes |
+| The interview drill holds thirteen questions across two self-study slides | The row's interview angle and the earlier deck's ten | The decks ask three more in their chapter closes (the count variants, "your total matches", CTE against subquery), and the standard wants one list answered in full in the notes and in one breath on the day sheet |
+| Chapter 6's crux line orders every audit sample, where it said every list, and ties at a LIMIT cut are not explained | Wednesday's row: ties ranked the same, and the top fifty | The line now says what Monday teaches, a repeatable sample; why a shared value breaks a cut is Wednesday's question |
+| The escalated case's item 13 is a reading of the two trees, so the case has four design items | The earlier label, design | It asks the learner to read printed ratios, which is no sizing, switch or second route |
 
 ## What is invented, and labelled invented wherever it appears?
 
 - The three values 100, NULL and 200 for the AVG mechanism (notebook 4's block `c4_invented_null`,
-  morning S56's notes, the cheat sheet and the companion). The warehouse holds no NULL in any
+  morning S56's notes and the companion's experiment B). The warehouse holds no NULL in any
   column, so chapter 4's NULLs come from a CASE with no ELSE.
 - The overnight reload in chapter 6 and the escalated case's part 5: an `UPDATE` that rewrites rows
   with their own values inside a transaction that is rolled back. It is a real run on the warehouse,
@@ -86,9 +96,14 @@ says what the count shows and never says how the generator drew the file.
   day and the escalated case.
 - The take-home's second book, Kalpa Retail East, its three cities and every row in it (see the data
   section above); the brief says the region is invented.
-- The exercise sets' invented rows, each labelled invented in its file: chapter 1's eight cancelled
-  orders, chapter 2's items 3 and 4, chapter 3's cities, chapter 4's item 4 and chapter 6's item 4
-  order ids.
+- The exercise sets' invented rows and scales, each labelled invented in its file: chapter 1's eight
+  cancelled orders; chapter 2's three changed orders in item 2 (Rs 500 more, Rs 300 less, Rs 200
+  less) and its items 3 and 4; chapter 3's cities; chapter 4's book of 2 crore orders and twelve
+  Monday queries in item 2 and its five members in item 4; chapter 6's two bad runs in item 2 (a
+  day's amounts left empty, a ratio divided as whole numbers) and its order ids in item 4.
+- The escalated case's item 15 prints Rs 17,26,46,250, the faulty fingerprint a filter of `status <>
+  'cancelled'` would give; it is computed on the warehouse, and the fault is a supposition the item
+  states.
 
 ## Which links does the pack print, each checked on the day it entered?
 
@@ -97,12 +112,13 @@ fact against its page; a claim the check corrected is noted beside it.
 
 | Link | Where the pack uses it | What was checked, 30 Sep 2026 |
 |---|---|---|
-| https://ypfsresourcelibrary.blob.core.windows.net/fcic/YPFS/JPMorgan%20Management%20Task%20Force%20Regarding%202012%20CIO%20Losses%201-16-13.pdf | Chapter 1: notebook 1, morning S10, the notes | Checked 30 Sep 2026: The task force report of 16 January 2013 (an archival copy in the Yale Program on Financial Stability library; JPMorgan's own copy returns 404). Page 124: "the model operated through a series of Excel spreadsheets, which had to be completed manually, by a process of copying and pasting data from one spreadsheet to another" (CIO's new VaR model). Page 7: cumulative year-to-date losses through 30 June 2012 "had grown to approximately $5.8 billion" |
+| https://ypfsresourcelibrary.blob.core.windows.net/fcic/YPFS/JPMorgan%20Management%20Task%20Force%20Regarding%202012%20CIO%20Losses%201-16-13.pdf | Chapter 1: notebook 1, morning S10, the notes | Checked 30 Sep 2026: The task force report of 16 January 2013 (an archival copy in the Yale Program on Financial Stability library; JPMorgan's own copy returns 404). Page 124: "the model operated through a series of Excel spreadsheets, which had to be completed manually, by a process of copying and pasting data from one spreadsheet to another" (CIO's new VaR model). Page 7: cumulative year-to-date losses through 30 June 2012 "had grown to approximately $5.8 billion". Checked 1 Oct 2026: 132 pages; section 3 of its contents is titled "The 'London Whale' Story and Senior Management's Response", the name S10's notes use |
 | https://www.sec.gov/Archives/edgar/data/0000019617/000001961713000077/a8-k.htm | Provenance only | Checked 30 Sep 2026: JPMorgan's Form 8-K of 16 January 2013, which names the task force report and its date |
-| https://web.archive.org/web/20260809070448/https://medium.com/airbnb-engineering/how-airbnb-achieved-metric-consistency-at-scale-f23cc53dea70 | Chapter 2: notebook 2, morning S23, the notes | Checked 30 Sep 2026: The Airbnb Tech Blog, "How Airbnb achieved metric consistency at scale", 30 April 2021; the live Medium page returns a bot wall, so the archived copy of the same URL was read. The quote matches word for word; the story is from years before the post. Corrected: the title's case |
-| https://www.eternal.com/blog/q1fy27 | Chapter 3: notebook 3, morning S36, the notes | Checked 30 Sep 2026: Eternal's Q1FY27 shareholders' letter, 22 July 2026: B2C NOV up 54% year on year to INR 31,120 crore; food delivery 20%+ (INR 10,769 crore), quick commerce 86% (INR 17,132 crore), going-out 60% (INR 3,218 crore) |
-| https://handbook.gitlab.com/handbook/enterprise-data/platform/sql-style-guide/ | Chapter 4: notebook 4, morning S50, the notes | Checked 30 Sep 2026: "Prefer CTEs over sub-queries as CTEs make SQL more readable and are more performant", quoted with the cut marked; "perform a single, logical unit of work"; "a brief description of what's going on". Corrected: the first quote's cut is now marked |
-| https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm | Chapter 5: notebook 5, morning S62, the notes | Checked 30 Sep 2026: Meta's Form 10-K for 2025, filed 29 January 2026: DAP 3.58 billion on average for December 2025 (page 61); the daily active person definition, "who visited at least one of these Family products"; "counting such group of accounts as one person" (pages 4, 28, 65) |
+| https://web.archive.org/web/20260809070448/https://medium.com/airbnb-engineering/how-airbnb-achieved-metric-consistency-at-scale-f23cc53dea70 | Chapter 2: notebook 2, morning S23, the notes, the chapter 2 solution | Checked 30 Sep 2026: The Airbnb Tech Blog, "How Airbnb achieved metric consistency at scale", 30 April 2021; the live Medium page returns a bot wall, so the archived copy of the same URL was read. The quote matches word for word; the story is from years before the post. Corrected: the title's case. On 1 Oct 2026 the archive refused the connection and Medium returned 403, so the setting, the chief executive asking "which city had the most bookings in the previous week", was checked against a web search's excerpt of the post, which carries the line |
+| https://www.eternal.com/blog/q1fy27 | Chapter 3: notebook 3, morning S36, the notes | Checked 30 Sep 2026: the page carries "B2C NOV grew 54% YoY to INR 31,120 crore" and the revenue and EBITDA lines, and links the letter below; the segment figures are not on this page |
+| https://drive.google.com/file/d/1jb9KWd4Ap4RTKHFHxzEOO7jgQqVZEGcd/view | Chapter 3's figures, the notes' reading list, the second case's solution | Checked 1 Oct 2026: Eternal's Q1FY27 shareholders' letter (31 pages), downloaded and read. Page 3: NOV (B2C business) "is defined as the combined net order value (NOV) of consumer facing businesses i.e. food delivery, quick commerce and going-out". Page 4: "B2C NOV grew 54% YoY to INR 31,120 crore"; food delivery (Zomato) "NOV growth reached 20%+ YoY (INR 10,769 crore)"; quick commerce (Blinkit) "NOV grew 86% YoY to INR 17,132 crore"; going-out (District) "NOV growth accelerated to 60% YoY ... to INR 3,218 crore". Page 26: "Hyperpure supplies (B2B business) is our farm-to-fork supplies offering for restaurants in India and sale of items to businesses for onward sales" |
+| https://handbook.gitlab.com/handbook/enterprise-data/platform/sql-style-guide/ | Chapter 4: notebook 4, morning S50, the notes, the chapter 4 solution | Checked 30 Sep 2026: "Prefer CTEs over sub-queries as CTEs make SQL more readable and are more performant", quoted with the cut marked; "perform a single, logical unit of work"; "a brief description of what's going on". Corrected: the first quote's cut is now marked. Checked again 1 Oct 2026: the guide cites no test for the performance claim, so the pack no longer says it rests on one; and "Do not use the USING command in joins because it produces inaccurate results in Snowflake", which the pack now quotes beside its own `USING` line |
+| https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm | Chapter 5: notebook 5, morning S62, the notes, the chapter 5 solution, the day sheet | Checked 30 Sep 2026: Meta's Form 10-K for 2025, filed 29 January 2026: DAP 3.58 billion on average for December 2025 (page 61); the daily active person definition, "who visited at least one of these Family products"; "counting such group of accounts as one person" (pages 4, 28, 65). Checked 1 Oct 2026: page 4 names the four apps, "Facebook, Instagram, Messenger, and WhatsApp", and says "We estimate that such margin generally will be approximately 3% of our worldwide DAP", which the day sheet's "about 3 percent" repeats |
 | https://web.archive.org/web/20231125074707/https://www.slideshare.net/Hadoop_Summit/whoops-the-numbers-are-wrong-scaling-data-quality-netflix | Chapter 6: notebook 6, afternoon S4, the notes | Checked 30 Sep 2026: Michelle Ufford, "Whoops, The Numbers Are Wrong! Scaling Data Quality @ Netflix", DataWorks Summit, San Jose, 13 June 2017 (the agenda, archived). Slides 22 to 41: write, audit, publish; RowCount 17240 with NullCount 17240 beside RowCount 16135 with NullCount 21; the row-count rules fail the job and the null-count rule warns. Corrected: the pack no longer says that batch was stopped |
 | https://www.youtube.com/watch?v=fXHdeBnpXrg | The notes' reading path | Checked 30 Sep 2026: The talk's video, "WHOOPS, THE NUMBERS ARE WRONG! SCALING DATA QUALITY @ NETFLIX", DataWorks Summit, confirmed by oEmbed |
 | https://www.postgresql.org/docs/16/functions-math.html | Chapter 3's trap, notes, cheat sheet | Checked 30 Sep 2026: "for integral types, division truncates the result towards zero"; 5 / 2 is 2 |
@@ -122,7 +138,7 @@ fact against its page; a claim the check corrected is noted beside it.
 
 ## Which tools made the numbers and outputs?
 
-PostgreSQL 16.13; Python 3.11.15; pandas 3.0.6; psycopg2-binary 2.9.13 (installed in this session with
+PostgreSQL 16.14; Python 3.11.15; pandas 3.0.6; psycopg2-binary 2.9.13 (installed in this session with
 `pip install psycopg2-binary`, since the restarted container lacked it); nbclient 0.11.0; nbformat
 5.11.1; openpyxl 3.1.5; python-pptx 1.0.2; LibreOffice 24.2.7.2 with Carlito (installed in this session
 with `apt-get install fonts-crosextra-carlito`); mermaid-cli 12.0.0, whose missing `-w` flag
@@ -140,6 +156,8 @@ logged below as they run.
 | 2. Domain | The builder | Could a learner who has never worked in a business say, for every chapter, who asks, why the metric matters, what a wrong number costs and which real company faces the same question? | Every notebook's first cell and every deck chapter's map and need slides name who asks, the metric and what a wrong number costs; the real companies' facts had not been checked in this build | A source check fetched every company fact on 30 September 2026 and corrected three: Airbnb's title case and the story's age, GitLab's quote with its cut marked, and Netflix's batch, which the talk shows raising a warning |
 | 3. Problem first | The builder | Does every technique arrive as the answer to a stated problem, with two or more options, a sizing and the best-fit call with what would change it, and is the code its last mile? | Each chapter sizes two to four options on the warehouse before its first build step, and each deck chapter carries the options slide, the switch slide and a picture of the thinking before its code | Nothing to change in the notebooks; the decks were written to the same order |
 | Humanizer's read | The builder, and each builder agent on its own files | Does every prose file read as a person wrote it? | The tic scanner was clean on every markdown file and on the notebook build script; the read found staged contrasts only where both halves carry a number, and one fragment stack in a deck note | The fragment stack rewritten; the notes' length kept, since every section carries a worked case and the Week 1 Thursday model runs to the same length |
+| 4. Rigor | A fresh reviewer, read-only, once, 1 October 2026 | Does every number, key, route and fact hold when the pack is sat and rerun cold? | Failed with 4 blockers, 15 majors and 28 minors. Blockers: the warehouse file's header named two plants; the second case's solution claimed the Rs 5,00,000 size line splits the orders as the segment does; the guided build's item 3 had two defensible keys; chapter 1 sized the export at 1,340 rows against its own exercise key. Majors included second routes that could not fail (chapters 4 and 6), 11 genuine design items of 27 labelled, key strings that repeated cycles, lone shortest keys, crashing TODO distractors and checks that passed for wrong letters, two definitions of spend per member, unsourced company facts, and Monday explaining Wednesday's ties | Every finding fixed: the header cut (see the data section); the size line's effect stated with its numbers (50 Business orders filed as consumer ones, the app's consumers reading +94.4 percent, 138 against 188); the guided item asks for the bound; the export sized at 1,000; chapter 4's route is revenue over the 107 counted apart, chapter 6's a count with no sort; design items rebuilt so the learner sizes, counts or reconciles (26 of 73); every key string reshuffled with no lone longest or shortest key; every TODO distractor runs without an error, tested by running all 51 wrong letters, and every wrong letter of a marker with a computed answer fails a check (the second case's marker 7, the switch fact, has none to compute); spend per member defined once; facts sourced or cut; ties left to Wednesday |
+| 5. Pedagogy and language | A fresh reviewer, read-only, once, 1 October 2026 | Does the pack teach a room that has never seen it, heading by heading and file by file, in the house voice? | Failed with 26 majors and 43 minors: templated headings (map-slide subtitles, notebook closers, the four solution headings in every file), chapter notebooks that did not stand alone, three terms with two meanings (spend per member, the book, schema), one inflated claim in four files, one slogan in seven places, a moral closer after every real-company paragraph, two renders that failed the projector read, missing predict and fix slides, a STUDENT note without "tentative", and a day sheet pointing at a page that does not exist | Every finding fixed or answered: specific headings in every file; each notebook opens on the case; the three terms defined once; the claim, the slogan and the closers cut; the crux slide a table; the predict and fix slides added; "tentative" beside every mention of the block; the companion's path corrected; the drill made one list of thirteen. One answered, not fixed: the index names no posting channel, since that fact is an open conflict |
 
 
 ## The proof run
