@@ -1721,8 +1721,9 @@ def ch6():
 **Week 2, Friday. Chapter 6 of 6.** Chapters 1 to 4 built the three deliverables: the tree for both
 quarters tied to the warehouse, the protect list of fifty from Rs 25,840 down to Rs 8,580 with a lookup
 that says when an id is missing, and the front-page card with its period, comparison and base. Chapter 5
-set the rule: the warehouse owns the number, pandas the iteration, the workbook the last mile, with a
-drift check on every refresh. The chief of staff's last condition is the hardest: "If a director changes
+found that a lookup doing the join reads Rs 11.84 crore collected where adding every payment once gives
+Rs 19.66 crore, and set the rule: the warehouse owns the number, pandas the iteration, the workbook the
+last mile, with a drift check on every refresh. The chief of staff's last condition is the hardest: "If a director changes
 an assumption in the room, the sheet must recalculate in front of them."
 
 {ASK}
@@ -1808,7 +1809,7 @@ kit.vflow([e[0] + "\\n" + e[2] for e in effects], kinds=["bad", "bad", "bad", "g
 **What happened.** The answer is d. A filter and a typed-over cell both change what a number means,
 and neither shows an error; a one-column sort is the third silent one. A yellow input is the honest way to
 change a number, because every formula that reads it recalculates in front of the room. The next two
-questions take the filter, and question 5 takes the input.
+steps take the filter, and the step on where an assumption goes takes the input.
 '''),
         md('''
 ## 2. What does the list's total say when a director filters it to one city?
@@ -1834,9 +1835,9 @@ kit.check("the eleven on screen are a small part of it", on_screen < foot_sum / 
 '''),
         md('''
 **What happened: the plausible wrong answer.** The answer is b. The foot still reads Rs 7,14,890, the
-whole list, while the eleven Mumbai members on screen spent Rs 1,56,790. **Why it is wrong:** the Mumbai
-store head is told the members on their list spent Rs 7.15 lakh, and a retention budget sized on that is
-4.6 times too big. SUM adds every row in its range, hidden or not. **The check that catches it:** count
+whole list, while the eleven Mumbai members on screen spent Rs 1,56,790. **Why it is wrong:** the head
+of Retail-Plus is told the Mumbai members on the list spent Rs 7.15 lakh, and a Mumbai retention budget
+sized on that is 4.6 times too big. SUM adds every row in its range, hidden or not. **The check that catches it:** count
 the rows on screen beside the rows the total adds; if the two differ, the total is adding rows nobody can
 see.
 '''),
@@ -1884,16 +1885,32 @@ adds. **What changed:** Mumbai's foot moves from Rs 7,14,890 to Rs 1,56,790, and
 gave 40, the same rule.
 '''),
         md('''
-## A second route: does a total that ignores the filter altogether agree?
+## A second route: does a total that reads the city, and never the screen, agree?
 
 The second route must not depend on what is on screen, so it reads the whole list and picks Mumbai by
-its city: `=SUMIFS(E2:E51, C2:C51, "Mumbai")` in Excel.
+its city: `=SUMIFS(E2:E51, C2:C51, "Mumbai")` in Excel. It is worth having because a director can hide a
+row by hand as well as filter, and only one of the two totals notices.
+
+**Predict before you run.** With the Mumbai filter on, a director also hides Mumbai's smallest member by
+hand. Which total still reads Rs 1,56,790? a) SUBTOTAL(109) only; b) SUMIFS only; c) both; d) neither.
 '''),
         code('''
-sumifs_mumbai = int(protect.loc[protect["city"] == "Mumbai", "revenue"].sum())
-kit.table(["Route", "Mumbai's total"], [("SUBTOTAL(109) under the filter", kit.rupees(foot(rev, mumbai_filter, no, "SUBTOTAL(109)"))),
-                                       ("SUMIFS on the city, no filter", kit.rupees(sumifs_mumbai))])
-kit.check("the visible total and the SUMIFS agree", sumifs_mumbai == foot(rev, mumbai_filter, no, "SUBTOTAL(109)"))
+sumifs_mumbai = int(by_city["Mumbai"])                    # =SUMIFS(E2:E51, C2:C51, "Mumbai") reads the city, never the screen
+smallest = max(i for i, m in enumerate(visible) if m)      # the list runs high to low, so Mumbai's last row is its smallest
+by_hand = [i == smallest for i in range(50)]
+kit.table(["What the director has done", "SUBTOTAL(109), the screen", "SUMIFS, the city"],
+          [("filtered to Mumbai", kit.rupees(foot(rev, mumbai_filter, no, "SUBTOTAL(109)")), kit.rupees(sumifs_mumbai)),
+           ("filtered, and one Mumbai row hidden by hand", kit.rupees(foot(rev, mumbai_filter, by_hand, "SUBTOTAL(109)")), kit.rupees(sumifs_mumbai))],
+          caption="Two routes to Mumbai's total, before and after a row is hidden by hand")
+kit.check("with only the filter on, the screen and the city agree", sumifs_mumbai == foot(rev, mumbai_filter, no, "SUBTOTAL(109)"))
+kit.check("a row hidden by hand splits them", foot(rev, mumbai_filter, by_hand, "SUBTOTAL(109)") == sumifs_mumbai - rev[smallest],
+          kit.rupees(rev[smallest]))
+'''),
+        md('''
+**What happened.** The answer is b. With only the filter on, both routes read Rs 1,56,790, which is the
+agreement the foot needs. With Mumbai's smallest member also hidden by hand, SUBTOTAL(109) drops by that
+member's Rs 9,390 to Rs 1,47,400 and SUMIFS stays at Rs 1,56,790, so a gap between the two says the screen
+is showing less than the whole city, and somebody asks what else was hidden before the foot is read aloud.
 '''),
         md('''
 ## 4. Where does a director's assumption go, so the sheet recalculates honestly?
@@ -1920,9 +1937,9 @@ kit.check("the cost follows the filter", voucher_cost(500, visible) == 500 * 11)
 '''),
         md('''
 **What happened.** The answer is b: Rs 500 times the eleven on screen. The director changes B1 to Rs 750
-and the cost becomes Rs 8,250 in front of the room; the list's figures never change, because the
-assumption sits beside them and never over them. That is the chief of staff's condition met: the sheet
-recalculates, and the source is untouched.
+and the cost becomes Rs 8,250 in front of the room. The list's figures stay as they were, because the
+assumption sits in its own yellow cell and the list keeps its formulas. That is the chief of staff's
+condition met: the sheet recalculates, and the source is untouched.
 '''),
         md('''
 ## 5. Which checks does the Checks tab run, and what does its release hold?
@@ -2006,9 +2023,9 @@ kit.check("a typed-over formula holds the whole workbook", typed_over(edited_she
 **What happened.** The answer is b. Kalpa's tree, lookup and foot pass. The invented source falls
 Rs 1,200 short of its control total, so the list check reads HOLD and the release says: "Hold the
 protect list; ship the rest." A figure typed over a formula holds the whole workbook, because nobody can
-say which other numbers it has moved. A formula recalculating is never the same as the number being
-right, which is why the release reads the checks and nothing else, and why the note that goes with a
-HOLD names what does not tie and asks for the export to be rerun.
+say which other numbers it has moved. Formulas recalculate whether or not their inputs tie, so the
+release reads the checks and nothing else, and the note that goes with a HOLD names what does not tie and
+asks for the export to be rerun.
 '''),
         md('''
 > **Kavya's review.** "Give the room a sheet it can change and cannot break silently: inputs in yellow,
@@ -2033,7 +2050,11 @@ to Mumbai, the protect list's SUM said Rs 7,14,890 and SUBTOTAL(109) said Rs 1,5
 What did you get right, and what do you fix?** Right: the assumptions are inputs and every number
 recomputes from one source, so both answers are honest for their assumptions. Fix: each answer prints its
 assumption and its scope beside the number, so down 1.6 percent for all segments and down 17.3 percent
-without Business are never compared as one figure, and the scenario never replaces the actual.
+without Business are never compared as one figure, and the scenario never replaces the actual. Then rule
+out two mechanical causes. A pivot recalculates only when someone refreshes it while a formula
+recalculates at once, so a sheet that mixes the two can show numbers from two moments. An input the
+first director changed is still changed when the second opens the file, so each input carries its agreed
+value beside it and goes back to that value before the next question.
 '''),
         md('''
 ### Depth: can a protected sheet still let a director filter?
@@ -2050,7 +2071,7 @@ whether the numbers can be trusted.
 1. Option c: yellow inputs, every other cell a formula, and a Checks tab; locking or a PDF fails the brief.
 2. A director filters, sorts, types over cells, changes inputs and pastes new exports; three of the five change a number's meaning with no error.
 3. Filtered to Mumbai, SUM at the foot still reads Rs 7,14,890 while the eleven on screen spent Rs 1,56,790.
-4. SUBTOTAL(109) reads Rs 1,56,790 and SUBTOTAL(103) counts 11 of 50; SUMIFS on the city agrees.
+4. SUBTOTAL(109) reads Rs 1,56,790 and SUBTOTAL(103) counts 11 of 50; SUMIFS on the city agrees until a row is hidden by hand.
 5. An assumption goes in a yellow input that formulas read: a Rs 500 voucher costs Rs 5,500 for Mumbai's eleven.
 6. Five checks, each comparing the sheet with something outside it, and a release that holds what a failing check names.
 
@@ -2065,9 +2086,9 @@ exports.
 EX1_STEPS = [
     ('''## Part 1. Does your tree for both quarters tie to the warehouse to the rupee?
 
-**Where this is used at work:** every tree a director sees has to reproduce the number Finance owns,
-before anyone slices it. The raw export has one row per payment, so the tree starts from one row per
-order, then counts customers who ordered in each segment and quarter.''',
+**Where this is used at work:** every tree a director sees has to reproduce the number Finance owns
+before anyone slices it, and its leaves count customers, orders and rupees for each segment and
+quarter.''',
      '''# TODO 1. Which line leaves exactly one row per order?
 #   a) orders = raw.drop_duplicates()
 #   b) orders = raw.drop_duplicates("customer_id")
@@ -2085,13 +2106,15 @@ tree = orders.groupby(["segment", "quarter"]).agg(customers=__TODO2__,
                                                   revenue=("order_amount", "sum"))
 tree["orders_per_customer"] = tree["orders"] / tree["customers"]
 tree["revenue_per_order"] = tree["revenue"] / tree["orders"]
+yours = orders.groupby("quarter").agg(n=("order_id", "size"), revenue=("order_amount", "sum"))   # your two quarters
 kit.columns(SEGMENTS, [(q, [round(tree.loc[(s, q), "orders_per_customer"], 2) for s in SEGMENTS]) for q in ["Q1", "Q2"]],
             fmt=lambda v: f"{v:.2f}", title="Your orders per customer, Q1 against Q2")''',
-     '''wq = {r["quarter"]: r for r in warehouse("SELECT quarter, count(*) AS n, sum(amount) AS revenue FROM orders GROUP BY quarter")}
-yours = orders.groupby("quarter").agg(n=("order_id", "size"), revenue=("order_amount", "sum"))
-kit.check("your quarters tie to the warehouse, orders and rupees", all(int(yours.loc[q, "n"]) == wq[q]["n"] and int(yours.loc[q, "revenue"]) == wq[q]["revenue"] for q in ["Q1", "Q2"]))
-w_cust = {r["quarter"]: r["n"] for r in warehouse("SELECT o.quarter, count(DISTINCT o.customer_id) AS n FROM orders o JOIN customers c USING (customer_id) WHERE c.segment = 'Retail-Plus' GROUP BY o.quarter")}
-kit.check("your Retail-Plus customer counts match the warehouse's", all(int(tree.loc[("Retail-Plus", q), "customers"]) == w_cust[q] for q in ["Q1", "Q2"]))''',
+     '''kit.check("your quarters tie to Finance's control totals, orders and rupees",
+          all((int(yours.loc[q, "n"]), int(yours.loc[q, "revenue"])) == FINANCE[q] for q in FINANCE))
+pairs = warehouse("SELECT o.quarter, o.customer_id FROM orders o JOIN customers c USING (customer_id) "
+                  "WHERE c.segment = 'Retail-Plus' GROUP BY o.quarter, o.customer_id")
+kit.check("your Retail-Plus customer counts match the warehouse's",
+          all(int(tree.loc[("Retail-Plus", q), "customers"]) == sum(r["quarter"] == q for r in pairs) for q in FINANCE))''',
      {1: 'raw.drop_duplicates("order_id")', 2: '("customer_id", "nunique")'},
      "TODO 1: a keeps the 400 instalment orders twice, since their two rows differ in paid_amount; b keeps one order per customer; d drops the unpaid orders and keeps every repeat. TODO 2: a and d count rows, so a customer with three orders counts three times; c counts orders."),
     ('''## Part 2. Does your protect list hold the right fifty, and does your lookup say when an id is missing?
@@ -2113,16 +2136,16 @@ by_id = table.set_index("customer_id")
 #   a) lookup = lambda m: by_id["revenue"].get(m, "not in the table")
 #   b) lookup = lambda m: by_id["revenue"].iloc[by_id.index.searchsorted(m, "right") - 1]
 #   c) lookup = lambda m: by_id["revenue"].iloc[0]
-#   d) lookup = lambda m: by_id["revenue"].asof(m)
+#   d) lookup = lambda m: by_id["revenue"].get(m, 0)
 lookup = __TODO4__
 kit.strip(protect["revenue"].tolist(), fmt=kit.rupees, title="Your list's fifty revenues")''',
      '''outside = plus[~plus["customer_id"].isin(protect["customer_id"])]
 kit.check("your list is fifty Retail-Plus members, none below anyone left off",
           len(protect) == 50 and set(protect["segment"]) == {"Retail-Plus"} and protect["revenue"].min() >= outside["revenue"].max())
 kit.check("your lookup finds a member who is in the table", lookup("C-0152") == int(table.loc[table["customer_id"] == "C-0152", "revenue"].sum()))
-kit.check("your lookup returns no number for C-0195, who placed no orders", not isinstance(lookup("C-0195"), (int, float)))''',
+kit.check("your lookup answers C-0195, who placed no orders, with a sentence and no number", isinstance(lookup("C-0195"), str))''',
      {3: 'plus.nlargest(50, "revenue")', 4: 'lambda m: by_id["revenue"].get(m, "not in the table")'},
-     "TODO 3: a ranks every segment together, so 39 Business buyers take most of the places; b keeps the fifty lowest; c keeps the first fifty rows in id order, which is no ranking. TODO 4: b and d are approximate matches, each returning the member just below a missing id, which is VLOOKUP with its fourth argument left out; c returns the first member for every id."),
+     "TODO 3: a ranks every segment together, so 39 Business buyers take most of the places; b keeps the fifty lowest; c keeps the first fifty rows in id order, which is no ranking. TODO 4: b is an approximate match, returning the member just below a missing id, which is VLOOKUP with its fourth argument left out; c returns the first member for every id; d answers a missing id with 0, which reads as a member who spent nothing."),
     ('''## Part 3. Does your front-page card carry its period, its comparison and its base, for any scope a director picks?
 
 **Where this is used at work:** the front page is read in two minutes by people who read nothing else.
@@ -2151,17 +2174,16 @@ def card(scope):
 
 kit.table(["Scope", "Q2", "Change on Q1", "Share of Q2 revenue"],
           [(s, money(card(s)["Q2"]), f"{card(s)['change']:+.1f}%", f"{card(s)['share']:.1f}%") for s in SCOPES])''',
-     '''w = {r["quarter"]: r["revenue"] for r in warehouse("SELECT quarter, sum(amount) AS revenue FROM orders GROUP BY quarter")}
-wp = {r["quarter"]: r["revenue"] for r in warehouse("SELECT o.quarter, sum(o.amount) AS revenue FROM orders o JOIN customers c USING (customer_id) WHERE c.segment = 'Retail-Plus' GROUP BY o.quarter")}
-kit.check("your company change matches the warehouse's, measured on Q1", abs(card("All segments")["change"] - (w["Q2"] - w["Q1"]) / w["Q1"] * 100) < 1e-9)
-kit.check("your Retail-Plus share matches its part of the warehouse's Q2", abs(card("Retail-Plus")["share"] - wp["Q2"] / w["Q2"] * 100) < 1e-9)''',
+     '''kit.check("your Retail-Plus change matches the warehouse's figures for the tier", round(card("Retail-Plus")["change"], 1) == -29.4)
+kit.check("your shares put all segments at the whole of Q2, and Retail-Plus where the warehouse puts it",
+          round(card("All segments")["share"], 1) == 100.0 and round(card("Retail-Plus")["share"], 2) == 0.42)''',
      {5: "(q2 - q1) / q1 * 100", 6: "q2 / company_q2 * 100"},
      "TODO 5: a divides by the current quarter, which reads Retail-Plus at 41.7 percent where it fell 29.4; b is a share of the two quarters together; c is a ratio of about 98 that a card would misprint as a percentage. TODO 6: b shares out the scope's own two quarters; c is the change's share, not the scope's; d is the ratio again."),
     ('''## Part 4. What ships on Monday, and what, if anything, is held?
 
 **Where this is used at work:** a release note says what a stakeholder can rely on and what waits, and
-why. The tree was tied in part 1. The protect list comes from a different export, which has to tie on
-its own before the list ships.''',
+why. The tree was checked in part 1; the protect list was built from the customer table, a different
+export.''',
      '''once = raw.drop_duplicates("order_id")
 # TODO 7. Which comparison says whether the list's source table ties?
 #   a) source_ties = len(table) == 300
@@ -2170,30 +2192,32 @@ its own before the list ships.''',
 #   d) source_ties = int(table["revenue"].sum()) > int(seg_q["Q2"].sum())
 source_ties = __TODO7__
 
-checks = {"tree ties": all(int(yours.loc[q, "revenue"]) == wq[q]["revenue"] for q in ["Q1", "Q2"]),
+checks = {"tree ties": all((int(yours.loc[q, "n"]), int(yours.loc[q, "revenue"])) == FINANCE[q] for q in FINANCE),
           "source ties": source_ties,
-          "lookup honest": not isinstance(lookup("C-0195"), (int, float))}
+          "lookup honest": isinstance(lookup("C-0195"), str)}
 needs = {"tree": ["tree ties"], "front page": ["tree ties"], "protect list": ["source ties", "lookup honest"]}
-# TODO 8. Which rule turns the checks into Monday's release?
-#   a) release = {part: ("ship" if sum(checks.values()) >= 2 else "hold") for part in needs}
-#   b) release = {part: ("ship" if all(checks[c] for c in needs[part]) else "hold") for part in needs}
-#   c) release = {part: ("ship" if all(checks.values()) else "hold") for part in needs}
-#   d) release = {part: "ship" for part in needs}  # every number here is a formula, so all of it recalculates
-release = __TODO8__
+# TODO 8. Which rule turns any set of checks into Monday's release?
+#   a) decide = lambda checks: {part: ("ship" if sum(checks.values()) >= 2 else "hold") for part in needs}
+#   b) decide = lambda checks: {part: ("ship" if all(checks[c] for c in needs[part]) else "hold") for part in needs}
+#   c) decide = lambda checks: {part: ("ship" if all(checks.values()) else "hold") for part in needs}
+#   d) decide = lambda checks: {part: "ship" for part in needs}  # every number here is a formula, so all of it recalculates
+decide = __TODO8__
+release = decide(checks)
 print(release)''',
-     '''expected = {}
-for part, behind in needs.items():
-    expected[part] = "hold" if any(not checks[c] for c in behind) else "ship"
-kit.check("your release holds exactly the parts whose checks fail, and ships the rest", release == expected)
-kit.check("your tree and your front page ship on your own checks", release["tree"] == release["front page"] == ("ship" if checks["tree ties"] else "hold"))''',
+     '''who_ordered = warehouse("SELECT count(DISTINCT customer_id) AS n FROM orders")[0]["n"]
+kit.check("your source check reaches the warehouse's verdict on the customer table", source_ties == (len(table) == who_ordered))
+invented = [({"tree ties": True, "source ties": True, "lookup honest": False}, {"tree": "ship", "front page": "ship", "protect list": "hold"}),
+            ({"tree ties": False, "source ties": True, "lookup honest": True}, {"tree": "hold", "front page": "hold", "protect list": "ship"}),
+            ({"tree ties": True, "source ties": True, "lookup honest": True}, {"tree": "ship", "front page": "ship", "protect list": "ship"})]
+kit.check("your rule gives the right release on three invented sets of checks", all(decide(c) == want for c, want in invented))''',
      {7: '(int(table["orders"].sum()), int(table["revenue"].sum())) == (len(once), int(once["order_amount"].sum()))',
-      8: '{part: ("ship" if all(checks[c] for c in needs[part]) else "hold") for part in needs}'},
-     "TODO 7: a counts rows against a number the table itself gave; b compares the list with itself; d compares a half-year with a quarter. TODO 8: a ships everything when most checks pass, whatever sits behind each part; c holds everything when one check fails; d confuses recalculating with being right."),
+      8: 'lambda checks: {part: ("ship" if all(checks[c] for c in needs[part]) else "hold") for part in needs}'},
+     "TODO 7: a, b and d each read True on this table, so the list would ship on a source nobody compared with anything outside it. a counts rows against a number the table itself gave; b compares the list with itself; d compares a half-year with a quarter. TODO 8: a ships every part when two checks pass, whatever sits behind each part; c holds every part when one check fails; d ships everything, which confuses recalculating with being right."),
     ('''## Part 5. Do your numbers agree when reached a second way?
 
 **Where this is used at work:** a number that matters is reached twice, by routes that could disagree.
-Two second routes: the warehouse's own query for the quarters, and a count on the city for the total
-a filtered list shows.''',
+Here the warehouse is the second route twice: its own query for the two quarters, and its revenue for the
+list's Mumbai members against the foot a filtered list shows.''',
      '''visible = protect["city"] == "Mumbai"
 # TODO 9. Which total is what SUBTOTAL(109) shows at the foot of the list filtered to Mumbai?
 #   a) foot = int(protect["revenue"].sum())
@@ -2212,8 +2236,10 @@ second = {r["quarter"]: int(r["revenue"]) for r in warehouse(query)}
 kit.table(["Quarter", "Your tree", "The query you picked"], [(q, kit.rupees(int(yours.loc[q, "revenue"])), kit.rupees(second[q])) for q in ["Q1", "Q2"]])
 kit.columns(["Q1", "Q2"], [("your tree", [int(yours.loc[q, "revenue"]) for q in ["Q1", "Q2"]]), ("the query you picked", [second[q] for q in ["Q1", "Q2"]])],
             fmt=money, title="Your tree against the warehouse's own route")''',
-     '''by_loop = sum(r for c, r in zip(protect["city"], protect["revenue"]) if c == "Mumbai")
-kit.check("your foot equals a SUMIFS on the city, which ignores the filter", foot == by_loop)
+     '''listed = "', '".join(protect["customer_id"])
+w_mumbai = warehouse("SELECT coalesce(sum(o.amount), 0) AS revenue FROM orders o JOIN customers c USING (customer_id) "
+                     f"WHERE c.city = 'Mumbai' AND o.customer_id IN ('{listed}')")[0]["revenue"]
+kit.check("your foot equals the warehouse's revenue for the list's Mumbai members", foot == int(w_mumbai))
 kit.check("the query you picked agrees with your tree, both quarters", all(second[q] == int(yours.loc[q, "revenue"]) for q in ["Q1", "Q2"]))''',
      {9: 'int(protect.loc[visible, "revenue"].sum())', 10: '"SELECT quarter, sum(amount) AS revenue FROM orders GROUP BY quarter"'},
      "TODO 9: a is SUM, which adds the rows the filter hid; c adds exactly the hidden rows; d adds every Mumbai customer in every segment. TODO 10: b is collected money, which differs from booked; c counts orders; d leaves out returned and cancelled orders, which booked revenue counts."),
@@ -2225,9 +2251,9 @@ EX1_KEY = "cbdadacbba"
 EX2_STEPS = [
     ('''## Step 1. What does the card show after the director's figure goes into the cell?
 
-**Where this is used at work:** a sheet recalculates from whatever sits in its cells, so a typed figure
-moves every number that reads it. The director types Rs 5,00,000 over Retail-Plus's Q2 cell.''',
-     '''sheet = orders.pivot_table(index="segment", columns="quarter", values="order_amount", aggfunc="sum")
+**Where this is used at work:** directors edit sheets in meetings, and the card on the projector is
+what the room acts on. The director types Rs 5,00,000 over Retail-Plus's Q2 cell.''',
+     '''sheet = orders.groupby(["segment", "quarter"])["order_amount"].sum().unstack()   # the tree, as exported
 export_q1, export_q2 = int(sheet.loc["Retail-Plus", "Q1"]), int(sheet.loc["Retail-Plus", "Q2"])
 typed_q2 = 500000
 edited = sheet.copy()
@@ -2241,54 +2267,67 @@ shown = __TODO1__
 kit.bars([("from the export", round(-change(export_q1, export_q2), 1)), ("after the typed figure", round(-shown, 1))],
          fmt=lambda v: f"down {v:.1f}%", title="Retail-Plus, Q2 on Q1, before and after the edit")''',
      '''kit.check("the card you computed moved when the cell changed", shown != change(export_q1, export_q2))
-kit.check("the card you computed reads the typed figure", abs(shown - (typed_q2 - export_q1) / export_q1 * 100) < 1e-9)''',
+kit.check("it moved by exactly what the typed figure added, on the Q1 base",
+          abs((shown - change(export_q1, export_q2)) * export_q1 / 100 - (typed_q2 - export_q2)) < 1e-6)''',
      {1: "change(export_q1, typed_q2)"},
      "b is the card before the edit; the sheet reads the cell, not the export. c measures the typed figure against the export's Q2. d is a ratio of the two Q2 figures, which no card prints."),
     ('''## Step 2. Which comparison catches the edit?
 
-**Where this is used at work:** a drift check compares the sheet with the source of truth on every
-refresh. It must stay quiet on a clean sheet and fire on an edited one.''',
+**Where this is used at work:** a check on the Checks tab runs every time the sheet recalculates, and it
+has to stay quiet on a clean sheet and fire on an edited one.''',
      '''wq = {r["quarter"]: r["revenue"] for r in warehouse("SELECT quarter, sum(amount) AS revenue FROM orders GROUP BY quarter")}
 # TODO 2. Which comparison catches a figure typed into the sheet?
 #   a) drift = lambda s: len(s) - 4
 #   b) drift = lambda s: int(s["Q1"].sum()) - wq["Q1"]
 #   c) drift = lambda s: int(s["Q2"].sum()) - wq["Q2"]
-#   d) drift = lambda s: 0 if s is sheet else 1
+#   d) drift = lambda s: change(int(s["Q1"].sum()), int(s["Q2"].sum()))
 drift = __TODO2__
 kit.bridge(("the warehouse, Q2", wq["Q2"]), [("the typed figure", int(drift(edited)))],
            end_label="the sheet, Q2", fmt=kit.rupees, lo=97_000_000,
            title="The drift, in rupees; the axis starts at Rs 9.70 crore")''',
      '''kit.check("your check stays quiet on the sheet as exported", drift(sheet) == 0)
+kit.check("your check stays quiet on a fresh copy of it", drift(sheet.copy()) == 0)
 kit.check("your check fires on the edited sheet", drift(edited) != 0, kit.rupees(int(drift(edited))))''',
      {2: 'lambda s: int(s["Q2"].sum()) - wq["Q2"]'},
-     "a counts segments, which an edit never changes; b looks at the quarter nobody touched; d compares the sheet with itself by name, so it fires on any copy and catches nothing about the numbers."),
+     "a counts segments, which an edit never changes; b looks at the quarter nobody touched; d is the sheet's own fall from Q1 to Q2, the trend the card reports, so it is never zero on a clean sheet and compares nothing with the warehouse."),
     ('''## Step 3. Which cells does the typed-over check flag?
 
-**Where this is used at work:** ISFORMULA tells a cell holding a formula from a cell holding a typed
-figure. Outside the yellow inputs, every cell should hold a formula. The sheet below is a two-cell
-model of the tree's Retail-Plus row.''',
+**Where this is used at work:** on screen a typed figure looks exactly like a formula's result, so the
+check has to look at what each cell holds. The model below has one yellow input, B1, which a director may
+change, and two cells that read the export.''',
      '''import openpyxl
-clean_ws = openpyxl.Workbook().active
-clean_ws["B2"], clean_ws["B3"] = '=SUMIFS(F:F, C:C, "Retail-Plus", I:I, "Q1")', '=SUMIFS(F:F, C:C, "Retail-Plus", I:I, "Q2")'
-edited_ws = openpyxl.Workbook().active
-edited_ws["B2"], edited_ws["B3"] = '=SUMIFS(F:F, C:C, "Retail-Plus", I:I, "Q1")', typed_q2
-cells, inputs = ["B2", "B3"], set()          # the yellow inputs on this sheet: none
+
+
+def model(scenario, q2_cell):
+    """A three-cell model of the tree's Retail-Plus row: B1 is the yellow input, B2 and B3 read the export."""
+    ws = openpyxl.Workbook().active
+    ws["B1"], ws["B2"], ws["B3"] = scenario, '=SUMIFS(F:F, C:C, "Retail-Plus", I:I, "Q1")', q2_cell
+    return ws
+
+
+q2_formula = '=SUMIFS(F:F, C:C, "Retail-Plus", I:I, "Q2")'
+clean_ws = model(500000, q2_formula)          # as built, the director's scenario in the yellow input
+honest_ws = model(450000, q2_formula)         # the director changes the yellow input, as allowed
+edited_ws = model(500000, typed_q2)           # the director types a figure over B3's formula
+cells, inputs = ["B1", "B2", "B3"], {"B1"}
 # TODO 3. Which rule flags a figure typed over a formula?
 #   a) flagged = lambda ws: [c for c in cells if isinstance(ws[c].value, (int, float))]
 #   b) flagged = lambda ws: [c for c in cells if c not in inputs and not str(ws[c].value).startswith("=")]
 #   c) flagged = lambda ws: [c for c in cells if ws[c].value != clean_ws[c].value]
 #   d) flagged = lambda ws: [c for c in cells if c in inputs]
 flagged = __TODO3__
-kit.table(["Cell", "Clean sheet", "Edited sheet"], [(c, str(clean_ws[c].value), str(edited_ws[c].value)) for c in cells],
-          caption="The two-cell model of the tree's Retail-Plus row")''',
-     '''kit.check("your rule flags nothing on the clean sheet", flagged(clean_ws) == [])
-kit.check("your rule flags the one cell typed over", len(flagged(edited_ws)) == 1 and flagged(edited_ws)[0] in cells)''',
+kit.table(["Cell", "As built", "After an honest change", "After the typed figure"],
+          [(c, str(clean_ws[c].value), str(honest_ws[c].value), str(edited_ws[c].value)) for c in cells],
+          caption="The three-cell model of the tree's Retail-Plus row; B1 is the yellow input")''',
+     '''kit.check("your rule flags nothing on the sheet as built", flagged(clean_ws) == [])
+kit.check("your rule flags nothing when a director changes the yellow input", flagged(honest_ws) == [])
+kit.check("your rule flags the one cell typed over", flagged(edited_ws) == ["B3"])''',
      {3: 'lambda ws: [c for c in cells if c not in inputs and not str(ws[c].value).startswith("=")]'},
-     "a flags numbers, and would flag every yellow input too; c compares with one saved copy, so it breaks after any honest change; d flags the inputs, which are the cells a director is allowed to change."),
+     "a flags every number, so it flags the yellow input on a sheet nobody has touched; c compares with one saved copy, so it flags the director's honest change to B1; d flags the inputs, which are the cells a director is allowed to change."),
     ('''## Step 4. What does Monday's refresh do to the typed figure?
 
-**Where this is used at work:** a refresh rebuilds the sheet from a fresh export. Whatever was typed
-over is gone, and so is any record of why.''',
+**Where this is used at work:** every Monday the chief of staff refreshes the sheet from the week's
+export before anyone opens it, and the director's figure is still sitting in Retail-Plus's Q2 cell.''',
      '''# TODO 4. Which line is Monday's refresh?
 #   a) refreshed = edited.copy()
 #   b) refreshed = edited.fillna(0)
@@ -2304,8 +2343,8 @@ kit.check("the typed figure left no trace after your refresh", int(refreshed.loc
     ('''## Step 5. Where does the director's assumption go?
 
 **Where this is used at work:** the director's question is fair: what would the card say if
-Retail-Plus came back to Rs 5,00,000? It goes in a yellow input beside the actual, never over it, and
-the card shows both lines, each labelled.''',
+Retail-Plus came back to Rs 5,00,000? The answer has to reach the director in the room and leave the
+number Finance signs where it is.''',
      '''scenario_input = 500000                       # the yellow input cell
 # TODO 5. Which card answers the director and keeps the number Finance signs?
 #   a) card = {"actual": change(export_q1, export_q2), "director's scenario": change(export_q1, scenario_input)}
@@ -2314,9 +2353,8 @@ the card shows both lines, each labelled.''',
 #   d) card = {"actual": change(export_q1, scenario_input), "director's scenario": change(export_q1, export_q2)}
 card = __TODO5__
 kit.table(["Line on the card", "Retail-Plus, Q2 on Q1"], [(k, f"{v:+.1f}%") for k, v in card.items()])''',
-     '''wp = {r["quarter"]: r["revenue"] for r in warehouse("SELECT o.quarter, sum(o.amount) AS revenue FROM orders o JOIN customers c USING (customer_id) WHERE c.segment = 'Retail-Plus' GROUP BY o.quarter")}
-kit.check("your actual line is the warehouse's change", abs(card["actual"] - (wp["Q2"] - wp["Q1"]) / wp["Q1"] * 100) < 1e-9)
-kit.check("your card carries a second, labelled line for the director", len(card) == 2 and "actual" in card)''',
+     '''kit.check("your actual line is the warehouse's change for the tier", round(card.get("actual", 0), 1) == -29.4)
+kit.check("your card also answers the director's what-if", any(round(v, 1) == -14.6 for k, v in card.items() if k != "actual"))''',
      {5: '{"actual": change(export_q1, export_q2), "director\'s scenario": change(export_q1, scenario_input)}'},
      "b puts the director's figure where the actual belongs, which is the edit again under a new name; c refuses a fair question and sends the director back to typing over cells; d swaps the labels, so the page calls the scenario actual."),
 ]
@@ -2336,6 +2374,14 @@ def case_cells(steps, solution):
         if solution:
             cells.append(md(f"**Why the other letters fail.** {why}"))
     return cells
+
+
+HOW_TWIN = ("{n} lettered `TODO` markers {where}. Replace each `__TODOn__` with the line of the letter you "
+            "pick; the checks after each {unit} test what your lines computed. Run it from the top: it stops at "
+            "the first placeholder with a NameError until you fill it in, which is intended.")
+HOW_SOLVED = ("{n} lettered `TODO` markers {where}, each filled with the line of the key's letter; the checks "
+              "after each {unit} test what those lines computed, and each {unit} ends on why the other letters "
+              "fail. This is the executed solution.")
 
 
 def ex1(solution):
@@ -2362,16 +2408,16 @@ and base; what ships and what, if anything, is held; do the numbers agree a seco
 **What you have.** Two exports in `../data/`: the customer table, one row per customer who ordered
 between April and September 2026 with that customer's orders and revenue summed, and the raw export,
 one row per payment with the order's amount repeated on each. The warehouse, which Monday's queries
-read, holds one row per order and is the source of truth. Kalpa's Q1 is April to June 2026 and Q2 is
-July to September 2026. Revenue is booked order value in rupees. C-0195 is a Retail-Plus member who
-placed no orders in the two quarters.
+read, holds one row per order and is the source of truth. Finance's control totals, which the warehouse
+reproduces, are 538 orders and Rs 10,00,00,000 for Q1 (April to June 2026) and 462 orders and
+Rs 9,84,00,000 for Q2 (July to September 2026). Revenue is booked order value in rupees. C-0195 is a
+Retail-Plus member who placed no orders in the two quarters.
 
-**How it works.** Ten lettered `TODO` markers across five parts. Replace each `__TODOn__` with the line
-of the letter you pick; the checks after each part test what your lines computed.
-{"This is the executed solution." if solution else "Run it from the top: it stops at the first placeholder with a NameError until you fill it in, which is intended."}
+**How it works.** {HOW_SOLVED.format(n="Ten", where="across five parts", unit="part") if solution else HOW_TWIN.format(n="Ten", where="across five parts", unit="part")}
 ''')
     setup_cell = setup(HELPERS, LOAD_TABLE, LOAD_RAW, WAREHOUSE,
-                       last='print(len(table), "customer rows and", f"{len(raw):,}", "export rows loaded")')
+                       last='FINANCE = {"Q1": (538, 10_00_00_000), "Q2": (462, 9_84_00_000)}   # Finance\'s control totals: orders, rupees\n'
+                            'print(len(table), "customer rows and", f"{len(raw):,}", "export rows loaded")')
     close = md(f'''
 ## What do you post, and what can the chief of staff trust?
 
@@ -2410,9 +2456,7 @@ on each; counted once per order it ties to the warehouse, Rs 10,00,00,000 in Q1 
 Rs 9,84,00,000 in Q2 (July to September 2026). Retail-Plus, Kalpa's paid membership tier, booked
 Rs 5,85,770 in Q1 and Rs 4,13,380 in Q2, down 29.4 percent.
 
-**How it works.** Five lettered `TODO` markers. Replace each `__TODOn__` with the line of the letter you
-pick; the checks after each step test what your lines computed.
-{"This is the executed solution." if solution else "Run it from the top: it stops at the first placeholder with a NameError until you fill it in, which is intended."}
+**How it works.** {HOW_SOLVED.format(n="Five", where="in five steps", unit="step") if solution else HOW_TWIN.format(n="Five", where="in five steps", unit="step")}
 ''')
     setup_cell = setup(HELPERS, LOAD_RAW, WAREHOUSE, COUNT_ONCE,
                        last='print(f"{len(orders):,} orders, each counted once, from {len(raw):,} export rows")')
