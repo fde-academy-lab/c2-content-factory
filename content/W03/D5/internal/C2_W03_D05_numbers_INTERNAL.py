@@ -7,12 +7,14 @@ exits 1 on any FAIL.
 
 1. The data pack figures the STUDENT cards quote, recounted from the patient register, the price
    list and the site list in content/W03/D1/data/, and found on each card that quotes them.
-2. Each card's arithmetic, computed from the card's own exhibit, and found in the GD prompts file
-   (and, for the interview answer, in the day sheet) as those files print it.
+2. Each card's inputs, found on the card, and its arithmetic, computed from those inputs and found
+   in the GD prompts file as it prints it (and in the day sheet and the facilitation notes where
+   they quote it), with card 09's working days counted from the calendar.
 3. The day sheet's plant table, against the generator's witness
    (python3 data/generate_kalpa_health.py --witness) and Monday's witness check, which recounts the
    dashboard's test counts from the files.
-4. A plant guard over every STUDENT file in the day folder: no planted value and no plant's words.
+4. A plant guard over every STUDENT file in the day folder: no planted value, no witness count
+   standing alone and no plant's words.
 5. The cold-run script's ten checksums, against the files in the data pack.
 """
 import csv
