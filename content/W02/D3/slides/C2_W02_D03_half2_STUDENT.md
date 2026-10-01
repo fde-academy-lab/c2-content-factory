@@ -470,7 +470,7 @@ says why the right answer holds. Item 8 is Tuesday's return question. Then tomor
 
 ---
 
-## D22. The interview drill, for the lab: twelve questions
+## D22. The interview drill, for the lab: thirteen questions
 *Which interview questions does today equip you to answer, and how are they tagged?*
 
 | Tag | Question |
@@ -487,6 +487,7 @@ says why the right answer holds. Item 8 is Tuesday's return question. Then tomor
 | [F] | Revenue to date is nine times the plan by week seven: what is the likely mistake? |
 | [D] | The business says ties rank the same: which function, and how many rows might the top-N report ship? |
 | [D] | A member was on holiday: how does your flag treat a month with no orders, and why not zero? |
+| [D] | Your running total closes below the quarter's total: what do you check first? |
 
 ```notes
 SELF-STUDY, and the practice lab's drill. [S] is a staple asked everywhere, [F] frequent at global
