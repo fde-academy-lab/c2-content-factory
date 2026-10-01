@@ -21,7 +21,7 @@
 #
 # Roles only in this file. Never a person's name, because the repository is public.
 
-as_of: 2026-09-30
+as_of: 2026-10-01
 
 sources:
   tracker:
@@ -241,6 +241,11 @@ client_zero:
       decided_on: 2026-09-30
       by: the requester
       text: "Kalpa Health serves the US market: a diagnostics and revenue-cycle business whose laboratories and patient service centres test US patients and bill US payers, with its analytics and revenue-cycle work run from Kalpa's GCC in Bengaluru, the way the Indian centres of US health systems, laboratories and revenue-cycle firms work. Dr Priya Menon stays its COO and Build 1 keeps its growth question and its five sub-problems, now in dollars across US metro areas, with the payer, the claim, the denial and prior authorisation in the room's vocabulary. Every Kalpa Health record is synthetic, so no protected health information exists in the repository. The Build 1 generator and the Week 3 packs are revised to it; until then they carry the India setting of v2.2."
+    - id: exposure-platform-list
+      status: locked
+      decided_on: 2026-10-01
+      by: the requester
+      text: "Week 1 Thursday's exposure table is the campaign platform's August list: the 160 customers the platform reports on for the monsoon sale, 60 of them marked exposed, under the platform's own customer ids, C-6000 to C-6159. Finance's order file keys its customers C-2000 to C-5003, so no row of the list matches an order and the two are separate populations. The campaigns table is the plan, which aims the sale at Retail-Plus; the list records who received it, whatever the plan aimed at, so it marks 30 Retail-Core customers exposed beside 30 Retail-Plus. The addendum gives the Week 1 Thursday list an origin and changes no number in v2.2 or in that day's data."
 
 recut:
   status: open
@@ -304,6 +309,11 @@ decisions:
     closes: the requester, on 30 September 2026
     text: Only the week's Saturday recap paper may name a planted value, and only one the room has already found in class, so the Week 1 Saturday paper keeps the two tracker items that name values planted in the Week 1 Monday dataset (banks 11 and 47, printed as Q32 and Q51 when this was decided and folded since into the deeper items that still print their values); every other learner file names no plant.
     blocks: nothing
+  - id: tuesday-finding-once-found
+    status: closed
+    closes: the requester, on 1 October 2026
+    text: Week 1 Tuesday's files used after chapter 3, where the room finds that the same Retail-Plus members ordered less often, may state that finding, because chapters 4 to 6 and both afternoon cases are built on it and every file stands alone. Each states the finding on its own page, with its numbers, rather than pointing back to the morning. The pre-read, chapters 1 to 3 and every earlier day's file never name it, and every other day keeps the plant rule as written.
+    blocks: nothing
   - id: reporting-day-line
     status: closed
     closes: the requester, on 30 September 2026
@@ -333,6 +343,11 @@ decisions:
     status: closed
     closes: the requester's repositioning of Kalpa Health, on 30 September 2026
     text: Build 1's data moves to the US setting of client zero section 1c. data/generate_kalpa_health.py writes a synthetic pack of six US metro areas, patient service centres, commercial, Medicare, Medicaid and self-pay payers, claims billed in dollars, remittance postings keyed in the posting system's own format, and denials in seven reason categories modelled on the X12 claim adjustment reason codes; the two quarters are calendar Q2 and Q3 of 2026. Every planted trap keeps its logic and its counts, and the Build 1 mini project rubric reads "counts and dollars reconcile across files" where it read rupees.
+    blocks: nothing
+  - id: build1-register-from-bookings
+    status: closed
+    closes: the requester, on 1 October 2026
+    text: Build 1's visit register is drawn from the bookings. data/generate_kalpa_health.py writes one register row for every Q3 visit a booking brought to a patient service centre, naming its booking, so the register agrees with both booking files row for row, and a patient who missed a booked slot and was rebooked has a row for the missed slot beside the kept one. The no-show sub-problem keeps its logic, and its numbers are re-planted in the spine's sub-problem 4 row; every other plant keeps its counts.
     blocks: nothing
   - id: chapter-standard
     status: closed
