@@ -39,7 +39,9 @@ Ten files, one per system Dr Menon's team exports, each messy in the way that sy
                    keyed by a claim reference in its own format, each with the allowed and paid
                    amounts, the patient's share, and an adjustment with its group code (CO, OA or
                    PR) and a reason category
-  appointments     the patient service centres' visits, scheduled and walk-in, with attendance
+  appointments     the patient service centres' Q3 register: every visit a booking brought to a
+                   centre, scheduled or walk-in, with its booking id and whether the patient came,
+                   including the earlier slots a rebooked patient missed
   campaign         the at-home collection (mobile draw) offer: who was offered it, who took it up
 
 Payers are commercial plans, Medicare, Medicaid (one programme per state) and self-pay; one
@@ -62,16 +64,19 @@ file: the room finds them by reconciling, splitting and asking what the denomina
   3 billing    the posting system keys claims in its own format, so an exact join matches almost
                nothing; duplicate ERA loads double-post; the employer invoice is unpaid; and denials
                sit beside the payments with nothing paid
-  4 no-shows   one small patient service centre's rate looks double the others' because the others
-               count walk-ins, and on its base the remaining gap is within chance
+  4 no-shows   one small patient service centre runs almost entirely by appointment, so its rate on
+               all visits looks more than double the others', whose visits include walk-ins; on
+               booked visits alone the remaining gap is within chance
   5 campaign   the offer went at random to half the patients in three metros where bookings were
                already rising and to a fifth of patients elsewhere; offered patients out-book the rest
                overall while booking less than the rest, during the offer, inside each of the three
                campaign metros, and outside them any gap is chance (New York's draw happens to show one)
 
-The bookings, patients, offer and appointments are drawn from the same random stream the India pack
-of 29 September used, so every count behind plants 0, 2, 4 and 5 is the count that pack had; payers,
-denials, dollar amounts and postings come from their own seeded streams.
+The bookings, patients and offer are drawn from the same random stream the India pack of 29
+September used, so every count behind plants 0, 2 and 5 is the count that pack had; payers, denials,
+dollar amounts, postings and the register's rebooked slots come from their own seeded streams. The
+register is derived from the bookings (decided by the requester on 1 October 2026), so the two agree
+row for row, and the small centre's bookings move to its sister centre by serial, which no draw sees.
 """
 import argparse
 import csv
@@ -93,6 +98,9 @@ CAMPAIGN_METROS = ("Dallas", "Atlanta", "Phoenix")
 CAMPAIGN = (dt.date(2026, 7, 15), dt.date(2026, 9, 14))
 PRE_CAMPAIGN = (dt.date(2026, 5, 14), dt.date(2026, 7, 14))
 SMALL_SITE = "KH-ATL-03"
+SISTER_SITE = "KH-ATL-02"        # takes four of the small centre's five bookings
+REBOOKED_SHARE = 0.16            # bookings made ahead that missed an earlier slot first
+SMALL_SITE_NO_SHOWS = 15         # the small centre's missed slots, pinned for the witness
 EXPORTED = dt.date(2026, 10, 16)   # the Friday before Build 1 Monday: every file runs to this day
 EMPLOYER = {"account": "EMP-0007", "metro": "Dallas", "site": "KH-DAL-01",
             "date": dt.date(2026, 8, 6), "heads": 1200, "unit": 150}
@@ -267,6 +275,18 @@ def generate():
                     "status": "cancelled" if rng.random() < 0.03 else "completed",
                     "fee_waived": in_window,
                 })
+    # The small centre runs almost entirely by appointment and sees about a fifth of what its
+    # sister centre in Atlanta sees: four of its bookings in five go to the sister, and the walk-ins
+    # it keeps book by phone or online instead, but for about one in fourteen. Both moves are fixed
+    # by the booking's serial, so no draw above changes and every count behind plants 0, 2 and 5
+    # stays as it was.
+    for b in bookings:
+        if b["site_code"] != SMALL_SITE:
+            continue
+        if b["serial"] % 5:
+            b["site_code"] = SISTER_SITE
+        elif b["channel"] == "walk-in" and b["serial"] % 70:
+            b["channel"] = "phone" if b["serial"] % 2 else "online"
     # The employer wellness contract: one booking, one invoice, twelve hundred screenings.
     serial += 1
     emp_patient = next(p for p in people if p["metro"] == EMPLOYER["metro"])
@@ -445,33 +465,53 @@ def generate():
                                  patient_responsibility=cents(0), adjustment_amount=cents(0),
                                  adjustment_group="", reason_category="", posted_at=stamp))
 
-    # Appointments at the patient service centres in Q3: scheduled visits with attendance, and
-    # walk-ins, who by definition came. The small centre runs almost entirely by appointment.
+    # The patient service centres' register for Q3, one row for every visit a booking brought to a
+    # centre. A walk-in checks in once and is drawn. A booking made ahead holds a slot on its date, kept
+    # when the booking was completed and missed when it was cancelled, and about one booking in six
+    # missed an earlier slot first and was rebooked: that missed slot is a row of its own under the same
+    # booking id. Home collections never visit a centre, so they are not in the register.
     appt_rng = random.Random(SEED + 4)
-    appointments, n_app = [], 0
-    for site in site_rows:
-        if site["kind"] != "patient service center":
+    centres = {s["site_code"] for s in site_rows if s["kind"] == "patient service center"}
+    visits = []
+    for b in bookings:
+        if (b["site_code"] not in centres or b["channel"] not in ("walk-in", "online", "phone")
+                or not Q3[0] <= b["date"] <= Q3[1]):
             continue
-        small = site["site_code"] == SMALL_SITE
-        for d in days(*Q3):
-            scheduled = (1 if appt_rng.random() < 0.52 else 0) if small else appt_rng.randint(2, 6)
-            walkins = (1 if appt_rng.random() < 0.02 else 0) if small else appt_rng.randint(1, 5)
-            for _ in range(scheduled):
-                n_app += 1
-                appointments.append({"appointment_id": f"AP{n_app:06d}",
-                                     "site_code": site["site_code"], "visit_date": d.isoformat(),
-                                     "kind": "scheduled",
-                                     "attended": "N" if appt_rng.random() < 0.15 else "Y"})
-            for _ in range(walkins):
-                n_app += 1
-                appointments.append({"appointment_id": f"AP{n_app:06d}",
-                                     "site_code": site["site_code"], "visit_date": d.isoformat(),
-                                     "kind": "walk-in", "attended": "Y"})
-    # Pin the small centre's no-shows at ten, so the witness numbers hold whatever the draw.
-    small_rows = [a for a in appointments if a["site_code"] == SMALL_SITE and a["kind"] == "scheduled"]
-    step = max(1, len(small_rows) // 10)
-    for k, a in enumerate(sorted(small_rows, key=lambda a: a["appointment_id"])):
-        a["attended"] = "N" if k % step == 0 and k // step < 10 else "Y"
+        if b["channel"] == "walk-in":
+            if b["status"] == "completed":
+                visits.append([b["date"], b, "walk-in", "Y"])
+            continue
+        missed = appt_rng.random() < REBOOKED_SHARE
+        earlier = b["date"] - dt.timedelta(days=appt_rng.randint(2, 9))
+        if missed and b["status"] == "completed" and earlier >= Q3[0]:
+            visits.append([earlier, b, "scheduled", "N"])
+        visits.append([b["date"], b, "scheduled", "Y" if b["status"] == "completed" else "N"])
+    # Pin the small centre's missed slots at SMALL_SITE_NO_SHOWS, so the witness numbers hold whatever
+    # the draw: add a missed slot three days before a kept one, earliest booking first, or drop the
+    # latest missed slots. Only rebooked slots move, so the register still agrees with the bookings.
+    small = [v for v in visits if v[1]["site_code"] == SMALL_SITE and v[2] == "scheduled"]
+    have = sum(1 for v in small if v[3] == "N")
+    if have < SMALL_SITE_NO_SHOWS:
+        rebooked = {id(v[1]) for v in small if v[3] == "N"}
+        for v in sorted(small, key=lambda v: (v[0], v[1]["serial"])):
+            b = v[1]
+            if have == SMALL_SITE_NO_SHOWS:
+                break
+            earlier = b["date"] - dt.timedelta(days=3)
+            if v[3] == "Y" and id(b) not in rebooked and earlier >= Q3[0]:
+                visits.append([earlier, b, "scheduled", "N"])
+                rebooked.add(id(b))
+                have += 1
+    elif have > SMALL_SITE_NO_SHOWS:
+        extra = sorted((v for v in small if v[3] == "N" and v[0] < v[1]["date"]),
+                       key=lambda v: (v[0], v[1]["serial"]), reverse=True)
+        for v in extra[:have - SMALL_SITE_NO_SHOWS]:
+            visits.remove(v)
+    visits.sort(key=lambda v: (v[0], v[1]["site_code"], v[1]["serial"], v[3] == "Y"))
+    appointments = [{"appointment_id": f"AP{n:06d}", "booking_id": b["booking_id"],
+                     "site_code": b["site_code"], "visit_date": day.isoformat(), "kind": kind,
+                     "attended": attended}
+                    for n, (day, b, kind, attended) in enumerate(visits, 1)]
 
     campaign = [{"patient_id": pid, "metro": payer_of[pid]["metro"],
                  "offered_on": day.isoformat(), "took_up": "Y" if pid in took_up else "N"}
@@ -626,6 +666,35 @@ def witness(tables, bookings):
     w["net_collection_ratio"] = w["paid_net_of_double_posts"] / w["billed_all"]
 
     appts = tables["appointments"]
+    # The register agrees with the bookings: every row names a booking at the same centre, a kept or
+    # missed slot on the booking's own date carries its status, a missed slot before it means a
+    # rebooking, a walk-in is a completed walk-in booking, and every Q3 visit a booking brought to a
+    # centre is there.
+    by_id = {b["booking_id"]: b for b in bookings}
+    centres = {s["site_code"] for s in tables["sites"] if s["kind"] == "patient service center"}
+    mismatched, final = 0, set()
+    for a in appts:
+        b = by_id.get(a["booking_id"])
+        day = dt.date.fromisoformat(a["visit_date"])
+        if b is None or b["site_code"] != a["site_code"]:
+            mismatched += 1
+        elif a["kind"] == "walk-in":
+            mismatched += not (b["channel"] == "walk-in" and b["status"] == "completed" and day == b["date"])
+            final.add(a["booking_id"])
+        elif day == b["date"]:
+            mismatched += (a["attended"] == "Y") != (b["status"] == "completed")
+            final.add(a["booking_id"])
+        else:
+            mismatched += not (day < b["date"] and a["attended"] == "N" and b["status"] == "completed")
+    due = {b["booking_id"] for b in bookings
+           if b["site_code"] in centres and Q3[0] <= b["date"] <= Q3[1]
+           and (b["channel"] in ("online", "phone")
+                or (b["channel"] == "walk-in" and b["status"] == "completed"))}
+    w["register_rows"] = len(appts)
+    w["register_mismatches"] = mismatched + len(due ^ final)
+    w["small_site_q3_bookings"] = sum(1 for b in bookings if b["site_code"] == SMALL_SITE
+                                      and Q3[0] <= b["date"] <= Q3[1])
+    w["small_site_walk_ins"] = sum(1 for a in appts if a["site_code"] == SMALL_SITE and a["kind"] == "walk-in")
     small_sched = [a for a in appts if a["site_code"] == SMALL_SITE and a["kind"] == "scheduled"]
     small_all = [a for a in appts if a["site_code"] == SMALL_SITE]
     other_sched = [a for a in appts if a["site_code"] != SMALL_SITE and a["kind"] == "scheduled"]
@@ -756,8 +825,13 @@ def check(w):
     want(w["text_amounts"] == 60 and w["double_posted_dollars"] > 0,
          "the sixty text amounts or the double-posted dollars are missing")
     # 4: the small centre's no-shows.
-    want(40 <= w["small_site_scheduled"] <= 60, f"small centre scheduled {w['small_site_scheduled']}")
-    want(w["small_site_no_shows"] == 10, f"small centre no-shows {w['small_site_no_shows']}")
+    want(w["register_mismatches"] == 0,
+         f"{w['register_mismatches']} register rows disagree with the bookings")
+    want(40 <= w["small_site_scheduled"] <= 90, f"small centre scheduled {w['small_site_scheduled']}")
+    want(w["small_site_walk_ins"] <= 0.06 * (w["small_site_scheduled"] + w["small_site_walk_ins"]),
+         "the small centre does not run almost entirely by appointment")
+    want(w["small_site_no_shows"] == SMALL_SITE_NO_SHOWS,
+         f"small centre no-shows {w['small_site_no_shows']}")
     want(w["small_site_rate_all_visits"] >= 1.8 * w["others_rate_all_visits"],
          "the small centre's all-visit rate is not about double the others'")
     want(w["small_site_tail_probability"] >= 0.10,

@@ -30,9 +30,9 @@ import tempfile
 import time
 
 RAW = {
-    "C2_W03_D01_appointments_STUDENT.csv": "cf6cda6760fb4d77ebc4668550bd6236ab8149a5df602bd4409f33fb80ebeb62",
+    "C2_W03_D01_appointments_STUDENT.csv": "a4d4e2cd46bc4fc70b5b1a5efe4da618993e8425d23a11af370eec1709f7b470",
     "C2_W03_D01_booking_tests_STUDENT.csv": "830a209b61b95ae97f8ca7ab5a68a7e6d71891befcf2623f96b18dc2e6d3bf29",
-    "C2_W03_D01_bookings_legacy_STUDENT.csv": "9bce555418273bda2296581297d9e478c9e6432270ba4745599e4fb2aa4e372a",
+    "C2_W03_D01_bookings_legacy_STUDENT.csv": "cf621766222a8a27ef7845e25ef9a5502eecb55b0eb4c87fe82ab6620f50bbb5",
     "C2_W03_D01_bookings_newsys_STUDENT.csv": "f10318c173e2453988e7c2b93c1b11eac97ec485285840885a254fd7e68a8523",
     "C2_W03_D01_campaign_STUDENT.csv": "d908805cb393b270519402cd8622ca4bf228357ba90dfc8fc2244f6a494d8da2",
     "C2_W03_D01_claims_STUDENT.csv": "80ce3072366d3cffd38791608d9a2155ee904223d8d927ddb9416e5f6a829b1b",
