@@ -162,8 +162,8 @@ Transition: chapter 1 traces the four joins on tables small enough to check by h
 *When payments are attached to orders, which rows does each join keep, drop or repeat, before Anand reads any total?*
 
 ```notes
-LIVE. Chapter 1 runs 30 minutes: the map and the need (3), Razorpay (1), the invented tables and
-the four options (5), the grain (3), INNER by hand (5), LEFT, RIGHT and FULL (4), the trap and its
+LIVE. Chapter 1 runs 30 minutes: the map and the need (3), Razorpay (1), the invented tables, the
+four options and the call (5), the grain (3), INNER by hand (5), LEFT, RIGHT and FULL (4), the trap and its
 fix (6), the second route (2), the close (1). Notebook 1, C2_W02_D02_01_what_a_join_keeps_STUDENT.ipynb,
 runs beside it, and the guided trace sheet is on every desk.
 ```
@@ -265,7 +265,7 @@ sheet carries them with blank rows to fill.
 **Sized.** Every option runs in under 3 milliseconds on these tables, so the rows each one keeps decide the call. All four list T-2 and T-3 twice.
 
 ```notes
-LIVE, 3 minutes. The sizing cell in notebook 1 measures each option: rows out, how many of the five
+LIVE, 2 minutes. The sizing cell in notebook 1 measures each option: rows out, how many of the five
 booked orders reach the statement, what happens to T-4 and to P-7, and the time. Ask which column
 decides the call. The answer is the booked-orders column, because Anand's question is about every
 order Kalpa booked. The repeated T-2 and T-3 are chapter 2's problem.
@@ -505,7 +505,7 @@ has nothing to chase, and the cash total carries 600 from P-7 and 1,500 from the
 **What changed.** All five booked orders are on it and T-4 shows NULL where its payment would be. What did not change: seven lines for five orders, so T-2 reads as short-paid on both its lines, 1,200 of 2,000 and 800 of 2,000, when it was paid in full.
 
 ```notes
-LIVE, 2 minutes. P-7 left the statement; it belongs to the platform lead's question. The seven
+LIVE, 1 minute. P-7 left the statement; it belongs to the platform lead's question. The seven
 lines are why chapter 2 exists: before any total is read from this join, the room has to say what
 a total does to an order that appears twice.
 ```
@@ -709,7 +709,7 @@ value: 678 | label: rows out | note: from 462 Q2 orders in
 The answer is c. Read as it stands, the draft says Kalpa collected Rs 9.45 crore more than it sold, and a finance controller who believes it stops chasing anything this quarter.
 
 ```notes
-LIVE, 2 minutes. Say the wrong number exactly: Rs 19,29,04,410. Every channel in the notebook's chart
+LIVE, 3 minutes. Say the wrong number exactly: Rs 19,29,04,410. Every channel in the notebook's chart
 sits near twice its bookings, so the error is not one channel's. Let the room find the doubling
 before anyone names it.
 ```
@@ -891,8 +891,8 @@ rupee by rupee, separates booked from posted? That is chapter 3.
 *Once nothing counts twice, is every booked order still in the report, and can every rupee between booked and posted be named?*
 
 ```notes
-LIVE. Chapter 3 runs 30 minutes: the map, the need, Stripe and PHE (4), the four proofs and the call (5),
-the grain check on Q2 (3), the plain JOIN trap, its check and fix (8), the bridge (7), the second
+LIVE. Chapter 3 runs 30 minutes: the map, the need, Stripe and PHE (5), the four proofs and the call (5),
+the grain check on Q2 (3), the plain JOIN trap, its check and fix (8), the bridge (6), the second
 route (2), the close (1). Notebook 3, C2_W02_D02_03_every_order_there_STUDENT.ipynb.
 ```
 
@@ -1460,7 +1460,7 @@ WHERE p.order_id IS NULL;
 **What changed.** Moving one line changed the whole list. ON decides which payment rows count as a match, before the join; WHERE decides which joined rows survive, after it.
 
 ```notes
-LIVE, 3 minutes. The PostgreSQL manual says a restriction in ON is processed before the join and a
+LIVE, 2 minutes. The PostgreSQL manual says a restriction in ON is processed before the join and a
 restriction in WHERE after it, and that the difference matters a lot with outer joins (PostgreSQL 16
 documentation, section 7.2.1.1, Joined Tables, checked 1 Oct 2026). The rule to keep: in a LEFT JOIN, a
 condition on the right-hand table goes in ON, and the one right-table condition that belongs in
@@ -1674,7 +1674,7 @@ of receivables: money owed by customers and payment partners over net revenue pe
 **Sized.** The forms differ in what they ask of the reader, from one line to 462.
 
 ```notes
-LIVE, 2 minutes. The notebook's sizing cell counts the lines each form puts in front of Anand on
+LIVE, 3 minutes. The notebook's sizing cell counts the lines each form puts in front of Anand on
 Kalpa's Q2: three channels and a total, four reconciliation lines, and 462 orders.
 ```
 
@@ -1777,7 +1777,7 @@ posted. Take letters.
 The answer is b: 0 for app, and 0 for every channel, on the invented tables and on Kalpa's Q2 alike. Read as it stands, Kalpa collected every rupee it booked, and Anand signs a page that stands his collections team down.
 
 ```notes
-LIVE, 1 minute. Say the wrong output exactly: Rs 0 on every channel. The notebook runs the same query
+LIVE, 2 minutes. Say the wrong output exactly: Rs 0 on every channel. The notebook runs the same query
 on Kalpa's Q2 and prints the three zeros. This is the chapter's trap.
 ```
 

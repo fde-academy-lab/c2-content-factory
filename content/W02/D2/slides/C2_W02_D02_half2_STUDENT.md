@@ -30,7 +30,7 @@ Transition: one slide of what the morning settled, then chapter 6.
 | 5. What does Anand sign? | The page by channel, reconciled, with both lists; `coalesce` keeps an unpaid order in the gap |
 
 ```notes
-LIVE, 2 minutes. Read the five lines as the room's own findings; each learner's collected figure,
+LIVE, 1 minute. Read the five lines as the room's own findings; each learner's collected figure,
 gap and lists are on their own page from chapter 5. Five wrong reports appeared on the way, each
 plausible: the fan-out draft, the plain JOIN, the quarter in WHERE, each order's gap added up, and
 posted read as collected. Chapter 6 builds the checks that stop all five, every Monday.
@@ -42,9 +42,10 @@ posted read as collected. Chapter 6 builds the checks that stop all five, every 
 *Which checks must pass before the collected number leaves the team, and what does Anand get when one fails at the end of reporting day?*
 
 ```notes
-LIVE. Chapter 6 runs 30 minutes: the map, the need and Wirecard (4), the four ways and the call (4),
-the hurried checks and why they pass (6), the tie-back suite on one report and on all five (8),
-Kalpa's report (2), the second route (3), the reporting-day rule (2), the close (1). Notebook 6,
+LIVE. Chapter 6 runs 30 minutes with the cover and the morning's five answers (2): the map, the need
+and Wirecard (4), the four ways and the call (4), the hurried checks and why they pass (6), the
+tie-back suite on one report and on all five (7), Kalpa's report (1), the second route (2), the
+reporting-day rule (3), the close (1). Notebook 6,
 C2_W02_D02_06_can_it_leave_STUDENT.ipynb.
 ```
 
@@ -289,7 +290,7 @@ chapter's trap wrote them. Take letters.
 The answer is c. The fan-out draft inflates booked and collected together, so its gap, 800, is even right, and only the orders and booked checks stop it. **The check.** The tie-back suite fails every wrong report on at least one check and passes the true report on all five.
 
 ```notes
-LIVE, 3 minutes. The fan-out row is the one to dwell on: a correct gap sitting on a wrong report.
+LIVE, 2 minutes. The fan-out row is the one to dwell on: a correct gap sitting on a wrong report.
 Kavya's rule follows from this slide: do not send a PASS you have never seen fail.
 ```
 
@@ -309,7 +310,7 @@ Kavya's rule follows from this slide: do not send a PASS you have never seen fai
 The page may leave the team, and every one of the 1,428 payment rows sits on a Q1 order, a Q2 order or no order at all.
 
 ```notes
-LIVE, 2 minutes. The verdicts print; the figures that would name what the room is finding stay on
+LIVE, 1 minute. The verdicts print; the figures that would name what the room is finding stay on
 each learner's own page. Say the sentence: this report may leave the team.
 ```
 
@@ -333,7 +334,7 @@ flowchart LR
 A repeat of the same instalment overwrites itself in the dictionary and counts once. **The check.** On the invented tables both tools give 5 orders, booked 5,800, collected 5,000 and a gap of 800, and they agree on Kalpa's Q2.
 
 ```notes
-LIVE, 3 minutes. The route shares no join, no GROUP BY and no NULL rule with the SQL report, so a
+LIVE, 2 minutes. The route shares no join, no GROUP BY and no NULL rule with the SQL report, so a
 mistake in one is unlikely to repeat in the other. Its own blind spot: it assumes a retry repeats the
 same amount, which chapter 3's cap method checked. Each route covers a place the other cannot see.
 ```
@@ -433,9 +434,10 @@ label: Part 5 | title: The page and its proof | body: One line per channel, the 
 **Now, alone, 20 minutes.** Parts 1 and 2 in the case notebook: pick each lettered option, run the check under it, and write the reconciliation lines. Parts 3 to 5 run in the practice lab.
 
 ```notes
-LIVE, 3 minutes. Read the five parts aloud, then start the clock. Each part's check tells a learner
-whether their pick holds without showing the answer. Walk the room; the common stall in Part 2 is the
-grain of the payments CTE.
+LIVE, 3 minutes. Read the five parts aloud, show the next slide, then start the clock: 15 minutes
+alone on parts 1 and 2, which with these two slides makes the block's 20. Each part's check tells a
+learner whether their pick holds without showing the answer. Walk the room; the common stall in Part
+2 is the grain of the payments CTE.
 ```
 
 ---
@@ -450,9 +452,9 @@ icon: pen-line | eyebrow: Your own page | title: The sentence to Anand | body: W
 ```
 
 ```notes
-LIVE, 2 minutes. The case is the day's chapters without the scaffolding. The debrief of wrong picks
-runs in the practice lab, where the TA reads the most common wrong letters for each part.
-Transition: what the lab and tonight carry.
+LIVE, 2 minutes, before the clock starts. The case is the day's chapters without the scaffolding.
+The debrief of wrong picks runs in the practice lab, where the TA reads the most common wrong letters
+for each part. When the 15 minutes end, name the lab slides in one sentence and go to the close.
 ```
 
 ---
@@ -601,7 +603,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes. Each learner fills the blanks from their own page; nobody reads another's figures
+LIVE, 1 minute. Each learner fills the blanks from their own page; nobody reads another's figures
 aloud. The sentence carries the definition, the gap with its orders, the second list's owner and
 the proof.
 ```
@@ -621,7 +623,7 @@ the proof.
 | A check is worth its power to fail: tie every figure back to one table alone. |
 
 ```notes
-LIVE, 2 minutes. These are the crux lines the cheat sheet prints word for word. Ask each learner to
+LIVE, 1 minute. These are the crux lines the cheat sheet prints word for word. Ask each learner to
 star the one they would have broken this morning.
 ```
 
