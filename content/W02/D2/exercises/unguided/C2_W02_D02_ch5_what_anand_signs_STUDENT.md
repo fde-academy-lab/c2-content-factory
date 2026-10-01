@@ -14,6 +14,17 @@ tonight.
 channel heads chase their own unpaid orders from it. A gap column that reads zero stands every one of
 them down.
 
+**The questions on the way.**
+
+- What does the hurried gap column say for web?
+- Which check catches the gap column without reading any order?
+- Which expression keeps the unpaid orders in the gap?
+- What is store's gap, and which bar of the bridge is it?
+- Which page does Anand get?
+- What does the difference between two routes to the gap tell you?
+
+An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
+
 - **Booked** is every order at its amount; **collected** counts each payment once; the **gap** is
   booked less collected. An order nobody paid has NULL in `collected`.
 - `sum()` skips NULLs without saying so. `coalesce(x, 0)` returns x, or 0 when x is NULL.
@@ -75,7 +86,7 @@ b) 400, posted twice
 c) 2,500, never paid
 d) 400, paid short
 
-### Q5. Which page does Anand get?
+### Q5. Which page does Anand get? (Design)
 
 Anand has five minutes before he forwards the page, and his analyst audits it next week. Which page does he get?
 
@@ -84,7 +95,7 @@ b) a table by channel with its gaps
 c) the table by channel, reconciled above, with both lists
 d) the whole statement, one line for each of the six orders
 
-### Q6. What does the difference between two routes to the gap tell you?
+### Q6. What does the difference between two routes to the gap tell you? (Design)
 
 A second route groups the unpaid list by channel: app 700, store 0, web 1,000. The fixed page says app 700, store 400, web 1,000. What does the difference tell you?
 

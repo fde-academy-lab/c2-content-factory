@@ -14,6 +14,17 @@ practice lab or are worked tonight.
 platform lead and Finance reverse or refund what is on the double-paid list. A name on the wrong
 list means a call to a customer who did nothing wrong.
 
+**The questions on the way.**
+
+- Which orders does the anti-join return?
+- What does the list return once the quarter's dates sit in WHERE?
+- What does it return once the dates move into ON?
+- Where does V-5 belong for Anand's never-paid question?
+- What does the double-paid list hold, grouped the right way?
+- Which way of writing the unpaid list stays correct once the feed sends NULL ids?
+
+An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
+
 - An **anti-join** keeps the rows of one table that have no partner in the other, for example a LEFT
   JOIN that keeps only the rows where the payment side is NULL.
 - **Never paid** means an order with no payment row at all. A **retry** is one order and instalment
@@ -85,7 +96,7 @@ b) V-4 and V-5
 c) no orders
 d) V-5 and V-9
 
-### Q4. Where does V-5 belong for Anand's never-paid question?
+### Q4. Where does V-5 belong for Anand's never-paid question? (Design)
 
 V-5 was paid on 3 October, three days after the quarter closed. On the definitions above, which list does V-5 belong on when the collections team asks for the orders never paid?
 
@@ -103,7 +114,7 @@ b) V-2 and V-3, and 1,800
 c) V-2's instalment 2, and 1,200
 d) V-3's instalment 1, and 1,200
 
-### Q6. Which way of writing the unpaid list stays correct once the feed sends NULL ids?
+### Q6. Which way of writing the unpaid list stays correct once the feed sends NULL ids? (Design)
 
 The feed will soon carry refund rows whose `order_id` is NULL. Which way of writing the unpaid list stays correct?
 

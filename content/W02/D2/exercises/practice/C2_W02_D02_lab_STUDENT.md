@@ -146,7 +146,7 @@ d) FULL JOIN, both sides' orphans
 
 ---
 
-## Problem 3. Why did the refund rate come out low?
+## Problem 3. What is wrong with a refund rate of 16.3 percent?
 
 Allow about 15 minutes. At work, even a plausible rate gets read back to the rows that made it.
 

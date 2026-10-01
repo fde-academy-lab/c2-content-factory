@@ -178,7 +178,7 @@ minus 1,500 on 4 orders, and the LEFT fix alone minus 700.
 | The guided trace | 1c 2a 3b 4d |
 | Chapter 1 set | 1b 2a 3b 4a 5c 6d |
 | Chapter 2 set | 1c 2a 3c 4b 5b 6d |
-| Chapter 3 set | 1b 2a 3c 4b 5a 6d |
+| Chapter 3 set | 1b 2a 3c 4b 5a 6c |
 | Chapter 4 set | 1a 2c 3b 4c 5a 6b |
 | Chapter 5 set | 1b 2b 3c 4d 5c 6a |
 | Chapter 6 set | 1a 2b 3c 4d 5b 6c |

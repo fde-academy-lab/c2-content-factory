@@ -14,6 +14,17 @@ tonight.
 reconciliation above the number before the number itself. A report that drops an order and keeps a
 repeated payment can show a gap of zero, and nobody chases a zero.
 
+**The questions on the way.**
+
+- What does a plain JOIN report on these six orders?
+- Which check catches a dropped order without reading a rupee?
+- What is collected, each payment counted once?
+- What is the gap, and what is it made of?
+- Where would two ways of counting collected disagree?
+- In what order should the proofs run before the number goes to Anand?
+
+An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
+
 - **Booked** is every order at its amount. **Collected** counts each order and instalment once.
   **Posted** is every payment row the feed holds, repeats included.
 - The **gap** is booked less collected. A **bridge** walks from booked to posted in named moves:
@@ -49,7 +60,7 @@ b) 4 orders, a gap of minus 1,000
 c) 4 orders, a gap of 0
 d) 6 orders, a gap of minus 1,000
 
-### Q2. Which check catches a dropped order without reading a rupee?
+### Q2. Which check catches a dropped order without reading a rupee? (Design)
 
 Anand's analyst has ten minutes before the report goes out. Which check catches a dropped order without reading any rupee figure?
 
@@ -76,7 +87,7 @@ b) 1,800: 1,300 never paid and 500 paid short
 c) 1,300: the two orders never paid
 d) 3,300: never paid, paid short and posted twice
 
-### Q5. Where would two ways of counting collected disagree?
+### Q5. Where would two ways of counting collected disagree? (Design)
 
 A second route to collected takes, for each paid order, the smaller of what the feed posted and what was booked. The first route counts each order and instalment once. On which kind of order would the two routes disagree?
 
@@ -85,14 +96,14 @@ b) an order paid in two instalments of different amounts
 c) an order that was never paid at all, such as U-3
 d) an order paid once, in full, such as U-1
 
-### Q6. What travels with the report when auditors tick every order?
+### Q6. In what order should the proofs run before the number goes to Anand? (Design)
 
-At the quarter's close, the auditors ask Anand's analyst to tick every order against the books. What travels with the signed report then?
+The report on these six orders has to reach Anand within the hour, and his analyst has three proofs to run before the number itself goes out. Which order catches a dropped order and a repeated payment before anyone reads the number?
 
-a) the one-number gap, with its definition written above
-b) the count reconciliation, in place of the bridge
-c) the bridge alone, without the lists behind its moves
-d) the whole statement, a line per order, as an appendix
+a) the number, then the bridge, then the count if it looks odd
+b) the bridge, then the number, then the count at the close
+c) the count, then the bridge and its lists, then the number
+d) the whole statement first, then the count, then the number
 
 ---
 

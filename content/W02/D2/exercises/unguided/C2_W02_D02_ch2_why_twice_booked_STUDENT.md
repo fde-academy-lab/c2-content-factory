@@ -16,6 +16,17 @@ or are worked tonight.
 running ahead and stand his collections team down. You need it too, since the way you attach payments
 here carries every later number.
 
+**The questions on the way.**
+
+- How many rows does the first join return for the week?
+- Why can every row be right while the total is wrong?
+- Which of four fixes should the week's report use?
+- How much booking does DISTINCT lose?
+- Which fact would make a DISTINCT before the join exact?
+- Which check proves the fixed join added and lost nothing?
+
+An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
+
 - **Booked** is every order at its amount; **collected** is the cash that arrived, each payment
   counted once; collected can never honestly exceed booked.
 - `FILTER (WHERE ...)` restricts one aggregate to the rows that meet a condition.
@@ -59,7 +70,7 @@ b) FILTER counts the unpaid orders as paid, each at its booked amount
 c) the LEFT JOIN adds NULL rows, and sum() counts each as an order
 d) the feed stores each amount twice, once for every instalment
 
-### Q3. Which of four fixes should the week's report use?
+### Q3. Which of four fixes should the week's report use? (Design)
 
 Four ways a team could stop the double count on this week:
 
@@ -77,7 +88,7 @@ b) C, since it keeps one posting per instalment and drops every retry row
 c) A, since it joins one row per order and keeps each order's row count
 d) D, since only a repaired feed can ever be trusted
 
-### Q4. How much booking does DISTINCT lose?
+### Q4. How much booking does DISTINCT lose? (Design)
 
 In the invented week, 160 of the 400 orders share their amount with at least one other order, across 60 distinct amounts. How many orders' amounts does `sum(DISTINCT o.amount)` leave out of booked?
 
@@ -86,7 +97,7 @@ b) 100, all but one per shared amount
 c) 160, every order that shares an amount
 d) none, since DISTINCT keeps every order
 
-### Q5. Which fact would make a DISTINCT before the join exact?
+### Q5. Which fact would make a DISTINCT before the join exact? (Design)
 
 Which fact about the feed would let a DISTINCT, taken on the payments before any join, remove exactly the retries and nothing else?
 

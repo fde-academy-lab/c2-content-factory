@@ -16,13 +16,13 @@ You write the rows first, and the query runs afterwards, only to check what you 
 
 `tiny_orders`, one row per order:
 
-| order_id | channel | amount | status |
-|---|---|---|---|
-| T-1 | app | 1,000 | delivered |
-| T-2 | web | 2,000 | delivered |
-| T-3 | store | 1,500 | delivered |
-| T-4 | app | 800 | delivered |
-| T-5 | store | 500 | delivered |
+| order_id | channel | amount |
+|---|---|---|
+| T-1 | app | 1,000 |
+| T-2 | web | 2,000 |
+| T-3 | store | 1,500 |
+| T-4 | app | 800 |
+| T-5 | store | 500 |
 
 `tiny_payments`, one row per payment the feed posted:
 
@@ -160,7 +160,7 @@ b) T-3 only, since its payment was posted twice
 c) T-2 only, since it was paid in two instalments
 d) None, since an INNER join keeps each order once
 
-### Q3. What does the LEFT join show for T-4, and what does that mean for Anand?
+### Q3. What does the LEFT join show for T-4, the order nobody paid?
 
 a) Nothing, since T-4 has no payment to join to
 b) One row with NULL in every payment column

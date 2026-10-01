@@ -12,14 +12,61 @@ The case tests the same joins turned round: a question about every row the feed 
 the payments. Items 3 and 4 are the design choices: how far the retry list must reach for the person
 who fixes the feed, and which dates tell the gateway team when the fault ran.
 
+## What did the case give you to work from?
+
+> **The client asks.** "Before I repair the payments feed, tell me which rows in it should not be
+> there: payments with no order behind them, and payments the gateway posted twice. Both quarters,
+> with the dates, the methods and the rupees at stake, and tell me what to fix first."
+>
+> The data platform lead, Kalpa Retail
+
+**Who needs the answer.** The platform lead owns the warehouse and the feed that fills it, and
+Finance must know whether any customer was charged twice. A fix aimed at the wrong integration
+costs weeks and leaves the fault in place; a repeat deleted from the warehouse removes the evidence
+Finance needs.
+
+- Anand's question started from the orders, because it was about every booked order. This one starts
+  from the payments, because it is about every row the feed holds, which is the fact chapter 1 said
+  would change the join.
+- A **retry** is the same order and instalment posted more than once; a second instalment has its own
+  instalment number and is real cash.
+- The warehouse's `payments` table holds 1,428 rows across both quarters, Q1 (April to June) and Q2
+  (July to September). Each row carries its order id, date, amount, payment method and instalment
+  number.
+
 ## Why does each pick hold, item by item?
 
-| Item | Part | Key | Why it holds | Why the others fail |
-|---|---|---|---|---|
-| 1 | 1 | c | `payments LEFT JOIN orders` keeps every payment row, so each lands on a Q1 order, a Q2 order or no order, and the three add to the table. | a: starts from orders, so a payment with no order never appears and an unpaid order adds a row the feed does not hold. b and d: keep only payments that match an order. |
-| 2 | 2 | b | After that join a payment with no order carries NULL on the order side, so `o.order_id IS NULL` keeps exactly those rows. | a: tests the payment's own order id, which the table never leaves empty. c: is unknown for a NULL quarter, so it keeps nothing. d: adds a Q2 test no unmatched row can pass. |
-| 3 | 3 | d | The platform lead fixes the whole feed, which spans both quarters, so the retry list covers everything the feed holds. | a and b: split one fault across two reports and leave the lead half of it. c: cuts by payment date, which is not how the feed files a retry. |
-| 4 | 4 | a | The first and last `paid_date` on the retry list bound the days the fault ran, and each end is a real retry. | b and c: describe the quarters and the feed, so the window starts and ends on days with no retry. d: assumes every retry happened on one day, which the list does not show. |
+### Item 1, part 1. Which join accounts for every payment row the feed holds?
+
+The key is c, `payments p LEFT JOIN orders o ON o.order_id = p.order_id`. `payments LEFT JOIN orders` keeps every payment row, so each lands on a Q1 order, a Q2 order or no order, and the three add to the table.
+
+- a, `orders o LEFT JOIN payments p ON p.order_id = o.order_id`: keep only payments that match an order.
+- b, `orders o JOIN payments p ON p.order_id = o.order_id`: keep only payments that match an order.
+- d, `payments p JOIN orders o ON o.order_id = p.order_id AND o.quarter IN ('Q1', 'Q2')`: keep only payments that match an order.
+
+### Item 2, part 2. Which condition keeps only the payments that match no order?
+
+The key is b, `o.order_id IS NULL`. After that join a payment with no order carries NULL on the order side, so `o.order_id IS NULL` keeps exactly those rows.
+
+- a, `p.order_id IS NULL`: tests the payment's own order id, which the table never leaves empty.
+- c, `o.quarter NOT IN ('Q1', 'Q2')`: is unknown for a NULL quarter, so it keeps nothing.
+- d, `p.amount > 0 AND o.amount IS NULL AND o.quarter = 'Q2'`: adds a Q2 test no unmatched row can pass.
+
+### Item 3, part 3. Which rows should the retry list cover for the platform lead? (Design)
+
+The key is d, "both quarters, all the feed holds". The platform lead fixes the whole feed, which spans both quarters, so the retry list covers everything the feed holds.
+
+- a, "Q2 orders only, the quarter Anand asked about": split one fault across two reports and leave the lead half of it.
+- b, "Q1 orders only, since Q2 is already on Anand's page": split one fault across two reports and leave the lead half of it.
+- c, `payments made from 1 July only, whatever order they pay`: cuts by payment date, which is not how the feed files a retry.
+
+### Item 4, part 4. Which dates tell the gateway team when the retries happened? (Design)
+
+The key is a, "the first and last paid_date on the retry list". The first and last `paid_date` on the retry list bound the days the fault ran, and each end is a real retry.
+
+- b, "the first and last day of the quarters the orders belong to": describe the quarters and the feed, so the window starts and ends on days with no retry.
+- c, "the first and last paid_date of every payment in the feed": describe the quarters and the feed, so the window starts and ends on days with no retry.
+- d, "the paid_date of the first retry, since the rest repeat it": assumes every retry happened on one day, which the list does not show.
 
 ## What should your request satisfy?
 

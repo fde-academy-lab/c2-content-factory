@@ -38,14 +38,74 @@ answers "which payments does no order claim?", the question for the platform lea
 returns 8 rows: the six matched rows, T-4 and P-7, which answers "what fails to match on either
 side?" before a feed is repaired.
 
+## What did the trace give you to work from?
+
+`tiny_orders`, one row per order:
+
+| order_id | channel | amount |
+|---|---|---|
+| T-1 | app | 1,000 |
+| T-2 | web | 2,000 |
+| T-3 | store | 1,500 |
+| T-4 | app | 800 |
+| T-5 | store | 500 |
+
+`tiny_payments`, one row per payment the feed posted:
+
+| payment_id | order_id | paid_date | amount | instalment_no |
+|---|---|---|---|---|
+| P-1 | T-1 | 2026-07-03 | 1,000 | 1 |
+| P-2 | T-2 | 2026-07-05 | 1,200 | 1 |
+| P-3 | T-2 | 2026-08-05 | 800 | 2 |
+| P-4 | T-3 | 2026-07-09 | 1,500 | 1 |
+| P-5 | T-3 | 2026-07-09 | 1,500 | 1 |
+| P-6 | T-5 | 2026-07-12 | 500 | 1 |
+| P-7 | T-9 | 2026-07-14 | 600 | 1 |
+
+The trainer draws the question each join answers on the board first:
+
+```mermaid
+flowchart LR
+    O["<b>tiny_orders</b><br/>one row per order"] --> K{"does the order_id<br/>find a payment?"}
+    P["<b>tiny_payments</b><br/>one row per payment"] --> K
+    K -->|"yes, once per payment row"| M["matched rows<br/>INNER keeps these"]
+    K -->|"no, order has no payment"| L["order with NULLs<br/>LEFT adds these"]
+    K -->|"no, payment has no order"| R["payment with NULLs<br/>RIGHT adds these"]
+```
+
 ## Why does each key hold, item by item?
 
-| Item | Key | Why it holds | Why the others fail |
-|---|---|---|---|
-| 1 | c | Every payment that finds its order makes one row: P-1 to P-6 find orders, and P-7 does not, so six rows. | a: counts orders, which is the grain of only one side. b: counts P-7, which has no order to join to. d: counts the orders that were paid, and forgets that two of them repeat. |
-| 2 | a | T-2 has two instalment rows and T-3 has two postings of one instalment, so both repeat in the join. | b: T-3 repeats, and so does T-2, whose instalments are real payments. c: T-2 repeats, and so does T-3. d: an INNER join keeps a row per matched pair, so an order with two matches comes out twice. |
-| 3 | b | The LEFT join keeps T-4 with NULL on the payment side, which reads as booked and never paid. | a: dropping T-4 is what the INNER join does. c: a NULL is no amount at all until COALESCE turns it into a zero. d: T-4 has no payment row to make a second row from. |
-| 4 | d | RIGHT keeps every payment row, and FULL keeps every row on both sides, so both show P-7. | a: LEFT keeps every order, and P-7 has no order. b: INNER keeps only matched pairs. c: FULL shows it, and RIGHT shows it too. |
+### Q1. How many rows does the INNER join return on these two tables?
+
+The key is c, "6, once per payment that finds its order". Every payment that finds its order makes one row: P-1 to P-6 find orders, and P-7 does not, so six rows.
+
+- a, "5, one row for each order in tiny_orders": counts orders, which is the grain of only one side.
+- b, "7, one row for each payment the feed posted": counts P-7, which has no order to join to.
+- d, "4, one row for each order that has a payment": counts the orders that were paid, and forgets that two of them repeat.
+
+### Q2. Which orders appear twice in the INNER join, and why?
+
+The key is a, "T-2 and T-3, since each has two payment rows". T-2 has two instalment rows and T-3 has two postings of one instalment, so both repeat in the join.
+
+- b, "T-3 only, since its payment was posted twice": T-3 repeats, and so does T-2, whose instalments are real payments.
+- c, "T-2 only, since it was paid in two instalments": T-2 repeats, and so does T-3.
+- d, "None, since an INNER join keeps each order once": an INNER join keeps a row per matched pair, so an order with two matches comes out twice.
+
+### Q3. What does the LEFT join show for T-4, the order nobody paid?
+
+The key is b, "One row with NULL in every payment column". The LEFT join keeps T-4 with NULL on the payment side, which reads as booked and never paid.
+
+- a, "Nothing, since T-4 has no payment to join to": dropping T-4 is what the INNER join does.
+- c, "One row with a paid amount of zero, already filled in": a NULL is no amount at all until COALESCE turns it into a zero.
+- d, "Two rows, one for the order and one for its payment": T-4 has no payment row to make a second row from.
+
+### Q4. Which of the four joins show payment P-7, the one the platform lead will ask about?
+
+The key is d, "RIGHT and FULL, which keep every payment row". RIGHT keeps every payment row, and FULL keeps every row on both sides, so both show P-7.
+
+- a, "LEFT, which keeps every row that has a key": LEFT keeps every order, and P-7 has no order.
+- b, "INNER, which keeps every payment it can read": INNER keeps only matched pairs.
+- c, "Only the FULL join, since P-7 matches nothing": FULL shows it, and RIGHT shows it too.
 
 ## Which part is worth arguing about?
 

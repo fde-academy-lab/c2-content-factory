@@ -15,6 +15,17 @@ TA-led practice lab or are worked tonight.
 leaves the team, Anand forwards it to the CEO, and you sign it. A check that cannot fail puts a PASS
 on a wrong number.
 
+**The questions on the way.**
+
+- Which plausibility checks fail report X?
+- Which of these checks stops report Y?
+- Which pair of checks stops report Z?
+- Which two checks would you keep if you could run only two?
+- What goes to Anand when the payments check fails late?
+- Which source makes a check Kalpa's own tables cannot pass alone?
+
+An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
+
 - **Plausibility checks** read the report alone: collected is at most booked, the gap is not
   negative, every channel is present.
 - **Tie-back checks** recompute a figure from one source table alone and compare it with the report:
@@ -65,10 +76,10 @@ Report Z passes the orders and booked checks. Which pair of checks stops it?
 
 a) orders against the table, and a gap that is not negative
 b) the gap against booked less collected, and collected at most booked on every channel
-c) the gap against the unpaid list, and collected plus twice against posted
+c) the gap against the unpaid list, and collected plus posted twice against posted
 d) booked against orders alone, and every channel present
 
-### Q4. Which two checks would you keep if you could run only two?
+### Q4. Which two checks would you keep if you could run only two? (Design)
 
 A new analyst can run only two checks late on reporting day. Which pair stops all three wrong reports, X, Y and Z?
 
@@ -77,7 +88,7 @@ b) collected at most booked, and a gap that is not negative
 c) the gap against booked less collected, and every channel present on the page
 d) booked against orders alone, and the gap against the unpaid list
 
-### Q5. What goes to Anand when the payments check fails late?
+### Q5. What goes to Anand when the payments check fails late? (Design)
 
 At the end of reporting day, "collected plus posted twice against posted from the payments table alone" fails for the first time. What goes to Anand that day?
 
@@ -86,7 +97,7 @@ b) booked, the open line naming the check, collected held
 c) nothing at all, until the platform lead repairs the feed
 d) last week's collected figure beside this week's booked
 
-### Q6. Which source makes a check Kalpa's own tables cannot pass alone?
+### Q6. Which source makes a check Kalpa's own tables cannot pass alone? (Design)
 
 Every check above reads Kalpa's own tables. Which source would give a check that those tables cannot pass by themselves?
 

@@ -14,6 +14,17 @@ tables below are invented for this set, so none of its numbers comes from the ch
 **Who needs the answer.** Anand's analyst audits the statement line by line, and you sign the
 collected number. A join that drops an unpaid order hides it from the collections team.
 
+**The questions on the way.**
+
+- How many rows does the INNER join return?
+- What does the LEFT join, orders first, add?
+- Which query answers the platform lead's question?
+- What is wrong with a statement that reads 116 percent collected?
+- How many rows will a FULL join return, from the key counts alone?
+- Which question is an INNER join the honest choice for?
+
+An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
+
 - **Booked** is every order at its amount. **Collected** is the cash that arrived, each payment counted
   once. **Posted** is every payment row the feed holds, repeats included.
 - The **grain** of a table is what one row stands for: one order in `orders`, one payment event in
@@ -68,7 +79,7 @@ b) A-7, and 6 rows
 c) A-4, and 5 rows
 d) no order, and 7 rows
 
-### Q3. Which query answers the platform lead's question?
+### Q3. Which query answers the platform lead's question? (Design)
 
 The data platform lead asks: "Is every payment row in the feed explained by an order we booked?" Which query answers him?
 
@@ -86,7 +97,7 @@ b) A-3's two instalments are one payment, counted twice here
 c) the cash is right, since customers may pay before booking
 d) A-7 is an order paid in advance, and it belongs on the statement
 
-### Q5. How many rows will a FULL join return, from the key counts alone?
+### Q5. How many rows will a FULL join return, from the key counts alone? (Design)
 
 Before running any join on a new pair of tables, you count keys. Order X appears once in `orders` and three times in `payments`. Order Y appears once in `orders` and never in `payments`. Key Z never appears in `orders` and twice in `payments`. How many rows does a FULL OUTER JOIN return for these three keys?
 
@@ -95,7 +106,7 @@ b) 5
 c) 6
 d) 7
 
-### Q6. Which question is an INNER join the honest choice for?
+### Q6. Which question is an INNER join the honest choice for? (Design)
 
 Each question below is asked of Kalpa's orders and payments. For which one is an INNER join the honest choice?
 
