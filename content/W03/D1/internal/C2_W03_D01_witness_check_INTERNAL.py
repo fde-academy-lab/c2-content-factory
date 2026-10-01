@@ -329,6 +329,67 @@ X["denial_postings_paying_nothing"] = sum(1 for p in postings if p["posting"] ==
                                           and float(p["paid_amount"]) == 0)
 X["paid_share_of_billed"] = W["paid_net_of_double_posts"] / W["billed_all"]
 
+# The dashboard's reading on raw rows, with the re-export's repeats still in, and the readings with
+# the employer contract left in.
+raw = {"Q2": 0, "Q3": 0}
+for r in legacy:
+    if r["channel"] != "employer":
+        raw[quarter(iso(r["booking_date"]))] += tests_on.get(r["booking_id"], 0)
+X["dashboard_raw_rows_Q2"], X["dashboard_raw_rows_Q3"] = raw["Q2"], raw["Q3"]
+X["dashboard_raw_rows_change"] = raw["Q3"] / raw["Q2"] - 1
+X["booked_change_with_contract"] = (W["booked_Q3"] + W["employer_tests"]) / W["booked_Q2"] - 1
+# The collection fee: claims that bill more than their booking lines, by exactly the fee.
+line_dollars = {}
+for t_ in lines:
+    if t_["line"] in ("test", "panel"):
+        line_dollars[t_["booking_id"]] = (line_dollars.get(t_["booking_id"], 0)
+                                          + float(t_["price_each"]) * int(t_["quantity"]))
+fee_claims = [c for c in claims if abs(dollars(c["billed_amount"]) - line_dollars.get(c["booking_id"], 0) - 20) < 1e-6]
+X["claims_with_a_20_dollar_fee_line"] = len(fee_claims)
+X["fee_dollars_Q2"] = 20 * sum(1 for c in fee_claims if quarter(iso(c["service_date"])) == "Q2")
+X["fee_dollars_Q3"] = 20 * sum(1 for c in fee_claims if quarter(iso(c["service_date"])) == "Q3")
+X["claim_lines_tests_or_panels"] = W["claim_lines_non_employer"] - len(fee_claims)
+home_bookings = {b["id"] for b in bookings if b["channel"] == "at-home" and b["done"]}
+fee_ids = {c["booking_id"] for c in fee_claims}
+X["home_claims_fee_waived"] = sum(1 for c in claims if c["booking_id"] in home_bookings
+                                  and c["booking_id"] not in fee_ids)
+took = {c["patient_id"]: c["offered_on"] for c in campaign if c["took_up"] == "Y"}
+used = {b["patient"] for b in bookings if b["channel"] == "at-home" and b["patient"] in took
+        and dt.date.fromisoformat(took[b["patient"]]) <= b["date"] <= hi}
+X["accepted_and_booked_home_in_window"] = len(used)
+X["accepted_without_home_booking_in_window"] = len(took) - len(used)
+# The decomposition of billed against paid.
+kept, seen_keys = [], set()
+for p_ in postings:
+    if p_["posting"] == "payment":
+        k_ = (p_["claim_ref"], p_["paid_amount"])
+        if k_ in seen_keys:
+            continue
+        seen_keys.add(k_)
+    kept.append(p_)
+X["gap_billed_less_paid"] = W["billed_all"] - W["paid_net_of_double_posts"]
+X["gap_contractual"] = sum(float(p_["adjustment_amount"]) for p_ in kept if p_["posting"] == "payment"
+                           and p_["reason_category"] == "contractual adjustment")
+X["gap_no_posting"] = sum(dollars(c["billed_amount"]) for c in claims if c["claim_id"] not in posted_at_all)
+denial_claims = {normalise(p_["claim_ref"]) for p_ in postings if p_["posting"] == "denial"}
+X["gap_denied"] = sum(dollars(c["billed_amount"]) for c in claims if c["claim_id"] in denial_claims)
+X["gap_patient_shares"] = sum(float(p_["patient_responsibility"]) for p_ in kept if p_["posting"] == "payment")
+X["gap_reversals"] = -sum(float(p_["paid_amount"]) for p_ in kept if p_["posting"] == "reversal")
+# The trap's wrong number on the no-show question: the chance check run on all visits.
+n_all, k_all, p_all = len(small_all), sum(1 for a in small_all if a["attended"] == "N"), W["others_rate_all_visits"]
+X["small_site_tail_probability_all_visits"] = sum(math.comb(n_all, j) * p_all ** j * (1 - p_all) ** (n_all - j)
+                                                  for j in range(k_all, n_all + 1))
+# The register against the booking system, which the files do not reconcile.
+X["small_site_q3_bookings_old_system"] = sum(1 for r in copies.values()
+                                             if r[0]["site_code"] == small and r[0]["booking_date"] >= "2026-07-01")
+X["small_site_q3_walk_in_bookings"] = sum(1 for r in copies.values() if r[0]["site_code"] == small
+                                          and r[0]["booking_date"] >= "2026-07-01" and r[0]["channel"] == "walk-in")
+X["bookings_at_laboratories"] = sum(1 for r in copies.values() if r[0]["site_code"].endswith("-01"))
+# New York, where Wednesday's parallel build slices.
+X["new_york_repeated_ids"] = sum(1 for v in repeated.values() if v[0]["metro"] == "New York")
+X["new_york_text_amounts"] = sum(1 for c in claims if c["metro"] == "New York" and not c["billed_amount"].isdigit())
+X["new_york_fee_claims"] = sum(1 for c in fee_claims if c["metro"] == "New York")
+
 DAY_SHEET = {
     "bookings_Chicago_change_old_export": -0.243, "bookings_Chicago_change_both": -0.130,
     "bookings_Philadelphia_change_old_export": -0.215, "bookings_Philadelphia_change_both": -0.112,
@@ -345,7 +406,16 @@ DAY_SHEET = {
     "gap_before_offer_Atlanta": -0.052, "gap_before_offer_Phoenix": -0.061,
     "new_york_permutation_p_two_sided": 0.03, "claims_marked_denied": 1175,
     "denied_claims_with_no_posting": 38, "denial_postings_paying_nothing": 1137,
-    "paid_share_of_billed": 0.364,
+    "paid_share_of_billed": 0.364, "dashboard_raw_rows_change": 0.032,
+    "booked_change_with_contract": 0.336, "claims_with_a_20_dollar_fee_line": 1102,
+    "fee_dollars_Q2": 11220, "fee_dollars_Q3": 10820, "claim_lines_tests_or_panels": 21050,
+    "home_claims_fee_waived": 321, "accepted_and_booked_home_in_window": 259,
+    "accepted_without_home_booking_in_window": 689, "gap_billed_less_paid": 1399785.44,
+    "gap_contractual": 883254.70, "gap_no_posting": 253165, "gap_denied": 222108,
+    "gap_patient_shares": 32594.87, "gap_reversals": 8662.87,
+    "small_site_tail_probability_all_visits": 0.013, "small_site_q3_bookings_old_system": 340,
+    "small_site_q3_walk_in_bookings": 142, "bookings_at_laboratories": 3747,
+    "new_york_repeated_ids": 33, "new_york_text_amounts": 6, "new_york_fee_claims": 219,
 }
 
 # The spine's figures, rounded as the spine prints them.
@@ -394,7 +464,7 @@ for key, value in X.items():
         print(f"      {key}: {shown}")
         continue
     tol = 0.0006 if isinstance(want, float) and abs(want) < 1 else 0.6
-    if key == "new_york_permutation_p_two_sided":
+    if key in ("new_york_permutation_p_two_sided", "small_site_tail_probability_all_visits"):
         tol = 0.006
     ok = abs(float(value) - want) <= tol
     fails += not ok

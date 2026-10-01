@@ -1,15 +1,15 @@
 # Which branch of Kalpa Health is short of the plan, and what should I tell the board?
 
-**From:** Dr Priya Menon, COO, Kalpa Health
-**To:** the data and AI team at Kalpa's Global Capability Centre (GCC), Bengaluru
-**Re:** Q3 test volumes, and five questions my heads cannot answer
-**With it:** ten data files, exported on Friday 16 October 2026
+- **From:** Dr Priya Menon, chief operating officer (COO) of Kalpa Health
+- **To:** the data and AI team at Kalpa's Global Capability Centre (GCC), Bengaluru
+- **Re:** Q3 test volumes, and five questions my heads cannot answer
+- **With it:** ten data files, exported on Friday 16 October 2026
 
 Kalpa Health, Kalpa Group and everyone in them are fictional. Every record in the files is
 synthetic, so no real patient's information is in them.
 
 > "My dashboard says test volumes grew 5 percent from Q2 to Q3. The plan the board approved asks for
-> 18. I do not need another dashboard. I need to know where the 13 points went, and what to do next."
+> 18. Which branch of my business is short, and what do I do next?"
 > Dr Priya Menon, COO, Kalpa Health
 
 **Who needs the answer.** I do, before I take the second half's plan to the board. If you name the
@@ -36,22 +36,23 @@ does my dashboard show, and against what?
 
 We run diagnostic laboratories and patient service centres in six US metro areas: Dallas, Phoenix,
 New York, Chicago, Atlanta and Philadelphia. A patient service centre is where a phlebotomist, the
-person trained to draw blood, takes a patient's sample; the laboratory runs the tests. Each metro
-has one laboratory and two patient service centres, so we have eighteen sites. A patient books one
+person trained to draw blood, takes patients' samples, and the laboratory runs the tests. Each metro
+has one laboratory and two patient service centres, so we have eighteen sites, and patients book at
+all eighteen. A patient books one
 or more tests, or a panel, which is several tests ordered under one name. They book by walking in,
 online, by phone, or for a collection at home, when a phlebotomist visits the patient instead.
 
 We bill in dollars. A claim is the bill we send to whoever pays for a patient's tests: a commercial
 health plan, Medicare (the federal programme for people aged 65 and over), Medicaid (each state's
 programme for people on low incomes) or the patient, who then pays for themselves (self-pay). A
-claim goes out at our list prices. The payer answers with a remittance, which says what its
+claim goes out at our list prices, with a collection fee when a phlebotomist draws the blood at home. The payer answers with a remittance, which says what its
 contract allows, what it pays, what the patient owes and what it refuses to pay, which is a denial.
 Our revenue-cycle and analytics work runs from the GCC in Bengaluru, and that is why these questions
 come to you.
 
-You will hear more of this vocabulary than this note carries. The domain dossier,
-`study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`, tells the business in full, and its
-one-page card is `cheatsheets/C2_W03_D01_us_healthcare_domain_card_STUDENT.pdf`.
+The domain dossier, `study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`, tells the business in
+full, with every word my heads use, and its one-page card is
+`cheatsheets/C2_W03_D01_us_healthcare_domain_card_STUDENT.pdf`.
 
 ### What do I mean by Q2 and Q3?
 
@@ -60,8 +61,9 @@ to September 2026. Every figure in this note and every file my team sent uses th
 
 ### What does my dashboard show, and against what?
 
-My dashboard shows test volumes up 5 percent from Q2 to Q3. The plan the board approved asks for 18
-percent, so I am 13 percentage points short. Every head I ask names a different cause and backs it
+My dashboard shows test volumes up 5 percent from Q2 to Q3. The plan the board approved asks for test
+volumes to grow 18 percent, so I am 13 percentage points short. By a branch I mean one of the parts
+my business splits into, such as a payer, a metro or a kind of test; a branch is never a single site. Every head I ask names a different cause and backs it
 with a different number, and nobody has yet shown me which cause the numbers support.
 
 Kalpa Health is a US laboratory business in six metros, paid in dollars by four kinds of payer, and

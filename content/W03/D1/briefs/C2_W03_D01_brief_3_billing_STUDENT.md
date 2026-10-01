@@ -1,8 +1,8 @@
 # Brief 3: Which claims are still unpaid, how many dollars is that, and can finance trust the figure?
 
-**For:** the group or groups allocated sub-problem 3
-**Client:** Dr Priya Menon, COO, Kalpa Health, and the finance head
-**Data:** the ten files in `data/`, exported on Friday 16 October 2026
+- **For:** the group or groups allocated sub-problem 3
+- **Client:** Dr Priya Menon, chief operating officer (COO) of Kalpa Health, and the finance head
+- **Data:** the ten files in `data/`, exported on Friday 16 October 2026
 
 Kalpa Health and everyone in it are fictional, and every record in the files is synthetic.
 
@@ -32,9 +32,9 @@ money your group can show arrived.
 **The questions on the way.** What business is Kalpa Health? What does Dr Menon see? Which five
 questions did her heads ask, and which one is yours? Which real company faces the same question?
 
-Kalpa Health runs a laboratory and two patient service centres, the places where a phlebotomist
-draws a patient's blood, in each of six US metro areas: Dallas, Phoenix, New York, Chicago, Atlanta
-and Philadelphia. It bills its patients' payers in dollars: commercial health plans, Medicare (the
+Kalpa Health runs a laboratory, which runs the tests, and two patient service centres, where a
+phlebotomist draws patients' blood, in each of six US metro areas: Dallas, Phoenix, New York,
+Chicago, Atlanta and Philadelphia. Patients book at all eighteen sites. It bills its patients' payers in dollars: commercial health plans, Medicare (the
 federal programme for people aged 65 and over), Medicaid (each state's programme for people on low
 incomes) and patients who pay for themselves (self-pay). Its revenue-cycle and analytics work runs
 from Kalpa's Global Capability Centre (GCC) in Bengaluru, where you work as trainee engineers in the
@@ -42,7 +42,9 @@ data and AI team. It reports in calendar quarters: Q2 is April to June 2026 and 
 September 2026.
 
 Its COO, Dr Priya Menon, has written to the team. Her dashboard shows test volumes up 5 percent from
-Q2 to Q3 against a plan of 18, and she cannot say which branch of the business is short. Five of her
+Q2 to Q3, against the board's plan of 18 percent growth in test volumes, and she cannot say which
+branch of the business is short: which of the parts it splits into, such as a payer, a metro or a
+kind of test. Five of her
 heads have each asked her a question, and each group takes one.
 
 | # | The question | Who asks |
@@ -61,7 +63,7 @@ finance head cannot say which claims make up the difference.
 Quest Diagnostics names "reducing denials and patient concessions" among its areas of focus, and
 reports its days sales outstanding, "a measure of billing and collection efficiency", at 48 days at
 the end of 2025 (Form 10-K for 2025). In India, firms such as AGS Health, with more than 15,000
-revenue-cycle professionals and centres in Chennai, Hyderabad and Bengaluru among other cities, sell
+revenue-cycle professionals worldwide and centres in Chennai, Hyderabad and Bengaluru among other cities, sell
 billing, coding and denial management to US hospitals and health systems (AGS Health, company page).
 
 ---
@@ -84,11 +86,11 @@ plan paid $56.16 and the patient owed $14.04.
 
 | Word | What it means at Kalpa Health | Where it lives in the files |
 |---|---|---|
-| Claim | The bill for one completed booking, sent to its payer at list price | `claims` |
+| Claim | The bill for one completed booking, sent to its payer at list prices, with a collection fee where a phlebotomist drew the blood at home | `claims` |
 | Remittance | The payer's answer to a claim: what it allows, pays and refuses, and what the patient owes; a remittance that arrives as an electronic file is an ERA | `remittances` |
 | Posting | One row the posting system records against a claim: money received, a denial, or money taken back | `remittances.posting` |
 | Allowed amount | What the payer's contract permits for the claim, its share and the patient's together | `remittances.allowed_amount` |
-| Contractual adjustment | The bill less the allowed amount, written off under the contract and never owed | `remittances.adjustment_amount` with group `CO` |
+| Contractual adjustment | The bill less the allowed amount, written off under the contract and never owed | `remittances.adjustment_amount`, with group `CO`, a contractual obligation |
 | Patient responsibility | What the patient owes, such as coinsurance, a share of the allowed amount | `remittances.patient_responsibility` |
 | Denial | A payer's decision, after processing, not to pay a claim; it carries one of seven reason categories | `remittances.posting`, `claims.denial_category` |
 | Reversal | A posting that takes money back from an earlier payment | `remittances.posting` |
@@ -141,7 +143,7 @@ checked number.
 | Way | What the group does | Rows it touches | Hours | What it can get wrong | The Week 1 or 2 move it needs |
 |---|---|---|---|---|---|
 | A. Compare the two totals | Sets billed dollars on the claims against paid dollars in the postings, quarter by quarter | 11,356 claims and 11,343 postings | About 1 | The gap mixes dollars the contracts never meant to pay with dollars still owed, and it names no claim | Week 1 Wednesday: the bridge that names every dollar between two totals |
-| B. Match every posting to its claim, then classify every claim | Attaches postings to claims, counts what matched before any sum, then labels each claim paid, part paid, denied or with no posting | 11,356 claims and 11,343 postings | About 6 | Is only as right as the match: a join that drops rows it cannot match, or counts a claim twice, moves the unpaid figure, and the move stays invisible until the rows are counted before and after | Week 2 Tuesday: attach, count, explain the difference, then sum; Week 1 Wednesday: reconcile |
+| B. Match every posting to its claim, then classify every claim | Attaches postings to claims, counts what matched before any sum, then labels each claim paid, part paid, denied or with no posting | 11,356 claims and 11,343 postings | About 6 | Is only as right as the match, and a match nobody counted before and after can be wrong in either direction without a warning | Week 2 Tuesday: attach, count, explain the difference, then sum; Week 1 Wednesday: reconcile |
 | C. Reconcile payer by payer first | Totals billed, allowed and paid for each payer and quarter, then matches claim by claim only where a payer's figures do not add up | 11,356 claims and 11,343 postings | About 4 | A payer can balance in total while single claims inside it are wrong, so unpaid claims can hide inside a payer that looks clean | Week 2 Thursday: grouping; Week 2 Friday: the pivot, before Week 2 Tuesday's join |
 | D. Trace a sample of claims by hand | Picks 50 claims at random and follows each one through the posting system | 50 claims, looked up in 11,343 postings | About 2 | Gives a feel for how the two files relate and an estimate with a margin, never the list of unpaid claims finance needs | Week 1 Wednesday: profile before you touch; Week 1 Thursday: how far a sample can be off |
 
@@ -154,8 +156,10 @@ a second way to the same number, so the call needs two of these ways.
 
 ## What will the panel ask, and what does a finished answer look like?
 
-**Who needs the answer.** Every member, since the panel may put any question to anyone. A group that
-knows only its own slice of the work loses marks one learner at a time.
+**Who needs the answer.** Every member. The panel, the industry expert who hears Friday's
+presentations, joined on Saturday by a senior industry leader, may put any question to anyone, and
+presentation and defence is scored for each learner, so a member who knows only one slice of the
+work loses those marks alone.
 
 **The questions on the way.** Which questions will the panel ask? What earns full marks on each
 criterion of the mini project, for this question?
@@ -166,7 +170,7 @@ The panel reads your one-slide answer, then asks questions like these. Every mem
 to answer each one from your own work.
 
 1. How many claims are paid, part paid, denied and unpaid, and how many dollars does each class hold?
-2. How did you match a posting to its claim, and how many postings matched?
+2. How did you match a posting to its claim, and how do you know the match is right?
 3. Where did every posting row go? Show rows in against rows matched, set aside and unexplained.
 4. Which collections figure should the finance head report, and which caveat travels with it?
 5. What would you ask the data team to change at the source, so the next close is easier?
@@ -202,10 +206,8 @@ The rubric the panel scores against, as approved:
 **Who needs the answer.** Your group, today, so that nothing is built on Friday that should have
 started on Monday.
 
-**The questions on the way.** What does every group ship? When is each piece seen? What happens if
-the live demo fails? How are the mock and the group discussion scored?
-
-### What does every group ship, and when is each piece seen?
+**The questions on the way.** What does every group ship, and when is each piece seen? What happens
+if the live demo fails? When are the mock interview and the group discussion, and what is each worth?
 
 | What | What it holds | When it is seen |
 |---|---|---|
@@ -225,11 +227,12 @@ your executed notebook, and the panel scores the live demo, inside presentation 
 run cold. The other 34 marks are scored from the executed run, so a failed demo costs its own marks
 and never the analysis.
 
-### How are the mock interview and the group discussion scored?
+### When are the mock interview and the group discussion, and what is each worth?
 
-The mock interview (30 marks) and the group discussion (30 marks) are scored apart from the project:
-Mock R1 runs for every learner on Thursday 22 October, and the group discussion rounds run on Friday
-23 October and close on the morning of Saturday 24 October. The briefing note,
+Both are scored for each learner alone, apart from the project. Mock R1, the first round of mock
+interviews, is worth 30 marks and runs for every learner on Thursday 22 October: a technical half on
+Weeks 1 and 2, and a viva, a spoken defence of your group's work. The group discussion is worth 30
+marks; its rounds run on Friday 23 October and close on the morning of Saturday 24 October. The briefing note,
 `briefs/C2_W03_D01_briefing_note_STUDENT.md`, carries their rubrics. Nothing new is taught this week:
 everything the build needs is in your Weeks 1 and 2 notes, and a question about the domain, such as
 what a phlebotomist does, is always fair to ask a trainer or a TA.

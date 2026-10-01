@@ -10,9 +10,8 @@ today, so the day carries the domain's story. The Programme Head introduces the 
 for 60 minutes from the introduction deck. The trainer then tells the US healthcare story for 45
 minutes, before the allocation, so that groups choose knowing the domain. The Programme Head
 allocates the five questions in 30 minutes, and each group translates its question into the Weeks 1
-and 2 method in its own words until the 15-minute close. Nothing new is taught this week. The spine,
-`docs/detailing/W03_build1_spine.md`, approved on 29 September 2026, is this day's gate, so the pack
-was built from it without a spine of its own.
+and 2 method in its own words until the 15-minute close. Nothing new is taught this week. The approved spine,
+`docs/detailing/W03_build1_spine.md`, sets the day.
 
 ## Which questions does the room climb on Monday, in the order you ask them?
 
@@ -20,7 +19,7 @@ Dr Menon's question is the week's: **which branch of Kalpa Health is short of th
 should she do?** In full: her dashboard shows test volumes up 5 percent from Q2 to Q3 against a plan
 of 18, and she wants to know where the 13 points went before she takes the second half's plan to the
 board. Monday's question, in the room's words, is **which part of Dr Menon's question will each
-group answer, and with which move it already owns?** Ask each question below before its answer
+group answer, and which move from Weeks 1 and 2 will it answer with?** Ask each question below before its answer
 reaches the screen, take one or two answers in the chat or the room, then show it.
 
 ### 1. What has Dr Menon seen, what are her heads asking, and why is it Meera's question again?
@@ -41,7 +40,7 @@ answers a question nobody asked, and Dr Menon carries its number to her board.
 
 ### 2. How does a US laboratory make its money, who pays it, and what may its data team touch?
 
-Deck section 2, S7 to S9 live for about 5 minutes, D10 to D14 for self-study; then the trainer's
+Deck section 2, S7 to S9 live for about 5 minutes, D10 to D14 with D13a for self-study; then the trainer's
 story, 45 minutes, from `trainer/C2_W03_D01_domain_story_TRAINER.md`.
 
 **Who needs the answer.** Every group, before it chooses a question: nobody in the room has worked in
@@ -75,7 +74,7 @@ group on work it cannot defend on Thursday.
 | 4 | What does the operations head ask about KH-ATL-03? | Whether the centre is really worse at no-shows; 7,133 visits at twelve centres. |
 | 5 | What does the marketing head ask about the offer? | Whether the at-home offer caused 9 percent more bookings; 2,381 offers against every booking. |
 
-### 4. Which moves from Weeks 1 and 2 could answer each question, and why does the week teach nothing new?
+### 4. Which moves from Weeks 1 and 2 do you own, why does the week teach nothing new, and who decides which move answers each question?
 
 Deck section 4, S26, S27, S33 and S34 live for about 7 minutes, D28 to D32 for self-study.
 
@@ -86,7 +85,7 @@ criterion scores at 8 of 40 marks.
 
 | | Ask the room | Show once the room has answered |
 |---|---|---|
-| 1 | Which moves do you own from Weeks 1 and 2? | Ten, on S27: the tree, the ladder, profile and reconcile, real or noise and cause or coincidence, the note; the tree as SQL, joins, windows, one row per entity, the pivot. |
+| 1 | Which moves do you own from Weeks 1 and 2? | Every one, on S27: the tree, the ladder, profile and reconcile, real or noise and cause or coincidence, the note; the tree as SQL, joins, windows, one row per entity, the pivot. |
 | 2 | Which of these did you find hardest? | Hear two answers; the slide answers nothing about fit. |
 | 3 | Why does the week teach nothing new? | The domain is what is new; a domain question is always answered, and a method question gets a question back. |
 | 4 | Who decides which move fits which question? | Each group, in Parts 1 and 2 of its worksheet; nobody in the room names a mapping. |
@@ -172,9 +171,8 @@ Wednesday's close.
 
 ## How do block one's 180 minutes run, and which slides carry each part?
 
-The story's 45 minutes come from block one's translation block. The first wave ran that block at 90
-minutes; it now runs at 35, and 10 of the minutes it gave up are a break after 105 minutes of
-listening.
+The story's 45 minutes come from block one's translation block, which drops from 90 minutes to 35;
+10 of the minutes it gives up are a break after 105 minutes of listening.
 
 ```mermaid
 flowchart LR
@@ -272,7 +270,7 @@ chooses on the day, and this sheet gives both ways.
 | **Shape** | Three questions with three groups each; two briefs spare | Four questions with two groups each, and one with a single group |
 | **Keeps** | The tracker's three groups per sub-problem, so Saturday's panel hears three answers to one question back to back | The tracker's five sub-problems, so every one of Dr Menon's five questions gets an answer on Saturday |
 | **Gives up** | Two of Dr Menon's questions go unanswered, so her board answer is partial | Trios become pairs, and one group has no counterpart to be compared with |
-| **Wednesday's parallel build** | The trainer's smaller slice is New York's revenue tree, a metro where neither the employer contract nor the booking-system switch sits, so it shows the revenue method without handing any group its finding; under A it sits beside the three revenue groups | The same slice and the same limit, beside the two revenue groups |
+| **Wednesday's parallel build** | The trainer's smaller slice is New York's revenue tree. New York holds neither the employer contract nor the booking-system switch, but it holds 33 of the 180 repeated booking ids, 6 of the 60 text amounts and 219 of the 1,102 collection-fee lines, so the slice meets cleaning calls the revenue and bookings groups also meet; under A it sits beside three revenue groups | The same slice and the same cleaning calls, beside two revenue groups |
 | **Thursday's viva** | Viva prompts for three questions | Viva prompts for five |
 | **Which questions** | 1 revenue, 3 billing and 5 campaign, with 2 and 4 spare | All five, with the group of three on question 4, no-shows, whose files are the smallest |
 
@@ -295,10 +293,10 @@ the floor and is never read out, shown or paraphrased to a group.
 | 4 no-shows | The fair comparison with the chance reference (Week 1 Thursday) | No-show for cancellation; a scheduled visit against a walk-in, who cannot miss a slot; a centre for a store | Count visits per centre by kind; compute the rate on scheduled visits only; ask whether chance produces the gap on this many visits | Ranks the centres and debates receptionists |
 | 5 campaign | The fair comparison (Week 1 Thursday's discount: did it work?) | At-home collection for the discount; offered and not offered for exposed and control; a metro for a segment; bookings per patient for revenue per customer | Count who was offered, by metro, as a share of each metro's patients; bookings per patient in the offer's weeks, offered against not, overall and within each metro; the campaign metros' trend in the weeks before the offer | Recomputes the 9 percent and calls it confirmed |
 
-**The tell of a group waiting to be told, on any question.** It asks "which method?" It copies its
-brief's ways or the panel's questions as its plan without choosing. Its vocabulary map holds only
-the three seeded pairs. Its first move is "clean the data". Its one sentence restates the
-stakeholder's question word for word.
+**The tell of a group waiting to be told, on any question.** It asks "which method?", copies its
+brief's ways or the panel's questions as its plan without choosing, keeps only the three seeded
+pairs in its vocabulary map, writes "clean the data" as its first move, and restates the
+stakeholder's question word for word as its one sentence.
 
 ## What is planted in each brief's files, and what do you do if nobody finds it?
 
@@ -309,16 +307,18 @@ plant. Percentages are changes from Q2 to Q3 unless the row says otherwise.
 
 | Question | What is planted | The numbers | The file that shows it | Where it surfaces | If nobody finds it by Wednesday's checkpoint |
 |---|---|---|---|---|---|
-| The headline, every group | Dr Menon's 5 percent is her dashboard's count: tests booked in the old booking system only, a panel counted as its component tests | Dashboard 23,213 to 24,406 tests, 5.1 percent. Tests booked across both systems 23,213 to 25,022, 7.8 percent. Tests performed 22,468 to 24,399, 8.6 percent. Bookings 5,692 to 6,009, 5.6 percent. All without the employer contract, whose 1,200 wellness screenings of 5 tests each add 6,000 tests to Q3. Every reading is short of 18 | `bookings_legacy`, `bookings_newsys`, `booking_tests` | Any group that defines one test and counts both systems; questions 1 and 2 first | "What did the dashboard count as one test, and from which system?" |
-| 1 revenue | One employer wellness contract in Q3, and panels billed as one claim line | Claim KH-CLM-007802, account EMP-0007, Dallas, 6 August, $180,000 for 1,200 screenings: 14.6 percent of Q3 billed charges of $1,231,001. Billed charges grow 26.9 percent from Q2's $970,098 with it, ahead of the plan, and 8.3 percent without it. The Q3 mean claim is $210.50 with it and $179.75 without; the median is $150 in both quarters, and Q2's mean is $176.13. 22,152 claim lines bill 46,867 tests on the completed bookings behind them (48,235 counting cancelled bookings, which `booking_tests` also lists). 60 billed amounts are text with a dollar sign, such as "$265.00" | `claims`, `booking_tests`, `test_catalogue` | Sorting claims by amount; setting the median beside the mean; counting tests against claim lines; converting the amount column | "Which one claim moves your Q3 average most?" Then: "What does one claim line count?" |
-| 2 bookings | Chicago and Philadelphia moved to the new booking system on 18 September, and the old system's export carries only its own bookings; the old export repeats rows from a mid-quarter re-export; the new system writes dates month first | The two metros fall 23.0 percent in the old export (1,415 to 1,090 bookings) and 12.2 percent across both systems (1,415 to 1,243): Chicago 754 to 571 in the old export, minus 24.3 percent, and 656 in truth, minus 13.0; Philadelphia 661 to 519, minus 21.5, and 587, minus 11.2. The other four metros grow: Dallas 7.7, Phoenix 13.0, New York 6.8 and Atlanta 21.2 percent. The old export holds 11,729 rows over 11,549 booking ids: 180 ids twice, booked 1 June to 26 September, 30 of the pairs differing in `updated_at` and 6 in `channel`. The new system holds 153 bookings, dated `09/18/2026` to `09/30/2026` | `bookings_legacy`, `bookings_newsys`, `sites` | Rung 1, confirming the fall in every system; a distinct count of `booking_id`; the sites' `new_system_code` | "How many rows, and how many distinct booking ids?" Then: "Where are Chicago's bookings after mid-September?" |
-| 3 billing | The posting system keys claims as bare digits or CLM-numbers; duplicate ERA loads double-post; the employer claim is unpaid; denials post with nothing paid | An exact join on `claim_ref` matches 216 of 11,343 postings, 1.9 percent: 216 carry the claim id, 2,269 a CLM-number and 8,858 bare digits. Normalised to the six-digit serial, every posting matches. 280 double posts, the same claim and amount paid twice, worth $19,204.63; 105 reversals. The claims file marks 1,175 of the 11,355 retail claims denied, 10.4 percent (Medicaid 14.9, commercial 11.3, Medicare 8.8, self-pay none), billing $230,132; 1,137 of them carry a denial posting that pays $0.00, and the other 38 have no posting at all. 398 claims have no posting, the $180,000 employer claim among them, spread across all six months. Paid net of the double posts is $801,314 against $2,201,099 billed, 36.4 percent, since payers allow a contracted share of list price | `claims`, `remittances` | Profiling the shapes of `claim_ref` before joining; counting postings per claim | "Show me five `claim_ref` values beside five `claim_id` values." |
-| 4 no-shows | KH-ATL-03 runs by appointment, while the other centres' visit counts include walk-ins, who cannot miss a slot | KH-ATL-03: 52 visits, 50 scheduled and 2 walk-in. On all visits 19.2 percent against 8.7 percent for the other eleven centres, the next worst at 9.6. On scheduled visits 20.0 percent (10 of 50) against 15.2 percent, the next worst at 16.8. A gap that size or larger arises by chance with probability 0.22 (binomial, 50 visits at 15.2 percent) | `appointments` | Splitting visits by `kind`; asking what the rate is out of | "What is the rate out of, for KH-ATL-03 and for the others?" Then: "Could chance do it on 50 visits?" |
-| 5 campaign | The offer went at random to half the patients in three metros already rising, Dallas, Atlanta and Phoenix, and to a fifth of the patients elsewhere; inside the three metros an offered patient booked less while the offer ran | 2,381 patients offered, 948 took it up. Offered patients book 9.0 percent more than the rest over 15 July to 14 September, and less in every campaign metro: Dallas minus 10.8, Atlanta minus 19.9, Phoenix minus 13.0 percent. The offer reached 50.5 percent of the three metros' patients against 21.4 percent elsewhere. Before the offer the two groups booked within about 6 percent of each other (Dallas plus 1.4, Atlanta minus 5.2, Phoenix minus 6.1), so nothing in the files shows a targeted patient. The campaign metros rose 6.9 percent in the two months before the offer. Outside them the gaps are chance: Chicago minus 4.8, Philadelphia plus 0.6, and New York plus 23.5 percent, a random draw that a permutation test puts at p of 0.03 (two-sided, 10,000 shuffles), so a group that finds it has met a false positive | `campaign`, `patients`, `bookings_legacy`, `bookings_newsys` | Splitting the comparison by metro; counting who was offered where | "Does the lift hold inside Dallas alone?" Then: "What share of each metro's patients got the offer?" |
+| The headline, every group | Dr Menon's 5 percent is her dashboard's count: tests booked in the old booking system only, a panel counted as its component tests | Dashboard 23,213 to 24,406 tests, 5.1 percent, on one row per booking id (on raw rows, with the re-export's repeats still in, the same reading is 23,788 to 24,556, 3.2 percent). Tests booked across both systems 23,213 to 25,022, 7.8 percent. Tests performed 22,468 to 24,399, 8.6 percent. Bookings 5,692 to 6,009, 5.6 percent. All without the employer contract, whose 1,200 wellness screenings of 5 tests each add 6,000 tests to Q3; every reading without it is short of 18, and with it tests booked grow 33.6 percent | `bookings_legacy`, `bookings_newsys`, `booking_tests` | Any group that defines one test and counts both systems; questions 1 and 2 first | "What did the dashboard count as one test, and from which system?" |
+| 1 revenue | One employer wellness contract in Q3, and panels billed as one claim line | Claim KH-CLM-007802, account EMP-0007, Dallas, 6 August, $180,000 for 1,200 screenings: 14.6 percent of Q3 billed charges of $1,231,001. Billed charges grow 26.9 percent from Q2's $970,098 with it, ahead of the plan, and 8.3 percent without it. The Q3 mean claim is $210.50 with it and $179.75 without; the median is $150 in both quarters, and Q2's mean is $176.13. 22,152 claim lines, 21,050 of them tests or panels and 1,102 a $20 collection fee for a home draw, bill 46,867 tests on the completed bookings behind them (48,235 counting cancelled bookings, which `booking_tests` also lists). 60 billed amounts are text with a dollar sign, such as "$265.00" | `claims`, `booking_tests`, `test_catalogue` | Sorting claims by amount; setting the median beside the mean; counting tests against claim lines; converting the amount column | "Which one claim moves your Q3 average most?" Then: "What does one claim line count?" |
+| 2 bookings | Chicago and Philadelphia moved to the new booking system on 18 September, and the old system's export carries only its own bookings; the old export repeats rows from a mid-quarter re-export; the new system writes dates month first | On one row per booking id, the two metros fall 23.0 percent in the old export (1,415 to 1,090 bookings) and 12.2 percent across both systems (1,415 to 1,243): Chicago 754 to 571 in the old export, minus 24.3 percent, and 656 in truth, minus 13.0; Philadelphia 661 to 519, minus 21.5, and 587, minus 11.2. The other four metros' retail bookings grow: Dallas 7.7, Phoenix 13.0, New York 6.8 and Atlanta 21.2 percent. The old export holds 11,729 rows over 11,549 booking ids: 180 ids twice, booked 1 June to 26 September, 30 of the pairs differing in `updated_at` and 6 in `channel`. The new system holds 153 bookings, dated `09/18/2026` to `09/30/2026` | `bookings_legacy`, `bookings_newsys`, `sites` | Rung 1, confirming the fall in every system; a distinct count of `booking_id`; the sites' `new_system_code` | "How many rows, and how many distinct booking ids?" Then: "Where are Chicago's bookings after mid-September?" |
+| 3 billing | The posting system keys claims as bare digits or CLM-numbers; duplicate ERA loads double-post; the employer claim is unpaid; denials post with nothing paid | An exact join on `claim_ref` matches 216 of 11,343 postings, 1.9 percent: 216 carry the claim id, 2,269 a CLM-number and 8,858 bare digits. Normalised to the six-digit serial, every posting matches. 280 double posts, the same claim and amount paid twice, worth $19,204.63; 105 reversals. The claims file marks 1,175 of the 11,355 retail claims denied, 10.4 percent (Medicaid 14.9, commercial 11.3, Medicare 8.8, self-pay none), billing $230,132; 1,137 of them carry a denial posting that pays $0.00, and the other 38 have no posting at all. 398 claims have no posting, the $180,000 employer claim among them, spread across all six months. Paid net of the double posts is $801,314 against $2,201,099 billed, 36.4 percent. The $1,399,785 between them is $883,255 of contractual adjustments, $253,165 billed on claims with no posting, $222,108 billed on claims denied with a posting, $32,595 of patient shares and $8,663 of reversals | `claims`, `remittances` | Profiling the shapes of `claim_ref` before joining; counting postings per claim | "Show me five `claim_ref` values beside five `claim_id` values." |
+| 4 no-shows | KH-ATL-03 runs by appointment, while the other centres' visit counts include walk-ins, who cannot miss a slot | KH-ATL-03: 52 visits, 50 scheduled and 2 walk-in. On all visits 19.2 percent against 8.7 percent for the other eleven centres, the next worst at 9.6. On scheduled visits 20.0 percent (10 of 50) against 15.2 percent, the next worst at 16.8. A gap that size or larger arises by chance with probability 0.22 (binomial, 50 visits at 15.2 percent). The plausible wrong answer runs the same check on all visits, 52 at 8.7 percent, and gets 0.013, which reads as real | `appointments` | Splitting visits by `kind`; asking what the rate is out of | "What is the rate out of, for KH-ATL-03 and for the others?" Then: "Could chance do it on 50 visits?" |
+| 5 campaign | The offer went at random to half the patients in three metros already rising, Dallas, Atlanta and Phoenix, and to a fifth of the patients elsewhere; inside the three metros an offered patient booked less while the offer ran | 2,381 patients offered and 948 accepted, of whom 259 booked a collection at home between their offer and 14 September, against 321 fee-waived home collections on the claims. Offered patients book 9.0 percent more than the rest over 15 July to 14 September, and less in every campaign metro: Dallas minus 10.8, Atlanta minus 19.9, Phoenix minus 13.0 percent. The offer reached 50.5 percent of the three metros' patients against 21.4 percent elsewhere. Before the offer the two groups booked within about 6 percent of each other (Dallas plus 1.4, Atlanta minus 5.2, Phoenix minus 6.1), so nothing in the files shows a targeted patient. The campaign metros rose 6.9 percent in the two months before the offer. Outside them the gaps are chance: Chicago minus 4.8, Philadelphia plus 0.6, and New York plus 23.5 percent, a random draw that a permutation test puts at p of 0.03 (two-sided, 10,000 shuffles), so a group that finds it has met a false positive | `campaign`, `patients`, `bookings_legacy`, `bookings_newsys` | Splitting the comparison by metro; counting who was offered where | "Does the lift hold inside Dallas alone?" Then: "What share of each metro's patients got the offer?" |
 
 **Profiling will also find** 180 rows in `bookings_legacy` with no `channel`, 6 of them on repeated
-ids, and the one employer booking, whose channel is `employer`. Neither empty channels nor that
-channel is a spine plant beyond the contract itself; both belong in the decisions log with a reason.
+ids; the one employer booking, whose channel is `employer`; and the $20 collection fee for a home
+draw on 1,102 claims, which no row of the price list carries, $11,220 in Q2 and $10,820 in Q3. None of
+these is a spine plant beyond the contract itself, and each belongs in the decisions log with a
+reason.
 
 **If a group finds a plant on Monday.** Do not confirm it, praise it to the room or let it be
 announced. Say: "Write it in the challenges log as a hypothesis, with the count you saw, and say what
@@ -327,6 +327,18 @@ would settle it on Wednesday." Another group finding it for itself is the lesson
 **The payer mix, which is no plant.** Of the 11,355 retail claims, 53.9 percent bill commercial plans,
 23.9 percent Medicare, 14.5 percent Medicaid and 7.7 percent self-pay patients. Every list price and
 allowed share is synthetic.
+
+## Which data defects does the pack carry, and what do you say if a group finds one?
+
+The rigor review of 1 October 2026 found three places where the files contradict what a file or the
+plant says. The data pack belongs to the orchestrating session, which has been asked to regenerate
+the first; until it does, answer as below and invent no cause.
+
+| What a group may find | The numbers | What you say |
+|---|---|---|
+| The visit register and the booking system disagree at every centre, and KH-ATL-03 most of all | KH-ATL-03 takes 340 Q3 bookings in the old system, 142 of them walk-ins, while its register holds 52 visits; 3,747 of the 11,549 bookings are taken at the laboratories | "The two systems disagree, and the files do not say why. Write it in the decisions log, say which file your rate rests on, and carry the disagreement as a caveat." |
+| `took_up` means the patient accepted the offer | 948 accepted; 259 of them booked a home collection between their offer and 14 September, and 689 did not | The dictionary now says accepted. A group that counts use goes to the bookings or to the fee-waived claims. |
+| Claims carry a collection fee the price list does not | 1,102 claims carry a $20 fee line for a home draw, $22,040 in all | The dictionary now says claims bill list prices plus any collection fee; the amount is the group's to find. |
 
 ## Which real companies does the deck name, and which dated source backs each?
 
@@ -343,29 +355,34 @@ September 2026.
 
 ## How does each interview question sound when answered in one breath?
 
-The questions appear in the deck with their tags. The answers live here and are never copied into the
-curriculum row.
+The deck shows both questions with their tags and no answer, and the answers below are never copied
+into the curriculum row.
 
 **[S] You have joined a healthcare company; how would you apply what you did in retail to our data?**
 "I start from the stakeholder's question and open the data after it: I restate the number they quote and the
 decision it feeds, then map their words onto what I know, a booking as an order and a test as an
 item, and I write down where the map breaks, such as a payer who stands between the lab and its
-money, or an allowed amount the contract sets below the list price. Then the method is the same: a tree
-to find the short branch, every fall confirmed in every system before it is explained, profile and
-reconcile with a decisions log, and any comparison of two groups checked for chance and for fairness."
-The example that lands, once Saturday is over: on the Kalpa Health files the same quarter's growth
-reads 5.1, 5.6, 7.8 or 8.6 percent depending on what is counted and from which system, and every reading is short of the
-plan. What loses the interviewer: "I would first learn the domain," or a list of tools.
+money, or an allowed amount the contract sets below the list price. Before I touch a row I ask what I
+may see: the minimum necessary data, under the business associate agreement, de-identified wherever
+the work allows. Then the method is the same: a tree to find the short branch, every fall confirmed
+in every system before it is explained, profile and reconcile with a decisions log, and any
+comparison of two groups checked for chance and for fairness." The example that lands, once Saturday
+is over: on the Kalpa Health files the same quarter's growth reads 5.1, 5.6, 7.8 or 8.6 percent
+depending on what is counted and from which system, and every reading without the employer contract
+is short of the plan. What loses the interviewer: weeks spent learning the domain before the question
+is touched, or a list of tools.
 
 **[F] What changes when the cost of an error is a missed diagnosis rather than a missed sale?**
-"The errors stop being symmetric. In retail a false alarm and a missed signal both cost money, in
-proportion; in health care a wrong reassurance costs a patient. So I raise the bar of evidence before
-any action that reduces care, such as closing a centre or ending an offer that brings patients in,
-and I prefer actions that can be reversed; I report uncertainty with the base each rate rests on,
-because a rate on a few dozen visits is not a rate on thousands; and I treat every dropped row as a patient, so
-the decisions log matters more." The sharp addition: not every Kalpa Health question carries
-clinical risk; revenue and billing do not directly, while no-shows and home collection do, and a
-strong candidate says which is which.
+"In retail every error costs money that can be weighed against other money, a stockout against
+overstock. In healthcare one kind of error is harm to a patient, which no dollar offsets and which
+often cannot be undone. So I raise the bar of evidence before any action that reduces care, such as
+closing a centre or ending an offer that brings patients in, and I prefer actions that can be
+reversed; I report uncertainty with the base each rate rests on, because a rate on a few dozen
+visits is not a rate on thousands; and I treat every dropped row as a patient, so the decisions log
+matters more." The sharp addition: not every Kalpa Health question carries
+clinical risk. Revenue and billing carry compliance exposure on government payers and the cost of a
+wrong bill to a patient, while no-shows and home collection carry clinical risk, and a strong
+candidate says which is which.
 
 ## What do you do when the day goes wrong?
 

@@ -1,8 +1,8 @@
 # Translation worksheet: how does Dr Menon's question map onto the method you already own?
 
 Copy this file into your group's repository as `translation.md` and fill it in together, in your own
-words. Nobody will hand you the mapping from Kalpa Health to Weeks 1 and 2: making it is Monday's
-work, and a group that makes it has done the move this week exists to train.
+words. Nobody will hand you the mapping from your question to a Weeks 1 and 2 move: making it is Monday's
+work.
 
 **Group:** ______ **Sub-problem:** ______ **Members:** ______
 
@@ -25,14 +25,15 @@ stakeholder's exact words, so the words are on this page.
 
 **The questions on the way.** What is Kalpa Health? What does Dr Menon see? Which question is yours?
 
-Kalpa Health, a fictional unit of Kalpa Group, runs a laboratory and two patient service centres,
-where a phlebotomist draws patients' blood, in each of six US metro areas: Dallas, Phoenix, New York,
-Chicago, Atlanta and Philadelphia. It bills its patients' payers in dollars: commercial health plans,
+Kalpa Health, a fictional unit of Kalpa Group, runs a laboratory, which runs the tests, and two
+patient service centres, where a phlebotomist draws patients' blood, in each of six US metro areas:
+Dallas, Phoenix, New York, Chicago, Atlanta and Philadelphia; patients book at all eighteen sites. It bills its patients' payers in dollars: commercial health plans,
 Medicare, Medicaid and patients who pay for themselves. Its analytics and revenue-cycle work runs
 from Kalpa's GCC in Bengaluru, where you are trainee engineers. Q2 is April to June 2026 and Q3 is
-July to September 2026. The COO, Dr Priya Menon, writes: "My dashboard says test volumes grew 5
-percent from Q2 to Q3. The plan the board approved asks for 18. I need to know where the 13 points
-went, and what to do next."
+July to September 2026. The chief operating officer (COO), Dr Priya Menon, writes: "My dashboard says test
+volumes grew 5 percent from Q2 to Q3. The plan the board approved asks for 18. Which branch of my
+business is short, and what do I do next?" By a branch she means one of the parts the business splits
+into, such as a payer, a metro or a kind of test.
 
 | # | Who asks | Their words |
 |---|---|---|
@@ -143,9 +144,9 @@ data dictionary, and fill the last two columns of every row.
 | | | | |
 | | | | |
 
-A pair that behaves the same in both businesses is useful. A pair that behaves differently is where
-the week's surprises live, so write the difference down, and give any Kalpa Health word with no twin a
-row of its own with "none" in the first column.
+Write down how each pair differs, since a word that behaves differently here is the one most likely
+to be counted wrong, and give any Kalpa Health word with no twin a row of its own with "none" in the
+first column.
 
 ---
 

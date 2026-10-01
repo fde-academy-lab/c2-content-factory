@@ -1,8 +1,8 @@
-# Brief 5: Did the free at-home collection offer cause 9 percent more bookings, or would those patients have booked anyway?
+# Brief 5: Did the free at-home collection offer lift bookings 9 percent, and should every patient in all six metros get it?
 
-**For:** the group or groups allocated sub-problem 5
-**Client:** Dr Priya Menon, COO, Kalpa Health, and the marketing head
-**Data:** the ten files in `data/`, exported on Friday 16 October 2026
+- **For:** the group or groups allocated sub-problem 5
+- **Client:** Dr Priya Menon, chief operating officer (COO) of Kalpa Health, and the marketing head
+- **Data:** the ten files in `data/`, exported on Friday 16 October 2026
 
 Kalpa Health and everyone in it are fictional, and every record in the files is synthetic.
 
@@ -31,9 +31,9 @@ have booked is one of the levers she could pull to close her gap.
 **The questions on the way.** What business is Kalpa Health? What does Dr Menon see? Which five
 questions did her heads ask, and which one is yours? Which real company faces the same question?
 
-Kalpa Health runs a laboratory and two patient service centres, the places where a phlebotomist
-draws a patient's blood, in each of six US metro areas: Dallas, Phoenix, New York, Chicago, Atlanta
-and Philadelphia. It bills its patients' payers in dollars: commercial health plans, Medicare (the
+Kalpa Health runs a laboratory, which runs the tests, and two patient service centres, where a
+phlebotomist draws patients' blood, in each of six US metro areas: Dallas, Phoenix, New York,
+Chicago, Atlanta and Philadelphia. Patients book at all eighteen sites. It bills its patients' payers in dollars: commercial health plans, Medicare (the
 federal programme for people aged 65 and over), Medicaid (each state's programme for people on low
 incomes) and patients who pay for themselves (self-pay). Its revenue-cycle and analytics work runs
 from Kalpa's Global Capability Centre (GCC) in Bengaluru, where you work as trainee engineers in the
@@ -41,7 +41,9 @@ data and AI team. It reports in calendar quarters: Q2 is April to June 2026 and 
 September 2026.
 
 Its COO, Dr Priya Menon, has written to the team. Her dashboard shows test volumes up 5 percent from
-Q2 to Q3 against a plan of 18, and she cannot say which branch of the business is short. Five of her
+Q2 to Q3, against the board's plan of 18 percent growth in test volumes, and she cannot say which
+branch of the business is short: which of the parts it splits into, such as a payer, a metro or a
+kind of test. Five of her
 heads have each asked her a question, and each group takes one.
 
 | # | The question | Who asks |
@@ -59,16 +61,15 @@ percent more than the patients who were not offered it, over the weeks the offer
 
 Quest Diagnostics provides "mobile phlebotomy services in many parts of the United States so
 patients who prefer an in-home blood draw may access our services for a fee" (Form 10-K for 2025).
-Kalpa Health's offer waived that fee, so every collection it gave away cost a phlebotomist's visit
-with nothing billed for the visit.
+Kalpa Health charges a fee of its own for a collection at home, and its offer waived it, so every
+free collection cost a phlebotomist's visit with nothing billed for the visit.
 
 ---
 
 ## What do the offer, a lift and the 9 percent mean at Kalpa Health?
 
-**Who needs the answer.** The marketing head, whose budget rides on the word "lifted". A lift is a
-comparison between two groups, and it says the offer caused the difference only when the two groups
-differ in nothing but the offer.
+**Who needs the answer.** The marketing head, whose budget rides on the word "lifted" and on what
+the lift was measured against.
 
 **The questions on the way.** What did the offer give a patient? Who counts as offered, and who took
 it up? Which weeks did it run? How does the report work out the 9 percent?
@@ -78,20 +79,19 @@ it up? Which weeks did it run? How does the report work out the 9 percent?
 | At-home collection | A phlebotomist visits the patient's home and draws the sample there, which costs Kalpa Health the visit; a patient books it as one of the four ways to book | `bookings_legacy.channel`, `bookings_newsys.channel` |
 | The offer | A free at-home collection: the visit's fee waived, sent by marketing to a list of patients | `campaign` |
 | Offered | On marketing's list, with the day the offer was sent | `campaign.offered_on` |
-| Took up | Used a free collection | `campaign.took_up` |
+| Took up | Accepted the offer | `campaign.took_up` |
 | The weeks the offer ran | 15 July to 14 September 2026; offers went out from 15 July to 4 August | `campaign.offered_on`, booking dates |
 | Bookings per patient | A group's bookings over a period, divided by the number of patients in the group | Built from `patients` and the booking files |
 | Lift, as the report works it out | The offered patients' bookings per patient over the weeks the offer ran, divided by every other registered patient's over the same weeks, minus one; the report's figure is 9 percent | Your group recomputes it |
 
-Whether the report's comparison can show that the offer caused the 9 percent is the question your
-group answers.
+Whether the 9 percent means the offer worked is the question your group answers.
 
 ---
 
 ## Which files hold the answer, and how big is each?
 
-**Who needs the answer.** Your group, to plan its time. Recomputing the 9 percent takes an hour, and
-the rest of the week goes on deciding whether the two groups in it were alike.
+**Who needs the answer.** Your group, to plan its time. Recomputing the 9 percent takes about two hours,
+and the rest of the week goes on what the number means.
 
 **The questions on the way.** Which files does the campaign question start from? How many rows does
 each hold, and what is one row?
@@ -125,7 +125,7 @@ checked number.
 |---|---|---|---|---|---|
 | A. Recompute the 9 percent | Works out bookings per patient over the weeks the offer ran, offered against everyone else | 2,381 offers, 6,700 patients and 11,882 booking rows | About 2 | Confirms the arithmetic and says nothing about cause | Week 1 Tuesday: confirm the number before explaining it |
 | B. Compare before with during | Sets the offered patients' bookings in the weeks before the offer against the weeks it ran | As A | About 2 | Anything else that changed in those weeks, a season or a trend, reads as the offer's effect | Week 1 Thursday: cause or coincidence |
-| C. Build a fair comparison | Checks that offered and not-offered patients were alike before the offer, on every column the files carry, then compares like with like | As A, with the sites | About 5 | The fairest these files allow, and it can only balance what the files record | Week 1 Thursday: is the split fair, and did the discount work |
+| C. Build a fair comparison | Checks how alike the offered and not-offered patients were before the offer, then compares like with like | As A, with the sites | About 5 | Can balance only what the files record, so anything else that differs between the two groups stays in the gap | Week 1 Thursday: is the split fair, and did the discount work |
 | D. Ask whether chance could produce the gap | Shuffles the offered label many times and counts how often a gap this large appears by luck, a permutation test | As A | About 2, on top of A or C | Says whether the gap could be luck, never whether the offer caused it | Week 1 Thursday: real, or the wobble |
 
 Which way leads, and which one checks it, is your group's call. Make it in Part 2 of the translation
@@ -137,8 +137,10 @@ a second way to the same number, so the call needs two of these ways.
 
 ## What will the panel ask, and what does a finished answer look like?
 
-**Who needs the answer.** Every member, since the panel may put any question to anyone. A group that
-knows only its own slice of the work loses marks one learner at a time.
+**Who needs the answer.** Every member. The panel, the industry expert who hears Friday's
+presentations, joined on Saturday by a senior industry leader, may put any question to anyone, and
+presentation and defence is scored for each learner, so a member who knows only one slice of the
+work loses those marks alone.
 
 **The questions on the way.** Which questions will the panel ask? What earns full marks on each
 criterion of the mini project, for this question?
@@ -185,10 +187,8 @@ The rubric the panel scores against, as approved:
 **Who needs the answer.** Your group, today, so that nothing is built on Friday that should have
 started on Monday.
 
-**The questions on the way.** What does every group ship? When is each piece seen? What happens if
-the live demo fails? How are the mock and the group discussion scored?
-
-### What does every group ship, and when is each piece seen?
+**The questions on the way.** What does every group ship, and when is each piece seen? What happens
+if the live demo fails? When are the mock interview and the group discussion, and what is each worth?
 
 | What | What it holds | When it is seen |
 |---|---|---|
@@ -208,11 +208,12 @@ your executed notebook, and the panel scores the live demo, inside presentation 
 run cold. The other 34 marks are scored from the executed run, so a failed demo costs its own marks
 and never the analysis.
 
-### How are the mock interview and the group discussion scored?
+### When are the mock interview and the group discussion, and what is each worth?
 
-The mock interview (30 marks) and the group discussion (30 marks) are scored apart from the project:
-Mock R1 runs for every learner on Thursday 22 October, and the group discussion rounds run on Friday
-23 October and close on the morning of Saturday 24 October. The briefing note,
+Both are scored for each learner alone, apart from the project. Mock R1, the first round of mock
+interviews, is worth 30 marks and runs for every learner on Thursday 22 October: a technical half on
+Weeks 1 and 2, and a viva, a spoken defence of your group's work. The group discussion is worth 30
+marks; its rounds run on Friday 23 October and close on the morning of Saturday 24 October. The briefing note,
 `briefs/C2_W03_D01_briefing_note_STUDENT.md`, carries their rubrics. Nothing new is taught this week:
 everything the build needs is in your Weeks 1 and 2 notes, and a question about the domain, such as
 what a phlebotomist does, is always fair to ask a trainer or a TA.

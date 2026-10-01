@@ -2,8 +2,8 @@
 
 Written by Dr Priya Menon's data team at Kalpa Health for the data and AI team at Kalpa's Global
 Capability Centre (GCC) in Bengaluru. Kalpa Health is a US diagnostics business: a laboratory and
-two patient service centres, where patients have blood drawn, in each of six US metro areas, billing
-patients' payers in dollars. It is fictional, and every name, price and number in these files is
+two patient service centres, where patients have blood drawn, in each of six US metro areas, with
+bookings taken at all eighteen sites, billing patients' payers in dollars. It is fictional, and every name, price and number in these files is
 synthetic, so no real patient's information is in them.
 
 Every file is the export taken on Friday 16 October 2026, and nothing in any file is dated after
@@ -31,7 +31,7 @@ is? How many rows came out, and over which dates?
 
 Every file is a comma-separated text file with a header row, in `data/`, named
 `C2_W03_D01_{file}_STUDENT.csv`. Row counts exclude the header line. The middle column says what
-each system says one row is; the data team has not checked that the files keep to it.
+each system says one row is, and the data team has not checked that the files keep to it.
 
 | File | The system that wrote it | One row, as the system describes it | Rows | What it covers |
 |---|---|---|---|---|
@@ -43,7 +43,7 @@ each system says one row is; the data team has not checked that the files keep t
 | `booking_tests` | The booking systems' line table | One test, one panel, or one test inside a panel, on a booking | 51,456 | The bookings in both booking files |
 | `claims` | The billing system | One claim, the bill for one completed booking | 11,356 | Services dated 1 April to 30 September 2026 |
 | `remittances` | The posting system | One posting: money received, a denial, or money taken back | 11,343 | Postings recorded from 2 April to 16 October 2026 |
-| `appointments` | The patient service centres' visit register | One visit, or one booked slot, at a patient service centre | 7,133 | Visits dated 1 July to 30 September 2026, Q3 only |
+| `appointments` | The patient service centres' visit register | One entry in a centre's visit register | 7,133 | Visits dated 1 July to 30 September 2026, Q3 only |
 | `campaign` | Marketing's offer list | One patient sent the free at-home collection offer | 2,381 | Offers sent from 15 July to 4 August 2026 |
 
 Laboratories keep no visit register, so `appointments` covers the twelve patient service centres
@@ -140,8 +140,9 @@ whose `line` is `component` for each test inside it, priced at zero.
 
 ### What does each claim bill, and to whom?
 
-A claim is the bill Kalpa Health sends to whoever pays for a completed booking, at list price. The
-payer answers with a remittance, which the posting system records.
+A claim is the bill Kalpa Health sends to whoever pays for a completed booking: list prices, plus a
+collection fee where a phlebotomist drew the blood at home and the fee was charged. The payer
+answers with a remittance, which the posting system records.
 
 | Column | Type | What it carries |
 |---|---|---|
@@ -151,8 +152,8 @@ payer answers with a remittance, which the posting system records.
 | `metro` | text | The metro area of the site that did the work |
 | `payer_type` | text | The kind of payer billed |
 | `payer_id` | text | The payer billed, in Kalpa Health's own payer ids, since no real payer is named |
-| `billed_amount` | dollars | The claim's total at list price |
-| `line_items` | whole number | How many lines the claim carries |
+| `billed_amount` | dollars | The claim's total: the list prices of what was booked, plus any collection fee |
+| `line_items` | whole number | How many lines the claim carries, a collection fee line among them where one was charged |
 | `employer_account` | text | The employer account billed, where the claim goes to one; empty otherwise |
 | `denial_category` | text | The payer's reason, once a denial has been posted back; empty otherwise |
 
@@ -165,10 +166,10 @@ a row of its own against the claim it is for.
 | Column | Type | What it carries |
 |---|---|---|
 | `posting_id` | text | The posting's id in the posting system |
-| `claim_ref` | text | The claim the posting is for, as the payer or the desk recorded it |
+| `claim_ref` | text | The claim the posting is for |
 | `payer_id` | text | Who sent the money or the decision, in Kalpa Health's own payer ids |
 | `channel` | text | How the posting arrived: an electronic remittance, a card payment or a cash payment |
-| `billed_amount` | dollars | The claim's billed amount, as the payer or the desk recorded it |
+| `billed_amount` | dollars | The claim's billed amount, as the posting carries it |
 | `posting` | text | `payment` for money received, `denial` for a claim the payer refused, `reversal` for money taken back |
 | `allowed_amount` | dollars | What the payer's contract allows for the claim, its share and the patient's together |
 | `paid_amount` | dollars | The money this posting moved; a reversal moves money back, so it is negative |
@@ -198,7 +199,7 @@ there, with the visit's fee waived.
 | `patient_id` | text | The patient, as the register writes the id |
 | `metro` | text | The patient's registered metro area |
 | `offered_on` | date | The day the offer was sent |
-| `took_up` | Y or N | `Y` if the patient used a free collection, `N` if not |
+| `took_up` | Y or N | `Y` if the patient accepted the offer, `N` if not |
 
 ### What do the seven denial categories mean?
 
@@ -211,7 +212,7 @@ typical code for each and what the lab does next.
 | eligibility or coverage | The patient was not covered by this payer for this service on that day |
 | missing or invalid information | The claim lacks information or carries an error |
 | medical necessity | The payer does not consider the test necessary for the patient's condition |
-| prior authorization | An approval the payer requires before the service was never obtained |
+| prior authorization | The payer requires approval before the service, and none was obtained |
 | non-covered service | The patient's plan does not cover this service |
 | duplicate claim | The payer has already received this claim |
 | timely filing | The claim reached the payer after its filing deadline |
@@ -243,7 +244,7 @@ in one finds its partner in the other is not something the data team has checked
 
 ## What has the data team not checked?
 
-**Who needs the answer.** Every group, before it trusts this page. The data team wrote down what
+**Who needs the answer.** Every group, before it relies on these descriptions. The data team wrote down what
 each system says it exports, and Dr Menon's heads have already been given different numbers from
 these same systems.
 

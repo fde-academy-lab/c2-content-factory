@@ -3,15 +3,14 @@
 Week 3, Day 1. Build 1 opens.
 
 Kicker: WEEK 3  ·  MONDAY  ·  BUILD 1
-Quote: My dashboard says test volumes grew 5 percent. The plan says 18. Which branch of my business is short, and what do I do next?
+Quote: My dashboard says test volumes grew 5 percent from Q2 to Q3. The plan the board approved asks for 18. Which branch of my business is short, and what do I do next?
 Who: Dr Priya Menon, COO, Kalpa Health, to the data and AI team at Kalpa's Global Capability Centre
 
 ```notes
 LIVE, the Programme Head, online, 1 minute. On screen as the link opens. The trainer in the room
 runs the link and reads the chat aloud. Read Dr Menon's words once and leave them up. Say once that
 Kalpa Health, like every Kalpa company, is fictional, and that every record in the files is
-synthetic, so no real patient's information is anywhere in the programme. Then the sentence the week
-rests on: this is the question Meera Raghavan asked in Week 1, from a business none of you has
+synthetic, so no real patient's information is anywhere in the programme. Then say: this is the question Meera Raghavan asked in Week 1, from a business none of you has
 worked in, and you already own the method that answers it.
 Transition: the seven questions that turn her ask into each group's plan.
 ```
@@ -19,13 +18,13 @@ Transition: the seven questions that turn her ask into each group's plan.
 ---
 
 ## S1. Seven questions turn Dr Menon's ask into a plan
-*Which part of Dr Menon's question will each group answer, and with which move it already owns?*
+*Which part of Dr Menon's question will each group answer, and which move from Weeks 1 and 2 will it answer with?*
 
 ```mermaid
 flowchart TB
     subgraph R1[" "]
         direction LR
-        Q1["<b>1</b><br/>What is Dr Menon<br/>asking?"] --> Q2["<b>2</b><br/>How does a<br/>US lab earn?"] --> Q3["<b>3</b><br/>Which five<br/>questions?"] --> Q4["<b>4</b><br/>Which method<br/>answers?"]
+        Q1["<b>1</b><br/>What is Dr Menon<br/>asking?"] --> Q2["<b>2</b><br/>How does a<br/>US lab earn?"] --> Q3["<b>3</b><br/>Which five<br/>questions?"] --> Q4["<b>4</b><br/>Which moves<br/>do you own?"]
     end
     subgraph R2[" "]
         direction LR
@@ -51,7 +50,7 @@ Ask: which of the seven would you most want answered before you choose a questio
 in the chat and leave them open.
 Watch for anyone who starts answering Dr Menon in the chat ("it must be a competitor"). Say: write
 it down as a guess; nobody has opened a file yet.
-Transition: question 1, what Dr Menon has actually asked.
+Transition: question 1, what Dr Menon has asked.
 ```
 
 ---
@@ -98,7 +97,9 @@ value: 13 | label: points short | note: what she must explain
 value: 6 | label: US metro areas | note: a laboratory and two centres in each
 ```
 
-**The client asks.** "I do not need another dashboard. I need to know where the 13 points went, and what to do next."
+A branch is one of the parts the business splits into, such as a payer, a metro or a kind of test, and never a single site.
+
+**The client asks.** "Which branch of my business is short, and what do I do next?"
 
 ```notes
 LIVE, the Programme Head, 2 minutes. Kalpa Health runs one laboratory and two patient service
@@ -170,7 +171,7 @@ Transition: the answer.
 | The method | Tree, ladder, reconcile, fair comparison | The same moves, unchanged |
 | The vocabulary | Orders, items, cancellations | Bookings, tests, no-shows, and words with no retail twin |
 | Who pays | The shopper, at the till or on the app | A plan, Medicare, Medicaid or the patient, weeks later |
-| What an error costs | A missed sale or a wasted budget | A missed draw, a centre, a diagnosis |
+| What an error costs | A missed sale or a wasted budget | A patient's missed draw, or a missed diagnosis |
 
 **Kavya's review.** A group that maps Kalpa Health onto the Week 1 method in its own words has done the transfer; a group that waits to be told the mapping has not.
 
@@ -181,7 +182,7 @@ LIVE, the Programme Head, 2 minutes. The answer is b. Option c is the dangerous 
 not look the same, and some of its words have no retail twin, which is where a group must slow down.
 Option a is why this week exists: a candidate who says "I would need to learn the domain's
 techniques" has not seen that the method travels.
-Say the interview question aloud. It is the question this whole week equips them to answer.
+Say the interview question aloud and leave it unanswered.
 Transition: section 2, the business itself.
 ```
 
@@ -193,7 +194,7 @@ Transition: section 2, the business itself.
 ```notes
 LIVE, the Programme Head, about 5 minutes over S7 to S9. The trainer tells the domain's story in
 full straight after this hour, 45 minutes with no laptop open, so these three slides preview it and
-D10 to D14 carry its depth for anyone reading alone. The domain dossier,
+D10 to D14, with D13a, carry its depth for anyone reading alone. The domain dossier,
 study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md, tells it at length.
 Transition: who needs the domain before the data.
 ```
@@ -209,7 +210,7 @@ Transition: who needs the domain before the data.
 label: 1 | title: One test | body: What happens to one blood test between the draw and the claim?
 label: 2 | title: Who pays | body: Who pays a US lab, and how much of the list price arrives?
 label: 3 | title: Real companies | body: Which real companies look like Kalpa Health?
-label: 4 | title: Where $100 goes | body: Where does $100 of a lab's charges go, and who asks for which number?
+label: 4 | title: Where $100 goes | body: Where does $100 of a lab's charges go, who asks for which number, and when is a claim denied?
 label: 5 | title: The rules | body: Which rules bind the data, and how far may a model or an agent go? | tone: dark
 ```
 
@@ -247,6 +248,8 @@ plan answers with another, an 835, the remittance. James and his numbers come fr
 dossier; his $60 and $75 tests are prices in Kalpa Health's own test catalogue.
 Ask: the last time you had a blood test in India, who paid, and when did you know the price? Most
 paid at booking and knew the price; in the US a payer stands between the lab and its money.
+Then, before the next slide: of James's $135, how much reached the lab from his plan? Letters in
+the chat: a) nothing, b) under $50, c) $50 to $100, d) more than $100.
 Transition: how much of the $135 arrives.
 ```
 
@@ -260,7 +263,7 @@ flowchart LR
     B["<b>billed</b><br/>$135 at list price"] --> A["<b>allowed</b><br/>$70.20 by contract"]
     B -.- X["<b>written off</b><br/>$64.80 contractual"]
     A --> P["<b>the plan pays</b><br/>$56.16"]
-    A --> R["<b>James owes</b><br/>$14.04, 20 percent"]
+    A --> R["<b>James owes</b><br/>$14.04"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -269,14 +272,13 @@ flowchart LR
     class P,R dark
 ```
 
-Four kinds of payer stand behind Kalpa Health's claims: commercial plans, Medicare for people aged 65 and over, Medicaid run by each state for people on low incomes, and self-pay patients. Each payer's contract or fee schedule sets the allowed amount.
+The plan pays 80 percent of the allowed $70.20 and James owes the other 20 percent. Four kinds of payer stand behind Kalpa Health's claims: commercial plans, Medicare for people aged 65 and over, Medicaid run by each state for people on low incomes, and self-pay patients. Each payer's contract or fee schedule sets the allowed amount.
 
 ```notes
 LIVE, the Programme Head, 2 minutes. The list price starts the claim; the contract decides what
 the test earns. The $64.80 is a contractual adjustment, written off under the contract and never
 owed, so it is not a loss. James owes 20 percent coinsurance on the $70.20.
-Ask: of the $135, how much reached the lab from his plan? Letters in the chat: a) nothing, b) under
-$50, c) $50 to $100, d) more than $100. The answer is c, $56.16.
+The answer to the question asked on S8 is c, $56.16.
 Transition: the trainer's story takes the rest of the domain after this hour; next, the five
 questions.
 ```
@@ -296,9 +298,11 @@ icon: users | eyebrow: A firm serving many | title: AGS Health | body: More than
 Kalpa Health is fictional, and these are real companies that look like it: its US half resembles the two labs, and its GCC half resembles Optum India, one company's own centre.
 
 ```notes
-SELF-STUDY, 2 minutes. Sources, each checked on 1 October 2026: Quest's and Labcorp's Form 10-K for
-2025, UnitedHealth Group's careers page for India, and AGS Health's company page; the provenance
-holds the links. Kalpa's GCC is the first kind of twin, one company's own centre with Kalpa Health
+SELF-STUDY, 2 minutes. The sources, one per line:
+Quest Diagnostics, Form 10-K for 2025, https://www.sec.gov/Archives/edgar/data/1022079/000102207926000015/dgx-20251231.htm (checked 1 October 2026)
+Labcorp Holdings, Form 10-K for 2025, https://www.sec.gov/Archives/edgar/data/920148/000092014826000111/lh-20251231.htm (checked 1 October 2026)
+UnitedHealth Group careers, India, https://www.unitedhealthgroup.com/careers/in/work.html (checked 1 October 2026)
+AGS Health, company page, https://www.agshealth.com/company/ (checked 1 October 2026) Kalpa's GCC is the first kind of twin, one company's own centre with Kalpa Health
 as one of its clients.
 Transition: where $100 of charges goes.
 ```
@@ -320,7 +324,7 @@ flowchart LR
     class O dark
 ```
 
-The contracts take $55, $3 is never collected, the tests cost $28 and billing, sales and administration $8. The numbers are an illustrative lab's, near Quest's cost shares, and a $1 leak from the $45 allowed is a sixth of the $6 the lab keeps.
+The contracts take $55, $3 is never collected, the tests cost $28 and billing, sales and administration $8. Gross profit is what is left once the tests' own costs are paid, and operating income what is left once billing, sales and administration are paid too. The numbers are an illustrative lab's, near Quest's cost shares, and a $1 leak from the $45 allowed is a sixth of the $6 the lab keeps.
 
 ```notes
 SELF-STUDY, 2 minutes. Net revenue is what the lab expects to collect, and it is the line a lab
@@ -337,13 +341,15 @@ Transition: who at Kalpa Health asks the data team for which number.
 | Who asks | What they ask the data team | What a wrong number costs |
 |---|---|---|
 | Dr Priya Menon, COO | Which part of the business is short? | Staff and money moved to the wrong place |
-| Revenue cycle head | Which claims will be denied, and which come first? | Claims chased past their filing limit |
-| Centres' operations head | Which centres are overloaded, and where should staff go? | Queues in one centre, idle staff in the next |
+| Revenue-cycle head | Which claims will be denied, and which first? | Claims chased past their filing limit |
+| Centres' operations head | Where should staff go? | Queues in one centre, idle staff in the next |
 | Finance head | Do your numbers match my books? | A quarter restated after the board saw it |
-| Marketing head | Which offers bring patients in, at what cost? | A campaign budget spent on the wrong number |
+| Marketing head | Which offers bring patients in? | A budget spent on the wrong number |
 
 ```notes
-SELF-STUDY, 2 minutes. Only Dr Menon is named; the other heads appear by role. Payer contracting,
+SELF-STUDY, 2 minutes. The revenue cycle is the run of steps from the order to the cash, and the
+revenue-cycle team works the claims along it. Kalpa Health's heads other than Dr Menon go by their
+roles. Payer contracting,
 the lab director and compliance ask too, and the dossier's section 4 lists all of them. Kavya Nair,
 the senior analyst on the team, checks every answer before it leaves.
 Transition: the tree every revenue-cycle number hangs off.
@@ -376,12 +382,41 @@ SELF-STUDY, 2 minutes. Two measures set the pace: the clean claim rate, the shar
 pass every check before they leave, and days in accounts receivable, what the lab is owed divided by
 a day's net revenue. The price-list example is the dossier's and the story's, and it is
 illustrative, never Kalpa Health's.
+Transition: when a claim is denied, and when it is only rejected.
+```
+
+---
+
+## D13a. A rejection is fixed and resent; a denial is decided
+*What separates a denial from a rejection, and what do the seven denial categories say?*
+
+```mermaid
+flowchart LR
+    C["<b>the claim</b><br/>leaves the lab"] --> H["<b>format check</b><br/>at the<br/>clearinghouse"]
+    H --> J["<b>rejection</b><br/>format failed,<br/>fixed and resent"]
+    H --> P["<b>the payer</b><br/>format passed,<br/>processes it"]
+    P --> Y["<b>paid</b><br/>in full or in part"]
+    P --> N["<b>denial</b><br/>refused, with<br/>a reason"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class C,H,P,Y known
+    class J,N bad
+```
+
+Kalpa Health names every denial by one of seven categories: eligibility or coverage, missing or invalid information, medical necessity, prior authorization, non-covered service, duplicate claim and timely filing.
+
+```notes
+SELF-STUDY, 2 minutes. A rejection never reaches the payer's decision: the clearinghouse, the
+company that checks a claim's format and routes it, sends it back, and the lab fixes and resends it.
+A denial is the payer's decision, after processing, not to pay; the lab then corrects and resends
+the claim, appeals with evidence, or writes it off. The data dictionary gives each category's
+meaning, and the dossier's section 6 gives a typical reason code for each.
 Transition: the rules that bind the data.
 ```
 
 ---
 
-## D14. Agreements decide what the team in Bengaluru may touch
+## D14. Agreements set what the Bengaluru team may touch
 *Which rules bind a US lab's data, and how far may a model or an agent go?*
 
 ```cards
@@ -427,7 +462,7 @@ label: 1 | title: Revenue | body: Which branch of Kalpa Health's billed revenue 
 label: 2 | title: Bookings | body: How far did bookings fall in two metros, and why?
 label: 3 | title: Billing | body: Which claims are unpaid, and can finance trust its figure?
 label: 4 | title: No-shows | body: Is KH-ATL-03 really worse than the other centres?
-label: 5 | title: Campaign | body: Did the at-home offer cause 9 percent more bookings? | tone: dark
+label: 5 | title: Campaign | body: Did the at-home offer lift bookings 9 percent? | tone: dark
 ```
 
 ```notes
@@ -441,8 +476,7 @@ Transition: question 1.
 ## S16. Revenue asks which branch of billed revenue is short
 *What does the finance head ask, what does the answer decide, and what does a wrong one cost?*
 
-> "The board will ask me where the plan's growth went. Where does our lab revenue actually come from, and which branch of it is short?"
-> The finance head, Kalpa Health
+> "The board will ask me where the plan's growth went. Where does our lab revenue actually come from, and which branch of it is short?" The finance head, Kalpa Health
 
 ```cards
 icon: target | eyebrow: The answer decides | title: Where recovery goes | body: The second half's staff and money go to the branch the group names.
@@ -464,7 +498,7 @@ Transition: the files behind it.
 
 ```mermaid
 flowchart TB
-    C["<b>the claims</b><br/>11,356 rows"] --> Q["<b>which branch of billed revenue is short?</b>"]
+    C["<b>the claims</b><br/>11,356 rows"] --> Q["<b>which branch is short?</b>"]
     T["<b>booking lines</b><br/>51,456 rows"] --> Q
     P["<b>price list</b><br/>16 rows"] --> Q
     B["<b>two booking files</b><br/>11,729 and 153 rows"] --> Q
@@ -475,7 +509,7 @@ flowchart TB
     class Q dark
 ```
 
-The files are `claims`, `booking_tests`, `test_catalogue`, `bookings_legacy` and `bookings_newsys`, `patients` and `sites`. The brief sizes four ways a group could answer the question, from about an hour to about seven, and names the Week 1 or 2 move each needs.
+The files are `claims`, `booking_tests`, `test_catalogue`, `bookings_legacy` and `bookings_newsys`, `patients` and `sites`.
 
 ```notes
 SELF-STUDY, 1 minute. The row counts exclude each file's header line. The brief is
@@ -488,8 +522,7 @@ Transition: question 2.
 ## S18. Bookings asks how far two metros fell, and why
 *What does the operations head ask, what does the answer decide, and what does a wrong one cost?*
 
-> "Bookings fell in two of our metros in Q3. Before I send a field team or cut staff there, I need to know how far they fell, and why."
-> The patient service centres' operations head, Kalpa Health
+> "Bookings fell in two of our metros in Q3. Before I send a field team or cut staff there, I need to know how far they fell, and why." The patient service centres' operations head, Kalpa Health
 
 ```cards
 icon: target | eyebrow: The answer decides | title: A field team or a staff cut | body: Send people to the two metros, cut staff there, or leave them alone.
@@ -499,8 +532,7 @@ icon: database | eyebrow: It starts from | title: Six files | body: Both booking
 
 ```notes
 LIVE, the Programme Head, 90 seconds. Read the operations head's words. Which two metros fell is
-the first thing the group confirms from the files; the slide does not name them, and neither does
-the brief.
+the first thing the group finds in the files, and neither the slide nor the brief names them.
 Transition: the files behind it.
 ```
 
@@ -511,7 +543,7 @@ Transition: the files behind it.
 
 ```mermaid
 flowchart TB
-    B["<b>two booking files</b><br/>11,729 and 153 rows"] --> Q["<b>how far did bookings fall, and why?</b>"]
+    B["<b>two booking files</b><br/>11,729 and 153 rows"] --> Q["<b>how far did bookings fall?</b>"]
     S["<b>sites</b><br/>18 rows"] --> Q
     P["<b>patients</b><br/>6,700 rows"] --> Q
     T["<b>booking lines</b><br/>51,456 rows"] --> Q
@@ -522,7 +554,7 @@ flowchart TB
     class Q dark
 ```
 
-The files are `bookings_legacy` and `bookings_newsys`, `sites`, `patients`, `booking_tests` and `claims`, whose 11,356 rows bill the completed bookings. The brief sizes four ways a group could answer the question, from about an hour to about six, and names the Week 1 or 2 move each needs.
+The files are `bookings_legacy` and `bookings_newsys`, `sites`, `patients`, `booking_tests` and `claims`, whose 11,356 rows bill the completed bookings.
 
 ```notes
 SELF-STUDY, 1 minute. The brief is briefs/C2_W03_D01_brief_2_bookings_STUDENT.md.
@@ -534,11 +566,10 @@ Transition: question 3.
 ## S20. Billing asks which claims are unpaid, in dollars
 *What does the finance head ask, what does the answer decide, and what does a wrong one cost?*
 
-> "The claims we billed say one thing and the posting system says another. Which claims are unpaid, how much money is that, and can I trust the figure I report?"
-> The finance head, Kalpa Health
+> "The claims we billed say one thing and the posting system says another. Which claims are unpaid, how much money is that, and can I trust the figure I report?" The finance head, Kalpa Health
 
 ```cards
-icon: target | eyebrow: The answer decides | title: The figure at the close | body: What finance reports, and which claims the revenue-cycle team chases first.
+icon: target | eyebrow: The answer decides | title: The figure at the close | body: What finance reports, and which claims are chased first.
 icon: triangle-alert | eyebrow: A wrong answer costs | title: A figure, or a deadline | body: A wrong figure reaches the board; a claim chased late passes its filing limit.
 icon: database | eyebrow: It starts from | title: Two big files | body: The claims billed and the postings received, with patients and both booking files.
 ```
@@ -557,7 +588,7 @@ Transition: the files behind it.
 
 ```mermaid
 flowchart TB
-    C["<b>the claims</b><br/>11,356 rows"] --> Q["<b>which claims are unpaid, and for how much?</b>"]
+    C["<b>the claims</b><br/>11,356 rows"] --> Q["<b>which claims are unpaid?</b>"]
     R["<b>the postings</b><br/>11,343 rows"] --> Q
     P["<b>patients</b><br/>6,700 rows"] --> Q
     B["<b>two booking files</b><br/>11,729 and 153 rows"] --> Q
@@ -567,7 +598,7 @@ flowchart TB
     class Q dark
 ```
 
-The files are `claims`, `remittances`, `patients`, and `bookings_legacy` and `bookings_newsys`. The brief sizes four ways a group could answer the question, from about an hour to about six, and names the Week 1 or 2 move each needs.
+The files are `claims`, `remittances`, `patients`, and `bookings_legacy` and `bookings_newsys`.
 
 ```notes
 SELF-STUDY, 1 minute. The postings run up to the export on Friday 16 October 2026. The brief is
@@ -580,8 +611,7 @@ Transition: question 4.
 ## S22. No-shows asks whether KH-ATL-03 is really worse
 *What does the operations head ask, what does the answer decide, and what does a wrong one cost?*
 
-> "KH-ATL-03, one of our two Atlanta patient service centres, has the worst no-show rate on my Q3 report. I am being asked to add a receptionist there or close it. Is the centre really worse?"
-> The patient service centres' operations head, Kalpa Health
+> "KH-ATL-03, one of our two Atlanta patient service centres, has the worst no-show rate on my Q3 report. I am being asked to add a receptionist there or close it. Is the centre really worse?" The patient service centres' operations head, Kalpa Health
 
 ```cards
 icon: target | eyebrow: The answer decides | title: Staff, reminders or closure | body: A second receptionist, new reminder calls, or a closure notice.
@@ -602,15 +632,15 @@ Transition: the files behind it.
 
 ```mermaid
 flowchart LR
-    A["<b>the visit register</b><br/>7,133 visits in Q3"] --> Q["<b>is KH-ATL-03<br/>really worse?</b>"]
-    S["<b>the site list</b><br/>18 sites, 12 centres"] --> Q
+    A["<b>the visit register</b><br/>7,133 Q3 visits"] --> Q["<b>is KH-ATL-03<br/>really worse?</b>"]
+    S["<b>the site list</b><br/>18 sites"] --> Q
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class A,S known
     class Q dark
 ```
 
-The files are `appointments` and `sites`. The brief sizes four ways a group could answer the question, from under an hour to about three, and names the Week 1 or 2 move each needs.
+The files are `appointments`, which covers the twelve patient service centres, and `sites`.
 
 ```notes
 SELF-STUDY, 1 minute. Laboratories keep no visit register, so the file covers the twelve patient
@@ -620,11 +650,10 @@ Transition: question 5.
 
 ---
 
-## S24. Campaign asks whether the offer caused 9 percent more
+## S24. Campaign asks whether the offer lifted bookings
 *What does the marketing head ask, what does the answer decide, and what does a wrong one cost?*
 
-> "Our free at-home collection offer lifted bookings 9 percent. I want to offer it to every patient in all six metros. Can you confirm it worked?"
-> The marketing head, Kalpa Health
+> "Our free at-home collection offer lifted bookings 9 percent. I want to offer it to every patient in all six metros. Can you confirm it worked?" The marketing head, Kalpa Health
 
 ```cards
 icon: target | eyebrow: The answer decides | title: Extend, keep or stop | body: The offer to every patient in all six metros, as it is, or not at all.
@@ -646,7 +675,7 @@ Transition: the files behind it.
 
 ```mermaid
 flowchart TB
-    O["<b>the offer list</b><br/>2,381 rows"] --> Q["<b>did the offer cause the 9 percent?</b>"]
+    O["<b>the offer list</b><br/>2,381 rows"] --> Q["<b>did the offer lift bookings?</b>"]
     P["<b>patients</b><br/>6,700 rows"] --> Q
     B["<b>two booking files</b><br/>11,729 and 153 rows"] --> Q
     S["<b>sites</b><br/>18 rows"] --> Q
@@ -656,7 +685,7 @@ flowchart TB
     class Q dark
 ```
 
-The files are `campaign`, `patients`, `bookings_legacy` and `bookings_newsys`, and `sites`. The brief sizes four ways a group could answer the question, from about two hours to about five, and names the Week 1 or 2 move each needs.
+The files are `campaign`, `patients`, `bookings_legacy` and `bookings_newsys`, and `sites`.
 
 ```notes
 SELF-STUDY, 1 minute. The brief is briefs/C2_W03_D01_brief_5_campaign_STUDENT.md.
@@ -665,8 +694,8 @@ Transition: section 4, the method you already own.
 
 ---
 
-## SECTION 4: Which method answers?
-*Which moves from Weeks 1 and 2 could answer each of the five questions, and why does the week teach nothing new?*
+## SECTION 4: Which moves do you own?
+*Which moves from Weeks 1 and 2 do you own, why does the week teach nothing new, and who decides which move answers your question?*
 
 ```notes
 LIVE, the Programme Head, about 7 minutes over S26, S27, S33 and S34. D28 to D32 show each Week 1
@@ -696,7 +725,7 @@ Transition: the moves, on one picture.
 
 ---
 
-## S27. Ten moves from Weeks 1 and 2, on one picture
+## S27. Every move from Weeks 1 and 2, on one picture
 *Which moves do you own from Weeks 1 and 2?*
 
 ```mermaid
@@ -733,16 +762,16 @@ Transition: the pictures, for anyone reading alone, then why nothing new is taug
 
 ```mermaid
 flowchart LR
-    R["<b>revenue</b><br/>in the window"] -->|"x"| C["<b>customers</b><br/>distinct ids"]
-    R -->|"x"| F["<b>orders per customer</b><br/>orders / customers"]
-    R -->|"x"| A["<b>order value</b><br/>revenue / orders"]
+    R["<b>revenue</b><br/>in the window"] --> C["<b>customers</b><br/>distinct ids"]
+    R --> F["<b>orders per customer</b><br/>orders / customers"]
+    R --> A["<b>order value</b><br/>revenue / orders"]
     A --> I["<b>items per order</b>"]
     A --> P["<b>price per item</b>"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class R,C,F,A known
+    class R,C,F,A,I,P known
 ```
 
-Every branch is a count over a denominator, and the branch that falls furthest short of the plan is where the question points.
+Revenue = customers x orders per customer x order value, and order value splits into items per order and price per item. Every branch is a count over a denominator, and the branch that falls furthest short of the plan is where the question points.
 
 ```notes
 SELF-STUDY, 1 minute. Week 1 Monday, Kalpa Retail: revenue as customers times orders per customer
@@ -863,8 +892,8 @@ icon: life-buoy | eyebrow: When stuck | title: Log it, then ask | body: Write th
 A trainer or TA answers every domain question, such as what a phlebotomist does, and answers a method question with a question back.
 
 ```notes
-LIVE, the Programme Head, 2 minutes. The rule protects the week: a build week that teaches turns
-into a teaching week with a project bolted on. The TAs' reply to "which method do we use?" is a
+LIVE, the Programme Head, 2 minutes. A build week that teaches leaves no time for the build, so
+trainers and TAs answer domain questions only. The TAs' reply to "which method do we use?" is a
 question back: which one did Meera's question need?
 Transition: who decides which move fits which question.
 ```
@@ -985,7 +1014,7 @@ The same data supports more than one honest answer, so groups on the same questi
 
 ```notes
 LIVE, the Programme Head, 90 seconds. The panel wants different viewpoints on the same question,
-which is why the mapping stays inside each group until Saturday.
+which is why the mapping stays inside each group until the panel.
 Transition: section 6, today's work.
 ```
 
@@ -1057,24 +1086,24 @@ Transition: the worksheet's six parts.
 *What are the six parts of the translation worksheet?*
 
 ```timeline
-label: Part 1 | title: The words | body: What exactly is your stakeholder asking, as a question a dataset can answer?
+label: Part 1 | title: The ask | body: What exactly is your stakeholder asking, as a question a dataset can answer?
 label: Part 2 | title: The move | body: Which move from Weeks 1 and 2 leads, which checks it, and what would make you switch?
-label: Part 3 | title: The vocabulary | body: Which Kalpa Health words map onto Kalpa Retail's, and where does the map break?
-label: Part 4 | title: First three moves | body: Which file, which count, and what result would change the plan?
-label: Part 5 | title: The cost of an error | body: What does a wrong answer cost, and to whom?
+label: Part 3 | title: The words | body: Which Kalpa Health words map onto Kalpa Retail's, and where does the map break?
+label: Part 4 | title: Three moves | body: Which file, which count, and what result would change the plan?
+label: Part 5 | title: The stakes | body: What does a wrong answer cost, and to whom?
 label: Part 6 | title: The scope | body: What will you do this week, and what will you not do? | tone: dark
 ```
 
 ```notes
 LIVE, the Programme Head, 90 seconds. The worksheet is briefs/C2_W03_D01_translation_worksheet_STUDENT.md;
-each group copies it into its repository as translation.md. It carries all five questions and the
-Weeks 1 and 2 moves in a line each, so it is filled with nothing else open.
+each group copies it into its repository as translation.md and fills it with nothing else open,
+since all five questions and the Weeks 1 and 2 moves are on it.
 Transition: the vocabulary map.
 ```
 
 ---
 
-## S42. Three pairs start the vocabulary map, you add five
+## S42. Three pairs start the map, and each group adds five
 *Which words map from Kalpa Retail to Kalpa Health, and where does the map break?*
 
 | Kalpa Retail | Kalpa Health | What a group writes beside it |
@@ -1084,11 +1113,11 @@ Transition: the vocabulary map.
 | A cancellation | A no-show | Where it lives in the files, and what differs |
 | Five or more of your own | From your brief and the dictionary | Including words with no retail twin |
 
-A pair that behaves the same in both businesses is useful; a pair that behaves differently is where the week's surprises live.
+Write down how each pair differs, since a word that behaves differently here is the one most likely to be counted wrong.
 
 ```notes
 LIVE, the Programme Head, 1 minute. The three pairs come from the curriculum. Each group adds at
-least five of its own, and the pairs that behave differently are the valuable ones. Do not add
+least five of its own, and the pairs that behave differently are the ones to write down with care. Do not add
 pairs for the room.
 Transition: the challenges log.
 ```
@@ -1104,7 +1133,7 @@ icon: wrench | eyebrow: What we tried | title: The attempt | body: What the grou
 icon: check-check | eyebrow: What we decided | title: The decision | body: What you chose and why, or that it is still open. | tone: dark
 ```
 
-Thursday's viva reads this log, so an entry written today is worth more than three written the night before.
+Thursday's viva reads this log, and an entry written as it happens holds the detail a viva asks for.
 
 ```notes
 LIVE, the Programme Head, 1 minute. The log is briefs/C2_W03_D01_challenges_log_STUDENT.xlsx; its
@@ -1138,8 +1167,7 @@ Transition: the scope sentence.
 ## S45. A scope names what you count and what you will not do
 *What does a pinned scope sentence say?*
 
-> "We will answer ______ for ______, by counting ______ in ______, and we will not ______."
-> The scope sentence each group signs at the close
+> "We will answer ______ for ______, by counting ______ in ______, and we will not ______." The scope sentence each group signs at the close
 
 ```cards
 icon: shopping-cart | eyebrow: A Kalpa Retail example | title: Meera's question | body: We will answer whether acquisition is the short branch for Meera, by counting customers, orders each and order value in the orders file, and we will not forecast next quarter.
@@ -1188,16 +1216,16 @@ Transition: the week, day by day.
 *How does the week run, day by day?*
 
 ```timeline
-label: Monday 19 October | title: Translate and scope | body: This introduction, the domain's story, the allocation, the translation, and scopes pinned at the close.
-label: Wednesday 21 October | title: Profile, clean, reconcile | body: The checkpoint, the trainer's build of a smaller slice in the open, build time, and each group's headline claim.
-label: Thursday 22 October | title: Mock R1, build complete | body: Every learner sits Mock R1, about 20 minutes, half technical and half a viva on the group's work.
-label: Friday 23 October | title: Discussions and the freeze | body: The expert's group discussions, about 30 minutes per group; builds freeze; two cold demo runs; the first presentations.
-label: Saturday 24 October | title: Presentations and closure | body: The remaining discussions, presentations with live demos of 25 to 30 minutes, and every Build 1 grade closed. | tone: dark
+label: Monday 19 October | title: Translate, scope | body: This introduction, the domain's story, the allocation, the translation, and scopes pinned at the close.
+label: Wednesday 21 October | title: Clean and claim | body: The checkpoint, the trainer's build of a smaller slice in the open, build time, and each group's headline claim.
+label: Thursday 22 October | title: Mock R1 | body: Every learner sits Mock R1, about 20 minutes, half technical and half a viva on the group's work.
+label: Friday 23 October | title: Discussions | body: The expert's group discussions, about 30 minutes per group; builds freeze; two cold demo runs; the first presentations.
+label: Saturday 24 October | title: Presentations | body: The remaining discussions, presentations with live demos of 25 to 30 minutes, and every Build 1 grade closed. | tone: dark
 ```
 
 ```notes
 LIVE, the Programme Head, 2 minutes. Tuesday 20 October is Dussehra, a holiday with no session, so
-Wednesday carries two build days. Three things to land: the headline claim is stated on Wednesday
+Wednesday does the work of two build days. Three things to land: the headline claim is stated on Wednesday
 so that Thursday tests it; the mock's viva runs on the group's own work, so the challenges log is
 revision; the group discussions run on prompts separate from the project. The time after the
 second block each day is open build time with the TAs.
@@ -1206,26 +1234,22 @@ Transition: what every group ships.
 
 ---
 
-## S48. Every group ships five things, one of them live
+## S48. Every group ships seven pieces, one of them live
 *What does every group ship, and when is each piece seen?*
 
 | What | What it holds | When it is seen |
 |---|---|---|
-| The presentation | The answer, a live demo run cold, the panel's questions | Friday 23 or Saturday 24 October |
-| The one-slide answer | Claim, evidence, caveat, action, for Dr Menon's board | The presentation |
-| The notebook or SQL | Every number reproduced from the raw files, top to bottom | The live demo |
-| The decisions log | Every cleaning call, with every file reconciled | Scored in the mini project |
-| The challenges log | Every stop, dated as it happened, from entry one today | Read in Thursday's viva |
-
-```stats
-value: 40 | label: mini project | note: marks, the presentation included
-value: 30 | label: mock interview | note: marks, Thursday 22 October
-value: 30 | label: group discussion | note: marks, Friday and Saturday
-```
+| The worksheet | The question in your words, the move, the scope | Monday's close |
+| The challenges log | Every stop, dated, from entry one today | Thursday's viva |
+| The decisions log | Every cleaning call, every file reconciled | The mini project |
+| The headline claim | One sentence with its denominators and caveat | Wednesday 21 October |
+| The notebook or SQL | Every number from the raw files, top to bottom | The live demo |
+| The one-slide answer | Claim, evidence, caveat, action | The presentation |
+| The presentation | The answer, a live demo run cold, the questions | Friday 23 or Saturday 24 October |
 
 ```notes
 LIVE, the Programme Head, 90 seconds. The marks per event are locked: mini project 40 with the
-presentation inside it, mock 30, group discussion 30. The live demo runs cold: a fresh start, the raw
+presentation inside it, mock 30, group discussion 30, and the next four slides carry them. The live demo runs cold: a fresh start, the raw
 files, top to bottom.
 Transition: how the mini project is scored.
 ```
@@ -1250,8 +1274,8 @@ Transition: how the mini project is scored.
 ```notes
 LIVE, the Programme Head, 2 minutes. Read the five criteria and stop on the first and the last. The
 first, the question translated, is scored on exactly the work the groups do today. The last means
-every member answers a challenge on the caveat, so a group that splits the work and not the
-understanding loses marks one learner at a time.
+every member answers a challenge on the caveat, so each member answers for the whole of the group's
+work.
 Transition: what happens if the live demo fails.
 ```
 
@@ -1262,9 +1286,9 @@ Transition: what happens if the live demo fails.
 
 ```mermaid
 flowchart LR
-    R["<b>the demo runs once</b><br/>cold, on the raw files"] --> F{"<b>it fails</b>"}
+    R["<b>the demo runs once</b><br/>cold, on the raw files"] --> F["<b>it fails</b>"]
     F --> T["<b>two minutes</b><br/>to recover it live"]
-    T --> S{"<b>still fails</b>"}
+    T --> S["<b>still fails</b>"]
     S --> E["<b>present from</b><br/>the executed notebook"]
     E --> M["<b>the demo scores</b><br/>as not run cold;<br/>34 marks from the run"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
@@ -1331,7 +1355,7 @@ Transition: how Monday closes.
 
 ---
 
-## S53. Monday closes on pinned scopes and two questions
+## S53. Monday closes on pinned scopes; Wednesday tests them
 *What does Monday end on, and what does Wednesday open with?*
 
 | When | What each group does |

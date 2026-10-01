@@ -1,8 +1,8 @@
 # Brief 2: How far did bookings really fall in the two metros, and why, before anyone moves staff?
 
-**For:** the group or groups allocated sub-problem 2
-**Client:** Dr Priya Menon, COO, Kalpa Health, and the patient service centres' operations head
-**Data:** the ten files in `data/`, exported on Friday 16 October 2026
+- **For:** the group or groups allocated sub-problem 2
+- **Client:** Dr Priya Menon, chief operating officer (COO) of Kalpa Health, and the patient service centres' operations head
+- **Data:** the ten files in `data/`, exported on Friday 16 October 2026
 
 Kalpa Health and everyone in it are fictional, and every record in the files is synthetic.
 
@@ -30,9 +30,9 @@ growth could be hiding.
 **The questions on the way.** What business is Kalpa Health? What does Dr Menon see? Which five
 questions did her heads ask, and which one is yours? Which real company faces the same question?
 
-Kalpa Health runs a laboratory and two patient service centres, the places where a phlebotomist
-draws a patient's blood, in each of six US metro areas: Dallas, Phoenix, New York, Chicago, Atlanta
-and Philadelphia. It bills its patients' payers in dollars: commercial health plans, Medicare (the
+Kalpa Health runs a laboratory, which runs the tests, and two patient service centres, where a
+phlebotomist draws patients' blood, in each of six US metro areas: Dallas, Phoenix, New York,
+Chicago, Atlanta and Philadelphia. Patients book at all eighteen sites. It bills its patients' payers in dollars: commercial health plans, Medicare (the
 federal programme for people aged 65 and over), Medicaid (each state's programme for people on low
 incomes) and patients who pay for themselves (self-pay). Its revenue-cycle and analytics work runs
 from Kalpa's Global Capability Centre (GCC) in Bengaluru, where you work as trainee engineers in the
@@ -40,7 +40,9 @@ data and AI team. It reports in calendar quarters: Q2 is April to June 2026 and 
 September 2026.
 
 Its COO, Dr Priya Menon, has written to the team. Her dashboard shows test volumes up 5 percent from
-Q2 to Q3 against a plan of 18, and she cannot say which branch of the business is short. Five of her
+Q2 to Q3, against the board's plan of 18 percent growth in test volumes, and she cannot say which
+branch of the business is short: which of the parts it splits into, such as a payer, a metro or a
+kind of test. Five of her
 heads have each asked her a question, and each group takes one.
 
 | # | The question | Who asks |
@@ -52,15 +54,14 @@ heads have each asked her a question, and each group takes one.
 | 5 | The free at-home collection offer "lifted bookings 9 percent": did it work? | The marketing head |
 
 The operations head's report shows bookings down in two of the six metros from Q2 to Q3, with the
-other four holding or growing, and wants to act on it this month. Which two metros they are is the
-first thing your group confirms from the files.
+other four holding or growing, and the operations head wants to act on it this month. Which two
+metros they are is the first thing your group finds in the files.
 
 ### Which real company faces the same question?
 
 Quest Diagnostics, a US laboratory company with about 2,400 patient service centres, measures its
 volume by test requisitions, a doctor's order for tests and close to a Kalpa Health booking, and
-reports the change in requisition volume each year beside its revenue (Form 10-K for 2025). Kalpa
-Health is fictional, and Quest counts its volume the way the operations head counts bookings.
+reports the change in requisition volume each year beside its revenue (Form 10-K for 2025).
 
 ---
 
@@ -90,7 +91,7 @@ counted: what one booking is, which bookings count, and which files they are cou
 
 ## Which files hold the answer, and how big is each?
 
-**Who needs the answer.** Your group, to plan its time. A recount of two files takes an hour; a full
+**Who needs the answer.** Your group, to plan its time. A recount of the two booking files takes about two hours; a full
 ladder down to sites, channels and patients takes most of Wednesday.
 
 **The questions on the way.** Which files does the bookings question start from? How many rows does
@@ -124,9 +125,9 @@ checked number.
 
 | Way | What the group does | Rows it touches | Hours | What it can get wrong | The Week 1 or 2 move it needs |
 |---|---|---|---|---|---|
-| A. Explain the report's fall | Takes the report's figures as given and looks for causes: a competitor, staffing, the season | None | About 2 | Explains a fall nobody has confirmed, so a convincing cause can sit on a number that is wrong | The one Week 1 Tuesday warns against: a reason found before rung 1 |
-| B. Recount bookings by metro and quarter | Counts one row per booking, Q2 against Q3, the same way for every metro | 11,882 booking rows and 18 sites | About 2 | Is only as right as its definition of one booking and the files it counts from; it sizes the fall and says nothing of why | Week 1 Tuesday: is the drop real?; Week 1 Wednesday: profile before you count |
-| C. Walk the investigation ladder | Confirms the fall, compares like with like (the same weeks, definition and sites), splits bookings into patients and bookings per patient, isolates the sites and channels that moved, then tests a cause | About 18,600 rows across the booking files, patients and sites | About 6 | Least of the four, if rung 1 holds; it costs the most time | Week 1 Tuesday: the ladder, all five rungs |
+| A. Explain the report's fall | Takes the report's fall as given and looks for causes: a competitor, staffing, the season | None | About 2 | Explains a fall nobody has confirmed, so a convincing cause can sit on a number that is wrong | The one Week 1 Tuesday warns against: a reason found before rung 1 |
+| B. Recount bookings by metro and quarter | Counts one row per booking, Q2 against Q3, the same way for every metro | 11,882 booking rows and 18 sites | About 2 | Is only as right as its definition of one booking; it sizes the fall and says nothing of why | Week 1 Tuesday: is the drop real?; Week 1 Wednesday: profile before you count |
+| C. Walk the investigation ladder | Climbs the Week 1 Tuesday ladder rung by rung on the booking files, from confirming the fall to testing a cause | About 18,600 rows across the booking files, patients and sites | About 6 | Costs the most time, and every rung above the first rests on the count rung 1 confirms | Week 1 Tuesday: the ladder, all five rungs |
 | D. Count completed bookings a second way | Counts the completed bookings the claims bill, by metro and quarter, against the booking files' count | 11,356 claims | About 1, on top of B or C | Claims exist only for completed bookings, so cancellations never show; it checks a count and cannot replace one | Week 2 Thursday: the same number reached a second way |
 
 Which way leads, and which one checks it, is your group's call. Make it in Part 2 of the translation
@@ -138,8 +139,10 @@ a second way to the same number, so the call needs two of these ways.
 
 ## What will the panel ask, and what does a finished answer look like?
 
-**Who needs the answer.** Every member, since the panel may put any question to anyone. A group that
-knows only its own slice of the work loses marks one learner at a time.
+**Who needs the answer.** Every member. The panel, the industry expert who hears Friday's
+presentations, joined on Saturday by a senior industry leader, may put any question to anyone, and
+presentation and defence is scored for each learner, so a member who knows only one slice of the
+work loses those marks alone.
 
 **The questions on the way.** Which questions will the panel ask? What earns full marks on each
 criterion of the mini project, for this question?
@@ -160,7 +163,7 @@ to answer each one from your own work.
 
 | Criterion | Marks | Full marks on this question look like |
 |---|---|---|
-| The question translated | 8 | "Bookings" and "fell" are defined in a line each, saying what one booking is, which bookings count and from which files, and the decision the answer feeds, a field team, a staff cut or neither, is named |
+| The question translated | 8 | "Bookings" and "fell" are defined in a line each, saying what one booking is and which bookings count, and the decision the answer feeds, a field team, a staff cut or neither, is named |
 | The data made trustworthy | 10 | Every booking file is profiled before it is counted; every row removed or kept on purpose is in the decisions log with its reason; the booking count reconciles to the rows of every file it was counted from |
 | The analysis | 10 | The fall is confirmed for each metro on the stated definition, like with like, then split down to the sites, channels or patients that carry it, before any cause is offered |
 | The claim | 6 | One sentence gives how far each metro fell, on which count, for Q2 to Q3, with its caveat and what the operations head should do |
@@ -187,10 +190,8 @@ The rubric the panel scores against, as approved:
 **Who needs the answer.** Your group, today, so that nothing is built on Friday that should have
 started on Monday.
 
-**The questions on the way.** What does every group ship? When is each piece seen? What happens if
-the live demo fails? How are the mock and the group discussion scored?
-
-### What does every group ship, and when is each piece seen?
+**The questions on the way.** What does every group ship, and when is each piece seen? What happens
+if the live demo fails? When are the mock interview and the group discussion, and what is each worth?
 
 | What | What it holds | When it is seen |
 |---|---|---|
@@ -210,11 +211,12 @@ your executed notebook, and the panel scores the live demo, inside presentation 
 run cold. The other 34 marks are scored from the executed run, so a failed demo costs its own marks
 and never the analysis.
 
-### How are the mock interview and the group discussion scored?
+### When are the mock interview and the group discussion, and what is each worth?
 
-The mock interview (30 marks) and the group discussion (30 marks) are scored apart from the project:
-Mock R1 runs for every learner on Thursday 22 October, and the group discussion rounds run on Friday
-23 October and close on the morning of Saturday 24 October. The briefing note,
+Both are scored for each learner alone, apart from the project. Mock R1, the first round of mock
+interviews, is worth 30 marks and runs for every learner on Thursday 22 October: a technical half on
+Weeks 1 and 2, and a viva, a spoken defence of your group's work. The group discussion is worth 30
+marks; its rounds run on Friday 23 October and close on the morning of Saturday 24 October. The briefing note,
 `briefs/C2_W03_D01_briefing_note_STUDENT.md`, carries their rubrics. Nothing new is taught this week:
 everything the build needs is in your Weeks 1 and 2 notes, and a question about the domain, such as
 what a phlebotomist does, is always fair to ask a trainer or a TA.

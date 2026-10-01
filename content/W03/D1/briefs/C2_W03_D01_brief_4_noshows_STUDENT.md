@@ -1,8 +1,8 @@
 # Brief 4: Is KH-ATL-03 really worse at no-shows than the other centres, before anyone adds staff or closes it?
 
-**For:** the group or groups allocated sub-problem 4
-**Client:** Dr Priya Menon, COO, Kalpa Health, and the patient service centres' operations head
-**Data:** the ten files in `data/`, exported on Friday 16 October 2026
+- **For:** the group or groups allocated sub-problem 4
+- **Client:** Dr Priya Menon, chief operating officer (COO) of Kalpa Health, and the patient service centres' operations head
+- **Data:** the ten files in `data/`, exported on Friday 16 October 2026
 
 Kalpa Health and everyone in it are fictional, and every record in the files is synthetic.
 
@@ -31,9 +31,9 @@ her missing growth could be hiding.
 **The questions on the way.** What business is Kalpa Health? What does Dr Menon see? Which five
 questions did her heads ask, and which one is yours? Which real company faces the same question?
 
-Kalpa Health runs a laboratory and two patient service centres, the places where a phlebotomist
-draws a patient's blood, in each of six US metro areas: Dallas, Phoenix, New York, Chicago, Atlanta
-and Philadelphia. It bills its patients' payers in dollars: commercial health plans, Medicare (the
+Kalpa Health runs a laboratory, which runs the tests, and two patient service centres, where a
+phlebotomist draws patients' blood, in each of six US metro areas: Dallas, Phoenix, New York,
+Chicago, Atlanta and Philadelphia. Patients book at all eighteen sites. It bills its patients' payers in dollars: commercial health plans, Medicare (the
 federal programme for people aged 65 and over), Medicaid (each state's programme for people on low
 incomes) and patients who pay for themselves (self-pay). Its revenue-cycle and analytics work runs
 from Kalpa's Global Capability Centre (GCC) in Bengaluru, where you work as trainee engineers in the
@@ -41,7 +41,9 @@ data and AI team. It reports in calendar quarters: Q2 is April to June 2026 and 
 September 2026.
 
 Its COO, Dr Priya Menon, has written to the team. Her dashboard shows test volumes up 5 percent from
-Q2 to Q3 against a plan of 18, and she cannot say which branch of the business is short. Five of her
+Q2 to Q3, against the board's plan of 18 percent growth in test volumes, and she cannot say which
+branch of the business is short: which of the parts it splits into, such as a payer, a metro or a
+kind of test. Five of her
 heads have each asked her a question, and each group takes one.
 
 | # | The question | Who asks |
@@ -53,21 +55,21 @@ heads have each asked her a question, and each group takes one.
 | 5 | The free at-home collection offer "lifted bookings 9 percent": did it work? | The marketing head |
 
 The operations head's monthly report ranks the twelve patient service centres by their no-show rate
-for Q3, and KH-ATL-03 sits at the bottom. The centre's manager says its patients are no different
+for Q3, and KH-ATL-03 ranks worst of the twelve. The centre's manager says its patients are no different
 from anyone else's.
 
 ### Which real company faces the same question?
 
 Quest Diagnostics' patient app lets patients schedule appointments at its centres and receive
 appointment reminders (Form 10-K for 2025), the same lever the operations head is weighing for
-KH-ATL-03. Kalpa Health is fictional, and Quest runs about 2,400 patient service centres.
+KH-ATL-03.
 
 ---
 
 ## What do a visit, a no-show and a no-show rate mean at Kalpa Health?
 
 **Who needs the answer.** The operations head, who will staff or close a centre on the rate you
-defend. A rate is a count over a denominator, and both halves are part of its definition.
+defend.
 
 **The questions on the way.** What is a visit at a patient service centre? What is a no-show? How
 does the report work out the rate? What do a receptionist and a reminder call change?
@@ -80,8 +82,7 @@ does the report work out the rate? What do a receptionist and a reminder call ch
 | No-show rate, as the report works it out | The share of a centre's Q3 visits that the register marks as not attended | Your group recomputes it from `appointments` |
 | Receptionist and reminder call | The front desk, and the call or message that reminds a patient of a booked slot the day before; both cost staff time | Not in the files |
 
-Whether the report's rate is the right one for the operations head's decision is part of what your
-group decides. A missed blood draw can also mean a missed diagnosis, which is why a wrong answer here
+A missed blood draw can also mean a missed diagnosis, which is why a wrong answer here
 can cost more than a slot.
 
 ---
@@ -96,7 +97,7 @@ each hold, and what is one row?
 
 | File | One row is | Rows | Why it bears on this question |
 |---|---|---|---|
-| `appointments` | One visit, or one booked slot, at a patient service centre, Q3 only | 7,133 | Every visit, its centre, its day, its kind and whether the patient was seen |
+| `appointments` | One entry in a centre's visit register, Q3 only | 7,133 | Every visit, its centre, its day, its kind and whether the patient was seen |
 | `sites` | One laboratory or patient service centre | 18 | Which metro each centre is in, and which sites are centres |
 
 Every group holds all ten files, and you may use any of them; these two are where this question
@@ -118,10 +119,10 @@ checked number.
 
 | Way | What the group does | Rows it touches | Hours | What it can get wrong | The Week 1 or 2 move it needs |
 |---|---|---|---|---|---|
-| A. Rank the twelve centres on the report's rate | Recomputes each centre's rate the way the report does and acts on the worst | 7,133 visits | Under 1 | Takes the report's denominator and its gap as given, and checks neither | Week 2 Thursday: grouping a count by centre |
-| B. Recompute every rate on a definition you state and defend | Decides what each rate is out of, then compares KH-ATL-03 with the other eleven centres on that definition | 7,133 visits and 18 sites | About 2 | A rate on a fair definition can still differ by chance at a small centre, and this way says nothing about chance | Week 1 Monday: a metric defined before it is counted; Week 1 Thursday: how many people stand behind a percentage |
-| C. Ask whether chance could produce the gap | On the chosen definition, works out how often a centre with KH-ATL-03's number of visits would sit this far from the others by luck alone, with a permutation or binomial check | 7,133 visits | About 3, with B | Answers real or noise on whatever definition is fed into it, so a wrong denominator gets a confident answer | Week 1 Thursday: real, or the wobble, and is it worth acting on |
-| D. Check the comparison is fair before running it | Lists what else differs between KH-ATL-03 and the other centres, in every column the register carries, and compares like with like | 7,133 visits and 18 sites | About 2 | Can only rule out what the register records; a patient's own reason for missing a slot is not in the files | Week 1 Thursday: is the split fair, and do the two groups differ only in the thing tested |
+| A. Rank the twelve centres on the report's rate | Recomputes each centre's rate the way the report does and acts on the worst | 7,133 visits | Under 1 | Takes the report's ranking as the answer, with nothing checked | Week 2 Thursday: grouping a count by centre |
+| B. Recompute every rate on a definition you state and defend | Writes the rate's definition down, then compares KH-ATL-03 with the other eleven centres on it | 7,133 visits and 18 sites | About 2 | A sound definition can still leave a gap that chance produces, and this way says nothing about chance | Week 1 Monday: a metric defined before it is counted; Week 1 Thursday: how many people stand behind a percentage |
+| C. Ask whether chance could produce the gap | On the chosen definition, works out how often a centre with KH-ATL-03's number of visits would sit this far from the others by luck alone, with a permutation or binomial check | 7,133 visits | About 3, with B | Answers real or noise on whatever definition is fed into it, so a wrong definition gets a confident answer | Week 1 Thursday: real, or the wobble, and is it worth acting on |
+| D. Check the comparison is fair before running it | Lists what else differs between KH-ATL-03 and the other centres before comparing them, then compares like with like | 7,133 visits and 18 sites | About 2 | Can only rule out what the register records; a patient's own reason for missing a slot is not in the files | Week 1 Thursday: is the split fair, and do the two groups differ only in the thing tested |
 
 Which way leads, and which one checks it, is your group's call. Make it in Part 2 of the translation
 worksheet, `briefs/C2_W03_D01_translation_worksheet_STUDENT.md`, before anyone opens a notebook, and
@@ -132,8 +133,10 @@ a second way to the same number, so the call needs two of these ways.
 
 ## What will the panel ask, and what does a finished answer look like?
 
-**Who needs the answer.** Every member, since the panel may put any question to anyone. A group that
-knows only its own slice of the work loses marks one learner at a time.
+**Who needs the answer.** Every member. The panel, the industry expert who hears Friday's
+presentations, joined on Saturday by a senior industry leader, may put any question to anyone, and
+presentation and defence is scored for each learner, so a member who knows only one slice of the
+work loses those marks alone.
 
 **The questions on the way.** Which questions will the panel ask? What earns full marks on each
 criterion of the mini project, for this question?
@@ -143,7 +146,7 @@ criterion of the mini project, for this question?
 The panel reads your one-slide answer, then asks questions like these. Every member should be able
 to answer each one from your own work.
 
-1. What is KH-ATL-03's no-show rate, on what denominator, and against which comparison?
+1. What is KH-ATL-03's no-show rate, how did you define it, and against which comparison?
 2. Could chance alone produce the gap you see? How did you check, and what did the check say?
 3. What would a fair comparison between two centres need, and did yours have it?
 4. What should the operations head do about KH-ATL-03, and what evidence would change your advice?
@@ -153,11 +156,11 @@ to answer each one from your own work.
 
 | Criterion | Marks | Full marks on this question look like |
 |---|---|---|
-| The question translated | 8 | The no-show rate is defined in a line, saying what it counts and what it is out of, and the decision the answer feeds, a receptionist, reminder calls or a closure, is named |
+| The question translated | 8 | The no-show rate is defined in a line, saying exactly what it counts, and the decision the answer feeds, a receptionist, reminder calls or a closure, is named |
 | The data made trustworthy | 10 | The visit register is profiled before any rate is worked out; every row removed or kept on purpose is in the decisions log with its reason; the visits behind every rate reconcile to the register's rows |
-| The analysis | 10 | KH-ATL-03 is compared with the other centres on a denominator the group defends, the comparison is shown to be fair, and a chance check says whether the gap could be luck |
+| The analysis | 10 | KH-ATL-03 is compared with the other centres on a definition the group defends, the comparison is shown to be fair, and a chance check says whether the gap could be luck |
 | The claim | 6 | One sentence gives KH-ATL-03's rate and the others', on which denominator, for Q3, whether chance could produce the gap, the caveat, and what the operations head should do |
-| Presentation and defence | 6 | The notebook runs cold on the raw files in front of the panel, and every member can defend the denominator |
+| Presentation and defence | 6 | The notebook runs cold on the raw files in front of the panel, and every member can defend the rate's definition |
 
 The rubric the panel scores against, as approved:
 
@@ -180,10 +183,8 @@ The rubric the panel scores against, as approved:
 **Who needs the answer.** Your group, today, so that nothing is built on Friday that should have
 started on Monday.
 
-**The questions on the way.** What does every group ship? When is each piece seen? What happens if
-the live demo fails? How are the mock and the group discussion scored?
-
-### What does every group ship, and when is each piece seen?
+**The questions on the way.** What does every group ship, and when is each piece seen? What happens
+if the live demo fails? When are the mock interview and the group discussion, and what is each worth?
 
 | What | What it holds | When it is seen |
 |---|---|---|
@@ -203,11 +204,12 @@ your executed notebook, and the panel scores the live demo, inside presentation 
 run cold. The other 34 marks are scored from the executed run, so a failed demo costs its own marks
 and never the analysis.
 
-### How are the mock interview and the group discussion scored?
+### When are the mock interview and the group discussion, and what is each worth?
 
-The mock interview (30 marks) and the group discussion (30 marks) are scored apart from the project:
-Mock R1 runs for every learner on Thursday 22 October, and the group discussion rounds run on Friday
-23 October and close on the morning of Saturday 24 October. The briefing note,
+Both are scored for each learner alone, apart from the project. Mock R1, the first round of mock
+interviews, is worth 30 marks and runs for every learner on Thursday 22 October: a technical half on
+Weeks 1 and 2, and a viva, a spoken defence of your group's work. The group discussion is worth 30
+marks; its rounds run on Friday 23 October and close on the morning of Saturday 24 October. The briefing note,
 `briefs/C2_W03_D01_briefing_note_STUDENT.md`, carries their rubrics. Nothing new is taught this week:
 everything the build needs is in your Weeks 1 and 2 notes, and a question about the domain, such as
 what a phlebotomist does, is always fair to ask a trainer or a TA.

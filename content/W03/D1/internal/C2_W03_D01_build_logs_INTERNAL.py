@@ -249,34 +249,35 @@ def decisions():
     widths(rec, {"A": 20, "B": 14, "C": 16, "D": 16, "E": 14, "F": 52})
 
     ex = wb.create_sheet("Example")
-    title(ex, "Which rows did the Week 1 Wednesday log hold for Kalpa Retail?",
-          "The shape you already know, in rupees. Your rows are about Kalpa Health's files, in dollars.")
+    title(ex, "What does one row of a decisions log hold, column by column?",
+          "One invented row in the Week 1 Wednesday shape, then what each column takes. Your rows "
+          "are about Kalpa Health's files.")
     head3 = ["Field", "Issue", "Rows", "Decision", "Reason"]
     for c, h in enumerate(head3, 1):
         ex.cell(row=4, column=c, value=h)
     style_header(ex, 4, len(head3))
-    rows = [
-        ("order_id", "Repeated", 15, "Keep one row per order: the first copy, or the copy that "
-         "validates where one copy's amount will not convert",
-         "201 rows for 186 orders, and 14 of the 15 extra rows sit in Q1, the migration's quarter"),
-        ("amount", "Will not convert, on one copy of a repeated order", 1,
-         "Set aside with the duplicates; its twin, whose amount converts, stays",
-         "Keeping the first copy would keep the one that cannot be summed, and Q1 would sit "
-         "Rs 1,790 short of the books"),
-        ("status", "Empty", 1, "Keep and flag",
-         "It happened and its fate is unknown: dropping it would remove a booked order from Q2, "
-         "and a default would invent a delivery or a cancellation"),
-        ("amount", "Largest Q2 order, 1.66 times the next", 1, "Keep and flag, shown both ways",
-         "Large is not wrong: a Business-segment account with orders in both quarters, every "
-         "field valid"),
+    invented = ("status", "Empty", 1, "Keep and flag",
+                "The visit happened and its outcome is unknown: dropping the row would remove a real "
+                "booking, and a default would invent an outcome")
+    for c, v in enumerate(invented, 1):
+        ex.cell(row=5, column=c, value=v)
+        body(ex.cell(row=5, column=c))
+    ex["A7"] = "What each column takes"
+    ex["A7"].font = Font(name=FONT, bold=True, color=INK)
+    guide = [
+        ("Field", "The column the decision is about, as the file names it"),
+        ("Issue", "What you saw, in a few words another group could check"),
+        ("Rows", "How many rows the decision touches, counted from the file and never estimated"),
+        ("Decision", "Keep, keep and flag, remove, or change, and how"),
+        ("Reason", "Why, in a sentence an auditor would accept; a reason that restates the issue is "
+                   "not a reason, and a kept row belongs in the log too"),
     ]
-    for r, vals in enumerate(rows, 5):
-        for c, v in enumerate(vals, 1):
-            ex.cell(row=r, column=c, value=v)
-            body(ex.cell(row=r, column=c))
-    ex["A11"] = ("A reason that restates the issue is not a reason. The kept row is the one an "
-                 "auditor asks about, so it goes in the log too.")
-    ex["A11"].font = Font(name=FONT, italic=True)
+    for r, (col, what) in enumerate(guide, 8):
+        ex.cell(row=r, column=1, value=col)
+        ex.cell(row=r, column=2, value=what)
+        body(ex.cell(row=r, column=1), bold=True)
+        body(ex.cell(row=r, column=2))
+        ex.merge_cells(start_row=r, start_column=2, end_row=r, end_column=5)
     widths(ex, {"A": 14, "B": 22, "C": 8, "D": 26, "E": 70})
 
     how = wb.create_sheet("How to use")
