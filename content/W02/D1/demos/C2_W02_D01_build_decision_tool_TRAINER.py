@@ -88,9 +88,17 @@ member = kit.sql("""WITH m AS (
                         WHERE c.segment = 'Retail-Plus' GROUP BY o.customer_id)
                     SELECT count(*) AS members, count(q1) AS with_q1, count(q2) AS with_q2,
                            coalesce(sum(q1), 0) AS s1, coalesce(sum(q2), 0) AS s2 FROM m""")[0]
-sample = kit.sql("""SELECT order_id, amount FROM orders
-                    WHERE quarter = 'Q2' AND channel = 'app' AND status = 'delivered'
-                    ORDER BY order_id LIMIT 8""")
+UNORDERED = """SELECT order_id FROM orders
+               WHERE quarter = 'Q2' AND channel = 'app' AND status = 'delivered' LIMIT 5"""
+monday = kit.sql(UNORDERED)
+conn = kit.connect()
+try:
+    # The overnight reload of chapter 6: two rows rewritten with their own values, then rolled back.
+    kit.sql("UPDATE orders SET status = status WHERE order_id IN ('KR-00542', 'KR-00544')", conn=conn)
+    rerun = kit.sql(UNORDERED, conn=conn)
+finally:
+    conn.rollback()
+    conn.close()
 plus_q2 = next(r for r in seg if r["segment"] == "Retail-Plus" and r["quarter"] == "Q2")
 
 wb = Workbook()
@@ -111,14 +119,14 @@ for i, text in enumerate(lines, 3):
 
 # ---------------------------------------------------------------- Customers
 ws = sheet(wb, "Customers", "Which count is a customer?",
-           "Retail-Plus in Q2, counted three ways. Orders per customer is only as honest as the count under it.")
+           "Retail-Plus in Q2, counted three ways: the orders two ways and the customer table once. Orders per customer divides by whichever count you choose.")
 head(ws, 4, ["Count", "Value", "What it counts"])
 put(ws, "A5", "count(*) over the orders"); put(ws, "B5", int(plus_q2["orders"])); put(ws, "C5", "order rows")
 put(ws, "A6", "count(DISTINCT customer_id)"); put(ws, "B6", int(plus_q2["customers"])); put(ws, "C6", "members who bought")
-put(ws, "A7", "the customers table"); put(ws, "B7", int(plus_book)); put(ws, "C7", "members on the book")
+put(ws, "A7", "the customers table"); put(ws, "B7", int(plus_book)); put(ws, "C7", "members on the customer table")
 put(ws, "A9", "Orders in Q2"); put(ws, "B9", "=B5")
 put(ws, "A10", "Your definition of a customer", BOLD); put(ws, "B10", "members who bought", fill=INPUT)
-choice(ws, "B10", ["order rows", "members who bought", "members on the book"])
+choice(ws, "B10", ["order rows", "members who bought", "members on the customer table"])
 put(ws, "A11", "Customers under the ratio"); put(ws, "B11", "=INDEX(B5:B7,MATCH(B10,C5:C7,0))")
 put(ws, "A12", "Orders per customer"); put(ws, "B12", "=ROUND(B9/B5,2)")
 put(ws, "A13", "The check", BOLD)
@@ -130,7 +138,7 @@ put(ws, "B15", '=IF(ABS(ROUND(B12*B11,0)-B9)>1,"Fix the ratio that divides by th
                'leaves the team.",IF(B10="order rows","Every member ordered exactly once: counting rows as customers '
                'erases the frequency branch.",IF(B10="members who bought","Retail-Plus, Q2: "&B11&" members bought, '
                '"&TEXT(B12,"0.00")&" orders each.","Retail-Plus, Q2: "&TEXT(B12,"0.00")&" orders per member on the '
-               'book, which answers how often Kalpa\'s members order, whether or not they bought.")))',
+               'customer table, which answers how often Kalpa\'s members order, whether or not they bought.")))',
     VERDICT, TINT, True)
 put(ws, "A16", "Fixed, for the Export tab", NOTE)
 put(ws, "B16", '=IF(AND(B12=ROUND(B9/B11,2),B10<>"order rows"),1,0)')
@@ -159,7 +167,9 @@ put(ws, "A19", "Q2 honest ratio"); put(ws, "C19", '=SUMPRODUCT((A5:A12=C17)*(B5:
 put(ws, "A20", "Verdict", VERDICT)
 put(ws, "C20", '=IF(C14>0,"Fix the honest column, which still drops the fraction, before reading any ratio.",'
                'C17&" frequency moved from "&TEXT(C18,"0.00")&" to "&TEXT(C19,"0.00")&", "&'
-               'TEXT(ABS(C19/C18-1)*100,"0.0")&" percent "&IF(C19<C18,"down","up")&".")', VERDICT, TINT, True)
+               'TEXT(ABS((SUMPRODUCT((A5:A12=C17)*(B5:B12="Q2")*C5:C12)/SUMPRODUCT((A5:A12=C17)*(B5:B12="Q2")*D5:D12))'
+               '/(SUMPRODUCT((A5:A12=C17)*(B5:B12="Q1")*C5:C12)/SUMPRODUCT((A5:A12=C17)*(B5:B12="Q1")*D5:D12))-1)*100,"0.0")'
+               '&" percent "&IF(C19<C18,"down","up")&".")', VERDICT, TINT, True)
 put(ws, "A21", "Fixed, for the Export tab", NOTE); put(ws, "C21", "=IF(C14=0,1,0)")
 
 # ---------------------------------------------------------------- Average
@@ -191,40 +201,39 @@ put(ws, "B18", '=IF(AND(B9="spent Rs 0",ABS(B14-(C5/B5-1)*100)<0.05),1,0)')
 
 # ---------------------------------------------------------------- Sample
 ws = sheet(wb, "Sample", "Can the analyst rerun your five orders?",
-           "The first eight delivered Q2 app orders by order id. A sample is reproducible only when its order is unique.")
-head(ws, 4, ["order_id", "amount (Rs)"])
-for i, r in enumerate(sample, 5):
-    ws.cell(row=i, column=1, value=r["order_id"])
-    ws.cell(row=i, column=2, value=float(r["amount"]))
-head(ws, 4, ["Order by", "Unique in this table?"], col=4)
-put(ws, "D5", "nothing"); put(ws, "E5", "no")
-put(ws, "D6", "amount"); put(ws, "E6", "yes")
-put(ws, "D7", "order_id"); put(ws, "E7", "yes")
-put(ws, "A14", "Your ORDER BY", BOLD); put(ws, "B14", "order_id", fill=INPUT)
-choice(ws, "B14", ["nothing", "amount", "order_id"])
-put(ws, "A15", "Amounts shared by two orders"); put(ws, "B15", "=SUMPRODUCT((COUNTIF(B5:B12,B5:B12)>1)*1)")
-put(ws, "A16", "The check", BOLD)
-put(ws, "B16", '=IF(AND(E6="yes",B15>0),"The table calls amount unique, and "&B15&" orders share an amount. Fix it '
-               'first.","The uniqueness column matches the data.")', wrap=True)
-put(ws, "A18", "Verdict", VERDICT)
-put(ws, "B18", '=IF(AND(E6="yes",B15>0),"Fix the uniqueness column before choosing an order.",'
-               'IF(INDEX(E5:E7,MATCH(B14,D5:D7,0))="yes","Order by "&B14&", then LIMIT 5: the analyst gets the same '
-               'five orders on every run.","Ordering by "&B14&" leaves the five free to change between runs, so the '
-               'audit cannot be repeated."))', VERDICT, TINT, True)
-put(ws, "A19", "Fixed, for the Export tab", NOTE)
-put(ws, "B19", '=IF(AND(E6="yes",B15>0),0,IF(INDEX(E5:E7,MATCH(B14,D5:D7,0))="yes",1,0))')
+           "Five delivered Q2 app orders drawn with LIMIT 5 and no ORDER BY, on Monday and after the overnight reload rewrote two rows with their own values.")
+head(ws, 4, ["Monday, no ORDER BY", "After the reload, no ORDER BY"])
+for i, (a, b) in enumerate(zip(monday, rerun), 5):
+    ws.cell(row=i, column=1, value=a["order_id"])
+    ws.cell(row=i, column=2, value=b["order_id"])
+head(ws, 4, ["Order by", "Repeatable?"], col=4)
+put(ws, "D5", "nothing"); put(ws, "E5", "yes")
+put(ws, "D6", "order_id"); put(ws, "E6", "yes")
+put(ws, "A11", "Your ORDER BY", BOLD); put(ws, "B11", "order_id", fill=INPUT)
+choice(ws, "B11", ["nothing", "order_id"])
+put(ws, "A12", "Monday's orders the rerun drew again"); put(ws, "B12", "=SUMPRODUCT(COUNTIF(B5:B9,A5:A9))")
+put(ws, "A13", "The check", BOLD)
+put(ws, "B13", '=IF(AND(E5="yes",B12<5),"The table calls no ORDER BY repeatable, and the rerun after the reload drew "&'
+               'B12&" of Monday\'s five. Fix it first.","The repeatable column matches the two runs.")', wrap=True)
+put(ws, "A15", "Verdict", VERDICT)
+put(ws, "B15", '=IF(AND(E5="yes",B12<5),"Fix the repeatable column before choosing an order.",'
+               'IF(INDEX(E5:E6,MATCH(B11,D5:D6,0))="yes","Order by "&B11&", then LIMIT 5: the analyst gets the same '
+               'five orders on every run.","With no ORDER BY the five can change between runs, as the reload showed, so '
+               'the analyst may trace a different five."))', VERDICT, TINT, True)
+put(ws, "A16", "Fixed, for the Export tab", NOTE)
+put(ws, "B16", '=IF(AND(E5="yes",B12<5),0,IF(INDEX(E5:E6,MATCH(B11,D5:D6,0))="yes",1,0))')
 
 # ---------------------------------------------------------------- Export
 ws = sheet(wb, "Export", "Is the Retail-Plus line ready for Anand's sheet?",
            "Released only when every tab's check passes. Paste the line under the Retail-Plus row of the Monday sheet.")
 ws.column_dimensions["B"].width = 110
-put(ws, "A4", "Tabs fixed", BOLD); put(ws, "B4", "=Customers!B16+Division!C21+Average!B18+Sample!B19")
+put(ws, "A4", "Tabs fixed", BOLD); put(ws, "B4", "=Customers!B16+Division!C21+Average!B18+Sample!B16")
 put(ws, "A5", "Release", VERDICT)
 put(ws, "B5", '=IF(B4=4,"Ready for Anand\'s sheet.","Not ready: "&(4-B4)&" of the four tabs still carry a defect to '
               'fix first.")', VERDICT, TINT, True)
 put(ws, "A7", "The line for Anand", BOLD)
 put(ws, "B7", '=IF(B4=4,"Customers: "&Customers!B15&CHAR(10)&"Frequency: "&Division!C20&CHAR(10)&'
-              '"Spend: "&Average!B17&CHAR(10)&"Audit: "&Sample!B18,"The line assembles once every tab passes its '
+              '"Spend: "&Average!B17&CHAR(10)&"Audit: "&Sample!B15,"The line assembles once every tab passes its '
               'check.")', wrap=True)
 ws.row_dimensions[7].height = 90
 
