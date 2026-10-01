@@ -345,7 +345,7 @@ Transition: the answer.
 |---|---|
 | a | Numbers with no count, no caveat and no action, and credit nobody tested; a board member's first question breaks it |
 | b | Holds: number, 22 to 18 hours; denominator, 9,400 tests; period, Q2 to Q3; caveat, part may be the courier's; action, who, what, until when and at what cost |
-| c | A count with no number, no period and no action, and every word hedged, so nobody can act on it or disagree with it |
+| c | A count with no number, nothing to compare it with and no action, and every word hedged, so nobody can act on it or disagree with it |
 | d | A number and an action with no Q2 to compare and no caveat, and the action cuts the courier run whose hours sit inside the 18 |
 
 **Kavya's review.** Read your claim aloud and ask what you counted, out of what, over which window, and what would change it; if any is missing, the panel will ask for it.
@@ -1182,7 +1182,7 @@ Transition: the answers that close the deck.
 
 ---
 
-## S48. Your slot is ready when all four answers hold
+## S48. Your slot is ready when every answer here holds
 *What are the answers to the section's four questions, and to the day's?*
 
 | The question | The answer in one line |

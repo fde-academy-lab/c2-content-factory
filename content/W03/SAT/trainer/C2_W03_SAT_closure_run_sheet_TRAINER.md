@@ -241,7 +241,7 @@ the rule in the minute it is needed; a rule applied differently in the two rooms
 different marks for the same failure.
 
 **The questions on the way.** What is checked before the room opens? What is checked before each
-slot? What is the rule when a demo fails? What if the machine, rather than the code, fails?
+slot? What is the rule when a demo fails? What if the machine fails before the code runs?
 
 | Before | Who | Done when |
 |---|---|---|
@@ -258,7 +258,7 @@ The other 34 marks of the mini project are scored from the executed run, so a fa
 own marks and never the analysis. The rule sets nothing for a demo recovered inside the two
 minutes, so the panel judges how that live recovery scores within presentation and defence.
 
-### What if the machine, rather than the code, fails?
+### What if the machine fails before the code runs?
 
 If the hardware or the Codespace fails before the demo starts, the room's scribe swaps in a spare
 machine and the demo runs in the slot; if no spare works, the group presents, and its demo runs cold
