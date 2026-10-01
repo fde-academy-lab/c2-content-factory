@@ -3,13 +3,14 @@
 Week 2, Day 5. Half two.
 
 Kicker: WEEK 2  ·  FRIDAY  ·  HALF TWO
-Quote: Everything you built this week has to survive a room that only has Excel. Which parts belong in Excel, which parts must never be in Excel, and how do you keep the two from drifting apart?
+Quote: Which parts belong in Excel, which parts must never be in Excel, and how do you keep the two from drifting apart?
 Who: Kavya Nair, senior analyst, Kalpa Retail data team
 
 ```notes
 LIVE, one minute. The morning built the tree, the list, the card and the rule. The afternoon hands the
 workbook to a director: chapter 6, then the escalated case alone, the debrief of the room's wrong
 numbers, the director's edit in pairs, the interview drill, and the close.
+Transition: when a director takes the workbook in the room, what can they break, and which checks catch it before anyone reads a wrong number? The chief of staff's last condition rides on it.
 ```
 
 ---
@@ -20,18 +21,19 @@ numbers, the director's edit in pairs, the interview drill, and the close.
 ```notes
 LIVE, thirty minutes, with notebook C2_W02_D05_06_director_proof beside it; the reference workbook,
 demos/C2_W02_D05_deck_pack_STUDENT.xlsx, open in Excel.
+Transition: who changes the workbook in the room, and which six questions make it safe to hand over?
 ```
 
 ---
 
-## S1. Answer it in six steps, from the room to the release
-*Who needs the answer, and what must we find out on the way?*
+## S1. The directors take the laptop in the room
+*Who changes the workbook in the room, and which six questions make it safe to hand over?*
 
 **Who needs the answer.** The chief of staff, who hands the laptop across mid-meeting, and the head of Retail-Plus, who sizes each city's budget from the list; a total that keeps counting hidden rows sizes a budget on the whole list.
 
 ```timeline
-label: 1 | title: What will they do? | body: Five things a director does to a sheet.
-label: 2 | title: How to protect it? | body: Four ways, sized.
+label: 1 | title: How to protect it? | body: Four ways, sized.
+label: 2 | title: What will they do? | body: Five things a director does to a sheet.
 label: 3 | title: A filtered total? | body: What the foot says.
 label: 4 | title: Visible rows only? | body: SUBTOTAL, and a second route.
 label: 5 | title: An assumption? | body: Where a what-if goes.
@@ -42,12 +44,13 @@ label: 6 | title: What is released? | body: The Checks tab. | tone: dark
 LIVE, 1 minute. The morning in one line: the tree ties to the warehouse's Rs 10.00 crore and Rs 9.84
 crore, the list of fifty runs from Rs 25,840 to Rs 8,580 with a lookup that says when an id is missing,
 the card carries its period, comparison and base, and the warehouse owns every join.
+Transition: what does a silent change in the room cost the head of Retail-Plus?
 ```
 
 ---
 
 ## S2. A director will filter, sort, type and ask
-*What is at stake, who is in the room, and what does a silent change cost?*
+*What does a silent change in the room cost the head of Retail-Plus?*
 
 ```stats
 value: 50 | label: members on the list | note: Rs 7,14,890 together
@@ -60,6 +63,7 @@ value: 0 | label: errors shown | note: when a filter changes what a total means
 ```notes
 LIVE, 2 minutes. The head of Retail-Plus sizes each city's retention budget from the list. Nothing in
 Excel turns red when a filter changes what a number at the foot of a list means.
+Transition: which real company paid for rows nobody could see?
 ```
 
 ---
@@ -78,6 +82,7 @@ value: 2008 | label: the year | note: the Lehman purchase
 LIVE, 1 minute. Computerworld, 14 October 2008, checked 30 September 2026. A law firm reformatting a
 spreadsheet into a PDF for the court's website exposed hidden rows. Rows a person could not see still
 counted.
+Transition: how could the team protect the workbook, and what does each way cost?
 ```
 
 ---
@@ -92,11 +97,14 @@ counted.
 | c) Yellow inputs, formulas, a Checks tab | 5 | a red check and a release that holds |
 | d) A copy for each director | 5 | nothing: the copies drift apart |
 
-**The call.** c, the only way that lets a director do all five and turns a wrong number red before it is read. What would switch it: a board pack nobody is meant to change goes as a PDF.
+**The best-fit call.** c, the only way that lets a director do all five and turns a wrong number red before it is read.
+
+**The fact that would change it.** A board pack nobody is meant to change goes as a PDF.
 
 ```notes
 LIVE, 3 minutes. The five actions: filter, sort, type over a cell, change an assumption, paste in a new
 export. Protection and the PDF fail the brief, since nothing recalculates.
+Transition: of the five things a director does, which change what a number means with nothing shown?
 ```
 
 ---
@@ -114,10 +122,11 @@ flowchart LR
     class F,T,Y,A unknown
 ```
 
-**Question.** Which changes a number's meaning with no error, as a letter?
+**Predict before you run.** Which changes a number's meaning with no error?
 
 ```notes
 LIVE, 1 minute. Letters first.
+Transition: what does each of the five do to the sheet?
 ```
 
 ---
@@ -136,14 +145,15 @@ LIVE, 1 minute. Letters first.
 The answer is d. A yellow input is the honest way to change a number, because every formula that reads it recalculates in front of the room.
 
 ```notes
-LIVE, 2 minutes. The next two steps take the filter; step 5 takes the input; the second case after the
-break takes the typed-over cell.
+LIVE, 2 minutes. The next two steps take the filter, the step after them takes the input, and the
+second case after the break takes the typed-over cell.
+Transition: when a director filters the list to Mumbai, what does a foot of =SUM(E2:E51) read?
 ```
 
 ---
 
 ## S7. What does the foot say, filtered to Mumbai?
-*The list's foot is =SUM(E2:E51); a director filters the city column to Mumbai. What does the foot read?*
+*When a director filters the list to Mumbai, what does a foot of =SUM(E2:E51) read?*
 
 ```mermaid
 flowchart LR
@@ -155,11 +165,12 @@ flowchart LR
     class A,B,C,D unknown
 ```
 
-**Question.** What does the foot read, as a letter?
+**Predict before you run.** What does the foot read?
 
 ```notes
 LIVE, 2 minutes. Filter it live in the reference workbook's Protect tab after switching its foot to SUM
 (the tab ships with SUBTOTAL). Letters before you read the foot aloud.
+Transition: what is the plausible wrong answer, and what budget would it size?
 ```
 
 ---
@@ -173,11 +184,14 @@ value: Rs 1,56,790 | label: the eleven on screen | note: Mumbai's list
 value: 4.6 times | label: the overstatement | note: read as Mumbai's
 ```
 
-The answer is b. **What breaks:** the Mumbai store head is told the members on their list spent Rs 7.15 lakh, and a retention budget sized on it is 4.6 times too big. SUM adds every row in its range, hidden or not. **The check:** count the rows on screen beside the rows the total adds.
+The answer is b. **Why it is wrong.** SUM adds every row in its range, hidden or not, so the head of Retail-Plus is told the Mumbai members on the list spent Rs 7.15 lakh, and a Mumbai budget sized on it is 4.6 times too big. **The check that catches it.** Count the rows on screen beside the rows the total adds.
+
+**Predict before you run.** A director hides Delhi's rows by hand, with no filter on. Which foot still adds Delhi? a) SUM only; b) SUM and SUBTOTAL(9); c) SUBTOTAL(109) only; d) none of them.
 
 ```notes
 LIVE, 3 minutes. Read the foot aloud as if it were right, then ask how many members are on screen.
 Delhi carries Rs 2,21,150 on 16 members; Mumbai is the second-largest city on the list.
+Transition: what do SUBTOTAL(109) and SUBTOTAL(103) say, filtered or hidden by hand?
 ```
 
 ---
@@ -191,31 +205,33 @@ Delhi carries Rs 2,21,150 on 16 members; Mumbai is the second-largest city on th
 | `SUBTOTAL(9, ...)` | Rs 1,56,790 | Rs 7,14,890 |
 | `SUBTOTAL(109, ...)` | Rs 1,56,790 | Rs 4,93,740 |
 
-SUBTOTAL "ignores any rows that are not included in the result of a filter, no matter which function_num value you use", and 101 to 111 also ignore rows hidden by hand (Microsoft Support, SUBTOTAL, checked 30 September 2026). `=SUBTOTAL(103, A2:A51)` beside it counts 11 of 50.
+The answer is b. SUBTOTAL "ignores any rows that are not included in the result of a filter, no matter which function_num value you use", and 101 to 111 also ignore rows hidden by hand (Microsoft Support, SUBTOTAL, checked 30 September 2026). `=SUBTOTAL(103, A2:A51)` beside it counts 11 of 50.
+
+**Predict before you run.** With the Mumbai filter on, a director also hides Mumbai's smallest member by hand. Which total still reads Rs 1,56,790? a) SUBTOTAL(109) only; b) SUMIFS on the city only; c) both; d) neither.
 
 ```notes
 LIVE, 2 minutes. On LibreOffice 24.2.7.2, SUM over three rows with one hidden by hand gave 60 and
 SUBTOTAL(109) gave 40: the same rule. The label beside the foot says which rows it adds.
+Transition: does a total that reads the city, and never the screen, agree with the foot?
 ```
 
 ---
 
 ## S10. A second route: SUMIFS on the city
-*Does a total that ignores the filter altogether agree with the foot?*
+*Does a total that reads the city, and never the screen, agree with the foot?*
 
-```mermaid
-flowchart LR
-    F["<b>SUBTOTAL(109)</b><br/>under the filter"] --> A["<b>Rs 1,56,790</b>"]
-    S["<b>SUMIFS on city = Mumbai</b><br/>no filter"] --> A
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class A known
-```
+| What the director has done | SUBTOTAL(109), the screen | SUMIFS, the city |
+|---|---|---|
+| Filtered to Mumbai | Rs 1,56,790 | Rs 1,56,790 |
+| Filtered, and one Mumbai row hidden by hand | Rs 1,47,400 | Rs 1,56,790 |
 
-`=SUMIFS(E2:E51, C2:C51, "Mumbai")` reads the whole list and picks Mumbai by its city, whatever the screen shows. It gives Rs 1,56,790, the same as the visible foot.
+The answer is b. `=SUMIFS(E2:E51, C2:C51, "Mumbai")` reads the whole list and picks Mumbai by its city, whatever the screen shows. With only the filter on, the two agree; once Mumbai's smallest member, Rs 9,390, is also hidden by hand, the foot drops and SUMIFS does not, so a gap between them says the screen shows less than the whole city.
 
 ```notes
-LIVE, 2 minutes. The second route does not depend on the filter, so it can disagree with the foot. Put
-it on the Checks tab as the foot's partner.
+LIVE, 2 minutes. The second route does not depend on the screen, so it can disagree with the foot,
+and here it does the moment someone hides a row by hand. Before reading a foot aloud, ask what else
+was hidden.
+Transition: a director asks what a Rs 500 voucher for every member on the list would cost; where does the Rs 500 go?
 ```
 
 ---
@@ -227,11 +243,12 @@ it on the Checks tab as the foot's partner.
 =B1*SUBTOTAL(103, A2:A51)
 ```
 
-**Question.** With the list filtered to Mumbai and the voucher at Rs 500 in yellow cell B1, the cost reads: a) Rs 25,000; b) Rs 5,500; c) Rs 500; d) Rs 7,14,890.
+**Predict before you run.** With the list filtered to Mumbai and the voucher at Rs 500 in yellow cell B1, the cost reads: a) Rs 25,000; b) Rs 5,500; c) Rs 500; d) Rs 7,14,890.
 
 ```notes
 LIVE, 2 minutes. The voucher is an assumption, so it gets a yellow cell, and the cost is a formula that
 reads it and the rows on screen.
+Transition: what happens when the director changes the input?
 ```
 
 ---
@@ -248,11 +265,12 @@ flowchart LR
     class Y,Y2 known
 ```
 
-The answer is b: Rs 500 times the eleven on screen; the whole list would cost Rs 25,000. The director types Rs 750 and the cost becomes Rs 8,250 in front of the room, while the list's figures never change: the assumption sits beside them, never over them.
+The answer is b: Rs 500 times the eleven on screen; the whole list would cost Rs 25,000. The director types Rs 750 and the cost becomes Rs 8,250 in front of the room. The list's figures stay as they were, because the assumption sits in its own yellow cell and the list keeps its formulas.
 
 ```notes
 LIVE, 3 minutes. Change B1 live. This is the chief of staff's condition met: the sheet recalculates and
 the source is untouched.
+Transition: five checks each compare the sheet with something outside it; what does the release hold when one fails?
 ```
 
 ---
@@ -268,11 +286,12 @@ the source is untouched.
 | The foot follows the filter | SUBTOTAL(103) against the rows the foot adds | SUM under a filter |
 | No typed-over formula | ISFORMULA outside the yellow inputs | a figure typed over a formula |
 
-**Question.** Four checks pass and the list's source does not tie. The release: a) ships everything; b) holds the list, ships the rest; c) holds everything; d) cannot decide.
+**Predict before you run.** Four checks pass and the list's source does not tie. The release: a) ships everything; b) holds the list, ships the rest; c) holds everything; d) cannot decide.
 
 ```notes
 LIVE, 2 minutes. ISFORMULA "checks whether there is a reference to a cell that contains a formula, and
 returns TRUE or FALSE" (Microsoft Support, checked 30 September 2026). Letters first.
+Transition: what does each failing check hold, and why is a typed-over figure different?
 ```
 
 ---
@@ -289,35 +308,37 @@ flowchart LR
     class W bad
 ```
 
-The answer is b: "Hold the protect list; ship the rest." A figure typed over a formula holds the whole workbook, since nobody can say which other numbers it moved. A formula recalculating is never the same as the number being right, so the release reads the checks and nothing else.
+The answer is b: "Hold the protect list; ship the rest." A figure typed over a formula holds the whole workbook, since nobody can say which other numbers it moved. Formulas recalculate whether or not their inputs tie, so the release reads the checks and nothing else.
 
 ```notes
 LIVE, 2 minutes. The notebook shows the release deciding on invented inputs; the real Checks tab runs
 in the escalated case. The note that goes with a HOLD names what does not tie and asks for the export
 to be rerun.
+Transition: what can a director break, and which checks catch it?
 ```
 
 ---
 
 ## S15. A sheet a director can change and cannot break
-*What did chapter 6 answer, question by question?*
+*What can a director break, and which checks catch it?*
 
 | Question | Answer |
 |---|---|
-| What will they do? | Filter, sort, type over, change inputs, paste exports |
 | How to protect it? | c: yellow inputs, formulas, a Checks tab |
+| What will they do? | Filter, sort, type over, change inputs, paste |
 | A filtered total? | SUM still reads Rs 7,14,890 |
-| Visible rows only? | SUBTOTAL(109) Rs 1,56,790; SUMIFS agrees |
-| An assumption? | A yellow input: Rs 500 costs Rs 5,500 for Mumbai |
+| Visible rows only? | SUBTOTAL(109), Rs 1,56,790 for eleven |
+| An assumption? | A yellow input: Rs 5,500 for Mumbai |
 | What is released? | Hold what fails, ship the rest |
 
-**Kavya's review.** "A director who filters, sorts or asks a what-if should see the right numbers move, and see a wrong one turn red before anyone reads it out."
+**Kavya's review.** "A director who filters, sorts or asks a what-if should see the right numbers move and a wrong one turn red."
 
 **In the interview.** [F] You filter a list and its total does not move; what is the foot doing?
 
 ```notes
 LIVE, 2 minutes. One learner answers aloud: adding hidden rows, SUM; SUBTOTAL(109) adds what is on
 screen, SUBTOTAL(103) counts it; Mumbai Rs 7,14,890 against Rs 1,56,790.
+Transition: can you build the three deliverables and the Checks tab from the two exports, alone? The chief of staff opens it on Monday.
 ```
 
 ---
@@ -329,6 +350,7 @@ screen, SUBTOTAL(103) counts it; Mumbai Rs 7,14,890 against Rs 1,56,790.
 LIVE, fifty minutes, unguided. The support TA answers environment problems only. The brief is
 exercises/unguided/C2_W02_D05_escalated_STUDENT.md; the notebook is
 notebooks/C2_W02_D05_ex1_escalated_case_STUDENT.ipynb. Solutions open at the debrief.
+Transition: what does the chief of staff want, and how long does each part take?
 ```
 
 ---
@@ -340,14 +362,16 @@ notebooks/C2_W02_D05_ex1_escalated_case_STUDENT.ipynb. Solutions open at the deb
 
 | Part | The question it answers | Minutes |
 |---|---|---|
-| 1 | Does the tree for both quarters tie to the warehouse? | 12 |
+| 1 | Does the tree for both quarters tie to the warehouse? | 10 |
 | 2 | Does the list hold the right fifty, and does the lookup say when an id is missing? | 10 |
 | 3 | Does the card carry its period, comparison and base, for any scope? | 10 |
-| 4 | What ships on Monday, and what is held? | 5 |
+| 4 | What ships on Monday, and what, if anything, is held? | 10 |
 | 5 | Do the numbers agree a second way? | 10 |
 
 ```notes
-LIVE, 3 minutes. Read the brief aloud, point at the five parts and start the clock: 47 minutes of work.
+LIVE, the brief takes 3 minutes of the section's opening; then start the clock for the brief's 50
+minutes of work, ten for each part.
+Transition: which checks must the file pass before it goes to Monday?
 ```
 
 ---
@@ -362,10 +386,11 @@ icon: circle-check | eyebrow: Check 3 | title: The lookup is honest | body: It s
 icon: circle-check | eyebrow: Check 4 | title: The release says it | body: What ships, what is held, and why. | tone: dark
 ```
 
-**Kavya's review.** A deliverable that fails its check is held with its reason, never shipped with a footnote.
+**Kavya's review.** "A deliverable that fails its check is held, and the note says why."
 
 ```notes
-SELF-STUDY, leave on screen during the case. The reference workbook in demos/ has exactly this tab.
+SELF-STUDY, on screen for the case's 50 minutes. The reference workbook in demos/ has this tab.
+Transition: which wrong numbers did this room produce, in the order the day produced them? Every one was plausible.
 ```
 
 ---
@@ -374,8 +399,9 @@ SELF-STUDY, leave on screen during the case. The reference workbook in demos/ ha
 *Which wrong numbers did this room produce, in the order the day produced them? Every one was plausible.*
 
 ```notes
-LIVE, fifteen minutes. Collect the room's wrong numbers during the case and show the ones that actually
-appeared; the table on S18 is the list most rooms produce.
+LIVE, fifteen minutes. Collect the room's wrong numbers during the case and show the ones that
+appeared; the table on the next slide is the list most rooms produce.
+Transition: which wrong numbers appeared, and what would each have done?
 ```
 
 ---
@@ -396,12 +422,13 @@ appeared; the table on S18 is the list most rooms produce.
 ```notes
 LIVE, 6 minutes. Walk down the table and, for each row, ask who produced it during the case. No
 shaming: each is the number a hurried sheet shows.
+Transition: if the list's export does not tie while the tree and the card do, what does the Checks tab hold?
 ```
 
 ---
 
 ## S19. Which part does the release hold?
-*The tree and the card tie; the list comes from a different export. If that export does not tie, what does the Checks tab hold?*
+*If the list's export does not tie while the tree and the card do, what does the Checks tab hold?*
 
 ```mermaid
 flowchart LR
@@ -413,10 +440,11 @@ flowchart LR
     class A,B,C,D unknown
 ```
 
-**Question.** Which part does the Checks tab hold, as a letter?
+**Predict before you run.** Which part does the Checks tab hold?
 
 ```notes
 LIVE, 2 minutes. Letters. Those who did chapter 3's your-turn step should know.
+Transition: what goes to the data platform lead, and what does the chief of staff hear?
 ```
 
 ---
@@ -434,11 +462,12 @@ flowchart LR
     class C,L unknown
 ```
 
-The answer is b. A list built on a table that does not tie waits, with a note to the data platform lead that names the gap and asks for the export to be rerun. Option d is the afternoon's trap: formulas recalculating is not the same as numbers being right.
+The answer is b. A list built on a table that does not tie waits, with a note to the data platform lead that names the gap and asks for the export to be rerun. Option d is the afternoon's trap: formulas recalculate whether or not their inputs tie.
 
 ```notes
 LIVE, 7 minutes. TRAINER: the day sheet has what the room found and the consequence to say aloud now,
 since the room has found it. BREAK, 10 minutes, after this slide.
+Transition: a director wants five lakh typed into the source; can the sheet show that number and still be the one Finance signs? Pairs defend the rule, then swap.
 ```
 
 ---
@@ -447,15 +476,17 @@ since the room has found it. BREAK, 10 minutes, after this slide.
 *A director wants five lakh typed into the source; can the sheet show that number and still be the one Finance signs? Pairs defend the rule, then swap.*
 
 ```notes
-LIVE, forty minutes in pairs: one plays the director, one defends the rule, then they swap. The brief is
-exercises/unguided/C2_W02_D05_director_edit_STUDENT.md; the notebook is
+LIVE, forty minutes in pairs: the notebook 15, the role play 15 with one round each way, the three
+lines 10. One partner plays the director, one defends the rule, then they swap. The brief is
+exercises/unguided/C2_W02_D05_director_STUDENT.md; the notebook is
 notebooks/C2_W02_D05_ex2_second_case_STUDENT.ipynb.
+Transition: what does the director ask, with the sheet on the projector?
 ```
 
 ---
 
-## S21. Answer it by saying yes to the question
-*What does the director ask, in the room, with the sheet on the projector?*
+## S21. The director asks for five lakh in the room
+*What does the director ask, with the sheet on the projector?*
 
 > "Retail-Plus will be back at five lakh next quarter; I have spoken to the team. Type five lakh into Q2 so the card stops frightening people, and fix the source later." A director of Kalpa Retail
 
@@ -463,7 +494,8 @@ notebooks/C2_W02_D05_ex2_second_case_STUDENT.ipynb.
 
 ```notes
 LIVE, 3 minutes. Read it in the director's voice. The request is reasonable in a meeting and corrosive in
-a file. The pair's job: yes to the question, no to the edit.
+a file. The pair's job is to answer the question and refuse the edit.
+Transition: what does the card show after the edit, and what happens on Monday's refresh?
 ```
 
 ---
@@ -483,14 +515,16 @@ flowchart LR
 For a week the deck says Retail-Plus fell 14.6 percent while Finance's books say 29.4. The sheet's Q2 total drifts Rs 86,620 from the warehouse's Rs 9,84,00,000; then the refresh restores the export, and nobody can say why the two differed.
 
 ```notes
-LIVE, 4 minutes. Notebook ex2, steps 1 to 4. The drift check that catches it is the sheet's Q2 total
-against the warehouse's; the typed-over check is ISFORMULA on the cell.
+LIVE, 4 minutes, inside the notebook's 15. Notebook ex2, steps 1 to 4. The drift check that catches it
+is the sheet's Q2 total against the warehouse's control total, live on the Checks tab; the typed-over
+check is ISFORMULA on the cell.
+Transition: where does the director's five lakh go, so the card shows it and the source stays Finance's?
 ```
 
 ---
 
 ## S23. Where does "five lakh" belong in the sheet?
-*The question is legitimate; the edit is not. Where does the director's number go?*
+*Where does the director's five lakh go, so the card shows it and the source stays Finance's?*
 
 ```mermaid
 flowchart LR
@@ -502,10 +536,11 @@ flowchart LR
     class A,B,C,D unknown
 ```
 
-**Question.** Where does it belong, as a letter?
+**Predict before you run.** Where does it belong?
 
 ```notes
 LIVE, 2 minutes. Letters, then each pair says why their letter survives the director's pushback.
+Transition: what does the card show, and what does each line come from?
 ```
 
 ---
@@ -521,8 +556,9 @@ LIVE, 2 minutes. Letters, then each pair says why their letter survives the dire
 The answer is b. The director gets the number to discuss, the card keeps the number Finance signs, and both carry their labels. Option d is how a team ends up with directors typing over cells anyway; option c edits the source of truth.
 
 ```notes
-LIVE, 4 minutes. Then the role play: 10 minutes each way, walking the room. Listen for anyone who says
-no to the question as well as to the edit.
+LIVE, 4 minutes, closing the notebook's 15. Then the role play: 15 minutes, one round each way,
+walking the room. Listen for anyone who refuses the question as well as the edit.
+Transition: what does one partner say to the director?
 ```
 
 ---
@@ -533,14 +569,14 @@ no to the question as well as to the edit.
 ```timeline
 label: Line 1 | title: Yes to the question | body: I will show five lakh as your scenario, beside the actual.
 label: Line 2 | title: No to the edit | body: The actual comes from the export Finance ties to; typing over it breaks that tie.
-label: Line 3 | title: The check | body: Every refresh ties the sheet back to the warehouse, so a drift shows the same day. | tone: dark
+label: Line 3 | title: The check | body: The Checks tab compares the sheet with the warehouse's totals as it recalculates, so a drift shows at once. | tone: dark
 ```
 
 **In the interview.** [D] A director wants to type over the source in the room; what do you say, and what do you build?
 
 ```notes
-LIVE, 27 minutes across the role play and the notebook: 20 for the two rounds, 7 for the notebook's
-five letters. Close with one pair's three lines aloud.
+LIVE, the three lines' 10 minutes: each pair writes its three lines, then one pair says them aloud.
+Transition: can you answer twelve screen questions aloud, each in under a minute?
 ```
 
 ---
@@ -550,6 +586,7 @@ five letters. Close with one pair's three lines aloud.
 
 ```notes
 LIVE, twenty minutes in pairs: one asks, one answers in under a minute, then swap.
+Transition: which questions does a screen ask, and with which tags?
 ```
 
 ---
@@ -576,6 +613,7 @@ LIVE, twenty minutes in pairs: one asks, one answers in under a minute, then swa
 LIVE, 16 minutes. Tags: [S] staple, [F] frequent in GCC and product screens, [D] differentiator, the
 programme's own calibration for 0 to 3 year candidates. The design question is the export growing a
 hundredfold.
+Transition: what goes into a one-minute answer?
 ```
 
 ---
@@ -596,6 +634,7 @@ flowchart LR
 
 ```notes
 LIVE, 4 minutes. Read the example aloud and ask one pair to redo their weakest answer in this shape.
+Transition: what can the chief of staff trust on Monday? The sentence, the day's six lines, the Kahoot and tomorrow.
 ```
 
 ---
@@ -605,6 +644,7 @@ LIVE, 4 minutes. Read the example aloud and ask one pair to redo their weakest a
 
 ```notes
 LIVE, fifteen minutes: the sentence (2), the six lines (2), the Kahoot (9), tomorrow (2).
+Transition: what does the team send the chief of staff?
 ```
 
 ---
@@ -627,6 +667,7 @@ flowchart LR
 LIVE, 2 minutes. Two learners read their own sentences, with what their own Checks tab released; check
 each for the number, the period, the comparison, what is held and why. The day sheet has the release
 this room's workbook should give.
+Transition: which six lines do the cheat sheet and the notes repeat word for word?
 ```
 
 ---
@@ -643,6 +684,7 @@ this room's workbook should give.
 
 ```notes
 LIVE, 2 minutes. Read them once. They are on the cheat sheet's panels in this order.
+Transition: what does the room still get wrong, fast?
 ```
 
 ---
@@ -665,6 +707,7 @@ flowchart LR
 ```notes
 LIVE, 9 minutes. Run kahoot/C2_W02_D05_quiz_STUDENT.md. The return question is Thursday's merge one level
 up.
+Transition: what comes next, and which question is left open?
 ```
 
 ---
@@ -682,4 +725,5 @@ icon: circle-help | eyebrow: Left open | title: Monday's question | body: What i
 LIVE, 2 minutes. Dr Priya Menon, COO of Kalpa Health, brings Meera's question to a diagnostics business
 whose laboratories test US patients and bill US payers, run from Kalpa's GCC. Leave the last card's
 question open. The pre-read for Monday ships tonight.
+Transition: the end of the day; the pre-read for Monday ships tonight.
 ```

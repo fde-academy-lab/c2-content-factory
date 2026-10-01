@@ -12,6 +12,7 @@ question climbed in six chapters: what can a director open on Monday without a l
 room, and still trust. Five chapters this morning, the sixth after lunch, then the escalated case
 alone and the director's edit in pairs. Excel is the tool the room holds today; the notebooks are the
 second route to every number.
+Transition: what can a director open on Monday without a login, change in the room, and still trust?
 ```
 
 ---
@@ -74,13 +75,14 @@ flowchart LR
     class W known
 ```
 
-**Question.** Where would you check first, as a letter? a) the export: what one row stands for; b) the workbook: which rows a total adds; c) the director: what a number is read against; d) the warehouse itself.
+**Predict before you run.** Where would you check first? a) the export: what one row stands for; b) the workbook: which rows a total adds; c) the director: what a number is read against; d) the warehouse itself.
 
 ```notes
 LIVE, 7 minutes. Draw this on the board with the room and leave it up all day: it is the day's
 picture. Pairs, two minutes: one way each box could produce a wrong number that raises no error.
 Expect: rows that are payments, a lookup that answers wrong, a total under a filter, a card with no
 period. The point is the list; the letter comes next.
+Transition: where does the day start, and what does the finished picture look like?
 ```
 
 ---
@@ -98,7 +100,7 @@ flowchart LR
     class W known
 ```
 
-The answer is a, for cost more than likelihood: saying what one row stands for takes a minute and rules a whole family of wrong numbers in or out. The dashed arrow is the day's discipline: every number in the workbook ties back to the warehouse before a director reads it.
+The answer is a: saying what one row stands for takes a minute and rules a family of wrong numbers in or out. The dashed arrow is the check the day keeps: every number in the workbook ties back to the warehouse before a director reads it.
 
 ```notes
 LIVE, 5 minutes. This is the finished picture; the cheat sheet's first panel and the board carry the
@@ -115,18 +117,19 @@ Transition: chapter 1, the first deliverable, from the table Marketing already h
 ```notes
 LIVE, thirty minutes, with notebook C2_W02_D05_01_segment_tree beside it as the second route.
 Excel live on data/C2_W02_D05_customer_table_STUDENT.csv.
+Transition: who needs the tree by segment, and which six questions build it?
 ```
 
 ---
 
-## S5. Answer it in six steps, from one row to the tree
-*Who needs the answer, and what must we find out on the way?*
+## S5. The chief of staff needs a tree that multiplies back
+*Who needs the tree by segment, and which six questions build it?*
 
 **Who needs the answer.** The chief of staff, whose tree by segment is page two of Monday's deck; a leaf computed the wrong way puts a tree on the page that does not multiply back to its own revenue.
 
 ```timeline
-label: 1 | title: One row? | body: What one row of the table stands for.
-label: 2 | title: Which way? | body: Pivot, formula grid, pasted values or a dashboard.
+label: 1 | title: Which way? | body: Pivot, formula grid, pasted values or a dashboard.
+label: 2 | title: One row? | body: What one row of the table stands for.
 label: 3 | title: Which segment? | body: Who carries the revenue.
 label: 4 | title: Which leaf? | body: What separates Retail-Plus from Retail-Core.
 label: 5 | title: Averaged leaf? | body: What averaging per customer does.
@@ -137,12 +140,13 @@ label: 6 | title: Quarters? | body: Whether the table can split Q1 from Q2. | to
 LIVE, 1 minute. Read the six smaller questions; they are the notebook's headings and the chapter's
 objectives. Ask the room to hold one number in mind for question 4: how much more a Retail-Plus
 member spends than a Retail-Core shopper.
+Transition: what does a wrong leaf cost on page two, and which real retailer splits revenue by member tier?
 ```
 
 ---
 
-## S6. The tree by segment is page two of Monday's deck
-*What is at stake, who asks, and what does a wrong leaf cost?*
+## S6. Page two is the tree; Costco splits sales by tier
+*What does a wrong leaf cost on page two, and which real retailer splits revenue by member tier?*
 
 ```stats
 value: Revenue | label: the metric | note: booked order value, April to September
@@ -150,45 +154,25 @@ value: Chief of staff | label: who asks | note: page two of Monday's deck
 value: Trust | label: what a wrong leaf costs | note: a tree that does not multiply back
 ```
 
-```mermaid
-flowchart LR
-    R["<b>revenue</b>"] --> C["<b>customers</b>"]
-    R --> F["<b>orders per customer</b>"]
-    R --> O["<b>revenue per order</b>"]
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class R known
-```
-
-```notes
-LIVE, 2 minutes. Revenue here is booked order value: every order at its price, whatever became of it.
-The tree is Week 1 Monday's: customers times orders per customer times revenue per order. The
-segments: Retail-Core, everyday shoppers; Retail-Plus, the paid membership tier; Business, corporate
-buyers invoiced in large amounts; Student. The first director who multiplies a leaf back and gets a
-different revenue stops trusting page three.
-```
-
----
-
-## S7. Costco reports its sales by member tier
-*Which real company answers the same question?*
-
-```stats
-value: 81.0 m | label: paid members | note: Costco, year to 31 August 2025
-value: 38.7 m | label: Executive members | note: the paid upgrade tier
-value: ~73.6% | label: of net sales | note: from the Executive tier
-```
+Revenue is customers times orders per customer times revenue per order, the tree from Week 1.
 
 > "The sales penetration of Executive members represented approximately 73.6% of worldwide net sales in 2025." Costco Form 10-K, fiscal 2025
 
 ```notes
-LIVE, 1 minute. Source: Costco's 10-K for the year to 31 August 2025, on sec.gov, checked 30 September
-2026. Say "approximately" as the filing does. The question is the one Kalpa asks of Retail-Plus: how
-much revenue does the paid tier carry, and through which leaf.
+LIVE, 3 minutes. Revenue here is booked order value: every order at its price, whatever became of it.
+The segments: Retail-Core, everyday shoppers; Retail-Plus, the paid membership tier; Business,
+corporate buyers invoiced in large amounts; Student. The first director who multiplies a leaf back and
+gets a different revenue stops trusting page three.
+Costco's 10-K for the year to 31 August 2025, on sec.gov, checked 30 September 2026: 81.0 million paid
+members, 38.7 million of them Executive, the paid upgrade tier. Say "approximately" as the filing
+does. The question is the one Kalpa asks of Retail-Plus: how much revenue does the paid tier carry,
+and through which leaf.
+Transition: which way should the director get the tree, and what does each way cost on this table?
 ```
 
 ---
 
-## S8. A PivotTable, with each leaf beside it
+## S7. A PivotTable, with each leaf beside it
 *Which way should the director get the tree, and what does each way cost on this table?*
 
 | Option | What it takes here | What a director can slice | Recalculates |
@@ -198,17 +182,20 @@ much revenue does the paid tier carry, and through which leaf.
 | c) Pasted values | 0 formulas | nothing | never |
 | d) Live dashboard | a query per view | anything | needs a login |
 
-**The call.** a, because a director re-slices in the room and only the pivot answers a question nobody built. What would switch it: a director who changes an assumption, since a pivot waits for Refresh and a formula does not; chapter 6.
+**The best-fit call.** a, because a director re-slices in the room and only the pivot answers a question nobody built.
+
+**The fact that would change it.** A director who changes an assumption, since a pivot waits for Refresh and a formula does not; chapter 6.
 
 ```notes
 LIVE, 4 minutes. The sizing is on this table: 300 rows, 6 columns; 4 segments times 3 measures is 12
 formulas, each reading 300 rows. Option d fails the brief on the login. Ask which option a director
 would break first; hold the answer for chapter 6.
+Transition: before any pivot, what is the grain of this table?
 ```
 
 ---
 
-## S9. What does one row of the customer table stand for?
+## S8. What does one row of the customer table stand for?
 *Before any pivot, what is the grain of this table?*
 
 ```mermaid
@@ -222,15 +209,16 @@ flowchart LR
     class A,B,C,D unknown
 ```
 
-**Question.** One row of this table is which, as a letter?
+**Predict before you run.** One row of this table is which?
 
 ```notes
 LIVE, 1 minute. Letters in the chat. Open the CSV in Excel and scroll it while they answer.
+Transition: what does the count say?
 ```
 
 ---
 
-## S10. Answer: one customer, so a Sum adds each once
+## S9. Answer: one customer, so a Sum adds each once
 *What does the count say?*
 
 ```stats
@@ -239,16 +227,17 @@ value: 300 | label: distinct ids | note: one per row
 value: 6 | label: columns | note: id, segment, city, orders, revenue, last order date
 ```
 
-The answer is b. Each row is one customer who ordered between April and September 2026, with that customer's orders and revenue summed. **The check:** rows equal distinct ids, 300 and 300.
+The answer is b. Each row is one customer who ordered between April and September 2026, with that customer's orders and revenue summed, and rows equal distinct ids, 300 and 300.
 
 ```notes
 LIVE, 2 minutes. In Excel: =COUNTA(A2:A301) and a distinct count beside it. The habit is what
 matters: the grain is said aloud before any pivot, because chapter 2's export will not be so kind.
+Transition: with segment in Rows and revenue in Values, whose bar is longest?
 ```
 
 ---
 
-## S11. Which segment carries the revenue?
+## S10. Which segment carries the revenue?
 *With segment in Rows and revenue in Values, whose bar is longest?*
 
 ```mermaid
@@ -261,17 +250,18 @@ flowchart LR
     class A,B,C,D unknown
 ```
 
-**Question.** Which segment carries most of the revenue, as a letter?
+**Predict before you run.** Which segment carries most of the revenue?
 
 ```notes
 LIVE, 1 minute. Build it live: select the table, Insert, PivotTable, segment to Rows, customer_id to
 Values (Excel counts text), orders and revenue to Values (Excel sums numbers by default, Microsoft
 Support, checked 30 September 2026). Take letters before you drag revenue in.
+Transition: what does the pivot show, segment by segment?
 ```
 
 ---
 
-## S12. Answer: Business carries 99.1 percent
+## S11. Answer: Business carries 99.1 percent
 *What does the pivot show, segment by segment?*
 
 | Segment | Customers | Orders | Revenue | Share |
@@ -286,11 +276,12 @@ The answer is c. Thirty-nine corporate buyers carry the half-year, so any compan
 ```notes
 LIVE, 2 minutes. Point at the share column: Student rounds to 0.0 percent. Ask what a company-wide
 revenue number can say about members. Almost nothing, and chapter 4 has to live with that.
+Transition: a Retail-Plus member spends more across the half-year; which leaf of the tree says why?
 ```
 
 ---
 
-## S13. Which leaf separates Retail-Plus from Retail-Core?
+## S12. Which leaf separates Retail-Plus from Retail-Core?
 *A Retail-Plus member spends more across the half-year; which leaf of the tree says why?*
 
 ```mermaid
@@ -303,16 +294,17 @@ flowchart LR
     class A,B,C,D unknown
 ```
 
-**Question.** Which leaf explains most of the gap in revenue per member, as a letter?
+**Predict before you run.** Which leaf explains most of the gap in revenue per member?
 
 ```notes
 LIVE, 1 minute. In Excel, two formulas beside the pivot: orders divided by customers, revenue divided
 by orders, each reading the pivot's own sums. Letters first.
+Transition: what do the leaves say, with Retail-Core at 100?
 ```
 
 ---
 
-## S14. Answer: the basket, 48.5 percent bigger
+## S13. Answer: the basket, 48.5 percent bigger
 *What do the leaves say, with Retail-Core at 100?*
 
 ```mermaid
@@ -324,7 +316,7 @@ flowchart LR
     class O known
 ```
 
-The answer is c. A Retail-Plus member spends Rs 9,221 across the half-year against Retail-Core's Rs 5,644, 63 percent more: orders per customer are 10 percent higher, revenue per order 48.5 percent higher. **The check:** each tree multiplies back to its revenue, 106 times 3.29 times Rs 2,801 is Rs 9.77 lakh.
+The answer is c. A Retail-Plus member spends Rs 9,221 across the half-year against Retail-Core's Rs 5,644, 63 percent more: orders per customer are 10 percent higher, revenue per order 48.5 percent higher. Each tree multiplies back to its revenue: 106 times 3.29 times Rs 2,801 is Rs 9.77 lakh.
 
 ```notes
 LIVE, 2 minutes. Multiply back aloud. The paid tier's members fill bigger baskets; hold that thought
@@ -334,7 +326,7 @@ Transition: now the way a hurried analyst builds the same leaf.
 
 ---
 
-## S15. What does a leaf averaged per customer say?
+## S14. What does a leaf averaged per customer say?
 *What happens when a per-customer ratio column is dragged into the pivot?*
 
 | The move | What the pivot shows for Business |
@@ -343,16 +335,17 @@ Transition: now the way a hurried analyst builds the same leaf.
 | Switch the field to Average | ? |
 | Revenue divided by orders, the tree's leaf | Rs 10,45,740 |
 
-**Question.** The Average reads about: a) exactly Rs 10,45,740; b) a little below it; c) about 12 percent above it; d) about twice it.
+**Predict before you run.** The Average reads about: a) exactly Rs 10,45,740; b) a little below it; c) about 12 percent above it; d) about twice it.
 
 ```notes
 LIVE, 1 minute. Build it live: add =E2/D2 as a column, drag it in, watch Excel sum it, switch to
 Average. Take letters before the value shows.
+Transition: why is the averaged leaf the plausible wrong answer, and what catches it?
 ```
 
 ---
 
-## S16. Answer: Rs 11,66,786, and the tree fails
+## S15. Answer: Rs 11,66,786, and the tree fails
 *Why is the averaged leaf the plausible wrong answer, and what catches it?*
 
 ```stats
@@ -361,17 +354,20 @@ value: Rs 10,45,740 | label: revenue over orders | note: the tree's leaf
 value: +Rs 2.28 cr | label: the multiply-back error | note: 188 orders times the averaged leaf
 ```
 
-The answer is c, 11.6 percent high. **What breaks:** 39 times 4.82 times Rs 11.67 lakh rebuilds Business at Rs 21.94 crore against the Rs 19.66 crore it sold, and the director who checks stops trusting the page. **Why:** the average gives each customer one vote, and Business baskets range twentyfold, Rs 3.34 lakh to Rs 66.98 lakh.
+The answer is c, 11.6 percent high. **Why it is wrong.** The average gives each customer one vote, and Business baskets range twentyfold, Rs 3.34 lakh to Rs 66.98 lakh, so 39 times 4.82 times Rs 11.67 lakh rebuilds Business at Rs 21.94 crore against the Rs 19.66 crore it sold, and the director who checks stops trusting the page.
+
+**The check that catches it.** Multiply the tree back to its revenue before it goes on a page.
 
 ```notes
-LIVE, 4 minutes. The check that catches it is the multiply-back from S14. The consumer segments barely
+LIVE, 4 minutes. The check is the multiply-back from the leaf slide. The consumer segments barely
 move (Core Rs 1,884 against Rs 1,886) because their baskets are alike; the averaged leaf is wrong
 everywhere and badly wrong where customers differ most in size.
+Transition: what changes when the leaf is revenue divided by orders?
 ```
 
 ---
 
-## S17. The fix: a ratio of the pivot's own sums
+## S16. The fix: a ratio of the pivot's own sums
 *What changes when the leaf is revenue divided by orders?*
 
 ```mermaid
@@ -383,39 +379,22 @@ flowchart LR
     class M known
 ```
 
-A formula beside the pivot, or a calculated field `=revenue/orders`: "Formulas for calculated fields operate on the sum of the underlying data" (Microsoft Support, checked 30 September 2026). **What changed:** Business falls from Rs 11,66,786 to Rs 10,45,740 an order and the tree multiplies back exactly.
+A formula beside the pivot, or a calculated field `=revenue/orders`: "Formulas for calculated fields operate on the sum of the underlying data" (Microsoft Support, checked 30 September 2026). **What changed.** Business falls from Rs 11,66,786 to Rs 10,45,740 an order and the tree multiplies back exactly.
+
+**Predict before you run.** Can this table split Q1 from Q2? a) split on the last order date; b) halve each customer's revenue; c) it cannot; d) the orders column counts per quarter.
 
 ```notes
-LIVE, 2 minutes. Show both ways in Excel. A JPMorgan Chase task force found a risk spreadsheet that
+LIVE, 3 minutes. Show both ways in Excel. A JPMorgan Chase task force found a risk spreadsheet that
 "divided by their sum instead of their average, as the modeler had intended" (report of 16 January
-2013, page 128, checked 30 September 2026): a ratio on the wrong total at a bank's scale.
+2013, page 128, checked 30 September 2026): a related failure, a ratio on the wrong total at a bank's
+scale. Then the predict: the chief of staff asked for both quarters. Option a is the tempting one; ask
+what happens to a customer who bought every month and once more in September.
+Transition: what would the split on the last order date put in Q2?
 ```
 
 ---
 
-## S18. Can this table split Q1 from Q2?
-*With only a last order date, can the half-year be split into quarters?*
-
-```mermaid
-flowchart LR
-    T["<b>customer table</b><br/>no quarter column"] --> A["a) split on the<br/>last order date"]
-    T --> B["b) halve each<br/>customer's revenue"]
-    T --> C["c) it cannot"]
-    T --> D["d) orders counts<br/>per quarter"]
-    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    class A,B,C,D unknown
-```
-
-**Question.** How does this table give Q1 against Q2, as a letter?
-
-```notes
-LIVE, 1 minute. Option a is the tempting one. Ask what happens to a customer who bought every month
-and once more in September.
-```
-
----
-
-## S19. Answer: it cannot; the last order date is a recency
+## S17. Answer: it cannot; the last order date is a recency
 *What would the split on the last order date put in Q2?*
 
 ```stats
@@ -429,17 +408,18 @@ The answer is c. A customer who bought in both quarters moves the whole half-yea
 ```notes
 LIVE, 1 minute. This is the question chapter 1's answer raises: the chief of staff asked for both
 quarters, and the only export with order dates is the raw one.
+Transition: does a method that never touches the pivot reach the same twelve cells?
 ```
 
 ---
 
-## S20. A second route: a plain count of the CSV
+## S18. A second route: a plain count of the CSV
 *Does a method that never touches the pivot reach the same twelve cells?*
 
 ```mermaid
 flowchart LR
     C["<b>the CSV, as text</b><br/>line by line"] --> T["<b>a running total<br/>per segment</b>"]
-    T --> K{"<b>12 cells against<br/>the pivot</b>"}
+    T --> K["<b>12 cells against<br/>the pivot</b>"]
     K --> P["<b>all 12 agree</b>"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class P known
@@ -451,17 +431,18 @@ In Excel the same second route is a COUNTIF and two SUMIFS per segment beside th
 LIVE, 1 minute. A second route has to be able to fail when the first is wrong, so it cannot reuse the
 pivot. This one would have caught the averaged leaf and a filter left on the pivot. It cannot tell you
 whether the table itself is complete; that is a different check, in chapter 3.
+Transition: which segment carries the revenue, and which leaf separates the tiers?
 ```
 
 ---
 
-## S21. Business carries it; the basket separates the tiers
-*What did chapter 1 answer, question by question?*
+## S19. Business carries it; the basket separates the tiers
+*Which segment carries the revenue, and which leaf separates the tiers?*
 
 | Question | Answer |
 |---|---|
-| One row? | One customer: 300 rows, 300 ids |
 | Which way? | The PivotTable, each leaf beside it from its sums |
+| One row? | One customer: 300 rows, 300 ids |
 | Which segment? | Business, 99.1 percent of the half-year |
 | Which leaf? | Revenue per order: Rs 2,801 against Rs 1,886 |
 | Averaged leaf? | Rs 11,66,786, 11.6 percent high; the tree fails |
@@ -486,17 +467,18 @@ Transition: the chief of staff asked for both quarters, so the raw export.
 ```notes
 LIVE, thirty minutes, with notebook C2_W02_D05_02_both_quarters beside it; Excel live on
 data/C2_W02_D05_raw_export_STUDENT.csv.
+Transition: who needs the tree for both quarters, and which six questions build it?
 ```
 
 ---
 
-## S22. Answer it in six steps, from the quarter to the tie
-*Who needs the answer, and what must we find out on the way?*
+## S20. Meera's growth plan needs both quarters to tie
+*Who needs the tree for both quarters, and which six questions build it?*
 
 **Who needs the answer.** The chief of staff, for the tree for both quarters, and Meera, who decides which branch the growth plan funds; a pivot that counts orders twice puts nearly twice Finance's revenue in front of the directors.
 
 ```timeline
-label: 1 | title: Which quarter? | body: Kalpa's quarter on every row.
+label: 1 | title: Which way? | body: Four ways to split by quarter, sized.
 label: 2 | title: The pivot says? | body: Q1 and Q2 as a pivot adds them.
 label: 3 | title: Why double? | body: And whether Remove Duplicates helps.
 label: 4 | title: Counted once? | body: Each order once.
@@ -507,12 +489,13 @@ label: 6 | title: Warehouse agrees? | body: The second route. | tone: dark
 ```notes
 LIVE, 1 minute. Read the six questions. Say the chapter 1 finding in one line: Business carries 99.1
 percent, and the basket separates the tiers; the customer table cannot split the quarters.
+Transition: what does a quarter that fails to tie cost Meera's growth plan?
 ```
 
 ---
 
-## S23. The quarters have to tie to Monday's warehouse
-*What is at stake, who asks, and what does a wrong number cost?*
+## S21. The quarters have to tie to Monday's warehouse
+*What does a quarter that fails to tie cost Meera's growth plan?*
 
 ```stats
 value: Rs 10.00 cr | label: Q1, the warehouse | note: April to June 2026
@@ -526,11 +509,12 @@ value: The plan | label: what a wrong number costs | note: a growth plan aimed a
 LIVE, 1 minute. Monday's warehouse queries gave Rs 10,00,00,000 for Q1 and Rs 9,84,00,000 for Q2.
 Kalpa's financial year starts in April, so Q1 is April to June. Every number on the deck ties to
 these, or it does not go on the deck.
+Transition: which real company holds orders and payments at different grains?
 ```
 
 ---
 
-## S24. Razorpay orders carry several payments
+## S22. Razorpay orders carry several payments
 *Which real company holds orders and payments at different grains?*
 
 > "Combines multiple payment attempts for a single order." Razorpay documentation, Orders
@@ -548,11 +532,12 @@ flowchart LR
 ```notes
 LIVE, 1 minute. Both pages checked 30 September 2026. Every merchant's finance team meets this: an
 export of payments repeats its orders. Do not say what Kalpa's export holds yet; the room finds it.
+Transition: which way should the team split revenue by quarter, and what does each way cost?
 ```
 
 ---
 
-## S25. A quarter column, then the pivot
+## S23. A quarter column, then the pivot
 *Which way should the team split revenue by quarter, and what does each way cost?*
 
 | Option | What it reads | What it risks here |
@@ -562,17 +547,20 @@ export of payments repeats its orders. Do not say what Kalpa's export holds yet;
 | c) Kalpa's quarter as a column, then a pivot | 1,450 rows | slices anything; recalculates on Refresh |
 | d) Ask the data platform lead | the warehouse | exact, and a day's wait per question |
 
-**The call.** c, because it labels quarters the way Finance does and lets a director re-slice. What would switch it: a deadline far enough away for the warehouse team to answer.
+**The best-fit call.** c, because it labels quarters the way Finance does and lets a director re-slice.
+
+**The fact that would change it.** A deadline far enough away for the warehouse team to answer.
 
 ```notes
 LIVE, 3 minutes. Size each option on this export. Option a's cost comes from chapter 1: a last order
 date is a recency. Option d is exact and too slow for a meeting; chapter 5 comes back to who owns
 which number.
+Transition: filled down beside order_date, how many rows land in Q1?
 ```
 
 ---
 
-## S26. Which quarter does each row belong to?
+## S24. Which quarter does each row belong to?
 *Filled down beside order_date, how many rows land in Q1?*
 
 ```text
@@ -590,15 +578,16 @@ flowchart LR
     class A,B,C,N unknown
 ```
 
-**Question.** Of the 1,450 rows, how many fall in Q1, as a letter?
+**Predict before you run.** Of the 1,450 rows, how many fall in Q1?
 
 ```notes
 LIVE, 1 minute. Type the formula live in a new column beside order_date and fill it down.
+Transition: what does the new column say?
 ```
 
 ---
 
-## S27. Answer: 772 rows in Q1, 678 in Q2
+## S25. Answer: 772 rows in Q1, 678 in Q2
 *What does the new column say?*
 
 ```stats
@@ -611,11 +600,12 @@ The answer is a. The dates read cleanly and the labels now match Finance's. The 
 
 ```notes
 LIVE, 1 minute. Keep it moving; the next slide is where the chapter's trap waits.
+Transition: with segment in Rows, quarter in Columns and order_amount summed, what is Q2?
 ```
 
 ---
 
-## S28. What does the pivot say for Q1 and Q2?
+## S26. What does the pivot say for Q1 and Q2?
 *With segment in Rows, quarter in Columns and order_amount summed, what is Q2?*
 
 ```mermaid
@@ -628,15 +618,16 @@ flowchart LR
     class A,B,C,D unknown
 ```
 
-**Question.** The pivot's Q2 total reads about which, as a letter?
+**Predict before you run.** The pivot's Q2 total reads about which?
 
 ```notes
 LIVE, 1 minute. Every learner builds it on their own screen before you show yours. Do not warn them.
+Transition: what is the plausible wrong answer, exactly?
 ```
 
 ---
 
-## S29. Answer: Rs 19.47 crore, and Core looks healthy
+## S27. Answer: Rs 19.47 crore, and Core looks healthy
 *What is the plausible wrong answer, exactly?*
 
 | Segment | Q1, as the pivot shows | Q2, as the pivot shows | Change |
@@ -647,16 +638,17 @@ LIVE, 1 minute. Every learner builds it on their own screen before you show your
 | Student | Rs 35,350 | Rs 48,070 | +36.0% |
 | All segments | Rs 19,94,36,150 | Rs 19,46,59,340 | -2.4% |
 
-**What breaks.** The deck carries Rs 19.47 crore for Q2, nearly twice the warehouse's Rs 9.84 crore, and calls Retail-Core the healthy segment the plan can leave alone.
+**The plausible wrong answer.** The deck carries Rs 19.47 crore for Q2, nearly twice the warehouse's Rs 9.84 crore, and calls Retail-Core the healthy segment the plan can leave alone.
 
 ```notes
 LIVE, 4 minutes. The answer is c. Let it stand. Somebody usually says the totals look big but the
 percentages look reasonable: the percentages are wrong too. Ask whether anyone would send it.
+Transition: what does one row of the raw export stand for, and which check catches it?
 ```
 
 ---
 
-## S30. Why it is wrong: 1,450 rows, 1,000 orders
+## S28. Why it is wrong: 1,450 rows, 1,000 orders
 *What does one row of the raw export stand for, and which check catches it?*
 
 ```stats
@@ -665,16 +657,19 @@ value: 1,000 | label: order ids | note: what the warehouse holds
 value: 450 | label: orders on two rows | note: 550 on one
 ```
 
-**The check.** Count rows against distinct order ids, then tie the grand total to the warehouse; either catches it in a minute. The export repeats each order's amount on every payment row, and a Sum adds every repeat.
+**Why it is wrong.** The export repeats each order's amount on every payment row, and a Sum adds every repeat.
+
+**The check that catches it.** Count rows against distinct order ids, then tie the grand total to the warehouse; either catches it in a minute.
 
 ```notes
 LIVE, 2 minutes. In Excel: COUNTA on order_id, a distinct count beside it. Then the grand total against
 Rs 19,84,00,000. Name the grain now: one row is one payment.
+Transition: with every column ticked, what does Remove Duplicates leave?
 ```
 
 ---
 
-## S31. Does Remove Duplicates fix it?
+## S29. Does Remove Duplicates fix it?
 *With every column ticked, what does Remove Duplicates leave?*
 
 ```mermaid
@@ -688,15 +683,16 @@ flowchart LR
     class A,B,C,D unknown
 ```
 
-**Question.** After Remove Duplicates, the grand total reads which, as a letter?
+**Predict before you run.** After Remove Duplicates, the grand total reads which?
 
 ```notes
 LIVE, 1 minute. Letters first, then run it live. Most rooms say a.
+Transition: why does removing identical rows leave the double count?
 ```
 
 ---
 
-## S32. Answer: 50 rows go, and the total barely moves
+## S30. Answer: 50 rows go, and the total barely moves
 *Why does removing identical rows leave the double count?*
 
 | Version of the export | Rows | Grand total |
@@ -705,16 +701,19 @@ LIVE, 1 minute. Letters first, then run it live. Most rooms say a.
 | After Remove Duplicates | 1,400 | Rs 39,40,57,740 |
 | The warehouse | 1,000 orders | Rs 19,84,00,000 |
 
-The answer is b. Only the 50 orders the gateway posted twice have identical rows; the 400 orders paid in two instalments differ in `paid_amount`, so both rows stay. Now the analyst believes the file is clean.
+The answer is b. Only the 50 orders the gateway posted twice have identical rows; the 400 orders paid in two instalments differ in `paid_amount`, so both rows stay, and the analyst believes the file is clean.
+
+**Predict before you run.** Counted once per order, what is the Q2 total? a) Rs 9.84 crore; b) Rs 9.74 crore; c) Rs 19.47 crore; d) Rs 4.92 crore.
 
 ```notes
 LIVE, 2 minutes. Remove Duplicates is a cleaning step with no record, and here it did not even clean.
 The fix has to name the grain.
+Transition: what does the tree say when each order counts once?
 ```
 
 ---
 
-## S33. The fix: flag each order's first row
+## S31. The fix: flag each order's first row
 *What does the tree say when each order counts once?*
 
 ```text
@@ -728,18 +727,22 @@ The fix has to name the grain.
 | Retail-Plus | Rs 5,85,770 | Rs 4,13,380 | -29.4% |
 | All segments | Rs 10,00,00,000 | Rs 9,84,00,000 | -1.6% |
 
-**What changed:** the total falls by Rs 19,56,95,490 to the warehouse's, and Retail-Core turns from a 1.0 percent rise into a 1.8 percent fall.
+The answer is a. **What changed.** The total falls by Rs 19,56,95,490 to the warehouse's, and Retail-Core turns from a 1.0 percent rise into a 1.8 percent fall.
+
+**Predict before you run.** Which Retail-Plus leaf moved most from Q1 to Q2? a) customers; b) orders per customer; c) revenue per order; d) all three by about the same.
 
 ```notes
 LIVE, 4 minutes. Type the flag in column A's neighbour and fill it down; pivot with the flag as a
 filter, or SUMIFS on flag equals 1. Student moves from Rs 26,720 to Rs 35,770, up 33.9 percent, on few
-orders. The running COUNTIF compares each row with every row above it: 1,051,975 comparisons here,
-about 10.5 billion at 145,000 rows, which is the interview's design question.
+orders. The running COUNTIF compares each row with every row from the first down to its own:
+1,051,975 comparisons here, about 10.5 billion at 145,000 rows, which is the interview's design
+question.
+Transition: which segment and which leaf fell?
 ```
 
 ---
 
-## S34. In rupees Business fell most; Plus fell steepest
+## S32. In rupees Business fell most; Plus fell steepest
 *Which segment and which leaf fell?*
 
 ```mermaid
@@ -760,16 +763,19 @@ flowchart LR
 | Orders per customer | 2.36 | 1.84 | -22.0% |
 | Revenue per order | Rs 2,725 | Rs 2,953 | +8.4% |
 
+The answer is b: orders per customer fell 22.0 percent while the basket grew 8.4 percent.
+
 ```notes
 LIVE, 3 minutes. Two readings, both true. In rupees Business carries Rs 14,29,840 of the Rs 16,00,000
 fall, the size of a few invoices landing in one quarter or the next. The steepest fall is Retail-Plus:
 members kept buying big baskets and bought less often, the frequency branch Week 1 found. Multiply Q2
 back: 76 times 1.84 times Rs 2,953 is Rs 4.13 lakh. Chapter 4 decides how each goes on the page.
+Transition: does the warehouse reach the same two numbers by a query that never saw the export?
 ```
 
 ---
 
-## S35. A second route: the warehouse's own quarters
+## S33. A second route: the warehouse's own quarters
 *Does the warehouse reach the same two numbers by a query that never saw the export?*
 
 ```mermaid
@@ -786,23 +792,24 @@ flowchart LR
 LIVE, 3 minutes. The notebook runs Monday's query against the warehouse. The export was written from
 the warehouse; the second route asks the warehouse itself, which never saw the export, so it can
 disagree. Here it does not.
+Transition: how far did revenue fall, where, and does the warehouse agree?
 ```
 
 ---
 
-## S36. Down 1.6 percent; Plus fell on frequency
-*What did chapter 2 answer, question by question?*
+## S34. Down 1.6 percent; Plus fell on frequency
+*How far did revenue fall, where, and does the warehouse agree?*
 
 | Question | Answer |
 |---|---|
-| Which quarter? | 772 rows in Q1, 678 in Q2 |
-| The pivot says? | Rs 19,94,36,150 and Rs 19,46,59,340; Core up 1.0% |
-| Why double? | One row per payment; Remove Duplicates leaves Rs 39,40,57,740 |
+| Which way? | A quarter column, then the pivot |
+| The pivot says? | Rs 19.94 and Rs 19.47 crore; Core up 1.0% |
+| Why double? | One row per payment; dedupe leaves Rs 39.41 crore |
 | Counted once? | Rs 10.00 crore to Rs 9.84 crore, down 1.6% |
-| Which leaf fell? | Business most in rupees; Retail-Plus 29.4% on frequency |
+| Which leaf fell? | Business in rupees; Plus 29.4% on frequency |
 | Warehouse agrees? | To the rupee, both quarters |
 
-**Kavya's review.** "The two exports came at two grains. Say the grain, count rows against ids, and tie the total to the warehouse before the pivot goes anywhere."
+**Kavya's review.** "Say the grain, count rows against ids, and tie the total to the warehouse before the pivot goes anywhere."
 
 **In the interview.** [F] Your pivot shows a different total from the warehouse; where do you look first?
 
@@ -822,38 +829,40 @@ Retail-Plus protect first?
 ```notes
 LIVE, thirty minutes, with notebook C2_W02_D05_03_member_lookup beside it; Excel live on the customer
 table.
+Transition: who acts on the protect list, and which six questions build it and its lookup?
 ```
 
 ---
 
-## S37. Answer it in six steps, from the list to the lookup
-*Who needs the answer, and what must we find out on the way?*
+## S35. The head of Retail-Plus acts on a list of fifty
+*Who acts on the protect list, and which six questions build it and its lookup?*
 
 **Who needs the answer.** The head of Retail-Plus, who sends the fifty a retention offer, and the chief of staff, who reads a member's line aloud when a director names one; a wrong row tells a director that a lapsed member is one of the best.
 
 ```timeline
-label: 1 | title: Who is on it? | body: The fifty, and where the list stops.
-label: 2 | title: Does it tie? | body: The list's source against the warehouse.
-label: 3 | title: Which lookup? | body: Four ways, sized.
+label: 1 | title: Which lookup? | body: Four ways, sized.
+label: 2 | title: Who is on it? | body: The fifty, and where the list stops.
+label: 3 | title: Does it tie? | body: The list's source against the warehouse.
 label: 4 | title: A missing id? | body: What the fourth argument does.
 label: 5 | title: Found or not? | body: The exact match, and a re-sorted list.
-label: 6 | title: A count agrees? | body: The second route. | tone: dark
+label: 6 | title: Warehouse agrees? | body: The second route. | tone: dark
 ```
 
 ```notes
 LIVE, 1 minute. Chapter 2's finding in one line: Retail-Plus fell 29.4 percent because members
 ordered less often, 2.36 orders each in Q1 and 1.84 in Q2. The head of Retail-Plus wants to protect
 the best members before more of them drift.
+Transition: what does a wrong row on the protect list cost the head of Retail-Plus?
 ```
 
 ---
 
-## S38. The list sizes a retention budget
-*What is at stake, who asks, and what does a wrong row cost?*
+## S36. The list sizes a retention budget
+*What does a wrong row on the protect list cost the head of Retail-Plus?*
 
 ```stats
 value: 50 | label: members protected | note: Retail-Plus, by two-quarter revenue
-value: Head of Retail-Plus | label: who asks | note: sends the retention offer
+value: Head of Retail-Plus | label: who acts on it | note: sends the retention offer
 value: One offer | label: what a wrong row costs | note: spent on someone who stopped buying
 ```
 
@@ -863,11 +872,12 @@ value: One offer | label: what a wrong row costs | note: spent on someone who st
 LIVE, 1 minute. The protect list comes from the customer table, one row per customer, because that is
 the table the chief of staff refreshes every Monday. Wednesday built a per-segment list in SQL on Q2;
 this one ranks the two quarters together from the export.
+Transition: which real company lost money to a sorted list whose rows answered for the wrong item?
 ```
 
 ---
 
-## S39. TransAlta's ranked sheet returned the wrong rows
+## S37. TransAlta's ranked sheet returned the wrong rows
 *Which real company lost money to a sorted list whose rows answered for the wrong item?*
 
 ```stats
@@ -881,11 +891,12 @@ value: 10% | label: of the year's profit | note: The Globe and Mail
 LIVE, 1 minute. The Globe and Mail, 4 June 2003, checked 30 September 2026: bids for New York
 transmission congestion contracts, "misaligned the rows of information in the spreadsheet". A row
 answering for the wrong item is expensive at any scale.
+Transition: which lookup should answer "find this member", and what does each one return?
 ```
 
 ---
 
-## S40. An exact match that says when an id is missing
+## S38. An exact match that says when an id is missing
 *Which lookup should answer "find this member", and what does each one return?*
 
 | Option | A present id, C-0152 | An absent id, C-0195 | Re-sorted list | Excel 2016 |
@@ -895,18 +906,21 @@ answering for the wrong item is expensive at any scale.
 | c) `IFERROR(INDEX(MATCH))`, exact | Rs 25,840 | not in the table | right | yes |
 | d) `XLOOKUP(id, A:A, E:E, "not in the table")` | Rs 25,840 | not in the table | right | no |
 
-**The call.** d on the room's Microsoft 365, c wherever the file must open. What would switch it: the Excel version on the chief of staff's laptop.
+**The best-fit call.** d on the room's Microsoft 365, c wherever the file must open.
+
+**The fact that would change it.** The Excel version on the chief of staff's laptop.
 
 ```notes
 LIVE, 4 minutes. Microsoft's page says XLOOKUP "is not available in Excel 2016 and Excel 2019", and
 LibreOffice 24.2 shows #NAME? for it (both checked 30 September 2026). Option b is honest and ugly:
 a director reads #N/A as a broken sheet. C-0195 is a Retail-Plus member with no orders in the two
 quarters, so the table has no row for it.
+Transition: filter to Retail-Plus, sort by revenue, keep fifty: what is the cut-off?
 ```
 
 ---
 
-## S41. Who makes the list, and where does it stop?
+## S39. Who makes the list, and where does it stop?
 *Filter to Retail-Plus, sort by revenue, keep fifty: what is the cut-off?*
 
 ```mermaid
@@ -920,16 +934,17 @@ flowchart LR
     class A,B,C,D unknown
 ```
 
-**Question.** The fiftieth member's revenue, the list's cut-off, is about which, as a letter?
+**Predict before you run.** The fiftieth member's revenue, the list's cut-off, is about which?
 
 ```notes
 LIVE, 1 minute. Build it live: copy the Retail-Plus rows to their own sheet, sort Largest to
 Smallest, add =RANK.EQ(E2, E$2:E$107).
+Transition: what does the list hold?
 ```
 
 ---
 
-## S42. Answer: Rs 8,580, and no tie at the boundary
+## S40. Answer: Rs 8,580, and no tie at the boundary
 *What does the list hold?*
 
 ```stats
@@ -943,11 +958,12 @@ The answer is b. Fifty of the 106 Retail-Plus members make the list, and since t
 ```notes
 LIVE, 2 minutes. Mention Wednesday once: with a tie at fifty, the rule decides whether a list ships 49
 or 51 rows. Not today.
+Transition: the raw export tied to the warehouse in chapter 2; does the customer table tie on its own?
 ```
 
 ---
 
-## S43. Your turn: tie the list's source yourself
+## S41. Your turn: tie the list's source yourself
 *The raw export tied to the warehouse in chapter 2; does the customer table tie on its own?*
 
 ```timeline
@@ -957,17 +973,18 @@ label: Step 3 | title: Find it | body: Any id in the export and not in the table
 label: Step 4 | title: Say it | body: What your answer means for the list and the lookup. | tone: dark
 ```
 
-**The rule.** The list's source ties to the warehouse before the list ships. In Excel: SUM the table's orders and revenue, set them beside the raw export counted once, and COUNTIF each export id in the table.
+The list's source ties to the warehouse before the list ships. In Excel: SUM the table's orders and revenue, set them beside the raw export counted once, and COUNTIF each export id in the table.
 
 ```notes
 LIVE, 5 minutes; the notebook's empty cell holds the same lines for self-study. TRAINER: the day sheet has what they
 should find. Let them find it; take two sentences aloud and do not confirm or name anything. Whoever
 finds it has just made the lookup trap catchable.
+Transition: the table has no row for C-0195; what comes back when the fourth argument is left out?
 ```
 
 ---
 
-## S44. What does VLOOKUP return for C-0195?
+## S42. What does VLOOKUP return for C-0195?
 *The table has no row for C-0195; what comes back when the fourth argument is left out?*
 
 ```text
@@ -984,15 +1001,16 @@ flowchart LR
     class A,B,C,D unknown
 ```
 
-**Question.** What comes back, as a letter?
+**Predict before you run.** What comes back?
 
 ```notes
 LIVE, 1 minute. Letters first. Most rooms say a.
+Transition: what is the plausible wrong answer, and why does the sheet give it?
 ```
 
 ---
 
-## S45. Answer: C-0194's row, rank 15, and nothing is red
+## S43. Answer: C-0194's row, rank 15, and nothing is red
 *What is the plausible wrong answer, and why does the sheet give it?*
 
 ```mermaid
@@ -1006,17 +1024,19 @@ flowchart LR
     class C unknown
 ```
 
-The answer is c. Left out, the fourth argument "will always be TRUE or approximate match" (Microsoft Support, VLOOKUP, checked 30 September 2026), which returns the largest id not above the one asked for. **What breaks:** a director hears that C-0195 spent Rs 16,740 and sits at rank 15, and a retention offer goes to someone who placed no order between April and September.
+The answer is c. Left out, the fourth argument "will always be TRUE or approximate match" (Microsoft Support, VLOOKUP, checked 30 September 2026), which returns the largest id not above the one asked for. **Why it is wrong.** A director hears that C-0195 spent Rs 16,740 and sits at rank 15, and a retention offer goes to someone who placed no order between April and September.
+
+**The check that catches it.** Test every lookup with an id you know is missing.
 
 ```notes
-LIVE, 4 minutes. Run it live. Nothing on screen turns red, which is why the trap works. The check that catches
-it: test every lookup with an id you know is missing, and print the id returned beside the id asked
-for.
+LIVE, 4 minutes. Run it live. Nothing on screen turns red, which is why the trap works. Print the id
+returned beside the id asked for, so the neighbour shows.
+Transition: what do C-0195, C-0152 and C-0194 return once the match is exact?
 ```
 
 ---
 
-## S46. The fix: an exact match with a not-found path
+## S44. The fix: an exact match with a not-found path
 *What do C-0195, C-0152 and C-0194 return once the match is exact?*
 
 | Asked for | Exact, with a not-found path | Approximate |
@@ -1025,17 +1045,18 @@ for.
 | C-0152 | Rs 25,840 | C-0152: Rs 25,840 |
 | C-0194 | Rs 16,740 | C-0194: Rs 16,740 |
 
-**What changed:** C-0195's line moves from "rank 15, Rs 16,740" to "not in the table", the answer that makes somebody check the export. For members in the table the two agree, which is why a lookup tested only on present ids looks fine.
+**What changed.** C-0195's line moves from "rank 15, Rs 16,740" to "not in the table", the answer that makes somebody check the export. For members in the table the two agree, which is why a lookup tested only on present ids looks fine.
 
 ```notes
 LIVE, 3 minutes. Type both forms: =XLOOKUP(id, A:A, E:E, "not in the table") and
 =IFERROR(INDEX(E:E, MATCH(id, A:A, 0)), "not in the table"). Now the room reads out an id; see the day
 sheet for the moment.
+Transition: what happens to each lookup once the ids are no longer in order?
 ```
 
 ---
 
-## S47. The room sorts the list by revenue
+## S45. The room sorts the list by revenue
 *What happens to each lookup once the ids are no longer in order?*
 
 ```stats
@@ -1043,47 +1064,50 @@ value: 24 of 49 | label: steps down the list | note: to a smaller id
 value: 50 of 50 | label: exact lookups | note: still right, shuffled
 ```
 
-An approximate match assumes the first column is sorted: "If the first column isn't sorted, the return value might be something you don't expect" (Microsoft Support, VLOOKUP, checked 30 September 2026). An exact match does not care about order, so it survives the view a director actually looks at.
+An approximate match assumes the first column is sorted: "If the first column isn't sorted, the return value might be something you don't expect" (Microsoft Support, VLOOKUP, checked 30 September 2026). An exact match does not care about order, so it survives the view a director looks at.
 
 ```notes
 LIVE, 2 minutes. The room sees the list sorted by revenue, never by id. Walking down it, 24 of 49
 steps go to a smaller id, so an approximate match has nothing sorted to search.
+Transition: does the warehouse, which never saw the customer table, agree with the lookup?
 ```
 
 ---
 
-## S48. A second route: a count instead of a match
-*Does an independent count agree with the lookup?*
+## S46. A second route: the warehouse's own count
+*Does the warehouse, which never saw the customer table, agree with the lookup?*
 
 ```mermaid
 flowchart LR
-    C1["<b>COUNTIF C-0195</b><br/>0 rows"] --> L1["<b>lookup says</b><br/>not in the table"]
-    C2["<b>COUNTIF C-0152</b><br/>1 row"] --> L2["<b>SUMIFS and lookup</b><br/>both Rs 25,840"]
+    C1["<b>warehouse, C-0195</b><br/>no orders"] --> L1["<b>lookup says</b><br/>not in the table"]
+    C2["<b>warehouse, C-0152</b><br/>Rs 25,840"] --> L2["<b>lookup says</b><br/>Rs 25,840"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class L1,L2 known
 ```
 
-`=COUNTIF(A:A, "C-0195")` counts zero rows, which has to meet a not-found answer; `=SUMIFS(E:E, A:A, "C-0152")` adds Rs 25,840, which has to meet the lookup. Counting and matching are different methods, so each can catch the other.
+`SELECT count(*), sum(amount) FROM orders WHERE customer_id = 'C-0195'` finds no orders, which has to meet a not-found answer; for C-0152 it adds Rs 25,840, which has to meet the lookup. The warehouse never saw the customer table, so it can disagree with it.
 
 ```notes
-LIVE, 2 minutes. The count is the check a director can see: put it beside the lookup on the sheet.
+LIVE, 2 minutes. The notebook runs the query for both ids. On the sheet a director can see, the same
+check is a COUNTIF beside the lookup.
+Transition: who is on the protect list, and does the lookup answer for the member typed?
 ```
 
 ---
 
-## S49. Fifty members, and a lookup that says so
-*What did chapter 3 answer, question by question?*
+## S47. Fifty members, and a lookup that says so
+*Who is on the protect list, and does the lookup answer for the member typed?*
 
 | Question | Answer |
 |---|---|
+| Which lookup? | XLOOKUP on 365; INDEX and MATCH anywhere |
 | Who is on it? | Fifty, Rs 25,840 down to Rs 8,580 |
 | Does it tie? | The room's own answer, from the your-turn step |
-| Which lookup? | XLOOKUP on 365; IFERROR with INDEX and MATCH anywhere |
-| A missing id? | Approximate returns C-0194, Rs 16,740, rank 15 |
-| Found or not? | "Not in the table"; the same on a re-sorted list |
-| A count agrees? | COUNTIF 0 and 1, both matching the lookup |
+| A missing id? | Approximate returns C-0194, Rs 16,740 |
+| Found or not? | "Not in the table", sorted or not |
+| Warehouse agrees? | No orders for C-0195; Rs 25,840 for C-0152 |
 
-**Kavya's review.** "A lookup that answers with somebody else's row is worse than no lookup, because nobody in the room can tell. Test with an id you know is missing."
+**Kavya's review.** "A lookup that answers with somebody else's row is worse than none, since nobody can tell; test it with a missing id."
 
 **In the interview.** [F] Your lookup returned a member for an id that does not exist; which argument was wrong?
 
@@ -1091,6 +1115,7 @@ LIVE, 2 minutes. The count is the check a director can see: put it beside the lo
 LIVE, 3 minutes. One learner answers: the match type; VLOOKUP's fourth argument left out is
 approximate; exact with a not-found path, tested with a missing id. BREAK, 10 minutes, after this
 slide.
+Transition: what must sit beside the front-page number so a director reads it right in two minutes? The meeting's first decision is made from it.
 ```
 
 ---
@@ -1100,18 +1125,19 @@ slide.
 
 ```notes
 LIVE, thirty minutes, with notebook C2_W02_D05_04_front_page beside it.
+Transition: who reads the front-page number, and which six questions build its card?
 ```
 
 ---
 
-## S50. Answer it in six steps, from total to scope
-*Who needs the answer, and what must we find out on the way?*
+## S48. The directors read the front page in two minutes
+*Who reads the front-page number, and which six questions build its card?*
 
 **Who needs the answer.** Meera and her directors, who read the front page first and may read nothing else, and the chief of staff, who answers for it; a card without its period reads two quarters as one.
 
 ```timeline
-label: 1 | title: A bare total? | body: What a director reads in it.
-label: 2 | title: Which form? | body: Four cards, sized.
+label: 1 | title: Which form? | body: Four cards, sized.
+label: 2 | title: A bare total? | body: What a director reads in it.
 label: 3 | title: The card? | body: Period, comparison, base.
 label: 4 | title: A bare percentage? | body: What it leaves out.
 label: 5 | title: Trend and scope? | body: Six months, and a director's input.
@@ -1121,12 +1147,13 @@ label: 6 | title: Warehouse agrees? | body: The second route. | tone: dark
 ```notes
 LIVE, 1 minute. The number itself is given: revenue, Q2 against Q1. Which metric belongs on a growth
 review's front page at all is a later week's question; today is about reading this one right.
+Transition: what does a misread front-page number cost the meeting's first decision?
 ```
 
 ---
 
-## S51. The front page is read in two minutes
-*What is at stake, who reads it, and what does a misread cost?*
+## S49. The front page is read in two minutes
+*What does a misread front-page number cost the meeting's first decision?*
 
 ```stats
 value: Rs 9.84 cr | label: Q2 revenue | note: July to September 2026
@@ -1139,11 +1166,12 @@ value: 2 minutes | label: the reading time | note: a director's, for the front p
 ```notes
 LIVE, 1 minute. Chapter 2's numbers: Q1 Rs 10.00 crore, Q2 Rs 9.84 crore; in rupees Business carries
 Rs 14.30 lakh of the Rs 16.00 lakh fall, and the steepest fall is Retail-Plus, 29.4 percent.
+Transition: which real company writes this card every quarter?
 ```
 
 ---
 
-## S52. DMart's headline carries all four parts
+## S50. DMart's headline carries all four parts
 *Which real company writes this card every quarter?*
 
 > "Standalone Total Revenue up by 16.2% at Rs.15,932 Crore." Avenue Supermarts (DMart), press release, quarter ended 30 June 2025
@@ -1161,11 +1189,12 @@ flowchart LR
 LIVE, 2 minutes. Press release of 11 July 2025, checked 30 September 2026: revenue "stood at
 Rs.15,932 crore, as compared to Rs.13,712 crore in the same period last year." The number, the
 period, the comparison and the base are all in the first two lines.
+Transition: which form should the card take, and what does each ask the director to remember?
 ```
 
 ---
 
-## S53. The quarter against the last, with its sentence
+## S51. The quarter against the last, with its sentence
 *Which form should the card take, and what does each ask the director to remember?*
 
 | Option | The card | Words | The director must bring |
@@ -1175,31 +1204,35 @@ period, the comparison and the base are all in the first two lines.
 | c) Against the last | "Q2 ... Rs 9.84 crore, down 1.6 percent on Q1 (Rs 10.00 crore)" | 29 | nothing |
 | d) c with sentence and trend | c, where the change sits, and six months drawn | 53 | nothing |
 
-**The call.** d. What would switch it: a board that reviews every month against the plan line, where the comparison becomes the plan.
+**The best-fit call.** d.
+
+**The fact that would change it.** A board that reviews every month against the plan line, where the comparison becomes the plan.
 
 ```notes
 LIVE, 4 minutes. Fifty-odd words and one small line, read in the two minutes a director gives the
 front page, with nothing left to memory.
+Transition: the fastest card is the export's grand total; what does a director who remembers Q1 read into it?
 ```
 
 ---
 
-## S54. What does a director read in "Revenue Rs 19.84 crore"?
+## S52. What does a director read in "Revenue Rs 19.84 crore"?
 *The fastest card is the export's grand total; what does a director who remembers Q1 read into it?*
 
 ```stats
 value: Rs 19.84 cr | label: Revenue | note: the card as drafted
 ```
 
-**Question.** A director who remembers Q1 at Rs 10.00 crore reads this card as: a) two quarters of revenue; b) revenue nearly doubled this quarter; c) a number to check later; d) nothing wrong, since the number is right.
+**Predict before you run.** A director who remembers Q1 at Rs 10.00 crore reads this card as: a) two quarters of revenue; b) revenue nearly doubled this quarter; c) a number to check later; d) nothing wrong, since the number is right.
 
 ```notes
 LIVE, 2 minutes. Letters. Then ask who has seen b happen in a real meeting.
+Transition: why is the bare total the plausible wrong answer, and what catches it?
 ```
 
 ---
 
-## S55. Answer: up 98.4 percent, a quarter that never happened
+## S53. Answer: up 98.4 percent, a quarter that never happened
 *Why is the bare total the plausible wrong answer, and what catches it?*
 
 ```mermaid
@@ -1213,16 +1246,19 @@ flowchart LR
     class T known
 ```
 
-The answer is b. The number is right and its period is missing, so the reader supplies one, and the minutes record a boom. **The check:** read the card aloud and ask which months, against what. **The fix:** the period and the comparison on the card itself.
+The answer is b. **Why it is wrong.** The number is right and its period is missing, so the reader supplies one, and the minutes record a boom. **The check that catches it.** Read the card aloud and ask which months, against what.
+
+**Predict before you run.** With its period, comparison and base, the change on the card reads: a) down 1.6 percent; b) down 1.6 points; c) up 1.6 percent; d) down 16 percent.
 
 ```notes
 LIVE, 3 minutes. The card is April to September added together. Read against one remembered quarter
 it reads up 98.4 percent.
+Transition: what does the card say, and what sits beside it?
 ```
 
 ---
 
-## S56. The card: period, comparison, base, sentence
+## S54. The card: period, comparison, base, sentence
 *What does the card say, and what sits beside it?*
 
 ```stats
@@ -1231,32 +1267,34 @@ value: -1.6% | label: on Q1 | note: the comparison, measured on Q1
 value: Rs 10.00 cr | label: Q1, April to June 2026 | note: the base
 ```
 
-**The sentence beside it.** "Business invoices carry Rs 14.30 lakh of the Rs 16.00 lakh fall; Retail-Plus, the paid tier, fell 29.4 percent because members ordered less often."
+The answer is a. Beside the card, one sentence: "Business invoices carry Rs 14.30 lakh of the Rs 16.00 lakh fall; Retail-Plus, the paid tier, fell 29.4 percent because members ordered less often."
 
 ```notes
 LIVE, 4 minutes. Read the card aloud: "All segments, Q2, July to September 2026: Rs 9.84 crore, down
 1.6 percent on Q1, April to June 2026 (Rs 10.00 crore); 100.0 percent of company revenue in Q2." The
 change is Q2 minus Q1, divided by Q1.
+Transition: the second slot is drafted as a bare percentage; what must sit beside it?
 ```
 
 ---
 
-## S57. What does "Retail-Plus down 29.4 percent" leave out?
+## S55. What does "Retail-Plus down 29.4 percent" leave out?
 *The second slot is drafted as a bare percentage; what must sit beside it?*
 
 ```stats
 value: -29.4% | label: Retail-Plus, as drafted | note: no base, no share
 ```
 
-**Question.** What must sit beside it? a) nothing, since it is correct; b) its rupee base and its share of revenue; c) the Business figure; d) the protect list.
+**Predict before you run.** What must sit beside it? a) nothing, since it is correct; b) its rupee base and its share of revenue; c) the Business figure; d) the protect list.
 
 ```notes
 LIVE, 1 minute. The percentage is right. Letters first.
+Transition: what is the base the draft left out, and what slip makes it worse?
 ```
 
 ---
 
-## S58. Answer: Rs 1.72 lakh, 0.4 percent of the quarter
+## S56. Answer: Rs 1.72 lakh, 0.4 percent of the quarter
 *What is the base the draft left out, and what slip makes it worse?*
 
 ```stats
@@ -1265,16 +1303,19 @@ value: 0.4% | label: of Q2 revenue | note: Retail-Plus's share
 value: -41.7% | label: divided by Q2 | note: the slip that makes it worse
 ```
 
-The answer is b. Read without its base, "down 29.4 percent" sounds like the business collapsing, and the meeting argues about a panic instead of about members ordering less often. **The fix:** "Retail-Plus, Q2: Rs 4.13 lakh, down 29.4 percent on Q1 (Rs 5.86 lakh); 0.4 percent of company revenue."
+The answer is b. Read without its base, "down 29.4 percent" sounds like the business collapsing, and the meeting argues about a panic instead of about members ordering less often. **The fix.** "Retail-Plus, Q2: Rs 4.13 lakh, down 29.4 percent on Q1 (Rs 5.86 lakh); 0.4 percent of company revenue."
+
+**Predict before you run.** Taking Business out, the change on the card reads: a) down 1.6 percent; b) down 17.3 percent; c) down 29.4 percent; d) up 33.9 percent.
 
 ```notes
 LIVE, 3 minutes. The slip: the same change divided by Q2 instead of Q1 reads 41.7 percent. A change is
 measured on the earlier period.
+Transition: what do six months show, and what happens when a director changes the scope?
 ```
 
 ---
 
-## S59. The trend beside it, and the scope a director picks
+## S57. The trend beside it, and the scope a director picks
 *What do six months show, and what happens when a director changes the scope?*
 
 | The director asks for | The card says |
@@ -1283,16 +1324,17 @@ measured on the earlier period.
 | All except Business | Rs 8.15 lakh, down 17.3% on Q1; 0.8% of revenue |
 | Retail-Plus | Rs 4.13 lakh, down 29.4% on Q1; 0.4% of revenue |
 
-The company line jumps in July to Rs 4.51 crore, 45 percent above June, on corporate invoices; without Business, revenue slides from Rs 3.32 lakh in June to Rs 2.48 lakh in September. The scope is a yellow input, and each card prints its own scope.
+The answer is b. The company line jumps in July to Rs 4.51 crore, 45 percent above June, on corporate invoices; without Business, revenue slides from Rs 3.32 lakh in June to Rs 2.48 lakh in September. The scope is a yellow input, and each card prints its own scope.
 
 ```notes
 LIVE, 5 minutes. The notebook draws both lines; describe them here. Two directors asking for two scopes
 get two honest cards, and down 1.6 and down 17.3 percent are never compared as one number.
+Transition: does the warehouse reach the same two changes by its own query?
 ```
 
 ---
 
-## S60. A second route: the warehouse's own change
+## S58. A second route: the warehouse's own change
 *Does the warehouse reach the same two changes by its own query?*
 
 ```mermaid
@@ -1307,28 +1349,30 @@ The warehouse's orders, joined to its customers for the segment, give the same c
 
 ```notes
 LIVE, 1 minute. The query joins orders to customers on customer_id and groups by quarter.
+Transition: what does the card carry so a director reads it right?
 ```
 
 ---
 
-## S61. Q2 against Q1, and every percentage in rupees
-*What did chapter 4 answer, question by question?*
+## S59. Q2 against Q1, and every percentage in rupees
+*What does the card carry so a director reads it right?*
 
 | Question | Answer |
 |---|---|
+| Which form? | d: against the last quarter, with sentence and trend |
 | A bare total? | Rs 19.84 crore, read as up 98.4% |
-| Which form? | d: the quarter against the last, with sentence and trend |
-| The card? | Q2 Rs 9.84 crore, down 1.6% on Q1 (Rs 10.00 crore) |
-| A bare percentage? | Rs 1.72 lakh on Rs 5.86 lakh, 0.4% of revenue |
-| Trend and scope? | July's jump is invoices; without Business, down 17.3% |
+| The card? | Rs 9.84 crore, down 1.6% on Q1's Rs 10.00 crore |
+| A bare percentage? | Rs 1.72 lakh, 0.4% of revenue |
+| Trend and scope? | July is invoices; without Business, down 17.3% |
 | Warehouse agrees? | -1.60% and -29.43% |
 
-**Kavya's review.** "A number without its period is read against whatever the director remembers; a percentage without its base is read as whatever the director fears."
+**Kavya's review.** "A number without its period is read against what a director remembers, and a percentage without its base as what they fear."
 
 **In the interview.** [F] How do you present one number so it is not misread?
 
 ```notes
 LIVE, 3 minutes. One learner answers aloud with the card as the example.
+Transition: which of the week's steps belong in the workbook, which must never be done there, and how do the two stay in step? Every number Finance relies on depends on it.
 ```
 
 ---
@@ -1338,20 +1382,21 @@ LIVE, 3 minutes. One learner answers aloud with the card as the example.
 
 ```notes
 LIVE, thirty minutes, with notebook C2_W02_D05_05_operating_rule beside it.
+Transition: who needs the rule, and which six questions write it?
 ```
 
 ---
 
-## S62. Answer it in six steps, from the week to the rule
-*Who needs the answer, and what must we find out on the way?*
+## S60. Kavya signs the rule; Anand's analyst audits it
+*Who needs the rule, and which six questions write it?*
 
 **Who needs the answer.** Kavya, who signs the team's rule, and Anand's analyst, who audits every number Finance relies on; a join done in a sheet can report as unpaid money that customers have paid.
 
 ```timeline
-label: 1 | title: What each touches? | body: The week's steps.
-label: 2 | title: Where could it live? | body: Four arrangements, sized.
+label: 1 | title: Where could it live? | body: Four arrangements, sized.
+label: 2 | title: What each touches? | body: The week's steps.
 label: 3 | title: A lookup joins? | body: Booked against collected.
-label: 4 | title: Every payment? | body: What adding them says.
+label: 4 | title: Every payment once? | body: What adding them says.
 label: 5 | title: Where each belongs? | body: The rule.
 label: 6 | title: How in step? | body: The drift check. | tone: dark
 ```
@@ -1360,12 +1405,13 @@ label: 6 | title: How in step? | body: The drift check. | tone: dark
 LIVE, 1 minute. Read Kavya's challenge aloud: "Which parts belong in Excel, which parts must never be in
 Excel, and how do you keep the two from drifting apart?" Chapters 1 to 4 built the three deliverables;
 this is the rule behind them.
+Transition: what does a wrong collected figure cost Anand's collections team?
 ```
 
 ---
 
-## S63. Collected against booked is the test case
-*What is at stake, who asks, and what does a wrong number cost?*
+## S61. Collected against booked is the test case
+*What does a wrong collected figure cost Anand's collections team?*
 
 ```stats
 value: Rs 19.84 cr | label: booked | note: the orders' value, both quarters
@@ -1373,16 +1419,17 @@ value: Anand | label: who asks | note: finance controller
 value: A false alarm | label: what it costs | note: a collections team chasing paid accounts
 ```
 
-Booked is the value of the orders; collected is the money received against them. Tuesday built the report in the warehouse; it needs a join, one order to several payments.
+Booked is the value of the orders; collected is the money received against them. Tuesday built the report in the warehouse, where it needs a join of one order to several payments.
 
 ```notes
 LIVE, 2 minutes. Anand asks whether the deck pack could carry Tuesday's collected figure too, computed
 in the workbook so nobody needs a login.
+Transition: which real organisation ran a pipeline step in a spreadsheet?
 ```
 
 ---
 
-## S64. Public Health England left 15,841 cases unreported
+## S62. Public Health England left 15,841 cases unreported
 *Which real organisation ran a pipeline step in a spreadsheet?*
 
 ```stats
@@ -1396,11 +1443,12 @@ value: ~1,400 | label: cases per template | note: several rows per test result
 ```notes
 LIVE, 2 minutes. GOV.UK statement of 4 October 2020 and BBC News of 5 October 2020, both checked 30
 September 2026. Rows past the old format's limit were dropped without an error.
+Transition: where could the week's work live, and what does each arrangement cost?
 ```
 
 ---
 
-## S65. The split: warehouse, pandas, workbook
+## S63. The split: warehouse, pandas, workbook
 *Where could the week's work live, and what does each arrangement cost?*
 
 | Option | Collected per order costs | Who can rerun it | What an auditor traces |
@@ -1410,71 +1458,78 @@ September 2026. Rows past the old format's limit were dropped without an error.
 | c) pandas pastes values | one groupby over 1,450 rows | the analyst | the notebook |
 | d) Dashboard | a query a view | its owner | the queries, behind a login |
 
-**The call.** b. What would switch it: a one-off question nobody audits and nobody reruns can live in a sheet.
+**The best-fit call.** b.
+
+**The fact that would change it.** A one-off question nobody audits and nobody reruns can live in a sheet.
 
 ```notes
 LIVE, 3 minutes. The warehouse owns every join, dedupe and rank because a query can be rerun and
 audited. Option d fails the brief on the login.
+Transition: which of the week's steps touches the most rows?
 ```
 
 ---
 
-## S66. What did each day build, and what does it read?
+## S64. What did each day build, and what does it read?
 *Which of the week's steps touches the most rows?*
 
 | Day | Step | Reads |
 |---|---|---|
 | Monday | The tree by segment and quarter | 1,000 orders |
-| Tuesday | Booked against collected | 1,000 orders and 1,428 payments |
-| Wednesday | Top fifty, falling spend | orders, by window |
-| Thursday | The customer table | orders, customers, exposure |
+| Tuesday | Booked against collected | 1,000 orders and 1,428 payment rows |
+| Wednesday | Top fifty, falling spend | orders, ranked within a segment |
+| Thursday | The customer table | orders, customers, campaign exposure |
 | Friday | Pivot, lookup, card | the two exports |
 
-**Question.** Which step touches the most rows? a) the tree; b) booked against collected; c) the top fifty; d) Friday's pivot.
+**Predict before you run.** Which step touches the most rows? a) the tree; b) booked against collected; c) the top fifty; d) Friday's pivot.
 
 ```notes
 LIVE, 1 minute. Letters, quickly.
+Transition: why is that the step to watch?
 ```
 
 ---
 
-## S67. Answer: Tuesday's join, one order to several payments
+## S65. Answer: Tuesday's join, one order to several payments
 *Why is that the step to watch?*
 
 ```mermaid
 flowchart LR
-    O["<b>1,000 orders</b>"] -->|"one to several"| P["<b>1,428 payments</b>"]
-    P --> Q{"<b>a sheet that joins</b>"}
-    Q --> R["<b>watch this step</b>"]
+    O["<b>1,000 orders</b>"] --> P["<b>1,428 payment rows</b><br/>one order to several"]
+    P --> R["<b>a sheet that joins</b><br/>watch this step"]
     classDef bad fill:#FCEBF0,stroke:#D63A6A,color:#1A0F5C
     class R bad
 ```
 
-The answer is b. It is the one step where one row on one side meets several on the other, which is exactly what a lookup in a sheet handles worst.
+The answer is b. It is the one step where one row on one side meets several on the other, which is what a lookup in a sheet handles worst. Eight of the 1,428 payment rows match no order.
 
 ```notes
 LIVE, 1 minute. Transition: so try it the hurried way.
+Transition: when a lookup fetches one payment per order, what does collected add up to?
 ```
 
 ---
 
-## S68. What does collected say when a lookup joins?
-*=VLOOKUP(A2, RawExport!A:H, 7, FALSE) fetches paid_amount beside each order; what does it add up to?*
+## S66. What does collected say when a lookup joins?
+*When a lookup fetches one payment per order, what does collected add up to?*
 
 ```stats
 value: Rs 19.84 cr | label: booked | note: 1,000 orders
 value: ? | label: collected, by lookup | note: one exact match per order
 ```
 
-**Question.** Collected reads about: a) Rs 19.7 crore; b) Rs 11.8 crore; c) Rs 39 crore; d) exactly booked.
+`=VLOOKUP(A2, RawExport!A:H, 7, FALSE)` fetches paid_amount beside each order.
+
+**Predict before you run.** Collected reads about: a) Rs 19.7 crore; b) Rs 11.8 crore; c) Rs 39 crore; d) exactly booked.
 
 ```notes
 LIVE, 2 minutes. The match is exact. Letters first; most rooms say a or d.
+Transition: what is the plausible wrong answer, and what decision would it mislead?
 ```
 
 ---
 
-## S69. Answer: Rs 8.00 crore "outstanding", 40.3 percent
+## S67. Answer: Rs 8.00 crore "outstanding", 40.3 percent
 *What is the plausible wrong answer, and what decision would it mislead?*
 
 ```stats
@@ -1483,36 +1538,43 @@ value: Rs 8.00 cr | label: outstanding, it says | note: 40.3 percent of booked
 value: 450 | label: orders on two rows | note: the lookup reads one
 ```
 
-The answer is b. **What breaks:** Anand's team chases Rs 8 crore from accounts that paid, most of them corporate buyers, and the board pack reports a cash problem Kalpa does not have. **Why:** a lookup returns the first matching row and stops.
+The answer is b. **Why it is wrong.** A lookup returns the first matching row and stops, so on that figure Anand's team chases Rs 8 crore from accounts that paid, most of them corporate buyers, and the board pack reports a cash problem Kalpa does not have.
+
+**Predict before you run.** With every payment added once, collected is short of booked by about: a) Rs 8.00 crore; b) Rs 17.5 lakh; c) nothing; d) Rs 39 crore.
 
 ```notes
 LIVE, 4 minutes. Every channel reads about 60 percent collected. The check: count the rows each order
 has; any order with two rows needs its payments added, never looked up.
+Transition: what does adding every payment once say?
 ```
 
 ---
 
-## S70. The fix: add every payment, and join upstream
-*What does adding every payment say?*
+## S68. The fix: add every payment once, and join upstream
+*What does adding every payment once say?*
 
 ```mermaid
 flowchart LR
-    L["<b>lookup</b><br/>Rs 11.84 crore"] -->|"+ 400 second instalments<br/>Rs 7.83 crore"| M["<b>every payment</b>"]
-    M -->|"+ 50 gateway second posts<br/>Rs 37,750"| S["<b>collected</b><br/>Rs 19.67 crore"]
+    L["<b>lookup</b><br/>Rs 11.84 crore"] --> M["<b>+ 400 second instalments</b><br/>Rs 7.83 crore"]
+    M --> S["<b>collected, each payment once</b><br/>Rs 19.66 crore"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class S known
 ```
 
-`=SUMIFS(G:G, A:A, A2)` adds every payment for the order: collected Rs 19,66,82,820, Rs 17,17,180 short of booked, 0.9 percent. **What changed:** Rs 7,83,00,846 of "outstanding" money disappears. The join belongs in the warehouse, where Tuesday did it; SUMIFS is only a check.
+The answer is b. With the gateway's 50 copies dropped, since each is one payment posted twice, `=SUMIFS(G:G, A:A, A2)` adds every payment once: collected Rs 19,66,45,070, Rs 17,54,930 short of booked, 0.9 percent, exactly Tuesday's 30 unpaid orders. **What changed.** Rs 7,82,63,096 of "outstanding" money disappears. The join belongs in the warehouse, where Tuesday did it; SUMIFS is only a check.
+
+**Predict before you run.** Counting each order once in the raw export belongs: a) in the workbook, as the first-row flag; b) in the warehouse, as an export at the order grain; c) in pandas, as a drop_duplicates; d) anywhere, since all three give Rs 19.84 crore.
 
 ```notes
-LIVE, 3 minutes. The real gaps are Tuesday's: orders nobody has paid for and payments posted twice that
-are owed back. Point back at Tuesday by name; do not re-teach it.
+LIVE, 3 minutes. The real gap is Tuesday's: the 30 orders nobody has paid for, Rs 17,54,930 to the
+rupee. The gateway's copies are one payment each, posted twice, so each counts once. Point back at
+Tuesday by name; do not re-teach it. Letters for the predict before the next slide.
+Transition: where does each of the week's steps belong?
 ```
 
 ---
 
-## S71. Each step in one place: the rule
+## S69. Each step in one place: the rule
 *Where does each of the week's steps belong?*
 
 | Step | Where it lives | Why |
@@ -1520,48 +1582,54 @@ are owed back. Point back at Tuesday by name; do not re-teach it.
 | The tree by segment and quarter | warehouse | Finance audits it |
 | Counting each order once | warehouse | a grain fix is cleaning |
 | Booked against collected | warehouse | a join, one to several |
-| Top fifty with a tie rule | warehouse | a rank others rely on |
+| Top fifty, ties settled by a rule | warehouse | a rank others rely on |
 | The customer table | pandas | the weekly iteration |
 | Pivot, lookup, card, what-ifs | workbook | the last mile, on an export that ties |
 
-**The rule.** The warehouse owns the number and every join, dedupe and rank; pandas owns the iteration; the workbook owns the last mile, and nobody types over the source.
+The answer to counting each order once is the warehouse, b. Written as the team's rule: the warehouse owns the number and every join, dedupe and rank Finance relies on; pandas owns the iteration until Finance relies on it; the workbook owns the last mile, and nobody types over the source.
+
+**Predict before you run.** A drift check runs on the same export pulled a week early. It: a) passes, since every row is real; b) holds the deck, since Q2 falls short of the warehouse; c) holds only the protect list; d) cannot run.
 
 ```notes
 LIVE, 3 minutes. Chapter 2's first-row flag was right for Friday's deadline and is a cleaning step
 with no record; next week the export should arrive at the order grain, and the flag becomes a check.
+Transition: does booked less the unpaid orders give the same collected figure, and how do the sheet and the warehouse stay in step?
 ```
 
 ---
 
-## S72. A second route, and the drift check
-*Does the warehouse agree on collected, and how do the sheet and the warehouse stay in step?*
+## S70. A second route, and the drift check
+*Does booked less the unpaid orders give the same collected figure, and how do the sheet and the warehouse stay in step?*
 
 | Check | The workbook | The warehouse | Verdict |
 |---|---|---|---|
-| Collected, every payment | Rs 19,66,82,820 | Rs 19,66,82,820 | ties |
+| Collected, each payment once | Rs 19,66,45,070 | booked less unpaid, Rs 19,66,45,070 | ties |
 | Q2 orders, today's export | 462 | 462 | ship |
 | Q2 orders, an export a week early | 430 | 462 | hold |
 
-The warehouse's payments joined to its orders give the same collected figure to the rupee. The drift check ties the workbook's quarters to the warehouse on every refresh; the same export pulled a week early, Rs 9,20,15,460 for Q2, is held.
+Booked less the orders with no payment in the warehouse, Rs 19,84,00,000 less Rs 17,54,930, gives the same collected figure without adding a single payment. The drift check compares the workbook's quarters, live on the Checks tab, with the warehouse's control totals, which travel on a small tab beside each export; the same export pulled a week early, Rs 9,20,15,460 for Q2, is held.
 
 ```notes
-LIVE, 4 minutes. Every row in the early export is real, and Q2 still falls short, so the check holds
-the deck until someone pulls a fresh export. It catches a typed-over number too, which is chapter 6.
+LIVE, 4 minutes. The predict's answer is b. Every row in the early export is real, and Q2 still
+falls short, so the check holds the deck until someone pulls a fresh export. A workbook with no login cannot query the
+warehouse, which is why the control totals travel with the export. The same check catches a
+typed-over number, which is chapter 6.
+Transition: where does each of the week's steps live, and how do the sheet and the warehouse stay in step?
 ```
 
 ---
 
-## S73. The warehouse owns it; the workbook presents it
-*What did chapter 5 answer, question by question?*
+## S71. The warehouse owns it; the workbook presents it
+*Where does each of the week's steps live, and how do the sheet and the warehouse stay in step?*
 
 | Question | Answer |
 |---|---|
-| What each touches? | Tuesday's join: 1,000 orders to 1,428 payments |
 | Where could it live? | b, the split |
-| A lookup joins? | Rs 11.84 crore collected, "Rs 8.00 crore outstanding" |
-| Every payment? | Rs 19.67 crore, 0.9 percent short |
-| Where each belongs? | Joins, dedupes, ranks upstream; the last mile in the workbook |
-| How in step? | A drift check on every refresh |
+| What each touches? | Tuesday's join: 1,000 orders, 1,428 payment rows |
+| A lookup joins? | Rs 11.84 crore, "Rs 8.00 crore outstanding" |
+| Every payment once? | Rs 19.66 crore; the gap is the unpaid list |
+| Where each belongs? | Joins and ranks upstream; the last mile here |
+| How in step? | A live drift check on control totals |
 
 **Kavya's review.** "Excel presents; it does not clean, join or compute the source of truth, because a sheet with a typed-over cell has no audit trail."
 
@@ -1570,11 +1638,12 @@ the deck until someone pulls a fresh export. It catches a typed-over number too,
 ```notes
 LIVE, 3 minutes. One learner answers: by who has to trust the number and who has to rerun it.
 Transition to lunch: after it, a director gets their hands on the workbook.
+Transition: what can a director trust so far, and what is still open?
 ```
 
 ---
 
-## S74. The morning's answers, in one picture
+## S72. The morning's answers, in one picture
 *What can a director trust so far, and what is still open?*
 
 ```mermaid
@@ -1592,5 +1661,6 @@ flowchart LR
 The tree ties to the warehouse, the list and its lookup say what they hold, the card carries its period, comparison and base, and the rule says who owns each number. After lunch a director takes the laptop.
 
 ```notes
-LIVE, 1 minute. Point back at the morning's first picture, S4. Lunch.
+LIVE, 1 minute. Point back at the morning's first picture, the one on the board since the opening.
+Transition: lunch; after it, a director takes the laptop.
 ```
