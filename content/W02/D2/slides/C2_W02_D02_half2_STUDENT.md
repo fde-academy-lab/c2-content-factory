@@ -87,7 +87,7 @@ C2_W02_D02_06_can_it_leave_STUDENT.ipynb.
 
 ```timeline
 label: 1 | title: Can hurried checks miss an order? | body: Three plausibility checks on a page that hides one.
-label: 2 | title: Which checks tie to the tables? | body: Five checks, each read from one table alone.
+label: 2 | title: Which checks tie to the tables? | body: Five checks, each read outside the report.
 label: 3 | title: Does the suite stop all five? | body: The day's five wrong reports, one by one.
 label: 4 | title: Does Kalpa's Q2 page pass? | body: The suite on the real page.
 label: 5 | title: Does Python reach the same? | body: The same numbers from the raw rows.
@@ -144,7 +144,7 @@ builds reads Kalpa's own tables, so name what they cannot see.
 |---|---|---|---|
 | A. Read the report | A person looks at the page | depends on the reader | minutes of a person |
 | B. Plausibility checks | Collected at most booked, no negative gap, every channel present | 3 | milliseconds, the report alone |
-| C. Tie-back checks | Every figure recomputed from one table alone and compared | 5 | milliseconds, report and sources |
+| C. Tie-back checks | Every figure recomputed from the source tables and compared | 5 | milliseconds, report and sources |
 | D. An independent recomputation | The same figures from the raw rows by another tool | 5 | milliseconds, the raw rows |
 
 **The five wrong pages.** Chapter 2's fan-out draft, chapter 3's plain JOIN draft and its LEFT JOIN that still read posted as collected, chapter 4's quarter in WHERE, and chapter 5's gap summed order by order, each written on the invented tables.
@@ -177,7 +177,8 @@ flowchart LR
 
 ```notes
 LIVE, 2 minutes. Each tie-back check compares a figure on the report with the same figure computed
-from one table alone, where no join can multiply or drop anything. The Python recomputation reaches
+outside it: booked from orders alone, posted from payments alone, and the gap from lists no join can
+multiply. The Python recomputation reaches
 the numbers by a different tool and a different rule for counting a payment once, so an error in
 the SQL and the same error in the checks would still be caught.
 ```
@@ -256,7 +257,7 @@ tests the report against itself, which is the Wirecard pattern in miniature.
 **Question.** On the same page, which checks fail? a) none; b) orders, booked and the two lists; c) only the gap; d) all five.
 
 ```notes
-LIVE, 2 minutes. Each tie-back check recomputes one figure from a single table and compares it with
+LIVE, 2 minutes. Each tie-back check recomputes one figure outside the report and compares it with
 the report. Take letters.
 ```
 
@@ -420,7 +421,7 @@ before a joined number reaches Finance, and say what you do when it fails at the
 | Question | The answer, with its number |
 |---|---|
 | Can hurried checks miss an order? | Yes: 3 of 3 pass the quarter-in-WHERE page, which hides T-4 |
-| Which checks tie to the tables? | Five checks recompute orders, booked, the gap and posted from one table each |
+| Which checks tie to the tables? | Five checks recompute orders, booked, the gap and posted outside the page |
 | Does the suite stop all five? | Plausibility lets 2 of 5 through; the tie-back suite stops all 5 |
 | Does Kalpa's Q2 page pass? | Yes, 5 of 5: 462 against 462, Rs 9,84,00,000 against Rs 9,84,00,000 |
 | Does Python reach the same? | Yes: orders, booked, collected and the gap all match |

@@ -2696,7 +2696,7 @@ kit.table(["Page", "Where the day met it", "Orders", "Booked", "Collected", "Gap
 |---|---|---|
 | A. Read the report before sending it | A person looks at the page | Someone who knows the numbers, every Monday |
 | B. Plausibility checks | Collected at most booked, no negative gap, every channel present | Only the report itself |
-| C. Tie-back checks | Every figure on the report recomputed from one table alone and compared | The two source tables |
+| C. Tie-back checks | Every figure on the report recomputed from the source tables and compared | The two source tables |
 | D. An independent recomputation | The same figures from the raw rows by another tool, or from the gateway's settlement file | A second method, or a second source |
 
 The cell below runs B, C and D against the five wrong reports rebuilt above, counts how many each
@@ -2744,7 +2744,8 @@ kit.check("the tie-back suite stops all five wrong reports", stops["C. tie-back"
         md("""
 **The best-fit call.** Option C, the tie-back suite, fits best, with D beside it. The tie-back
 suite stops all five of the day's wrong reports and runs in milliseconds, because each check compares a figure on the report
-with the same figure computed from one table alone, where no join can multiply or drop anything.
+with the same figure computed outside it: booked from orders alone, posted from payments alone, and
+the gap from lists no join can multiply.
 The Python recomputation reaches the numbers by a different tool and a different rule for counting a
 payment once, so an error in the SQL and the same error in the checks would still be caught.
 Plausibility checks cost the same and stop three of the five.
@@ -2785,7 +2786,7 @@ nobody paid.
         md("""
 ## 2. Which checks tie the report back to the two tables?
 
-Each tie-back check recomputes one figure from a single table and compares it with the report:
+Each tie-back check recomputes one figure outside the report and compares it with the report:
 
 | Check | Computed from | Catches |
 |---|---|---|
