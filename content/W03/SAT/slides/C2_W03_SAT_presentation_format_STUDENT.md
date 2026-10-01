@@ -557,8 +557,8 @@ flowchart LR
 
 ```notes
 SELF-STUDY, 1 minute. Four minutes hold two or three charts; a fourth means the group is touring its
-notebook. A chart titled "Bookings by metro" makes the panel do the work; "Bookings per day fell in
-two metros from Q2 to Q3" does it for them.
+notebook. On the invented quarter, a chart titled "Turnaround by quarter" makes the panel do the work,
+and "Median turnaround fell from 22 to 18 hours" does it for them.
 Transition: the last minute of the body.
 ```
 
