@@ -5,7 +5,9 @@ renders on GitHub. This turns it into the printed sheet: a title band, an anchor
 one picture the sheet is built around, the blocks packed into balanced columns, and a foot strip of
 the day's vocabulary read from its study notes rather than written again. A sheet that prints its own
 glossary panel gets no strip, and once a sheet fits its page the anchor is printed as large as the
-page allows, up to about 7pt labels, instead of at the readable floor.
+page allows, up to about 7pt labels, instead of at the readable floor. Every panel heading and
+every term of the strip is read back from the finished PDF, because the renderer drops what
+overflows the panels' columns without adding a page, and a layout that lost one never ships.
 
 Usage:
     python3 scripts/build_cheatsheet.py content/W01/D1/cheatsheets/C2_W01_D01_kernel_records_STUDENT.md
@@ -823,6 +825,33 @@ def last_page_fill(pdf_path):
     return 0.0
 
 
+def _norm(text):
+    return re.sub(r"[^a-z0-9]", "", html.unescape(re.sub(r"<[^>]+>", " ", text)).lower())
+
+
+def unprinted(pdf_path, page):
+    """What the page asked for and the PDF does not print: panel headings and vocabulary terms.
+
+    The panels and the foot strip share one multi-column block, and the renderer drops what
+    overflows that block without adding a page, so a sheet once printed on one page with its
+    whole vocabulary strip gone. Reading the PDF's text back is the only check that sees it.
+    Returns the labels of what is missing, and nothing when pdftotext is not installed.
+    """
+    if not shutil.which("pdftotext"):
+        return []
+    done = subprocess.run(["pdftotext", "-raw", str(pdf_path), "-"], capture_output=True, text=True)
+    printed = _norm(done.stdout)
+    heads = [re.sub(r'<span class="n">.*?</span>', "", h) for h in re.findall(r"<h2>(.*?)</h2>", page, re.S)]
+    wanted = [(f"the panel headed {html.unescape(re.sub(r'<[^>]+>', '', h)).strip()[:40]!r}", h)
+              for h in heads]
+    foot = re.search(r'<div class="foot">(.*?)</div></div>', page, re.S)
+    if foot:
+        wanted.append(("the vocabulary strip", "The words on this sheet"))
+        wanted += [(f"the term {html.unescape(re.sub(r'<[^>]+>', '', t)).strip()!r}", t + m) for t, m in
+                   re.findall(r"<div><b>(.*?)</b> <span>(.*?)</span></div>", foot.group(1), re.S)]
+    return [label for label, text in wanted if _norm(text)[:28] not in printed]
+
+
 def build(path, fmt, verified, png_dir=None, max_pages=1):
     out_pdf = path.with_suffix(".pdf")
     CACHE.mkdir(parents=True, exist_ok=True)
@@ -838,7 +867,7 @@ def build(path, fmt, verified, png_dir=None, max_pages=1):
     # that would print a label too small to read is never a candidate.
     def score(c):
         """Readable first, then compact, then a full last page, then the larger diagrams."""
-        return (not c["cramped"], -min(c["pages"], 9),
+        return (not c["dropped"], not c["cramped"], -min(c["pages"], 9),
                 1.0 if c["pages"] == 1 else round(c["fill"], 2),
                 0 if c["tight"] else 1, c["cap"])
 
@@ -853,22 +882,27 @@ def build(path, fmt, verified, png_dir=None, max_pages=1):
         pages, fill = len(doc.pages), last_page_fill(out_pdf)
         cand = dict(page=page, missing=missing, n_panels=n_panels, n_diagrams=n_diagrams,
                     wide=wide, columns=columns, cramped=cramped, pages=pages, fill=fill,
-                    cap=cap, tight=tight)
+                    cap=cap, tight=tight, dropped=unprinted(out_pdf, page))
         if best is None or score(cand) > score(best):
             best = cand
         if not n_diagrams:
             break
-        if not cramped and pages <= max_pages and (pages == 1 or fill >= 0.45):
+        if (not cramped and not cand["dropped"] and pages <= max_pages
+                and (pages == 1 or fill >= 0.45)):
             break
     # The anchor is the picture a learner redraws from memory, so a sheet that already fits one
     # page with room to spare prints it larger, and keeps the floor-sized anchor when it would not.
-    if best["pages"] == 1 and not best["cramped"] and best["n_diagrams"]:
+    if best["pages"] == 1 and not best["cramped"] and not best["dropped"] and best["n_diagrams"]:
         grown = [(a, c, t) for a in ANCHOR_LABEL_PT for c, t in plans]
+        trial = CACHE / (path.stem + ".trial.pdf")
         for anchor_pt, cap, tight in grown:
             page, missing, n_panels, n_diagrams, wide, columns, cramped = build_html(
                 path, fmt, verified, cap, tight, anchor_pt)
             doc = HTML(string=page, base_url=str(path.parent)).render()
-            if len(doc.pages) == 1 and not cramped and not missing:
+            if len(doc.pages) != 1 or cramped or missing:
+                continue
+            doc.write_pdf(str(trial))
+            if not unprinted(trial, page):
                 best.update(page=page, missing=missing, cramped=cramped, wide=wide,
                             columns=columns, cap=cap, tight=tight, anchor_pt=anchor_pt)
                 break
@@ -884,6 +918,10 @@ def build(path, fmt, verified, png_dir=None, max_pages=1):
         fails += 1
     if missing:
         print(f"FAIL  {out_pdf.name}: {len(missing)} diagrams did not render ({', '.join(missing)})")
+        fails += 1
+    if best["dropped"]:
+        print(f"FAIL  {out_pdf.name}: the page does not print {', '.join(best['dropped'])}, which "
+              f"overflowed the panels' columns. Cut a block or move it to the study notes.")
         fails += 1
     for n, (w_px, h_px), pt in cramped:
         print(f"FAIL  {out_pdf.name} panel {n}: its diagram is {w_px:.0f} by {h_px:.0f} and prints "
