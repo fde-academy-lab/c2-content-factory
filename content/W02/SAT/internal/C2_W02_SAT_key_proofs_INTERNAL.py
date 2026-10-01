@@ -106,10 +106,6 @@ def frame(cur, sql):
     return pd.DataFrame(cur.fetchall(), columns=cols)
 
 
-def lakh(x):
-    return round(float(x) / 100000, 1)
-
-
 def crore(x):
     return round(float(x) / 10000000, 2)
 
@@ -259,7 +255,10 @@ def prove(cur):
     collapsed = one(cur, """SELECT count(*), count(p.order_id) FROM orders o LEFT JOIN
         (SELECT DISTINCT order_id, instalment_no, amount, paid_date, method FROM payments) p
         ON p.order_id = o.order_id WHERE o.quarter = 'Q2'""")
-    assert collapsed == (650, 620)                                     # c: identical rows kept once
+    assert collapsed == (650, 620)                                     # c: each retry's two rows kept once
+    retry_cols = one(cur, """SELECT count(*) FROM (SELECT order_id, instalment_no FROM payments
+        GROUP BY 1, 2 HAVING count(*) > 1 AND count(DISTINCT (paid_date, amount, method)) = 1) r""")[0]
+    assert retry_cols == 50                       # every retry's two rows differ only in payment_id
     assert (678 + 8, 648 + 8) == (686, 656)                            # d: the orphans counted
     show(7, "join-counts", "a", "678 rows out and 648 payment rows", "678 and 648")
 
@@ -320,7 +319,10 @@ def prove(cur):
     assert gaps == {"app": 0, "store": 0, "web": 21750}
     assert sum(b for b, _, _ in shown.values()) == 98400000       # booked ties to Monday's figure
     assert max(shown, key=lambda ch: shown[ch][0] - shown[ch][1]) == "store"   # option b's pull
-    assert "send what reconciles and hold what does not" in ADD["reporting-day"]["text"]
+    # The stem states Tuesday's chapter 6 rule: booked always leaves; a collected figure that does
+    # not reconcile is held, with the open line; a channel reconciles when its gap equals its list.
+    assert "booked always leaves" in ADD["reporting-day"]["text"]
+    assert "a collected figure that does not reconcile never leaves" in ADD["reporting-day"]["text"]
     show(10, "reporting-day", "c", "app and store close to the rupee; web's gap exceeds its list by Rs 21,750",
          "Booked for every channel, collected for app and store, and web's collected held back")
 
@@ -331,7 +333,7 @@ def prove(cur):
              "d": loaded < before, "e": sheet == 65536 - 1}
     assert [k for k, v in fires.items() if v] == ["c", "e"] and csv - loaded == 5365
     assert all(r[0] == r[1] == r[2] for k, r in labs.items() if k != "Lab B")   # A and C lost nothing
-    show(11, "phe-checks", "c, e", "only the CSV count and the limit check see Lab B's 5,365 lost records")
+    show(11, "phe-checks", "c, e", "only the CSV count and the limit check see Lab B's 5,365 lost rows")
 
     # ------------------------------------------------------------------ Part 3, Wednesday
     ranked = frame(cur, """
@@ -452,13 +454,29 @@ def prove(cur):
     assert [crore(x) for x in every_other.plan_to_date] == line
     assert [float(x) for x in ex16["table"]["rows"][0][1:]] == bars
     assert [float(x) for x in ex16["table"]["rows"][1][1:]] == line
-    ends = [(w + pd.Timedelta(days=6)).strftime("%-d %b") for w in pd.to_datetime(every_other.week_start)]
-    assert ends[:-1] == ex16["table"]["head"][1:-1] and ex16["table"]["head"][-1] == "Close, 30 Sep"
+    # The chart reads every other plan week, named by its Monday as Wednesday's chapter 5 names them,
+    # and the close, the week of 28 September, which holds one day.
+    starts = [w.strftime("%-d %b") for w in pd.to_datetime(every_other.week_start)]
+    head16 = ex16["table"]["head"]
+    assert head16[0] == "Plan week of" and starts[:-1] == head16[1:-1]
+    assert starts[-1] == "28 Sep" and head16[-1] == "28 Sep, the close"
+    assert ex16["mermaid"].count('"') and all(f'"{s}"' in ex16["mermaid"] for s in starts[:-1])
     assert weeks.to_date.iloc[-1] == one(cur, "SELECT sum(amount) FROM orders WHERE quarter = 'Q2'")[0]
+    # The plan line the Part 3 opening describes: 13 weeks from Monday 6 July at Rs 75,69,230 each,
+    # and the 25 orders of 1 to 5 July that fall before it, which the first plan week carries.
+    plan_shape = one(cur, """SELECT count(*), min(week_start), max(week_start), min(plan_revenue),
+                                    max(plan_revenue) FROM plan_line""")
+    assert plan_shape == (13, pd.Timestamp("2026-07-06").date(), pd.Timestamp("2026-09-28").date(),
+                          Decimal("7569230.00"), Decimal("7569230.00"))
+    early = one(cur, """SELECT count(*), sum(amount) FROM orders
+                        WHERE order_date BETWEEN DATE '2026-07-01' AND DATE '2026-07-05'""")
+    assert early == (25, Decimal("1539820.00"))
     lead = [round(b - p, 2) for b, p in zip(bars, line)]
-    assert lead == [-0.25, 1.95, 2.17, 1.57, 0.73, 0.79, 0.0]
-    assert max(lead) == lead[2] and ends[2] == "9 Aug"                     # c: furthest ahead by 9 Aug
-    assert lead[5] == 0.79 and ends[5] == "20 Sep"                         # c: 0.8 left on 20 Sep
+    assert lead == [-0.25, 1.95, 2.17, 1.57, 0.73, 0.79, 0.0]               # read from the table
+    exact = [int(t - p) for t, p in zip(every_other.to_date, every_other.plan_to_date)]
+    assert exact == [-2469050, 19536790, 21669660, 15751980, 7273670, 7970130, 10]
+    assert max(lead) == lead[2] and starts[2] == "3 Aug"                   # c: furthest ahead, 3 Aug
+    assert lead[5] == 0.79 and round(exact[5] / 1e7, 1) == 0.8 and starts[5] == "14 Sep"   # c: 0.8
     assert lead[1] < lead[2] and lead[4] == 0.73                            # a is false twice
     assert all(x > 0 for x in lead[1:-1])                                   # b is false
     assert lead[3] < lead[2]                                                # d is false
@@ -466,11 +484,12 @@ def prove(cur):
     plan = float(weeks.plan_revenue.iloc[0])
     last7 = weeks[(weeks.week_start >= pd.Timestamp("2026-08-10").date())
                   & (weeks.week_start <= pd.Timestamp("2026-09-21").date())]
-    assert lakh(plan) == 75.7 and sum(float(b) < plan for b in last7.booked) == 6
+    assert plan == 7569230.0 and sum(float(b) < plan for b in last7.booked) == 6
     july = weeks[weeks.week_start == pd.Timestamp("2026-07-13").date()].iloc[0]
     assert july.booked == Decimal("26628920.00")
-    show(16, "run-rate", "c", "the lead peaks at Rs 2.17 crore by 9 August and is 0.79 on 20 September",
-         "Furthest ahead by 9 August, by about Rs 2.2 crore, and about Rs 0.8 crore ahead on 20 September")
+    show(16, "run-rate", "c", "the lead peaks at Rs 2,16,69,660 in the week of 3 Aug; 0.8 crore on 14 Sep",
+         "Furthest ahead in the week of 3 August, by about Rs 2.2 crore, and about Rs 0.8 crore ahead "
+         "in the week of 14 September")
 
     # ------------------------------------------------------------------ Part 4, Thursday
     customers = frame(cur, "SELECT * FROM customers")
@@ -486,6 +505,10 @@ def prove(cur):
     repeats = feed[feed.customer_id.duplicated(keep=False)]
     assert repeats.customer_id.nunique() == 6 and set(repeats.exposed_date) == {"2026-08-03", "2026-08-11"}
     merged = table.merge(feed, on="customer_id", how="left")
+    # The Part 4 opening: recency counts to the data's last date, and the sale ran in August.
+    assert str(orders.order_date.max()) == "2026-09-28"
+    sale = one(cur, "SELECT name, start_date, end_date FROM campaigns WHERE campaign_id = 'CMP-MONSOON-26'")
+    assert sale[0] == "Monsoon Sale" and sale[1].month == sale[2].month == 8
 
     # Q17 merge-guard: the rows, the guard that stops them, and each distractor's reading.
     assert len(merged) == 346 == 340 + (136 - 130)
@@ -547,6 +570,16 @@ def prove(cur):
     firsts = plus.pivot_table(index="member", columns="month", values="amount", aggfunc="first")
     assert (summed.loc["M1", "Jun"], summed.sum().sum(), len(plus)) == (4000, 8800, 5)   # a, d
     assert (firsts.loc["M1", "Jun"], firsts.sum().sum()) == (3000, 7200)                 # c
+    # The reason's Kalpa figures, Thursday's chapter 3: the default pivot over Retail-Plus's months
+    # reads a fall of 18 percent where the orders fell 29.4.
+    rp_orders = orders.merge(customers[["customer_id", "segment"]], on="customer_id")
+    rp_orders = rp_orders[rp_orders.segment == "Retail-Plus"].copy()
+    rp_orders["month"] = pd.to_datetime(rp_orders.order_date).dt.month
+    averaged = rp_orders.pivot_table(index="customer_id", columns="month", values="amount")
+    q1_avg, q2_avg = averaged[[4, 5, 6]].sum().sum(), averaged[[7, 8, 9]].sum().sum()
+    assert (round(q1_avg), round(q2_avg)) == (412019, 337267)
+    assert round((1 - q2_avg / q1_avg) * 100) == 18
+    assert round((1 - 413380 / 585770) * 100, 1) == 29.4
     show(19, "months-view", "b", "prints 2000.0 4 5600.0", "2000.0 4 5600.0")
 
     # Q20 genes: run the exhibit as printed, and the readings behind the distractors.
@@ -692,7 +725,7 @@ def prove(cur):
         GROUP BY model ORDER BY model""")
     assert no_having == [("bot-a", 3), ("bot-b", 1), ("bot-c", 1)]     # c
     show(30, "low-ratings", "d", "returns bot-a 3 alone; the lead asked for bot-a and bot-b",
-         "bot-a alone, beside its 3 low ratings, so the lead retrains bot-a")
+         "bot-a alone, beside its count of 3 low ratings, so the lead retrains bot-a")
 
     # Q31 not-in: run the exhibit as printed, the anti-join that works, and the budget rule.
     assert one(cur, code_of("not-in")) == (0,)
@@ -737,6 +770,25 @@ def prove(cur):
     assert buyers == (244, 227, 301) and 244 + 227 == 471
     show(33, "weekly-users", "d", "the days add to 16; the week's distinct users are 6", "6")
 
+    # ------------------------------------------------------------------ The stretch answers
+    # Stretch 1: every paid order paid within two days, instalments on one day, and the payment
+    # rows on July to September orders that land in a week other than their order's.
+    timing = one(cur, """SELECT max(lag), max(n_dates) FROM (SELECT o.order_id,
+                             max(p.paid_date - o.order_date) AS lag, count(DISTINCT p.paid_date) AS n_dates
+                         FROM orders o JOIN payments p USING (order_id) GROUP BY 1) x""")
+    assert timing == (2, 1)
+    crossing = one(cur, """SELECT count(*) FILTER (WHERE date_trunc('week', p.paid_date)
+                                                  <> date_trunc('week', o.order_date)), count(*)
+                           FROM payments p JOIN orders o USING (order_id) WHERE o.quarter = 'Q2'""")
+    assert crossing == (169, 648)
+    # Stretch 2: Retail-Plus members who bought in both quarters, of those who bought in either.
+    both = one(cur, f"""SELECT count(*) FILTER (WHERE q1 > 0 AND q2 > 0), count(*) FROM (
+                           SELECT customer_id, count(*) FILTER (WHERE quarter = 'Q1') AS q1,
+                                  count(*) FILTER (WHERE quarter = 'Q2') AS q2
+                           FROM ({rp}) r GROUP BY customer_id) x""")
+    assert both == (60, 107)
+    print("PASS  stretch answers: paid within 2 days, 169 of 648 rows cross a week; 60 of 107 in both")
+
 
 if __name__ == "__main__":
     main()
@@ -746,7 +798,8 @@ if __name__ == "__main__":
 # python3 content/W02/SAT/internal/C2_W02_SAT_key_proofs_INTERNAL.py, with Postgres 16 on
 # localhost and the default credentials
 #     Prints the versions, then 33 lines, PASS Q1 to PASS Q33, each with the item's id, its key
-#     and what was checked, then "RESULT: PASS (33 items proved)", and leaves no schema behind.
+#     and what was checked, a line for the stretch answers' figures, then "RESULT: PASS (33 items
+#     proved)", and leaves no schema behind.
 # The same run with the source file's facebook exhibit changed to count(*) in the calculated line
 #     The assertion on 10.0 and 6.0 fails with a traceback at Q6 and the exit code is 1; the
 #     scratch schema is still dropped by the finally block.
