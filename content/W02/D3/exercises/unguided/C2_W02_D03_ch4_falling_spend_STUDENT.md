@@ -31,7 +31,7 @@ slipping; a fall the flag misses is a member nobody rang until he had gone.
 
 - Which way should set each month beside the two before it, and what does the self-join work through?
 - Which members does a flag with no PARTITION BY name in the invented table?
-- Which check exposes LAG reading another member's months, and what must it read?
+- Which check proves that every value LAG read came from the row's own member, and what must it read?
 - Which second route could a slip in the window not fool, and what does it read?
 - Which fact would make the self-join the build to ship?
 
@@ -60,7 +60,7 @@ c) LAG in a window: one pass over the 752 member-months, where the self-join mak
 
 d) A correlated subquery per month, one lookup for each row: 752 lookups, the same work as LAG
 
-## What does LAG read when nobody tells it whose rows belong together?
+## Whose months does LAG read?
 
 Used at work whenever a window runs over a table that holds many customers' histories one after
 another.
@@ -89,10 +89,10 @@ c) X-01, X-02 and X-03, since every September row has two rows above it in the s
 
 d) Nobody, since LAG returns NULL until the window is given a PARTITION BY
 
-### Q3. Which check exposes LAG reading another member's months, and what must it read?
+### Q3. Which check proves that every value LAG read came from the row's own member, and what must it read?
 
-On a table of ten thousand member-months, too many to read by eye, which check exposes LAG reading
-another member's months, and what must it read?
+On a table of ten thousand member-months, too many to read by eye, which check proves that every
+value LAG read came from the row's own member, and what must it read?
 
 a) Count the flagged members beside the members who ordered in September: the flag must be the smaller
 

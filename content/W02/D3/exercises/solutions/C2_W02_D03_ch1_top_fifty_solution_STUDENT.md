@@ -125,7 +125,7 @@ column, which a later step could count or filter, earns nothing.
 Item 4, option d. A sum set beside the quarter's total is a good first look, and most teams run it.
 It cannot answer the question asked, because a member who belongs on the list and is missing from it
 moves the sum by a few thousand rupees on a figure of nearly ten crore, and nothing tells you what the
-sum should have been. A check that could fail is one built from a different route to the same list.
+sum should have been. Item 4's key can fail, because it reaches the list by a route of its own.
 
 ## Where does this show up at work?
 

@@ -73,8 +73,8 @@ Business line is right.
 
 Kind: spot the plausible wrong output, and the check that catches it.
 
-The key is c, "Set each list's first member beside its segment's top Q2 revenue: Retail-Core opens on
-Rs 1,200, not Rs 13,910". Ordered by customer id, the window numbers each segment's members by their
+The key is c, "Set each list's first member beside its segment's top Q2 revenue: Rs 1,200 against
+Rs 13,910 in Retail-Core". Ordered by customer id, the window numbers each segment's members by their
 id, so every list has the right length and the wrong members. Retail-Core's list opens on C-0001, who
 booked Rs 1,200 in Q2, where the segment's top member, C-0010, booked Rs 13,910, and the fifty carry
 Rs 2,36,540, 64.6 percent of the segment's Q2 revenue, against 76.1 percent for the right fifty. A
@@ -136,4 +136,4 @@ subcategory and shows an item's rank within its categories on the product page (
 Best Sellers Rank, checked 1 October 2026). India's JEE Advanced keeps separate category rank lists
 beside the common rank list, and in 2026 the OBC-NCL rank 1 stood third on the common list and the
 GEN-EWS rank 1 sixth (the JEE Advanced 2026 results release of 1 June 2026, checked 1 October 2026).
-Each is a PARTITION BY in public.
+Both keep a list for every group beside the overall one, which is the shape PARTITION BY gives a query.

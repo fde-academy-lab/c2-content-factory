@@ -2266,9 +2266,9 @@ Q2_SPEND = """
     GROUP  BY c.segment, o.customer_id"""
 
 MONTHLY = """
-    SELECT customer_id, date_trunc('month', order_date)::date AS month, sum(amount) AS spend
-    FROM   orders
-    GROUP  BY customer_id, date_trunc('month', order_date)"""
+    SELECT customer_id, segment, date_trunc('month', order_date)::date AS month, sum(amount) AS spend
+    FROM   orders JOIN customers USING (customer_id)
+    GROUP  BY customer_id, segment, date_trunc('month', order_date)"""
 '''
 
 
@@ -2533,10 +2533,10 @@ def case():
         """),
         code(r'''
             # TODO 7. Which expression gives every Q2 order a plan week, including 1 to 5 July?
-            #   a) date_trunc('week', order_date)::date
+            #   a) date_trunc('week', order_date)::date, the Monday that starts each order's own calendar week
             #   b) greatest(date_trunc('week', order_date)::date, (SELECT min(week_start) FROM plan_line))
-            #   c) date_trunc('month', order_date)::date
-            #   d) (order_date - 5)
+            #   c) date_trunc('month', order_date)::date, which files each order under the first day of its month
+            #   d) (order_date - 5), which shifts every order by the five days between 1 July and the plan's first Monday
             WEEK = {"a": "date_trunc('week', order_date)::date",
                     "b": "greatest(date_trunc('week', order_date)::date, (SELECT min(week_start) FROM plan_line))",
                     "c": "date_trunc('month', order_date)::date",
@@ -2591,14 +2591,14 @@ def case():
         """),
         code(r'''
             # TODO 9. Which line goes to Meera for the leadership meeting?
-            #   a) "Q2 closed Rs 15,39,810 short of plan, so the next quarter should open on a recovery campaign."
-            #   b) "Q2 closed on plan and was Rs 1.58 crore ahead at mid-quarter, so the quarter needs no action at all."
+            #   a) "Q2 closed Rs 15,39,810 short of plan on the running total, so the next quarter should open on a recovery campaign to win it back."
+            #   b) "Q2 closed on plan and stood Rs 1.58 crore ahead at mid-quarter, so the quarter needs no action from the leadership meeting at all."
             #   c) "Q2 closed on plan, Rs 10 ahead; the mid-quarter lead came from one July week, and six of seven weeks since 10 August ran below."
-            #   d) "Q2 revenue to date stood at about nine times the weekly plan by mid-quarter, well ahead of every target."
+            #   d) "Q2 revenue to date stood at about nine times the weekly plan by mid-quarter, well ahead of every target the plan line set."
             MEERA = __TODO9__
 
             # TODO 10. Which line goes to Marketing with the lists?
-            #   a) "Every segment's list holds exactly fifty members, cut by a stated tiebreaker, so each list is the same size."
+            #   a) "Every segment's list holds exactly fifty members, cut by a tiebreaker stated in advance, so each list is the same size for the calls."
             #   b) "Each list holds fifty, or every buyer where a segment has fewer, and a list above fifty names the members tied at its line."
             #   c) "The lists hold 155 members in all, fifty per segment where possible, ranked by Q2 revenue across the whole book."
             #   d) "Each list ranks members with DENSE_RANK, so members who spent the same share a place and no number is skipped."
@@ -2728,10 +2728,10 @@ def second():
         """),
         code(r'''
             # TODO 3. Why does RANK on orders alone ship 51 members?
-            #   a) 24 members placed three or more orders, and the 27 members with two orders all share 25th place.
-            #   b) RANK skips a number after every tie, and those skipped numbers count as extra members on the list.
-            #   c) One member placed eight orders, so RANK counts that member several times on the list.
-            #   d) The 45 members with one order share a place, and RANK adds one of them to make the list even.
+            #   a) 24 members placed three or more orders, and the 27 members with two orders all share 25th place
+            #   b) RANK skips a number after every tie, and those skipped numbers count as extra members on the list
+            #   c) One member placed eight orders, so RANK counts that member several times on the list
+            #   d) The 45 members with one order share a place, and RANK adds one of them to make the list even
             WHY = __TODO3__
             print("your reason:", WHY)
             '''),
@@ -2820,7 +2820,7 @@ def second():
             GAP = __TODO6__
 
             # TODO 7. Which line goes to the marketing lead?
-            #   a) "Rank Retail-Core by orders alone under RANK: 51 members ship, which honours the tie rule and protects frequency."
+            #   a) "Rank Retail-Core by orders alone under RANK: 51 members ship, which honours the tie rule and protects the frequency that fell."
             #   b) "Rank by orders with Q2 revenue as the second key: fifty ship, 49 are on the revenue list too, and the lists differ by Rs 40."
             #   c) "Rank Retail-Core with DENSE_RANK on orders, so that every member who ordered the same shares a place on the list."
             #   d) "Keep the revenue list, since ranking by orders would drop the members whose quarters carry the most revenue."

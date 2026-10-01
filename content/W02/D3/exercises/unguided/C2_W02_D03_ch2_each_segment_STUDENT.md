@@ -105,7 +105,7 @@ a) Count each list beside the smaller of 50 and the segment's buyers: 35, 50, 50
 
 b) Check that no member sits on two lists: none does, since a member has one segment, so the list ships
 
-c) Set each list's first member beside its segment's top Q2 revenue: Retail-Core opens on Rs 1,200, not Rs 13,910
+c) Set each list's first member beside its segment's top Q2 revenue: Rs 1,200 against Rs 13,910 in Retail-Core
 
 d) Add the four lists' rows and set the sum beside chapter 2's 155: the two agree, so the list ships
 

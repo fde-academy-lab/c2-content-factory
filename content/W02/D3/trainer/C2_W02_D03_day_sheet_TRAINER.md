@@ -277,7 +277,27 @@ The full answers are in each chapter's notebook and in the study notes.
 
 ## Which letters are keys?
 
-<!-- KEYS: filled from the exercise family's solutions once its files are final -->
+Every letter line posts as one string in item order, no spaces. The day holds 70 lettered items, and
+26 of them (37 percent) are design items.
+
+| Set | Letters, in item order | Design items |
+|---|---|---|
+| Guided build, chapter 3 (`exercises/guided/`) | dbacb | None, since the trainer chooses every step |
+| Chapter 1 set | cadbc | 1, 4 and 5 |
+| Chapter 2 set | bdcab | 1, 4 and 5 |
+| Chapter 3 set | badcb | 4 and 5 |
+| Chapter 4 set | cbdab | 1, 4 and 5 |
+| Chapter 5 set | acbdb | 1 and 5 |
+| Chapter 6 set | dacbd | 1, 4 and 5 |
+| Escalated case | cbbaacbbcbdadcd, that is 1c 2b 3b 4a 5a 6c 7b 8b 9c 10b 11d 12a 13d 14c 15d | 11 to 15 |
+| Practice lab | cbdabcadbc | 5 and 10 |
+| Second case | ababaabdcd | 8 to 10 |
+| Kahoot | b, d, a, c, b, a, d, c | None; it is ungraded |
+
+Beside the escalated case's letters each learner posts two numbers: 9, the members Marketing rings
+first, and Rs 1,57,51,980, Q2's lead over plan to date at mid-quarter. Item 11's key names the rest of
+the calls as the learner's Retail-Plus count less 45; with Retail-Plus's 51, six calls carry to next
+week.
 
 ---
 

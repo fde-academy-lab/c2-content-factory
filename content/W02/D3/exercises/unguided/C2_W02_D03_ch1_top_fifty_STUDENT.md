@@ -147,8 +147,8 @@ d) Add up the fifty members' Q2 revenue and set it beside the quarter's Rs 9,84,
 
 ### Q5. Which fact would make the shorter build, GROUP BY with LIMIT 50, the better call?
 
-GROUP BY member, ORDER BY revenue and LIMIT 50 returns the same fifty members as the window today, in
-a shorter query. Which fact, if it held, would make it the better build?
+GROUP BY member, ORDER BY revenue and LIMIT 50 is the shortest build that returns fifty members.
+Which fact, if it held, would make it the better build?
 
 a) The book grows past 10,000 orders next year, and a window over that many rows runs too slowly
 

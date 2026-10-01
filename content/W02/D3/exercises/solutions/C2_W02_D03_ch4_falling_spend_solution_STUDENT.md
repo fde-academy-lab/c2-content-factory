@@ -64,7 +64,7 @@ second step fails.
 - d, "Nobody, since LAG returns NULL until the window is given a PARTITION BY": LAG needs only an
   order; without a partition it reads straight across members.
 
-### Q3. Which check exposes LAG reading another member's months, and what must it read?
+### Q3. Which check proves that every value LAG read came from the row's own member, and what must it read?
 
 Kind: choose the check.
 
