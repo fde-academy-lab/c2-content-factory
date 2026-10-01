@@ -130,10 +130,28 @@ flowchart LR
 
 ---
 
+## How many rows does each rule ship when two members tie at the line?
+
+Chapter 3 opens on an invented list that goes up as a chain, a top four with D and E tied at fourth,
+which is the line, the last place a top four keeps. Under it the room writes what each rule ships:
+ROW_NUMBER 4, RANK 5, DENSE_RANK 5 and whole ties only 3. With nobody tied at the line, ROW_NUMBER,
+RANK and whole ties only would each ship exactly four, and DENSE_RANK could still ship more if a tie
+sat higher up, which the next table shows.
+
+```mermaid
+flowchart LR
+    A["<b>A 9,100</b>"] --> B["<b>B 8,800</b>"] --> C["<b>C 8,200</b>"] --> D["<b>D 7,400</b>"] --> E["<b>E 7,400</b>"] --> F["<b>F 6,900</b>"]
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class D,E bad
+```
+
+---
+
 ## What do ROW_NUMBER, RANK and DENSE_RANK give on one tie?
 
-Chapter 3 works on six invented members, few enough to number by hand and check.
-Pairs fill in the three columns on paper before the table is completed on the board.
+The second invented list holds six members, few enough to number by hand and check. Pairs fill in
+the three columns on paper before the table is completed on the board. Nobody ties at third here, yet
+a top three under DENSE_RANK takes five members, A to E.
 
 | Member (invented) | A | B | C | D | E | F |
 |---|---|---|---|---|---|---|
@@ -153,22 +171,6 @@ flowchart LR
     class RK bet
     class RN bad
     class DR known
-```
-
----
-
-## How many rows does each rule ship when two members tie at the line?
-
-A second invented list goes up as a chain, a top four with D and E tied at fourth, which is the line,
-the last place a top four keeps. Under it the room writes what each rule ships: ROW_NUMBER 4, RANK 5,
-DENSE_RANK 5 and whole ties only 3. With nobody tied at the line, ROW_NUMBER, RANK and whole ties
-only would each ship exactly four, and DENSE_RANK could still ship more if a tie sat higher up.
-
-```mermaid
-flowchart LR
-    A["<b>A 9,100</b>"] --> B["<b>B 8,800</b>"] --> C["<b>C 8,200</b>"] --> D["<b>D 7,400</b>"] --> E["<b>E 7,400</b>"] --> F["<b>F 6,900</b>"]
-    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    class D,E bad
 ```
 
 ---
@@ -373,8 +375,8 @@ flowchart LR
 The fork is still up at the top, with the three asks above it and each ask matched to its column.
 Under it run the chapters in order: the named step and the window with 35, 11 and 4 written
 beside them; the fifty orders that named 28 members, with the count check; PARTITION BY restarting
-in four segments, 155 members; the place filter waiting for the outer query; the invented six with
-their three columns and the invented top four with 4, 5, 5 and 3; Retail-Core's DENSE_RANK running
+in four segments, 155 members; the place filter waiting for the outer query; the invented top
+four with 4, 5, 5 and 3 and the invented six with their three columns; Retail-Core's DENSE_RANK running
 two behind to 52; LAG reading the month before, and C-0132 reading C-0131's July; the running total,
 the missing week of 29 June, and the lead's five readings; and C-0216's empty August beside the 16
 flags that became 9. The chain to Marketing runs across the bottom, and beside it the six rules the

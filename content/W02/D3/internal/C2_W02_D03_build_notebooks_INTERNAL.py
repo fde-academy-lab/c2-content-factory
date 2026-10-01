@@ -1349,8 +1349,8 @@ def ch4():
             '''),
         md("""
         **What happened.** The answer is b: 752 member-months for 301 members who bought at least
-        once. LAG reads them once; the self-join matches them twice and the correlated subquery looks
-        up twice per row, 1,504 each; the spreadsheet holds 1,806 cells for someone to read.
+        once. LAG reads them once; the self-join looks each one up twice and the correlated subquery
+        does the same, 1,504 lookups each; the spreadsheet holds 1,806 cells for someone to read.
 
         **The best-fit call.** Option A, LAG in a window: one pass, one statement, and `lag(spend, 2)`
         reaches two months back in the same statement as `lag(spend, 1)`. What would change the call
@@ -1669,7 +1669,7 @@ def ch5():
         |---|---|---|---|---|
         | A. A running SUM in a window over weekly totals | weekly totals first, then `sum() OVER (ORDER BY week)` for booked and for plan | the Q2 orders once, then 13 weeks | 1 | a to-date figure at every week, in one table |
         | B. A plain SUM up to each week's end | for each plan week, sums every order dated up to its last day | the Q2 orders once per plan week | 1, with a subquery per week | one reading on one date Meera names |
-        | C. A self-join of weeks to every earlier week | joins each week to itself and every week before, then GROUP BY | the week pairs | 1 | a database with no window functions |
+        | C. A self-join of weeks to every earlier week | joins each week to itself and every week before, then GROUP BY | the Q2 orders once, then 91 week pairs | 1 | a database with no window functions |
         | D. A spreadsheet with a cumulative column | exports the orders and copies a formula down | every Q2 order, exported | none | a one-off look nobody reruns |
 
         **Predict before you run.** How many order rows does option B read to fill all thirteen plan

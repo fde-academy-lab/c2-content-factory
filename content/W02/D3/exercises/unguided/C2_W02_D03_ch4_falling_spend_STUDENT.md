@@ -50,11 +50,11 @@ This comes up at work whenever a metric is compared with its own earlier values,
 Four ways could set each member's September beside the member's two rows before it. Which way fits,
 and what does the self-join work through?
 
-a) A self-join of the monthly table to itself, twice: 752 matches, the same work as one pass
+a) A self-join of the monthly table to itself, twice: 752 lookups, the same work as one pass
 
 b) Months as spreadsheet columns, read by eye: 752 cells, one for each member-month with an order
 
-c) LAG in a window: one pass over the 752 member-months, where the self-join makes 1,504 matches
+c) LAG in a window: one pass over the 752 member-months, where the self-join makes 1,504 lookups
 
 d) A correlated subquery per month, one lookup for each row: 752 lookups, the same work as LAG
 

@@ -461,7 +461,7 @@ Kahoot.
 | 1 | ROW_NUMBER, RANK and DENSE_RANK on a two-way tie |
 | 2 | What PARTITION BY restarts |
 | 3 | What LAG returns on a member's first month |
-| 4 | Which ORDER BY makes a running total repeatable |
+| 4 | Which ORDER BY gives a running total one step per order |
 | 5 | What ROW_NUMBER does when the fourth and fifth tie |
 | 6 | The function for "ties ranked the same" |
 | 7 | A month with no order, read by LAG |

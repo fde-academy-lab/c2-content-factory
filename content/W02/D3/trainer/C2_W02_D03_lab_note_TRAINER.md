@@ -70,7 +70,7 @@ Cut in this order, and stop as soon as the lab fits.
 | Escalated, item 13 | They pick c, the same rupees per call, after getting the Rs 60,300 right | "Divide each group's rupees by its members." |
 | Escalated, marker 7 | They pick `date_trunc('week', ...)`, option a, the habit from the morning | "Which Monday does 1 July fall under, and is that Monday in plan_line?" |
 | Escalated, marker 8 | They pick to date against to date, option a | "Is the question how the quarter stands, or how each week ran on its own?" |
-| Escalated, item 14 | They pick the row for the week of 17 August, option a | "On which day does that row stop?" |
+| Escalated, item 14 | They pick the row for the week of 7 September, option a, Rs 8,19,30,010 | "On which day does that row stop?" |
 | Escalated, marker 9 | They pick b, both numbers right and the run rate left out | "Which weeks made the lead, and how have the weeks since 10 August run?" |
 | Escalated, marker 10 | They pick a, exactly fifty, because fifty is what Marketing asked for | "Did the head of Retail-Plus ask for exactly fifty?" |
 | Escalated, item 15 | They pick b, counting plan weeks | "Did the plan-first build lose a plan week, or orders?" |

@@ -37,12 +37,12 @@ large one.
 This is a design item: it asks for the best-fit build with its size.
 
 The key is c, "LAG in a window: one pass over the 752 member-months, where the self-join makes 1,504
-matches". `lag(spend, 1)` and `lag(spend, 2)` sit in the same SELECT and read the 752 rows once, while
+lookups". `lag(spend, 1)` and `lag(spend, 2)` sit in the same SELECT and read the 752 rows once, while
 the self-join joins the table to itself once for the month before and once for the month before that,
-so it matches the 752 rows twice, 1,504.
+so it looks each of the 752 rows up twice, 1,504 lookups, whether or not a month is found.
 
-- Option a, "A self-join of the monthly table to itself, twice: 752 matches, the same work as one
-  pass", counts one join where there are two, and two joins match the 752 rows twice, 1,504.
+- Option a, "A self-join of the monthly table to itself, twice: 752 lookups, the same work as one
+  pass", counts one join where there are two, and two joins look each of the 752 rows up twice, 1,504.
 - Option b, "Months as spreadsheet columns, read by eye: 752 cells, one for each member-month with an
   order", counts only the filled cells, since a sheet of months holds a cell for every member in every
   month, 301 times 6, 1,806, most of them empty, and a person has to read them all.

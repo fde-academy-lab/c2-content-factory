@@ -44,8 +44,8 @@ Business, Retail-Core and Retail-Plus give 25 each and Student 20, which is 95 r
 - Option a, "Sort each segment's Q2 orders by amount and keep twenty-five: 100 rows leave the
   warehouse", carries the right cost, and the cost is the warning. Every segment placed at least
   twenty-five Q2 orders, Student's 38 included, so the four sorts keep 100 rows, yet four lists of
-  members can hold at most 95 people. The rows are orders: the 100 name 85 members, and Business's
-  twenty-five name only 20.
+  members can hold at most 95 people. The rows are orders: Business's twenty-five name only 20 members,
+  and the 100 name 85 when the order id settles Retail-Core's tie at Rs 2,810.
 - Option b, "Rank members in four LIMIT 25 queries glued with UNION ALL, each reading all 462 Q2 orders",
   returns the same 95 members as c at four times the reading, 1,848 order rows, and leaves four
   queries to edit whenever a segment is added or renamed.

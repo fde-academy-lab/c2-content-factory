@@ -293,8 +293,8 @@ forty-nine is the list the head refused.
 **The questions on the way.**
 
 1. Which rules could cut a list at fifty, and what does each do at a tie?
-2. What do ROW_NUMBER, RANK and DENSE_RANK give on one tie?
-3. How many rows does each rule ship when two members tie at the line?
+2. How many rows does each rule ship when two members tie at the line?
+3. What do ROW_NUMBER, RANK and DENSE_RANK give on one tie?
 4. How many Retail-Core members does each rule ship?
 5. How many members does the head's own list ship, counted in your own run?
 6. Does a count with no window agree with RANK?
@@ -322,6 +322,13 @@ Whole ties only keeps a tie when `rank + tied_with - 1` is inside the line, with
 report. A hard cap, such as fifty seats at a dinner, would switch it to ROW_NUMBER with a
 tiebreaker stated in advance, such as more Q2 orders first.
 
+### How many rows does each rule ship when two members tie at the line?
+
+On the invented top four above, D and E tie at fourth, on the line: ROW_NUMBER ships 4, RANK 5,
+DENSE_RANK 5 and whole ties only 3. With nobody tied at the line, ROW_NUMBER, RANK and whole ties only
+each ship exactly the list's size, and DENSE_RANK can still ship more when a tie sits higher up, as
+the next table shows.
+
 ### What do ROW_NUMBER, RANK and DENSE_RANK give on one tie?
 
 | Member (invented) | A | B | C | D | E | F |
@@ -333,15 +340,8 @@ tiebreaker stated in advance, such as more Q2 orders first.
 
 RANK skips the place a tie used up, so place 3 says two members spent more. DENSE_RANK never skips,
 since "this function effectively counts peer groups" (PostgreSQL 16 documentation, section 9.22,
-checked 1 October 2026).
-
-### How many rows does each rule ship when two members tie at the line?
-
-A second invented list makes a top four: A to F spent Rs 9,100, 8,800, 8,200, 7,400, 7,400 and
-6,900, so D and E tie at fourth, on the line. ROW_NUMBER ships 4, RANK 5, DENSE_RANK 5 and whole ties
-only 3. With nobody tied at the line, ROW_NUMBER, RANK and whole ties only each ship exactly four, and
-DENSE_RANK can still ship more when a tie sits higher up: on the table above, a top four under
-DENSE_RANK ships all six members.
+checked 1 October 2026). Nobody ties at third on this table, yet a top three under DENSE_RANK ships
+five members, A to E, while the other three rules ship three.
 
 ### How many Retail-Core members does each rule ship?
 
@@ -402,7 +402,7 @@ The flag reads September: September below August, and August below July.
 | Option | How it reaches the month before | Works through |
 |---|---|---|
 | A. LAG in a window | reads the row before, in the window's order | 752 member-months, once |
-| B. A self-join of the monthly table, twice | joins each month to the member's months before | 1,504 matches |
+| B. A self-join of the monthly table, twice | joins each month to the member's months before | 1,504 lookups, each member-month looked up twice |
 | C. A correlated subquery per month | looks up the month before, twice per row | 1,504 lookups |
 | D. Months as spreadsheet columns, read by eye | a person reads across each row | 1,806 cells, 301 members times six months |
 

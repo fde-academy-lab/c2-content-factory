@@ -1,9 +1,9 @@
 # Which answers hold in the guided build of the three ranking functions and the head of Retail-Plus's rule, and why?
 
-Answers: 1d 2b 3a 4c 5b
+Answers: 1b 2d 3a 4c 5b
 
-The guided build set ROW_NUMBER, RANK and DENSE_RANK side by side, first on six invented members, then
-on an invented top four with a tie at the line, the last place a list keeps, then on Retail-Core's top
+The guided build set ROW_NUMBER, RANK and DENSE_RANK side by side, first on an invented top four with a
+tie at the line, the last place a list keeps, then on six invented members, then on Retail-Core's top
 fifty, and closed on the sentence the head of Retail-Plus reads. The five items ask what each step
 returns before it runs, and this file also carries what each step prints. None of them is a design
 item: the guided build is the one place in chapter 3 where the trainer chooses every step, and the
@@ -30,26 +30,11 @@ ties sit, and the head's rule, RANK, ships a tie at the line whole and says so.
 
 ## Why is each guided-build key right, and each other letter wrong?
 
-### Q1. What does DENSE_RANK give the six invented members?
-
-This item asks you to predict a column on invented numbers.
-
-The key is d, "1, 1, 2, 3, 3, 4". The spend figures are Rs 7,500, Rs 6,000, Rs 5,200 and Rs 4,100, four
-distinct values, so DENSE_RANK runs from 1 to 4: A and B share 1, C is 2, D and E share 3 and F is 4.
-Step 1 prints `row_number` 1 to 6, with A ahead of B only because the ORDER BY names the member after
-the spend and A sorts first; `rank` gives A and B 1 and skips 2, as a race reports a shared first
-place; and `dense_rank` never skips, so F's 4 sits two below F's place among the members, 6.
-
-- Option a, "1, 2, 3, 4, 5, 6", is ROW_NUMBER's column, one number per member.
-- Option b, "1, 1, 3, 4, 4, 6", is RANK's column, which skips the numbers a tie uses up.
-- Option c, "1, 1, 1, 2, 2, 3", puts C with A and B, as if every member above the first gap shared a
-  number.
-
-### Q2. How many members does each rule ship on an invented top four?
+### Q1. How many members does each rule ship on an invented top four?
 
 This item asks you to predict four counts on invented numbers.
 
-The key is b, "4, 5, 5 and 3". Step 2 prints one row reading 4, 5, 5 and 3. ROW_NUMBER ships four and
+The key is b, "4, 5, 5 and 3". Step 1 prints one row reading 4, 5, 5 and 3. ROW_NUMBER ships four and
 leaves E off, since it breaks a tie by whatever else its ORDER BY names, here the member's name, or
 arbitrarily if nothing does. RANK gives D and E fourth place, inside the line, so five ship.
 DENSE_RANK gives D and E the number 4 as well, so five ship. Whole ties only finds the tie of D and E reaching place
@@ -61,6 +46,21 @@ warned about, at a top four.
 - Option c, "4, 5, 6 and 3", gives DENSE_RANK six, where F's number is 5 and outside the line.
 - Option d, "4, 5, 5 and 5", lets whole ties only keep a tie that straddles the line, the one case it
   exists to drop.
+
+### Q2. What does DENSE_RANK give the six invented members?
+
+This item asks you to predict a column on invented numbers.
+
+The key is d, "1, 1, 2, 3, 3, 4". The spend figures are Rs 7,500, Rs 6,000, Rs 5,200 and Rs 4,100, four
+distinct values, so DENSE_RANK runs from 1 to 4: A and B share 1, C is 2, D and E share 3 and F is 4.
+Step 2 prints `row_number` 1 to 6, with A ahead of B only because the ORDER BY names the member after
+the spend and A sorts first; `rank` gives A and B 1 and skips 2, as a race reports a shared first
+place; and `dense_rank` never skips, so F's 4 sits two below F's place among the members, 6.
+
+- Option a, "1, 2, 3, 4, 5, 6", is ROW_NUMBER's column, one number per member.
+- Option b, "1, 1, 3, 4, 4, 6", is RANK's column, which skips the numbers a tie uses up.
+- Option c, "1, 1, 1, 2, 2, 3", puts C with A and B, as if every member above the first gap shared a
+  number.
 
 ### Q3. How many Retail-Core members does DENSE_RANK put on a top fifty, and why?
 

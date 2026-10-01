@@ -29,8 +29,8 @@ list, which rule made its count and which members stand at its line.
 
 **The questions on the way.**
 
-- What does DENSE_RANK give the six invented members?
 - How many members does each rule ship on an invented top four?
+- What does DENSE_RANK give the six invented members?
 - How many Retail-Core members does DENSE_RANK put on a top fifty, and why?
 - Which statement about Retail-Core's fiftieth place holds?
 - Which sentence goes to the head of Retail-Plus about Retail-Core's list?
@@ -43,46 +43,11 @@ Post exactly this shape: xxxxx
 
 ---
 
-## How do three functions number one tie?
-
-This comes up at work whenever a ranked report meets two equal values and its reader asks why two rows share a
-number.
-
-**Step 1, three functions on six invented members.** All six members are invented: A and B
-spent Rs 7,500 each, C Rs 6,000, D and E Rs 5,200 each and F Rs 4,100. Said aloud: the same ORDER BY
-feeds three functions, and only what they do at a tie differs.
-
-```sql
-WITH invented (member, spend) AS (
-    VALUES ('A', 7500), ('B', 7500), ('C', 6000), ('D', 5200), ('E', 5200), ('F', 4100)
-)
-SELECT member, spend,
-       row_number() OVER (ORDER BY spend DESC, member) AS row_number,
-       rank()       OVER (ORDER BY spend DESC)         AS rank,
-       dense_rank() OVER (ORDER BY spend DESC)         AS dense_rank
-FROM   invented
-ORDER  BY spend DESC, member;
-```
-
-### Q1. What does DENSE_RANK give the six invented members?
-
-Before step 1 runs, what does the `dense_rank` column give A, B, C, D, E and F, in that order?
-
-a) 1, 2, 3, 4, 5, 6
-
-b) 1, 1, 3, 4, 4, 6
-
-c) 1, 1, 1, 2, 2, 3
-
-d) 1, 1, 2, 3, 3, 4
-
-Then run step 1 and read the three columns side by side, member by member, against your answer.
-
 ## How many members does each rule ship when a tie sits on the line?
 
 This comes up at work whenever a top-N list arrives longer or shorter than N and somebody has to say why.
 
-**Step 2, a top four with a tie at the line, invented.** The invented members now spent Rs 9,100,
+**Step 1, a top four with a tie at the line, invented.** Six invented members spent Rs 9,100,
 Rs 8,800, Rs 8,200, Rs 7,400, Rs 7,400 and Rs 6,900, so the fourth and fifth tie. Said aloud: each rule
 keeps the members whose number is four or less, and whole ties only asks where a tie ends.
 
@@ -105,9 +70,9 @@ SELECT count(*) FILTER (WHERE rn <= 4)                 AS row_number_ships,
 FROM   r;
 ```
 
-### Q2. How many members does each rule ship on an invented top four?
+### Q1. How many members does each rule ship on an invented top four?
 
-Before step 2 runs, how many members does each rule ship, in the order ROW_NUMBER, RANK, DENSE_RANK
+Before step 1 runs, how many members does each rule ship, in the order ROW_NUMBER, RANK, DENSE_RANK
 and whole ties only?
 
 a) 4, 4, 4 and 4
@@ -118,7 +83,42 @@ c) 4, 5, 6 and 3
 
 d) 4, 5, 5 and 5
 
-Then run step 2 and read its one row of four counts against your answer.
+Then run step 1 and read its one row of four counts against your answer.
+
+## How do three functions number one tie?
+
+This comes up at work whenever a ranked report meets two equal values and its reader asks why two rows share a
+number.
+
+**Step 2, three functions on six invented members.** Six more members, all invented: A and B
+spent Rs 7,500 each, C Rs 6,000, D and E Rs 5,200 each and F Rs 4,100. Said aloud: the same ORDER BY
+feeds three functions, and only what they do at a tie differs.
+
+```sql
+WITH invented (member, spend) AS (
+    VALUES ('A', 7500), ('B', 7500), ('C', 6000), ('D', 5200), ('E', 5200), ('F', 4100)
+)
+SELECT member, spend,
+       row_number() OVER (ORDER BY spend DESC, member) AS row_number,
+       rank()       OVER (ORDER BY spend DESC)         AS rank,
+       dense_rank() OVER (ORDER BY spend DESC)         AS dense_rank
+FROM   invented
+ORDER  BY spend DESC, member;
+```
+
+### Q2. What does DENSE_RANK give the six invented members?
+
+Before step 2 runs, what does the `dense_rank` column give A, B, C, D, E and F, in that order?
+
+a) 1, 2, 3, 4, 5, 6
+
+b) 1, 1, 3, 4, 4, 6
+
+c) 1, 1, 1, 2, 2, 3
+
+d) 1, 1, 2, 3, 3, 4
+
+Then run step 2 and read the three columns side by side, member by member, against your answer.
 
 ## How long is Retail-Core's list under each rule?
 
@@ -203,7 +203,7 @@ c) "Retail-Core's list holds 50 under ROW_NUMBER, cut by customer id, so it is t
 
 d) "Retail-Core's list holds 50 under whole ties only, so no tie anywhere on the list is ever split."
 
-**Your turn, after the build.** Section 3 of `notebooks/C2_W02_D03_03_tie_rule_STUDENT.ipynb` ends on an
+**Your turn, after the build.** Section 4 of `notebooks/C2_W02_D03_03_tie_rule_STUDENT.ipynb` ends on an
 empty cell for the head's own segment, Retail-Plus. Run block `c3_retail_plus_rules` there, read the
 members around fiftieth place if your four counts differ, and write the same kind of sentence for the
 head's list. The TA reads the sentences in the practice lab.

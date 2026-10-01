@@ -221,7 +221,7 @@ which is the dashboard's word. Then four ways Kalpa could rank.
 |---|---|---|---|
 | A. Sort the Q2 orders, keep 50 | an order | 4 sorts, 188 orders kept | 1,848, the 462 four times |
 | B. Group by member, sort, LIMIT 50 | a member | 4 queries glued | 1,848, the 462 four times |
-| C. Group, number in a window, keep 1 to 50 | a member and its place | 1 query | 462, once |
+| C. Group, number in a window, keep 1 to 50 | a member and its place | 1 query, with one more phrase | 462, once |
 | D. Export and sort by hand | anything | 4 sorts by hand | all 462, exported |
 
 **The call.** C, because Marketing's ask is per segment, C reads the orders once, and the place has to be a column a later step can count. What would switch it: one overall list to read by eye, where B is shorter and returns the same fifty.
@@ -1130,7 +1130,7 @@ month with the month before.
 | Option | How it reaches the month before | Works through |
 |---|---|---|
 | A. LAG in a window | reads the row before, in the window's order | 752 member-months, once |
-| B. A self-join, twice | joins each month to the member's months before | 1,504 matches |
+| B. A self-join, twice | joins each month to the member's months before | 1,504 lookups |
 | C. A lookup per row | a correlated subquery, twice per row | 1,504 lookups |
 | D. Months as spreadsheet columns | a person reads across each row | 1,806 cells |
 
