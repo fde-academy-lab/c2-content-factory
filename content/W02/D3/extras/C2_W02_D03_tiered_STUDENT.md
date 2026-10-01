@@ -60,7 +60,7 @@ FROM   per_member
 ORDER  BY place;
 ```
 
-**What you should see.** The orders list holds 3 rows and 2 members, since J appears twice. Summed
+Your run should show an orders list of 3 rows and 2 members, since J appears twice. Summed
 first, the members rank J (Rs 2,100) first, K (Rs 1,200) second and L (Rs 300) third. Chapter
 1's list of 50 rows and 28 members went wrong the same way, and the same check catches it.
 
@@ -81,7 +81,7 @@ FROM   invented
 ORDER  BY region, place_in_region;
 ```
 
-**What you should see.** North runs P 1, Q 2, S 3 and South runs R 1, T 2, U 3, where the overall
+Your run should number North P 1, Q 2, S 3 and South R 1, T 2, U 3, where the overall
 numbering gave S 4, T 5 and U 6. To keep the top two in each region, wrap the query in a named step
 and filter `place_in_region <= 2` outside it: P, Q, R and T. Filtering inside WHERE stops with
 "window functions are not allowed in WHERE", as chapter 2 showed.
@@ -113,7 +113,7 @@ SELECT count(*) FILTER (WHERE rn <= 3)                 AS row_number_top3,
 FROM   r;
 ```
 
-**What you should see.** ROW_NUMBER gives 1 to 6, RANK gives 1, 2, 2, 4, 5, 5 and DENSE_RANK gives 1,
+Your run should give ROW_NUMBER 1 to 6, RANK 1, 2, 2, 4, 5, 5 and DENSE_RANK 1,
 2, 2, 3, 4, 4. For a top three the rules ship 3, 3, 4 and 3: nobody ties at third, yet DENSE_RANK
 ships S as well, because the tie between Q and R left its numbers one behind. Retail-Core's 52
 came from the same slip. For a top five, where T and U tie at fifth, RANK ships 6 and whole ties only ships 4.
@@ -140,7 +140,7 @@ FROM   monthly
 ORDER  BY member, month;
 ```
 
-**What you should see.** With no partition, W's August shows 900 as its month before, which is V's
+With no partition, your run should show 900 beside W's August as its month before, which is V's
 September, and W's September reads 700 and then V's 900, so it looks like two falls running: 600
 below 700 below 900. With `PARTITION BY member`, W's August shows NULL and W is never flagged. A
 value on a member's first month is the tell, as chapter 4 found on Kalpa's 20 flags.
@@ -162,7 +162,7 @@ FROM   invented
 ORDER  BY day, order_id;
 ```
 
-**What you should see.** By the day alone, A-2 and A-3 are peers and both show 600, the close of 2
+By the day alone, your run should show A-2 and A-3 as peers, both on 600, the close of 2
 July; with the order id added they show 300 and 600. Both versions end on 650, the total you can
 count without a window, which is the check chapter 5 ran on Monday's Rs 9,84,00,000.
 
@@ -196,7 +196,7 @@ WHERE  month = DATE '2026-09-01'
 ORDER  BY member;
 ```
 
-**What you should see.** The LAG flag keeps both, and the calendar flag keeps only Y, since X's
+Your run should show the LAG flag keeping both and the calendar flag keeping only Y, since X's
 "month before" September was July. X stands in for the member on holiday: a month with no order
 is no reading.
 
@@ -249,7 +249,7 @@ lead is the quarter's peak, with `max(lead) OVER ()`. Writing `lag(...)` around 
 computes the lead stops with "window function calls cannot be nested", so the lead needs a named
 step of its own first.
 
-**Check yourself against these.** Q2 sits Rs 24,69,050 behind plan after the week of 6 July, and the
+Your figures should match these: Q2 sits Rs 24,69,050 behind plan after the week of 6 July, and the
 lead peaks at Rs 2,16,69,660 at the end of the week of 3 August, stands at Rs 1,57,51,980 at
 mid-quarter, the week of 17 August, and closes at Rs 10. It shrinks in 8 of the 12 weeks that have a
 week before them, and each of those weeks booked below its plan of Rs 75,69,230, since the lead
@@ -280,7 +280,7 @@ Add two windows to the outer query: `count(*) OVER ()`, the list's count on ever
 WHERE, so they count only the rows it kept. Then write the hard-cap version for five gift boxes
 already packed: ROW_NUMBER with more Q2 orders first as the tiebreaker.
 
-**Check yourself against these.** Under RANK the list holds 6, and N5 and N6 stand at the line on
+Your answer should match this: under RANK the list holds 6, and N5 and N6 stand at the line on
 Rs 7,400 each. Under the hard cap, more orders first keeps N6 (3 orders) and leaves N5 (2) off,
 where a tiebreak on the member code would keep N5, a reason nobody could defend to N6. The sentence
 the head reads names the rule, the count and the two members at the line.
@@ -310,7 +310,7 @@ SELECT count(*) FILTER (WHERE next_month IS NULL)                              A
 FROM   ahead;
 ```
 
-**Check yourself against these.** X's May and July rows each have a next order two months on, and
+Your counts should match these: X's May and July rows each have a next order two months on, and
 none of Y's rows do. On the warehouse, the query reads all 752 member-months, the last month of each
 of the 301 members who bought has no next row, and your other two counts add to 451. The share of
 next orders that come after a gap is yours to find; write one line to Marketing on what it says

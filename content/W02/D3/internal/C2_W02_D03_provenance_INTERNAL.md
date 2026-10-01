@@ -331,7 +331,7 @@ installed in the session's scratch space on 1 October 2026.
 
 ## Which proofs ran on the shipped pack, and what did each return?
 
-Each ran on 1 October 2026 against commit 55d670e, on PostgreSQL 16.14, after the second round's fixes.
+Each ran on 1 October 2026 against commit 55d670e, on PostgreSQL 16.14, after the second round's fixes. The extras file's answer labels were then rewritten as sentences, and verify ran again without notebook execution, since no notebook changed, and passed with 0 failures.
 
 | Proof | Command | What it returned |
 |---|---|---|
