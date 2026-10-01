@@ -33,7 +33,7 @@
 | Plant | Used in | How the student files stay clean |
 |---|---|---|
 | 6 repeated customer keys in the exposure feed (C-0001, C-0002, C-0003, C-0006, C-0007, C-0009, re-sent on 11 August), 136 rows for 130 customers | Notebook 02's empty your-turn cell; the escalated case's markers 3 to 5; the day sheet | The fan-out is shown on four invented customers, C-9001 to C-9004, labelled invented; no saved output prints the feed's rows beside its distinct customers; the exercises use invented feeds (the Diwali email, the app team's push); the notes and solutions restate the rule the room drew, never the keys or the count |
-| A customer whose months pivot wrongly by order index (the row's) | Chapter 3, S44 | The generator plants none by name, so the order-indexed pivot is taught on Retail-Plus as a whole |
+| A customer whose months pivot wrongly by order index (the row's) | Chapter 3, S43 | The generator plants none by name, so the order-indexed pivot is taught on Retail-Plus as a whole |
 | Wednesday's three falling Retail-Plus members | The escalated case's falling flag and notebook 06's depth section | The flag runs across all segments and is checked against Wednesday's query as a set; no student file gives a count or an id |
 | The take-home snapshot's own repeated feed rows (153 customers, 159 rows) | The take-home | Named only in the day sheet; the self-check gives the numbers to reach and a conditional diagnosis |
 
@@ -51,6 +51,9 @@
   file, and none echoes a planted value.
 - The run day of Monday 19 October 2026 for recency from the wall clock: the first Monday refresh after
   the session, pinned so the wrong number is exact.
+- The escalated case's two broken copies in step 5's check: one customer's id written over another
+  customer's row, and recency counted to 21 September 2026; and step 2's table with one reached
+  customer removed. Each exists so that only the right letter passes its check.
 - The chief of staff's words in the pre-read and on the last slide are Friday's row, quoted.
 
 ## Which decisions depart from a source, and why?
@@ -61,7 +64,12 @@
 | "Last week's flags" are lapsed (60 days to the as-of date) and falling (Wednesday's rule, all segments) | The row names the flags without defining them; these are the week's |
 | Spend counts every booked order, all statuses | Monday's warehouse tree and Friday's exported table both sum every order |
 | The escalated case's opening gives the data and the growth team's rules and no longer states `validate`, `aggfunc` or the as-of rule | The 30 September build's opening answered six of its markers, the case-opening failure the Week 1 reviews named |
-| The escalated case gains marker 5 (a count that shares no code with the merge) and marker 13 (the query step 1 reads at 5 crore orders, checked against step 1), and the second case gains marker 5 (which size tells the routes apart) | The day prompt's lesson 3 asks for design items in both cases; each check tests a value the learner's choice computed |
+| The escalated case gains marker 5 (a count that shares no code with the merge) and marker 13 (the query step 1 reads at 5 crore orders, checked against step 1), and the second case gains marker 5 (which size tells the routes apart) | The day prompt's lesson 3 asks for design items in both cases |
+| Every case check tests the learner's own choice: marker 3 holds the whole call, marker 4's promise is run against the raw feed, marker 5's count is a function rerun on a table that lost a customer, marker 8 chooses the grouping that feeds spend and month alike, markers 11 and 12 face copies only the right guard stops, and the second case's marker 6 is tied to the size chosen in marker 5 | Pass 4 ran all 39 wrong letters of the escalated case and found 13 passing every check, and marker 3 with two right answers; after the change, all 39 and all 18 of the second case's wrong letters fail a check or stop the run (run on 1 October 2026) |
+| Chapter 5 states speed as measured: 30 timed runs on 1 October 2026 gave SQL 0.004 s, pandas 0.010 s and plain Python 0.017 s as medians, SQL first in all 30 | Pass 4 timed 30 runs and found the claim that the ranking changes from run to run false; the chapter now says the gap is real and too small to decide a weekly number |
+| Chapter 6 reports the data's age beside the table and does not stop on it | The course's warehouse is a fixed extract ending 28 September, so a freshness guard that stopped would stop every run on the course's data; the interview answers carry the production rule, report a stale load before the send |
+| Chapter 3's sizing counts the key column as a cell in every shape: long 798, wide 749, the query 749 | Pass 4 found the long table and the query counted their keys while the wide table did not |
+| The decks' chapters run 14, 13, 14, 13, 11 and 14 slides | Pass 5 found chapters 1 and 6 over the standard's 10 to 14; two slide pairs merged in each, one predict pair split in chapter 4, and chapter 4 gained its thinking picture |
 | The second case's first marker counts members from lists of ids, so each wrong pick gives a plausible wrong rate | The 30 September version's wrong picks raised `AttributeError`, a runtime error in an item slot |
 | The guided set is a carve the room mirrors, not a lettered set | The exercise-builder skill keeps a guided carve in its kind |
 | The practice lab gives asks an owner among plain Python, SQL and pandas only | Friday's lab sets warehouse, pandas or Excel for eight asks; Excel stays out today |
@@ -77,7 +85,7 @@ agent fetching each page; the wording in the pack follows the second check.
 
 | Chapter | Company and fact | Source, as fetched on 1 October 2026 |
 |---|---|---|
-| 1 | Shopify scores customers 1 to 5 on recency, frequency and monetary value, in 11 RFM groups, one of them Prospects, "Customers with no orders yet" | https://help.shopify.com/en/manual/reports-and-analytics/shopify-reports/report-types/default-reports/customers-reports, "Customers reports" (verified 1 October 2026) |
+| 1 | Shopify scores customers 1 to 5 on recency, frequency and monetary value, in 11 RFM groups, one of them Prospects, "Customers with no orders yet"; the sentence quoted in notebook 01 and on S8, "RFM analysis applies a 3-digit score to each customer, where each digit ranges from 1 to 5, and relates to the days from a customer's most recent purchase (recency), the total number of orders (frequency), and the total amount spent (monetary value)", read from the page again on 1 October | https://help.shopify.com/en/manual/reports-and-analytics/shopify-reports/report-types/default-reports/customers-reports, "Customers reports" (verified 1 October 2026) |
 | 2 | Meta: an advertiser sending events from the Pixel and the Conversions API "must set up a deduplication method"; under the recommended method, the same event ID and event name reaching the same Pixel within 48 hours are deduplicated, the first kept | https://developers.facebook.com/docs/marketing-api/conversions-api/deduplicate-pixel-and-server-events/, "Handling Duplicate Pixel and Conversions API Events"; the check found a second method (external ID or fbp), so "only when" became "under the method Meta recommends" (verified 1 October 2026) |
 | 3 | Costco, fourth quarter of fiscal 2026: "traffic or shopping frequency increased 3.3% worldwide", "our average transaction or ticket was up 5.9% worldwide", US and Canada renewal rate 92.3 percent | The call of 24 September 2026, transcript at https://www.theglobeandmail.com/investing/markets/stocks/COST/pressreleases/4846871/costco-cost-q4-2026-earnings-call-transcript/ (a Motley Fool transcript, posted 29 September); the figures in Costco's Exhibit 99.2 to its Form 8-K, https://www.sec.gov/Archives/edgar/data/0000909832/000090983226000084/costex9928-k92426.htm (verified 1 October 2026) |
 | 4 | Uber: Operations computed completed trips in Presto/Hive SQL for dashboards while Pricing Engineering built its own from a Cassandra table; the goal, "a strictly ONE to ONE mapping" | https://www.uber.com/blog/umetric/, "The Journey Towards Metric Standardization", 12 January 2021 (verified 1 October 2026) |
@@ -95,6 +103,7 @@ agent fetching each page; the wording in the pack follows the second check.
 | https://pandas.pydata.org/docs/user_guide/reshaping.html | 200, "Reshaping and pivot tables" (verified 1 October 2026) |
 | https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html | The `validate` text quoted in the take-home's self-check, read from the pandas 3.0.6 page (verified 1 October 2026) |
 | https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html | The sentence on null join keys, "different from usual SQL join behaviour", read from the pandas 3.0.6 page (verified 1 October 2026) |
+| https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html | 200, pandas 3.0.6 documentation; the `dropna` text quoted on S56's notes, "NA values together with row/column will be dropped" (verified 1 October 2026) |
 | https://pandas.pydata.org/docs/whatsnew/v3.0.0.html | 200, "What's new in 3.0.0 (January 21, 2026)" (verified 1 October 2026) |
 | https://pgexercises.com/ | 200, "PostgreSQL Exercises", the row's trainer link (verified 1 October 2026) |
 | https://www.youtube.com/watch?v=txMdrV1Ut64 | oEmbed title "Python Pandas Tutorial (Part 8): Grouping and Aggregating - Analyzing and Exploring Your Data", channel Corey Schafer; the watch page redirected to a captcha, so the upload date and the content were not checked, and the take-home says the notebooks are current where a call differs (verified 1 October 2026) |

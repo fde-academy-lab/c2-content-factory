@@ -28,8 +28,8 @@ which job." She reviews each chapter's answer before it leaves the team.
 4. You can ask one question in plain Python, SQL and pandas, and find why two of them disagree.
 5. You can give each recurring number one owner, sized by the rows each route moves and by who reruns
    it.
-6. You can make the table rebuild itself every Monday, counted to the data's own last date, and refuse
-   to ship when a guard fails.
+6. You can make the table rebuild itself every Monday, counted to the data's own last date, report how
+   old that data is, and refuse to ship when a guard fails.
 
 ---
 
@@ -122,7 +122,8 @@ Center, Customers reports, checked 1 Oct 2026).
 pandas is the call, because the growth team's analysts work in Python and the next five chapters need
 the orders in memory. Rows moved separates b from the others, and lines of logic separate a from c. The
 fact that would switch it is an orders table in the crores: then the warehouse groups the orders and
-sends one row per customer who ordered, whatever the orders' size, and pandas reads those rows.
+sends one row per customer who ordered, 301 today, a number that grows with the customers and never
+with the orders, and pandas reads those rows.
 
 ### Does the frame pandas reads hold every order the warehouse holds?
 
@@ -133,7 +134,7 @@ pandas can sum, and `parse_dates` makes `order_date` a real date that chapter 6 
 
 ### Does one line of `groupby` give the same totals as Week 1's loop?
 
-It does, on all 301 customers who ordered. `groupby` splits the orders into one group per customer,
+The two agree on all 301 customers who ordered. `groupby` splits the orders into one group per customer,
 applies a calculation to each group and combines one row per customer: Week 1's accumulator written
 once, and SQL's `GROUP BY`. One `agg` call computes all three numbers, each name on the left becoming a
 column. The largest spender, a Business account, bought Rs 2,23,10,600, so spend is always read by segment: Business holds 99.1 percent of it.
@@ -145,14 +146,16 @@ filter `rfm[rfm["frequency"] == 0]` finds nobody, and the welcome offer goes to 
 wrong:** the table was built from orders, so a customer with no orders has no row, and a filter cannot
 find a row that is not there. The check is the row count against the list, 301 against 340, before any
 filter runs. A half-fix makes it worse: merged back onto the list, the 39 arrive with a missing
-frequency, the column turns `float64`, and a missing value is never equal to 0. **The fix** starts from
+frequency, and a missing value is never equal to 0. The count's column also turns `float64` on the
+way, because NumPy's `int64`, the type a count arrives in, cannot hold a missing value; pandas' nullable
+`Int64` type can, but a merge does not choose it for you. **The fix** starts from
 the customer list, merges with `how="left"` and `validate="one_to_one"`, fills the count and the spend
 with 0 on purpose and turns the count back into whole numbers. The 39 split 19 Retail-Core, 13
 Retail-Plus, 6 Student and 1 Business, and spend does not move, so a spend check alone would never have caught it.
 
 ### Does SQL, run on its own, give all 340 customers the same three numbers?
 
-It does, on every customer. A `LEFT JOIN` from the customer list to the orders, grouped by customer,
+All 340 match, customer by customer. A `LEFT JOIN` from the customer list to the orders, grouped by customer,
 shares no code with the notebook; `count(o.order_id)` counts only rows that found an order, so it gives
 0 where `count(*)` would give 1, and `coalesce` turns a missing sum into 0. The pandas route is the one
 to build on; the SQL route is the one to hand an auditor.
@@ -220,9 +223,11 @@ The check is Tuesday's: four customers in, five rows out.
 
 `validate="one_to_one"`. It states that each key appears at most once on each side and raises
 `pandas.errors.MergeError` the moment the data breaks the promise; the first line of the message reads
-"Merge keys are not unique in right dataset; not a one-to-one merge". It is the row count made loud,
-since nothing wrong is built. When the room ran the same merge on Kalpa's own feed, it read the guard's
-answer for itself, and the rule it drew holds for any feed: a promise is checked, never assumed.
+"Merge keys are not unique in right dataset; not a one-to-one merge". A row count before and after
+would find the same fault once the table exists; `validate` stops the merge with that error, so no
+wrong table is built. When the room ran the same merge on Kalpa's own feed, it read the guard's answer
+for itself, and drew a rule for every feed that comes from another team's system: write `validate` on
+the merge, so that a feed which breaks its promise stops the run.
 
 ### Which exposure should a customer keep, and does the table stay at 340 rows?
 
@@ -235,11 +240,12 @@ and 60 in Retail-Plus.
 
 ### Does a count with no merge at all give the same reach and spend?
 
-It does: 130 customers and Rs 8,78,980, three ways. `isin` flags any customer whose id appears in the
-feed and cannot multiply a row, and the warehouse's own copy of the feed answers in SQL, where `IN` only
-asks whether a customer is there. The table records whom the sale reached; whether it changed what they
-spent is Week 1 Thursday's separate test, which found the reached customers skewed towards those buying
-anyway.
+Three routes reach the same 130 customers and Rs 8,78,980. `isin` flags any customer whose id appears
+in the feed and cannot multiply a row, and the warehouse's own copy of the feed answers in SQL, where
+`IN` only asks whether a customer is there. The table records whom the sale reached; whether the sale
+changed what they spent needs a test of its own. Week 1 Thursday ran one: blended, the customers the
+sale reached spent 6.1 percent more, while inside each segment they spent 3.0 percent less, because half
+the reached group was Retail-Plus against 40 percent of the rest.
 
 > **Kavya's review.** "A merge is a join, so I want Tuesday's two numbers before this goes to
 > Marketing: 340 rows in and 340 out, and Rs 19,84,00,000 before and after. The rule you chose goes in
@@ -272,11 +278,11 @@ frequency increased 3.3% worldwide" and "our average transaction or ticket was u
 
 ### Which of three shapes should answer the head of Retail-Plus, and what does each cost?
 
-| Option | Shape on the 355 Retail-Plus orders | Empty cells | Adding October costs |
-|---|---|---|---|
-| a) The long table, `groupby` on member and month | 266 rows | 0 | Nothing |
-| b) The wide table, `pivot_table` | 107 members by 6 months, 642 cells | 376 | Nothing |
-| c) A query per month in SQL | 107 by 7, months typed as columns | 376 | A new line, typed by hand |
+| Option | Shape on the 355 Retail-Plus orders | Cells | Empty cells | Adding October costs |
+|---|---|---|---|---|
+| a) The long table, `groupby` on member and month | 266 rows by 3: member, month and spend | 798 | 0 | Nothing |
+| b) The wide table, `pivot_table` | 107 rows by 7: the member and six months | 749 | 376 | Nothing |
+| c) A query per month in SQL | 107 rows by 7, the months typed as columns | 749 | 376 | A new line, typed by hand |
 
 The call is a and b together: the long table keeps every rupee and is easy to group and plot, and the
 wide table is what the head of Retail-Plus reads along a member's row. The fact that would switch it:
@@ -298,8 +304,9 @@ June cell reads Rs 2,557.50 for four orders worth Rs 10,230. The column sums add
 hides how often members bought, the lever Week 1 found moving in Retail-Plus. The check: a pivot of
 spend holds its source's total, and this one holds Rs 7,49,286 against Rs 9,99,150 of orders. **The
 fix** says what a cell means, `aggfunc="sum"`, with `fill_value=0` for a month with no orders: the fall
-is 29.4 percent, Rs 1,72,390. On Retail-Core, which the room built in its own cell, the averaged pivot
-gets even the direction wrong, a rise of 1.5 percent where the tier fell 1.8.
+is 29.4 percent, Rs 1,72,390, of which the averaged pivot showed Rs 74,752, or 43 percent. When the room
+built the same default pivot for Retail-Core in its own cell, the averages pointed the wrong way: a tier
+whose spend fell showed a rise.
 
 ### What does one row of the pivot stand for?
 
@@ -312,12 +319,13 @@ neither view, a decision to state when the view goes out.
 
 The wide table compares: 67 of the 107 members spent less in Q2 than in Q1, and 40 spent more. The long
 table follows: `melt` folds the wide table back into 642 rows, zeros kept, and the members ordering each
-month fall from 56 in April to 37 in September, through 47, 48, 40 and 38. How often, again.
+month fall from 56 in April to 37 in September, through 47, 48, 40 and 38. Fewer members bought each
+month, and how often members buy is the lever Week 1 found moving in Retail-Plus.
 
 ### Does a query that never pivots give the same fall?
 
-It does: a join to the customer list, a filter on Retail-Plus and a sum per quarter give Rs 5,85,770 and
-Rs 4,13,380. The query has no `aggfunc` to forget, which makes it the route to trust when a pivot's
+A join to the customer list, a filter on Retail-Plus and a sum per quarter give the same Rs 5,85,770
+and Rs 4,13,380. The query has no `aggfunc` to forget, which makes it the route to trust when a pivot's
 arguments are in doubt.
 
 > **Kavya's review.** "A fall of 29 percent, from a pivot whose grand total equals the orders. The
@@ -390,9 +398,9 @@ Python, SQL and pandas all say 107 of 130 bought, 82 percent: 56 of 70 in Retail
 
 ### Does counting sets, with no grouping at all, find the same customers who never bought?
 
-It does. The reached customers minus the customers with at least one order are 23, whatever their
-segment, and 130 less 23 is 107. A set difference cannot drop a missing segment, because it never asks
-for one.
+The set difference finds the same 23: the reached customers minus the customers with at least one order,
+whatever their segment, and 130 less 23 is 107. A set difference cannot drop a missing segment, because
+it never asks for one.
 
 > **Kavya's review.** "When two tools disagree, look for the rows one of them dropped before you look at
 > the code. Check that the groups add back to the rows, and take every attribute of a customer from the
@@ -438,8 +446,11 @@ afternoon and then dropped, where pandas reads the query's answer and the defini
 
 ### Does speed separate the three tools on 1,000 orders?
 
-No. All three finish well inside a second, and the ranking changes from run to run. A sizing column
-where every option scores the same separates nothing.
+Only by about a hundredth of a second. Timed 30 times, all three finished in hundredths of a second, and
+SQL was fastest on every run, with a median of 0.004 seconds against 0.010 for pandas and 0.017 for
+plain Python. A hundredth of a second on a number Finance reads once a week decides nothing, and a size
+on which every option scores about the same cannot tell the options apart. The size that grows with the
+business is the rows each route moves, which the next question counts.
 
 ### How many rows does each tool move to answer an eight-row question?
 
@@ -447,7 +458,7 @@ where every option scores the same separates nothing.
 gives Finance's number to pandas, because its chain is short. **Why it is wrong:** the rows an answer
 holds say nothing about the work of producing it. The check counts the rows each route fetched: SQL 8,
 plain Python 1,000 and pandas 1,340, every order and every customer. At a hundred times Kalpa's orders
-the pandas route moves a hundred times the rows while SQL still sends 8. **The fix** sizes by rows moved
+the pandas route moves a hundred times the orders while SQL still sends 8. **The fix** sizes by rows moved
 and by who reruns the number, and the note's line for Finance stays the same with a number for its
 reason.
 
@@ -465,7 +476,7 @@ on the order its cells were run in, and Anand's analyst cannot rerun it.
 
 ### Does the growth team's table reconcile with Finance's query to the rupee?
 
-It does, in every segment: Business Rs 19,65,99,040, Retail-Core Rs 7,39,320, Retail-Plus Rs 9,99,150
+To the rupee, in every segment: Business Rs 19,65,99,040, Retail-Core Rs 7,39,320, Retail-Plus Rs 9,99,150
 and Student Rs 62,490. The two share no code, so this reconciliation is the check that lets two tools
 share one number; when it fails, the warehouse is right and the table is wrong until someone can say
 why.
@@ -535,46 +546,56 @@ bought on the data's last day, so the smallest recency in an honest table is 0, 
 table as `as_of`: 111 customers, 5 Business, 49 Retail-Core, 47 Retail-Plus and 10 Student. At a 45-day
 line it would hold 144, and at 90 days 74; the line is the growth team's.
 
+The run day keeps one job. The gap between it and the as-of date is the data's age: 21 days on Monday
+19 October, the same 21 the hurried table showed as its smallest recency. A weekly table whose orders end
+three weeks back is a stale load, so the age is reported beside the table, and the growth team hears it
+before any code is sent.
+
 ### Which guards stop a bad Monday, and does each one fire when it should?
 
-Four guards, each against a number the warehouse gives on its own: one row per customer, as many rows as
-the customer list, spend equal to the warehouse's, and a smallest recency of 0. Each is proved by
-breaking a copy of the table: a repeated row trips the first three, recency counted to the run day trips
-only the last, and dropping the customers with no orders trips only the row count, since their spend is
-0 and they have no recency. The honest table trips none.
+Four guards, each a check that raises an error so that a failing table is never written. Two compare
+the table with counts the warehouse gives on its own query, read again on every run: as many rows as the
+customer list, and spend equal to the warehouse's total. Two check the table's own shape: one row per
+customer, and a smallest recency of 0. Each is proved by breaking a copy of the table. A repeated row
+trips the key, row and spend guards; recency counted to the run day trips only the recency guard; and
+dropping the customers with no orders trips only the row count, since their spend is 0 and they have no
+recency. The honest table trips none. Inside the refresh the recency guard passes by construction,
+because the as-of date comes from the same orders; it is there for the Monday someone edits the refresh
+to count to the calendar. No guard on the table can see a load that never arrived, which is why the
+data's age travels beside it.
 
 ### Do two runs on the same data give the same table?
 
-They do, cell for cell, because nothing in the refresh reads the calendar. The hurried version sent 166
-codes on the first Monday and 180 a week later, with no new data at all.
+The two tables are equal cell for cell, because no column of the table depends on the run day. The
+hurried version sent 166 codes on the first Monday and 180 a week later, with no new data at all.
 
 ### Does the warehouse, counting on its own, find the same win-back list?
 
-It does: 111. Each customer's last order, the data's own last date, and the customers more than 60 days
-apart, in one SQL query that shares no code with the refresh.
+SQL finds the same 111 with one query that shares no code with the refresh: each customer's last order,
+the data's own last date, and the customers more than 60 days apart.
 
 > **Kavya's review.** "The table carries its as-of date, the smallest recency is 0, and a run that fails
 > a guard writes nothing. That is a refresh I will let Marketing act on without me."
 
-The chapter's answer: yes, with 111 on the win-back list as of 28 September 2026, and a run that refuses
-to write a broken table.
+The chapter's answer: yes, with 111 on the win-back list as of 28 September 2026, a run that refuses to
+write a broken table, and the data's age reported beside it.
 
 ---
 
 ## Where do today's moves decide something at work?
 
-**A customer table someone else will act on.** Any growth, retention or risk team acts person by person.
-The first question in the review is how many people are on the table against how many are on the list,
-and the analyst who starts from the list never has to explain the gap.
+Growth, retention and risk teams all act person by person, from a customer table someone else built,
+and the first question in their review is how many people are on the table against how many are on the
+list. An analyst who starts from the list never has to explain that gap. The same table usually carries
+a feed from another team's system, and campaign platforms, payment gateways and partner files send rows
+twice for reasons that have nothing to do with the business. With `validate` on the merge, the week a
+feed changes becomes a stopped run with a message; without it, the change surfaces as a slide that
+overstates a campaign by a third.
 
-**A feed from another team's system.** Campaign platforms, payment gateways and partner files send rows
-twice for reasons that have nothing to do with the business. A merge that states its promise turns the
-day the feed changes into a stopped run with a message, instead of a slide that overstates a campaign
-by a third.
-
-**A number two teams both compute.** When Marketing's dashboard and Finance's report disagree, the
-fight is about definitions and rows long before it is about tools. Giving each number one owner and
-reconciling every copy against it every week is the habit that stops the fight from starting.
+The other place is a number two teams both compute. When Marketing's dashboard and Finance's report
+disagree, the two sides are usually counting different rows under different definitions, as the three
+tools did in chapter 4. Giving each number one owner, and reconciling every copy against that owner
+every week, keeps the two reports from drifting apart in the first place.
 
 ---
 
@@ -589,7 +610,8 @@ reconciling every copy against it every week is the habit that stops the fight f
    *Answer: the reached customers whose segment came from their orders, which they never placed; the
    default `groupby` dropped them.*
 4. The refresh ran on 19 October and its smallest recency is 21. What happened, and what is the fix?
-   *Answer: recency was counted to the wall clock; count to the data's last date, carried as `as_of`.*
+   *Answer: recency was counted to the wall clock; count to the data's last date, carried as `as_of`,
+   and report the 21 days beside the table as the data's age.*
 
 ---
 
@@ -603,13 +625,14 @@ per customer. It is SQL's `GROUP BY`, and the accumulator dictionary from a plai
 **[S] Merge against join: what is the same and what differs?** "The same: both match rows on a key, both
 come in inner, left, right and outer, and both multiply rows when a key repeats on the side you did not
 expect. The differences: pandas defaults to inner, so I always write `how=`; pandas works in memory on
-data already pulled, where the warehouse joins where the data lives; and pandas can refuse the wrong
-shape with `validate=`, which SQL has no single argument for."
+data already pulled, where the warehouse joins where the data lives; pandas matches a missing key to a
+missing key, where SQL never matches `NULL` to `NULL`, so I drop or fill missing keys before a merge;
+and pandas can refuse the wrong shape with `validate=`, which SQL has no single argument for."
 
 **[F] Which merge argument raises on duplicate keys, and which error?** "`validate`, set to
 `one_to_one`, `one_to_many` or `many_to_one`. When the keys break the promise it raises
-`pandas.errors.MergeError`, naming the side whose keys are not unique. It is the row-count check made
-loud."
+`pandas.errors.MergeError`, naming the side whose keys are not unique. A row count before and after
+would find the same fault once the table exists; `validate` stops the table being built at all."
 
 **[F] Pivot against melt: which widens and which lengthens?** "`pivot` and `pivot_table` widen: one
 column's values become columns, so member and month become one row per member with a column per month.
@@ -619,8 +642,9 @@ group a trend."
 **[D] Same question, three tools: how do you choose, and defend one choice?** "When they agree, I choose
 by who has to trust and rerun the number. Finance's number goes in SQL: it runs where the data lives,
 moves only its answer and Finance can rerun it. The analyst's iterative work goes in pandas, reading
-SQL's answers, and a one-off I must explain line by line goes in plain Python. On 1,000 rows speed
-separates nothing, so I size by rows moved: SQL 8, pandas 1,340."
+SQL's answers, and a one-off I must explain line by line goes in plain Python. On 1,000 rows SQL was
+fastest on every run, by about a hundredth of a second, which decides nothing for a number read once a
+week, so I size by rows moved, the size that grows with the business: SQL 8, pandas 1,340."
 
 **[F] Your customer table has fewer rows than the customer list. Why, and what do you do?** "I built it
 from orders, so customers who never ordered never formed a group. I start from the list, left-merge with
@@ -646,13 +670,17 @@ moves every order to one machine, depends on the order its cells ran in, and Fin
 give Finance the query and let my notebook read its answer."
 
 **[D] The orders table grows to 5 crore rows. Where do you build the customer table?** "In the
-warehouse: `GROUP BY` sends one row per customer however many orders there are. pandas reads that and
-merges the feed. I would switch back only for a question that needs the order rows themselves, and pull
-only the columns and months it needs."
+warehouse: `GROUP BY` sends one row per customer who ordered, 301 today, so what it sends grows with
+the customers and never with the orders. pandas reads that and merges the feed. I would switch back
+only for a question that needs the order rows themselves, and pull only the columns and months it
+needs."
 
 **[F] How do you compute recency in a job that runs every week?** "From the data's last loaded date,
-carried in the table as its as-of date, never from the wall clock; otherwise two runs on the same data
-disagree. The check is that the smallest recency is 0."
+carried in the table as its as-of date. Counted to the wall clock, two runs on the same data disagree
+and the list grows every week with nothing new loaded. The wall clock keeps one job: the gap between the
+run day and the as-of date is the data's age, and I report it with the table, because a weekly table
+whose orders end three weeks back is a stale load the growth team should hear about before anything is
+sent. The check on the count itself is that the smallest recency is 0."
 
 ---
 
@@ -660,18 +688,19 @@ disagree. The check is that the smallest recency is 0."
 
 | Term | Plain meaning | Where it appeared | Example |
 |---|---|---|---|
-| RFM | Recency, frequency and monetary value: how recently, how often and how much a customer bought | Chapter 1 | 340 customers, three numbers each |
+| RFM | Recency, frequency, monetary: days since last order, order count and spend | Chapter 1 | 340 customers, three numbers each |
 | Spine | The table whose rows decide the result's rows | Chapter 1 | The customer list, 340 rows |
 | `groupby` | Split rows by a key, apply a calculation, combine one row per key | Chapter 1 | 1,000 orders to 301 customers |
 | Merge | pandas' join, in four shapes set by `how` | Chapter 2 | The feed attached to 340 rows |
 | `validate` | The promise a merge states about its keys, raising `MergeError` when broken | Chapter 2 | `"one_to_one"` |
-| First touch | The growth team's rule: a customer reached twice counts once, on the first date | Chapter 2 | 130 reached |
+| First touch | The growth team's rule: a customer reached twice keeps only the first date | Chapter 2 | 130 reached |
 | `pivot_table` | Turns one column's values into columns, one number per cell | Chapter 3 | 107 members by 6 months |
 | `aggfunc` | What a pivot puts in a cell; the mean unless told | Chapter 3 | `"sum"`, a fall of 29.4 percent |
 | `melt` | Folds columns back into rows, wide to long | Chapter 3 | 642 member-months |
 | `dropna` | Whether `groupby` drops rows with a missing key; true by default | Chapter 4 | 23 reached customers lost |
 | Rows moved | The rows a route fetches from the warehouse to produce its answer | Chapter 5 | SQL 8, pandas 1,340 |
 | As-of date | The last date the data covers, carried in the table | Chapter 6 | 28 September 2026 |
+| Data's age | The days from the as-of date to the run day, reported beside the table | Chapter 6 | 21 days on 19 October |
 | Guard | A check that raises an error, so a failing table is never written | Chapter 6 | The smallest recency is 0 |
 
 ---
@@ -702,8 +731,8 @@ disagree. The check is that the smallest recency is 0."
 
 Yes, because the table checks itself. It holds all 340 customers with three numbers each, 39 of them on
 the first-order nudge list; the 130 customers the monsoon sale reached, once each; a win-back list of 111
-counted to 28 September 2026; and it rebuilds in one run that writes nothing when a guard fails.
-Finance's revenue stays in the warehouse as a query the table reconciles with every week. The caveat
-goes with it: the table records whom the sale reached, and whether the sale changed what they spent
-needs a fair comparison of its own. Friday's question is which parts of this week belong in a sheet a
-director can change in the room, and which must never be there.
+counted to 28 September 2026; and it rebuilds in one run that writes nothing when a guard fails and
+reports how old its data is. Finance's revenue stays in the warehouse as a query the table reconciles
+with every week. The caveat goes with it: the table records whom the sale reached, and whether the sale
+changed what they spent needs a fair comparison of its own. Friday's question is which parts of this
+week belong in a sheet a director can change in the room, and which must never be there.

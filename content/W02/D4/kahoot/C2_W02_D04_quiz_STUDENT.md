@@ -1,14 +1,15 @@
 # Can you make the day's eight calls in seconds, from what groupby does to how many rows a top fifty ships?
 
 Eight items, ungraded, scored on correctness and speed together. Seven are today's, and the last is
-the return question from Wednesday, one level up. Every number in items 2 and 6 is invented.
+the return question from Wednesday, one level up. Item 2 uses Kalpa's own four segments and two
+quarters; the 1,000 customers and 1,120 rows in item 6 are invented.
 
 The day built Kalpa Retail's growth team one table, one row per customer, refreshed every Monday from
 the warehouse in pandas: recency, frequency and spend for each of the 340 customers on the list,
-whether the monsoon sale reached them, and the flags the growth team acts on. On the way it met a
-merge that can multiply rows, a pivot that puts one number in each cell, three tools asked one
-question, and a refresh that must refuse a broken table. A merge is pandas' join; `validate` states
-what a merge promises about its keys; `pivot_table` and `melt` reshape a table between wide and long.
+whether the monsoon sale reached them, and the flags the growth team acts on. On the way it attached
+the sale's feed to the customer list, read Retail-Plus's spend month by month, asked one question in
+three tools, and built a refresh the growth team can leave to run. A merge is pandas' join of two
+tables on a key column.
 
 **Who needs the answer.** The trainer, closing the day. Each item is one of the day's calls made in
 seconds, and an item most of the room misses is the one to say again before the room leaves.
@@ -32,8 +33,8 @@ seconds, and an item most of the room misses is the one to say again before the 
 
 - Splits the customers by segment, sorts each, and combines one list
 - Splits the orders by customer, applies the measures, one row each  <- correct
-- Splits the table by column, applies a type to each, and joins them back
-- Splits the orders by date, filters each day, and combines one month
+- Sorts the orders by customer and keeps each customer's first order
+- Gives every order its customer's totals and keeps all 1,000 rows
 
 ---
 
@@ -42,18 +43,18 @@ seconds, and an item most of the room misses is the one to say again before the 
 
 - 4 rows by 2 columns, one row per segment
 - 2 rows by 8 columns, one row per quarter
-- 8 rows by 2 columns  <- correct
-- 1,000 rows by 2 columns, one row per order
+- 8 rows by 2 columns, one per segment and quarter  <- correct
+- 1,000 rows by 2 columns, one row for every order
 
 ---
 
 ## Q3. Which merge argument raises on repeated keys, and with which error?
-*Tests: `validate` is the row-count check made loud.*
+*Tests: `validate="one_to_one"` stops the merge with a `MergeError` when either side repeats a key, so no wrong table is built.*
 
-- `how="inner"`, raising a `KeyError` on the repeated key
-- `indicator=True`, raising a `ValueError` on the repeated key
-- `on=`, raising a `TypeError` when a key appears twice
-- `validate="one_to_one"`, raising a `MergeError`  <- correct
+- `validate="one_to_many"`, raising a `MergeError` when the feed repeats a key
+- `how="left"`, raising a `MergeError` when the feed repeats a key
+- `validate="many_to_many"`, raising a `KeyError` on the repeated key
+- `validate="one_to_one"`, raising a `MergeError` on the repeated key  <- correct
 
 ---
 
@@ -71,7 +72,7 @@ seconds, and an item most of the room misses is the one to say again before the 
 *Tests: a number lives where the people who rerun it can run it.*
 
 - pandas, since it computes the number fastest on this data
-- SQL, a query Finance reruns in the warehouse  <- correct
+- SQL, a query Finance reruns in the warehouse each Monday  <- correct
 - Plain Python, since every step of a loop can be read
 - Any of the three, since all of them give the same number
 
@@ -80,10 +81,10 @@ seconds, and an item most of the room misses is the one to say again before the 
 ## Q6. Why did a left merge of 1,000 customers return 1,120 rows?
 *Tests: a left merge copies a row once for every match the right side holds.*
 
-- 120 new customers arrived in the feed overnight
+- Each customer with no match in the feed gained an empty row
 - The left merge added the feed's unmatched rows to the table
-- Some customers appear more than once in the feed  <- correct
-- pandas copied rows at random while merging the two
+- Some customers appear more than once in the campaign feed  <- correct
+- Each of 120 reached customers gained a second row for its date
 
 ---
 

@@ -5,15 +5,24 @@ learner's answer to part 3. The self-check beside this brief lists the numbers y
 open it only after your own notebook runs top to bottom.
 
 > **The client asks.** "Before your refresh runs against the live warehouse on Monday, run it on my
-> staging snapshot. It is a different draw of the same business, so your answers from class will not
-> carry over. Tell me what your guards did, what the table says, and which win-back line you would
-> give Marketing."
+> staging snapshot. It is a different draw of the same business: the customer list and the totals
+> match what you had in class, but different customers placed the orders, on different dates, and
+> the campaign feed is a different send. Tell me what your guards did, what the table says, and which
+> win-back line you would give Marketing."
 >
 > The data platform lead, Kalpa Retail
 
 The data platform lead owns Kalpa Retail's warehouse. A staging snapshot is a copy of the business's
-data kept apart from the live warehouse, so a job can be tried on it before it runs for real. This
-one holds three CSV files in this day's `data/` folder, with no Postgres of their own:
+data kept apart from the live warehouse, so a job can be tried on it before it runs for real. Some of
+your answers from class carry over and most do not. The checks that tie the table to its sources come
+out as they did in class: 340 customers in the same four segments, 1,000 orders worth Rs 19,84,00,000
+up to 28 September 2026, a smallest recency of 0, and the same count of orders in each segment and
+quarter, so Retail-Plus still has 215 orders in Q1 and 140 in Q2. Every answer about particular
+customers comes out differently: who never ordered, whom the sale reached and how many of them bought,
+the win-back lists, Retail-Plus orders per member, and each tier's change in spend from Q1 to Q2, so
+a table that matches class on the totals tells you nothing yet about its rows.
+
+This snapshot holds three CSV files in this day's `data/` folder, with no Postgres of their own:
 
 | File | What it holds |
 |---|---|
@@ -36,8 +45,9 @@ equal to the total of the orders; and a smallest recency of 0, since somebody al
 data's last day.
 
 **Who needs the answer.** The data platform lead, who lets the refresh near the live warehouse only
-after it has run cleanly on staging, and the growth team, who send Monday's codes from its output. A
-guard that never fired on staging is a guard nobody knows works.
+after it has run cleanly on staging, and the growth team, who send Monday's codes from its output. The
+lead asks what each guard did on staging, since a guard nobody has seen stop a run gives no evidence
+that it can.
 
 **The questions on the way.**
 
@@ -46,7 +56,7 @@ guard that never fired on staging is a guard nobody knows works.
 - Which win-back line would you give Marketing, at 45, 60 or 90 days, and why?
 - Do pandas and plain Python agree on Retail-Plus orders per member?
 - How far did Retail-Plus and Retail-Core spend move, and what does `"one_to_one"` promise?
-- What do you watch, redo and recap once the notebook runs?
+- What do you read, watch, redo and recap once the notebook runs?
 
 ## Part 1. Does your refresh pass its guards on the snapshot, and what did its first run say?
 
@@ -73,8 +83,9 @@ Used at work whenever a threshold turns a number into an action that costs money
 Twenty-five minutes. Marketing will send a win-back discount to every customer past the line you
 choose. Give the count at each of the three lines from the snapshot, choose one, and defend it in
 three sentences: what the discount costs if it reaches customers who were coming back anyway, what it
-costs if it misses customers who were leaving, and why your line is the trade you would sign. A
-choice with no count beside it does not count.
+costs if it misses customers who were leaving, and why your line is the trade you would sign. Put a
+count from the snapshot in each of the three sentences, because Marketing weighs a line by how many
+customers it sends the discount to.
 
 ## Part 4. Do pandas and plain Python agree on Retail-Plus orders per member?
 
@@ -96,20 +107,21 @@ https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html (verifi
 quote the line that says what `"one_to_one"` checks, and say in one sentence why your refresh uses it
 rather than `"many_to_one"`.
 
-## What do you watch, redo and recap once the notebook runs?
+## What do you read, watch, redo and recap once the notebook runs?
 
-- **Read.** pandas' own guide to grouping, split-apply-combine:
-  https://pandas.pydata.org/docs/user_guide/groupby.html (verified 1 Oct 2026). Then the merging
-  guide's section "Merge key uniqueness":
+- Read pandas' own guide to grouping, split-apply-combine, at
+  https://pandas.pydata.org/docs/user_guide/groupby.html (verified 1 Oct 2026), and then the merging
+  guide's section "Merge key uniqueness", at
   https://pandas.pydata.org/docs/user_guide/merging.html (verified 1 Oct 2026).
-- **Watch.** Corey Schafer, "Python Pandas Tutorial (Part 8): Grouping and Aggregating - Analyzing
-  and Exploring Your Data", its title and channel checked 1 Oct 2026:
-  https://www.youtube.com/watch?v=txMdrV1Ut64 (verified 1 Oct 2026). pandas 3.0 came out in January
-  2026, so where a call in the video differs from today's notebooks, the notebooks are current.
-- **Redo.** Rerun the guided carve from chapter 1 on the snapshot, and compare its three numbers with
-  part 2.
-- **Recap.** Write the four guards from memory on a card, each with the failure it catches. Saturday's
-  paper asks for them.
+- Watch Corey Schafer's "Python Pandas Tutorial (Part 8): Grouping and Aggregating - Analyzing and
+  Exploring Your Data", at
+  https://www.youtube.com/watch?v=txMdrV1Ut64 (title and channel checked 1 Oct 2026; its content not verified).
+  pandas 3.0 came out in January 2026, so where a call in the video differs from today's notebooks,
+  the notebooks are current.
+- Redo the guided carve from chapter 1 on the snapshot, and compare its three numbers with part 2.
+- Recap by writing the four guards from memory on a card, each with the failure it catches. Saturday's
+  paper asks about the merge's own check, what `validate="one_to_one"` does when the feed names a
+  customer twice.
 
 ## What do you hand in?
 

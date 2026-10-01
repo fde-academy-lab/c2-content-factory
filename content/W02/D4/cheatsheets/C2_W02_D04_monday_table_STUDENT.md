@@ -79,19 +79,19 @@ back to the rows.
 
 | The ask | Owner | Why |
 |---|---|---|
-| Finance's revenue | SQL | Finance reruns it where the data lives; moves 8 rows |
-| The customer table | pandas, reading the warehouse | Columns added weekly |
-| The months view | pandas | A pivot on data in memory |
-| An auditor's one-off | Plain Python | Every step a readable line |
+| Finance's revenue | SQL | Finance reruns it where the data lives; it moves 8 rows |
+| The customer table | pandas, reading the warehouse | Analysts add columns weekly |
+| The months view | pandas | It pivots data in memory |
+| An auditor's one-off | Plain Python | Each step is a readable line |
 
-Refused for Finance: a pandas notebook. Size by rows moved, SQL 8 and pandas 1,340.
+A pandas notebook is refused for Finance. Size by rows moved: SQL 8, pandas 1,340.
 
 **Crux:** Two tools agree only when they share one definition, so give each recurring number one owner, chosen by who reruns it and sized by the rows each route moves.
 
 ## Panel 7: What makes a Monday refresh safe to leave alone?
 
-Told only the connection and the feed's path, it counts recency to `orders["order_date"].max()`,
-carried as `as_of`. Counted to 19 October, the win-back list read 166, not 111.
+Recency counts to `orders["order_date"].max()`, carried as `as_of`. Counted to 19 October, the
+win-back list read 166 where the data holds 111; the 21 days between are the data's age.
 
 | Guard | Catches |
 |---|---|

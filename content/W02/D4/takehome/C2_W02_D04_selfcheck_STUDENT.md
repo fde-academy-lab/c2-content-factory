@@ -49,8 +49,7 @@ again; never remove `validate` to make the run pass.
 | 60 days | 123 |
 | 90 days | 77 |
 
-Any of the three can be defended. The defence is marked on whether each sentence carries a count and
-a cost.
+Any of the three can be defended. A defence holds when each sentence carries a count and a cost.
 
 ## What should pandas and plain Python both say about Retail-Plus orders per member?
 
