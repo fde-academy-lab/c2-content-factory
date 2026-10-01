@@ -13,7 +13,7 @@ those around this set.
 
 Kalpa Retail's warehouse is a Postgres database. The `orders` table holds 1,000 rows, one per order,
 with the columns order_id, customer_id, order_date, quarter, channel, amount and status; the
-`customers` table holds 340 rows, one per member, with customer_id, segment, city, country and
+`customers` table holds 340 rows, one per customer, with customer_id, segment, city, country and
 joined_date. Q1 is April to June 2026 and Q2 is July to September 2026. There are three channels (app,
 web and store) and three statuses (delivered, returned and cancelled), and every channel has orders of
 every status in each quarter. The segment is looked up with `JOIN customers c USING (customer_id)`,
@@ -31,21 +31,21 @@ results so a reader can tell a changed book from a changed query.
 | The book | 340 | 538 | 244 | 462 | 227 |
 
 **Who needs the answer.** Anand's analyst audits every query the team ships, and the head of customer
-service is waiting on a first suite of her own. The same three habits come up in analyst interviews on
-tables nobody has seen: say how many rows a query returns before running it, say the order it runs in,
+service is waiting on a first suite of her own. Both need the same three habits on a question the team
+has not run before: say how many rows a query returns before running it, say the order it runs in,
 and build a short suite that ties out and draws a sample twice the same way.
 
 **The questions on the way.**
 
 - How many rows does each of four queries return, predicted before you run it?
-- In which order does the database work through five clauses, and why does one of them sit where it does?
+- In which order does the database work through five clauses, why does one of them sit where it does, and which piece answers each request?
 - What does a first returns suite for the head of customer service say, and does it tie out and repeat?
 
-**What you post.** One line of ten letters in item order, no spaces, then your problem 3 suite pasted
-below it:
+**What you post.** One line of eleven letters in item order, no spaces, then your problem 3 suite
+pasted below it:
 
 ```
-Post exactly this shape: xxxxxxxxxx
+Post exactly this shape: xxxxxxxxxxx
 ```
 
 ---
@@ -69,8 +69,8 @@ GROUP  BY channel, status;
 How many rows come back?
 
 a) 3
-b) 6
-c) 9
+b) 9
+c) 6
 d) 18
 
 ### Q2. How many segment-quarters clear a bar of 90 customers?
@@ -85,10 +85,10 @@ HAVING count(DISTINCT o.customer_id) >= 90;
 
 How many rows come back?
 
-a) 3
-b) 4
-c) 2
-d) 8
+a) 4
+b) 2
+c) 8
+d) 3
 
 ### Q3. How many segments placed more than 100 orders in Q2?
 
@@ -105,8 +105,8 @@ How many rows come back?
 
 a) 4
 b) 3
-c) 1
-d) 2
+c) 2
+d) 1
 
 ### Q4. How many customers does the half-year list hold?
 
@@ -118,12 +118,12 @@ WHERE  quarter IN ('Q1', 'Q2');
 
 How many rows come back?
 
-a) 471
-b) 301
+a) 301
+b) 471
 c) 1,000
 d) 340
 
-## Problem 2. In which order does the database work through five clauses, and why does one of them sit where it does?
+## Problem 2. In which order does the database work through five clauses, why does one of them sit where it does, and which piece answers each request?
 
 Used at work whenever a query surprises its author and the first question is which clause produced
 the surprise.
@@ -157,8 +157,27 @@ GROUP BY while HAVING runs after it?
 
 a) WHERE is written first, and the database runs the clauses in the order they are written
 b) HAVING needs the names SELECT gives the columns, so it has to wait for SELECT to finish
-c) WHERE judges single rows before groups exist; HAVING judges a group's count once groups form
-d) HAVING and WHERE filter in the same way, and HAVING runs later only to save the database work
+c) HAVING and WHERE filter in the same way, and HAVING runs later only to save the database work
+d) WHERE judges single rows before groups exist; HAVING judges a group's count once groups form
+
+### Q7. Which piece of a query answers each of the service head's four requests about returns?
+
+The head of customer service sends four requests about returned orders. Match each request to the
+piece of a query that answers it.
+
+| Request | Piece of a query |
+|---|---|
+| 1. Keep only the channels where at least 20 customers returned an order | P. `WHERE status = 'returned'` |
+| 2. Keep only the orders that came back | Q. `HAVING count(DISTINCT customer_id) >= 20` |
+| 3. How many different customers returned something | R. `count(DISTINCT customer_id)` |
+| 4. How many returned orders there were | S. `count(*)` |
+
+Which pairing holds?
+
+a) 1P 2Q 3R 4S
+b) 1Q 2P 3R 4S
+c) 1Q 2P 3S 4R
+d) 1P 2Q 3S 4R
 
 ## Problem 3. What does a first returns suite for the head of customer service say, and does it tie out and repeat?
 
@@ -174,7 +193,7 @@ About forty minutes, in pairs.
 > The head of customer service, Kalpa Retail
 
 A returned order is an order whose status is returned. The ERP is the system Finance books orders in.
-Build the suite on the warehouse in three parts, then answer items 7 to 10 from what it prints.
+Build the suite on the warehouse in three parts, then answer items 8 to 11 from what it prints.
 
 - **The suite, as named steps.** A `WITH` query whose first step, `returned`, keeps the returned
   orders, and whose second step, `per_channel`, counts orders, customers who returned and rupees for
@@ -184,41 +203,41 @@ Build the suite on the warehouse in three parts, then answer items 7 to 10 from 
 - **The sample and its fingerprint.** A query that returns five returned Q2 orders the analyst's rerun
   will return again, and beside it the returned book's rows, rupees and distinct customers.
 
-### Q7. Which channel's returned orders rose from Q1 to Q2?
+### Q8. Which channel's returned orders rose from Q1 to Q2?
 
 Reading your `per_channel` rows, which channel's returned orders rose from Q1 to Q2?
 
 a) app
 b) web
-c) none, since every channel's returns fell
-d) store
+c) store
+d) none, since every channel's returns fell
 
-### Q8. Which tie-out holds on the returns suite in Q1?
+### Q9. Which tie-out holds on the returns suite in Q1?
 
 Set your three Q1 channel rows beside the Q1 row of the query without the channel. Which tie-out
 holds?
 
 a) The channels' orders and customers both add to the Q1 row, 97 orders and 90 customers
-b) The channels' orders add to the Q1 row's 97; their customers add to 90 against its 78
-c) The channels' customers add to the Q1 row's 78, and their orders to its 97
-d) Neither adds, since each channel's returns are counted in a group of their own
+b) The channels' customers add to the Q1 row's 78, and their orders to its 97
+c) Neither adds, since each channel's returns are counted in a group of their own
+d) The channels' orders add to the Q1 row's 97; their customers add to 90 against its 78
 
-### Q9. Which second route confirms the half-year count of customers who returned an order?
+### Q10. Which rebuild from each customer's history confirms the half-year count of customers who returned an order?
 
-Your half-year query counts the customers from the orders. 78 customers returned an order in Q1, 76 in
-Q2, and 24 returned an order in both quarters. Which second route confirms your count, and what does it
-give?
+Your half-year query counts the customers who returned an order straight from the orders. Three
+filters over one row per such customer give their histories: 24 returned an order in both quarters,
+54 in Q1 only and 52 in Q2 only. Which rebuild confirms your count, and what does it give?
 
-a) Q1's 78 plus Q2's 76, which gives 154
-b) The 184 returned orders, one customer each, which gives 184
-c) Q1's 78 plus Q2's 76 less the 24 in both, which gives 130
-d) The larger quarter, 78, since most customers who returned in Q2 also returned in Q1
+a) 24 plus 54 plus 52 is 130, and 24 plus 54 and 24 plus 52 rebuild your quarter rows
+b) 54 plus 52 is 106, the customers who returned in one quarter only, so 106 in all
+c) The 184 returned orders, one customer for each, so the half-year holds 184 customers
+d) 24 plus 54 for Q1 and 24 plus 52 for Q2, added together, which gives 154 customers
 
-### Q10. Which ordering and printout make the service team's sample auditable?
+### Q11. Which ordering and printout make the service team's sample auditable?
 
 Which pair makes the five returned Q2 orders a sample the analyst can audit?
 
-a) `ORDER BY order_id LIMIT 5`, with the returned book's rows, rupees and customers printed beside it
-b) `LIMIT 5` alone, with the returned book's rows, rupees and customers printed beside it
+a) `LIMIT 5` alone, with the returned book's rows, rupees and customers printed beside it
+b) `ORDER BY order_id LIMIT 5`, with the returned book's rows, rupees and customers printed beside it
 c) `ORDER BY order_id LIMIT 5`, with the time the run took printed beside it
 d) `ORDER BY channel LIMIT 5`, with the returned book's row count printed beside it, and nothing else

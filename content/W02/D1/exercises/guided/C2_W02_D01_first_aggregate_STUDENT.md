@@ -13,7 +13,7 @@ where to look. Answer each item before you run its step.
 
 The warehouse's `orders` table holds 1,000 rows, one per order, with the columns order_id,
 customer_id, order_date, quarter, channel, amount and status. The `customers` table holds 340 rows,
-one per member, with customer_id, segment, city, country and joined_date. Q1 is April to June 2026 and
+one per customer, with customer_id, segment, city, country and joined_date. Q1 is April to June 2026 and
 Q2 is July to September 2026. Booked revenue is every order at its amount, whatever its status. Kalpa's
 four segments are Business, Retail-Core, Retail-Plus (the paid membership tier, 120 members) and
 Student, and the segment lives on the customers table, so each order looks it up with one line,
@@ -30,7 +30,7 @@ numbers.
 - How many rows come back once the groups are segment and quarter?
 - What can Retail-Plus's Q1 customer count be, before you run it?
 - In which order does the database work through step 5's clauses?
-- Which segment's revenue per order fell from Q1 to Q2?
+- Which segment's revenue per order rose the most from Q1 to Q2?
 
 **What you post.** One line of five letters in item order, no spaces, in this shape:
 
@@ -119,13 +119,13 @@ aloud: inside each group, DISTINCT keeps each customer once, however many orders
 
 ### Q3. What can Retail-Plus's Q1 customer count be, before you run it?
 
-Retail-Plus placed 215 orders in Q1, and the tier has 120 members. Which one of these could step 5
-print for Retail-Plus in Q1?
+Retail-Plus placed 215 orders in Q1, and the tier has 120 members. Before you run step 5, what can you
+say about the customer count it prints for Retail-Plus in Q1?
 
-a) 215
-b) 120
-c) 91
-d) 250
+a) Exactly 215, one for each order the tier placed
+b) Exactly 120, every member of the tier counted once
+c) At most 120, the members, whichever of them bought
+d) Between 120 and 215, since some members ordered twice
 
 ### Q4. In which order does the database work through step 5's clauses?
 
@@ -137,16 +137,16 @@ b) FROM with the lookup, then GROUP BY, then SELECT, then ORDER BY
 c) FROM with the lookup, then SELECT, then GROUP BY, then ORDER BY
 d) GROUP BY, then FROM with the lookup, then SELECT, then ORDER BY
 
-## Which segment's orders got smaller?
+## Which segment's orders grew most in value?
 
 Used at work whenever a revenue change is split into how many orders and how large each one was.
 
 **On your own, three minutes.** Add `round(sum(o.amount) / count(*)) AS revenue_per_order` to step 5
 and run it.
 
-### Q5. Which segment's revenue per order fell from Q1 to Q2?
+### Q5. Which segment's revenue per order rose the most from Q1 to Q2?
 
-Reading your new column, which segment's revenue per order fell from Q1 to Q2?
+Reading your new column as Q2 over Q1, which segment's revenue per order rose the most?
 
 a) Student
 b) Business

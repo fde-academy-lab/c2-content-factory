@@ -1,4 +1,4 @@
-# Which channel is losing Kalpa's consumers, once the Business orders are read apart?
+# Is the store booming and the web collapsing, as Marketing says?
 
 The second case, in the take-home, in pairs or alone. You work in
 `notebooks/C2_W02_D01_ex2_second_case_STUDENT.ipynb`, and this brief carries everything the case
@@ -13,13 +13,13 @@ answered here.
 
 Kalpa Retail sells through three channels: its app, its website and its stores. Booked revenue, every
 order at its amount whatever its status, was Rs 10,00,00,000 in Q1 (April to June 2026) and
-Rs 9,84,00,000 in Q2 (July to September 2026). Business, the corporate segment, books about 99 percent
-of those rupees in orders worth lakhs each. The other three segments, Retail-Core, Retail-Plus and
-Student, are Kalpa's consumers, whose orders are worth hundreds or a few thousand rupees. Marketing read
-the channel totals and wants budget moved from the web to the stores.
+Rs 9,84,00,000 in Q2 (July to September 2026). Business, the corporate segment, places orders worth
+lakhs each. The other three segments, Retail-Core, Retail-Plus and Student, are Kalpa's consumers,
+whose orders are worth hundreds or a few thousand rupees. Marketing read the channel totals and wants
+budget moved from the web to the stores.
 
 The book is Kalpa's Postgres warehouse: `orders` (1,000 rows: order_id, customer_id, order_date,
-quarter, channel, amount, status) and `customers` (340 rows, one per member: customer_id, segment,
+quarter, channel, amount, status) and `customers` (340 rows, one per customer: customer_id, segment,
 city, country, joined_date). The channel is a column of the orders table; the segment is looked up with
 `JOIN customers c USING (customer_id)`, which finds each order's one customer and changes no row count.
 Customers who bought are counted once in a group, however many orders they placed, and orders per
@@ -35,13 +35,13 @@ Q1, less one, in percent.
 | web | 181 | Rs 3,79,02,050 | 150 | Rs 2,36,61,000 |
 
 **Who needs the answer.** Anand decides whether to back Marketing's request, and the channel heads
-will live with the budget it moves. A budget moved on totals that a few corporate orders dominate goes
-to a channel whose own consumers may be the ones leaving.
+will live with the budget it moves. A budget moved on a total that a different kind of order carries
+goes to a channel whose own consumers may be the ones leaving.
 
 **The questions on the way.**
 
 - What do the channel totals say from Q1 to Q2?
-- How much of each channel is Business, and how much is consumers?
+- Which orders make up each channel's total?
 - How did each channel's consumers move, branch by branch?
 - Which line goes on Anand's channel sheet?
 
@@ -66,13 +66,13 @@ Marker 1 in the notebook, then item 8 here.
 
 ### Q1. Which grouping gives Anand one line per channel and quarter?
 
-Anand wants one line per channel and quarter, six lines in all. Which grouping gives the analyst
-exactly those lines?
+Anand wants one line per channel and quarter, six lines in all. Which grouping, with the same columns
+in the SELECT, gives the analyst exactly those lines?
 
-a) `GROUP BY channel, quarter`
-b) `GROUP BY channel`
-c) `GROUP BY quarter`
-d) `GROUP BY customer_id, channel`
+a) `GROUP BY channel`
+b) `GROUP BY quarter`
+c) `GROUP BY channel, quarter, status`
+d) `GROUP BY channel, quarter`
 
 ### Q8. Which analysis answers Marketing's question, sized in rows?
 
@@ -80,12 +80,12 @@ Marketing's question is whether a channel is losing its consumers. Kalpa has thr
 order is either a Business order or a consumer order. Which analysis answers the question, sized in
 rows?
 
-a) The six channel totals, since the budget follows a channel's revenue
-b) Twelve rows, each channel's Business and consumer orders apart per quarter, read as changes
+a) Twelve rows, each channel's Business and consumer orders apart per quarter, read as changes
+b) The six channel totals, since the budget follows a channel's revenue
 c) Three rows, each channel's half-year revenue, since two quarters of movement cancel out
 d) All 1,000 order rows exported, so Marketing can check the split for itself in its own spreadsheet
 
-## Step 2. How much of each channel is Business, and how much is consumers?
+## Step 2. Which orders make up each channel's total?
 
 Used at work whenever a total is made of a few very large orders and many small ones, since each part
 is read on its own before the total is.
@@ -97,10 +97,10 @@ Marker 2 in the notebook.
 The notebook labels every order as Business or consumer and groups by the label. Which label splits the
 orders the way Anand's segments do?
 
-a) The customer's own segment name, four labels in each channel
-b) Business where the customer's segment is Business, consumer for the other three
+a) Business where the customer's segment is Business, consumer for the other three
+b) The customer's own segment name, four labels in each channel
 c) Business where the order is worth more than Rs 5,00,000, and consumer where it is not
-d) A filter that drops the Business customers' orders before anything is grouped
+d) Business where the customer is in Business or Retail-Plus, the segments with larger orders
 
 ## Step 3. How did each channel's consumers move, branch by branch?
 
@@ -125,21 +125,21 @@ The analyst multiplies every orders-per-consumer figure back to its orders. Whic
 figure that survives her check?
 
 a) `count(*) / count(DISTINCT o.customer_id)`
-b) `round(count(*) / count(DISTINCT o.customer_id), 2)`
-c) `round(count(DISTINCT o.customer_id)::numeric / count(*), 2)`
-d) `round(count(*)::numeric / count(DISTINCT o.customer_id), 2)`
+b) `round(count(*)::numeric / count(DISTINCT o.customer_id), 2)`
+c) `round(count(*) / count(DISTINCT o.customer_id), 2)`
+d) `round(count(DISTINCT o.customer_id)::numeric / count(*), 2)`
 
-### Q9. What does the app's consumer revenue come to by a route that uses no consumer filter?
+### Q9. Which route could disagree with the app's consumer revenue if the consumer query were wrong?
 
 Kavya Nair, the team's senior analyst, wants the app's consumer revenue confirmed by a route that
-shares no code with the consumer query: the app's booked total less the app's Business revenue. The
-app's Business revenue was Rs 4,17,78,440 in Q1 and Rs 4,23,16,600 in Q2, and its totals are in the
-table at the top of this brief. What does the route give?
+could disagree with the consumer query if the query were wrong. The app's Business revenue was
+Rs 4,17,78,440 in Q1 and Rs 4,23,16,600 in Q2, and its totals are in the table at the top of this
+brief. Which route could disagree, and what does it give?
 
-a) Rs 3,60,400 then Rs 2,73,670, down 24.1 percent
-b) Rs 3,60,400 then Rs 2,73,670, down 31.7 percent
-c) Rs 4,21,38,840 then Rs 4,25,90,270, up 1.1 percent
-d) Rs 4,17,78,440 then Rs 4,23,16,600, up 1.3 percent
+a) The app's booked total less the app's Business revenue: Rs 3,60,400 then Rs 2,73,670
+b) The consumer query rerun in a fresh session: Rs 3,60,400 then Rs 2,73,670 again
+c) The app's consumer orders times their revenue per order: Rs 3,60,400 then Rs 2,73,670
+d) The app's consumers times their spend per consumer: Rs 3,60,400 then Rs 2,73,670
 
 ## Step 4. Which line goes on Anand's channel sheet?
 
@@ -153,18 +153,18 @@ Reading each channel's consumer revenue as a change from Q1 to Q2, which channel
 share of it?
 
 a) web
-b) store
-c) none, since every channel held its consumers
-d) app
+b) app
+c) store
+d) none, since every channel held its consumers
 
 ### Q6. Which line goes on Anand's sheet for the store?
 
 Which line goes on Anand's sheet for the store?
 
-a) Store revenue rose 61.1 percent from Q1 to Q2, so the budget should move to the stores.
-b) Store consumer revenue fell 18.8 percent; the store total rose on Business orders.
-c) The store is flat once the Business orders are removed.
-d) Store revenue cannot be reported until Business is removed from the book.
+a) Store revenue rose 61.1 percent from Q1 to Q2, so the budget should move to the stores
+b) The store is flat once the Business orders are removed
+c) Store consumer revenue rose with its Business orders, so both parts of the store grew
+d) Store consumer revenue fell; the store total rose on Business orders
 
 ### Q7. Which fact would move the budget question back to the channel totals?
 
@@ -173,8 +173,8 @@ the budget?
 
 a) If the web's consumer orders fell further next quarter
 b) If Anand asked for the channels in rupees rather than orders
-c) If Business placed its orders through whichever channel its buyer chose on the day
-d) If Business chose a channel for that channel's own service
+c) If Business chose a channel for that channel's own service
+d) If Business placed its orders through whichever channel its buyer chose on the day
 
 ### Q10. How should the consumer lines be tied out before they reach Anand, sized?
 
@@ -183,11 +183,11 @@ bought. The consumer lines per channel will sit on Anand's sheet beside that tot
 tied out before they reach him?
 
 a) Customers as well, the channels' 325 against the segments' 208 in Q1, since a tie-out adds every column
-b) Revenue alone, since Anand signs rupees and the orders and customers follow from them
-c) Orders and rupees against the segments' 441 orders and Rs 9,85,560 in Q1, customers left out
+b) Orders and rupees against the segments' 441 orders and Rs 9,85,560 in Q1, customers left out
+c) Revenue alone, since Anand signs rupees and the orders and customers follow from them
 d) No tie-out, since the channel totals already added back to the book in step 1
 
-## Which rules does the case keep?
+## Which rules does the channel case keep, from the tables it reads to the line for Anand?
 
 - The data is the warehouse's orders and customers tables, read where they live; nothing is exported.
 - Every number in your line for Anand says which part of the business it reads: the total, Business,

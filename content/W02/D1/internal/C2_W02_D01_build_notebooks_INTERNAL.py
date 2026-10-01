@@ -2321,10 +2321,10 @@ print("connected:", kit.sql("select version()")[0]["version"].split(",")[0])
 
 
 def case():
-    """The escalated case: the Monday suite on Anand's definition, delivered orders only."""
+    """The escalated case: the Monday suite on Finance's definition, delivered orders only."""
     cells = [
         md("""
-        # Does the Monday suite hold on Anand's definition, the orders that were delivered?
+        # Does the Monday suite hold on Finance's definition, the orders that were delivered?
 
         **Week 2, Monday. The escalated case, alone, in five parts.** Parts 1 and 2 run in the
         afternoon session; parts 3 to 5 run in the practice lab.
@@ -2336,13 +2336,15 @@ def case():
         **The situation.** The chapters built the Monday suite on booked revenue, every order at its
         amount whatever its status: Rs 10,00,00,000 in Q1 (April to June 2026) and Rs 9,84,00,000 in Q2
         (July to September 2026), 244 then 227 customers who bought, and Retail-Plus carrying the fall
-        with its revenue down 29.4 percent. Finance counts only delivered orders; cancelled and
-        returned orders are not revenue on Anand's books. This notebook reruns the suite on that
+        with its revenue down 29.4 percent. Finance's definition counts only delivered orders; a
+        cancelled or returned order is not revenue on it. This notebook reruns the suite on that
         definition. Its numbers are new, so nothing from the chapters can be copied.
 
         **The data.** The Kalpa warehouse, as in the chapters: `orders` (1,000 rows: order id, customer
-        id, date, quarter, channel, amount, status) and `customers` (340 rows, one per member, with the
-        segment). The segment is looked up with `JOIN customers c USING (customer_id)`.
+        id, date, quarter, channel, amount, status) and `customers` (340 rows, one per customer, with
+        the segment). The segment is looked up with `JOIN customers c USING (customer_id)`. Spend per
+        member is the rupees a Retail-Plus member spent in a quarter, averaged over the members who
+        took delivery in either quarter, so both quarters are averaged over the same people.
         """),
         md("""
         TODO ONLY
@@ -2363,11 +2365,11 @@ def case():
             kit.side_by_side(
                 kit.ladder(["The book on delivered orders", "Each segment's frequency", "The branches and spend per member",
                             "The tie-outs", "The run that repeats"], lit=0, show=False),
-                kit.flow(["booked: every status", "delivered: Anand's books"], kinds=["plain", "lit"], show=False),
+                kit.flow(["booked: every status", "delivered: Finance's definition"], kinds=["plain", "lit"], show=False),
             )
             '''),
         md("""
-        ## Part 1. What does the book say on Anand's definition?
+        ## Part 1. What does the book say on Finance's definition?
 
         Where this is used at work: every finance number starts from a definition of revenue, and the
         filter that states it is the first line an auditor reads.
@@ -2375,18 +2377,18 @@ def case():
         code(r'''
             # TODO 1. Which filter keeps the orders that reached the customer and stayed there?
             #   a) WHERE status <> 'cancelled'
-            #   b) WHERE status IN ('delivered', 'returned')
-            #   c) HAVING status = 'delivered'
-            #   d) WHERE status = 'delivered'
-            FILTER = {"a": "WHERE status <> 'cancelled'", "b": "WHERE status IN ('delivered', 'returned')",
-                      "c": "HAVING status = 'delivered'", "d": "WHERE status = 'delivered'"}[__TODO1__]
+            #   b) WHERE status = 'delivered'
+            #   c) WHERE amount > 0
+            #   d) WHERE status <> 'returned'
+            FILTER = {"a": "WHERE status <> 'cancelled'", "b": "WHERE status = 'delivered'",
+                      "c": "WHERE amount > 0", "d": "WHERE status <> 'returned'"}[__TODO1__]
 
             # TODO 2. Which expression counts the customers who took delivery in a quarter, each once?
-            #   a) count(DISTINCT customer_id), one per customer id however many rows it has
-            #   b) count(*), since each delivered row belongs to a customer who took delivery
-            #   c) count(customer_id), since it counts the customer column rather than the rows
+            #   a) count(*), since each delivered row belongs to a customer who took delivery
+            #   b) count(customer_id), since it counts the customer column rather than the rows
+            #   c) count(DISTINCT customer_id), one per customer id however many rows carry it
             #   d) sum(1), since adding one per delivered order counts everyone who received one
-            CUSTOMERS = {"a": "count(DISTINCT customer_id)", "b": "count(*)", "c": "count(customer_id)",
+            CUSTOMERS = {"a": "count(*)", "b": "count(customer_id)", "c": "count(DISTINCT customer_id)",
                          "d": "sum(1)"}[__TODO2__]
 
             book_sql = f"""SELECT quarter, count(*) AS orders, {CUSTOMERS} AS customers, sum(amount) AS revenue
@@ -2398,7 +2400,8 @@ def case():
             '''),
         code(r'''
             leftover = rows(f"SELECT count(*) AS n FROM orders {FILTER} AND status <> 'delivered'")[0]["n"]
-            kit.check("the filter keeps no order that was cancelled or returned", leftover == 0, f"{leftover} left in")
+            kit.check("every order the filter keeps reached the customer and stayed there", leftover == 0,
+                      f"{leftover} kept with another status")
             kit.check("customers are fewer than orders in each quarter",
                       all(book[q]["customers"] < book[q]["orders"] for q in ("Q1", "Q2")))
             kit.check("no quarter shows more customers than the 340 on the book",
@@ -2414,33 +2417,33 @@ def case():
         rate on too few customers is the line that misleads them most.
         """),
         code(r'''
-            # TODO 3. Which grouping gives Anand's sheet one line per segment and quarter?
-            #   a) GROUP BY o.quarter, with the segment read from each quarter's rows
-            #   b) GROUP BY c.segment, with each quarter shown inside the segment's row
-            #   c) GROUP BY c.segment, o.quarter, one group per segment in each quarter
-            #   d) GROUP BY o.customer_id, so each customer's segment and quarter come through
-            GROUPING = {"a": "GROUP BY o.quarter", "b": "GROUP BY c.segment", "c": "GROUP BY c.segment, o.quarter",
-                        "d": "GROUP BY o.customer_id"}[__TODO3__]
+            # TODO 3. Predict before you run it: how many rows will the query grouped by c.segment, o.quarter return?
+            #   a) 8, one for each segment in each quarter
+            #   b) 4, one for each segment over both quarters
+            #   c) 2, one for each quarter over all segments
+            #   d) 653, one for each delivered order
+            PREDICTED_ROWS = {"a": 8, "b": 4, "c": 2, "d": 653}[__TODO3__]
 
             # TODO 4. Which orders-per-customer figure survives the analyst's multiply-back check?
             #   a) round(count(*) / count(DISTINCT o.customer_id), 2)
-            #   b) round(count(*)::numeric / count(DISTINCT o.customer_id), 2)
-            #   c) count(*) / count(DISTINCT o.customer_id)
-            #   d) round(count(DISTINCT o.customer_id)::numeric / count(*), 2)
+            #   b) count(*) / count(DISTINCT o.customer_id)
+            #   c) round(count(DISTINCT o.customer_id)::numeric / count(*), 2)
+            #   d) round(count(*)::numeric / count(DISTINCT o.customer_id), 2)
             RATIO = {"a": "round(count(*) / count(DISTINCT o.customer_id), 2)",
-                     "b": "round(count(*)::numeric / count(DISTINCT o.customer_id), 2)",
-                     "c": "count(*) / count(DISTINCT o.customer_id)",
-                     "d": "round(count(DISTINCT o.customer_id)::numeric / count(*), 2)"}[__TODO4__]
+                     "b": "count(*) / count(DISTINCT o.customer_id)",
+                     "c": "round(count(DISTINCT o.customer_id)::numeric / count(*), 2)",
+                     "d": "round(count(*)::numeric / count(DISTINCT o.customer_id), 2)"}[__TODO4__]
 
             seg_sql = f"""SELECT c.segment, o.quarter, count(*) AS orders, count(DISTINCT o.customer_id) AS customers,
                    {RATIO} AS orders_per_customer
-            FROM orders o JOIN customers c USING (customer_id) {FILTER} {GROUPING} ORDER BY 1, 2"""
+            FROM orders o JOIN customers c USING (customer_id) {FILTER} GROUP BY c.segment, o.quarter ORDER BY 1, 2"""
             print(seg_sql)
             seg = rows(seg_sql)
             show(seg, "Each segment on delivered orders")
             '''),
         code(r'''
-            kit.check("eight rows, one per segment and quarter", len(seg) == 8, f"{len(seg)} rows")
+            kit.check("your predicted row count matches the rows the query returned", PREDICTED_ROWS == len(seg),
+                      f"predicted {PREDICTED_ROWS}, returned {len(seg)}")
             kit.check("every ratio multiplies back to its orders within half an order",
                       all(abs(float(r["orders_per_customer"]) * r["customers"] - r["orders"]) < 0.5 for r in seg))
             by = {(r["segment"], r["quarter"]): r for r in seg}
@@ -2449,21 +2452,21 @@ def case():
                          for q in ("Q1", "Q2")], title="Orders per customer on delivered orders", fmt=lambda v: f"{v:.2f}")
             '''),
         code(r'''
-            # TODO 5. Which clause lists the segment-quarters Kavya flags as too thin?
-            #   a) WHERE count(DISTINCT o.customer_id) < 30, since WHERE decides which lines come back
+            # TODO 5. Which clause, after the grouping, lists the segment-quarters Kavya flags as too thin?
+            #   a) HAVING count(DISTINCT o.customer_id) < 30, since the bar is on customers per group
             #   b) HAVING count(*) < 30, since a thin group is one with few orders
-            #   c) WHERE o.customer_id < 30, which drops rows before the groups are counted
-            #   d) HAVING count(DISTINCT o.customer_id) < 30, since the bar is on customers per group
-            THIN = {"a": "WHERE count(DISTINCT o.customer_id) < 30", "b": "HAVING count(*) < 30",
-                    "c": "WHERE o.customer_id < 30", "d": "HAVING count(DISTINCT o.customer_id) < 30"}[__TODO5__]
+            #   c) HAVING count(DISTINCT o.customer_id) <= 30, since a group on exactly 30 is thin too
+            #   d) HAVING count(o.customer_id) < 30, since it counts the customer column
+            THIN = {"a": "HAVING count(DISTINCT o.customer_id) < 30", "b": "HAVING count(*) < 30",
+                    "c": "HAVING count(DISTINCT o.customer_id) <= 30", "d": "HAVING count(o.customer_id) < 30"}[__TODO5__]
             thin_sql = f"""SELECT c.segment, o.quarter, count(DISTINCT o.customer_id) AS customers
             FROM orders o JOIN customers c USING (customer_id) {FILTER} GROUP BY c.segment, o.quarter {THIN} ORDER BY 1, 2"""
             thin = rows(thin_sql)
             show(thin, "The segment-quarters to flag")
             flagged = {(r["segment"], r["quarter"]) for r in thin}
-            kit.check("every flagged group has fewer than 30 customers", all(by[k]["customers"] < 30 for k in flagged))
-            kit.check("every group with fewer than 30 customers is flagged",
-                      all(k in flagged for k, r in by.items() if r["customers"] < 30))
+            under_bar = {k for k, r in by.items() if r["customers"] < 30}
+            kit.check("the flagged groups are exactly the groups under Kavya's bar", flagged == under_bar,
+                      f"{len(flagged)} flagged against {len(under_bar)} under the bar")
             '''),
         md("""
         ## Part 3. Which branch of Retail-Plus's tree moved furthest, and how much less did each member spend?
@@ -2496,23 +2499,23 @@ def case():
                           for r in branches))
             '''),
         code(r'''
-            # TODO 6. Which expression gives the average member's Q2 spend over the same members as Q1's?
-            #   a) avg(coalesce(q2_spend, 0))
-            #   b) avg(q2_spend)
-            #   c) sum(q2_spend) / count(q2_spend)
-            #   d) max(q2_spend)
-            SPEND = {"a": "avg(coalesce({col}, 0))", "b": "avg({col})", "c": "sum({col}) / count({col})",
-                     "d": "max({col})"}[__TODO6__]
+            # TODO 6. Which expression averages each quarter's spend over every member in the step?
+            #   a) avg(q2_spend)
+            #   b) sum(q2_spend) / count(q2_spend)
+            #   c) avg(coalesce(q2_spend, 0))
+            #   d) sum(q2_spend) / 120
+            SPEND = {"a": "avg({col})", "b": "sum({col}) / count({col})", "c": "avg(coalesce({col}, 0))",
+                     "d": "sum({col}) / 120"}[__TODO6__]
 
             # TODO 7. Which pair of counts shows who is inside each quarter's average?
             #   a) sum(q1_spend) and sum(q2_spend)
             #   b) count(DISTINCT q1_spend) and count(DISTINCT q2_spend)
-            #   c) count(q1_spend) and count(q2_spend) beside count(*)
-            #   d) avg(q1_spend) and avg(q2_spend)
+            #   c) avg(q1_spend) and avg(q2_spend)
+            #   d) count(q1_spend) and count(q2_spend) beside count(*)
             WHO = {"a": "sum(q1_spend) AS inside_q1, sum(q2_spend) AS inside_q2",
                    "b": "count(DISTINCT q1_spend) AS inside_q1, count(DISTINCT q2_spend) AS inside_q2",
-                   "c": "count(q1_spend) AS inside_q1, count(q2_spend) AS inside_q2",
-                   "d": "avg(q1_spend) AS inside_q1, avg(q2_spend) AS inside_q2"}[__TODO7__]
+                   "c": "avg(q1_spend) AS inside_q1, avg(q2_spend) AS inside_q2",
+                   "d": "count(q1_spend) AS inside_q1, count(q2_spend) AS inside_q2"}[__TODO7__]
 
             spend_sql = f"""WITH member_spend AS (
                 SELECT o.customer_id,
@@ -2529,14 +2532,18 @@ def case():
             show([spend], "Retail-Plus spend per member on delivered orders", money=("q1_average", "q2_average"))
             '''),
         code(r'''
-            tier = rows(f"""SELECT o.quarter, sum(o.amount) AS revenue FROM orders o JOIN customers c USING (customer_id)
+            tier = rows(f"""SELECT o.quarter, sum(o.amount) AS revenue, count(DISTINCT o.customer_id) AS took_delivery
+                           FROM orders o JOIN customers c USING (customer_id)
                            {FILTER} AND c.segment = 'Retail-Plus' GROUP BY o.quarter ORDER BY o.quarter""")
-            tier_change = pct(tier[0]["revenue"], tier[1]["revenue"])
-            kit.check("the pair of counts reads at most the members in the step",
-                      spend["inside_q1"] <= spend["members"] and spend["inside_q2"] <= spend["members"])
-            kit.check("the average moves as the tier's revenue does, so both quarters cover the same members",
-                      abs(pct(spend["q1_average"], spend["q2_average"]) - tier_change) < 0.2,
-                      f"{pct(spend['q1_average'], spend['q2_average']):+.1f}% against {tier_change:+.1f}%")
+            n = spend["members"]
+            kit.check(f"each average times the {n} members in the step gives back its quarter's tier revenue",
+                      all(abs(float(spend[a]) * n - tier[i]["revenue"]) <= n / 2 + 1
+                          for i, a in enumerate(("q1_average", "q2_average"))),
+                      f"{kit.rupees(float(spend['q1_average']) * n)} and {kit.rupees(float(spend['q2_average']) * n)} "
+                      f"against {kit.rupees(tier[0]['revenue'])} and {kit.rupees(tier[1]['revenue'])}")
+            kit.check("the pair matches the members who took delivery in each quarter, counted on their own",
+                      spend["inside_q1"] == tier[0]["took_delivery"] and spend["inside_q2"] == tier[1]["took_delivery"],
+                      f"{spend['inside_q1']} and {spend['inside_q2']} against {tier[0]['took_delivery']} and {tier[1]['took_delivery']}")
             '''),
         md("""
         ## Part 4. Does the suite add up the way the analyst will add it?
@@ -2548,23 +2555,19 @@ def case():
             per_q = rows(f"""SELECT c.segment, o.quarter, count(DISTINCT o.customer_id) AS customers
                            FROM orders o JOIN customers c USING (customer_id) {FILTER}
                            GROUP BY c.segment, o.quarter ORDER BY 1, 2""")
-            # TODO 8. Which count gives each segment's half-year customers on delivered orders?
-            #   a) The segment's two quarter counts added together, one for Q1 and one for Q2
-            #   b) count(DISTINCT o.customer_id) over both quarters' delivered orders
-            #   c) The larger of the segment's two quarter counts, since most Q2 buyers also bought in Q1
-            #   d) count(*) over both quarters' delivered orders for the segment
-            HALF = {"a": "added", "b": "count(DISTINCT o.customer_id)", "c": "larger", "d": "count(*)"}[__TODO8__]
+            # TODO 8. Predict before you run it. Business took delivery from 30 customers in Q1 and 26 in Q2,
+            #         and 20 of them in both quarters. How many Business customers took delivery in the half-year?
+            #   a) 56, the two quarters' customers added
+            #   b) 36, each of the customers counted once
+            #   c) 30, the larger of the two quarters
+            #   d) 10, the Q1 customers who did not return
+            PREDICTED_BUSINESS = {"a": 56, "b": 36, "c": 30, "d": 10}[__TODO8__]
             quarters = {}
             for r in per_q:
                 quarters.setdefault(r["segment"], []).append(r["customers"])
-            if HALF == "added":
-                half = {s: sum(v) for s, v in quarters.items()}
-            elif HALF == "larger":
-                half = {s: max(v) for s, v in quarters.items()}
-            else:
-                half = {r["segment"]: r["customers"] for r in rows(
-                    f"""SELECT c.segment, {HALF} AS customers FROM orders o JOIN customers c USING (customer_id)
-                        {FILTER} GROUP BY c.segment ORDER BY 1""")}
+            half = {r["segment"]: r["customers"] for r in rows(
+                f"""SELECT c.segment, count(DISTINCT o.customer_id) AS customers FROM orders o JOIN customers c USING (customer_id)
+                    {FILTER} GROUP BY c.segment ORDER BY 1""")}
             members = {r["segment"]: r["members"] for r in rows(
                 "SELECT segment, count(*) AS members FROM customers GROUP BY segment ORDER BY segment")}
             kit.columns(sorted(half), [("half-year customers", [half[s] for s in sorted(half)]),
@@ -2576,7 +2579,9 @@ def case():
                 WITH per AS (SELECT c.segment, o.customer_id, count(DISTINCT o.quarter) AS quarters
                              FROM orders o JOIN customers c USING (customer_id) {FILTER} GROUP BY 1, 2)
                 SELECT segment, count(*) FILTER (WHERE quarters = 2) AS both FROM per GROUP BY 1""")}
-            kit.check("no segment's half-year exceeds its members", all(half[s] <= members[s] for s in half))
+            kit.check("your prediction for Business matches its half-year counted from the orders",
+                      PREDICTED_BUSINESS == half["Business"], f"predicted {PREDICTED_BUSINESS}, counted {half['Business']}")
+            kit.check("no segment's half-year exceeds the customers it holds", all(half[s] <= members[s] for s in half))
             kit.check("each half-year equals Q1 plus Q2 less the customers in both",
                       all(half[s] == sum(quarters[s]) - both[s] for s in half))
             '''),
@@ -2590,18 +2595,19 @@ def case():
         code(r'''
             # TODO 9. Which ordering makes the five delivered Q2 web orders the same five on every run?
             #   a) ORDER BY customer_id
-            #   b) no ORDER BY, only LIMIT 5
-            #   c) ORDER BY quarter
-            #   d) ORDER BY order_id
-            ORDERING = {"a": "ORDER BY customer_id", "b": "", "c": "ORDER BY quarter", "d": "ORDER BY order_id"}[__TODO9__]
+            #   b) ORDER BY order_id
+            #   c) no ORDER BY, only LIMIT 5
+            #   d) ORDER BY quarter
+            ORDERING = {"a": "ORDER BY customer_id", "b": "ORDER BY order_id", "c": "", "d": "ORDER BY quarter"}[__TODO9__]
 
             # TODO 10. What should the fingerprint printed beside the delivered suite hold?
-            #   a) The delivered book's rows, rupees and distinct customers
+            #   a) The delivered book's rows, rupees and distinct customers, three numbers
             #   b) The count of order rows alone, the one number every reload changes
-            #   c) The time the query took to run, so a slow run stands out on the sheet
-            #   d) The date the suite was run, so each Monday's output carries its label
+            #   c) The delivered book's rows and distinct customers, the suite's own two counts
+            #   d) The row count and the latest order date, so a late order shows up
             FINGER = {"a": "count(*) AS rows, sum(amount) AS rupees, count(DISTINCT customer_id) AS customers",
-                      "b": "count(*) AS rows", "c": "0 AS milliseconds", "d": "0 AS run_date"}[__TODO10__]
+                      "b": "count(*) AS rows", "c": "count(*) AS rows, count(DISTINCT customer_id) AS customers",
+                      "d": "count(*) AS rows, max(order_date) AS latest_order"}[__TODO10__]
 
             sample_sql = f"""SELECT order_id, amount FROM orders
             WHERE quarter = 'Q2' AND channel = 'web' AND status = 'delivered' {ORDERING} LIMIT 5"""
@@ -2616,16 +2622,30 @@ def case():
                 conn.rollback()
                 conn.close()
             finger = rows(f"SELECT {FINGER} FROM orders {FILTER}")[0]
+            conn = kit.connect()
+            try:
+                kit.sql("UPDATE orders SET amount = amount + 100 WHERE order_id = "
+                        "(SELECT min(order_id) FROM orders WHERE status = 'delivered')", conn=conn)
+                corrected = [{k: num(v) for k, v in r.items()} for r in kit.sql(f"SELECT {FINGER} FROM orders {FILTER}", conn=conn)][0]
+            finally:
+                conn.rollback()
+                conn.close()
+            column = ORDERING.replace("ORDER BY", "").strip()
+            spread = rows(f"""SELECT count(*) AS candidates, count(DISTINCT {column or "1"}) AS values
+                FROM orders WHERE quarter = 'Q2' AND channel = 'web' AND status = 'delivered'""")[0]
             show(first, "The sample on this run", money=("amount",))
             show([finger], "The delivered book's fingerprint", money=("rupees",))
             kit.bars([("this run", sum(r["amount"] for r in first)), ("the rerun after a reload", sum(r["amount"] for r in second))],
                      fmt=kit.rupees, title="The sample's total on two runs")
             '''),
         code(r'''
+            kit.check("the ordering column takes a different value on every candidate",
+                      bool(column) and spread["values"] == spread["candidates"],
+                      f"{spread['values'] if column else 'no'} values over {spread['candidates']} candidates")
             kit.check("the rerun after a reload draws the same five", [r["order_id"] for r in first] == [r["order_id"] for r in second])
             kit.check("the fingerprint's rows equal the delivered book's orders",
                       finger.get("rows") == book["Q1"]["orders"] + book["Q2"]["orders"])
-            kit.check("the fingerprint carries rupees and customers as well as rows", {"rupees", "customers"} <= set(finger))
+            kit.check("the fingerprint moves when one delivered amount is corrected by Rs 100", corrected != finger)
             '''),
         md("""
         **Post your answer.** Ten letters, in the order of the markers, as one line, and beside them the
@@ -2634,23 +2654,27 @@ def case():
         """),
         code("kit.check_summary()"),
     ]
-    answers = {1: '"d"', 2: '"a"', 3: '"c"', 4: '"b"', 5: '"d"', 6: '"a"', 7: '"c"', 8: '"b"', 9: '"d"', 10: '"a"'}
+    answers = {1: '"b"', 2: '"c"', 3: '"a"', 4: '"d"', 5: '"a"', 6: '"c"', 7: '"d"', 8: '"b"', 9: '"b"', 10: '"a"'}
     cells.insert(-2, md("""
         SOLUTION ONLY
-        **Why each key holds.** 1 d keeps only delivered orders; a keeps the returns, b keeps them on
-        purpose, and c tests a row inside `HAVING`, which Postgres refuses. 2 a counts each customer once;
-        b and d count rows and c counts rows with a customer id, which is every row. 3 c groups by both;
-        a stops with the GROUP BY error and b and d give the wrong grain. 4 b divides in `numeric`; a
-        rounds an integer division that already dropped the fraction, c is the integer division itself,
-        and d divides the wrong way round. 5 d tests each group's customers after grouping; a and c test
-        rows in `WHERE`, where a group's count does not exist yet, and b counts orders. 6 a says Rs 0 on
-        purpose; b and c skip the members with no Q2 delivery, and d reads one member. 7 c counts the
-        values inside each average; a and d add or average, and b counts distinct amounts. 8 b counts
-        each customer once over both quarters; a counts the 41 two-quarter members twice, c undercounts,
-        and d counts orders. 9 d orders on the table's key, a column no two rows share; a orders on a
-        column two orders from one customer share, b is the unordered sample, and c orders on a value
-        every row here shares. 10 a is the fingerprint; b cannot tell a change
-        in rupees, and c and d describe the run, not the book.
+        **Why each key holds.** 1 b keeps only delivered orders; a keeps the 184 returned orders, d keeps
+        the 163 cancelled ones, and c keeps all 1,000, since no amount is zero or below. 2 c counts each
+        customer once; a and d count rows, and b counts rows with a customer id, which is every row. 3 a:
+        grouping by segment and quarter makes one row for each of four segments in each of two quarters,
+        and every segment took delivery in both. 4 d divides in `numeric`; a rounds an integer division
+        that already dropped the fraction, b is the integer division itself, and c divides the wrong way
+        round. 5 a tests each group's customers after grouping; b and d count orders, which flags Student
+        alone and misses Business Q2's 26 customers, and c also flags Business Q1, which stands on exactly
+        30. 6 c writes Rs 0 on purpose, so both quarters average over every member in the step; a and b
+        skip the members with no delivery in the quarter, and d divides by the 120 members on the
+        customers table, 27 of whom took no delivery in either quarter. 7 d counts the values inside each
+        average; a and c add or average, and b counts distinct amounts, so two members who spent the same
+        count once. 8 b: 30 plus 26 less the 20 in both is 36; a counts the 20 twice, c leaves out the 6
+        who took delivery only in Q2, and d counts only the Q1 customers who did not come back. 9 b orders
+        on the table's key, which takes a different value on each of the 93 candidates; a orders on the
+        customer id, and the 93 candidates belong to only 76 customers, c is the unordered sample, and d
+        orders on a value every candidate shares. 10 a is the fingerprint; b, c and d stay put when an
+        amount is corrected, since none of them carries the rupees.
         """))
     twin(NB / "C2_W02_D01_ex1_escalated_case_STUDENT.ipynb",
          SOL / "C2_W02_D01_ex1_escalated_case_solution_STUDENT.ipynb", cells, answers)
@@ -2662,7 +2686,7 @@ def second():
     """The second case: the same tree by channel, and which channel is losing Kalpa's consumers."""
     cells = [
         md("""
-        # Which channel is losing Kalpa's consumers, once the Business orders are read apart?
+        # Is the store booming and the web collapsing, as Marketing says?
 
         **Week 2, Monday. The second case, in pairs or alone.** It runs in the take-home.
 
@@ -2672,10 +2696,10 @@ def second():
 
         **The situation.** Kalpa sells through three channels: its app, its website and its stores.
         Booked revenue, every order at its amount, was Rs 10,00,00,000 in Q1 (April to June 2026) and
-        Rs 9,84,00,000 in Q2 (July to September 2026). Business, the corporate segment, books about 99
-        percent of those rupees in orders worth lakhs each, while the other three segments, Retail-Core,
-        Retail-Plus and Student, are Kalpa's consumers, whose orders are worth hundreds or a few thousand.
-        Marketing read the channel totals and wants budget moved from the web to the stores.
+        Rs 9,84,00,000 in Q2 (July to September 2026). Business, the corporate segment, places orders
+        worth lakhs each, while the other three segments, Retail-Core, Retail-Plus and Student, are
+        Kalpa's consumers, whose orders are worth hundreds or a few thousand rupees. Marketing read the
+        channel totals and wants budget moved from the web to the stores.
 
         """),
         md("""
@@ -2694,7 +2718,7 @@ def second():
         code(CASE_SETUP),
         code(r'''
             kit.side_by_side(
-                kit.ladder(["The channel totals", "Business and consumers apart", "The consumers' tree per channel",
+                kit.ladder(["The channel totals", "What makes up each total", "The consumers' tree per channel",
                             "The tie-out", "The line for Anand"], lit=0, show=False),
                 kit.driver_tree({"label": "a channel's revenue", "kind": "lit", "children": [
                     {"label": "Business", "note": "a few large orders"},
@@ -2708,41 +2732,48 @@ def second():
         total is the first number anyone reads.
         """),
         code(r'''
-            # TODO 1. Which grouping gives Anand one line per channel and quarter?
-            #   a) GROUP BY channel, quarter
-            #   b) GROUP BY channel
-            #   c) GROUP BY quarter
-            #   d) GROUP BY customer_id, channel
-            GROUPING = {"a": "GROUP BY channel, quarter", "b": "GROUP BY channel", "c": "GROUP BY quarter",
-                        "d": "GROUP BY customer_id, channel"}[__TODO1__]
-            totals = rows(f"SELECT channel, quarter, count(*) AS orders, sum(amount) AS revenue FROM orders {GROUPING} ORDER BY 1, 2")
-            show(totals, "The channel totals", money=("revenue",))
+            # TODO 1. Which grouping, with the same columns in the SELECT, gives Anand one line per channel and quarter?
+            #   a) GROUP BY channel
+            #   b) GROUP BY quarter
+            #   c) GROUP BY channel, quarter, status
+            #   d) GROUP BY channel, quarter
+            GROUPING = {"a": "channel", "b": "quarter", "c": "channel, quarter, status", "d": "channel, quarter"}[__TODO1__]
+            lines = rows(f"SELECT {GROUPING}, count(*) AS orders, sum(amount) AS revenue FROM orders "
+                         f"GROUP BY {GROUPING} ORDER BY {GROUPING}")
+            show(lines, "The lines this grouping gives Anand", money=("revenue",))
+            pairs = rows("SELECT DISTINCT channel, quarter FROM orders")
+            kit.check("the lines cover each channel in each quarter, once each",
+                      all("channel" in r and "quarter" in r for r in lines) and len(lines) == len(pairs)
+                      and {(r["channel"], r["quarter"]) for r in lines} == {(p["channel"], p["quarter"]) for p in pairs},
+                      f"{len(lines)} lines against {len(pairs)} channel-quarters")
+
+            totals = rows("SELECT channel, quarter, count(*) AS orders, sum(amount) AS revenue FROM orders "
+                          "GROUP BY channel, quarter ORDER BY 1, 2")
             t = {(r["channel"], r["quarter"]): r for r in totals}
             channels = sorted({r["channel"] for r in totals})
             kit.columns(channels, [(q, [t[(c, q)]["revenue"] / 1e5 for c in channels]) for q in ("Q1", "Q2")],
                         title="Booked revenue per channel, Rs lakh", fmt=lambda v: f"{v:,.0f}")
             '''),
         code(r'''
-            kit.check("six rows, one per channel and quarter", len(totals) == 6)
             kit.check("the channels add back to the book in each quarter",
                       sum(t[(c, "Q1")]["revenue"] for c in channels) == 100000000
                       and sum(t[(c, "Q2")]["revenue"] for c in channels) == 98400000)
             '''),
         md("""
-        ## Step 2. How much of each channel is Business, and how much is consumers?
+        ## Step 2. Which orders make up each channel's total?
 
         Where this is used at work: a total made of a few very large orders and many small ones is two
         businesses, and each is read on its own before the total is.
         """),
         code(r'''
             # TODO 2. Which label splits each channel's orders into Business and consumer the way Anand's segments do?
-            #   a) The customer's own segment name, four labels in each channel
-            #   b) Business where the customer's segment is Business, consumer for the other three
+            #   a) Business where the customer's segment is Business, consumer for the other three
+            #   b) The customer's own segment name, four labels in each channel
             #   c) Business where the order is worth more than Rs 5,00,000, and consumer where it is not
-            #   d) A filter that drops the Business customers' orders before anything is grouped
-            KIND = {"a": "c.segment", "b": "CASE WHEN c.segment = 'Business' THEN 'Business' ELSE 'consumer' END",
+            #   d) Business where the customer is in Business or Retail-Plus, the segments with larger orders
+            KIND = {"a": "CASE WHEN c.segment = 'Business' THEN 'Business' ELSE 'consumer' END", "b": "c.segment",
                     "c": "CASE WHEN o.amount > 500000 THEN 'Business' ELSE 'consumer' END",
-                    "d": "WHERE c.segment <> 'Business'"}[__TODO2__]
+                    "d": "CASE WHEN c.segment IN ('Business', 'Retail-Plus') THEN 'Business' ELSE 'consumer' END"}[__TODO2__]
             split = rows(f"""SELECT o.channel, {KIND} AS kind, o.quarter, count(*) AS orders,
                                     count(DISTINCT o.customer_id) AS customers, sum(o.amount) AS revenue
                              FROM orders o JOIN customers c USING (customer_id)
@@ -2759,8 +2790,8 @@ def second():
             business_orders = rows("SELECT count(*) AS n FROM orders o JOIN customers c USING (customer_id) "
                                    "WHERE c.segment = 'Business'")[0]["n"]
             labelled = sum(r["orders"] for r in split if r["kind"] == "Business")
-            kit.check("the Business label holds exactly the Business segment's orders", labelled == business_orders,
-                      f"{labelled} labelled against {business_orders} in the segment")
+            kit.check(f"the Business-labelled orders number {business_orders}", labelled == business_orders,
+                      f"{labelled} labelled Business")
             kit.check("the two kinds add back to each channel's total",
                       all(sum(r["revenue"] for r in split if r["channel"] == c and r["quarter"] == q) == t[(c, q)]["revenue"]
                           for c in channels for q in ("Q1", "Q2")))
@@ -2782,11 +2813,11 @@ def second():
 
             # TODO 4. Which orders-per-consumer figure multiplies back to the orders?
             #   a) count(*) / count(DISTINCT o.customer_id)
-            #   b) round(count(*) / count(DISTINCT o.customer_id), 2)
-            #   c) round(count(DISTINCT o.customer_id)::numeric / count(*), 2)
-            #   d) round(count(*)::numeric / count(DISTINCT o.customer_id), 2)
-            FREQ = {"a": "count(*) / {cust}", "b": "round(count(*) / {cust}, 2)", "c": "round({cust}::numeric / count(*), 2)",
-                    "d": "round(count(*)::numeric / {cust}, 2)"}[__TODO4__].format(cust=CUST)
+            #   b) round(count(*)::numeric / count(DISTINCT o.customer_id), 2)
+            #   c) round(count(*) / count(DISTINCT o.customer_id), 2)
+            #   d) round(count(DISTINCT o.customer_id)::numeric / count(*), 2)
+            FREQ = {"a": "count(*) / {cust}", "b": "round(count(*)::numeric / {cust}, 2)", "c": "round(count(*) / {cust}, 2)",
+                    "d": "round({cust}::numeric / count(*), 2)"}[__TODO4__].format(cust=CUST)
             consumers = rows(f"""SELECT o.channel, o.quarter, count(*) AS orders, {CUST} AS customers,
                                         {FREQ} AS orders_per_customer, sum(o.amount) AS revenue
                                  FROM orders o JOIN customers c USING (customer_id)
@@ -2819,30 +2850,31 @@ def second():
 
             # TODO 5. Which channel lost the largest share of its consumer revenue?
             #   a) web
-            #   b) store
-            #   c) none, since every channel held its consumers
-            #   d) app
-            WORST = {"a": "web", "b": "store", "c": None, "d": "app"}[__TODO5__]
+            #   b) app
+            #   c) store
+            #   d) none, since every channel held its consumers
+            WORST = {"a": "web", "b": "app", "c": "store", "d": None}[__TODO5__]
 
             # TODO 6. Which line goes on Anand's sheet for the store?
-            #   a) Store revenue rose 61.1 percent from Q1 to Q2, so the budget should move to the stores.
-            #   b) Store consumer revenue fell 18.8 percent; the store total rose on Business orders.
-            #   c) The store is flat once the Business orders are removed.
-            #   d) Store revenue cannot be reported until Business is removed from the book.
-            LINE = {"a": 61.1, "b": -18.8, "c": 0.0, "d": None}[__TODO6__]
+            #   a) Store revenue rose 61.1 percent from Q1 to Q2, so the budget should move to the stores
+            #   b) The store is flat once the Business orders are removed
+            #   c) Store consumer revenue rose with its Business orders, so both parts of the store grew
+            #   d) Store consumer revenue fell; the store total rose on Business orders
+            LINE = {"a": ("total", 1), "b": ("consumers", 0), "c": ("consumers", 1), "d": ("consumers", -1)}[__TODO6__]
 
             # TODO 7. Which fact would move the budget question back to the channel totals?
             #   a) If the web's consumer orders fell further next quarter
             #   b) If Anand asked for the channels in rupees rather than orders
-            #   c) If Business placed its orders through whichever channel its buyer chose on the day
-            #   d) If Business chose a channel for that channel's own service
-            REASON = {"a": "consumers", "b": "rupees", "c": "chance", "d": "service"}[__TODO7__]
+            #   c) If Business chose a channel for that channel's own service
+            #   d) If Business placed its orders through whichever channel its buyer chose on the day
+            REASON = {"a": "consumers", "b": "rupees", "c": "service", "d": "chance"}[__TODO7__]
             '''),
         code(r'''
             kit.check("no channel lost a larger share of its consumer revenue than the one named",
                       WORST is not None and all(change[WORST] <= v for v in change.values()))
-            kit.check("the store line carries the store's consumer change", LINE is not None and abs(LINE - change["store"]) < 0.05)
-            kit.check("every channel's consumers fell", all(v < 0 for v in change.values()))
+            moved = 1 if change["store"] > 0.05 else -1 if change["store"] < -0.05 else 0
+            kit.check("the store line reads the store's consumers in the direction they moved",
+                      LINE == ("consumers", moved), f"the store's consumer revenue moved {change['store']:+.1f}%")
             '''),
         md("""
         **Post your answer.** Seven letters, in the order of the markers, and one line for Anand that
@@ -2850,20 +2882,22 @@ def second():
         """),
         code("kit.check_summary()"),
     ]
-    answers = {1: '"a"', 2: '"b"', 3: '"c"', 4: '"d"', 5: '"d"', 6: '"b"', 7: '"d"'}
+    answers = {1: '"d"', 2: '"a"', 3: '"c"', 4: '"b"', 5: '"b"', 6: '"d"', 7: '"c"'}
     cells.insert(-2, md("""
         SOLUTION ONLY
-        **Why each key holds.** 1 a gives the six rows; b and c lose a dimension and d gives one row per
-        customer and channel. 2 b labels by segment; a keeps four segments, c labels by size and would
-        call a large consumer order Business, and d is a filter, which removes Business instead of
-        labelling it. 3 c counts each consumer once; a, b and d count orders. 4 d divides in `numeric`;
-        a and b divide integers and c divides the wrong way round. 5 d: app consumer revenue fell 24.1
-        percent, against 18.8 for the store and 7.4 for the web; c is what the store and web totals
-        suggest if Business is left in. 6 b reads the store's consumers and names why the total rose; a
-        is Marketing's reading of the total, c is wrong on the numbers, and d refuses a report the book
-        can give. 7 d: only if Business chose a channel for that channel's own service would the
-        channel's total say something about the channel; a is about consumers and would not move the
-        question, b changes the unit, and c is the reason the totals mislead.
+        **Why each key holds.** 1 d gives one line per channel and quarter; a and b lose a dimension, so
+        each line merges two quarters or three channels, and c splits every line three ways by status,
+        18 lines. 2 a labels by segment; b keeps four segments, c labels by size and calls the 50
+        Business orders worth Rs 2,09,000 to Rs 4,94,000 consumer orders, so 138 orders carry the
+        Business label instead of 188, and d labels Retail-Plus's 355 orders Business as well. 3 c counts
+        each consumer once; a, b and d count orders. 4 b divides in `numeric`; a and c divide integers
+        and d divides the wrong way round. 5 b: app consumer revenue fell 24.1 percent, against 18.8 for
+        the store and 7.4 for the web; d is what the store total suggests if Business is left in. 6 d
+        reads the store's consumers in the direction they moved and names why the total rose; a is
+        Marketing's reading of the total, b and c are wrong on the direction. 7 c: only if Business chose
+        a channel for that channel's own service would the channel's total say something about the
+        channel; a is about consumers and would not move the question, b changes the unit, and d is the
+        reason the totals mislead.
         """))
     twin(NB / "C2_W02_D01_ex2_second_case_STUDENT.ipynb",
          SOL / "C2_W02_D01_ex2_second_case_solution_STUDENT.ipynb", cells, answers)
