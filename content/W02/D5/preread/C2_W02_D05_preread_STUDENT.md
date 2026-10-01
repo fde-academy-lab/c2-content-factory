@@ -31,17 +31,17 @@ Monday's work.
 
 | Kalpa Retail's word | What it meant this fortnight | The question to ask of Kalpa Health's files |
 |---|---|---|
-| Customer | It was one buyer with an id who ordered between April and September, one row each in the customer table. | Who is a lab's customer: the patient tested, the doctor who orders the test, or the payer who settles the bill? |
-| Order | It was one basket under one order id, booked at the price charged and held once in the warehouse. | When Dr Menon says test volumes, what is being counted, and which file holds one row of it? |
-| Revenue | It meant booked order value in rupees, every order at the price charged, whatever became of it. | Which dollars does Kalpa Health call revenue: the price list's charge, what a payer allows, or the cash that arrives? |
-| Segment | It meant Business, Retail-Core, Retail-Plus and Student, Kalpa Retail's four kinds of buyer. | What splits a lab's business: the metro, the site, the way a patient booked, or who pays? |
-| Quarter | Q1 was April to June 2026 and Q2 was July to September 2026, Kalpa Retail's own quarters. | Kalpa Health reports calendar quarters, so July to September 2026 is its Q3: which months does each number you quote cover? |
-| Grain | It was what one row stood for, a customer, an order or a payment, and it decided what every Sum added. | What does one row of each of the ten files stand for? |
-| Control total | It was the warehouse's Rs 10,00,00,000 for Q1 and Rs 9,84,00,000 for Q2, which every sheet tied to. | Which figure does Kalpa Health's finance head already report for each quarter? |
+| Customer | One buyer with an id who ordered between April and September, one row each in the customer table | Who is a lab's customer: the patient tested, the doctor who orders the test, or the payer who settles the bill? |
+| Order | One basket under one order id, booked at the price charged and held once in the warehouse | When Dr Menon says test volumes, what is being counted, and which file holds one row of it? |
+| Revenue | Booked order value in rupees, every order at the price charged, whatever became of it | Which dollars does Kalpa Health call revenue: the price list's charge, what a payer allows, or the cash that arrives? |
+| Segment | Business, Retail-Core, Retail-Plus and Student, Kalpa Retail's four kinds of buyer | What splits a lab's business: the metro, the site, the way a patient booked, or who pays? |
+| Quarter | Kalpa Retail's own quarters: Q1, April to June 2026, and Q2, July to September 2026 | Kalpa Health reports calendar quarters, so July to September 2026 is its Q3: which months does each number you quote cover? |
+| Grain | What one row stood for, a customer, an order or a payment, which decided what every Sum added | What does one row of each of the ten files stand for? |
+| Control total | The warehouse's Rs 10,00,00,000 for Q1 and Rs 9,84,00,000 for Q2, which every sheet tied to | Which figure does Kalpa Health's finance head already report for each quarter? |
 
 ---
 
-## What should you think about before Monday?
+## How would Dr Menon's 5 percent against 18 read as a card?
 
 Dr Menon's opening line is a front-page number, and today's chapter 4 taught what must sit beside
 one. Test volumes rose 5 percent from Q2 to Q3 against a plan of 18, so the 13 points in the note
@@ -59,7 +59,7 @@ before Saturday: chapter 2 for the tree, chapter 3 for the list and chapter 4 fo
 
 ---
 
-## Which line do you carry into Monday?
+## What do you say before counting anything in Kalpa Health?
 
 Say what one row stands for, and which number it must tie to, before you count anything in a
 business you have not seen.

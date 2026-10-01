@@ -81,26 +81,26 @@ Business the card reads down 17.3 percent, so each card prints its scope.
 
 | Tool | What it owns |
 |---|---|
-| The warehouse | It owns the number and every join, dedupe and rank. |
-| pandas | It owns the analyst's iteration until Finance relies on it. |
-| The workbook | It presents, slices, looks up and takes labelled what-ifs. |
+| The warehouse | The number, and every join, dedupe and rank Finance relies on |
+| pandas | The analyst's iteration, until Finance relies on it |
+| The workbook | Presenting, slicing, looking up and labelled what-ifs |
 
-A lookup doing Tuesday's join read Rs 11,83,81,974 collected, Rs 8.00 crore "outstanding"; every
-payment added gives Rs 19,66,82,820, Rs 17,17,180 short. A drift check ties the workbook's totals to
-the warehouse on every refresh.
+A lookup doing Tuesday's join read Rs 11,83,81,974 collected; every payment added once gives
+Rs 19,66,45,070, Rs 17,54,930 short, exactly the unpaid orders. The Checks tab compares totals,
+live, with the control totals sent on a tab beside each export.
 
-**Crux:** The warehouse owns the number and every join, dedupe and rank; pandas owns the iteration; the workbook owns the last mile, and nobody types over the source.
+**Crux:** The warehouse owns the number and every join, dedupe and rank Finance relies on; pandas owns the iteration; the workbook owns the last mile, and nobody types over the source.
 
 ## Panel 7: What can a director change without breaking the sheet?
 
 | The foot | Rows a filter hides | Rows hidden by hand |
 |---|---|---|
-| `SUM` | It adds them. | It adds them. |
-| `SUBTOTAL(9, r)` | It leaves them out. | It adds them. |
-| `SUBTOTAL(109, r)` | It leaves them out. | It leaves them out. |
+| `SUM` | Added | Added |
+| `SUBTOTAL(9, r)` | Left out | Added |
+| `SUBTOTAL(109, r)` | Left out | Left out |
 
 Filtered to Mumbai, SUM read Rs 7,14,890 while the eleven on screen spent Rs 1,56,790. A what-if
 goes in a yellow cell, and `=B1*SUBTOTAL(103, A2:A51)` prices a Rs 500 voucher at Rs 5,500 for
-Mumbai. Five checks feed one release that holds what fails.
+Mumbai.
 
 **Crux:** A director gets yellow inputs, formulas everywhere else, SUBTOTAL at every foot, and a Checks tab whose release holds whatever does not tie.

@@ -679,7 +679,7 @@ Transition: which six lines do the cheat sheet and the notes repeat word for wor
 2. Say the grain before you pivot: count rows against keys, count each order once, and tie the total to the warehouse.
 3. A lookup that cannot find an id says so: an exact match with a not-found path, tested with an id you know is missing.
 4. One number reaches the front page with its period, its comparison and its base, and every percentage carries its rupees.
-5. The warehouse owns the number and every join, dedupe and rank; pandas owns the iteration; the workbook owns the last mile, and nobody types over the source.
+5. The warehouse owns the number and every join, dedupe and rank Finance relies on; pandas owns the iteration; the workbook owns the last mile, and nobody types over the source.
 6. A director gets yellow inputs, formulas everywhere else, SUBTOTAL at every foot, and a Checks tab whose release holds whatever does not tie.
 
 ```notes

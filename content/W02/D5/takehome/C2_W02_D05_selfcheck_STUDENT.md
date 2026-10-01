@@ -1,30 +1,31 @@
-# Does your rebuilt workbook reach the numbers a careful pass on the fresh export reaches?
+# Does your rebuilt workbook reach the numbers a careful pass on the rehearsal copy reaches?
 
 Check each line against your workbook before Monday. If a number differs, the difference is the
 lesson: find which step produced it before you look anything else up.
 
-The fresh exports are `data/C2_W02_D05_takehome_customer_table_STUDENT.csv`, one row per customer who
+The rehearsal copy is `data/C2_W02_D05_takehome_customer_table_STUDENT.csv`, one row per customer who
 ordered between April and September 2026, and `data/C2_W02_D05_takehome_raw_export_STUDENT.csv`, one
 row per payment with the order's amount on every row of that order. The warehouse books
-Rs 10,00,00,000 in Q1 (April to June 2026) and Rs 9,84,00,000 in Q2 (July to September 2026).
-Retail-Plus is Kalpa Retail's paid membership tier.
+Rs 10,00,00,000 in Q1 (April to June 2026) and Rs 9,84,00,000 in Q2 (July to September 2026), and the
+rehearsal copy's quarter totals were made to match; its customers, and so its segments and its list,
+are its own. Retail-Plus is Kalpa Retail's paid membership tier.
 
 **Who needs the answer.** You, before you post. Each table below is one deliverable, and a line that
 does not match is a number the chief of staff would have carried into Monday's growth review.
 
 **The questions on the way.**
 
-- What grain does the fresh raw export carry, and does your tree tie?
+- What grain does the rehearsal raw export carry, and does your tree tie?
 - What does your tree say for Retail-Plus and Retail-Core?
-- What does the fresh customer table hold, and what does your protect list say?
+- What does your Checks tab say about the customer table, and what does your protect list say?
 - What do your lookup and your card show?
 - Which behaviours should your workbook show when an input changes?
 
-## What grain does the fresh raw export carry, and does your tree tie?
+## What grain does the rehearsal raw export carry, and does your tree tie?
 
 | Check | You should reach |
 |---|---|
-| Rows in the fresh raw export, and distinct order ids | 1,450 rows and 1,000 orders |
+| Rows in the rehearsal raw export, and distinct order ids | 1,450 rows and 1,000 orders |
 | A Sum of order_amount over every row | Rs 39,40,62,440, which is the number your tree must not show |
 | Rows after Remove Duplicates on every column | 1,400, with the total still about Rs 39.40 crore |
 | Your tree's totals, each order counted once | Q1 Rs 10,00,00,000 and Q2 Rs 9,84,00,000, tied to the warehouse to the rupee |
@@ -37,11 +38,12 @@ does not match is a number the chief of staff would have carried into Monday's g
 | Retail-Plus, Q2 | 85 customers, 1.65 orders per customer, Rs 4,29,740, down 30.0 percent |
 | Retail-Core, Q1 to Q2 | Rs 3,69,630 to Rs 3,75,750, up 1.7 percent, where Friday's files had it falling |
 
-## What does the fresh customer table hold, and what does your protect list say?
+## What does your Checks tab say about the customer table, and what does your protect list say?
 
 | Check | You should reach |
 |---|---|
-| The fresh customer table's totals | 311 customers, 994 orders, Rs 19,83,85,260; compare them with the warehouse yourself, and let your Checks tab say what that means |
+| Rows in the rehearsal customer table | 311 customers |
+| Your Checks tab on the customer table | A verdict, ship or hold, with its evidence: the table's orders and revenue set against the warehouse's 1,000 orders and Rs 19,84,00,000, and, if they differ, the ids that explain it and how you found them |
 | Retail-Plus members in the table | 109 |
 | The protect list | Rank 1 is C-0189 at Rs 32,090; the cut-off at rank 50 is Rs 8,350; the fifty together spent Rs 7,44,920 |
 | The fifty-first member | Rs 8,180, so no tie sits across the boundary |
