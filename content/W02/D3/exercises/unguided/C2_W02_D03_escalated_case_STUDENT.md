@@ -1,8 +1,8 @@
 # What does Marketing get on Monday: each segment's list with its count, the members to ring first, the share of revenue the lists carry, and Q2 against plan?
 
-The escalated case, alone, in five parts. Parts 1 and 2 run in the afternoon, 20 minutes; parts 3 to
-5 run in the practice lab. You work in `notebooks/C2_W02_D03_ex1_escalated_case_STUDENT.ipynb`, and
-this brief carries everything the case needs, so it can be read with nothing else open. Items 1 to 10
+Work the escalated case alone, in five parts. Parts 1 and 2 run in the afternoon for 20 minutes, and
+parts 3 to 5 run in the practice lab. You work in `notebooks/C2_W02_D03_ex1_escalated_case_STUDENT.ipynb`,
+and this brief carries everything the case needs. Items 1 to 10
 are the notebook's ten lettered markers, with the same numbers and the same letters. Items 11 to 15
 are this brief's own design items, one at the end of each part, answered here.
 
@@ -18,11 +18,11 @@ Retail-Plus has asked that members who spent the same be ranked the same and tha
 many made it: "If two members spent the same, I want them ranked the same, and I want to know how many
 made the top fifty, not forty-nine because of a tie." Marketing wants to ring the listed members whose
 monthly spend fell two months running, in calendar months, and one member, C-0216, has already said
-that his "fall" was a holiday in August. Meera Raghavan, Kalpa Retail's CEO, wants to know whether Q2
+that their "fall" was a holiday in August. Meera Raghavan, Kalpa Retail's CEO, wants to know whether Q2
 is on track against the plan line, by the total and week by week.
 
 Q2 is July to September 2026. A member's Q2 revenue is booked revenue, every Q2 order at its amount
-whatever its status, Rs 9,84,00,000 for the quarter, and a member's monthly spend is his booked revenue
+whatever its status, Rs 9,84,00,000 for the quarter, and a member's monthly spend is their booked revenue
 in one calendar month. The plan line holds 13 plan weeks, each starting on a Monday from 6 July to 28
 September, Rs 75,69,230 a week and Rs 9,83,99,990 in all; Q2's orders run from Wednesday 1 July to 28
 September. To date means every week up to and including the one on the row, and mid-quarter is the
@@ -44,9 +44,9 @@ number before it leaves the team.
 | Student | 20 | Rs 35,770 |
 | The book | 227 | Rs 9,84,00,000 |
 
-**Who needs the answer.** The marketing lead, whose team starts calling on Monday; the head of
-Retail-Plus, who answers to his members for every call and every count; and Meera, who carries one
-line into the leadership meeting. A list with the wrong count, a call to a member who was travelling,
+**Who needs the answer.** The marketing lead needs it because the team starts calling on Monday, the
+head of Retail-Plus needs it to answer the tier's members for every call and every count, and Meera
+needs one line to carry into the leadership meeting. A list with the wrong count, a call to a member who was travelling,
 or a quarter reported short of plan when it landed on it each costs a decision.
 
 **The questions on the way.**
@@ -71,11 +71,11 @@ Q2's lead over plan to date at mid-quarter.
 
 ## Part 1. Which members make each segment's list under the head of Retail-Plus's rule, and how many in each?
 
-Used at work whenever a ranked list that a business acts on states its rule and its count, since the
+This comes up at work whenever a ranked list that a business acts on states its rule and its count, since the
 count is the first line a manager checks.
 
 In the afternoon, about 10 minutes: markers 1 and 2 in the notebook, then item 11 here. The notebook
-builds each member's Q2 revenue, places every member inside his segment with
+builds each member's Q2 revenue, places every member inside their segment with
 `FUNCTION OVER (PARTITION BY segment ORDER ...)`, keeps places 1 to 50, and prints each list's count
 beside the segment's buyers.
 
@@ -120,7 +120,7 @@ d) Keep the lists, ring each in place order up to 150, and name the rest: your R
 
 ## Part 2. Which listed members does Marketing ring first?
 
-Used at work whenever a retention call goes to a customer whose own history shows the drift, so the
+This comes up at work whenever a retention call goes to a customer whose own history shows the drift, so the
 definition of the drift is written down before the first call.
 
 In the afternoon, about 10 minutes: markers 3 and 4 in the notebook, then item 12 here. The notebook
@@ -167,7 +167,7 @@ d) The falling-spend flag with its calendar condition removed, 752 rows, since m
 
 ## Part 3. How much of each segment's Q2 revenue does its list carry?
 
-Used at work whenever a protect budget is judged by the revenue it covers, so every list carries its
+This comes up at work whenever a protect budget is judged by the revenue it covers, so every list carries its
 share of the whole it was cut from.
 
 In the practice lab: markers 5 and 6 in the notebook, then item 13 here.
@@ -212,7 +212,7 @@ d) Rs 60,300 more for 25 more calls, about Rs 2,412 a call against about Rs 5,57
 
 ## Part 4. Is Q2 on track by the total and by the run rate?
 
-Used at work whenever a quarter is read twice, by the total so far and by how each week is running,
+This comes up at work whenever a quarter is read twice, by the total so far and by how each week is running,
 since the two can disagree.
 
 In the practice lab: markers 7 and 8 in the notebook, then item 14 here. The notebook adds up Q2's
@@ -257,7 +257,7 @@ d) Thirteen plain sums, one per plan week, 6,006 order reads, then the week that
 
 ## Part 5. What goes to Marketing and Meera?
 
-Used at work whenever the line a stakeholder carries into a meeting is the only part of the analysis
+This comes up at work whenever the line a stakeholder carries into a meeting is the only part of the analysis
 most people read, so every number in it has to hold on its own.
 
 In the practice lab: markers 9 and 10 in the notebook, then item 15 here.

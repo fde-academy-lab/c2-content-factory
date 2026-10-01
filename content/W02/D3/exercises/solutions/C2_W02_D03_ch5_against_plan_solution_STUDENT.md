@@ -11,7 +11,7 @@ Rs 9,83,99,990, Rs 10 ahead. At mid-quarter it stood Rs 1,57,51,980 ahead, a lea
 Thirteen plain sums to each week's last day matched the running total in every week. Two of the five
 items are design items: 1 and 5.
 
-**Who needs the answer.** You, checking your five letters after the lab or tonight. Meera reads one
+**Who needs the answer.** You need it to check your five letters after the lab or tonight. Meera reads one
 line at mid-quarter and acts on it, so a to-date figure set beside the wrong plan figure, or a running
 total that dropped a week, decides a campaign on a gap that is not there.
 
@@ -131,5 +131,5 @@ Target's second quarter of 2022 began on 1 May 2022. On 7 June 2022, about five 
 it "now expects its second-quarter operating margin rate will be in a range around 2%", down from a
 range centred on the first quarter's 5.3 percent, after markdowns to clear excess inventory (Target's
 releases of 7 June and 18 May 2022, checked 1 October 2026). The quarter closed at 1.2 percent
-(Target's release of 17 August 2022, checked 1 October 2026). Reading the quarter while it ran is what
+(Target's release of 17 August 2022, checked 1 October 2026). Reading the quarter while it ran
 let Target act before it ended.

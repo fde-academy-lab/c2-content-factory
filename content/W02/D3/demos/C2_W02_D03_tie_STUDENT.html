@@ -203,7 +203,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         same, I want them ranked the same, and I want to know how many made the top fifty, not forty-nine because of a
         tie.&rdquo;</div>
       <div class="strip"><b class="tag">Your role</b>Marketing will act on your list, so you must state the tie rule you
-        chose and why, and defend the falling-spend flag against a member who says he was on holiday.</div>
+        chose and why, and defend the falling-spend flag against a member who says they were on holiday.</div>
       <div class="card"><div class="holder" id="picture"></div>
         <p class="note">The day's picture. GROUP BY answers how much per segment in four rows; a window keeps all 227
           members and says where each one stands, and the position is filtered in a CTE.</p></div>
@@ -262,8 +262,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
           </div>
         </div>
       </div>
-      <div class="strip" id="r1Kavya"><b class="tag">Kavya's review</b>Kavya reads the count by segment before she
-        reads a single name. Pick a ranking first.</div>
+      <div class="strip" id="r1Kavya"><b class="tag">Kavya's review</b>Kavya reads the count by segment before
+        reading a single name. Pick a ranking first.</div>
     </section>
 
     <!-- ============================================================ 04 round 2 -->
@@ -308,12 +308,12 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
             <tr data-rule="WT"><td>Whole ties only</td><td class="num">50</td></tr>
           </table>
           <p id="coreNote">In Retail-Core no tie straddles fiftieth, so three rules agree, and DENSE_RANK still ships 52
-            because ties higher up compress its numbering. Run the Retail-Plus variant in notebook 02 and count what each
+            because ties higher up compress its numbering. Run the Retail-Plus variant in notebook 03 and count what each
             rule ships there yourself.</p>
         </div>
       </div>
       <div class="strip" id="r2Kavya"><b class="tag">Kavya's review</b>Kavya asks one question of every top-N list:
-        how many rows did it ship, and why that many? Pick a rule to answer her.</div>
+        how many rows did it ship, and why that many? Pick a rule to answer it.</div>
     </section>
 
     <!-- ============================================================ 05 round 3 -->
@@ -344,7 +344,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
               member's month.</p>
           </div>
           <div class="card">
-            <p class="cap">Member Q says he was on holiday in August</p>
+            <p class="cap">Member Q says they were on holiday in August</p>
             <p id="r3Holiday">&ldquo;I was away all of August, so how can my spend have fallen two months running?&rdquo;</p>
           </div>
         </div>
@@ -353,7 +353,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         <p class="note">Each member's months, April to September; a gap in the dots is a month with no order, and a
           rose line is a member the current flag accuses.</p></div>
       <div class="strip" id="r3Kavya"><b class="tag">Kavya's review</b>Kavya reads the row two back for every flagged
-        member before she believes the count.</div>
+        member before believing the count.</div>
     </section>
 
     <!-- ============================================================ 06 against the plan -->
@@ -446,7 +446,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
           <p><b>Situation.</b> To stop LAG skipping the gap, someone fills Member Q's missing August with a zero before the
             window runs.</p>
           <p><b>Hypothesis.</b> September no longer reads as a fall, and August now reads as a fall to zero, so the flag
-            that ends in August accuses him instead.</p>
+            that ends in August accuses them instead.</p>
           <p><b>Watch for.</b> The August dot and the month the flag lands on.</p>
           <div class="holder" id="expCChart"></div>
           <div class="row">
@@ -512,7 +512,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
       <p class="eyebrow">08 &middot; The decision card</p>
       <h2>What goes to Marketing and Meera, and what does Kavya check first?</h2>
       <p class="lede">The card reads the choices you made in the chapters above, the ranking, the tie rule, the flag and
-        the running total, and Kavya reviews each one as she would before anything leaves the team.</p>
+        the running total, and Kavya reviews each one as if it were about to leave the team.</p>
       <div class="card">
         <div class="row" style="margin-top:0"><button class="btn primary" id="reviewRun" type="button">Ask Kavya to review my choices</button></div>
         <div id="reviewOut"><p class="note">Kavya's review of your four choices appears here.</p></div>
@@ -546,7 +546,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         </dl>
       </div>
       <p class="foot">Week 2, Wednesday. Kalpa Retail and everyone in it are fictional. Figures marked real come from the
-        Q2 warehouse and were checked on 29 September 2026; figures marked invented isolate one mechanism and describe no
+        Q2 warehouse and were checked on 1 October 2026; figures marked invented isolate one mechanism and describe no
         Kalpa member. The page stores nothing and calls no network.</p>
     </section>
   </main>
@@ -1195,7 +1195,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     if (rule === "RK") return ["ok", "Meets the head of Retail-Plus's rule: tied members rank the same, nobody at the line is dropped, and the report states " + count + "."];
     if (rule === "RN") return ["warn", "Fails the head of Retail-Plus's rule: tied members get different positions, and one can be dropped by a coin toss."];
     if (rule === "DR") return [count > n ? "warn" : "ok", count > n
-      ? "Sounds like ties rank the same and quietly ships " + count + " for a top " + n + ", which nobody asked for."
+      ? "Sounds like ties rank the same, and ships " + count + " for a top " + n + ", which nobody asked for."
       : "Ranks ties the same, and at this N ships exactly " + n + "; widen or narrow N and it drifts."];
     return [count < n ? "warn" : "ok", count < n
       ? "Fails the head of Retail-Plus's rule: " + count + " rows for a top " + n + " drops members who spent exactly what the last place did."
@@ -1233,7 +1233,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     $("r2Verdict").innerHTML = "<span class='" + v[0] + "'>" + esc(v[1]) + "</span>";
     $("r2Code").textContent = "-- " + RULES[rule].name + ", list size " + n + "\n" + RULES[rule].code.replace("N", String(n));
     $("coreNote").textContent = "At N = 50 in Retail-Core, " + RULES[rule].name + " ships " +
-      { RN: 50, RK: 50, DR: 52, WT: 50 }[rule] + ". No tie straddles fiftieth there, so three rules agree, and DENSE_RANK ships 52 because ties higher up compress its numbering. Run the Retail-Plus variant in notebook 02 and count what each rule ships there yourself.";
+      { RN: 50, RK: 50, DR: 52, WT: 50 }[rule] + ". No tie straddles fiftieth there, so three rules agree, and DENSE_RANK ships 52 because ties higher up compress its numbering. Run the Retail-Plus variant in notebook 03 and count what each rule ships there yourself.";
     kavya("r2Kavya", rule === "RK"
       ? "RANK keeps everyone at the line, and the report says how many and why. That is the rule the head of Retail-Plus described, and it is a business decision you can defend."
       : rule === "RN"
@@ -1314,18 +1314,18 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     var q = res.Q;
     $("r3Holiday").innerHTML = "&ldquo;I was away all of August, so how can my spend have fallen two months running?&rdquo; " +
       (q.flagged
-        ? "<span class='warn'>He is right. The flag compared his September with July and called July last month, so a gap became a fall.</span>"
-        : "<span class='ok'>He is not flagged. His August is no reading, so the run is broken and there is nothing to defend.</span>");
+        ? "<span class='warn'>Member Q is right. The flag compared their September with July and called July last month, so a gap became a fall.</span>"
+        : "<span class='ok'>Member Q is not flagged. Their August is no reading, so the run is broken and there is nothing to defend.</span>");
     var lines = Object.keys(SPEND).map(function (m) {
       return K.line(MONTHS, [["Member " + m + " (invented)", SPEND[m], res[m] && res[m].flagged ? "bad" : null]],
         { width: 430, lo: 0, title: "Member " + m + ": " + WHO[m] });
     });
     K.draw("r3Lines", K.sideBySide.apply(null, lines));
     kavya("r3Kavya", gap
-      ? "Every flagged member now fell against their own July and August. Member Q is off the list, and if he calls, the answer is that a month with no order breaks the run."
+      ? "Every flagged member now fell against their own July and August. Member Q is off the list, and if they call, the answer is that a month with no order breaks the run."
       : part
-        ? "Every comparison now stays inside one member, and Member Q is still accused of a fall across a month he was away. Check that the row before is last month."
-        : "Member R's September is read against Member Q's months, so the flag accuses him of a fall in someone else's account. Partition by the member first.");
+        ? "Every comparison now stays inside one member, and Member Q is still accused of a fall across a month they were away. Check that the row before is last month."
+        : "Member R's September is read against Member Q's months, so the flag accuses Member R of a fall in someone else's account. Partition by the member first.");
   }
   $("r3Part").addEventListener("click", function () { state.part = !state.part; this.setAttribute("aria-pressed", String(state.part)); drawRound3(); });
   $("r3Gap").addEventListener("click", function () { state.gap = !state.gap; this.setAttribute("aria-pressed", String(state.gap)); drawRound3(); });
@@ -1356,7 +1356,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         K.rupees(PLAN[6]) + ", so Q2 was ahead by " + K.rupees(BOOKED[6] - PLAN[6]) + ", a lead worth reporting and nowhere near nine times.";
     } else if (m === "end") {
       $("planVerdict").innerHTML = "<span class='ok'>Q2 closed on plan: " + K.rupees(last) + " against " + K.rupees(PLAN[12]) + ", Rs 10 ahead.</span>";
-      $("planDetail").textContent = "At mid-quarter, the end of the seventh plan week, Q2 was ahead by Rs 1,57,51,980, and almost all of the lead came from the week of 13 July, which booked Rs 2.66 crore. From the week of 10 August, six of the seven full weeks booked below the weekly plan of Rs 75,69,230, and the lead shrank from its peak of Rs 2,16,69,660 to Rs 10. On track by the total, off track by the run rate.";
+      $("planDetail").textContent = "At mid-quarter, the end of the seventh plan week, Q2 was ahead by Rs 1,57,51,980, and almost all of the lead came from the week of 13 July, which booked Rs 2.66 crore. From the week of 10 August, six of the seven full weeks booked below the weekly plan of Rs 75,69,230, and the lead shrank from its peak of Rs 2,16,69,660 to Rs 10. Q2 is on track by its total and off track by its run rate.";
     } else {
       $("planVerdict").innerHTML = "<span class='warn'>The report says Q2 closed " + K.rupees(-gapClose) + " short of plan, at " + K.rupees(last) + ".</span>";
       $("planDetail").textContent = "The plan line starts with the week of 6 July, so a join from the plan to weekly revenue drops the week of 29 June, which holds the 25 orders of 1 to 5 July, Rs 15,39,820. The last booked-to-date should equal Monday's Rs 9,84,00,000, and it is Rs 15,39,820 short.";
@@ -1405,7 +1405,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     openSeq("Experiment A, as a sequence", ["the list size", "the tie", "the count"], [
       ["the list size", "the tie", "N = 8 cuts between H and I"], ["the tie", "the count", "RANK 9, whole ties 7"],
       ["the list size", "the tie", "N = 10 takes both"], ["the tie", "the count", "ROW_NUMBER and RANK agree on 10"]],
-      "The tie never moved; the line did, and the counts followed it.");
+      "H and I stayed tied, and the counts changed only because the line moved.");
   });
   drawA();
 

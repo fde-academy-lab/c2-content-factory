@@ -1,6 +1,6 @@
 # How do ROW_NUMBER, RANK and DENSE_RANK treat a tie, and what does the head of Retail-Plus's rule ship for Retail-Core, built together on one screen?
 
-Guided, with the trainer, in chapter 3, about fifteen minutes. The trainer types each step on the
+You build this one with the trainer in chapter 3, in about fifteen minutes. The trainer types each step on the
 projector and says aloud what each function does to the tie; you type the same step in your own
 query tab on the warehouse, or run the same block from `sql/C2_W02_D03_03_tie_rule_STUDENT.sql`, and
 compare. Steps 1 and 2 run on invented members, labelled invented, so the mechanism fits on one
@@ -22,8 +22,9 @@ line, using `tied_with = count(*) OVER (PARTITION BY q2_revenue)`, the number of
 figure: a member ships when `rank + tied_with - 1` is at or inside the line. Retail-Core, Kalpa's
 everyday shoppers, has 96 Q2 buyers.
 
-**Who needs the answer.** The head of Retail-Plus, who will defend every count to his members. You need
-to say, for any list, which rule made its count and which members stand at its line.
+**Who needs the answer.** The head of Retail-Plus needs it to defend every count to the tier's members,
+and a count you cannot explain in one sentence is one the head cannot defend. You need to say, for any
+list, which rule made its count and which members stand at its line.
 
 **The questions on the way.**
 
@@ -43,10 +44,10 @@ Post exactly this shape: xxxxx
 
 ## How do three functions number one tie?
 
-Used at work whenever a ranked report meets two equal values and its reader asks why two rows share a
+This comes up at work whenever a ranked report meets two equal values and its reader asks why two rows share a
 number.
 
-**Step 1, three functions on six invented members.** Six members, every one of them invented: A and B
+**Step 1, three functions on six invented members.** All six members are invented: A and B
 spent Rs 7,500 each, C Rs 6,000, D and E Rs 5,200 each and F Rs 4,100. Said aloud: the same ORDER BY
 feeds three functions, and only what they do at a tie differs.
 
@@ -81,7 +82,7 @@ members.
 
 ## How many members does each rule ship at a line?
 
-Used at work whenever a top-N list arrives longer or shorter than N and somebody has to say why.
+This comes up at work whenever a top-N list arrives longer or shorter than N and somebody has to say why.
 
 **Step 2, a top four with a tie at the line, invented.** The invented members now spent Rs 9,100,
 Rs 8,800, Rs 8,200, Rs 7,400, Rs 7,400 and Rs 6,900, so the fourth and fifth tie. Said aloud: each rule
@@ -125,7 +126,7 @@ about, at a line of four.
 
 ## How long is Retail-Core's list under each rule?
 
-Used at work whenever a rule tried on a few invented rows has to hold on the real list.
+This comes up at work whenever a rule tried on a few invented rows has to hold on the real list.
 
 **Step 3, the same four counts on Retail-Core.** Said aloud: the window now restarts in every segment,
 and `tied_with` counts members who share a figure inside their own segment.
@@ -183,7 +184,7 @@ places 46 to 54 with all three functions side by side, then the ties inside the 
 | 53 | 53 | 51 | C-0048 | Rs 2,870 |
 | 54 | 54 | 52 | C-0074 | Rs 2,810 |
 
-The ties inside the first fifty: C-0044 and C-0132 on Rs 4,540 at places 31 and 32, and C-0060 and
+Two ties sit inside the first fifty: C-0044 and C-0132 on Rs 4,540 at places 31 and 32, and C-0060 and
 C-0121 on Rs 4,120 at places 37 and 38.
 
 ### Q4. Which statement about Retail-Core's line holds?
@@ -201,7 +202,7 @@ d) Nobody ties at fiftieth, so all four rules ship the same fifty members
 
 ## What does the head of Retail-Plus's rule ship, and what goes in the sentence?
 
-Used at work whenever a count leaves the team, since the sentence beside it is what its reader
+This comes up at work whenever a count leaves the team, since the sentence beside it is what its reader
 repeats.
 
 **Step 4, the head's rule applied.** The head asked for two things: members who spent the same ranked
@@ -223,5 +224,5 @@ d) "Retail-Core's list holds 50 under whole ties only, so no tie anywhere on the
 
 **Your turn, after the build.** Section 3 of `notebooks/C2_W02_D03_03_tie_rule_STUDENT.ipynb` ends on an
 empty cell for the head's own segment, Retail-Plus. Run block `c3_your_segment` there, read the
-members around fiftieth place if your four counts differ, and write the same kind of sentence for his
-list. The TA reads the sentences in the practice lab.
+members around fiftieth place if your four counts differ, and write the same kind of sentence for the
+head's list. The TA reads the sentences in the practice lab.

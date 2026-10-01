@@ -1,7 +1,7 @@
 # Can you rank a tie, choose GROUP BY or a window, and run the whole day on Kavya's drill, in an hour?
 
-The TA-led practice lab set, three problems climbing in difficulty, about an hour: problem 1 ten
-minutes, problem 2 ten, problem 3 about forty. Work alone for problems 1 and 2 and in pairs for
+This is the TA-led practice lab set: three problems that climb in difficulty over about an hour, ten
+minutes each for problems 1 and 2 and about forty for problem 3. Work alone for problems 1 and 2 and in pairs for
 problem 3. The lab also hosts the escalated case's parts 3 to 5, from
 `exercises/unguided/C2_W02_D03_escalated_case_STUDENT.md`, its debrief and the interview drill aloud;
 the TA runs those around this set.
@@ -19,15 +19,15 @@ revenue is the booked amount of every Q2 order the member placed, whatever its s
 live in six cities and belong to four segments: Business, Retail-Core, Retail-Plus (the paid
 membership tier) and Student. The head of Retail-Plus's rule for a list is that members who spent the
 same share a place, the places they use up are skipped, and the list says how many it ships.
-`ROW_NUMBER` gives every member a number of his own, `RANK` gives tied members one number and skips
+`ROW_NUMBER` gives every member a number of their own, `RANK` gives tied members one number and skips
 the numbers they use up, and `DENSE_RANK` gives them one number and skips nothing. GROUP BY returns one
 row per group; a window keeps every row and adds a value computed from the rows around it. A member's
-monthly spend is his booked revenue in one calendar month, and the falling-spend flag reads September
+monthly spend is their booked revenue in one calendar month, and the falling-spend flag reads September
 below August and August below July, in calendar months. Problems 1 and 3 run on invented members,
 labelled invented; problem 2 runs on the warehouse.
 
-**Who needs the answer.** The marketing lead, whose lists and calls these habits build, and you in an
-analyst interview, where the same three moves come up on tables nobody has seen: say what a ranking
+**Who needs the answer.** The marketing lead needs it, because these habits build Marketing's lists
+and calls, and you need it in an analyst interview, where the same three moves come up on tables nobody has seen: say what a ranking
 gives on a tie before running it, say whether an ask needs GROUP BY or a window and how many rows it
 returns, and run the whole chain on fresh numbers with its checks.
 
@@ -48,10 +48,10 @@ Post exactly this shape: xxxxxxxxxx
 
 ## Problem 1. What do three ranking functions give seven invented members, and how many does each ship?
 
-Used at work every time a ranked list meets a tie, since a count you predicted is the cheapest check
+This comes up at work every time a ranked list meets a tie, since a count you predicted is the cheapest check
 there is.
 
-Ten minutes, alone. Write your answers on paper first, then type the seven members into a `VALUES`
+Work alone for ten minutes. Write your answers on paper first, then type the seven members into a `VALUES`
 list and check them.
 
 | Member (invented) | G | H | J | K | L | M | N |
@@ -98,10 +98,10 @@ d) RANK 4 then 7, and DENSE_RANK 7 both times
 
 ## Problem 2. Which of Marketing's asks need GROUP BY, which need a window, and which build fits the ask by city?
 
-Used at work whenever a stakeholder's ask arrives and the first question is whether its answer is one
+This comes up at work whenever a stakeholder's ask arrives and the first question is whether its answer is one
 row per group or one row per row you started with.
 
-Ten minutes, alone. No city has two members tied at third place by Q2 revenue.
+Work alone for ten minutes. No city has two members tied at third place by Q2 revenue.
 
 | Ask | What Marketing wants |
 |---|---|
@@ -138,12 +138,12 @@ d) `GROUP BY city, customer_id` sorted by Q2 revenue with `LIMIT 18`: 18 rows fr
 
 ## Problem 3. What does Kavya's drill say about the list, the calls, the running total and its second route?
 
-Used at work whenever a whole analysis has to be run end to end on data nobody has explained, with
+This comes up at work whenever a whole analysis has to be run end to end on data nobody has explained, with
 every check in place before a line leaves.
 
-About forty minutes, in pairs. Kavya Nair, the senior analyst on Kalpa Retail's data team, hands every
+Work in pairs for about forty minutes. Kavya Nair, the senior analyst on Kalpa Retail's data team, hands every
 new analyst the same drill: the whole day on eight members, every number invented, small enough to
-check by hand. Their monthly spend, with a blank where a member placed no order:
+check by hand. Their monthly spend is below, with a blank where a member placed no order:
 
 | Member (invented) | May | June | July | August | September |
 |---|---|---|---|---|---|
@@ -170,7 +170,7 @@ for a month with an order:
 
 How many members does the top five ship under the head of Retail-Plus's rule, and why?
 
-a) Five: V-03, V-01, V-06, V-02 and V-05, with V-08 left off by his id
+a) Five: V-03, V-01, V-06, V-02 and V-05, with V-08 left off by their id
 
 b) Four, since the tie at fifth straddles the line and both of its members drop
 
@@ -183,13 +183,13 @@ d) Seven, since the ties at second and at fifth each save the list a number
 A hurried flag, LAG over each member's own months with no calendar check, names four members: V-02,
 V-03, V-04 and V-05. Which of them would a call wrongly accuse of falling two months running, and why?
 
-a) V-02, since LAG compared his September with July and his July with May
+a) V-02, since LAG compared their September with July and their July with May
 
-b) V-04, since he stands off the top five and Marketing does not ring him
+b) V-04, since they stand off the top five and Marketing does not ring them
 
-c) V-05, since his September fell by less than his August did
+c) V-05, since their September fell by less than their August did
 
-d) V-03, since his fall began in July, before the two months Marketing asked about
+d) V-03, since their fall began in July, before the two months Marketing asked about
 
 ### Q8. Who does Marketing ring first: listed under the head's rule and flagged on calendar months?
 

@@ -88,7 +88,7 @@ flowchart LR
     class G,A known
 ```
 
-Call it the fork. GROUP BY answers how much per group and keeps nothing below the group. A window
+At this fork, GROUP BY answers how much per group and keeps nothing below the group. A window
 function computes over related rows and keeps every row, adding one column: a place, a previous
 month, or a total so far. It is written `function() OVER (PARTITION BY ... ORDER BY ...)`: the
 partition says whose rows belong together, and the order says which row comes before which. All
@@ -210,7 +210,7 @@ OBC-NCL rank 1 stood third on the common list (results of 1 June 2026, checked 1
 | C. A window with PARTITION BY segment | the numbering restarts in each segment | 1 | 462 order rows, read once |
 | D. GROUP BY segment with LIMIT 50 | none, since one row is a segment | 1 | it cannot list members |
 
-The call is C: one query, one pass, and a new segment needs no change. A database with no window
+The call is C, since one query reads the orders once and a new segment needs no change. A database with no window
 functions, such as MySQL before its 8.0 line (generally available from 19 April 2018), would switch
 it to A.
 
@@ -267,7 +267,7 @@ rule chapter 3 questions.
 
 **Who needs the answer.** The head of Retail-Plus defends the list: a member dropped by a coin toss
 has a fair complaint, a "top fifty" of fifty-two spends calls nobody planned, and
-forty-nine is the list he refused.
+forty-nine is the list the head refused.
 
 **The questions on the way.**
 
@@ -287,7 +287,7 @@ jump gave two golds and a bronze for third, with no silver (World Athletics, che
 ### Which rules could cut a list at fifty, and what does each do at a tie?
 
 Two members tie when their Q2 revenue matches to the rupee; the line is the last place a list keeps.
-The invented top four: A Rs 9,100, B 8,800, C 8,200, D and E 7,400, F 6,900.
+In the invented top four, A spent Rs 9,100, B 8,800, C 8,200, D and E 7,400 each and F 6,900.
 
 | Rule | At a tie on the line | Invented top four ships | Meets the head's ask? |
 |---|---|---|---|
@@ -383,8 +383,9 @@ The flag reads September: September below August, and August below July.
 | C. A correlated subquery per month | looks up the month before, twice per row | 1,504 lookups |
 | D. Months as spreadsheet columns, read by eye | a person reads across each row | 1,806 cells, 301 members times six months |
 
-The call is LAG: one pass, with `lag(spend, 2)` in the same line as `lag(spend, 1)`. No window
-functions, as in MySQL before 8.0, would switch it to the self-join.
+The call is LAG, which reads the rows in one pass with `lag(spend, 2)` in the same line as
+`lag(spend, 1)`. A database with no window functions, such as MySQL before 8.0, would switch it to
+the self-join.
 
 ### What did each member spend in each month?
 
@@ -420,7 +421,8 @@ flowchart LR
     class A bad
 ```
 
-C-0132 bought in July and September, and his second step back read C-0131's July. The check carries
+C-0132 bought in July and September, and the second step back from C-0132's September read C-0131's
+July. The check carries
 `lag(customer_id)` beside `lag(spend)`: four flags read another member's month, and the count must
 be zero.
 
@@ -542,13 +544,13 @@ Q2 closed Rs 10 ahead, on plan, after a mid-quarter lead of Rs 1,57,51,980 built
 
 ---
 
-## Chapter 6. Which listed members does Marketing call first, and does each flag hold up when a member says he was on holiday?
+## Chapter 6. Which listed members does Marketing call first, and does each flag hold up when a member says they were on holiday?
 
 **Who needs the answer.** The member team rings the flagged members this week, and the head of
-Retail-Plus answers for every call; accusing a member who was away costs his goodwill.
+Retail-Plus answers for every call; accusing a member who was away costs that member's goodwill.
 
-> "Before we ring anyone: one of your flagged members, C-0216, rang our help line to say he was
-> travelling in August and has not stopped buying. Is your flag wrong about him, and how many
+> "Before we ring anyone: one of your flagged members, C-0216, rang our help line to say they were
+> travelling in August and have not stopped buying. Is your flag wrong about them, and how many
 > others?"
 >
 > The head of Retail-Plus, Kalpa Retail
@@ -557,7 +559,7 @@ Retail-Plus answers for every call; accusing a member who was away costs his goo
 
 1. Which ways could the flag read "last month", and what would each cost?
 2. How many of the flagged members are on the protect list?
-3. What did LAG compare for the member who says he was on holiday?
+3. What did LAG compare for the member who says they were on holiday?
 4. How many of the sixteen flags step over a month with no order?
 5. Does a join on calendar months find the same members?
 6. Who does Marketing call first?
@@ -583,13 +585,13 @@ only for a quiet September. The call is B, and a separate "went quiet" flag woul
 
 All 16 are, since a spend that can fall twice from a high month belongs to a member who spent a lot.
 
-### What did LAG compare for the member who says he was on holiday?
+### What did LAG compare for the member who says they were on holiday?
 
 | Month | Apr | May | Jun | Jul | Aug | Sep |
 |---|---|---|---|---|---|---|
 | C-0216, Rs | none | 6,440 | none | 4,300 | none | 2,540 |
 
-With no August row, LAG compared his September with July and his July with May. C-0216 stands at
+With no August row, LAG compared C-0216's September with July and July with May. C-0216 stands at
 place 23 on Retail-Plus's list.
 
 ### How many of the sixteen flags step over a month with no order?
@@ -650,7 +652,7 @@ ranking customers on their summed orders fixes it." A weak answer sends the 28 n
 
 **[F] Your top-ten list came back with eleven rows: is it a bug?** "The tie rule is working: two
 customers share tenth place. I state the count and the reason, and offer a hard cap with its
-tiebreaker." A weak answer quietly cuts it to ten.
+tiebreaker." A weak answer cuts it to ten and says nothing.
 
 **[F] LAG returned a value for a customer's very first month: what went wrong?** "The window has no
 PARTITION BY customer, so LAG crossed customers. I count flags where lag(customer_id) differs from
@@ -671,7 +673,7 @@ DENSE_RANK can ship more with no tie there, as our 52 showed." A weak answer giv
 
 **[D] A member was on holiday: how does your flag treat a month with no orders, and why not zero?**
 "A month with no order is no reading, so it breaks the run. Our members buy in 2.5 of six months, so
-zeros flagged 26, 17 only for a quiet September." A weak answer says the data shows he fell.
+zeros flagged 26, 17 only for a quiet September." A weak answer says the data shows they fell.
 
 **[D] Your running total closes below the quarter's total: what do you check first?** "Whether
 every row made it in: I set the last cumulative value beside the total counted without the window,
@@ -743,7 +745,7 @@ July." A weak answer reads the trend before closing the loop.
 | 5 | PostgreSQL Exercises, a numbered list of members, https://pgexercises.com/questions/aggregates/nummembers.html (checked 1 October 2026) | 10 minutes | ROW_NUMBER in a window's order |
 | 6 | PostgreSQL Exercises, every tied facility output, https://pgexercises.com/questions/aggregates/fachours4.html (checked 1 October 2026) | 15 minutes | The head of Retail-Plus's rule on new data |
 | 7 | PostgreSQL 16 documentation, 9.22 Window Functions, https://www.postgresql.org/docs/16/functions-window.html (checked 1 October 2026) | 10 minutes | The exact definition of every function used today, and LEAD |
-| 8 | The PostgreSQL Tutorial, PostgreSQL Window Functions, https://neon.com/postgresql/postgresql-window-function (checked 1 October 2026; the old postgresqltutorial.com address redirects here) | 20 minutes | A second explanation with its own examples |
+| 8 | The PostgreSQL Tutorial, PostgreSQL Window Functions, https://neon.com/postgresql/window-function (checked 1 October 2026; the old postgresqltutorial.com address redirects here) | 20 minutes | A second explanation with its own examples |
 | 9 | pgtutorial.com, PostgreSQL Window Functions, https://www.pgtutorial.com/postgresql-window-functions/ (checked 1 October 2026) | 15 minutes | Each function on its own page, for syntax cross-checks |
 | 10 | SQLBolt, https://sqlbolt.com/ (checked 1 October 2026) | As needed | Joins and aggregates again, for anyone still shaky on Tuesday |
 

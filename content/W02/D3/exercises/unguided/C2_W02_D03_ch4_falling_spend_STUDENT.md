@@ -1,6 +1,6 @@
 # Whose monthly spend fell two months running?
 
-Chapter 4 set, five items. Items 1 and 2 run live in chapter 4's last minutes if the chapter ran to
+Chapter 4's set holds five items. Items 1 and 2 run live in chapter 4's last minutes if the chapter ran to
 time; items 3 to 5 are the practice lab's stretch or tonight's work.
 
 > "... and flag anyone whose monthly spend has fallen for two months running."
@@ -23,9 +23,9 @@ book is Kalpa's Postgres warehouse.
 | Monthly spend | Rs 7,980 | Rs 3,170 | Rs 1,320 | Rs 4,260 | Rs 4,770 | Rs 4,520 |
 | `lag(spend, 1)` | NULL | Rs 7,980 | Rs 3,170 | Rs 1,320 | Rs 4,260 | Rs 4,770 |
 
-**Who needs the answer.** The marketing lead, whose member team rings each flagged member with a
-retention offer. A flag that names the wrong member costs a call and tells a loyal customer he is
-slipping; a fall the flag misses is a member nobody rang until he had gone.
+**Who needs the answer.** The marketing lead needs it, because the member team rings each flagged
+member with a retention offer. A flag that names the wrong member costs a call and tells a loyal
+customer they are slipping; a fall the flag misses is a member nobody rang until they had gone.
 
 **The questions on the way.**
 
@@ -45,7 +45,7 @@ Post exactly this shape: xxxxx
 
 ## How should the team set each month beside the months before it?
 
-Used at work whenever a metric is compared with its own earlier values, one customer at a time.
+This comes up at work whenever a metric is compared with its own earlier values, one customer at a time.
 
 ### Q1. Which way should set each month beside the two before it, and what does the self-join work through?
 
@@ -62,7 +62,7 @@ d) A correlated subquery per month, one lookup for each row: 752 lookups, the sa
 
 ## Whose months does LAG read?
 
-Used at work whenever a window runs over a table that holds many customers' histories one after
+This comes up at work whenever a window runs over a table that holds many customers' histories one after
 another.
 
 ### Q2. Which members does a flag with no PARTITION BY name in the invented table?
@@ -104,7 +104,7 @@ d) Carry `lag(customer_id)` beside `lag(spend)`; count rows where it differs fro
 
 ## How do you prove the flag without the window?
 
-Used at work whenever a flag is about to put a call through to a customer and the window behind it
+This comes up at work whenever a flag is about to put a call through to a customer and the window behind it
 could be wrong in a way its own output cannot show.
 
 ### Q4. Which second route could a slip in the window not fool, and what does it read?
@@ -123,7 +123,7 @@ d) A count of the flagged members' September orders, set beside the 16: one row 
 
 ## When is the window the wrong tool?
 
-Used at work whenever the best build on one database meets a system that cannot run it.
+This comes up at work whenever the best build on one database meets a system that cannot run it.
 
 ### Q5. Which fact would make the self-join the build to ship?
 

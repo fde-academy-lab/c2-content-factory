@@ -10,7 +10,7 @@ member's months; carrying `lag(customer_id)` beside the value exposed the 4. Wit
 customer_id the flag kept 16, and a walk through each member's months in Python found the same 16.
 Three of the five items are design items: 1, 4 and 5.
 
-**Who needs the answer.** You, checking your five letters after the lab or tonight. Every flag puts a
+**Who needs the answer.** You need it to check your five letters after the lab or tonight. Every flag puts a
 call through to a member, so a flag built on another member's months accuses someone of a fall that
 happened in somebody else's account.
 
@@ -51,16 +51,16 @@ self-join joins the table to itself once for the month before and once for the m
 Kind: predict the output, on invented numbers.
 
 The key is b, "X-01 and X-02, since X-02's one row reads X-01's September and August above it". With no
-PARTITION BY the window is the whole sorted table. X-01's September reads his own August, Rs 2,800, and
+PARTITION BY the window is the whole sorted table. X-01's September reads their own August, Rs 2,800, and
 July, Rs 3,700, and falls twice, which is right. X-02's only row reads X-01's September, Rs 2,300, and
 August, Rs 2,800, so X-02's Rs 1,700 looks like a second fall that never happened. X-03's September
-reads his own August, Rs 2,000, and X-02's September, Rs 1,700, and since Rs 2,000 is above Rs 1,700 the
+reads their own August, Rs 2,000, and X-02's September, Rs 1,700, and since Rs 2,000 is above Rs 1,700 the
 second step fails.
 
 - a, "X-01 alone, since LAG returns nothing before X-02's first row": that is what PARTITION BY
   customer_id would give, and this window has none.
 - c, "X-01, X-02 and X-03, since every September row has two rows above it in the sorted table": X-03
-  has two rows above his September, and they do not fall in a row.
+  has two rows above their September, and they do not fall in a row.
 - d, "Nobody, since LAG returns NULL until the window is given a PARTITION BY": LAG needs only an
   order; without a partition it reads straight across members.
 
@@ -118,8 +118,8 @@ joins.
 
 Item 3, option b. Counting NULLs is a good instinct, since the first row of every member should have
 nothing before it. The option has the expected value backwards: a single NULL in the whole table is
-the sign the window ran across members, and the right count is one per member, 301 on this book. A
-check is only as good as the value you expect it to read, so say that value before you run it.
+the sign the window ran across members, and the right count is one per member, 301 on this book. Say
+the value you expect a check to read before you run it.
 
 ## Where does this show up at work?
 

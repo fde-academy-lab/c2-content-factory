@@ -1,6 +1,6 @@
 # Which fifty members lead each of the four segments?
 
-Chapter 2 set, five items. Items 1 and 2 run live in chapter 2's last minutes if the chapter ran to
+Chapter 2's set holds five items. Items 1 and 2 run live in chapter 2's last minutes if the chapter ran to
 time; items 3 to 5 are the practice lab's stretch or tonight's work.
 
 > "Give us the top fifty customers by Q2 revenue in each segment."
@@ -38,9 +38,9 @@ Members who bought in Q2, by city and segment:
 | Mumbai | 3 | 13 | 16 | 3 |
 | Pune | 4 | 18 | 10 | 3 |
 
-**Who needs the answer.** The marketing lead, who spends each segment's protect budget on that
-segment's own members, and the head of Retail-Plus, who wants his best members called before they
-drift. A list that gives Retail-Plus a few places and Student none leaves the tier Marketing worries
+**Who needs the answer.** The marketing lead needs it to spend each segment's protect budget on that
+segment's own members, and the head of Retail-Plus needs it so the tier's best members are called
+before they drift. A list that gives Retail-Plus a few places and Student none leaves the tier Marketing worries
 about mostly unprotected.
 
 **The questions on the way.**
@@ -61,7 +61,7 @@ Post exactly this shape: xxxxx
 
 ## How should one query build a list in every group?
 
-Used at work whenever a stakeholder asks for the top members of every group at once, cut by one
+This comes up at work whenever a stakeholder asks for the top members of every group at once, cut by one
 column or by two.
 
 ### Q1. Which build fits the city teams' ask, and how many rows does it return?
@@ -93,7 +93,7 @@ d) Business 35, Retail-Core 83, Retail-Plus 73 and Student 9: 200 rows taken acr
 
 ## How do you know each segment's list holds the right members?
 
-Used at work whenever a list passes its count and still has to be shown to name the right people.
+This comes up at work whenever a list passes its count and still has to be shown to name the right people.
 
 ### Q3. Which check catches a list whose window is ordered by customer id?
 
@@ -125,7 +125,7 @@ d) Group Retail-Core's Q2 orders by segment: one row, with 96 members who bought
 
 ## When is a simpler build enough?
 
-Used at work whenever the general build is right and a narrower ask makes a shorter one honest.
+This comes up at work whenever the general build is right and a narrower ask makes a shorter one honest.
 
 ### Q5. Which fact would make one sorted query with a WHERE on the segment the better build?
 

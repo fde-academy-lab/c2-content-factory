@@ -10,7 +10,7 @@ of fifty or every buyer caught. `PARTITION BY segment` started the numbering aga
 with UNION ALL named the same members. Retail-Core's fifty carry Rs 2,78,740 of the segment's
 Rs 3,66,250, 76.1 percent. Three of the five items are design items: 1, 4 and 5.
 
-**Who needs the answer.** You, checking your five letters after the lab or tonight. The marketing lead
+**Who needs the answer.** You need it to check your five letters after the lab or tonight. The marketing lead
 spends each segment's budget on the members its list names, so a list that is the right length and
 holds the wrong members costs as much as a list of the wrong length.
 
@@ -93,9 +93,9 @@ Kind: a design item, the independent second route with its size.
 
 The key is a, "For each member, count the segment's members who booked more; keep those under fifty:
 9,216 pairs". A member's place is one plus the members of the same segment who booked more, so
-a member with fewer than fifty above him is on the list. Retail-Core's 96 buyers make 96 times 96,
+a member with fewer than fifty above them is on the list. Retail-Core's 96 buyers make 96 times 96,
 9,216 pairs, with no window anywhere, and since nobody ties at the fiftieth place the route keeps the
-same fifty members. It does about twenty times the window's work, which is why it is the check.
+same fifty members. It does about twenty times the window's work, so the team runs it as a check and ships the window.
 
 - b, "Rerun the list with `rank()` in place of `row_number()`: the same window, the 462 orders read
   once": the PARTITION BY and the ORDER BY are shared, so a slip in either repeats.

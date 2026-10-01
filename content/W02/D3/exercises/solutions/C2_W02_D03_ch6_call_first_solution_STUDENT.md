@@ -3,15 +3,15 @@
 Answers: 1d 2a 3c 4b 5d
 
 Chapter 6 read the rows behind chapter 4's 16 flags. All 16 sit on a protect list. C-0216 bought in
-May, July and September, so LAG compared his September with July and his July with May, four months
+May, July and September, so LAG compared their September with July and their July with May, four months
 apart, and called a holiday a fall. Seven of the 16 flags step over a month with no order in the same
 way; the check that the two rows before September are August and July keeps 9, and a self-join of
-each member's September to his own August and July by calendar month keeps the same 9. A calendar
+each member's September to their own August and July by calendar month keeps the same 9. A calendar
 filled with zero would have flagged 26 members, 17 of whom simply placed no September order. Members
 buy in about 2.5 of the six months, so an empty month is the usual state. Three of the five items are
 design items: 1, 4 and 5.
 
-**Who needs the answer.** You, checking your five letters after the lab or tonight. Every flag that
+**Who needs the answer.** You need it to check your five letters after the lab or tonight. Every flag that
 survives becomes a phone call to a member, and a flag built on an empty month accuses a loyal member
 of drifting.
 
@@ -49,46 +49,46 @@ who skipped August or July breaks the run and is not flagged, which is what "two
 - c, "LAG over each member's own months, as chapter 4 built it: 752 rows, with no check needed": steps
   over empty months, which is how 7 of the 16 flags compared months two or more apart.
 
-### Q2. Which months does chapter 4's flag compare for an invented member with gaps, and does the checked flag keep him?
+### Q2. Which months does chapter 4's flag compare for an invented member with gaps, and does the checked flag keep them?
 
 Kind: predict the output, on invented numbers.
 
 The key is a, "September against June and April, so chapter 4's flag fires and the checked flag drops
-him". Y-01 has three rows. LAG reads the previous row, so his September sits beside June, Rs 2,700, and
+them". Y-01 has three rows. LAG reads the previous row, so their September sits beside June, Rs 2,700, and
 June beside April, Rs 3,600, and Rs 1,300 below Rs 2,700 below Rs 3,600 fires chapter 4's flag. The
 check asks whether the two rows before September are August and July; they are June and April, so the
-checked flag leaves him off.
+checked flag leaves them off.
 
-- b, "September against August and July, each read as zero, so both flags keep him": the monthly table
-  has no August or July row for him, so LAG never sees a zero, and Rs 1,300 against zero would be a
+- b, "September against August and July, each read as zero, so both flags keep them": the monthly table
+  has no August or July row for Y-01, so LAG never sees a zero, and Rs 1,300 against zero would be a
   rise.
 - c, "September against nothing, since LAG returns NULL across empty months, so neither flag fires":
   LAG returns NULL only before a member's first row; across a gap it reads the last row there is.
-- d, "September against June and April, so both flags keep him, since each month he ordered fell": the
+- d, "September against June and April, so both flags keep them, since each month they ordered fell": the
   first half is right, and the checked flag exists to drop exactly this member.
 
-### Q3. What does the book say about an invented member with no September order, and which flag should name him?
+### Q3. What does the book say about an invented member with no September order, and which flag should name them?
 
 Kind: spot the plausible wrong output, on invented numbers.
 
-The key is c, "Nothing to compare, since he placed no September order; a separate quiet signal would
-name him". Y-02 has no September row, so the falling-spend flag has no September spend to set beside
-August. Filled with zero, his September reads as Rs 0 below Rs 1,800 below Rs 2,300, a fall twice
+The key is c, "Nothing to compare, since they placed no September order; a separate quiet signal would
+name them". Y-02 has no September row, so the falling-spend flag has no September spend to set beside
+August. Filled with zero, their September reads as Rs 0 below Rs 1,800 below Rs 2,300, a fall twice
 running that never happened. What the book does show is a member who bought in July and August and
 then nothing, which is a different question with its own name and its own list.
 
-- a, "A fall to zero, so the falling-spend flag names him and Marketing rings him about a falling
-  spend": the call would describe a September he never had.
-- b, "A fall to zero once his August is checked against July, so the flag names him with a note": the
+- a, "A fall to zero, so the falling-spend flag names them and Marketing rings them about a falling
+  spend": the call would describe a September they never had.
+- b, "A fall to zero once their August is checked against July, so the flag names them with a note": the
   August check holds and the September reading is still the zero someone wrote in.
-- d, "An unknown, so his July and August are dropped as well and he leaves the book until he orders":
+- d, "An unknown, so their July and August are dropped as well and they leave the book until they order":
   throws away two real months to hide one empty one, and loses the member who may most need a call.
 
 ### Q4. Which route confirms the checked flags with no window, and what does it read?
 
 Kind: a design item, the independent second route.
 
-The key is b, "A self-join of each member's September row to his own August and July rows by calendar
+The key is b, "A self-join of each member's September row to their own August and July rows by calendar
 month". It joins rows by date with no window: a member with no August or no July row has nothing to
 join to, so a gap breaks the run by construction. In the chapter it kept the same 9 members as the
 checked LAG, and it would disagree if the check on `lag(month)` were written wrong.
@@ -105,7 +105,7 @@ checked LAG, and it would disagree if the check on `lag(month)` were written wro
 
 Kind: a design item, the fact that would switch the call.
 
-The key is d, "Every member is billed every month by default, so a month with no charge means he
+The key is d, "Every member is billed every month by default, so a month with no charge means they
 cancelled". Where every member is expected to pay every month, an empty month is a real zero, a lapse,
 and a fall to zero is the strongest signal there is. Kalpa's members buy when they choose, about 2.5
 months in six, so an empty month says nothing about their spend.

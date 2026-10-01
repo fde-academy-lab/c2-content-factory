@@ -54,7 +54,7 @@ flowchart LR
 
 ## How do a named step and a window turn 462 Q2 orders into a ranked list of members?
 
-Chapter 1 draws the way the room chose among four ways to rank. The named step adds up each member's
+Chapter 1 draws the build the room chose from four ways to rank. The named step adds up each member's
 Q2, 227 rows that carry all 462 orders, and the window numbers them with the customer id settling
 equal spend. Under it the room writes the result: 35 Business members, every Business buyer, then 11
 Retail-Plus and 4 Retail-Core, and no Student.
@@ -215,7 +215,7 @@ flowchart LR
 
 ---
 
-## Why did LAG flag C-0132 for a fall from a month he never had?
+## Why did LAG flag C-0132 for a fall from a month they never had?
 
 The quick flag sorted the whole table by member and month with no PARTITION BY and flagged 20
 members. C-0132 bought only in July and September, so LAG's second step back ran into C-0131's July.
@@ -297,8 +297,8 @@ flowchart LR
 
 ## What does "the month before" mean for a member who skipped a month?
 
-Chapter 6 opens on the head of Retail-Plus's message: a flagged member, C-0216, says he was
-travelling in August and has not stopped buying. Two readings of "the month before" go up side by
+Chapter 6 opens on the head of Retail-Plus's message: a flagged member, C-0216, says they were
+travelling in August and have not stopped buying. Two readings of "the month before" go up side by
 side.
 
 ```mermaid
@@ -317,7 +317,7 @@ flowchart LR
 
 ## What did LAG compare for C-0216, the member on holiday?
 
-C-0216 of Retail-Plus, place 23 on his segment's list, bought in May, July and September, with no
+C-0216 of Retail-Plus, place 23 on that segment's list, bought in May, July and September, with no
 order in June or August. With no August row, LAG compared September with July and July with May.
 
 ```mermaid
@@ -335,7 +335,7 @@ flowchart LR
 
 All 16 flagged members are on a protect list, so the call sheet would read 16 names. The check
 carries `lag(month)` beside `lag(spend)`, and 7 of the 16 flags step over an empty month. Under the
-drawing goes a fall that holds up: C-0010 of Retail-Core, first on his segment's list, spent
+drawing goes a fall that holds up: C-0010 of Retail-Core, first on that segment's list, spent
 Rs 7,840 in July, Rs 4,080 in August and Rs 1,990 in September.
 
 ```mermaid

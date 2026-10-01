@@ -1,6 +1,6 @@
 # Which fifty members spent the most in Q2?
 
-Chapter 1 set, five items. Items 1 and 2 run live in chapter 1's last minutes if the chapter ran to
+Chapter 1's set holds five items. Items 1 and 2 run live in chapter 1's last minutes if the chapter ran to
 time; items 3 to 5 are the practice lab's stretch or tonight's work.
 
 > "Retail-Plus frequency is the problem, so we want to protect our best members before they drift.
@@ -43,8 +43,8 @@ The whole book ranked by Q2 revenue with `row_number()`, places 33 to 40:
 | 39 | C-0160 | Retail-Plus | Rs 13,700 |
 | 40 | C-0040 | Retail-Core | Rs 13,550 |
 
-**Who needs the answer.** The marketing lead, whose member team will ring every name on the list. A
-list built on the wrong unit sends the offer to the wrong people: every best member it misses is one
+**Who needs the answer.** The marketing lead needs it, because the member team will ring every name on
+the list. A list built on the wrong unit sends the offer to the wrong people: every best member it misses is one
 nobody rang, and every member it repeats is a call made twice.
 
 **The questions on the way.**
@@ -65,12 +65,12 @@ Post exactly this shape: xxxxx
 
 ## How should the team build a ranked list of members?
 
-Used at work whenever a stakeholder asks for a ranked list and the team has to decide what one row of
+This comes up at work whenever a stakeholder asks for a ranked list and the team has to decide what one row of
 the answer is and where the work runs.
 
 ### Q1. Which build fits Marketing's per-segment ask, and what does each build cost?
 
-Marketing's real ask is a list in each of the four segments, and four builds could hand it a ranked
+Marketing asked for a list in each of the four segments, and four builds could hand it a ranked
 list. Which build fits, sized in the rows that leave the warehouse and the work the per-segment list
 adds?
 
@@ -112,7 +112,7 @@ d) Each row is a member, and P shows three times because of a tie; a tiebreaker 
 
 ## Which segments does one list across the whole book reach?
 
-Used at work whenever one list is cut across groups whose members differ in size by a hundred times.
+This comes up at work whenever one list is cut across groups whose members differ in size by a hundred times.
 
 ### Q3. If Marketing trimmed the whole-book list to forty, which segments would it reach?
 
@@ -129,12 +129,12 @@ d) 35 Business, 3 Retail-Plus and 2 Retail-Core, and no Student
 
 ## How do you prove a list without trusting the query that made it?
 
-Used at work whenever a ranked list goes to a stakeholder who will act on every name in it.
+This comes up at work whenever a ranked list goes to a stakeholder who will act on every name in it.
 
 ### Q4. Which second route could catch a member wrongly left off the fifty, and how many rows does it move?
 
 Kavya Nair, the senior analyst on Kalpa Retail's data team, checks every number before it leaves the
-team. She wants the fifty confirmed by a route that would notice a member who belongs on the list and
+team, and wants the fifty confirmed by a route that would notice a member who belongs on the list and
 is missing from it. Which route does that, and how many rows does it move?
 
 a) Pull the fifty rows the query returned into a spreadsheet and sort them again by revenue: 50 rows

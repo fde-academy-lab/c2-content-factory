@@ -93,7 +93,7 @@ planted ids and values (`FORBIDDEN`) and stops the build if any saved output pri
 | Morning, SECTION 3, S35 to S48 | `03_tie_rule` | When two members spent the same at the line, how many does a list ship, and which rule did the head of Retail-Plus ask for? | DENSE_RANK's Retail-Core top fifty shipped as 52 members, two of them past the line with no tie at it |
 | Morning, SECTION 4, S49 to S61 | `04_falling_spend` | Whose monthly spend fell two months running? | LAG with no PARTITION BY flags 20 members, 4 of them compared with another member's month |
 | Morning, SECTION 5, S62 to S76 | `05_against_plan` | Has Q2 revenue kept pace with the plan line week by week, and where did it stand at mid-quarter? | The plan-first join closes at Rs 9,68,60,180, reported as Rs 15,39,810 short of plan |
-| Afternoon, SECTION 6, S2 to S16 | `06_call_first` | Which listed members does Marketing call first, and does each flag hold up when a member says he was on holiday? | Chapter 4's 16 flags shipped as calls, 7 of them reading a skipped month as last month |
+| Afternoon, SECTION 6, S2 to S16 | `06_call_first` | Which listed members does Marketing call first, and does each flag hold up when a member says they were on holiday? | Chapter 4's 16 flags shipped as calls, 7 of them reading a skipped month as last month |
 
 The morning deck holds 82 slides and the afternoon deck 30: chapter 6, the escalated case's first two
 parts, the close with the day's answer and the Kahoot, and self-study slides for the interview drill

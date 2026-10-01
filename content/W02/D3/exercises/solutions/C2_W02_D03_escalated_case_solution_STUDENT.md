@@ -12,7 +12,7 @@ this folder, runs every marker; where a part's answer for Retail-Plus is the cou
 it checks that count without printing it, and so does this page. Five of the fifteen items are design
 items: 11 to 15.
 
-**Who needs the answer.** You, before the debrief, checking your fifteen letters and your two numbers.
+**Who needs the answer.** You need it before the debrief, to check your fifteen letters and your two numbers.
 The debrief replays the room's wrong answers aloud, and a line you cannot defend here is the one the
 marketing lead or Meera sends back.
 
@@ -55,7 +55,7 @@ Kind: choose the rule. The key is c, `rank()`. Members who spent the same share 
 member's place skips the numbers they used, 1, 1, 3, so no member is dropped by a coin toss and a tie
 at the line ships whole.
 
-- a, `row_number()`: gives every member a place of his own, so one of two members who spent the same
+- a, `row_number()`: gives every member a place of their own, so one of two members who spent the same
   is left off by whatever decides between them.
 - b, `dense_rank()`: shares the place and skips nothing, so its numbers count spend figures; Retail-Core
   ships 52 under it, two members who tie with nobody at the line.
@@ -108,7 +108,7 @@ member's months; the check cell counts 0 rows that cross.
   keeps them together and LAG still runs from one member's last row into the next member's first. The
   check cell counts 300 rows that cross, one at every boundary between members.
 - d, `OVER (PARTITION BY month ORDER BY customer_id)`: each window holds one month of every member, so
-  LAG compares a member with the member whose id sorts before him in the same month.
+  LAG compares a member with the member whose id sorts before theirs in the same month.
 
 ### Q4. Which condition keeps a flag only for three calendar months in a row?
 
@@ -132,7 +132,7 @@ beside the falling-spend flag". A member who went quiet has no September row in 
 only a table with a row for every member in every month, 301 times 6, can show the empty September as
 a row a query can find. It is a second flag with its own name: across the book, 27 members bought in
 July and in August and placed no order in September. Mixed into the falling-spend flag, it would tell
-a member his spend fell when he simply did not order.
+a member their spend fell when they simply did not order.
 
 - b, "The monthly table the flag reads, 752 rows, keeping the members whose September spend is NULL":
   a member with no September order has no September row at all, so there is no NULL to keep and the
@@ -294,7 +294,7 @@ needs both.
 
 ## Where does this show up at work?
 
-A retention programme sends three things to the people who act on it: who to protect, who to call
-first, and whether the quarter can pay for it. Each becomes a number someone repeats in a meeting, so
+The data team sends Kalpa's marketing lead three things to act on: who to protect, who to call first,
+and whether the quarter can pay for it. Each becomes a number someone repeats in a meeting, so
 each goes out with its rule, its count and the check that closed it, the way this case's five parts
 end.

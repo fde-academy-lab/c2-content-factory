@@ -1,8 +1,8 @@
 # Should Retail-Core's protect list rank members by how often they ordered in Q2, instead of by how much they spent?
 
-The second case, in the take-home, in pairs or alone, about forty minutes. You work in
+The second case is part of the take-home and takes about forty minutes, in pairs or alone. You work in
 `notebooks/C2_W02_D03_ex2_second_case_STUDENT.ipynb`, and this brief carries everything the case
-needs, so it can be read with nothing else open. Items 1 to 7 are the notebook's seven lettered
+needs. Items 1 to 7 are the notebook's seven lettered
 markers, with the same numbers and the same letters. Items 8 to 10 are this brief's own design items,
 answered here.
 
@@ -17,7 +17,7 @@ Retail-Core is Kalpa Retail's everyday shoppers: 96 of them ordered in Q2 (July 
 revenue under the head of Retail-Plus's rule, which gives members who spent the same one place and
 skips the places they use up, Retail-Core's top fifty holds 50 members, because nobody ties at the
 line: the fiftieth, C-0005, booked Rs 2,980 and the 51st, C-0092, Rs 2,950. Frequency is the number of
-Q2 orders a member placed. `ROW_NUMBER` gives every member a number of his own, `RANK` gives tied
+Q2 orders a member placed. `ROW_NUMBER` gives every member a number of their own, `RANK` gives tied
 members one number and skips the numbers they use up, and `DENSE_RANK` gives them one number and skips
 nothing, so it numbers the different values. A second key in a window's ORDER BY decides between members
 the first key leaves tied. The book is Kalpa's Postgres warehouse: `orders` (1,000 rows: order_id,
@@ -42,8 +42,8 @@ The 27 Retail-Core members with two Q2 orders, by customer id, with their Q2 rev
 | C-0031 | Rs 4,750 | C-0113 | Rs 4,300 | C-0142 | Rs 5,750 |
 | C-0045 | Rs 5,200 | C-0116 | Rs 4,770 | C-0147 | Rs 4,780 |
 
-**Who needs the answer.** The marketing lead, who decides which Retail-Core members the member team
-protects, and the head of Retail-Plus, whose rule the list has to keep. A ranking on a count can tie
+**Who needs the answer.** The marketing lead needs it to decide which Retail-Core members the member
+team protects, and the head of Retail-Plus needs to see the list keep their rule. A ranking on a count can tie
 dozens of members at once, so a rule chosen for rupee amounts has to be read again before the list
 ships.
 
@@ -70,7 +70,7 @@ ships, and how far the frequency list sits from the list ranked by revenue.
 
 ## Step 1. How many Q2 orders did each Retail-Core member place, and where do the ties fall?
 
-Used at work whenever a frequency metric goes on a list, since a count ties far more often than a
+This comes up at work whenever a frequency metric goes on a list, since a count ties far more often than a
 rupee amount does.
 
 Marker 1 in the notebook.
@@ -89,7 +89,7 @@ d) `count(DISTINCT date_trunc('month', o.order_date))`
 
 ## Step 2. How many members does each rule ship when the list is ranked by orders alone?
 
-Used at work whenever a tie rule chosen for rupee amounts meets a metric that is a count.
+This comes up at work whenever a tie rule chosen for rupee amounts meets a metric that is a count.
 
 Marker 2 in the notebook.
 
@@ -108,7 +108,7 @@ d) `rank() OVER (ORDER BY q2_revenue DESC)`
 
 ## Step 3. Why does that rule ship the number it ships?
 
-Used at work whenever a stakeholder who asked for fifty receives more and wants the reason in one
+This comes up at work whenever a stakeholder who asked for fifty receives more and wants the reason in one
 sentence.
 
 Marker 3 in the notebook.
@@ -127,7 +127,7 @@ d) The 45 members with one order share a place, and RANK adds one of them to mak
 
 ## Step 4. Which second key breaks the crowd of ties, and how many members does the list ship then?
 
-Used at work whenever a ranking on a count needs a second key, which is a business choice with a
+This comes up at work whenever a ranking on a count needs a second key, which is a business choice with a
 reason.
 
 Marker 4 in the notebook, then item 8 here.
@@ -152,7 +152,7 @@ member does it leave off, and what does that cost?
 
 a) C-0070, who booked Rs 2,730, the least of the 27, so the id rule and a spend rule leave off the same member
 
-b) C-0092, who booked Rs 2,950, since he is the member a list ranked by revenue alone also leaves off
+b) C-0092, who booked Rs 2,950, since they are the member a list ranked by revenue alone also leaves off
 
 c) Nobody who matters, since every two-order member booked within a few hundred rupees of the others
 
@@ -160,8 +160,8 @@ d) C-0147, who booked Rs 4,780, while C-0070 on Rs 2,730 stays, because the high
 
 ## Step 5. How many members do the two lists share, and how far apart are they in rupees?
 
-Used at work whenever a team argues over two definitions and first measures how much the answer
-actually changes.
+This comes up at work whenever a team argues over two definitions and first measures how much the answer
+changes.
 
 Marker 5 in the notebook, then item 9 here.
 
@@ -193,7 +193,7 @@ d) Retail-Core's 96 buyers less the 45 who are on neither list, which gives 51 s
 
 ## Step 6. What do you tell the marketing lead?
 
-Used at work whenever an argument over a definition ends with someone saying what changes, by how
+This comes up at work whenever an argument over a definition ends with someone saying what changes, by how
 much, and which choice they recommend.
 
 Markers 6 and 7 in the notebook, then item 10 here.

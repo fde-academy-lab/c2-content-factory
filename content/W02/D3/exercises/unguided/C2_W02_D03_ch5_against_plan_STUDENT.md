@@ -1,6 +1,6 @@
 # Has Q2 revenue kept pace with the plan line week by week, and where did it stand at mid-quarter?
 
-Chapter 5 set, five items. Items 1 and 2 run live in chapter 5's last minutes if the chapter ran to
+Chapter 5's set holds five items. Items 1 and 2 run live in chapter 5's last minutes if the chapter ran to
 time; items 3 to 5 are the practice lab's stretch or tonight's work.
 
 > "And Meera wants to see revenue accumulate week by week against the plan line, so we know by
@@ -37,8 +37,8 @@ plan's first week carrying Q2's first five days, closes on Rs 9,84,00,000 agains
 
 The plan is Rs 75,69,230 in every one of the thirteen weeks.
 
-**Who needs the answer.** Meera, who decides at mid-quarter whether to hold the plan, push a campaign
-or move budget. A quarter reported behind when it is on plan sends Marketing after a gap that is not
+**Who needs the answer.** Meera needs it to decide at mid-quarter whether to hold the plan, push a
+campaign or move budget. A quarter reported behind when it is on plan sends Marketing after a gap that is not
 there, with discounts that cost margin, and a quarter read as comfortably ahead hides weeks that ran
 below plan.
 
@@ -60,7 +60,7 @@ Post exactly this shape: xxxxx
 
 ## How should the team accumulate a quarter?
 
-Used at work whenever a stakeholder wants a figure to date at every point of a period.
+This comes up at work whenever a stakeholder wants a figure to date at every point of a period.
 
 ### Q1. Which way should give Meera booked to date at the end of every day, sized in order rows read?
 
@@ -77,7 +77,7 @@ d) The 462 orders exported with a cumulative column copied down a sheet: 462 row
 
 ## Does a running total say what it seems to say?
 
-Used at work whenever a to-date line goes to someone who decides on it.
+This comes up at work whenever a to-date line goes to someone who decides on it.
 
 ### Q2. What happened to the running total that closes on Rs 4,90,020, and which check catches it?
 
@@ -109,7 +109,7 @@ d) Rs 6,78,27,510 ahead: Rs 7,53,96,740 less the week's plan of Rs 75,69,230
 
 ## Can a running total name the row that crossed a line?
 
-Used at work whenever someone asks which sale, or which day, took a total past a mark.
+This comes up at work whenever someone asks which sale, or which day, took a total past a mark.
 
 ### Q4. Which ORDER BY names the order that took Q2 past Rs 3.5 crore, and what does it promise?
 
@@ -128,7 +128,7 @@ d) `order_date, order_id`: each order its own step, the same on every run, in id
 
 ## How do you prove a running total without the window?
 
-Used at work whenever a to-date figure has to be shown right by a route that could have caught it
+This comes up at work whenever a to-date figure has to be shown right by a route that could have caught it
 wrong.
 
 ### Q5. Which route confirms the thirteen to-date figures without the window, and what does it read?

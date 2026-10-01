@@ -9,8 +9,8 @@ to read the tie rule again on a new metric: items 1 to 7 are the seven markers o
 The executed solution, `C2_W02_D03_ex2_second_case_solution_STUDENT.ipynb` in this folder, runs every
 marker. Three of the ten items are design items: 8, 9 and 10.
 
-**Who needs the answer.** You and your partner, after the take-home, checking ten letters and one
-line. The marketing lead decides on that line which members the member team protects, so its count
+**Who needs the answer.** You and your partner need it after the take-home, to check ten letters and
+one line. The marketing lead decides on that line which members the member team protects, so its count
 and its comparison with the revenue list have to hold on their own.
 
 **The questions on the way.**
@@ -99,22 +99,22 @@ Kind: a design item, the alternative rule sized by what it costs.
 
 The key is d, "C-0147, who booked Rs 4,780, while C-0070 on Rs 2,730 stays, because the highest id is
 the one cut". Among the 27 two-order members the id rule keeps the 26 lowest ids, and the highest,
-C-0147, goes, though he spent Rs 2,050 more than C-0070, who stays. The rule ships fifty and keeps a
+C-0147, goes, though they spent Rs 2,050 more than C-0070, who stays. The rule ships fifty and keeps a
 member nobody would choose over the one it drops, and its only reason is the order the ids were
 issued in.
 
 - a, "C-0070, who booked Rs 2,730, the least of the 27, so the id rule and a spend rule leave off the
-  same member": that is what a spend key does; C-0070's id is low, so the id rule keeps him.
-- b, "C-0092, who booked Rs 2,950, since he is the member a list ranked by revenue alone also leaves
-  off": C-0092 is off the revenue list, a different list, and his id is lower than C-0147's, so the id
-  rule keeps him.
+  same member": that is what a spend key does; C-0070's id is low, so the id rule keeps them.
+- b, "C-0092, who booked Rs 2,950, since they are the member a list ranked by revenue alone also leaves
+  off": C-0092 is off the revenue list, a different list, and their id is lower than C-0147's, so the id
+  rule keeps them.
 - c, "Nobody who matters, since every two-order member booked within a few hundred rupees of the
   others": the 27 run from Rs 2,730 to Rs 5,750, more than double.
 
 ### Q5. Which query counts the members who are on both lists?
 
 Kind: choose the query. The key is a, "An INNER JOIN of the two lists on customer_id, counting the rows
-it returns". The join keeps a member only when his id is on both lists: 49.
+it returns". The join keeps a member only when their id is on both lists: 49.
 
 - b, "A LEFT JOIN from the revenue list to the frequency list, counting all the rows it returns": keeps
   every revenue-list row whether or not it matched, 50.
@@ -160,7 +160,7 @@ the size of the change in one sentence.
   25, more than half of it decided by nothing but a shared count; a second key with a reason ships
   fifty.
 - c, "Rank Retail-Core with DENSE_RANK on orders, so that every member who ordered the same shares a
-  place on the list.": DENSE_RANK on orders ships all 96 buyers, which is no list at all.
+  place on the list.": DENSE_RANK on orders ships all 96 buyers, so the list leaves nobody off.
 - d, "Keep the revenue list, since ranking by orders would drop the members whose quarters carry the
   most revenue.": the two lists differ by one member each way and Rs 40, so the frequency list drops
   nobody who carries much.
@@ -192,7 +192,6 @@ members equal on both keys and ships fifty.
 
 ## Where does this show up at work?
 
-Every loyalty team that ranks on visits or orders meets this case, because counts pile up on the same
-few values. The decision that holds is the one that measures how much the list changes before it
+A list ranked on visits or orders runs into this case, because counts pile up on the same few values. The decision that holds is the one that measures how much the list changes before it
 argues about which list is right: here one member each way and Rs 40, which makes the frequency list an
 easy yes.

@@ -3,7 +3,7 @@
 Week 2, Day 3. Afternoon.
 
 Kicker: WEEK 2  ·  WEDNESDAY  ·  AFTERNOON
-Quote: Before we ring anyone: one of your flagged members rang our help line to say they were travelling in August and have not stopped buying. Is your flag wrong about them, and how many others?
+Quote: Before we ring anyone: one of your flagged members, C-0216, rang our help line to say they were travelling in August and have not stopped buying. Is your flag wrong about them, and how many others?
 Who: The head of Retail-Plus, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre
 
 ```notes

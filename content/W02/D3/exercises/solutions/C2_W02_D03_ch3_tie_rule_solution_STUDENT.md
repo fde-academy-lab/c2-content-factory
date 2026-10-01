@@ -12,9 +12,9 @@ that makes ROW_NUMBER with a tiebreaker stated in advance honest. Counting the m
 fiftieth member's figure reached RANK's count with no window. Two of the five items are design items: 4
 and 5.
 
-**Who needs the answer.** You, checking your five letters after the lab or tonight. The head of
-Retail-Plus defends every count to his members, so a count you cannot explain in one sentence is one
-he cannot defend.
+**Who needs the answer.** You need it to check your five letters after the lab or tonight. The head of
+Retail-Plus defends every count to the tier's members, so a count you cannot explain in one sentence
+is one the head cannot defend.
 
 **The questions on the way.**
 
@@ -37,11 +37,11 @@ and a route to the head's count that uses no window.
 Kind: predict the output, on invented numbers.
 
 The key is b, "1, 1, 2, 3, 3, 3, 4". DENSE_RANK numbers the different spend figures: Rs 8,400 is the
-first, Rs 7,950 the second, Rs 6,200 the third and Rs 5,100 the fourth, so X ends on 4 while he stands
+first, Rs 7,950 the second, Rs 6,200 the third and Rs 5,100 the fourth, so X ends on 4 while standing
 seventh among the members.
 
 - a, "1, 1, 3, 4, 4, 4, 7": RANK's column, which skips the numbers a tie uses up.
-- c, "1, 2, 3, 4, 5, 6, 7": ROW_NUMBER's column, which gives every member a number of his own.
+- c, "1, 2, 3, 4, 5, 6, 7": ROW_NUMBER's column, which gives every member a number of their own.
 - d, "1, 1, 2, 3, 3, 3, 7": dense numbers down to W and then X's place among the members; a dense
   number never jumps.
 
@@ -85,16 +85,16 @@ The key is c, "ROW_NUMBER with more Q2 orders first, stated in advance: 31 ship,
 C-0132". Thirty-one slots is a hard cap, so the list cannot stretch to hold the tie. A tiebreaker the
 business states before the run, and can defend, keeps C-0044, who placed three Q2 orders, over C-0132,
 who placed two, which suits a programme worried about how often members order. The report names
-C-0132 and the reason, so he heads next week's calls.
+C-0132 and the reason, so they head next week's calls.
 
 - a, "RANK, which ships 32 members, and the team finds a thirty-second slot somewhere later in the
   week": keeps both members and breaks the cap the item set.
 - b, "Whole ties only, which ships 30, leaves both members on Rs 4,540 off and keeps one slot unused":
   drops two members who earned their places and wastes a call, the forty-nine the head refused, at a
   smaller line.
-- d, "ROW_NUMBER with the customer id deciding: 31 ship, C-0044 stays on his lower id, nothing to
+- d, "ROW_NUMBER with the customer id deciding: 31 ship, C-0044 stays on their lower id, nothing to
   report": the same thirty-one today, chosen by a reason nobody can defend, and C-0132 is never told
-  why he was left off.
+  why they were left off.
 
 ### Q5. Which route reaches the head's count for a top thirty-seven with no window, and what does it give?
 
@@ -102,7 +102,7 @@ Kind: a design item, the independent second route.
 
 The key is b, "Count the members who booked at least the thirty-seventh member's Rs 4,120: 38". A sort
 with `OFFSET 36` finds the thirty-seventh member's figure, Rs 4,120, and every member at or above it
-counts. C-0121, at place 38, booked the same Rs 4,120, so he counts, exactly as RANK ships both members
+counts. C-0121, at place 38, booked the same Rs 4,120, so C-0121 counts, exactly as RANK ships both members
 of the tie. The route uses a sort and a comparison, so a slip in a window's PARTITION BY or ORDER BY
 could not move it. In chapter 3 the same route gave Retail-Core's top fifty 50, at the fiftieth
 member's Rs 2,980.
@@ -118,9 +118,9 @@ member's Rs 2,980.
 
 Item 4, option d. It keeps the same thirty-one members as the key on this week's numbers, so a room
 can argue that the result is what matters. The head of Retail-Plus has to say why C-0132 was left off,
-and "his id was higher" is a reason no member accepts, while "C-0044 ordered more often this quarter"
-is one the head can repeat. The report is the other half: a cap that leaves someone off says who, so
-the member team can start next week with him.
+and "their id was higher" is a reason no member accepts, while "C-0044 ordered more often this quarter"
+is one the head can repeat. The report has to name who the cap left off, so
+the member team can start next week with them.
 
 ## Where does this show up at work?
 
@@ -128,7 +128,7 @@ American Airlines gives its limited upgrade seats to AAdvantage members in a sta
 tier, then the type of upgrade, then Loyalty Points earned in the last 12 months, and "If the upgrade
 type and 12-month Loyalty Point value are the same, we'll look at the booking code then date / time of
 the request to determine priority" (aa.com, upgrades for status members, checked 1 October 2026). That
-is item 4's hard cap with its tiebreaker written down in advance. RANK's rule is older than any
-database: in the Tokyo 2020 men's high jump final on 1 August 2021, Barshim of Qatar and Tamberi of
+is item 4's hard cap with its tiebreaker written down in advance. In the Tokyo
+2020 men's high jump final on 1 August 2021, Barshim of Qatar and Tamberi of
 Italy both cleared 2.37 m and shared the gold, and Nedasekau of Belarus was placed third, with no
 silver awarded (World Athletics results, checked 1 October 2026), which is RANK's 1, 1 and 3.

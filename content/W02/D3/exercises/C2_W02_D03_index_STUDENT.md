@@ -18,9 +18,9 @@ Nair, the team's senior analyst, would ask, and more than a third of the day's i
 the analysis before you judge one: the best-fit way with its size, the fact that would switch it, or a
 second route to the same number.
 
-**Who needs the answer.** You, planning the day. Each file below answers one rung of the marketing
-lead's ask, and a rung skipped is a part of Monday's call list you will build without having practised
-it.
+**Who needs the answer.** You need it to plan your day, since each file below answers one rung of the
+marketing lead's ask, and a rung you skip is a part of Monday's call list you will build without
+having practised it.
 
 **The questions on the way.**
 
@@ -39,7 +39,7 @@ it.
 | 3 | When two members spent the same at the line, how many does a list ship, and which rule did the head of Retail-Plus ask for? |
 | 4 | Whose monthly spend fell two months running? |
 | 5 | Has Q2 revenue kept pace with the plan line week by week, and where did it stand at mid-quarter? |
-| 6 | Which listed members does Marketing call first, and does each flag hold up when a member says he was on holiday? |
+| 6 | Which listed members does Marketing call first, and does each flag hold up when a member says they were on holiday? |
 
 ## Which file asks which question, and when do you take it?
 
@@ -51,15 +51,14 @@ it.
 | Items 1 and 2 live in chapter 3's last minutes; items 3 to 5 in the practice lab or tonight | `unguided/C2_W02_D03_ch3_tie_rule_STUDENT.md` | When two members spent the same at the line, how many does a list ship, and which rule did the head of Retail-Plus ask for? | Five letters; items 4 and 5 are design | `solutions/C2_W02_D03_ch3_tie_rule_solution_STUDENT.md` |
 | Items 1 and 2 live in chapter 4's last minutes; items 3 to 5 in the practice lab or tonight | `unguided/C2_W02_D03_ch4_falling_spend_STUDENT.md` | Whose monthly spend fell two months running? | Five letters; items 1, 4 and 5 are design | `solutions/C2_W02_D03_ch4_falling_spend_solution_STUDENT.md` |
 | Items 1 and 2 live in chapter 5's last minutes; items 3 to 5 in the practice lab or tonight | `unguided/C2_W02_D03_ch5_against_plan_STUDENT.md` | Has Q2 revenue kept pace with the plan line week by week, and where did it stand at mid-quarter? | Five letters; items 1 and 5 are design | `solutions/C2_W02_D03_ch5_against_plan_solution_STUDENT.md` |
-| Items 1 and 2 live in chapter 6's last minutes; items 3 to 5 in the practice lab or tonight | `unguided/C2_W02_D03_ch6_call_first_STUDENT.md` | Which listed members does Marketing call first, and does each flag hold up when a member says he was on holiday? | Five letters; items 1, 4 and 5 are design | `solutions/C2_W02_D03_ch6_call_first_solution_STUDENT.md` |
+| Items 1 and 2 live in chapter 6's last minutes; items 3 to 5 in the practice lab or tonight | `unguided/C2_W02_D03_ch6_call_first_STUDENT.md` | Which listed members does Marketing call first, and does each flag hold up when a member says they were on holiday? | Five letters; items 1, 4 and 5 are design | `solutions/C2_W02_D03_ch6_call_first_solution_STUDENT.md` |
 | The escalated case, alone: parts 1 and 2 in the afternoon, 20 minutes, and parts 3 to 5 in the practice lab | `unguided/C2_W02_D03_escalated_case_STUDENT.md` with `../notebooks/C2_W02_D03_ex1_escalated_case_STUDENT.ipynb` | What does Marketing get on Monday: each segment's list with its count, the members to ring first, the share of revenue the lists carry, and Q2 against plan? | Fifteen letters, the notebook's ten markers and five of the brief's own; items 11 to 15 are design | `solutions/C2_W02_D03_escalated_case_solution_STUDENT.md` and the executed `solutions/C2_W02_D03_ex1_escalated_case_solution_STUDENT.ipynb` |
 | The TA-led practice lab, after the day | `practice/C2_W02_D03_lab_STUDENT.md` | Can you rank a tie, choose GROUP BY or a window, and run the whole day on Kavya's drill, in an hour? | Ten letters and the drill's queries; items 5 and 10 are design, and the drill's queries are its design work | `solutions/C2_W02_D03_lab_solution_STUDENT.md` |
 | The take-home, in pairs or alone, about forty minutes | `unguided/C2_W02_D03_second_case_STUDENT.md` with `../notebooks/C2_W02_D03_ex2_second_case_STUDENT.ipynb` | Should Retail-Core's protect list rank members by how often they ordered in Q2, instead of by how much they spent? | Ten letters, the notebook's seven markers and three of the brief's own, and one line for the marketing lead; items 8 to 10 are design | `solutions/C2_W02_D03_second_case_solution_STUDENT.md` and the executed `solutions/C2_W02_D03_ex2_second_case_solution_STUDENT.ipynb` |
 | Tonight | `../takehome/C2_W02_D03_brief_STUDENT.md` | The take-home brief, on a second sample of the warehouse | Queries of your own, with the checks that prove them | `../takehome/C2_W02_D03_selfcheck_STUDENT.md`, opened once each part is done |
 
 The practice lab runs after the day, once the tentative IITGN block has finished, and it also hosts the
-escalated case's parts 3 to 5, the debrief of the room's wrong answers and the interview drill aloud;
-the lab set's opening lines say so.
+escalated case's parts 3 to 5, the debrief of the room's wrong answers and the interview drill aloud.
 
 ## How many items does the day hold, and how many of them are design items?
 

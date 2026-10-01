@@ -9,7 +9,7 @@ named only 28 members, all of them Business, and a count of different members se
 caught it. A sort in Python over the 462 Q2 orders picked the same fifty members in the same order.
 The set carries those habits to new numbers. Three of the five items are design items: 1, 4 and 5.
 
-**Who needs the answer.** You, checking your five letters after the lab or tonight. The marketing
+**Who needs the answer.** You need it to check your five letters after the lab or tonight. The marketing
 lead's member team rings every name on the list, so a list whose unit or whose check is wrong costs
 real calls.
 
@@ -94,10 +94,10 @@ The key is b, "Pull the 462 Q2 order rows into Python, total each member in a di
 462 rows". It shares no code with the window: it adds up each member's orders and sorts in Python, so
 a slip in the window's ORDER BY, or a filter that dropped a member, shows up as a different list. In
 the chapter it returned the same fifty members in the same order. It moves 462 rows to check what the
-query returned in 50, which is why it is the check and the query is the answer.
+query returned in 50, so the team runs it to check the query, and the query stays the answer.
 
 - a, "Pull the fifty rows the query returned into a spreadsheet and sort them again by revenue: 50
-  rows": a member left off the list is not among the fifty, so sorting the fifty again cannot find him.
+  rows": a member left off the list is not among the fifty, so sorting the fifty again cannot find them.
 - c, "Run the same window query again tomorrow and set the two lists side by side: 50 rows each": the
   same query twice repeats whatever it got wrong.
 - d, "Add up the fifty members' Q2 revenue and set it beside the quarter's Rs 9,84,00,000: one row":
@@ -122,7 +122,7 @@ column, which a later step could count or filter, earns nothing.
 
 ## Which wrong answer is worth arguing about?
 
-Item 4, option d. A sum set beside the quarter's total is a good first look, and most teams run it.
+Item 4, option d. A sum set beside the quarter's total is a good first look.
 It cannot answer the question asked, because a member who belongs on the list and is missing from it
 moves the sum by a few thousand rupees on a figure of nearly ten crore, and nothing tells you what the
 sum should have been. Item 4's key can fail, because it reaches the list by a route of its own.

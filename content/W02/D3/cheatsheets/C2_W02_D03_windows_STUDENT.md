@@ -106,7 +106,7 @@ plan. Add `order_id` to make it repeat.
 |---|---|---|---|---|---|
 | Spend, Rs | 6,440 | none | 4,300 | none | 2,540 |
 
-LAG compared his September with July. Seven of the 16 flags step over an empty month, and checking
+LAG compared September with July. Seven of the 16 flags step over an empty month, and checking
 that the two rows before September are August and July keeps 9. Zero-filling flags 26.
 
 **Crux:** A month with no order is no reading: check that LAG read the calendar months before.

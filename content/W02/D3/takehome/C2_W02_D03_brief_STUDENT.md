@@ -1,6 +1,7 @@
 # Which twenty Retail-Core members does Marketing ring this month, who among them is slipping, and where does a new extract's Q2 stand against plan?
 
-Take-home for Week 2, Wednesday. About two and three quarter hours in all: Marketing's second list
+This is the take-home for Week 2, Wednesday, and it takes about two and three quarter hours in all:
+Marketing's second list
 on a sample nobody has queried (about seventy-five minutes), a ranking question of your own (thirty
 minutes), the second case (forty minutes, in pairs or alone), and three PostgreSQL Exercises problems
 (twenty minutes). The self-check, `takehome/C2_W02_D03_selfcheck_STUDENT.md`, lists the numbers to
@@ -17,7 +18,7 @@ front of the room, starting from their row counts, so bring the counts as well a
 **Who needs the answer.** The marketing lead's member team rings the members on this list with a
 retention offer, twenty calls this month. A list that drops a member at the line by a coin toss, or
 names more members than it says, spends the calls badly, and a flag that reads a holiday as a fall
-rings a loyal member to tell him he is drifting. Meera Raghavan, Kalpa Retail's CEO, reads the plan
+rings a loyal member to tell them they are drifting. Meera Raghavan, Kalpa Retail's CEO, reads the plan
 line to decide whether the quarter needs action.
 
 **The questions on the way.**
@@ -107,8 +108,8 @@ below July's, three ways, and count each across the whole book before you apply 
 - the flag that requires the two rows before September to be August and July.
 
 Then count how many members on your list carry the last flag. Write one comment line for a member on
-your list who says he was on holiday in August: what your definition does with a month in which he
-placed no order, and why you did not fill that month with zero.
+your list who says they were on holiday in August: what your definition does with a month in which
+they placed no order, and why you did not fill that month with zero.
 
 ## 5. Where does this extract's Q2 stand against its plan line, at mid-quarter and at the close?
 
@@ -126,7 +127,7 @@ the full plan weeks booked below their own week's plan.
 Where this is used at work: Meera and the marketing lead carry these sentences into the leadership
 meeting, where nobody reads the queries behind them.
 
-As a comment, three sentences: the tie rule and the count it ships; how many listed members carry the
+Write three sentences as a comment: the tie rule and the count it ships; how many listed members carry the
 flag and what it means for a member with a month off; and where Q2 stood against plan at mid-quarter
 and at the close, by its total and by its weekly run.
 

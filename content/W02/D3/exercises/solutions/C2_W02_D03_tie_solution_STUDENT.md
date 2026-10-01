@@ -8,7 +8,7 @@ head of Retail-Plus's rule written as a sentence. The five items ask what each s
 runs. None of them is a design item: the guided build is the one place in chapter 3 where the trainer
 chooses every step, and the design items sit in the chapter set and the two cases.
 
-**Who needs the answer.** You, after chapter 3, checking five letters. The head of Retail-Plus will ask
+**Who needs the answer.** You need it after chapter 3, to check five letters. The head of Retail-Plus will ask
 of any list which rule made its count, and the answer is one of the three functions and a sentence.
 
 **The questions on the way.**
@@ -31,7 +31,7 @@ where the ties sit, and the head's rule, RANK, ships a tie at the line whole and
 
 Kind: predict the output, on invented numbers. The key is d, "1, 1, 2, 3, 3, 4". The spend figures are
 Rs 7,500, Rs 6,000, Rs 5,200 and Rs 4,100, four different values, so DENSE_RANK runs from 1 to 4: A and
-B share 1, C is 2, D and E share 3 and F is 4, two below his place among the members.
+B share 1, C is 2, D and E share 3 and F is 4, two below F's place among the members.
 
 - a, "1, 2, 3, 4, 5, 6": ROW_NUMBER's column, one number per member.
 - b, "1, 1, 3, 4, 4, 6": RANK's column, which skips the numbers a tie uses up.
@@ -80,7 +80,7 @@ C-0094 onto a list neither earned.
 
 Kind: choose the line. The key is b, "Retail-Core's list holds 50 under RANK; nobody ties at fiftieth,
 where C-0005 booked Rs 2,980." It names the head's rule, the count it ships and the member at the line
-with his figure, so the head can repeat it to a member who asks why he is fifty-first.
+with their figure, so the head can repeat it to a member who asks why they are fifty-first.
 
 - a, "Retail-Core's list holds 52 under DENSE_RANK, which keeps every tie together, just as you asked.":
   sounds like the head's words and ships two members who tie with nobody.
@@ -100,6 +100,6 @@ well as the count.
 
 ## Where does this show up at work?
 
-Every interview that includes SQL asks some version of item 1 or item 2, usually as "RANK, DENSE_RANK
-and ROW_NUMBER on a tie", and follows it with "your top ten came back with eleven rows; is it a bug?".
+An interview that includes SQL often asks item 1 or item 2 in the form "RANK, DENSE_RANK and
+ROW_NUMBER on a tie", and follows it with "your top ten came back with eleven rows; is it a bug?".
 The answer is the tie rule working, said with the count and the members at the line.

@@ -1,6 +1,6 @@
 # When two members spent the same at the line, how many does a list ship, and which rule did the head of Retail-Plus ask for?
 
-Chapter 3 set, five items. Items 1 and 2 run live in chapter 3's last minutes if the chapter ran to
+Chapter 3's set holds five items. Items 1 and 2 run live in chapter 3's last minutes if the chapter ran to
 time; items 3 to 5 are the practice lab's stretch or tonight's work.
 
 > "Ties matter. If two members spent the same, I want them ranked the same, and I want to know how
@@ -9,10 +9,10 @@ time; items 3 to 5 are the practice lab's stretch or tonight's work.
 > The head of Retail-Plus, Kalpa Retail
 
 The head of Retail-Plus owns Kalpa Retail's paid membership tier and defends every protect list to
-his members and to Marketing. Q2 is July to September 2026, and a member's Q2 revenue is the booked
+the tier's members and to Marketing. Q2 is July to September 2026, and a member's Q2 revenue is the booked
 amount of every Q2 order the member placed, whatever its status. Two members tie when their Q2
 revenue is the same to the rupee. A list "ships" the members whose number is at or inside the line,
-and four rules can number them. `ROW_NUMBER` gives every member a number of his own, and a second key,
+and four rules can number them. `ROW_NUMBER` gives every member a number of their own, and a second key,
 the tiebreaker, decides between two who tie. `RANK` gives tied members the same number and skips the
 numbers they use up, 1, 1, 3. `DENSE_RANK` gives them the same number and skips nothing, 1, 1, 2, so it
 numbers the different spend figures. Whole ties only keeps a tie when all of it fits inside the line:
@@ -20,7 +20,7 @@ with `tied_with = count(*) OVER (PARTITION BY segment, q2_revenue)`, a member sh
 `rank + tied_with - 1` is at or inside the line. Retail-Core, Kalpa's everyday shoppers, has 96 Q2
 buyers.
 
-Seven members, every one of them invented, for items 1 and 2:
+Items 1 and 2 use seven members, every one of them invented:
 
 | Member (invented) | R | S | T | U | V | W | X |
 |---|---|---|---|---|---|---|---|
@@ -46,8 +46,9 @@ Retail-Core by Q2 revenue, places 29 to 43. No two members share a figure in pla
 | 42 | C-0118 | 2 | Rs 3,590 |
 | 43 | C-0022 | 2 | Rs 3,520 |
 
-**Who needs the answer.** The head of Retail-Plus, who answers to a member left off with the same
-spend as one kept, and the marketing lead, whose team makes one call for every member a list ships. A
+**Who needs the answer.** The head of Retail-Plus needs it to answer a member left off with the same
+spend as one kept, and the marketing lead needs it because the team makes one call for every member a
+list ships. A
 list labelled forty that carries forty-two spends two calls nobody planned.
 
 **The questions on the way.**
@@ -68,7 +69,7 @@ Post exactly this shape: xxxxx
 
 ## How do the three functions number a tie?
 
-Used at work whenever a ranked report meets two equal values and its reader asks why two rows share a
+This comes up at work whenever a ranked report meets two equal values and its reader asks why two rows share a
 number.
 
 ### Q1. Which DENSE_RANK column comes back for the seven invented members?
@@ -99,7 +100,7 @@ d) 5, 6, 7 and 6
 
 ## How long is Retail-Core's list under each rule?
 
-Used at work whenever a top-N list arrives longer or shorter than N and the reason has to come before
+This comes up at work whenever a top-N list arrives longer or shorter than N and the reason has to come before
 anyone acts on it.
 
 ### Q3. What explains DENSE_RANK's 42 on a Retail-Core top forty, and what does the head's rule ship?
@@ -118,7 +119,7 @@ d) The ties at 31 and 37 each cost DENSE_RANK a number, so its 40 lands on place
 
 ## Which rule fits when the calls are capped?
 
-Used at work whenever a list meets a hard limit, such as seats at a dinner, boxes already packed or
+This comes up at work whenever a list meets a hard limit, such as seats at a dinner, boxes already packed or
 call slots in a week.
 
 ### Q4. Which rule and which report fit thirty-one call slots for Retail-Core?
@@ -133,11 +134,11 @@ b) Whole ties only, which ships 30, leaves both members on Rs 4,540 off and keep
 
 c) ROW_NUMBER with more Q2 orders first, stated in advance: 31 ship, and the report names C-0132
 
-d) ROW_NUMBER with the customer id deciding: 31 ship, C-0044 stays on his lower id, nothing to report
+d) ROW_NUMBER with the customer id deciding: 31 ship, C-0044 stays on their lower id, nothing to report
 
 ## How do you confirm a list's count without a window?
 
-Used at work whenever a count goes to a stakeholder who will ask why the list holds more or fewer
+This comes up at work whenever a count goes to a stakeholder who will ask why the list holds more or fewer
 than they asked for.
 
 ### Q5. Which route reaches the head's count for a top thirty-seven with no window, and what does it give?

@@ -61,8 +61,8 @@ ORDER  BY place;
 ```
 
 **What you should see.** The orders list holds 3 rows and 2 members, since J appears twice. Summed
-first, the members rank J (Rs 2,100) first, K (Rs 1,200) second and L (Rs 300) third. That is
-chapter 1's 50 rows and 28 members in miniature, and the same check catches it.
+first, the members rank J (Rs 2,100) first, K (Rs 1,200) second and L (Rs 300) third. Chapter
+1's list of 50 rows and 28 members went wrong the same way, and the same check catches it.
 
 ### Chapter 2: where does the numbering restart when a partition is added?
 
@@ -88,7 +88,7 @@ and filter `place_in_region <= 2` outside it: P, Q, R and T. Filtering inside WH
 
 ### Chapter 3: what do the three functions give, and how many rows does each ship at a line?
 
-The same six members, all in one list. Write the ROW_NUMBER, RANK and DENSE_RANK columns by hand,
+Take the same six members, now all in one list. Write the ROW_NUMBER, RANK and DENSE_RANK columns by hand,
 then count what each rule ships for a top three and for a top five.
 
 ```sql
@@ -115,8 +115,8 @@ FROM   r;
 
 **What you should see.** ROW_NUMBER gives 1 to 6, RANK gives 1, 2, 2, 4, 5, 5 and DENSE_RANK gives 1,
 2, 2, 3, 4, 4. For a top three the rules ship 3, 3, 4 and 3: nobody ties at third, yet DENSE_RANK
-ships S as well, because the tie between Q and R left its numbers one behind. That is Retail-Core's
-52 on six rows. For a top five, where T and U tie at fifth, RANK ships 6 and whole ties only ships 4.
+ships S as well, because the tie between Q and R left its numbers one behind. Retail-Core's 52
+came from the same slip. For a top five, where T and U tie at fifth, RANK ships 6 and whole ties only ships 4.
 
 ### Chapter 4: whose month does LAG read when nothing partitions the window?
 
@@ -216,7 +216,7 @@ Marketing wants to know whether a gap in a member's buying is unusual before it 
 **The questions on the way.**
 
 1. Chapter 5: in which weeks did Q2's lead over plan shrink, and when did it peak?
-2. Chapter 3: can one query hand the head of a tier his list, its count and the members at the line?
+2. Chapter 3: can one query hand the head of a tier their list, its count and the members at the line?
 3. Chapter 6: how often does a member's next order come after a gap of a month or more?
 
 ### Chapter 5: in which weeks did Q2's lead over plan shrink, and when did it peak?
@@ -256,9 +256,9 @@ week before them, and each of those weeks booked below its plan of Rs 75,69,230,
 moves by exactly the week's booked less its plan. Write the line to Meera: when the lead stopped
 growing, and what the run rate has done since.
 
-### Chapter 3: can one query hand the head of a tier his list, its count and the members at the line?
+### Chapter 3: can one query hand the head of a tier their list, its count and the members at the line?
 
-Eight invented members, with their spend and their Q2 orders, and a top five:
+Take eight invented members, with their spend and their Q2 orders, and a top five:
 
 ```sql
 WITH invented (member, spend, q2_orders) AS (

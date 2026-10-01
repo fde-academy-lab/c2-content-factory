@@ -1,6 +1,6 @@
 # Can you make the day's eight calls about the protect list in twenty seconds each?
 
-Eight items, ungraded, scored on correctness and speed together. Seven are today's, and the last is
+The quiz has eight items, ungraded and scored on correctness and speed together. Seven are today's, and the last is
 the return question from Tuesday, one level up. Each item names what it tests, so an item dropped
 for time says what was lost. Every member and amount in items 1, 5 and 7 is invented for the quiz.
 

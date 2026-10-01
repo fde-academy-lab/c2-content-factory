@@ -8,7 +8,7 @@ how many rows it returns, and run the whole day end to end on Kavya's drill of e
 Two of the ten items are design items: 5, the build sized for an ask by city, and 10, the second route
 to a count. Problem 3's queries are the problem's own design work, and a model build is below.
 
-**Who needs the answer.** You, at the end of the lab, checking ten letters and your queries. The TA
+**Who needs the answer.** You need it at the end of the lab, to check ten letters and your queries. The TA
 reads your problem 3 file the way Kavya reads a list before it leaves the team: the rule and its count
 first, then the flag's months, then the running total's last row.
 
@@ -97,7 +97,7 @@ Rs 5,400 and both of them ship". The Q2 totals are V-03 Rs 9,600, V-01 and V-06 
 Rs 6,900, V-05 and V-08 Rs 5,400 each, V-04 Rs 4,700 and V-07 Rs 3,900. RANK gives 1, 2, 2, 4, 5, 5, so
 six members are at or inside fifth, and the list says so.
 
-- a, "Five: V-03, V-01, V-06, V-02 and V-05, with V-08 left off by his id": ROW_NUMBER's list, which
+- a, "Five: V-03, V-01, V-06, V-02 and V-05, with V-08 left off by their id": ROW_NUMBER's list, which
   drops a member who spent exactly what the fifth did.
 - b, "Four, since the tie at fifth straddles the line and both of its members drop": whole ties only,
   the list short of five that the head refused.
@@ -106,17 +106,17 @@ six members are at or inside fifth, and the list says so.
 
 ### Q7. Which member on the hurried flag would a call wrongly accuse, and why?
 
-Kind: spot the plausible wrong output, on invented numbers. The key is a, "V-02, since LAG compared his
-September with July and his July with May". V-02 bought in May, July and September, so LAG read July
-as his last month and May as the one before; Rs 3,000 below Rs 3,900 below Rs 4,500 looks like two
+Kind: spot the plausible wrong output, on invented numbers. The key is a, "V-02, since LAG compared their
+September with July and their July with May". V-02 bought in May, July and September, so LAG read July
+as their last month and May as the one before; Rs 3,000 below Rs 3,900 below Rs 4,500 looks like two
 falls running, across two months with no order.
 
-- b, "V-04, since he stands off the top five and Marketing does not ring him": his fall is real,
-  Rs 2,050, Rs 1,550 and Rs 1,100 in three calendar months; being off the list decides whether he is
+- b, "V-04, since they stand off the top five and Marketing does not ring them": the fall is real,
+  Rs 2,050, Rs 1,550 and Rs 1,100 in three calendar months; being off the list decides whether V-04 is
   rung, and says nothing about whether the flag is right.
-- c, "V-05, since his September fell by less than his August did": a fall is a fall, whatever its
-  size; Rs 2,300, Rs 1,750 and Rs 1,350 fall twice running in calendar months.
-- d, "V-03, since his fall began in July, before the two months Marketing asked about": two months
+- c, "V-05, since their September fell by less than their August did": the flag counts a fall of any
+  size, and Rs 2,300, Rs 1,750 and Rs 1,350 fall twice running in calendar months.
+- d, "V-03, since their fall began in July, before the two months Marketing asked about": two months
   running means September below August and August below July, which is exactly V-03's quarter.
 
 ### Q8. Who does Marketing ring first: listed under the head's rule and flagged on calendar months?
@@ -162,7 +162,8 @@ ships it, by a sort and a comparison that no slip in a window could move.
 
 ## What does a model build of Kavya's drill look like?
 
-One version that answers every part. Each step says on its first line what it is for.
+The build below is one version that answers every part, and each named step opens with a comment
+saying what it is for.
 
 ```sql
 -- Kavya's drill, part 1: the list, the flag and the calls, in one query of named steps.
@@ -254,15 +255,15 @@ last row equals a sum you counted without it.
 
 ## Which wrong answer is worth arguing about?
 
-Item 7, option b. V-04 is the member a careful analyst most wants to take off the call list, since he
-is not on the top five, and the argument sounds like rigour. His three months are a real fall in
-calendar months, so the flag is right about him, and being off the list is a separate decision about
+Item 7, option b. Because V-04 is not on the top five, a careful analyst most wants to take V-04 off
+the call list, and the argument sounds like rigour. V-04's three months are a real fall in
+calendar months, so the flag is right, and being off the list is a separate decision about
 who gets rung this week. The flag and the list answer two different questions, and item 8 is where
 the answers meet.
 
 ## Where does this show up at work?
 
-Analyst interviews at data teams ask for the three functions on a tie, then hand over an ask and ask
-"GROUP BY or a window, and how many rows?", and close on a small end-to-end problem like Kavya's drill,
-where the interviewer watches for the count, the months behind a flag and the last row of a running
-total.
+Analyst interviews at data teams often ask for the three functions on a tie, then hand over an ask and
+ask "GROUP BY or a window, and how many rows?", and close on a small end-to-end problem like Kavya's
+drill, where the interviewer watches for the count, the months behind a flag and the last row of a
+running total.
