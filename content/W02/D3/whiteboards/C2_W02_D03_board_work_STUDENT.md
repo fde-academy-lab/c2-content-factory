@@ -16,7 +16,7 @@ Business, Retail-Core, Retail-Plus and Student. The decks and the notebooks use 
 Marketing's three asks go up first, in words across the top of the board: a top fifty in each
 segment, a flag for spend that fell two months running, and revenue to date against the plan line.
 The room tries one GROUP BY for all three and finds that it returns one row per group, so the fork
-goes up under the asks and stays up all day.
+goes up under the asks, GROUP BY on one branch and a window on the other, and stays up all day.
 
 ```mermaid
 flowchart LR
@@ -54,10 +54,10 @@ flowchart LR
 
 ## How do a named step and a window turn 462 Q2 orders into a ranked list of members?
 
-Chapter 1 draws option C, the call among four ways to rank. The named step adds up each member's
+Chapter 1 draws the way the room chose among four ways to rank. The named step adds up each member's
 Q2, 227 rows that carry all 462 orders, and the window numbers them with the customer id settling
-equal spend. Under it the room writes the result: 35 Business members, every Business buyer, then
-11 Retail-Plus and 4 Retail-Core, and no Student.
+equal spend. Under it the room writes the result: 35 Business members, every Business buyer, then 11
+Retail-Plus and 4 Retail-Core, and no Student.
 
 ```mermaid
 flowchart LR
@@ -176,8 +176,9 @@ flowchart LR
 
 On Kalpa's Retail-Core, 96 Q2 buyers, a hurried analyst picks DENSE_RANK and ships 52 members as the
 top fifty, where the other three rules ship 50. Two ties inside the list cost DENSE_RANK one number
-each, and RANK, the head of Retail-Plus's rule, ships the same fifty as ROW_NUMBER, since nobody ties
-at Retail-Core's line. The head's own tier is counted by every learner in their own notebook.
+each, and RANK, the rule the head of Retail-Plus asked for, ships the same fifty as ROW_NUMBER here,
+since nobody ties at Retail-Core's line. The head's own tier is counted by every learner in their
+own notebook.
 
 ```mermaid
 flowchart LR
@@ -251,7 +252,7 @@ flowchart LR
 
 ---
 
-## Why did the plan-first build close Rs 15,39,810 short of plan?
+## Why did a build that starts from the plan's weeks close Rs 15,39,810 short of plan?
 
 The build that started from the plan's 13 weeks closed at Rs 9,68,60,180 against a plan of
 Rs 9,83,99,990. The check sets the close beside Monday's Q2 total, Rs 9,84,00,000, and finds it

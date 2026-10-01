@@ -3,7 +3,7 @@
 Week 2, Day 3. Afternoon.
 
 Kicker: WEEK 2  ·  WEDNESDAY  ·  AFTERNOON
-Quote: Before we ring anyone: one of your flagged members rang our help line to say he was travelling in August and has not stopped buying. Is your flag wrong about him, and how many others?
+Quote: Before we ring anyone: one of your flagged members rang our help line to say they were travelling in August and have not stopped buying. Is your flag wrong about them, and how many others?
 Who: The head of Retail-Plus, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre
 
 ```notes
@@ -36,7 +36,7 @@ Then chapter 6.
 ---
 
 ## SECTION 6: Who does Marketing call?
-*Which listed members does Marketing call first, and does each flag hold up when a member says he was on holiday?*
+*Which listed members does Marketing call first, and does each flag hold up when a member says they were on holiday?*
 
 ```notes
 LIVE. Thirty minutes: the need and the company (4), the options and the call (5), the list and
@@ -50,7 +50,7 @@ beside it.
 ## S2. Answered in six questions, before the first call
 *Who needs this answer, and which questions lead to it?*
 
-**Who needs the answer.** The member team rings the flagged members on the protect lists this week, and the head of Retail-Plus answers to his members for every call. A call that tells a loyal member his spend is falling when he was away costs his goodwill and maybe his renewal.
+**Who needs the answer.** The member team rings the flagged members on the protect lists this week, and the head of Retail-Plus answers to the tier's members for every call. A call that tells a loyal member their spend is falling when they were away costs their goodwill and maybe their renewal.
 
 ```timeline
 label: 1 | title: Which reading of last month? | body: Four ways, sized
@@ -71,12 +71,12 @@ LIVE, 1 minute. Read the six questions. Then the need.
 *Who asks, what is measured, and what does a wrong call cost?*
 
 ```cards
-icon: crown | eyebrow: Who asks | title: The head of Retail-Plus | body: Answers to his members for every call the member team makes.
+icon: crown | eyebrow: Who asks | title: The head of Retail-Plus | body: Answers to the tier's members for every call the member team makes.
 icon: calendar | eyebrow: The metric | title: The falling flag | body: September below August, and August below July: three calendar months, each lower.
-icon: triangle-alert | eyebrow: A wrong call costs | title: A loyal member accused | body: His goodwill, maybe his renewal, and a week of calls spent on false alarms. | tone: dark
+icon: triangle-alert | eyebrow: A wrong call costs | title: A loyal member accused | body: Their goodwill, maybe their renewal, and a week of calls spent on false alarms. | tone: dark
 ```
 
-**The client asks.** "Is your flag wrong about him, and how many others?"
+**The client asks.** "Is your flag wrong about them, and how many others?"
 
 ```notes
 LIVE, 2 minutes. The member is C-0216 of Retail-Plus. Monthly spend is a member's booked revenue in
@@ -148,7 +148,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 1 minute. Two readings of "the month before": the calendar's, and the row LAG reads. They
+LIVE, 1 minute. "The month before" has two readings: the calendar's, and the row LAG reads. They
 agree only when no month is empty. Then the list meets the flag.
 ```
 
@@ -190,23 +190,23 @@ LIVE, 1 minute. The answer is a. Then the member on holiday.
 ---
 
 ## S9. Question: which month did LAG call last month?
-*What did LAG compare for the member who says he was on holiday?*
+*What did LAG compare for the member who says they were on holiday?*
 
 | Month | Apr | May | Jun | Jul | Aug | Sep |
 |---|---|---|---|---|---|---|
 | C-0216, Rs | none | 6,440 | none | 4,300 | none | 2,540 |
 
-**Question.** C-0216 of Retail-Plus stands at place 23 on his segment's list. Which month did LAG treat as "last month" for his September, as a letter? a) August; b) July; c) June; d) none, since his August is empty.
+**Question.** C-0216 of Retail-Plus stands at place 23 on the Retail-Plus list. Which month did LAG treat as "last month" for C-0216's September, as a letter? a) August; b) July; c) June; d) none, since their August is empty.
 
 ```notes
-LIVE, 2 minutes. Read his row aloud: three months with orders and three without. Letters in chat.
+LIVE, 2 minutes. Read C-0216's row aloud: three months with orders and three without. Letters in chat.
 Then the answer.
 ```
 
 ---
 
 ## S10. Answer: July, four months from May to September
-*What did LAG compare for the member who says he was on holiday?*
+*What did LAG compare for the member who says they were on holiday?*
 
 ```mermaid
 flowchart LR
@@ -217,7 +217,7 @@ flowchart LR
     class J,M bad
 ```
 
-**The check.** There is no August row, so LAG compared September with July and July with May. Chapter 4's flag called that two months of falls; his rows say August is simply empty.
+**The check.** There is no August row, so LAG compared September with July and July with May. Chapter 4's flag called that two months of falls; C-0216's rows say August is simply empty.
 
 ```notes
 LIVE, 2 minutes. The answer is b. Then the hurried reply to the head of Retail-Plus.
@@ -233,7 +233,7 @@ value: 16 | label: calls | note: each told their spend fell two months running
 value: 1 | label: of them | note: the member on holiday, among others
 ```
 
-**What breaks.** The hurried reply to the head of Retail-Plus is that C-0216 did spend less each time he ordered, and every one of the sixteen gets the same call.
+**What breaks.** The hurried reply to the head of Retail-Plus is that C-0216 did spend less with each order, and every one of the sixteen gets the same call.
 
 ```notes
 LIVE, 2 minutes, notebook 06, section 3. Ask the room whether they would defend the flag as it
@@ -277,7 +277,7 @@ value: 9 | label: members flagged | note: three consecutive months, each lower
 value: 7 | label: calls not made | note: the member on holiday among them
 ```
 
-**What changed.** Every call that goes out now describes three consecutive months that each fell, months the member can check on his own statement.
+**What changed.** Every call that goes out now describes three consecutive months that each fell, months the member can check on their own statement.
 
 ```notes
 LIVE, 2 minutes. Then a second route that shares no window.
@@ -339,7 +339,7 @@ each fell. Do not read the list aloud. Then the chapter's answers.
 
 **Kavya's review.** "A month with no order is no reading. Write that into the flag's definition, and read the rows behind a flag before a call goes out."
 
-**In the interview.** [D] A member says he was on holiday and should not be flagged: how does your definition treat a month with no orders, and why not fill it with zero?
+**In the interview.** [D] A member says they were on holiday and should not be flagged: how does your definition treat a month with no orders, and why not fill it with zero?
 
 ```notes
 LIVE, 2 minutes. One breath: a month with no order breaks the run, checked by reading the months LAG
@@ -391,8 +391,8 @@ icon: circle-check | eyebrow: Every part | title: Close every loop | body: Count
 ```
 
 ```notes
-LIVE, 2 minutes. These are the morning's rules, not the case's answers. Then go: seventeen
-minutes, parts 1 and 2. After the case, the close.
+LIVE, 2 minutes. The cards repeat the morning's rules and give away none of the case's answers.
+Then go: seventeen minutes, parts 1 and 2. After the case, the close.
 ```
 
 ---
@@ -470,8 +470,8 @@ says why the right answer holds. Item 8 is Tuesday's return question. Then tomor
 
 ---
 
-## D22. The interview drill, for the lab: thirteen questions
-*Which interview questions does today equip you to answer, and how are they tagged?*
+## D22. The interview drill, for the lab: ten questions
+*Which staple and frequent interview questions does today equip you to answer?*
 
 | Tag | Question |
 |---|---|
@@ -485,19 +485,36 @@ says why the right answer holds. Item 8 is Tuesday's return question. Then tomor
 | [F] | LAG returned a value for a customer's very first month: what went wrong? |
 | [F] | What makes a running total deterministic, and how would you notice one that was not? |
 | [F] | Revenue to date is nine times the plan by week seven: what is the likely mistake? |
-| [D] | The business says ties rank the same: which function, and how many rows might the top-N report ship? |
-| [D] | A member was on holiday: how does your flag treat a month with no orders, and why not zero? |
-| [D] | Your running total closes below the quarter's total: what do you check first? |
 
 ```notes
-SELF-STUDY, and the practice lab's drill. [S] is a staple asked everywhere, [F] frequent at global
-capability centres and product companies, [D] a differentiator. Each question is answered in full in
-its chapter's notebook and in the study notes; in the lab, pairs ask each other aloud.
+SELF-STUDY, and the practice lab's drill. [S] is a staple asked everywhere and [F] frequent at global
+capability centres and product companies; D23 carries the three differentiators. Each question is
+answered in full in its chapter's notebook and in the study notes; in the lab, pairs ask each other
+aloud.
 ```
 
 ---
 
-## D23. The second case, for the take-home: Retail-Core
+## D23. The interview drill, for the lab: three to finish
+*Which differentiator questions close the drill?*
+
+| Tag | Question |
+|---|---|
+| [D] | The business says ties rank the same: which function, and how many rows might the top-N report ship? |
+| [D] | A member was on holiday: how does your flag treat a month with no orders, and why not zero? |
+| [D] | Your running total closes below the quarter's total: what do you check first? |
+
+Each one asks for a judgment the day's numbers support: the count a tie rule ships, the month with no
+order, and the running total that has to close on the quarter's own total.
+
+```notes
+SELF-STUDY, and the practice lab's drill, asked last. [D] marks a differentiator. The answers are in
+chapter 3's, chapter 6's and chapter 5's notebooks and in the study notes.
+```
+
+---
+
+## D24. The second case, for the take-home: Retail-Core
 *Should Retail-Core's protect list rank members by how often they ordered in Q2, instead of by how much they spent?*
 
 **The client asks.** "Frequency is what fell in Retail-Plus. Before it spreads, I want Retail-Core's top fifty ranked by how often members ordered in Q2. Same rule as the head of Retail-Plus: ties ranked the same, and tell me how many made it."
@@ -519,7 +536,7 @@ exercises/unguided/C2_W02_D03_second_case_STUDENT.md.
 
 ---
 
-## D24. The day's wrong numbers, each with its check
+## D25. The day's wrong numbers, each with its check
 *Which plausible wrong numbers did the day stage, and what caught each?*
 
 | Chapter | The wrong number | The check that caught it |
@@ -533,12 +550,12 @@ exercises/unguided/C2_W02_D03_second_case_STUDENT.md.
 
 ```notes
 SELF-STUDY, and the lab's debrief of the room's wrong answers. Each line is a trap the day staged on
-purpose; the room met each one before its name.
+purpose, and the room met each wrong number before anyone named the mistake.
 ```
 
 ---
 
-## S25. Tomorrow: one table per customer, left open
+## S26. Tomorrow: one table per customer, left open
 *The growth team asks the next question: what does Marketing's own table look like?*
 
 **The client asks.** "We want one table with one row per customer, refreshed every Monday: how recently they bought, how often, how much, their segment, whether the monsoon sale reached them, and last week's flags."

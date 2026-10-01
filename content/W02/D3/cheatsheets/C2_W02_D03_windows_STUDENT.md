@@ -38,7 +38,7 @@ Business, 11 Retail-Plus and 4 Retail-Core.
 
 ## Panel 3: How does each segment get its own fifty?
 
-| Segment | Buyers | Book split | Partitioned |
+| Segment | Buyers | From one list | Partitioned |
 |---|---|---|---|
 | Business | 35 | 35 | 35 |
 | Retail-Core | 96 | 4 | 50 |
@@ -94,8 +94,9 @@ The quick flag names 20 members, 4 of them read from another member's months; th
 | Plan weeks LEFT JOIN weekly | Rs 9,68,60,180 | Rs 15,39,810 short |
 | 1 to 5 July moved onto 6 July | Rs 9,84,00,000 | Rs 10 ahead |
 
-The plan line has no week for 1 to 5 July. At mid-quarter Q2 stood Rs 1,57,51,980 ahead on one July
-week; six of seven full weeks since 10 August ran below plan. Add `order_id` to make it repeat.
+The plan line has no week for 1 to 5 July, so the first build drops 25 orders. At mid-quarter Q2
+stood Rs 1,57,51,980 ahead on one July week; six of seven full weeks since 10 August ran below
+plan. Add `order_id` to make it repeat.
 
 **Crux:** A running total is done when its last value equals the quarter's total.
 

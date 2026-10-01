@@ -1,14 +1,14 @@
 # How does the TA run Wednesday's practice lab, what goes first when time is short, and where will learners stall?
 
-**TRAINER ONLY.** For the TA who runs the practice lab after the day, from
+**TRAINER ONLY.** This note is for the TA who runs the practice lab after the day, from
 `exercises/practice/C2_W02_D03_lab_STUDENT.md`, with the escalated case's parts 3 to 5
 (`exercises/unguided/C2_W02_D03_escalated_case_STUDENT.md` and
 `notebooks/C2_W02_D03_ex1_escalated_case_STUDENT.ipynb`), the debrief of the room's wrong answers and
 the interview drill around it. This page names the plants; no learner file does.
 
-**Who needs the answer.** The TA, who takes the room after an afternoon whose last 120 minutes went to
-the IITGN faculty block (tentative), so the trainer's own afternoon held only chapter 6, the case's
-first two parts and the Kahoot. The lab has to leave every learner with the case finished, their wrong
+**Who needs the answer.** The TA needs it to decide what the lab runs, and in what order, after an
+afternoon whose last 120 minutes went to the IITGN faculty block (tentative), so the trainer's own
+afternoon held only chapter 6, the case's first two parts and the Kahoot. The lab has to leave every learner with the case finished, their wrong
 answers heard once aloud, the day's habits run on fresh numbers and the interview questions said out
 loud. A lab that replays the morning's items sends the room home without the drill and without the
 debrief, the two parts nothing else in the day repeats.
@@ -78,7 +78,7 @@ Cut in this order, and stop as soon as the lab fits.
 | Problem 2, item 4 | They mark ask 4 as GROUP BY, picturing months as columns, or ask 5 as GROUP BY | "How many rows does the answer have: one per group, or one per row you started with?" |
 | Problem 2, item 5 | They pick the six glued queries because they return the right 18 rows | "How many times does each build read the orders, and what happens when a seventh city opens?" |
 | Problem 3, item 6 | They answer five, the ROW_NUMBER habit | "Did V-08 spend less than V-05?" |
-| Problem 3, item 7 | They pick V-04 because he is off the list | "Is V-04's fall real in calendar months, and is being on the list the same question?" |
+| Problem 3, item 7 | They pick V-04 because that member is off the list | "Is V-04's fall real in calendar months, and is being on the list the same question?" |
 | Problem 3, item 8 | They take the hurried flag's three | "Which months did LAG read for V-02?" |
 | Problem 3, item 9 | They pick a, the figures after the fix | "What does a running total give two rows that share the ORDER BY value?" |
 | Problem 3, item 10 | They count figures, option a | "Are you counting members or amounts?" |
@@ -102,7 +102,7 @@ corrects it.
    fiftieth, so RANK ships 51. DENSE_RANK ships 52, because a natural tie at 48th, C-0189 and C-0206 on
    Rs 3,480, and the tie at fiftieth each save it a number, so its 50 lands on the 52nd member, C-0259
    on Rs 3,200. Whole ties only ships 49 and drops both members on Rs 3,350, the forty-nine the head
-   refused. ROW_NUMBER ships 50 and keeps C-0185 on his lower id. The RANK lists hold 156 members in
+   refused. ROW_NUMBER ships 50 and keeps C-0185 on the lower id. The RANK lists hold 156 members in
    all, so item 11's calls carried to next week are 6, Retail-Plus's 51 less 45. Retail-Plus's list
    carries Rs 3,56,780 of Rs 4,13,380 under RANK, 86.3 percent, against Rs 3,53,430, 85.5 percent, under
    ROW_NUMBER. C-0185 is also one of the seven members whose flag stepped over an empty month (April
@@ -123,8 +123,9 @@ corrects it.
    and Meera needs both. If a learner asks where the July week's money came from, send the room to sort
    that week's orders by amount and let them find it: KR-00667, one Business order of Rs 1,98,57,600 on
    13 July 2026, from C-0286, whose Q2 total is Rs 2,08,64,600. Without it the week of 13 July booked
-   Rs 67,71,320, below its Rs 75,69,230, and Q2 would have stood Rs 41,05,620 behind plan at mid-quarter.
-   The lead at mid-quarter is one order. Do not name it before somebody has sorted.
+   Rs 67,71,320, below its Rs 75,69,230, and Q2 would have stood Rs 41,05,620 behind plan at
+   mid-quarter, so that one order carries the whole mid-quarter lead. Do not name it before somebody
+   has sorted.
 
 ## Which interview questions does the drill ask, and in what order?
 
@@ -147,7 +148,7 @@ notebook's "In the interview" section and in the day sheet; the drill asks the q
     mistake?
 11. [D] The business says "ties rank the same"; which function, and how many rows might the top-N
     report ship?
-12. [D] A member says he was on holiday in August and should not be flagged. How does your definition
+12. [D] A member says they were on holiday in August and should not be flagged. How does your definition
     treat a month with no orders, and why not fill it with zero?
 13. [D] Your running total closes below the quarter's total. What do you check first?
 

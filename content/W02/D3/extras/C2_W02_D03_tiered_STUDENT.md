@@ -197,7 +197,7 @@ ORDER  BY member;
 ```
 
 **What you should see.** The LAG flag keeps both, and the calendar flag keeps only Y, since X's
-"month before" September was July. X is the member on holiday in miniature: a month with no order
+"month before" September was July. X stands in for the member on holiday: a month with no order
 is no reading.
 
 If all six steps matched your paper, open notebook 03 and count Retail-Core's top fifty under each
@@ -249,12 +249,12 @@ lead is the quarter's peak, with `max(lead) OVER ()`. Writing `lag(...)` around 
 computes the lead stops with "window function calls cannot be nested", so the lead needs a named
 step of its own first.
 
-**Check yourself against these.** The lead is Rs 24,69,050 behind after the week of 6 July, peaks at
-Rs 2,16,69,660 at the end of the week of 3 August, stands at Rs 1,57,51,980 at mid-quarter, the week
-of 17 August, and closes at Rs 10. It shrinks in 8 of the 12 weeks that have a week before them,
-and each of those weeks booked below its plan of Rs 75,69,230, since the lead moves by exactly the
-week's booked less its plan. Write the line to Meera: when the lead stopped growing, and what the
-run rate has done since.
+**Check yourself against these.** Q2 sits Rs 24,69,050 behind plan after the week of 6 July, and the
+lead peaks at Rs 2,16,69,660 at the end of the week of 3 August, stands at Rs 1,57,51,980 at
+mid-quarter, the week of 17 August, and closes at Rs 10. It shrinks in 8 of the 12 weeks that have a
+week before them, and each of those weeks booked below its plan of Rs 75,69,230, since the lead
+moves by exactly the week's booked less its plan. Write the line to Meera: when the lead stopped
+growing, and what the run rate has done since.
 
 ### Chapter 3: can one query hand the head of a tier his list, its count and the members at the line?
 
@@ -290,7 +290,7 @@ the head reads names the rule, the count and the two members at the line.
 Chapter 6 found that a member buys in about 2.5 of the six months, so a month with no order is the
 usual state. Put a number on it with LEAD, which reads the next row the way LAG reads the one
 before. First predict it on the chapter 6 recovery members X and Y: which of their rows have a next
-order more than a month later? Then run it on the book.
+order more than a month later? Then run it on Kalpa's warehouse.
 
 ```sql
 WITH monthly AS (
@@ -311,7 +311,7 @@ FROM   ahead;
 ```
 
 **Check yourself against these.** X's May and July rows each have a next order two months on, and
-none of Y's rows do. On the book, the query reads all 752 member-months, the last month of each of
-the 301 members has no next row, and your other two counts add to 451. The share of next orders
-that come after a gap is yours to find; write one line to Marketing on what it says about reading a
-single empty month as drift.
+none of Y's rows do. On the warehouse, the query reads all 752 member-months, the last month of each
+of the 301 members who bought has no next row, and your other two counts add to 451. The share of
+next orders that come after a gap is yours to find; write one line to Marketing on what it says
+about reading a single empty month as drift.

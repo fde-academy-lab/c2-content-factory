@@ -1,11 +1,11 @@
 -- Kalpa Retail, Week 2 Wednesday, chapter 6: which listed members does Marketing call first, and does
--- each flag hold up when a member says he was on holiday?
+-- each flag hold up when a member says they were on holiday?
 --
 -- The protect list is each segment's top fifty by Q2 revenue under RANK, the rule the head of
 -- Retail-Plus asked for: members who spent the same share a place. The flag is chapter 4's: spend in
 -- September below the month before, and that month below the one before it. Marketing will call the
 -- flagged members on the list first. Before the calls go out, one listed member, C-0216 of
--- Retail-Plus, has told the help line he was on holiday in August.
+-- Retail-Plus, has told the help line they were on holiday in August.
 --
 -- Monthly spend is a member's booked revenue in a calendar month. Q2 is July to September 2026.
 
@@ -43,7 +43,7 @@ SELECT (SELECT count(*) FROM flagged)                                          A
                                                                                AS flagged_on_the_list;
 
 -- name: c6_holiday_member
--- The question: what did LAG compare for the member who says he was on holiday?
+-- The question: what did LAG compare for the member who says they were on holiday?
 WITH monthly AS (
     SELECT customer_id, date_trunc('month', order_date)::date AS month, sum(amount) AS spend
     FROM   orders

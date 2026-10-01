@@ -55,7 +55,7 @@ WHERE  customer_id = 'C-0040'
 ORDER  BY month;
 
 -- name: c4_hurried
--- The hurried flag: LAG ordered by member and month, with no PARTITION BY. Counted, not listed.
+-- The hurried flag: LAG ordered by member and month, with no PARTITION BY. It returns the count alone.
 WITH monthly AS (
     SELECT customer_id, date_trunc('month', order_date)::date AS month, sum(amount) AS spend
     FROM   orders

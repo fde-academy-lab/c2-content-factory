@@ -75,8 +75,8 @@ COMPANY = {
         operating margin rate will be in a range around 2%", down from a range centred on the first
         quarter's 5.3 percent, after markdowns to clear excess inventory (Target's releases of 7
         June and 18 May 2022, checked 1 October 2026). The quarter closed at 1.2 percent (Target's
-        release of 17 August 2022). Reading the quarter while it runs is what let Target act before
-        it ended.""",
+        release of 17 August 2022). Meera's week-by-week line asks for the same early reading of
+        Kalpa's Q2.""",
     6: """**A real company with the same question.** Shopify's data team warned merchants that "far
         too often businesses define churn as no purchases after N days", and read a customer's gap
         against that customer's own history: one who bought almost daily and has not been seen in
@@ -240,8 +240,9 @@ def ch1():
         the quarter. Q2 is July to September 2026. A member is one customer on the customers table.
         Kalpa Retail sells to four segments: Business (corporate buyers, whose orders run to
         lakhs), Retail-Core (everyday shoppers), Retail-Plus (the paid membership tier) and Student.
-        The retail dossier, `{DOSSIER}`, section 4, has what the head of Retail-Plus watches and
-        why a paid tier exists.
+        The retail dossier, `{DOSSIER}`, says in section 2 what a paid tier like Retail-Plus buys a
+        retailer and what its head watches, and in section 4 what Marketing and the head of
+        Retail-Plus ask the data team.
 
         **Where the week left off.** Monday put Week 1's revenue tree on the warehouse, Kalpa's
         Postgres database: Q2 booked Rs 9,84,00,000 on 462 orders from 227 members who bought, and
@@ -262,9 +263,9 @@ def ch1():
         md("""
         ## The options: which ways could the team build a ranked list, and what would each cost?
 
-        Four ways a team could hand Marketing a ranked list. They differ in what one row of the
+        A team could hand Marketing a ranked list in four ways. They differ in what one row of the
         answer is, in what leaves the warehouse, and in how much work the per-segment list Marketing
-        actually asked for would take.
+        asked for would take.
 
         | Option | What one row of the answer is | What leaves the warehouse | Its place on the list | The per-segment list needs |
         |---|---|---|---|---|
@@ -308,7 +309,7 @@ def ch1():
         writes. Option D moves all 462 Q2 order rows out of the warehouse, which the data platform
         lead's rule, "query it, do not export it", rules out, and option A answers in orders.
 
-        **The best-fit call.** Option C. Marketing's real ask is per segment, and the place has to
+        **The best-fit call.** Option C, because Marketing's ask is per segment and the place has to
         be a column that a later step can count and filter, which option B's screen position is
         not. **What would change the call:** if Marketing wanted one overall list to read by eye
         and nothing more, option B is shorter and returns the same fifty members, and the place as
@@ -431,8 +432,8 @@ def ch1():
         md("""
         ## 3. What does the quickest list, the fifty biggest orders, give Marketing?
 
-        Under deadline, an analyst reaches for the shortest query that looks like the ask: sort the
-        Q2 orders by amount and keep fifty.
+        Under deadline, the shortest query that looks like the ask sorts the Q2 orders by amount and
+        keeps fifty.
 
         ```sql
         SELECT o.order_id, o.customer_id, c.segment, o.amount
@@ -460,7 +461,7 @@ def ch1():
                      title="Members who take more than one place on the orders list", lit=(0, 1))
             '''),
         md("""
-        **The plausible wrong answer.** A list of fifty rows that names only 28 members, every one
+        **The plausible wrong answer.** The list has fifty rows and names only 28 members, every one
         of them Business. Two companies hold five places each, eleven more hold two or three, and
         no Retail-Plus, Retail-Core or Student member appears at all. The answer to the prediction
         is c.
@@ -495,9 +496,8 @@ def ch1():
         md("""
         ## 4. Which segments does the list of fifty members reach?
 
-        The member list is the right unit. Marketing's ask has one more word in it: "in each
-        segment". Count the list by segment, with every segment on the line, including one with
-        nobody on the list.
+        The member list is the right unit, and Marketing's ask also says "in each segment". Count
+        the list by segment, with every segment on the line, including one with nobody on the list.
 
         **Predict before you run.** How many Student members are on the one list of fifty?
 
@@ -516,7 +516,7 @@ def ch1():
         md("""
         **What happened.** The answer is a: no Student member. Business has all 35 of its buyers on
         the list, Retail-Plus 11 of its 76, Retail-Core 4 of its 96 and Student none of its 20. The
-        tier Marketing is worried about gets eleven places, because one Business buyer outranks
+        tier Marketing is worried about gets eleven places, because any Business buyer outranks
         every retail member. Marketing asked for fifty in each segment, and that is chapter 2's
         question.
         """),
@@ -567,7 +567,7 @@ def ch1():
         **What happened.** The answer is a. Both routes add up the same 462 orders and break a tie
         by the same id, so they name the same fifty members in the same order, 35 Business, 11
         Retail-Plus and 4 Retail-Core. The Python route moved 462 rows out of the warehouse to reach
-        what the query sent back in 50, which is why it is the check and the query is the answer.
+        what the query sent back in 50, so it runs as the check and the query is what Marketing gets.
 
         > **Kavya's review.** Say what one row of your list is before you say who is on it. A top
         > fifty of orders and a top fifty of members look alike on screen and send Marketing to
@@ -620,7 +620,7 @@ def ch1():
            Student none.
         6. **Does Python agree?** Yes, member for member, after moving 462 rows to do it.
 
-        Chapter 2 asks the question Marketing actually put: which fifty members lead each segment?
+        Chapter 2 asks the question Marketing put: which fifty members lead each segment?
         """),
         code("kit.check_summary()"),
     ]
@@ -640,7 +640,7 @@ def ch2():
 
         **Who needs the answer.** The marketing lead spends each segment's protect budget on that
         segment's own members, and the head of Retail-Plus, the owner of Kalpa's paid membership
-        tier, wants his best members called before they drift. A list that hands Retail-Plus a few
+        tier, wants its best members called before they drift. A list that hands Retail-Plus a few
         places and Student none leaves the tier Marketing is worried about mostly unprotected, and a
         Retail-Plus member who lapses takes the membership fee and every order after it.
 
@@ -656,7 +656,8 @@ def ch2():
         September 2026). Kalpa Retail's four segments are Business (corporate buyers, whose orders
         run to lakhs), Retail-Core (everyday shoppers), Retail-Plus (the paid membership tier) and
         Student; the segment lives on the customer. The retail dossier, `{DOSSIER}`, section 4,
-        says what the head of Retail-Plus watches.
+        gives the question the head of Retail-Plus asks the data team, "whom do I protect first?",
+        and what a wrong answer costs: the wrong members protected while the right ones lapse.
 
         **What chapter 1 found.** Ranked across the whole book, the fifty members who spent most in
         Q2 are 35 Business members, which is every Business buyer, then 11 Retail-Plus and 4
@@ -726,8 +727,8 @@ def ch2():
         md("""
         ## 1. Can GROUP BY return each segment's top fifty?
 
-        The tool every analyst already knows comes first. Two attempts: group by segment, then group
-        by segment and member with LIMIT 50.
+        GROUP BY comes first, tried two ways: group by segment, then group by segment and member
+        with LIMIT 50.
 
         **Predict before you run.** How many rows does `GROUP BY c.segment` return?
 
@@ -784,8 +785,9 @@ def ch2():
                         title="The plausible wrong answer: Retail-Plus gets 11 places and Student none")
             '''),
         md("""
-        **The plausible wrong answer.** Business 35, Retail-Core 4, Retail-Plus 11 and Student 0,
-        sent as "the top fifty in each segment". The answer to the prediction is c.
+        **The plausible wrong answer.** The split gives Business 35, Retail-Core 4, Retail-Plus 11
+        and Student 0, and it would go out as "the top fifty in each segment". The answer to the
+        prediction is c.
 
         **Why it is wrong.** The number came from one ranking of the whole book, where every
         Business buyer stands above every retail member, so each retail segment only keeps the
@@ -837,8 +839,8 @@ def ch2():
         first member, C-0010 on Rs 13,910, and Retail-Plus's, C-0170 on Rs 21,740, both stand at
         place 1. The fix moves Retail-Plus from 11 places to 50 and Student from none to 20.
 
-        Writing the place straight into WHERE is the first thing most people try, and Postgres
-        refuses it. Run the next cell, read the last line of the error, and give it two minutes.
+        Writing the place straight into WHERE looks like the shortest route, and Postgres refuses
+        it. Run the next cell, read the last line of the error, and give it two minutes.
         """),
         code(r'''
             with kit.expect_error() as err:
@@ -861,8 +863,8 @@ def ch2():
         md("""
         ## A second route: does one sorted query per segment pick the same members?
 
-        Option A, with no window at all: four queries, one per segment, each sorting its own
-        members by Q2 revenue and then by id and keeping fifty, glued together with UNION ALL. Each
+        Option A uses no window at all. Four queries, one per segment, each sort the segment's
+        members by Q2 revenue and then by id and keep fifty, and UNION ALL glues them together. Each
         piece sits in brackets so that its ORDER BY and LIMIT apply to it alone. A slip in the
         window's PARTITION BY could not move this list, since the two share no window.
 
@@ -892,7 +894,7 @@ def ch2():
         **What happened.** The answer is a: 155 rows and the same members in every segment. LIMIT
         keeps at most fifty, so the Business and Student queries return all their buyers, 35 and
         20. The four queries do the job on this warehouse and become four places to edit when the
-        segments change, which is why they are the check and the window is the answer.
+        segments change, so they run as the check and the window is what Marketing gets.
 
         > **Kavya's review.** Read the ask's last words again before you rank. "In each segment"
         > is a PARTITION BY, and each segment's list holds fifty members or every buyer, whichever
@@ -900,11 +902,11 @@ def ch2():
 
         ### In the interview: GROUP BY or a window for a top N per group, and why not WHERE?
 
-        **[S] Top three per group: GROUP BY or a window, and why?** A window. GROUP BY collapses
-        each group to one row, so it can report the group's total but cannot say which rows lead
-        it, and LIMIT counts across the whole result. A window with PARTITION BY the group numbers
-        the rows inside each group and keeps them all; a named step computes the place and the
-        outer query keeps places 1 to 3.
+        **[S] Top three per group: GROUP BY or a window, and why?** A window, because GROUP BY
+        collapses each group to one row, so it can report the group's total but cannot say which
+        rows lead it, and LIMIT counts across the whole result. A window with PARTITION BY the group
+        numbers the rows inside each group and keeps them all; a named step computes the place and
+        the outer query keeps places 1 to 3.
 
         **[F] Why can a window function not sit inside WHERE, and what do you do instead?** WHERE
         filters rows before the window is computed, so the place does not exist yet when WHERE runs;
@@ -927,7 +929,7 @@ def ch2():
             '''),
         md("""
         Retail-Core's fifty carry 76.1 percent of the segment's Q2 revenue and Retail-Plus's fifty
-        carry 85.5 percent, so half the buyers hold three quarters or more of the rupees in both.
+        carry 85.5 percent.
 
         ## What did this chapter answer?
 
@@ -964,10 +966,10 @@ def ch3():
         > The head of Retail-Plus, Kalpa Retail
 
         **Who needs the answer.** The head of Retail-Plus owns Kalpa's paid membership tier and will
-        defend the list to his members and to Marketing. A member left off by a coin toss, with the
+        defend the list to its members and to Marketing. A member left off by a coin toss, with the
         same spend as the member kept, has a fair complaint; a list labelled fifty that carries
         fifty-two has spent two calls nobody planned; a list that drops both members of a tie at the
-        line is the forty-nine he has already refused.
+        line is the forty-nine the head has already refused.
 
         **The questions on the way.**
         1. Which rules could cut a list at fifty, and what does each do at a tie?
@@ -979,7 +981,9 @@ def ch3():
 
         **The metric at stake.** The count of members on each segment's list, beside Q2 revenue per
         member, the booked amount of every Q2 order whatever its status (Q2 is July to September
-        2026). Two members tie when their Q2 revenue is the same to the rupee.
+        2026). Two members tie when their Q2 revenue is the same to the rupee. The retail dossier,
+        `{DOSSIER}`, section 4, says what the head of Retail-Plus owns: the tier's members, their
+        fees and their renewals.
 
         **What chapter 2 found.** PARTITION BY segment gives each segment its own list: 155 members,
         Business 35 and Student 20 (every buyer in both), Retail-Core 50 and Retail-Plus 50. Those
@@ -1079,9 +1083,9 @@ def ch3():
         md("""
         ## 2. How many Retail-Core members does each rule ship?
 
-        The same four counts on Kalpa: Retail-Core, the everyday shoppers, has 96 Q2 buyers, so its
-        top fifty is a real cut. A hurried analyst reads "ties ranked the same" and reaches for
-        DENSE_RANK, since its numbers never skip.
+        The same four counts now run on Kalpa. Retail-Core, the everyday shoppers, has 96 Q2
+        buyers, so its top fifty is a real cut. A hurried analyst reads "ties ranked the same" and
+        reaches for DENSE_RANK, since its numbers never skip.
 
         **Predict before you run.** How many Retail-Core members does DENSE_RANK put on a top-fifty
         list?
@@ -1127,9 +1131,8 @@ def ch3():
         fiftieth member, C-0005, booked Rs 2,980 and the 51st, C-0092, Rs 2,950.
 
         **The fix, and what it changed.** RANK, the head's rule, ships 50 for Retail-Core, the same
-        fifty as ROW_NUMBER, because no tie straddles the line. The fix takes two members, C-0092 and
-        C-0094, off a list they never belonged on. When nobody ties at the line, RANK and ROW_NUMBER
-        agree, and the head's rule costs nothing.
+        fifty as ROW_NUMBER, because no tie straddles the line, so here the head's rule costs
+        nothing. The fix takes two members, C-0092 and C-0094, off a list they never belonged on.
         """),
         code(r'''
             kit.check("RANK ships 50 for Retail-Core", core["rank_ships"] == 50)
@@ -1142,7 +1145,7 @@ def ch3():
         md("""
         ## 3. How many does your own segment's list ship under the head's rule?
 
-        **Your turn.** The head of Retail-Plus asked about his own tier. Type these lines into the
+        **Your turn.** The head of Retail-Plus asked about their own tier. Type these lines into the
         empty cell below and run it. The query is block `c3_your_segment` of the chapter's `.sql`
         file, and it counts the rows each rule ships for Retail-Plus:
 
@@ -1152,7 +1155,7 @@ def ch3():
         ```
 
         Then write, in one sentence a head of a membership tier would read, how many Retail-Plus
-        members his list carries under RANK and, if it is not fifty, why. If your four numbers
+        members the list carries under RANK and, if it is not fifty, why. If your four numbers
         differ, read the members around fiftieth place before you write the sentence: copy block
         `c3_core_line` into a cell and change `'Retail-Core'` to `'Retail-Plus'`.
         """),
@@ -1206,7 +1209,7 @@ def ch3():
         tied rows the same number without a gap, 1, 1, 2, so it numbers distinct values.
 
         **[D] The business says "ties rank the same": which function, and how many rows might the
-        top-N report ship?** RANK. The report can ship more than N rows when a tie straddles the
+        top-N report ship?** RANK, and the report can ship more than N rows when a tie straddles the
         line, so it states the count and the tie; it never ships fewer than N when there are N rows
         to rank. DENSE_RANK can ship more than N even with no tie at the line, because ties higher up
         leave its numbers behind the row count, as Retail-Core's 52 shows. ROW_NUMBER always ships N
@@ -1442,8 +1445,8 @@ def ch4():
                             money=("spend", "spend_1_back", "spend_2_back"), echo=False)
             '''),
         md("""
-        **The plausible wrong answer.** 20 members flagged as falling two months running. The
-        answer to the prediction is b.
+        **The plausible wrong answer.** The quick version flags 20 members as falling two months
+        running. The answer to the prediction is b.
 
         **Why it is wrong.** With no PARTITION BY the window is the whole table, so LAG runs straight
         from one member's last row into the next member's first. A member with fewer than three
@@ -1465,7 +1468,7 @@ def ch4():
         md("""
         ## 4. How many members fell two months running once each member's months are kept apart?
 
-        **The fix.** PARTITION BY customer_id: the window starts again for every member, so LAG
+        **The fix.** PARTITION BY customer_id starts the window again for every member, so LAG
         returns NULL on a member's first row and never reaches into another member's months.
 
         ```sql
@@ -1626,7 +1629,9 @@ def ch5():
         every order at its amount whatever its status, and Monday's suite put Q2, July to September
         2026, at Rs 9,84,00,000. The plan line is a small table, `plan_line`, with one row per plan
         week: the Monday it starts and the revenue planned for it. To date means every week up to
-        and including the one on the row.
+        and including the one on the row. The retail dossier, `{DOSSIER}`, says in section 4 what
+        Meera Raghavan owns as CEO, the growth plan and where money is spent, and in section 5 how
+        revenue is worked out, branch by branch.
 
         **What chapters 1 to 4 found.** Each segment's protect list is its top fifty by Q2 revenue
         under RANK, and 16 members' spend fell in September and in the month before it. A running
@@ -1801,15 +1806,15 @@ def ch5():
             '''),
         md("""
         **What happened.** The answer is b. At the end of the week of 17 August, booked to date was
-        Rs 6,87,36,590 against a plan to date of Rs 5,29,84,610, Rs 1,57,51,980 ahead. The weeks on
-        their own tell the rest: the week of 13 July booked Rs 2,66,28,920, three and a half times its
-        plan of Rs 75,69,230, and from the week of 10 August six of the seven full weeks booked below
-        their plan. The quarter was ahead by the total and behind by the run rate, and it closed level
-        because one July week paid for the weeks after it.
+        Rs 6,87,36,590 against a plan to date of Rs 5,29,84,610, Rs 1,57,51,980 ahead. On its own,
+        the week of 13 July booked Rs 2,66,28,920, three and a half times its plan of Rs 75,69,230,
+        and from the week of 10 August six of the seven full weeks booked below their plan. The
+        quarter was ahead by the total and behind by the run rate, and it closed level because one
+        July week paid for the weeks after it.
 
         A cumulative figure set beside one week's plan reads Rs 6,87,36,590 against Rs 75,69,230 at
-        mid-quarter, about nine times plan, which is option d and is never a comparison: to date goes
-        beside to date.
+        mid-quarter, about nine times plan, which is option d; booked to date belongs beside plan to
+        date.
         """),
         code(r'''
             full_since = [r for r in fixed if "2026-08-10" <= str(r["week_start"]) <= "2026-09-21"]
@@ -1893,19 +1898,20 @@ def ch5():
         ### In the interview: what makes a running total trustworthy?
 
         **[F] What makes a running total deterministic, and how would you notice one that was not?**
-        An ORDER BY that is unique within the window, such as the date plus the order id. Rows that
-        share an ORDER BY value are peers and show the same cumulative figure, which is the tell: a
-        flat run of identical values across rows, or a figure that cannot say which row crossed a
-        line.
+        Its ORDER BY has to be unique within the window, such as the date plus the order id. Rows
+        that share an ORDER BY value are peers and show the same cumulative figure, which is the
+        tell: a flat run of identical values across rows, or a figure that cannot say which row
+        crossed a line.
 
-        **[D] Your running total closes below the quarter's total. What do you check first?** Whether
-        every row made it in: compare the last cumulative value with the independent total, then look
-        for rows outside the join's calendar, such as days before the first plan week or after the
-        last. Here 25 orders of 1 to 5 July were missing, Rs 15,39,820.
+        **[D] Your running total closes below the quarter's total. What do you check first?** Check
+        whether every row made it in: compare the last cumulative value with the independent total,
+        then look for rows outside the join's calendar, such as days before the first plan week or
+        after the last. Here 25 orders of 1 to 5 July were missing, Rs 15,39,820.
 
         **[F] A dashboard says revenue to date is nine times the plan by week seven. What is the likely
-        mistake?** A cumulative actual set beside one week's plan. Accumulate the plan too and compare
-        to date with to date: at mid-quarter that is Rs 6,87,36,590 against Rs 5,29,84,610.
+        mistake?** The likely mistake is a cumulative actual set beside one week's plan. Accumulate
+        the plan too and compare to date with to date: at mid-quarter that is Rs 6,87,36,590 against
+        Rs 5,29,84,610.
 
         ### Depth: how far ahead was Q2 at the end of every plan week?
         """),
@@ -1936,7 +1942,7 @@ def ch5():
         6. **Does a plain sum agree?** Yes, in all thirteen weeks.
 
         Chapter 6 brings the members back: Marketing wants to ring the flagged members on the protect
-        list, and one of them says he was on holiday.
+        list, and one of them says they were on holiday.
         """),
         code("kit.check_summary()"),
     ]
@@ -1946,33 +1952,34 @@ def ch5():
 def ch6():
     return [
         md(f"""
-        # Which listed members does Marketing call first, and does each flag hold up when a member says he was on holiday?
+        # Which listed members does Marketing call first, and does each flag hold up when a member says they were on holiday?
 
         **Week 2, Wednesday. Chapter 6 of 6.** The protect list and the flag meet: Marketing calls
         the flagged members on the list first, and one member has already pushed back.
 
-        > "Before we ring anyone: one of your flagged members, C-0216, rang our help line to say he
-        > was travelling in August and has not stopped buying. Is your flag wrong about him, and how
-        > many others?"
+        > "Before we ring anyone: one of your flagged members, C-0216, rang our help line to say they
+        > were travelling in August and have not stopped buying. Is your flag wrong about them, and
+        > how many others?"
         > The head of Retail-Plus, Kalpa Retail
 
         **Who needs the answer.** The marketing lead's member team rings the flagged members on the
-        protect list this week, and the head of Retail-Plus answers to his members for every call. A
-        call that tells a loyal member his spend is falling when he was away costs his goodwill and
-        maybe his renewal, and a call list padded with false alarms spends the team's week on members
-        who were never drifting.
+        protect list this week, and the head of Retail-Plus answers to the tier's members for every
+        call. A call that tells a loyal member their spend is falling when they were away costs their
+        goodwill and maybe their renewal, and a call list padded with false alarms spends the team's
+        week on members who were never drifting.
 
         **The questions on the way.**
         1. Which ways could the flag read "last month", and what would each cost?
         2. How many of the flagged members are on the protect list?
-        3. What did LAG compare for the member who says he was on holiday?
+        3. What did LAG compare for the member who says they were on holiday?
         4. How many of the sixteen flags step over a month with no order?
         5. Does a join on calendar months find the same members?
         6. Who does Marketing call first?
 
         **The metric at stake.** Monthly spend, a member's booked revenue in one calendar month, and
         the flag: spend in September below August, and August below July. A month with no order has
-        no row in the monthly table.
+        no row in the monthly table. The retail dossier, `{DOSSIER}`, section 8, prices a wrong
+        retention flag: offers spent on the wrong members while the ones at risk lapse.
 
         **What chapters 1 to 5 found.** Each segment's protect list is its top fifty by Q2 revenue
         under RANK, the head of Retail-Plus's rule, so members who spent the same share a place.
@@ -2064,9 +2071,9 @@ def ch6():
         member whose spend can fall twice from a high month is a member who spent a lot. Marketing's
         call sheet would read 16 names.
 
-        ## 2. What did LAG compare for the member who says he was on holiday?
+        ## 2. What did LAG compare for the member who says they were on holiday?
 
-        C-0216 of Retail-Plus stands at place 23 on his segment's list. Carry the month LAG read
+        C-0216 of Retail-Plus stands at place 23 on the Retail-Plus list. Carry the month LAG read
         beside the spend it read.
 
         **Predict before you run.** Which month did LAG treat as "last month" for C-0216's September?
@@ -2074,7 +2081,7 @@ def ch6():
         - a) August.
         - b) July.
         - c) June.
-        - d) None, since his August is empty.
+        - d) None, since their August is empty.
         """),
         code(r'''
             his = run("c6_holiday_member", "C-0216: each month with the months LAG read",
@@ -2088,8 +2095,8 @@ def ch6():
         **What happened.** The answer is b. C-0216 bought in May (Rs 6,440), July (Rs 4,300) and
         September (Rs 2,540). LAG reads the previous row, and with no order in August there is no
         August row, so it compared September with July and July with May, four months apart. Chapter
-        4's flag called that two months of falls; C-0216 says August was a holiday, and his rows agree
-        that August is simply empty.
+        4's flag called that two months of falls; C-0216 says August was a holiday, and the member's
+        own rows agree that August is simply empty.
         """),
         code(r'''
             sep = his[-1]
@@ -2102,7 +2109,7 @@ def ch6():
 
         **The plausible wrong answer.** Ship chapter 4's flag as it stands: sixteen calls, each member
         told that their spend has fallen two months running. Answered for C-0216, the hurried reply is
-        that he did spend less each time he ordered.
+        that the member did spend less with each order.
 
         **Why it is wrong.** Marketing asked about calendar months, and LAG counts rows. Wherever a
         member skipped a month, LAG steps over the gap and compares months that are further apart, so
@@ -2138,9 +2145,9 @@ def ch6():
 
         ## A second route: does a join on calendar months find the same members?
 
-        A self-join with no window: each member's September row joined to the same member's August row
-        and July row by date, keeping the members whose spend fell at each step. A missing month has no
-        row to join to, so a gap breaks the run here too, by construction.
+        A self-join needs no window: it joins each member's September row to the same member's August
+        row and July row by date and keeps the members whose spend fell at each step. A missing month
+        has no row to join to, so a gap breaks the run here too, by construction.
 
         **Predict before you run.** How many members does the calendar join keep?
 
@@ -2164,8 +2171,8 @@ def ch6():
         ## 4. Who does Marketing call first?
 
         All nine flagged members are on a protect list, since the list is wider than the flag. One of
-        them shows what a fall that holds up looks like: C-0010 of Retail-Core, first on his segment's
-        list.
+        them shows what a fall that holds up looks like: C-0010 of Retail-Core, first on the
+        Retail-Core list.
         """),
         code(r'''
             his = run("c6_genuine_fall", "C-0010, the top of Retail-Core's list, in each Q2 month", money=("spend",), echo=False)
@@ -2193,24 +2200,24 @@ def ch6():
         **What happened.** C-0010 spent Rs 7,840 in July, Rs 4,080 in August and Rs 1,990 in
         September, three consecutive months, each lower. Marketing's first calls are the nine members
         the checked flag keeps, every one of them on a protect list; the member on holiday is not
-        among them, and the call script describes months the member can check on his own statement.
+        among them, and the call script describes months the member can check on their own statement.
 
         > **Kavya's review.** A month with no order is no reading. Write that into the flag's
         > definition, and read the rows behind a flag before a call goes out.
 
         ### In the interview: how does your flag treat a month with no orders?
 
-        **[D] A member says he was on holiday in August and should not be flagged. How does your
+        **[D] A member says they were on holiday in August and should not be flagged. How does your
         definition treat a month with no orders, and why not fill it with zero?** A month with no
-        order is no reading, so it breaks the run and he is not flagged; the check is that the rows
-        LAG reads are the calendar months before. Filling the empty month with zero would read a quiet
-        month as a fall to zero, and Kalpa's members buy in about 2.5 of six months, so zeros would
-        flag 26 members here, 17 of them only for a quiet September.
+        order is no reading, so it breaks the run and the member is not flagged; the check is that
+        the rows LAG reads are the calendar months before. Filling the empty month with zero would
+        read a quiet month as a fall to zero, and Kalpa's members buy in about 2.5 of six months, so
+        zeros would flag 26 members here, 17 of them only for a quiet September.
 
-        **[D] Marketing also wants members who went quiet. How would you build that flag?** With a
-        calendar of every member and every month, left empty where there is no order, so a quiet month
-        becomes a row the query can see: bought in July and August, nothing in September. It is a
-        second flag with its own name, never mixed into the falling-spend flag.
+        **[D] Marketing also wants members who went quiet. How would you build that flag?** Build it
+        on a calendar of every member and every month, left empty where there is no order, so a quiet
+        month becomes a row the query can see: bought in July and August, nothing in September. It
+        is a second flag with its own name, never mixed into the falling-spend flag.
 
         ### Depth: what would a zero-filled calendar have flagged?
 
@@ -2291,12 +2298,12 @@ def case():
         orders run to lakhs), Retail-Core (everyday shoppers), Retail-Plus (the paid membership tier)
         and Student. The head of Retail-Plus has asked that members who spent the same be ranked the
         same and that every list say how many made it. Marketing wants to ring members whose monthly
-        spend fell two months running, in calendar months, and one member has already said his
+        spend fell two months running, in calendar months, and one member has already said their
         "fall" was a holiday. Meera Raghavan, Kalpa Retail's CEO, wants to know whether Q2 is on track
         against the plan line, by the total and week by week. This notebook builds all of it, part by
         part, with nothing taken from elsewhere.
 
-        **The data.** Kalpa's Postgres warehouse: `orders` (1,000 rows: order_id, customer_id,
+        **The data.** Kalpa's Postgres warehouse holds `orders` (1,000 rows: order_id, customer_id,
         order_date, quarter, channel, amount, status), `customers` (340 rows, one per member, with the
         segment) and `plan_line` (one row per plan week: week_start, the Monday it starts, and
         plan_revenue). Q2 is July to September 2026. Q2 revenue is booked revenue, every order at its
@@ -2331,8 +2338,8 @@ def case():
         md("""
         ## Part 1. Which members make each segment's list under the head of Retail-Plus's rule, and how many in each?
 
-        Where this is used at work: every ranked list a business acts on states its rule and its
-        count, and the count is the first line a manager checks.
+        Where this is used at work: the head of Retail-Plus asked for ties ranked the same and for
+        each list's count, so every list Kalpa ships states its rule and its count.
         """),
         code(r'''
             # TODO 1. Which function gives members who spent the same the same place, and skips the places they use up?
@@ -2400,8 +2407,8 @@ def case():
         md("""
         ## Part 2. Which listed members does Marketing ring first?
 
-        Where this is used at work: a retention call goes to a customer whose own history shows the
-        drift, and the definition of the drift is written down before the first call.
+        Where this is used at work: Marketing's member team rings a member whose own months show the
+        drift, and the data team writes the flag's definition down before the first call goes out.
         """),
         code(r'''
             # TODO 3. Which window keeps each member's months to themselves?
@@ -2462,8 +2469,8 @@ def case():
         md("""
         ## Part 3. How much of each segment's Q2 revenue does its list carry?
 
-        Where this is used at work: a protect budget is judged by the revenue it covers, so every list
-        carries its share of the whole it was cut from.
+        Where this is used at work: the marketing lead asked how much of each segment's Q2 revenue the
+        lists cover, so each list carries its share of the segment it was cut from.
         """),
         code(r'''
             # TODO 5. Which expression puts the segment's whole Q2 revenue beside every member's row?
@@ -2528,8 +2535,8 @@ def case():
         md("""
         ## Part 4. Is Q2 on track by the total and by the run rate?
 
-        Where this is used at work: a quarter is read twice, by the total so far and by how each week
-        is running, and the two can disagree.
+        Where this is used at work: Meera reads the quarter twice, by the total so far and by how each
+        week is running, and the two can disagree.
         """),
         code(r'''
             # TODO 7. Which expression gives every Q2 order a plan week, including 1 to 5 July?
@@ -2586,8 +2593,8 @@ def case():
         md("""
         ## Part 5. What goes to Marketing and Meera?
 
-        Where this is used at work: the line a stakeholder carries into a meeting is the only part of
-        the analysis most people will read, so each number in it has to hold on its own.
+        Where this is used at work: Meera takes one line into the leadership meeting, so each number
+        in it has to hold on its own.
         """),
         code(r'''
             # TODO 9. Which line goes to Meera for the leadership meeting?
@@ -2635,16 +2642,16 @@ def second():
         fiftieth figure. Frequency is how many orders a member placed in the quarter. Under RANK,
         members who spent, or ordered, the same share a place, and the list says how many made it.
 
-        **The data.** Kalpa's Postgres warehouse: `orders` (1,000 rows: order_id, customer_id,
+        **The data.** Kalpa's Postgres warehouse holds `orders` (1,000 rows: order_id, customer_id,
         order_date, quarter, channel, amount, status) and `customers` (340 rows, one per member, with
         the segment).
         """),
         md("""
         TODO ONLY
-        **How to answer.** Seven `TODO` markers, each a choice lettered a to d. Replace each
-        placeholder with the letter in quotes, for example `"a"`, and run the cell; the check cell
-        after it tells you whether your step behaves. Post your seven letters in order, then answer
-        the brief's three design items together.
+        **How to answer.** The notebook holds seven `TODO` markers, each a choice lettered a to d.
+        Replace each placeholder with the letter in quotes, for example `"a"`, and run the cell; the
+        check cell after it tells you whether your step behaves. Post your seven letters in order,
+        then answer the brief's three design items together.
         """),
         md("""
         SOLUTION ONLY
@@ -2723,8 +2730,8 @@ def second():
         md("""
         ## Step 3. Why does that rule ship the number it ships?
 
-        Where this is used at work: a stakeholder who asked for fifty and receives more wants the
-        reason in one sentence.
+        Where this is used at work: the marketing lead asked to be told how many made it, so a count
+        above fifty goes out with its reason in one sentence.
         """),
         code(r'''
             # TODO 3. Why does RANK on orders alone ship 51 members?
@@ -2746,8 +2753,8 @@ def second():
         md("""
         ## Step 4. Which second key breaks the crowd of ties, and how many members does the list ship then?
 
-        Where this is used at work: a ranking on a count almost always needs a second key, and the
-        second key is a business choice with a reason.
+        Where this is used at work: when a ranking on a count crowds members into ties, the second
+        key that separates them is a business choice with a reason.
         """),
         code(r'''
             # TODO 4. Which ORDER BY ranks by orders first, then lets revenue separate members with the same orders?
@@ -2779,7 +2786,7 @@ def second():
         ## Step 5. How many members do the two lists share, and how far apart are they in rupees?
 
         Where this is used at work: before a team argues over two definitions, it measures how much
-        the answer actually changes.
+        the answer changes.
         """),
         code(r'''
             # TODO 5. Which query counts the members who are on both lists?

@@ -2,8 +2,8 @@
 
 **Week 2, Wednesday. Study notes, read after the session.** Reading time: about 25 minutes.
 
-The marketing lead wrote to the data and AI team at Kalpa's Global Capability Centre in Bengaluru,
-where you are trainee engineers:
+The marketing lead wrote to the data and AI team at Kalpa's Global Capability Centre, where you
+are trainee engineers:
 
 > "Retail-Plus frequency is the problem, so we want to protect our best members before they drift.
 > Give us the top fifty customers by Q2 revenue in each segment, and flag anyone whose monthly
@@ -69,8 +69,8 @@ column of Thursday's customer table, and the Week 2 Saturday paper tests LAG, PA
 tie rules.
 
 **What was left out.** The day stopped before frame clauses such as ROWS BETWEEN, named windows and
-percentiles.
-The tentative IITGN faculty session W2-3 in the afternoon runs on a topic of its own, which these notes do not cover.
+percentiles. The tentative IITGN faculty session W2-3 follows today's chapters on a topic of its
+own, which these notes do not cover.
 
 ---
 
@@ -127,9 +127,9 @@ dashboard, Q3 fiscal 2026, checked 1 October 2026).
 | C. Group by member in a named step, number the members in a window, keep places 1 to 50 | a member and its place | 50 rows | one more phrase in the same query |
 | D. Export the orders to a spreadsheet and sort by hand | whatever the sort gives | all 462 Q2 order rows | four sorts by hand |
 
-The call is C, because the ask is per segment and the place has to be a column a later step can
-filter. One overall list read by eye would switch it to B, and D breaks the data platform lead's
-rule, "query it, do not export it".
+The call is C, because the ask is per segment and the place must be a column a later step can
+filter. One list read by eye would switch it to B, and D breaks the data platform lead's rule,
+"query it, do not export it".
 
 ### What did each member book in Q2?
 
@@ -144,9 +144,10 @@ One row per member who ordered gives 227 rows, carrying all 462 orders and Rs 9,
 
 ### Which fifty members spent the most?
 
-A named step adds up each member's Q2, `row_number() OVER (ORDER BY q2_revenue DESC, customer_id)`
-numbers the members with the id settling equal spend, and the query outside keeps places 1 to 50:
-every Business buyer, 35, then 11 Retail-Plus and 4 Retail-Core.
+A named step, written `WITH q2_spend AS (...)`, adds up each member's Q2,
+`row_number() OVER (ORDER BY q2_revenue DESC, customer_id)` numbers the members with the id settling
+equal spend, and the query outside keeps places 1 to 50: every Business buyer, 35, then 11
+Retail-Plus and 4 Retail-Core.
 
 | Place | Member | Segment | Q2 revenue |
 |---|---|---|---|
@@ -160,14 +161,13 @@ every Business buyer, 35, then 11 Retail-Plus and 4 Retail-Core.
 
 Sorting the Q2 orders and keeping fifty returns fifty rows naming 28 members, all Business, two of
 them five times. One row of the orders table is an order, so a member with five large orders takes
-five places, and sent as the top fifty members the list reaches nobody in the tier Marketing worries
-about. The check is `count(DISTINCT customer_id)` beside `count(*)`, 28 for 50, and ranking members
-on their summed orders fixes it, reaching 22 more. Week 2 Monday met this as order rows counted as
-customers.
+five places, and the protect budget would reach nobody in the tier Marketing worries about. The
+check is `count(DISTINCT customer_id)` beside `count(*)`, 28 for 50, and ranking members on their
+summed orders fixes it, reaching 22 more.
 
 ### Which segments does the list of fifty members reach?
 
-Three: all 35 Business buyers, Retail-Plus 11 of 76, Retail-Core 4 of 96 and Student none of 20.
+It reaches three: all 35 Business buyers, Retail-Plus 11 of 76, Retail-Core 4 of 96 and no Student.
 
 ### Does a sort in Python pick the same fifty members?
 
@@ -178,7 +178,7 @@ the window.
 > of orders and a top fifty of members look alike on screen and send Marketing to different
 > people."
 
-The top fifty carry Rs 9,77,70,580, 99.4 percent of Q2, so one list across the book is a Business
+The top fifty carry Rs 9,77,70,580, 99.4 percent of Q2, so one list across all segments is a Business
 list.
 
 ---
@@ -192,14 +192,14 @@ list that gives Retail-Plus eleven places leaves the tier Marketing worries abou
 
 1. Which ways could the team build one list per segment, and what would each cost?
 2. Can GROUP BY return each segment's top fifty?
-3. What does numbering the whole book once give each segment?
+3. What does numbering all 227 members once give each segment?
 4. What does PARTITION BY restart, and how many members does each list hold?
 5. Does one sorted query per segment pick the same members?
 
 **IN THE FIELD.** Amazon says an item's overall Best Sellers Rank "doesn't always indicate how well
 an item is selling in relation to similar items", so it keeps best-seller lists by category
-(Amazon's help page, checked 1 October 2026). JEE Advanced ranks within each category as well: its
-2026 OBC-NCL rank 1 stood third on the common list (results of 1 June 2026, checked 1 October 2026).
+(Amazon's help page, checked 1 October 2026). JEE Advanced ranks within categories too: its 2026
+OBC-NCL rank 1 stood third on the common list (results of 1 June 2026, checked 1 October 2026).
 
 ### Which ways could the team build one list per segment, and what would each cost?
 
@@ -219,7 +219,7 @@ it to A.
 No. GROUP BY segment returns 4 rows of totals, and grouping by member with LIMIT 50 returns chapter
 1's list again, since LIMIT counts across the whole result.
 
-### What does numbering the whole book once give each segment?
+### What does numbering all 227 members once give each segment?
 
 Splitting chapter 1's numbering by segment gives Business 35, Retail-Core 4, Retail-Plus 11 and
 Student 0, sent as "the top fifty in each segment". The check sets each list beside the smaller of
@@ -243,10 +243,10 @@ flowchart LR
 numbering in every segment: 155 members, Business 35 and Student 20, every buyer in both, and
 Retail-Core and Retail-Plus 50 each, led by C-0010 on Rs 13,910 and C-0170 on Rs 21,740.
 
-**WATCH OUT.** The place written into WHERE stops with `ERROR:  window functions are not allowed in
-WHERE`, since windows "logically execute after the processing of those clauses" (PostgreSQL 16
-documentation, section 3.5, checked 1 October 2026). Compute it in a named step, filter it outside,
-and give the error two minutes.
+**WATCH OUT.** The place written into WHERE stops with
+`ERROR:  window functions are not allowed in WHERE`, since windows "logically execute after the
+processing of those clauses" (PostgreSQL 16 documentation, section 3.5, checked 1 October 2026).
+Compute it in a named step and filter it outside.
 
 ### Does one sorted query per segment pick the same members?
 
@@ -265,8 +265,8 @@ rule chapter 3 questions.
 
 ## Chapter 3. When two members spent the same at the line, how many does a list ship, and which rule did the head of Retail-Plus ask for?
 
-**Who needs the answer.** The head of Retail-Plus defends the list to his members: a member dropped
-by a coin toss has a fair complaint, a "top fifty" of fifty-two spends calls nobody planned, and
+**Who needs the answer.** The head of Retail-Plus defends the list: a member dropped by a coin toss
+has a fair complaint, a "top fifty" of fifty-two spends calls nobody planned, and
 forty-nine is the list he refused.
 
 **The questions on the way.**
@@ -298,7 +298,7 @@ The invented top four: A Rs 9,100, B 8,800, C 8,200, D and E 7,400, F 6,900.
 
 Whole ties only keeps a tie when `rank + tied_with - 1` is inside the line, with `tied_with` from
 `count(*) OVER (PARTITION BY q2_revenue)`. The call is RANK, with the count and its reason in the
-report. A hard cap, such as fifty seats at a members' dinner, would switch it to ROW_NUMBER with a
+report. A hard cap, such as fifty seats at a dinner, would switch it to ROW_NUMBER with a
 tiebreaker stated in advance, such as more Q2 orders first.
 
 ### What do ROW_NUMBER, RANK and DENSE_RANK give on one tie?
@@ -426,8 +426,8 @@ be zero.
 
 ### How many members fell two months running once each member's months are kept apart?
 
-Sixteen of the 118 who ordered in September, once PARTITION BY customer_id restarts the window for
-each member: 20 less the 4 borrowed.
+Sixteen of the 118 who ordered in September did, once PARTITION BY customer_id restarts the window
+for each member: 20 less the 4 borrowed.
 
 ### Does a walk through each member's months in Python find the same members?
 
@@ -456,15 +456,14 @@ campaign or move budget; a false gap sends Marketing after it with discounts.
 5. Can a running total by order say which order took Q2 past Rs 3.5 crore?
 6. Does a plain sum up to each week's end agree?
 
-**IN THE FIELD.** Five weeks into its 2022 second quarter, on 7 June, Target cut its operating margin
-guide from a range centred on 5.3 percent to "a range around 2%" after markdowns, and the quarter
-closed at 1.2 percent (Target's releases of 18 May, 7 June and 17 August 2022, checked 1 October
-2026).
+**IN THE FIELD.** Five weeks into its 2022 second quarter, on 7 June, Target cut its operating
+margin guide from a range centred on 5.3 percent to "a range around 2%", and the quarter closed at
+1.2 percent (Target's releases of 18 May, 7 June and 17 August 2022, checked 1 October 2026).
 
 ### Which ways could the team accumulate the quarter against plan, and what would each cost?
 
-To date means every week up to and including the row's; mid-quarter is the week of 17 August, the
-seventh of thirteen.
+To date means every week up to and including the row's; mid-quarter is the seventh week, of 17
+August.
 
 | Option | How it accumulates | Works through |
 |---|---|---|
@@ -484,8 +483,8 @@ plan of Rs 9,83,99,990, and the line to Meera says Q2 closed Rs 15,39,810 short 
 
 ### Does the running total close on Monday's Q2 total?
 
-No: it is Rs 15,39,820 short of Monday's Rs 9,84,00,000, the plan itself sitting Rs 10 below that
-total. Q2 began on Wednesday 1 July and the plan on Monday 6 July.
+No: it is Rs 15,39,820 short of Monday's Rs 9,84,00,000. Q2 began on Wednesday 1 July and the plan
+on Monday 6 July.
 
 ```mermaid
 flowchart LR
@@ -524,16 +523,13 @@ moves them onto 6 July, and Q2 closes on Rs 9,84,00,000, Rs 10 ahead and on plan
 At mid-quarter Q2 stood Rs 1,57,51,980 ahead, built by the week of 13 July at three and a half times
 its plan, while six of the seven full weeks from 10 August booked below plan.
 
-**WATCH OUT.** Rs 6,87,36,590 to date beside one week's Rs 75,69,230 reads as nine times plan. To
-date goes beside to date.
-
 ### Can a running total by order say which order took Q2 past Rs 3.5 crore?
 
-Only with an ORDER BY no two orders share. The twelve orders of 22 July share a date, so they are
-peers, which the default frame adds at once (PostgreSQL 16 documentation, section 3.5, checked 1
-October 2026), and all twelve show the day's close, Rs 3,76,90,290. With the order id added,
-KR-00580's Rs 8,55,000 is the step from Rs 3,45,16,000 to Rs 3,53,71,000; the warehouse holds no
-time of day, so the report names the id as its tiebreak.
+It can once no two orders share a place in the window's ORDER BY. The twelve orders of 22 July share
+a date, so they are peers, which the default frame adds at once (PostgreSQL 16 documentation,
+section 3.5, checked 1 October 2026), and all twelve show the day's close, Rs 3,76,90,290. With the
+order id added, KR-00580's Rs 8,55,000 is the step from Rs 3,45,16,000 to Rs 3,53,71,000; the
+warehouse holds no time of day, so the report names the id as its tiebreak.
 
 ### Does a plain sum up to each week's end agree?
 
@@ -568,9 +564,8 @@ Retail-Plus answers for every call; accusing a member who was away costs his goo
 
 **IN THE FIELD.** Shopify's data team warned that "far too often businesses define churn as no
 purchases after N days" (Cam Davidson-Pilon, Shopify Engineering, 14 November 2017, checked 1
-October 2026). Marriott extended 2019 elite status to February 2022 and Hilton extended status to 31
-March 2022 (releases of 14 April and 27 October 2020, checked 1 October 2026), treating a gap members
-did not choose as no reading.
+October 2026). Marriott and Hilton extended elite status into early 2022 (releases of 14 April and
+27 October 2020, checked 1 October 2026), counting a gap members did not choose as no reading.
 
 ### Which ways could the flag read "last month", and what would each cost?
 
@@ -586,7 +581,7 @@ only for a quiet September. The call is B, and a separate "went quiet" flag woul
 
 ### How many of the flagged members are on the protect list?
 
-All 16, since a spend that can fall twice from a high month belongs to a member who spent a lot.
+All 16 are, since a spend that can fall twice from a high month belongs to a member who spent a lot.
 
 ### What did LAG compare for the member who says he was on holiday?
 
@@ -601,8 +596,8 @@ place 23 on Retail-Plus's list.
 
 Shipped as it stands, chapter 4's flag makes sixteen calls, and the hurried reply says C-0216 did
 spend less each time. The check carries `lag(month)` beside `lag(spend)`: 7 of 16 flags did not read
-August and July, and requiring `month_1_back = DATE '2026-08-01' AND month_2_back = DATE
-'2026-07-01'` keeps 9.
+August and July, and requiring
+`month_1_back = DATE '2026-08-01' AND month_2_back = DATE '2026-07-01'` keeps 9.
 
 ### Does a join on calendar months find the same members?
 
@@ -611,9 +606,9 @@ window, and a missing month has no row to join.
 
 ### Who does Marketing call first?
 
-The nine, all on a protect list, and not the member on holiday. C-0010, first in Retail-Core, shows
-a fall that holds up: Rs 7,840 in July, Rs 4,080 in August and Rs 1,990 in September. Read the nine
-with block `c6_call_list` in notebook 06's empty cell.
+Marketing calls the nine first, all on a protect list, and the member on holiday is not among them.
+C-0010, first in Retail-Core, shows a fall that holds up: Rs 7,840 in July, Rs 4,080 in August and
+Rs 1,990 in September. Read the nine with block `c6_call_list` in notebook 06's empty cell.
 
 > **Kavya's review.** "A month with no order is no reading. Write that into the flag's definition,
 > and read the rows behind a flag before a call goes out."
@@ -625,7 +620,7 @@ made.
 
 ## What will an interviewer ask, and what does a strong answer sound like?
 
-Tags, this programme's own calibration for 0 to 3 year Indian-market candidates: [S] a staple asked
+Tags, this programme's calibration for 0 to 3 year Indian-market candidates: [S] a staple asked
 everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
 
 **[S] RANK, DENSE_RANK and ROW_NUMBER on a tie.** "On 7,500, 7,500 and 6,000, ROW_NUMBER gives 1, 2,
@@ -658,7 +653,7 @@ customers share tenth place. I state the count and the reason, and offer a hard 
 tiebreaker." A weak answer quietly cuts it to ten.
 
 **[F] LAG returned a value for a customer's very first month: what went wrong?** "The window has no
-PARTITION BY customer, so LAG crossed customers. I count rows where lag(customer_id) differs from
+PARTITION BY customer, so LAG crossed customers. I count flags where lag(customer_id) differs from
 the row's own; it must be zero, and ours was four." A weak answer eyeballs the first rows.
 
 **[F] What makes a running total deterministic, and how would you notice one that was not?** "An
@@ -677,6 +672,11 @@ DENSE_RANK can ship more with no tie there, as our 52 showed." A weak answer giv
 **[D] A member was on holiday: how does your flag treat a month with no orders, and why not zero?**
 "A month with no order is no reading, so it breaks the run. Our members buy in 2.5 of six months, so
 zeros flagged 26, 17 only for a quiet September." A weak answer says the data shows he fell.
+
+**[D] Your running total closes below the quarter's total: what do you check first?** "Whether
+every row made it in: I set the last cumulative value beside the total counted without the window,
+then look for rows outside the join's calendar. Ours was Rs 15,39,820 short, the 25 orders of 1 to 5
+July." A weak answer reads the trend before closing the loop.
 
 ---
 
@@ -716,7 +716,7 @@ zeros flagged 26, 17 only for a quiet September." A weak answer says the data sh
 | The line | The last place a list keeps | Chapter 3 | Retail-Core's fiftieth, Rs 2,980 |
 | Whole ties only | Keeps a tie only when every tied member fits inside the line | Chapter 3 | 3 for the invented top four |
 | Hard cap | A limit that cannot stretch, such as fifty seats at a dinner | Chapter 3 | ROW_NUMBER with a stated tiebreaker |
-| Member-month | One row per member per calendar month with an order | Chapter 4 | 752 on the book |
+| Member-month | One row per member per calendar month with an order | Chapter 4 | 752 in the warehouse |
 | Monthly spend | A member's booked revenue in one calendar month | Chapter 4 | C-0040, Rs 7,980 in April |
 | The falling flag | September below August, and August below July | Chapter 4 | 16 flagged, then 9 |
 | date_trunc | Cuts a date to the first day of its week or month | Chapter 4 | `date_trunc('month', order_date)` |
