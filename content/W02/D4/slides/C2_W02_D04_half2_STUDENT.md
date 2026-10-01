@@ -24,8 +24,8 @@ LIVE. Thirty minutes. Notebook C2_W02_D04_06_monday_refresh is the demonstration
 
 ---
 
-## S1. Answering it takes six smaller questions
-*Who needs the answer, and what has to be settled on the way?*
+## S1. Six questions make the table safe to leave alone
+*What must the growth team trust before Monday's send runs unwatched?*
 
 **Who needs the answer.** The growth team, who act on Monday's table with no analyst watching the run; a refresh that counts from the wrong day sends win-back codes to customers who bought a few weeks ago.
 
@@ -89,50 +89,36 @@ per spreadsheet". A row count on every run would have stopped it on day one.
 ## S4. One function whose guards stop a bad run
 *Which of four ways should run the Monday refresh, and what does each catch?*
 
-| Option | How it runs | When a check fails |
-|---|---|---|
-| a) Rerun the notebooks by hand | An analyst runs chapters 1 to 5 and reads the numbers | Ships if the analyst misses it |
-| b) A function that reports | Prints PASS or FAIL for each check | Ships, with a FAIL beside it |
-| c) A function with guards | Every failed check raises an error | Not written; the error says why |
-| d) The table as a SQL view | The warehouse builds it when read | Nothing runs to fail |
+| Option | How it runs | When a check fails | Failures stopped, of four |
+|---|---|---|---|
+| a) Rerun the notebooks by hand | An analyst reruns chapters 1 to 5 | Ships if the analyst misses it | 0 |
+| b) A function that reports | Prints PASS or FAIL for each check | Ships, with a FAIL beside it | 0 |
+| c) A function with guards | Every failed check raises an error | Not written; the error says why | 4 |
+| d) The table as a SQL view | The warehouse builds it when read | Nothing runs to fail | 0 |
 
 **The call.** c: of the four failures the day has met, a customer missing, a customer sent twice, spend off the warehouse and a repeated key, only c stops all four before the table ships. What would switch it: readers querying the table from the warehouse, such as a dashboard; then d, with the checks as the warehouse's own tests.
 
 ```notes
 LIVE, 4 minutes. Ask which option most teams run today: a. Which option costs no analyst time and
-still ships a broken table: b and d. The sizing is the count of failures each stops: 0, 0, 4, 0.
+still ships a broken table: b and d. The four failures are the day's: a customer missing, a customer
+sent twice, spend off the warehouse and a repeated key.
 ```
 
 ---
 
-## S5. What must the refresh function be told?
-*What does the refresh need to be told, and what can it read from the data itself?*
+## S5. The refresh is told two things and reads the rest
+*What must the refresh be told, and what can it read from the data itself?*
 
 ```mermaid
 flowchart LR
-    I{"<b>told:</b><br/>?"} --> F["<b>build_table()</b>"]
-    D["<b>the data</b><br/>orders, list, feed"] --> F
-    F --> T["<b>the table</b>"]
-    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    class I unknown
-```
-
-**Question.** As a letter? a) the day to count recency from; b) the warehouse connection and the feed's path; c) the number of customers; d) the total spend.
-
-```notes
-LIVE, 2 minutes. Every input is a chance to be told something wrong; the fewer, the better.
-```
-
----
-
-## S6. Answer: the connection and the feed's path
-*What does the function read for itself?*
-
-```python
-def build_table(engine, feed_path):
-    """Chapters 1 and 2 in one call: the list as spine, three numbers, first touch."""
-    ...
-table, orders_read = build_table(ENG, FEED_PATH)
+    C["<b>told: the connection</b>"] --> F["<b>build_table()</b>"]
+    P["<b>told: the feed's path</b>"] --> F
+    F -->|reads for itself| D["<b>orders, customer list,<br/>the sale's feed</b>"]
+    F --> T["<b>the table</b><br/>340 rows"]
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class F bet
+    class C,P,D,T known
 ```
 
 ```stats
@@ -142,14 +128,16 @@ value: 130 | label: reached | note: read from the feed, first touch
 ```
 
 ```notes
-LIVE, 2 minutes. The answer is b. The customers, their numbers and the sale all come from the data,
-so the function cannot be told a stale count. Recency is the one column still missing, and it needs a
-date to count to.
+LIVE, 3 minutes. Every input is a chance to be told something wrong, so the refresh is told the
+warehouse connection and the feed's path and nothing else. The customers, their numbers and the sale
+all come from the data, so the function cannot be told a stale count. The notebook's section 2 asks
+the room to predict the inputs first. Recency is the one column still missing, and it needs a date to
+count to.
 ```
 
 ---
 
-## S7. How many does the 19 October refresh list?
+## S6. How many does the 19 October refresh list?
 *How many customers land on the win-back list when the refresh runs on Monday 19 October?*
 
 ```python
@@ -168,7 +156,7 @@ refresh would send.
 
 ---
 
-## S8. Answer: 166, counted to the wall clock
+## S7. Answer: 166, counted to the wall clock
 *What would Monday's send have looked like?*
 
 ```stats
@@ -185,7 +173,7 @@ the notebook is run, the list is different.
 
 ---
 
-## S9. Why it is wrong: 21 days the data never saw
+## S8. Why it is wrong: 21 days the data never saw
 *Why is the list too long, and which check catches it?*
 
 ```mermaid
@@ -206,7 +194,7 @@ calendar.
 
 ---
 
-## S10. The fix: count to 28 September, 111 remain
+## S9. The fix: count to 28 September, 111 remain
 *What changes when recency counts to the data's own last date?*
 
 ```python
@@ -215,46 +203,49 @@ table = table.assign(as_of=AS_OF, recency_days=(AS_OF - table["last_order"]).dt.
 table = table.assign(lapsed=table["recency_days"] > 60)
 ```
 
-```stats
-value: 111 | label: on the win-back list | note: Business 5, Core 49, Plus 47, Student 10
-value: 55 | label: came off | note: ordered within 60 days of 28 September
-value: 0 | label: smallest recency | note: the check passes
+```mermaid
+flowchart LR
+    A["<b>28 Sep, the as-of date</b><br/>recency counts to here"] --> L["<b>111 on the list</b><br/>smallest recency 0"]
+    A -->|21 days| R["<b>19 Oct, the run day</b><br/>measures the data's age"]
+    R --> G["<b>21 days old</b><br/>reported beside the table"]
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class L bet
+    class A,R,G known
 ```
 
 ```notes
-LIVE, 3 minutes. Writing as_of into the table lets the growth team see what 60 days was counted
-from. At 45 days the honest list is 144, at 90 days 74: the take-home asks which line to sign.
+LIVE, 3 minutes. 55 customers came off the list: they ordered within 60 days of 28 September.
+Writing as_of into the table lets the growth team see what 60 days was counted from. The run day keeps
+one honest job: the gap to the as-of date is the data's age, 21 days on 19 October, the same 21 the
+hurried table showed as its smallest recency. A table whose orders end three weeks before the run is
+a stale load, and the growth team hears that before any code goes out. At 45 days the honest list is
+144, at 90 days 74: the take-home asks which line to sign.
 ```
 
 ---
 
-## S11. Four guards, each against the warehouse
-*Which guards stop a bad Monday?*
+## S10. Four guards: two on the warehouse, two on the shape
+*Which guards stop a bad Monday, and what does each compare with?*
 
 | Guard | Compared with | Stops |
 |---|---|---|
-| One row per customer | `customer_id` is unique | a repeated customer |
-| Rows equal the list | 340 from `customers` | a customer missing |
-| Spend equals the warehouse | Rs 19,84,00,000 from `orders` | spend added or lost |
-| Smallest recency is 0 | the as-of date | a count from the wrong day |
-
-```mermaid
-flowchart LR
-    B["<b>build</b>"] --> G{"<b>four guards</b>"}
-    G -->|all pass| W["<b>write the table</b>"]
-    G -->|one fails| S["<b>raise, write nothing</b>"]
-    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    class S bad
-```
+| One row per customer | the table itself: `customer_id` is unique | a repeated customer |
+| Rows equal the list | the warehouse: 340 from `customers` | a customer missing |
+| Spend equals the warehouse | the warehouse: Rs 19,84,00,000 from `orders` | spend added or lost |
+| Smallest recency is 0 | the table itself: counted to its as-of date | a count from the wrong day |
 
 ```notes
-LIVE, 3 minutes. Each guard is compared with a number the warehouse gives on its own, so a slip in the
-notebook cannot pass its own check.
+LIVE, 3 minutes. Two guards read the warehouse's own counts, on every call, so a later Monday is
+checked against that Monday's warehouse; two check the table's own shape. Inside the refresh the
+recency guard passes by construction, because the as-of date comes from the same orders: it is there
+for the Monday someone edits the refresh to count to the calendar. Each guard raises, so a table that
+fails one is never written.
 ```
 
 ---
 
-## S12. A repeated row: which guards fire?
+## S11. A repeated row: which guards fire?
 *Which guards stop a bad Monday, and does each one fire when it should?*
 
 ```python
@@ -270,7 +261,7 @@ LIVE, 2 minutes. Prove each guard by making it fire on a copy broken on purpose.
 
 ---
 
-## S13. Answer: three fire, and the recency guard holds
+## S12. Answer: three fire, and the recency guard holds
 *Does every broken copy trip at least one guard, and the honest table none?*
 
 | The table | Guards that fire |
@@ -280,7 +271,7 @@ LIVE, 2 minutes. Prove each guard by making it fire on a copy broken on purpose.
 | Recency counted to the run day | smallest recency is 0 |
 | Customers with no orders dropped | rows equal the list |
 
-**What breaks.** Nothing ships broken: every broken copy trips a guard, and the honest table trips none.
+**What it shows.** Every broken copy trips a guard, and the honest table trips none, so the guards tell a broken Monday from an honest one.
 
 ```notes
 LIVE, 3 minutes. The answer is c. The repeated customer's recency is the same, so the recency guard
@@ -290,33 +281,8 @@ count catches it, chapter 1's lesson inside the refresh.
 
 ---
 
-## S14. Two honest runs give one table
-*Do two runs on the same data give the same table?*
-
-```stats
-value: 0 | label: cells that differ | note: two honest runs, a week apart
-value: 166 then 180 | label: the hurried list | note: counted to each run day
-value: 111 and 111 | label: the honest list | note: counted to 28 September
-```
-
-```mermaid
-flowchart LR
-    M1["<b>Monday 1</b><br/>refresh()"] --> E{"<b>equal,<br/>cell for cell?</b>"}
-    M2["<b>Monday 2</b><br/>refresh()"] --> E
-    E -->|yes| T["<b>trust it</b>"]
-    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class T bet
-```
-
-```notes
-LIVE, 2 minutes. Ask the room to predict first: 55, 14, 0 or 111 customers different. Nothing in the
-honest refresh reads the calendar, so the answer is 0.
-```
-
----
-
-## S15. A second route: the warehouse counts 111
-*Does the warehouse, counting on its own, find the same win-back list?*
+## S13. Two runs agree, and the warehouse counts 111
+*Do two runs on the same data agree, and does the warehouse, counting on its own, find the same list?*
 
 ```sql
 WITH last  AS (SELECT customer_id, max(order_date) AS last_order FROM orders GROUP BY customer_id),
@@ -325,18 +291,21 @@ SELECT count(*) AS win_back FROM last, as_of WHERE as_of.d - last.last_order > 6
 ```
 
 ```stats
+value: 0 | label: cells that differ | note: two honest runs, a week apart
+value: 166 then 180 | label: the hurried list | note: counted to each run day
 value: 111 = 111 | label: the win-back list | note: SQL and the refresh
 ```
 
 ```notes
-LIVE, 2 minutes. Subtracting two dates in Postgres gives whole days. The query shares no code with
-the refresh. When to switch: the refresh for the table, the query to confirm the list's size before
-a send.
+LIVE, 3 minutes. Nothing in the honest refresh reads the calendar, so two runs on the same data give
+the same table cell for cell; the notebook's section 5 asks the room to predict the difference first.
+Subtracting two dates in Postgres gives whole days, and the query shares no code with the refresh.
+When to switch: the refresh for the table, the query to confirm the list's size before a send.
 ```
 
 ---
 
-## S16. Chapter 6: 111 on the list, and a run that stops
+## S14. Chapter 6: 111 on the list, and a run that stops
 *What did each smaller question find?*
 
 | Question | The answer |
@@ -348,15 +317,15 @@ a send.
 | Do two runs agree? | Cell for cell; the hurried list went 166 then 180 |
 | Does the warehouse agree? | Yes: 111 |
 
-**Kavya's review.** The table carries its as-of date, the smallest recency is 0, and a run that fails a guard writes nothing.
+**Kavya's review.** The table carries its as-of date and reports its age, the smallest recency is 0, and a run that fails a guard writes nothing.
 
 **In the interview.** [F] How do you compute recency in a job that runs every week?
 
 ```notes
-LIVE, 2 minutes. One breath: from the data's last loaded date, carried in the table, never the wall
-clock; the check is that the smallest recency is 0. The depth section of notebook 06 mirrors
-Wednesday's falling flag in pandas with groupby and shift and checks it against the warehouse. Then
-the escalated case.
+LIVE, 2 minutes. One breath: from the data's last loaded date, carried in the table; the wall clock
+only measures the data's age, reported so a stale load is seen before the send; the check is that the
+smallest recency is 0. The depth section of notebook 06 mirrors Wednesday's falling flag in pandas
+with groupby and shift and checks it against the warehouse. Then the escalated case.
 ```
 
 ---
@@ -371,7 +340,7 @@ and the notebook notebooks/C2_W02_D04_ex1_escalated_case_STUDENT.ipynb.
 
 ---
 
-## S17. Answering it alone: five parts, thirteen letters
+## S15. Alone: five parts, thirteen letters, four numbers
 *What does the escalated case ask, part by part?*
 
 ```timeline
@@ -390,7 +359,7 @@ numbers the last cell prints.
 
 ---
 
-## S18. Two definitions, and the checks to reach
+## D16. Two definitions, and the checks to reach
 *Which flags does the table carry, and which numbers prove it before it ships?*
 
 | Flag | Its rule |
@@ -422,24 +391,17 @@ LIVE. Fifteen minutes. Collect the wrong numbers during the case and put them on
 
 ---
 
-## S19. Answering it: six wrong outputs, six checks
+## S17. Six wrong outputs to expect, and their checks
 *Which wrong output came from which step, and which check would have caught it?*
 
 | The wrong output | Where it came from | The check |
 |---|---|---|
-| 301 rows | the spine taken from the orders | rows against the customer list |
+| 301 rows | the spine taken from the customers who ordered | rows against the customer list |
 | 0 customers who never ordered | a missing count never equals 0 | fill 0 on purpose, then count |
-| More than 340 rows after the merge | the feed's promise taken on trust | `validate="one_to_one"` |
+| Reached customers who read as never reached | a repeated customer dropped entirely | the second count from the raw feed |
 | 154 on the win-back list | recency counted to the class day | the smallest recency is 0 |
-| Falling flags on customers who never fell | the previous row read without the customer | `groupby` before `shift` |
+| Falling flags on customers who never fell | earlier readings taken without the customer | the flag against Wednesday's query |
 | A view short of the warehouse | the pivot's default mean | the grand total against the orders |
-
-```mermaid
-flowchart LR
-    W["<b>wrong output</b>"] --> C["<b>the check</b>"] --> F["<b>the fix</b>"]
-    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    class W bad
-```
 
 ```notes
 LIVE, 8 minutes. For each wrong number on the board, ask the room which check catches it before
@@ -449,13 +411,17 @@ Do not read any customer ids aloud.
 
 ---
 
-## S20. The miss most rooms make: the class-day date
+## S18. The miss to expect: the class-day date
 *Why is the wall-clock count the one that survives review?*
 
-```stats
-value: 154 | label: counted to 15 October | note: the class day
-value: 166 | label: counted to 19 October | note: the first Monday refresh
-value: 111 | label: counted to 28 September | note: the data's last date
+```mermaid
+flowchart LR
+    A["<b>28 Sep</b><br/>the data's last date<br/>111 on the list"] --> B["<b>15 Oct</b><br/>the class day<br/>154 on the list"]
+    B --> C["<b>19 Oct</b><br/>the first Monday<br/>166 on the list"]
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class A bet
+    class B,C bad
 ```
 
 **What breaks.** Every run gives a plausible count, so nobody questions it; only the smallest-recency check or a second run on the same data exposes it.
@@ -479,7 +445,7 @@ notebooks/C2_W02_D04_ex2_second_case_STUDENT.ipynb.
 
 ---
 
-## S21. Answering it in pairs: three tools, one note
+## S19. In pairs: one rate in three tools, then the note
 *What does Kavya ask the pair for?*
 
 **The client asks.** "You did the tree in plain Python in Week 1, in SQL on Monday. Do it a third way now, and tell me honestly which tool you would pick for which job."
@@ -493,13 +459,14 @@ label: 4 | title: The note | body: One line per tool, the rows each moved, one r
 
 ```notes
 LIVE, 2 minutes. The question is Week 1's branch that moved: Retail-Plus orders per member, Q1
-against Q2, where a member counts in a quarter if they ordered in it. The room writes the SQL first;
-then the trainer runs it through plain Python and pandas and closes the loop.
+against Q2, where a member counts in a quarter if they ordered in it. Each pair writes the SQL on
+paper first, then runs the rate through plain Python, SQL and pandas in the notebook, and writes the
+note together.
 ```
 
 ---
 
-## S22. Which tool would you sign for Finance's number?
+## S20. Which tool would you sign for Finance's number?
 *The three agree; which one should own a number Finance reruns every Monday?*
 
 ```mermaid
@@ -512,7 +479,7 @@ flowchart LR
     class O unknown
 ```
 
-**Question.** As a letter? a) a pandas notebook on the analyst's machine; b) a plain Python loop; c) a SQL query in the warehouse; d) a CSV export refreshed every Monday.
+**Question.** As a letter? a) pandas, since the growth team's table already holds the numbers; b) plain Python, since an auditor can read every line; c) SQL, since it runs where the data lives; d) a CSV export, since Finance opens every number in a spreadsheet.
 
 ```notes
 LIVE, 3 minutes, after the pairs have run all three routes. Letters in chat.
@@ -520,7 +487,7 @@ LIVE, 3 minutes, after the pairs have run all three routes. Letters in chat.
 
 ---
 
-## S23. Answer: SQL, and pandas reads its answer
+## S21. Answer: SQL, and pandas reads its answer
 *What did the three routes give, and what did each move?*
 
 ```stats
@@ -548,7 +515,7 @@ LIVE. Twenty minutes. Two learners per question: one answers, one asks the follo
 
 ---
 
-## S24. Answering aloud: the row's five
+## S22. Five interview questions, answered aloud
 *Which questions does every screen ask about today's work?*
 
 | Tag | The question |
@@ -559,13 +526,6 @@ LIVE. Twenty minutes. Two learners per question: one answers, one asks the follo
 | [F] | Pivot against melt: which widens and which lengthens? |
 | [D] | Same question, three tools: how do you choose, and defend one choice? |
 
-```mermaid
-flowchart LR
-    Q["<b>question</b>"] --> A["<b>answer in one breath</b>"] --> F["<b>the follow-up</b>"]
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class A known
-```
-
 ```notes
 LIVE, 10 minutes. Tags: [S] staple asked everywhere, [F] frequent in GCC and product screens, [D]
 differentiator. Answers in one breath are in the day sheet; push for a number in every answer.
@@ -573,7 +533,7 @@ differentiator. Answers in one breath are in the day sheet; push for a number in
 
 ---
 
-## S25. Seven follow-ups, three of them design
+## S23. Seven follow-ups, three of them design
 *Which case-style follow-ups does an interviewer add?*
 
 | Tag | The follow-up |
@@ -603,12 +563,12 @@ chapter.
 
 ---
 
-## S26. Answer: the table is ready, and it holds
+## S24. Answer: the table is ready, and it holds
 *What does the growth team hear, and with which caveat?*
 
 > "The Monday table is ready: 340 customers, one row each, with spend that ties to the warehouse at Rs 19,84,00,000, the 130 customers the monsoon sale reached, and a win-back list of 111 counted to 28 September. It rebuilds itself every Monday and will not ship if a guard fails, and Finance's revenue stays in the warehouse as a query the table reconciles with every week." The GCC data and AI team
 
-**The caveat.** The table records whom the sale reached; whether the sale changed what they spent is a separate test, and Week 1 Thursday found the reached were buying anyway.
+**The caveat.** The table records whom the sale reached; whether the sale changed what they spent is a separate test, and Week 1 Thursday found a blended rise of 6.1 percent that turned into 3.0 percent less inside each segment.
 
 ```mermaid
 flowchart LR
@@ -623,7 +583,7 @@ LIVE, 2 minutes. Read it aloud once. Every number in it was checked twice today.
 
 ---
 
-## S27. Five lines worth keeping
+## S25. Five lines worth keeping
 *Which rules does the cheat sheet print word for word?*
 
 | | The line |
@@ -640,7 +600,7 @@ LIVE, 3 minutes. Ask a learner to read each line and give the number behind it.
 
 ---
 
-## S28. Tomorrow's question, left open
+## S26. Tomorrow's question, left open
 *Which parts of this week belong in a sheet a director can change, and which must never be there?*
 
 > "Monday's growth review deck needs three things I can open on my laptop without a login: the revenue tree by segment for both quarters, the top-fifty protect list with a lookup so I can find any member by id, and one number on the front page with its trend. Nothing that needs Python. If a director changes an assumption in the room, the sheet must recalculate in front of them." Meera's chief of staff

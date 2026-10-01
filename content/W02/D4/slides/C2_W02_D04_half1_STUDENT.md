@@ -30,8 +30,8 @@ label: Chapter 6 | title: Will Monday rebuild it? | body: Can the table rebuild 
 ```notes
 LIVE, 3 minutes. Read the six questions in order and say that each one is the question the previous
 answer raises. Chapters 1 to 5 run this morning, chapter 6 opens the afternoon. Ask the room which
-question they expect to be hardest; most say the tool choice, and most rooms trip hardest on
-chapter 1's missing customers. Keep this slide's order on the board all day.
+question they expect to be hardest; expect most to say the tool choice, and expect the first slip to
+come earlier, at chapter 1's missing customers. Keep this slide's order on the board all day.
 ```
 
 ---
@@ -141,8 +141,8 @@ LIVE. Thirty minutes. Notebook C2_W02_D04_01_customer_table is the demonstration
 
 ---
 
-## S6. Answering it takes five smaller questions
-*Who needs the answer, and what has to be settled on the way?*
+## S6. Five smaller questions build the growth team's table
+*What must the growth team's table settle before a single offer goes out?*
 
 **Who needs the answer.** The growth team, which sends a win-back code or a first-order nudge from this table every Monday; a customer missing from it gets no offer at all.
 
@@ -219,8 +219,9 @@ serves millions of shops keeps the non-buyers on the table.
 
 ```notes
 LIVE, 4 minutes. Rows moved is what separates a and c from b; lines of logic is what separates a from
-c. Ask: at 5 crore orders, which option still moves 301 rows? b. Hold that thought for chapter 5,
-where rows moved decides where Finance's number lives.
+c. Ask: at 5 crore orders, which option's rows grow with the customers instead of the orders? b, one
+row per customer who ordered, 301 today. Hold that thought for chapter 5, where rows moved decides
+where Finance's number lives.
 ```
 
 ---
@@ -253,26 +254,8 @@ count, sum.
 
 ---
 
-## S11. Which types does read_sql give pandas 3?
-*Does the frame pandas reads hold every order the warehouse holds?*
-
-```mermaid
-flowchart LR
-    P["<b>Postgres</b><br/>text, date, numeric(12,2)"] --> R["<b>pd.read_sql</b>"] --> D["<b>DataFrame</b><br/>customer_id, amount: ?"]
-    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    class D unknown
-```
-
-**Question.** The types of `customer_id` and `amount`, as a letter? a) `object` and `object`; b) `str` and `float64`; c) `str` and `int64`; d) `object` and `Decimal`.
-
-```notes
-LIVE, 2 minutes. Letters in chat, then run the notebook's section 2.
-```
-
----
-
-## S12. Answer: str for text, float64 for amounts
-*Did all 1,000 orders arrive, as types pandas can use?*
+## S11. pandas 3 reads text as str, amounts as float64
+*Did all 1,000 orders arrive from the warehouse, as types pandas can use?*
 
 ```stats
 value: 1,000 = 1,000 | label: orders | note: pandas and Postgres
@@ -283,13 +266,15 @@ value: float64 | label: amount | note: a number pandas can sum
 **What breaks.** A tutorial that finds text columns with `dtype == object` finds none on pandas 3, because text reads as `str`. `parse_dates` makes `order_date` a real date, which chapter 6 subtracts.
 
 ```notes
-LIVE, 2 minutes. The answer is b. pandas 2 said object for text; pandas 3 says str, checked on 3.0.6
+LIVE, 3 minutes. pd.read_sql runs a query in the warehouse and returns its answer as a DataFrame,
+pandas' table in memory; the notebook's section 2 reads the orders with parse_dates=["order_date"]. Ask the room, before the stats: which type will customer_id arrive as? Most
+who learned pandas 2 say object. pandas 2 said object for text; pandas 3 says str, checked on 3.0.6
 on 1 Oct 2026. The count check is Monday's habit: the frame holds 538 Q1 and 462 Q2 orders.
 ```
 
 ---
 
-## S13. How many rows does spend per customer have?
+## S12. How many rows does spend per customer have?
 *Does one line of groupby give the same totals as Week 1's loop?*
 
 ```mermaid
@@ -307,7 +292,7 @@ LIVE, 2 minutes. Most say b. Ask why before running it.
 
 ---
 
-## S14. Answer: 301, the customers who ordered
+## S13. Answer: 301, the customers who ordered
 *Do the loop and groupby agree, and on how many customers?*
 
 ```stats
@@ -325,7 +310,7 @@ lakhs; that is why spend is read by segment. The 39 missing from 340 are chapter
 
 ---
 
-## S15. How many does the hurried nudge filter find?
+## S14. How many does the hurried nudge filter find?
 *How many customers on the list have never ordered?*
 
 ```python
@@ -342,7 +327,7 @@ everyone who signed up and never bought. Letters first.
 
 ---
 
-## S16. Answer: 0, the plausible wrong answer
+## S15. Answer: 0, the plausible wrong answer
 *What would the growth team have sent on Monday?*
 
 ```stats
@@ -353,13 +338,14 @@ value: 301 | label: rows in the table | note: one per customer, or so it seems
 **What breaks.** The welcome offer goes to nobody, and the 39 customers who signed up and never ordered stay unwelcomed.
 
 ```notes
-LIVE, 2 minutes. The answer is a. Nothing errored, every row is right, and the number is wrong. The
-decision it misleads: a campaign with no audience, reported as "nobody to nudge".
+LIVE, 2 minutes. The answer is a. No error was raised and every row in the table is correct, yet the
+count is wrong, because the rows that would make it right are not there. The decision it misleads: a
+campaign with no audience, reported as "nobody to nudge".
 ```
 
 ---
 
-## S17. Why it is wrong: 301 rows against 340
+## S16. Why it is wrong: 301 rows against 340
 *Why does the filter find nobody, and which check catches it?*
 
 ```mermaid
@@ -376,13 +362,14 @@ flowchart LR
 
 ```notes
 LIVE, 3 minutes. Two layers. The table built from orders has no row for a customer with no orders. A
-left merge brings them back, but their count is NaN and the column turns float64, because pandas
-cannot hold a missing value in whole numbers, so == 0 still finds nobody.
+left merge brings them back, but their count is NaN and the column turns float64, because NumPy's
+int64, the type a count arrives in, cannot hold a missing value; pandas' nullable Int64 could, but the
+merge does not choose it. So == 0 still finds nobody.
 ```
 
 ---
 
-## S18. The fix: the list is the spine, and 39 appear
+## S17. The fix: the list is the spine, and 39 appear
 *What changes when the table starts from the customer list?*
 
 ```python
@@ -406,7 +393,7 @@ would never have caught the gap.
 
 ---
 
-## S19. A second route: SQL agrees on all 340
+## S18. A second route: SQL agrees on all 340
 *Does SQL, run on its own, give all 340 customers the same three numbers?*
 
 ```sql
@@ -430,7 +417,7 @@ switch: pandas to build on, SQL to hand an auditor.
 
 ---
 
-## S20. Chapter 1: 340 rows, 39 never ordered
+## S19. Chapter 1: 340 rows, 39 never ordered
 *What did each smaller question find?*
 
 | Question | The answer |
@@ -462,8 +449,8 @@ LIVE. Thirty minutes. Notebook C2_W02_D04_02_exposure_merge is the demonstration
 
 ---
 
-## S21. Answering it takes six smaller questions
-*Who needs the answer, and what has to be settled on the way?*
+## S20. Six checks stand between the feed and the budget
+*What must the marketing lead's reach number survive on the way to November?*
 
 **Who needs the answer.** The marketing lead, who asks for the monsoon sale's budget again in November; an overstated spend makes that case with money nobody paid.
 
@@ -483,7 +470,7 @@ must leave both unchanged.
 
 ---
 
-## S22. The sale's feed decides November's budget
+## S21. The sale's feed decides November's budget
 *What does the marketing lead decide, and what does an inflated number cost?*
 
 ```stats
@@ -502,7 +489,7 @@ promise to check, which is Tuesday's lesson in a new place.
 
 ---
 
-## S23. Meta dedupes the same purchase sent twice
+## S22. Meta dedupes the same purchase sent twice
 *Who else meets one event arriving twice, and what do they do about it?*
 
 ```stats
@@ -522,7 +509,7 @@ hours, Meta keeps the first and discards the rest: a first-touch rule, like toda
 
 ---
 
-## S24. A rule, then a merge that refuses repeats
+## S23. A rule, then a merge that refuses repeats
 *Which of four ways should attach the sale to the table, and what does each risk?*
 
 | Option | Rows out | Spend overstated per re-sent row | The problem shows |
@@ -542,7 +529,7 @@ to Rs 26,020 for the largest. Ask what the date is for: whether a customer bough
 
 ---
 
-## S25. A merge is a join with the same four shapes
+## S24. A merge is a join with the same four shapes
 *What does a pandas merge keep, shape by shape?*
 
 ```mermaid
@@ -565,14 +552,14 @@ pandas spells them how="inner", "left", "right", "outer". Next: what happens whe
 
 ---
 
-## S26. Which customers does a merge keep by default?
+## S25. Which customers does a merge keep by default?
 *Which customers does a merge keep when how is left out?*
 
 ```python
 inner = table.merge(exposure, on="customer_id")      # how= left out
 ```
 
-**Question.** As a letter? a) every customer on the table; b) only the customers the feed names, since the default is inner; c) every feed row, even customers the table does not know; d) none, since `how` is required.
+**Question.** As a letter? a) every customer on the table; b) only the customers the feed names; c) every feed row, even customers the table does not know; d) none, since `how` is required.
 
 ```notes
 LIVE, 2 minutes. Letters in chat.
@@ -580,7 +567,7 @@ LIVE, 2 minutes. Letters in chat.
 
 ---
 
-## S27. Answer: only the 130 the feed names
+## S26. Answer: only the 130 the feed names
 *Who disappears with the default, and why does it matter?*
 
 ```stats
@@ -596,7 +583,7 @@ LIVE, 2 minutes. The answer is b. The default is inner, which is not what the ta
 
 ---
 
-## S28. The plausible wrong answer: Rs 34,700
+## S27. The plausible wrong answer: Rs 34,700
 *What does one re-sent row do to the reached customers' spend, on invented records?*
 
 ```mermaid
@@ -619,7 +606,7 @@ misleads: a November budget asked for on Rs 8,600 nobody paid, a third of the fi
 
 ---
 
-## S29. Why it is wrong, and validate stops it
+## S28. Why it is wrong, and validate stops it
 *Which argument stops the merge before a wrong table exists?*
 
 ```python
@@ -643,7 +630,7 @@ and says what a plain merge would have done. Give it five minutes and do not rea
 
 ---
 
-## S30. Which exposure should each customer keep?
+## S29. Which exposure should each customer keep?
 *Which exposure should a customer keep, and does the table stay at 340 rows?*
 
 ```python
@@ -660,7 +647,7 @@ The rule: one row per customer, the date the sale first reached them.
 
 ---
 
-## S31. Answer: keep="first", and 340 rows stay
+## S30. Answer: keep="first", and 340 rows stay
 *Did the rule and the guarded merge leave the table whole?*
 
 ```stats
@@ -673,14 +660,15 @@ value: 130 | label: reached | note: Core 70, Plus 60, Rs 8,78,980
 
 ```notes
 LIVE, 3 minutes. The answer is c. The reached customers spent Rs 8,78,980 over the two quarters.
-Reached Retail-Plus members averaged Rs 8,993 against Rs 7,660 for the unreached, and Week 1 Thursday
-found the sale reached customers who were buying anyway, so the gap says who was chosen before it
-says what the sale did.
+Reached Retail-Plus members averaged Rs 8,993 against Rs 7,660 for the unreached. Week 1 Thursday met
+the same shape: blended, the reached spent 6.1 percent more, while inside each segment they spent 3.0
+percent less, because half the reached group was Retail-Plus. So the gap says who was chosen before
+it says what the sale did.
 ```
 
 ---
 
-## S32. A second route: a flag and SQL agree
+## S31. A second route: a flag and SQL agree
 *Does a count with no merge at all give the same reach and spend?*
 
 ```stats
@@ -707,7 +695,7 @@ Finance checking the marketing lead's slide.
 
 ---
 
-## S33. Chapter 2: 130 reached, 340 rows kept
+## S32. Chapter 2: 130 reached, 340 rows kept
 *What did each smaller question find?*
 
 | Question | The answer |
@@ -725,8 +713,9 @@ Finance checking the marketing lead's slide.
 
 ```notes
 LIVE, 2 minutes. One breath: validate with one_to_one, one_to_many or many_to_one; it raises
-pandas.errors.MergeError naming the side whose keys repeat; it is the count check made loud. Then
-chapter 3: the head of Retail-Plus wants the months.
+pandas.errors.MergeError naming the side whose keys repeat; a row count finds the same fault after
+the table exists, and validate stops it before. Then chapter 3: the head of Retail-Plus wants the
+months.
 ```
 
 ---
@@ -740,8 +729,8 @@ LIVE. Thirty minutes. Notebook C2_W02_D04_03_months_pivot is the demonstration.
 
 ---
 
-## S34. Answering it takes six smaller questions
-*Who needs the answer, and what has to be settled on the way?*
+## S33. Six steps turn orders into the tier's months
+*What does the head of Retail-Plus need settled before the growth review?*
 
 **Who needs the answer.** The head of Retail-Plus, the paid tier, who takes one number to the growth review and uses the rows to decide which members to protect.
 
@@ -761,7 +750,7 @@ less often; this chapter measures the tier's fall month by month.
 
 ---
 
-## S35. One number goes to the growth review
+## S34. One number goes to the growth review
 *What does the head of Retail-Plus decide, and what does a small number cost?*
 
 ```stats
@@ -779,7 +768,7 @@ thing protect the wrong members. Leave the question mark on the slide: the room 
 
 ---
 
-## S36. Costco reports visits and trip size apart
+## S35. Costco reports visits and trip size apart
 *Who else splits how often members buy from what each trip is worth?*
 
 ```stats
@@ -800,13 +789,13 @@ separately for a reason.
 
 ---
 
-## S37. Long to hold, wide to read, in pandas
+## S36. Long to hold, wide to read, in pandas
 *Which of three shapes should answer the head of Retail-Plus, and what does each cost?*
 
 | Option | Shape | Cells | Empty cells | Adding October |
 |---|---|---|---|---|
 | a) long, `groupby` on member and month | 266 by 3 | 798 | 0 | nothing |
-| b) wide, `pivot_table` | 107 by 6 | 642 | 376 | nothing |
+| b) wide, `pivot_table` | 107 by 7, id and months | 749 | 376 | nothing |
 | c) SQL, a column per month by hand | 107 by 7 | 749 | 376 | a new line, typed |
 
 **The call.** a and b together: long keeps every rupee and plots, wide is what the head reads. What would switch it: the view moving into the warehouse every Monday; then c, with a calendar table of months.
@@ -819,7 +808,7 @@ column into columns; the next slides show what it does with repeats.
 
 ---
 
-## S38. How many member-months did Retail-Plus buy in?
+## S37. How many member-months did Retail-Plus buy in?
 *In how many member-months did Retail-Plus buy?*
 
 ```mermaid
@@ -837,7 +826,7 @@ LIVE, 2 minutes. Letters in chat.
 
 ---
 
-## S39. Answer: 266, and a fall of 29.4 percent
+## S38. Answer: 266, and a fall of 29.4 percent
 *What did the tier take in each quarter, every order added up?*
 
 ```stats
@@ -860,7 +849,7 @@ the two quarters: Rs 5,85,770 and Rs 4,13,380.
 
 ---
 
-## S40. How far did the tier fall, per the one-liner?
+## S39. How far did the tier fall, per the one-liner?
 *How far did the tier fall, read from a one-line pivot?*
 
 ```python
@@ -876,7 +865,7 @@ LIVE, 2 minutes. The hurried analyst writes the pivot in one line and adds up th
 
 ---
 
-## S41. Answer: 18 percent, the plausible wrong answer
+## S40. Answer: 18 percent, the plausible wrong answer
 *What would the growth review have heard?*
 
 ```stats
@@ -893,7 +882,7 @@ LIVE, 2 minutes. The answer is b. Ask what could make a sum of columns come in l
 
 ---
 
-## S42. Why it is wrong: pivot_table averages
+## S41. Why it is wrong: pivot_table averages
 *Why is the pivot short, and which check catches it?*
 
 ```mermaid
@@ -914,7 +903,7 @@ how often members bought: the very lever Retail-Plus moved on.
 
 ---
 
-## S43. The fix: aggfunc="sum" and fill_value=0
+## S42. The fix: aggfunc="sum" and fill_value=0
 *What does the pivot say once a cell means a total?*
 
 ```python
@@ -931,13 +920,12 @@ value: Rs 97,638 | label: the fall the average hid | note: lost when each cell a
 ```notes
 LIVE, 3 minutes. fill_value=0 writes a month with no order as 0 spend instead of a gap. Then the
 your-turn: the same view for Retail-Core; the room checks the grand total first and says whether the
-averaged pivot even gets the direction right. It does not: summed, Retail-Core fell 1.8 percent;
-averaged, it rose 1.5.
+averaged pivot even gets the direction right. The day sheet carries the two numbers to confirm.
 ```
 
 ---
 
-## S44. Indexed by order, the pivot has 355 rows
+## S43. Indexed by order, the pivot has 355 rows
 *What does one row of the pivot stand for?*
 
 | Index | Shape | First row label | One row is |
@@ -948,14 +936,14 @@ averaged, it rose 1.5.
 **What breaks.** The order-indexed pivot's totals are right, so it survives a glance, but "who is drifting" cannot be read from rows that are orders. Read the row labels aloud before reading a number.
 
 ```notes
-LIVE, 2 minutes, notebook section 4. Ask the room to predict the shape first: 107 by 6, 355 by 6, 6
-by 107 or 120 by 6. The 13 members who never ordered are in neither view, a decision to state when
-the view goes out.
+LIVE, 2 minutes, notebook section 4. Point at each pivot's first row label and say what one row
+stands for: a member's id, then an order's id. The 13 members who never ordered are in neither view,
+a decision to state when the view goes out.
 ```
 
 ---
 
-## S45. Wide compares, long follows the trend
+## S44. Wide compares, long follows the trend
 *Which shape compares a member's quarters, and which follows the tier's trend?*
 
 ```stats
@@ -974,12 +962,12 @@ flowchart LR
 
 ```notes
 LIVE, 2 minutes. pivot widens, melt lengthens. The trend in members ordering each month, 56, 47, 48,
-40, 38, 37, is how often again, and it needs the long shape to plot.
+40, 38, 37, is the frequency Week 1 found moving, and it needs the long shape to plot.
 ```
 
 ---
 
-## S46. A second route: SQL gives the same 29.4%
+## S45. A second route: SQL gives the same 29.4%
 *Does a query that never pivots give the same fall?*
 
 ```sql
@@ -1002,7 +990,7 @@ and the query to trust when a pivot's arguments are in doubt.
 
 ---
 
-## S47. Chapter 3: a fall of 29.4 percent, Rs 1,72,390
+## S46. Chapter 3: a fall of 29.4 percent, Rs 1,72,390
 *What did each smaller question find?*
 
 | Question | The answer |
@@ -1035,8 +1023,8 @@ demonstration.
 
 ---
 
-## S48. Answering it takes six smaller questions
-*Who needs the answer, and what has to be settled on the way?*
+## S47. Three tools must agree before Marketing hears it
+*What must Kavya see before the share who bought reaches Marketing?*
 
 **Who needs the answer.** The marketing lead, through Kavya: the share of reached customers who bought is the second line of the November case, and Kavya signs nothing two tools disagree on.
 
@@ -1056,7 +1044,7 @@ pandas, then say why the three agree, or why they do not.
 
 ---
 
-## S49. The share who bought is the budget's second line
+## S48. The share who bought is the budget's second line
 *What is the marketing lead's question, and what does a perfect number cost?*
 
 ```stats
@@ -1075,7 +1063,7 @@ perfect.
 
 ---
 
-## S50. Uber's completed trips lived in two tools
+## S49. Uber's completed trips lived in two tools
 *Who else found one question giving two answers in two tools?*
 
 ```mermaid
@@ -1098,21 +1086,45 @@ ONE mapping" between a metric and its business logic.
 
 ---
 
-## S51. pandas answers, SQL checks it
+## S50. pandas answers, SQL checks it
 *Which tool should answer the marketing lead's question, and what does each cost on this data?*
 
 | Option | Rows moved for this question | Lines of logic | Where it runs |
 |---|---|---|---|
-| a) plain Python | 1,000 | 6 | the analyst's machine |
+| a) plain Python | 1,340 | 6 | the analyst's machine |
 | b) SQL | 2 | 10 | the warehouse |
 | c) pandas | 0 more | 3 | the analyst's machine, table in memory |
 
 **The call.** c, checked by b: the table is in memory, and SQL shares no code with it. What would switch it: the number going to Finance or an auditor; then SQL owns it, chapter 5's question.
 
 ```notes
-LIVE, 3 minutes. Plain Python is the route for explaining a count line by line. The hurried version
-in every tool reads each customer's segment from their orders, which is where this chapter goes
-wrong.
+LIVE, 3 minutes. Plain Python fetches the 1,000 orders and the 340-row customer list, and it is the
+route for explaining a count line by line. SQL sends its answer, two rows.
+```
+
+---
+
+## S51. Every reached customer bought or never ordered
+*Before any tool runs, what must the three counts add up to?*
+
+```mermaid
+flowchart LR
+    R["<b>130 reached</b><br/>chapter 2's rule"] --> B["<b>bought</b><br/>one order or more"]
+    R --> N["<b>never ordered</b><br/>no order rows at all"]
+    B --> S{"<b>by segment</b><br/>do the groups add<br/>back to 130?"}
+    N --> S
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class R,B,N known
+    class S unknown
+```
+
+**The call.** Whatever the tool, the reached split into those who bought and those who never ordered, and the groups by segment must add back to 130.
+
+```notes
+LIVE, 2 minutes. Draw it before any code. A customer who never ordered has no order rows, so any
+attribute read from the orders is missing for them. Ask where each tool would file such a customer;
+the next three slides show what each one does.
 ```
 
 ---
@@ -1144,7 +1156,7 @@ LIVE, 2 minutes. .get returns None for a customer the dictionary does not hold.
 | None, or NULL in SQL | 23 | 0 |
 | All | 130 | 107 |
 
-**What breaks.** Nothing yet: plain Python files the 23 under `None`, and SQL's `GROUP BY` puts them in a `NULL` group of their own. Both still count 130.
+**What it shows.** Plain Python files the 23 under `None`, and SQL's `GROUP BY` puts them in a `NULL` group of their own. Both still count 130.
 
 ```notes
 LIVE, 3 minutes. The answer is b. Run the SQL version too, notebook section 3: three rows, one NULL.
@@ -1153,29 +1165,40 @@ The 23 are reached customers with no orders, so no segment could be read from th
 
 ---
 
-## S54. The plausible wrong answer: 100 percent bought
-*Why does pandas report that every reached customer bought?*
+## S54. What share does the hurried pandas route report?
+*What does pandas say about the reached customers who bought?*
 
 ```python
 reach = buyers.merge(first_touch, on="customer_id", how="right", validate="one_to_one")
 reach.groupby("segment").agg(reached=("customer_id", "count"), bought=("frequency", "count"))
-# Retail-Core 56 of 56, Retail-Plus 51 of 51: 107 reached, 100 percent bought
 ```
 
-```stats
-value: 100% | label: of reached bought | note: the pandas headline
-value: 107 | label: reached | note: where SQL and Python count 130
-```
+**Question.** The share of reached customers who bought, as a letter? a) 82 percent; b) 100 percent; c) 50 percent; d) it cannot be computed.
 
 ```notes
-LIVE, 3 minutes. Ask the room to predict before running: 82, 100, 50, or cannot be computed. The
-hurried pandas route reports 100 percent on 107 customers. The decision it misleads: a marketing lead
-asking for the same budget on perfect results.
+LIVE, 2 minutes. Letters in chat, then run the notebook's section 4. buyers carries each customer's
+segment as read from their orders.
 ```
 
 ---
 
-## S55. Why it is wrong: groupby drops a missing key
+## S55. Answer: 100 percent, the plausible wrong answer
+*Why does pandas report that every reached customer bought?*
+
+```stats
+value: 100% | label: of reached bought | note: the pandas headline
+value: 107 | label: reached | note: where SQL and Python count 130
+value: 56 of 56, 51 of 51 | label: Retail-Core, Retail-Plus | note: every group full
+```
+
+```notes
+LIVE, 2 minutes. The answer is b. The hurried pandas route reports 100 percent on 107 customers. The
+decision it misleads: a marketing lead asking for the same budget on perfect results.
+```
+
+---
+
+## S56. Why it is wrong: groupby drops a missing key
 *Which default dropped the 23, and which check catches it?*
 
 ```mermaid
@@ -1197,7 +1220,7 @@ keys "will be dropped". The reached who never bought are exactly the ones that v
 
 ---
 
-## S56. The fix: the segment comes from the list
+## S57. The fix: the segment comes from the list
 *Where should the segment come from, so that all three tools agree?*
 
 ```stats
@@ -1209,13 +1232,13 @@ value: 107 of 130 | label: all reached | note: 82 percent, in all three tools
 **What changed.** Every customer on the list has a segment, bought or not. Read it from the list, in all three tools, and the reach moves from 107 to 130 and the share from 100 percent to 82.
 
 ```notes
-LIVE, 3 minutes. Ask for the Retail-Plus share as a letter first: 100, 85, 80 or 51 percent. The
-answer is 85. The tools disagreed because the hurried versions read the segment from the orders.
+LIVE, 3 minutes. Retail-Plus's share is 85 percent, 51 of its 60 reached members. The tools
+disagreed because the hurried versions read the segment from the orders.
 ```
 
 ---
 
-## S57. A second route: sets find the same 23
+## S58. A second route: sets find the same 23
 *Does counting sets, with no grouping at all, find the same customers who never bought?*
 
 ```python
@@ -1225,7 +1248,8 @@ bought = len(reached_ids) - len(never)                # 107
 
 ```mermaid
 flowchart LR
-    R["<b>130 reached</b>"] -->|minus customers with orders| N["<b>23 never ordered</b>"]
+    R["<b>130 reached</b>"] --> D["<b>set difference</b><br/>minus every customer<br/>with an order"]
+    D --> N["<b>23 never ordered</b>"]
     R --> B["<b>107 bought</b>"]
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class B bet
@@ -1238,7 +1262,7 @@ pandas count for the slide, the set difference when a group count looks too good
 
 ---
 
-## S58. Chapter 4: 107 of 130 bought, 82 percent
+## S59. Chapter 4: 107 of 130 bought, 82 percent
 *What did each smaller question find?*
 
 | Question | The answer |
@@ -1271,8 +1295,8 @@ LIVE. Thirty minutes. Notebook C2_W02_D04_05_tool_choice is the demonstration.
 
 ---
 
-## S59. Answering it takes five smaller questions
-*Who needs the answer, and what has to be settled on the way?*
+## S60. Five questions decide who owns Finance's number
+*What does Anand Iyer's analyst need settled before Monday's rerun?*
 
 **Who needs the answer.** Kavya, and behind Kavya, Anand Iyer, whose analyst reruns every number; a number that lives in two tools drifts into two numbers, which is how Week 1 Wednesday lost a month.
 
@@ -1291,7 +1315,7 @@ copies of one number, a month lost to the argument.
 
 ---
 
-## S60. Finance reruns eight numbers every Monday
+## S61. Finance reruns eight numbers every Monday
 *Which number does the note test, and who reruns it?*
 
 ```stats
@@ -1304,12 +1328,12 @@ value: every Monday | label: rerun by | note: Anand's analyst, line by line
 
 ```notes
 LIVE, 2 minutes. Kavya's words. The four recurring asks are Finance's revenue, the growth team's
-table, the head of Retail-Plus's months view and an auditor's one-off; slide S67 assigns them.
+table, the head of Retail-Plus's months view and an auditor's one-off; the note assigns each an owner.
 ```
 
 ---
 
-## S61. LinkedIn gave every metric one source
+## S62. LinkedIn gave every metric one source
 *Who else learned what one metric in many places costs?*
 
 ```mermaid
@@ -1333,7 +1357,7 @@ Linkedin".
 
 ---
 
-## S62. SQL, because Finance reruns it where data lives
+## S63. SQL, because Finance reruns it where data lives
 *Which of three tools should compute Finance's Monday revenue, and what does each cost?*
 
 | Option | Lines of logic | Where Anand's analyst reruns it | Depends on, besides the data |
@@ -1350,7 +1374,7 @@ LIVE, 3 minutes. Speed and rows moved are the two sizes still missing; the next 
 
 ---
 
-## S63. Does speed separate the three tools here?
+## S64. Does speed separate the three tools here?
 *Does speed separate the three tools on 1,000 orders?*
 
 ```mermaid
@@ -1370,26 +1394,27 @@ LIVE, 2 minutes. Letters, then run notebook section 2, which times each route en
 
 ---
 
-## S64. Answer: all three finish well inside a second
-*What does a sizing column that scores every option the same tell you?*
+## S65. Answer: all three finish in hundredths of a second
+*Does speed give a reason to choose on 1,000 orders?*
 
-```bar
-label: SQL | value: 4 | caption: a few thousandths of a second
-label: pandas | value: 13 | caption: about a hundredth
-label: plain Python | value: 19 | caption: about two hundredths
+```stats
+value: 0.004 s | label: SQL | note: first on every one of 30 runs
+value: 0.010 s | label: pandas | note: the median of 30 runs
+value: 0.017 s | label: plain Python | note: the median of 30 runs
 ```
 
-**What breaks.** On 1,000 orders speed separates nothing, and the ranking changes from run to run; a column where every option scores the same is no reason to choose.
+**What breaks.** Speed ranks SQL first, by about a hundredth of a second, and a hundredth of a second on a number Finance reads once a week decides nothing. The size that grows with the business is the rows each route moves.
 
 ```notes
-LIVE, 2 minutes. The answer is c. The bars show one run in thousandths of a second; the numbers vary
-each time. Tell the room that a sizing which scores every option the same decides nothing.
+LIVE, 2 minutes. The answer is c. The stats are medians of 30 timed runs on the machine that built
+the notebook; the notebook prints this run's timings, which land in the same order. Then the size
+that does grow: the rows each route moves.
 ```
 
 ---
 
-## S65. The plausible wrong answer: 8 rows each
-*How many rows does each tool move to answer an eight-row question?*
+## S66. How many rows did pandas move for its eight?
+*Sized by the answer, the three tools tie: is that the cost of each?*
 
 | Option | Rows in the answer | The hurried note says |
 |---|---|---|
@@ -1397,16 +1422,16 @@ each time. Tell the room that a sizing which scores every option the same decide
 | b) pandas | 8 | the same cost, and the shortest chain |
 | c) plain Python | 8 | the same cost |
 
-**The plausible wrong answer.** Sized by the answer, the three tie at 8 rows, so the note picks pandas for Finance.
+**Question.** Sized by the answer, the three tie at 8 rows. How many rows did the pandas route move out of the warehouse to produce its eight, as a letter? a) 8; b) 340; c) 1,000; d) 1,340.
 
 ```notes
-LIVE, 2 minutes. Ask before revealing: how many rows did the pandas route move out of the warehouse
-to produce its eight? a) 8; b) 340; c) 1,000; d) 1,340.
+LIVE, 2 minutes. The hurried note sizes by the answer and picks pandas for Finance, because its chain
+is short. Letters in chat, then run the notebook's section 3.
 ```
 
 ---
 
-## S66. Why it is wrong: pandas moved 1,340 rows
+## S67. Answer: pandas moved 1,340 rows, SQL moved 8
 *Which size separates the tools, and which check catches the tie?*
 
 ```stats
@@ -1424,7 +1449,7 @@ rerun it. The note's line for Finance does not change; its reason is now a numbe
 
 ---
 
-## S67. The note: every ask has one owner
+## S68. The note: every ask has one owner
 *Which tool should own each of the day's recurring asks, and which would you refuse for Finance?*
 
 | The ask | The owner | The reason |
@@ -1437,13 +1462,13 @@ rerun it. The note's line for Finance does not change; its reason is now a numbe
 **The refusal.** Never a pandas notebook for Finance's number: it moves every order to one machine, runs on a copy, and Anand's analyst cannot rerun it without the growth team's notebook.
 
 ```notes
-LIVE, 4 minutes. Ask first which ask plain Python should own: the auditor's one-off, asked once and
+LIVE, 4 minutes. Start from the last row: plain Python owns the auditor's one-off, asked once and
 read line by line. The refusal is the sentence Kavya will ask for in the interview drill.
 ```
 
 ---
 
-## S68. A second route: the table ties to Finance
+## S69. A second route: the table ties to Finance
 *Does the growth team's table reconcile with Finance's query to the rupee?*
 
 | Segment | The growth team's table | Finance's query, both quarters |
@@ -1453,7 +1478,7 @@ read line by line. The refusal is the sentence Kavya will ask for in the intervi
 | Retail-Core | Rs 7,39,320 | Rs 7,39,320 |
 | Student | Rs 62,490 | Rs 62,490 |
 
-**When to switch.** Run this reconciliation every Monday; when it fails, the warehouse is right and the table is wrong until someone can say why. Chapter 6 puts it inside the refresh.
+**The check.** Run this reconciliation every Monday; when it fails, the warehouse is right and the table is wrong until someone can say why. Chapter 6 puts it inside the refresh.
 
 ```notes
 LIVE, 2 minutes. The two routes share no code: chapter 1's groupby and merge against SQL. Both add up
@@ -1463,13 +1488,13 @@ never retyped.
 
 ---
 
-## S69. Chapter 5: SQL owns Finance's number
+## S70. Chapter 5: SQL owns Finance's number
 *What did each smaller question find?*
 
 | Question | The answer |
 |---|---|
 | Which tool for Finance? | SQL, rerun where the data lives |
-| Does speed decide? | No: all three well inside a second |
+| Does speed decide? | No: hundredths of a second apart |
 | How many rows move? | SQL 8, pandas 1,340, plain Python 1,000 |
 | Who owns which ask? | SQL Finance, pandas the table and months, Python the auditor |
 | Does the table reconcile? | Every segment, Rs 19,84,00,000 |
@@ -1481,6 +1506,6 @@ never retyped.
 ```notes
 LIVE, 2 minutes. One breath: they agree, so I choose by who reruns the number: SQL for Finance,
 pandas for the analyst's bench reading SQL's answers, plain Python for a one-off explained line by
-line; on 1,000 rows speed separates nothing, so I size by rows moved. The morning closes here;
+line; on 1,000 rows the tools finish hundredths of a second apart, so I size by rows moved. The morning closes here;
 after lunch, chapter 6 makes the table rebuild itself.
 ```

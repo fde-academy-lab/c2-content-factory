@@ -37,7 +37,7 @@ without checking it?
 | **Go as far as** | Every learner ships the customer table from a guarded refresh (340 rows, Rs 19,84,00,000, 130 reached, 111 lapsed), one reshaped view with `aggfunc="sum"`, and a tool-choice note with rows moved and one refusal, and has run one question through all three tools. |
 | **Stop before** | MultiIndex depth, time-series indexing, `apply` with custom functions, performance tuning beyond the rows-moved sizing. Name each as later if asked; do not open it. |
 | **Comes later** | Friday takes this table into Excel for the leadership deck, and its four traps stay untaught today. Week 4's cohorts and baskets run on this table, and Week 5's model trains on it: say that aloud once. |
-| **Cut first** | Notebook 03 section 5 (`melt`) to a sentence, then the depth sections of notebooks 01 to 06, then S44 (the wrong index) to one line. Never cut `validate=`, chapter 4's three-tool disagreement or the chapter 6 guards. |
+| **Cut first** | Notebook 03 section 5 (`melt`) to a sentence, then the depth sections of notebooks 01 to 06, then S43 (the wrong index) to one line. Never cut `validate=`, chapter 4's three-tool disagreement or the chapter 6 guards. |
 
 **The day's arc in one sentence.** The growth team's table is built a chapter at a time, and each
 chapter meets a plausible wrong number a default or a shortcut would have shipped: 0 customers who never
@@ -45,10 +45,10 @@ ordered, a slide inflated by a re-sent row, an 18 percent fall that is 29.4, 100
 buying, a tool choice made on 8 rows each, and a win-back list of 166 that is 111.
 
 **Idea count.** Six decision sentences across the day, within the cap of twelve: the customer list is
-the spine; `validate=` makes a merge's promise loud and a duplicate needs a business rule; a pivot says
+the spine; `validate=` makes a merge refuse a repeated key, and a duplicate needs a business rule; a pivot says
 its `aggfunc` and matches its source's total; `groupby` drops a missing key where SQL keeps a group;
 a number's owner is chosen by who reruns it and sized by rows moved; a refresh counts to the data's last
-date and refuses a table that fails a guard.
+date, reports the data's age against the run day, and refuses a table that fails a guard.
 
 ---
 
@@ -64,12 +64,12 @@ flowchart LR
 | Part | Slides, half one | Beside it | What must land | If short of time |
 |---|---|---|---|---|
 | The ask and the thinking, 20 | S1 to S5 | The board's first drawing (S4), the three checks written up | The six chapter questions; one row is a customer on the list; the three checks as numbers: 340, Rs 19,84,00,000, 28 September | S2 read, not discussed |
-| Chapter 1, 30 | S6 to S20 | Notebook 01; guided set `guided/C2_W02_D04_first_moves_STUDENT.md` during S10 to S14; then `unguided/C2_W02_D04_ch1_customer_table_STUDENT.md` | 301 against 340; the filter that finds 0; NaN never equals 0; the fix gives 39; SQL agrees on all 340 | S8 to one sentence; the depth section self-study |
-| Chapter 2, 30 | S21 to S33 | Notebook 02 and its your-turn cell; `unguided/C2_W02_D04_ch2_exposure_STUDENT.md` | how= defaults to inner; the invented Rs 34,700 against Rs 26,100; `MergeError` read aloud; the room finding Kalpa's own feed in the empty cell; first touch keeps 340 rows | S25 read quickly; never cut S28 to S31 or the your-turn cell |
-| Chapter 3, 30 | S34 to S47 | Notebook 03 and its your-turn cell; `unguided/C2_W02_D04_ch3_months_STUDENT.md` | 266 member-months; 18 against 29.4 percent; the grand-total check; C-0152's June read aloud; Retail-Core's sign flips in the your-turn | S44 to a sentence; S45 self-study |
+| Chapter 1, 30 | S6 to S19 | Notebook 01; guided set `guided/C2_W02_D04_first_moves_STUDENT.md` during S10 to S13; then `unguided/C2_W02_D04_ch1_customer_table_STUDENT.md` | 301 against 340; the filter that finds 0; NaN never equals 0; the fix gives 39; SQL agrees on all 340 | S8 to one sentence; the depth section self-study |
+| Chapter 2, 30 | S20 to S32 | Notebook 02 and its your-turn cell; `unguided/C2_W02_D04_ch2_exposure_STUDENT.md` | how= defaults to inner; the invented Rs 34,700 against Rs 26,100; `MergeError` read aloud; the room finding Kalpa's own feed in the empty cell; first touch keeps 340 rows | S24 read quickly; never cut S27 to S30 or the your-turn cell |
+| Chapter 3, 30 | S33 to S46 | Notebook 03 and its your-turn cell; `unguided/C2_W02_D04_ch3_months_STUDENT.md` | 266 member-months; 18 against 29.4 percent; the grand-total check; C-0152's June read aloud; Retail-Core's sign flips in the your-turn, summed -1.8 percent against averaged +1.5 | S43 to a sentence; S44 self-study |
 | Break, 10 | | | | |
-| Chapter 4, 30 | S48 to S58 | Notebook 04; `unguided/C2_W02_D04_ch4_three_tools_STUDENT.md` | Python and SQL keep a group of 23, pandas drops it and says 100 percent; the groups add back to the rows; 107 of 130, 82 percent, in all three tools | S50 to a sentence; the depth section (NULL keys in a merge) self-study |
-| Chapter 5, 30 | S59 to S69 | Notebook 05; `unguided/C2_W02_D04_ch5_tool_choice_STUDENT.md` | Speed separates nothing on 1,000 orders; 8 rows each is the wrong size, 8 against 1,340 is the right one; the note and the refusal; the table ties to Finance in every segment | S63 to S64 to two minutes |
+| Chapter 4, 30 | S47 to S59 | Notebook 04; `unguided/C2_W02_D04_ch4_three_tools_STUDENT.md` | The reached split into bought and never ordered before any tool runs; Python and SQL keep a group of 23, pandas drops it and says 100 percent; the groups add back to the rows; 107 of 130, 82 percent, in all three tools | S49 to a sentence; the depth section (NULL keys in a merge) self-study |
+| Chapter 5, 30 | S60 to S70 | Notebook 05; `unguided/C2_W02_D04_ch5_tool_choice_STUDENT.md` | On 1,000 orders the tools finish hundredths of a second apart, so speed gives no reason to choose; 8 rows each is the wrong size, 8 against 1,340 is the right one; the note and the refusal; the table ties to Finance in every segment | S64 to S65 to two minutes |
 
 Each chapter runs: the question and its map (2), the need and the real company (4), the options and
 the call (4), the build with each step predicted (10), the trap and its wrong number (5), the second
@@ -88,13 +88,13 @@ flowchart LR
 
 | Part | Slides, half two | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| Chapter 6, 30 | S1 to S16 | Notebook 06; `unguided/C2_W02_D04_ch6_refresh_STUDENT.md` | Two inputs; 166 counted to 19 October against 111 counted to 28 September; the smallest recency is 0; each guard made to fire; two runs equal; SQL counts 111 | S3 to a sentence; the depth section (the falling flag) self-study |
-| Escalated case, 50 | S17 to S18 | `unguided/C2_W02_D04_escalated_case_STUDENT.md`, `notebooks/C2_W02_D04_ex1_escalated_case_STUDENT.ipynb` | Thirteen letters and the four numbers: 340, Rs 19,84,00,000, 130, 111 | Part 5 (the guarded run) to the take-home |
-| Debrief, 15 | S19 to S20 | The room's wrong numbers, collected on the board during the case | Each wrong output traced to its check; the three counts for one dataset, 154, 166 and 111 | S20 to a sentence |
+| Chapter 6, 30 | S1 to S14 | Notebook 06; `unguided/C2_W02_D04_ch6_refresh_STUDENT.md` | Two inputs; 166 counted to 19 October against 111 counted to 28 September; the smallest recency is 0; the data's age, 21 days, reported beside the table; two guards on the warehouse and two on the table's shape, each made to fire; two runs equal; SQL counts 111 | S3 to a sentence; the depth section (the falling flag) self-study |
+| Escalated case, 50 | S15 to D16 | `unguided/C2_W02_D04_escalated_case_STUDENT.md`, `notebooks/C2_W02_D04_ex1_escalated_case_STUDENT.ipynb` | Thirteen letters and the four numbers: 340, Rs 19,84,00,000, 130, 111 | Part 5 (the guarded run) to the take-home |
+| Debrief, 15 | S17 to S18 | The room's wrong numbers, collected on the board during the case | Each wrong output traced to its check; the three counts for one dataset, 154, 166 and 111 | S18 to a sentence |
 | Break, 10 | | | | |
-| Second case, 40 | S21 to S23 | `unguided/C2_W02_D04_second_case_STUDENT.md`, `notebooks/C2_W02_D04_ex2_second_case_STUDENT.ipynb` | The room writes the SQL first; 2.363 to 1.842 in all three tools; rows moved 355, 2 and 1,000; the note with one refusal | The brief's extra items to the lab |
-| Interview drill, 20 | S24 to S25 | The answers in one breath, below | Two learners per question, answer and follow-up; a number in every answer | S25 to four follow-ups |
-| Kahoot and close, 15 | S26 to S28 | `kahoot/C2_W02_D04_quiz_STUDENT.md` | The sentence to the growth team; the five lines; Friday's question left open | Kahoot to six items; keep the Wednesday return question |
+| Second case, 40 | S19 to S21 | `unguided/C2_W02_D04_second_case_STUDENT.md`, `notebooks/C2_W02_D04_ex2_second_case_STUDENT.ipynb` | The room writes the SQL first; 2.363 to 1.842 in all three tools; rows moved 355, 2 and 1,000; the note with one refusal | The brief's extra items to the lab |
+| Interview drill, 20 | S22 to S23 | The answers in one breath, below | Two learners per question, answer and follow-up; a number in every answer | S23 to four follow-ups |
+| Kahoot and close, 15 | S24 to S26 | `kahoot/C2_W02_D04_quiz_STUDENT.md` | The sentence to the growth team; the five lines; Friday's question left open | Kahoot to six items; keep the Wednesday return question |
 
 ---
 
@@ -104,11 +104,11 @@ flowchart LR
 |---|---|---|---|---|
 | 1 | `rfm[rfm["frequency"] == 0]` finds **0** customers who never ordered; the table has **301** rows | The first-order nudge sent to nobody; 39 sign-ups never welcomed | Rows against the customer list: 301 against 340. The half-fix still finds 0: after a left merge the 39 have a NaN frequency, float64, and NaN never equals 0 | The customer list as spine, `how="left"`, `validate="one_to_one"`, fill 0, back to int64: **39** (Retail-Core 19, Retail-Plus 13, Student 6, Business 1); spend unchanged |
 | 2 | Invented: the slide says reached customers spent **Rs 34,700** (4 customers in, 5 rows out) | The November budget asked for on Rs 8,600 nobody paid | Rows in against rows out; `validate="one_to_one"` raises `MergeError: Merge keys are not unique in right dataset; not a one-to-one merge` | First exposure per customer, then the guarded merge: Rs 26,100 on the invented records; on Kalpa, 340 rows, 130 reached, Rs 8,78,980 |
-| 3 | `pivot_table` with its default mean: a fall of **18 percent** (Q1 Rs 4,12,019 to Q2 Rs 3,37,267, Rs 74,752) | The head of Retail-Plus defends a fall well under half its size in rupees | The grand total against the orders: Rs 7,49,286 against Rs 9,99,150; C-0152's June cell shows Rs 2,557.50 for four orders of Rs 10,230 | `aggfunc="sum"`, `fill_value=0`: Rs 5,85,770 to Rs 4,13,380, **29.4 percent**, Rs 1,72,390; Retail-Core's sign flips from +1.5 to -1.8 percent |
+| 3 | `pivot_table` with its default mean: a fall of **18 percent** (Q1 Rs 4,12,019 to Q2 Rs 3,37,267, Rs 74,752) | The head of Retail-Plus defends a fall of 18 percent that is 29.4: in rupees, Rs 74,752 of a real Rs 1,72,390, 43 percent of it | The grand total against the orders: Rs 7,49,286 against Rs 9,99,150; C-0152's June cell shows Rs 2,557.50 for four orders of Rs 10,230 | `aggfunc="sum"`, `fill_value=0`: Rs 5,85,770 to Rs 4,13,380, **29.4 percent**, Rs 1,72,390; Retail-Core's sign flips from +1.5 to -1.8 percent |
 | 3 | A pivot indexed by `order_id`: **355 rows** that look like a months view | "Who is drifting" cannot be read at all | Read the row labels aloud: KR-00125 is an order | Index by `customer_id`: 107 members |
 | 4 | pandas with the segment read from the orders: **100 percent** of **107** reached bought | A marketing lead asking for the same budget on perfect results | The groups add back to the rows: 107 against 130; `dropna=False` shows a missing group of 23; plain Python (None key) and SQL (NULL group) both keep it | The segment from the customer list, in all three tools: 107 of **130**, **82 percent** (Retail-Core 56 of 70, Retail-Plus 51 of 60) |
 | 5 | The hurried note sizes each tool by the answer's rows, **8, 8 and 8**, and gives Finance's number to pandas | Finance's number on one analyst's machine, moving every order every Monday | Count the rows each route fetched | Rows moved: SQL **8**, pandas **1,340**, plain Python **1,000**; SQL owns Finance's number, and a pandas notebook is refused for it |
-| 6 | Recency counted to `pd.Timestamp.today()` on Monday 19 October: a win-back list of **166**, smallest recency **21** days; it grows to 180 and 187 on the next two Mondays with no new data (154 on the class day) | 55 active customers sent a win-back code; the list a function of the calendar | The smallest recency must be 0 | Count to the data's last date, 28 September 2026, carried as `as_of`: **111** (Business 5, Retail-Core 49, Retail-Plus 47, Student 10) |
+| 6 | Recency counted to `pd.Timestamp.today()` on Monday 19 October: a win-back list of **166**, smallest recency **21** days; it grows to 180 and 187 on the next two Mondays with no new data (154 on the class day) | 55 active customers sent a win-back code; the list a function of the calendar | The smallest recency must be 0 | Count to the data's last date, 28 September 2026, carried as `as_of`: **111** (Business 5, Retail-Core 49, Retail-Plus 47, Student 10); the run day only measures the data's age, 21 days on 19 October, reported beside the table |
 
 The runtime errors met on the way get two minutes and their last line: the `NameError` that starts
 each TODO twin, `ValueError: Index contains duplicate entries, cannot reshape` from `pivot` in notebook
@@ -125,7 +125,7 @@ Client zero v4 (`docs/07_Client_Zero.md`, section 7, locked v2.2), read from the
 | Plant | What the room is meant to find | Where | If nobody finds it |
 |---|---|---|---|
 | 6 duplicated customer keys in the exposure feed: C-0001, C-0002, C-0003, C-0006, C-0007 and C-0009, each re-sent on 11 August; 136 rows for 130 customers | `validate="one_to_one"` raises where the count check only reported: a plain left merge turns 340 rows into 346, spend into Rs 19,84,45,800 (Rs 45,800 too much) and the reached customers' spend from Rs 8,78,980 into Rs 9,24,780 | Notebook 02's your-turn cell, after S29 | After five minutes, ask a pair to read `len(exposure)` and `exposure["customer_id"].nunique()` aloud and compare them; never name the ids |
-| A customer whose months pivot wrongly if indexed by order (the row's plant): the generator plants none by name, so the order-indexed pivot is taught on Retail-Plus as a whole | Reading the row labels aloud | S44, notebook 03 section 4 | Ask what one row of the table is; have a learner read the first three labels |
+| A customer whose months pivot wrongly if indexed by order (the row's plant): the generator plants none by name, so the order-indexed pivot is taught on Retail-Plus as a whole | Reading the row labels aloud | S43, notebook 03 section 4 | Ask what one row of the table is; have a learner read the first three labels |
 | Wednesday's three falling Retail-Plus members (C-0161, C-0171 and C-0175) | Not today's discovery. The escalated case's falling flag, across all segments, flags 9 customers (3 each in Business, Retail-Core and Retail-Plus), and the notebooks check it against the warehouse as a set without listing anyone | Escalated case part 3, notebook 06's depth section | Nothing to find; do not name them or give a per-segment count |
 
 Structural facts that are not plants and can be said: 39 customers never ordered; the feed names only
@@ -142,9 +142,9 @@ Retail-Core and Retail-Plus customers; 23 reached customers never ordered; 130 r
 | Chapter 1 sizing | Loop 1,000 rows, 6 lines; SQL 301 rows, 7 lines; pandas 1,000 rows, 3 lines |
 | Exposure | 130 reached (Retail-Core 70, Retail-Plus 60); reached spend Rs 8,78,980; a re-sent row overstates spend by Rs 5,100 for a typical consumer customer, up to Rs 26,020 |
 | Retail-Plus months | 355 orders, 107 members, 266 member-months; Q1 Rs 5,85,770, Q2 Rs 4,13,380, a fall of 29.4 percent; averaged 18 percent; 67 members down, 40 up; members ordering 56, 47, 48, 40, 38, 37 |
-| Three tools | 107 of 130 bought, 82 percent; hurried pandas 107 of 107; Python None and SQL NULL group 23 |
-| Tool choice | Finance's 8 numbers; rows moved SQL 8, pandas 1,340, plain Python 1,000; lines SQL 5, pandas 4, plain Python 6 |
-| Refresh | As of 28 September 2026; win-back 111 honest, 166 on 19 October, 180 on 26 October, 187 on 2 November, 154 on 15 October; at 45 days 144, at 90 days 74 |
+| Three tools | 107 of 130 bought, 82 percent; hurried pandas 107 of 107; Python None and SQL NULL group 23; rows moved for the question: plain Python 1,340 (orders and the customer list), SQL 2, pandas 0 more |
+| Tool choice | Finance's 8 numbers; rows moved SQL 8, pandas 1,340, plain Python 1,000; lines SQL 5, pandas 4, plain Python 6; timed 30 times, SQL 0.004 s, pandas 0.010 s, plain Python 0.017 s (medians), SQL first on every run |
+| Refresh | As of 28 September 2026; win-back 111 honest, 166 on 19 October, 180 on 26 October, 187 on 2 November, 154 on 15 October; at 45 days 144, at 90 days 74; the data's age on 19 October, 21 days |
 | Second case | Retail-Plus orders per member Q1 215 over 91, 2.363; Q2 140 over 76, 1.842; a fall of 22 percent; rows moved Python 355, SQL 2, pandas 1,000 |
 | Falling flag | 9 customers across the book, matching the warehouse's calendar-checked LAG query |
 
@@ -165,7 +165,7 @@ numbers? After chapter 6: what is the smallest recency in an honest table, and w
 | Tag | Question | The answer in one breath |
 |---|---|---|
 | [S] | groupby in the split-apply-combine sentence | Split the orders by customer, apply the latest date, a count and a sum to each group, combine one row per customer: SQL's GROUP BY, and Week 1's accumulator written once. |
-| [S] | Merge against join: what is the same and what differs? | Same keys, same four shapes, same fan-out on a repeated key; pandas defaults to inner, works in memory on a copy, and can refuse the wrong shape with validate. |
+| [S] | Merge against join: what is the same and what differs? | Same keys, same four shapes, same fan-out on a repeated key; pandas defaults to inner, works in memory on a copy, matches a missing key to a missing key where SQL never matches NULL to NULL, and can refuse the wrong shape with validate. |
 | [F] | Which merge argument raises on duplicate keys, and which error? | `validate="one_to_one"` (or one_to_many, many_to_one), raising `pandas.errors.MergeError` naming the side whose keys are not unique. |
 | [F] | Pivot against melt: which widens and which lengthens? | pivot and pivot_table widen a column's values into columns; melt folds columns back into rows. |
 | [D] | Same question, three tools: how do you choose, and defend one choice? | They agree once the definition is shared, so choose by who reruns the number: SQL for Finance (8 rows moved against pandas' 1,340), pandas for the analyst's bench, plain Python to explain one case line by line. |
@@ -175,8 +175,8 @@ numbers? After chapter 6: what is the smallest recency in an honest table, and w
 | [F] | SQL's GROUP BY on a NULL key against pandas' groupby? | SQL keeps one NULL group; pandas drops missing keys by default; check groups add back to rows, dropna=False when the missing group matters. |
 | [D] | 100 percent of reached customers bought? | The non-buyers fell out: count the reached from the feed, compare with the dashboard's total, take attributes from the customer list. |
 | [D] | Which tool would you refuse for Finance's numbers? | A pandas notebook run by hand: it moves every order to one machine, runs on a copy and cannot be rerun by Finance. |
-| [D] | The orders table grows to 5 crore rows; where do you build the table? | In the warehouse: GROUP BY sends one row per customer however many orders there are; pandas reads that and merges the feed. |
-| [F] | Recency in a weekly job? | Count to the data's last loaded date, carried in the table as its as-of date; the smallest recency is 0. |
+| [D] | The orders table grows to 5 crore rows; where do you build the table? | In the warehouse: GROUP BY sends one row per customer who ordered, so what it sends grows with the customers and never with the orders; pandas reads that and merges the feed. |
+| [F] | Recency in a weekly job? | Count to the data's last loaded date, carried in the table as its as-of date, so the smallest recency is 0; the wall clock only measures the data's age, reported so a stale load is seen before the send. |
 
 ---
 
