@@ -137,6 +137,13 @@ session (`fonts-crosextra-carlito`); Playwright with Chromium from `/root/.cache
 mermaid-cli 11.17.0, installed in the session's scratch space and put first on `PATH` for the deck and
 cheat-sheet builds, because `setup.sh` pins 11 and the container carries 12.0.0.
 
+The second round and the final proofs ran on 1 October 2026 in a fresh container with the same
+versions, each set up again in that session: psycopg2-binary 2.9.13; PostgreSQL 16.14 with the v4
+warehouse loaded by `load_warehouse.sh` to the same six counts; LibreOffice 24.2.7.2 with
+`fonts-crosextra-carlito`; mermaid-cli 11.17.0 first on `PATH`. The decks rebuilt there reproduced
+every committed picture except the two slides the round changed, S68 in the morning and S30 in the
+afternoon.
+
 ## The depth loop
 
 | Pass | Who ran it | What it found | What changed |
