@@ -4,8 +4,8 @@ Answers: 1c 2a 3b 4d
 
 ## What does the trace test?
 
-A join is a question about the rows that do not match, and its row count is decided by the grain of
-each table before any number is summed. On paper, with five orders and seven payment rows, a learner
+Choosing a join means deciding what happens to the rows that do not match, and the grain of each table
+decides its row count before any number is summed. On paper, with five orders and seven payment rows, a learner
 can see every row a join keeps, drops and repeats, which is what makes the warehouse's 678 rows
 readable an hour later.
 
@@ -43,16 +43,16 @@ side?" before a feed is repaired.
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
 | 1 | c | Every payment that finds its order makes one row: P-1 to P-6 find orders, and P-7 does not, so six rows. | a: counts orders, which is the grain of only one side. b: counts P-7, which has no order to join to. d: counts the orders that were paid, and forgets that two of them repeat. |
-| 2 | a | T-2 has two instalment rows and T-3 has two postings of one instalment, so both repeat in the join. | b: T-3 repeats, and so does T-2, whose instalments are real payments. c: T-2 repeats, and so does T-3. d: an INNER join keeps a row per matched pair, never a row per order. |
+| 2 | a | T-2 has two instalment rows and T-3 has two postings of one instalment, so both repeat in the join. | b: T-3 repeats, and so does T-2, whose instalments are real payments. c: T-2 repeats, and so does T-3. d: an INNER join keeps a row per matched pair, so an order with two matches comes out twice. |
 | 3 | b | The LEFT join keeps T-4 with NULL on the payment side, which reads as booked and never paid. | a: dropping T-4 is what the INNER join does. c: a NULL is no amount at all until COALESCE turns it into a zero. d: T-4 has no payment row to make a second row from. |
 | 4 | d | RIGHT keeps every payment row, and FULL keeps every row on both sides, so both show P-7. | a: LEFT keeps every order, and P-7 has no order. b: INNER keeps only matched pairs. c: FULL shows it, and RIGHT shows it too. |
 
 ## Which part is worth arguing about?
 
-Part 1, T-3. Some of the room will call T-3 an instalment order because it has two rows. The two
-rows carry the same instalment number, the same amount and the same day, and that is what makes them
-one payment posted twice. The difference between T-2 and T-3 is the whole of chapter 4's double-paid list, and it is
-worth writing on the board now, unresolved.
+Some of the room will call T-3 in part 1 an instalment order because it has two rows. The two rows
+carry the same instalment number, the same amount and the same day, and that is what makes them one
+payment posted twice. Chapter 4's double-paid list rests on the difference between T-2 and T-3, so it
+is worth writing on the board now, unresolved.
 
 ## Where does this pattern live in production?
 

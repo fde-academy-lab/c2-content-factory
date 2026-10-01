@@ -1,8 +1,8 @@
 # Why does the first join report nearly twice the bookings, and how do we attach payments so that nothing counts twice?
 
-The chapter 2 set. Items 1 and 2 close the chapter live; the rest open the TA-led practice lab or are
-worked tonight. Six items on an invented week at a smaller shop, so none of its numbers comes from
-Kalpa's warehouse.
+The chapter 2 set has six items on an invented week at a smaller shop, so none of its numbers comes
+from Kalpa's warehouse. Items 1 and 2 close the chapter live; the rest open the TA-led practice lab
+or are worked tonight.
 
 > **The client asks.** "Booked revenue is not collected revenue. Some orders are paid in two
 > instalments, some are refunded, some were never paid at all. Show me, order by order, what we
@@ -12,9 +12,9 @@ Kalpa's warehouse.
 
 ## What do you need to know before the items?
 
-**Who needs the answer.** Anand, who would read a collected figure far above his books as collections
-running ahead and stand his collections team down, and you, since the way you attach payments here
-carries every later number.
+**Who needs the answer.** Anand would read a collected figure far above his books as collections
+running ahead and stand his collections team down. You need it too, since the way you attach payments
+here carries every later number.
 
 - **Booked** is every order at its amount; **collected** is the cash that arrived, each payment
   counted once; collected can never honestly exceed booked.
@@ -108,6 +108,6 @@ d) each table summed alone equals the join's booked and posted
 
 ## Where does this skill come back?
 
-In chapter 3, which asks whether the fixed report still holds every order, and in the escalated case,
-where you choose the grain of the payments CTE on Kalpa's own Q2. The notebook for this chapter is
+It comes back in chapter 3, which asks whether the fixed report still holds every order, and in the
+escalated case, where you choose the grain of the payments CTE on Kalpa's own Q2. The notebook for this chapter is
 `notebooks/C2_W02_D02_02_why_twice_booked_STUDENT.ipynb`.

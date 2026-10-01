@@ -1,6 +1,6 @@
 # Which Q2 orders and channels make the gap, and how do you prove the collected figure counts no payment twice?
 
-The escalated case, alone, on Kalpa's warehouse. Today the tentative faculty block takes the
+You work the escalated case alone, on Kalpa's warehouse. Today the tentative faculty block takes the
 afternoon's last 120 minutes, so the case runs in two sittings: parts 1 and 2 straight after
 chapter 6, in 20 minutes, and parts 3 to 5 in the TA-led practice lab, in about 30.
 The notebook is `notebooks/C2_W02_D02_ex1_escalated_case_STUDENT.ipynb`: eight lettered choices in
@@ -18,9 +18,9 @@ payments feed "sometimes double-posts when the gateway retries".
 
 ## What do you need to know before you start?
 
-**Who needs the answer.** Anand, who signs the page and sends it on to the CEO's Monday numbers; the
-collections team, who ring every order on the unpaid list; and the platform lead, who receives the
-repeated postings. A page that drops an order or keeps a repeat fails each of them.
+**Who needs the answer.** Anand signs the page and sends it on to the CEO's Monday numbers, the
+collections team rings every order on the unpaid list, and the platform lead receives the repeated
+postings. A page that drops an order or keeps a repeat fails each of them.
 
 - **Booked** is every Q2 order at its amount, whatever its status: 462 orders and Rs 9,84,00,000,
   from the orders table alone. **Collected** is the cash that arrived, each payment counted once.
@@ -49,13 +49,14 @@ repeated postings. A page that drops an order or keeps a repeat fails each of th
 - Write the reconciliation lines in part 2 before you run the query: rows in, rows out, and what the
   difference is made of.
 - Each check tells you whether your pick holds, without showing you the answer. When one fails,
-  change your pick, never the check.
+  change your pick and leave the check as it is.
 - Every figure on your page ties back to one table alone, and the sentence to Anand carries its
   definition of collected.
 
 ## What do you post?
 
-One line of eight letters in the order of the notebook's markers, then your sentence to Anand below it.
+Post one line of eight letters in the order of the notebook's markers, then your sentence to Anand
+below it.
 
 ```
 Post exactly this shape: xxxxxxxx

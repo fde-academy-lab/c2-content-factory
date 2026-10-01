@@ -4,8 +4,8 @@ Answers: 1a 2b 3c 4d 5b 6c
 
 ## What does this set test?
 
-That a check is worth what it can fail, that each wrong report is stopped by a different check, and
-what leaves the team on the day a check fails. Items 4, 5 and 6 are design items: the two checks
+The set tests whether a check can fail at all, which check stops each wrong report, and what leaves
+the team on the day a check fails. Items 4, 5 and 6 are design items: the two checks
 that cover three wrong reports, the reporting-day rule, and the source outside Kalpa's own tables.
 
 ## Why does each key hold, item by item?
@@ -21,9 +21,10 @@ that cover three wrong reports, the reporting-day rule, and the source outside K
 
 ## Which item is worth arguing about?
 
-Item 5, option a. A footnote feels honest, and it is how a wrong figure reaches a leadership page
+Item 5's option a, the footnote, feels honest, and it is how a wrong figure reaches a leadership page
 with a PASS stamp beside it. The rule separates what is reconciled from what is not, so the reader
-never has to judge a footnote: booked goes, collected waits, and the open line says when.
+never has to judge a footnote: booked goes out that day, collected waits, and the open line says when
+it will follow.
 
 ## Where does this pattern live in production?
 

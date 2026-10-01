@@ -60,9 +60,9 @@ it that tells you whether your pick holds, without showing you the answer. It st
 is intended. The empty cells are yours: they print the lists you are finding. At the end, post the
 eight letters in order."""
 
-HOW_S = """**How this notebook works.** Lettered TODOs, a check after each, and empty cells for you to read what
-you found. It stops at the first `__TODO1__` until you fill it, by design. Post the four letters and
-your request to the platform lead at the end."""
+HOW_S = """**How this notebook works.** Each part has a lettered TODO, a check after it and an empty cell where
+you read what you found. It stops at the first `__TODO1__` until you fill it, and that stop is
+intended. Post the four letters and your request to the platform lead at the end."""
 
 SOLVED = """**How this solution works.** Every letter is filled in and the notebook runs cold from the top, with
 every check passing; under each step, a line says why the other letters fail. The empty cells stay
@@ -144,9 +144,9 @@ def escalated(solution=False, key=False):
 
 {ASK}
 
-**Who needs the answer.** Anand, who signs the page and sends it on to the CEO's Monday numbers; the
-collections team, who ring every order on the unpaid list; and the platform lead, who receives the
-repeated postings. A page that drops an order or keeps a repeat fails each of them.
+**Who needs the answer.** Anand signs the page and sends it on to the CEO's Monday numbers, the
+collections team rings every order on the unpaid list, and the platform lead receives the repeated
+postings. A page that drops an order or keeps a repeat fails each of them.
 
 **The questions on the way.**
 1. What did Q2 book, by channel, from orders alone?
@@ -172,9 +172,8 @@ print("Connected to", kit.WAREHOUSE["dbname"], "with", one("SELECT count(*) FROM
         md("""
 ## Part 1. What did Q2 book, by channel, from orders alone?
 
-Every later figure reconciles to this one, so it comes from the orders table with no join. At work,
-this is the number you write down before any query that joins, because it is the one a finance team
-already holds.
+Every later figure reconciles to this one, so it comes from the orders table with no join. A finance
+team already holds this number, so at work you write it down before any query that joins.
 """),
         code(todo_block(1) + f"""
 options_1 = {E_TODOS[1][1]!r}
@@ -201,8 +200,8 @@ kit.check("three channels, app, store and web", [r["channel"] for r in baseline]
 ## Part 2. What did Q2 collect at order grain, and does the count close?
 
 Payments are brought to one row per order, each instalment counted once, and joined to the Q2 orders.
-At work, this is the reconciliation Anand's analyst reads before any number: write it before you run
-the cell, then fill it in.
+At work, Anand's analyst reads this reconciliation before any number, so write it before you run the
+cell, then fill it in.
 
 - Rows in, from Part 1: ____
 - Rows out, from this query: ____
@@ -256,8 +255,8 @@ show(part2, "Part 2: booked and collected by channel", money=["booked", "collect
         md("""
 ## Part 3. Which Q2 orders were never paid?
 
-Every Q2 order with no payment at all, largest first. At work, this is the list the collections team
-rings, and its total must equal the gap, or it is the wrong list.
+Every Q2 order with no payment at all goes on this list, largest first. The collections team rings
+the list at work, and its total must equal the gap, or it is the wrong list.
 """),
         code(todo_block(4) + f"""
 options_4 = {E_TODOS[4][1]!r}
@@ -300,8 +299,9 @@ for ch in ("app", "store", "web"):
         md("""
 ## Part 4. Which payments did the gateway post twice?
 
-Retries only: a second instalment is real cash and stays off this list. At work, this list goes to
-the platform lead and to Finance, who check with the bank whether a customer was charged twice.
+The list holds retries only, since a second instalment is real cash and stays off it. At work it
+goes to the platform lead and to Finance, who check with the bank whether a customer was charged
+twice.
 """),
         code(todo_block(5) + "\n" + todo_block(6) + f"""
 options_5 = {{
@@ -339,8 +339,8 @@ show(double_paid, "Part 4: Q2 instalments posted more than once", money=["posted
         md("""
 ## Part 5. What does the page say, and which check proves it?
 
-One line per channel: orders, booked, collected, the gap, the unpaid count and the surplus posted
-twice. At work, this is the page a finance controller signs, and the check under it is what lets it
+The page has one line per channel, with orders, booked, collected, the gap, the unpaid count and the
+surplus posted twice. A finance controller signs this page at work, and the check under it lets it
 leave the team.
 """),
         code(todo_block(7) + "\n" + todo_block(8) + f"""
@@ -479,8 +479,8 @@ def second_case(solution=False, key=False):
 >
 > The data platform lead, Kalpa Retail
 
-**Who needs the answer.** The platform lead, who owns the warehouse and the feed that fills it, and
-Finance, who must know whether any customer was charged twice. A feed fix aimed at the wrong
+**Who needs the answer.** The platform lead owns the warehouse and the feed that fills it, and
+Finance must know whether any customer was charged twice. A feed fix aimed at the wrong
 integration costs weeks and leaves the fault in place; a repeat deleted from the warehouse removes
 the evidence Finance needs.
 
@@ -540,9 +540,9 @@ show(homes, "Part 1: where each payment row belongs")
         md("""
 ## Part 2. Which payments match no order?
 
-The payments whose order id is not in the orders table: their ids, dates, methods and amounts. At
-work, these are held in a suspense account until someone finds the order, or learns that the payment
-was never Kalpa's.
+The suspense list holds the payments whose order id is not in the orders table, with their ids,
+dates, methods and amounts. At work these are held in a suspense account until someone finds the order, or
+learns that the payment was never Kalpa's.
 """),
         code(block(2) + f"""
 options_2 = {S_TODOS[2][1]!r}
@@ -577,8 +577,9 @@ print(len(orphans), "payments,", kit.rupees(sum(r["amount"] for r in orphans)))
         md("""
 ## Part 3. Which instalments were posted more than once, in either quarter?
 
-The same order and instalment posted more than once, with the quarter of the order beside it. At
-work, the platform lead fixes the feed, not a quarter, so this list covers everything the feed holds.
+Every order and instalment the feed posted more than once goes on the retry list, with the order's
+quarter beside it. At work the platform lead fixes the whole feed, which spans both quarters, so this list covers
+everything the feed holds.
 """),
         code(block(3) + f"""
 options_3 = {{
@@ -701,8 +702,8 @@ def main():
     key_cells = [md("""
 # Trainer key: both cases, with every list and figure printed
 
-**TRAINER ONLY.** The two case notebooks with every letter filled and every your-turn cell run, so the
-trainer sees what the room is meant to find. Never share this file with a learner.
+**TRAINER ONLY.** This file holds the two case notebooks with every letter filled and every your-turn
+cell run, so the trainer sees what the room is meant to find. Never share it with a learner.
 """)] + escalated(solution=True, key=True) + second_case(solution=True, key=True)[1:]
     build(tr / "C2_W02_D02_case_key_TRAINER.ipynb", key_cells, timeout=300)
     print("cases written")

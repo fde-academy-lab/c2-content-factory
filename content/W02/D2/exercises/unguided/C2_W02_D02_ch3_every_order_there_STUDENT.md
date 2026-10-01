@@ -1,7 +1,8 @@
 # Once nothing counts twice, is every booked order still in the report, and can every rupee between booked and posted be named?
 
-The chapter 3 set. Items 1 and 2 close the chapter live; the rest open the TA-led practice lab or are
-worked tonight. Six items on six invented orders, so none of its numbers comes from Kalpa's warehouse.
+The chapter 3 set has six items on six invented orders, so none of its numbers comes from Kalpa's
+warehouse. Items 1 and 2 close the chapter live; the rest open the TA-led practice lab or are worked
+tonight.
 
 > **The client asks.** "If there is a gap, I want to know which orders and which channel."
 >
@@ -9,8 +10,8 @@ worked tonight. Six items on six invented orders, so none of its numbers comes f
 
 ## What do you need to know before the items?
 
-**Who needs the answer.** Anand, who chases the orders that make the gap, and his analyst, who reads
-the reconciliation above the number before the number. A report that drops an order and keeps a
+**Who needs the answer.** Anand chases the orders that make the gap, and his analyst reads the
+reconciliation above the number before the number itself. A report that drops an order and keeps a
 repeated payment can show a gap of zero, and nobody chases a zero.
 
 - **Booked** is every order at its amount. **Collected** counts each order and instalment once.
@@ -97,6 +98,6 @@ d) the whole statement, a line per order, as an appendix
 
 ## Where does this skill come back?
 
-In chapter 4, which writes the list of orders behind each bar, and in chapter 6, where the count
-check becomes one of the checks that run every Monday. The notebook for this chapter is
+It comes back in chapter 4, which writes the list of orders behind each bar, and in chapter 6, where
+the count check becomes one of the checks that run every Monday. The notebook for this chapter is
 `notebooks/C2_W02_D02_03_every_order_there_STUDENT.ipynb`.

@@ -1,8 +1,8 @@
 # Which Q2 orders were never paid, and which payments did the gateway post twice?
 
-The chapter 4 set. Items 1 and 2 close the chapter live; the rest open the TA-led practice lab or are
-worked tonight. Six items on five invented orders and seven invented payments, so none of its numbers
-comes from Kalpa's warehouse.
+The chapter 4 set has six items on five invented orders and seven invented payments, so none of its
+numbers comes from Kalpa's warehouse. Items 1 and 2 close the chapter live; the rest open the TA-led
+practice lab or are worked tonight.
 
 > **The client asks.** "If there is a gap, I want to know which orders and which channel."
 >
@@ -10,9 +10,9 @@ comes from Kalpa's warehouse.
 
 ## What do you need to know before the items?
 
-**Who needs the answer.** The collections team, who ring every order on the unpaid list, and the
-platform lead and Finance, who reverse or refund what is on the double-paid list. A name on the
-wrong list is a call to a customer who did nothing wrong.
+**Who needs the answer.** The collections team rings every order on the unpaid list, and the
+platform lead and Finance reverse or refund what is on the double-paid list. A name on the wrong
+list means a call to a customer who did nothing wrong.
 
 - An **anti-join** keeps the rows of one table that have no partner in the other, for example a LEFT
   JOIN that keeps only the rows where the payment side is NULL.
@@ -116,6 +116,6 @@ d) none of them, since a NULL id breaks every anti-join
 
 ## Where does this skill come back?
 
-In chapter 5, where the two lists sit beneath the page Anand signs, and in the escalated case, where
-you pick the anti-join condition and the retry grain on Kalpa's own Q2. The notebook for this chapter
+It comes back in chapter 5, where the two lists sit beneath the page Anand signs, and in the
+escalated case, where you pick the anti-join condition and the retry grain on Kalpa's own Q2. The notebook for this chapter
 is `notebooks/C2_W02_D02_04_which_orders_STUDENT.ipynb`.

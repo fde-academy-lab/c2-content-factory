@@ -1,6 +1,6 @@
 # Which payment rows in the feed should not be there, and what should the platform lead fix first?
 
-The second case, in pairs, on Kalpa's warehouse. Today the tentative faculty block takes the
+You work the second case in pairs, on Kalpa's warehouse. Today the tentative faculty block takes the
 afternoon's last 120 minutes, so this case runs in the TA-led practice lab, in about 40 minutes,
 after the escalated case. The notebook is
 `notebooks/C2_W02_D02_ex2_second_case_STUDENT.ipynb`: four lettered choices in four parts, a check
@@ -14,8 +14,8 @@ after each and empty cells where you read what you found.
 
 ## What do you need to know before you start?
 
-**Who needs the answer.** The platform lead, who owns the warehouse and the feed that fills it, and
-Finance, who must know whether any customer was charged twice. A fix aimed at the wrong integration
+**Who needs the answer.** The platform lead owns the warehouse and the feed that fills it, and
+Finance must know whether any customer was charged twice. A fix aimed at the wrong integration
 costs weeks and leaves the fault in place; a repeat deleted from the warehouse removes the evidence
 Finance needs.
 
@@ -47,8 +47,8 @@ Finance needs.
 
 ## What do you post?
 
-One line of four letters in the order of the notebook's markers, then your request to the platform
-lead below it.
+Post one line of four letters in the order of the notebook's markers, then your request to the
+platform lead below it.
 
 ```
 Post exactly this shape: xxxx

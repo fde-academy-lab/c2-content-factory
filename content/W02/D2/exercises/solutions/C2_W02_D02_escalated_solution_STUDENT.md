@@ -8,9 +8,9 @@ its empty cells, since they are what the case asked you to find.
 
 ## What does the case test?
 
-The day's six chapters, joined up, on Kalpa's own Q2 with no invented table first. Items 2 and 8 are
-the design choices: the grain the payments must reach before they meet the orders, and the one check
-that proves the collected figure holds no payment twice.
+The case tests the day's six chapters joined up, on Kalpa's own Q2 with no invented table first.
+Items 2 and 8 are the design choices: the grain the payments must reach before they meet the orders,
+and the one check that proves the collected figure holds no payment twice.
 
 ## Why does each pick hold, item by item?
 
@@ -35,12 +35,13 @@ orders behind it and the channel that carries most of it, the repeats and their 
 
 ## Which pick is worth arguing about?
 
-Item 5, option b. Grouping by order and date looks like it separates a retry, which lands on one day,
-from two instalments, which a learner expects on two days. On Kalpa's Q2 the two instalments of an
+In item 5, option b, grouping by order and date looks like it separates a retry, which lands on one
+day, from two instalments, which a learner expects on two days. On Kalpa's Q2 the two instalments of an
 order are paid on the same day, so the date adds nothing and the list still flags every
 two-instalment order. The instalment number is the only column that says which payment is which.
 
 ## Where does this case live in production?
 
-A month-end collections reconciliation in any business that takes part payments: the ledger at order
-grain, the payment feed at posting grain, and a signed page that has to tie back to both.
+It lives in the month-end collections reconciliation of any business that takes part payments, where
+the ledger sits at order grain, the payment feed at posting grain, and a signed page has to tie back
+to both.

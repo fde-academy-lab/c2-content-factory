@@ -4,8 +4,8 @@ Answers: 1b 2a 3c 4b 5a 6d
 
 ## What does this set test?
 
-The count that catches a dropped order, the bridge that separates two causes netted into one gap, and
-a second route whose blind spot differs from the first. Items 2, 5 and 6 are design items: the proof
+The set tests the count that catches a dropped order, the bridge that separates two causes netted
+into one gap, and a second route whose blind spot differs from the first. Items 2, 5 and 6 are design items: the proof
 to run first under time pressure, where two independent methods part company, and what changes the
 form of the proof at the quarter's close.
 
@@ -22,9 +22,9 @@ form of the proof at the quarter's close.
 
 ## Which item is worth arguing about?
 
-Item 1, option c. A pair who spots the dropped orders sometimes expects the gap to vanish to zero.
-It comes out negative because U-2's repeated posting sits inside posted, which is the other error in
-the same draft: two faults, one of which drops rupees and one of which adds them.
+On item 1, option c, a pair who spots the dropped orders sometimes expects the gap to vanish to zero.
+It comes out negative because U-2's repeated posting sits inside posted, which is the second error in
+the same draft. One of the two faults drops rupees and the other adds them.
 
 ## Where does this pattern live in production?
 

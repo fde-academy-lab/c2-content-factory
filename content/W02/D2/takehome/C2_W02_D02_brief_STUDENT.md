@@ -1,9 +1,10 @@
 # What did a second book collect net of refunds, by channel, and how do you prove it is not double-counted?
 
-Four parts, about two hours in all, and a fifth if the practice lab ran out of time. Part 1 is the
-day's case on a book you have not seen, and it is the part tomorrow opens on. Part 2 is a join question
-of your own. Parts 3 and 4 are short. On a faculty day the tentative IITGN block W2-2 takes the
-afternoon's last two hours, so whatever the lab did not reach comes home as part 5.
+The take-home has four parts, about two hours in all, and a fifth if the practice lab ran out of
+time. Part 1 is the day's case on a book you have not seen, and it is the part tomorrow opens on.
+Part 2 is a join question of your own, and parts 3 and 4 are short. On a faculty day the tentative
+IITGN block W2-2 takes the afternoon's last two hours, so whatever the lab did not reach comes home as
+part 5.
 
 ---
 
@@ -20,36 +21,37 @@ tonight, with its own orders, payments and refunds across the same three channel
 
 ## Part 1. What did the book collect net of refunds, by channel, and how do you prove it?
 
-About 70 minutes. At work, this is the month-end collections report on a book nobody profiled for you.
+Allow about 70 minutes. At work this is the month-end collections report, run on a book nobody
+profiled for you.
 
 The book is invented for tonight and sits in `data/C2_W02_D02_takehome_STUDENT.sql`. It loads into
-its own schema, `takehome`, and never touches the warehouse tables. From the day folder:
+its own schema, `takehome`, and never touches the warehouse tables. Run this from the day folder:
 
 ```
 psql -d kalpa -v ON_ERROR_STOP=1 -f data/C2_W02_D02_takehome_STUDENT.sql
 ```
 
-Then query `takehome.orders`, `takehome.payments` and `takehome.refunds`. Nobody has profiled this
-book for you, and none of the day's numbers carry across.
+Then query `takehome.orders`, `takehome.payments` and `takehome.refunds`. None of the day's numbers
+carry across to this book.
 
 Write one SQL file, `C2_W02_D02_takehome_<your name>.sql`, that holds, in this order:
 
-1. **The grain of each table**, as a comment line each, with the query that proves it: whether
+1. The grain of each table, one comment line per table, with the query that proves it: whether
    order_id repeats in payments and in refunds, and why that matters for the join.
-2. **The reconciliation, written before the numbers.** A comment block with orders in, rows out,
-   the difference, and every payment row accounted for: counted once in collected, posted a second
-   time, or matched to no order at all. Fill in the numbers after you run the queries.
-3. **The report by channel**: orders, booked, collected, refunded, collected net of refunds, and
+2. The reconciliation, written before the numbers, as a comment block with orders in, rows out, the
+   difference, and every payment row accounted for: counted once in collected, posted a second time,
+   or matched to no order at all. Fill in the numbers after you run the queries.
+3. The report by channel, with orders, booked, collected, refunded, collected net of refunds, and
    the gap between booked and collected.
-4. **The checks**, each a query that returns true: rows out equals rows in; booked after the join
+4. The checks, each a query that returns true: rows out equals rows in; booked after the join
    equals booked from orders alone; the gap is fully explained by the orders you list as short of
    payment; and the feed's rows and rupees are all accounted for.
-5. **The lists you hand Anand.** Anand will act on every order you put in front of him, so decide
-   which orders belong on the list his team chases and which do not, and write three sentences
-   defending each list by what Anand would do with it. A list without a reason counts as no list.
-6. **The refunds.** Anand reads "refunded" as money that went back to customers. Write one comment
-   line on how you made sure your refunded column and your net figure mean exactly that.
-7. **The decision sentence to Anand**: the collected net figure, how you know it is honest, and the
+5. The lists you hand Anand. He will act on every order you put in front of him, so decide which
+   orders belong on the list his team chases and which do not, and write three sentences defending
+   each list by what Anand would do with it. A list without a reason counts as missing.
+6. One comment line on the refunds. Anand reads "refunded" as money that went back to customers, so
+   say how you made sure your refunded column and your net figure mean exactly that.
+7. The decision sentence to Anand, with the collected net figure, how you know it is honest, and the
    one action you want from him, with the order ids it applies to.
 
 Run the file top to bottom from a fresh connection before you call it done. The self-check file tells
@@ -59,34 +61,31 @@ you whether each number is right.
 
 ## Part 2. Which join question of your own does the warehouse answer, and why that join?
 
-About 30 minutes. At work, this is the question you pose yourself before a stakeholder asks it.
+Allow about 30 minutes. At work you pose a question like this yourself, before a stakeholder asks
+it.
 
 On the warehouse's orders and payments, pose one question the day did not ask, in a stakeholder's
 words, and answer it with a join. Above the query, write the count reconciliation as a comment block:
 rows in, rows out, and the difference named. "Collected for Q1" is the practice lab's problem and
-does not count. The shape that is wanted is a question where the join type is a choice you have to
-defend, such as a question about paid orders only, or about payments with no order.
+does not count. Choose a question where the join type is a choice you have to defend, such as a
+question about paid orders only, or about payments with no order.
 
 ---
 
 ## Part 3. Can you work the three join lessons without help?
 
-About 20 minutes.
-
-SQLBolt, the three join lessons, in order:
+Allow about 20 minutes, and work the three SQLBolt join lessons in order:
 
 - Lesson 6, joins: https://sqlbolt.com/lesson/select_queries_with_joins (checked 30 Sep 2026)
 - Lesson 7, outer joins: https://sqlbolt.com/lesson/select_queries_with_outer_joins (checked 30 Sep 2026)
 - Lesson 8, NULLs: https://sqlbolt.com/lesson/select_queries_with_nulls (checked 30 Sep 2026)
 
-If you finish early, the first three problems in the joins category of PostgreSQL Exercises,
+If you finish early, work the first three problems in the joins category of PostgreSQL Exercises,
 https://pgexercises.com/questions/joins/ (checked 30 Sep 2026).
 
 ---
 
 ## Part 4. When is an INNER join the honest choice?
-
-One line.
 
 At the top of your SQL file, write one comment line on when an INNER join is the honest choice.
 
@@ -94,7 +93,8 @@ At the top of your SQL file, write one comment line on when an INNER join is the
 
 ## Part 5. What did the lab not reach?
 
-Only if the practice lab ran out of time. In this order, stopping when you have spent an hour:
+Do this part only if the practice lab ran out of time. Work in this order, and stop when you have
+spent an hour:
 
 1. The escalated case, parts 3 to 5, in `notebooks/C2_W02_D02_ex1_escalated_case_STUDENT.ipynb`, with
    its brief in `exercises/unguided/C2_W02_D02_escalated_STUDENT.md`.

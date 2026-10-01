@@ -69,7 +69,7 @@ stays attempted until a payment is captured and then moves to paid; and a mercha
 payments of one order gets "all the authorised or failed payments for that order", so one order id
 appears once in the merchant's orders and several times in the payments list (Razorpay
 documentation, About Orders and Fetch Payments for an Order, checked 30 Sep 2026). Every merchant
-who puts the two lists side by side meets this chapter's question.""",
+who puts the two lists side by side has to decide which rows a join keeps, drops or repeats.""",
     2: """**Who else faces this.** Shopify creates a transaction "for every order that results in an
 exchange of money", and one order can carry several: an authorization, which is money the customer
 has agreed to pay, a capture of that same money, a sale, a void or a refund (Shopify developer
@@ -89,8 +89,8 @@ it.""",
     4: """**Who else faces this.** Stripe builds its payments API so that a retried request cannot charge
 twice: the client sends an idempotency key, Stripe saves the result of the first request made with
 it, and "subsequent requests with the same key return the same result" (Stripe API reference,
-Idempotent requests, checked 30 Sep 2026). India's regulator puts a clock on the other side of the
-same problem. Under the Reserve Bank of India's circular of 20 September 2019, when a customer's
+Idempotent requests, checked 30 Sep 2026). India's regulator sets a deadline for the other side of
+the same problem. Under the Reserve Bank of India's circular of 20 September 2019, when a customer's
 account is debited for an online card payment and the merchant's system never receives the
 confirmation, the debit must be reversed automatically within five days of the transaction, with compensation of
 Rs 100 for every day of delay after that (RBI/2019-20/67, in force from 15 October 2019, checked 30
@@ -143,8 +143,8 @@ INSERT INTO tiny_payments VALUES
     ('P-6', 'T-5', '2026-07-12',  500, 1),
     ('P-7', 'T-9', '2026-07-14',  600, 1);"""
 
-TINY_NOTE = """**The two invented tables.** Five orders and seven payments, invented to carry every case Anand
-named and the one the platform lead mentioned, so every row can be checked by hand:
+TINY_NOTE = """**The two invented tables.** They hold five orders and seven payments, invented to carry every
+case Anand named and the one the platform lead mentioned, so every row can be checked by hand:
 
 | order_id | channel | amount | What happened to it |
 |---|---|---|---|
@@ -308,12 +308,12 @@ def chapter1():
     cells = [
         title_cell(
             n,
-            "Anand's analyst, who will audit the statement order by order, and you, since you sign "
-            "the collected number. A join that drops an unpaid order hides it from the collections "
+            "Anand's analyst will audit the statement order by order, and you sign the collected "
+            "number. A join that drops an unpaid order hides it from the collections "
             "team, and a join that repeats a paid order sends the team after a customer who paid in "
             "full.",
             ladder,
-            "Collected revenue: the cash that reached Kalpa against its booked orders, each payment "
+            "Collected revenue is the cash that reached Kalpa against its booked orders, each payment "
             "counted once. Booked revenue is Monday's number, every Q2 order at its amount whatever "
             "its status: Rs 9,84,00,000 over 462 orders.",
             "Monday answered every question from one table, `orders`, where one row is one order, so "
@@ -351,8 +351,8 @@ follows the statement rings a customer who has paid in full. {DOSSIER}
         md("""
 ## Which of the four joins answers Anand, and what does each cost on five orders?
 
-Four ways to attach payments to orders, each keeping a different set of rows. The cell below
-measures each one on the invented tables: how many rows it returns, how many of the five booked
+There are four ways to attach payments to orders, and each keeps a different set of rows. The cell
+below measures each one on the invented tables: how many rows it returns, how many of the five booked
 orders reach the statement, what happens to T-4 (never paid) and to P-7 (a payment with no order),
 and how long it takes.
 
@@ -388,10 +388,10 @@ kit.check("only B and D keep all five booked orders",
           [s[2] for s in sizing] == ["4 of 5", "5 of 5", "4 of 5", "5 of 5"], [s[2] for s in sizing])
 """),
         md("""
-**The best-fit call.** Option B, the LEFT JOIN with orders on the left, because Anand's question is
-about every order Kalpa booked: B is the only option that keeps all five orders and nothing that
-is not an order. Every option runs in a few milliseconds here, so speed decides nothing; the rows
-each keeps decide everything. The table also shows what B does not fix: T-2 and T-3 come out twice,
+**The best-fit call.** Option B, the LEFT JOIN with orders on the left, fits best, because Anand's
+question is about every order Kalpa booked: B is the only option that keeps all five orders and
+nothing that is not an order. Every option runs in a few milliseconds here, so the choice rests on
+the rows each one keeps. The table also shows what B does not fix: T-2 and T-3 come out twice,
 which chapter 2 has to deal with before any total is read.
 
 **The fact that would change the call.** The data platform lead asks a different question: is
@@ -468,8 +468,8 @@ kit.matrix(["INNER", "LEFT", "RIGHT", "FULL"],
         md("""
 **What happened.** The answer is b: LEFT returns 7, the six pairs plus T-4 with NULL where its payment
 would be; RIGHT returns 7, the six pairs plus P-7 with NULL where its order would be; FULL returns
-8, the six plus both. Every join repeats T-2 and T-3, because the repeat comes from the key, never
-from the join type.
+8, the six plus both. Every join repeats T-2 and T-3, because the repeat comes from the key, and no
+choice of join type removes it.
 """),
         code("""
 kit.check("INNER returns 6 rows: every matching pair", counts["INNER"] == 6, f'{counts["INNER"]}')
@@ -532,7 +532,7 @@ show(orders_first, "The fix: orders first, so every booked order is on the state
         md("""
 **The fix, and what changed.** With `orders` first, all five booked orders are on the statement and
 T-4 shows NULL where its payment would be, which is exactly the line Anand needs to see. P-7 left
-the statement, since it belongs to the platform lead's question. One thing did not change: seven
+the statement, since it belongs to the platform lead's question. The statement still has seven
 lines for five orders, with T-2 and T-3 listed twice each. Read line by line, T-2 looks short-paid
 on both of its lines, 1,200 of 2,000 on one and 800 of 2,000 on the other, when it was paid in full.
 Before any total is read from this join, chapter 2 has to answer what a total does to an order
@@ -580,7 +580,7 @@ LEFT JOIN keeps every row of the left table and fills the right-hand columns wit
 matched. Both repeat a left row once for every matching right row, and that last clause is the one
 an interviewer is listening for, because it is where a total goes wrong.
 
-**[S] When is an INNER join the honest choice?** When the unmatched rows are outside the question by definition, and the report says so: "for the
+**[S] When is an INNER join the honest choice?** It is honest when the unmatched rows are outside the question by definition, and the report says so: "for the
 orders that were paid, how many days passed before the first payment?" asks only about matches. For
 Anand's question it is dishonest, since his question is about every booked order, paid or not.
 
@@ -602,8 +602,8 @@ order of the question: start from what must be kept, attach what may be missing.
    booked, because it drops the unpaid order and carries a retry and a payment with no order.
 5. The key counts predict all four row counts without a join: 6, 7, 7 and 8.
 
-**The question this leaves.** The right join still lists T-2 and T-3 twice. What does a total over
-those rows report on Kalpa's Q2? That is chapter 2.
+**The question this leaves.** The right join still lists T-2 and T-3 twice, so chapter 2 asks what a
+total over those rows reports on Kalpa's Q2.
 """),
         code("kit.check_summary()"),
     ]
@@ -707,12 +707,12 @@ def chapter2():
     cells = [
         title_cell(
             n,
-            "Anand, who would read a collected figure twice his books as a quarter of collections "
-            "running ahead and stand his collections team down; the data platform lead, who hears "
-            "about a wrong number from the warehouse before anyone else does; and you, because the "
-            "way chosen here carries every later chapter of the day.",
+            "Anand would read a collected figure twice his books as a quarter of collections running "
+            "ahead and stand his collections team down. The data platform lead hears about a wrong "
+            "number from the warehouse before anyone else does, and you need it because the way "
+            "chosen here carries every later chapter of the day.",
             ladder,
-            "Collected revenue for Q2 against booked revenue for Q2. Booked is every Q2 order at its "
+            "Collected revenue for Q2 is set against booked revenue for Q2. Booked is every Q2 order at its "
             "amount, whatever its status, Rs 9,84,00,000 over 462 orders, and collected can never "
             "honestly exceed it.",
             "Chapter 1 traced five invented orders and seven invented payments. The LEFT JOIN with "
@@ -816,7 +816,7 @@ booked amount rides along on both rows, so `sum(o.amount)` counts it twice. A su
 sum at the join's grain, which here is the payment, whatever column it names. This is a fan-out: a
 key that repeats on one side multiplies the rows of the other.
 
-**The check that catches it.** Two checks, and either one is enough. Count the rows the join returns
+**The check that catches it.** Either of two checks is enough. Count the rows the join returns
 against the orders that went in, and compare collected with booked, since cash against bookings can
 never honestly exceed them.
 """),
@@ -837,7 +837,7 @@ kit.check("KR-00595 alone is summed twice by the draft",
 
 The doubling has two possible sources, and a fix has to say which one it removes: legitimate second
 instalments, which are real cash, and repeated postings of one payment, which the platform lead
-warned about. Four ways a team could stop the double count:
+warned about. A team could stop the double count in four ways:
 
 | Option | How it works | What it assumes |
 |---|---|---|
@@ -874,7 +874,7 @@ kit.bars([("Monday's booked", float(booked_q2["booked"]) / 1e7), ("A. one row pe
 print(f'{{shared["orders_sharing_an_amount"]}} of Q2\\'s 462 orders share their amount with another order, '
       f'across {{shared["distinct_amounts"]}} amounts that repeat.')"""),
         md("""
-**The best-fit call.** Option A. It returns one row for each of the 462 orders with booked exactly
+**The best-fit call.** Option A fits best. It returns one row for each of the 462 orders with booked exactly
 Monday's figure, it keeps every order whether paid or not, and it keeps `payment_rows`, so a
 repeated posting stays visible for chapter 4 instead of vanishing. B looks as if it works and loses
 Rs 20,32,780 of real bookings, because DISTINCT removes repeated values and a repeated value is not
@@ -923,11 +923,10 @@ kit.check("booked after the fixed join equals Monday's booked", booked_a == book
 kit.check("no order appears twice", len({r["order_id"] for r in fixed}) == len(fixed), f"{len(fixed)}")"""),
         md("""
 **What happened.** The answer is b: 462 rows for 462 orders, and booked after the join is
-Rs 9,84,00,000, Monday's figure to the rupee. What changed: the 216 extra rows are gone, and the
-order amount is summed once per order. The `posted` column now holds what the feed recorded against
-each order.
+Rs 9,84,00,000, Monday's figure to the rupee. The 216 extra rows are gone, and the order amount is
+summed once per order. The `posted` column now holds what the feed recorded against each order.
 
-**Your turn.** Read the total yourself. In the empty cell below, type these lines and run it:
+**Your turn.** Read the total yourself. In the empty cell below, type these lines and run them:
 
 ```python
 posted_total = sum(r["posted"] for r in fixed if r["posted"] is not None)
@@ -975,7 +974,7 @@ missed, because it sums each table at its own grain and never multiplies anythin
 
 The tags mark how often a question comes up: [S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
 
-**[F] Revenue doubled after a join and every row looks fine; where do you look?** At the grain, not at the rows. Each row is right, and the sum runs at the join's grain, so the first
+**[F] Revenue doubled after a join and every row looks fine; where do you look?** Look at the grain. Each row is right, and the sum runs at the join's grain, so the first
 question is which key repeats on the many side. Count rows before and after the join, list the keys
 that repeat with `GROUP BY key HAVING count(*) > 1` on the many side, then bring that side to the
 key's grain in a CTE before joining, and prove it with rows in equal to rows out and the total
@@ -1008,8 +1007,8 @@ that works on the grain says which rows it merged and why; DISTINCT cannot say e
 6. Each table summed alone agrees with it, for booked and for posted.
 
 **The question this leaves.** The fixed join keeps every order, and its `posted` column is what the
-feed recorded. Is every booked order still there when the report is written, and what, rupee by
-rupee, separates booked from posted? That is chapter 3.
+feed recorded. Chapter 3 asks whether every booked order is still there when the report is written,
+and what, rupee by rupee, separates booked from posted.
 """),
         code("kit.check_summary()"),
     ]
@@ -1162,13 +1161,13 @@ def chapter3():
     cells = [
         title_cell(
             n,
-            "Anand, who asked which orders make the gap, so an order missing from the report is an "
-            "order nobody chases; and Anand's analyst, who reads the reconciliation written above "
+            "Anand asked which orders make the gap, so an order missing from the report is an "
+            "order nobody chases, and Anand's analyst reads the reconciliation written above "
             "the number before the number itself. A report that loses an order and carries a "
             "repeated payment can show a gap of zero, and nobody acts on a zero.",
             ladder,
-            "The gap between booked and collected, and what can sit inside it: orders never paid, "
-            "orders paid short and payments posted twice. Collected is the cash that arrived, each "
+            "The gap between booked and collected is at stake, with what can sit inside it: orders "
+            "never paid, orders paid short and payments posted twice. Collected is the cash that arrived, each "
             "payment counted once; posted is every payment row the feed holds, repeats included.",
             "Chapter 2 found that the first draft of collected, Rs 19,29,04,410 against Rs 9,84,00,000 "
             "booked, counted every two-instalment order twice, and fixed it by bringing payments to "
@@ -1198,7 +1197,7 @@ reads as "fully collected". {DOSSIER}
         md("""
 ## Which of four proofs shows Anand the gap is honest, and what does each catch?
 
-Four ways a team could prove the report before Anand reads it. The cell below runs each one
+A team could prove the report in four ways before Anand reads it. The cell below runs each one
 against a first draft on the invented tables that carries two errors at once: it joined with a
 plain JOIN, and it counts T-3's repeated payment inside collected.
 
@@ -1228,12 +1227,12 @@ kit.matrix(["A. one number", "B. count", "C. bridge", "D. statement"],
 kit.check("the draft reports fewer orders than the table holds", draft["orders"] < tiny_orders_n,
           f'{{draft["orders"]}} of {{tiny_orders_n}}')"""),
         md("""
-**The best-fit call.** B, then C: the count reconciliation first, because it needs no rupee and
+**The best-fit call.** Run B, then C: the count reconciliation first, because it needs no rupee and
 catches a dropped or repeated order in one line, then the bridge, because it is the only proof here
 that separates an unpaid order from a payment posted twice and puts a list of orders behind each
 move. A single number hides both errors, and the whole statement catches everything only if Anand's
-analyst reads 462 lines. All four cost seconds to compute; what separates them is what the reader
-can check.
+analyst reads 462 lines. All four cost seconds to compute, so they differ in what the reader can
+check.
 
 **The fact that would change the call.** If Anand's analyst had to tick every order for the audit
 file at the quarter's close, D would travel with the report as an appendix; chapter 4's two lists
@@ -1476,14 +1475,14 @@ join must equal booked from `orders`; posted after the join must equal the payme
 total for the same orders. Any difference is explained as a named move in a bridge, with the rows
 behind it listed, or the join is wrong.
 
-**[D] Two errors cancel and the total looks right: how would you find them?** Never trust a total to prove itself. Count first: rows in against rows out finds a dropped or
+**[D] Two errors cancel and the total looks right: how would you find them?** A total cannot prove itself, so count first: rows in against rows out finds a dropped or
 repeated row even when the rupees balance. Then split the difference into moves that each have a
 definition, so an unpaid order and a repeated payment each get their own bar; errors that cancel in
 one number cannot cancel in two bars.
 
 ### Depth: why does a bridge list its moves in a fixed order?
 
-Because the bars in between depend on it. Starting from booked, "never paid" is measured on booked
+The bars in between depend on the order. Starting from booked, "never paid" is measured on booked
 amounts and "posted twice" on posted amounts; list them in another order and the running totals
 between them change even though the ends do not. A finance team fixes the order once and writes it
 above the chart, so two analysts produce the same bridge.
@@ -1491,7 +1490,7 @@ above the chart, so two analysts produce the same bridge.
         md("""
 ## What did this chapter answer, one line per question?
 
-1. Once payments are one row per order, the report can only lose rows, never gain them; on Kalpa's
+1. Once payments are one row per order, the report can lose rows and cannot gain them; on Kalpa's
    Q2 it keeps all 462 orders and Rs 9,84,00,000 of booked.
 2. A plain JOIN draft on the invented tables reports 4 orders, booked 5,000, posted 6,500 and a gap
    of minus 1,500: fully collected, with a surplus.
@@ -1504,8 +1503,8 @@ above the chart, so two analysts produce the same bridge.
 6. Capping each paid order's posted cash at its booked amount gives the same collected, 5,000 on the
    invented tables and the same figure on Kalpa's Q2.
 
-**The question this leaves.** Each bar of the bridge is a total. Anand asked which orders: which Q2
-orders were never paid, and which payments were posted twice? That is chapter 4.
+**The question this leaves.** Each bar of the bridge is a total, and Anand asked which orders.
+Chapter 4 asks which Q2 orders were never paid, and which payments were posted twice.
 """),
         code("kit.check_summary()"),
     ]
@@ -1674,13 +1673,13 @@ def chapter4():
     cells = [
         title_cell(
             n,
-            "Anand's collections team, who ring the customers on the unpaid list, and the data "
-            "platform lead and Finance, who reverse or refund what is on the double-paid list. A "
+            "Anand's collections team rings the customers on the unpaid list, and the data "
+            "platform lead and Finance reverse or refund what is on the double-paid list. A "
             "wrong unpaid list chases a customer who paid or misses one who did not; a wrong "
             "double-paid list reverses a legitimate second instalment and rings a business buyer "
             "who paid on time.",
             ladder,
-            "The two moves of the bridge that carry names: the booked value of orders never paid, and "
+            "Two moves of the bridge carry names: the booked value of orders never paid, and "
             "the cash posted twice. Each list is right only when its total equals its bar.",
             "Chapter 3 proved the report keeps every Q2 order, 462 rows for 462 orders, and built the "
             "bridge from booked to posted. On the invented tables it reads booked 5,800, less 800 "
@@ -1756,11 +1755,11 @@ kit.check("all four anti-joins return the same Q2 list on Kalpa", all(l == lists
 kit.check("NOT IN returns nothing once the subquery holds a NULL", len(not_in_null) == 0 and len(not_in_clean) == 1,
           f"{{len(not_in_clean)}} then {{len(not_in_null)}}")"""),
         md("""
-**The best-fit call.** A, the LEFT JOIN that keeps only the misses, because it is the same LEFT JOIN
-the report already runs: the unpaid list is literally the report's rows with nothing on the payments
-side, and it carries every column Anand wants beside each order, the channel, the date and the
-amount. All four take a few milliseconds and agree on today's warehouse, so what separates them is
-what each assumes. C is the one to avoid: `NOT IN` compares against every value in the subquery, a
+**The best-fit call.** Option A, the LEFT JOIN that keeps only the misses, fits best, because it is
+the same LEFT JOIN the report already runs: the unpaid list is the report's rows with nothing on the
+payments side, and it carries every column Anand wants beside each order, the channel, the date and
+the amount. All four take a few milliseconds and agree on today's warehouse, so they differ in what
+each assumes. Avoid C: `NOT IN` compares against every value in the subquery, a
 comparison with NULL is unknown, and one NULL order id in the feed makes it return no rows at all,
 without an error.
 
@@ -1837,8 +1836,8 @@ kit.vflow(["LEFT JOIN\\nT-4 kept, paid_date NULL", "WHERE paid_date BETWEEN ...\
 INNER JOIN in chapter 1, and T-4 is gone from them.
 
 **Why it is wrong.** After the LEFT JOIN, T-4's row carries NULL in every payments column, including
-`paid_date`. `NULL BETWEEN` two dates is neither true nor false but unknown, and WHERE keeps only
-rows that are true, so T-4 is thrown away after the join has kept it. A condition on the right-hand
+`paid_date`. `NULL BETWEEN` two dates evaluates to unknown, and WHERE keeps only rows that are true,
+so T-4 is thrown away after the join has kept it. A condition on the right-hand
 table in the WHERE clause turns the LEFT JOIN into an INNER one without a word, and the anti-join
 condition that follows can never be met. The list supports the sentence "every Q2 order was paid
 within the quarter", which is false, and the collections team gets an empty list.
@@ -1850,7 +1849,7 @@ the same fault.
         md("""
 ## 3. Where does a condition on the payments table belong?
 
-In the ON clause. ON decides which payment rows count as a match, before the join; WHERE decides
+It belongs in the ON clause. ON decides which payment rows count as a match, before the join; WHERE decides
 which joined rows survive, after it. The PostgreSQL manual says that a restriction placed in the ON
 clause "is processed before the join, while a restriction placed in the WHERE clause is processed
 after the join", and that the difference "matters a lot with outer joins" (PostgreSQL 16
@@ -1872,10 +1871,10 @@ kit.check("with the condition in ON, the join keeps every order", len({{r["order
 kit.check("with the condition in ON, the list holds T-4 and matches the bar",
           [r["order_id"] for r in on_list] == ["T-4"] and sum(r["booked"] for r in on_list) == tb["never_paid"], "T-4, 800")"""),
         md("""
-**What happened.** The answer is b: 7 rows and T-4 on the list, booked at 800, the bar exactly. What
-changed is one line's position, and with it the whole list. The rule the room keeps: in a LEFT JOIN,
-a condition on the right-hand table goes in ON; the one WHERE condition that belongs on the right
-table is the anti-join's `IS NULL`.
+**What happened.** The answer is b: 7 rows and T-4 on the list, booked at 800, the bar exactly.
+Moving one condition from WHERE to ON changed the whole list. The rule to keep is that in a LEFT
+JOIN a condition on the right-hand table goes in ON, and the one WHERE condition that belongs on the
+right table is the anti-join's `IS NULL`.
 
 ## 4. Which orders does HAVING COUNT(*) > 1 flag, and are they double-paid?
 
@@ -1990,7 +1989,7 @@ Kavya Nair, the team's senior analyst, reviews every number before it leaves the
         md("""
 ## Do a second method and a second list reach the same orders?
 
-Two independent checks. The unpaid list is written a second way, with NOT EXISTS, which never
+Two independent checks answer it. The unpaid list is written a second way, with NOT EXISTS, which never
 builds the joined rows at all, and must hold the same orders. The double-paid list is found a
 second way that never reads an instalment number: an order whose posted cash exceeds what it was
 booked for has been paid more than once. The instalment method would miss a retry the feed wrote
@@ -2028,12 +2027,12 @@ its instalment number or by its cash exceeding its booking.
 
 The tags mark how often a question comes up: [S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
 
-**[F] How do you find orders with no payment?** With an anti-join: a LEFT JOIN from orders to payments that keeps the rows where the payment side is
+**[F] How do you find orders with no payment?** Use an anti-join: a LEFT JOIN from orders to payments that keeps the rows where the payment side is
 NULL, or NOT EXISTS, which says the same thing in the order of the sentence. Then check the list:
 its booked total must equal booked less collected for the orders never paid, or the list is wrong.
 Avoid NOT IN, which returns nothing once the subquery holds a single NULL.
 
-**[F] A filter on the right-hand table of a LEFT JOIN: WHERE or ON, and what changes?** ON. In ON the filter decides which right-hand rows count as a match, and every left row survives; in
+**[F] A filter on the right-hand table of a LEFT JOIN: WHERE or ON, and what changes?** It goes in ON. In ON the filter decides which right-hand rows count as a match, and every left row survives; in
 WHERE it runs after the join, the unmatched rows carry NULL, NULL fails the filter, and the LEFT
 JOIN behaves as an INNER one. The only right-table condition that belongs in WHERE is the anti-join's
 `IS NULL`.
@@ -2063,8 +2062,8 @@ logic that made the WHERE clause drop T-4 at level 2.
 6. NOT EXISTS gives the same unpaid orders, and posted above booked flags the same double-paid
    orders, on both sets of tables.
 
-**The question this leaves.** Anand has the bridge and its two lists. What goes on the one page he
-signs, by channel, and does its gap column tell the truth? That is chapter 5.
+**The question this leaves.** Anand has the bridge and its two lists, so chapter 5 asks what goes on
+the one page he signs, by channel, and whether its gap column tells the truth.
 """),
         code("kit.check_summary()"),
     ]
@@ -2172,12 +2171,13 @@ def chapter5():
     cells = [
         title_cell(
             n,
-            "Anand, who signs the report and sends it on to the CEO's Monday page, and the channel "
-            "heads, who chase their own unpaid orders from it. A gap column that reads zero stands "
+            "Anand signs the report and sends it on to the CEO's Monday page, and the channel "
+            "heads chase their own unpaid orders from it. A gap column that reads zero stands "
             "every one of them down, and a report that does not add back to the bridge cannot be "
             "defended when Anand's analyst audits it.",
             ladder,
-            "Booked, collected and the gap between them, by channel: app, store and web. The gap is "
+            "The page carries booked, collected and the gap between them, by channel: app, store and "
+            "web. The gap is "
             "booked less collected, order by order, and it must add up to the bridge's never-paid "
             "and paid-short bars.",
             "Chapter 4 put names behind the bridge. On the invented tables the unpaid list is T-4, 800, "
@@ -2199,8 +2199,8 @@ print("Kalpa's Q2 booked by channel, from orders alone:",
 
 Anand signs the report and it goes on to Meera Raghavan's Monday page, so every figure on it becomes
 his figure. He needs the gap split by channel, because the store team, the app team and the web team
-each chase their own customers; he needs the orders behind the gap, because a channel total cannot
-be chased; and he needs the proof above the number, because his analyst will audit it. A report
+each chase their own customers; the orders behind the gap, because a channel total cannot be chased;
+and the proof above the number, because his analyst will audit it. A report
 that says nothing is outstanding closes the question for everyone who reads it. {DOSSIER}
 """),
         md(COMPANY[5]),
@@ -2227,8 +2227,8 @@ kit.table(["Form", "Lines Anand reads, before any list", "He can act on", "He ca
 kit.bars([(f[0], f[1]) for f in forms], lit=[2], title="Lines Anand reads before he can act")
 kit.check("the statement form asks Anand to read one line per Q2 order", forms[3][1] == 462, f"{orders_q2} lines")"""),
         md("""
-**The best-fit call.** C, the table by channel with the reconciliation written above it and the two
-lists beneath. It is the smallest page on which Anand can both act, by channel and by order, and
+**The best-fit call.** Form C fits best: the table by channel, with the reconciliation written above
+it and the two lists beneath. It is the smallest page on which Anand can both act, by channel and by order, and
 audit, since every figure ties back to the bridge. A alone hides where the gap sits; B tells the
 store team to chase without telling them whom; D answers everything and asks Anand to find it in
 462 lines.
@@ -2239,10 +2239,10 @@ order by order, D travels with the signed page as an appendix file; the page its
         md("""
 ## 1. What must a line per channel carry for Anand to sign it?
 
-One line per channel: the orders booked, booked, collected, and the gap, with a definition line
-above the table, "collected: cash received against Q2 orders, each payment counted once; posted
-twice and refunds are shown separately", so no reader has to guess which of the day's numbers this
-is. The report is built from chapter 3's table of one row per order, grouped by channel.
+Each channel gets one line with the orders booked, booked, collected and the gap, and a definition
+line sits above the table, "collected: cash received against Q2 orders, each payment counted once;
+posted twice and refunds are shown separately", so no reader has to guess which of the day's numbers
+this is. The report is built from chapter 3's table of one row per order, grouped by channel.
 
 **Predict before you run.** On the invented tables, which channel carries booked of 1,800?
 a) web; b) store; c) app; d) none, every channel books 2,000.
@@ -2296,8 +2296,8 @@ rupee it booked, on every channel, and Anand signs a page that stands his collec
 ## 3. Why is it wrong, and which check catches it?
 
 **Why it is wrong.** An order nobody paid has no collected figure: its `collected` is NULL, since the
-LEFT JOIN found no payment for it. `booked - NULL` is NULL, not booked, and `sum()` skips NULLs
-without saying so, the same way Monday's AVG skipped them. So the unpaid orders, the very orders the
+LEFT JOIN found no payment for it. `booked - NULL` is NULL, which loses the booked amount, and
+`sum()` skips NULLs without saying so, the same way Monday's AVG skipped them. So the unpaid orders, the very orders the
 gap exists to show, drop out of the gap, and every paid order at Kalpa was paid in full, so what
 remains adds to zero.
 
@@ -2411,11 +2411,11 @@ The tags mark how often a question comes up: [S] a staple asked everywhere, [F] 
 
 **[D] Anand says the gap is too small to matter: how do you decide whether to chase it?** Size it before judging it. Split it by channel and by order, since a small total can be one large
 invoice; check how old each unpaid order is, since at Kalpa a paid order is paid within days of
-being booked, so an unpaid order from July is overdue rather than early; and set the cost of chasing,
+being booked, so an unpaid order from July is already overdue; and set the cost of chasing,
 a call or a reminder, against the cash each order carries. Then recommend chasing the large and old
 ones first, and say what you would drop.
 
-**[F] Why does the page show booked and collected, and not only the gap?** Because the gap cannot be checked on its own. With booked and collected beside it, anyone can
+**[F] Why does the page show booked and collected, and not only the gap?** The gap cannot be checked on its own. With booked and collected beside it, anyone can
 subtract and see the gap is right, and the same subtraction exposes a NULL that fell out of it; a
 gap column alone hides exactly the error this chapter staged.
 
@@ -2440,9 +2440,9 @@ into the query with `coalesce`, which Monday met in its NULL trap.
    and the amount posted twice each equal to their bars.
 6. The unpaid list grouped by channel gives the same gap on every channel.
 
-**The question this leaves.** The page is right today. What must pass, every Monday, before the
-collected number leaves the team, and what does Anand get when a check fails at the end of
-reporting day? That is chapter 6.
+**The question this leaves.** The page is right today, so chapter 6 asks what must pass, every
+Monday, before the collected number leaves the team, and what Anand gets when a check fails at the
+end of reporting day.
 """),
         code("kit.check_summary()"),
     ]
@@ -2575,14 +2575,14 @@ def chapter6():
     cells = [
         title_cell(
             n,
-            "Kavya Nair, the team's senior analyst, who reviews every number before it leaves the team; "
-            "Anand, who forwards it to "
-            "the CEO's Monday page; and you, who sign it. A validation that cannot fail puts a PASS "
+            "Kavya Nair, the team's senior analyst, reviews every number before it leaves the team, "
+            "Anand forwards it to "
+            "the CEO's Monday page, and you sign it. A validation that cannot fail puts a PASS "
             "stamp on a wrong number, and a stamped wrong number is harder to withdraw than an "
             "unstamped one.",
             ladder,
-            "The collected figure and its gap, every Monday, and the checks that stand between them and "
-            "Anand: which of the day's wrong reports each check would stop.",
+            "At stake are the collected figure and its gap, every Monday, and the checks that stand "
+            "between them and Anand, each measured by which of the day's wrong reports it would stop.",
             "Chapter 5 built the page Anand signs: one line per channel, with orders, booked, collected "
             "and a gap that uses `coalesce(collected, 0)`, so an unpaid order counts as nothing paid. "
             "On the invented tables app's gap is 800, T-4; on Kalpa's Q2 you built the page and it added "
@@ -2608,9 +2608,9 @@ print("Rebuilt on the invented tables:", ", ".join(reports), sep="\\n  ")"""),
 ## What does a PASS stamp cost when the check behind it could not fail?
 
 The Monday number is refreshed every week, by whoever is on the rota, sometimes late on reporting
-day. Checks are what let a number leave without Kavya reading every query. But a check is only worth
-its power to fail: a suite that passes a wrong report does worse than no suite, because the PASS
-line travels with the number and Anand forwards it with more confidence than he would forward an
+day. Checks let a number leave without Kavya reading every query. A check is useful only if it can
+fail, and a suite that passes a wrong report does worse than no suite, because the PASS line travels
+with the number and Anand forwards it with more confidence than he would forward an
 unchecked one. {DOSSIER}
 """),
         md(COMPANY[6]),
@@ -2668,7 +2668,7 @@ kit.table(["Option", "Wrong reports it stops, of 5", "Time on Kalpa's Q2"],
 kit.bars([(k, v) for k, v in stops.items()], lit=[1], title="Wrong reports stopped, of the day's five")
 kit.check("the tie-back suite stops all five wrong reports", stops["C. tie-back"] == 5, f'{{stops["C. tie-back"]}} of 5')"""),
         md("""
-**The best-fit call.** C, the tie-back suite, with D beside it. The tie-back suite stops all five of
+**The best-fit call.** Option C, the tie-back suite, fits best, with D beside it. The tie-back suite stops all five of
 the day's wrong reports and runs in milliseconds, because each check compares a figure on the report
 with the same figure computed from one table alone, where no join can multiply or drop anything.
 The Python recomputation reaches the numbers by a different tool and a different rule for counting a
@@ -2818,10 +2818,10 @@ a place the other cannot see.
 
 ## 5. What does Anand get when a check fails at the end of reporting day?
 
-A failed check is information, and the day it fails matters: late on reporting day there may be no
-time to fix it. The rule the team works to: booked always leaves, because it ties to the orders
-table alone; an unreconciled collected figure never leaves; and the open line, which check failed,
-what it means and when it will be fixed, goes with it.
+The day a check fails matters, because late on reporting day there may be no time to fix it. The
+team works to one rule: booked always leaves, because it ties to the orders table alone; an
+unreconciled collected figure never leaves; and the open line, which check failed, what it means and
+when it will be fixed, goes with it.
 
 | The check that fails | What it means | What Anand gets that day | Who fixes it |
 |---|---|---|---|
@@ -2846,17 +2846,17 @@ kit.check("every tie-back check has a named owner for the day it fails", set(own
 
 The tags mark how often a question comes up: [S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
 
-**[D] Design the validation you run before a joined number reaches Finance, and say what you do when it fails at the end of reporting day.** Four layers, each run every time. First the counts: rows in against rows out, and orders on the
-report against orders in the table. Then the tie-backs: booked recomputed from `orders` alone, posted
-from `payments` alone, and each bar of the bridge equal to the total of its named list. Then one
-independent recomputation, in another tool from the raw rows, or against the gateway's settlement
-file when there is one. And a test of the suite itself: run it against the known wrong reports,
-the fan-out, the dropped order, the NULL gap, and show that each fails. When a check fails late on
+**[D] Design the validation you run before a joined number reaches Finance, and say what you do when it fails at the end of reporting day.** The validation has four layers, each run every time. The counts come first: rows in against rows out, and orders on
+the report against orders in the table. The tie-backs follow: booked recomputed from `orders` alone,
+posted from `payments` alone, and each bar of the bridge equal to the total of its named list. The
+third layer is one independent recomputation, in another tool from the raw rows, or against the
+gateway's settlement file when there is one. The last tests the suite itself: run it against the
+known wrong reports, the fan-out, the dropped order, the NULL gap, and show that each fails. When a check fails late on
 reporting day, send what is reconciled, booked, which ties to orders alone, with the open line
 stated, which check failed, what it means and when it will close; hold the collected figure; and
 tell the owner the same day. An unreconciled number never leaves with a PASS on it.
 
-**[S] If you could keep only one check before a joined number leaves, which would you keep?** Orders on the report against orders in the source table. It needs no rupee, it catches a fan-out
+**[S] If you could keep only one check before a joined number leaves, which would you keep?** Keep orders on the report against orders in the source table. It needs no rupee, it catches a fan-out
 and a dropped order alike, and it runs in a millisecond; every other check can be added once that
 one passes.
 
@@ -2865,7 +2865,8 @@ one passes.
 Every check in this suite reads Kalpa's own records, so a record that is wrong at the source, a
 payment the feed invented or lost, passes all of them. A settlement file comes from the gateway and
 the bank, outside Kalpa, and a difference between it and the payments table is evidence nobody at
-Kalpa wrote. That is the lesson the Wirecard audit left.
+Kalpa wrote. By the FT's account above, Wirecard's auditor relied on documents from Wirecard and its
+trustee instead of checking directly with OCBC Bank.
 """),
         md("""
 ## What did this chapter answer, one line per question?

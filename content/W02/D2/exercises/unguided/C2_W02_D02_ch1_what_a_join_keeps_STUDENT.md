@@ -1,7 +1,7 @@
 # When payments are attached to orders, which rows does each join keep, drop or repeat?
 
-The chapter 1 set. Items 1 and 2 close the chapter live; the rest open the TA-led practice lab or are
-worked tonight. Six items, each a question Anand, his analyst or the platform lead would ask. The
+The chapter 1 set has six items, each a question Anand, his analyst or the platform lead would ask.
+Items 1 and 2 close the chapter live; the rest open the TA-led practice lab or are worked tonight. The
 tables below are invented for this set, so none of its numbers comes from the chapter.
 
 > **The client asks.** "Show me, order by order, what we actually collected against what we booked in
@@ -11,8 +11,8 @@ tables below are invented for this set, so none of its numbers comes from the ch
 
 ## What do you need to know before the items?
 
-**Who needs the answer.** Anand's analyst, who audits the statement line by line, and you, since you
-sign the collected number. A join that drops an unpaid order hides it from the collections team.
+**Who needs the answer.** Anand's analyst audits the statement line by line, and you sign the
+collected number. A join that drops an unpaid order hides it from the collections team.
 
 - **Booked** is every order at its amount. **Collected** is the cash that arrived, each payment counted
   once. **Posted** is every payment row the feed holds, repeats included.
@@ -108,6 +108,6 @@ d) For paid orders only, how many days until the first payment?
 
 ## Where does this skill come back?
 
-In chapter 2 on Kalpa's Q2, where the same LEFT JOIN meets a key that repeats, and in the second
-case, where the platform lead's question starts from `payments`. The notebook for this chapter is
+It comes back in chapter 2 on Kalpa's Q2, where the same LEFT JOIN meets a key that repeats, and in
+the second case, where the platform lead's question starts from `payments`. The notebook for this chapter is
 `notebooks/C2_W02_D02_01_what_a_join_keeps_STUDENT.ipynb`.

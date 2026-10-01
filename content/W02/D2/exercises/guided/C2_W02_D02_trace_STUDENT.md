@@ -1,15 +1,14 @@
 # Which rows does each join keep on two tiny tables, traced by hand before any query runs?
 
-Built with the trainer in chapter 1, on the board and on your paper at the same time. The two tables
-below are invented: five orders and seven payment rows, small enough to hold in your head, and
-shaped like the Kalpa feed Anand's question runs on. Nothing here is graded.
+You build this sheet with the trainer in chapter 1, on the board and on your paper at the same time.
+The two tables below are invented: five orders and seven payment rows, small enough to hold in your
+head, and shaped like the Kalpa feed Anand's question runs on. Nothing here is graded.
 
 Anand's question sits over the whole trace: "Show me, order by order, what we actually collected
 against what we booked." Before the warehouse answers it, you prove on paper what each join keeps,
 what it drops and what it repeats.
 
-The rule for this sheet is simple. You write the rows first, and the query runs afterwards, only to
-check what you wrote.
+You write the rows first, and the query runs afterwards, only to check what you wrote.
 
 ---
 
@@ -37,7 +36,7 @@ check what you wrote.
 | P-6 | T-5 | 2026-07-12 | 500 | 1 |
 | P-7 | T-9 | 2026-07-14 | 600 | 1 |
 
-The picture of the question each join answers, drawn on the board first:
+The trainer draws the question each join answers on the board first:
 
 ```mermaid
 flowchart LR
@@ -52,7 +51,7 @@ flowchart LR
 
 ## Part 1. What does one row of each table stand for?
 
-At work, this is the first sentence you write about any table before you join it.
+Before you join any table at work, you write this sentence about it first.
 
 Write, beside each table on your paper, what one row is. Then write whether `order_id` can repeat
 in it, and which rows prove it.
@@ -66,7 +65,7 @@ in it, and which rows prove it.
 
 ## Part 2. Which rows does the INNER join return?
 
-At work, this is how you predict a join's output before trusting it.
+At work you predict a join's output this way before you trust it.
 
 Write every row the INNER join returns, in order_id order. Leave the query closed.
 
@@ -93,7 +92,7 @@ never appears.
 
 ## Part 3. Which rows does the LEFT join add?
 
-At work, this is the join a question about every booked order needs.
+Any question at work about every booked order needs this join.
 
 Now keep every order, paid or not. Write the rows, with `NULL` wherever the right side has nothing.
 
@@ -120,7 +119,7 @@ Under the table, write the row count and one sentence on what the LEFT join adde
 
 ## Part 4. Which extra rows do RIGHT and FULL keep?
 
-At work, these answer the questions that start from the other table.
+At work, these two answer the questions that start from the other table.
 
 The trainer names these two and does not trace them in full. Write one sentence for each: which
 extra row appears, and which question about Kalpa's feed that row answers.
@@ -129,16 +128,17 @@ extra row appears, and which question about Kalpa's feed that row answers.
 
 ## Part 5. Did the query return what you wrote?
 
-At work, this is the habit of checking a prediction against the result, row by row.
+At work you check every prediction against the result, row by row.
 
 Now run the queries in `sql/C2_W02_D02_01_what_a_join_keeps_STUDENT.sql`, which builds the same two tables and runs each join. Tick every row you wrote
-correctly and circle every row you missed or invented. A circled row is the lesson, so keep it.
+correctly and circle every row you missed or invented. Keep the circled rows, since each one marks a
+place where your prediction and the join disagreed.
 
 ---
 
 ## Part 6. Can you answer four picks from your paper alone?
 
-At work, these are the row counts an interviewer asks you to predict aloud.
+An interviewer asks you to predict row counts like these aloud.
 
 Post one line, four letters in item order, no spaces, in this shape:
 

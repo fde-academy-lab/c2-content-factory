@@ -1,23 +1,22 @@
 # Which extra should you take tonight: the stretch or the recovery?
 
-Both are optional and neither is graded. Pick the one that matches where you actually are, since the
-one that sounds better is rarely the one that helps.
+Both are optional and neither is graded. Pick the one that matches where you actually are, even when
+the other one sounds more appealing.
 
 ---
 
 ## Stretch: can one query reconcile both sides of the feed at once?
 
-You finished the case early and the anti-joins felt easy. Then this one is for you.
-
-**The situation.** The data platform lead comes back with a second question.
+Take this one if you finished the case early and the anti-joins felt easy. The data platform lead
+comes back with a second question.
 
 > "Your report explains the orders. I need the other half. Give me one list that shows every order
 > with no payment and every payment with no order, side by side, so I can take it to the gateway team
 > and to the order system team in one meeting."
 
-**What to build.** One query with a FULL OUTER JOIN between orders and payments, at the grain that
-does not multiply, which means payments brought to one row per order first. Then split its output
-into three labelled groups with a CASE expression:
+Build one query with a FULL OUTER JOIN between orders and payments, at the grain that does not
+multiply, which means payments brought to one row per order first. Then split its output into three
+labelled groups with a CASE expression:
 
 | Group | How you know a row belongs there |
 |---|---|
@@ -25,32 +24,31 @@ into three labelled groups with a CASE expression:
 | Order only | The payment side is NULL, so the order was never paid. |
 | Payment only | The order side is NULL, so no order can claim the payment. |
 
-**The reconciliation, written above it.** Rows out equals matched plus order only plus payment only.
-The payment-only rows, added to the payments matched to Q1 and Q2 orders, account for every row in
-`payments`. Write both lines as a comment before you run the query, then prove them with a check that
-returns true.
+Write the reconciliation above the query. Rows out equals matched plus order only plus payment only,
+and the payment-only rows, added to the payments matched to Q1 and Q2 orders, account for every row
+in `payments`. Write both lines as a comment before you run the query, then prove them with a check
+that returns true.
 
-**The hard part, and the point.** A FULL OUTER JOIN with a quarter filter in WHERE loses the
+The hard part is the quarter filter. A FULL OUTER JOIN with a quarter filter in WHERE loses the
 payment-only rows, because they have no quarter. Decide where the Q2 condition goes, and write one
 sentence on why.
 
-**Then practise on a second schema.** PostgreSQL Exercises, the joins category,
+Then practise on a second schema, the joins category of PostgreSQL Exercises,
 https://pgexercises.com/questions/joins/ (checked 30 Sep 2026). Work the questions in order, and
 before running each one, write the row count you expect and the grain of each table in a comment.
 
-**A tell that you have done it well:** your three groups add up to the row count, and your sentence
-on the quarter filter names the NULL that WHERE would reject.
+You have done it well if your three groups add up to the row count, and your sentence on the quarter
+filter names the NULL that WHERE would reject.
 
 ---
 
 ## Recovery: can you trace the tiny tables again, row by row?
 
-The session moved fast, the joins blurred together, and you would rather rebuild them than pretend.
-Then this one is for you, and doing it tonight costs you nothing tomorrow. Every number here is
-invented.
+Take this one if the session moved fast, the joins blurred together and you would like to rebuild
+them; doing it tonight costs you nothing tomorrow. Every number here is invented.
 
-**Open `content/W02/D2/sql/C2_W02_D02_01_what_a_join_keeps_STUDENT.sql` and run it one statement at a
-time.**
+Open `content/W02/D2/sql/C2_W02_D02_01_what_a_join_keeps_STUDENT.sql` and run it one statement at a
+time.
 
 1. Run the setup: two CREATE statements and two INSERTs. Then run `SELECT * FROM tiny_orders;` and
    `SELECT * FROM tiny_payments;` and read both tables aloud: five orders, seven payments.
@@ -69,8 +67,8 @@ time.**
 Then open `notebooks/C2_W02_D02_02_why_twice_booked_STUDENT.ipynb` and read its first three levels
 only: why Q2's 462 orders become 678 rows, and why the order amount rides every payment row.
 
-**What you should end up believing.** A join's row count can be predicted from a drawing of the lines
-between the two tables, and every number after the join is only as honest as that count.
+By the end you should be able to predict a join's row count from a drawing of the lines between the
+two tables, and to see that every number after the join depends on that count being right.
 
-**If step 3 surprised you,** trace it once more with T-2 alone: one order, two payment lines, two
-rows. That single order is the whole of chapter 2.
+If step 3 surprised you, trace it once more with T-2 alone: one order with two payment lines comes
+out as two rows. Chapter 2 is that same fan-out, repeated across Q2's orders.

@@ -1,8 +1,8 @@
 # Which checks must pass before the collected number leaves the team, and what does Anand get when one fails at the end of reporting day?
 
-The chapter 6 set. Items 1 and 2 close the chapter live; the rest open the TA-led practice lab or are
-worked tonight. Six items on an invented book and three wrong reports written from it, so none of its
-numbers comes from Kalpa's warehouse.
+The chapter 6 set has six items on an invented book and three wrong reports written from it, so none
+of its numbers comes from Kalpa's warehouse. Items 1 and 2 close the chapter live; the rest open the
+TA-led practice lab or are worked tonight.
 
 > **The client asks.** "Booked revenue is not collected revenue. Show me what we actually collected
 > against what we booked, and prove it is not double-counted."
@@ -11,8 +11,9 @@ numbers comes from Kalpa's warehouse.
 
 ## What do you need to know before the items?
 
-**Who needs the answer.** Kavya Nair, the team's senior analyst, who reviews every number before it leaves the team; Anand, who
-forwards it to the CEO; and you, who sign it. A check that cannot fail puts a PASS on a wrong number.
+**Who needs the answer.** Kavya Nair, the team's senior analyst, reviews every number before it
+leaves the team, Anand forwards it to the CEO, and you sign it. A check that cannot fail puts a PASS
+on a wrong number.
 
 - **Plausibility checks** read the report alone: collected is at most booked, the gap is not
   negative, every channel is present.
@@ -98,6 +99,6 @@ d) the orders table's own total, recomputed a second time
 
 ## Where does this skill come back?
 
-Every Monday, and in the escalated case, whose last part asks for the check that proves the page
-counts no payment twice. The notebook for this chapter is
+It comes back every Monday, and in the escalated case, whose last part asks for the check that
+proves the page counts no payment twice. The notebook for this chapter is
 `notebooks/C2_W02_D02_06_can_it_leave_STUDENT.ipynb`.

@@ -1,7 +1,8 @@
 # What goes on the report by channel that Anand signs, and does its gap column tell the truth?
 
-The chapter 5 set. Items 1 and 2 close the chapter live; the rest open the TA-led practice lab or are
-worked tonight. Six items on six invented orders, so none of its numbers comes from Kalpa's warehouse.
+The chapter 5 set has six items on six invented orders, so none of its numbers comes from Kalpa's
+warehouse. Items 1 and 2 close the chapter live; the rest open the TA-led practice lab or are worked
+tonight.
 
 > **The client asks.** "If there is a gap, I want to know which orders and which channel."
 >
@@ -9,9 +10,9 @@ worked tonight. Six items on six invented orders, so none of its numbers comes f
 
 ## What do you need to know before the items?
 
-**Who needs the answer.** Anand, who signs the page and sends it to the CEO's Monday numbers, and the
-channel heads, who chase their own unpaid orders from it. A gap column that reads zero stands every
-one of them down.
+**Who needs the answer.** Anand signs the page and sends it to the CEO's Monday numbers, and the
+channel heads chase their own unpaid orders from it. A gap column that reads zero stands every one of
+them down.
 
 - **Booked** is every order at its amount; **collected** counts each payment once; the **gap** is
   booked less collected. An order nobody paid has NULL in `collected`.
@@ -96,6 +97,6 @@ d) the coalesce fix added 400 that store never booked
 
 ## Where does this skill come back?
 
-In chapter 6, where "the gap equals booked less collected" and "the gap equals the unpaid list's
-total" become two of the checks that run every Monday. The notebook for this chapter is
+It comes back in chapter 6, where "the gap equals booked less collected" and "the gap equals the
+unpaid list's total" become two of the checks that run every Monday. The notebook for this chapter is
 `notebooks/C2_W02_D02_05_what_anand_signs_STUDENT.ipynb`.
