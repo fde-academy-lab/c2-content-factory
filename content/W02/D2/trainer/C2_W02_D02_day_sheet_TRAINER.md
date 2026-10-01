@@ -1,4 +1,4 @@
-# What did Q2 actually collect, order by order, and how do you know nothing is counted twice? The Week 2 Tuesday day sheet
+# What did Kalpa actually collect against what it booked in Q2, and how do we know nothing is counted twice? The Week 2 Tuesday day sheet
 
 **TRAINER ONLY.** Nothing on this page reaches a learner.
 
@@ -25,11 +25,11 @@ channel, and how do we know nothing is counted twice?
 | Chapter | The chapter's question | The smaller questions on the way |
 |---|---|---|
 | 1. What does a join keep? | When payments are attached to orders, which rows does each join keep, drop or repeat? | What is one row of each table? How many rows does each join return on five orders? Which join answers Anand? What does a statement started from payments tell him? Can the keys predict the counts? |
-| 2. Why twice the bookings? | Why does the first join report nearly twice the bookings as collected, and how do we stop the double count? | Which orders own two payment rows? What does a first draft report? Why is it wrong when every row is right? Which of four fixes, sized? Does the fix keep 462 orders? Do the two tables, summed alone, agree? |
+| 2. Why twice the bookings? | Why does the first join on Kalpa's Q2 report nearly twice the bookings as collected, and how do we attach payments so that nothing counts twice? | Which orders own two payment rows? What does a first draft report? Why is it wrong when every row is right? Which of four fixes, sized? Does the fix keep 462 orders? Do the two tables, summed alone, agree? |
 | 3. Is every order there? | Once nothing counts twice, is every booked order still in the report, and can every rupee between booked and posted be named? | Can the report gain rows now? What does a plain JOIN draft report? Which check needs no rupee? Which moves carry booked to posted? Does the bridge close on Q2? Does a capped count agree? |
 | 4. Which orders, exactly? | Which Q2 orders were never paid, and which payments did the gateway post twice? | Which orders have no payment? What happens with the quarter in WHERE? Where does it belong? What does HAVING COUNT(*) > 1 flag? What makes a retry a retry? Do second methods agree? |
 | 5. What does Anand sign? | What goes on the report by channel that Anand signs, and does its gap column tell the truth? | What must a line carry? Which of four forms? What does the gap column say? Why is it wrong? Does the page add back to the bridge? Does the unpaid list by channel agree? |
-| 6. Can the number leave? | Which checks must pass before the number leaves, and what does Anand get when one fails at the end of reporting day? | Do hurried checks pass a report that hides an order? Which checks tie back? Does the suite fail every wrong report? Does it pass Kalpa's page? Does a second tool agree? What does Anand get when a check fails late? |
+| 6. Can the number leave? | Which checks must pass before the collected number leaves the team, and what does Anand get when one fails at the end of reporting day? | Do hurried checks pass a report that hides an order? Which checks tie back? Does the suite fail every wrong report? Does it pass Kalpa's page? Does a second tool agree? What does Anand get when a check fails late? |
 
 ---
 
@@ -187,8 +187,9 @@ minus 1,500 on 4 orders, and the LEFT fix alone minus 700.
 | The practice lab | 1b 2d 3a 4c 5a 6b 7c 8d 9a 10c 11b |
 | The Kahoot | 1b 2c 3a 4d 5a 6b 7d 8b |
 
-The day's items: 36 in the chapter sets, 16 of them design items, 8 in the escalated case, 4 in the
-second case, 4 in the trace and 11 in the lab. Every file passes the distractor audit.
+The day's items: 36 in the chapter sets, 8 in the escalated case, 4 in the second case, 4 in the
+trace and 11 in the lab. Design items: 16 in the chapter sets, 2 in the escalated case (items 2 and 8)
+and 2 in the second case (items 3 and 4), 20 of the 48 in the sets and cases. Every file passes the distractor audit.
 
 **The case figures.** The escalated case's lists and page carry the plant figures above: 30 unpaid
 orders, Rs 17,54,930, by channel as in the numbers table; 28 retried instalments, Rs 20,750. The

@@ -1,4 +1,4 @@
-# What did Kalpa actually collect against what it booked in Q2, order by order, and how do you know nothing is counted twice?
+# What did Kalpa actually collect against what it booked in Q2, order by order and by channel, and how do we know nothing is counted twice?
 
 **Week 2, Tuesday. Study notes, read after the session.** Anand Iyer, Kalpa Retail's finance
 controller, asked for collected against booked for Q2, order by order and by channel, and the
@@ -639,7 +639,7 @@ and it keeps the rows while it does so. The pre-read ships tonight.
 
 ---
 
-## So, what did Kalpa collect against what it booked in Q2, and how do you know nothing is counted twice?
+## So what did Kalpa actually collect against what it booked in Q2, and how do we know nothing is counted twice?
 
 Q2 booked Rs 9,84,00,000 over 462 orders, read from the orders table alone. Collected is the cash
 that arrived with each payment counted once: your page reaches it by bringing payments to one row per

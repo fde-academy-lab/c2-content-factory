@@ -18,16 +18,16 @@ Transition: the next slide is the whole day on one screen.
 ---
 
 ## S1. Six questions stand between booked and collected
-*What did Kalpa actually collect in Q2, and how will Anand know nothing is counted twice?*
+*What did Kalpa actually collect against what it booked in Q2, order by order and by channel, and how do we know nothing is counted twice?*
 
 | Chapter | The question it answers |
 |---|---|
-| 1. What does a join keep? | When payments meet orders, which rows does each join keep, drop or repeat? |
-| 2. Why twice the bookings? | Why does the first join report nearly twice the bookings, and how do we stop the double count? |
-| 3. Is every order there? | Is every booked order still in the report, and can every rupee between booked and posted be named? |
+| 1. What does a join keep? | When payments are attached to orders, which rows does each join keep, drop or repeat? |
+| 2. Why twice the bookings? | Why does the first join on Kalpa's Q2 report nearly twice the bookings as collected, and how do we attach payments so that nothing counts twice? |
+| 3. Is every order there? | Once nothing counts twice, is every booked order still in the report, and can every rupee between booked and posted be named? |
 | 4. Which orders, exactly? | Which Q2 orders were never paid, and which payments did the gateway post twice? |
-| 5. What does Anand sign? | What goes on the report by channel, and does its gap column tell the truth? |
-| 6. Can the number leave? | Which checks must pass before the number leaves, and what happens when one fails late? |
+| 5. What does Anand sign? | What goes on the report by channel that Anand signs, and does its gap column tell the truth? |
+| 6. Can the number leave? | Which checks must pass before the collected number leaves the team, and what does Anand get when one fails at the end of reporting day? |
 
 ```notes
 LIVE, 2 minutes. Read the day's question, then the six chapter questions in order, and say that
