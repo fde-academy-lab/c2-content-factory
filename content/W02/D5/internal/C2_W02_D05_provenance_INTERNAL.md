@@ -61,6 +61,7 @@ the escalated case were looked at and draw every dot at its value.
 | The escalated case is the notebook's ten markers in five parts, with a workbook build as the early finishers' stretch | The row's unguided task: the three deliverables in Excel | The standard asks for the escalated case as a TODO twin with its executed solution; the take-home asks for the Excel build from fresh exports |
 | The second case runs as the notebook's five markers, a role play and three lines | The 29 September brief added six operating-rule items | The operating rule is chapter 5's set; the second case keeps the director's edit and the defence of the rule, as the spine names it |
 | The Kahoot's fifth item calls the tool for five asks in one option string | The row: "warehouse, pandas or Excel for five asks, called fast" | Kahoot answers are single options, so the five calls are one ordered string |
+| The deck pack's Checks tab computes the source tie as a formula, so the release reads "Hold the protect list until the customer table reconciles to the warehouse" whenever the workbook is opened, and the companion page carries no member ids beyond the four its lookup answers (C-0152, C-0194, C-0195 and a typed id that is not in the table) | The row's plant list names the absent member as the room's own finding | The deck pack is the escalated case's Excel solution and the trainer opens its Checks tab only from chapter 6, after chapter 3's your-turn tie; neither file prints the absent id, and the companion builder refuses to write a page that contains it, its approximate-match neighbour, the table's grand total or its gap |
 | Kalpa's chief of staff, the director and the head of Retail-Plus are unnamed, and the chief of staff takes no pronoun | The row names none of them | Roles only, since no locked source names them |
 
 ## Invented, and labelled so wherever it appears
@@ -78,7 +79,8 @@ the escalated case were looked at and draw every dot at its value.
 | A regional team's sheet, including C-0888, a Chennai filter, Rs 4.10 crore against Rs 2.05 crore and a segment from Rs 4.00 lakh to Rs 3.20 lakh | The practice lab, problem 4 |
 | The app-channel export of the recovery drill (13 rows, 10 orders) | The extras' recovery |
 | The director's Rs 5,00,000 | The second case, as the director's stated assumption |
-| The companion page's experiment records | The companion page, each card labelled invented |
+| Eight experiment cards on invented records: A, three orders worth Rs 7,000 on five payment rows; B, three corporate buyers worth Rs 30,00,000 on 12 orders; C, members C-0401 to C-0409 with C-0405 missing; D, a segment falling from Rs 500 to Rs 400; E, three orders booked at Rs 10,000, Rs 20,000 and Rs 6,000; F, eight members worth Rs 60,000, three of them in Mumbai worth Rs 25,500 (C-0501 to C-0508); G, five records worth Rs 11,000 against a control total; H, a two-cell sheet of Rs 500 and Rs 400 | The companion page, each card labelled invented |
+| Members C-0401 to C-0409 (C-0405 returning C-0404 under an approximate match), members C-0501 to C-0508 under a Mumbai filter, nine payment rows for six orders, and a collected column that takes the first payment only | The decision tool's Lookup, Director, Quarters and Rule tabs, each labelled invented; its Tree tab reads the real Business rows and its Card tab Retail-Plus's real quarters |
 
 ## Links, each with its check date
 

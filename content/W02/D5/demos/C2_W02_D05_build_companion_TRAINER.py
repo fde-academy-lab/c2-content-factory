@@ -125,6 +125,12 @@ mumbai = protect[protect["city"] == "Mumbai"]
 assert len(mumbai) == 11 and int(mumbai["revenue"].sum()) == 156_790
 assert ch5["lookup"] == 118_381_974 and ch5["every"] == 196_682_820
 assert ch5["secondInst"] + ch5["secondCopy"] == 78_300_846 and ch5["twoRow"] == 450
+# The figures the experiment cards quote as text, derived from the ones above.
+rp1, rp2 = t1["Retail-Plus"]["Q1"]["revenue"], t1["Retail-Plus"]["Q2"]["revenue"]
+assert round((rp1 - rp2) / rp2 * 100, 1) == 41.7 and rp1 - rp2 == 172_390 and round((rp1 - rp2) / rp1 * 100, 1) == 29.4
+assert round(714_890 / 156_790, 1) == 4.6 and round((219_355_841 - 196_599_040) / 1e7, 2) == 2.28
+assert round((ch5["booked"] - ch5["lookup"]) / ch5["booked"] * 100, 1) == 40.3 and ch5["booked"] - ch5["every"] == 1_717_180
+assert round((ch5["secondInst"] + ch5["secondCopy"]) / 1e7, 2) == 7.83
 
 data = {"segments": SEGMENTS, "cities": CITIES, "warehouse": WAREHOUSE, "ch1": ch1, "tree": tree,
         "monthly": monthly, "counts": counts, "lookups": lookups, "ch5": ch5,
