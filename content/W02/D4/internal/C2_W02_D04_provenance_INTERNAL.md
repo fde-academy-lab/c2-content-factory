@@ -1,84 +1,138 @@
-# Provenance: Week 2, Thursday
+# Where did every source, number and decision in the Week 2 Thursday pack come from?
 
-**INTERNAL.** Where every source, number and decision in this pack came from.
+**INTERNAL.** The provenance of `content/W02/D4`, built to standard v3 (decisions `chapter-standard`,
+`four-domains`, `question-ladder`, `self-contained`, `humanizer` and `opus-max` in
+`data/programme/facts.yaml`) across three sessions on 30 September and 1 October 2026, on branch
+`w02-d4-chapters`.
 
-## Sources, in the ground-truth order
+## Which sources was the pack built from, in the ground-truth order?
 
 | Source | What it gave |
 |---|---|
-| `docs/detailing/W01_W02_spine.md`, approved 29 September 2026 | The case, the five rungs, the four traps, the afternoon cases and the lab set; the campus day of two 180-minute blocks and the lab |
-| `docs/curriculum/W2_Data_manipulation.md`, Thursday 15 October, all fifteen columns | The scenario and the senior analyst's challenge, the thinking, the agenda, the outcomes, the stop-before line, the client-zero plants, the exercises, the interview angle, the references and the Kahoot plan |
+| `prompts/week_revamp_W02_W03.md`, section 3, the day prompt with the Week 2 Thursday fills | The six chapters, the four traps, the pandas 3 instruction, the second case as the three-tool re-expression and the tool-choice note, the later-day traps to keep out, and the full grid (not a faculty day) |
+| `docs/detailing/W01_W02_spine.md`, approved 29 September 2026 and raised 30 September | The case, the rungs that became chapters, the traps, the afternoon cases and the lab set; the campus day of two 180-minute blocks and the lab |
+| `docs/curriculum/W2_Data_manipulation.md`, Thursday 15 October, all columns | The scenario and Kavya's challenge, the thinking, the agenda, the outcomes, the stop-before line, the client-zero plants, the exercises, the interview angle, the references and the Kahoot plan; no IITGN block today |
 | `docs/programme/calendar.md` | W02/D4, Thu 15 Oct 2026, teaching, Module 1, no faculty block |
-| `docs/07_Client_Zero.md`, v2.2 locked, section 1b and section 7 | Kalpa, the GCC frame, the stakeholders, data version v4 and its witnesses |
-| `.claude/skills/day-pack-builder/references/the-standard.md` | The bar, the day's shape and the volume per family |
-| `content/W01/D1` | The model for form: deck syntax, notebook rhythm, companion build, day sheet |
+| `docs/07_Client_Zero.md`, v2.2 locked, sections 1a, 1b and 7 | Kalpa, the GCC frame, the stakeholders, data version v4 and its witnesses |
+| `.claude/skills/day-pack-builder/references/the-standard.md` on main | The bar, the question ladder, the self-contained rule, the decks in depth, the volume per family and the depth loop |
+| `content/W01/D3` and `content/W01/D4` on main | The model for each family's form at standard v3 |
+| `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md` | The retail dossier the notebooks point to for GMV, frequency and Retail-Plus |
 
-## The data
+## Where did the data come from?
 
 | File | How it was made |
 |---|---|
-| The v4 warehouse, `content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql` | Read only, loaded with `bash .devcontainer/load_warehouse.sh`: 1,000 orders, 340 customers, 1,428 payments, 136 exposure rows, 13 plan rows, 12 refunds |
-| `data/C2_W02_D04_exposure_STUDENT.csv` | Written by `data/generate_client_zero.py --version v4`; unchanged in this build, and checked on 29 September 2026 to equal `build_v4()["campaign_exposure"]` row for row |
+| The v4 warehouse, `content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql` | Read only, loaded with `bash .devcontainer/load_warehouse.sh` on PostgreSQL 16.14: 1,000 orders, 340 customers, 1,428 payments, 136 exposure rows, 13 plan rows, 12 refunds |
+| `data/C2_W02_D04_exposure_STUDENT.csv` | Written by `data/generate_client_zero.py --version v4`; equal to the warehouse's `campaign_exposure` row for row (checked 29 September 2026) |
 | `data/C2_W02_D04_takehome_{orders,customers,exposure}_STUDENT.csv` | `internal/C2_W02_D04_build_takehome_data_INTERNAL.py`, which imports the generator, sets `SEED = 20261015` and calls `build_v4()`; nothing in `data/` is edited |
-| Every notebook's outputs | `internal/C2_W02_D04_build_notebooks_INTERNAL.py`, executing each notebook cold in its own folder through `scripts/nb_make.py`, against the running warehouse |
+| Every notebook and its saved outputs | `internal/C2_W02_D04_build_notebooks_INTERNAL.py`, executing each notebook cold in its own folder through `scripts/nb_make.py` against the running warehouse; the six chapter notebooks and both case twins were rebuilt on 1 October 2026 |
+| The `sql/` files | Written by the same script from the one copy of each query the notebooks run |
 
-## The plants, and where each is used
+## Which plants does the pack use, and how do the student files stay clean?
 
 | Plant | Used in | How the student files stay clean |
 |---|---|---|
-| 6 duplicated keys in the exposure feed (C-0001, C-0002, C-0003, C-0006, C-0007, C-0009) | Round 2's your-turn cell; the day sheet | The fan-out is shown on four invented customers (C-9001 to C-9004, labelled invented in the notebook, the deck notes and the study notes); the real merge is an empty your-turn cell; exercises use other numbers (a 250-row feed, Rs 52,300) |
-| A customer whose months pivot wrongly by order index (the row's) | Round 3, S38 | No single customer is planted by the generator, so the order-index pivot is taught on Retail-Plus as a whole |
-| Wednesday's falling members | Escalated case part 3 | The flag is computed across all segments (9 customers) and checked against Wednesday's LAG query without printing who |
-| The take-home snapshot's own duplicates and gaps | The take-home | Named only in the day sheet; the self-check gives the numbers to reach and a diagnosis if one is missed |
+| 6 repeated customer keys in the exposure feed (C-0001, C-0002, C-0003, C-0006, C-0007, C-0009, re-sent on 11 August), 136 rows for 130 customers | Notebook 02's empty your-turn cell; the escalated case's markers 3 to 5; the day sheet | The fan-out is shown on four invented customers, C-9001 to C-9004, labelled invented; no saved output prints the feed's rows beside its distinct customers; the exercises use invented feeds (the Diwali email, the app team's push); the notes and solutions restate the rule the room drew, never the keys or the count |
+| A customer whose months pivot wrongly by order index (the row's) | Chapter 3, S44 | The generator plants none by name, so the order-indexed pivot is taught on Retail-Plus as a whole |
+| Wednesday's three falling Retail-Plus members | The escalated case's falling flag and notebook 06's depth section | The flag runs across all segments and is checked against Wednesday's query as a set; no student file gives a count or an id |
+| The take-home snapshot's own repeated feed rows (153 customers, 159 rows) | The take-home | Named only in the day sheet; the self-check gives the numbers to reach and a conditional diagnosis |
 
-## Everything invented, and why
+## What is invented, and why?
 
 - Customers C-9001 to C-9004 and their spends (Rs 12,400, Rs 8,600, Rs 5,100, Rs 1,900), and the
-  companion's six reached customers (Rs 9,300, Rs 12,400, Rs 4,200, Rs 8,600, Rs 7,700, Rs 5,100):
-  the fan-out mechanism without naming the plant.
-- Kalpa Logistics' 500 accounts and 250-row feed, and the Rs 19,84,52,300 total, in the round 2 set:
-  a trap that does not echo the plant.
-- The run day of Monday 19 October 2026 for recency from the wall clock: the first Monday refresh
-  after the session, pinned so the wrong number is exact; `pd.Timestamp.today()` on the build date,
-  29 September, would have hidden the trap.
-- The chief of staff's words on the last slide and in the pre-read are Friday's row, quoted.
+  companion's reached customers: the fan-out mechanism without naming the plant.
+- In the chapter sets: next year's 2 crore orders, 9 lakh customers and 3 crore rows (chapter 1); the
+  Diwali email's five customers C-8101 to C-8105 and the app team's 2,000-row push feed (chapter 2);
+  members M1 and M2, a loyalty tier's Rs 3,10,000 and Rs 2,90,000 against Rs 8,40,000, and next year's
+  150 members and 540 member-months (chapter 3); customers A to E, a dashboard's 96 percent of 1,250
+  against a feed of 1,480, and a campaign of 800 reached and 5,000 buyers (chapter 4); 50 lakh orders
+  and 2 lakh customers, and timings of 0.08, 0.11 and 0.21 seconds (chapter 5); a store whose data ends
+  30 June with a run on 13 July, and Rs 150 a code (chapter 6). Every one is labelled invented in its
+  file, and none echoes a planted value.
+- The run day of Monday 19 October 2026 for recency from the wall clock: the first Monday refresh after
+  the session, pinned so the wrong number is exact.
+- The chief of staff's words in the pre-read and on the last slide are Friday's row, quoted.
 
-## Decisions that depart from a source
+## Which decisions depart from a source, and why?
 
 | Decision | Why |
 |---|---|
-| The spine's trap "groupby dropping customers with no segment" is staged where a reach table starts from the feed and takes segment from the order rows | Every customer in the v4 warehouse has a segment, so the trap needs a table where segment can be missing; this one arises naturally and leaves 23 reached non-buyers out, which gives the trap a business consequence (100 against 82 percent) |
-| "Last week's flags" are read as lapsed (60 days, as of the data's last date) and falling (Wednesday's LAG, all segments) | The row names "the two flags" without defining them; these two are the week's, one built on today's recency and one mirroring Wednesday |
-| Spend counts every booked order, all statuses | Monday's warehouse tree and Friday's exported customer table both sum every order, so today's table reconciles with both |
-| The row's agenda of seven items of 15 to 50 minutes is re-cut into the spine's day | The spine wins over the row; every agenda item keeps a home: ask (the ask), read_sql and groupby (round 1), merge (round 2), reshape (round 3), three tools (second case), unguided (escalated case), Kahoot (close) |
-| The room writes the SQL first in the second case, then the trainer runs it through Python | The row's agenda item 5, kept inside the spine's 45-minute pairs slot |
-| A practice set and a TA note are added | The spine's lab column; the row has none |
-| Twelve interview questions: the row's five and seven case-style follow-ups, tagged | The standard's ten to twelve; follow-ups are the day's traps as an interviewer asks them |
-| No decision workbook | The standard's volume table lists the companion only, Friday is the Excel day, and the old pack had none |
-| The notebooks' `pd.Timestamp("2026-10-19")` replaces a live `today()` | Reproducible saved outputs; the comment says what it stands for |
-| Old file names reused where the new artifact fits (`half1`, `01_customer_table`, `hands_on`, `three_tools`, `pick_tool`, `shapes`, `merge`, `pandas`, `quiz`, `tiered`, `preread`, `notes`, `brief`, `selfcheck`, `day_sheet`, `provenance`) | Every file of the old pack is replaced by a new one of the same name, so nothing below the new standard stays |
+| The spine's trap "groupby dropping customers with no segment" is staged where a reach table takes the segment from the order rows | Every customer in the v4 warehouse has a segment, so the trap needs a table where it can be missing; this one leaves 23 reached non-buyers out and gives the trap a business cost, 100 against 82 percent |
+| "Last week's flags" are lapsed (60 days to the as-of date) and falling (Wednesday's rule, all segments) | The row names the flags without defining them; these are the week's |
+| Spend counts every booked order, all statuses | Monday's warehouse tree and Friday's exported table both sum every order |
+| The escalated case's opening gives the data and the growth team's rules and no longer states `validate`, `aggfunc` or the as-of rule | The 30 September build's opening answered six of its markers, the case-opening failure the Week 1 reviews named |
+| The escalated case gains marker 5 (a count that shares no code with the merge) and marker 13 (the query step 1 reads at 5 crore orders, checked against step 1), and the second case gains marker 5 (which size tells the routes apart) | The day prompt's lesson 3 asks for design items in both cases; each check tests a value the learner's choice computed |
+| The second case's first marker counts members from lists of ids, so each wrong pick gives a plausible wrong rate | The 30 September version's wrong picks raised `AttributeError`, a runtime error in an item slot |
+| The guided set is a carve the room mirrors, not a lettered set | The exercise-builder skill keeps a guided carve in its kind |
+| The practice lab gives asks an owner among plain Python, SQL and pandas only | Friday's lab sets warehouse, pandas or Excel for eight asks; Excel stays out today |
+| The pre-read drops the front-page number's denominator and period, the lookup's not-found framing and the operating rule | Each pre-empts a Friday trap or chapter |
+| The study notes run to about 7,600 words | The Week 1 models run to about 6,800; each chapter carries its options, sizing, trap and second route, and the interview answers are in full |
+| The cheat sheet drops a numbers panel to fit one landscape page | Every number on it already sat in panels 1, 5 and 7 |
+| Twelve interview questions in the notes: the row's five and eight case-style follow-ups, tagged | The standard's ten to twelve plus one |
 
-## Links, each checked on 29 September 2026
+## Which real companies does each chapter name, and where was each fact checked?
 
-| Link | Check |
+Each fact was first checked on 30 September 2026 and checked again on 1 October 2026 by a research
+agent fetching each page; the wording in the pack follows the second check.
+
+| Chapter | Company and fact | Source, as fetched on 1 October 2026 |
+|---|---|---|
+| 1 | Shopify scores customers 1 to 5 on recency, frequency and monetary value, in 11 RFM groups, one of them Prospects, "Customers with no orders yet" | https://help.shopify.com/en/manual/reports-and-analytics/shopify-reports/report-types/default-reports/customers-reports, "Customers reports" |
+| 2 | Meta: an advertiser sending events from the Pixel and the Conversions API "must set up a deduplication method"; under the recommended method, the same event ID and event name reaching the same Pixel within 48 hours are deduplicated, the first kept | https://developers.facebook.com/docs/marketing-api/conversions-api/deduplicate-pixel-and-server-events/, "Handling Duplicate Pixel and Conversions API Events"; the check found a second method (external ID or fbp), so "only when" became "under the method Meta recommends" |
+| 3 | Costco, fourth quarter of fiscal 2026: "traffic or shopping frequency increased 3.3% worldwide", "our average transaction or ticket was up 5.9% worldwide", US and Canada renewal rate 92.3 percent | The call of 24 September 2026, transcript at https://www.theglobeandmail.com/investing/markets/stocks/COST/pressreleases/4846871/costco-cost-q4-2026-earnings-call-transcript/ (a Motley Fool transcript, posted 29 September); the figures in Costco's Exhibit 99.2 to its Form 8-K, https://www.sec.gov/Archives/edgar/data/0000909832/000090983226000084/costex9928-k92426.htm |
+| 4 | Uber: Operations computed completed trips in Presto/Hive SQL for dashboards while Pricing Engineering built its own from a Cassandra table; the goal, "a strictly ONE to ONE mapping" | https://www.uber.com/blog/umetric/, "The Journey Towards Metric Standardization", 12 January 2021 |
+| 5 | LinkedIn: "multiple stakeholders come up with different ways to calculate the same metric arriving at slightly different results"; the platform "serves as the single source of truth for all business metrics at Linkedin" | https://engineering.linkedin.com/teams/data/analytics-platform-apps/analytics-platforms/ump, "Unified Metrics Platform (UMP)" |
+| 6 | Public Health England: "15,841 cases between 25 September and 2 October were not included in the reported daily COVID-19 cases"; the cause, results "automatically fetched in CSV format" stored in the .XLS format "that limited the number of rows to 65,536 per spreadsheet" | https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases (4 October 2020); https://www.theregister.com/2020/10/05/excel_england_coronavirus_contact_error/, 5 October 2020 |
+
+## Which links does the pack cite, and when was each checked?
+
+| Link | Check on 1 October 2026 |
 |---|---|
-| https://pandas.pydata.org/docs/user_guide/10min.html | 200, "10 minutes to pandas, pandas 3.0.6 documentation" (verified 29 September 2026) |
-| https://pandas.pydata.org/docs/user_guide/groupby.html | 200, "Group by: split-apply-combine" (verified 29 September 2026) |
-| https://pandas.pydata.org/docs/user_guide/merging.html | 200, "Merge, join, concatenate and compare" (verified 29 September 2026) |
-| https://pandas.pydata.org/docs/user_guide/reshaping.html | 200, "Reshaping and pivot tables" (verified 29 September 2026) |
-| https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html | 200; the validate text quoted in the take-home read from it (verified 29 September 2026) |
-| https://pandas.pydata.org/docs/whatsnew/v3.0.0.html | 200, "What's new in 3.0.0 (January 21, 2026)" (verified 29 September 2026) |
-| https://pandas.pydata.org/docs/user_guide/index.html | 200, the row's link (verified 29 September 2026) |
-| https://pgexercises.com/ | 200, the row's trainer link (verified 29 September 2026) |
-| https://www.youtube.com/watch?v=txMdrV1Ut64 | YouTube oEmbed returned the title "Python Pandas Tutorial (Part 8): Grouping and Aggregating" by Corey Schafer; the page itself answered 429, so the content was not watched (verified 29 September 2026) |
-| https://www.youtube.com/watch?v=Oo0Mio9Gx4A | oEmbed title "Python Pandas Tutorial: GroupBy + Pivot Tables + Merge", Coding with David; found by search, not used in a learner file, content not watched (verified 29 September 2026) |
+| https://pandas.pydata.org/docs/user_guide/10min.html | 200, "10 minutes to pandas, pandas 3.0.6 documentation" |
+| https://pandas.pydata.org/docs/user_guide/index.html | 200, "User Guide, pandas 3.0.6 documentation" |
+| https://pandas.pydata.org/docs/user_guide/groupby.html | 200, "Group by: split-apply-combine" |
+| https://pandas.pydata.org/docs/user_guide/merging.html | 200, "Merge, join, concatenate and compare"; its sections include "Merge types" and "Merge key uniqueness" |
+| https://pandas.pydata.org/docs/user_guide/reshaping.html | 200, "Reshaping and pivot tables" |
+| https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html | The `validate` text quoted in the take-home's self-check, read from the pandas 3.0.6 page |
+| https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html | The sentence on null join keys, "different from usual SQL join behaviour", read from the pandas 3.0.6 page |
+| https://pandas.pydata.org/docs/whatsnew/v3.0.0.html | 200, "What's new in 3.0.0 (January 21, 2026)" |
+| https://pgexercises.com/ | 200, "PostgreSQL Exercises", the row's trainer link |
+| https://www.youtube.com/watch?v=txMdrV1Ut64 | oEmbed title "Python Pandas Tutorial (Part 8): Grouping and Aggregating - Analyzing and Exploring Your Data", channel Corey Schafer; the watch page redirected to a captcha, so the upload date and the content were not checked, and the take-home says the notebooks are current where a call differs |
 
-## Tool versions the numbers and outputs came from
+## Which tool versions did the numbers and outputs come from?
 
 | Tool | Version |
 |---|---|
-| pandas | 3.0.6. The spine's defaults were checked on 3.0.5; on 3.0.6 on 29 September 2026, `pivot_table`'s `aggfunc` defaults to `"mean"`, `groupby`'s `dropna` to `True`, `merge`'s `validate` to `None` and `how` to `"inner"`, and `validate="one_to_one"` raises `pandas.errors.MergeError` with the message quoted in the pack |
-| PostgreSQL | 16, from `/usr/lib/postgresql/16/bin` |
-| SQLAlchemy, psycopg2-binary | 2.1.1 and the current wheel, installed in the build session |
-| mermaid-cli | 11.17.0 for the decks and the sheet; the session's own `mmdc` 12.0.0 rejects the `-w` flag `scripts/build_deck.py` passes, so decks rendered code instead of diagrams until 11 was put first on the path |
-| LibreOffice with Carlito | the render of both decks, looked at slide by slide |
+| pandas | 3.0.6. On it, `pivot_table`'s `aggfunc` defaults to the mean, `groupby`'s `dropna` to `True`, `merge`'s `how` to `"inner"` and `validate` to `None`; `validate="one_to_one"` raises `pandas.errors.MergeError`; text reads as `str`; `idxmax(axis=1)` on an all-missing row raises `ValueError: Encountered all NA values` |
+| Python | 3.11.15 |
+| PostgreSQL | 16.14 |
+| SQLAlchemy and psycopg2 | 2.1.1 and 2.9.13, installed in the session |
+| nbconvert | 7.17.1 |
+| mermaid-cli | 11.17.0, the version `setup.sh` pins, installed in a scratch prefix and put first on the path for the decks and the sheet; the session's own 12.0.0 draws at other sizes |
+| LibreOffice with Carlito | 24.2.7.2, with `fonts-crosextra-carlito` installed, for the deck renders |
+
+## How many items does the day carry, and which are design items?
+
+| File | Items | Design items |
+|---|---|---|
+| Chapter 1 set | 5 | 1, 4, 5 |
+| Chapter 2 set | 5 | 3, 5 |
+| Chapter 3 set | 5 | 3, 5 |
+| Chapter 4 set | 5 | 3, 4, 5 |
+| Chapter 5 set | 5 | 1, 2, 4, 5 |
+| Chapter 6 set | 5 | 3, 5 |
+| Escalated case | 13 | 5, 13 |
+| Second case | 6 | 5, 6 |
+| The day | 49 | 20, which is 41 percent |
+
+The practice lab adds nine lettered items and two build problems, and the Kahoot eight items.
+
+## What did each pass of the depth loop ask, find and change?
+
+| Pass | Who | What it asked | What it found | What changed |
+|---|---|---|---|---|
+| 1. Draft | The builder | Is every chapter built from the row, the spine and the dossier, in the chapter order? | The six chapters follow the spine's rungs; the 30 September build left the exercises, notes, sheet, Kahoot, pre-read, take-home and board work at the earlier form | Every family listed rebuilt on 1 October |
+| 2. Domain | The builder | Could a learner who has never worked in a business say, per chapter, who asks, why the metric matters, what a wrong number costs and which real company faces it, from the chapter's own files? | Each notebook opens on the four beats; the chapter sets lacked them | Each chapter set and solution now names the stakeholder, the cost of a wrong answer and the chapter's company with its check date |
+| 3. Problem first | The builder | Does every technique arrive as the answer to a stated problem, with options, a sizing and the call with what would change it? | The notebooks and decks hold the options tables; the escalated case had no design item and its opening answered its markers | Two design markers added to the escalated case and one to the second case; the opening rewritten |
+| 4. Rigor | A fresh reviewer agent | See the standard's pass 4 | To be logged | To be logged |
+| 5. Pedagogy and language | A fresh reviewer agent | See the standard's pass 5 | To be logged | To be logged |
