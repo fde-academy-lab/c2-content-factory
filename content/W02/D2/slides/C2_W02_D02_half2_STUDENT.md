@@ -504,7 +504,7 @@ trainer names them in one minute and moves to the Kahoot.
 
 ```timeline
 label: The lab, first | title: The escalated case, parts 3 to 5 | body: The unpaid list, the double-paid list and the page with its proof, alone, then the debrief of wrong picks.
-label: The lab, then | title: The second case, in pairs | body: The platform lead's audit of the feed, both quarters, four parts.
+label: The lab, then | title: The second case, in pairs | body: The platform lead's audit of the payments feed, in four parts.
 label: The lab, last | title: The interview drill | body: The day's questions aloud in pairs, sixty seconds each, the design question among them.
 label: Tonight | title: The take-home | body: A second book in its own schema, collected net of refunds by channel, and a join question of your own. | tone: dark
 ```
@@ -521,13 +521,13 @@ tonight). Name the order once and move on to the Kahoot.
 ## D2. The second case: the platform lead's audit
 *Which payment rows in the feed should not be there, and what should the platform lead fix first?*
 
-**The client asks.** "Before I repair the payments feed, tell me which rows in it should not be there: payments with no order behind them, and payments the gateway posted twice. Both quarters, with the dates, the methods and the rupees at stake, and tell me what to fix first." The data platform lead, Kalpa Retail
+**The client asks.** "Before I repair the payments feed, tell me which rows in it should not be there: payments with no order behind them, and payments the gateway posted twice, with the dates, the methods and the rupees at stake, and tell me what to fix first." The data platform lead, Kalpa Retail
 
 ```mermaid
 flowchart LR
-    P["<b>payments first</b><br/>every row kept"] --> H["<b>where each row belongs</b><br/>Q1, Q2 or no order"]
+    P["<b>the feed</b><br/>1,428 rows"] --> H["<b>where each row belongs</b><br/>Q1, Q2 or no order"]
     H --> O["<b>no order</b><br/>the suspense list"]
-    H --> R["<b>posted twice</b><br/>both quarters"]
+    H --> R["<b>posted twice</b><br/>the retry list"]
     R --> F["<b>the pattern</b><br/>and the fix request"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -535,12 +535,11 @@ flowchart LR
     class F bet
 ```
 
-In pairs in the lab, four parts: is every payment row in the feed accounted for; which payments match no order; which instalments were posted more than once, in either quarter; and is there a pattern the gateway team can act on. The notebook is `notebooks/C2_W02_D02_ex2_second_case_STUDENT.ipynb`.
+In pairs in the lab, four parts: is every payment row in the feed accounted for; which payments match no order; which instalments did the feed post more than once; and is there a pattern the gateway team can act on. The notebook is `notebooks/C2_W02_D02_ex2_second_case_STUDENT.ipynb`.
 
 ```notes
-SELF-STUDY, 40 minutes in the lab. This question starts from payments, because it is about every row
-the feed holds, which is the fact chapter 1 said would change the join. A retry is the same order and
-instalment posted twice; the platform lead fixes the feed, so the audit covers both quarters.
+SELF-STUDY, 40 minutes in the lab. The pairs post their four letters and the request; the TA reads
+the most common wrong letter for each part, and the reasons are in the case's solution page.
 ```
 
 ---

@@ -22,13 +22,13 @@ payments feed "sometimes double-posts when the gateway retries".
 collections team rings every order on the unpaid list, and the platform lead receives the repeated
 postings. A page that drops an order or keeps a repeat fails each of them.
 
-- **Booked** is every Q2 order at its amount, whatever its status: 462 orders and Rs 9,84,00,000,
-  from the orders table alone. **Collected** is the cash that arrived, each payment counted once.
-  **Posted** is every payment row the feed holds against an order, repeats included.
-- The chapters built each move on invented tables first. Payments are brought to one row per order
-  before any join, so a two-instalment order is not counted twice. The LEFT JOIN with orders first
-  keeps every booked order. An anti-join finds the orders nothing matched. A retry is the same order
-  and instalment posted twice. `coalesce(collected, 0)` keeps an unpaid order in the gap.
+- **Booked** is Monday's figure: 462 Q2 orders and Rs 9,84,00,000. **Collected** is the cash that
+  arrived, each payment counted once. **Posted** is every payment row the feed holds against an order,
+  repeats included.
+- The **gap** is booked less collected. The **surplus** of a retried instalment is what was posted
+  beyond one payment of it.
+- The chapters built each move on invented tables first; this case asks you to choose each move again
+  on Kalpa's Q2 alone, with a check after each choice.
 - Q2 runs from 1 July to 30 September. The warehouse's tables are `orders` (one row per order) and
   `payments` (one row per payment event, with an instalment number).
 
@@ -53,7 +53,7 @@ postings. A page that drops an order or keeps a repeat fails each of them.
 - Every figure on your page ties back to one table alone, and the sentence to Anand carries its
   definition of collected.
 
-## What do you post?
+## What do you post in the cohort channel?
 
 Post one line of eight letters in the order of the notebook's markers, then your sentence to Anand
 below it.

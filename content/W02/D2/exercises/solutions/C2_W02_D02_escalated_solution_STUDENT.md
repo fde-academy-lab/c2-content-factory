@@ -25,13 +25,13 @@ and the one check that proves the collected figure holds no payment twice.
 collections team rings every order on the unpaid list, and the platform lead receives the repeated
 postings. A page that drops an order or keeps a repeat fails each of them.
 
-- **Booked** is every Q2 order at its amount, whatever its status: 462 orders and Rs 9,84,00,000,
-  from the orders table alone. **Collected** is the cash that arrived, each payment counted once.
-  **Posted** is every payment row the feed holds against an order, repeats included.
-- The chapters built each move on invented tables first. Payments are brought to one row per order
-  before any join, so a two-instalment order is not counted twice. The LEFT JOIN with orders first
-  keeps every booked order. An anti-join finds the orders nothing matched. A retry is the same order
-  and instalment posted twice. `coalesce(collected, 0)` keeps an unpaid order in the gap.
+- **Booked** is Monday's figure: 462 Q2 orders and Rs 9,84,00,000. **Collected** is the cash that
+  arrived, each payment counted once. **Posted** is every payment row the feed holds against an order,
+  repeats included.
+- The **gap** is booked less collected. The **surplus** of a retried instalment is what was posted
+  beyond one payment of it.
+- The chapters built each move on invented tables first; this case asks you to choose each move again
+  on Kalpa's Q2 alone, with a check after each choice.
 - Q2 runs from 1 July to 30 September. The warehouse's tables are `orders` (one row per order) and
   `payments` (one row per payment event, with an instalment number).
 
@@ -59,7 +59,7 @@ The key is d, `LEFT JOIN`. The LEFT JOIN with orders first keeps every Q2 order 
 
 - a, `JOIN`: drops the orders nobody paid.
 - b, `RIGHT JOIN`: keeps payments and drops unpaid orders.
-- c, `FULL JOIN`: keeps every order and adds payment rows with no order, which are not Q2's business.
+- c, `FULL JOIN`: keeps every Q2 order and adds a row for every other order id the payments table holds, Q1's among them, so rows out exceed rows in and the count check fails.
 
 ### Item 4, part 3. Which condition keeps only the Q2 orders nothing matched?
 
@@ -82,32 +82,33 @@ The key is c, `GROUP BY p.order_id, p.instalment_no HAVING count(*) > 1`. A retr
 The key is b, `sum(p.amount) - max(p.amount)`. What lies beyond one payment of a repeated instalment is its sum less one posting, `sum(p.amount) - max(p.amount)`.
 
 - a, `sum(p.amount)`: is everything posted, including the one payment that belongs there.
-- c, `max(p.amount)`: is one payment.
+- c, `max(p.amount)`: is one payment, which equals the surplus of a pair posted at one amount and nothing else; the check on an invented instalment posted three times at Rs 1,500 gives 1,500 where 3,000 lies beyond one payment.
 - d, `(count(*) - 1) * sum(p.amount)`: multiplies the whole sum and doubles the surplus of a pair.
 
 ### Item 7, part 5. Which expression gives each channel's gap with the unpaid orders in it?
 
 The key is c, `sum(booked - coalesce(collected, 0))`. `sum(booked - coalesce(collected, 0))` counts an unpaid order's whole booked amount in the gap.
 
-- a, `sum(booked - collected)`: let an unpaid order's NULL fall out of the sum, so the gap loses the orders it exists to show.
+- a, `sum(booked - collected)`: lets an unpaid order's NULL fall out of the sum, so the gap loses the orders it exists to show.
 - b, `sum(booked) - sum(coalesce(posted, 0))`: subtracts posted, which still holds the repeats.
-- d, `sum(coalesce(booked, 0) - collected)`: let an unpaid order's NULL fall out of the sum, so the gap loses the orders it exists to show.
+- d, `sum(coalesce(booked, 0) - collected)`: lets an unpaid order's NULL fall out of the sum, since the coalesce sits on booked, which is never NULL.
 
 ### Item 8, part 5. Which check proves that collected holds no payment twice? (Design)
 
 The key is b, "collected plus the surplus posted twice equals posted from payments alone". Collected plus the surplus posted twice must equal posted from the payments table alone; a page that counted a repeat as collected fails it.
 
-- a, "collected is at most booked on every channel": pass a page that dropped unpaid orders, and can pass one with repeats in it.
-- c, "the gap is not negative on any channel": pass a page that dropped unpaid orders, and can pass one with repeats in it.
+- a, "collected is at most booked on every channel": passes a page that dropped unpaid orders, and passes one with the repeats inside collected, since on every channel the repeats are smaller than the gap, so collected stays below booked.
+- c, "the gap is not negative on any channel": passes a page that dropped unpaid orders, and passes one with the repeats inside collected for the same reason.
 - d, "every channel appears on the page with at least one order and one payment": says nothing about amounts.
 
 ## What should your page satisfy?
 
 Every check in the notebook passes on your picks: 462 rows in and 462 out, booked of Rs 9,84,00,000
-on the baseline and after the join, the unpaid list's total equal to booked less collected, the
-double-paid list's surplus equal to posted less collected, and the page's gaps adding to the unpaid
-list's total. Your sentence to Anand gives collected with its definition, the gap with the number of
-orders behind it and the channel that carries most of it, the repeats and their owner, and the proof.
+on the baseline and after the join, the unpaid list's total equal to the gap less anything paid
+short, the double-paid list's surplus equal to posted less collected, and the page's gaps adding to
+the unpaid list's total plus anything paid short. Your sentence to Anand gives collected with its
+definition, the gap with the number of orders behind it, listed by channel, the repeats and the
+payments with no order with their owner, and the proof.
 
 ## Which pick is worth arguing about?
 
