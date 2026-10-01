@@ -203,30 +203,69 @@ session as `setup.sh` pins it (the container carried 12.0.0); LibreOffice 24.2.7
 | 1. Draft | The builder, 30 Sep 2026 | Is every chapter built from the row, the spine and the dossier, in the chapter order? | Six chapter notebooks, two decks, six sets and two cases on the chapter order | Built |
 | 2. Domain | The builder, 1 Oct 2026 | Could a learner with no business background say, per chapter, who asks, why the metric matters, what a wrong number costs and which real company faces it, from that chapter's own files? | Every chapter's map slide, notebook title cell and set name the asker, the metric and the cost. Chapter 3 named an agency and no company; the notes named no company in chapters 1 to 5; the provenance had lost every company URL | Stripe's payout reconciliation added to chapter 3; a Who else faces this paragraph per chapter in the notes; all eight company claims and nine links refetched (one overstatement corrected) |
 | 3. Problem first | The builder, 1 Oct 2026 | Does every technique arrive as the answer to a stated problem, with options, a sizing, the call and what would change it, and is code the last mile? | Each chapter carries its options table, a sizing on this data and the call with its switch before the build, and a second route asserted equal; chapter 6's time column separates only reading by a person from the queries, and its stopped-reports column does the separating | Nothing to change |
-| Round 3, rerun | A fresh reviewer agent (Opus, read-only), 1 Oct 2026, on everything changed in this folder from 8128b5e to dadb7ab | Does each changed key hold, does every wrong letter fail, does any check or stem give a key away, and does any file still state an old number? It sat every set blind and ran each of the 36 wrong case letters in an executed copy | Every key holds; all 36 wrong letters fail a check in their own part and none throws; no STUDENT file prints a plant value or a forbidden pair. Nine blocking and nine minor findings and ten others, listed below | Listed below, finding by finding |
+| 4. Rigor | A fresh reviewer agent (Opus, read-only), once, 1 Oct 2026, on the pack at 8128b5e | Do the notebooks run cold, does every trap show its exact wrong number and its check, does every sizing's arithmetic hold, is every real-world fact sourced, and would a strong interviewer accept every answer? It also sat the exercises blind from the STUDENT files alone and read every STUDENT file against the later days' traps | Recorded through its fix commits, since its list was not kept in this repository: in both cases some wrong letters passed every check and some pages printed their own key; the second case's ask named the quarters its audit covers, which is the pair's design call; chapter 6 tested wrong reports no chapter had staged; the gap tied back to the never-paid list alone, though an order paid in part is a gap too; chapter 4's second route for the unpaid list was the same anti-join written as NOT EXISTS; its finding B5 sent the design items of the chapter 1 to 5 sets, the trace and the lab back to be rebuilt; the notes' self-test item 2 offered two strawmen; the Wirecard claims had no source in this file | Every wrong letter in both cases fails a check, 36 of 36, and no case page prints its key (dc2a450); the ask leaves the scope to the pair (decision 22); chapter 6 tests the five wrong pages as their chapters staged them (f4fad4a, 7eb4e3c; decision 18); the gap ties to the never-paid and paid-short lists in every file (decision 19); subtraction became chapter 4's second route (decision 20); the design items were rebuilt and the day sheet's keys for chapter 1 item 3, chapter 3 item 6 and chapter 4 item 4 followed (8d2d0b9, e136ac5); self-test item 2 rewritten (8d74393); the Wirecard source recorded (fe7ce24) |
+| 5. Pedagogy and language | A fresh reviewer agent (Opus, read-only), once, 1 Oct 2026, after the humanizer's read of every prose file (8128b5e) | Does each chapter pair one deck chapter with one notebook that builds on the last, does every file pass the headings-only read and stand on its own, does every deck carry each chapter in full, do the devices vary, does every diagram read at print size, and is the language free of the scrubber's tics and the humanizer's patterns? It also opened three files at random alone and looked at every rendered slide | Recorded through its fix commits, since its list was not kept in this repository: the solution pages gave letters and reasons without the set's scenario, tables or option text; the sets did not list their questions or mark their design items; no item asked for an analysis in order; the trace carried a column no notebook uses and a clause no option answered; the lab's problem 3 heading cued the direction of its answer; map timelines and close tables shortened the smaller questions or took them out of slide order; chapter closes lacked their interview strip; the dbt card came before the room finds the doubling; the notebooks' ladders and the deck's differed; the take-home used terms it never defined, promised tomorrow's opening and carried a marks word; the pre-read miscounted its checks; chapter 6 asked no predict about what leaves; the companion's quotes were curly; some headings did not end on their question | Every solution page restates its scenario, tables, stems and options; every set lists its questions and marks its design items; chapter 3 item 6 became an ordering item, key c; the trace and the lab fixed (169cd76); timelines and closes carry the questions in full and in slide order (bbd6bca); interview strips on every close, the dbt card after the discovery (decision 17), the invented tables opening the afternoon (43bdd05); the ladders aligned (f4fad4a); the take-home, the pre-read, chapter 6's predict, the companion's quotes and the headings fixed (1b1d55f, fe7ce24). Parts 3, 4 and 7 carried fixes for both passes |
+| Round 3, first run | A narrower round on the pass 4 and 5 fixes that moved a method, a key or a number, 1 Oct 2026; the session stopped at its usage limit and its list of findings was not kept | Not recorded; its fixes show it read the cases' checks, the chapter options' sizing and the predicts | Recorded only through its two fix commits | Part 1 (3e3229e): the cases' checks compare with reference figures set up by the capped route or with fingerprints, each later part runs on the learner's own grain and join, the design items are marked, two strawmen per case replaced, no wrong pick throws. Part 2 (dadb7ab): the chapter options size what each way keeps and costs without the build's answers, chapter 2's predict moves to KR-00595, chapter 3's second route claims only what agreement shows, and the one-check answer says why the count comes first. Part 2 reached the six notebooks and neither deck, which the rerun found |
+| Round 3, rerun | A fresh reviewer agent (Opus, read-only), 1 Oct 2026, on everything changed in this folder from 8128b5e to dadb7ab | Does each changed key hold, does every wrong letter fail, does any check or stem give a key away, and does any file still state an old number? It sat every set blind and ran each of the 36 wrong case letters in an executed copy | Every key holds, with every set sat blind at full marks; all 36 wrong letters fail a check in their own part and none throws; no STUDENT file prints a plant value or a forbidden pair. Nine blocking and nine minor findings and ten others, listed below | Every finding fixed but one, which is answered (13), in abb40a3. On the rebuilt cases the 36 wrong letters were run again: 36 of 36 fail in their own part, none throws and none prints a count. Every notebook rebuilt and run cold, both decks rebuilt and their changed slides looked at, verify passing |
 
-### Round 3, rerun: the findings
+### Round 3, rerun: each finding and its fix
 
 Blocking:
-1. Round 3's part 2 reached the notebooks and not the decks: morning S11, S35 and S36, S42 and S57 print what a later predict asks; S25, S33 to S38 and S52 and afternoon S6, S12, S15 and S17 say what the notebooks no longer say.
-2. Notebook 5's ladder, the deck's S70 and the day sheet's ladder ask why the gap column reads zero before the predict that asks what it reads.
-3. The chapter 6 set's Q5 prints report Z's figures and names Q3's key pair.
-4. The chapter 2 set's Q6 gives the fixed join's row count, which names Q3's key.
-5. The chapter 3 set's opening, notebook 3's title cell and S40 say a report that drops an order and keeps a repeat shows a surplus, which answers Q1.
-6. The chapter 3 set's Q6 table lists the proofs in the key's order.
-7. The chapter 5 set's opening says the gap column reads zero, which answers Q1.
-8. The escalated case's Part 4 your-turn line types the second case's TODO 1 and TODO 2 keys.
-9. The escalated case's three-postings reference has the shape of TODO 6's key, and the wrong page for TODO 8 is built in TODO 8's words.
+1. Round 3's part 2 reached the notebooks and not the decks: morning S11, S35 and S36, S42 and S57
+   printed what a later predict asks, and S25, S33 to S38, S52 and afternoon S6, S12, S15 and S17 said
+   what the notebooks no longer say. Fixed: S11 sizes what each join keeps without row counts; S25,
+   S35, S36 and S38 move to the KR-00595 predict and its four checks; S42 and S57 print no predict's
+   answer; S52 names the retry that passes both routes; afternoon S6, S9, S12, S15 and S17 follow
+   notebook 6.
+2. Notebook 5's ladder, S70 and the day sheet asked why the gap column reads zero before the predict
+   that asks what it reads. Fixed: the question asks whether the gap column is right and which check
+   proves it, in notebook 5, S70, S79, S83, the day sheet, the board and the companion's walk.
+3. The chapter 6 set's Q5 printed report Z's figures and named Q3's key pair. Fixed: Q5 runs on a new
+   week's page from its own book that fails booked, the two lists and the posted check; the key stays b.
+4. The chapter 2 set's Q6 gave the fixed join's row count, which names Q3's key. Fixed: the count is gone.
+5. The chapter 3 set's opening, notebook 3's title cell and S40 said a report that drops an order and
+   keeps a repeat shows a surplus, which answers Q1. Fixed: the set, its solution, notebook 3's title
+   cell and need, S39, S40 and the notes state the cost of a wrong gap without its mechanism.
+6. The chapter 3 set's Q6 table listed the proofs in the key's order. Fixed: it lists the lists, the
+   count and the bridge, an order no option takes.
+7. The chapter 5 set's opening said the gap column reads zero, which answers Q1. Fixed: the set, its
+   solution, notebook 5, S70 and the notes say a wrong gap column misleads in either direction.
+8. The escalated case's Part 4 your-turn line typed the second case's TODO 1 and TODO 2 keys. Fixed:
+   it counts the payments with no order with NOT EXISTS, chapter 4's option B. Chapter 4 itself prints
+   the payments-first query, so the second case stays an application of chapter 4.
+9. The escalated case's three-postings reference had the shape of TODO 6's key, and its wrong page for
+   TODO 8 was built in TODO 8's words. Fixed: the check compares a fingerprint computed from the key
+   at build time, and the wrong page reads posted by channel from the payments table.
 
 Minor:
-10. The chapter 6 set's Q2 stem says where report Y took its booked from.
-11. Five case keys are the lone shortest option, and the second case's TODO 3 key is the only option without "only".
-12. Chapter 6's level 5 predict, and S16, have a key that is the lone longest option and the only one with a reason.
-13. The second case's Part 3 code shows the escalated case's TODO 5 and TODO 6 keys.
-14. The escalated case's checks print 648 or 678 orders, or 432 rows out against 462 in, on a wrong pick.
-15. The escalated case's TODO 4 d is a strawman.
-16. This file's decisions 8 and 15 state an old slide count and word count, the depth loop stopped at pass 3, and S82's notes cite the folded chapter 5 question as its own.
-17. The afternoon drill's notes keep the old [D] answers, and only notebook 6 says why the count check comes first.
-18. The design share is 20 of 48 in the sets and cases, 20 of 63 with the trace and the lab.
+10. The chapter 6 set's Q2 stem said where report Y took its booked from. Fixed: it says only what Y
+    summed.
+11. Five case keys were the lone shortest option, and the second case's TODO 3 key was the only option
+    without "only". Fixed: TODO 1's options are words with the SQL behind them in code; TODO 2's and
+    the second case's TODO 3 and TODO 4 options are reworded so no key is the lone shortest; "only" is
+    gone; the your-turn loop runs over the quarters on the learner's own list.
+12. Chapter 6's last predict, in the notebook and on S16, had a key that was the lone longest option
+    and the only one with a reason. Fixed: the options are balanced, the open line sits in three of
+    them, and its definition comes before the predict.
+13. The second case's Part 3 code shows the escalated case's TODO 5 and TODO 6 keys. No change: the
+    lab runs the escalated case first, and chapter 4's notebook and sql file print both as its method.
+14. The escalated case's checks printed 648 or 678 orders, or 432 rows out against 462 in, on a wrong
+    pick. Fixed: they print "count unprinted".
+15. The escalated case's TODO 4 d was a strawman. Fixed: d is `o.order_id IS NULL`, the side confusion,
+    which returns an empty list.
+16. Decisions 8 and 15 stated an old slide count and word count, the depth loop stopped at pass 3, and
+    S82's notes cited the folded chapter 5 question as its own. Fixed: 33 slides after the cover and
+    8,345 words; this table logs passes 4 and 5 and both runs of round 3; S82 folds the question into
+    the [D] answer.
+17. The drill's notes kept the old [D] answers, and only notebook 6 said why the count check comes
+    first. Fixed: D3 and D4 carry the day sheet's answers, and the notes, the day sheet and D4 say why.
+18. The design share was 20 of 48 in the sets and cases, and 20 of 63 with the trace and the lab.
+    Fixed: the lab's item 11 is marked Design, and decision 23 states the basis.
 
-Others: the chapter 3 solution's Q5 overclaims; the chapter 1 solution's Q6 calls invented orders Kalpa's; the second case's reasons for TODO 3 c and TODO 1 a are unsupported or wrong; the chapter 6 set never defines the open line; notebook 6 says a date in WHERE empties the page; four chapter maps print a predict's answer; the lab ends Q1 on 28 June; numbered level headings no longer match the ladders; the escalated case's TODO 8 d is tested without its payment condition.
+Others, each fixed: the chapter 3 solution's Q5 names the genuine overpayment too; the chapter 1
+solution calls the orders invented; the second case's reasons for TODO 3 c and TODO 1 a say what each
+does on this feed; the chapter 6 set and its solution define the open line; notebook 6 says a date in
+WHERE drops the order from the page and empties the list, so the two still agree; the maps of notebooks
+2, 3, 5 and 6 name each trap without its answer; the lab's window ends on 30 June, which moves no
+figure; every notebook heading carries its ladder number; the escalated case's TODO 8 d is tested
+with its payment condition.
