@@ -95,8 +95,11 @@ planted ids and values (`FORBIDDEN`) and stops the build if any saved output pri
 | Morning, SECTION 5, S62 to S76 | `05_against_plan` | Has Q2 revenue kept pace with the plan line week by week, and where did it stand at mid-quarter? | The plan-first join closes at Rs 9,68,60,180, reported as Rs 15,39,810 short of plan |
 | Afternoon, SECTION 6, S2 to S16 | `06_call_first` | Which listed members does Marketing call first, and does each flag hold up when a member says he was on holiday? | Chapter 4's 16 flags shipped as calls, 7 of them reading a skipped month as last month |
 
-The notebooks are written by `internal/C2_W02_D03_build_notebooks_INTERNAL.py` and executed cold in
-their own folder by `scripts/nb_make.py`; the same script writes the two case twins
+The morning deck holds 82 slides and the afternoon deck 30: chapter 6, the escalated case's first two
+parts, the close with the day's answer and the Kahoot, and self-study slides for the interview drill
+(D22 and D23), the second case (D24) and the day's wrong numbers (D25). The notebooks are written by
+`internal/C2_W02_D03_build_notebooks_INTERNAL.py` and executed cold in their own folder by
+`scripts/nb_make.py`; the same script writes the two case twins
 (`ex1_escalated_case`, `ex2_second_case`) and their executed solutions. The decks are built by
 `scripts/build_deck.py` from the markdown in `slides/`.
 
@@ -158,6 +161,26 @@ their own folder by `scripts/nb_make.py`; the same script writes the two case tw
     prediction without a signal read against a customer's own history. Square's "Lapsed" group stands.
 14. **The take-home's ask is Marketing's, on Retail-Core, with the head of Retail-Plus's tie rule.**
     `docs/07_Client_Zero.md` has no head of Retail-Core, so the brief invents none.
+15. **The interview drill prints on two slides, D22 and D23.** The angle runs to thirteen questions,
+    the row's five anchors and eight follow-ups from the day's traps. A table of a header and
+    thirteen rows needs 5.04 inches at the deck builder's smallest row, against 4.94 on a slide, so
+    the three [D] questions sit on D23 and the later self-study slides renumber to D24, D25 and S26.
+16. **They for every member and every stakeholder whose pronouns no source states.** `docs/07` writes
+    Meera Raghavan as "she", and nobody else's pronouns are stated, so members, the head of
+    Retail-Plus, the marketing lead, Kavya and Anand are "they" in every file. The head of
+    Retail-Plus's chapter 6 quote, invented for this pack, reads "they were travelling in August and
+    have not stopped buying. Is your flag wrong about them".
+17. **The cheat sheet's anchor is S5's drawing reshaped.** S5's exact shape printed its labels at 5.2
+    points and pushed the sheet to two pages, so the sheet carries the same two branches with the
+    labels on the arrows. The notes and the board's first drawing carry S5's exact source, and
+    notebook 01 draws the same two branches with the helper's tree.
+18. **Chapter 2 stages its trap before its build.** The trap is chapter 1's list reused per segment,
+    which is the first thing a hurried analyst sends, and PARTITION BY is both the build and the fix,
+    so the chapter shows the wrong list, its check, then the window that replaces it. Chapter 6 runs
+    its second route before the call list, since the call list needs the nine the route confirms.
+19. **The escalated case's monthly table carries the segment.** Marker 3's option a, PARTITION BY
+    segment, would otherwise stop with an error, and an error is never an exercise item; with the
+    segment on every row, the option runs and its check counts more than 700 rows that cross members.
 
 ---
 
@@ -175,6 +198,9 @@ their own folder by `scripts/nb_make.py`; the same script writes the two case tw
 5. The members and amounts in Kahoot items 1, 5 and 7, labelled invented in the quiz.
 6. Each chapter's sizing in rows read (1,848, 16,617, 1,504, 6,006 and 1,806) is this pack's
    arithmetic on the warehouse, shown with its working.
+7. The invented members of the chapter sets, the guided build and the practice lab (letters such as
+   A to F, P to R and R to X, and ids such as V-01 to V-08, X-01 and Y-01 that the warehouse does
+   not hold), each labelled invented where it appears.
 
 ---
 
@@ -206,7 +232,23 @@ Not verified, and so not in any file: a live "Best Sellers Rank" line on an amaz
 
 ## The row's references, with the date each was checked
 
-<!-- LINKS: completed once the reading family's files are final -->
+Each link was requested on 1 October 2026 and returned HTTP 200, except where noted.
+
+| Link | Role | Checked |
+|---|---|---|
+| https://www.postgresql.org/docs/16/tutorial-window.html | PostgreSQL 16, 3.5 Window Functions: why WHERE cannot see a window, and peers in a running sum; the notes' reading path | checked 1 Oct 2026, 200 |
+| https://www.postgresql.org/docs/16/functions-window.html | PostgreSQL 16, 9.22 Window Functions: row_number, rank, dense_rank and lag as documented; the notes' reading path | checked 1 Oct 2026, 200 |
+| https://www.youtube.com/watch?v=Ww71knvhQ-s | techTFQ, "SQL Window Function, How to write SQL Query using RANK, DENSE RANK, LEAD/LAG", the one video for the new topic | checked 1 Oct 2026 through YouTube's oEmbed endpoint, which returned the title and channel; the watch page sent the session to a bot check, so the running time is not verified and the notes say so |
+| https://pgexercises.com/questions/aggregates/ | PostgreSQL Exercises, Aggregation, where the site keeps its window questions | checked 1 Oct 2026, 200 |
+| https://pgexercises.com/questions/aggregates/countmembers.html | The first window question, a total on every row; the take-home and the notes | checked 1 Oct 2026, 200; the site's answer uses count(*) over () |
+| https://pgexercises.com/questions/aggregates/nummembers.html | The second, a numbered list of members | checked 1 Oct 2026, 200; the site's answer uses row_number() |
+| https://pgexercises.com/questions/aggregates/fachours4.html | The third, the facility with the most slots, every tied result output | checked 1 Oct 2026, 200; the site's answer uses rank() |
+| https://neon.com/postgresql/window-function | The PostgreSQL Tutorial's window functions page, the row's postgresqltutorial.com resource, which now redirects here | checked 1 Oct 2026, 200 after the redirect from https://www.postgresqltutorial.com/postgresql-window-function/ |
+| https://www.pgtutorial.com/postgresql-window-functions/ | pgtutorial.com, clause syntax cross-checks | checked 1 Oct 2026, 200 |
+| https://sqlbolt.com/ | SQLBolt, for anyone still shaky on joins | checked 1 Oct 2026, 200 |
+
+The row carried pgexercises.com, postgresqltutorial.com, pgtutorial.com and sqlbolt.com as verified 05
+Sep 2026; each was checked again on 1 October 2026 before it entered this pack.
 
 ---
 
@@ -226,3 +268,7 @@ installed in the session's scratch space on 1 October 2026.
 | Pass | Asked | Found | Changed |
 |---|---|---|---|
 | 1. Draft | Is every chapter built from the row, the spine and the fill, in the chapter order? | The spine's five rungs and the fill's sixth became six chapters; each notebook runs need, options with sizing and the call, build with each step predicted, trap, second route and Kavya's review, and each deck section follows it in 13 to 15 slides. | Nothing further. |
+| Exercise review | Do the exercise sets, cases and lab hold their keys, plants and numbers before any reviewer sees them? | Seventy items, 26 of them design items; no plant in any STUDENT file; every key matches its notebook. Four notebook markers (escalated 7, 9 and 10, second case 7) kept options the briefs had lengthened, so the key was the only longest option in the notebook; escalated marker 3's option a stopped with an error; escalated item 13 printed the 76.1 and 92.6 percent shares that part 3 asks the learner to compute; the saved case solution charted Retail-Plus's share under RANK, 86.3 percent, which set beside notebook 02's 85.5 shows RANK keeping an extra member. | The notebook options now match the briefs word for word; the monthly table carries the segment (decision 19); item 13 sizes per call in rupees; the solution charts Business, Retail-Core and Student and leaves Retail-Plus to the learner's run. The marker test catches every wrong letter on the eight computed markers. |
+| 2. Domain | Could a learner who has never worked in a business say, for every chapter, who asks, why the metric matters, what a wrong number costs and which real company faces the same question? | Every chapter names its stakeholder, metric, cost and company with a dated source. Chapters 3, 5 and 6 named no section of the retail dossier, and chapter 1 sent the reader to section 4 for what a paid tier buys, which section 2 holds. | Each chapter notebook's metric paragraph names its dossier section: sections 2 and 4, 4, 4, 5, 4 and 5, and 8 (a wrong retention flag spends offers on the wrong members). |
+| 3. Problem first | Does every technique answer a stated problem, with two to four options sized, a best-fit call and the fact that would switch it, and is the code its last mile? | Every chapter sizes its options in rows, reads, pairs or lookups (462, 1,848, 16,617, 752, 1,504, 6,006, 1,806), makes its call, names the switch and reaches the same answer a second, independent way. Chapter 2 stages its trap before its build, and chapter 6 runs its second route before the call list. | Kept, with the reasons recorded as decision 18. |
+| Humanizer read, decks, notebook script, day sheet, lab note, SQL comments | Which of the humanizer's patterns survive? | 22 edits on the morning deck, 17 on the afternoon's, about 58 in the notebook script's markdown, 7 on the day sheet, 6 on the lab note and 4 in SQL comments: lines with no verb under **Who needs the answer.**, closers and slogans, a staged run-up, "every analyst" and "most people" lines, "actually", and "he" for members and unnamed stakeholders. A line claiming half the buyers hold three quarters of the rupees "in both" segments was false for Retail-Plus, 50 of 76 buyers. Deck notes and the day sheet cited notebook 03's "section 4" and "section 5", which the notebook numbers steps 2 and 3. | Rewritten in place, the false line cut, the step numbers fixed; notebooks re-executed cold, decks rebuilt on mermaid-cli 11.17.0 and every slide rendered through LibreOffice with Carlito and looked at. |
