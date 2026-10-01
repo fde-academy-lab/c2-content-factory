@@ -1,6 +1,6 @@
 # Which answers hold in the escalated case on building the whole Monday table alone, and why?
 
-Answers: 1c 2b 3c 4d 5c 6b 7a 8b 9d 10b 11a 12d 13b
+Answers: 1c 2b 3a 4d 5c 6d 7a 8b 9d 10b 11a 12c 13b
 
 The growth team asked for one table, one row per customer, refreshed every Monday: recency, the date
 of the last order; frequency, the count of orders; spend, the value of the orders at the prices
@@ -42,7 +42,7 @@ the query that keeps the table possible when the orders grow.
 | 2 | 340 rows after the merge; 130 reached, 70 in Retail-Core and 60 in Retail-Plus; the second count 130 | The sale is attached once per customer, and a count that shares no code agrees |
 | 3 | As of 28 September 2026; 111 on the win-back list, 5 Business, 49 Retail-Core, 47 Retail-Plus and 10 Student; the falling flag matches Wednesday's query customer for customer | The list is the same whichever Monday it runs on |
 | 4 | A view of 6 months by 4 segments, adding up to Rs 19,84,00,000 | Each point on the slide is a month's total |
-| 5 | Two runs give one table; a repeated customer stops the run; the grouped query sends 301 rows, matching step 1 customer by customer | The refresh refuses a broken table, and the table survives orders in crores |
+| 5 | Two runs give one table; an id written over another customer's row stops the run with the row count unchanged; recency counted to 21 September stops it too; the grouped query sends 301 rows, matching step 1 customer by customer | The refresh refuses a broken table, and the table survives orders in crores |
 
 The four numbers to post are 340, Rs 19,84,00,000, 130 and 111.
 
@@ -53,9 +53,11 @@ The four numbers to post are 340, Rs 19,84,00,000, 130 and 111.
 The key is c, `customers`. The table is one row per customer on the list, so the list is its
 starting frame and the orders only add columns.
 
-- a, `orders`: one row per order, 1,000 rows.
-- b, `rfm`: only the 301 customers who ordered, so the 39 who never ordered have no row.
-- d, `exposure.drop_duplicates("customer_id")`: only the customers the sale reached.
+- a, `customers[customers["segment"] != "Business"]`: drops the 40 Business customers, so the table
+  holds 300 rows, though the growth team acts on every customer on the list.
+- b, `rfm[["customer_id"]]`: only the 301 customers who ordered, so the 39 who never ordered have
+  no row and get no first-order nudge.
+- d, `exposure[["customer_id"]].drop_duplicates()`: only the 130 customers the sale reached.
 
 ### Q2. What goes in the frequency of a customer who never ordered?
 
@@ -68,66 +70,78 @@ purpose, and the column goes back to whole numbers.
 - d, `table["frequency"].dropna()`: `assign` lines the shorter column up by index and leaves the
   gaps missing, so nothing changes.
 
-### Q3. After sorting by date, which argument applies the growth team's rule for a customer the feed names twice?
+### Q3. Which call applies the growth team's rule: one row per customer, on the first date the feed gives?
 
-The key is c, `keep="first"`. After the sort by date, the first row is the earliest exposure.
+The key is a, `ordered.drop_duplicates("customer_id", keep="first")`. The feed is sorted by date, so
+each customer's first row is the earliest time the sale reached them.
 
-- a, `keep="last"`: keeps a later date wherever a customer repeats.
-- b, `keep=False`: drops every copy of a repeated customer, so they read as never reached.
-- d, `ignore_index=True`: renumbers the rows and drops nothing.
+- b, `keep=False`: drops every copy of a repeated customer, so they read as never reached and the
+  second count disagrees with the flags.
+- c, `keep="last"`: keeps a later date wherever a customer repeats, which the check on the earliest
+  date catches.
+- d, `drop_duplicates(["customer_id", "exposed_date"])`: treats a row as a repeat only when the
+  date repeats too. The platform's repeat sends carry different dates, so nothing is dropped and the
+  one-to-one merge stops with a `MergeError`.
 
-### Q4. Which validate value should the merge carry?
+### Q4. Which promise should the merge carry?
 
 The key is d, `"one_to_one"`. The table holds each customer once and so does the feed after the
-rule, and the merge should stop if either ever stops being true.
+rule, and the merge should stop if either ever stops being true. The check runs your choice against
+the raw feed, which the rule has not touched, and only this promise stops it.
 
-- a, `"one_to_many"`: allows repeats on the feed's side, the side that repeats.
-- b, `"many_to_many"`: allows anything.
-- c, `None`: checks nothing.
+- a, `"one_to_many"`: checks only the table's side, so a feed that repeats a customer merges
+  silently.
+- b, `"many_to_many"`: checks neither side.
+- c, `None`: turns the check off.
 
 ### Q5. Which count, sharing no code with the rule or the merge, should equal the reached flags?
 
-A design item. The key is c, `exposure["customer_id"].nunique()`. It counts the distinct customers
-in the raw feed with no sort, no rule and no merge, so a wrong `keep` or a merge that lost a customer
-makes it disagree with the flags.
+A design item: the choice is which second route can disagree when the first one is wrong. The key is
+c, `exposure["customer_id"].nunique()`. It counts the distinct customers in the raw feed with no
+sort, no rule and no merge. The check runs your count a second time on a table where the merge lost
+one reached customer, and only a count that shares no code with the merge disagrees with that table.
 
-- a, `len(first_touch)`: counts the rows the rule kept, so it shares the rule; with `keep=False` it
-  would shrink with the flags and still agree.
+- a, `len(first_touch)`: counts the rows the rule kept, so it shrinks with the flags and agrees with
+  the broken table.
 - b, `int(table["exposed_date"].notna().sum())`: the merged table's own column, which is the flags
-  again.
+  again, so it agrees with the broken table too.
 - d, `len(exposure)`: one row for every time the platform sent a customer, so it disagrees with a
   correct table.
 
 ### Q6. Which date is the table's as-of date, the date recency is counted to?
 
-The key is b, `orders["order_date"].max()`, 28 September 2026, the last date the data covers.
+The key is d, `orders["order_date"].max()`, 28 September 2026, the last date the data covers.
+Somebody ordered that day, so the smallest recency is 0.
 
-- a, `pd.Timestamp.today()`: counts to the day the notebook runs, so every customer looks staler
-  than the data says and the list grows each Monday with nothing new loaded.
-- c, `orders["order_date"].min()`: counts from 1 April, so every recency is negative.
-- d, `pd.Timestamp.today().normalize()`: today at midnight, the wall-clock date again.
+- a, `pd.Timestamp.today().normalize()`: counts to the day the notebook runs, so every customer looks
+  staler than the data says and the list grows each Monday with nothing new loaded.
+- b, `pd.Timestamp("2026-09-30")`: the end of the quarter, two days after the last order the
+  warehouse holds, so the newest buyer reads two days old.
+- c, `table["last_order"].max() + pd.Timedelta(days=1)`: the morning after the last order, so the
+  newest buyer reads one day old.
 
 ### Q7. Which condition flags a lapsed customer?
 
 The key is a, `table["recency_days"] > 60`. A customer who never ordered has no recency, so the
 comparison is false for them and they stay off the win-back list.
 
-- b, `table["frequency"] == 0`: flags the customers who never ordered, who belong on the first-order
-  list.
-- c, `table["recency_days"].isna()`: flags the same customers as b.
+- b, `table["frequency"] == 0`: flags only the 39 customers who never ordered, who belong on the
+  first-order list.
+- c, `table["recency_days"].fillna(9999) > 60`: flags those 39 on top of the 111 lapsed, 150 where
+  the warehouse counts 111.
 - d, `(pd.Timestamp.today() - table["last_order"]).dt.days > 60`: the wall-clock count again.
 
-### Q8. Which expression gives each row's previous monthly reading?
+### Q8. Which grouping gives each customer's earlier monthly readings, as Wednesday's LAG did?
 
-The key is b, `monthly.groupby("customer_id")["spend"].shift(1)`. The previous reading belongs to the
-same customer, which is `LAG` with `PARTITION BY customer_id`.
+The key is b, `monthly.groupby("customer_id")`. The earlier readings belong to the same customer,
+which is `LAG` with `PARTITION BY customer_id`, and the grouping feeds the spend and the month alike.
 
-- a, `monthly["spend"].shift(1)`: reads the previous row even when it belongs to another customer,
-  Wednesday's `LAG` without `PARTITION`.
-- c, `monthly.groupby("month_num")["spend"].shift(1)`: compares different customers in the same
-  month.
-- d, `monthly.groupby(["customer_id", "month_num"])["spend"].shift(1)`: puts each customer-month in
-  a group of its own, so there is no previous row.
+- a, `monthly`: shifts the whole frame, so a customer's first months read the previous customer's
+  spend and month; on Kalpa's orders the flag then lands on one customer who never fell, 10 flagged
+  where Wednesday's query flags 9.
+- c, `monthly.groupby("month_num")`: compares different customers in the same month.
+- d, `monthly.groupby(["customer_id", "month_num"])`: puts each customer-month in a group of its
+  own, so there is no earlier reading and nobody is flagged.
 
 ### Q9. Which test keeps a fall only when the two readings before September are July and August?
 
@@ -150,44 +164,54 @@ month's total spend in a segment.
 
 ### Q11. Which guard stops a table that has stopped being one row per customer?
 
-The key is a, `t["customer_id"].is_unique`.
+The key is a, `t["customer_id"].is_unique`. The check writes one customer's id over another
+customer's row, so the rows and the spend stay right and only this guard can stop the copy.
 
-- b, `len(t) > 0`: passes on a table whose rows have doubled.
-- c, `t["spend"].sum() > 0`: passes on the same table.
+- b, `len(t) == t["customer_id"].count()`: compares the rows with the ids present, which a repeated
+  id passes.
+- c, `t.duplicated().sum() == 0`: looks for whole rows repeated, and an id written over another
+  customer's row repeats the id without repeating the row.
 - d, `t["customer_id"].notna().all()`: a repeated id is not a missing one.
 
 ### Q12. Which guard catches recency counted to the wrong date?
 
-The key is d, `t["recency_days"].min() == 0`. Somebody ordered on the data's last day, so counted to
-that day, the smallest recency is 0.
+The key is c, `t["recency_days"].min() == 0`. Somebody ordered on the data's last day, so counted to
+that day the smallest recency is 0, and counted to any other day it is not. The check counts a copy
+to 21 September, a week before the data ends.
 
-- a, `t["recency_days"].max() <= 180`: passes on a table counted to the wrong day as long as nobody
-  is older than 180 days.
+- a, `t["recency_days"].max() <= 180`: passes on that copy, whose oldest recency is 173 days. It
+  would catch a count to 19 October here only because the quietest customer last ordered on
+  1 April, exactly 180 days before the data ends, so it works by luck.
 - b, `t["recency_days"].notna().all()`: fails on every honest run, since customers who never ordered
   have no recency.
-- c, `t["as_of"].nunique() == 1`: passes whatever single date was used.
+- d, `t["as_of"].nunique() == 1`: passes whatever single date was used.
 
 ### Q13. Which query should step 1 read instead, so the three numbers still arrive?
 
-A design item. The key is b, the `GROUP BY customer_id` query with `max`, `count` and `sum`. The
-warehouse groups the orders and sends one row per customer who ordered, 301 today and about as many
-however many crores of orders sit behind them, and pandas merges that answer onto the list as
-before. The check compares the answer with step 1's `groupby` customer by customer, so it is also a
-second route to the three numbers.
+A design item: all four queries return the three numbers' columns, and only one returns the right
+numbers at any size. The key is b, the `GROUP BY customer_id` query with `max`, `count` and `sum`.
+The warehouse groups the orders and sends one row per customer who ordered, 301 today, so what it
+sends grows with the customers and never with the orders, and pandas merges that answer onto the
+list as before. The check compares the answer with step 1's `groupby` customer by customer, so it is
+also a second route to the three numbers.
 
-- a, every order's customer, date and amount: still sends every order, only with fewer columns.
-- c, the orders from July: sends only Q2, so every number covers half the period.
-- d, the count alone: drops the last order date and spend.
+- a, `avg(amount) AS spend`: sends each customer's average order as their spend, chapter 3's trap
+  written in SQL.
+- c, the same query `WHERE order_date >= DATE '2026-07-01'`: sends only Q2, so every number covers
+  half the period.
+- d, the customer list `LEFT JOIN` the orders with `count(*)`: counts rows, so the 39 customers who
+  never ordered come back with a frequency of 1.
 
 ## Which wrong outputs does the debrief replay, and which check catches each?
 
 | The wrong output | The step it came from | The check that catches it |
 |---|---|---|
-| 301 rows | The table started from the orders | Rows against the customer list |
+| 301 rows | The table started from the customers who ordered | Rows against the customer list |
 | No customer with a frequency of 0 | A missing count left missing | Fill 0 on purpose, then count |
-| Customers reached who read as never reached | A repeated customer dropped entirely | The second count from the raw feed |
+| Reached customers who read as never reached | A repeated customer dropped entirely | The second count from the raw feed |
+| A merge that stops with a `MergeError` | A repeat judged by customer and date together | The promise on the merge |
 | A win-back list that grows each Monday | Recency counted to the day the notebook runs | The smallest recency is 0 |
-| A falling flag on a customer who never fell | The previous row read without the customer | The flag against Wednesday's query |
+| A falling flag on a customer who never fell | The earlier readings taken without the customer | The flag against Wednesday's query |
 | A view short of the warehouse | `pivot_table`'s default | The view's total against the orders |
 
 ## Where does a scheduled table that refuses to ship come up at work?

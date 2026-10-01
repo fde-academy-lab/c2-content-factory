@@ -61,9 +61,10 @@ list and its spend with the warehouse.
 
 Used at work whenever another team's feed is joined to a table people act on.
 
-Ten minutes, markers 3 to 5: which argument applies the growth team's rule to a customer the feed
+Ten minutes, markers 3 to 5: which call applies the growth team's rule to a customer the feed
 names twice, which promise the merge should carry, and which count, sharing no code with the rule or
-the merge, should equal the customers marked as reached.
+the merge, should equal the customers marked as reached. The checks test each choice against the
+raw feed and against a table where the merge lost a customer.
 
 ## Part 3. Who has gone quiet, and whose monthly spend is falling?
 
@@ -88,8 +89,9 @@ Used at work wherever a scheduled job feeds a campaign or a report.
 
 Twelve minutes, markers 11 to 13: the guard that stops a table that is no longer one row per
 customer, the guard that catches recency counted to the wrong day, and the query step 1 should read
-once the orders table grows to 5 crore rows. The checks run the refresh twice, break a copy on
-purpose, and compare the query's answer with step 1's numbers.
+once the orders table grows to 5 crore rows. The checks run the refresh twice, break two copies on
+purpose, one with a customer's id written twice and one with recency counted to the wrong date, and
+compare the query's answer with step 1's numbers.
 
 ## Which rules does the escalated case keep?
 

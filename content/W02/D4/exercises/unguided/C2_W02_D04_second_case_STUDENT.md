@@ -11,15 +11,18 @@ drivers at step 3, and the pair writes the tool-choice note together.
 >
 > Kavya Nair, senior analyst, Kalpa Retail data team
 
-The question all three tools answer is the branch of Week 1's revenue tree that moved: **Retail-Plus
-orders per member, Q1 against Q2**. Retail-Plus is Kalpa Retail's paid membership tier; Q1 is April
-to June 2026 and Q2 is July to September. A member counts in a quarter if they ordered in it, and
-orders per member is a quarter's orders divided by the members who ordered in that quarter, the
-retail dossier's frequency. Kalpa's warehouse, its Postgres database, holds the orders and the
-customer list, where every customer's segment is recorded.
+Week 1's revenue tree splits revenue into numbers that multiply: customers, times orders per
+customer, times the value of each order. On Week 1's 69 customers the branch that moved was orders
+per customer, which fell from 1.65 to 1.25 between the quarters. The question all three tools answer
+is that branch for Kalpa's paid membership tier on the warehouse's 1,000 orders: **Retail-Plus
+orders per member, Q1 against Q2**. Q1 is April to June 2026 and Q2 is July to September. A member
+counts in a quarter if they ordered in it, and orders per member is a quarter's orders divided by
+the members who ordered in that quarter, the retail dossier's frequency. Kalpa's warehouse, its
+Postgres database, holds the orders in a table called `orders` and the customer list in a table
+called `customers`, whose `segment` column records each customer's segment.
 
 Plain Python reads the rows and counts them one at a time, the way Week 1 did; SQL runs the count in
-the warehouse; pandas reads the rows into a DataFrame and groups them. Anand Iyer, the finance
+the warehouse; pandas reads the rows into a DataFrame, its table in memory, and groups them. Anand Iyer, the finance
 controller, has an analyst who reruns every number Finance receives, from the warehouse, every
 Monday.
 
@@ -42,8 +45,9 @@ Used at work whenever a number must be defined before it is computed, so that tw
 it compute the same thing.
 
 Six minutes, on paper, both partners. Write the SQL that returns, for each quarter, Retail-Plus's
-orders, its members who ordered, and orders per member to three decimal places. Name the two tables
-it reads and the column that keeps only Retail-Plus. Keep the paper beside the notebook.
+orders, its members who ordered, and orders per member to three decimal places, reading `orders` and
+`customers` and keeping only Retail-Plus by the `segment` column. Keep the paper beside the
+notebook.
 
 ## Part 2. What does plain Python count, one row at a time?
 
@@ -63,14 +67,14 @@ line that keeps only Retail-Plus. Compare the notebook's query with the pair's p
 
 Used at work on every analyst's iterative question.
 
-Six minutes, marker 4: the method that gives each quarter's members.
+Six minutes, marker 4: the expression that gives each quarter's members.
 
 ## Part 5. Which size tells the three routes apart, and which tool would the pair sign for each job?
 
 Used at work in every tool-choice discussion, and in the design question of an analytics interview.
 
-Fourteen minutes, markers 5 and 6, then the note: which size tells the three routes apart, where a
-number Finance reruns every Monday should be computed, and the pair's tool-choice note.
+Fourteen minutes, markers 5 and 6, then the note: which size tells the three routes apart, which
+route should own a number Finance reruns every Monday, and the pair's tool-choice note.
 
 The note has one line per tool, each naming the job the tool owns, the reason, and the rows that tool
 fetched from the warehouse for today's two numbers, then one line naming the tool the pair would

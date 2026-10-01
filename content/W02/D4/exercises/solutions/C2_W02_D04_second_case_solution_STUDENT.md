@@ -23,9 +23,9 @@ whose sizing ties every tool, gives her nothing to sign.
 
 ## Which idea does the second case test?
 
-The three tools agree once they share a definition, so the choice between them is about who has to
-trust, rerun or audit the number and what each route fetched to reach it, never about which tool is
-better in general.
+The three tools agree once they share a definition, so the choice between them rests on two facts
+about the job: who has to trust, rerun or audit the number, and how many rows each route fetched to
+reach it.
 
 ## Which numbers should the pair have reached?
 
@@ -67,40 +67,48 @@ decimals.
 
 The key is a, `WHERE c.segment = 'Retail-Plus'`, which filters the rows before they are grouped.
 
-- b, `HAVING c.segment = 'Retail-Plus'`: `HAVING` filters groups, and the segment is not one of the
-  query's groups, so Postgres refuses it.
+- b, `WHERE c.segment = 'Retail Plus'`: the warehouse stores the segment with a hyphen, so the
+  spelling with a space matches no row and the query returns no quarters at all.
 - c, `WHERE c.segment LIKE 'Retail%'`: matches Retail-Core as well, both consumer tiers.
 - d, `WHERE c.segment <> 'Business'`: keeps Retail-Core and the Students as well.
 
-### Q4. Which method gives each quarter's members?
+### Q4. Which expression gives each quarter's members?
 
-The key is d, `nunique`, the count of distinct customer ids in each quarter.
+The key is d, `rp.groupby("quarter")["customer_id"].nunique()`, the count of distinct customer ids
+in each quarter.
 
-- a, `count`: counts the rows, which are orders, so the rate reads 1.000.
-- b, `size`: counts the rows as well.
-- c, `value_counts`: returns one count per member, a Series the division cannot line up with the
-  quarters.
+- a, `rp.groupby("quarter")["customer_id"].count()`: counts the rows, which are orders, so the rate
+  reads 1.000.
+- b, `rp.groupby("quarter").size()`: counts the rows as well.
+- c, `rp.drop_duplicates("customer_id").groupby("quarter").size()`: keeps one row per member before
+  grouping, so a member who ordered in both quarters counts in only one of them; the two quarters'
+  members add up to the 107 who ordered at all, and each rate stands on too few members.
 
 ### Q5. Which size tells the three routes apart, listed as plain Python, SQL, pandas?
 
 A design item. The key is d, the rows each route fetched from the warehouse: 355, 2 and 1,000. It
 separates the three, and it grows with the orders table for two of them while SQL keeps sending its
-answer.
+answer. The pandas figure measures the route as it was written: it read every order and kept
+Retail-Plus in memory, and a `read_sql` with the `WHERE` in its query would have fetched 355, like
+plain Python.
 
 - a, the rows in each answer: 2, 2 and 2, a tie that separates nothing.
 - b, the orders each route counted: 355 three times, since all three counted the same orders.
 - c, the rows each route held after keeping Retail-Plus: 355, 2 and 355, which hides the 645 other
   orders pandas fetched before its filter.
 
-### Q6. Where should a number Finance reruns every Monday be computed?
+### Q6. Which route should own a number Finance reruns every Monday?
 
-A design item. The key is c, "a SQL query in the warehouse". Finance's number lives where Finance can
-rerun and audit it, and the query sends only its answer.
+A design item. The key is c, "SQL", because it runs where the data lives. Finance's number lives
+where Finance can rerun and audit it, and the query sends only its answer. The check ties the choice
+to the size chosen in Q5: the route that moves the fewest rows is the one Finance can rerun.
 
-- a, "a pandas notebook on the analyst's machine": runs on a copy, depends on the order its cells ran
-  in, and Finance cannot rerun it without the analyst's environment.
-- b, "a plain Python loop": runs on a copy on one machine.
-- d, "a CSV export refreshed every Monday": a copy that ages from the moment it is written.
+- a, "pandas", since the growth team's table already holds the numbers: it runs on a copy, depends on
+  the order its cells ran in, and Finance cannot rerun it without the analyst's environment.
+- b, "plain Python", since an auditor can read every line: the loop is the route for a question
+  explained once, line by line, and it runs on a copy on one machine.
+- d, "a CSV export", since Finance opens every number in a spreadsheet: a copy that ages from the
+  moment it is written, and the spreadsheet can read the warehouse's answer instead.
 
 ## What does a note Kavya would sign look like?
 
@@ -118,5 +126,5 @@ rerun and audit it, and the query sends only its answer.
 LinkedIn's Unified Metrics Platform page says that "multiple stakeholders come up with different
 ways to calculate the same metric arriving at slightly different results", and that the platform now
 "serves as the single source of truth for all business metrics at Linkedin" (LinkedIn Engineering,
-Unified Metrics Platform, checked 1 Oct 2026). A note that gives each number one owner is that
-platform at the size of one team.
+Unified Metrics Platform, checked 1 Oct 2026). The pair's note does the same job for one team: each
+number gets one owner, and every other copy is checked against it.
