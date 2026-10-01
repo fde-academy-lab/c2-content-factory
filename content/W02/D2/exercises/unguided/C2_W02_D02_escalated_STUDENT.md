@@ -1,7 +1,8 @@
 # Which Q2 orders and channels make the gap, and how do you prove the collected figure counts no payment twice?
 
-The escalated case, alone, on Kalpa's warehouse. On a faculty day it runs in two sittings: parts 1 and
-2 straight after chapter 6, in 20 minutes, and parts 3 to 5 in the TA-led practice lab, in about 30.
+The escalated case, alone, on Kalpa's warehouse. Today the tentative faculty block takes the
+afternoon's last 120 minutes, so the case runs in two sittings: parts 1 and 2 straight after
+chapter 6, in 20 minutes, and parts 3 to 5 in the TA-led practice lab, in about 30.
 The notebook is `notebooks/C2_W02_D02_ex1_escalated_case_STUDENT.ipynb`: eight lettered choices in
 five parts, a check after each part and empty cells where you read what you found.
 

@@ -1,7 +1,8 @@
 # Which payment rows in the feed should not be there, and what should the platform lead fix first?
 
-The second case, in pairs, on Kalpa's warehouse. On a faculty day it runs in the TA-led practice lab,
-in about 40 minutes, after the escalated case. The notebook is
+The second case, in pairs, on Kalpa's warehouse. Today the tentative faculty block takes the
+afternoon's last 120 minutes, so this case runs in the TA-led practice lab, in about 40 minutes,
+after the escalated case. The notebook is
 `notebooks/C2_W02_D02_ex2_second_case_STUDENT.ipynb`: four lettered choices in four parts, a check
 after each and empty cells where you read what you found.
 

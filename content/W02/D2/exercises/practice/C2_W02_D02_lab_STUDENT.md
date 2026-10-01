@@ -1,13 +1,13 @@
 # Do the day's joins still tell the truth on refunds, and on a quarter the day never touched?
 
-About 60 minutes of this set, run by your TA after the day's teaching blocks. On a faculty day the
-lab opens on the escalated case's parts 3 to 5 (`unguided/C2_W02_D02_escalated_STUDENT.md`), then
-runs this set's problems 1 to 3, the second case in pairs (`unguided/C2_W02_D02_second_case_STUDENT.md`)
-and the interview drill aloud; problem 4 and whatever is left go home with the take-home. Four
-problems here, climbing. The first
-three run on small invented tables written for this lab; the fourth runs on the warehouse, on a
-quarter the day never touched. Work alone first, then compare with a neighbour before the TA walks
-the answers.
+About 60 minutes of this set, run by your TA after the day's teaching blocks.
+Today the tentative faculty block takes the afternoon's last 120 minutes, so the lab opens on the
+escalated case's parts 3 to 5 (`unguided/C2_W02_D02_escalated_STUDENT.md`), then runs this set's
+problems 1 to 3, the second case in pairs (`unguided/C2_W02_D02_second_case_STUDENT.md`) and the
+interview drill aloud; problem 4 and whatever is left go home with the take-home. Four problems
+here, climbing. The first three run on small invented tables written for this lab; the fourth runs
+on the warehouse, on a quarter the day never touched. Work alone first, then compare with a
+neighbour before the TA walks the answers.
 
 The question over the whole lab is the one Anand asked in the morning, turned to a new corner of the
 book: what did we book, what happened to it afterwards, and how do you know the number is not

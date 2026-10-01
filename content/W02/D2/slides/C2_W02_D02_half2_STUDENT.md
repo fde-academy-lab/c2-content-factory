@@ -8,8 +8,9 @@ Who: Anand Iyer, finance controller, Kalpa Retail, in the message that opened th
 
 ```notes
 LIVE, one minute. The trainer keeps the afternoon's first 60 minutes: chapter 6 (30), the escalated
-case's first two parts (20), and the Kahoot with tomorrow's question (10). The tentative IITGN
-faculty block W2-2 takes the last 120 minutes. The rest of the escalated case, the second case and
+case's first two parts (20), and the Kahoot with tomorrow's question (10).
+The tentative IITGN faculty block W2-2 takes the last 120 minutes.
+The rest of the escalated case, the second case and
 the interview drill move to the TA-led practice lab and the take-home; their slides are marked D so
 a learner can work them alone.
 Transition: one slide of what the morning settled, then chapter 6.
@@ -419,7 +420,7 @@ Parts 3 to 5 move to the TA-led practice lab.
 ---
 
 ## S19. Answer in five parts, two of them now
-*What does the escalated case ask, and which parts run before the faculty block?*
+*What does the escalated case ask, and which parts run before the tentative faculty block?*
 
 ```timeline
 label: Part 1 | title: Booked by channel | body: From the orders table alone, the baseline every later figure reconciles to.
@@ -457,7 +458,7 @@ Transition: what the lab and tonight carry.
 ---
 
 ## SECTION 8: What do the lab and tonight carry?
-*Which parts of the day move to the TA-led practice lab and the take-home on a faculty day?*
+*Which parts of the day move to the TA-led practice lab and the take-home, since the tentative faculty block takes the last 120 minutes?*
 
 ```notes
 SELF-STUDY. These slides are for the TA-led practice lab and for a learner working alone. The
@@ -609,7 +610,7 @@ star the one they would have broken this morning.
 ```stats
 value: 8 | label: items | note: ungraded, scored on correctness and speed
 value: 1 | label: from Monday | note: WHERE against HAVING, one level up
-value: 10 min | label: the Kahoot | note: then the faculty block
+value: 10 min | label: the Kahoot | note: then the tentative faculty block
 ```
 
 The items: which side a LEFT JOIN keeps; a row count to predict; what an INNER join does to unpaid orders; the anti-join in words; the first check after a doubled total; what HAVING COUNT(*) > 1 finds; where WHERE and HAVING go; a WHERE on the payments side.
@@ -640,6 +641,6 @@ The pre-read for tomorrow ships tonight with the take-home.
 
 ```notes
 LIVE, 2 minutes. Leave the question open: do not name tomorrow's tools. The room's first move
-tomorrow is to say why GROUP BY alone cannot answer it. Then hand over to the tentative IITGN
-faculty block W2-2.
+tomorrow is to say why GROUP BY alone cannot answer it.
+Then hand over to the tentative IITGN faculty block W2-2.
 ```
