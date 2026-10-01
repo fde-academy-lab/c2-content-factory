@@ -42,7 +42,7 @@ edit it, so the take-home sample is made inside the day folder; see the change r
 | Planted | Used by | Where a learner meets it |
 |---|---|---|
 | Customer count flat, 69 and 69 | Chapter 2's demonstration, chapter 5's overlap | Notebook 02 and the half one Answer slide, after a Predict |
-| Orders per customer falling in Retail-Plus only (2.32 to 1.18 as exported) | Chapter 3's your-turn cell, then chapters 4 to 6 and both cases | An empty your-turn cell at the end of notebook 03; named from chapter 4 on, after the room has found it |
+| Orders per customer falling in Retail-Plus only (2.32 to 1.18 as exported) | Chapter 3's your-turn cell, then chapters 4 to 6 and both cases | An empty your-turn cell at the end of notebook 03; named from chapter 4 on, after the room has found it, each file stating it on its own page (decision `tuesday-finding-once-found`, 1 October 2026) |
 | The discount field absent on a subset (32 of 114 Q1 records, 26 of 86 Q2) | Chapter 2's trap | The KeyError live; the room counts the blanks in an empty cell, and the check prints the counts |
 | Wednesday's 14 duplicated Q1 rows | Nothing today | Unmentioned in every STUDENT file; the day sheet warns the trainer, including that the second case's call list of 7 may change |
 
