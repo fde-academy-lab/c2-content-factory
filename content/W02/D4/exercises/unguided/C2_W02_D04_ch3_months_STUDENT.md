@@ -83,8 +83,9 @@ d) The pivot indexed by order fits, with a row per order and 12 columns, nearly 
 
 ### Q4. What shape is the tier's pivot with months as the index and members as the columns?
 
-Retail-Plus's 355 orders came from 107 members across the six months from April to September 2026.
-What shape does this call return, as rows by columns?
+Retail-Plus has 120 members on the customer list, and its 355 orders came from 107 of them across
+the six months from April to September 2026. `plus` holds those 355 orders. What shape does this
+call return, as rows by columns?
 
 ```python
 plus.pivot_table(index="month", columns="customer_id", values="amount", aggfunc="sum")
@@ -93,7 +94,7 @@ plus.pivot_table(index="month", columns="customer_id", values="amount", aggfunc=
 a) It returns 6 rows by 107 columns.
 b) It returns 107 rows by 6 columns.
 c) It returns 355 rows by 6 columns.
-d) It returns 6 rows by 355 columns.
+d) It returns 6 rows by 120 columns.
 
 ### Q5. Which plan answers Finance's weekly months and the head's afternoon question together?
 

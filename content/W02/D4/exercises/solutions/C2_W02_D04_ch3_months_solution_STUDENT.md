@@ -69,9 +69,9 @@ month by `groupby`". A trend is one number per month, and grouping the long tabl
 from 540 rows with nothing empty.
 
 - a, "The wide table fits, at 150 rows by 13 columns, 1,950 cells, 1,260 of them empty, read along
-  each member's row": The member and twelve months make 13 columns, so 150 rows hold 1,950 cells, and 1,260 of the
-  1,800 month cells are empty. It is read along a member's row, which is a comparison, and the trend
-  needs its columns summed first.
+  each member's row": The member and twelve months make 13 columns, so 150 rows hold 1,950 cells,
+  and 1,260 of the 1,800 month cells are empty. It is read along a member's row, which is a
+  comparison, and the trend needs its columns summed first.
 - b, "A query per month fits, with 12 columns written by hand, so a 13th month is an edit": Every
   new month is an edit and a place for a typo.
 - d, "The pivot indexed by order fits, with a row per order and 12 columns, nearly all of them
@@ -79,8 +79,8 @@ from 540 rows with nothing empty.
 
 ### Q4. What shape is the tier's pivot with months as the index and members as the columns?
 
-The tier has 355 orders from 107 members over six months, and the call puts the months on the
-index.
+The tier has 120 members on the list, and its 355 orders come from 107 of them over six months; the
+call puts the months on the index.
 
 The key is a, "It returns 6 rows by 107 columns". The index decides what one row is, here a month,
 and the columns are the 107 members who ordered. The orders are folded into the cells.
@@ -88,8 +88,9 @@ and the columns are the 107 members who ordered. The orders are folded into the 
 - b, "It returns 107 rows by 6 columns": It is the member view, with `index` and `columns` the other
   way round.
 - c, "It returns 355 rows by 6 columns": It is the view indexed by order, one row per order.
-- d, "It returns 6 rows by 355 columns": It treats each order as a column, which no argument in the
-  call asks for.
+- d, "It returns 6 rows by 120 columns": It counts every member on the list. A pivot of the orders
+  makes a column only for a member who has an order, so the 13 members who never ordered are in no
+  column.
 
 ### Q5. Which plan answers Finance's weekly months and the head's afternoon question together?
 

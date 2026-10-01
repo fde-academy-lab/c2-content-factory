@@ -16,10 +16,9 @@ Rs 19,84,00,000.
 
 Chapter 5 sized three routes to those eight numbers on Kalpa's 1,000 orders and 340 customers: SQL
 grouping in the warehouse; pandas reading the orders and the customer list, merging and grouping;
-and plain Python reading the orders with their segment and adding them up in a dictionary. Each route
-returned the same eight rows. SQL moved 8 rows out of the warehouse to produce them, pandas 1,340 and
-plain Python 1,000, and Finance's number went to SQL, where Anand's analyst can rerun it. The growth
-team's table reconciled with Finance's query in every segment.
+and plain Python reading the orders with their segment and adding them up in a dictionary. Each
+route returned the same eight rows, and Finance's number went to SQL, where Anand's analyst can
+rerun it. The growth team's table reconciled with Finance's query in every segment.
 
 **Who needs the answer.** Kavya, and behind her Anand Iyer. A number that lives in two tools drifts
 into two numbers, and two numbers for one metric costs a month of argument before anyone acts on
@@ -30,10 +29,10 @@ either.
 - How many rows does each route move for Finance's eight numbers when the orders reach 50 lakh?
 - Which line of a draft tool-choice note does Kavya send back?
 - What does Kavya say to a note that gives Finance's number to pandas because it ran fastest?
-- Which new fact would move one of Finance's asks onto pandas?
+- Which input should pandas read for Finance's five new cuts, and how many rows does it move?
 - Which Monday check would catch a merge that counted one customer's spend twice?
 
-Every number about next year in item 1 and every timing in item 3 is invented.
+Every number about next year in items 1 and 4 and every timing in item 3 is invented.
 
 **What you post.** One line of five letters in item order, no spaces, in this shape:
 
@@ -49,47 +48,51 @@ Next year Kalpa Retail's warehouse holds 50 lakh orders and 2 lakh customers. Ea
 answers Finance's eight numbers the way chapter 5 wrote it. How many rows does each move out of the
 warehouse?
 
-a) 8 each, since every route returns the same eight numbers
-b) SQL 8, pandas 52 lakh, plain Python 50 lakh
-c) SQL 2 lakh, pandas 52 lakh, plain Python 50 lakh
-d) SQL 8, pandas 50 lakh, plain Python 52 lakh
+a) Each route moves 8 rows, since every route returns the same eight numbers.
+b) SQL moves 8 rows, pandas 52 lakh and plain Python 50 lakh.
+c) SQL moves 2 lakh rows, pandas 52 lakh and plain Python 50 lakh.
+d) SQL moves 8 rows, pandas 50 lakh and plain Python 52 lakh.
 
 ### Q2. Which line of a draft tool-choice note does Kavya send back?
 
-A draft note, four lines:
+A teammate's draft note gives an owner to each of four asks the team expects next quarter:
 
-1. Finance's revenue by segment and quarter: SQL in the warehouse, which Finance reruns.
-2. The growth team's customer table: pandas reading the warehouse; the analysts add a column most
-   weeks.
-3. The head of Retail-Plus's months view: pandas, `pivot_table` with its `aggfunc` written out.
-4. An auditor's question about one customer's spend, step by step: a pandas chain, the shortest code.
+1. Finance's revenue by segment and quarter goes to SQL in the warehouse, where Finance reruns it.
+2. The growth team's customer table goes to pandas reading the warehouse, since the analysts add a
+   column most weeks.
+3. A customer's question about why her spend reads what it does goes to plain Python, each of her
+   orders added with its step printed.
+4. The stores team's orders by channel, which the stores team reruns every morning, go to plain
+   Python, in a script anyone can read line by line.
 
 Which line goes back, and why?
 
-a) Line 1: Finance's number belongs in the notebook the table comes from
-b) Line 2: the customer table should be a SQL view that Finance reruns
-c) Line 3: a months view is a one-off and belongs in plain Python
-d) Line 4: a step-by-step audit of one case reads best as a plain loop
+a) Line 1 goes back, since Finance's number belongs in the notebook the table comes from.
+b) Line 2 goes back, since the customer table should be a SQL view that Finance reruns.
+c) Line 3 goes back, since one customer's question reads best as a short pandas chain.
+d) Line 4 goes back, since a number another team reruns every morning belongs in SQL.
 
 ### Q3. What does Kavya say to a note that gives Finance's number to pandas because it ran fastest?
 
-A hurried note reads: "pandas 0.08 seconds, SQL 0.11, plain Python 0.21, on 1,000 orders, so
+A hurried note reads: "pandas 0.009 seconds, SQL 0.012, plain Python 0.021, on 1,000 orders, so
 Finance's number goes to pandas." What does Kavya say?
 
-a) Agreed: pandas was fastest, and speed is what Finance waits on
-b) Time each route a hundred times and give the number to the median's winner
-c) These timings tie and swap from run to run; size by rows moved
-d) SQL should win anyway, since a database always beats a laptop
+a) She agrees, since pandas was fastest and speed is what Finance waits on.
+b) She asks for each route to be timed a hundred times, with the number going to the median's winner.
+c) She says hundredths of a second decide nothing on a weekly number, and sizes by rows moved.
+d) She says SQL should win anyway, since a database always beats a laptop.
 
-### Q4. Which new fact would move one of Finance's asks onto pandas?
+### Q4. Which input should pandas read for Finance's five new cuts, and how many rows does it move?
 
-SQL owns Finance's revenue. Which of these facts would make pandas, reading the query's answer
-rather than the orders, the right home for one of Finance's asks?
+Next year the warehouse holds 50 lakh orders and 2 lakh customers. This afternoon Finance wants its
+revenue cut five ways in pandas before it picks one: by segment, by channel, by city, by segment and
+channel, and by city and quarter. Kalpa has 4 segments, 3 channels and 6 cities, and the orders
+cover 2 quarters. Which input should pandas read?
 
-a) Finance adds a ninth number every Monday, for a new segment
-b) Finance wants a new cut, tried five ways this afternoon, then dropped
-c) The orders table grows tenfold, so the query takes longer each Monday
-d) Finance's new analyst prefers Python to SQL for every rerun
+a) It should read every order with its segment and city, 50 lakh rows, so any cut can be tried.
+b) It should read one query grouped by segment, quarter, channel and city, at most 144 rows.
+c) It should read Finance's Monday answer, the eight rows of segment by quarter, already computed.
+d) It should read the growth team's customer table, 2 lakh rows, already in memory.
 
 ### Q5. Which Monday check would catch a merge that counted one customer's spend twice?
 
@@ -97,7 +100,7 @@ The growth team's table and Finance's query must agree every Monday, and about t
 the list in a typical week. Which check catches a refresh whose merge gave one customer who
 ordered two rows, so their spend counts twice?
 
-a) The table's spend by segment against Finance's query, to the rupee
-b) The table's row count against last Monday's row count
-c) Finance's query run twice, to see it returns the same eight numbers
-d) The table's spend against the sum the previous cell printed
+a) Compare the table's spend by segment with Finance's query, to the rupee.
+b) Compare the table's row count with last Monday's row count.
+c) Run Finance's query twice, to see that it returns the same eight numbers.
+d) Compare the table's spend with the sum the previous cell printed.

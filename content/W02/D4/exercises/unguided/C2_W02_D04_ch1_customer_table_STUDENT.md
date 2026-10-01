@@ -99,9 +99,9 @@ From next Monday the growth team's lead signs off the first-order nudge herself.
 the warehouse, never opens a notebook, and wants a count that would disagree with the pandas table's
 39 if the table were wrong. Which route qualifies?
 
-a) Group the orders by customer in the warehouse, and count the groups whose `count(*)` is 0.
-b) Count, in the warehouse, the listed customers who have no row in `orders`.
-c) Left-join the list to the orders, group by customer, and count those whose `count(*)` is 0.
+a) Count, in the warehouse, the listed customers who have no row in `orders`.
+b) Group the orders by customer in the warehouse, and count the groups whose `count(*)` is 0.
+c) Left-join the list to the orders in the warehouse, group by customer, and count those whose `count(*)` is 0.
 d) Fetch every order's customer id, and check the list against them in a Python loop.
 
 ### Q5. Which way should build the table once a dashboard on the warehouse is its only reader?

@@ -1,6 +1,6 @@
 # Which answers hold in the chapter 2 set on attaching the monsoon sale to the table, and why?
 
-Answers: 1c 2b 3d 4a 5c
+Answers: 1c 2b 3d 4d 5a
 
 The marketing lead asks for November's budget on two numbers: how many customers the monsoon sale
 reached, and what those customers spent. The campaign platform's feed lists the customers the sale
@@ -82,16 +82,15 @@ customer, so the table stays at 12,000 rows and no spend is counted twice.
 The four steps are a merge with `validate`, keeping each customer's first row, sorting by date and
 checking the table.
 
-The key is a, "The order is 3, 2, 1, 4". The feed is sorted first, so that "first" means the
+The key is d, "The order is 3, 2, 1, 4". The feed is sorted first, so that "first" means the
 earliest date; the repeats are dropped next, so the merge's promise holds; the merge runs with the
 promise stated; and the check confirms 340 rows and Rs 19,84,00,000 after it.
 
+- a, "The order is 3, 1, 2, 4": It sorts, then merges before the repeats are dropped, and
+  `validate="one_to_one"` stops the run on the first repeated customer.
 - b, "The order is 2, 3, 1, 4": It drops repeats before sorting, so "first" means whichever row the
   platform happened to send first.
-- c, "The order is 1, 3, 2, 4": It merges the raw feed first, and `validate="one_to_one"` stops the
-  run on the first repeated customer.
-- d, "The order is 3, 1, 2, 4": It sorts, then merges before the repeats are dropped, and the run
-  stops the same way.
+- c, "The order is 1, 3, 2, 4": It merges the raw feed first, and the run stops the same way.
 
 ### Q5. Which route confirms the monsoon sale's reached spend once the feed carries two campaigns?
 
@@ -99,18 +98,18 @@ Item 5 is a design item: the feed now mixes two campaigns and still repeats cust
 route has to keep only the monsoon sale's rows, stay blind to repeats and measure the same spend the
 marketing lead quotes.
 
-The key is c, "Sum, in SQL, the orders of customers `IN` the feed's monsoon rows". Filtering on the
+The key is a, "Sum, in SQL, the orders of customers `IN` the feed's monsoon rows". Filtering on the
 monsoon sale's `campaign_id` keeps the reach the marketing lead means. `IN` only asks whether a
 customer is among those rows, however often they appear, so a repeat cannot multiply anything. The
 query shares no code with the sort, the rule or the merge, and today, with only the monsoon sale in
 the feed, it returns Rs 8,78,980.
 
-- a, "Sum, in SQL, the orders of customers `IN` the warehouse's copy of the feed": `IN` is blind to
-  repeats, and with no filter on the campaign it adds every customer the Navratri email alone
-  reached, so it disagrees with a right merge.
 - b, "Join the orders to the feed's monsoon rows in SQL, and sum the amounts": A join copies each
   order once for every row its customer has in the feed, the same fan-out as a plain merge, so it
   agrees with a plain merge that went wrong and disagrees with the right one.
+- c, "Sum, in SQL, the orders of customers `IN` the warehouse's copy of the feed": `IN` is blind to
+  repeats, and with no filter on the campaign it adds every customer the Navratri email alone
+  reached, so it disagrees with a right merge.
 - d, "Sum, in SQL, the monsoon customers' orders placed on or after the day the sale reached them":
   It measures spend after the sale reached each customer, a different number from the two quarters'
   spend the marketing lead quotes, so it disagrees even when the merge is right.

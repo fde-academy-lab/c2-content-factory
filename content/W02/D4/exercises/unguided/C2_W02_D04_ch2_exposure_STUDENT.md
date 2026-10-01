@@ -48,7 +48,7 @@ Post exactly this shape: xxxxx
 
 ### Q1. What does the Diwali email's slide say the reached customers spent?
 
-Five invented customers and their spend over the year:
+Here are five invented customers and their spend over the year:
 
 | customer_id | spend, Rs |
 |---|---|
@@ -93,7 +93,7 @@ d) The `isin` flag fits, at 12,000 rows, with nothing counted twice and no rule 
 
 ### Q4. In which order does Monday's attach step run, so a repeat never reaches the table?
 
-Four steps, numbered:
+Here are the four steps, numbered:
 
 1. Merge the feed onto the table with `how="left"` and `validate="one_to_one"`.
 2. Keep each customer's first row with `drop_duplicates("customer_id", keep="first")`.
@@ -102,10 +102,10 @@ Four steps, numbered:
 
 Which order runs them?
 
-a) The order is 3, 2, 1, 4.
+a) The order is 3, 1, 2, 4.
 b) The order is 2, 3, 1, 4.
 c) The order is 1, 3, 2, 4.
-d) The order is 3, 1, 2, 4.
+d) The order is 3, 2, 1, 4.
 
 ### Q5. Which route confirms the monsoon sale's reached spend once the feed carries two campaigns?
 
@@ -116,7 +116,7 @@ its own copy of the feed, `campaign_exposure`. Kavya wants the monsoon sale's Rs
 by a route that shares no code with the rule or the merge and would disagree if either had gone
 wrong. Which route qualifies?
 
-a) Sum, in SQL, the orders of customers `IN` the warehouse's copy of the feed.
+a) Sum, in SQL, the orders of customers `IN` the feed's monsoon rows.
 b) Join the orders to the feed's monsoon rows in SQL, and sum the amounts.
-c) Sum, in SQL, the orders of customers `IN` the feed's monsoon rows.
+c) Sum, in SQL, the orders of customers `IN` the warehouse's copy of the feed.
 d) Sum, in SQL, the monsoon customers' orders placed on or after the day the sale reached them.

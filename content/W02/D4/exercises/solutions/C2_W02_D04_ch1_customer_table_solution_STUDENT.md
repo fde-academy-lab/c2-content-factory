@@ -1,6 +1,6 @@
 # Which answers hold in the chapter 1 set on building one row per customer, and why?
 
-Answers: 1c 2b 3d 4b 5c
+Answers: 1c 2b 3d 4a 5c
 
 Kalpa Retail's growth team sends Monday's offers from a table with one row per customer and three
 numbers: recency, the date of the last order; frequency, the count of orders; and spend, the value
@@ -89,19 +89,19 @@ Item 4 is a design item: the person confirming the count works in SQL in the war
 opens a notebook, so the route has to run there, start from the customer list and count customers
 with no orders.
 
-The key is b, "Count, in the warehouse, the listed customers who have no row in `orders`". It starts
+The key is a, "Count, in the warehouse, the listed customers who have no row in `orders`". It starts
 from the list, so the customers who never ordered are there to be counted, and it asks whether each
 one has any order at all, so it returns 39 today. It shares nothing with the `groupby`, the merge or
 the fills, so a slip in any of them makes the two counts differ. Tuesday's anti-join writes it, with
 `NOT EXISTS` or with a `LEFT JOIN` that keeps the unmatched rows.
 
-- a, "Group the orders by customer in the warehouse, and count the groups whose `count(*)` is 0":
+- b, "Group the orders by customer in the warehouse, and count the groups whose `count(*)` is 0":
   Grouping the orders makes a group only for a customer who has an order, so no group ever counts 0
   and the query returns 0 on a right table and a wrong one alike. It is chapter 1's trap, in SQL.
-- c, "Left-join the list to the orders, group by customer, and count those whose `count(*)` is 0":
-  It starts from the list, as it should, and then `count(*)` counts the empty row the left join keeps
-  for a customer with no order as 1, so it also returns 0. Counting `o.order_id`, which is missing on that
-  row, gives the 39.
+- c, "Left-join the list to the orders in the warehouse, group by customer, and count those whose
+  `count(*)` is 0": It starts from the list, as it should, and then `count(*)` counts the empty row
+  the left join keeps for a customer with no order as 1, so it also returns 0. Counting
+  `o.order_id`, which is missing on that row, gives the 39.
 - d, "Fetch every order's customer id, and check the list against them in a Python loop": The loop
   shares no code with the table and finds 39, and it runs in Python on the analyst's machine, which
   the lead does not open, after moving every order out of the warehouse.

@@ -23,93 +23,113 @@ where each number lives, and a number that lives in two places becomes two numbe
 ## Which idea does the chapter 5 set test?
 
 A tool is chosen by who has to trust and rerun the number, and sized by what each route moves to
-produce it. The set asks for the rows moved at a larger scale, the wrong line in a draft note, the
-reply to a note that sized by speed, the fact that would give one of Finance's asks to pandas, and
-the check that ties the growth team's table to Finance's query.
+produce it. The set asks for the rows moved at a larger scale, the wrong line in a note for next
+quarter's asks, the reply to a note that sized by speed, the input that lets pandas try Finance's
+new cuts without moving the orders, and the check that ties the growth team's table to Finance's
+query.
 
 ## Why does each of the five keys hold, from 50 lakh orders to the Monday reconciliation?
 
 ### Q1. How many rows does each route move for Finance's eight numbers when the orders reach 50 lakh?
 
-A design item. 50 lakh orders, 2 lakh customers, the same three routes.
+Item 1 is a design item: there are 50 lakh orders and 2 lakh customers, and the three routes are
+written as chapter 5 wrote them.
 
-The key is b, "SQL 8, pandas 52 lakh, plain Python 50 lakh". SQL sends its answer, 8 rows, however
-many orders sit behind it. pandas reads every order and every customer, 50 lakh and 2 lakh, to merge
-and group them. Plain Python reads every order with its segment already joined, 50 lakh.
+The key is b, "SQL moves 8 rows, pandas 52 lakh and plain Python 50 lakh". SQL sends its answer, 8
+rows, however many orders sit behind it. pandas reads every order and every customer, 50 lakh and 2
+lakh, to merge and group them. Plain Python reads every order with its segment already joined, 50
+lakh.
 
-- a, "8 each, since every route returns the same eight numbers": sizes the answer, which ties, in
-  place of the work, which does not.
-- c, "SQL 2 lakh, pandas 52 lakh, plain Python 50 lakh": SQL groups by segment and quarter, not by
-  customer, so it sends 8 rows.
-- d, "SQL 8, pandas 50 lakh, plain Python 52 lakh": swaps the two routes; pandas is the one that
-  reads the customer list as well.
+- a, "Each route moves 8 rows, since every route returns the same eight numbers": It sizes the
+  answer, which ties, in place of the work, which does not.
+- c, "SQL moves 2 lakh rows, pandas 52 lakh and plain Python 50 lakh": SQL groups by segment and
+  quarter, which makes 8 groups however many customers there are, so it sends 8 rows.
+- d, "SQL moves 8 rows, pandas 50 lakh and plain Python 52 lakh": It swaps the two routes, and
+  pandas is the one that reads the customer list as well.
 
 ### Q2. Which line of a draft tool-choice note does Kavya send back?
 
-A design item. Four lines, one wrong.
+Item 2 is a design item: two of the four lines give an ask to plain Python, and only one of them
+fits what plain Python is for.
 
-The key is d, "Line 4: a step-by-step audit of one case reads best as a plain loop". The auditor's
-question is asked once and has to be read line by line; a pandas chain is short and hides its middle
-steps, while a loop shows each order being added.
+The key is d, "Line 4 goes back, since a number another team reruns every morning belongs in SQL".
+The stores team reruns its count every day, so the count has to live where the stores team can run
+it, as a query in the warehouse that sends only its answer. A script on the analyst's machine moves
+every order each morning and leaves the stores team waiting on the analyst. Line 3 keeps plain
+Python because one customer's question is asked once and has to be read step by step.
 
-- a, "Line 1: Finance's number belongs in the notebook the table comes from": a notebook runs on a
-  copy on one machine, and Finance cannot rerun it from the warehouse.
-- b, "Line 2: the customer table should be a SQL view that Finance reruns": Finance reruns its
-  revenue; the customer table is the growth team's bench, which gains a column most weeks.
-- c, "Line 3: a months view is a one-off and belongs in plain Python": the head of Retail-Plus reads
-  the view every week, and `pivot_table` builds it in one line.
+- a, "Line 1 goes back, since Finance's number belongs in the notebook the table comes from": A
+  notebook runs on a copy on one machine, and Finance cannot rerun it from the warehouse.
+- b, "Line 2 goes back, since the customer table should be a SQL view that Finance reruns": Finance
+  reruns its revenue, and the customer table is the growth team's bench, which gains a column most
+  weeks.
+- c, "Line 3 goes back, since one customer's question reads best as a short pandas chain": A pandas
+  chain is short and hides its middle steps, while a loop shows each of her orders being added.
 
 ### Q3. What does Kavya say to a note that gives Finance's number to pandas because it ran fastest?
 
-Invented timings of 0.08, 0.11 and 0.21 seconds on 1,000 orders.
+The note's timings, 0.009, 0.012 and 0.021 seconds on 1,000 orders, are invented.
 
-The key is c, "These timings tie and swap from run to run; size by rows moved". On a thousand orders
-every route finishes well inside a second, and the ranking changes from one run to the next, so speed
-separates nothing. Rows moved and who reruns the number do.
+The key is c, "She says hundredths of a second decide nothing on a weekly number, and sizes by rows
+moved". On Kalpa's 1,000 orders all three routes finish in hundredths of a second; timed over and
+over, SQL finished first on every run, by about a hundredth of a second. A hundredth of a second on
+a number Finance reads once a week decides nothing, so speed cannot choose between the routes. Rows
+moved can, 8 for SQL against 1,340 for pandas and 1,000 for plain Python, and that gap grows with the
+business.
 
-- a, "Agreed: pandas was fastest, and speed is what Finance waits on": Finance waits on a number it
-  can rerun, which a notebook on the analyst's machine is not.
-- b, "Time each route a hundred times and give the number to the median's winner": a steadier timing
-  still answers a question that separates nothing at this size.
-- d, "SQL should win anyway, since a database always beats a laptop": SQL wins here on rows moved and
-  on who reruns it; "always faster" is false on small data.
+- a, "She agrees, since pandas was fastest and speed is what Finance waits on": Finance waits on a
+  number it can rerun, which a notebook on the analyst's machine is not.
+- b, "She asks for each route to be timed a hundred times, with the number going to the median's
+  winner": A steadier timing measures the same gap of hundredths of a second, which still decides
+  nothing.
+- d, "She says SQL should win anyway, since a database always beats a laptop": SQL does own the
+  number, because Anand's analyst reruns it and it moves 8 rows. The reason this reply gives is
+  speed, and a hundredth of a second decides nothing on a weekly number.
 
-### Q4. Which new fact would move one of Finance's asks onto pandas?
+### Q4. Which input should pandas read for Finance's five new cuts, and how many rows does it move?
 
-A design item. SQL owns Finance's revenue.
+Item 4 is a design item: the cuts are tried in an afternoon, which is pandas' work, and the orders
+run to 50 lakh, so the input has to carry every dimension the cuts need without moving the orders.
 
-The key is b, "Finance wants a new cut, tried five ways this afternoon, then dropped". Iteration on a
-question asked once is pandas' work, and pandas reads the query's answer, so the definition still
-lives in one place.
+The key is b, "It should read one query grouped by segment, quarter, channel and city, at most 144
+rows". The five cuts between them use segment, channel, city and quarter, so one answer at that
+grain serves all five: 4 segments by 2 quarters by 3 channels by 6 cities is at most 144 rows, and
+each cut is a sum of those rows in pandas. The revenue's definition stays in the warehouse's query,
+and the rows sent stay at 144 however many orders sit behind them; on today's orders the query
+returns 134, since not every combination has an order.
 
-- a, "Finance adds a ninth number every Monday, for a new segment": a recurring number Finance reruns
-  stays in the warehouse.
-- c, "The orders table grows tenfold, so the query takes longer each Monday": growth argues harder for
-  SQL, which still sends only its answer.
-- d, "Finance's new analyst prefers Python to SQL for every rerun": a preference is not a fact about
-  the number; the analyst can run the query from Python.
+- a, "It should read every order with its segment and city, 50 lakh rows, so any cut can be tried":
+  It moves every order to make at most 144 sums, and it writes a second definition of revenue in the
+  notebook.
+- c, "It should read Finance's Monday answer, the eight rows of segment by quarter, already
+  computed": Eight rows carry no channel or city, so only the cut by segment can be made from them.
+- d, "It should read the growth team's customer table, 2 lakh rows, already in memory": The table
+  holds each customer's spend over both quarters with no channel or quarter, so the three cuts that
+  need a channel or a quarter cannot be made from it.
 
 ### Q5. Which Monday check would catch a merge that counted one customer's spend twice?
 
-A design item. About ten customers join the list in a typical week.
+Item 5 is a design item: about ten customers join the list in a typical week, so the check has to
+tell one doubled customer from the sign-ups.
 
-The key is a, "The table's spend by segment against Finance's query, to the rupee". The two share no
-code, so a customer whose spend is counted twice in the table makes that segment's total disagree
-with Finance's query by exactly that customer's spend.
+The key is a, "Compare the table's spend by segment with Finance's query, to the rupee". The two
+share no code, so a customer whose spend is counted twice in the table makes that segment's total
+disagree with Finance's query by exactly that customer's spend.
 
-- b, "The table's row count against last Monday's row count": new customers move the count every
-  week, so one extra row hides among the sign-ups.
-- c, "Finance's query run twice, to see it returns the same eight numbers": checks Finance's side
-  against itself and never looks at the table.
-- d, "The table's spend against the sum the previous cell printed": the table checked against
+- b, "Compare the table's row count with last Monday's row count": New customers move the count
+  every week, so one extra row hides among the sign-ups.
+- c, "Run Finance's query twice, to see that it returns the same eight numbers": It checks Finance's
+  side against itself and never looks at the table.
+- d, "Compare the table's spend with the sum the previous cell printed": It checks the table against
   itself.
 
 ## Why is option b in item 3, timing each route a hundred times, the wrong answer worth arguing about?
 
-Item 3, option b sounds rigorous: more runs, a median, a fair contest. It measures the wrong thing
-more carefully. A sizing column where every option scores the same separates nothing, and timing it
-a hundred times does not change that; the columns that separate the routes are rows moved and who has
-to rerun the number.
+Item 3, option b sounds rigorous, since a median of a hundred runs is steadier than one run. On
+Kalpa's orders it would even give the number to SQL, which finished first on every run, and it would
+give it for a gap of about a hundredth of a second, which changes nothing for a number Finance reads
+once a week. SQL owns Finance's number because Anand's analyst reruns it from the warehouse and
+because it moves 8 rows where pandas moves 1,340, a gap that grows with the orders.
 
 ## Where does one metric living in many places come up at work?
 

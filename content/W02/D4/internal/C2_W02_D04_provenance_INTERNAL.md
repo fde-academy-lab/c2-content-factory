@@ -41,14 +41,17 @@
 
 - Customers C-9001 to C-9004 and their spends (Rs 12,400, Rs 8,600, Rs 5,100, Rs 1,900), and the
   companion's reached customers: the fan-out mechanism without naming the plant.
-- In the chapter sets: next year's 2 crore orders, 9 lakh customers and 3 crore rows (chapter 1); the
-  Diwali email's five customers C-8101 to C-8105 and the app team's 2,000-row push feed (chapter 2);
-  members M1 and M2, a loyalty tier's Rs 3,10,000 and Rs 2,90,000 against Rs 8,40,000, and next year's
-  150 members and 540 member-months (chapter 3); customers A to E, a dashboard's 96 percent of 1,250
-  against a feed of 1,480, and a campaign of 800 reached and 5,000 buyers (chapter 4); 50 lakh orders
-  and 2 lakh customers, and timings of 0.08, 0.11 and 0.21 seconds (chapter 5); a store whose data ends
-  30 June with a run on 13 July, and Rs 150 a code (chapter 6). Every one is labelled invented in its
-  file, and none echoes a planted value.
+- In the chapter sets: next year's 2 crore orders from 9 lakh listed customers, 6 lakh of them ordering
+  (chapter 1); the Diwali email's five customers C-8101 to C-8105, the app team's 2,000-row push feed
+  naming 1,900 customers against 12,000 loyalty customers and Rs 5,100 a typical spend, and a combined
+  feed carrying a Navratri email beside the monsoon sale (chapter 2); members M1 and M2, a loyalty
+  tier's Rs 3,10,000 and Rs 2,90,000 against Rs 8,40,000, and next year's 150 members and 540
+  member-months (chapter 3); customers A to E, a dashboard's 96 percent of 1,250 against a feed of
+  1,480, and a festive-season SMS that reached 900 customers, 40 of them with no city after a data
+  migration (chapter 4); 50 lakh orders and 2 lakh customers, and a hurried note's timings of 0.009,
+  0.012 and 0.021 seconds (chapter 5); a store whose data ends 30 June with a run on 13 July, and
+  nightly loads from November that fail quietly for two weeks (chapter 6). Every one is labelled
+  invented in its file, and none echoes a planted value.
 - The run day of Monday 19 October 2026 for recency from the wall clock: the first Monday refresh after
   the session, pinned so the wrong number is exact.
 - The escalated case's two broken copies in step 5's check: one customer's id written over another
@@ -77,6 +80,7 @@
 | The practice lab gives asks an owner among plain Python, SQL and pandas only | Friday's lab sets warehouse, pandas or Excel for eight asks; Excel stays out today |
 | The pre-read drops the front-page number's denominator and period, the lookup's not-found framing and the operating rule | Each pre-empts a Friday trap or chapter |
 | The study notes run to about 7,300 words of prose, 8,500 with their tables and code, over the standard's 4,000 to 5,000 | The model pack's notes run to 6,900 words of prose and Week 1 Tuesday's to 7,200; each chapter carries its options, sizing, trap and second route, and the interview answers are in full. The depth loop's fixes added about 550 words (the data's age, the guards' two kinds, Week 1's numbers); cutting to the standard's length would drop the second routes or the answers, a call for the requester |
+| Chapter 6's item 3 rebuilds the table as of 31 August from the warehouse, whose last August order is dated 28 August | The generator draws order days 1 to 28 (`data/generate_client_zero.py`), so no order falls on 29 to 31 August; option b's smallest recency of 3 rests on that gap, which is the generator's, not a plant |
 | The practice lab's problem 4 compares members who bought in Q1: 33 of the 44 reached, 75 percent, against 34 of the 47 others, 72 percent | Pass 4 found the model sentence compared 33 of 60 with 34 of 60, where 13 of the 120 members never ordered and 16 more bought only in Q2, so neither group could spend less in Q2 |
 | The cheat sheet drops a numbers panel to fit one landscape page | Every number on it already sat in panels 1, 5 and 7 |
 | Twelve interview questions in the notes: the row's five and eight case-style follow-ups, tagged | The standard's ten to twelve plus one |
