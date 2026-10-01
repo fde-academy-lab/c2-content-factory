@@ -1,4 +1,4 @@
-# Can you run the day's moves on questions you have not seen, in an hour: four shapes, five owners, a channel nobody chose and the Retail-Plus table?
+# Can you predict four table shapes, give five asks an owner, name each customer's most-used channel and build the head of Retail-Plus's table, in an hour?
 
 The TA-led practice lab, after the afternoon block. Four problems, climbing in difficulty, are the
 core and take about 60 minutes: problem 1 ten minutes, problem 2 ten, problem 3 twenty and problem 4
@@ -43,8 +43,8 @@ Post exactly this shape: xxxxxxxxx
 Used at work before every call on a table you have not met, so that a surprising shape is noticed
 before its numbers are.
 
-Ten minutes, alone. Write your prediction before you run anything. A wrong prediction you can
-explain is worth more than a right guess.
+Ten minutes, alone. Write your prediction and its reason before you run anything, so that a wrong
+prediction shows you which idea to go back to.
 
 ### Q1. How many rows does a count of customers per city return?
 
@@ -57,8 +57,8 @@ d) 301 rows, one per customer who ordered
 
 ### Q2. How many rows does a count per customer and quarter return?
 
-Kalpa's 301 customers who ordered placed 1,000 orders across two quarters, and some ordered in only
-one of them. What does `orders.groupby(["customer_id", "quarter"]).size()` return?
+Kalpa's 301 customers who ordered placed 1,000 orders across the two quarters, Q1 and Q2. What does
+`orders.groupby(["customer_id", "quarter"]).size()` return?
 
 a) 471 rows, one per customer and quarter that has orders
 b) 602 rows, the 301 customers who ordered times 2 quarters
@@ -120,7 +120,7 @@ d) SQL, the win-back query mailed to the platform lead to rerun
 
 a) SQL, two queries whose counts differ by 55, run one after the other
 b) Plain Python, both recency counts side by side, dates printed
-c) pandas, two chained calls on the table with both counts shown
+c) pandas, the refresh run again, with its four guards printing PASS
 d) SQL, one query with the two counts in two columns
 
 ### Q8. Which tool should hold the monthly revenue by segment that Finance reconciles against its books?
@@ -191,7 +191,7 @@ and read the orders' `order_date`, `quarter` and `amount` as well, with `parse_d
 2. Check it three ways: its rows against the Retail-Plus members on the list, its spend against
    Retail-Plus's orders in the warehouse, and its smallest recency.
 3. Count, among the members the sale reached and among those it did not reach, how many spent less
-   in Q2 than in Q1.
+   in Q2 than in Q1, and say what each count is out of.
 
 Then write the one line to the head of Retail-Plus about those two counts, with what the table can
 and cannot say about the sale.
