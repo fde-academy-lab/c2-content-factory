@@ -13,8 +13,9 @@ exits 1 on any FAIL.
 3. The day sheet's plant table, against the generator's witness
    (python3 data/generate_kalpa_health.py --witness) and Monday's witness check, which recounts the
    dashboard's test counts from the files.
-4. A plant guard over every STUDENT file in the day folder: no planted value, no witness count
-   standing alone and no plant's words.
+4. A plant guard over every STUDENT file in the day folder: no planted value, no plant's words,
+   and no count of 20 or more from the generator's witness or Monday's witness check standing alone,
+   bar three coincidences accepted by name (30, 38 and 64).
 5. The cold-run script's ten checksums, against the files in the data pack.
 """
 import csv
@@ -106,7 +107,9 @@ has(card(1), "| $299 |", "card 01 quotes the panel's list price")
 has(card(4), "Healthy aging panel", "card 04 names the Healthy aging panel")
 has(card(4), "the twelve centres where Kalpa draws blood", "card 04 quotes the twelve centres")
 has(card(8), "| 1,250 |", "card 08 quotes Dallas's 1,250 patients")
-has(card(10), "one in seven, 14.4 percent of 1,250", "card 10 quotes Dallas's Medicaid share")
+has(card(10), "about one in seven of the 1,250", "card 10 quotes Dallas's Medicaid share")
+report(abs(n_dallas_medicaid / n_dallas - 1 / 7) < 0.005 and "14.4" not in card(10),
+       "card 10's one in seven is the register's share, printed without the exact count it implies")
 has(card(3), "one laboratory in each of its six metros", "card 03 quotes the six laboratories")
 has(card(7), "twelve patient service centres", "card 07 quotes the twelve centres")
 
@@ -176,6 +179,14 @@ def days_over(lam, cap=70):
     return 1 - below
 
 
+# A group may apply the rise to the busiest day as well; the same three labs go over 70.
+alt = {k: (today[k] + 10) * 1.15 for k in today}
+report(sorted(k for k in alt if alt[k] > 70) == sorted(k for k in today if today[k] * 1.15 + 10 > 70),
+       "card 03: both readings of the busiest day put the same labs over 70")
+has(prompts, f"gets {one(alt['New York'])} in New York, {one(alt['Dallas'])} in Dallas and "
+             f"{one(alt['Phoenix'])} in Phoenix", "card 03: the second reading of the busiest day")
+has(prompts, f"or of {one(alt['New York'])}, {one(alt['Dallas'])} and {one(alt['Phoenix'])} where the rise",
+    "card 03: the full-marks line accepts the second reading")
 ny, dal, phx = (days_over(today[k] * 1.15) for k in ("New York", "Dallas", "Phoenix"))
 has(prompts, f"about {ny:.2f} in New York, {dal:.2f} in Dallas and {phx:.2f} in Phoenix, and about "
              f"{days_over(today['New York']):.2f} in New York today", "card 03: the Poisson check")
@@ -196,7 +207,8 @@ inputs(5, ["| 12.0 percent |", "| 8.4 percent |", "11.5 percent before, 9.9 perc
 beyond = 1 - (8.4 / 12.0) / (9.9 / 11.5)
 points = (12.0 - 8.4) - (11.5 - 9.9)
 for s in [pct(1 - 8.4 / 12.0), pct(1 - 9.9 / 11.5), pct(beyond), f"{points:.1f} points, {pct(points / 12.0)} of 12.0",
-          f"about ${round(300000 * beyond / 0.30, -2):,.0f}", "| 24 percent |"]:
+          f"300,000 times {one(beyond * 100)} divided by 30 | about ${300000 * float(half_up(beyond * 100, 1)) / 30:,.0f}",
+          "| 24 percent |"]:
     has(prompts, s, f"card 05: {s}")
 has(day_sheet, f"about {beyond * 100:.0f} percent, and the model needed 24", "day sheet's interview answer: card 05's numbers")
 
@@ -241,12 +253,13 @@ mg0 = 40 - 20
 allowed1 = 40 * 0.88
 delay = allowed1 * 0.08 * 15 / 365
 mg1, mg1d = allowed1 - 20, allowed1 - 20 - delay
+mg_r = float(half_up(mg1d, 2))  # the $15.08 the prompts file prints and multiplies by
 cut = 1 - (20 / 1.15 + 20) / (40 * (1 - 0.08 * 15 / 365))
 for s in [f"| {money(mg0)} |", money(mg1, cents=True), f"{money(delay, cents=True)} a test, {pct(15 / 365 * 0.08, 2)}",
           f"| {money(mg1d, cents=True)} |", f"{pct(mg0 / mg1d - 1)} ({one((mg0 / mg1 - 1) * 100)} before the delay)",
-          f"| {money(30 * mg0)} |", f"{money(42 * mg1d, cents=True)}, up {pct(42 * mg1d / (30 * mg0) - 1)}",
+          f"| {money(30 * mg0)} |", f"{money(42 * mg_r, cents=True)}, up {pct(42 * mg_r / (30 * mg0) - 1)}",
           "12 percent of all Dallas tests", "at most 50 percent more members' tests",
-          f"{money(34.5 * mg1d, cents=True)}, down {pct(1 - 34.5 * mg1d / (30 * mg0))}",
+          f"{money(34.5 * mg_r, cents=True)}, down {pct(1 - 34.5 * mg_r / (30 * mg0))}",
           pct(1.40 * 0.88 - 1), f"about {cut * 100:.0f} percent"]:
     has(prompts, s, f"card 08: {s}")
 report(abs(mg0 / mg1d - 1 - 0.42) > 0.05, "card 08: its break-even sits well away from card 01's 42 percent",
@@ -366,7 +379,23 @@ GUARD = [
     r"\b22,152\b", r"\b48,235\b", r"\b46,867\b", r"\b11,355\b", r"\b11,343\b", r"(?<![\d.,$])216(?![\d,])",
     r"\b1,137\b", r"\b1,175\b", r"230,132", r"\b2,381\b", r"\b3,685\b", r"820,518", r"23,213", r"24,406",
     r"\b5,692\b", r"\b6,009\b", r"970,098", r"1,051,001",
+    # The retail denial rate as the day sheet and the spine print it.
+    r"\b10\.3 percent", r"\b10\.35\b", r"\b10\.348\b",
 ]
+# Every count of 20 or more in the generator's witness and Monday's witness check, standing alone,
+# with or without its thousands commas. Three coincide with a figure a learner file needs, and none
+# points at a plant: 30 is the round's minutes and the rubric's marks, 64 and 38 are card 03's New
+# York and Atlanta samples a day, and 38 is also card 06's Atlanta batched share within 24 hours.
+COUNTS = set()
+for line in (out + "\n" + d1).splitlines():
+    if ": " not in line or re.search(r"\d{4}-\d{2}-\d{2}", line):
+        continue
+    for tok in re.findall(r"-?\d+(?:\.\d+)?", line.split(": ", 1)[1]):
+        f = abs(float(tok))
+        if f == int(f) and f >= 20:
+            COUNTS.add(int(f))
+ACCEPTED = {30: None, 38: ("gd_card_03_", "gd_card_06_"), 64: ("gd_card_03_",)}
+report(len(COUNTS) > 50, "the witness counts the guard searches", f"{len(COUNTS)} counts of 20 or more")
 students = sorted(p for p in DAY.rglob("*_STUDENT.*") if p.suffix in (".md", ".py"))
 for p in students:
     # The data pack's own file names are the data dictionary's, so they are no plant.
@@ -374,6 +403,11 @@ for p in students:
     # The cold-run script's pinned checksums are hexadecimal, where digits sit between letters.
     text = re.sub(r"\b[0-9a-f]{64}\b", "", text)
     hits = sorted({m.group(0) for g in GUARD for m in re.finditer(g, text)})
+    for c in sorted(COUNTS):
+        if c in ACCEPTED and (ACCEPTED[c] is None or any(k in p.name for k in ACCEPTED[c])):
+            continue
+        if re.search(rf"(?<![\d.,])\$?(?:{c}|{c:,})(?![\d]|,\d|\.\d)", text):
+            hits.append(f"witness count {c:,}")
     report(not hits, f"plant guard: {p.relative_to(DAY)}", ", ".join(hits) if hits else "no plant value or word")
 
 # 5. The cold-run script's checksums ----------------------------------------------------------------
