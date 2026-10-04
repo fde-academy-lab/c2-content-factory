@@ -62,7 +62,7 @@ cells = [
     **The questions on the way.**
     1. How could a team find what moved New York's billed revenue, and what does each way cost?
     2. How many New York bookings does the old booking export hold?
-    3. Does every New York amount convert to dollars, and what does the quick fix do to the total?
+    3. Does every New York amount convert to dollars, and what does the quickest conversion do to the total?
     4. Do the claims and the completed bookings describe the same visits, one to one?
     5. Did more claims or a bigger mean claim carry the change, and does it hold per day?
     6. Which New York site billed the extra claims, and where does this build stop?
@@ -109,7 +109,7 @@ kit.side_by_side(
                 "Does SQL agree?", "What can the finance head carry?"], lit=None, show=False),
     kit.vflow(["one metro, two files\\nthe old booking export and the claims",
                "one rule per decision\\nwritten in the decisions log",
-               "one claim\\nwith its denominators, period and caveat"], show=False),
+               "one headline claim\\nwith its denominators, period and caveat"], show=False),
 )
 '''),
 
@@ -260,10 +260,11 @@ kit.check("the kept rows hold one row per booking id", clean["booking_id"].is_un
 
     # ----------------------------------------------------------------- 3: amounts
     md("""
-    ## 3. Does every New York amount convert to dollars, and what does the quick fix do to the total?
+    ## 3. Does every New York amount convert to dollars, and what does the quickest conversion do to the total?
 
     Revenue can only be summed once every amount is a number. The `billed_amount` column was read as
-    text, and the quick fix many analysts reach for is `pd.to_numeric(..., errors="coerce")`. Week 1
+    text, and the quickest conversion, the one many analysts reach for, is
+    `pd.to_numeric(..., errors="coerce")`. Week 1
     Wednesday's rule for an amount that cannot be read was to reject it with its row named and to
     repair it only from a source that could not have copied the error.
 
@@ -395,7 +396,7 @@ kit.check("no claim lacks a booking, and no cancelled booking is billed",
     where the mean claim is billed dollars over claims: the claim count stands where Week 1's order
     count stood, and the mean claim where the average order value stood. Sections 2 to 4 proved that
     the claims are New York's completed bookings, one to one, so the claim count is a count of
-    visits. Section 1 counted the claims, and section 3 summed every amount.
+    visits.
 
     **Predict before you run.** Which leaf moved New York's billed revenue from Q2 to Q3? a) more
     claims, at a lower mean claim; b) more claims, at the same mean claim; c) more claims, at a
@@ -481,8 +482,8 @@ print(f"Counting Q2 as 90 days gives {slip(90, 92):+.1%}; swapping the two lengt
     md("""
     ## 6. Which New York site billed the extra claims, and where does this build stop?
 
-    Every booking carries its `site_code`, and New York has three sites: KH-NYC-01, its laboratory,
-    and two patient service centres, KH-NYC-02 and KH-NYC-03. This is Week 1 Tuesday's isolate rung:
+    New York has three sites: KH-NYC-01, its laboratory, and two patient service centres, KH-NYC-02
+    and KH-NYC-03. This is Week 1 Tuesday's isolate rung:
     once the tree has split the change into its leaves, find where it sits. Splitting the claims by
     site says where inside New York the extra claims were billed, which is a question about place;
     it cannot say why the mean claim fell.
@@ -526,8 +527,8 @@ kit.check("the sites add back to the metro, in claims and dollars",
     query runs with no server. It loads the two raw files itself with Python's `csv` module, keeps
     New York and works out each quarter from the month in SQL, keeps one row per booking with Week 2
     Wednesday's `ROW_NUMBER()`, partitioned by booking id and kept at 1, makes Week 2 Tuesday's join
-    on the kept rows, and builds Week 2 Monday's tree as one `GROUP BY`. It shares no code with the
-    pandas cells above. SQLite's `CAST` reads only the leading number in a text and drops the rest
+    on the kept rows, and builds Week 2 Monday's tree as one `GROUP BY`. It shares none of the pandas
+    cells' logic, only the data folder's path and the table helper. SQLite's `CAST` reads only the leading number in a text and drops the rest
     without a word, so "$170.00" would become 0, the same silence as coerce; the query strips the
     dollar sign and any comma before the cast, and a check counts any amount in the file still
     holding something other than digits and a point.
@@ -655,8 +656,8 @@ kit.vflow([f"Billed revenue\\n{usd(q2['sum'])} to {usd(q3['sum'])}, +5.5%",
     the proof was the same: one to one, both directions, every leftover named.
 
     **[D] State your finding in one sentence a COO can carry into a board meeting.** "Over Q2's 91
-    days and Q3's 92, New York's billed revenue rose 5.5 percent, from about $175,000 on 977 claims
-    to about $184,000 on 1,055, carried by more claims at a slightly lower mean claim." Then the
+    days and Q3's 92, New York's billed revenue rose 5.5 percent, from about $174,900 on 977 claims
+    to about $184,500 on 1,055, carried by more claims at a slightly lower mean claim." Then the
     caveat, alone on the next line: billed is not collected, since the payers pay a contracted share
     weeks later. The number, both bases, the period and the branch that carried it sit in one
     sentence, rounded the way a board reads them with the exact figures in the evidence, and nothing
@@ -666,7 +667,7 @@ kit.vflow([f"Billed revenue\\n{usd(q2['sum'])} to {usd(q3['sum'])}, +5.5%",
     md("""
     ### Depth: does the bridge's split depend on which leaf moves first?
 
-    It does, and the table below works out both orders. In tree order, the volume leaf is priced at
+    It does. In tree order, the volume leaf is priced at
     Q2's mean and the mean leaf is counted on Q3's claims: $13,964 and minus $4,389. Reversed, the
     extra 78 claims are priced at Q3's lower mean, $13,640, and the mean's fall is counted on Q2's
     977 claims, minus $4,065. Both orders add to $9,575, and the $324.51 between them is the joint
@@ -705,7 +706,7 @@ kit.check("every order adds back to the change in billed revenue",
     5. More claims at a lower mean: claims up 8.0 percent and the mean claim down 2.3 percent, so
        $13,964 more from volume and $4,389 less from the mean; per day, over 91 and 92 days, claims
        rose 6.8 percent and billed revenue 4.3.
-    6. The three sites add back to every claim and dollar, KH-NYC-02, a patient service centre,
+    6. The three sites add back to every claim and dollar; KH-NYC-02, a patient service centre,
        billed 69 of the extra claims, and the build stops at what a claim holds, with why the mean
        fell logged as an open question.
     7. Yes: SQL in SQLite reaches 977 and 1,055 claims and $174,910 and $184,485, to the cent.
