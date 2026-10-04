@@ -18,7 +18,9 @@ run by hand? The script answers that question in five steps:
    matches 12345 or 12,345 printed by the notebook, and "12.5 percent" matches 12.5%. A comma between
    numbers, as in "5.1, 7.8", still separates them. A number the notebook computes and never prints
    does not count, so print every slide number in the slide's own format.
-4. Reads the branch and the commit the run used, when the folder is a git repository.
+4. Reads the branch and the commit the run used, when the folder is a git repository. It reads them
+   before the notebook runs, so a file the notebook writes into its own folder is not taken for work
+   that was never pushed.
 5. Prints one line to paste into the cold-run log in the demo checklist.
 
 It exits 0 only when the files match, the run is clean and every slide number was found.
@@ -183,6 +185,7 @@ def main(argv=None):
         broke.append("no slide file")
         fails += 1
 
+    where = branch_and_commit(pathlib.Path(args.notebook).resolve().parent)
     ok, seconds, executed, error = run_cold(args.notebook, args.timeout)
     minutes = seconds / 60.0
     missing = []
@@ -199,7 +202,6 @@ def main(argv=None):
         fails += len(missing)
         broke += [m.split("|")[0].strip() + " not printed" for m in missing]
 
-    where = branch_and_commit(pathlib.Path(args.notebook).resolve().parent)
     print(f"Branch and commit: {where}")
     today = datetime.date.today().isoformat()
     reproduced = len(numbers) - len(missing) if ok else 0
@@ -215,7 +217,7 @@ if __name__ == "__main__":
 
 # Test inputs and expected outcomes
 # ---------------------------------
-# Each case below was run on 1 October 2026 against content/W03/D1/data with a small notebook that
+# Each case below was run on 4 October 2026 against content/W03/D1/data with a small notebook that
 # reads the patient register and prints "6,700 patients" and "25.4 percent aged 65 and over", from a
 # folder that is a git repository on a branch named cold-run-test.
 # A slide file holding
@@ -247,3 +249,7 @@ if __name__ == "__main__":
 #   against one that prints 12.5% it is found.
 # A notebook folder that is not a git repository
 #   prints "Branch and commit: not a git repository" and logs the same words in the branch column.
+# A notebook that writes clean_sample.csv into its own folder while it runs
+#   prints the branch and its commit with no "with uncommitted changes", since git is read before the
+#   run; a file typed into the Codespace before the run and never committed still prints
+#   "with uncommitted changes".
