@@ -68,10 +68,11 @@ and the chair scores every learner alone.
 **The questions on the way.** What does the group hand over? How does the round run? What earns the
 marks?
 
-The chair's opening says all of this before the clock starts, so your reading minutes are for the
-case above. When time is called, the group gives Dr Menon one position, or the point where it splits,
-named out loud; the one number that carries the position, and where on this card that number comes
-from; and the fact that would change the group's mind, with the main risk of its position.
+The chair's opening covers what the group hands over and how each of you is scored, so your reading
+minutes are for the case above; the minutes and the marks are below. When time is called, the group
+gives Dr Menon one position, or the point where it splits, named out loud; the one number that
+carries the position, and where on this card that number comes from; and the fact that would change
+the group's mind, with the main risk of its position.
 
 | Part | Minutes | What happens |
 |---|---|---|

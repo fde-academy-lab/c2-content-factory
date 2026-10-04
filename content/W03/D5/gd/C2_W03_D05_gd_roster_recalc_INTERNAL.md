@@ -1,10 +1,10 @@
-# Recalc manifest for the Build 1 GD roster
+# Does the Build 1 GD roster compute, and does each verdict move when the draw, the groups or the rounds change?
 
 `scripts/xlsx_recalc.py` reads this file, rebuilds the roster through LibreOffice, asserts the
-verdicts as shipped, then flips four decisions and asserts that the verdicts move: the group count
-rising to the tracker's fifteen, a sub-problem 5 group drawn to the slot carrying card 05, a draw
-position mistyped as 10, and rounds running long. Written by `internal/C2_W03_D05_build_gd_roster_INTERNAL.py`; rebuild both
-together.
+verdicts as shipped, then flips five decisions and asserts that the verdicts move: the group count
+rising to the tracker's fifteen, a sub-problem 5 group drawn to the slot carrying card 05, a billing
+group drawn to the slot carrying card 10, a draw position mistyped as 10, and rounds running long.
+Written by `internal/C2_W03_D05_build_gd_roster_INTERNAL.py`; rebuild both together.
 
 ```yaml
 workbook: C2_W03_D05_gd_roster_TRAINER.xlsx
@@ -18,6 +18,7 @@ verdicts:
   - {sheet: Check, cell: B17, expect: "every draw position is between 1 and 9"}
   - {sheet: Roster, cell: H10, expect: "165"}
   - {sheet: Roster, cell: M8, expect: "3 and 5"}
+  - {sheet: Roster, cell: M12, expect: "3"}
   - {sheet: "Friday block two", cell: B16, expect: "block two fits with 33 minutes of slack"}
 flips:
   - name: the Programme Head runs the tracker's fifteen groups
@@ -30,7 +31,12 @@ flips:
     set: [{sheet: Inputs, cell: B17, value: 5}]
     verdicts:
       - {sheet: Roster, cell: N8, contains: "swap"}
-      - {sheet: Check, cell: B10, expect: "1 clash: swap within the level or use card 08"}
+      - {sheet: Check, cell: B10, expect: "1 clash: swap within the level, use card 08, or swap two draw positions"}
+  - name: a billing group is drawn to the slot carrying card 10
+    set: [{sheet: Inputs, cell: C13, value: 9}, {sheet: Inputs, cell: C21, value: 1}]
+    verdicts:
+      - {sheet: Roster, cell: N12, contains: "swap"}
+      - {sheet: Check, cell: B10, expect: "1 clash: swap within the level, use card 08, or swap two draw positions"}
   - name: G9's draw position is mistyped as 10
     set: [{sheet: Inputs, cell: C21, value: 10}]
     verdicts:

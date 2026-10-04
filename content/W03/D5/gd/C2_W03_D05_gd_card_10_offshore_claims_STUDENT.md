@@ -57,7 +57,7 @@ cost?
 
 | What | Number | Where it comes from |
 |---|---|---|
-| Patients on Kalpa's Dallas register who are on Medicaid | one in seven, 14.4 percent of 1,250 | Kalpa Health patient register |
+| Patients on Kalpa's Dallas register who are on Medicaid | about one in seven of the 1,250 | Kalpa Health patient register |
 | Texas Medicaid claims Kalpa bills in a year | about 800 | Assumption (the finance head) |
 | What the Texas Medicaid plan pays Kalpa in a year | about $35,000 | Assumption (the finance head) |
 | Cost of the tests behind those claims, as a share of what the plan pays | about two thirds | Assumption (the finance head's rule of thumb) |
@@ -91,10 +91,11 @@ and the chair scores every learner alone.
 **The questions on the way.** What does the group hand over? How does the round run? What earns the
 marks?
 
-The chair's opening says all of this before the clock starts, so your reading minutes are for the
-case above. When time is called, the group gives Dr Menon one position, or the point where it splits,
-named out loud; the one number that carries the position, and where on this card that number comes
-from; and the fact that would change the group's mind, with the main risk of its position.
+The chair's opening covers what the group hands over and how each of you is scored, so your reading
+minutes are for the case above; the minutes and the marks are below. When time is called, the group
+gives Dr Menon one position, or the point where it splits, named out loud; the one number that
+carries the position, and where on this card that number comes from; and the fact that would change
+the group's mind, with the main risk of its position.
 
 | Part | Minutes | What happens |
 |---|---|---|

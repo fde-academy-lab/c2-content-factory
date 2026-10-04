@@ -85,17 +85,18 @@ inside the same 30 minutes.
 each learner scored?
 
 > "You are Kalpa's GCC team, and Dr Menon has sent you the question on this card. Read it alone for
-> the minutes it gives, then talk to each other and reach a position as a group. When I call time I
-> want one position, the one number that carries it and where on the card it comes from, and what
-> would change your mind. If you cannot agree, tell me where you split and why. Any row marked as an
-> assumption or an illustration is yours to challenge. I will not answer questions about the
+> the minutes printed on it, then talk to each other and reach a position as a group. When I call
+> time I want one position, the one number that carries it and where on the card it comes from, and
+> what would change your mind; if you cannot agree, tell me where you split and why. Any row marked
+> as an assumption or an illustration is yours to challenge. I answer no questions about the
 > numbers once you start, so state any assumption out loud. After the discussion I put two
-> questions, each to one of you by name. I score each of you alone on four things: how you frame
-> the problem, the evidence you use, how you build on each other, and whether you land a
-> recommendation with its risk."
+> questions, each to one of you by name. I score each of you alone on four things, whose marks are
+> on the card: how you frame the problem, the evidence you use, how you build on each other and
+> bring in anyone who has not spoken, and whether you land a recommendation with its risk."
 
-Then add the card's own line, given in the card-by-card section below. The opening says what each
-card's last section says, so the learners' reading minutes go to the case.
+Then add the card's own line, given in the card-by-card section below. The opening covers what each
+card's last section asks of the group, and the card prints the minutes and the marks, so nobody
+reads that section aloud and the learners' reading minutes go to the case.
 
 ## Which moves does the chair listen for, and which criterion does each count toward?
 
@@ -117,7 +118,7 @@ learner's seat and the minute.
 | Building on another member | "To take your point about margin further: at 40 percent we are still $384 down." | Engages |
 | Bringing in a quiet member | "You have not said anything about the older patients. Where do you land?" | Engages |
 | Stating what would change the mind | "If more than half the January buyers are new, I would switch sides." | Lands a conclusion |
-| Closing with the risk | "So our position is a pilot, the number is 24 percent, and the risk is a year's delay." | Lands a conclusion |
+| Closing with the risk | "So our position is a pilot, the number is 24 percent, and the risk is three months' delay." | Lands a conclusion |
 
 ## When does the chair step in, and with which words?
 
@@ -206,10 +207,17 @@ streams running and every group's round scored.
 | Problem | Fix |
 |---|---|
 | The link drops during a round | The Academic TA pauses the clock. If the link is back within two minutes, the round goes on from where it stopped. If not, the TA restarts the clock, writes the evidence page for the rest of the round and puts the card's two questions from this page, and the Principal Advisor scores from that page. |
-| The call fails before a round | The round moves to Saturday morning, straight after slot 9, and the trainer reads the roster's Check sheet again for the new end minutes. |
+| The call fails before a round | The round waits for the call, and its group runs cold run one meanwhile. Once the call is back, the round runs in stream B's first free slot after slot 4. |
 | The camera misses a seat | Move the laptop, never the learners; every face is in frame before the cards are turned over. |
 | The group talks to the laptop instead of to each other | The Principal Advisor says once: "Talk to each other; I am listening." |
-| The industry expert is late | The trainer holds stream A's first round, and its group runs cold run one meanwhile. Once the expert arrives, stream A picks up at the next slot that has not started, and every round the expert missed runs in stream B after slot 4, in slot order, chaired by the Principal Advisor. |
+| The industry expert is late | The Programme Head gives the opening alone, and the trainer holds stream A's first round while its group runs cold run one. Once the expert arrives, stream A picks up at the next slot whose start minute is still ahead, and every round the expert missed runs in stream B's free slots after slot 4, in slot order, chaired by the Principal Advisor. |
+
+Stream B has three free slots on Friday after slot 4, starting at minutes 75, 105 and 135 of block
+one, and they take every round that could not run in its own slot, in slot order. A round that finds
+no free slot, because the call is still down at minute 135 or more than three rounds are waiting,
+moves to Saturday morning and runs straight after slot 9, in stream B's room. Its group presents no
+earlier than the fourth slot of its room, one slot later for each moved round ahead of it, so its
+GD and its setup do not collide.
 
 ---
 

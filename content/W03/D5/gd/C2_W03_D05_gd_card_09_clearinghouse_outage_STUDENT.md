@@ -28,9 +28,10 @@ A clearinghouse checks each claim's format, passes it to the payer, the plan or 
 it, and passes the payer's answer back. On 21 February 2024 an attack "encrypted and incapacitated
 significant portions of Change Healthcare's functionality", a company that "annually processes 15
 billion health care transactions", among them "claims transmittals and payment" (American Hospital
-Association). On 9 March 2024 Medicare, the federal programme for people aged 65 and over, offered
-such providers an advance of up to thirty days of their average Medicare payments, recovered from
-all of their next Medicare payments until repaid, for up to 90 days (CMS fact sheet, 9 March 2024).
+Association). On 9 March 2024 Medicare, the federal insurance for people aged 65 and over and some
+younger people with disabilities, offered such providers an advance of up to thirty days of their
+average Medicare payments, recovered from all of their next Medicare payments until repaid, for up
+to 90 days (CMS fact sheet, 9 March 2024).
 
 ## How much money is stuck, and how long does Kalpa's cash last?
 
@@ -86,10 +87,11 @@ and the chair scores every learner alone.
 **The questions on the way.** What does the group hand over? How does the round run? What earns the
 marks?
 
-The chair's opening says all of this before the clock starts, so your reading minutes are for the
-case above. When time is called, the group gives Dr Menon one position, or the point where it splits,
-named out loud; the one number that carries the position, and where on this card that number comes
-from; and the fact that would change the group's mind, with the main risk of its position.
+The chair's opening covers what the group hands over and how each of you is scored, so your reading
+minutes are for the case above; the minutes and the marks are below. When time is called, the group
+gives Dr Menon one position, or the point where it splits, named out loud; the one number that
+carries the position, and where on this card that number comes from; and the fact that would change
+the group's mind, with the main risk of its position.
 
 | Part | Minutes | What happens |
 |---|---|---|

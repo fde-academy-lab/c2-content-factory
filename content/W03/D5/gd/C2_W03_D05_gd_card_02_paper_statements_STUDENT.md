@@ -22,12 +22,12 @@ What do you owe Dr Menon when time is called?
 **The questions on the way.** Why does a patient owe anything once the plan has paid, and what do
 Medicare patients owe for a lab test?
 
-After a health plan pays its share of a claim, the patient may still owe a share of their own, and
-Kalpa mails the patient a statement, a bill for it. Most of Kalpa's patients aged 65
-and over are on Medicare, the federal programme for that age, and Medicare.gov tells them "You
-usually pay nothing for Medicare-covered diagnostic laboratory tests". Patients pay more slowly than
-plans: at Quest Diagnostics they brought about 12 percent of 2025's net revenues but about 20
-percent of the money owed to the company at the year's end (Form 10-K for 2025).
+After a health plan pays its share of a claim, the patient may still owe a share, and Kalpa mails
+them a statement, a bill for it. Most of Kalpa's patients aged 65 and over are on Medicare, the
+federal insurance that covers most people of that age, and Medicare.gov tells them "You usually pay
+nothing for Medicare-covered diagnostic laboratory tests". Patients pay more slowly than plans: at
+Quest Diagnostics they brought about 12 percent of 2025's net revenues but about 20 percent of the
+money owed to the company at the year's end (Form 10-K for 2025).
 
 ## What does paper cost, and how much might older patients leave unpaid?
 
@@ -68,10 +68,11 @@ and the chair scores every learner alone.
 **The questions on the way.** What does the group hand over? How does the round run? What earns the
 marks?
 
-The chair's opening says all of this before the clock starts, so your reading minutes are for the
-case above. When time is called, the group gives Dr Menon one position, or the point where it splits,
-named out loud; the one number that carries the position, and where on this card that number comes
-from; and the fact that would change the group's mind, with the main risk of its position.
+The chair's opening covers what the group hands over and how each of you is scored, so your reading
+minutes are for the case above; the minutes and the marks are below. When time is called, the group
+gives Dr Menon one position, or the point where it splits, named out loud; the one number that
+carries the position, and where on this card that number comes from; and the fact that would change
+the group's mind, with the main risk of its position.
 
 | Part | Minutes | What happens |
 |---|---|---|
