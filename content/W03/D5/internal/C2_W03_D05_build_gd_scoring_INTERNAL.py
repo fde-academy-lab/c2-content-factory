@@ -74,10 +74,14 @@ def build():
         6: ("Score from the chair's evidence notes (see gd/C2_W03_D05_gd_facilitation_TRAINER.md), "
             "which record each learner's contributions with the minute and the move."),
         7: ("Mark an empty seat or an absent learner N in the Sat column; the row then reads absent "
-            "and drops out of the counts."),
+            "and drops out of the counts. A Sat cell left empty reads 'type Y or N in Sat', and the "
+            "Summary's verdict names it until it is filled."),
         8: (f"The Scores sheet holds {sum(n for _, n in SEATS)} seats, one per learner: eight groups "
             "of four and G9 of three, as Thursday's roster and Saturday's sheets seat the cohort. "
             "Relabel the seats if Monday's allocation put the group of three elsewhere."),
+        9: ("The rubric scores the moves a learner makes, whatever card the group drew, so the same move "
+            "earns the same marks on a level 5 card as on a level 1 card. What full marks look like on each card is in "
+            "gd/C2_W03_D05_gd_prompts_TRAINER.md, one block per card."),
     }
     for row, text in lines.items():
         put(rm, f"A{row}", text)
@@ -106,7 +110,8 @@ def build():
               + [f"Total (of {MARKS})", "Check"])
     for col, text in zip("ABCDEFGHIJKLM", labels):
         put(sc, f"{col}2", text, HEAD)
-    yn = DataValidation(type="list", formula1='"Y,N"', allow_blank=False)
+    yn = DataValidation(type="list", formula1='"Y,N"', allow_blank=False, showErrorMessage=True,
+                        errorTitle="Sat the round", error="Type Y if the learner sat the round, or N.")
     sc.add_data_validation(yn)
     maxima = ",".join(f"{col}{{r}}>Rubric!$B${i}" for i, col in enumerate("HIJK", start=3))
     r = 3
@@ -118,7 +123,8 @@ def build():
             put(sc, f"D{r}", "Y", INPUT, blue=True)
             for col in "EFGHIJK":
                 put(sc, f"{col}{r}", None, INPUT, blue=True)
-            put(sc, f"L{r}", f'=IF(D{r}="N","absent",IF(COUNT(H{r}:K{r})<4,"incomplete",SUM(H{r}:K{r})))')
+            put(sc, f"L{r}", f'=IF(D{r}="N","absent",IF(D{r}<>"Y","type Y or N in Sat",'
+                             f'IF(COUNT(H{r}:K{r})<4,"incomplete",SUM(H{r}:K{r}))))')
             put(sc, f"M{r}", f'=IF(OR({maxima.format(r=r)},MIN(H{r}:K{r})<0),'
                              '"above a maximum or below zero","ok")')
             r += 1
@@ -132,12 +138,15 @@ def build():
     put(sm, "B2", "Result", HEAD)
     rows = [
         ("Learners who sat a round", f'=COUNTIF(Scores!D3:D{last},"Y")'),
-        ("Learners fully scored", f"=COUNT(Scores!L3:L{last})"),
+        ("Learners fully scored", f'=COUNTIFS(Scores!D3:D{last},"Y",Scores!L3:L{last},">=0")'),
         ("Scores above a criterion's maximum or below zero", f'=COUNTIF(Scores!M3:M{last},"above*")'),
         ("Rubric total checks", f'=IF(Rubric!B{total}={MARKS},"the rubric adds to {MARKS}",'
                                 f'"the rubric adds to "&Rubric!B{total}&", not {MARKS}")'),
-        ("Verdict", '=IF(B5>0,B5&" row(s) hold a score outside the rubric",IF(B4=B3,'
-                    '"every learner who sat a round is scored",B3-B4&" learners still to score"))'),
+        ("Verdict", '=IF(B5>0,B5&" row(s) hold a score outside the rubric",IF(B8>0,B8&" row(s) need Y or N '
+                    'in the Sat column",IF(B4=B3,"every learner who sat a round is scored",B3-B4&" learners '
+                    'still to score")))'),
+        ("Rows whose Sat cell is neither Y nor N",
+         f'=ROWS(Scores!D3:D{last})-COUNTIF(Scores!D3:D{last},"Y")-COUNTIF(Scores!D3:D{last},"N")'),
     ]
     for i, (what, formula) in enumerate(rows, start=3):
         put(sm, f"A{i}", what)
@@ -160,13 +169,13 @@ def manifest(total, last):
     seats = last - 2
     fourth, fourth_max = CRITERIA[3][0], CRITERIA[3][1]
     lines = [
-        "# Recalc manifest for the Build 1 GD scoring sheet",
+        "# Does the Build 1 GD scoring sheet compute, and does each verdict move when a score or a seat changes?",
         "",
         "`scripts/xlsx_recalc.py` rebuilds the sheet through LibreOffice, asserts it as shipped "
         f"({seats} seats,",
-        "nobody scored yet), then flips three things: one learner scored in full, one seat marked "
-        "absent, and",
-        "one score typed above its criterion's maximum. Written by",
+        "nobody scored yet), then flips four things: one learner scored in full, one seat marked "
+        "absent, one",
+        "scored learner whose Sat cell is cleared, and one score typed above its criterion's maximum. Written by",
         "`internal/C2_W03_D05_build_gd_scoring_INTERNAL.py`; rebuild both together.",
         "",
         "```yaml",
@@ -192,6 +201,17 @@ def manifest(total, last):
         "    verdicts:",
         f"      - {{sheet: Scores, cell: L{last}, expect: \"absent\"}}",
         f"      - {{sheet: Summary, cell: B7, expect: \"{seats - 1} learners still to score\"}}",
+        "  - name: the first learner is scored and then their Sat cell is cleared",
+        "    set:",
+        "      - {sheet: Scores, cell: H3, value: 7}",
+        "      - {sheet: Scores, cell: I3, value: 8}",
+        "      - {sheet: Scores, cell: J3, value: 5}",
+        "      - {sheet: Scores, cell: K3, value: 4}",
+        "      - {sheet: Scores, cell: D3, value: null}",
+        "    verdicts:",
+        "      - {sheet: Scores, cell: L3, expect: \"type Y or N in Sat\"}",
+        "      - {sheet: Summary, cell: B8, expect: \"1\"}",
+        "      - {sheet: Summary, cell: B7, expect: \"1 row(s) need Y or N in the Sat column\"}",
         f"  - name: a score of {fourth_max + 1} is typed for {fourth}, whose maximum is {fourth_max}",
         f"    set: [{{sheet: Scores, cell: K3, value: {fourth_max + 1}}}]",
         "    verdicts:",
@@ -202,7 +222,36 @@ def manifest(total, last):
     (OUT / MANIFEST).write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def store_values(path):
+    """Recalculate through LibreOffice with the xlsx skill's recalc.py, so every formula also carries
+    its computed value for a reader that does not recalculate. Skipped, and said so, when LibreOffice
+    or the script is missing; the workbook still computes when it is opened."""
+    import shutil
+    import subprocess
+    import sys
+    script = ROOT / ".claude" / "skills" / "xlsx" / "scripts" / "recalc.py"
+    if not script.exists() or not (shutil.which("soffice") or shutil.which("libreoffice")):
+        print("values not stored: LibreOffice or the xlsx skill's recalc.py is missing")
+        return
+    r = subprocess.run([sys.executable, str(script), str(path), "60"], capture_output=True, text=True)
+    print("values stored" if '"status": "success"' in r.stdout else f"recalc reported: {r.stdout.strip()[:200]}")
+
+
 if __name__ == "__main__":
     t, end = build()
+    store_values(OUT / BOOK)
     manifest(t, end)
     print(f"wrote {OUT / BOOK} ({end - 2} seats) and {OUT / MANIFEST}")
+
+# Test inputs and expected outcomes
+# ---------------------------------
+# Run as shipped: the workbook and its manifest are written, and
+#   python3 scripts/xlsx_recalc.py content/W03/D5/rubrics/C2_W03_D05_gd_scoring_recalc_INTERNAL.md
+#   reports 4 verdicts computed and 4 decisions flipped.
+# In the written workbook, score the first learner 7, 8, 5 and 4: Scores!L3 reads 24 and the Summary
+#   verdict counts one learner fewer still to score.
+# Then clear that learner's Sat cell: Scores!L3 reads "type Y or N in Sat" and the verdict reads
+#   "1 row(s) need Y or N in the Sat column", where it once read -1 learners still to score.
+# Type N in the last seat's Sat cell: that row reads absent and drops out of every count.
+# Type 7 for Lands a conclusion, whose maximum is 6: Scores!M3 flags it and the verdict names the row.
+

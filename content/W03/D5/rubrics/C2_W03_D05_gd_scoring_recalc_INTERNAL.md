@@ -1,8 +1,8 @@
-# Recalc manifest for the Build 1 GD scoring sheet
+# Does the Build 1 GD scoring sheet compute, and does each verdict move when a score or a seat changes?
 
 `scripts/xlsx_recalc.py` rebuilds the sheet through LibreOffice, asserts it as shipped (35 seats,
-nobody scored yet), then flips three things: one learner scored in full, one seat marked absent, and
-one score typed above its criterion's maximum. Written by
+nobody scored yet), then flips four things: one learner scored in full, one seat marked absent, one
+scored learner whose Sat cell is cleared, and one score typed above its criterion's maximum. Written by
 `internal/C2_W03_D05_build_gd_scoring_INTERNAL.py`; rebuild both together.
 
 ```yaml
@@ -28,6 +28,17 @@ flips:
     verdicts:
       - {sheet: Scores, cell: L37, expect: "absent"}
       - {sheet: Summary, cell: B7, expect: "34 learners still to score"}
+  - name: the first learner is scored and then their Sat cell is cleared
+    set:
+      - {sheet: Scores, cell: H3, value: 7}
+      - {sheet: Scores, cell: I3, value: 8}
+      - {sheet: Scores, cell: J3, value: 5}
+      - {sheet: Scores, cell: K3, value: 4}
+      - {sheet: Scores, cell: D3, value: null}
+    verdicts:
+      - {sheet: Scores, cell: L3, expect: "type Y or N in Sat"}
+      - {sheet: Summary, cell: B8, expect: "1"}
+      - {sheet: Summary, cell: B7, expect: "1 row(s) need Y or N in the Sat column"}
   - name: a score of 7 is typed for Lands a conclusion, whose maximum is 6
     set: [{sheet: Scores, cell: K3, value: 7}]
     verdicts:
