@@ -10,7 +10,8 @@ and three, and the time the week held back for catching up has already gone to t
 taught. The day runs in four parts: the daily checkpoint (30), the trainer's parallel build on a
 smaller slice, in the open (60), build time, and each group's headline claim with its denominators
 and caveat at the close (20). The plant table below is the answer key for everything the groups will
-find, and a headline claim in this sheet is a group's one sentence, never a bill to a payer.
+find. In this sheet a headline claim is a group's one sentence, and a claim on its own is a bill to
+a payer.
 
 ## Which questions does the room climb on Wednesday, in the order you ask them?
 
