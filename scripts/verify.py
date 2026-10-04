@@ -47,6 +47,11 @@ INVISIBLE = re.compile("[\u200b\u200c\u200d\u2060\ufeff\u200e\u200f\u202a-\u202e
 FACULTY_MENTION = re.compile(r"[^.\n]*\b(IITGN faculty|faculty session|faculty block)\b[^.\n]*",
                              re.IGNORECASE)
 DAYS_JSON = pathlib.Path(__file__).resolve().parent.parent / "data" / "programme" / "days.json"
+# Marks language in a STUDENT file follows the evaluation block's rule in data/programme/facts.yaml:
+# a build's rubric may reach learners once the block and that build's rubric are both locked and
+# learner-facing, so a file of that week is not warned about. Any other week still gets the warning.
+FACTS = DAYS_JSON.parent / "facts.yaml"
+MARKS = re.compile(r"\b(marks|weightage|graded out of)\b", re.IGNORECASE)
 MERMAID_SOURCE = re.compile(r"\b(flowchart (LR|RL|TD|TB|BT)|graph (LR|RL|TD|TB|BT)|xychart-beta|"
                             r"sequenceDiagram|classDef \w)")
 
@@ -301,6 +306,19 @@ def mermaid_on_slides(pptx):
         return []
 
 
+def rubric_weeks():
+    """The weeks whose rubric the evaluation block lets learners see, or none when it cannot be read."""
+    try:
+        import yaml
+        ev = (yaml.safe_load(FACTS.read_text(encoding="utf-8")) or {}).get("evaluation") or {}
+    except Exception:
+        return set()
+    if ev.get("status") != "locked" or ev.get("learner_facing") != "allowed":
+        return set()
+    return {week for week, r in (ev.get("rubrics") or {}).items()
+            if isinstance(r, dict) and r.get("status") == "locked" and r.get("learner_facing") == "allowed"}
+
+
 def main():
     target = pathlib.Path(sys.argv[1])
     execute = "--execute" in sys.argv
@@ -310,6 +328,7 @@ def main():
     if not files:
         print("FAIL  no files found under", target); sys.exit(1)
     fails += check_layout(target, files)
+    learner_rubrics = rubric_weeks()
     for p in files:
         name = p.name
         if not re.search(r"_(STUDENT|TRAINER|INTERNAL)\.", name):
@@ -339,8 +358,10 @@ def main():
                     if not re.search(r"\b(tentative|confirmed)\b", m.group(0), re.IGNORECASE):
                         print(f"FAIL  {name}: an IITGN faculty session is mentioned without its "
                               f"status: '{m.group(0).strip()[:80]}'"); fails += 1
-                if re.search(r"\b(marks|weightage|graded out of)\b", txt, re.IGNORECASE):
-                    print(f"WARN  {name}: marks language in a STUDENT file; confirm the Structure tab allows it")
+                stem = DAY_STEM.match(name)
+                if MARKS.search(txt) and not (stem and f"W{stem.group(1)}" in learner_rubrics):
+                    print(f"WARN  {name}: marks language in a STUDENT file; confirm the evaluation "
+                          f"block in data/programme/facts.yaml allows it")
             for line in txt.splitlines():
                 if URL.search(line) and not DATED.search(line) and "to be found" not in line.lower():
                     print(f"WARN  {name}: undated link: {line.strip()[:90]}")
@@ -365,3 +386,16 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Test inputs and expected outcomes
+# --------------------------------
+# python3 scripts/verify.py content/W03/D5
+#     RESULT: PASS, and no marks-language warning, because the evaluation block holds the W03 rubric
+#     as locked and learner-facing.
+# python3 scripts/verify.py content/W00/D2
+#     Both STUDENT files that state marks, the discussion index and foundations chapter 3, are still
+#     warned about, since no W00 rubric reaches learners.
+# The W03 rubric's learner_facing set to anything but allowed in data/programme/facts.yaml
+#     Every W03 STUDENT file that states marks is warned about again.
+# python3 scripts/verify.py content/W09/D9
+#     FAIL  no files found under content/W09/D9
