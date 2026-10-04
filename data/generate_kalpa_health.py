@@ -616,11 +616,14 @@ def witness(tables, bookings):
     w["retail_claims"] = len(retail)
     w["payer_mix"] = {t: sum(1 for c in retail if c["payer_type"] == t) / len(retail)
                       for t in ("commercial", "Medicare", "Medicaid", "self-pay")}
-    w["denial_rate_overall"] = sum(1 for c in retail if c["denial_category"]) / len(retail)
+    # The count prints beside the rate, so a reader takes the percentage from the count and the base
+    # (1,175 of 11,355 is 10.3 percent) and never rounds the four-place rate a second time.
+    denied = [c for c in retail if c["denial_category"]]
+    w["denied_claims"] = len(denied)
+    w["denial_rate_overall"] = len(denied) / len(retail)
     w["denial_rate_by_payer"] = {t: sum(1 for c in retail if c["payer_type"] == t and c["denial_category"])
                                  / max(1, sum(1 for c in retail if c["payer_type"] == t))
                                  for t in ("commercial", "Medicare", "Medicaid", "self-pay")}
-    denied = [c for c in retail if c["denial_category"]]
     w["denials_by_category"] = {k: sum(1 for c in denied if c["denial_category"] == k)
                                 for k in DENIAL_CATEGORIES}
     w["denied_billed"] = sum(dollars(c["billed_amount"]) for c in denied)

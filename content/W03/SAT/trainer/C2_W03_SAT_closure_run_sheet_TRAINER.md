@@ -64,7 +64,7 @@ What comes after it? What is cut first?
 
 | | |
 |---|---|
-| **Start from** | Every group has its claim from Wednesday and its build frozen at Friday's close, with two cold runs logged (a cold run starts from a fresh machine on the raw files, with nothing computed in advance), and every learner sat Mock R1 on Thursday. Seven GD rounds and a first tranche of up to three presentations ran on Friday, and Friday's close drew Saturday's presentation order (`content/W03/D5/trainer/C2_W03_D05_day_sheet_TRAINER.md`). |
+| **Start from** | Every group has its claim from Wednesday and its build frozen at Friday's close, with cold run one logged and run two either counted at Friday's freeze check or named for a rerun from the frozen commit this morning (a cold run starts from a fresh machine on the raw files, with nothing computed in advance), and every learner sat Mock R1 on Thursday. Seven GD rounds ran on Friday, or fewer where a round could not run there and moved to this morning, with a first tranche of up to three presentations, and Friday's close drew Saturday's presentation order (`content/W03/D5/trainer/C2_W03_D05_day_sheet_TRAINER.md`). |
 | **Go as far as** | Every group presented, demoed live and defended; every learner holds a GD score, a mini project score in its two parts, and a Mock R1 score, or a recorded absence; the grades closed and signed; one improvement per group written up for Build 2. |
 | **Stop before** | Any teaching, any finding named in the room, and any score read aloud. |
 | **Comes later** | Week 4 Monday, 26 October: back in Kalpa Retail, where Meera Raghavan's growth plan needs its metric. |
@@ -82,7 +82,7 @@ booked for two rooms at once leaves a slot unscribed or a machine unchecked.
 | The Programme Head | Runs the day, assigns the rooms, settles anything disputed after the room, and owns grade closure |
 | The industry expert | Chairs the expert's room and the in-room GD rounds that remain |
 | The senior industry leader | Flies in for the day and returns the same day; chairs the leader's room |
-| The Principal Advisor | Online; runs a remaining GD round in parallel where the roster needs it |
+| The Principal Advisor | Online; chairs GD round 9 from minute 10, in parallel with the expert's round 8, and any round Friday could not run straight after it |
 | The trainer | Scribe and timekeeper in the expert's room; checks each demo machine's commit before its slot in that room; copies GD and mini project scores into the closure workbook; runs the week close |
 | The Academic TA | Prepares every demo machine before the rooms open; scribe and timekeeper in the leader's room, checking each demo machine's commit before its slot there; sits in on the separate questions to quiet members |
 
@@ -145,9 +145,12 @@ runs the GD rounds first. Where it can be done without splitting a sub-problem, 
 (revenue) and 5 (the offer) before the leader, whose questions are a board's, and 2 (bookings), 3
 (billing) and 4 (no-shows) before the expert. The allocation of groups to questions was the Programme Head's on Monday, so this sheet
 assumes none. Friday's draw puts the Saturday GD groups no earlier than the drawn order's third slot,
-which does not keep them clear of their rounds once the clusters are split between rooms. When
-assigning rooms, the Programme Head checks that no GD group has a slot starting before minute 70, and
-moves its cluster to the other room, or the group's place inside the cluster, if one does.
+and a group whose round moved from Friday no earlier than the fourth, which does not keep them clear
+of their rounds once the clusters are split between rooms. When assigning rooms, the Programme Head
+checks that no GD group's slot starts sooner than 30 minutes after its round ends: minute 70 for
+rounds 8 and 9, minute 100 for a round moved from Friday, which runs 40 to 70, and 30 minutes later
+for each further moved round. Where one does, the Programme Head moves its cluster to the other room,
+or the group's place inside the cluster.
 
 The day runs a morning of 180 minutes and an afternoon of 120, with lunch between them, 300 minutes
 of room time (`data/programme/facts.yaml`).
@@ -198,7 +201,7 @@ minutes.
 | Minutes | The leader's room | The expert's room |
 |---|---|---|
 | Morning 0 to 10 | The opening, together | (together) |
-| 10 to 160 | Five slots: two clusters of two and the single group | GD rounds 10 to 70: two with the expert, one online with the Principal Advisor from minute 10; then three slots, 70 to 160 |
+| 10 to 160 | Five slots: two clusters of two and the single group | GD rounds 10 to 70: round 8 with the expert, 10 to 40, then the expert's reserve to 70; round 9 and the round moved from Friday online with the Principal Advisor, 10 to 70; then three slots, 70 to 160 |
 | 160 to 180 | Reserve: quiet members; the leader signs | Reserve: quiet members; GD scores entered |
 | Afternoon 0 to 30 | The leader joins the expert's room as a second pair of ears if still on campus | Slot 4, the last of its second cluster |
 | 30 to 60 | Grade closure, together | |
@@ -247,7 +250,7 @@ slot? What is the rule when a demo fails? What if the machine fails before the c
 
 | Before | Who | Done when |
 |---|---|---|
-| The room opens: run the demo from the frozen commit for any group with no second cold run logged on Friday, as Friday's freeze requires; this is a rehearsal, and the group's one run before the panel is still to come | The Academic TA | Every group has a logged cold run on its frozen commit |
+| The room opens: run the demo from the frozen commit for any group whose run two did not count at Friday's freeze check, as Friday's freeze requires; this is a rehearsal, and the group's one run before the panel is still to come | The Academic TA | Every group has a cold run that counts for its frozen commit: run two counted on Friday, or this morning's rerun logged |
 | The room opens: open each group's demo machine on a fresh Codespace at its frozen commit, the raw files in its data folder, and leave the notebook unrun | The Academic TA | Every group has a cold machine on its frozen commit |
 | Each slot: check `git rev-parse HEAD` against Friday's freeze table | Each room's scribe, for that room's slots | The hash matches, or the panel has seen the difference and ruled on it |
 
@@ -418,7 +421,7 @@ fix improvised in the moment tends to cut a group's question time first.
 | A room is 10 minutes behind after two slots | The changeover drops to one minute for the rest of the morning, and scores go into the reserve |
 | A room is 20 minutes behind at the end of the morning | The reserve absorbs it; at the likely load each room has at least 50 minutes of reserve, and in the heaviest shapes the afternoon's first 30 does |
 | A GD round overruns | The next GD starts late and the expert's first slot slides with it; the leader's room does not move |
-| More GD rounds remain than this sheet plans | The Principal Advisor runs each extra round online, in parallel with the expert's, from minute 10 |
+| A GD round could not run on Friday | It runs online with the Principal Advisor straight after GD round 9, from minute 40, as Friday's facilitation notes send it, and each further moved round follows it; its group's slot starts no earlier than minute 100, 30 minutes later for each moved round ahead of it, as the Programme Head's room check requires |
 | The leader is not in the room at the opening | The expert starts presentations in the expert's room at once, and the Principal Advisor takes the GDs online. The leader's room starts on arrival and slides by the delay: up to 30 minutes fits the likely load's reserve in either plan, and up to 20 the heaviest 2, 2, 2, 2 and 1 shape. The 3, 3 and 3 shape has no slack, so the leader's last slot moves to the afternoon's first 30 minutes, and closure starts once that slot, the room's quiet-member questions and the leader's signing are done, about 40 minutes in; the afternoon's 45 unused minutes absorb it |
 | The leader cannot come at all | The expert hears every group alone, the GD rounds go online with the Principal Advisor one after another from minute 10, the GD groups take the expert's last slots, and slots shrink: six slots of 28 run from minute 10 to 178 at the likely load; at the heaviest, nine slots of 26 (17, the full 8 of questions, a one-minute changeover) run six in the morning and three in the afternoon's first 78 minutes, closure keeps its 30 and the week close runs in 10 |
 | The leader has to leave before the last slot | The leader's unheard groups move to the expert's room after its own slots, before closure; the leader signs the scores already given before leaving |
