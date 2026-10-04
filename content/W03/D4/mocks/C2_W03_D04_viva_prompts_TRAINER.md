@@ -4,7 +4,7 @@
 here with its witness number. Every question an assessor reads aloud asks without telling: a plant
 appears only in the column that says what a learner who did the work says, and never in a probe, a
 follow-up or a push. A learner who asks "is there something hidden in the data?" gets the question
-back: "What would you check?"
+back: **"What would you check?"**
 
 **Who needs the answer.** The three assessors, who each run about twelve eight-minute vivas on
 Thursday 22 October, on the groups they hear all day: the Programme Head G1, G4 and G7, the Academic
@@ -37,8 +37,8 @@ carries the same plants.
 **Who needs the answer.** Each assessor, before the first viva: the five probes come in a fixed
 order, and each one is the evidence for one row of the rubric.
 
-**The questions on the way.** Which probes, for how long? Which probe does each seat take? When do
-you ask to see the work? What do you listen for in every answer? Why does no probe say what the data
+**The questions on the way.** Which probes, for how long? Which seat probe does each learner take?
+When do you ask to see the work? What do you listen for in every answer? Why does no probe say what the data
 holds? How do you push on a caveat?
 
 The viva climbs in three steps, the way an interviewer moves from a candidate's work to their
@@ -49,7 +49,7 @@ call.
 |---|---|---|---|---|
 | 1.5 | The opener, the same for every learner | What you did | The row's interview angle | The translation, with one decision defended by evidence (6) |
 | 1.5 | The translation probe for the group's sub-problem | What you did, and which Week 1 or 2 move it carried | The row's thinking column | The translation, with one decision defended by evidence (6) |
-| 2 | One of four seat probes, chosen by seat | Why that way | The spine's plant table, asked without naming the plant | The translation, with one decision defended by evidence (6) |
+| 2 | One of four seat probes, as the Grid prints it | Why that way | The spine's plant table, asked without naming the plant | The translation, with one decision defended by evidence (6) |
 | 2 | The caveat challenge, pushed as the asker | What would change your call | The group's headline claim from Wednesday | Defending a caveat under challenge (6) |
 | 1 | The looking-back probe | What you would do differently | The group's challenges log and decisions log | What they would do differently (3) |
 
@@ -68,12 +68,14 @@ The rubric, rendered from `data/programme/facts.yaml`:
 | Project viva | What they would do differently | 3 |
 <!-- /sync:rubric:W03/mock -->
 
-### Which probe does each seat take?
+### Which seat probe does each learner take?
 
 Each sub-problem carries four seat probes, P1 to P4, each aimed at one thing in the files a group had
-to find, and rotated by seat so that group-mates meet different ones: seat 1 takes P1, seat 2 takes
-P2, seat 3 takes P3 and seat 4 takes P4. The roster's Grid prints each learner's probe beside the
-technical questions; the seat list the learners see prints neither. The opener, the translation
+to find, and each asking why the group chose its way and what the other way would have given. The
+roster's Grid prints each learner's probe beside the technical questions and the reserves; the seat
+list the learners see prints none of them. The four members of a group always take four different
+probes, and where two groups share a sub-problem the second group's rotation starts one probe on, so
+a seat number tells a learner nothing about the probe. The opener, the translation
 probe, the caveat challenge and the looking-back probe stay the same for every learner, because a
 learner's own words are what they test, and group-mates' answers to them should differ. A learner
 racing through can take the headline probe, H, as a second "why" probe.
@@ -108,9 +110,9 @@ and move on, without steering, confirming or denying.
 Ask for the group's headline claim and its caveat first, in the learner's words, then push as the
 asker on the caveat the learner gave. Each sub-problem's table has a row for the caveats groups most
 often write, and the condition column, which is never read aloud, says which caveat the row answers.
-A learner whose caveat is anything else meets the general push: "That sounds like doubt. What would
-make it smaller, and would it change what I should do?" A learner who gives no caveat meets "What is
-the one thing that could make your number wrong, and how would you know?" first. A push stays on what
+A learner whose caveat is anything else meets the general push: **"That sounds like doubt. What would
+make it smaller, and would it change what I should do?"** A learner who gives no caveat meets **"What
+is the one thing that could make your number wrong, and how would you know?"** first. A push stays on what
 the learner has said and never brings in a plant.
 
 ---
@@ -155,7 +157,7 @@ count?"** It tests Week 1 Monday's move: which total, and what each total counts
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| Names the unit, tests booked, tests performed or bookings, with both booking systems in it and the employer contract out or shown apart, and places the number against the plan of 18, such as tests performed up 8.6 percent, 22,468 to 24,399 | Quotes the group's percentage without its unit, or says the dashboard is wrong without saying what it counted | "What did your group leave out of its count, if anything, and why?" (The employer contract's 6,000 tests, shown apart: with them in, tests performed would grow 35.3 percent and tests booked 33.6 while bookings stay at 5.6, so one employer's booking would describe the growth of the whole business.) |
+| Names the unit, tests booked, tests performed or bookings, with both booking systems in it and the employer contract out or shown apart, and places the number against the plan of 18, such as tests performed up 8.6 percent, 22,468 to 24,399 | Quotes the group's percentage without its unit, or says the dashboard is wrong without saying what it counted | "Why that count rather than another, and what would the other count have given?" (Another unit with its growth on both systems, such as tests booked up 7.8 percent or bookings up 5.6, and the employer contract's 6,000 tests shown apart: with them in, tests performed would grow 35.3 percent and tests booked 33.6 while bookings stay at 5.6, so one employer's booking would describe the growth of the whole business. A learner who carried it names no other count.) |
 
 ---
 
@@ -212,37 +214,37 @@ for Kalpa Retail in Week 1."**
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| Patients, times bookings per patient, times tests or claim lines per booking, times billed dollars per line, or claims times the mean claim, with the payer as a split; says where retail's "items per order" breaks on a lab: a panel is one priced line covering several tests, a collection at home carries its own fee line, and an employer account is a branch of its own | Recites Kalpa Retail's tree with lab words swapped in, and cannot say where one line covering several tests sits | "Which leaf of your tree counts tests, and what does one claim line stand for in it?" (A claim line can be one test, a panel covering several or a collection fee, so lines are no count of tests: the whole-body wellness panel is one line at $299 for twelve tests whose list prices add to $785.) |
+| Patients, times bookings per patient, times tests or claim lines per booking, times billed dollars per line, or claims times the mean claim, with the payer as a split; says where retail's "items per order" breaks on a lab: a panel is one priced line covering several tests, a collection at home carries its own fee line, and an employer account is a branch of its own | Recites Kalpa Retail's tree with lab words swapped in, and cannot say where one line covering several tests sits | "Which leaf of your tree did you check against the raw files, and what did the check show?" (A leaf with its check, such as tests per booking from the booking-tests file against claim lines per claim: a claim line can be one test, a panel covering several or a collection fee, so lines are no count of tests, and the whole-body wellness panel is one line at $299 for twelve tests whose list prices add to $785. A learner who carried the tree names no check.) |
 
 ### Why did the revenue group count and clean as it did, and what would the alternative have given?
 
-Each seat takes its own probe: seat 1 P1, seat 2 P2, seat 3 P3 and seat 4 P4.
+The Grid prints which of the four each learner takes.
 
-**P1, seat 1. "Which number did your group give Dr Menon as a typical claim in Q3, why that one, and
-what would the other measure have said?"** It tests Week 1 Monday's move: the typical value one large
+**P1. "Which number did your group give Dr Menon as a typical claim in Q3, why that one, and what
+would the other measure have said?"** It tests Week 1 Monday's move: the typical value one large
 record cannot move.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| The median, $150, beside the mean, $210.50, because the mean moves with one record: sorted the claims and found one claim of $180,000 on an employer account, 14.6 percent of Q3's billed charges; the mean without it is $179.75; kept it in revenue as its own branch | Gives $210.50 as typical, or says "we removed an outlier" | "Why do the two measures differ in Q3, and what did you do about it?" (One employer claim of $180,000 lifts the mean from $179.75 to $210.50; it stays in revenue on its own line, with no payment posted on it yet; Q2's mean of $176.13 sits over the same $150 median.) |
+| The median, $150, beside the mean, $210.50, because the mean moves with one record: sorted the claims and found one claim of $180,000 on an employer account, 14.6 percent of Q3's billed charges; the mean without it is $179.75; kept it in revenue as its own branch | Gives $210.50 as typical, or says "we removed an outlier" | "If the two measures you gave differ, what makes them differ in your data, and what did you do about it?" (One employer claim of $180,000 lifts the mean from $179.75 to $210.50; it stays in revenue on its own line, with no payment posted on it yet; Q2's mean of $176.13 sits over the same $150 median.) |
 
-**P2, seat 2. "Dr Menon counts test volume. What did your group count as one test, why that unit, and
-what would the other count have given?"** It tests Week 1 Monday's move: which total, and what each
+**P2. "Dr Menon counts test volume. What did your group count as one test, why that unit, and what
+would the other count have given?"** It tests Week 1 Monday's move: which total, and what each
 total counts.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
 | Counted tests from the booking-tests file's test and component lines on completed bookings, 24,399 in Q3, against 11,395 claim lines outside the contract, because a panel bills as one line covering several tests and some lines are home-collection fees, which are no test | Counts claim lines or claims as tests | "Which file would Dr Menon's volume come from, and why that one?" (The booking-tests file's test and component lines, since a claim line can be a panel covering several tests or a fee that is no test; her volume is tests.) |
 
-**P3, seat 3. "Which branch did your group name as short, how much of the shortfall does it carry,
-and which other branch did you rule out?"** It tests Week 1 Tuesday's move: which segment moved.
+**P3. "Which branch did your group name as short, why that one, and how much of the shortfall would
+the branch you ranked second have explained?"** It tests Week 1 Tuesday's move: which segment moved.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| Outside the contract, billed charges grew 8.3 percent, $93,715 short of the plan; Chicago and Philadelphia carry $63,436 of it, falling 6.5 and 10.9 percent while the other four metros grew; then either rules the payer split out with its numbers or reports it second, commercial 4.2 percent short of its own plan against self-pay's 17.1; says Q2 has 91 days and Q3 92 | Says "revenue grew 26.9 percent", the total with the contract, or names a branch with no number | "If you give Dr Menon one number for the branch that is short, what is it, and what is it out of?" (About two thirds of the $93,715 shortfall, $63,436, in Chicago and Philadelphia, from 24.5 percent of Q2's billing; a group that answers by payer gives Medicaid's 25.3 percent of the shortfall from 14.9 percent of Q2's billing, which is real and the smaller pattern.) |
+| Outside the contract, billed charges grew 8.3 percent, $93,715 short of the plan; Chicago and Philadelphia carry $63,436 of it, falling 6.5 and 10.9 percent while the other four metros grew; then either rules the payer split out with its numbers or reports it second, commercial 4.2 percent short of its own plan against self-pay's 17.1; says Q2 has 91 days and Q3 92 | Says "revenue grew 26.9 percent", the total with the contract, or names a branch with no number | "If you give Dr Menon one number for the branch that is short, what is it, and what is it out of?" (About two thirds of the $93,715 shortfall, $63,436, in Chicago and Philadelphia, from 24.5 percent of Q2's billing. A group that answers by payer has found something real and smaller, and is right if it names its measure: Medicare carries the most shortfall dollars, $28,437, 30.3 percent of it; self-pay falls furthest short of its own plan, 17.1 percent, and carries the most against its size, 17.1 percent of the shortfall from 8.2 percent of Q2's billing; Medicaid carries 25.3 percent of the shortfall from 14.9 percent.) |
 
-**P4, seat 4. "What did your group's profile of the claims file find before you summed anything, and
-what did you decide about it?"** It tests Week 1 Wednesday's move: profile before you count, and
+**P4. "What did your group's profile of the claims file find before you summed anything, why did you
+treat it the way you did, and what would the billed total have been the other way?"** It tests Week 1 Wednesday's move: profile before you count, and
 every value converted with a logged rule.
 
 | Did the work | Carried it | The follow-up |
@@ -255,8 +257,8 @@ Push as the finance head, with the row that matches the caveat the learner gave.
 
 | If the group's caveat is about | The push | Did the work | Carried it | The follow-up |
 |---|---|---|---|---|
-| The one large claim, which the group has named | "Your caveat sets one claim apart. It is revenue. Why should I not count it?" | Keeps it in billed revenue and shows it apart: one claim is 14.6 percent of Q3, so any average or growth rate with it inside describes one employer; the caveat is about which number describes the retail business, and no revenue is removed | Removes the claim from revenue, or drops the caveat under the push | "Would your answer change if that claim came back every quarter?" (It becomes a branch with its own plan line; the retail tree still reads without it.) |
-| The payers growing differently, which the group has named | "Your caveat says the payers moved differently. Does that change which branch I fund?" | Holds the order: the payer gap is real, with commercial 4.2 percent short of its own plan and self-pay 17.1, but the two metros carry two thirds of the shortfall from a quarter of the billing, so the recovery effort goes there first and the payer gap is looked at next | Switches the recommendation to a payer, or cannot say which pattern is larger | "What would you look at to tell the two patterns apart?" (Each payer's growth outside the two metros: commercial grew 20.8 percent there against 3.5 to 7.6 for the others, so the payer gap is no echo of the metros' fall.) |
+| The one large claim, which the group has named | "Your caveat sets part of the revenue apart. It is revenue. Why should I not count it?" | Keeps it in billed revenue and shows it apart: one claim is 14.6 percent of Q3, so any average or growth rate with it inside describes one employer; the caveat is about which number describes the retail business, and no revenue is removed | Removes the claim from revenue, or drops the caveat under the push | "Would your answer change if what you set apart came back every quarter?" (It becomes a branch with its own plan line; the retail tree still reads without it.) |
+| The payers growing differently, which the group has named | "Your caveat says the payers moved differently. Does that change which branch I fund?" | Holds the order: the payer gap is real, with commercial 4.2 percent short of its own plan and self-pay 17.1, but the two metros carry two thirds of the shortfall from a quarter of the billing, so the recovery effort goes there first and the payer gap is looked at next | Switches the recommendation to a payer, or cannot say which pattern is larger | "What else could produce a payer gap like that, and how would you rule it out?" (Where the claims were billed: each payer's growth outside the two falling metros, where commercial grew 20.8 percent against 3.5 to 7.6 for the others, so the payer gap holds outside the metros' fall; a learner who did it names the two metros as the larger pattern.) |
 | Anything else, or no caveat | The general push, or for no caveat the question that asks for one | Names the check that would shrink the caveat and the decision it could move, with a number | Drops the caveat, or repeats it without a number | "What would you check tomorrow, and how long would it take?" (A named check, its size in rows or dollars, and the decision it could move.) |
 
 ---
@@ -300,8 +302,9 @@ in the site list's `new_system_code`), patient numbers without the `P-` prefix, 
 `WEB`, `CALL`, `MOBILEDRAW`) and states (`DONE` for 143 and `CXL` for 10). A strict day-first read,
 such as pandas' `format="%d/%m/%Y"`, fails on all 153, since every day is 18 or later, and with
 `errors="coerce"` turns them into blanks that a count drops, which brings the 23 percent back.
-pandas' `dayfirst=True` instead falls back to month first without a warning when the day is above 12,
-so it reads them right by accident (pandas 3.0.6, checked 1 October 2026).
+pandas' `dayfirst=True` instead falls back to month first when the day is above 12 and says so in a
+UserWarning, "Parsing dates in %m/%d/%Y format when dayfirst=True was specified", so it reads them
+right by accident (pandas 3.0.6, checked 4 October 2026).
 
 A group that found all three reaches this answer. Bookings in the two metros fell about 12 percent,
 from 1,415 to 1,243, and the 23 percent on the old report comes from the system switch. Month by
@@ -314,7 +317,7 @@ team has a fall of about 12 percent to explain.
 The translation probe comes from the row's "why this identity rule for bookings" and tests Week 1
 Wednesday's move: which rows repeat, and what makes two rows one booking.
 
-**"What made two booking rows the same booking in your count, and why that rule?"**
+**"What did your group count as one booking, and why that rule?"**
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
@@ -322,37 +325,37 @@ Wednesday's move: which rows repeat, and what makes two rows one booking.
 
 ### Why did the bookings group count from the files it chose, and what would the other choice have given?
 
-Each seat takes its own probe: seat 1 P1, seat 2 P2, seat 3 P3 and seat 4 P4.
+The Grid prints which of the four each learner takes.
 
-**P1, seat 1. "How far did bookings fall in the two metros, and how did your group confirm the fall
-before explaining it?"** It tests Week 1 Tuesday's move: rung 1, is the drop real, confirmed in every
+**P1. "How far does your group say bookings fell in the two metros, why do you trust that figure, and
+what did your first count say?"** It tests Week 1 Tuesday's move: rung 1, is the drop real, confirmed in every
 system.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
 | About 12 percent, 1,415 to 1,243, once the new system's bookings are in; the old export alone says 23 percent, 1,415 to 1,090; Chicago minus 13.0 and Philadelphia minus 11.2; confirmed by the old export's last date for the two metros, 17 September, against the new system's first, 18 September | Says 23 percent, or says 12 without being able to say where the other bookings came from | "Show me the cell or the log line that confirms it." (The count across both exports, with the old export's last date for the two metros, 17 September, and the new system's 153 bookings from 18 September.) |
 
-**P2, seat 2. "Which booking files did your group count from, why those, and what does each one
-hold?"** It tests Week 1 Wednesday's move: profile before you count, and reconcile codes across two
+**P2. "Which booking files did your group count from, why those, and what would the other choice you
+weighed have given?"** It tests Week 1 Wednesday's move: profile before you count, and reconcile codes across two
 sources.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| Both exports: the old one's bookings to 17 September in the two metros and the new system's 153 from 18 to 30 September; mapped the sites through the site list's `new_system_code` (`ORD-01` to `KH-CHI-01`), the channel and state codes (`DONE` to completed, `CXL` to cancelled) and the patient numbers to the register's `P-` ids, and read the new system's dates month first | Names the old export only, or says "we merged the two files" with no mapping | "Which columns did you have to convert before counting, and how did you check each conversion?" (Site, channel, state, patient number and date; the date matters most, since a strict day-first read fails on all 153 and a coerced read leaves blanks a count drops, which brings the 23 percent back.) |
+| Both exports: the old one's bookings to 17 September in the two metros and the new system's 153 from 18 to 30 September; mapped the sites through the site list's `new_system_code` (`ORD-01` to `KH-CHI-01`), the channel and state codes (`DONE` to completed, `CXL` to cancelled) and the patient numbers to the register's `P-` ids, and read the new system's dates month first | Names the old export only, or says "we merged the two files" with no mapping | "What did you check in each file before counting, and what did the checks find?" (Site, channel, state, patient number and date need converting; the date matters most, since a strict day-first read fails on all 153 and a coerced read leaves blanks a count drops, which brings the 23 percent back.) |
 
-**P3, seat 3. "Is the fall your group reports a real fall in patients booking, and what showed
-you?"** It tests Week 1 Tuesday's move: the ladder's next rung, the same windows month by month.
+**P3. "Is the fall your group reports a real fall in patients booking, why do you read it that way,
+and what would the other reading mean for the operations head's decision?"** It tests Week 1 Tuesday's move: the ladder's next rung, the same windows month by month.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
 | Looked month by month across both systems: 488, 478 and 449 from April to June, 452, 420 and 371 from July to September, so the two metros were falling before 18 September, and the switch doubled how the fall looked | Treats the group's number as all real or all an artefact, with no months to show for it | "What would you ask the operations head, to explain the fall you found?" (What changed on the ground from August: staffing, opening hours, a competitor, a payer's network.) |
 
-**P4, seat 4. "What does one row of the old booking export stand for, and how did your group check
-that?"** It tests Week 1 Wednesday's move: which copy stays.
+**P4. "Did your group's cleaning of the booking files move the two metros' fall, why, and what would
+the fall have been without it?"** It tests Week 1 Wednesday's move: which copy stays.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| Not always one booking: 11,729 rows for 11,549 ids, 180 ids twice from a re-export, booked 1 June to 26 September; kept one row per id, the latest `updated_at` with a tie-break, and logged the rule with its count | "One row is one booking", or "there were some duplicates" with no count | "Did your answer to that change the two metros' fall, and by how much?" (Barely: 35 of the repeats are the two metros' Q2 rows and 9 their Q3 rows, so on raw rows the old export falls 24.2 percent instead of 23.0; a learner who did it checks by metro and quarter.) |
+| One row per booking id in the old export, the latest `updated_at` with a tie-break, logged with its count: 11,729 rows for 11,549 ids, 180 ids twice from a re-export, booked 1 June to 26 September; the repeats barely move the fall, 24.2 percent on raw rows against 23.0, since 35 of them are the two metros' Q2 rows and 9 their Q3 rows; stacking the new system's bookings moves it far more, from 23.0 to 12.2 percent | "We cleaned the data", with no count, or "it changed nothing" with no check | "Which step moved it most, and how did you check that step?" (Stacking the new system's 153 bookings, which takes the fall from 23.0 to 12.2 percent; the repeats move it about a point; a learner who did it checks by metro and quarter.) |
 
 ### What does the operations head push on, and what holds?
 
@@ -360,8 +363,8 @@ Push as the operations head, with the row that matches the caveat the learner ga
 
 | If the group's caveat is about | The push | Did the work | Carried it | The follow-up |
 |---|---|---|---|---|
-| Joining two booking systems, which the group has named | "Your caveat says the count depends on joining two booking systems. I need one number to decide on staff: did bookings fall or not?" | Holds both halves: yes, they fell about 12 percent, from 1,415 to 1,243, and the 23 percent on the old report is the switch; the caveat is about the size of the fall, never whether it happened, and it names what would shrink it, the data team confirming the new system's export is complete to 30 September | Drops the caveat under the push and gives one number, or retreats to "it depends" | "What would you check tomorrow to make the caveat smaller?" (Whether the new system's export is complete to 30 September, by asking the data team for its count of bookings by day.) |
-| The old export's repeated rows, which the group has named | "Your caveat says the old export repeats rows. Does that make your fall bigger or smaller, and should I wait?" | Answers with the check: the repeats move the two metros' fall in the old export by about a point, 24.2 percent on raw rows against 23.0 on one row per id, so the caveat is about precision and the decision need not wait | Cannot say which way the repeats move the number | "What would let you drop that caveat?" (A re-export with one row per booking, or the data team naming which copy is current.) |
+| Joining two booking systems, which the group has named | "Your caveat says the count depends on how the files are put together. I need one number to decide on staff: did bookings fall or not?" | Holds both halves: yes, they fell about 12 percent, from 1,415 to 1,243, and the 23 percent on the old report is the switch; the caveat is about the size of the fall, never whether it happened, and it names what would shrink it, the data team confirming the new system's export is complete to 30 September | Drops the caveat under the push and gives one number, or retreats to "it depends" | "What would you check tomorrow to make the caveat smaller?" (Whether the new system's export is complete to 30 September, by asking the data team for its count of bookings by day.) |
+| The old export's repeated rows, which the group has named | "Your caveat says the export needed cleaning first. Does that make your fall bigger or smaller, and should I wait?" | Answers with the check: the repeats move the two metros' fall in the old export by about a point, 24.2 percent on raw rows against 23.0 on one row per id, so the caveat is about precision and the decision need not wait | Cannot say which way the repeats move the number | "What would let you drop that caveat?" (A re-export with one row per booking, or the data team naming which copy is current.) |
 | Anything else, or no caveat | The general push, or for no caveat the question that asks for one | Names the check that would shrink the caveat and the decision it could move, with a number | Drops the caveat, or repeats it without a number | "What would you check tomorrow, and how long would it take?" (A named check, its size in rows or days, and the decision it could move.) |
 
 ---
@@ -411,41 +414,41 @@ led by the $180,000 employer claim.
 
 The translation probe tests Week 2 Tuesday's move: attach, count, explain the difference, then sum.
 
-**"In Week 2 you joined payments to orders on an id both sides shared. What did your group join on
-here, and how did you check what the join kept, dropped and repeated?"**
+**"In Week 2 you joined payments to orders. Which columns did your group join on here, why those, and
+how did you check what the join kept, dropped and repeated?"**
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| An exact join matched 216 of 11,343 postings, 1.9 percent, because the posting system writes the claim three ways; normalised to the six-digit serial, every posting found its claim, the billed amounts agree on the matched pairs, and rows were counted before and after the join | "We joined on claim id", with a collected figure and no count before and after | "How many postings matched on your first try, and what did you change?" (216 of 11,343 on an exact join; the serial padded to six digits, after which all matched, then the billed amount each posting carries confirmed against its claim's.) |
+| An exact join matched 216 of 11,343 postings, 1.9 percent, because the posting system writes the claim three ways; normalised to the six-digit serial, every posting found its claim, the billed amounts agree on the matched pairs, and rows were counted before and after the join | "We joined on claim id", with a collected figure and no count before and after | "How many postings did your join match, out of how many, and how do you know that count is right?" (All 11,343 once the key is normalised to the six-digit serial, with the billed amount each posting carries confirmed against its claim's; an exact join matches 216, 1.9 percent. A learner who joined exactly and stopped gives 216 or 1.9 percent without seeing a problem, which is the evidence.) |
 
 ### Why did the billing group class the postings as it did, and what would the alternative have given?
 
-Each seat takes its own probe: seat 1 P1, seat 2 P2, seat 3 P3 and seat 4 P4.
+The Grid prints which of the four each learner takes.
 
-**P1, seat 1. "How many postings can one claim carry in your data, and what did your group decide
-each kind meant?"** It tests Week 2 Tuesday's move: what makes a second posting a repeat.
+**P1. "Which postings did your group add up to get the paid figure, why those, and what would the
+paid figure have been on the other rule you weighed?"** It tests Week 2 Tuesday's move: what makes a second posting a repeat.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| A payment, a reversal or a denial, and sometimes two payments: 280 pairs with the same claim and the same amount, both electronic remittances, 0 to 2 minutes apart, $19,204.63, which is a file loaded twice, counted once and listed for the posting team to confirm; 105 reversals take back $8,662.87 | "We removed duplicate payments", with no rule | "Which kinds did you sum to get the paid figure, and which did you leave out?" (Each payment once, net of reversals; the 280 second copies out; denials pay $0.00, so they add nothing either way.) |
+| Each payment once, net of reversals: 280 pairs with the same claim and the same amount, both electronic remittances, 0 to 2 minutes apart, $19,204.63, are a file loaded twice, counted once and listed for the posting team to confirm; 105 reversals take back $8,662.87; denials pay $0.00; adding every payment would give $820,518.19 against $801,313.56 | "We added up the payments", with no rule for repeats or reversals | "Show me the line in your decisions log for that rule, and the dollars it moved." (The rule for second payments, $19,204.63 left out, and the reversals, $8,662.87 taken back; a learner who did it finds the line in under a minute.) |
 
-**P2, seat 2. "Which claims did your group class as unpaid, why those, and how many dollars do they
-hold?"** It tests Week 2 Tuesday's move: the rows with no partner, found by an anti-join.
+**P2. "Which claims did your group class as unpaid, why those, and how would the figure change if you
+had drawn the line elsewhere?"** It tests Week 2 Tuesday's move: the rows with no partner, found by an anti-join.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
 | 398 claims with no posting, $253,165 billed, in every month from April to September, the $180,000 employer claim among them; says a September claim may simply not have been answered by 16 October; keeps denied claims as a class of their own | Gives a count with no dollars, or misses the claims with no posting at all | "Which unpaid claim would you chase first, and what would you ask about it?" (The $180,000 employer claim, asking its payment terms and who at the employer approved the invoice, since an employer may pay on terms longer than a quarter; then the oldest claims, nearest their payers' filing deadlines.) |
 
-**P3, seat 3. "What share of claims did payers deny, out of what, and which denials did your group
-say to work first?"** It tests Week 1 Monday's move: a rate with its denominator, on Week 2 Tuesday's
+**P3. "What share of claims did payers deny, out of what, which did your group say to work first and
+why, and what would working them in another order have cost?"** It tests Week 1 Monday's move: a rate with its denominator, on Week 2 Tuesday's
 matched claims.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| 1,175 of the 11,355 retail claims, 10.35 percent, Medicaid highest at 14.9 and self-pay none, billing $230,132; 1,137 carry a denial posting that pays $0.00, and 38 have no posting; works first the denials a corrected claim can still win before the filing deadline | Gives a count with no denominator, or counts the $0.00 denial postings as payments | "Why that order, and what would change it?" (Missing or invalid information, 272 claims, is corrected and resent, so it goes first while the deadline allows; eligibility or coverage, 283, needs the right payer found first; any claim near its payer's filing deadline goes first whatever its category. The denial postings carry 269 and 265 of the two, since 38 denied claims have no posting.) |
+| 1,175 of the 11,355 retail claims, 10.35 percent, Medicaid highest at 14.9 and self-pay none, billing $230,132; 1,137 carry a denial posting that pays $0.00, and 38 have no posting; works first the denials a corrected claim can still win before the filing deadline | Gives a count with no denominator, or counts the $0.00 denial postings as payments | "What would change that order?" (Missing or invalid information, 272 claims, is corrected and resent, so it goes first while the deadline allows; eligibility or coverage, 283, needs the right payer found first; any claim near its payer's filing deadline goes first whatever its category. The denial postings carry 269 and 265 of the two, since 38 denied claims have no posting.) |
 
-**P4, seat 4. "Walk me from billed to paid in dollars, and tell me which line of your bridge you
-trust least."** It tests Week 1 Wednesday's move: the bridge that names every dollar between two
+**P4. "Walk me from billed to paid in dollars, tell me which line of your bridge you trust least and
+why, and what the paid figure would be if that line were wrong."** It tests Week 1 Wednesday's move: the bridge that names every dollar between two
 totals.
 
 | Did the work | Carried it | The follow-up |
@@ -458,7 +461,7 @@ Push as the finance head, with the row that matches the caveat the learner gave.
 
 | If the group's caveat is about | The push | Did the work | Carried it | The follow-up |
 |---|---|---|---|---|
-| The second payments, which the group has named | "Your caveat says those second payments are a loading error. My team says the money is in the bank twice. Is your caveat hiding cash?" | Keeps the rule and says what would change it: the pairs sit 0 to 2 minutes apart on one claim and one amount, all from electronic remittances, which is a loading pattern; the list of 280 goes to the posting team to check against the bank deposits; if the bank shows two deposits, the payer overpaid and is owed a refund, which is money owed back, never revenue | Concedes the money may be there twice, or insists with no evidence | "Which single record would settle it for one of them?" (The bank deposit, or the payer's payment trace number on the remittance.) |
+| The second payments, which the group has named | "Your caveat says some payments in the file should not count. My team says the money is in the bank. Is your caveat hiding cash?" | Keeps the rule and says what would change it: the pairs sit 0 to 2 minutes apart on one claim and one amount, all from electronic remittances, which is a loading pattern; the list of 280 goes to the posting team to check against the bank deposits; if the bank shows two deposits, the payer overpaid and is owed a refund, which is money owed back, never revenue | Concedes the money may be there twice, or insists with no evidence | "Which single record would settle it for one of them?" (The bank deposit, or the payer's payment trace number on the remittance.) |
 | Unpaid claims that may only be late, which the group has named | "Your caveat says some unpaid claims may only be late. Then which figure do I report as owed?" | Reports what is owed as billed on claims with no posting, $253,165, split by service month, and says the September claims may still be in transit while the oldest are at risk; names the next export as the check | Drops the late claims from the figure, or reports $253,165 as lost | "Which of those claims would you call lost, and on what rule?" (Only a claim past its payer's filing deadline, which the files do not hold, so none is called lost from these files alone.) |
 | Anything else, or no caveat | The general push, or for no caveat the question that asks for one | Names the check that would shrink the caveat and the decision it could move, with a number | Drops the caveat, or repeats it without a number | "What would you check tomorrow, and how long would it take?" (A named check, its size in rows or dollars, and the decision it could move.) |
 
@@ -509,35 +512,36 @@ counted.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| The same denominator: about half of the other centres' visits are walk-ins, 1,720 of 3,605, and a walk-in cannot miss a slot, so missed slots are compared on scheduled visits; then the question is whether the gap on that base is more than chance on 79 slots | "We compared each centre's no-show rate" | "What is each rate out of, at KH-ATL-03 and at the others, and why is that the fair base?" (Scheduled visits, 79 at KH-ATL-03 and 1,885 at the others, because only a booked slot can be missed; on all visits the others' walk-ins pull their rate down to 7.9 percent.) |
+| The same denominator: about half of the other centres' visits are walk-ins, 1,720 of 3,605, and a walk-in cannot miss a slot, so missed slots are compared on scheduled visits; then the question is whether the gap on that base is more than chance on 79 slots | "We compared each centre's no-show rate" | "What is your group's rate out of, and why that base?" (Scheduled visits, 79 at KH-ATL-03 and 1,885 at the others, because only a booked slot can be missed; on all visits the others' walk-ins pull their rate down to 7.9 percent. A learner who used all visits names visits, which is the evidence.) |
 
 ### Why did the no-show group compare as it did, and what would the other base have given?
 
-Each seat takes its own probe: seat 1 P1, seat 2 P2, seat 3 P3 and seat 4 P4.
+The Grid prints which of the four each learner takes.
 
-**P1, seat 1. "Which two numbers did your group compare to say whether KH-ATL-03 is worse, and why
-those two?"** It tests Week 1 Thursday's move: is the split fair.
+**P1. "Which two numbers did your group compare to say whether KH-ATL-03 is worse, why those two, and
+what would the other pair you weighed have said?"** It tests Week 1 Thursday's move: is the split fair.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
 | On scheduled visits, 19.0 percent, 15 of 79, against 15.1 percent, 285 of 1,885; the report's 18.8 against 7.9 percent came from the other centres' walk-ins | "It is 18.8 percent against 7.9, more than double" | "How many missed slots would KH-ATL-03 have had at the others' rate, and how many did it have?" (About 12, 15.1 percent of 79, against 15, so three patients decide the gap.) |
 
-**P2, seat 2. "Could chance alone give a gap like the one your group found, and how did you check?"**
+**P2. "Could chance alone give the gap your group found, why did you check it the way you did, and
+what would you have told the operations head without the check?"**
 It tests Week 1 Thursday's move: real, or the wobble.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
 | Ran a chance check, coin flips or the binomial: at 15.1 percent, 15 or more missed slots in 79 happens about one time in five, 0.21, so the gap is within chance; at that rate the centre would expect about 12, three fewer | Says "it is significant" or "it is not significant" with no check named, or runs the check on all visits and reports 0.0014 | "Say that to the operations head in one sentence, without the word probability." (Such as: "If KH-ATL-03 were no worse than the others, a quarter this bad would still turn up about one quarter in five, so Q3 alone does not show it is worse.") |
 
-**P3, seat 3. "What does one row of the visit register stand for, and did your group count slots or
-patients?"** It tests Week 1 Monday's move: what one row stands for before anything is counted.
+**P3. "What did your group count as one no-show, why that, and what would the other count you
+weighed have given?"** It tests Week 1 Monday's move: what one row stands for before anything is counted.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| One slot, kept or missed: 253 bookings have a missed slot and then the kept visit; the rate counts slots, so both rows stay; counted per booking instead, 15 of KH-ATL-03's 64 scheduled bookings missed a slot against 17.3 percent elsewhere, and chance produces that gap with probability 0.13 | Has not looked, or dropped one row of each pair without a reason | "Which count would the operations head want, slots or patients, and why?" (Slots for staffing the front desk, patients for reaching the people who miss draws; the group says which it used.) |
+| One missed slot: 253 bookings have a missed slot and then the kept visit, so a rebooked patient's missed slot is a row beside the kept one; the rate counts slots, so both rows stay; counted per booking instead, 15 of KH-ATL-03's 64 scheduled bookings missed a slot against 17.3 percent elsewhere, and chance produces that gap with probability 0.13 | Has not looked at what a row stands for, or dropped one row of each pair without a reason | "Which of the two counts would the operations head want, and why?" (Slots for staffing the front desk, patients for reaching the people who miss draws; the group says which it used.) |
 
-**P4, seat 4. "The operations head is choosing between a receptionist, reminder calls and a closure.
-What does your group advise, and what would it cost to be wrong?"** It tests Week 1 Thursday's move:
+**P4. "The operations head is choosing between a receptionist, reminder calls and a closure. What does
+your group advise, why that over the other two, and what would it cost to be wrong?"** It tests Week 1 Thursday's move:
 is it worth acting on, and what does acting cost.
 
 | Did the work | Carried it | The follow-up |
@@ -550,8 +554,8 @@ Push as the operations head, with the row that matches the caveat the learner ga
 
 | If the group's caveat is about | The push | Did the work | Carried it | The follow-up |
 |---|---|---|---|---|
-| Chance, the group having found the fair gap within it | "You say the gap could be chance. Nineteen percent is nineteen percent. Why should I not act?" | Holds it with the number: on 79 slots, three patients decide the gap, and a gap this size appears by chance about one time in five; acting is fine when it is cheap and can be undone, and the caveat names what to measure next and for how long | Agrees the centre is worse, or repeats "not significant" with no number | "If you gave the operations head one action today, what is it and what would it cost?" (Reminder calls before each booked slot at KH-ATL-03 for a quarter, read on scheduled visits against KH-ATL-02; the cost is staff time on calls, and the trial can be stopped.) |
-| The base of the report, which the group has named | "Your caveat says the other centres' numbers include visits that cannot be missed. The report is the report. Why should I trust your number over it?" | Says what the report divides by and what it should: the others' 7.9 percent divides missed slots by visits that include 1,720 walk-ins; on scheduled visits the others run 15.1 percent; a decision about missed slots needs the base of slots | Gives way to the report, or cannot say what the report divided by | "What would you ask the report's owner to change?" (Count no-shows over scheduled visits, and print each centre's walk-in share beside its rate.) |
+| Chance, the group having found the fair gap within it | "You say the gap could be chance. Your own rate is well above the others'. Why should I not act?" | Holds it with the number: on 79 slots, three patients decide the gap, and a gap this size appears by chance about one time in five; acting is fine when it is cheap and can be undone, and the caveat names what to measure next and for how long | Agrees the centre is worse, or repeats "not significant" with no number | "If you gave the operations head one action today, what is it and what would it cost?" (Reminder calls before each booked slot at KH-ATL-03 for a quarter, read on scheduled visits against KH-ATL-02; the cost is staff time on calls, and the trial can be stopped.) |
+| The base of the report, which the group has named | "Your caveat says the report divides by the wrong visits. The report is the report. Why should I trust your number over it?" | Says what the report divides by and what it should: the others' 7.9 percent divides missed slots by visits that include 1,720 walk-ins; on scheduled visits the others run 15.1 percent; a decision about missed slots needs the base of slots | Gives way to the report, or cannot say what the report divided by | "What would you ask the report's owner to change?" (Count no-shows over scheduled visits, and print each centre's walk-in share beside its rate.) |
 | Anything else, or no caveat | The general push, or for no caveat the question that asks for one | Names the check that would shrink the caveat and the decision it could move, with a number | Drops the caveat, or repeats it without a number | "What would you check tomorrow, and how long would it take?" (A named check, its size in slots or weeks, and the decision it could move.) |
 
 ---
@@ -606,42 +610,42 @@ same question, and what did the comparison show?"**
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| Offered against not offered, split by metro: 9.0 percent more in total and less inside every campaign metro, by 10.8, 19.9 and 13.0 percent, so the 9 percent comes from where the offer went | Says "Simpson's paradox" with no metro numbers, or confirms the 9 percent | "Where did the offer go, metro by metro, and how did you check?" (To about half the patients in Dallas, Atlanta and Phoenix, 50.5 percent against 21.4 elsewhere, counted from the campaign file against the patient list.) |
+| Offered against not offered, split by metro: 9.0 percent more in total and less inside every campaign metro, by 10.8, 19.9 and 13.0 percent, so the 9 percent comes from where the offer went | Says "Simpson's paradox" with no metro numbers, or confirms the 9 percent | "Why is that comparison fair, and what could make it unfair?" (Where the offer went: about half the patients in Dallas, Atlanta and Phoenix against a fifth elsewhere, 50.5 percent against 21.4, counted from the campaign file against the patient list, and inside each of those metros offered patients booked less. A learner who did not look says the groups are large, so the comparison is fair.) |
 
 ### Why did the campaign group compare as it did, and what would the other comparison have given?
 
-Each seat takes its own probe: seat 1 P1, seat 2 P2, seat 3 P3 and seat 4 P4.
+The Grid prints which of the four each learner takes.
 
-**P1, seat 1. "Did the offer lift bookings 9 percent, in your group's reading, and what did you
-compare to decide?"** It tests Week 1 Thursday's move: the aggregate against the split.
+**P1. "Did the offer lift bookings 9 percent, in your group's reading, why do you read it that way,
+and what would the other comparison you weighed have said?"** It tests Week 1 Thursday's move: the aggregate against the split.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
 | The 9 percent is offered against not offered across all six metros; inside each campaign metro offered patients booked less, by 11 to 20 percent, so the 9 percent measures where the offer went, the metros whose patients book most | "Yes, 9 percent", or "no, it is a paradox" with no numbers | "So what did the offer do to bookings, in your reading?" (The files cannot settle it: they show who was offered and never how patients were chosen, so the gap inside a metro may come from who was chosen; a held-back share of eligible patients would settle it.) |
 
-**P2, seat 2. "What were bookings doing, metro by metro, before the offer started, and how did that
-enter your answer?"** It tests Week 1 Thursday's move: what else changed, and the change beside the
+**P2. "What, besides the offer, could your group's comparison be picking up in the offer's weeks, why
+did your group rule each one in or out, and what would your answer be if one of them were the cause?"** It tests Week 1 Thursday's move: what else changed, and the change beside the
 change.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| The three campaign metros rose about 7 percent in bookings per day over the two months before the offer, and 7.4 percent from those two months into its weeks, against 3.0 percent in New York, so the rise was under way before the offer | Does not know, or never looked before the offer | "What comparison would you have needed to credit the offer with any of the rise?" (Patients like the offered ones, in the same metros and the same weeks, who were not offered: a share held back at random before the offer, compared over the same weeks.) |
+| The three campaign metros rose about 7 percent in bookings per day over the two months before the offer, and 7.4 percent from those two months into its weeks, against 3.0 percent in New York, so the rise was under way before the offer | Names nothing besides the offer, or never looked before the offer | "What comparison would you need to credit the offer with a change in bookings?" (Patients like the offered ones, in the same metros and the same weeks, who were not offered: a share held back at random before the offer, compared over the same weeks.) |
 
-**P3, seat 3. "Who was offered the free collection, and how did your group decide whether they were
-like the patients who were not?"** It tests Week 1 Thursday's move: who got the sale, and is the
+**P3. "How did your group decide whether the patients who got the offer were like the ones who did
+not, why that way, and what would the other way have shown?"** It tests Week 1 Thursday's move: who got the sale, and is the
 split fair.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
 | Compared offered and not-offered patients in each campaign metro before the offer: within about 6 percent of each other, Dallas plus 1.4, Atlanta minus 5.2 and Phoenix minus 6.1, with the sign changing, so nothing before the offer separates them, the gap opens inside its weeks, and the files cannot say how the offer was assigned | Asserts that the offer went to patients who were already drifting, or that it was random, without comparing the two groups before the offer | "How would you design the next wave so the question can be answered?" (Hold back a random share of eligible patients in every metro, and compare bookings per patient over the same weeks.) |
 
-**P4, seat 4. "Did the offer work in any single metro, by your group's reading, and how sure are
-you?"** It tests Week 1 Thursday's move: real, or the wobble, read with how many places were looked
+**P4. "Did the offer work in any single metro, in your group's reading, why do you say so, and what
+would make you say the opposite?"** It tests Week 1 Thursday's move: real, or the wobble, read with how many places were looked
 at.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| Chicago minus 4.8, Philadelphia plus 0.6, New York plus 23.5 percent; ran a shuffle on New York and got about 0.03; says New York is one striking gap among six metros looked at, and Week 1 showed a small share turning up where nothing changed, so it is no evidence of a lift until a fresh wave repeats it | Reads New York's 23.5 percent as the offer working in New York | "If one metro stood out in your reading, how many metros did you look at before you found it, and what does that do to how you read it?" (Six; a check that chance alone passes about one time in twenty will pass now and then when six places are looked at, the way Week 1's twenty segments where nothing changed gave one at 0.003, so New York needs a fresh wave with a held-back share before it counts.) |
+| Chicago minus 4.8, Philadelphia plus 0.6, New York plus 23.5 percent; ran a shuffle on New York and got about 0.03; says New York is one striking gap among six metros looked at, and Week 1 showed a small share turning up where nothing changed, so it is no evidence of a lift until a fresh wave repeats it | Reads New York's 23.5 percent as the offer working in New York | "How many metros did your group look at before reaching that reading, and what does that do to how sure you can be?" (Six; a check that chance alone passes about one time in twenty will pass now and then when six places are looked at, the way Week 1's twenty segments where nothing changed gave one at 0.003, so New York needs a fresh wave with a held-back share before it counts.) |
 
 ### What does the marketing head push on, and what holds?
 
@@ -649,8 +653,8 @@ Push as the marketing head, with the row that matches the caveat the learner gav
 
 | If the group's caveat is about | The push | Did the work | Carried it | The follow-up |
 |---|---|---|---|---|
-| The comparison across metros, the group having split by metro | "Hundreds of patients took the offer up. You cannot prove it did nothing; your caveat is just doubt, and I need budget for all six metros." | Agrees the files cannot prove harm or help, which is the caveat's point; acceptances count people who said yes to a free service, and at least 259 of the 948 show a home collection in the offer's weeks; offers the next wave as the test, the offer to a random part of eligible patients in every metro with the rest held back, so the budget buys an answer | Says the offer failed, or gives in and agrees it worked | "How large a held-back share would you ask for, and what would you compare?" (A share the marketing head can afford to leave without the offer, such as a fifth, in every metro, comparing bookings per patient over the same weeks; how large a share it takes to see a given lift is a later week's question.) |
-| The one metro that stands out, which the group has named as chance | "Your own numbers show one metro up by more than a fifth. Why not at least roll it out there?" | Says the gap is one of six looked at, with a shuffle p of about 0.03, the kind of gap chance turns up now and then when several places are looked at; offers that metro a fresh wave with a held-back share, which answers the question in one more wave | Agrees to roll it out in that metro | "What result in the next wave would change your mind?" (A gap of that size again in New York against a share held back at random in the same weeks.) |
+| The comparison across metros, the group having split by metro | "Patients took the offer up. You cannot prove it did nothing; your caveat is just doubt, and I need budget for all six metros." | Agrees the files cannot prove harm or help, which is the caveat's point; acceptances count people who said yes to a free service, and at least 259 of the 948 show a home collection in the offer's weeks; offers the next wave as the test, the offer to a random part of eligible patients in every metro with the rest held back, so the budget buys an answer | Says the offer failed, or gives in and agrees it worked | "How large a held-back share would you ask for, and what would you compare?" (A share the marketing head can afford to leave without the offer, such as a fifth, in every metro, comparing bookings per patient over the same weeks; how large a share it takes to see a given lift is a later week's question.) |
+| The one metro that stands out, which the group has named as chance | "Your own numbers show one metro well up. Why not at least roll it out there?" | Says the gap is one of six looked at, with a shuffle p of about 0.03, the kind of gap chance turns up now and then when several places are looked at; offers that metro a fresh wave with a held-back share, which answers the question in one more wave | Agrees to roll it out in that metro | "What result in the next wave would change your mind?" (A gap of that size again in New York against a share held back at random in the same weeks.) |
 | Anything else, or no caveat | The general push, or for no caveat the question that asks for one | Names the check that would shrink the caveat and the decision it could move, with a number | Drops the caveat, or repeats it without a number | "What would you check tomorrow, and how long would it take?" (A named check, its size in patients or weeks, and the decision it could move.) |
 
 ---
@@ -672,4 +676,4 @@ own yet.
 | Opens the log, finds an entry they wrote, names the step they would move earlier or do another way, such as profiling every file before any count or asking the data team on the first day how each file is keyed, and the time or error it would have saved | Gives a general lesson ("manage time better"), or reads a group-mate's entry as if seeing it for the first time | "Which entry shows the moment you should have changed course, and what told you?" (An entry with its step and the signal that was missed, such as a count that did not reconcile; a learner who carried the work cannot point to one.) |
 
 If the group's challenges log has only a few entries by Thursday, note it, and ask about the decisions
-log instead: "Pick one line in the decisions log and tell me who decided it and what they looked at."
+log instead: **"Pick one line in the decisions log and tell me who decided it and what they looked at."**
