@@ -68,14 +68,15 @@ wrong can still earn most of the correctness marks on the other two.
 
 ## Which three questions does a learner meet, and why those three?
 
-**Who needs the answer.** The assessor at the huddle, who opens only the three questions the roster's
-Grid prints for each learner, and the Programme Head, who rebuilds the roster if the groups change.
+**Who needs the answer.** The assessor at the huddle, who opens only the three questions and the
+three reserves the roster's Grid prints for each learner, and the Programme Head, who rebuilds the
+roster if the groups change.
 A question that rehearses a learner's own viva minutes before it spends the half on evidence the viva
 gathers anyway.
 
 **The questions on the way.** What does each level ask for? Which taught day does each family come
 from? Which set does a learner meet? Which questions are swapped for a learner whose group works close
-to them? What are the reserves for?
+to them? Which reserve does a learner take, and when?
 
 | Level | What it asks for | What an understood answer shows |
 |---|---|---|
@@ -94,7 +95,7 @@ programme's own calibration for candidates with 0 to 3 years' experience in the 
 | T01 | Week 1 Monday | Which total is sales, the revenue tree, and the typical value one large record cannot move | The board's revenue plan, the lab's turnaround, the practices that order tests |
 | T02 | Week 1 Tuesday | Is the drop real, which branch and which segment moved, and did the price change or the mix | Cash posted, patients' share of the bill, the allowed amount per test |
 | T03 | Week 1 Wednesday | Profile before you touch, the identity rule, and the bridge that names every dollar | The courier company's invoice, a patient register from a lab Kalpa Health is thinking of buying |
-| T04 | Week 1 Thursday | Real or the wobble, how many stand behind a rate, and did the change work | Rejected blood samples, a new billing rule |
+| T04 | Week 1 Thursday | Real or the wobble, how many stand behind a rate, and did the change work | Rejected blood samples, a billing rule at the Austin lab |
 | T05 | Week 1 Thursday and Friday | The note in four parts, and holding it when someone pushes | Turnaround for the COO, a seventh metro |
 | T06 | Week 2 Monday | The warehouse query: its logical order, counts named for what they count, and a run an auditor can repeat | Analysers, redraws, days in accounts receivable |
 | T07 | Week 2 Tuesday | Attach, count, explain the difference, then sum, and the checks before a number leaves | Samples against results, claims against a payer's fee schedule |
@@ -104,59 +105,71 @@ programme's own calibration for candidates with 0 to 3 years' experience in the 
 
 A learner meets one set of three questions. Within a group the seats take consecutive letters, so no
 two members of a group meet the same set. Each set draws one question per level from three different
-families, and every set mixes Week 1 and Week 2.
+families, and every set mixes Week 1 and Week 2, as does every seat after the swaps below.
 
 | Set | L1, the move | L2, the number | L3, the judgement |
 |---|---|---|---|
-| A | T01-L1 | T04-L2 | T07-L3 |
+| A | T01-L1 | T03-L2 | T07-L3 |
 | B | T02-L1 | T05-L2 | T08-L3 |
 | C | T03-L1 | T06-L2 | T09-L3 |
 | D | T09-L1 | T02-L2 | T10-L3 |
-| E | T10-L1 | T08-L2 | T05-L3 |
-| F | T06-L1 | T09-L2 | T02-L3 |
-| G | T05-L1 | T10-L2 | T03-L3 |
+| E | T04-L1 | T08-L2 | T05-L3 |
+| F | T06-L1 | T09-L2 | T03-L3 |
+| G | T05-L1 | T10-L2 | T01-L3 |
 | H | T08-L1 | T01-L2 | T04-L3 |
 
 ### Which questions are swapped for a learner whose group works close to them?
 
-Eleven questions sit close to one sub-problem's viva, so a learner from that sub-problem is asked
-another question at the same level in their place. The replacement is always the question at that
-level from the set four letters on, A with E, B with F, C with G and D with H. A group's seats take at
-most four consecutive letters, so no group-mate ever meets the replacement, no seat holds two
-questions from one family, and nothing in the set four letters on sits close to the same sub-problem.
-Once the roster's Groups sheet carries Monday's allocation, its Seats sheet makes every swap and its
-Grid prints each learner's three questions, so read the questions from the Grid.
+Fourteen questions in the sets sit close to a sub-problem's viva: each rehearses a probe that
+sub-problem's learners will meet, or sets up the shape of something in their files. A learner from
+that sub-problem is asked another question at the same level in its place, always the question at
+that level from the set four letters on, A with E, B with F, C with G and D with H. Three of the
+fourteen sit close to more than one sub-problem, so the table has eighteen rows. A group's seats take
+at most four consecutive letters, so no group-mate ever meets the replacement. The sets are built so
+that a replacement never sits close to the same sub-problem, and every seat keeps three families and
+both weeks after its swaps. Once the roster's Groups sheet carries Monday's allocation, its Seats
+sheet makes every swap and its Grid prints each learner's three questions, so read the questions from
+the Grid.
 
 | The group's sub-problem | The question in the set | In set | What it rehearses in that viva | Asked in its place |
 |---|---|---|---|---|
-| 1 revenue | T01-L1, what a lab's revenue is made of | A | The revenue tree of the translation probe | T10-L1 |
-| 1 revenue | T01-L2, a typical turnaround | H | The typical claim of seat 1's probe | T02-L2 |
-| 2 bookings | T02-L1, a fall in its first thirty minutes | B | Confirming the fall, seat 1's probe | T06-L1 |
-| 2 bookings | T02-L2, what has to match before two months compare | D | Whether the data covers the whole window | T01-L2 |
-| 3 billing | T03-L1, the courier's invoice against the log | C | The bridge from billed to paid, seat 4's probe | T05-L1 |
+| 1 revenue | T01-L1, what a lab's revenue is made of | A | The revenue tree of the translation probe | T04-L1 |
+| 1 revenue | T01-L2, a typical turnaround | H | The typical claim of P1 | T02-L2 |
+| 1 revenue | T01-L3, new practices or more orders from the ones it has | G | Which branch is short, P3 | T09-L3 |
+| 2 bookings | T02-L1, a fall in its first thirty minutes | B | Confirming the fall, P1 | T06-L1 |
+| 2 bookings | T02-L2, what has to match before two months compare | D | Whether two windows compare fairly, P1 and P3 | T01-L2 |
+| 2 bookings | T03-L2, a whole-row dedupe that finds nothing | A | What counts as one booking, the translation probe | T08-L2 |
+| 2 bookings | T09-L2, a merge that repeats a patient | F | Which copy of a repeated row stays, P4 | T05-L2 |
+| 3 billing | T03-L1, the courier's invoice against the log | C | The bridge from billed to paid, P4 | T05-L1 |
+| 3 billing | T03-L2, a whole-row dedupe that finds nothing | A | What makes a second posting a repeat, P1 | T08-L2 |
+| 3 billing | T03-L3, the auditor's walk through the rows set aside | F | The bridge from billed to paid, P4 | T08-L3 |
+| 3 billing | T07-L3, the checks before a joined number leaves | A | The join's checks, the translation probe | T05-L3 |
 | 3 billing | T09-L2, a merge that repeats a patient | F | What the join kept, dropped and repeated, the translation probe | T05-L2 |
-| 3 billing | T07-L3, the checks before a joined number leaves | A | The join and the bridge | T05-L3 |
-| 3 billing | T03-L3, the auditor's walk through the rows set aside | G | The bridge from billed to paid | T09-L3 |
-| 4 no-shows | T04-L2, a rate on 25 draws | A | A rate read on few slots, seat 2's probe | T08-L2 |
-| 5 the offer | T02-L3, the rate and the mix | F | The comparison inside each metro, the translation probe | T08-L3 |
-| 5 the offer | T04-L3, did a new rule work | H | Whether the offer worked, seat 1's probe | T10-L3 |
+| 3 billing | T09-L3, days counted from the extract's date | C | Claims that may only be late on the export's date, P2 and the caveat push | T01-L3 |
+| 4 no-shows | T03-L2, a whole-row dedupe that finds nothing | A | Two rows for one booking, P3 | T08-L2 |
+| 4 no-shows | T04-L1, what p = 0.04 means | E | The chance check, P2 | T01-L1 |
+| 5 the offer | T04-L1, what p = 0.04 means | E | One metro's shuffle, P4 | T01-L1 |
+| 5 the offer | T04-L3, did a billing rule work | H | Whether the offer worked, P1 | T10-L3 |
+| 5 the offer | T05-L3, "not yet" on a seventh metro | E | Holding "not yet" against the marketing head, the caveat push | T07-L3 |
 
-### What are the reserves for?
+### Which reserve does a learner take, and when?
 
-Six questions sit outside every set as reserves, two at each level: T04-L1 and T07-L1, T03-L2 and
-T07-L2, and T01-L3 and T06-L3. Use a reserve at the same level when a learner says they heard a
-question from someone mocked earlier, when a learner gives a model answer word for word, or when a
-mock restarts after a dropped connection. Take the first reserve the table allows for the learner's
-sub-problem, and the second if a group-mate has already been asked the first; where the table leaves
-none, keep the set's question and go straight to its follow-up.
+Six questions sit in no set: T07-L1 and T10-L1, T04-L2 and T07-L2, and T02-L3 and T06-L3. Use a
+reserve at the same level when a learner says they heard a question from someone mocked earlier, when
+a learner gives a model answer word for word, and for each question a learner had already heard when a
+dropped online mock restarts. The roster's Grid prints each learner's three reserves after their three
+questions, one per level, once the Groups sheet carries Monday's allocation. Each reserve is one of
+the six or a question from a set no member of the group holds, so no group-mate is asked it. None sits
+close to the group's sub-problem, and the three reserves come from three families that the learner's
+seat does not hold, so any reserve can replace any question without a family appearing twice.
 
-| The group's sub-problem | L1 reserve | L2 reserve | L3 reserve |
-|---|---|---|---|
-| 1 revenue | T04-L1, then T07-L1 | T07-L2, then T03-L2 | T06-L3 |
-| 2 bookings | T04-L1, then T07-L1 | T07-L2 | T06-L3, then T01-L3 |
-| 3 billing | T04-L1 | T03-L2 | T01-L3 |
-| 4 no-shows | T07-L1 | T07-L2, then T03-L2 | T06-L3, then T01-L3 |
-| 5 the offer | T07-L1 | T07-L2, then T03-L2 | T06-L3, then T01-L3 |
+Two group-mates can share a printed reserve, because some sub-problems leave too few questions at a
+level. On sub-problem 3, a group of four is asked four of the six L3 questions that sit away from
+billing, which leaves two for four members. Shared reserves fall only in groups of four: on
+sub-problem 2 one pair shares its L2 reserve, on sub-problem 5 one pair shares its L3 reserve, and on
+sub-problem 3 two pairs share their L3 reserves and one pair its L2 reserve. One assessor hears every
+member of a group, so you know when you have already asked a group-mate a reserve. If you have, keep
+the learner's own question and go straight to its follow-up, and note it.
 
 Mocks run all day and learners talk. Eight sets spread the risk, and the follow-up carries the half,
 since a memorised model answer survives the first question and breaks on a follow-up written to move
@@ -175,7 +188,9 @@ numbers? What does an assessor do when a learner answers from their own files?
 
 Each question is set in a corner of Kalpa Health that no group's files touch: the lab's turnaround,
 the courier company, payers' fee schedules, patients' balances, the practices that order tests, a
-lab Kalpa Health is thinking of buying in Austin, and the board's plans. Every number in a question
+lab Kalpa Health is thinking of buying in Austin, and the board's plans. A question about cash or
+allowed amounts is dated before April 2026, outside the files' two quarters, so its numbers never
+meet a group's own. Every number in a question
 is invented for it and lies outside the ten files, and the assessor reads every number the learner
 needs aloud; the opening script tells the learner so once, before the first question. No question
 names a plant, which is a pattern placed in the files on purpose for a group to find, reuses a
@@ -200,7 +215,10 @@ https://www.geeksforgeeks.org/data-analysis/data-analyst-interview-questions-and
 Its questions are definitional ("what is data cleaning", "how do you handle missing data"). This bank
 sits one step above them, because a GCC screen at this band asks for the definition inside a business
 case. If a learner cannot answer at the case level, ask the entry's anchor question once, which is
-the plain form, note in the evidence that you did, and move on.
+the plain form, note in the evidence that you did, and move on. Where an anchor carries numbers of its
+own, say it with the ask's numbers in their place, so the learner hears no number from outside the
+question: T04-L1's anchor becomes "What does p = 0.04 mean, and not mean?", and T04-L2's becomes "8
+percent on 25 draws against 4 percent on 2,400: which do you trust?"
 
 ---
 
@@ -239,14 +257,14 @@ order less?
 | What the follow-up separates | Understood: when the decision needs a total, since the mean times the count rebuilds the total; for a courier contract that pays a penalty per hour late, the right mean is of the hours past the promise across all samples, zero for a sample on time, stated with the slow cluster. Memorised: "the median is always better because it ignores outliers". |
 | A weak answer sounds like | "Remove the outliers and take the mean again", which deletes real late samples, and their patients, from the lab's record. |
 
-### T01-L3. Should marketing's $400,000 go to signing new practices when the tree says existing practices order less? (reserve)
+### T01-L3. Should marketing's $400,000 go to signing new practices when the tree says existing practices order less?
 
 | | |
 |---|---|
 | The move | Week 1 Monday: which branch the plan should open first, and why not the others. Tag `[D]`. |
 | Anchor, on the Week 1 Monday row | "Marketing wants budget for acquisition; what would you check before agreeing it is the right branch, and how would you say no?" |
 | Ask | "Kalpa Health's tests are ordered by doctors' practices. The marketing head wants $400,000 to sign up new practices. Your tree says the number of ordering practices held at 600 over the last two years, and requisitions per practice, the orders each sends, fell from 120 a year to 108. You are in the room with the marketing head. What do you say?" |
-| Model answer, under a minute | I put the two branches side by side for the same two years: practices held at 600, and orders per practice fell 10 percent, from 120 to 108, which is 7,200 fewer requisitions. The gap is in how much the existing practices order, so money to sign new ones is aimed at a branch that is not short. There are three ways to spend: the $400,000 on new practices, an outreach programme to the practices whose orders fell, or a small test first, outreach to a random half of the falling practices for one quarter, read against the other half. I would take the test, because it costs a fraction and tells us within a quarter whether orders respond. What would change my call: if last year's newly signed practices already order more per practice than the old ones, acquisition is the cheaper lever after all. |
+| Model answer, under a minute | I put the two branches side by side for the same two years: practices held at 600, and orders per practice fell 10 percent, from 120 to 108, which is 7,200 fewer requisitions. The gap is in how much the existing practices order, so money to sign new ones is aimed at a branch that is not short. There are three ways to spend: the $400,000 on new practices, an outreach programme across all 600 practices, or first a few days of calls to the practices whose orders fell most, to learn why, such as a doctor who left, tests sent to a competitor or a referral route that changed, and then outreach shaped by what the calls find. I would make the calls first, because they cost a few days of a sales team's time and tell us which lever the $400,000 should pull. What would change my call: if last year's newly signed practices already order more per practice than the old ones, acquisition is the cheaper lever after all. |
 | Follow-up | "The marketing head says new practices become loyal later, so signing them fixes orders per practice too. What data answers that, and what if it is too early to tell?" |
 | What the follow-up separates | Understood: last year's new practices' orders per practice in their first quarters against existing practices over the same months, and if they are too new to read, "not yet" with the date it can be read. Memorised: repeats "the data says frequency" without naming the comparison. |
 | A weak answer sounds like | Caving ("it could help, let us try both"), or an assertion with no number. |
@@ -263,15 +281,15 @@ investigation ladder, whose first rung asks whether the drop is real at all.
 match before two months are compared? Why can every payer's rate rise 3 percent while the lab's
 average barely moves?
 
-### T02-L1. Cash posted fell 16 percent last month: what do you do in the first thirty minutes, in order?
+### T02-L1. Cash posted fell 16 percent in February: what do you do in the first thirty minutes, in order?
 
 | | |
 |---|---|
 | The move | Week 1 Tuesday: the investigation ladder, all five rungs, with rung 1, is the drop real, first. Tag `[S]`. |
 | Anchor, on the Week 1 Tuesday row | "Sales dropped 15 percent last month; how would you investigate?" |
-| Ask | "The revenue-cycle head says the cash posted from payers and patients fell 16 percent last month. What do you do in the first thirty minutes, in order?" |
-| Model answer, under a minute | First, is the fall real: the same length of window, the same definition (cash by the day it was posted, or by the month of the service it pays for), and the month complete for every payer. Payers pay in runs, so a month with fewer payment runs looks short with nothing wrong. Second, which branch moved: claims billed, times the share that paid, times the amount paid per paid claim. Third, which segment carries it: a payer, a metro, a kind of test. Fourth, is it a change of mix or a change of rate inside the segments. Fifth, one hypothesis for the business, with the evidence that would settle it. Causes come last, because they are the cheapest thing to guess and the most expensive to guess wrong. |
-| Follow-up | "The largest plan, about 70 percent of the cash, pays in one run every Friday. Last month had four Fridays and the month before had five. What does that do to your 16 percent?" |
+| Ask | "Early in March, the revenue-cycle head says the cash posted from payers and patients fell 16 percent in February against January. What do you do in the first thirty minutes, in order?" |
+| Model answer, under a minute | First, is the fall real: the same length of window, the same definition (cash by the day it was posted, or by the month of the service it pays for), and the month complete for every payer. February has 28 days to January's 31, and payers pay in runs, so a month with fewer days or fewer payment runs looks short with nothing wrong. Second, which branch moved: claims billed, times the share that paid, times the amount paid per paid claim. Third, which segment carries it: a payer, a metro, a kind of test. Fourth, is it a change of mix or a change of rate inside the segments. Fifth, one hypothesis for the business, with the evidence that would settle it. Causes come last, because they are the cheapest thing to guess and the most expensive to guess wrong. |
+| Follow-up | "The largest plan, about 70 percent of the cash, pays in one run every Friday. February had four Fridays and January had five. What does that do to your 16 percent?" |
 | What the follow-up separates | Understood: that plan's cash falls by a fifth with nothing changed, which alone takes the total down about 14 points of the 16, so the drop goes back to the calendar, and the fair comparison is cash per payment run or the same weeks. Memorised: repeats the five rungs and never computes the calendar's share. |
 | A weak answer sounds like | "Payers are paying slower; probably a policy change", with no check that the fall is real. |
 
@@ -287,14 +305,14 @@ average barely moves?
 | What the follow-up separates | Understood: most of the jump is the deductible calendar, one point above last January is small enough to need the payer mix checked before anyone acts, and the useful action is planning for January's patient balances, such as telling patients their share before the draw. Memorised: says "seasonality" and stops, with no comparison named. |
 | A weak answer sounds like | "Patients are paying less; send the balances to collections." |
 
-### T02-L3. Every payer allowed about 3 percent more per test, and the lab's average per test rose only 0.5 percent: what happened, and how do you make the case in the room?
+### T02-L3. Every payer allowed about 3 percent more per test, and the lab's average per test rose only 0.5 percent: what happened, and how do you make the case in the room? (reserve)
 
 | | |
 |---|---|
 | The move | Week 1 Tuesday: did customers pay more, or did the mix change. Tag `[D]`. |
 | Anchor, on the Week 1 Tuesday row | "Marketing insists the answer is acquisition and your data says frequency; how do you make the case in the room?" |
-| Ask | "From one quarter to the next, the average amount allowed per test rose about 3 percent for each of the four payer types, and the lab's overall average per test rose only 0.5 percent. The head of payer contracting budgeted the 3 percent and says your numbers must be wrong. What happened, and how do you make the case in the room?" |
-| Model answer, under a minute | Nothing is wrong; the mix moved. More of the second quarter's tests came from payers that allow less per test, Medicaid for example, so the blend rose less than any payer's own rate. Rerunning the query proves nothing, since the same data gives the same number, while one table settles it in a minute: each payer's share of tests and its allowed amount per test in both quarters, with the change split into a rate effect of about 3 percent and a mix effect that takes about 2.5 points back. Quest Diagnostics reported the same shape for 2025: revenue per requisition up 0.1 percent, and 2.4 percent on an organic basis, because an acquired business "which has a lower revenue per requisition" joined the mix (Form 10-K for 2025). What would change my call: a payer whose own rate fell would make it a story about rates. |
+| Ask | "From the third quarter of 2025 to the fourth, the average amount allowed per test rose about 3 percent for each of the four payer types, and the lab's overall average per test rose only 0.5 percent. The head of payer contracting budgeted the 3 percent and says your numbers must be wrong. What happened, and how do you make the case in the room?" |
+| Model answer, under a minute | Nothing is wrong; the mix moved. More of the fourth quarter's tests came from payers that allow less per test, Medicaid for example, so the blend rose less than any payer's own rate. Rerunning the query proves nothing, since the same data gives the same number, while one table settles it in a minute: each payer's share of tests and its allowed amount per test in both quarters, with the change split into a rate effect of about 3 percent and a mix effect that takes about 2.5 points back. Quest Diagnostics reported the same shape for 2025: revenue per requisition up 0.1 percent, and 2.4 percent on an organic basis, because an acquired business "which has a lower revenue per requisition" joined the mix (Form 10-K for 2025). What would change my call: a payer whose own rate fell would make it a story about rates. |
 | Follow-up | "Which one number goes on the slide for Dr Menon?" |
 | What the follow-up separates | Understood: the mix effect in dollars or points, with the payer whose share grew named, beside the rate effect the head budgeted. Memorised: says "it is the mix" and stops, with no number and no payer named. |
 | A weak answer sounds like | "There must be a data error; I would recheck the query." |
@@ -306,7 +324,8 @@ average barely moves?
 **Who needs the answer.** The assessor, since a learner who picks one of two disagreeing numbers
 instead of reconciling them gets finance to pay or withhold money nobody can audit. This family tests
 Week 1 Wednesday's profile-first and bridge moves, which started when Anand Iyer, Kalpa Retail's
-finance controller, found the dashboard and his books a crore apart.
+finance controller, found the dashboard's Rs 2.1 crore for Q1 Rs 20 lakh above his books' Rs 1.9
+crore.
 
 **The questions on the way.** Which number do you pay when an invoice and a log disagree? How can a
 dedupe find nothing when duplicates exist? How do you walk an auditor through the rows you set aside?
@@ -323,7 +342,7 @@ dedupe find nothing when duplicates exist? How do you walk an auditor through th
 | What the follow-up separates | Understood: the rates, such as a weekend or after-hours surcharge, a rate change applied to the wrong days, or a stop billed in the wrong distance band. Memorised: "check for duplicates" again, which the counts already ruled out. |
 | A weak answer sounds like | "The courier is the vendor, so its invoice is right", or "finance's number is the source of truth". |
 
-### T03-L2. A whole-row dedupe of the Austin lab's patient register finds no duplicates, and its front desk says many patients are registered twice: how can both be true? (reserve)
+### T03-L2. A whole-row dedupe of the Austin lab's patient register finds no duplicates, and its front desk says many patients are registered twice: how can both be true?
 
 | | |
 |---|---|
@@ -360,7 +379,7 @@ worked.
 **The questions on the way.** What does a p of 0.04 mean, and not mean? Should a phlebotomist with 2
 rejected samples in 25 be retrained? Did a new billing rule cut denials?
 
-### T04-L1. Your test on two phlebotomy teams gives p = 0.04: what does that tell the lab director, and what does it not? (reserve)
+### T04-L1. Your test on two phlebotomy teams gives p = 0.04: what does that tell the lab director, and what does it not?
 
 | | |
 |---|---|
@@ -372,7 +391,7 @@ rejected samples in 25 be retrained? Did a new billing rule cut denials?
 | What the follow-up separates | Understood: shuffle the team labels across the samples thousands of times, work out the gap each time, and count how often a shuffled gap was as large as the real one: about 4 in every 100 shuffles. Memorised: repeats the definition. |
 | A weak answer sounds like | "There is a 96 percent chance the result is right." |
 
-### T04-L2. A new phlebotomist had 2 of 25 samples rejected against the centre's 4 percent on 2,400: retrain them this week?
+### T04-L2. A new phlebotomist had 2 of 25 samples rejected against the centre's 4 percent on 2,400: retrain them this week? (reserve)
 
 | | |
 |---|---|
@@ -384,14 +403,14 @@ rejected samples in 25 be retrained? Did a new billing rule cut denials?
 | What the follow-up separates | Understood: the same coin-flip check on the bigger count each month; 8 or more rejections in 100 draws would happen only about 1 time in 20 for a phlebotomist as good as the centre, so a rate still near 8 percent then is worth acting on, and how many draws it takes to be sure of a gap is power, a later week's topic. Memorised: "a larger sample", with no check and no number. |
 | A weak answer sounds like | "Eight is double four, so retrain them." |
 
-### T04-L3. Medicare's necessity denials fell from 6.0 to 3.5 percent after a new billing rule: did the rule work, and should it go everywhere?
+### T04-L3. The Austin lab says a billing rule cut Medicare's necessity denials from 6.0 to 3.5 percent: did the rule work, and should Kalpa Health copy it?
 
 | | |
 |---|---|
 | The move | Week 1 Thursday: did the change work; who got it, what else changed, and the hold-back that would settle it. Tag `[F]`. |
 | Anchor, on the Week 1 Thursday row | "Revenue rose after a discount; did the campaign work, and what would you need to know?" |
-| Ask | "A medical-necessity denial is a payer refusing a claim because it does not consider the test needed for the patient's condition. In March, Kalpa Health added a rule to its billing system that checks the diagnosis code on Medicare claims before they leave. By June, necessity denials on Medicare claims had fallen from 6.0 to 3.5 percent. The revenue-cycle head wants the rule on every payer's claims. Did it work, and what would you need to know?" |
-| Model answer, under a minute | Before and after alone cannot say, since it assumes nothing else changed in those months. The change beside the change sets Medicare against the payers without the rule over the same months: if their necessity denials fell almost as much, say from 5.8 to 3.6 percent, something else moved, such as the doctors' coding. Even a fall near zero there assumes Medicare moves like the others, and nobody has shown that, since a rule chose Medicare for its worst rate and no coin did. The way that settles it is a random hold-back: the rule off for a random fifth of the ordering practices for two months, compared inside Medicare. At 2.5 points on, say, 4,000 Medicare claims a month, the rule prevents 100 denials a month, so the hold-back forgoes about 20 a month. My call is to run the hold-back before the every-payer rollout. |
+| Ask | "A medical-necessity denial is a payer refusing a claim because it does not consider the test needed for the patient's condition. The lab in Austin that Kalpa Health is thinking of buying says that in March 2025 it added a rule to its billing system that checks the diagnosis code on Medicare claims before they leave, and that by June 2025 necessity denials on its Medicare claims had fallen from 6.0 to 3.5 percent. Kalpa Health's revenue-cycle head wants the same rule on every payer's claims. Did it work, and what would you need to know?" |
+| Model answer, under a minute | Before and after alone cannot say, since it assumes nothing else changed in those months. The change beside the change sets Austin's Medicare claims against its claims from payers without the rule over the same months: if their necessity denials fell almost as much, say from 5.8 to 3.6 percent, a 2.2-point fall against Medicare's 2.5, something else moved, such as the doctors' coding. Even a fall near zero there assumes Medicare moves like the others, and nobody has shown that, since a rule chose Medicare for its worst rate and no coin did. The way that settles it is a random hold-back when Kalpa Health switches the rule on: the rule off for a random fifth of the ordering practices for two months, compared inside Medicare. If all 2.5 points were the rule's, then on, say, 4,000 Medicare claims a month it would prevent 100 denials, so the hold-back forgoes at most 20 a month. My call is to run the hold-back before the every-payer rollout. |
 | Follow-up | "The revenue-cycle head says the rule costs nothing to run, so why not switch it on everywhere today?" |
 | What the follow-up separates | Understood: the cost is the claims the rule holds back for a fix, the staff time to fix them and the filing deadlines they drift towards, so switch it on everywhere if the head wants, and keep a random fifth held back so the answer still arrives. Memorised: "correlation is not causation", with no comparison and no design. |
 | A weak answer sounds like | "Denials fell after the rule, so it worked." |
@@ -413,8 +432,8 @@ missing from a count with no denominator? What do you say when the honest answer
 |---|---|
 | The move | Week 1 Thursday and Friday: the note in four parts, claim, evidence, caveat and action. Tag `[S]`. |
 | Anchor, on the Week 1 Thursday row | "Explain a finding to a non-technical stakeholder." |
-| Ask | "Dr Menon has two minutes before her board meeting. How do you put one finding in front of her? Use any example from the lab." |
-| Model answer, under a minute | I would give her one sentence for each of four parts. The claim says what is true, with its number. The evidence is the comparison that shows it, with its denominator and window. The caveat is the one thing that could make it wrong, and how big that risk is. The action is what she should do next and what it costs. For example: turnaround within the 24-hour promise fell from 94 to 89 percent of samples between the last two months; 61 percent of the late samples came from two of the eleven courier routes, which carry 18 percent of samples; one month is one reading, so a bad week could be part of it; move those two routes' last pickup an hour earlier for a month and read the share again. |
+| Ask | "Dr Menon has two minutes before her board meeting, and you have one finding: turnaround within the 24-hour promise fell from 94 to 89 percent of samples between the last two months, and 61 percent of the late samples came from two of the eleven courier routes, which carry 18 percent of samples. How do you put it in front of her?" |
+| Model answer, under a minute | I would give her one sentence for each of four parts. The claim says what is true, with its number. The evidence is the comparison that shows it, with its denominator and window. The caveat is the one thing that could make it wrong, and how big that risk is. The action is what she should do next and what it costs. Here the claim is that turnaround within the 24-hour promise fell from 94 to 89 percent of samples between the last two months; the evidence is that 61 percent of the late samples came from two of the eleven courier routes, which carry 18 percent of samples; the caveat is that one month is one reading, so a bad week could be part of it; and the action is to move those two routes' last pickup an hour earlier for a month and read the share again. |
 | Follow-up | "Your caveat: how would Dr Menon know if it came true?" |
 | What the follow-up separates | Understood: names the check and when it can be read, such as the two routes' share next month against their own last three months. Memorised: a caveat that fits any finding, such as "the data may have errors". |
 | A weak answer sounds like | The analysis told in the order it was done, from loading the files. |
@@ -520,7 +539,7 @@ dollars nearly double after a join? Which checks run before a joined number reac
 |---|---|
 | The move | Week 2 Tuesday: attach, count, explain the difference, then sum; the join that grew the row count. Tag `[F]`. |
 | Anchor, on the Week 2 Tuesday row | "Revenue doubled after a join and every row looks fine; where do you look?" and "Your join grew the row count; name the cause and the check." |
-| Ask | "A payer's fee schedule lists what its contract allows for each test. To check what one commercial plan should have paid last quarter, you join 41,200 claim lines to its fee schedule on the test code. Expected dollars come out almost double what payer contracting expects, and every row looks right. Where do you look?" |
+| Ask | "A payer's fee schedule lists what its contract allows for each test. To check what one commercial plan should have paid in the last quarter of 2025, you join 41,200 claim lines to its fee schedule on the test code. Expected dollars come out almost double what payer contracting expects, and every row looks right. Where do you look?" |
 | Model answer, under a minute | I would look at the grain. The fee schedule holds more than one row per test code, an old rate and a new rate, each with the dates it applies from and to, so the join repeats each claim line once per rate and the sum counts it twice. I count rows and distinct claim lines before and after the join: if 41,200 lines became about 79,600 rows, the join fanned out. The fix joins on the test code and on the service date falling inside the rate's dates, so each line meets exactly one rate, and then rows after the join equal lines before it. |
 | Follow-up | "What single check, run every time, would have caught it?" |
 | What the follow-up separates | Understood: the row count after the join equals the claim-line count, or the claim-line id stays unique after the join. Memorised: "remove duplicates after the join", which hides the cause. |
@@ -646,14 +665,14 @@ a login, change in the room and still trust.
 **The questions on the way.** SQL, pandas or Excel for one of Dr Menon's asks? Why does a missing id
 return a neighbour's numbers? What did a sheet get right when two directors get two answers?
 
-### T10-L1. SQL, pandas or Excel: how do you choose, for one of Dr Menon's asks?
+### T10-L1. Dr Menon asks for three numbers this month: SQL, pandas or Excel for each, and why? (reserve)
 
 | | |
 |---|---|
 | The move | Week 2 Friday: which tool owns which number, and what a stakeholder may change. Tag `[S]`. |
 | Anchor, on the Week 2 Friday row | "SQL, pandas or Excel: how do you choose?" and "A stakeholder wants to poke the numbers themselves; what do you give them and what do you never give them?" |
-| Ask | "SQL, pandas or Excel: how do you choose, for one of Dr Menon's asks?" |
-| Model answer, under a minute | The warehouse, in SQL, owns a number finance relies on every week, such as days in accounts receivable, because it runs where the data lives and one version exists. pandas owns a several-step analysis or a reshape I must reproduce top to bottom, such as splitting a change in the average per test into price and mix. Excel owns the view for a director who wants to change assumptions and watch the answer move, such as next year's plan, fed from an exported, reconciled table and never used to edit the source. |
+| Ask | "Dr Menon asks for three things this month: the redraw rate for every patient service centre each Monday for the lab director, the late samples by courier route rebuilt from the lab's raw logs, and next year's plan of draws per centre that her directors can change in the room. SQL, pandas or Excel for each, and why?" |
+| Model answer, under a minute | The redraw rate goes in the warehouse, in SQL, because the lab director relies on it every Monday, it runs where the data lives, and only one version exists. The late samples by route go in pandas, because they take several steps from the raw logs, a join and a reshape by route and day, and I must be able to rerun them top to bottom. The plan goes in Excel, the view for directors who want to change assumptions and watch the answer move, fed from an exported, reconciled table and never used to edit the source. |
 | Follow-up | "Dr Menon's chief of staff wants to edit the numbers themselves. What do you give them?" |
 | What the follow-up separates | Understood: yellow input cells for the assumptions, formulas protected, the data read-only and a checks tab. Memorised: "Excel, because they know Excel". |
 | A weak answer sounds like | "Whichever tool I am most comfortable in." |
