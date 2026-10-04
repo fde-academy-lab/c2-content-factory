@@ -1,162 +1,289 @@
-# Run sheet: Week 3, Saturday. Dr Menon's answers, and Build 1 closes
+# Run sheet, Build 1 Saturday: how is every group heard, every grade closed and one change per group named for Build 2?
 
-**TRAINER ONLY.** Nothing on this page reaches a learner.
+**TRAINER ONLY.** This page names what is planted in Build 1's data, with its numbers. Nothing on it
+reaches a learner.
 
 Posts to <!-- sync:module:W03/SAT -->Module 1: Foundations of AI and Data<!-- /sync:module:W03/SAT -->, on <!-- sync:day-date:W03/SAT -->Sat 24 Oct 2026<!-- /sync:day-date:W03/SAT -->.
 
+There is no IITGN faculty block on this day. Build 1 is the programme's first build week: Kalpa
+Health, a fictional US diagnostics business run from Kalpa's Global Capability Centre (GCC) in
+Bengaluru, whose COO, Dr Priya Menon, asked why test volumes grew 5 percent from Q2 to Q3 of 2026
+against a plan of 18, and which branch of her business is short. Nine groups of learners each took
+one of her heads' five questions on Monday and answered it with the Weeks 1 and 2 method, on ten
+synthetic data files exported on Friday 16 October 2026. Today is expert day two: the last group
+discussions (GDs), every remaining presentation with a live demo, every Build 1 grade closed, and
+one improvement per group named for Build 2. Nothing is taught. The week's plan,
+`docs/detailing/W03_build1_spine.md`, approved on 29 September 2026, sets the day.
+
+**Who needs the answer.** The Programme Head, who runs the day and closes the grades; the industry
+expert and the senior industry leader, who chair the two panels; the Principal Advisor, online for a
+GD round; the trainer and the Academic TA, who scribe, keep time and run the close. A day that runs
+late cuts the last groups' questions or pushes closure past the leader's flight, and a grade closed
+on a wrong cell reaches a learner's record.
+
+**The questions on the way.** Which questions does the day answer, in order? Where does Saturday
+start and stop? Who runs what? How does one slot run? How do the rooms fill the 300 minutes? How does
+a demo run cold, and what if it fails? How are scores recorded as the day rolls? What is planted, and
+how does a chair recognise a finding? How do the grades close in 30 minutes? How does the week close
+run? How does the interview question sound in one breath? What moves when the day goes wrong? Which
+file serves which moment, and what follows the day?
+
+## Which questions does Saturday answer, in the order the day asks them?
+
+**Who needs the answer.** Every member of staff, before the opening: each part of the day answers
+one question, and a part that wanders from its question eats another part's minutes.
+
+**The questions on the way.** What is the day's question? Which questions does each slot answer?
+Which questions close the day?
+
+The day's question, in the room's words: **which branch of Kalpa Health is short, and does our
+answer hold when a panel tests it live on the raw files?**
+
+| Order | The question | Who asks it | Where it is answered |
+|---|---|---|---|
+| 1 | What did you find? | Dr Menon, through the panel | The group's one-slide answer, in its first two minutes |
+| 2 | How sure are you? | The panel | The data made trustworthy, the analysis and the live demo |
+| 3 | What would change your mind? | The panel's caveat challenge | The group's caveat, defended by every member |
+| 4 | What do I do on Monday? | Dr Menon, through the panel | The action on the one-slide answer |
+| 5 | Does every learner hold all their Build 1 scores? | The Programme Head | Grade closure, 30 minutes |
+| 6 | What does each group change first in Build 2? | The trainer | The week close, 15 minutes |
+| 7 | What comes on Monday? | The trainer | The bridge to Week 4, back in Kalpa Retail |
+
+Questions 1 to 4 are Dr Menon's four, in the order the presentation format deck,
+`slides/C2_W03_SAT_presentation_format_STUDENT.md`, teaches the groups to answer them. The chair asks
+the group each one if the group has not answered it by the end of its 17 minutes.
+
+## What does Saturday start from, and where does it stop?
+
+**Who needs the answer.** The Programme Head, who decides what to cut when the day runs late; a cut
+made in the wrong order takes a group's question time or closure's minutes, which the day cannot give
+back.
+
+**The questions on the way.** What is already done? How far does the day go? What must it not do?
+What comes after it? What is cut first?
+
 | | |
 |---|---|
-| **The day** | Dr Menon's question gets its answers. The remaining GD rounds close, every group presents with a live demo before one of two panels, scores roll as each slot ends, every Build 1 grade closes, and each group names one improvement for Build 2. |
-| **Length** | 300 minutes of room time (`data/programme/facts.yaml`), run here as a morning of 180 and an afternoon of 120 with lunch between them. A build week's Saturday carries no recap paper, no Kahoot and no practice set. |
-| **Who** | The Programme Head runs the day and owns grade closure. The industry expert chairs one panel and the remaining GDs; the senior industry leader, who flies in for the day and returns the same day, chairs the other panel. The Principal Advisor takes GD rounds online where the roster needs it. The trainer scribes for the expert's room and runs the week close; the Academic TA scribes for the leader's room, checks demo machines and runs the separate questions for silent teammates. |
-| **Nothing is taught** | The only teaching moment is the week close, which names what the week trained and hands the room to Week 4. |
-| **Interview angle** | [S] Present a finding to a panel and take a challenge on your caveat. |
+| **Start from** | Every group has its claim from Wednesday and its build frozen at Friday's close, with two cold runs logged (a cold run starts from a fresh machine on the raw files, with nothing computed in advance), and every learner sat Mock R1 on Thursday. Seven GD rounds and a first tranche of up to three presentations ran on Friday, and Friday's close drew Saturday's presentation order (`content/W03/D5/trainer/C2_W03_D05_day_sheet_TRAINER.md`). |
+| **Go as far as** | Every group presented, demoed live and defended; every learner holds a GD score, a mini project score in its two parts, and a Mock R1 score, or a recorded absence; the grades closed and signed; one improvement per group written up for Build 2. |
+| **Stop before** | Any teaching, any finding named in the room, and any score read aloud. |
+| **Comes later** | Week 4 Monday, 26 October: back in Kalpa Retail, where Meera Raghavan's growth plan needs its metric. |
+| **Cut first** | A room's reserve goes first: the minutes a room holds free after its last slot. Then the changeover drops from three minutes to one, then the week close from 15 minutes to 10. A group's question time never drops below 8 minutes, grade closure never below 20, and no group moves out of its sub-problem's run. |
 
-**What each panel member reads before the first slot:** the question bank,
-`trainer/C2_W03_SAT_question_bank_TRAINER.md` (ten minutes for their own sub-problems, five for the
-headline), and the presentation format the groups built on,
-`slides/C2_W03_SAT_presentation_format_STUDENT.md`, so they know the 17 minutes the group holds.
+## Who runs what today?
 
----
+**Who needs the answer.** Each role, who must know which room and which job is theirs; one person
+booked for two rooms at once leaves a slot unscribed or a machine unchecked.
 
-## The slot, which is the same in both rooms
+**The questions on the way.** Which role chairs, scribes, keeps time, checks machines and closes?
+
+| Role | Today |
+|---|---|
+| The Programme Head | Runs the day, assigns the rooms, settles anything disputed after the room, and owns grade closure |
+| The industry expert | Chairs the expert's room and the in-room GD rounds that remain |
+| The senior industry leader | Flies in for the day and returns the same day; chairs the leader's room |
+| The Principal Advisor | Online; runs a remaining GD round in parallel where the roster needs it |
+| The trainer | Scribe and timekeeper in the expert's room; checks each demo machine's commit before its slot in that room; copies GD and mini project scores into the closure workbook; runs the week close |
+| The Academic TA | Prepares every demo machine before the rooms open; scribe and timekeeper in the leader's room, checking each demo machine's commit before its slot there; sits in on the separate questions to quiet members |
+
+Each panel reads its pages of the question bank, `trainer/C2_W03_SAT_question_bank_TRAINER.md`,
+before the first slot: about 15 minutes for its own sub-problems and the headline.
+
+## How does one presentation slot run?
+
+**Who needs the answer.** Both scribes, who keep the clock, and both chairs, who keep the questions;
+a slot that overruns takes its minutes from the groups after it.
+
+**The questions on the way.** How are the 30 minutes split? What does the scribe say at 17? How is a
+quiet member questioned?
 
 ```mermaid
 flowchart LR
-    A["<b>group</b><br/>17 min<br/>answer, method, demo"] --> B["<b>panel questions</b><br/>8 to 10 min"] --> C["<b>changeover</b><br/>3 min<br/>scores recorded"]
-    classDef core fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class B core
+    A["<b>the group</b><br/>17 min<br/>answer, method, demo"] --> B["<b>the panel</b><br/>8 to 10 min<br/>questions"] --> C["<b>changeover</b><br/>3 min<br/>scores, demo outcome"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class A,C known
+    class B bet
 ```
 
 | Part | Minutes | Who keeps it |
 |---|---|---|
-| The group's presentation, with its live demo inside it | 17, a hard stop | The room's scribe holds up a card at 15 and stops the group at 17 |
-| The panel's questions | 8 to 10 | The panel chair; at least four questions, per the question bank's rule 3 |
-| Changeover, while the panel records each learner's score and the next group sets up | 3 | The scribe |
+| The group's presentation, its live demo inside it | 17, a hard stop | The scribe shows a card at 5 minutes left and at 1 minute left, and stops the group at 17 |
+| The panel's questions | 8 to 10 | The chair: at least three questions, four where another group has presented on the same question, by the question bank's third rule |
+| The changeover: the chair scores, the scribe records the demo's outcome, the next group sets up | 3 | The scribe |
 | **The slot** | **28 to 30** | |
 
-**Words for the scribe at 17 minutes:** "Time for the group. The panel's questions now; the group keeps
-its full question time."
+### What does the scribe say at 17 minutes?
 
-**Silent teammates.** During questions the chair names the member who has spoken least for the
-silent-teammate question in the bank, and the rest of the group stays silent while that member
-answers. A member who still cannot answer is flagged by the scribe on the room's list, and the same
-panel questions that learner separately, alone, for up to five minutes in the room's next reserve
-(see the timelines), before that group's scores are final.
+"Time for the group. The panel's questions now; the group keeps its full question time."
 
----
+### How is a quiet member questioned?
 
-## Before the day opens
+During questions the chair names the member who has spoken least for the quiet-member question in
+the bank, and the rest of the group stays silent while that member answers.
+A member who still cannot answer is flagged on the scribe's list, and the same panel questions that
+learner alone, for up to five minutes, in the room's next reserve, before that learner's
+presentation and defence score is entered. The group's 34 marks do not wait.
 
-| Step | Who | Done when |
+## How do the two rooms fill the 300 minutes?
+
+**Who needs the answer.** The Programme Head, who assigns the rooms before they open, and both
+chairs, who need to know when they stop. A plan that splits a sub-problem's groups across rooms loses
+the panel's hearing of honest alternatives side by side, and one that overfills a room pushes closure
+past the leader's flight.
+
+**The questions on the way.** Which groups go to which room? What does the likely Saturday look like?
+What does the heaviest Saturday look like in each shape, and when can the leader leave? What does the
+Programme Head say at the opening?
+
+### Which groups go to which room?
+
+Keep each sub-problem's groups together, in one room and back to back, so a panel hears the honest
+alternatives on one question in sequence; that rule wins over balance. Within it, balance the rooms as
+closely as whole clusters allow, and give the leader's room the larger share, since the expert's room
+runs the GD rounds first. Where it can be done without splitting a sub-problem, put sub-problems 1
+(revenue) and 5 (the offer) before the leader, whose questions are a board's, and 2 (bookings), 3
+(billing) and 4 (no-shows) before the expert. The allocation of groups to questions was the Programme Head's on Monday, so this sheet
+assumes none. Friday's draw puts the Saturday GD groups no earlier than the drawn order's third slot,
+which does not keep them clear of their rounds once the clusters are split between rooms. When
+assigning rooms, the Programme Head checks that no GD group has a slot starting before minute 70, and
+moves its cluster to the other room, or the group's place inside the cluster, if one does.
+
+The day runs a morning of 180 minutes and an afternoon of 120, with lunch between them, 300 minutes
+of room time (`data/programme/facts.yaml`).
+
+### What does the likely Saturday look like?
+
+Friday's pack runs seven GD rounds and a first tranche of three presentations, so Saturday holds two
+GD rounds and six presentations, 180 panel-minutes. Friday's tranche takes whole clusters only, so
+what is left depends on the shape of Monday's allocation. With three questions in clusters of 3, 3
+and 3, Friday takes one cluster and Saturday holds two clusters of three, one per room. With five
+questions in clusters of 2, 2, 2, 2 and 1, Friday takes a two and the one, and Saturday holds three
+clusters of two, which split four and two.
+
+Three and three:
+
+| Minutes | The leader's room | The expert's room |
 |---|---|---|
-| Read the presentation order drawn at Friday's close, strike the groups that presented Friday, and assign the rest to the two rooms by the rule below | Programme Head | Both room orders are printed and on each panel's table |
-| Copy Friday's GD totals (from `content/W03/D5/rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx`), Friday's first-tranche mini project totals and Thursday's mock scores (from `content/W03/D4/rubrics/C2_W03_D04_mock_scoring_sheet_TRAINER.xlsx`) into the grade closure workbook | Programme Head, with the Academic TA reading the sheets aloud | The workbook's Checks sheet shows no MISSING in the GD column for Friday's groups, none in the mini project column for the first tranche, and none in the mock column |
-| Run the demo from the frozen commit for any group with no second rehearsal cold run logged on Friday, as Friday's freeze rule requires; this is a rehearsal, and the group's one run before the panel, with its two minutes to recover, is still to come | Academic TA | Every group has a logged cold run on its frozen hash |
-| Open each group's demo machine on a fresh Codespace at its frozen commit, with the raw files in the data folder, and leave it closed and cold; check `git rev-parse HEAD` against Friday's freeze table before each slot | Academic TA | Every group has a machine on its frozen hash, and none has run the notebook |
-| Put the question bank in front of each panel, marked with that room's sub-problems | Trainer | Each panel member has read their pages |
+| Morning 0 to 10 | The opening, both rooms together | (together) |
+| 10 to 40 | Slot 1 | GD round 8 with the expert; GD round 9 online with the Principal Advisor at the same time |
+| 40 to 70 | Slot 2 | Slot 1 |
+| 70 to 100 | Slot 3 | Slot 2 |
+| 100 to 130 | Reserve: quiet members' questions; the leader signs the room's scores | Slot 3 |
+| 130 to 160 | The leader's work is done | Reserve: quiet members' questions; GD scores entered |
+| 160 to 180 | Reserve for either room | Reserve for either room |
+| Afternoon 0 to 30 | Grade closure, together | |
+| 30 to 45 | The week close, together | |
+| 45 to 120 | Reserve; unused, the day ends at 45 | |
 
-**The room rule.** Keep every sub-problem's groups together on one panel and back to back, so a
-panel hears the alternate claims on one question in sequence. Balance the two rooms to within one
-group, and give the leader's room the larger share, because the expert's room runs the remaining GDs
-first. Where it can be done without splitting a sub-problem, put sub-problems 1 (revenue) and 5
-(campaign) before the leader, whose questions are the board's, and 2 (bookings), 3 (billing) and 4
-(no-shows) before the expert. The allocation that decides the clusters was made by the Programme Head
-on Monday; this sheet does not assume it.
+Four and two, the leader's room taking two clusters:
 
----
-
-## Plan A: the clusters are 2, 2, 2, 2 and 1 (every sub-problem covered by nine groups)
-
-This plan is sized for the heaviest Saturday the week could hand over: nobody presented on Friday
-and three GD rounds remain. Every group Friday took off frees one slot of 30 minutes in its room.
-
-**The likely Saturday, from Friday's pack.** Friday runs seven GD rounds and a first tranche of up to
-three presentations in whole clusters (`content/W03/D5/trainer/C2_W03_D05_day_sheet_TRAINER.md`), so
-Saturday holds two GD rounds (slots 8 and 9, one of them the Principal Advisor's online) and about six
-presentations. Run both GD rounds in parallel in the first 30 minutes after the opening (the expert in
-the room, the Principal Advisor online), start the leader's room at once, and let the expert's room
-begin its slots after the GD; the two groups in Saturday's GDs present no earlier than the third slot
-of their room, as Friday's draw requires. Six slots then end before lunch in both rooms, and the
-afternoon runs follow-ups, closure and the week close with its reserve.
-
-```mermaid
-flowchart TB
-    subgraph M["<b>Morning, 180 min</b>"]
-      O["<b>Opening, both rooms</b><br/>10 min"]
-      L1["<b>Leader's room</b><br/>5 slots, 150 min<br/>then reserve 20"]
-      E1["<b>Expert's room</b><br/>3 GD rounds, 90 min<br/>then 2 slots, 60 min<br/>then reserve 20"]
-      O --> L1
-      O --> E1
-    end
-    subgraph A["<b>Afternoon, 120 min</b>"]
-      E2["<b>Expert's room</b><br/>2 slots, 60 min"]
-      G["<b>Grade closure</b><br/>30 min"]
-      W["<b>Week close</b><br/>15 min"]
-      R["<b>Reserve</b><br/>15 min"]
-      E2 --> G --> W --> R
-    end
-    M --> A
-```
-
-| Minutes from the start | Leader's room | Expert's room |
+| Minutes | The leader's room | The expert's room |
 |---|---|---|
-| 0 to 10 | Opening, together: the order, the slot, the demo rules, and the silent-teammate rule said aloud | (together) |
-| 10 to 160 | Five slots of 30: the larger two clusters and the single group, or the cluster the room rule gives | GD rounds, 10 to 100: three of 30 minutes each |
-| | | Two slots of 30, 100 to 160: the first cluster of two |
-| 160 to 180 | Reserve: silent-teammate follow-ups, the leader's scores finalised and signed | Reserve: silent-teammate follow-ups, the GD scores entered |
-| Lunch | The leader's scoring is complete; the leader may leave for the flight from here | |
-| Afternoon 0 to 60 | The leader joins the expert's room if still on campus, as a second pair of ears; the expert's scores stand | Two slots of 30: the second cluster of two |
-| 60 to 90 | Grade closure, together (steps below) | |
-| 90 to 105 | Week close, together | |
-| 105 to 120 | Reserve for anything that ran over; unused, the day ends here | |
+| Morning 0 to 10 | The opening, both rooms together | (together) |
+| 10 to 40 | Slot 1 | GD round 8 with the expert; GD round 9 online with the Principal Advisor at the same time |
+| 40 to 100 | Slots 2 and 3 | Slots 1 and 2, one cluster |
+| 100 to 130 | Slot 4 | Reserve: quiet members' questions; GD scores entered |
+| 130 to 160 | Reserve: quiet members' questions; the leader signs the room's scores | The expert's work is done |
+| 160 to 180 | Reserve for either room | Reserve for either room |
+| Afternoon 0 to 30 | Grade closure, together | |
+| 30 to 45 | The week close, together | |
+| 45 to 120 | Reserve; unused, the day ends at 45 | |
 
-**The opening, in words the Programme Head can say.** "Every group presents once, for 17 minutes,
-with a live demo run cold on the raw files; a demo that fails has two minutes to recover, and after
-that the group presents from its executed notebook. The panel then asks for eight to ten minutes, and the
-panel chooses who answers. Where two groups took the same sub-problem, they present one after the
-other, so the panel hears two honest answers to the same question. Nobody is told anything about
-another group's work until the week close."
+### What does the heaviest Saturday look like when the clusters are 2, 2, 2, 2 and 1?
 
-## Plan B: the clusters are 3, 3 and 3 (three sub-problems, three groups each)
+Nobody presented on Friday and three GD rounds remain, so nine groups present today. Slots stay at 30
+minutes.
 
-Three-group clusters need 90 minutes each at 30-minute slots, and two of them do not fit one
-morning. So Plan B runs the slot at 28 minutes (17, then 8 of questions, then 3) and opens in five.
-
-| Minutes from the start | Leader's room | Expert's room |
+| Minutes | The leader's room | The expert's room |
 |---|---|---|
-| 0 to 5 | Opening, together | (together) |
-| 5 to 173 | Two clusters, six slots of 28: cluster one, then cluster two | GD rounds, 5 to 95: three of 30 minutes each |
-| | | One cluster, three slots of 28, 95 to 179 |
-| to 180 | The leader's scores signed | The expert's scores recorded |
-| Afternoon 0 to 30 | Silent-teammate follow-ups for both rooms, then every score entered | |
-| 30 to 60 | Reserve for anything the morning pushed | |
-| 60 to 90 | Grade closure, together | |
-| 90 to 105 | Week close, together | |
-| 105 to 120 | Reserve; unused, the day ends here | |
+| Morning 0 to 10 | The opening, together | (together) |
+| 10 to 160 | Five slots: two clusters of two and the single group | GD rounds 10 to 70: two with the expert, one online with the Principal Advisor from minute 10; then three slots, 70 to 160 |
+| 160 to 180 | Reserve: quiet members; the leader signs | Reserve: quiet members; GD scores entered |
+| Afternoon 0 to 30 | The leader joins the expert's room as a second pair of ears if still on campus | Slot 4, the last of its second cluster |
+| 30 to 60 | Grade closure, together | |
+| 60 to 75 | The week close, together | |
+| 75 to 120 | Reserve; unused, the day ends at 75 | |
 
-The morning has no slack in Plan B, so its overrun rule is strict: question time stops at eight
-minutes, and anything the morning cannot hold moves to the afternoon's first reserve.
+### What does the heaviest Saturday look like when the clusters are 3, 3 and 3?
 
----
+Nine groups present today, and two clusters of three need 180 minutes at 30-minute slots, which one
+morning cannot hold beside the opening, so every slot runs 28 minutes (17, then 8 of questions, then
+3).
 
-## Scoring as it rolls
+| Minutes | The leader's room | The expert's room |
+|---|---|---|
+| Morning 0 to 10 | The opening, together | (together) |
+| 10 to 178 | Two clusters, six slots of 28 | GD rounds 10 to 70 as above; one cluster, three slots of 28, 70 to 154 |
+| 178 to 180 | The room breaks for lunch | 154 to 180: reserve, GD scores entered |
+| Afternoon 0 to 30 | Quiet members' questions for both rooms, then every score entered; the leader signs the room's scores last | |
+| 30 to 60 | Grade closure, together | |
+| 60 to 75 | The week close, together | |
+| 75 to 120 | Reserve; unused, the day ends at 75 | |
 
-Each slot's score is recorded in its own changeover, because a panel that
-scores nine groups from memory scores the last three against the first six.
+The morning has no slack in this shape, so its overrun rule is strict: question time stops at 8
+minutes, and anything the morning cannot hold moves to the afternoon's first 30.
+
+### What does the Programme Head say at the opening?
+
+"Every group presents once, for 17 minutes,
+with a live demo run cold on its raw files; a demo that fails has two minutes to recover, and after
+that the group presents from its executed notebook. The panel then asks for eight to ten minutes, and
+the panel chooses who answers. Where groups took the same question, they present one after the other,
+so the panel hears more than one honest answer to it. Nobody hears anything about another group's
+work until the week close."
+
+At the likely load the rooms hear three groups each, or four and two; at the heaviest the leader's
+room hears five or six and the expert's room four or three. Closure follows lunch in every shape.
+
+## How does a demo run cold, and what happens when it fails?
+
+**Who needs the answer.** The Academic TA, who prepares every machine, and each chair, who applies
+the rule in the minute it is needed; a rule applied differently in the two rooms gives two groups
+different marks for the same failure.
+
+**The questions on the way.** What is checked before the room opens? What is checked before each
+slot? What is the rule when a demo fails? What if the machine fails before the code runs?
+
+| Before | Who | Done when |
+|---|---|---|
+| The room opens: run the demo from the frozen commit for any group with no second cold run logged on Friday, as Friday's freeze requires; this is a rehearsal, and the group's one run before the panel is still to come | The Academic TA | Every group has a logged cold run on its frozen commit |
+| The room opens: open each group's demo machine on a fresh Codespace at its frozen commit, the raw files in its data folder, and leave the notebook unrun | The Academic TA | Every group has a cold machine on its frozen commit |
+| Each slot: check `git rev-parse HEAD` against Friday's freeze table | Each room's scribe, for that room's slots | The hash matches, or the panel has seen the difference and ruled on it |
+
+### What is the rule when a demo fails?
+
+The rule, set on 29 September 2026 for both expert days, word for word: a group's demo runs once, cold, on its raw files. If it fails, the group has two minutes to
+recover it live, as it would in front of a client. If it still fails, the group presents from its
+executed notebook, and the panel scores the live demo in presentation and defence as not run cold.
+The other 34 marks of the mini project are scored from the executed run, so a failed demo costs its
+own marks and never the analysis. The rule sets nothing for a demo recovered inside the two
+minutes, so the panel judges how that live recovery scores within presentation and defence.
+
+### What if the machine fails before the code runs?
+
+If the hardware or the Codespace fails before the demo starts, the room's scribe swaps in a spare
+machine and the demo runs in the slot; if no spare works, the group presents, and its demo runs cold
+in the room's reserve before the same panel. Until it runs, the chair records "machine failed: demo
+waits for the reserve", and no member's presentation and defence is scored.
+
+## How are scores recorded as the day rolls?
+
+**Who needs the answer.** Each chair and scribe, after every slot: a panel that scores six groups from
+memory at the end of the morning scores the last two against the first four.
+
+**The questions on the way.** Who scores what, where and when? What does the approved rubric say?
+Where does a missed plant show, and where does a quiet member show?
 
 | Step | Who | Where |
 |---|---|---|
-| The panel scores the group's four group criteria once, out of 34, and each learner's presentation and defence out of 6, after the slot and never in front of the group | The panel chair | `rubrics/C2_W03_SAT_mini_project_scoring_TRAINER.xlsx`, sheets Groups and Learners; Friday's first tranche is already in the same sheet |
-| The scribe copies each learner's total out of 40, once, into the grade closure workbook | Trainer (expert's room), Academic TA (leader's room) | `rubrics/C2_W03_SAT_grade_closure_TRAINER.xlsx`, sheet Scores, column Mini project |
-| Each Saturday GD round is scored per learner in Friday's GD sheet, then each total out of 30 is copied once | The expert or the Principal Advisor scores; the trainer copies | `content/W03/D5/rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx`, then the closure workbook's GD column |
-| A demo that still fails after its two minutes to recover: the group presents from its executed notebook, the panel scores the live demo inside presentation and defence as not run cold, and the four group criteria (34 marks) are scored from the executed run as for any group | The panel chair | Groups and Learners, as above; the scribe notes the failed demo beside the group |
-| A learner flagged silent is questioned in the reserve before that learner's presentation and defence score is entered; the group's 34 does not wait | The panel chair, with the scribe | The Learners sheet, then the closure workbook; each cell entered once, after the follow-up |
+| The chair records the demo's outcome: ran cold, recovered within two minutes, still failed and presented from the executed notebook, or a machine failure waiting for the reserve | The chair, in the changeover | `rubrics/C2_W03_SAT_mini_project_scoring_TRAINER.xlsx`, sheet Groups, column Demo on the day |
+| The chair scores the four group criteria once, out of 34, from the executed run whatever the demo did, and each learner's presentation and defence out of 6; the sheet flags full marks on presentation and defence after a demo that still failed | The chair, in the changeover, never in front of the group | The same workbook, sheets Groups and Learners; before the first slot the trainer copies in the first tranche's scores from the expert's signed Friday sheets |
+| The scribe copies each learner's group part and presentation and defence once into the closure workbook, and each group's demo outcome into its Demos sheet | The trainer in the expert's room, the Academic TA in the leader's room | `rubrics/C2_W03_SAT_grade_closure_TRAINER.xlsx`, sheets Scores and Demos |
+| Each Saturday GD round is scored per learner, then each GD total out of 30 is copied once | The expert or the Principal Advisor scores; the trainer copies | Friday's sheet, `content/W03/D5/rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx`, then the closure workbook's GD column |
+| A learner flagged quiet is questioned in the reserve before that learner's presentation and defence score is entered | The chair, with the scribe | Learners, then the closure workbook |
 
-**The rubric the panels score against.** The requester approved Build 1's rubrics on 29 September
-2026 (`data/programme/facts.yaml`, evaluation.rubrics.W03), and learners may see them. The group part
-is where a missed plant shows (the data and the analysis); presentation and defence is where a silent
-teammate shows.
+Build 1's rubrics were approved on 29 September 2026, and learners may see them:
 
 <!-- sync:rubric:W03/mini-project -->
 **Mini project, 40 marks.** The first four criteria are scored once for the group, and every member receives those 34 marks; presentation and defence is scored for each learner on 6 marks, so a silent teammate cannot ride the group's score.
@@ -170,72 +297,166 @@ teammate shows.
 | Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |
 <!-- /sync:rubric:W03/mini-project -->
 
----
+A missed plant shows in the group part, under the data made trustworthy and the analysis; a quiet
+member shows only in that member's presentation and defence. How many marks below full a failed demo
+costs is the panel's call: the sheet stops full marks and sets no number.
 
-## Grade closure, 30 minutes, step by step
+Every score is entered once, in the changeover after its slot, and the closure workbook receives it
+from the scoring sheet.
+
+## What is planted in the files, and how will a chair recognise a finding?
+
+**Who needs the answer.** Both chairs and the trainer, who must recognise a finding when a group
+describes it in its own words, and never name one a group did not reach; a finding named in the room
+reaches every group still waiting outside.
+
+**The questions on the way.** What is planted for each question, with its numbers? Which question
+shows whether a group found it? What happens when nobody found it?
+
+Every number here is recomputed from the ten files by `internal/C2_W03_SAT_witness_INTERNAL.py`,
+which checks each against the week's plan and ends `RESULT: PASS`. The question bank carries each one in
+full, with the questions in rising order. Percentages are changes from Q2 to Q3 unless the row says
+otherwise.
+
+| Question | What is planted | The numbers | The question that shows it |
+|---|---|---|---|
+| The headline, every group | Dr Menon's 5 percent counts retail tests booked in the old booking system only, a panel as its component tests | 5.1 percent on the dashboard's count (23,213 to 24,406 tests); 7.8 percent in tests booked across both systems, 8.6 in tests performed and 5.6 in bookings; all without the employer contract, whose 1,200 screenings of 5 tests add 6,000 tests to Q3 | "Dr Menon's 5 percent: what does it count, and did you reproduce it?" |
+| 1 Revenue | One employer wellness contract in Q3, and panels billed as one claim line | Claim KH-CLM-007802, $180,000, 14.6 percent of Q3's $1,231,001 billed; billed charges grow 26.9 percent with it and 8.3 without; retail billing falls $93,715 short of 18 percent growth, 67.7 percent of it in Chicago and Philadelphia; Q3 mean claim $210.50 with it and $179.75 without, median $150; 22,152 claim lines bill 46,867 tests on completed bookings; 60 amounts are text, such as "$265.00" | "What is the single largest claim in Q3, and what does your growth become without it?" |
+| 2 Bookings | Chicago and Philadelphia moved to a new booking system on 18 September; the old export carries only its own bookings, repeats 180 ids, and the new system writes dates month first | The two metros fall 23.0 percent in the old export (1,415 to 1,090) and 12.2 percent across both systems (1,415 to 1,243) | "Show me bookings in the two metros day by day for September. What happens on the 18th?" |
+| 3 Billing | Postings keyed as bare digits or CLM-numbers; duplicate loads of a payer's electronic remittance file (ERA) double-post; the employer claim has no posting; denials post with nothing paid | An exact join matches 216 of 11,343 postings, 1.9 percent, and every posting once normalised; 280 double posts worth $19,204.63; 105 reversals; 398 claims with no posting, $253,165 billed and about $215,115 at what the contracts allow; 1,175 retail claims denied, 10.3 percent; $801,314 collected net of double posts on $2,201,099 billed | "What share of postings matched on your first join, and what did you do next?" |
+| 4 No-shows | KH-ATL-03 runs by appointment while the other centres' visits include walk-ins; the register is drawn from the bookings, so a rebooked patient's missed slot is a row beside the kept one | 18.8 against 7.9 percent on all visits; 19.0 percent (15 of 79 scheduled slots, beside 1 walk-in) against 15.1 on scheduled visits; at the others' rate, 15 or more misses in 79 slots happen with probability 0.21 | "What is in the denominator of your no-show rate?" |
+| 5 The offer | The offer went at random to half the patients in Dallas, Atlanta and Phoenix, metros already rising, and to a fifth elsewhere; inside those three metros an offered patient booked less | Offered patients book 9.0 percent more overall and less in every campaign metro (Dallas 10.8, Atlanta 19.9, Phoenix 13.0 percent less); held at each metro's own rate, 14.1 percent less in the three together, p about 0.007, while no one metro is clear alone; 1,642 of the 2,381 offered live in those metros, where patients book more per head (0.76 against 0.45 in the window, 1.43 times before the offer), and the three rose 6.9 percent in the two months before it; New York's 23.5 percent more has p about 0.03, about 0.18 corrected for six metros | "Is the 9 percent the same inside each metro?" |
+
+### What does a chair do when nobody found it?
+
+The chair asks the question once and lets the answer stand; nothing is said
+in the room. The chair's findings list for the week close records the group as having stopped at the
+first cut, and the trainer names only what groups found. For Build 2's first-day sheet the Programme
+Head may note the move the room missed, such as "profile every system's export before counting",
+never the plant.
+
+Each question's plant is one plausible wrong number and one Weeks 1 and 2 move that exposes it, and
+the chair's job is to hear which of the two a group brought.
+
+## How do the grades close in 30 minutes?
+
+**Who needs the answer.** The Programme Head, who signs the closure, and every learner, whose Build 1
+record depends on one cell typed right; a wrong cell signed today reaches the learner's record.
+
+**The questions on the way.** Which components close today? Which step runs in which minutes, and
+how does each one end? What is never done with the workbook?
 
 The graded components that close today are the GD score, the mini project score including the
-presentation, and the mock score. Every learner holds three scores when closure ends.
+presentation, and the Mock R1 score. The closure workbook takes the mini project in its two parts,
+the group's 34 and the learner's 6, so the demo rule holds at closure too.
 
 | Minutes | Step | Who | The check that says it is done |
 |---|---|---|---|
-| 0 to 5 | Both scribes confirm every slot and every GD round is entered, and read out any seat whose status is not COMPLETE | Trainer and Academic TA | The Checks sheet lists each seat that is short, by seat, and each seat with an absence |
-| 5 to 15 | Every flag is cleared at its source: MISSING means find the signed sheet and enter it; OVER MAX or NOT A SCORE means re-read the signed sheet and correct the one cell | Programme Head, with the scribe who entered it | The Checks sheet's MISSING, OVER MAX and NOT A SCORE counts are all zero |
-| 15 to 20 | A learner who missed an event (absent for the mock or the GD) has ABSENT typed in that event's cell and the Programme Head's decision in the Notes column; this pack sets no make-up rule, because none is published | Programme Head | Every seat the Checks sheet lists with an absence carries a note |
-| 20 to 25 | Each assessor role marks its column signed, in the Sign-off sheet: the GD assessors, both panels and the mock assessors | Each assessor present; the Programme Head signs for any who have left, from their signed paper sheets | The Checks sheet's verdict reads READY TO SIGN |
-| 25 to 30 | The Programme Head signs the closure and saves the signed copy where the programme keeps its grade records | Programme Head | The Sign-off sheet shows the closure signed |
+| 0 to 5 | Both scribes confirm every slot and every GD round is entered and every group's demo outcome is final on Demos, then read out each seat whose status is not COMPLETE | The trainer and the Academic TA | The Checks sheet lists each seat that is short, by seat, and each seat with an absence |
+| 5 to 15 | Every flag is cleared at its source: MISSING means find the signed sheet and enter it; OVER MAX or NOT A SCORE means re-read the signed sheet and correct the one cell; GROUP PART DIFFERS means a group's 34-mark part was copied differently for two members, so the scribe re-reads the panel's one group score and types it for every member; DEMO RULE means the chair re-scores that learner's presentation and defence below full marks | The Programme Head, with the scribe who entered it and the chair | The Checks sheet's MISSING, OVER MAX, NOT A SCORE, GROUP PART DIFFERS and DEMO RULE counts are all zero |
+| 15 to 20 | A learner who missed an event has ABSENT typed in that event's cell and the Programme Head's decision in Notes; for the mini project, ABSENT goes in the learner's presentation and defence cell, and the group part stays the group's, since the rubric gives every member the 34; no make-up rule is published, so the sheet sets none | The Programme Head | Every seat listed with an absence carries a note |
+| 20 to 25 | Each assessor role marks its row signed on the Sign-off sheet: the GD assessors, both panels and the mock assessors | Each assessor present; the Programme Head signs for any who have left, from their signed paper sheets | The Checks verdict reads READY TO SIGN |
+| 25 to 30 | The Programme Head signs the closure and saves the signed copy where the programme keeps its grade records | The Programme Head | The Sign-off sheet reads CLOSED |
 
 **Never commit the filled workbook to this repository.** It holds learners' scores, and the
-repository is public. The committed file is the empty template with 35 seats and no names.
+repository is public. The committed file is the empty template, 35 seats and no names.
 
-**Scores are not read aloud in the room.** How and when a learner sees their Build 1 scores is the
-Programme Head's decision, and no source in this repository sets it.
+**No score is read aloud in the room.** How and when a learner sees their Build 1 scores is the
+Programme Head's decision.
 
----
+## How does the week close run in 15 minutes?
 
-## The week close, 15 minutes
+**Who needs the answer.** The trainer, who runs it, and the room, which leaves with one change to make
+in Build 2; a close that overruns eats the improvements, and one that names a plant gives it away.
 
-The deck is `slides/C2_W03_SAT_week_close_STUDENT.md`; the trainer's notes for it, which carry what
-the room found, are `trainer/C2_W03_SAT_week_close_notes_TRAINER.md`.
+**The questions on the way.** What runs in each part of the 15 minutes, and from which files?
+
+The deck is `slides/C2_W03_SAT_week_close_STUDENT.md`; the trainer's notes for it, with what the room
+found and the words to say, are `trainer/C2_W03_SAT_week_close_notes_TRAINER.md`.
 
 | Minutes | What happens |
 |---|---|
-| 0 to 4 | What the week trained: the same method, in a business nobody had seen |
+| 0 to 4 | What the week trained: the same moves from Weeks 1 and 2, in a business nobody had seen |
 | 4 to 12 | One improvement per group for Build 2: each group says its one change in one sentence, and the trainer writes all nine where the room can see them |
 | 12 to 15 | The bridge: Monday is Week 4, back in Kalpa Retail, where Meera's growth plan needs its metric |
 
----
+The close ends on nine sentences on the board and Monday's question left open.
 
-## What moves when the day goes wrong
+## How does the interview question sound in one breath?
 
-**The order of cuts, when a room runs late.** Cut in this order, and stop as soon as the room is back
-on time: the room's reserve first; then the changeover, from three minutes to one, with scores
-recorded in the next reserve; then the week close, from 15 minutes to 10, keeping the nine
-improvements and saying the bridge in one sentence. Never cut a group's question time below eight
-minutes, never cut grade closure below 20, and never move a group out of its sub-problem's run.
+**Who needs the answer.** The trainer, who models it if the room asks, and the chairs, who hear it
+done well or badly all day; an answer modelled on a group's own finding names that finding to the
+whole room.
+
+**The questions on the way.** What is the row's question, and what does a strong answer sound like?
+
+The row's question carries the tag [S], a staple asked in every kind of interview: "Present a finding
+to a panel and take a challenge on your caveat."
+
+### What does a strong answer sound like?
+
+On the invented turnaround quarter the presentation format deck uses, in the trainee's voice: "I told
+the panel median turnaround, draw to result, fell from 22 to 18 hours from Q2 to Q3 on 9,400 tests.
+Challenged that half the gain was the courier's, I restated the claim with its count; bounded it, since timed
+from the sample's arrival Q3 reads 14 hours, so the courier sits inside the 18; and offered the test:
+time 200 samples at both ends next week."
+
+The trainer models only this invented answer; what a group said in its slot stays in that room.
+What makes it strong: the claim with its denominator first, then Week 1 Friday's three moves (restate,
+bound, offer the test), and the edge of the evidence said before anyone else says it.
+
+## What moves when the day goes wrong?
+
+**Who needs the answer.** The Programme Head, in the minute it goes wrong, who decides what moves; a
+fix improvised in the moment tends to cut a group's question time first.
+
+**The questions on the way.** What is cut first? What does each failure move?
 
 | What happens | What moves |
 |---|---|
-| A group runs past 17 minutes | The scribe stops it at 17; the group keeps its question time, and nothing else in the room moves. |
-| A room is 10 minutes behind after two slots | The changeover drops to one minute for the rest of the morning, and scores go into the reserve. |
-| A room is 20 minutes behind at the end of the morning | The reserve absorbs it; in Plan A the leader's room has 20, and in Plan B the afternoon's first 30. |
-| A GD round overruns | The next GD starts late and the expert's first slot slides with it; the expert's afternoon slots stay where they are, because the leader's room has the slack. |
-| More than three GD rounds remain | The Principal Advisor runs the fourth and any after it online, in parallel with the expert's rounds, from minute 10. |
-| The leader is not in the room when the day opens | The expert starts presentations in the expert's room at once, and the Principal Advisor takes the remaining GDs online. The leader's room starts on arrival and slides by the delay; up to 20 minutes late fits the morning's reserve, and up to 80 fits once the afternoon's first hour takes the leader's last two slots. |
-| The leader cannot come at all | The expert hears every group alone at 26-minute slots (17, then the full 8 of questions, then a one-minute changeover with scores recorded in the reserve): six in the morning after a five-minute opening, which leaves 19 minutes of reserve, and three in the afternoon, with the GDs online with the Principal Advisor. Closure keeps its 30 and the week close runs in 10, so the afternoon holds 118 of its 120 minutes. |
-| The leader has to leave before their last slot | The leader's unheard groups move to the expert's afternoon, which holds two more slots before closure; the leader signs the scores already given before leaving. |
-| A demo machine fails before the demo starts (hardware or Codespace, not the group's code) | The Academic TA swaps to a spare machine; if none works, the group presents and its demo runs in the room's reserve, cold, before the same panel. |
-| A group's demo code fails on its one run | The rule holds: a group's demo runs once, cold, on its raw files. If it fails, the group has two minutes to recover it live, as it would in front of a client. If it still fails, the group presents from its executed notebook, and the panel scores the live demo in presentation and defence as not run cold. The other 34 marks of the mini project are scored from the executed run, so a failed demo costs its own marks and never the analysis. |
-| A learner is absent | The group presents without them; at closure the absent event's cell reads ABSENT and the Programme Head records the decision in the workbook's Notes column. |
-| A group disputes a score in the room | Nothing is argued in the room. The Programme Head notes the dispute and handles it after closure. |
-| The group count is not nine | The day holds nine groups. At the tracker's fifteen (three per sub-problem, fifteen groups) it does not fit 300 minutes, and the Programme Head decides the cut before Friday's close. |
+| A group runs past 17 minutes | The scribe stops it at 17; the group keeps its question time, and nothing else in the room moves |
+| A room is 10 minutes behind after two slots | The changeover drops to one minute for the rest of the morning, and scores go into the reserve |
+| A room is 20 minutes behind at the end of the morning | The reserve absorbs it; at the likely load each room has at least 50 minutes of reserve, and in the heaviest shapes the afternoon's first 30 does |
+| A GD round overruns | The next GD starts late and the expert's first slot slides with it; the leader's room does not move |
+| More GD rounds remain than this sheet plans | The Principal Advisor runs each extra round online, in parallel with the expert's, from minute 10 |
+| The leader is not in the room at the opening | The expert starts presentations in the expert's room at once, and the Principal Advisor takes the GDs online. The leader's room starts on arrival and slides by the delay: up to 30 minutes fits the likely load's reserve in either plan, and up to 20 the heaviest 2, 2, 2, 2 and 1 shape. The 3, 3 and 3 shape has no slack, so the leader's last slot moves to the afternoon's first 30 minutes, and closure starts once that slot, the room's quiet-member questions and the leader's signing are done, about 40 minutes in; the afternoon's 45 unused minutes absorb it |
+| The leader cannot come at all | The expert hears every group alone, the GD rounds go online with the Principal Advisor one after another from minute 10, the GD groups take the expert's last slots, and slots shrink: six slots of 28 run from minute 10 to 178 at the likely load; at the heaviest, nine slots of 26 (17, the full 8 of questions, a one-minute changeover) run six in the morning and three in the afternoon's first 78 minutes, closure keeps its 30 and the week close runs in 10 |
+| The leader has to leave before the last slot | The leader's unheard groups move to the expert's room after its own slots, before closure; the leader signs the scores already given before leaving |
+| A demo machine fails before the demo starts | A spare machine, and the demo runs in the slot; only if no spare works does the demo run cold in the room's reserve, before the same panel |
+| A group's demo code fails on its one run | The rule holds: two minutes to recover live, then the executed notebook, the live demo scored as not run cold, and the 34 scored from the executed run |
+| A learner is absent | The group presents without them; at closure that learner's presentation and defence cell reads ABSENT, the group part stays the group's, and the Programme Head records the decision in Notes |
+| A group disputes a score in the room | Nothing is argued in the room. The Programme Head notes the dispute and handles it after closure |
+| The group count is not nine | The day holds nine groups. At the tracker's fifteen (`data/programme/facts.yaml`, conflict `groups`) it does not fit 300 minutes, and the Programme Head decides the cut before Friday's close |
 
----
+Cut in this order and stop as soon as the room is back on time: the reserve, the changeover, the
+week close's 15 minutes down to 10.
 
-## After the day
+## Which file serves which moment of the day?
+
+**Who needs the answer.** Whoever is holding the room when a file is needed; the wrong file open at a
+changeover puts a score in the wrong workbook.
+
+**The questions on the way.** Which file goes with which part of the day, and who has it open?
+
+| Moment | File | Who has it open |
+|---|---|---|
+| Before the room opens | This run sheet; Friday's freeze table and drawn order in `content/W03/D5/trainer/C2_W03_D05_day_sheet_TRAINER.md` | The Programme Head, the Academic TA |
+| The panels' preparation | `trainer/C2_W03_SAT_question_bank_TRAINER.md` | Both chairs |
+| Every slot | The group's own deck, notebook and files; the presentation format, `slides/C2_W03_SAT_presentation_format_STUDENT.md`, which the groups built on | The group; the chair may glance at the format |
+| Every changeover | `rubrics/C2_W03_SAT_mini_project_scoring_TRAINER.xlsx` | The chair and the scribe |
+| The Saturday GD rounds | The GD cards, the facilitation notes and the GD scoring sheet in `content/W03/D5/gd/` and `content/W03/D5/rubrics/` | The expert, the Principal Advisor |
+| Grade closure | `rubrics/C2_W03_SAT_grade_closure_TRAINER.xlsx` | The Programme Head, both scribes |
+| The week close | `slides/C2_W03_SAT_week_close_STUDENT.md` and `trainer/C2_W03_SAT_week_close_notes_TRAINER.md` | The trainer |
+| Checking a number | `internal/C2_W03_SAT_witness_INTERNAL.py` | Anyone |
+
+## What follows the day?
+
+**Who needs the answer.** The Programme Head and whoever builds Build 2's first day; an improvement
+that never reaches the first-day sheet changes nothing on day one.
+
+**The questions on the way.** Where do the improvements and the flags go?
 
 | What | Who |
 |---|---|
-| The nine improvements, as written on the board, go into Build 2's first-day sheet | Trainer |
-| The flagged-silent list and the absences go to the Programme Head with the signed workbook | Academic TA |
-| The board card for this day moves on once the pack's pull request merges: `python3 scripts/board_sync.py --status W03/SAT review-1` | Whoever merges the pack |
+| The nine improvements, as written on the board, go into Build 2's first-day sheet | The trainer |
+| The flagged-quiet list, the absences and the signed workbook go to the Programme Head | The Academic TA |
