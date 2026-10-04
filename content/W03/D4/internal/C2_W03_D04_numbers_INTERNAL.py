@@ -8,8 +8,14 @@ Thursday's files quote three kinds of number, and this script proves each kind:
    in content/W03/D1/data/ the way a group would reach them, each beside the figure the files print.
 2. The arithmetic behind the technical half's invented numbers in the question bank, which lie
    outside the ten files on purpose, and the day's grid of slots, seats, sets and minutes.
-3. A guard: no STUDENT file names a plant, and no question the assessors read aloud in the technical
-   half names a plant or reuses a planted value.
+3. A guard: no STUDENT file, and no line an adult reads aloud (the bank's asks, follow-ups and
+   anchors, the viva's probes, follow-ups and pushes, the day sheet's scripts and the guide's quotes),
+   names a plant, reuses a planted value or slips into its rounded spoken form. The guard first
+   proves it catches the hints the second review used against the first version.
+4. The swap rule and the reserve rule, recomputed from the bank's own tables: no seat meets a
+   question close to its sub-problem, a family twice or one week only, no group-mates share a
+   question, and every seat of every possible group has three reserves, shared only where the levels
+   force it.
 
 It reads only the data pack and the day's own markdown, uses the standard library alone, and exits 1
 on any drift, so it runs cold on a fresh checkout with no install. The data pack is the US pack of
@@ -18,6 +24,7 @@ build1-register-from-bookings, 1 October 2026).
 """
 import csv
 import datetime as dt
+import itertools
 import math
 import pathlib
 import random
@@ -244,6 +251,12 @@ for payer, (change, own_plan) in {"commercial": (0.130, 0.042), "Medicare": (0.0
 medicaid = branch["payer_type"]["Medicaid"]
 check("Medicaid's share of the shortfall", round((medicaid[0] * 1.18 - medicaid[1]) / shortfall, 3), 0.253)
 check("Medicaid's share of Q2 billing", round(medicaid[0] / q2_billed, 3), 0.149)
+# The other payer readings a group may give, each right if it names its measure.
+medicare, selfpay = branch["payer_type"]["Medicare"], branch["payer_type"]["self-pay"]
+check("Medicare's shortfall, the most dollars of any payer", round(medicare[0] * 1.18 - medicare[1]), 28437)
+check("Medicare's share of the shortfall", round((medicare[0] * 1.18 - medicare[1]) / shortfall, 3), 0.303)
+check("self-pay's share of the shortfall", round((selfpay[0] * 1.18 - selfpay[1]) / shortfall, 3), 0.171)
+check("self-pay's share of Q2 billing", round(selfpay[0] / q2_billed, 3), 0.082)
 check("Chicago and Philadelphia's share of Q2 billing",
       round((branch["metro"]["Chicago"][0] + branch["metro"]["Philadelphia"][0]) / q2_billed, 3), 0.245)
 four = {}
@@ -566,6 +579,11 @@ print("\n== The technical half's invented arithmetic, question by question")
 check("T01-L3 orders per practice change", round(108 / 120 - 1, 3), -0.100)
 check("T01-L3 fewer requisitions", 600 * (120 - 108), 7200)
 check("T02-L1 points of the fall from one plan's missing Friday", round(0.70 * (1 - 4 / 5) * 100, 1), 14.0)
+fridays = lambda month: sum(1 for d in range(1, 32) if (dt.date(2026, month, 1) + dt.timedelta(days=d - 1)).month == month
+                            and (dt.date(2026, month, 1) + dt.timedelta(days=d - 1)).weekday() == 4)
+check("T02-L1 Fridays in January and February 2026", [fridays(1), fridays(2)], [5, 4])
+check("T02-L1 days in January and February 2026", [(dt.date(2026, 2, 1) - dt.date(2026, 1, 1)).days,
+                                                   (dt.date(2026, 3, 1) - dt.date(2026, 2, 1)).days], [31, 28])
 check("T02-L3 points the mix takes back from a 3 percent rate rise", round(3.0 - 0.5, 1), 2.5)
 check("T03-L3 pickups set aside", 130 + 70 + 20, 220)
 check("T03-L3 matched plus set aside", 3960 + 220, 4180)
@@ -645,49 +663,130 @@ for line in sheet.splitlines():
 check("the day sheet prints every slot", sorted(printed), list(range(1, 13)))
 check("the day sheet's grid matches the call order", all(printed.get(s) == (when, row) for s, when, row in grid), True)
 
-print("\n== The guard: no plant in a STUDENT file, none in the technical half's spoken words")
-PLANT_WORDS = ["walk-in", "walkin", "employer", "wellness screening", "re-export", "repeated row",
-               "double post", "posted twice", "paid twice", "loaded twice", "system switch", "switched system",
-               "new booking system", "new system", "month first", "claim_ref", "CLM-", "KH-CLM", "EMP-",
-               "ORD-", "PHL-", "target", "at random", "already rising", "component", "dashboard's count",
-               "rebook"]
-PLANTED_VALUES = ["23,213", "24,406", "25,022", "22,468", "24,399", "5,692", "6,009", "5.1 percent",
-                  "7.8 percent", "8.6 percent", "5.6 percent", "180,000", "14.6", "1,231,001", "210.50",
-                  "179.75", "$150", "970,098", "26.9", "8.3 percent", "22,152", "46,867", "48,235",
-                  "1,102", "$20", "1,415", "1,090", "1,243", "23.0 percent", "12.2", "11,729", "11,549",
-                  "18 September", "17 September", "1.9 percent", "2,269", "8,858", "19,204", "398",
-                  "253,165", "1,175", "1,137", "10.35", "10.4 percent", "14.9", "11.3", "230,132", "801,31",
-                  "2,201,099", "36.4", "18.8", "7.9 percent", "19.0 percent", "15.1", "15 of 79", "0.21",
-                  "0.0014", "9.0 percent", "10.8", "19.9", "13.0 percent", "50.5", "21.4", "6.9 percent",
-                  "23.5", "0.03", "2,381", "948", "6,000", "1,200"]
+print("\n== The guard: no plant in a STUDENT file, none in anything an adult says aloud")
+# Words that name a plant or its mechanism, matched anywhere and in any case.
+PLANT_WORDS = ["walk-in", "walkin", "walk in", "by appointment", "employer", "wellness screening",
+               "re-export", "reexport", "repeated row", "double post", "double-post", "posted twice",
+               "paid twice", "loaded twice", "in the bank twice", "second payment", "system switch",
+               "switched system", "new booking system", "new system", "booking systems", "month first",
+               "month-first", "claim_ref", "CLM-", "KH-CLM", "EMP-", "ORD-", "PHL-", "target", "at random",
+               "already rising", "component", "dashboard's count", "rebook", "twelve hundred",
+               "mid-September", "September 18", "18 September", "17 September", "09/18",
+               "half the patients", "a fifth of the patients"]
+# Values the files plant or a group finds, as the viva and the day sheet write them. Each matches as a
+# whole number, with or without a dollar sign, so 41,200 never reads as 1,200 and 180 never matches
+# 180,000; a small rate carries its unit so that an invented 6.0 in the bank stays its own.
+PLANTED_VALUES = [
+    # the headline
+    "23,213", "24,406", "25,022", "22,468", "24,399", "5,692", "6,009", "23,788", "24,556", "6,000", "1,200",
+    "35.3", "33.6", "5.1 percent", "7.8 percent", "8.6 percent", "5.6 percent", "3.2 percent",
+    # sub-problem 1
+    "180,000", "14.6", "1,231,001", "970,098", "1,051,001", "26.9", "8.3 percent", "210.50", "179.75",
+    "176.13", "$150", "22,152", "21,050", "1,102", "$20", "46,867", "48,235", "11,395", "265.00", "5,390",
+    "5,169", "93,715", "1,144,716", "63,436", "67.7", "24.5 percent", "124,097", "115,997", "114,014",
+    "101,538", "30,437", "32,999", "28,437", "25.3", "6 August", "785",
+    # sub-problem 2
+    "1,415", "1,090", "1,243", "23.0 percent", "12.2", "754", "571", "656", "661", "519", "587", "11,729",
+    "11,549", "11,584", "153", "180", "24.2", "488", "478", "449", "452", "420", "371",
+    # sub-problem 3
+    "216", "2,269", "8,858", "11,343", "1.9 percent", "280", "19,204", "19,205", "105", "8,662", "8,663",
+    "1,137", "398", "253,165", "1,175", "11,355", "10.35", "10.4", "230,132", "2,201,099", "801,313.56",
+    "801,314", "820,518", "36.4", "883,254", "883,255", "222,108", "32,594", "32,595", "1,399,785", "283",
+    "272", "269", "265",
+    # sub-problem 4
+    "18.8", "7.9 percent", "19.0 percent", "15.1", "15 of 79", "1,720", "3,605", "1,885", "47.7",
+    "9.8 percent", "18.5 percent", "0.21", "0.0014", "11.9", "253", "17.3", "0.13", "14.3", "3,685",
+    # sub-problem 5
+    "2,381", "948", "259", "689", "0.633", "0.581", "9.0 percent", "10.8", "19.9", "13.0 percent", "50.5",
+    "21.4", "6.9 percent", "7.4 percent", "3.0 percent", "23.5", "4.8 percent", "0.03", "1.4 percent",
+    "5.2 percent", "6.1 percent"]
+# The rounded and spoken forms a viva line could slip into, matched in the viva, the STUDENT brief and
+# the adults' scripts. The bank's own invented numbers sit outside the files and are left to the
+# closeness map, since its 12 percent plan and 19 percent patient share are no plant.
+SPOKEN_FORMS = [r"\b23 ?(percent|%)", r"\b12 ?(percent|%)", r"\b19 ?(percent|%)", r"\bnineteen percent",
+                r"\b15 ?(percent|%)", r"\bfifteen (missed|of|in|out)\b", r"(?<![\d,.])79(?![\d])",
+                r"\btwo thirds\b", r"\bhundreds of\b", r"\ba fifth\b", r"\bmore than a fifth\b"]
 
 
-def plant_hits(text):
-    """Plant words anywhere, and planted values as whole numbers, so 41,200 never reads as 1,200."""
-    words = [w for w in PLANT_WORDS if w.lower() in text.lower()]
-    values = [v for v in PLANTED_VALUES if re.search(r"(?<![\d,.$])" + re.escape(v) + r"(?![\d])", text)]
-    return words + values
+def plant_hits(text, spoken=False):
+    """Plant words anywhere, planted values as whole numbers, and, for spoken text, the rounded forms."""
+    low = text.lower()
+    hits = [w for w in PLANT_WORDS if w.lower() in low]
+    hits += [v for v in PLANTED_VALUES
+             if re.search((re.escape(v) if v.startswith("$") else r"(?<![\d,.])" + re.escape(v))
+                          + r"(?!\d|[,.]\d)", text)]
+    if spoken:
+        hits += [f for f in SPOKEN_FORMS if re.search(f, low)]
+    return hits
 
 
+def quotes(text):
+    return re.findall(r'"([^"]+)"', text)
+
+
+def strip_answers(cell):
+    """Drop the bracketed answer an assessor reads to themselves, keeping any bracket inside a quote."""
+    out, depth, inside = [], 0, False
+    for ch in cell:
+        if depth:
+            depth += (ch == "(") - (ch == ")")
+            continue
+        if ch == '"':
+            inside = not inside
+        elif ch == "(" and not inside:
+            depth = 1
+            continue
+        out.append(ch)
+    return "".join(out)
+
+
+def section(text, heading):
+    """The text under one heading, down to the next heading of the same or a higher level."""
+    level = len(heading) - len(heading.lstrip("#"))
+    lines, keep = [], False
+    for line in text.splitlines():
+        if line.startswith(heading):
+            keep = True
+        elif keep and line.startswith("#") and len(line) - len(line.lstrip("#")) <= level:
+            break
+        if keep:
+            lines.append(line)
+    return "\n".join(lines)
+
+
+# The guard tests itself first: every hint below, in the forms the second review slipped past the first
+# guard, must be caught, and the bank's own invented figures must not be.
+MUST_CATCH = ["$180,000", "the $1,231,001 billed", "19 percent", "Nineteen percent", "12 percent", "10.4%",
+              "two booking systems", "September 18", "09/18/2026", "801,314", "$801,313.56", "walk in",
+              "by appointment", "double-post", "month-first", "half the patients", "a fifth", "twelve hundred",
+              "fifteen missed slots in 79", "$19,205", "1,720 of 3,605"]
+MUST_PASS = ["41,200 claim lines", "a 24-hour promise", "2 of 25 draws", "p = 0.04", "$400,000", "$16 a stop"]
+check("hints the guard catches", [h for h in MUST_CATCH if plant_hits(h, spoken=True)], MUST_CATCH)
+check("invented figures the guard leaves alone", [h for h in MUST_PASS if plant_hits(h, spoken=True)], [])
 student_files = sorted(DAY.rglob("*_STUDENT.md"))
 check("STUDENT markdown files in the pack", len(student_files), 1)
 for f in student_files:
-    check(f"plant words or planted values in {f.name}", plant_hits(f.read_text(encoding="utf-8")), [])
+    check(f"plant words, planted values or their spoken forms in {f.name}",
+          plant_hits(f.read_text(encoding="utf-8"), spoken=True), [])
 bank = (DAY / "mocks" / "C2_W03_D04_mock_question_bank_TRAINER.md").read_text(encoding="utf-8")
 spoken = [line for line in bank.splitlines() if line.startswith("| Ask |") or line.startswith("| Follow-up |")]
 check("spoken rows in the bank, an ask and a follow-up for 30 questions", len(spoken), 60)
-spoken_text = "\n".join(spoken)
-check("plant words or planted values in the technical half's spoken rows", plant_hits(spoken_text), [])
+check("plant words or planted values in the technical half's spoken rows", plant_hits("\n".join(spoken)), [])
+# An anchor is spoken only to a learner who stalls, with the ask's numbers in place of its own, so its
+# words are checked and its numbers left to the ask.
+anchors = [line for line in bank.splitlines() if line.startswith("| Anchor")]
+check("anchor rows in the bank", len(anchors), 30)
+check("plant words in the anchors", plant_hits(re.sub(r"\d", "", "\n".join(anchors))), [])
 
 
 def said_aloud(text):
-    """The words an assessor reads to a learner: every quoted question inside bold, and every quoted
-    question in a table's push or follow-up column, with the bracketed answer for the assessor removed."""
+    """The words an assessor reads to a learner: every quoted line inside bold, and every quoted line in
+    a table's push or follow-up column, with the assessor's bracketed answer removed."""
     said = []
     for para in re.split(r"\n\s*\n", text):
         flat = " ".join(para.split())
         for bold in re.findall(r"\*\*(.+?)\*\*", flat):
-            said += re.findall(r'"([^"]+)"', bold)
+            said += quotes(bold)
     header = None
     for line in text.splitlines():
         if not line.startswith("|"):
@@ -701,14 +800,23 @@ def said_aloud(text):
             continue
         for name in ("The push", "The follow-up"):
             if name in header:
-                said += re.findall(r'"([^"]+)"', re.sub(r"\([^()]*\)", "", cells[header.index(name)]))
+                said += quotes(strip_answers(cells[header.index(name)]))
     return said
 
 
 viva = (DAY / "mocks" / "C2_W03_D04_viva_prompts_TRAINER.md").read_text(encoding="utf-8")
 probes = said_aloud(viva)
-check("questions the viva reads aloud: 28 probes, 28 follow-ups, 10 pushes and 15 caveat follow-ups", len(probes), 81)
-check("plant words or planted values in anything the viva reads aloud", plant_hits("\n".join(probes)), [])
+check("lines the viva reads aloud: 32 bold, 28 follow-ups, 10 pushes and 15 caveat follow-ups", len(probes), 85)
+check("plant words, planted values or their spoken forms in anything the viva reads aloud",
+      plant_hits("\n".join(probes), spoken=True), [])
+seat_probes = re.findall(r'\*\*P[1-4]\. "([^"]+)"\*\*', " ".join(viva.split()))
+check("seat probes, four for each of five sub-problems", len(seat_probes), 20)
+check("seat probes that ask why", sum(1 for q in seat_probes if "why" in q.lower()), 20)
+check("seat probes that ask what the other way would give or what would change the call",
+      sum(1 for q in seat_probes if re.search(r"\b(other|second|first count|elsewhere|without|another|opposite|were wrong|were the cause)\b",
+                                               q.lower())), 20)
+check("seat probes that open on the group's own work",
+      sum(1 for q in seat_probes if re.search(r"\byour group\b|\byour group's\b|^walk me from", q.lower())), 20)
 stuck, inside = [], False
 for line in sheet.splitlines():
     if line.startswith("### Which one question goes to a group that is stuck?"):
@@ -716,27 +824,41 @@ for line in sheet.splitlines():
     elif line.startswith("#"):
         inside = False
     elif inside and line.startswith("| ") and not line.startswith("| Sub-problem"):
-        stuck += re.findall(r'"([^"]+)"', line)
-check("stuck-group questions on the day sheet", len(stuck), 9)
+        stuck += quotes(line)
+check("stuck-group questions on the day sheet", len(stuck), 8)
 # A column's name says where to look and never what is there, so claim_ref may be named.
 check("plant words or planted values in the stuck-group questions",
-      [h for h in plant_hits("\n".join(stuck)) if h != "claim_ref"], [])
+      [h for h in plant_hits("\n".join(stuck), spoken=True) if h != "claim_ref"], [])
+scripts = quotes(section(sheet, "## Which words does the trainer say at each turn of the day?")) + \
+    quotes(section(sheet, "## How do the three build-completion checks run, and what does each catch?"))
+check("the trainer's spoken lines on the day sheet: three scripts, six check questions, eight stuck-group "
+      "questions", len(scripts), 17)
+check("plant words or planted values in the trainer's spoken lines",
+      [h for h in plant_hits("\n".join(scripts), spoken=True) if h != "claim_ref"], [])
+guide = (DAY / "mocks" / "C2_W03_D04_assessors_guide_TRAINER.md").read_text(encoding="utf-8")
+check("plant words or planted values in anything the assessors' guide quotes",
+      plant_hits("\n".join(quotes(guide)), spoken=True), [])
 
-print("\n== The swap rule: the bank's tables against the rule they state")
+print("\n== The swap rule and the reserves: the bank's tables against the rule they state")
 SETS_PRINTED = {}
 for line in bank.splitlines():
     m = re.match(r"\| ([A-H]) \| (T\d\d-L1) \| (T\d\d-L2) \| (T\d\d-L3) \|$", line)
     if m:
         SETS_PRINTED[m.group(1)] = (m.group(2), m.group(3), m.group(4))
 check("sets printed in the bank", "".join(sorted(SETS_PRINTED)), "ABCDEFGH")
-RESERVES = {q for q in (f"T{f:02d}-L{lev}" for f in range(1, 11) for lev in (1, 2, 3))
-            if all(q not in qs for qs in SETS_PRINTED.values())}
-check("reserves, the six questions in no set", sorted(RESERVES),
-      ["T01-L3", "T03-L2", "T04-L1", "T06-L3", "T07-L1", "T07-L2"])
-CLOSE = {"1": {"T01-L1", "T01-L2", "T01-L3"}, "2": {"T02-L1", "T02-L2", "T03-L2"},
-         "3": {"T03-L1", "T03-L3", "T06-L3", "T07-L1", "T07-L2", "T07-L3", "T09-L2"},
-         "4": {"T04-L1", "T04-L2"}, "5": {"T02-L3", "T04-L1", "T04-L3"}}
+POOL = {q for q in (f"T{f:02d}-L{lev}" for f in range(1, 11) for lev in (1, 2, 3))
+        if all(q not in qs for qs in SETS_PRINTED.values())}
+check("the six questions in no set", sorted(POOL), ["T02-L3", "T04-L2", "T06-L3", "T07-L1", "T07-L2", "T10-L1"])
+stated = re.search(r"Six questions sit in no set: (T\d\d-L\d) and (T\d\d-L\d), (T\d\d-L\d) and (T\d\d-L\d), and "
+                   r"(T\d\d-L\d) and (T\d\d-L\d)\.", " ".join(bank.split()))
+check("the bank names the same six", sorted(stated.groups()) if stated else None, sorted(POOL))
+CLOSE = {"1": {"T01-L1", "T01-L2", "T01-L3", "T02-L3", "T07-L2"},
+         "2": {"T02-L1", "T02-L2", "T03-L2", "T09-L2"},
+         "3": {"T03-L1", "T03-L2", "T03-L3", "T06-L3", "T07-L1", "T07-L2", "T07-L3", "T09-L2", "T09-L3"},
+         "4": {"T03-L2", "T04-L1", "T04-L2"},
+         "5": {"T02-L3", "T04-L1", "T04-L3", "T05-L3"}}
 LETTERS = "ABCDEFGH"
+week = lambda q: 1 if int(q[1:3]) <= 5 else 2
 derived = sorted((sp, q, SETS_PRINTED[LETTERS[(LETTERS.index(x) + 4) % 8]][lev])
                  for sp, close in CLOSE.items() for x, qs in SETS_PRINTED.items()
                  for lev, q in enumerate(qs) if q in close)
@@ -745,26 +867,73 @@ printed_swaps = sorted((m.group(1), m.group(2), m.group(4)) for m in
                                    bank, re.M))
 check("the bank's swap table is the far-set rule applied to every question close to a sub-problem",
       printed_swaps, derived)
+check("rows in the swap table", len(printed_swaps), 18)
 swap = {(sp, q): r for sp, q, r in derived}
-ok_family, ok_window, ok_clean = True, True, True
+seats = {sp: {x: tuple(swap.get((sp, q), q) for q in qs) for x, qs in SETS_PRINTED.items()} for sp in CLOSE}
+ok_family = ok_window = ok_clean = ok_weeks = True
 for sp, close in CLOSE.items():
-    seats = {x: tuple(swap.get((sp, q), q) for q in qs) for x, qs in SETS_PRINTED.items()}
     for i, x in enumerate(LETTERS):
-        ok_clean &= not set(seats[x]) & close
-        ok_family &= len({q[:3] for q in seats[x]}) == 3
+        ok_clean &= not set(seats[sp][x]) & close
+        ok_family &= len({q[:3] for q in seats[sp][x]}) == 3
+        ok_weeks &= len({week(q) for q in seats[sp][x]}) == 2 and len({week(q) for q in SETS_PRINTED[x]}) == 2
         for lev in range(3):
-            ok_window &= len({seats[LETTERS[(i + k) % 8]][lev] for k in range(4)}) == 4
+            ok_window &= len({seats[sp][LETTERS[(i + k) % 8]][lev] for k in range(4)}) == 4
 check("no learner is asked a question close to their own sub-problem", ok_clean, True)
 check("no seat holds two questions from one family", ok_family, True)
+check("every set, and every seat after its swaps, mixes Week 1 and Week 2", ok_weeks, True)
 check("no two seats among any four consecutive letters share a question", ok_window, True)
-reserve_rows = {}
-for m in re.finditer(r"^\| (\d) [a-z -]+? \| (T[^|]+?) \| (T[^|]+?) \| (T[^|]+?) \|$", bank, re.M):
-    reserve_rows[m.group(1)] = [re.findall(r"T\d\d-L\d", m.group(k)) for k in (2, 3, 4)]
-want_rows = {sp: [[r for r in sorted(RESERVES, key=lambda q: (q not in ("T04-L1", "T07-L2", "T06-L3"), q))
-                   if r.endswith(f"L{lev}") and r not in close] for lev in (1, 2, 3)]
-             for sp, close in CLOSE.items()}
-check("the bank's reserve table offers each sub-problem only reserves away from it", reserve_rows, want_rows)
 
+
+def fewest_shared(start, size, sp):
+    """Recompute the reserve rule the bank states, by its own search: reserves from the six or from the
+    sets the group does not hold, never asked in the group, never close, three new families mixing the
+    weeks. Each level can offer no more fresh questions than its candidates, which bounds the shared
+    reserves from below level by level; a search over the members then proves the fewest possible in
+    all equals the sum of those bounds, so the split by level is forced. Returns that split, or None
+    when some member has no valid three."""
+    members = [LETTERS[(LETTERS.index(start) + j) % 8] for j in reversed(range(size))]
+    told = {q for x in members for q in seats[sp][x]}
+    pool = POOL | {q for z in LETTERS if z not in members for q in SETS_PRINTED[z]}
+    choices = []
+    for x in members:
+        fams = {q[:3] for q in seats[sp][x]}
+        level = [[q for q in sorted(pool, reverse=True) if q.endswith(f"L{lev}") and q not in told
+                  and q not in CLOSE[sp] and q[:3] not in fams] for lev in (1, 2, 3)]
+        choices.append([t for t in itertools.product(*level)
+                        if len({q[:3] for q in t}) == 3 and len({week(q) for q in t}) == 2])
+    if not all(choices):
+        return None
+    bound = tuple(max(0, size - len({t[lev] for c in choices for t in c})) for lev in range(3))
+    best = [None]
+
+    def go(i, picked):
+        shared = sum(len(picked) - len({t[lev] for t in picked}) for lev in range(3))
+        if best[0] is not None and shared >= best[0]:
+            return
+        if i == len(choices):
+            best[0] = shared
+            return
+        for t in choices[i]:
+            go(i + 1, picked + [t])
+            if best[0] == sum(bound):
+                return
+
+    go(0, [])
+    return bound if best[0] == sum(bound) else ("not forced", best[0], bound)
+
+
+forced = {"2": (0, 1, 0), "3": (0, 1, 2), "5": (0, 0, 1)}
+every_seat_has_three, shared_as_stated = True, True
+for size in (3, 4):
+    for start in LETTERS:
+        for sp in CLOSE:
+            got = fewest_shared(start, size, sp)
+            every_seat_has_three &= got is not None
+            want = forced.get(sp, (0, 0, 0)) if size == 4 else (0, 0, 0)
+            shared_as_stated &= got == want
+check("every seat of every group a seating can make has three reserves under the rule", every_seat_has_three, True)
+check("group-mates share reserves only where the bank says: one L2 pair on sub-problem 2, one L3 pair on 5, "
+      "and two L3 pairs and one L2 pair on 3, in groups of four", shared_as_stated, True)
 print("\nRESULT:", "FAIL" if FAILS else "PASS", f"({len(FAILS)} drifts)")
 for label in FAILS:
     print("  drifted:", label)
@@ -782,3 +951,8 @@ sys.exit(1 if FAILS else 0)
 #     the day sheet and the provenance need their numbers rewritten before the pack ships again.
 # The same command after a STUDENT file gains a plant word such as "walk-in"
 #     A FAIL line naming the file and the word, and exit 1.
+# The same command after a viva probe is reworded to "Fifteen missed slots in 79, so is it worse?"
+#     A FAIL line for the viva's spoken lines naming the forms it caught, and exit 1.
+# The same command after the bank's set table moves a question so that a swap lands close to the
+#     same sub-problem
+#     FAIL lines for the swap table and the seat checks, and exit 1.
