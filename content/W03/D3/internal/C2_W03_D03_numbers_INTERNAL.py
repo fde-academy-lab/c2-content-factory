@@ -11,11 +11,13 @@ register is the one drawn from the bookings on 1 October 2026 (decision
 build1-register-from-bookings).
 
 Every number the day sheet, the checkpoint guide, the catch-up plan, the run sheet, the headline
-sheet and the parallel build quote is printed here under the file that quotes it. Where the
-generator's witness (python3 data/generate_kalpa_health.py --witness) carries the same number, the
-script runs the generator, reads its witness and asserts the two agree; where only the spine or
-Monday's day sheet carries it, the figure is asserted against the value written there. It ends on
-PASS, or stops on the first number that drifted.
+sheet and the parallel build quote is printed here under the file that quotes it, and every one is
+asserted. Where the generator's witness (python3 data/generate_kalpa_health.py --witness) carries
+the number, the script runs the generator, reads its witness and asserts the two agree; where only
+the spine or Monday's day sheet carries it, the figure is asserted against the value written there;
+and where neither carries it, the figure is asserted against the value this pack's files quote, so
+a file and the data can never part without a DRIFT line. It ends on PASS, or lists every number
+that drifted and ends on FAIL.
 """
 import math
 import pathlib
@@ -98,18 +100,24 @@ put("ny repeated pairs identical, differing only in updated_at",
 put("ny extra rows by quarter", (ny_raw.groupby("q").size() - ny.groupby("q").size()).to_dict())
 put("ny rows per quarter", ny_raw.groupby("q").size().to_dict())
 put("ny bookings per quarter", ny.groupby("q").size().to_dict())
-put("ny change on rows, on bookings", (round(1089 / 1039 - 1, 4), round(1082 / 1013 - 1, 4)))
+rq, bq = ny_raw.groupby("q").size(), ny.groupby("q").size()
+put("ny change on rows, on bookings", (round(rq["Q3"] / rq["Q2"] - 1, 4), round(bq["Q3"] / bq["Q2"] - 1, 4)))
 put("ny blank channel rows", int((ny["channel"] == "").sum()))
 put("ny claims rows, distinct claim ids", (len(nyc), nyc["claim_id"].nunique()))
 coerced = pd.to_numeric(nyc["billed_amount"], errors="coerce")
 put("ny text amounts", nyc.loc[coerced.isna(), "billed_amount"].tolist())
 put("ny dollars hidden by coerce, by quarter", nyc[coerced.isna()].groupby("q")["amt"].sum().to_dict())
 put("ny coerced totals", coerced.groupby(nyc["q"]).sum().to_dict())
+co_q = coerced.groupby(nyc["q"]).sum()
+put("ny coerced growth, true growth", (round(co_q["Q3"] / co_q["Q2"] - 1, 4),
+                                       round(nyc.groupby("q")["amt"].sum()["Q3"] / nyc.groupby("q")["amt"].sum()["Q2"] - 1, 4)))
 put("ny largest claim", float(nyc["amt"].max()))
 fanned = ny_raw.merge(nyc, on="booking_id")
 put("ny fanned join rows, dollars; claims dollars", (len(fanned), round(fanned["amt"].sum(), 2),
                                                      round(nyc["amt"].sum(), 2)))
 put("ny fanned extra by quarter", (fanned.groupby("q_y")["amt"].sum() - nyc.groupby("q")["amt"].sum()).round(2).to_dict())
+fq = fanned.groupby("q_y")["amt"].sum()
+put("ny fanned growth", round(fq["Q3"] / fq["Q2"] - 1, 4))
 put("ny kept, cancelled, completed, claims",
     (len(ny), int((ny["status"] == "cancelled").sum()), int((ny["status"] == "completed").sum()), len(nyc)))
 put("ny cancelled by quarter", ny[ny["status"] == "cancelled"].groupby("q").size().to_dict())
@@ -122,11 +130,18 @@ put("ny change in dollars, percent", (round(q3["sum"] - q2["sum"], 2), round(q3[
 put("ny claims change, mean change, mean change in dollars",
     (round(q3["count"] / q2["count"] - 1, 4), round(q3["mean"] / q2["mean"] - 1, 4), round(q3["mean"] - q2["mean"], 2)))
 put("ny bridge volume, value", (round(volume), round(value)))
+d_n, d_m = q3["count"] - q2["count"], q3["mean"] - q2["mean"]
+put("ny bridge reversed, joint, symmetric",
+    ((round(d_n * q3["mean"], 2), round(q2["count"] * d_m, 2)), round(d_n * d_m, 2),
+     (round(d_n * (q2["mean"] + q3["mean"]) / 2, 2), round(d_m * (q2["count"] + q3["count"]) / 2, 2))))
 put("ny per day change, claims and billed",
     (round(float((q3["count"] / 92) / (q2["count"] / 91) - 1), 4),
      round(float((q3["sum"] / 92) / (q2["sum"] / 91) - 1), 4)))
 put("ny per day claims, billed", ((round(q2["count"] / 91, 2), round(q3["count"] / 92, 2)),
                                   (round(q2["sum"] / 91, 2), round(q3["sum"] / 92, 2))))
+put("ny per day slips: Q2 as 90 days, the lengths swapped",
+    (round(float((q3["count"] / 92) / (q2["count"] / 90) - 1), 4), round(float((q3["count"] / 91) / (q2["count"] / 92) - 1), 4)))
+put("ny distinct service days", nyc["service_date"].nunique())
 m = ny.merge(nyc, on="booking_id", suffixes=("", "_c"))
 by_site = m.groupby(["site_code", "q_c"])["amt"].agg(["count", "sum"])
 put("ny claims and billed by site", {k: (int(v["count"]), round(v["sum"], 2)) for k, v in by_site.iterrows()})
@@ -149,26 +164,35 @@ put("ny claims with a $20 fee line", int((m["fee"] == 20).sum()))
 
 # The sizing cell's four options, on the New York files as exported.
 put("ny option rows read: totals, claims tree, reconciled tree, export tree",
-    (len(nyc), len(nyc), len(ny_raw) + len(nyc), len(ny_raw)))
+    (len(nyc), len(nyc), len(ny_raw) + len(nyc), len(ny_raw) + len(nyc)))
 rows_q = ny_raw.groupby("q").size()
 put("ny option D: billed per export row", (round(q2["sum"] / rows_q["Q2"], 2), round(q3["sum"] / rows_q["Q3"], 2)))
 
-# The second route, in SQL: SQLite is in Python's standard library, so the query runs with no server.
+# The second route, in SQL, as the notebook runs it: SQLite is in Python's standard library, the two
+# raw files are loaded by the csv module, and New York and the quarters are worked out in SQL.
+import csv  # noqa: E402
 import sqlite3  # noqa: E402
 
 con = sqlite3.connect(":memory:")
-ny_raw.drop(columns=["q"]).to_sql("bookings", con, index=False)
-claims.drop(columns=["amt", "q"]).to_sql("claims", con, index=False)
+for table, name in [("bookings", "bookings_legacy"), ("claims", "claims")]:
+    with open(DATA / f"C2_W03_D01_{name}_STUDENT.csv", newline="", encoding="utf-8") as f:
+        rows = list(csv.reader(f))
+    con.execute(f"CREATE TABLE {table} ({', '.join(c + ' TEXT' for c in rows[0])})")
+    con.executemany(f"INSERT INTO {table} VALUES ({', '.join('?' * len(rows[0]))})", rows[1:])
 sql = """
 WITH ranked AS (
-  SELECT *, ROW_NUMBER() OVER (PARTITION BY booking_id ORDER BY updated_at DESC) AS n FROM bookings),
+  SELECT *, ROW_NUMBER() OVER (PARTITION BY booking_id ORDER BY updated_at DESC) AS n
+  FROM bookings WHERE metro = 'New York'),
 kept AS (SELECT * FROM ranked WHERE n = 1 AND status = 'completed')
-SELECT CASE WHEN c.service_date < '2026-07-01' THEN 'Q2' ELSE 'Q3' END AS quarter,
+SELECT CASE WHEN CAST(substr(c.service_date, 6, 2) AS INTEGER) BETWEEN 4 AND 6 THEN 'Q2'
+            WHEN CAST(substr(c.service_date, 6, 2) AS INTEGER) BETWEEN 7 AND 9 THEN 'Q3' END AS quarter,
        COUNT(*) AS claims,
        ROUND(SUM(CAST(REPLACE(REPLACE(c.billed_amount, '$', ''), ',', '') AS REAL)), 2) AS billed
 FROM kept JOIN claims c ON c.booking_id = kept.booking_id
 GROUP BY quarter ORDER BY quarter"""
 put("ny second route in SQL", [tuple(r) for r in con.execute(sql)])
+put("sql: CAST of '$170.00' and of '1,050.00'", (con.execute("SELECT CAST('$170.00' AS REAL)").fetchone()[0],
+                                                 con.execute("SELECT CAST('1,050.00' AS REAL)").fetchone()[0]))
 
 # ---------------------------------------------------------------- the headline, for every group
 tests_on = lines[lines["line"].isin(["test", "component"])].assign(n=lambda d: d["quantity"].astype(int)) \
@@ -223,6 +247,12 @@ tests = lines[lines["line"].isin(["test", "component"]) & (lines["panel_code"] !
 done = set(both.loc[both["status"] == "completed", "booking_id"])
 put("sp1 claim lines, tests on completed bookings, tests on all bookings",
     (int(claim_lines.sum()), int(tests["booking_id"].isin(done).sum()), len(tests)))
+put("sp1 claims with a $20 fee line, whole file", int((claims["amt"] - claims["booking_id"].map(
+    lines[lines["line"].isin(["test", "panel"])].assign(v=lambda d: d["price_each"].astype(float) * d["quantity"].astype(int))
+    .groupby("booking_id")["v"].sum())).round(2).eq(20).sum()))
+put("sp1 old-export rows with no channel; New York's; on a New York repeated id",
+    (int((raw_legacy["channel"] == "").sum()), int((ny_raw["channel"] == "").sum()),
+     int(((ny_raw["channel"] == "") & ny_raw["booking_id"].duplicated(keep=False)).sum())))
 put("sp1 claims with a booking in the old export, in the new export",
     (int(claims["booking_id"].isin(legacy["booking_id"]).sum()), int(claims["booking_id"].isin(new["booking_id"]).sum())))
 
@@ -257,6 +287,8 @@ put("sp2 Q3 claims less old-export completed, by metro", (claims_q3 - comp_q3).t
 copies = raw_legacy.groupby("booking_id")
 rep = copies.filter(lambda g: len(g) > 1)
 put("sp2 repeated ids, first and last booking date", (rep["booking_id"].nunique(), rep["booking_date"].min(), rep["booking_date"].max()))
+put("sp2 other metros' change in retail bookings", {m: round(count((m,), q="Q3") / count((m,), q="Q2") - 1, 4)
+                                                    for m in ("Dallas", "Phoenix", "New York", "Atlanta")})
 
 # ---------------------------------------------------------------- sub-problem 3, billing
 ref = postings["claim_ref"]
@@ -314,6 +346,10 @@ put("sp3 the gap, billed less paid net of double posts", round(billed_all - paid
 put("sp3 unposted claims by service month", claims[claims["claim_id"].isin(unposted["claim_id"])]
     .assign(month=lambda d: d["service_date"].str[:7]).groupby("month").size().to_dict())
 put("sp3 key examples: first posting refs", postings["claim_ref"].head(3).tolist())
+pt = pay.assign(t=pd.to_datetime(pay["posted_at"]))
+gaps = pt[pt.duplicated(["claim_ref", "paid_amount"], keep=False)].groupby(["claim_ref", "paid_amount"])["t"].agg(
+    lambda x: (x.max() - x.min()).total_seconds() / 60)
+put("sp3 double-post pairs, minutes apart (least, most)", (len(gaps), float(gaps.min()), float(gaps.max())))
 
 # ---------------------------------------------------------------- sub-problem 4, no-shows
 small = register["site_code"] == "KH-ATL-03"
@@ -380,8 +416,9 @@ put("sp5 offered, took up, by metro, dates", (len(campaign), int((campaign["took
 reg5 = campaign.merge(patients, on="patient_id", how="left", suffixes=("", "_p"), indicator=True)
 put("sp5 offered found in the register, in the same metro",
     (int((reg5["_merge"] == "both").sum()), int((reg5["metro"] == reg5["metro_p"]).sum())))
-put("sp5 offered with a booking in the window, with any booking in the old export",
-    (int(campaign["patient_id"].isin(window["patient_id"]).sum()), int(campaign["patient_id"].isin(legacy["patient_id"]).sum())))
+put("sp5 offered with a booking in the window, with any booking in the old export, in either export",
+    (int(campaign["patient_id"].isin(window["patient_id"]).sum()), int(campaign["patient_id"].isin(legacy["patient_id"]).sum()),
+     int(campaign["patient_id"].isin(both["patient_id"]).sum())))
 off, rest = patients[patients["offered"]], patients[~patients["offered"]]
 put("sp5 bookings per patient offered, rest (patients, bookings)",
     ((len(off), int(off["n"].sum()), round(off["n"].mean(), 4)), (len(rest), int(rest["n"].sum()), round(rest["n"].mean(), 4))))
@@ -401,6 +438,11 @@ before = legacy[(legacy["booking_date"] >= "2026-04-01") & (legacy["booking_date
 patients["b"] = patients["patient_id"].map(before).fillna(0)
 put("sp5 gap before the offer", {c: round(float(g[g["offered"]]["b"].mean() / g[~g["offered"]]["b"].mean() - 1), 4)
                                  for c, g in patients[patients["metro"].isin(camp)].groupby("metro")})
+cm = legacy[legacy["metro"].isin(camp) & (legacy["channel"] != "employer")]
+early = cm[(cm["booking_date"] >= "2026-04-01") & (cm["booking_date"] <= "2026-05-13")]
+late = cm[(cm["booking_date"] >= "2026-05-14") & (cm["booking_date"] <= "2026-07-14")]
+put("sp5 campaign metros, bookings per day 14 May to 14 July against 1 April to 13 May",
+    round((len(late) / 62) / (len(early) / 43) - 1, 4))
 ny_p = patients[patients["metro"] == "New York"]
 counts, labels = ny_p["n"].to_numpy(), ny_p["offered"].to_numpy()
 
@@ -435,10 +477,12 @@ def close(a, b, tol=0.0005):
 
 def same(mine, theirs):
     """Equal item by item: counts exactly, shares and dollars to the rounding the files print."""
+    if isinstance(theirs, dict):
+        return isinstance(mine, dict) and set(mine) == set(theirs) and all(same(mine[k], theirs[k]) for k in theirs)
     if isinstance(theirs, (list, tuple)):
         return len(mine) == len(theirs) and all(same(a, b) for a, b in zip(mine, theirs))
     if isinstance(theirs, float):
-        return close(mine, theirs, 0.0006)
+        return close(mine, theirs, 0.0006 if abs(theirs) < 10 else 0.006)
     return mine == theirs
 
 
@@ -491,7 +535,22 @@ if __name__ == "__main__":
         # Sub-problem 5.
         ("offered", OUT["sp5 offered, took up, by metro, dates"][0], W["offered_patients"]),
         ("lift overall", OUT["sp5 lift overall and by metro"][0], W["campaign_lift_aggregate"]),
+        ("offered share, campaign metros", OUT["sp5 offered share, campaign metros and elsewhere"][0],
+         eval(W["offered_share"])["campaign_metros"]),
+        ("offered share, other metros", OUT["sp5 offered share, campaign metros and elsewhere"][1],
+         eval(W["offered_share"])["other_metros"]),
+        ("campaign metros' rise before the offer",
+         OUT["sp5 campaign metros, bookings per day 14 May to 14 July against 1 April to 13 May"],
+         W["campaign_metros_prior_change"]),
+        ("new system rows", len(newsys), W["newsys_rows"]),
+        ("retail claims", OUT["sp3 retail claims, marked denied, rate, billed"][0], W["retail_claims"]),
+        ("denial rate, retail", OUT["sp3 retail claims, marked denied, rate, billed"][2], W["denial_rate_overall"]),
+        ("collected share of billed", OUT["sp3 billed all, paid net share"][1], W["net_collection_ratio"]),
+        ("contract amount", OUT["sp1 employer claim"][0][3], W["contract_amount"]),
+        ("Q3 median claim", OUT["sp1 Q2 mean, Q3 mean, Q3 mean without contract, medians"][4], W["q3_median_claim"]),
     ]
+    for payer, value in eval(W["denial_rate_by_payer"]).items():
+        checks.append((f"denial rate, {payer}", OUT["sp3 denial rate by payer"][payer], value))
     by_metro = eval(W["campaign_lift_by_metro"]) | eval(W["campaign_lift_other_metros"])  # the witness prints dicts
     for metro, value in by_metro.items():
         checks.append((f"lift {metro}", OUT["sp5 lift overall and by metro"][1][metro], value))
@@ -505,8 +564,15 @@ if __name__ == "__main__":
     failed = [(name, mine, theirs) for name, mine, theirs in checks if not close(mine, theirs, 0.006 if "dollars" in name or "billed" in name or "sum" in name else 0.0005)]
     # Figures only the spine or Monday's day sheet gives.
     spine = [
-        ("New York rows, distinct ids, repeated ids", OUT["ny rows, distinct ids, repeated ids"], (2128, 2095, 33)),
+        ("New York repeated ids", OUT["ny rows, distinct ids, repeated ids"][2], 33),
         ("New York text amounts", len(OUT["ny text amounts"]), 6),
+        ("headline counts", OUT["headline dashboard, booked, performed, bookings, raw rows (Q2, Q3)"],
+         {"dashboard": (23213, 24406), "booked": (23213, 25022), "performed": (22468, 24399),
+          "bookings": (5692, 6009), "raw rows": (23788, 24556)}),
+        ("employer tests", OUT["headline employer tests, booked change with them"][0], 6000),
+        ("contractual adjustments", OUT["sp3 contractual adjustments on payments (double posts excluded)"], 883254.70),
+        ("fee claims, whole file", OUT["sp1 claims with a $20 fee line, whole file"], 1102),
+        ("old-export rows with no channel", OUT["sp1 old-export rows with no channel; New York's; on a New York repeated id"][0], 180),
         ("Chicago Q2, Q3 old, Q3 both", OUT["sp2 Chicago Q2, Q3 old only, Q3 both"], (754, 571, 656)),
         ("Philadelphia Q2, Q3 old, Q3 both", OUT["sp2 Philadelphia Q2, Q3 old only, Q3 both"], (661, 519, 587)),
         ("next worst rates", OUT["sp4 next worst rate, all visits and scheduled"], (0.0984, 0.1848)),
@@ -514,7 +580,6 @@ if __name__ == "__main__":
         ("per booking", OUT["sp4 per booking: small scheduled bookings, missing a slot; others' share; tail"], (64, 15, 0.173, 0.1303)),
         ("register two-row bookings", OUT["sp4 register: distinct bookings, bookings with two rows"][1], 253),
         ("New York permutation p", OUT["sp5 New York permutation p, two-sided"], 0.0302),
-        ("SQL route", OUT["ny second route in SQL"], [("Q2", 977, 174910.0), ("Q3", 1055, 184485.0)]),
         ("New York fee claims", OUT["ny claims with a $20 fee line"], 219),
         ("the gap's parts", OUT["sp3 the gap between billed and paid: no posting, denied with a posting, patient shares"],
          (253165.0, 222108.0, 32594.87)),
@@ -522,7 +587,102 @@ if __name__ == "__main__":
         ("accepted and used, accepted without", OUT["sp5 accepted with a home collection between offer and 14 September, accepted without"],
          (259, 689)),
     ]
-    for name, mine, theirs in spine:
+    # Figures neither the witness nor the spine nor Monday's sheet prints, asserted against the value
+    # this pack's files quote: the notebook, the run sheet, the headline sheet, the checkpoint guide
+    # and the day sheet.
+    pack = [
+        # The New York slice.
+        ("New York rows and distinct ids", OUT["ny rows, distinct ids, repeated ids"][:2], (2128, 2095)),
+        ("New York pairs identical, differing only in updated_at", OUT["ny repeated pairs identical, differing only in updated_at"], (26, 7)),
+        ("New York extra rows by quarter", OUT["ny extra rows by quarter"], {"Q2": 26, "Q3": 7}),
+        ("New York rows per quarter", OUT["ny rows per quarter"], {"Q2": 1039, "Q3": 1089}),
+        ("New York bookings per quarter", OUT["ny bookings per quarter"], {"Q2": 1013, "Q3": 1082}),
+        ("New York change on rows, on bookings", OUT["ny change on rows, on bookings"], (0.0481, 0.0681)),
+        ("New York blank channels", OUT["ny blank channel rows"], 43),
+        ("New York claims", OUT["ny claims rows, distinct claim ids"], (2032, 2032)),
+        ("New York dollars hidden by coerce", OUT["ny dollars hidden by coerce, by quarter"], {"Q2": 668.0, "Q3": 235.0}),
+        ("New York coerced totals", OUT["ny coerced totals"], {"Q2": 174242.0, "Q3": 184250.0}),
+        ("New York coerced growth, true growth", OUT["ny coerced growth, true growth"], (0.0574, 0.0547)),
+        ("New York largest claim", OUT["ny largest claim"], 410.0),
+        ("New York fanned join", OUT["ny fanned join rows, dollars; claims dollars"], (2065, 364853.0, 359395.0)),
+        ("New York fanned extra in Q2", OUT["ny fanned extra by quarter"]["Q2"], 4589.0),
+        ("New York fanned growth", OUT["ny fanned growth"], 0.0326),
+        ("New York kept, cancelled, completed, claims", OUT["ny kept, cancelled, completed, claims"], (2095, 63, 2032, 2032)),
+        ("New York tree", [(OUT["ny tree"][q]["count"], OUT["ny tree"][q]["sum"], round(OUT["ny tree"][q]["mean"], 2),
+                            OUT["ny tree"][q]["median"]) for q in ("Q2", "Q3")],
+         [(977.0, 174910.0, 179.03, 150.0), (1055.0, 184485.0, 174.87, 150.0)]),
+        ("New York change", OUT["ny change in dollars, percent"], (9575.0, 0.0547)),
+        ("New York claims, mean change", OUT["ny claims change, mean change, mean change in dollars"], (0.0798, -0.0232, -4.16)),
+        ("New York bridge", OUT["ny bridge volume, value"], (13964, -4389)),
+        ("New York bridge reversed, joint, symmetric", OUT["ny bridge reversed, joint, symmetric"],
+         ((13639.65, -4064.65), -324.51, (13801.9, -4226.9))),
+        ("New York per day change", OUT["ny per day change, claims and billed"], (0.0681, 0.0433)),
+        ("New York per day slips", OUT["ny per day slips: Q2 as 90 days, the lengths swapped"], (0.0564, 0.0917)),
+        ("New York distinct service days", OUT["ny distinct service days"], 183),
+        ("New York sites", {k: v[0] for k, v in OUT["ny claims and billed by site"].items()},
+         {("KH-NYC-01", "Q2"): 328, ("KH-NYC-01", "Q3"): 319, ("KH-NYC-02", "Q2"): 296,
+          ("KH-NYC-02", "Q3"): 365, ("KH-NYC-03", "Q2"): 353, ("KH-NYC-03", "Q3"): 371}),
+        ("New York options' rows read", OUT["ny option rows read: totals, claims tree, reconciled tree, export tree"], (2032, 2032, 4160, 4160)),
+        ("SQL route", OUT["ny second route in SQL"], [("Q2", 977, 174910.0), ("Q3", 1055, 184485.0)]),
+        ("SQLite CAST", OUT["sql: CAST of '$170.00' and of '1,050.00'"], (0.0, 1.0)),
+        ("New York home claims and means", OUT["ny home claims by quarter, their mean"],
+         ({"Q2": 97, "Q3": 160}, {"Q2": 194.23, "Q3": 175.36})),
+        ("New York home claims with no fee", OUT["ny home claims with no fee, by quarter; all from offered patients"], ({"Q3": 42}, True)),
+        ("New York other claims' mean", OUT["ny other claims' mean by quarter"], {"Q2": 177.35, "Q3": 174.78}),
+        ("New York offered", OUT["sp5 offered, took up, by metro, dates"][2]["New York"], 316),
+        # Sub-problem 1.
+        ("claims, converting as written, coerced total, hidden",
+         (OUT["sp1 smallest claim; amounts that convert as written"][1],) + OUT["sp1 claims rows, distinct, text amounts, coerced total, true total, hidden"][3:6:2],
+         (11296, 2190540.0, 10559.0)),
+        ("smallest claim, largest retail claim", (OUT["sp1 smallest claim; amounts that convert as written"][0], OUT["sp1 largest retail claim"]), (25.0, 420.0)),
+        ("claims per quarter", OUT["sp1 claims per quarter"], {"Q2": 5508, "Q3": 5848}),
+        ("Q2 mean claim", OUT["sp1 Q2 mean, Q3 mean, Q3 mean without contract, medians"][0], 176.13),
+        ("growth with, without the contract", OUT["sp1 growth with, without contract"], (0.2689, 0.0834)),
+        ("old-export completed, new-system done", OUT["sp1 old-export completed, new-system done, claims"], (11213, 143, 11356)),
+        ("New York blank channels, none on a repeated id", OUT["sp1 old-export rows with no channel; New York's; on a New York repeated id"][1:], (43, 0)),
+        # Sub-problem 2.
+        ("new system rows by metro", OUT["sp2 old export rows, distinct ids; new system rows by metro"][2], {"Chicago": 85, "Philadelphia": 68}),
+        ("two metros' rows before the identity rule", OUT["sp2 two metros rows before the identity rule"], {"Q2": 1450, "Q3": 1099}),
+        ("Q3 claims less old-export completed", {k: v for k, v in OUT["sp2 Q3 claims less old-export completed, by metro"].items() if v},
+         {"Chicago": 79, "Philadelphia": 64}),
+        ("repeated ids and their dates", OUT["sp2 repeated ids, first and last booking date"], (180, "2026-06-01", "2026-09-26")),
+        ("other metros' change", OUT["sp2 other metros' change in retail bookings"],
+         {"Dallas": 0.0774, "Phoenix": 0.1302, "New York": 0.0681, "Atlanta": 0.2121}),
+        # Sub-problem 3.
+        ("posting forms and kinds", OUT["sp3 posting rows, forms, kinds"][1:],
+         ({"bare digits": 8858, "CLM-number": 2269, "the claim id": 216}, {"payment": 10101, "denial": 1137, "reversal": 105})),
+        ("reversals' dollars", OUT["sp3 double posts, dollars; reversals, dollars"][3], -8662.87),
+        ("claims marked denied", OUT["sp3 retail claims, marked denied, rate, billed"][1], 1175),
+        ("unposted claims' dollars", OUT["sp3 claims with no posting, dollars, employer claim among them"][1:], (253165.0, True)),
+        ("unposted claims by month", OUT["sp3 unposted claims by service month"],
+         {"2026-04": 59, "2026-05": 66, "2026-06": 73, "2026-07": 55, "2026-08": 69, "2026-09": 76}),
+        ("double-post pairs, minutes apart", OUT["sp3 double-post pairs, minutes apart (least, most)"], (280, 0.0, 2.0)),
+        # Sub-problem 4.
+        ("register kinds", OUT["sp4 rows, centres, kinds, dates"][2], {"scheduled": 1964, "walk-in": 1721}),
+        ("register attended", OUT["sp4 attended Y and N; kind by centre at KH-ATL-03"][0], {"Y": 3385, "N": 300}),
+        ("rows per centre, least and most of the other eleven, KH-ATL-03",
+         (min(v for k, v in OUT["sp4 rows per centre"].items() if k != "KH-ATL-03"),
+          max(v for k, v in OUT["sp4 rows per centre"].items() if k != "KH-ATL-03"), OUT["sp4 rows per centre"]["KH-ATL-03"]),
+         (173, 504, 80)),
+        ("no-shows over visits", OUT["sp4 small all, others all, small scheduled, others scheduled"],
+         ((15, 80), (285, 3605), (15, 79), (285, 1885))),
+        ("register bookings", OUT["sp4 register: distinct bookings, bookings with two rows"][0], 3432),
+        ("register rows by status", OUT["sp4 register rows by booking status, kind, attended"],
+         {("cancelled", "scheduled", "N"): 47, ("completed", "scheduled", "N"): 253,
+          ("completed", "scheduled", "Y"): 1664, ("completed", "walk-in", "Y"): 1721}),
+        ("Q3 centre bookings with no register row",
+         OUT["sp4 Q3 centre bookings not at home, with no register row, by status and channel"],
+         (3483, 51, {("cancelled", "walk-in"): 43, ("completed", ""): 8})),
+        # Sub-problem 5.
+        ("offered by metro, accepted, dates", OUT["sp5 offered, took up, by metro, dates"][1:],
+         (948, {"Dallas": 619, "Phoenix": 607, "Atlanta": 416, "New York": 316, "Chicago": 215, "Philadelphia": 208},
+          ("2026-07-15", "2026-08-04"))),
+        ("offered with a booking", OUT["sp5 offered with a booking in the window, with any booking in the old export, in either export"],
+         (971, 1716, 1724)),
+        ("bookings per patient", OUT["sp5 bookings per patient offered, rest (patients, bookings)"],
+         ((2381, 1507, 0.6329), (4319, 2508, 0.5807))),
+    ]
+    for name, mine, theirs in spine + pack:
         if not same(mine, theirs):
             failed.append((name, mine, theirs))
     for name, mine, theirs in failed:
@@ -530,12 +690,15 @@ if __name__ == "__main__":
     if failed:
         sys.exit(f"FAIL  {len(failed)} number(s) drifted from the witness, the spine or Monday's sheet")
     print(f"PASS  {len(OUT)} groups of numbers recomputed; {len(checks)} agree with the generator's "
-          f"witness and {len(spine)} with the spine or Monday's day sheet")
+          f"witness, {len(spine)} with the spine or Monday's day sheet, and {len(pack)} with the values "
+          f"this pack's files quote")
 
 # Test inputs and expected outcomes
 # --------------------------------
 # python3 content/W03/D3/internal/C2_W03_D03_numbers_INTERNAL.py
-#     Prints one line per group of numbers, then PASS with the count of witness and spine checks.
+#     Prints one line per group of numbers, then PASS with the count of witness, spine and pack checks.
+# A file in the pack edited to quote a number the data does not give, mirrored in the pack list
+#     A DRIFT line naming that number, then FAIL.
 # The data pack regenerated from a changed seed
 #     One DRIFT line per number that moved, then FAIL; the pack's files need the new numbers.
 # The visit register drawn the old way (before 1 October 2026)
