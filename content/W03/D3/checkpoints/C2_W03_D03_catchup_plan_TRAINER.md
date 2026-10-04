@@ -1,69 +1,86 @@
-# The catch-up plan: a group behind at the checkpoint
+# How does a group that is behind still reach a headline claim it can defend tomorrow, and who helps it get there?
 
-**TRAINER ONLY.** Use it for any group the checkpoint marked stuck on two or more of its three
-questions, or any group that names a blocker at the close. Tomorrow opens the mocks, and each
-learner's viva runs on the group's own work, so a group that ships a small, honest claim tonight is
-better placed than one still chasing a full answer.
+**TRAINER ONLY.** It is for the Academic TA and the trainer. Use it for any group the checkpoint
+marked stuck on two or more of its three questions, and for any group that names a blocker at the
+close. Thursday opens Mock R1, and each learner's viva runs on the group's own work, so a group that
+ships a small, honest headline claim tonight is better placed than one still chasing a full answer.
+Tuesday was Dussehra, so today carries build days two and three, and the time the week held back for
+catching up has already gone to that: tonight's open build time is the only catch-up the week has
+left.
 
-The rule for every sub-problem: **cut scope, never the method.** The identity rule, the
-reconciliation and the caveat stay in the smallest claim. What gets cut is the second and third
-branch.
+## Which groups go on the catch-up plan, and when?
 
----
+**Who needs the answer.** The Academic TA, who runs the open build time after the second block and
+takes stuck groups in the order the checkpoint recorded them.
 
-## The smallest honest claim, per sub-problem
+**The questions on the way.** Which signals put a group on the catch-up plan? When is each one seen?
 
-Each claim below is the least the group's sub-problem still supports if the build is materially
-complete during the mocks tomorrow. The words in brackets are the group's to fill from its own run;
-the TA never fills them.
+| Signal | When it is seen | What happens |
+|---|---|---|
+| Stuck on two or more of its three checkpoint questions | The checkpoint, in the first 30 minutes | The trainer sits with the group first in the morning's build time, and the TA takes it first in the open build time. |
+| A named blocker at the close | The close, in the last 20 minutes | The TA starts the open build time at its table. |
+| No number it can reproduce from the raw files by the close | The close | The group goes on the catch-up plan, and the Programme Head hears about it today. |
 
-| Sub-problem | The smallest honest claim | What it cuts | What it keeps |
+## What is the smallest honest headline claim each brief still supports?
+
+**Who needs the answer.** A group behind on its brief, which still owes Dr Menon a sentence with its
+denominators and caveat, and the TA, who helps it cut the scope while the method stays whole.
+
+**The questions on the way.** What does each brief's smallest claim say? What does it cut? What does
+it keep?
+
+The smallest claim keeps the identity rule, the reconciliation and the caveat, and cuts the second
+and third branch. The words in brackets are the group's to fill from its own run, and the TA never
+fills them.
+
+| Brief | The smallest honest claim | What it cuts | What it keeps, and the Week 1 or 2 move |
 |---|---|---|---|
-| 1. Revenue | "Invoiced revenue moved from [Q1] to [Q2], and the city with the largest change is [city], where [invoices or the mean invoice] moved it; the mean and the median disagree by [amount], so [the caveat]." | Tests inside an invoice, and every split below the city | The amount conversion, invoices reconciled to completed bookings, and the median beside the mean |
-| 2. Bookings | "In the two cities, bookings fell from [Q1] to [Q2] counted across [the files used], against [the other count] in [the file]; the fall is [real or partly an artefact] because [reason]." | The channel and clinic rungs of the ladder | The identity rule, both booking files, and the reconciliation of bookings to invoices by city |
-| 3. Billing | "After one rule matching payment references to invoices, [share] of invoices are paid; the gap between invoiced and collected is [amount], of which [the largest part] is [what it is]." | Classifying the gap beyond its two or three largest parts | The stated normalisation rule, the match rate before and after, and anti-joins both ways |
-| 4. No-shows | "The clinic's no-show rate is [n of d] against [n of d] for the rest, counted on [which visits]; on a base of [d] the gap [is or is not] larger than chance would give." | Any day-of-week or patient split | Numerator and denominator stated for both sides, and the choice of visits written in the decisions log |
-| 5. Campaign | "Offered patients booked [x] per patient against [y] for the rest over [window]; inside [city] the comparison reads [z], so the 9 percent [holds or does not] as a cause." | The pre-trend window, and any cities past the first one | One within-city comparison, and the denominator (bookings per patient) with its window |
+| 1. Revenue | "Billed revenue moved from [Q2 total] to [Q3 total], and the branch with the largest change is [branch], where [claims or the mean claim] moved it; the mean and the median claim differ by [amount], so [caveat]." | Tests inside a claim, and every split below the first | Every amount converted, the claims reconciled to the completed bookings, and the median beside the mean (Week 1 Monday's tree and its typical value; Week 1 Wednesday's rows in equal rows kept plus rows set aside) |
+| 2. Bookings | "In the two metros, bookings fell from [Q2] to [Q3], counted across [the files used], against [the other count] in [the file]; the fall is [real, or partly how it was counted] because [reason]." | The decompose and isolate rungs of the ladder, the channel and site cuts | One row per booking id, every booking file profiled, and bookings reconciled to claims metro by metro (Week 1 Tuesday's rung 1, confirm before explaining; Week 1 Wednesday's identity rule) |
+| 3. Billing | "After one rule matching postings to claims, [share] of claims are paid; between billed and paid sit [amount], of which the largest part is [what it is]." | Classifying the gap past its two or three largest parts | The stated matching rule, the match count before and after, and anti-joins both ways (Week 2 Tuesday's join counted first and its anti-join; Week 1 Wednesday's rows in equal rows kept plus rows set aside) |
+| 4. No-shows | "KH-ATL-03's no-show rate is [n of d] against [n of d] at the other centres, counted on [which visits]; on a base of [d] the gap [is or is not] larger than chance would give." | Any split by weekday or patient | The numerator and denominator stated for both sides, and the choice of visits in the decisions log (Week 1 Thursday's count beside every rate, and real, or the wobble) |
+| 5. The campaign | "Offered patients booked [x] per patient against [y] for the rest over [window]; inside [metro] the comparison reads [z], so the 9 percent [holds or does not] as a cause." | The weeks before the offer, and any metro past the first | One comparison inside one metro, and bookings per patient with its window (Week 1 Thursday's comparison inside each segment, and is the split fair) |
 
-A claim that keeps its caveat and is small counts as a finished claim. A large claim with the caveat
-missing is the one the panel takes apart.
+## What does the Academic TA do at the table, and in what order?
 
----
+**Who needs the answer.** The TA, who has a fixed open build time and several stuck groups, and the
+group, which must leave the table able to run its own number cold.
 
-## What the Academic TA does in the open build time
+**The questions on the way.** What happens in the first minute? What comes before any analysis?
+What does the TA never do?
 
-The open build time after the second block is TA-led. Take the stuck groups in the order the
-checkpoint recorded them.
+1. In the first minute, read the group's blocker back to it in its own words, from the checkpoint
+   grid, and agree which of its three checkpoint questions it will answer within the hour.
+2. Get one count from a raw file, with the code that makes it, run top to bottom. If the notebook
+   does not run cold, that comes first. A syntax or runtime error gets two minutes and its last
+   line, and the TA reads it beside the group while a member types the fix.
+3. Ask the follow-up questions in `checkpoints/C2_W03_D03_checkpoint_guide_TRAINER.md`, from the
+   weak-answer column, one at a time. The TA never states a number the group has not computed,
+   never names what is in the files and never points at a row.
+4. Fill the bracketed claim above with the group, from its own outputs, and pin it in the
+   challenges log with the date.
+5. Split the work across the four members so that Thursday's viva finds each one able to explain
+   one move: one member on the identity rule and the profile, one on the reconciliation, one on the
+   headline claim and its denominators, and one on the decisions log and the challenges log. A group
+   of three folds the last two together.
+6. Before the TA leaves, the group has run its notebook or SQL cold once, the presentation skeleton
+   (claim, evidence, caveat, action) has its four headings and one line under each, and every
+   member has Thursday's mock brief and knows their slot from the seat list sent at the close,
+   since the first mocks start ten minutes into Thursday.
 
-1. **Minute zero:** read the group's blocker back to it in its own words from the checkpoint line.
-   Agree on which of the three checkpoint questions it will be able to answer in an hour.
-2. **Ask for the smallest reproducible number.** One count from a raw file, with the code that
-   makes it, run top to bottom. If the notebook doesn't run cold, fixing that comes first. A syntax
-   or runtime error gets two minutes and its last line, and the TA reads it with the group rather
-   than for it.
-3. **Walk the method, not the data.** The TA's questions are the checkpoint nudges
-   (`checkpoints/C2_W03_D03_checkpoint_guide_TRAINER.md`), one at a time. The TA never states a
-   number the group has not computed, never names what is in the files, and never points at a row.
-4. **Write the claim with the group** from the template above, with the brackets filled from the
-   group's own outputs, and pin it in the challenges log with the date.
-5. **Split the work across four people**, so the viva finds each member able to explain one move:
-   one on the identity rule and the profile, one on the reconciliation, one on the claim and its
-   denominators, and one on the decisions log and the challenges log.
-6. **Before leaving the table**, the group has run its notebook or SQL cold once, and the
-   presentation skeleton (claim, evidence, caveat, action) has its four headings and one line under
-   each.
+## When does the Programme Head need to hear about a group today?
 
----
+**Who needs the answer.** The Programme Head, who decides what happens next for a group the catch-up
+plan cannot reach; this plan never decides it for them.
 
-## When to bring in the Programme Head
+**The questions on the way.** Which signals cannot wait until Thursday? Why?
 
-Tell the Programme Head today, in person or by message, when any one of these holds. The Programme
-Head decides what happens next; this plan does not decide it for them.
+Tell the Programme Head today, in person or by message, when any one of these holds.
 
-| Signal | Why it can't wait |
+| Signal | Why it cannot wait |
 |---|---|
-| A group names the same blocker at the checkpoint and again at the close, with no number moved between | The viva tomorrow will find nothing to question. |
-| A group cannot reproduce any one number from the raw files by the end of the open build time | Nothing it presents can be demonstrated cold, and cold demos are the week's standard. |
-| One member has done all the work, or a member has not been present on Monday or today | The mock and the GD are individual, and the roster was built on groups of four. |
-| Two or more groups on the same sub-problem are stuck on the same step | The step may be a defect in the brief or the data, and one fix reaches all of them. |
-| A group asks to change sub-problem | Allocation is the Programme Head's decision, made on Monday. |
+| A group names the same blocker at the checkpoint and again at the close, with no number moved between | Thursday's viva will find nothing to question. |
+| A group cannot reproduce any number from the raw files by the end of the open build time | Nothing it presents can run cold, and the demo runs cold on Friday or Saturday. |
+| One member has done all the work, or a member was absent on Monday and today | Mock R1 and the group discussion score each learner alone, and the groups were built for four. |
+| Two or more groups on the same brief are stuck on the same step | The step may be a defect in the brief or the data, and one fix reaches all of them. |
+| A group asks to change its brief | The allocation is the Programme Head's decision, made on Monday. |
