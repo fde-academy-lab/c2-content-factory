@@ -401,7 +401,7 @@ check("the employer claim has no posting", "KH-CLM-007802" in {c["claim_id"] for
 denied = [c for c in retail_claims if c["denial_category"]]
 check("retail claims", len(retail_claims), 11355)
 check("retail claims marked denied", len(denied), 1175)
-check("denial rate, to two decimals of a percent", round(len(denied) / len(retail_claims), 4), 0.1035, 0.00006)
+check("denial rate, to one decimal of a percent", round(100 * len(denied) / len(retail_claims), 1), 10.3, 0.001)
 for payer, rate in {"Medicaid": 0.149, "commercial": 0.113, "Medicare": 0.088, "self-pay": 0.0}.items():
     of_payer = [c for c in retail_claims if c["payer_type"] == payer]
     check(f"denial rate, {payer}", round(sum(1 for c in of_payer if c["denial_category"]) / len(of_payer), 3), rate)
@@ -690,7 +690,7 @@ PLANTED_VALUES = [
     "11,549", "11,584", "153", "180", "24.2", "488", "478", "449", "452", "420", "371",
     # sub-problem 3
     "216", "2,269", "8,858", "11,343", "1.9 percent", "280", "19,204", "19,205", "105", "8,662", "8,663",
-    "1,137", "398", "253,165", "1,175", "11,355", "10.35", "10.4", "230,132", "2,201,099", "801,313.56",
+    "1,137", "398", "253,165", "1,175", "11,355", "10.35", "10.3 percent", "10.4", "230,132", "2,201,099", "801,313.56",
     "801,314", "820,518", "36.4", "883,254", "883,255", "222,108", "32,594", "32,595", "1,399,785", "283",
     "272", "269", "265",
     # sub-problem 4

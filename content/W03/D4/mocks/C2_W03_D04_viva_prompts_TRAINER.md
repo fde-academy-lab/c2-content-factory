@@ -395,7 +395,7 @@ twice by electronic remittance, 0 to 2 minutes apart, carry $19,204.63; 105 reve
 $8,662.87. 398 claims have no posting at all, $253,165 billed, spread over every month from April to
 September, the $180,000 employer claim among them.
 
-The claims file marks 1,175 of the 11,355 retail claims denied, 10.35 percent (Medicaid 14.9,
+The claims file marks 1,175 of the 11,355 retail claims denied, 10.3 percent (Medicaid 14.9,
 commercial 11.3, Medicare 8.8 and self-pay none), billing $230,132; 1,137 of them carry a denial
 posting that pays $0.00, and the other 38 have no posting. By category the claims file counts 283
 eligibility or coverage denials and 272 for missing or invalid information, and the denial postings
@@ -445,7 +445,7 @@ matched claims.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| 1,175 of the 11,355 retail claims, 10.35 percent, Medicaid highest at 14.9 and self-pay none, billing $230,132; 1,137 carry a denial posting that pays $0.00, and 38 have no posting; works first the denials a corrected claim can still win before the filing deadline | Gives a count with no denominator, or counts the $0.00 denial postings as payments | "What would change that order?" (Missing or invalid information, 272 claims, is corrected and resent, so it goes first while the deadline allows; eligibility or coverage, 283, needs the right payer found first; any claim near its payer's filing deadline goes first whatever its category. The denial postings carry 269 and 265 of the two, since 38 denied claims have no posting.) |
+| 1,175 of the 11,355 retail claims, 10.3 percent, Medicaid highest at 14.9 and self-pay none, billing $230,132; 1,137 carry a denial posting that pays $0.00, and 38 have no posting; works first the denials a corrected claim can still win before the filing deadline | Gives a count with no denominator, or counts the $0.00 denial postings as payments | "What would change that order?" (Missing or invalid information, 272 claims, is corrected and resent, so it goes first while the deadline allows; eligibility or coverage, 283, needs the right payer found first; any claim near its payer's filing deadline goes first whatever its category. The denial postings carry 269 and 265 of the two, since 38 denied claims have no posting.) |
 
 **P4. "Walk me from billed to paid in dollars, tell me which line of your bridge you trust least and
 why, and what the paid figure would be if that line were wrong."** It tests Week 1 Wednesday's move: the bridge that names every dollar between two
