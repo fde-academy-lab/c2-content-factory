@@ -1,31 +1,41 @@
-# Where does your group stand this morning: what did the files hold, what have you matched, and what will your claim be counted on?
+# Where does your group stand this morning: what did the files hold, what have you matched, and what will your headline claim be counted over?
 
-- **For:** every group, at the first 30 minutes of Wednesday 21 October
-- **From:** Dr Priya Menon, chief operating officer (COO) of Kalpa Health, and the trainer
+- **For:** every group, in the first 30 minutes of Wednesday 21 October
+- **Client:** Dr Priya Menon, chief operating officer (COO) of Kalpa Health
+- **Run by:** the trainer, with the Academic TA
 - **Data:** the ten files in `content/W03/D1/data/`, exported on Friday 16 October 2026
 
 Kalpa Health, Kalpa Group and everyone in them are fictional, and every record in the files is
 synthetic. Kalpa Health is a US diagnostics business: a laboratory and two patient service centres,
-where a phlebotomist draws patients' blood, in each of six US metro areas, billing its patients'
-payers in dollars (commercial health plans, Medicare, Medicaid and patients who pay for themselves).
-Its revenue-cycle and analytics work runs from Kalpa's Global Capability Centre (GCC) in Bengaluru,
-where you work as trainee engineers in the data and AI team. Q2 is April to June 2026 and Q3 is July
-to September 2026. The domain dossier,
-`content/W03/D1/study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`, tells the whole business,
-with its words in section 6 and its numbers and their formulas in section 5.
+where a phlebotomist draws patients' blood, in each of six US metro areas. It bills its patients'
+payers in dollars, and a payer is whoever pays for a patient's tests: a commercial health plan,
+Medicare (the federal programme for people aged 65 and over), Medicaid (each state's programme for
+people on low incomes) or the patient. Its revenue-cycle and analytics work runs from Kalpa's Global
+Capability Centre (GCC) in Bengaluru, where you work as trainee engineers in the data and AI team.
+Q2 is April to June 2026 and Q3 is July to September 2026.
+
+Four words in the questions name things in the files. A claim is the bill Kalpa Health sends a payer
+for one completed booking, and your group's headline claim is something else: the one sentence it
+states at today's close. A posting is one row of the posting system, which records what each payer
+did with a claim. The visit register lists each Q3 visit to a patient service centre, and the
+patient register lists every registered patient with their metro. The data dictionary,
+`content/W03/D1/briefs/C2_W03_D01_data_dictionary_STUDENT.md`, describes every file and column, and
+the domain dossier, `content/W03/D1/study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`, tells
+the whole business, with its words in section 6 and its numbers and their formulas in section 5.
 
 > "My dashboard says test volumes grew 5 percent from Q2 to Q3. The plan the board approved asks for
 > 18. Which branch of my business is short, and what do I do next?"
 > Dr Priya Menon, COO, Kalpa Health
 
 Five of Dr Menon's heads asked her a question, and on Monday each group took one. Today each group
-builds on the files: the checkpoint first, then the trainer's parallel build on a question no group
-holds, then build time, and at the day's close each group states its headline claim, one sentence
+builds on the files: the checkpoint first, then the trainer's parallel build on New York's billed
+revenue, then build time, and at the day's close each group states its headline claim, one sentence
 Dr Menon can carry into her board meeting.
 
 **Who needs the answer.** Your group first, then the Academic TA and the trainer. Tomorrow every
-member sits Mock R1 alone, with a viva on the group's own work, so a group that cannot answer its
-three questions this morning is stuck, and a blocker named today gets help a day before the viva.
+member sits Mock R1 alone, a mock interview of about 20 minutes whose second half is a viva, a spoken
+defence of the group's own work, so a group that cannot answer its three questions this morning is
+stuck, and a blocker named today gets help a day before the viva.
 
 **The questions on the way.** How does the checkpoint run, and what counts as an answer? What do
 all fifteen questions ask, whichever brief your group holds? What are the three questions for each
@@ -35,8 +45,9 @@ of the five briefs? What does a group do when it cannot answer one?
 
 ## How does the checkpoint run, and what counts as an answer?
 
-**Who needs the answer.** Every member: a different member answers each question, so everyone
-needs the group's numbers in front of them.
+**Who needs the answer.** Every member, since a different member answers each question. A group
+whose numbers sit with one member looks stuck when it is not, and the help that should go to a
+stuck group goes to it instead.
 
 **The questions on the way.** In what order do groups answer? How long does each group have? What
 does an answer have to contain?
@@ -44,28 +55,29 @@ does an answer have to contain?
 | Rule | What it means |
 |---|---|
 | The order | Groups answer by brief, 1 to 5, so the groups that share a brief answer back to back. |
-| The time | Two minutes per group, three questions. The trainer stops a group at two minutes, mid-sentence if need be. |
-| Who speaks | One member per question, and a different member for each of the three. |
-| An answer | A number, the file it came from, and what you counted as one row or one record when you counted it. |
-| Not yet | "Not yet, because..." with what is in the way is an answer. A guess is not. |
-| What it costs | Nothing: the checkpoint is not scored. This week's scored events are the mini project, Mock R1 on Thursday 22 October and the group discussion on Friday 23 and Saturday 24 October. |
+| The time | Each group has two minutes for its three questions, and the trainer stops a group at two minutes, mid-sentence if need be. |
+| Who speaks | One member answers each question, and a different member takes each of the three. |
+| An answer | An answer is a number, the file it came from, and what you counted as one row or one record when you counted it. |
+| Not yet | "Not yet, because..." with what is in the way is an answer, and a guess is not. |
+| What it costs | The checkpoint is not scored. This week's scored events are the mini project, Mock R1 on Thursday 22 October and the group discussion on Friday 23 and Saturday 24 October. |
 
 Each group answers from its own notebook or SQL, run today. Nobody at the checkpoint says whether
 a number is right; the trainer may ask one question back, and the next group starts.
 
 ## What do all fifteen questions ask, whichever brief your group holds?
 
-**Who needs the answer.** Every group, before it reads its own three: the same three moves sit
-under every question, so a group can prepare for its set by checking these three in its own work.
+**Who needs the answer.** Every group, before it reads its own three. The same three moves sit under
+every question, and a group that has made all three in its own work answers its set in two minutes,
+while a group that skipped one finds out in front of the room.
 
 **The questions on the way.** What did the files hold? What did you match against what? What will
-each number in your claim be counted over?
+each number in your headline claim be counted over?
 
 | | What it asks | The Week 1 or 2 move behind it |
 |---|---|---|
 | The first | What did your files hold when you profiled them, before you changed anything? | Week 1 Wednesday: profile every field before touching it, and count rows against distinct ids |
 | The second | What did you match against what, and what was left over on each side? | Week 1 Wednesday: rows in equal rows kept plus rows set aside; Week 2 Tuesday: a join is counted before anything is summed |
-| The third | What will each number in your claim be counted over, and compared with what? | Week 1 Monday: every branch a count over a denominator; Week 1 Thursday: the count beside every rate, and the comparison that is fair |
+| The third | What will each number in your headline claim be counted over, and compared with what? | Week 1 Monday: every branch a count over a denominator; Week 1 Thursday: the count beside every rate, and the comparison that is fair |
 
 ## Brief 1, for the revenue groups: what do the claims hold, what did you match them to, and what is each branch of your tree counted over?
 
@@ -73,10 +85,9 @@ each number in your claim be counted over?
 > from, and which branch of it is short?"
 > The finance head, Kalpa Health
 
-A claim is the bill for one completed booking, sent to the patient's payer at Kalpa Health's list
-prices, plus any collection fee for a home draw, and billed revenue is the dollars on the claims. A
-branch is one part of the revenue tree: a count or a ratio whose change shows how much of the growth
-it carries.
+A claim bills one completed booking at Kalpa Health's list prices, plus any collection fee for a
+home draw, and billed revenue is the dollars on the claims. A branch is one part of the revenue
+tree: a count or a ratio whose change shows how much of the growth it carries.
 
 **Who needs the answer.** The finance head, who writes the board's page on where the plan's growth
 went; a branch named on a number nobody can rebuild sends the recovery effort to the wrong place.
@@ -93,8 +104,8 @@ went; a branch named on a number nobody can rebuild sends the recovery effort to
    Week 2 Tuesday, a join counted before anything is summed.*
 3. **What is each branch of your tree counted over?** Name every count and every average on your
    tree with its denominator and its Q2 and Q3 values, and put the median beside every average.
-   *The move: Week 1 Monday, the revenue tree with every branch a count over a denominator, and a
-   typical value that one large order cannot move.*
+   *The move: Week 1 Monday, the revenue tree with every branch a count over a denominator, and the
+   typical value that a few extreme amounts cannot move.*
 
 ## Brief 2, for the bookings groups: what do the booking files hold, what did you check the fall against, and what is one booking in your count?
 
@@ -111,16 +122,14 @@ or cut staff; a fall read too large cuts staff that patients still need.
 **The questions on the way.**
 
 1. **What did each booking file hold when you profiled it?** For each booking file you opened: how
-   many rows, how many distinct booking ids, and which metros and which dates it covers. *The move:
+   many rows, how many distinct booking ids, and what values the columns you use take. *The move:
    Week 1 Wednesday, profile every field before touching it, and count rows against distinct ids.*
-2. **Before you explained the fall, what did you check it against?** Metro by metro and quarter by
-   quarter, which second count did you put beside the bookings, and where did the two disagree?
-   *The move: Week 1 Tuesday, rung 1 of the investigation ladder, confirm the drop before anyone
-   explains it.*
+2. **Before you explained the fall, what did you check it against?** Which second count did you put
+   beside the bookings, and did the two agree, metro by metro and quarter by quarter? *The move:
+   Week 1 Tuesday, rung 1 of the investigation ladder, confirm the drop before anyone explains it.*
 3. **What is one booking in your count?** State the fall in each of the two metros as a Q2 count
-   and a Q3 count, name the file or files each count comes from, and say what you counted as one
-   booking. *The move: Week 1 Tuesday, rung 2, like with like: the same definition in both
-   quarters.*
+   and a Q3 count, name the source of each count, and say what you counted as one booking. *The
+   move: Week 1 Tuesday, rung 2, compare like with like: the same definition in both quarters.*
 
 ## Brief 3, for the billing groups: what does each file's row stand for, what did your join match, and which postings count as money received?
 
@@ -171,13 +180,14 @@ draw away.
    touching it.*
 2. **What did you check the register against, and did it agree?** Did every visit find its
    booking, at the same centre, and does every Q3 booking at a centre find its visit? *The move:
-   Week 1 Wednesday, reconcile one file against another, both ways.*
+   Week 2 Tuesday, the anti-join that found which orders had no payment, run in both directions,
+   and Week 1 Wednesday, rows in equal rows kept plus rows set aside.*
 3. **What is each rate out of?** Give KH-ATL-03's no-show rate and the other centres' as a count
    over a count, say which visits sit in each denominator, and say how often chance alone would
    make a gap that size on that many visits. *The move: Week 1 Thursday, the count beside every
-   rate, and real or noise: how often chance alone makes the gap.*
+   rate, and real, or the wobble: how often chance alone makes a gap this size.*
 
-## Brief 5, for the campaign groups: who got the offer, did every offered patient match the register, and what is the 9 percent counted over?
+## Brief 5, for the campaign groups: who got the offer, did every offered patient match the patient register, and what is the 9 percent counted over?
 
 > "Our free at-home collection offer lifted bookings 9 percent. I want to offer it to every patient
 > in all six metros. Can you confirm it worked?"
@@ -198,18 +208,19 @@ extended on a lift it did not cause spends that money every week.
    dates, and how many accepted? *The move: Week 1 Thursday, who got the sale, asked before whether
    it worked.*
 2. **Did every offered patient match the patient register and the bookings?** Did each one appear
-   in the register in the same metro, and how many had a booking in the weeks the offer ran? *The
-   move: Week 1 Wednesday, reconcile one file against another, and Week 2 Tuesday, a join counted
-   before anything is summed.*
+   in the patient register in the same metro, and how many had a booking in the weeks the offer ran?
+   *The move: Week 2 Tuesday, a join counted before anything is summed, and the anti-join that finds
+   what has no match.*
 3. **What is the 9 percent counted over, and compared with whom?** Bookings per patient over which
    weeks, for which patients, against which other patients, and how did the two groups compare
-   before the offer was sent? *The move: Week 1 Thursday, cause or coincidence: were the two groups
-   alike before the thing tested?*
+   before the offer was sent? *The move: Week 1 Thursday, is the split fair: who got it, and were
+   the two groups alike before the thing tested?*
 
 ## What does a group do when it cannot answer one of its three?
 
 **Who needs the answer.** The group, and the Academic TA, who runs the open build time after the
-second block and takes the stuck groups first.
+second block and takes the stuck groups first. A blocker kept quiet costs a group the day's build
+time, and a blocker named this morning brings the trainer to its table in the morning's build time.
 
 **The questions on the way.** What does the group say? Who comes to its table, and when?
 
