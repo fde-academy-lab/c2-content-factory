@@ -29,29 +29,29 @@ before its answer is shown or heard.
 | 2. The GD rounds, seven today and two on Saturday | Can a group take a position on a Kalpa Health decision it has never seen, and hold it with one number from the exhibit? | What does the card decide, and on which metric? Which number carries the position? What would change the group's mind? What does the chair ask? | One position, one number from the card with where it came from, and the fact that would change the group's mind, said aloud by named learners |
 | 3. Cold run one and the roll call | Does every number on a group's slide come out of the raw files when a fresh machine runs its code? | Do the ten raw files match the export? Does the notebook run top to bottom in a fresh kernel? Is every slide number printed? How long does the run take? | A logged line for every group: minutes, slide numbers reproduced out of the total, what broke and the fix |
 | 4. The first tranche of presentations | Does a group's one-slide answer survive the panel's challenge on its caveat? | What did the group find? How sure is it? What would change its mind? What should Dr Menon do on Monday? | Up to three groups' claims heard with their number, denominator, period and caveat, and every presenting learner asked a challenge |
-| 5. Run two, the freeze and the draw | Which commit does each group stand behind on Saturday, and what may still change after it? | Is run two logged? Which hash did the TA record? In which order does Saturday run? | A second logged run and a recorded commit for every group, and Saturday's order on the board |
+| 5. Run two, the freeze and the draw | Which commit does each group stand behind on Saturday, and what may still change after it? | Is run two logged and pushed? Which commit did the TA's sweep record? Does run two still count against it? In which order does Saturday run? | A frozen commit for every group, run two counted or a Saturday rerun named, and Saturday's order on the board |
 
-**What the room hears at the close, in answer to the day's question.** No new number for Dr Menon,
-and none is due: every group has argued one Kalpa Health decision with one number in front of a
-chair, the first tranche has defended its caveats, every group has a logged cold run, and the
-builds freeze tonight at recorded hashes, so that what the panel sees on Saturday is what a
-stranger would get from the raw files.
+**What the room hears at the close, in answer to the day's question.** Dr Menon gets no new number
+today, and none is due: every group has argued one Kalpa Health decision with one number in front of
+a chair, the first tranche has defended its caveats, every group has a logged cold run, and the
+builds freeze tonight at recorded hashes, so that what the panel sees on Saturday is what a stranger
+would get from the raw files.
 
 ## What does Friday start from, and where does it stop?
 
 | | |
 |---|---|
 | **Start from** | Dr Menon's question is four days old, and the five questions her heads asked on Monday are in each group's brief. Every group stated its headline claim with its denominators and caveat at Wednesday's close, and every learner sat Mock R1 on Thursday, the first mock interview: a technical half on Weeks 1 and 2 and a viva on the group's Kalpa Health work. Thursday's last check watched each notebook run once from a kernel restart. |
-| **Go as far as** | Every group through its GD or rostered for Saturday morning; a first tranche of up to three presentations heard and scored; every group's cold run one read aloud at the roll call; run two logged before the freeze; every frozen hash recorded; Saturday's order drawn. |
-| **Stop before** | Any teaching. A trainer who answers a group's analysis question today has done its work for it. Any confirmation or denial of a plant, in a GD, a presentation or a corridor. |
-| **Comes later** | Saturday: the remaining two GD rounds, the other presentations before the industry expert and the senior industry leader, grade closure, and one improvement per group named for Build 2. |
+| **Go as far as** | Every group has sat its GD or is rostered for Saturday morning, a first tranche of up to three presentations has been heard and scored, every group has read its cold run one aloud at the roll call and logged run two before the freeze, every frozen hash is recorded, and Saturday's order is drawn. |
+| **Stop before** | Nobody teaches today, since a trainer who answers a group's analysis question has done its work for it, and nobody confirms or denies a plant, in a GD, a presentation or a corridor. |
+| **Comes later** | Saturday brings the remaining two GD rounds, the other presentations before the industry expert and the senior industry leader, grade closure, and one improvement per group named for Build 2. |
 | **Cut first** | Cut the slack at the end of block two first; never cut a GD round, the roll call or run two. |
 
 ## Who runs what today?
 
 | Role | Today |
 |---|---|
-| The industry expert | Arrives for two days. Opens block one, chairs stream A's five GD rounds in the GD room, enters their scores from the evidence pages, then chairs the first tranche. |
+| The industry expert | Arrives for two days, opens block one, chairs stream A's five GD rounds in the GD room, enters their scores from the evidence pages, and then chairs the first tranche. |
 | The Principal Advisor | Chairs stream B's two Friday rounds and one Saturday round online, from the second room's laptop, and scores them from the evidence pages. |
 | The trainer | Keeps time and hands out cards in the GD room, runs the first tranche's clock, the roll call and the freeze rule. |
 | The Academic TA | Hosts the online room, keeps its time, types stream B's scores, and records the frozen commits after the open build time. |
@@ -152,22 +152,22 @@ from the domain dossier. On Wednesday the groups profiled, cleaned and reconcile
 headline claim with its denominators and caveat. On Thursday every learner sat Mock R1. Today the
 builds freeze.
 
-**What each group ships.** A presentation slot of 25 to 30 minutes with a live demo run cold on its
-own copy of the files and the panel's questions; the one slide Dr Menon carries into her board
-meeting, with its claim, evidence, caveat and action; the notebook or SQL that reproduces every
-number on that slide from the raw files, top to bottom; the decisions log in the Week 1 Wednesday
-shape; and the challenges log.
+**What each group ships.** Each group ships a presentation slot of 25 to 30 minutes, with a live
+demo run cold on its own copy of the files and the panel's questions; the one slide Dr Menon carries
+into her board meeting, with its claim, evidence, caveat and action; the notebook or SQL that
+reproduces every number on that slide from the raw files, top to bottom; the decisions log in the
+Week 1 Wednesday shape; and the challenges log.
 
 **Your two jobs today.** Chair stream A's GD rounds on the cards in `gd/`, following
 `gd/C2_W03_D05_gd_facilitation_TRAINER.md`, and chair the first tranche of presentations.
 
 **What is planted in the data, so your questions land.** Never say any of this to a learner; a group
 finds each plant by profiling, reconciling, splitting and asking what the denominator was. The
-numbers are the generator's witness (`python3 data/generate_kalpa_health.py --witness`, run 1
+numbers are the generator's witness (`python3 data/generate_kalpa_health.py --witness`, run 1 and 4
 October 2026), as the spine and Monday's day sheet give them, with one difference: the retail denial
-rate is 10.3 percent here, where both print 10.4, since 1,175 of 11,355 is 10.35 percent and the
-witness's four-place 0.1035 rounds up a second time. Percentages are changes from Q2 to Q3 unless a
-row says otherwise.
+rate is 10.3 percent here, where both print 10.4, since 1,175 of 11,355 is 10.348 percent, which the
+witness prints to four places as 0.1035, and rounding that a second time gives 10.4. Percentages are
+changes from Q2 to Q3 unless a row says otherwise.
 
 | Question | The plant | The numbers | The question that tests whether a group found it |
 |---|---|---|---|
@@ -205,11 +205,20 @@ on each card are in `gd/C2_W03_D05_gd_prompts_TRAINER.md`, and the running of a 
 
 A sub-problem is one of the five questions above, numbered as in that table. Cards 01 to 04 read for
 four minutes and discuss for seventeen, cards 05 to 08 read for five and discuss for sixteen, and
-cards 09 and 10 read for six and discuss for fifteen; every round is 30 minutes. The roster (`gd/C2_W03_D05_gd_roster_TRAINER.xlsx`) flags
-a group drawn to a card it is kept from; swap with the other card of the level if that card's own
-flag allows, or use card 08. Never hand a group a card it is kept from.
+cards 09 and 10 read for six and discuss for fifteen; every round is 30 minutes.
 
-**How the GD is scored.** Each learner alone, from the chair's evidence notes, in
+The roster (`gd/C2_W03_D05_gd_roster_TRAINER.xlsx`) flags a group drawn to a card it is kept from,
+and the trainer clears every flag before round 1 with three fixes, tried in order:
+1. Swap the card with the other card of its level on the Roster sheet, if neither group would then
+   sit a card it is kept from.
+2. Give the group card 08, the spare, if no other group has it yet.
+3. Swap the group's draw position on the Inputs sheet with the nearest group for which both moves
+   are allowed, and say the swap aloud.
+
+The third fix always exists: under either of Monday's allocations, every order in which the nine
+groups can be drawn ends with no clash. Never hand a group a card it is kept from.
+
+**How the GD is scored.** Each learner is scored alone, from the chair's evidence notes, in
 `rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx`, on the rubric the requester approved on 29
 September 2026:
 
@@ -231,10 +240,10 @@ Summary before Saturday.
 
 ## How does the first tranche run, and how is it scored?
 
-**Who.** Whole sub-problem clusters, so the panel hears the groups on one question back to back. At
-the opening, after the GD draw, the Programme Head draws sub-problem chits until the tranche holds
-up to three presentations; a cluster that would take it past three is put back, and no cluster is
-split, so the tranche may hold fewer than three.
+**Who.** The tranche takes whole sub-problem clusters, so the panel hears the groups on one question
+back to back. At the opening, after the GD draw, the Programme Head draws sub-problem chits until
+the tranche holds up to three presentations; a cluster that would take it past three is put back,
+and no cluster is split, so the tranche may hold fewer than three.
 
 **Running order and timing.** Each group presents in the Saturday format,
 `content/W03/SAT/slides/C2_W03_SAT_presentation_format_STUDENT.md`, inside a 30-minute slot. The
@@ -248,11 +257,11 @@ front of a client. If it still fails, the group presents from its executed noteb
 scores the live demo, inside presentation and defence, as not run cold. The other 34 marks are
 scored from the executed run, so a failed demo costs its own marks and never the analysis.
 
-**What the panel keeps.** Evidence notes per learner, with the minute: what was claimed, which
-number, how the caveat was defended, who answered. A silent teammate is asked a question by name.
-The panel scores each group after the slot, never in front of it, in Saturday's mini project
-scoring sheet, `content/W03/SAT/rubrics/C2_W03_SAT_mini_project_scoring_TRAINER.xlsx`, on the rubric
-the requester approved on 29 September 2026:
+**What the panel keeps.** The panel keeps evidence notes per learner, with the minute: what was
+claimed, with which number, how the caveat was defended and who answered. A silent teammate is asked
+a question by name. The panel scores each group after the slot, never in front of it, in Saturday's
+mini project scoring sheet, `content/W03/SAT/rubrics/C2_W03_SAT_mini_project_scoring_TRAINER.xlsx`,
+on the rubric the requester approved on 29 September 2026:
 
 <!-- sync:rubric:W03/mini-project -->
 **Mini project, 40 marks.** The first four criteria are scored once for the group, and every member receives those 34 marks; presentation and defence is scored for each learner on 6 marks, so a silent teammate cannot ride the group's score.
@@ -274,45 +283,54 @@ on the ten raw files,
 with `checkpoints/C2_W03_D05_cold_run_STUDENT.py`, following
 `checkpoints/C2_W03_D05_cold_demo_checklist_STUDENT.md`. The script checks the raw files' checksums,
 runs the notebook top to bottom in a fresh kernel, times it and looks for every number on the
-group's slide in what the notebook prints; it ends on one line the group pastes into its log, which
-carries the branch and the commit the run used.
+group's slide in what the notebook prints. It ends on one line that the group pastes into
+`cold_run_log.md` at its repository's root and pushes; the line carries the branch and the commit
+the run used, read before the notebook runs.
 
 **The roll call, three minutes a group.** Each group reads its run-one line aloud: the minutes, how
 many slide numbers were reproduced, what broke and the fix. Ask one question of each: "Which number
 on your slide did the run not reproduce, and which was right, the slide or the code?" A group with
 nothing broken is asked how long the demo runs live.
 
-**Run two.** The last act before the freeze, logged the same way. The TA checks every group has a
-second line.
+**Run two.** Run two is each group's last act before the freeze, logged and pushed the same way, and
+after it a group pushes only its logs: `cold_run_log.md`, the decisions log and the challenges log.
 
 ## When do the builds freeze, and how does the TA prove which commit each group demos?
 
 **The rule, said aloud at the close of block two.** "The builds freeze when the open build time
-closes. The last commit each group pushes before then is the commit it demos on Saturday. After the
-freeze your slide's wording may change and no number may. An error you find after the freeze is
-said on Saturday as a caveat, with the right number, and logged."
+closes. After run two, push only your logs. The commit the TA records for your group at the close is
+the commit you demo on Saturday. After the freeze your slide's wording may change and no number may.
+An error you find after the freeze is said on Saturday as a caveat, with the right number, and
+logged."
 
 **The check.**
-1. When the open build time closes, the Academic TA takes the latest commit on the branch the group
-   named in its run-two log line, checks it against the commit that line records, and writes it in
-   the table below, with how many minutes after the close it was recorded.
-2. A group with no second cold-run line logged by then has its demo run from the frozen commit by
-   the TA first thing on Saturday, before the presentations start.
-3. On Saturday, before each presentation, the TA checks the Codespace is on the frozen hash with
+1. When the open build time closes, the Academic TA records every group's commit in one sweep, G1 to
+   G9: the latest commit on the branch the group's run-two line names, with the minute it was read.
+   The commit read in the sweep is the frozen commit, whatever is pushed after it.
+2. The TA compares the frozen commit with the commit the run-two line records, in GitHub's compare
+   view or with `git diff --stat <run-two commit> <frozen commit>` in any clone. Run two counts when
+   the two are the same commit, or differ only in the logs or the slide's wording. It does not count
+   when the notebook or SQL, `slide_numbers.txt`, `requirements.txt` or a data file changed between
+   them, when the line ends "with uncommitted changes", or when there is no run-two line. A group
+   working in SQL types its branch and commit into its line from `git rev-parse --abbrev-ref HEAD`
+   and `git rev-parse --short HEAD`.
+3. A group whose run two does not count has its demo run cold from the frozen commit by the TA first
+   thing on Saturday, before the presentations start.
+4. On Saturday, before each presentation, the TA checks the Codespace is on the frozen hash with
    `git rev-parse HEAD`. A later commit that changes code or a number is shown to the panel, which
    decides whether the group presents from the frozen hash.
 
-| Group | Frozen commit hash | Cold run one logged | Cold run two logged | TA's note |
-|---|---|---|---|---|
-| G1 | | | | |
-| G2 | | | | |
-| G3 | | | | |
-| G4 | | | | |
-| G5 | | | | |
-| G6 | | | | |
-| G7 | | | | |
-| G8 | | | | |
-| G9 | | | | |
+| Group | Run-two commit, from the group's line | Frozen commit, from the sweep, and its minute | Files changed between them | Cold run one logged | Run two counts | TA's note |
+|---|---|---|---|---|---|---|
+| G1 | | | | | | |
+| G2 | | | | | | |
+| G3 | | | | | | |
+| G4 | | | | | | |
+| G5 | | | | | | |
+| G6 | | | | | | |
+| G7 | | | | | | |
+| G8 | | | | | | |
+| G9 | | | | | | |
 
 ## How is Saturday's presentation order drawn?
 
@@ -322,21 +340,29 @@ said on Saturday as a caveat, with the right number, and logged."
 3. Inside each cluster, draw the groups' order.
 4. Read the whole order aloud once, write it on the board, and send it to the Saturday closure run
    sheet. The two groups in Saturday's GD rounds, slots 8 and 9, present no earlier than the third
-   slot of their room, so their GD and their setup do not collide.
+   slot of their room, so their GD and their setup do not collide. A group whose round moved to
+   Saturday presents no earlier than the fourth slot of its room, one slot later for each moved
+   round ahead of it.
 
 ## What do you do when the day goes wrong?
 
 | What goes wrong | What to do |
 |---|---|
-| The expert arrives late | Stream B runs as planned. The trainer holds stream A's first round, and its group runs cold run one meanwhile. Once the expert arrives, stream A picks up at the next slot that has not started, and every round the expert missed runs in stream B after slot 4, in slot order, chaired by the Principal Advisor. |
+| The expert arrives late | The Programme Head gives the opening alone, and stream B runs as planned. The trainer holds stream A's first round while its group runs cold run one. Once the expert arrives, stream A picks up at the next slot whose start minute is still ahead, and every round the expert missed runs in stream B's free slots after slot 4, in slot order, chaired by the Principal Advisor. |
 | The link to the Principal Advisor drops during a round | The Academic TA pauses the clock. Back within two minutes, the round goes on; if not, the TA restarts the clock, writes the evidence page for the rest of the round and puts the card's two questions, and the Principal Advisor scores from that page. |
-| The call fails before a stream B round | The round moves to Saturday morning, straight after slot 9; read the roster's Check sheet again for the new end minutes. |
+| The call fails before a stream B round | The round waits for the call while its group runs cold run one, and runs in stream B's first free slot after slot 4 once the call is back. |
 | A group is one learner short | The GD runs with the learners present, and the chair notes it; the absent learner's GD is the Programme Head's decision. |
-| A group is drawn to a card it is kept from | Swap within the level if the other card's flag allows, or use card 08. |
+| A group is drawn to a card it is kept from | Clear it before round 1 with the three fixes under "How do the GD rounds run today, and which card does each slot carry?": the other card of the level, then card 08, then a swap of draw positions. |
 | A group's cold run fails and it cannot find why | A TA sits with it for ten minutes on the checklist's table of usual breaks. If it still fails, the group logs it and, on Saturday, presents under the rule for a demo that fails. |
 | A group asks to keep building after the freeze | The rule holds for every group; a fix after the freeze becomes a caveat on Saturday. |
 | The tranche overruns | Cut from the slack at the end of block two, never from the roll call. |
 | A learner asks whether the GD card's numbers are Kalpa's real figures | "Use the card": each row says where its number comes from. |
+
+Stream B has three free slots on Friday after slot 4, starting at minutes 75, 105 and 135 of block
+one, and they take every round that could not run in its own slot, in slot order. A round that finds
+no free slot, because the call is still down at minute 135 or more than three rounds are waiting,
+moves to Saturday morning and runs straight after slot 9, in stream B's room, under the draw rule
+for a moved round.
 
 ## What if the Programme Head runs more than nine groups?
 
@@ -360,9 +386,9 @@ not buy the model over the same months, the fall was about 19 percent, and the m
 cover its price. I said what would change my mind, a three-month pilot with half our claims held
 back that fell 24 percent or more."
 
-What makes it strong: a position stated first, one number with where it came from and what it is
-compared with, the condition that would change the speaker's mind, and no second number competing
-for attention.
+The answer is strong because it states the position first, gives one number with where it came from
+and what it is compared with, names the condition that would change the speaker's mind, and lets no
+second number compete for attention.
 
 ## Which file serves which moment of the day?
 
