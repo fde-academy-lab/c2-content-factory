@@ -66,8 +66,10 @@ What does the TA never do?
    move: one member on the identity rule and the profile, one on the reconciliation, one on the claim
    and its denominators, and one on the decisions log and the challenges log. A group of three folds
    the last two together.
-6. **Before the TA leaves.** The group has run its notebook or SQL cold once, and the presentation
-   skeleton (claim, evidence, caveat, action) has its four headings and one line under each.
+6. **Before the TA leaves.** The group has run its notebook or SQL cold once, the presentation
+   skeleton (claim, evidence, caveat, action) has its four headings and one line under each, and
+   every member has Thursday's mock brief and knows their slot from the seat list sent at the close,
+   since the first mocks start ten minutes into Thursday.
 
 ## When does the Programme Head need to hear about a group today?
 

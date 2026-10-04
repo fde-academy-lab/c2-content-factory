@@ -171,13 +171,19 @@ above are what its full-marks line asks for.
 **Who needs the answer.** Your group, before Thursday's mock, where each member's viva starts from
 tonight's sentence.
 
-**The questions on the way.** What is tonight's task? What does every group ship by the end of the
-week?
+**The questions on the way.** What is tonight's task? What reaches you at the close for Thursday's
+mock? What does every group ship by the end of the week?
 
 Tonight's task is the presentation skeleton on the same four parts, claim, evidence, caveat and
 action, with one line under each, and closing whatever gap in the evidence today's claim exposed.
-The trainer hands out the presentation format at the close. By the end of the week every group
-ships:
+The trainer hands out the presentation format at the close.
+
+At the close the trainer also sends you Thursday's mock brief, which says how Mock R1's 20 minutes
+run and how to prepare, and the seat list, which gives your slot, its minutes and your assessor. The
+first mocks start ten minutes into Thursday, so read the brief tonight and find your slot before you
+leave, whenever it falls.
+
+By the end of the week every group ships:
 
 | What | What it holds |
 |---|---|

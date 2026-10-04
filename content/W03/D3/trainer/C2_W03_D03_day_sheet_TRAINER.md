@@ -92,6 +92,7 @@ from the sentence each group pins tonight.
 | 1 | What four things must the sentence carry? | The number, its denominator, its period, and the caveat on its own line, with the reason inside the sentence. |
 | 2 | Which of the five wrong New York sentences would you have sent this morning? | The headline sheet's table: no base, rows as bookings, a fanned join, billed called collected, totals over unequal windows. |
 | 3 | What does a group say if its claim is not ready? | A smaller claim with its caveat, a "not yet" with what would turn it, or the blocker in one sentence. |
+| 4 | What must every learner hold before leaving, with the first mock ten minutes into Thursday? | Thursday's mock brief and the seat list, sent at the close, with each learner's slot, its minutes and the assessor. |
 
 ### What does Dr Menon hear at the close, in answer to Wednesday's question?
 
@@ -107,7 +108,7 @@ reproduces from the raw files, or that the group said it does not yet.
 | **Start from** | Monday's pinned scopes, the translation worksheets and entry one in each challenges log. The files went out on Monday with the data dictionary, so every group has met them; today opens on the checkpoint, not on a drop of files. |
 | **Go as far as** | Every group past profiling and into analysis, both logs moving, and one testable headline claim stated at the close with its denominators and caveat, or a named blocker. |
 | **Stop before** | Any new technique; any answer to a group's question; any confirmation or denial of a plant; any comparison of New York with another metro. The rubrics are approved for learners to see, so quote them, never a verdict against them. |
-| **Comes later** | Thursday 22 October: Mock R1 for every learner, about 20 minutes each, a technical half on Weeks 1 and 2 and a viva on the group's work, with build completion around the roster. Friday 23 October: the group discussions, the build freeze, two cold demo runs and the first presentations. Saturday 24 October: the remaining group discussions, the presentations with live demos, and grade closure. |
+| **Comes later** | Thursday 22 October: Mock R1 for every learner, about 20 minutes each, the first slot starting ten minutes into the day, a technical half on Weeks 1 and 2 and a viva on the group's work, with build completion around the roster. Friday 23 October: the group discussions, the build freeze, two cold demo runs and the first presentations. Saturday 24 October: the remaining group discussions, the presentations with live demos, and grade closure. |
 | **Cut first** | Build time, never the checkpoint or the close. Inside the parallel build, step 7 to its result table, then step 6 to its prediction. **Never cut the reconciliation, the claim or its caveat.** |
 
 ## Who runs what today?
@@ -116,7 +117,7 @@ reproduces from the raw files, or that the group said it does not yet.
 |---|---|
 | The trainer | Runs the checkpoint, the parallel build and the close; circulates in build time, stuck groups first. |
 | The Academic TA and the TAs | On the floor in build time; read the checkpoint grid before the open build time and run the catch-up plan there. |
-| The Programme Head | Not in today's run of the day; hears today about any group the catch-up plan names, and decides what happens next for it. |
+| The Programme Head | Not in today's run of the day; fills the Groups sheet of Thursday's roster from Monday's allocation before the close, so that the seat list can go out at the close; hears today about any group the catch-up plan names, and decides what happens next for it. |
 | The Principal Advisor | Not in today's run; takes a share of Thursday's mocks and of the group discussions, online. |
 | The industry expert and the senior industry leader | Not in the room until Friday and Saturday respectively. |
 
@@ -156,7 +157,7 @@ flowchart LR
 | Part | File | Who | What must be true at the end | If short of time |
 |---|---|---|---|---|
 | Build time, 160 | The group's own work; at the halfway mark, `checkpoints/C2_W03_D03_headline_claim_STUDENT.md` | Groups; the trainer circulates | Each group has drafted its claim in the sheet's shape and run it against the six tests | The draft claim moves earlier, never later |
-| The close, 20 | The headline sheet on screen; the presentation format deck from `content/W03/SAT/slides/` handed out | The trainer | Every group's sentence heard and written down word for word, or its blocker named | One question to each group in place of two; every group still speaks |
+| The close, 20 | The headline sheet on screen; the presentation format deck from `content/W03/SAT/slides/` handed out; Thursday's mock brief and seat list sent to every learner | The trainer | Every group's sentence heard and written down word for word, or its blocker named, and every learner holding the mock brief and their slot | One question to each group in place of two; every group still speaks, and the brief and the seat list still go out |
 | After the second block | Open build time | The Academic TA and the TAs | Stuck groups first, on `checkpoints/C2_W03_D03_catchup_plan_TRAINER.md` | |
 
 Block two is 160 and 20, which is 180 minutes; the break comes out of the build time.
@@ -184,7 +185,9 @@ first written at the close cannot be tested at all."
 **The close.** "One member says the claim, a different member says the caveat. About a minute each."
 Then, after the last group: "Tonight's task is the presentation skeleton on claim, evidence, caveat
 and action, and closing whatever gap your claim exposed today. Tomorrow every one of you sits Mock
-R1, and the viva starts from the sentence you just said."
+R1, and the viva starts from the sentence you just said. I am sending each of you the mock brief and
+the seat list now. Find your slot and your assessor before you leave: the first mocks start ten
+minutes into tomorrow, so if your slot is early, tonight is your preparation."
 
 ## What does every group ship, said the same way all week?
 
@@ -274,6 +277,30 @@ never say whether a number matches this sheet, and never compare two groups.
 | A caveat folded into the claim until the claim disappears | "Say the claim alone, then the caveat alone." |
 | A blocker, named | "Thank you. The Academic TA will be at your table first." Add it to the catch-up list. |
 
+## What must every learner hold when they leave, since Mock R1 starts ten minutes into Thursday?
+
+**Who needs the answer.** The trainer and the Programme Head, before the close. Thursday's first
+mocks start ten minutes into the day, so a learner whose slot comes early prepares tonight or not at
+all, and Thursday's open has time only to hand out printed copies.
+
+**The questions on the way.** What must be ready before the close? What goes to every learner at the
+close? What stays with the assessors?
+
+1. **Before the close.** The Programme Head fills the Groups sheet of Thursday's roster,
+   `content/W03/D4/mocks/C2_W03_D04_roster_TRAINER.xlsx`, from Monday's allocation, and reads the
+   checks on its Settings sheet as Thursday's day sheet gives them, so that no two members of a group
+   are out at once.
+2. **At the close, after the last claim.** The trainer sends every learner Thursday's mock brief,
+   `content/W03/D4/mocks/C2_W03_D04_mock_brief_STUDENT.md`, and the seat list, printed from the
+   roster's Seat list sheet, which shows each seat's slot, its minutes and its assessor and nothing
+   else.
+3. **What never leaves the assessors.** The roster's Grid sheet, since its question ids would tell a
+   learner mocked early what the learners after them will be asked.
+
+The trainer's last words at the close name both (the words are in the section on each turn of the
+day), and the catch-up plan's last step checks that every member of a group on the plan knows their
+slot.
+
 ## How does each interview question sound when answered in one breath?
 
 The row's two questions reach the room as questions with their tags, in the notebook's interview
@@ -314,6 +341,7 @@ the reason in one sentence; the caveat second; nothing a chart has to explain.
 | Two groups on one brief reach opposite claims | That is the week working. Tell both to keep their caveats; the panel hears different answers to one question on purpose. |
 | The parallel build overruns | Follow the run sheet's cuts; never take the minutes from the checkpoint or the close. |
 | The close runs long | One question to each group in place of two, and every group's sentence still heard. A group that does not speak today enters tomorrow's viva with no claim. |
+| The seat list is not ready at the close | Send the mock brief at the close and the seat list the moment the Programme Head has filled the roster that evening; tell the room when to expect it. Thursday's open still hands out printed copies of both. |
 
 ## Which file serves which moment of the day?
 
@@ -325,4 +353,5 @@ the reason in one sentence; the caveat second; nothing a chart has to explain.
 | Open build time | `checkpoints/C2_W03_D03_catchup_plan_TRAINER.md` | TRAINER |
 | Monday's pack, used all day | `content/W03/D1/briefs/` (the briefing note, the five briefs, the data dictionary, the translation worksheet and both logs) and the ten files in `content/W03/D1/data/` | STUDENT |
 | Handed out at the close | The presentation format deck in `content/W03/SAT/slides/` | STUDENT |
+| Sent at the close, for Thursday | `content/W03/D4/mocks/C2_W03_D04_mock_brief_STUDENT.md`, and the seat list printed from the Seat list sheet of `content/W03/D4/mocks/C2_W03_D04_roster_TRAINER.xlsx` | The brief and the printed seat list go to learners; the workbook stays TRAINER |
 | Every number, and where it came from | `internal/C2_W03_D03_numbers_INTERNAL.py` and `internal/C2_W03_D03_provenance_INTERNAL.md` | Never |
