@@ -33,7 +33,7 @@ questions did her heads ask, and which one is yours? Which real company faces th
 Kalpa Health runs a laboratory, which runs the tests, and two patient service centres, where a
 phlebotomist draws patients' blood, in each of six US metro areas: Dallas, Phoenix, New York,
 Chicago, Atlanta and Philadelphia. Patients book at all eighteen sites. It bills its patients' payers in dollars: commercial health plans, Medicare (the
-federal programme for people aged 65 and over), Medicaid (each state's programme for people on low
+federal programme for people aged 65 and over and some younger people with disabilities), Medicaid (each state's programme for people on low
 incomes) and patients who pay for themselves (self-pay). Its revenue-cycle and analytics work runs
 from Kalpa's Global Capability Centre (GCC) in Bengaluru, where you work as trainee engineers in the
 data and AI team. It reports in calendar quarters: Q2 is April to June 2026 and Q3 is July to

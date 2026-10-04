@@ -520,7 +520,7 @@ SPINE = {
     "switch_change_old": -0.230, "switch_change_both": -0.122, "repeated_ids": 180,
     "exact_join_share": 0.019, "unmatched_after_normalising": 0, "double_posts": 280,
     "double_posted_dollars": 19204.63, "reversals": 105, "claims_without_posting": 398,
-    "denial_postings": 1137, "denial_rate_retail": 0.104, "denial_rate_Medicaid": 0.149,
+    "denial_postings": 1137, "denial_rate_retail": 0.103, "denial_rate_Medicaid": 0.149,
     "denial_rate_commercial": 0.113, "denial_rate_Medicare": 0.088, "denial_rate_self-pay": 0.0,
     "denied_billed": 230132, "paid_net_of_double_posts": 801314, "billed_all": 2201099,
     "payer_share_commercial": 0.539, "payer_share_Medicare": 0.239, "payer_share_Medicaid": 0.145,
@@ -646,8 +646,8 @@ LOOSE = {"tail_probability": 0.006, "new_york_permutation_p_two_sided": 0.006,
          "permutation_p_Dallas": 0.01, "permutation_p_Atlanta": 0.006, "permutation_p_Phoenix": 0.01,
          "permutation_p_Chicago": 0.01, "permutation_p_Philadelphia": 0.01, "new_york_p_corrected_for_six": 0.02,
          "campaign_metros_pooled_p": 0.002}
-# The spine prints 10.4 percent for the claims file's 1,175 of 11,355, which is 10.348 percent and
-# rounds to 10.3; the pack prints 10.3 (denial_rate_retail_printed) and the provenance records it.
+# The claims file's 1,175 of 11,355 is 10.348 percent, which rounds to 10.3; the spine printed 10.4
+# until 4 October 2026 and prints 10.3 since, as the pack does (denial_rate_retail_printed).
 SPINE_ROUNDING = {"denial_rate_retail": 0.0006}
 
 def tolerance(key, want):

@@ -452,7 +452,7 @@ SPINE = {
     "legacy_rows": 11729, "legacy_distinct_ids": 11549,
     "exact_join_share": 0.019, "normalised_join_unmatched": 0, "double_posts": 280,
     "double_posted_dollars": 19204.63, "reversals": 105, "claims_without_posting": 398,
-    "denial_postings": 1137, "denial_rate_retail": 0.104, "denial_rate_Medicaid": 0.149,
+    "denial_postings": 1137, "denial_rate_retail": 0.103, "denial_rate_Medicaid": 0.149,
     "denial_rate_commercial": 0.113, "denial_rate_Medicare": 0.088, "denial_rate_self-pay": 0.0,
     "denied_billed": 230132, "paid_net_of_double_posts": 801314, "billed_all": 2201099,
     "small_site_rate_all_visits": 0.188, "others_rate_all_visits": 0.079,

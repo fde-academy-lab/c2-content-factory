@@ -43,7 +43,7 @@ or more tests, or a panel, which is several tests ordered under one name. They b
 online, by phone, or for a collection at home, when a phlebotomist visits the patient instead.
 
 We bill in dollars. A claim is the bill we send to whoever pays for a patient's tests: a commercial
-health plan, Medicare (the federal programme for people aged 65 and over), Medicaid (each state's
+health plan, Medicare (the federal programme for people aged 65 and over and some younger people with disabilities), Medicaid (each state's
 programme for people on low incomes) or the patient, who then pays for themselves (self-pay). A
 claim goes out at our list prices, plus any collection fee for a home draw. The payer answers with a remittance, which says what its
 contract allows, what it pays, what the patient owes and what it refuses to pay, which is a denial.

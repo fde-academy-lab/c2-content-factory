@@ -781,5 +781,5 @@ It checks each figure against the week's plan of what the data holds,
 register was drawn from the bookings, and against the further figures this page quotes, each to the
 last place printed. It ends `RESULT: PASS (0 disagreements with the spine, the bank and the facts)`
 while the data pack is unchanged, and prints a FAIL line for every number that moves if it is ever
-regenerated. Monday's day sheet prints the retail denial rate as 10.4 percent; 1,175 of 11,355 is
-10.348 percent, which rounds to 10.3.
+regenerated. The retail denial rate, 1,175 of 11,355, is 10.348 percent, printed 10.3 here, on
+Monday's day sheet and in the spine.
