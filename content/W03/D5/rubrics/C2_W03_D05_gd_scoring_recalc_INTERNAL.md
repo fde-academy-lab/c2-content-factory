@@ -1,4 +1,4 @@
-# Recalc manifest for the Build 1 GD scoring sheet
+# Does the Build 1 GD scoring sheet compute, and does each verdict move when a score or a seat changes?
 
 `scripts/xlsx_recalc.py` rebuilds the sheet through LibreOffice, asserts it as shipped (35 seats,
 nobody scored yet), then flips four things: one learner scored in full, one seat marked absent, one

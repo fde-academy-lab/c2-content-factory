@@ -169,7 +169,7 @@ def manifest(total, last):
     seats = last - 2
     fourth, fourth_max = CRITERIA[3][0], CRITERIA[3][1]
     lines = [
-        "# Recalc manifest for the Build 1 GD scoring sheet",
+        "# Does the Build 1 GD scoring sheet compute, and does each verdict move when a score or a seat changes?",
         "",
         "`scripts/xlsx_recalc.py` rebuilds the sheet through LibreOffice, asserts it as shipped "
         f"({seats} seats,",

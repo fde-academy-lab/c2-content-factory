@@ -96,11 +96,11 @@ def build():
         f"Times are minutes into the block, never clock times. A block runs {BLOCK} minutes (data/programme/facts.yaml, campus_day).",
         "Stream A is the industry expert in the GD room. Stream B is the Principal Advisor online, hosted by the Academic TA in a second room.",
         "On Monday, replace the sub-problem values on Inputs with the Programme Head's allocation. The values shipped are an example, placed so that the shipped draw shows no clash.",
-        "At the Friday opening, the Programme Head draws the GD order by lot and types each group's position on Inputs. Slot 1 is the first round; the card each slot carries is fixed on Roster, so complexity climbs with the slot.",
+        "At the Friday opening, the Programme Head draws the GD order by lot, and the trainer types each group's position on Inputs and reads Check before round 1. Slot 1 is the first round; the card each slot carries is fixed on Roster, so complexity climbs with the slot.",
         "Cards 01 to 04 read for four minutes and discuss for seventeen, cards 05 to 08 read for five and discuss for sixteen, and cards 09 and 10 read for six and discuss for fifteen. Every round is 30 minutes.",
         "Check reads the result: the GD minutes, how the roster stretches for more groups, whether every round ends inside its block, whether any group meets a card it is kept from, whether every slot has a group drawn, and whether every draw position is between 1 and 9.",
         "The roster seats nine groups. With more, change the group count on Inputs to read the stretch on Check, and seat each extra round by hand in the time Check names.",
-        "A clash means swapping the card with the other card of the same level on Roster, if that card's own flag allows, or with the spare, card 08, which is kept from nobody.",
+        "Clear every clash before round 1 with three fixes, tried in order. First, swap the card on Roster with the other card of its level, if neither group would then sit a card it is kept from. Second, give the group card 08, the spare, on Roster, if no other group has it yet. Third, swap the group's draw position on Inputs with the nearest group for which both moves are allowed. The third fix always exists: under either of Monday's allocations, every order in which nine groups can be drawn ends with no clash.",
     ]
     for i, text in enumerate(lines, start=1):
         if text:
@@ -226,7 +226,7 @@ def build():
          'IF(Inputs!B6<=B7,"stretch: stream B runs all Friday rounds and both streams run up to "&Inputs!B8&" Saturday rounds, which moves Saturday presentations back by up to "&(Inputs!B8-1)*Inputs!B3&" minutes",'
          '"over the two expert days: the Programme Head adds a third chair")))'),
         ("Clashes between a card and its group's sub-problem", '=COUNTIF(Roster!N4:N12,"swap*")'),
-        ("Clash verdict", '=IF(B9=0,"no group meets its own sub-problem",B9&" clash: swap within the level or use card 08")'),
+        ("Clash verdict", '=IF(B9=0,"no group meets its own sub-problem",B9&" clash: swap within the level, use card 08, or swap two draw positions")'),
         ("Rounds that run past their block", '=COUNTIF(Roster!O4:O12,"over*")'),
         ("Block verdict", '=IF(B11=0,"every round ends inside its block",B11&" round runs past the block end")'),
         ("Groups drawn to one slot each",
@@ -247,13 +247,13 @@ def build():
 
 def manifest():
     lines = [
-        "# Recalc manifest for the Build 1 GD roster",
+        "# Does the Build 1 GD roster compute, and does each verdict move when the draw, the groups or the rounds change?",
         "",
         "`scripts/xlsx_recalc.py` reads this file, rebuilds the roster through LibreOffice, asserts the",
-        "verdicts as shipped, then flips four decisions and asserts that the verdicts move: the group count",
-        "rising to the tracker's fifteen, a sub-problem 5 group drawn to the slot carrying card 05, a draw",
-        "position mistyped as 10, and rounds running long. Written by `internal/C2_W03_D05_build_gd_roster_INTERNAL.py`; rebuild both",
-        "together.",
+        "verdicts as shipped, then flips five decisions and asserts that the verdicts move: the group count",
+        "rising to the tracker's fifteen, a sub-problem 5 group drawn to the slot carrying card 05, a billing",
+        "group drawn to the slot carrying card 10, a draw position mistyped as 10, and rounds running long.",
+        "Written by `internal/C2_W03_D05_build_gd_roster_INTERNAL.py`; rebuild both together.",
         "",
         "```yaml",
         f"workbook: {BOOK}",
@@ -267,6 +267,7 @@ def manifest():
         '  - {sheet: Check, cell: B17, expect: "every draw position is between 1 and 9"}',
         '  - {sheet: Roster, cell: H10, expect: "165"}',
         '  - {sheet: Roster, cell: M8, expect: "3 and 5"}',
+        '  - {sheet: Roster, cell: M12, expect: "3"}',
         '  - {sheet: "Friday block two", cell: B16, expect: "block two fits with 33 minutes of slack"}',
         "flips:",
         "  - name: the Programme Head runs the tracker's fifteen groups",
@@ -279,7 +280,12 @@ def manifest():
         "    set: [{sheet: Inputs, cell: B17, value: 5}]",
         "    verdicts:",
         '      - {sheet: Roster, cell: N8, contains: "swap"}',
-        '      - {sheet: Check, cell: B10, expect: "1 clash: swap within the level or use card 08"}',
+        '      - {sheet: Check, cell: B10, expect: "1 clash: swap within the level, use card 08, or swap two draw positions"}',
+        "  - name: a billing group is drawn to the slot carrying card 10",
+        "    set: [{sheet: Inputs, cell: C13, value: 9}, {sheet: Inputs, cell: C21, value: 1}]",
+        "    verdicts:",
+        '      - {sheet: Roster, cell: N12, contains: "swap"}',
+        '      - {sheet: Check, cell: B10, expect: "1 clash: swap within the level, use card 08, or swap two draw positions"}',
         "  - name: G9's draw position is mistyped as 10",
         "    set: [{sheet: Inputs, cell: C21, value: 10}]",
         "    verdicts:",
@@ -321,10 +327,13 @@ if __name__ == "__main__":
 # ---------------------------------
 # Run as shipped: the workbook and its manifest are written, and
 #   python3 scripts/xlsx_recalc.py content/W03/D5/gd/C2_W03_D05_gd_roster_recalc_INTERNAL.md
-#   reports 10 verdicts computed and 4 decisions flipped.
+#   reports 11 verdicts computed and 5 decisions flipped.
 # In the written workbook, type 5 in Inputs!B17 (G5 on the campaign sub-problem): Roster!N8 reads
 #   "swap: the card meets the group's own sub-problem" and Check!B10 reads
-#   "1 clash: swap within the level or use card 08".
+#   "1 clash: swap within the level, use card 08, or swap two draw positions".
+# Type 9 in Inputs!C13 and 1 in Inputs!C21 (G1, a billing group, drawn to slot 9 and G9 to slot 1):
+#   Roster!N12 reads the swap message, since card 10 is kept from sub-problem 3, and Check!B10 counts
+#   one clash.
 # Type 15 in Inputs!B6: Check!B3 reads 450 and Check!B8 names the Saturday stretch.
 # Type 35 in Inputs!B3: the fifth stream A round ends at 190, past the 180-minute block.
 # Type 10 in Inputs!C21 (G9's draw position): Roster!K12 reads "no group drawn", and Check!B15 and
