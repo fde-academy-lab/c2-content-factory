@@ -76,13 +76,14 @@ on Wednesday evening or not at all.
 **The questions on the way.** Who fills the roster, and what must it read? What reaches every learner
 on Wednesday evening? What does the online mock need?
 
-1. The Programme Head fills the roster's Groups sheet from Monday's allocation and reads three zeros
+1. The Programme Head fills the roster's Groups sheet from Monday's allocation and reads four zeros
    on its Settings sheet: no two group-mates out at once, no seat asked two questions from one
-   family, and no question shared by two group-mates.
+   family, no question shared by two group-mates, and no reserve that repeats a family in its seat or
+   a question a group-mate is asked.
 2. The trainer sends every learner the brief, `mocks/C2_W03_D04_mock_brief_STUDENT.md`, and the seat
-   list, printed from the roster's Seat list sheet, which shows each seat's slot, minutes and assessor
-   and nothing else. The Grid sheet stays with the assessors, since its question ids would tell a
-   learner mocked early what the learners after them will be asked.
+   list, which shows each seat's slot, minutes and assessor and nothing else. Export the roster's Seat
+   list sheet alone to PDF and send the PDF, never the workbook: its Grid sheet's question ids would
+   tell a learner mocked early what the learners after them will be asked.
 3. The trainer books the quiet room for the online mocks and sends the Principal Advisor the call
    link.
 
@@ -150,10 +151,14 @@ spends this time on that and nothing else.
 This is the roster's default for 35 learners in nine groups, eight of four and G9 of three. The call
 order takes seat 1 of every group, then seat 2 of every group, and so on, so the three learners in a
 slot always come from three different groups. Each seat's set letter picks its three technical
-questions, and its seat number picks its viva probe (seat 1 takes P1). Once the Groups sheet carries
-Monday's allocation, a question close to a group's own sub-problem is swapped for the question at the
-same level from the set four letters on, so the assessors read each learner's questions from the
-roster's Grid sheet, which is also the one to print if Monday's allocation changed the groups.
+questions. Once the Groups sheet carries Monday's allocation, a question close to a group's own
+sub-problem is swapped for the question at the same level from the set four letters on, and the Grid
+prints each learner's three questions, three reserves and viva probe, so the assessors read all of
+them from the roster's Grid sheet, which is also the one to print if Monday's allocation changed the
+groups. The probes rotate: a group's members take four different ones, and a second group on the same
+sub-problem starts one probe on, so a seat number tells a learner nothing about the probe. The table
+below shows each slot's seat and set; the questions, reserves and probes appear once the groups are
+allocated.
 
 | Slot | Block, minutes | Programme Head, in person | Academic TA, in person | Principal Advisor, online |
 |---|---|---|---|---|
@@ -262,13 +267,16 @@ A group that fails either part spends the open build time after the second block
 ### Which one question goes to a group that is stuck?
 
 Each question points at where to look and never at what is there, and each is the question Monday's
-day sheet gives for a group that has found nothing. Use one, once, and leave.
+day sheet gives for a group that has found nothing. For sub-problems 2 and 4 only Monday's first
+question stays: sub-problem 2's second names a metro brief 2 asks the group to find, and sub-problem
+4's names a planted count.
+Use one, once, and leave.
 
 | Sub-problem | The question |
 |---|---|
 | Every group | "What did the dashboard count as one test, and from which system?" |
 | 1, revenue | "Which one claim moves your Q3 average most?" Then: "What does one claim line count?" |
-| 2, bookings | "How many rows, and how many distinct booking ids?" Then: "Where are Chicago's bookings after mid-September?" |
+| 2, bookings | "How many rows, and how many distinct booking ids?" |
 | 3, billing | "Show me five `claim_ref` values beside five `claim_id` values." |
 | 4, no-shows | "What is the rate out of, for KH-ATL-03 and for the others?" |
 | 5, campaign | "Does the lift hold inside Dallas alone?" Then: "What share of each metro's patients got the offer?" |
@@ -370,11 +378,11 @@ https://www.geeksforgeeks.org/data-analysis/data-analyst-interview-questions-and
 | A learner is absent at their slot | The slot becomes free for that assessor. A learner who arrives later takes the spare slot or the first free one. A learner absent all day is listed for a make-up, which the Programme Head schedules. Do not edit the roster on the day. |
 | Two learners from one group are absent | The group builds with two; check it first at check 2 |
 | An assessor is out for part of the day | Their learners move to the other two assessors' free and spare slots, then into the open build time after the second block with whichever assessor stays. The Principal Advisor's online slots are the easiest to move. |
-| The online link fails | Reconnect within two minutes. A mock that lost less than five minutes finishes in the time left. One that lost more stops, the point it reached is noted, and the whole mock restarts in the spare slot, slot 12, or the next buffer if slot 12 is taken, on the reserves the question bank names for the learner's sub-problem and with the headline probe in place of the seat's probe; only the restart is scored. |
+| The online link fails | Reconnect within two minutes. A mock that lost less than five minutes finishes in the time left. One that lost more stops, the point it reached is noted, and the whole mock restarts in the spare slot, slot 12, or the next buffer if slot 12 is taken: each technical question the learner had already heard is replaced by the reserve the Grid prints at its level, the viva takes the headline probe in place of the seat probe if the learner had heard the seat probe, and only the restart is scored. The assessors' guide gives the step for a reserve already asked of a group-mate. |
 | Mocks run behind | Each block has a buffer of 20 minutes. Once a buffer is spent, the assessors shorten L1 questions to two minutes. Never shorten the viva. |
 | A group's notebook does not run cold | Fix it today: put a TA on it after the second block, with the decisions log open, rerunning from the raw files one section at a time |
 | A group has found nothing unusual in its data | Ask its stuck-group question once and walk away; never name the plant |
-| A learner reports questions being passed around | Thank them and tell the assessors at the next changeover; they switch to the reserves, and the follow-ups carry the half either way |
+| A learner reports questions being passed around | Thank them and tell the assessors at the next changeover; they switch each passed-around question to the reserve the Grid prints for the learner who meets it, and the follow-ups carry the half either way |
 | A learner comes back from the mock upset | Two minutes with the trainer away from the group: the score comes later, the mock is practice for the screens ahead, and the group needs them. Tell the Programme Head. |
 | The sub-problem allocation is not in the roster | Fill the roster's Groups sheet from Monday's allocation before the huddle; the Seats, Roster, Grid and Seat list sheets update from it |
 
@@ -387,8 +395,8 @@ https://www.geeksforgeeks.org/data-analysis/data-analyst-interview-questions-and
 | Moment | File | Audience |
 |---|---|---|
 | Wednesday evening and the open, every learner | `mocks/C2_W03_D04_mock_brief_STUDENT.md` | STUDENT |
-| Wednesday evening and the open, the seat list | `mocks/C2_W03_D04_roster_TRAINER.xlsx`, printed from its Seat list sheet only | The printout goes to learners; the workbook stays TRAINER |
-| The huddle and every mock, the grid of questions | `mocks/C2_W03_D04_roster_TRAINER.xlsx`, printed from its Grid sheet | TRAINER |
+| Wednesday evening and the open, the seat list | `mocks/C2_W03_D04_roster_TRAINER.xlsx`, its Seat list sheet exported alone to PDF | The PDF goes to learners; the workbook stays TRAINER |
+| The huddle and every mock, the grid of questions, reserves and probes | `mocks/C2_W03_D04_roster_TRAINER.xlsx`, printed from its Grid sheet | TRAINER |
 | The huddle, the scripts, the evidence note and the close | `mocks/C2_W03_D04_assessors_guide_TRAINER.md` | TRAINER |
 | The technical half | `mocks/C2_W03_D04_mock_question_bank_TRAINER.md` | TRAINER |
 | The viva | `mocks/C2_W03_D04_viva_prompts_TRAINER.md` | TRAINER |

@@ -97,8 +97,8 @@ agree what an answer is worth before anyone is scored? What do you agree about t
 
 1. **The split, 2 minutes.** Each assessor confirms their groups on the roster's Grid sheet and reads
    from its Groups sheet which sub-problem each group took on Monday. Open those sections of the viva
-   prompts, and the bank entries for the question ids the Grid prints for your learners, since a swap
-   can replace one of a set's questions for a learner whose group works close to it.
+   prompts, and the bank entries for the question and reserve ids the Grid prints for your learners,
+   since a swap can replace one of a set's questions for a learner whose group works close to it.
 2. **The sub-problems, 2 minutes.** For each of your groups, read the viva section's plant paragraph
    once, so the numbers are in your head and never on your lips, and read the viva file's rule that
    no probe, follow-up or push names what the data holds.
@@ -161,10 +161,10 @@ Ask the learner's three questions, as the Grid prints them, in the bank's words,
 aloud. After each answer, ask the follow-up whatever the answer was, since a strong answer and a weak
 one both need it to be read. Keep each question to about three minutes: a minute of answer, then the
 follow-up. If a learner stalls for more than twenty seconds, ask the entry's anchor question instead,
-the Week 1 or 2 row's own words, and note that you did. If a learner answers with their own group's
-finding, say "Thank you; keep that for the second half" and move on without confirming it. If a
-learner gives a model answer word for word, go straight to the follow-up, then ask the reserve at the
-same level from the bank's reserve table.
+the Week 1 or 2 row's own words with the ask's numbers in place of any it carries, and note that you
+did. If a learner answers with their own group's finding, say "Thank you; keep that for the second
+half" and move on without confirming it. If a learner gives a model answer word for word, go straight
+to the follow-up, then ask the reserve the Grid prints for that learner at the same level.
 
 ---
 
@@ -173,15 +173,18 @@ same level from the bank's reserve table.
 **Who needs the answer.** Each assessor does, since 12 of the viva's 15 marks rest on the translation
 and the caveat, and both show only when the questions climb.
 
-**The questions on the way.** In which order do the probes run? Which probe does each seat take? What
-must you never do?
+**The questions on the way.** In which order do the probes run? Which seat probe does each learner
+take? What must you never do?
 
 Run the five probes in the viva prompts' order: the opener, the translation probe for the group's
-sub-problem, the seat probe that matches the seat (seat 1 takes P1, and so on), the caveat challenge
-pushed as the asker on the caveat the learner gives, and the looking-back probe. The first two ask
+sub-problem, the seat probe the Grid prints for the learner, the caveat challenge pushed as the asker
+on the caveat the learner gives, and the looking-back probe. The four members of a group always take
+four different seat probes, and where two groups share a sub-problem the second group's rotation
+starts one probe on, so a seat number tells a learner nothing about the probe. The first two ask
 what the group did, the seat probe asks why it chose its way and what the alternative would have
 given, and the caveat challenge asks what would change its call. Read every probe, follow-up and push
-as written: each asks without telling, and none names what the data holds. Ask to see the cell or the log line behind one number at least once. Never
+as written: each asks without telling, and none names what the data holds. Ask to see the cell or
+the log line behind one number at least once. Never
 correct a learner's number and never say what the data contains; if an answer is wrong, ask the
 follow-up and write down what was said.
 
@@ -271,7 +274,7 @@ joins the call from it, camera on, with the group's files open, by two minutes b
 |---|---|
 | Showing the work | The learner shares the screen for the viva, and the Principal Advisor asks for the cell or the log line by name, since pointing does not carry over a call |
 | Timing | The same 20 minutes; the first minute of the changeover goes to the trainer confirming the next learner has joined, and the Principal Advisor scores in the other four |
-| A dropped connection | Wait two minutes and reconnect. If the mock lost less than five minutes, finish it in the time left. If it lost more, stop, note the point reached, and restart the whole mock in the spare slot, slot 12, or the next buffer if slot 12 is taken: the technical half on the reserves the question bank names for the learner's sub-problem, since the learner has heard the first questions, and the viva with the headline probe in place of the seat probe. Score the restart only, and note the reason |
+| A dropped connection | Wait two minutes and reconnect. If the mock lost less than five minutes, finish it in the time left. If it lost more, stop, note the point reached, and restart the whole mock in the spare slot, slot 12, or the next buffer if slot 12 is taken. In the technical half, ask the reserve the Grid prints at the level of each question the learner had already heard, and the printed question at any level not yet reached; where you have already asked a group-mate that reserve, ask the learner's own question from its follow-up. In the viva, ask the headline probe in place of the seat probe if the learner had already heard the seat probe. Score the restart only, and note the reason |
 | Integrity | Ask the learner to turn the camera round the room once at the start; no second screen and no phone in reach |
 | The notes and the marks | The same template; the marks go into the Principal Advisor's rows of the shared scoring sheet, and the notes reach the Programme Head in the buffer after each block, so all of them are held in one place |
 
@@ -286,9 +289,9 @@ waiting; a wrong move here costs either the learner's fair mark or the next lear
 
 | What happens | What the assessor does |
 |---|---|
-| The learner says they heard a question from someone mocked earlier | Thank them, switch that question to the reserve at the same level that the question bank's reserve table names for the learner's sub-problem, and note it |
-| A word-perfect model answer | Go straight to the follow-up, then ask the reserve at the same level from the bank's reserve table |
-| The learner freezes | Wait twenty seconds, ask the anchor question in the row's own words, then move on, and note it without judging |
+| The learner says they heard a question from someone mocked earlier | Thank them, switch that question to the reserve the Grid prints for the learner at the same level, and note it; if you have already asked a group-mate that reserve, keep the question and go straight to its follow-up |
+| A word-perfect model answer | Go straight to the follow-up, then ask the reserve the Grid prints at the same level, unless you have already asked a group-mate that reserve |
+| The learner freezes | Wait twenty seconds, ask the anchor question in the row's own words with the ask's numbers in place of any it carries, then move on, and note it without judging |
 | "My group-mate did that part" | "Walk me through it as far as you can", then the follow-up; note what they could and could not explain |
 | The learner asks whether something is hidden in the data | "What would you check?", and nothing more |
 | The learner answers a technical question with their group's finding | "Thank you; keep that for the second half", without confirming it |

@@ -25,16 +25,15 @@ your group has worked on since Monday and about the method you learned before it
 sits in the week tells you which of the week's work to have ready.
 
 **The questions on the way.** What business is Kalpa Health, and what has its chief operating officer
-asked? Which
-question is your group's? What has the week asked of your group so far, and what comes after
-Thursday? What is the mock worth?
+asked? Which question is your group's? What has the week asked of your group so far, and what comes
+after Thursday? What is the mock worth?
 
 Kalpa Health is a US diagnostics business: a laboratory, which runs the tests, and two patient
 service centres, where a phlebotomist draws patients' blood, in each of six US metro areas. It bills
 each patient's payer in dollars: a commercial health plan, Medicare (the federal programme for people
 aged 65 and over and some younger people with disabilities), Medicaid (each state's programme for
-people on low incomes) or the patient, who pays for themselves (self-pay). Its revenue-cycle and analytics work runs from Kalpa's GCC in
-Bengaluru, where you are a trainee engineer in the data and AI team. It reports in calendar
+people on low incomes) or the patient, who pays for themselves (self-pay). Its revenue-cycle and analytics work runs from
+Kalpa's GCC in Bengaluru, where you are a trainee engineer in the data and AI team. It reports in calendar
 quarters: Q2 is April to June 2026 and Q3 is July to September 2026.
 
 Its chief operating officer (COO), Dr Priya Menon, wrote to your team: her dashboard shows test
