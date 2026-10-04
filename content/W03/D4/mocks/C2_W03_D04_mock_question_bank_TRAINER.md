@@ -1,773 +1,702 @@
-# Mock R1, the technical half: question bank with model answers
+# Which Week 1 and 2 questions does Mock R1's technical half ask, and what does a full-marks answer sound like?
 
-**TRAINER ONLY.** Assessors keep this page. Nothing on it reaches a learner, before or after the mock.
+**TRAINER ONLY.** The assessors keep this page. Nothing on it reaches a learner, before or after the
+mock.
 
-The technical half runs nine minutes: three questions, about three minutes each, one at each level.
-Every question is asked in a stakeholder's words from Kalpa Retail, the unit the room worked in for
-Weeks 1 and 2, so the half tests the fortnight's method and never Python or SQL syntax on its own.
-The viva half, on the group's Kalpa Health work, is a separate file,
-`C2_W03_D04_viva_prompts_TRAINER.md`.
+**Who needs the answer.** The three assessors, the Programme Head and the Academic TA in person and
+the Principal Advisor online, who each run about twelve nine-minute technical halves on Thursday 22
+October. Each half scores 15 of the mock's 30 marks, and an assessor who improvises a question, or
+asks one about a group's own files, scores something the rubric does not ask for and can hand a
+learner a finding their group has not reached yet.
 
-## What the half is scored on
+**The questions on the way.** How is the half scored, and which criteria does each question feed?
+Which three questions does a learner meet, and why those three? Why is every question set in a corner
+of Kalpa Health that no group's data covers? How far above a definitional screen does each question
+sit? Then, family by family, one question per taught day of Weeks 1 and 2, each at three levels.
 
-The technical half carries 15 of the mock's 30 marks, on three criteria approved on 29 September
-2026 and held in `data/programme/facts.yaml`: correctness (8), reasoning aloud with numbers (4) and
-handling a follow-up (3). Each question in this bank serves all three. The model answer is the bar for
-correctness, the numbers inside it are the bar for reasoning aloud, and the follow-up, with what it
-separates, is the bar for handling a follow-up. Score the three questions together at the end of the
-half, never question by question.
+Kalpa Health is a US diagnostics business with a laboratory and two patient service centres, where a
+phlebotomist draws a patient's blood, in each of six US metro areas. It bills each patient's payer in
+dollars: a commercial health plan, Medicare (the federal programme for people aged 65 and over and
+some younger people with disabilities), Medicaid (each state's programme for people on low incomes)
+or the patient (self-pay). A claim is the bill the lab sends a payer, and a remittance is the payer's
+answer, saying what it paid and why. Its analytics and revenue-cycle work runs from Kalpa's Global
+Capability Centre (GCC) in Bengaluru, the offshore centre where the learners are trainee engineers.
+Its chief operating officer (COO), Dr Priya Menon, has asked why test volumes grew 5 percent from Q2
+to Q3 of 2026 against a plan of 18. Each of the nine groups answers one of her heads' five questions,
+its sub-problem, from ten data files exported on 16 October 2026: 1 revenue, 2 bookings, 3 billing,
+4 no-shows and 5 the free at-home collection offer. The viva half, on the group's own work, is in
+`C2_W03_D04_viva_prompts_TRAINER.md`, and the huddle before the first mock and the evidence note, the
+assessor's written record of each mock, are in `C2_W03_D04_assessors_guide_TRAINER.md`.
 
-## How the bank is cut
+---
+
+## How is the technical half scored, and which criteria does each question feed?
+
+**Who needs the answer.** Each assessor, before the first mock. The three criteria are scored
+together at the end of the half, from the evidence note, so an assessor who marks question by question
+as the half runs has no room left to weigh one weak answer against two strong ones.
+
+**The questions on the way.** Which criteria does the half carry? Which part of a bank entry sets the
+bar for each?
+
+The half carries three of the six criteria of the rubric approved on 29 September 2026 and held in
+`data/programme/facts.yaml`:
+
+<!-- sync:rubric:W03/mock -->
+**Mock interview R1, 30 marks.** Each learner is scored alone, 15 marks on the technical half and 15 on the project viva.
+
+| Half | Criterion | Marks |
+|---|---|---|
+| Technical | Correctness | 8 |
+| Technical | Reasoning aloud with numbers | 4 |
+| Technical | Handling a follow-up | 3 |
+| Project viva | The translation, with one decision defended by evidence | 6 |
+| Project viva | Defending a caveat under challenge | 6 |
+| Project viva | What they would do differently | 3 |
+<!-- /sync:rubric:W03/mock -->
+
+| Criterion | The part of each bank entry that sets its bar |
+|---|---|
+| Correctness, 8 | The model answer: the move named and applied, with the mechanism behind the number |
+| Reasoning aloud with numbers, 4 | The numbers inside the model answer, said unprompted, each with its denominator |
+| Handling a follow-up, 3 | The follow-up and what it separates: an answer that moves one step past the first one |
+
+Every question feeds all three criteria. The half has three questions, so a learner who gets one
+wrong can still earn most of the correctness marks on the other two.
+
+---
+
+## Which three questions does a learner meet, and why those three?
+
+**Who needs the answer.** The assessor at the huddle, who opens only the three questions and the
+three reserves the roster's Grid prints for each learner, and the Programme Head, who rebuilds the
+roster if the groups change.
+A question that rehearses a learner's own viva minutes before it spends the half on evidence the viva
+gathers anyway.
+
+**The questions on the way.** What does each level ask for? Which taught day does each family come
+from? Which set does a learner meet? Which questions are swapped for a learner whose group works close
+to them? Which reserve does a learner take, and when?
 
 | Level | What it asks for | What an understood answer shows |
 |---|---|---|
 | L1, the move | The method named and applied to a business ask | The learner states the move and its first check without prompting |
 | L2, the number | A plausible wrong number on the table, and what produced it | The learner names the mechanism that made the number, the check that catches it and the fix |
-| L3, the judgement | A stakeholder pushing back, and a decision to defend | The learner holds a position with a number, names what would change it and proposes the next step |
+| L3, the judgement | A stakeholder pushing back, or a design call to make and defend | The learner weighs two or more ways, sizes them, holds a position with a number and names the fact that would change it |
 
-Ten families cover the fortnight, one per taught day, and each family carries one question per level,
-so the bank holds thirty questions. The row's tags are kept: `[S]` staple asked everywhere, `[F]`
-frequent in GCC and product screens, `[D]` differentiator. The anchor column names the row whose
-interview angle each question descends from, and the trap it reuses from
-`docs/detailing/W01_W02_spine.md` where there is one.
+Ten families cover the fortnight, one per taught day, and each carries one question per level, so the
+bank holds thirty. Each question keeps the tag its anchor carries on that day's row of the
+programme's curriculum tracker, where the anchor is the interview question the row names: `[S]` a
+staple asked everywhere, `[F]` frequent in GCC and product screens, and `[D]` a differentiator, the
+programme's own calibration for candidates with 0 to 3 years' experience in the Indian market.
 
-| Family | Taught on | The fortnight's move |
-|---|---|---|
-| T01 | Week 1 Monday | The revenue tree and the typical order |
-| T02 | Week 1 Tuesday | The investigation ladder and the fair window |
-| T03 | Week 1 Wednesday | Profile, clean, reconcile, with a decisions log |
-| T04 | Week 1 Thursday | Real or noise, and the fair comparison |
-| T05 | Week 1 Thursday and Friday | The four-part note and holding a caveat |
-| T06 | Week 2 Monday | The warehouse query Finance audits |
-| T07 | Week 2 Tuesday | Booked against collected, and joins that lie |
-| T08 | Week 2 Wednesday | Ranking, ties and change over time |
-| T09 | Week 2 Thursday | The customer table in pandas |
-| T10 | Week 2 Friday | Excel for the stakeholder, and choosing the tool |
+| Family | Taught on | The move, as that day's pack names it | Where in Kalpa Health the questions sit |
+|---|---|---|---|
+| T01 | Week 1 Monday | Which total is sales, the revenue tree, and the typical value one large record cannot move | The board's revenue plan, the lab's turnaround, the practices that order tests |
+| T02 | Week 1 Tuesday | Is the drop real, which branch and which segment moved, and did the price change or the mix | Cash posted, patients' share of the bill, the allowed amount per test |
+| T03 | Week 1 Wednesday | Profile before you touch, the identity rule, and the bridge that names every dollar | The courier company's invoice, a patient register from a lab Kalpa Health is thinking of buying |
+| T04 | Week 1 Thursday | Real or the wobble, how many stand behind a rate, and did the change work | Rejected blood samples, a billing rule at the Austin lab |
+| T05 | Week 1 Thursday and Friday | The note in four parts, and holding it when someone pushes | Turnaround for the COO, a seventh metro |
+| T06 | Week 2 Monday | The warehouse query: its logical order, counts named for what they count, and a run an auditor can repeat | Analysers, redraws, days in accounts receivable |
+| T07 | Week 2 Tuesday | Attach, count, explain the difference, then sum, and the checks before a number leaves | Samples against results, claims against a payer's fee schedule |
+| T08 | Week 2 Wednesday | Rank inside each group, ties at the line, and LAG within one member's months | The practices marketing visits |
+| T09 | Week 2 Thursday | One row per member in pandas, the merge that must not repeat a row, and the as-of date | Patients' open balances |
+| T10 | Week 2 Friday | The tool for each job, the lookup that says "missing", and the number a director reads in two minutes | The COO's planning workbook |
 
-## The eight sets
-
-A learner meets one set. The roster gives each seat its set letter, and within a group the seats
-take consecutive letters, so no two members of one group meet the same set. Each set draws its three
-questions from three different families, and every set mixes Week 1 and Week 2.
+A learner meets one set of three questions. Within a group the seats take consecutive letters, so no
+two members of a group meet the same set. Each set draws one question per level from three different
+families, and every set mixes Week 1 and Week 2, as does every seat after the swaps below.
 
 | Set | L1, the move | L2, the number | L3, the judgement |
 |---|---|---|---|
-| A | T01-L1 | T04-L2 | T07-L3 |
+| A | T01-L1 | T03-L2 | T07-L3 |
 | B | T02-L1 | T05-L2 | T08-L3 |
 | C | T03-L1 | T06-L2 | T09-L3 |
-| D | T04-L1 | T07-L2 | T10-L3 |
-| E | T05-L1 | T08-L2 | T01-L3 |
-| F | T06-L1 | T09-L2 | T02-L3 |
-| G | T07-L1 | T10-L2 | T03-L3 |
+| D | T09-L1 | T02-L2 | T10-L3 |
+| E | T04-L1 | T08-L2 | T05-L3 |
+| F | T06-L1 | T09-L2 | T03-L3 |
+| G | T05-L1 | T10-L2 | T01-L3 |
 | H | T08-L1 | T01-L2 | T04-L3 |
 
-Six questions sit outside every set as reserves: T09-L1, T10-L1, T02-L2, T03-L2, T05-L3 and T06-L3.
-Use a reserve when a learner says they have heard a question from a group-mate or a friend in
-another group, when a set's question lands on the learner's own sub-problem so closely that it
-duplicates the viva, or when a learner is re-mocked.
+### Which questions are swapped for a learner whose group works close to them?
 
-**Leakage.** Mocks run all day and learners talk. Eight sets spread the risk, and the follow-up is
-what protects the half: a memorised model answer survives the first question and breaks on the
-follow-up, which is written to move the case one step. If a learner delivers a model answer
-word-perfect, go straight to the follow-up and then to one reserve from the same level.
+Fourteen questions in the sets sit close to a sub-problem's viva: each rehearses a probe that
+sub-problem's learners will meet, or sets up the shape of something in their files. A learner from
+that sub-problem is asked another question at the same level in its place, always the question at
+that level from the set four letters on, A with E, B with F, C with G and D with H. Three of the
+fourteen sit close to more than one sub-problem, so the table has eighteen rows. A group's seats take
+at most four consecutive letters, so no group-mate ever meets the replacement. The sets are built so
+that a replacement never sits close to the same sub-problem, and every seat keeps three families and
+both weeks after its swaps. Once the roster's Groups sheet carries Monday's allocation, its Seats
+sheet makes every swap and its Grid prints each learner's three questions, so read the questions from
+the Grid.
 
-## The calibration floor
+| The group's sub-problem | The question in the set | In set | What it rehearses in that viva | Asked in its place |
+|---|---|---|---|---|
+| 1 revenue | T01-L1, what a lab's revenue is made of | A | The revenue tree of the translation probe | T04-L1 |
+| 1 revenue | T01-L2, a typical turnaround | H | The typical claim of P1 | T02-L2 |
+| 1 revenue | T01-L3, new practices or more orders from the ones it has | G | Which branch is short, P3 | T09-L3 |
+| 2 bookings | T02-L1, a fall in its first thirty minutes | B | Confirming the fall, P1 | T06-L1 |
+| 2 bookings | T02-L2, what has to match before two months compare | D | Whether two windows compare fairly, P1 and P3 | T01-L2 |
+| 2 bookings | T03-L2, a whole-row dedupe that finds nothing | A | What counts as one booking, the translation probe | T08-L2 |
+| 2 bookings | T09-L2, a merge that repeats a patient | F | Which copy of a repeated row stays, P4 | T05-L2 |
+| 3 billing | T03-L1, the courier's invoice against the log | C | The bridge from billed to paid, P4 | T05-L1 |
+| 3 billing | T03-L2, a whole-row dedupe that finds nothing | A | What makes a second posting a repeat, P1 | T08-L2 |
+| 3 billing | T03-L3, the auditor's walk through the rows set aside | F | The bridge from billed to paid, P4 | T08-L3 |
+| 3 billing | T07-L3, the checks before a joined number leaves | A | The join's checks, the translation probe | T05-L3 |
+| 3 billing | T09-L2, a merge that repeats a patient | F | What the join kept, dropped and repeated, the translation probe | T05-L2 |
+| 3 billing | T09-L3, days counted from the extract's date | C | Claims that may only be late on the export's date, P2 and the caveat push | T01-L3 |
+| 4 no-shows | T03-L2, a whole-row dedupe that finds nothing | A | Two rows for one booking, P3 | T08-L2 |
+| 4 no-shows | T04-L1, what p = 0.04 means | E | The chance check, P2 | T01-L1 |
+| 5 the offer | T04-L1, what p = 0.04 means | E | One metro's shuffle, P4 | T01-L1 |
+| 5 the offer | T04-L3, did a billing rule work | H | Whether the offer worked, P1 | T10-L3 |
+| 5 the offer | T05-L3, "not yet" on a seventh metro | E | Holding "not yet" against the marketing head, the caveat push | T07-L3 |
 
-The row names GeeksforGeeks, "Data Analyst Interview Questions and Answers", for calibrating the
-technical half, https://www.geeksforgeeks.org/data-analysis/data-analyst-interview-questions-and-answers/ (verified 29 September 2026; the page shows 95 numbered questions and was last updated on
-24 July 2026). Its questions are definitional ("what is a join", "what is a p-value"). This bank sits
-one step above them, because a GCC screen at the 0 to 3 year band asks for the definition inside a
-business case. If a learner cannot answer a question at the case level, ask the definitional form
-once, note that you did, and move on.
+### Which reserve does a learner take, and when?
 
----
+Six questions sit in no set: T07-L1 and T10-L1, T04-L2 and T07-L2, and T02-L3 and T06-L3. Use a
+reserve at the same level when a learner says they heard a question from someone mocked earlier, when
+a learner gives a model answer word for word, and for each question a learner had already heard when a
+dropped online mock restarts. The roster's Grid prints each learner's three reserves after their three
+questions, one per level, once the Groups sheet carries Monday's allocation. Each reserve is one of
+the six or a question from a set no member of the group holds, so no group-mate is asked it. None sits
+close to the group's sub-problem, and the three reserves come from three families that the learner's
+seat does not hold, so any reserve can replace any question without a family appearing twice.
 
-## T01. The revenue tree and the typical order
+Two group-mates can share a printed reserve, because some sub-problems leave too few questions at a
+level. On sub-problem 3, a group of four is asked four of the six L3 questions that sit away from
+billing, which leaves two for four members. Shared reserves fall only in groups of four: on
+sub-problem 2 one pair shares its L2 reserve, on sub-problem 5 one pair shares its L3 reserve, and on
+sub-problem 3 two pairs share their L3 reserves and one pair its L2 reserve. One assessor hears every
+member of a group, so you know when you have already asked a group-mate a reserve. If you have, keep
+the learner's own question and go straight to its follow-up, and note it.
 
-### T01-L1 `[S]` The move
-
-**Anchor.** Week 1 Monday: "A business says 'grow revenue 15 percent'; how do you turn that into
-questions data can answer?" and "How would you increase sales for an online retailer?"
-
-**Ask.** "Meera Raghavan says sales must grow 15 percent next year. Before you open any data, what is
-sales made of, and what is the first question you ask her?"
-
-**Model answer, under a minute.** Sales is customers, times orders per customer, times items per
-order, times price per item, less discounts. Every branch is a number over a denominator in one
-window, so orders per customer is orders divided by distinct customers in the same quarter. Growth
-has to come from one or more branches, so the first question to Meera is which branch the plan
-assumed would move: more customers, more frequent customers, bigger baskets or higher prices. Then I
-ask whether she means booked or collected sales and over which window, because the answer changes
-the number I measure against.
-
-**Follow-up.** "Take orders per customer. What exactly is its denominator, and what goes wrong if you
-count rows?"
-
-**What the follow-up separates.** A learner who understood says distinct customers in the window,
-and that counting order rows as customers makes orders per customer read 1.00, which says nobody
-comes back when some do. A learner who memorised the tree recites the four branches and stalls on the
-denominator, or says "the number of rows".
-
-**A weak answer sounds like.** "I would look at the sales dashboard and see which products are
-selling", or a list of marketing ideas with no tree.
-
-### T01-L2 `[S]` The number
-
-**Anchor.** Week 1 Monday: "Mean or median for order value, and why?" The trap is the mean of
-Rs 18,160 sold as the typical order when the median is Rs 2,205.
-
-**Ask.** "On thirty orders the mean is Rs 18,160 and the median is Rs 2,205. Meera wants the typical
-order value for her note. Which number goes in, and what do you do before you choose?"
-
-**Model answer, under a minute.** A mean about eight times the median says a few very large orders
-are pulling it, so before choosing I sort the orders and read the top of the list. If one order is a
-bulk business purchase, the typical order is the median, Rs 2,205, and the bulk order is reported
-separately as its own line, because it is real revenue that will not repeat in the same way. I keep
-the order in the data and in the total; I only keep it out of the word "typical".
-
-**Follow-up.** "When is the mean the right number to give her?"
-
-**What the follow-up separates.** Understood: when she needs a total, because mean times count
-rebuilds revenue, so planning and budgeting use the mean with the bulk order stated. Memorised:
-"the median is always better because it ignores outliers".
-
-**A weak answer sounds like.** "Remove the outlier and take the mean again", which deletes real
-revenue from the books.
-
-### T01-L3 `[D]` The judgement
-
-**Anchor.** Week 1 Monday: "Marketing wants budget for acquisition; what would you check before
-agreeing it is the right branch, and how would you say no?"
-
-**Ask.** "Marketing wants Rs 12 crore for acquisition. Your tree says customers held steady and
-orders per customer fell. You are in the room with the marketing lead. What do you say?"
-
-**Model answer, under a minute.** I put the branches side by side for the same two windows: customer
-count held, orders per customer fell. The gap is in how often existing customers come back, so money
-spent bringing in new customers is aimed at a branch that is not short. I would say that plainly,
-with the two numbers, and then offer the marketing lead a way to be right: if new customers come back
-more often than existing ones, their cohort's repeat rate will show it, and a small test on a
-retention offer tells us within a quarter whether frequency responds to spend.
-
-**Follow-up.** "The marketing lead says new customers become repeat customers later, so acquisition
-fixes frequency too. What data answers that, and what if it is too early to tell?"
-
-**What the follow-up separates.** Understood: the repeat rate of last year's new-customer cohort
-against existing customers over the same months, and if the cohort is too young, "not yet" with the
-date it can be read. Memorised: repeats "the data says frequency" without naming the comparison.
-
-**A weak answer sounds like.** Caving ("it could help, let us try both"), or an assertion with no
-number.
+Mocks run all day and learners talk. Eight sets spread the risk, and the follow-up carries the half,
+since a memorised model answer survives the first question and breaks on a follow-up written to move
+the case one step.
 
 ---
 
-## T02. The investigation ladder and the fair window
+## Why is every question set in a corner of Kalpa Health that no group's data covers?
 
-### T02-L1 `[S]` The move
+**Who needs the answer.** Every assessor, before improvising anything. A question about a group's
+own files asks the viva's question twice, and a question about another group's files can hand a
+learner that group's finding before the presentations score it.
 
-**Anchor.** Week 1 Tuesday: "Sales dropped 15 percent last month; how would you investigate?"
+**The questions on the way.** Where are the questions set? What does the assessor say about the
+numbers? What does an assessor do when a learner answers from their own files?
 
-**Ask.** "Meera says sales dropped 15 percent last month. What do you do in the first thirty minutes,
-in order?"
-
-**Model answer, under a minute.** First, is the drop real: the same length of window, the same
-definition of sales, the month's data complete, no late records or pipeline change. Second, which
-branch of the revenue tree moved: customers, orders per customer, basket size or price. Third, which
-segment, channel or region carries the movement. Fourth, is it a change in mix or a change in rate
-inside the segments. Fifth, one hypothesis for the business, with the evidence that would settle it.
-Causes come last because they are the cheapest thing to guess and the most expensive to guess wrong.
-
-**Follow-up.** "What would make you stop at the first rung and never reach the tree?"
-
-**What the follow-up separates.** Understood: a data problem that explains the drop by itself, such
-as missing days, a system change or a changed definition, which goes back to the data owner first.
-Memorised: repeats the five rungs without an example of the first one failing.
-
-**A weak answer sounds like.** "It is probably seasonality or a competitor", with no check of whether
-the drop is real.
-
-### T02-L2 `[F]` The number (reserve)
-
-**Anchor.** Week 1 Tuesday: "What has to match before a quarter-on-quarter comparison is fair?" The
-trap is quarters of unequal length compared as totals.
-
-**Ask.** "Q1 ran 90 days and Q2 ran 92. Q2 revenue is 3 percent higher than Q1. The head of
-Retail-Plus calls it growth. What do you check?"
-
-**Model answer, under a minute.** Two extra days are about 2.2 percent more calendar, so most of the
-3 percent is the calendar. On a per-day basis Q2 is about 0.8 percent above Q1, which is close to
-flat. I would give the per-day comparison, and then check the other things that have to match: the
-same stores open, the same definition of revenue and the same data completeness in both quarters.
-
-**Follow-up.** "One store was closed for a week in Q1 for renovation. What changes?"
-
-**What the follow-up separates.** Understood: compare like for like, stores open in both windows for
-the same days, and report the renovated store separately. Memorised: repeats "per day" without
-seeing that a closure is the same problem at store level.
-
-**A weak answer sounds like.** "Revenue grew 3 percent quarter on quarter."
-
-### T02-L3 `[D]` The judgement
-
-**Anchor.** Week 1 Tuesday: "Marketing insists the answer is acquisition and your data says
-frequency; how do you make the case in the room?" and the trap of an average of segment averages.
-
-**Ask.** "Average order value rose in every one of the four segments from Q1 to Q2, and the company's
-average order value fell. Marketing says your numbers must be wrong. What happened, and how do you
-make the case in the room?"
-
-**Model answer, under a minute.** Nothing is wrong: the mix moved. More of Q2's orders came from the
-segment with the lowest order value, so the company average fell even though each segment's rose. I
-would show one table with each segment's share of orders and its average in both quarters, and split
-the change into a rate effect, which is positive, and a mix effect, which is negative and larger. The
-business question then becomes why the low-value segment grew its share, which is a better question
-than whether the analyst made an error.
-
-**Follow-up.** "Which one number would you put on the slide for Meera?"
-
-**What the follow-up separates.** Understood: the mix effect in rupees or points, with the segment
-whose share grew named. Memorised: says "Simpson's paradox" and stops, with no number and no
-decision.
-
-**A weak answer sounds like.** "There must be a data error; I would recheck the query."
+Each question is set in a corner of Kalpa Health that no group's files touch: the lab's turnaround,
+the courier company, payers' fee schedules, patients' balances, the practices that order tests, a
+lab Kalpa Health is thinking of buying in Austin, and the board's plans. A question about cash or
+allowed amounts is dated before April 2026, outside the files' two quarters, so its numbers never
+meet a group's own. Every number in a question
+is invented for it and lies outside the ten files, and the assessor reads every number the learner
+needs aloud; the opening script tells the learner so once, before the first question. No question
+names a plant, which is a pattern placed in the files on purpose for a group to find, reuses a
+planted number, or sets up a plant's shape. If a learner answers with their own group's finding, say
+"Thank you; keep that for the second half" and move on without confirming it. Never invent a question
+about the data on the day; if none of a learner's three works, use the reserve at the same level.
 
 ---
 
-## T03. Profile, clean, reconcile, with a decisions log
+## How far above a definitional screen does each question sit?
 
-### T03-L1 `[S]` The move
+**Who needs the answer.** The assessor deciding whether an answer is good enough for a GCC screen at
+the 0 to 3 year band. A bar set at the definition passes learners whom a real screen stops at its
+first case.
 
-**Anchor.** Week 1 Wednesday: "Finance and your dashboard disagree; what do you do?"
+**The questions on the way.** What does the curriculum row name for calibration? Where does this bank
+sit against it? What do you ask a learner who cannot answer at the case level?
 
-**Ask.** "Anand Iyer says Q1 revenue is Rs 1.9 crore and your dashboard says Rs 2.1 crore. He wants to
-know which is right before anyone acts. What do you do?"
-
-**Model answer, under a minute.** I do not pick one. First I match definitions: booked or collected,
-gross or net of returns and cancellations, the same window. Then I profile the export before touching
-it: row counts, distinct ids, types, missing values, the largest amounts. Then I build the bridge from
-2.1 to 1.9 line by line: duplicates from the migration, cancelled orders, amounts stored as text,
-anything else, each in rupees. Every cleaning act goes into the decisions log, and the check is that
-input rows equal clean rows plus rejected rows, so Anand's analyst can audit every rupee.
-
-**Follow-up.** "Your row counts reconcile and the rupees still do not. Where do you look?"
-
-**What the follow-up separates.** Understood: the amounts themselves, meaning values coerced to zero,
-text amounts, a duplicate pair with different amounts, or a bulk order treated differently in the two
-systems. Memorised: says "check for duplicates" again, which the counts already ruled out.
-
-**A weak answer sounds like.** "Finance is the source of truth, so I would use their number."
-
-### T03-L2 `[F]` The number (reserve)
-
-**Anchor.** Week 1 Wednesday: "How do you find duplicates, and what makes two records the same?" The
-trap is a whole-record dedupe that reports zero duplicates.
-
-**Ask.** "You dedupe the migrated orders on the whole record and find zero duplicates. Anand's team
-swears there are duplicates. How can both be true?"
-
-**Model answer, under a minute.** A re-export changes some field, usually a timestamp or a status, so
-two copies of one order are rarely identical on every column. The identity rule has to be the
-business key, the order id, and where there is none, customer, date and amount together. Then I
-decide which copy to keep, usually the one with the latest update, and log the rule, the count and
-the rupees removed.
-
-**Follow-up.** "Two rows share an order id and carry different amounts. Which do you keep?"
-
-**What the follow-up separates.** Understood: neither by default; check the status and the update
-time, keep the later one if the history explains the change, and otherwise put both in the rejects
-log and ask Finance. Memorised: "keep the first".
-
-**A weak answer sounds like.** "I would run drop_duplicates."
-
-### T03-L3 `[D]` The judgement
-
-**Anchor.** Week 1 Wednesday: "An auditor asks why you dropped 14 rows; walk them through it."
-
-**Ask.** "An auditor from Anand's team asks why your clean file has 14 fewer rows than the export.
-Walk them through it."
-
-**Model answer, under a minute.** I open the decisions log. Each rule has a line: what it caught, how
-many rows, how many rupees, and why. For example, so many rows were migration duplicates removed on
-the order id keeping the latest update, and so many had amounts that could not be read and are held
-in the rejects file with the original value. Input equals clean plus the 14 rejected, and the revenue
-bridge shows the rupees each rule moved. Nothing was dropped silently, and the large business order
-was kept because it is real revenue.
-
-**Follow-up.** "Which of the 14 would you defend least, and why?"
-
-**What the follow-up separates.** Understood: names a real judgement call, such as a row rejected
-because the amount was ambiguous, and says what evidence would bring it back. Memorised: "all 14 were
-clearly bad data".
-
-**A weak answer sounds like.** "They were outliers and bad data, so I removed them."
+The Week 3 Thursday row of the curriculum tracker names GeeksforGeeks, "Data Analyst Interview
+Questions and Answers", to calibrate the technical half:
+https://www.geeksforgeeks.org/data-analysis/data-analyst-interview-questions-and-answers/ (verified 1 October 2026)
+Its questions are definitional ("what is data cleaning", "how do you handle missing data"). This bank
+sits one step above them, because a GCC screen at this band asks for the definition inside a business
+case. If a learner cannot answer at the case level, ask the entry's anchor question once, which is
+the plain form, note in the evidence that you did, and move on. Where an anchor carries numbers of its
+own, say it with the ask's numbers in their place, so the learner hears no number from outside the
+question: T04-L1's anchor becomes "What does p = 0.04 mean, and not mean?", and T04-L2's becomes "8
+percent on 25 draws against 4 percent on 2,400: which do you trust?"
 
 ---
 
-## T04. Real or noise, and the fair comparison
+## T01. What is a lab's revenue made of, which number describes a typical case, and which branch does the money belong on? (Week 1 Monday)
 
-### T04-L1 `[S]` The move
+**Who needs the answer.** The assessor, since a learner who counts before saying what the number is
+made of will one day hand a board a growth figure built on the wrong total. This family tests the
+first move of Week 1 Monday, when Meera Raghavan, Kalpa Retail's CEO, asked whether acquisition was
+even the branch that was short.
 
-**Anchor.** Week 1 Thursday: "What does p = 0.03 mean, and not mean?" The trap is reading p = 0.03 as
-a 3 percent chance of being wrong.
+**The questions on the way.** What is Kalpa Health's revenue made of, and what do you ask first?
+Which number describes a typical turnaround? Should money go to new practices when existing ones
+order less?
 
-**Ask.** "Your test on the Retail-Plus gap gives p = 0.03. Meera asks what that means. Tell her, and
-tell her what it does not mean."
+### T01-L1. What is Kalpa Health's revenue made of, and what do you ask the COO before any file opens?
 
-**Model answer, under a minute.** If there were no real difference between the groups, a gap at least
-this large would turn up by chance about three times in a hundred. So the gap is hard to explain as
-luck. It does not mean there is a 3 percent chance we are wrong, it does not mean a 97 percent chance
-the effect is real, and it says nothing about whether the gap is large enough to act on. That second
-question is about rupees, and I answer it separately.
+| | |
+|---|---|
+| The move | Week 1 Monday: which total is sales, and what each total counts; the revenue tree, every branch a count over a denominator. Tag `[F]`. |
+| Anchor, on the Week 1 Monday row | "A business says 'grow revenue 15 percent'; how do you turn that into questions data can answer?" |
+| Ask | "Dr Menon's board wants Kalpa Health's revenue up 12 percent next year. Before you open any file, what is a lab's revenue made of, and what is the first thing you ask her?" |
+| Model answer, under a minute | Three totals could be called revenue at a US lab: gross charges at the lab's list prices, the allowed amount the payers' contracts accept, and net revenue, what the lab expects to collect once denials and unpaid balances are out. So the first question is which one the board means, and over which window. Then the tree: revenue is patients, times visits per patient, times tests per visit, times revenue per test, and revenue per test depends on the payer mix, since each payer allows a different amount for the same test. Quest Diagnostics judges its own testing business on the top of that tree, "volume (measured by test requisitions) and revenue per requisition" (Form 10-K for 2025). The second question is which branch the plan assumed would grow. |
+| Follow-up | "Take visits per patient. What exactly is its denominator, and what goes wrong if you divide by the whole patient register?" |
+| What the follow-up separates | Understood: distinct patients with at least one visit in the same window; dividing by every registered patient, including those who never came that year, mixes how many patients came with how often they came, and dividing visit rows by visit rows reads 1.0. Memorised: recites the four branches and says "the number of patients" without saying which ones. |
+| A weak answer sounds like | "I would open the revenue dashboard and see which tests sell most", or a list of marketing ideas with no tree. |
 
-**Follow-up.** "Explain where the 0.03 came from without using the word probability."
+### T01-L2. Which number describes a typical sample's turnaround, the mean of 31 hours or the median of 16?
 
-**What the follow-up separates.** Understood: shuffle the group labels thousands of times, compute the
-gap each time, and count how often a shuffled gap was as large as the real one: about 3 in every 100
-shuffles. Memorised: repeats the definition.
+| | |
+|---|---|
+| The move | Week 1 Monday: what a typical value looks like, stated so that one large record cannot move it. Tag `[S]`. |
+| Anchor, on the Week 1 Monday row | "Mean or median for order value, and why?" |
+| Ask | "The lab director's report says the mean turnaround, from the blood draw to the released result, was 31 hours last month against a promise of 24; the median was 16 hours, and 88 percent of samples met the promise. The director wants to fund a night shift. Which number goes in the director's note, and what do you do before you choose?" |
+| Model answer, under a minute | A mean nearly twice the median says a few very slow samples are pulling it. Before choosing, I sort the samples by turnaround and read the slowest. If they cluster, on one courier route, one analyser that was down for a day, or one weekend's batch, then the typical sample is the median, 16 hours, and the late cluster is its own line with its cause. The doctors' number is the share within the promise, 88 percent. A night shift adds capacity for every sample, while a cluster from one route is a courier fix that costs far less, so the slowest samples decide which fix the director funds. Every sample stays in the data; the late cluster stays out of the word "typical" only. |
+| Follow-up | "When is the mean the right number to give the director?" |
+| What the follow-up separates | Understood: when the decision needs a total, since the mean times the count rebuilds the total; for a courier contract that pays a penalty per hour late, the right mean is of the hours past the promise across all samples, zero for a sample on time, stated with the slow cluster. Memorised: "the median is always better because it ignores outliers". |
+| A weak answer sounds like | "Remove the outliers and take the mean again", which deletes real late samples, and their patients, from the lab's record. |
 
-**A weak answer sounds like.** "There is a 97 percent chance the result is correct."
+### T01-L3. Should marketing's $400,000 go to signing new practices when the tree says existing practices order less?
 
-### T04-L2 `[F]` The number
-
-**Anchor.** Week 1 Thursday: "42 percent on 12 users against 31 percent on 1,200; which do you trust?"
-The trap is a headline rate on twelve orders.
-
-**Ask.** "A new checkout page converts 42 percent of 12 visitors. The old page converts 31 percent of
-1,200. The product head wants to switch. What do you tell them?"
-
-**Model answer, under a minute.** On 12 visitors one person moves the rate by about 8 points, and a
-rough margin of one over the square root of the count is about 29 points, so 42 percent is inside the
-noise of 31. On 1,200 the margin is about 3 points, so 31 is solid. I would trust 31, say the new page
-is not yet shown to be better, and ask for enough traffic to settle it before switching.
-
-**Follow-up.** "How many visitors would you want on the new page?"
-
-**What the follow-up separates.** Understood: to read a gap of about 5 points, a margin of 5 points,
-so about 400 visitors, since one over the square root of 400 is 0.05. Memorised: "a larger sample"
-with no number.
-
-**A weak answer sounds like.** "42 is higher than 31, so the new page is better."
-
-### T04-L3 `[D]` The judgement
-
-**Anchor.** Week 1 Thursday: "Revenue rose after a discount; did the campaign work, and what would you
-need to know?" The trap is the aggregate trusted while every segment fell.
-
-**Ask.** "Revenue rose after the monsoon discount. The marketing lead says it worked. When you split
-by segment, every segment's revenue per customer fell. What do you say?"
-
-**Model answer, under a minute.** The total rose because the mix changed, more customers from a
-segment that spends more, while inside every segment customers spent less. So the discount did not
-lift any segment, and the rise came from who showed up. To say whether the discount caused anything I
-need what would have happened without it: the trend before, the same season last year, or customers
-who were not offered it. My answer to Meera is that the lift is not shown, with the segment table and
-the cost of the discount beside it.
-
-**Follow-up.** "The marketing lead says the board sees the total, and the total went up. How do you
-hold the line?"
-
-**What the follow-up separates.** Understood: holds the segment result, names the decision at stake,
-more discount money, and proposes a test with a held-out group so the next campaign answers the
-question. Memorised: "correlation is not causation" with no split and no test.
-
-**A weak answer sounds like.** "Revenue went up, so the campaign worked", or a slogan with no numbers.
+| | |
+|---|---|
+| The move | Week 1 Monday: which branch the plan should open first, and why not the others. Tag `[D]`. |
+| Anchor, on the Week 1 Monday row | "Marketing wants budget for acquisition; what would you check before agreeing it is the right branch, and how would you say no?" |
+| Ask | "Kalpa Health's tests are ordered by doctors' practices. The marketing head wants $400,000 to sign up new practices. Your tree says the number of ordering practices held at 600 over the last two years, and requisitions per practice, the orders each sends, fell from 120 a year to 108. You are in the room with the marketing head. What do you say?" |
+| Model answer, under a minute | I put the two branches side by side for the same two years: practices held at 600, and orders per practice fell 10 percent, from 120 to 108, which is 7,200 fewer requisitions. The gap is in how much the existing practices order, so money to sign new ones is aimed at a branch that is not short. There are three ways to spend: the $400,000 on new practices, an outreach programme across all 600 practices, or first a few days of calls to the practices whose orders fell most, to learn why, such as a doctor who left, tests sent to a competitor or a referral route that changed, and then outreach shaped by what the calls find. I would make the calls first, because they cost a few days of a sales team's time and tell us which lever the $400,000 should pull. What would change my call: if last year's newly signed practices already order more per practice than the old ones, acquisition is the cheaper lever after all. |
+| Follow-up | "The marketing head says new practices become loyal later, so signing them fixes orders per practice too. What data answers that, and what if it is too early to tell?" |
+| What the follow-up separates | Understood: last year's new practices' orders per practice in their first quarters against existing practices over the same months, and if they are too new to read, "not yet" with the date it can be read. Memorised: repeats "the data says frequency" without naming the comparison. |
+| A weak answer sounds like | Caving ("it could help, let us try both"), or an assertion with no number. |
 
 ---
 
-## T05. The four-part note and holding a caveat
+## T02. Is a fall real, which branch moved, and did the price change or the mix? (Week 1 Tuesday)
 
-### T05-L1 `[S]` The move
+**Who needs the answer.** The assessor, since a learner who explains a fall before confirming it
+sends a team after a cause that a calendar or a late file made. This family tests Week 1 Tuesday's
+investigation ladder, whose first rung asks whether the drop is real at all.
 
-**Anchor.** Week 1 Thursday: "Explain a finding to a non-technical stakeholder."
+**The questions on the way.** What do you do in the first thirty minutes after a fall? What has to
+match before two months are compared? Why can every payer's rate rise 3 percent while the lab's
+average barely moves?
 
-**Ask.** "Meera has two minutes. How do you put a finding in front of her?"
+### T02-L1. Cash posted fell 16 percent in February: what do you do in the first thirty minutes, in order?
 
-**Model answer, under a minute.** One sentence each for four parts. The claim: what is true, with the
-number. The evidence: the comparison that shows it, with its denominator and window. The caveat: the
-one thing that could make it wrong and how big that risk is. The action: what she should do on
-Monday and what it costs. For example: orders per customer fell from Q1 to Q2 while the customer
-count held; the fall shows in three of four segments over matched windows; one segment is small
-enough that its fall may be noise; so hold the acquisition budget and fund a retention test.
+| | |
+|---|---|
+| The move | Week 1 Tuesday: the investigation ladder, all five rungs, with rung 1, is the drop real, first. Tag `[S]`. |
+| Anchor, on the Week 1 Tuesday row | "Sales dropped 15 percent last month; how would you investigate?" |
+| Ask | "Early in March, the revenue-cycle head says the cash posted from payers and patients fell 16 percent in February against January. What do you do in the first thirty minutes, in order?" |
+| Model answer, under a minute | First, is the fall real: the same length of window, the same definition (cash by the day it was posted, or by the month of the service it pays for), and the month complete for every payer. February has 28 days to January's 31, and payers pay in runs, so a month with fewer days or fewer payment runs looks short with nothing wrong. Second, which branch moved: claims billed, times the share that paid, times the amount paid per paid claim. Third, which segment carries it: a payer, a metro, a kind of test. Fourth, is it a change of mix or a change of rate inside the segments. Fifth, one hypothesis for the business, with the evidence that would settle it. Causes come last, because they are the cheapest thing to guess and the most expensive to guess wrong. |
+| Follow-up | "The largest plan, about 70 percent of the cash, pays in one run every Friday. February had four Fridays and January had five. What does that do to your 16 percent?" |
+| What the follow-up separates | Understood: that plan's cash falls by a fifth with nothing changed, which alone takes the total down about 14 points of the 16, so the drop goes back to the calendar, and the fair comparison is cash per payment run or the same weeks. Memorised: repeats the five rungs and never computes the calendar's share. |
+| A weak answer sounds like | "Payers are paying slower; probably a policy change", with no check that the fall is real. |
 
-**Follow-up.** "Your caveat, for your own example: how would Meera know if it came true?"
+### T02-L2. Patients' share of the bill jumped from 11 to 19 percent between December and January: what has to match before you call it a change?
 
-**What the follow-up separates.** Understood: names the check and when it can be read, such as the
-small segment's next month compared with its own trend. Memorised: a generic caveat such as "the data
-may have errors".
+| | |
+|---|---|
+| The move | Week 1 Tuesday: what has to match before two windows are compared fairly. Tag `[F]`. |
+| Anchor, on the Week 1 Tuesday row | "What has to match before a quarter-on-quarter comparison is fair?" |
+| Ask | "Of everything the payers' contracts allow on Kalpa Health's claims, the share the patients owe themselves rose from 11 percent in December to 19 percent in January. The finance head calls it a collections problem on the way. What do you check?" |
+| Model answer, under a minute | The two months are not alike. A deductible is the amount a patient pays each plan year before the plan pays, and deductibles reset each plan year, so January's bills lean on patients and later months lean on the plans. The fair comparison is January against last January, the same month of the plan year. Then the rest that has to match: the same payer mix, since more self-pay patients or more plans with high deductibles would raise the share on their own; the same definition, patients' share over the allowed amount; and January's remittances complete, since the latest month's answers are still arriving. Only then is a rise a change. |
+| Follow-up | "Last January the share was 18 percent. What do you tell the finance head now?" |
+| What the follow-up separates | Understood: most of the jump is the deductible calendar, one point above last January is small enough to need the payer mix checked before anyone acts, and the useful action is planning for January's patient balances, such as telling patients their share before the draw. Memorised: says "seasonality" and stops, with no comparison named. |
+| A weak answer sounds like | "Patients are paying less; send the balances to collections." |
 
-**A weak answer sounds like.** The analysis told in the order it was done, from loading the data.
+### T02-L3. Every payer allowed about 3 percent more per test, and the lab's average per test rose only 0.5 percent: what happened, and how do you make the case in the room? (reserve)
 
-### T05-L2 `[F]` The number
-
-**Anchor.** Week 1 Thursday: "Why is a rate without a denominator meaningless?" (Week 1 Tuesday) and
-the four-part note.
-
-**Ask.** "A colleague's claim for Meera reads: 'Retail-Plus is slipping: orders down 12 percent.' What
-is missing before it goes to her?"
-
-**Model answer, under a minute.** The denominator and the window. Orders down 12 percent could mean
-fewer members or the same members ordering less, and those lead to different actions, so I want
-orders per member. It needs the two windows, matched in length. It needs to say whether 12 percent is
-larger than the tier's normal movement. And it needs the action. A version for Meera: orders per
-Retail-Plus member fell 12 percent from Q1 to Q2 over matched windows, larger than any quarter this
-year; the member count held; so the tier's problem is frequency, and the retention offer goes there
-first.
-
-**Follow-up.** "The member count fell 12 percent too. Rewrite the sentence."
-
-**What the follow-up separates.** Understood: orders per member held, so the tier is losing members,
-which is an acquisition or renewal problem, and the action changes. Memorised: keeps "slipping"
-without recomputing.
-
-**A weak answer sounds like.** "Add a chart to make it clearer."
-
-### T05-L3 `[D]` The judgement (reserve)
-
-**Anchor.** Week 1 Thursday: "The CEO wants a yes or no and the honest answer is 'not yet'; what do
-you say, and how do you hold the line when marketing pushes?"
-
-**Ask.** "Meera asks: should I fund the Student segment, yes or no? The honest answer is not yet.
-What do you say?"
-
-**Model answer, under a minute.** I say not yet, then what would make it yes and when we will know.
-I give what we do know, the segment's size and its trend, with the gap that is still inside the noise.
-I name the cost of each wrong call, funding a segment that does not respond or missing one that
-would. And I offer the decision she can make today: a small, time-boxed test with a held-out group,
-read in six weeks.
-
-**Follow-up.** "The marketing lead says analysts never commit to anything. Answer them."
-
-**What the follow-up separates.** Understood: commits to a decision rule, "if the test group's orders
-per customer beat the held-out group by this much, we fund it", which is a commitment. Memorised:
-repeats "we need more data".
-
-**A weak answer sounds like.** A yes to please the room, or a lecture on statistics with no decision.
+| | |
+|---|---|
+| The move | Week 1 Tuesday: did customers pay more, or did the mix change. Tag `[D]`. |
+| Anchor, on the Week 1 Tuesday row | "Marketing insists the answer is acquisition and your data says frequency; how do you make the case in the room?" |
+| Ask | "From the third quarter of 2025 to the fourth, the average amount allowed per test rose about 3 percent for each of the four payer types, and the lab's overall average per test rose only 0.5 percent. The head of payer contracting budgeted the 3 percent and says your numbers must be wrong. What happened, and how do you make the case in the room?" |
+| Model answer, under a minute | Nothing is wrong; the mix moved. More of the fourth quarter's tests came from payers that allow less per test, Medicaid for example, so the blend rose less than any payer's own rate. Rerunning the query proves nothing, since the same data gives the same number, while one table settles it in a minute: each payer's share of tests and its allowed amount per test in both quarters, with the change split into a rate effect of about 3 percent and a mix effect that takes about 2.5 points back. Quest Diagnostics reported the same shape for 2025: revenue per requisition up 0.1 percent, and 2.4 percent on an organic basis, because an acquired business "which has a lower revenue per requisition" joined the mix (Form 10-K for 2025). What would change my call: a payer whose own rate fell would make it a story about rates. |
+| Follow-up | "Which one number goes on the slide for Dr Menon?" |
+| What the follow-up separates | Understood: the mix effect in dollars or points, with the payer whose share grew named, beside the rate effect the head budgeted. Memorised: says "it is the mix" and stops, with no number and no payer named. |
+| A weak answer sounds like | "There must be a data error; I would recheck the query." |
 
 ---
 
-## T06. The warehouse query Finance audits
+## T03. Which number is right when two sources disagree, and how do you show every dollar between them? (Week 1 Wednesday)
 
-### T06-L1 `[S]` The move
+**Who needs the answer.** The assessor, since a learner who picks one of two disagreeing numbers
+instead of reconciling them gets finance to pay or withhold money nobody can audit. This family tests
+Week 1 Wednesday's profile-first and bridge moves, which started when Anand Iyer, Kalpa Retail's
+finance controller, found the dashboard's Rs 2.1 crore for Q1 Rs 20 lakh above his books' Rs 1.9
+crore.
 
-**Anchor.** Week 2 Monday: "WHERE against HAVING, one sentence each" and "Explain the logical order
-in which a SQL query executes."
+**The questions on the way.** Which number do you pay when an invoice and a log disagree? How can a
+dedupe find nothing when duplicates exist? How do you walk an auditor through the rows you set aside?
 
-**Ask.** "Anand wants every segment with more than 500 customers in Q2, counting completed orders only.
-Where does each condition go in the query, and why there?"
+### T03-L1. The courier invoices 4,180 pickups and the lab's log shows 3,960: which number does finance pay?
 
-**Model answer, under a minute.** Completed orders only is a filter on rows, so it goes in WHERE and
-runs before the grouping. More than 500 customers is a filter on a group's count, which exists only
-after grouping, so it goes in HAVING. The query runs FROM, then WHERE, then GROUP BY, then HAVING,
-then SELECT, then ORDER BY and LIMIT, which is why the order of the conditions follows the order of
-the business question.
+| | |
+|---|---|
+| The move | Week 1 Wednesday: profile before you touch, then the bridge that names every unit between two totals. Tag `[S]`. |
+| Anchor, on the Week 1 Wednesday row | "Finance and your dashboard disagree; what do you do?" |
+| Ask | "Kalpa Health's courier company carries blood samples from the patient service centres to the labs. It invoices 4,180 pickups for last month. The lab's own pickup log shows 3,960. The finance head wants to know which number to pay before anyone pays. What do you do?" |
+| Model answer, under a minute | I do not pick one. First I match definitions: is a pickup one stop at a site on one run, or one bag, and does the contract pay for a stop the lab cancelled? Then I profile both files before touching them: rows, distinct stops by route, site, date and run, the dates covered, blanks and the largest values. Then I build the bridge from 4,180 to 3,960 line by line, in pickups and in dollars: invoice lines that repeat one stop, stops billed after the lab cancelled them, stops logged on one side of the month's end and invoiced on the other, and anything else, each counted. Every call goes in a decisions log, and input equals matched plus set aside, so finance can audit every dollar it pays or withholds. |
+| Follow-up | "Your pickup counts now reconcile, and the dollars still do not. Where do you look?" |
+| What the follow-up separates | Understood: the rates, such as a weekend or after-hours surcharge, a rate change applied to the wrong days, or a stop billed in the wrong distance band. Memorised: "check for duplicates" again, which the counts already ruled out. |
+| A weak answer sounds like | "The courier is the vendor, so its invoice is right", or "finance's number is the source of truth". |
 
-**Follow-up.** "Why can you not use the alias you named in SELECT inside WHERE?"
+### T03-L2. A whole-row dedupe of the Austin lab's patient register finds no duplicates, and its front desk says many patients are registered twice: how can both be true?
 
-**What the follow-up separates.** Understood: SELECT runs after WHERE, so the alias does not exist
-yet. Memorised: "it is a SQL rule".
+| | |
+|---|---|
+| The move | Week 1 Wednesday: which rows repeat, and what makes two records one. Tag `[F]`. |
+| Anchor, on the Week 1 Wednesday row | "How do you find duplicates, and what makes two records the same?" |
+| Ask | "Kalpa Health is thinking of buying a small lab in Austin. Its patient register has 9,400 rows. A dedupe on the whole row finds no duplicates, and the Austin front desk swears many patients are registered twice. How can both be true, and what do you do?" |
+| Model answer, under a minute | Two registrations of one person are rarely identical on every column: a name spelt two ways, a typo in the date of birth, a new phone number or a new plan. A whole-row dedupe compares every column, so it finds nothing. The identity rule has to be what makes two rows one person, and with no shared id that is a combination such as date of birth, last name and ZIP code. I would flag the pairs that match for a person to review rather than merge them blind, because merging two different patients puts one person's results in another's record, which is far worse than a duplicate. Then I count the flagged pairs, check a sample by hand, and log the rule with its count. |
+| Follow-up | "Two rows share a date of birth and a last name and have different first names. Do you merge them?" |
+| What the follow-up separates | Understood: not automatically; twins share both, while a nickname or a typo in the first name makes one person look like two, so the pair is flagged for the front desk with the ZIP code and phone checked, since a false merge mixes two people's results. Memorised: "keep the first one". |
+| A weak answer sounds like | "I would run drop_duplicates." |
 
-**A weak answer sounds like.** "HAVING is like WHERE but for groups", with no reason and no order.
+### T03-L3. An auditor asks why your clean courier file has 220 fewer pickups than the invoice: how do you walk them through it?
 
-### T06-L2 `[F]` The number
-
-**Anchor.** Week 2 Monday: "Why would you compute a KPI in the warehouse rather than in a notebook?"
-The trap is orders per customer returning 1 because Postgres divides integers.
-
-**Ask.** "Your Monday query returns orders per customer of exactly 1 for every segment. The head of
-Retail-Plus reads it as nobody coming back. What happened?"
-
-**Model answer, under a minute.** Both counts are integers, and Postgres divides integers as integers,
-so 1.4 becomes 1. Casting one side to numeric gives the real ratio. I would also check the
-denominator is COUNT of distinct customers, because COUNT of rows counts orders, and orders over
-orders is 1 for a different reason. Before the number went out I should have compared it with the
-Week 1 figure for the same window, which was well above 1.
-
-**Follow-up.** "How do you stop this reaching Anand next Monday?"
-
-**What the follow-up separates.** Understood: a check query that compares the KPI with a known value
-or a sensible range and fails loudly. Memorised: "cast to float" and nothing about the check.
-
-**A weak answer sounds like.** "Customers are not returning."
-
-### T06-L3 `[D]` The judgement (reserve)
-
-**Anchor.** Week 2 Monday: "A stakeholder's analyst must audit your query; what changes in how you
-write it, and what would you refuse to compute in a notebook?"
-
-**Ask.** "Anand's analyst will audit your KPI query line by line. What changes in how you write it, and
-what would you refuse to compute in a notebook?"
-
-**Model answer, under a minute.** I write it as named steps, one CTE per business step, so each step
-can be run and checked on its own. Every filter and window is explicit, every LIMIT has an ORDER BY
-with a tie-break, and a reconciliation query beside it proves the total against Finance's number. I
-would refuse to compute Finance's KPI in a notebook, because a notebook copy drifts from the
-warehouse and then there are two versions of one number.
-
-**Follow-up.** "Two learners ran your top-10 query and got different lists. Why?"
-
-**What the follow-up separates.** Understood: LIMIT without ORDER BY, or ties at the cut, returns
-whatever rows come first. Memorised: "the data changed".
-
-**A weak answer sounds like.** "I would add comments."
+| | |
+|---|---|
+| The move | Week 1 Wednesday: the decisions log and the bridge, where input equals clean plus set aside. Tag `[D]`. |
+| Anchor, on the Week 1 Wednesday row | "An auditor asks why you dropped 14 rows; walk them through it." |
+| Ask | "An auditor from the finance team asks why your clean courier file has 220 fewer pickups than the courier's invoice of 4,180. The contract pays $16 a stop. Walk them through it." |
+| Model answer, under a minute | I open the decisions log, where each rule has a line: what it caught, how many pickups, how many dollars and why. Say 130 invoice lines repeated a stop already billed, the same route, site, run and time, $2,080, set aside with their line numbers for the courier to explain; 70 were stops the lab cancelled before the run, which the contract does not pay, $1,120; and 20 were stops the log dates on the first of the new month and the invoice puts in this one, $320, moved after checking the run sheets. That is 130, 70 and 20, which is 220, so 3,960 matched plus 220 set aside equals the invoice's 4,180, and the bridge shows the $3,520 between the two totals rule by rule. Nothing was dropped without a line. |
+| Follow-up | "Which of the 220 would you defend least, and what would change your mind?" |
+| What the follow-up separates | Understood: names a real judgement call, such as the 20 moved across the month's end because they rest on run sheets, and the evidence that would settle them, such as the courier's own pickup scans. Memorised: "all 220 were clearly wrong". |
+| A weak answer sounds like | "They were bad records, so I removed them." |
 
 ---
 
-## T07. Booked against collected, and joins that lie
+## T04. Is a gap real or the wobble chance makes, and did a change work? (Week 1 Thursday)
 
-### T07-L1 `[S]` The move
+**Who needs the answer.** The assessor, since a learner who reads a p-value as the chance of being
+wrong, or credits a change without asking who got it, sends a lab to retrain a good phlebotomist or
+roll out a rule that did nothing. This family tests Week 1 Thursday, where the room asked whether a
+fall in Retail-Plus, Kalpa Retail's paid membership tier, was real and whether its monsoon sale
+worked.
 
-**Anchor.** Week 2 Tuesday: "INNER against LEFT join: what does each drop or keep?" and "How do you
-find orders with no payment?"
+**The questions on the way.** What does a p of 0.04 mean, and not mean? Should a phlebotomist with 2
+rejected samples in 25 be retrained? Did a new billing rule cut denials?
 
-**Ask.** "Anand wants booked against collected, order by order. INNER join or LEFT join from orders to
-payments, and what does the wrong one hide?"
+### T04-L1. Your test on two phlebotomy teams gives p = 0.04: what does that tell the lab director, and what does it not?
 
-**Model answer, under a minute.** LEFT from orders to payments, because it keeps every order and shows
-the unpaid ones with an empty payment. An INNER join drops unpaid orders, so every row on screen looks
-paid and booked appears to equal collected. The unpaid list is the orders where the payment side is
-empty, the anti-join, and that list is usually what Anand wanted in the first place.
+| | |
+|---|---|
+| The move | Week 1 Thursday: real, or the wobble, read from the share of shuffled worlds. Tag `[S]`. |
+| Anchor, on the Week 1 Thursday row | "What does p = 0.03 mean, and not mean?" |
+| Ask | "A sample is rejected when the lab cannot test it, for example because the blood broke down in the tube, and the patient has to come back for a second draw. Your permutation test on the gap in rejected samples between the morning and the afternoon phlebotomy teams gives p = 0.04. The lab director asks what that means. What do you say it means, and what does it not mean?" |
+| Model answer, under a minute | If there were no real difference between the teams, a gap at least this large would turn up by chance about 4 times in 100. So the gap is hard to put down to luck. It does not mean a 4 percent chance that we are wrong, it does not mean a 96 percent chance that the gap is real, and it says nothing about whether the gap is big enough to act on. That second question is about cost, the patients called back and the draws repeated, and I answer it separately with those numbers. |
+| Follow-up | "Explain where the 0.04 came from without using the word probability." |
+| What the follow-up separates | Understood: shuffle the team labels across the samples thousands of times, work out the gap each time, and count how often a shuffled gap was as large as the real one: about 4 in every 100 shuffles. Memorised: repeats the definition. |
+| A weak answer sounds like | "There is a 96 percent chance the result is right." |
 
-**Follow-up.** "You add WHERE payment status equals success. What happens to your LEFT join?"
+### T04-L2. A new phlebotomist had 2 of 25 samples rejected against the centre's 4 percent on 2,400: retrain them this week? (reserve)
 
-**What the follow-up separates.** Understood: the filter removes the rows with an empty payment, so it
-behaves as an INNER join; the condition moves into the ON clause. Memorised: "LEFT keeps everything".
+| | |
+|---|---|
+| The move | Week 1 Thursday: how many people stand behind a rate, the rule of thumb against thirty, and coin flips on the count. Tag `[F]`. |
+| Anchor, on the Week 1 Thursday row | "42 percent on 12 users against 31 percent on 1,200; which do you trust?" |
+| Ask | "A new phlebotomist has had 2 of their 25 samples rejected, 8 percent. The centre's rate is 4 percent on 2,400 draws. The lab director wants to send them for retraining this week. What do you tell the director?" |
+| Model answer, under a minute | Eight percent stands on 25 draws, so one sample moves it 4 points, and 25 is below thirty, the rule of thumb for how many must stand behind a rate before it is read. The 4 percent stands on 2,400 draws and is solid. If the new phlebotomist were exactly as good as the centre, 2 or more rejections in 25 draws would still happen about a quarter of the time, so this gap is inside the wobble. I would trust the 4 percent, tell the director the new phlebotomist is not yet shown to be worse, and offer something cheap meanwhile, such as a day beside a senior phlebotomist, while the count builds. |
+| Follow-up | "What would you have the director watch while the count builds, and how would you read it next month?" |
+| What the follow-up separates | Understood: the same coin-flip check on the bigger count each month; 8 or more rejections in 100 draws would happen only about 1 time in 20 for a phlebotomist as good as the centre, so a rate still near 8 percent then is worth acting on, and how many draws it takes to be sure of a gap is power, a later week's topic. Memorised: "a larger sample", with no check and no number. |
+| A weak answer sounds like | "Eight is double four, so retrain them." |
 
-**A weak answer sounds like.** "LEFT keeps all the rows from both tables."
+### T04-L3. The Austin lab says a billing rule cut Medicare's necessity denials from 6.0 to 3.5 percent: did the rule work, and should Kalpa Health copy it?
 
-### T07-L2 `[F]` The number
-
-**Anchor.** Week 2 Tuesday: "Revenue doubled after a join and every row looks fine; where do you
-look?" The trap is a join fan-out that doubles collected revenue.
-
-**Ask.** "After you join payments to orders, collected revenue is almost double what Finance reports,
-and every row looks right. Where do you look?"
-
-**Model answer, under a minute.** At the grain. Some orders have more than one payment row, retries or
-split payments, so the join repeats the order for each and the sum counts the order amount twice. I
-count rows and distinct order ids before and after the join; if rows grew, the join fanned out. The
-fix is to bring payments to one row per order first, summed, and then join.
-
-**Follow-up.** "What single check, run every time, would have caught it?"
-
-**What the follow-up separates.** Understood: the row count after the join equals the order count, or
-the order id stays unique after the join. Memorised: "remove duplicates after the join", which hides
-the cause.
-
-**A weak answer sounds like.** "Finance must be missing some payments."
-
-### T07-L3 `[D]` The judgement
-
-**Anchor.** Week 2 Tuesday: "Design the validation you run before a joined number reaches Finance, and
-say what you do when it fails at the end of reporting day."
-
-**Ask.** "Design the checks you run before a joined number reaches Anand. Then it is an hour before his
-reporting deadline and one check fails. What do you do?"
-
-**Model answer, under a minute.** Row counts before and after, key uniqueness on each side, the total
-amount before and after, the unmatched rows on each side counted and listed, and a bridge from booked
-to collected. If one fails near the deadline I do not ship the wrong number. I tell Anand straight away
-what failed and how big it is, and give him either last week's reconciled number or today's with the
-gap stated in rupees, and the time the fixed number will reach him.
-
-**Follow-up.** "Anand says send it anyway, the board pack is due. What do you send?"
-
-**What the follow-up separates.** Understood: sends it with the caveat in rupees written on the number
-itself, and logs the decision. Memorised: "fix it quickly".
-
-**A weak answer sounds like.** "I would fix the bug fast and send it."
+| | |
+|---|---|
+| The move | Week 1 Thursday: did the change work; who got it, what else changed, and the hold-back that would settle it. Tag `[F]`. |
+| Anchor, on the Week 1 Thursday row | "Revenue rose after a discount; did the campaign work, and what would you need to know?" |
+| Ask | "A medical-necessity denial is a payer refusing a claim because it does not consider the test needed for the patient's condition. The lab in Austin that Kalpa Health is thinking of buying says that in March 2025 it added a rule to its billing system that checks the diagnosis code on Medicare claims before they leave, and that by June 2025 necessity denials on its Medicare claims had fallen from 6.0 to 3.5 percent. Kalpa Health's revenue-cycle head wants the same rule on every payer's claims. Did it work, and what would you need to know?" |
+| Model answer, under a minute | Before and after alone cannot say, since it assumes nothing else changed in those months. The change beside the change sets Austin's Medicare claims against its claims from payers without the rule over the same months: if their necessity denials fell almost as much, say from 5.8 to 3.6 percent, a 2.2-point fall against Medicare's 2.5, something else moved, such as the doctors' coding. Even a fall near zero there assumes Medicare moves like the others, and nobody has shown that, since a rule chose Medicare for its worst rate and no coin did. The way that settles it is a random hold-back when Kalpa Health switches the rule on: the rule off for a random fifth of the ordering practices for two months, compared inside Medicare. If all 2.5 points were the rule's, then on, say, 4,000 Medicare claims a month it would prevent 100 denials, so the hold-back forgoes at most 20 a month. My call is to run the hold-back before the every-payer rollout. |
+| Follow-up | "The revenue-cycle head says the rule costs nothing to run, so why not switch it on everywhere today?" |
+| What the follow-up separates | Understood: the cost is the claims the rule holds back for a fix, the staff time to fix them and the filing deadlines they drift towards, so switch it on everywhere if the head wants, and keep a random fifth held back so the answer still arrives. Memorised: "correlation is not causation", with no comparison and no design. |
+| A weak answer sounds like | "Denials fell after the rule, so it worked." |
 
 ---
 
-## T08. Ranking, ties and change over time
+## T05. What goes in front of the COO, and how do you hold it when someone pushes? (Week 1 Thursday and Friday)
 
-### T08-L1 `[S]` The move
+**Who needs the answer.** The assessor, since a finding told in the order it was found never
+reaches the decision it was for. This family tests the four-part note Week 1 Thursday wrote and Week 1
+Friday defended: claim, evidence, caveat and action.
 
-**Anchor.** Week 2 Wednesday: "Top-3 per group: GROUP BY or a window, and why?"
+**The questions on the way.** How do you put one finding in front of Dr Menon in two minutes? What is
+missing from a count with no denominator? What do you say when the honest answer is "not yet"?
 
-**Ask.** "Marketing wants the top three members by spend in each segment. GROUP BY or a window
-function, and why?"
+### T05-L1. Dr Menon has two minutes before her board meeting: how do you put one finding in front of her?
 
-**Model answer, under a minute.** A window. GROUP BY collapses each segment to one row, so it can give
-the top spend but loses the members behind it. A window ranks members inside each segment, partitioned
-by segment and ordered by spend, and keeps every row, so I filter to rank three or better in an outer
-query.
+| | |
+|---|---|
+| The move | Week 1 Thursday and Friday: the note in four parts, claim, evidence, caveat and action. Tag `[S]`. |
+| Anchor, on the Week 1 Thursday row | "Explain a finding to a non-technical stakeholder." |
+| Ask | "Dr Menon has two minutes before her board meeting, and you have one finding: turnaround within the 24-hour promise fell from 94 to 89 percent of samples between the last two months, and 61 percent of the late samples came from two of the eleven courier routes, which carry 18 percent of samples. How do you put it in front of her?" |
+| Model answer, under a minute | I would give her one sentence for each of four parts. The claim says what is true, with its number. The evidence is the comparison that shows it, with its denominator and window. The caveat is the one thing that could make it wrong, and how big that risk is. The action is what she should do next and what it costs. Here the claim is that turnaround within the 24-hour promise fell from 94 to 89 percent of samples between the last two months; the evidence is that 61 percent of the late samples came from two of the eleven courier routes, which carry 18 percent of samples; the caveat is that one month is one reading, so a bad week could be part of it; and the action is to move those two routes' last pickup an hour earlier for a month and read the share again. |
+| Follow-up | "Your caveat: how would Dr Menon know if it came true?" |
+| What the follow-up separates | Understood: names the check and when it can be read, such as the two routes' share next month against their own last three months. Memorised: a caveat that fits any finding, such as "the data may have errors". |
+| A weak answer sounds like | The analysis told in the order it was done, from loading the files. |
 
-**Follow-up.** "Two members tie for third place. How many rows does marketing get?"
+### T05-L2. A line for the COO says 2,300 samples missed the promise last month, up from 1,900: what is missing before it goes to her?
 
-**What the follow-up separates.** Understood: depends on the function, RANK gives four, ROW_NUMBER
-gives three with an arbitrary pick unless a tie-break is added, and marketing decides the rule.
-Memorised: "three".
+| | |
+|---|---|
+| The move | Week 1 Tuesday's rate with its denominator, inside the note. Tag `[S]`. |
+| Anchor, on the Week 1 Tuesday row | "Why is a rate without a denominator meaningless?" |
+| Ask | "A colleague's line for Dr Menon reads: 'Turnaround is slipping: 2,300 samples missed the 24-hour promise last month, up from 1,900 the month before.' The lab received 52,000 samples last month and 42,000 the month before. What is missing before it goes to her?" |
+| Model answer, under a minute | The denominator is missing. Late samples rose 21 percent, and samples received rose 24 percent, so the share that missed the promise held: 1,900 of 42,000 is 4.5 percent and 2,300 of 52,000 is 4.4 percent. Turnaround is not slipping; volume grew and the late count grew with it. The line also needs the two windows, matched, and whether the movement is bigger than the usual month to month, and it needs an action. A version for her: the share of samples within the 24-hour promise held at about 95.5 percent while volume grew 24 percent; no action on turnaround this month. |
+| Follow-up | "Now say volume was flat, 42,000 both months. Rewrite the line." |
+| What the follow-up separates | Understood: the late share rose from 4.5 to 5.5 percent, a real slip of one point, and the action changes: find where the extra 400 late samples sit, by route, analyser and day of the week. Memorised: keeps "slipping" without recomputing. |
+| A weak answer sounds like | "Add a chart to make it clearer." |
 
-**A weak answer sounds like.** "ORDER BY spend and LIMIT 3", which gives three for the whole company.
+### T05-L3. Dr Menon asks whether to open a seventh metro next year, and the honest answer is "not yet": what do you say?
 
-### T08-L2 `[F]` The number
-
-**Anchor.** Week 2 Wednesday: "How would you find customers whose spend fell two months in a row?" The
-trap is LAG without PARTITION reading another customer's month.
-
-**Ask.** "Your falling-spend list, built with LAG, flags a customer whose spend rose every month. What
-went wrong?"
-
-**Model answer, under a minute.** LAG without PARTITION BY customer reads the previous row of the whole
-table, which at the start of each customer's months belongs to someone else. So the first month of a
-customer is compared with another customer's last month. The fix is to partition by customer and order
-by month, and to fill missing months first, because a skipped month otherwise vanishes from the
-comparison.
-
-**Follow-up.** "A customer bought in January and March and nothing in February. Did their spend fall?"
-
-**What the follow-up separates.** Understood: with February filled as zero, yes, it fell; without the
-fill, LAG compares March with January; marketing decides whether a gap month counts. Memorised: "sort
-by customer".
-
-**A weak answer sounds like.** "The data must have duplicates."
-
-### T08-L3 `[D]` The judgement
-
-**Anchor.** Week 2 Wednesday: "The business says 'ties rank the same'; which function, and how many
-rows might the top-N report ship?"
-
-**Ask.** "Marketing says ties rank the same, and wants the top 50 members. Which function, how many rows
-might you ship, and what do you tell them?"
-
-**Model answer, under a minute.** RANK, since ties share a rank. The top 50 by RANK can ship more than
-50 rows when members tie at the cut, and DENSE_RANK can ship many more. I would say it in the report's
-first line: 51 members, because two tie at 50th. If a budget covers exactly 50, that is a business
-tie-break, such as tenure or most recent order, and marketing picks it.
-
-**Follow-up.** "The voucher budget covers exactly 50. What do you do?"
-
-**What the follow-up separates.** Understood: asks for the tie-break rule and writes it into the
-query, so the list is repeatable. Memorised: "use ROW_NUMBER", which picks one tied member arbitrarily.
-
-**A weak answer sounds like.** "Just take the first 50."
+| | |
+|---|---|
+| The move | Week 1 Thursday: "not yet" as an answer, with what would make it yes; Week 1 Friday: holding the note when someone pushes. Tag `[D]`. |
+| Anchor, on the Week 1 Thursday row | "The CEO wants a yes or no and the honest answer is 'not yet'; what do you say, and how do you hold the line when marketing pushes?" |
+| Ask | "Dr Menon asks: should Kalpa Health open a seventh metro next year, yes or no? You have the candidate metro's population and its mix of payers, and no evidence yet on how many patients would come. The honest answer is not yet. What do you say?" |
+| Model answer, under a minute | I say not yet, then what would make it yes and when we would know. What we know is the metro's size and its payer mix, which sets what each test would earn. What we do not know is how many patients would book. The cost of each wrong call is a lab and two centres opened where patients do not come, or a market left to a competitor. The decision she can make today is a cheaper way to find out: open one patient service centre without a lab, courier its samples to the nearest Kalpa lab for two quarters, and set the rule now, such as opening the lab if the centre reaches 40 draws a day by its third month. |
+| Follow-up | "The marketing head says analysts never commit to anything. Answer them." |
+| What the follow-up separates | Understood: the decision rule is the commitment, written before the result is known, so nobody can move it afterwards. Memorised: "we need more data". |
+| A weak answer sounds like | A yes to please the room, or a lecture on statistics with no decision. |
 
 ---
 
-## T09. The customer table in pandas
+## T06. Can the warehouse give the number every week, the same way, to someone who will audit it? (Week 2 Monday)
 
-### T09-L1 `[S]` The move (reserve)
+**Who needs the answer.** The assessor, since a query that runs but filters in the wrong place, or
+divides one integer by another, ships a wrong KPI every Monday until someone audits it. This family
+tests Week 2 Monday's SQL, asked as business questions, the moves the room used to give Anand Iyer,
+Kalpa Retail's finance controller, his Monday numbers from the warehouse itself.
 
-**Anchor.** Week 2 Thursday: "groupby in the split-apply-combine sentence."
+**The questions on the way.** Where does each condition go in a query, and why? Why does a rate come
+back as 0 for every centre? How do you write a KPI query an auditor can repeat?
 
-**Ask.** "The growth team wants one row per customer with spend, order count and last order date. Say
-how you build it in one sentence, then the check you run."
+### T06-L1. The lab director wants every analyser that ran more than 2,000 tests last month, counting released results only: where does each condition go, and why there?
 
-**Model answer, under a minute.** Split the orders by customer, apply a sum, a count and a maximum
-date to each group, and combine the results into one row per customer. The check is that the result
-has exactly as many rows as there are distinct customers in the orders, and that total spend matches
-the orders' total.
+| | |
+|---|---|
+| The move | Week 2 Monday: the logical order of a query, WHERE against HAVING. Tag `[S]`. |
+| Anchor, on the Week 2 Monday row | "WHERE against HAVING, one sentence each" and "Explain the logical order in which a SQL query executes." |
+| Ask | "An analyser is the machine that runs the tests. The lab director wants every analyser that ran more than 2,000 tests last month, counting only tests whose results were released. Where does each condition go in the query, and why there?" |
+| Model answer, under a minute | "Released results only" filters rows, so it goes in WHERE and runs before the grouping. "More than 2,000 tests" filters a group by its count, and the count exists only after GROUP BY, so it goes in HAVING. The database runs FROM, then WHERE, then GROUP BY, then HAVING, then SELECT, then ORDER BY and LIMIT, which is why the conditions sit in the order the business question puts them. |
+| Follow-up | "Why can you not use the alias you named in SELECT inside WHERE?" |
+| What the follow-up separates | Understood: SELECT runs after WHERE, so the alias does not exist yet when WHERE runs. Memorised: "it is a SQL rule". |
+| A weak answer sounds like | "HAVING is like WHERE but for groups", with no reason and no order. |
 
-**Follow-up.** "Customers with no segment have vanished from your table. Why?"
+### T06-L2. Your query returns the redraw rate as exactly 0 for every centre: did nobody redraw anyone?
 
-**What the follow-up separates.** Understood: groupby drops missing keys by default, so dropna=False,
-or fill the segment first. Memorised: restates split-apply-combine.
+| | |
+|---|---|
+| The move | Week 2 Monday: counts named for what they count, and a KPI checked against a known value before it leaves; the trap of integer division. Tag `[F]`. |
+| Anchor, on the Week 2 Monday row | "Why would you compute a KPI in the warehouse rather than in a notebook?" |
+| Ask | "A redraw is a second blood draw after a rejected sample. Your Monday query divides redraws by draws for each patient service centre and returns exactly 0 for every centre. The lab director reads it as no centre redrawing anyone. What happened?" |
+| Model answer, under a minute | Both counts are integers, and Postgres divides an integer by an integer as an integer, so 37 redraws over 2,400 draws, which is 1.5 percent, comes back as 0. Casting one side to numeric gives the real rate. I would also check the denominator counts draws, the thing the rate is out of, and not tubes or rows of another table. Before the number went out, it should have been set against a figure someone already knows, such as last month's redraw count, which is far from zero. |
+| Follow-up | "How do you stop this reaching the lab director next Monday?" |
+| What the follow-up separates | Understood: a check query that compares the KPI with a known count or a sensible range and fails loudly, run before the report is sent. Memorised: "cast to float", and nothing about the check. |
+| A weak answer sounds like | "The centres had no redraws last month." |
 
-**A weak answer sounds like.** The definition, with no check.
+### T06-L3. The finance head's analyst will audit your days-in-receivables query line by line: what changes in how you write it, and what would you refuse to compute in a notebook? (reserve)
 
-### T09-L2 `[F]` The number
-
-**Anchor.** Week 2 Thursday: "Which merge argument raises on duplicate keys, and which error?" The trap
-is a merge that doubles a customer's spend.
-
-**Ask.** "After you merge the campaign exposure table onto the customer table, one customer's spend has
-doubled. Which argument would have stopped it, and what is the fix?"
-
-**Model answer, under a minute.** validate, set to one_to_one or many_to_one, makes the merge raise a
-MergeError when the key is duplicated on the side that should be unique. Here the exposure table has
-the customer twice, so the customer's row was repeated. The fix is to bring exposure to one row per
-customer first, deciding what two exposures mean, and then merge.
-
-**Follow-up.** "Why not drop duplicates after the merge?"
-
-**What the follow-up separates.** Understood: it hides which side was duplicated and can remove
-genuine rows. Memorised: "that also works".
-
-**A weak answer sounds like.** "I would check the shape of the result."
-
-### T09-L3 `[D]` The judgement
-
-**Anchor.** Week 2 Thursday: "Same question, three tools: how do you choose, and defend one choice?"
-The trap is recency measured from today instead of the data's last date.
-
-**Ask.** "The customer table refreshes every Monday. A colleague computes recency as days from today's
-date to each customer's last order. What goes wrong, and what do you choose?"
-
-**Model answer, under a minute.** Recency from today ages every customer with the calendar, so an
-extract that arrives late, or a table read a week later, makes the whole base look more lapsed than
-it is. I pin an as-of date to the data, the last order date in the extract or the extract date, and
-print it on the table, so two people reading it on different days see the same recency.
-
-**Follow-up.** "Marketing sends the win-back offer to anyone over 90 days. How many customers move if
-the extract is a week stale and you use today?"
-
-**What the follow-up separates.** Understood: everyone between 83 and 90 days crosses the line and gets
-an offer they should not; the learner says how to count them. Memorised: "use the max date".
-
-**A weak answer sounds like.** "Today's date is fine since we refresh weekly."
+| | |
+|---|---|
+| The move | Week 2 Monday: named steps an auditor can run one at a time, and a run that gives the same answer twice. Tag `[D]`. |
+| Anchor, on the Week 2 Monday row | "A stakeholder's analyst must audit your query; what changes in how you write it, and what would you refuse to compute in a notebook?" |
+| Ask | "Days in accounts receivable says how many days of revenue the lab is still owed: the money owed to it on a date, divided by its average net revenue per day. Quest Diagnostics reports its version, days sales outstanding, as 48 days at the end of 2025. The finance head's analyst will audit your Kalpa Health query line by line. What changes in how you write it, and what would you refuse to compute in a notebook?" |
+| Model answer, under a minute | I write it as named steps, one common table expression per business step: what is owed on the as-of date, net of the amounts the contracts never meant to pay, then net revenue per day over the trailing window, then the division. Every filter is explicit, the as-of date is printed on the result, any LIMIT has an ORDER BY with a tie-break, a reconciliation line sets the amount owed against finance's own ledger on the same date, and the run prints its row count and totals, so a rerun gives the same answer. A notebook, an export to Excel or a view in the warehouse could each produce it, and the view wins for a number finance reads every month, since a notebook copy drifts and two versions of one number then exist. What would change that: a one-off question finance will never ask again is fine in a notebook. |
+| Follow-up | "Two analysts ran your list of the twenty oldest balances and got different lists. Why?" |
+| What the follow-up separates | Understood: LIMIT without ORDER BY, or ties at twentieth place with no tie-break, returns whichever rows come first. Memorised: "the data changed". |
+| A weak answer sounds like | "I would add comments to the query." |
 
 ---
 
-## T10. Excel for the stakeholder, and choosing the tool
+## T07. When two tables are joined, which rows does the join keep, drop or repeat, and how do you know before the number leaves? (Week 2 Tuesday)
 
-### T10-L1 `[S]` The move (reserve)
+**Who needs the answer.** The assessor, since a join that silently drops or repeats rows changes a
+dollar figure without a single row looking wrong. This family tests Week 2 Tuesday, where the room
+set what Kalpa Retail collected against what it booked and showed that nothing was counted twice.
 
-**Anchor.** Week 2 Friday: "SQL, pandas or Excel: how do you choose?"
+**The questions on the way.** Which join keeps the samples still waiting for a result? Why do expected
+dollars nearly double after a join? Which checks run before a joined number reaches a payer meeting?
 
-**Ask.** "SQL, pandas or Excel: how do you choose, for one of Meera's asks?"
+### T07-L1. The lab director wants turnaround for every sample received last week, including those still waiting: INNER or LEFT join, and what does the wrong one hide? (reserve)
 
-**Model answer, under a minute.** The warehouse, in SQL, for a number Finance relies on every week,
-because it runs close to the data and one version exists. pandas for a multi-step analysis or a
-reshape I have to reproduce top to bottom. Excel for the stakeholder who wants to change assumptions
-and watch the answer move, fed from an exported, cleaned table and never used to edit the source.
+| | |
+|---|---|
+| The move | Week 2 Tuesday: which join keeps, drops or repeats, and the rows with no partner. Tag `[S]`. |
+| Anchor, on the Week 2 Tuesday row | "INNER against LEFT join: what does each drop or keep?" and "How do you find orders with no payment?" |
+| Ask | "The lab director wants turnaround for every sample received last week, including the ones still waiting for a result. You have a table of samples and a table of results. INNER join or LEFT join from samples to results, and what does the wrong one hide?" |
+| Model answer, under a minute | LEFT from samples to results, because it keeps every sample, and the ones still waiting show an empty result. An INNER join drops the waiting samples, which are exactly the slowest, so turnaround looks better than it is. The list of samples still waiting is the anti-join, the samples whose result side is empty, and that list is often what the lab director wanted most. |
+| Follow-up | "You add WHERE result status equals 'final'. What happens to your LEFT join?" |
+| What the follow-up separates | Understood: the filter removes the rows whose result side is empty, so the LEFT join behaves as an INNER one; the condition moves into the ON clause. Memorised: "LEFT keeps everything". |
+| A weak answer sounds like | "LEFT keeps all the rows from both tables." |
 
-**Follow-up.** "Meera's chief of staff wants to edit the numbers themselves. What do you give them?"
+### T07-L2. After you join claim lines to the plan's fee schedule, expected dollars nearly double and every row looks right: where do you look? (reserve)
 
-**What the follow-up separates.** Understood: input cells for assumptions, formulas protected, the
-data exported read-only. Memorised: "Excel because they know Excel".
+| | |
+|---|---|
+| The move | Week 2 Tuesday: attach, count, explain the difference, then sum; the join that grew the row count. Tag `[F]`. |
+| Anchor, on the Week 2 Tuesday row | "Revenue doubled after a join and every row looks fine; where do you look?" and "Your join grew the row count; name the cause and the check." |
+| Ask | "A payer's fee schedule lists what its contract allows for each test. To check what one commercial plan should have paid in the last quarter of 2025, you join 41,200 claim lines to its fee schedule on the test code. Expected dollars come out almost double what payer contracting expects, and every row looks right. Where do you look?" |
+| Model answer, under a minute | I would look at the grain. The fee schedule holds more than one row per test code, an old rate and a new rate, each with the dates it applies from and to, so the join repeats each claim line once per rate and the sum counts it twice. I count rows and distinct claim lines before and after the join: if 41,200 lines became about 79,600 rows, the join fanned out. The fix joins on the test code and on the service date falling inside the rate's dates, so each line meets exactly one rate, and then rows after the join equal lines before it. |
+| Follow-up | "What single check, run every time, would have caught it?" |
+| What the follow-up separates | Understood: the row count after the join equals the claim-line count, or the claim-line id stays unique after the join. Memorised: "remove duplicates after the join", which hides the cause. |
+| A weak answer sounds like | "Payer contracting must be missing some claims." |
 
-**A weak answer sounds like.** "Whatever tool I am most comfortable in."
+### T07-L3. Which checks run before an expected-against-paid number reaches the payer contracting head, and what do you do when one fails an hour before the meeting?
 
-### T10-L2 `[F]` The number
+| | |
+|---|---|
+| The move | Week 2 Tuesday: the checks before a number leaves, and what the stakeholder gets when one fails. Tag `[D]`. |
+| Anchor, on the Week 2 Tuesday row | "Design the validation you run before a joined number reaches Finance, and say what you do when it fails at the end of reporting day." |
+| Ask | "Payer contracting is renegotiating a commercial plan's rates and wants your figure for what the plan paid against what its contract says it should have. Design the checks you run before the number reaches the head of payer contracting. Then it is an hour before the meeting and one check fails. What do you do?" |
+| Model answer, under a minute | The checks are row counts before and after each join, the key unique on each side, dollar totals before and after, unmatched claim lines and unmatched rates counted and listed, and a bridge from billed to expected to paid that closes. When one fails near the deadline there are four ways: send the number anyway, send last quarter's reconciled number, send today's with the gap stated in dollars, or ask for the meeting to move. I tell the head at once what failed and how big it is, and send the second or the third, with the gap written on the number itself and the time the fixed number will arrive. What would change my call: a failure that touches a few dollars on another plan's claims can travel as a footnote; one that touches this plan's claims cannot. |
+| Follow-up | "The head says send it anyway; the meeting cannot move. What do you send?" |
+| What the follow-up separates | Understood: sends it with the caveat in dollars on the number itself, and logs the decision and who made it. Memorised: "fix it quickly". |
+| A weak answer sounds like | "I would fix the bug fast and send it." |
 
-**Anchor.** Week 2 Friday: "Your pivot shows a different total from the warehouse; where do you look
-first?" The trap is a pivot double-counting the double-paid orders.
+---
 
-**Ask.** "Your pivot shows collected revenue Rs 3 lakh above the warehouse figure for the same quarter.
-Where do you look first?"
+## T08. Who is first inside each group, what happens at a tie, and whose orders fell two months running? (Week 2 Wednesday)
 
-**Model answer, under a minute.** First at what the pivot was built on. If it sits on the raw export,
-the double-paid orders are in it twice, and a gap of a round sum points there. Then the filters: the
-same window, rows hidden by a filter that a SUM still counts, and amounts typed as text that the pivot
-skipped or counted differently. I rebuild the pivot on the cleaned table and check it lands on the
-warehouse number.
+**Who needs the answer.** The assessor, since a ranking that mishandles ties or reads across members
+ships the wrong list to a sales team that visits exactly the practices on it. This family tests Week
+2 Wednesday's window functions, which the room used to list the members Kalpa Retail's marketing
+team should protect before they drift.
 
-**Follow-up.** "The gap equals the total of the double-paid orders exactly. What do you change so it
-cannot happen again?"
+**The questions on the way.** GROUP BY or a window for the top three per metro? Why does a falling
+list flag a practice that grew? How many rows does a top twenty-five ship at a tie?
 
-**What the follow-up separates.** Understood: the pivot's source becomes the cleaned, reconciled table,
-and the front page carries the reconciliation line. Memorised: "delete the duplicates in Excel".
+### T08-L1. Marketing wants the three practices that sent the most requisitions in each metro: GROUP BY or a window function, and why?
 
-**A weak answer sounds like.** "Excel must be calculating wrongly."
+| | |
+|---|---|
+| The move | Week 2 Wednesday: rank inside each group with PARTITION BY. Tag `[S]`. |
+| Anchor, on the Week 2 Wednesday row | "Top-3 per group: GROUP BY or a window, and why?" |
+| Ask | "Marketing wants the three practices that sent Kalpa Health the most requisitions last quarter in each of the six metros. GROUP BY or a window function, and why?" |
+| Model answer, under a minute | I would use a window function. GROUP BY collapses each metro to one row, so it can give the largest count but loses the practices behind it. A window ranks practices inside each metro, partitioned by metro and ordered by requisitions, and keeps every row, so I filter to rank three or better in an outer query, since a window function cannot sit inside WHERE. |
+| Follow-up | "Two practices tie for third place in Dallas. How many Dallas rows does marketing get?" |
+| What the follow-up separates | Understood: it depends on the function; RANK gives four, ROW_NUMBER gives three with an arbitrary pick unless a tie-break is added, and marketing decides the rule. Memorised: "three". |
+| A weak answer sounds like | "ORDER BY requisitions DESC and LIMIT 3", which gives three practices for the whole company. |
 
-### T10-L3 `[D]` The judgement
+### T08-L2. Your list of practices whose orders fell two months running flags a practice whose orders rose every month: what went wrong?
 
-**Anchor.** Week 2 Friday: "Two directors change assumptions in the room and the sheet recalculates
-differently for each; what did you get right and what do you fix?" and "How do you present one number
-so it is not misread?"
+| | |
+|---|---|
+| The move | Week 2 Wednesday: LAG within one member's months, and a month with no order read as no reading. Tag `[F]`. |
+| Anchor, on the Week 2 Wednesday row | "How would you find customers whose spend fell two months in a row?" |
+| Ask | "You built a list of practices whose monthly requisitions fell two months running, using LAG. It flags a practice whose orders rose every month. What went wrong?" |
+| Model answer, under a minute | LAG without PARTITION BY practice reads the previous row of the whole table, and at the start of each practice's months that row belongs to another practice. So the practice's first month is compared with someone else's last. The fix partitions by practice and orders by month. I would also fill the months with no orders first, because a skipped month otherwise vanishes and LAG compares across it. |
+| Follow-up | "A practice ordered in one month, nothing the next, and ordered again the month after. Did its orders fall?" |
+| What the follow-up separates | Understood: with the empty month filled as zero, yes; without the fill, LAG compares the third month with the first; and if the practice was closed for the month, that month is no reading, so marketing decides the rule. Memorised: "sort by practice". |
+| A weak answer sounds like | "The data must have duplicates." |
 
-**Ask.** "Two directors change assumptions in the meeting and each gets a different answer from your
-sheet. What did you get right, and what do you fix?"
+### T08-L3. Marketing says ties rank the same and wants the top 25 practices in each metro for sales visits, and the team can visit exactly 25: which function, how many rows might ship, and what do you tell them?
 
-**Model answer, under a minute.** I got the right thing half built: the sheet recalculates, so the
-assumptions are live. What needs fixing is that the assumptions are scattered, so two people edited
-different cells. I would put every assumption in one labelled block, show two scenario columns side
-by side so both directors see both answers, and keep the source data locked. The front page shows one
-number with its unit, denominator, period and the comparison it is read against.
+| | |
+|---|---|
+| The move | Week 2 Wednesday: ties at the line, and the rule the business chooses. Tag `[D]`. |
+| Anchor, on the Week 2 Wednesday row | "The business says 'ties rank the same'; which function, and how many rows might the top-N report ship?" |
+| Ask | "Marketing says practices with the same number of requisitions rank the same, and wants the top 25 in each metro for its sales team to visit. The team can visit exactly 25 a metro. In Dallas, the practices in 25th and 26th place both sent 61 requisitions. Which function, how many rows might you ship, and what do you tell them?" |
+| Model answer, under a minute | I see three ways, sized on Dallas. RANK, which marketing asked for, ships 26, because two practices tie at 25th. DENSE_RANK can ship more, since it counts distinct values rather than practices. ROW_NUMBER ships exactly 25 but drops one of the tied pair arbitrarily, so two runs can disagree. The best fit is a tie-break marketing chooses, such as the most recent requisition, written into the ORDER BY: with it, RANK ships exactly 25, the same 25 every run, and the report's first line prints the count shipped. What would change my call: if the team can stretch to 26 visits, RANK alone is fine. |
+| Follow-up | "Marketing will not choose a tie-break. What do you do?" |
+| What the follow-up separates | Understood: ships RANK's 26 with the tie named in the first line, and asks again with the cost of each choice. Memorised: "use ROW_NUMBER", which drops one tied practice by an arbitrary pick. |
+| A weak answer sounds like | "Just take the first 25." |
 
-**Follow-up.** "Show me the front-page number for revenue per customer in one line."
+---
 
-**What the follow-up separates.** Understood: states value, unit, denominator, period and comparison,
-such as Rs 4,850 per active customer in Q2 against Rs 5,100 in Q1. Memorised: "a big number in bold".
+## T09. How do you build one row per patient, merge onto it without repeating anyone, and date it so the count holds? (Week 2 Thursday)
 
-**A weak answer sounds like.** "Lock the sheet so nobody can change it."
+**Who needs the answer.** The assessor, since a table with a patient repeated, or aged by the wrong
+date, sends collection letters to patients who do not yet owe them. This family tests Week 2
+Thursday's pandas moves, which built Kalpa Retail's growth team a table of one row per customer that
+it could act on without checking.
+
+**The questions on the way.** How do you build one row per patient, and check it? Why did a patient's
+balance double after a merge? Why must days since the last payment be counted from the extract's date?
+
+### T09-L1. The revenue-cycle team wants one row per patient with their open balance, statements sent and last payment date: how do you build it, and what do you check?
+
+| | |
+|---|---|
+| The move | Week 2 Thursday: groupby as split, apply, combine, and the check that the result has one row per member. Tag `[S]`. |
+| Anchor, on the Week 2 Thursday row | "groupby in the split-apply-combine sentence." |
+| Ask | "A patient's open balance is what they still owe the lab after their plan has paid. The revenue-cycle team wants one row per patient with their open balance, the number of statements sent to them and the date of their last payment. Say how you build it in one sentence, then the check you run." |
+| Model answer, under a minute | Split the balance records by patient, apply a sum to the balance, a count to the statements and a maximum to the payment date, and combine the results into one row per patient. The check is that the result has exactly as many rows as there are distinct patients in the source, and that the total balance equals the source's total. |
+| Follow-up | "Patients with no payer recorded have vanished from your table. Why?" |
+| What the follow-up separates | Understood: grouping by payer as well drops rows whose payer is missing, since groupby leaves missing keys out by default, so set dropna to False or fill the payer first. Memorised: restates split, apply, combine. |
+| A weak answer sounds like | The definition, with no check. |
+
+### T09-L2. After you merge the coverage table onto the patient table, one patient's balance has doubled: which argument would have stopped it, and what is the fix?
+
+| | |
+|---|---|
+| The move | Week 2 Thursday: the merge that must not repeat a row, stopped by validate. Tag `[F]`. |
+| Anchor, on the Week 2 Thursday row | "Which merge argument raises on duplicate keys, and which error?" |
+| Ask | "You merge a table of each patient's insurance coverage onto the patient-balance table, and one patient's open balance has doubled. Which argument would have stopped it, and what is the fix?" |
+| Model answer, under a minute | The argument is validate: set to many_to_one or one_to_one, it makes pandas raise a MergeError when the key repeats on the side that should be unique. Here the coverage table lists the patient twice, which is normal in US coverage: a patient with Medicare and an employer's plan has a primary payer, which pays first, and a secondary payer. So the patient's row was repeated and the balance counted twice. The fix decides the rule first, primary coverage only, or one row per patient with both plans side by side, brings coverage to one row per patient, and then merges with validate on. |
+| Follow-up | "Why not drop duplicates after the merge?" |
+| What the follow-up separates | Understood: it hides which side was duplicated, and here it would keep one of the patient's two plans by chance. Memorised: "that also works". |
+| A weak answer sounds like | "I would check the shape of the result." |
+
+### T09-L3. The balance table refreshes every Monday, and a colleague counts days since each patient's last payment from today's date: what goes wrong, and which tool and date do you choose?
+
+| | |
+|---|---|
+| The move | Week 2 Thursday: the same question in three tools, and the date the data was taken, never today's. Tag `[D]`. |
+| Anchor, on the Week 2 Thursday row | "Same question, three tools: how do you choose, and defend one choice?" |
+| Ask | "The patient-balance table is rebuilt every Monday from an extract, and balances with no payment for more than 90 days go to an outside collection agency. A colleague counts the days since each patient's last payment from today's date. What goes wrong, and which tool and date do you choose?" |
+| Model answer, under a minute | Today's date ages every patient with the calendar, so an extract that arrives late, or a table read later in the week, makes balances look older than the data says, and patients cross 90 days with nothing changed in their account. I pin an as-of date to the extract, the date it was taken, and print it on the table. Three tools could compute it: SQL in the warehouse with the as-of date as a parameter, pandas against the extract's date, or Excel with TODAY(), which drifts every day the file is opened. I choose SQL, because the warehouse already holds the balances and finance audits it there, and pandas on the same as-of date must give the same counts. |
+| Follow-up | "The extract is a week old and the colleague used today's date. Which patients get a collection letter they should not?" |
+| What the follow-up separates | Understood: everyone whose true count is 84 to 90 days reads as 91 to 97, more than 90, and crosses the line, and the learner counts them by recomputing with the as-of date and comparing. Memorised: "use the latest date". |
+| A weak answer sounds like | "Today's date is fine, since the table refreshes every week." |
+
+---
+
+## T10. Which tool owns which number, and what can a director break in the workbook? (Week 2 Friday)
+
+**Who needs the answer.** The assessor, since a workbook that returns a neighbour's numbers for a
+missing id puts a wrong figure in a director's plan with no error showing. This family tests Week 2
+Friday, where the room built Kalpa Retail's chief of staff a workbook a director could open without
+a login, change in the room and still trust.
+
+**The questions on the way.** SQL, pandas or Excel for one of Dr Menon's asks? Why does a missing id
+return a neighbour's numbers? What did a sheet get right when two directors get two answers?
+
+### T10-L1. Dr Menon asks for three numbers this month: SQL, pandas or Excel for each, and why? (reserve)
+
+| | |
+|---|---|
+| The move | Week 2 Friday: which tool owns which number, and what a stakeholder may change. Tag `[S]`. |
+| Anchor, on the Week 2 Friday row | "SQL, pandas or Excel: how do you choose?" and "A stakeholder wants to poke the numbers themselves; what do you give them and what do you never give them?" |
+| Ask | "Dr Menon asks for three things this month: the redraw rate for every patient service centre each Monday for the lab director, the late samples by courier route rebuilt from the lab's raw logs, and next year's plan of draws per centre that her directors can change in the room. SQL, pandas or Excel for each, and why?" |
+| Model answer, under a minute | The redraw rate goes in the warehouse, in SQL, because the lab director relies on it every Monday, it runs where the data lives, and only one version exists. The late samples by route go in pandas, because they take several steps from the raw logs, a join and a reshape by route and day, and I must be able to rerun them top to bottom. The plan goes in Excel, the view for directors who want to change assumptions and watch the answer move, fed from an exported, reconciled table and never used to edit the source. |
+| Follow-up | "Dr Menon's chief of staff wants to edit the numbers themselves. What do you give them?" |
+| What the follow-up separates | Understood: yellow input cells for the assumptions, formulas protected, the data read-only and a checks tab. Memorised: "Excel, because they know Excel". |
+| A weak answer sounds like | "Whichever tool I am most comfortable in." |
+
+### T10-L2. A director types a practice id that has never ordered from Kalpa Health, and the sheet shows another practice's numbers: what happened, and what do you fix?
+
+| | |
+|---|---|
+| The move | Week 2 Friday: the lookup that must say "missing", and SUBTOTAL under a filter; the trap of an approximate lookup returning a neighbour for a missing id. Tag `[F]`. |
+| Anchor, on the Week 2 Friday row | "Your pivot shows a different total from the warehouse; where do you look first?" |
+| Ask | "Your planning workbook lets a director type a practice id and see that practice's requisitions. A director types an id for a practice that has never ordered from Kalpa Health, and the sheet shows another practice's numbers instead of an error. What happened, and what do you fix?" |
+| Model answer, under a minute | The lookup is approximate. VLOOKUP with its fourth argument TRUE, or left out, searches a sorted column for the nearest key at or below the one typed, so a missing id returns the row of the id just before it. The fix is an exact match, VLOOKUP with FALSE or INDEX and MATCH with 0, wrapped so that a missing id says "not in the table". Then I would test it on an id I know is missing before the workbook goes out. |
+| Follow-up | "The director then filters the practice table to Dallas, and the total under it does not change. Why?" |
+| What the follow-up separates | Understood: SUM adds the rows a filter hides, while SUBTOTAL leaves filtered rows out with either 9 or 109 as its first argument, 109 also leaving out rows hidden by hand; that is also the first place to look when a sheet's total and the warehouse's disagree. Memorised: "Excel is calculating wrongly". |
+| A weak answer sounds like | "The director must have typed it wrong." |
+
+### T10-L3. Two directors change assumptions in the planning meeting and each gets a different answer from your sheet: what did you get right, and what do you fix?
+
+| | |
+|---|---|
+| The move | Week 2 Friday: assumptions in one place, and the number a director reads in two minutes with its period, comparison and base. Tag `[D]`. |
+| Anchor, on the Week 2 Friday row | "Two directors change assumptions in the room and the sheet recalculates differently for each; what did you get right and what do you fix?" and "How do you present one number so it is not misread?" |
+| Ask | "Two directors change assumptions in the planning meeting, and each gets a different answer from your sheet. What did you get right, and what do you fix?" |
+| Model answer, under a minute | I got half of it right: the sheet recalculates, so the assumptions are live. What needs fixing is that the assumptions are scattered, so the two directors edited different cells. There are two fixes: lock the sheet, which stops the directors using it in the room, or move every assumption into one labelled block of yellow input cells with two scenario columns side by side, so both directors see both answers. The block wins, with the formulas and the source data protected and a checks tab that turns red when a total stops tying to the warehouse. What would change my call: a sheet that goes to the board as a final figure gets locked once the meeting has chosen its scenario. The front page shows one number with its unit, denominator, period and the comparison it is read against. |
+| Follow-up | "Show me the front-page number for turnaround in one line." |
+| What the follow-up separates | Understood: states the value, the unit, the denominator, the period and the comparison, such as 91.8 percent of 48,300 samples released within 24 hours in the last four weeks, against 94.1 percent in the four weeks before. Memorised: "a big number in bold". |
+| A weak answer sounds like | "Lock the sheet so nobody can change anything." |
