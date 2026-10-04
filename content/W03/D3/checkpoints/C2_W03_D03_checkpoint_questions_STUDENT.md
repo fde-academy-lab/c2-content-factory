@@ -67,8 +67,8 @@ a number is right; the trainer may ask one question back, and the next group sta
 ## What do all fifteen questions ask, whichever brief your group holds?
 
 **Who needs the answer.** Every group, before it reads its own three. The same three moves sit under
-every question, and a group that has made all three in its own work answers its set in two minutes,
-while a group that skipped one finds out in front of the room.
+every question, so a group that has made all three in its own work can answer its set in the two
+minutes it has.
 
 **The questions on the way.** What did the files hold? What did you match against what? What will
 each number in your headline claim be counted over?
@@ -219,8 +219,8 @@ extended on a lift it did not cause spends that money every week.
 ## What does a group do when it cannot answer one of its three?
 
 **Who needs the answer.** The group, and the Academic TA, who runs the open build time after the
-second block and takes the stuck groups first. A blocker kept quiet costs a group the day's build
-time, and a blocker named this morning brings the trainer to its table in the morning's build time.
+second block and takes the stuck groups first. A blocker named this morning brings the trainer to
+the group's table in the morning's build time.
 
 **The questions on the way.** What does the group say? Who comes to its table, and when?
 

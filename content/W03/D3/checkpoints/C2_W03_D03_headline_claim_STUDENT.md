@@ -49,8 +49,8 @@ period reaches the board without them, and the board acts on a number nobody can
 **The questions on the way.** Which parts go in the sentence? Which go on the lines below it? In
 what order?
 
-The sentence carries three parts and the reason the evidence gives for them, and a fourth part goes
-on the line below it:
+The sentence carries three parts, with the reason stated no more strongly than the evidence allows,
+and a fourth part goes on the line below it:
 
 | Part | What it is | Why Dr Menon needs it |
 |---|---|---|
@@ -99,7 +99,7 @@ billed revenue into claims times the mean claim, the average dollars on one clai
 | **Caveat** | Billed revenue is list price, and the payers pay a contracted share of it weeks later, so the money collected may have grown by more or less than 5.5 percent. |
 | **Action** | Report New York as growing on claim volume, and open the branch below the mean claim to learn why it fell before anyone calls the lower mean a price or a mix change. |
 
-The headline claim names its unit (billed revenue, counted in claims), carries both denominators
+The headline claim names its unit (billed revenue in dollars, on its claims), carries both denominators
 (977 and 1,055 claims), its period (Q2's 91 days against Q3's 92) and the branch that carried the
 change (more claims at a lower mean), which says where the change sits and claims no cause. "New
 York up 5.5 percent" alone would not survive one question from the finance head.
@@ -181,7 +181,9 @@ the 6 marks of presentation and defence that each learner earns for themselves.
 
 The mini project is scored on the rubric below, and your headline claim is its fourth criterion, the
 claim, worth 6 of the 40 marks. Its full-marks line asks for one sentence with its number,
-denominator, period and caveat, plus an action Dr Menon can take, which is what the six tests check.
+denominator, period and caveat, plus an action Dr Menon can take. This sheet writes that caveat on
+the line directly below the sentence, where the panel reads the two together, and the six tests
+check all five parts.
 
 <!-- sync:rubric:W03/mini-project -->
 **Mini project, 40 marks.** The first four criteria are scored once for the group, and every member receives those 34 marks; presentation and defence is scored for each learner on 6 marks, so a silent teammate cannot ride the group's score.
@@ -198,8 +200,7 @@ denominator, period and caveat, plus an action Dr Menon can take, which is what 
 ## What do you take home tonight, and what reaches you for Thursday's mock?
 
 **Who needs the answer.** Your group, before Thursday's mock, where each member's viva starts from
-tonight's sentence. A skeleton drafted tonight leaves Thursday's build time for the evidence; one
-left until Thursday takes that time.
+tonight's sentence. A skeleton drafted tonight leaves Thursday's build time free for the evidence.
 
 **The questions on the way.** What is tonight's task? What reaches you at the close for Thursday's
 mock? What does every group ship by the end of the week?

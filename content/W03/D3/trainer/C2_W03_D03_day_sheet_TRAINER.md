@@ -54,7 +54,7 @@ which watches the moves its own build needs run once on a question no brief asks
 |---|---|---|
 | 1 | Which of four ways could answer it, and what does each cost? | The claims grow 8.0 percent and the export's rows 4.8, so only a reconciliation can say which counts New York (Week 1 Tuesday's rung 1, confirm before explaining); option C reads both files, 4,160 rows, against option B's 2,032, for about 0.7 of an hour more. |
 | 2 | How many New York bookings does the old booking export hold? | 2,095 in 2,128 rows: 33 ids twice, 26 of the extra rows in Q2, so bookings grew 6.8 percent where rows grew 4.8. |
-| 3 | Does every amount convert, and what does the quick fix do to the total? | Six dollar-text amounts; coerce leaves billed revenue $903 short, $668 in Q2 and $235 in Q3, and growth reads 5.7 percent against 5.5. |
+| 3 | Does every amount convert, and what does the quickest conversion do to the total? | Six dollar-text amounts; coerce leaves billed revenue $903 short, $668 in Q2 and $235 in Q3, and growth reads 5.7 percent against 5.5. |
 | 4 | Do the claims and the completed bookings describe the same visits? | Yes: 2,095 = 2,032 completed + 63 cancelled, and 2,032 claims match one to one; the raw join fans out to 2,065 rows and $5,458 too much. |
 | 5 | More claims, or a bigger mean claim? | More claims at a lower mean: 977 to 1,055 claims, $179.03 to $174.87; plus $13,964 and minus $4,389; per day, claims up 6.8 percent and billed revenue 4.3. |
 | 6 | Which site carried it, and where does the build stop? | The three sites add back to every claim and dollar; KH-NYC-02 billed 69 of the 78 extra claims; the build stops at what a claim holds. |
@@ -158,7 +158,7 @@ flowchart LR
 | Part | File | Who | What must be true at the end | If short of time |
 |---|---|---|---|---|
 | Build time, 160 | The group's own work; halfway through it, `checkpoints/C2_W03_D03_headline_claim_STUDENT.md` | Groups; the trainer circulates | Each group has drafted its headline claim in the sheet's shape and run it against the six tests | The draft claim moves earlier, never later |
-| The close, 20 | The headline sheet on screen, in markdown preview and zoomed; the presentation format deck, `content/W03/SAT/slides/C2_W03_SAT_presentation_format_STUDENT.pptx`, handed out; Thursday's mock brief and seat list sent to every learner | The trainer | Every group's sentence heard and written down word for word, or its blocker named, and every learner holding the mock brief and their slot | Skip the reply to any group whose sentence carries all four parts; every group still speaks, and the brief and the seat list still go out |
+| The close, 20 | The headline sheet on screen, in markdown preview and zoomed; the presentation format deck, `content/W03/SAT/slides/C2_W03_SAT_presentation_format_STUDENT.pptx`, handed out; Thursday's mock brief and seat list sent to every learner | The trainer | Every group's sentence heard and written down word for word, or its blocker named, and every learner holding the mock brief and their slot | Skip the reply to any group whose sentence and caveat carry all four parts; every group still speaks, and the brief and the seat list still go out |
 | After the second block | Open build time | The Academic TA and the TAs | Stuck groups first, on `checkpoints/C2_W03_D03_catchup_plan_TRAINER.md` | |
 
 Block two is 160 and 20, which is 180 minutes; a break of about ten minutes comes out of the build
@@ -182,8 +182,7 @@ period and its caveat."
 
 **Halfway through block two's build time.** "Write your headline claim now, in the four parts of
 Week 1 Thursday's note on the headline sheet, before it is finished. Run it against the six tests. A
-claim written now can still change; a claim first written at the close meets its first test in front
-of the room."
+claim written now can still change before the close."
 
 **The close.** "One member says the headline claim, a different member says the caveat. About a
 minute a group." Then, after the last group: "Tonight's task is the presentation skeleton on claim,
@@ -242,8 +241,8 @@ leave it there.
 
 **TRAINER ONLY.** `internal/C2_W03_D03_numbers_INTERNAL.py` recomputes every number below from the
 ten files and asserts each one, against the generator's witness where it prints the number, against
-the spine or Monday's day sheet where only they give it, and against the value this sheet quotes
-otherwise, and it ends on PASS. Nothing today confirms or denies a plant. Percentages
+the spine or Monday's day sheet where only they give it, and otherwise against a copy of the value
+this sheet quotes, kept in the script, and it ends on PASS. Nothing today confirms or denies a plant. Percentages
 are changes from Q2 to Q3 unless the row says otherwise.
 
 | Brief | What is planted | The numbers | Where a group meets it today | If nobody has found it by the close |
@@ -269,8 +268,8 @@ changes." Let another group on the same brief find it for itself.
 Twenty minutes, about a minute a group. One member says the headline claim and a different member
 says the caveat. Write each sentence down word for word; Thursday's viva and the weekend's panel
 start from these sentences. Say one thing to each group, chosen by the kind of headline claim it
-brings, and if the close runs long, skip the reply to any group whose sentence carries all four
-parts. Never give a verdict, never say whether a number matches this sheet, and never compare two
+brings, and if the close runs long, skip the reply to any group whose sentence and caveat carry all
+four parts. Never give a verdict, never say whether a number matches this sheet, and never compare two
 groups.
 
 | The headline claim you hear | What to say |
@@ -314,8 +313,8 @@ The notebook asks both questions with their tags and answers them on Kalpa Retai
 examples; the Kalpa Health example below stays with the trainer until Saturday is over.
 
 **[F] Two systems export the same entity with different id formats; how do you reconcile them?**
-"I profile both keys first, the shapes each system writes and how many rows carry each, then write
-one rule that maps every shape to one canonical key and apply it to both sides, leaving both exports
+"I profile both keys first, the formats each system writes and how many rows carry each, then write
+one rule that maps every format to one canonical key and apply it to both sides, leaving both exports
 untouched. I prove the rule: the match count before and after, an anti-join both ways, and every
 leftover classified as a real gap or a defect in the rule, with the grain checked so a repeated key
 cannot double a total, and the rule in the decisions log. When no rule maps one format to the other,
@@ -327,8 +326,8 @@ posting at all, each to be classified before anyone calls it unpaid. What loses 
 with no stated rule, or a match rate reported without the leftovers.
 
 **[D] State your finding in one sentence a COO can carry into a board meeting.** "Over Q2's 91 days
-and Q3's 92, New York's billed revenue rose 5.5 percent, from about $175,000 on 977 claims to about
-$184,000 on 1,055, carried by more claims at a slightly lower mean claim." Then the caveat alone on
+and Q3's 92, New York's billed revenue rose 5.5 percent, from about $174,900 on 977 claims to about
+$184,500 on 1,055, carried by more claims at a slightly lower mean claim." Then the caveat alone on
 the next line: billed is not collected, since the payers pay a contracted share weeks later. The
 number, both bases, the period and the branch that carried it sit in one sentence, rounded the way a
 board reads them, the caveat comes second, and nothing in it needs a chart.
@@ -349,7 +348,7 @@ board reads them, the caveat comes second, and nothing in it needs a chart.
 | A group asks what the rubric rewards | Point at the rubric on the headline sheet and read the line for the criterion it asks about. Never say where the group stands against it. |
 | Two groups on one brief reach opposite headline claims | Tell both to keep their caveats; the panel hears different answers to one question on purpose. |
 | The parallel build overruns | Follow the run sheet's cuts; never take the minutes from the checkpoint or the close. |
-| The close runs long | Skip the reply to any group whose sentence carries all four parts, and hear every group's sentence. A group that does not speak today enters tomorrow's viva with no headline claim. |
+| The close runs long | Skip the reply to any group whose sentence and caveat carry all four parts, and hear every group's sentence. A group that does not speak today enters tomorrow's viva with no headline claim. |
 | The seat list is not ready at the close | Send the mock brief at the close and the seat list the moment the Programme Head has filled the roster that evening; tell the room when to expect it. Thursday's open still hands out printed copies of both. |
 
 ## Which file serves which moment of the day?
