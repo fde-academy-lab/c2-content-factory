@@ -11,13 +11,16 @@ register is the one drawn from the bookings on 1 October 2026 (decision
 build1-register-from-bookings).
 
 Every number the day sheet, the checkpoint guide, the catch-up plan, the run sheet, the headline
-sheet and the parallel build quote is printed here under the file that quotes it, and every one is
-asserted. Where the generator's witness (python3 data/generate_kalpa_health.py --witness) carries
-the number, the script runs the generator, reads its witness and asserts the two agree; where only
-the spine or Monday's day sheet carries it, the figure is asserted against the value written there;
-and where neither carries it, the figure is asserted against the value this pack's files quote, so
-a file and the data can never part without a DRIFT line. It ends on PASS, or lists every number
-that drifted and ends on FAIL.
+sheet and the parallel build take from the data is printed here, and every one is asserted. Where
+the generator's witness (python3 data/generate_kalpa_health.py --witness) carries the number, the
+script runs the generator, reads its witness and asserts the two agree; where only the spine or
+Monday's day sheet carries it, the figure is asserted against the value written there; and where
+neither carries it, the figure is asserted against the pack list below, a copy of the value the
+pack's files quote, kept by hand, so a number that drifts in the data fails here. The script never
+reads the pack's files, so an edit to a quoted number needs the same edit to the pack list. Quest's
+figures rest on the dated source in the provenance, and the options' hours are the notebook's
+estimates, so neither is asserted. Shares are compared at the four places the script rounds them
+to. It ends on PASS, or lists every number that drifted and ends on FAIL.
 """
 import math
 import pathlib
@@ -482,7 +485,7 @@ def same(mine, theirs):
     if isinstance(theirs, (list, tuple)):
         return len(mine) == len(theirs) and all(same(a, b) for a, b in zip(mine, theirs))
     if isinstance(theirs, float):
-        return close(mine, theirs, 0.0006 if abs(theirs) < 10 else 0.006)
+        return close(mine, theirs, 0.00005 if abs(theirs) < 1 else 0.006)
     return mine == theirs
 
 
@@ -561,7 +564,13 @@ if __name__ == "__main__":
                ("others rate all visits", rates4[1][0] / rates4[1][1], W["others_rate_all_visits"]),
                ("small rate scheduled", rates4[2][0] / rates4[2][1], W["small_site_rate_scheduled"]),
                ("others rate scheduled", rates4[3][0] / rates4[3][1], W["others_rate_scheduled"])]
-    failed = [(name, mine, theirs) for name, mine, theirs in checks if not close(mine, theirs, 0.006 if "dollars" in name or "billed" in name or "sum" in name else 0.0005)]
+    def tolerance(name, theirs):
+        """Dollars and means to the cent the files print; shares exactly at four places."""
+        if "dollars" in name or "billed" in name or "sum" in name or abs(float(theirs)) >= 1:
+            return 0.006
+        return 0.00005
+
+    failed = [(name, mine, theirs) for name, mine, theirs in checks if not close(mine, theirs, tolerance(name, theirs))]
     # Figures only the spine or Monday's day sheet gives.
     spine = [
         ("New York repeated ids", OUT["ny rows, distinct ids, repeated ids"][2], 33),
@@ -618,6 +627,10 @@ if __name__ == "__main__":
          ((13639.65, -4064.65), -324.51, (13801.9, -4226.9))),
         ("New York per day change", OUT["ny per day change, claims and billed"], (0.0681, 0.0433)),
         ("New York per day slips", OUT["ny per day slips: Q2 as 90 days, the lengths swapped"], (0.0564, 0.0917)),
+        ("the [D] answer's rounded dollars and their growth",
+         (round(OUT["ny tree"]["Q2"]["sum"], -2), round(OUT["ny tree"]["Q3"]["sum"], -2),
+          round(round(OUT["ny tree"]["Q3"]["sum"], -2) / round(OUT["ny tree"]["Q2"]["sum"], -2) - 1, 3)),
+         (174900.0, 184500.0, 0.055)),
         ("New York distinct service days", OUT["ny distinct service days"], 183),
         ("New York sites", {k: v[0] for k, v in OUT["ny claims and billed by site"].items()},
          {("KH-NYC-01", "Q2"): 328, ("KH-NYC-01", "Q3"): 319, ("KH-NYC-02", "Q2"): 296,
@@ -647,7 +660,7 @@ if __name__ == "__main__":
          {"Chicago": 79, "Philadelphia": 64}),
         ("repeated ids and their dates", OUT["sp2 repeated ids, first and last booking date"], (180, "2026-06-01", "2026-09-26")),
         ("other metros' change", OUT["sp2 other metros' change in retail bookings"],
-         {"Dallas": 0.0774, "Phoenix": 0.1302, "New York": 0.0681, "Atlanta": 0.2121}),
+         {"Dallas": 0.0774, "Phoenix": 0.13, "New York": 0.0681, "Atlanta": 0.2123}),
         # Sub-problem 3.
         ("posting forms and kinds", OUT["sp3 posting rows, forms, kinds"][1:],
          ({"bare digits": 8858, "CLM-number": 2269, "the claim id": 216}, {"payment": 10101, "denial": 1137, "reversal": 105})),
