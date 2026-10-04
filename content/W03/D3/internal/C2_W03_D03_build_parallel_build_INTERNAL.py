@@ -30,10 +30,15 @@ cells = [
     diagnostics business, fictional and synthetic in every record. It runs a laboratory and two
     patient service centres, where patients have blood drawn, in each of six US metro areas, and its
     revenue-cycle and analytics work runs from Kalpa's Global Capability Centre (GCC) in Bengaluru,
-    where you work as trainee engineers in the data and AI team. A completed booking is billed as one claim, a bill
-    at Kalpa Health's list prices sent to whoever pays for the patient's tests: a commercial health
-    plan, Medicare, Medicaid or the patient. The quarters are calendar Q2 (April to June 2026) and
-    Q3 (July to September 2026), and every file is the export taken on Friday 16 October 2026.
+    where you work as trainee engineers in the data and AI team. A booking is one patient's visit to
+    have tests done, and a completed booking is billed as one claim: a bill at Kalpa Health's list
+    prices sent to the payer, whoever pays for the patient's tests, which is a commercial health
+    plan, Medicare (the federal programme for people aged 65 and over), Medicaid (each state's
+    programme for people on low incomes) or the patient. Today the word also names something else:
+    each group's headline claim, the one sentence it states at the day's close, so this notebook
+    says headline claim for the sentence and claim for the bill. The quarters are calendar Q2 (April
+    to June 2026) and Q3 (July to September 2026), and every file is the export taken on Friday 16
+    October 2026.
 
     > **The client asks.** "My dashboard says test volumes grew 5 percent from Q2 to Q3. The plan
     > the board approved asks for 18. Which branch of my business is short, and what do I do next?"
@@ -41,24 +46,23 @@ cells = [
     > Dr Priya Menon, chief operating officer, Kalpa Health
 
     Each of the five questions Dr Menon's heads have asked needs the same moves before it has a
-    claim: say what one row is, convert every amount, reconcile one file against another, and only
+    headline claim: say what one row is, convert every amount, reconcile one file against another, and only
     then split the number. This notebook runs those moves once, end to end, on a question smaller
     than any group's: New York's billed revenue, one metro of six. The metric at stake is **billed
     revenue**, the dollars on the claims at list prices, which splits into two leaves: how many
     claims were billed, and the mean claim, the average dollars on one claim. Quest Diagnostics, a
     US laboratory company, states its own growth the way this notebook ends, with the period and
-    both bases in one sentence (section 8).
+    both bases on the same page (section 8).
 
     **Who needs the answer.** The finance head, who writes the board's page on where the plan's
-    growth went and reads each metro's billed revenue as claims times the mean claim. A metro read
-    wrongly, as slower than it was because rows were counted as bookings, or with its totals swollen
-    because one file was joined to another twice, sends the recovery effort to a place that was never
-    short.
+    growth went and reads each metro's billed revenue as claims times the mean claim. A metro whose
+    growth is misread by a few points can be the one Dr Menon decides to fix, and the recovery effort
+    then goes to a place that was never short.
 
     **The questions on the way.**
     1. How could a team find what moved New York's billed revenue, and what does each way cost?
-    2. How many New York bookings does the export hold, once a row stops counting as a booking?
-    3. Does every New York amount convert to dollars, or does the total come out short without a warning?
+    2. How many New York bookings does the old booking export hold?
+    3. Does every New York amount convert to dollars, and what does the quick fix do to the total?
     4. Do the claims and the completed bookings describe the same visits, one to one?
     5. Did more claims or a bigger mean claim carry the change, and does it hold per day?
     6. Which New York site billed the extra claims, and where does this build stop?
@@ -70,8 +74,8 @@ cells = [
     two of the ten Kalpa Health files from Monday's data folder, `../../D1/data/`: the old booking
     system's export and the billing system's claims. Every value is read as text, so nothing is
     converted before it has been looked at, and the cell keeps each file's New York rows.
-    `quarter()` reads Q2 or Q3 from an ISO date, and `usd()` prints dollars the way a US price list
-    does.
+    `quarter()` reads Q2 or Q3 from an ISO date, one written year, month and day, such as
+    2026-07-01, and `usd()` prints dollars the way a US price list does.
     """),
     code(SETUP + '''
 import pandas as pd
@@ -115,8 +119,8 @@ kit.side_by_side(
 
     Billed revenue is what Kalpa Health asked the payers for, at list prices. At Kalpa Retail an
     order's amount was what the shopper paid at the till; at Kalpa Health the payers pay a contracted
-    share of a claim weeks later, so billed revenue is a request, and the money that arrives is a
-    smaller number for a different decision. The domain dossier, `content/W03/D1/study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`,
+    share of a claim weeks later, so billed revenue measures what Kalpa Health asked for, and the
+    money that arrives is a smaller number that answers a different decision. The domain dossier, `content/W03/D1/study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`,
     follows one claim from the list price to the cash in its section 3, for more depth. The finance
     head's question is what moved the billed number, and four ways could answer it.
 
@@ -127,10 +131,10 @@ kit.side_by_side(
     | C. The tree after reconciling | Keeps one row per booking, proves the claims match the completed bookings one to one, then splits | The booking export and the claims | The same split, plus a count of visits the finance head's analyst can audit | One booking id is one booking |
     | D. The tree on the booking export | Takes the export's rows as the volume and divides billed dollars by them | The booking export, and the claims' totals | A volume and the billed dollars per booking | Every row is one completed, billed booking |
 
-    **Predict before you run.** Which two options will report different growth in volume on the same
-    New York files? a) B and C, which read different files; b) B and D, which count different things;
-    c) none of them, since all three read the same quarters; d) all three, since each reads its own
-    rows.
+    **Predict before you run.** Which of the options will report different growth in volume on the
+    same New York files? a) B and C, since C reads a second file; b) B and D, since D counts the
+    export's rows; c) none, since the three that report a volume read the same two quarters; d) all
+    three that report a volume, since each reads different rows.
     """),
     code('''
 import time
@@ -146,38 +150,41 @@ kit.table(["Option", "Rows read", "Volume growth it reports", "What it would mis
             "A claim that is not a visit, or a visit never billed", "about 0.3"],
            ["C. The tree after reconciling", f"{len(bookings) + len(claims):,}", "B's figure, once proved or disproved",
             "Nothing these two files can show", "about 1"],
-           ["D. The tree on the booking export", f"{len(bookings):,}", f"{grow(rows_q):+.1%}, export rows",
-            "Cancelled bookings and repeated rows, counted as visits", "about 0.3"]],
+           ["D. The tree on the booking export", f"{len(bookings) + len(claims):,}", f"{grow(rows_q):+.1%}, export rows",
+            "Any row that is not one completed, billed booking", "about 0.3"]],
           caption=f"The four options, sized on New York's files as exported; both counts ran in {seconds:.3f} seconds")
 kit.columns(["B. claims", "D. export rows"], [("Q2", [claims_q["Q2"], rows_q["Q2"]]), ("Q3", [claims_q["Q3"], rows_q["Q3"]])],
-            title="Two cheap ways to count New York's volume, on the same two quarters")
+            title="New York's volume, counted two cheap ways", width=480)
 '''),
     md("""
     **What happened.** The answer is b. On the same quarters, the claims grow 8.0 percent and the
     export's rows 4.8 percent, so the two cheap ways disagree by more than three points before
     anyone has asked why. Option A cannot see the split at all. Every option runs in under a second
-    on these rows, so what separates them is an analyst's hour.
+    on these rows, so what separates them is an analyst's hour and what each would miss.
 
-    **The best-fit call.** C. Only a reconciliation can say which of B's and D's counts is New
-    York's volume, and it costs about 2,100 more rows and an hour against a number the finance head
-    will put on the board's page. D is out, since it assumes every row is one completed, billed
-    booking, which is exactly what C tests. **What would switch it.** A control total from Dr
-    Menon's data team, signed, saying the claims file holds one claim per completed booking and
-    nothing else, would make B enough and save the hour.
+    **The best-fit call** is C, because only a reconciliation can say which of B's and D's counts is
+    New York's volume. It reads both files, 2,128 more rows than B, and costs about 0.7 of an hour
+    more than B, against a number the finance head will put on the board's page. This is Week 1
+    Tuesday's first rung, confirm the number before explaining it, since two cheap counts that
+    disagree confirm nothing. D is out: it reads as many rows as C and assumes every row is one
+    completed, billed booking, which is exactly what C tests. **What would switch it.** A control
+    total from Dr Menon's data team, a signed count of what a file should hold, saying the claims
+    file holds one claim per completed booking and nothing else, would make B enough and save the
+    hour.
     """),
 
     # ----------------------------------------------------------------- 2: one row per booking
     md("""
-    ## 2. How many New York bookings does the export hold, once a row stops counting as a booking?
+    ## 2. How many New York bookings does the old booking export hold?
 
     Week 1 Wednesday's first move is the profile: what one row is, how many there are and what each
-    column holds, before anything is cleaned. A booking is one patient's visit to have tests done,
-    and the data dictionary says one row of this export is one booking. The export holds 2,128 New
-    York rows, and a hurried count calls that 2,128 bookings and moves on.
+    column holds, before anything is cleaned. The data dictionary says one row of this export is one
+    booking, and the export holds 2,128 New York rows.
 
     **Predict before you run.** How many New York bookings does the old export hold? a) exactly
-    2,128, one per row; b) fewer than 2,128; c) more than 2,128, since cancelled bookings sit in
-    another file; d) no way to tell until the claims file has been read.
+    2,128, since the data dictionary says one row is one booking; b) fewer than 2,128, if any
+    booking id appears on more than one row; c) more than 2,128, if some rows hold two bookings
+    each; d) no way to tell until the claims are read, since only a claim proves a booking happened.
     """),
     code('''
 def profile(df, columns):
@@ -229,9 +236,10 @@ kit.check("rows and bookings disagree on New York's growth", round(wrong, 3) != 
     **The fix: one rule for what makes a booking.** One `booking_id` is one booking, the Week 1
     Wednesday identity rule. Where two rows share an id, keep the row with the later `updated_at`,
     the system's latest word on the booking. Of the 33 pairs, 26 are identical in every field and 7
-    differ only in `updated_at`, so the rule loses no fact about any booking. Why a booking was
-    exported twice is a question for Dr Menon's data team; it goes into the challenges log as a
-    question, and the rule does not wait for the answer.
+    differ only in `updated_at`, so the rule loses no fact about any booking. Why a booking id
+    appears on two rows is a question for Dr Menon's data team; it goes into the challenges log, the
+    group's dated record of every obstacle and open question, as a question, and the rule does not
+    wait for the answer.
     """),
     code('''
 pairs = bookings[bookings["booking_id"].duplicated(keep=False)].groupby("booking_id")
@@ -252,38 +260,40 @@ kit.check("the kept rows hold one row per booking id", clean["booking_id"].is_un
 
     # ----------------------------------------------------------------- 3: amounts
     md("""
-    ## 3. Does every New York amount convert to dollars, or does the total come out short without a warning?
+    ## 3. Does every New York amount convert to dollars, and what does the quick fix do to the total?
 
-    Revenue can only be summed once every amount is a number, and a conversion that fails without a
-    message costs more than one that stops the run. The `billed_amount` column was read as text. The quick fix is
-    `pd.to_numeric(..., errors="coerce")`, which turns anything it cannot read into a blank and lets
-    the sum carry on. Week 1 Wednesday's rule for an amount that cannot be read was to reject it and
-    repair it only from a source that could not have copied the error, never to let it vanish.
+    Revenue can only be summed once every amount is a number. The `billed_amount` column was read as
+    text, and the quick fix many analysts reach for is `pd.to_numeric(..., errors="coerce")`. Week 1
+    Wednesday's rule for an amount that cannot be read was to reject it with its row named and to
+    repair it only from a source that could not have copied the error.
 
     **Predict before you run.** What does the coerced sum do to New York's billed revenue? a) it
     stops with an error at the first amount it cannot read; b) it matches the true total to the
-    dollar, since coerce only changes the type; c) it doubles, since text amounts are joined before
-    they are added; d) it comes out short, because a few amounts become blanks.
+    dollar, since coerce only changes the type; c) it comes out too high, since a text amount is
+    read twice; d) it comes out short, and nothing on the screen says so.
     """),
     code('''
 coerced = pd.to_numeric(claims["billed_amount"], errors="coerce")
 dropped = claims[coerced.isna()]
 wrong_total = coerced.groupby(claims["quarter"]).sum()
-kit.table(["What the coerced sum shows", "Q2", "Q3"],
-          [["Billed revenue (the plausible wrong answer)", usd(wrong_total["Q2"]), usd(wrong_total["Q3"])],
-           ["Amounts turned into blanks", f"{(dropped['quarter'] == 'Q2').sum()}", f"{(dropped['quarter'] == 'Q3').sum()}"]],
+kit.table(["What the coerced sum shows", "Q2", "Q3", "Growth"],
+          [["Billed revenue (the plausible wrong answer)", usd(wrong_total["Q2"]), usd(wrong_total["Q3"]),
+            f"{wrong_total['Q3'] / wrong_total['Q2'] - 1:+.1%}"],
+           ["Amounts turned into blanks", f"{(dropped['quarter'] == 'Q2').sum()}", f"{(dropped['quarter'] == 'Q3').sum()}", ""]],
           caption="New York's claims, coerced")
 print("The amounts coerce could not read:", ", ".join(dropped["billed_amount"]))
 '''),
     md("""
     **What happened.** The answer is d. Six amounts are written as text with a dollar sign and
-    cents, the way a spreadsheet prints currency, and coerce turned each into a blank: five in Q2 and
-    one in Q3. The Q2 total comes out $668 short and Q3 $235 short.
+    cents, the way a spreadsheet prints currency, and coerce turned each into a blank without a
+    message: five in Q2 and one in Q3. The Q2 total comes out $668 short and Q3 $235 short, and on
+    those totals New York's billed revenue grows 5.7 percent.
 
-    **Why it is wrong.** Nothing on the screen says anything was lost, so the finance head's books
-    and this notebook would disagree by $903 with no row to point at, and the board's page would
-    carry a number nobody can reconcile. The check that catches it counts the amounts that failed
-    to convert, which must be zero before any total is read. **The fix.** Remove the dollar sign
+    **Why it is wrong.** Nothing on the screen says anything was lost. The finance head would report
+    New York growing 5.7 percent where every amount, converted, gives 5.5, and the books and this
+    notebook would disagree by $903 with no row to point at, so the board's page would carry a
+    growth rate nobody can reconcile. The check that catches it counts the amounts that failed to
+    convert, which must be zero before any total is read. **The fix.** Remove the dollar sign
     and any comma, then convert strictly, so an amount still unreadable stops the run with its row
     named instead of vanishing.
     """),
@@ -291,10 +301,10 @@ print("The amounts coerce could not read:", ", ".join(dropped["billed_amount"]))
 claims["amount_usd"] = (claims["billed_amount"].str.replace("$", "", regex=False)
                         .str.replace(",", "", regex=False).astype(float))
 right_total = claims.groupby("quarter")["amount_usd"].sum()
-kit.table(["Billed revenue", "Q2", "Q3"],
-          [["Coerced (wrong)", usd(wrong_total["Q2"]), usd(wrong_total["Q3"])],
-           ["Every amount converted", usd(right_total["Q2"]), usd(right_total["Q3"])],
-           ["What the blanks hid", usd(right_total["Q2"] - wrong_total["Q2"]), usd(right_total["Q3"] - wrong_total["Q3"])]],
+kit.table(["Billed revenue", "Q2", "Q3", "Growth"],
+          [["Coerced (wrong)", usd(wrong_total["Q2"]), usd(wrong_total["Q3"]), f"{wrong_total['Q3'] / wrong_total['Q2'] - 1:+.1%}"],
+           ["Every amount converted", usd(right_total["Q2"]), usd(right_total["Q3"]), f"{right_total['Q3'] / right_total['Q2'] - 1:+.1%}"],
+           ["What the blanks hid", usd(right_total["Q2"] - wrong_total["Q2"]), usd(right_total["Q3"] - wrong_total["Q3"]), ""]],
           caption="New York's claims, the same rows summed two ways")
 kit.check("no amount is left unconverted", claims["amount_usd"].notna().all(), f"{len(claims):,} amounts")
 kit.check("the fix recovers exactly what coerce dropped",
@@ -341,8 +351,8 @@ kit.check("a join that declares its grain refuses the raw export", refused is no
 
     **Why it is wrong.** The join changed the grain, what one row stands for, from one row per claim
     to one row per export row without saying so, which is the Week 2 fan-out. The check that catches
-    it is `validate="one_to_one"`, which refuses the join the moment either side repeats a key, and
-    the cell above shows it refusing. **The fix.** Join the kept rows, with the grain declared, and
+    it is `validate="one_to_one"`, Week 2 Thursday's answer to "Which argument stops the merge?",
+    which refuses the join the moment either side repeats a key, as it did here. **The fix.** Join the kept rows, with the grain declared, and
     keep both sides visible with an outer join, so a booking with no claim and a claim with no
     booking would each show up instead of vanishing. Then write the reconciliation as Week 1
     Wednesday's arithmetic: rows read equal rows kept plus rows set aside, all the way down to the
@@ -366,7 +376,8 @@ kit.table(["Step", "Rows"],
            ["Cancelled bookings with a claim", f"{(matched['status'] == 'cancelled').sum()}"]],
           caption="New York, Q2 and Q3 together")
 kit.bridge(("rows read", len(bookings)), [("set aside", -set_aside), ("cancelled", -len(cancelled))],
-           end_label="completed = claims", fmt=lambda v: f"{v:,.0f}", lo=1800)
+           end_label="completed = claims", fmt=lambda v: f"{v:,.0f}", lo=1800,
+           title="From rows read to claims, New York; the axis starts at 1,800 rows")
 kit.check("rows read equal kept plus set aside", len(bookings) == len(clean) + set_aside)
 kit.check("every completed booking has exactly one claim",
           (matched["status"] == "completed").sum() == len(completed) == len(claims),
@@ -381,13 +392,14 @@ kit.check("no claim lacks a booking, and no cancelled booking is billed",
 
     Week 1 Monday's revenue tree splits a total into branches that multiply back to it, each a count
     over a denominator. For a lab's billed revenue the first split is claims times the mean claim,
-    where the mean claim is billed dollars over claims: a booking stands where an order stood, and a
-    claim where a bill stood. Sections 2 to 4 proved that the claims are New York's completed
-    bookings, one to one, so the claim count is a count of visits.
+    where the mean claim is billed dollars over claims: the claim count stands where Week 1's order
+    count stood, and the mean claim where the average order value stood. Sections 2 to 4 proved that
+    the claims are New York's completed bookings, one to one, so the claim count is a count of
+    visits. Section 1 counted the claims, and section 3 summed every amount.
 
     **Predict before you run.** Which leaf moved New York's billed revenue from Q2 to Q3? a) more
-    claims, at a lower mean claim; b) fewer claims, at a higher mean claim; c) more claims, at a
-    higher mean claim; d) as many claims, at a higher mean claim.
+    claims, at a lower mean claim; b) more claims, at the same mean claim; c) more claims, at a
+    higher mean claim; d) more claims, with the mean claim unknown until a claim's lines are opened.
     """),
     code('''
 tree = claims.groupby("quarter")["amount_usd"].agg(["count", "sum", "mean", "median"])
@@ -405,14 +417,17 @@ kit.driver_tree({"label": "Billed revenue", "note": f"{usd(q2['sum'])} to {usd(q
                  "children": [
                      {"label": "Claims", "note": f"{int(q2['count']):,} to {int(q3['count']):,}", "kind": "known",
                       "children": [{"label": "Bookings kept", "note": f"{kept_q['Q2']:,} to {kept_q['Q3']:,}", "kind": "known"},
-                                   {"label": "less cancelled", "note": f"{cancel_q['Q2']} to {cancel_q['Q3']}", "kind": "known"}]},
+                                   {"label": "minus cancelled", "note": f"{cancel_q['Q2']} to {cancel_q['Q3']}", "kind": "known"}]},
                      {"label": "Mean claim", "note": f"{usd(q2['mean'], cents=True)} to {usd(q3['mean'], cents=True)}",
                       "kind": "known",
-                      "children": [{"label": "What a claim holds", "note": "not opened in this build", "kind": "unknown"}]}]})
+                      "children": [{"label": "What a claim holds", "note": "not opened in this build", "kind": "unknown"}]}]},
+                title="Billed revenue = claims x mean claim; claims = bookings kept minus cancelled")
 volume = (q3["count"] - q2["count"]) * q2["mean"]
 value = q3["count"] * (q3["mean"] - q2["mean"])
 kit.bridge(("Q2 billed", q2["sum"]), [("more claims", round(volume)), ("lower mean", round(value))],
-           end_label="Q3 billed", lit=[0], lo=160000, fmt=lambda v: f"${v / 1000:,.1f}k")
+           end_label="Q3 billed", lit=[0], lo=160000,
+           fmt=lambda v: ("-" if v < 0 else "") + f"${abs(v) / 1000:,.1f}k",
+           title="Q2 to Q3 billed revenue in its two leaves; the axis starts at $160k")
 kit.check("the two leaves add up to the change in billed revenue", round(volume + value) == round(q3["sum"] - q2["sum"]),
           f"{usd(volume)} and {usd(value)}")
 kit.check("more claims and a lower mean, as predicted", q3["count"] > q2["count"] and q3["mean"] < q2["mean"])
@@ -420,17 +435,17 @@ kit.check("more claims and a lower mean, as predicted", q3["count"] > q2["count"
     md("""
     **What happened.** The answer is a. Claims rose 8.0 percent, from 977 to 1,055, and the mean
     claim fell 2.3 percent, from $179.03 to $174.87, so billed revenue rose 5.5 percent, from
-    $174,910 to $184,485. The bridge splits the $9,575 into its two leaves in tree order: the 78
-    extra claims at Q2's mean add $13,964, and Q3's lower mean across all 1,055 claims takes away
-    $4,389. The median claim stayed at $150, so the mean moved without a typical claim changing.
+    $174,910 to $184,485: billed revenue grew more slowly than the claims, so the mean claim had to
+    fall. The bridge, a chart that walks from one total to another in steps, splits the $9,575 into
+    its two leaves in tree order: the 78 extra claims at Q2's mean add $13,964, and Q3's lower mean
+    across all 1,055 claims takes away $4,389. The median claim stayed at $150, so the mean moved
+    without a typical claim changing.
 
-    **The plausible wrong answer.** "New York billed 8.0 percent more claims in Q3." It is true of
-    the totals and wrong as a pace. Q2 runs 91 days and Q3 runs 92, so one extra day of work sits
-    inside the 8.0 percent.
+    **A total, or a pace?** Q2 runs 91 days, April to June, and Q3 runs 92, July to September.
 
     **Predict before you run.** Per day, how much did New York's claims grow from Q2 to Q3? a) 8.0
-    percent, the same as the totals; b) it fell, once Q3's extra day is taken out; c) about 6.8
-    percent; d) about 9 percent.
+    percent, the same as the totals; b) about 5.6 percent; c) about 6.8 percent; d) about 9.2
+    percent.
     """),
     code('''
 days = {"Q2": 91, "Q3": 92}
@@ -440,16 +455,26 @@ kit.table(["Per day", "Q2, 91 days", "Q3, 92 days", "Change"],
            ["Billed revenue", usd(per_day["Q2"][1]), usd(per_day["Q3"][1]), move(per_day["Q2"][1], per_day["Q3"][1])]],
           caption="New York, the same totals over unequal quarters")
 kit.check("the two quarters are different lengths, so totals are not a pace", days["Q2"] != days["Q3"], "91 and 92 days")
+kit.check("New York bills claims on every calendar day of both quarters, so calendar days are the base",
+          claims["service_date"].nunique() == days["Q2"] + days["Q3"], f"{claims['service_date'].nunique()} distinct days")
 kit.check("per day, claims grow more slowly than the totals say",
           per_day["Q3"][0] / per_day["Q2"][0] < q3["count"] / q2["count"])
+slip = lambda d2, d3: (tree.loc["Q3", "count"] / d3) / (tree.loc["Q2", "count"] / d2) - 1
+print(f"Counting Q2 as 90 days gives {slip(90, 92):+.1%}; swapping the two lengths gives {slip(92, 91):+.1%}.")
 '''),
     md("""
     **What happened.** The answer is c. Per day, claims rose 6.8 percent and billed revenue 4.3
-    percent, about 1.2 points below the totals. **Why it is wrong.** A pace compared with a plan set
-    per month or per day is overstated by the extra day, and a claim that quotes totals has to say
-    the windows differ; Week 1 Tuesday's like-with-like rung asks for the same weeks or a rate per
-    day before any change is read. **The fix.** Quote the per-day change beside the totals, or
-    quote the totals with the window lengths in the same sentence.
+    percent, about 1.2 points below the totals. New York bills claims on all 183 calendar days of
+    the two quarters, so dividing by calendar days is fair here. Counting Q2 as 90 days gives 5.6
+    percent, and swapping the two lengths gives 9.2.
+
+    **The plausible wrong answer.** "New York billed 8.0 percent more claims in Q3." It is true of
+    the totals and wrong as a pace, since one extra day of work sits inside it. **Why it is
+    wrong.** A pace read from totals credits New York with a point of growth the calendar gave it,
+    so a finance head who sets it against a plan written per month or per day reads New York as
+    running faster than it did. Week 1 Tuesday's like-with-like rung asks for the same weeks, or a
+    rate per day, before any change is read. **The fix.** Quote the per-day change beside the
+    totals, or quote the totals with the window lengths in the same sentence.
     """),
 
     # ----------------------------------------------------------------- 6: where, and where to stop
@@ -457,13 +482,15 @@ kit.check("per day, claims grow more slowly than the totals say",
     ## 6. Which New York site billed the extra claims, and where does this build stop?
 
     Every booking carries its `site_code`, and New York has three sites: KH-NYC-01, its laboratory,
-    and two patient service centres, KH-NYC-02 and KH-NYC-03. Splitting the claims by site says where
-    inside New York the extra claims were billed, which is a question about place; it cannot say why
-    the mean claim fell.
+    and two patient service centres, KH-NYC-02 and KH-NYC-03. This is Week 1 Tuesday's isolate rung:
+    once the tree has split the change into its leaves, find where it sits. Splitting the claims by
+    site says where inside New York the extra claims were billed, which is a question about place;
+    it cannot say why the mean claim fell.
 
-    **Predict before you run.** Which New York site billed most of the 78 extra claims? a) KH-NYC-01,
-    the laboratory, where samples are tested; b) KH-NYC-02, a patient service centre; c) KH-NYC-03,
-    the other patient service centre; d) all three sites about equally.
+    **Predict before you run.** Split by site, will the three sites' claims add back to New York's
+    977 and 1,055? a) yes, exactly, since every kept booking names one site; b) no, short by the 63
+    cancelled bookings; c) no, over by the laboratory's claims, which are counted twice; d) no,
+    short by the 33 rows the identity rule set aside.
     """),
     code('''
 by_site = (clean.merge(claims, on="booking_id", validate="one_to_one", suffixes=("", "_clm"))
@@ -482,9 +509,10 @@ kit.check("the sites add back to the metro, in claims and dollars",
           f"{by_site['count'].sum():,} claims, {usd(by_site['sum'].sum())}")
 '''),
     md("""
-    **What happened.** The answer is b. KH-NYC-02 billed 69 more claims, 296 to 365, KH-NYC-03
-    billed 18 more, and the laboratory, KH-NYC-01, billed 9 fewer, so one patient service centre
-    carried most of New York's growth in volume. **Where this build stops.** Below the mean claim sits what each claim
+    **What happened.** The answer is a: the three sites add back to 977 and 1,055 claims and to
+    every dollar, since each claim's booking names one site. KH-NYC-02 billed 69 more claims, 296 to
+    365, KH-NYC-03 billed 18 more, and the laboratory, KH-NYC-01, billed 9 fewer, so one patient
+    service centre carried most of New York's growth in volume. **Where this build stops.** Below the mean claim sits what each claim
     holds, and why the mean fell is a question the claims alone cannot answer. It goes into the
     challenges log as an open question for the branch below, which this build does not open.
     """),
@@ -495,46 +523,60 @@ kit.check("the sites add back to the metro, in claims and dollars",
 
     A second route earns its place only if it could fail where the first route is wrong. This one
     runs the whole build again in SQL, in SQLite, a database engine that ships inside Python, so the
-    query runs with no server: Week 2 Wednesday's `ROW_NUMBER()` keeps one row per booking, Week 2
-    Tuesday's join is made on the kept rows, and Week 2 Monday's tree is one `GROUP BY`. It shares
-    no code with the pandas cells above. SQLite turns text it cannot read into 0 without a word, the
-    same silence as coerce, so the query strips the dollar sign before the cast and a check counts
-    any amount still holding something other than digits and a point.
+    query runs with no server. It loads the two raw files itself with Python's `csv` module, keeps
+    New York and works out each quarter from the month in SQL, keeps one row per booking with Week 2
+    Wednesday's `ROW_NUMBER()`, partitioned by booking id and kept at 1, makes Week 2 Tuesday's join
+    on the kept rows, and builds Week 2 Monday's tree as one `GROUP BY`. It shares no code with the
+    pandas cells above. SQLite's `CAST` reads only the leading number in a text and drops the rest
+    without a word, so "$170.00" would become 0, the same silence as coerce; the query strips the
+    dollar sign and any comma before the cast, and a check counts any amount in the file still
+    holding something other than digits and a point.
     """),
     code('''
+import csv
 import sqlite3
 
+# The raw files, loaded as text by the csv module: nothing from the pandas cells is reused.
 con = sqlite3.connect(":memory:")
-bookings.drop(columns=["quarter"]).to_sql("bookings", con, index=False)
-claims[["claim_id", "booking_id", "service_date", "billed_amount"]].to_sql("claims", con, index=False)
+for table, name in [("bookings", "C2_W03_D01_bookings_legacy_STUDENT.csv"), ("claims", "C2_W03_D01_claims_STUDENT.csv")]:
+    with open(DATA / name, newline="", encoding="utf-8") as f:
+        rows = list(csv.reader(f))
+    columns = ", ".join(c + " TEXT" for c in rows[0])
+    con.execute(f"CREATE TABLE {table} ({columns})")
+    con.executemany(f"INSERT INTO {table} VALUES ({', '.join('?' * len(rows[0]))})", rows[1:])
 query = """
 WITH ranked AS (
-  SELECT *, ROW_NUMBER() OVER (PARTITION BY booking_id ORDER BY updated_at DESC) AS n FROM bookings),
+  SELECT *, ROW_NUMBER() OVER (PARTITION BY booking_id ORDER BY updated_at DESC) AS n
+  FROM bookings WHERE metro = 'New York'),
 kept AS (SELECT * FROM ranked WHERE n = 1 AND status = 'completed')
-SELECT CASE WHEN c.service_date < '2026-07-01' THEN 'Q2' ELSE 'Q3' END AS quarter,
+SELECT CASE WHEN CAST(substr(c.service_date, 6, 2) AS INTEGER) BETWEEN 4 AND 6 THEN 'Q2'
+            WHEN CAST(substr(c.service_date, 6, 2) AS INTEGER) BETWEEN 7 AND 9 THEN 'Q3' END AS quarter,
        COUNT(*) AS claims,
        ROUND(SUM(CAST(REPLACE(REPLACE(c.billed_amount, '$', ''), ',', '') AS REAL)), 2) AS billed
 FROM kept JOIN claims c ON c.booking_id = kept.booking_id
 GROUP BY quarter ORDER BY quarter"""
-sql_tree = pd.read_sql_query(query, con).set_index("quarter")
+sql_tree = {quarter: (n, billed) for quarter, n, billed in con.execute(query)}
 unreadable = con.execute("""SELECT COUNT(*) FROM claims
-    WHERE REPLACE(REPLACE(REPLACE(billed_amount, '$', ''), ',', ''), '.', '') GLOB '*[^0-9]*'""").fetchone()[0]
+    WHERE REPLACE(REPLACE(REPLACE(billed_amount, '$', ''), ',', ''), '.', '') GLOB '*[^0-9]*'
+       OR billed_amount = ''""").fetchone()[0]
 kit.table(["Route", "Q2 claims", "Q3 claims", "Q2 billed", "Q3 billed"],
           [["pandas, sections 2 to 5", f"{int(q2['count']):,}", f"{int(q3['count']):,}", usd(q2["sum"]), usd(q3["sum"])],
-           ["SQL in SQLite", f"{sql_tree.loc['Q2', 'claims']:,}", f"{sql_tree.loc['Q3', 'claims']:,}",
-            usd(sql_tree.loc["Q2", "billed"]), usd(sql_tree.loc["Q3", "billed"])]],
-          caption="Two routes from the same raw files")
-kit.check("no amount reaches the SQL cast still holding text", unreadable == 0, f"{unreadable} unreadable")
+           ["SQL in SQLite, from the raw files", f"{sql_tree['Q2'][0]:,}", f"{sql_tree['Q3'][0]:,}",
+            usd(sql_tree["Q2"][1]), usd(sql_tree["Q3"][1])]],
+          caption="Two routes, each reading the raw files with its own code")
+kit.check("no amount in the claims file reaches the SQL cast still holding text", unreadable == 0, f"{unreadable} unreadable")
 kit.check("SQL and pandas agree on the claims in each quarter",
-          sql_tree["claims"].tolist() == [int(q2["count"]), int(q3["count"])])
+          [sql_tree["Q2"][0], sql_tree["Q3"][0]] == [int(q2["count"]), int(q3["count"])])
 kit.check("SQL and pandas agree on billed revenue to the cent",
-          sql_tree["billed"].round(2).tolist() == [round(q2["sum"], 2), round(q3["sum"], 2)])
+          [round(sql_tree["Q2"][1], 2), round(sql_tree["Q3"][1], 2)] == [round(q2["sum"], 2), round(q3["sum"], 2)])
 '''),
     md("""
     **What happened.** Both routes land on 977 and 1,055 claims and on $174,910 and $184,485, to the
-    cent. The SQL route chose the kept row with its own rule, converted the amounts with its own
-    code and joined with its own engine, so an error in the pandas cells would have shown here as a
-    gap. **When to switch.** On the warehouse in Week 2 the SQL route was the first route, since
+    cent. The SQL route read the files, kept New York, chose the kept row, converted the amounts and
+    gave each claim its quarter with its own code, so a slicing, period, parsing or summing error in
+    the pandas cells would have shown here as a gap. It cannot catch an error in a rule both routes
+    share on purpose: one booking id is one booking, the latest `updated_at` wins, and a claim
+    belongs to the quarter of its service date. **When to switch.** On the warehouse in Week 2 the SQL route was the first route, since
     Finance's number belongs where Finance can rerun it; on two CSV files and an hour of build time,
     pandas leads and SQL checks.
     """),
@@ -544,26 +586,30 @@ kit.check("SQL and pandas agree on billed revenue to the cent",
     ## 8. What sentence can the finance head carry, with its denominators, its period and its caveat?
 
     Week 1 Thursday's note runs claim, evidence, caveat, action, claim first, because a reader with
-    two minutes reads the first line and stops. The claim carries its number, its denominators (the
-    claims in each quarter), its period (Q2 against Q3) and its reason; the caveat goes on its own
-    line below and is never folded into the claim.
+    two minutes reads the first line and stops. The headline claim carries its number, its
+    denominators (the claims in each quarter), its period (Q2's 91 days against Q3's 92) and the
+    branch that carried the change; the caveat goes on its own line below and is never folded into
+    the claim.
 
     | Part | New York, Q2 against Q3 |
     |---|---|
-    | **Claim** | New York's billed revenue rose 5.5 percent, from $174,910 on 977 claims in Q2 to $184,485 on 1,055 claims in Q3, because it billed 78 more claims at a mean claim $4.16 lower. |
-    | **Evidence** | The old export's 2,128 New York rows are 2,095 bookings under one identity rule; the 2,032 completed bookings match the 2,032 claims one to one; every amount converts; SQL on the raw files reaches the same claims and dollars; the bridge splits the $9,575 into $13,964 from more claims and minus $4,389 from the lower mean. |
-    | **Caveat** | Billed revenue is list price, and the payers pay a contracted share of it, so this is not money collected; Q3 has 92 days to Q2's 91, so per day billed revenue rose 4.3 percent. Why the mean claim fell is not yet known. |
-    | **Action** | Report New York as growing on claim volume, and open the branch below the mean claim before calling the lower mean a price or a mix change. |
+    | **Headline claim** | Over Q2's 91 days and Q3's 92, New York's billed revenue rose 5.5 percent, from $174,910 on 977 claims to $184,485 on 1,055 claims, carried by 78 more claims at a mean claim $4.16 lower. |
+    | **Evidence** | The old export's 2,128 New York rows are 2,095 bookings under one identity rule; the 2,032 completed bookings match the 2,032 claims one to one; every amount converts; SQL on the raw files reaches the same claims and dollars; the bridge splits the $9,575 into $13,964 from more claims and minus $4,389 from the lower mean; per day, billed revenue rose 4.3 percent. |
+    | **Caveat** | Billed revenue is list price, and the payers pay a contracted share of it weeks later, so the money collected may have grown by more or less than 5.5 percent. |
+    | **Action** | Report New York as growing on claim volume, and open the branch below the mean claim to learn why it fell before anyone calls the lower mean a price or a mix change. |
 
     A listed lab writes growth the same way. Quest Diagnostics' annual report for 2025 gives net
     revenues of $11,035 million against $9,872 million for 2024 and says they "increased by 11.8%
-    compared to the prior year", with the period and both bases on the page. Its revenue is an
-    estimate that includes "the impact of contractual allowances (including payer denials), and
-    patient price concessions", so what a US lab reports as revenue is what it expects to collect,
-    below its list-price charges, and that is why New York's claim says billed.
+    compared to the prior year", with the period and both bases on the page. Its next sentence does
+    the work of a caveat line: "organic growth was 5.3% compared to the prior year", the growth that
+    did not come from its recent acquisitions. Its revenue is an estimate that includes "the impact
+    of contractual allowances (including payer denials), and patient price concessions", so what a
+    US lab reports as revenue is what it expects to collect, below its list-price charges, and that
+    is why New York's headline claim says billed.
 
-    The decisions log follows the Week 1 Wednesday shape, one row per decision, and it includes a
-    row that was kept as it was.
+    The decisions log has one row per decision, in the columns of the log every group opened on
+    Monday: Week 1 Wednesday's rule, the rows it moved and its reason, with the field and the issue
+    added. It includes a row that was kept as it was.
     """),
     code('''
 kit.table(["Field", "Issue", "Rows", "Decision", "Reason"],
@@ -579,9 +625,12 @@ kit.table(["Field", "Issue", "Rows", "Decision", "Reason"],
 kit.vflow([f"Billed revenue\\n{usd(q2['sum'])} to {usd(q3['sum'])}, +5.5%",
            f"Claims x mean claim\\n977 to 1,055 claims, {usd(q2['mean'], cents=True)} to {usd(q3['mean'], cents=True)}",
            "What a claim holds\\nthe next branch, not opened here"],
-          kinds=["lit", "known", "unknown"])
+          kinds=["lit", "known", "unknown"], title="Where the headline claim stops")
 '''),
     md("""
+    Kavya Nair, the senior analyst on the team at the GCC, checks every number before it leaves the
+    team.
+
     > **Kavya's review.** "I want the count you started from, every row you set aside with its
     > reason, and a second way to the same total. You have 2,128 rows read, 33 set aside and 63
     > cancelled, and SQL lands on the same 2,032 claims and $359,395. Now tell me why the mean fell
@@ -590,63 +639,87 @@ kit.vflow([f"Billed revenue\\n{usd(q2['sum'])} to {usd(q3['sum'])}, +5.5%",
     ### In the interview: how do you reconcile two systems' ids, and how do you say a finding in one sentence?
 
     **[F] Two systems export the same entity with different id formats; how do you reconcile them?**
-    "I profile both keys before any join: the shapes each system writes and how many rows carry
-    each, because a shape I have not counted is a shape my rule will miss. Then I write one rule
-    that maps every shape to one canonical key and apply it to both sides, leaving both exports
+    "I profile both keys before any join: the formats each system writes and how many rows carry
+    each, because a format I have not counted is one my rule will miss. Then I write one rule that
+    maps every format to one canonical key and apply it to both sides, leaving both exports
     untouched. I prove the rule on the rows: the match count before and after, an anti-join in both
     directions, and every leftover classified as a real gap or a defect in the rule. On the way I
     check the grain, so a key repeated on one side cannot double a total, and the rule goes in the
-    decisions log so the finance team can rerun it. Sometimes no rule exists: Kalpa Retail's
-    campaign platform keyed its August list C-6000 to C-6159 and Finance's order file keyed its
-    customers C-2000 to C-5003, so a profile of the two keys shows two populations, and no rule
-    can make them match."
+    decisions log so the finance team can rerun it. When no rule maps one format to the other, I ask
+    the owner of one system for a crosswalk, a table that maps its ids to the other's, and I report
+    the share still unmatched beside every number I give. The profile also catches keys that look
+    alike and belong to different populations: Kalpa Retail's campaign platform keyed its August
+    list C-6000 to C-6159 while Finance's order file keyed its customers C-2000 to C-5003, so no row
+    could match, and the profile showed it before any join was trusted."
     Here the booking system and the billing system happened to write `booking_id` the same way, and
     the proof was the same: one to one, both directions, every leftover named.
 
-    **[D] State your finding in one sentence a COO can carry into a board meeting.** "New York's
-    billed revenue rose 5.5 percent, from $174,910 on 977 claims in Q2 to $184,485 on 1,055 in Q3,
-    because it billed more claims at a slightly lower mean." Then the caveat, alone on the next
-    line: billed is not collected, and per day the rise is 4.3 percent. The number, both bases, the
-    period and the reason sit in one sentence, and nothing in it needs a chart to be understood.
+    **[D] State your finding in one sentence a COO can carry into a board meeting.** "Over Q2's 91
+    days and Q3's 92, New York's billed revenue rose 5.5 percent, from about $175,000 on 977 claims
+    to about $184,000 on 1,055, carried by more claims at a slightly lower mean claim." Then the
+    caveat, alone on the next line: billed is not collected, since the payers pay a contracted share
+    weeks later. The number, both bases, the period and the branch that carried it sit in one
+    sentence, rounded the way a board reads them with the exact figures in the evidence, and nothing
+    in it needs a chart to be understood.
 
+    """),
+    md("""
     ### Depth: does the bridge's split depend on which leaf moves first?
 
-    It does. In tree order, the volume leaf is priced at Q2's mean and the mean leaf is counted on
-    Q3's claims: $13,964 and minus $4,389. Reversed, the extra 78 claims are priced at Q3's lower
-    mean, $13,640, and the mean's fall is counted on Q2's 977 claims, minus $4,065. Both orders add
-    to $9,575, and the $324 between them is the joint part, the change that exists only because both
-    leaves moved at once. The symmetric split gives each leaf half of it: $13,802 and minus $4,227.
-    Week 1 Tuesday chose the tree order and stated it, since a report that does not state its order
-    leaves $324 of the split unexplained.
+    It does, and the table below works out both orders. In tree order, the volume leaf is priced at
+    Q2's mean and the mean leaf is counted on Q3's claims: $13,964 and minus $4,389. Reversed, the
+    extra 78 claims are priced at Q3's lower mean, $13,640, and the mean's fall is counted on Q2's
+    977 claims, minus $4,065. Both orders add to $9,575, and the $324.51 between them is the joint
+    part, the 78 extra claims times the $4.16 fall in the mean, the change that exists only because
+    both leaves moved at once. The symmetric split gives each leaf half of it: $13,802 and minus
+    $4,227. Week 1 Tuesday chose the tree order and stated it, since a report that does not state
+    its order leaves $324.51 of the split unexplained.
     """),
+    code('''
+d_claims, d_mean = q3["count"] - q2["count"], q3["mean"] - q2["mean"]
+orders = [["Tree order: volume at Q2's mean, mean on Q3's claims", usd(d_claims * q2["mean"]), usd(q3["count"] * d_mean)],
+          ["Reversed: volume at Q3's mean, mean on Q2's claims", usd(d_claims * q3["mean"]), usd(q2["count"] * d_mean)],
+          ["Symmetric: each leaf takes half the joint part", usd(d_claims * (q2["mean"] + q3["mean"]) / 2),
+           usd(d_mean * (q2["count"] + q3["count"]) / 2)]]
+kit.table(["Order", "More claims", "Lower mean"], orders, caption="New York's $9,575, split three ways")
+joint = d_claims * d_mean
+print(f"The joint part: {d_claims:.0f} extra claims times {usd(d_mean, cents=True)} = {usd(joint, cents=True)}")
+kit.check("every order adds back to the change in billed revenue",
+          all(round(a + b, 2) == round(q3["sum"] - q2["sum"], 2) for a, b in
+              [(d_claims * q2["mean"], q3["count"] * d_mean), (d_claims * q3["mean"], q2["count"] * d_mean)]))
+'''),
     md("""
     ## So did New York's billed revenue grow from Q2 to Q3, and did more claims or bigger claims carry it?
 
     1. Option C, the tree after reconciling, because the claims (up 8.0 percent) and the export's
        rows (up 4.8 percent) disagree and only a reconciliation can say which counts New York's
-       volume; it reads 4,160 rows against 2,032.
+       volume; option C reads both files, 4,160 rows, against option B's 2,032 claims, for about
+       0.7 of an hour more.
     2. The export holds 2,095 bookings in 2,128 rows: 33 ids appear twice, 26 of the extra rows in
        Q2, so bookings grew 6.8 percent where rows grew 4.8.
     3. Six amounts were dollar text, and coerce left billed revenue $903 short, $668 in Q2 and $235
-       in Q3; removing the dollar sign and converting strictly recovers every dollar.
+       in Q3, so growth read 5.7 percent against 5.5; removing the dollar sign and converting
+       strictly recovers every dollar.
     4. Yes: 2,095 bookings are 2,032 completed and 63 cancelled, and the 2,032 completed match
        2,032 claims one to one; the raw join fans out to 2,065 rows and $5,458 too much.
     5. More claims at a lower mean: claims up 8.0 percent and the mean claim down 2.3 percent, so
-       $13,964 more from volume and $4,389 less from the mean; per day, claims rose 6.8 percent and
-       billed revenue 4.3.
-    6. KH-NYC-02, a patient service centre, billed 69 of the extra claims, and the build stops at
-       what a claim holds, with why the mean fell logged as an open question.
+       $13,964 more from volume and $4,389 less from the mean; per day, over 91 and 92 days, claims
+       rose 6.8 percent and billed revenue 4.3.
+    6. The three sites add back to every claim and dollar, KH-NYC-02, a patient service centre,
+       billed 69 of the extra claims, and the build stops at what a claim holds, with why the mean
+       fell logged as an open question.
     7. Yes: SQL in SQLite reaches 977 and 1,055 claims and $174,910 and $184,485, to the cent.
-    8. "New York's billed revenue rose 5.5 percent, from $174,910 on 977 claims in Q2 to $184,485
-       on 1,055 claims in Q3, because it billed 78 more claims at a mean claim $4.16 lower", with
-       the caveat on its own line: billed is not collected, and per day the rise is 4.3 percent.
+    8. "Over Q2's 91 days and Q3's 92, New York's billed revenue rose 5.5 percent, from $174,910 on
+       977 claims to $184,485 on 1,055 claims, carried by 78 more claims at a mean claim $4.16
+       lower", with the caveat on its own line: billed is not collected, so the money collected may
+       have grown by more or less.
 
     New York's billed revenue grew 5.5 percent, $9,575, and more claims carried it: 78 more claims
     added $13,964 while a mean claim $4.16 lower took $4,389 away.
     """),
     code('''
 kit.check_summary()
-print("Next: your group's own question, run through the same moves, with its claim ready for the close.")
+print("Next: your group's own question, run through the same moves, with its headline claim ready for the close.")
 '''),
 ]
 
