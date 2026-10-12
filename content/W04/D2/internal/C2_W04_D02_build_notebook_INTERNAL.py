@@ -53,7 +53,8 @@ with, and the city keeps paying for idle hours.
 5. How many drivers must be online at the evening peak, and which assumption moves the answer most?
 6. Is the estimate sane when checked like for like against the case's own data?"""),
 
-    new_code_cell("""import pandas as pd
+    new_code_cell("""# Load the two tables and define check, the one helper this notebook uses.
+import pandas as pd
 import matplotlib.pyplot as plt
 pd.set_option("display.width", 140)                                  # keep each table on one block
 
@@ -80,7 +81,8 @@ explain most of that fall?
 - c) E and F, Monday's two idle-tail drivers
 - d) All six about equally"""),
 
-    new_code_cell("""t = rows.groupby("window")[["peak_online_hours", "peak_trips", "peak_bookings_rs"]].sum()
+    new_code_cell("""# Sum the twelve rows by window, then divide the same rupees by hours, driver-weeks and trips.
+t = rows.groupby("window")[["peak_online_hours", "peak_trips", "peak_bookings_rs"]].sum()
 t["driver_weeks"] = rows.groupby("window").size()
 t["rs_per_hour"] = (t.peak_bookings_rs / t.peak_online_hours).round(1)
 t["rs_per_driver_week"] = t.peak_bookings_rs / t.driver_weeks
@@ -116,7 +118,8 @@ carry after the launch?
 - c) About 10 more
 - d) Fewer than before"""),
 
-    new_code_cell("""w = weeks.groupby("window")[["peak_online_hours", "peak_trips", "peak_bookings_rs", "active_driver_weeks"]].sum()
+    new_code_cell("""# The same three reads on every driver-week in the city, with hours per driver-week beside them.
+w = weeks.groupby("window")[["peak_online_hours", "peak_trips", "peak_bookings_rs", "active_driver_weeks"]].sum()
 w = w.loc[["before", "after"]]
 w["rs_per_hour"] = w.peak_bookings_rs / w.peak_online_hours
 w["rs_per_driver_week"] = w.peak_bookings_rs / w.active_driver_weeks
@@ -149,7 +152,8 @@ see which group moved the read.
 Rupees per hour is also the average fare times the trips each online hour carried. The two routes
 always agree, since the second is the first split in two; what the split shows is which half moved."""),
 
-    new_code_cell("""groups = pd.read_csv("../data/C2_W04_D02_driver_groups_STUDENT.csv")  # Monday's rows, split by joined_month
+    new_code_cell("""# Split the city by when drivers joined, then rebuild rupees per hour as fare x trips per hour.
+groups = pd.read_csv("../data/C2_W04_D02_driver_groups_STUDENT.csv")  # Monday's rows, split by joined_month
 groups["rs_per_driver_week"] = (groups.peak_bookings_rs / groups.driver_weeks).round(0).astype(int)
 groups["hours_per_driver_week"] = (groups.peak_online_hours / groups.driver_weeks).round(1)
 print(groups[["window", "group", "driver_weeks", "rs_per_driver_week", "hours_per_driver_week"]])
@@ -178,7 +182,8 @@ divided by 20 or 100 to fit, a legend away from the lines, gridlines, and a titl
 The clear version keeps one series, the one the scheme pays per, draws the launch, labels the two
 windows' values on the lines, and makes the title a sentence."""),
 
-    new_code_cell("""x = range(len(weeks))
+    new_code_cell("""# Draw the series cluttered, then the makeover: one series, the launch, two labels, a sentence title.
+x = range(len(weeks))
 labels = pd.to_datetime(weeks.week_start).dt.strftime("%d %b")
 
 fig, ax = plt.subplots(figsize=(9, 4.5))                      # before: everything at once
@@ -236,7 +241,8 @@ to the answer?
 - c) It does not change, since the buffer absorbs it
 - d) It halves"""),
 
-    new_code_cell("""ledger = pd.DataFrame([   # assumption: central, low, high, and why
+    new_code_cell("""# The ledger: every guess with its range, then the chain run on every version of the ledger.
+ledger = pd.DataFrame([   # assumption: central, low, high, and why
     ("people in the city",               10_000_000, 9_000_000, 11_000_000, "the metro area, a round number"),
     ("weekday Uber trips per person",    0.01,       0.005,     0.015,      "1 trip for every 100 people"),
     ("share of trips in the evening",    0.25,       0.20,      0.30,       "the evening commute"),
@@ -245,24 +251,28 @@ to the answer?
     ("buffer for the busiest half hour", 1.15,       1.10,      1.25,       "the peak inside the peak"),
 ], columns=["assumption", "central", "low", "high", "why"]).set_index("assumption")
 
-def drivers(v):
-    trips_an_hour = v[0] * v[1] * v[2] / 3
-    return trips_an_hour / (v[3] * (1 - v[4])) * v[5]
-
-central = drivers(list(ledger.central))
-doubled = list(ledger.central); doubled[1] = 0.02
-swing = {}
-for i, name in enumerate(ledger.index):
-    ends = []
+versions = pd.DataFrame([ledger.central.values], index=["central"], columns=ledger.index)
+for name in ledger.index:                       # one row per version: one guess moved to an end
     for end in ("low", "high"):
-        v = list(ledger.central); v[i] = ledger.loc[name, end]; ends.append(drivers(v))
-    swing[name] = (min(ends), max(ends))
-swing = pd.DataFrame(swing, index=["lowest", "highest"]).T.round(-2).astype(int)
+        versions.loc[f"{name}, {end}"] = ledger.central
+        versions.loc[f"{name}, {end}", name] = ledger.loc[name, end]
+versions.loc["2 trips per 100 people"] = ledger.central
+versions.loc["2 trips per 100 people", "weekday Uber trips per person"] = 0.02
+
+v = versions                                    # the chain, run down every row at once
+trips_an_hour = v["people in the city"] * v["weekday Uber trips per person"] * v["share of trips in the evening"] / 3
+versions["drivers"] = (trips_an_hour / (v["trips a busy driver fits an hour"] * (1 - v["idle share"]))
+                       * v["buffer for the busiest half hour"])
+central = versions.loc["central", "drivers"]
+doubled = versions.loc["2 trips per 100 people", "drivers"]
+ends = pd.DataFrame({end: [versions.loc[f"{name}, {end}", "drivers"] for name in ledger.index]
+                     for end in ("low", "high")}, index=ledger.index)
+swing = pd.DataFrame({"lowest": ends.min(axis=1), "highest": ends.max(axis=1)}).round(-2).astype(int)
 swing["width"] = swing.highest - swing.lowest
 swing = swing.sort_values("width")
 print(ledger[["why"]])
 print(f"trips an hour: {10_000_000 * 0.01 * 0.25 / 3:,.0f}; drivers online: {central:,.0f}; "
-      f"at 2 trips per 100 people: {drivers(doubled):,.0f}")
+      f"at 2 trips per 100 people: {doubled:,.0f}")
 print(swing[["lowest", "highest"]])
 
 fig, ax = plt.subplots(figsize=(9, 4))
@@ -273,7 +283,7 @@ ax.set_xlabel("drivers online at the weekday evening peak")
 ax.set_title("Which assumption moves the answer most?", loc="left")
 plt.show()
 check("about 5,700 drivers at the central values", round(central, -2) == 5700)
-check("doubling trips per person doubles the answer", abs(drivers(doubled) / central - 2) < 1e-9)
+check("doubling trips per person doubles the answer", abs(doubled / central - 2) < 1e-9)
 check("trips per person moves the answer most", swing.index[-1] == "weekday Uber trips per person")"""),
 
     new_markdown_cell("""**What happened.** The answer is a: the chain is a product, so doubling one factor doubles the
@@ -292,7 +302,8 @@ counted the same way on both sides: online driver-hours per completed trip. No s
 ledger holds a published count of Uber drivers online at Hyderabad's evening peak, so that slot stays
 "to be found"."""),
 
-    new_code_cell("""case = weeks.groupby("window")[["peak_online_hours", "peak_trips"]].sum().loc[["before", "after"]]
+    new_code_cell("""# Check the chain like for like against the case's driver-hours per trip, then a month's own days.
+case = weeks.groupby("window")[["peak_online_hours", "peak_trips"]].sum().loc[["before", "after"]]
 per_trip = case.peak_online_hours / case.peak_trips          # online driver-hours per completed trip
 case["driver_hours_per_trip"] = per_trip.round(2)
 chain = 1 / (2.4 * (1 - 0.30))
