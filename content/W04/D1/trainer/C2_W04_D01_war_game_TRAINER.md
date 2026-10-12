@@ -49,7 +49,7 @@ Fifteen minutes, deck S1 to S5, before any method is taught.
 | 3 | Read the ticket (S1) in the order it is written | "This is the whole ticket. Company, what launched, what moved, the data, the ask, the caveats." |
 | 2 | The week map (S2) and where today ends (S3) | "By the close, one sentence with three blanks will be filled from the data." |
 | 2 | The board's four questions (S4) | "Every number anyone proposes today gets these four questions." |
-| 8 | The three roles state their numbers (S5); each group gives one way to game each | "Driver operations wants hours. Marketing wants enrolled drivers. Finance wants top-up per trip. Each group: one way each number could rise while riders waited longer." |
+| 8 | The three roles state their numbers (S5); each group gives one way to game each | "Driver operations wants hours. Marketing wants enrolled drivers. Finance wants top-up per trip. Each group: one way each number could rise while riders were served no better." |
 
 Take one answer per role from three different groups. Write each on the board beside the role's
 number. Do not correct anything yet: round 2 is where the room learns to attack with a method.
