@@ -155,7 +155,7 @@ LIVE, 7 minutes. Count each cell of the 2 by 2 aloud from the dots (StatQuest). 
 shaded cell over all ten. Confidence: shrink the world to the chai row, 3 of 6. Expected: the
 chai share times the biscuit share times ten, 0.6 x 0.4 x 10. Lift: seen over expected. Then the
 reverse direction. Ask: "what would make the 1.25 a cause?" Only a test that changes chai and
-watches biscuit, which Monday's faculty session (tentative) and Week 5 take up. Transition: a carry bag.
+watches biscuit, which Monday's faculty session on A/B testing (tentative) took up. Transition: a carry bag.
 ```
 
 ---
@@ -664,7 +664,7 @@ add falls by the discount. Transition: what the counts cannot tell us.
 
 | Doubt | The check | What it showed |
 |---|---|---|
-| Together is no proof of cause | A holdout that changes the strip | Owned by the faculty session (tentative) and Week 5 |
+| Together is no proof of cause | A holdout that changes the strip | Monday's faculty session on A/B testing (tentative) |
 | Heavy buyers | Count each customer once | Chips and cold drink 3.39 falls to 2.56; milk's pair stays 1.04 |
 | Curd stock-out | Set aside two zones in week three | Curd's share 26.0 rises to 27.8 percent; its lift with milk stays 1.01 |
 | Time of day | Morning carts only | Morning carts hold milk 80 percent of the time; bread with milk still about 1.04 |

@@ -142,18 +142,18 @@ other bands, so milk's pairs read slightly differently in the morning. Transitio
 
 ---
 
-## S6. Nine groups, nine slices, one report each
+## S6. Each group takes one slice and reports on it
 *Which slice does each group take, and what does it report?*
 
-| Groups | Slice | What the group reports |
+| Group | Slice | What the group reports |
 |---|---|---|
-| 1 and 2 | Kothrud, morning; Kothrud, evening | The top five pairs above the slice's floor, with support and lift |
-| 3 and 4 | Baner, morning; Hinjewadi, night | The same, and one pair that moved against the city ranking |
-| 5 and 6 | Hadapsar, week three; Hadapsar, week four | What happened to curd's pairs in the stock-out week |
-| 7 to 9 | A zone and band of the group's choice | The top five, and whether the city's three slots still lead |
+| First and second | Kothrud, morning; Kothrud, evening | The top five pairs above the slice's floor, with support and lift |
+| Third and fourth | Baner, morning; Hinjewadi, night | The same, and one pair that moved against the city ranking |
+| Fifth and sixth | Hadapsar, week three; Hadapsar, week four | What happened to curd's pairs in the stock-out week |
+| Any further group | A zone and band of the group's choice | The top five, and whether the city's three slots still lead |
 
 ```notes
-LIVE, 25 minutes of group work. Groups 5 and 6 find the stock-out in their own slice: curd's pairs
+LIVE, 25 minutes of group work. The fifth and sixth groups find the stock-out in their own slice: curd's pairs
 vanish in week three and return in week four. The common stall is a pair below the slice's floor
 that looks exciting; the hint is "how many carts is that lift resting on?". Transition: what the
 slices say together.
@@ -200,7 +200,7 @@ flowchart LR
     class M lit
 ```
 
-Walmart's analysts had seen strawberry Pop-Tart sales rise about seven times before Hurricane Charley, so when Hurricane Frances was forecast the chain shipped extra Pop-Tarts to the stores in its path (OpenStax and Newsweek, checked 12 October 2026). The decision moved stock ahead of the storm; a wrong forecast would have left it on the wrong shelves.
+Walmart's analysts had seen strawberry Pop-Tart sales rise about seven times before Hurricane Charley, so when Hurricane Frances was forecast the chain shipped extra Pop-Tarts to the stores in its path (OpenStax, checked 12 October 2026). The decision moved stock ahead of the storm; a wrong forecast would have left it on the wrong shelves.
 
 ```notes
 LIVE, 10 minutes. Read the account. Ask: "is strawberry Pop-Tarts with a storm a pair, like chips
@@ -292,6 +292,6 @@ label: The dispute | title: Four moves, one chart | body: The log settles what f
 ```
 
 ```notes
-LIVE, 1 minute. The faculty session (tentative) runs when IITGN next confirms a slot. Tomorrow's
+LIVE, 1 minute. Say only that the faculty session (tentative) did not run today. Tomorrow's
 pre-read ships tonight.
 ```

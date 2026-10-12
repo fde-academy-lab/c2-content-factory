@@ -19,7 +19,7 @@ The IITGN faculty session (tentative) takes the next 120. Transition: the brief.
 *Which three pairs, priced how, and how do you answer a category manager who wants milk in every slot?*
 
 ```notes
-LIVE, 1 minute. Chapter 3, part two, level L5, unguided in the nine groups on notebook 03.
+LIVE, 1 minute. Chapter 3, part two, level L5, unguided in groups of about four on notebook 03.
 Transition: the brief.
 ```
 

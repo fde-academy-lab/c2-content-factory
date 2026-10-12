@@ -36,7 +36,7 @@ the third left to you, so the help fades as the set climbs.
 Q2's option c. It carries the right number, 2.67, and the wrong sentence: "chips make a shopper 2.67
 times as likely to buy a cold drink". Lift says the two turn up together more than chance would put
 them there. Whether promoting chips sells a single extra cold drink needs a test that changes the
-strip and watches what follows, which the faculty session (tentative) and Week 5 take up.
+strip and watches what follows, which Monday's faculty session on A/B testing (tentative) takes up.
 
 ## Where does the pattern live at work?
 
