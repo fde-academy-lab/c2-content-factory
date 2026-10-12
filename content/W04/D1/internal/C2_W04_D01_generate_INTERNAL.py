@@ -682,6 +682,50 @@ fact("twelve_trips_per_driver_before", r2(114 / 6), "trips per driver", "114 tri
      "explorer M3, the enrolled-driver denominator on the twelve rows")
 fact("twelve_trips_per_driver_after", r2(88 / 6), "trips per driver", "88 trips over the six drivers",
      "explorer M3, the enrolled-driver denominator on the twelve rows")
+# Added after the cold reads: the outer zones' wait and fulfilment, what the top-up bought, and the
+# cancel shares by group. Read from the same tables, so the data files are unchanged.
+zw["outer"] = zw["zone"].isin(OUTER)
+ozw = zw[zw["outer"]].groupby("window").agg(wait=("median_wait_min", "median"),
+                                             requests=("peak_requests", "sum"),
+                                             fulfilled=("peak_fulfilled", "sum"))
+ofil = ozw["fulfilled"] / ozw["requests"]
+extra_outer = ozw.loc["after", "fulfilled"] - ozw.loc["after", "requests"] * ofil["before"]
+idle_outer_topup = int(after.loc[after["driver_id"].isin(slow.index) & after["zone_mode"].isin(OUTER),
+                                 "topup_rs"].sum())
+fact("outer_wait_before", r2(ozw.loc["before", "wait"]), "minutes",
+     "middle value of the 18 outer zone-week medians, before", "the interview's zone check")
+fact("outer_wait_after", r2(ozw.loc["after", "wait"]), "minutes",
+     "middle value of the 18 outer zone-week medians, after", "the interview's zone check")
+fact("outer_fulfil_before", r3(ofil["before"]), "share", "outer zones' fulfilled over requests, before",
+     "the interview's zone check")
+fact("outer_fulfil_after", r3(ofil["after"]), "share", "outer zones' fulfilled over requests, after",
+     "the interview's zone check")
+fact("outer_extra_trips", int(round(extra_outer)), "trips",
+     "outer fulfilled after, less outer requests after times the before fulfilment rate", "the interview's zone check")
+fact("idle_outer_topup_rs", idle_outer_topup, "Rs",
+     "top-up to idle-tail driver-weeks whose zone_mode is an outer zone, after", "the interview's zone check")
+fact("cost_per_extra_outer_trip_rs", int(round(idle_outer_topup / extra_outer, -3)), "Rs",
+     "idle outer top-up over the extra outer trips, to the nearest thousand", "the interview's zone check")
+fact("extra_trips", int(A["peak_trips"] - B["peak_trips"]), "trips", "230,900 - 224,200", "the interview's sizing")
+fact("topup_per_extra_trip_rs", round(19000000 / (A["peak_trips"] - B["peak_trips"])), "Rs",
+     "Rs 1.9 crore over the 6,700 extra trips", "the interview's sizing")
+fact("topup_per_extra_trip_fares", round(19000000 / (A["peak_trips"] - B["peak_trips"]) / FARE, 1), "fares",
+     "Rs 2,836 over the Rs 165 average fare", "the interview's sizing")
+fact("hours_to_carry_idle_trips", int(round(idle.loc["after", "peak_trips"] / 1.9)), "hours",
+     "33,440 idle-tail trips at 1.90 trips per hour", "the role card; follow-up on drivers who quit")
+grp = dw.assign(g=dw["driver_id"].map(lambda d: "idle" if d in set(slow.index) else ("new" if d > "d_1060" else "other")))
+for gname in ("idle", "new", "other"):
+    sub = grp[(grp["g"] == gname) & (grp["window"] == "after")]
+    fact(f"cancel_share_{gname}_after", r3(sub["peak_driver_cancels"].sum() / sub["peak_accepted"].sum()), "share",
+         f"driver-cancelled over accepted, {gname} drivers, after", "the acceptance guardrail's gaming note")
+sub = grp[(grp["g"] == "other") & (grp["window"] == "before")]
+fact("cancel_share_other_before", r3(sub["peak_driver_cancels"].sum() / sub["peak_accepted"].sum()), "share",
+     "driver-cancelled over accepted, other drivers, before", "the acceptance guardrail's gaming note")
+comp = on_after["peak_trips"] / on_after["peak_offers"]
+fact("completed_share_max_idle_week_after", r2(comp[on_after["group"] == "idle"].max()), "share",
+     "trips over offers shown, highest idle-tail week after", "the payout rule's floor")
+fact("completed_share_min_other_week_after", r2(comp[on_after["group"] != "idle"].min()), "share",
+     "trips over offers shown, lowest other week online after", "the payout rule's floor")
 late = dw["week_start"].lt("2026-09-07").map({True: "before", False: "after"})
 late_city = dw.groupby(late)[["peak_trips", "peak_online_hours"]].sum()
 for win in ("before", "after"):
@@ -693,8 +737,9 @@ toys = [
     {"id": "toy_canteen", "label": "invented", "values": {"tokens_before": 200, "tokens_after": 400,
                                                           "plates": 200}, "used_by": "L1 the proxy"},
     {"id": "toy_two_drivers", "label": "invented",
-     "values": {"rates": [2.0, 1.0], "hours": [10, 1], "trips": 21, "total_hours": 11,
-                "ratio_of_sums": 1.91, "mean_of_ratios": 1.5}, "used_by": "L2 ratio of sums"},
+     "values": {"rates": [2.0, 0.5], "hours": [10, 40], "trips": 40, "total_hours": 50,
+                "ratio_of_sums": 0.8, "mean_of_ratios": 1.25},
+     "used_by": "L2 ratio of sums; the long, slow week pulls the average up, as on the city"},
     {"id": "toy_mix", "label": "invented",
      "values": {"drivers": 100, "rate": 1.9, "idle_drivers": 20, "idle_rate": 0.2, "blend": 1.62},
      "used_by": "L3 the mix behind a rate"},
