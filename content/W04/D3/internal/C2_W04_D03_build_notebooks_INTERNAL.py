@@ -621,7 +621,7 @@ def nb03():
 
         Six doubts, each with the check that settles it. Co-occurrence is no proof of cause: a
         party shopper buys chips and cold drink together, and promoting chips sells no cold drink
-        to anyone else; only a holdout settles that, which the faculty session (tentative) and Week 5 take up.
+        to anyone else; only a holdout settles that, which Monday's faculty session on A/B testing (tentative) takes up.
         Heavy buyers: the top tenth of customers place 38 percent of carts, so lift is recomputed
         with every customer counted once. The stock-out: curd ran out in two zones in week three.
         Time band: morning carts hold milk more often. The strip's own pull: whatever slot 1

@@ -69,7 +69,7 @@ def matches(token, unit, value):
 def texts():
     """(file, line number, text) for every learner-visible line."""
     for p in sorted(DAY.rglob("*_STUDENT.*")):
-        if p.parent.name in ("data", "whiteboards") or p.suffix not in (".md", ".ipynb"):
+        if p.parent.name == "data" or p.suffix not in (".md", ".ipynb"):
             continue
         if p.suffix == ".md":
             inside_code = False
@@ -106,6 +106,9 @@ def main():
     F = facts()
     rows, misses = [], []
     for p, where, line in texts():
+        # A quadrant chart's point line carries layout positions, never data.
+        if re.match(r"^\s*[\w ,']+:\s*\[[\d.\s,]+\]\s*$", line):
+            continue
         for m in NUMBER.finditer(line):
             token, unit = m.group(1), m.group(2) or ""
             before = line[:m.start()]

@@ -857,6 +857,8 @@ def verify_kalpa(products, orders, items):
     n = len(b)
     single = Counter(x for s in b for x in s)
     out["charger"] = single["phone charger 20W"] / n
+    charger_id = products.set_index("name").product_id["phone charger 20W"]
+    out["charger_all"] = items[items.product_id == charger_id].order_id.nunique() / len(orders)
     check(f"the charger in {single['phone charger 20W']} of {n} baskets, 84 to 85 percent",
           0.84 <= out["charger"] <= 0.85)
     sc = measures(b, "screen protector", "phone charger 20W")
@@ -1107,6 +1109,7 @@ def write_facts(case, strip, kalpa):
     hi = views * (0.064 - 0.012) * 0.6 * 11 * 3 * 0.5 * 30
     f(S, "recoverable_low", round(lo), lakh(lo), "add rate 0.4 and margin Rs 7", "chapter 3, notebook 03")
     f(S, "recoverable_high", round(hi), lakh(hi), "add rate 0.6 and margin Rs 11", "chapter 3, notebook 03")
+    f(S, "clicks_a_day", round(60_000 * 0.064), f"{round(60_000 * 0.064):,}", "60,000 x 0.064", "board work, the cascade")
     f(S, "adds_a_day", round(adds_day), f"{round(adds_day):,}", "60,000 x 0.064 x 0.5", "notebook 03, the trap")
     f(S, "gross_sales_day", round(gross_day), f"Rs {indian(gross_day)}", "1,920 adds x the average price of an added item", "notebook 03, the trap")
     S = "twelve_rows"
@@ -1302,6 +1305,7 @@ def write_facts(case, strip, kalpa):
     f(S, "kalpa_baskets", kalpa["baskets"], str(kalpa["baskets"]), "consumer orders, the basket base", "notebook 04, lab note")
     f(S, "kalpa_business", kalpa["business"], str(kalpa["business"]), "Business orders, one product in bulk", "notebook 04")
     f(S, "kalpa_lines_max", kalpa["lines_max"], str(kalpa["lines_max"]), "most lines in a consumer basket", "notebook 04")
+    f(S, "kalpa_charger_all_orders", round(kalpa["charger_all"], 4), f"{kalpa['charger_all'] * 100:.1f} percent", "TRAP: the charger's share if the Business orders stay in the base", "lab note")
     f(S, "kalpa_charger_share", round(kalpa["charger"], 4), f"{kalpa['charger'] * 100:.1f} percent", "PLANT: baskets with the charger", "TRAINER until the lab")
     sc = kalpa["screen"]
     f(S, "kalpa_screen_charger_conf", round(sc["conf_ab"], 4), f"{sc['conf_ab']:.2f}", "PLANT: screen protector to charger", "TRAINER until the lab")

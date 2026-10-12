@@ -1009,6 +1009,11 @@ slot_value:
     shown: "Rs 9.3 lakh"
     how: "add rate 0.6 and margin Rs 11"
     used_in: "chapter 3, notebook 03"
+  - id: clicks_a_day
+    value: 3840
+    shown: "3,840"
+    how: "60,000 x 0.064"
+    used_in: "board work, the cascade"
   - id: adds_a_day
     value: 1920
     shown: "1,920"
@@ -2530,6 +2535,11 @@ kalpa_lab:
     shown: "8"
     how: "most lines in a consumer basket"
     used_in: "notebook 04"
+  - id: kalpa_charger_all_orders
+    value: 0.696
+    shown: "69.6 percent"
+    how: "TRAP: the charger's share if the Business orders stay in the base"
+    used_in: "lab note"
   - id: kalpa_charger_share
     value: 0.8448
     shown: "84.5 percent"
