@@ -348,6 +348,8 @@ add("rest_tph_after", round(ra["trips"] / ra["hours"], 2), "1.89", "1,97,460 / 1
     "half1 S20, S21; role cards; notes; exercises")
 add("rest_trips_change_pct", round((ra["trips"] / rb["trips"] - 1) * 100, 1), "up 6 percent",
     "1,97,460 / 1,86,200 - 1", "role cards; notes")
+add("idle_tph_after", round(M["idle_trips_after"] / M["idle_hours_after"], 1), "0.8 trips an hour",
+    "33,440 / 42,000, the idle tail after the launch", "studio solution; notes")
 add("idle_tail_joiners", 0, "none of the 140", "joiners among the 180 idle-tail drivers",
     "half1 S20; role cards; exercises")
 
@@ -578,6 +580,13 @@ add("dmart_denominator_gap_pct", round((per_store_avg / per_store_end - 1) * 100
 add("dmart_revenue_over_fy25_end", round(66968 / 415, 1), "about Rs 161 crore",
     "66,968 / 415, the wrong denominator a hurried analyst uses", "Kalpa exercise (distractor)")
 check("DMart per store: 133.9 and 146.4", (per_store_end, per_store_avg) == (133.9, 146.4))
+add("dmart_average_store_count", 457.5, "457.5 stores", "(415 + 500) / 2", "Kalpa exercise solution")
+add("dmart_revenue_over_added", round(66968 / 85, 1), "about Rs 788 crore",
+    "66,968 / 85, dividing by the stores added: a wrong denominator", "Kalpa exercise (distractor)")
+public("upi_month_value_lakh_crore", 29.37, "Rs 29.37 lakh crore", "T3",
+       "the same Outlook Money report: the September 2026 transactions were worth Rs 29.37 lakh crore",
+       "mid-session drill 2 (distractor); its solution")
+
 public("swiggy_instamart_ctr_before", 0.061, "6.1 percent", "case file, Wednesday ticket",
        "Wednesday's target, asserted by Wednesday's generator: strip click-through in the three "
        "weeks before 7 September 2026", "preread")
@@ -599,6 +608,13 @@ facts["toys"] += [
      "values": {"people": 2_000_000, "wrong_households": 9_000_000, "people_per_household": 4,
                 "right_households": 500_000},
      "used_by": "half2 S14; Kahoot"},
+    {"id": "toy_food_stall", "label": "invented",
+     "values": {"sales_rs": 12000, "orders": 240, "staff_hours": 40, "staff_days": 5,
+                "per_order_rs": 50, "per_staff_hour_rs": 300, "per_staff_day_rs": 2400},
+     "used_by": "lab set P2 and its solution"},
+    {"id": "toy_kalpa_store_overshoot", "label": "invented",
+     "values": {"first_year_sales_crore": 150},
+     "used_by": "Kalpa exercise Q2 and its solution"},
     {"id": "toy_ai_acceptance_rate", "label": "invented",
      "values": {"acceptance_rate_pct": 32},
      "used_by": "half2 S21; extras AI variant; notes"},

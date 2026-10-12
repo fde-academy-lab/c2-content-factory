@@ -206,6 +206,12 @@ numbers:
   unit: ''
   how: 1,97,460 / 1,86,200 - 1
   used_by: role cards; notes
+- id: idle_tph_after
+  value: 0.8
+  shown: 0.8 trips an hour
+  unit: ''
+  how: 33,440 / 42,000, the idle tail after the launch
+  used_by: studio solution; notes
 - id: idle_tail_joiners
   value: 0
   shown: none of the 140
@@ -512,6 +518,18 @@ numbers:
   shown: about Rs 161 crore
   unit: ''
   how: 66,968 / 415, the wrong denominator a hurried analyst uses
+  used_by: Kalpa exercise (distractor)
+- id: dmart_average_store_count
+  value: 457.5
+  shown: 457.5 stores
+  unit: ''
+  how: (415 + 500) / 2
+  used_by: Kalpa exercise solution
+- id: dmart_revenue_over_added
+  value: 787.9
+  shown: about Rs 788 crore
+  unit: ''
+  how: '66,968 / 85, dividing by the stores added: a wrong denominator'
   used_by: Kalpa exercise (distractor)
 monday_ids_reused:
 - id: launch_date
@@ -875,6 +893,13 @@ public_facts:
   source: 'the same release: two years and older DMart stores grew 10.8 percent in Q4 FY26'
   checked: 12 October 2026
   used_by: lab note; Kalpa exercise solution
+- id: upi_month_value_lakh_crore
+  value: 29.37
+  shown: Rs 29.37 lakh crore
+  r2: T3
+  source: 'the same Outlook Money report: the September 2026 transactions were worth Rs 29.37 lakh crore'
+  checked: 12 October 2026
+  used_by: mid-session drill 2 (distractor); its solution
 - id: swiggy_instamart_ctr_before
   value: 0.061
   shown: 6.1 percent
@@ -990,6 +1015,22 @@ toys:
     people_per_household: 4
     right_households: 500000
   used_by: half2 S14; Kahoot
+- id: toy_food_stall
+  label: invented
+  values:
+    sales_rs: 12000
+    orders: 240
+    staff_hours: 40
+    staff_days: 5
+    per_order_rs: 50
+    per_staff_hour_rs: 300
+    per_staff_day_rs: 2400
+  used_by: lab set P2 and its solution
+- id: toy_kalpa_store_overshoot
+  label: invented
+  values:
+    first_year_sales_crore: 150
+  used_by: Kalpa exercise Q2 and its solution
 - id: toy_ai_acceptance_rate
   label: invented
   values:
