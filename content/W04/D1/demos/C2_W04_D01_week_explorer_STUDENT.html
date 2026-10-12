@@ -235,14 +235,19 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     .dot.drive .body{animation:none !important}
   }
   @media print{
-    html,body{font-size:11pt;background:#fff}
+    @page{size:A4 landscape;margin:10mm}
+    html,body{font-size:10pt;background:#fff}
     .hero{background:#fff;color:#000;padding:0 0 8pt}
     .hero h1,.hero .promise,.hero .label{color:#000}
     .hero .kicker{border-color:#000;color:#000}
-    .daybar,.opts,.reveal-row,.jumps,.guess,.status,button,input,select,textarea{display:none !important}
+    .daybar,.opts,.reveal-row,.guess,.status,.jumped,button,input,select,textarea{display:none !important}
+    .jumps .jump{display:block !important;border:none;padding:0;background:none;font-size:10pt;color:#000}
     section.day{display:block !important}
     .reveal{display:block !important}
-    .scene,.day-head,.card{box-shadow:none;break-inside:avoid}
+    .scene,.day-head,.card{box-shadow:none}
+    .scene{padding:8pt 10pt;margin:8pt 0 0}
+    .scene + .scene{break-before:page}
+    figure.draw,.panel,.formula,.myth,.predict,.ticket,table.rows{break-inside:avoid}
     .stage{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
     .dot.drive .body{animation:none}
   }
