@@ -280,4 +280,130 @@ The sourcing items, as returned:
 
 ## What did the fix pass do with each finding?
 
-Filled after the fix pass.
+Every finding was fixed in the pack, or fixed in part with the rest given its one-line reason in the
+sources list. Decks were rebuilt, every changed notebook re-executed, the cheat sheet reprinted.
+
+**Read 1, the fresh graduate (77): 72 fixed, 5 fixed in part.**
+
+| Finding | What changed |
+|---|---|
+| 1 | Fixed: S1's table names month one; S3 carries month-two retention, cohort problem and everyone problem; S12 names the blend in its stem. |
+| 2 | Fixed: S1 says 53,089 joined January to September; S25 and notebook 02 place September's 5,089 in month zero. |
+| 3 | Fixed: S1 defines a session and the event rows and names v1 and v2; S30 and the notes define the carousel; notebook 03 defines session, stage, step and release and uses `checkout_version` in a check. |
+| 4 | Fixed: S3, S35, notebook 03 (a printed product and a check) and the notes show 0.80 x 72.5 = 58 and 0.80 x 55 = 44. |
+| 5 | Fixed: S1's ask and S3 define both problems; S3 now says the order loss hits every signup month on one platform. |
+| 6 | Fixed: S37 and notebook 03 show 0.14 x 22,841 = 3,198 in 17 days, 188 a day, 1,317 a week. |
+| 7 | Fixed: S2's nodes say each day's question in plain words, and every day now leads to Saturday. |
+| 8 | Fixed: S34 says the moved cut dates the fall and cannot test tracking; S36, notebook 03 and the notes test tracking on the order records, which is the chapter 3 drill's billing-record test; notebook 03 computes 47, 43 and 56. |
+| 9 | Fixed: S4 row 4, the sheet's crux and the notes say cohorts are compared at one age and one calendar month is read across them only to look for a shock that hit everyone. |
+| 10 | Fixed: S5, S7, the cards, the guided set and notebook 01 say members of the case data, which is synthetic. |
+| 11 | Fixed: S7, the sheet's panel 2 and the cards name the four members one by one. |
+| 12 | Fixed: S9 and notebook 01 say the twelve were picked to show the pattern, with the full data's 52 and 50. |
+| 13 | Fixed: S20, notebook 02 and the notes say the dashboard is no cohort's month-two column; the curves lost the dashboard line. |
+| 14 | Fixed: S13 and notebook 01 say the old batch shrinks. |
+| 15 | Fixed: S13, notebook 01, the notes' interview table and the transcript keep the toy's big batch apart from the case's gentler prop and name month one and August as what the flat number hides. |
+| 16 | Fixed: S14, fallback S1 and S3 and the transcript open Q4, NOV, Q0 and Q6, FY, weaned and lifetime value, and name Eternal as the company behind Zomato and Blinkit; S5 promises reports. |
+| 17 | Fixed: S15 and the transcript define [F] and mix; the scorer line defines mix. |
+| 18 | Fixed: S17's code comments and notebook 02 explain `mm`, year x 12 and the mean of True and False. |
+| 19 | Fixed: S18, S3, notebook 02 and the notes say every cohort lands near 38.5 and the flat number hides month one and August. |
+| 20 | Fixed: S18, notebook 02 and the notes define a point. |
+| 21 | Fixed: the triangle and the GIF say Aug with no sale label, use one tint after month one and carry a key. |
+| 22 | Fixed: notebook 02 prints one decimal, 38.0. |
+| 23 | Fixed: S23 says the rates rise with youth, July 38.5 beside June 38.6. |
+| 24 | Fixed: S25, notebook 02 and the notes say July's 10.5 points; notebook 02 computes October's 33 and the 32 to 34. |
+| 25 | Fixed: the sweep leaves the August cohort (13,000), the sale-week members (8,027) and the sale week's cohort (9,108) as three names, each one meaning. |
+| 26 | Fixed: S28's key now asks for the split against the weeks before, and option c names the first step. |
+| 27 | Fixed (blocker): S29, notebook 03, the notes and the guided set count the toy in sessions, read 10 of 100 sessions against 10 of 20 people, and Q4 asks what the chart needs. |
+| 28 | Fixed: S30's table counts sessions only and shows 116,797 of 131,974. |
+| 29 | Fixed: S30, notebook 03, Kahoot Q5, the practice set and the notes define artefact. |
+| 30 | Fixed: S32 and notebook 03 read the per-member panel and say why neither panel shows the ticket's loss; one colour and a key. |
+| 31 | Fixed: the release split sits on a date axis with the release line on 14 September and says add-to-cart to order. |
+| 32 | Partly: S36 and the notes say what the table does with young cohorts; S45's spine line stays (sources list). |
+| 33 | Fixed: notebook 02 computes September by zone, 0.9 points. |
+| 34 | Fixed: S36's last row and the notes say the release split has comparison groups and Gold's 60 percent has none. |
+| 35 | Fixed: S36 says the August cohort's organic members. |
+| 36 | Fixed: S37's notes and the notes say who Amplitude is and what its 7 percent means; the pitfall reads a rate over stayers read as growth. |
+| 37 | Partly: the staff line moved to the trainer; the reveals and the Kahoot keys stay (sources list). |
+| 38 | Fixed: notebooks 01, 03 and 04 explain melt, the -1, the two-function pivot, shift, sets, unstack, the cross merge and fillna. |
+| 39 | Fixed: notebook 01's chart labels each row with its member id. |
+| 40 | Partly: every set now opens its levels, design calls, screens and GCC; no posting place is named (sources list). |
+| 41 | Fixed: notebook 02's curves carry a legend and say August has one month on record. |
+| 42 | Fixed: the chapter 2 drill's Q2 no longer prints 36.9; its solution gives the three September rates. |
+| 43 | Fixed: notebook 03 uses violet and amber and labels each row as a step between two stages. |
+| 44 | Fixed: S1 and notebook 03 name android, ios and web. |
+| 45 | Fixed: S38, the index, notebook 04 and the Kalpa set name two pages and their order, with notebook 04's three sentences as the second page's first lines. |
+| 46 | Fixed: notebook 02 computes 0.23 and 0.61. |
+| 47 | Fixed: notebook 03 joins each member's platform from the events and computes the ratio, and the transcript, the notes, S40 and the solution now use the cohorts held fixed. |
+| 48 | Fixed: S3, S41, S42, the notes, the solutions and the trainer files say work out whether the sale's members pay back their discount. |
+| 49 | Fixed: S43 uses the board's five names plus the call. |
+| 50 | Fixed: S44 and the transcript say the blended count stays near the record as each week's cohort joins. |
+| 51 | Fixed: S46's cards match the quiz's items; floor is gone from the slide. |
+| 52 | Fixed: already bought, friction, sprint, refill the top of the funnel, monthly transacting users and cohort-level levers replaced; hire-grade defined where used. |
+| 53 | Fixed: the fix-first set's option c no longer borrows S39's words. |
+| 54 | Fixed: the transcript names Aced and links it with its date. |
+| 55 | Fixed: S3, the Kahoot, the notes and the notebooks' ticket say a member with no order in a month is not retained that month and is still a member. |
+| 56 | Fixed: notebook 04 and the Kalpa set say the August joiners are the monsoon-sale members. |
+| 57 | Fixed: notebook 04, the Kalpa set and the lab note say what auto-reorder did and that it is the window's suspect. |
+| 58 | Fixed: notebook 04 and the Kalpa set say active and blended change meaning and frequency is read through app opens. |
+| 59 | Fixed: notebook 04's typed lines build the table by age, print rates with each cohort's size, and carry a check. |
+| 60 | Fixed: notebook 04 says September's two checkout rates run end to end, from opening the app. |
+| 61 | Fixed: notebook 04 says the rate before the window, adds the second route's lines, its empty cell and what it must print. |
+| 62 | Fixed: the Kalpa set's Q4 rests on the monsoon cohort holding September's blend up (26 of 32; 23 of 88 without it), and the solution no longer calls a defensible. |
+| 63 | Fixed: the Kalpa key says older cohorts fell. |
+| 64 | Fixed: the practice set's Q6 says cohort C joined in May and June is its month one. |
+| 65 | Fixed: the practice set defines Dabba Club's plan and a renewal. |
+| 66 | Fixed (blocker): the take-home shows how to get a week from two dates with a worked example and says user_id is the member_id; fallback S4's comments explain W-SUN and the week gap. |
+| 67 | Fixed: the self-check separates a one-point tick from the large falls. |
+| 68 | Fixed: the self-check and fallback S6 say September is whole and counted and the week of 28 September is left out. |
+| 69 | Fixed: the notes spell out DMRC and say what its count counts. |
+| 70 | Fixed: the notes' glossary adds blend, session and artefact, and ORIGIN names Simpson's paradox. |
+| 71 | Fixed: the sheet says the grid and drops the repeated column. |
+| 72 | Fixed: the pre-read says notebook 04 stops at the lab's cells and sends errors to the TA. |
+| 73 | Fixed: the weekly picture gives each signup week its own colour and marker. |
+| 74 | Fixed: fallback S1, S7 and S8 open Q6 and GOV and spell hold-out as Friday does. |
+| 75 | Partly: the pack names Gold's free delivery from Zomato's letter; no price (sources list). |
+| 76 | Partly: section 4's subtitle says the afternoon adds no new idea; sections stay sections (sources list). |
+| 77 | Fixed: the GIF shows a cohort's size only once it has joined. |
+
+**Read 2, the hiring interviewer (25 findings and 10 sourcing items): 23 and 8 fixed, 2 and 2 fixed in part.**
+
+| Finding | What changed |
+|---|---|
+| 1 | Fixed (blocker): S44, the transcript, the trainer file and the day sheet put the AI question two months after launch. |
+| 2 | Fixed: the transcript, S35, S42, fallback S9, the role card, the fix-first set and solution, the cards and the notes put the comparators on the step blamed (iOS members 71 to 70, non-members on Android 65 to 64). |
+| 3 | Fixed: the tracking check is the order records against the event log in S36, notebook 03, the transcript and the trainer files; the moved cut is said to date the fall only; the weekly series is quoted. |
+| 4 | Fixed: notebook 03 holds the cohorts fixed (1.45 to 1.24 on Android, 1.44 and 1.45 on iOS) and shows the blended ratio's false iOS rise; every file that used 1.36 to 1.20 now uses the held-fixed reading. |
+| 5 | Fixed: S3, S18, the transcript and the notes say the base is steady near 38.5 and what fell is month one and August. |
+| 6 | Fixed: the transcript hands over the series and the hire-grade answer reads 40.9, 40.0, 39.5 and 35.9; S25 and the notes carry it. |
+| 7 | Fixed: the cost is 1,223 to 1,317 orders a week, a quarter of 5,064, Rs 3.7 to 6.6 lakh of order value of which Zomato keeps its fees, in the transcript, S37, S40, S42, the fix-first set and the notes. |
+| 8 | Fixed: notebook 03 checks every Android session from 14 September ran v2; S34's notes and the transcript say date and version are one split. |
+| 9 | Fixed: notebook 03, S35's notes and the transcript size the 55 on 18,273 starts and the comparator on 1,600. |
+| 10 | Fixed: the transcript, S41, S42 and the notes judge the sale on payback against the discount. |
+| 11 | Fixed: the [D] follow-up uses members who joined before August (70.3 to 53.6 against 68.6 to 69.3) and states the 70 percent Android mix. |
+| 12 | Fixed: the upper-bound push uses retries (36.5 then 35.1 percent within a day) and the 1,223 to 1,317 range; notebook 03 computes both. |
+| 13 | Fixed: the transcript's interviewer answers every clarifying question with the numbers the candidate then uses, and the rubric scores asked-then-used. |
+| 14 | Partly: the variant defines active on a kept draft, adds the share of drafts kept and the cost per retained user, and keeps the blend for load and spend; no cost number (sources list). |
+| 15 | Fixed: the guesstimate validates trips against DMRC's line-use count, says all days, and treats the record as the same count on a strike day. |
+| 16 | Fixed: the transcript says the label misleads and what it counts. |
+| 17 | Fixed: the transcript asks whether retained means ordered or renewed. |
+| 18 | Fixed: the transcript names the outside causes and the check that clears them. |
+| 19 | Fixed: the transcript's close warns that October reads about 33. |
+| 20 | Fixed: the transcript, S14 and the fallback quote 'low potential Lifetime values', say the table states no denominator and that weaning lifts that quarter's cells and later ones. |
+| 21 | Fixed: the [D] answer's what-would-change line uses the order records and retries. |
+| 22 | Fixed: the [D] question raises the sale members, and the next step names a member-only path to check. |
+| 23 | Fixed: the rank follow-up and push 2 use the loss's size and a two-day reversible test. |
+| 24 | Fixed: the pain-point table relabels Swiggy's row, says platform-wide and year on year, and marks the synthetic row. |
+| 25 | Partly: the riding share carries the widest range and is named as the least sure input; the false precision is gone; the supply-side check is named, never computed (sources list). |
+
+| Sourcing item | What changed |
+|---|---|
+| 1 | Fixed: the transcript and S43's notes cite what Aced's page says, with its link and date. |
+| 2 | Fixed: the quote is the letter's; the link is in the transcript. |
+| 3 | Fixed: year on year, platform and Instamart's base are named; the link is in the transcript. |
+| 4 | Fixed: top 25 percent of more than 2,600 companies, no method given. |
+| 5 | Fixed: the link is in the transcript. |
+| 6 | Fixed: week four is labelled the programme's rule of thumb. |
+| 7 | Partly: 'currently' and all days now; the unit rests on PTI's report (sources list). |
+| 8 | Fixed: the LatestLY page returned HTTP 200 in the fix pass; DMRC's post is quoted as Republic World carries it. |
+| 9 | Partly: the letter's own words replace 'spend'; the exchange copy was not found (sources list). |
+| 10 | Fixed: the notes cite the paper's DOI. |
