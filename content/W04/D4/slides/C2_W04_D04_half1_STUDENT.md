@@ -802,7 +802,7 @@ Transition: the chapter's close.
 | Selection: the sale-week members were bought on a discount | The August cohort's organic members beside July's cohort | 49 against 49 percent; the sale-week members alone sit at 20 |
 | Censoring: the newest cohorts have few months on record | Compare cohorts only at ages all have reached; an empty cell is a month not yet lived | Named here; the IITGN faculty session W4-3 (tentative) takes it up |
 | Seasonality: exam months in a student-heavy zone (hypothetical) | September split by zone (notebook 02) | No zone more than 0.9 points from the city |
-| Tracking: the release renamed an Android event | Orders in member_months, which event names do not touch, against the event log | The same 27,212 orders in September: none went missing |
+| Tracking: the release renamed an Android event | Orders in member_months, which event names do not touch, against the event log | The same 27,212 member orders in September: none went missing |
 | Mix inside the split: the August cohort aged across 14 September | Members who joined before August, on the same step | Android 70.3 to 53.6; iOS 68.6 to 69.3 |
 | Sessions against members | The unit named on every chart | 34 per session, 61 per member, both true |
 | Joiners' orders rising after they join | Zomato Gold's frequency rose about 60 percent after joining | Members join when they expect to order more; the release split has a comparison, this has none |

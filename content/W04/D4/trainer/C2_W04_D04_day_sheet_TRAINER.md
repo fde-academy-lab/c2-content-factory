@@ -144,7 +144,7 @@ learner's own cell prints it.
 | Inside the checkout | starts 80 to 80; completion 72.5 to 55 | android_members_cart_to_checkout_before and after, android_members_checkout_to_order_before and after |
 | The same step, comparators | iOS members 71 to 70; non-members on Android 65 to 64 | checkout_to_order_member_ios_before and after, checkout_to_order_nonmember_android_before and after |
 | The cohorts held fixed | Android 70.3 to 53.6; iOS 68.6 to 69.3; orders per ordering member 1.45 to 1.24 on Android | held_checkout_to_order_*, held_orders_per_active_* |
-| The tracking check | 27,212 orders in September in both the order records and the event log | order_records_sep, event_orders_sep |
+| The tracking check | 27,212 member orders in September in both the order records and the event log | order_records_sep, event_orders_sep |
 | Noise and retries | 18,273 starts (under a point); 1,600 for the non-members (2.5 points); recovered within a day 36.5 then 35.1 percent of failures, 701 then 1,189 a week | android_member_starts_after, nonmember_android_starts_after, noise_points_*, retry_within_day_android_* |
 | The cost | about 1,133 to 1,317 orders a week, a quarter of 5,064; Rs 3.4 to 6.6 lakh of order value | lost_orders_week_vs_nonmember_android, lost_orders_week_vs_ios, lost_orders_per_week, android_member_orders_week_before, lost_value_per_week_floor_rs, lost_value_per_week_high_rs |
 

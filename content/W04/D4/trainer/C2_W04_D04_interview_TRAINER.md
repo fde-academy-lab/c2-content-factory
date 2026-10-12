@@ -16,11 +16,11 @@ answer uses, so a 2 rewards asking and using, never reciting.
 
 | Criterion | Weak | Hire-grade | The line in the transcript that earns it |
 |---|---|---|---|
-| Clarified the scope | 0 | 2 | Six clarifying questions: who is counted, ordered or renewed, against what, how members were acquired, what shipped, and what an order is worth |
+| Clarified the scope | 0 | 2 | Six clarifying questions: who is counted, whether a member who stops paying stays in, against what, how members were acquired, what shipped, and what an order is worth |
 | Named the denominator and the window | 0 | 2 | "It is every member two or more months in ... Over everyone who joined before each month it reads 40.9, 40.0, 39.5, then 35.9" |
-| Checked the count before the cause | 0 | 2 | "Retention comes from the order records, which the rename never touched, and they match the event log, 27,212 orders in September. Starting checkout held at 80 percent" |
-| Split mix from rate | 1 | 2 | Cohorts at the same age; August split 49 against 20; the share who ordered fell alike on both platforms while orders per ordering member fell only on Android, cohorts held fixed |
-| Found the step with its comparators | 1 | 2 | Completion 72.5 to 55; on the same step iOS members 71 to 70 and non-members on Android 65 to 64; the member path; 18,273 starts |
+| Checked the count before the cause | 0 | 2 | "Retention comes from the order records, which the rename never touched, and they match the event log, 27,212 member orders in September. Starting checkout held at 80 percent" |
+| Split mix from rate | 1 | 2 | Cohorts at the same age; August split 49 against 20; among members who joined before July, the share who ordered barely moved on either platform while orders per ordering member fell only on Android |
+| Found the step with its comparators | 1 | 2 | Completion per session 72.5 to 55; on the same step iOS members 71 to 70 and non-members on Android 65 to 64; the member path; 18,273 starts |
 | Tied it to a decision and its cost | 0 | 2 | 3.2 of the 3.6 points is August; the checkout costs 1,133 to 1,317 orders a week, Rs 3.4 to 6.6 lakh of order value; the member path first; what would change the order |
 | Gave the structure before the number | 0 | 2 | The first sentence names the six moves before any number |
 | Total, of 14 | 2 | 14 | |
@@ -59,18 +59,21 @@ platform, before and after the release. What evidence do you bring to the meetin
 | "Is their chart per session or per member, and over which dates?" | "Per session, 1 August to 30 September, with 14 September marked." |
 | "Did the release change anything after checkout starts, such as payment or a member price?" | "The whole checkout flow is new on Android, payment included." |
 | "Has their team mapped the renamed event, and do the order records agree with the event log?" | "Mapped; both count 27,212 member orders in September." |
+| "Can I put up my own tables: completion of a started checkout by membership, platform and week with the starts behind each rate, the same for members who joined before August, and member orders a week by segment?" | "All three. They are yours, and they are on the shared screen." |
 
 **The structure.** The four moves from Tuesday: restate, answer from the evidence, concede what is
-true, say what would change your mind; then one chart and one next step.
+true, say what would change your mind; then one chart and one next step. The hire-grade answer says
+those moves in its first two sentences, before any number.
 
 **The trap the interviewer fishes for.** Winning the argument: calling the app team's chart wrong, or
 retreating to "conversion fell" without the step inside it.
 
 | | Weak answer | Hire-grade answer |
 |---|---|---|
-| Restate | "Your chart doesn't show the problem." | "You're saying starting checkout held on every platform, so the new flow works, and the sale members explain the fall." |
-| Answer | "Add-to-cart to order fell from 58 to 44 on Android." | "Your chart is per session, and so is mine. The step after yours fell: from 1 August to 13 September against 14 to 30 September, completing a started checkout went from 72.5 to 55 percent for members on Android, while on that same step iOS members went 71 to 70 and non-members on Android 65 to 64. The count holds: the order records and the event log both say 27,212 member orders in September." |
-| Concede | Nothing conceded. | "Your chart is right: starts held at 80 everywhere. And the sale members are weak, but they don't explain this: among members who joined before August, completion fell from 70.3 to 53.6 on Android and held at 68.6 to 69.3 on iOS." |
+| Restate | "Your chart doesn't show the problem." | "You're saying starting checkout held on every platform, so the new flow works, and the sale members explain the fall. I'll check the count, show the step after yours with its comparators, concede what you're right about, say what would change my mind, and put up one chart." |
+| Answer | "Add-to-cart to order fell from 58 to 44 on Android." | "The count first: the order records, which the rename never touched, and the event log both say 27,212 member orders in September. Your chart is per session, and so is mine. The step after yours is part of the new flow, payment included, and it fell: from 1 August to 13 September against 14 to 30 September, completing a started checkout went from 72.5 to 55 percent for members on Android, on 18,273 starts after the release, while on that same step iOS members went 71 to 70 and non-members on Android 65 to 64." |
+| The chart | Overall add-to-cart to order by week, every platform on one line. | "Weekly completion of a started checkout for Android members, iOS members and non-members on Android, with 14 September marked: the Android members' line drops from near 72.5 to near 55 in the release week, and the other two hold their level." |
+| Concede | Nothing conceded. | "Your chart is right: starts held at 80 everywhere. And you're right about retention: the August cohort, mostly sale-week members, explains 3.2 of the 3.6-point fall. The checkout is about orders, and the sale members don't explain that: among members who joined before August, completion fell from 70.3 to 53.6 on Android and held at 68.6 to 69.3 on iOS." |
 | What would change it | Not said. | "If the order records showed orders holding while the log fell, or if most failed checkouts came back as later orders, I'd withdraw it. Counted in orders placed, Android members' weekly orders fell 18 percent while iOS members' rose 7." |
 | Next step | "Roll back the release." | "It costs 1,133 to 1,317 orders a week, so put members on Android back on the old checkout today, or half of them for two days if your team wants proof, and look in parallel at what only members see on the new page, such as the free-delivery line or the membership check." |
 
@@ -95,10 +98,12 @@ retreating to "conversion fell" without the step inside it.
 | Gave the structure before the number | 0 | 2 |
 | Total, of 14 | 2 | 14 |
 
-The hire-grade [D] answer asks three questions and uses each reply; names its unit, per session, and
-both windows; checks the count on the order records; holds the cohorts fixed to answer the sale
-members; puts its comparators on the same step; and ties a reversible next step to the size with its
-range, all in the main answer.
+The hire-grade [D] answer asks four questions and uses each reply; says its moves before any number
+and leads with the count on the order records; names its unit, per session, and both windows; holds
+the cohorts fixed to answer the sale members; puts its comparators on the same step; shows one chart;
+gives the app team retention and keeps orders; and ties a reversible next step to the size with its
+range, all in the main answer. The fourth question is what earns the 2s on mix, step and cost: the
+candidate names the tables that carry those numbers before using them.
 
 **Two facts for the room if a pair asks.** Sale-week members on iOS fell from 63 to 43 percent on
 add-to-cart to order across the cut, because they aged from month zero into month one; that is why

@@ -216,7 +216,7 @@ Android members added to a cart 22,841 times in 17 days after the release. At 58
 that is about 1,317 orders a week if no failed cart came back; counted in orders placed, which keeps
 those that did, 1,133 to 1,266, a quarter of Android members' 5,064 a week: Rs 3.4 to 6.6 lakh of
 order value at Rs 300 to Rs 500 an order, of which Zomato keeps its fees. The checkout goes first: a
-fix ends a weekly loss. Retention cannot see it, since a member it cost an order still ordered once.
+fix ends a weekly loss. Retention cannot see it: most members it cost an order still ordered that month.
 
 **WATCH OUT.** Two wrong fixes: another sale, whose cohort enters the dashboard at month two and pulls
 it down again, and work on search to menu view, a step that never broke.

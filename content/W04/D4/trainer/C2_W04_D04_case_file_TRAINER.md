@@ -91,7 +91,7 @@ Turned to at the close of chapter 3, and again after the dispute.
 
 | Line of the board | Verdict | The evidence, with its number |
 |---|---|---|
-| 1. Tracking | Struck | The order records and the event log count the same 27,212 orders in September, so no orders went missing after the rename; the cut moved to 7 September (58 to 47) or 21 September (56 to 43) dates the fall and cannot test tracking |
+| 1. Tracking | Struck | The order records and the event log count the same 27,212 member orders in September, so no orders went missing after the rename; the cut moved to 7 September (58 to 47) or 21 September (56 to 43) dates the fall and cannot test tracking |
 | 2. Definition | Explained | Month-two retention counts members from their second month, so the 13,000-member August cohort is outside September's count; counting everyone gives 17,248 of 48,000, 35.9 percent |
 | 3. A cohort problem | Confirmed | Every cohort falls with age; month one runs 58 for January to 49 for July and 31 for August; the 8,027 sale-week members kept 20 against 49 for the 4,973 organic August members |
 | 4. An everyone problem | Struck for retention | No calendar month drops every cohort at once: each row slides about 0.3 points a month with age, and September by zone stays within 0.9 points of the city; the one change shared by everyone on a platform is the Android checkout, which line 5 owns |

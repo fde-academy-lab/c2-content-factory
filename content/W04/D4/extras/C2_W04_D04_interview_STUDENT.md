@@ -33,10 +33,10 @@ The candidate uses only what was handed over, and says which numbers are assumpt
 | The candidate asks | The interviewer answers |
 |---|---|
 | "Which retention: who is counted, from which month after joining, and what does active mean?" | "Month-two retention: of the members two or more months past their signup month, the share who ordered this month. It read 38 percent from June to September." |
-| "Does retained mean ordered, or renewed, and does a member who stops paying leave the count?" | "Ordered that month. Every member who joined since January stays in the count; this table records no cancelled memberships." |
+| "If a member stops paying for Gold, does she leave the count?" | "No. The tables carry no cancellation field, so every member who joined since January stays in the denominator, and a month with no order counts as not retained." |
 | "Dropped against what, and over which window?" | "Here is retention counted over everyone who joined before each month: 40.9, 40.0, 39.5 and 35.9 percent from June to September. And the cohort table." |
 | "August's cohort is 13,000, about 2.6 times the usual 5,000. Did anything change in how members were acquired: a campaign, a discount, the price?" | "A sale week, 17 to 23 August, with a discounted first month. Here are members by signup channel." |
-| "Did anything ship, or change in how events are logged, in that window?" | "A new Android checkout on 14 September, which renamed one Android event; the app team mapped the old name to the new. Here are the order flow by platform and week, and the order records." |
+| "Did anything ship, or change in how events are logged, in that window?" | "A new Android checkout on 14 September, which renamed one Android event; the app team mapped the old name to the new. Here are the order flow by platform, membership, checkout version and week, and the order records." |
 | "What is an order worth to us?" | "Assume Rs 400 of order value, anywhere from Rs 300 to Rs 500; Zomato keeps its commission and fees from that." |
 
 ## What structure carries the answer?
@@ -54,8 +54,10 @@ The candidate uses only what was handed over, and says which numbers are assumpt
 Before narrowing, name what sits outside the app and the split that tells each apart. Delivery
 times and restaurant supply move every platform and members and non-members alike; a competitor's
 offer or a festival week moves the city; a change to Gold's price or benefits moves members only;
-a delivery-fee change mostly moves non-members, since Gold members get free delivery. The member
-and platform splits separate them.
+a delivery-fee change mostly moves non-members, since Gold members get free delivery. The platform
+split separates all four from the release, which moved Android alone. The member split, the start
+date and the zone split separate them from one another, and in September every zone sat within 0.9
+points of the city.
 
 Aced's guide to analyst interviews makes the same moves on its own sample, a 10 percent drop in a
 social app's daily post views: define the metric, rule out a data issue first, segment before a root
@@ -73,12 +75,12 @@ blend at face value without asking who it counts.
 | | Weak answer | Hire-grade answer |
 |---|---|---|
 | First sentence | "It's probably the sale we ran in August; those members were never going to stay." | "Before a cause, I'll check the count, then what the number counts, then cohorts, then whether everyone moved, then the step, and then make a call." |
-| The count | Not checked | "Retention comes from the order records, which the rename never touched, and they match the event log, 27,212 orders in September. Starting checkout held at 80 percent, so the starts were counted too." |
-| The number | Takes the dashboard's 38 as the members' behaviour | "The label misleads: it is every member two or more months in, a blend of seven cohorts, so August's 13,000 are outside it. Over everyone who joined before each month it reads 40.9, 40.0, 39.5, then 35.9: that is the drop, and the dashboard misses it because it starts at month two." |
+| The count | Not checked | "Retention comes from the order records, which the rename never touched, and they match the event log, 27,212 member orders in September. Starting checkout held at 80 percent, so the starts were counted too." |
+| The number | Takes the dashboard's 38 as the members' behaviour | "The label misleads: it is every member two or more months in, a blend of seven cohorts, so August's 13,000 are outside it, and a member who stopped paying stays in it as not retained. Over everyone who joined before each month it reads 40.9, 40.0, 39.5, then 35.9: that is the drop, and the dashboard misses it because it starts at month two." |
 | The cohorts | "Newer members are worse." | "The members who stay past month one are steady: every cohort lands near 38.5 in month two and slides about 0.3 points a month. What fell is month one, 58 percent for January down to 49 for July, which the dashboard leaves out by design, and August at 31. Within August, organic members kept 49 and sale-week members 20." |
-| Users or use | Not reached | "Held to members who joined before August, the share who ordered fell alike on both platforms, 39.5 to 37.6 on Android and 39.8 to 38.0 on iOS, while orders per ordering member fell only on Android, 1.45 to 1.24, with iOS at 1.44 and 1.45." |
-| The step | "Checkout conversion fell, so the release broke checkout." | "Completing a started checkout fell from 72.5 to 55 for Android members from the release week, while on that same step iOS members went 71 to 70 and non-members on Android 65 to 64. Non-members ran the same new checkout and held, so the break is in what only members see, such as the free-delivery line or the membership check at payment. Every Android session moved to the new version that day, so date and version are one split. The 55 rests on 18,273 checkout starts, so chance moves it by under a point." |
-| The close | "Retention dropped because of the sale." | "Of the 3.6-point fall from August to September, about 3.2 is the August cohort, 13,000 members at 31, mostly sale-week members at 20; a normal August would have cost about 0.4. Retention can't see the checkout, since a member it cost an order still ordered once, but it loses 1,133 to 1,317 orders a week, a quarter of Android members' orders, Rs 3.4 to 6.6 lakh of order value. Fix the member path of the checkout first, because a fix ends a weekly loss; then ask whether the sale paid back. If August loses July's 10.5 points into month two, October's dashboard reads about 33, 32 to 34. What would change the order: if most failed checkouts came back as later orders, the checkout would cost a delay and the sale would go first." |
+| Users or use | Not reached | "Held to members who joined before July, so no cohort is in its first month in either month, the share who ordered barely moved, 37.9 to 37.5 percent on Android and 38.1 to 37.9 on iOS, while orders per ordering member fell only on Android, 1.45 to 1.24, with iOS at 1.45 and 1.46." |
+| The step | "Checkout conversion fell, so the release broke checkout." | "Completing a started checkout, per session, fell from 72.5 to 55 percent for Android members from the release week, while on that same step iOS members went 71 to 70 and non-members on Android 65 to 64. Non-members ran the same new checkout and held, so the break is in what only members see, such as the free-delivery line or the membership check at payment. Every Android session moved to the new version that day, so date and version are one split. The 55 rests on 18,273 checkout starts, so chance moves it by under a point." |
+| The close | "Retention dropped because of the sale." | "Of the 3.6-point fall from August to September, about 3.2 is the August cohort, 13,000 members at 31, mostly sale-week members at 20; a normal August would have cost about 0.4. Retention can't see the checkout, since most members it cost an order still ordered at least once that month, but it loses 1,133 to 1,317 orders a week, a quarter of Android members' orders, Rs 3.4 to 6.6 lakh of order value. Fix the member path of the checkout first, because a fix ends a weekly loss; then ask whether the sale paid back. October's dashboard takes August in at month two: if it loses July's 10.5 points, to about 20 percent, the dashboard reads about 33, and anywhere from 17 to 24 percent gives 32 to 34. What would change the order: if most failed checkouts came back as later orders, the checkout would cost a delay and the sale would go first." |
 
 ## What follows up, and which line answers each?
 
