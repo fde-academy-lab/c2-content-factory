@@ -82,6 +82,17 @@ Transition: S4, the AI-company variant.
 ## S4. AI variant: forecast inference demand for a launch
 *How do you forecast requests per minute around an AI product launch?*
 
+```mermaid
+flowchart LR
+    L["<b>Launch minute</b><br/>spike like a festival<br/>known date, short history"] --> H["<b>Hold-out spans the horizon</b><br/>last-launch shape as baseline"]
+    H --> C["<b>Asymmetric cost</b><br/>over-provisioned weekly<br/>vs timeouts in launch minute"]
+    C --> P["<b>Plan above the median</b><br/>capacity model must beat<br/>last-launch baseline"]
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class L,C known
+    class H,P lit
+```
+
 | | |
 |---|---|
 | The spike | The launch window acts like the festival: a known date, a known shape, a short history to learn from. |

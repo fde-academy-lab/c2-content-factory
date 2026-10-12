@@ -450,10 +450,10 @@ def holdout_slide_gif():
     anim.save(gif_path, writer=PillowWriter(fps=1.7))
     # Still frames: first and last.
     draw(frames[0])
-    fig.savefig(BOARD_DIR / "C2_W04_D05_holdout_slide_STUDENT_first.png",
+    fig.savefig(BOARD_DIR / "C2_W04_D05_holdout_slide_first_STUDENT.png",
                 bbox_inches="tight", dpi=150)
     draw(frames[-1])
-    fig.savefig(BOARD_DIR / "C2_W04_D05_holdout_slide_STUDENT_still.png",
+    fig.savefig(BOARD_DIR / "C2_W04_D05_holdout_slide_still_STUDENT.png",
                 bbox_inches="tight", dpi=150)
     plt.close(fig)
 

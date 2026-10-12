@@ -15,7 +15,7 @@ Transition: S1, the four parts.
 ---
 
 ## S1. The four parts of the fallback hour
-*What runs if the faculty block slips, and in what order?*
+*What runs if the IITGN block (tentative) slips, and in what order?*
 
 ```mermaid
 flowchart LR
@@ -64,7 +64,7 @@ Transition: S3, part two.
 ## S3. Part 2: rolling origin by hand
 *How does the error look when the forecast's starting point moves one week at a time?*
 
-![The hold-out slides across the series; errors accumulate](../whiteboards/C2_W04_D05_holdout_slide_STUDENT_still.png)
+![The hold-out slides across the series; errors accumulate](../whiteboards/C2_W04_D05_holdout_slide_still_STUDENT.png)
 
 For each of six origins over the summer, forecast one week ahead with each baseline. Six one-week errors give a line; the line says whether the method is steady or drifts.
 
@@ -122,7 +122,7 @@ Transition: S6, the close.
 A forecast earns the plan only after it beats the simplest baseline on weeks it has not seen. The baseline for a seasonal business is same-week-last-year or its festival-aligned twin. The hold-out spans the horizon.
 
 ```notes
-LIVE, 2 minutes. The one rule carries into the Saturday paper's part 5. The faculty block, when
-it runs on another day, picks up autocorrelation and smoothing from here.
+LIVE, 2 minutes. The one rule carries into the Saturday paper's part 5. The IITGN block
+(tentative), when it runs on another day, picks up autocorrelation and smoothing from here.
 Transition: Kahoot and close in half 2.
 ```
