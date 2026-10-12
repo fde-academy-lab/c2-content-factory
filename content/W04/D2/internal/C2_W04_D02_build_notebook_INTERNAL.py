@@ -150,7 +150,7 @@ see which group moved the read.
 ## Is the fall in rupees per hour all trips, or some of it fare?
 
 Rupees per hour is also the average fare times the trips each online hour carried. The two routes
-always agree, since the second is the first split in two; what the split shows is which half moved."""),
+always agree, since the second splits the first in two; what the split shows is which half moved."""),
 
     new_code_cell("""# Split the city by when drivers joined, then rebuild rupees per hour as fare x trips per hour.
 groups = pd.read_csv("../data/C2_W04_D02_driver_groups_STUDENT.csv")  # Monday's rows, split by joined_month
@@ -179,8 +179,9 @@ That is the evidence line the slide stands on when the finance partner asks whet
 
 The cluttered version is the one dashboards send: four series in four units on one axis, two of them
 divided by 20 or 100 to fit, a legend away from the lines, gridlines, and a title that names a topic.
-The clear version keeps one series, the one the scheme pays per, draws the launch, labels the two
-windows' values on the lines, and makes the title a sentence."""),
+The clear version keeps one series, bookings per peak online hour, because the scheme pays by the
+online hour; it draws the launch, labels the two windows' values on the lines, and makes the title a
+sentence."""),
 
     new_code_cell("""# Draw the series cluttered, then the makeover: one series, the launch, two labels, a sentence title.
 x = range(len(weeks))
@@ -226,8 +227,8 @@ weekday evening peak, drivers online at one moment, and a median rider wait unde
 
 **Map.** Drivers online = (trips to serve in an hour / trips one online driver completes in an hour)
 x a buffer. Trips to serve in an hour = people x weekday Uber trips per person x the share of the day's
-trips in the evening window / 3 hours; counting trips per person, never riders, keeps a commuter who
-rides both ways in the count. Trips one online driver completes in an hour = the trips a busy driver
+trips in the evening window / 3 hours; counting trips per person, never riders, counts a commuter who
+rides both ways twice. Trips one online driver completes in an hour = the trips a busy driver
 fits in an hour x (1 - the idle share), where the idle share is the share of online drivers with no
 rider at that moment. The buffer covers the busiest half hour of the window.
 
