@@ -25,10 +25,9 @@ Zomato Gold, Chennai, Week 4 Thursday. Month-two retention, members two or more 
 | ZG25312 | Jun | joined | 1 | 1 | 1 |
 | ZG27475 | Jun | joined | 1 | 0 | 0 |
 | ZG28603 | Jun | joined | 0 | 0 | 0 |
-| ZG38681 | Aug, sale | | | joined | 1 |
-| ZG40539, ZG41000, ZG41529, ZG42328 | Aug, sale | | | joined | 0 each |
+| ZG39559, ZG40539, ZG41000, ZG41529, ZG42328 | Aug, sale | | | joined | 0 each |
 
-By age: May 3, 2, 1, 1 of 4; June 2, 1, 1 of 3; August 1 of 5. The dashboard's way, from month two: 2 of 7 in August and in September; everyone before September: 3 of 12.
+By age: May 3, 2, 1, 1 of 4; June 2, 1, 1 of 3; August 0 of 5. The dashboard's way, from month two: 2 of 7 in August and in September; everyone before September: 2 of 12.
 
 **Crux:** Each group falls with age and each later group starts lower, while the dashboard's way stands still.
 

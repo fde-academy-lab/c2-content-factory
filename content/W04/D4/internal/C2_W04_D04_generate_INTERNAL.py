@@ -496,8 +496,18 @@ with open(DATA / f"{STEM}_events_STUDENT.csv.gz", "wb") as fh:
     with gzip.GzipFile(filename="", mode="wb", fileobj=fh, mtime=0, compresslevel=9) as gz:
         gz.write(buf.getvalue().encode("utf-8"))
 
+# The card shows the four sale-week members forced to no September order and a fifth drawn from the
+# sale-week members with no September order, so the card's August line reads 0 of 5: 1 of 5 would
+# equal the sale-week members' own full-data month one (19.8 percent). The forced member's data stay.
+forced_aug = [i for i in twelve_ids if BY_ID[i]["cohort_month"] == "2026-08"]
+aug_zero = [i for i in forced_aug if not ORDERS.get((i, "2026-09"))]
+pool_zero = sorted(m["member_id"] for m in COHORT["2026-08"] if m["signup_channel"] == "sale"
+                   and m["platform"] != "web" and m["member_id"] not in forced
+                   and not ORDERS.get((m["member_id"], "2026-09")))
+card_ids = ([i for i in twelve_ids if BY_ID[i]["cohort_month"] != "2026-08"]
+            + sorted(aug_zero + [rng_for("twelve rows, the card's fifth sale-week member").choice(pool_zero)]))
 tw_rows = []
-for mid in twelve_ids:
+for mid in card_ids:
     m = BY_ID[mid]
     row = {"member_id": mid, "signup_month": NAMES[m["cohort_month"]], "signup_channel": m["signup_channel"]}
     for month in ("2026-06", "2026-07", "2026-08", "2026-09"):
@@ -674,7 +684,7 @@ for ym, cols in (("2026-05", ["jun", "jul", "aug", "sep"]), ("2026-06", ["jul", 
     for k, c in enumerate(cols, 1):
         TW[(ym, k)] = (int(sub[f"ordered_in_{c}"].astype(int).sum()), len(sub))
 want_tw = {("2026-05", 1): 3, ("2026-05", 2): 2, ("2026-05", 3): 1, ("2026-05", 4): 1,
-           ("2026-06", 1): 2, ("2026-06", 2): 1, ("2026-06", 3): 1, ("2026-08", 1): 1}
+           ("2026-06", 1): 2, ("2026-06", 2): 1, ("2026-06", 3): 1, ("2026-08", 1): 0}
 check("twelve rows: four May, three June and five August sale members, every one a real member",
       list(tw.signup_month).count("May") == 4 and list(tw.signup_month).count("Jun") == 3
       and list(tw.signup_month).count("Aug") == 5 and all(i in BY_ID for i in tw.member_id))
@@ -687,7 +697,7 @@ tw_every = {"2026-07": (TW[("2026-05", 2)][0] + TW[("2026-06", 1)][0], 7),
             "2026-09": (TW[("2026-05", 4)][0] + TW[("2026-06", 3)][0] + TW[("2026-08", 1)][0], 12)}
 check("twelve rows: the dashboard's way reads the same in August and September",
       tw_dash["2026-08"] == tw_dash["2026-09"], tw_dash["2026-08"], tw_dash["2026-09"])
-check("twelve rows: three of the twelve ordered in September", tw_every["2026-09"] == (3, 12))
+check("twelve rows: two of the twelve ordered in September", tw_every["2026-09"] == (2, 12))
 full = {("2026-05", k): tri.loc["2026-05", k] for k in range(1, 5)}
 full.update({("2026-06", k): tri.loc["2026-06", k] for k in range(1, 4)})
 full[("2026-08", 1)] = tri.loc["2026-08", 1]
@@ -1501,9 +1511,10 @@ corrections = [
      "here": f"{len(members):,}", "why": "seven cohorts of about 5,000, August's 13,000 and a September of about 5,000 "
      "sum to about 53,000; 60,000 would need a second sale cohort in September that the ticket never mentions"},
     {"line": "the twelve rows", "case_file": "August 2 of 5 in month one; 6 of 12 in September",
-     "here": "August 1 of 5; 3 of 12",
+     "here": "August 0 of 5; 2 of 12",
      "why": "6 of 12 needs members to come back after leaving, which breaks every cohort falling on the card; 2 of 5 "
-            "(40 percent) sits a point from Kalpa's 41"},
+            "(40 percent) sits a point from Kalpa's 41; 1 of 5 (20 percent) equals the sale-week members' own full-data "
+            "month one (19.8), and 3 of 12 (25 percent) sits within a point of Kalpa's per-member checkout (24.5)"},
     {"line": "the events table", "case_file": "member_id",
      "here": "user_id with is_member", "why": "the ticket compares non-members on Android, so the log carries a "
      "comparison sample of non-member users; a member's user_id is her member_id"},

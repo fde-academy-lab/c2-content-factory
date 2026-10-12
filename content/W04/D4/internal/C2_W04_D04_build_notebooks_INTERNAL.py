@@ -157,7 +157,7 @@ def nb01():
         kept = by_age["sum"]
         check("May keeps 3, 2, 1, 1 of 4", list(kept.loc["May", [1, 2, 3, 4]]) == [3, 2, 1, 1])
         check("June keeps 2, 1, 1 of 3", list(kept.loc["Jun", [1, 2, 3]]) == [2, 1, 1])
-        check("August keeps 1 of 5 in month one", kept.loc["Aug", 1] == 1)
+        check("August keeps 0 of 5 in month one", kept.loc["Aug", 1] == 0)
         full = member_months.assign(ordered=member_months["orders"].gt(0).astype(int),
                                     month=member_months["month"].map({"2026-06": "jun", "2026-07": "jul",
                                                                       "2026-08": "aug", "2026-09": "sep"}))
@@ -169,7 +169,7 @@ def nb01():
         '''),
         md('''
         **What happened.** The answer is a. The May members kept 3 of 4 in month one, the June members
-        2 of 3 and the August sale-week members 1 of 5. Each group falls as it ages: May runs 3, 2, 1,
+        2 of 3 and the August sale-week members 0 of 5. Each group falls as it ages: May runs 3, 2, 1,
         1 of 4, and June runs 2, 1, 1 of 3. Each later group also starts lower. Fixing the entry
         moment, the month a member joined, is what lets the three be compared at all.
         '''),
@@ -183,7 +183,7 @@ def nb01():
         - a) It falls from August to September, because the sale-week members ordered so little
         - b) It reads 2 of 7 in both months, and the five sale-week members are not in it
         - c) It rises, because the sale-week members are new
-        - d) It reads 3 of 12 in both months
+        - d) It reads 2 of 12 in both months
         '''),
         code('''
         # Each reporting month counted two ways: from month two on (the dashboard), and everyone.
@@ -210,13 +210,13 @@ def nb01():
         ax.set_title("Dark: ordered. Ringed: inside the dashboard's count"); plt.show()
         check("the dashboard's way reads 2 of 7 in August and in September",
               ways["aug"]["dashboard, month two on"] == ways["sep"]["dashboard, month two on"] == "2 of 7")
-        check("everyone who joined before September: 3 of 12 ordered", ways["sep"]["everyone who joined before"] == "3 of 12")
+        check("everyone who joined before September: 2 of 12 ordered", ways["sep"]["everyone who joined before"] == "2 of 12")
         '''),
         md('''
         **What happened.** The answer is b. Counted the dashboard's way, 2 of 7 members ordered in
         August and 2 of 7 in September: the number did not move, though five new members arrived and
-        four of them did not order. They are outside the count until their second month, October.
-        Counting everyone who joined before September gives 3 of 12. On the full data, chapter 2
+        none of them ordered. They are outside the count until their second month, October.
+        Counting everyone who joined before September gives 2 of 12. On the full data, chapter 2
         finds the same two readings: 38 percent the dashboard's way, 36 counting everyone.
 
         ## Why does a big new group keep an average flat while the old group shrinks?
@@ -256,7 +256,7 @@ def nb01():
 
         **The questions, answered.** (1) An average over two groups is neither group's number: 10 of
         20 hid a 60 and a 40. (2) The card shows who ordered each month; blanks are months before or at
-        joining. (3) May kept 3, 2, 1, 1 of 4, June 2, 1, 1 of 3, and the August sale week 1 of 5 in
+        joining. (3) May kept 3, 2, 1, 1 of 4, June 2, 1, 1 of 3, and the August sale week 0 of 5 in
         month one. (4) The dashboard's way read 2 of 7 in August and in September, with the five
         sale-week members outside its count.
         '''),
@@ -270,7 +270,7 @@ def nb02():
         # What is every cohort's curve on 53,089 members, and what is the dashboard's 38 made of?
 
         **Week 4, Thursday, chapter 2 of 3 (L2 and L3).** Chapter 1 counted twelve members by hand:
-        each signup group fell as it aged, the August sale-week members kept 1 of 5 in month one, and
+        each signup group fell as it aged, the August sale-week members kept 0 of 5 in month one, and
         the dashboard's way of counting read 2 of 7 in August and in September, because it leaves a
         member out until her second month. This notebook does the same on every member.
         ''' + TICKET + '''

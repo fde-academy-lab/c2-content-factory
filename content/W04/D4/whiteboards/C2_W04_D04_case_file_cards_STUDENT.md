@@ -50,7 +50,7 @@ full calendar month after joining; the joining month is month zero and is never 
 | ZG25312 | Jun | organic | joined | 1 | 1 | 1 |
 | ZG27475 | Jun | organic | joined | 1 | 0 | 0 |
 | ZG28603 | Jun | organic | joined | 0 | 0 | 0 |
-| ZG38681 | Aug | sale | | | joined | 1 |
+| ZG39559 | Aug | sale | | | joined | 0 |
 | ZG40539 | Aug | sale | | | joined | 0 |
 | ZG41000 | Aug | sale | | | joined | 0 |
 | ZG41529 | Aug | sale | | | joined | 0 |

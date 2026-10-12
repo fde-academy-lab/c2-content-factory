@@ -27,7 +27,7 @@ Each is also in the facts file's `corrections` block, with the arithmetic or the
 |---|---|---|
 | The dashboard blends everyone who joined before the month | Month-two retention: members two or more months past joining | With every cohort falling and August at 31, a blend that counts August cannot hold at 38 |
 | 60,000 members | 53,089 | Seven cohorts of about 5,000, August's 13,000 and September's 5,089 |
-| Twelve rows: August 2 of 5; September 6 of 12 | 1 of 5; 3 of 12 | 6 of 12 needs members to return, which breaks every cohort falling; 2 of 5 sits a point from Kalpa's 41 |
+| Twelve rows: August 2 of 5; September 6 of 12 | 0 of 5; 2 of 12 | 6 of 12 needs members to return, which breaks every cohort falling; 2 of 5 sits a point from Kalpa's 41; 1 of 5 equals the sale-week members' own 19.8 percent, and 3 of 12 sits within a point of Kalpa's per-member checkout, 24.5 |
 | `events.member_id` | `user_id` with `is_member` | The ticket compares non-members on Android |
 | Kalpa retention on orders | On app activity, the spine's fallback | 37 of the 120 Retail-Plus customers ordered in September in v4 |
 | The funnel toy: 100 visits; checkout 10 of 50 per session against 10 of 20 per member | 100 sessions; 10 of 100 sessions against 10 of 20 people | 100 visits then 50 sessions mixes units, and 10 of 50 is no step over the step before (the first cold read's blocker) |

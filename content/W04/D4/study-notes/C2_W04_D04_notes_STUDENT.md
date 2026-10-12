@@ -63,7 +63,7 @@ A coaching centre takes 10 students in June and 10 in July (invented). In each b
 6 of June's and 4 of July's come back: 10 of 20, 50 percent, neither batch's rate.
 
 Twelve members from the case data say the same. By months since joining, May's four kept 3, 2, 1
-and 1 of 4, June's three 2, 1 and 1 of 3, and the five from the August sale week 1 of 5 in month one.
+and 1 of 4, June's three 2, 1 and 1 of 3, and the five from the August sale week 0 of 5 in month one.
 Counted from month two, as the dashboard does, the card reads 2 of 7 in August and in September.
 
 A second toy: batch A of 100 stood at 50 percent; now A is at 40, and a new batch B of 400 arrives

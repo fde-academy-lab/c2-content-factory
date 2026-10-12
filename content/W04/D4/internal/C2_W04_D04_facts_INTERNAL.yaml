@@ -1817,13 +1817,13 @@ twelve_rows:
     ordered_in_jul: 0
     ordered_in_aug: 0
     ordered_in_sep: 0
-  - member_id: ZG38681
+  - member_id: ZG39559
     signup_month: Aug
     signup_channel: sale
     ordered_in_jun: ''
     ordered_in_jul: ''
     ordered_in_aug: ''
-    ordered_in_sep: 1
+    ordered_in_sep: 0
   - member_id: ZG40539
     signup_month: Aug
     signup_channel: sale
@@ -1860,7 +1860,7 @@ twelve_rows:
     Jun_m1: 2 of 3
     Jun_m2: 1 of 3
     Jun_m3: 1 of 3
-    Aug_m1: 1 of 5
+    Aug_m1: 0 of 5
   hand_count_percent:
     May_m1: 75.0
     May_m2: 50.0
@@ -1869,14 +1869,14 @@ twelve_rows:
     Jun_m1: 66.7
     Jun_m2: 33.3
     Jun_m3: 33.3
-    Aug_m1: 20.0
+    Aug_m1: 0.0
   ways_percent:
     dashboard_Jul: 50.0
     dashboard_Aug: 28.6
     dashboard_Sep: 28.6
     everyone_Jul: 57.1
     everyone_Aug: 28.6
-    everyone_Sep: 25.0
+    everyone_Sep: 16.7
   dashboard_way:
     Jul: 2 of 4
     Aug: 2 of 7
@@ -1884,7 +1884,7 @@ twelve_rows:
   everyone_way:
     Jul: 4 of 7
     Aug: 2 of 7
-    Sep: 3 of 12
+    Sep: 2 of 12
   rule: every hand-counted rate at least five points from its full-data value and from Kalpa's retention
     plants
 public_facts:
@@ -2237,9 +2237,11 @@ corrections:
     60,000 would need a second sale cohort in September that the ticket never mentions
 - line: the twelve rows
   case_file: August 2 of 5 in month one; 6 of 12 in September
-  here: August 1 of 5; 3 of 12
+  here: August 0 of 5; 2 of 12
   why: 6 of 12 needs members to come back after leaving, which breaks every cohort falling on the card;
-    2 of 5 (40 percent) sits a point from Kalpa's 41
+    2 of 5 (40 percent) sits a point from Kalpa's 41; 1 of 5 (20 percent) equals the sale-week members'
+    own full-data month one (19.8), and 3 of 12 (25 percent) sits within a point of Kalpa's per-member
+    checkout (24.5)
 - line: the events table
   case_file: member_id
   here: user_id with is_member

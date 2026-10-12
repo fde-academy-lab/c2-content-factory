@@ -54,9 +54,9 @@ Written by `C2_W04_D04_generate_INTERNAL.py`; every line must read PASS.
 | PASS | orders per active Android member fell from August to September while iOS did not | {'android Aug': 1.36, 'android Sep': 1.2, 'ios Aug': 1.34, 'ios Sep': 1.4} |  |
 | PASS | no zone stands out in September (every zone within three points of the city) | 0.009 |  |
 | PASS | twelve rows: four May, three June and five August sale members, every one a real member |  |  |
-| PASS | twelve rows: the hand counts are the designed ones | {'May m1': 3, 'May m2': 2, 'May m3': 1, 'May m4': 1, 'Jun m1': 2, 'Jun m2': 1, 'Jun m3': 1, 'Aug m1': 1} |  |
+| PASS | twelve rows: the hand counts are the designed ones | {'May m1': 3, 'May m2': 2, 'May m3': 1, 'May m4': 1, 'Jun m1': 2, 'Jun m2': 1, 'Jun m3': 1, 'Aug m1': 0} |  |
 | PASS | twelve rows: the dashboard's way reads the same in August and September | (2, 7) | (2, 7) |
-| PASS | twelve rows: three of the twelve ordered in September |  |  |
+| PASS | twelve rows: two of the twelve ordered in September |  |  |
 | PASS | twelve rows: every hand-counted rate sits at least five points from its full-data value | 0.053 |  |
 | PASS | Kalpa: the 120 members are v4's 120 Retail-Plus customers |  |  |
 | PASS | Kalpa: the August cohort is the largest | 32 |  |

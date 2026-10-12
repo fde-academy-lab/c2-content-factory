@@ -186,15 +186,14 @@ Transition: twelve members of the case data.
 | ZG25312 | Jun | organic | joined | 1 | 1 | 1 |
 | ZG27475 | Jun | organic | joined | 1 | 0 | 0 |
 | ZG28603 | Jun | organic | joined | 0 | 0 | 0 |
-| ZG38681 | Aug | sale | | | joined | 1 |
-| ZG40539, ZG41000, ZG41529, ZG42328 | Aug | sale | | | joined | 0 each |
+| ZG39559, ZG40539, ZG41000, ZG41529, ZG42328 | Aug | sale | | | joined | 0 each |
 
 A 1 means she placed at least one order that month. **Month one** is the first full calendar month after joining, so May's is June and August's is September; the joining month is month zero and is never counted.
 
 ```notes
 LIVE, 5 minutes. Hand out the card if it is not on the tables. Read one row aloud: ZG21052 joined
-in May, ordered in June and July, then stopped. The last line holds four sale-week members, named
-one by one, none of whom ordered in September. Ask each table to rewrite the card by months since joining instead of by
+in May, ordered in June and July, then stopped. The last line holds the five sale-week members,
+named one by one, none of whom ordered in September. Ask each table to rewrite the card by months since joining instead of by
 calendar month before the next slide.
 Transition: the prediction.
 ```
@@ -221,16 +220,16 @@ Transition: the count.
 
 ---
 
-## S9. Answer: May 3 of 4, June 2 of 3, sale 1 of 5
+## S9. Answer: May 3 of 4, June 2 of 3, sale 0 of 5
 *What does each group keep at each age, and what does that show?*
 
 | Joined | Month one | Month two | Month three | Month four |
 |---|---|---|---|---|
 | May (4) | 3 of 4 | 2 of 4 | 1 of 4 | 1 of 4 |
 | June (3) | 2 of 3 | 1 of 3 | 1 of 3 | |
-| August sale week (5) | 1 of 5 | | | |
+| August sale week (5) | 0 of 5 | | | |
 
-The answer is a. Each group falls as it ages, and each later group starts lower: 75, 67 and then 20 percent in month one. A **cohort** is a group that joined in the same month; fixing the entry moment is what makes the three comparable at all. The twelve were picked to show the pattern on one card: on all 53,089, May's month one is 52 percent and June's 50.
+The answer is a. Each group falls as it ages, and each later group starts lower: 75, 67 and then 0 percent in month one. A **cohort** is a group that joined in the same month; fixing the entry moment is what makes the three comparable at all. The twelve were picked to show the pattern on one card: on all 53,089, May's month one is 52 percent and June's 50.
 
 ```notes
 LIVE, 6 minutes. Count May's row aloud: three ordered in month one, two in month two, one in three
@@ -252,7 +251,7 @@ b) 2 of 7 in both months, with the five sale-week members outside the count
 
 c) A rise, because new members joined
 
-d) 3 of 12 in both months
+d) 2 of 12 in both months
 
 ```notes
 LIVE, 3 minutes. Remind the rule: in a reporting month, count every member two or more months past
@@ -268,9 +267,9 @@ Transition: the count, both ways.
 | Reporting month | July | August | September |
 |---|---|---|---|
 | The dashboard's way: members two or more months past joining | 2 of 4 | 2 of 7 | 2 of 7 |
-| Everyone who joined before the month | 4 of 7 | 2 of 7 | 3 of 12 |
+| Everyone who joined before the month | 4 of 7 | 2 of 7 | 2 of 12 |
 
-The answer is b. The dashboard's way did not move from August to September, though five members joined in the sale week and four of them did not order: they are outside its count until October. Counted for everyone, September reads 3 of 12.
+The answer is b. The dashboard's way did not move from August to September, though five members joined in the sale week and none of them ordered: they are outside its count until October. Counted for everyone, September reads 2 of 12.
 
 ```notes
 LIVE, 5 minutes. Ring the two 2-of-7 cells. Then the August column of the sale-week members: they
@@ -348,7 +347,7 @@ Transition: the chapter's close.
 
 ```mermaid
 flowchart LR
-    A["<b>Where are we losing people?</b><br/>anchor: a coaching centre's batches"] --> Q1["<b>Who entered when?</b><br/>May 3 of 4 · June 2 of 3 · sale 1 of 5"]
+    A["<b>Where are we losing people?</b><br/>anchor: a coaching centre's batches"] --> Q1["<b>Who entered when?</b><br/>May 3 of 4 · June 2 of 3 · sale 0 of 5"]
     Q1 --> Q2["<b>Who is still here?</b><br/>chapter 2"]
     Q2 --> Q3["<b>Where in the funnel?</b><br/>chapter 3"]
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -397,7 +396,7 @@ label: 4 | title: What is outside the count? | body: The August cohort, and what
 
 ```notes
 LIVE, 2 minutes. Read the four questions. Say what chapter 1 found, with its numbers, so the room
-carries it in: each group fell with age, the sale-week members kept 1 of 5, and the dashboard's way
+carries it in: each group fell with age, the sale-week members kept 0 of 5, and the dashboard's way
 read 2 of 7 two months running.
 Transition: the code that builds the table.
 ```

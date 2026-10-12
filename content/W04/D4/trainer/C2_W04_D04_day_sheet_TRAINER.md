@@ -74,7 +74,7 @@ flowchart LR
 | Block | Minutes | Slides | File beside them | What must land | What to cut if late |
 |---|---|---|---|---|---|
 | The ticket and the board | 10 | S1 to S4 | Half one; the case-file cards, part 1 | The ask in the ticket's words; each group's ordered causes with a test each | S2's map to one sentence |
-| Chapter 1 | 50 | S5 to S15 | The card (cards, part 2); notebook 01; the guided set, items 1 and 2 | May 3, 2, 1, 1 of 4; June 2, 1, 1 of 3; sale 1 of 5; the dashboard's way 2 of 7 twice; the batch toy at 50 percent | S14's two cards to one sentence each |
+| Chapter 1 | 50 | S5 to S15 | The card (cards, part 2); notebook 01; the guided set, items 1 and 2 | May 3, 2, 1, 1 of 4; June 2, 1, 1 of 3; sale 0 of 5; the dashboard's way 2 of 7 twice; the batch toy at 50 percent | S14's two cards to one sentence each |
 | Chapter 2 | 45 | S16 to S26 | Notebook 02; reveals 1 and 2; the chapter 2 drill | Every row falls; 38.2 to 37.8; 13,218 of 35,000 both ways; August outside; organic 49 against sale-week 20 | S22's picture described; the drill moves to the lab |
 | Break | 10 | | | The week map with "beyond the blend" under Thursday | |
 | Chapter 3 | 65 | S27 to S37 | Notebook 03; reveal 3; the guided set, items 3 and 4; the chapter 3 drill | The 118 artefact and its 89; 34 per session against 61 per member; 58 to 44 on Android members only; 72.5 to 55 inside the checkout; six caveats | S29's toy to one sentence; S36's last two rows read aloud |
@@ -113,7 +113,7 @@ censored, and show when two curves really differ by more than chance."
 
 | After | The check | A room that is behind |
 |---|---|---|
-| S11 | Three learners say the card's two readings: 2 of 7 the dashboard's way, 3 of 12 counting everyone | Recount September's column on the board before chapter 2 |
+| S11 | Three learners say the card's two readings: 2 of 7 the dashboard's way, 2 of 12 counting everyone | Recount September's column on the board before chapter 2 |
 | S23 | Every notebook's your-turn cell lands on 13,218 of 35,000 | Pair each stuck learner with a finished one for two minutes |
 | S35 | The room says the step, the segment and the date aloud | Rebuild the split on the board from S34's three lines |
 | S42 | Every group has one page with the cost and its range | The TA takes the slowest group's call to the board |
