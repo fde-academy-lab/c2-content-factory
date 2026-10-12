@@ -40,8 +40,8 @@ pass them in other words. The case: Uber's peak-hour guarantee in Hyderabad, lau
 | No method words | It says "fares per online hour", never "denominator" or "ratio" |
 
 The page asks the city head to sign a test first, which is what the caveat calls for: only a test can
-separate the scheme from the season. Drivers are picked at random rather than zones, since drivers move
-between zones.
+separate the scheme from the season. The test splits drivers at random, one by one, because a driver
+moves between zones and a split by zone would put the same driver on both sides.
 
 ## Which mistakes come back most often?
 

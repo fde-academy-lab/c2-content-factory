@@ -47,7 +47,7 @@ appendix until someone asks.
 
 ## What will each role object to, and which part is true?
 
-This comes up at work when a metric changes whose targets it judges.
+This comes up at work whenever a new metric changes the targets people are judged on.
 
 | Role | What they will say | What they lose |
 |---|---|---|
@@ -76,8 +76,6 @@ a) Last year's same six weeks showing a fall of this size
 b) The median rider wait at peak rising in the test zones above where it is now
 c) Weekly sign-ups of new drivers falling once the condition is announced
 d) Nothing, since the data already answers the objection in full
-
-Move 4 names the fact that would show the objection right, and how the presenter would get it.
 
 ---
 
