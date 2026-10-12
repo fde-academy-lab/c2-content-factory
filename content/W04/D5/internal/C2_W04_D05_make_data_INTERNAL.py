@@ -453,6 +453,12 @@ def main():
     for i in short:
         F.add("holdout_4_weeks", f"naive_miss_{week(i):%m_%d}", s4["naive"][i] - y[i], n(s4["naive"][i] - y[i]),
               f"naive minus actual from 24 Aug, week of {dmy(i)}", "take-home self-check")
+    F.add("holdout_4", "origin_position", 99, "99", "the origin's position in the 104 rows, counting from 0; drift's step divides by it", "take-home")
+    F.add("holdout_4", "hold_mean", sum(y[i] for i in short) / 4, n(sum(y[i] for i in short) / 4),
+          "the four hidden weeks' average shipments", "take-home self-check")
+    F.add("holdout_4", "vendor_steps", [10, 13], "10 to 13", "weeks ahead of 22 Jun 2026 that the vendor's four rows forecast", "take-home self-check")
+    F.add("saturday", "minutes", [120, 20, 20, 60, 30, 30, 20], "120, 20, 20, 60, 30, 30 and 20",
+          "Saturday's parts in minutes: paper, break, marking, discussion, transfer drill, mock interviews, bridge (spine section 10; facts.yaml saturday-w4-shape)", "Saturday preview")
 
     # ---- the rolling origin by hand on the twelve rows (fallback part 2)
     for i in range(53, 58):

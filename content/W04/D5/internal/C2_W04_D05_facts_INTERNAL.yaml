@@ -1174,6 +1174,23 @@ holdout_4:
   shown: 233 percent
   how: vendor over aligned on four weeks
   used_in: take-home
+- id: origin_position
+  value: 99
+  shown: '99'
+  how: the origin's position in the 104 rows, counting from 0; drift's step divides by it
+  used_in: take-home
+- id: hold_mean
+  value: 233650.0
+  shown: 233,650
+  how: the four hidden weeks' average shipments
+  used_in: take-home self-check
+- id: vendor_steps
+  value:
+  - 10
+  - 13
+  shown: 10 to 13
+  how: weeks ahead of 22 Jun 2026 that the vendor's four rows forecast
+  used_in: take-home self-check
 holdout_4_weeks:
 - id: naive_miss_08_31
   value: -41800
@@ -1195,6 +1212,20 @@ holdout_4_weeks:
   shown: -35,600
   how: naive minus actual from 24 Aug, week of 21 Sep 2026
   used_in: take-home self-check
+saturday:
+- id: minutes
+  value:
+  - 120
+  - 20
+  - 20
+  - 60
+  - 30
+  - 30
+  - 20
+  shown: 120, 20, 20, 60, 30, 30 and 20
+  how: 'Saturday''s parts in minutes: paper, break, marking, discussion, transfer drill, mock interviews,
+    bridge (spine section 10; facts.yaml saturday-w4-shape)'
+  used_in: Saturday preview
 rolling_origin:
 - id: naive_10_06
   value: 331200

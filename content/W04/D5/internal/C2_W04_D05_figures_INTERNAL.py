@@ -125,7 +125,7 @@ def festival_plot():
     a.set_xlabel("week beginning, either year")
     b.set_xticks(range(-4, 5))
     b.axvline(0, color=ROSE, ls="--", lw=1.5)
-    b.text(0.15, 260_000, "Diwali's\nweek", color=ROSE, fontsize=13)
+    b.text(0.2, 392_000, "Diwali's\nweek", color=ROSE, fontsize=13)
     b.set_title("By weeks from Diwali: the peaks line up")
     b.set_xlabel("weeks from Diwali's week")
     thousands(a)
