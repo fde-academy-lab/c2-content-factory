@@ -80,3 +80,14 @@ reason.
 - **Interviewer 19, the 72 percent.** The slide's evidence stays the rupees-per-hour chart with the 61 percent beside it; the 72 percent of low-acceptance hours with no trip is in the facts file for a trainer who wants it.
 - **Interviewer 27, the curriculum row.** The row's wording about scoring the final number stays in the tracker, which a day session does not edit; every Tuesday file now quotes only what the Aced page says.
 - **Interviewer 28, the label on S41, S50 and S56.** Every slide carries the header line "UBER, HYDERABAD, AN ILLUSTRATIVE CASE", so a slide lifted alone keeps its label.
+
+## Which house reads ran after the fix pass, and what did they change?
+
+The humanizer read ran in file mode over every STUDENT and TRAINER file and the notebook's markdown
+cells, by four reviewer agents that wrote findings and edited nothing. They found 94: 14 in the
+morning deck, the sheet and the pre-read, 19 in the afternoon deck and the notes, 39 in the exercises,
+the Kahoot and the take-home, and 22 in the transcripts, the trainer files and the notebook. All 94 are
+applied, 83 as proposed and 11 reworded so that each keeps its numbers and reads as one sentence. The
+same pass names explorer scenes T1 to T3 in the notes of S9, S10, S14 and S40, puts the day sheet's
+handoff line in S56's notes, and runs the notebook's ledger as a table of versions, so the notebook
+defines only `check`. The tic scanner then read all 38 markdown files and the notebook's prose clean.
