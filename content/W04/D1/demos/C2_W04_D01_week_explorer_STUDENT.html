@@ -306,6 +306,41 @@ var W4 = {
       ["unf", "Unfulfilled requests", "0.11 to 0.10"],
       ["topup", "Top-up paid", "Rs 1.9 crore"]
     ]
+  },
+  wed: {
+    carts: 40000,                   /* case Wed ticket: carts, 1 to 28 September 2026 */
+    milk: 0.71, bread: 0.34,        /* case Wed L2: share of carts with each item */
+    breadMilkLift: 1.04,            /* case Wed L2: bread to milk, confidence 0.74 and lift 1.04 */
+    tea: [0.6, 0.4, 0.3],           /* toy R1: ten tea-stall orders, chai in 6, biscuit in 4, both in 3 */
+    hundred: {both: 25, aOnly: 9, bOnly: 46, none: 20},   /* derived: 100 carts in the case's proportions */
+    views: 60000, ctrMilk: 0.012, ctrOther: 0.064, add: 0.5, margin: 9,   /* case Wed L5 and ticket */
+    /* partners for a cart holding chips: [name, share of chips carts holding it, lift, source] */
+    chips: [["Toned milk", 0.69, 0.97, "band"], ["Cold drink", 0.42, 3.4, "case"], ["Bread", 0.34, 1.00, "toy"],
+            ["Namkeen", 0.20, 2.1, "toy"], ["Dip", 0.15, 2.6, "toy"]],
+    /* pairs: [name, support percent, lift, source]; "band" sits inside the case's milk band, lift 0.96 to 1.08 */
+    pairs: [["bread + milk", 25.2, 1.04, "case"], ["eggs + milk", 21.2, 1.03, "case"], ["curd + milk", 18.2, 0.99, "band"],
+            ["bananas + milk", 16.6, 1.01, "band"], ["cold drink + milk", 8.6, 0.99, "band"], ["chips + milk", 8.3, 0.97, "band"],
+            ["ice cream + milk", 2.9, 1.03, "band"], ["chips + cold drink", 5.0, 3.4, "case"], ["ice cream + chocolate sauce", 0.25, 4.6, "case"]]
+  },
+  thu: {
+    monthOne: [58, 56, 55, 53, 52, 50, 49, 31],     /* case Thu ticket: month-one retention, January to August cohorts */
+    normal: 5000, saleTimes: 2.6,                   /* case Thu ticket: normal cohort about 5,000; August 2.6 times */
+    flat: 38,                                       /* case Thu ticket: the dashboard's month-two retention, June to September */
+    /* toy: later cells, ages 2 onward, built so the dashboard reads 38 from June to September */
+    later: [[39.2, 38.9, 38.6, 38.3, 38.0, 37.7, 37.4], [39.0, 38.7, 38.4, 38.1, 37.8, 37.5], [38.7, 38.4, 38.1, 37.8, 37.5],
+            [38.5, 38.2, 37.9, 37.6], [38.3, 38.0, 37.7], [38.0, 37.7], [37.8], []],
+    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September"],
+    toyBatch: {a: 100, aLast: 0.5, aNow: 0.4, b: 400, bRate: 0.525},   /* toy R1: two coaching batches */
+    /* toy counts built to the case's rates: search to menu view 118 percent per session; menu view to add-to-cart
+       34 percent per session and 61 percent per member */
+    stages: ["Open the app", "Search", "Menu view", "Add to cart", "Checkout start", "Order placed"],
+    funnel: {
+      session: {with: [100000, 50000, 59000, 20060, 13040, 10430], without: [100000, 50000, 36000, 12240, 7960, 6370]},
+      member: {with: [30000, 20000, 24000, 14640, 11860, 10080], without: [30000, 20000, 17000, 10370, 8400, 7140]}
+    },
+    /* toy, programme-written: an AI app's launch cohort against organic cohorts, weekly retention in percent */
+    launch: 100000, organic: 10000,
+    launchRate: [70, 46, 30, 22, 19, 17, 16, 15], organicRate: [50, 42, 38, 36, 35, 34, 34, 33]
   }
 };
 </script>
@@ -695,9 +730,193 @@ var W4 = {
       </div>
       <p class="who"><b>Who needs the answer.</b> The category manager and the growth lead.</p>
       <p class="who"><b>The questions on the way.</b></p>
-      <div class="jumps"></div>
+      <div class="jumps">
+        <button type="button" class="jump" data-jump="W1"><b>W1</b>Why is lift a ratio of two areas?</button>
+        <button type="button" class="jump" data-jump="W2"><b>W2</b>What does confidence throw away?</button>
+        <button type="button" class="jump" data-jump="W3"><b>W3</b>Why does the item in every cart look like the best partner?</button>
+        <button type="button" class="jump" data-jump="W4"><b>W4</b>What does a strip slot earn?</button>
+        <button type="button" class="jump" data-jump="W5"><b>W5</b>Where should the support floor sit?</button>
+      </div>
       <p class="jumped" aria-live="polite"></p>
     </div>
+    <article class="scene" id="scene-W1" data-scene="W1">
+      <div class="scene-head"><span class="sid">W1</span><h3>Why is lift a ratio of two areas?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> if two items turn up together in many orders, they belong together.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you move the bands.</b> Hold the observed overlap at 0.30 and widen both bands. Where does lift end up?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Above one, because both items got more popular.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Below one, once the bands' product passes 0.30.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Exactly one, whatever the widths.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Unchanged, since the overlap did not move.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>A tea stall's ten orders as a toy, invented: chai is A and biscuit is B. The square is every order; the violet band is the share with chai and the amber band the share with biscuit, so their crossing is the overlap chance alone would give. The rose block beside it, on the same width, is the overlap actually seen.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><label for="w1-a">P(A), the share of orders with chai</label>
+            <input type="range" id="w1-a" min="0.05" max="0.95" step="0.01" value="0.6" data-ctl="a">
+            <output data-out="a">0.60 (slider value 0.60)</output></div>
+          <div class="ctl"><label for="w1-b">P(B), the share of orders with biscuit</label>
+            <input type="range" id="w1-b" min="0.05" max="0.95" step="0.01" value="0.4" data-ctl="b">
+            <output data-out="b">0.40 (slider value 0.40)</output></div>
+          <div class="ctl"><label for="w1-o">The observed share of orders with both</label>
+            <input type="range" id="w1-o" min="0" max="0.95" step="0.01" value="0.3" data-ctl="o">
+            <output data-out="o">0.30 (slider value 0.30)</output></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>With the overlap held at 0.30 and the bands widened to 0.80 and 0.70, the overlap chance alone would give grows to 0.80 x 0.70 = 0.56, so lift falls to 0.30 / 0.56 = 0.54: the pair now turns up together less often than chance would put it together. At the tea stall's own numbers, 0.30 seen against 0.24 expected, lift is 1.25.</p>
+        <p>Lift asks how much more often a pair turns up than independence predicts. Popularity widens the bands and raises what chance predicts, so a popular item cannot buy itself a high lift.</p>
+        <p class="formula"><b>The formula, last</b>lift = P(A and B) / (P(A) x P(B)) = observed area / expected area = 0.30 / (0.60 x 0.40) = 1.25 at the tea stall</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-W2" data-scene="W2">
+      <div class="scene-head"><span class="sid">W2</span><h3>What does confidence throw away?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> three in four bread carts also hold milk, so bread and milk are a strong pair.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you press.</b> The first button keeps only the carts with bread. How many of the 100 carts will be left?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. 25 carts.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. 34 carts.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. 71 carts.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. 74 carts.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>A hundred carts drawn in the proportions of the case's 40,000: bread in 34, milk in 71, both in 25. A violet dot holds bread and an amber ring holds milk. The carts still in play move to the right; the rest fade where they stood.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><button type="button" class="btn" data-ctl="s1">Keep only carts with bread</button></div>
+          <div class="ctl"><button type="button" class="btn" data-ctl="s2">Among those, keep carts with milk</button></div>
+          <div class="ctl"><button type="button" class="btn" data-ctl="reset">Reset to all 100 carts</button></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>After the first button 34 carts are left, the carts with bread, and 25 of them hold milk, so confidence from bread to milk is 25 / 34 = 0.74. Milk sits in 71 of all 100 carts, so 0.74 is barely above what any cart shows: lift is 0.74 / 0.71 = 1.04.</p>
+        <p>Confidence shrinks the world to the carts that hold A and forgets the carts that do not. That forgetting is what lets the item in every cart look like a strong partner of anything.</p>
+        <p class="formula"><b>The formula, last</b>confidence(A to B) = P(A and B) / P(A) = 0.25 / 0.34 = 0.74</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-W3" data-scene="W3">
+      <div class="scene-head"><span class="sid">W3</span><h3>Why does the item in every cart look like the best partner?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> milk has high confidence with everything, so milk is everyone's best partner.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you move the share.</b> As milk's share of carts rises, which number moves for the pair bread and milk?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Confidence rises while lift stays near one.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Lift rises while confidence stays put.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Both rise together.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Neither moves.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>The square of W1 with bread as A, in 34 percent of carts, and milk as B. The pair's lift is held at the case's 1.04, so the observed overlap follows milk's share; the two gauges show what each measure does as the share moves.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><label for="w3-m">Milk's share of carts</label>
+            <input type="range" id="w3-m" min="0.1" max="0.9" step="0.01" value="0.3" data-ctl="m">
+            <output data-out="m">0.30 (slider value 0.30)</output></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>At the case's milk share of 0.71, confidence from bread toward milk is 0.74 and lift is 1.04. Three in four bread carts hold milk because nearly three in four of all carts do. In the case, every item in at least 2 percent of carts shows confidence between 0.68 and 0.78 toward milk and lift between 0.96 and 1.08, which is why a strip ranked by how often items appear together puts milk beside nearly everything.</p>
+        <p>Confidence carries the partner's popularity inside it. Lift divides that popularity out, so it stays near one for a partner that is only popular.</p>
+        <p class="formula"><b>The formula, last</b>confidence follows popularity; lift divides it out: lift = confidence(A to B) / P(B) = 0.74 / 0.71 = 1.04</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-W4" data-scene="W4">
+      <div class="scene-head"><span class="sid">W4</span><h3>What does a strip slot earn?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> toned milk is the top seller, so it deserves a slot on the strip.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you switch the ranking.</b> For a cart holding chips, which ranking puts toned milk in a slot?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Ranking by how often items appear together.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Ranking by lift above the support floor.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Both rankings.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Neither ranking.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>The strip under a cart holding chips. Click-through is the case's: 1.2 percent on a slot showing milk and 6.4 percent on any other suggestion. Milk and cold drink carry the case's numbers; bread, dip and namkeen are toy partners, invented to fill the strip.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><button type="button" class="btn" data-ctl="rank" aria-pressed="false">Rank by lift</button>
+            <output data-out="rank">Ranked by how often items appear together</output></div>
+          <div class="ctl"><label for="w4-v">Cart-page views a day in Pune</label>
+            <input type="range" id="w4-v" min="20000" max="100000" step="1000" value="60000" data-ctl="views">
+            <output data-out="views">60,000 a day (slider value 60000)</output></div>
+          <div class="ctl"><label for="w4-a">Add rate after a click, an assumption</label>
+            <input type="range" id="w4-a" min="0.3" max="0.7" step="0.05" value="0.5" data-ctl="add">
+            <output data-out="add">0.50 (slider value 0.50)</output></div>
+          <div class="ctl"><label for="w4-m">Margin per added item, Rs, an assumption</label>
+            <input type="range" id="w4-m" min="5" max="15" step="1" value="9" data-ctl="margin">
+            <output data-out="margin">Rs 9 (slider value 9)</output></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>Ranked by how often items appear together, toned milk takes slot 1 beside chips, where 1.2 percent of shoppers click: 60,000 views x 0.012 x 0.5 x Rs 9 = Rs 3,240 a day. A partner that beats chance clicks at 6.4 percent: 60,000 x 0.064 x 0.5 x Rs 9 = Rs 17,280 a day. The gap is Rs 14,040 a day, about Rs 4.2 lakh a month for that one slot.</p>
+        <p>Milk belongs in the cart, which is why it needs no slot: the shopper was buying it anyway. A slot earns money only when it suggests something the shopper would not have added alone.</p>
+        <p class="formula"><b>The formula, last</b>value of a slot = views x click-through x add rate x margin per add</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-W5" data-scene="W5">
+      <div class="scene-head"><span class="sid">W5</span><h3>Where should the support floor sit?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> the pair with the highest lift is the pair to promote.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you move the floor.</b> Of the nine pairs on the chart, how many sit at or above a floor of 1 percent of carts?</p>
+        <div class="guess">
+          <div class="ctl"><label for="w5-g">Your guess</label>
+            <input type="range" id="w5-g" min="0" max="9" step="1" value="0" data-guess>
+            <output data-out="guess">0 pairs (slider value 0)</output></div>
+          <button type="button" class="btn" data-lock>Lock in my guess</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>Lift against support for nine pairs from the case's 40,000 carts, with support on a log scale, so each step right is ten times more carts. Bread and milk, eggs and milk, chips and cold drink, and ice cream and chocolate sauce carry the case's numbers; the other milk pairs are drawn inside the band the case reports, lift 0.96 to 1.08.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><label for="w5-f">Support floor, percent of carts</label>
+            <input type="range" id="w5-f" min="0.1" max="5" step="0.1" value="0.1" data-ctl="floor">
+            <output data-out="floor">0.1 percent, 40 of 40,000 carts (slider value 0.1)</output></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>At a floor of 1 percent of carts, 400 of the 40,000, eight of the nine pairs survive. Ice cream with chocolate sauce has the highest lift, 4.6, and falls off: it sits in 0.25 percent of carts, 100 carts in four weeks, too few to repay a slot, so it goes on a watch list. Chips with cold drink, at 5.0 percent of carts and lift 3.4, is the pair to promote; the milk pairs sit high on support and near one on lift, the popular-partner trap.</p>
+        <p>Lift on a handful of carts is a promise, and support says how many shoppers would see it kept. The floor decides which promises are big enough to act on.</p>
+        <p class="formula"><b>The formula, last</b>act above the floor, watch below it; support(A and B) = carts with both / all carts</p>
+      </div>
+    </article>
   </section>
 
   <!-- THURSDAY -->
@@ -711,9 +930,152 @@ var W4 = {
       </div>
       <p class="who"><b>Who needs the answer.</b> The membership lead, with the app team, who will say the stage is fine.</p>
       <p class="who"><b>The questions on the way.</b></p>
-      <div class="jumps"></div>
+      <div class="jumps">
+        <button type="button" class="jump" data-jump="Th1"><b>Th1</b>How can every batch shrink while the average stays flat?</button>
+        <button type="button" class="jump" data-jump="Th2"><b>Th2</b>What is the flat number made of?</button>
+        <button type="button" class="jump" data-jump="Th3"><b>Th3</b>Which stage owns the loss?</button>
+        <button type="button" class="jump" data-jump="Th4"><b>Th4</b>Is it novelty or habit?</button>
+      </div>
       <p class="jumped" aria-live="polite"></p>
     </div>
+    <article class="scene" id="scene-Th1" data-scene="Th1">
+      <div class="scene-head"><span class="sid">Th1</span><h3>How can every batch shrink while the average stays flat?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> the dashboard reads 38 percent every month, so nothing has changed.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you step.</b> The August sale cohort, 2.6 times a normal month, joins the table in September. What does the dashboard's 38 percent do?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. It falls sharply.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. It holds at 38.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. It rises.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. It swings and recovers within the month.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>Each row is a signup cohort, as tall as its number of members; each column is a reporting month, and a cell is the cohort's share that ordered that month. Month-one rates and cohort sizes are the case's; the later cells are a toy, built so the dashboard's number matches the case's flat 38 percent. The dashboard counts a member from the second month after signup, so the dashed diagonal of month-one cells is outside its count.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><button type="button" class="btn" data-ctl="next">Next month</button>
+            <output data-out="next">Reporting month: February 2026</output></div>
+          <div class="ctl"><label for="th1-size">Size of the newest cohort, times a normal month of 5,000</label>
+            <input type="range" id="th1-size" min="1" max="3" step="0.1" value="1" data-ctl="size">
+            <output data-out="size">January: 5,000 members, 1.0 times normal (slider value 1.0)</output></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>Every row falls month by month, and each cohort starts lower than the one before: 58, 56, 55, 53, 52, 50 and 49 percent in month one, then the sale cohort's 31. The dashboard still reads 38 percent from June to September. The cohorts it counts sit on slow plateaus, and the newest, weakest, biggest cohort is outside its count until it reaches its second month in October.</p>
+        <p>A blend can stay flat while every part of it shrinks, as long as new parts keep arriving and the weakest part has not been counted yet. The flat number hides a collapse that only the rows show.</p>
+        <p class="formula"><b>The formula, last</b>blend = sum of (cohort size x cohort rate) / sum of sizes, over the cohorts the dashboard counts</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-Th2" data-scene="Th2">
+      <div class="scene-head"><span class="sid">Th2</span><h3>What is the flat number made of?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> if the average holds at 50 percent, each batch is holding at 50 percent.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you move a batch.</b> Batch A of 100 stood at 50 percent last month and stands at 40 now; a new batch B of 400 joins at 52.5 percent. What does the blend do?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. It rises.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. It falls.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. It holds at 50 percent.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. It cannot be read without more months.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>A coaching centre's two batches, a toy, invented. Each column is a month's members, stacked by batch; the dark part of each batch is its members still coming, so the blend is the dark share of the whole column.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><label for="th2-b">Batch B's size</label>
+            <input type="range" id="th2-b" min="0" max="800" step="25" value="400" data-ctl="bsize">
+            <output data-out="bsize">400 members (slider value 400)</output></div>
+          <div class="ctl"><label for="th2-a">Batch A's rate this month</label>
+            <input type="range" id="th2-a" min="0.2" max="0.6" step="0.01" value="0.4" data-ctl="arate">
+            <output data-out="arate">0.40 (slider value 0.40)</output></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>Last month 50 of batch A's 100 were coming, 50 percent. This month A has 40 of 100 and B has 210 of 400, so 250 of 500 are coming: still 50 percent, while batch A fell from 50 to 40.</p>
+        <p>The blend is an average weighted by size, so a large young batch at a high early rate holds it up while every batch falls with age. Next month B ages too, and the blend has nothing left to hide behind.</p>
+        <p class="formula"><b>The formula, last</b>blend = (100 x 0.40 + 400 x 0.525) / (100 + 400) = (40 + 210) / 500 = 0.50</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-Th3" data-scene="Th3">
+      <div class="scene-head"><span class="sid">Th3</span><h3>Which stage owns the loss?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> a step that converts above 100 percent must be the best step in the app.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you toggle.</b> Counting per session, which step of the order flow shows a rate above 100 percent?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Open to search.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Search to menu view.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Menu view to add to cart.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Add to cart to order placed.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>Gold members' order flow in September. Each bar's length is the count at that step, and each rate divides a step by the step before it. The rates 118, 34 and 61 percent are the case's; the counts are a toy, built to those rates.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><button type="button" class="btn" data-ctl="unit" aria-pressed="false">Count per member</button>
+            <output data-out="unit">Counting per session</output></div>
+          <div class="ctl"><button type="button" class="btn" data-ctl="carousel" aria-pressed="true">Include carousel entries</button>
+            <output data-out="carousel">Carousel entries are counted</output></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>Counted per session with carousel entries in, menu views are 118 percent of searches, because the home carousel opens a menu without a search: search is a step members can skip, and the rate above 100 is an artefact of the count. Menu view to add-to-cart is 34 percent per session and 61 percent per member, the same people in two units. The loss on the ticket sits further on, at add-to-cart to order for members on Android after 14 September, 58 to 44 percent, while iOS and non-members held.</p>
+        <p>A rate above 100 percent says the two counts are not the same people in the same unit. Before blaming a step, name the unit on the chart and check that every member had to pass the step before.</p>
+        <p class="formula"><b>The formula, last</b>each step's rate divides by the step before, in one unit, and the chart names the unit</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-Th4" data-scene="Th4">
+      <div class="scene-head"><span class="sid">Th4</span><h3>Is it novelty or habit?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> launch week brought the most users ever, so the AI app has found its market.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you move the week.</b> Where will the launch-week cohort sit at week four, against a cohort that found the app on its own?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Above the organic cohort.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Level with it.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Well below it.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. At zero.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>An AI app's two cohorts, written for this programme: every number here is a toy. A launch-week cohort of 100,000 and organic cohorts of 10,000 that join every week; the blended line counts everyone active that week.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><label for="th4-w">Week since joining</label>
+            <input type="range" id="th4-w" min="1" max="8" step="1" value="1" data-ctl="week">
+            <output data-out="week">Week 1 (slider value 1)</output></div>
+          <div class="ctl"><button type="button" class="btn" data-ctl="blend" aria-pressed="false">Show the blended actives</button></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>At week four the launch cohort keeps 22 percent and the organic cohort 36 percent: the launch spike was novelty. The blended actives fall to 35,000 in week four and climb back to 41,900 by week eight, because organic cohorts keep joining, so a blended chart reads as recovery while the launch cohort keeps falling.</p>
+        <p>Novelty fades in weeks; habit is what is left after it fades. Judge each cohort at the age where habit shows, and read the blend only as a sum of cohorts.</p>
+        <p class="formula"><b>The formula, last</b>judge a cohort at the age where habit shows, never the blend</p>
+      </div>
+    </article>
   </section>
 
   <!-- FRIDAY -->
@@ -1564,8 +1926,7 @@ var W4 = {
       var self = this;
       on(art, "floor", "input", function (e) { st.floor = Number(e.target.value); self.render(st, art); });
       var wb = on(art, "wait", "click", function () {
-        st.wait = !st.wait; wb.setAttribute("aria-pressed", String(st.wait));
-        wb.textContent = st.wait ? "Hide the rider wait" : "Show the rider wait"; self.render(st, art);
+        st.wait = !st.wait; wb.setAttribute("aria-pressed", String(st.wait)); self.render(st, art);
       });
     },
     render: function (st, art) {
@@ -1982,6 +2343,523 @@ var W4 = {
       ]);
     },
     final: function () {}
+  });
+
+  /* ---------- Wednesday ---------- */
+  var WED = W4.wed;
+  function clampJoint(a, b, o) { return Math.min(Math.max(o, Math.max(0, a + b - 1)), Math.min(a, b)); }
+  /* The unit square of W1 and W3: P(A) as a violet band, P(B) as an amber band, the expected
+     overlap where they cross, and the observed overlap on the same width beside it. */
+  function Square(svg, names) {
+    var ox = 40, oy = 56, Z = 260, bx = 350;
+    add(svg, "rect", { x: ox, y: oy, width: Z, height: Z, fill: C.white, stroke: C.night, "stroke-width": 1.5 });
+    var aBand = add(svg, "rect", { x: ox, y: oy, width: 0, height: Z, fill: C.violet, "fill-opacity": 0.14 });
+    var bBand = add(svg, "rect", { x: ox, y: oy, width: Z, height: 0, fill: AMBER, "fill-opacity": 0.16 });
+    var exp = add(svg, "rect", { x: ox, y: oy, width: 0, height: 0, fill: C.violet, "fill-opacity": 0.32, stroke: C.violet, "stroke-width": 2.5 });
+    var aLab = txt(svg, ox, oy - 12, "", { size: 14.5, weight: 700, fill: C.violet });
+    var bLab = txt(svg, ox, oy + Z + 24, "", { size: 14.5, weight: 700, fill: AMBER_INK });
+    var expLab = txt(svg, ox, oy, "", { size: 14.5, weight: 700 });
+    expLab.setAttribute("class", "halo");
+    txt(svg, bx, oy - 12, "the same width, side by side", { size: 14, fill: C.night });
+    var ghost = add(svg, "rect", { x: bx, y: oy, width: 0, height: 0, fill: "none", stroke: C.violet, "stroke-width": 2.5, "stroke-dasharray": "6 4" });
+    var obs = add(svg, "rect", { x: bx, y: oy, width: 0, height: 0, fill: C.rose, "fill-opacity": 0.3, stroke: C.rose, "stroke-width": 2.5 });
+    var obsLab = txt(svg, bx, oy, "", { size: 14.5, weight: 700, fill: C.rose });
+    obsLab.setAttribute("class", "halo");
+    var ghostLab = txt(svg, bx, oy, "", { size: 14.5, weight: 700, fill: C.violet });
+    ghostLab.setAttribute("class", "halo");
+    var ratio = txt(svg, 640, oy + Z + 24, "", { size: 17, weight: 700, anchor: "end" });
+    return function (a, b, o) {
+      var aw = Z * a, bh = Z * b, base = oy + Z, oh = Z * (a ? o / a : 0);
+      aBand.setAttribute("width", aw.toFixed(1));
+      bBand.setAttribute("y", (base - bh).toFixed(1)); bBand.setAttribute("height", bh.toFixed(1));
+      exp.setAttribute("y", (base - bh).toFixed(1)); exp.setAttribute("width", aw.toFixed(1)); exp.setAttribute("height", bh.toFixed(1));
+      aLab.textContent = names[0] + ", P(A) = " + a.toFixed(2);
+      bLab.textContent = names[1] + " band, P(B) = " + b.toFixed(2);
+      expLab.setAttribute("x", ox + 6); expLab.setAttribute("y", (base - bh - 8).toFixed(1));
+      expLab.textContent = "expected " + (a * b).toFixed(2);
+      ghost.setAttribute("y", (base - bh).toFixed(1)); ghost.setAttribute("width", aw.toFixed(1)); ghost.setAttribute("height", bh.toFixed(1));
+      obs.setAttribute("y", (base - oh).toFixed(1)); obs.setAttribute("width", aw.toFixed(1)); obs.setAttribute("height", oh.toFixed(1));
+      var hiObs = oh >= bh;
+      obsLab.setAttribute("x", bx + 6); obsLab.setAttribute("y", (base - oh - (hiObs ? 8 : -22)).toFixed(1));
+      obsLab.textContent = "observed " + o.toFixed(2);
+      ghostLab.setAttribute("x", bx + aw + 8); ghostLab.setAttribute("y", (base - bh + 5).toFixed(1));
+      ghostLab.textContent = "expected " + (a * b).toFixed(2);
+      ratio.textContent = "observed / expected = " + (a * b ? (o / (a * b)).toFixed(2) : "0.00");
+    };
+  }
+
+  scene("W1", {
+    answer: "B",
+    start: function () { return { a: WED.tea[0], b: WED.tea[1], o: WED.tea[2] }; },
+    init: function (st, art) {
+      var svg = svgRoot(680, 360, "A unit square with two bands and their overlap");
+      this.draw = Square(svg, ["chai", "biscuit"]);
+      put($("[data-fig]", art), svg);
+      var self = this;
+      ["a", "b", "o"].forEach(function (k) {
+        on(art, k, "input", function (e) { st[k] = Number(e.target.value); st.o = clampJoint(st.a, st.b, st.o); self.render(st, art); });
+      });
+    },
+    render: function (st, art) {
+      this.draw(st.a, st.b, st.o);
+      ["a", "b", "o"].forEach(function (k) {
+        $('[data-ctl="' + k + '"]', art).value = st[k];
+        setOut(art, k, st[k].toFixed(2) + " (slider value " + st[k].toFixed(2) + ")");
+      });
+      var e = st.a * st.b;
+      nums($("[data-nums]", art), [
+        ["Expected area, P(A) x P(B)", st.a.toFixed(2) + " x " + st.b.toFixed(2) + " = " + e.toFixed(2)],
+        ["Observed area", st.o.toFixed(2)],
+        ["Observed over expected", (e ? st.o / e : 0).toFixed(2)],
+        { wide: st.o / e > 1.005 ? "The pair turns up together more often than chance would put it together." :
+          (st.o / e < 0.995 ? "The pair turns up together less often than chance would put it together." : "The pair turns up together exactly as often as chance predicts.") },
+        { wide: "The observed share cannot exceed the narrower band, and it cannot fall below what the two bands force to overlap." }
+      ]);
+    },
+    final: function (st) { st.a = 0.8; st.b = 0.7; st.o = 0.3; }
+  });
+
+  /* W2: a hundred carts and the shrinking universe */
+  function seeded(seed) { return function () { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; }; }
+  scene("W2", {
+    answer: "B",
+    start: function () { return { step: 0 }; },
+    init: function (st, art) {
+      var h = WED.hundred, kinds = [], k;
+      for (k = 0; k < h.both; k++) kinds.push("both");
+      for (k = 0; k < h.aOnly; k++) kinds.push("a");
+      for (k = 0; k < h.bOnly; k++) kinds.push("b");
+      for (k = 0; k < h.none; k++) kinds.push("none");
+      var rnd = seeded(2026);
+      for (k = kinds.length - 1; k > 0; k--) { var j = Math.floor(rnd() * (k + 1)), t = kinds[k]; kinds[k] = kinds[j]; kinds[j] = t; }
+      var svg = svgRoot(680, 380, "A hundred carts, filtered to those with bread, then to those with milk");
+      txt(svg, 40, 30, "all 100 carts", { size: 15, weight: 700 });
+      this.inPlay = txt(svg, 400, 30, "", { size: 15, weight: 700, fill: C.violet });
+      add(svg, "line", { x1: 350, x2: 350, y1: 40, y2: 330, stroke: C.line, "stroke-width": 2 });
+      this.dots = []; var ai = 0;
+      kinds.forEach(function (kind, i) {
+        var hasA = kind === "both" || kind === "a", hasB = kind === "both" || kind === "b";
+        var home = [52 + (i % 10) * 29, 58 + Math.floor(i / 10) * 29];
+        var slot = hasA ? ai++ : -1;
+        var g = add(svg, "g", { "class": "dot" });
+        add(g, "circle", { r: 9.5, fill: hasA ? C.violet : C.white, stroke: hasB ? AMBER : "#C9C4E4", "stroke-width": hasB ? 3.5 : 1.5 });
+        this.dots.push({ g: g, hasA: hasA, hasB: hasB, home: home, slot: slot });
+      }, this);
+      legendW2(svg);
+      put($("[data-fig]", art), svg);
+      var self = this;
+      on(art, "s1", "click", function () { st.step = 1; self.render(st, art); });
+      on(art, "s2", "click", function () { st.step = 2; self.render(st, art); });
+      on(art, "reset", "click", function () { st.step = 0; self.render(st, art); });
+    },
+    render: function (st, art) {
+      var inPlay = 0, withB = 0;
+      this.dots.forEach(function (d) {
+        var live = st.step === 0 || (d.hasA && (st.step === 1 || d.hasB));
+        var moved = st.step > 0 && d.hasA;
+        var pos = moved ? [418 + (d.slot % 6) * 40, 64 + Math.floor(d.slot / 6) * 42] : d.home;
+        d.g.style.transform = "translate(" + pos[0] + "px," + pos[1] + "px)";
+        d.g.style.opacity = live ? 1 : 0.14;
+        if (live) { inPlay++; if (d.hasB) withB++; }
+      });
+      this.inPlay.textContent = st.step === 0 ? "carts in play: all of them" : (st.step === 1 ? "in play: the carts with bread" : "in play: carts with bread and milk");
+      var rows = [["Carts in play", String(inPlay)], ["Of those, carts with milk", String(withB)],
+                  ["Share with milk among them", withB + " / " + inPlay + " = " + (withB / inPlay).toFixed(2)],
+                  ["Milk in all 100 carts", String(WED.hundred.both + WED.hundred.bOnly)]];
+      if (st.step >= 1) rows.push({ wide: "Confidence from bread to milk is 25 / 34 = 0.74, against milk's 71 in every 100 carts." });
+      nums($("[data-nums]", art), rows);
+    },
+    final: function (st) { st.step = 1; }
+  });
+  function legendW2(svg) {
+    add(svg, "circle", { cx: 52, cy: 356, r: 9.5, fill: C.violet, stroke: C.white, "stroke-width": 1.5 });
+    txt(svg, 68, 361, "bread in the cart", { size: 14.5 });
+    add(svg, "circle", { cx: 222, cy: 356, r: 9.5, fill: C.white, stroke: AMBER, "stroke-width": 3.5 });
+    txt(svg, 238, 361, "milk in the cart", { size: 14.5 });
+    add(svg, "circle", { cx: 382, cy: 356, r: 9.5, fill: C.violet, stroke: AMBER, "stroke-width": 3.5 });
+    txt(svg, 398, 361, "both", { size: 14.5 });
+  }
+
+  scene("W3", {
+    answer: "A",
+    start: function () { return { m: 0.3 }; },
+    init: function (st, art) {
+      var svg = svgRoot(680, 470, "The square with milk's share moving, and gauges for confidence and lift");
+      this.draw = Square(svg, ["bread", "milk"]);
+      this.g = {};
+      [["conf", "confidence, bread to milk", 384, 1], ["lift", "lift", 430, 2]].forEach(function (r) {
+        txt(svg, 40, r[2] - 6, r[1], { size: 14.5, weight: 700 });
+        add(svg, "rect", { x: 250, y: r[2] - 20, width: 380, height: 18, rx: 9, fill: C.white, stroke: C.line });
+        this.g[r[0]] = { bar: add(svg, "rect", { x: 250, y: r[2] - 20, width: 0, height: 18, rx: 9, fill: r[0] === "conf" ? C.violet : C.rose }),
+                         label: txt(svg, 640, r[2] - 6, "", { size: 15, weight: 700, anchor: "end" }), max: r[3] };
+      }, this);
+      add(svg, "line", { x1: 440, x2: 440, y1: 404, y2: 436, stroke: C.ink, "stroke-width": 2, "stroke-dasharray": "4 3" });
+      txt(svg, 440, 456, "lift 1, chance", { size: 13, anchor: "middle", fill: C.night });
+      put($("[data-fig]", art), svg);
+      var self = this;
+      on(art, "m", "input", function (e) { st.m = Number(e.target.value); self.render(st, art); });
+    },
+    render: function (st, art) {
+      var a = WED.bread, b = st.m, o = Math.min(WED.breadMilkLift * a * b, Math.min(a, b)), conf = o / a, lift = o / (a * b);
+      this.draw(a, b, o);
+      this.g.conf.bar.setAttribute("width", (380 * conf).toFixed(1));
+      this.g.conf.label.textContent = conf.toFixed(2);
+      this.g.lift.bar.setAttribute("width", (380 * lift / 2).toFixed(1));
+      this.g.lift.label.textContent = lift.toFixed(2);
+      $('[data-ctl="m"]', art).value = st.m;
+      setOut(art, "m", st.m.toFixed(2) + " (slider value " + st.m.toFixed(2) + ")");
+      nums($("[data-nums]", art), [
+        ["Milk in carts, P(B)", b.toFixed(2)],
+        ["Bread in carts, P(A)", a.toFixed(2)],
+        ["Confidence, bread to milk", conf.toFixed(2)],
+        ["Lift, bread and milk", lift.toFixed(2)],
+        { wide: "Confidence is lift times milk's share: " + WED.breadMilkLift.toFixed(2) + " x " + b.toFixed(2) + " = " + conf.toFixed(2) + "." }
+      ]);
+    },
+    final: function (st) { st.m = WED.milk; }
+  });
+
+  /* W4: the strip under a cart holding chips */
+  scene("W4", {
+    answer: "A",
+    start: function () { return { lift: false, views: WED.views, add: WED.add, margin: WED.margin }; },
+    init: function (st, art) {
+      var svg = svgRoot(680, 430, "A cart page with a strip of three suggested items");
+      add(svg, "rect", { x: 16, y: 10, width: 648, height: 410, rx: 22, fill: C.white, stroke: C.lilac, "stroke-width": 2 });
+      txt(svg, 40, 46, "Your cart: chips, two packs", { size: 17, weight: 700 });
+      txt(svg, 40, 92, "Frequently bought together", { size: 16, weight: 700, fill: C.violet });
+      this.slotX = [40, 250, 460];
+      this.rupee = this.slotX.map(function (x) { return txt(svg, x + 90, 252, "", { size: 16, weight: 700, anchor: "middle" }); });
+      txt(svg, 40, 290, "Not on the strip", { size: 14, weight: 700, fill: C.muted });
+      this.items = WED.chips.map(function (it) {
+        var g = add(svg, "g", { "class": "move" });
+        add(g, "rect", { width: 180, height: 112, rx: 12, fill: C.surface, stroke: C.lilac, "stroke-width": 1.5 });
+        txt(g, 14, 30, it[0] + (it[3] === "toy" ? " (toy)" : ""), { size: 16, weight: 700 });
+        txt(g, 14, 56, "in " + Math.round(it[1] * 100) + " of 100 chips carts", { size: 13.5, fill: C.night });
+        txt(g, 14, 78, "lift " + it[2].toFixed(2), { size: 13.5, fill: C.night });
+        txt(g, 14, 100, "clicks at " + (it[0] === "Toned milk" ? "1.2" : "6.4") + " percent", { size: 13.5, fill: C.night });
+        return { g: g, it: it };
+      });
+      put($("[data-fig]", art), svg);
+      var self = this;
+      var rb = on(art, "rank", "click", function () { st.lift = !st.lift; rb.setAttribute("aria-pressed", String(st.lift)); self.render(st, art); });
+      ["views", "add", "margin"].forEach(function (k) {
+        on(art, k, "input", function (e) { st[k] = Number(e.target.value); self.render(st, art); });
+      });
+    },
+    render: function (st, art) {
+      var order = this.items.slice().sort(function (p, q) { return st.lift ? q.it[2] - p.it[2] : q.it[1] - p.it[1]; });
+      var self = this, total = 0, rows = [];
+      order.forEach(function (o, r) {
+        var pos = r < 3 ? [self.slotX[r], 110] : [140 + (r - 3) * 230, 300];
+        o.g.style.transform = "translate(" + pos[0] + "px," + pos[1] + "px)";
+        o.g.style.opacity = r < 3 ? 1 : 0.55;
+        if (r < 3) {
+          var milk = o.it[0] === "Toned milk", ctr = milk ? WED.ctrMilk : WED.ctrOther;
+          var v = st.views * ctr * st.add * st.margin;
+          total += v;
+          self.rupee[r].textContent = rs(Math.round(v)) + " a day";
+          self.rupee[r].setAttribute("fill", milk ? C.rose : C.green);
+          rows.push(["Slot " + (r + 1) + ": " + o.it[0].toLowerCase(), rs(Math.round(v))]);
+        }
+      });
+      $('[data-ctl="rank"]', art).setAttribute("aria-pressed", String(st.lift));
+      ["views", "add", "margin"].forEach(function (k) { $('[data-ctl="' + k + '"]', art).value = st[k]; });
+      setOut(art, "rank", st.lift ? "Ranked by lift above the floor" : "Ranked by how often items appear together");
+      setOut(art, "views", group(st.views) + " a day (slider value " + st.views + ")");
+      setOut(art, "add", st.add.toFixed(2) + " (slider value " + st.add.toFixed(2) + ")");
+      setOut(art, "margin", "Rs " + st.margin + " (slider value " + st.margin + ")");
+      rows.push(["The strip, a day", rs(Math.round(total))]);
+      rows.push(["The strip, a month of 30 days", lakh(total * 30)]);
+      rows.push({ wide: "Each slot: " + group(st.views) + " views x click-through x " + st.add.toFixed(2) + " x Rs " + st.margin + "." });
+      nums($("[data-nums]", art), rows);
+    },
+    final: function (st) { st.lift = false; st.views = WED.views; st.add = WED.add; st.margin = WED.margin; }
+  });
+
+  /* W5: the action map with a support floor */
+  var W5X = function (sp) { return 80 + 560 * (Math.log(sp / 0.1) / Math.LN10) / (Math.log(400) / Math.LN10); };
+  var W5Y = function (l) { return 360 - 320 * (l - 0.8) / 4.2; };
+  scene("W5", {
+    start: function () { return { floor: 0.1 }; },
+    guessValue: function () { return Number($("[data-guess]", this.art).value); },
+    guessText: function (v) { return v + (v === 1 ? " pair" : " pairs"); },
+    check: function (st) {
+      var n = WED.pairs.filter(function (p) { return p[1] >= 1; }).length;
+      if (st.pred === undefined) return "No guess was locked in before the reveal; the answer is " + n + " pairs.";
+      return st.pred === n ? "You guessed " + n + " pairs, which is right." : "You guessed " + st.pred + "; the answer is " + n + " pairs.";
+    },
+    init: function (st, art) {
+      var svg = svgRoot(680, 420, "Lift against support for nine pairs, with a movable floor");
+      [0.1, 0.3, 1, 3, 10, 30].forEach(function (t) {
+        add(svg, "line", { x1: W5X(t), x2: W5X(t), y1: 40, y2: 360, stroke: C.line });
+        txt(svg, W5X(t), 380, t + "%", { size: 13, anchor: "middle", fill: C.muted });
+      });
+      [1, 2, 3, 4, 5].forEach(function (t) {
+        add(svg, "line", { x1: 80, x2: 640, y1: W5Y(t), y2: W5Y(t), stroke: t === 1 ? C.night : C.line, "stroke-width": t === 1 ? 1.5 : 1 });
+        txt(svg, 72, W5Y(t) + 5, String(t), { size: 13, anchor: "end", fill: C.muted });
+      });
+      txt(svg, 86, W5Y(1) + 20, "lift 1: chance", { size: 13, fill: C.night });
+      txt(svg, 360, 408, "support, percent of carts, log scale", { size: 14, anchor: "middle", fill: C.night });
+      txt(svg, 20, 28, "lift", { size: 14, fill: C.night });
+      this.shade = add(svg, "rect", { x: 80, y: 40, width: 0, height: 320, fill: C.night, "fill-opacity": 0.06 });
+      this.fline = add(svg, "line", { x1: 80, x2: 80, y1: 40, y2: 360, stroke: C.rose, "stroke-width": 2.5, "stroke-dasharray": "7 5" });
+      this.flab = txt(svg, 84, 56, "", { size: 14, weight: 700, fill: C.rose });
+      txt(svg, 620, 70, "promote", { size: 15, weight: 700, anchor: "end", fill: C.green });
+      txt(svg, 96, 70, "watch", { size: 15, weight: 700, fill: C.night });
+      txt(svg, 620, W5Y(1.75), "popular-partner trap, below", { size: 15, weight: 700, anchor: "end", fill: C.rose });
+      txt(svg, 96, W5Y(1.75), "ignore, below", { size: 15, weight: 700, fill: C.muted });
+      this.pts = WED.pairs.map(function (p) {
+        return add(svg, "circle", { cx: W5X(p[1]), cy: W5Y(p[2]), r: 7.5, fill: p[3] === "band" ? C.white : C.violet,
+          stroke: C.violet, "stroke-width": p[3] === "band" ? 2.5 : 1.5, "class": "fade" });
+      });
+      txt(svg, W5X(5.0) + 12, W5Y(3.4) + 5, "chips + cold drink", { size: 14, weight: 700 }).setAttribute("class", "halo");
+      txt(svg, W5X(0.25) + 12, W5Y(4.6) + 5, "ice cream + chocolate sauce", { size: 14, weight: 700 }).setAttribute("class", "halo");
+      txt(svg, W5X(8) - 70, W5Y(1.04) - 18, "seven pairs with milk", { size: 14, weight: 700 }).setAttribute("class", "halo");
+      put($("[data-fig]", art), svg);
+      var self = this;
+      on(art, "floor", "input", function (e) { st.floor = Number(e.target.value); self.render(st, art); });
+      var g = $("[data-guess]", art);
+      g.addEventListener("input", function () { setOut(art, "guess", self.guessText(Number(g.value)) + " (slider value " + g.value + ")"); });
+    },
+    render: function (st, art) {
+      var f = st.floor, x = W5X(f), keep = [], drop = [];
+      this.shade.setAttribute("width", (x - 80).toFixed(1));
+      this.fline.setAttribute("x1", x.toFixed(1)); this.fline.setAttribute("x2", x.toFixed(1));
+      this.flab.setAttribute("x", (x + 6).toFixed(1));
+      this.flab.textContent = "floor " + f.toFixed(1) + "%";
+      WED.pairs.forEach(function (p, i) {
+        var ok = p[1] >= f - 1e-9;
+        this.pts[i].style.opacity = ok ? 1 : 0.3;
+        (ok ? keep : drop).push(p);
+      }, this);
+      $('[data-ctl="floor"]', art).value = f;
+      setOut(art, "floor", f.toFixed(1) + " percent, " + group(Math.round(WED.carts * f / 100)) + " of 40,000 carts (slider value " + f.toFixed(1) + ")");
+      var best = keep.slice().sort(function (p, q) { return q[2] - p[2]; })[0];
+      nums($("[data-nums]", art), [
+        ["Pairs at or above the floor", keep.length + " of 9"],
+        { wide: best ? "Highest lift at or above the floor: " + best[0] + ", lift " + best[2] + "." : "No pair is at or above the floor." },
+        { wide: drop.length ? "Below the floor: " + drop.map(function (p) { return p[0] + " (" + p[1] + "%, lift " + p[2] + ")"; }).join("; ") + "." : "No pair sits below the floor." }
+      ]);
+    },
+    final: function (st) { st.floor = 1; }
+  });
+
+  /* ---------- Thursday ---------- */
+  var THU = W4.thu;
+  function ramp(v) {
+    var t = Math.max(0, Math.min(1, (v - 30) / 30)), lo = [238, 234, 251], hi = [44, 26, 134];
+    return "rgb(" + lo.map(function (c, i) { return Math.round(c + (hi[i] - c) * t); }).join(",") + ")";
+  }
+  function cell(c, age) { return age === 1 ? THU.monthOne[c] : THU.later[c][age - 2]; }
+  function th1Blend(st, R) {
+    var num = 0, den = 0;
+    for (var c = 0; c < 8; c++) {
+      var age = R - (c + 1);
+      if (age >= 2 && cell(c, age) !== undefined) { num += st.sizes[c] * cell(c, age); den += st.sizes[c]; }
+    }
+    return den ? { v: num / den } : null;
+  }
+  scene("Th1", {
+    answer: "B",
+    start: function () { return { step: 2, sizes: [1, 1, 1, 1, 1, 1, 1, THU.saleTimes] }; },
+    init: function (st, art) {
+      var self = this;
+      on(art, "next", "click", function () { st.step = st.step >= 9 ? 2 : st.step + 1; self.render(st, art); });
+      on(art, "size", "input", function (e) { st.sizes[st.step - 2] = Number(e.target.value); self.render(st, art); });
+    },
+    render: function (st, art) {
+      var svg = svgRoot(680, 500, "The cohort table filling month by month under the dashboard's line");
+      var colX = function (R) { return 150 + (R - 2) * 64; }, top = 150;
+      /* the dashboard's line across the top */
+      txt(svg, 16, 26, "the dashboard's month-two retention", { size: 14.5, weight: 700 });
+      var Yb = function (v) { return 120 - 80 * (v - 30) / 30; };
+      [30, 45, 60].forEach(function (t) {
+        add(svg, "line", { x1: 140, x2: 660, y1: Yb(t), y2: Yb(t), stroke: C.line });
+        txt(svg, 132, Yb(t) + 5, t + "%", { size: 12.5, anchor: "end", fill: C.muted });
+      });
+      var pts = [];
+      for (var R = 3; R <= st.step; R++) {
+        var b = th1Blend(st, R);
+        if (!b) continue;
+        pts.push([colX(R) + 30, Yb(b.v), b.v]);
+      }
+      if (pts.length) {
+        add(svg, "polyline", { points: pts.map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" "), fill: "none", stroke: C.ink, "stroke-width": 2.6 });
+        pts.forEach(function (p) {
+          add(svg, "circle", { cx: p[0], cy: p[1], r: 5, fill: C.ink, stroke: C.white, "stroke-width": 2 });
+          txt(svg, p[0], p[1] - 10, String(Math.round(p[2])), { size: 14, weight: 700, anchor: "middle" });
+        });
+      }
+      /* the staircase of cohorts */
+      for (R = 2; R <= 9; R++) {
+        txt(svg, colX(R) + 30, top - 8, THU.months[R - 1].slice(0, 3), { size: 13.5, anchor: "middle", fill: R <= st.step ? C.ink : "#C9C4E4", weight: 700 });
+      }
+      var y = top;
+      for (var c = 0; c < 8; c++) {
+        if (c + 2 > st.step) break;
+        var h = Math.round(22 * st.sizes[c]);
+        txt(svg, 16, y + Math.min(h, 22) / 2 + 5, THU.months[c].slice(0, 3) + ", " + group(st.sizes[c] * THU.normal), { size: 13, fill: C.night });
+        for (R = c + 2; R <= st.step; R++) {
+          var age = R - (c + 1), v = cell(c, age);
+          if (v === undefined) continue;
+          var r = add(svg, "rect", { x: colX(R), y: y, width: 60, height: h, rx: 3, fill: ramp(v) });
+          if (age === 1) { r.setAttribute("stroke", C.ink); r.setAttribute("stroke-width", 1.6); r.setAttribute("stroke-dasharray", "4 3"); }
+          if (h >= 16) txt(svg, colX(R) + 30, y + Math.min(h, 22) / 2 + 5, age === 1 ? String(v) : v.toFixed(1),
+            { size: 12.5, anchor: "middle", weight: 700, fill: v >= 45 ? C.white : C.ink });
+        }
+        y += h + 3;
+      }
+      svg.setAttribute("viewBox", "0 0 680 " + Math.max(340, Math.ceil(y + 14)));
+      put($("[data-fig]", art), svg);
+      var nb = th1Blend(st, st.step), newest = st.step - 2;
+      setOut(art, "next", "Reporting month: " + THU.months[st.step - 1] + " 2026 (month " + (st.step - 1) + " of 8)");
+      $('[data-ctl="size"]', art).value = st.sizes[newest];
+      setOut(art, "size", THU.months[newest] + ": " + group(st.sizes[newest] * THU.normal) + " members, " + st.sizes[newest].toFixed(1) +
+        " times normal (slider value " + st.sizes[newest].toFixed(1) + ")");
+      var counted = 0, members = 0;
+      for (c = 0; c < 8; c++) if (st.step - (c + 1) >= 2) { counted++; members += st.sizes[c] * THU.normal; }
+      nums($("[data-nums]", art), [
+        ["The dashboard reads", nb ? Math.round(nb.v) + " percent" : "nothing yet"],
+        ["Unrounded", nb ? nb.v.toFixed(2) + " percent" : "no cohort in month two"],
+        ["Cohorts it counts", counted + ", " + group(members) + " members"],
+        ["Newest cohort, month one", THU.monthOne[newest] + " percent"],
+        { wide: "The blend weights each counted cohort's cell by its size, so a cohort twice as big counts twice." }
+      ]);
+    },
+    final: function (st) { st.step = 9; st.sizes = [1, 1, 1, 1, 1, 1, 1, THU.saleTimes]; }
+  });
+
+  scene("Th2", {
+    answer: "C",
+    start: function () { return { bsize: THU.toyBatch.b, arate: THU.toyBatch.aNow }; },
+    init: function (st, art) {
+      var self = this;
+      on(art, "bsize", "input", function (e) { st.bsize = Number(e.target.value); self.render(st, art); });
+      on(art, "arate", "input", function (e) { st.arate = Number(e.target.value); self.render(st, art); });
+    },
+    render: function (st, art) {
+      var T = THU.toyBatch, svg = svgRoot(680, 420, "Two months of a coaching centre's batches, stacked by size");
+      var H = function (n) { return 300 * n / 900; }, base = 370;
+      add(svg, "line", { x1: 60, x2: 640, y1: base, y2: base, stroke: C.night, "stroke-width": 1.5 });
+      var cols = [
+        { x: 150, label: "last month", parts: [["A", T.a, T.aLast]] },
+        { x: 410, label: "this month", parts: [["A", T.a, st.arate], ["B", st.bsize, T.bRate]] }
+      ];
+      cols.forEach(function (col) {
+        var y = base, act = 0, tot = 0;
+        col.parts.forEach(function (p) {
+          if (p[1] <= 0) return;
+          var hh = H(p[1]), ha = H(p[1] * p[2]);
+          add(svg, "rect", { x: col.x, y: y - hh, width: 120, height: hh, fill: p[0] === "A" ? "#D9D4F3" : "#E9E5FA", stroke: C.white, "stroke-width": 2 });
+          add(svg, "rect", { x: col.x, y: y - ha, width: 120, height: ha, fill: p[0] === "A" ? C.ink : C.violet, stroke: C.white, "stroke-width": 2 });
+          txt(svg, col.x + 132, y - hh / 2 + 5, p[0] + ": " + group(Math.round(p[1] * p[2])) + " of " + group(p[1]), { size: 14.5, weight: 700 });
+          act += p[1] * p[2]; tot += p[1]; y -= hh;
+        });
+        txt(svg, col.x + 60, base + 24, col.label, { size: 15, anchor: "middle", weight: 700 });
+        txt(svg, col.x + 60, y - 12, (100 * act / tot).toFixed(1) + " percent", { size: 18, anchor: "middle", weight: 700, fill: C.violet });
+        col.act = act; col.tot = tot;
+      });
+      put($("[data-fig]", art), svg);
+      $('[data-ctl="bsize"]', art).value = st.bsize; $('[data-ctl="arate"]', art).value = st.arate;
+      setOut(art, "bsize", st.bsize + " members (slider value " + st.bsize + ")");
+      setOut(art, "arate", st.arate.toFixed(2) + " (slider value " + st.arate.toFixed(2) + ")");
+      var c2 = cols[1];
+      nums($("[data-nums]", art), [
+        ["Last month", "50 of 100 = 50.0 percent"],
+        ["This month, batch A", group(Math.round(T.a * st.arate)) + " of 100"],
+        ["This month, batch B", group(Math.round(st.bsize * T.bRate)) + " of " + group(st.bsize)],
+        ["This month, blended", group(Math.round(c2.act)) + " of " + group(c2.tot) + " = " + (100 * c2.act / c2.tot).toFixed(1) + " percent"]
+      ]);
+    },
+    final: function (st) { st.bsize = THU.toyBatch.b; st.arate = THU.toyBatch.aNow; }
+  });
+
+  scene("Th3", {
+    answer: "B",
+    start: function () { return { member: false, carousel: true }; },
+    init: function (st, art) {
+      var self = this;
+      on(art, "unit", "click", function () { st.member = !st.member; self.render(st, art); });
+      on(art, "carousel", "click", function () { st.carousel = !st.carousel; self.render(st, art); });
+    },
+    render: function (st, art) {
+      var counts = THU.funnel[st.member ? "member" : "session"][st.carousel ? "with" : "without"];
+      var svg = svgRoot(680, 430, "The order flow as bars, each step's rate against the step before");
+      var rows = [];
+      THU.stages.forEach(function (name, i) {
+        var y = 24 + i * 66, w = 400 * counts[i] / counts[0];
+        txt(svg, 16, y + 23, name, { size: 15, weight: 700 });
+        add(svg, "rect", { x: 170, y: y, width: Math.max(2, w), height: 32, rx: 4, fill: i === 2 && st.carousel ? C.rose : C.violet, "fill-opacity": 0.85 });
+        txt(svg, 178 + w, y + 22, group(counts[i]), { size: 14.5, weight: 700 });
+        if (i > 0) {
+          var rate = 100 * counts[i] / counts[i - 1];
+          txt(svg, 664, y + 22, rate.toFixed(0) + "% of the step before", { size: 14.5, weight: 700, anchor: "end", fill: rate > 100 ? C.rose : C.night });
+          rows.push([THU.stages[i - 1].replace("Open the app", "Open") + " to " + name.toLowerCase(), rate.toFixed(0) + " percent"]);
+        }
+      });
+      put($("[data-fig]", art), svg);
+      $('[data-ctl="unit"]', art).setAttribute("aria-pressed", String(st.member));
+      $('[data-ctl="carousel"]', art).setAttribute("aria-pressed", String(st.carousel));
+      setOut(art, "unit", st.member ? "Counting per member, each member once" : "Counting per session");
+      setOut(art, "carousel", st.carousel ? "Carousel entries are counted" : "Carousel entries are left out");
+      rows.push({ wide: "Each rate divides a step's count by the step before it, in " + (st.member ? "members" : "sessions") + "." });
+      nums($("[data-nums]", art), rows);
+    },
+    final: function (st) { st.member = false; st.carousel = true; }
+  });
+
+  function th4Blend(w) {
+    var n = THU.launch * THU.launchRate[w - 1] / 100;
+    for (var j = 1; j < w; j++) n += THU.organic * THU.organicRate[w - j - 1] / 100;
+    return n;
+  }
+  scene("Th4", {
+    answer: "C",
+    start: function () { return { week: 1, blend: false }; },
+    init: function (st, art) {
+      var self = this;
+      on(art, "week", "input", function (e) { st.week = Number(e.target.value); self.render(st, art); });
+      on(art, "blend", "click", function () { st.blend = !st.blend; self.render(st, art); });
+    },
+    render: function (st, art) {
+      var k = st.week, svg = svgRoot(680, 470, "Two cohort curves over eight weeks, and the blended actives");
+      var X = function (w) { return 76 + (w - 1) * 62; }, Y = function (v) { return 260 - 220 * v / 80; };
+      txt(svg, 16, 26, "share of each cohort active, by week since joining", { size: 14.5, weight: 700 });
+      [0, 20, 40, 60, 80].forEach(function (t) {
+        add(svg, "line", { x1: 72, x2: 640, y1: Y(t), y2: Y(t), stroke: C.line });
+        txt(svg, 64, Y(t) + 5, t + "%", { size: 12.5, anchor: "end", fill: C.muted });
+      });
+      for (var w = 1; w <= 8; w++) txt(svg, X(w), 282, "week " + w, { size: 12.5, anchor: "middle", fill: C.night });
+      [["launch-week cohort", THU.launchRate, C.rose], ["organic cohort", THU.organicRate, C.violet]].forEach(function (s) {
+        var pts = [];
+        for (var w = 1; w <= k; w++) pts.push(X(w) + "," + Y(s[1][w - 1]).toFixed(1));
+        add(svg, "polyline", { points: pts.join(" "), fill: "none", stroke: s[2], "stroke-width": 2.6 });
+        for (w = 1; w <= k; w++) add(svg, "circle", { cx: X(w), cy: Y(s[1][w - 1]), r: w === k ? 6.5 : 4, fill: s[2], stroke: C.white, "stroke-width": 2 });
+        txt(svg, X(k) + 10, Y(s[1][k - 1]) + 5, s[0] + ", " + s[1][k - 1] + "%", { size: 14, weight: 700, fill: C.ink }).setAttribute("class", "halo");
+      });
+      var bg = add(svg, "g", { opacity: st.blend ? 1 : 0, "class": "fade" });
+      txt(bg, 16, 318, "blended actives, everyone active that week", { size: 14.5, weight: 700 });
+      var Y2 = function (n) { return 452 - 110 * n / 80000; };
+      [0, 40000, 80000].forEach(function (t) {
+        add(bg, "line", { x1: 72, x2: 640, y1: Y2(t), y2: Y2(t), stroke: C.line });
+        txt(bg, 64, Y2(t) + 5, group(t), { size: 12.5, anchor: "end", fill: C.muted });
+      });
+      var bp = [];
+      for (w = 1; w <= k; w++) bp.push(X(w) + "," + Y2(th4Blend(w)).toFixed(1));
+      add(bg, "polyline", { points: bp.join(" "), fill: "none", stroke: C.ink, "stroke-width": 2.6 });
+      txt(bg, X(k) + 10, Y2(th4Blend(k)) + 5, group(Math.round(th4Blend(k))), { size: 14, weight: 700 }).setAttribute("class", "halo");
+      put($("[data-fig]", art), svg);
+      $('[data-ctl="week"]', art).value = k;
+      $('[data-ctl="blend"]', art).setAttribute("aria-pressed", String(st.blend));
+      setOut(art, "week", "Week " + k + " (slider value " + k + ")");
+      var rows = [["Launch-week cohort, week " + k, THU.launchRate[k - 1] + " percent"],
+                  ["Organic cohort, week " + k, THU.organicRate[k - 1] + " percent"]];
+      if (st.blend) rows.push(["Blended actives, week " + k, group(Math.round(th4Blend(k)))]);
+      rows.push({ wide: "The launch cohort is 100,000 people and each organic cohort 10,000, so the blend leans on the launch cohort early and on the organic cohorts later." });
+      nums($("[data-nums]", art), rows);
+    },
+    final: function (st) { st.week = 8; st.blend = true; }
   });
 
   /* ---------- start ---------- */
