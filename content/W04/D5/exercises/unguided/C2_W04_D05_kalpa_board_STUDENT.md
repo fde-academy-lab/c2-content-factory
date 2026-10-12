@@ -1,6 +1,6 @@
 # Which revenue number should Anand put in front of Kalpa's board, and with what error bar?
 
-Kalpa Retail. The growth plan goes to the board and needs revenue for October 2026 to March 2027,
+Kalpa Retail's growth plan goes to the board and needs revenue for October 2026 to March 2027,
 against a plan line 15 percent above the same months a year earlier, with Diwali inside the window.
 Finance's forecast is last year plus 4 percent; marketing's vendor curve promises 22 percent. Anand
 Iyer, the finance controller: "Two forecasts, eighteen points apart. Which one do I put in front of
@@ -55,7 +55,7 @@ Post exactly this shape: xxx
 
 ## Which forecast earned the board's trust?
 
-The same test the morning ran on Flipkart's weeks, now on a client's months.
+This is the same test the morning ran on Flipkart's weeks, now run on a client's months.
 
 ### Q1. On April to September 2026, which missed less, the seasonal copy or the vendor's curve, and by how much a month?
 

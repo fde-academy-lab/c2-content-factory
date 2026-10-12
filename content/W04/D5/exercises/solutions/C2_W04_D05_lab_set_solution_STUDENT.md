@@ -19,7 +19,7 @@ of 0.86.
 
 ## What does the set test?
 
-The whole day on new numbers: shape, rules, score, judgement, code order and the plan's cushion.
+It tests the whole day on new numbers: shape, rules, score, judgement, code order and the plan's cushion.
 
 ## Why is each key right, and each other letter wrong?
 

@@ -1,6 +1,6 @@
 # Which scores can the planner trust, and which model earns a place over the house bot?
 
-Flipkart, the Lucknow fulfilment centre. The last thirteen weeks, 29 June to 21 September 2026, were
+At Flipkart's Lucknow fulfilment centre, the last thirteen weeks, 29 June to 21 September 2026, were
 hidden and every rule forecast them from the week of 22 June 2026. On those weeks the house bot (a
 copy of the same week last year) missed by 9,831 shipments a week, festival-aligned and finance's
 rule by 6,615, naive by 14,923 and the vendor's curve by 16,400. A late shipment costs Rs 25 and an

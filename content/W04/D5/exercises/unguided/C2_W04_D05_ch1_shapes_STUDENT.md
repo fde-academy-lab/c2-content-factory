@@ -1,6 +1,6 @@
 # What do three series say about trend and season, and which forecast fits each?
 
-Flipkart, the Lucknow fulfilment centre, where the planner reads a series' shape before choosing any
+At Flipkart's Lucknow fulfilment centre, the planner reads a series' shape before choosing any
 rule for the festive weeks of 2026. Illustrative case: the company is real, the situation and the data
 are synthetic, built for this class. The three series below are invented, twelve weeks each, so each
 shape stands alone.
@@ -14,7 +14,7 @@ copies the wrong shape books shifts for weeks that do not need them.
 - What do naive and a seasonal copy forecast for a repeating series?
 - What fixes a seasonal copy when the series also climbs?
 
-Four words, defined once. **Trend** is a steady climb or fall. **Season** is a pattern that repeats
+The set uses four words, each defined once here. **Trend** is a steady climb or fall. **Season** is a pattern that repeats
 on a fixed beat. **Noise** is what is left. **A seasonal copy** forecasts a week by copying the week
 one beat back; here the beat is four weeks.
 

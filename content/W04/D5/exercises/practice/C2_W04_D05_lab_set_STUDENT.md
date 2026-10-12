@@ -1,6 +1,6 @@
 # Can you run Friday's whole method on shops and series you have never seen?
 
-The TA-led practice lab, after the Kalpa notebook. Every shop, series and cost below is invented, so
+This set is sat in the TA-led practice lab, after the Kalpa notebook. Every shop, series and cost below is invented, so
 the method is all that carries over from the morning: read the shape, apply the rules, hide weeks and
 score them, judge a pitch, and set a plan's cushion from two costs. The problems climb from a reading
 to a plan.
@@ -59,7 +59,7 @@ d) 58, this year's week 3, two weeks back
 
 ## Can you score a forecast honestly?
 
-The morning's chapter 2, on a printed table.
+The next two problems are the morning's chapter 2, on a printed table.
 
 ### Q3. Five hidden weeks missed by 12, -8, 5, -15 and 6: what is the MAE?
 

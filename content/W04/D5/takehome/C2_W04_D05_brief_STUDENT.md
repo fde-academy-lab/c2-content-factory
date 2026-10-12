@@ -1,6 +1,6 @@
 # Does the scoreboard change when only the last four weeks are hidden?
 
-Flipkart, the Lucknow fulfilment centre. In class, the thirteen weeks from 29 June to 21 September
+The case is Flipkart's Lucknow fulfilment centre. In class, the thirteen weeks from 29 June to 21 September
 2026 were hidden and every rule forecast them from the week of 22 June 2026. On those weeks
 festival-aligned and finance's rule missed by 6,615 shipments a week, the house bot (a copy of the
 same week last year) by 9,831, drift by 14,842, naive by 14,923 and the vendor's curve by 16,400.
@@ -51,10 +51,10 @@ question:
 
 ## What makes the paragraph strong?
 
-It names the origin week's shipments and says what that did to naive. It names the rules that never
+It names the origin week's shipments and says what that did to naive, then names the rules that never
 use the origin week, the copies of last year, and says why their scores moved least. It says how far ahead of its own forecast the vendor's
-four weeks sit. It ends on one call the regional operations head can repeat, with the length of test
+four weeks sit, and it ends on one call the regional operations head can repeat, with the length of test
 the plan needs.
 
 The self-check (`takehome/C2_W04_D05_selfcheck_STUDENT.md`) gives the numbers each rule should reach.
-Open it after your notebook runs, never before.
+Open it only after your notebook runs.

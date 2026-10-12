@@ -1,6 +1,6 @@
 # What should you bring to Saturday, when the week's five methods move to other companies?
 
-Week 4, read on Friday evening: about 8 minutes of reading and two checks to run, so that Saturday
+Read this on the Friday evening of Week 4: about 8 minutes of reading and two checks to run, so that Saturday
 can start on its paper from the first minute.
 
 ---

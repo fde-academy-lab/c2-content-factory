@@ -1,6 +1,6 @@
 # Did your four-week test give the numbers it should, and did your paragraph say why they moved?
 
-The self-check for tonight's take-home: Flipkart Lucknow's weekly shipments rescored with only the
+This is the self-check for tonight's take-home, in which you rescore Flipkart Lucknow's weekly shipments with only the
 last four weeks hidden. Illustrative case: the company is real, the situation and the data are
 synthetic, built for this class. Open this after your notebook runs.
 

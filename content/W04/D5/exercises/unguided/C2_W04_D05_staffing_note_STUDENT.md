@@ -1,6 +1,6 @@
 # Which forecast books the festive shifts, how many a week, and what would make the plan wrong?
 
-Flipkart, the Lucknow fulfilment centre. The planner must book packer shifts for the eight weeks
+At Flipkart's Lucknow fulfilment centre, the planner must book packer shifts for the eight weeks
 beginning 12 October to 30 November 2026. Diwali falls on Sunday 8 November 2026, so its week begins
 2 November. The festive sale runs in the third and second weeks before Diwali's week, and the peak
 comes with it. Illustrative case: the company is real, the situation and the data are synthetic, built
@@ -17,7 +17,7 @@ What the morning found:
 
 The plan covers 12 October to 30 November, so a forecast whose busiest week is 5 October books its
 rush before the first week staffed. A packer packs about 120 shipments a shift. A late shipment costs Rs 25 and an idle shift Rs 650,
-Rs 5.42 a shipment, so the plan covers demand in 0.82 of weeks: festival-aligned raised by 2.6
+which is Rs 5.42 a shipment, so the plan covers demand in 0.82 of weeks: festival-aligned raised by 2.6
 percent. Festival-aligned forecasts 434,928 shipments for the week of 19 October 2026.
 
 **Who needs the answer.** The regional operations head, who signs the shift plan and answers for
