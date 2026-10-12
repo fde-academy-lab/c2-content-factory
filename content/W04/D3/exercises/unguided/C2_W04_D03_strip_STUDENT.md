@@ -8,7 +8,9 @@ Friday: rank the pairs the strip should show, explain the fall, and put a rupee 
 Illustrative case: the company is real, the situation and the data are synthetic, built for this
 class.
 
-This is the afternoon's unguided set, 35 minutes in groups, run on notebook 03.
+This is the afternoon's unguided set, run on notebook 03 in the same 35 minutes as each group's
+one-page strip: the page is what the group hands in, and these five items ask the same steps, so a
+group posts its five letters once its page is done.
 
 **Who needs the answer.** The growth lead, who takes one strip and one rupee figure to Friday's
 review, where the category manager will argue for milk. A figure that overstates the gain spends the
@@ -50,7 +52,7 @@ asks what the slot earns.
 
 ### Q1. What margin does one slot at 6.4 percent click-through earn in a day?
 
-*Level L5 · asked in product-company screens.*
+*Level L5 · asked in product-company interviews.*
 
 a) Rs 34,560
 b) Rs 1,920
@@ -59,7 +61,7 @@ d) Rs 80,197
 
 ### Q2. Milk holds half of the three slots' impressions: what does re-ranking recover in a month?
 
-*Level L5, a design call · asked in GCC analytics screens.* Use the month's 30 days.
+*Level L5, a design call · asked in global capability centre interviews.* Use the month's 30 days.
 
 a) Rs 12.6 lakh, three slots each Rs 4.2 lakh better off
 b) Rs 6.3 lakh, the gap on milk's 1.5 slots' worth
@@ -72,7 +74,7 @@ This comes up at work whenever a finding meets a check and a stakeholder in the 
 
 ### Q3. Counted with every customer once, chips and cold drink fall from 3.39 to 2.56: what should the growth lead do?
 
-*Level L4 · asked in product-company screens.*
+*Level L4 · asked in product-company interviews.*
 
 a) Drop the pair, since heavy buyers produced the whole of its pull
 b) Keep quoting 3.39 and leave the heavy buyers out of Friday's note
@@ -84,17 +86,19 @@ d) Keep the slot and quote 2.56, the number that survives the check
 *Level L5 · asked in every stakeholder round.*
 
 a) "Milk's confidence is only 0.74, which is too low to earn any slot on the strip."
-b) "Milk anchors the cart, so it needs no reminder: it clicks 1.2 percent against 6.4."
+b) "Milk is in most carts, so it needs no reminder: it clicks 1.2 percent against 6.4."
 c) "Milk is in nearly every cart, so drop it from search and from the home screen too."
 d) "Fine: milk takes every slot for the next two weeks, and we decide after that."
 
 ## How would the same idea score an AI shopping assistant?
 
-This comes up in AI-company screens, where a model's suggestions are judged by the same base rate.
+This comes up in AI-company interviews, where a model's suggestions are judged by the same base rate.
+Held-out carts are past carts the assistant never saw while it was built, and a popularity baseline
+is a rule that always suggests the most popular items.
 
 ### Q5. An AI shopping assistant suggests add-ons and shoppers accept many of them: how should it be scored first?
 
-*Level L6, a design call · asked in AI-startup screens.*
+*Level L6, a design call · asked in AI-startup interviews.*
 
 a) By its acceptance rate on live traffic, the share of its suggestions that shoppers take
 b) By the average confidence of the item pairs that sit behind each of its suggestions

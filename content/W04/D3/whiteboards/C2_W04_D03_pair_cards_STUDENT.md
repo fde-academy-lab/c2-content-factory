@@ -1,7 +1,7 @@
 # Where does each pair belong on the action map?
 
-Handed out after chapter 2, once notebook 02 has printed the pairs table, so every number here is
-one the room has already computed. Print one set per group and cut along the table's lines, one card
+Handed out in chapter 3, once notebook 03 has ranked the pairs above the floor and listed the thin
+ones below it, so every number here is one the room has already computed in notebooks 02 and 03. Print one set per group and cut along the table's lines, one card
 per pair. Each group places its cards on the wall's action map and defends one placement in a
 sentence. Swiggy Instamart, Pune, 40,000 carts. Illustrative case: the company is real, the situation
 and the data are synthetic, built for this class.
@@ -34,6 +34,6 @@ other pair stays out.
 | Region | Where it sits | What a card there gets |
 |---|---|---|
 | Promote | Lift well above one, support at or above the floor of 1 percent (400 carts) | A slot on the strip |
-| Watch | Lift well above one, support below the floor | A two-zone trial before any slot |
+| Watch | Lift well above one, support below the floor | A test on its own carts, with a random half of shoppers, before any slot |
 | Ignore | Lift near one, support below the floor | Nothing |
 | Trap | Lift near one, support at or above the floor: what a ranking by count puts on the strip | Nothing, and a sentence on why a count would have promoted it |

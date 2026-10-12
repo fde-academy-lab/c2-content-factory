@@ -63,12 +63,12 @@ flowchart LR
 
 ## Which pairs beat chance, drawn as one concept board?
 
-Built through chapter 1: the anchor goes up with the dots, each question as its count is called,
+Built through chapter 1: the example goes up with the dots, each question as its count is called,
 the sketches as each picture is drawn, and the two pitfalls last.
 
 ```mermaid
 flowchart LR
-    subgraph A["Anchor"]
+    subgraph A["The example"]
         A1["<b>a tea stall</b><br/>chai in 6, biscuit in 4,<br/>both in 3 of 10"]
     end
     subgraph Q["Questions"]
@@ -100,8 +100,8 @@ Added under Wednesday's node at the close of chapter 1, and left up all day.
 flowchart LR
     M["<b>Mon</b><br/>trips an online hour"] --> T["<b>Tue</b><br/>one slide"]
     T --> W["<b>Wed</b><br/>lift: beyond chance"]
-    W --> H["<b>Thu</b><br/>beyond the blend"]
-    H --> F["<b>Fri</b><br/>beyond the baseline"]
+    W --> H["<b>Thu</b><br/>groups behind one number"]
+    H --> F["<b>Fri</b><br/>a forecast against a simple rule"]
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class W lit
 ```

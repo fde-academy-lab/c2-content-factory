@@ -1,6 +1,10 @@
-# Can you make the day's eight calls about pairs and slots in twenty seconds each?
+# Can you make the day's eight calls about pairs and slots at speed?
 
-The quiz has eight items, ungraded and scored on correctness and speed together. Six are today's, one
+This page is the answer sheet, read after the live quiz, which shows each question without its
+mark. The quiz has eight items, ungraded and scored on correctness and speed together, with twenty
+seconds each and sixty for the lift sum in item 2. Two words used below: an incremental add is one
+that would not have happened without the strip, and the cost line is what a promotion gives back,
+such as a discount. Six are today's, one
 is the return question from Tuesday, and one checks the heavy-buyer doubt. Each item names what it
 tests, so an item dropped for time says what was lost. The popular item and its partner in item 3 are
 invented for the quiz.
@@ -60,7 +64,7 @@ on Friday, so the trainer says it again before the room leaves.
 *Tests: thin support and the watch list.*
 
 - The lift is too high to be anything but an error in the data
-- Too few carts to repay a slot shown on every cart page  <- correct
+- It shows beside ice cream only, too rarely to earn a slot  <- correct
 - Ice cream sells only in the summer months, so it is seasonal
 - Chocolate sauce carries the higher margin of the two items
 

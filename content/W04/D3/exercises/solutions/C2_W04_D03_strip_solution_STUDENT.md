@@ -31,7 +31,7 @@ is partly right, and the same base-rate idea inside an AI system's evaluation.
 | Q1, a slot's margin a day | c | 60,000 x 0.064 x 0.5 x Rs 9 = Rs 17,280 | a leaves out the add rate, Rs 34,560; b is the 1,920 adds, written as rupees; d is the 1,920 adds times their selling price, which is sales and never margin |
 | Q2, the month recovered | b | The gap of Rs 4.2 lakh a slot a month, times the 1.5 slots' worth of impressions milk holds, is Rs 6.3 lakh | a assumes milk filled every slot, which doubles the gain; c counts one slot; d counts a slot's whole margin as if milk earned nothing |
 | Q3, the heavy-buyer check | d | The pair still beats chance once each customer counts once, so it keeps the slot and the note quotes the smaller number | a drops a pair that survives the check; b hides the check; c holds every slot for a doubt the check already settled |
-| Q4, the category manager | b | It concedes what is true (milk anchors the cart) and answers with the evidence (1.2 against 6.4 percent) | a gives a wrong reason, since confidence is the number that flatters milk; c overreaches into search; d concedes everything and ignores the log |
+| Q4, the category manager | b | It concedes what is true (milk is in most carts) and answers with the evidence (1.2 against 6.4 percent) | a gives a wrong reason, since confidence is the number that flatters milk; c overreaches into search; d concedes everything and ignores the log |
 | Q5, the AI shopping assistant | c | Lift over a popularity baseline on held-out carts divides out the suggestions shoppers would have taken anyway | a rewards suggesting popular items, the strip's own trap; b scores the pairs and never the assistant; d counts variety, which says nothing about value |
 
 ## Which item is worth arguing about?
@@ -47,6 +47,6 @@ whether the figure survives finance.
 Every placement a growth team sells internally, from a strip slot to a homepage banner, is priced this
 way: views, click-through, conversion, margin, then the cost line. Swiggy's own shareholder letter
 describes its Maxxsaver discount as margin returned to the user, which is the cost line a rupee case
-has to carry (W4, checked 12 October 2026). AI companies score recommendation models against a
+has to carry (checked 12 October 2026). AI companies score recommendation models against a
 popularity baseline for the same reason the strip should have been: a model that suggests popular
 items looks accurate and changes nothing.

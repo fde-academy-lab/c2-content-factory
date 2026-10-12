@@ -36,12 +36,13 @@ the third left to you, so the help fades as the set climbs.
 Q2's option c. It carries the right number, 2.67, and the wrong sentence: "chips make a shopper 2.67
 times as likely to buy a cold drink". Lift says the two turn up together more than chance would put
 them there. Whether promoting chips sells a single extra cold drink needs a test that changes the
-strip and watches what follows, which Monday's faculty session on A/B testing (tentative) takes up.
+strip and watches what follows, the subject of this week's Monday faculty session (tentative) on
+A/B testing.
 
 ## Where does the pattern live at work?
 
 Every "frequently bought together" strip, every bundle a category team proposes and every
-recommendation an e-commerce company ships starts from these three counts. Amazon's recommender team
-wrote that counting how often buyers of A also bought B would have made a bestseller the top
-suggestion beside everything, and that the fix compared what was seen with what chance predicts
-(Amazon Science, checked 12 October 2026).
+recommendation an e-commerce company ships starts from these three counts. Amazon Science's history
+of the company's recommendation algorithm says counting how often buyers of one item bought another
+would make a few bestsellers the top recommendations for every customer, and that the fix compared
+what was seen with what chance predicts (Amazon Science, checked 12 October 2026).

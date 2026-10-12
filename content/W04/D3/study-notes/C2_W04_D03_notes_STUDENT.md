@@ -11,39 +11,37 @@ data are synthetic, built for this class.
 
 ## What can you do after Wednesday?
 
-- You can count support, confidence and lift from four counts on paper, then for every pair of
-  40,000 carts in code, and check a lift by a second route.
+- You can count support, confidence and lift by hand and in code, and check a lift a second way.
 - You can read a blended click-through as a mix of two rates and find the part that moved.
-- You can rank pairs by lift above a support floor and park a strong pair on few carts on a watch
-  list.
-- You can price a slot in rupees with each assumption's range, and name the cost line most people
-  forget.
+- You can rank pairs by lift above a support floor and park a strong, thin pair on a watch list.
+- You can price a slot in rupees with each assumption's range, and name the cost line.
 
 ## Where does Wednesday sit in the week?
 
 **What was worked, and what was only mentioned.** Wednesday counted three measures by hand on ten
-tea-stall orders and twelve real carts, then on all 40,000 carts; split the click-through by what each
+tea-stall orders and twelve carts from the case, then on all 40,000; split the click-through by what each
 slot suggested; ranked pairs above a floor; priced a slot; and checked the ranking with every
 customer counted once and the curd stock-out set aside. Cause was only mentioned, since a count
-cannot say whether a suggestion makes a sale, and upsell was named and left for later.
+cannot say whether a suggestion makes a sale, and upsell, a bigger pack of the same item, was named
+and left for later.
 
 ```mermaid
 flowchart LR
     M["<b>Mon · Uber</b><br/>trips an online hour<br/>1.9 to 1.6"] --> T["<b>Tue · Uber</b><br/>Rs 314 to Rs 260<br/>an hour, one slide"]
     T --> W["<b>Wed · Instamart</b><br/>beyond chance"]
-    W --> H["<b>Thu · Zomato Gold</b><br/>beyond the blend"]
-    H --> F["<b>Fri · Flipkart</b><br/>beyond the baseline"]
+    W --> H["<b>Thu · Zomato Gold</b><br/>groups behind one number"]
+    H --> F["<b>Fri · Flipkart</b><br/>a forecast against a simple rule"]
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class W lit
 ```
 
 Each day of Week 4 asks what a number is compared with; Wednesday compares two items sharing a cart
-with what chance alone would give. It prepares you for a growth lead asking "which items should we
-show together?" and, at once, "compared with what?".
+with what chance alone would give, the first question a growth lead asks of any bundle.
 
 **What was left out.** The IITGN faculty session after class (tentative) reads the same three numbers
 as probabilities and shows how a support floor lets an algorithm skip most combinations. Whether a
-suggestion causes a sale needs a randomised test, the subject of Monday's faculty session (tentative).
+suggestion causes a sale needs a randomised test, the subject of this week's Monday
+faculty session (tentative).
 
 ## Which one picture holds the day?
 
@@ -77,7 +75,7 @@ since lift counts and never names a cause. An invented carry bag in 9 of the 10 
 the 4 biscuit orders, reads confidence 0.75 from biscuit, yet its lift is 0.75 / 0.90 = 0.83, below
 chance: the item in every bag earns high confidence toward everything.
 
-The twelve cart cards are twelve real carts of the 40,000.
+The twelve cart cards are carts taken from the 40,000.
 
 | Count | Bread and milk | Chips and cold drink | Ice cream and chocolate sauce |
 |---|---|---|---|
@@ -89,10 +87,10 @@ The twelve cart cards are twelve real carts of the 40,000.
 **WATCH OUT.** Confidence 1.00 from bread to milk reads like a bundle. The tell is a partner in most
 carts anyway, 8 of 12 here, and the check is lift.
 
-**IN THE FIELD.** Amazon's recommendation team wrote that counting how often buyers of one item
-bought another would have put a bestseller beside everything, with Harry Potter books and trash bags
-as their example; the fix compared what was seen with what chance would predict (Amazon Science,
-checked 12 October 2026).
+**IN THE FIELD.** Amazon Science's history of the company's recommendation algorithm says counting
+co-purchases would make a few bestsellers, such as Harry Potter books and trash bags, the top
+recommendations for every customer; the fix compared what was seen with what chance would predict
+(Amazon Science, checked 12 October 2026).
 
 **CALLBACK.** Week 1, Monday: every rate names what it divides by.
 
@@ -113,7 +111,7 @@ defending milk as the top seller.
 
 **Two ways to count every pair.** Testing each of the 1,711 possible pairs against every cart makes
 about 68 million checks; turning each cart into a set and letting `Counter` add the pairs it holds
-makes about 433,000, since a cart holds 4.7 items on average. Notebook 02 runs the second way.
+makes about 433,000, 10.8 for an average cart. Notebook 02 runs the second way.
 
 ```python
 baskets = items.groupby("cart_id").item.apply(set)                          # one set per cart
@@ -130,7 +128,7 @@ make a pull look strong. For all 50 items in at least 2 percent of carts, lift w
 1.04, while chips and cold drink read a weak-looking confidence of 0.42 and lift 3.39.
 
 **The second route.** Lift is also confidence over the partner's share: 0.74 / 0.71 = 1.04 from
-bread's side and 0.35 / 0.34 = 1.04 from milk's.
+bread's side and 0.354 / 0.34 = 1.04 from milk's.
 
 **Why the click-through fell.** Before the change milk held 2 percent of slot impressions; after it,
 50 percent. Milk's slots click at 1.2 percent and every other suggestion at 6.4, up from 6.2.
@@ -144,7 +142,8 @@ percent of slot 1.
 except milk rose. A blended rate can fall while every part of it holds.
 
 **IN THE FIELD.** Beer and diapers, told accurately: in 1992 an analysis of about 1.2 million Osco
-Drug baskets found the two together in the early evening, no shelf was moved on the strength of it,
+Drug stores' baskets found the two together in the early evening, the chain does not appear to have
+moved any shelf on the strength of it,
 and the vivid version is largely invented (The Register, checked 12 October 2026).
 
 **ORIGIN.** Rules measured by support and confidence come from Agrawal, Imielinski and Swami, "Mining
@@ -156,7 +155,7 @@ popularity out to 1.04. The click-through fell because milk took half the impres
 ## Which pairs fill the strip, and what is a slot worth in rupees?
 
 **Who needs the answer.** The growth lead, who takes a ranked strip and a rupee figure to Friday's
-review, where the category manager will argue that milk anchors the cart.
+review, where the category manager will argue that milk, the top seller, belongs in every slot.
 
 **The questions on the way.**
 
@@ -169,12 +168,13 @@ review, where the category manager will argue that milk anchors the cart.
 ice cream and chocolate sauce take slot 1 at 4.60 on 100 carts. By lift above a floor of 1 percent of
 carts, 400 carts, 246 pairs qualify and four beat chance clearly: chips and cold drink 3.39, coriander
 and green chillies 3.00, bread and butter 2.21, onions and tomatoes 1.70. The call is the fourth way;
-a cheaper slot would change it by letting a lower floor admit thinner pairs.
+if a slot were worth less, a lower floor would do and thinner pairs could take one.
 
 ![Every pair with support of at least 0.1 percent: lift against support, with the 1 percent floor](../whiteboards/C2_W04_D03_action_map_STUDENT.png)
 
-**The watch list.** Ice cream and chocolate sauce rest on 100 carts, support 0.25 percent, too thin
-to repay a slot shown on every cart page; the pair is tried in two zones for two weeks first.
+**The watch list.** Ice cream and chocolate sauce is real, 100 carts where chance gives 22, but the
+strip shows it only beside ice cream, in 1,600 carts over four weeks, so it earns little; it is tested
+on those carts with a random half of shoppers first.
 
 **The slot in rupees.**
 
@@ -185,29 +185,30 @@ a month a slot, and milk holds 1.5 slots' worth, so re-ranking recovers about Rs
 Rs 3.9 lakh to Rs 9.3 lakh as the assumed add rate runs from 0.4 to 0.6 and the margin from Rs 7 to
 Rs 11.
 
-**WATCH OUT.** Booking sales as the gain: 1,920 adds a day at about Rs 42 each looks like Rs 80,197 of
-daily strip revenue, four times the Rs 17,280 of margin. A bundle discount comes off the margin too,
+**WATCH OUT.** Booking sales as the gain: 1,920 adds a day at about Rs 41.77 each looks like Rs 80,197
+of daily strip revenue, four times the Rs 17,280 of margin. A bundle discount comes off the margin too,
 for adds that might have happened anyway.
 
 **IN THE FIELD.** Swiggy's letter for the quarter to June 2025 describes Maxxsaver, a discount
 unlocked once a basket passes a threshold, as funnelling part of the larger basket's margin back to
-the user; over 28 percent of MTUs used it, and Instamart's average order value rose 16 percent on the
-quarter to Rs 612 (Swiggy Q1 FY26 letter, checked 12 October 2026). That discount is the cost line.
+the user; over 28 percent of monthly transacting users used it, and Instamart's average order value
+rose 16 percent on the quarter to Rs 612 (Swiggy's shareholder letter, checked 12 October 2026).
 
 **Six doubts, each with its check.**
 
 | Doubt | The check | What it showed |
 |---|---|---|
-| Together is no proof of cause | A holdout that changes the strip | Needs Monday's A/B test (tentative) |
-| Heavy buyers | Count each customer once | Chips and cold drink fall from 3.39 to 2.56; bread and milk stays 1.04 |
+| Together is no proof of cause | A holdout: shoppers kept on the old strip | This week's Monday A/B session (tentative) |
+| Heavy buyers, each placing many carts | Count each customer once | Chips and cold drink fall from 3.39 to 2.56; the top tenth place 38 percent of carts |
 | The curd stock-out | Set aside two zones, 15 to 21 September | Curd's share rises from 26.0 to 27.8 percent; lift with milk stays 1.01 |
 | Time of day | Each time band alone | Bread with milk reads 1.03 to 1.05 in every band |
-| The strip's own pull | Click-through by slot | Slot 1 draws 8.2 percent, slot 3 5.4 |
-| A customer places many carts | The heavy-buyer check | The top tenth place 38 percent of carts and 73 percent of the chips and cold drink carts |
+| Position in the strip | Click-through by slot | Slot 1 draws 8.2 percent and slot 3 5.4, milk aside |
+| The strip feeds its own counts | The holdout's shoppers never see it | Not in this data |
 
-**IN THE FIELD.** Uber's 10-K for 2025 says consumers using both rides and delivery generated over
-three times the gross bookings of single-product consumers (checked 12 October 2026). That is an
-outcome and no proof of cause, since a heavy user is likelier to try a second product anyway.
+**IN THE FIELD.** Uber's annual report for 2025 says that in its last quarter, consumers using both
+rides and delivery generated over three times the bookings of single-product consumers (checked 12
+October 2026). That is an outcome and no proof of cause: the check compares the same consumers before
+and after they add a second product.
 
 **The answer.** Chips with cold drink, coriander with green chillies and bread with butter fill the
 strip, ice cream and chocolate sauce wait, and re-ranking recovers about Rs 6.3 lakh a month.
@@ -218,12 +219,11 @@ strip, ice cream and chocolate sauce wait, and re-ranking recovers about Rs 6.3 
 
 | Situation | The decision | What the wrong count costs |
 |---|---|---|
-| A quick-commerce app's "goes well with" strip | Which items fill the slots under every cart | Slots spent on staples: Rs 14,040 a day a slot here |
-| A merchandiser's bundle discount | Whether a pair earns a promotion | The discount handed back on adds that would have happened anyway |
-| An LLM shopping assistant | How to score its add-on suggestions before launch | An assistant praised for suggesting milk, which shoppers were buying already |
+| A "goes well with" strip | Which items fill the slots | Rs 14,040 a day a slot here |
+| A bundle discount | Whether a pair earns a promotion | Discount paid on adds that happen anyway |
+| An LLM shopping assistant | How to score its add-ons | Praise for suggesting what shoppers buy anyway |
 
-Tonight's lab meets the same claim at Kalpa Retail: pair everything with the Rs 199 charger, "in 80
-percent of baskets".
+Tonight's lab meets the same claim at Kalpa: pair everything with the Rs 199 charger.
 
 ## Can you answer these without notes?
 
@@ -243,19 +243,21 @@ would change your mind (Tuesday's notes).
 
 | The question as asked | The hire-grade line |
 |---|---|
-| Support, confidence, lift: which cannot be fooled by popularity, and why? | Lift, since it divides by what chance gives: bread to milk reads 0.74, but milk is in 71 percent of carts, so lift is 1.04 |
-| Lift 4.6 on support of 0.25 percent: act? | Not yet: 100 carts cannot repay a slot shown to everyone, so it goes on the watch list |
-| Heavy buyers buy everything: what does that do to lift? | It inflates the pairs they repeat; counted once per customer, chips and cold drink fall from 3.39 to 2.56 |
-| Make it a rupee recommendation: which cost line do most forget? | Margin, never sales, less any discount handed back on adds that would have happened anyway |
+| Support, confidence, lift: which cannot be fooled by popularity, and why? | Lift, since it divides by the base rate: in September's carts bread to milk reads 0.74 and milk is in 71 percent, so lift is 1.04, too small for a slot |
+| Lift 4.6 on support of 0.25 percent: act? | The pair is real, but it shows only beside ice cream, so it is worth little; it goes on the watch list and a test |
+| Heavy buyers buy everything: what does that do to lift? | They repeat the party pair: counted once per customer, chips and cold drink fall from 3.39 to 2.56, the number to rank on |
+| Make it a rupee recommendation: which cost line do most forget? | Incrementality: some adds come anyway, so Rs 6.3 lakh a month is a ceiling a holdout measures |
 
-**The AI-company variant.** An LLM shopping assistant's add-ons are scored offline by their lift over
-a popularity baseline on held-out carts, then online by a holdout. The transcript is in `extras/`.
+**The AI-company variant.** An LLM shopping assistant passes an offline gate first, beating a
+popularity list and the current strip on carts after a cutoff date; then customers are randomised to
+three arms online. The transcript is in `extras/`.
 
-**The guesstimate: orders a dark store handles in a day.** Households in the catchment, times the
-share ordering in a week, times orders a week, over seven: assuming 40,000, 15 percent and 1.5 gives
-about 1,290 (about 430 to about 2,860 across the ranges). Swiggy reported 1,089 across 1,171 stores in
-the quarter to June 2026 (Q1 FY27 letter, checked 12 October 2026), counted per active store-day, so a
-new store counts only once it is live.
+**The guesstimate: orders a dark store, a warehouse that serves only delivery orders, handles in a
+day.** Households in its catchment (the area it delivers to), times the share ordering in a week,
+times orders a week, over seven: 40,000 households (30,000 to 50,000), 15 percent (10 to 20) and 1.5
+orders (1 to 2) give about 1,290 a day, and about 430 to about 2,860 across the ranges. Swiggy reported
+1,089 completed orders a store a day in the quarter to June 2026, ending it with 1,171 stores
+(Swiggy's shareholder letter, checked 12 October 2026), counting only the days each store was active.
 
 ## Which words did Wednesday use?
 
@@ -269,7 +271,6 @@ new store counts only once it is live.
 | Click-through | Clicks divided by impressions | The ticket | 6.1 percent before, 3.8 after |
 | Blended rate | One rate mixing groups that have different rates | The 40,000 carts | 3.8 percent from 1.2 and 6.4 |
 | Margin | What the business keeps from a sale after the item's cost | The strip | Rs 9 an added item |
-| Watch list | Strong pairs on too few carts, tried before promotion | The strip | Ice cream and chocolate sauce |
 
 ## Where should you read next, and how long does each take?
 

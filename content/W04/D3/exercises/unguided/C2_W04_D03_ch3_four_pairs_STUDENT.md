@@ -10,7 +10,7 @@ This is a fifteen-minute drill in chapter 3, on paper, with no code.
 
 **Who needs the answer.** The growth lead, who will defend three slots at Friday's review against a
 category manager who wants milk in every one of them. A slot given to the wrong pair costs margin on
-every cart page.
+every cart page where it shows.
 
 **The questions on the way.**
 
@@ -48,7 +48,7 @@ strong and how common a pair must be before it gets the space.
 
 ### Q1. Under the rule "support at least 1 percent and lift at least 1.5", which pairs earn a slot?
 
-*Level L3, a design call · asked in product-company screens.*
+*Level L3, a design call · asked in product-company interviews.*
 
 a) Chips and cold drink alone, the only pair above a lift of 3
 b) Ice cream and chocolate sauce, then chips and cold drink
@@ -57,7 +57,7 @@ d) Every pair except bread and milk, ranked by lift
 
 ### Q2. A colleague ranks the four pairs by support: which pair tops the list, and why is that the wrong slot?
 
-*Level L3 · asked in every analytics screen.*
+*Level L3 · asked in every analytics interview.*
 
 a) Bread and milk: support follows milk's popularity, and a lift of 1.04 is chance
 b) Onions and tomatoes: a support of 7.5 percent is too thin to earn a slot on its own
@@ -66,16 +66,16 @@ d) Ice cream and chocolate sauce: support leaves every thin pair out of the rank
 
 ### Q3. What should happen to ice cream and chocolate sauce?
 
-*Level L5, a design call · asked in product-company screens.*
+*Level L5, a design call · asked in product-company interviews.*
 
-a) A slot today, since a lift of 4.60 leads the four pairs by a clear margin
+a) A slot today, since a lift of 4.60 leads the four pairs by a clear gap
 b) The watch list: a two-zone trial with a pass rule fixed before it starts
 c) Nothing at all, since any pair below the floor is noise and nothing more
 d) A floor lowered to 0.25 percent, so that the pair qualifies for a slot today
 
 ### Q4. Why does the floor sit at 1 percent of carts rather than at 0.1 percent?
 
-*Level L5, a design call · asked in GCC analytics screens.*
+*Level L5, a design call · asked in global capability centre interviews.*
 
 a) At 0.1 percent, 1,221 pairs pass, many on about 40 carts, where lift moves by luck
 b) At 0.1 percent, chips and cold drink would fall under the line and lose their slot

@@ -38,9 +38,10 @@ Swiggy Instamart, Pune, Week 4 Wednesday. The cart page's strip fell from 6.1 to
 
 | Region | Rule | Pairs |
 |---|---|---|
-| Promote | lift well above one, support at least 1 percent (400 carts) | chips and cold drink 3.39, coriander and green chillies 3.00, bread and butter 2.21 |
+| Promote | lift 1.5 or more, support at least 1 percent (400 carts) | chips and cold drink 3.39, coriander and green chillies 3.00, bread and butter 2.21 |
 | Watch | strong lift below the floor | ice cream and chocolate sauce, 4.60 on 100 carts |
-| Ignore | lift near one | milk's pairs, 0.99 to 1.04 |
+| Trap | lift near one, above the floor: what a count ranks first | milk's pairs, 0.99 to 1.04 |
+| Ignore | lift near one, below the floor | most of the 1,221 pairs |
 
 **Crux:** Rank by lift above a support floor; a strong pair on few carts is tried before it takes a slot.
 
@@ -59,7 +60,7 @@ At 1.2 percent the slot earns Rs 3,240, a gap of Rs 14,040 a day or about Rs 4.2
 | Confidence 1.00, or a count ranking, read as a bundle | Lift: is the partner in most carts anyway? |
 | "Shoppers changed" | Split by suggested item: the rest rose to 6.4 |
 | Heavy buyers inflate a pair | Count each customer once: 3.39 falls to 2.56 |
-| A stock-out hides a pair | Set it aside: curd's lift with milk stays 1.01 |
+| A stock-out lowers a count | Set it aside: curd's share returns, its lift stays 1.01 |
 | Lift read as a cause | Only a holdout that changes the strip settles it |
 
 **Crux:** Every count is asked "compared with what?" before it takes a slot.

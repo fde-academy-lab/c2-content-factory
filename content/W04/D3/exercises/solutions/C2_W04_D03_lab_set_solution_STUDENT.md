@@ -31,7 +31,7 @@ the order the counting code runs in, and a plan for three bundles.
 | Q2, a lift of 1.00 | a | Seen 48 equals expected 48: the pair turns up exactly as often as chance | b reads a confidence of 0.60 as a bundle; c is false, since 32 sugar bills hold no tea; d describes a lift below one |
 | Q3, the four pairs | b | B and D clear the 1 percent floor and a lift of 1.5; A is chance; C is too thin for a slot | a gives C a slot below the floor; c gives A a slot at chance; d admits C, below the floor |
 | Q4, the slot's day | b | 30,000 x 0.05 x 0.5 = 750 adds; 750 x Rs 10 = Rs 7,500; less 750 x Rs 3 = Rs 2,250; Rs 5,250 | a forgets the discount; c leaves out the add rate, 1,500 clicks x Rs 10; d is sales, 750 x Rs 30 |
-| Q5, the order of the lines | a | The sets come first, then the single counts, then the pair counts, then lift reads both | b counts items before any set exists; c computes lift before any count exists; d counts pairs before the sets exist |
+| Q5, the order of the lines | a | The sets come first, then the single counts, then the pair counts, then lift reads the counts | b counts items before any set exists; c computes lift before any count exists; d counts pairs before the sets exist |
 | Q6, three bundles | c | Y beats chance on enough bills and carries a margin to price; Z is watched; X is chance | a runs the thinnest bundle first; b runs a bundle at chance; d spends three discounts to learn what the counts already say |
 
 ## Which item is worth arguing about?

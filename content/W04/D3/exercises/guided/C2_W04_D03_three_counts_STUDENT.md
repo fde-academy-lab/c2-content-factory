@@ -55,7 +55,7 @@ hand count on a few rows, before any code.
 
 ### Q1. Which line gives bread and milk's support, confidence from bread to milk, and lift, in that order?
 
-*Level L1 · asked in every analytics screen.* Worked: bread is in 4 carts and milk in 8, and all 4
+*Level L1 · asked in every analytics interview.* Worked: bread is in 4 carts and milk in 8, and all 4
 bread carts hold milk. Support is 4 of 12. Confidence from bread to milk is 4 of 4. Chance alone
 puts milk in 12 x 4/12 x 8/12 = 2.67 of the bread carts, so lift is 4 / 2.67. Which line matches the
 working?
@@ -67,7 +67,7 @@ d) 0.33, 1.00 and 0.67
 
 ### Q2. What is the lift of chips and cold drink on the twelve carts, and what does it say?
 
-*Level L1 · asked in every analytics screen.* Half worked: chips is in 3 carts, cold drink in 3, both
+*Level L1 · asked in every analytics interview.* Half worked: chips is in 3 carts, cold drink in 3, both
 in 2. Chance alone puts both in 12 x 3/12 x 3/12 = 0.75 carts. Finish the count: which line is right?
 
 a) 0.67: two of the three chips carts hold a cold drink
@@ -77,7 +77,7 @@ d) 0.17: two of the twelve carts hold both items
 
 ### Q3. Ice cream and chocolate sauce share one cart of the twelve, so lift reads 12: which call fits?
 
-*Level L1, a design call · asked in product-company screens.* Yours to do: decide what the number
+*Level L1, a design call · asked in product-company interviews.* Yours to do: decide what the number
 justifies before anyone acts on it.
 
 a) Give the pair a strip slot, since 12 is the highest lift on the cards

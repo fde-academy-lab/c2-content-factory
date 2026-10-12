@@ -1,11 +1,13 @@
 # Should Kalpa Retail bundle every product with the Rs 199 charger?
 
-Kalpa Retail, the programme's client. Merchandising wants to give Retail-Plus members a reason to come
+Kalpa Retail, the programme's client. Merchandising, the team that decides which products are bundled
+and promoted, wants to give Retail-Plus members (Kalpa's paid membership tier) a reason to come
 back by pairing every product with the store's best-seller, a Rs 199 phone charger, "because it is in
 80 percent of baskets". The head of merchandising asks which pairs to promote and what each promotion
 is worth in rupees before any money is spent. The data are Kalpa's own warehouse: 1,000 orders from
 April to September 2026, their order lines (order, product, quantity, unit price) and the product
-list with each product's unit cost.
+list with each product's unit cost. Uplift, used in item 3, is the extra sales a promotion causes
+beyond what would have sold anyway.
 
 This set re-runs the morning's last step on Kalpa: cost the proposal and decide. Item 1 can be sat at
 any time. Items 2 and 3 sit on their own page and use what your lab notebook found, so sit them after
@@ -40,7 +42,7 @@ This comes up at work whenever a discount is proposed: the first number is the m
 
 ### Q1. What margin is left on each charger sold in the bundle?
 
-*Level L5 · asked in every analytics screen.*
+*Level L5 · asked in every analytics interview.*
 
 a) Rs 79
 b) Rs 179
@@ -55,7 +57,7 @@ Sit this page after the lab. It uses the three findings your lab notebook's your
 
 ### Q2. Your lab found the charger in most baskets and its lift with every common product just under one: what does the bundle cost, and what does it buy?
 
-*Level L5, a design call · asked in product-company screens.*
+*Level L5, a design call · asked in product-company interviews.*
 
 a) It costs Rs 20 on every bundled charger, most of them sold anyway, and buys almost no added baskets
 b) It costs nothing extra, since a lift near one means the bundle changes nothing in either of the two directions
@@ -64,7 +66,7 @@ d) It costs Rs 20 a charger, and it buys the whole gap between the charger's sha
 
 ### Q3. Which plan fits the lab's other two findings: a strong pair above the 5 percent floor, mostly in Retail-Plus baskets, and a pair with a higher lift on very few baskets?
 
-*Level L5, a design call · asked in GCC analytics screens.*
+*Level L5, a design call · asked in global capability centre interviews.*
 
 a) Bundle both pairs, the thin one first, since its lift is the higher of the two pairs found
 b) Bundle the strong pair for Retail-Plus with a stated uplift range, and watch the thin one

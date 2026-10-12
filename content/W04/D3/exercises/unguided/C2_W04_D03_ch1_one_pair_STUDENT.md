@@ -44,7 +44,7 @@ answer is three numbers from four counts.
 
 ### Q1. What share of the 40,000 carts hold both coriander and green chillies?
 
-*Level L1 · asked in every analytics screen.*
+*Level L1 · asked in every analytics interview.*
 
 a) 15.0 percent
 b) 3.6 percent
@@ -53,7 +53,7 @@ d) 45 percent
 
 ### Q2. Of the carts holding green chillies, what share also hold coriander?
 
-*Level L1 · asked in every analytics screen.*
+*Level L1 · asked in every analytics interview.*
 
 a) 0.24
 b) 0.036
@@ -62,7 +62,7 @@ d) 0.45
 
 ### Q3. Which line computes the pair's lift, and what does it say?
 
-*Level L2 · asked in product-company screens.*
+*Level L2 · asked in product-company interviews.*
 
 a) 1,440 / 480 = 3.00: the pair turns up three times as often as chance would put it
 b) 0.45 / 0.24 = 1.88: chillies bring coriander almost twice as often as the reverse
@@ -71,7 +71,7 @@ d) 3,200 / 1,440 = 2.22: chilli carts outnumber the pair by about two to one
 
 ### Q4. Which second route would confirm the lift of 3.00 from a different pair of numbers?
 
-*Level L2, a design call · asked in GCC analytics screens.* A second route reaches the same number
+*Level L2, a design call · asked in global capability centre interviews.* A second route reaches the same number
 another way, to check the first.
 
 a) 0.24 / 0.45, the confidence from coriander over the confidence from chillies

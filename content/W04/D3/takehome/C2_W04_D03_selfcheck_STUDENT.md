@@ -72,8 +72,9 @@ Each row is a pair at or above the slice's floor, with its lift and the carts ho
 - In Kothrud in the evening and Baner in the morning the city's pairs lead the slice, in a slightly
   different order. The strip holds.
 - In Hinjewadi at night, the smallest slice, coriander with ghee rests on 8 carts and pav with
-  potatoes on 10, and both slip in above bread with butter. A floor of 1 percent of 649 carts lets in
-  any pair on 7 carts or more, which is the thin ground the city's floor of 400 carts keeps out.
+  potatoes on 10, and both slip in above bread with butter; a third pair, on 7 carts, sits fifth, just
+  below them. A floor of 1 percent of 649 carts lets in any pair on 7 carts or more, which is the thin
+  ground the city's floor of 400 carts keeps out.
 - In Viman Nagar in week three, green chillies with spinach rests on 13 carts and slips in second.
   That week is also the curd stock-out: curd sits in 1 percent of the slice's carts against 26 to 30
   percent in the zone's other weeks, so any ranking by count in this slice demotes curd for a reason

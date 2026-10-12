@@ -1,7 +1,7 @@
-# Which items do twelve real carts hold, card by card?
+# Which items do twelve carts from the case hold, card by card?
 
 Print this page once per group of about four learners and cut along the table's lines, one card per
-cart. The twelve are real carts from Swiggy Instamart's 40,000 Pune carts of 1 to 28 September 2026.
+cart. The twelve are carts taken from the case's 40,000 Pune carts of 1 to 28 September 2026.
 Illustrative case: the company is real, the situation and the data are synthetic, built for this
 class.
 
@@ -43,7 +43,8 @@ how many of those hold B; then count how many hold B at all.
 
 Write the three numbers under the grid only after the counts are on it: support is the top-left
 cell over 12; confidence from A to B is the top-left cell over the A row's total; lift is the top-left
-cell over what chance gives, 12 times the A total over 12 times the B total over 12.
+cell over what chance gives, which is 12 x (A total / 12) x (B total / 12). For the tea stall's chai
+and biscuit that was 10 x (6 / 10) x (4 / 10) = 2.4 orders, and lift was 3 / 2.4 = 1.25.
 
 The pairs the room counts, in order: bread and toned milk; chips and cold drink; ice cream and
 chocolate sauce.

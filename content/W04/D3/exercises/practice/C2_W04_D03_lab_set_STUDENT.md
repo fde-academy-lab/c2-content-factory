@@ -3,8 +3,9 @@
 The practice set for the TA-led lab, after the Kalpa lab notebook. It moves the day's method to an
 invented store so the counts are small enough to do by hand: a Pune kirana shop's 200 bills from one
 week, and four pairs and three bundles from an invented quick-commerce strip. Every number on this
-page is invented for practice. The items climb from a hand count to a call a merchandiser would pay
-for.
+page is invented for practice. The items climb from a hand count to a call a merchandiser, the person
+who decides which products are bundled and promoted, would pay for. Uplift, used in item 6, is the
+extra sales a promotion causes beyond what would have sold anyway.
 
 **Who needs the answer.** You, before tomorrow: the same three counts and the same rupee line return
 on Saturday's paper and in every basket question an interviewer asks.
@@ -46,7 +47,7 @@ sentence.
 
 ### Q1. What is the lift of tea and rusk?
 
-*Level L1 · asked in every analytics screen.*
+*Level L1 · asked in every analytics interview.*
 
 a) 0.75
 b) 0.25
@@ -55,7 +56,7 @@ d) 0.15
 
 ### Q2. Sugar and tea read a lift of exactly 1.00: what does that say?
 
-*Level L2 · asked in product-company screens.*
+*Level L2 · asked in product-company interviews.*
 
 a) Sugar and tea turn up together exactly as often as chance would put them
 b) Sugar brings tea 60 percent of the time, which makes the pair a strong bundle
@@ -75,7 +76,7 @@ This comes up at work whenever a list of pairs has to become a decision with a c
 
 ### Q3. Under the rule "support at least 1 percent and lift at least 1.5", which reading of the four pairs is right?
 
-*Level L3, a design call · asked in GCC analytics screens.*
+*Level L3, a design call · asked in global capability centre interviews.*
 
 a) C, then B, then D take slots, and A is ignored as no better than chance
 b) B and D take slots; A is ignored; C goes on the watch list
@@ -84,7 +85,7 @@ d) B, C and D take slots, since each lift clears 1.5
 
 ### Q4. A slot is shown 30,000 times a day at 5 percent click-through; half the clicks become adds, an add earns Rs 10 margin and the bundle gives Rs 3 back on each: what does the slot earn a day?
 
-*Level L5 · asked in product-company screens.* The added item sells for Rs 30.
+*Level L5 · asked in product-company interviews.* The added item sells for Rs 30.
 
 a) Rs 7,500
 b) Rs 5,250
@@ -96,13 +97,14 @@ d) Rs 22,500
 *Level L2, a design call · asked in coding rounds for analyst roles.*
 
 ```text
-1  lift = both * n / (single[a] * single[b])
+1  lift = pair_count[(a, b)] * len(baskets) / (single[a] * single[b])
 2  baskets = items.groupby("cart_id").item.apply(set)
 3  single = Counter(x for b in baskets for x in b)
 4  pair_count = Counter(p for b in baskets for p in combinations(sorted(b), 2))
 ```
 
-Which order runs without an error and counts every pair?
+Take `a` and `b` as the two items being checked, already set. Which order runs without an error
+and counts every pair?
 
 a) 2, 3, 4, 1
 b) 3, 2, 4, 1
@@ -111,7 +113,7 @@ d) 4, 2, 3, 1
 
 ### Q6. A merchandiser offers three bundles: X (lift 1.02, support 30 percent), Y (lift 2.4, support 3 percent, Rs 12 margin an add) and Z (lift 5.0, support 0.2 percent). Which plan runs first?
 
-*Level L5, a design call · asked in product-company screens.*
+*Level L5, a design call · asked in product-company interviews.*
 
 a) Z first, since its lift is the highest of the three and repays a discount fastest
 b) X first, since it reaches the most bills of the three and needs no trial at all

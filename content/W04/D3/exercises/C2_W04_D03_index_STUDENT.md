@@ -18,7 +18,7 @@ Kalpa set moves the method to the programme's client.
 
 | When | Set | Items | Levels | What it practises |
 |---|---|---|---|---|
-| Chapter 1, with the trainer | `guided/C2_W04_D03_three_counts_STUDENT.md` | 3 | L1 | The three counts on twelve real carts, worked, then half worked, then yours |
+| Chapter 1, with the trainer | `guided/C2_W04_D03_three_counts_STUDENT.md` | 3 | L1 | The three counts on twelve carts from the case, worked, then half worked, then yours |
 | End of chapter 1, 15 minutes | `unguided/C2_W04_D03_ch1_one_pair_STUDENT.md` | 4 | L1, L2 | One pair's three numbers from four counts, and a second route |
 | Chapter 3, 15 minutes | `unguided/C2_W04_D03_ch3_four_pairs_STUDENT.md` | 4 | L3, L5 | Four pairs read for action with lift and support together |
 | Afternoon, 35 minutes in groups | `unguided/C2_W04_D03_strip_STUDENT.md` | 5 | L4 to L6 | The strip priced in rupees, a caveat, the category manager and an AI assistant |
@@ -26,7 +26,9 @@ Kalpa set moves the method to the programme's client.
 | Lab, the practice set | `practice/C2_W04_D03_lab_set_STUDENT.md` | 6 | L1 to L5 | The whole method on an invented store, ending on three bundles |
 
 Twelve of the 25 items are design calls: a best-fit choice, a sizing, the fact that would change the
-call, or a second route.
+call, or a second route. A sizing puts a number with its unit on each option: carts, minutes or
+rupees. Each item's tag names the interview where such a question comes up; a global capability
+centre is a multinational company's own technology and analytics centre in India.
 
 ## Where are the answers?
 
