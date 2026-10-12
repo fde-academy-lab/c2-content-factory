@@ -38,13 +38,15 @@ For Diwali 2025's week, 308,900 shipped: naive said 369,000, 60,100 too high; th
 | Finance's rule | 1.04 x y[t - 52] | The house bot plus 4 percent |
 | Festival-aligned | 1.04 x the week at the same distance from last Diwali | Moves with the festival |
 
+y[t] is week t's shipments, T the last week a rule may see, h the weeks ahead. Festival-aligned matches distance from Diwali from five weeks before Diwali's week to four after.
+
 **Crux:** Every rule copies something from the past, so say what it copies before trusting what it says.
 
 ## Panel 4: How is a forecast scored?
 
 - Hide the latest weeks, at least as many as the plan books: here 13, 29 June to 21 September 2026, forecast from 22 June.
 - MAE is the average of the misses with their signs dropped, in shipments.
-- Price each miss by its direction: Rs 5.42 a shipment too high, Rs 25 a shipment too low.
+- Price each miss by its direction: Rs 5.42 for a spare shipment, Rs 25 for a late one.
 - The vendor's curve missed its 91 fitted weeks by at most 1.4 percent, and the hidden weeks by 16,400 a week.
 
 **Crux:** Beat the bot on hidden weeks: in shipments, then rupees, against a copy of last year, before any model earns the plan.
@@ -64,14 +66,14 @@ On 2025's festival, forecast from 22 September 2025, the house bot missed by 58,
 
 ## Panel 6: Where should the plan sit, and how many shifts?
 
-`share of weeks covered = late / (late + idle) = 25 / (25 + 5.42) = 0.82`
+`share of weeks covered = late / (late + spare) = 25 / (25 + 5.42) = 0.82`
 
-- An idle shift is Rs 650 for 120 shipments, Rs 5.42 a shipment.
-- The 0.82 point of festival-aligned's 13 hidden-week misses is 2.6 percent, so the plan is festival-aligned x 1.026.
-- Shifts are the plan over 120, rounded up: 20,275 in eight weeks, 3,719 in the week of 19 October.
-- The error bar is 6,615 shipments a week: Rs 35,832 if a week lands high, Rs 1.7 lakh if it lands low.
+- Why: over 100 weeks, if demand beats the plan in 18, one more shipment of plan saves 18 x Rs 25 = Rs 450 and wastes 82 x Rs 5.42 = Rs 444.
+- Sorted, the 13 hidden weeks put the 0.82 point between the 10th (2.1 percent above the forecast) and the 11th (2.7): 2.6 percent, which covers 10 of 13.
+- Shifts are festival-aligned x 1.026 over 120, rounded up: 20,275 in eight weeks, 3,719 in the week of 19 October.
+- The error bar is 6,615 shipments a week: about Rs 35,800 if a week lands high, Rs 1.65 lakh if low.
 
-**Crux:** Plan at the 0.82 share: being short costs 4.6 times being long, so the plan sits 2.6 percent above the forecast.
+**Crux:** Cover 0.82 of weeks: a late shipment costs 4.6 times a spare one, so the plan sits 2.6 percent above the forecast.
 
 ## Panel 7: What does the interviewer listen for?
 

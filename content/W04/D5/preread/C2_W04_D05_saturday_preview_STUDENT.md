@@ -34,7 +34,7 @@ flowchart LR
 | Tuesday | Uber in Hyderabad: gross bookings per peak online hour fell from Rs 314 to Rs 260 | The answer goes first, on one slide a person who loses by it can repeat accurately |
 | Wednesday | Instamart in Pune: the strip fell from 6.1 to 3.8 percent click-through | A pair earns a slot by beating chance on enough carts, priced in rupees |
 | Thursday | Zomato Gold in Chennai: Android add-to-cart to order fell from 58 to 44 percent | A flat blend can hide every group falling, so split by group and by step |
-| Friday | Flipkart in Lucknow: festive shifts, with forecasts 18 points apart | A forecast earns the plan by beating a copy of last year on weeks it never saw, priced by direction |
+| Friday | Flipkart in Lucknow: festive shifts, with forecasts 18 percentage points apart | A forecast earns the plan by beating a copy of last year on weeks it never saw, priced by direction |
 
 If a line would not come out, re-read that day's cheat sheet before Saturday.
 

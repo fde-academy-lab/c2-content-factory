@@ -58,7 +58,7 @@ difference between two forecasts. Either answer sends an untested number to the 
 | | Weak answer | Hire-grade answer |
 |---|---|---|
 | The test | "I would check how well each model fits the history." | "I hide the latest thirteen weeks, 29 June to 21 September 2026, which is longer than the eight-week plan, and forecast them from 22 June." |
-| The measure | "R-squared, or maybe MAPE." | "The average miss in shipments, MAE, fixed before anyone scores, because shifts are booked in shipments." |
+| The measure | "R-squared, or maybe MAPE." (R-squared says how well a line fits past points.) | "The average miss in shipments, MAE, fixed before anyone scores, because shifts are booked in shipments." |
 | The bar to beat | Not reached. | "A copy of the same week last year, the house bot: 9,831 a week. Festival-aligned and finance's rule beat it at 6,615; the vendor's curve misses by 16,400, too high in 12 of 13 weeks, though it fits its 91 past weeks within 1.4 percent." |
 | The price | Not reached. | "Priced, the vendor's misses cost least, Rs 11.9 lakh against Rs 13.5 lakh, because spare capacity costs Rs 5.42 a shipment and a late one Rs 25. So I lean high on purpose: the plan covers demand in 0.82 of weeks, festival-aligned plus 2.6 percent." |
 | What the test cannot see | Not reached. | "The hidden weeks hold no festive week, so I back-test the 2025 festival from data to 22 September 2025: the house bot missed by 58,250 a week, festival-aligned by 4,034." |
@@ -70,7 +70,7 @@ difference between two forecasts. Either answer sends an untested number to the 
 |---|---|
 | "MAE in shipments or MAPE in percent, and when?" | "MAE in shipments when the cost is per shipment and the plan books shipments. MAPE when I compare series of different sizes, say Lucknow with a centre twice its size, and never where an actual can sit near zero, since a percent of almost nothing explodes (Forecasting: Principles and Practice, section 5.8, checked 12 October 2026)." |
 | "The festival moves by three weeks this year. What breaks?" | "Every calendar copy, the house bot and finance's rule, puts the peak three weeks off. A copy by distance from the festival moves with it. I would also check that the sale still opens the same distance before the festival, since the peak follows the sale; if it moves, I copy by distance from the sale." |
-| "What did forecast error cost Zillow, and which guardrail failed?" | "Zillow priced homes on forecasts three to six months ahead inside public targets of plus or minus 200 basis points of breakeven. In 2021 its unit economics swung about 1,200 basis points toward minus 500 to minus 700, it wrote down about USD 304 million and cut about 25 percent of its workforce (Zillow's Q3 2021 shareholder letter, checked 12 October 2026). The guardrail bounded the forecast, and the forecast was what failed." |
+| "What did forecast error cost Zillow, and which guardrail failed?" | "Zillow bought homes to resell, priced on forecasts three to six months ahead, and promised to keep what it made or lost on each home, its unit economics, within 200 basis points (2 percent) of breakeven, where it makes nothing. In 2021 that swung about 1,200 basis points, 12 percentage points, toward a loss of 5 to 7 percent; it wrote down about USD 304 million, marking homes in stock below what it paid, and cut about 25 percent of its workforce (Zillow's Q3 2021 shareholder letter, checked 12 October 2026). The guardrail bounded the forecast, and the forecast was what failed." |
 
 ### How does the same question come up at an AI company?
 
@@ -113,8 +113,8 @@ Tagged [D], a differentiator. The fallback hour runs this one.
 
 1. "Plus 4 and plus 22 against which weeks of last year?" Both are measured against the same calendar
    weeks, which hold only the tail of last year's festival.
-2. "Has either been scored on weeks it never saw?" Finance's rule has, by the hold-out; the vendor's
-   promise for the festive window has not.
+2. "Has either been scored on weeks it never saw?" Both met the thirteen hidden weeks; finance's rule
+   also met 2025's festival in the back-test, and the vendor's festive promise has met none.
 3. "Who carries the cost of a short week, and who of a spare shift?" The answer says which way to
    lean.
 
@@ -136,7 +136,7 @@ skip the evidence, and the midpoint keeps the calendar copy's peak on the wrong 
 | Answer | "I would average them: 13 percent." | "Neither goes to the plan as it stands. Scored on thirteen hidden weeks, finance's rule ties festival-aligned at 6,615 a week and the vendor misses by 16,400. On 2025's festival, a calendar copy missed by 58,250 a week and festival-aligned by 4,034. So the plan is festival-aligned plus 2.6 percent: 20,275 packer shifts, peaking at 3,719 in the week of 19 October." |
 | Concede | Nothing conceded. | "To finance: your 4 percent is the growth two years show, and your rule ties ours on the hidden weeks. To the sponsor: your curve fits history within 1.4 percent, and its misses on the hidden weeks are the cheap kind." |
 | What would change it | Not said. | "A third year of data, a sale that opens at a different distance from Diwali, or the curve beating the house bot on a festival it never saw." |
-| The error | One number. | "6,615 shipments a week: Rs 35,832 of idle shifts if a week lands high, Rs 1.7 lakh of late shipments if it lands low." |
+| The error | One number. | "6,615 shipments a week: about Rs 35,800 of idle shifts if a week lands high, Rs 1.65 lakh of late shipments if it lands low." |
 
 ### What follows up, and which line answers each?
 
@@ -144,7 +144,7 @@ skip the evidence, and the midpoint keeps the calendar copy's peak on the wrong 
 |---|---|
 | "Why not average the two and keep both happy?" | "Both are copies of the calendar, so their average books the peak on 5 October too, two weeks before the rush. Averaging two forecasts with the same error keeps the error." |
 | "Finance says its rule tied yours. Why not use finance's?" | "On the hidden weeks it did tie, because those weeks hold no festival. On 2025's festival, forecast from 22 September 2025, finance's rule missed by 60,488 a week against festival-aligned's 4,034." |
-| "The sponsor says the vendor's misses cost least. Answer that." | "True on the hidden weeks: Rs 11.9 lakh against Rs 13.5 lakh, because it leans high. But nobody chose how high, and it climbs with the weeks ahead, 3.6 percent too high in the first six to 11.5 in the last six. Raised by 2.6 percent on purpose, festival-aligned's misses on the same weeks price at Rs 8.8 lakh, a figure flattered a little because the 2.6 was read from those weeks." |
+| "The sponsor says the vendor's misses cost least. Answer that." | "True on the hidden weeks: Rs 11.9 lakh against Rs 13.5 lakh, because it errs high. But nobody chose how high, and it climbs with the weeks ahead, 3.6 percent too high in hidden weeks 1 to 6 and 11.5 in weeks 8 to 13. Raise festival-aligned by 2.6 percent on purpose and its misses on the same weeks cost Rs 8.8 lakh, less than the vendor's; that figure flatters the raise a little, because the 2.6 percent was read from those same weeks." |
 
 ## What does the scorer listen for?
 
