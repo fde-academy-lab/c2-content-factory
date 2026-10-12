@@ -9,8 +9,8 @@ completed peak trips 224,200 and then 230,900, trips per peak online hour 1.90 a
 head asks, by Friday, whether the scheme works, what it should pay for, and whether anyone is gaming
 it.
 
-**Who needs the answer.** You, before Tuesday: the city head's one-slide review tomorrow assumes
-every learner can compute the city's rate, sort a dashboard into what it pays for and what guards
+**Who needs the answer.** You, before Tuesday, which rehearses the one-slide review the city head
+holds on Thursday and assumes every learner can compute the city's rate, sort a dashboard into what it pays for and what guards
 it, and write one definition from a blank page.
 
 **The questions on the way.** Which lines, in which order, print the city's rate? Which numbers move
@@ -86,13 +86,13 @@ this definition, so keep it.
 
 ---
 
-## Problem 4. Which nine numbers keep their place on the city head's dashboard, and in which role?
+## Problem 4. Which of nine numbers keep their place on the city head's dashboard, and in which role?
 
 A city dashboard grows a line each time someone asks a question, and the analyst who cuts it back to
 the few numbers a decision needs is the one whose dashboard gets read.
 
 The city head's dashboard carries nine numbers. The task: one north star, two guardrails that
-protect riders, two leading inputs, and the rest cut from the top page.
+protect riders, two leading inputs, and the rest cut from the dashboard's first page.
 
 | # | Number on the dashboard |
 |---|---|
@@ -136,7 +136,7 @@ c) 1 and 9, peak online hours this week and gross bookings for the quarter
 
 d) 5 and 8, the count of enrolled drivers and the city's total of completed trips
 
-### Q5. Design. Which reason defends cutting number 1, peak online hours, from the top page?
+### Q5. Design. Which reason defends cutting number 1, peak online hours, from the dashboard's first page?
 
 a) Hours are what the old scheme paid for, and riders still waited as long
 

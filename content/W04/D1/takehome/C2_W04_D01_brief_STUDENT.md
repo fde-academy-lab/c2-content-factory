@@ -7,7 +7,8 @@ driver who stays online through a whole peak window is guaranteed Rs 300 per pea
 Uber tops up the gap. Six weeks later peak online hours were up 24 percent, completed peak trips up 3
 percent, and trips per peak online hour down from 1.90 to 1.58, with Rs 1.9 crore paid in top-up. The
 room redesigned the scheme today: pay for completed peak trips per enrolled driver online at peak,
-guarded by the share of offers accepted, the median rider wait and the top-up per completed trip.
+guarded for riders by the share of offers accepted and the median rider wait, and for the budget by
+the top-up per completed trip.
 
 **Who needs the answer.** The city head, who hears the redesign on one slide at Thursday's review
 with three people who each lose something under it; Tuesday rehearses that slide, and it starts
@@ -34,8 +35,9 @@ once. If a word in it needs explaining, replace the word.
 ## What number would you pay a team for in a product you use every day?
 
 Choose one product you open every day: a food-delivery app, a music app, a payments app, a
-ride-hailing app as a rider, a quick-commerce app, or your college's library portal. Pick the number
-its team would most like to grow, and write it on the seven lines.
+ride-hailing app as a rider, a quick-commerce app (groceries delivered in minutes), or your
+college's library portal. Pick the number its team would most like to grow, and write it on the
+seven lines.
 
 | Line | In plain words | Your product |
 |---|---|---|

@@ -13,7 +13,7 @@ numbers by when they move and pairs three proposed north stars with the guardrai
 
 A leading number moves before the north star and can still be acted on this week; a lagging number
 adds up what already happened. A guardrail is chosen by the gaming it catches: for each proposed north
-star, the question is how a driver could hit it while riders waited longer, and which number would
+star, the question is how a driver could hit it while riders were served no better, and which number would
 move when that happens. The case shows the lead in time: acceptance settled at its new level, 0.729,
 in the launch week, while gross bookings per online hour took three weeks to fall from Rs 271 to
 Rs 259.1.

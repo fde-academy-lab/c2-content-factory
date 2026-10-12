@@ -32,10 +32,14 @@ Post exactly this shape: xxxx
 
 ## What does the redesign pay for?
 
-The redesign keeps the Rs 300 floor and changes what earns it. Its north star is completed peak trips
-per enrolled driver online at peak, per week, with three guardrails beside it: the share of offers
-accepted (at or above a floor the city sets), the median rider wait at peak, and the top-up per
-completed trip. A driver-week whose accepted share falls under the floor earns no top-up that week.
+The redesign keeps the Rs 300 floor and changes what earns it: a driver-week earns its top-up only
+if the driver accepted at least the city's floor share of the offers shown, with an accepted trip the
+driver then cancels counted as declined. Under the old rule a driver below the floor earned nothing
+extra from the next trip, since the top-up shrank by whatever the trip paid, so declining cost
+nothing; under the new rule declining costs the week's top-up. The city judges the scheme by its
+north star, completed peak trips per enrolled driver online at peak, per week, read beside three
+guardrails: for riders, the share of offers accepted and the median rider wait at peak; for the
+budget, the top-up per completed trip.
 
 Three facts from the case data:
 
@@ -84,7 +88,7 @@ b) Rs 74.1 lakh, the top-up that every other driver-week received
 
 c) Rs 1.9 crore, as the redesign replaces the whole six weeks' top-up
 
-d) Rs 58 lakh to Rs 92.7 lakh, as a fifth to a half is still paid
+d) Rs 58 lakh to Rs 92.7 lakh, as a half to a fifth is still paid
 
 ---
 
