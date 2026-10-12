@@ -1,197 +1,242 @@
-# The weaned-users hour: when a decline hides inside a lift
+# When can a retention number rise or hold with nobody's behaviour changing?
 
-Week 4, Day 4. Faculty-block fallback.
+Week 4, Day 4. Fallback for the tentative faculty block.
 
-Kicker: WEEK 4  ·  THURSDAY  ·  FALLBACK
-Quote: Swiggy weaned over four million unprofitable users away and one-month retention rose from 55 to 61 percent. Part of that rise is the mix changing. Which part?
-Who: The analyst reading Swiggy's Q1 FY27 letter. Illustrative use: the published numbers are Swiggy's, verified 12 October 2026; the dissection is the programme's.
+Header: WEEK 4  ·  DAY 4  ·  THE FALLBACK, IF THE TENTATIVE FACULTY BLOCK SLIPS
 
-```notes
-LIVE, one minute. Read the opening and say that the hour teaches no survival content; the IITGN
-block owns that whenever it runs. Four short sections, 35 + 40 + 25 + 20 minutes.
-```
-
----
-
-## SECTION 1: Weaned users and the mix move
-*Swiggy's own triangle, the move the mix makes, and the numbers.*
-
----
-
-## S1. 55 to 61 percent: where does the lift come from.
-*What rose, what left, and how does the mix shift show in a cohort chart?*
-
-| Fact in R2 (Th3) | What the picture shows |
-|---|---|
-| MTU up 27.4 percent | More users touched the platform in the quarter |
-| Platform frequency fell 6.3 percent | Each user used it slightly less often |
-| Over four million unprofitable users weaned away | The weakest column of the triangle removed from the base |
-| One-month retention 55 to 61 percent | Blended rate climbed six points |
-
-A lift of six points on blended retention can come from the remaining users ordering more, from the weakest users leaving, or from both. The cohort chart separates the two, which the dashboard does not.
+## SECTION 7: Can weaning lift retention?
+*Zomato Gold, Chennai, continued, beside Swiggy's own published cohorts: Swiggy removed users with low expected value, so how much of a retention rise can that alone produce?*
 
 ```notes
-LIVE, 8 minutes. Walk the four lines aloud. The question for the room: which of these three
-explanations could show up with no change in anyone's behaviour at all? Expect "removing weak
-users" and reinforce it.
+This block runs only if the IITGN faculty session W4-3 (tentative) slips. It teaches no survival
+curves, censoring or tests between curves, which stay with the block whenever it runs. Four
+parts: 35, 40, 25 and 20 minutes, 120 in all.
+LIVE, 35 minutes. Styles: StatQuest (ten members on the board), the case method (Swiggy's own
+decision). The denominator question closes the part.
+Transition: Swiggy's numbers.
 ```
 
 ---
 
-## S2. Five weak users leave, every column reads higher
-*Ten members, five weak and five strong; drop the five weak and the mean rises on every month.*
+## S1. Swiggy weaned 4 million users; retention rose
+*What did Swiggy decide, and what did its numbers do?*
 
-```mermaid
-flowchart LR
-    A["<b>cohort of ten</b><br/>five strong, five weak<br/>blended retention averages both"] --> B["<b>wean the five weak</b><br/>remove them from the base<br/>no behaviour change for the strong"]
-    B --> C["<b>cohort of five</b><br/>only the strong<br/>every retention column reads higher"]
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class A,B known
-    class C lit
+```stats
+value: 4M+ | label: users weaned away | note: unprofitable Instamart users, over three quarters to Q1 FY27
+value: 55 to 61 | label: percent | note: one-month retention of the transacting base, Q1 FY26 to Q1 FY27
+value: 4.14x | label: spend at Q6 | note: the Q4 FY24 cohort's spend in its sixth quarter against its first
 ```
 
-| Month | All ten | Only the strong five |
+Swiggy says it used cohort-level levers (minimum order thresholds, free deliveries, new-user coupons) and weaned away users with low expected lifetime value. Sources: Swiggy's Q1 FY27 and Q2 FY26 shareholder letters, each checked 12 October 2026.
+
+```notes
+Sources:
+https://nsearchives.nseindia.com/corporate/SWIGGY_30072026154100_Covering_Letter_Letter_to_Shareholders_-_signed.pdf (checked 12 October 2026)
+https://www.swiggy.com/corporate/wp-content/uploads/2025/10/Q2-FY2026-Shareholder-letter.pdf (checked 12 October 2026)
+LIVE, 8 minutes. Read the three numbers and the decision. Ask: which of these could rise with no
+user ordering a single extra time? Expect "the retention rate"; the next slide shows how.
+Transition: ten members on the board.
+```
+
+---
+
+## S2. Drop five weak members, and every column rises
+*Ten members, five strong and five weak: what happens to each month's rate when the weak five leave (invented)?*
+
+| Month | All ten | The strong five only |
 |---|---|---|
-| m1 | 7 of 10 ordered | 5 of 5 ordered |
-| m2 | 5 of 10 ordered | 5 of 5 ordered |
-| m3 | 4 of 10 ordered | 4 of 5 ordered |
-| m4 | 3 of 10 ordered | 3 of 5 ordered |
+| Month one | 7 of 10 | 5 of 5 |
+| Month two | 5 of 10 | 5 of 5 |
+| Month three | 4 of 10 | 4 of 5 |
+| Month four | 3 of 10 | 3 of 5 |
 
-Drop the five weak members and every cell rises without a single member changing behaviour. The lift is a composition effect, which the triangle makes visible and the dashboard hides.
+No member changed what she did, and every month's rate rose: 70 to 100, 50 to 100, 40 to 80, 30 to 60 percent. A retention rise after a weaning is partly the mix of who remains.
 
 ```notes
-LIVE, 12 minutes. Build the table on the board with the room. The teaching move is StatQuest's:
-tiny numbers aloud, each step named. The point is that a weaning policy and a product improvement
-cannot be told apart from a blended number alone.
+LIVE, 12 minutes. Build the table on the board with the room, column by column (invented
+numbers). Then ask: from the blended number alone, could you tell a weaning from a better product?
+No; the cohort table with its denominator can.
+Transition: the denominator question.
 ```
 
 ---
 
-## S3. The denominator question on Swiggy's triangle
-*Which denominator did Swiggy pick, and what would the alternatives have said?*
+## S3. Three denominators give three different charts
+*Which denominator does a published cohort chart use, and what would the others say?*
 
 ```mermaid
 flowchart TD
-    A["<b>per acquired user</b><br/>the full acquisition cohort,<br/>including the weaned"] --> X["<b>the printed number</b>"]
-    B["<b>per retained user</b><br/>only those who stuck past month one,<br/>which excludes most of the weaned"] --> X
-    C["<b>the cohort total</b><br/>denominators as given by the triangle,<br/>no survivor filter"] --> X
+    A["<b>per acquired user</b><br/>everyone the cohort started with,<br/>the weaned included"] --> X["<b>the printed cohort number</b>"]
+    B["<b>per retained user</b><br/>only those still active,<br/>so removals lift it"] --> X
+    C["<b>the cohort total</b><br/>spend or orders summed,<br/>no per-user division"] --> X
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class A,B,C known
-    class X bet
+    class X lit
 ```
 
-A chart with no stated denominator is a shape; a chart with its denominator stated is a number. Swiggy's letter indexed to the Q4 FY24 cohort; a different index would have moved every row.
+A cohort chart without its denominator is a shape. Swiggy's table is indexed to its Q4 FY24 cohort's first quarter, and calls the groups "retained user cohorts": the first thing to ask is who stays in the count.
 
 ```notes
-LIVE, 15 minutes. The room writes the three denominator choices and names what each would say
-about the lift. The hire-grade candidate asks for the denominator before trusting the number.
+LIVE, 15 minutes. Groups write what each denominator would show after a weaning. Per retained
+user rises most; per acquired user shows the removals as a fall; the total moves least.
+Transition: the rerun, by week.
 ```
 
 ---
 
-## SECTION 2: Monthly against weekly on today's data
-*Rerun the Chennai cohort at a weekly granularity: which story survives?*
+## SECTION 8: Does a weekly table agree?
+*Rebuilt by signup week instead of signup month, which part of the morning's story holds and which needs new words?*
+
+```notes
+LIVE, 40 minutes. The row's after-class task done in class, in pairs, on the event log. Styles:
+Krish Naik (a table built line by line), Veritasium (predict the sale week's row first).
+Transition: the task.
+```
 
 ---
 
-## S4. Monthly against weekly, done in class
-*Does the mix story the morning told hold at a weekly granularity, or does noise take over?*
+## S4. The task: cohorts by signup week, from the log
+*How is a weekly cohort table built from the event log?*
 
-The row's after-class brief asked for a weekly cohort rerun. The question is which story the rerun keeps:
+```python
+placed = ev[ev["stage"] == "order_placed"]
+week = lambda t: t.dt.to_period("W-SUN").dt.start_time      # weeks start on Monday
+orders_week = set(zip(placed["user_id"], week(placed["event_ts"])))
+# members who joined 3 August to 13 September; week k is the k-th full week after the signup week
+```
 
-| What might change at the weekly axis | Which story holds, which breaks |
+Members who joined from 3 August to 13 September form six weekly cohorts. A member is active in week k when she placed an order that week. The week of 28 September is three days long, so the table stops at the week of 21 September.
+
+```notes
+LIVE, 20 minutes in pairs. Ask each pair to predict the sale week's row before computing it.
+Transition: the table.
+```
+
+---
+
+## S5. The sale week: 53 percent, then 12
+*What does the weekly table show for the sale week against the weeks either side of it?*
+
+![Weekly cohorts: the sale week orders once, then falls away](../whiteboards/C2_W04_D04_weekly_cohorts_STUDENT.png)
+
+Percent of each weekly cohort that ordered in each full week after joining. The sale week's 9,108 members ordered in their first week, while the discount lasted, and then fell off a cliff: 53 to 12 percent, the steepest fall of the six. The five other weeks, 1,112 to 1,247 members each, start between 27 and 38 percent.
+
+```notes
+LIVE, 10 minutes. Point at the sale week's two cells. The monthly table hid this inside the
+signup month, which is month zero and never counted.
+Transition: which story survives.
+```
+
+---
+
+## S6. The method survives; the words change
+*Which sentence of the morning holds on a weekly table, and which has to be rewritten?*
+
+| The morning said | On the weekly table |
 |---|---|
-| Each cohort smaller, so curves noisier | The paradox holds; the mix move is structural |
-| Seasonal weekends mix inside each month | The denominator shift is where the lift sits |
-| A sale week isolated as its own cohort | The sale-week cohort reads lowest, as the monthly view showed |
-
-The method survives the change of axis. The specific numbers do not.
+| Every cohort falls with age | Holds, with noise: weekly cohorts of 1,112 to 1,247 members |
+| The sale cohort is the weakest | Holds after its first week; in its first week it looks strongest |
+| Rates near 38 percent | Weekly rates are lower: ordering in a given week is rarer than in a month |
+| The last month counts | The last week is partial and leaves the table |
 
 ```notes
-LIVE, 20 minutes. The pair exercise: redraw the Chennai triangle at the week axis, from the
-member_months file (the finishing session owns the exercise's final form). Ask: which teaching
-sentence survives, and which has to be rephrased.
+LIVE, 10 minutes. The lesson: a cohort table's grain changes the numbers and keeps the method.
+Name the grain on every chart, as the unit is named on every funnel.
+Transition: Zomato's own number.
 ```
 
 ---
 
-## S5. Where the mix move sits in the formula
-*Which term is doing the heavy lifting in a 55 to 61 lift?*
-
-For a blended retention $B = \frac{\sum_c N_c r_c}{\sum_c N_c}$, four moves can lift it:
-
-| Move | What the room would see |
-|---|---|
-| Each $r_c$ rises (behaviour improves) | Every triangle cell goes up |
-| The weak-$r_c$ cohorts' $N_c$ shrink (weaning) | Those rows disappear; the remaining average rises |
-| New cohorts have higher $r_c$ (better acquisition) | Later rows start higher than earlier ones |
-| The mix shifts toward higher-$r_c$ cohorts | Earlier rows unchanged; later rows pull the blend |
-
-The dashboard shows $B$, never which lever moved. The triangle shows every row that moved.
+## SECTION 9: Did Gold cause the orders?
+*Zomato says Gold members order about 60 percent more after joining; what comparison would let anyone say Gold caused it?*
 
 ```notes
-LIVE, 20 minutes. This is the mathematical close. The formula is the shorthand for what the hand
-table and the triangle already showed. Then the self-selection story on Zomato.
+LIVE, 25 minutes. Kept descriptive: no causal method is taught. Styles: Veritasium (the
+misconception first), the case method.
+Transition: the number.
 ```
 
 ---
 
-## SECTION 3: Zomato's 60 percent rise, kept descriptive
-*A frequency rise after a decision is self-selection, not causation.*
+## S7. Gold members order about 60 percent more after joining
+*What does Zomato's own number say, and what does it leave out?*
 
----
+```mermaid
+flowchart LR
+    A["<b>a member joins Gold</b><br/>in a month she expects<br/>to order more"] --> B["<b>her orders rise</b><br/>about 60 percent on average<br/>(Zomato's letter, 2023)"]
+    C["<b>a similar customer who did not join</b><br/>what did her orders do?"] -.-> B
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class A,B known
+    class C bad
+```
 
-## S6. Gold's 60 percent frequency rise, carefully read.
-*What self-selection question would the row ask here?*
-
-The published Zomato letter says order frequency rose about 60 percent on average after a user joined Gold (Th4, verified 12 October 2026). The teaching read is kept descriptive: the number is real and it does not say Gold caused the rise.
-
-| What the number says | What it does not say |
-|---|---|
-| Frequency after joining is higher than frequency before | The joining caused the rise |
-| The joined cohort is self-selected on expected ordering | The marginal joiner behaves like the inframarginal one |
-| A matched non-joiner comparison would say more | Nothing is said about non-joiners' trajectories |
+Zomato's shareholder letter of 19 May 2023 (checked 12 October 2026) says Gold reached 1.8 million members in Q4 FY23, its members' orders were about 30 percent of food delivery GOV in March 2023, and their order frequency rose about 60 percent after joining. The number describes members; it does not show what Gold caused.
 
 ```notes
-LIVE, 15 minutes. Walk the two columns side by side. The hire-grade candidate names the matched
-comparison as the step that would move the number from a description to a claim. No causal
-inference content past this slide; the IITGN block owns it when it runs.
+Source:
+https://www.bseindia.com/xml-data/corpfiling/AttachHis/42b3bf3b-1edb-4da7-849a-87ca9da27ff8.pdf (checked 12 October 2026)
+LIVE, 10 minutes. Members choose to join when they expect to order more, so before and after
+mixes the choice with the effect. Ask what a fair comparison would be.
+Transition: the comparisons.
 ```
 
 ---
 
-## S7. The second transcript: the app team disputes
-*How does a hire-grade response answer a dispute that is partly right?*
+## S8. Three comparisons that would say more
+*Which comparison would separate what Gold did from who chose Gold?*
 
-| Beat | What the app team says | What a hire-grade response does |
+| Comparison | What it controls for | What it still misses |
 |---|---|---|
-| Opening | Overall conversion is flat; the stage is fine | Concede that overall is flat; name the three axes it averages over |
-| First evidence | A single chart of overall conversion | Bring the split by platform, membership and date |
-| Second evidence | The stage worked before and works now | Compare pre-release and post-release on Android alone |
-| Close | Everything looks the same | Name the segment, the stage and the date; propose the fix |
+| Matched customers who did not join | Customers who ordered alike before | Why one joined and the other did not |
+| The trend before joining | A member already ordering more each month | A planned change (a move, a new job) |
+| A holdout: Gold offered to some, withheld from others | Who chose to join | The cost of withholding the offer |
 
 ```notes
-LIVE, 10 minutes. This is the row's [D] anchor. The teaching move is the case method's: argue
-from the evidence, concede what is true, bring the chart that answers the question asked.
+LIVE, 15 minutes. Groups rank the three for what Zomato could run. Keep it at this depth: how to
+estimate the effect belongs to later weeks.
+Transition: the second transcript.
 ```
 
 ---
 
-## SECTION 4: Close
-*What the fallback hour taught, in one sentence.*
+## SECTION 10: Is the app team's stage fine?
+*The app team says the funnel stage the room blamed is fine: how does a strong candidate answer a dispute that is partly right?*
+
+```notes
+LIVE, 20 minutes. The row's [D] anchor: the app team says the funnel stage you blamed is fine;
+what evidence do you bring to the meeting? Pairs read and score it.
+Transition: the transcript.
+```
 
 ---
 
-## S8. The sentence that closes the fallback hour
-*What does the hour teach that the main day did not already carry?*
+## S9. The dispute, answered with the split
+*What does a weak answer bring to the meeting, and what does a hire-grade one bring?*
 
-A blended lift and a blended fall can both be the mix shifting rather than any member's behaviour changing. The chart that separates them is the cohort triangle with its denominator named.
-
-Nothing in this hour touched survival analysis, log-rank tests or hazard functions. The IITGN block owns those whenever it runs.
+| Beat | A weak answer | A hire-grade answer |
+|---|---|---|
+| Opening | "Your release broke checkout." | "You're right that checkout starts held at 80 percent; I'd like to show the next step." |
+| Evidence | Overall conversion before and after | Checkout start to order, 72.5 to 55, members on Android only, from the release week |
+| The comparators | None | iOS members 57 to 56; non-members on Android 52 to 51 |
+| What would change my mind | Nothing | "If the event the release renamed is mapped wrong, I'd rerun it on your mapping." |
 
 ```notes
-LIVE, 2 minutes. Say the sentence. Return control to the main afternoon slot if the block is not
-coming. If the block arrives late, close here and start W4-3 cleanly.
+LIVE, 15 minutes. Pairs score the hire-grade side on the scorecard. The move is Tuesday's: restate,
+answer from the evidence, concede what is true, say what would change your mind.
+Transition: the close.
+```
+
+---
+
+## S10. The block in one sentence
+*What did the fallback block add to the day?*
+
+A retention number can rise or hold because of who is counted, with nobody's behaviour changing: the cohort table with its denominator and its grain named is what tells the two apart.
+
+```notes
+LIVE, 2 minutes. Nothing here touched survival curves, censoring or tests between curves; the
+faculty block (tentative) takes them whenever it runs. Then return to the Kahoot if it has not run.
+Transition: end of the block.
 ```

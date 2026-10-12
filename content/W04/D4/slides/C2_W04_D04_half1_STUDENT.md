@@ -1,468 +1,837 @@
-# Zomato Gold in Chennai: who is leaving, and at which step?
+# Who is leaving Zomato Gold in Chennai, and at which step?
 
-Week 4, Day 4. Morning.
+Week 4, Day 4. Half one.
 
-Kicker: WEEK 4  ·  THURSDAY  ·  MORNING
-Quote: Our dashboard says 38 percent retention and holds there. Every cohort chart I draw tells me the opposite. And the app team says their new checkout works. Which number should I believe?
-Who: The head of Gold, Chennai, Zomato, to the analyst. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
+Header: WEEK 4  ·  DAY 4  ·  ZOMATO GOLD, CHENNAI, AN ILLUSTRATIVE CASE
 
-```notes
-LIVE, one minute. Read the ticket aloud and leave it up while the room settles. Say the label line
-so no learner leaves thinking Zomato did this. The day climbs one case in three chapters: who
-entered when, which stage owns the loss, and what fixes first. The twelve rows are the morning
-anchor; the full data finishes each question a second way; the lab after lunch re-runs the method
-on Kalpa.
-```
+## S1. The ticket: a flat 38 and a release on Android
+*What does the ticket say, with its numbers, its data and its ask?*
 
----
-
-## S1. The ticket, in the register the city desk uses
-*What is on the table, with its numbers before and after and the data the analyst has?*
-
-| Line | What it says |
+| Measure | Value |
 |---|---|
-| Company and surface | Zomato Gold, Chennai, the membership and the app's order flow |
-| Metric | Blended retention, member-months active over members signed up before the reporting month |
-| Before and after | Flat at 38 percent for June, July, August and September 2026 (reporting) |
-| Cohort month-one, Jan to Aug | 58, 56, 55, 53, 52, 50, 49, 31 percent, falling each month |
-| Checkout release | Monday 14 September 2026, Android, members' add-to-cart to order 58 to 44 |
-| iOS and non-members, same window | iOS 57 to 56, non-members on Android 52 to 51 |
-| Data in hand | members (60,000), member_months (one row per member per month), events (September in full) |
-| The ask, due Friday | Is it a cohort problem or an everyone problem; which funnel stage owns the loss; what to fix first |
+| Month-two retention on the dashboard, June to September 2026 | 38 percent each month |
+| Month one by cohort, January to August | 58, 56, 55, 53, 52, 50, 49, 31 percent |
+| The August cohort, joined in a sale week | 13,000 members, 2.6 times the 5,000 a month of January to July |
+| Members on Android, add-to-cart to order, before and after 14 September | 58 to 44 percent |
+| Members on iOS; non-members on Android | 57 to 56 percent; 52 to 51 percent |
+| Search to menu view per session; menu view to add-to-cart per session and per member, September | 118 percent; 34 and 61 percent |
+
+**Data.** `members` (53,089 rows: signup date, cohort month, signup channel, zone), `member_months` (orders per member per month since joining), `events` (every app session in August and September, one row per stage, with platform and checkout version; Gold members and 4,000 non-members for comparison). **The ask, due Friday.** Cohort problem or everyone problem; which funnel stage owns the loss; what to fix first, with the evidence. **Known caveats.** The home carousel opens a menu without a search; sessions and members are different units; the August cohort was bought on a discount; the release renamed one Android event, which the app team has mapped.
+
+**Illustrative case.** The company is real; the situation and the data are synthetic, built for this class.
 
 ```notes
-LIVE, 3 minutes. Each line of the ticket is a fact the deck tracks all morning. The eye should
-catch the August 31: a cohort four times smaller than its neighbours could be ignored, a cohort
-2.6 times bigger cannot. Then the thread.
+LIVE, 4 minutes. Say the label line aloud first: the company is real, the situation and the data are
+synthetic. The morning climbs three chapters: who joined when (counted by hand), what the
+dashboard's 38 is made of (all 53,089 members), and which step owns the loss; the afternoon's first
+60 minutes make the fix-first call and read the interview.
+Read the table top to bottom. Define month-two retention in one breath: the share
+of members two or more months past their signup month who ordered in the month. Point at the gap:
+the dashboard is flat, every cohort's month one is lower than the one before, and August's 31 sits
+far below. Ask which number the membership lead would put on Monday's slide; most say the 38.
+Transition: where Thursday sits in the week.
 ```
 
 ---
 
 ## S2. The week map, Thursday lit
-*Where today sits, and the four companies that came before and will come after.*
+*Where does today sit, and what did the days before it find?*
 
 ```mermaid
 flowchart TD
     C["<b>What does an analyst do with one number?</b>"]
-    M["<b>Mon · Uber Hyderabad</b><br/>trips per online hour, 1.9 to 1.6"]
-    T["<b>Tue · Uber Hyderabad</b><br/>per hour, per driver-week, per trip"]
-    W["<b>Wed · Swiggy Instamart Pune</b><br/>support, confidence, lift"]
-    H["<b>Thu · Zomato Gold Chennai</b><br/>cohorts, funnels, denominators"]
-    F["<b>Fri · Flipkart Lucknow</b><br/>baselines, hold-out, cost"]
+    M["<b>Mon · Uber, Hyderabad</b><br/>trips per online hour 1.90 to 1.58<br/>pay for trips"]
+    T["<b>Tue · Uber, Hyderabad</b><br/>Rs 314 to Rs 260 per online hour<br/>one slide, one denominator"]
+    W["<b>Wed · Swiggy Instamart, Pune</b><br/>bread to milk: confidence 0.74, lift 1.04<br/>beyond chance"]
+    H["<b>Thu · Zomato Gold, Chennai</b><br/>a flat 38 over falling cohorts<br/>beyond the blend"]
+    F["<b>Fri · Flipkart, Lucknow</b><br/>baselines and the hold-out"]
     S["<b>Sat · the method moves company</b>"]
-    C --> M
-    C --> T
+    K["<b>Kalpa Retail, the lab</b><br/>the Retail-Plus tier"]
+    C --> M --> T
     C --> W
     C --> H
     C --> F
-    H --> S
+    H --> K
+    T --> S
+    F --> S
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    classDef kalpa fill:#FFF7E6,stroke:#C98A00,color:#5C3D00
     class C,M,T,W known
     class H lit
     class F,S unknown
+    class K kalpa
 ```
 
 ```notes
-LIVE, one minute. Monday to Wednesday are complete and their numbers sit on the nodes. Today lights
-Zomato Gold. Friday is Flipkart's forecast and stays dashed.
+LIVE, 1 minute. Monday paid for trips, Tuesday put one denominator on one slide, Wednesday judged
+a pair against chance. Thursday judges a cohort against the blend. Friday stays dashed. The
+explorer's home screen draws the same map (day control: Thu).
+Transition: where today ends.
 ```
 
 ---
 
-## S3. Three questions carry today, one chapter each
-*Who entered when, which stage owns the loss, what gets fixed first?*
+## S3. Where today ends: two problems, two fixes
+*What sentence will the membership lead carry out of the room?*
 
-```timeline
-label: Chapter 1 | title: Who entered when, and what happens to each group month by month? | body: Twelve members, three signup months, counted by hand. The paradox the dashboard misses.
-label: Chapter 2 | title: What is every cohort's curve on 60,000 members, and what is the blend made of? | body: One pivot_table, every curve drawn, the blend decomposed into cohort sizes and rates.
-label: Chapter 3 | title: Which stage owns the loss, on which denominator, and for whom? | body: The funnel in two units, the artefact above 100 percent, the release split by platform and date. | tone: dark
-```
+> "It is both, and they need different fixes. The dashboard reads 38 because it averages cohorts on a slow slide and has not yet counted the 13,000-member sale cohort, whose sale-week members kept 20 percent in month one; when they enter in October it drops to about 33. The order loss sits in one step, checkout start to order placed, for members on Android since the 14 September release: 72.5 to 55 percent, about 1,317 orders a week. Fix the Android checkout first, and judge the sale cohort on its own curve before buying another one."
+
+Each number in that sentence is earned in order: by hand on twelve members, on all 53,089, then on 1,386,235 app events.
 
 ```notes
-LIVE, 2 minutes. Three chapters, each one level up: L1 by hand, L2 on all 60,000, L3 the funnel.
-Afternoon owns L4 to L6: the caveats, the fix-first call, and the transcript. Then the hypothesis
-board opens before any data.
+LIVE, 1 minute. Read it once and move on; nothing to write. The room earns each clause in order.
+Transition: the hypothesis board, before any data opens.
 ```
 
 ---
 
-## S4. The hypothesis board, before any data opens
-*Which cause does the blended-flat-while-cohorts-decline story point to?*
+## S4. Five causes on the board, each with its test
+*Before any chart, which causes could explain the ticket, and what would test each?*
 
-| Cause the room may list | Test that would settle it |
+```mermaid
+flowchart LR
+    A["<b>1. Tracking</b><br/>did the count change?"] --> B["<b>2. Definition</b><br/>what is counted?"]
+    B --> C["<b>3. Cohorts</b><br/>are new members<br/>weaker?"]
+    C --> D["<b>4. Everyone</b><br/>did all change<br/>at once?"]
+    D --> E["<b>5. A stage</b><br/>which step<br/>lost members?"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class A,B,C,D,E known
+```
+
+| Cause | The test that settles it |
 |---|---|
-| A cohort problem: the sale cohort is dragging the average | Decompose the blend by cohort and look at the August row |
-| An everyone problem: a product change hurt every active member | Look at every cohort's curve across the same calendar months |
-| A tracking change: the dashboard measures a different thing | Compare pre and post the release, with the renamed events mapped |
-| A funnel stage: one step shed users after a release | Build the funnel per stage, per platform, per date |
-| A denominator artefact: the stage's unit changed | Count the stage per session and per member side by side |
+| 1. Tracking | The app team's event mapping, and the release date moved a week either way |
+| 2. Definition | The dashboard's written rule: who is counted, from which month |
+| 3. Cohorts | The cohort table, each signup month at each age |
+| 4. Everyone | Every cohort in the same calendar month, split by platform |
+| 5. A stage | Each step over the step before, by unit, platform and date |
 
 ```notes
-LIVE, 4 minutes. The room writes its ordered list before any chart arrives, with the test each
-cause needs. This is the Yammer habit from R1: start from a hypothesis and ask what would prove it
-wrong. The reveals in chapters 1 to 3 strike or confirm each line.
+LIVE, 4 minutes. The groups write their own ordered list first, with the test each cause needs,
+on the hypothesis board template; then show this ladder. It runs in the order a careful analyst
+checks: the count, the rule, the cohorts, everyone, then the stage. The order is Aced's (T2): rule
+out data issues first, then the definition, then segments. Each chapter's reveal strikes or confirms
+a line; keep the board up all morning.
+Transition: chapter 1.
 ```
 
 ---
 
 ## SECTION 1: Who entered when?
-*The twelve members, counted by hand, before any curve on sixty thousand.*
-
----
-
-## S5. Who entered when, and what happens month by month.
-*What does the dashboard's 38 percent stand for, and what is in the twelve rows?*
-
-**Who needs the answer.** The head of Gold, who signs the fix-first call.
-
-**The questions on the way.** What is a cohort, how is retention counted per member, what does the blend average over.
+*Why can a flat average hide falling groups, and what does each group keep month by month, counted by hand on twelve members before any code?*
 
 ```notes
-LIVE, 3 minutes. Define cohort before counting: a cohort is the set of members whose membership
-started in the same calendar month. Retention in month k means she placed at least one order in
-the k-th calendar month after her signup month. The blend for a reporting month is the share of
-members signed up before that month who placed at least one order in it. Then the toy.
+LIVE, 50 minutes. Laptops closed until the end of the chapter; the twelve-row card is on every
+table. Styles: Brilliant (a question before the explanation), StatQuest (tiny counts aloud),
+Veritasium (predict, then reveal), the case method (Blinkit's and Swiggy's own cohort charts).
+Explorer scenes Th2 and Th1. Notebook 01 reproduces every count.
+Transition: the chapter's questions.
 ```
 
 ---
 
-## S6. Two coaching batches say what the blend forgets
-*If one batch loses members and another loses more, what does the overall average do?*
+## S5. Chapter 1: four questions, one card
+*Who needs the answer, and which smaller questions lead to it?*
 
-![Two coaching batches, counted (invented, R1)](../whiteboards/C2_W04_D04_toy_batches_STUDENT.png)
+**Who needs the answer.** The membership lead, who must say on Friday whether Gold has a cohort problem or an everyone problem. A wrong call sends the fix to the wrong team.
 
-Ten members join a coaching centre in June, ten in July. Six from June and four from July come back in month two. Each batch's month-two rate is a number (0.60 and 0.40). The overall rate, 10 of 20, is 0.50 and names neither.
+```timeline
+label: 1 | title: Why can one average hide two groups? | body: Two coaching batches, ten members each, invented
+label: 2 | title: What does each group keep, month by month? | body: Twelve real members, counted by age
+label: 3 | title: What does the dashboard count? | body: The same twelve, the dashboard's way
+label: 4 | title: How does a big new group hold an average up? | body: Two more batches, then a real company's chart | tone: dark
+```
 
 ```notes
-LIVE, 3 minutes. Say the toy aloud with the picture. Draw out the point: averaging across batches
-hides what each batch did. This is the shape the full data will carry at scale.
+LIVE, 2 minutes. Read the four questions; each is answered with a count before the next is asked.
+Transition: the first toy.
 ```
 
 ---
 
-## S7. Question: predict the hand count
-*The twelve members, three cohorts, each has an order flag per month since signup: May 3 of 4 in month one, June 2 of 3, August 2 of 5. September is month four for May, month three for June, month one for August. What is the overall share who placed an order in September?*
+## S6. Two batches, one average that names neither
+*Why can an average over two groups hide what each did?*
 
-```stats
-value: a) 3 of 12 | label: 25 percent | note: a plausible wrong number
-value: b) 6 of 12 | label: 50 percent | note: a plausible wrong number
-value: c) 9 of 12 | label: 75 percent | note: a plausible wrong number
-```
+![Two coaching batches in month two (invented)](../whiteboards/C2_W04_D04_toy_batches_STUDENT.png)
 
-Four of each option, letter it before the reveal.
+A coaching centre (invented numbers) takes 10 students in June and 10 in July. In each batch's second month, 6 of June's and 4 of July's come back: 60 and 40 percent. Together, 10 of 20 came back, 50 percent, which is neither batch's rate.
 
 ```notes
-LIVE, 3 minutes. Vote in pairs before the next slide shows the count. Expect a 25 answer from
-anyone who conflates the m1 count with the September reading. The reveal is the next slide.
+LIVE, 4 minutes. Count the dots aloud: six, four, ten of twenty. Ask: if the centre only ever
+printed "50 percent", which batch would it worry about? Neither, because the average names neither.
+The toy is invented (R1); say so.
+Transition: twelve real members of the case.
 ```
 
 ---
 
-## S8. Answer: the twelve rows counted by hand
-*How many of the twelve placed an order in September, cohort by cohort?*
+## S7. The card: twelve real members, four months
+*Which of the twelve ordered in each month after joining?*
 
-| Cohort | Members | Month one | Month two | Month three | Month four (September) |
-|---|---|---|---|---|---|
-| May 2026 | 4 | 3 of 4 ordered | 2 of 4 | 1 of 4 | 2 of 4 |
-| June 2026 | 3 | 2 of 3 | 1 of 3 | 2 of 3 (September) | not reached |
-| August 2026 | 5 | 2 of 5 (September) | not reached | not reached | not reached |
-| All twelve | 12 | | | | **6 of 12 = 0.50** |
+| Member | Joined | Channel | Jun | Jul | Aug | Sep |
+|---|---|---|---|---|---|---|
+| ZG20844 | May | organic | 1 | 1 | 1 | 1 |
+| ZG21052 | May | organic | 1 | 1 | 0 | 0 |
+| ZG22010 | May | organic | 1 | 0 | 0 | 0 |
+| ZG22634 | May | organic | 0 | 0 | 0 | 0 |
+| ZG25312 | Jun | organic | joined | 1 | 1 | 1 |
+| ZG27475 | Jun | organic | joined | 1 | 0 | 0 |
+| ZG28603 | Jun | organic | joined | 0 | 0 | 0 |
+| ZG38681 | Aug | sale | | | joined | 1 |
+| ZG40539 to ZG42328 | Aug | sale (four) | | | joined | 0 |
 
-The twelve-row blend for September is 6 of 12, 0.50. The dashboard's 38 percent is five points off even here, and the shape underneath is three cohorts moving at three different speeds.
+A 1 means she placed at least one order that month. **Month one** is the first full calendar month after joining, so May's is June and August's is September; the joining month is month zero and is never counted.
 
 ```notes
-LIVE, 5 minutes. Walk every row aloud. The point is that the hand count already shows the mix:
-Augusts recent and low, Mays older and still returning. The 0.50 on twelve rows is the first
-version of the September number; the next chapter does it on 60,000.
+LIVE, 5 minutes. Hand out the card if it is not on the tables. Read one row aloud: ZG21052 joined
+in May, ordered in June and July, then stopped. The last line folds four sale-week members who did
+not order in September. Ask each table to rewrite the card by months since joining instead of by
+calendar month before the next slide.
+Transition: the prediction.
 ```
 
 ---
 
-## S9. The dashboard versus every cohort's own curve
-*What does the Chennai dashboard print, and what do the Monday-morning cohort rates say?*
+## S8. Predict: which group keeps the most in month one?
+*Counted by months since joining, which group keeps the largest share in its own month one?*
 
-| Reporting month | Dashboard says, blended | Each cohort's month-one, in order |
-|---|---|---|
-| June | 38 percent | Jan 58, Feb 56, Mar 55, Apr 53, May 52 |
-| July | 38 percent | ...through June at 50 |
-| August | 38 percent | ...through July at 49 |
-| September | 38 percent | August cohort at 31, from the sale week |
+a) The four May members
 
-The dashboard sits still across four reporting months. Every cohort row drops. Each new cohort's month-one is lower than the one before. The August cohort is 2.6 times a normal cohort and the worst.
+b) The three June members
+
+c) The five August sale-week members
+
+d) All three keep the same share
 
 ```notes
-LIVE, 3 minutes. The two columns look like different stories, which is the point. The dashboard
-is right about what it computes; it is the wrong number to act on. Then why the dashboard looks
-flat.
+LIVE, 3 minutes. Vote first, in writing, then pairs argue for one minute and vote again (peer
+instruction). Expect some c from tables that read September's column, where August's month one
+sits beside May's month four.
+Transition: the count.
 ```
 
 ---
 
-## S10. Why a blend can stand still while every batch shrinks
-*What happens to the average when the mix tilts toward a bigger, younger batch?*
+## S9. Answer: May 3 of 4, June 2 of 3, sale 1 of 5
+*What does each group keep at each age, and what does that show?*
 
-![A batch falls, a bigger batch enters, blend holds (invented, R1)](../whiteboards/C2_W04_D04_toy_blend_STUDENT.png)
+| Joined | Month one | Month two | Month three | Month four |
+|---|---|---|---|---|
+| May (4) | 3 of 4 | 2 of 4 | 1 of 4 | 1 of 4 |
+| June (3) | 2 of 3 | 1 of 3 | 1 of 3 | |
+| August sale week (5) | 1 of 5 | | | |
 
-Last month, batch A had 100 members and 50 ordered: a 50 percent rate. This month batch A has fallen to 40 who ordered. A fresh batch B of 400 joins and 210 of them order: a 52.5 percent rate on batch B. The blend across 500 members is still 250 who ordered, 50 percent, while A has collapsed. Mix, not stability, holds the number.
+The answer is a. Each group falls as it ages, and each later group starts lower: 75, 67 and then 20 percent in month one. A **cohort** is a group that joined in the same month; fixing the entry moment is what makes the three comparable at all.
 
 ```notes
-LIVE, 5 minutes. Say the numbers out loud with the picture. The teaching move is StatQuest: tiny
-numbers you can hold in your head, then the full data on the next chapter. Chapter 1 closes on
-one claim: the dashboard's 38 is a mix, not a floor.
+LIVE, 6 minutes. Count May's row aloud: three ordered in month one, two in month two, one in three
+and four. Then June's, then August's. Say the definition of a cohort only now, after the room has
+built one. Watch for anyone comparing groups in the same calendar month: in September, the sale
+member's month one sits beside May's month four, which is why the age column, not the calendar
+column, is the fair comparison.
+Transition: what the dashboard does with the same card.
 ```
 
 ---
 
-## SECTION 2: What is every cohort's curve?
-*Sixty thousand members, nine cohorts, one picture side by side.*
+## S10. Predict: what does the dashboard's way read?
+*The dashboard counts a member from her second month after joining. On the card, what does it read in August and September?*
+
+a) A fall from August to September, because the sale-week members ordered so little
+
+b) 2 of 7 in both months, with the five sale-week members outside the count
+
+c) A rise, because new members joined
+
+d) 3 of 12 in both months
+
+```notes
+LIVE, 3 minutes. Remind the rule: in a reporting month, count every member two or more months past
+her joining month, and ask what share ordered. Vote, argue, vote again.
+Transition: the count, both ways.
+```
 
 ---
 
-## S11. One pivot_table turns member rows into the triangle
-*How is retention measured per cohort, and what shape does the full triangle take?*
+## S11. Answer: 2 of 7 in August, 2 of 7 in September
+*What does the card say counted the dashboard's way, and counted for everyone?*
+
+| Reporting month | July | August | September |
+|---|---|---|---|
+| The dashboard's way: members two or more months past joining | 2 of 4 | 2 of 7 | 2 of 7 |
+| Everyone who joined before the month | 4 of 7 | 2 of 7 | 3 of 12 |
+
+The answer is b. The dashboard's way did not move from August to September, though five members joined in the sale week and four of them did not order: they are outside its count until October. Counted for everyone, September reads 3 of 12.
+
+```notes
+LIVE, 5 minutes. Ring the two 2-of-7 cells. Then the August column of the sale-week members: they
+joined in August, so August is their month zero, and September is their month one, which the
+dashboard skips. Chapter 2 finds the same two readings on all 53,089 members.
+Transition: why a big new group holds an average up.
+```
+
+---
+
+## S12. Question: does the blend rise, fall or hold?
+*Batch A of 100 stood at 50 percent; now A is at 40 and a new batch B of 400 arrives at 52.5 percent. What does the blend do (invented)?*
+
+a) It rises, because batch B is bigger
+
+b) It falls, because batch A fell
+
+c) It holds at 50 percent
+
+d) It cannot be read without more months
+
+```notes
+LIVE, 3 minutes. Explorer scene Th2 lets a learner slide batch B's size; on the projector, vote
+first. Expect b from most of the room.
+Transition: the reveal.
+```
+
+---
+
+## S13. Answer: it holds at 50 while batch A falls
+*How can a blend stand still while every batch shrinks?*
+
+![A flat average while batch A falls (invented)](../whiteboards/C2_W04_D04_toy_blend_STUDENT.png)
+
+The answer is c: (100 × 0.40 + 400 × 0.525) / 500 = 250 / 500 = 50 percent. A blend is an average weighted by size: blend = sum of (cohort size × cohort rate) / sum of cohort sizes. A large young batch at a high early rate props it up while every batch falls with age.
+
+```notes
+LIVE, 5 minutes. Read the two stacks, then the formula last, as the shorthand for what the bars
+already showed (3Blue1Brown). Next month batch B ages too, and unless another large batch arrives,
+the blend falls. Ask: on the Gold dashboard, what plays the part of batch B?
+Transition: a real company that publishes its cohorts.
+```
+
+---
+
+## S14. Blinkit and Swiggy publish cohorts, not one blend
+*How do two Indian companies report retention, and what does each figure count?*
+
+```cards
+icon: chart-line | eyebrow: Eternal, Blinkit | title: 46 percent of customers, 150 percent of spend | body: Q4 retention averaged 46 percent across cohorts and every successive cohort improved; NOV retention, the net value of a cohort's orders against its first quarter, was 150 percent at Q4 and 279 percent at Q12, because the customers who stay spend more | tone: light
+icon: table | eyebrow: Swiggy Instamart | title: A cohort table, indexed to one cohort | body: Spend by cohort indexed to the Q4 FY24 cohort's first quarter; Swiggy says it weaned away users with low expected lifetime value, so ask whether a column is per acquired user or per user who stayed | tone: light
+```
+
+Sources: Eternal's Q1 FY27 shareholder letter of 22 July 2026 and Swiggy's Q2 FY26 shareholder letter, each checked 12 October 2026.
+
+```notes
+Sources:
+https://www.eternal.com/blog/q1fy27/ (checked 12 October 2026)
+https://www.swiggy.com/corporate/wp-content/uploads/2025/10/Q2-FY2026-Shareholder-letter.pdf (checked 12 October 2026)
+LIVE, 6 minutes. Two decisions to read. Eternal shows the customer number and the spend number side
+by side, and they disagree by a factor of three because the denominators differ: 150 percent is
+possible because survivors spend more. Swiggy weaned away weak users, which lifts every later column
+of its table with no change in anyone's behaviour. Ask: before trusting either chart, what do you
+ask for? The denominator.
+Transition: the chapter's close.
+```
+
+---
+
+## S15. Chapter 1 close: fix the entry moment first
+*What has the card answered, and what is still open?*
+
+```mermaid
+flowchart LR
+    A["<b>Where are we losing people?</b><br/>anchor: a coaching centre's batches"] --> Q1["<b>Who entered when?</b><br/>May 3 of 4 · June 2 of 3 · sale 1 of 5"]
+    Q1 --> Q2["<b>Who is still here?</b><br/>chapter 2"]
+    Q2 --> Q3["<b>Where in the funnel?</b><br/>chapter 3"]
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class A known
+    class Q1 lit
+    class Q2,Q3 unknown
+```
+
+**The rule.** Before reading any retention number, ask which members it counts and from which month: a group that joined in a sale and a group that joined last spring are different groups, and one average over both names neither.
+
+**In the interview.** [F] Blended retention is flat while every cohort declines; how? The mix changes under the average, and the average counts who it counts.
+
+```notes
+LIVE, 3 minutes. Read the board's first region; Q2 and Q3 stay dashed. Strike or confirm on the
+hypothesis board: "a cohort problem" is now likely; the test was the card.
+Transition: chapter 2 and the full data.
+```
+
+---
+
+## SECTION 2: What is the 38 made of?
+*What does every cohort's curve look like on 53,089 members, and how can the dashboard stay at 38 while each one falls?*
+
+```notes
+LIVE, 45 minutes. Laptops open; notebook 02. Styles: Krish Naik (one pivot_table, line by line),
+Veritasium (two predictions), 3Blue1Brown (the triangle, then the formula last), StatQuest (the
+weighted average on seven numbers). Explorer scene Th1.
+Transition: the chapter's questions.
+```
+
+---
+
+## S16. Chapter 2: from twelve members to 53,089
+*Who needs the answer, and which smaller questions lead to it?*
+
+**Who needs the answer.** The membership lead, about to report "nothing changed" because the number is flat. If the flat number hides falling cohorts and a weak sale cohort, the fix waits a month too long.
+
+```timeline
+label: 1 | title: What does each cohort keep, month by month? | body: One pivot_table on member_months
+label: 2 | title: What does the dashboard print, counted directly? | body: June to September
+label: 3 | title: What is September's 38 made of? | body: The weighted average, cohort by cohort
+label: 4 | title: What is outside the count? | body: The sale cohort, and what it will do in October | tone: dark
+```
+
+```notes
+LIVE, 2 minutes. Read the four questions. Say what chapter 1 found, with its numbers, so the room
+carries it in: each group fell with age, the sale-week members kept 1 of 5, and the dashboard's way
+read 2 of 7 two months running.
+Transition: the code that builds the table.
+```
+
+---
+
+## S17. Predict: which way does each cohort's row run?
+*Once age is computed, one pivot_table builds the table. After month one, which way does each row run?*
 
 ```python
-triangle = (member_months
-            .assign(k=lambda d: d["months_since_signup"])
-            .query("k >= 1")
-            .pivot_table(index="cohort_month",
-                         columns="k",
-                         values="orders",
-                         aggfunc="mean"))
+to_n = lambda s: s.str[:4].astype(int) * 12 + s.str[5:].astype(int)
+mm["age"] = to_n(mm["month"]) - to_n(mm["cohort_month"])   # month zero is the joining month
+mm["active"] = mm["orders"] > 0
+tri = mm[mm["age"] >= 1].pivot_table(index="cohort_month", columns="age",
+                                     values="active", aggfunc="mean")
 ```
 
-A cohort month on the row, a month-since-signup on the column, each cell the share of that cohort who ordered that many months later. The row drops left to right as members peel off; the column drops top to bottom because each later cohort starts lower.
+a) Up, as members settle into a habit
+
+b) Flat, which is why the dashboard is flat
+
+c) Down: a big step after month one, then a slow slide
+
+d) Up, then down
 
 ```notes
-LIVE, 3 minutes. Each cell is a mean of zero-or-one orders flags, so the value is a share. The
-code is the full chapter in one call; the picture on the next slide shows what it draws.
+LIVE, 5 minutes. Read the code a line at a time: age as the gap in months, active as at least one
+order, one pivot_table with cohorts on the rows and ages on the columns; each cell is a mean of
+True and False, so it is a share. Vote before the cell runs.
+Transition: the table.
 ```
 
 ---
 
-## S12. The triangle, from the full sixty thousand
-*What does every cohort's curve look like on all 60,000 members?*
+## S18. Answer: every row falls, and each starts lower
+*What does the full table show, cohort by cohort?*
 
-![Retention by cohort and age, Zomato Gold, Chennai](../whiteboards/C2_W04_D04_cohort_triangle_STUDENT.png)
+![Every cohort falls with age, and each new cohort starts lower](../whiteboards/C2_W04_D04_cohort_triangle_STUDENT.png)
 
-Each row is a cohort, each column is months since signup. Every row falls across its observed ages. The August row is the lowest at month one and the biggest row behind it, which chapter 1 already named on the twelve rows.
+The answer is c. Each cohort drops from its month one to about 38.5 percent in month two and slides about 0.3 points a month after. Month one falls from 58 percent for January to 49 for July, and the 13,000-member August cohort sits at 31.
 
 ```notes
-LIVE, 4 minutes. Walk one row aloud: Jan at 58, drops to the floor by month four, floor near 37
-across months 4 to 8. Walk one column: at month one, cohorts step from 58 down to 31. Then the
-GIF, or still if the GIF cannot play: the triangle filling, the blend barely moving.
+LIVE, 5 minutes. Walk one row (January: 58, then 38.7 and down to 36.9 by month eight) and one
+column (month one: 58 down to 49, then 31). If the room wants the motion, open
+whiteboards/C2_W04_D04_cohort_fill_STUDENT.gif, which fills the triangle one month at a time with
+the dashboard drawn beside it, or explorer scene Th1, which adds a "next month" button.
+Transition: what the dashboard prints over the same months.
 ```
 
 ---
 
-## S13. The triangle fills; the blend barely moves
-*As each cohort row fills in, what does the overall average do?*
+## S19. Predict: what does the dashboard print?
+*With every cohort falling, what does month-two retention print from June to September?*
 
-![The triangle, filled](../whiteboards/C2_W04_D04_cohort_triangle_fill_last_STUDENT.png)
+a) A fall of two or three points a month
 
-Each new cohort adds a row below. The dashboard's blended number sits near 0.38 across every reporting month, drifting only a few points even as the August cohort pulls it down in September. The flat line is the mix at work, not the cohorts holding steady.
+b) About 38 percent every month
+
+c) A rise, because new cohorts keep joining
+
+d) Flat until September, then a drop when the sale cohort arrives
 
 ```notes
-LIVE, 2 minutes. The still frame is here on the deck; the fill GIF plays on the explorer scene
-Th1 if the room wants the animation. Then the predict step before the decomposition.
+LIVE, 2 minutes. Vote. The d voters are thinking well: they expect the sale cohort to show up. Ask
+them to hold that thought for four slides.
+Transition: the direct count.
 ```
 
 ---
 
-## S14. Question: predict the September blend
-*Jan 2026 at month 8, Feb at month 7, Mar at month 6, Apr at month 5, May at month 4, Jun at month 3, Jul at month 2 (five thousand each). August at month 1, with thirteen thousand members. The seven older cohorts retain near 0.37 at their ages. The August cohort retains at 0.31. What is the overall share?*
+## S20. Answer: 38.2, 38.0, 37.9, 37.8 percent
+*What does the dashboard print, counted directly from member_months?*
 
 ```stats
-value: a) 0.42 | label: close to the June number | note: the dashboard's flat 38 bias
-value: b) 0.35 | label: close to the computed value | note: the August cohort drags
-value: c) 0.31 | label: equal to August alone | note: ignores every other cohort
+value: 38.2 | label: June | note: 7,722 of 20,217 members
+value: 38.0 | label: July | note: 9,558 of 25,122
+value: 37.9 | label: August | note: 11,359 of 29,943
+value: 37.8 | label: September | note: 13,218 of 35,000
 ```
 
-Letter it in pairs, no calculator. Then the reveal.
+The answer is b: the dashboard prints 38 every month. Each month one more cohort enters the count at about 38.5 percent, just above the older cohorts' slow slide, so the average holds while every cohort falls.
 
 ```notes
-LIVE, 3 minutes. Vote first. Then run the division on the board: 7 cohorts at 5,000 members at
-average 0.37, plus one cohort at 13,000 members at 0.31. Total members 48,000. Total active about
-7 x 5000 x 0.37 + 13000 x 0.31 which lands near 17,000. 17,000 of 48,000 is near 0.35. The
-answer is b; the dashboard's 38 is close but is dragged under on September.
-```
-
----
-
-## S15. Answer: the blend decomposed, cohort by cohort
-*What are the cohort sizes behind each reporting month, and what retention does each contribute?*
-
-![The blend is a weighted average of cohort rates](../whiteboards/C2_W04_D04_blend_decomposition_STUDENT.png)
-
-Each stacked column is a reporting month, every segment is a cohort coloured by its retention at that age, segment height equal to cohort size. The amber line is the blended rate on top. Flat line, falling cohorts: the mix prop that chapter 1 named with ten and ten.
-
-```notes
-LIVE, 4 minutes. The amber line is what the dashboard prints; the stack is what the room must act
-on. Point at the August stack segment: biggest and lowest, and it is what pulls September down a
-few points. Chapter 2 closes on the formula.
+LIVE, 3 minutes. Read the four counts. Point at the denominators growing by about 5,000 a month:
+one new cohort a month enters the count. Then say what the room is about to be tempted to say.
+Transition: the plausible wrong answer.
 ```
 
 ---
 
-## S16. The formula, derived from the picture
-*How does the blend relate to the cohort rates and their sizes?*
+## S21. The wrong call: "38 and flat, nothing changed"
+*What would a hurried analyst conclude from four flat months, and what would it cost?*
 
-For a reporting month, the blended retention is the share of pre-signed members who placed an order. Split pre-signed into cohorts of size $N_c$ each with retention $r_c$ at its age for that month, and the formula drops out:
+**What breaks.** "Month-two retention is 38 percent and flat, so nothing changed." The decision it would mislead: the sale cohort gets no action, the dashboard stays the month's headline, and October's drop arrives as a surprise.
 
-$$B = \frac{\sum_c N_c r_c}{\sum_c N_c}$$
+**Why it is wrong.** The 38 is an average over cohorts of different ages, weighted by their sizes, and it only counts a member from her second month. A flat average can sit on top of every cohort falling, as batch A fell under batch B on the toy.
 
-A weighted average with the cohort size as the weight. A big young cohort with a low rate pulls the blend down; a stable older cohort at the floor holds it up. The dashboard shows $B$ and never the $r_c$ it is made of.
+**The check.** Take the number apart, cohort by cohort, and compare each piece with the direct count. Swiggy's own tables show why: monthly transacting users rose 27.4 percent while orders per user fell 6.3 percent, from 4.13 to 3.87, and the blend cannot say whether existing users ordered less or new users ordered little (Swiggy's Q1 FY27 letter of 30 July 2026, checked 12 October 2026; the 6.3 is our arithmetic).
 
 ```notes
-LIVE, 3 minutes. The equation is the StatQuest formula arriving last. The teaching rule from
-3Blue1Brown holds here: the picture is the mechanism, the formula is the shorthand. Then
-chapter 3's opening question.
+Source:
+https://nsearchives.nseindia.com/corporate/SWIGGY_30072026154100_Covering_Letter_Letter_to_Shareholders_-_signed.pdf (checked 12 October 2026)
+LIVE, 3 minutes. Read the wrong sentence exactly as a hurried analyst would say it. Ask for the
+decision it would drive. Then the check, which the room runs in the notebook's empty your-turn cell
+before the next slide.
+Transition: the decomposition.
+```
+
+---
+
+## S22. Each month's 38: a new cohort enters, old ones slide
+*What is each month's number made of?*
+
+![Each month's 38 percent: a new cohort enters, every older one falls](../whiteboards/C2_W04_D04_blend_decomposition_STUDENT.png)
+
+Each stack is the dashboard's count for one month; the dark part ordered. Every older cohort's dark share shrinks a little each month, and one new cohort enters at the top. The hatched bar is the August cohort, outside the count in September.
+
+```notes
+LIVE, 4 minutes. Point at September's stack: seven cohorts, January at the bottom, July at the
+top. Then the hatched bar beside it: 13,000 members the dashboard does not count yet. Explorer
+scene Th1's size slider shows what a 2.6-times cohort does when it does enter.
+Transition: the second route.
+```
+
+---
+
+## S23. Second route: 13,218 of 35,000, both ways
+*Does September's 38, rebuilt as a weighted average of its cohorts, equal the direct count?*
+
+| Cohort | Members | Ordered in September |
+|---|---|---|
+| January | 4,854 | 36.9 percent |
+| February | 5,055 | 37.1 percent |
+| March | 5,449 | 37.5 percent |
+| April | 4,859 | 37.7 percent |
+| May | 4,905 | 38.1 percent |
+| June | 4,821 | 38.6 percent |
+| July | 5,057 | 38.5 percent |
+
+Sum of (members × rate) over the seven cohorts = 13,218 orderers; 13,218 / 35,000 = 37.8 percent, the same to the last digit as the direct count. The newest cohorts sit highest and the oldest lowest: the youngest prop the average.
+
+```notes
+LIVE, 4 minutes. Have one table read its weighted average aloud; it must match 37.8. Unweighted,
+the seven rates also average 37.8, because the seven cohorts are about the same size. Add the
+13,000-member August cohort and the unweighted mean (36.9) drifts a point from the true 35.9: weights
+matter when sizes differ, which is the trap from Week 1 and Monday.
+Transition: what the count leaves out.
+```
+
+---
+
+## S24. Predict: counting everyone, what is September?
+*In September, 13,000 August members are in their month one and outside the dashboard. Counting everyone who joined before September, what does September read?*
+
+a) Still 38 percent
+
+b) About 36 percent
+
+c) About 31 percent, August's rate
+
+d) About 49 percent, the organic August members' rate
+
+```notes
+LIVE, 2 minutes. Vote. Remind the August cohort's month one is 31 percent, below the 38.
+Transition: the reveal.
+```
+
+---
+
+## S25. Answer: 36 percent, and the sale week is the gap
+*What does September read with the August cohort counted, and which of its members sit low?*
+
+![The sale-week members, not August, sit low](../whiteboards/C2_W04_D04_sale_vs_organic_STUDENT.png)
+
+The answer is b: 17,248 of 48,000, 35.9 percent. Split by how they joined, the 4,973 organic August members kept 49 percent in month one, July's rate; the 8,027 sale-week members kept 20. In October they enter the dashboard; if they fall from month one to month two as July's cohort did, the dashboard drops to about 33 percent (32 to 34 if they enter anywhere from 17 to 24).
+
+```notes
+LIVE, 5 minutes. Two readings of the same month differ only by who is counted. Then the split:
+the problem is the sale week, not the month. The October estimate rests on an assumption (the
+sale cohort falls as July's did); name it as one. Strike on the hypothesis board: a cohort
+problem, confirmed; the cohort is the sale week's.
+Transition: the chapter's close.
+```
+
+---
+
+## S26. Chapter 2 close: 38 is a weighted average
+*What has the full table answered, and what is still open?*
+
+```mermaid
+flowchart LR
+    A["<b>Where are we losing people?</b>"] --> Q1["<b>Who entered when?</b><br/>fix the signup month"]
+    Q1 --> Q2["<b>Who is still here?</b><br/>every row falls · 38 = weighted average<br/>sale week 20 · October about 33"]
+    Q2 --> Q3["<b>Where in the funnel?</b><br/>chapter 3"]
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class A,Q1 known
+    class Q2 lit
+    class Q3 unknown
+```
+
+**The rule.** A flat retention number is a size-weighted average of cohorts at different ages; rebuild it from its cohorts, check the rebuild matches, and read what the count leaves out.
+
+**In the interview.** [F] How would you use cohort analysis to find a retention issue? Fix the entry month, build the table, read rows for decay and columns for each cohort's start, then rebuild the blend from it.
+
+```notes
+LIVE, 2 minutes. The cohort axis, months since joining, is the time axis Friday's forecast runs on.
+Break follows: 10 minutes.
+Transition: after the break, chapter 3.
 ```
 
 ---
 
 ## SECTION 3: Which stage owns the loss?
-*Four stages, two units, one release split by platform and date.*
-
----
-
-## S17. Question: which stage owns the loss on this app?
-*Open to search is nearly complete, search to menu view sits above 100 percent, menu view to add-to-cart is low, add-to-cart to order is medium. Where does the drop that matters sit?*
-
-```stats
-value: a) search to menu view | label: it is above 100 percent | note: too wide, too artefact
-value: b) menu view to add-to-cart | label: the biggest absolute fall | note: a plausible wrong
-value: c) add-to-cart to order | label: smaller than add-to-cart | note: the number to size
-value: d) cannot tell yet | label: not until units are named | note: the trained answer
-```
-
-Vote the letter, then listen for which denominator the room asks for before trusting a chart.
+*Where in the order flow did members stop, counted in which unit, for whom and since when?*
 
 ```notes
-LIVE, 3 minutes. Expect b from pattern-matchers and c from last week's funnel practice. The
-hire-grade answer is d: a rate above 100 percent means a sessions-over-sessions ratio where the
-numerator entered through a different route, so the stage reads as an artefact until the unit is
-named. Then the toy.
+LIVE, 65 minutes. Notebook 03. Styles: Brilliant (the four rates before any explanation),
+Veritasium (three predictions), the case method (the app team's partly-right chart), Krish Naik
+(the release split built line by line). Explorer scene Th3.
+Transition: the chapter's questions.
 ```
 
 ---
 
-## S18. Answer: it depends on the unit the chart uses
-*A hundred app visits, forty searches, twenty add-to-carts, ten checkouts: what do the per-stage rates say, and in which unit?*
+## S27. Chapter 3: the funnel, its units and the release
+*Who needs the answer, and which smaller questions lead to it?*
 
-| Step | Count | Per step before | Per total |
-|---|---|---|---|
-| Visit | 100 | not applicable | 100 percent |
-| Search | 40 | 40 percent | 40 percent |
-| Add to cart | 20 | 50 percent | 20 percent |
-| Checkout | 10 | 50 percent | 10 percent |
+**Who needs the answer.** The membership lead and the app team's lead, who will say the stage the room blames is fine. Blaming the wrong step sends engineers to fix one that works.
 
-The per-step rate (per the step before) says where the drop sits. The per-total rate says how deep the funnel is. Each step picks its own unit, which the chart must name.
+```timeline
+label: 1 | title: How does a funnel read? | body: Each step over the step before
+label: 2 | title: Why does one step pass 100 percent? | body: A step members can skip
+label: 3 | title: Per session or per member? | body: Two units, two questions
+label: 4 | title: Whose conversion fell, and where inside the checkout? | body: Platform, membership, date, then the size
+label: 5 | title: What can the data not show? | body: Six caveats, each with its check | tone: dark
+```
 
 ```notes
-LIVE, 3 minutes. The toy is R1's. Walk the two columns: per step before shows the fall, per total
-shows the depth. Then the artefact: when a step counts from a different source, the ratio can
-exceed 100 percent.
+LIVE, 2 minutes. Say what chapter 2 found, with its numbers: 38 is a weighted average of falling
+cohorts, and the sale-week members kept 20 percent in month one.
+Transition: the four rates.
 ```
 
 ---
 
-## S19. The denominator artefact: a rate above 100 percent
-*Why does search to menu view read as 1.20 per session, and what does the number mean?*
+## S28. Question: which step owns the loss?
+*September, Gold members, per session: open to search 68, search to menu view 118, menu view to cart 34, cart to checkout 80, checkout to order 64 percent. Which step owns the loss?*
 
-The home carousel on the Zomato app opens a restaurant's menu without a search. For every ten sessions, roughly two go through the carousel and reach a menu directly; eight go through search and reach a menu. The denominator (search sessions) is smaller than the numerator (menu view sessions), so the ratio sits above one.
+a) Search to menu view, the one above 100 percent
 
-Reading this as a drop in search is wrong. The step is skippable, and the rate is a counting choice.
+b) Menu view to add-to-cart, the lowest rate
+
+c) Checkout to order, the last step
+
+d) None can be named until each step is read in one unit and split by platform and date
 
 ```notes
-LIVE, 3 minutes. Pause here. Define the artefact carefully. A per-member funnel does not have
-this problem, because a member who viewed a menu is counted once whether she searched or not. The
-unit is the number, not an aside.
+LIVE, 4 minutes. Brilliant's move: the numbers first, the explanation after. Vote, argue, vote.
+Expect b from most of the room; the lowest rate looks like the loss.
+Transition: how a funnel reads.
 ```
 
 ---
 
-## S20. The funnel in two units, side by side
-*What does the September funnel look like per session and per member?*
+## S29. Answer: a low step is not a loss until it moves
+*How does a funnel read, on numbers small enough to hold?*
 
-![Per-session and per-member funnels, Zomato Gold Chennai, September 2026](../whiteboards/C2_W04_D04_funnel_two_units_STUDENT.png)
+```mermaid
+flowchart LR
+    V["<b>100 visits</b>"] -->|"40 percent"| S["<b>40 searches</b>"]
+    S -->|"50 percent"| A["<b>20 add-to-carts</b>"]
+    A -->|"50 percent"| C["<b>10 checkouts</b><br/>10 percent of visits"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class V,S,A,C known
+```
 
-Per session, search to menu view is above 1.0; per member, every stage is well-behaved. Menu view to add-to-cart reads 0.42 per session and 0.58 per member. Add-to-cart sessions and add-to-cart members measure different things, and the chart names which it is drawing.
+The answer is d. Each step's rate divides it by the step before, in one unit (a toy, invented). If those 10 checkouts came from 50 sessions of 20 people, checkout is 10 of 50 per session and 10 of 20 per person. A step that is always low, such as browsing menus, is normal; a loss is a step that changed.
 
 ```notes
-LIVE, 4 minutes. Point at the search-to-menu-view bar on the per-session chart. Point at the same
-step on the per-member chart. Different unit, same room, same month: the only reading that acts
-on the right thing is the one that names which unit the chart is in.
+LIVE, 6 minutes. Walk the toy aloud (R1's numbers). Then the two units on the same checkouts.
+Then the rule for the chapter: find the step that changed, for whom, since when.
+Transition: the step above 100 percent.
 ```
 
 ---
 
-## S21. Question: predict what Android does after the release
-*Before 14 September, Android members' add-to-cart to order sat at about 0.58. On Monday 14 September a new checkout flow shipped on Android only. Between then and the end of the month, what does that rate do, compared to iOS?*
+## S30. 118 percent: the carousel skips search
+*Why does search to menu view read 118 percent, and what does it really read?*
 
-```stats
-value: a) stays flat on both | label: no release effect | note: the app team's claim
-value: b) falls on Android, holds on iOS | label: the release regresses | note: the honest reveal
-value: c) rises on both | label: a new flow helps everyone | note: nothing in the data says this
-```
-
-Vote the letter.
-
-```notes
-LIVE, 2 minutes. Expect a from anyone who trusts the app team's chart (overall conversion stays
-flat because iOS and web prop it up). Then the reveal: the release split by platform.
-```
-
----
-
-## S22. Answer: the fall sits on Android, after the release
-*How does add-to-cart to order move on Android, iOS and web, before and after 14 September?*
-
-![Add-to-cart to order, by platform and week](../whiteboards/C2_W04_D04_release_split_STUDENT.png)
-
-Android falls from 0.58 to 0.44 after 14 September. iOS stays within two points of its own baseline. Web is small and holds. The app team's overall-conversion chart was correct and useless, because the fall sits in one platform after one date.
-
-```notes
-LIVE, 4 minutes. Say the three lines aloud: Android down 14 points, iOS flat, web flat. The app
-team is partly right that other platforms are fine; the question was about members on Android.
-The dispute's answer is the split by platform and date, nothing less.
-```
-
----
-
-## S23. The chapter closes on stage, segment and date
-*Which stage, for whom, since when, and how big is the gap in orders a week?*
-
-| Field | Reading |
+| September, member sessions | Count |
 |---|---|
-| Stage | Add-to-cart to order |
-| Segment | Members, Android, from 14 September |
-| Fall | 0.58 to 0.44, that is 14 points on a session base |
-| Comparator | iOS members and non-members on Android: both flat |
-| Size in orders a week | 14 points times the Android members' weekly add-to-cart sessions in September (facts file) |
-| What stays open | The six caveats below, which L4 names one by one in half two |
+| Sessions with a search | 131,974 |
+| Sessions with a menu view | 155,729 |
+| Menu views with no search: the home carousel | 38,932 |
+| Of the sessions that searched, the share that opened a menu | 89 percent |
 
-The stage is one. The segment is one. The date is one. The fix-first call for the city head needs this three-line answer and no more.
+**What breaks.** "Search to menu view is 118 percent, our best step." The home carousel opens a restaurant's menu without a search, so the ratio divides two counts of different sessions: search is a step members can skip. **The fix.** Count menu views only among sessions that searched: 89 percent.
 
 ```notes
-LIVE, 3 minutes. This closes the morning. The afternoon owns L4 (the caveats), L5 (the fix-first
-call and its cost), and L6 (the transcript and the AI variant). Pre-read for Friday is Flipkart
-Lucknow; terms only (baseline, trend, seasonality, hold-out, error).
+LIVE, 7 minutes. The artefact: a rate above 100 percent says the numerator holds people who never
+passed the denominator's step. Explorer scene Th3 toggles the carousel entries in and out. Strike
+on the hypothesis board: the funnel's first steps are not the loss.
+Transition: the second unit.
 ```
 
 ---
 
-## S24. The morning in one sentence a city head repeats
-*What does the chapter close on, and what does Friday's forecast lean on from today?*
+## S31. Predict: per member, what does menu to cart read?
+*Menu view to add-to-cart reads 34 percent per session. Counted per member, what does it read?*
 
-The dashboard was flat because the mix shifted. Every cohort fell with age. One stage, on one platform, after one date, drove members' loss. That sentence replaces the dashboard reading.
+a) The same, 34 percent
 
-Friday's forecast will lean on today's cohort table as a time axis; Week 5's target will be defined on this table.
+b) Lower, because members browse many times
+
+c) Higher, because a member who browses five times and buys once counts once
+
+d) Above 100 percent
 
 ```notes
-LIVE, 2 minutes. Say the sentence twice. The afternoon reads the transcript in Aced's order and
-closes on the fix-first call. Kahoot has the return question from Wednesday: lift 0.97 at
-confidence 0.82; the verdict in one breath (the pair is a one-off, confidence is popularity).
+LIVE, 3 minutes. Vote. Ask one table to explain its letter in a sentence.
+Transition: the two units side by side.
+```
+
+---
+
+## S32. Answer: 61 per member, 34 per session
+*What does each unit answer, and which does the chart name?*
+
+![September, Gold members: one funnel, two units](../whiteboards/C2_W04_D04_funnel_two_units_STUDENT.png)
+
+The answer is c. Per session asks how often a menu visit becomes a cart; per member asks how many members who browsed ever added to a cart that month. Neither is wrong, and a chart that does not name its unit invites the wrong one. Per member, search to menu view still reads 101 percent: counting members shrinks the artefact and leaves it in place.
+
+```notes
+LIVE, 5 minutes. Point at the same step in both panels: 34 and 61. Then at the 101: the skippable
+step, not the unit, makes the number pass 100.
+Transition: the release.
+```
+
+---
+
+## S33. Predict: whose conversion fell after 14 September?
+*Add-to-cart to order: before is 1 August to 13 September, after is 14 to 30 September. Whose rate fell?*
+
+a) Everyone's, on every platform
+
+b) Members', on every platform
+
+c) Members' on Android
+
+d) Non-members' on Android
+
+```notes
+LIVE, 3 minutes. Vote. Remind the app team's lead will say the checkout works.
+Transition: the split by membership, platform and date.
+```
+
+---
+
+## S34. Answer: members on Android, from the release week
+*How does add-to-cart to order move by membership, platform and week?*
+
+![Only members on Android fall, and only from the release week](../whiteboards/C2_W04_D04_release_split_STUDENT.png)
+
+The answer is c. Members on Android: 58 to 44 percent, breaking in the release week and in no week before it. Members on iOS: 57 to 56. Non-members on Android: 52 to 51. Moving the cut a week either way keeps the fall: 58 to 47 with the cut on 7 September, 56 to 43 with it on 21 September.
+
+```notes
+LIVE, 6 minutes. Read the three lines. Then the tracking check from the hypothesis board: the
+release renamed one Android event and the app team mapped it, and the fall holds with the date
+moved a week either way, so it is behaviour, not counting. The tracking cause is struck.
+Transition: which step inside the checkout.
+```
+
+---
+
+## S35. The step that broke: checkout start to order
+*Which of the two steps inside the checkout changed, and is the app team's chart wrong?*
+
+![Android members: the step that changed is checkout to order](../whiteboards/C2_W04_D04_stage_split_STUDENT.png)
+
+Android members still start checkout from 80 percent of carts, before and after. Completing the order once checkout has started fell from 72.5 to 55 percent. The app team's chart, carts that start checkout on every platform, reads 80 percent flat: true, and it measures the step that did not break. Only members fell, so the place to look is something in the new flow that only members see.
+
+```notes
+LIVE, 9 minutes. The case method: the app team is partly right, so find the part. Concede that
+checkout starts held; bring the split that shows completion fell, for members, on Android, from
+the release. The afternoon's role card replays this dispute.
+Transition: the chapter's close.
+```
+
+---
+
+## S36. Six things the data cannot show alone
+*What could still make the call wrong, and which check settles each?*
+
+| Caveat | The check | What it found |
+|---|---|---|
+| Selection: the sale cohort was bought on a discount | Its organic members beside July's cohort | 49 against 49 percent; the sale-week members alone sit at 20 |
+| Censoring: the newest cohorts are young | A member who has not left yet is not retained for ever | Named here; the IITGN faculty session W4-3 (tentative) takes it up |
+| Seasonality: exam months in a student-heavy zone (hypothetical) | September split by zone | No zone more than 0.9 points from the city |
+| Tracking: the release renamed an Android event | The app team's mapping; the cut moved a week | 58 to 47, and 56 to 43: the fall holds |
+| Sessions against members | The unit named on every chart | 34 per session, 61 per member, both true |
+| Before and after is not cause | Zomato Gold's frequency rose about 60 percent after joining | Members choose to join when they expect to order more |
+
+Zomato's 60 percent comes from its shareholder letter of 19 May 2023 (checked 12 October 2026); it describes members, and says nothing about what Gold caused.
+
+```notes
+Source:
+https://www.bseindia.com/xml-data/corpfiling/AttachHis/42b3bf3b-1edb-4da7-849a-87ca9da27ff8.pdf (checked 12 October 2026)
+LIVE, 12 minutes. One caveat at a time, each with the fact that settles it (L4). Strike the last
+lines of the hypothesis board: tracking is ruled out, the definition explained, a cohort problem
+confirmed, and an everyone-on-Android problem in one step. Name censoring for the faculty block (tentative)
+and park any "are these curves different by chance" question there.
+Transition: the chapter's close.
+```
+
+---
+
+## S37. Chapter 3 close: one step, one platform, one date
+*Which stage owns the loss, for whom, since when, and how big is it?*
+
+```mermaid
+flowchart LR
+    A["<b>Where are we losing people?</b>"] --> Q1["<b>Who entered when?</b><br/>fix the signup month"]
+    Q1 --> Q2["<b>Who is still here?</b><br/>38 = weighted average"]
+    Q2 --> Q3["<b>Where in the funnel?</b><br/>checkout start to order<br/>members on Android since 14 Sep"]
+    Q3 -.- P["<b>Pitfalls</b><br/>blending · the wrong denominator<br/>survivors mistaken for growth"]
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class A,Q1,Q2 known
+    class Q3 lit
+    class P bad
+```
+
+**The size.** 22,841 Android member carts in the 17 days after the release; at the old 58 percent, about 1,317 more orders a week, about Rs 5.3 lakh of orders at Rs 400 an order (an assumption, Rs 300 to Rs 500).
+
+**The rule.** Name the unit, split by who, where and when, and find the step that changed before blaming the step that is low. A "good" retention number does not exist without its definition: Amplitude's 7 percent on day seven is a vendor's top-quarter mark (its blog, checked 12 October 2026).
+
+```notes
+Source:
+https://www.amplitude.com/blog/7-percent-retention-rule (checked 12 October 2026)
+LIVE, 5 minutes. Say the morning's sentence: the dashboard was flat because of who it counts;
+every cohort fell; one step, on one platform, after one date, drove the order loss. Board complete.
+The afternoon names what the data cannot show, makes the call and reads the interview.
+Transition: lunch.
 ```

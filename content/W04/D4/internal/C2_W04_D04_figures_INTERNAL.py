@@ -1,442 +1,330 @@
-"""Thursday's data pictures and the one GIF the spine names.
+"""Week 4 Thursday's data pictures and the one GIF the spine names, drawn from the day's data.
 
-Every number here comes from the facts file. The script writes PNGs and the triangle GIF to
-whiteboards/ beside its first and last frames. Every label is sized to print legibly at nine
-points on a slide and five on a sheet.
+Run from the repository root after the generator:
+    python3 content/W04/D4/internal/C2_W04_D04_figures_INTERNAL.py
+
+Writes PNGs and the triangle GIF (with its first and last frames) to content/W04/D4/whiteboards/.
+Every number drawn is computed from the data files and matches the facts file; the toys are drawn
+from the facts file's toys block and say invented on the picture. Fonts are 12 to 14 points at the
+picture's own size, so a label prints at nine points or more on a slide and five or more on a sheet.
+A picture carries no title of its own: the image line's caption under it says what it shows.
 """
 import pathlib
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-import matplotlib.animation as animation
+import matplotlib.ticker
+from matplotlib.animation import PillowWriter
 import numpy as np
 import pandas as pd
 import yaml
 
-
 HERE = pathlib.Path(__file__).resolve().parent
 DAY = HERE.parent
-BOARD = DAY / "whiteboards"
-BOARD.mkdir(parents=True, exist_ok=True)
 DATA = DAY / "data"
-FACTS = HERE / "C2_W04_D04_facts_INTERNAL.yaml"
+BOARDS = DAY / "whiteboards"
+BOARDS.mkdir(parents=True, exist_ok=True)
+STEM = "C2_W04_D04"
 
-# A quiet, print-first palette. Night (ink) for lines, deep for lit cells, warm sand for mix.
-INK = "#1A0F5C"
-DEEP = "#5B3FD6"
-LIT = "#1A0F5C"
-SOFT = "#EEEAFB"
-AMBER = "#C98A00"
-WARM = "#FFF2D4"
-GRID = "#D8D4EA"
-ROSE = "#D63A6A"
-TINT_ROSE = "#FBE9EF"
+INK, VIOLET, DEEP, LAV, MUTED = "#1A0F5C", "#5B3FD6", "#4E38AB", "#D9A7FF", "#6B6690"
+ROSE, GREEN, LINE, TINT, AMBER = "#D63A6A", "#1F8A5B", "#E4E1F1", "#EEEAFB", "#C98A00"
+plt.rcParams.update({
+    "font.family": "DejaVu Sans", "font.size": 13, "axes.titlesize": 13.5, "axes.titleweight": "bold",
+    "axes.labelsize": 12.5, "xtick.labelsize": 12.5, "ytick.labelsize": 12.5, "legend.fontsize": 12.5, "axes.edgecolor": MUTED,
+    "axes.labelcolor": INK, "axes.titlecolor": INK, "xtick.color": INK, "ytick.color": INK,
+    "axes.spines.top": False, "axes.spines.right": False, "figure.facecolor": "white",
+    "axes.facecolor": "white", "axes.titlelocation": "left",
+})
+
+facts = yaml.safe_load((HERE / f"{STEM}_facts_INTERNAL.yaml").read_text(encoding="utf-8"))
+F = {n["id"]: n["value"] for n in facts["numbers"]}
+TOYS = {t["id"]: t["values"] for t in facts["toys"]}
+members = pd.read_csv(DATA / f"{STEM}_members_STUDENT.csv")
+mm = pd.read_csv(DATA / f"{STEM}_member_months_STUDENT.csv")
+mm = mm.merge(members[["member_id", "cohort_month", "signup_channel"]], on="member_id")
+mm["age"] = (mm["month"].str[:4].astype(int) * 12 + mm["month"].str[5:].astype(int)
+             - mm["cohort_month"].str[:4].astype(int) * 12 - mm["cohort_month"].str[5:].astype(int))
+mm["active"] = mm["orders"] > 0
+COHORTS = ["2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08"]
+NAMES = dict(zip(COHORTS + ["2026-09"], "Jan Feb Mar Apr May Jun Jul Aug Sep".split()))
+tri = mm[mm.age >= 1].pivot_table(index="cohort_month", columns="age", values="active", aggfunc="mean")
+sizes = members.groupby("cohort_month").size()
 
 
-def _frame(ax, title, subtitle=None):
-    ax.set_title(title, fontsize=13, color=INK, loc="left", pad=10)
-    if subtitle:
-        ax.text(0, 1.02, subtitle, transform=ax.transAxes, fontsize=10, color="#6B6690",
-                va="bottom", ha="left")
-    for spine in ("top", "right"):
-        ax.spines[spine].set_visible(False)
-    ax.spines["left"].set_color(GRID)
-    ax.spines["bottom"].set_color(GRID)
-    ax.tick_params(colors=INK, labelsize=10)
-
-
-def _save(fig, path):
-    # The deck layout reads w / 96 as the picture's natural inches (build_deck.place_picture),
-    # so saving at 96 dpi keeps natural inches equal to figsize. Any higher and the deck shrinks
-    # the picture to keep the "nominal 18pt label" cap, which pushes the actual label below 9pt.
-    fig.tight_layout()
-    fig.savefig(path, dpi=96, facecolor="white")
-    print(f"wrote {path.relative_to(DAY)}")
+def save(fig, name):
+    path = BOARDS / f"{STEM}_{name}_STUDENT.png"
+    fig.savefig(path, dpi=150, facecolor="white", bbox_inches="tight", pad_inches=0.12)
     plt.close(fig)
+    print(f"wrote {path.relative_to(DAY)}")
 
 
-# ---------------------------------------------------------------- cohort triangle (heatmap + GIF)
-
-def build_triangle(facts, members, member_months):
-    """Retention by signup month (rows) against months since signup (columns).
-
-    The eight cohorts for which month-one exists sit on rows; the columns are k = 1..8. Each cell
-    is the cohort's retention at age k, measured on the generated data. Cells where k has not
-    happened by Sept 2026 are left blank. The right-hand strip is the blended retention line for
-    each reporting month, drawn flat-ish.
-    """
-    cohorts = ["2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06",
-               "2026-07", "2026-08"]
-    grid = np.full((8, 8), np.nan)
-    # k goes 1..8
-    for i, c in enumerate(cohorts):
-        sub = member_months[(member_months["months_since_signup"] >= 1)]
-        s = sub[sub["member_id"].isin(members[members["cohort_month"] == c]["member_id"])]
-        by_k = s.groupby("months_since_signup")["orders"].mean()
+# ------------------------------------------------------------------ 1. the triangle, and its GIF
+def draw_triangle(ax, upto=None, note=True, size=12.5):
+    """Rows are signup cohorts, columns months since signup; a cell appears once its month has passed."""
+    ax.set_xlim(-0.5, 8.5)
+    ax.set_ylim(len(COHORTS) - 0.5, -0.5)
+    for i, c in enumerate(COHORTS):
         for k in range(1, 9):
-            if k in by_k.index:
-                grid[i, k - 1] = by_k.loc[k]
-
-    fig, ax = plt.subplots(figsize=(9, 5.2))
-    im = ax.imshow(grid, cmap="Purples", vmin=0.25, vmax=0.65, aspect="auto")
-    for i in range(8):
-        for j in range(8):
-            v = grid[i, j]
-            if not np.isnan(v):
-                ax.text(j, i, f"{v:.2f}", ha="center", va="center",
-                        color="white" if v > 0.44 else INK, fontsize=10)
-    ax.set_xticks(range(8))
-    ax.set_xticklabels([f"m{k}" for k in range(1, 9)], color=INK, fontsize=10)
-    ax.set_yticks(range(8))
-    ax.set_yticklabels(cohorts, color=INK, fontsize=10)
-    _frame(ax,
-           "Retention by cohort and age, Zomato Gold, Chennai",
-           "Each cohort falls across its own row; the August row is the worst at m1 and the biggest.")
-    cbar = fig.colorbar(im, ax=ax, shrink=0.75)
-    cbar.ax.tick_params(labelsize=9, colors=INK)
-    cbar.set_label("retention", color=INK, fontsize=10)
-    _save(fig, BOARD / "C2_W04_D04_cohort_triangle_STUDENT.png")
-
-    # ------- GIF: fill one row (cohort) at a time, then draw a flat blended line
-    fig, ax = plt.subplots(figsize=(9, 5.2))
-    ax.set_xlim(-0.5, 7.5)
-    ax.set_ylim(7.5, -0.5)
-    ax.set_xticks(range(8))
-    ax.set_xticklabels([f"m{k}" for k in range(1, 9)], color=INK, fontsize=10)
-    ax.set_yticks(range(8))
-    ax.set_yticklabels(cohorts, color=INK, fontsize=10)
-    _frame(ax,
-           "The triangle fills, the blend barely moves",
-           "Each new row is a cohort; the right-hand bar is the blended retention for the "
-           "reporting month that just ended.")
-
-    text_handles = {}
-    cell_handles = {}
-    blend_values = [facts["case_numbers"]["blended_retention_jun"]["value"],
-                    facts["case_numbers"]["blended_retention_jul"]["value"],
-                    facts["case_numbers"]["blended_retention_aug"]["value"],
-                    facts["case_numbers"]["blended_retention_sep"]["value"]]
-    blend_months = ["Jun", "Jul", "Aug", "Sep"]
-    blend_line, = ax.plot([], [], color=AMBER, lw=2.4)
-    blend_marker = ax.scatter([], [], color=AMBER, s=36, zorder=5)
-
-    def draw_cell(i, j, v):
-        colour = plt.cm.Purples((v - 0.25) / 0.40)
-        rect = mpatches.Rectangle((j - 0.5, i - 0.5), 1, 1, facecolor=colour, edgecolor="white")
-        ax.add_patch(rect)
-        ax.text(j, i, f"{v:.2f}", ha="center", va="center",
-                color="white" if v > 0.44 else INK, fontsize=10)
-
-    # Each frame: reveal row i, up to column k_last.
-    frame_plan = []
-    for i, c in enumerate(cohorts):
-        for k in range(1, 9):
-            v = grid[i, k - 1]
-            if not np.isnan(v):
-                frame_plan.append((i, k - 1, v))
-    # a few extra end frames showing the blended line continuing flat
-    frame_plan += [(-1, -1, 0)] * 4
-
-    def animate(idx):
-        if idx < len(frame_plan):
-            i, j, v = frame_plan[idx]
-            if i >= 0:
-                draw_cell(i, j, v)
-            # the blend line: for a reporting month, the blend was recorded; place a scatter at
-            # that month's x position every time its latest cohort row is filled
-            # draw up to as many blend points as rows have been fully revealed through their
-            # latest reporting month
-            # Each reporting month corresponds to a cohort column: Jun -> m5 of Jan, m4 of Feb,
-            # ... m1 of May. For simplicity, show four points evenly across the top as the four
-            # rightmost rows fill.
-        points_x = []
-        points_y = []
-        completed = min(4, max(0, idx // (len(frame_plan) // 6)))
-        for k in range(completed):
-            points_x.append(k * 2 + 1)
-            points_y.append(-0.1 - blend_values[k] * 0.3)  # not used; we show in separate text
-        return []
-
-    ani = animation.FuncAnimation(fig, animate, frames=len(frame_plan),
-                                  interval=320, blit=False)
-    gif_path = BOARD / "C2_W04_D04_cohort_triangle_fill_STUDENT.gif"
-    ani.save(gif_path, writer=animation.PillowWriter(fps=3))
-    print(f"wrote {gif_path.relative_to(DAY)}")
-
-    # First and last frame stills
-    for frame_i, suffix in [(0, "first"), (len(frame_plan) - 1, "last")]:
-        fig2, ax2 = plt.subplots(figsize=(9, 5.2))
-        ax2.set_xlim(-0.5, 7.5)
-        ax2.set_ylim(7.5, -0.5)
-        ax2.set_xticks(range(8))
-        ax2.set_xticklabels([f"m{k}" for k in range(1, 9)], color=INK, fontsize=10)
-        ax2.set_yticks(range(8))
-        ax2.set_yticklabels(cohorts, color=INK, fontsize=10)
-        _frame(ax2,
-               "The triangle, first frame" if suffix == "first" else "The triangle, filled",
-               "Rows fall left to right; the blend across all rows stays near 0.38.")
-        for idx in range(frame_i + 1):
-            if idx < len(frame_plan):
-                i, j, v = frame_plan[idx]
-                if i >= 0:
-                    colour = plt.cm.Purples((v - 0.25) / 0.40)
-                    rect = mpatches.Rectangle((j - 0.5, i - 0.5), 1, 1,
-                                              facecolor=colour, edgecolor="white")
-                    ax2.add_patch(rect)
-                    ax2.text(j, i, f"{v:.2f}", ha="center", va="center",
-                             color="white" if v > 0.44 else INK, fontsize=10)
-        _save(fig2, BOARD / f"C2_W04_D04_cohort_triangle_fill_{suffix}_STUDENT.png")
-    plt.close("all")
-
-
-# -------------------------------------------------------------- blend decomposition stacked bars
-
-def build_blend_decomposition(facts, members, member_months):
-    """Stacked cohort sizes under one flat blended line.
-
-    For each reporting month Jun to Sep: a stacked bar whose segments are the cohorts
-    (pre-signed), each coloured by its own retention at that month, with the segment height set
-    to cohort size. Across the top, the blended retention is drawn as a nearly flat line.
-    """
-    months = ["2026-06", "2026-07", "2026-08", "2026-09"]
-    cohorts = ["2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06",
-               "2026-07", "2026-08"]
-    sizes = {c: (members["cohort_month"] == c).sum() for c in cohorts}
-    retention = {}
-    for m in months:
-        for c in cohorts:
-            if c >= m:
+            cal = COHORTS.index(c) + 1 + k                      # calendar month number, Jan = 1
+            if cal > 9 or (upto is not None and cal > upto):
                 continue
-            sub = member_months[(member_months["cohort_month" if False else "member_id"]
-                                 .isin(members[members["cohort_month"] == c]["member_id"]))
-                                & (member_months["month"] == m)]
-            if len(sub):
-                retention[(m, c)] = sub["orders"].mean()
-
-    fig, ax = plt.subplots(figsize=(12, 5.0))
-    xpos = range(len(months))
-    palette = plt.cm.Purples(np.linspace(0.25, 0.95, len(cohorts)))
-    for ix, m in enumerate(months):
-        bottom = 0
-        for ci, c in enumerate(cohorts):
-            if c >= m:
-                continue
-            s = sizes[c]
-            r = retention.get((m, c), 0)
-            # bar height = size (not retention): the picture shows the mix
-            ax.bar(ix, s, bottom=bottom, color=palette[ci],
-                   edgecolor="white", linewidth=0.5)
-            # retention annotated inside the bar if there's room
-            if s >= 3500:
-                ax.text(ix, bottom + s / 2, f"{c[-2:]}: {r:.2f}",
-                        ha="center", va="center", color="white" if ci > 3 else INK,
-                        fontsize=9)
-            bottom += s
-    # Blended retention line (right axis)
-    ax2 = ax.twinx()
-    blended = [facts["case_numbers"]["blended_retention_jun"]["value"],
-               facts["case_numbers"]["blended_retention_jul"]["value"],
-               facts["case_numbers"]["blended_retention_aug"]["value"],
-               facts["case_numbers"]["blended_retention_sep"]["value"]]
-    ax2.plot(xpos, blended, color=AMBER, lw=2.6, marker="o")
-    for i, v in enumerate(blended):
-        ax2.text(i, v + 0.02, f"{v:.2f}", color=AMBER, ha="center", fontsize=10)
-    ax2.set_ylim(0, 0.6)
-    ax2.set_ylabel("blended retention", color=AMBER, fontsize=10)
-    ax2.tick_params(colors=AMBER, labelsize=10)
-    for spine in ("top", "left"):
-        ax2.spines[spine].set_visible(False)
-    ax2.spines["right"].set_color(AMBER)
-    ax.set_xticks(xpos)
-    ax.set_xticklabels(["June", "July", "August", "September"], color=INK, fontsize=10)
-    ax.set_ylabel("members (pre-signed)", color=INK, fontsize=10)
-    _frame(ax,
-           "The blend is a weighted average of cohort rates",
-           "Bars stack cohort sizes; the amber line stays near 0.38 while each cohort falls.")
-    _save(fig, BOARD / "C2_W04_D04_blend_decomposition_STUDENT.png")
+            v = tri.loc[c, k]
+            if k == 1:
+                face = ROSE if c == "2026-08" else VIOLET
+            else:
+                face = "#B9AEF0" if v >= 0.385 else "#CFC7F4"
+            ax.add_patch(plt.Rectangle((k - 0.5, i - 0.5), 1, 1, facecolor=face, edgecolor="white", lw=2))
+            ax.text(k, i, f"{100 * v:.0f}" if k == 1 else f"{100 * v:.1f}", ha="center", va="center",
+                    color="white" if k == 1 else INK, fontsize=size, fontweight="bold" if k == 1 else None)
+        ax.text(0, i, f"{sizes[c]:,}", ha="center", va="center", fontsize=size, color=MUTED)
+    ax.xaxis.tick_top()
+    ax.set_xticks(range(0, 9))
+    ax.set_xticklabels(["members"] + [str(k) for k in range(1, 9)], fontsize=size)
+    ax.set_yticks(range(len(COHORTS)))
+    ax.set_yticklabels([f"{NAMES[c]}" + (" (sale)" if c == "2026-08" else "") for c in COHORTS], fontsize=size)
+    ax.tick_params(length=0)
+    for s in ax.spines.values():
+        s.set_visible(False)
+    if note:
+        ax.text(8.45, 5.0, "months since joining run across;\nmonth one is the solid column;\n"
+                "each cell is the percent of the\ncohort who ordered that month",
+                fontsize=size, color=MUTED, va="center", ha="right")
 
 
-# -------------------------------------------------------------- funnel bars, two units side by side
+fig, ax = plt.subplots(figsize=(9.0, 4.0))
+draw_triangle(ax)
+save(fig, "cohort_triangle")
 
-def build_funnel(facts, events, members):
-    """Two side-by-side funnel bars for September: per session and per member.
-
-    The per-session view shows the artefact (search to menu view above 100 percent). The
-    per-member view shows the same stages as fractions of members who reached the stage before.
-    """
-    sep = events[events["event_ts"].str.startswith("2026-09")].copy()
-    # per session: fraction of sessions reaching each stage
-    sess_stage = sep.groupby(["session_id", "stage"]).size().unstack(fill_value=0)
-    sess_stage = (sess_stage > 0).astype(int)
-    total_sess = len(sess_stage)
-    stages = ["open", "search", "menu_view", "add_to_cart", "checkout_start", "order_placed"]
-    for s in stages:
-        if s not in sess_stage.columns:
-            sess_stage[s] = 0
-    per_sess = {s: sess_stage[s].sum() / total_sess for s in stages}
-
-    mem_stage = sep.groupby(["member_id", "stage"]).size().unstack(fill_value=0)
-    mem_stage = (mem_stage > 0).astype(int)
-    total_mem = len(mem_stage)
-    for s in stages:
-        if s not in mem_stage.columns:
-            mem_stage[s] = 0
-    per_mem = {s: mem_stage[s].sum() / total_mem for s in stages}
-
-    fig, (axL, axR) = plt.subplots(1, 2, figsize=(12, 5.0))
-    labels = ["open", "search", "menu view", "add to cart", "checkout start", "order placed"]
-    xs = range(len(stages))
-
-    def draw(ax, vals, title, highlight_step=None):
-        for i, s in enumerate(stages):
-            colour = AMBER if highlight_step == s else DEEP
-            ax.barh(len(stages) - 1 - i, vals[s], color=colour, edgecolor="white")
-            ax.text(vals[s] + 0.02, len(stages) - 1 - i, f"{vals[s]:.2f}",
-                    va="center", color=INK, fontsize=10)
-        ax.set_yticks(range(len(stages)))
-        ax.set_yticklabels(list(reversed(labels)), color=INK, fontsize=10)
-        ax.set_xlim(0, 1.4)
-        _frame(ax, title)
-
-    # per-session highlights the above-100 search-to-menu-view (artefact)
-    draw(axL, per_sess, "Per session, September 2026")
-    draw(axR, per_mem, "Per member, September 2026")
-
-    # Explicitly draw the search-to-menu-view ratio as a text overlay on the left
-    s2mv = facts["case_numbers"]["funnel_search_to_menu_persess"]["value"]
-    axL.text(0.9, 4.2, f"search to menu view = {s2mv:.2f}",
-             color=AMBER, fontsize=10, ha="left")
-
-    _save(fig, BOARD / "C2_W04_D04_funnel_two_units_STUDENT.png")
+DASH = {m: F[f"dashboard_{NAMES[m].lower()}"] for m in ("2026-06", "2026-07", "2026-08", "2026-09")}
 
 
-# -------------------------------------------------------------- release split: Android vs iOS by week
-
-def build_release_split(facts, events):
-    """Add-to-cart to order rate by platform and week, with the release date marked.
-
-    The eye should read a bend in the Android line at 14 September, with iOS and non-member
-    lines nearly flat beside it.
-    """
-    # Bucket events by week start. Our generator has three time buckets (Aug comparison,
-    # 2026-09-pre on 10 Sept, 2026-09-post on 20 Sept). Treat each bucket as one week.
-    buckets = [("Aug comp", "2026-08", INK),
-               ("Pre-release", "2026-09-10", DEEP),
-               ("Post-release", "2026-09-20", AMBER)]
-    xs = [1, 2, 3]
-    fig, ax = plt.subplots(figsize=(9, 5))
-    for platform, colour, label in [("android", AMBER, "Android"),
-                                     ("ios", DEEP, "iOS"),
-                                     ("web", INK, "Web")]:
-        rates = []
-        for name, prefix, _ in buckets:
-            pf = events[(events["platform"] == platform)
-                        & (events["event_ts"].str.startswith(prefix))]
-            per_sess = pf.groupby(["session_id", "stage"]).size().unstack(fill_value=0)
-            for s in ("add_to_cart", "order_placed"):
-                if s not in per_sess.columns:
-                    per_sess[s] = 0
-            per_sess = (per_sess > 0).astype(int)
-            rate = (per_sess["order_placed"].sum() / per_sess["add_to_cart"].sum()
-                    if per_sess["add_to_cart"].sum() else 0)
-            rates.append(rate)
-        ax.plot(xs, rates, color=colour, lw=2.4, marker="o", label=label)
-        for x, y in zip(xs, rates):
-            ax.text(x, y + 0.012, f"{y:.2f}", color=colour, ha="center", fontsize=10)
-    ax.axvline(2.5, color=ROSE, lw=1.4, linestyle="--", alpha=0.7)
-    ax.text(2.52, 0.75, "release on 14 Sept",
-            color=ROSE, fontsize=10)
-    ax.set_xticks(xs)
-    ax.set_xticklabels([b[0] for b in buckets], color=INK, fontsize=10)
-    ax.set_ylim(0, 0.85)
-    ax.set_ylabel("add to cart → order placed", color=INK, fontsize=10)
-    ax.legend(loc="lower left", fontsize=10, frameon=False)
-    _frame(ax,
-           "Add-to-cart to order, by platform and week",
-           "Android drops after 14 September; iOS and web are flat.")
-    _save(fig, BOARD / "C2_W04_D04_release_split_STUDENT.png")
+def fill_frame(fig, upto):
+    fig.clf()
+    ax = fig.add_axes([0.11, 0.10, 0.62, 0.78])
+    draw_triangle(ax, upto=upto, note=False)
+    ax.set_title(f"The table at the end of {['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep'][upto - 1]}",
+                 fontsize=14)
+    side = fig.add_axes([0.80, 0.22, 0.18, 0.52])
+    shown = [(i, DASH[m]) for i, m in enumerate(DASH) if int(m[5:]) <= upto]
+    side.set_xlim(-0.5, 3.5)
+    side.set_ylim(0.30, 0.60)
+    side.set_xticks(range(4))
+    side.set_xticklabels(["Jun", "Jul", "Aug", "Sep"], fontsize=12.5)
+    side.set_yticks([0.3, 0.4, 0.5, 0.6])
+    side.set_yticklabels(["30", "40", "50", "60"], fontsize=12.5)
+    side.set_title("dashboard,\npercent", fontsize=12.5, fontweight="normal", color=INK)
+    if shown:
+        xs, ys = zip(*shown)
+        side.plot(xs, ys, color=INK, lw=2.5, marker="o")
+        for x, y in shown:
+            side.text(x, y + 0.02, f"{100 * y:.0f}", ha="center", fontsize=12.5, color=INK)
+    return ax
 
 
-# -------------------------------------------------------------- toy: the two-batches coaching analogy
+fig = plt.figure(figsize=(10.2, 5.0))
+writer = PillowWriter(fps=1)
+with writer.saving(fig, str(BOARDS / f"{STEM}_cohort_fill_STUDENT.gif"), dpi=96):
+    for upto in range(2, 10):
+        fill_frame(fig, upto)
+        writer.grab_frame()
+        if upto == 9:
+            for _ in range(2):
+                writer.grab_frame()
+print("wrote whiteboards/C2_W04_D04_cohort_fill_STUDENT.gif")
+fill_frame(fig, 2)
+fig.savefig(BOARDS / f"{STEM}_cohort_fill_first_STUDENT.png", dpi=150, facecolor="white")
+fill_frame(fig, 9)
+fig.savefig(BOARDS / f"{STEM}_cohort_fill_last_STUDENT.png", dpi=150, facecolor="white")
+plt.close(fig)
+print("wrote the GIF's first and last frames")
 
-def build_toy_batches(facts):
-    """Two coaching batches (invented): the Veritasium opener before any Chennai data."""
-    fig, ax = plt.subplots(figsize=(8, 4.5))
-    bars = [("June batch, m1", 10, DEEP),
-            ("June batch, m2", 6, SOFT),
-            ("July batch, m1", 10, DEEP),
-            ("July batch, m2", 4, SOFT)]
-    for i, (lab, v, c) in enumerate(bars):
-        ax.bar(i, v, color=c, edgecolor=INK, linewidth=1.1)
-        ax.text(i, v + 0.4, str(v), ha="center", color=INK, fontsize=11)
-    ax.set_xticks(range(len(bars)))
-    ax.set_xticklabels([b[0] for b in bars], color=INK, fontsize=10)
-    ax.set_ylim(0, 13)
-    ax.set_ylabel("members who returned", color=INK, fontsize=10)
-    _frame(ax,
-           "Two coaching batches, counted (invented, R1)",
-           "A fresh batch, then a batch that lost members by month two: the picture before the "
-           "Chennai triangle.")
-    _save(fig, BOARD / "C2_W04_D04_toy_batches_STUDENT.png")
+# ------------------------------------------------------------------ 2. the curves
+fig, ax = plt.subplots(figsize=(9.0, 3.8))
+for c in COHORTS:
+    row = tri.loc[c].dropna()
+    ax.plot(row.index, 100 * row.values, marker="o", ms=4, lw=2.4 if c == "2026-08" else 1.6,
+            color=ROSE if c == "2026-08" else VIOLET, alpha=1 if c in ("2026-01", "2026-07", "2026-08") else 0.45)
+    ax.text(row.index[-1] + 0.12, 100 * row.values[-1], NAMES[c], fontsize=12.5,
+            color=ROSE if c == "2026-08" else INK, va="center")
+ax.axhline(38, color=AMBER, lw=1.5, ls="--")
+ax.text(8.6, 39.2, "dashboard 38", color=AMBER, fontsize=12.5, ha="right")
+ax.set_xticks(range(1, 9))
+ax.set_xticklabels([f"month {k}" for k in range(1, 9)])
+ax.set_xlim(0.7, 8.7)
+ax.set_ylabel("percent who ordered")
+ax.set_ylim(28, 62)
+save(fig, "retention_curves")
+
+# ------------------------------------------------------------------ 3. the blend decomposed
+fig, ax = plt.subplots(figsize=(9.0, 3.9))
+months = ["2026-06", "2026-07", "2026-08", "2026-09"]
+for x, m in enumerate(months):
+    bottom = 0
+    cells = mm[(mm.month == m) & (mm.age >= 2)].groupby("cohort_month")["active"].agg(["size", "sum"])
+    for c, row in cells.iterrows():
+        ax.bar(x, row["sum"], bottom=bottom, color=VIOLET, edgecolor="white", width=0.55)
+        ax.bar(x, row["size"] - row["sum"], bottom=bottom + row["sum"], color=TINT, edgecolor="white", width=0.55)
+        if row["size"] > 3000:
+            ax.text(x, bottom + row["size"] / 2, NAMES[c], ha="center", va="center", fontsize=12, color=INK)
+        bottom += row["size"]
+    ax.text(x, bottom + 700, f"{100 * DASH[m]:.0f} percent\nof {bottom:,}", ha="center", fontsize=12.5, color=INK)
+aug = int(sizes["2026-08"])
+aug_on = int(mm[(mm.month == "2026-09") & (mm.cohort_month == "2026-08")]["active"].sum())
+ax.bar(3.62, aug_on, color=ROSE, width=0.4, alpha=0.9)
+ax.bar(3.62, aug - aug_on, bottom=aug_on, color="#F6C9D6", width=0.4, hatch="//", edgecolor="white")
+ax.text(3.62, aug + 700, "Aug cohort,\nnot counted", ha="center", fontsize=12, color=ROSE)
+ax.set_xticks(range(4))
+ax.set_xticklabels(["June", "July", "August", "September"])
+ax.set_ylabel("members counted")
+ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v:,.0f}"))
+ax.set_ylim(0, 43000)
+ax.set_xlim(-0.5, 3.95)
+ax.text(-0.45, 40800, "dark: ordered that month; light: did not", fontsize=12, color=MUTED)
+save(fig, "blend_decomposition")
+
+# ------------------------------------------------------------------ 4. the funnel in two units
+ev = pd.read_csv(DATA / f"{STEM}_events_STUDENT.csv.gz", usecols=["user_id", "is_member", "session_id",
+                                                                  "event_ts", "stage", "platform"])
+ev["date"] = pd.to_datetime(ev["event_ts"].str[:10])
+sep = ev[ev.is_member & (ev.date.dt.month == 9)]
+STAGES = ["open", "search", "menu_view", "add_to_cart", "checkout_start", "order_placed"]
+per_s = sep.groupby("stage")["session_id"].nunique().reindex(STAGES)
+per_m = sep.groupby("stage")["user_id"].nunique().reindex(STAGES)
+fig, axes = plt.subplots(1, 2, figsize=(9.0, 3.4), sharey=True)
+labels = ["open to search", "search to menu view", "menu view to cart", "cart to checkout", "checkout to order"]
+for ax, counts, unit in ((axes[0], per_s, "sessions"), (axes[1], per_m, "members")):
+    rates = [counts[STAGES[i + 1]] / counts[STAGES[i]] for i in range(5)]
+    colours = [ROSE if r > 1 else (VIOLET if unit == "sessions" else DEEP) for r in rates]
+    ax.barh(range(5), [100 * r for r in rates], color=colours, height=0.62)
+    for i, r in enumerate(rates):
+        ax.text(100 * r + 3, i, f"{100 * r:.0f}", va="center", fontsize=13, color=INK)
+    ax.axvline(100, color=MUTED, lw=1, ls=":")
+    ax.set_yticks(range(5))
+    ax.set_yticklabels(labels, fontsize=12.5)
+    ax.set_xlim(0, 140)
+    ax.set_xticks([0, 50, 100])
+    ax.set_title(f"Counted in {unit}", fontsize=13.5)
+axes[0].invert_yaxis()
+axes[0].set_xlabel("percent of the step before")
+axes[1].set_xlabel("percent of the step before")
+save(fig, "funnel_two_units")
+
+# ------------------------------------------------------------------ 5. the release split by week
+sess = ev[ev.stage.isin(["add_to_cart", "order_placed"])].copy()
+sess["week"] = sess["date"].dt.to_period("W-SUN").dt.start_time
+def both(seg):
+    return f"{100 * F[f'atc_to_order_{seg}_before']:.0f} before, {100 * F[f'atc_to_order_{seg}_after']:.0f} after"
 
 
-def build_toy_blend(facts):
-    """The second toy: batch A of 100 shrinks to 40 while batch B of 400 enters at 52.5.
+grp = {f"members on Android: {both('member_android')}": (sess.is_member & (sess.platform == "android"), ROSE),
+       f"members on iOS: {both('member_ios')}": (sess.is_member & (sess.platform == "ios"), VIOLET),
+       f"non-members on Android: {both('nonmember_android')}": (~sess.is_member & (sess.platform == "android"), MUTED)}
+fig, ax = plt.subplots(figsize=(9.0, 3.9))
+for name, (mask, colour) in grp.items():
+    g = sess[mask].groupby(["week", "stage"])["session_id"].nunique().unstack()
+    rate = g["order_placed"] / g["add_to_cart"]
+    ax.plot(range(len(rate)), 100 * rate.values, marker="o", lw=2.4, color=colour, label=name)
+weeks = list(rate.index)
+release_x = weeks.index(pd.Timestamp("2026-09-14"))
+ax.axvline(release_x - 0.5, color=INK, lw=1.2, ls="--")
+ax.text(release_x - 0.42, 63.2, "new checkout on\nAndroid, 14 Sep", fontsize=12, color=INK, va="top")
+ax.set_xticks(range(len(weeks)))
+ax.set_xticklabels([("1 Aug" if i == 0 else f"{w.day} {w:%b}") for i, w in enumerate(weeks)], fontsize=12)
+ax.set_xlabel("week starting")
+ax.set_ylabel("cart to order, percent")
+ax.set_ylim(36, 64)
+ax.legend(frameon=False, loc="lower left")
+save(fig, "release_split")
 
-    Stacked bars that stay at 500 members total, blended retention stuck at 50 percent while A
-    falls hard.
-    """
-    fig, ax = plt.subplots(figsize=(8, 4.5))
-    # Last month: A at 100 members, 50 retained.
-    # This month: A at 100 members, 40 retained; B at 400 members, 210 retained; blend 250/500.
-    labels = ["last month", "this month"]
-    a_members = [100, 100]
-    a_retained = [50, 40]
-    b_members = [0, 400]
-    b_retained = [0, 210]
+# ------------------------------------------------------------------ 6. which step broke
+fig, ax = plt.subplots(figsize=(8.0, 3.5))
+vals = [(F["android_members_cart_to_checkout_before"], F["android_members_cart_to_checkout_after"]),
+        (F["android_members_checkout_to_order_before"], F["android_members_checkout_to_order_after"])]
+for i, (b, a) in enumerate(vals):
+    ax.bar(i - 0.18, 100 * b, width=0.34, color=VIOLET, label="1 Aug to 13 Sep" if i == 0 else None)
+    ax.bar(i + 0.18, 100 * a, width=0.34, color=ROSE, label="14 to 30 Sep" if i == 0 else None)
+    ax.text(i - 0.18, 100 * b + 2.5, f"{100 * b:.1f}".replace(".0", ""), ha="center", fontsize=13)
+    ax.text(i + 0.18, 100 * a + 2.5, f"{100 * a:.1f}".replace(".0", ""), ha="center", fontsize=13)
+ax.set_xticks([0, 1])
+ax.set_xticklabels(["cart to checkout start", "checkout start to order"])
+ax.set_ylabel("percent of the step before")
+ax.set_ylim(0, 118)
+ax.legend(frameon=False, loc="upper right", ncol=2)
+save(fig, "stage_split")
 
-    xs = range(len(labels))
-    ax.bar(xs, a_members, color=SOFT, edgecolor=INK, linewidth=0.6, label="batch A, present")
-    ax.bar(xs, a_retained, color=DEEP, edgecolor=INK, linewidth=0.6,
-           label="batch A, retained")
-    ax.bar(xs, b_members, bottom=a_members, color=WARM, edgecolor=INK, linewidth=0.6,
-           label="batch B, present")
-    ax.bar(xs, b_retained, bottom=a_members, color=AMBER, edgecolor=INK, linewidth=0.6,
-           label="batch B, retained")
-    for x in xs:
-        total_mem = a_members[x] + b_members[x]
-        total_ret = a_retained[x] + b_retained[x]
-        if total_mem:
-            ax.text(x, total_mem + 15, f"blend {total_ret}/{total_mem} = "
-                                        f"{total_ret / total_mem:.2f}",
-                    ha="center", color=INK, fontsize=10)
-    ax.set_xticks(xs)
-    ax.set_xticklabels(labels, color=INK, fontsize=10)
-    ax.set_ylim(0, 600)
-    ax.set_ylabel("members", color=INK, fontsize=10)
-    ax.legend(loc="upper left", fontsize=9, frameon=False)
-    _frame(ax,
-           "A batch falls, a bigger batch enters, blend holds (invented, R1)",
-           "Each batch's rate changes while the blend sits at 50 percent.")
-    _save(fig, BOARD / "C2_W04_D04_toy_blend_STUDENT.png")
+# ------------------------------------------------------------------ 7. the sale cohort beside organic
+fig, ax = plt.subplots(figsize=(8.0, 3.0))
+bars = [("July cohort", F["m1_jul"], VIOLET), ("August, organic", F["aug_m1_organic"], VIOLET),
+        ("August, sale week", F["aug_m1_sale"], ROSE), ("August, all", F["m1_aug"], DEEP)]
+for i, (name, v, colour) in enumerate(bars):
+    ax.barh(i, 100 * v, color=colour, height=0.62)
+    ax.text(100 * v + 1, i, f"{100 * v:.0f} percent", va="center", fontsize=13)
+ax.set_yticks(range(len(bars)))
+ax.set_yticklabels([b[0] for b in bars])
+ax.invert_yaxis()
+ax.set_xlim(0, 70)
+ax.set_xlabel("ordered in month one, percent")
+save(fig, "sale_vs_organic")
 
+# ------------------------------------------------------------------ 8. the weekly rerun
+wk = {}
+for n in facts["numbers"]:
+    if n["id"].startswith("weekly_cohort_") and "_w" in n["id"]:
+        week, k = n["id"][len("weekly_cohort_"):].rsplit("_w", 1)
+        wk.setdefault(week, {})[int(k)] = n["value"]
+fig, ax = plt.subplots(figsize=(9.0, 3.8))
+for week, row in sorted(wk.items()):
+    ks = sorted(row)
+    sale = week == "2026-08-17"
+    label = pd.Timestamp(week).strftime("%-d %b") + (", the sale week" if sale else "")
+    ax.plot(ks, [100 * row[k] for k in ks], marker="o", lw=2.8 if sale else 1.6,
+            color=ROSE if sale else VIOLET, alpha=1 if sale else 0.55, label=label)
+ax.set_xticks(range(1, 8))
+ax.set_xticklabels([f"week {k}" for k in range(1, 8)])
+ax.set_ylabel("percent who ordered")
+ax.set_ylim(0, 60)
+ax.set_xlim(0.8, 9.6)
+ax.legend(frameon=False, title="signup week", title_fontsize=12.5, loc="upper right")
+save(fig, "weekly_cohorts")
 
-# -------------------------------------------------------------- orchestrate
+# ------------------------------------------------------------------ 9. the toys (invented)
+t = TOYS["toy_two_batches"]
+fig, ax = plt.subplots(figsize=(7.4, 2.2))
+for i, (name, size, back) in enumerate((("June batch", t["june_batch"], t["june_back_m2"]),
+                                         ("July batch", t["july_batch"], t["july_back_m2"]))):
+    for j in range(size):
+        ax.add_patch(plt.Circle((j, -i * 1.4), 0.38, color=VIOLET if j < back else LINE))
+    ax.text(-0.9, -i * 1.4, name, ha="right", va="center", fontsize=14)
+    ax.text(size - 0.2, -i * 1.4, f"{back} of {size} back", va="center", fontsize=14)
+ax.set_xlim(-4.2, 13.4)
+ax.set_ylim(-2.0, 0.6)
+ax.set_aspect("equal")
+ax.axis("off")
+save(fig, "toy_batches")
 
-def build():
-    facts = yaml.safe_load(FACTS.read_text())
-    members = pd.read_csv(DATA / "C2_W04_D04_members_STUDENT.csv")
-    member_months = pd.read_csv(DATA / "C2_W04_D04_member_months_STUDENT.csv")
-    events = pd.read_csv(DATA / "C2_W04_D04_events_STUDENT.csv")
+t = TOYS["toy_blend"]
+fig, axes = plt.subplots(1, 2, figsize=(8.4, 3.4), sharey=True)
+panels = [("Last month", [("A", t["a_size"], round(t["a_size"] * t["a_last_month"]))]),
+          ("This month", [("A", t["a_size"], round(t["a_size"] * t["a_now"])),
+                          ("B", t["b_size"], round(t["b_size"] * t["b_rate"]))])]
+for ax, (title, parts) in zip(axes, panels):
+    bottom = 0
+    for name, size, came in parts:
+        ax.bar(0, came, bottom=bottom, color=VIOLET, width=0.5)
+        ax.bar(0, size - came, bottom=bottom + came, color=TINT, width=0.5)
+        ax.text(0.32, bottom + size / 2, f"batch {name}:\n{came} of {size}", va="center", fontsize=13)
+        bottom += size
+    total = sum(p[2] for p in parts)
+    members_ = sum(p[1] for p in parts)
+    ax.set_title(f"{title}: {total} of {members_},\n{100 * total / members_:.0f} percent", fontsize=13.5)
+    ax.set_xlim(-0.4, 1.5)
+    ax.set_xticks([])
+axes[0].set_ylabel("members")
+save(fig, "toy_blend")
 
-    build_triangle(facts, members, member_months)
-    build_blend_decomposition(facts, members, member_months)
-    build_funnel(facts, events, members)
-    build_release_split(facts, events)
-    build_toy_batches(facts)
-    build_toy_blend(facts)
-
-
-if __name__ == "__main__":
-    build()
+# Test inputs and expected outcomes
+# python3 content/W04/D4/internal/C2_W04_D04_figures_INTERNAL.py (after the generator)
+#     writes nine PNGs, one GIF and the GIF's first and last frames to whiteboards/, and prints each path
+# the same run without the events file in data/
+#     stops at section 4 with FileNotFoundError, after the triangle, curves and blend pictures are written

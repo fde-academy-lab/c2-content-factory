@@ -1,248 +1,252 @@
-# What the data cannot show, what to fix first, and the interview walk
+# What does Zomato Gold fix first, and how do you walk an interviewer through it?
 
-Week 4, Day 4. Afternoon.
+Week 4, Day 4. Half two.
 
-Kicker: WEEK 4  ·  THURSDAY  ·  AFTERNOON
-Quote: You have a stage, a segment and a date. Before you call the fix, name what the data cannot show. And then walk me through the investigation in the order a hiring screen expects.
-Who: Kavya Nair, senior analyst, to the team's own analyst, and the hire-grade shape for the transcript that follows.
+Header: WEEK 4  ·  DAY 4  ·  ZOMATO GOLD, CHENNAI, AN ILLUSTRATIVE CASE
+
+## SECTION 4: What is fixed first?
+*The morning found two problems, a dashboard that reads 38 because of who it counts and one broken step on Android: which goes first, on what evidence, at what cost, and what does the app team's lead say?*
 
 ```notes
-LIVE, one minute. The afternoon is 60 trainer minutes before the IITGN block (tentative) at W4-3,
-or the weaned-users fallback if the block slips. Read the opening line and the thread: Trust, in
-the specific sense of a flat number hiding a collapse.
+Sixty trainer minutes: the fix-first call unguided (30), the interview walk and the AI-company
+variant (15), the Kahoot and the close (15). Then the IITGN faculty session W4-3 runs (tentative),
+or the weaned-users fallback if it slips.
+LIVE, 30 minutes, unguided, in the nine groups. L5. Styles: the case method (the app team's lead
+argues from a role card and is partly right), Feynman (the call in one sentence a membership lead
+could repeat).
+Transition: the task.
 ```
 
 ---
 
-## SECTION 4: What can the table not show?
-*Six caveats the engineer must say aloud before any fix moves.*
+## S38. The task: one call, five lines, one page
+*What does a fix-first call carry, and in what order?*
 
----
+```timeline
+label: 1 | title: The call | body: What gets fixed first, in one sentence
+label: 2 | title: The evidence | body: The stage, the segment and the date, each with its number
+label: 3 | title: The cost | body: Orders a week and rupees, with every assumption named and ranged
+label: 4 | title: The objection | body: The app team's lead, answered with the split that settles it
+label: 5 | title: What would change it | body: The one fact that would reverse the order | tone: dark
+```
 
-## S1. Six caveats, each with the check that would settle it
-*What might make the morning's call wrong, and how is each one tested?*
-
-| Caveat | Why it matters | The check |
-|---|---|---|
-| Selection: the sale cohort was bought on a discount | A sale cohort may churn differently from an organic one | Place the August organic subcohort beside July's organic cohort at the same ages |
-| Censoring: the latest cohorts are young | A member who has not left is not retained for ever | Named for W4-3; treat her as censored and read the curve with that in mind |
-| Seasonality: exam months in student-heavy zones | A zone effect can masquerade as a cohort effect | Split by zone and look at IT-corridor and south against the city total |
-| The tracking change: renamed events on Android | A redefined column shifts the number without changing behaviour | Use the app team's mapping; shift the release date a week either way; the fall holds |
-| Sessions against members | The two units mean different things | Name the unit on every chart |
-| Before-and-after is not cause | Something else may have changed in the same window | Note Zomato Gold's 60 percent frequency rise after joining (Th4) as the self-selection shape |
+Each group writes the five lines for the membership lead on one page, then a second page doing the same for Kalpa's head of Retail-Plus after the lab. Every number comes from the morning's notebooks.
 
 ```notes
-LIVE, 6 minutes. Walk every row aloud. The teaching move is Veritasium's: name the misconception
-first, then the test. Trust the data less than the room thinks, and name what each caveat would
-and would not change.
+LIVE, 4 minutes to set up, then 18 minutes of writing. Circulate with one question per group:
+which line of your evidence would the app team's lead attack first? Groups that write "fix
+retention" with no stage are sent back to the chapter 3 split.
+Transition: the app team's lead.
 ```
 
 ---
 
-## S2. Zomato's own number: frequency rises after joining
-*What does the published 60 percent frequency rise after joining Gold say, and what does it not?*
+## S39. The app team's lead: "our checkout is fine"
+*What does the app team's lead claim, what is true in it, and what answers it?*
+
+![Android members: the step that changed is checkout to order](../whiteboards/C2_W04_D04_stage_split_STUDENT.png)
+
+**The claim.** "Carts that start checkout held at 80 percent on every platform, before and after 14 September, so the new flow works." **What is true.** Starting checkout did not break. **What answers it.** Completing the order once checkout has started fell from 72.5 to 55 percent, for members on Android, from the release week. Concede the true part, restate the question, bring the split.
+
+```notes
+LIVE, 5 minutes. A learner reads the role card aloud (TRAINER role card); one group answers in
+the four moves from Tuesday: restate, answer from the evidence, concede what is true, say what
+would change your mind. A response that calls the app team wrong has lost; the chart is right
+about the step it measures.
+Transition: what each problem costs.
+```
+
+---
+
+## S40. What each problem costs, side by side
+*How big is each loss, in orders and rupees, and how sure is each number?*
+
+```stats
+value: 1,317 | label: orders a week | note: not placed after the release: 22,841 Android member carts in 17 days, at 58 against 44 percent
+value: Rs 5.3 lakh | label: of orders a week | note: at Rs 400 an order, an assumption from Rs 300 (Rs 4.0 lakh) to Rs 500 (Rs 6.6 lakh)
+value: 0.23 | label: orders per sale-week member | note: in month one, against 0.61 for an organic August member
+value: 33 | label: percent, October | note: the dashboard once the sale cohort enters, if it falls as July's did (32 to 34)
+```
+
+The release costs orders every week it stays live, and a code fix ends it. The sale cohort's weakness is already bought; what can still change is the next sale's design.
+
+```notes
+LIVE, 4 minutes. Read each number with its assumption. The 1,317 assumes the carts that failed
+would have converted at the old rate; members who retried and ordered later make it an upper
+bound, which orders per active Android member (1.36 in August, 1.20 in September, against iOS
+1.34 and 1.40) bear out. Ask which number the membership lead can act on this week.
+Transition: the wrong fix.
+```
+
+---
+
+## S41. The wrong fix: buy more sale members
+*What would "fix retention" with more acquisition do to the number, and to the business?*
 
 ```mermaid
 flowchart LR
-    A["<b>member joins Gold</b><br/>chooses to pay in a month<br/>she expects to order more"] --> B["<b>her frequency rises 60 percent</b><br/>published average, R2 (Th4)"]
-    C["<b>member did not join</b><br/>her frequency stays as it is"] -.-> B
-    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    A["<b>another sale</b><br/>a big discounted cohort"] --> B["<b>its month two</b><br/>enters the dashboard's count"]
+    B --> C["<b>the dashboard falls again</b><br/>and the discount is spent"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    class A,B bet
-    class C bad
+    class A,B,C bad
 ```
 
-The published number is real and does not say Gold caused the rise. A member who joins is also a member who expected to order more that month. The matched comparison is to the member who did not join but could have, which is what L4 demands before any causal claim.
+**What breaks.** "Retention will recover if we run another sale." The next discounted cohort enters the count at its month two and, if it behaves like this one, pulls the dashboard down again at the discount's cost.
+
+**The rule.** Judge the next sale on its own cohort curve before buying it, and leave search to menu view alone: its 118 percent was never a broken step.
 
 ```notes
-LIVE, 3 minutes. This is the self-selection caveat with its company fact. Say "before and after is
-not cause" twice. The R2 citation is Zomato's shareholder letter, verified 12 October 2026. The
-transcript in L6 will ask a shorter version of this question.
+LIVE, 4 minutes. Two traps of L5: acquiring your way out of a retention problem, and fixing the
+skippable stage. If a group asks what a real company did instead: Swiggy went the other way and
+weaned away more than 4 million unprofitable Instamart users (its Q1 FY27 letter, the fallback
+block's first part). Then the groups finish their page.
+Source:
+https://nsearchives.nseindia.com/corporate/SWIGGY_30072026154100_Covering_Letter_Letter_to_Shareholders_-_signed.pdf (checked 12 October 2026)
+Transition: the call, said in one breath.
 ```
 
 ---
 
-## SECTION 5: What is fixed first, and what does it cost?
-*The three-line call, the dispute, and the sale cohort's accounting.*
+## S42. The call: the Android checkout first
+*What does a hire-grade call say, in the order the membership lead needs it?*
 
----
-
-## S3. The call: Android checkout, members, from 14 September
-*Which stage, for whom, since when, and what does the room cost into the fix?*
-
-**The call.** Fix the Android members' checkout flow that shipped on 14 September. Keep the sale-cohort action until L5's lifetime value number lands next week.
-
-**The evidence.** Add-to-cart to order fell from 0.58 to 0.44 on Android. iOS stayed within two points, web was flat. The fall is one stage, one platform, after one date.
-
-**The cost.** The gap times Android members' weekly add-to-cart sessions in September, from the facts file. The multiplier is an average order value with its range, labelled an assumption so Finance can reset it before the number ships.
+**The call.** Fix the last step of the new Android checkout for members first: it loses about 1,317 orders a week, and a code fix ends the loss. **The evidence.** Checkout start to order placed fell from 72.5 to 55 percent for members on Android from the release week; starting checkout held at 80; iOS members (57 to 56) and non-members on Android (52 to 51) held; the fall holds with the cut moved a week either way. **The cost.** About Rs 5.3 lakh of orders a week at Rs 400 an order, Rs 4.0 to 6.6 lakh across the assumption's range. **The second problem.** The sale-week members kept 20 percent in month one against 49 for organic August members; judge the next sale on its own cohort curve before running it. **What would change the order.** If the lost carts were mostly retried and ordered later, the release costs friction rather than orders, and the sale cohort would go first.
 
 ```notes
-LIVE, 4 minutes. State the call, the evidence and the cost in exactly this order. Lead with the
-call, not the number: a city head wants the sentence first. The cost is a labelled number with
-its assumption named, which is what L5 asks for in the hire-grade answer.
+LIVE, 3 minutes. One group reads its call; the room scores it against the five lines. This is the
+model, not the only answer: a group that puts the sale cohort first with a reason that holds has
+made a defensible call, and the room should hear why.
+Transition: the interview.
 ```
 
 ---
 
-## S4. The app team's chart, answered on its own axes
-*The app team shows overall conversion flat across all platforms. What does that chart leave out?*
+## SECTION 5: What does the interviewer hear?
+*"Retention dropped; walk me through your investigation." How does a hire-grade candidate order it, and how does the same idea apply to an AI product?*
+
+```notes
+LIVE, 15 minutes. L6. Pairs read the transcript in the extras folder: one plays the interviewer,
+one the candidate; they score the hire-grade answer on the scorecard's seven lines and swap.
+Explorer scene Th4 carries the AI-company variant.
+Transition: the order of the walk.
+```
+
+---
+
+## S43. The walk: tracking, definition, segments, users, step
+*In what order does a strong candidate investigate a retention drop?*
 
 ```mermaid
 flowchart LR
-    A["<b>overall conversion</b><br/>all platforms, all members<br/>flat before and after"] -->|the question| B["<b>which members, on which platform, after which date?</b>"]
-    B --> C["<b>Android members, after 14 September</b><br/>0.58 to 0.44, 14 points"]
-    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class A known
-    class B,C bet
-```
-
-The app team's chart is correct and useless. The right chart drops the three contrasts their chart averages over: platform, membership and date. Each one is in the data; the room draws it in one `groupby`.
-
-```notes
-LIVE, 3 minutes. The move is the case-method's: concede what is true (overall is flat), restate
-what the question asked (members on Android after 14 September), and bring the chart that answers
-the question asked. The response is a dispute answered, not a dispute won.
-```
-
----
-
-## S5. What the sale cohort cost, in orders not received
-*How much of the September gap is the Android fall, and how much is the August cohort's own retention?*
-
-The Android fall is 14 points on an add-to-cart base that the facts file sizes for September.
-The August cohort's month-one retention is 31 percent against the organic cohorts' low 50s. On 13,000 members, each extra point of month-one retention is 130 members ordering in September. The two gaps sum to a weekly orders number the city head can hand to Finance.
-
-The call keeps the stage as the fix-first; the sale-cohort decision waits for Week 5's lifetime value number, which decides whether the discount paid for itself.
-
-```notes
-LIVE, 3 minutes. Say the arithmetic aloud. The teaching move is Krish Naik's: compute the number
-with the room, name what each assumption is, and name what makes it change. Lifetime value is
-Week 5, not today.
-```
-
----
-
-## SECTION 6: The interview walk
-*Retention dropped; walk me through it. And the AI-company variant.*
-
----
-
-## S6. The transcript, in Aced's order
-*Retention dropped. Walk me through your investigation. How does a hire-grade candidate open?*
-
-```mermaid
-flowchart LR
-    A["<b>definition</b><br/>what is retention,<br/>in which unit"] --> B["<b>tracking</b><br/>did anything change<br/>in how the number is counted"]
-    B --> C["<b>segment</b><br/>platform, membership,<br/>date, zone"]
-    C --> D["<b>users or use</b><br/>fewer users against<br/>less use per user"]
-    D --> E["<b>funnel</b><br/>per stage, per unit,<br/>per date"]
-    E --> F["<b>call</b><br/>the stage, the segment,<br/>the cost"]
+    A["<b>1. Tracking</b><br/>did the count change?"] --> B["<b>2. Definition</b><br/>who is counted, from when?"]
+    B --> C["<b>3. Segments</b><br/>cohort, platform, date, zone"]
+    C --> D["<b>4. Users or use</b><br/>fewer users, or fewer orders each?"]
+    D --> E["<b>5. The step</b><br/>which step changed, for whom?"]
+    E --> F["<b>6. The call</b><br/>fix, evidence, cost"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class A,B,C,D,E known
     class F lit
 ```
 
-| Beat | Weak answer | Hire-grade answer |
+| | A weak answer | A hire-grade answer |
 |---|---|---|
-| Clarifying questions | None; starts naming causes | "Which cohort window, which segment, what is retention here defined as?" |
-| First check | "The sale cohort is the cause" | "First the definition and the tracking: did either change?" |
-| Second check | Jumps to a product change | "Then the segment cuts: platform, membership, date, zone" |
-| Third check | Blames the funnel | "Fewer users or less use per user: separate before blaming either" |
-| Fourth check | not reached | "Then the funnel per stage, per unit, per date" |
-| Close | "The retention dropped" | "The call, the stage it is in, the evidence that rules out everything else, the cost in orders a week" |
+| First sentence | "It's probably the sale cohort." | "Before a cause, I'd check the count, then what the number counts." |
+| The flat 38 | Accepts it | "Who does month-two retention count, and from when?" |
+| The split | Overall conversion | Cohort, platform and date, then fewer users against fewer orders each |
+| The close | "Retention dropped." | "One step on Android since 14 September, about 1,317 orders a week; the sale cohort next." |
 
 ```notes
-LIVE, 5 minutes. Walk the two columns side by side. The hire-grade answer opens on method and
-closes on a decision; the weak one opens on a cause and skips the method. The scorecard is in
-trainer/C2_W04_D04_transcript_TRAINER (finishing session owns it).
+LIVE, 6 minutes. The order is Aced's (T2): rule out data issues first, isolate by segment, then
+separate fewer users from less use per user. The weak answer names a cause in its first sentence.
+Transition: the AI-company variant.
 ```
 
 ---
 
-## S7. The AI-company variant: novelty against habit
-*How do you separate the launch-week bump from real retention when a new AI feature ships?*
+## S44. The AI variant: judge each cohort at week four
+*An AI app's launch week brings its biggest cohort ever. How do you know whether it is habit or novelty?*
 
-| What arrives | What it looks like at first | What it looks like at week four |
+| | Launch-week cohort | A cohort that found the app on its own |
 |---|---|---|
-| A launch-week cohort | Day-1 and day-2 reads look strong because the feature is new | Retention falls faster than organic cohorts' once novelty fades |
-| An organic cohort | Day-1 and day-2 reads look normal | Retention curve follows the shape of earlier organic cohorts |
-| A blended MAU reading | Climbs through the launch and holds | Hides the launch cohort's decay beneath the organic prop |
+| Week one | Looks strong: the feature is new | Looks normal |
+| Week four (invented numbers) | 24 percent still active | 36 percent still active |
+| The blended weekly actives | Climb through the launch and look like recovery later | Keep arriving and prop the blend |
 
-The call is to compare week-4 retention per cohort, never a blended MAU, when a launch is still inside the window. The structure is the same as Chennai's: a mix shift masks a drop.
+```mermaid
+flowchart LR
+    L["<b>launch-week cohort</b><br/>week four: 24 percent"] --> B["<b>blended weekly actives</b><br/>looks like recovery"]
+    O["<b>a cohort that came on its own</b><br/>week four: 36 percent"] --> B
+    N["<b>new cohorts every week</b>"] --> B
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class O,N known
+    class L,B bad
+```
+
+**The call.** Judge each cohort at the age where habit shows, week four or later, and never the blended count of active users, which new cohorts keep propping up. The structure is Chennai's: a mix that hides a fall.
 
 ```notes
-LIVE, 4 minutes. This is the programme-written AI variant. It carries no company figure; it uses
-the structure the day has already taught. The transfer from a membership app to an AI product is
-the move the Saturday paper tests across companies.
+LIVE, 4 minutes. Programme-written, every number a toy (explorer scene Th4 shows the same toy).
+The transfer: a launch cohort is a sale cohort in an AI product.
+Transition: the handoff.
 ```
 
 ---
 
-## S8. Pain points, each anchored to a case
-*Which pain points carry today's lesson into interviews?*
+## S45. The handoff: the member who has not left yet
+*What does the cohort table get wrong about its newest members, and who picks it up?*
 
-| Pain point | Case anchor |
-|---|---|
-| A blend cannot separate fewer users from less use per user | Swiggy's letter (Th3): MTU up 27.4 percent while platform frequency fell 6.3 percent |
-| A cohort chart with a moving denominator | Swiggy Instamart (Th2): the triangle indexed to Q4 FY24; the denominator question |
-| Before-and-after read as cause | Zomato (Th4): Gold frequency rose 60 percent after joining |
-| A stage counted in sessions beside a stage counted in members | The case: search-to-menu-view at 1.20 per session, well-behaved per member |
-| A universal "good retention" number | Amplitude (Th5): 7 percent day-7 cited as top quartile with a vendor caveat |
+**The handoff line.** "Your cohort table treats a member who has not left yet as if she were retained for ever, and that flatters every curve. The next 120 minutes give that member a name, censored, and show when two curves really differ by more than chance."
+
+The next block is the IITGN faculty session W4-3 on survival curves, censoring and hazard, tentative until IIT Gandhinagar confirms it.
 
 ```notes
-LIVE, 3 minutes. Pick one and tell its story: the Swiggy MTU-against-frequency split is clean,
-quick and loud. The links are in the facts file and the study notes.
+LIVE, 1 minute. Say the handoff line word for word and stop. If the block has slipped, open the
+fallback deck (the weaned-users block). Park any "is the difference real" question for the block.
+Transition: the Kahoot.
 ```
 
 ---
 
-## S9. The handoff line to IITGN W4-3 (tentative)
-*Where does the trainer stop, and what does the tentative faculty block pick up?*
-
-**Handoff line.** Your cohort table treats a member who has not left yet as if she were retained for ever, and that flatters every curve. The next 120 minutes give that member a name, censored, and show when two retention curves really differ by more than chance.
-
-The faculty block is W4-3 and is tentative until IIT Gandhinagar confirms it. The topic is survival curves, censoring and the log-rank; the fallback is the weaned-users hour on Swiggy's own triangle.
+## SECTION 6: What does the room carry out?
+*Which of the day's calls can the room make in seconds, and what does the day close on before Friday's ticket?*
 
 ```notes
-LIVE, 2 minutes. Say the handoff. If the block slips, pivot to the fallback: Swiggy's weaned
-users, the row's monthly-against-weekly re-run, the Zomato frequency rise and the second
-transcript. Trainer owns the choice when the day runs.
+LIVE, 15 minutes. The Kahoot (10) and the close (5).
+Transition: the Kahoot.
 ```
 
 ---
 
-## S10. Kahoot: eight items, two returns
-*What does the room still owe the day, and what did Wednesday leave open?*
+## S46. Kahoot: eight items, one from Wednesday
+*Which of the day's calls can the room make in seconds?*
 
-| Item | What it asks | Where it points |
-|---|---|---|
-| Q1 | What a cohort fixes that a blended average cannot | The entry moment |
-| Q2 | Read the funnel: which stage owns the loss | The stage, per unit, per date |
-| Q3 (trap) | Blended retention flat, every cohort down: how | Mix shift and the weighted average |
-| Q4 | The retention curve's floor means what | A steady state is a cohort's long-run share |
-| Q5 | Which stage's drop is a denominator artefact | The one above 100 percent, or the one whose unit changed |
-| Q6 (return) | Lift 0.97 at confidence 0.82: verdict in one breath | A one-off; confidence is popularity |
-| Q7 | What does "members on Android after 14 September" rule out | Everyone else, so the comparator is iOS |
-| Q8 | The AI variant: when does a blended MAU hide a launch cohort's decay | Inside the launch window, before week 4 |
+```cards
+icon: users | eyebrow: Items 1 to 4 | title: Cohorts and the blend | body: What a cohort fixes; a blend that holds while cohorts fall; what the dashboard counts; the retention curve's floor | tone: light
+icon: filter | eyebrow: Items 5 to 7 | title: The funnel | body: The step that owns a loss; a step above 100 percent; per session against per member | tone: light
+icon: rotate-ccw | eyebrow: Item 8 | title: Back to Wednesday | body: Bread to milk, confidence 0.74 and lift 1.04: the verdict in one breath | tone: dark
+```
 
 ```notes
-LIVE, 10 minutes with Kahoot. The trap item (Q3) uses a blend other than 38 and never 41, so the
-plant stays Kalpa's. The return question is from Wednesday, with the quick-breath verdict.
+LIVE, 10 minutes. Ungraded, scored on correctness and speed. The trap item uses a blend other than
+38. Read the most-missed item's answer aloud before the close.
+Transition: the close.
 ```
 
 ---
 
-## S11. The day in one sentence, and tomorrow's pre-read
-*What does Thursday close on, and what should Friday's room walk in holding?*
+## S47. The day in one sentence, and Friday's ticket
+*What does Thursday close on, and what is Friday's question?*
 
-The dashboard was flat because the mix shifted. Every cohort fell with age. One stage, on one platform, after one date, drove members' loss. The call is a fix in one place and a cohort-level comparison the sale-week decision waits on.
+**The sentence.** The dashboard was flat because of who it counts: every cohort fell, the newest started lower, and the sale cohort is outside the count until October; the orders were lost in one step, on one platform, after one date.
 
-Tomorrow is Flipkart's Lucknow fulfilment centre and the forecast that must beat a seasonal naive. Pre-read: the ticket's first lines and the terms baseline, trend, seasonality, hold-out, error.
+**The crux lines.** A cohort fixes the entry moment. A blend is a size-weighted average and counts who it counts. Each funnel step divides by the step before, in one named unit. A low step is not a loss until it moves.
+
+**Friday.** Flipkart's Lucknow fulfilment centre must book packer shifts for the festive weeks, and two forecasts sit eighteen points apart: which one goes to the plan, and how wrong could it be? The pre-read ships tonight: the ticket's first lines and five terms.
 
 ```notes
-LIVE, 2 minutes. Say the sentence. The pre-read ships tonight, terms only; no technique. The TA
-lab after this block owns L1 to L3 on Kalpa's Retail-Plus, with the plant found in the lab's
-empty your-turn cell.
+LIVE, 4 minutes. Say the sentence twice. The TA lab after the block runs the same method on Kalpa
+Retail's Retail-Plus tier. The cohort axis built today is Friday's time axis.
+Transition: the faculty block (tentative) or the fallback.
 ```
