@@ -659,6 +659,7 @@ def verify_case(cart_df, item_df, twelve_df):
     check("every other pair above the floor sits below lift 1.15", nxt.lift < 1.15,
           f"(next is {nxt.a} and {nxt.b} at {nxt.lift:.2f})")
     out["floor_pairs"] = len(floor)
+    out["pairs_plotted"] = int((pairs.support >= 0.001).sum())
     out["floor_above_1_5"] = int((floor.lift >= 1.5).sum())
     out["next_after_four"] = (nxt.a, nxt.b, nxt.lift)
     band = pairs[(pairs.support >= 0.002) & (pairs.support < 0.01)]
@@ -887,6 +888,7 @@ def verify_kalpa(products, orders, items):
           and round(thin.iloc[0].lift, 1) == 4.0)
     out["thin"] = measures(b, "car phone mount", "car charger")
     out["floor_pairs"] = len(floor)
+    out["pairs_plotted"] = int((pairs.support >= 0.001).sum())
     # The lab's twelve baskets: chosen by pattern, every value five points from the plants.
     want = [({"phone charger 20W", "screen protector", "wireless earphones", "earphone case"}, set()),
             ({"phone charger 20W", "screen protector"}, {"wireless earphones", "earphone case"}),
@@ -1038,6 +1040,8 @@ def write_facts(case, strip, kalpa):
     S = "floor"
     f(S, "support_floor", 0.01, "1 percent", "the support floor the room sets", "chapter 3")
     f(S, "plot_floor", 0.001, "0.1 percent", "the least support a pair needs to be drawn on the action map", "chapter 3 picture")
+    f(S, "plot_floor_carts", 40, "40", "0.1 percent of 40,000 carts", "drill 2")
+    f(S, "pairs_plotted", case["pairs_plotted"], f"{case['pairs_plotted']:,}", "pairs with support of at least 0.1 percent", "chapter 3 picture, drill 2")
     f(S, "watch_band_low", 0.002, "0.2 percent", "the low end of the band searched for a strong thin pair", "chapter 3, notebook 03")
     f(S, "common_floor", 0.02, "2 percent", "an item counts as common at this share of carts (the case file)", "chapter 2")
     f(S, "kalpa_floor", 0.05, "5 percent", "the lab's support floor (the case file)", "notebook 04, lab note")
@@ -1163,6 +1167,57 @@ def write_facts(case, strip, kalpa):
     f(S, "option_rs_2_lakh", 200_000, "Rs 2 lakh", "invented distractor", "chapter 3 predict")
     f(S, "option_rs_6_lakh", 600_000, "Rs 6 lakh", "the rounded key", "chapter 3 predict")
     f(S, "option_rs_50_lakh", 5_000_000, "Rs 50 lakh", "invented distractor", "chapter 3 predict")
+    S = "exercise_numbers"
+    f(S, "slot_value_no_add_rate", round(views * 0.064 * margin), "Rs 34,560", "60,000 x 0.064 x Rs 9, the add rate left out (a distractor)", "unguided strip exercise")
+    f(S, "conf_ratio_distractor", 1.88, "1.88", "0.45 / 0.24, a ratio of two confidences (a distractor)", "drill 1")
+    f(S, "inverse_conf_distractor", 2.22, "2.22", "3,200 / 1,440 (a distractor)", "drill 1")
+    f(S, "lift_rule_floor", 1.5, "1.5", "the drill's rule: lift at least 1.5 above the support floor", "drill 2")
+    f(S, "kalpa_charger_cost", 120, "Rs 120", "unit cost of the charger, products table", "Kalpa exercise")
+    f(S, "kalpa_bundle_discount", 20, "Rs 20", "assumption: merchandising's discount on a bundled charger", "Kalpa exercise")
+    f(S, "kalpa_margin_at_list", 79, "Rs 79", "199 less 120", "Kalpa exercise")
+    f(S, "kalpa_margin_bundled", 59, "Rs 59", "199 less 20 less 120", "Kalpa exercise")
+    f(S, "kalpa_price_bundled", 179, "Rs 179", "199 less 20 (a distractor)", "Kalpa exercise")
+    f(S, "kalpa_margin_distractor", 99, "Rs 99", "79 plus 20 (a distractor)", "Kalpa exercise")
+    S = "practice_toy"
+    for fid, val, shown, how in (
+            ("kirana_bills", 200, "200", "invented: a Pune kirana store's bills in a week"),
+            ("kirana_tea", 120, "120", "invented: bills with tea"),
+            ("kirana_rusk", 40, "40", "invented: bills with rusk"),
+            ("kirana_tea_rusk", 30, "30", "invented: bills with both"),
+            ("kirana_tea_rusk_support", 0.15, "0.15", "30 of 200"),
+            ("kirana_rusk_tea_conf", 0.75, "0.75", "30 of 40"),
+            ("kirana_tea_rusk_conf", 0.25, "0.25", "30 of 120"),
+            ("kirana_tea_rusk_expected", 24, "24", "200 x 120/200 x 40/200"),
+            ("kirana_tea_rusk_lift", 1.25, "1.25", "30 over 24"),
+            ("kirana_sugar", 80, "80", "invented: bills with sugar"),
+            ("kirana_sugar_tea", 48, "48", "invented: bills with sugar and tea"),
+            ("kirana_sugar_tea_conf", 0.6, "0.60", "48 of 80"),
+            ("kirana_sugar_tea_expected", 48, "48", "200 x 80/200 x 120/200"),
+            ("kirana_sugar_tea_lift", 1.0, "1.00", "48 over 48"),
+            ("kirana_tea_share", 0.6, "0.6", "120 of 200"),
+            ("kirana_rusk_share", 0.2, "0.2", "40 of 200"),
+            ("kirana_sugar_no_tea", 32, "32", "80 less 48"),
+            ("practice_clicks", 1_500, "1,500", "30,000 x 0.05"),
+            ("practice_views", 30_000, "30,000", "invented: cart-page views a day"),
+            ("practice_ctr", 0.05, "5 percent", "invented: click-through"),
+            ("practice_margin", 10, "Rs 10", "invented: margin an add"),
+            ("practice_discount", 3, "Rs 3", "invented: bundle discount an add"),
+            ("practice_adds", 750, "750", "30,000 x 0.05 x 0.5"),
+            ("practice_gross_margin", 7_500, "Rs 7,500", "750 x Rs 10"),
+            ("practice_returned", 2_250, "Rs 2,250", "750 x Rs 3"),
+            ("practice_net", 5_250, "Rs 5,250", "7,500 less 2,250"),
+            ("practice_no_add_rate", 15_000, "Rs 15,000", "a distractor: the add rate left out"),
+            ("practice_sales_distractor", 22_500, "Rs 22,500", "a distractor: 750 adds x Rs 30 price"),
+            ("practice_price", 30, "Rs 30", "invented: price of the added item"),
+            ("pair_a_support", 0.12, "12 percent", "invented pair A"), ("pair_a_lift", 1.05, "1.05", "invented pair A"),
+            ("pair_b_support", 0.04, "4 percent", "invented pair B"), ("pair_b_lift", 2.6, "2.6", "invented pair B"),
+            ("pair_c_support", 0.004, "0.4 percent", "invented pair C"), ("pair_c_lift", 6.0, "6.0", "invented pair C"),
+            ("pair_d_support", 0.02, "2 percent", "invented pair D"), ("pair_d_lift", 1.8, "1.8", "invented pair D"),
+            ("bundle_x_lift", 1.02, "1.02", "invented bundle X"), ("bundle_x_support", 0.3, "30 percent", "invented bundle X"),
+            ("bundle_y_lift", 2.4, "2.4", "invented bundle Y"), ("bundle_y_support", 0.03, "3 percent", "invented bundle Y"),
+            ("bundle_y_margin", 12, "Rs 12", "invented bundle Y margin an add"),
+            ("bundle_z_lift", 5.0, "5.0", "invented bundle Z"), ("bundle_z_support", 0.002, "0.2 percent", "invented bundle Z")):
+        f(S, fid, val, shown, how, "practice lab set")
     S = "fallback"
     for name, (k, rows) in case["slices"].items():
         fid = "slice_" + name.replace(", ", "_").replace(" ", "_").lower()

@@ -715,6 +715,16 @@ floor:
     shown: "0.1 percent"
     how: "the least support a pair needs to be drawn on the action map"
     used_in: "chapter 3 picture"
+  - id: plot_floor_carts
+    value: 40
+    shown: "40"
+    how: "0.1 percent of 40,000 carts"
+    used_in: "drill 2"
+  - id: pairs_plotted
+    value: 1221
+    shown: "1,221"
+    how: "pairs with support of at least 0.1 percent"
+    used_in: "chapter 3 picture, drill 2"
   - id: watch_band_low
     value: 0.002
     shown: "0.2 percent"
@@ -1769,6 +1779,280 @@ predict_options:
     shown: "Rs 50 lakh"
     how: "invented distractor"
     used_in: "chapter 3 predict"
+
+exercise_numbers:
+  - id: slot_value_no_add_rate
+    value: 34560
+    shown: "Rs 34,560"
+    how: "60,000 x 0.064 x Rs 9, the add rate left out (a distractor)"
+    used_in: "unguided strip exercise"
+  - id: conf_ratio_distractor
+    value: 1.88
+    shown: "1.88"
+    how: "0.45 / 0.24, a ratio of two confidences (a distractor)"
+    used_in: "drill 1"
+  - id: inverse_conf_distractor
+    value: 2.22
+    shown: "2.22"
+    how: "3,200 / 1,440 (a distractor)"
+    used_in: "drill 1"
+  - id: lift_rule_floor
+    value: 1.5
+    shown: "1.5"
+    how: "the drill's rule: lift at least 1.5 above the support floor"
+    used_in: "drill 2"
+  - id: kalpa_charger_cost
+    value: 120
+    shown: "Rs 120"
+    how: "unit cost of the charger, products table"
+    used_in: "Kalpa exercise"
+  - id: kalpa_bundle_discount
+    value: 20
+    shown: "Rs 20"
+    how: "assumption: merchandising's discount on a bundled charger"
+    used_in: "Kalpa exercise"
+  - id: kalpa_margin_at_list
+    value: 79
+    shown: "Rs 79"
+    how: "199 less 120"
+    used_in: "Kalpa exercise"
+  - id: kalpa_margin_bundled
+    value: 59
+    shown: "Rs 59"
+    how: "199 less 20 less 120"
+    used_in: "Kalpa exercise"
+  - id: kalpa_price_bundled
+    value: 179
+    shown: "Rs 179"
+    how: "199 less 20 (a distractor)"
+    used_in: "Kalpa exercise"
+  - id: kalpa_margin_distractor
+    value: 99
+    shown: "Rs 99"
+    how: "79 plus 20 (a distractor)"
+    used_in: "Kalpa exercise"
+
+practice_toy:
+  - id: kirana_bills
+    value: 200
+    shown: "200"
+    how: "invented: a Pune kirana store's bills in a week"
+    used_in: "practice lab set"
+  - id: kirana_tea
+    value: 120
+    shown: "120"
+    how: "invented: bills with tea"
+    used_in: "practice lab set"
+  - id: kirana_rusk
+    value: 40
+    shown: "40"
+    how: "invented: bills with rusk"
+    used_in: "practice lab set"
+  - id: kirana_tea_rusk
+    value: 30
+    shown: "30"
+    how: "invented: bills with both"
+    used_in: "practice lab set"
+  - id: kirana_tea_rusk_support
+    value: 0.15
+    shown: "0.15"
+    how: "30 of 200"
+    used_in: "practice lab set"
+  - id: kirana_rusk_tea_conf
+    value: 0.75
+    shown: "0.75"
+    how: "30 of 40"
+    used_in: "practice lab set"
+  - id: kirana_tea_rusk_conf
+    value: 0.25
+    shown: "0.25"
+    how: "30 of 120"
+    used_in: "practice lab set"
+  - id: kirana_tea_rusk_expected
+    value: 24
+    shown: "24"
+    how: "200 x 120/200 x 40/200"
+    used_in: "practice lab set"
+  - id: kirana_tea_rusk_lift
+    value: 1.25
+    shown: "1.25"
+    how: "30 over 24"
+    used_in: "practice lab set"
+  - id: kirana_sugar
+    value: 80
+    shown: "80"
+    how: "invented: bills with sugar"
+    used_in: "practice lab set"
+  - id: kirana_sugar_tea
+    value: 48
+    shown: "48"
+    how: "invented: bills with sugar and tea"
+    used_in: "practice lab set"
+  - id: kirana_sugar_tea_conf
+    value: 0.6
+    shown: "0.60"
+    how: "48 of 80"
+    used_in: "practice lab set"
+  - id: kirana_sugar_tea_expected
+    value: 48
+    shown: "48"
+    how: "200 x 80/200 x 120/200"
+    used_in: "practice lab set"
+  - id: kirana_sugar_tea_lift
+    value: 1.0
+    shown: "1.00"
+    how: "48 over 48"
+    used_in: "practice lab set"
+  - id: kirana_tea_share
+    value: 0.6
+    shown: "0.6"
+    how: "120 of 200"
+    used_in: "practice lab set"
+  - id: kirana_rusk_share
+    value: 0.2
+    shown: "0.2"
+    how: "40 of 200"
+    used_in: "practice lab set"
+  - id: kirana_sugar_no_tea
+    value: 32
+    shown: "32"
+    how: "80 less 48"
+    used_in: "practice lab set"
+  - id: practice_clicks
+    value: 1500
+    shown: "1,500"
+    how: "30,000 x 0.05"
+    used_in: "practice lab set"
+  - id: practice_views
+    value: 30000
+    shown: "30,000"
+    how: "invented: cart-page views a day"
+    used_in: "practice lab set"
+  - id: practice_ctr
+    value: 0.05
+    shown: "5 percent"
+    how: "invented: click-through"
+    used_in: "practice lab set"
+  - id: practice_margin
+    value: 10
+    shown: "Rs 10"
+    how: "invented: margin an add"
+    used_in: "practice lab set"
+  - id: practice_discount
+    value: 3
+    shown: "Rs 3"
+    how: "invented: bundle discount an add"
+    used_in: "practice lab set"
+  - id: practice_adds
+    value: 750
+    shown: "750"
+    how: "30,000 x 0.05 x 0.5"
+    used_in: "practice lab set"
+  - id: practice_gross_margin
+    value: 7500
+    shown: "Rs 7,500"
+    how: "750 x Rs 10"
+    used_in: "practice lab set"
+  - id: practice_returned
+    value: 2250
+    shown: "Rs 2,250"
+    how: "750 x Rs 3"
+    used_in: "practice lab set"
+  - id: practice_net
+    value: 5250
+    shown: "Rs 5,250"
+    how: "7,500 less 2,250"
+    used_in: "practice lab set"
+  - id: practice_no_add_rate
+    value: 15000
+    shown: "Rs 15,000"
+    how: "a distractor: the add rate left out"
+    used_in: "practice lab set"
+  - id: practice_sales_distractor
+    value: 22500
+    shown: "Rs 22,500"
+    how: "a distractor: 750 adds x Rs 30 price"
+    used_in: "practice lab set"
+  - id: practice_price
+    value: 30
+    shown: "Rs 30"
+    how: "invented: price of the added item"
+    used_in: "practice lab set"
+  - id: pair_a_support
+    value: 0.12
+    shown: "12 percent"
+    how: "invented pair A"
+    used_in: "practice lab set"
+  - id: pair_a_lift
+    value: 1.05
+    shown: "1.05"
+    how: "invented pair A"
+    used_in: "practice lab set"
+  - id: pair_b_support
+    value: 0.04
+    shown: "4 percent"
+    how: "invented pair B"
+    used_in: "practice lab set"
+  - id: pair_b_lift
+    value: 2.6
+    shown: "2.6"
+    how: "invented pair B"
+    used_in: "practice lab set"
+  - id: pair_c_support
+    value: 0.004
+    shown: "0.4 percent"
+    how: "invented pair C"
+    used_in: "practice lab set"
+  - id: pair_c_lift
+    value: 6.0
+    shown: "6.0"
+    how: "invented pair C"
+    used_in: "practice lab set"
+  - id: pair_d_support
+    value: 0.02
+    shown: "2 percent"
+    how: "invented pair D"
+    used_in: "practice lab set"
+  - id: pair_d_lift
+    value: 1.8
+    shown: "1.8"
+    how: "invented pair D"
+    used_in: "practice lab set"
+  - id: bundle_x_lift
+    value: 1.02
+    shown: "1.02"
+    how: "invented bundle X"
+    used_in: "practice lab set"
+  - id: bundle_x_support
+    value: 0.3
+    shown: "30 percent"
+    how: "invented bundle X"
+    used_in: "practice lab set"
+  - id: bundle_y_lift
+    value: 2.4
+    shown: "2.4"
+    how: "invented bundle Y"
+    used_in: "practice lab set"
+  - id: bundle_y_support
+    value: 0.03
+    shown: "3 percent"
+    how: "invented bundle Y"
+    used_in: "practice lab set"
+  - id: bundle_y_margin
+    value: 12
+    shown: "Rs 12"
+    how: "invented bundle Y margin an add"
+    used_in: "practice lab set"
+  - id: bundle_z_lift
+    value: 5.0
+    shown: "5.0"
+    how: "invented bundle Z"
+    used_in: "practice lab set"
+  - id: bundle_z_support
+    value: 0.002
+    shown: "0.2 percent"
+    how: "invented bundle Z"
+    used_in: "practice lab set"
 
 fallback:
   - id: slice_kothrud_morning_carts
