@@ -3170,3 +3170,18 @@ guesstimate:
   shown: 74 percent
   how: the annualised festive month over the anchor
   used_in: half2, transcript
+- id: range_low
+  value: 12320000.0
+  shown: about 1.2 crore
+  how: 'every input at its low end: 28 crore x 0.4 / 10 x 1.1'
+  used_in: guesstimate card
+- id: range_high
+  value: 38400000.0
+  shown: about 3.8 crore
+  how: 'every input at its high end: 32 crore x 0.6 / 6 x 1.2'
+  used_in: guesstimate card
+- id: anchor_growth_pct
+  value: 10.7
+  shown: 10.7 percent
+  how: SIAM's FY 2025-26 two-wheeler growth on the year before (T3)
+  used_in: guesstimate card

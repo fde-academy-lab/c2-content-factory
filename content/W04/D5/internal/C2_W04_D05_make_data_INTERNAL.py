@@ -725,6 +725,11 @@ def main():
     F.add("guesstimate", "annualised_october", 3_149_846 * 12, f"about {3_149_846 * 12 / 1e7:.2f} crore", "October 2025 retail times 12", "half2, transcript")
     F.add("guesstimate", "annualised_over_pct", 3_149_846 * 12 / 21_705_974 - 1, pct(3_149_846 * 12 / 21_705_974 - 1, 0),
           "the annualised festive month over the anchor", "half2, transcript")
+    low = 280_000_000 * 0.40 / 10 * 1.10
+    high = 320_000_000 * 0.60 / 6 * 1.20
+    F.add("guesstimate", "range_low", low, f"about {low / 1e7:.1f} crore", "every input at its low end: 28 crore x 0.4 / 10 x 1.1", "guesstimate card")
+    F.add("guesstimate", "range_high", high, f"about {high / 1e7:.1f} crore", "every input at its high end: 32 crore x 0.6 / 6 x 1.2", "guesstimate card")
+    F.add("guesstimate", "anchor_growth_pct", 10.7, "10.7 percent", "SIAM's FY 2025-26 two-wheeler growth on the year before (T3)", "guesstimate card")
 
     # ---- what the case file targeted and the data hold
     corrections = [

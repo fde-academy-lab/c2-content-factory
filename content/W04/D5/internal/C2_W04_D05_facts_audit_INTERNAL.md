@@ -1091,7 +1091,7 @@ Numbers traced: 1757. Numbers with no home: 0.
 | 314 | C2_W04_D05_saturday_preview_STUDENT.md | 34 | tue_before |
 | 260 | C2_W04_D05_saturday_preview_STUDENT.md | 34 | tue_after |
 | 6.1 | C2_W04_D05_saturday_preview_STUDENT.md | 35 | vendor_vs_festival_pct, wed_before |
-| 3.8 percent | C2_W04_D05_saturday_preview_STUDENT.md | 35 | wed_after, sn_err_mean_pct |
+| 3.8 percent | C2_W04_D05_saturday_preview_STUDENT.md | 35 | wed_after, sn_err_mean_pct, range_high |
 | 58 | C2_W04_D05_saturday_preview_STUDENT.md | 36 | thu_before, shop_this |
 | 44 percent | C2_W04_D05_saturday_preview_STUDENT.md | 36 | thu_after, shop_this |
 | 18 | C2_W04_D05_saturday_preview_STUDENT.md | 37 | share_short_pct, points_apart, series_z |
@@ -1175,7 +1175,7 @@ Numbers traced: 1757. Numbers with no home: 0.
 | 1.6 | C2_W04_D05_half1_STUDENT.md | 50 | mon_after, oct25_ratio |
 | 314 | C2_W04_D05_half1_STUDENT.md | 51 | tue_before |
 | 260 | C2_W04_D05_half1_STUDENT.md | 51 | tue_after |
-| 3.8 percent | C2_W04_D05_half1_STUDENT.md | 52 | wed_after, sn_err_mean_pct |
+| 3.8 percent | C2_W04_D05_half1_STUDENT.md | 52 | wed_after, sn_err_mean_pct, range_high |
 | 44 percent | C2_W04_D05_half1_STUDENT.md | 53 | thu_after, shop_this |
 | 20,275 | C2_W04_D05_half1_STUDENT.md | 84 | shifts_total |
 | 20,275 | C2_W04_D05_half1_STUDENT.md | 88 | shifts_total |
@@ -1475,7 +1475,7 @@ Numbers traced: 1757. Numbers with no home: 0.
 | 1.6 | C2_W04_D05_notes_STUDENT.md | 31 | mon_after, oct25_ratio |
 | 314 | C2_W04_D05_notes_STUDENT.md | 31 | tue_before |
 | 260 | C2_W04_D05_notes_STUDENT.md | 31 | tue_after |
-| 3.8 percent | C2_W04_D05_notes_STUDENT.md | 32 | wed_after, sn_err_mean_pct |
+| 3.8 percent | C2_W04_D05_notes_STUDENT.md | 32 | wed_after, sn_err_mean_pct, range_high |
 | 44 percent | C2_W04_D05_notes_STUDENT.md | 33 | thu_after, shop_this |
 | 50 | C2_W04_D05_notes_STUDENT.md | 67 | naive_check_floor, shop_last, share_other |
 | 52 | C2_W04_D05_notes_STUDENT.md | 67 | lag_weeks, cups, m5_winner |
