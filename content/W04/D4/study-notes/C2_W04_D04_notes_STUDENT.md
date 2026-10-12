@@ -293,4 +293,4 @@ journey with a change of line can count twice as boardings, so check the unit be
 | 2 | IBM Technology, "Understanding Data Structures: Time Series, Cross-Sectional, and Panel Data Explained", https://www.youtube.com/watch?v=LoMgvSfKp6Y (checked 12 October 2026) | 12 minutes |
 | 3 | Amplitude, "Funnel analysis", https://amplitude.com/blog/funnel-analysis (checked 12 October 2026) | 15 minutes |
 | 4 | IBM Technology, "What is Root Cause Analysis (RCA)?", https://www.youtube.com/watch?v=7t3lTYEd_PM (checked 12 October 2026) | 9 minutes |
-| 5 | pandas, "10 minutes to pandas", the reshaping section, https://pandas.pydata.org/docs/user_guide/10min.html (verified 5 September 2026) | 10 minutes |
+| 5 | pandas, "10 minutes to pandas", the reshaping section, https://pandas.pydata.org/docs/user_guide/10min.html (checked 12 October 2026) | 10 minutes |

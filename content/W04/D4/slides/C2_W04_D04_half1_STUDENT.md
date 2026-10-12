@@ -321,7 +321,8 @@ Sources: Eternal's Q1 FY27 shareholder letter of 22 July 2026 and Swiggy's Q2 FY
 
 ```notes
 Sources:
-https://www.eternal.com/blog/q1fy27/ (checked 12 October 2026)
+https://www.eternal.com/blog/q1fy27/ (checked 12 October 2026), which links the letter itself:
+https://drive.google.com/file/d/1jb9KWd4Ap4RTKHFHxzEOO7jgQqVZEGcd/view (checked 12 October 2026)
 https://www.swiggy.com/corporate/wp-content/uploads/2025/10/Q2-FY2026-Shareholder-letter.pdf (checked 12 October 2026)
 LIVE, 6 minutes. Two decisions to read. Eternal shows the customer number and the spend number side
 by side, and they disagree by a factor of three because the denominators differ: 150 percent is
