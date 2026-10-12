@@ -356,8 +356,8 @@ var W4 = {
     growth: 1.04,                                   /* case Fri ticket: underlying growth about 4 percent a year, the drift */
     vendorLift: 1.10,                               /* toy: the vendor's curve sits 10 percent above last year's week */
     mae: {naive: 21000, swly: 9200, fest: 8900, vendor: 14800},   /* case Fri ticket: MAE on the hold-out */
-    /* toy: 104 weeks of shipments built to the case's shape (about 210,000 a week in late 2024, festive weeks at
-       1.5, 1.9 and 1.7 times before Diwali and 1.4 in its week), whose last 13 weeks score the case's MAE table */
+    /* toy: 104 weeks of shipments built to the case's shape (about 210,000 a week in late 2024, with a festive
+       ramp in the weeks before Diwali), whose last 13 weeks score the case's MAE table */
     weeks: [
       214600, 316800, 408100, 370600, 292400, 177400, 213500, 208900, 207900, 224800, 218800, 222200, 221500,
       220000, 221700, 226300, 225800, 219200, 208900, 208600, 210100, 220000, 211600, 216000, 210300, 216800,
@@ -454,7 +454,7 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>At the case's floor of Rs 300 an hour, online hours rise 24 percent, from 118,000 to 146,300, while trips rise 3 percent, from 224,200 to 230,900. Trips per online hour falls from 1.90 to 1.58, the 1.9 to 1.6 on the ticket, and about Rs 1.16 crore of the Rs 1.9 crore top-up went to idle hours. The median rider wait moved from 4.8 to 4.6 minutes.</p>
+        <p>At the case's floor of Rs 300 an hour, online hours rise 24 percent, from 118,000 to 146,300, while trips rise 3 percent, from 224,200 to 230,900. Trips per online hour falls from 1.90 to 1.58, the 1.9 to 1.6 on the ticket, and about Rs 1.16 crore of the Rs 1.9 crore top-up went to driver-weeks that accepted under half their requests. The median rider wait moved from 4.8 to 4.6 minutes.</p>
         <p>Online hours count time with the app open, and the driver controls that count. An idle hour in an outer zone earns the same floor as a busy hour in the centre, so the number the scheme pays for rose while riders saw almost no change.</p>
         <p class="formula"><b>The formula, last</b>trips per online hour = completed peak trips / peak online hours = 230,900 / 146,300 = 1.58</p>
       </div>
@@ -631,7 +631,7 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>With trips per online hour and the top-up left, the title can say what happened and what to do: the hourly guarantee bought idle hours, so pay per completed trip with an acceptance floor. Trips per online hour, 1.9 to 1.6, is the evidence with its denominator; the Rs 1.9 crore top-up, about Rs 1.16 crore of it paid to idle hours, is the cost the action stops. The caveat goes on the slide in plain sight: the monsoon ended inside the window. The other seven numbers go to an appendix page for the lead who will ask about them.</p>
+        <p>With trips per online hour and the top-up left, the title can say what happened and what to do: the hourly guarantee bought idle hours, so pay per completed trip with an acceptance floor. Trips per online hour, 1.9 to 1.6, is the evidence with its denominator; the Rs 1.9 crore top-up, about Rs 1.16 crore of it paid to driver-weeks that accepted under half their requests, is the cost the action stops. The caveat goes on the slide in plain sight: the monsoon ended inside the window. The other seven numbers go to an appendix page for the lead who will ask about them.</p>
         <p>Nine numbers make the city head do the analysis in the meeting. One claim, one piece of evidence with its denominator, one caveat and one action let a lead who loses under the redesign repeat it accurately.</p>
         <p class="formula"><b>The formula, last</b>one slide = a claim as the title + one piece of evidence with its denominator + the caveat in plain sight + the action with its cost</p>
       </div>
@@ -652,7 +652,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Each pair of bars shows the six weeks after the launch as a percentage of the six weeks before, with the rupees printed above. Bookings are trips times the Rs 165 fare. The driver-week count is a toy, invented and held at 6,000 in both windows, so that reading moves with total bookings.</figcaption>
+          <figcaption>Each pair of bars shows the six weeks after the launch as a percentage of the six weeks before, with the rupees printed above. Bookings are trips times the Rs 165 fare. The driver-week count is a toy, invented and held at 6,000 in both windows. A reading stays a dashed outline until you switch to it.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl">
@@ -770,7 +770,7 @@ var W4 = {
       <div class="scene-head"><span class="sid">W1</span><h3>Why is lift a ratio of two areas?</h3></div>
       <p class="myth"><b>The first answer most people give:</b> if two items turn up together in many orders, they belong together.</p>
       <div class="predict">
-        <p class="ask"><b>Predict before you move the bands.</b> Hold the observed overlap at 0.30 and widen both bands. Where does lift end up?</p>
+        <p class="ask"><b>Predict before you move the bands.</b> Hold the observed overlap at 0.30 and widen each band by 0.10, chai to 0.70 and biscuit to 0.50. Where does lift end up?</p>
         <div class="opts">
           <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Above one, because both items got more popular.</button>
           <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Below one, once the bands' product passes 0.30.</button>
@@ -781,7 +781,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>A tea stall's ten orders as a toy, invented: chai is A and biscuit is B. The square is every order; the violet band is the share with chai and the amber band the share with biscuit, so their crossing is the overlap chance alone would give. The rose block beside it, on the same width, is the overlap actually seen.</figcaption>
+          <figcaption>A tea stall's ten orders as a toy, invented: chai (A) in 6, biscuit (B) in 4 and both in 3, so the sliders start at 0.60, 0.40 and 0.30 and then move the shares freely. The square is every order; the violet band is the share with chai and the amber band the share with biscuit, so their crossing is the overlap chance alone would give. The rose block beside it, on the same width, is the overlap actually seen.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><label for="w1-a">P(A), the share of orders with chai</label>
@@ -799,7 +799,7 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>With the overlap held at 0.30 and the bands widened to 0.80 and 0.70, the overlap chance alone would give grows to 0.80 x 0.70 = 0.56, so lift falls to 0.30 / 0.56 = 0.54: the pair now turns up together less often than chance would put it together. At the tea stall's own numbers, 0.30 seen against 0.24 expected, lift is 1.25.</p>
+        <p>With the overlap held at 0.30 and the bands widened to 0.70 and 0.50, the overlap chance alone would give grows to 0.70 x 0.50 = 0.35, so lift falls to 0.30 / 0.35 = 0.86: the pair now turns up together less often than chance would put it together. At the tea stall's own numbers, 0.30 seen against 0.24 expected, lift is 1.25. Push the bands on to 0.80 and 0.70 and the overlap cannot stay at 0.30: of 100 orders, 80 with chai and 70 with biscuit must share at least 50, which is why the third slider climbs on its own.</p>
         <p>Lift asks how much more often a pair turns up than independence predicts. Popularity widens the bands and raises what chance predicts, so a popular item cannot buy itself a high lift.</p>
         <p class="formula"><b>The formula, last</b>lift = P(A and B) / (P(A) x P(B)) = observed area / expected area = 0.30 / (0.60 x 0.40) = 1.25 at the tea stall</p>
       </div>
@@ -820,7 +820,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>A hundred carts drawn in the proportions of the case's 40,000: bread in 34, milk in 71, both in 25. A violet dot holds bread and an amber ring holds milk. The carts still in play move to the right; the rest fade where they stood.</figcaption>
+          <figcaption>A hundred carts drawn in the proportions of the case's 40,000, so you can count them. A violet dot holds bread and an amber ring holds milk. The carts still in play move to the right; the rest fade where they stood.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><button type="button" class="btn" data-ctl="s1">Keep only carts with bread</button></div>
@@ -2169,7 +2169,7 @@ var W4 = {
         ["Trips per online hour", m.tph.toFixed(2)],
         { wide: "That is " + group(round100(m.trips)) + " / " + group(round100(m.hours)) + "." },
         ["Online hours with no trip, share", m.idle.toFixed(2)],
-        ["Top-up paid to idle hours", crore(m.topupIdle)],
+        ["Top-up paid to driver-weeks accepting under half their requests", crore(m.topupIdle)],
         ["Dots: driving, idle, offline", c.drive + ", " + c.idle + ", " + c.off]
       ];
       if (st.wait) rows.push(["Median rider wait at peak", m.wait.toFixed(1) + " min"]);
@@ -2445,7 +2445,7 @@ var W4 = {
       if (tk === "claim") txt(svg, 36, 396, "Caveat: the monsoon ended inside the window.", { size: 14, weight: 700, fill: C.rose });
       txt(svg, 608, 396, left + (left === 1 ? " number" : " numbers") + " on the slide", { size: 14, weight: 700, anchor: "end", fill: C.violet });
       put($("[data-fig]", art), svg);
-      var verdict = "not run yet";
+      var verdict = "not run yet; it asks whether a reader outside the field, say a hostel warden, could act on the title alone";
       if (st.warden) {
         verdict = st.warden === "claim" ? "passes: the title says what happened and what to do" :
           (st.warden === "topic" ? "fails: the title names a topic, so the warden asks what to do" :
@@ -2475,10 +2475,10 @@ var W4 = {
   }
   scene("T2", {
     answer: "B",
-    start: function () { return { den: "hour" }; },
+    start: function () { return { den: "hour", seen: { hour: true } }; },
     init: function (st, art) {
       var self = this;
-      on(art, "den", "change", function (e) { st.den = e.target.value; self.render(st, art); });
+      on(art, "den", "change", function (e) { st.den = e.target.value; st.seen[st.den] = true; self.render(st, art); });
     },
     render: function (st, art) {
       var v = t2Values(), keys = ["hour", "dw", "trip"], sel = v[st.den];
@@ -2495,11 +2495,16 @@ var W4 = {
       txt(svg, 64, Y(100) - 8, "before = 100", { size: 13, fill: C.night });
       keys.forEach(function (key, i) {
         var d = v[key], x = 110 + i * 175, ia = d.a / d.b * 100, isSel = key === st.den;
+        txt(svg, x + 47, 404, d.name, { size: 15, anchor: "middle", weight: isSel ? 700 : 400 });
+        if (!st.seen[key]) {
+          add(svg, "rect", { x: x, y: Y(100), width: 94, height: Y(0) - Y(100), rx: 4, fill: "none", stroke: OFF, "stroke-width": 2, "stroke-dasharray": "6 5" });
+          txt(svg, x + 47, Y(50) + 6, "switch to see", { size: 14, anchor: "middle", fill: C.muted });
+          return;
+        }
         add(svg, "rect", { x: x, y: Y(100), width: 44, height: Y(0) - Y(100), rx: 4, fill: LILAC2 });
         add(svg, "rect", { x: x + 50, y: Y(ia), width: 44, height: Y(0) - Y(ia), rx: 4, fill: C.violet, stroke: isSel ? C.ink : "none", "stroke-width": isSel ? 3 : 0 });
         txt(svg, x + 22, Y(100) - 26, rs(Math.round(d.b)), { size: 14, anchor: "middle" });
         txt(svg, x + 72, Y(ia) - 8, rs(Math.round(d.a)), { size: 14, anchor: "middle", weight: 700 });
-        txt(svg, x + 47, 404, d.name, { size: 15, anchor: "middle", weight: isSel ? 700 : 400 });
       });
       put($("[data-fig]", art), svg);
       setOut(art, "den", sel.name);
@@ -2511,7 +2516,7 @@ var W4 = {
         { wide: "Bookings: 224,200 x Rs 165 before and 230,900 x Rs 165 after." }
       ]);
     },
-    final: function (st) { st.den = "dw"; }
+    final: function (st) { st.den = "dw"; st.seen = { hour: true, dw: true, trip: true }; }
   });
 
   function t3Product(st) {
@@ -2640,10 +2645,10 @@ var W4 = {
         ["Observed over expected", (e ? st.o / e : 0).toFixed(2)],
         { wide: st.o / e > 1.005 ? "The pair turns up together more often than chance would put it together." :
           (st.o / e < 0.995 ? "The pair turns up together less often than chance would put it together." : "The pair turns up together exactly as often as chance predicts.") },
-        { wide: "The observed share cannot exceed the narrower band, and it cannot fall below what the two bands force to overlap." }
+        { wide: "At these bands the observed share can only run from " + Math.max(0, st.a + st.b - 1).toFixed(2) + " to " + Math.min(st.a, st.b).toFixed(2) + ": it cannot exceed the narrower band or fall below what the two bands force to overlap." }
       ]);
     },
-    final: function (st) { st.a = 0.8; st.b = 0.7; st.o = 0.3; }
+    final: function (st) { st.a = 0.7; st.b = 0.5; st.o = 0.3; }
   });
 
   /* W2: a hundred carts and the shrinking universe */
