@@ -270,7 +270,7 @@ var W4 = {
     topupIdleCrore: 1.16,           /* case Mon L5: 1.9 x 0.61, the share paid to driver-weeks with acceptance under 0.5 */
     respPower: 1.5,                 /* toy: the response curve between the case's two floors */
     newcomersAtCase: 9.6,           /* derived: 40 online dots x 0.24, the dots that come online at Rs 300 */
-    /* case Mon "The twelve rows (L1)": driver, before [hours, requests, accepted, trips], after [...] */
+    /* case Mon "The twelve rows (L1)": driver, before [hours, offers, accepted, trips], after [...] */
     rows: [
       ["A", [10, 24, 21, 21], [11, 25, 22, 22]],
       ["B", [9, 20, 17, 17], [10, 21, 18, 18]],
@@ -280,9 +280,9 @@ var W4 = {
       ["F", [10, 20, 17, 17], [14, 12, 3, 2]]
     ],
     weekStarts: ["20 Jul", "27 Jul", "3 Aug", "10 Aug", "17 Aug", "24 Aug", "31 Aug", "7 Sep", "14 Sep", "21 Sep", "28 Sep", "5 Oct"],
-    /* toy weekly values, invented so the six-week averages are the case's 0.86 and 0.73, Rs 314 and Rs 260 */
-    acceptWeekly: [0.87, 0.86, 0.86, 0.85, 0.86, 0.86, 0.80, 0.75, 0.72, 0.70, 0.70, 0.71],
-    bookWeekly: [316, 313, 315, 312, 314, 314, 312, 306, 270, 245, 220, 207],
+    /* Monday's facts file, ids acceptance_2026_MM_DD and rs_per_hour_2026_MM_DD: each week's ratio of totals */
+    acceptWeekly: [0.859, 0.864, 0.865, 0.867, 0.861, 0.862, 0.729, 0.735, 0.729, 0.731, 0.726, 0.731],
+    bookWeekly: [309.9, 315.5, 311.1, 316.7, 317.6, 310.3, 271.0, 261.7, 259.1, 256.5, 256.9, 257.4],
     /* toy: how the same sixty dots behave under each choice of paid number; "hours" is the case at Rs 300, and its
        acceptance 0.73 is the case's; the guardrails' lines are wait at or below the 4.8 minutes before the launch (case),
        acceptance at or above 0.80 and top-up at or below Rs 40 a trip (toy) */
@@ -291,7 +291,7 @@ var W4 = {
                rails: ["holds", "breaks", "breaks"]},
       trips:  {label: "Completed trips", drive: 36, game: 7, idle: 6, off: 18, wait: 4.9, topupTrip: 36, accept: 0.71, tilt: 9,
                rails: ["breaks", "breaks", "holds"]},
-      accept: {label: "Accepted share of requests", drive: 33, game: 8, idle: 9, off: 18, wait: 5.2, topupTrip: 51, accept: 0.91, tilt: 11,
+      accept: {label: "Accepted share of offers", drive: 33, game: 8, idle: 9, off: 18, wait: 5.2, topupTrip: 51, accept: 0.91, tilt: 11,
                rails: ["breaks", "holds", "breaks"]},
       floor:  {label: "Completed trips with an acceptance floor", drive: 40, game: 2, idle: 6, off: 14, wait: 4.4, topupTrip: 33, accept: 0.84, tilt: 2,
                rails: ["holds", "holds", "holds"]}
@@ -300,7 +300,7 @@ var W4 = {
   tue: {
     fare: 165,                      /* case Tue ticket: average peak fare, Rs */
     perHourShown: [314, 260],       /* case Tue ticket: gross bookings per peak online hour, Rs */
-    driverWeeksToy: 6000,           /* toy: active driver-weeks in each six-week window, the same in both */
+    driverWeeks: [6360, 6500],      /* Monday's data: active driver-weeks, the six weeks before and after */
     upiMonthBillion: 24.07,         /* case Tue public facts T3: UPI transactions in September 2026 (NPCI via Outlook Money) */
     upiDayMillion: 802,             /* case Tue public facts T3: 24.07 billion over 30 days */
     peakHoursSixWeeks: 180,         /* derived: 5 weekdays x 2 windows x 3 hours x 6 weeks (case Mon ticket) */
@@ -462,7 +462,7 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>At the case's floor of Rs 300 an hour, online hours rise 24 percent, from 118,000 to 146,300, while trips rise 3 percent, from 224,200 to 230,900. Trips per online hour falls from 1.90 to 1.58, which the city quotes as 1.9 to 1.6, and about Rs 1.16 crore of the Rs 1.9 crore top-up went to driver-weeks that accepted under half their requests. The median rider wait moved from 4.8 to 4.6 minutes. The fall starts with the first rupees of the floor: on the toy curve, trips per online hour already reads 1.83 at Rs 100.</p>
+        <p>At the case's floor of Rs 300 an hour, online hours rise 24 percent, from 118,000 to 146,300, while trips rise 3 percent, from 224,200 to 230,900. Trips per online hour falls from 1.90 to 1.58, which the city quotes as 1.9 to 1.6, and about Rs 1.16 crore of the Rs 1.9 crore top-up went to driver-weeks that accepted under half their offers. The median rider wait moved from 4.8 to 4.6 minutes. The fall starts with the first rupees of the floor: on the toy curve, trips per online hour already reads 1.83 at Rs 100.</p>
         <p>Online hours count time with the app open, and the driver controls that count. An idle hour in an outer zone earns the same floor as a busy hour in the centre, so the number the scheme pays for rose while riders saw almost no change.</p>
         <p class="formula"><b>The formula, last</b>trips per online hour = completed peak trips / peak online hours = 230,900 / 146,300 = 1.58</p>
       </div>
@@ -476,7 +476,7 @@ var W4 = {
         <div class="opts">
           <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Online hours, the number the scheme paid as it ran.</button>
           <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Completed trips.</button>
-          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Accepted share of requests.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Accepted share of offers.</button>
           <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Completed trips with an acceptance floor.</button>
         </div>
         <p class="said" aria-live="polite">No prediction yet.</p>
@@ -491,7 +491,7 @@ var W4 = {
             <select id="m2-pay" data-ctl="pay">
               <option value="hours">Online hours, the scheme as it ran</option>
               <option value="trips">Completed trips</option>
-              <option value="accept">Accepted share of requests</option>
+              <option value="accept">Accepted share of offers</option>
               <option value="floor">Completed trips with an acceptance floor</option>
             </select>
             <output data-out="pay">Paying for online hours</output>
@@ -527,7 +527,7 @@ var W4 = {
         </figure>
         <div class="panel">
           <div class="ctl"><label for="m3-num">Numerator</label>
-            <select id="m3-num" data-ctl="num"><option value="3">Completed trips</option><option value="2">Accepted requests</option><option value="1">Requests received</option></select></div>
+            <select id="m3-num" data-ctl="num"><option value="3">Completed trips</option><option value="2">Accepted offers</option><option value="1">Offers received</option></select></div>
           <div class="ctl"><label for="m3-den">Denominator</label>
             <select id="m3-den" data-ctl="den"><option value="0">Online hours</option><option value="d">Enrolled drivers</option><option value="1">Requests received</option></select></div>
           <div class="ctl"><label for="m3-win">Window</label>
@@ -548,7 +548,7 @@ var W4 = {
 
     <article class="scene" id="scene-M4" data-scene="M4">
       <div class="scene-head"><span class="sid">M4</span><h3>Which number moved first?</h3></div>
-      <p class="myth"><b>The first answer most people give:</b> the problem started the week the money number fell.</p>
+      <p class="myth"><b>The first answer most people give:</b> the money number lags the behaviour behind it, so it turns weeks later.</p>
       <div class="predict">
         <p class="ask"><b>Predict before you move the week.</b> Acceptance turns down in the launch week. In which week will bookings per online hour turn?</p>
         <div class="opts">
@@ -561,7 +561,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Twelve peak weeks, six before the launch and six after. The weekly values are a toy, set around the case's six-week figures (acceptance 0.86 before and 0.73 after, bookings per online hour Rs 314 and Rs 260), each a ratio of six-week totals. Bookings are completed trips times the Rs 165 fare. A line turns in the first week it sits more than 5 percent below its before average, and a rose ring shows the turn.</figcaption>
+          <figcaption>Twelve peak weeks, six before the launch and six after, from Monday's data: each point is that week's ratio of totals, and over the six weeks acceptance was 0.86 before and 0.73 after, bookings per online hour Rs 314 and Rs 260. Bookings are completed trips times the Rs 165 fare. A line turns in the first week it sits more than 5 percent below its before average, and a rose ring shows the turn.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl">
@@ -575,9 +575,9 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>Acceptance falls below its before level in week 7, the launch week, and bookings per online hour follows in week 9: a lead of two weeks. Over the six weeks, the case's acceptance was 0.86 before and 0.73 after, and bookings per online hour Rs 314 before and Rs 260 after, each a ratio of six-week totals.</p>
-        <p>Drivers changed what they accepted in the week the scheme began; the money per hour showed it only once the idle hours piled up. A team that watches only the money number learns about the problem two weeks late.</p>
-        <p class="formula"><b>The formula, last</b>a leading indicator moves before the outcome it leads, so it is the one to watch for early action</p>
+        <p>Both lines turn in week 7, the launch week: acceptance falls from about 0.86 to 0.73, and bookings per online hour from about Rs 314 to Rs 271, then settles near Rs 260. The scheme changed what drivers did on its first day, so neither number led the other in time.</p>
+        <p>What makes acceptance the leading input is when it can be read. It is counted per offer, so the city team can see it by zone while the launch week runs; bookings per online hour reached the city review as a six-week figure. A team that waits for the review number acts six weeks late.</p>
+        <p class="formula"><b>The formula, last</b>a leading input is a number you can read, and act on, before the outcome is reported; here both moved in the launch week, and acceptance was readable per offer as it happened</p>
       </div>
     </article>
   </section>
@@ -639,7 +639,7 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>With trips per online hour and the top-up left, the title can say what happened and what to do: the hourly guarantee bought idle hours, so pay per completed trip with an acceptance floor. Trips per online hour, 1.9 to 1.6, is the evidence with its denominator; the Rs 1.9 crore top-up, about Rs 1.16 crore of it paid to driver-weeks that accepted under half their requests, is the cost the action stops. The caveat goes on the slide in plain sight: the monsoon ended inside the window. Acceptance and cancellations show how drivers gamed the scheme, but neither says what it cost or what to change, so they go with the other five numbers to an appendix page for the lead who will ask about them.</p>
+        <p>With trips per online hour and the top-up left, the title can say what happened and what to do: the hourly guarantee bought idle hours, so pay per completed trip with an acceptance floor. Trips per online hour, 1.9 to 1.6, is the evidence with its denominator; the Rs 1.9 crore top-up, about Rs 1.16 crore of it paid to driver-weeks that accepted under half their offers, is the cost the action stops. The caveat goes on the slide in plain sight: the monsoon ended inside the window. Acceptance and cancellations show how drivers gamed the scheme, but neither says what it cost or what to change, so they go with the other five numbers to an appendix page for the lead who will ask about them.</p>
         <p>Nine numbers make the city head do the analysis in the meeting. One claim, one piece of evidence with its denominator, one caveat and one action let a lead who loses under the redesign repeat it accurately.</p>
         <p class="formula"><b>The formula, last</b>one slide = a claim as the title + one piece of evidence with its denominator + the caveat in plain sight + the action with its cost</p>
       </div>
@@ -660,7 +660,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Each pair of bars shows the six weeks after the launch as a percentage of the six weeks before, with the rupees printed above. Bookings are trips times the Rs 165 fare. The driver-week count is a toy, invented and held at 6,000 in both windows, which leaves out the 140 drivers who joined after the launch. A reading stays a dashed outline until you switch to it.</figcaption>
+          <figcaption>Each pair of bars shows the six weeks after the launch as a percentage of the six weeks before, with the rupees printed above. Bookings are trips times the Rs 165 fare. Active driver-weeks come from Monday's data: 6,360 before and 6,500 after, since the 140 drivers who joined after the launch drove only some weeks. A reading stays a dashed outline until you switch to it.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl">
@@ -678,7 +678,7 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>Per online hour the rupees fall from Rs 314 to Rs 260, down 17 percent. Per driver-week they rise about 3 percent, because total bookings rose with trips. Per trip they hold at Rs 165, since the fare did not move. The same rupees tell three stories, so the slide names its denominator in the title.</p>
+        <p>Per online hour the rupees fall from Rs 314 to Rs 260, down 17 percent. Per active driver-week they rise under 1 percent, from Rs 5,817 to Rs 5,861, because bookings grew 3 percent while active driver-weeks grew 2.2 percent. Per trip they hold at Rs 165, since the fare did not move. The same rupees tell three stories, so the slide names its denominator in the title.</p>
         <p>A denominator is a choice about whose effort counts. A lead who prefers per driver-week is reading the same data, which is why the slide must say which reading it uses and why.</p>
         <p class="formula"><b>The formula, last</b>bookings per online hour = (trips / online hours) x fare per trip = 1.578 x Rs 165 = Rs 260</p>
       </div>
@@ -1857,7 +1857,7 @@ var W4 = {
   function pctChange(a, b) {
     var p = (b - a) / a * 100;
     if (Math.abs(p) < 0.5) return "flat";
-    return (p > 0 ? "up " : "down ") + Math.abs(p).toFixed(0) + " percent";
+    return (p > 0 ? "up " : "down ") + Math.abs(p).toFixed(Math.abs(p) < 2 ? 1 : 0) + " percent";
   }
   function nums(dl, rows) {
     dl.textContent = "";
@@ -2179,7 +2179,7 @@ var W4 = {
         { wide: "That is " + group(round100(m.trips)) + " / " + group(round100(m.hours)) + "." },
         ["Online hours with no trip, share", m.idle.toFixed(2)],
         ["Top-up paid in all, six weeks", crore(MON.topupCrore * 1e7 * m1Resp(st.floor) * (st.floor / MON.floorCase))],
-        ["Of which, to driver-weeks accepting under half their requests", crore(m.topupIdle)],
+        ["Of which, to driver-weeks accepting under half their offers", crore(m.topupIdle)],
         ["Dots: driving, idle, offline", c.drive + ", " + c.idle + ", " + c.off]
       ];
       if (st.wait) rows.push(["Median rider wait at peak", m.wait.toFixed(1) + " min"]);
@@ -2290,7 +2290,7 @@ var W4 = {
     return res;
   }
   function m3Unit(st) {
-    var n = { 3: "trips", 2: "accepted requests", 1: "requests" }[st.num];
+    var n = { 3: "trips", 2: "accepted offers", 1: "offers" }[st.num];
     var d = st.den === "0" ? "online hour" : (st.den === "d" ? "enrolled driver" : "request received");
     var w = (st.den === "d") ? (st.win === "day" ? " per weekday" : " per week") : "";
     return n + " per " + d + w;
@@ -2356,7 +2356,7 @@ var W4 = {
     return null;
   }
   scene("M4", {
-    answer: "B",
+    answer: "A",
     start: function () { return { week: 6 }; },
     init: function (st, art) {
       var self = this;
@@ -2366,8 +2366,8 @@ var W4 = {
       var k = st.week, svg = svgRoot(640, 470, "Acceptance share and bookings per online hour over twelve weeks");
       var X = function (w) { return 78 + (w - 1) * 48; };
       var panels = [
-        { title: "Acceptance share, accepted over requests", s: MON.acceptWeekly, lo: 0.6, hi: 0.95, y0: 34, ticks: [0.6, 0.7, 0.8, 0.9], f: function (v) { return v.toFixed(2); } },
-        { title: "Gross bookings per peak online hour, Rs", s: MON.bookWeekly, lo: 180, hi: 340, y0: 244, ticks: [200, 250, 300], f: function (v) { return String(v); } }
+        { title: "Acceptance share, accepted over offers", s: MON.acceptWeekly, lo: 0.6, hi: 0.95, y0: 34, ticks: [0.6, 0.7, 0.8, 0.9], f: function (v) { return v.toFixed(2); } },
+        { title: "Gross bookings per peak online hour, Rs", s: MON.bookWeekly, lo: 180, hi: 340, y0: 244, ticks: [200, 250, 300], f: function (v) { return String(Math.round(v)); } }
       ];
       var turns = [];
       panels.forEach(function (p) {
@@ -2397,7 +2397,7 @@ var W4 = {
       setOut(art, "week", "Week " + k + ", beginning " + full[k] + " 2026");
       nums($("[data-nums]", art), [
         ["Acceptance share this week", MON.acceptWeekly[k - 1].toFixed(2)],
-        ["Bookings per online hour this week", rs(MON.bookWeekly[k - 1])],
+        ["Bookings per online hour this week", rs(Math.round(MON.bookWeekly[k - 1]))],
         ["Acceptance turned", turns[0] && turns[0] <= k ? "in week " + turns[0] : "not yet"],
         ["Bookings per hour turned", turns[1] && turns[1] <= k ? "in week " + turns[1] : "not yet"]
       ]);
@@ -2482,7 +2482,7 @@ var W4 = {
     var bk = [M.trips[0] * f, M.trips[1] * f];
     return {
       hour: { name: "Per online hour", b: bk[0] / M.hours[0], a: bk[1] / M.hours[1], how: "bookings over peak online hours" },
-      dw: { name: "Per driver-week", b: bk[0] / TUE.driverWeeksToy, a: bk[1] / TUE.driverWeeksToy, how: "bookings over 6,000 driver-weeks (toy count)" },
+      dw: { name: "Per active driver-week", b: bk[0] / TUE.driverWeeks[0], a: bk[1] / TUE.driverWeeks[1], how: "bookings over 6,360 and 6,500 active driver-weeks (Monday's data)" },
       trip: { name: "Per trip", b: bk[0] / M.trips[0], a: bk[1] / M.trips[1], how: "bookings over completed trips" },
       bk: bk
     };
@@ -2497,7 +2497,7 @@ var W4 = {
     render: function (st, art) {
       var v = t2Values(), keys = ["hour", "dw", "trip"], sel = v[st.den];
       $('[data-ctl="den"]', art).value = st.den;
-      var titles = { hour: "Bookings per online hour fell from Rs 314 to Rs 260", dw: "Bookings per driver-week rose 3 percent", trip: "Bookings per trip held at Rs 165" };
+      var titles = { hour: "Bookings per online hour fell from Rs 314 to Rs 260", dw: "Bookings per driver-week rose under 1 percent", trip: "Bookings per trip held at Rs 165" };
       var svg = svgRoot(640, 420, "Three readings of the same bookings, before and after");
       txt(svg, 20, 34, "The title this reading would carry:", { size: 14.5, fill: C.night });
       txt(svg, 20, 62, titles[st.den], { size: 21, font: SERIF, weight: 700 });
