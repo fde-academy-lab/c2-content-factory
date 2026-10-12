@@ -1,0 +1,242 @@
+day: W04/D4
+case: Zomato Gold, Chennai
+label_line: 'Illustrative case: the company is real, the situation and the data are synthetic, built for
+  this class.'
+windows:
+  auto_reorder_window:
+    start: '2026-09-10'
+    end: '2026-09-30'
+  compare_window:
+    start: '2026-08-20'
+    end: '2026-09-09'
+  android_release: '2026-09-14'
+  used_in: the Kalpa lab's two windows; shared with Monday's generator
+case_numbers:
+  members_total:
+    value: 60000
+    how: nine monthly cohorts, sizes sum to 60000
+    used_in: the ticket on half1 and in notebook 01
+  normal_cohort_size:
+    value: 5000
+    how: generator constant for Jan to Jul 2026
+    used_in: the ticket; the slide that counts the cohort sizes
+  august_cohort_size:
+    value: 13000
+    how: generator constant, 2.6 times a normal cohort
+    used_in: the ticket; the slide on the sale cohort
+  august_vs_normal_ratio:
+    value: 2.6
+    how: 13000 / 5000
+    used_in: the ticket; the trap slide
+  blended_retention_jun:
+    value: 0.401
+    how: members who signed up before June and placed an order in June, over members who signed up before
+      June
+    used_in: the dashboard screenshot on half1 chapter 1
+  blended_retention_jul:
+    value: 0.391
+    how: same definition on July
+    used_in: the dashboard screenshot and the ticket
+  blended_retention_aug:
+    value: 0.39
+    how: same definition on August
+    used_in: the dashboard screenshot and the ticket
+  blended_retention_sep:
+    value: 0.349
+    how: same definition on September
+    used_in: the dashboard screenshot and the ticket
+  cohort_month_one:
+    2026-01:
+      value: 0.58
+      how: generator target
+      used_in: chapter 2 the triangle
+    2026-02:
+      value: 0.56
+      how: generator target
+      used_in: chapter 2 the triangle
+    2026-03:
+      value: 0.55
+      how: generator target
+      used_in: chapter 2 the triangle
+    2026-04:
+      value: 0.53
+      how: generator target
+      used_in: chapter 2 the triangle
+    2026-05:
+      value: 0.52
+      how: generator target
+      used_in: chapter 2 the triangle
+    2026-06:
+      value: 0.5
+      how: generator target
+      used_in: chapter 2 the triangle
+    2026-07:
+      value: 0.49
+      how: generator target
+      used_in: chapter 2 the triangle
+    2026-08:
+      value: 0.31
+      how: generator target, the sale cohort
+      used_in: chapter 2 the triangle; the trap slide
+  funnel_search_to_menu_persess:
+    value: 1.202
+    how: menu_view sessions over search sessions, September 2026
+    used_in: chapter 3 the artefact slide
+  funnel_menu_to_atc_persess:
+    value: 0.419
+    how: add_to_cart sessions over menu_view sessions, September
+    used_in: chapter 3 the funnel
+  funnel_menu_to_atc_permember:
+    value: 0.58
+    how: members who reached add_to_cart over members who reached menu_view, September
+    used_in: chapter 3 the funnel, the units slide
+  android_atc_order_pre:
+    value: 0.581
+    how: sessions reaching order_placed over sessions reaching add_to_cart, Android, before 14 September
+    used_in: chapter 3 the release split
+  android_atc_order_post:
+    value: 0.444
+    how: same, Android, 14 September and after
+    used_in: chapter 3 the release split; the ticket
+  ios_atc_order_pre:
+    value: 0.569
+    how: same, iOS, before 14 September
+    used_in: chapter 3 the release split; the ticket
+  ios_atc_order_post:
+    value: 0.552
+    how: same, iOS, 14 September and after
+    used_in: chapter 3 the release split; the ticket
+twelve_rows:
+  may_m1:
+    value: 3
+    how: 3 of 4 May members order in month one
+    used_in: chapter 1 the hand count
+  may_m2:
+    value: 2
+    how: 2 of 4 May members order in month two
+    used_in: chapter 1 the hand count
+  jun_m1:
+    value: 2
+    how: 2 of 3 June members order in month one
+    used_in: chapter 1 the hand count
+  jun_m2:
+    value: 1
+    how: 1 of 3 June members order in month two
+    used_in: chapter 1 the hand count
+  aug_m1:
+    value: 2
+    how: 2 of 5 August members order in month one
+    used_in: chapter 1 the hand count
+  sept_blend:
+    value: 6
+    how: 6 of 12 members order in September
+    used_in: chapter 1 the trap and the blend reveal
+  sept_blend_rate:
+    value: 0.5
+    how: 6 of 12 is 50 percent, five points off the full 38
+    used_in: chapter 1 the blended rate on the card
+kalpa_numbers:
+  members_total:
+    value: 120
+    how: generator writes 120 Retail-Plus members in eight cohorts, but a Kalpa number is TRAINER until
+      the lab
+    used_in: the lab notebook, TRAINER
+  august_cohort_size:
+    value: 28
+    how: generator constant
+    used_in: lab TRAINER
+  blended_retention_jul:
+    value: 0.385
+    plant_target: 0.41
+    how: members who signed up before July and placed an order in July, over members who signed up before
+      July; the plant target in the row is 41
+    used_in: lab TRAINER until the lab; the lab reveals it
+  blended_retention_aug:
+    value: 0.435
+    plant_target: 0.41
+    how: same definition on August
+    used_in: lab TRAINER until the lab
+  blended_retention_sep:
+    value: 0.375
+    plant_target: 0.41
+    how: same definition on September
+    used_in: lab TRAINER until the lab
+  atc_to_checkout_drop_in_window:
+    value: 0.176
+    how: add-to-cart to checkout rate in the compare window minus rate in the auto-reorder window
+    used_in: lab TRAINER until the lab; after the lab, Friday's pre-read
+  sessions_skip_search:
+    value: 0.276
+    how: visit sessions without a search over all visit sessions
+    used_in: lab TRAINER
+toys:
+  two_batches:
+    value: batch A 10, batch B 10; 6 and 4 return in month two
+    label: invented
+    how: the coaching-centre analogy for L1
+    used_in: chapter 1 the opening analogy
+  blend_toy:
+    value: batch A of 100 at 50 percent; now A at 40 and B of 400 at 52.5; 250 of 500 is 50 percent while
+      each batch falls
+    label: invented
+    how: the second blend toy, scaled to make the mix effect visible
+    used_in: chapter 2 the blend reveal
+  funnel_toy:
+    value: 100 visits, 40 searches, 20 add-to-carts, 10 checkouts
+    label: invented
+    how: the funnel toy for L3
+    used_in: chapter 3 the funnel opening
+public_facts:
+  Th4_zomato_gold_members:
+    value: 1800000
+    label: verified in R2 (BSE filing, 12 October 2026)
+    how: Gold at 1.8 million members in the quarter to March 2023
+    used_in: slide introducing the company; the self-selection caveat
+  Th4_gold_frequency_rise:
+    value: 0.6
+    label: verified in R2 (BSE filing, 12 October 2026)
+    how: order frequency rose about 60 percent on average after joining Gold
+    used_in: L4 self-selection caveat
+  Th2_swiggy_denominator:
+    value: the cohort triangle indexed to the Q4 FY24 cohort; weak users weaned away; the denominator
+      question
+    label: verified in R2 (Swiggy shareholder letter, 12 October 2026)
+    how: the published triangle and its denominator caveat
+    used_in: chapter 2 the denominator question; the fallback
+  Th3_swiggy_blend:
+    value:
+      mtu_rise: 0.274
+      frequency_fall: 0.063
+      retention_before_after:
+      - 0.55
+      - 0.61
+      unprofitable_users_weaned: 4000000
+    label: verified in R2 (Swiggy letter, 12 October 2026)
+    how: MTU up 27.4 percent while platform frequency fell 6.3 percent; over 4 million unprofitable users
+      weaned; one-month retention rose to 61 percent from 55
+    used_in: L2 blend; L5 the sale cohort cost
+  Th5_amplitude_benchmark:
+    value: 0.07
+    label: verified in R2 (Amplitude blog, 12 October 2026)
+    how: 7 percent day-7 retention cited as roughly top quartile; enterprise median 2.1 percent
+    used_in: L3 what good means; the caveat
+  M2_eternal_nov_retention:
+    value:
+      q4_retention: 0.46
+      nov_retention_q4: 1.5
+      nov_retention_q12: 2.79
+    label: verified in R2 (Eternal Q1 FY27 blog, 12 October 2026)
+    how: Q4 retention 46 percent across cohorts, NOV retention 150 percent at Q4, 279 percent at Q12
+    used_in: L1 the survivors-spend-more frame
+guesstimate_anchor:
+  value:
+    delhi_metro_journeys_daily_2026: 6406000
+    delhi_metro_boardings_record_2026-09-17: 8244903
+  label: verified in R2 (DMRC filings cited in M6 and T3, 12 October 2026)
+  how: 64.06 lakh average daily passenger journeys in 2026 and 82,44,903 boardings on 17 September 2026;
+    the catch is that journeys and boardings are different units, which is Thursday's whole lesson
+  used_in: the day's guesstimate
+ai_variant:
+  note: programme-written; names no company figure; separates novelty from habit by comparing a launch-week
+    cohort to organic cohorts at week-4 retention per cohort rather than a blended MAU
+  used_in: the L6 transcript, extras
