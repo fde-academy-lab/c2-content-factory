@@ -715,6 +715,10 @@ def verify_case(cart_df, item_df, twelve_df):
     check("sized by each cart's item count, chips and cold drink read 2.48, coriander and green chillies "
           "2.25, bread and butter 1.74, and onions and tomatoes 1.38, below the 1.5 bar",
           [round(v, 2) for v in sl.values()] == [2.48, 2.25, 1.74, 1.38])
+    line_margin = item_df.margin_rs * item_df.quantity
+    cart_margin = line_margin.groupby(item_df.cart_id).sum()
+    ic_ids = set(item_df.loc[item_df.item == "ice cream", "cart_id"])
+    out["ic_margin_sd"] = float(cart_margin[cart_margin.index.isin(ic_ids)].std())
     heavy_ids = set(per_cust.index[:top_n])
     pair_carts = item_df[item_df.item.isin(["chips", "cold drink"])].groupby("cart_id").item.nunique()
     both_ids = set(pair_carts[pair_carts == 2].index)
@@ -856,6 +860,14 @@ def verify_strip(log):
     out["milk_imp_day"] = milk_after.groupby("date").impressions.sum().mean()
     part = log[log.date >= CHANGE_DAY.isoformat()]
     out["after_ctr_exact"] = part.clicks.sum() / part.impressions.sum()
+    # The same anchor, suggestion and slot in both windows, milk aside: like against like.
+    cells = (log[~log.milk].groupby(["anchor_item", "suggested_item", "slot", "window"])
+             [["impressions", "clicks"]].sum().unstack("window").dropna())
+    rise = (cells[("clicks", "after")] / cells[("impressions", "after")]) / \
+           (cells[("clicks", "before")] / cells[("impressions", "before")]) - 1
+    out["same_cells"] = (len(rise), float(rise.min()), float(rise.max()))
+    check(f"the {len(rise)} cells other than milk shown in both windows each clicked better after the "
+          f"change, by {rise.min():.0%} to {rise.max():.0%}", len(rise) == 4 and (rise > 0).all())
     out["rows"] = len(log)
     return out
 
@@ -1160,9 +1172,24 @@ def write_facts(case, strip, kalpa):
     f(S, "adds_a_day", round(adds_day), f"{round(adds_day):,}", "60,000 x 0.064 x 0.5", "notebook 03, the trap")
     f(S, "gross_sales_day", round(gross_day), f"Rs {indian(gross_day)}", "1,920 adds x the average price of an added item", "notebook 03, the trap")
     thin_views = views * 0.04
-    thin_month = thin_views * (0.064 - 0.012) * add * margin * 30
+    m_sauce, m_milk = MARGIN["chocolate sauce"], MARGIN["toned milk"]
+    thin_month = thin_views * 30 * (0.064 * add * m_sauce - 0.012 * add * m_milk)
     f(S, "ice_cream_views_day", round(thin_views), f"{round(thin_views):,}", "60,000 views x ice cream's 4 percent of carts, if views follow carts", "interview room, half1, half2, notes")
-    f(S, "thin_rule_month", round(thin_month), "about Rs 17,000", "2,400 x (0.064 - 0.012) x 0.5 x 9 x 30: the thin pair in place of milk, clicking like the rest", "interview room, half1, half2, notes")
+    f(S, "sauce_margin", m_sauce, f"Rs {m_sauce:.2f}", "margin_rs on a bottle of chocolate sauce", "interview room, half1, notes")
+    f(S, "thin_rule_month", round(thin_month), "about Rs 85,000", "2,400 x 30 x (0.064 x 0.5 x Rs 37.40 - 0.012 x 0.5 x Rs 2): sauce in place of milk beside ice cream, each add at its own margin, sauce clicking like the rest", "interview room, half1, half2, notes")
+    n_same, r_lo, r_hi = strip["same_cells"]
+    f(S, "same_cells", n_same, "four", "anchor, suggestion and slot cells other than milk shown in both windows", "the [D] transcript")
+    f(S, "same_cells_rise_low", round(r_lo, 4), f"{r_lo * 100:.0f} percent", "the smallest rise in click-through among them", "the [D] transcript")
+    f(S, "same_cells_rise_high", round(r_hi, 4), f"{r_hi * 100:.0f} percent", "the largest rise in click-through among them", "the [D] transcript")
+    milk_at_own = views * 30 * 3 * 0.5 * (0.064 * add * margin - 0.012 * add * m_milk)
+    f(S, "recoverable_month_milk_own", round(milk_at_own), lakh(milk_at_own), "60,000 x 30 x 1.5 x (0.064 x 0.5 x Rs 9 - 0.012 x 0.5 x Rs 2): milk priced at its own margin", "interview room")
+    p0 = case["m"][("ice cream", "chocolate sauce")]["conf_ab"]
+    lift_pts = 0.064 * add
+    n_arm = [(1.96 + 0.8416) ** 2 * (p0 * (1 - p0) + (p0 + e) * (1 - p0 - e)) / e ** 2 for e in (lift_pts, lift_pts / 2)]
+    f(S, "trial_lift_points", lift_pts, "3.2 points", "0.064 x 0.5: the share of ice-cream carts the strip's sauce adds would reach, if every add were new", "interview room, trainer")
+    f(S, "trial_n_full", round(n_arm[0]), "about 1,100", "ice-cream carts an arm to detect 6.25 to 9.45 percent buying sauce, 5 percent two-sided, 80 percent power", "interview room, trainer")
+    f(S, "trial_n_half", round(n_arm[1]), "about 4,000", "the same for half that effect, if half the adds would have come anyway", "interview room, trainer")
+    f(S, "ice_cream_cart_margin_sd", round(case["ic_margin_sd"], 2), f"Rs {case['ic_margin_sd']:.0f}", "standard deviation of a whole ice-cream cart's margin", "interview room, trainer")
     f(S, "serving_cost_10p_month", round(views * 0.10 * 30), lakh(views * 0.10 * 30), "60,000 views x Rs 0.10 x 30: ten paise of serving cost a view, a month", "interview room, AI variant")
     f(S, "serving_breakeven_paise", round(recover / (views * 30) * 100, 1), "35 paise", "Rs 6.3 lakh / (60,000 x 30): the serving cost a view that uses up the re-rank's recovery", "interview room, AI variant")
     S = "twelve_rows"
@@ -1213,26 +1240,39 @@ def write_facts(case, strip, kalpa):
     f(S, "uber_both_share", 0.2, "about one in five", "eligible consumers active monthly in both rides and delivery, Uber 10-K for 2025 (W4)", "notes")
     S = "guesstimate"
     g_hh, g_hl, g_hh_hi = 40_000, 30_000, 50_000
-    g_sh, g_sl, g_s_hi = 0.15, 0.10, 0.20
+    g_ad, g_ad_lo, g_ad_hi = 0.30, 0.20, 0.40       # households using quick commerce in a week
+    g_sc, g_sc_lo, g_sc_hi = 0.50, 0.35, 0.65       # Instamart's slice of them
+    g_sh, g_sl, g_s_hi = round(g_ad * g_sc, 2), round(g_ad_lo * g_sc_lo, 2), round(g_ad_hi * g_sc_hi, 2)
     g_ow, g_ol, g_o_hi = 1.5, 1.0, 2.0
     g_mid, g_low, g_high = g_hh * g_sh * g_ow / 7, g_hl * g_sl * g_ol / 7, g_hh_hi * g_s_hi * g_o_hi / 7
     for fid, val, shown, how in (
-            ("gs_households", g_hh, "40,000", "assumption: households a dark store's catchment holds"),
+            ("gs_radius", 2.5, "2.5 km", "assumption: a dark store's delivery radius"),
+            ("gs_area", 19.6, "about 20 square km", "3.14 x 2.5 x 2.5"),
+            ("gs_density", 2000, "about 2,000", "assumption: households a square km in a large city's residential belt"),
+            ("gs_households", g_hh, "40,000", "assumption: households a dark store's catchment holds, about 20 x 2,000"),
             ("gs_households_low", g_hl, "30,000", "assumption's low end"),
             ("gs_households_high", g_hh_hi, "50,000", "assumption's high end"),
-            ("gs_share_week", g_sh, "15 percent", "assumption: share of those households ordering in a given week"),
-            ("gs_share_low", g_sl, "10 percent", "assumption's low end"),
-            ("gs_share_high", g_s_hi, "20 percent", "assumption's high end"),
+            ("gs_adoption", g_ad, "30 percent", "assumption: households using quick commerce in a given week"),
+            ("gs_adoption_low", g_ad_lo, "20", "assumption's low end, in percent"),
+            ("gs_adoption_high", g_ad_hi, "40 percent", "assumption's high end"),
+            ("gs_slice", g_sc, "half", "assumption: Instamart's slice of those households"),
+            ("gs_slice_low", g_sc_lo, "35", "assumption's low end, in percent"),
+            ("gs_slice_high", g_sc_hi, "65 percent", "assumption's high end"),
+            ("gs_share_week", g_sh, "15 percent", "30 percent x half: share of the catchment ordering from Instamart in a given week"),
+            ("gs_share_low", g_sl, "7", "20 percent x 35 percent, in percent"),
+            ("gs_share_high", g_s_hi, "26", "40 percent x 65 percent, in percent"),
             ("gs_orders_week", g_ow, "1.5", "assumption: orders a week from each ordering household"),
             ("gs_orders_low", g_ol, "1", "assumption's low end"),
             ("gs_orders_high", g_o_hi, "2", "assumption's high end"),
             ("gs_orders_day", round(g_mid, 1), "about 1,290", "40,000 x 0.15 x 1.5 / 7"),
-            ("gs_orders_day_low", round(g_low, 1), "about 430", "30,000 x 0.10 x 1 / 7"),
-            ("gs_orders_day_high", round(g_high, 1), "about 2,860", "50,000 x 0.20 x 2 / 7"),
+            ("gs_orders_day_low", round(g_low, 1), "about 300", "30,000 x 0.07 x 1 / 7"),
+            ("gs_orders_day_high", round(g_high, 1), "about 3,710", "50,000 x 0.26 x 2 / 7"),
             ("gs_gap", round(g_mid / 1089 - 1, 4), "18 percent", "the estimate above Swiggy's 1,089"),
             ("gs_share_needed", round(1089 * 7 / (g_hh * g_ow), 4), "about 13 percent", "the weekly share that lands on 1,089: 1,089 x 7 / (40,000 x 1.5)"),
-            ("gs_share_low_day", round(g_hh * g_sl * g_ow / 7, 1), "about 860", "40,000 x 0.10 x 1.5 / 7; orders a week at 1 gives the same"),
-            ("gs_share_high_day", round(g_hh * g_s_hi * g_ow / 7, 1), "about 1,710", "40,000 x 0.20 x 1.5 / 7; orders a week at 2 gives the same")):
+            ("gs_share_low_day", round(g_hh * g_sl * g_ow / 7, 1), "about 600", "40,000 x 0.07 x 1.5 / 7: the share alone at its low end"),
+            ("gs_share_high_day", round(g_hh * g_s_hi * g_ow / 7, 1), "about 2,230", "40,000 x 0.26 x 1.5 / 7: the share alone at its high end"),
+            ("gs_orders_only_low_day", round(g_hh * g_sh * g_ol / 7, 1), "about 860", "40,000 x 0.15 x 1 / 7: orders a week alone at its low end"),
+            ("gs_orders_only_high_day", round(g_hh * g_sh * g_o_hi / 7, 1), "about 1,710", "40,000 x 0.15 x 2 / 7: orders a week alone at its high end")):
         f(S, fid, val, shown, how, "guesstimate: notes and the trainer sheet")
     S = "pairs_detail"
     for name in sorted(sh):

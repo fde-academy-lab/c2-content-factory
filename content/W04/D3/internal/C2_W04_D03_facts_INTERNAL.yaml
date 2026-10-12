@@ -1104,11 +1104,56 @@ slot_value:
     shown: "2,400"
     how: "60,000 views x ice cream's 4 percent of carts, if views follow carts"
     used_in: "interview room, half1, half2, notes"
+  - id: sauce_margin
+    value: 37.4
+    shown: "Rs 37.40"
+    how: "margin_rs on a bottle of chocolate sauce"
+    used_in: "interview room, half1, notes"
   - id: thin_rule_month
-    value: 16848
-    shown: "about Rs 17,000"
-    how: "2,400 x (0.064 - 0.012) x 0.5 x 9 x 30: the thin pair in place of milk, clicking like the rest"
+    value: 85306
+    shown: "about Rs 85,000"
+    how: "2,400 x 30 x (0.064 x 0.5 x Rs 37.40 - 0.012 x 0.5 x Rs 2): sauce in place of milk beside ice cream, each add at its own margin, sauce clicking like the rest"
     used_in: "interview room, half1, half2, notes"
+  - id: same_cells
+    value: 4
+    shown: "four"
+    how: "anchor, suggestion and slot cells other than milk shown in both windows"
+    used_in: "the [D] transcript"
+  - id: same_cells_rise_low
+    value: 0.0837
+    shown: "8 percent"
+    how: "the smallest rise in click-through among them"
+    used_in: "the [D] transcript"
+  - id: same_cells_rise_high
+    value: 0.1193
+    shown: "12 percent"
+    how: "the largest rise in click-through among them"
+    used_in: "the [D] transcript"
+  - id: recoverable_month_milk_own
+    value: 745200
+    shown: "Rs 7.5 lakh"
+    how: "60,000 x 30 x 1.5 x (0.064 x 0.5 x Rs 9 - 0.012 x 0.5 x Rs 2): milk priced at its own margin"
+    used_in: "interview room"
+  - id: trial_lift_points
+    value: 0.032
+    shown: "3.2 points"
+    how: "0.064 x 0.5: the share of ice-cream carts the strip's sauce adds would reach, if every add were new"
+    used_in: "interview room, trainer"
+  - id: trial_n_full
+    value: 1105
+    shown: "about 1,100"
+    how: "ice-cream carts an arm to detect 6.25 to 9.45 percent buying sauce, 5 percent two-sided, 80 percent power"
+    used_in: "interview room, trainer"
+  - id: trial_n_half
+    value: 4014
+    shown: "about 4,000"
+    how: "the same for half that effect, if half the adds would have come anyway"
+    used_in: "interview room, trainer"
+  - id: ice_cream_cart_margin_sd
+    value: 28.12
+    shown: "Rs 28"
+    how: "standard deviation of a whole ice-cream cart's margin"
+    used_in: "interview room, trainer"
   - id: serving_cost_10p_month
     value: 180000
     shown: "Rs 1.8 lakh"
@@ -1342,10 +1387,25 @@ public:
     used_in: "notes"
 
 guesstimate:
+  - id: gs_radius
+    value: 2.5
+    shown: "2.5 km"
+    how: "assumption: a dark store's delivery radius"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_area
+    value: 19.6
+    shown: "about 20 square km"
+    how: "3.14 x 2.5 x 2.5"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_density
+    value: 2000
+    shown: "about 2,000"
+    how: "assumption: households a square km in a large city's residential belt"
+    used_in: "guesstimate: notes and the trainer sheet"
   - id: gs_households
     value: 40000
     shown: "40,000"
-    how: "assumption: households a dark store's catchment holds"
+    how: "assumption: households a dark store's catchment holds, about 20 x 2,000"
     used_in: "guesstimate: notes and the trainer sheet"
   - id: gs_households_low
     value: 30000
@@ -1357,20 +1417,50 @@ guesstimate:
     shown: "50,000"
     how: "assumption's high end"
     used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_adoption
+    value: 0.3
+    shown: "30 percent"
+    how: "assumption: households using quick commerce in a given week"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_adoption_low
+    value: 0.2
+    shown: "20"
+    how: "assumption's low end, in percent"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_adoption_high
+    value: 0.4
+    shown: "40 percent"
+    how: "assumption's high end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_slice
+    value: 0.5
+    shown: "half"
+    how: "assumption: Instamart's slice of those households"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_slice_low
+    value: 0.35
+    shown: "35"
+    how: "assumption's low end, in percent"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_slice_high
+    value: 0.65
+    shown: "65 percent"
+    how: "assumption's high end"
+    used_in: "guesstimate: notes and the trainer sheet"
   - id: gs_share_week
     value: 0.15
     shown: "15 percent"
-    how: "assumption: share of those households ordering in a given week"
+    how: "30 percent x half: share of the catchment ordering from Instamart in a given week"
     used_in: "guesstimate: notes and the trainer sheet"
   - id: gs_share_low
-    value: 0.1
-    shown: "10 percent"
-    how: "assumption's low end"
+    value: 0.07
+    shown: "7"
+    how: "20 percent x 35 percent, in percent"
     used_in: "guesstimate: notes and the trainer sheet"
   - id: gs_share_high
-    value: 0.2
-    shown: "20 percent"
-    how: "assumption's high end"
+    value: 0.26
+    shown: "26"
+    how: "40 percent x 65 percent, in percent"
     used_in: "guesstimate: notes and the trainer sheet"
   - id: gs_orders_week
     value: 1.5
@@ -1393,14 +1483,14 @@ guesstimate:
     how: "40,000 x 0.15 x 1.5 / 7"
     used_in: "guesstimate: notes and the trainer sheet"
   - id: gs_orders_day_low
-    value: 428.6
-    shown: "about 430"
-    how: "30,000 x 0.10 x 1 / 7"
+    value: 300.0
+    shown: "about 300"
+    how: "30,000 x 0.07 x 1 / 7"
     used_in: "guesstimate: notes and the trainer sheet"
   - id: gs_orders_day_high
-    value: 2857.1
-    shown: "about 2,860"
-    how: "50,000 x 0.20 x 2 / 7"
+    value: 3714.3
+    shown: "about 3,710"
+    how: "50,000 x 0.26 x 2 / 7"
     used_in: "guesstimate: notes and the trainer sheet"
   - id: gs_gap
     value: 0.1806
@@ -1413,14 +1503,24 @@ guesstimate:
     how: "the weekly share that lands on 1,089: 1,089 x 7 / (40,000 x 1.5)"
     used_in: "guesstimate: notes and the trainer sheet"
   - id: gs_share_low_day
-    value: 857.1
-    shown: "about 860"
-    how: "40,000 x 0.10 x 1.5 / 7; orders a week at 1 gives the same"
+    value: 600.0
+    shown: "about 600"
+    how: "40,000 x 0.07 x 1.5 / 7: the share alone at its low end"
     used_in: "guesstimate: notes and the trainer sheet"
   - id: gs_share_high_day
+    value: 2228.6
+    shown: "about 2,230"
+    how: "40,000 x 0.26 x 1.5 / 7: the share alone at its high end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_only_low_day
+    value: 857.1
+    shown: "about 860"
+    how: "40,000 x 0.15 x 1 / 7: orders a week alone at its low end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_only_high_day
     value: 1714.3
     shown: "about 1,710"
-    how: "40,000 x 0.20 x 1.5 / 7; orders a week at 2 gives the same"
+    how: "40,000 x 0.15 x 2 / 7: orders a week alone at its high end"
     used_in: "guesstimate: notes and the trainer sheet"
 
 pairs_detail:
