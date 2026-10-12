@@ -2,17 +2,7 @@
 
 Week 4, Day 3. Fallback.
 
-Kicker: WEEK 4  ·  WEDNESDAY  ·  FALLBACK, FACULTY SESSION TENTATIVE
-Quote: Before ice cream and chocolate sauce take a slot, what must a trial show, and what changes when the strip is ranked for one zone at one time of day?
-Who: The growth lead's next questions on the Instamart Pune strip. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
-
-```notes
-On screen when the IITGN faculty session (tentative) cannot run in its slot. These 120 minutes
-extend the morning: a trial for a thin pair, a rerun for one zone and one time band, a storm that
-is no pair rule, and the second transcript. Nothing here treats association rules as probability
-or the algorithms that find them; that stays with the faculty session (tentative) whenever it runs.
-Transition: the four parts.
-```
+Header: WEEK 4  ·  WEDNESDAY  ·  SWIGGY INSTAMART, PUNE  ·  FALLBACK
 
 ---
 
@@ -27,8 +17,11 @@ Transition: the four parts.
 | The second transcript | 25 | How do you answer a category manager who is sure the strip needs a redesign? |
 
 ```notes
-LIVE, 2 minutes. How long a trial must run before its answer can be trusted is a sample-size
-question, parked by name for the faculty session (tentative). Transition: the trial.
+LIVE, 2 minutes, on screen when the IITGN faculty session (tentative) cannot run in its slot. These
+120 minutes extend the morning and teach nothing the block owns: no association rules as
+probability, no algorithm that finds them. How long a trial must run before its answer can be
+trusted is a sample-size question, parked by name for the faculty session (tentative). Transition:
+the trial.
 ```
 
 ---
@@ -226,7 +219,7 @@ Diwali as the event. Transition: the second transcript.
 
 ---
 
-## SECTION 4: The category manager wants a redesign
+## SECTION 4: How do you answer a redesign?
 *How do you answer a category manager who is sure the strip needs a new layout?*
 
 ```notes

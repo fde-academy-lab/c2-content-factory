@@ -12,6 +12,7 @@ last one is what the board holds when the day ends.
 - What do ten orders look like as counts?
 - What do the twelve cards count to?
 - How does confidence shrink the world?
+- Which pairs beat chance, drawn as one concept board?
 - Where does lift join the week?
 - How do two click-through rates make 3.8 percent?
 - Where does each pair sit on the action map?
@@ -60,6 +61,37 @@ flowchart LR
     class D unknown
 ```
 
+## Which pairs beat chance, drawn as one concept board?
+
+Built through chapter 1: the anchor goes up with the dots, each question as its count is called,
+the sketches as each picture is drawn, and the two pitfalls last.
+
+```mermaid
+flowchart LR
+    subgraph A["Anchor"]
+        A1["<b>a tea stall</b><br/>chai in 6, biscuit in 4,<br/>both in 3 of 10"]
+    end
+    subgraph Q["Questions"]
+        direction TB
+        Q1["<b>how often?</b><br/>support 0.30"] ~~~ Q2["<b>how reliably?</b><br/>confidence 0.50"] ~~~ Q3["<b>against chance?</b><br/>lift 1.25"]
+    end
+    subgraph S["Sketches"]
+        direction TB
+        S1["<b>two circles</b><br/>beside the 2 by 2"] ~~~ S2["<b>the world shrinks</b><br/>12 carts, 4 with bread"] ~~~ S3["<b>seen against expected</b><br/>4 against 2.67"]
+    end
+    subgraph P["Pitfalls"]
+        direction TB
+        P1["<b>the popular partner</b><br/>milk in 8 of 12"] ~~~ P2["<b>thin support</b><br/>lift 12 on one cart"]
+    end
+    A --> Q --> S --> P
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef trap fill:#FFF1F1,stroke:#C0392B,color:#5C1111
+    class A1,Q1,Q2,S1,S2,S3 known
+    class Q3 lit
+    class P1,P2 trap
+```
+
 ## Where does lift join the week?
 
 Added under Wednesday's node at the close of chapter 1, and left up all day.
@@ -105,7 +137,7 @@ quadrantChart
     bread and butter: [0.72, 0.61]
     onions and tomatoes: [0.79, 0.53]
     bread and milk: [0.86, 0.22]
-    eggs and milk: [0.82, 0.10]
+    eggs and milk: [0.80, 0.10]
     ice cream and sauce: [0.30, 0.95]
     namkeen and poha: [0.32, 0.30]
     butter and tomatoes: [0.54, 0.22]

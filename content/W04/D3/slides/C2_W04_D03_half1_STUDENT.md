@@ -2,15 +2,7 @@
 
 Week 4, Day 3. Half one.
 
-Kicker: WEEK 4  ·  WEDNESDAY  ·  ILLUSTRATIVE CASE
-Quote: Rank the pairs the strip should show, explain why its click-through fell, and put a rupee value on a slot, by Friday.
-Who: The ask on the ticket, to the category manager and the growth lead. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
-
-```notes
-On screen as the room sits down. Read the title and the ask aloud, then the label line: the company
-is real, the situation and the data are synthetic. Today has three chapters: count by hand, count
-everything, then decide and price. Transition: the ticket, line by line.
-```
+Header: WEEK 4  ·  WEDNESDAY  ·  SWIGGY INSTAMART, PUNE  ·  ILLUSTRATIVE CASE
 
 ---
 
@@ -29,7 +21,8 @@ everything, then decide and price. Transition: the ticket, line by line.
 Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
 ```notes
-LIVE, 5 minutes. Read the table top to bottom. Define two words as they appear: an impression is
+LIVE, 6 minutes, on screen as the room sits down. Read the table top to bottom, then the label line:
+the company is real, the situation and the data are synthetic. Define two words as they appear: an impression is
 one time a slot was shown, and click-through is clicks divided by impressions. Point at the three
 tables and their columns; every number today comes from them. Ask the room for one reason "in
 most carts" might be the wrong reason to show an item, and write the answers on the board
@@ -278,28 +271,43 @@ counted.
 
 ---
 
-## S13. Three counts, one trap, and what twelve cannot say
-*What did the twelve carts answer, and where does lift lead this week?*
+## S13. Three counts, two pitfalls, and what twelve cannot say
+*What did the twelve carts answer, and what goes on the concept board?*
 
 ```mermaid
 flowchart LR
-    A["<b>How often?</b><br/>support<br/>bread and milk 4 of 12"] --> B["<b>How reliably?</b><br/>confidence<br/>bread to milk 1.00"]
-    B --> C["<b>Against chance?</b><br/>lift<br/>bread and milk 1.50"]
-    C --> D["<b>Thursday</b><br/>beyond the blend"]
-    C --> E["<b>Friday</b><br/>beyond the baseline"]
-    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    subgraph A["Anchor"]
+        A1["<b>a tea stall</b><br/>chai in 6, biscuit in 4,<br/>both in 3 of 10"]
+    end
+    subgraph Q["Questions"]
+        direction TB
+        Q1["<b>how often?</b><br/>support 0.30"] ~~~ Q2["<b>how reliably?</b><br/>confidence 0.50"] ~~~ Q3["<b>against chance?</b><br/>lift 1.25"]
+    end
+    subgraph S["Sketches"]
+        direction TB
+        S1["<b>two circles</b><br/>beside the 2 by 2"] ~~~ S2["<b>the world shrinks</b><br/>12 carts, 4 with bread"] ~~~ S3["<b>seen against expected</b><br/>4 against 2.67"]
+    end
+    subgraph P["Pitfalls"]
+        direction TB
+        P1["<b>the popular partner</b><br/>milk in 8 of 12"] ~~~ P2["<b>thin support</b><br/>lift 12 on one cart"]
+    end
+    A --> Q --> S --> P
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    class A,B known
-    class C lit
-    class D,E unknown
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef trap fill:#FFF1F1,stroke:#C0392B,color:#5C1111
+    class A1,Q1,Q2,S1,S2,S3 known
+    class Q3 lit
+    class P1,P2 trap
 ```
 
-Lift joins the week's map as "beyond chance": Thursday asks the same of a cohort against the blend, Friday of a forecast against the baseline. Twelve carts cannot say whether 1.50 is a real pull or four lucky carts.
+The concept board "Which pairs beat chance?", finished. Lift joins the week's map as "beyond chance": Thursday asks the same of a cohort against the blend, Friday of a forecast against the baseline. Twelve carts cannot say whether 1.50 is a real pull or four lucky carts.
 
 ```notes
-LIVE, 5 minutes. Ask a learner to say all three counts in one breath: how often, how reliably,
-against chance. Then the limit. Transition: chapter 2, every cart.
+LIVE, 5 minutes. The board was built region by region on the whiteboard through the chapter: the
+anchor with the dots, the three questions as each was counted, the sketches, then the two pitfalls.
+Ask a learner to say all three counts in one breath: how often, how reliably, against chance. Then
+the limit. Add "lift: beyond chance" under Wednesday on the week map. Transition: chapter 2, every
+cart.
 ```
 
 ---

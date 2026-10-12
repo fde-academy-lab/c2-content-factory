@@ -814,14 +814,16 @@ def nb04():
                .groupby("order_id").size() == 1).all())
         check("the charger lists at Rs 199", products.set_index("name").loc["phone charger 20W", "list_price"] == 199)
         """),
-        md("""\
+        md(f"""\
         ## What will merchandising's proposal cost, and what do you bring back?
 
-        The unguided Kalpa exercise prices the charger proposal: a bundle discount on every basket
-        that already holds the charger is margin handed back for an add that would have happened
-        anyway. Bring back three lines: the charger's share and its lift with the products it would
-        be bundled with, the pair you would promote with its support and lift, and the pair you
-        would watch, with the number of baskets it rests on.
+        The unguided Kalpa exercise prices the charger proposal. The charger lists at
+        {s('kalpa_charger_list_price')} and costs Kalpa {s('kalpa_charger_cost')}, so the proposed
+        {s('kalpa_bundle_discount')} off leaves {s('kalpa_margin_bundled')} of margin on every
+        bundled charger, and every basket that already holds the charger hands that discount back
+        for an add that would have happened anyway. Bring back three lines: the charger's share and
+        its lift with the products it would be bundled with, the pair you would promote with its
+        support and lift, and the pair you would watch, with the number of baskets it rests on.
         """),
     ]
     build(path, cells, timeout=300)

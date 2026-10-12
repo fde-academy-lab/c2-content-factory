@@ -2,16 +2,7 @@
 
 Week 4, Day 3. Half two.
 
-Kicker: WEEK 4  ·  WEDNESDAY  ·  AFTERNOON
-Quote: Rank the pairs the strip should show, explain why its click-through fell, and put a rupee value on a slot, by Friday.
-Who: The ask on the ticket, to the category manager and the growth lead. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
-
-```notes
-On screen after lunch. The morning ended with the method: lift above a 1 percent floor, a slot
-priced at Rs 17,280 against Rs 3,240 a day, Rs 6.3 lakh a month recovered. The afternoon's first
-60 minutes run the unguided strip, the interview room and the Kahoot.
-The IITGN faculty session (tentative) takes the next 120. Transition: the brief.
-```
+Header: WEEK 4  ·  WEDNESDAY  ·  SWIGGY INSTAMART, PUNE  ·  ILLUSTRATIVE CASE
 
 ---
 
@@ -19,8 +10,10 @@ The IITGN faculty session (tentative) takes the next 120. Transition: the brief.
 *Which three pairs, priced how, and how do you answer a category manager who wants milk in every slot?*
 
 ```notes
-LIVE, 1 minute. Chapter 3, part two, level L5, unguided in groups of about four on notebook 03.
-Transition: the brief.
+LIVE, 1 minute, on screen after lunch. The morning ended with the method: lift above a 1 percent
+floor, a slot priced at Rs 17,280 against Rs 3,240 a day, Rs 6.3 lakh a month recovered. Chapter 3,
+part two, level L5, unguided in groups of about four on notebook 03; then the interview room and
+the Kahoot. The IITGN faculty session (tentative) takes the next 120. Transition: the brief.
 ```
 
 ---
@@ -85,12 +78,12 @@ their answers aloud; the room names the move each sentence makes. Transition: th
 
 ---
 
-## SECTION 4: The interview room
+## SECTION 4: Which measure can popularity not fool?
 *How does a strong candidate answer the day's question as Uber, Swiggy, Google or an AI startup would ask it?*
 
 ```notes
-LIVE, 10 minutes for the section. Level L6. The full transcript with its scorecard is read in pairs
-from the extras folder. Transition: the question.
+LIVE, 10 minutes for the section. Level L6. The full transcript is read in pairs from the extras
+folder, and each pair scores the other on its seven criteria. Transition: the question.
 ```
 
 ---
@@ -151,7 +144,7 @@ same one the strip fell into, now inside a model's evaluation. Transition: the h
 
 ---
 
-## SECTION 5: The handoff and the close
+## SECTION 5: What does the room carry out?
 *What does the next session take from here, and what does the room take home?*
 
 ```notes

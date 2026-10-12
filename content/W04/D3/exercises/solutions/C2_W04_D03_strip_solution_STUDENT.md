@@ -39,7 +39,7 @@ is partly right, and the same base-rate idea inside an AI system's evaluation.
 Q2's option a, Rs 12.6 lakh. It is a correct product of three numbers, Rs 14,040 x 3 slots x 30 days,
 and it answers a different question: what the strip would gain if milk had filled every slot. The log
 shows milk on half the slot impressions, so the recoverable gain is half of it. An interviewer who
-hears Rs 12.6 lakh asks one question, "how many slots did milk actually hold?", and the answer decides
+hears Rs 12.6 lakh asks one question, "how many slots did milk hold?", and the answer decides
 whether the figure survives finance.
 
 ## Where does the pattern live at work?

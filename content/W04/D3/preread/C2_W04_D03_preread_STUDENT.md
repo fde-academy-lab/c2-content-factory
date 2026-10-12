@@ -74,4 +74,4 @@ Nothing needs installing, and each check takes under five minutes.
 
 ## Which line is worth carrying into Thursday?
 
-> Wednesday's blend fell while its parts held; Thursday's holds while its parts fall.
+> Wednesday's 3.8 percent fell while its parts held; Thursday's 38 percent holds while its parts fall.
