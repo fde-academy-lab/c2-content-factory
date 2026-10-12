@@ -28,10 +28,10 @@ Item 2. Some will say a large new Kalpa store could outsell an average DMart. It
 dense with shoppers, and then the estimate has to say why, with its footfall and its spend per visit
 written down. A check needs a line that fails it: a first-year store above a mature store's sales
 fails, and one far below a fifth of it is worth a second look. An estimate that lands above the check
-without that sentence has not been validated.
+without a sentence saying why has not been validated.
 
 ## Where does a first-year check show up at work?
 
-Every new store, branch or delivery-only warehouse a finance team funds: the business case is built
+A first-year check applies to every new store, branch or delivery-only warehouse a finance team funds: the business case is built
 on mature averages and has to be discounted for the climb in sales a new store takes years to make.
 The lab sizes Anand's question this way.

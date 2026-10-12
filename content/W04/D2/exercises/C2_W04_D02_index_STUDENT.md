@@ -1,8 +1,8 @@
 # Which exercise answers which of Tuesday's questions, and when is each one sat?
 
-Tuesday's case is Uber's peak-hour earnings guarantee in Hyderabad, one day on: the city head takes
-the redesign to Thursday's city review on one slide, where gross bookings per peak online hour fell
-from Rs 314 to Rs 260 at a fare that held at Rs 165, and before the review wants a rough count of the
+Tuesday's case is Uber's peak-hour earnings guarantee in Hyderabad, one day on. Gross bookings per
+peak online hour fell from Rs 314 to Rs 260 at a fare that held at Rs 165. The city head takes the
+redesign to Thursday's city review on one slide, and before the review wants a rough count of the
 drivers the weekday evening peak needs. Illustrative case: the company is real, the situation and the
 data are synthetic, built for this class. The sets climb the day's ladder from a title (L1) to an
 interview at an AI company (L6), and the Kalpa set and the lab move the method to the programme's

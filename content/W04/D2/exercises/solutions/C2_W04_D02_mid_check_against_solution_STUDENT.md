@@ -36,7 +36,7 @@ them is too high for a store in its first year, which is the catch in the lab's 
 
 ## Where does checking in the same unit show up at work?
 
-In every guesstimate round and in every review where someone says "that matches the published
+Checking in the same unit comes up in every guesstimate round and in every review where someone says "that matches the published
 figure". The first question back is "in which unit, for which period, counted how?"
 
 ## What does the deck confirm?

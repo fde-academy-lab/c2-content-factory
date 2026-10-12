@@ -1,9 +1,9 @@
 # How many customers could a new Kalpa store sign up to Retail-Plus, and how would you know the estimate is sane?
 
 Kalpa Retail, the programme's client, sells through its app, its website and its stores. Anand Iyer,
-Kalpa Retail's finance controller, is deciding whether to fund a new store, and he wants a rough
-number before the data exists: how many customers it could sign up to Retail-Plus, Kalpa's paid
-membership tier, in its first year, in fifteen minutes, from stated assumptions. A sign-up is a new
+Kalpa Retail's finance controller, is deciding whether to fund a new store, and before the data
+exists he wants a rough number, sized in fifteen minutes from stated assumptions: how many customers
+it could sign up to Retail-Plus, Kalpa's paid membership tier, in its first year. A sign-up is a new
 paying member whose home store is the new one.
 
 **Who needs the answer.** Anand Iyer, who funds or does not fund the store, and who will ask how you

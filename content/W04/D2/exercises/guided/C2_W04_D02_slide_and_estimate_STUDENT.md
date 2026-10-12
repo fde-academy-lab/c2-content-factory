@@ -1,8 +1,8 @@
 # How do you rebuild a cluttered slide, and size a number aloud, one step at a time?
 
 Uber, Hyderabad, the driver app's peak-hour earnings guarantee, one day on. On Monday 31 August 2026
-the city team began guaranteeing an enrolled driver who stays online through a whole peak window Rs 300
-for each peak hour online (the floor), paying the gap between the driver's trip earnings and that floor
+the city team began guaranteeing Rs 300 for each peak hour online (the floor) to an enrolled driver
+who stays online through a whole peak window, paying the gap between the driver's trip earnings and that floor
 as a top-up. Over the six weeks after the launch, peak online hours
 rose 24 percent while completed peak trips rose 3 percent, so gross bookings per peak online hour
 (what riders paid for trips, divided by the hours drivers were online) fell from Rs 314 to Rs 260 at a
@@ -45,8 +45,8 @@ full, it becomes four parts:
 | 3. The caveat, beside the evidence | The monsoon ended inside the six weeks, and last year's weeks are not in the data |
 | 4. The action, its cost, who signs | Test paying per completed peak trip with an acceptance floor on half the drivers, picked at random; city-wide it saves Rs 58 lakh to Rs 92.7 lakh over six weeks; the city head signs the test |
 
-The saving comes from Monday: Rs 1.16 crore of the Rs 1.9 crore top-up, which is 115.9 lakh since 1
-crore is 100 lakh, went to driver-weeks that accepted fewer than half the requests offered to them. The
+The saving comes from Monday: Rs 1.16 crore (115.9 lakh, since 1 crore is 100 lakh) of the Rs 1.9
+crore top-up went to driver-weeks that accepted fewer than half the requests offered to them. The
 redesign stops paying it, except where those drivers start accepting and qualify. If half of it is still
 paid, 115.9 / 2 = Rs 58 lakh is saved; if a fifth is still paid, 115.9 x 4/5 = Rs 92.7 lakh.
 
@@ -56,7 +56,7 @@ paid, 115.9 / 2 = Rs 58 lakh is saved; if a fifth is still paid, 115.9 x 4/5 = R
 
 This comes up at work when finance sends a tab of nine money numbers and the slide can show one.
 
-Slide B, half worked. The claim is drafted: "Most of the top-up went to driver-weeks that accepted
+Slide B is half worked. The claim is drafted: "Most of the top-up went to driver-weeks that accepted
 fewer than half their offers." Finance's tab holds these nine:
 
 | Finance's tab | Before | After |
@@ -90,7 +90,7 @@ d) Top-up to low acceptance, Rs 1.16 crore of the Rs 1.9 crore paid
 This comes up at work whenever one total can be divided by several things and each division tells a
 different story.
 
-Slide C, blank. Driver operations' tab shows 180 drivers in the idle tail (Monday's name for the
+Slide C is blank. Driver operations' tab shows 180 drivers in the idle tail (Monday's name for the
 drivers whose trips per online hour fell under 1.0 after the launch): their online hours rose from
 20,000 to 42,000 while their trips fell from 38,000 to 33,440. You write the claim; first choose the
 denominator its evidence will name.
@@ -110,7 +110,7 @@ d) Per enrolled driver, since enrolment is the number marketing reports
 
 This comes up in interviews as the warm-up, and at work whenever a number is needed before the data is.
 
-Worked in full, with invented numbers. **Clarify:** one canteen, one weekday, cups and not litres.
+This one is worked in full, with invented numbers. **Clarify:** one canteen, one weekday, cups and not litres.
 **Map:** students on campus x share who buy tea x cups each. **Calculate:** 2,000 x 0.6 x 2 = 2,400
 cups. **Validate:** the canteen's till for one weekday, or cups counted at the counter for one busy
 half hour.
@@ -121,7 +121,7 @@ half hour.
 
 This comes up at work when an operations lead needs a number for a meeting that will not wait for data.
 
-Half worked. Clarify: the Hyderabad metro area, Uber, one product, drivers online at one moment of
+This one is half worked. Clarify: the Hyderabad metro area, Uber, one product, drivers online at one moment of
 the three-hour weekday evening peak, a median rider wait under five minutes. The chain, worked at its
 central values:
 

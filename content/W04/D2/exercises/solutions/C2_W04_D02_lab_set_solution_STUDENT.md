@@ -1,8 +1,8 @@
 # What do strong answers to the Kalpa lab look like?
 
-Released at the end of the lab. The Kalpa slide is scored on its parts and moves, never its number,
-so this page gives the shape of a strong answer and the worked estimate, and many different slides
-pass.
+These answers are released at the end of the lab. The Kalpa slide is scored on its parts and moves, never its number,
+so many different slides pass, and this page gives the shape of a strong answer and the worked
+estimate.
 
 ## What does a strong Kalpa north-star slide carry?
 

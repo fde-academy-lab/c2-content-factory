@@ -1,6 +1,6 @@
 # How many UPI payments happen in India on an average day, sized in seven minutes?
 
-The afternoon dojo's paired drill. You and a partner size a number neither of you has looked up, say
+This is the afternoon dojo's paired drill. You and a partner size a number neither of you has looked up, say
 every assumption aloud, give a range, and check the answer against a published figure only after the
 clock stops. The question is the kind an interviewer at a payments company, a consulting firm or a
 product company opens a case round with.

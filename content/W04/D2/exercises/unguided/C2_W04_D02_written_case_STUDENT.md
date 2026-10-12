@@ -25,7 +25,7 @@ shoulder.
 ## What are the rules?
 
 This is AI-free individual work: forty minutes, on one sheet, by hand, handed in at the end of the
-slot. No laptop, no phone, no notes beyond this brief, which carries every number the page needs.
+slot. You may not use a laptop, a phone or any notes beyond this brief, which carries every number the page needs.
 
 | What you may use | The number, from the case |
 |---|---|
@@ -48,7 +48,7 @@ This comes up at work whenever a decision-maker asks for "a page on it" instead 
 | In the body | The caveat, in a full sentence, never in a bracket at the end |
 | Last | The action, its saving in rupees over a stated number of weeks with the assumption behind it, and who signs |
 
-Keep words a non-technical reader would not know off the page: denominator, index, guardrail. Say
+Keep off the page the words a non-technical reader would not know: denominator, index, guardrail. Say
 what they mean instead.
 
 ---
@@ -63,6 +63,6 @@ what they mean instead.
 | Is the action given with its cost and who signs? | |
 | Is the page free of method words a non-technical reader would not know? | |
 
-Three or more yes answers is a page the city head can use.
+A page with three or more yes answers is one the city head can use.
 
 **In the interview.** [S] Present a recommendation to a non-technical stakeholder in two minutes.

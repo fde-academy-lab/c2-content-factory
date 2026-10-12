@@ -4,7 +4,7 @@ Uber, Hyderabad, the peak-hour earnings guarantee. Since the launch on 31 August
 per peak online hour fell from Rs 314 to Rs 260 while the fare held at Rs 165, and 61 percent of the
 Rs 1.9 crore top-up went to driver-weeks that accepted fewer than half their offers. Monday's
 redesign, as a driver hears it: "The floor now pays for trips you complete, if you say yes to most
-offers", where most means at least half the requests offered, the acceptance floor. The city head
+offers", where "most" means at least half the requests offered, the acceptance floor. The city head
 takes it to Thursday's city review on one slide, in five minutes, and three roles in the room each
 lose something under it.
 

@@ -9,9 +9,9 @@ acceptance rate, the share of suggestions developers accept.
 
 ## What do the rungs test?
 
-Structure before the number, with judgment inside it: the decision and the claim first, then one
+The rungs test structure before the number, with judgment inside it: the decision and the claim first, then one
 number with its denominator, then the caveat, then the action. Three of the four openings in item 1
-lead with a claim or a method; only one leads with a claim the data can carry. And the transfer: the
+lead with a claim or a method; only one leads with a claim the data can carry. The second rung adds the transfer: the
 same shape on a system the learner has not met, where the number customers see is easy to inflate.
 
 ## Why is each key right, and why does each other option fail?
@@ -27,7 +27,7 @@ Item 2. Some will say the deck should switch to retained code at once. The head 
 is partly right: customers compare vendors on the number in the deck, and a 2022 study of GitHub
 Copilot's users found acceptance tracks how productive developers feel (Ziegler and colleagues,
 arXiv 2205.06537, checked 12 October 2026). So acceptance stays visible, the team is judged on retained code,
-and a holdout of users checks which of the two tracks seat renewals before anyone is paid on it.
+and a holdout of users checks which of the two numbers tracks seat renewals before anyone is paid on it.
 
 ## Where do these rungs show up at work?
 

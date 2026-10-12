@@ -34,7 +34,7 @@ in; the other reads go in the appendix with a line each on what moved them.
 
 ## Where does matching the denominator to the decision show up at work?
 
-Every pay scheme is a denominator: per hour, per trip, per delivery, per active day. A review slide
+Every pay scheme has a denominator: per hour, per trip, per delivery, per active day. A review slide
 that reads the money in a different unit from the one the scheme pays in lets each role pick the read
 that flatters it. The same rule decides whether a cloud bill is read per request or per user, and
 whether an AI product's cost is read per query or per active seat.

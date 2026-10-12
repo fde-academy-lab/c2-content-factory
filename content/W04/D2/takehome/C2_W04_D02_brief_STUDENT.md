@@ -1,10 +1,10 @@
 # Can your Build 1 finding survive one slide, and can you size a number aloud in under five minutes?
 
 Tonight you do the day's two moves on your own material. The first is the one-slide answer for the
-finding your group reached in Build 1, the week you worked in groups on the growth question of Kalpa
-Health, Kalpa's diagnostics business serving US patients, so its money is in dollars: the
-claim as the title, one piece of evidence with its denominator, the caveat in plain sight, and the
-action with its cost. The second is one guesstimate, spoken aloud and recorded, in under five minutes,
+finding your group reached in Build 1: the claim as the title, one piece of evidence with its
+denominator, the caveat in plain sight, and the action with its cost. Build 1 was the week you worked
+in groups on the growth question of Kalpa Health, Kalpa's diagnostics business serving US patients,
+so its money is in dollars. The second is one guesstimate, spoken aloud and recorded, in under five minutes,
 with its sanity check against a published number you find and date yourself.
 
 **Who needs the answer.** The reviewer of your Build 1 work, who will ask what your finding means for
@@ -39,7 +39,7 @@ that person will ask. You do not need to build the pages, only name them.
 
 This comes up in the first round of many analyst and consulting interviews.
 
-Choose one question. Record yourself answering it aloud, phone audio is enough, in under five minutes:
+Choose one question. Record yourself answering it aloud in under five minutes (phone audio is enough):
 clarify, map, calculate, validate, and give a range with the factor that sets it.
 
 | Question | The kind of published number to check against |
@@ -56,6 +56,6 @@ and definition.
 
 ## What do you hand in?
 
-The slide (one page, any tool), the appendix headings, the recording, and the two sentences with the
+Hand in the slide (one page, any tool), the appendix headings, the recording, and the two sentences with the
 source and its date, where and by when your TA says. The self-check page lists what each part needs,
 in plain words first.

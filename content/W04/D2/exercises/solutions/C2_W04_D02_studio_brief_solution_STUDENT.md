@@ -11,14 +11,14 @@ offers.
 ## What does the item test?
 
 A defence runs in four moves: restate, answer from the evidence, concede the true part, say what would
-change your mind. The item tests the fourth, the move first defences skip: the fact must be one that
+change your mind. The item tests the fourth, the move that first defences skip: the fact must be one that
 would show this objection right, and a true fact that belongs to another role's worry does not count.
 
 ## Why is the key right, and why does each other option fail?
 
 | Item | Key | The question in one line | Why the key holds | Why each other option fails |
 |---|---|---|---|---|
-| 1 | c | In move 4 of the reply to "changing the guarantee six weeks in looks like bait", which fact would rightly change the presenter's mind? | Marketing's worry is that the change drives drivers away from signing up, so the fact that would prove it is sign-ups falling once the condition is announced, and the presenter can watch the weekly count. | a: last year's weeks would settle finance's monsoon objection, which is another role's worry. b: the median wait guards against driver operations' worry about supply. d: "nothing would change my mind" skips move 4, the defence that tells the objector the claim cannot be tested. |
+| 1 | c | In move 4 of the reply to "changing the guarantee six weeks in looks like bait", which fact would rightly change the presenter's mind? | Marketing's worry is that the change drives drivers away from signing up, so the fact that would prove it is sign-ups falling once the condition is announced, and the presenter can watch the weekly count. | a: last year's weeks would settle finance's monsoon objection, which is another role's worry. b: the median wait guards against driver operations' worry about supply. d: "nothing would change my mind" skips move 4, and it tells the objector the claim cannot be tested. |
 
 ## What does a defence of each role sound like?
 
@@ -36,6 +36,6 @@ and because the redesign's second guardrail, median rider wait, watches the cost
 
 ## Where does the four-move defence show up at work?
 
-In every meeting where a metric changes whose targets it judges, and in the interview question
+The four-move defence comes up in every meeting where a new metric changes the targets people are judged on, and in the interview question
 "a stakeholder disagrees with your analysis; what do you do?". The interviewer listens for the
 concession made in the open and the evidence named by line.

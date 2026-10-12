@@ -1,6 +1,6 @@
 # What does a hire-grade answer open on, and does the method survive a change of company?
 
-Two rungs at the top of the day's ladder. The first is the interview question the morning's slide
+These two items are the rungs at the top of the day's ladder. The first is the interview question the morning's slide
 answers: present a recommendation to a non-technical leader in two minutes, here the Uber peak-hour
 guarantee, whose bookings per peak online hour fell from Rs 314 to Rs 260 at a flat Rs 165 fare. The
 second moves the same thinking to an AI company: a coding assistant whose sales deck quotes the share

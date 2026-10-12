@@ -29,8 +29,8 @@ on the finance partner's page; the slide about riders keeps the two numbers abou
 
 ## Where does cutting to two show up at work?
 
-Every review deck built from a dashboard. The analyst who cuts nine numbers to two, and can say which
-page each of the other seven moved to, is the one whose slide survives the meeting.
+Cutting to two comes up in every review deck built from a dashboard. When the analyst cuts nine numbers to two and can say which
+page each of the other seven moved to, the slide survives the meeting.
 
 ## What does the deck confirm?
 

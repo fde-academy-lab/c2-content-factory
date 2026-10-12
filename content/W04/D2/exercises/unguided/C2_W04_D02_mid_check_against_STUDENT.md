@@ -1,6 +1,6 @@
 # Which known number would you check each of four estimates against?
 
-An estimate is only as good as its sanity check, and a check only counts when it sits in the same
+An estimate needs a sanity check, and a check only counts when it sits in the same
 unit, the same period and the same definition as the estimate. A team at a consulting firm has four
 estimates on its desk from last month's interview practice, and for each one it has to name the
 published number it will check against. Every published figure below was checked on 12 October 2026.

@@ -16,12 +16,12 @@ sheet on structure and the sanity check, and closeness matters only when a numbe
 
 ## Which comparison is the honest one?
 
-The per-day average, because the estimate is per day. September's total was 24.07 billion: divided by
+The per-day average is the honest check, because the estimate is per day. September's total was 24.07 billion: divided by
 the month's 30 days it gives the published 802 million; divided by 31 it gives 776 million, about 3
 percent low, a slip in the period that is small beside the estimate's own range. The sharper check uses
 the same report's value: Rs 29.37 lakh crore over 24.07 billion is about Rs 1,220 a payment, far above
-a cup of tea, so the count holds large transfers between people, and the 2 a day has to split shops
-from people to hold up.
+a cup of tea, so the count holds large transfers between people, and the 2 payments a day have to be
+split between shops and people to hold up.
 
 ## What would a strong pair say next?
 
@@ -32,5 +32,5 @@ users would be the next number to look up."
 
 ## Where does this show up at work?
 
-Market sizing for a payments product, capacity planning for a payments backend, and every guesstimate
+This kind of estimate shows up in market sizing for a payments product, capacity planning for a payments backend, and every guesstimate
 round that opens a consulting or product interview.

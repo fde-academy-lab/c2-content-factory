@@ -9,7 +9,7 @@ estimates? Which guardrail did Monday's redesign need? Which comparison checks a
 
 The quiz has eight items, ungraded and scored on correctness and speed together. Q1 to Q3 check the
 morning's slide and defence, Q4 to Q6 the afternoon's estimates, Q7 returns to Monday, and Q8 checks
-the sanity check's unit. Items that use invented numbers say so, so no item can be answered from the
+the sanity check's unit. Some items use invented numbers, labelled as invented, so that no item can be answered from the
 slide's own figures. The room answers in Kahoot; this file shows each key and is for review after the
 quiz.
 

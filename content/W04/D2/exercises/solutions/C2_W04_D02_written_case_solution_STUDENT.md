@@ -1,6 +1,6 @@
 # What does a one-page case the city head can use look like?
 
-Released after the pages are handed in. The page below is one way to pass all five checks; yours can
+This file is released after the pages are handed in. The page below is one way to pass all five checks; yours can
 pass them in other words. The case: Uber's peak-hour guarantee in Hyderabad, launched on 31 August
 2026.
 
@@ -45,7 +45,7 @@ moves between zones and a split by zone would put the same driver on both sides.
 
 ## Which mistakes come back most often?
 
-A page that opens on method ("I analysed the dashboard"); a number with no denominator ("bookings
+The most common are a page that opens on method ("I analysed the dashboard"); a number with no denominator ("bookings
 fell 17 percent"); a caveat in a bracket at the end; a saving with no assumption behind it; and the
 per-driver-week rise quoted as good news, which the morning showed came from about four more online
 hours a week at 17 percent less per hour.

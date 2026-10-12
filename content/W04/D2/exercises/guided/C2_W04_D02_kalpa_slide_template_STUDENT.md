@@ -1,8 +1,8 @@
 # Can Kalpa's north-star metric survive one slide in front of the people it will judge?
 
 Kalpa Retail is the programme's client: the company whose orders, customers and payments you have
-analysed since Week 1. On Monday you wrote the metric Kalpa's growth plan should chase on the same
-template as Uber's: **delivered orders per active customer per month**, with three guardrails
+analysed since Week 1. On Monday you used the same template as Uber's to write the metric Kalpa's
+growth plan should chase: **delivered orders per active customer per month**, with three guardrails
 (revenue per active customer, the discount share of booked revenue, and the return rate) and two
 leading inputs (add-to-cart events per active app member, and new sign-ups to Retail-Plus, Kalpa's paid
 membership tier). Tonight's lab puts that metric on one slide, presented in three minutes to a TA who
