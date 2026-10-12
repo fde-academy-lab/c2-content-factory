@@ -398,7 +398,7 @@ def four_vs_thirteen():
     ax.set_ylim(0, 44_000)
     ax.yaxis.set_major_formatter(matplotlib.ticker.StrMethodFormatter("{x:,.0f}"))
     ax.set_ylabel("MAE, shipments a week")
-    ax.set_title("A four-week test moves every score; the top three keep their order")
+    ax.set_title("A four-week test moves every score: the leaders hold, naive and drift fall below the vendor")
     ax.legend(frameon=False, loc="upper center", ncol=2)
     save(fig, "four_vs_thirteen")
 

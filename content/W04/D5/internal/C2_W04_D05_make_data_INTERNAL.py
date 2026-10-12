@@ -474,6 +474,10 @@ def main():
     F.add("holdout_4", "origin_position", 99, "99", "the origin's position in the 104 rows, counting from 0; drift's step divides by it", "take-home")
     F.add("holdout_4", "hold_mean", sum(y[i] for i in last4) / 4, n(sum(y[i] for i in last4) / 4),
           "the four hidden weeks' average shipments", "take-home self-check")
+    F.add("holdout_4", "bot_move", S["bot"]["mae"] - S4["bot"]["mae"], n(S["bot"]["mae"] - S4["bot"]["mae"]),
+          "the house bot's MAE on thirteen weeks minus on four", "take-home self-check")
+    F.add("holdout_4", "aligned_move", S4["aligned"]["mae"] - S["aligned"]["mae"], n(S4["aligned"]["mae"] - S["aligned"]["mae"]),
+          "festival-aligned's MAE on four weeks minus on thirteen", "take-home self-check")
     F.add("holdout_4", "vendor_steps", [10, 13], "10 to 13", "weeks ahead of 22 Jun 2026 that the vendor's four rows forecast", "take-home self-check")
     F.add("saturday", "minutes", [120, 20, 20, 60, 30, 30, 20], "120, 20, 20, 60, 30, 30 and 20",
           "Saturday's parts in minutes: paper, break, marking, discussion, transfer drill, mock interviews, bridge (spine section 10; facts.yaml saturday-w4-shape)", "Saturday preview")
@@ -568,6 +572,76 @@ def main():
         F.add("scenario_2026", f"{m}_cost_rs", over * OVER_RS + under * LATE_RS, lakh(over * OVER_RS + under * LATE_RS),
               "if demand follows the festival-aligned forecast: idle at Rs 5.42, late at Rs 25", "chapter 3")
 
+    # ---- the interview room: the lines a hire-grade answer needs after the interviewer's cold read
+    for m in ("aligned", "finance", "bot", "vendor", "naive", "drift"):
+        own = [(y[i] - hold[m][i]) / hold[m][i] for i in HOLDOUT]
+        c = round(quantile(own, QUANTILE), 3)
+        rc = score({i: round(hold[m][i] * (1 + c)) for i in HOLDOUT}, y, HOLDOUT)
+        F.add("interview", f"own_cushion_{m}_pct", c, pct(c), f"{names[m]}'s own 0.82 point on the 13 hidden weeks", "transcripts")
+        F.add("interview", f"own_raised_cost_{m}_rs", rc["cost_rs"], lakh(rc["cost_rs"]),
+              f"{names[m]} moved to its own 0.82 point, its 13 misses priced on the same weeks", "transcripts")
+    bias = sum(hold["vendor"][i] - y[i] for i in HOLDOUT) / len(HOLDOUT)
+    F.add("interview", "vendor_bias", bias, n(bias), "the vendor's mean signed miss on the hidden weeks, too high", "transcripts")
+    fin_shifts = sum(math.ceil(ahead["finance"][i] / PER_SHIFT) for i in WINDOW)
+    F.add("interview", "finance_shifts_total", fin_shifts, n(fin_shifts), "finance's rule / 120, rounded up, over the eight weeks", "transcripts")
+    F.add("interview", "plan_over_finance_shifts", sum(shifts.values()) - fin_shifts, n(sum(shifts.values()) - fin_shifts),
+          "the plan's shifts minus finance's", "transcripts")
+    F.add("interview", "plan_over_finance_rs", (sum(shifts.values()) - fin_shifts) * IDLE_SHIFT_RS,
+          lakh((sum(shifts.values()) - fin_shifts) * IDLE_SHIFT_RS), "those shifts at Rs 650", "transcripts")
+    pk = 107                                            # the week of 19 Oct 2026, the plan's busiest
+    lo_d, hi_d = ahead["aligned"][pk] * (1 + min(errs)), ahead["aligned"][pk] * (1 + max(errs))
+    F.add("interview", "peak_demand_low", lo_d, n(lo_d), "19 Oct 2026 if demand lands as far below the forecast as the lowest hidden week", "transcripts")
+    F.add("interview", "peak_demand_high", hi_d, n(hi_d), "19 Oct 2026 if demand lands as far above as the highest hidden week", "transcripts")
+    F.add("interview", "peak_low_spare_rs", (plan[pk] - lo_d) * OVER_RS, lakh((plan[pk] - lo_d) * OVER_RS),
+          "the plan's spare shipments at the low end, at Rs 5.42", "transcripts")
+    F.add("interview", "peak_high_late_rs", (hi_d - plan[pk]) * LATE_RS, lakh((hi_d - plan[pk]) * LATE_RS),
+          "the plan's late shipments at the high end, at Rs 25", "transcripts")
+    F.add("interview", "peak_low_shifts", math.ceil(lo_d / PER_SHIFT), n(math.ceil(lo_d / PER_SHIFT)), "shifts the low end needs", "transcripts")
+    F.add("interview", "peak_high_shifts", math.ceil(hi_d / PER_SHIFT), n(math.ceil(hi_d / PER_SHIFT)), "shifts the high end needs", "transcripts")
+    srt_e = sorted(errs)
+    pos = QUANTILE * (len(errs) + 1)
+    weibull = srt_e[int(pos) - 1] + (pos - int(pos)) * (srt_e[int(pos)] - srt_e[int(pos) - 1])
+    def peak_cost(c):
+        p_ = ahead["aligned"][pk] * (1 + c)
+        tot = 0
+        for e in errs:
+            d = ahead["aligned"][pk] * (1 + e)
+            tot += max(0, p_ - d) * OVER_RS + max(0, d - p_) * LATE_RS
+        return tot / len(errs)
+    F.add("interview", "peak_cost_at_cushion_rs", peak_cost(cushion), lakh(peak_cost(cushion)),
+          "the week of 19 Oct 2026 at the 2.6 percent cushion, averaged over the 13 misses as demands", "notebook 03, slides")
+    F.add("interview", "peak_cost_at_zero_rs", peak_cost(0), lakh(peak_cost(0)),
+          "the same week booked at the forecast itself", "notebook 03, slides")
+    F.add("interview", "peak_cost_at_weibull_rs", peak_cost(round(weibull, 3)), lakh(peak_cost(round(weibull, 3))),
+          "the same week at the 4.1 percent reading", "notebook 03, slides")
+    grid = [i / 1000 for i in range(-80, 101, 2)]
+    lowest = min(grid, key=peak_cost)
+    F.add("interview", "curve_min_pct", lowest, pct(lowest), "the lowest point of the week's cost curve, on notebook 03's grid of 0.2 percent steps", "notebook 03, slides")
+    F.add("interview", "cushion_weibull_pct", weibull, pct(weibull),
+          "the 0.82 point read at position 0.82 x 14 of the sorted thirteen, another common convention", "scorecard")
+    cov_g = sum(back["aligned"][i] * (1 + cushion) >= y[i] for i in BACK)
+    cov_n = sum(y[aligned_source(i)] * (1 + cushion) >= y[i] for i in BACK)
+    F.add("interview", "backtest_covered_growth", cov_g, f"{cov_g} of 8", "2025's festive weeks the raised festival-aligned copy covered, with the 4 percent", "transcripts")
+    F.add("interview", "backtest_covered_nogrowth", cov_n, f"{cov_n} of 8", "the same, with no growth added", "transcripts")
+    fest_mean = sum(y[i] for i in BACK) / len(BACK)
+    F.add("interview", "festive_mae_pct", B["aligned"]["mae"] / fest_mean, pct(B["aligned"]["mae"] / fest_mean),
+          "festival-aligned's 2025 festive miss over the festive weeks' mean", "scorecard")
+    F.add("interview", "holdout_abs_pct", sum(abs(e) for e in errs) / len(errs), pct(sum(abs(e) for e in errs) / len(errs)),
+          "festival-aligned's mean miss on the hidden weeks, as a percent of the forecast", "scorecard")
+    F.add("interview", "peak_shifts_worked_2025", int(weekly.loc[53, "packer_shifts_worked"]), n(weekly.loc[53, "packer_shifts_worked"]),
+          "shifts worked in the week of 6 Oct 2025, overtime included", "transcripts")
+    for k in (1.5, 2.0):
+        cu = (k - 1) * OVER_RS
+        F.add("interview", f"overtime_share_{int(k * 100)}", cu / (cu + OVER_RS), f"{cu / (cu + OVER_RS):.2f}",
+              f"the share to cover if a short shipment is packed on overtime at {k:g} times a shift's cost (assumed)", "transcripts")
+    F.add("interview", "overtime_rates", [1.5, 2], "one and a half and two times", "overtime at these multiples of a shift's cost (assumed)", "transcripts")
+    F.add("toys", "ai_users", 200_000, "2 lakh", "users of the assistant at launch (invented)", "AI variant")
+    F.add("toys", "ai_peak_share", 0.10, "10 percent", "users who send a request in the peak minute (invented)", "AI variant")
+    F.add("toys", "ai_requests_minute", 20_000, "20,000", "2 lakh x 10 percent, requests in the peak minute", "AI variant")
+    F.add("toys", "ai_tokens_request", 1_500, "1,500", "tokens per request, prompt and answer together (invented)", "AI variant")
+    F.add("toys", "ai_tokens_minute", 30_000_000, "3 crore", "20,000 x 1,500, tokens in the peak minute", "AI variant")
+    F.add("toys", "ai_tokens_second", 500_000, "5 lakh", "3 crore over 60 seconds", "AI variant")
+
     # ---- the week map's earlier nodes, as each day's ticket prints them (docs/detailing/W04_case_file.md)
     F.add("week_map", "mon_before", 1.9, "1.9", "Monday's ticket: trips per peak online hour before the scheme", "slide 2")
     F.add("week_map", "mon_after", 1.6, "1.6", "Monday's ticket: after", "slide 2")
@@ -615,12 +689,12 @@ def main():
           "the bot's 19 Oct 2026 / 120, a wrong option", "staffing set")
     F.add("exercises", "plan_10_19_raw", ahead["aligned"][107] * (1 + cushion) / PER_SHIFT,
           f"{ahead['aligned'][107] * (1 + cushion) / PER_SHIFT:,.1f}", "446,236 / 120 before rounding up", "staffing set")
-    F.add("exercises", "pairs", [9_500, 6_000, 6_200], "9,500, 6,000 and 6,200", "three invented model MAEs for the good-enough drill", "chapter 2 set")
+    F.add("exercises", "pairs", [9_800, 6_000, 6_200], "9,800, 6,000 and 6,200", "three invented model MAEs for the good-enough drill", "chapter 2 set")
     F.add("exercises", "pair3_high", 7, "7 of 13", "invented: the third model's weeks too high", "chapter 2 set")
-    F.add("exercises", "pair1_gap_pct", 1 - 9_500 / S["bot"]["mae"], pct(1 - 9_500 / S["bot"]["mae"], 0), "how far 9,500 sits under the bot's MAE", "chapter 2 set")
-    F.add("exercises", "pair1_gap", S["bot"]["mae"] - 9_500, n(S["bot"]["mae"] - 9_500), "the bot's MAE minus team A's", "chapter 2 set")
-    F.add("exercises", "pair1_gap_shifts", (S["bot"]["mae"] - 9_500) / PER_SHIFT, f"{(S['bot']['mae'] - 9_500) / PER_SHIFT:.1f}",
-          "331 shipments a week over 120 a shift", "chapter 2 set")
+    F.add("exercises", "pair1_gap_pct", 1 - 9_800 / S["bot"]["mae"], pct(1 - 9_800 / S["bot"]["mae"]), "how far 9,800 sits under the bot's MAE", "chapter 2 set")
+    F.add("exercises", "pair1_gap", S["bot"]["mae"] - 9_800, n(S["bot"]["mae"] - 9_800), "the bot's MAE minus team A's", "chapter 2 set")
+    F.add("exercises", "pair1_gap_shifts", (S["bot"]["mae"] - 9_800) / PER_SHIFT, f"{(S['bot']['mae'] - 9_800) / PER_SHIFT:.1f}",
+          "31 shipments a week over 120 a shift", "chapter 2 set")
     F.add("exercises", "ch1_series_a", [100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144], "100, 104, 108", "invented: a climb", "chapter 1 set")
     F.add("exercises", "ch1_series_b", [100, 130, 100, 70] * 3, "100, 130, 100, 70", "invented: a repeat of four", "chapter 1 set")
     F.add("exercises", "ch1_series_c", [100, 132, 104, 76, 108, 140, 112, 84, 116, 148, 120, 92], "100, 132, 104, 76", "invented: both", "chapter 1 set")
@@ -722,7 +796,7 @@ def main():
     F.add("public", "zillow_band_pct", 2, "2 percent", "200 basis points as a percent", "half2, transcript, notes")
     F.add("public", "zillow_swing_points", 12, "about 12 percentage points", "1,200 basis points as percentage points", "half2, transcript, notes")
     F.add("public", "flipkart_space", 14, "14 million cubic feet", "Flipkart, warehouse space for TBBD 2026 (F6)", "chapter 1 close")
-    F.add("public", "flipkart_jobs", 250_000, "more than 2.5 lakh", "Flipkart, festive jobs (F6)", "chapter 1 close")
+    F.add("public", "flipkart_jobs", 250_000, "more than 2.5 lakh", "Flipkart, direct and indirect festive employment opportunities (F6)", "chapter 1 close")
     F.add("public", "m5_seasonal_naive", 0.847, "0.847", "M5 score of the seasonal naive (F2)", "chapter 1, notes")
     F.add("public", "m5_naive", 1.752, "1.752", "M5 score of the naive (F2)", "chapter 1, notes")
     F.add("public", "m5_winner", 0.520, "0.520", "M5 winner's score (F2)", "notes")
@@ -742,6 +816,13 @@ def main():
     F.add("public", "flipkart_sale_open", "2026-10-09", "9 October 2026", "The Big Billion Days 2026 main sale (F6)", "chapter 1 close")
     F.add("public", "flipkart_release", "2026-10-06", "6 October 2026", "Flipkart's announcement date (F6)", "chapter 1 close")
     F.add("public", "split_difference", 13, "13 percent", "the midpoint of 4 and 22, the weak answer", "fallback, transcript")
+    F.add("public", "m5_top_ml", 50, "50", "M5: all 50 top-performing methods were machine learning (the M5 accuracy paper, checked 12 Oct 2026)", "transcript, notes")
+    F.add("public", "m5_beat_snaive_pct", 0.358, "35.8 percent", "M5: 1,972 teams, 35.8 percent of them, beat the seasonal naive (the accuracy paper, checked 12 Oct 2026)", "half1 S14, notes")
+    F.add("public", "m5_snaive_period", 7, "7", "M5's seasonal naive copies the value 7 days back, since the series are daily", "half1 S14, notes")
+    F.add("public", "plos_methods", 8, "eight", "PLOS ONE 2018: eight machine-learning and eight statistical methods", "transcript, notes")
+    F.add("public", "target_data_accuracy", 0.30, "about 30 percent", "Canadian Business: item data in Target Canada's system was accurate about 30 percent of the time", "transcript, notes")
+    F.add("public", "amazon_test_weeks", 2, "two weeks", "Amazon Science: the retrained recommender was tested on the two weeks after its cutoff", "transcript, notes")
+    F.add("public", "fada_quiet_days", 21, "21 days", "FADA: September 2025's first 21 days were almost quiet ahead of GST 2.0 (F5)", "guesstimate card")
 
     F.add("kalpa_exercise", "bar_six", kal_mae * 6, f"about Rs {kal_mae * 6 / 1e5:.0f} lakh",
           "six months of festival-aligned's hidden-month MAE, all one way", "Kalpa set")
@@ -763,7 +844,13 @@ def main():
     F.add("guesstimate", "replace_years", years, "8 years", "years before a household replaces it, assumption, range 6 to 10", "half2, transcript")
     F.add("guesstimate", "replacement", repl, f"about {repl / 1e7:.1f} crore", "30 crore x 0.5 / 8", "half2, transcript")
     F.add("guesstimate", "first_time", first, "15 percent", "first-time buyers on top, assumption, range 10 to 20 percent", "half2, transcript")
-    F.add("guesstimate", "estimate", est, f"about {est / 1e7:.2f} crore", "replacement x 1.15", "half2, transcript")
+    F.add("guesstimate", "estimate", est, f"about {est / 1e7:.1f} crore", "replacement x 1.15, 2.16 unrounded", "half2, transcript")
+    for name_, lo_, hi_ in (("years", hh * own / 10 * (1 + first), hh * own / 6 * (1 + first)),
+                            ("own", hh * 0.4 / years * (1 + first), hh * 0.6 / years * (1 + first)),
+                            ("households", 280_000_000 * own / years * (1 + first), 320_000_000 * own / years * (1 + first)),
+                            ("first", repl * 1.10, repl * 1.20)):
+        F.add("guesstimate", f"swing_{name_}_low_pct", lo_ / est - 1, pct(lo_ / est - 1, 0), f"{name_} at its low end, the rest held", "guesstimate card")
+        F.add("guesstimate", f"swing_{name_}_high_pct", hi_ / est - 1, pct(hi_ / est - 1, 0), f"{name_} at its high end, the rest held", "guesstimate card")
     F.add("guesstimate", "anchor", 21_705_974, "2,17,05,974", "SIAM, FY 2025-26 domestic two-wheeler sales (T3, checked 12 Oct 2026)", "half2, transcript")
     F.add("guesstimate", "estimate_vs_anchor_pct", est / 21_705_974 - 1, pct(est / 21_705_974 - 1), "estimate over anchor, minus one", "transcript")
     F.add("guesstimate", "annualised_october", 3_149_846 * 12, f"about {3_149_846 * 12 / 1e7:.2f} crore", "October 2025 retail times 12", "half2, transcript")

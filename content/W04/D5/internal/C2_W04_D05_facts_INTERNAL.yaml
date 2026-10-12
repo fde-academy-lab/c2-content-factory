@@ -1245,6 +1245,16 @@ holdout_4:
   shown: 233,650
   how: the four hidden weeks' average shipments
   used_in: take-home self-check
+- id: bot_move
+  value: 1330.769231
+  shown: 1,331
+  how: the house bot's MAE on thirteen weeks minus on four
+  used_in: take-home self-check
+- id: aligned_move
+  value: 1488.923077
+  shown: 1,489
+  how: festival-aligned's MAE on four weeks minus on thirteen
+  used_in: take-home self-check
 - id: vendor_steps
   value:
   - 10
@@ -2167,6 +2177,253 @@ scenario_2026:
   shown: Rs 3.3 lakh
   how: 'if demand follows the festival-aligned forecast: idle at Rs 5.42, late at Rs 25'
   used_in: chapter 3
+interview:
+- id: own_cushion_aligned_pct
+  value: 0.026
+  shown: 2.6 percent
+  how: the festival-aligned baseline's own 0.82 point on the 13 hidden weeks
+  used_in: transcripts
+- id: own_raised_cost_aligned_rs
+  value: 882269.166667
+  shown: Rs 8.8 lakh
+  how: the festival-aligned baseline moved to its own 0.82 point, its 13 misses priced on the same weeks
+  used_in: transcripts
+- id: own_cushion_finance_pct
+  value: 0.026
+  shown: 2.6 percent
+  how: finance's rule's own 0.82 point on the 13 hidden weeks
+  used_in: transcripts
+- id: own_raised_cost_finance_rs
+  value: 882269.166667
+  shown: Rs 8.8 lakh
+  how: finance's rule moved to its own 0.82 point, its 13 misses priced on the same weeks
+  used_in: transcripts
+- id: own_cushion_bot_pct
+  value: 0.067
+  shown: 6.7 percent
+  how: the house bot (same week last year)'s own 0.82 point on the 13 hidden weeks
+  used_in: transcripts
+- id: own_raised_cost_bot_rs
+  value: 882419.583333
+  shown: Rs 8.8 lakh
+  how: the house bot (same week last year) moved to its own 0.82 point, its 13 misses priced on the same
+    weeks
+  used_in: transcripts
+- id: own_cushion_vendor_pct
+  value: -0.026
+  shown: -2.6 percent
+  how: the vendor's own 0.82 point on the 13 hidden weeks
+  used_in: transcripts
+- id: own_raised_cost_vendor_rs
+  value: 999220.416667
+  shown: Rs 10.0 lakh
+  how: the vendor moved to its own 0.82 point, its 13 misses priced on the same weeks
+  used_in: transcripts
+- id: own_cushion_naive_pct
+  value: 0.07
+  shown: 7.0 percent
+  how: naive's own 0.82 point on the 13 hidden weeks
+  used_in: transcripts
+- id: own_raised_cost_naive_rs
+  value: 1773770.833333
+  shown: Rs 17.7 lakh
+  how: naive moved to its own 0.82 point, its 13 misses priced on the same weeks
+  used_in: transcripts
+- id: own_cushion_drift_pct
+  value: 0.066
+  shown: 6.6 percent
+  how: drift's own 0.82 point on the 13 hidden weeks
+  used_in: transcripts
+- id: own_raised_cost_drift_rs
+  value: 1765186.25
+  shown: Rs 17.7 lakh
+  how: drift moved to its own 0.82 point, its 13 misses priced on the same weeks
+  used_in: transcripts
+- id: vendor_bias
+  value: 16107.692308
+  shown: 16,108
+  how: the vendor's mean signed miss on the hidden weeks, too high
+  used_in: transcripts
+- id: finance_shifts_total
+  value: 17193
+  shown: 17,193
+  how: finance's rule / 120, rounded up, over the eight weeks
+  used_in: transcripts
+- id: plan_over_finance_shifts
+  value: 3082
+  shown: 3,082
+  how: the plan's shifts minus finance's
+  used_in: transcripts
+- id: plan_over_finance_rs
+  value: 2003300
+  shown: Rs 20.0 lakh
+  how: those shifts at Rs 650
+  used_in: transcripts
+- id: peak_demand_low
+  value: 409452.788845
+  shown: 409,453
+  how: 19 Oct 2026 if demand lands as far below the forecast as the lowest hidden week
+  used_in: transcripts
+- id: peak_demand_high
+  value: 468672.413793
+  shown: 468,672
+  how: 19 Oct 2026 if demand lands as far above as the highest hidden week
+  used_in: transcripts
+- id: peak_low_spare_rs
+  value: 199242.393758
+  shown: Rs 2.0 lakh
+  how: the plan's spare shipments at the low end, at Rs 5.42
+  used_in: transcripts
+- id: peak_high_late_rs
+  value: 560910.344828
+  shown: Rs 5.6 lakh
+  how: the plan's late shipments at the high end, at Rs 25
+  used_in: transcripts
+- id: peak_low_shifts
+  value: 3413
+  shown: 3,413
+  how: shifts the low end needs
+  used_in: transcripts
+- id: peak_high_shifts
+  value: 3906
+  shown: 3,906
+  how: shifts the high end needs
+  used_in: transcripts
+- id: peak_cost_at_cushion_rs
+  value: 137542.729974
+  shown: Rs 1.4 lakh
+  how: the week of 19 Oct 2026 at the 2.6 percent cushion, averaged over the 13 misses as demands
+  used_in: notebook 03, slides
+- id: peak_cost_at_zero_rs
+  value: 213307.957524
+  shown: Rs 2.1 lakh
+  how: the same week booked at the forecast itself
+  used_in: notebook 03, slides
+- id: peak_cost_at_weibull_rs
+  value: 141145.472804
+  shown: Rs 1.4 lakh
+  how: the same week at the 4.1 percent reading
+  used_in: notebook 03, slides
+- id: curve_min_pct
+  value: 0.028
+  shown: 2.8 percent
+  how: the lowest point of the week's cost curve, on notebook 03's grid of 0.2 percent steps
+  used_in: notebook 03, slides
+- id: cushion_weibull_pct
+  value: 0.040773
+  shown: 4.1 percent
+  how: the 0.82 point read at position 0.82 x 14 of the sorted thirteen, another common convention
+  used_in: scorecard
+- id: backtest_covered_growth
+  value: 7
+  shown: 7 of 8
+  how: 2025's festive weeks the raised festival-aligned copy covered, with the 4 percent
+  used_in: transcripts
+- id: backtest_covered_nogrowth
+  value: 2
+  shown: 2 of 8
+  how: the same, with no growth added
+  used_in: transcripts
+- id: festive_mae_pct
+  value: 0.014156
+  shown: 1.4 percent
+  how: festival-aligned's 2025 festive miss over the festive weeks' mean
+  used_in: scorecard
+- id: holdout_abs_pct
+  value: 0.030636
+  shown: 3.1 percent
+  how: festival-aligned's mean miss on the hidden weeks, as a percent of the forecast
+  used_in: scorecard
+- id: peak_shifts_worked_2025
+  value: 3485
+  shown: 3,485
+  how: shifts worked in the week of 6 Oct 2025, overtime included
+  used_in: transcripts
+- id: overtime_share_150
+  value: 0.333333
+  shown: '0.33'
+  how: the share to cover if a short shipment is packed on overtime at 1.5 times a shift's cost (assumed)
+  used_in: transcripts
+- id: overtime_share_200
+  value: 0.5
+  shown: '0.50'
+  how: the share to cover if a short shipment is packed on overtime at 2 times a shift's cost (assumed)
+  used_in: transcripts
+- id: overtime_rates
+  value:
+  - 1.5
+  - 2
+  shown: one and a half and two times
+  how: overtime at these multiples of a shift's cost (assumed)
+  used_in: transcripts
+toys:
+- id: ai_users
+  value: 200000
+  shown: 2 lakh
+  how: users of the assistant at launch (invented)
+  used_in: AI variant
+- id: ai_peak_share
+  value: 0.1
+  shown: 10 percent
+  how: users who send a request in the peak minute (invented)
+  used_in: AI variant
+- id: ai_requests_minute
+  value: 20000
+  shown: 20,000
+  how: 2 lakh x 10 percent, requests in the peak minute
+  used_in: AI variant
+- id: ai_tokens_request
+  value: 1500
+  shown: 1,500
+  how: tokens per request, prompt and answer together (invented)
+  used_in: AI variant
+- id: ai_tokens_minute
+  value: 30000000
+  shown: 3 crore
+  how: 20,000 x 1,500, tokens in the peak minute
+  used_in: AI variant
+- id: ai_tokens_second
+  value: 500000
+  shown: 5 lakh
+  how: 3 crore over 60 seconds
+  used_in: AI variant
+- id: cups
+  value:
+  - 50
+  - 52
+  - 49
+  - 51
+  shown: 50, 52, 49, 51
+  how: cups a canteen sells on four days (invented, R1)
+  used_in: chapter 1
+- id: cups_naive
+  value: 51
+  shown: '51'
+  how: tomorrow's naive forecast
+  used_in: chapter 1
+- id: cups_drift
+  value: 51.333333
+  shown: '51.3'
+  how: 'drift on the cups: 51 plus (51 - 50) / 3'
+  used_in: chapter 1
+- id: sundays
+  value: 80
+  shown: '80'
+  how: cups on Sundays (invented)
+  used_in: chapter 1
+- id: held_errors
+  value:
+  - 10
+  - -5
+  - 10
+  shown: 10, 5 and 10
+  how: three held-out misses, one too low (invented)
+  used_in: chapter 2
+- id: held_mae
+  value: 8.333333
+  shown: '8.3'
+  how: (10 + 5 + 10) / 3
+  used_in: chapter 2
 week_map:
 - id: mon_before
   value: 1.9
@@ -2352,10 +2609,10 @@ exercises:
   used_in: staffing set
 - id: pairs
   value:
-  - 9500
+  - 9800
   - 6000
   - 6200
-  shown: 9,500, 6,000 and 6,200
+  shown: 9,800, 6,000 and 6,200
   how: three invented model MAEs for the good-enough drill
   used_in: chapter 2 set
 - id: pair3_high
@@ -2364,19 +2621,19 @@ exercises:
   how: 'invented: the third model''s weeks too high'
   used_in: chapter 2 set
 - id: pair1_gap_pct
-  value: 0.033646
-  shown: 3 percent
-  how: how far 9,500 sits under the bot's MAE
+  value: 0.00313
+  shown: 0.3 percent
+  how: how far 9,800 sits under the bot's MAE
   used_in: chapter 2 set
 - id: pair1_gap
-  value: 330.769231
-  shown: '331'
+  value: 30.769231
+  shown: '31'
   how: the bot's MAE minus team A's
   used_in: chapter 2 set
 - id: pair1_gap_shifts
-  value: 2.75641
-  shown: '2.8'
-  how: 331 shipments a week over 120 a shift
+  value: 0.25641
+  shown: '0.3'
+  how: 31 shipments a week over 120 a shift
   used_in: chapter 2 set
 - id: ch1_series_a
   value:
@@ -2561,44 +2818,6 @@ practice:
   shown: 0.50 and 0.95
   how: wrong options
   used_in: lab set
-toys:
-- id: cups
-  value:
-  - 50
-  - 52
-  - 49
-  - 51
-  shown: 50, 52, 49, 51
-  how: cups a canteen sells on four days (invented, R1)
-  used_in: chapter 1
-- id: cups_naive
-  value: 51
-  shown: '51'
-  how: tomorrow's naive forecast
-  used_in: chapter 1
-- id: cups_drift
-  value: 51.333333
-  shown: '51.3'
-  how: 'drift on the cups: 51 plus (51 - 50) / 3'
-  used_in: chapter 1
-- id: sundays
-  value: 80
-  shown: '80'
-  how: cups on Sundays (invented)
-  used_in: chapter 1
-- id: held_errors
-  value:
-  - 10
-  - -5
-  - 10
-  shown: 10, 5 and 10
-  how: three held-out misses, one too low (invented)
-  used_in: chapter 2
-- id: held_mae
-  value: 8.333333
-  shown: '8.3'
-  how: (10 + 5 + 10) / 3
-  used_in: chapter 2
 kalpa:
 - id: seasonal_naive_mae_rs
   value: 1167500.0
@@ -3146,7 +3365,7 @@ public:
 - id: flipkart_jobs
   value: 250000
   shown: more than 2.5 lakh
-  how: Flipkart, festive jobs (F6)
+  how: Flipkart, direct and indirect festive employment opportunities (F6)
   used_in: chapter 1 close
 - id: m5_seasonal_naive
   value: 0.847
@@ -3247,6 +3466,43 @@ public:
   shown: 13 percent
   how: the midpoint of 4 and 22, the weak answer
   used_in: fallback, transcript
+- id: m5_top_ml
+  value: 50
+  shown: '50'
+  how: 'M5: all 50 top-performing methods were machine learning (the M5 accuracy paper, checked 12 Oct
+    2026)'
+  used_in: transcript, notes
+- id: m5_beat_snaive_pct
+  value: 0.358
+  shown: 35.8 percent
+  how: 'M5: 1,972 teams, 35.8 percent of them, beat the seasonal naive (the accuracy paper, checked 12
+    Oct 2026)'
+  used_in: half1 S14, notes
+- id: m5_snaive_period
+  value: 7
+  shown: '7'
+  how: M5's seasonal naive copies the value 7 days back, since the series are daily
+  used_in: half1 S14, notes
+- id: plos_methods
+  value: 8
+  shown: eight
+  how: 'PLOS ONE 2018: eight machine-learning and eight statistical methods'
+  used_in: transcript, notes
+- id: target_data_accuracy
+  value: 0.3
+  shown: about 30 percent
+  how: 'Canadian Business: item data in Target Canada''s system was accurate about 30 percent of the time'
+  used_in: transcript, notes
+- id: amazon_test_weeks
+  value: 2
+  shown: two weeks
+  how: 'Amazon Science: the retrained recommender was tested on the two weeks after its cutoff'
+  used_in: transcript, notes
+- id: fada_quiet_days
+  value: 21
+  shown: 21 days
+  how: 'FADA: September 2025''s first 21 days were almost quiet ahead of GST 2.0 (F5)'
+  used_in: guesstimate card
 kalpa_exercise:
 - id: bar_six
   value: 2073500.0
@@ -3301,9 +3557,49 @@ guesstimate:
   used_in: half2, transcript
 - id: estimate
   value: 21562500.0
-  shown: about 2.16 crore
-  how: replacement x 1.15
+  shown: about 2.2 crore
+  how: replacement x 1.15, 2.16 unrounded
   used_in: half2, transcript
+- id: swing_years_low_pct
+  value: -0.2
+  shown: -20 percent
+  how: years at its low end, the rest held
+  used_in: guesstimate card
+- id: swing_years_high_pct
+  value: 0.333333
+  shown: 33 percent
+  how: years at its high end, the rest held
+  used_in: guesstimate card
+- id: swing_own_low_pct
+  value: -0.2
+  shown: -20 percent
+  how: own at its low end, the rest held
+  used_in: guesstimate card
+- id: swing_own_high_pct
+  value: 0.2
+  shown: 20 percent
+  how: own at its high end, the rest held
+  used_in: guesstimate card
+- id: swing_households_low_pct
+  value: -0.066667
+  shown: -7 percent
+  how: households at its low end, the rest held
+  used_in: guesstimate card
+- id: swing_households_high_pct
+  value: 0.066667
+  shown: 7 percent
+  how: households at its high end, the rest held
+  used_in: guesstimate card
+- id: swing_first_low_pct
+  value: -0.043478
+  shown: -4 percent
+  how: first at its low end, the rest held
+  used_in: guesstimate card
+- id: swing_first_high_pct
+  value: 0.043478
+  shown: 4 percent
+  how: first at its high end, the rest held
+  used_in: guesstimate card
 - id: anchor
   value: 21705974
   shown: 2,17,05,974
