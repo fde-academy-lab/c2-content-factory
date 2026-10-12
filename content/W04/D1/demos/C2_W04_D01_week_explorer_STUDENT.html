@@ -333,16 +333,19 @@ var W4 = {
     normal: 5000, saleTimes: 2.6,                   /* case Thu ticket: normal cohort about 5,000; August 2.6 times */
     flat: 38,                                       /* case Thu ticket: the dashboard's month-two retention, June to September */
     /* toy: later cells, ages 2 onward, built so the dashboard reads 38 from June to September */
-    later: [[39.2, 38.9, 38.6, 38.3, 38.0, 37.7, 37.4], [39.0, 38.7, 38.4, 38.1, 37.8, 37.5], [38.7, 38.4, 38.1, 37.8, 37.5],
-            [38.5, 38.2, 37.9, 37.6], [38.3, 38.0, 37.7], [38.0, 37.7], [37.8], []],
-    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September"],
+    /* toy: each cohort's cells from month two on, built so the reading holds within 0.15 of 38.0 from June to
+       September; the sale cohort's month-two 24.0 is a toy, used only in the toy month of October */
+    later: [[38.4, 38.3, 38.2, 38.1, 38.0, 37.9, 37.8, 37.7], [38.3, 38.2, 38.1, 38.0, 37.9, 37.8, 37.7],
+            [38.2, 38.1, 38.0, 37.9, 37.8, 37.7], [38.2, 38.1, 38.0, 37.9, 37.8], [38.1, 38.0, 37.9, 37.8],
+            [38.1, 38.0, 37.9], [38.0, 37.9], [24.0]],
+    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October"],
     toyBatch: {a: 100, aLast: 0.5, aNow: 0.4, b: 400, bRate: 0.525},   /* toy R1: two coaching batches */
     /* toy counts built to the case's rates: search to menu view 118 percent per session; menu view to add-to-cart
        34 percent per session and 61 percent per member */
     stages: ["Open the app", "Search", "Menu view", "Add to cart", "Checkout start", "Order placed"],
     funnel: {
       session: {with: [100000, 50000, 59000, 20060, 13040, 10430], without: [100000, 50000, 36000, 12240, 7960, 6370]},
-      member: {with: [30000, 20000, 24000, 14640, 11860, 10080], without: [30000, 20000, 17000, 10370, 8400, 7140]}
+      member: {with: [30000, 20000, 24000, 14640, 9810, 7850], without: [30000, 20000, 17000, 10370, 6950, 5560]}
     },
     /* toy, programme-written: an AI app's launch cohort against organic cohorts, weekly retention in percent */
     launch: 100000, organic: 10000,
@@ -970,33 +973,33 @@ var W4 = {
       <div class="scene-head"><span class="sid">Th1</span><h3>How can every batch shrink while the average stays flat?</h3></div>
       <p class="myth"><b>The first answer most people give:</b> the dashboard reads 38 percent every month, so nothing has changed.</p>
       <div class="predict">
-        <p class="ask"><b>Predict before you step.</b> In September the August sale cohort joins the table, 2.6 times a normal month and at 31 percent in month one, and the dashboard still reads 38. What holds the 38 up?</p>
+        <p class="ask"><b>Predict before you step.</b> The August sale cohort, 2.6 times a normal month, enters the dashboard's count in October at a month-two rate of 24 percent, a toy. Where does October's reading land?</p>
         <div class="opts">
-          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. The older cohorts climbed back that month and made up the gap.</button>
-          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. The sale cohort is outside the count until its second month.</button>
-          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. The sale members ordered more than their 31 percent shows.</button>
-          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. The dashboard rounds a fall of a few points away to 38.</button>
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. It falls to about 24.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. It falls to about 34.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. It falls to about 36.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. It holds at 38.</button>
         </div>
         <p class="said" aria-live="polite">No prediction yet.</p>
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Each row is a signup cohort, as tall as its number of members; each column is a reporting month, and a cell is the cohort's share that ordered that month. Month-one rates and cohort sizes are the case's; the later cells are a toy, built so the dashboard's number matches the case's flat 38 percent. The dashed diagonal outlines each cohort's month-one cells.</figcaption>
+          <figcaption>Each row is a signup cohort, as tall as its number of members; each column is a reporting month, and a cell is the cohort's share that ordered that month. Month-one rates and cohort sizes are the case's; the later cells are a toy, built so the reading matches the case's flat 38 percent from June to September, and October is a toy month. This page reads the dashboard's month-two retention as counting each member from the second month after signup, so the dashed month-one cells sit outside the count.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><button type="button" class="btn" data-ctl="next">Next month</button>
             <output data-out="next">Reporting month: February 2026</output></div>
-          <div class="ctl"><label for="th1-size">Size of the newest cohort, times a normal month of 5,000</label>
-            <input type="range" id="th1-size" min="1" max="3" step="0.1" value="1" data-ctl="size">
-            <output data-out="size">January: 5,000 members, 1.0 times normal (slider value 1.0)</output></div>
+          <div class="ctl"><label for="th1-size">Size of the August sale cohort, times a normal month of 5,000</label>
+            <input type="range" id="th1-size" min="1" max="3" step="0.1" value="2.6" data-ctl="size">
+            <output data-out="size">August: 13,000 members, 2.6 times normal (slider value 2.6)</output></div>
           <dl class="nums" data-nums></dl>
         </div>
       </div>
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>Every row falls month by month, and each cohort starts lower than the one before: 58, 56, 55, 53, 52, 50 and 49 percent in month one, then the sale cohort's 31. The dashboard still reads 38 percent from June to September. The cohorts it counts sit on slow plateaus, and the newest, weakest, biggest cohort is outside its count until it reaches its second month in October.</p>
-        <p>A blend can stay flat while every part of it shrinks, as long as new parts keep arriving and the weakest part has not been counted yet.</p>
+        <p>Every row falls month by month, and each cohort starts lower than the one before: 58, 56, 55, 53, 52, 50 and 49 percent in month one, then the sale cohort's 31. The dashboard still reads 38 from June to September, because each month a new cohort enters its count near 38 while the older ones sag a tenth of a point, and in September the sale cohort is in its first month, outside the count. In October it enters with 13,000 members at 24 percent: (35,000 x 37.8 + 13,000 x 24) / 48,000, about 34. At a normal 5,000 members it would pull the reading only to 36.</p>
+        <p>Counted from each member's first month instead, the sale cohort's 31 percent would already pull September down to 36, so the definition decides whether the dashboard looked flat at all. A blend can stay flat while every part of it shrinks, as long as new parts keep arriving and the weakest part has not been counted yet; once it is counted, its size sets how far the blend falls.</p>
         <p class="formula"><b>The formula, last</b>blend = sum of (cohort size x cohort rate) / sum of sizes, over the cohorts the dashboard counts</p>
       </div>
     </article>
@@ -1016,7 +1019,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>A coaching centre's two batches, a toy, invented. Each column is a month's members, stacked by batch; the dark part of each batch is its members still coming, so the blend is the dark share of the whole column.</figcaption>
+          <figcaption>A coaching centre's two batches, a toy, invented. Each column is a month's members, stacked by batch; the darker part of each batch is its members still coming, so the blend is the darker share of the whole column.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><label for="th2-b">Batch B's size</label>
@@ -1052,7 +1055,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Gold members' order flow in September. Each bar's length is the count at that step, and each rate divides a step by the step before it. The counts are a toy, built to the case's rates.</figcaption>
+          <figcaption>Gold members' order flow in September. Each bar's length is the count at that step, and each rate divides a step by the step before it. The counts are a toy: search to menu view and menu view to add-to-cart are built to the case's rates, and the other rates come from the toy counts.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><button type="button" class="btn" data-ctl="unit" aria-pressed="false">Count per member</button>
@@ -1086,7 +1089,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>An AI app's two cohorts, written for this programme: every number here is a toy. A launch-week cohort of 100,000 and organic cohorts of 10,000 that join every week; the blended line counts everyone active that week.</figcaption>
+          <figcaption>An AI app's two cohorts, written for this programme: every number here is a toy. A launch-week cohort of 100,000 and organic cohorts of 10,000 that join every week after the launch week; the blended line counts everyone active that week.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><label for="th4-w">Week since joining</label>
@@ -1101,7 +1104,7 @@ var W4 = {
         <p class="check"></p>
         <p>At week four the launch cohort keeps 24 percent and the organic cohort 36 percent: the launch spike was novelty. The blended actives fall to 36,600 in week five and climb back to 42,900 by week eight, because organic cohorts keep joining, so a blended chart reads as recovery while the launch cohort keeps falling.</p>
         <p>Between week one and week four the launch cohort loses 46 of every 100 who joined and an organic cohort loses 14, so a launch's first weeks measure novelty. Judge each cohort at week four or later, and read the blend only as a sum of cohorts.</p>
-        <p class="formula"><b>The formula, last</b>judge a cohort at the age where habit shows, never the blend</p>
+        <p class="formula"><b>The formula, last</b>judge each cohort at the age where habit shows; read the blend only as the sum of its cohorts</p>
       </div>
     </article>
   </section>
@@ -2900,69 +2903,75 @@ var W4 = {
     start: function () { return { step: 2, sizes: [1, 1, 1, 1, 1, 1, 1, THU.saleTimes] }; },
     init: function (st, art) {
       var self = this;
-      on(art, "next", "click", function () { st.step = st.step >= 9 ? 2 : st.step + 1; self.render(st, art); });
-      on(art, "size", "input", function (e) { st.sizes[st.step - 2] = Number(e.target.value); self.render(st, art); });
+      on(art, "next", "click", function () { st.step = st.step >= 10 ? 2 : st.step + 1; self.render(st, art); });
+      on(art, "size", "input", function (e) { st.sizes[7] = Number(e.target.value); self.render(st, art); });
     },
     render: function (st, art) {
       var svg = svgRoot(680, 500, "The cohort table filling month by month under the dashboard's line");
-      var colX = function (R) { return 150 + (R - 2) * 64; }, top = 150;
+      var colX = function (R) { return 140 + (R - 2) * 58; }, top = 160;
       /* the dashboard's line across the top */
       txt(svg, 16, 26, "the dashboard's month-two retention", { size: 14.5, weight: 700 });
-      var Yb = function (v) { return 120 - 80 * (v - 30) / 30; };
-      [30, 45, 60].forEach(function (t) {
-        add(svg, "line", { x1: 140, x2: 660, y1: Yb(t), y2: Yb(t), stroke: C.line });
-        txt(svg, 132, Yb(t) + 5, t + "%", { size: 12.5, anchor: "end", fill: C.muted });
+      var Yb = function (v) { return 124 - 84 * (v - 30) / 15; };
+      [30, 35, 40, 45].forEach(function (t) {
+        add(svg, "line", { x1: 132, x2: 664, y1: Yb(t), y2: Yb(t), stroke: C.line });
+        txt(svg, 124, Yb(t) + 5, t + "%", { size: 12.5, anchor: "end", fill: C.muted });
       });
+      if (st.step >= 10) {
+        add(svg, "rect", { x: colX(10) - 3, y: 34, width: 60, height: 440, rx: 6, fill: AMBER_TINT });
+        txt(svg, colX(10) + 27, 48, "toy month", { size: 12.5, anchor: "middle", fill: AMBER_INK, weight: 700 });
+      }
       var pts = [];
       for (var R = 3; R <= st.step; R++) {
         var b = th1Blend(st, R);
         if (!b) continue;
-        pts.push([colX(R) + 30, Yb(b.v), b.v]);
+        pts.push([colX(R) + 27, Yb(b.v), b.v, R]);
       }
-      if (pts.length) {
-        add(svg, "polyline", { points: pts.map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" "), fill: "none", stroke: C.ink, "stroke-width": 2.6 });
-        pts.forEach(function (p) {
-          add(svg, "circle", { cx: p[0], cy: p[1], r: 5, fill: C.ink, stroke: C.white, "stroke-width": 2 });
-          txt(svg, p[0], p[1] - 10, String(Math.round(p[2])), { size: 14, weight: 700, anchor: "middle" });
-        });
-      }
+      var solid = pts.filter(function (p) { return p[3] <= 9; });
+      if (solid.length) add(svg, "polyline", { points: solid.map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" "), fill: "none", stroke: C.ink, "stroke-width": 2.6 });
+      var oct = pts.filter(function (p) { return p[3] === 10; })[0], sep = pts.filter(function (p) { return p[3] === 9; })[0];
+      if (oct && sep) add(svg, "line", { x1: sep[0], y1: sep[1], x2: oct[0], y2: oct[1], stroke: C.ink, "stroke-width": 2.6, "stroke-dasharray": "6 4" });
+      pts.forEach(function (p) {
+        add(svg, "circle", { cx: p[0], cy: p[1], r: 5, fill: C.ink, stroke: C.white, "stroke-width": 2 });
+        txt(svg, p[0], p[1] - 10, String(Math.round(p[2])), { size: 14, weight: 700, anchor: "middle" });
+      });
       /* the staircase of cohorts */
-      for (R = 2; R <= 9; R++) {
-        txt(svg, colX(R) + 30, top - 8, THU.months[R - 1].slice(0, 3), { size: 13.5, anchor: "middle", fill: R <= st.step ? C.ink : "#C9C4E4", weight: 700 });
+      for (R = 2; R <= 10; R++) {
+        txt(svg, colX(R) + 27, top - 8, THU.months[R - 1].slice(0, 3), { size: 13.5, anchor: "middle", fill: R <= st.step ? C.ink : "#C9C4E4", weight: 700 });
       }
       var y = top;
       for (var c = 0; c < 8; c++) {
         if (c + 2 > st.step) break;
         var h = Math.round(22 * st.sizes[c]);
-        txt(svg, 16, y + Math.min(h, 22) / 2 + 5, THU.months[c].slice(0, 3) + ", " + group(st.sizes[c] * THU.normal), { size: 13, fill: C.night });
+        txt(svg, 16, y + Math.min(h, 22) / 2 + 5, THU.months[c].slice(0, 3) + ", " + group(Math.round(st.sizes[c] * THU.normal)), { size: 13, fill: C.night });
         for (R = c + 2; R <= st.step; R++) {
           var age = R - (c + 1), v = cell(c, age);
           if (v === undefined) continue;
-          var r = add(svg, "rect", { x: colX(R), y: y, width: 60, height: h, rx: 3, fill: ramp(v) });
+          var r = add(svg, "rect", { x: colX(R), y: y, width: 54, height: h, rx: 3, fill: ramp(v) });
           if (age === 1) { r.setAttribute("stroke", C.ink); r.setAttribute("stroke-width", 1.6); r.setAttribute("stroke-dasharray", "4 3"); }
-          if (h >= 16) txt(svg, colX(R) + 30, y + Math.min(h, 22) / 2 + 5, age === 1 ? String(v) : v.toFixed(1),
+          if (h >= 16) txt(svg, colX(R) + 27, y + Math.min(h, 22) / 2 + 5, age === 1 ? String(v) : v.toFixed(1),
             { size: 12.5, anchor: "middle", weight: 700, fill: v >= 45 ? C.white : C.ink });
         }
         y += h + 3;
       }
       svg.setAttribute("viewBox", "0 0 680 " + Math.max(340, Math.ceil(y + 14)));
       put($("[data-fig]", art), svg);
-      var nb = th1Blend(st, st.step), newest = st.step - 2;
-      setOut(art, "next", "Reporting month: " + THU.months[st.step - 1] + " 2026 (month " + (st.step - 1) + " of 8)");
-      $('[data-ctl="size"]', art).value = st.sizes[newest];
-      setOut(art, "size", THU.months[newest] + ": " + group(st.sizes[newest] * THU.normal) + " members, " + st.sizes[newest].toFixed(1) +
-        " times normal (slider value " + st.sizes[newest].toFixed(1) + ")");
+      var nb = th1Blend(st, st.step), outside = st.step - 2;
+      $('[data-ctl="next"]', art).textContent = st.step >= 10 ? "Start again from February" : "Next month";
+      setOut(art, "next", "Reporting month: " + THU.months[st.step - 1] + " 2026" + (st.step === 10 ? ", a toy month" : "") + " (step " + (st.step - 1) + " of 9)");
+      $('[data-ctl="size"]', art).value = st.sizes[7];
+      setOut(art, "size", "August: " + group(Math.round(st.sizes[7] * THU.normal)) + " members, " + st.sizes[7].toFixed(1) +
+        " times normal (slider value " + st.sizes[7].toFixed(1) + ")");
       var counted = 0, members = 0;
       for (c = 0; c < 8; c++) if (st.step - (c + 1) >= 2) { counted++; members += st.sizes[c] * THU.normal; }
       nums($("[data-nums]", art), [
         ["The dashboard reads", nb ? Math.round(nb.v) + " percent" : "nothing yet"],
         ["Unrounded", nb ? nb.v.toFixed(2) + " percent" : "no cohort in month two"],
-        ["Cohorts it counts", counted + ", " + group(members) + " members"],
-        ["Newest cohort, month one", THU.monthOne[newest] + " percent"],
+        ["Cohorts it counts", counted + ", " + group(Math.round(members)) + " members"],
+        { wide: "Outside the count, in month one: " + (outside < 8 ? THU.months[outside] + ", " + group(Math.round(st.sizes[outside] * THU.normal)) + " members." : "September's signups, which the table does not draw.") },
         { wide: "The blend weights each counted cohort's cell by its size, so a cohort twice as big counts twice." }
       ]);
     },
-    final: function (st) { st.step = 9; st.sizes = [1, 1, 1, 1, 1, 1, 1, THU.saleTimes]; }
+    final: function (st) { st.step = 10; st.sizes = [1, 1, 1, 1, 1, 1, 1, THU.saleTimes]; }
   });
 
   scene("Th2", {
@@ -3074,7 +3083,7 @@ var W4 = {
         txt(svg, X(k) + 10, Y(s[1][k - 1]) + 5, s[0] + ", " + s[1][k - 1] + "%", { size: 14, weight: 700, fill: C.ink }).setAttribute("class", "halo");
       });
       var bg = add(svg, "g", { opacity: st.blend ? 1 : 0, "class": "fade" });
-      txt(bg, 16, 318, "blended actives, everyone active that week", { size: 14.5, weight: 700 });
+      txt(bg, 16, 318, "blended actives, everyone active in each week since the launch", { size: 14.5, weight: 700 });
       var Y2 = function (n) { return 452 - 110 * n / 80000; };
       [0, 40000, 80000].forEach(function (t) {
         add(bg, "line", { x1: 72, x2: 640, y1: Y2(t), y2: Y2(t), stroke: C.line });
