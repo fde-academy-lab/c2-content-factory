@@ -1,0 +1,66 @@
+# W04 D5 sources: what the pack cites, where it departs, and what it left unfixed
+
+**INTERNAL.** One page for the reviewer. Every link was checked on 12 October 2026, either by the
+research ledger (`docs/detailing/W04_research_cases.md`, R2, and `W04_research_teaching.md`, R1) or
+afresh in this session where marked.
+
+## Which sources does the pack cite?
+
+| Source | Used for | Link, checked 12 October 2026 |
+|---|---|---|
+| Forecasting: Principles and Practice, 5.2, 5.8, 5.9, 5.10 (fresh: the test set "at least as large as the maximum forecast horizon required" and "typically about 20% of the total sample"; "a model which fits the training data well will not necessarily forecast well"; percentage errors "put a heavier penalty on negative errors"; scaled errors "as an alternative to using percentage errors"; the quantile score, "sometimes called the pinball loss function") | The four rules, the hold-out and horizon, MAE, MAPE, MASE and the quantile loss, the rolling origin | https://otexts.com/fpp3/toolbox.html#sec-simple-methods, with the anchors #sec-accuracy, #sec-distaccuracy and #sec-tscv (checked 12 October 2026) |
+| Forecasting: Principles and Practice, 2.3 and 2.8 (fresh: "Seasonality is always of a fixed and known period", a cycle's rises and falls "are not of a fixed frequency", "autocorrelation measures the linear relationship between lagged values of a time series") | The four patterns of S7 and their picture; autocorrelation under half two's handoff line | https://otexts.com/fpp3/graphics.html#sec-tspatterns and #sec-acf (checked 12 October 2026) |
+| Forecasting: Principles and Practice, chapters 8 and 9 (fresh: smoothing forecasts "are weighted averages of past observations, with the weights decaying exponentially as the observations get older"; ARIMA models "aim to describe the autocorrelations in the data") | Smoothing and ARIMA under half two's handoff line | https://otexts.com/fpp3/exponential-smoothing.html and https://otexts.com/fpp3/arima.html (checked 12 October 2026) |
+| IBM Technology, "What is Time Series Analysis?" (fresh: title and channel through YouTube's oEmbed) | The notes' video | https://www.youtube.com/watch?v=GE3JOFwTWVM (checked 12 October 2026) |
+| Makridakis, Spiliotis and Assimakopoulos, PLOS ONE 13(3), 2018 (F1; fresh: ML methods "dominated across both accuracy measures used and for all forecasting horizons examined"; "Even Naive 2 (a seasonal Random Walk (RW) benchmark) is more accurate than half of the ML methods", in the one-step-ahead table; models that best fitted the data "did not necessarily result in more accurate post sample predictions") | 1,045 series; fit is not forecast | https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0194889 (checked 12 October 2026) |
+| M5 "Scores and Ranks" workbook (F2) | 0.847, 1.752, 0.977, 1.010, 0.520 | https://raw.githubusercontent.com/Mcompetitions/M5-methods/master/Scores%20and%20Ranks.xlsx (checked 12 October 2026) |
+| Makridakis, Spiliotis and Assimakopoulos, "The M5 Accuracy competition: Results, findings and conclusions", preprint of October 2020 (fresh: "in the M5 all 50 top-performing methods were ML"; "combining improves forecasting accuracy"; the seasonal naive's period "set equal to 7 since the series are daily"; 1,972 teams, 35.8 percent, beat it; WRMSSE, "Lower WRMSSE scores indicate more accurate forecasts") | M5's reversal, its seasonal copy and its measure | https://statmodeling.stat.columbia.edu/wp-content/uploads/2021/10/M5_accuracy_competition.pdf (checked 12 October 2026) |
+| Zillow, Q3 2021 shareholder letter (F3; fresh: forecasting prices "three to six months into the future"; guardrails "of +/- 200 basis points of breakeven economics"; "unable to accurately forecast future home prices at different times in both directions by much more than we modeled as possible"; unit economics "swinging approximately 1,200 basis points from Q2 to an expected -500 to -700 basis points in Q4 2021"; "Higher-than-anticipated conversion rates" and "renovation and resale capacity constraints"; a "$304 million write-down on inventory"; the decision "to wind down" with a workforce reduction of "approximately 25%") | The Zillow follow-up, fallback S10 and S12, half two S7 | https://www.sec.gov/Archives/edgar/data/1617640/000161764021000085/exhibit993.htm (checked 12 October 2026) |
+| Target, release of 15 January 2015, and Canadian Business, Joe Castaldo, "The Last Days of Target", archived (F4; fresh: the JDA system "requiring years of historical data"; buyers "relied on wildly optimistic projections developed at U.S. headquarters"; information "accurate about 30% of the time"; "All 133 stores closed by April") | 133 stores, about 17,600 employees; no history to forecast new stores | https://corporate.target.com/press/release/2015/01/target-corporation-announces-plans-to-discontinue-canadian-operations (checked 12 October 2026); https://www.gwern.net/docs/www/archive.canadianbusiness.com/edd0ae069905e7df1b073ae02516993a2bf4a1b9.html (checked 12 October 2026) |
+| FADA, release of 7 November 2025 (F5; fresh: 31,49,846 and 12,87,735; "an almost quiet September for first 21 days due to the GST 2.0 transition"; the festive window "from 1st day of Navratri to 15 days post Dhanteras due to time lag for vehicle registration") | The 42-day window; the GST cut; the guesstimate's catch | https://fada.in/images/press-release/1690d68d7a2e6cFADA%20releases%20October%202025%20&%2042-Days%20Festive%20Vehicle%20Retail%20Data.pdf (checked 12 October 2026) |
+| DoPT holiday lists, as reproduced by staffnews.in (F5) | Diwali on 31 October 2024, 20 October 2025, 8 November 2026 | The three staffnews.in URLs on the festival calendar card |
+| Flipkart, announcement of 6 October 2026 (F6; fresh: "Ekart has added 14 million cubic feet of warehousing space ahead of TBBD" and "More than 2.5 lakh direct and indirect employment opportunities have been created for the festive season") | S13, the notes | https://stories.flipkart.com/announcement/flipkarts-big-billion-days-returns-for-its-13th-edition (checked 12 October 2026) |
+| SIAM, FY 2025-26 release (T3) | The guesstimate's anchor, 2,17,05,974 | https://www.siam.in/news-&-updates/press-releases/x/605 (checked 12 October 2026) |
+| Amazon Science, Larry Hardesty, "The history of Amazon's recommendation algorithm", 22 November 2019 (W1; fresh: the bestseller list outperformed the autoencoder in the first test; retrained "on movie-viewing data that had been sorted chronologically" and evaluated on "the two-week period after the cutoff", the autoencoder outperformed the bestseller list and item-to-item filtering "two to one") | The fifth pain point | https://www.amazon.science/the-history-of-amazons-recommendation-algorithm (checked 12 October 2026) |
+
+## Where does the pack depart from the spine, the row or the case file, and why?
+
+| Departure | Why |
+|---|---|
+| The hold-out targets, the 2026 window and the vendor file follow the facts file's header, which lists nine corrections to the case file | The generator's data decide the numbers, and the case file's constants did not survive a real forecast |
+| The rolling origin runs from five origins, not six | The twelve rows hold five one-week steps in 2025; a sixth needs a week the table does not print |
+| Both transcripts sit in `extras/` as STUDENT files, the scorecards in `trainer/` | The fallback deck shows the [D] transcript to the room, so the room needs it; the scoring stays with the trainer |
+| The take-home holds out four weeks, as the spine says, where the row says three months | The spine is approved after the row and wins |
+| The notes run to just under 3,000 words, under the standard's 4,000 to 5,000 | The spine sets 2,000 to 3,000 for Friday and wins |
+| The class sets carry 15 items and the practice set 6, 9 of the 21 design items | The spine's "about 14" counts the class sets; the TA lab's practice set is listed apart |
+| S12 shows Diwali's 2026 week and stops; the house bot's misplacement is revealed in round three, at S28, S29 and the festival calendar card | The spine's L1 also places the 2026 copy, which would spend the tournament's round-three twist and the Veritasium vote before they run |
+| The decks open on the ticket, with no quote cover | Acceptance line 1: the first minute is a ticket, with no quote |
+| The plan's 2.6 percent cushion is read from the same thirteen weeks it is scored on | Every forecast is compared at its own 0.82 point on those weeks, so the tuning is equal; the 2025 festival is the check that shares no weeks |
+| The horizon is ten weeks, from the last week of data to the week of 30 November, where earlier drafts used the plan's eight weeks | FPP3 sets the test against "the maximum forecast horizon required"; the interviewer's read caught the confusion |
+| The scorecard keeps the spine's seven criteria and folds technical soundness into what a 2 requires | The spine fixes seven criteria (Aced, T2); the interviewer asked for an eighth |
+| Flipkart's real 2026 sale date, 9 October, stays off learner pages | The synthetic calendar puts the sale in the third and second weeks before Diwali's week; printing the real date beside it contradicts the case |
+| The explorer's Friday scenes, on branch `w04-explorer`, still carry the case file's old constants | Coordination: the report names every Friday number the scenes should show, by facts id |
+
+## Which cold-read findings were left as they are, and why?
+
+| Finding | Why it stays |
+|---|---|
+| Read 1, 6: S18's option d names the tie | Finance's rule and festival-aligned are the same arithmetic on these weeks, so listing them as one option keeps the vote to four honest choices; the tie says nothing about which rule wins |
+| Read 1, 7: why the window opens on 12 October | The ticket sets the window and gives no reason; inventing one would add a case fact the spine does not hold |
+| Read 1, 77: no worked rolling origin in the notes | The notes sit at their 3,000-word ceiling; fallback S6 to S9 work five origins by hand, and the notes say what rolling does and why the morning used one origin |
+| Read 1, 81: the explorer's path does not open on this branch | The explorer lives on branch `w04-explorer`; the path is right once that branch merges, and the report lists the numbers its Friday scenes need |
+| Read 1, 82: drift, fit and quantile missing from the glossary, which sits last | Drift and fit are defined where they first appear and the notes never use "quantile"; the standard places the glossary at the end, and the word ceiling holds |
+| Read 1, 87: the fallback shows the take-home's numbers | The fallback runs only when the faculty block cannot; the take-home's work is the notebook and the paragraph, which the fallback does not supply, and the brief says so |
+| Read 2, 17: the handoff line judges new models on the same thirteen weeks | The line is the spine's, said as written; S10's table adds the caution beside it |
+| Read 2, 22: no rolling-origin results are quoted | The vendor's file holds forecasts from one origin, so the race with it stays on one hold-out; rolling is taught as the next test, worked by hand in the fallback |
+| Read 2, 25: routing, backlog, day-level planning and new hires' pace | The case's data hold weekly shipments and shifts only; overtime, which the data do hold, is answered with its shares |
+| Read 2, 37 and 41: the real 9 October sale date | It contradicts the synthetic calendar; the moving sale is answered as a hypothetical in the staffing note and the transcripts |
+| Read 2, 39: DoPT's own order is not linked | DoPT's site refused the connection when the calendar card was built; the staffnews.in copies stay until it can be reached |
+| Read 2 again, 18: error by weeks ahead is not quoted | The answer already carries more figures than a screen wants, and the read's own recount shows the order holds across the weeks the plan books; reasons 14, 19 and 41 sit with Read 2's 17, 22 and 37 above |
+| Read 2 again, 20: a short week that loses the order | The ticket sets a late shipment, still packed, as the assumed cost; a lost-order cost is a different case the data do not hold |
+| Read 2 again, 22: carry-over from a short week | The data are weekly shipments with no backlog field, and a week-by-week plan is the class's model |
+| Read 2 again, 24: the trigger names no lever | The ticket gives no roster lead times, so which weeks can still move would be invented |
+| Read 2 again, 34: the M5 journal version | The copy opened and checked is the preprint, and it is cited as one |
+| Read 2 again, 35: the Canadian Business article's date | The archived page carries no date |
+| Read 2 again, 38 and 39: SIAM and DoPT links in the notes | The notes sit at their word ceiling; S9's notes link SIAM and the festival calendar card links the DoPT lists |
+| Read 2 again, 45: a second validation route for the guesstimate | No maker's yearly volume and share were verified in this session, and an unverified figure would break the anchor rule |
