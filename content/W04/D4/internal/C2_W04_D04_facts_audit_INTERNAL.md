@@ -1276,146 +1276,146 @@ Numbers traced: 1948. Numbers with no home: 0.
 | 53,089 | slides/C2_W04_D04_half1_STUDENT.md | 366 | members_total |
 | 38 | slides/C2_W04_D04_half1_STUDENT.md | 366 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
 | 53,089 | slides/C2_W04_D04_half1_STUDENT.md | 377 | members_total |
-| 38.5 | slides/C2_W04_D04_half1_STUDENT.md | 431 | tri_jul_m2 |
-| 0.3 | slides/C2_W04_D04_half1_STUDENT.md | 431 | m1_aug, oct_dashboard_estimate, oct_dashboard_low and more |
-| 58 | slides/C2_W04_D04_half1_STUDENT.md | 431 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 49 | slides/C2_W04_D04_half1_STUDENT.md | 431 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
-| 13,000 | slides/C2_W04_D04_half1_STUDENT.md | 431 | cohort_size_aug, aug_cohort_outside_dashboard |
-| 38 | slides/C2_W04_D04_half1_STUDENT.md | 448 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 38.2 | slides/C2_W04_D04_half1_STUDENT.md | 462 | dashboard_jun |
-| 38.0 | slides/C2_W04_D04_half1_STUDENT.md | 462 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 37.9 | slides/C2_W04_D04_half1_STUDENT.md | 462 | dashboard_aug |
-| 37.8 | slides/C2_W04_D04_half1_STUDENT.md | 462 | tri_jan_m5, tri_mar_m5, dashboard_sep |
-| 38 | slides/C2_W04_D04_half1_STUDENT.md | 472 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 38.5 | slides/C2_W04_D04_half1_STUDENT.md | 472 | tri_jul_m2 |
-| 38 | slides/C2_W04_D04_half1_STUDENT.md | 482 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 38 | slides/C2_W04_D04_half1_STUDENT.md | 485 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 38 | slides/C2_W04_D04_half1_STUDENT.md | 487 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 27.4 | slides/C2_W04_D04_half1_STUDENT.md | 489 | Th3 |
-| 6.3 | slides/C2_W04_D04_half1_STUDENT.md | 489 | Th3 |
-| 4.13 | slides/C2_W04_D04_half1_STUDENT.md | 489 | Th3 |
-| 3.87 | slides/C2_W04_D04_half1_STUDENT.md | 489 | Th3 |
-| 30 | slides/C2_W04_D04_half1_STUDENT.md | 489 | weekly_cohort_2026-08-03_w2, toy_weaned, Th4 and more |
-| 2026 | slides/C2_W04_D04_half1_STUDENT.md | 489 | friday_weeks, friday_window, friday_diwali and more |
-| 12 | slides/C2_W04_D04_half1_STUDENT.md | 489 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
-| 2026 | slides/C2_W04_D04_half1_STUDENT.md | 489 | friday_weeks, friday_window, friday_diwali and more |
-| 6.3 | slides/C2_W04_D04_half1_STUDENT.md | 489 | Th3 |
-| 38 | slides/C2_W04_D04_half1_STUDENT.md | 502 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 38 | slides/C2_W04_D04_half1_STUDENT.md | 505 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 13,218 | slides/C2_W04_D04_half1_STUDENT.md | 518 | dashboard_sep_ordered |
-| 35,000 | slides/C2_W04_D04_half1_STUDENT.md | 518 | dashboard_sep_counted |
-| 38 | slides/C2_W04_D04_half1_STUDENT.md | 519 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 4,854 | slides/C2_W04_D04_half1_STUDENT.md | 523 | cohort_size_jan |
-| 36.9 | slides/C2_W04_D04_half1_STUDENT.md | 523 | tri_jan_m8, everyone_sep_unweighted_mean |
-| 5,055 | slides/C2_W04_D04_half1_STUDENT.md | 524 | cohort_size_feb |
-| 37.1 | slides/C2_W04_D04_half1_STUDENT.md | 524 | tri_feb_m7 |
-| 5,449 | slides/C2_W04_D04_half1_STUDENT.md | 525 | cohort_size_mar |
-| 37.5 | slides/C2_W04_D04_half1_STUDENT.md | 525 | tri_jan_m6, tri_mar_m6, toy_dabba_club |
-| 4,859 | slides/C2_W04_D04_half1_STUDENT.md | 526 | cohort_size_apr |
-| 37.7 | slides/C2_W04_D04_half1_STUDENT.md | 526 | tri_feb_m5, tri_apr_m5 |
-| 4,905 | slides/C2_W04_D04_half1_STUDENT.md | 527 | cohort_size_may |
-| 38.1 | slides/C2_W04_D04_half1_STUDENT.md | 527 | tri_jan_m4, tri_may_m4, weekly_cohort_2026-08-10_w2 |
-| 4,821 | slides/C2_W04_D04_half1_STUDENT.md | 528 | cohort_size_jun |
-| 38.6 | slides/C2_W04_D04_half1_STUDENT.md | 528 | tri_feb_m2, tri_mar_m2, tri_apr_m2 and more |
-| 5,057 | slides/C2_W04_D04_half1_STUDENT.md | 529 | cohort_size_jul |
-| 38.5 | slides/C2_W04_D04_half1_STUDENT.md | 529 | tri_jul_m2 |
-| 13,218 | slides/C2_W04_D04_half1_STUDENT.md | 531 | dashboard_sep_ordered |
-| 13,218 | slides/C2_W04_D04_half1_STUDENT.md | 531 | dashboard_sep_ordered |
-| 35,000 | slides/C2_W04_D04_half1_STUDENT.md | 531 | dashboard_sep_counted |
-| 37.8 | slides/C2_W04_D04_half1_STUDENT.md | 531 | tri_jan_m5, tri_mar_m5, dashboard_sep |
-| 13,000 | slides/C2_W04_D04_half1_STUDENT.md | 544 | cohort_size_aug, aug_cohort_outside_dashboard |
-| 38 | slides/C2_W04_D04_half1_STUDENT.md | 546 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 36 | slides/C2_W04_D04_half1_STUDENT.md | 548 | everyone_sep, toy_ai_cohorts, kalpa.app_orderers and more |
-| 31 | slides/C2_W04_D04_half1_STUDENT.md | 550 | m1_aug, weekly_cohort_2026-09-07_w2, kalpa.sessions_skip_search and more |
-| 49 | slides/C2_W04_D04_half1_STUDENT.md | 552 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
-| 36 | slides/C2_W04_D04_half1_STUDENT.md | 561 | everyone_sep, toy_ai_cohorts, kalpa.app_orderers and more |
-| 17,248 | slides/C2_W04_D04_half1_STUDENT.md | 566 | everyone_sep_ordered |
-| 48,000 | slides/C2_W04_D04_half1_STUDENT.md | 566 | everyone_sep_counted |
-| 35.9 | slides/C2_W04_D04_half1_STUDENT.md | 566 | everyone_sep |
-| 4,973 | slides/C2_W04_D04_half1_STUDENT.md | 566 | aug_organic_members |
-| 49 | slides/C2_W04_D04_half1_STUDENT.md | 566 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
-| 8,027 | slides/C2_W04_D04_half1_STUDENT.md | 566 | aug_sale_members |
-| 31 | slides/C2_W04_D04_half1_STUDENT.md | 566 | m1_aug, weekly_cohort_2026-09-07_w2, kalpa.sessions_skip_search and more |
-| 20.5 | slides/C2_W04_D04_half1_STUDENT.md | 566 | oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 |
-| 33 | slides/C2_W04_D04_half1_STUDENT.md | 566 | oct_dashboard_estimate, weekly_cohort_2026-08-24_w1, toy_kaapi_funnel and more |
-| 32 | slides/C2_W04_D04_half1_STUDENT.md | 566 | oct_dashboard_low, kalpa.cohort_sizes, kalpa.active_by_cohort and more |
-| 34 | slides/C2_W04_D04_half1_STUDENT.md | 566 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 17 | slides/C2_W04_D04_half1_STUDENT.md | 566 | days_after_release, weekly_cohort_2026-08-03_w4, weekly_cohort_2026-08-10_w3 and more |
-| 24 | slides/C2_W04_D04_half1_STUDENT.md | 566 | toy_ai_cohorts, Th2, kalpa.checkout_per_member_sep and more |
-| 38 | slides/C2_W04_D04_half1_STUDENT.md | 578 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 68 | slides/C2_W04_D04_half1_STUDENT.md | 640 | sep_step_session_open_to_search |
-| 118 | slides/C2_W04_D04_half1_STUDENT.md | 640 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
-| 34 | slides/C2_W04_D04_half1_STUDENT.md | 640 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 80 | slides/C2_W04_D04_half1_STUDENT.md | 640 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 64 | slides/C2_W04_D04_half1_STUDENT.md | 640 | sep_step_session_checkout_start_to_order_placed, kalpa.cart_to_checkout, kalpa_cart_to_checkout_window |
-| 100 | slides/C2_W04_D04_half1_STUDENT.md | 642 | toy_blend, toy_funnel, toy_weaned and more |
-| 10 | slides/C2_W04_D04_half1_STUDENT.md | 670 | toy_two_batches, toy_funnel, kalpa.active_by_cohort and more |
-| 50 | slides/C2_W04_D04_half1_STUDENT.md | 670 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
-| 20 | slides/C2_W04_D04_half1_STUDENT.md | 670 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
-| 10 | slides/C2_W04_D04_half1_STUDENT.md | 670 | toy_two_batches, toy_funnel, kalpa.active_by_cohort and more |
-| 50 | slides/C2_W04_D04_half1_STUDENT.md | 670 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
-| 10 | slides/C2_W04_D04_half1_STUDENT.md | 670 | toy_two_batches, toy_funnel, kalpa.active_by_cohort and more |
-| 20 | slides/C2_W04_D04_half1_STUDENT.md | 670 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
-| 118 | slides/C2_W04_D04_half1_STUDENT.md | 680 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
+| 38.5 | slides/C2_W04_D04_half1_STUDENT.md | 432 | tri_jul_m2 |
+| 0.3 | slides/C2_W04_D04_half1_STUDENT.md | 432 | m1_aug, oct_dashboard_estimate, oct_dashboard_low and more |
+| 58 | slides/C2_W04_D04_half1_STUDENT.md | 432 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 49 | slides/C2_W04_D04_half1_STUDENT.md | 432 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 13,000 | slides/C2_W04_D04_half1_STUDENT.md | 432 | cohort_size_aug, aug_cohort_outside_dashboard |
+| 38 | slides/C2_W04_D04_half1_STUDENT.md | 449 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 38.2 | slides/C2_W04_D04_half1_STUDENT.md | 463 | dashboard_jun |
+| 38.0 | slides/C2_W04_D04_half1_STUDENT.md | 463 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 37.9 | slides/C2_W04_D04_half1_STUDENT.md | 463 | dashboard_aug |
+| 37.8 | slides/C2_W04_D04_half1_STUDENT.md | 463 | tri_jan_m5, tri_mar_m5, dashboard_sep |
+| 38 | slides/C2_W04_D04_half1_STUDENT.md | 473 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 38.5 | slides/C2_W04_D04_half1_STUDENT.md | 473 | tri_jul_m2 |
+| 38 | slides/C2_W04_D04_half1_STUDENT.md | 483 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 38 | slides/C2_W04_D04_half1_STUDENT.md | 486 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 38 | slides/C2_W04_D04_half1_STUDENT.md | 488 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 27.4 | slides/C2_W04_D04_half1_STUDENT.md | 490 | Th3 |
+| 6.3 | slides/C2_W04_D04_half1_STUDENT.md | 490 | Th3 |
+| 4.13 | slides/C2_W04_D04_half1_STUDENT.md | 490 | Th3 |
+| 3.87 | slides/C2_W04_D04_half1_STUDENT.md | 490 | Th3 |
+| 30 | slides/C2_W04_D04_half1_STUDENT.md | 490 | weekly_cohort_2026-08-03_w2, toy_weaned, Th4 and more |
+| 2026 | slides/C2_W04_D04_half1_STUDENT.md | 490 | friday_weeks, friday_window, friday_diwali and more |
+| 12 | slides/C2_W04_D04_half1_STUDENT.md | 490 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 2026 | slides/C2_W04_D04_half1_STUDENT.md | 490 | friday_weeks, friday_window, friday_diwali and more |
+| 6.3 | slides/C2_W04_D04_half1_STUDENT.md | 490 | Th3 |
+| 38 | slides/C2_W04_D04_half1_STUDENT.md | 503 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 38 | slides/C2_W04_D04_half1_STUDENT.md | 506 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 13,218 | slides/C2_W04_D04_half1_STUDENT.md | 519 | dashboard_sep_ordered |
+| 35,000 | slides/C2_W04_D04_half1_STUDENT.md | 519 | dashboard_sep_counted |
+| 38 | slides/C2_W04_D04_half1_STUDENT.md | 520 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 4,854 | slides/C2_W04_D04_half1_STUDENT.md | 524 | cohort_size_jan |
+| 36.9 | slides/C2_W04_D04_half1_STUDENT.md | 524 | tri_jan_m8, everyone_sep_unweighted_mean |
+| 5,055 | slides/C2_W04_D04_half1_STUDENT.md | 525 | cohort_size_feb |
+| 37.1 | slides/C2_W04_D04_half1_STUDENT.md | 525 | tri_feb_m7 |
+| 5,449 | slides/C2_W04_D04_half1_STUDENT.md | 526 | cohort_size_mar |
+| 37.5 | slides/C2_W04_D04_half1_STUDENT.md | 526 | tri_jan_m6, tri_mar_m6, toy_dabba_club |
+| 4,859 | slides/C2_W04_D04_half1_STUDENT.md | 527 | cohort_size_apr |
+| 37.7 | slides/C2_W04_D04_half1_STUDENT.md | 527 | tri_feb_m5, tri_apr_m5 |
+| 4,905 | slides/C2_W04_D04_half1_STUDENT.md | 528 | cohort_size_may |
+| 38.1 | slides/C2_W04_D04_half1_STUDENT.md | 528 | tri_jan_m4, tri_may_m4, weekly_cohort_2026-08-10_w2 |
+| 4,821 | slides/C2_W04_D04_half1_STUDENT.md | 529 | cohort_size_jun |
+| 38.6 | slides/C2_W04_D04_half1_STUDENT.md | 529 | tri_feb_m2, tri_mar_m2, tri_apr_m2 and more |
+| 5,057 | slides/C2_W04_D04_half1_STUDENT.md | 530 | cohort_size_jul |
+| 38.5 | slides/C2_W04_D04_half1_STUDENT.md | 530 | tri_jul_m2 |
+| 13,218 | slides/C2_W04_D04_half1_STUDENT.md | 532 | dashboard_sep_ordered |
+| 13,218 | slides/C2_W04_D04_half1_STUDENT.md | 532 | dashboard_sep_ordered |
+| 35,000 | slides/C2_W04_D04_half1_STUDENT.md | 532 | dashboard_sep_counted |
+| 37.8 | slides/C2_W04_D04_half1_STUDENT.md | 532 | tri_jan_m5, tri_mar_m5, dashboard_sep |
+| 13,000 | slides/C2_W04_D04_half1_STUDENT.md | 545 | cohort_size_aug, aug_cohort_outside_dashboard |
+| 38 | slides/C2_W04_D04_half1_STUDENT.md | 547 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 36 | slides/C2_W04_D04_half1_STUDENT.md | 549 | everyone_sep, toy_ai_cohorts, kalpa.app_orderers and more |
+| 31 | slides/C2_W04_D04_half1_STUDENT.md | 551 | m1_aug, weekly_cohort_2026-09-07_w2, kalpa.sessions_skip_search and more |
+| 49 | slides/C2_W04_D04_half1_STUDENT.md | 553 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 36 | slides/C2_W04_D04_half1_STUDENT.md | 562 | everyone_sep, toy_ai_cohorts, kalpa.app_orderers and more |
+| 17,248 | slides/C2_W04_D04_half1_STUDENT.md | 567 | everyone_sep_ordered |
+| 48,000 | slides/C2_W04_D04_half1_STUDENT.md | 567 | everyone_sep_counted |
+| 35.9 | slides/C2_W04_D04_half1_STUDENT.md | 567 | everyone_sep |
+| 4,973 | slides/C2_W04_D04_half1_STUDENT.md | 567 | aug_organic_members |
+| 49 | slides/C2_W04_D04_half1_STUDENT.md | 567 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 8,027 | slides/C2_W04_D04_half1_STUDENT.md | 567 | aug_sale_members |
+| 31 | slides/C2_W04_D04_half1_STUDENT.md | 567 | m1_aug, weekly_cohort_2026-09-07_w2, kalpa.sessions_skip_search and more |
+| 20.5 | slides/C2_W04_D04_half1_STUDENT.md | 567 | oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 |
+| 33 | slides/C2_W04_D04_half1_STUDENT.md | 567 | oct_dashboard_estimate, weekly_cohort_2026-08-24_w1, toy_kaapi_funnel and more |
+| 32 | slides/C2_W04_D04_half1_STUDENT.md | 567 | oct_dashboard_low, kalpa.cohort_sizes, kalpa.active_by_cohort and more |
+| 34 | slides/C2_W04_D04_half1_STUDENT.md | 567 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 17 | slides/C2_W04_D04_half1_STUDENT.md | 567 | days_after_release, weekly_cohort_2026-08-03_w4, weekly_cohort_2026-08-10_w3 and more |
+| 24 | slides/C2_W04_D04_half1_STUDENT.md | 567 | toy_ai_cohorts, Th2, kalpa.checkout_per_member_sep and more |
+| 38 | slides/C2_W04_D04_half1_STUDENT.md | 579 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 68 | slides/C2_W04_D04_half1_STUDENT.md | 641 | sep_step_session_open_to_search |
+| 118 | slides/C2_W04_D04_half1_STUDENT.md | 641 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
+| 34 | slides/C2_W04_D04_half1_STUDENT.md | 641 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 80 | slides/C2_W04_D04_half1_STUDENT.md | 641 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 64 | slides/C2_W04_D04_half1_STUDENT.md | 641 | sep_step_session_checkout_start_to_order_placed, kalpa.cart_to_checkout, kalpa_cart_to_checkout_window |
+| 100 | slides/C2_W04_D04_half1_STUDENT.md | 643 | toy_blend, toy_funnel, toy_weaned and more |
+| 10 | slides/C2_W04_D04_half1_STUDENT.md | 671 | toy_two_batches, toy_funnel, kalpa.active_by_cohort and more |
+| 50 | slides/C2_W04_D04_half1_STUDENT.md | 671 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
+| 20 | slides/C2_W04_D04_half1_STUDENT.md | 671 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
+| 10 | slides/C2_W04_D04_half1_STUDENT.md | 671 | toy_two_batches, toy_funnel, kalpa.active_by_cohort and more |
+| 50 | slides/C2_W04_D04_half1_STUDENT.md | 671 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
+| 10 | slides/C2_W04_D04_half1_STUDENT.md | 671 | toy_two_batches, toy_funnel, kalpa.active_by_cohort and more |
+| 20 | slides/C2_W04_D04_half1_STUDENT.md | 671 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
 | 118 | slides/C2_W04_D04_half1_STUDENT.md | 681 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
-| 131,974 | slides/C2_W04_D04_half1_STUDENT.md | 685 | sep_sessions_search |
-| 155,729 | slides/C2_W04_D04_half1_STUDENT.md | 686 | sep_sessions_menu_view |
-| 38,932 | slides/C2_W04_D04_half1_STUDENT.md | 687 | sep_menu_sessions_no_search |
-| 89 | slides/C2_W04_D04_half1_STUDENT.md | 688 | search_to_menu_searched_sep |
-| 118 | slides/C2_W04_D04_half1_STUDENT.md | 690 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
-| 89 | slides/C2_W04_D04_half1_STUDENT.md | 690 | search_to_menu_searched_sep |
-| 34 | slides/C2_W04_D04_half1_STUDENT.md | 702 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 34 | slides/C2_W04_D04_half1_STUDENT.md | 704 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 100 | slides/C2_W04_D04_half1_STUDENT.md | 710 | toy_blend, toy_funnel, toy_weaned and more |
-| 61 | slides/C2_W04_D04_half1_STUDENT.md | 719 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
-| 34 | slides/C2_W04_D04_half1_STUDENT.md | 719 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 101 | slides/C2_W04_D04_half1_STUDENT.md | 724 | sep_step_member_search_to_menu_view |
-| 14 | slides/C2_W04_D04_half1_STUDENT.md | 734 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
-| 1 | slides/C2_W04_D04_half1_STUDENT.md | 735 | m1_jan, m1_feb, m1_mar and more |
-| 13 | slides/C2_W04_D04_half1_STUDENT.md | 735 | weekly_cohort_2026-08-10_w6, weekly_cohort_2026-08-24_w3, lost_17_days_rs_lakh and more |
+| 118 | slides/C2_W04_D04_half1_STUDENT.md | 682 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
+| 131,974 | slides/C2_W04_D04_half1_STUDENT.md | 686 | sep_sessions_search |
+| 155,729 | slides/C2_W04_D04_half1_STUDENT.md | 687 | sep_sessions_menu_view |
+| 38,932 | slides/C2_W04_D04_half1_STUDENT.md | 688 | sep_menu_sessions_no_search |
+| 89 | slides/C2_W04_D04_half1_STUDENT.md | 689 | search_to_menu_searched_sep |
+| 118 | slides/C2_W04_D04_half1_STUDENT.md | 691 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
+| 89 | slides/C2_W04_D04_half1_STUDENT.md | 691 | search_to_menu_searched_sep |
+| 34 | slides/C2_W04_D04_half1_STUDENT.md | 703 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 34 | slides/C2_W04_D04_half1_STUDENT.md | 705 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 100 | slides/C2_W04_D04_half1_STUDENT.md | 711 | toy_blend, toy_funnel, toy_weaned and more |
+| 61 | slides/C2_W04_D04_half1_STUDENT.md | 720 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
+| 34 | slides/C2_W04_D04_half1_STUDENT.md | 720 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 101 | slides/C2_W04_D04_half1_STUDENT.md | 725 | sep_step_member_search_to_menu_view |
 | 14 | slides/C2_W04_D04_half1_STUDENT.md | 735 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
-| 30 | slides/C2_W04_D04_half1_STUDENT.md | 735 | weekly_cohort_2026-08-03_w2, toy_weaned, Th4 and more |
-| 58 | slides/C2_W04_D04_half1_STUDENT.md | 757 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 44 | slides/C2_W04_D04_half1_STUDENT.md | 757 | atc_to_order_member_android_after, android_members_week_2026-09-28 |
-| 57 | slides/C2_W04_D04_half1_STUDENT.md | 757 | atc_to_order_member_ios_before, kalpa.lab_hand_counts, twelve_rows.everyone_Jul |
-| 52 | slides/C2_W04_D04_half1_STUDENT.md | 757 | m1_may, atc_to_order_nonmember_android_before, toy_blend and more |
-| 58 | slides/C2_W04_D04_half1_STUDENT.md | 757 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 47 | slides/C2_W04_D04_half1_STUDENT.md | 757 | shift_7_sep_after, toy_notes_blend |
-| 7 | slides/C2_W04_D04_half1_STUDENT.md | 757 | weekly_cohort_2026-08-17_w3, toy_weaned, Th5 and more |
-| 56 | slides/C2_W04_D04_half1_STUDENT.md | 757 | m1_feb, atc_to_order_member_ios_after, shift_21_sep_before and more |
-| 43 | slides/C2_W04_D04_half1_STUDENT.md | 757 | android_members_week_2026-09-21, shift_21_sep_after |
-| 21 | slides/C2_W04_D04_half1_STUDENT.md | 757 | friday_weeks, kalpa.lab_week, calendar.sep_21 |
-| 80 | slides/C2_W04_D04_half1_STUDENT.md | 773 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 72.5 | slides/C2_W04_D04_half1_STUDENT.md | 773 | android_members_checkout_to_order_before |
-| 55 | slides/C2_W04_D04_half1_STUDENT.md | 773 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
-| 80 | slides/C2_W04_D04_half1_STUDENT.md | 773 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 49 | slides/C2_W04_D04_half1_STUDENT.md | 789 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
-| 49 | slides/C2_W04_D04_half1_STUDENT.md | 789 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
-| 20 | slides/C2_W04_D04_half1_STUDENT.md | 789 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
-| 0.9 | slides/C2_W04_D04_half1_STUDENT.md | 791 | search_to_menu_searched_sep, sep_step_member_open_to_search, sep_step_member_add_to_cart_to_checkout_start and more |
-| 58 | slides/C2_W04_D04_half1_STUDENT.md | 792 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 47 | slides/C2_W04_D04_half1_STUDENT.md | 792 | shift_7_sep_after, toy_notes_blend |
-| 56 | slides/C2_W04_D04_half1_STUDENT.md | 792 | m1_feb, atc_to_order_member_ios_after, shift_21_sep_before and more |
-| 43 | slides/C2_W04_D04_half1_STUDENT.md | 792 | android_members_week_2026-09-21, shift_21_sep_after |
-| 34 | slides/C2_W04_D04_half1_STUDENT.md | 793 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 61 | slides/C2_W04_D04_half1_STUDENT.md | 793 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
-| 60 | slides/C2_W04_D04_half1_STUDENT.md | 794 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
-| 60 | slides/C2_W04_D04_half1_STUDENT.md | 796 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
-| 19 | slides/C2_W04_D04_half1_STUDENT.md | 796 | jan_drop_m1_to_m2_points, calendar.zomato_letter, calendar.kalpa_windows |
-| 2023 | slides/C2_W04_D04_half1_STUDENT.md | 796 | calendar.zomato_letter |
-| 12 | slides/C2_W04_D04_half1_STUDENT.md | 796 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
-| 2026 | slides/C2_W04_D04_half1_STUDENT.md | 796 | friday_weeks, friday_window, friday_diwali and more |
-| 22,841 | slides/C2_W04_D04_half1_STUDENT.md | 827 | android_member_carts_after |
-| 17 | slides/C2_W04_D04_half1_STUDENT.md | 827 | days_after_release, weekly_cohort_2026-08-03_w4, weekly_cohort_2026-08-10_w3 and more |
-| 58 | slides/C2_W04_D04_half1_STUDENT.md | 827 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 1,317 | slides/C2_W04_D04_half1_STUDENT.md | 827 | lost_orders_per_week |
-| 5.3 | slides/C2_W04_D04_half1_STUDENT.md | 827 | lost_value_per_week_rs |
-| 400 | slides/C2_W04_D04_half1_STUDENT.md | 827 | order_value_assumed_rs, toy_blend, toy_dabba_club and more |
-| 300 | slides/C2_W04_D04_half1_STUDENT.md | 827 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
-| 500 | slides/C2_W04_D04_half1_STUDENT.md | 827 | order_value_high_rs, toy_blend, toy_notes_blend |
-| 7 | slides/C2_W04_D04_half1_STUDENT.md | 829 | weekly_cohort_2026-08-17_w3, toy_weaned, Th5 and more |
-| 12 | slides/C2_W04_D04_half1_STUDENT.md | 829 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
-| 2026 | slides/C2_W04_D04_half1_STUDENT.md | 829 | friday_weeks, friday_window, friday_diwali and more |
+| 1 | slides/C2_W04_D04_half1_STUDENT.md | 736 | m1_jan, m1_feb, m1_mar and more |
+| 13 | slides/C2_W04_D04_half1_STUDENT.md | 736 | weekly_cohort_2026-08-10_w6, weekly_cohort_2026-08-24_w3, lost_17_days_rs_lakh and more |
+| 14 | slides/C2_W04_D04_half1_STUDENT.md | 736 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
+| 30 | slides/C2_W04_D04_half1_STUDENT.md | 736 | weekly_cohort_2026-08-03_w2, toy_weaned, Th4 and more |
+| 58 | slides/C2_W04_D04_half1_STUDENT.md | 758 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 44 | slides/C2_W04_D04_half1_STUDENT.md | 758 | atc_to_order_member_android_after, android_members_week_2026-09-28 |
+| 57 | slides/C2_W04_D04_half1_STUDENT.md | 758 | atc_to_order_member_ios_before, kalpa.lab_hand_counts, twelve_rows.everyone_Jul |
+| 52 | slides/C2_W04_D04_half1_STUDENT.md | 758 | m1_may, atc_to_order_nonmember_android_before, toy_blend and more |
+| 58 | slides/C2_W04_D04_half1_STUDENT.md | 758 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 47 | slides/C2_W04_D04_half1_STUDENT.md | 758 | shift_7_sep_after, toy_notes_blend |
+| 7 | slides/C2_W04_D04_half1_STUDENT.md | 758 | weekly_cohort_2026-08-17_w3, toy_weaned, Th5 and more |
+| 56 | slides/C2_W04_D04_half1_STUDENT.md | 758 | m1_feb, atc_to_order_member_ios_after, shift_21_sep_before and more |
+| 43 | slides/C2_W04_D04_half1_STUDENT.md | 758 | android_members_week_2026-09-21, shift_21_sep_after |
+| 21 | slides/C2_W04_D04_half1_STUDENT.md | 758 | friday_weeks, kalpa.lab_week, calendar.sep_21 |
+| 80 | slides/C2_W04_D04_half1_STUDENT.md | 774 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 72.5 | slides/C2_W04_D04_half1_STUDENT.md | 774 | android_members_checkout_to_order_before |
+| 55 | slides/C2_W04_D04_half1_STUDENT.md | 774 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 80 | slides/C2_W04_D04_half1_STUDENT.md | 774 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 49 | slides/C2_W04_D04_half1_STUDENT.md | 790 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 49 | slides/C2_W04_D04_half1_STUDENT.md | 790 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 20 | slides/C2_W04_D04_half1_STUDENT.md | 790 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
+| 0.9 | slides/C2_W04_D04_half1_STUDENT.md | 792 | search_to_menu_searched_sep, sep_step_member_open_to_search, sep_step_member_add_to_cart_to_checkout_start and more |
+| 58 | slides/C2_W04_D04_half1_STUDENT.md | 793 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 47 | slides/C2_W04_D04_half1_STUDENT.md | 793 | shift_7_sep_after, toy_notes_blend |
+| 56 | slides/C2_W04_D04_half1_STUDENT.md | 793 | m1_feb, atc_to_order_member_ios_after, shift_21_sep_before and more |
+| 43 | slides/C2_W04_D04_half1_STUDENT.md | 793 | android_members_week_2026-09-21, shift_21_sep_after |
+| 34 | slides/C2_W04_D04_half1_STUDENT.md | 794 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 61 | slides/C2_W04_D04_half1_STUDENT.md | 794 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
+| 60 | slides/C2_W04_D04_half1_STUDENT.md | 795 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
+| 60 | slides/C2_W04_D04_half1_STUDENT.md | 797 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
+| 19 | slides/C2_W04_D04_half1_STUDENT.md | 797 | jan_drop_m1_to_m2_points, calendar.zomato_letter, calendar.kalpa_windows |
+| 2023 | slides/C2_W04_D04_half1_STUDENT.md | 797 | calendar.zomato_letter |
+| 12 | slides/C2_W04_D04_half1_STUDENT.md | 797 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 2026 | slides/C2_W04_D04_half1_STUDENT.md | 797 | friday_weeks, friday_window, friday_diwali and more |
+| 22,841 | slides/C2_W04_D04_half1_STUDENT.md | 828 | android_member_carts_after |
+| 17 | slides/C2_W04_D04_half1_STUDENT.md | 828 | days_after_release, weekly_cohort_2026-08-03_w4, weekly_cohort_2026-08-10_w3 and more |
+| 58 | slides/C2_W04_D04_half1_STUDENT.md | 828 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 1,317 | slides/C2_W04_D04_half1_STUDENT.md | 828 | lost_orders_per_week |
+| 5.3 | slides/C2_W04_D04_half1_STUDENT.md | 828 | lost_value_per_week_rs |
+| 400 | slides/C2_W04_D04_half1_STUDENT.md | 828 | order_value_assumed_rs, toy_blend, toy_dabba_club and more |
+| 300 | slides/C2_W04_D04_half1_STUDENT.md | 828 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
+| 500 | slides/C2_W04_D04_half1_STUDENT.md | 828 | order_value_high_rs, toy_blend, toy_notes_blend |
+| 7 | slides/C2_W04_D04_half1_STUDENT.md | 830 | weekly_cohort_2026-08-17_w3, toy_weaned, Th5 and more |
+| 12 | slides/C2_W04_D04_half1_STUDENT.md | 830 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 2026 | slides/C2_W04_D04_half1_STUDENT.md | 830 | friday_weeks, friday_window, friday_diwali and more |
 | 38 | slides/C2_W04_D04_half2_STUDENT.md | 8 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
 | 80 | slides/C2_W04_D04_half2_STUDENT.md | 49 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
 | 14 | slides/C2_W04_D04_half2_STUDENT.md | 49 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |

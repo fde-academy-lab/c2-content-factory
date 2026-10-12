@@ -399,9 +399,9 @@ Transition: the code that builds the table.
 *Once age is computed, one pivot_table builds the table. After month one, which way does each row run?*
 
 ```python
-to_n = lambda s: s.str[:4].astype(int) * 12 + s.str[5:].astype(int)
-mm["age"] = to_n(mm["month"]) - to_n(mm["cohort_month"])   # month zero is the joining month
-mm["active"] = mm["orders"] > 0
+month_n = mm["month"].str[:4].astype(int) * 12 + mm["month"].str[5:].astype(int)
+cohort_n = mm["cohort_month"].str[:4].astype(int) * 12 + mm["cohort_month"].str[5:].astype(int)
+mm["age"] = month_n - cohort_n          # month zero is the joining month
 tri = mm[mm["age"] >= 1].pivot_table(index="cohort_month", columns="age",
                                      values="active", aggfunc="mean")
 ```
@@ -415,9 +415,10 @@ c) Down: a big step after month one, then a slow slide
 d) Up, then down
 
 ```notes
-LIVE, 5 minutes. Read the code a line at a time: age as the gap in months, active as at least one
-order, one pivot_table with cohorts on the rows and ages on the columns; each cell is a mean of
-True and False, so it is a share. Vote before the cell runs.
+LIVE, 5 minutes. Read the code a line at a time: each year-month as one count of months, age as
+the gap between the two, then one pivot_table with cohorts on the rows and ages on the columns;
+active (at least one order) was set when the table loaded, and each cell is a mean of True and
+False, so it is a share. Vote before the cell runs.
 Transition: the table.
 ```
 

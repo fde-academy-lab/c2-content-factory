@@ -151,7 +151,7 @@ def nb01():
         check("every card cell is the member's real month in member_months",
               len(same) == len(long) and (same["ordered_card"] == same["ordered_data"]).all())
         shown = by_age["sum"].astype("Int64").astype(str) + " of " + by_age["count"].astype("Int64").astype(str)
-        shown.where(by_age["count"].notna(), "").rename(columns=lambda k: f"month {k}")
+        shown.where(by_age["count"].notna(), "").rename(columns={k: f"month {k}" for k in shown.columns})
         '''),
         md('''
         **What happened.** The answer is a. The May members kept 3 of 4 in month one, the June members
@@ -173,11 +173,13 @@ def nb01():
         '''),
         code('''
         # Each reporting month counted two ways: from month two on (the dashboard), and everyone.
-        def way(month, from_age):
-            sub = long[(long["month"] == month) & (long["age"] >= from_age)]
-            return int(sub["ordered"].sum()), len(sub)
-        pd.DataFrame({m: {"dashboard, month two on": "%d of %d" % way(m, 2),
-                          "everyone who joined before": "%d of %d" % way(m, 1)} for m in ["jul", "aug", "sep"]})
+        ways = {}
+        for m in ["jul", "aug", "sep"]:
+            dash = long[(long["month"] == m) & (long["age"] >= 2)]
+            every = long[(long["month"] == m) & (long["age"] >= 1)]
+            ways[m] = {"dashboard, month two on": f'{dash["ordered"].sum()} of {len(dash)}',
+                       "everyone who joined before": f'{every["ordered"].sum()} of {len(every)}'}
+        pd.DataFrame(ways)
         '''),
         code('''
         # The card drawn: dark when she ordered, ringed when the dashboard counts her that month.
@@ -191,8 +193,9 @@ def nb01():
         ax.set_yticks([-i for i in range(len(twelve))],
                       [f"{m} {ch}" for m, ch in zip(twelve["signup_month"], twelve["signup_channel"])])
         ax.set_title("Dark: ordered. Ringed: inside the dashboard's count"); plt.show()
-        check("the dashboard's way reads 2 of 7 in August and in September", way("aug", 2) == way("sep", 2) == (2, 7))
-        check("everyone who joined before September: 3 of 12 ordered", way("sep", 1) == (3, 12))
+        check("the dashboard's way reads 2 of 7 in August and in September",
+              ways["aug"]["dashboard, month two on"] == ways["sep"]["dashboard, month two on"] == "2 of 7")
+        check("everyone who joined before September: 3 of 12 ordered", ways["sep"]["everyone who joined before"] == "3 of 12")
         '''),
         md('''
         **What happened.** The answer is b. Counted the dashboard's way, 2 of 7 members ordered in
@@ -211,19 +214,21 @@ def nb01():
         # The blend as a size-weighted average: a big young batch holds it up while batch A falls.
         last = {"A": (50, 100)}
         now = {"A": (40, 100), "B": (210, 400)}
-        blend = lambda d: sum(c for c, _ in d.values()) / sum(n for _, n in d.values())
+        last_rate = sum(c for c, _ in last.values()) / sum(n for _, n in last.values())
+        now_rate = sum(c for c, _ in now.values()) / sum(n for _, n in now.values())
         weighted = sum(n * (c / n) for c, n in now.values()) / sum(n for _, n in now.values())
-        print(f"last month {blend(last):.0%}, this month {blend(now):.0%}, weighted average {weighted:.0%}")
+        print(f"last month {last_rate:.0%}, this month {now_rate:.0%}, weighted average {weighted:.0%}")
         fig, axes = plt.subplots(1, 2, figsize=(6.6, 3.0), sharey=True)
         for ax, (title, d) in zip(axes, [("last month", last), ("this month", now)]):
             bottom = 0
             for name, (c, n) in d.items():
                 ax.bar(0, c, bottom=bottom, color="#5B3FD6"); ax.bar(0, n - c, bottom=bottom + c, color="#EEEAFB")
                 ax.text(0.45, bottom + n / 2, f"{name}: {c} of {n}", va="center"); bottom += n
-            ax.set_title(f"{title}: {blend(d):.0%}"); ax.set_xlim(-0.5, 1.6); ax.set_xticks([])
+            ax.set_title(f"{title}: {bottom and sum(c for c, _ in d.values()) / bottom:.0%}")
+            ax.set_xlim(-0.5, 1.6); ax.set_xticks([])
         plt.show()
-        check("the blend holds at 50 percent while batch A falls", blend(last) == blend(now) == 0.5)
-        check("the blend equals the size-weighted average of the batch rates", abs(weighted - blend(now)) < 1e-12)
+        check("the blend holds at 50 percent while batch A falls", last_rate == now_rate == 0.5)
+        check("the blend equals the size-weighted average of the batch rates", abs(weighted - now_rate) < 1e-12)
         '''),
         md('''
         **What happened.** It holds at 50 percent: 250 of 500, while batch A fell from 50 to 40
@@ -282,9 +287,10 @@ def nb02():
         is month one. Two year-and-month strings become one count of months each, and the gap is the age.
         '''),
         code('''
-        # Months since joining, from the two year-month strings.
-        to_n = lambda s: s.str[:4].astype(int) * 12 + s.str[5:].astype(int)
-        mm["age"] = to_n(mm["month"]) - to_n(mm["cohort_month"])
+        # Months since joining: each year-month as year x 12 + month, then the gap between the two.
+        month_n = mm["month"].str[:4].astype(int) * 12 + mm["month"].str[5:].astype(int)
+        cohort_n = mm["cohort_month"].str[:4].astype(int) * 12 + mm["cohort_month"].str[5:].astype(int)
+        mm["age"] = month_n - cohort_n
         mm.head()
         '''),
         md('''
@@ -753,7 +759,9 @@ def nb04():
         ```python
         s = kev.pivot_table(index="session_id", columns="event_type", values="customer_id", aggfunc="size", fill_value=0).gt(0)
         s["day"] = kev.groupby("session_id")["event_ts"].min().dt.strftime("%Y-%m-%d")
-        s["stretch"] = s["day"].map(lambda d: "window" if d >= "2026-09-10" else "comparison" if d >= "2026-08-20" else "before")
+        s["stretch"] = "before"
+        s.loc[s["day"] >= "2026-08-20", "stretch"] = "comparison"
+        s.loc[s["day"] >= "2026-09-10", "stretch"] = "window"
         carts = s.groupby("stretch")[["add_to_cart", "checkout"]].sum()
         print(carts.assign(rate=carts["checkout"] / carts["add_to_cart"]))
         ```
