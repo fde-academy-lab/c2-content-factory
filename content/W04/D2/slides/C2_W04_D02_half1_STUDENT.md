@@ -7,7 +7,7 @@ Header: WEEK 4  ·  DAY 2  ·  UBER, HYDERABAD, AN ILLUSTRATIVE CASE
 ## S1. The ticket: one slide, five minutes, three objectors
 *What has the city head asked for, and which number will land first?*
 
-**Uber, Hyderabad, the driver app's peak-hour earnings guarantee, one day on.** Thursday's city review gets one slide, five minutes, and three people who each lose under it. Gross bookings are what riders paid; an active driver-week is one driver with a row that week.
+**Uber, Hyderabad, the driver app's peak-hour earnings guarantee, one day on.** Thursday's city review gets one slide, five minutes, and three people who each lose under the redesign. Gross bookings are what riders paid; an active driver-week is one driver with a row that week.
 
 | Six weeks each side | 20 Jul to 30 Aug | 31 Aug to 11 Oct |
 |---|---|---|
@@ -16,7 +16,7 @@ Header: WEEK 4  ·  DAY 2  ·  UBER, HYDERABAD, AN ILLUSTRATIVE CASE
 | Gross bookings per active driver-week | Rs 5,817 | Rs 5,861, up 0.8 percent |
 | Peak online hours | 118,000 | 146,300, up 24 percent |
 
-**Data.** Monday's `driver_weeks` (`peak_online_hours`, `peak_trips`, `peak_bookings_rs`, `topup_rs`) and `zone_weeks` (`peak_requests`, `median_wait_min`). **Afternoon ask.** Drivers online at the three-hour weekday evening peak for a median wait under five minutes, in fifteen minutes. **Caveats.** Each objection is partly right; no published figure checks the afternoon's answer.
+**Data.** Monday's `driver_weeks` (`peak_online_hours`, `peak_trips`, `peak_bookings_rs`, `topup_rs`) and `zone_weeks` (`peak_requests`, `median_wait_min`). **Afternoon ask.** Estimate, in fifteen minutes, how many drivers must be online at the three-hour weekday evening peak for a median wait under five minutes. **Caveats.** Each objection is partly right; no published figure checks the afternoon's answer.
 
 > Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
@@ -181,7 +181,7 @@ flowchart LR
     class P bad
 ```
 
-**The order is the point.** Put the claim first: a slide that opens on its evidence makes the reader guess the point, and a caveat hidden in the appendix hands the person it affects a reason to call the slide dishonest.
+**Put the claim first and keep the caveat in sight.** A slide that opens on its evidence makes the reader guess the point, and a caveat hidden in the appendix hands the person it affects a reason to call the slide dishonest.
 
 ```notes
 LIVE, 3 minutes. Build the board region by region: point at the anchor, then each part in order,
@@ -223,6 +223,7 @@ The **acceptance share** is requests a driver accepted over requests offered to 
 ```notes
 LIVE, 3 minutes. Each group writes one letter. Expect a split between a and b. The point of the
 vote is that a carries two true numbers and no claim, which is why the room reaches for it.
+Explorer scene T1 stays on slide A's nine numbers until every letter is in; nothing is unticked yet.
 Transition: the rebuild.
 ```
 
@@ -233,14 +234,15 @@ Transition: the rebuild.
 
 ![Slide A rebuilt, the four parts numbered](../whiteboards/C2_W04_D02_cleared_slide_STUDENT.png)
 
-**The answer is b.** Trips per online hour falling at a flat fare is bookings per online hour falling, Rs 314 to Rs 260: that is the chart. The 61 percent, the one number beside it, says where the top-up went. Option a is Monday's trap resold: online hours rose 24 percent while riders barely gained.
+**The answer is b.** At a flat fare, fewer trips per online hour means lower bookings per online hour, Rs 314 to Rs 260, and that fall is the chart. The 61 percent, the one number beside it, says where the top-up went. Option a is Monday's trap resold: online hours rose 24 percent while riders barely gained.
 
 ```notes
 LIVE, 5 minutes. This is the worked example of the guided exercise: rebuild it with the room
 mirroring, part by part. Point at 1, 2, 3, 4 in order: the chart names its denominator in its title,
 the caveat sits beside the evidence, and the action states the saving with the assumption behind it. The drop lands in the launch week: the
 highest after week, Rs 271, sits below the lowest before week, Rs 310, which is why the chart, not
-the bar pair, is the evidence.
+the bar pair, is the evidence. In explorer scene T1, untick the seven numbers that leave, one at a time,
+as each part is pointed at.
 Transition: two more slides, rebuilt by the groups.
 ```
 
@@ -326,9 +328,9 @@ Transition: the city does something the six did not.
 ---
 
 ## S14. Predict: why does the city's per-driver-week rise?
-*On the six drivers per driver-week fell 23 percent; on the city it rose 0.8 percent. Why?*
+*On the six drivers, rupees per driver-week fell 23 percent; city-wide, it rose 0.8 percent. Why?*
 
-**Before the city, an auto driver (invented).** Rs 1,800 on Monday from 20 rides in 9 hours, and Rs 1,800 on Tuesday from 18 rides in 12 hours: per day flat, per ride up from Rs 90 to Rs 100, per hour down from Rs 200 to Rs 150. The denominator picks the direction.
+**Before the city, an auto driver (invented).** The driver earns Rs 1,800 on Monday from 20 rides in 9 hours and Rs 1,800 on Tuesday from 18 rides in 12 hours, so the denominator picks the direction: per day is flat, per ride rises from Rs 90 to Rs 100 and per hour falls from Rs 200 to Rs 150.
 
 a) The 140 new drivers earned more than the rest
 
@@ -341,13 +343,14 @@ d) Fewer drivers sat idle after the launch
 ```notes
 LIVE, 2 minutes. Per driver-week means per active driver-week: one driver with a row that week.
 Each learner writes a letter. Expect votes on a, since new drivers are the obvious change.
+Explorer scene T2, the denominator picker, stays closed until every letter is written; it opens on S15.
 Transition: the reveal.
 ```
 
 ---
 
 ## S15. Answer: more hours a driver-week, less per hour
-*How can per driver-week rise while per hour falls?*
+*How can rupees per driver-week rise while rupees per hour fall?*
 
 ![Each read divided by its own before window](../whiteboards/C2_W04_D02_three_reads_STUDENT.png)
 
@@ -367,9 +370,9 @@ Transition: the trap in that amber line.
 
 **The plausible wrong answer.** "Bookings per driver-week rose from Rs 5,817 to Rs 5,861, so the guarantee is working; keep it as it is." Every rupee in that sentence is right, and it would keep the city paying for idle hours.
 
-**Why it is wrong.** Bookings rose 3.0 percent and active driver-weeks 2.2 percent (6,360 to 6,500), so the ratio rose 0.8 percent (1.030 / 1.022 = 1.008). The rise was bought with hours: 21 percent more online hours a driver-week for 17 percent less per hour. The 140 drivers who joined after the launch drove about one week each, at Rs 4,314 a driver-week, so they pulled the read down; the drivers there before the launch rose 1.4 percent.
+**Why it is wrong.** Bookings rose 3.0 percent and active driver-weeks 2.2 percent (6,360 to 6,500), so the ratio rose 0.8 percent (1.030 / 1.022 = 1.008). The rise was bought with hours: 21 percent more online hours a driver-week for 17 percent less per hour. The 140 drivers who joined after the launch drove about one week each, at Rs 4,314 a driver-week, so they pulled the read down; for the drivers there before the launch, it rose 1.4 percent.
 
-**The fix.** The slide names the denominator the scheme pays for, the peak online hour, and says it aloud.
+**The fix.** The slide names the denominator the scheme pays for, the peak online hour, and the presenter says it aloud.
 
 ```notes
 LIVE, 4 minutes. Write the split on the board: Rs per driver-week = Rs per hour x hours per
@@ -414,7 +417,7 @@ flowchart LR
     class N unknown
 ```
 
-**Chapter 1 adds** the claim (the scheme pays for idle hours) and its denominator (Rs 314 to Rs 260 per peak online hour). **Said plainly:** "An hour online used to bring in Rs 314 of fares and now brings in Rs 260, because more of those hours have no rider." **In the interview** [S], a staple asked everywhere in this programme's interview tags: present a recommendation to a non-technical stakeholder in two minutes, opening on that sentence.
+**Chapter 1 adds** the claim (the scheme pays for idle hours) and its denominator (Rs 314 to Rs 260 per peak online hour). **Said plainly:** "An hour online used to bring in Rs 314 of fares and now brings in Rs 260, because more of those hours have no rider." **In the interview** [S], this programme's tag for a staple asked everywhere: present a recommendation to a non-technical stakeholder in two minutes, opening on that sentence.
 
 ```notes
 LIVE, 2 minutes. Ask two learners to say the plain sentence aloud without the slide.
@@ -463,7 +466,7 @@ Transition: the true part of each objection.
 | Marketing | The hoarding promised a floor, and 140 drivers joined after it went up | The floor stays for drivers who accept; none of the 140 joiners is in the idle tail |
 | Finance | The monsoon ended inside the six weeks, and last year's weeks are not in the data | In the last three weeks requests were back at the before level and trips per hour still ran at 1.56 |
 
-**The answer is d.** A defence that sides with no one concedes each true part out loud and answers the rest from a line of evidence. Finance's row is the hardest: weekly requests fell four weeks running from 7 September, so the six-week rise of 1.8 percent hides a slide; the last three weeks answer it.
+**The answer is d.** A defence that sides with no one concedes each true part out loud and answers the rest from a line of evidence. Finance's row is the hardest: weekly requests fell four weeks running from 7 September, so the six-week rise of 1.8 percent hides that decline; the last three weeks answer it.
 
 ```notes
 LIVE, 5 minutes. One row at a time. Every number here is Monday's or is computed from Monday's
@@ -698,7 +701,7 @@ Transition: round two of the studio.
 
 **Each group keeps its threes and its rotation.** Each presenter now shows the slide rebuilt after round one, and answers each objection by naming the appendix page, from the drawer on S27, that holds the detail.
 
-**Three turns of seven minutes, rotating, then eight minutes to rebuild the slide** with what the objections showed.
+**The seats rotate through three turns of seven minutes, and then everyone has eight minutes to rebuild their slide** with what the objections showed.
 
 ```notes
 LIVE, 38 minutes. Three minutes to set up, 3 x 7 = 21 minutes of rounds, 8 minutes to rebuild,

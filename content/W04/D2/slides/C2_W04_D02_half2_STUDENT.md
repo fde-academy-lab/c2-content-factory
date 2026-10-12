@@ -43,7 +43,7 @@ Transition: the answer, and the rule behind it.
 ## S34. Answer: check in the same unit, period and definition
 *Why does only one of the four check the estimate directly, and what do you do when it does not exist?*
 
-**The answer is c, and nobody publishes it, so its slot reads "to be found".** a counts rider requests over six weeks in twelve zones: another unit, a longer period and a slice of the city. b counts sign-ups, another definition from drivers online at one moment. d is not wrong: it checks one link in the chain, a ratio the case's own data holds, and when the direct check does not exist that is the honest fallback the afternoon uses.
+**The answer is c, and nobody publishes it.** a counts rider requests over six weeks in twelve zones: another unit, a longer period and a slice of the city. b counts sign-ups, a different definition from drivers online at one moment. d is not wrong: it checks one link in the chain, a ratio the case's own data holds, and when the direct check does not exist, that is the honest fallback the afternoon uses.
 
 ```mermaid
 flowchart LR
@@ -110,10 +110,10 @@ flowchart LR
     class V lit
 ```
 
-**Interviewers listen to the structure and the stated assumptions.** Aced's guide to analyst interviews (an interview-preparation site) says the interviewer "isn't looking for a precise number" and is "evaluating your estimation framework", with each assumption stated so it can be challenged (checked 12 October 2026). A number that is wildly off still costs the answer, which is why step 4 exists.
+**Interviewers listen to the structure and the stated assumptions.** Aced's guide to analyst interviews (an interview-preparation site) says the interviewer "isn't looking for a precise number" and is "evaluating your estimation framework", with each assumption stated so it can be challenged (checked 12 October 2026). A number that is wildly off still costs you the answer, which is why step 4 exists.
 
 ```notes
-LIVE, 2 minutes. Point at each step. The step first estimates skip is the fourth.
+LIVE, 2 minutes. Point at each step. The step that first estimates skip is the fourth.
 Transition: the city head's question, clarified.
 ```
 
@@ -169,7 +169,7 @@ flowchart TD
     class R,T,X known
 ```
 
-**Drivers online = (trips to serve an hour / trips per online driver-hour) x buffer.** Each leaf is a guess said aloud with its range. Counting trips per 100 people, never riders, keeps a commuter who rides both ways in the count. A peak trip takes about 25 minutes from accepting to dropping, so a busy driver fits 2.4 an hour; the buffer covers the busiest half hour.
+**Drivers online = (trips to serve an hour / trips per online driver-hour) x buffer.** Each leaf is a guess said aloud with its range. Counting trips per 100 people, never riders, counts a commuter who rides both ways twice. A peak trip takes about 25 minutes from accepting to dropping, so a busy driver fits 2.4 an hour; the buffer covers the busiest half hour.
 
 ```notes
 LIVE, 6 minutes. Build the tree on the board with the room, leaf by leaf, asking for each value and
@@ -212,7 +212,8 @@ Transition: the swing chart.
 
 ```notes
 LIVE, 5 minutes. Trips per person is also the first number to replace: Uber's own dashboard holds
-peak trips an hour. The idle share is the assumption Monday showed moving.
+peak trips an hour. The idle share is the assumption Monday showed moving. Explorer scene T3 shows the
+same swing: drag the trips-per-person slider from end to end.
 Transition: the check.
 ```
 
@@ -242,7 +243,7 @@ Transition: the trap a hurried estimate falls into.
 ## S42. The trap: a day's trips divided by an hour's
 *What goes wrong when a day meets an hour?*
 
-**The plausible wrong answer.** "1 crore people, 1 trip per 100 people, so 1 lakh trips; a driver does 2.4 trips an hour; so about 41,700 drivers." A city head who takes that to the review asks for incentives for about seven times the drivers the chain says.
+**The plausible wrong answer.** "1 crore people, 1 trip per 100 people, so 1 lakh trips; a driver does 2.4 trips an hour; so about 41,700 drivers." A city head who takes that to the review asks for incentives for about seven times the drivers the chain says are needed.
 
 **Why it is wrong.** A day's trips were divided by an hour's trips per driver, a period mismatch, and the idle share and the evening window were skipped. **The check:** write the unit beside every factor. **The fix:** bring the day's trips into the evening window's hour before dividing.
 
@@ -257,9 +258,9 @@ Transition: UPI, in pairs.
 ## S43. UPI in pairs: seven minutes on the clock
 *How many UPI payments happen in India on an average day?*
 
-**The drill.** In pairs, seven minutes, all four steps on one sheet. Clarify volume or value (volume: the count of payments). Map active users x payments per user a day, and say how many of those go to shops and how many to people, so the payments a day are believable.
+**The drill.** Work in pairs for seven minutes, with all four steps on one sheet. Clarify volume or value (volume: the count of payments). Map active users x payments per user a day, and say how many of those go to shops and how many to people, so the payments a day are believable.
 
-**What the scorer checks:** scope clarified first, every assumption written with a range, a range given, and a sanity check in the right unit.
+**What the scorer checks:** scope clarified first, every assumption written with a range, the answer given as a range, and a sanity check in the right unit.
 
 ```notes
 LIVE, 12 minutes. Three minutes to set up, seven on the clock, two to swap sheets with the next
@@ -334,7 +335,7 @@ flowchart LR
 **Tuesday's node now carries** the slide (Rs 314 to Rs 260 per online hour, defended in four moves, one appendix page per role) and the estimate (about 5,000 to 5,700 drivers once checked; 2,900 to 8,600 by how often people ride). **In the interview** [S]: estimate a number from nothing, aloud, and check it. The structure, the stated assumptions and the check carry most of the score.
 
 ```notes
-LIVE, 1 minute, taken from the traps slide's seven. Then the break.
+LIVE, 1 minute, which with S45's 6 makes the seven the traps were given. Then the break.
 Transition: break, 10 minutes, then the written case.
 ```
 
@@ -376,7 +377,7 @@ Transition: the forty minutes.
 ## S48. Forty minutes, on paper, alone
 *What are the rules for the written case?*
 
-**On one sheet, by hand.** No laptop and no phone, so the page is your own thinking. Write the page; then read it once as the finance partner would and fix the sentence they would attack.
+**On one sheet, by hand.** Laptops and phones stay closed, so the page is your own thinking. Write the page; then read it once as the finance partner would and fix the sentence they would attack.
 
 **At the end of the slot the page is handed in.** Three pages, chosen for one strong part each, come back at the gallery.
 
@@ -431,8 +432,8 @@ Transition: transcript 2.
 
 ```notes
 LIVE, 8 minutes. Hire-grade lines for the follow-ups: the case's hours with no trip (22 and 38
-percent) are looser than idle at a moment, and like for like its trips per hour give about 0.21
-before the launch, which held the wait at 4.8 minutes and gives about 5,000; a four-hour window
+percent) are looser than idle at a moment, and like for like, its trips per hour before the launch,
+when the wait held at 4.8 minutes, give an idle share of about 0.21 and about 5,000 drivers; a four-hour window
 leaves the busiest half hour where it was, so the buffer rises to about 1.53 and the answer stays
 about 5,700; about 2,900 to 8,600 with everything else held, driven by trips per person.
 Transition: the AI-company variant.
@@ -445,7 +446,7 @@ Transition: the AI-company variant.
 
 **The setup, invented for this class.** A coding assistant's sales deck quotes "acceptance rate 32 percent", the share of suggestions developers accept, even ones deleted soon after. The analyst proposes a new **north star**, the one number the team is judged on: characters of suggested code still in the file seven days after acceptance, per developer who saw a suggestion that week, with two **guardrails** that catch padding (retained characters per accepted character; edits per accepted suggestion).
 
-**The objection, partly right.** "Acceptance rate is what customers see." True, and a 2022 study of GitHub Copilot's users found acceptance tracks how productive developers feel. **The answer** keeps acceptance in the deck as a **leading input**, a number that moves first, and judges the team on code that survives only once a holdout of users shows it tracks seat renewals.
+**The objection, partly right.** "Acceptance rate is what customers see." True, and a 2022 study of GitHub Copilot's users found acceptance tracks how productive developers feel. **The answer** keeps acceptance in the deck as a **leading input**, a number that moves first, and switches the team's judgement to surviving code once a holdout of users shows it tracks seat renewals.
 
 ```notes
 LIVE, 6 minutes. Ask which of the morning's three objections this resembles. Expect marketing's:
@@ -539,6 +540,9 @@ Transition: where the day ends.
 
 ```notes
 LIVE, 5 minutes. Read the sentence once. Wednesday's pre-read ships tonight: the Instamart ticket's
-first lines and three terms, terms only.
+first lines and three terms, terms only. Then say the handoff line, as the day sheet has it: "You can
+now put a number in front of the people who lose under it and size one from nothing. Tomorrow's
+ticket is a counting problem: a strip that suggests what goes with what, and a click-through that
+fell when the strip began trusting counts. Read the three words tonight; we count them by hand first."
 Transition: close.
 ```
