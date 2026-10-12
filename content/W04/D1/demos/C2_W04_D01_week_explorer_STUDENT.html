@@ -282,15 +282,17 @@ var W4 = {
     /* toy weekly values, invented so the six-week averages are the case's 0.86 and 0.73, Rs 314 and Rs 260 */
     acceptWeekly: [0.87, 0.86, 0.86, 0.85, 0.86, 0.86, 0.80, 0.75, 0.72, 0.70, 0.70, 0.71],
     bookWeekly: [316, 313, 315, 312, 314, 314, 312, 306, 270, 245, 220, 207],
-    /* toy: how the same sixty dots behave under each choice of paid number; "hours" is the case at Rs 300 */
+    /* toy: how the same sixty dots behave under each choice of paid number; "hours" is the case at Rs 300, and its
+       acceptance 0.73 is the case's; the guardrails' lines are wait at or below the 4.8 minutes before the launch (case),
+       acceptance at or above 0.80 and top-up at or below Rs 40 a trip (toy) */
     pay: {
-      hours:  {label: "Online hours, the scheme as it ran", drive: 31, game: 10, idle: 19, off: 10, wait: 4.6, topupTrip: null, tilt: 14,
+      hours:  {label: "Online hours, the scheme as it ran", drive: 31, game: 10, idle: 19, off: 10, wait: 4.6, topupTrip: null, accept: 0.73, tilt: 14,
                rails: ["holds", "breaks", "breaks"]},
-      trips:  {label: "Completed trips", drive: 36, game: 7, idle: 6, off: 18, wait: 4.9, topupTrip: 36, tilt: 9,
+      trips:  {label: "Completed trips", drive: 36, game: 7, idle: 6, off: 18, wait: 4.9, topupTrip: 36, accept: 0.71, tilt: 9,
                rails: ["breaks", "breaks", "holds"]},
-      accept: {label: "Accepted share of requests", drive: 33, game: 8, idle: 9, off: 18, wait: 5.2, topupTrip: 51, tilt: 11,
+      accept: {label: "Accepted share of requests", drive: 33, game: 8, idle: 9, off: 18, wait: 5.2, topupTrip: 51, accept: 0.91, tilt: 11,
                rails: ["breaks", "holds", "breaks"]},
-      floor:  {label: "Completed trips with an acceptance floor", drive: 40, game: 2, idle: 6, off: 14, wait: 4.4, topupTrip: 33, tilt: 2,
+      floor:  {label: "Completed trips with an acceptance floor", drive: 40, game: 2, idle: 6, off: 14, wait: 4.4, topupTrip: 33, accept: 0.84, tilt: 2,
                rails: ["holds", "holds", "holds"]}
     }
   },
@@ -443,7 +445,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Sixty dots stand for the city's enrolled drivers, about twenty drivers each. Green dots drive between zones, amber dots sit online with no trip, grey rings are offline, and the three right-hand zones get few requests. The numbers at Rs 0 and Rs 300 are the case's; between them the response curve is a toy, invented to show the shape.</figcaption>
+          <figcaption>Sixty dots stand for the city's enrolled drivers, as a picture with no scale. Green dots drive between zones, amber dots sit online with no trip, lilac rings are offline, and the three right-hand zones get few requests. The numbers at Rs 0 and Rs 300 are the case's; between them, and above Rs 300, the response curve is a toy, invented to show the shape.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl">
@@ -458,7 +460,7 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>At the case's floor of Rs 300 an hour, online hours rise 24 percent, from 118,000 to 146,300, while trips rise 3 percent, from 224,200 to 230,900. Trips per online hour falls from 1.90 to 1.58, the 1.9 to 1.6 on the ticket, and about Rs 1.16 crore of the Rs 1.9 crore top-up went to driver-weeks that accepted under half their requests. The median rider wait moved from 4.8 to 4.6 minutes.</p>
+        <p>At the case's floor of Rs 300 an hour, online hours rise 24 percent, from 118,000 to 146,300, while trips rise 3 percent, from 224,200 to 230,900. Trips per online hour falls from 1.90 to 1.58, which the city quotes as 1.9 to 1.6, and about Rs 1.16 crore of the Rs 1.9 crore top-up went to driver-weeks that accepted under half their requests. The median rider wait moved from 4.8 to 4.6 minutes. The fall starts with the first rupees of the floor: on the toy curve, trips per online hour already reads 1.83 at Rs 100.</p>
         <p>Online hours count time with the app open, and the driver controls that count. An idle hour in an outer zone earns the same floor as a busy hour in the centre, so the number the scheme pays for rose while riders saw almost no change.</p>
         <p class="formula"><b>The formula, last</b>trips per online hour = completed peak trips / peak online hours = 230,900 / 146,300 = 1.58</p>
       </div>
@@ -479,7 +481,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>The seesaw puts the paid number on the left and three guardrails on the right; the further it tips, the more the paid number rose at the guardrails' expense. Under online hours the dots are the case's six weeks after the launch; the other three choices are a toy, invented to show the direction, since the city has not run them. A rose ring shows a driver who hits the paid number without serving riders.</figcaption>
+          <figcaption>The seesaw puts the paid number on the left and three guardrails on the right; the further it tips, the more the paid number rose at the guardrails' expense. Under online hours the dots are the case's six weeks after the launch; the other three choices are a toy, invented to show the direction, since the city has not run them. A rose ring shows a driver gaming the paid number, by idling for hours, declining long trips or accepting and then cancelling.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl">
@@ -498,9 +500,9 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>Paying for completed trips with an acceptance floor puts 40 of the 60 dots to driving, against 31 when the scheme paid for online hours. Paying for trips alone lets drivers decline long trips, and paying for accepted share lets them accept and then cancel; the floor on acceptance catches both.</p>
+        <p>Paying for completed trips with an acceptance floor puts 40 of the 60 dots to driving, against 31 when the scheme paid for online hours. Paying for trips alone lets drivers decline long trips, which the acceptance floor catches, and paying for accepted share lets them accept and then cancel, which paying only for completed trips catches; the definition needs both lines.</p>
         <p>A number a driver can raise without serving a rider will be raised that way, so every paid number needs a guardrail that names the way of gaming it.</p>
-        <p class="formula"><b>The formula, last: the definition's lines</b>north star: completed peak trips per enrolled driver per week<br>guardrail 1: acceptance share at or above a floor the city sets<br>guardrail 2: median rider wait at peak<br>guardrail 3: top-up per completed trip<br>it does not reward: hours online, requests declined, a shrinking enrolled base</p>
+        <p class="formula"><b>The formula, last: the definition's lines</b>north star, the one number the team steers by: completed peak trips per enrolled driver per week<br>guardrail 1: acceptance share at or above a floor the city sets<br>guardrail 2: median rider wait at peak<br>guardrail 3: top-up per completed trip<br>it does not reward: hours online, requests declined, a shrinking enrolled base</p>
       </div>
     </article>
 
@@ -527,7 +529,7 @@ var W4 = {
           <div class="ctl"><label for="m3-den">Denominator</label>
             <select id="m3-den" data-ctl="den"><option value="0">Online hours</option><option value="d">Enrolled drivers</option><option value="1">Requests received</option></select></div>
           <div class="ctl"><label for="m3-win">Window</label>
-            <select id="m3-win" data-ctl="win"><option value="week">Per calendar week</option><option value="day">Per weekday, five weekday peaks</option></select></div>
+            <select id="m3-win" data-ctl="win"><option value="week">Per calendar week</option><option value="day">Per weekday</option></select></div>
           <div class="ctl"><label for="m3-exc">Exclusions</label>
             <select id="m3-exc" data-ctl="exc"><option value="none">None</option><option value="acc">Driver-weeks with acceptance under 0.5</option><option value="ef">Drivers E and F, both weeks</option></select></div>
           <dl class="nums" data-nums></dl>
@@ -536,7 +538,7 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>With online hours as the denominator, the six drivers fall from 1.90 to 1.19 trips per online hour, down 37 percent. With enrolled drivers, they fall from 19.0 to 14.7 trips per driver, down 23 percent: the extra idle hours drop out of the denominator, so the fall looks smaller. Excluding driver-weeks with acceptance under 0.5 removes drivers E and F's after week, and the four other drivers alone barely move, 1.90 to 1.89.</p>
+        <p>With online hours as the denominator, the six drivers fall from 1.90 to 1.19 trips per online hour, down 37 percent. With enrolled drivers, they fall from 19.0 to 14.7 trips per driver, down 23 percent: the extra idle hours drop out of the denominator, so the fall looks smaller. Excluding driver-weeks with acceptance under 0.5 removes only drivers E and F's after week, so the comparison becomes six drivers before against four after, 1.90 to 1.89; the four on their own fall from 1.98 to 1.89, down 4 percent. Combine that exclusion with enrolled drivers and the fall turns into a rise, 19.0 to 20.8, because the base shrank from six drivers to four, the shrinking enrolled base Monday's definition refuses to reward.</p>
         <p>Every line of a definition moves the number without moving a single rider: the denominator decides whose hours count, the window decides the unit, and an exclusion decides who disappears from view.</p>
         <p class="formula"><b>The formula, last</b>a definition names the numerator, the denominator, the window, the exclusions and what it does not reward</p>
       </div>
@@ -548,16 +550,16 @@ var W4 = {
       <div class="predict">
         <p class="ask"><b>Predict before you move the week.</b> Acceptance turns down in the launch week. In which week will bookings per online hour turn?</p>
         <div class="opts">
-          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Week 7, the launch week.</button>
-          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Week 9.</button>
-          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Week 11.</button>
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Week 7, the launch week of 31 August.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Week 9, beginning 14 September.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Week 11, beginning 28 September.</button>
           <button type="button" class="opt" data-predict="D" aria-pressed="false">D. It never turns.</button>
         </div>
         <p class="said" aria-live="polite">No prediction yet.</p>
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Twelve peak weeks, six before the launch and six after. The weekly values are a toy, invented around the case's six-week averages: acceptance 0.86 before and 0.73 after, bookings per online hour Rs 314 before and Rs 260 after. A line turns in the first week it sits more than 5 percent below its before average.</figcaption>
+          <figcaption>Twelve peak weeks, six before the launch and six after. The weekly values are a toy, set around the case's six-week figures (acceptance 0.86 before and 0.73 after, bookings per online hour Rs 314 and Rs 260), each a ratio of six-week totals. Bookings are completed trips times the Rs 165 fare. A line turns in the first week it sits more than 5 percent below its before average, and a rose ring shows the turn.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl">
@@ -571,9 +573,9 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>Acceptance falls below its before level in week 7, the launch week, and bookings per online hour follows in week 9: a lead of two weeks. Over the six weeks, acceptance averaged 0.86 before and 0.73 after, and bookings per online hour averaged Rs 314 before and Rs 260 after.</p>
+        <p>Acceptance falls below its before level in week 7, the launch week, and bookings per online hour follows in week 9: a lead of two weeks. Over the six weeks, the case's acceptance was 0.86 before and 0.73 after, and bookings per online hour Rs 314 before and Rs 260 after, each a ratio of six-week totals.</p>
         <p>Drivers changed what they accepted in the week the scheme began; the money per hour showed it only once the idle hours piled up. A team that watches only the money number learns about the problem two weeks late.</p>
-        <p class="formula"><b>The formula, last</b>a leading indicator moves before the north star, so it is the one to watch for early action</p>
+        <p class="formula"><b>The formula, last</b>a leading indicator moves before the outcome it leads, so it is the one to watch for early action</p>
       </div>
     </article>
   </section>
@@ -635,7 +637,7 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>With trips per online hour and the top-up left, the title can say what happened and what to do: the hourly guarantee bought idle hours, so pay per completed trip with an acceptance floor. Trips per online hour, 1.9 to 1.6, is the evidence with its denominator; the Rs 1.9 crore top-up, about Rs 1.16 crore of it paid to driver-weeks that accepted under half their requests, is the cost the action stops. The caveat goes on the slide in plain sight: the monsoon ended inside the window. The other seven numbers go to an appendix page for the lead who will ask about them.</p>
+        <p>With trips per online hour and the top-up left, the title can say what happened and what to do: the hourly guarantee bought idle hours, so pay per completed trip with an acceptance floor. Trips per online hour, 1.9 to 1.6, is the evidence with its denominator; the Rs 1.9 crore top-up, about Rs 1.16 crore of it paid to driver-weeks that accepted under half their requests, is the cost the action stops. The caveat goes on the slide in plain sight: the monsoon ended inside the window. Acceptance and cancellations show how drivers gamed the scheme, but neither says what it cost or what to change, so they go with the other five numbers to an appendix page for the lead who will ask about them.</p>
         <p>Nine numbers make the city head do the analysis in the meeting. One claim, one piece of evidence with its denominator, one caveat and one action let a lead who loses under the redesign repeat it accurately.</p>
         <p class="formula"><b>The formula, last</b>one slide = a claim as the title + one piece of evidence with its denominator + the caveat in plain sight + the action with its cost</p>
       </div>
@@ -656,7 +658,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Each pair of bars shows the six weeks after the launch as a percentage of the six weeks before, with the rupees printed above. Bookings are trips times the Rs 165 fare. The driver-week count is a toy, invented and held at 6,000 in both windows. A reading stays a dashed outline until you switch to it.</figcaption>
+          <figcaption>Each pair of bars shows the six weeks after the launch as a percentage of the six weeks before, with the rupees printed above. Bookings are trips times the Rs 165 fare. The driver-week count is a toy, invented and held at 6,000 in both windows, which leaves out the 140 drivers who joined after the launch. A reading stays a dashed outline until you switch to it.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl">
@@ -695,9 +697,9 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw">
-          <div class="tq" data-tq="upi"><p class="tq-h">UPI payments a day in India</p><div class="holder" data-tree="upi"></div><p class="tq-a" data-anchor="upi"></p></div>
-          <div class="tq" data-tq="drv"><p class="tq-h">Drivers online at a weekday evening peak in Hyderabad</p><div class="holder" data-tree="drv"></div><p class="tq-a" data-anchor="drv"></p></div>
-          <figcaption>Each tree multiplies the factors on the right into the estimate on the left. Every factor is an assumption you set and can defend; the check is a number someone measured, in the same unit.</figcaption>
+          <div class="tq" data-tq="upi"><p class="tq-h">How many UPI payments are made in India in a day?</p><div class="holder" data-tree="upi"></div><p class="tq-a" data-anchor="upi"></p></div>
+          <div class="tq" data-tq="drv"><p class="tq-h">How many drivers must be online at a weekday evening peak in Hyderabad?</p><div class="holder" data-tree="drv"></div><p class="tq-a" data-anchor="drv"></p></div>
+          <figcaption>Each tree combines the factors on the right into the estimate on the left. Every factor is an assumption you set and can defend; the check is a number someone measured, in the same unit.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl">
@@ -743,8 +745,8 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>The published anchor is 24.07 billion UPI transactions in September 2026, which is 802 million a day over its 30 days (NPCI, reported by Outlook Money, checked 12 October 2026). Dividing by 31 days would give 776 million a day, the catch in comparing monthly totals. For drivers at the evening peak no published figure was found, so that check reads "to be found"; the case's own data put about 813 drivers online in an average peak hour, which is 146,300 online hours over 180 peak hours in six weeks.</p>
-        <p>A guess becomes an estimate when every factor is said aloud, the product is checked against something measured in the same unit, and the factor that moves the answer most is named. For drivers it is the idle share.</p>
+        <p>The published anchor is 24.07 billion UPI transactions in September 2026, which is 802 million a day over its 30 days (NPCI, reported by Outlook Money, checked 12 October 2026). Dividing by 31 days would give 776 million a day, the catch in comparing monthly totals. For drivers at the evening peak no published figure was found, so that check reads "to be found"; the case's own data put about 656 drivers online in an average peak hour before the launch, 118,000 online hours over 180 peak hours in six weeks, which counts drivers online, a different unit from drivers needed.</p>
+        <p>A guess becomes an estimate when every factor is said aloud, the product is checked against something measured in the same unit, and the factor that moves the answer most is named. For drivers, on these slider ranges, it is peak requests an hour, which moves the estimate from about 430 to about 3,430 drivers.</p>
         <p class="formula"><b>The formula, last</b>clarify, map, calculate, validate; UPI a day = active users x payments a day per user</p>
       </div>
     </article>
@@ -2133,8 +2135,8 @@ var W4 = {
     var n = Math.round(MON.newcomersAtCase * m1Resp(g)), roles = [];
     for (var i = 0; i < 60; i++) {
       if (i <= 28) roles.push("drive");
-      else if (i === 29) roles.push(g < 120 ? "drive" : "idle-out");
-      else if (i === 30) roles.push(g < 200 ? "drive" : "idle-out");
+      else if (i === 29) roles.push(n < 1 ? "drive" : "idle-out");
+      else if (i === 30) roles.push(n < 2 ? "drive" : "idle-out");
       else if (i <= 39) roles.push("idle-in");
       else { var k = i - 40; roles.push(k >= n ? "off" : (k < 2 ? "drive" : "idle-out")); }
     }
@@ -2175,7 +2177,8 @@ var W4 = {
         ["Trips per online hour", m.tph.toFixed(2)],
         { wide: "That is " + group(round100(m.trips)) + " / " + group(round100(m.hours)) + "." },
         ["Online hours with no trip, share", m.idle.toFixed(2)],
-        ["Top-up paid to driver-weeks accepting under half their requests", crore(m.topupIdle)],
+        ["Top-up paid in all, six weeks", crore(MON.topupCrore * 1e7 * m1Resp(st.floor) * (st.floor / MON.floorCase))],
+        ["Of which, to driver-weeks accepting under half their requests", crore(m.topupIdle)],
         ["Dots: driving, idle, offline", c.drive + ", " + c.idle + ", " + c.off]
       ];
       if (st.wait) rows.push(["Median rider wait at peak", m.wait.toFixed(1) + " min"]);
@@ -2254,10 +2257,12 @@ var W4 = {
         ["Dots driving riders", String(c.drive)],
         ["Dots online with no trip", String(c.idle)],
         ["Dots offline", String(c.off)],
-        ["Dots gaming the paid number", String(c.game)],
+        ["Dots gaming the paid number, an illustration", String(c.game)],
         ["Idle share of online dots", c.idle + " / " + online + " = " + (c.idle / online).toFixed(2)],
         ["Median rider wait" + (st.pay === "hours" ? "" : " (toy)"), p.wait.toFixed(1) + " min"],
         ["Top-up per completed trip" + (st.pay === "hours" ? "" : " (toy)"), rs(topup)],
+        ["Acceptance share" + (st.pay === "hours" ? "" : " (toy)"), p.accept.toFixed(2)],
+        { wide: "The guardrails' lines: rider wait at or below the 4.8 minutes before the launch; acceptance at or above 0.80 and top-up at or below Rs 40 a trip, two lines a city would set (toy)." },
         { wide: st.pay === "hours" ? "Rs 1.9 crore over 230,900 trips is about Rs 82 a trip." : "The toy choices show direction only; the city has not run them." }
       ]);
     },
@@ -2334,8 +2339,10 @@ var W4 = {
         ["Change", pctChange(r.vb, r.va)],
         { wide: "Before: " + r.before[0] + " / " + r.before[1] + (st.den === "d" && st.win === "day" ? " / 5" : "") +
                 ". After: " + r.after[0] + " / " + r.after[1] + (st.den === "d" && st.win === "day" ? " / 5" : "") + "." },
-        { wide: st.den === "d" ? "Rows kept: " + r.kept.filter(Boolean).length + " of 12." :
-                "In a ratio of two counts from the same week, the window cancels; rows kept: " + r.kept.filter(Boolean).length + " of 12." }
+        { wide: st.den === "d" ? "The denominator is the enrolled drivers, counted once a week, so no column turns green; rows kept: " + r.kept.filter(Boolean).length + " of 12." :
+                "Per " + (st.win === "day" ? "weekday, each count over 5: before " + (r.before[0] / 5).toFixed(1) + " / " + (r.before[1] / 5).toFixed(1) + ", after " + (r.after[0] / 5).toFixed(1) + " / " + (r.after[1] / 5).toFixed(1) :
+                  "week: before " + r.before[0] + " / " + r.before[1] + ", after " + r.after[0] + " / " + r.after[1]) +
+                ". In a ratio of two counts from the same week the window cancels; rows kept: " + r.kept.filter(Boolean).length + " of 12." }
       ]);
     },
     final: function (st) { st.num = "3"; st.den = "d"; st.win = "week"; st.exc = "none"; }
@@ -2373,12 +2380,11 @@ var W4 = {
         for (var w = 1; w <= k; w++) pts.push(X(w).toFixed(1) + "," + Y(p.s[w - 1]).toFixed(1));
         add(svg, "polyline", { points: pts.join(" "), fill: "none", stroke: C.violet, "stroke-width": 2.6, "stroke-linejoin": "round" });
         for (w = 1; w <= k; w++) add(svg, "circle", { cx: X(w), cy: Y(p.s[w - 1]), r: w === k ? 7 : 4.5, fill: C.violet, stroke: C.white, "stroke-width": 2 });
-        txt(svg, X(k) + 10, Y(p.s[k - 1]) - 8, p.f(p.s[k - 1]), { size: 15, weight: 700 });
+        txt(svg, k === 6 ? X(k) - 10 : X(k) + 10, Y(p.s[k - 1]) - 8, p.f(p.s[k - 1]), { size: 15, weight: 700, anchor: k === 6 ? "end" : "start" });
         var tw = turnWeek(p.s);
         turns.push(tw);
         if (tw && tw <= k) {
           add(svg, "circle", { cx: X(tw), cy: Y(p.s[tw - 1]), r: 12, fill: "none", stroke: C.rose, "stroke-width": 3 });
-          txt(svg, X(tw) - 16, Y(p.s[tw - 1]) + 28, "turns in week " + tw, { size: 14, weight: 700, fill: C.rose, anchor: "end" }).setAttribute("class", "halo");
         }
       });
       add(svg, "line", { x1: (X(6) + X(7)) / 2, x2: (X(6) + X(7)) / 2, y1: 52, y2: 424, stroke: C.ink, "stroke-width": 1.6, "stroke-dasharray": "6 4" });
@@ -2455,7 +2461,8 @@ var W4 = {
       if (st.warden) {
         verdict = st.warden === "claim" ? "passes: the title says what happened and what to do" :
           (st.warden === "topic" ? "fails: the title names a topic, so the warden asks what to do" :
-            "fails: the title reports a finding with no action");
+            (st.warden === "none" ? "fails: these two numbers carry no claim the warden could act on" :
+              "fails: the title reports a finding with no action"));
       }
       nums($("[data-nums]", art), [
         ["Numbers left on the slide", left + " of 9"],
@@ -2550,9 +2557,9 @@ var W4 = {
       setOut(art, "tpd", st.tpd.toFixed(1) + " trips an hour (slider value " + st.tpd.toFixed(1) + ")");
       setOut(art, "idle", st.idle.toFixed(2) + " (slider value " + st.idle.toFixed(2) + ")");
       setOut(art, "buf", st.buf + " percent (slider value " + st.buf + ")");
-      var upiM = p.upi / 1e6, caseDrv = W4.mon.hours[1] / TUE.peakHoursSixWeeks;
+      var upiM = p.upi / 1e6, upiTxt = upiM < 1000 ? Math.round(upiM) + " million" : (upiM / 1000).toFixed(2) + " billion";
       var trees = {
-        upi: { label: "UPI payments a day", note: Math.round(upiM) + " million", kind: st.q === "upi" ? "lit" : "plain", children: [
+        upi: { label: "UPI payments a day", note: upiTxt, kind: st.q === "upi" ? "lit" : "plain", children: [
           { label: "Active UPI users", note: st.users + " million" },
           { label: "Payments a day per user", note: "times " + st.pay.toFixed(1) }] },
         drv: { label: "Drivers online at the evening peak", note: group(Math.round(p.drv)), kind: st.q === "drv" ? "lit" : "plain", children: [
@@ -2570,15 +2577,14 @@ var W4 = {
       });
       $('[data-anchor="upi"]', art).textContent = st.checked ?
         "Measured: 802 million a day in September 2026. Your estimate is " + (upiM / TUE.upiDayMillion).toFixed(2) + " of it." :
-        "Measured: hidden until the reveal, so your " + Math.round(upiM) + " million a day stands on its factors alone.";
-      $('[data-anchor="drv"]', art).textContent = "Published figure: to be found. The case's own data put about " + Math.round(caseDrv) +
-        " drivers online in an average peak hour; your estimate is " + (p.drv / caseDrv).toFixed(2) + " times that.";
+        "Measured: hidden until the reveal, so your " + upiTxt + " a day stands on its factors alone.";
+      $('[data-anchor="drv"]', art).textContent = "Published figure: to be found, so this tree has no check yet. The case's 118,000 peak online hours before the launch mean about " +
+        Math.round(W4.mon.hours[0] / TUE.peakHoursSixWeeks) + " drivers online in an average peak hour, which counts drivers online, a different unit from drivers needed.";
       nums($("[data-nums]", art), [
-        ["UPI estimate", Math.round(upiM) + " million a day"],
+        ["UPI estimate", upiTxt + " a day"],
         st.checked ? ["Ratio to the measured 802 million", (upiM / TUE.upiDayMillion).toFixed(2)] : ["Ratio to the measured number", "at the reveal"],
-        { wide: st.users + " million x " + st.pay.toFixed(1) + " = " + Math.round(upiM) + " million." },
+        { wide: st.users + " million x " + st.pay.toFixed(1) + " = " + upiTxt + "." },
         ["Drivers estimate", group(Math.round(p.drv))],
-        ["Ratio to the case's 813 a peak hour", (p.drv / (W4.mon.hours[1] / TUE.peakHoursSixWeeks)).toFixed(2)],
         { wide: group(st.req) + " / " + st.tpd.toFixed(1) + " / " + (1 - st.idle).toFixed(2) + " x " + (1 + st.buf / 100).toFixed(2) + " = " + group(Math.round(p.drv)) + "; a published figure is to be found." }
       ]);
     },
