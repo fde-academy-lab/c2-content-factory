@@ -25,8 +25,8 @@ id; or a target the day's generator sets and asserts, marked "target". Toy numbe
 
 ## 1. The week in one line, the collision, and the map that grows
 
-An analyst at a product company gets a ticket, never a speech. Week 4 is five tickets at five
-companies the room uses every day, one question each: is the number we pay for measuring what we
+An analyst at a product company gets a ticket, never a speech. Week 4 is five tickets at four
+companies the room uses every day (Uber twice), one question each: is the number we pay for measuring what we
 want (Uber, Hyderabad, Monday); can that answer survive one slide in front of the people who lose
 under it, and can a number be sized from nothing (the same case, Tuesday); what goes with what beyond
 chance, and what is a shelf slot worth (Swiggy Instamart, Pune, Wednesday); who is leaving and at
@@ -60,14 +60,14 @@ day control.
 
 ```mermaid
 flowchart TD
-    C["<b>What does an analyst do with one number?</b><br/>five tickets, five companies, one method a day"]
+    C["<b>What does an analyst do with one number?</b><br/>five tickets, four companies, one method a day"]
     M["<b>Mon: is the number measuring what we want?</b><br/>Uber, Hyderabad: online hours against trips served<br/>metric design, guardrails, gaming"]
     T["<b>Tue: can it survive one slide, and can I size it from nothing?</b><br/>Uber, Hyderabad: bookings per online hour explained<br/>the one-slide answer, the guesstimate"]
     W["<b>Wed: what goes with what, beyond chance?</b><br/>Swiggy Instamart, Pune: the bought-together strip<br/>support, confidence, lift, the slot in rupees"]
     H["<b>Thu: who is leaving, and at which step?</b><br/>Zomato Gold, Chennai: a flat number over falling cohorts<br/>cohorts, funnels, denominators"]
     F["<b>Fri: how much is coming, and how wrong could we be?</b><br/>Flipkart, Lucknow: festive packer headcount<br/>baselines, hold-out, asymmetric cost"]
     S["<b>Sat: does the method survive a change of company?</b><br/>other companies, then Kalpa's four units"]
-    K1["Kalpa Retail: the auto-reorder window"]
+    K1["Kalpa Retail: reorders per member"]
     K3["Kalpa Retail: the Rs 199 charger"]
     K4["Kalpa Retail: the Retail-Plus tier"]
     K5["Kalpa Retail: 24 months and a vendor curve"]
@@ -225,12 +225,13 @@ of notebook 01. The rows are real rows of the case data, chosen by the generator
 mechanism shows in miniature and asserted by its contract, and every value sits in the facts file
 under `twelve_rows`. The hand count on the twelve rows differs from the full-data case value by at
 least 0.05 on any ratio and five points on any percentage, so the room still has a reason to compute
-L2, and from every Kalpa planted value by the same margin, so no case number is a plant in disguise.
+L2 (a shared starting value may match, as Monday's 1.90 before does, when the after value and the
+change differ), and from every Kalpa planted value of the same quantity by the same margin, so no case number is a plant in disguise.
 
 | Day | The twelve rows | The hand count | What the room sees without being told |
 |---|---|---|---|
-| Mon | Six drivers, one week before the scheme and one week after: peak online hours, requests, accepted, trips | Hours, trips and trips per online hour, before and after, over the six | Hours up about a quarter, trips flat or down, and two drivers whose hours doubled while their trips fell to almost nothing |
-| Tue | The same twelve rows plus gross bookings | Bookings per online hour, per driver-week and per trip | The same rupees read three ways move in three directions; the slide must say which denominator it uses |
+| Mon | Six drivers, one week before the scheme and one week after: peak online hours, requests, accepted, trips | Hours, trips and trips per online hour, before and after, over the six | Hours up about a quarter, trips down about a quarter, and two drivers whose hours rose by about half while their trips fell to almost nothing |
+| Tue | The same twelve rows plus gross bookings | Bookings per online hour, per driver-week and per trip | The same rupees read three ways change by three different amounts on the six (and point three ways on the full data); the slide must say which denominator it uses |
 | Wed | Twelve Instamart carts with their items | Support, confidence and lift for two pairs | The item in most carts has high confidence toward everything and lift near one; one pair beats chance; one pair is a one-off |
 | Thu | Twelve Gold members from three signup months, with an order flag per month | Each cohort's rate month by month and the blend over all twelve | Each cohort falls with age while the blend barely moves; one sale-month cohort is large and weak |
 | Fri | Twelve weeks of shipments: the six around Diwali 2024 and the six around Diwali 2025 | Naive, same-week-last-year and festival-aligned forecasts for one week | The same-week-last-year copy lands the spike a week late in 2025 and two weeks early for 2026 |
@@ -310,7 +311,7 @@ table, the definition template (numerator, denominator, window, exclusions, what
 two guardrails, the gaming note). What to say: the trainer reads the ticket, then each role's number
 and reason, and asks each group for one way to game it before any method is taught. When it stalls:
 give the canteen token (who controls the count?), then the two drivers on the twelve rows whose hours
-doubled. Round 3 scoring: a definition survives when every role's attack is answered by a line of the
+rose by about half while their trips fell to almost nothing. Round 3 scoring: a definition survives when every role's attack is answered by a line of the
 definition or a guardrail; a definition that survives only by dropping the guarantee has lost the
 driver-operations lead, which Tuesday takes up.
 
@@ -318,7 +319,7 @@ driver-operations lead, which Tuesday takes up.
 
 | Level | The sub-problem | The concept, with its analogy | The step and its numbers | The trap, exactly | The real case (R2) |
 |---|---|---|---|---|---|
-| L1 | What does "peak online hours up 24 percent" stand for, and what happened to the six drivers on the twelve rows? | A proxy: the canteen pays servers per token, tokens double while plates stay flat because each plate now gets two tokens (toy, R1) | Hours, trips and trips per hour over the six, before and after: hours up about 23 percent, trips down about 3 percent, trips per hour 1.9 to 1.5 (targets on the rows); two drivers' hours doubled while their trips fell to 3 and 2 with most requests declined | None yet; the paradox is the point | Wells Fargo (M8): a cross-sell ratio with no usage condition, USD 185 million in 2016 penalties and a USD 3 billion settlement in 2020, sales goals eliminated |
+| L1 | What does "peak online hours up 24 percent" stand for, and what happened to the six drivers on the twelve rows? | A proxy: the canteen pays servers per token, tokens double while plates stay flat because each plate now gets two tokens (toy, R1) | Hours, trips and trips per hour over the six, before and after: hours up about 23 percent, trips down about 23 percent, trips per hour 1.90 to 1.19 (computed from the rows; the six fall further than the city because two of them are in the idle tail); two drivers' hours rose by about half while their trips fell to 3 and 2 with most offers declined | None yet; the paradox is the point | Wells Fargo (M8): a cross-sell ratio with no usage condition, USD 185 million in 2016 penalties and a USD 3 billion settlement in 2020, sales goals eliminated |
 | L2 | What are the city totals, and what is trips per online hour this week against six weeks ago? | The rate as a ratio of two sums, never a mean of ratios (Week 1's lesson restated) | `groupby` on `driver_weeks`: hours 118,000 to 146,300, trips 224,200 to 230,900, trips per hour 1.90 to 1.58, acceptance 0.86 to 0.73, driver cancellations 0.04 to 0.09, share of online hours with no trip 0.22 to 0.38 (targets); the same totals once more in SQL | "Trips per hour fell because demand fell": the check is `zone_weeks` requests, flat to up (target) | Swiggy's glossary (M1): a company that writes numerator, denominator and window down |
 | L3 | Which drivers and which zones drive the fall, and what is the number the city team should not have celebrated? | The denominator and the segment: the mix behind a rate | The your-turn cell: 180 drivers whose hours rose 2.1 times while their trips fell 12 percent, 70 percent of their new hours in the three outer zones; 61 percent of the top-up went to driver-weeks with acceptance under 0.5 (targets) | "Peak online hours up 24 percent: supply target met, extend the scheme to two more cities" (the decision it misleads). The check: trips per online hour and rider wait, 4.8 to 4.6 minutes (target). The fix: pay for completed peak trips with an acceptance guardrail | Delhi Metro (M6): the same crowd counted three ways; a definition changes the number without changing the crowd |
 | L4 | What can the data not show, and what would settle each doubt? | Six caveats, one at a time: data quality (online means the app is open), mix (140 new drivers), seasonality (the monsoon ended), interference (drivers moving between apps), selection (who enrolled), causality (the scheme or the season) | Each caveat as one check in the notebook: the fall restated for drivers present in both windows (target), for weekday peaks only, for zones with request density above the median; what remains of the fall after each cut | "The new drivers explain it": the fall survives their removal (target) | US Veterans Affairs (M8): the start of the window controlled by the people measured |
@@ -496,8 +497,8 @@ scorer marks structure and the sanity check and never the final number (Aced, T2
 
 | Level | The sub-problem | The concept, with its analogy | The step and its numbers | The trap, exactly | The real case (R2) |
 |---|---|---|---|---|---|
-| L1 | What is the one claim, and which of the twelve rows' numbers carries it? | The title is the claim: "Breakfast survey results" rewritten as a sentence a hostel warden could act on (toy, R1); the notice board as the anchor | The twelve rows' bookings read per online hour, per driver-week and per trip: the first falls, the second rises, the third is flat (targets on the rows) | A slide headlined "online hours up 24 percent" (Monday's trap resold as a claim) | Storytelling with Data's makeovers (T1); Minto's answer first (T1) |
-| L2 | Which denominator does the slide use, and what does each of the other two say? | The denominator is a choice and the slide must say which | Rs 314 to Rs 260 per online hour; per driver-week up (target); per trip Rs 165 flat; the same series drawn cluttered, then clear | Reading the per-driver-week rise as the scheme working | Delhi Metro (M6): boardings against journeys |
+| L1 | What is the one claim, and which of the twelve rows' numbers carries it? | The title is the claim: "Breakfast survey results" rewritten as a sentence a hostel warden could act on (toy, R1); the notice board as the anchor | The twelve rows' bookings read per online hour, per driver-week and per trip: the first falls by more than a third, the second by about a quarter, the third holds at Rs 165 (computed from the rows) | A slide headlined "online hours up 24 percent" (Monday's trap resold as a claim) | Storytelling with Data's makeovers (T1); Minto's answer first (T1) |
+| L2 | Which denominator does the slide use, and what does each of the other two say? | The denominator is a choice and the slide must say which | Rs 314 to Rs 260 per online hour; per driver-week up slightly, Rs 5,817 to Rs 5,861 (Monday's data); per trip Rs 165 flat; the same series drawn cluttered, then clear | Reading the per-driver-week rise as the scheme working | Delhi Metro (M6): boardings against journeys |
 | L3 | Which objection is partly right, and which part? | Defence has a shape: restate, answer, concede, what would change your mind | Driver operations: "drivers will log off" (true for the idle tail, false for the honest majority, target shares); marketing: "the guarantee is the acquisition story" (true, which is why the redesign keeps it for drivers who accept); finance: "the fall is the monsoon's end" (partly, which the L4 cuts on Monday bound) | Conceding nothing (the Kahoot's false statement); conceding everything | Amazon's 2017 letter (T1): the memo read in silence, a week to write |
 | L4 | What leaves the slide, and where does it go? | The appendix kept for a named question | Nine numbers cut to two; one appendix page per role with the question it answers | A caveat moved to the appendix, where its owner finds it and calls the slide dishonest | |
 | L5 | How many drivers must be online at the evening peak, and how do I know my number is sane? | A guesstimate is the same discipline without data: clarify, map, calculate, validate; a Fermi walk from a crowd to a count | Peak requests an hour, trips a driver completes an hour, the idle share, the buffer; the UPI pair: active users times payments a day, validated against 802 million (T3), with the 30-day against 31-day catch | A city of two million people given nine million households (the row's Kahoot item); a validation in the wrong unit (M6); a decimal slip: Flipkart's 6.3 million concurrent users beside a URL that says 63 million (T3) | DMRC (M6), Flipkart (T3), NPCI through Outlook Money (T3) |
@@ -1217,7 +1218,8 @@ line passes.
    today lit and the earlier days' numbers on their nodes; slide three shows where today ends.
 2. **The first number is counted by hand.** Chapter 1 counts the twelve-row case table before any
    code, and the hand values sit at least 0.05 on a ratio and five points on a percentage from the
-   full-data case value and from every Kalpa plant.
+   full-data case value (a shared starting value may match when the after value and the change differ)
+   and from every Kalpa plant.
 3. **The ladder is climbed in order.** L1 to L6, each a chapter or part of one, each with its concept
    introduced just in time with an everyday analogy and a worked micro-example, the maths made
    intuitive before the formula, what an interviewer listens for and the common wrong answer; every

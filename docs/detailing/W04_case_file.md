@@ -65,8 +65,8 @@ All targets; the generator asserts each to the printed precision.
 | Table | Columns | Rows |
 |---|---|---|
 | `drivers` | `driver_id`, `home_zone`, `joined_month`, `enrolled` (in the guarantee) | 1,200 drivers, 140 of them joined after the launch |
-| `driver_weeks` | `driver_id`, `week_start`, `zone_mode` (the zone where most online time was), `peak_online_hours`, `peak_requests`, `peak_accepted`, `peak_driver_cancels`, `peak_trips`, `peak_bookings_rs`, `topup_rs`, `offpeak_trips` | twelve weeks for every driver active that week |
-| `zone_weeks` | `zone`, `week_start`, `peak_requests`, `peak_fulfilled`, `median_wait_min` | 12 zones by twelve weeks; three outer zones get few requests at any hour |
+| `driver_weeks` | `driver_id`, `week_start`, `zone_mode` (the zone where most online time was), `peak_online_hours`, `peak_offers` (every offer the driver saw; a declined request is offered again), `peak_accepted`, `peak_driver_cancels`, `peak_trips`, `peak_hours_no_trip`, `peak_bookings_rs`, `topup_rs`, `offpeak_trips` | twelve weeks for every driver active that week |
+| `zone_weeks` | `zone`, `week_start`, `peak_requests` (rider requests, each counted once), `peak_fulfilled` (equal to the zone's completed trips), `median_wait_min` | 12 zones by twelve weeks; three outer zones get few requests at any hour |
 
 Zones are named after Hyderabad localities for relatability (the generator picks twelve); the request
 density is synthetic.
@@ -100,9 +100,12 @@ Six drivers, one week before (the week of 10 August 2026) and one week after (th
 | F | before | 10 | 20 | 17 | 17 | |
 | F | after | 14 | 12 | 3 | 2 | the same shape |
 
-Hand count: hours 60 to 74 (up 23 percent); trips 114 to 110 (down 3.5 percent); trips per online hour
-1.90 to 1.49. The twelve rows show the mechanism and not the city totals (the city's trips rose 3
-percent because 140 drivers joined), which is itself the first L4 caveat and is said on the slide.
+Hand count: hours 60 to 74 (up 23 percent); trips 114 to 88 (down 23 percent); trips per online hour
+1.90 to 1.19. The twelve rows show the mechanism and not the city totals: two of the six sit in the
+idle tail, a third of the sample against 15 percent of drivers city-wide, so the six fall much further
+than the city's 1.90 to 1.58, and the city's trips rose 3 percent because 140 drivers joined. Both are
+the first L4 caveat and are said on the slide. (Corrected on 12 October 2026: an earlier line printed
+110 trips and 1.49, which the rows above do not sum to.)
 
 ### The sub-problems
 
@@ -110,7 +113,7 @@ percent because 140 drivers joined), which is itself the first L4 caveat and is 
 Concept: a proxy, a number that stands in for the thing wanted. Analogy: a canteen pays servers per
 token; tokens go from 200 to 400 a day while plates stay at 200, because each plate now gets two
 tokens (toy, labelled invented). Micro-example: the twelve rows summed by hand. Numbers: 60 to 74
-hours, 114 to 110 trips, 1.90 to 1.49. Trap: none yet. Interviewer listens for: the candidate restates
+hours, 114 to 88 trips, 1.90 to 1.19. Trap: none yet. Interviewer listens for: the candidate restates
 what the scheme is for (riders picked up faster) before touching a number, and names the unit (hours,
 trips, trips per hour). Common wrong answer: "hours are up, so supply is up, so it is working."
 
@@ -149,7 +152,7 @@ check.
 **L5. Which metric should the scheme pay for, what did the gamed version cost, and what do the three
 roles say?** Concept: the north star, guardrails, leading inputs; a cost in rupees. Numbers: the
 redesign's definition (the spine's section 5); the cost of the gaming, Rs 1.9 crore times 0.61, about
-Rs 1.16 crore over six weeks paid to idle hours (target); the saving under the redesign with a
+Rs 1.16 crore over six weeks paid to driver-weeks that accepted under half their offers (target); the saving under the redesign with a
 labelled uptake assumption and its range. The three roles: driver operations ("drivers will log off;
 supply at peak will fall": true for the idle tail, false for the honest majority, whose hours and
 trips the facts file prints); marketing ("the guarantee is on every hoarding; changing terms six weeks
@@ -226,8 +229,9 @@ something under the redesign and each will say so. The number the slide must exp
 will raise it first: gross bookings per peak online hour fell from Rs 314 in the six weeks before the
 launch to Rs 260 in the six weeks after, while the average peak fare stayed at Rs 165 and online hours
 rose 24 percent (targets; the arithmetic is Monday's 1.90 and 1.58 trips per hour times Rs 165, rounded
-as the generator prints it). The same rupees read three ways: per online hour, down; per enrolled
-driver-week, up (target, because hours rose); per trip, flat.
+as the generator prints it). The same rupees read three ways: per online hour, down; per active
+driver-week, up slightly, Rs 5,817 to Rs 5,861 (bookings grew 3 percent while active driver-weeks grew
+2.2 percent; hours do not enter this ratio); per trip, flat.
 
 In the afternoon a second ask from the city head: before the review, roughly how many drivers must be
 online at the evening peak on a weekday to keep the median rider wait under five minutes. Fifteen
@@ -239,8 +243,11 @@ hours long; the published figure a validate step would want does not exist in th
 ### The twelve rows (L1)
 
 Monday's twelve rows with `peak_bookings_rs` added, so the room reads the same rupees per online
-hour, per driver-week and per trip and sees three directions (targets on the rows, from the facts
-file).
+hour, per driver-week and per trip and sees three different sizes of change: per online hour Rs 313.5
+to Rs 196.2 (down more than a third), per driver-week Rs 3,135 to Rs 2,420 (down about a quarter), per
+trip Rs 165 on both sides. On the full data at L2 the three point three ways: per online hour falls,
+per driver-week rises slightly, per trip holds. (Corrected on 12 October 2026: the six rows' trips fall,
+so no per-driver-week rise is possible on them.)
 
 ### The sub-problems
 
@@ -254,7 +261,8 @@ guarantee: six-week review").
 
 **L2. Which denominator does the slide use, and what do the other two say?** Concept: the
 denominator is a choice and the slide says which. Numbers: Rs 314 to Rs 260 per online hour; per
-driver-week up (target); per trip Rs 165 flat; the twelve-week series drawn cluttered, then clear
+driver-week up slightly, Rs 5,817 to Rs 5,861 on Monday's data (6,360 driver-weeks before, 6,500
+after); per trip Rs 165 flat; the twelve-week series drawn cluttered, then clear
 (the makeover notebook). Trap: reading the per-driver-week rise as the scheme working. Interviewer
 listens for: the unit said aloud before the number. Common wrong answer: quoting the one that favours
 the claim without saying so.
@@ -345,9 +353,9 @@ fell from 6.1 percent in the three weeks before the change to 3.8 percent in the
 | Measure | Before (17 August to 6 September) | After (7 to 27 September) |
 |---|---|---|
 | Strip click-through (clicks over impressions) | 6.1 percent | 3.8 percent |
-| Click-through on slots showing milk | not shown (curated) | 1.2 percent |
+| Click-through on slots showing milk | 1.2 percent | 1.2 percent |
 | Click-through on slots showing any other item | 6.2 percent | 6.4 percent |
-| Share of slot impressions showing milk | 2 percent | 44 percent |
+| Share of slot impressions showing milk | 2 percent | 50 percent |
 
 **Data the analyst has.**
 
@@ -399,7 +407,7 @@ support.
 
 **L3. Why did the click-through fall, and which slots drive it?** Concept: the popularity trap; a
 blended rate as a mix. Numbers: milk slots at 1.2 percent against 6.4 percent for every other
-suggestion; 44 percent of impressions showing milk; the blended 3.8 percent reproduced from the two
+suggestion; half of the impressions showing milk; the blended 3.8 percent reproduced from the two
 (targets). The trap, exactly: "click-through fell because shoppers' habits changed after the
 monsoon"; the check is click-through by suggested item; the fix is rank by lift above a support floor.
 Interviewer listens for: the blend decomposed before a cause is named. Common wrong answer: "the
@@ -653,7 +661,7 @@ shifts for the eight festive weeks beginning 12 October to 30 November 2026 by F
 | Ordinary weekly shipments, late 2024 | about 210,000 |
 | Underlying growth | about 4 percent a year |
 | Festive peak | the three weeks before Diwali at 1.5, 1.9 and 1.7 times the ordinary week; the Diwali week at 1.4; the week after below ordinary |
-| Hold-out | the last thirteen weeks, beginning 22 June to 21 September 2026 |
+| Hold-out | the last thirteen weeks, beginning 29 June to 21 September 2026, with the 91 weeks before them for training |
 | MAE on the hold-out, shipments a week | naive 21,000; drift 11,500; same-week-last-year 9,200; festival-aligned with drift 8,900; finance's rule 9,600; the vendor 14,800 (the vendor at least 30 percent above the festival-aligned baseline) |
 | The vendor's fit on the 91 training weeks | within 2 percent of the actual every week |
 | The 2026 festive window, eight weeks | the vendor 22 percent above the 2025 window; finance's rule 4 percent above; the festival-aligned baseline with drift about 6 percent above, its error bar the hold-out MAE (targets) |
@@ -666,8 +674,8 @@ shifts for the eight festive weeks beginning 12 October to 30 November 2026 by F
 | Table | Columns | Rows |
 |---|---|---|
 | `weekly_shipments` | `week_start`, `shipments`, `packer_shifts_worked`, `overtime_shifts` | 104 weeks |
-| `vendor_forecast` | `week_start`, `vendor_shipments`, `kind` (fitted, forecast) | 104 fitted weeks plus the forecast to 30 November 2026 |
-| `calendar` | `week_start`, `diwali_week`, `sale_week` | 112 weeks |
+| `vendor_forecast` | `week_start`, `vendor_shipments`, `kind` (fitted, holdout, forecast) | 91 fitted weeks; 13 hold-out weeks forecast from the data to the week of 22 June, so the hold-out scores a real forecast; the forecast from the week of 28 September to 30 November 2026, made from all 104 weeks |
+| `calendar` | `week_start`, `diwali_week`, `sale_week` | 114 weeks, to the week of 30 November 2026 |
 | `costs` | `item`, `rs`, `low`, `high` | the two unit costs with their ranges |
 
 **The ask, due Friday, to the FC planner and the regional operations head.** Which forecast goes to
@@ -729,9 +737,13 @@ bot's two-week miss (idle shifts in the two early weeks, late shipments in the t
 with the two unit costs, target). The two roles: finance ("last year plus 4 is what the budget holds":
 true for the total, wrong for the week-by-week shape) and the vendor's sponsor ("the model fits every
 week of history": true, which is the problem). Trap: a plan at the median when a late shipment costs
-about five idle shifts; a plan with the festival in the wrong week. Interviewer listens for: the error
+about 4.6 times what an idle shift costs per shipment (Rs 25 against Rs 5.4); a plan with the festival in the wrong week. Interviewer listens for: the error
 in rupees in each direction, the plan tied to the costlier side. Common wrong answer: splitting the
-difference between 4 and 22.
+difference between 4 and 22. Priced with the two unit costs, a forecast that errs high can cost less
+on the hold-out than one with a lower MAE that errs low: the pack prices every method's hold-out errors
+beside its MAE and lets that fact stand, and the plan's case rests on placing the festival in the right
+weeks and setting the level at the 0.82 quantile, neither of which a hold-out with no festive week can
+test (L4).
 
 **L6. How do you evaluate a forecast? And how do you forecast inference demand around an AI product
 launch?** Structure: hold out the latest periods, as many as the horizon; error in the business's
