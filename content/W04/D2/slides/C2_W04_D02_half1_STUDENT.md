@@ -19,16 +19,16 @@ Transition: the ticket, in full.
 ## S1. The ticket: one slide, five minutes, three objectors
 *What has the city head asked for, and which number will land first?*
 
-**Uber, Hyderabad, the driver app's peak-hour earnings guarantee, one day on.** The city head takes the redesign to Thursday's city review on one slide, in five minutes, with the driver-operations lead, the marketing lead and the finance partner in the room. Each loses something under the redesign and each will say so.
+**Uber, Hyderabad, the driver app's peak-hour earnings guarantee, one day on.** The city head takes the redesign to Thursday's city review on one slide, in five minutes. The driver-operations lead, the marketing lead and the finance partner each lose something under it, and each will say so.
 
-| The number the slide must explain | Six weeks from 20 July | Six weeks from 31 August | Change |
-|---|---|---|---|
-| Gross bookings per peak online hour | Rs 314 | Rs 260 | down 17 percent |
-| Average peak fare (bookings per trip) | Rs 165 | Rs 165 | flat |
-| Gross bookings per active driver-week | Rs 5,817 | Rs 5,861 | up 0.8 percent |
-| Peak online hours | 1,18,000 | 1,46,300 | up 24 percent |
+| Six weeks each side | 20 Jul to 30 Aug | 31 Aug to 11 Oct |
+|---|---|---|
+| Gross bookings per peak online hour | Rs 314 | Rs 260, down 17 percent |
+| Average peak fare (bookings per trip) | Rs 165 | Rs 165, flat |
+| Gross bookings per active driver-week | Rs 5,817 | Rs 5,861, up 0.8 percent |
+| Peak online hours | 118,000 | 146,300, up 24 percent |
 
-**Data.** Monday's tables: `driver_weeks` (one row per driver per week, with `peak_online_hours`, `peak_trips`, `peak_bookings_rs`, `topup_rs`) and `zone_weeks` (rider requests and median wait by zone and week). **The afternoon ask.** Roughly how many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes, in fifteen minutes, without a dataset. **Caveats.** Each objection is partly right; the peak window is three hours long; no published figure exists for the number a sanity check on the afternoon ask would want.
+**Data.** Monday's `driver_weeks` and `zone_weeks`. **The afternoon ask.** How many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes, sized in fifteen minutes without a dataset. **Caveats.** Each objection is partly right; the peak window is three hours long; no published figure exists to check the afternoon's answer against.
 
 > Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
@@ -78,7 +78,7 @@ Transition: where the day ends, so the room can see the climb.
 ## S3. Where today ends: a slide its losers can repeat
 *What sentence will the city head be able to say on Thursday?*
 
-> "The scheme is paying for online hours that carry no trips: gross bookings per peak online hour fell from Rs 314 to Rs 260 while the fare held at Rs 165. The monsoon ended inside the window, so part of the fall may be the season. Pay per completed peak trip with an acceptance floor; that returns Rs 58 lakh to Rs 93 lakh over six weeks if a fifth to a half of the idle drivers start accepting."
+> "The scheme is paying for online hours that carry no trips: gross bookings per peak online hour fell from Rs 314 to Rs 260 while the fare held at Rs 165. The monsoon ended inside the window, so part of the fall may be the season. Pay per completed peak trip with an acceptance floor; that returns Rs 58 lakh to Rs 92.7 lakh over six weeks depending on whether half or a fifth of the idle drivers start accepting."
 
 **By the end of the afternoon** you will also have sized the drivers the evening peak needs, said every assumption aloud, given a range, and checked it against a ratio the case's own data can confirm.
 
@@ -130,10 +130,13 @@ Transition: a vote on four titles.
 ## S5. Predict: which of these four titles acts?
 *Which title tells the city head what to do on the first read?*
 
-- a) Peak guarantee: six-week review
-- b) Online hours up 24 percent, trips up 3 percent
-- c) The scheme pays for idle hours: pay per completed trip
-- d) Hyderabad operations update, October
+a) Peak guarantee: six-week review
+
+b) Online hours up 24 percent, trips up 3 percent
+
+c) The scheme pays for idle hours: pay per completed trip
+
+d) Hyderabad operations update, October
 
 **Write your letter down before the next slide.**
 
@@ -211,10 +214,13 @@ Transition: which two of the nine carry a claim.
 ## S9. Which two of the nine numbers carry the claim?
 *If the slide may keep only two numbers, which two make the case?*
 
-- a) Peak online hours +24 percent and completed peak trips +3 percent
-- b) Trips per peak online hour 1.90 to 1.58 and top-up to low acceptance 61 percent
-- c) Median rider wait 4.8 to 4.6 minutes and new drivers since launch 140
-- d) Acceptance share 0.86 to 0.73 and top-up paid Rs 1.9 crore
+a) Peak online hours +24 percent and completed peak trips +3 percent
+
+b) Trips per peak online hour 1.90 to 1.58 and top-up to low acceptance 61 percent
+
+c) Median rider wait 4.8 to 4.6 minutes and new drivers since launch 140
+
+d) Acceptance share 0.86 to 0.73 and top-up paid Rs 1.9 crore
 
 **Low acceptance** means a driver-week that accepted fewer than half the requests offered.
 
@@ -257,7 +263,7 @@ Transition: two more slides, rebuilt by the groups.
 | Top-up per completed trip | | Rs 82.3 |
 | Top-up to low acceptance | | Rs 1.16 crore |
 | Top-up to everyone else | | Rs 74 lakh |
-| Rider requests | 2,51,910 | 2,56,556 |
+| Rider requests | 251,910 | 256,556 |
 
 **Half worked.** The claim is drafted for you: "Rs 1.16 crore of the top-up went to driver-weeks that accepted fewer than half their offers." Choose the one number that proves it, and the caveat that sits beside it.
 
@@ -277,7 +283,7 @@ Transition: slide C.
 |---|---|---|
 | Drivers | 1,200 (140 new) | |
 | Active driver-weeks | 6,360 | 6,500 |
-| Offers shown to drivers | 2,69,773 | 3,47,583 |
+| Offers shown to drivers | 269,773 | 347,583 |
 | Acceptance share | 0.86 | 0.73 |
 | Driver cancels after accepting | 0.04 | 0.09 |
 | Drivers in the idle tail | | 180 |
@@ -324,10 +330,13 @@ Transition: the same arithmetic as a picture.
 ## S14. Predict: which way does each read go for the city?
 *Over all the driver-weeks, which pair of moves holds?*
 
-- a) Per hour falls; per driver-week falls
-- b) Per hour falls; per driver-week rises a little
-- c) Per hour holds; per driver-week falls
-- d) Both hold nearly flat
+a) Per hour falls; per driver-week falls
+
+b) Per hour falls; per driver-week rises a little
+
+c) Per hour holds; per driver-week falls
+
+d) Both hold nearly flat
 
 **On the six drivers,** per driver-week fell 23 percent because the same six drivers sit in both weeks; the city's count of active driver-weeks moves.
 
@@ -397,7 +406,7 @@ Transition: what chapter 1 adds to Tuesday's node.
 
 ```mermaid
 flowchart LR
-    M["<b>Mon</b><br/>pay for trips"] --> T["<b>Tue, chapter 1</b><br/>the claim: the scheme pays for idle hours<br/>the evidence: Rs 314 to Rs 260 per online hour"]
+    M["<b>Mon</b><br/>pay for trips"] --> T["<b>Tue, chapter 1</b><br/>it pays for idle hours<br/>Rs 314 to Rs 260 an hour"]
     T -.-> N["<b>chapter 2</b><br/>the defence"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -407,7 +416,7 @@ flowchart LR
     class N unknown
 ```
 
-**Said plainly:** "An hour online used to bring in Rs 314 of fares and now brings in Rs 260, because more of those hours have no rider." **In the interview** [S]: present a recommendation to a non-technical stakeholder in two minutes, opening on that sentence.
+**Chapter 1 adds** the claim (the scheme pays for idle hours) and its denominator (Rs 314 to Rs 260 per peak online hour). **Said plainly:** "An hour online used to bring in Rs 314 of fares and now brings in Rs 260, because more of those hours have no rider." **In the interview** [S]: present a recommendation to a non-technical stakeholder in two minutes, opening on that sentence.
 
 ```notes
 LIVE, 2 minutes. Ask two learners to say the plain sentence aloud without the slide.
@@ -431,10 +440,13 @@ Transition: the prediction.
 ## S19. Predict: which role will the city head side with?
 *When the three objections land, whose side is the city head on?*
 
-- a) The driver-operations lead: "Drivers will log off and supply at peak will fall"
-- b) The marketing lead: "The guarantee is on every hoarding; changing it six weeks in looks like bait"
-- c) The finance partner: "The fall in bookings per hour is the monsoon ending, not the scheme"
-- d) None of them outright, because each objection is partly right
+a) The driver-operations lead: "Drivers will log off and supply at peak will fall"
+
+b) The marketing lead: "The guarantee is on every hoarding; changing it six weeks in looks like bait"
+
+c) The finance partner: "The fall in bookings per hour is the monsoon ending"
+
+d) None of them outright, because each objection is partly right
 
 ```notes
 LIVE, 3 minutes. Vote, two minutes with a neighbour, revote. Count both votes on the board.
@@ -448,7 +460,7 @@ Transition: the true part of each.
 
 | Role | The true part | The part the evidence answers |
 |---|---|---|
-| Driver operations | The 180 idle-tail drivers will log off: their idle hours are what stops being paid | The other 1,020 drivers held at 1.90 to 1.89 trips per online hour and keep the floor if they accept |
+| Driver operations | The 180 idle-tail drivers will log off: their idle hours are what stops being paid | The other 880 drivers, there before the launch, held at 1.90 trips per online hour and keep the floor if they accept |
 | Marketing | The hoarding promised a floor, and 140 drivers joined after it went up | The floor stays for drivers who accept; none of the 140 joiners is in the idle tail |
 | Finance | The monsoon ended inside the window, and last year's weeks are not in the data | Rider requests rose 1.8 percent; drivers who joined before the launch fell from 1.90 to 1.58 |
 
@@ -456,7 +468,8 @@ Transition: the true part of each.
 
 ```notes
 LIVE, 5 minutes. One row at a time. Every number here is Monday's or is computed from Monday's
-tables in the facts file: the 1,020 are the 1,200 drivers less the idle tail.
+tables in the facts file: the 880 are the 1,200 drivers less the 180 in the idle tail and the 140
+joiners, and none of the joiners is in the tail.
 Transition: the shape a defence takes.
 ```
 
@@ -570,10 +583,13 @@ Transition: a prediction.
 ## S26. Predict: which of these belongs in the appendix?
 *Of four things the slide could carry, which one moves behind it?*
 
-- a) The caveat that the monsoon ended inside the window
-- b) The per-driver-week and per-trip reads, with one line each on what moved them
-- c) The action and its saving range
-- d) The chart of bookings per peak online hour
+a) The caveat that the monsoon ended inside the window
+
+b) The per-driver-week and per-trip reads, with one line each on what moved them
+
+c) The action and its saving range
+
+d) The chart of bookings per peak online hour
 
 ```notes
 LIVE, 3 minutes. Letters on paper. Expect some votes for a, since caveats feel like detail.

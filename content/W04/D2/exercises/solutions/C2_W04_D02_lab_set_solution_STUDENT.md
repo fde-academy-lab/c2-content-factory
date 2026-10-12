@@ -1,7 +1,8 @@
 # What do strong answers to the Kalpa lab look like?
 
 Released at the end of the lab. The Kalpa slide is scored on its parts and moves, never its number,
-so this page gives the shape of a strong answer and the worked estimate, not a single right slide.
+so this page gives the shape of a strong answer and the worked estimate, and many different slides
+pass.
 
 ## What does a strong Kalpa north-star slide carry?
 
@@ -38,8 +39,8 @@ over 5 staff-days it is Rs 2,400 a staff-day. A scheme that pays by the hour rea
 staff-hour.
 
 **P3.** Restate: "you are saying drivers will log off and supply at peak will fall." Answer: "the
-drivers who log off are the 180 in the idle tail; the other 1,020 held at 1.90 to 1.89 trips per
-online hour." Concede: "some drivers will log off, and the outer zones are thin." What would change my
+drivers who log off are the 180 in the idle tail; the other 880, there before the launch, held at
+1.90 trips per online hour in both windows." Concede: "some drivers will log off, and the outer zones are thin." What would change my
 mind: "median rider wait at peak rising in the test."
 
 **P4.** Keep the north-star chart and one guardrail that answers the CEO's question; the table of all

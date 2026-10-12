@@ -19,7 +19,7 @@ reuses these questions.
 | Clarified the scope first | 0 | 2 | Asked which decision (redesign or extend), who else hears it, and whether two minutes is the whole slot |
 | Named the denominator and the window | 0 | 2 | "An hour a driver spends online at peak", six weeks after the launch on 31 August against six weeks before |
 | Saw the trap | 0 | 2 | Named the per-driver-week rise before anyone quoted it, and said why it is not what the scheme pays for |
-| Sized it with a unit | 1 | 2 | Rs 1.16 crore of the Rs 1.9 crore; Rs 58 lakh to Rs 93 lakh over six weeks with its assumption |
+| Sized it with a unit | 1 | 2 | Rs 1.16 crore of the Rs 1.9 crore; Rs 58 lakh to Rs 92.7 lakh over six weeks with its assumption |
 | Said what would change their mind | 0 | 2 | A test in a few zones; last year's weeks |
 | Tied it to a decision and its cost | 1 | 2 | Pay per completed peak trip with an acceptance floor, and the saving range |
 | Gave the structure before the number | 0 | 2 | The claim is the first sentence |

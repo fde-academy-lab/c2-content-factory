@@ -52,29 +52,6 @@ def check(line, ok):
     print(f"PASS  {line}")
 
 
-def lakh(rs):
-    return f"Rs {rs / 1e5:,.0f} lakh"
-
-
-def crore(rs, places=2):
-    return f"Rs {rs / 1e7:.{places}f} crore"
-
-
-def indian(n):
-    """12,34,567 grouping, the way an Indian report prints a count."""
-    s = f"{int(round(n))}"
-    if len(s) <= 3:
-        return s
-    head, tail = s[:-3], s[-3:]
-    parts = []
-    while len(head) > 2:
-        parts.insert(0, head[-2:])
-        head = head[:-2]
-    if head:
-        parts.insert(0, head)
-    return ",".join(parts + [tail])
-
-
 # ------------------------------------------------------------------ Monday's tables and facts
 dw = pd.read_csv(MON / "data" / "C2_W04_D01_driver_weeks_STUDENT.csv")
 drivers = pd.read_csv(MON / "data" / "C2_W04_D01_drivers_STUDENT.csv")
@@ -182,20 +159,20 @@ for mid, shown in [
     ("drivers_total", "1,200 drivers"),
     ("drivers_new", "140 drivers joined after the launch"),
     ("zones_total", "12 zones"), ("zones_outer", "3 outer zones"),
-    ("hours_before", "1,18,000 hours"), ("hours_after", "1,46,300 hours"),
-    ("trips_before", "2,24,200 trips"), ("trips_after", "2,30,900 trips"),
+    ("hours_before", "118,000 hours"), ("hours_after", "146,300 hours"),
+    ("trips_before", "224,200 trips"), ("trips_after", "230,900 trips"),
     ("tph_before", "1.90"), ("tph_after", "1.58"),
     ("acceptance_before", "0.86"), ("acceptance_after", "0.73"),
     ("driver_cancel_share_before", "0.04"), ("driver_cancel_share_after", "0.09"),
     ("no_trip_share_before", "0.22"), ("no_trip_share_after", "0.38"),
-    ("offers_before", "2,69,773"), ("offers_after", "3,47,583"),
+    ("offers_before", "269,773"), ("offers_after", "347,583"),
     ("bookings_before_rs", "Rs 3.70 crore"), ("bookings_after_rs", "Rs 3.81 crore"),
     ("rs_per_hour_before", "Rs 314 (Rs 313.5)"), ("rs_per_hour_after", "Rs 260 (Rs 260.4)"),
     ("driver_weeks_before", "6,360 active driver-weeks"),
     ("driver_weeks_after", "6,500 active driver-weeks"),
     ("rs_per_driver_week_before", "Rs 5,817"), ("rs_per_driver_week_after", "Rs 5,861"),
     ("hours_change_pct", "up 24 percent"), ("trips_change_pct", "up 3 percent"),
-    ("requests_before", "2,51,910 rider requests"), ("requests_after", "2,56,556 rider requests"),
+    ("requests_before", "251,910 rider requests"), ("requests_after", "256,556 rider requests"),
     ("requests_change_pct", "up 1.8 percent"),
     ("unfulfilled_share_before", "0.11"), ("unfulfilled_share_after", "0.10"),
     ("median_wait_before", "4.8 minutes"), ("median_wait_after", "4.6 minutes"),
@@ -206,7 +183,7 @@ for mid, shown in [
     ("topup_per_trip_after_rs", "Rs 82.3 per completed trip"),
     ("uptake_low", "a fifth"), ("uptake_high", "a half"),
     ("saving_same_behaviour_rs", "Rs 1.16 crore"),
-    ("saving_low_rs", "Rs 58 lakh"), ("saving_high_rs", "Rs 93 lakh"),
+    ("saving_low_rs", "Rs 58 lakh"), ("saving_high_rs", "Rs 92.7 lakh"),
     ("idle_tail_drivers", "180 drivers"),
     ("idle_hours_before", "20,000 hours"), ("idle_hours_after", "42,000 hours"),
     ("idle_trips_before", "38,000 trips"), ("idle_trips_after", "33,440 trips"),
@@ -306,7 +283,7 @@ add("full_rs_per_hour_change_pct", hour_pct, "down 17 percent", "260.4 / 313.5 -
     "ticket; half1 S1, S14, S15; notebook cell 6; notes; sheet")
 add("full_rs_per_driver_week_change_pct", dw_pct, "up 0.8 percent", "5,861.3 / 5,816.5 - 1",
     "half1 S1, S14, S16; notebook cells 6 to 8; notes; sheet; exercises")
-add("full_bookings_change_pct", book_pct, "up 3.0 percent", "3,80,98,500 / 3,69,93,000 - 1",
+add("full_bookings_change_pct", book_pct, "up 3.0 percent", "38,098,500 / 36,993,000 - 1",
     "half1 S16; notebook cell 8; notes")
 add("full_driver_weeks_change_pct", rows_pct, "up 2.2 percent", "6,500 / 6,360 - 1",
     "half1 S16; notebook cell 8; notes")
@@ -319,35 +296,41 @@ add("joiner_driver_weeks_after", joiner_rows, "140 active driver-weeks",
     "rows of driver_weeks in the after window for drivers with joined_month 2026-09",
     "half1 S16; notebook cell 7; notes")
 hpw_b, hpw_a = fb["hours"] / fb["rows"], fa["hours"] / fa["rows"]
-add("hours_per_driver_week_before", round(hpw_b, 1), "18.6 hours", "1,18,000 / 6,360", "notebook depth line")
-add("hours_per_driver_week_after", round(hpw_a, 1), "22.5 hours", "1,46,300 / 6,500", "notebook depth line")
+add("hours_per_driver_week_before", round(hpw_b, 1), "18.6 hours", "118,000 / 6,360", "notebook depth line")
+add("hours_per_driver_week_after", round(hpw_a, 1), "22.5 hours", "146,300 / 6,500", "notebook depth line")
 check("second route: fare x trips per hour = rupees per hour, both windows",
       abs(165 * fb["trips"] / fb["hours"] - fb["per_hour"]) < 1e-9
       and abs(165 * fa["trips"] / fa["hours"] - fa["per_hour"]) < 1e-9)
 
-# The 1,020 drivers outside Monday's idle tail: driver operations' "drivers will log off" is false
-# for them, and this is the evidence line that says so.
+# Driver operations' "drivers will log off" is false for the drivers outside Monday's idle tail.
+# Monday's settled answer counts the 880 drivers who were there before the launch and sit outside
+# the tail (Monday's drivers_others), so Tuesday copies those ids and recounts them here; the 140
+# joiners are a separate group, and none of them is in the tail.
 after_rate = A.groupby("driver_id")[["peak_trips", "peak_online_hours"]].sum()
 idle_ids = set(after_rate[after_rate.peak_trips / after_rate.peak_online_hours < 1.0].index)
 check("Monday's idle tail recounts to 180 drivers", len(idle_ids) == M["idle_tail_drivers"])
 joiners = set(drivers[drivers.joined_month == "2026-09"].driver_id)
 check("none of the 140 joiners sits in the idle tail", len(idle_ids & joiners) == 0)
-rest = dw[~dw.driver_id.isin(idle_ids)]
-rb, ra = three(rest[rest.window == "before"]), three(rest[rest.window == "after"])
-rest_topup = int(rest[rest.window == "after"].topup_rs.sum())
-check("the rest were paid Monday's Rs 74.1 lakh of top-up", rest_topup == M["topup_high_acceptance_rs"])
-add("rest_drivers", rest.driver_id.nunique(), "1,020 drivers", "1,200 less the 180 in the idle tail",
-    "half1 S20, S21; role cards; notes")
-add("rest_hours_before", rb["hours"], "98,000 hours", "peak hours, drivers outside the idle tail, before", "role cards")
-add("rest_hours_after", ra["hours"], "1,04,300 hours", "the same, after", "role cards")
-add("rest_trips_before", rb["trips"], "1,86,200 trips", "peak trips, drivers outside the idle tail, before", "role cards")
-add("rest_trips_after", ra["trips"], "1,97,460 trips", "the same, after", "role cards")
-add("rest_tph_before", round(rb["trips"] / rb["hours"], 2), "1.90", "1,86,200 / 98,000",
-    "half1 S20, S21; role cards; notes; exercises")
-add("rest_tph_after", round(ra["trips"] / ra["hours"], 2), "1.89", "1,97,460 / 1,04,300",
-    "half1 S20, S21; role cards; notes; exercises")
-add("rest_trips_change_pct", round((ra["trips"] / rb["trips"] - 1) * 100, 1), "up 6 percent",
-    "1,97,460 / 1,86,200 - 1", "role cards; notes")
+others = dw[~dw.driver_id.isin(idle_ids | joiners)]
+ob, oa = three(others[others.window == "before"]), three(others[others.window == "after"])
+check("the other drivers recount to Monday's 880", others.driver_id.nunique() == M["drivers_others"])
+check("their hours and trips recount to Monday's ids, both windows",
+      (ob["hours"], oa["hours"], ob["trips"], oa["trips"])
+      == (M["others_hours_before"], M["others_hours_after"],
+          M["others_trips_before"], M["others_trips_after"]))
+check("their trips per online hour are Monday's 1.90 in both windows",
+      round(ob["trips"] / ob["hours"], 2) == M["others_tph_before"] == 1.9
+      and round(oa["trips"] / oa["hours"], 2) == M["others_tph_after"] == 1.9)
+rest_topup = int(dw[(dw.window == "after") & ~dw.driver_id.isin(idle_ids)].topup_rs.sum())
+check("the drivers outside the tail were paid Monday's Rs 74.1 lakh of top-up",
+      rest_topup == M["topup_high_acceptance_rs"])
+for mid, shown in [("drivers_others", "880 drivers"), ("others_hours_before", "98,000 hours"),
+                   ("others_hours_after", "102,000 hours"), ("others_trips_before", "186,200 trips"),
+                   ("others_trips_after", "193,800 trips"), ("others_tph_before", "1.90"),
+                   ("others_tph_after", "1.90")]:
+    reuse(mid, shown)
+add("others_trips_change_pct", round((oa["trips"] / ob["trips"] - 1) * 100, 1), "up 4 percent",
+    "193,800 / 186,200 - 1, the other 880 drivers", "role cards; studio solution")
 add("idle_tph_after", round(M["idle_trips_after"] / M["idle_hours_after"], 1), "0.8 trips an hour",
     "33,440 / 42,000, the idle tail after the launch", "studio solution; notes")
 add("idle_tail_joiners", 0, "none of the 140", "joiners among the 180 idle-tail drivers",
@@ -397,12 +380,12 @@ add("peak_hours_in_window", peak_hours_window, "252 peak hours",
     "42 peak hours a week x 6 weeks, Monday's definition (two three-hour windows on all seven days)",
     "half2 S10; notebook cell 14; guesstimate note")
 add("requests_per_peak_hour_after", round(M["requests_after"] / peak_hours_window),
-    "about 1,018 an hour", "2,56,556 / 252", "half2 S10; notebook cell 14; guesstimate note")
+    "about 1,018 an hour", "256,556 / 252", "half2 S10; notebook cell 14; guesstimate note")
 add("drivers_online_per_peak_hour_after", round(M["hours_after"] / peak_hours_window),
-    "about 581 drivers", "1,46,300 / 252", "guesstimate note")
-add("driver_hours_per_request_before", round(dh_req_b, 2), "0.47", "1,18,000 / 2,51,910",
+    "about 581 drivers", "146,300 / 252", "guesstimate note")
+add("driver_hours_per_request_before", round(dh_req_b, 2), "0.47", "118,000 / 251,910",
     "half2 S10; notebook cell 14; notes; exercises")
-add("driver_hours_per_request_after", round(dh_req_a, 2), "0.57", "1,46,300 / 2,56,556",
+add("driver_hours_per_request_after", round(dh_req_a, 2), "0.57", "146,300 / 256,556",
     "half2 S10; notebook cell 14; notes")
 check("driver-hours per request 0.47 before and 0.57 after",
       (round(dh_req_b, 2), round(dh_req_a, 2)) == (0.47, 0.57))
@@ -673,11 +656,11 @@ facts["cluttered_slides"] = {
         ("Top-up per completed trip", "Rs 82.3", "topup_per_trip_after_rs"),
         ("Top-up, under-half acceptance", "Rs 1.16 crore", "topup_low_acceptance_rs"),
         ("Top-up, everyone else", "Rs 74 lakh", "topup_high_acceptance_rs"),
-        ("Rider requests", "2,51,910 to 2,56,556", "requests_before, requests_after")),
+        ("Rider requests", "251,910 to 256,556", "requests_before, requests_after")),
     "C_driver_ops": ids(
         ("Drivers", "1,200 (140 new)", "drivers_total, drivers_new"),
         ("Active driver-weeks", "6,360 to 6,500", "driver_weeks_before, driver_weeks_after"),
-        ("Offers shown to drivers", "2,69,773 to 3,47,583", "offers_before, offers_after"),
+        ("Offers shown to drivers", "269,773 to 347,583", "offers_before, offers_after"),
         ("Acceptance share", "0.86 to 0.73", "acceptance_before, acceptance_after"),
         ("Driver cancels after accepting", "0.04 to 0.09",
          "driver_cancel_share_before, driver_cancel_share_after"),

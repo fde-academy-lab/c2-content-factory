@@ -32,10 +32,10 @@ busy driver's trips: about 4,600 to 6,800 each. The idle share: about 5,100 to 6
 about 5,100 to 6,300. The buffer: about 5,500 to 6,200. The share who ride sets the range.
 
 **The check.** The case's twelve zones had 0.47 online driver-hours behind each rider request before
-the launch (1,18,000 hours over 2,51,910 requests, median wait 4.8 minutes) and 0.57 after. The chain
+the launch (118,000 hours over 251,910 requests, median wait 4.8 minutes) and 0.57 after. The chain
 puts 1 / 1.68 = 0.60 behind each request before its buffer, about a quarter more, so it errs generous.
 Monday's data counts peak hours on all seven days, two three-hour windows a day, 42 hours a week, so
-its 2,56,556 after-window requests are about 1,018 an hour: a slice of the city, which checks the ratio
+its 256,556 after-window requests are about 1,018 an hour: a slice of the city, which checks the ratio
 and never the count.
 
 **The anchor: to be found.** No published figure for Uber drivers online at Hyderabad's evening peak

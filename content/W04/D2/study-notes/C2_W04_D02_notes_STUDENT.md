@@ -114,7 +114,7 @@ the call stands, the replay is shown, the close part is admitted.
 
 | Role | True part | Answered by |
 |---|---|---|
-| Driver operations: "drivers will log off" | The 180 idle-tail drivers will | The other 1,020 held at 1.90 to 1.89 trips per online hour |
+| Driver operations: "drivers will log off" | The 180 idle-tail drivers will | The other 880, there before the launch, held at 1.90 trips per online hour |
 | Marketing: "it looks like bait" | The hoarding promised a floor | The floor stays for drivers who accept; no joiner is in the idle tail |
 | Finance: "it is the monsoon" | The season changed; last year's weeks are missing | Requests rose 1.8 percent; the busiest after weeks still ran at 1.60 |
 
@@ -161,7 +161,7 @@ answer from about 2,900 to about 8,600, more than any other factor.
 
 ![Which assumption moves the answer most](../whiteboards/C2_W04_D02_guesstimate_swing_STUDENT.png)
 
-The case's data can check a ratio, not the count: its twelve zones had 0.47 online driver-hours behind
+The case's data can check one ratio in the chain and holds no city count: its twelve zones had 0.47 online driver-hours behind
 each rider request before the launch, against the chain's 0.60, so the chain runs generous. The city
 figure is to be found.
 

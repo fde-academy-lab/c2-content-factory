@@ -131,6 +131,7 @@ what?
 | Material | Copies | Where it lives |
 |---|---|---|
 | The three role cards for the Uber roles | 12 sets | `trainer/C2_W04_D02_role_cards_TRAINER.md` |
+| Monday's role cards, for the trainer only, to quote what each role argued on Monday | 1 | `content/W04/D1/trainer/C2_W04_D01_role_cards_TRAINER.md` |
 | The four-moves scorer's card | 12 | Below |
 | The dojo scorer's card | 18 | Below |
 | The written case's brief and a blank sheet | 35 | `exercises/unguided/C2_W04_D02_written_case_STUDENT.md` |
@@ -138,7 +139,7 @@ what?
 | Three dots for each learner | 35 sets of three | |
 | The Kalpa role cards for the lab | 3 | `trainer/C2_W04_D02_role_cards_TRAINER.md` |
 
-## Printable: the four-moves scorer's card
+## Printable: what does the four-moves scorer tick?
 
 | Move | Heard? | What I heard |
 |---|---|---|
@@ -150,7 +151,7 @@ what?
 
 The final number is never scored.
 
-## Printable: the dojo scorer's card
+## Printable: what does the dojo scorer tick?
 
 | Check | Yes or no |
 |---|---|

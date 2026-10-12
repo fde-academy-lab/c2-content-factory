@@ -76,7 +76,7 @@ d) DMart's revenue divided by the average of 415 and 500 stores
 
 a) The case data's online driver-hours behind each rider request, with the city count to be found
 b) A published count of Uber drivers signed up in Hyderabad
-c) Monday's 2,56,556 rider requests across the twelve zones in the six weeks that followed the launch
+c) Monday's 256,556 rider requests across the twelve zones in the six weeks that followed the launch
 d) The 1,200 drivers in Monday's driver table, counted as the city's supply
 
 ---

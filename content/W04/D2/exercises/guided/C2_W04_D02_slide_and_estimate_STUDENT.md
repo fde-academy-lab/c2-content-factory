@@ -42,7 +42,7 @@ full, it becomes four parts:
 | 1. The claim, as the title | The scheme is paying for online hours that carry no trips |
 | 2. The evidence, with its denominator | A chart of gross bookings per peak online hour over twelve weeks: Rs 314 before, Rs 260 after, the drop in the launch week |
 | 3. The caveat, beside the evidence | The monsoon ended inside the window, and last year's weeks are not in the data |
-| 4. The action, its cost, who signs | Pay per completed peak trip with an acceptance floor: Rs 58 lakh to Rs 93 lakh back over six weeks if a fifth to a half of idle drivers start accepting; the city head signs |
+| 4. The action, its cost, who signs | Pay per completed peak trip with an acceptance floor: Rs 58 lakh to Rs 92.7 lakh back over six weeks depending on whether half or a fifth of idle drivers start accepting; the city head signs |
 
 The saving comes from Monday: Rs 1.16 crore of the Rs 1.9 crore top-up went to driver-weeks that
 accepted fewer than half the requests offered to them. If a fifth to a half of that is still paid,
@@ -67,7 +67,7 @@ accepted fewer than half their offers." Finance's tab holds these nine:
 | Top-up per completed trip | | Rs 82.3 |
 | Top-up to low acceptance | | Rs 1.16 crore |
 | Top-up to everyone else | | Rs 74 lakh |
-| Rider requests | 2,51,910 | 2,56,556 |
+| Rider requests | 251,910 | 256,556 |
 
 Low acceptance means a driver-week that accepted fewer than half the requests offered. An active
 driver-week is one driver with a row in the week's table.
@@ -78,7 +78,7 @@ driver-week is one driver with a row in the week's table.
 
 a) Top-up per completed trip, Rs 82.3 in the six weeks after the launch
 b) Bookings per active driver-week, Rs 5,817 before and Rs 5,861 after
-c) Rider requests, 2,51,910 before and 2,56,556 after the launch
+c) Rider requests, 251,910 before and 256,556 after the launch
 d) Top-up to low acceptance, Rs 1.16 crore of the Rs 1.9 crore paid
 
 ---

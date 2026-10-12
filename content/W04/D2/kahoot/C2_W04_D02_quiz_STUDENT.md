@@ -34,7 +34,7 @@ slide's own figures.
 
 ---
 
-## Q3. True or false: the best defence of a slide never concedes anything to an objector.
+## Q3. True or false: should the best defence of a slide concede nothing to an objector?
 *Tests: the third of the four moves, and the trap of conceding nothing.*
 
 - True, because any concession hands the objector the whole meeting

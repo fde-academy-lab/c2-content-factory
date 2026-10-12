@@ -33,10 +33,13 @@ Transition: the opening question.
 ## S33. Predict: which number would check this estimate?
 *You have sized drivers online at the weekday evening peak. Which of these numbers checks it?*
 
-- a) Monday's rider requests after the launch, 2,56,556 over six weeks
-- b) A published count of Uber drivers signed up in Hyderabad
-- c) A published count of Uber drivers online at one weekday evening peak in Hyderabad
-- d) The online driver-hours behind each rider request in the case's own data
+a) Monday's rider requests after the launch, 256,556 over six weeks
+
+b) A published count of Uber drivers signed up in Hyderabad
+
+c) A published count of Uber drivers online at one weekday evening peak in Hyderabad
+
+d) The online driver-hours behind each rider request in the case's own data
 
 ```notes
 LIVE, 3 minutes. Letters on paper, then a show of letters. Expect a, because it is the only number
@@ -131,7 +134,7 @@ Transition: the city head's question, clarified.
 |---|---|
 | Which city? | The Hyderabad metro area, Uber only |
 | Which window? | The weekday evening peak, three hours long |
-| Drivers online when? | At one moment of the window, not counted across it |
+| Drivers online when? | At one moment inside the window, since a count summed over three hours is another unit |
 | What target? | A median rider wait under five minutes |
 | Requests or trips? | Rider requests, each one a trip to serve |
 
@@ -150,7 +153,7 @@ Transition: the map.
 
 ```mermaid
 flowchart TD
-    D["<b>Drivers online at the peak</b><br/>requests an hour / trips per online driver-hour x buffer"]
+    D["<b>Drivers online at the peak</b>"]
     R["<b>Rider requests an hour</b><br/>about 8,300"]
     P["people in the city<br/>about 1 crore"]
     S["share who ride on a weekday<br/>1 percent"]
@@ -173,7 +176,7 @@ flowchart TD
     class R,T,X known
 ```
 
-**Each leaf is an assumption with a range.** A trip at the peak takes about 25 minutes from accepting to dropping, so a busy driver fits 2.4 an hour; the idle share is the share of online drivers with no rider at that moment.
+**Drivers online = requests an hour / trips per online driver-hour x buffer.** Each leaf is an assumption with a range. A trip at the peak takes about 25 minutes from accepting to dropping, so a busy driver fits 2.4 an hour; the idle share is the share of online drivers with no rider at that moment.
 
 ```notes
 LIVE, 6 minutes. Build the tree on the board with the room, leaf by leaf, asking for each value.
@@ -231,7 +234,7 @@ value: 0.57 | label: driver-hours per request, after | note: the same zones, med
 value: 0.60 | label: the chain, before its buffer | note: 1 / 1.68, about a quarter above 0.47
 ```
 
-**Monday's data counts peak hours on all seven days, two three-hour windows a day, 42 hours a week,** so its 2,56,556 after-window requests are about 1,018 an hour: a slice of the city run by 1,200 drivers, which can check the ratio and never the city's count. The published figure for Uber drivers online at Hyderabad's evening peak is to be found.
+**Monday's data counts peak hours on all seven days, two three-hour windows a day, 42 hours a week,** so its 256,556 after-window requests are about 1,018 an hour: a slice of the city run by 1,200 drivers, which can check the ratio and never the city's count. The published figure for Uber drivers online at Hyderabad's evening peak is to be found.
 
 ```notes
 LIVE, 3 minutes. Synthetic, labelled: these are the case's numbers, not Uber's. The chain errs on
@@ -323,7 +326,7 @@ Transition: what chapter 4 adds to Tuesday's node.
 
 ```mermaid
 flowchart LR
-    M["<b>Mon</b><br/>pay for trips"] --> T["<b>Tue</b><br/>one slide: Rs 314 to Rs 260 per online hour<br/>four moves; one appendix page per role<br/>about 5,700 drivers, 2,900 to 8,600"]
+    M["<b>Mon</b><br/>pay for trips"] --> T["<b>Tue</b><br/>one slide, four moves<br/>about 5,700 drivers"]
     T -.-> W["<b>Wed</b><br/>what goes with what"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -333,7 +336,7 @@ flowchart LR
     class W unknown
 ```
 
-**In the interview** [S]: estimate a number from nothing, aloud, and check it. The structure and the sanity check carry the score.
+**Tuesday's node now carries** the slide (Rs 314 to Rs 260 per online hour, defended in four moves, one appendix page per role) and the estimate (about 5,700 drivers, between 2,900 and 8,600). **In the interview** [S]: estimate a number from nothing, aloud, and check it. The structure and the sanity check carry the score.
 
 ```notes
 LIVE, 1 minute, taken from the traps slide's seven. Then the break.
@@ -360,7 +363,7 @@ Transition: the brief.
 ```cards
 icon: target | eyebrow: First sentence | title: The claim | body: What the city head should believe, in words a driver would follow | tone: light
 icon: hash | eyebrow: Second | title: One number and its denominator | body: The rupees per peak online hour, before and after | tone: light
-icon: triangle-alert | eyebrow: Third | title: The caveat | body: In the body of the page, not in a bracket at the end | tone: light
+icon: triangle-alert | eyebrow: Third | title: The caveat | body: In the body of the page, where the reader meets it before the action | tone: light
 icon: circle-check | eyebrow: Last | title: The action and its cost | body: What to do, the saving in rupees over weeks, who signs | tone: light
 ```
 
@@ -407,7 +410,7 @@ Transition: transcript 1.
 
 | A weak opening | A hire-grade opening |
 |---|---|
-| "So I looked at the dashboard. Online hours are up 24 percent, trips are up 3 percent, trips per hour went from 1.90 to 1.58, acceptance fell, and bookings per driver-week is actually up, so it is mixed." | "The scheme is paying for online hours that carry no trips. An hour online used to bring in Rs 314 of fares and now brings in Rs 260 at the same fare. Part of that may be the monsoon. Paying per completed trip with an acceptance floor returns Rs 58 lakh to Rs 93 lakh over six weeks if a fifth to a half of idle drivers start accepting." |
+| "So I looked at the dashboard. Online hours are up 24 percent, trips are up 3 percent, trips per hour went from 1.90 to 1.58, acceptance fell, and bookings per driver-week is actually up, so it is mixed." | "The scheme is paying for online hours that carry no trips. An hour online used to bring in Rs 314 of fares and now brings in Rs 260 at the same fare. Part of that may be the monsoon. Paying per completed trip with an acceptance floor returns Rs 58 lakh to Rs 92.7 lakh over six weeks depending on whether half or a fifth of idle drivers start accepting." |
 
 **The follow-ups:** what is the one caveat you would say before anyone decides; which denominator did you choose, and what would make you choose another; the finance partner says it is the monsoon, so answer in under a minute.
 
@@ -528,7 +531,7 @@ Transition: where the day ends.
 ## S56. Where the day ends: a slide, a page and a range
 *What will the city head hear on Thursday, and what comes tomorrow?*
 
-> "The scheme is paying for online hours that carry no trips: Rs 314 to Rs 260 per peak online hour at a flat Rs 165 fare. Part of it may be the monsoon. Pay per completed peak trip with an acceptance floor, which returns Rs 58 lakh to Rs 93 lakh over six weeks if a fifth to a half of idle drivers start accepting. At the evening peak the city needs about 5,700 drivers online, between 2,900 and 8,600."
+> "The scheme is paying for online hours that carry no trips: Rs 314 to Rs 260 per peak online hour at a flat Rs 165 fare. Part of it may be the monsoon. Pay per completed peak trip with an acceptance floor, which returns Rs 58 lakh to Rs 92.7 lakh over six weeks depending on whether half or a fifth of idle drivers start accepting. At the evening peak the city needs about 5,700 drivers online, between 2,900 and 8,600."
 
 **The lines to keep.** A slide carries one claim, one number with its denominator, the caveat in sight and the action with its cost. Name the denominator before the number. Answer an objection in four moves. Size a number in four steps and give the factor that drives the range. Check in the same unit, period and definition.
 

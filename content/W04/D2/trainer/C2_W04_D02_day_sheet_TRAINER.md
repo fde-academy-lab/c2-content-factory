@@ -47,8 +47,8 @@ can I size a number from nothing and know it is sane?**
 
 **The day's answer, at the close.** The S56 sentence: "The scheme is paying for online hours that carry
 no trips: Rs 314 to Rs 260 per peak online hour at a flat Rs 165 fare. Part of it may be the monsoon.
-Pay per completed peak trip with an acceptance floor, which returns Rs 58 lakh to Rs 93 lakh over six
-weeks if a fifth to a half of idle drivers start accepting. At the evening peak the city needs about
+Pay per completed peak trip with an acceptance floor, which returns Rs 58 lakh to Rs 92.7 lakh over six
+weeks depending on whether half or a fifth of idle drivers start accepting. At the evening peak the city needs about
 5,700 drivers online, between 2,900 and 8,600."
 
 ## What does Tuesday cover, and where does it stop?
@@ -120,8 +120,8 @@ way.** Which number, from which table?
 | Rs 5,817 to Rs 5,861 | Per active driver-week; up 0.8 percent (bookings up 3.0, active driver-weeks up 2.2, 6,360 to 6,500) |
 | Rs 165 | The fare, both windows; Rs 165 x 1.90 = Rs 313.5 and Rs 165 x 1.58 = Rs 260.4 |
 | Rs 1.9 crore; Rs 1.16 crore; 61 percent | The top-up; the part paid to driver-weeks accepting under half their offers |
-| Rs 58 lakh to Rs 93 lakh | Monday's saving: Rs 1.159 crore x (1 - a half) to x (1 - a fifth), the share still paid if idle drivers start accepting |
-| 180; 1,020; 1.90 to 1.89 | Idle-tail drivers; drivers outside it; their trips per online hour |
+| Rs 58 lakh to Rs 92.7 lakh | Monday's saving: Rs 1.159 crore x (1 - a half) to x (1 - a fifth), depending on whether half or a fifth of it is still paid because idle drivers start accepting |
+| 180; 880; 1.90 | Idle-tail drivers; the other drivers who were there before the launch; their trips per online hour in both windows (Monday's `drivers_others`, `others_tph_before`, `others_tph_after`) |
 | 1.8 percent; 1.60; 1.58 | Rider requests' rise; trips per hour in the busiest after weeks; drivers who joined before the launch |
 | About 5,700, from 2,900 to 8,600 | Drivers at the evening peak; the range from the share who ride |
 | 0.47 and 0.57; 0.60 | Online driver-hours per rider request before and after, in the case's zones; the chain's figure before its buffer |
@@ -134,7 +134,7 @@ Every number is in `internal/C2_W04_D02_facts_INTERNAL.yaml` with how it was com
 **Who needs the answer.** The trainer, when a learner asks "what would a good answer say?". **The
 questions on the way.** One answer per tagged question.
 
-- **[S] Present a recommendation to a non-technical stakeholder in two minutes.** Claim first ("the scheme is paying for online hours that carry no trips"), one number with its denominator (Rs 314 to Rs 260 per peak online hour), the caveat (the monsoon), the action with its cost and signer (pay per trip with an acceptance floor, Rs 58 lakh to Rs 93 lakh over six weeks, the city head signs a test first).
+- **[S] Present a recommendation to a non-technical stakeholder in two minutes.** Claim first ("the scheme is paying for online hours that carry no trips"), one number with its denominator (Rs 314 to Rs 260 per peak online hour), the caveat (the monsoon), the action with its cost and signer (pay per trip with an acceptance floor, Rs 58 lakh to Rs 92.7 lakh over six weeks, the city head signs a test first).
 - **[S] A guesstimate: how many customers could a new store sign up to a loyalty tier in its first year?** Clarify what a sign-up is; map households near the store x share who shop in year one x share who sign up; give the range and its factor; check the store's implied sales against a mature store's (DMart, about Rs 134 crore to Rs 146 crore a store by denominator) and say a first-year store sells less.
 - **[F] A stakeholder's objection is partly right; how do you answer it?** Restate until they agree, answer from a named line of evidence, concede the true part, say what would change your mind.
 - **[F] What do you leave off the slide, and where does it go?** Everything the claim does not need, to an appendix page headed by the question of the person who will ask; never the caveat.

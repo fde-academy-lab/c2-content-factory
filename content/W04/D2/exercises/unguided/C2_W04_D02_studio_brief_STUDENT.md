@@ -50,7 +50,7 @@ This comes up at work when a metric changes whose targets it judges.
 |---|---|---|
 | Driver-operations lead | "Drivers will log off, and supply at peak will fall" | Peak online hours as the headline |
 | Marketing lead | "The guarantee is on every hoarding; changing it six weeks in looks like bait" | A clean "Rs 300 an hour" line |
-| Finance partner | "The fall in bookings per hour is the monsoon ending, not the scheme" | Its own number, top-up per trip, as the headline |
+| Finance partner | "The fall in bookings per hour is the monsoon ending" | Its own number, top-up per trip, as the headline |
 
 Each objection is partly right. Find the true part before you answer.
 
@@ -71,11 +71,12 @@ This comes up in every stakeholder meeting and in every interview that asks how 
 
 a) Restate the worry; cite rider requests up 1.8 percent; concede nothing; say the data is final
 b) Skip the restatement; cite the Rs 1.16 crore paid to idle drivers; concede the claim; wait six weeks
-c) Restate the worry; cite 1,020 drivers holding at 1.89 trips an hour; concede the monsoon ended; run the test
+c) Restate the worry; cite 880 earlier drivers holding at 1.90 trips an hour; concede the monsoon ended; run the test
 d) Restate the worry; cite that no joiner is in the idle tail; concede the floor was promised; watch sign-ups
 
 The idle tail is Monday's name for the 180 drivers whose trips per online hour fell under 1.0 after
-the launch; 140 drivers joined after the launch, and 1,020 drivers sit outside the idle tail.
+the launch; 140 drivers joined after the launch, and the other 880, there before it, sit outside the
+idle tail.
 
 ---
 

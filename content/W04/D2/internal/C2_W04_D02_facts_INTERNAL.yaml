@@ -126,7 +126,7 @@ numbers:
   value: 3.0
   shown: up 3.0 percent
   unit: ''
-  how: 3,80,98,500 / 3,69,93,000 - 1
+  how: 38,098,500 / 36,993,000 - 1
   used_by: half1 S16; notebook cell 8; notes
 - id: full_driver_weeks_change_pct
   value: 2.2
@@ -150,62 +150,20 @@ numbers:
   value: 18.6
   shown: 18.6 hours
   unit: ''
-  how: 1,18,000 / 6,360
+  how: 118,000 / 6,360
   used_by: notebook depth line
 - id: hours_per_driver_week_after
   value: 22.5
   shown: 22.5 hours
   unit: ''
-  how: 1,46,300 / 6,500
+  how: 146,300 / 6,500
   used_by: notebook depth line
-- id: rest_drivers
-  value: 1020
-  shown: 1,020 drivers
+- id: others_trips_change_pct
+  value: 4.1
+  shown: up 4 percent
   unit: ''
-  how: 1,200 less the 180 in the idle tail
-  used_by: half1 S20, S21; role cards; notes
-- id: rest_hours_before
-  value: 98000
-  shown: 98,000 hours
-  unit: ''
-  how: peak hours, drivers outside the idle tail, before
-  used_by: role cards
-- id: rest_hours_after
-  value: 104300
-  shown: 1,04,300 hours
-  unit: ''
-  how: the same, after
-  used_by: role cards
-- id: rest_trips_before
-  value: 186200
-  shown: 1,86,200 trips
-  unit: ''
-  how: peak trips, drivers outside the idle tail, before
-  used_by: role cards
-- id: rest_trips_after
-  value: 197460
-  shown: 1,97,460 trips
-  unit: ''
-  how: the same, after
-  used_by: role cards
-- id: rest_tph_before
-  value: 1.9
-  shown: '1.90'
-  unit: ''
-  how: 1,86,200 / 98,000
-  used_by: half1 S20, S21; role cards; notes; exercises
-- id: rest_tph_after
-  value: 1.89
-  shown: '1.89'
-  unit: ''
-  how: 1,97,460 / 1,04,300
-  used_by: half1 S20, S21; role cards; notes; exercises
-- id: rest_trips_change_pct
-  value: 6.0
-  shown: up 6 percent
-  unit: ''
-  how: 1,97,460 / 1,86,200 - 1
-  used_by: role cards; notes
+  how: 193,800 / 186,200 - 1, the other 880 drivers
+  used_by: role cards; studio solution
 - id: idle_tph_after
   value: 0.8
   shown: 0.8 trips an hour
@@ -252,25 +210,25 @@ numbers:
   value: 1018
   shown: about 1,018 an hour
   unit: ''
-  how: 2,56,556 / 252
+  how: 256,556 / 252
   used_by: half2 S10; notebook cell 14; guesstimate note
 - id: drivers_online_per_peak_hour_after
   value: 581
   shown: about 581 drivers
   unit: ''
-  how: 1,46,300 / 252
+  how: 146,300 / 252
   used_by: guesstimate note
 - id: driver_hours_per_request_before
   value: 0.47
   shown: '0.47'
   unit: ''
-  how: 1,18,000 / 2,51,910
+  how: 118,000 / 251,910
   used_by: half2 S10; notebook cell 14; notes; exercises
 - id: driver_hours_per_request_after
   value: 0.57
   shown: '0.57'
   unit: ''
-  how: 1,46,300 / 2,56,556
+  how: 146,300 / 256,556
   used_by: half2 S10; notebook cell 14; notes
 - id: requests_per_evening_hour
   value: 8333
@@ -630,19 +588,19 @@ monday_ids_reused:
   source: D1 facts file
 - id: hours_before
   value: 118000
-  shown: 1,18,000 hours
+  shown: 118,000 hours
   source: D1 facts file
 - id: hours_after
   value: 146300
-  shown: 1,46,300 hours
+  shown: 146,300 hours
   source: D1 facts file
 - id: trips_before
   value: 224200
-  shown: 2,24,200 trips
+  shown: 224,200 trips
   source: D1 facts file
 - id: trips_after
   value: 230900
-  shown: 2,30,900 trips
+  shown: 230,900 trips
   source: D1 facts file
 - id: tph_before
   value: 1.9
@@ -678,11 +636,11 @@ monday_ids_reused:
   source: D1 facts file
 - id: offers_before
   value: 269773
-  shown: 2,69,773
+  shown: 269,773
   source: D1 facts file
 - id: offers_after
   value: 347583
-  shown: 3,47,583
+  shown: 347,583
   source: D1 facts file
 - id: bookings_before_rs
   value: 36993000
@@ -726,11 +684,11 @@ monday_ids_reused:
   source: D1 facts file
 - id: requests_before
   value: 251910
-  shown: 2,51,910 rider requests
+  shown: 251,910 rider requests
   source: D1 facts file
 - id: requests_after
   value: 256556
-  shown: 2,56,556 rider requests
+  shown: 256,556 rider requests
   source: D1 facts file
 - id: requests_change_pct
   value: 1.8
@@ -790,7 +748,7 @@ monday_ids_reused:
   source: D1 facts file
 - id: saving_high_rs
   value: 9272000
-  shown: Rs 93 lakh
+  shown: Rs 92.7 lakh
   source: D1 facts file
 - id: idle_tail_drivers
   value: 180
@@ -839,6 +797,34 @@ monday_ids_reused:
 - id: twelve_hours_change_pct
   value: 23
   shown: up 23 percent
+  source: D1 facts file
+- id: drivers_others
+  value: 880
+  shown: 880 drivers
+  source: D1 facts file
+- id: others_hours_before
+  value: 98000
+  shown: 98,000 hours
+  source: D1 facts file
+- id: others_hours_after
+  value: 102000
+  shown: 102,000 hours
+  source: D1 facts file
+- id: others_trips_before
+  value: 186200
+  shown: 186,200 trips
+  source: D1 facts file
+- id: others_trips_after
+  value: 193800
+  shown: 193,800 trips
+  source: D1 facts file
+- id: others_tph_before
+  value: 1.9
+  shown: '1.90'
+  source: D1 facts file
+- id: others_tph_after
+  value: 1.9
+  shown: '1.90'
   source: D1 facts file
 public_facts:
 - id: upi_per_day
@@ -1433,7 +1419,7 @@ cluttered_slides:
     shows: Rs 74 lakh
     facts_ids: topup_high_acceptance_rs
   - label: Rider requests
-    shows: 2,51,910 to 2,56,556
+    shows: 251,910 to 256,556
     facts_ids: requests_before, requests_after
   C_driver_ops:
   - label: Drivers
@@ -1443,7 +1429,7 @@ cluttered_slides:
     shows: 6,360 to 6,500
     facts_ids: driver_weeks_before, driver_weeks_after
   - label: Offers shown to drivers
-    shows: 2,69,773 to 3,47,583
+    shows: 269,773 to 347,583
     facts_ids: offers_before, offers_after
   - label: Acceptance share
     shows: 0.86 to 0.73

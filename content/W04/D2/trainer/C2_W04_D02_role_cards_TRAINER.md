@@ -1,9 +1,11 @@
 # Role cards, Week 4 Tuesday: what does each objector say, which part is true, and what answers the rest?
 
 **TRAINER ONLY.** Printed, cut and handed to the objector in each three. Each card is partly right by
-design. The three Uber roles are Monday's three (`content/W04/D1/trainer/`, written by Monday's
-session); on Tuesday they object to the slide rather than to the definition, and these cards are the
-Tuesday versions, complete in themselves. The three Kalpa cards are for the TA lab and are proposed
+design. The three Uber roles are Monday's three, whose cards are
+`content/W04/D1/trainer/C2_W04_D01_role_cards_TRAINER.md`: on Monday they proposed a number and
+attacked the definition, and on Tuesday they object to the slide. The answers here use Monday's own
+lines (the other 880 drivers held at 1.90 trips an hour; Rs 1.159 crore went to driver-weeks that
+accepted fewer than half their offers), and these Tuesday cards are complete in themselves. The three Kalpa cards are for the TA lab and are proposed
 for client zero v2.3 (the row's client-zero column, 21 September 2026, not yet locked).
 
 **Who needs the answer.** The objector, who reads the card aloud, and the trainer, who checks that
@@ -19,7 +21,7 @@ evidence answers the rest, and what would change the presenter's mind?
 | Says | "Drivers will log off. Pay per trip and supply at peak falls, and riders wait longer." |
 | Loses | Peak online hours, up 24 percent, as the headline the team reports |
 | The true part | The 180 drivers in the idle tail will log off: their idle hours are what stops being paid, and the outer zones are thin |
-| What answers the rest | The other 1,020 drivers held at 1.90 to 1.89 trips per online hour, and their trips rose 6 percent; they keep the floor if they accept |
+| What answers the rest | The other 880 drivers, there before the launch, held at 1.90 trips per online hour in both windows, and their trips rose 4 percent; they keep the floor if they accept |
 | Push once more with | "Riders in the outer zones will wait longer." |
 | A strong presenter's "what would change my mind" | Median rider wait at peak rising above 4.6 minutes in the test |
 
@@ -38,7 +40,7 @@ evidence answers the rest, and what would change the presenter's mind?
 
 | | |
 |---|---|
-| Says | "Bookings per hour fell because the monsoon ended, not because of the scheme." |
+| Says | "Bookings per hour fell because the monsoon ended. The scheme had nothing to do with it." |
 | Loses | Its own number, top-up per trip (Rs 82.3), as the headline; it becomes a guardrail |
 | The true part | The monsoon ended inside the window, and last year's weeks are not in the data |
 | What answers the rest | Rider requests rose 1.8 percent; the three busiest weeks after the launch ran at 1.60 trips per online hour; drivers who joined before the launch fell from 1.90 to 1.58; the drop is a step in the launch week (the highest after week, Rs 271, sits below the lowest before week, Rs 310) |

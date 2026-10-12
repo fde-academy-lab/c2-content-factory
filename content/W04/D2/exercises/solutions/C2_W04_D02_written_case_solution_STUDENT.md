@@ -20,8 +20,8 @@ pass them in other words. The case: Uber's peak-hour guarantee in Hyderabad, lau
 > during those weeks, which points away from a fall in demand, but only a test can settle it.
 >
 > I recommend paying the guarantee per completed peak trip, with a floor on how many offered rides a
-> driver accepts. If between a fifth and a half of the low-acceptance drivers start accepting, the
-> city gets back between Rs 58 lakh and Rs 93 lakh over six weeks. The city head signs off a test in
+> driver accepts. If half of the low-acceptance drivers start accepting, the city gets
+> back Rs 58 lakh over six weeks; if a fifth do, Rs 92.7 lakh. The city head signs off a test in
 > a few zones first, before the change reaches the whole city.
 
 ## Why does it pass each check?

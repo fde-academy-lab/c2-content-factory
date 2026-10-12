@@ -254,7 +254,7 @@ moving: from 0.22 to 0.38 of online hours with no trip in six weeks.
 
 **Validate.** Monday's tables are a slice of the city, the twelve zones the enrolled drivers work, so
 their absolute count cannot check a city total. Monday's data counts peak hours on all seven days, two
-three-hour windows a day, 42 hours a week, so its 2,56,556 after-window requests are about 1,018 an
+three-hour windows a day, 42 hours a week, so its 256,556 after-window requests are about 1,018 an
 hour, far below the city's 8,300. What the slice can check is the ratio in the middle of the chain:
 online driver-hours behind each rider request. The published figure for Uber drivers online in
 Hyderabad at the evening peak is to be found; no source holds it.
@@ -295,13 +295,13 @@ payments a day. Dividing September's 24.07 billion by 31 days gives 776 million 
 5. About 5,700 drivers, between about 2,900 and 8,600, driven by the share of people who ride.
 6. The chain's 0.60 driver-hours per request sits a quarter above the case's 0.47; the published figure is to be found.
 
-### In the interview
+### What will an interviewer ask about this, and what does a strong answer do?
 
 **[S] Present this recommendation to a non-technical leader in two minutes.** Open on the claim ("the
 scheme is paying for online hours that carry no trips"), give one number with its denominator (Rs 314 to
 Rs 260 per peak online hour), say the caveat (the monsoon ended inside the window), and end on the action
-with its cost (pay per completed peak trip with an acceptance floor; Rs 58 lakh to Rs 93 lakh back over six
-weeks if a fifth to a half of the idle drivers start accepting).
+with its cost (pay per completed peak trip with an acceptance floor; Rs 58 lakh to Rs 92.7 lakh back over six
+weeks depending on whether half or a fifth of the idle drivers start accepting).
 
 **[S] How many drivers must be online at the evening peak?** Clarify the city, the window, the unit
 (online at one moment) and the wait target; map the chain; say each assumption aloud; give the range and
