@@ -43,7 +43,7 @@ Wednesday").
 ## Which cold-read findings were not fixed, and why?
 
 Four findings were not fixed in full, each for the reason below; every other finding of the two
-reads, and all seven of the interviewer re-check, was fixed, and
+reads, all seven of the interviewer re-check and all eight of the confirmation read, was fixed, and
 `internal/C2_W04_D03_cold_reads_INTERNAL.md` maps each one to its change.
 
 - Graduate 59: the lab's your-turn cells carry sanity checks but no expected values, because the plants must be found in an empty cell (decision `w4-finding-once-found`); the TA lab note holds the numbers.

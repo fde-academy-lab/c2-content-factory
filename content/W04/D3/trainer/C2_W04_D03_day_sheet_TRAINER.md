@@ -137,22 +137,25 @@ a learner's own cell prints it.
 | Recovered a month | Rs 6.3 lakh, from Rs 3.9 lakh to Rs 9.3 lakh | recoverable_month, recoverable_low, recoverable_high |
 | Per customer | 2.56 | chips_cold_lift_per_customer |
 | Per customer and sized by cart (interview room) | 1.95; onions and tomatoes 1.38 | chips_cold_lift_both, onions_tomatoes_lift_both |
-| The thin pair in place of milk | About Rs 17,000 a month on about 2,400 views a day | thin_rule_month, ice_cream_views_day |
+| The thin pair in place of milk | About Rs 85,000 a month on about 2,400 views a day, at Rs 37.40 for sauce against Rs 2 for milk | thin_rule_month, ice_cream_views_day, sauce_margin, milk_margin |
+| The watch-list trial's read | About 1,100 ice-cream carts an arm for the full effect, about 4,000 for half | trial_n_full, trial_n_half |
 | The twelve carts | Bread to milk 1.00, lift 1.50 | twelve_bread_milk_conf, twelve_bread_milk_lift |
 
 ## What are the interview answers, each in one breath?
 
 - **Which measure cannot be fooled by popularity?** Lift, since it divides by the base rate: bread to
   milk reads 0.74, but milk is in 71 percent of carts, so lift is 1.04.
-- **Lift 4.6 on 0.25 percent support: act?** The pair is real, 100 carts against 22 by chance, but it
-  shows only beside ice cream, about 2,400 views a day, so in place of milk it earns about Rs 17,000 a
-  month; it goes on the watch list and a margin test on ice-cream carts.
+- **Lift 4.6 on 0.25 percent support: act?** The pair is real, 100 carts against 22 by chance, and
+  beside ice cream, about 2,400 views a day, sauce's Rs 37.40 margin makes it worth about Rs 85,000 a
+  month in place of milk; 100 carts cannot say how it clicks, so it goes on the watch list and a test
+  read on sauce bought in ice-cream carts, with margin per shopper as the guardrail.
 - **Heavy buyers?** Count each customer once: 3.39 falls to 2.56. Sizing chance by cart as well takes
   it to 1.95, and onions and tomatoes to 1.38, below the 1.5 bar (the interview room's second effect).
 - **The rupee recommendation's forgotten cost?** Incrementality: some adds come anyway, so Rs 6.3 lakh
   a month is a ceiling a holdout measures, and sales are never the gain.
-- **The LLM shopping assistant?** An offline gate against a popularity list and the current strip on
-  carts after a cutoff date, then customers randomised to three arms online.
+- **The LLM shopping assistant?** An offline gate against a popularity list and the strip re-ranked
+  by lift on carts after a cutoff date, then customers randomised to three arms online, with the
+  re-ranked strip as the bar, since re-ranking is free.
 - **Orders a dark store handles in a day?** About 1,290 from households, share and frequency, against
   Swiggy's 1,089 per active store-day (`trainer/C2_W04_D03_guesstimate_TRAINER.md`).
 

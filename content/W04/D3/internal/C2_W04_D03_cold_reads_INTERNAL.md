@@ -4,13 +4,14 @@ INTERNAL. Two reads by separately spawned agents on the latest Opus model, each 
 only and never edit; both ran on 12 October 2026 after the pack was built and before the fix pass.
 Their findings are copied below as each reader returned them, with what each became. The second
 read changed a method other files repeat, so a narrow re-check of the interview material followed
-the fix pass (last section).
+the fix pass, and a confirmation read followed the re-check's fixes (the last two sections).
 
 | Read | Who | What it read | Findings |
 |---|---|---|---|
 | One | A fresh graduate, 23, no company experience, weak in maths | Every STUDENT file, in learner order | 72 |
 | Two | A hiring interviewer for Uber, Swiggy, Google and AI-startup screens | The transcripts, the AI variant, the guesstimate, the interview slides and the sources | 25, one blocker |
 | Re-check | A second hiring interviewer, after the fix pass | The same interview material, against the first interviewer's findings | 7, two blockers |
+| Confirmation | A third hiring interviewer, after the re-check's fixes | The same interview material, against the re-check's findings | 8, three blockers |
 
 ## What did the fresh graduate find?
 
@@ -371,7 +372,100 @@ Every figure in [S], [D], the AI variant and the guesstimate matches the facts f
 | Numbers check, third point | [S] follow-up 3 now says the gain is margin: a slot's adds ring up Rs 80,197 of sales a day, of which only the Rs 17,280 margin counts |
 
 **Scores after the fixes.** The re-check scored each hire-grade answer 13 of 14 before these fixes,
-with criterion 5 of [S], criterion 6 of [D] and criterion 4 of the AI variant at 1. Each finding that
-set those 1s is fixed by the lines above, so the TRAINER file now scores all three at 14. That
-rescoring is the builder's own, made against the re-check's stated reasons; no fourth read ran.
+with criterion 5 of [S], criterion 6 of [D] and criterion 4 of the AI variant at 1. The confirmation
+read below scored the result.
 
+## Did a third read confirm the fixes, and what did it still find?
+
+A fourth agent, told to read as a hiring interviewer and to write findings only, read the interview
+material after the re-check's fixes on 12 October 2026, recomputing every number from the data. Its
+report is copied as it returned it.
+
+Findings: 8
+
+| Re-check finding | Holds? | Evidence |
+|---|---|---|
+| 1 Falsifier, S4 rule | Yes | [S] and TRAINER criterion 5 compare chips buyers shown cold drink with a holdout that never sees the strip. That is a yes-or-no read that can fire. S4 compares the two halves on margin per shopper. The metric S4 uses is a new problem (blocker 2) |
+| 2 [D] next step | Yes | "Up to Rs 6.3 lakh ... before the adds that would have come anyway"; every arm is read on margin per customer from items kept at payment; the slot-1 upside is gone |
+| 3 Milk's slot 3 | Yes | [D], S11 and S12 say 1.2 to 0.9. strip_log: 888/73,985 = 1.20 percent before, atta to milk 201/22,213 = 0.90 after |
+| 4 Thin pair on city views | Yes | 60,000 x 4 percent = 2,400 views a day; Rs 16,848 a month. The margin it uses is wrong (blocker 1) |
+| 5 Both heavy-buyer effects | Yes | Recomputed from the CSVs: by cart size 2.48 and 1.38, both effects 1.95 and 1.38, per customer 2.56, top tenth 73 percent |
+| 6 AI sizing, Prime Video | Yes | Rs 1.8 lakh and 35 paise both recompute. The sentence matches the W1 row, and the article refetched today reads "the two-week period after the cutoff time". The arm it is compared against is a new problem (blocker 3) |
+| 7 Guesstimate | Partly | The store is scoped in Clarify, the back-solve sits in Validate and a reason is given, but the ranges contradict that reason (improve 8) |
+
+**[S] with follow-ups**
+
+| Criterion | Score | Reason |
+|---|---|---|
+| Clarified the scope | 2 | Four clarifiers, each tied to what it decides |
+| Named the denominator and the window | 2 | Milk's 71 percent over the last four weeks, refreshed weekly |
+| Saw the paradox | 2 | 0.74 is milk's own 0.71, and 0.42 hides a lift of 3.39 |
+| Sized it with a unit | 1 | The 400 carts and Rs 6.3 lakh with its range hold; the thin pair's Rs 17,000 is about five times too low |
+| Said what would change their mind | 2 | Per-customer lift near one, or no gain over the holdout |
+| Tied it to a decision and its cost | 1 | The watch list rests on a trial that cannot detect its own effect |
+| Gave the structure before the number | 2 | The three questions kept apart, base rate first |
+| Total | 12 of 14 | TRAINER claims 14 |
+
+**[D]**
+
+| Criterion | Score | Reason |
+|---|---|---|
+| Clarified the scope | 2 | Both windows and each slot's mix, what else shipped, replace or run beside |
+| Named the denominator and the window | 2 | 2 and 50 percent of impressions, with dates |
+| Saw the paradox | 2 | The blend fell while the other suggestions rose in every slot |
+| Sized it with a unit | 2 | Rs 6.3 lakh as a ceiling with its range, plus the daily bands |
+| Said what would change their mind | 2 | The other suggestions falling with the blend |
+| Tied it to a decision and its cost | 2 | Two-by-two read on margin per customer; lift arms against count arms |
+| Gave the structure before the number | 2 | The four moves in order |
+| Total | 14 of 14 | |
+
+**AI variant**
+
+| Criterion | Score | Reason |
+|---|---|---|
+| Clarified the scope | 2 | Tapped, added or paid; carts that held the item anyway; compared with what |
+| Named the denominator and the window | 2 | Per customer, a cutoff date, two full weeks |
+| Saw the paradox | 2 | Acceptance flatters the assistant as confidence flattered milk; staples left out |
+| Sized it with a unit | 2 | Rs 1.8 lakh a month per 10 paise, 35 paise to break even |
+| Said what would change their mind | 2 | A ship rule with three guardrails |
+| Tied it to a decision and its cost | 1 | Measured against the count-ranked strip, it gets credit for the re-rank's Rs 6.3 lakh |
+| Gave the structure before the number | 2 | Trap, offline gate, online test, then the number |
+| Total | 13 of 14 | TRAINER claims 14 |
+
+**Findings**
+
+1. [blocker] extras/C2_W04_D03_interview_STUDENT.md | [S] follow-up 1 (also half2 S42 row 1 and facts `thin_rule_month`) | Rs 17,000 prices every sauce add and every lost milk add at the Rs 9 basket average. cart_items gives chocolate sauce a margin of Rs 37.40 a unit and milk Rs 2.00. On the answer's own click assumption the pair earns about Rs 85,000 a month, 20 percent of a slot's Rs 4.2 lakh, so "4 percent" and "the floor is doing a money job" do not follow | Price each add at its own item's margin and restate what the pair is worth and what the floor is for (the same shortcut makes Rs 6.3 lakh cautious: it is Rs 7.5 lakh with milk at Rs 2).
+
+2. [blocker] extras/C2_W04_D03_interview_STUDENT.md | [S] follow-up 1 (also half2 S42 row 1, fallback S2 to S4 and S4's notes) | The pass rule reads whole-cart margin, which has a standard deviation of Rs 28 across the sample's 1,600 ice-cream carts. At the answer's own Rs 0.23 a cart, 80 percent power needs about 227,000 ice-cream carts an arm. That is about two years at the roughly 300 a day each arm gets in two zones. Even at sauce's own margin it needs about 8,800 an arm, or 35,000 if half the adds would have come anyway | Read the trial on whether each ice-cream cart buys sauce (about 1,100 carts an arm at the full effect and 4,000 at half, which is 4 to 14 days), keep margin per shopper as the guardrail, and fix the length from that count before day one.
+
+3. [blocker] extras/C2_W04_D03_interview_STUDENT.md | AI variant (also half2 S43, the TRAINER AI scorecard, the notes and the day sheet) | The assistant ships if its margin beats "the current strip", the count-ranked strip that shows milk on half its impressions. That credits it with the Rs 6.3 lakh a free re-rank recovers. An assistant that only matches the re-rank ships at 20 paise a view and loses Rs 3.6 lakh a month against the re-ranked strip | Add the lift-ranked strip as an arm and ship only if the assistant's margin over that arm clears its serving cost.
+
+4. [improve] extras/C2_W04_D03_interview_STUDENT.md | [S] "The window and the number" | "September's 40,000 Pune carts" reads as the city's total next to the later "60,000 views a day", but the 40,000 are every September cart of 12,000 sampled customers | Say "a sample of 40,000 carts from 12,000 customers".
+
+5. [improve] extras/C2_W04_D03_interview_STUDENT.md | [S] follow-up 2, "the 1.5 I set for a slot" | The answer only ever sets the 1 percent floor, never a 1.5 bar | Add "and a lift of at least 1.5" to the floor line.
+
+6. [improve] trainer/C2_W04_D03_interview_TRAINER.md | [D] Answer row and follow-up 1 | "Rose in every slot" mostly compares different suggestions, since only four cells other than milk run in both windows. "Whatever the monsoon did, it did not lower clicks on them" claims a cause from a before-and-after count | Cite those four cells, which rose 8 to 12 percent, and say "net of whatever the monsoon did".
+
+7. [improve] trainer/C2_W04_D03_interview_TRAINER.md | [D] next step (also the AI variant's two weeks) | If each cart sees the strip once, re-ranking is worth about Rs 0.59 a customer a fortnight at the ceiling. The sample's fortnightly margin per customer has a standard deviation of Rs 87, so the ranking comparison needs about 340,000 customers a side, and four times that at half the effect | State the count the test needs, or read margin on the suggested items with each customer's earlier margin as a covariate.
+
+8. [improve] trainer/C2_W04_D03_guesstimate_TRAINER.md | Map, Assume and Calculate rows | The share is called least certain because it "stacks two guesses", yet its 10 to 20 percent range is no wider than the 1 to 2 range for orders a week. The map's radius and density never get values | Give adoption and Instamart's slice their own ranges so the share's range comes out wider, and show the radius and density behind the 40,000 households.
+
+Method: read only, no repository file was changed. Every number was recomputed with pandas from content/W04/D3/data/, and the Amazon Science article was refetched for the Prime Video and heavy-buyer passages.
+
+### What became of each confirmation finding?
+
+| Finding | Outcome |
+|---|---|
+| 1, blocker | Checked against `cart_items`: sauce keeps Rs 37.40 an add and milk Rs 2. The thin pair is priced at its own margins, about Rs 85,000 a month (`thin_rule_month`, `sauce_margin`), and the claim that the floor does a money job is gone; [S] follow-up 1, S30, S32's notes, S42, notebook 03, the notes, the day sheet and the TRAINER scorecard say so. The third follow-up adds that milk at its own Rs 2 makes the re-rank about Rs 7.5 lakh, so Rs 6.3 lakh is the cautious figure (`recoverable_month_milk_own`) |
+| 2, blocker | Checked: a whole ice-cream cart's margin has a standard deviation of Rs 28.12 on 1,600 carts. The watch-list trial now reads whether ice-cream carts buy sauce, shown half against the other half, with margin per shopper as the guardrail and the length fixed from the count before day one, in [S] follow-up 1, S30, S42, notebook 03, the notes, the day sheet, fallback S2 to S4 with S4's notes, and the fallback note; the TRAINER file gives the counts, about 1,100 ice-cream carts an arm for the full effect and about 4,000 for half (`trial_n_full`, `trial_n_half`), and leaves the method to the faculty session (tentative) |
+| 3, blocker | The AI variant's arms are no suggestions, the strip re-ranked by lift, and the assistant; the offline gate beats a popularity list and the re-ranked strip; it ships only if its margin over the re-ranked strip's arm clears its serving cost; the clarifier asks for the best strip shippable without it. Changed in the transcript, S43 and its notes, the TRAINER scorecard, the notes and the day sheet |
+| 4 | The window line says "September's sample of 40,000 Pune carts, every cart of 12,000 customers" |
+| 5 | The floor line sets the 1.5 bar beside the 1 percent floor |
+| 6 | Checked: four anchor, suggestion and slot cells other than milk run in both windows, and each rose 8 to 12 percent (`same_cells`, `same_cells_rise_low`, `same_cells_rise_high`, with a generator check). The [D] answer cites them, and follow-up 1 now says the fall cannot come from shoppers clicking less on the same suggestions, with no claim about the monsoon |
+| 7 | [D] reads margin per customer adjusted for each customer's margin in the weeks before, with the length fixed from the count before launch; the AI variant runs at least two full weeks and as long as its count needs |
+| 8 | The guesstimate builds the catchment from a 2.5 km radius at about 2,000 households a square km, and the share from two guesses with their own ranges (30 percent using quick commerce, 20 to 40; half of them Instamart's, 35 to 65 percent), so the share runs 7 to 26 percent and alone moves the answer from about 600 to about 2,230 against about 860 to about 1,710 for orders a week; the full range is about 300 to about 3,710, and the notes carry the same ranges |
+
+**Scores after these fixes.** The confirmation read scored [S] 12, [D] 14 and the AI variant 13 of
+14, and every point it withheld traces to blockers 1 to 3, now fixed, so the TRAINER file scores all
+three at 14. That rescoring is the builder's own, made against the read's stated reasons; no fifth
+read ran.

@@ -112,7 +112,7 @@ it. Transition: the follow-ups.
 
 | Follow-up | The hire-grade line |
 |---|---|
-| A pair has lift 4.6 and support 0.25 percent: act? | The pair is real, 100 carts against 22 by chance, but it shows only beside ice cream, about 2,400 views a day, so in place of milk it earns about Rs 17,000 a month; it goes on the watch list and a margin test on ice-cream carts |
+| A pair has lift 4.6 and support 0.25 percent: act? | The pair is real, 100 carts against 22 by chance, and beside ice cream, about 2,400 views a day, sauce's Rs 37.40 margin makes it worth about Rs 85,000 a month in place of milk; 100 carts cannot say how it clicks, so it goes on the watch list and a test of how often ice-cream carts buy sauce |
 | Heavy buyers buy everything: what does that do to lift? | They repeat the party pair, so count each customer once and 3.39 falls to 2.56; bigger baskets hold any pair by chance, so size the expected count by cart. Corrected for both, chips and cold drink reads 1.95 and keeps its slot, and onions and tomatoes falls to 1.38, below the 1.5 bar |
 | Make it a rupee recommendation: what cost line do most forget? | Incrementality: some adds come through search or habit anyway, so the Rs 6.3 lakh a month (Rs 3.9 lakh to Rs 9.3 lakh) is a ceiling a holdout measures; sales are never the gain |
 
@@ -128,8 +128,8 @@ same idea at an AI company.
 
 ```mermaid
 flowchart LR
-    A["<b>The assistant suggests milk</b><br/>shoppers accept it often<br/>because milk is popular"] --> B["<b>Offline, a gate</b><br/>carts after a cutoff date:<br/>beat a popularity list<br/>and the current strip"]
-    B --> C["<b>Online, the decision</b><br/>customers randomised to<br/>no suggestions, the strip<br/>or the assistant"]
+    A["<b>The assistant suggests milk</b><br/>shoppers accept it often<br/>because milk is popular"] --> B["<b>Offline, a gate</b><br/>carts after a cutoff date:<br/>beat a popularity list<br/>and the re-ranked strip"]
+    B --> C["<b>Online, the decision</b><br/>customers randomised to<br/>no suggestions, the<br/>re-ranked strip or<br/>the assistant"]
     C --> D["<b>The number</b><br/>incremental margin<br/>per customer, less<br/>serving cost"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -137,13 +137,14 @@ flowchart LR
     class D lit
 ```
 
-Acceptance flatters an assistant as confidence flattered milk. Offline is a gate: on held-out carts placed after a cutoff date, which it never saw while it was built, hide one item in each and check that it recovers the item more often than a popularity list and the current strip, leaving out each shopper's weekly staples. Online decides: customers, never carts, randomised to three arms for a length fixed in advance, scored on incremental adds, the ones that would not have happened without it, as margin per customer less serving cost.
+Acceptance flatters an assistant as confidence flattered milk. Offline is a gate: on held-out carts placed after a cutoff date, which it never saw while it was built, hide one item in each and check that it recovers the item more often than a popularity list and the strip re-ranked by lift, leaving out each shopper's weekly staples. Online decides: customers, never carts, randomised to three arms for a length fixed in advance, scored on incremental adds, the ones that would not have happened without it, as margin per customer less serving cost. The re-ranked strip is the bar, since re-ranking is free and the assistant must beat it by more than it costs to serve.
 
 ```notes
 LIVE, 3 minutes. Programme-written variant. The base-rate trap is the same one the strip fell
 into, now inside a model's evaluation. Amazon's Prime Video team saw why the cutoff date matters
-(Amazon Science, checked 12 October 2026): its first autoencoder trailed a popularity ranking of
-recent rentals until it was trained on viewing sorted by time. Transition: the handoff.
+(Amazon Science, checked 12 October 2026): its first autoencoder trailed a list of the past two
+weeks' most popular rentals until it was trained on viewing before a cutoff and scored on the two
+weeks after it. Transition: the handoff.
 ```
 
 ---

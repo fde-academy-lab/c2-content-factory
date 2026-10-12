@@ -19,7 +19,7 @@ data are synthetic, built for this class.
 ## Where does Wednesday sit in the week?
 
 **What was worked, and what was only mentioned.** Wednesday counted three measures by hand on ten
-tea-stall orders and twelve carts from the case, then on all 40,000; split the click-through by what each
+tea-stall orders and twelve carts, then on all 40,000; split the click-through by what each
 slot suggested; ranked pairs above a floor; priced a slot; and checked the ranking with every
 customer counted once and the curd stock-out set aside. Cause was only mentioned, since a count
 cannot say whether a suggestion makes a sale, and upsell, a bigger pack of the same item, was named
@@ -111,7 +111,7 @@ defending milk as the top seller.
 
 **Two ways to count every pair.** Testing each of the 1,711 possible pairs against every cart makes
 about 68 million checks; turning each cart into a set and letting `Counter` add the pairs it holds
-makes about 433,000, 10.8 for an average cart. Notebook 02 runs the second way.
+makes about 433,000. Notebook 02 runs the second way.
 
 ```python
 baskets = items.groupby("cart_id").item.apply(set)                          # one set per cart
@@ -172,8 +172,8 @@ if a slot were worth less, a lower floor would do and thinner pairs could take o
 ![Every pair with support of at least 0.1 percent: lift against support, with the 1 percent floor](../whiteboards/C2_W04_D03_action_map_STUDENT.png)
 
 **The watch list.** Ice cream and chocolate sauce is real, 100 carts where chance gives 22, but the
-strip shows it only beside ice cream, about 2,400 of 60,000 views a day. It is tested first: a random
-half of shoppers see it, and it takes the slot only if their ice-cream carts earn more margin.
+strip shows it only beside ice cream, about 2,400 of 60,000 views a day. A random half of shoppers
+see it first, and it takes the slot only if their ice-cream carts buy sauce more often, margin held.
 
 **The slot in rupees.**
 
@@ -182,7 +182,8 @@ $$60{,}000 \text{ views a day} \times 6.4\% \times 0.5 \text{ adds per click} \t
 Showing milk at 1.2 percent, the slot earns Rs 3,240. The gap, Rs 14,040 a day, is about Rs 4.2 lakh
 a month a slot, and milk holds 1.5 slots' worth, so re-ranking recovers about Rs 6.3 lakh a month:
 Rs 3.9 lakh to Rs 9.3 lakh as the assumed add rate runs from 0.4 to 0.6 and the margin from Rs 7 to
-Rs 11. In place of milk, the watch-list pair would earn about Rs 17,000 a month.
+Rs 11. At sauce's own Rs 37.40 margin, the watch-list pair would earn about Rs 85,000 a month in
+place of milk.
 
 **WATCH OUT.** Booking sales as the gain: 1,920 adds a day at about Rs 41.77 each looks like Rs 80,197
 of daily strip revenue, four times the Rs 17,280 of margin. A bundle discount comes off the margin too,
@@ -243,18 +244,19 @@ what would change your mind (Tuesday's notes).
 | The question as asked | The hire-grade line |
 |---|---|
 | Support, confidence, lift: which cannot be fooled by popularity, and why? | Lift, since it divides by the base rate: in September's carts bread to milk reads 0.74 and milk is in 71 percent, so lift is 1.04, too small for a slot |
-| Lift 4.6 on support of 0.25 percent: act? | The pair is real, but it shows only beside ice cream, so in place of milk it earns about Rs 17,000 a month; it goes on the watch list and a margin test |
+| Lift 4.6 on support of 0.25 percent: act? | The pair is real and, at sauce's margin, worth about Rs 85,000 a month beside ice cream, but 100 carts cannot say how it clicks: the watch list and a test |
 | Heavy buyers buy everything: what does that do to lift? | They repeat the party pair: counted once per customer, chips and cold drink fall from 3.39 to 2.56, and to 1.95 with chance sized by cart too |
 | Make it a rupee recommendation: which cost line do most forget? | Incrementality: some adds come anyway, so Rs 6.3 lakh a month is a ceiling a holdout measures |
 
 **The AI-company variant.** An LLM shopping assistant passes an offline gate first, beating a
-popularity list and the current strip on carts after a cutoff date; then customers are randomised to
-three arms online. The transcript is in `extras/`.
+popularity list and the re-ranked strip on carts after a cutoff date; then customers are randomised
+to three arms online, with the re-ranked strip as the bar.
 
 **The guesstimate: orders a dark store, a warehouse that serves only delivery orders, handles in a
 day.** Households in its catchment (the area it delivers to), times the share ordering in a week,
-times orders a week, over seven: 40,000 households (30,000 to 50,000), 15 percent (10 to 20) and 1.5
-orders (1 to 2) give about 1,290 a day, and about 430 to about 2,860 across the ranges. Swiggy reported
+times orders a week, over seven: 40,000 households (30,000 to 50,000), 15 percent (7 to 26, two
+guesses stacked) and 1.5 orders (1 to 2) give about 1,290 a day, and about 300 to about 3,710 across
+the ranges. Swiggy reported
 1,089 completed orders a store a day in the quarter to June 2026, ending it with 1,171 stores
 (Swiggy's shareholder letter, checked 12 October 2026), counting only the days each store was active.
 

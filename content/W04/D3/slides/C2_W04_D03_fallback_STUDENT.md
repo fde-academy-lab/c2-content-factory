@@ -60,7 +60,7 @@ how long is the parked sample-size question. Transition: the first data request.
 ```mermaid
 flowchart LR
     L["<b>strip_log</b><br/>date, slot, anchor, suggestion<br/>no zone, no shopper"] --> R["<b>The request</b><br/>which half each shopper<br/>was in, from day one"]
-    C["<b>carts and cart_items</b><br/>zone, customer and the<br/>margin on every line"] --> R
+    C["<b>carts and cart_items</b><br/>zone, customer, every<br/>item and its margin"] --> R
     R --> T["<b>The trial</b><br/>can now be measured"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
@@ -70,7 +70,7 @@ flowchart LR
     class T lit
 ```
 
-`strip_log` counts impressions, clicks and adds for the whole city, with no zone and no shopper, so it cannot read a margin rule. `carts` holds the zone and the customer, and `cart_items` the margin on every line. A two-zone trial starts with a data request: which half each shopper was in, logged from the first day.
+`strip_log` counts impressions, clicks and adds for the whole city, with no zone and no shopper, so it cannot read the trial. `carts` holds the zone and the customer, and `cart_items` every item and its margin. A two-zone trial starts with a data request: which half each shopper was in, logged from the first day.
 
 ```notes
 LIVE, 8 minutes. This is a real analyst's moment: the method is ready and the data are not. Ask
@@ -80,15 +80,15 @@ Transition: the pass rule.
 
 ---
 
-## S4. Pass only if the shown half earns more margin
+## S4. Pass only if sauce sells more and margin holds
 *What rule promotes the pair, and what keeps it on the watch list?*
 
 ```mermaid
 flowchart LR
-    T["<b>Shown half</b><br/>margin per shopper on<br/>ice-cream carts, less<br/>any discount"] --> G["<b>Beats the other half</b><br/>by a gap fixed<br/>before the trial"]
-    R["<b>Other half</b><br/>the same, with the<br/>next-best suggestion"] --> G
+    T["<b>The read</b><br/>share of ice-cream carts<br/>buying sauce, shown half<br/>against the other half"] --> G["<b>Beats it</b><br/>by a gap fixed<br/>before the trial"]
+    R["<b>The guardrail</b><br/>margin per shopper,<br/>after any discount,<br/>does not fall"] --> G
     G --> P["<b>Promote</b><br/>city-wide"]
-    G --> W["<b>Stays on the watch list</b><br/>if it falls short"]
+    G --> W["<b>Stays on the watch list</b><br/>if either fails"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
@@ -97,12 +97,13 @@ flowchart LR
     class W bad
 ```
 
-The pair is promoted only if shoppers in the shown half earn more margin on their ice-cream carts than shoppers in the other half, after any bundle discount, by a gap set before the trial. Margin per shopper counts the sauce the strip sold and nets out the sauce they would have bought anyway, which a slot's click-through cannot. If it falls short, the pair stays on the watch list, which is what a watch list is for.
+The pair is promoted only if ice-cream carts in the shown half buy sauce more often than the other half's, by a gap set before the trial, and margin per shopper, after any bundle discount, does not fall. Comparing the halves nets out the sauce shoppers would have bought anyway, which a slot's click-through cannot. The purchase rate is the read because it moves visibly when the strip works; a whole cart's margin swings too much to show a gain this size, so it guards the decision instead. If either fails, the pair stays on the watch list, which is what a watch list is for.
 
 ```notes
 LIVE, 15 minutes. Groups present their pass rule in two sentences. The weak rule names the slot's
-click-through; the strong rule compares the two halves' margin per shopper on ice-cream carts, which
-carries the discount and the adds that would have come anyway. Transition: one zone, one time band.
+click-through, which counts only shoppers who saw the pair; the strong rule compares sauce bought in
+the two halves' ice-cream carts and keeps margin per shopper as the guardrail. Transition: one zone,
+one time band.
 ```
 
 ---
