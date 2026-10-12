@@ -698,6 +698,21 @@ full_data:
     shown: "189,424"
     how: "rows in cart_items"
     used_in: "notebook 02"
+  - id: double_loop_checks
+    value: 68440000
+    shown: "about 68 million"
+    how: "1,711 possible pairs tested against each of 40,000 carts"
+    used_in: "notes, chapter 2 sizing"
+  - id: pair_increments
+    value: 432803
+    shown: "about 433,000"
+    how: "pairs added by Counter: each cart adds one per pair it holds"
+    used_in: "notes, chapter 2 sizing"
+  - id: items_per_cart
+    value: 4.74
+    shown: "4.7"
+    how: "mean distinct items in a cart"
+    used_in: "notes, chapter 2 sizing"
   - id: cart_value_median
     value: 262.0
     shown: "Rs 262"
@@ -1190,6 +1205,83 @@ public:
     shown: "about seven times"
     how: "strawberry Pop-Tarts before Charley (W3)"
     used_in: "fallback"
+  - id: maxxsaver_aov_growth
+    value: 0.16
+    shown: "16 percent"
+    how: "Instamart AOV growth quarter on quarter, Q1 FY26 letter (W4, checked 12 October 2026)"
+    used_in: "chapter 3, notes"
+  - id: uber_both_share
+    value: 0.2
+    shown: "about one in five"
+    how: "eligible consumers active monthly in both rides and delivery, Uber 10-K for 2025 (W4)"
+    used_in: "notes"
+
+guesstimate:
+  - id: gs_households
+    value: 40000
+    shown: "40,000"
+    how: "assumption: households a dark store's catchment holds"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_households_low
+    value: 30000
+    shown: "30,000"
+    how: "assumption's low end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_households_high
+    value: 50000
+    shown: "50,000"
+    how: "assumption's high end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_share_week
+    value: 0.15
+    shown: "15 percent"
+    how: "assumption: share of those households ordering in a given week"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_share_low
+    value: 0.1
+    shown: "10 percent"
+    how: "assumption's low end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_share_high
+    value: 0.2
+    shown: "20 percent"
+    how: "assumption's high end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_week
+    value: 1.5
+    shown: "1.5"
+    how: "assumption: orders a week from each ordering household"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_low
+    value: 1.0
+    shown: "1"
+    how: "assumption's low end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_high
+    value: 2.0
+    shown: "2"
+    how: "assumption's high end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_day
+    value: 1285.7
+    shown: "about 1,290"
+    how: "40,000 x 0.15 x 1.5 / 7"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_day_low
+    value: 428.6
+    shown: "about 430"
+    how: "30,000 x 0.10 x 1 / 7"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_day_high
+    value: 2857.1
+    shown: "about 2,860"
+    how: "50,000 x 0.20 x 2 / 7"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_gap
+    value: 0.1806
+    shown: "18 percent"
+    how: "the estimate above Swiggy's 1,089"
+    used_in: "guesstimate: notes and the trainer sheet"
 
 pairs_detail:
   - id: apples_share
@@ -2054,6 +2146,33 @@ practice_toy:
     how: "invented bundle Z"
     used_in: "practice lab set"
 
+kahoot_toy:
+  - id: kahoot_popular_share
+    value: 0.75
+    shown: "75 percent"
+    how: "invented: the popular item's share of carts"
+    used_in: "Kahoot"
+  - id: kahoot_partner_conf
+    value: 0.76
+    shown: "0.76"
+    how: "invented: the partner's confidence toward it"
+    used_in: "Kahoot"
+  - id: kahoot_partner_lift
+    value: 1.01
+    shown: "1.01"
+    how: "0.76 over 0.75"
+    used_in: "Kahoot"
+  - id: kahoot_blend_sum
+    value: 0.076
+    shown: "7.6 percent"
+    how: "a distractor: 1.2 plus 6.4"
+    used_in: "Kahoot"
+  - id: kahoot_blend_gap
+    value: 0.026
+    shown: "2.6 percent"
+    how: "a distractor: 6.4 less 3.8"
+    used_in: "Kahoot"
+
 fallback:
   - id: slice_kothrud_morning_carts
     value: 1576
@@ -2085,6 +2204,171 @@ fallback:
     shown: "1,332"
     how: "carts in Hadapsar, week four"
     used_in: "fallback S6 and S7, the rerun"
+  - id: slice_viman_nagar_week_three_carts
+    value: 1178
+    shown: "1,178"
+    how: "carts in Viman Nagar, week three"
+    used_in: "fallback S6 and S7, the rerun"
+  - id: slice_kothrud_evening_chips_cold_drink_lift
+    value: 3.7037
+    shown: "3.70"
+    how: "lift of chips and cold drink in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_kothrud_evening_chips_cold_drink_carts
+    value: 132
+    shown: "132"
+    how: "carts holding chips and cold drink in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_kothrud_evening_coriander_green_chillies_lift
+    value: 2.8632
+    shown: "2.86"
+    how: "lift of coriander and green chillies in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_kothrud_evening_coriander_green_chillies_carts
+    value: 88
+    shown: "88"
+    how: "carts holding coriander and green chillies in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_kothrud_evening_bread_butter_lift
+    value: 2.1592
+    shown: "2.16"
+    how: "lift of bread and butter in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_kothrud_evening_bread_butter_carts
+    value: 94
+    shown: "94"
+    how: "carts holding bread and butter in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_kothrud_evening_onions_tomatoes_lift
+    value: 1.71
+    shown: "1.71"
+    how: "lift of onions and tomatoes in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_kothrud_evening_onions_tomatoes_carts
+    value: 170
+    shown: "170"
+    how: "carts holding onions and tomatoes in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_coriander_green_chillies_lift
+    value: 3.2625
+    shown: "3.26"
+    how: "lift of coriander and green chillies in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_coriander_green_chillies_carts
+    value: 49
+    shown: "49"
+    how: "carts holding coriander and green chillies in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_chips_cold_drink_lift
+    value: 2.8561
+    shown: "2.86"
+    how: "lift of chips and cold drink in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_chips_cold_drink_carts
+    value: 55
+    shown: "55"
+    how: "carts holding chips and cold drink in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_bread_butter_lift
+    value: 2.0038
+    shown: "2.00"
+    how: "lift of bread and butter in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_bread_butter_carts
+    value: 63
+    shown: "63"
+    how: "carts holding bread and butter in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_onions_tomatoes_lift
+    value: 1.7775
+    shown: "1.78"
+    how: "lift of onions and tomatoes in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_onions_tomatoes_carts
+    value: 106
+    shown: "106"
+    how: "carts holding onions and tomatoes in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_chips_cold_drink_lift
+    value: 3.2674
+    shown: "3.27"
+    how: "lift of chips and cold drink in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_chips_cold_drink_carts
+    value: 35
+    shown: "35"
+    how: "carts holding chips and cold drink in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_coriander_green_chillies_lift
+    value: 2.7968
+    shown: "2.80"
+    how: "lift of coriander and green chillies in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_coriander_green_chillies_carts
+    value: 20
+    shown: "20"
+    how: "carts holding coriander and green chillies in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_coriander_ghee_lift
+    value: 2.5934
+    shown: "2.59"
+    how: "lift of coriander and ghee in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_coriander_ghee_carts
+    value: 8
+    shown: "8"
+    how: "carts holding coriander and ghee in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_pav_potatoes_lift
+    value: 2.4117
+    shown: "2.41"
+    how: "lift of pav and potatoes in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_pav_potatoes_carts
+    value: 10
+    shown: "10"
+    how: "carts holding pav and potatoes in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_chips_cold_drink_lift
+    value: 3.6383
+    shown: "3.64"
+    how: "lift of chips and cold drink in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_chips_cold_drink_carts
+    value: 53
+    shown: "53"
+    how: "carts holding chips and cold drink in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_green_chillies_spinach_lift
+    value: 2.4079
+    shown: "2.41"
+    how: "lift of green chillies and spinach in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_green_chillies_spinach_carts
+    value: 13
+    shown: "13"
+    how: "carts holding green chillies and spinach in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_coriander_green_chillies_lift
+    value: 2.2993
+    shown: "2.30"
+    how: "lift of coriander and green chillies in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_coriander_green_chillies_carts
+    value: 36
+    shown: "36"
+    how: "carts holding coriander and green chillies in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_bread_butter_lift
+    value: 2.1974
+    shown: "2.20"
+    how: "lift of bread and butter in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_bread_butter_carts
+    value: 69
+    shown: "69"
+    how: "carts holding bread and butter in Viman Nagar, week three"
+    used_in: "take-home self-check"
   - id: slice_thin_slips
     value: 3
     shown: "3"
@@ -2110,6 +2394,88 @@ fallback:
     shown: "28 percent"
     how: "curd's share in Hadapsar, week four"
     used_in: "fallback S6"
+  - id: slice_kothrud_evening_floor
+    value: 23.43
+    shown: "23.43"
+    how: "1 percent of the carts in Kothrud, evening"
+    used_in: "take-home brief and self-check"
+  - id: slice_kothrud_evening_floor_min
+    value: 24
+    shown: "24"
+    how: "fewest carts a pair needs to clear the floor in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_floor
+    value: 13.95
+    shown: "13.95"
+    how: "1 percent of the carts in Baner, morning"
+    used_in: "take-home brief and self-check"
+  - id: slice_baner_morning_floor_min
+    value: 14
+    shown: "14"
+    how: "fewest carts a pair needs to clear the floor in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_floor
+    value: 6.49
+    shown: "6.49"
+    how: "1 percent of the carts in Hinjewadi, night"
+    used_in: "take-home brief and self-check"
+  - id: slice_hinjewadi_night_floor_min
+    value: 7
+    shown: "7"
+    how: "fewest carts a pair needs to clear the floor in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_floor
+    value: 11.78
+    shown: "11.78"
+    how: "1 percent of the carts in Viman Nagar, week three"
+    used_in: "take-home brief and self-check"
+  - id: slice_viman_nagar_week_three_floor_min
+    value: 12
+    shown: "12"
+    how: "fewest carts a pair needs to clear the floor in Viman Nagar, week three"
+    used_in: "take-home self-check"
+
+preread:
+  - id: thursday_blended_retention
+    value: 0.38
+    shown: "38 percent"
+    how: "Thursday's ticket: blended month-two retention, June to September (case file target)"
+    used_in: "pre-read"
+  - id: thursday_jan_month_one
+    value: 0.58
+    shown: "58 percent"
+    how: "Thursday's ticket: January cohort's month-one rate (case file target)"
+    used_in: "pre-read"
+  - id: thursday_jul_month_one
+    value: 0.49
+    shown: "49 percent"
+    how: "Thursday's ticket: July cohort (case file target)"
+    used_in: "pre-read"
+  - id: thursday_aug_month_one
+    value: 0.31
+    shown: "31 percent"
+    how: "Thursday's ticket: August sale cohort (case file target)"
+    used_in: "pre-read"
+  - id: thursday_aug_size
+    value: 2.6
+    shown: "2.6 times"
+    how: "Thursday's ticket: the August cohort against a normal month (case file target)"
+    used_in: "pre-read"
+  - id: thursday_android_before
+    value: 0.58
+    shown: "58 percent"
+    how: "Thursday's ticket: members' add-to-cart to order on Android before 14 September (case file target)"
+    used_in: "pre-read"
+  - id: thursday_android_after
+    value: 0.44
+    shown: "44 percent"
+    how: "Thursday's ticket: the same after (case file target)"
+    used_in: "pre-read"
+  - id: thursday_members
+    value: 60000
+    shown: "60,000"
+    how: "Thursday's ticket: members signed up January to September 2026 (case file target)"
+    used_in: "pre-read"
 
 week_map:
   - id: monday_trips_per_hour_before

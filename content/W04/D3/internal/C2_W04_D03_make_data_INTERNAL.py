@@ -612,6 +612,9 @@ def verify_case(cart_df, item_df, twelve_df):
     out["count"] = dict(single)
     pairs = pairs_table(list(baskets))
     out["pairs_seen"] = len(pairs)
+    sizes = baskets.map(len)
+    out["pair_increments"] = int((sizes * (sizes - 1) // 2).sum())
+    out["items_per_cart"] = float(sizes.mean())
     for (a, b), k in PAIRS.items():
         m = measures(list(baskets), a, b)
         check(f"{a} with {b} in {k:,} carts", m["nab"] == k)
@@ -748,14 +751,16 @@ def verify_case(cart_df, item_df, twelve_df):
                        ("Baner, morning", (cart_df.zone == "Baner") & (cart_df.time_band == "morning")),
                        ("Hinjewadi, night", (cart_df.zone == "Hinjewadi") & (cart_df.time_band == "night")),
                        ("Hadapsar, week three", (cart_df.zone == "Hadapsar") & (cart_df.week == 3)),
-                       ("Hadapsar, week four", (cart_df.zone == "Hadapsar") & (cart_df.week == 4))):
+                       ("Hadapsar, week four", (cart_df.zone == "Hadapsar") & (cart_df.week == 4)),
+                       ("Viman Nagar, week three", (cart_df.zone == "Viman Nagar") & (cart_df.week == 3))):
         part = list(baskets.loc[cart_df.loc[mask, "cart_id"]])
         table = pairs_table(part)
         above = table[table.support >= 0.01]
         out["slices"][name] = (len(part), [(r.a, r.b, r.lift, r.both) for r in above.head(6).itertuples()])
     lead = [("chips", "cold drink"), ("coriander", "green chillies")]
     check("chips with cold drink and coriander with chillies lead every slice",
-          all({(a, b) for a, b, _, _ in rows[:2]} == set(lead) for _, rows in out["slices"].values()))
+          all({(a, b) for a, b, _, _ in rows[:2]} == set(lead)
+              for name, (_, rows) in out["slices"].items() if name != "Viman Nagar, week three"))
     n_small, rows = out["slices"]["Hinjewadi, night"]
     bb = [i for i, r in enumerate(rows) if r[:2] == ("bread", "butter")][0]
     out["thin_slips"] = rows[2:bb]
@@ -1036,6 +1041,10 @@ def write_facts(case, strip, kalpa):
     f(S, "common_lift_high", round(hi_l, 4), f"{hi_l:.2f}", "highest lift with milk among them", "chapter 2, notebook 02")
     f(S, "pairs_seen", case["pairs_seen"], f"{case['pairs_seen']:,}", "distinct pairs found in at least one cart", "notebook 02")
     f(S, "lines", case["lines"], f"{case['lines']:,}", "rows in cart_items", "notebook 02")
+    f(S, "double_loop_checks", case["pairs_seen"] * N_CARTS, "about 68 million", "1,711 possible pairs tested against each of 40,000 carts", "notes, chapter 2 sizing")
+    check("the double loop's size prints as about 68 million", 67_500_000 <= case["pairs_seen"] * N_CARTS < 68_500_000)
+    f(S, "pair_increments", case["pair_increments"], f"about {round(case['pair_increments'], -3):,}", "pairs added by Counter: each cart adds one per pair it holds", "notes, chapter 2 sizing")
+    f(S, "items_per_cart", round(case["items_per_cart"], 2), f"{case['items_per_cart']:.1f}", "mean distinct items in a cart", "notes, chapter 2 sizing")
     f(S, "cart_value_median", case["value_median"], f"Rs {case['value_median']:.0f}", "median cart value", "notebook 02")
     S = "floor"
     f(S, "support_floor", 0.01, "1 percent", "the support floor the room sets", "chapter 3")
@@ -1139,6 +1148,28 @@ def write_facts(case, strip, kalpa):
     f(S, "osco_transactions", 1_200_000, "about 1.2 million", "Osco Drug transactions, 1992 (W2)", "chapter 2, notes")
     f(S, "uber_cross_use", 3, "over three times", "bookings of consumers who use rides and delivery (W4)", "chapter 3, notes")
     f(S, "walmart_poptarts", 7, "about seven times", "strawberry Pop-Tarts before Charley (W3)", "fallback")
+    f(S, "maxxsaver_aov_growth", 0.16, "16 percent", "Instamart AOV growth quarter on quarter, Q1 FY26 letter (W4, checked 12 October 2026)", "chapter 3, notes")
+    f(S, "uber_both_share", 0.2, "about one in five", "eligible consumers active monthly in both rides and delivery, Uber 10-K for 2025 (W4)", "notes")
+    S = "guesstimate"
+    g_hh, g_hl, g_hh_hi = 40_000, 30_000, 50_000
+    g_sh, g_sl, g_s_hi = 0.15, 0.10, 0.20
+    g_ow, g_ol, g_o_hi = 1.5, 1.0, 2.0
+    g_mid, g_low, g_high = g_hh * g_sh * g_ow / 7, g_hl * g_sl * g_ol / 7, g_hh_hi * g_s_hi * g_o_hi / 7
+    for fid, val, shown, how in (
+            ("gs_households", g_hh, "40,000", "assumption: households a dark store's catchment holds"),
+            ("gs_households_low", g_hl, "30,000", "assumption's low end"),
+            ("gs_households_high", g_hh_hi, "50,000", "assumption's high end"),
+            ("gs_share_week", g_sh, "15 percent", "assumption: share of those households ordering in a given week"),
+            ("gs_share_low", g_sl, "10 percent", "assumption's low end"),
+            ("gs_share_high", g_s_hi, "20 percent", "assumption's high end"),
+            ("gs_orders_week", g_ow, "1.5", "assumption: orders a week from each ordering household"),
+            ("gs_orders_low", g_ol, "1", "assumption's low end"),
+            ("gs_orders_high", g_o_hi, "2", "assumption's high end"),
+            ("gs_orders_day", round(g_mid, 1), "about 1,290", "40,000 x 0.15 x 1.5 / 7"),
+            ("gs_orders_day_low", round(g_low, 1), "about 430", "30,000 x 0.10 x 1 / 7"),
+            ("gs_orders_day_high", round(g_high, 1), "about 2,860", "50,000 x 0.20 x 2 / 7"),
+            ("gs_gap", round(g_mid / 1089 - 1, 4), "18 percent", "the estimate above Swiggy's 1,089")):
+        f(S, fid, val, shown, how, "guesstimate: notes and the trainer sheet")
     S = "pairs_detail"
     for name in sorted(sh):
         if name in ("toned milk", "bread", "eggs", "curd", "bananas", "onions", "tomatoes", "potatoes",
@@ -1218,10 +1249,25 @@ def write_facts(case, strip, kalpa):
             ("bundle_y_margin", 12, "Rs 12", "invented bundle Y margin an add"),
             ("bundle_z_lift", 5.0, "5.0", "invented bundle Z"), ("bundle_z_support", 0.002, "0.2 percent", "invented bundle Z")):
         f(S, fid, val, shown, how, "practice lab set")
+    S = "kahoot_toy"
+    for fid, val, shown, how in (
+            ("kahoot_popular_share", 0.75, "75 percent", "invented: the popular item's share of carts"),
+            ("kahoot_partner_conf", 0.76, "0.76", "invented: the partner's confidence toward it"),
+            ("kahoot_partner_lift", 1.01, "1.01", "0.76 over 0.75"),
+            ("kahoot_blend_sum", 0.076, "7.6 percent", "a distractor: 1.2 plus 6.4"),
+            ("kahoot_blend_gap", 0.026, "2.6 percent", "a distractor: 6.4 less 3.8")):
+        f(S, fid, val, shown, how, "Kahoot")
     S = "fallback"
     for name, (k, rows) in case["slices"].items():
         fid = "slice_" + name.replace(", ", "_").replace(" ", "_").lower()
         f(S, fid + "_carts", k, f"{k:,}", f"carts in {name}", "fallback S6 and S7, the rerun")
+    for name in ("Kothrud, evening", "Baner, morning", "Hinjewadi, night", "Viman Nagar, week three"):
+        k, rows = case["slices"][name]
+        base = "slice_" + name.replace(", ", "_").replace(" ", "_").lower()
+        for a, b2, l, both in rows[:4]:
+            key = f"{base}_{a}_{b2}".replace(" ", "_")
+            f(S, key + "_lift", round(l, 4), f"{l:.2f}", f"lift of {a} and {b2} in {name}", "take-home self-check")
+            f(S, key + "_carts", both, f"{both:,}", f"carts holding {a} and {b2} in {name}", "take-home self-check")
     slips = case["thin_slips"]
     f(S, "slice_thin_slips", len(slips), str(len(slips)), "pairs above the floor that outrank bread and butter in Hinjewadi at night", "fallback S7")
     f(S, "slice_thin_carts_max", max(r[3] for r in slips), str(max(r[3] for r in slips)), "most carts behind any of those pairs", "fallback S7")
@@ -1229,6 +1275,20 @@ def write_facts(case, strip, kalpa):
     w3, w4 = case["curd_hadapsar"]
     f(S, "curd_hadapsar_week3", round(w3, 4), f"{w3 * 100:.1f} percent", "curd's share in Hadapsar, week three", "fallback S6")
     f(S, "curd_hadapsar_week4", round(w4, 4), f"{w4 * 100:.0f} percent", "curd's share in Hadapsar, week four", "fallback S6")
+    for name in ("Kothrud, evening", "Baner, morning", "Hinjewadi, night", "Viman Nagar, week three"):
+        k = case["slices"][name][0]
+        base = "slice_" + name.replace(", ", "_").replace(" ", "_").lower()
+        f(S, base + "_floor", round(k / 100, 2), f"{k / 100:.2f}", f"1 percent of the carts in {name}", "take-home brief and self-check")
+        f(S, base + "_floor_min", math.ceil(k / 100), str(math.ceil(k / 100)), f"fewest carts a pair needs to clear the floor in {name}", "take-home self-check")
+    S = "preread"
+    f(S, "thursday_blended_retention", 0.38, "38 percent", "Thursday's ticket: blended month-two retention, June to September (case file target)", "pre-read")
+    f(S, "thursday_jan_month_one", 0.58, "58 percent", "Thursday's ticket: January cohort's month-one rate (case file target)", "pre-read")
+    f(S, "thursday_jul_month_one", 0.49, "49 percent", "Thursday's ticket: July cohort (case file target)", "pre-read")
+    f(S, "thursday_aug_month_one", 0.31, "31 percent", "Thursday's ticket: August sale cohort (case file target)", "pre-read")
+    f(S, "thursday_aug_size", 2.6, "2.6 times", "Thursday's ticket: the August cohort against a normal month (case file target)", "pre-read")
+    f(S, "thursday_android_before", 0.58, "58 percent", "Thursday's ticket: members' add-to-cart to order on Android before 14 September (case file target)", "pre-read")
+    f(S, "thursday_android_after", 0.44, "44 percent", "Thursday's ticket: the same after (case file target)", "pre-read")
+    f(S, "thursday_members", 60_000, "60,000", "Thursday's ticket: members signed up January to September 2026 (case file target)", "pre-read")
     S = "week_map"
     f(S, "monday_trips_per_hour_before", 1.9, "1.9", "Monday's target in the W04 spine, section 5", "slide two's week map")
     f(S, "monday_trips_per_hour_after", 1.6, "1.6", "Monday's target in the W04 spine, section 5", "slide two's week map")

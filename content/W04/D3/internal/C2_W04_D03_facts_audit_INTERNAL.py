@@ -114,8 +114,12 @@ def main():
                 continue
             if re.search(r"(C\d{0,5}|KR-\d{0,4}|PC\d{0,4}|P0{0,2})$", before) or "http" in line:
                 continue
+            # A fact printed in a rounded form, such as "about 433,000", also matches the number
+            # exactly as that form prints it.
+            in_shown = re.compile(r"(?<![\d,.])" + re.escape(token) + r"(?![\d,]|\.\d)")
             ids = [(0 if shown_form and shown_form in line else 1, fid)
-                   for fid, v, _, shown_form in F if matches(token, unit, v)]
+                   for fid, v, _, shown_form in F
+                   if matches(token, unit, v) or (shown_form.startswith("about ") and in_shown.search(shown_form))]
             ids = [fid for _, fid in sorted(ids)]
             shown = (("Rs " if m.group(0).startswith("Rs") else "") + token + unit).strip()
             if ids:
