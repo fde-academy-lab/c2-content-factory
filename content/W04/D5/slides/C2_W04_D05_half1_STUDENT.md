@@ -237,7 +237,7 @@ which group's own rule came closest. Transition: the trap hidden in the copy.
 **The plausible wrong number.** The copy books 401,000 for the week of 13 October 2025, its biggest week, while 369,000 shipped; the real peak, 418,200 on 6 October, gets 312,900. **The decision it misleads:** the most packers booked a week after the rush. **The check:** line the years up by weeks from Diwali, as on the right. **The fix:** festival-aligned.
 
 ```notes
-LIVE, 5 minutes. Diwali came eight days earlier in 2025, so every calendar copy is a week out.
+LIVE, 5 minutes. Diwali's week came one week earlier in 2025, so every calendar copy is a week out.
 Veritasium's move: the reveal follows the vote of S9. Transition: what the same copy does in 2026.
 ```
 

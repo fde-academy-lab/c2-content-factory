@@ -2193,6 +2193,261 @@ kalpa_rules:
   shown: Rs 50 lakh
   how: 'the lab''s check: naive misses by more than this a month'
   used_in: lab
+exercises:
+- id: guided_misses
+  value:
+  - 32000
+  - 47300
+  - 108300
+  shown: 32,000, 47,300, 108,300
+  how: bot minus actual, 13, 20 and 27 Oct 2025
+  used_in: guided set
+- id: guided_sum
+  value: 187600
+  shown: 187,600
+  how: the three misses, summed
+  used_in: guided set
+- id: guided_mae
+  value: 62533.333333
+  shown: 62,533
+  how: the three misses over three
+  used_in: guided set
+- id: guided_over12
+  value: 15633.333333
+  shown: 15,633
+  how: the sum over twelve rows, a wrong option
+  used_in: guided set
+- id: guided_first_copy_plus
+  value: 417040
+  shown: 417,040
+  how: 14 Oct 2024 times 1.04, a wrong option
+  used_in: guided set
+- id: leaky_naive_mae
+  value: 13653.846154
+  shown: 13,654
+  how: 'naive scored one week at a time with each hidden week''s own predecessor: a leak'
+  used_in: chapter 2 set
+- id: shifts_no_cushion_10_19
+  value: 3625
+  shown: 3,625
+  how: 434,928 / 120 rounded up, a wrong option
+  used_in: staffing set
+- id: shifts_vendor_10_05
+  value: 4150
+  shown: 4,150
+  how: the vendor's 5 Oct 2026 / 120, a wrong option
+  used_in: staffing set
+- id: shifts_bot_10_19
+  value: 2575
+  shown: 2,575
+  how: the bot's 19 Oct 2026 / 120, a wrong option
+  used_in: staffing set
+- id: plan_10_19_raw
+  value: 3718.6344
+  shown: 3,718.6
+  how: 446,236 / 120 before rounding up
+  used_in: staffing set
+- id: pairs
+  value:
+  - 9500
+  - 6000
+  - 6200
+  shown: 9,500, 6,000 and 6,200
+  how: three invented model MAEs for the good-enough drill
+  used_in: chapter 2 set
+- id: pair3_high
+  value: 7
+  shown: 7 of 13
+  how: 'invented: the third model''s weeks too high'
+  used_in: chapter 2 set
+- id: pair1_gap_pct
+  value: 0.033646
+  shown: 3 percent
+  how: how far 9,500 sits under the bot's MAE
+  used_in: chapter 2 set
+- id: ch1_series_a
+  value:
+  - 100
+  - 104
+  - 108
+  - 112
+  - 116
+  - 120
+  - 124
+  - 128
+  - 132
+  - 136
+  - 140
+  - 144
+  shown: 100, 104, 108
+  how: 'invented: a climb'
+  used_in: chapter 1 set
+- id: ch1_series_b
+  value:
+  - 100
+  - 130
+  - 100
+  - 70
+  - 100
+  - 130
+  - 100
+  - 70
+  - 100
+  - 130
+  - 100
+  - 70
+  shown: 100, 130, 100, 70
+  how: 'invented: a repeat of four'
+  used_in: chapter 1 set
+- id: ch1_series_c
+  value:
+  - 100
+  - 132
+  - 104
+  - 76
+  - 108
+  - 140
+  - 112
+  - 84
+  - 116
+  - 148
+  - 120
+  - 92
+  shown: 100, 132, 104, 76
+  how: 'invented: both'
+  used_in: chapter 1 set
+- id: ch1_b_mean
+  value: 100
+  shown: '100'
+  how: series B's mean, a wrong option
+  used_in: chapter 1 set
+- id: ch1_c_rise
+  value: 8
+  shown: '8'
+  how: series C rises 8 a cycle of four
+  used_in: chapter 1 set
+- id: ch1_c_two_cycles
+  value: 16
+  shown: '16'
+  how: two cycles of C's climb, the miss of a copy from eight back
+  used_in: chapter 1 set
+practice:
+- id: series_x
+  value:
+  - 20
+  - 22
+  - 24
+  - 26
+  - 28
+  - 30
+  - 32
+  - 34
+  shown: 20, 22, 24
+  how: 'invented: a climb'
+  used_in: lab set
+- id: series_y
+  value:
+  - 20
+  - 35
+  - 20
+  - 20
+  - 20
+  - 35
+  - 20
+  - 20
+  shown: 20, 35, 20, 20
+  how: 'invented: a repeat of four'
+  used_in: lab set
+- id: series_z
+  value:
+  - 20
+  - 23
+  - 18
+  - 21
+  - 22
+  - 19
+  - 21
+  - 20
+  shown: 20, 23, 18, 21
+  how: 'invented: wobble'
+  used_in: lab set
+- id: shop_last
+  value:
+  - 40
+  - 55
+  - 70
+  - 50
+  - 35
+  - 41
+  shown: 40, 55, 70, 50, 35, 41
+  how: 'invented: last year''s six weeks, festival in week 3'
+  used_in: lab set
+- id: shop_this
+  value:
+  - 42
+  - 44
+  - 58
+  - 73
+  shown: 42, 44, 58, 73
+  how: 'invented: this year''s first four, festival in week 4'
+  used_in: lab set
+- id: errors
+  value:
+  - 12
+  - -8
+  - 5
+  - -15
+  - 6
+  shown: 12, -8, 5, -15 and 6
+  how: 'invented: five misses'
+  used_in: lab set
+- id: errors_sum
+  value: 46
+  shown: '46'
+  how: their sizes, summed
+  used_in: lab set
+- id: errors_mae
+  value: 9.2
+  shown: '9.2'
+  how: 46 / 5
+  used_in: lab set
+- id: errors_signed_mean
+  value: 0
+  shown: '0'
+  how: the signed misses cancel, a wrong option
+  used_in: lab set
+- id: idle_rs
+  value: 600
+  shown: Rs 600
+  how: invented idle shift
+  used_in: lab set
+- id: late_rs
+  value: 30
+  shown: Rs 30
+  how: invented late shipment
+  used_in: lab set
+- id: over_rs
+  value: 5
+  shown: Rs 5
+  how: 600 / 120
+  used_in: lab set
+- id: share
+  value: 0.857143
+  shown: '0.86'
+  how: 30 / (30 + 5)
+  used_in: lab set
+- id: share_wrong
+  value: 0.142857
+  shown: '0.14'
+  how: 5 / 35, the share upside down
+  used_in: lab set
+- id: share_other
+  value:
+  - 0.5
+  - 0.95
+  shown: 0.50 and 0.95
+  how: wrong options
+  used_in: lab set
 toys:
 - id: cups
   value:
@@ -2428,31 +2683,61 @@ kalpa_months:
   shown: Rs 407.9 lakh
   how: sum of v4 orders.amount, 2026-04
   used_in: lab
+- id: vendor_2026_04
+  value: 44691000
+  shown: Rs 446.9 lakh
+  how: the vendor's forecast from Mar 2026, 2026-04
+  used_in: lab, Kalpa set
 - id: v4_2026_05
   value: 28051320
   shown: Rs 280.5 lakh
   how: sum of v4 orders.amount, 2026-05
   used_in: lab
+- id: vendor_2026_05
+  value: 30895000
+  shown: Rs 308.9 lakh
+  how: the vendor's forecast from Mar 2026, 2026-05
+  used_in: lab, Kalpa set
 - id: v4_2026_06
   value: 31155800
   shown: Rs 311.6 lakh
   how: sum of v4 orders.amount, 2026-06
   used_in: lab
+- id: vendor_2026_06
+  value: 34128000
+  shown: Rs 341.3 lakh
+  how: the vendor's forecast from Mar 2026, 2026-06
+  used_in: lab, Kalpa set
 - id: v4_2026_07
   value: 45057330
   shown: Rs 450.6 lakh
   how: sum of v4 orders.amount, 2026-07
   used_in: lab
+- id: vendor_2026_07
+  value: 51114000
+  shown: Rs 511.1 lakh
+  how: the vendor's forecast from Mar 2026, 2026-07
+  used_in: lab, Kalpa set
 - id: v4_2026_08
   value: 26902240
   shown: Rs 269.0 lakh
   how: sum of v4 orders.amount, 2026-08
   used_in: lab
+- id: vendor_2026_08
+  value: 30932000
+  shown: Rs 309.3 lakh
+  how: the vendor's forecast from Mar 2026, 2026-08
+  used_in: lab, Kalpa set
 - id: v4_2026_09
   value: 26440430
   shown: Rs 264.4 lakh
   how: sum of v4 orders.amount, 2026-09
   used_in: lab
+- id: vendor_2026_09
+  value: 29896000
+  shown: Rs 299.0 lakh
+  how: the vendor's forecast from Mar 2026, 2026-09
+  used_in: lab, Kalpa set
 kalpa_window:
 - id: seasonal_naive_2026_10
   value: 42760000
@@ -2782,6 +3067,27 @@ public:
   shown: 13 percent
   how: the midpoint of 4 and 22, the weak answer
   used_in: fallback, transcript
+kalpa_exercise:
+- id: bar_six
+  value: 7005000.0
+  shown: about Rs 70 lakh
+  how: six months of the seasonal copy's MAE, all one way
+  used_in: Kalpa set
+- id: vendor_minus_sn
+  value: 2708500.0
+  shown: Rs 27.1 lakh
+  how: the vendor's MAE minus the seasonal copy's, a month
+  used_in: Kalpa set
+- id: gap_to_plan
+  value: 20820720
+  shown: Rs 2.08 crore
+  how: plan line minus festival-aligned, six months
+  used_in: Kalpa set
+- id: gap_to_plan_pct
+  value: 0.105768
+  shown: 10.6 percent
+  how: the plan line over festival-aligned
+  used_in: Kalpa set
 guesstimate:
 - id: households
   value: 300000000

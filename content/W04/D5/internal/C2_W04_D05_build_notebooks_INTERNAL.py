@@ -152,7 +152,7 @@ check("the copy of last year peaks on 13 Oct 2025", copy52.idxmax() == week("202
 check("the actual peak is 6 Oct 2025", y25.idxmax() == week("2025-10-06"))
 '''),
         md("""
-        **Why it is wrong.** Diwali came eight days earlier in 2025, so the copy of the same
+        **Why it is wrong.** Diwali's week came one week earlier in 2025, so the copy of the same
         calendar week put 2024's peak (401,000) on 13 October 2025, a week late, and left the real
         peak week short. The check that catches it is the calendar: line up each year's weeks by
         their distance from Diwali before copying. The week of 29 September 2025 shows a blank in

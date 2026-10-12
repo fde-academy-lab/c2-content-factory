@@ -21,7 +21,7 @@ DAY = HERE.parent
 FACTS = HERE / "C2_W04_D05_facts_INTERNAL.yaml"
 OUT = HERE / "C2_W04_D05_facts_audit_INTERNAL.md"
 
-NUMBER = re.compile(r"(?<![\w.,/-])-?(\d{1,3}(?:,\d{2,3})+|\d+(?:\.\d+)?)(?![\w/])(\s*(?:percent|%|lakh|crore))?")
+NUMBER = re.compile(r"(?<![\w.,/-])-?(\d{1,3}(?:,\d{2,3})+(?:\.\d+)?|\d+(?:\.\d+)?)(?![\w/])(\s*(?:percent|%|lakh|crore))?")
 MONTHS = ("Jan|January|Feb|February|Mar|March|Apr|April|May|Jun|June|Jul|July|Aug|August|Sep|Sept|"
           "September|Oct|October|Nov|November|Dec|December")
 BEFORE = re.compile(r"(?:\b(?:Week|week|Day|day|chapter|Chapter|level|Level|Part|part|Item|item|Q|S|D|L|W|F|T|M|Th|R|"

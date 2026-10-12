@@ -565,6 +565,49 @@ def main():
     F.add("kalpa_rules", "v4_orders", gcz.V4_ORDERS, "1,000", "the orders in the Week 2 warehouse (v4)", "lab")
     F.add("kalpa_rules", "naive_check_floor", 5_000_000, "Rs 50 lakh", "the lab's check: naive misses by more than this a month", "lab")
 
+    # ---- the exercises' worked numbers
+    gw = [54, 55, 56]                                  # 13, 20 and 27 Oct 2025, scored by the bot by hand
+    gm = [y[i - 52] - y[i] for i in gw]
+    F.add("exercises", "guided_misses", gm, ", ".join(n(m) for m in gm), "bot minus actual, 13, 20 and 27 Oct 2025", "guided set")
+    F.add("exercises", "guided_sum", sum(abs(m) for m in gm), n(sum(abs(m) for m in gm)), "the three misses, summed", "guided set")
+    F.add("exercises", "guided_mae", sum(abs(m) for m in gm) / 3, n(sum(abs(m) for m in gm) / 3), "the three misses over three", "guided set")
+    F.add("exercises", "guided_over12", sum(abs(m) for m in gm) / 12, n(sum(abs(m) for m in gm) / 12), "the sum over twelve rows, a wrong option", "guided set")
+    F.add("exercises", "guided_first_copy_plus", round(y[2] * FINANCE), n(round(y[2] * FINANCE)), "14 Oct 2024 times 1.04, a wrong option", "guided set")
+    leaky = sum(abs(y[i - 1] - y[i]) for i in HOLDOUT) / 13
+    F.add("exercises", "leaky_naive_mae", leaky, n(leaky), "naive scored one week at a time with each hidden week's own predecessor: a leak", "chapter 2 set")
+    F.add("exercises", "shifts_no_cushion_10_19", math.ceil(ahead["aligned"][107] / PER_SHIFT), n(math.ceil(ahead["aligned"][107] / PER_SHIFT)),
+          "434,928 / 120 rounded up, a wrong option", "staffing set")
+    F.add("exercises", "shifts_vendor_10_05", math.ceil(vend[105] / PER_SHIFT), n(math.ceil(vend[105] / PER_SHIFT)),
+          "the vendor's 5 Oct 2026 / 120, a wrong option", "staffing set")
+    F.add("exercises", "shifts_bot_10_19", math.ceil(ahead["bot"][107] / PER_SHIFT), n(math.ceil(ahead["bot"][107] / PER_SHIFT)),
+          "the bot's 19 Oct 2026 / 120, a wrong option", "staffing set")
+    F.add("exercises", "plan_10_19_raw", ahead["aligned"][107] * (1 + cushion) / PER_SHIFT,
+          f"{ahead['aligned'][107] * (1 + cushion) / PER_SHIFT:,.1f}", "446,236 / 120 before rounding up", "staffing set")
+    F.add("exercises", "pairs", [9_500, 6_000, 6_200], "9,500, 6,000 and 6,200", "three invented model MAEs for the good-enough drill", "chapter 2 set")
+    F.add("exercises", "pair3_high", 7, "7 of 13", "invented: the third model's weeks too high", "chapter 2 set")
+    F.add("exercises", "pair1_gap_pct", 1 - 9_500 / S["bot"]["mae"], pct(1 - 9_500 / S["bot"]["mae"], 0), "how far 9,500 sits under the bot's MAE", "chapter 2 set")
+    F.add("exercises", "ch1_series_a", [100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144], "100, 104, 108", "invented: a climb", "chapter 1 set")
+    F.add("exercises", "ch1_series_b", [100, 130, 100, 70] * 3, "100, 130, 100, 70", "invented: a repeat of four", "chapter 1 set")
+    F.add("exercises", "ch1_series_c", [100, 132, 104, 76, 108, 140, 112, 84, 116, 148, 120, 92], "100, 132, 104, 76", "invented: both", "chapter 1 set")
+    F.add("exercises", "ch1_b_mean", 100, "100", "series B's mean, a wrong option", "chapter 1 set")
+    F.add("exercises", "ch1_c_rise", 8, "8", "series C rises 8 a cycle of four", "chapter 1 set")
+    F.add("exercises", "ch1_c_two_cycles", 16, "16", "two cycles of C's climb, the miss of a copy from eight back", "chapter 1 set")
+    F.add("practice", "series_x", [20, 22, 24, 26, 28, 30, 32, 34], "20, 22, 24", "invented: a climb", "lab set")
+    F.add("practice", "series_y", [20, 35, 20, 20, 20, 35, 20, 20], "20, 35, 20, 20", "invented: a repeat of four", "lab set")
+    F.add("practice", "series_z", [20, 23, 18, 21, 22, 19, 21, 20], "20, 23, 18, 21", "invented: wobble", "lab set")
+    F.add("practice", "shop_last", [40, 55, 70, 50, 35, 41], "40, 55, 70, 50, 35, 41", "invented: last year's six weeks, festival in week 3", "lab set")
+    F.add("practice", "shop_this", [42, 44, 58, 73], "42, 44, 58, 73", "invented: this year's first four, festival in week 4", "lab set")
+    F.add("practice", "errors", [12, -8, 5, -15, 6], "12, -8, 5, -15 and 6", "invented: five misses", "lab set")
+    F.add("practice", "errors_sum", 46, "46", "their sizes, summed", "lab set")
+    F.add("practice", "errors_mae", 9.2, "9.2", "46 / 5", "lab set")
+    F.add("practice", "errors_signed_mean", 0, "0", "the signed misses cancel, a wrong option", "lab set")
+    F.add("practice", "idle_rs", 600, "Rs 600", "invented idle shift", "lab set")
+    F.add("practice", "late_rs", 30, "Rs 30", "invented late shipment", "lab set")
+    F.add("practice", "over_rs", 5, "Rs 5", "600 / 120", "lab set")
+    F.add("practice", "share", 30 / 35, "0.86", "30 / (30 + 5)", "lab set")
+    F.add("practice", "share_wrong", 5 / 35, "0.14", "5 / 35, the share upside down", "lab set")
+    F.add("practice", "share_other", [0.5, 0.95], "0.50 and 0.95", "wrong options", "lab set")
+
     # ---- toys, labelled invented wherever they appear
     F.add("toys", "cups", [50, 52, 49, 51], "50, 52, 49, 51", "cups a canteen sells on four days (invented, R1)", "chapter 1")
     F.add("toys", "cups_naive", 51, "51", "tomorrow's naive forecast", "chapter 1")
@@ -592,6 +635,7 @@ def main():
         F.add("kalpa_months", f"rev_{m.replace('-', '_')}", rev[m], lakh(rev[m]), f"Kalpa revenue, {m}", "lab")
     for m in hold_m:
         F.add("kalpa_months", f"v4_{m.replace('-', '_')}", v4sums[m], lakh(v4sums[m]), f"sum of v4 orders.amount, {m}", "lab")
+        F.add("kalpa_months", f"vendor_{m.replace('-', '_')}", kv[m], lakh(kv[m]), f"the vendor's forecast from Mar 2026, {m}", "lab, Kalpa set")
     later = ["2026-10", "2026-11", "2026-12", "2027-01", "2027-02", "2027-03"]
     last = {m: rev[f"{int(m[:4]) - 1}-{m[5:]}"] for m in later}
     swap = {"2026-10": "2025-11", "2026-11": "2025-10"}
@@ -650,6 +694,15 @@ def main():
     F.add("public", "flipkart_sale_open", "2026-10-09", "9 October 2026", "The Big Billion Days 2026 main sale (F6)", "chapter 1 close")
     F.add("public", "flipkart_release", "2026-10-06", "6 October 2026", "Flipkart's announcement date (F6)", "chapter 1 close")
     F.add("public", "split_difference", 13, "13 percent", "the midpoint of 4 and 22, the weak answer", "fallback, transcript")
+
+    F.add("kalpa_exercise", "bar_six", kmae["seasonal_naive"] * 6, f"about Rs {kmae['seasonal_naive'] * 6 / 1e5:.0f} lakh",
+          "six months of the seasonal copy's MAE, all one way", "Kalpa set")
+    F.add("kalpa_exercise", "vendor_minus_sn", kmae["vendor"] - kmae["seasonal_naive"], lakh(kmae["vendor"] - kmae["seasonal_naive"]),
+          "the vendor's MAE minus the seasonal copy's, a month", "Kalpa set")
+    F.add("kalpa_exercise", "gap_to_plan", sum(plan_k.values()) - sum(aligned_k.values()),
+          f"Rs {(sum(plan_k.values()) - sum(aligned_k.values())) / 1e7:.2f} crore", "plan line minus festival-aligned, six months", "Kalpa set")
+    F.add("kalpa_exercise", "gap_to_plan_pct", sum(plan_k.values()) / sum(aligned_k.values()) - 1,
+          pct(sum(plan_k.values()) / sum(aligned_k.values()) - 1), "the plan line over festival-aligned", "Kalpa set")
 
     # ---- the guesstimate: two-wheelers sold in India in a year (assumptions labelled, the anchor public)
     hh, own, years, first = 300_000_000, 0.50, 8, 0.15
