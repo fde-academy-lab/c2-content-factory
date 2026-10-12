@@ -142,7 +142,7 @@ LIVE, 10 minutes. Each group takes one row and calls out its two misses. Festiva
 
 ```cards
 icon: list | eyebrow: a | title: Naive, by about ten times | body: The week before is a poor guide when weeks change fast. | tone: light
-icon: list | eyebrow: b | title: Naive, by about thirty times | body: Every festive week differs sharply from the last. | tone: light
+icon: list | eyebrow: b | title: Naive, by about thirty-five times | body: Every festive week differs sharply from the last. | tone: light
 icon: list | eyebrow: c | title: Festival-aligned, narrowly | body: Copying 2024 adds 2024's own noise. | tone: light
 icon: list | eyebrow: d | title: Level: one week ahead, both are close | body: A week is short. | tone: light
 ```
@@ -170,16 +170,16 @@ part 3, two real failures.
 ## S10. Zillow: a forecast broke its own guardrail
 *What did Zillow's forecasting miss cost, and which guardrail failed?*
 
-| | Zillow Offers, 2021 (F3, Zillow's Q3 2021 shareholder letter, checked 12 October 2026) |
+| | Zillow Offers, 2021 (Zillow's Q3 2021 shareholder letter, checked 12 October 2026) |
 |---|---|
 | The forecast | Home prices three to six months ahead, to buy homes and resell them |
-| The guardrail | Public targets of plus or minus 200 basis points of breakeven unit economics |
-| The miss | Unit economics swung about 1,200 basis points from Q2 to an expected minus 500 to minus 700 in Q4 2021 |
-| The cost | A write-down of about USD 304 million on inventory; the business wound down, and about 25 percent of the workforce was cut |
+| The guardrail | Public targets of plus or minus 200 basis points, 2 percent, of breakeven unit economics: what Zillow made or lost on each home it resold was meant to stay near zero |
+| The miss | Unit economics swung about 1,200 basis points, 12 percentage points, from Q2 to an expected minus 500 to minus 700 basis points in Q4 2021 |
+| The cost | A write-down of about USD 304 million: homes in stock marked below what Zillow paid; the business wound down, and about 25 percent of the workforce was cut |
 
 ```notes
 LIVE, 10 minutes. Groups name the Lucknow equivalent: a vendor forecast allowed to run past its
-own error band with nobody watching the band. Transition: Target Canada.
+own error bar with nobody watching it. Transition: Target Canada.
 ```
 
 ---
@@ -187,7 +187,7 @@ own error band with nobody watching the band. Transition: Target Canada.
 ## S11. Target Canada: a forecast with no history
 *What did Target's buyers have to forecast with in Canada?*
 
-| | Target Canada, 2013 to 2015 (F4, checked 12 October 2026) |
+| | Target Canada, 2013 to 2015 (Target's release of 15 January 2015 and Canadian Business, checked 12 October 2026) |
 |---|---|
 | The decision | Target announced on 15 January 2015 that it would close all 133 Canadian stores, about 17,600 employees |
 | The forecasting failure | Its forecasting and replenishment system needed years of history and could not forecast new stores, so buyers used optimistic projections instead |
@@ -206,7 +206,7 @@ Transition: the two side by side.
 
 | The failure | The Lucknow version | The check that catches it |
 |---|---|---|
-| Zillow: a forecast ran past its own guardrail | The vendor's curve, high on 12 of 13 hidden weeks and climbing | Score every week against the error band, and stop when it is breached |
+| Zillow: a forecast ran past its own guardrail | The vendor's curve, high on 12 of 13 hidden weeks and climbing | Score every week's miss against the error bar, and stop when it is breached |
 | Target Canada: a forecast with no history | A vendor model never scored on a Lucknow festival | Score it on 2025's festival from data to September 2025 before it books a shift |
 
 ```notes
@@ -217,7 +217,7 @@ transcript.
 ---
 
 ## S13. [D] Finance and the sponsor each want theirs
-*How does a candidate choose between two stakeholders' forecasts, and present the error?*
+*How does a candidate choose between two stakeholders' forecasts and present the error? [D] tags a differentiator, a question that separates strong candidates.*
 
 | A weak answer | A hire-grade answer |
 |---|---|

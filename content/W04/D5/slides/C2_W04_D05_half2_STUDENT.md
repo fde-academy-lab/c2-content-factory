@@ -11,7 +11,7 @@ Header: WEEK 4  ·  FRIDAY  ·  FLIPKART, LUCKNOW  ·  ILLUSTRATIVE CASE
 
 ```stats
 value: 20,275 | label: packer shifts over eight weeks | note: festival-aligned, raised 2.6 percent, 3,719 in the week of 19 October
-value: 6,615 | label: shipments a week, the error bar | note: on thirteen hidden weeks: Rs 35,832 if high, Rs 1.7 lakh if low
+value: 6,615 | label: shipments a week, the error bar | note: on thirteen hidden weeks: about Rs 35,800 if high, Rs 1.65 lakh if low
 value: 0.82 | label: the share of weeks to cover | note: 25 / (25 + 5.42): being short costs 4.6 times being long
 ```
 
@@ -33,7 +33,7 @@ note must carry.
 ```cards
 icon: file-text | eyebrow: 1 | title: The claim as the title | body: How many shifts, which weeks, from which forecast, in one sentence. | tone: light
 icon: calendar | eyebrow: 2 | title: The festival placed | body: Which week is the peak and why: the distance from Diwali, never the calendar. | tone: light
-icon: ruler | eyebrow: 3 | title: The error bar in rupees | body: Shipments a week, priced in each direction, and the festival's own record. | tone: light
+icon: ruler | eyebrow: 3 | title: The error bar in rupees | body: The miss a week in shipments, its cost if high and if low, and the rule's record on 2025's festival. | tone: light
 icon: circle-alert | eyebrow: 4 | title: What would make it wrong | body: Three facts that would move the number, each with its check. | tone: light
 icon: scale | eyebrow: 5 | title: The two answered | body: One line to finance, one to the vendor's sponsor, conceding the true part. | tone: dark
 ```
@@ -120,12 +120,14 @@ on the card. Transition: the follow-ups.
 ```timeline
 label: Follow-up 1 | title: MAE or MAPE, and when? | body: Shipments when the cost is per shipment; percent only to compare series of different sizes.
 label: Follow-up 2 | title: The festival moves three weeks: what breaks? | body: Every calendar copy, the house bot and finance's rule; the festival-aligned copy moves with it.
-label: Follow-up 3 | title: What did a forecast cost Zillow? | body: A guardrail of plus or minus 200 basis points swung about 1,200; a write-down of about USD 304 million (F3). | tone: dark
+label: Follow-up 3 | title: What did a forecast cost Zillow? | body: Its profit on each resold home was meant to stay within 2 percent of zero; it swung about 12 percentage points, and USD 304 million of homes were marked down. | tone: dark
 ```
 
 ```notes
 LIVE, 3 minutes. Each follow-up changes the question so only the reasoning transfers. Zillow's
-figures are from its Q3 2021 shareholder letter, checked 12 October 2026. Transition: the same idea
+figures are from its Q3 2021 shareholder letter, checked 12 October 2026: a guardrail of plus or
+minus 200 basis points (a basis point is a hundredth of a percent) of breakeven unit economics, a
+swing of about 1,200 basis points, an inventory write-down of about USD 304 million. Transition: the same idea
 at an AI company.
 ```
 
@@ -145,7 +147,7 @@ flowchart LR
     class C lit
 ```
 
-The launch is the festival: line it up by days from the launch, never by calendar date. The plan sits above the forecast because being short means timeouts. This variant is written for the programme and quotes no company's figures.
+**Inference** is the computing a model does each time it answers a user. The launch is the festival: line it up by days from the launch, never by calendar date. The plan sits above the forecast because being short means timeouts. This variant is written for the programme and quotes no company's figures.
 
 ```notes
 LIVE, 3 minutes. Ask the room which cost is the Rs 25 and which the Rs 5.42 here. Transition: the
@@ -162,14 +164,14 @@ flowchart LR
     H["<b>Households</b><br/>30 crore, assumed"] --> O["<b>Own one</b><br/>half, assumed"]
     O --> R["<b>Replace every 8 years</b><br/>about 1.9 crore a year"]
     R --> F["<b>Plus first-time buyers</b><br/>15 percent, assumed:<br/>about 2.16 crore"]
-    F --> V["<b>Validate</b><br/>SIAM: 2,17,05,974<br/>in FY 2025-26"]
+    F --> V["<b>Validate</b><br/>SIAM: 2.17 crore<br/>in FY 2025-26"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class H,O,R,F known
     class V lit
 ```
 
-**The catch.** October 2025's retail alone was 31,49,846 two-wheelers (FADA, F5); times twelve that is about 3.78 crore, 74 percent too high: never annualise a festive month. SIAM's figure is from its FY 2025-26 release (T3, checked 12 October 2026).
+**The catch.** October 2025's two-wheeler sales to buyers alone were 31.5 lakh (FADA, the Federation of Automobile Dealers Associations); times twelve that is about 3.78 crore, 74 percent too high: never annualise a festive month. SIAM, the Society of Indian Automobile Manufacturers, reported 2.17 crore for FY 2025-26 (its release, checked 12 October 2026).
 
 ```notes
 LIVE, 3 minutes if time allows, in pairs against a three-minute clock. The scorer checks the
@@ -193,7 +195,7 @@ Transition: the Kahoot.
 
 ---
 
-## S11. Kahoot: eight calls in twenty seconds each
+## S11. Kahoot: eight calls, twenty seconds each, item 7 forty
 *Which of today's calls can the room make fast?*
 
 | Item | What it tests |
@@ -221,7 +223,7 @@ Transition: Saturday.
 ```cards
 icon: badge-check | eyebrow: The rule | title: Beat the bot on hidden weeks | body: In shipments, then rupees, against a copy of last year, before any model earns the plan. | tone: dark
 icon: calendar | eyebrow: The calendar | title: Copy by distance from Diwali | body: A calendar copy moved 2025's peak a week late and moves 2026's two weeks early. | tone: light
-icon: scale | eyebrow: The cost | title: Plan at the 0.82 share | body: Being short costs 4.6 times being long, so the plan sits 2.6 percent above the forecast. | tone: light
+icon: scale | eyebrow: The cost | title: Cover 0.82 of weeks | body: A late shipment costs 4.6 times a spare one, so the plan sits 2.6 percent above the forecast. | tone: light
 ```
 
 **Saturday** runs the recap paper and moves each day's method to another company: Friday's goes to Amazon India's festive staffing, then to Kalpa's four units. Tonight: the take-home and Saturday's preview.
