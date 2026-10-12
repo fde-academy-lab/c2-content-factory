@@ -1,20 +1,20 @@
 # What makes a number safe to pay for?
 
-*Illustrative case: the company is real, the situation and the data are synthetic, built for this class.* Uber, Hyderabad, the driver app. From 31 August 2026 an enrolled driver online through a whole peak window is guaranteed Rs 300 per peak online hour, with a top-up for the gap. Six weeks each side: peak online hours 118,000 to 146,300 (up 24 percent), trips 224,200 to 230,900 (up 3 percent), trips per peak online hour 1.90 to 1.58, offers accepted 0.86 to 0.73, median wait 4.8 to 4.6 minutes, top-up Rs 0 to Rs 1.9 crore. Data: `drivers`, `driver_weeks`, `zone_weeks`. Ask, due Friday: is it working, what should it pay for, is anyone gaming it? Caveats: monsoon's end, 140 new drivers, online means the app is open, three thin outer zones, drivers on two apps.
+Illustrative case: the company is real, the situation and the data are synthetic, built for this class. Uber, Hyderabad: from 31 August 2026 an enrolled driver online through a whole peak window is guaranteed Rs 300 per peak online hour, with a top-up for the gap. Six weeks each side: peak online hours up 24 percent, trips up 3 percent, trips per peak online hour 1.90 to 1.58, offers accepted 0.86 to 0.73, median wait 4.8 to 4.6 minutes, top-up Rs 0 to Rs 1.9 crore. Data: `drivers`, `driver_weeks`, `zone_weeks`. Ask, by Friday: is it working, what should it pay for, is anyone gaming it? Caveats: monsoon's end, 140 new drivers, online means the app is open, three thin outer zones, drivers on two apps.
 
-## Panel 1: What makes a number safe to pay for?
+## Panel 1: What does the finished board say about a number worth paying for?
 
 ```mermaid
 flowchart LR
     Q["<b>Safe to pay for?</b>"]
     Q1["<b>What is it for?</b><br/>riders picked up faster"]
-    Q2["<b>How could it rise badly?</b><br/>online but idle, thin zones"]
+    Q2["<b>Can it rise badly?</b><br/>idle hours, thin zones"]
     Q3["<b>What stops that?</b><br/>north star and guardrails"]
-    S1["<b>The tree</b>"]
-    S2["<b>The seesaw</b>"]
-    S3["<b>The window's start</b>"]
+    S1["<b>The tree</b><br/>north star and inputs"]
+    S2["<b>The seesaw</b><br/>star up, guardrail down"]
+    S3["<b>The window's start</b><br/>who starts the clock"]
     P1["<b>No usage condition</b><br/>Wells Fargo"]
-    P2["<b>The unit moves it</b><br/>Delhi Metro"]
+    P2["<b>Units move numbers</b><br/>Delhi Metro"]
     P3["<b>The measured set the start</b><br/>VA"]
     Q --> Q1
     Q --> Q2
@@ -33,7 +33,7 @@ flowchart LR
     class P1,P2,P3 bad
 ```
 
-**Crux:** Pay for completed peak trips per enrolled driver online at peak, guarded by acceptance, the rider's wait and the top-up per trip; hours rose 24 percent while trips per hour fell from 1.90 to 1.58.
+**Crux:** Judge it by completed peak trips per enrolled driver online at peak, guarded by acceptance, the wait and top-up per trip; hours rose 24 percent as trips per hour fell from 1.90 to 1.58.
 
 ## Panel 2: What did six drivers do, counted by hand?
 
@@ -47,7 +47,7 @@ flowchart LR
 | F, Rajendranagar | 10 then 14 | 17 then 2 |
 | All six | 60 then 74, up 23 percent | 114 then 88, down 23 percent |
 
-**Crux:** 114 / 60 = 1.90 and 88 / 74 = 1.19: add the trips, add the hours, divide once. Two of six sit in the idle tail against 15 percent of the city, so the city falls less, to 1.58.
+**Crux:** 114 / 60 = 1.90 and 88 / 74 = 1.19: add, then divide once. Two of six are in the idle tail against 15 percent of the city, which falls only to 1.58.
 
 ## Panel 3: What are the seven lines of a complete definition?
 
@@ -58,8 +58,8 @@ flowchart LR
 | Window | The stretch of time | The calendar week |
 | Exclusions | Left out, with why | Cancelled trips, test accounts, off-window trips |
 | Does not reward | Behaviour paid nothing | Hours online, declines, a shrinking base |
-| Guardrails | Must not get worse | Accepted share over a floor; median wait; top-up per trip |
-| Gaming note | What each guardrail catches | Declining; lost supply; a runaway top-up |
+| Guardrails | Must not get worse | Riders: accepted share over a floor, the wait by zone. Budget: top-up per trip |
+| Gaming note | What each guardrail catches | Declines and cancels; lost supply; a runaway top-up |
 
 **Crux:** The first four lines make a number computable; the last three make it hard to game. North star 35.76 to 35.89 trips per online driver-week.
 
@@ -77,6 +77,6 @@ Could a team hit this number while the thing it stands for got worse?
 
 ## Panel 5: What did hours cost, and what would the redesign save?
 
-**Rs 1.159 crore**, 61 percent of the top-up, went to driver-weeks that accepted under half their offers: 180 idle drivers, hours 2.1 times, trips down 12 percent. A floor between 0.46 and 0.78 stops it.
+Rs 1.9 crore bought 6,700 more trips, about Rs 2,836 each; **Rs 1.159 crore** of it went to weeks accepting under half their offers. Rule: the floor stays only for weeks accepting half, a cancel counted as a decline.
 
-**Crux:** Saving Rs 58 lakh to Rs 92.7 lakh if a fifth to a half is still paid: an assumption with a range, settled by a test.
+**Crux:** Saving Rs 92.7 lakh if a fifth of the idle top-up is still paid, Rs 58 lakh if half is: an assumption with a range, settled by a test.
