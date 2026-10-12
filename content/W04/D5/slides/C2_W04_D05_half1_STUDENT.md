@@ -571,7 +571,10 @@ A **back-test** forecasts an earlier stretch as if the later weeks were unknown.
 ```notes
 LIVE, 5 minutes. This back-test is the only festival the data can test the rules on, so it
 settles placement and leaves the size of the error open. The vendor has no festive forecast to
-score, only its fit. Transition: what plus 22 and plus 4 measure.
+score, only its fit. Predict before S31 appears: finance's eight weeks sit 4 percent above the
+same calendar weeks of 2025; against 2025's weeks counted from Diwali, are they above or below,
+and by roughly how much? Take a show of hands and write the split on the board. Transition: what
+plus 22 and plus 4 measure.
 ```
 
 ---
@@ -591,7 +594,9 @@ Last year's same calendar weeks shipped 1,983,300; the same weeks counted from D
 ```notes
 LIVE, 6 minutes. The calendar window holds only the tail of 2025's festival, because 2025's peak
 came before 13 October; 2026's peak falls inside the window. That is why an honest forecast reads
-plus 19.5 against it. Transition: how far above the forecast to plan.
+plus 19.5 against it. Predict before S32 appears: should the plan book the forecast itself, less,
+or more, and in about how many weeks of ten should it cover demand? Most rooms say the forecast
+itself, covering half. Transition: how far above the forecast to plan.
 ```
 
 ---

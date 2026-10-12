@@ -366,6 +366,14 @@ check("the house bot beats naive and drift", scores["house bot"] < min(scores["n
         week too low. The tie is honest: on weeks this far from Diwali the two rules are the same
         arithmetic.
 
+        **Predict before you run.** The vendor's sponsor says the curve sits within 2 percent of
+        every past week. On the thirteen hidden weeks, how does it score against the house bot's
+        9,831?
+
+        a) far below the bot, since it fits the past best
+        b) about the same as the bot
+        c) above the bot: it misses by more
+
         **Your turn.** Score the vendor on the same hidden weeks. Type these lines into the empty
         cell below and run it:
 
@@ -405,7 +413,7 @@ check("the vendor's MAE is at least 30 percent above festival-aligned",
       vendor_mae >= 1.3 * scores["festival-aligned"])
 '''),
         md("""
-        **Why it is wrong.** The vendor never misses its fitted weeks by more than 1.4 percent, and
+        **Why it is wrong.** The answer is c. The vendor never misses its fitted weeks by more than 1.4 percent, and
         it misses the hidden weeks by 16,400 a week, 148 percent worse than festival-aligned and 67
         percent worse than the house bot. The check is the one the room fixed before scoring: error
         on the weeks it never saw. The fix is to send nothing to the plan that loses to the house
@@ -630,6 +638,13 @@ check("festival-aligned's busiest week is 19 Oct 2026", ahead["festival-aligned"
         "Last year's window" has two readings. The same calendar weeks, 13 October to 1 December
         2025, hold only the tail of 2025's festival. The same weeks counted from Diwali, 29
         September to 17 November 2025, hold all of it.
+
+        **Predict before you run.** Finance's eight weeks sit 4 percent above the same calendar
+        weeks of 2025. Where do they sit against 2025's weeks counted from Diwali?
+
+        a) 4 percent above, the same as on the calendar weeks
+        b) between 0 and 4 percent above
+        c) below them
         """),
         code('''
 window = weeks26[2:]                                    # 12 Oct to 30 Nov 2026, the weeks to book
@@ -647,7 +662,7 @@ check("the vendor is plus 22 percent on the calendar window", round(totals["vend
 check("finance sits below festival-aligned", totals["finance"] < totals["festival-aligned"])
 '''),
         md("""
-        **What happened.** Against the calendar weeks, festival-aligned reads 19.5 percent above
+        **What happened.** The answer is c. Against the calendar weeks, festival-aligned reads 19.5 percent above
         last year, close to the vendor's 22.0, because 2026's peak weeks fall inside the window and
         2025's fell before it. Against the weeks counted from Diwali it reads 4.0 percent. Finance's
         plus 4 is plus 4 only on the calendar window: against last year's festival weeks it sits
@@ -657,18 +672,18 @@ check("finance sits below festival-aligned", totals["finance"] < totals["festiva
 
         ## How far above the forecast should the plan sit, and why?
 
-        Raise the plan by one shipment and two things can happen. If demand turns out higher, that
-        shipment is no longer late, which saves Rs 25. If demand turns out lower, it is a spare
-        shipment, which wastes Rs 5.42. Picture 100 weeks. If demand beats the plan in 18 of them,
-        one more shipment of plan saves 18 x Rs 25 = Rs 450 and wastes 82 x Rs 5.42 = Rs 444: about
-        even, so stop there. That is the rule, called the newsvendor rule after a seller deciding
-        how many papers to stock: plan so that demand is covered in this share of weeks.
+        **Predict before you run.** A late shipment costs Rs 25 and a spare one Rs 5.42. Where
+        should the plan sit?
 
-        $$\\text{share covered} = \\frac{\\text{late cost}}{\\text{late cost} + \\text{spare cost}} = \\frac{25}{25 + 5.42} \\approx 0.82$$
+        a) at the forecast, covering demand in about half the weeks
+        b) above the forecast, covering demand in about four weeks of five
+        c) far enough above to cover every week
+        d) below the forecast, since spare shipments waste money
 
-        Then read the 0.82 point off the forecast's own misses on the hidden weeks of chapter 2.
-        Here the miss is measured the other way round: how far demand came **above** the forecast,
-        as a share of it, so a positive number is a week the forecast was too low.
+        The cell below works out the share of weeks the plan should cover from the two costs, then
+        reads that point off festival-aligned's own misses on chapter 2's hidden weeks. Here the
+        miss is measured the other way round: how far demand came **above** the forecast, as a
+        share of it, so a positive number is a week the forecast was too low.
         """),
         code('''
 hold = y.iloc[91:]                                              # chapter 2's thirteen hidden weeks
@@ -689,7 +704,17 @@ check("the cushion sits between the 10th and 11th sorted weeks",
       sorted(above)[9] <= cushion <= sorted(above)[10])
 '''),
         md("""
-        **What happened.** Sorted, the thirteen weeks run from 5.9 percent below the forecast to
+        **What happened.** The answer is b. Raise the plan by one shipment and two things can happen.
+        If demand turns out higher, that shipment is no longer late, which saves Rs 25. If demand
+        turns out lower, it is a spare shipment, which wastes Rs 5.42. Picture 100 weeks. If demand
+        beats the plan in 18 of them, one more shipment of plan saves 18 x Rs 25 = Rs 450 and wastes
+        82 x Rs 5.42 = Rs 444: about even, so stop there. That is the rule, called the newsvendor
+        rule after a seller deciding how many papers to stock: plan so that demand is covered in
+        this share of weeks.
+
+        $$\\text{share covered} = \\frac{\\text{late cost}}{\\text{late cost} + \\text{spare cost}} = \\frac{25}{25 + 5.42} \\approx 0.82$$
+
+        Sorted, the thirteen weeks run from 5.9 percent below the forecast to
         7.8 percent above. The 0.82 point sits between the 10th week, 2.1 percent, and the 11th,
         2.7 percent; `quantile` reads it 0.82 of the way along the list, at 2.6 percent. The raised
         forecast covers 10 of the 13 weeks, and the 11th misses by a hair. With thirteen weeks the
