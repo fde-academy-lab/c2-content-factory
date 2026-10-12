@@ -46,6 +46,6 @@ Uber, Hyderabad, one day on. Illustrative case: the company is real, the situati
 |---|---|
 | Unit | Two million people as eight million households: multiplied by four, never divided |
 | Period | September's 24.07 billion over 31 days gives 776 million; September has 30, so 802 million a day |
-| Definition | Flipkart's 6.3 million "concurrent in a minute", 63 in its web address: read the source's own words |
+| Definition | Flipkart's text says 6.3 million "concurrent in a minute" and its web address says 63: read the source's own words |
 
 **Crux:** Check in the same unit, period and definition.

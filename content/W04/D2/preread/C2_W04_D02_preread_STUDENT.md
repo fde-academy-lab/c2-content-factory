@@ -37,7 +37,7 @@ The rest of the ticket, its data and its ask, open the morning.
 | Confidence | Of the carts that hold the first item, the share that also hold the second |
 | Lift | How many times more often the two items turn up together than they would if shoppers picked each one with no regard for the other |
 
-Three words, no numbers yet: Wednesday counts each one by hand on twelve carts before any code runs.
+The three words come with no numbers yet, because Wednesday counts each one by hand on twelve carts before any code runs.
 
 ---
 

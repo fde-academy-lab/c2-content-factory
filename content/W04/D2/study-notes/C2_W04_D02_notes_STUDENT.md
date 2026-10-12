@@ -61,7 +61,7 @@ What are the four parts, and where do they sit?
 Call it **the four-part slide**: the claim as the title, the evidence with its denominator, the caveat
 beside it, the action with its cost and who signs.
 
-The five lines to keep, as the afternoon deck closes on them: A slide carries one claim, one number
+The five lines to keep: A slide carries one claim, one number
 with its denominator, the caveat in sight and the action with its cost. Name the denominator before the
 number. Answer an objection in four moves. Size a number in four steps, give the factor that drives
 the range, and check it like for like. Check in the same unit, period and definition.
@@ -77,9 +77,9 @@ reader can act on. A hostel notice reading "Breakfast survey results" is walked 
 "Rotis replace rice at Monday breakfast, so the kitchen moves two staff to the roti line" gets two
 staff moved (invented, and Minto's answer-first rule in miniature).
 
-The denominator is a choice, and an auto driver shows why (invented): Rs 1,800 on Monday from 20
-rides in 9 hours and Rs 1,800 on Tuesday from 18 rides in 12 hours is flat per day, up per ride (Rs 90
-to Rs 100) and down per hour (Rs 200 to Rs 150).
+The denominator is a choice, and an auto driver shows why (invented): earning Rs 1,800 on Monday from
+20 rides in 9 hours and Rs 1,800 on Tuesday from 18 rides in 12 hours, the driver is flat per day, up
+per ride (Rs 90 to Rs 100) and down per hour (Rs 200 to Rs 150).
 
 The thread: gross bookings, what riders paid for peak trips. On Monday's twelve rows (six drivers, two
 weeks) they fell 37 percent per online hour (Rs 313.5 to Rs 196.2), 23 percent per driver-week and not
@@ -98,14 +98,14 @@ whole fall is trips per hour.
 > the read the scheme pays in falls.
 
 > **IN THE FIELD** · Storytelling with Data's declutter makeover (4 January 2011) strips borders,
-> gridlines and most markers and labels the lines directly, the moves of today's makeover.
+> gridlines and most markers, and labels the lines directly: the moves of today's makeover.
 
 > **CALLBACK** · Monday, chapter 2: trips per peak online hour fell from 1.90 to 1.58 while online
 > hours rose 24 percent. Today's Rs 314 to Rs 260 is that fall in rupees.
 
 Say it to a hostel warden: "An hour online used to bring in Rs 314 of fares and now brings in Rs 260,
-because more of those hours have no rider." (The week's explorer, which ships with the week, draws
-this in scenes T1 and T2.)
+because more of those hours have no rider." (The week's explorer draws this in
+scenes T1 and T2.)
 
 ## Which objection is partly right, and which part?
 
@@ -141,12 +141,12 @@ leave?
 
 Nine numbers become two: the chart of bookings per online hour and the 61 percent of the Rs 1.9 crore
 top-up that went to driver-weeks accepting fewer than half their offers. Everything else goes to an
-appendix page headed by the question one role will ask. The caveat never leaves: its owner finds it
-in the drawer and calls the slide dishonest.
+appendix page headed by the question one role will ask. The caveat never leaves: an owner who finds it
+in the drawer calls the slide dishonest.
 
 > **IN THE FIELD** · In 2018 the Delhi Metro reported "line utilisation", a trip across three lines
 > counted three times, in place of ridership, and the press asked where ridership went (PTI, 30 May
-> 2018). A number that leaves the slide goes to a named page, or readers assume it was hidden.
+> 2018).
 
 Say it to a hostel warden: "Keep the two numbers that make the point on the notice; put the rest in a
 folder labelled with the question each one answers."
@@ -160,8 +160,8 @@ check confirm?
 Clarify, map, calculate, validate. The chain: 1 crore people x 1 weekday Uber trip per 100 people x a
 quarter of trips in the three evening hours = about 8,330 trips an hour; a busy driver fits 2.4 trips
 an hour and 30 percent of online drivers have no rider, so each completes 1.68; 8,330 / 1.68 x 1.15 for
-the busiest half hour is about 5,700 drivers. Counting trips, never riders, keeps a commuter who rides
-both ways in the count. Trips per person moves the answer from about 2,900 to about 8,600 with
+the busiest half hour is about 5,700 drivers. Counting trips, never riders, counts a commuter who rides
+both ways twice. Trips per person moves the answer from about 2,900 to about 8,600 with
 everything else held. Units: 1 lakh is 100,000; 1 crore is 10 million; 100 crore is 1 billion.
 
 ![Which assumption moves the answer most](../whiteboards/C2_W04_D02_guesstimate_swing_STUDENT.png)
@@ -193,8 +193,8 @@ meetings, which costs?
 
 ## Can you answer these without writing anything?
 
-**Who needs the answer.** You, tonight. **The questions on the way.** Five checks, each pointing back
-to a section.
+**Who needs the answer.** You, tonight. **The questions on the way.** Which section answers each of
+the five checks?
 
 1. Rs per active driver-week rose 0.8 percent. Is that evidence the guarantee works?
 2. Which of the four moves do first defences skip?
@@ -252,8 +252,8 @@ does each term mean?
 
 ## Where should you go next, and in what order?
 
-**Who needs the answer.** Anyone with an evening to spend. **The questions on the way.** What to read,
-how long each takes?
+**Who needs the answer.** Anyone with an evening to spend. **The questions on the way.** What should you
+read first, and how long does each take?
 
 | Order | What | Time |
 |---|---|---|
