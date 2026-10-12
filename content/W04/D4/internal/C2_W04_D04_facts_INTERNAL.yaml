@@ -1462,6 +1462,54 @@ numbers:
   how: members who joined before August on ios who ordered, Sep
   used_by: users against use
   printed: 38.0 percent
+- id: held_july_share_ordered_android_aug
+  value: 0.3792
+  unit: share
+  how: members who joined before July on android who ordered, Aug
+  used_by: users against use, age held
+  printed: 37.9 percent
+- id: held_july_orders_per_active_android_aug
+  value: 1.45
+  unit: orders
+  how: orders per ordering android member who joined before July, Aug
+  used_by: users against use, age held
+  printed: '1.45'
+- id: held_july_share_ordered_ios_aug
+  value: 0.3809
+  unit: share
+  how: members who joined before July on ios who ordered, Aug
+  used_by: users against use, age held
+  printed: 38.1 percent
+- id: held_july_orders_per_active_ios_aug
+  value: 1.45
+  unit: orders
+  how: orders per ordering ios member who joined before July, Aug
+  used_by: users against use, age held
+  printed: '1.45'
+- id: held_july_share_ordered_android_sep
+  value: 0.3747
+  unit: share
+  how: members who joined before July on android who ordered, Sep
+  used_by: users against use, age held
+  printed: 37.5 percent
+- id: held_july_orders_per_active_android_sep
+  value: 1.24
+  unit: orders
+  how: orders per ordering android member who joined before July, Sep
+  used_by: users against use, age held
+  printed: '1.24'
+- id: held_july_share_ordered_ios_sep
+  value: 0.3792
+  unit: share
+  how: members who joined before July on ios who ordered, Sep
+  used_by: users against use, age held
+  printed: 37.9 percent
+- id: held_july_orders_per_active_ios_sep
+  value: 1.46
+  unit: orders
+  how: orders per ordering ios member who joined before July, Sep
+  used_by: users against use, age held
+  printed: '1.46'
 - id: weekly_orders_change_member_android
   value: -0.1828
   unit: share

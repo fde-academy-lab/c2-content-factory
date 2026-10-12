@@ -79,6 +79,7 @@ Written by `C2_W04_D04_generate_INTERNAL.py`; every line must read PASS.
 | PASS | counted over everyone, the series falls every month from June to September |  |  |
 | PASS | held fixed, iOS completion moves by under a point while Android's falls by more than 15 |  |  |
 | PASS | every Android session from 14 September runs v2, and every other session v1 | 1.0 | 1.0 |
+| PASS | joined before July, the share who ordered moves under a point on each platform while orders per ordering member fall only on Android |  |  |
 | PASS | the practice set's and the quiz's blends hold flat, neither at 38 nor 41 | [[51.0, 51.0], [46.0, 46.0]] |  |
 | PASS | the weekly cohorts sum to the members who joined 3 August to 13 September | 14892 |  |
 | PASS | the sale week's cohort is the sale-week members and that week's organic joiners |  |  |

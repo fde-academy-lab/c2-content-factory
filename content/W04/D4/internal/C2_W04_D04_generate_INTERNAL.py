@@ -1241,6 +1241,25 @@ for month in ("2026-08", "2026-09"):
              "retention cannot see the checkout", f"{100 * d_:.1f} percent")
         fact(f"held_share_ordered_{p_}_{NAMES[month].lower()}", r4(h_), "share",
              f"members who joined before August on {p_} who ordered, {NAMES[month]}", "users against use", f"{100 * h_:.1f} percent")
+# ---- the third interviewer read: users against use with age held too, members who joined before July
+# are past month one in August and in September, so neither month carries a cohort's first-month drop
+held_july = {}
+for month in ("2026-08", "2026-09"):
+    for p_ in ("android", "ios"):
+        s_ = plat_s[(plat_s.month == month) & (plat_s.cohort_month < "2026-07") & (plat_s.platform == p_)]
+        sh_, op_ = s_["active"].mean(), s_[s_.active]["orders"].mean()
+        held_july[(p_, month)] = (sh_, op_)
+        fact(f"held_july_share_ordered_{p_}_{NAMES[month].lower()}", r4(sh_), "share",
+             f"members who joined before July on {p_} who ordered, {NAMES[month]}", "users against use, age held",
+             f"{100 * sh_:.1f} percent")
+        fact(f"held_july_orders_per_active_{p_}_{NAMES[month].lower()}", r2(op_), "orders",
+             f"orders per ordering {p_} member who joined before July, {NAMES[month]}", "users against use, age held",
+             f"{op_:.2f}")
+check("joined before July, the share who ordered moves under a point on each platform while orders per ordering "
+      "member fall only on Android",
+      all(abs(held_july[(p_, "2026-09")][0] - held_july[(p_, "2026-08")][0]) < 0.01 for p_ in ("android", "ios"))
+      and held_july[("android", "2026-08")][1] - held_july[("android", "2026-09")][1] > 0.15
+      and abs(held_july[("ios", "2026-09")][1] - held_july[("ios", "2026-08")][1]) < 0.05)
 wk_orders = {}
 for is_m, p_ in ((True, "android"), (True, "ios"), (False, "android")):
     o_ = sess[(sess.is_member == is_m) & (sess.platform == p_) & sess.order_placed]
