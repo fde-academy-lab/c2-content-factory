@@ -42,7 +42,7 @@ Transition: the four decisions.
 ```cards
 icon: map-pin | eyebrow: Where | title: Two zones, shoppers split | body: In two zones, a random half of shoppers see the pair beside ice cream and the other half do not. | tone: light
 icon: calendar | eyebrow: How long | title: Fixed before it starts | body: The length is chosen before the first day and never stretched to chase a result. | tone: light
-icon: target | eyebrow: Against what | title: The shoppers who do not see it | body: The pair's slot must beat the same slot for the other half, over the same weeks. | tone: light
+icon: target | eyebrow: Against what | title: The shoppers who do not see it | body: The other half see the next-best suggestion in that slot, over the same weeks. | tone: light
 icon: octagon-x | eyebrow: What stops it | title: A shock to one half | body: A stock-out or a campaign that reaches one half and not the other voids the window. | tone: dark
 ```
 
@@ -54,13 +54,13 @@ how long is the parked sample-size question. Transition: the first data request.
 
 ---
 
-## S3. The trial's first need is a log split by zone
-*Can today's `strip_log` measure a two-zone trial?*
+## S3. The trial's first need is each shopper's half
+*Can today's tables measure a two-zone trial?*
 
 ```mermaid
 flowchart LR
-    L["<b>strip_log</b><br/>date, slot, anchor, suggestion<br/>no zone"] --> R["<b>The request</b><br/>the same log split by zone,<br/>weeks before and during"]
-    C["<b>carts</b><br/>has a zone column"] --> R
+    L["<b>strip_log</b><br/>date, slot, anchor, suggestion<br/>no zone, no shopper"] --> R["<b>The request</b><br/>which half each shopper<br/>was in, from day one"]
+    C["<b>carts and cart_items</b><br/>zone, customer and the<br/>margin on every line"] --> R
     R --> T["<b>The trial</b><br/>can now be measured"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
@@ -70,25 +70,25 @@ flowchart LR
     class T lit
 ```
 
-`strip_log` counts impressions, clicks and adds for the whole city; it has no zone column. A two-zone trial starts with a data request: the same log, split by zone, for the weeks before and during the trial.
+`strip_log` counts impressions, clicks and adds for the whole city, with no zone and no shopper, so it cannot read a margin rule. `carts` holds the zone and the customer, and `cart_items` the margin on every line. A two-zone trial starts with a data request: which half each shopper was in, logged from the first day.
 
 ```notes
 LIVE, 8 minutes. This is a real analyst's moment: the method is ready and the data are not. Ask
-the room to write the request in one sentence: which table, which new column, which dates.
+the room to write the request in one sentence: which table, which new column, from which day.
 Transition: the pass rule.
 ```
 
 ---
 
-## S4. Pass only if the clicks and the rupees both hold
+## S4. Pass only if the shown half earns more margin
 *What rule promotes the pair, and what keeps it on the watch list?*
 
 ```mermaid
 flowchart LR
-    T["<b>Shoppers shown it</b><br/>the pair's slot<br/>click-through"] --> G["<b>Beats the half</b><br/>not shown it, by a<br/>gap fixed in advance"]
-    R["<b>Rupees</b><br/>adds x margin,<br/>less any discount"] --> G
+    T["<b>Shown half</b><br/>margin per shopper on<br/>ice-cream carts, less<br/>any discount"] --> G["<b>Beats the other half</b><br/>by a gap fixed<br/>before the trial"]
+    R["<b>Other half</b><br/>the same, with the<br/>next-best suggestion"] --> G
     G --> P["<b>Promote</b><br/>city-wide"]
-    G --> W["<b>Stays on the watch list</b><br/>if either fails"]
+    G --> W["<b>Stays on the watch list</b><br/>if it falls short"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
@@ -97,11 +97,12 @@ flowchart LR
     class W bad
 ```
 
-The pair is promoted when its slot beats the same slot for the shoppers not shown it, by a gap set before the trial, and its adds earn the slot's margin back, after any bundle discount. If either fails, it stays on the watch list, which is what a watch list is for.
+The pair is promoted only if shoppers in the shown half earn more margin on their ice-cream carts than shoppers in the other half, after any bundle discount, by a gap set before the trial. Margin per shopper counts the sauce the strip sold and nets out the sauce they would have bought anyway, which a slot's click-through cannot. If it falls short, the pair stays on the watch list, which is what a watch list is for.
 
 ```notes
-LIVE, 15 minutes. Groups present their pass rule in two sentences. The weak rule names only the
-click-through; the strong rule names the rupees too. Transition: one zone, one time band.
+LIVE, 15 minutes. Groups present their pass rule in two sentences. The weak rule names the slot's
+click-through; the strong rule compares the two halves' margin per shopper on ice-cream carts, which
+carries the discount and the adds that would have come anyway. Transition: one zone, one time band.
 ```
 
 ---
@@ -248,7 +249,7 @@ Transition: the four moves.
 
 ```cards
 icon: ear | eyebrow: Restate | title: Habits may have shifted | body: You think shoppers changed when the monsoon ended, and a new layout would win the clicks back. | tone: light
-icon: chart-column | eyebrow: Answer | title: No rate fell; the mix moved | body: Milk went from 2 to 50 percent of impressions, clicking 1.2 percent in both windows; the rest rose in every slot. | tone: light
+icon: chart-column | eyebrow: Answer | title: The mix moved | body: Milk went from 2 to 50 percent of impressions at 0.9 to 1.4 percent, and the rest rose in every slot. | tone: light
 icon: handshake | eyebrow: Concede | title: Position matters | body: Among suggestions other than milk, slot 1 draws 8.2 percent against 5.4 for slot 3; a test that shuffles the order separates position from the strongest suggestion. | tone: light
 icon: refresh-cw | eyebrow: What would change it | title: If the rest had fallen too | body: Had the suggestions other than milk fallen with the blend, the habits story would lead. | tone: dark
 ```
@@ -265,10 +266,10 @@ chart to hand the manager.
 
 ![Click-through by slot position: before the change, milk after, everything else after](../whiteboards/C2_W04_D03_ctr_by_slot_STUDENT.png)
 
-In every slot, suggestions other than milk clicked better after the change than before, 8.2 against 7.5 percent in slot 1; milk clicked 1.2 percent before and after, and only its share of impressions grew, from 2 to 50 percent. A new layout earns a test of its own, run beside the ranking as a two-by-two with customers randomised.
+In every slot, suggestions other than milk clicked better after the change than before, 8.2 against 7.5 percent in slot 1. Milk's share of impressions grew from 2 to 50 percent at 0.9 to 1.4 percent; its old cell, slot 3, slipped from 1.2 to 0.9, too little to move the blend. A new layout earns a test of its own, run beside the ranking as a two-by-two with customers randomised.
 
 ```notes
-LIVE, 7 minutes. The sentence to carry: "no rate fell; the mix moved, and a layout gets its own test".
+LIVE, 7 minutes. The sentence to carry: "the mix moved, and a layout gets its own test".
 Transition: the close.
 ```
 

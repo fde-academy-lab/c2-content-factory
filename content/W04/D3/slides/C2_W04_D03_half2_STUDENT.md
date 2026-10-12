@@ -112,8 +112,8 @@ it. Transition: the follow-ups.
 
 | Follow-up | The hire-grade line |
 |---|---|
-| A pair has lift 4.6 and support 0.25 percent: act? | The pair is real, 100 carts against 22 by chance, but it shows only beside ice cream, 1,600 carts in four weeks, so it is worth little in rupees; it goes on the watch list and a test on ice-cream carts |
-| Heavy buyers buy everything: what does that do to lift? | They repeat the party pair, so count each customer once and 3.39 falls to 2.56; bigger baskets hold any pair by chance, so size the expected count by cart; rank on 2.56 |
+| A pair has lift 4.6 and support 0.25 percent: act? | The pair is real, 100 carts against 22 by chance, but it shows only beside ice cream, about 2,400 views a day, so in place of milk it earns about Rs 17,000 a month; it goes on the watch list and a margin test on ice-cream carts |
+| Heavy buyers buy everything: what does that do to lift? | They repeat the party pair, so count each customer once and 3.39 falls to 2.56; bigger baskets hold any pair by chance, so size the expected count by cart. Corrected for both, chips and cold drink reads 1.95 and keeps its slot, and onions and tomatoes falls to 1.38, below the 1.5 bar |
 | Make it a rupee recommendation: what cost line do most forget? | Incrementality: some adds come through search or habit anyway, so the Rs 6.3 lakh a month (Rs 3.9 lakh to Rs 9.3 lakh) is a ceiling a holdout measures; sales are never the gain |
 
 ```notes

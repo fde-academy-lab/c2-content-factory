@@ -576,10 +576,13 @@ def nb03():
         Ice cream and chocolate sauce read lift {s('ice_choc_lift')}, the strongest pair between
         {s('watch_band_low')} ({s('watch_band_low_carts')} carts, too few even to trial below it)
         and the 1 percent floor. The pair is real, {s('ice_choc_carts')} carts where chance gives
-        {s('ice_choc_expected')}, but the strip suggests it only beside ice cream, in
-        {s('ice_cream_carts')} carts over four weeks, so a rule for it earns little. It goes on a
-        **watch list**: in two zones a random half of shoppers see it, and it takes the slot on
-        ice-cream carts only if it beats the next-best suggestion there.
+        {s('ice_choc_expected')}, but the strip suggests it only beside ice cream, which is in
+        {s('ice_cream_share')} of carts: about {s('ice_cream_views_day')} of the strip's
+        {s('views_assumed')} cart-page views a day, if views follow carts, so a rule for it reaches
+        few shoppers and earns little (the next section prices it). It goes on a **watch list**:
+        in two zones a random half of shoppers see it, and it takes the slot on ice-cream carts
+        only if those shoppers earn more margin on their ice-cream carts than the other half, by a
+        gap set before the trial.
         """),
         code("""\
         thin = pairs[(pairs.support >= 0.002) & (pairs.support < floor)].sort_values("lift", ascending=False)
@@ -633,7 +636,10 @@ def nb03():
         """),
         md(f"""\
         **What happened.** The answer is c: {s('recoverable_month')} a month, between
-        {s('recoverable_low')} and {s('recoverable_high')} across the two ranges. **The plausible
+        {s('recoverable_low')} and {s('recoverable_high')} across the two ranges. The watch-list
+        pair, on about {s('ice_cream_views_day')} views a day in place of milk, would earn
+        {s('thin_rule_month')} a month, {s('ice_cream_share')} of a full slot's
+        {s('slot_gap_month')}: there the floor is doing a money job. **The plausible
         wrong answer** books sales as the benefit: 1,920 adds a day at about Rs {v('price_per_add_observed'):.2f}
         each reads as {s('gross_sales_day')} a day of "strip revenue", over four times the margin.
         **Why it is wrong.** The growth lead counts the margin, never the price; and if the strip

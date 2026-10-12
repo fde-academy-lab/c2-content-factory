@@ -616,7 +616,7 @@ the pairs that survive. Transition: the thin pair.
 ## S30. The watch list holds lift 4.60 on 100 carts
 *What should a team do with a strong pair that almost nobody buys?*
 
-Ice cream and chocolate sauce read lift 4.60, the strongest pair between 0.2 percent (80 carts, too few even to trial below it) and the 1 percent floor. The pair is real, 100 carts where chance gives 22, but the strip suggests it only beside ice cream, in 1,600 carts over four weeks, so a rule for it earns little. It goes on a watch list: for two weeks in two zones, a random half of shoppers see it, and it takes the slot on ice-cream carts only if it beats the next-best suggestion there. Acting on lift alone is the trap a floor exists to stop.
+Ice cream and chocolate sauce read lift 4.60, the strongest pair between 0.2 percent (80 carts, too few even to trial below it) and the 1 percent floor. The pair is real, 100 carts where chance gives 22, but the strip suggests it only beside ice cream, which is in 4 percent of carts: about 2,400 of the strip's 60,000 views a day, if views follow carts, so a rule for it reaches few shoppers and earns little. It goes on a watch list: for two weeks in two zones, a random half of shoppers see it, and it takes the slot on ice-cream carts only if those shoppers earn more margin on their ice-cream carts than the other half, by a gap set before the trial. Acting on lift alone is the trap a floor exists to stop.
 
 ```notes
 LIVE, 4 minutes. How long a trial must run to trust its answer is a sample-size question, parked by
@@ -651,7 +651,9 @@ Margin is what Instamart keeps from a sale after the item's cost: bread sells fo
 ```notes
 LIVE, 7 minutes. Build it left to right on the board. Each factor is said with its source and its
 range. Ask what the Rs 3,240 hides: milk earns Rs 2 a pouch, so a milk slot earns even less than
-the Rs 9 assumption gives it. Explorer: scene W4, the strip simulator, rank by count against rank
+the Rs 9 assumption gives it. Back to S30's thin pair: on about 2,400 views a day in place of milk
+it earns about Rs 17,000 a month, 4 percent of a full slot's Rs 4.2 lakh, so there the floor is
+doing a money job. Explorer: scene W4, the strip simulator, rank by count against rank
 by lift. Transition: the number people get wrong.
 ```
 

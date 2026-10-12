@@ -18,10 +18,10 @@ independence, no Apriori and no algorithm that finds frequent itemsets.
 
 | Part | What must land | The stall, and what to say |
 |---|---|---|
-| The trial | Four decisions before day one: where, how long, against what, what voids it; and a pass rule that names the rupees as well as the clicks | A group that wants to stop the trial "when it looks good": "a trial watched daily and stopped on a good day finds a winner by luck" |
+| The trial | Four decisions before day one: where, how long, against what, what voids it; and a pass rule on margin per shopper, the shown half against the other, by a gap set before day one | A group that wants to stop the trial "when it looks good": "a trial watched daily and stopped on a good day finds a winner by luck" |
 | The slices | The city's top two pairs lead every slice; thin ground in Hinjewadi at night, 649 carts, where three pairs on 7 to 10 carts slip in above bread with butter; curd's fall to 0.2 percent of Hadapsar's carts in week three and its return to 28 percent in week four | A pair below the slice's floor that looks exciting: "how many carts is that lift resting on?" |
 | The storm | A sale tied to an event needs a forecast with the event in it, which is Friday's question; a pattern seen twice is thin ground | "Is strawberry Pop-Tarts with a storm a pair, like chips with cold drink?" |
-| The transcript | The four moves, answered from the log: non-milk slots rose from 6.2 to 6.4, so habits did not change; a layout earns its own test | A pair that dismisses the manager: "which part of their sentence is a test worth keeping?" |
+| The transcript | The four moves, answered from the log: non-milk slots rose from 6.2 to 6.4, so whatever habits did, they did not lower those clicks; a layout earns its own test | A pair that dismisses the manager: "which part of their sentence is a test worth keeping?" |
 
 ## What do you say about the faculty session?
 

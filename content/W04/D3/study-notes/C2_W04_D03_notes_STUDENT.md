@@ -36,7 +36,7 @@ flowchart LR
 ```
 
 Each day of Week 4 asks what a number is compared with; Wednesday compares two items sharing a cart
-with what chance alone would give, the first question a growth lead asks of any bundle.
+with what chance alone would give.
 
 **What was left out.** The IITGN faculty session after class (tentative) reads the same three numbers
 as probabilities and shows how a support floor lets an algorithm skip most combinations. Whether a
@@ -53,7 +53,7 @@ measure of the day is a ratio of cells in that table.
 $$\text{support} = \frac{3}{10} = 0.30 \qquad \text{confidence}(\text{chai} \to \text{biscuit}) = \frac{3}{6} = 0.50 \qquad \text{lift} = \frac{3}{10 \times 0.6 \times 0.4} = \frac{3}{2.4} = 1.25$$
 
 Support asks how often, confidence how reliably from one side, and lift how far above chance, the
-same from either side. Every later section comes back to this picture.
+same from either side.
 
 ---
 
@@ -141,10 +141,9 @@ percent of slot 1.
 **WATCH OUT.** "Shoppers changed after the monsoon" fails the split, because the rate on everything
 except milk rose. A blended rate can fall while every part of it holds.
 
-**IN THE FIELD.** Beer and diapers, told accurately: in 1992 an analysis of about 1.2 million Osco
-Drug stores' baskets found the two together in the early evening, the chain does not appear to have
-moved any shelf on the strength of it,
-and the vivid version is largely invented (The Register, checked 12 October 2026).
+**IN THE FIELD.** Beer and diapers, told accurately: in 1992 an analysis of about 1.2 million baskets
+from Osco Drug stores found the two together in the early evening, and the chain does not appear to
+have moved any shelf on the strength of it (The Register, checked 12 October 2026).
 
 **ORIGIN.** Rules measured by support and confidence come from Agrawal, Imielinski and Swami, "Mining
 association rules between sets of items in large databases", ACM SIGMOD 1993.
@@ -173,8 +172,8 @@ if a slot were worth less, a lower floor would do and thinner pairs could take o
 ![Every pair with support of at least 0.1 percent: lift against support, with the 1 percent floor](../whiteboards/C2_W04_D03_action_map_STUDENT.png)
 
 **The watch list.** Ice cream and chocolate sauce is real, 100 carts where chance gives 22, but the
-strip shows it only beside ice cream, in 1,600 carts over four weeks, so it earns little; it is tested
-on those carts with a random half of shoppers first.
+strip shows it only beside ice cream, about 2,400 of 60,000 views a day. It is tested first: a random
+half of shoppers see it, and it takes the slot only if their ice-cream carts earn more margin.
 
 **The slot in rupees.**
 
@@ -183,7 +182,7 @@ $$60{,}000 \text{ views a day} \times 6.4\% \times 0.5 \text{ adds per click} \t
 Showing milk at 1.2 percent, the slot earns Rs 3,240. The gap, Rs 14,040 a day, is about Rs 4.2 lakh
 a month a slot, and milk holds 1.5 slots' worth, so re-ranking recovers about Rs 6.3 lakh a month:
 Rs 3.9 lakh to Rs 9.3 lakh as the assumed add rate runs from 0.4 to 0.6 and the margin from Rs 7 to
-Rs 11.
+Rs 11. In place of milk, the watch-list pair would earn about Rs 17,000 a month.
 
 **WATCH OUT.** Booking sales as the gain: 1,920 adds a day at about Rs 41.77 each looks like Rs 80,197
 of daily strip revenue, four times the Rs 17,280 of margin. A bundle discount comes off the margin too,
@@ -231,21 +230,21 @@ Tonight's lab meets the same claim at Kalpa: pair everything with the Rs 199 cha
 2. Of 40,000 carts, 6,000 hold coriander, 3,200 green chillies and 1,440 both: what is the lift?
 3. Milk holds half the impressions at 1.2 percent and the rest click at 6.4: what is the blend?
 4. A pair reads lift 4.60 on 100 carts in four weeks: does it get a slot?
-5. Which lift does the growth lead quote for chips and cold drink, and why?
+5. Counted once per customer, what lift do chips and cold drink read, and why does it fall?
 6. From Tuesday: an objection is partly right; what are the four moves of the answer?
 
 **Key.** 1: lift (the ten dots). 2: 1,440 x 40,000 / (6,000 x 3,200) = 3.00 (the 40,000 carts). 3:
 3.8 percent (the 40,000 carts). 4: no, the watch list (the strip). 5: 2.56, since heavy buyers
-inflate 3.39 (the six doubts). 6: restate, answer from the evidence, concede what is true, say what
-would change your mind (Tuesday's notes).
+repeat the pair (the six doubts). 6: restate, answer from the evidence, concede what is true, say
+what would change your mind (Tuesday's notes).
 
 ## Which interview questions does Wednesday prepare you for?
 
 | The question as asked | The hire-grade line |
 |---|---|
 | Support, confidence, lift: which cannot be fooled by popularity, and why? | Lift, since it divides by the base rate: in September's carts bread to milk reads 0.74 and milk is in 71 percent, so lift is 1.04, too small for a slot |
-| Lift 4.6 on support of 0.25 percent: act? | The pair is real, but it shows only beside ice cream, so it is worth little; it goes on the watch list and a test |
-| Heavy buyers buy everything: what does that do to lift? | They repeat the party pair: counted once per customer, chips and cold drink fall from 3.39 to 2.56, the number to rank on |
+| Lift 4.6 on support of 0.25 percent: act? | The pair is real, but it shows only beside ice cream, so in place of milk it earns about Rs 17,000 a month; it goes on the watch list and a margin test |
+| Heavy buyers buy everything: what does that do to lift? | They repeat the party pair: counted once per customer, chips and cold drink fall from 3.39 to 2.56, and to 1.95 with chance sized by cart too |
 | Make it a rupee recommendation: which cost line do most forget? | Incrementality: some adds come anyway, so Rs 6.3 lakh a month is a ceiling a holdout measures |
 
 **The AI-company variant.** An LLM shopping assistant passes an offline gate first, beating a

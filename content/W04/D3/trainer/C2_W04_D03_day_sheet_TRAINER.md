@@ -136,6 +136,8 @@ a learner's own cell prints it.
 | A slot a day | Rs 17,280 against Rs 3,240 | slot_value_other_day, slot_value_milk_day |
 | Recovered a month | Rs 6.3 lakh, from Rs 3.9 lakh to Rs 9.3 lakh | recoverable_month, recoverable_low, recoverable_high |
 | Per customer | 2.56 | chips_cold_lift_per_customer |
+| Per customer and sized by cart (interview room) | 1.95; onions and tomatoes 1.38 | chips_cold_lift_both, onions_tomatoes_lift_both |
+| The thin pair in place of milk | About Rs 17,000 a month on about 2,400 views a day | thin_rule_month, ice_cream_views_day |
 | The twelve carts | Bread to milk 1.00, lift 1.50 | twelve_bread_milk_conf, twelve_bread_milk_lift |
 
 ## What are the interview answers, each in one breath?
@@ -143,8 +145,10 @@ a learner's own cell prints it.
 - **Which measure cannot be fooled by popularity?** Lift, since it divides by the base rate: bread to
   milk reads 0.74, but milk is in 71 percent of carts, so lift is 1.04.
 - **Lift 4.6 on 0.25 percent support: act?** The pair is real, 100 carts against 22 by chance, but it
-  shows only beside ice cream, so it is worth little; it goes on the watch list and a test.
-- **Heavy buyers?** Count each customer once: 3.39 falls to 2.56, the number the strip ranks on.
+  shows only beside ice cream, about 2,400 views a day, so in place of milk it earns about Rs 17,000 a
+  month; it goes on the watch list and a margin test on ice-cream carts.
+- **Heavy buyers?** Count each customer once: 3.39 falls to 2.56. Sizing chance by cart as well takes
+  it to 1.95, and onions and tomatoes to 1.38, below the 1.5 bar (the interview room's second effect).
 - **The rupee recommendation's forgotten cost?** Incrementality: some adds come anyway, so Rs 6.3 lakh
   a month is a ceiling a holdout measures, and sales are never the gain.
 - **The LLM shopping assistant?** An offline gate against a popularity list and the current strip on
