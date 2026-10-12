@@ -2,7 +2,7 @@
 
 Written by C2_W04_D02_facts_audit_INTERNAL.py from the STUDENT files and C2_W04_D02_facts_INTERNAL.yaml. A number matches when it equals a value in the facts file at the precision printed, read as itself, a percent, a lakh, a crore, a million or a billion. Structural numbers (slide, level, item, chapter, minutes, dates, years) and the speaker notes are left out.
 
-Numbers traced: 1092. Numbers with no home: 0.
+Numbers traced: 1088. Numbers with no home: 0.
 
 | Number | File | Line | Facts id |
 |---|---|---|---|
@@ -384,7 +384,7 @@ Numbers traced: 1092. Numbers with no home: 0.
 | 24 percent | C2_W04_D02_mid_cut_to_two_STUDENT.md | 37 | monday_ids_reused.hours_change_pct.value |
 | 4.6 | C2_W04_D02_mid_cut_to_two_STUDENT.md | 38 | monday_ids_reused.median_wait_after.value |
 | 1.9 crore | C2_W04_D02_mid_cut_to_two_STUDENT.md | 39 | numbers.idle_tail_tph_before.value |
-| 6,700 | C2_W04_D02_mid_cut_to_two_STUDENT.md | 39 | numbers.extra_trips.value |
+| 6,700 | C2_W04_D02_mid_cut_to_two_STUDENT.md | 39 | monday_ids_reused.extra_trips.value |
 | 2,836 | C2_W04_D02_mid_cut_to_two_STUDENT.md | 39 | numbers.topup_per_extra_trip_rs.value |
 | 165 | C2_W04_D02_mid_cut_to_two_STUDENT.md | 39 | numbers.twelve_rs_per_trip.value |
 | 61 percent | C2_W04_D02_mid_cut_to_two_STUDENT.md | 40 | monday_ids_reused.topup_low_acceptance_share.value |
@@ -718,178 +718,174 @@ Numbers traced: 1092. Numbers with no home: 0.
 | 2 | C2_W04_D02_half1_STUDENT.md | 97 | numbers.tph_after_exact.value |
 | 58 lakh | C2_W04_D02_half1_STUDENT.md | 97 | numbers.saving_low_lakh.value |
 | 92.7 lakh | C2_W04_D02_half1_STUDENT.md | 97 | numbers.saving_high_lakh.value |
-| 1.9 crore | C2_W04_D02_half1_STUDENT.md | 128 | numbers.idle_tail_tph_before.value |
-| 61 percent | C2_W04_D02_half1_STUDENT.md | 128 | monday_ids_reused.topup_low_acceptance_share.value |
-| 24 percent | C2_W04_D02_half1_STUDENT.md | 210 | monday_ids_reused.hours_change_pct.value |
-| 3 percent | C2_W04_D02_half1_STUDENT.md | 210 | numbers.full_bookings_change_pct.value |
-| 1.58 | C2_W04_D02_half1_STUDENT.md | 212 | numbers.tph_after_exact.value |
-| 61 percent | C2_W04_D02_half1_STUDENT.md | 212 | monday_ids_reused.topup_low_acceptance_share.value |
-| 140 | C2_W04_D02_half1_STUDENT.md | 214 | numbers.joiner_driver_weeks_after.value |
-| 73 percent | C2_W04_D02_half1_STUDENT.md | 216 | monday_ids_reused.acceptance_after.value |
-| 1.9 crore | C2_W04_D02_half1_STUDENT.md | 216 | numbers.idle_tail_tph_before.value |
-| 314 | C2_W04_D02_half1_STUDENT.md | 233 | numbers.twelve_rs_per_hour_before.value |
-| 260 | C2_W04_D02_half1_STUDENT.md | 233 | monday_ids_reused.rs_per_hour_after.value |
-| 61 percent | C2_W04_D02_half1_STUDENT.md | 233 | monday_ids_reused.topup_low_acceptance_share.value |
-| 24 percent | C2_W04_D02_half1_STUDENT.md | 233 | monday_ids_reused.hours_change_pct.value |
-| 3.70 crore | C2_W04_D02_half1_STUDENT.md | 251 | monday_ids_reused.bookings_before_rs.value |
-| 3.81 crore | C2_W04_D02_half1_STUDENT.md | 251 | monday_ids_reused.bookings_after_rs.value |
-| 314 | C2_W04_D02_half1_STUDENT.md | 252 | numbers.twelve_rs_per_hour_before.value |
-| 260 | C2_W04_D02_half1_STUDENT.md | 252 | monday_ids_reused.rs_per_hour_after.value |
-| 5,817 | C2_W04_D02_half1_STUDENT.md | 253 | monday_ids_reused.rs_per_driver_week_before.value |
-| 5,861 | C2_W04_D02_half1_STUDENT.md | 253 | monday_ids_reused.rs_per_driver_week_after.value |
-| 165 | C2_W04_D02_half1_STUDENT.md | 254 | numbers.twelve_rs_per_trip.value |
-| 165 | C2_W04_D02_half1_STUDENT.md | 254 | numbers.twelve_rs_per_trip.value |
-| 0 | C2_W04_D02_half1_STUDENT.md | 255 | numbers.idle_tail_joiners.value |
-| 1.9 crore | C2_W04_D02_half1_STUDENT.md | 255 | numbers.idle_tail_tph_before.value |
-| 82.3 | C2_W04_D02_half1_STUDENT.md | 256 | monday_ids_reused.topup_per_trip_after_rs.value |
-| 1.16 crore | C2_W04_D02_half1_STUDENT.md | 257 | monday_ids_reused.topup_low_acceptance_rs.value |
-| 74 lakh | C2_W04_D02_half1_STUDENT.md | 258 | numbers.twelve_hours_after.value |
-| 251,910 | C2_W04_D02_half1_STUDENT.md | 259 | monday_ids_reused.requests_before.value |
-| 256,556 | C2_W04_D02_half1_STUDENT.md | 259 | monday_ids_reused.requests_after.value |
-| 1,060 | C2_W04_D02_half1_STUDENT.md | 277 | monday_ids_reused.drivers_pre_launch.value |
-| 1,200 | C2_W04_D02_half1_STUDENT.md | 277 | numbers.upi_value_per_payment_rs.value |
-| 140 | C2_W04_D02_half1_STUDENT.md | 277 | numbers.joiner_driver_weeks_after.value |
-| 6,360 | C2_W04_D02_half1_STUDENT.md | 278 | monday_ids_reused.driver_weeks_before.value |
-| 6,500 | C2_W04_D02_half1_STUDENT.md | 278 | monday_ids_reused.driver_weeks_after.value |
-| 269,773 | C2_W04_D02_half1_STUDENT.md | 279 | monday_ids_reused.offers_before.value |
-| 347,583 | C2_W04_D02_half1_STUDENT.md | 279 | monday_ids_reused.offers_after.value |
-| 86 percent | C2_W04_D02_half1_STUDENT.md | 280 | monday_ids_reused.acceptance_before.value |
-| 73 percent | C2_W04_D02_half1_STUDENT.md | 280 | monday_ids_reused.acceptance_after.value |
-| 4 percent | C2_W04_D02_half1_STUDENT.md | 281 | numbers.hours_per_driver_week_extra.value |
-| 9 percent | C2_W04_D02_half1_STUDENT.md | 281 | numbers.dmart_denominator_gap_pct.value |
-| 180 | C2_W04_D02_half1_STUDENT.md | 282 | monday_ids_reused.idle_tail_drivers.value |
-| 20,000 | C2_W04_D02_half1_STUDENT.md | 283 | monday_ids_reused.idle_hours_before.value |
-| 42,000 | C2_W04_D02_half1_STUDENT.md | 283 | monday_ids_reused.idle_hours_after.value |
-| 38,000 | C2_W04_D02_half1_STUDENT.md | 284 | monday_ids_reused.idle_trips_before.value |
-| 33,440 | C2_W04_D02_half1_STUDENT.md | 284 | monday_ids_reused.idle_trips_after.value |
-| 11 percent | C2_W04_D02_half1_STUDENT.md | 285 | monday_ids_reused.unfulfilled_share_before.value |
-| 10 percent | C2_W04_D02_half1_STUDENT.md | 285 | monday_ids_reused.unfulfilled_share_after.value |
-| 180 | C2_W04_D02_half1_STUDENT.md | 287 | monday_ids_reused.idle_tail_drivers.value |
-| 1.0 | C2_W04_D02_half1_STUDENT.md | 287 | numbers.bookings_ratio.value |
-| 10 | C2_W04_D02_half1_STUDENT.md | 303 | monday_ids_reused.unfulfilled_share_after.value |
-| 21 | C2_W04_D02_half1_STUDENT.md | 303 | numbers.hours_per_driver_week_change_pct.value |
-| 3,465 | C2_W04_D02_half1_STUDENT.md | 303 | twelve_rows.0.peak_bookings_rs |
-| 11 | C2_W04_D02_half1_STUDENT.md | 303 | monday_ids_reused.unfulfilled_share_before.value |
-| 22 | C2_W04_D02_half1_STUDENT.md | 303 | numbers.hours_per_driver_week_after.value |
-| 3,630 | C2_W04_D02_half1_STUDENT.md | 303 | twelve_rows.1.peak_bookings_rs |
-| 9 | C2_W04_D02_half1_STUDENT.md | 304 | numbers.dmart_denominator_gap_pct.value |
-| 17 | C2_W04_D02_half1_STUDENT.md | 304 | numbers.full_rs_per_hour_change_pct.value |
-| 2,805 | C2_W04_D02_half1_STUDENT.md | 304 | twelve_rows.2.peak_bookings_rs |
-| 10 | C2_W04_D02_half1_STUDENT.md | 304 | monday_ids_reused.unfulfilled_share_after.value |
-| 18 | C2_W04_D02_half1_STUDENT.md | 304 | toys.toy_auto_driver.values.tuesday_rides |
-| 2,970 | C2_W04_D02_half1_STUDENT.md | 304 | twelve_rows.3.peak_bookings_rs |
-| 11 | C2_W04_D02_half1_STUDENT.md | 305 | monday_ids_reused.unfulfilled_share_before.value |
-| 22 | C2_W04_D02_half1_STUDENT.md | 305 | numbers.hours_per_driver_week_after.value |
-| 3,630 | C2_W04_D02_half1_STUDENT.md | 305 | twelve_rows.1.peak_bookings_rs |
-| 12 | C2_W04_D02_half1_STUDENT.md | 305 | monday_ids_reused.zones_total.value |
-| 23 | C2_W04_D02_half1_STUDENT.md | 305 | numbers.twelve_rs_per_driver_week_change_pct.value |
-| 3,795 | C2_W04_D02_half1_STUDENT.md | 305 | twelve_rows.5.peak_bookings_rs |
+| 1.9 crore | C2_W04_D02_half1_STUDENT.md | 131 | numbers.idle_tail_tph_before.value |
+| 61 percent | C2_W04_D02_half1_STUDENT.md | 131 | monday_ids_reused.topup_low_acceptance_share.value |
+| 24 percent | C2_W04_D02_half1_STUDENT.md | 213 | monday_ids_reused.hours_change_pct.value |
+| 3 percent | C2_W04_D02_half1_STUDENT.md | 213 | numbers.full_bookings_change_pct.value |
+| 1.58 | C2_W04_D02_half1_STUDENT.md | 215 | numbers.tph_after_exact.value |
+| 61 percent | C2_W04_D02_half1_STUDENT.md | 215 | monday_ids_reused.topup_low_acceptance_share.value |
+| 140 | C2_W04_D02_half1_STUDENT.md | 217 | numbers.joiner_driver_weeks_after.value |
+| 73 percent | C2_W04_D02_half1_STUDENT.md | 219 | monday_ids_reused.acceptance_after.value |
+| 1.9 crore | C2_W04_D02_half1_STUDENT.md | 219 | numbers.idle_tail_tph_before.value |
+| 314 | C2_W04_D02_half1_STUDENT.md | 236 | numbers.twelve_rs_per_hour_before.value |
+| 260 | C2_W04_D02_half1_STUDENT.md | 236 | monday_ids_reused.rs_per_hour_after.value |
+| 61 percent | C2_W04_D02_half1_STUDENT.md | 236 | monday_ids_reused.topup_low_acceptance_share.value |
+| 24 percent | C2_W04_D02_half1_STUDENT.md | 236 | monday_ids_reused.hours_change_pct.value |
+| 3.70 crore | C2_W04_D02_half1_STUDENT.md | 254 | monday_ids_reused.bookings_before_rs.value |
+| 3.81 crore | C2_W04_D02_half1_STUDENT.md | 254 | monday_ids_reused.bookings_after_rs.value |
+| 314 | C2_W04_D02_half1_STUDENT.md | 255 | numbers.twelve_rs_per_hour_before.value |
+| 260 | C2_W04_D02_half1_STUDENT.md | 255 | monday_ids_reused.rs_per_hour_after.value |
+| 5,817 | C2_W04_D02_half1_STUDENT.md | 256 | monday_ids_reused.rs_per_driver_week_before.value |
+| 5,861 | C2_W04_D02_half1_STUDENT.md | 256 | monday_ids_reused.rs_per_driver_week_after.value |
+| 165 | C2_W04_D02_half1_STUDENT.md | 257 | numbers.twelve_rs_per_trip.value |
+| 165 | C2_W04_D02_half1_STUDENT.md | 257 | numbers.twelve_rs_per_trip.value |
+| 0 | C2_W04_D02_half1_STUDENT.md | 258 | numbers.idle_tail_joiners.value |
+| 1.9 crore | C2_W04_D02_half1_STUDENT.md | 258 | numbers.idle_tail_tph_before.value |
+| 82.3 | C2_W04_D02_half1_STUDENT.md | 259 | monday_ids_reused.topup_per_trip_after_rs.value |
+| 1.16 crore | C2_W04_D02_half1_STUDENT.md | 260 | monday_ids_reused.topup_low_acceptance_rs.value |
+| 74 lakh | C2_W04_D02_half1_STUDENT.md | 261 | numbers.twelve_hours_after.value |
+| 251,910 | C2_W04_D02_half1_STUDENT.md | 262 | monday_ids_reused.requests_before.value |
+| 256,556 | C2_W04_D02_half1_STUDENT.md | 262 | monday_ids_reused.requests_after.value |
+| 1,060 | C2_W04_D02_half1_STUDENT.md | 280 | monday_ids_reused.drivers_pre_launch.value |
+| 1,200 | C2_W04_D02_half1_STUDENT.md | 280 | numbers.upi_value_per_payment_rs.value |
+| 140 | C2_W04_D02_half1_STUDENT.md | 280 | numbers.joiner_driver_weeks_after.value |
+| 6,360 | C2_W04_D02_half1_STUDENT.md | 281 | monday_ids_reused.driver_weeks_before.value |
+| 6,500 | C2_W04_D02_half1_STUDENT.md | 281 | monday_ids_reused.driver_weeks_after.value |
+| 269,773 | C2_W04_D02_half1_STUDENT.md | 282 | monday_ids_reused.offers_before.value |
+| 347,583 | C2_W04_D02_half1_STUDENT.md | 282 | monday_ids_reused.offers_after.value |
+| 86 percent | C2_W04_D02_half1_STUDENT.md | 283 | monday_ids_reused.acceptance_before.value |
+| 73 percent | C2_W04_D02_half1_STUDENT.md | 283 | monday_ids_reused.acceptance_after.value |
+| 4 percent | C2_W04_D02_half1_STUDENT.md | 284 | numbers.hours_per_driver_week_extra.value |
+| 9 percent | C2_W04_D02_half1_STUDENT.md | 284 | numbers.dmart_denominator_gap_pct.value |
+| 180 | C2_W04_D02_half1_STUDENT.md | 285 | monday_ids_reused.idle_tail_drivers.value |
+| 20,000 | C2_W04_D02_half1_STUDENT.md | 286 | monday_ids_reused.idle_hours_before.value |
+| 42,000 | C2_W04_D02_half1_STUDENT.md | 286 | monday_ids_reused.idle_hours_after.value |
+| 38,000 | C2_W04_D02_half1_STUDENT.md | 287 | monday_ids_reused.idle_trips_before.value |
+| 33,440 | C2_W04_D02_half1_STUDENT.md | 287 | monday_ids_reused.idle_trips_after.value |
+| 11 percent | C2_W04_D02_half1_STUDENT.md | 288 | monday_ids_reused.unfulfilled_share_before.value |
+| 10 percent | C2_W04_D02_half1_STUDENT.md | 288 | monday_ids_reused.unfulfilled_share_after.value |
+| 180 | C2_W04_D02_half1_STUDENT.md | 290 | monday_ids_reused.idle_tail_drivers.value |
+| 1.0 | C2_W04_D02_half1_STUDENT.md | 290 | numbers.bookings_ratio.value |
 | 10 | C2_W04_D02_half1_STUDENT.md | 306 | monday_ids_reused.unfulfilled_share_after.value |
-| 19 | C2_W04_D02_half1_STUDENT.md | 306 | numbers.hours_per_driver_week_before.value |
-| 3,135 | C2_W04_D02_half1_STUDENT.md | 306 | numbers.twelve_rs_per_driver_week_before.value |
+| 21 | C2_W04_D02_half1_STUDENT.md | 306 | numbers.hours_per_driver_week_change_pct.value |
+| 3,465 | C2_W04_D02_half1_STUDENT.md | 306 | twelve_rows.0.peak_bookings_rs |
 | 11 | C2_W04_D02_half1_STUDENT.md | 306 | monday_ids_reused.unfulfilled_share_before.value |
-| 20 | C2_W04_D02_half1_STUDENT.md | 306 | monday_ids_reused.uptake_low.value |
-| 3,300 | C2_W04_D02_half1_STUDENT.md | 306 | twelve_rows.7.peak_bookings_rs |
+| 22 | C2_W04_D02_half1_STUDENT.md | 306 | numbers.hours_per_driver_week_after.value |
+| 3,630 | C2_W04_D02_half1_STUDENT.md | 306 | twelve_rows.1.peak_bookings_rs |
+| 9 | C2_W04_D02_half1_STUDENT.md | 307 | numbers.dmart_denominator_gap_pct.value |
+| 17 | C2_W04_D02_half1_STUDENT.md | 307 | numbers.full_rs_per_hour_change_pct.value |
+| 2,805 | C2_W04_D02_half1_STUDENT.md | 307 | twelve_rows.2.peak_bookings_rs |
 | 10 | C2_W04_D02_half1_STUDENT.md | 307 | monday_ids_reused.unfulfilled_share_after.value |
 | 18 | C2_W04_D02_half1_STUDENT.md | 307 | toys.toy_auto_driver.values.tuesday_rides |
 | 2,970 | C2_W04_D02_half1_STUDENT.md | 307 | twelve_rows.3.peak_bookings_rs |
-| 16 | C2_W04_D02_half1_STUDENT.md | 307 | numbers.joiner_hours_per_dw.value |
-| 3 | C2_W04_D02_half1_STUDENT.md | 307 | numbers.full_bookings_change_pct.value |
-| 495 | C2_W04_D02_half1_STUDENT.md | 307 | twelve_rows.9.peak_bookings_rs |
-| 10 | C2_W04_D02_half1_STUDENT.md | 308 | monday_ids_reused.unfulfilled_share_after.value |
-| 17 | C2_W04_D02_half1_STUDENT.md | 308 | numbers.full_rs_per_hour_change_pct.value |
-| 2,805 | C2_W04_D02_half1_STUDENT.md | 308 | twelve_rows.2.peak_bookings_rs |
-| 14 | C2_W04_D02_half1_STUDENT.md | 308 | twelve_rows.9.peak_offers |
-| 2 | C2_W04_D02_half1_STUDENT.md | 308 | numbers.tph_after_exact.value |
-| 330 | C2_W04_D02_half1_STUDENT.md | 308 | twelve_rows.1.rs_per_hour |
-| 60 | C2_W04_D02_half1_STUDENT.md | 309 | numbers.twelve_hours_before.value |
-| 114 | C2_W04_D02_half1_STUDENT.md | 309 | numbers.twelve_trips_before.value |
-| 18,810 | C2_W04_D02_half1_STUDENT.md | 309 | numbers.twelve_bookings_before_rs.value |
-| 74 | C2_W04_D02_half1_STUDENT.md | 309 | numbers.twelve_hours_after.value |
-| 88 | C2_W04_D02_half1_STUDENT.md | 309 | numbers.twelve_trips_after.value |
-| 14,520 | C2_W04_D02_half1_STUDENT.md | 309 | numbers.twelve_bookings_after_rs.value |
-| 18,810 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_bookings_before_rs.value |
-| 60 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_hours_before.value |
-| 313.5 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_rs_per_hour_before.value |
-| 14,520 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_bookings_after_rs.value |
-| 74 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_hours_after.value |
-| 196.2 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_rs_per_hour_after.value |
-| 37 percent | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_rs_per_hour_change_pct.value |
-| 18,810 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_bookings_before_rs.value |
-| 6 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_driver_weeks.value |
-| 3,135 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_rs_per_driver_week_before.value |
-| 14,520 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_bookings_after_rs.value |
-| 6 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_driver_weeks.value |
-| 2,420 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_rs_per_driver_week_after.value |
-| 23 percent | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_rs_per_driver_week_change_pct.value |
-| 165 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.twelve_rs_per_trip.value |
-| 23 percent | C2_W04_D02_half1_STUDENT.md | 326 | numbers.twelve_rs_per_driver_week_change_pct.value |
-| 0.8 percent | C2_W04_D02_half1_STUDENT.md | 326 | numbers.full_rs_per_driver_week_change_pct.value |
-| 1,800 | C2_W04_D02_half1_STUDENT.md | 328 | toys.toy_auto_driver.values.day_rs |
-| 20 | C2_W04_D02_half1_STUDENT.md | 328 | monday_ids_reused.uptake_low.value |
-| 1,800 | C2_W04_D02_half1_STUDENT.md | 328 | toys.toy_auto_driver.values.day_rs |
-| 18 | C2_W04_D02_half1_STUDENT.md | 328 | toys.toy_auto_driver.values.tuesday_rides |
-| 90 | C2_W04_D02_half1_STUDENT.md | 328 | numbers.served_share_after.value |
-| 100 | C2_W04_D02_half1_STUDENT.md | 328 | numbers.saving_low_lakh.value |
-| 200 | C2_W04_D02_half1_STUDENT.md | 328 | numbers.twelve_rs_per_hour_after.value |
-| 150 | C2_W04_D02_half1_STUDENT.md | 328 | toys.toy_auto_driver.values.tuesday_per_hour_rs |
-| 140 | C2_W04_D02_half1_STUDENT.md | 330 | numbers.joiner_driver_weeks_after.value |
-| 5,817 | C2_W04_D02_half1_STUDENT.md | 351 | monday_ids_reused.rs_per_driver_week_before.value |
-| 313.5 | C2_W04_D02_half1_STUDENT.md | 351 | numbers.twelve_rs_per_hour_before.value |
-| 18.6 | C2_W04_D02_half1_STUDENT.md | 351 | numbers.hours_per_driver_week_before.value |
-| 5,861 | C2_W04_D02_half1_STUDENT.md | 351 | monday_ids_reused.rs_per_driver_week_after.value |
-| 260.4 | C2_W04_D02_half1_STUDENT.md | 351 | monday_ids_reused.rs_per_hour_after.value |
-| 22.5 | C2_W04_D02_half1_STUDENT.md | 351 | numbers.hours_per_driver_week_after.value |
-| 17 percent | C2_W04_D02_half1_STUDENT.md | 351 | numbers.full_rs_per_hour_change_pct.value |
-| 100 | C2_W04_D02_half1_STUDENT.md | 351 | numbers.saving_low_lakh.value |
-| 100 | C2_W04_D02_half1_STUDENT.md | 351 | numbers.saving_low_lakh.value |
-| 5,817 | C2_W04_D02_half1_STUDENT.md | 365 | monday_ids_reused.rs_per_driver_week_before.value |
-| 5,861 | C2_W04_D02_half1_STUDENT.md | 365 | monday_ids_reused.rs_per_driver_week_after.value |
-| 3.0 percent | C2_W04_D02_half1_STUDENT.md | 367 | numbers.full_bookings_change_pct.value |
-| 2.2 percent | C2_W04_D02_half1_STUDENT.md | 367 | numbers.full_driver_weeks_change_pct.value |
-| 6,500 | C2_W04_D02_half1_STUDENT.md | 367 | monday_ids_reused.driver_weeks_after.value |
-| 0.8 percent | C2_W04_D02_half1_STUDENT.md | 367 | numbers.full_rs_per_driver_week_change_pct.value |
-| 1.030 | C2_W04_D02_half1_STUDENT.md | 367 | numbers.bookings_ratio.value |
-| 1.022 | C2_W04_D02_half1_STUDENT.md | 367 | numbers.driver_weeks_ratio.value |
-| 1.008 | C2_W04_D02_half1_STUDENT.md | 367 | numbers.rs_per_dw_ratio.value |
-| 21 percent | C2_W04_D02_half1_STUDENT.md | 367 | numbers.hours_per_driver_week_change_pct.value |
-| 17 percent | C2_W04_D02_half1_STUDENT.md | 367 | numbers.full_rs_per_hour_change_pct.value |
-| 140 | C2_W04_D02_half1_STUDENT.md | 367 | numbers.joiner_driver_weeks_after.value |
-| 4,314 | C2_W04_D02_half1_STUDENT.md | 367 | numbers.joiner_rs_per_dw.value |
-| 1.4 percent | C2_W04_D02_half1_STUDENT.md | 367 | numbers.pre_launch_rs_per_dw_change_pct.value |
-| 313.5 | C2_W04_D02_half1_STUDENT.md | 384 | numbers.twelve_rs_per_hour_before.value |
-| 1.90 | C2_W04_D02_half1_STUDENT.md | 384 | numbers.idle_tail_tph_before.value |
-| 260.4 | C2_W04_D02_half1_STUDENT.md | 385 | monday_ids_reused.rs_per_hour_after.value |
-| 1.578 | C2_W04_D02_half1_STUDENT.md | 385 | numbers.tph_after_exact.value |
-| 165 | C2_W04_D02_half1_STUDENT.md | 386 | numbers.twelve_rs_per_trip.value |
-| 1.578 | C2_W04_D02_half1_STUDENT.md | 389 | numbers.tph_after_exact.value |
-| 230,900 | C2_W04_D02_half1_STUDENT.md | 389 | monday_ids_reused.trips_after.value |
-| 146,300 | C2_W04_D02_half1_STUDENT.md | 389 | monday_ids_reused.hours_after.value |
-| 1.58 | C2_W04_D02_half1_STUDENT.md | 389 | numbers.tph_after_exact.value |
-| 314 | C2_W04_D02_half1_STUDENT.md | 414 | numbers.twelve_rs_per_hour_before.value |
-| 260 | C2_W04_D02_half1_STUDENT.md | 414 | monday_ids_reused.rs_per_hour_after.value |
-| 314 | C2_W04_D02_half1_STUDENT.md | 414 | numbers.twelve_rs_per_hour_before.value |
-| 260 | C2_W04_D02_half1_STUDENT.md | 414 | monday_ids_reused.rs_per_hour_after.value |
-| 1.8 percent | C2_W04_D02_half1_STUDENT.md | 438 | monday_ids_reused.requests_change_pct.value |
-| 1.56 | C2_W04_D02_half1_STUDENT.md | 440 | numbers.tph_last_three_after.value |
-| 0.8 percent | C2_W04_D02_half1_STUDENT.md | 442 | numbers.full_rs_per_driver_week_change_pct.value |
-| 140 | C2_W04_D02_half1_STUDENT.md | 444 | numbers.joiner_driver_weeks_after.value |
-| 180 | C2_W04_D02_half1_STUDENT.md | 459 | monday_ids_reused.idle_tail_drivers.value |
-| 880 | C2_W04_D02_half1_STUDENT.md | 459 | monday_ids_reused.drivers_others.value |
-| 1.90 | C2_W04_D02_half1_STUDENT.md | 459 | numbers.idle_tail_tph_before.value |
-| 140 | C2_W04_D02_half1_STUDENT.md | 460 | numbers.joiner_driver_weeks_after.value |
-| 140 | C2_W04_D02_half1_STUDENT.md | 460 | numbers.joiner_driver_weeks_after.value |
-| 1.56 | C2_W04_D02_half1_STUDENT.md | 461 | numbers.tph_last_three_after.value |
-| 1.56 | C2_W04_D02_half1_STUDENT.md | 463 | numbers.tph_last_three_after.value |
-| 1.56 | C2_W04_D02_half1_STUDENT.md | 518 | numbers.tph_last_three_after.value |
-| 1.58 | C2_W04_D02_half1_STUDENT.md | 518 | numbers.tph_after_exact.value |
-| 1.9 crore | C2_W04_D02_half1_STUDENT.md | 646 | numbers.idle_tail_tph_before.value |
-| 24 percent | C2_W04_D02_half1_STUDENT.md | 650 | monday_ids_reused.hours_change_pct.value |
-| 2,836 | C2_W04_D02_half1_STUDENT.md | 652 | numbers.topup_per_extra_trip_rs.value |
-| 165 | C2_W04_D02_half1_STUDENT.md | 652 | numbers.twelve_rs_per_trip.value |
-| 61 percent | C2_W04_D02_half1_STUDENT.md | 653 | monday_ids_reused.topup_low_acceptance_share.value |
-| 314 | C2_W04_D02_half1_STUDENT.md | 713 | numbers.twelve_rs_per_hour_before.value |
-| 260 | C2_W04_D02_half1_STUDENT.md | 713 | monday_ids_reused.rs_per_hour_after.value |
+| 11 | C2_W04_D02_half1_STUDENT.md | 308 | monday_ids_reused.unfulfilled_share_before.value |
+| 22 | C2_W04_D02_half1_STUDENT.md | 308 | numbers.hours_per_driver_week_after.value |
+| 3,630 | C2_W04_D02_half1_STUDENT.md | 308 | twelve_rows.1.peak_bookings_rs |
+| 12 | C2_W04_D02_half1_STUDENT.md | 308 | monday_ids_reused.zones_total.value |
+| 23 | C2_W04_D02_half1_STUDENT.md | 308 | numbers.twelve_rs_per_driver_week_change_pct.value |
+| 3,795 | C2_W04_D02_half1_STUDENT.md | 308 | twelve_rows.5.peak_bookings_rs |
+| 10 | C2_W04_D02_half1_STUDENT.md | 309 | monday_ids_reused.unfulfilled_share_after.value |
+| 19 | C2_W04_D02_half1_STUDENT.md | 309 | numbers.hours_per_driver_week_before.value |
+| 3,135 | C2_W04_D02_half1_STUDENT.md | 309 | numbers.twelve_rs_per_driver_week_before.value |
+| 11 | C2_W04_D02_half1_STUDENT.md | 309 | monday_ids_reused.unfulfilled_share_before.value |
+| 20 | C2_W04_D02_half1_STUDENT.md | 309 | monday_ids_reused.uptake_low.value |
+| 3,300 | C2_W04_D02_half1_STUDENT.md | 309 | twelve_rows.7.peak_bookings_rs |
+| 10 | C2_W04_D02_half1_STUDENT.md | 310 | monday_ids_reused.unfulfilled_share_after.value |
+| 18 | C2_W04_D02_half1_STUDENT.md | 310 | toys.toy_auto_driver.values.tuesday_rides |
+| 2,970 | C2_W04_D02_half1_STUDENT.md | 310 | twelve_rows.3.peak_bookings_rs |
+| 16 | C2_W04_D02_half1_STUDENT.md | 310 | numbers.joiner_hours_per_dw.value |
+| 3 | C2_W04_D02_half1_STUDENT.md | 310 | numbers.full_bookings_change_pct.value |
+| 495 | C2_W04_D02_half1_STUDENT.md | 310 | twelve_rows.9.peak_bookings_rs |
+| 10 | C2_W04_D02_half1_STUDENT.md | 311 | monday_ids_reused.unfulfilled_share_after.value |
+| 17 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.full_rs_per_hour_change_pct.value |
+| 2,805 | C2_W04_D02_half1_STUDENT.md | 311 | twelve_rows.2.peak_bookings_rs |
+| 14 | C2_W04_D02_half1_STUDENT.md | 311 | twelve_rows.9.peak_offers |
+| 2 | C2_W04_D02_half1_STUDENT.md | 311 | numbers.tph_after_exact.value |
+| 330 | C2_W04_D02_half1_STUDENT.md | 311 | twelve_rows.1.rs_per_hour |
+| 60 | C2_W04_D02_half1_STUDENT.md | 312 | numbers.twelve_hours_before.value |
+| 114 | C2_W04_D02_half1_STUDENT.md | 312 | numbers.twelve_trips_before.value |
+| 18,810 | C2_W04_D02_half1_STUDENT.md | 312 | numbers.twelve_bookings_before_rs.value |
+| 74 | C2_W04_D02_half1_STUDENT.md | 312 | numbers.twelve_hours_after.value |
+| 88 | C2_W04_D02_half1_STUDENT.md | 312 | numbers.twelve_trips_after.value |
+| 14,520 | C2_W04_D02_half1_STUDENT.md | 312 | numbers.twelve_bookings_after_rs.value |
+| 18,810 | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_bookings_before_rs.value |
+| 60 | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_hours_before.value |
+| 313.5 | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_rs_per_hour_before.value |
+| 14,520 | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_bookings_after_rs.value |
+| 74 | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_hours_after.value |
+| 196.2 | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_rs_per_hour_after.value |
+| 37 percent | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_rs_per_hour_change_pct.value |
+| 18,810 | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_bookings_before_rs.value |
+| 6 | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_driver_weeks.value |
+| 3,135 | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_rs_per_driver_week_before.value |
+| 14,520 | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_bookings_after_rs.value |
+| 6 | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_driver_weeks.value |
+| 2,420 | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_rs_per_driver_week_after.value |
+| 23 percent | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_rs_per_driver_week_change_pct.value |
+| 165 | C2_W04_D02_half1_STUDENT.md | 314 | numbers.twelve_rs_per_trip.value |
+| 23 percent | C2_W04_D02_half1_STUDENT.md | 329 | numbers.twelve_rs_per_driver_week_change_pct.value |
+| 0.8 percent | C2_W04_D02_half1_STUDENT.md | 329 | numbers.full_rs_per_driver_week_change_pct.value |
+| 1,800 | C2_W04_D02_half1_STUDENT.md | 331 | toys.toy_auto_driver.values.day_rs |
+| 20 | C2_W04_D02_half1_STUDENT.md | 331 | monday_ids_reused.uptake_low.value |
+| 1,800 | C2_W04_D02_half1_STUDENT.md | 331 | toys.toy_auto_driver.values.day_rs |
+| 18 | C2_W04_D02_half1_STUDENT.md | 331 | toys.toy_auto_driver.values.tuesday_rides |
+| 90 | C2_W04_D02_half1_STUDENT.md | 331 | numbers.served_share_after.value |
+| 100 | C2_W04_D02_half1_STUDENT.md | 331 | numbers.saving_low_lakh.value |
+| 200 | C2_W04_D02_half1_STUDENT.md | 331 | numbers.twelve_rs_per_hour_after.value |
+| 150 | C2_W04_D02_half1_STUDENT.md | 331 | toys.toy_auto_driver.values.tuesday_per_hour_rs |
+| 140 | C2_W04_D02_half1_STUDENT.md | 333 | numbers.joiner_driver_weeks_after.value |
+| 5,817 | C2_W04_D02_half1_STUDENT.md | 354 | monday_ids_reused.rs_per_driver_week_before.value |
+| 313.5 | C2_W04_D02_half1_STUDENT.md | 354 | numbers.twelve_rs_per_hour_before.value |
+| 18.6 | C2_W04_D02_half1_STUDENT.md | 354 | numbers.hours_per_driver_week_before.value |
+| 5,861 | C2_W04_D02_half1_STUDENT.md | 354 | monday_ids_reused.rs_per_driver_week_after.value |
+| 260.4 | C2_W04_D02_half1_STUDENT.md | 354 | monday_ids_reused.rs_per_hour_after.value |
+| 22.5 | C2_W04_D02_half1_STUDENT.md | 354 | numbers.hours_per_driver_week_after.value |
+| 17 percent | C2_W04_D02_half1_STUDENT.md | 354 | numbers.full_rs_per_hour_change_pct.value |
+| 100 | C2_W04_D02_half1_STUDENT.md | 354 | numbers.saving_low_lakh.value |
+| 100 | C2_W04_D02_half1_STUDENT.md | 354 | numbers.saving_low_lakh.value |
+| 5,817 | C2_W04_D02_half1_STUDENT.md | 368 | monday_ids_reused.rs_per_driver_week_before.value |
+| 5,861 | C2_W04_D02_half1_STUDENT.md | 368 | monday_ids_reused.rs_per_driver_week_after.value |
+| 3.0 percent | C2_W04_D02_half1_STUDENT.md | 370 | numbers.full_bookings_change_pct.value |
+| 2.2 percent | C2_W04_D02_half1_STUDENT.md | 370 | numbers.full_driver_weeks_change_pct.value |
+| 6,500 | C2_W04_D02_half1_STUDENT.md | 370 | monday_ids_reused.driver_weeks_after.value |
+| 0.8 percent | C2_W04_D02_half1_STUDENT.md | 370 | numbers.full_rs_per_driver_week_change_pct.value |
+| 1.030 | C2_W04_D02_half1_STUDENT.md | 370 | numbers.bookings_ratio.value |
+| 1.022 | C2_W04_D02_half1_STUDENT.md | 370 | numbers.driver_weeks_ratio.value |
+| 1.008 | C2_W04_D02_half1_STUDENT.md | 370 | numbers.rs_per_dw_ratio.value |
+| 21 percent | C2_W04_D02_half1_STUDENT.md | 370 | numbers.hours_per_driver_week_change_pct.value |
+| 17 percent | C2_W04_D02_half1_STUDENT.md | 370 | numbers.full_rs_per_hour_change_pct.value |
+| 140 | C2_W04_D02_half1_STUDENT.md | 370 | numbers.joiner_driver_weeks_after.value |
+| 4,314 | C2_W04_D02_half1_STUDENT.md | 370 | numbers.joiner_rs_per_dw.value |
+| 1.4 percent | C2_W04_D02_half1_STUDENT.md | 370 | numbers.pre_launch_rs_per_dw_change_pct.value |
+| 313.5 | C2_W04_D02_half1_STUDENT.md | 387 | numbers.twelve_rs_per_hour_before.value |
+| 1.90 | C2_W04_D02_half1_STUDENT.md | 387 | numbers.idle_tail_tph_before.value |
+| 260.4 | C2_W04_D02_half1_STUDENT.md | 388 | monday_ids_reused.rs_per_hour_after.value |
+| 1.578 | C2_W04_D02_half1_STUDENT.md | 388 | numbers.tph_after_exact.value |
+| 165 | C2_W04_D02_half1_STUDENT.md | 389 | numbers.twelve_rs_per_trip.value |
+| 1.578 | C2_W04_D02_half1_STUDENT.md | 392 | numbers.tph_after_exact.value |
+| 230,900 | C2_W04_D02_half1_STUDENT.md | 392 | monday_ids_reused.trips_after.value |
+| 146,300 | C2_W04_D02_half1_STUDENT.md | 392 | monday_ids_reused.hours_after.value |
+| 1.58 | C2_W04_D02_half1_STUDENT.md | 392 | numbers.tph_after_exact.value |
+| 314 | C2_W04_D02_half1_STUDENT.md | 417 | numbers.twelve_rs_per_hour_before.value |
+| 260 | C2_W04_D02_half1_STUDENT.md | 417 | monday_ids_reused.rs_per_hour_after.value |
+| 314 | C2_W04_D02_half1_STUDENT.md | 417 | numbers.twelve_rs_per_hour_before.value |
+| 260 | C2_W04_D02_half1_STUDENT.md | 417 | monday_ids_reused.rs_per_hour_after.value |
+| 180 | C2_W04_D02_half1_STUDENT.md | 462 | monday_ids_reused.idle_tail_drivers.value |
+| 880 | C2_W04_D02_half1_STUDENT.md | 462 | monday_ids_reused.drivers_others.value |
+| 1.90 | C2_W04_D02_half1_STUDENT.md | 462 | numbers.idle_tail_tph_before.value |
+| 140 | C2_W04_D02_half1_STUDENT.md | 463 | numbers.joiner_driver_weeks_after.value |
+| 140 | C2_W04_D02_half1_STUDENT.md | 463 | numbers.joiner_driver_weeks_after.value |
+| 1.56 | C2_W04_D02_half1_STUDENT.md | 464 | numbers.tph_last_three_after.value |
+| 1.8 percent | C2_W04_D02_half1_STUDENT.md | 466 | monday_ids_reused.requests_change_pct.value |
+| 1.56 | C2_W04_D02_half1_STUDENT.md | 521 | numbers.tph_last_three_after.value |
+| 1.58 | C2_W04_D02_half1_STUDENT.md | 521 | numbers.tph_after_exact.value |
+| 1.9 crore | C2_W04_D02_half1_STUDENT.md | 649 | numbers.idle_tail_tph_before.value |
+| 24 percent | C2_W04_D02_half1_STUDENT.md | 653 | monday_ids_reused.hours_change_pct.value |
+| 2,836 | C2_W04_D02_half1_STUDENT.md | 655 | numbers.topup_per_extra_trip_rs.value |
+| 165 | C2_W04_D02_half1_STUDENT.md | 655 | numbers.twelve_rs_per_trip.value |
+| 61 percent | C2_W04_D02_half1_STUDENT.md | 656 | monday_ids_reused.topup_low_acceptance_share.value |
+| 314 | C2_W04_D02_half1_STUDENT.md | 716 | numbers.twelve_rs_per_hour_before.value |
+| 260 | C2_W04_D02_half1_STUDENT.md | 716 | monday_ids_reused.rs_per_hour_after.value |
 | 4 | C2_W04_D02_half2_STUDENT.md | 5 | numbers.hours_per_driver_week_extra.value |
 | 2 | C2_W04_D02_half2_STUDENT.md | 5 | numbers.tph_after_exact.value |
 | 256,556 | C2_W04_D02_half2_STUDENT.md | 27 | monday_ids_reused.requests_after.value |

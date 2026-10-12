@@ -433,10 +433,12 @@ add("low_acceptance_no_trip_share", round(low.peak_hours_no_trip.sum() / low.pea
     "72 percent", "hours with no trip over online hours, low-acceptance driver-weeks after the launch",
     "extras transcript 1")
 zw_w = zw.assign(outer=zw.zone.isin(outer))
-add("outer_median_wait_before", round(zw_w[(zw_w.window == "before") & zw_w.outer].median_wait_min.median(), 1),
-    "6.6 minutes", "median of the outer zones' weekly median waits, before", "half1 S4; extras transcript 1")
-add("outer_median_wait_after", round(zw_w[(zw_w.window == "after") & zw_w.outer].median_wait_min.median(), 1),
-    "about 6.0 minutes", "the same, after", "half1 S4; extras transcript 1")
+check("Monday's outer-zone waits recount: the middle of the outer zone-week medians, 6.6 and 5.95",
+      (zw_w[(zw_w.window == "before") & zw_w.outer].median_wait_min.median(),
+       zw_w[(zw_w.window == "after") & zw_w.outer].median_wait_min.median())
+      == (M["outer_wait_before"], M["outer_wait_after"]))
+reuse("outer_wait_before", "6.6 minutes")
+reuse("outer_wait_after", "about 6 minutes (5.95)")
 wk = dw.groupby("week_start")[["peak_trips", "peak_online_hours"]].sum()
 last3 = ["2026-09-21", "2026-09-28", "2026-10-05"]
 add("tph_last_three_after", round(wk.loc[last3].peak_trips.sum() / wk.loc[last3].peak_online_hours.sum(), 2),
@@ -652,8 +654,9 @@ two_per_100 = drivers_needed(base["hyd_people"], 2 * base["weekday_ride_share"],
 add("drivers_at_two_per_100", round(two_per_100), "about 11,400 drivers",
     "the chain with 2 weekday trips per 100 people: the answer doubles, since the chain is a product",
     "notebook cells 11 and 12")
-add("extra_trips", M["trips_after"] - M["trips_before"], "6,700 extra trips", "230,900 - 224,200",
-    "half1 S29 notes; extras transcript 1")
+check("Monday's extra_trips is the after window's trips less the before window's",
+      M["extra_trips"] == M["trips_after"] - M["trips_before"] == 6700)
+reuse("extra_trips", "6,700 extra trips")
 check("validate: the chain runs 13 percent high per trip, and the case's 1.90 trips an hour gives about 5,000",
       round(chain_trip, 2) == 1.13 and round(validated, -2) == 5000)
 add("floor_cost_thousand_drivers_evening_rs", 1000 * M["peak_window_hours"] * 300, "up to Rs 9 lakh an evening",

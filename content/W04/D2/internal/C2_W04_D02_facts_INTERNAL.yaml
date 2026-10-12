@@ -323,18 +323,6 @@ numbers:
   unit: ''
   how: hours with no trip over online hours, low-acceptance driver-weeks after the launch
   used_by: extras transcript 1
-- id: outer_median_wait_before
-  value: 6.6
-  shown: 6.6 minutes
-  unit: ''
-  how: median of the outer zones' weekly median waits, before
-  used_by: half1 S4; extras transcript 1
-- id: outer_median_wait_after
-  value: 6.0
-  shown: about 6.0 minutes
-  unit: ''
-  how: the same, after
-  used_by: half1 S4; extras transcript 1
 - id: tph_last_three_after
   value: 1.56
   shown: '1.56'
@@ -689,12 +677,6 @@ numbers:
   unit: ''
   how: 'the chain with 2 weekday trips per 100 people: the answer doubles, since the chain is a product'
   used_by: notebook cells 11 and 12
-- id: extra_trips
-  value: 6700
-  shown: 6,700 extra trips
-  unit: ''
-  how: 230,900 - 224,200
-  used_by: half1 S29 notes; extras transcript 1
 - id: floor_cost_thousand_drivers_evening_rs
   value: 900000
   shown: up to Rs 9 lakh an evening
@@ -1159,6 +1141,18 @@ monday_ids_reused:
 - id: others_tph_after
   value: 1.9
   shown: '1.90'
+  source: D1 facts file
+- id: outer_wait_before
+  value: 6.6
+  shown: 6.6 minutes
+  source: D1 facts file
+- id: outer_wait_after
+  value: 5.95
+  shown: about 6 minutes (5.95)
+  source: D1 facts file
+- id: extra_trips
+  value: 6700
+  shown: 6,700 extra trips
   source: D1 facts file
 public_facts:
 - id: upi_per_day
