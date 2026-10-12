@@ -438,3 +438,178 @@ The guesstimate is the strongest item in the interview set. Once its definition 
 - Facts needing a source or a correction: 7 of the 10 checked (findings 31, 32, 34, 35, 36, 37 and 39). Findings 30, 33 and 38 hold; the misreading in finding 30 is counted under finding 7.
 - Missing follow-ups: 3 (findings 40 to 42).
 - Guesstimate findings: 6 (findings 43 to 48).
+
+---
+
+## What did the fix pass change for each finding?
+
+Each row says what the pack does now. A separate agent audited Read 1's findings against the pack
+after the first round of fixes, and the rows below take its evidence plus the later fixes. "Partly"
+and "Kept" rows have their one-line reason in `internal/C2_W04_D05_sources_INTERNAL.md`.
+
+### Read 1, the fresh graduate
+
+| # | Status | What the pack does now |
+|---|---|---|
+| 1 | Fixed | S1 and notebooks 01 to 03 say "eighteen percentage points apart"; the preview says "18 percentage points apart". |
+| 2 | Fixed | S1 expands FC and defines a packer-shift on screen. |
+| 3 | Fixed | S1 defines the window as the eight weeks to staff, against the same weeks last year. |
+| 4 | Fixed | S1 defines the vendor file's three kinds of row; S16 defines hidden weeks, hold-out, test set, training weeks and origin on the slide that first shows them. |
+| 5 | Fixed | Notebook 01 opens the calendar and prints the sale weeks; notebook 03 reads the costs table. |
+| 6 | Partly | S1's multipliers are gone, S19's picture no longer shows the vendor and S28's option a no longer argues for itself; S18's option d still names the tie. |
+| 7 | Partly | Every page now says the calendar copies put the peak on 5 October, before the plan's first week; why the window opens on 12 October stays with the ticket. |
+| 8 | Fixed | S2 is one chain of days ending in the Kalpa lab and Saturday, with a caption saying what each node carries. |
+| 9 | Fixed | The notes show 6,615 x Rs 650 / 120 and 6,615 x Rs 25; every page prints about Rs 35,800. |
+| 10 | Fixed | S3 defines the error bar as the forecast's average miss on unseen weeks; "error band" is gone; every page prices it at the forecast. |
+| 11 | Fixed | S7 and its picture use FPP3's terms (a season has a fixed period, a cycle does not); the chapter 1 set and its solution say "repeat". |
+| 12 | Fixed | S8 works drift on the canteen (about 51.3); notebook 01 works it on the series. |
+| 13 | Fixed | Notebook 02 says which 39 weeks the growth compares; S8's table says the 4 percent is the growth the two years show. |
+| 14 | Fixed | S8 and notebook 01 tie "house bot" to "seasonal copy"; "same-period copy" and "house rule" are gone; the transcripts add the field's word, "seasonal naive", in a word table. |
+| 15 | Fixed | No F or T tag remains on a learner page. |
+| 16 | Fixed | Ekart, The Big Billion Days, FADA, SIAM and GST are expanded where they first appear. |
+| 17 | Fixed | S14 and the notes say what M5 is, that its seasonal copy is the same weekday a week earlier, which measure scored it, and that 35.8 percent of teams beat it. |
+| 18 | Fixed | S1 and S15 show Rs 650 / 120 before Rs 5.42 is used. |
+| 19 | Fixed | "A spare shipment, planned for and never shipped" from S1 on; "short" and "long" are gone from half two, the chapter 2 solution and the day sheet. |
+| 20 | Fixed | S16 defines origin and the ten-week horizon on screen; S15, half two S6 and the transcripts say "one origin". |
+| 21 | Fixed | S17 and notebook 02 expand MAPE. |
+| 22 | Fixed | S8 and S19 state the stretch from five weeks before Diwali's week to four after. |
+| 23 | Fixed | S20 calls 2 percent the sponsor's claim; S21 gives 1.4 percent as the worst fitted week. |
+| 24 | Fixed | The scoreboard picture labels its totals over 13 weeks and its rupee axis. |
+| 25 | Fixed | Notebook 02 prints both figures; every page says weeks 1 to 6 and 8 to 13; the cell's halves follow the test's length. |
+| 26 | Fixed | S25 points to notebook 02's printed misses, which add to 85,996. |
+| 27 | Fixed | One wording everywhere, checked against the paper, with M5's reversal beside it. |
+| 28 | Fixed | S30 names the eight weeks; notebook 03 prints the late part, Rs 69.6 lakh. |
+| 29 | Fixed | Notebook 03 runs festival-aligned with no growth (10,575); S30 and the transcripts quote both figures. |
+| 30 | Fixed | S30 defines a back-test on screen. |
+| 31 | Fixed | "Level" means a difficulty grade only; the plan's height is the cushion, and "the same" replaces the other use. |
+| 32 | Fixed | The 100-week derivation sits on S32, in notebook 03 after a predict step, in the notes and on cheat sheet panel 6. |
+| 33 | Fixed | New S33 and the cushion strip sort the thirteen misses; notebook 03 prints them and reads the 0.82 point between the 10th and 11th. |
+| 34 | Fixed | The cost curve has plain labels; notebook 03 says how it is drawn and what its two terms are. |
+| 35 | Fixed | S35 says the table is a scenario resting on the back-test's placement. |
+| 36 | Fixed | S36 and the notes' table give what the pack has and what would settle each doubt. |
+| 37 | Fixed | Notebook 03 prints 1,638 and 5 with their weeks. |
+| 38 | Fixed | Learner pages print lakh and crore with decimals; exact Indian-grouped figures stay in TRAINER files. |
+| 39 | Fixed | S37 says "cover demand in 0.82 of weeks"; S1 introduces the vendor's sponsor. |
+| 40 | Fixed | The festival calendar labels each year's boxes by that year's own Monday. |
+| 41 | Fixed | The baselines panel and the axes are relabelled. |
+| 42 | Fixed | Notebook 01 explains the 51 weeks; notebook 01 and S12 give the 54. |
+| 43 | Fixed | Notebook 01's cells use commented loops; the date line says what it prints. |
+| 44 | Fixed | Notebook 02 explains `shift(52)`, `h` and the measured growth. |
+| 45 | Fixed | Notebooks 02 and 03 use plain loops and 100_000; notebook 04 says what 1e5 and 1e7 are at first use. |
+| 46 | Fixed | Kalpa's vendor file labels its hidden months `holdout`; notebook 04 says what the column shows. |
+| 47 | Fixed | "Nobody chose how high it runs" replaces "lean" and "bias". |
+| 48 | Fixed | Notebook 03 builds the source map in a commented loop, defines only `check`, and drops `min(key=)`. |
+| 49 | Fixed | Notebook 03 names the reversed measure `above` and says so. |
+| 50 | Fixed | Notebook 03 gives words for `quantile`, the grid, the two `max` terms and the averaging. |
+| 51 | Fixed | Inference is defined; "median" is gone. |
+| 52 | Fixed | Every set names its thread in the cohort channel. |
+| 53 | Fixed | The guided set explains the levels, a screen and a GCC; fallback S13 explains [D]. |
+| 54 | Fixed | Guided Q2 names the origin week and what hiding stops. |
+| 55 | Fixed | Chapter 2 Q1 explains `shift(1)`. |
+| 56 | Fixed | The set defines "enough" by packer-shifts; team A now beats the bot by 31 shipments a week, which changes no shift, and the solution says why C has earned the ordinary weeks only. |
+| 57 | Fixed | RMSE, R-squared, overfitted, the newsvendor rule, baseline, autocorrelation, smoothing and ARIMA are each glossed where they first appear. |
+| 58 | Fixed | Basis points, breakeven, unit economics and the write-down are explained, and the reading is corrected against Zillow's letter. |
+| 59 | Fixed | Half two S11 gives item 7 forty seconds. |
+| 60 | Fixed | The staffing note, S6 and notebook 01 say the sale runs in the third and second weeks before Diwali's week. |
+| 61 | Fixed | S13 gives no date; the real sale date stays off learner pages. |
+| 62 | Fixed | Notebook 03 prints 60,488 and Rs 8.8 lakh. |
+| 63 | Fixed | Transcript 2 says the vendor's file holds no forecast of any festival. |
+| 64 | Fixed | S26, notebook 02 and the notes teach "good enough" as a claim about the decision. |
+| 65 | Fixed | Notebook 04 says "data warehouse". |
+| 66 | Fixed | Notebook 04 explains the 17. |
+| 67 | Fixed | Notebook 04's typed cell uses spelled-out month lists. |
+| 68 | Fixed | The typed table has a finance column; notebook 04 says why 4 percent stands beside the measured 3.7. |
+| 69 | Fixed | Notebook 04 and the board set explain that revenue is booked in Diwali's own month. |
+| 70 | Fixed | Board Q1 asks for the vendor comparison only. |
+| 71 | Fixed | Board Q3's key is festival-aligned's own miss, Rs 3.5 lakh a month, which notebook 04 prints. |
+| 72 | Fixed | Notebook 04 explains the tall Aprils and Julys. |
+| 73 | Fixed | Notebook 04's predict step has options; its last cells print and name the error bar. |
+| 74 | Fixed | Practice Q2's stem asks for festival-aligned only. |
+| 75 | Fixed | The brief changes one line; notebook 02 counts the hidden weeks itself, and the one FAIL is announced. |
+| 76 | Fixed | The notes key every symbol; cheat sheet panel 3 has a key. |
+| 77 | Partly | The notes say what rolling the origin does and why the morning used one origin; the worked example stays in the fallback. |
+| 78 | Fixed | The notes place the last-frame still and give both weeks' numbers. |
+| 79 | Fixed | The notes separate the 9.5 percent from the 308,048. |
+| 80 | Fixed | Notebook 03 and S34 print the 19,760. |
+| 81 | Partly | The notes give the explorer's path; the file lives on branch `w04-explorer` until it merges. |
+| 82 | Partly | The glossary adds origin and horizon, back-test, MAE and MAPE, error bar and plan share; drift and fit are defined where they first appear, and the notes do not use "quantile"; the glossary stays last. |
+| 83 | Fixed | The self-check gives the copies' moves, 1,331 and 1,489; the fallback picture and S2 say which ranks hold. |
+| 84 | Fixed | The self-check prints two places and says how the notebook rounds. |
+| 85 | Fixed | The staffing solution calls the copied week Diwali 2025's own week. |
+| 86 | Fixed | The index counts 21 items, nine of them design calls, names the solution files, and the transcripts carry the L6 label. |
+| 87 | Partly | The brief says what to do if the fallback ran; the fallback still shows the four-week numbers. |
+| 88 | Fixed | Fallback S8's option b matches S9's answer. |
+
+| Sentence read three times | Status | What the pack says now |
+|---|---|---|
+| half1 S17, "A percentage error would hide..." | Fixed | MAPE is defined and the peak-week comparison worked. |
+| half1 S30, "Rs 69.6 lakh of it late shipments..." | Fixed | "where the rush came before the copy expected it". |
+| half1 S32, "Festival-aligned's hidden-week misses..." | Fixed | Moved to S33 and rewritten around the sorted thirteen. |
+| half2 S2 card 3 | Fixed | "The miss a week in shipments, its cost if high and if low, and the rule's record on 2025's festival." |
+| Notebook 03, "One spike a year..." | Fixed | "Two years hold only two festivals". |
+| Notebook 03, "A vendor model with no Lucknow festival..." | Fixed | "an untested assumption". |
+| Notebook 04, "the festival-aligned copy moves..." | Fixed | "swaps two months", each named. |
+| Transcripts, Zillow | Fixed | Rewritten against the letter. |
+| Transcript 2, "Raised by 2.6 percent..." | Fixed | Replaced by the comparison at each forecast's own 0.82 point. |
+| Take-home, "never looked at the origin" | Fixed | "the rules that never use the origin week, the copies of last year". |
+| Notes, "two weeks before the real one" | Fixed | "books the most packers two weeks before the real rush". |
+| Notes, CALLBACK | Fixed | "today forecasts weeks not yet seen". |
+| Notes, "Rolling the origin..." | Fixed | Says what is rolled and why the morning used one origin. |
+| Same-week solution, "each calendar copy carried a week..." | Fixed | "one step earlier in the 2024 festival, nearer its peak". |
+
+Read 1 totals: 82 fixed and 6 partly fixed of 88 findings; all 14 sentences fixed.
+
+### Read 2, the hiring interviewer
+
+| # | Status | What the pack does now |
+|---|---|---|
+| 1 | Fixed | Every page names the ten-week horizon, 21 September to the week of 30 November: S16, fallback S5, the transcripts, notes, cheat sheet, Kahoot Q5, the self-check, notebook 02, the day sheet and the scorecards. |
+| 2 | Fixed | Two measures are fixed together before scoring: MAE in shipments and the misses priced by direction, named as the quantile loss at 0.82 (FPP3 5.9). |
+| 3 | Fixed | Each forecast is compared at its own 0.82 point (Rs 8.8 lakh against the vendor's Rs 10.0 lakh); the 4.1 percent reading is named; the cost curve is shown flat from 2 to 4 percent; a rolling origin is named as the cure. |
+| 4 | Fixed | Both transcripts and the scorecard give 4,034 with the growth and 10,575 without it, and the festive coverage, 7 of 8 against 2 of 8. |
+| 5 | Fixed | Transcript 2 gives the peak week's range in shifts, 3,413 to 3,906 against 3,719 booked, priced at its ends; everywhere else the error bar is the forecast's average miss, priced at the forecast. |
+| 6 | Fixed | The MAPE follow-up names MASE and WAPE and MAPE's heavier penalty on forecasts that land high. |
+| 7 | Fixed | Zillow is retold from the letter: a margin guardrail, price forecasts that missed by more than modelled, the purchases and renovation capacity, the write-down and the wind-down. |
+| 8 | Fixed | The PLOS ONE row keeps "did not necessarily" and adds M5's reversal. |
+| 9 | Fixed | The Amazon row tells the whole story, with the retrained recommender's win. |
+| 10 | Fixed | The forecasting clause is sourced to Canadian Business, with the item-data accuracy and the stock failure; the check moved to sizing from the ground up. |
+| 11 | Fixed | The AI variant keeps days from launch and the day of the week. |
+| 12 | Fixed | The variant sizes in tokens a second to a latency target with headroom; the two-cost share applies to capacity booked ahead. |
+| 13 | Fixed | The variant says a method is untested with one earlier launch or none. |
+| 14 | Fixed | The averaging follow-up says when combining helps and why it fails here, from the observed peak week only. |
+| 15 | Fixed | The scorecard names the vendor's single-origin file as the real limit. |
+| 16 | Fixed | The third-year line is gone; the notes say the copies could roll through 2025's festival. |
+| 17 | Partly | The handoff line stays as the spine wrote it; S10's table adds that a new model is fairest judged on weeks no choice has used. |
+| 18 | Fixed | Fallback S13 concedes the vendor's tilt to the cheap side. |
+| 19 | Fixed | The weak answers are a random split scored by RMSE or MAPE with the vendor taken on its fit, and "go with the vendor, trimmed to plus 13"; the scorecard states its unit rule and rescores them. |
+| 20 | Fixed | A word table maps the class's words to the field's; the scorer section says to carry four numbers; the intro says to name the exercise as synthetic. |
+| 21 | Fixed | A 2 now requires surviving the technical follow-up, inside the spine's seven criteria. |
+| 22 | Partly | Rolling the origin is in the structure, a follow-up, the notes and the scorecard; no rolling results are quoted. |
+| 23 | Fixed | Coverage is quoted, 10 of 13 with its caveat and 7 of 8 on 2025's festival. |
+| 24 | Fixed | "What the test cannot see" names the 1,638 of 3,485 overtime shifts and the capped peak. |
+| 25 | Partly | Overtime is a follow-up with the 0.33 and 0.50 shares; routing, backlog, day-level planning and new hires' pace are not added. |
+| 26 | Fixed | The vendor's bias, 16,108 a week against an MAE of 16,400, is in transcript 1 and the scorecard. |
+| 27 | Fixed | Transcript 2 gives finance 3,082 shifts, about Rs 20.0 lakh, and an in-season trigger. |
+| 28 | Fixed | Transcript 2 has a row for the people. |
+| 29 | Fixed | The variant works 2 lakh users, 10 percent and 1,500 tokens (invented) into about 5 lakh tokens a second. |
+| 30 | Fixed | The transcripts list the letter's link with its check date. |
+| 31 | Fixed | S26 names Naive 2 and the one-step-ahead comparison; the paper's link is listed. |
+| 32 | Fixed | The forecasting clause cites Canadian Business on every page that uses it. |
+| 33 | No change | The FADA figures held. |
+| 34 | Fixed | The Amazon row gives author and date. |
+| 35 | Fixed | S14 and the notes say M5's seasonal copy is the same weekday a week earlier. |
+| 36 | Fixed | The guesstimate and S9 say SIAM counts makers' sales to dealers. |
+| 37 | Partly | "Direct and indirect employment opportunities" replaces "jobs"; the real sale date stays off learner pages. |
+| 38 | No change | The FPP3 wording held. |
+| 39 | Partly | The notes cite DoPT's holiday lists; the links stay the staffnews.in copies. |
+| 40 | Fixed | Transcript 1 has the overtime follow-up. |
+| 41 | Partly | A moving sale is answered as a hypothetical; the real date is not used. |
+| 42 | Fixed | The variant and the Target row cover a first launch. |
+| 43 | No change | The structure held. |
+| 44 | Fixed | The clarify and validate lines match SIAM's definition. |
+| 45 | Fixed | Commercial riders are in the map and the 15 percent; the cycle is the years a household keeps one before buying new. |
+| 46 | Fixed | The card swings one input at a time. |
+| 47 | Fixed | The estimate is about 2.2 crore. |
+| 48 | Fixed | The catch names September's quiet weeks and registrations against dispatches. |
+
+Read 2 totals: 39 fixed, 6 partly fixed and 3 needing no change, of 48 findings.
