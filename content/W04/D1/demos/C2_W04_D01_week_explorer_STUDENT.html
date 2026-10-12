@@ -321,11 +321,11 @@ var W4 = {
     hundred: {both: 25, aOnly: 9, bOnly: 46, none: 20},   /* derived: 100 carts in the case's proportions */
     views: 60000, ctrMilk: 0.012, ctrOther: 0.064, add: 0.5, margin: 9,   /* case Wed L5 and ticket */
     /* partners for a cart holding chips: [name, share of chips carts holding it, lift, source] */
-    chips: [["Toned milk", 0.70, 0.99, "band"], ["Cold drink", 0.42, 3.4, "case"], ["Bread", 0.34, 1.00, "toy"],
+    chips: [["Toned milk", 0.75, 1.06, "band"], ["Cold drink", 0.42, 3.4, "case"], ["Peanuts", 0.12, 1.5, "toy"],
             ["Namkeen", 0.20, 2.1, "toy"], ["Dip", 0.15, 2.6, "toy"]],
-    /* pairs: [name, support percent, lift, source]; "band" sits inside the case's milk band, lift 0.96 to 1.08 */
-    pairs: [["bread + milk", 25.2, 1.04, "case"], ["eggs + milk", 21.2, 1.03, "case"], ["curd + milk", 18.2, 0.99, "band"],
-            ["bananas + milk", 16.6, 1.01, "band"], ["cold drink + milk", 8.6, 0.99, "band"], ["chips + milk", 8.4, 0.99, "band"],
+    /* pairs: [name, support percent, lift, source]; "band" sits inside the case's milk band of lifts near one */
+    pairs: [["bread + milk", 25.2, 1.04, "case"], ["eggs + milk", 21.2, 1.03, "case"], ["curd + milk", 14.0, 1.05, "band"],
+            ["bananas + milk", 11.5, 1.07, "band"], ["cold drink + milk", 6.5, 1.04, "band"], ["chips + milk", 8.9, 1.06, "band"],
             ["ice cream + milk", 2.9, 1.03, "band"], ["chips + cold drink", 5.0, 3.4, "case"], ["ice cream + chocolate sauce", 0.25, 4.6, "case"]]
   },
   thu: {
@@ -836,7 +836,7 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>After the first button 34 carts are left, the carts with bread, and 25 of them hold milk, so confidence from bread to milk is 25 / 34 = 0.74. Milk sits in 71 of all 100 carts, so 0.74 is barely above what any cart shows: lift is 0.74 / 0.71 = 1.04.</p>
+        <p>After the first button 34 carts are left, the carts with bread, and 25 of them hold milk, so confidence from bread to milk is 25 / 34 = 0.74. Milk sits in 71 of all 100 carts, so 0.74 is barely above what any cart shows: lift is 0.74 / 0.71 = 1.04, which is W1's observed area over expected area, read from inside the bread carts.</p>
         <p>Confidence shrinks the world to the carts that hold A and forgets the carts that do not. That forgetting is what lets the item in every cart look like a strong partner of anything.</p>
         <p class="formula"><b>The formula, last</b>confidence(A to B) = P(A and B) / P(A) = 0.25 / 0.34 = 0.74</p>
       </div>
@@ -857,7 +857,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>The square of W1 with bread as A, in 34 percent of carts, and milk as B. The pair's lift is held at the case's 1.04, so the observed overlap follows milk's share; the two gauges show what each measure does as the share moves.</figcaption>
+          <figcaption>The square of W1 with bread as A, in 34 percent of carts, and milk as B. The two gauges show what each measure does as milk's share of carts moves.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><label for="w3-m">Milk's share of carts</label>
@@ -869,7 +869,7 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>At the case's milk share of 0.71, confidence from bread toward milk is 0.74 and lift is 1.04. Three in four bread carts hold milk because nearly three in four of all carts do. In the case, every item in at least 2 percent of carts shows confidence between 0.68 and 0.78 toward milk and lift between 0.96 and 1.08, which is why a strip ranked by how often items appear together puts milk beside nearly everything.</p>
+        <p>At the case's milk share of 0.71, confidence from bread toward milk is 0.74 and lift is 1.04. Three in four bread carts hold milk because nearly three in four of all carts do. In the case, every item in at least 2 percent of carts shows a high confidence toward milk and a lift close to one, which is why a strip ranked by how often items appear together puts milk beside nearly everything. The scene holds the pair's lift at the case's 1.04, which says bread buyers are no more drawn to milk than before while milk grows more popular everywhere, so confidence, lift times milk's share, climbs with the share.</p>
         <p>Confidence carries the partner's popularity inside it. Lift divides that popularity out, so it stays near one for a partner that is only popular.</p>
         <p class="formula"><b>The formula, last</b>confidence follows popularity; lift divides it out: lift = confidence(A to B) / P(B) = 0.74 / 0.71 = 1.04</p>
       </div>
@@ -890,7 +890,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>The strip under a cart holding chips. Click-through is the case's: 1.2 percent on a slot showing milk and 6.4 percent on any other suggestion. Milk and cold drink carry the case's numbers; bread, dip and namkeen are toy partners, invented to fill the strip.</figcaption>
+          <figcaption>The strip under a cart holding chips. Click-through is the case's: 1.2 percent on a slot showing milk and 6.4 percent on any other suggestion. Cold drink carries the case's numbers, milk's are drawn inside the band the case reports, and peanuts, dip and namkeen are toy partners. Support is the share of all carts that hold both items, and the lift ranking keeps only pairs above a support floor.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><button type="button" class="btn" data-ctl="rank" aria-pressed="false">Rank by lift</button>
@@ -910,7 +910,7 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>Ranked by how often items appear together, toned milk takes slot 1 beside chips, where 1.2 percent of shoppers click: 60,000 views x 0.012 x 0.5 x Rs 9 = Rs 3,240 a day. A partner that beats chance clicks at 6.4 percent: 60,000 x 0.064 x 0.5 x Rs 9 = Rs 17,280 a day. The gap is Rs 14,040 a day, about Rs 4.2 lakh a month for that one slot.</p>
+        <p>Ranked by how often items appear together, toned milk takes slot 1 beside chips, where 1.2 percent of shoppers click: 60,000 views x 0.012 x 0.5 x Rs 9 = Rs 3,240 a day. Any other suggestion clicks at 6.4 percent in the case's test: 60,000 x 0.064 x 0.5 x Rs 9 = Rs 17,280 a day. Ranked by lift, dip takes milk's place on the strip. The gap is Rs 14,040 a day, about Rs 4.2 lakh a month for that one slot.</p>
         <p>Milk belongs in the cart, which is why it needs no slot: the shopper was buying it anyway. A slot earns money only when it suggests something the shopper would not have added alone.</p>
         <p class="formula"><b>The formula, last</b>value of a slot = views x click-through x add rate x margin per add</p>
       </div>
@@ -931,7 +931,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Lift against support for nine pairs from the case's 40,000 carts, with support on a log scale, so each step right is ten times more carts. Bread and milk, eggs and milk, chips and cold drink, and ice cream and chocolate sauce carry the case's numbers; the other milk pairs are drawn inside the band the case reports, lift 0.96 to 1.08.</figcaption>
+          <figcaption>Lift against support for nine pairs from the case's 40,000 carts, with support on a log scale, so each step right is ten times more carts. Bread and milk, eggs and milk, chips and cold drink, and ice cream and chocolate sauce carry the case's numbers; the other milk pairs are drawn inside the case's band of lifts near one. A filled dot carries the case's numbers and an open dot is drawn inside the band.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><label for="w5-f">Support floor, percent of carts</label>
@@ -943,7 +943,7 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>At a floor of 1 percent of carts, 400 of the 40,000, eight of the nine pairs survive. Ice cream with chocolate sauce has the highest lift, 4.6, and falls off: it sits in 0.25 percent of carts, 100 carts in four weeks, too few to repay a slot, so it goes on a watch list. Chips with cold drink, at 5.0 percent of carts and lift 3.4, is the pair to promote; the milk pairs sit high on support and near one on lift, the popular-partner trap.</p>
+        <p>At a floor of 1 percent of carts, 400 of the 40,000, eight of the nine pairs survive. Ice cream with chocolate sauce has the highest lift, 4.6, and falls off: it sits in 0.25 percent of carts, 100 carts in four weeks or about four a day, too few to judge and too few to repay a slot that W4 prices on 60,000 cart views a day, so it goes on a watch list. Any floor from 0.3 to 2.9 percent keeps the same eight here; the floor matters for the pairs near it. Chips with cold drink, at 5.0 percent of carts and lift 3.4, is the pair to promote; the milk pairs sit high on support and near one on lift, the popular-partner trap.</p>
         <p>A lift of 4.6 on 100 carts says those 100 shoppers bought the two together far more often than chance, and nothing about the other 39,900. The support floor drops every pair too rare to repay a slot before lift is read at all.</p>
         <p class="formula"><b>The formula, last</b>act above the floor, watch below it; support(A and B) = carts with both / all carts</p>
       </div>
@@ -2044,6 +2044,8 @@ var W4 = {
       lock.addEventListener("click", function () {
         st.pred = def.guessValue(st);
         said.textContent = "Locked in: " + def.guessText(st.pred) + ".";
+        $("[data-guess]", art).disabled = true;
+        lock.disabled = true;
         if (!$(".reveal", art).hidden) writeCheck(art, def, st);
       });
     }
@@ -2591,8 +2593,8 @@ var W4 = {
   function Square(svg, names) {
     var ox = 40, oy = 56, Z = 260, bx = 350;
     add(svg, "rect", { x: ox, y: oy, width: Z, height: Z, fill: C.white, stroke: C.night, "stroke-width": 1.5 });
-    var aBand = add(svg, "rect", { x: ox, y: oy, width: 0, height: Z, fill: C.violet, "fill-opacity": 0.14 });
-    var bBand = add(svg, "rect", { x: ox, y: oy, width: Z, height: 0, fill: AMBER, "fill-opacity": 0.16 });
+    var aBand = add(svg, "rect", { x: ox, y: oy, width: 0, height: Z, fill: C.violet, "fill-opacity": 0.22 });
+    var bBand = add(svg, "rect", { x: ox, y: oy, width: Z, height: 0, fill: AMBER, "fill-opacity": 0.28 });
     var exp = add(svg, "rect", { x: ox, y: oy, width: 0, height: 0, fill: C.violet, "fill-opacity": 0.32, stroke: C.violet, "stroke-width": 2.5 });
     var aLab = txt(svg, ox, oy - 12, "", { size: 14.5, weight: 700, fill: C.violet });
     var bLab = txt(svg, ox, oy + Z + 24, "", { size: 14.5, weight: 700, fill: AMBER_INK });
@@ -2716,6 +2718,8 @@ var W4 = {
     txt(svg, 238, 361, "milk in the cart", { size: 14.5 });
     add(svg, "circle", { cx: 382, cy: 356, r: 9.5, fill: C.violet, stroke: AMBER, "stroke-width": 3.5 });
     txt(svg, 398, 361, "both", { size: 14.5 });
+    add(svg, "circle", { cx: 476, cy: 356, r: 9.5, fill: C.white, stroke: "#C9C4E4", "stroke-width": 1.5 });
+    txt(svg, 492, 361, "neither", { size: 14.5 });
   }
 
   scene("W3", {
@@ -2751,7 +2755,7 @@ var W4 = {
         ["Bread in carts, P(A)", a.toFixed(2)],
         ["Confidence, bread to milk", conf.toFixed(2)],
         ["Lift, bread and milk", lift.toFixed(2)],
-        { wide: "Confidence is lift times milk's share: " + WED.breadMilkLift.toFixed(2) + " x " + b.toFixed(2) + " = " + conf.toFixed(2) + "." }
+        { wide: "Carts holding both bread and milk: " + (a * conf * 100).toFixed(1) + " in every 100." }
       ]);
     },
     final: function (st) { st.m = WED.milk; }
@@ -2845,15 +2849,18 @@ var W4 = {
       this.flab = txt(svg, 84, 56, "", { size: 14, weight: 700, fill: C.rose });
       txt(svg, 620, 70, "promote", { size: 15, weight: 700, anchor: "end", fill: C.green });
       txt(svg, 96, 70, "watch", { size: 15, weight: 700, fill: C.night });
-      txt(svg, 620, W5Y(1.75), "popular-partner trap, below", { size: 15, weight: 700, anchor: "end", fill: C.rose });
-      txt(svg, 96, W5Y(1.75), "ignore, below", { size: 15, weight: 700, fill: C.muted });
+      txt(svg, 620, W5Y(1.4), "popular-partner trap: seven pairs with milk", { size: 15, weight: 700, anchor: "end", fill: C.rose });
+      txt(svg, 96, W5Y(1.4), "ignore", { size: 15, weight: 700, fill: C.muted });
+      add(svg, "circle", { cx: 300, cy: 22, r: 7, fill: C.violet, stroke: C.violet, "stroke-width": 1.5 });
+      txt(svg, 312, 27, "the case's numbers", { size: 13.5, fill: C.night });
+      add(svg, "circle", { cx: 460, cy: 22, r: 7, fill: C.white, stroke: C.violet, "stroke-width": 2.5 });
+      txt(svg, 472, 27, "drawn inside the band", { size: 13.5, fill: C.night });
       this.pts = WED.pairs.map(function (p) {
         return add(svg, "circle", { cx: W5X(p[1]), cy: W5Y(p[2]), r: 7.5, fill: p[3] === "band" ? C.white : C.violet,
           stroke: C.violet, "stroke-width": p[3] === "band" ? 2.5 : 1.5, "class": "fade" });
       });
       txt(svg, W5X(5.0) + 12, W5Y(3.4) + 5, "chips + cold drink", { size: 14, weight: 700 }).setAttribute("class", "halo");
       txt(svg, W5X(0.25) + 12, W5Y(4.6) + 5, "ice cream + chocolate sauce", { size: 14, weight: 700 }).setAttribute("class", "halo");
-      txt(svg, W5X(8) - 70, W5Y(1.04) - 18, "seven pairs with milk", { size: 14, weight: 700 }).setAttribute("class", "halo");
       put($("[data-fig]", art), svg);
       var self = this;
       on(art, "floor", "input", function (e) { st.floor = Number(e.target.value); self.render(st, art); });
