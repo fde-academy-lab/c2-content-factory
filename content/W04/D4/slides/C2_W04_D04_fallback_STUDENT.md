@@ -22,12 +22,12 @@ Transition: Swiggy's numbers.
 *What did Swiggy decide, and what did its numbers do?*
 
 ```stats
-value: 4M+ | label: users weaned away | note: unprofitable Instamart users, over three quarters to Q1 FY27
-value: 55 to 61 | label: percent | note: one-month retention of the transacting base, Q1 FY26 to Q1 FY27
-value: 4.14x | label: spend at Q6 | note: the Q4 FY24 cohort's spend in its sixth quarter against its first
+value: 4M+ | label: users weaned away | note: Instamart users who cost Swiggy money, let go over the three quarters to Q1 FY27
+value: 55 to 61 | label: percent | note: Instamart's one-month retention of the users who ordered, Q1 FY26 to Q1 FY27
+value: 4.14x | label: spend in the sixth quarter | note: the cohort that joined in Q4 FY24, against what it spent in the quarter it joined
 ```
 
-Swiggy says it used cohort-level levers (minimum order thresholds, free deliveries, new-user coupons) and weaned away users with low expected lifetime value. Sources: Swiggy's Q1 FY27 and Q2 FY26 shareholder letters, each checked 12 October 2026.
+Swiggy says it used offers aimed at chosen groups of users (minimum order values, free deliveries, new-user coupons) and "weaned away certain users ... with low potential Lifetime values", the value a user is expected to bring over all the time she stays, by withdrawing the offers that kept them. India's financial year runs April to March, so Q1 FY27 is April to June 2026 and Q4 FY24 is January to March 2024. Sources: Swiggy's Q1 FY27 and Q2 FY26 shareholder letters, each checked 12 October 2026.
 
 ```notes
 Sources:
@@ -75,7 +75,7 @@ flowchart TD
     class X lit
 ```
 
-A cohort chart without its denominator is a shape. Swiggy's table is indexed to its Q4 FY24 cohort's first quarter, and calls the groups "retained user cohorts": the first thing to ask is who stays in the count.
+A cohort chart without its denominator is a shape. Swiggy's table compares each cohort's spend with the quarter it joined and calls the groups "retained user cohorts", and it states no denominator: the first thing to ask is who stays in the count. Removing users in one quarter lifts that quarter's cells and every later one, with nobody's behaviour changing.
 
 ```notes
 LIVE, 15 minutes. Groups write what each denominator would show after a weaning. Per retained
@@ -101,9 +101,12 @@ Transition: the task.
 
 ```python
 placed = ev[ev["stage"] == "order_placed"]
-week = lambda t: t.dt.to_period("W-SUN").dt.start_time      # weeks start on Monday
-orders_week = set(zip(placed["user_id"], week(placed["event_ts"])))
-# members who joined 3 August to 13 September; week k is the k-th full week after the signup week
+# W-SUN: weeks end on Sunday, so each week starts on a Monday
+monday = placed["event_ts"].dt.to_period("W-SUN").dt.start_time
+# user_id in events is the member's member_id in members
+orders_week = set(zip(placed["user_id"], monday))
+# her signup week starts on the Monday on or before her signup date;
+# week k is the week whose Monday is k x 7 days after that one
 ```
 
 Members who joined from 3 August to 13 September form six weekly cohorts. A member is active in week k when she placed an order that week. The week of 28 September is three days long, so the table stops at the week of 21 September.
@@ -138,7 +141,7 @@ Transition: which story survives.
 | Every cohort falls with age | Holds, with noise: weekly cohorts of 1,112 to 1,247 members |
 | The sale-week members are the weakest | Holds for the sale week's cohort after its first week; in that first week it looks strongest |
 | Rates near 38 percent | Weekly rates are lower: ordering in a given week is rarer than in a month |
-| The last month counts | The last week is partial and leaves the table |
+| September, the last month, is whole and counted | The week of 28 September has three days and is left out |
 
 ```notes
 LIVE, 10 minutes. The lesson: a cohort table's grain changes the numbers and keeps the method.
@@ -172,7 +175,7 @@ flowchart LR
     class C bad
 ```
 
-Zomato's shareholder letter of 19 May 2023 (checked 12 October 2026) says Gold reached 1.8 million members in Q4 FY23, its members' orders were about 30 percent of food delivery GOV in March 2023, and their order frequency rose about 60 percent after joining. The number describes members; it does not show what Gold caused.
+Zomato's shareholder letter of 19 May 2023 (checked 12 October 2026) says Gold reached 1.8 million members in Q4 FY23 (January to March 2023), its members' orders were about 30 percent of food delivery GOV, gross order value, the value of all orders placed, in March 2023, and their order frequency rose about 60 percent after joining. The number describes members; it does not show what Gold caused.
 
 ```notes
 Source:
@@ -191,7 +194,7 @@ Transition: the comparisons.
 |---|---|---|
 | Matched customers who did not join | Customers who ordered alike before | Why one joined and the other did not |
 | The trend before joining | A member already ordering more each month | A planned change (a move, a new job) |
-| A holdout: Gold offered to some, withheld from others | Who chose to join | The cost of withholding the offer |
+| A hold-out: Gold offered to some, withheld from others | Who chose to join | The cost of withholding the offer |
 
 ```notes
 LIVE, 15 minutes. Groups rank the three for what Zomato could run. Keep it at this depth: how to
@@ -215,12 +218,12 @@ Transition: the transcript.
 ## S9. The dispute, answered with the split
 *What does a weak answer bring to the meeting, and what does a hire-grade one bring?*
 
-| Beat | A weak answer | A hire-grade answer |
+| Beat | A weak answer | A hire-grade answer, one that gets the job |
 |---|---|---|
 | Opening | "Your release broke checkout." | "You're right that checkout starts held at 80 percent; I'd like to show the next step." |
-| Evidence | Overall conversion before and after | Checkout start to order, 72.5 to 55, members on Android only, from the release week |
-| The comparators | None | iOS members 57 to 56; non-members on Android 52 to 51 |
-| What would change my mind | Nothing | "If the event the release renamed is mapped wrong, I'd rerun it on your mapping." |
+| Evidence | Overall conversion before and after | Checkout start to order, per session, 72.5 to 55, members on Android only, from the release week |
+| The comparators | None | On the same step, iOS members 71 to 70 and non-members on Android 65 to 64; members who joined before August, iOS 68.6 to 69.3 |
+| What would change my mind | Nothing | "If the order records showed orders holding while the event log fell, or if members who failed came back and ordered later, I'd withdraw it." |
 
 ```notes
 LIVE, 15 minutes. Pairs score the hire-grade side on the scorecard. The move is Tuesday's: restate,
