@@ -34,7 +34,7 @@ one unlocks. The candidate uses only what was handed over.
 |---|---|
 | "Which retention: who is counted, from which month after joining, and what does active mean?" | "Month-two retention: of the members two or more months past their signup month, the share who ordered this month. It read 38 percent from June to September." |
 | "Does retained mean ordered, or renewed the membership, and do lapsed members stay in the count?" | "Ordered that month. A member who stops ordering stays in the count." |
-| "Dropped against what, and over which window?" | "Here is the same number counted over everyone who joined before each month: 40.9, 40.0, 39.5 and 35.9 percent from June to September. And the cohort table." |
+| "Dropped against what, and over which window?" | "Here is retention counted over everyone who joined before each month: 40.9, 40.0, 39.5 and 35.9 percent from June to September. And the cohort table." |
 | "Did anything ship, or change in how events are logged, in that window?" | "A new Android checkout on 14 September, which renamed one Android event; the app team mapped the old name to the new. Here are the order flow by platform and week, and the order records." |
 
 ## What structure carries the answer?
