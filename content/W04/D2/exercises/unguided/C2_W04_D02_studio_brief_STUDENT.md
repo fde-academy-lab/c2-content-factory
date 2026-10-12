@@ -3,8 +3,10 @@
 Uber, Hyderabad, the peak-hour earnings guarantee. Since the launch on 31 August 2026, gross bookings
 per peak online hour fell from Rs 314 to Rs 260 while the fare held at Rs 165, and 61 percent of the
 Rs 1.9 crore top-up went to driver-weeks that accepted fewer than half their offers. Monday's
-redesign pays per completed peak trip with an acceptance floor. The city head takes it to Thursday's
-city review on one slide, in five minutes, and three roles in the room each lose something under it.
+redesign, as a driver hears it: "The floor now pays for trips you complete, if you say yes to most
+offers", where most means at least half the requests offered, the acceptance floor. The city head
+takes it to Thursday's city review on one slide, in five minutes, and three roles in the room each
+lose something under it.
 
 > Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
@@ -17,9 +19,10 @@ accurately after the meeting, even while disagreeing with it.
 - What will each role object to, and which part of it is true?
 - How do you answer in four moves?
 
-The studio runs in threes: a presenter, an objector reading one role's card, and a scorer. Each round
-is seven minutes and the seats rotate, three rounds in the morning's first studio and three after
-the seats swap. One item at the end checks the moves. Post one letter:
+The studio runs in threes: a presenter, an objector reading one role's card, and a scorer. Each turn
+is seven minutes and the seats rotate after it, so in each round of three turns every member presents
+once, objects once and scores once; round two repeats it with the slide rebuilt after round one. One
+item at the end checks the moves. Post one letter:
 
 ```
 Post exactly this shape: x
@@ -65,23 +68,23 @@ This comes up in every stakeholder meeting and in every interview that asks how 
 3. **Concede** the true part, in plain words, without dropping the claim.
 4. **Say what would change your mind**, naming the fact and how you would get it.
 
-### Q1. The marketing lead objects that changing the guarantee six weeks in looks like bait. Which reply runs the four moves with the right evidence?
+### Q1. The marketing lead objects that changing the guarantee six weeks in looks like bait. In move 4, which fact would rightly change the presenter's mind?
 
-*Level L3 · asked in GCC and product-company screens.*
+*Level L3 · tagged [F] in this programme's calibration: frequent in GCC and product-company screens.*
 
-a) Restate the worry; cite rider requests up 1.8 percent; concede nothing; say the data is final
-b) Skip the restatement; cite the Rs 1.16 crore paid to idle drivers; concede the claim; wait six weeks
-c) Restate the worry; cite 880 earlier drivers holding at 1.90 trips an hour; concede the monsoon ended; run the test
-d) Restate the worry; cite that no joiner is in the idle tail; concede the floor was promised; watch sign-ups
+a) Last year's same six weeks showing a fall of this size
+b) The median rider wait at peak rising in the test zones above where it is now
+c) Weekly sign-ups of new drivers falling once the condition is announced
+d) Nothing, since the data already answers the objection in full
 
-The idle tail is Monday's name for the 180 drivers whose trips per online hour fell under 1.0 after
-the launch; 140 drivers joined after the launch, and the other 880, there before it, sit outside the
-idle tail.
+Move 4 names the fact that would show the objection right, and how the presenter would get it.
 
 ---
 
 **What the scorer ticks.** For each defence: restated, answered from a named line, conceded the true
-part, said what would change their mind. The final number is never scored.
+part, said what would change their mind. The slide's numbers are never scored; its parts and the moves
+are.
 
 **In the interview.** [F] A stakeholder's objection is partly right; how do you answer it?
-[D] The person who loses under your metric controls the meeting; how do you get it adopted anyway?
+[D], a differentiator in this programme's tags: the person who loses under your metric controls the
+meeting; how do you get it adopted anyway?

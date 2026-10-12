@@ -30,7 +30,7 @@ present or absent.
 
 ## How many customers could a new store sign up to Retail-Plus in its first year?
 
-This comes up at work whenever a store, a branch or a dark store is funded before it exists.
+This comes up at work whenever a store, a branch or a delivery-only warehouse is funded before it exists.
 
 Size it in fifteen minutes, aloud, on one sheet:
 
@@ -39,7 +39,7 @@ Size it in fifteen minutes, aloud, on one sheet:
 | Clarify | Say what counts as a sign-up, which store and which twelve months |
 | Map | Build a chain from the households near the store to the members it signs, each factor with a value and a range |
 | Calculate | Say the running product aloud |
-| Validate | Turn your shoppers into a year of sales (visits a month and spend per visit, both stated) and set it beside DMart's revenue per store from `data/C2_W04_D02_kalpa_dmart_anchor_STUDENT.csv`: about Rs 134 crore on the year-end store count and about Rs 146 crore on the average count; say which denominator you used and why, and what the gap between your store and DMart's average tells you |
+| Validate | Nobody publishes sign-ups, so turn your shoppers into a year of sales (visits a month and spend per visit, both stated) and set it beside DMart's revenue per store from `data/C2_W04_D02_kalpa_dmart_anchor_STUDENT.csv`: about Rs 146 crore on the average store count, the stores open across the year (the year-end count gives about Rs 134 crore and understates a store); say what the gap tells you, and name the factor the check cannot reach |
 
 The catch to say aloud: a store in its first year sells less than a mature one.
 
@@ -58,8 +58,8 @@ staff working 40 hours across 5 staff-days. Give sales per order, per staff-hour
 and say which one a scheme that pays staff by the hour should read.
 
 **P3. Level L3.** Write the four moves for the driver-operations lead's objection to the Uber
-redesign, "drivers will log off and supply at peak will fall", using the numbers from the morning's
-answer slide.
+redesign, "drivers will log off and supply at peak will fall", using the numbers on the morning deck's
+S20.
 
 **P4. Level L4.** A Kalpa slide draft carries six elements: the north-star chart, a table of all
 orders, the discount share, the return rate, a pie of orders by channel, and a paragraph on method.
@@ -67,7 +67,7 @@ Keep two, and name the head whose appendix page receives each of the others.
 
 **P5. Level L5, combining the day.** Anand asks for one slide: should Kalpa fund the new store? Build
 it with your estimate from the second part as the evidence (its range and the factor that sets it),
-the first-year catch as the caveat, and the action with its cost and who signs.
+the first-year catch as the caveat, and the action with what it commits and who signs.
 
 **For anyone who stalls on code.** These four lines rebuild the twelve rows' per-driver-week read.
 Put them in the only order that runs, as a letter string:

@@ -14,8 +14,11 @@ know your number is not wildly off.
 - What is the closest published number to check a store's year against?
 - What does the check say when an estimate lands above it?
 
-The closest published number is DMart's, a large grocery chain whose filings give revenue and store
-counts:
+Nobody publishes how many members a new store signs up, so the check reaches one link of the chain:
+the shoppers behind the sign-ups, turned into a year of sales (shoppers x visits a month x spend per
+visit x 12), against what a mature store sells. That checks the first two factors, the households and
+the share who shop; the sign-up share, the widest range in the chain, stays a stated guess. The closest
+published number is DMart's, a large grocery chain whose filings give revenue and store counts:
 
 | Item | Value |
 |---|---|
@@ -42,7 +45,7 @@ denominator decides the answer.
 
 ### Q1. What was DMart's FY26 revenue per store on the average of its opening and closing store counts?
 
-*Level L5 · asked in retail and consulting screens.*
+*Level L5 · tagged [F] in this programme's calibration.*
 
 a) About Rs 134 crore
 b) About Rs 161 crore
@@ -61,12 +64,12 @@ A classmate's chain for Anand implies the new Kalpa store would sell Rs 150 cror
 
 ### Q2. Design. What does the validate step say about the classmate's Rs 150 crore?
 
-*Level L5, a design call · asked in retail and product-company screens.*
+*Level L5, a design call · tagged [F] in this programme's calibration.*
 
-a) It passes, since it sits within a few percent of DMart's average of about Rs 146 crore a store
+a) It passes, since it sits within a few percent of what DMart's average store sells
 b) It is too high: a new store sells below DMart's average, so recheck footfall or spend
 c) It cannot be checked at all, since Kalpa sells different products from DMart
-d) It is too low, since DMart's two-year-old stores grew 10.8 percent in FY26's last quarter
+d) It is too low, since DMart's stores two years and older grew 10.8 percent last quarter
 
 ---
 

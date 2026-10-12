@@ -20,7 +20,7 @@ never seen a slide, and then as the check a reviewer runs.
 | The claim | Say what should happen, in one sentence, before anything else | The title is a sentence with a verb, and someone could act on it without reading further |
 | The evidence | Show the one number that proves it, and say what it was divided by | One number or one chart, with its denominator written beside it |
 | The caveat | Say what you are not sure of, where it can be seen | The caveat sits on the slide beside the evidence, never only in an appendix |
-| The action | Say what to do, what it costs and who decides | The action names a cost in dollars or weeks and the person who signs |
+| The action | Say what to do, what it costs and who decides | The action names a cost in dollars (Kalpa Health works in dollars) or weeks, and the person who signs |
 
 **The appendix.** Each heading is a question one named person will ask, so the right page opens when
 that person asks it.

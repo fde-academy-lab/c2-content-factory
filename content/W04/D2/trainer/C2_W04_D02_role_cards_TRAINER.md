@@ -20,8 +20,8 @@ evidence answers the rest, and what would change the presenter's mind?
 |---|---|
 | Says | "Drivers will log off. Pay per trip and supply at peak falls, and riders wait longer." |
 | Loses | Peak online hours, up 24 percent, as the headline the team reports |
-| The true part | The 180 drivers in the idle tail will log off: their idle hours are what stops being paid, and the outer zones are thin |
-| What answers the rest | The other 880 drivers, there before the launch, held at 1.90 trips per online hour in both windows, and their trips rose 4 percent; they keep the floor if they accept |
+| The true part | The 180 drivers in the idle tail will log off: their idle hours are what stops being paid, and the three outer zones get few requests at any hour |
+| What answers the rest | The other 880 drivers, there before the launch, held at 1.90 trips per online hour in both windows, and their trips rose 4 percent; they keep the floor if they accept. The 180 had also run at 1.90 before the launch, so the tail is drivers who changed, never drivers who were always slow; every idle-tail week after the launch accepted at most 46 percent of its offers, and every other week at least 78 percent |
 | Push once more with | "Riders in the outer zones will wait longer." |
 | A strong presenter's "what would change my mind" | Median rider wait at peak rising above 4.6 minutes in the test |
 
@@ -42,10 +42,10 @@ evidence answers the rest, and what would change the presenter's mind?
 |---|---|
 | Says | "Bookings per hour fell because the monsoon ended. The scheme had nothing to do with it." |
 | Loses | Its own number, top-up per trip (Rs 82.3), as the headline; it becomes a guardrail |
-| The true part | The monsoon ended inside the window, and last year's weeks are not in the data |
-| What answers the rest | Rider requests rose 1.8 percent; the three busiest weeks after the launch ran at 1.60 trips per online hour; drivers who joined before the launch fell from 1.90 to 1.58; the drop is a step in the launch week (the highest after week, Rs 271, sits below the lowest before week, Rs 310) |
-| Push once more with | "Then show me last year." |
-| A strong presenter's "what would change my mind" | Last year's same six weeks showing a fall of this size, or the test showing no change |
+| The true part | The monsoon ended inside the six weeks, and last year's weeks are not in the data |
+| What answers the rest | In the last three weeks after the launch, requests were back inside the before window's weekly range (41,161 to 42,602 against 41,155 to 42,719) and trips per online hour still ran at 1.56; drivers who joined before the launch fell from 1.90 to 1.58; the drop is a step in the launch week (the highest after week, Rs 271, sits below the lowest before week, Rs 310) |
+| Push once more with | "Requests fell four weeks running from 7 September. Then show me last year." |
+| A strong presenter's "what would change my mind" | Last year's same six weeks showing a fall of this size, a city where the rains ended without the scheme showing the same fall, or the test showing no change |
 
 ## Kalpa cards for the lab: which objection does each Kalpa head raise?
 

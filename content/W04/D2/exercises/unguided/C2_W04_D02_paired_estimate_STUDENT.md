@@ -5,8 +5,8 @@ every assumption aloud, give a range, and check the answer against a published f
 clock stops. The question is the kind an interviewer at a payments company, a consulting firm or a
 product company opens a case round with.
 
-**Who needs the answer.** The interviewer, who scores how you got there and whether you checked it,
-and hardly ever the final number.
+**Who needs the answer.** The interviewer, who listens for how you got there and whether you checked
+it, and still notices a number that is wildly off.
 
 **The questions on the way.**
 
@@ -24,7 +24,7 @@ This comes up in every guesstimate round, at work and in interviews.
 | Step | What to write |
 |---|---|
 | 1. Clarify | Volume or value? Which day, which month? Every kind of UPI payment, or only payments to shops? |
-| 2. Map | Active users x payments per active user a day, split if you like between paying a shop and paying a person |
+| 2. Map | Active users x payments per active user a day; say how many of those go to shops and how many to people, so the payments a day are believable |
 | 3. Calculate | Each factor with its value and its range, said aloud; the running product |
 | 4. Validate | The published number you would check against, its unit, and how far your estimate sits from it |
 
@@ -38,8 +38,8 @@ answer, a sanity check in the right unit.
 
 This comes up the moment the clock stops: the comparison has to be like for like.
 
-The trainer reveals the published figure after the swap. Before it arrives, write on your sheet which
-figure you would want: a total for the month, or an average a day, and why one of them is the fairer
-check.
+The trainer reveals the published figure after the swap. Before it arrives, write on your sheet which figure you would want: a total for the month, or an
+average a day, and why one of them is the fairer check. Then write a second check you could run with a
+month's total value and count: what one payment is worth on average.
 
 **In the interview.** [S] A guesstimate: estimate a number from nothing, aloud, and check it.

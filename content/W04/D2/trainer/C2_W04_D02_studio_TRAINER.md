@@ -36,11 +36,11 @@ order of the morning, and where is the slack?
 | 15 | The ticket; the groups list what each role loses; the cards | S1 to S4 |
 | 45 | Chapter 1: the title, the four parts, slide A rebuilt with the room, slides B and C rebuilt by groups, the three reads, the trap, the second route | S5 to S18 |
 | 8 | The trainer models one full defence of the finance partner's objection, conceding on purpose | S23 |
-| 23 | Round one: 2 minutes to form threes, then three rounds of seven minutes | S24 |
+| 23 | Round one: 2 minutes to form threes, then three turns of seven minutes, rotating seats after each | S24 |
 | 19 | Chapter 2's other slides: the prediction, the true parts, the four moves, the trap, the two failures | S19 to S22, S25 |
 | 10 | Break | |
 | 20 | Chapter 3: the appendix, Amazon's memo, the cut-to-two drill | S26 to S30 |
-| 38 | Round two: 3 minutes to swap seats, three rounds of seven minutes, 8 minutes to rebuild, 6 minutes for two groups to present to the room | S31 |
+| 38 | Round two: 3 minutes to set up, three turns of seven minutes with the rebuilt slide, 8 minutes to rebuild, 6 minutes for two groups to present to the room | S31 |
 | 2 | Where the morning ends | S32 |
 
 ## What do you say at each turn?
@@ -51,9 +51,9 @@ way.** What opens, what models, what closes?
 - **At S1.** "This is Monday's case one day on. The deliverable today is the slide the city head takes to Thursday's review, and the three people in that room each lose something under it."
 - **At S4.** "Before anyone builds anything: what does each role lose under Monday's definition? Three minutes in your threes, one loss per role."
 - **At S10.** "Rebuild it with me, part by part: the claim, the evidence and its denominator, the caveat, the action with its cost."
-- **At S23, the modelled defence.** Read the four moves in order, and concede the monsoon out loud: "You are right that the monsoon ended inside the window, and that last year's weeks are not in the data."
+- **At S23, the modelled defence.** Read the four moves in order, and concede the monsoon out loud: "You are right that the monsoon ended inside the six weeks, and that last year's weeks are not in the data." If finance pushes on the four weeks of falling requests, the answer is the last three weeks: requests back inside the before range, trips per hour still 1.56.
 - **At S24.** "Presenter, five minutes. Objector, read the card, then push once more after the answer. Scorer, tick what you hear and say one sentence at the end. Seven minutes, then rotate."
-- **At S31.** "Same slide, new seats. Whoever presented now objects, with the card that pushed hardest on their slide."
+- **At S31.** "Same threes, same rotation, your rebuilt slide. When an objection lands, name the appendix page that holds the detail."
 
 ## What do you do when the studio stalls?
 
@@ -92,23 +92,24 @@ them, three words stay up all afternoon: unit, period, definition.
 
 | Minutes | What runs | What you say or do |
 |---|---|---|
-| 3 | S33: which number would check the estimate? | Letters on paper; expect votes for a |
-| 2 | S34: the answer and the sanity-check list | "The check has to count the same thing in the same period." |
+| 3 | S33: which number would check the estimate? | Letters on paper; expect votes for a and d |
+| 2 | S34: the answer and the sanity-check list | "c would check it directly and nobody publishes it; d checks one link, and that is the honest fallback." |
 | 5 | S35: the canteen's tea, invented numbers | Ask for each value; say the running product aloud: 2,000, then 1,200 who buy, then 2,400 cups |
 | 2 | S36: the four steps | Point at each; the one first estimates skip is the fourth |
 | 3 | S37: clarify | Collect the room's clarifying questions before showing the table |
-| 6 | S38: map | Build the tree leaf by leaf; ask the room for each value |
+| 6 | S38: map | Build the tree leaf by leaf; ask the room for each value and its range; count trips per person, never riders |
 | 6 | S39: calculate | Running product aloud; then the question, a vote, two minutes with a neighbour, a revote |
-| 5 | S40: the swing chart | "About 5,700, between about 2,900 and 8,600, mostly a question of how many people ride." |
-| 3 | S41: validate | "The case's data checks the ratio, never the city's count; the city figure is to be found." |
+| 5 | S40: the swing chart | "About 5,700 before the check, from 2,900 to 8,600 with everything else held, mostly a question of how often people ride." |
+| 3 | S41: validate | "Like for like, per completed trip: the case used 0.53, the chain 0.60, an eighth high. Re-run at 1.90 trips an hour: about 5,000. Say 5,000 to 5,700." |
 | 5 | S42: the trap | Write 41,700 and 5,700 side by side; ask which step was skipped |
 | 12 | S43: UPI in pairs | Three minutes to set up, seven on the clock, two to swap sheets with the next pair |
-| 6 | S44: the check | Read three pairs' estimates against 802 million; praise structure, never closeness |
-| 6 | S45: three traps | One row each: which step did each skip? |
+| 6 | S44: the check | Read three pairs' estimates against 802 million, then the second check, about Rs 1,220 a payment; praise structure over closeness |
+| 6 | S45: three traps | One row each: which test does each fail, unit, period or definition? |
 | 1 | S46: chapter close | The map node |
 
 **The dojo scorer's card** (printed below) marks four things: scope clarified first, every assumption
-with a range, a range for the answer, a check in the right unit. The final number scores nothing.
+with a range, a range for the answer, a check in the right unit. A number that is wildly off still
+costs the sheet a line in the feedback.
 
 ## What do you do when the dojo stalls?
 

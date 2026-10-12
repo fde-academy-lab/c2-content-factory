@@ -617,6 +617,12 @@ numbers:
   unit: ''
   how: 2.4 x 0.30, the idle drivers' share
   used_by: guided exercise Q3 (distractor)
+- id: busy_share_at_idle_038
+  value: 0.62
+  shown: 0.62 (62 percent)
+  unit: ''
+  how: 1 - 0.38
+  used_by: guided exercise Q3 and its solution
 - id: tph_online_at_idle_038
   value: 1.49
   shown: about 1.49
@@ -1892,6 +1898,16 @@ kalpa:
     share_of_dmart_store: 0.49
     check_against: DMart's revenue per store on the average of the opening and closing counts, about Rs
       146 crore, the count that was open across the year
+    sign_ups_range_by_factor:
+      households:
+      - 600
+      - 1600
+      share_who_shop:
+      - 625
+      - 1250
+      sign_up_share:
+      - 400
+      - 1600
 shared_constants:
   fare_rs: 165
   launch_date: '2026-08-31'

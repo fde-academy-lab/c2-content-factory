@@ -1,11 +1,11 @@
 # Which two elements of a crowded slide carry the claim, and where do the rest go?
 
-Uber, Hyderabad, the peak-hour earnings guarantee. The city head's slide for Thursday's city review
-must carry one claim: **the scheme is paying for online hours that carry no trips.** A colleague's
-draft carries five elements, and three of them have to leave the slide for an appendix page headed by
-the question one of three roles will ask: the driver-operations lead (what happens to the drivers who
-accept?), the marketing lead (does the sign-up story survive?) or the finance partner (how much of the
-fall is the season?).
+Uber, Hyderabad, the peak-hour earnings guarantee. A colleague drafts a second slide for Thursday's
+city review, to carry one claim: **riders got little for the Rs 1.9 crore of top-up.** The draft
+carries five elements, and three of them have to leave the slide for an appendix page headed by the
+question one of three roles will ask: the driver-operations lead (what happens to the drivers who
+accept?), the marketing lead (do the 140 new drivers lose out?) or the finance partner (how much of
+the fall is the season, and where did the money go?).
 
 > Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
@@ -35,19 +35,19 @@ The draft's five elements:
 | Element | What it shows |
 |---|---|
 | A line of text | Peak online hours up 24 percent |
-| A chart | Gross bookings per peak online hour over twelve weeks, Rs 314 before and Rs 260 after |
-| A table | Acceptance share in each of the twelve zones, before and after |
+| A number | Median rider wait at peak, 4.8 minutes before the launch and 4.6 after |
+| A number | Top-up for each extra trip: Rs 1.9 crore over 6,700 extra trips is Rs 2,836, for a trip worth Rs 165 |
 | A split | 61 percent of the Rs 1.9 crore top-up went to driver-weeks that accepted fewer than half their offers |
-| A pie | Top-up paid in each of the six weeks after the launch |
+| A table | Acceptance share in each of the twelve zones, before and after |
 
-### Q1. Which two elements carry the claim "the scheme is paying for online hours that carry no trips"?
+### Q1. Which two elements carry the claim "riders got little for the Rs 1.9 crore of top-up"?
 
-*Level L4 · asked in every analyst and consulting screen.*
+*Level L4 · tagged [S] in this programme's calibration: a staple of analyst and consulting screens.*
 
-a) The line "peak online hours up 24 percent" and the pie of top-up by week, side by side
-b) The table of acceptance by zone across all twelve zones and the line "online hours up 24 percent"
-c) The chart of bookings per online hour, Rs 314 to Rs 260, and the 61 percent top-up split
-d) The pie of top-up by week and the table of acceptance by zone, both kept at full size
+a) The line "peak online hours up 24 percent" and the median wait, side by side
+b) The 61 percent top-up split and the table of acceptance by zone
+c) The line "peak online hours up 24 percent" and the 61 percent top-up split
+d) The median wait and the top-up for each extra trip, side by side
 
 ---
 
@@ -58,16 +58,16 @@ turn to the page that does.
 
 ### Q2. Design. The table of acceptance share in each zone leaves the slide. Which page should hold it?
 
-*Level L4, a design call · asked in GCC and product-company screens.*
+*Level L4, a design call · tagged [F]: frequent in GCC and product-company screens.*
 
-a) The driver-operations lead's page, since it shows which drivers and zones still accept
+a) The driver-operations lead's page, since it shows where drivers still say yes to offers
 b) The marketing lead's page, since sign-ups are counted by zone
 c) The finance partner's page, since acceptance moved during the season the monsoon ended in
 d) No page, since an element that leaves the slide is cut for good
 
 ---
 
-**How do you check your letters against the deck?** The rebuilt slide A in the morning deck keeps its
-two elements and shows the appendix drawer with one page per role.
+**How do you check your letters against the deck?** The morning deck's S29 runs this drill, and its
+S27 shows the appendix drawer with one page per role.
 
 **In the interview.** [F] What do you leave off the slide, and where does it go?

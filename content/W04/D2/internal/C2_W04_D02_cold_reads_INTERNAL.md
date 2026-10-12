@@ -43,7 +43,7 @@ Fourteen of fourteen right, and twelve of the fourteen could be answered by matc
 
 **9. CONFUSING. "Guardrail": S4, lines 101 and 104.** "Top-up per trip becomes a guardrail"; "with three guardrails". The word is never explained in any Tuesday file, and it comes back in the Kalpa template, S51, S55, the interview room and Kahoot Q7. From the list I guessed "a number you watch so the main number cannot be gamed", but that is a guess.
 
-**10. CONFUSING. "Acceptance share": S4 line 104, the S8 picture, S9 line 217, S12 line 281.** The term is defined only in Kahoot Q7 ("requests accepted over requests offered"), at the end of the day. S9 defines "low acceptance" but not the share itself.
+**10. CONFUSING. "Acceptance share": S4 line 104, the S8 picture, S9 line 217, S12 line 281.** The term is defined only in Kahoot Q7 ("requests accepted over requests offered"), at the close of the day. S9 defines "low acceptance" but not the share itself.
 
 **11. MINOR. Shares written as decimals: the S8 picture, S9, S12 lines 281, 282 and 286.** "Acceptance share 0.86 to 0.73"; "Online hours with no trip 0.22 to 0.38"; "Driver cancels after accepting 0.04 to 0.09"; "Unfulfilled requests 0.11 to 0.10". These sit beside "61 percent" and "+24 percent" on the same slides, and I had to stop to work out that 0.86 means 86 percent. "Online hours with no trip 0.22 to 0.38" appears only in the S8 picture and is never explained in the morning; it returns in the afternoon as the idle share.
 
@@ -135,7 +135,7 @@ Fourteen of fourteen right, and twelve of the fourteen could be answered by matc
 
 **52. CONFUSING. "North star" and "leading input", never defined: S2 line 56, S51 lines 445 and 447, notebook cell 15, `exercises/guided/C2_W04_D02_kalpa_slide_template_STUDENT.md` lines 1 to 7, the lab set, notes lines 183, 214 and 216, interview_rungs Q2.** Both terms carry the Kalpa lab and the AI variant. I answered interview_rungs Q2 by matching the phrase, and its solution never says what a leading input is or how it differs from a north star.
 
-**53. CONFUSING. The AI variant's other terms: S51, interview room lines 81 to 103, notebook cell 15.** "commit"; "build failures and revert rate as guardrails"; "vanity metric"; "pays the team for text that survives"; follow-up 1, "the guardrails tell us whether it fell because suggestions got worse or because developers write more themselves". I got the gist (count text that is kept, not text that is accepted), but I could not follow how revert rate tells those two cases apart, or which team is "paid".
+**53. CONFUSING. The AI variant's other terms: S51, interview room lines 81 to 103, notebook cell 15.** "commit"; "build failures and revert rate as guardrails"; "vanity metric"; "pays the team for text that survives"; follow-up 1, "the guardrails tell us whether it fell because suggestions got worse or because developers write more themselves". I got the gist (count the text that is kept, over the text that is accepted); I could not follow how revert rate tells those two cases apart, or which team is "paid".
 
 **54. MINOR. S52, line 463.** "Named the denominator and the window" is a criterion for scoring both transcripts, but transcript 2 is an estimate with no denominator. I did not know how to score it.
 
@@ -613,7 +613,7 @@ fix starts there.
 When I began reading, half two's cover named "The Hyderabad city head, Uber" with no illustrative
 line anywhere in the deck. Commit c8d6b57 (19:44) replaced the cover with "Header: WEEK 4 · DAY 2 ·
 UBER, HYDERABAD, AN ILLUSTRATIVE CASE", which settles the deck. What is left is small. S41's note
-reads "Synthetic, labelled: these are the case's numbers, not Uber's", but S41 itself carries no
+reads "Synthetic, labelled: these are the case's numbers, not Uber's"; S41 itself carries no
 label, and neither do S50 and S56, the slides a learner is most likely to lift and quote alone.
 
 **29. FACT. The Delhi Metro row has no source on the slide and may not show a difference of unit.**

@@ -15,6 +15,7 @@ client.
 - Which sets run in the morning studio, and which in the afternoon dojo?
 - Which work is written by hand and handed in?
 - Which set moves the method to Kalpa?
+- What do the labels on the items mean?
 - Where are the answers?
 
 ## Which sets run when, and what does each practise?
@@ -34,6 +35,16 @@ client.
 Eight of the fourteen lettered items are design calls: the denominator a slide should name, the page
 an element moves to, the check that fits an estimate, the validate call on a store, and the plan that
 keeps a partly right objection's true part.
+
+## What do the labels on the items mean?
+
+| Label | What it means |
+|---|---|
+| L1 to L6 | The day's ladder, from a hand count anyone can do (L1) to the depth a hard interview asks (L6) |
+| Studio | The morning's practice: build a slide, present it, take an objection, get scored, rebuild |
+| Dojo | The afternoon's practice: a number estimated aloud from nothing, under a clock, then checked |
+| [S], [F], [D] | This programme's interview tags: [S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator that sets a strong candidate apart |
+| A lettered set | A set whose items are answered with letters, posted as one line in item order |
 
 ## Where are the answers?
 

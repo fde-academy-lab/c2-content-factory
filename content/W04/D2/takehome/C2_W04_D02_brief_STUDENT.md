@@ -1,7 +1,8 @@
 # Can your Build 1 finding survive one slide, and can you size a number aloud in under five minutes?
 
 Tonight you do the day's two moves on your own material. The first is the one-slide answer for the
-finding your group reached in Build 1, the week you worked Kalpa Health's question in groups: the
+finding your group reached in Build 1, the week you worked in groups on the growth question of Kalpa
+Health, Kalpa's diagnostics business serving US patients, so its money is in dollars: the
 claim as the title, one piece of evidence with its denominator, the caveat in plain sight, and the
 action with its cost. The second is one guesstimate, spoken aloud and recorded, in under five minutes,
 with its sanity check against a published number you find and date yourself.
@@ -45,7 +46,7 @@ clarify, map, calculate, validate, and give a range with the factor that sets it
 |---|---|
 | How many smartphones are shipped in India in a year? | A market-research firm's count of annual shipments |
 | How many two-wheelers are sold in India in a year? | The manufacturers' association's domestic sales for a financial year |
-| How many orders does one quick-commerce dark store handle in a day? | A listed company's orders per store per day, from its shareholder letter |
+| How many orders does one quick-commerce dark store (a warehouse that only fills grocery orders delivered in minutes) handle in a day? | A listed company's orders per store per day, from its letter to shareholders (a listed company is one whose shares trade on a stock exchange) |
 
 After recording, find the published number, write its source and the date you checked it, and write
 two sentences: how far your estimate sits from it, and whether the two count the same unit, period
@@ -56,4 +57,5 @@ and definition.
 ## What do you hand in?
 
 The slide (one page, any tool), the appendix headings, the recording, and the two sentences with the
-source and its date. The self-check page lists what each part needs, in plain words first.
+source and its date, where and by when your TA says. The self-check page lists what each part needs,
+in plain words first.

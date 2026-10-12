@@ -1,8 +1,9 @@
 # How do you rebuild a cluttered slide, and size a number aloud, one step at a time?
 
 Uber, Hyderabad, the driver app's peak-hour earnings guarantee, one day on. On Monday 31 August 2026
-the city team began guaranteeing enrolled drivers Rs 300 for every peak hour they stay online, paying
-the gap above their trip earnings as a top-up. Over the six weeks after the launch, peak online hours
+the city team began guaranteeing an enrolled driver who stays online through a whole peak window Rs 300
+for each peak hour online (the floor), paying the gap between the driver's trip earnings and that floor
+as a top-up. Over the six weeks after the launch, peak online hours
 rose 24 percent while completed peak trips rose 3 percent, so gross bookings per peak online hour
 (what riders paid for trips, divided by the hours drivers were online) fell from Rs 314 to Rs 260 at a
 fare that held at Rs 165. The city head takes the redesign to Thursday's city review on one slide, and
@@ -40,13 +41,14 @@ full, it becomes four parts:
 | Part | What slide A now says |
 |---|---|
 | 1. The claim, as the title | The scheme is paying for online hours that carry no trips |
-| 2. The evidence, with its denominator | A chart of gross bookings per peak online hour over twelve weeks: Rs 314 before, Rs 260 after, the drop in the launch week |
-| 3. The caveat, beside the evidence | The monsoon ended inside the window, and last year's weeks are not in the data |
-| 4. The action, its cost, who signs | Pay per completed peak trip with an acceptance floor: Rs 58 lakh to Rs 92.7 lakh back over six weeks depending on whether half or a fifth of idle drivers start accepting; the city head signs |
+| 2. The evidence, with its denominator | A chart of gross bookings per peak online hour over twelve weeks (Rs 314 before, Rs 260 after, the drop in the launch week), and one number beside it: 61 percent of the top-up went to driver-weeks that accepted fewer than half their offers |
+| 3. The caveat, beside the evidence | The monsoon ended inside the six weeks, and last year's weeks are not in the data |
+| 4. The action, its cost, who signs | Test paying per completed peak trip with an acceptance floor on half the drivers, picked at random; city-wide it saves Rs 58 lakh to Rs 92.7 lakh over six weeks; the city head signs the test |
 
-The saving comes from Monday: Rs 1.16 crore of the Rs 1.9 crore top-up went to driver-weeks that
-accepted fewer than half the requests offered to them. If a fifth to a half of that is still paid,
-because those drivers start accepting, the rest comes back.
+The saving comes from Monday: Rs 1.16 crore of the Rs 1.9 crore top-up, which is 115.9 lakh since 1
+crore is 100 lakh, went to driver-weeks that accepted fewer than half the requests offered to them. The
+redesign stops paying it, except where those drivers start accepting and qualify. If half of it is still
+paid, 115.9 / 2 = Rs 58 lakh is saved; if a fifth is still paid, 115.9 x 4/5 = Rs 92.7 lakh.
 
 ---
 
@@ -54,8 +56,8 @@ because those drivers start accepting, the rest comes back.
 
 This comes up at work when finance sends a tab of nine money numbers and the slide can show one.
 
-Slide B, half worked. The claim is drafted: "Rs 1.16 crore of the top-up went to driver-weeks that
-accepted fewer than half their offers." Finance's tab holds these nine:
+Slide B, half worked. The claim is drafted: "Most of the top-up went to driver-weeks that accepted
+fewer than half their offers." Finance's tab holds these nine:
 
 | Finance's tab | Before | After |
 |---|---|---|
@@ -70,15 +72,15 @@ accepted fewer than half their offers." Finance's tab holds these nine:
 | Rider requests | 251,910 | 256,556 |
 
 Low acceptance means a driver-week that accepted fewer than half the requests offered. An active
-driver-week is one driver with a row in the week's table.
+driver-week is one driver with a row in the week's table. "Most" needs a share of a total.
 
 ### Q1. Which one number from finance's tab proves the drafted claim?
 
 *Level L1 · asked in every analyst screen.*
 
-a) Top-up per completed trip, Rs 82.3 in the six weeks after the launch
-b) Bookings per active driver-week, Rs 5,817 before and Rs 5,861 after
-c) Rider requests, 251,910 before and 256,556 after the launch
+a) Bookings per active driver-week, Rs 5,817 before and Rs 5,861 after
+b) Top-up to everyone else, Rs 74 lakh in the six weeks after
+c) Top-up per completed trip, Rs 82.3 in the six weeks after
 d) Top-up to low acceptance, Rs 1.16 crore of the Rs 1.9 crore paid
 
 ---
@@ -93,13 +95,13 @@ drivers whose trips per online hour fell under 1.0 after the launch): their onli
 20,000 to 42,000 while their trips fell from 38,000 to 33,440. You write the claim; first choose the
 denominator its evidence will name.
 
-### Q2. Design. The scheme pays drivers for each peak hour online. Which denominator should slide C's evidence name?
+### Q2. Design. Slide C's claim is about what the scheme running now buys with its money. Which denominator should its evidence name?
 
 *Level L2, a design call · asked in GCC and product-company screens.*
 
 a) Per active driver-week, since every driver with a row that week counts once
 b) Per completed trip, since a trip is what a rider pays for
-c) Per peak online hour, since the scheme pays for each online hour
+c) Per peak online hour, since that is the unit the guarantee is priced in
 d) Per enrolled driver, since enrolment is the number marketing reports
 
 ---
@@ -119,24 +121,25 @@ half hour.
 
 This comes up at work when an operations lead needs a number for a meeting that will not wait for data.
 
-Half worked. Clarify: the Hyderabad metro area, Uber only, drivers online at one moment of the
-three-hour weekday evening peak, a median rider wait under five minutes. The chain:
+Half worked. Clarify: the Hyderabad metro area, Uber, one product, drivers online at one moment of
+the three-hour weekday evening peak, a median rider wait under five minutes. The chain, worked at its
+central values:
 
 | Factor | Value, an assumption said aloud |
 |---|---|
-| Rider requests an hour | 1 crore people x 1 percent who ride on a weekday x a quarter of the day's trips in the evening / 3 hours = about 8,300 |
-| Trips one online driver completes an hour | __________ |
+| Trips to serve an hour | 1 crore people x 1 weekday Uber trip per 100 people x a quarter of the day's trips in the evening / 3 hours = about 8,330 |
+| Trips one online driver completes an hour | a busy driver's 2.4 trips x (1 - 0.30 idle) = 1.68 |
 | Buffer for the busiest half hour | 1.15 |
-| Drivers online | about 8,300 / the blank x 1.15 = about 5,700 |
+| Drivers online | 8,330 / 1.68 x 1.15 = about 5,700 |
 
-### Q3. A busy driver fits 2.4 trips in an hour, and 30 percent of online drivers have no rider at a given moment. Which number fills the blank?
+### Q3. On a slack evening the idle share could reach 0.38, the top of its range. How many trips does one online driver then complete in an hour?
 
 *Level L5 · asked in product-company and consulting screens.*
 
-a) 1.68
-b) 2.40
-c) 3.43
-d) 0.72
+a) 0.91
+b) 1.49
+c) 2.02
+d) 3.87
 
 ---
 
@@ -147,8 +150,8 @@ seven minutes, all four steps on one sheet. Bring it to the dojo.
 
 **How do you check your letters against the notebook?** Open
 `notebooks/C2_W04_D02_01_makeover_and_ledger_STUDENT.ipynb`: its second and third code cells compute
-the three reads of the rupees, and its sixth code cell computes the chain and the drivers online. Change a
-letter only if your reasoning changes with it.
+the three reads of the rupees, and its sixth code cell computes the chain and how far each assumption
+moves it. Change a letter only if your reasoning changes with it.
 
 **In the interview.** [S] Present a recommendation to a non-technical stakeholder in two minutes.
 [S] A guesstimate: how many drivers must be online at the evening peak?

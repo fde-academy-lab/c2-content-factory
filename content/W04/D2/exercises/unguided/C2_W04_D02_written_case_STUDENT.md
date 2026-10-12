@@ -3,9 +3,9 @@
 Uber, Hyderabad, the peak-hour earnings guarantee. Since the launch on 31 August 2026, peak online
 hours rose 24 percent while completed peak trips rose 3 percent, so gross bookings per peak online hour
 fell from Rs 314 to Rs 260 at a fare that held at Rs 165. Rs 1.16 crore of the Rs 1.9 crore top-up
-went to driver-weeks that accepted fewer than half their offers. The redesign pays per completed peak
-trip with an acceptance floor. The monsoon ended inside the six weeks after the launch, and last
-year's weeks are not in the data.
+went to driver-weeks that accepted fewer than half their offers. Monday's redesign, as a driver hears
+it: "The floor now pays for trips you complete, if you say yes to most offers." The monsoon ended
+inside the six weeks after the launch, and last year's weeks are not in the data.
 
 > Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
@@ -25,7 +25,15 @@ shoulder.
 ## What are the rules?
 
 This is AI-free individual work: forty minutes, on one sheet, by hand, handed in at the end of the
-slot. No laptop, no phone, no notes beyond this brief.
+slot. No laptop, no phone, no notes beyond this brief, which carries every number the page needs.
+
+| What you may use | The number, from the case |
+|---|---|
+| Fares per peak online hour | Rs 314 in the six weeks before the launch, Rs 260 in the six weeks after; the average fare Rs 165 in both |
+| What riders got | Median rider wait at peak, 4.8 minutes before and 4.6 after |
+| Where the top-up went | Rs 1.16 crore of the Rs 1.9 crore to driver-weeks that accepted fewer than half the rides offered, 74 percent of it in the three outer zones |
+| The saving, from Monday | The redesign stops paying that Rs 1.16 crore (115.9 lakh, since 1 crore is 100 lakh) except to drivers who start accepting and qualify: if half of it is still paid, 115.9 / 2 = Rs 58 lakh is saved over six weeks; if a fifth, 115.9 x 4/5 = Rs 92.7 lakh |
+| Who signs | The city head signs any test or change to the guarantee |
 
 ---
 
@@ -40,8 +48,8 @@ This comes up at work whenever a decision-maker asks for "a page on it" instead 
 | In the body | The caveat, in a full sentence, never in a bracket at the end |
 | Last | The action, its saving in rupees over a stated number of weeks with the assumption behind it, and who signs |
 
-Keep words a non-technical reader would not know off the page: denominator, ratio of sums,
-regression. Say what they mean instead.
+Keep words a non-technical reader would not know off the page: denominator, index, guardrail. Say
+what they mean instead.
 
 ---
 

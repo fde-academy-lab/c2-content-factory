@@ -44,11 +44,13 @@ hint?
 |---|---|
 | No idea where to start the map | "Who lives near the store, and how many of them walk in during a year?" |
 | A chain with no ranges | "Which of these numbers are you least sure of? Give it a low and a high." |
-| A check that compares sign-ups with DMart's revenue | "Turn your shoppers into a year of sales first: visits a month times spend per visit." |
+| A check that compares sign-ups with DMart's revenue | "Nobody publishes sign-ups. Turn your shoppers into a year of sales first: visits a month times spend per visit, times 12." |
 | An estimate above DMart's mature average | "Should a store in its first year outsell a mature store? Which assumption is too high?" |
-| The year-end and average store counts mixed up | "Which stores were open for the whole year? Divide by those." |
+| The year-end and average store counts mixed up | "Which stores sold across the year? The average of the opening and closing counts." |
+| No range on the sign-ups | "Which factor would you least bet on? Give it a low and a high: the sign-up share swings 400 to 1,600." |
 
-The worked answer (about 1,000 sign-ups; Rs 72 crore a year, about half a mature DMart store) is in
+The worked answer (about 1,000 sign-ups, 400 to 1,600 by the sign-up share; Rs 72 crore a year, about
+half of DMart's about Rs 146 crore a store on the average count) is in
 `trainer/C2_W04_D02_guesstimate_TRAINER.md` and in the lab set's solution.
 
 ## What does the weak learner do instead?

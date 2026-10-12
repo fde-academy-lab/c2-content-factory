@@ -47,9 +47,10 @@ can I size a number from nothing and know it is sane?**
 
 **The day's answer, at the close.** The S56 sentence: "The scheme is paying for online hours that carry
 no trips: Rs 314 to Rs 260 per peak online hour at a flat Rs 165 fare. Part of it may be the monsoon.
-Pay per completed peak trip with an acceptance floor, which returns Rs 58 lakh to Rs 92.7 lakh over six
-weeks depending on whether half or a fifth of idle drivers start accepting. At the evening peak the city needs about
-5,700 drivers online, between 2,900 and 8,600."
+Test paying per completed peak trip with an acceptance floor: city-wide, it saves Rs 58 lakh to Rs 92.7
+lakh over six weeks if a half to a fifth of the idle drivers' top-up is still paid. At the evening peak
+the city needs about 5,000 to 5,700 drivers online, and how often people ride could move that from
+2,900 to 8,600."
 
 ## What does Tuesday cover, and where does it stop?
 
@@ -71,13 +72,13 @@ Which slide runs when, which file sits beside it, and what must land?
 
 | Minutes | Slides | Beside it | What must land |
 |---|---|---|---|
-| 15 | Cover, S1 to S4 | Monday's role cards; `trainer/C2_W04_D02_role_cards_TRAINER.md` | Each role's loss on the board before any method |
-| 45 | SECTION 1, S5 to S18 | `exercises/guided/C2_W04_D02_slide_and_estimate_STUDENT.md`; the notebook from S13 | The claim as a sentence; the denominator named; the per-driver-week trap |
-| 50 | SECTION 2, S19 to S25 | `trainer/C2_W04_D02_studio_TRAINER.md`; scorer cards | The trainer's modelled defence; three rounds in threes |
+| 15 | S1 to S4 | Monday's role cards (`content/W04/D1/trainer/C2_W04_D01_role_cards_TRAINER.md`); `trainer/C2_W04_D02_role_cards_TRAINER.md` | Each role's loss on the board before any method; the scheme, the redesign and the saving's working on S4 |
+| 45 | SECTION 1, S5 to S18 | `exercises/guided/C2_W04_D02_slide_and_estimate_STUDENT.md`; notebook cells 3 and 4 after S13, cells 5 to 8 after the vote on S14 | The claim as a sentence; the denominator named; the per-driver-week rise explained by hours |
+| 50 | SECTION 2, S19 to S25 | `trainer/C2_W04_D02_studio_TRAINER.md`; scorer cards | The trainer's modelled defence; three turns in threes, seats rotating |
 | 10 | Break | | |
 | 20 | SECTION 3, S26 to S30 | `exercises/unguided/C2_W04_D02_mid_cut_to_two_STUDENT.md` | The caveat stays; one appendix page per role |
 | 40 | S31, S32 | The studio run sheet | Round two with the seats swapped; slides kept for the gallery |
-| 65 | SECTION 4, S33 to S46 | `trainer/C2_W04_D02_guesstimate_TRAINER.md`; `exercises/unguided/C2_W04_D02_paired_estimate_STUDENT.md` | The chain aloud; the range and its factor; the check in the same unit |
+| 65 | SECTION 4, S33 to S46 | `trainer/C2_W04_D02_guesstimate_TRAINER.md`; `exercises/unguided/C2_W04_D02_paired_estimate_STUDENT.md`; notebook cells 11 to 15 after the vote on S39 | The chain aloud; the range and its factor; the check like for like, which moves the answer to 5,000 to 5,700 |
 | 10 | Break | | |
 | 40 | SECTION 5, S47, S48 | `exercises/unguided/C2_W04_D02_written_case_STUDENT.md` | Silent writing, handed in |
 | 25 | SECTION 6, S49 to S52 | `extras/C2_W04_D02_interview_room_STUDENT.md`; `trainer/C2_W04_D02_interview_scorecards_TRAINER.md` | Weak against hire-grade, scored in pairs |
@@ -91,13 +92,15 @@ way.** What is the wrong number, what decision would it mislead, and what catche
 
 | Where | The plausible wrong answer | The decision it misleads | The check and the fix |
 |---|---|---|---|
-| S5, S8 | A title "Online hours up 24 percent, trips up 3 percent" | The city celebrates supply and extends the scheme | Ask what the reader should do; rewrite as a claim with a verb |
-| S16 | "Bookings per driver-week rose from Rs 5,817 to Rs 5,861, so it works" | Keep the guarantee as it is and keep paying idle hours | Bookings up 3.0 percent over active driver-weeks up 2.2 percent (140 joiners added 140 driver-weeks); hours never enter the ratio; read per peak online hour, Rs 314 to Rs 260 |
+| S5, S8, S9 | A title that reports numbers ("Top-up Rs 1.9 crore, 61 percent..."), or slide A led by "online hours up 24 percent" | The city celebrates supply and extends the scheme | Ask what the reader should do; rewrite as a claim with a verb |
+| S14 to S16 | "Bookings per driver-week rose from Rs 5,817 to Rs 5,861, so it works", or "the 140 new drivers lifted it" | Keep the guarantee as it is and keep paying idle hours | Rupees per driver-week is rupees per hour x hours per driver-week: 18.6 to 22.5 hours at 17 percent less per hour; the joiners, at Rs 4,314 a driver-week, pulled it down; read per peak online hour, Rs 314 to Rs 260 |
+| S19, S20 | "Rider requests rose 1.8 percent, so it is not the monsoon" | Finance points at four weeks of falling requests and the slide loses | The last three weeks: requests back inside the before range, trips per hour still 1.56 |
 | S22 | A defence that concedes nothing, or one that concedes the claim | The slide is rejected, or six more weeks of the same top-up | Did the reply name the true part and the line of evidence? The four moves |
 | S27 | The monsoon caveat moved to the appendix | Finance finds it there and calls the slide dishonest | The caveat stays beside the evidence; detail goes to the drawer |
+| S41 | "The case's 0.47 driver-hours per request says the chain runs a quarter generous" | A check that mixes per request with per trip, and an answer left unmoved | Like for like, 0.53 per completed trip against the chain's 0.60: an eighth high, so about 5,000 to 5,700 |
 | S42 | "1 lakh trips a day / 2.4 trips an hour = about 41,700 drivers" | Incentives budgeted for about seven times the drivers needed | Write the unit beside every factor; bring the day's trips into the evening hour: about 5,700 |
-| S44 | UPI's 24.07 billion divided by 31 days: 776 million | A pair's estimate judged against a figure 3 percent low | September has 30 days: 802 million, the per-day figure NPCI published |
-| S45 | A city of two million people with nine million households (invented) | A market sized four times too large | About four people a household: about 5 lakh households |
+| S44 | UPI's 24.07 billion divided by 31 days: 776 million | A small slip in the period, beside the estimate's own range | September has 30 days: 802 million; the sharper check is Rs 1,220 a payment, which says the count holds large transfers between people |
+| S45 | A city of two million people with eight million households (invented) | A market sized sixteen times too large | Households are people divided by about four: about 5 lakh |
 
 ## Is anything planted today?
 
@@ -118,13 +121,15 @@ way.** Which number, from which table?
 |---|---|
 | Rs 314 to Rs 260 (Rs 313.5 to Rs 260.4) | Gross bookings per peak online hour, six weeks either side of 31 August 2026; down 17 percent |
 | Rs 5,817 to Rs 5,861 | Per active driver-week; up 0.8 percent (bookings up 3.0, active driver-weeks up 2.2, 6,360 to 6,500) |
-| Rs 165 | The fare, both windows; Rs 165 x 1.90 = Rs 313.5 and Rs 165 x 1.58 = Rs 260.4 |
+| Rs 165 | The fare, both windows; Rs 165 x 1.90 = Rs 313.5 and Rs 165 x 1.578 = Rs 260.4 (1.578 is 230,900 / 146,300, printed 1.58) |
+| 18.6 to 22.5 hours; Rs 5,895; Rs 4,314 | Peak online hours per active driver-week; the drivers there before the launch after it (up 1.4 percent); the 140 joiners, below the average |
 | Rs 1.9 crore; Rs 1.16 crore; 61 percent | The top-up; the part paid to driver-weeks accepting under half their offers |
 | Rs 58 lakh to Rs 92.7 lakh | Monday's saving: Rs 1.159 crore x (1 - a half) to x (1 - a fifth), depending on whether half or a fifth of it is still paid because idle drivers start accepting |
 | 180; 880; 1.90 | Idle-tail drivers; the other drivers who were there before the launch; their trips per online hour in both windows (Monday's `drivers_others`, `others_tph_before`, `others_tph_after`) |
-| 1.8 percent; 1.60; 1.58 | Rider requests' rise; trips per hour in the busiest after weeks; drivers who joined before the launch |
-| About 5,700, from 2,900 to 8,600 | Drivers at the evening peak; the range from the share who ride |
-| 0.47 and 0.57; 0.60 | Online driver-hours per rider request before and after, in the case's zones; the chain's figure before its buffer |
+| 1.8 percent; 1.56; 1.58 | Rider requests' rise over six weeks; trips per hour in the last three after weeks, with requests back at the before level; drivers who joined before the launch |
+| 4.8 to 4.6 minutes; Rs 2,836; 74 percent | What riders got; top-up for each extra trip; the share of the idle money in the three outer zones (waits 6.6 to about 6.0 minutes) |
+| About 5,700, from 2,900 to 8,600 | Drivers at the evening peak before the check; the range from trips per person, everything else held |
+| 0.53 and 0.63; 0.60; about 5,000 | Online driver-hours per completed trip before and after, in the case's zones; the chain's figure before its buffer; the chain re-run at the case's 1.90 trips an hour |
 | 802 million; 24.07 billion | UPI transactions a day and in the month, September 2026 (NPCI via Outlook Money, checked 12 October 2026) |
 
 Every number is in `internal/C2_W04_D02_facts_INTERNAL.yaml` with how it was computed.
@@ -134,11 +139,12 @@ Every number is in `internal/C2_W04_D02_facts_INTERNAL.yaml` with how it was com
 **Who needs the answer.** The trainer, when a learner asks "what would a good answer say?". **The
 questions on the way.** One answer per tagged question.
 
-- **[S] Present a recommendation to a non-technical stakeholder in two minutes.** Claim first ("the scheme is paying for online hours that carry no trips"), one number with its denominator (Rs 314 to Rs 260 per peak online hour), the caveat (the monsoon), the action with its cost and signer (pay per trip with an acceptance floor, Rs 58 lakh to Rs 92.7 lakh over six weeks, the city head signs a test first).
-- **[S] A guesstimate: how many customers could a new store sign up to a loyalty tier in its first year?** Clarify what a sign-up is; map households near the store x share who shop in year one x share who sign up; give the range and its factor; check the store's implied sales against a mature store's (DMart, about Rs 134 crore to Rs 146 crore a store by denominator) and say a first-year store sells less.
+- **[S] Present a recommendation to a non-technical stakeholder in two minutes.** The decision first, then the claim ("the scheme is paying for online hours that carry no trips"), one number with its denominator (Rs 314 to Rs 260 per peak online hour), what riders got (a median wait of 4.8 to 4.6 minutes), the caveat (the monsoon), the action with its cost and signer (a six-week test on half the drivers, picked at random; city-wide Rs 58 lakh to Rs 92.7 lakh over six weeks; the city head signs the test), and the result that would stop it.
+- **[S] A guesstimate: how many drivers must be online at the evening peak?** Clarify the moment, the window, the product and the wait target; say the formula; trips per person, the evening share, trips per online driver-hour and a buffer, each with a range; about 5,700, with trips per person setting 2,900 to 8,600; check like for like (0.53 driver-hours per trip against the chain's 0.60) and move to 5,000 to 5,700; say what the number decides.
+- **[S] A guesstimate: how many customers could a new store sign up to a loyalty tier in its first year?** Clarify what a sign-up is; map households near the store x share who shop in year one x share who sign up; give the range and its factor, the sign-up share (400 to 1,600); check the store's implied sales against a mature store's (DMart, about Rs 146 crore a store on the average count; Avenue Supermarts, 2 May 2026, checked 12 October 2026) and say a first-year store sells less.
 - **[F] A stakeholder's objection is partly right; how do you answer it?** Restate until they agree, answer from a named line of evidence, concede the true part, say what would change your mind.
 - **[F] What do you leave off the slide, and where does it go?** Everything the claim does not need, to an appendix page headed by the question of the person who will ask; never the caveat.
-- **[D] The person who loses under your metric controls the meeting; how do you get it adopted anyway?** Concede their true part first and keep their visible number as a leading input, so they keep what they can show while the north star does the paying.
+- **[D] The person who loses under your metric controls the meeting; how do you get it adopted anyway?** Concede their true part first and keep their visible number as a leading input; meet them before the meeting, agree the test and the result that decides it in advance, and set a date when the old target retires.
 
 ## What happens in the lab, and where is the TA's note?
 

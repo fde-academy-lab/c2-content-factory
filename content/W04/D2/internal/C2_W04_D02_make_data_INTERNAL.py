@@ -614,6 +614,8 @@ add("distractor_times_idle", round(base["trips_per_busy_hour"] * base["idle_shar
     "2.4 x 0.30, the idle drivers' share", "guided exercise Q3 (distractor)")
 # The guided set's third item: the same two factors at Monday's after-launch idle share, 0.38
 hi_idle = M["no_trip_share_after"]
+add("busy_share_at_idle_038", round(1 - hi_idle, 2), "0.62 (62 percent)", "1 - 0.38",
+    "guided exercise Q3 and its solution")
 add("tph_online_at_idle_038", round(base["trips_per_busy_hour"] * (1 - hi_idle), 2), "about 1.49",
     "2.4 x (1 - 0.38)", "guided exercise Q3 (key)")
 add("distractor_times_idle_038", round(base["trips_per_busy_hour"] * hi_idle, 2), "0.91",
@@ -935,6 +937,14 @@ facts["kalpa"] = {
     },
 }
 ex = facts["kalpa"]["store_worked_example"]
+ex["sign_ups_range_by_factor"] = {
+    "households": [round(30000 * 0.4 * 0.05), round(80000 * 0.4 * 0.05)],
+    "share_who_shop": [round(50000 * 0.25 * 0.05), round(50000 * 0.5 * 0.05)],
+    "sign_up_share": [round(50000 * 0.4 * 0.02), round(50000 * 0.4 * 0.08)],
+}
+check("the sign-up share sets the Kalpa range: 400 to 1,600, wider than 600 to 1,600 and 625 to 1,250",
+      ex["sign_ups_range_by_factor"] == {"households": [600, 1600], "share_who_shop": [625, 1250],
+                                         "sign_up_share": [400, 1600]})
 check("Kalpa worked store: 1,000 sign-ups, Rs 72 crore, about half a mature DMart store",
       ex["sign_ups_year_one"] == 50000 * 0.4 * 0.05 and ex["first_year_sales_rs"] == 720_000_000
       and ex["share_of_dmart_store"] == 0.49)

@@ -33,19 +33,19 @@ Uber, Hyderabad, one day on. Illustrative case: the company is real, the situati
 
 | Step | Drivers online at the weekday evening peak |
 |---|---|
-| Clarify | One moment of the evening window, Uber only |
-| Map | Requests an hour / trips per online driver-hour x buffer |
-| Calculate | 8,300 / (2.4 x 0.70) x 1.15 = about 5,700 |
-| Range | About 2,900 to 8,600, set by the share who ride |
+| Clarify | One moment of the evening window, one product, trips counted |
+| Map | (Trips an hour / trips per online driver-hour) x buffer |
+| Calculate | 8,330 / (2.4 x (1 - 0.30 idle)) x 1.15 = about 5,700; 2,900 to 8,600 by trips per person |
+| Validate | Case: 0.53 driver-hours per trip; chain: 0.60, an eighth high, so about 5,000 to 5,700 |
 
-**Crux:** Size a number in four steps and give the factor that drives the range.
+**Crux:** Size a number in four steps, give the factor that drives the range, and check it like for like.
 
 ## Panel 5: Which check counts, and which traps does it catch?
 
 | Test | The trap it catches |
 |---|---|
-| Unit | A day's trips over an hour's rate: about 41,700 drivers, seven times too many |
-| Period | 24.07 billion over 31 days, 776 million, against NPCI's 802 million a day |
-| Definition | Delhi Metro journeys checked against boardings; Flipkart's 6.3 million read as 63 |
+| Unit | Two million people as eight million households: multiplied by four, never divided |
+| Period | September's 24.07 billion over 31 days gives 776 million; September has 30, so 802 million a day |
+| Definition | Flipkart's 6.3 million "concurrent in a minute", 63 in its web address: read the source's own words |
 
 **Crux:** Check in the same unit, period and definition.

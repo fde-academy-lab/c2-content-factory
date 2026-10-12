@@ -97,7 +97,10 @@ icon: user | eyebrow: Finance partner | title: Its own number as the headline | 
 **The scheme now.** An enrolled driver online through a whole peak window (two three-hour windows a day) is guaranteed Rs 300 per peak online hour, the floor; when the driver's trip earnings fall short, Uber pays the gap as a **top-up**. **Monday's redesign,** as a driver hears it: "The floor now pays for trips you complete, if you say yes to most offers." Saying yes to at least half the requests offered is the **acceptance floor**. Three **guardrails**, numbers that must not get worse while trips rise, watch it: the acceptance share, the median rider wait at peak and top-up per completed trip. **The saving:** Rs 1.16 crore of top-up (115.9 lakh) went to driver-weeks that accepted under half their offers; if half of it is still paid, 115.9 / 2 = Rs 58 lakh is saved over six weeks, and if a fifth is, 115.9 x 4/5 = Rs 92.7 lakh.
 
 ```notes
-LIVE, 10 minutes. Cards hidden first. Groups of three spend 6 minutes listing what each role loses;
+LIVE, 10 minutes. If a learner asks how a Rs 300 floor costs Rs 1.9 crore when an hour brought in Rs 260
+of fares: the floor is checked driver by driver, week by week, on the driver's own trip earnings, and
+the idle tail's 42,000 hours carried Rs 1.16 crore of it, about Rs 276 an hour. Cards hidden first.
+Groups of three spend 6 minutes listing what each role loses;
 take one loss per role from three groups and write them on the board (2 minutes), then show the
 cards (2 minutes). A loss the room names that the cards miss goes on the board as well: it will
 come back as an objection in chapter 2.
@@ -215,7 +218,7 @@ c) Median rider wait 4.8 to 4.6 minutes and new drivers since launch 140
 
 d) Acceptance share 86 to 73 percent and top-up paid Rs 1.9 crore
 
-The **acceptance share** is requests a driver accepted over requests offered to them. **Low acceptance** means a driver-week that accepted fewer than half the requests offered.
+The **acceptance share** is requests a driver accepted over requests offered to them. **Low acceptance** means a driver-week that accepted fewer than half the requests offered: after the launch, these are the idle tail's weeks.
 
 ```notes
 LIVE, 3 minutes. Each group writes one letter. Expect a split between a and b. The point of the

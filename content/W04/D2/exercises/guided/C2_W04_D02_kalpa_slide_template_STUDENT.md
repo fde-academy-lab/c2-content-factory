@@ -4,9 +4,11 @@ Kalpa Retail is the programme's client: the company whose orders, customers and 
 analysed since Week 1. On Monday you wrote the metric Kalpa's growth plan should chase on the same
 template as Uber's: **delivered orders per active customer per month**, with three guardrails
 (revenue per active customer, the discount share of booked revenue, and the return rate) and two
-leading inputs (add-to-cart events per active app member, and new Retail-Plus sign-ups). Tonight's lab
-puts that metric on one slide, presented in three minutes to a TA who plays one of the three Kalpa
-heads who lose something under it: the marketing lead, Operations, or the head of Retail-Plus.
+leading inputs (add-to-cart events per active app member, and new sign-ups to Retail-Plus, Kalpa's paid
+membership tier). Tonight's lab puts that metric on one slide, presented in three minutes to a TA who
+plays one of the three Kalpa heads who lose something under it. Each loses the target they proposed on
+Monday: the marketing lead's orders per month, Operations' app sessions, and the head of Retail-Plus's
+reorders per member.
 
 **Who needs the answer.** Meera Raghavan, Kalpa Retail's CEO, who wants one number the company
 chases instead of three departments' three numbers.
@@ -32,8 +34,9 @@ This comes up at work whenever a metric is proposed to the people whose targets 
 | 4. The action | What changes, what it costs in rupees or weeks, who signs | |
 
 **Numbers you may use.** Any number your own Week 1 and Week 2 notebooks computed on Kalpa's orders,
-with its denominator, or these warehouse totals: 1,000 orders from 340 customers, Rs 10.00 crore
-booked in April to June 2026 and Rs 9.84 crore in July to September 2026.
+with its denominator, such as delivered orders per active customer in a month. The orders in Kalpa's
+warehouse, the database the data platform lead owns, are a teaching extract of 1,000 orders from 340
+customers, so their totals describe the extract, never the whole company.
 
 ---
 
