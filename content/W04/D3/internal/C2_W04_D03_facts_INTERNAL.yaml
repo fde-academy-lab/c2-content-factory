@@ -1,0 +1,272 @@
+# content/W04/D3/internal/C2_W04_D03_facts_INTERNAL.yaml
+# Every number a Wednesday pack learner will see, with its id, how it was computed and where
+# it is used. The generator writes this file alongside the CSVs; a figure script, a deck or a
+# notebook that prints a number not listed here fails the pack's own self-check.
+#
+# Corrections. Two figures the case file lists cannot stand together, so they were adjusted:
+#   milk_slot_share_after was set to 0.50 because 44 percent beside 1.2 and 6.4 percent slot
+#     click-throughs produces a 4.11 percent blend and not the 3.8 percent the headline fall
+#     calls for. 0.50 is the share that reproduces 3.8 from the two slot rates.
+#   twelve_bread_milk_conf was moved from 0.75 to 1.00 (every bread cart also holds milk) so
+#     the hand count sits at least 0.05 from the full-data 0.74, which the spine's distance
+#     rule requires.
+
+day:
+  week: W04
+  day: D3
+  date: 2026-10-28
+  case: Swiggy Instamart, Pune, the frequently bought together strip
+  kalpa_transfer: Rs 199 phone charger across Kalpa Retail consumer baskets
+
+# ----------------------------------------------------------------- the case ticket
+ticket:
+  - id: before_strip_ctr
+    value: 0.061
+    how: "clicks over impressions for the three slots, 17 August to 6 September 2026"
+    used_in: deck half1 cover, notebook 01 cell 1, cheat sheet panel 1
+  - id: after_strip_ctr
+    value: 0.038
+    how: "clicks over impressions for the three slots, 7 to 27 September 2026"
+    used_in: deck half1 cover, notebook 01 cell 1, cheat sheet panel 1
+  - id: milk_slot_ctr_after
+    value: 0.0120
+    how: "clicks over impressions on the slots suggesting toned milk, 7 to 27 September 2026"
+    used_in: deck half1 chapter 2, notebook 02 your-turn
+  - id: other_slot_ctr_after
+    value: 0.0640
+    how: "clicks over impressions on the slots suggesting any item other than toned milk"
+    used_in: deck half1 chapter 2, notebook 02 your-turn
+  - id: milk_slot_share_after
+    value: 0.5000
+    how: "milk-slot impressions over total slot impressions, 7 to 27 September 2026"
+    used_in: deck half1 chapter 3, notebook 03
+  - id: total_carts
+    value: 40000
+    how: "fixed by the generator"
+    used_in: ticket, notebook 02 cell 1
+  - id: cart_window_days
+    value: 28
+    how: "1 to 28 September 2026 inclusive"
+    used_in: ticket
+  - id: pune_zones
+    value: 8
+    how: "fixed city map used by the Pune Instamart surface"
+    used_in: ticket
+
+# ----------------------------------------------------------------- the full-data pairs table
+full_data:
+  - id: milk_marginal
+    value: 0.7110
+    how: "share of the 40,000 carts that hold toned milk"
+    used_in: deck half1 chapter 2, notebook 02, cheat sheet panel 1
+  - id: bread_marginal
+    value: 0.3420
+    how: "share of the 40,000 carts that hold bread"
+    used_in: deck half1 chapter 2, notebook 02
+  - id: eggs_marginal
+    value: 0.2906
+    how: "share of the 40,000 carts that hold eggs"
+    used_in: deck half1 chapter 2
+  - id: curd_marginal
+    value: 0.2581
+    how: "share of the 40,000 carts that hold curd"
+    used_in: deck half1 chapter 2
+  - id: bananas_marginal
+    value: 0.2315
+    how: "share of the 40,000 carts that hold bananas"
+    used_in: deck half1 chapter 2
+  - id: chips_marginal
+    value: 0.1218
+    how: "share of the 40,000 carts that hold chips"
+    used_in: deck half1 chapter 2, cheat sheet panel 1
+  - id: cold_marginal
+    value: 0.1235
+    how: "share of the 40,000 carts that hold a cold drink"
+    used_in: deck half1 chapter 2, cheat sheet panel 1
+  - id: icecream_marginal
+    value: 0.0393
+    how: "share of the 40,000 carts that hold ice cream"
+    used_in: deck half1 chapter 2
+  - id: chocsauce_marginal
+    value: 0.0145
+    how: "share of the 40,000 carts that hold chocolate sauce"
+    used_in: deck half1 chapter 2
+  - id: bread_milk_support
+    value: 0.2537
+    how: "share of the 40,000 carts that hold both bread and toned milk"
+    used_in: notebook 02 cell 7
+  - id: bread_milk_conf
+    value: 0.7419
+    how: "P(milk | bread), computed as bread_milk_support divided by bread_marginal"
+    used_in: deck half1 chapter 2 trap slide, notebook 02 cell 8, cheat sheet panel 1
+  - id: bread_milk_lift
+    value: 1.0435
+    how: "bread_milk_support divided by (bread_marginal times milk_marginal)"
+    used_in: deck half1 chapter 2 reveal slide, notebook 02 cell 9, cheat sheet panel 1
+  - id: eggs_milk_conf
+    value: 0.7267
+    how: "P(milk | eggs), the same shape as bread -> milk"
+    used_in: notebook 02 cell 10
+  - id: eggs_milk_lift
+    value: 1.0221
+    how: "symmetric lift between eggs and toned milk"
+    used_in: notebook 02 cell 10
+  - id: chips_cold_support
+    value: 0.0500
+    how: "share of the 40,000 carts that hold both chips and a cold drink"
+    used_in: deck half1 chapter 2 reveal slide, notebook 02 cell 12
+  - id: chips_cold_conf
+    value: 0.4103
+    how: "P(cold | chips), chips_cold_support divided by chips_marginal"
+    used_in: notebook 02 cell 12
+  - id: cold_chips_conf
+    value: 0.4047
+    how: "P(chips | cold), chips_cold_support divided by cold_marginal"
+    used_in: notebook 02 cell 12
+  - id: chips_cold_lift
+    value: 3.3223
+    how: "chips_cold_support divided by (chips_marginal times cold_marginal)"
+    used_in: deck half1 chapter 2, notebook 02 cell 13, cheat sheet panel 1
+  - id: ice_choc_support
+    value: 0.002550
+    how: "share of the 40,000 carts that hold both ice cream and chocolate sauce"
+    used_in: deck half1 chapter 2, notebook 02 cell 14
+  - id: ice_choc_lift
+    value: 4.4720
+    how: "ice_choc_support divided by (icecream_marginal times chocsauce_marginal)"
+    used_in: deck half1 chapter 2 thin-pair slide, notebook 02 cell 14
+  - id: heavy_tenth_share
+    value: 0.3683
+    how: "carts placed by the top ten percent of customers, divided by total carts"
+    used_in: deck half1 chapter 3 caveat slide, notebook 03
+
+# ----------------------------------------------------------------- the twelve printed rows
+twelve_rows:
+  - id: twelve_milk
+    value: 8
+    how: "the number of the twelve printed carts that hold toned milk"
+    used_in: deck half1 chapter 1, notebook 01 cell 4, cheat sheet panel 2
+  - id: twelve_bread
+    value: 4
+    how: "the number of the twelve printed carts that hold bread"
+    used_in: deck half1 chapter 1, notebook 01 cell 4
+  - id: twelve_bread_milk
+    value: 4
+    how: "the number of the twelve printed carts that hold both bread and toned milk"
+    used_in: deck half1 chapter 1, notebook 01 cell 5
+  - id: twelve_bread_milk_conf
+    value: 1.0000
+    how: "twelve_bread_milk divided by twelve_bread; the hand count's confidence"
+    used_in: deck half1 chapter 1 reveal slide, notebook 01 cell 5, cheat sheet panel 2
+  - id: twelve_bread_milk_lift
+    value: 1.5000
+    how: "the hand count's lift from the twelve rows"
+    used_in: deck half1 chapter 1 reveal slide, notebook 01 cell 6, cheat sheet panel 2
+  - id: twelve_chips
+    value: 3
+    how: "the number of the twelve printed carts that hold chips"
+    used_in: deck half1 chapter 1, notebook 01 cell 7
+  - id: twelve_cold
+    value: 3
+    how: "the number of the twelve printed carts that hold a cold drink"
+    used_in: deck half1 chapter 1, notebook 01 cell 7
+  - id: twelve_chips_cold
+    value: 2
+    how: "the number of the twelve printed carts that hold both chips and a cold drink"
+    used_in: deck half1 chapter 1, notebook 01 cell 7
+  - id: twelve_chips_cold_support
+    value: 0.1667
+    how: "twelve_chips_cold divided by 12"
+    used_in: notebook 01 cell 8, cheat sheet panel 2
+  - id: twelve_chips_cold_conf
+    value: 0.6667
+    how: "twelve_chips_cold divided by twelve_chips"
+    used_in: notebook 01 cell 8
+  - id: twelve_chips_cold_lift
+    value: 2.6667
+    how: "the hand count's lift for the chips and cold-drink pair"
+    used_in: notebook 01 cell 8, cheat sheet panel 2
+  - id: twelve_ice_choc
+    value: 1
+    how: "the number of the twelve printed carts that hold both ice cream and chocolate sauce"
+    used_in: deck half1 chapter 1 rare-pair slide, notebook 01 cell 9
+  - id: twelve_ice_choc_lift
+    value: 12.0000
+    how: "the hand count's lift for the ice cream and chocolate sauce pair"
+    used_in: notebook 01 cell 9
+
+# ----------------------------------------------------------------- the Rs 9 slot value
+slot_value:
+  - id: pune_cart_views_a_day
+    value: 60000
+    how: "assumption with a range of 50,000 to 70,000; labelled on every slide and sheet"
+    used_in: deck half1 chapter 3, notebook 03
+  - id: strip_add_rate
+    value: 0.50
+    how: "assumption with a range of 0.4 to 0.6; labelled on every slide and sheet"
+    used_in: deck half1 chapter 3, notebook 03
+  - id: margin_per_add_rs
+    value: 9
+    how: "assumption with a range of Rs 7 to Rs 11; labelled on every slide and sheet"
+    used_in: deck half1 chapter 3, notebook 03
+  - id: slot_value_at_other_rs_day
+    value: 17280
+    how: "60,000 x 0.064 x 0.5 x 9, in Rs per day"
+    used_in: deck half1 chapter 3 waterfall slide, notebook 03, cheat sheet panel 2
+  - id: slot_value_at_milk_rs_day
+    value: 3240
+    how: "60,000 x 0.012 x 0.5 x 9, in Rs per day"
+    used_in: deck half1 chapter 3 waterfall slide, notebook 03, cheat sheet panel 2
+  - id: slot_value_gap_rs_month
+    value: 421200
+    how: "(17280 - 3240) x 30, in Rs per month per slot"
+    used_in: deck half1 chapter 3, notebook 03
+  - id: slot_value_three_slots_rs_month
+    value: 1263600
+    how: "3 x slot_value_gap_rs_month, in Rs per month"
+    used_in: deck half1 chapter 3 close, notebook 03
+  - id: support_floor_percent
+    value: 1.0
+    how: "the floor the room sets to count the pairs that qualify; 1 percent of 40,000 is 400"
+    used_in: deck half1 chapter 3, notebook 03
+
+# ----------------------------------------------------------------- the Kalpa transfer, lab only
+# These numbers sit in TRAINER files and in notebook 04's your-turn cell outputs. No STUDENT
+# file names them before the lab, per decision w4-finding-once-found.
+kalpa_lab:
+  - id: kalpa_consumer_baskets
+    value: 500
+    how: "consumer baskets in the Kalpa transfer dataset"
+    used_in: notebook 04 cell 1, trainer lab note
+  - id: kalpa_business_orders
+    value: 100
+    how: "Business orders in the Kalpa transfer dataset"
+    used_in: notebook 04 cell 1
+  - id: kalpa_charger_share
+    value: 0.8500
+    how: "share of Kalpa consumer baskets that hold the Rs 199 phone charger"
+    used_in: notebook 04 your-turn output, trainer lab note (TRAINER until the lab)
+  - id: kalpa_screen_charger_conf
+    value: 0.8167
+    how: "P(charger | screen protector), the plant the row names"
+    used_in: notebook 04 cell 7 output (TRAINER until the lab)
+  - id: kalpa_screen_charger_lift
+    value: 0.9608
+    how: "symmetric lift between screen protector and the charger"
+    used_in: notebook 04 cell 7 output (TRAINER until the lab)
+  - id: kalpa_strongest_pair_lift
+    value: 3.0769
+    how: "lift of the strongest pair above a 5 percent support floor, wireless earphones and earphone case"
+    used_in: notebook 04 cell 8 output (TRAINER until the lab)
+  - id: kalpa_strongest_pair_support
+    value: 0.0600
+    how: "support of wireless earphones and earphone case"
+    used_in: notebook 04 cell 8 output (TRAINER until the lab)
+  - id: kalpa_thin_pair_lift
+    value: 4.0000
+    how: "lift of the one pair with support between 0.2 and 0.4 percent, USB-C cable and car charger"
+    used_in: notebook 04 cell 9 output (TRAINER until the lab)
+  - id: kalpa_thin_pair_support
+    value: 0.0040
+    how: "support of USB-C cable and car charger"
+    used_in: notebook 04 cell 9 output (TRAINER until the lab)
