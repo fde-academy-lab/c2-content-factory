@@ -1028,47 +1028,47 @@ Numbers traced: 2229. Numbers with no home: 0.
 | 38 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 11 line 16 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
 | 37.8 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 11 line 20 | tri_jan_m5, tri_mar_m5, dashboard_sep |
 | 38 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 13 line 2 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 35,000 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 16 line 3 | dashboard_sep_counted, everyone_aug_counted |
-| 13,000 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 16 line 4 | cohort_size_aug, aug_cohort_outside_dashboard |
-| 38 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 16 line 7 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 36 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 16 line 8 | everyone_sep, retry_within_day_android_before, toy_ai_cohorts and more |
-| 31 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 16 line 9 | m1_aug, weekly_cohort_2026-09-07_w2, kalpa.sessions_skip_search and more |
-| 49 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 16 line 10 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
-| 17,248 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 1 | everyone_sep_ordered |
-| 48,000 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 1 | everyone_sep_counted |
-| 35.9 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 1 | everyone_sep |
-| 5,089 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 1 | cohort_size_sep |
-| 4,973 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 4 | aug_organic_members |
-| 49 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 4 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
-| 8,027 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 5 | aug_sale_members |
-| 20 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 5 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
-| 0.23 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 6 | aug_sale_orders_per_member_m1, toy_kaapi_funnel |
-| 0 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 7 | m1_jun, m1_jul, m1_aug and more |
-| 10.5 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 12 | july_drop_m1_to_m2_points |
-| 49 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 13 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
-| 38.5 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 13 | tri_jul_m2 |
-| 31 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 13 | m1_aug, weekly_cohort_2026-09-07_w2, kalpa.sessions_skip_search and more |
-| 20.5 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 13 | oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 |
-| 0.3 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 14 | m1_aug, oct_dashboard_estimate, oct_dashboard_low and more |
-| 17 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 15 | days_after_release, weekly_cohort_2026-08-03_w4, weekly_cohort_2026-08-10_w3 and more |
-| 24 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 18 line 15 | toy_ai_cohorts, kalpa.checkout_per_member_sep, kalpa_checkout_per_member_sep and more |
-| 33 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 20 line 1 | oct_dashboard_estimate, weekly_cohort_2026-08-24_w1, toy_kaapi_funnel and more |
-| 38 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 20 line 2 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 32 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 20 line 2 | oct_dashboard_low, kalpa.cohort_sizes, kalpa.active_by_cohort and more |
-| 34 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 20 line 2 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 0.9 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 22 line 1 | search_to_menu_searched_sep, sep_step_member_open_to_search, sep_step_member_add_to_cart_to_checkout_start and more |
-| 1 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 22 line 4 | m1_jan, m1_feb, m1_mar and more |
-| 58 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 22 line 4 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 49 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 22 line 4 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
-| 31 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 22 line 5 | m1_aug, weekly_cohort_2026-09-07_w2, kalpa.sessions_skip_search and more |
-| 38.5 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 22 line 5 | tri_jul_m2 |
-| 2 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 22 line 5 | noise_points_nonmember_android, simpson_1951, tph_before and more |
-| 38 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 22 line 6 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 3 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 22 line 6 | aug_times_normal, toy_weaned, toy_dabba_club and more |
-| 38 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 22 line 6 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 4 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 22 line 7 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
-| 13,000 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 22 line 7 | cohort_size_aug, aug_cohort_outside_dashboard |
-| 36 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 22 line 8 | everyone_sep, retry_within_day_android_before, toy_ai_cohorts and more |
+| 35,000 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 15 line 3 | dashboard_sep_counted, everyone_aug_counted |
+| 13,000 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 15 line 4 | cohort_size_aug, aug_cohort_outside_dashboard |
+| 38 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 15 line 7 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 36 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 15 line 8 | everyone_sep, retry_within_day_android_before, toy_ai_cohorts and more |
+| 31 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 15 line 9 | m1_aug, weekly_cohort_2026-09-07_w2, kalpa.sessions_skip_search and more |
+| 49 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 15 line 10 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 17,248 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 1 | everyone_sep_ordered |
+| 48,000 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 1 | everyone_sep_counted |
+| 35.9 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 1 | everyone_sep |
+| 5,089 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 1 | cohort_size_sep |
+| 4,973 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 4 | aug_organic_members |
+| 49 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 4 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 8,027 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 5 | aug_sale_members |
+| 20 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 5 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
+| 0.23 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 6 | aug_sale_orders_per_member_m1, toy_kaapi_funnel |
+| 0 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 7 | m1_jun, m1_jul, m1_aug and more |
+| 10.5 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 12 | july_drop_m1_to_m2_points |
+| 49 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 13 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 38.5 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 13 | tri_jul_m2 |
+| 31 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 13 | m1_aug, weekly_cohort_2026-09-07_w2, kalpa.sessions_skip_search and more |
+| 20.5 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 13 | oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 |
+| 0.3 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 14 | m1_aug, oct_dashboard_estimate, oct_dashboard_low and more |
+| 17 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 15 | days_after_release, weekly_cohort_2026-08-03_w4, weekly_cohort_2026-08-10_w3 and more |
+| 24 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 17 line 15 | toy_ai_cohorts, kalpa.checkout_per_member_sep, kalpa_checkout_per_member_sep and more |
+| 33 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 19 line 1 | oct_dashboard_estimate, weekly_cohort_2026-08-24_w1, toy_kaapi_funnel and more |
+| 38 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 19 line 2 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 32 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 19 line 2 | oct_dashboard_low, kalpa.cohort_sizes, kalpa.active_by_cohort and more |
+| 34 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 19 line 2 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 0.9 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 21 line 1 | search_to_menu_searched_sep, sep_step_member_open_to_search, sep_step_member_add_to_cart_to_checkout_start and more |
+| 1 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 21 line 4 | m1_jan, m1_feb, m1_mar and more |
+| 58 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 21 line 4 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 49 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 21 line 4 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 31 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 21 line 5 | m1_aug, weekly_cohort_2026-09-07_w2, kalpa.sessions_skip_search and more |
+| 38.5 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 21 line 5 | tri_jul_m2 |
+| 2 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 21 line 5 | noise_points_nonmember_android, simpson_1951, tph_before and more |
+| 38 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 21 line 6 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 3 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 21 line 6 | aug_times_normal, toy_weaned, toy_dabba_club and more |
+| 38 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 21 line 6 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 4 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 21 line 7 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
+| 13,000 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 21 line 7 | cohort_size_aug, aug_cohort_outside_dashboard |
+| 36 | notebooks/C2_W04_D04_02_cohort_table_STUDENT.ipynb | cell 21 line 8 | everyone_sep, retry_within_day_android_before, toy_ai_cohorts and more |
 | 3 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 0 line 3 | aug_times_normal, toy_weaned, toy_dabba_club and more |
 | 38 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 0 line 3 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
 | 38.5 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 0 line 4 | tri_jul_m2 |
@@ -1122,124 +1122,124 @@ Numbers traced: 2229. Numbers with no home: 0.
 | 10 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 2 line 7 | toy_two_batches, toy_funnel, T2 and more |
 | 20 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 2 line 7 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
 | 50 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 2 line 7 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
-| 100 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 4 line 5 | comparator_drift_points, android_v2_share_after, toy_blend and more |
-| 100 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 4 line 10 | comparator_drift_points, android_v2_share_after, toy_blend and more |
-| 155,729 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 6 line 1 | sep_sessions_menu_view |
-| 131,974 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 6 line 1 | sep_sessions_search |
-| 118 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 6 line 2 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
-| 34 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 6 line 3 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 118 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 6 line 4 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
-| 34 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 8 line 5 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 34 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 8 line 7 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 100 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 8 line 10 | comparator_drift_points, android_v2_share_after, toy_blend and more |
-| 61 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 10 line 1 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
-| 34 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 10 line 1 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 101 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 10 line 3 | sep_step_member_search_to_menu_view |
-| 118 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 10 line 5 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
-| 84 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 10 line 7 | sep_step_member_checkout_start_to_order_placed |
-| 64 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 10 line 7 | sep_step_session_checkout_start_to_order_placed, checkout_to_order_nonmember_android_after, kalpa.cart_to_checkout and more |
-| 14 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 1 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
-| 1 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 4 | m1_jan, m1_feb, m1_mar and more |
-| 13 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 4 | weekly_cohort_2026-08-10_w6, weekly_cohort_2026-08-24_w3, simpson_1951 and more |
-| 14 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 4 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
-| 30 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 4 | weekly_cohort_2026-08-03_w2, toy_weaned, Th4 and more |
-| 58 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 15 line 1 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 44 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 15 line 1 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 |
-| 58 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 15 line 1 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 45 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 15 line 2 | android_members_week_2026-09-14, android_member_week_2026-09-14, toy_dabba_club and more |
-| 43 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 15 line 2 | android_members_week_2026-09-21, shift_21_sep_after, held_atc_to_order_android_after and more |
-| 57 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 15 line 2 | atc_to_order_member_ios_before, kalpa.lab_hand_counts, twelve_rows.everyone_Jul |
-| 56 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 15 line 3 | m1_feb, atc_to_order_member_ios_after, shift_21_sep_before and more |
-| 52 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 15 line 3 | m1_may, atc_to_order_nonmember_android_before, toy_blend and more |
-| 80 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 1 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 72.5 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 2 | android_members_checkout_to_order_before |
-| 55 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 2 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
-| 0.80 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 2 | sep_step_session_add_to_cart_to_checkout_start, sep_step_member_checkout_start_to_order_placed, android_members_cart_to_checkout_before and more |
-| 72.5 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 3 | android_members_checkout_to_order_before |
-| 58 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 3 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 0.80 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 3 | sep_step_session_add_to_cart_to_checkout_start, sep_step_member_checkout_start_to_order_placed, android_members_cart_to_checkout_before and more |
-| 55 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 3 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
-| 44 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 3 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 |
-| 22,841 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 4 | android_member_carts_after |
-| 17 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 4 | days_after_release, weekly_cohort_2026-08-03_w4, weekly_cohort_2026-08-10_w3 and more |
-| 58 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 4 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 44 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 4 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 |
-| 0.14 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 4 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4 |
-| 22,841 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 4 | android_member_carts_after |
-| 3,198 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 5 | lost_orders_17_days |
-| 17 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 5 | days_after_release, weekly_cohort_2026-08-03_w4, weekly_cohort_2026-08-10_w3 and more |
-| 188 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 5 | lost_orders_per_day |
-| 1,317 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 5 | lost_orders_per_week |
-| 5,064 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 17 line 5 | android_member_orders_week_before |
-| 1,317 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 1 | lost_orders_per_week |
-| 14 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 1 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
-| 1,223 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 2 | lost_orders_per_week_netted |
-| 400 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 3 | order_value_assumed_rs, toy_blend, toy_dabba_club and more |
-| 300 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 3 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
-| 500 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 3 | order_value_high_rs, toy_blend, toy_notes_blend |
-| 3.7 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 4 | lost_value_per_week_netted_low_rs |
-| 6.6 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 4 | lost_value_per_week_high_rs |
-| 5.3 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 4 | lost_value_per_week_rs |
-| 1,317 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 4 | lost_orders_per_week |
-| 400 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 4 | order_value_assumed_rs, toy_blend, toy_dabba_club and more |
-| 1 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 10 | m1_jan, m1_feb, m1_mar and more |
-| 2 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 12 | noise_points_nonmember_android, simpson_1951, tph_before and more |
-| 3 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 14 | aug_times_normal, toy_weaned, toy_dabba_club and more |
-| 14 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 15 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
-| 4 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 19 line 17 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
-| 1 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 1 | m1_jan, m1_feb, m1_mar and more |
-| 71 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 1 | checkout_to_order_member_ios_before, android_share_cohort_high, toned_milk_share |
-| 70 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 1 | checkout_to_order_member_ios_after, held_checkout_to_order_android_before, android_share_cohort_low and more |
-| 65 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 2 | checkout_to_order_nonmember_android_before |
-| 64 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 2 | sep_step_session_checkout_start_to_order_placed, checkout_to_order_nonmember_android_after, kalpa.cart_to_checkout and more |
-| 72.5 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 2 | android_members_checkout_to_order_before |
-| 2 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 2 | noise_points_nonmember_android, simpson_1951, tph_before and more |
-| 70.3 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 3 | held_checkout_to_order_android_before |
-| 53.6 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 3 | held_checkout_to_order_android_after |
-| 68.6 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 4 | held_checkout_to_order_ios_before |
-| 69.3 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 4 | held_checkout_to_order_ios_after |
-| 3 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 4 | aug_times_normal, toy_weaned, toy_dabba_club and more |
-| 33,699 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 5 | order_records_aug, event_orders_aug |
-| 27,212 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 5 | sep_sessions_order_placed, order_records_sep, event_orders_sep |
-| 14 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 7 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
-| 58 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 9 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 47 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 9 | shift_7_sep_after, toy_notes_blend |
-| 56 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 9 | m1_feb, atc_to_order_member_ios_after, shift_21_sep_before and more |
-| 43 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 9 | android_members_week_2026-09-21, shift_21_sep_after, held_atc_to_order_android_after and more |
-| 4 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 10 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
-| 55 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 10 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
-| 18,273 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 10 | android_member_starts_after |
-| 1,600 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 11 | nonmember_android_starts_after |
-| 2.5 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 11 | noise_points_nonmember_android |
-| 35.1 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 13 | retry_within_day_android_after |
-| 1.45 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 14 | held_orders_per_active_android_aug, held_orders_per_active_ios_sep |
-| 1.24 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 14 | held_orders_per_active_android_sep |
-| 1.44 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 15 | held_orders_per_active_ios_aug |
-| 1 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 15 | m1_jan, m1_feb, m1_mar and more |
-| 1.36 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 16 | orders_per_active_android_aug |
-| 1.20 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 16 | search_to_menu_session_sep, sep_step_session_search_to_menu_view, orders_per_active_android_sep and more |
-| 1.34 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 16 | orders_per_active_ios_aug |
-| 1.40 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 16 | orders_per_active_android_aug, orders_per_active_ios_sep, held_orders_per_active_android_aug and more |
-| 1 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 19 | m1_jan, m1_feb, m1_mar and more |
-| 68 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 19 | sep_step_session_open_to_search |
-| 118 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 19 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
-| 34 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 19 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 80 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 19 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 64 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 19 | sep_step_session_checkout_start_to_order_placed, checkout_to_order_nonmember_android_after, kalpa.cart_to_checkout and more |
-| 2 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 20 | noise_points_nonmember_android, simpson_1951, tph_before and more |
-| 118 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 20 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
-| 3 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 21 | aug_times_normal, toy_weaned, toy_dabba_club and more |
-| 34 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 21 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 61 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 22 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
-| 4 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 22 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
-| 58 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 23 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 44 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 23 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 |
-| 5 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 23 | toy_weaned, toy_kahoot_blend, kalpa.active_by_cohort |
-| 72.5 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 24 | android_members_checkout_to_order_before |
-| 55 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 24 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
-| 1,223 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 24 | lost_orders_per_week_netted |
-| 1,317 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 24 | lost_orders_per_week |
-| 6 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 24 line 25 | weekly_cohort_2026-08-17_w4, weekly_cohort_2026-08-17_w5, toy_two_batches and more |
+| 100 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 2 line 14 | comparator_drift_points, android_v2_share_after, toy_blend and more |
+| 100 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 2 line 19 | comparator_drift_points, android_v2_share_after, toy_blend and more |
+| 155,729 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 4 line 1 | sep_sessions_menu_view |
+| 131,974 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 4 line 1 | sep_sessions_search |
+| 118 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 4 line 2 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
+| 34 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 4 line 3 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 118 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 4 line 4 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
+| 34 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 6 line 5 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 34 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 6 line 7 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 100 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 6 line 10 | comparator_drift_points, android_v2_share_after, toy_blend and more |
+| 61 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 8 line 1 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
+| 34 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 8 line 1 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 101 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 8 line 3 | sep_step_member_search_to_menu_view |
+| 118 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 8 line 5 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
+| 84 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 8 line 7 | sep_step_member_checkout_start_to_order_placed |
+| 64 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 8 line 7 | sep_step_session_checkout_start_to_order_placed, checkout_to_order_nonmember_android_after, kalpa.cart_to_checkout and more |
+| 14 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 8 line 11 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
+| 1 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 8 line 14 | m1_jan, m1_feb, m1_mar and more |
+| 13 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 8 line 14 | weekly_cohort_2026-08-10_w6, weekly_cohort_2026-08-24_w3, simpson_1951 and more |
+| 14 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 8 line 14 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
+| 30 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 8 line 14 | weekly_cohort_2026-08-03_w2, toy_weaned, Th4 and more |
+| 58 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 10 line 1 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 44 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 10 line 1 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 |
+| 58 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 10 line 1 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 45 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 10 line 2 | android_members_week_2026-09-14, android_member_week_2026-09-14, toy_dabba_club and more |
+| 43 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 10 line 2 | android_members_week_2026-09-21, shift_21_sep_after, held_atc_to_order_android_after and more |
+| 57 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 10 line 2 | atc_to_order_member_ios_before, kalpa.lab_hand_counts, twelve_rows.everyone_Jul |
+| 56 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 10 line 3 | m1_feb, atc_to_order_member_ios_after, shift_21_sep_before and more |
+| 52 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 10 line 3 | m1_may, atc_to_order_nonmember_android_before, toy_blend and more |
+| 80 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 1 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 72.5 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 2 | android_members_checkout_to_order_before |
+| 55 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 2 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 0.80 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 2 | sep_step_session_add_to_cart_to_checkout_start, sep_step_member_checkout_start_to_order_placed, android_members_cart_to_checkout_before and more |
+| 72.5 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 3 | android_members_checkout_to_order_before |
+| 58 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 3 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 0.80 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 3 | sep_step_session_add_to_cart_to_checkout_start, sep_step_member_checkout_start_to_order_placed, android_members_cart_to_checkout_before and more |
+| 55 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 3 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 44 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 3 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 |
+| 22,841 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 4 | android_member_carts_after |
+| 17 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 4 | days_after_release, weekly_cohort_2026-08-03_w4, weekly_cohort_2026-08-10_w3 and more |
+| 58 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 4 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 44 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 4 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 |
+| 0.14 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 4 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4 |
+| 22,841 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 4 | android_member_carts_after |
+| 3,198 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 5 | lost_orders_17_days |
+| 17 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 5 | days_after_release, weekly_cohort_2026-08-03_w4, weekly_cohort_2026-08-10_w3 and more |
+| 188 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 5 | lost_orders_per_day |
+| 1,317 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 5 | lost_orders_per_week |
+| 5,064 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 5 | android_member_orders_week_before |
+| 1,317 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 8 | lost_orders_per_week |
+| 14 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 8 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
+| 1,223 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 9 | lost_orders_per_week_netted |
+| 400 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 10 | order_value_assumed_rs, toy_blend, toy_dabba_club and more |
+| 300 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 10 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
+| 500 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 10 | order_value_high_rs, toy_blend, toy_notes_blend |
+| 3.7 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 11 | lost_value_per_week_netted_low_rs |
+| 6.6 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 11 | lost_value_per_week_high_rs |
+| 5.3 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 11 | lost_value_per_week_rs |
+| 1,317 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 11 | lost_orders_per_week |
+| 400 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 11 | order_value_assumed_rs, toy_blend, toy_dabba_club and more |
+| 1 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 17 | m1_jan, m1_feb, m1_mar and more |
+| 2 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 19 | noise_points_nonmember_android, simpson_1951, tph_before and more |
+| 3 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 21 | aug_times_normal, toy_weaned, toy_dabba_club and more |
+| 14 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 22 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
+| 4 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 12 line 24 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
+| 1 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 1 | m1_jan, m1_feb, m1_mar and more |
+| 71 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 1 | checkout_to_order_member_ios_before, android_share_cohort_high, toned_milk_share |
+| 70 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 1 | checkout_to_order_member_ios_after, held_checkout_to_order_android_before, android_share_cohort_low and more |
+| 65 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 2 | checkout_to_order_nonmember_android_before |
+| 64 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 2 | sep_step_session_checkout_start_to_order_placed, checkout_to_order_nonmember_android_after, kalpa.cart_to_checkout and more |
+| 72.5 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 2 | android_members_checkout_to_order_before |
+| 2 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 2 | noise_points_nonmember_android, simpson_1951, tph_before and more |
+| 70.3 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 3 | held_checkout_to_order_android_before |
+| 53.6 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 3 | held_checkout_to_order_android_after |
+| 68.6 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 4 | held_checkout_to_order_ios_before |
+| 69.3 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 4 | held_checkout_to_order_ios_after |
+| 3 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 4 | aug_times_normal, toy_weaned, toy_dabba_club and more |
+| 33,699 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 5 | order_records_aug, event_orders_aug |
+| 27,212 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 5 | sep_sessions_order_placed, order_records_sep, event_orders_sep |
+| 14 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 7 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
+| 58 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 9 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 47 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 9 | shift_7_sep_after, toy_notes_blend |
+| 56 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 9 | m1_feb, atc_to_order_member_ios_after, shift_21_sep_before and more |
+| 43 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 9 | android_members_week_2026-09-21, shift_21_sep_after, held_atc_to_order_android_after and more |
+| 4 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 10 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
+| 55 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 10 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 18,273 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 10 | android_member_starts_after |
+| 1,600 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 11 | nonmember_android_starts_after |
+| 2.5 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 11 | noise_points_nonmember_android |
+| 35.1 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 13 | retry_within_day_android_after |
+| 1.45 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 14 | held_orders_per_active_android_aug, held_orders_per_active_ios_sep |
+| 1.24 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 14 | held_orders_per_active_android_sep |
+| 1.44 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 15 | held_orders_per_active_ios_aug |
+| 1 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 15 | m1_jan, m1_feb, m1_mar and more |
+| 1.36 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 16 | orders_per_active_android_aug |
+| 1.20 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 16 | search_to_menu_session_sep, sep_step_session_search_to_menu_view, orders_per_active_android_sep and more |
+| 1.34 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 16 | orders_per_active_ios_aug |
+| 1.40 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 16 | orders_per_active_android_aug, orders_per_active_ios_sep, held_orders_per_active_android_aug and more |
+| 1 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 19 | m1_jan, m1_feb, m1_mar and more |
+| 68 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 19 | sep_step_session_open_to_search |
+| 118 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 19 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
+| 34 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 19 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 80 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 19 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 64 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 19 | sep_step_session_checkout_start_to_order_placed, checkout_to_order_nonmember_android_after, kalpa.cart_to_checkout and more |
+| 2 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 20 | noise_points_nonmember_android, simpson_1951, tph_before and more |
+| 118 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 20 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
+| 3 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 21 | aug_times_normal, toy_weaned, toy_dabba_club and more |
+| 34 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 21 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 61 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 22 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
+| 4 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 22 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
+| 58 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 23 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 44 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 23 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 |
+| 5 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 23 | toy_weaned, toy_kahoot_blend, kalpa.active_by_cohort |
+| 72.5 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 24 | android_members_checkout_to_order_before |
+| 55 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 24 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 1,223 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 24 | lost_orders_per_week_netted |
+| 1,317 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 24 | lost_orders_per_week |
+| 6 | notebooks/C2_W04_D04_03_funnel_STUDENT.ipynb | cell 16 line 25 | weekly_cohort_2026-08-17_w4, weekly_cohort_2026-08-17_w5, toy_two_batches and more |
 | 120 | notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb | cell 0 line 9 | orders_per_active_android_sep, toy_kaapi_funnel, toy_dabba_club and more |
 | 2026 | notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb | cell 0 line 13 | friday_weeks, friday_window, friday_diwali and more |
 | 20 | notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb | cell 0 line 23 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
@@ -1256,8 +1256,8 @@ Numbers traced: 2229. Numbers with no home: 0.
 | 9 | notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb | cell 6 line 4 | kalpa.window_at_comparison_rate, kalpa_cart_to_checkout_comparison, calendar.kalpa_windows |
 | 10 | notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb | cell 6 line 4 | toy_two_batches, toy_funnel, T2 and more |
 | 30 | notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb | cell 6 line 4 | weekly_cohort_2026-08-03_w2, toy_weaned, Th4 and more |
-| 2 | notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb | cell 12 line 7 | noise_points_nonmember_android, simpson_1951, tph_before and more |
-| 4 | notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb | cell 12 line 7 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
+| 2 | notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb | cell 10 line 18 | noise_points_nonmember_android, simpson_1951, tph_before and more |
+| 4 | notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb | cell 10 line 18 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
 | 104 | preread/C2_W04_D04_preread_STUDENT.md | 10 | bread_milk_lift, friday_weeks |
 | 30 | preread/C2_W04_D04_preread_STUDENT.md | 11 | weekly_cohort_2026-08-03_w2, toy_weaned, Th4 and more |
 | 2024 | preread/C2_W04_D04_preread_STUDENT.md | 11 | friday_weeks |

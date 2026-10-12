@@ -26,7 +26,7 @@ window is the stretch to check.
 | 3 | Your turn: the cohort table and blended retention | Notebook 04, cell 5, empty |
 | 4 | Your turn: add-to-cart to checkout in three stretches | Notebook 04, cell 7, empty |
 | 5 | Your turn: sessions with no search, and checkout in two units | Notebook 04, cell 9, empty |
-| 6 | Your turn: Kavya's second route, the blend rebuilt from the cohort rows | Notebook 04, cell 11, empty |
+| 6 | Your turn: Kavya's second route, the blend rebuilt from the cohort rows | Notebook 04, cell 11, empty, the last |
 | 7 | The three sentences to the TA, then items 2 to 4 of the Kalpa set and its second page | `exercises/unguided/C2_W04_D04_kalpa_retail_plus_STUDENT.md` |
 | 8 | The practice set | `exercises/practice/C2_W04_D04_lab_set_STUDENT.md` |
 

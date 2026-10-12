@@ -103,10 +103,10 @@ censored, and show when two curves really differ by more than chance."
 | The flat blend | "Month-two retention is 38 percent and flat, so nothing changed" | The August cohort gets no action | Take it apart: 13,218 of 35,000 rebuilt from seven cohorts; August outside the count | S20 to S23 | 02, cells 10 to 14 |
 | The calendar comparison | July "strongest" at 38.5 in September | The follow-up sent to the wrong cohort | Compare at the same age: month one 58 to 49 | S8, S9 | 01, cells 6 to 8 |
 | The mean of rates | 36.9 percent for September counting August | A number a point off, reported with confidence | Weight by size: 35.9 | S23 notes | The chapter 2 drill, Q3 |
-| The skippable step | Search to menu view at 118 percent, "our best step" | Engineers sent to the wrong step | Menu views among sessions that searched: 89 percent | S30 | 03, cells 5 to 7 |
-| The lowest step | Menu view to cart at 34 percent read as the loss | A redesign of browsing | A low step is a loss only when it moves | S28, S29 | 03, cell 5 |
-| Everyone's checkout | "Add-to-cart to order fell, so checkout is broken for everyone" | A rollback for every platform | Split by membership, platform and date: Android members only | S33, S34 | 03, cells 13 and 14 |
-| The app team's chart | Starts at 80 percent flat read as "the flow works" | The broken step left live | The step after it: 72.5 to 55 | S35, S39 | 03, cell 16 |
+| The skippable step | Search to menu view at 118 percent, "our best step" | Engineers sent to the wrong step | Menu views among sessions that searched: 89 percent | S30 | 03, cells 3 to 5 |
+| The lowest step | Menu view to cart at 34 percent read as the loss | A redesign of browsing | A low step is a loss only when it moves | S28, S29 | 03, cell 3 |
+| Everyone's checkout | "Add-to-cart to order fell, so checkout is broken for everyone" | A rollback for every platform | Split by membership, platform and date: Android members only | S33, S34 | 03, cell 9 |
+| The app team's chart | Starts at 80 percent flat read as "the flow works" | The broken step left live | The step after it: 72.5 to 55 | S35, S39 | 03, cell 11 |
 | Before and after as cause (fallback and caveats) | Gold members order 60 percent more after joining, so Gold works | A Gold push on a selection effect | Who chooses to join: describe, do not claim cause | S36 | |
 
 ## Where are the checkpoints?

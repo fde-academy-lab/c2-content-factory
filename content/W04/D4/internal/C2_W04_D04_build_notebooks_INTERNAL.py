@@ -432,9 +432,7 @@ def nb02():
             direct = mm[(mm["month"] == month) & (mm["age"] >= 2)]["active"].mean()
             print(month, f"{100 * weighted:.1f} weighted = {100 * direct:.1f} direct,", len(parts), "cohorts")
             check(f"{month}: the weighted average equals the direct count", abs(weighted - direct) < 1e-12)
-        parts.assign(rate=(100 * parts["rate"]).round(1))
-        '''),
-        code('''
+        print(parts.assign(rate=(100 * parts["rate"]).round(1)))
         # Each month's count drawn as stacked cohorts: dark ordered, light did not.
         fig, ax = plt.subplots(figsize=(8.4, 3.8))
         for x, month in enumerate(report):
@@ -594,19 +592,7 @@ def nb03():
         the same checkouts in people: the 100 sessions came from 20 people, and the 10 checkouts from
         10 of them, so 10 of 20 people checked out, 50 percent. The same checkouts, two units, two
         numbers.
-        '''),
-        code('''
-        # The toy's step rates, each one over the step before, then the same checkouts in two units.
-        # shift(1) moves each count down one row, so dividing by it divides each step by the one before.
-        toy = pd.Series({"session": 100, "search": 40, "add_to_cart": 20, "checkout": 10})
-        print((toy / toy.shift(1)).dropna().map("{:.0%}".format).to_string())
-        people, people_who_checked_out = 20, 10
-        print(f"from the top, per session: {toy['checkout'] / toy['session']:.0%}; "
-              f"per person: {people_who_checked_out / people:.0%}")
-        check("the toy: 10 of 100 sessions and 10 of 20 people", toy["checkout"] / toy["session"] == 0.10
-              and people_who_checked_out / people == 0.5)
-        '''),
-        md('''
+
         ## What does each step of the funnel read in September, per session?
 
         Gold members' sessions in September. A session reaches a stage when the log has that row, so
@@ -669,6 +655,8 @@ def nb03():
         ax = (100 * both).plot.barh(figsize=(8.4, 3.8), color=["#5B3FD6", "#C98A00"])
         ax.invert_yaxis(); ax.axvline(100, ls=":", color="grey"); ax.set_xlabel("percent of the step before")
         ax.set_title("One funnel, two units, September, every platform"); plt.show()
+        check("per session, menu view to add-to-cart prints 34 percent", round(100 * both.loc["menu_view to add_to_cart", "per session"]) == 34)
+        check("per member, menu view to add-to-cart prints 61 percent", round(100 * both.loc["menu_view to add_to_cart", "per member"]) == 61)
         (100 * both).round(1)
         '''),
         md('''
@@ -681,12 +669,7 @@ def nb03():
         reads 84 per member and 64 per session. This chart pools every platform and all of September,
         so neither panel shows the loss on the ticket; it appears only once the rate is split by
         platform and date, next.
-        '''),
-        code('''
-        check("per session, menu view to add-to-cart prints 34 percent", round(100 * both.loc["menu_view to add_to_cart", "per session"]) == 34)
-        check("per member, menu view to add-to-cart prints 61 percent", round(100 * both.loc["menu_view to add_to_cart", "per member"]) == 61)
-        '''),
-        md('''
+
         ## Where did add-to-cart to order fall after 14 September, and for whom?
 
         Add-to-cart to order is sessions that placed an order over sessions that added to a cart. Before
@@ -706,9 +689,7 @@ def nb03():
         flow["side"] = (flow["event_ts"] >= "2026-09-14").map({False: "before", True: "after"})
         counts = flow.groupby(["is_member", "platform", "side", "stage"]).size().unstack()
         rate = (counts["order_placed"] / counts["add_to_cart"]).unstack()[["before", "after"]]
-        (100 * rate).round(1)
-        '''),
-        code('''
+        print((100 * rate).round(1))
         # The weekly view, Monday to Sunday: the members' Android line breaks in the release week and no other line does.
         flow["week"] = flow["event_ts"].dt.to_period("W-SUN").dt.start_time
         fig, ax = plt.subplots(figsize=(8.6, 3.6))
@@ -753,16 +734,6 @@ def nb03():
         ax = (100 * inside.T).plot.bar(figsize=(6.8, 3.2), color=["#5B3FD6", "#D63A6A"], rot=0)
         ax.set_ylabel("percent of the step before"); ax.set_ylim(0, 100)
         ax.set_title("Android members: the step that changed"); plt.show()
-        '''),
-        md('''
-        **What happened.** Starting checkout held at 80 percent; completing an order once checkout had
-        started fell from 72.5 to 55 percent. The two multiply back to the ticket's numbers: 0.80 x
-        72.5 = 58 before, and 0.80 x 55 = 44 after. **The size.** Android members added to a cart
-        22,841 times in the 17 days after the release. At 58 percent instead of 44, 0.14 x 22,841 is
-        about 3,198 more orders in 17 days, about 188 a day, about 1,317 a week, against about 5,064
-        Android member orders a week before the release: about a quarter of them.
-        '''),
-        code('''
         # The size, step by step: the fall times the carts, then per day and per week.
         carts_after = n.loc["after", "add_to_cart"]
         fall = rate.loc[(True, "android"), "before"] - rate.loc[(True, "android"), "after"]
@@ -777,6 +748,13 @@ def nb03():
               round(lost_17 / 17 * 7) == 1317 and round((fall - drift) * carts_after / 17 * 7) == 1223)
         '''),
         md('''
+        **What happened.** Starting checkout held at 80 percent; completing an order once checkout had
+        started fell from 72.5 to 55 percent. The two multiply back to the ticket's numbers: 0.80 x
+        72.5 = 58 before, and 0.80 x 55 = 44 after. **The size.** Android members added to a cart
+        22,841 times in the 17 days after the release. At 58 percent instead of 44, 0.14 x 22,841 is
+        about 3,198 more orders in 17 days, about 188 a day, about 1,317 a week, against about 5,064
+        Android member orders a week before the release: about a quarter of them.
+
         **What happened.** About 1,317 orders a week if the whole 14-point fall is the release's, and
         about 1,223 if the one point that iOS members and non-members on Android also lost would have
         happened anyway. At an order value of Rs 400, an assumption anywhere from Rs 300 to Rs 500,
@@ -832,8 +810,6 @@ def nb03():
             c = am.groupby([am["event_ts"] >= cut, "stage"]).size().unstack()
             r = c["order_placed"] / c["add_to_cart"]
             print(f"cut on {cut}: before {100 * r[False]:.0f}, after {100 * r[True]:.0f}")
-        '''),
-        code('''
         # (4): how far chance can move each rate, and whether members who failed came back within a day.
         starts_after = counts["checkout_start"].unstack()["after"]
         for who in [(True, "android"), (False, "android")]:
@@ -1048,7 +1024,7 @@ def nb04():
         md('''
         **Kavya's review.** Kavya Nair, the senior analyst, asks: "Show me the rate before the window,
         show me the evidence, and reach the blend a second way: as the weighted average of your cohort
-        rows, it has to match your direct count." The second route, typed into the cell below, must
+        rows, it has to match your direct count." The second route, typed into the last cell, must
         print the same three numbers as your direct count, to the last digit:
 
         ```python
@@ -1056,9 +1032,7 @@ def nb04():
         rows["active_members"] = rows["size"] * rows["rate"]
         print(rows.groupby("month")["active_members"].sum() / rows.groupby("month")["size"].sum())
         ```
-        '''),
-        empty(),
-        md('''
+
         **What to bring to the TA.** Three sentences: whether it is a cohort problem or an everyone
         problem, with the cohort that drives it and its size; the stage that owns the loss, the dates
         and the size of the fall; and the unit each of your rates uses. Then answer the head of
@@ -1068,6 +1042,7 @@ def nb04():
         (`exercises/unguided/C2_W04_D04_kalpa_retail_plus_STUDENT.md`): sit its items 2 to 4, write the
         page, then sit the practice set.
         '''),
+        empty(),
     ], timeout=300)
 
 
