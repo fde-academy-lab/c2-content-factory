@@ -14,7 +14,8 @@ What fails a deck:
      cannot number.
   2. A title over 54 characters once its number is stripped, which wraps into the DEPTH chip.
   3. A question slide with no answer slide immediately after it.
-  4. Fewer than one Mermaid diagram per four body slides.
+  4. Fewer than one diagram per four body slides, where a Mermaid fence or an image line
+     `![caption](path)` counts, or an image line whose file is not there beside the deck.
   5. Meta-content on a slide: facilitation, deck self-reference or programme framing.
 
   6. In a deck that carries speaker notes, a body slide with no ```notes fence. A deck opts in to
@@ -81,6 +82,19 @@ def parse(text):
 NOTES_FENCE = re.compile(r"^```notes\s*$.*?^```\s*$", re.M | re.S)
 SUBTITLE = re.compile(r"^\*(?!\*)(.+?)(?<!\*)\*$")
 COMPONENTS = ("```cards", "```stats", "```timeline", "```bar")
+IMAGE = re.compile(r"^!\[([^\]]*)\]\(([^)\s]+)\)$")  # the picture line build_deck.py places
+
+
+def images(body):
+    """The files a slide's image lines name, outside any fence, as build_deck.py reads them."""
+    found, inside = [], False
+    for line in body:
+        s = line.strip()
+        if s.startswith("```"):
+            inside = not inside
+        elif not inside and IMAGE.match(s):
+            found.append(IMAGE.match(s).group(2))
+    return found
 
 
 def split_notes(body):
@@ -170,7 +184,13 @@ def check_deck(path):
         first = next((l.strip() for l in body if l.strip()), "")
         if opted_in and not SUBTITLE.match(first):
             no_subtitle.append(n)
-        has_diagram = "```mermaid" in joined
+        pictures = images(body)
+        for rel in pictures:
+            if not (path.parent / rel).exists():
+                print(f"FAIL  {path.name} slide {n}: the picture {rel} does not exist beside the "
+                      f"deck, so build_deck.py stops on it.")
+                fails += 1
+        has_diagram = "```mermaid" in joined or bool(pictures)
         has_table = any(l.strip().startswith("|") for l in body)
         has_component = any(c in joined for c in COMPONENTS)
         has_code = "```" in joined and not has_diagram and not has_component
@@ -182,7 +202,7 @@ def check_deck(path):
 
     wanted = -(-body_slides // MIN_DIAGRAM_SHARE)
     if diagrams < wanted:
-        print(f"FAIL  {path.name}: {diagrams} Mermaid diagrams across {body_slides} body slides, "
+        print(f"FAIL  {path.name}: {diagrams} diagrams across {body_slides} body slides, "
               f"and {wanted} are required at one per {MIN_DIAGRAM_SHARE}. A concept slide and its "
               f"applied slide each carry a diagram.")
         fails += 1
@@ -264,3 +284,5 @@ if __name__ == "__main__":
 #     No FAIL: notes are where facilitation belongs.
 # A deck where slide S2 has a ```notes fence and slide S3 has none
 #     One FAIL line naming slide 3, and exit 1. A deck with no notes anywhere is reported only.
+# A slide holding ![Q2 by week](figures/q2.png)
+#     Counts as a diagram, as a Mermaid fence does; with no such file, one FAIL line and exit 1.
