@@ -1,7 +1,7 @@
 # Does your take-home have every part a reviewer will look for?
 
-Read each line before you hand in. Each part is said in plain words first, the way you would explain
-it to someone who has never seen a slide, and then as the check a reviewer runs.
+Read each line before you hand in. Each part comes first as you would explain it to someone who has
+never seen a slide, and then as the check a reviewer runs.
 
 **Who needs the answer.** You, before the reviewer sees it.
 
