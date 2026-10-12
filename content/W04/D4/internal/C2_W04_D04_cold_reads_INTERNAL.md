@@ -172,7 +172,111 @@ The findings, as returned, numbered 1 to 77:
 
 ## Read 2: a hiring interviewer who runs analyst screens at Uber, Swiggy, Google and an AI startup
 
-Pending: the interviewer read is running and its report is added here when it returns.
+The reader scored the hire-grade answers of both transcripts on the scorecard, re-checked the
+disputed numbers against the pack's data files and every public source live, and edited nothing.
+
+**Verdict (as returned).** The [S] hire-grade answer as written: Swiggy a lean hire for up to two
+years' experience, Uber borderline, Google a lean no, an AI startup a no. The [D] answer's stakeholder
+moves would score anywhere; its evidence lines fail the second push. The order of the walk is above
+the bar; what fails is the rigour behind the lines a hard interviewer probes first: a count check
+that cannot tell a renamed event from a broken checkout, comparators quoted on another step, a
+users-or-use ratio that is itself a blend, a 35.9 with no comparator, a cost in order value with no
+range, and nothing on app version, sample size or noise. A candidate reciting twenty case numbers the
+interviewer never supplied would sound rehearsed everywhere.
+
+**Scores.** [S] hire-grade: 10 of 14 against the file's 14, because the file's "what earned the 2"
+column credits four lines the transcript does not contain (the renamed event, 13,218 of 35,000 outside
+a follow-up, Rs 5.3 lakh at Rs 400, the six-move roadmap). [D] hire-grade: 9 of 14 against the file's
+12.
+
+**Counts.** 25 findings: 1 blocker, 14 majors, 10 minors; and 10 sourcing items.
+
+The findings, as returned, numbered 1 to 25:
+
+1. The AI variant (the transcript, half2 S44, the trainer file, the day sheet): "launched three
+   weeks ago" and then judged at week four, which no cohort has reached. Blocker.
+2. The transcript's step row, follow-up 2, the trainer's [D] follow-up 1 and the fix-first solution:
+   the comparators 57 to 56 and 52 to 51 are add-to-cart to order, on another step from the one
+   blamed; on checkout start to order, iOS members ran 71.25 to 70.0 and non-members on Android 65.0
+   to 63.75, so "nobody else fell" is loose. Major.
+3. The step row, the [D] follow-up 2 and the scorecard: moving the cut a week cannot separate a
+   renamed event that shipped with the release from a broken checkout; the [S] answer never reports
+   the mapping; "the orders table agrees" proves nothing independent when member_months equals the
+   event log; the weekly series (58 to 59 for seven weeks, then 45, 43, 44) dates the break better.
+   Major.
+4. The users-or-use row (also the trainer's push 1, the notes, S40's notes, the solution's Q4): 1.36
+   to 1.20 against 1.34 to 1.40 is itself a cohort blend; among members who joined before August,
+   iOS holds at 1.45 and Android falls from 1.45 to 1.24. Major.
+5. The cohorts row and follow-up 1: every cohort lands at 38.5 to 38.9 in month two and slides 0.3
+   points a month, a plateau; the propping is worth about half a point; the hard push is "so is there
+   a cohort problem?", and the answer is that month one fell (58 to 49), which the dashboard excludes
+   by design, and August sits at 31. Major.
+6. The number row and the close: the drop is never shown; counted over everyone who joined before the
+   month, the series reads 40.9, 40.0, 39.5 and then 35.9. Major.
+7. The close and the scorecard's cost row: no range, no upper-bound caveat, no reversal fact; Rs 5.3
+   lakh is order value, of which Zomato keeps its take; netting the comparators gives about 1,220 to
+   1,290 a week; the loss is about a quarter of Android members' orders (5,064 a week before). Major.
+8. The step row and the [D] answer: no split by checkout version; every Android session moved to v2
+   on 14 September, so date and version are confounded, and the answer should say so. Major.
+9. The step row, follow-up 2 and [D]: no sample size; 55 rests on 18,273 starts (under a point
+   either way), the non-member comparator on about 1,600 (about 2.4 points). Major.
+10. The close, half2 S41 and S42: whether the sale paid back is never asked; the sale is judged on
+    each member's contribution over months against the discount. Major.
+11. The trainer's [D] follow-up 1: "members on iOS joined in the same sale and held at 57 to 56" is
+    all iOS members; sale-week members on iOS fell from 62.7 to 43.5; the clean test is members who
+    joined before August (Android completion 70.3 to 53.6, iOS 68.6 to 69.3), with the sale cohort as
+    Android-heavy as every cohort. Major.
+12. The trainer's upper-bound answer: it leans on the blended ratio; "most" is unquantified; the 17
+    days in the log already answer it: after a failed checkout the member ordered within a day 36.5
+    percent of the time before and 35.1 after, so retries did not rise. Major.
+13. The whole hire-grade column and the rubric: the interviewer never answers the clarifying
+    questions or hands over data, yet the candidate recites about twenty numbers; "named with the
+    day's number" rewards recitation. Major.
+14. The AI section and S44: nothing on what active means for a writing assistant, output quality,
+    cost per retained user or the launch channel; "never the blended count" overreaches; "looks like
+    recovery" contradicts the record. Major.
+15. The guesstimate's validate and catch rows: DMRC's "passenger journeys" counts each line used, and
+    the 82.44 lakh record beat an earlier 81 lakh "passenger journeys", so the two are likely one
+    series under two names; "average daily" is not weekdays; the page commits the error it was built
+    to catch. Major.
+16. The number row: "month-two retention counts members from their second month" reads as one
+    cohort's month-two rate. Minor.
+17. The clarifying questions: none asks whether retained means renewed or ordered. Minor.
+18. The structure: no external or supply-side branch (delivery time and fees, restaurants, a Gold
+    price change, a competitor, a festival week). Minor.
+19. The close: no forward warning that October reads about 33. Minor.
+20. Follow-up 3: the Swiggy letter says "low potential Lifetime values", its table states no
+    denominator, and weaning in one quarter lifts a diagonal of the table rather than every column.
+    Minor.
+21. The [D] "what would change it" row: non-members falling changes who owns the step, and "I'll
+    rerun it on your mapping" hands the check to the disputing team. Minor.
+22. The [D] concession: the question as spoken never raises the sale members; the next step names no
+    member-only code path. Minor.
+23. The [D] rank follow-up and push 2: the lever is the loss's size and a cheap reversible test.
+    Minor.
+24. The pain-point table: Swiggy's row is "more users, less use each", its frequency platform-wide
+    and year on year; the synthetic row sits under a heading that promises real cases. Minor.
+25. The guesstimate: the 15 percent riding share is unanchored, "about 6 percent low" is false
+    precision, and there is no supply-side cross-check. Minor.
+
+The sourcing items, as returned:
+
+1. Aced: no URL; the page's lines come from commentary on a drop in Facebook's daily post views; its
+   stated order starts with the metric's definition; the byline is "Aced Team", undated.
+2. Swiggy Q2 FY26: misquoted ("low potential Lifetime values", page 12); "per retained" is inference;
+   no URL in the transcript.
+3. Swiggy Q1 FY27: verified; needs "year on year" and "platform"; the 61 percent is Instamart's base;
+   no URL in the transcript.
+4. Amplitude: the blog says "top 25% for activation performance" and gives no method; "method
+   unpublished" overstates.
+5. Zomato, 19 May 2023: verified word for word; no URL in the transcript.
+6. The AI variant's "week four or later" is a rule of thumb stated as fact.
+7. DMRC 64.06 lakh: The Tribune says "currently", so "in 2026" is the pack's gloss; the unit is open
+   in the week's research file.
+8. DMRC 2018 line count: the LatestLY page returned 403; cite DMRC's post as quoted.
+9. Eternal and Blinkit: a Google Drive copy is unstable for a listed company's letter; "spend" renders
+   NOV retention; "since those who stay spend more" is inference.
+10. Simpson 1951: cite the paper itself.
 
 ## What did the fix pass do with each finding?
 
