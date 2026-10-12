@@ -80,8 +80,10 @@ kit.flow(["L1 hand count", "L2 city totals", "L3 the trap",
         The twelve rows are six drivers (A to F), each in two particular weeks: the week beginning
         10 August 2026 (before the launch) and the week beginning 21 September 2026 (after). Drivers
         A to D live in core zones (Jubilee Hills, Banjara Hills, Gachibowli, Madhapur). Drivers E
-        and F live in outer zones (Shamshabad, Rajendranagar). Each row prints hours, requests,
-        accepted, cancels and trips.
+        and F live in outer zones (Shamshabad, Rajendranagar). Each row prints hours, offers,
+        accepted, cancels and trips. `driver_weeks` counts offers, every time a request was shown to a
+        driver, and a request one driver declines is offered to the next, so offers outnumber the rider
+        requests that `zone_weeks` counts.
         '''),
         code('''
         twelve_ids = {"d_0001": "A", "d_0002": "B", "d_0003": "C", "d_0004": "D",
@@ -92,7 +94,7 @@ kit.flow(["L1 hand count", "L2 city totals", "L3 the trap",
         twelve["when"] = twelve["week_start"].map({"2026-08-10": "before", "2026-09-21": "after"})
         twelve = twelve.sort_values(["driver", "when"])[
             ["driver", "when", "zone_mode", "peak_online_hours",
-             "peak_requests", "peak_accepted", "peak_driver_cancels", "peak_trips"]
+             "peak_offers", "peak_accepted", "peak_driver_cancels", "peak_trips"]
         ].reset_index(drop=True)
         twelve
         '''),
@@ -123,8 +125,7 @@ kit.flow(["L1 hand count", "L2 city totals", "L3 the trap",
         **The ratio on twelve rows.** Hours 60 to 74 (up 23 percent). Trips 114 to 88 (down 23
         percent). Trips per peak online hour 1.90 to 1.19. The twelve rows show a sharper paradox
         than the city will show on the full data: here, hours up means trips per hour nearly
-        halved. The case file prints 1.49; the row values as printed sum to 88 and give 1.19, so
-        this pack uses the computed value and names the correction in the sources list.
+        halved.
         '''),
         md('''
         ## Which drivers moved the ratio most, and in which direction?
@@ -199,7 +200,7 @@ kit.bars([("hours before", int(totals.loc[0, "hours"])),
         kit.check("hand count: trips before 114", int(totals.loc[0, "trips"]) == 114)
         kit.check("hand count: trips after 88", int(totals.loc[1, "trips"]) == 88)
         kit.check("ratio before 1.90", float(totals.loc[0, "trips_per_hour"]) == 1.9)
-        kit.check("ratio after 1.19 (computed; case file prints 1.49)",
+        kit.check("ratio after 1.19",
                   abs(float(totals.loc[1, "trips_per_hour"]) - 1.189) < 0.005)
         '''),
         md('''
@@ -260,13 +261,13 @@ kit.flow(["L1 hand count", "L2 city totals", "L3 the trap",
             "window": ["before", "after"],
             "hours":  [before["peak_online_hours"].sum(), after["peak_online_hours"].sum()],
             "trips":  [before["peak_trips"].sum(), after["peak_trips"].sum()],
-            "requests": [before["peak_requests"].sum(), after["peak_requests"].sum()],
+            "offers":   [before["peak_offers"].sum(), after["peak_offers"].sum()],
             "accepted": [before["peak_accepted"].sum(), after["peak_accepted"].sum()],
             "cancels":  [before["peak_driver_cancels"].sum(), after["peak_driver_cancels"].sum()],
             "topup":    [before["topup_rs"].sum(), after["topup_rs"].sum()],
         })
         totals["trips_per_hour"] = (totals["trips"] / totals["hours"]).round(3)
-        totals["acceptance"] = (totals["accepted"] / totals["requests"]).round(3)
+        totals["acceptance"] = (totals["accepted"] / totals["offers"]).round(3)
         totals["cancels_per_accepted"] = (totals["cancels"] / totals["accepted"]).round(3)
         totals[["window", "hours", "trips", "trips_per_hour", "acceptance",
                 "cancels_per_accepted", "topup"]]
@@ -350,7 +351,7 @@ kit.flow(["L1 hand count", "L2 city totals", "L3 the trap",
         print(f"share in outer zones: {(outer_after - outer_before) / new_hours:.2f}")
         '''),
         md('''
-        **What happened.** About 22,000 new hours; around 70 percent of them in the three outer
+        **What happened.** About 22,000 new hours; about 72 percent of them in the three outer
         zones where rider demand is thin. These are driver-weeks where the floor pays even if a
         request never comes.
         '''),
@@ -359,7 +360,7 @@ kit.flow(["L1 hand count", "L2 city totals", "L3 the trap",
         '''),
         code('''
         after = dw[dw["week_start"] >= "2026-08-31"].copy()
-        after["acceptance"] = after["peak_accepted"] / after["peak_requests"]
+        after["acceptance"] = after["peak_accepted"] / after["peak_offers"]
         low_topup = after.loc[after["acceptance"] < 0.5, "topup_rs"].sum()
         total_topup = after["topup_rs"].sum()
         print(f"topup to acceptance < 0.5: Rs {low_topup:,}")
@@ -368,7 +369,7 @@ kit.flow(["L1 hand count", "L2 city totals", "L3 the trap",
         '''),
         md('''
         **What happened.** 61 percent of the Rs 1.9 crore top-up (Rs 1.16 crore) went to
-        driver-weeks where fewer than half of the requests received were accepted. The scheme that
+        driver-weeks where fewer than half of the offers the driver saw were accepted. The scheme that
         paid for being online paid Rs 1.16 crore to drivers who stayed online without serving the
         riders who asked for them.
         '''),
@@ -547,9 +548,9 @@ kit.flow(["L1 hand count", "L2 city totals", "L3 the trap",
         pd.DataFrame(north)
         '''),
         md('''
-        **What happened.** The north star read as "trips per active driver-week": the before number
-        is about 35 trips per driver-week, the after about 32. The redesign would pay for this
-        number, not for the hours the driver was online.
+        **What happened.** The north star reads 35.76 trips per online driver-week before and 35.89
+        after: hours rose 24 percent and trips per driver barely moved. The redesign would pay for
+        this number, never for the hours the driver was online.
         '''),
         md('''
         ## Guardrail 1: what is the acceptance share, before and after?
@@ -557,7 +558,7 @@ kit.flow(["L1 hand count", "L2 city totals", "L3 the trap",
         code('''
         g1 = []
         for name, d in [("before", dw_before), ("after", dw_after)]:
-            acc = d["peak_accepted"].sum() / d["peak_requests"].sum()
+            acc = d["peak_accepted"].sum() / d["peak_offers"].sum()
             g1.append({"window": name, "acceptance_share": round(acc, 3)})
         pd.DataFrame(g1)
         '''),
@@ -601,7 +602,7 @@ kit.bars([("acceptance before", 86),
         '''),
         code('''
         after_tag = dw_after.copy()
-        after_tag["acceptance"] = after_tag["peak_accepted"] / after_tag["peak_requests"]
+        after_tag["acceptance"] = after_tag["peak_accepted"] / after_tag["peak_offers"]
         gamed_cost = after_tag.loc[after_tag["acceptance"] < 0.5, "topup_rs"].sum()
         kept_cost  = after_tag.loc[after_tag["acceptance"] >= 0.5, "topup_rs"].sum()
         saving = gamed_cost
@@ -669,9 +670,9 @@ kit.bars([("acceptance before", 86),
         kit.check("gamed share equals 61 percent of total topup",
                   abs(gamed_cost / after_tag["topup_rs"].sum() - 0.61) < 0.01)
         kit.check("acceptance before 0.86", round(dw_before["peak_accepted"].sum() /
-                                                   dw_before["peak_requests"].sum(), 2) == 0.86)
+                                                   dw_before["peak_offers"].sum(), 2) == 0.86)
         kit.check("acceptance after 0.73", round(dw_after["peak_accepted"].sum() /
-                                                  dw_after["peak_requests"].sum(), 2) == 0.73)
+                                                  dw_after["peak_offers"].sum(), 2) == 0.73)
         kit.check("SQL twin reaches the same bookings before",
                   int(agg.loc[agg["window"] == "before", "bookings"].values[0]) == 36993000)
         kit.check("SQL twin reaches the same bookings after",

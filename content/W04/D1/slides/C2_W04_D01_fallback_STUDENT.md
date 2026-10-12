@@ -122,7 +122,7 @@ Transition: the attack moves, one slide to hold up.
 |---|---|---|---|
 | Driver operations | "You cannot measure us on a number we do not control" | True: hour-by-hour, the driver chooses to log on | The denominator counts hours that completed trips, not just hours logged on |
 | Marketing | "The hoarding promised a floor; changing it is a bait and switch" | True: the brand paid for the promise | The floor is kept, with an acceptance condition; the promise is amended, not broken |
-| Finance partner | "Our budget was Rs 1 crore and we spent Rs 1.9; your redesign has to prove the saving" | True: the budget overran | The redesign would have cost Rs 74 lakh for the same six weeks, with the acceptance guardrail named |
+| Finance partner | "The top-up cost Rs 1.9 crore in six weeks; your redesign has to prove what it saves" | True: the top-up budget is finance's number | Paid only to driver-weeks at or above 0.5 acceptance, the same six weeks would have cost Rs 74 lakh if every driver behaved the same; the A/B test says how many would change |
 
 **The three definitions each have one line that each role fights, and one line that each role has to concede.** The room writes both.
 
@@ -223,7 +223,7 @@ Transition: the transcript's weak and hire-grade openings.
 | Clarify | "Which team is right?" | "Each team is right about something; the question is which number carries the scheme's decision and which lines of its definition carry each team's attack" |
 | Structure | Picks one team | Opens on the scheme's goal, picks the north star, names the guardrails that answer each team's attack |
 | The trap | Promises everyone their number | Names the one number and the guardrails that address each team's partly-true objection |
-| Decision tied to cost | "We would try both" | "The redesign on completed peak trips with acceptance guardrails would have cost Rs 74 lakh over six weeks against the Rs 1.9 crore spent" |
+| Decision tied to cost | "We would try both" | "Paid only where acceptance stayed at 0.5 or above, the six weeks would have cost Rs 74 lakh against the Rs 1.9 crore spent, if every driver behaved the same; the test tells us how many would not" |
 
 **Scorecard (TRAINER).** Clarified scope; named the denominator; conceded where each team is partly right; named the number tied to a decision and its cost; refused to split into three (Aced, verified 12 October 2026).
 

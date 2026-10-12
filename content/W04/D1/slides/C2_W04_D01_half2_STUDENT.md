@@ -103,7 +103,7 @@ flowchart LR
 | Clarify | "A new feature on the app?" | "Which user, which business decision, and what would count as harm?" |
 | Structure | Lists five metrics | Goal, user, one metric with numerator, denominator, window, two guardrails, one leading input, test |
 | The trap | Online hours up 24 percent | Names it as a proxy and tells the paradox: 2.1x hours with 12 percent fewer trips in the idle tail |
-| Decision tied to cost | "We would roll it out" | Pay per completed peak trip; gamed cost Rs 1.16 crore; redesign Rs 74 lakh |
+| Decision tied to cost | "We would roll it out" | Pay per completed peak trip; the gamed top-up cost Rs 1.16 crore; Rs 74 lakh if every driver behaved the same, which the test checks |
 
 **Three follow-ups.** "Online hours rose 24 percent; what do you check first?" "Which guardrail would driver operations argue against, and why are they partly right?" "The measured drivers control when they log in; what happens to your number?"
 

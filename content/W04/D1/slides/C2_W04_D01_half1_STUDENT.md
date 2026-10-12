@@ -32,7 +32,7 @@ Transition: the ticket, in full.
 | Median rider wait, peak | 4.8 minutes | 4.6 minutes |
 | Top-up paid | Rs 0 | Rs 1.9 crore |
 
-**Data the analyst has.** `drivers` (1,200 rows, 140 joined after the launch), `driver_weeks` (one row per driver per active week with hours, requests, accepted, cancels, trips, bookings, top-up), `zone_weeks` (12 zones, 12 weeks, with rider requests, fulfilled and median wait). **The ask, by Friday.** Is the scheme working, which metric should it pay for, and is anyone gaming it. **Known caveats.** The monsoon ended inside the after window; 140 drivers joined after the launch; the app logs a driver as online whenever the driver app is open; the three outer zones get few requests at any hour.
+**Data the analyst has.** `drivers` (1,200 rows, 140 joined after the launch), `driver_weeks` (one row per driver per week on the app, with peak hours, offers, accepted, driver cancels, trips, hours with no trip, bookings, top-up), `zone_weeks` (12 zones, 12 weeks, with rider requests, fulfilled and median wait). A request one driver declines is offered to the next, so `driver_weeks` counts offers and `zone_weeks` counts rider requests. **The ask, by Friday.** Is the scheme working, which metric should it pay for, and is anyone gaming it. **Known caveats.** The monsoon ended inside the after window; 140 drivers joined after the launch; the app logs a driver as online whenever the driver app is open; the three outer zones get few requests at any hour.
 
 > *Illustrative case: the company is real, the situation and the data are synthetic, built for this class.*
 
@@ -173,9 +173,6 @@ LIVE, 6 minutes. Count the four totals aloud: 60, 74, 114, 88. Then divide: 114 
 over 74. The twelve rows show the same paradox as the city, sharper: hours up 23 percent, trips
 down 23 percent, so trips per hour nearly halves. Point at drivers E and F before saying their
 story: hours up, requests down (an outer zone), most declined.
-Note on the correction: the case file prints 1.49 for the after ratio, which assumed 110 trips in
-the six after rows. The row values as printed sum to 88, which gives 1.19; the pack uses the
-computed value.
 Ask: on the twelve rows, name the drivers whose hours rose without trips following. Take two
 answers, write E and F on the board.
 Transition: a worked micro-example, step by step.
@@ -266,12 +263,13 @@ Transition: the drift chart, read before any code.
 
 ![Hours up a quarter, trips per hour fall from 1.9 to 1.6](../whiteboards/C2_W04_D01_drift_STUDENT.png)
 
-The dashed line marks the launch week. Peak online hours rose; trips per peak online hour fell. The same picture extends the twelve-row story: it was not two unusual weeks.
+The dashed line shows the launch week. Peak online hours rose; trips per peak online hour fell. The same picture extends the twelve-row story: it was not two unusual weeks.
 
 ```notes
-LIVE, 3 minutes. Point at the launch week line; read the before trajectory (hours flat around
-19,500 a week, trips per hour around 1.90) and the after trajectory (hours rising to about
-25,000 by week 12, trips per hour settling near 1.58). Then say: twelve weeks of data say the
+LIVE, 3 minutes. Point at the launch week line; read the before trajectory (hours between about
+19,400 and 20,200 a week, trips per hour wandering between 1.88 and 1.93) and the after trajectory
+(hours between about 23,800 and 24,900 a week, trips per hour 1.64 in the launch week and then
+between 1.56 and 1.59). Then say: twelve weeks of data say the
 same thing as six drivers' twelve rows said in two.
 Transition: the predict step before the groupby.
 ```
@@ -305,13 +303,13 @@ Transition: the groupby, line by line.
 | acceptance share | 0.86 | 0.73 |
 | driver cancels / accepted | 0.04 | 0.09 |
 
-The groupby runs on `driver_weeks` with the before/after mask on `week_start`; the ratio is taken as `sum(trips) / sum(hours)`, never a mean of per-driver ratios. The second route is the same totals in SQL, in notebook 03.
+The groupby runs on `driver_weeks` with the before/after mask on `week_start`; the ratio is taken as `sum(trips) / sum(hours)`, never a mean of per-driver ratios. The six drivers of the hand count fell further, to 1.19, because they were chosen to show the mechanism: two of the six, E and F, logged hours with almost no trips, a third of the sample. Chapter 3 counts how many such drivers the city has.
 
 ```notes
 LIVE, 4 minutes. Read the five rows aloud and name what moved: acceptance down 13 points, cancels
 more than doubled. Point out the twelve-row paradox (hours up 23 percent and ratio down to 1.19)
-is less sharp on the city (ratio down to 1.58), because 180 drivers of 1,200 are the ones who
-shifted. Chapter 3 finds them.
+is less sharp on the city (ratio down to 1.58), because the six were chosen to show the
+mechanism and two of them are drivers like E and F. Chapter 3 finds how many the city has.
 Say about denominators: each ratio names the two sums it is a quotient of; the mean of
 per-driver ratios reaches a different number and is wrong.
 Transition: the first check, that the fall is not demand.
@@ -412,7 +410,7 @@ Transition: the answer, after the cell runs.
 
 ![Scatter: idle tail, hours against trips after the launch](../whiteboards/C2_W04_D01_idle_tail_STUDENT.png)
 
-**The lower-right cluster is the idle tail.** 180 drivers of the 1,200 enrolled, 15 percent of the base. Their peak online hours after the launch are about 2.1 times their hours before. Their peak trips are about 88 percent of their trips before, down 12 percent. 70 percent of their new hours are logged in the three outer zones (Shamshabad, Rajendranagar, Patancheru). This is the plant the scheme pays for, and the room found it in the data.
+**The lower-right cluster is the idle tail.** 180 drivers of the 1,200 enrolled, 15 percent of the base. Their peak online hours after the launch are about 2.1 times their hours before. Their peak trips are about 88 percent of their trips before, down 12 percent. 72 percent of their new hours are logged in the three outer zones (Shamshabad, Rajendranagar, Patancheru). This is the idle tail the scheme pays for, found in the data. The hand count's six held two such drivers, a third of the sample against 15 percent of drivers city-wide, which is why the six fell to 1.19 while the city fell to 1.58.
 
 ```notes
 LIVE, 4 minutes. Point at the dots along the x-axis: hours far to the right, trips far below the
@@ -434,18 +432,18 @@ Transition: how much the gaming cost.
 
 ```python
 after = driver_weeks[driver_weeks["week_start"] >= "2026-08-31"].copy()
-after["acceptance"] = after["peak_accepted"] / after["peak_requests"]
+after["acceptance"] = after["peak_accepted"] / after["peak_offers"]
 low = after.loc[after["acceptance"] < 0.5, "topup_rs"].sum()
 share = round(low / after["topup_rs"].sum() * 100)
 ```
 
-`share` prints 61. Of the Rs 1.9 crore paid, Rs 1.16 crore went to driver-weeks where fewer than half of the requests received were accepted.
+`share` prints 61. Of the Rs 1.9 crore paid, Rs 1.16 crore went to driver-weeks where fewer than half of the offers the driver saw were accepted.
 
 ```notes
 LIVE, 3 minutes. Read the number: 61 percent. The scheme paid 1.16 crore to driver-weeks that
 declined most of what was asked of them. The remaining Rs 74 lakh went to driver-weeks where the
 driver kept pace: a scheme that paid only there would have cost Rs 74 lakh for the same six
-weeks, Rs 1.16 crore saved.
+weeks if every driver had behaved the same, which the redesign cannot promise.
 Transition: the trap, named exactly.
 ```
 
@@ -461,7 +459,7 @@ flowchart LR
     class W,P,C bad
 ```
 
-**The check that catches it.** Trips per peak online hour, and median rider wait by zone. **The fix.** Pay for completed peak trips with an acceptance guardrail. Rs 1.9 crore spent would have been Rs 74 lakh under the fix.
+**The check that catches it.** Trips per peak online hour, and median rider wait by zone. **The fix.** Pay for completed peak trips with an acceptance guardrail. Rs 1.9 crore spent would have been Rs 74 lakh under the fix if every driver had behaved the same, which a new rule changes.
 
 ```notes
 LIVE, 4 minutes. Present the colleague's draft as what Monday morning's briefing would carry if
@@ -585,7 +583,7 @@ Transition: the chapter's close.
 *What does the room take into the afternoon?*
 
 1. **Which number did the city team not celebrate?** Peak online hours up 24 percent, because the scheme paid for being online, not for serving a rider.
-2. **Where did the fall sit?** 180 drivers of 1,200 whose hours doubled while their trips fell 12 percent, 70 percent of their new hours in outer zones.
+2. **Where did the fall sit?** 180 drivers of 1,200 whose hours doubled while their trips fell 12 percent, 72 percent of their new hours in outer zones.
 3. **What did the gaming cost?** Rs 1.16 crore of the Rs 1.9 crore top-up (61 percent) went to driver-weeks where acceptance stayed below 0.5.
 4. **What is the north star?** Completed peak trips per enrolled driver per week.
 5. **Which two guardrails stop the gaming?** Acceptance share at a floor, and median rider wait at peak.

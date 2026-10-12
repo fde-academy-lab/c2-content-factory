@@ -96,6 +96,8 @@ def draw_drift(ax1, ax2, upto):
     ax1.set_xticklabels(weekly["week_label"].values, rotation=0, fontsize=9)
     ax1.set_ylabel("peak online hours", color=VIOLET)
     ax1.tick_params(axis="y", colors=VIOLET)
+    ax2.yaxis.set_label_position("right")
+    ax2.yaxis.tick_right()
     ax2.set_ylabel("trips per online hour", color=ROSE)
     ax2.tick_params(axis="y", colors=ROSE)
     ax1.set_ylim(min(hrs) * 0.9, max(hrs) * 1.1)
@@ -141,7 +143,7 @@ plt.close(fig)
 
 idle_set = set([f"d_{i:04d}" for i in range(881, 1061)])
 outer_zones = ["Shamshabad", "Rajendranagar", "Patancheru"]
-dw_after["acceptance"] = dw_after["peak_accepted"] / dw_after["peak_requests"]
+dw_after["acceptance"] = dw_after["peak_accepted"] / dw_after["peak_offers"]
 sample_idx = dw_after.sample(n=min(1800, len(dw_after)), random_state=20261026).index
 sample = dw_after.loc[sample_idx]
 
@@ -156,14 +158,16 @@ ax.scatter(idle_core["peak_online_hours"], idle_core["peak_trips"],
            s=14, color=ROSE, alpha=0.65, label="idle tail, core zone")
 ax.scatter(idle_outer["peak_online_hours"], idle_outer["peak_trips"],
            s=14, color=INK, alpha=0.75, label="idle tail, outer zone")
-ax.plot([0, 60], [0, 60 * 1.9], color=VIOLET, linestyle=":", linewidth=1.5,
+ax.plot([0, 36], [0, 36 * 1.9], color=VIOLET, linestyle=":", linewidth=1.5,
         label="1.9 trips per hour")
 ax.set_xlabel("peak online hours in a week")
 ax.set_ylabel("peak trips in a week")
 ax.set_title("The idle tail: hours rose, trips did not follow", loc="left", pad=14)
 ax.legend(loc="upper left", frameon=False, fontsize=10)
-ax.set_xlim(0, max(80, sample["peak_online_hours"].max() * 1.05))
-ax.set_ylim(0, max(100, sample["peak_trips"].max() * 1.05))
+ax.axvline(42, color=MUTED, linestyle="--", linewidth=1.0)
+ax.text(41.6, 4, "42 hours: every peak window\nof the week", ha="right", fontsize=10, color=MUTED)
+ax.set_xlim(0, 45)
+ax.set_ylim(0, max(70, sample["peak_trips"].max() * 1.1))
 plt.tight_layout()
 fig.savefig(BOARDS / f"{STEM}_idle_tail_STUDENT.png", dpi=160)
 plt.close(fig)
@@ -187,7 +191,7 @@ colors = [VIOLET if k == "core" else ROSE for k in by_zone["kind"]]
 ax.bar(range(len(by_zone)), by_zone["requests"].values, color=colors)
 ax.set_xticks(range(len(by_zone)))
 ax.set_xticklabels(by_zone["zone"].values, rotation=30, ha="right", fontsize=9)
-ax.set_ylabel("peak requests over twelve weeks")
+ax.set_ylabel("rider requests at peak, twelve weeks")
 ax.set_title("The three outer zones get a fraction of core zone requests",
              loc="left", pad=14)
 from matplotlib.patches import Patch
@@ -202,7 +206,7 @@ plt.close(fig)
 # ---------------------------------------------------------------------------- 4. where the top-up went
 # Share of top-up to acceptance below 0.5 vs at or above 0.5.
 after_only = dw[dw["week"] >= pd.Timestamp("2026-08-31")].copy()
-after_only["acceptance"] = after_only["peak_accepted"] / after_only["peak_requests"]
+after_only["acceptance"] = after_only["peak_accepted"] / after_only["peak_offers"]
 low = after_only.loc[after_only["acceptance"] < 0.5, "topup_rs"].sum()
 high = after_only.loc[after_only["acceptance"] >= 0.5, "topup_rs"].sum()
 
