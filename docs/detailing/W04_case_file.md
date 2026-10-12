@@ -100,9 +100,12 @@ Six drivers, one week before (the week of 10 August 2026) and one week after (th
 | F | before | 10 | 20 | 17 | 17 | |
 | F | after | 14 | 12 | 3 | 2 | the same shape |
 
-Hand count: hours 60 to 74 (up 23 percent); trips 114 to 110 (down 3.5 percent); trips per online hour
-1.90 to 1.49. The twelve rows show the mechanism and not the city totals (the city's trips rose 3
-percent because 140 drivers joined), which is itself the first L4 caveat and is said on the slide.
+Hand count: hours 60 to 74 (up 23 percent); trips 114 to 88 (down 23 percent); trips per online hour
+1.90 to 1.19. The twelve rows show the mechanism and not the city totals: two of the six sit in the
+idle tail, a third of the sample against 15 percent of drivers city-wide, so the six fall much further
+than the city's 1.90 to 1.58, and the city's trips rose 3 percent because 140 drivers joined. Both are
+the first L4 caveat and are said on the slide. (Corrected on 12 October 2026: an earlier line printed
+110 trips and 1.49, which the rows above do not sum to.)
 
 ### The sub-problems
 
@@ -110,7 +113,7 @@ percent because 140 drivers joined), which is itself the first L4 caveat and is 
 Concept: a proxy, a number that stands in for the thing wanted. Analogy: a canteen pays servers per
 token; tokens go from 200 to 400 a day while plates stay at 200, because each plate now gets two
 tokens (toy, labelled invented). Micro-example: the twelve rows summed by hand. Numbers: 60 to 74
-hours, 114 to 110 trips, 1.90 to 1.49. Trap: none yet. Interviewer listens for: the candidate restates
+hours, 114 to 88 trips, 1.90 to 1.19. Trap: none yet. Interviewer listens for: the candidate restates
 what the scheme is for (riders picked up faster) before touching a number, and names the unit (hours,
 trips, trips per hour). Common wrong answer: "hours are up, so supply is up, so it is working."
 
@@ -239,8 +242,11 @@ hours long; the published figure a validate step would want does not exist in th
 ### The twelve rows (L1)
 
 Monday's twelve rows with `peak_bookings_rs` added, so the room reads the same rupees per online
-hour, per driver-week and per trip and sees three directions (targets on the rows, from the facts
-file).
+hour, per driver-week and per trip and sees three different sizes of change: per online hour Rs 313.5
+to Rs 196.2 (down more than a third), per driver-week Rs 3,135 to Rs 2,420 (down about a quarter), per
+trip Rs 165 on both sides. On the full data at L2 the three point three ways: per online hour falls,
+per driver-week rises slightly, per trip holds. (Corrected on 12 October 2026: the six rows' trips fall,
+so no per-driver-week rise is possible on them.)
 
 ### The sub-problems
 
@@ -254,7 +260,8 @@ guarantee: six-week review").
 
 **L2. Which denominator does the slide use, and what do the other two say?** Concept: the
 denominator is a choice and the slide says which. Numbers: Rs 314 to Rs 260 per online hour; per
-driver-week up (target); per trip Rs 165 flat; the twelve-week series drawn cluttered, then clear
+driver-week up slightly, Rs 5,817 to Rs 5,861 on Monday's data (6,360 driver-weeks before, 6,500
+after); per trip Rs 165 flat; the twelve-week series drawn cluttered, then clear
 (the makeover notebook). Trap: reading the per-driver-week rise as the scheme working. Interviewer
 listens for: the unit said aloud before the number. Common wrong answer: quoting the one that favours
 the claim without saying so.
