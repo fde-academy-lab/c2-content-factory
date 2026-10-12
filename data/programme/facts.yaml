@@ -327,7 +327,7 @@ decisions:
   - id: w4-finding-once-found
     status: closed
     closes: the requester, on 12 October 2026, accepting the Week 4 plan with its case-led revision
-    text: In Week 4, a day's learner files used after the step in which the room finds a planted feature may state that finding with its numbers, each on its own page, because the later steps build on it and every file stands alone; a later day's files may restate an earlier day's finding the same way. The pre-read, the earlier steps and every earlier day's files never name it, and the full-data step that finds a plant runs in an empty your-turn cell. This extends decision tuesday-finding-once-found to Week 4.
+    text: In Week 4, a day's learner files used after the step in which the room finds a planted feature, in class or in the TA lab, which counts as class, may state that finding with its numbers, each on its own page, because the later steps build on it and every file stands alone; a later day's files may restate an earlier day's finding the same way. The pre-read, the earlier steps and every earlier day's files never name it, and the full-data step that finds a plant runs in an empty your-turn cell. This extends decision tuesday-finding-once-found to Week 4.
     blocks: nothing
   - id: w4-visuals
     status: closed

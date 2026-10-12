@@ -221,3 +221,11 @@ W2:
     why: The key was the longest option.
     options:
       a: "In the pivot: type the warehouse total over the pivot's own total before the file is shared."
+
+W4:
+  41:
+    stem:
+      status: proposed
+      why: Diwali fell on 20 October 2025 and falls on 8 November 2026, so a stem that names this October keys a festival month's revenue to a month with no festival on a paper sat on 31 October. The reworded stem keeps the key and the arithmetic and asks in festival months, which is what Friday teaches; the week's source file adds the calendar-month trap as its own item.
+      text: |-
+        Last year's Diwali month booked Rs 3.2 crore. This year, the month before the Diwali month booked Rs 2.1 crore. Give the naive forecast and the seasonal naive forecast for this year's Diwali month.
