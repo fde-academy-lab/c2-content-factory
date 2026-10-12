@@ -22,8 +22,8 @@ which order?
 | 3 | The ladder, P1 to P5, for anyone who finishes | The lab set |
 
 With 35 learners and three minutes each plus one minute of feedback, the presentations need about two
-hours with one TA; with two TAs, run two queues of about seventeen each, and let the queue that is not
-presenting work on the store question.
+hours with one TA; with two TAs, run two queues of about seventeen each, and let the learners waiting
+their turn in either queue work on the store question.
 
 ## Which two failures do you watch for in the slides, and which line fixes each?
 

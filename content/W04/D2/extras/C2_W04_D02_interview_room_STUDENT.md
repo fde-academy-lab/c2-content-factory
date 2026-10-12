@@ -1,10 +1,7 @@
 # How does a strong candidate present the redesign, and size drivers at the peak, out loud?
 
 Written for this programme in the style of product-company and GCC screens; the facts inside are from
-the case file and the day's data. Two transcripts and one AI-company variant, each in the same order:
-the question as the interviewer says it, the clarifying questions a strong candidate asks with the
-answers the interviewer gives, the structure, the trap the interviewer is fishing for, a weak and a
-hire-grade answer side by side, and three follow-ups with the line a hire-grade answer gives each. No
+the case file and the day's data. It holds two transcripts and one AI-company variant. No
 transcript claims to reproduce any company's real interview.
 
 > Illustrative case: the company is real, the situation and the data are synthetic, built for this class. The coding-assistant company in the third transcript is invented.
@@ -38,8 +35,8 @@ riders got and where the money went; the caveat; the action with its cost and wh
 change the candidate's mind; then the number others will quote, checked.
 
 **The trap the interviewer fishes for.** Opening on method and reading out the dashboard, or quoting
-the read that flatters the scheme: bookings per driver-week rose, which sounds like success, and
-explaining that rise wrongly is as costly as missing it.
+the read that flatters the scheme: bookings per driver-week rose, which sounds like success.
+Explaining that rise wrongly is as costly as missing it.
 
 | A weak answer | A hire-grade answer |
 |---|---|
@@ -114,12 +111,12 @@ retention window that differs for every developer.
 
 | A weak answer | A hire-grade answer |
 |---|---|
-| "Acceptance rate is a vanity metric, so we should stop reporting it and survey developers about whether they like the tool." | "Acceptance counts a suggestion as a win even when the developer deletes it soon after, so it can rise while the product helps less. At the deck's 32 percent, if a fifth of accepted characters are gone within a week, only about 26 percent of what we showed survives (invented numbers). I propose the team be judged on characters of suggested code still in the file seven days after acceptance, per developer who saw at least one suggestion that week. It splits into suggestions shown, times the share accepted, times characters per accepted suggestion, times the share still there after seven days, so when it moves we can see which factor moved. Two guardrails catch padding: retained characters per accepted character, and edits per accepted suggestion; serving cost per developer-week sits beside them, since showing more suggestions costs compute. You are right that customers see acceptance, and a 2022 study of GitHub Copilot's users found acceptance tracks how productive developers feel better than whether the code stays, so acceptance stays in the deck as a leading input with its definition printed. Before anyone is judged on the new number, we hold out a share of users for a quarter and keep whichever number tracks seat renewals better. If acceptance tracks renewals and retained code does not, I would keep acceptance as the north star and add retention as a guardrail." |
+| "Acceptance rate is a vanity metric, so we should stop reporting it and survey developers about whether they like the tool." | "Acceptance counts a suggestion as a win even when the developer deletes it soon after, so it can rise while the product helps less. At the deck's 32 percent, if a fifth of accepted characters are gone within a week, only about 26 percent of what we showed survives (invented numbers). I propose the team be judged on characters of suggested code still in the file seven days after acceptance, per developer who saw at least one suggestion that week. It splits into suggestions shown, times the share accepted, times characters per accepted suggestion, times the share still there after seven days, so when it moves we can see which factor moved. Two guardrails catch padding: retained characters per accepted character, and edits per accepted suggestion; serving cost per developer-week sits beside them, since showing more suggestions costs compute. You are right that customers see acceptance, and a 2022 study of GitHub Copilot's users found that acceptance, more than whether the code stays, tracks how productive developers feel, so acceptance stays in the deck as a leading input with its definition printed. Before anyone is judged on the new number, we hold out a share of users for a quarter and keep whichever number tracks seat renewals better. If acceptance tracks renewals and retained code does not, I would keep acceptance as the north star and add retention as a guardrail." |
 
 **Three follow-ups, with the line a hire-grade answer gives.**
 
 1. "What if retained code falls when we ship a faster model?" "Read the four factors. If suggestions shown rose and the share retained fell, the model is padding; if suggestions shown fell, developers are writing more themselves. A test of the new model against the old one, by user, settles which."
-2. "Isn't retained code easy to game too?" "Long boilerplate that compiles and is never reverted would pass build failures and revert rate, which is why the guardrails are ratios: retained characters per accepted character, and edits per accepted suggestion. Padding raises characters accepted without raising what survives per character."
+2. "Isn't retained code easy to game too?" "Long boilerplate that compiles and is never reverted would pass checks on build failures and revert rate, which is why the guardrails are ratios: retained characters per accepted character, and edits per accepted suggestion. Padding raises characters accepted without raising what survives per character."
 3. "Why not just ask developers whether it helps?" "Because self-report misleads. METR's randomised study of 16 experienced open-source developers, published 10 July 2025, found tasks took 19 percent longer with AI tools while the developers believed they were 20 percent faster, and METR has since said those results are out of date. A holdout read on renewals measures what the business is paid on."
 
 **Sources for the third transcript,** checked 12 October 2026: Ziegler and colleagues, "Productivity

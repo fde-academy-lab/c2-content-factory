@@ -2,7 +2,7 @@
 
 **TRAINER ONLY.** The worked versions of the day's estimates: drivers at the evening peak (worked with
 the room), UPI payments a day (in pairs), and Anand's new store (in the lab). Every value in a chain is
-an assumption said aloud with its range; every anchor carries its source and the date it was checked.
+an assumption said aloud with its range.
 
 **Who needs the answer.** The trainer working the chain on the board, and the TA running the lab.
 
@@ -37,7 +37,7 @@ at once the range is far wider; say which range you are giving.
 before the launch (118,000 hours over 224,200 trips, median wait 4.8 minutes) and 0.63 after. The chain
 puts 1 / 1.68 = 0.60 behind each trip before its buffer, about an eighth more than the window whose
 wait met the target, so it errs high; re-run at the case's 1.90 trips an hour it gives 8,330 / 1.90 x
-1.15 = about 5,000. Say 5,000 to 5,700. Per request the case reads 0.47, but that divides by requests
+1.15 = about 5,000. Say 5,000 to 5,700. Per request the case reads 0.47, but that divides by requests,
 11 percent of which nobody served, while the chain counts trips: compare per trip. The idle share
 checks the same way: 1.90 trips x 25 minutes leaves about 0.21 idle before the launch, 0.34 after. The
 case pools both daily windows on all seven days (42 hours a week; 256,556 after-window requests are
@@ -54,7 +54,7 @@ it is "I don't know a public count; I would ask for Uber's own count of drivers 
 
 **The catch.** A day's trips divided by an hour's rate: 1 lakh / 2.4 = about 41,700 drivers, about
 seven times the chain. The case file names the idle share as the factor that moves the answer most;
-with trips walked from people, as the spine's L5 asks, trips per person moves it more, and the room is
+with trips built up from people, as the spine's L5 asks, trips per person moves it more, and the room is
 told so. The idle share is the one factor Monday's data shows moving.
 
 ## How many UPI payments happen in India on an average day?
@@ -78,7 +78,7 @@ October 2026). The worked chain sits 13 percent below: the same order, a little 
 Dividing by 31 gives 776 million, about 3 percent low, a slip small beside the estimate's own range.
 The same report gives a check that teaches more: Rs 29.37 lakh crore over 24.07 billion is about Rs
 1,220 a payment, far above a cup of tea, so the count holds large transfers between people, and the 2
-a day has to split shops from people. The 35 crore active users has no anchor of its own.
+payments a day have to be split between shops and people. The figure of 35 crore active users has no anchor of its own.
 
 ## How many customers could a new Kalpa store sign up to Retail-Plus in its first year?
 
@@ -102,8 +102,8 @@ and it is not in the lab's data.
 
 **The check.** 20,000 x 2 visits x Rs 1,500 x 12 months = Rs 72 crore a year, about half of DMart's
 about Rs 146 crore a store on the average of its opening and closing counts (Rs 66,968 crore over
-457.5 stores; Avenue Supermarts release of 2 May 2026, checked 12 October 2026). About half a mature
-store passes for a first-year store; a first-year store above a mature store's sales would fail.
+457.5 stores; Avenue Supermarts release of 2 May 2026, checked 12 October 2026). A first-year store at about
+half a mature store's sales passes; a first-year store above a mature store's sales would fail.
 
 **The catch.** A store in its first year sells less than a mature one, and DMart's average spans stores
 of several sizes; its release gives stores two years and older their own growth figure, 10.8 percent in

@@ -73,7 +73,7 @@ sentence would earn the 2.
 
 | Transcript | The follow-up | The line that survives it |
 |---|---|---|
-| Present it | "What is the per-trip rate, and why does a fifth of the money still paid mean anything?" | Monday left the rate open; the saving assumes drivers who start accepting are paid about what the floor paid them. Requests rose only 1.8 percent, so most trips newly accepting drivers complete would otherwise go to drivers already serving: the uncertain number is the per-trip rate more than the uptake, and the test sets it |
+| Present it | "What is the per-trip rate, and why does a fifth of the money still paid mean anything?" | Monday left the rate open; the saving assumes drivers who start accepting are paid about what the floor paid them. Requests rose only 1.8 percent, so most of the trips that newly accepting drivers complete would otherwise go to drivers already serving: the uncertain number is the per-trip rate more than the uptake, and the test sets it |
 | Present it | "What did riders get, and where are the idle hours?" | A median wait of 4.8 to 4.6 minutes; 74 percent of the idle money sat in the three outer zones, which still ran about six minutes, so median wait by zone is the guardrail |
 | Present it | "Where do you set the acceptance floor, and what stops accepting and then cancelling?" | At half the offers, in the gap Monday's data shows (no idle-tail week above 46 percent, no other week below 78 percent); driver cancels rose from 4 to 9 percent, so the floor counts accepted trips net of cancels |
 | Drivers at the peak | "Is your 1 percent riders or trips?" | Trips per 100 people; a commuter riding both ways counts twice, and doubling the factor doubles the answer, to about 11,400 |
@@ -83,7 +83,7 @@ sentence would earn the 2.
 
 ## What does the guesstimate rest on, and where is its anchor?
 
-Drivers at the evening peak has no published anchor: the research ledger holds none, and a search on
+The estimate of drivers at the evening peak has no published anchor: the research ledger holds none, and a search on
 12 October 2026 found only undated or decade-old counts of drivers signed up, a different unit. The
 slot reads "to be found", and the case data checks one ratio like for like instead: 0.53 online
 driver-hours per completed trip before the launch, against the chain's 0.60, which moves the answer to

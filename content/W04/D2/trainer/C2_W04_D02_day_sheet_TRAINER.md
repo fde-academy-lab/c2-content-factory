@@ -137,7 +137,7 @@ Every number is in `internal/C2_W04_D02_facts_INTERNAL.yaml` with how it was com
 ## What are the interview answers, in one breath?
 
 **Who needs the answer.** The trainer, when a learner asks "what would a good answer say?". **The
-questions on the way.** One answer per tagged question.
+questions on the way.** What does a good answer to each tagged question say?
 
 - **[S] Present a recommendation to a non-technical stakeholder in two minutes.** The decision first, then the claim ("the scheme is paying for online hours that carry no trips"), one number with its denominator (Rs 314 to Rs 260 per peak online hour), what riders got (a median wait of 4.8 to 4.6 minutes), the caveat (the monsoon), the action with its cost and signer (a six-week test on half the drivers, picked at random; city-wide Rs 58 lakh to Rs 92.7 lakh over six weeks; the city head signs the test), and the result that would stop it.
 - **[S] A guesstimate: how many drivers must be online at the evening peak?** Clarify the moment, the window, the product and the wait target; say the formula; trips per person, the evening share, trips per online driver-hour and a buffer, each with a range; about 5,700, with trips per person setting 2,900 to 8,600; check like for like (0.53 driver-hours per trip against the chain's 0.60) and move to 5,000 to 5,700; say what the number decides.
@@ -160,7 +160,7 @@ with what, and a click-through that fell when the strip began trusting counts. R
 tonight; we count them by hand first."
 
 **The fallback.** There is no faculty block to slip, and the 120 minutes added to the row are planned
-in full. If the day runs long, cut the gallery (S53, S54), then the paired UPI drill (S43 to S45,
-keeping the traps slide). If round one runs short of time, run two rounds in round two instead of
+in full. If the day runs long, cut the pain points and the gallery (S53, S54), then the paired UPI drill (S43 and S44,
+keeping the traps slide, S45). If round one runs short of time, run two turns in round two instead of
 three. If a group is short of a member, a TA takes the objector seat. If the projector fails, the
 cluttered slides and the four moves are printed in the studio run sheet.

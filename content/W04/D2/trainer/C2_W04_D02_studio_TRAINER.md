@@ -23,7 +23,7 @@ Thirty-five learners make eleven threes and one pair. In each three:
 | Objector | Reads one role's objection from its card and pushes back once more after the answer | One role card from `trainer/C2_W04_D02_role_cards_TRAINER.md` |
 | Scorer | Ticks each move heard, and says one sentence of feedback at the end | The four-moves card |
 
-In the pair, a TA takes the objector seat. Seats rotate after each round so every learner presents
+In the pair, a TA takes the objector seat. Seats rotate after each turn so every learner presents
 once, objects once and scores once in round one, and again in round two.
 
 ## What runs, for how many minutes?
@@ -95,7 +95,7 @@ them, three words stay up all afternoon: unit, period, definition.
 | 3 | S33: which number would check the estimate? | Letters on paper; expect votes for a and d |
 | 2 | S34: the answer and the sanity-check list | "c would check it directly and nobody publishes it; d checks one link, and that is the honest fallback." |
 | 5 | S35: the canteen's tea, invented numbers | Ask for each value; say the running product aloud: 2,000, then 1,200 who buy, then 2,400 cups |
-| 2 | S36: the four steps | Point at each; the one first estimates skip is the fourth |
+| 2 | S36: the four steps | Point at each; the step that first estimates skip is the fourth |
 | 3 | S37: clarify | Collect the room's clarifying questions before showing the table |
 | 6 | S38: map | Build the tree leaf by leaf; ask the room for each value and its range; count trips per person, never riders |
 | 6 | S39: calculate | Running product aloud; then the question, a vote, two minutes with a neighbour, a revote |
