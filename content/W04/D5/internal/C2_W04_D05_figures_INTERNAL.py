@@ -171,20 +171,21 @@ def scoreboard_bar():
               "SWLY\n(52-week shift)", "Festival-aligned\n(+ drift)", "Vendor curve"]
     maes = [22_046, 22_035, 5_674, 9_346, 5_674, 16_985]
     colours = [MUTED, MUTED, VIOLET, VIOLET, GREEN, ROSE]
-    fig, ax = plt.subplots(figsize=(9.5, 4.6))
+    fig, ax = plt.subplots(figsize=(8.5, 5.4))
     bars = ax.barh(labels, maes, color=colours, edgecolor=INK, linewidth=0.5)
     for b, m in zip(bars, maes):
         ax.text(m + 300, b.get_y() + b.get_height() / 2, f"{m:,}",
-                va="center", fontsize=10, color=NIGHT)
-    ax.set_xlabel("MAE on the 13-week hold-out (shipments per week)")
-    ax.set_title("The scoreboard: what each method missed by, on the weeks it never saw",
-                 color=INK, pad=10, fontweight="bold")
+                va="center", fontsize=15, color=NIGHT, fontweight="bold")
+    ax.set_xlabel("MAE on the 13-week hold-out (shipments per week)", fontsize=14)
+    ax.set_title("The scoreboard: what each method missed by",
+                 color=INK, pad=10, fontweight="bold", fontsize=16)
     ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{int(x):,}"))
-    ax.set_xlim(0, max(maes) * 1.2)
+    ax.set_xlim(0, max(maes) * 1.25)
     ax.invert_yaxis()
+    ax.tick_params(axis="both", labelsize=14)
     fig.tight_layout()
     fig.savefig(BOARD_DIR / "C2_W04_D05_scoreboard_STUDENT.png",
-                bbox_inches="tight", dpi=150)
+                bbox_inches="tight", dpi=160)
     plt.close(fig)
 
 
@@ -294,26 +295,27 @@ def cost_curve():
     idles = [idle_cost(q) for q in xs]
     totals = [l + i for l, i in zip(lates, idles)]
     min_idx = totals.index(min(totals))
-    fig, ax = plt.subplots(figsize=(10.5, 4.6))
-    ax.plot(xs, lates, color=ROSE, linewidth=1.8, label="Rs 25 per late shipment")
-    ax.plot(xs, idles, color=VIOLET, linewidth=1.8, label="Rs 5.42 per idle-forecast shipment")
-    ax.plot(xs, totals, color=INK, linewidth=2.4, label="Total expected cost")
-    ax.axvline(xs[min_idx], color=GREEN, linestyle="--", linewidth=1.2)
-    ax.annotate(f"Plan here\nq = {xs[min_idx]:,}\n(near the 0.82 quantile\nof demand)",
+    fig, ax = plt.subplots(figsize=(10, 5.6))
+    ax.plot(xs, lates, color=ROSE, linewidth=2.4, label="Rs 25 per late shipment")
+    ax.plot(xs, idles, color=VIOLET, linewidth=2.4, label="Rs 5.42 per idle-forecast shipment")
+    ax.plot(xs, totals, color=INK, linewidth=3.0, label="Total expected cost")
+    ax.axvline(xs[min_idx], color=GREEN, linestyle="--", linewidth=1.6)
+    ax.annotate(f"Plan here\nq = {xs[min_idx]:,}\n(near the 0.82\nquantile of demand)",
                 xy=(xs[min_idx], totals[min_idx]), xytext=(xs[min_idx] + 25_000, max(totals) * 0.6),
-                color=GREEN, fontsize=10,
-                arrowprops=dict(arrowstyle="->", color=GREEN, lw=1))
-    ax.set_xlabel("packer shifts in plan (expressed as shipments the plan can cover)")
-    ax.set_ylabel("Rs per week, in expectation")
+                color=GREEN, fontsize=14, fontweight="bold",
+                arrowprops=dict(arrowstyle="->", color=GREEN, lw=1.4))
+    ax.set_xlabel("plan size (shipments the plan can cover)", fontsize=14)
+    ax.set_ylabel("Rs per week, in expectation", fontsize=14)
     ax.set_title("Costs are asymmetric: the plan sits above the median",
-                 color=INK, pad=10, fontweight="bold")
+                 color=INK, pad=10, fontweight="bold", fontsize=16)
     ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"Rs {int(x):,}"))
     ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{int(x):,}"))
-    ax.legend(loc="upper center", frameon=False, ncol=1)
+    ax.legend(loc="upper center", frameon=False, ncol=1, fontsize=13)
     ax.grid(axis="y", color=LINE, linewidth=0.6)
+    ax.tick_params(axis="both", labelsize=13)
     fig.tight_layout()
     fig.savefig(BOARD_DIR / "C2_W04_D05_cost_curve_STUDENT.png",
-                bbox_inches="tight", dpi=150)
+                bbox_inches="tight", dpi=160)
     plt.close(fig)
 
 
