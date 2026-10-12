@@ -25,6 +25,10 @@ The upstream repositories are https://github.com/obra/superpowers, https://githu
 
 `humanizer` was copied into `.claude/skills/humanizer/` on 30 September 2026 at the requester's request, so that no wording in the programme's material reads as a language model's. It comes from `SKILL.md` in https://github.com/blader/humanizer at commit `225a6f3` (version 3.1.0, dated 27 September 2026), carries the MIT licence as `LICENSE`, and its git remote was checked on 30 September 2026. The folder keeps the author's text, adds a `SOURCE` line, and opens with the house-rules note, which also says that the standard's tables, bullets and recurring bold lead-ins stay. Its 25 patterns come from Wikipedia's "Signs of AI writing", and it complements the author's `llm-tic-scrubber`: the scanner catches the tics a script can find, and the humanizer is the read a person or an agent gives the whole text in file mode, changing prose only and leaving code, data, paths and link targets as they are. The upstream repository's plugin manifests, validation script and issue templates were left out, since only the skill itself is used here.
 
+## ponytail
+
+`ponytail` was copied into `.claude/skills/ponytail/` on 12 October 2026 at the requester's request, so that the code in the notebooks, the data generators and the scripts is the smallest code that fully works. It comes from `skills/ponytail/SKILL.md` in https://github.com/DietrichGebert/ponytail at commit `9b58c1f` (dated 10 October 2026), carries the MIT licence as `LICENSE`, and its git remote was checked on 12 October 2026. The folder keeps the author's text, adds a `SOURCE` line, and opens with the house-rules note, which limits the skill to code and keeps its closing line about what was skipped in the chat reply. The repository's five companion skills (`ponytail-review`, `ponytail-audit`, `ponytail-debt`, `ponytail-gain` and `ponytail-help`), its hooks and its plugin manifests were left out.
+
 ## gsd-core
 
 `gsd-core` from https://github.com/open-gsd/gsd-core (commit `19a7b1f`, MIT, git remote checked 27 September 2026) is recorded here

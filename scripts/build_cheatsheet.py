@@ -29,6 +29,9 @@ Mermaid fences go through mmdc with the programme palette, so a diagram on a sli
 and on a sheet are recognisably one drawing. The config sets htmlLabels false at the top level and
 not only under flowchart, because mermaid-cli honours only the top-level key and a foreignObject
 label is dropped without warning by weasyprint, which prints every node as an empty box.
+
+An image line, `![caption](path)` from the sheet's folder, is a picture our own code drew, placed
+as a mermaid picture is and sized by its pixels and dpi; a GIF prints its `_still.png` or frame one.
 """
 import argparse
 import hashlib
@@ -298,6 +301,37 @@ def svg_width(path):
     return svg_size(path)[0]
 
 
+# A picture our own code drew, `![caption](path)` on a line of its own, the path relative to the
+# markdown's folder. scripts/build_deck.py and scripts/deck_md_check.py read the same line.
+IMAGE = re.compile(r"^!\[([^\]]*)\]\(([^)\s]+)\)$")
+
+
+def image_file(path):
+    """The file to print for an image line: the picture itself, or for a GIF the `_still.png`
+    drawn beside it, else its first frame, since a page and a slide both show one frame."""
+    if path.suffix.lower() != ".gif":
+        return path
+    still = path.with_name(path.stem + "_still.png")
+    if still.exists():
+        return still
+    from PIL import Image
+    png = CACHE / f"{hashlib.sha256(path.read_bytes()).hexdigest()[:16]}_still.png"
+    if not png.exists():
+        CACHE.mkdir(parents=True, exist_ok=True)
+        with Image.open(path) as gif:  # Pillow opens a GIF on its first frame
+            gif.convert("RGBA").save(png)
+    return png
+
+
+def image_size(path):
+    """A picture's own size in CSS pixels, its pixels at the dpi it was saved at, which is what
+    svg_size reads off a diagram. A mermaid PNG carries no dpi, so it reads as its pixels."""
+    from PIL import Image
+    with Image.open(path) as img:
+        dpi = (img.info.get("dpi") or (96, 96))[0] or 96
+        return (img.width * 96 / dpi, img.height * 96 / dpi)
+
+
 def label_pt(size, box_pt):
     """How large the diagram's labels print once it is fitted into a box, in points.
 
@@ -309,7 +343,8 @@ def label_pt(size, box_pt):
         return 99.0
     box_w, box_h = box_pt
     scale = min(box_w / (w_px * 0.75), box_h / (h_px * 0.75), 1.0e9)
-    return 12.0 * scale
+    # Rounded, since a box sized to print at the floor measures 5.199999999999999 without it.
+    return round(12.0 * scale, 6)
 
 
 # Mermaid sets its labels at 16px, so a diagram scaled into a column of C points prints its
@@ -407,7 +442,7 @@ def render_table(rows):
     return f"<table{wide}><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table>"
 
 
-def render_body(lines, fmt, missing):
+def render_body(lines, fmt, missing, folder=pathlib.Path(".")):
     """The markdown subset the sheets use, as a list of (kind, html, diagram width) pieces."""
     pieces = []
     buf, mode = [], "text"
@@ -467,6 +502,21 @@ def render_body(lines, fmt, missing):
             continue
         if not stripped:
             flush()
+            continue
+        image = IMAGE.match(stripped)
+        if image:
+            # Placed as a mermaid picture is, and missing as one is when its file is not there.
+            flush()
+            src = folder / image.group(2)
+            if src.exists():
+                src = image_file(src)
+                pieces.append(("diagram", f'<figure class="diagram"><img src="'
+                               f'{src.resolve().as_uri()}" alt="{html.escape(image.group(1))}">'
+                               f'</figure>', image_size(src)))
+            else:
+                missing.append(stripped[:40])
+                pieces.append(("code", f'<pre class="nodiagram">{html.escape(stripped)}</pre>',
+                               (0, 0)))
             continue
         sub = re.match(r"^#{2,4}\s+(.+?)\s*$", stripped)
         if sub:
@@ -695,7 +745,8 @@ def build_html(path, fmt, verified, cap_mm=DIAGRAM_H_CAP_MM, tight=False, anchor
     # widest one, the second lays the panels out inside that choice.
     body_sizes, anchor_sizes = [], []
     for i, p in enumerate(panels):
-        sizes = [z for kind, _, z in render_body(p["lines"], fmt, []) if kind == "diagram"]
+        sizes = [z for kind, _, z in render_body(p["lines"], fmt, [], path.parent)
+                 if kind == "diagram"]
         (anchor_sizes if i == 0 else body_sizes).extend(sizes)
     columns = choose_columns([w for w, _ in body_sizes])
     panel_h = height_for(body_sizes, column_pt(columns), cap_mm)
@@ -716,7 +767,7 @@ def build_html(path, fmt, verified, cap_mm=DIAGRAM_H_CAP_MM, tight=False, anchor
 
     blocks, n_diagrams, wide, cramped = [], 0, [], []
     for i, p in enumerate(panels):
-        pieces = render_body(p["lines"], fmt, missing)
+        pieces = render_body(p["lines"], fmt, missing, path.parent)
         n_diagrams += sum(1 for kind, *_ in pieces if kind == "diagram")
         crux = (f'<div class="crux"><b>Crux.</b> {inline(p["crux"])}</div>' if p["crux"] else "")
         head = f'<h2><span class="n">{p["n"]}</span>{inline(p["title"])}</h2>'
@@ -996,6 +1047,8 @@ if __name__ == "__main__":
 #     One INFO line, then a FAIL per sheet whose diagrams fell back to their source, and exit 1.
 # scripts/build_cheatsheet.py <a sheet with twelve panels>
 #     FAIL naming the page count, because a sheet is defined by what it leaves out.
+# scripts/build_cheatsheet.py <a sheet whose panel holds ![Q2 by week](q2.png) beside it>
+#     Prints q2.png in the panel as a diagram; a missing file fails as an unrendered diagram does.
 # svg_labels('flowchart LR\n    A["<b>REVENUE</b><br/>Rs 5,44,810"]')
 #     Returns the label as "`**REVENUE**<br/>Rs 5,44,810`", which prints REVENUE in bold where
 #     the plain label printed the tags as words.

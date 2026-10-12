@@ -11,7 +11,76 @@ and a deck carries each chapter in full depth. Form still follows
 `content/W01/D1`: its deck syntax, notebook helper and rhythm, companion build, workbook build and day
 sheet are the model, and its rebuild to this bar becomes the model for content too. Where a week has
 an approved spine in `docs/detailing/`, that spine sets each day's case, chapters and traps; this page
-sets the form and the volume. The mechanics stay in the skills and scripts it points to.
+sets the form. From Week 4 on, the teaching approach below replaces "The day", "Volume per teaching
+day", the per-step paragraphs of "The question ladder" and "The depth loop", the week's spine sets
+each day's shape and sizes, and this page then sets the form of each family the spine names. The
+mechanics stay in the skills and scripts it points to.
+
+## The teaching approach
+
+The requester set this on 12 October 2026 for every week, day, Saturday and build brief made from
+then on (decision `teaching-approach` in data/programme/facts.yaml). Weeks 1 to 3 were built before
+it and keep their shape until they are rebuilt.
+
+1. **The case leads.** Every day opens on an engineering case at a company the learners use (Uber,
+   Ola, Swiggy, Zomato, Blinkit, Zepto, Flipkart, Amazon India, PhonePe, Google, an AI startup and the
+   like) in a named city, state or country: the product surface, the metric, its value before and
+   after with dates, the data the analyst holds (tables and columns), the ask, and the caveats already
+   known. No stakeholder drama opens a day. Each case carries the line "Illustrative case: the company
+   is real, the situation and the data are synthetic, built for this class", claims nothing the company
+   actually did, and draws any public fact from a source checked and dated the day it entered. Its data
+   come from the day's own seeded generator, and every number a learner sees sits in the day's facts
+   file. Kalpa stays the programme's client: the TA lab and one unguided exercise run the same method on
+   Kalpa's version of the problem, which keeps the weeks connected and the Saturday bank in reach.
+2. **The ladder climbs from a weak learner to a hard interview.** The case breaks into five to seven
+   sub-problems, each a level up: L1 the situation understood and counted by hand on about twelve rows;
+   L2 the same count on the full data in the smallest code; L3 the trap, the denominator and the
+   segment that drives it; L4 the caveats an engineer must name (data quality, mix, seasonality,
+   interference, selection, cause); L5 the decision with its cost and the objection it meets; L6 the
+   interview as Uber, Swiggy, Google and AI-startup screens ask it, with what the interviewer listens
+   for, a weak and a hire-grade answer side by side, the follow-ups, and one AI-company variant of the
+   same idea. Every word a newcomer would not know is defined where it first appears.
+3. **Every idea is taught in a blend of styles** (`references/teaching-styles.md` gives each style's
+   moves): the misconception or the surprise first and a prediction before the reveal (Veritasium); the
+   maths derived visually from tiny numbers before the formula is named (3Blue1Brown, StatQuest); a
+   line-by-line code-along from the raw table to a working answer (Krish Naik); a connected map of how
+   today's idea links to what came before and what comes next (ByteByteGo); a ladder of practice
+   problems from easy to interview grade (takeUforward); problem-first interactivity (Brilliant and the
+   explorable explanations); and a plain explanation a newcomer could repeat (the Feynman technique).
+4. **Each week ships one interactive explorer** that grows day by day: an HTML page with a connected
+   map of the week on its home screen and one section per day whose scenes animate the mechanism, let
+   the viewer move a control and predict before the reveal, and name the formula last. It reveals no
+   planted value and passes `scripts/html_sweep.py`.
+5. **Pictures are drawn by our own code**: mermaid for mechanisms and maps, matplotlib for data
+   pictures placed by image lines, and short GIFs from our own data with a still beside each.
+6. **Volume follows the minutes.** A day runs in three or four chapters sized to the trainer's minutes,
+   with no item, slide or word quota beyond the sizes the week's spine gives. Review is one
+   fresh-graduate read, one interviewer read, one fix pass and verify.py.
+7. **Every artefact family carries the approach**, and each may add moves of its own:
+   - *Decks* open on the case ticket; each chapter is one sub-problem with its level (L1 to L6) on the
+     opener; inside a chapter the misconception and a prediction come first, then the visual derivation
+     on tiny numbers, the formula last, a glimpse of the code, the trap shown exactly, and a map slide
+     that links the idea to earlier and later ones.
+   - *Notebooks* code along from the raw table: one plain sentence above each cell says what it is for;
+     the hand count is reproduced first, then the full-data step, the trap, the second route asserted
+     equal, and the AI-company variant at the end, in ponytail-small code.
+   - *Exercises* are a ladder from L1 to L6 in the takeUforward manner, each item tagged with its level
+     and the kind of company whose screens ask it; worked examples fade (one fully worked, one half
+     worked, then blank); at least a third are design items; one re-runs the method on Kalpa; and some
+     items hand the learner a plausible wrong answer to debug.
+   - *Case studies and briefs* follow the ticket: the situation, the data dictionary, the sub-problems,
+     the caveats, the deliverable, and what a strong answer contains.
+   - *Projects* (mini projects, build weeks, the capstone) are posed as engineering tickets at a
+     relatable company or a Kalpa unit on real, messy data, with milestones that climb the levels and a
+     demo and defence questioned at interview grade.
+   - *Saturday papers* set their items in cases, climb the levels, and stay interview grade.
+   - *Notes and cheat sheets* explain each idea plainly enough to repeat (Feynman), carry the visual
+     derivation and the connected map, and close on what an interviewer checks.
+   - *Interview preparation* ships transcripts with weak and hire-grade answers side by side, the
+     scorecard, the follow-ups, the AI-company variant and a guesstimate with its published anchor.
+   - *Across the week*, practice retrieves earlier days (the Kahoot's return questions and spaced recall
+     items), interleaves topics once each is learned, and uses peer instruction where a question splits
+     the room: predict, vote, discuss with a neighbour, vote again, then the reveal.
 
 ## The bar
 

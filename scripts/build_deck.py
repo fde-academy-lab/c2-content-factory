@@ -39,6 +39,8 @@ scripts/brand.py). What a source can ask for:
     ```bar          label: You build | value: 30 | caption: 30 minutes
     ```notes        speaker notes, never drawn: what to say, ask and watch for
     > "No averages." Anand Iyer, ...     a quote, with the speaker set on a line of their own
+    ![Q2 by week](figures/q2.png)        a PNG our code drew (a .gif shows its _still.png or first
+                                         frame), placed as a mermaid picture, its caption under it
 
 Every drawing in a deck prints its labels between 9 and 18 points. The body keeps its full size for
 as long as some layout places every block at that, and a picture beside its words wins over the
@@ -67,13 +69,14 @@ from pptx.enum.text import PP_ALIGN
 from pptx.util import Emu, Inches, Pt
 
 import brand
-from build_cheatsheet import MERMAID_CONFIG, MermaidError, mmdc_page, mmdc_version, run_mmdc, svg_labels
+from build_cheatsheet import (IMAGE, MERMAID_CONFIG, MermaidError, image_file, image_size,
+                              mmdc_page, mmdc_version, run_mmdc, svg_labels)
 from deck_layout import (ACC, BG, BOLD, INK, LINE, MUTED, NIGHT, TINT, WHITE, MARGIN, WIDTH,
                          BODY_TOP, BODY_BOTTOM, RULE_Y, SLIDE_W, SLIDE_H, CALLOUT, CRUMB, NUMBERED,
                          QUOTE, SLIDE_ID, BEATS, add_runs, background, bar, bar_height, breadcrumb,
                          callout, callout_height, cards, cards_height, clean, code_card,
-                         footer_band, header, icons_in, numbered, pill, quote_block, quote_height,
-                         rect,
+                         footer_band, header, icons_in, label, numbered, pill, quote_block,
+                         quote_height, rect,
                          section_slide, stats, stats_height, table, table_geometry, text_height,
                          textbox, timeline, timeline_height, title_band, title_slide,
                          wrapped_rows)
@@ -194,10 +197,14 @@ def parse(md):
 
 COMPONENTS = ("cards", "stats", "timeline", "bar", "notes")
 FENCED = ("code", "mermaid") + COMPONENTS
+PICTURES = ("mermaid", "image")
 
 
 def split_blocks(body):
-    """Split a slide body into ('text'|'code'|'mermaid'|'table'|component, lines) blocks."""
+    """Split a slide body into ('text'|'code'|'mermaid'|'image'|'table'|component, lines) blocks.
+
+    An image line outside a fence is a block of its own, so two in a row are two pictures.
+    """
     blocks, buf, mode = [], [], "text"
     for line in body:
         stripped = line.strip()
@@ -209,6 +216,12 @@ def split_blocks(body):
             else:
                 lang = stripped[3:].strip().lower()
                 mode = lang if lang in COMPONENTS or lang == "mermaid" else "code"
+            continue
+        if mode not in FENCED and IMAGE.match(stripped):
+            if buf:
+                blocks.append((mode, buf)); buf = []
+            blocks.append(("image", [line]))
+            mode = "text"
             continue
         is_row = stripped.startswith("|") and stripped.endswith("|")
         want = mode if mode in FENCED else ("table" if is_row else "text")
@@ -383,31 +396,50 @@ def render_mermaid(lines, width_in=None):
     return png
 
 
+def picture_for(mode, lines, folder):
+    """A picture block's PNG and caption: a mermaid fence's render, or the file an image line
+    names, from the deck's folder."""
+    if mode == "mermaid":
+        return render_mermaid(lines), None
+    caption, path = IMAGE.match(lines[0].strip()).groups()
+    return image_file(folder / path), caption.strip() or None
+
+
+# An image line's caption is one small line under its picture, in a box of this name, so centring
+# the words beside a picture leaves the caption with the picture it belongs to.
+CAPTION = "picture caption"
+CAPTION_PT = 12
+
+
 def place_picture(s, png, top, bottom=BODY_BOTTOM, width_in=WIDTH, centre=False,
-                  left=MARGIN):
+                  left=MARGIN, caption=None):
     """Drop a rendered diagram into the body area, scaled to fill it and centred.
 
     The old rule scaled a diagram down to fit and never up, so a six-box chain drawn at its natural
     size sat two inches tall in the middle of a thirteen inch slide and nobody past the third row
     could read it. A diagram is the argument on these slides, so it takes the room it is given.
     """
-    from PIL import Image
-    with Image.open(png) as img:
-        w, h = img.size
+    w, h = image_size(png)
     # Filling the room is right for a deep drawing and wrong for a shallow one: a three-box chain
     # stretched across the slide printed its labels at 34 points, twice the body text, while the
     # tree two slides later printed at 14. Capping the label size keeps every drawing in the deck
-    # at one type scale. The PNG here is always the scale-one render, so its pixels are its CSS
-    # width, and a label prints at 1152 times the drawn inches over that width.
+    # at one type scale. The PNG here is the scale-one render, so its pixels are its CSS width,
+    # or a picture our code drew, measured the same way from its dpi, and a label prints at 1152
+    # times the drawn inches over that width.
+    cap_h = text_height([caption], width_in, CAPTION_PT, gap=0.0) if caption else 0.0
     max_w = min(width_in, MAX_LABEL_PT * w / 1152)
-    max_h = max(1.2, bottom - top)
+    max_h = max(1.2, bottom - top - cap_h)
     scale = min(max_w / (w / 96), max_h / (h / 96))
     draw_w, draw_h = (w / 96) * scale, (h / 96) * scale
     y = top + max(0.0, (max_h - draw_h) / 2) if centre else top
     pic = s.shapes.add_picture(str(png), Inches(left + (width_in - draw_w) / 2), Inches(y),
                          Inches(draw_w), Inches(draw_h))
     pic.name = MERMAID_PIC
-    return y + draw_h + 0.16
+    if caption:
+        label(s, left, y + draw_h + 0.04, width_in, caption, CAPTION_PT, MUTED,
+              align=PP_ALIGN.CENTER, h=cap_h)
+        s.shapes[-1].name = CAPTION
+    return y + draw_h + cap_h + 0.16
 
 
 def box_height(lines, mono=False):
@@ -501,7 +533,7 @@ def block_height(mode, lines, width, scale, section=False):
         size = max(10, round(13.5 * scale))
         rows = sum(wrapped_rows(l, width - 0.6, size, mono=True) for l in lines)
         return 0.5 + (size / 72 * 1.42) * rows + 0.18
-    if mode == "mermaid":
+    if mode in PICTURES:
         return 1.1
     if mode == "cards":
         return cards_height(lines, width, scale)
@@ -568,8 +600,8 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
         return 0
 
     # An exhibit slide is one whose argument is a single picture, so the picture gets the body.
-    pictures = [(m, b) for m, b in blocks if m == "mermaid"]
-    words = [(m, b) for m, b in blocks if m != "mermaid"]
+    pictures = [(m, b) for m, b in blocks if m in PICTURES]
+    words = [(m, b) for m, b in blocks if m not in PICTURES]
     # Whether a picture reads better across the slide or beside its words is arithmetic, not a
     # rule of thumb: down the page it only gets the height the words leave, and beside them it
     # gets the body's full height but under half the width. The build tries both and keeps the
@@ -598,9 +630,9 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
         # sits close to its caption. A quarter of an inch of politeness elsewhere is a quarter of
         # an inch off a diagram that is already as wide as the slide.
         top = RULE_Y + 0.2
-        png = render_mermaid(pictures[0][1])
+        png, caption = picture_for(*pictures[0], ctx.get("folder"))
         if png:
-            place_picture(slide, png, top, tail_top - 0.05, centre=True)
+            place_picture(slide, png, top, tail_top - 0.05, centre=True, caption=caption)
             if shaped:
                 at = tail_top
                 for kind, payload in classify(lead):
@@ -626,10 +658,11 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
     # printing its labels at five points.
     column = None
     if one_picture and layout == "column" and not single_exhibit:
-        png_probe = render_mermaid(pictures[0][1])
+        png_probe, caption = picture_for(*pictures[0], ctx.get("folder"))
         if png_probe:
             column = (MARGIN + 0.47 * WIDTH, 0.53 * WIDTH)
-            place_picture(slide, png_probe, BODY_TOP, BODY_BOTTOM, 0.43 * WIDTH, centre=True)
+            place_picture(slide, png_probe, BODY_TOP, BODY_BOTTOM, 0.43 * WIDTH, centre=True,
+                          caption=caption)
 
     # A picture that comes last on a crowded slide used to get whatever height the words left,
     # which on a slide carrying a claim, a table and a second claim is almost nothing. It gets a
@@ -645,7 +678,7 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
     # so a slide carrying a claim, a table, a mental model and a recap picture can set its words
     # in two columns above and still give the picture the width its labels need.
     trailing = (reserve and one_picture and not column
-                and blocks and blocks[-1][0] == "mermaid")
+                and blocks and blocks[-1][0] in PICTURES)
     floor = max(BODY_TOP + 1.2, BODY_BOTTOM - reserve) if trailing else BODY_BOTTOM
 
     split_at = None
@@ -666,20 +699,20 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
     for bi, (mode, lines) in enumerate(blocks):
         if split_at is not None and bi == split_at:
             x, top = MARGIN + WIDTH / 2 + 0.3, BODY_TOP
-        if mode == "mermaid" and column:
+        if mode in PICTURES and column:
             # Already drawn in its own column, so it is neither placed here nor dropped.
             continue
-        limit = BODY_BOTTOM if mode == "mermaid" else floor
+        limit = BODY_BOTTOM if mode in PICTURES else floor
         # A block is dropped when it does not fit, not when it merely starts late. Testing the
         # start alone let a two line claim begin above the line and finish under the footer.
-        needs = 0.3 if mode == "mermaid" else block_height(mode, lines, w, scale, section)
+        needs = 0.3 if mode in PICTURES else block_height(mode, lines, w, scale, section)
         if top + needs > limit + 0.05:
             dropped += 1
             continue
         if mode == "table" and not section:
             after = sum(block_height(m2, l2, w, scale, section)
                         for m2, l2 in blocks[bi + 1:]
-                        if not (m2 == "mermaid" and column))
+                        if not (m2 in PICTURES and column))
             top = table(slide, lines, top, w, max(1.0, floor - top - after), scale, x)
         elif mode == "code":
             top = code_card(slide, top, lines, w, scale, x)
@@ -693,8 +726,8 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
             top = bar(slide, top, lines, w, scale, x)
         elif mode == "notes":
             continue
-        elif mode == "mermaid" and not section:
-            png = render_mermaid(lines)
+        elif mode in PICTURES and not section:
+            png, caption = picture_for(mode, lines, ctx.get("folder"))
             if png:
                 pic_x, pic_w = (MARGIN, WIDTH) if trailing else (x, w)
                 # Under two columns the picture waits for the band, since the column it would
@@ -703,7 +736,8 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
                 # under a short client strip with the drawing stranded at the foot.
                 at = max(top, floor) if (trailing and split_at is not None) else top
                 top = place_picture(slide, png, at, BODY_BOTTOM, pic_w,
-                                    centre=trailing and split_at is not None, left=pic_x)
+                                    centre=trailing and split_at is not None, left=pic_x,
+                                    caption=caption)
             else:
                 top = code_card(slide, top, lines, w, scale, x)
         else:
@@ -735,7 +769,7 @@ def centre_body(slide, mark, section=False, skip_pictures=False, bottom=BODY_BOT
     than the bottom of the slide, because centring them against the slide walks them onto it.
     """
     added = [sh for sh in list(slide.shapes)[mark:]
-             if not (skip_pictures and sh.name == MERMAID_PIC)]
+             if not (skip_pictures and sh.name in (MERMAID_PIC, CAPTION))]
     if not added:
         return
     top = min(sh.top for sh in added)
@@ -873,6 +907,7 @@ def build(src, out, footer):
     prs = Presentation()
     prs.slide_width, prs.slide_height = Inches(SLIDE_W), Inches(SLIDE_H)
     md = pathlib.Path(src).read_text()
+    folder = pathlib.Path(src).parent
     slides = parse(md)
     meta = deck_meta(md, pathlib.Path(src).stem)
     prepare_icons(slides)
@@ -907,11 +942,20 @@ def build(src, out, footer):
             continue
         m = SLIDE_ID.match(title)
         ctx = {"subtitle": subtitle, "chapters": chapters or None, "current": current,
-               "header": meta.get("header"),
+               "header": meta.get("header"), "folder": folder,
                "slide_id": f"{m.group(1)}{m.group(2)}{m.group(3)}" if m else None}
         body = drawn
         mark = len(s.shapes)
-        widths = [css_width(b) for m, b in split_blocks(body) if m == "mermaid"]
+        widths = []
+        for kind, b in split_blocks(body):
+            if kind == "image":
+                path = folder / IMAGE.match(b[0].strip()).group(2)
+                if not path.exists():
+                    raise SystemExit(f"FAIL  slide {n} ({title[:44]}): the picture {path} does "
+                                     f"not exist, so the slide would ship without it.")
+                widths.append(image_size(image_file(path))[0])
+            elif kind == "mermaid":
+                widths.append(css_width(b))
         # Three ways to give a slide's picture room: a band reserved at the foot, the words
         # running the whole width with the picture in what is left, or the picture beside the
         # words. The band is tried at four depths, because reserving what the picture wants can
@@ -1002,3 +1046,6 @@ if __name__ == "__main__":
 # Any rebuilt deck, unzipped
 #     Holds one image in ppt/media for each distinct picture on its slides and nothing the layout
 #     search left behind.
+# A slide holding ![Q2 by week](figures/q2.png), the path relative to the deck's markdown
+#     Places it as a mermaid picture, its caption one small line under it, a .gif as its
+#     _still.png or first frame; a missing file stops the build with FAIL and the slide number.
