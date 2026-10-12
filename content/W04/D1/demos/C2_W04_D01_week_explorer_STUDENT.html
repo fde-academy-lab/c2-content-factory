@@ -320,11 +320,11 @@ var W4 = {
     hundred: {both: 25, aOnly: 9, bOnly: 46, none: 20},   /* derived: 100 carts in the case's proportions */
     views: 60000, ctrMilk: 0.012, ctrOther: 0.064, add: 0.5, margin: 9,   /* case Wed L5 and ticket */
     /* partners for a cart holding chips: [name, share of chips carts holding it, lift, source] */
-    chips: [["Toned milk", 0.69, 0.97, "band"], ["Cold drink", 0.42, 3.4, "case"], ["Bread", 0.34, 1.00, "toy"],
+    chips: [["Toned milk", 0.70, 0.99, "band"], ["Cold drink", 0.42, 3.4, "case"], ["Bread", 0.34, 1.00, "toy"],
             ["Namkeen", 0.20, 2.1, "toy"], ["Dip", 0.15, 2.6, "toy"]],
     /* pairs: [name, support percent, lift, source]; "band" sits inside the case's milk band, lift 0.96 to 1.08 */
     pairs: [["bread + milk", 25.2, 1.04, "case"], ["eggs + milk", 21.2, 1.03, "case"], ["curd + milk", 18.2, 0.99, "band"],
-            ["bananas + milk", 16.6, 1.01, "band"], ["cold drink + milk", 8.6, 0.99, "band"], ["chips + milk", 8.3, 0.97, "band"],
+            ["bananas + milk", 16.6, 1.01, "band"], ["cold drink + milk", 8.6, 0.99, "band"], ["chips + milk", 8.4, 0.99, "band"],
             ["ice cream + milk", 2.9, 1.03, "band"], ["chips + cold drink", 5.0, 3.4, "case"], ["ice cream + chocolate sauce", 0.25, 4.6, "case"]]
   },
   thu: {
@@ -345,7 +345,7 @@ var W4 = {
     },
     /* toy, programme-written: an AI app's launch cohort against organic cohorts, weekly retention in percent */
     launch: 100000, organic: 10000,
-    launchRate: [70, 46, 30, 22, 19, 17, 16, 15], organicRate: [50, 42, 38, 36, 35, 34, 34, 33]
+    launchRate: [70, 46, 30, 24, 20, 18, 17, 16], organicRate: [50, 42, 38, 36, 35, 34, 34, 33]
   },
   fri: {
     firstWeek: "2024-09-30",                        /* case Fri ticket: weeks beginning 30 September 2024 to 21 September 2026 */
@@ -940,7 +940,7 @@ var W4 = {
       <div class="reveal" hidden>
         <p class="check"></p>
         <p>At a floor of 1 percent of carts, 400 of the 40,000, eight of the nine pairs survive. Ice cream with chocolate sauce has the highest lift, 4.6, and falls off: it sits in 0.25 percent of carts, 100 carts in four weeks, too few to repay a slot, so it goes on a watch list. Chips with cold drink, at 5.0 percent of carts and lift 3.4, is the pair to promote; the milk pairs sit high on support and near one on lift, the popular-partner trap.</p>
-        <p>Lift on a handful of carts is a promise, and support says how many shoppers would see it kept. The floor decides which promises are big enough to act on.</p>
+        <p>A lift of 4.6 on 100 carts says those 100 shoppers bought the two together far more often than chance, and nothing about the other 39,900. The support floor drops every pair too rare to repay a slot before lift is read at all.</p>
         <p class="formula"><b>The formula, last</b>act above the floor, watch below it; support(A and B) = carts with both / all carts</p>
       </div>
     </article>
@@ -995,7 +995,7 @@ var W4 = {
       <div class="reveal" hidden>
         <p class="check"></p>
         <p>Every row falls month by month, and each cohort starts lower than the one before: 58, 56, 55, 53, 52, 50 and 49 percent in month one, then the sale cohort's 31. The dashboard still reads 38 percent from June to September. The cohorts it counts sit on slow plateaus, and the newest, weakest, biggest cohort is outside its count until it reaches its second month in October.</p>
-        <p>A blend can stay flat while every part of it shrinks, as long as new parts keep arriving and the weakest part has not been counted yet. The flat number hides a collapse that only the rows show.</p>
+        <p>A blend can stay flat while every part of it shrinks, as long as new parts keep arriving and the weakest part has not been counted yet.</p>
         <p class="formula"><b>The formula, last</b>blend = sum of (cohort size x cohort rate) / sum of sizes, over the cohorts the dashboard counts</p>
       </div>
     </article>
@@ -1031,7 +1031,7 @@ var W4 = {
       <div class="reveal" hidden>
         <p class="check"></p>
         <p>Last month 50 of batch A's 100 were coming, 50 percent. This month A has 40 of 100 and B has 210 of 400, so 250 of 500 are coming: still 50 percent, while batch A fell from 50 to 40.</p>
-        <p>The blend is an average weighted by size, so a large young batch at a high early rate holds it up while every batch falls with age. Next month B ages too, and the blend has nothing left to hide behind.</p>
+        <p>The blend is an average weighted by size, so a large young batch at a high early rate holds it up while every batch falls with age. Next month B ages too, and unless another large batch joins, the blend starts to fall.</p>
         <p class="formula"><b>The formula, last</b>blend = (100 x 0.40 + 400 x 0.525) / (100 + 400) = (40 + 210) / 500 = 0.50</p>
       </div>
     </article>
@@ -1098,8 +1098,8 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>At week four the launch cohort keeps 22 percent and the organic cohort 36 percent: the launch spike was novelty. The blended actives fall to 35,000 in week four and climb back to 41,900 by week eight, because organic cohorts keep joining, so a blended chart reads as recovery while the launch cohort keeps falling.</p>
-        <p>Novelty fades in weeks; habit is what is left after it fades. Judge each cohort at the age where habit shows, and read the blend only as a sum of cohorts.</p>
+        <p>At week four the launch cohort keeps 24 percent and the organic cohort 36 percent: the launch spike was novelty. The blended actives fall to 36,600 in week five and climb back to 42,900 by week eight, because organic cohorts keep joining, so a blended chart reads as recovery while the launch cohort keeps falling.</p>
+        <p>Between week one and week four the launch cohort loses 46 of every 100 who joined and an organic cohort loses 14, so a launch's first weeks measure novelty. Judge each cohort at week four or later, and read the blend only as a sum of cohorts.</p>
         <p class="formula"><b>The formula, last</b>judge a cohort at the age where habit shows, never the blend</p>
       </div>
     </article>
@@ -1198,7 +1198,7 @@ var W4 = {
       <div class="reveal" hidden>
         <p class="check"></p>
         <p>On the 13 weeks no method saw, the festival-aligned baseline with drift misses by 8,900 shipments a week on average, same week last year by 9,200, the vendor's curve by 14,800 and the naive by 21,000. The vendor's curve hugs the 91 weeks it was fitted on and still misses by more than half again the baseline's error on the weeks it never saw.</p>
-        <p>Priced with the two unit costs, the ranking changes: 12 of the vendor's 13 errors are too high, idle shifts at about Rs 5.4 a shipment, so they cost less than the baseline's mixed errors. The same size of error is cheap in one direction and dear in the other, which is why Friday's plan starts from the most accurate baseline and is raised above its middle on purpose, by the amount the costs justify, rather than bought from a curve that runs high by accident.</p>
+        <p>Priced with the two unit costs, the ranking changes: 12 of the vendor's 13 errors are too high, idle shifts at about Rs 5.4 a shipment, so they cost less than the baseline's mixed errors. The same size of error is cheap in one direction and dear in the other, which is why Friday's plan starts from the most accurate baseline and is raised above its middle on purpose, by the amount the costs justify.</p>
         <div data-board></div>
         <p class="formula"><b>The formula, last</b>MAE = mean of |forecast - actual| over the held-out weeks, fixed before anyone scores</p>
       </div>
@@ -1329,7 +1329,7 @@ var W4 = {
       <div class="reveal" hidden>
         <p class="check"></p>
         <p>Across all eight units the method stays: the number is defined with its guardrails and said on one slide, judged against chance, the blend or the baseline, broken down by cohort and step, and its error priced in each direction. What changes is the metric, the constraint and what a wrong number costs, which is what each unit's card shows.</p>
-        <p>An interviewer who moves a question to a business you have never seen is checking for exactly this: that you carry the method across and rebuild only the parts that belong to the business.</p>
+        <p>An interviewer who moves a question to a business you have never seen wants to see you carry the method across and rebuild only the parts that belong to the business.</p>
         <p class="formula"><b>The formula, last</b>what stays is the method; what changes is the metric, the constraint and the cost of an error</p>
       </div>
     </article>
@@ -2820,7 +2820,7 @@ var W4 = {
       var svg = svgRoot(680, 420, "Lift against support for nine pairs, with a movable floor");
       [0.1, 0.3, 1, 3, 10, 30].forEach(function (t) {
         add(svg, "line", { x1: W5X(t), x2: W5X(t), y1: 40, y2: 360, stroke: C.line });
-        txt(svg, W5X(t), 380, t + "%", { size: 13, anchor: "middle", fill: C.muted });
+        if (t === 0.1 || t === 1 || t === 10) txt(svg, W5X(t), 380, t + "%", { size: 13, anchor: "middle", fill: C.muted });
       });
       [1, 2, 3, 4, 5].forEach(function (t) {
         add(svg, "line", { x1: 80, x2: 640, y1: W5Y(t), y2: W5Y(t), stroke: t === 1 ? C.night : C.line, "stroke-width": t === 1 ? 1.5 : 1 });
