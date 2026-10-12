@@ -1090,6 +1090,131 @@ check("weekly rerun: the sale week's cohort is the largest, the highest in week 
       {w: (int(WEEKLY_SIZE[w]), r3(WEEKLY.loc[w, 1]), r3(WEEKLY.loc[w, 2])) for w in WEEKLY.index})
 fact("zone_sep_spread", r3((zone_sep - DASH["2026-09"][0]).abs().max()), "share",
      "largest gap between a zone's September dashboard rate and the city's", "L4 seasonality", f"{100 * (zone_sep - DASH['2026-09'][0]).abs().max():.1f} points")
+# ---- the checks a hard interviewer asks for: the same step, the cohorts held fixed, the noise, the retries,
+# ---- the version, the order records and the drop counted over everyone (the second cold read)
+for m in REPORTING[:3]:
+    v, n, a = EVERY[m]
+    fact(f"everyone_{NAMES[m].lower()}", r4(v), "share", f"every member who joined before {NAMES[m]} and ordered in it, {a:,} of {n:,}",
+         "L2 the drop the dashboard hides; the transcript", f"{100 * v:.1f} percent")
+    fact(f"everyone_{NAMES[m].lower()}_counted", n, "members", f"every member who joined before {NAMES[m]}", "L2", f"{n:,}")
+    fact(f"everyone_{NAMES[m].lower()}_ordered", a, "members", f"of them, those who ordered in {NAMES[m]}", "L2", f"{a:,}")
+check("counted over everyone, the series falls every month from June to September",
+      EVERY["2026-06"][0] > EVERY["2026-07"][0] > EVERY["2026-08"][0] > EVERY["2026-09"][0])
+coh_of = mem_df.set_index("member_id")["cohort_month"]
+sess["cohort"] = sess["user_id"].map(coh_of)
+
+
+def completion(df):
+    return df["order_placed"].sum() / df["checkout_start"].sum()
+
+
+for is_m, p, slug in ((True, "ios", "member_ios"), (False, "android", "nonmember_android")):
+    for per in ("before", "after"):
+        v = completion(sess[(sess.is_member == is_m) & (sess.platform == p) & (sess.period == per)])
+        fact(f"checkout_to_order_{slug}_{per}", r4(v), "share",
+             f"checkout_start to order_placed sessions, {slug.replace('_', ' on ')}, {per} 14 September",
+             "L4 the comparators on the same step", f"{round(100 * v)} percent")
+held = sess[sess.is_member & (sess.cohort < "2026-08")]
+for p in ("android", "ios"):
+    for per in ("before", "after"):
+        sub = held[(held.platform == p) & (held.period == per)]
+        fact(f"held_checkout_to_order_{p}_{per}", r4(completion(sub)), "share",
+             f"members who joined before August, {p}, checkout_start to order_placed, {per} 14 September",
+             "L4 the cohorts held fixed", f"{100 * completion(sub):.1f} percent")
+        fact(f"held_atc_to_order_{p}_{per}", r4(conv(sub)), "share",
+             f"members who joined before August, {p}, add_to_cart to order_placed, {per} 14 September",
+             "L4 the cohorts held fixed", f"{round(100 * conv(sub))} percent")
+ios_fall = completion(held[(held.platform == "ios") & (held.period == "after")]) - \
+    completion(held[(held.platform == "ios") & (held.period == "before")])
+check("held fixed, iOS completion moves by under a point while Android's falls by more than 15",
+      abs(ios_fall) < 0.01 and completion(held[(held.platform == "android") & (held.period == "before")])
+      - completion(held[(held.platform == "android") & (held.period == "after")]) > 0.15)
+sale_ids = set(mem_df.loc[mem_df.signup_channel == "sale", "member_id"])
+sw_ios = sess[sess.is_member & (sess.platform == "ios") & sess.user_id.isin(sale_ids)]
+for per in ("before", "after"):
+    v = conv(sw_ios[sw_ios.period == per])
+    fact(f"sale_week_ios_atc_to_order_{per}", r4(v), "share",
+         f"sale-week members on iOS, add_to_cart to order_placed, {per} 14 September (they age from month zero to month one across the cut)",
+         "the trainer's [D] follow-up", f"{round(100 * v)} percent")
+plat_of = {m["member_id"]: m["platform"] for m in members}
+mm_p = mm[mm.month.isin(["2026-08", "2026-09"]) & mm.active & (mm.cohort_month < "2026-08")].copy()
+mm_p["platform"] = mm_p["member_id"].map(plat_of)
+for p in ("android", "ios"):
+    for month in ("2026-08", "2026-09"):
+        v = mm_p[(mm_p.platform == p) & (mm_p.month == month)]["orders"].mean()
+        fact(f"held_orders_per_active_{p}_{NAMES[month].lower()}", r2(v), "orders",
+             f"orders per ordering {p} member who joined before August, {NAMES[month]}",
+             "L4 fewer users or less use, the cohorts held fixed", f"{v:.2f}")
+share_android = mem_df.assign(p=mem_df.member_id.map(plat_of)).groupby("cohort_month")["p"].apply(lambda s: (s == "android").mean())
+fact("android_share_cohort_low", r3(share_android.min()), "share", "the lowest share of a cohort on Android",
+     "the trainer's [D] follow-up", f"{round(100 * share_android.min())} percent")
+fact("android_share_cohort_high", r3(share_android.max()), "share", "the highest share of a cohort on Android",
+     "the trainer's [D] follow-up", f"{round(100 * share_android.max())} percent")
+and_orders = sess[sess.is_member & (sess.platform == "android") & sess.order_placed]
+days_before = (pd.Timestamp(RELEASE) - pd.Timestamp("2026-08-01")).days
+wk_before = (and_orders.period == "before").sum() / days_before * 7
+wk_after = (and_orders.period == "after").sum() / 17 * 7
+fact("android_member_orders_week_before", round(wk_before), "orders", "Android member orders a week, 1 August to 13 September",
+     "L5 the loss as a share", f"{round(wk_before):,}")
+fact("android_member_orders_week_after", round(wk_after), "orders", "Android member orders a week, 14 to 30 September",
+     "L5 the loss as a share", f"{round(wk_after):,}")
+drift = ((RELEASE_SPLIT[(True, "ios", "before")] - RELEASE_SPLIT[(True, "ios", "after")])
+         + (RELEASE_SPLIT[(False, "android", "before")] - RELEASE_SPLIT[(False, "android", "after")])) / 2
+netted = (RELEASE_SPLIT[(True, "android", "before")] - RELEASE_SPLIT[(True, "android", "after")] - drift) \
+    * step_after["add_to_cart"].sum() / (17 / 7)
+fact("comparator_drift_points", r2(100 * drift), "points", "the comparators' own fall, iOS members and non-members on Android, averaged",
+     "L5 the netted loss", f"{100 * drift:.0f} point")
+fact("lost_orders_per_week_netted", round(netted), "orders",
+     "the lost-order estimate after taking off the fall the comparators show anyway", "L5 the cost range", f"{round(netted):,}")
+fact("lost_value_per_week_netted_low_rs", round(netted) * 300, "Rs", "the netted loss at Rs 300 an order",
+     "L5 the cost range", f"Rs {round(netted) * 300 / 1e5:.1f} lakh")
+fact("lost_share_of_android_orders", r2(round(lost_estimate_week) / wk_before), "share",
+     "the loss a week over Android member orders a week before the release", "L5 the loss as a share",
+     f"{round(100 * round(lost_estimate_week) / wk_before)} percent")
+starts_m = int(step_after["checkout_start"].sum())
+starts_nm = int(sess[(~sess.is_member) & (sess.platform == "android") & (sess.period == "after")]["checkout_start"].sum())
+fact("android_member_starts_after", starts_m, "sessions", "Android member checkout_start sessions, 14 to 30 September",
+     "L4 noise", f"{starts_m:,}")
+fact("nonmember_android_starts_after", starts_nm, "sessions", "non-member Android checkout_start sessions, 14 to 30 September",
+     "L4 noise", f"{starts_nm:,}")
+fact("noise_points_android_members", r2(100 / starts_m ** 0.5), "points", "1 / square root of the starts, in points",
+     "L4 noise", f"{100 / starts_m ** 0.5:.1f} points")
+fact("noise_points_nonmember_android", r2(100 / starts_nm ** 0.5), "points", "1 / square root of the starts, in points",
+     "L4 noise", f"{100 / starts_nm ** 0.5:.1f} points")
+st = ev[ev.is_member].groupby("session_id").agg(user_id=("user_id", "first"), t=("event_ts", "min"),
+                                                platform=("platform", "first"))
+st["t"] = pd.to_datetime(st["t"])
+st = st.join(sess[["checkout_start", "order_placed"]])
+failed = st[st.checkout_start & ~st.order_placed].sort_values("t").reset_index()
+ordered = st[st.order_placed].sort_values("t").reset_index()[["user_id", "t"]].rename(columns={"t": "next_order"})
+nxt = pd.merge_asof(failed, ordered, left_on="t", right_on="next_order", by="user_id",
+                    direction="forward", allow_exact_matches=False)
+nxt["retried"] = (nxt["next_order"] - nxt["t"]) <= pd.Timedelta(days=1)
+nxt["period"] = (nxt["t"] >= pd.Timestamp(RELEASE)).map({True: "after", False: "before"})
+for per in ("before", "after"):
+    v = nxt[(nxt.platform == "android") & (nxt.period == per)]["retried"].mean()
+    fact(f"retry_within_day_android_{per}", r4(v), "share",
+         f"Android member sessions that started checkout with no order, followed by the same member's order within a day, {per}",
+         "the upper-bound push", f"{100 * v:.1f} percent")
+v2 = sess[(sess.platform == "android") & (sess.period == "after")]["checkout_version"].eq("v2").mean()
+v1 = sess[(sess.platform != "android") | (sess.period == "before")]["checkout_version"].eq("v1").mean()
+check("every Android session from 14 September runs v2, and every other session v1", v2 == 1 and v1 == 1, r4(v2), r4(v1))
+fact("android_v2_share_after", r4(v2), "share", "Android sessions on checkout v2 from 14 September", "L4 the version",
+     "every Android session")
+for month in ("2026-08", "2026-09"):
+    n_mm = int(mm[mm.month == month]["orders"].sum())
+    fact(f"order_records_{NAMES[month].lower()}", n_mm, "orders", f"member orders in member_months, {NAMES[month]}",
+         "L4 the tracking check", f"{n_mm:,}")
+    fact(f"event_orders_{NAMES[month].lower()}", int(placed[placed.month == month].shape[0]), "orders",
+         f"member order_placed sessions in the event log, {NAMES[month]}", "L4 the tracking check",
+         f"{int(placed[placed.month == month].shape[0]):,}")
+n_both = int((reach["menu_view"] & reach["search"]).sum())
+fact("sep_sessions_search_and_menu", n_both, "sessions", "member sessions in September with a search and a menu view",
+     "L3 the fix's working", f"{n_both:,}")
+for w, v in weekly.items():
+    fact(f"android_member_week_{w.start_time.date().isoformat()}", r4(v), "share",
+         f"Android members, add_to_cart to order_placed, the week of {w.start_time.date().isoformat()}",
+         "L3 the weekly series", f"{round(100 * v)} percent")
 fact("events_rows", len(ev), "rows", "rows of events", "notebook 03", f"{len(ev):,}")
 fact("events_sessions", int(ev.session_id.nunique()), "sessions", "sessions in events", "notebook 03",
      f"{ev.session_id.nunique():,}")
@@ -1207,6 +1332,14 @@ derived = [
     {"id": "sale_week_w1_ordered", "value": int(round(WEEKLY.loc["2026-08-17", 1] * WEEKLY_SIZE["2026-08-17"])),
      "how": "of the sale week's cohort, those with an order from 24 to 30 August", "used_by": "the self-check's second route"},
     {"id": "simpson_paper_year", "value": 1951, "how": "public fact, the notes' ORIGIN line", "used_by": "the notes"},
+    {"id": "month_count_sep_2026", "value": 2026 * 12 + 9, "how": "year x 12 + month for September 2026",
+     "used_by": "notebook 02's worked age"},
+    {"id": "month_count_jul_2026", "value": 2026 * 12 + 7, "how": "year x 12 + month for July 2026",
+     "used_by": "notebook 02's worked age"},
+    {"id": "july_drop_m1_to_m2_points", "value": float(round(100 * (tri.loc["2026-07", 1] - tri.loc["2026-07", 2]), 1)),
+     "how": "July's month one less its month two, in points (49 to 38.5)", "used_by": "the October assumption"},
+    {"id": "simpson_volume_pages", "value": "13 238 241", "how": "Simpson (1951), JRSS B volume 13, pages 238 to 241",
+     "used_by": "the notes' ORIGIN line"},
 ]
 check("the weekly cohorts sum to the members who joined 3 August to 13 September",
       int(WEEKLY_SIZE.sum()) == sum(1 for m in members if D(2026, 8, 3) <= m["signup_date"] <= D(2026, 9, 13)),

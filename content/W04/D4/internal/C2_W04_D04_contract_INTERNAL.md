@@ -76,6 +76,9 @@ Written by `C2_W04_D04_generate_INTERNAL.py`; every line must read PASS.
 | PASS | twelve rows: no hand-counted rate within five points of a Kalpa retention plant | 0.062 |  |
 | PASS | shared constants equal Monday's (the values Monday's branch writes (origin/w04-d1, commit 0f9cf0c)) |  |  |
 | PASS | weekly rerun: the sale week's cohort is the largest, the highest in week one and the lowest in week two | {'2026-08-03': (1137, 0.29, 0.303), '2026-08-10': (1112, 0.376, 0.381), '2026-08-17': (9108, 0.531, 0.122), '2026-08-24': (1122, 0.325, 0.151), '2026-08-31': (1166, 0.267, 0.225), '2026-09-07': (1247, 0.338, 0.314)} |  |
+| PASS | counted over everyone, the series falls every month from June to September |  |  |
+| PASS | held fixed, iOS completion moves by under a point while Android's falls by more than 15 |  |  |
+| PASS | every Android session from 14 September runs v2, and every other session v1 | 1.0 | 1.0 |
 | PASS | the practice set's and the quiz's blends hold flat, neither at 38 nor 41 | [[51.0, 51.0], [46.0, 46.0]] |  |
 | PASS | the weekly cohorts sum to the members who joined 3 August to 13 September | 14892 |  |
 | PASS | the sale week's cohort is the sale-week members and that week's organic joiners |  |  |

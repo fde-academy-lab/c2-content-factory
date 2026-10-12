@@ -1110,6 +1110,352 @@ numbers:
   how: largest gap between a zone's September dashboard rate and the city's
   used_by: L4 seasonality
   printed: 0.9 points
+- id: everyone_jun
+  value: 0.4089
+  unit: share
+  how: every member who joined before Jun and ordered in it, 10,273 of 25,122
+  used_by: L2 the drop the dashboard hides; the transcript
+  printed: 40.9 percent
+- id: everyone_jun_counted
+  value: 25122
+  unit: members
+  how: every member who joined before Jun
+  used_by: L2
+  printed: 25,122
+- id: everyone_jun_ordered
+  value: 10273
+  unit: members
+  how: of them, those who ordered in Jun
+  used_by: L2
+  printed: 10,273
+- id: everyone_jul
+  value: 0.3997
+  unit: share
+  how: every member who joined before Jul and ordered in it, 11,968 of 29,943
+  used_by: L2 the drop the dashboard hides; the transcript
+  printed: 40.0 percent
+- id: everyone_jul_counted
+  value: 29943
+  unit: members
+  how: every member who joined before Jul
+  used_by: L2
+  printed: 29,943
+- id: everyone_jul_ordered
+  value: 11968
+  unit: members
+  how: of them, those who ordered in Jul
+  used_by: L2
+  printed: 11,968
+- id: everyone_aug
+  value: 0.3953
+  unit: share
+  how: every member who joined before Aug and ordered in it, 13,837 of 35,000
+  used_by: L2 the drop the dashboard hides; the transcript
+  printed: 39.5 percent
+- id: everyone_aug_counted
+  value: 35000
+  unit: members
+  how: every member who joined before Aug
+  used_by: L2
+  printed: 35,000
+- id: everyone_aug_ordered
+  value: 13837
+  unit: members
+  how: of them, those who ordered in Aug
+  used_by: L2
+  printed: 13,837
+- id: checkout_to_order_member_ios_before
+  value: 0.7125
+  unit: share
+  how: checkout_start to order_placed sessions, member on ios, before 14 September
+  used_by: L4 the comparators on the same step
+  printed: 71 percent
+- id: checkout_to_order_member_ios_after
+  value: 0.7
+  unit: share
+  how: checkout_start to order_placed sessions, member on ios, after 14 September
+  used_by: L4 the comparators on the same step
+  printed: 70 percent
+- id: checkout_to_order_nonmember_android_before
+  value: 0.6499
+  unit: share
+  how: checkout_start to order_placed sessions, nonmember on android, before 14 September
+  used_by: L4 the comparators on the same step
+  printed: 65 percent
+- id: checkout_to_order_nonmember_android_after
+  value: 0.6375
+  unit: share
+  how: checkout_start to order_placed sessions, nonmember on android, after 14 September
+  used_by: L4 the comparators on the same step
+  printed: 64 percent
+- id: held_checkout_to_order_android_before
+  value: 0.703
+  unit: share
+  how: members who joined before August, android, checkout_start to order_placed, before 14 September
+  used_by: L4 the cohorts held fixed
+  printed: 70.3 percent
+- id: held_atc_to_order_android_before
+  value: 0.5542
+  unit: share
+  how: members who joined before August, android, add_to_cart to order_placed, before 14 September
+  used_by: L4 the cohorts held fixed
+  printed: 55 percent
+- id: held_checkout_to_order_android_after
+  value: 0.5359
+  unit: share
+  how: members who joined before August, android, checkout_start to order_placed, after 14 September
+  used_by: L4 the cohorts held fixed
+  printed: 53.6 percent
+- id: held_atc_to_order_android_after
+  value: 0.4258
+  unit: share
+  how: members who joined before August, android, add_to_cart to order_placed, after 14 September
+  used_by: L4 the cohorts held fixed
+  printed: 43 percent
+- id: held_checkout_to_order_ios_before
+  value: 0.6857
+  unit: share
+  how: members who joined before August, ios, checkout_start to order_placed, before 14 September
+  used_by: L4 the cohorts held fixed
+  printed: 68.6 percent
+- id: held_atc_to_order_ios_before
+  value: 0.5408
+  unit: share
+  how: members who joined before August, ios, add_to_cart to order_placed, before 14 September
+  used_by: L4 the cohorts held fixed
+  printed: 54 percent
+- id: held_checkout_to_order_ios_after
+  value: 0.693
+  unit: share
+  how: members who joined before August, ios, checkout_start to order_placed, after 14 September
+  used_by: L4 the cohorts held fixed
+  printed: 69.3 percent
+- id: held_atc_to_order_ios_after
+  value: 0.5442
+  unit: share
+  how: members who joined before August, ios, add_to_cart to order_placed, after 14 September
+  used_by: L4 the cohorts held fixed
+  printed: 54 percent
+- id: sale_week_ios_atc_to_order_before
+  value: 0.6271
+  unit: share
+  how: sale-week members on iOS, add_to_cart to order_placed, before 14 September (they age from month
+    zero to month one across the cut)
+  used_by: the trainer's [D] follow-up
+  printed: 63 percent
+- id: sale_week_ios_atc_to_order_after
+  value: 0.4347
+  unit: share
+  how: sale-week members on iOS, add_to_cart to order_placed, after 14 September (they age from month
+    zero to month one across the cut)
+  used_by: the trainer's [D] follow-up
+  printed: 43 percent
+- id: held_orders_per_active_android_aug
+  value: 1.45
+  unit: orders
+  how: orders per ordering android member who joined before August, Aug
+  used_by: L4 fewer users or less use, the cohorts held fixed
+  printed: '1.45'
+- id: held_orders_per_active_android_sep
+  value: 1.24
+  unit: orders
+  how: orders per ordering android member who joined before August, Sep
+  used_by: L4 fewer users or less use, the cohorts held fixed
+  printed: '1.24'
+- id: held_orders_per_active_ios_aug
+  value: 1.44
+  unit: orders
+  how: orders per ordering ios member who joined before August, Aug
+  used_by: L4 fewer users or less use, the cohorts held fixed
+  printed: '1.44'
+- id: held_orders_per_active_ios_sep
+  value: 1.45
+  unit: orders
+  how: orders per ordering ios member who joined before August, Sep
+  used_by: L4 fewer users or less use, the cohorts held fixed
+  printed: '1.45'
+- id: android_share_cohort_low
+  value: 0.697
+  unit: share
+  how: the lowest share of a cohort on Android
+  used_by: the trainer's [D] follow-up
+  printed: 70 percent
+- id: android_share_cohort_high
+  value: 0.713
+  unit: share
+  how: the highest share of a cohort on Android
+  used_by: the trainer's [D] follow-up
+  printed: 71 percent
+- id: android_member_orders_week_before
+  value: 5064
+  unit: orders
+  how: Android member orders a week, 1 August to 13 September
+  used_by: L5 the loss as a share
+  printed: 5,064
+- id: android_member_orders_week_after
+  value: 4138
+  unit: orders
+  how: Android member orders a week, 14 to 30 September
+  used_by: L5 the loss as a share
+  printed: 4,138
+- id: comparator_drift_points
+  value: 1.0
+  unit: points
+  how: the comparators' own fall, iOS members and non-members on Android, averaged
+  used_by: L5 the netted loss
+  printed: 1 point
+- id: lost_orders_per_week_netted
+  value: 1223
+  unit: orders
+  how: the lost-order estimate after taking off the fall the comparators show anyway
+  used_by: L5 the cost range
+  printed: 1,223
+- id: lost_value_per_week_netted_low_rs
+  value: 366900
+  unit: Rs
+  how: the netted loss at Rs 300 an order
+  used_by: L5 the cost range
+  printed: Rs 3.7 lakh
+- id: lost_share_of_android_orders
+  value: 0.26
+  unit: share
+  how: the loss a week over Android member orders a week before the release
+  used_by: L5 the loss as a share
+  printed: 26 percent
+- id: android_member_starts_after
+  value: 18273
+  unit: sessions
+  how: Android member checkout_start sessions, 14 to 30 September
+  used_by: L4 noise
+  printed: 18,273
+- id: nonmember_android_starts_after
+  value: 1600
+  unit: sessions
+  how: non-member Android checkout_start sessions, 14 to 30 September
+  used_by: L4 noise
+  printed: 1,600
+- id: noise_points_android_members
+  value: 0.74
+  unit: points
+  how: 1 / square root of the starts, in points
+  used_by: L4 noise
+  printed: 0.7 points
+- id: noise_points_nonmember_android
+  value: 2.5
+  unit: points
+  how: 1 / square root of the starts, in points
+  used_by: L4 noise
+  printed: 2.5 points
+- id: retry_within_day_android_before
+  value: 0.3648
+  unit: share
+  how: Android member sessions that started checkout with no order, followed by the same member's order
+    within a day, before
+  used_by: the upper-bound push
+  printed: 36.5 percent
+- id: retry_within_day_android_after
+  value: 0.3511
+  unit: share
+  how: Android member sessions that started checkout with no order, followed by the same member's order
+    within a day, after
+  used_by: the upper-bound push
+  printed: 35.1 percent
+- id: android_v2_share_after
+  value: 1.0
+  unit: share
+  how: Android sessions on checkout v2 from 14 September
+  used_by: L4 the version
+  printed: every Android session
+- id: order_records_aug
+  value: 33699
+  unit: orders
+  how: member orders in member_months, Aug
+  used_by: L4 the tracking check
+  printed: 33,699
+- id: event_orders_aug
+  value: 33699
+  unit: orders
+  how: member order_placed sessions in the event log, Aug
+  used_by: L4 the tracking check
+  printed: 33,699
+- id: order_records_sep
+  value: 27212
+  unit: orders
+  how: member orders in member_months, Sep
+  used_by: L4 the tracking check
+  printed: 27,212
+- id: event_orders_sep
+  value: 27212
+  unit: orders
+  how: member order_placed sessions in the event log, Sep
+  used_by: L4 the tracking check
+  printed: 27,212
+- id: sep_sessions_search_and_menu
+  value: 116797
+  unit: sessions
+  how: member sessions in September with a search and a menu view
+  used_by: L3 the fix's working
+  printed: 116,797
+- id: android_member_week_2026-07-27
+  value: 0.5822
+  unit: share
+  how: Android members, add_to_cart to order_placed, the week of 2026-07-27
+  used_by: L3 the weekly series
+  printed: 58 percent
+- id: android_member_week_2026-08-03
+  value: 0.5774
+  unit: share
+  how: Android members, add_to_cart to order_placed, the week of 2026-08-03
+  used_by: L3 the weekly series
+  printed: 58 percent
+- id: android_member_week_2026-08-10
+  value: 0.5908
+  unit: share
+  how: Android members, add_to_cart to order_placed, the week of 2026-08-10
+  used_by: L3 the weekly series
+  printed: 59 percent
+- id: android_member_week_2026-08-17
+  value: 0.5761
+  unit: share
+  how: Android members, add_to_cart to order_placed, the week of 2026-08-17
+  used_by: L3 the weekly series
+  printed: 58 percent
+- id: android_member_week_2026-08-24
+  value: 0.58
+  unit: share
+  how: Android members, add_to_cart to order_placed, the week of 2026-08-24
+  used_by: L3 the weekly series
+  printed: 58 percent
+- id: android_member_week_2026-08-31
+  value: 0.5806
+  unit: share
+  how: Android members, add_to_cart to order_placed, the week of 2026-08-31
+  used_by: L3 the weekly series
+  printed: 58 percent
+- id: android_member_week_2026-09-07
+  value: 0.5771
+  unit: share
+  how: Android members, add_to_cart to order_placed, the week of 2026-09-07
+  used_by: L3 the weekly series
+  printed: 58 percent
+- id: android_member_week_2026-09-14
+  value: 0.4524
+  unit: share
+  how: Android members, add_to_cart to order_placed, the week of 2026-09-14
+  used_by: L3 the weekly series
+  printed: 45 percent
+- id: android_member_week_2026-09-21
+  value: 0.4323
+  unit: share
+  how: Android members, add_to_cart to order_placed, the week of 2026-09-21
+  used_by: L3 the weekly series
+  printed: 43 percent
+- id: android_member_week_2026-09-28
+  value: 0.4352
+  unit: share
+  how: Android members, add_to_cart to order_placed, the week of 2026-09-28
+  used_by: L3 the weekly series
+  printed: 44 percent
 - id: events_rows
   value: 1386235
   unit: rows
@@ -1404,6 +1750,22 @@ derived:
   value: 1951
   how: public fact, the notes' ORIGIN line
   used_by: the notes
+- id: month_count_sep_2026
+  value: 24321
+  how: year x 12 + month for September 2026
+  used_by: notebook 02's worked age
+- id: month_count_jul_2026
+  value: 24319
+  how: year x 12 + month for July 2026
+  used_by: notebook 02's worked age
+- id: july_drop_m1_to_m2_points
+  value: 10.5
+  how: July's month one less its month two, in points (49 to 38.5)
+  used_by: the October assumption
+- id: simpson_volume_pages
+  value: 13 238 241
+  how: Simpson (1951), JRSS B volume 13, pages 238 to 241
+  used_by: the notes' ORIGIN line
 twelve_rows:
   rows:
   - member_id: ZG20844

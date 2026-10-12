@@ -70,25 +70,24 @@ def draw_triangle(ax, upto=None, note=True, size=12.5):
             if cal > 9 or (upto is not None and cal > upto):
                 continue
             v = tri.loc[c, k]
-            if k == 1:
-                face = ROSE if c == "2026-08" else VIOLET
-            else:
-                face = "#B9AEF0" if v >= 0.385 else "#CFC7F4"
+            face = (ROSE if c == "2026-08" else VIOLET) if k == 1 else "#CFC7F4"
             ax.add_patch(plt.Rectangle((k - 0.5, i - 0.5), 1, 1, facecolor=face, edgecolor="white", lw=2))
             ax.text(k, i, f"{100 * v:.0f}" if k == 1 else f"{100 * v:.1f}", ha="center", va="center",
                     color="white" if k == 1 else INK, fontsize=size, fontweight="bold" if k == 1 else None)
-        ax.text(0, i, f"{sizes[c]:,}", ha="center", va="center", fontsize=size, color=MUTED)
+        if upto is None or COHORTS.index(c) + 1 <= upto:      # a cohort's size shows once it has joined
+            ax.text(0, i, f"{sizes[c]:,}", ha="center", va="center", fontsize=size, color=MUTED)
     ax.xaxis.tick_top()
     ax.set_xticks(range(0, 9))
     ax.set_xticklabels(["members"] + [str(k) for k in range(1, 9)], fontsize=size)
     ax.set_yticks(range(len(COHORTS)))
-    ax.set_yticklabels([f"{NAMES[c]}" + (" (sale)" if c == "2026-08" else "") for c in COHORTS], fontsize=size)
+    ax.set_yticklabels([NAMES[c] for c in COHORTS], fontsize=size)
     ax.tick_params(length=0)
     for s in ax.spines.values():
         s.set_visible(False)
     if note:
-        ax.text(8.45, 5.0, "months since joining run across;\nmonth one is the solid column;\n"
-                "each cell is the percent of the\ncohort who ordered that month",
+        ax.text(8.45, 5.0, "months since joining run across;\nmonth one is the solid column,\n"
+                "August's in rose, not yet counted\nby the dashboard; each cell is the\n"
+                "percent of the cohort who ordered",
                 fontsize=size, color=MUTED, va="center", ha="right")
 
 
@@ -141,19 +140,31 @@ print("wrote the GIF's first and last frames")
 
 # ------------------------------------------------------------------ 2. the curves
 fig, ax = plt.subplots(figsize=(9.0, 3.8))
+starts = [100 * tri.loc[c, 1] for c in COHORTS[:7]]           # month one, January to July, falling
+spread = []
+for v in starts:                                                 # labels at least two points apart
+    spread.append(v if not spread else min(v, spread[-1] - 2.0))
+shift = sum(v - y for v, y in zip(starts, spread)) / len(spread)
+label_y = dict(zip(COHORTS[:7], [y + shift for y in spread]))
 for c in COHORTS:
     row = tri.loc[c].dropna()
-    ax.plot(row.index, 100 * row.values, marker="o", ms=4, lw=2.4 if c == "2026-08" else 1.6,
-            color=ROSE if c == "2026-08" else VIOLET, alpha=1 if c in ("2026-01", "2026-07", "2026-08") else 0.45)
-    ax.text(row.index[-1] + 0.12, 100 * row.values[-1], NAMES[c], fontsize=12.5,
-            color=ROSE if c == "2026-08" else INK, va="center")
-ax.axhline(38, color=AMBER, lw=1.5, ls="--")
-ax.text(8.6, 39.2, "dashboard 38", color=AMBER, fontsize=12.5, ha="right")
+    aug_ = c == "2026-08"
+    ax.plot(row.index, 100 * row.values, marker="o", ms=4, lw=2.4 if aug_ else 1.6,
+            color=ROSE if aug_ else VIOLET, alpha=1 if aug_ else 0.7)
+    y0 = 100 * row.values[0] if aug_ else label_y[c]
+    ax.text(0.80, y0, f"{NAMES[c]} {100 * row.values[0]:.0f}", fontsize=12, ha="right",
+            va="center", color=ROSE if aug_ else INK)
+    ax.plot([0.82, 0.95], [y0, 100 * row.values[0]], color=MUTED, lw=0.8)
+    if not aug_ and len(row) > 1:
+        ax.text(row.index[-1] + 0.12, 100 * row.values[-1] - 0.9, NAMES[c], fontsize=12, color=INK, va="top")
+ax.text(1.12, 100 * tri.loc["2026-08", 1], "August: one month on record so far", fontsize=12, color=ROSE,
+        va="center")
 ax.set_xticks(range(1, 9))
-ax.set_xticklabels([f"month {k}" for k in range(1, 9)])
-ax.set_xlim(0.7, 8.7)
+ax.set_xticklabels([str(k) for k in range(1, 9)])
+ax.set_xlabel("months since joining")
+ax.set_xlim(-0.4, 8.7)
 ax.set_ylabel("percent who ordered")
-ax.set_ylim(28, 62)
+ax.set_ylim(28, 61)
 save(fig, "retention_curves")
 
 # ------------------------------------------------------------------ 3. the blend decomposed
@@ -191,11 +202,12 @@ sep = ev[ev.is_member & (ev.date.dt.month == 9)]
 STAGES = ["open", "search", "menu_view", "add_to_cart", "checkout_start", "order_placed"]
 per_s = sep.groupby("stage")["session_id"].nunique().reindex(STAGES)
 per_m = sep.groupby("stage")["user_id"].nunique().reindex(STAGES)
-fig, axes = plt.subplots(1, 2, figsize=(9.0, 3.4), sharey=True)
-labels = ["open to search", "search to menu view", "menu view to cart", "cart to checkout", "checkout to order"]
+fig, axes = plt.subplots(1, 2, figsize=(9.6, 3.4), sharey=True)
+labels = ["open to search", "search to menu view", "menu view to add-to-cart", "add-to-cart to checkout start",
+          "checkout start to order"]
 for ax, counts, unit in ((axes[0], per_s, "sessions"), (axes[1], per_m, "members")):
     rates = [counts[STAGES[i + 1]] / counts[STAGES[i]] for i in range(5)]
-    colours = [ROSE if r > 1 else (VIOLET if unit == "sessions" else DEEP) for r in rates]
+    colours = [ROSE if r > 1 else VIOLET for r in rates]
     ax.barh(range(5), [100 * r for r in rates], color=colours, height=0.62)
     for i, r in enumerate(rates):
         ax.text(100 * r + 3, i, f"{100 * r:.0f}", va="center", fontsize=13, color=INK)
@@ -208,6 +220,7 @@ for ax, counts, unit in ((axes[0], per_s, "sessions"), (axes[1], per_m, "members
 axes[0].invert_yaxis()
 axes[0].set_xlabel("percent of the step before")
 axes[1].set_xlabel("percent of the step before")
+fig.text(0.5, -0.14, "rose: above 100 percent, a step members can skip", ha="center", fontsize=12, color=ROSE)
 save(fig, "funnel_two_units")
 
 # ------------------------------------------------------------------ 5. the release split by week
@@ -221,18 +234,22 @@ grp = {f"members on Android: {both('member_android')}": (sess.is_member & (sess.
        f"members on iOS: {both('member_ios')}": (sess.is_member & (sess.platform == "ios"), VIOLET),
        f"non-members on Android: {both('nonmember_android')}": (~sess.is_member & (sess.platform == "android"), MUTED)}
 fig, ax = plt.subplots(figsize=(9.0, 3.9))
+first, last = sess["date"].min(), sess["date"].max()
 for name, (mask, colour) in grp.items():
     g = sess[mask].groupby(["week", "stage"])["session_id"].nunique().unstack()
     rate = g["order_placed"] / g["add_to_cart"]
-    ax.plot(range(len(rate)), 100 * rate.values, marker="o", lw=2.4, color=colour, label=name)
-weeks = list(rate.index)
-release_x = weeks.index(pd.Timestamp("2026-09-14"))
-ax.axvline(release_x - 0.5, color=INK, lw=1.2, ls="--")
-ax.text(release_x - 0.42, 63.2, "new checkout on\nAndroid, 14 Sep", fontsize=12, color=INK, va="top")
-ax.set_xticks(range(len(weeks)))
-ax.set_xticklabels([("1 Aug" if i == 0 else f"{w.day} {w:%b}") for i, w in enumerate(weeks)], fontsize=12)
-ax.set_xlabel("week starting")
-ax.set_ylabel("cart to order, percent")
+    # each week sits at the middle of the days it holds: 1 to 2 August and 28 to 30 September are short
+    mid = [max(w, first) + (min(w + pd.Timedelta(days=6), last) - max(w, first)) / 2 for w in rate.index]
+    ax.plot(mid, 100 * rate.values, marker="o", lw=2.4, color=colour, label=name)
+release = pd.Timestamp("2026-09-14")
+ax.axvline(release, color=INK, lw=1.2, ls="--")
+ax.text(release + pd.Timedelta(days=0.6), 63.2, "new checkout on\nAndroid, 14 Sep", fontsize=12, color=INK, va="top")
+mondays = pd.date_range("2026-08-03", "2026-09-28", freq="7D")
+ax.set_xticks(mondays)
+ax.set_xticklabels([f"{d.day} {d:%b}" for d in mondays], fontsize=12)
+ax.set_xlim(first - pd.Timedelta(days=1), last + pd.Timedelta(days=1))
+ax.set_xlabel("each dot is one Monday-to-Sunday week, drawn at its middle; ticks are Mondays")
+ax.set_ylabel("add-to-cart to order, percent")
 ax.set_ylim(36, 64)
 ax.legend(frameon=False, loc="lower left")
 save(fig, "release_split")
@@ -247,7 +264,7 @@ for i, (b, a) in enumerate(vals):
     ax.text(i - 0.18, 100 * b + 2.5, f"{100 * b:.1f}".replace(".0", ""), ha="center", fontsize=13)
     ax.text(i + 0.18, 100 * a + 2.5, f"{100 * a:.1f}".replace(".0", ""), ha="center", fontsize=13)
 ax.set_xticks([0, 1])
-ax.set_xticklabels(["cart to checkout start", "checkout start to order"])
+ax.set_xticklabels(["add-to-cart to checkout start", "checkout start to order"])
 ax.set_ylabel("percent of the step before")
 ax.set_ylim(0, 118)
 ax.legend(frameon=False, loc="upper right", ncol=2)
@@ -274,12 +291,14 @@ for n in facts["numbers"]:
         week, k = n["id"][len("weekly_cohort_"):].rsplit("_w", 1)
         wk.setdefault(week, {})[int(k)] = n["value"]
 fig, ax = plt.subplots(figsize=(9.0, 3.8))
+OTHER = iter([(INK, "s"), (VIOLET, "^"), (AMBER, "D"), (GREEN, "v"), (MUTED, "P")])
 for week, row in sorted(wk.items()):
     ks = sorted(row)
     sale = week == "2026-08-17"
     label = pd.Timestamp(week).strftime("%-d %b") + (", the sale week" if sale else "")
-    ax.plot(ks, [100 * row[k] for k in ks], marker="o", lw=2.8 if sale else 1.6,
-            color=ROSE if sale else VIOLET, alpha=1 if sale else 0.55, label=label)
+    colour, marker = (ROSE, "o") if sale else next(OTHER)
+    ax.plot(ks, [100 * row[k] for k in ks], marker=marker, ms=6, lw=2.8 if sale else 1.6,
+            color=colour, label=label)
 ax.set_xticks(range(1, 8))
 ax.set_xticklabels([f"week {k}" for k in range(1, 8)])
 ax.set_ylabel("percent who ordered")
