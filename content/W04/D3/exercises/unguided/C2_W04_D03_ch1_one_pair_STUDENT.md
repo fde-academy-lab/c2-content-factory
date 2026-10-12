@@ -13,9 +13,7 @@ Friday. A pair read on the wrong count either wastes a slot or loses one that wo
 
 **The questions on the way.**
 
-- What share of carts hold the pair?
-- How reliably does one item bring the other, from each side?
-- Which line computes lift, and what does it say?
+- What are the pair's three numbers, read from four counts?
 - Which second route checks the lift?
 
 Three words, defined once. **Support** is the share of carts holding both items. **Confidence** from
@@ -29,10 +27,10 @@ the carts chance alone would give (the total times A's share times B's share).
 | Carts holding green chillies | 3,200 |
 | Carts holding both | 1,440 |
 
-**What you post.** Four letters in item order, with no spaces, in this shape:
+**What you post.** Two letters in item order, with no spaces, in this shape:
 
 ```
-Post exactly this shape: xxxx
+Post exactly this shape: xx
 ```
 
 ---
@@ -42,34 +40,17 @@ Post exactly this shape: xxxx
 This comes up at work whenever someone asks "do people buy these together?" and the first honest
 answer is three numbers from four counts.
 
-### Q1. What share of the 40,000 carts hold both coriander and green chillies?
+### Q1. Which line gives the pair's support, the confidence from green chillies to coriander, and the lift, in that order?
 
-*Level L1 · asked in every analytics interview.*
+*Level L1 · asked in every analytics interview.* Work each number from the table before you read the
+options.
 
-a) 15.0 percent
-b) 3.6 percent
-c) 24 percent
-d) 45 percent
+a) 3.6 percent, 0.24 and 3.00
+b) 3.6 percent, 0.45 and 3.00
+c) 15.0 percent, 0.45 and 3.00
+d) 3.6 percent, 0.45 and 1.88
 
-### Q2. Of the carts holding green chillies, what share also hold coriander?
-
-*Level L1 · asked in every analytics interview.*
-
-a) 0.24
-b) 0.036
-c) 3.00
-d) 0.45
-
-### Q3. Which line computes the pair's lift, and what does it say?
-
-*Level L2 · asked in product-company interviews.*
-
-a) 1,440 / 480 = 3.00: the pair turns up three times as often as chance would put it
-b) 0.45 / 0.24 = 1.88: chillies bring coriander almost twice as often as the reverse
-c) 1,440 / 6,000 = 0.24: about a quarter of the coriander carts also hold chillies
-d) 3,200 / 1,440 = 2.22: chilli carts outnumber the pair by about two to one
-
-### Q4. Which second route would confirm the lift of 3.00 from a different pair of numbers?
+### Q2. Which second route would confirm the lift of 3.00 from a different pair of numbers?
 
 *Level L2, a design call · asked in global capability centre interviews.* A second route reaches the same number
 another way, to check the first.

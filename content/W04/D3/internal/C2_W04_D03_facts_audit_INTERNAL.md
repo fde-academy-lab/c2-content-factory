@@ -2,7 +2,7 @@
 
 Written by C2_W04_D03_facts_audit_INTERNAL.py from the STUDENT files and C2_W04_D03_facts_INTERNAL.yaml. A number matches when it equals a fact's value, percent, lakh or count at the precision printed. Structural numbers (slide, week, step, minutes, dates, ids) are left out.
 
-Numbers traced: 2087. Numbers with no home: 0.
+Numbers traced: 2063. Numbers with no home: 0.
 
 | Number | File | Line | Facts id |
 |---|---|---|---|
@@ -88,9 +88,9 @@ Numbers traced: 2087. Numbers with no home: 0.
 | 6.1 | C2_W04_D03_index_STUDENT.md | 3 | before_strip_ctr, ctr_before_other_slot2 |
 | 3.8 percent | C2_W04_D03_index_STUDENT.md | 4 | after_strip_ctr, after_strip_ctr_exact |
 | 3 | C2_W04_D03_index_STUDENT.md | 21 | slice_thin_slips, tea_both, twelve_chips |
-| 4 | C2_W04_D03_index_STUDENT.md | 22 | floor_pairs_lift_1_5, tea_biscuit, twelve_bread |
+| 2 | C2_W04_D03_index_STUDENT.md | 22 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
 | 4 | C2_W04_D03_index_STUDENT.md | 23 | floor_pairs_lift_1_5, tea_biscuit, twelve_bread |
-| 5 | C2_W04_D03_index_STUDENT.md | 24 | light_carts_max, bundle_z_lift, chips_cold_support |
+| 4 | C2_W04_D03_index_STUDENT.md | 24 | floor_pairs_lift_1_5, tea_biscuit, twelve_bread |
 | 3 | C2_W04_D03_index_STUDENT.md | 25 | slice_thin_slips, tea_both, twelve_chips |
 | 6 | C2_W04_D03_index_STUDENT.md | 26 | tea_chai, apples_share, before_strip_ctr |
 | 6.1 percent | C2_W04_D03_three_counts_STUDENT.md | 5 | before_strip_ctr, ctr_before_other_slot2 |
@@ -205,8 +205,6 @@ Numbers traced: 2087. Numbers with no home: 0.
 | 0.2 percent | C2_W04_D03_lab_set_STUDENT.md | 114 | bundle_z_support, curd_hadapsar_w3, curd_hadapsar_week3 |
 | 1 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 3 | gs_orders_low, twelve_ice_choc, add_rate_high |
 | 2 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 3 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
-| 3 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 3 | slice_thin_slips, tea_both, twelve_chips |
-| 4 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 3 | floor_pairs_lift_1_5, tea_biscuit, twelve_bread |
 | 6,000 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 5 | coriander_carts |
 | 3,200 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 5 | green_chillies_carts, paneer_carts, kirana_sugar_no_tea |
 | 1,440 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 6 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
@@ -219,31 +217,32 @@ Numbers traced: 2087. Numbers with no home: 0.
 | 1,440 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
 | 40,000 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | gs_households, total_carts, support_floor_carts |
 | 3.6 percent | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | coriander_chillies_support, pair_coriander_green_chillies_support, slice_viman_nagar_week_three_chips_cold_drink_lift |
+| 1,440 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
+| 3,200 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | green_chillies_carts, paneer_carts, kirana_sugar_no_tea |
+| 0.45 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | coriander_chillies_conf_ba |
+| 40,000 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | gs_households, total_carts, support_floor_carts |
+| 0.15 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | kirana_tea_rusk_support, coriander_share, gs_share_week |
+| 0.08 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | ctr_after_other_slot1, green_chillies_share, kahoot_blend_sum |
+| 480 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | coriander_chillies_expected |
+| 1,440 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
+| 480 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | coriander_chillies_expected |
+| 3.00 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | coriander_chillies_lift, slice_thin_slips, tea_both |
+| 1,440 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
+| 6,000 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | coriander_carts |
 | 6,000 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | coriander_carts |
 | 40,000 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | gs_households, total_carts, support_floor_carts |
-| 1,440 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 29 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
-| 3,200 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 29 | green_chillies_carts, paneer_carts, kirana_sugar_no_tea |
+| 0.45 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | coriander_chillies_conf_ba |
+| 0.24 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | coriander_chillies_conf_ab, bread_milk_expected_share |
+| 1.88 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 28 | conf_ratio_distractor |
 | 0.45 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 29 | coriander_chillies_conf_ba |
-| 1,440 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 29 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
-| 6,000 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 29 | coriander_carts |
-| 40,000 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 30 | gs_households, total_carts, support_floor_carts |
-| 0.15 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 30 | kirana_tea_rusk_support, coriander_share, gs_share_week |
-| 0.08 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 30 | ctr_after_other_slot1, green_chillies_share, kahoot_blend_sum |
-| 480 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 30 | coriander_chillies_expected |
-| 1,440 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 30 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
-| 480 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 30 | coriander_chillies_expected |
-| 3.00 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 30 | coriander_chillies_lift, slice_thin_slips, tea_both |
-| 1.88 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 30 | conf_ratio_distractor |
-| 2.22 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 30 | inverse_conf_distractor |
-| 0.45 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 31 | coriander_chillies_conf_ba |
-| 0.15 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 31 | kirana_tea_rusk_support, coriander_share, gs_share_week |
-| 3.00 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 31 | coriander_chillies_lift, slice_thin_slips, tea_both |
-| 0.24 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 31 | coriander_chillies_conf_ab, bread_milk_expected_share |
-| 0.45 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 31 | coriander_chillies_conf_ba |
-| 0.45 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 35 | coriander_chillies_conf_ba |
-| 0.24 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 35 | coriander_chillies_conf_ab, bread_milk_expected_share |
-| 1.88 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 35 | conf_ratio_distractor |
-| 3.00 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 37 | coriander_chillies_lift, slice_thin_slips, tea_both |
+| 0.15 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 29 | kirana_tea_rusk_support, coriander_share, gs_share_week |
+| 3.00 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 29 | coriander_chillies_lift, slice_thin_slips, tea_both |
+| 0.24 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 29 | coriander_chillies_conf_ab, bread_milk_expected_share |
+| 0.45 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 29 | coriander_chillies_conf_ba |
+| 0.45 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 33 | coriander_chillies_conf_ba |
+| 0.24 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 33 | coriander_chillies_conf_ab, bread_milk_expected_share |
+| 1.88 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 33 | conf_ratio_distractor |
+| 3.00 | C2_W04_D03_ch1_one_pair_solution_STUDENT.md | 35 | coriander_chillies_lift, slice_thin_slips, tea_both |
 | 1 | C2_W04_D03_ch3_four_pairs_solution_STUDENT.md | 3 | gs_orders_low, twelve_ice_choc, add_rate_high |
 | 2 | C2_W04_D03_ch3_four_pairs_solution_STUDENT.md | 3 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
 | 3 | C2_W04_D03_ch3_four_pairs_solution_STUDENT.md | 3 | slice_thin_slips, tea_both, twelve_chips |
@@ -342,7 +341,6 @@ Numbers traced: 2087. Numbers with no home: 0.
 | 2 | C2_W04_D03_strip_solution_STUDENT.md | 3 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
 | 3 | C2_W04_D03_strip_solution_STUDENT.md | 3 | slice_thin_slips, tea_both, twelve_chips |
 | 4 | C2_W04_D03_strip_solution_STUDENT.md | 3 | floor_pairs_lift_1_5, tea_biscuit, twelve_bread |
-| 5 | C2_W04_D03_strip_solution_STUDENT.md | 3 | light_carts_max, bundle_z_lift, chips_cold_support |
 | Rs 17,280 | C2_W04_D03_strip_solution_STUDENT.md | 5 | slot_value_other_day |
 | 6.4 percent | C2_W04_D03_strip_solution_STUDENT.md | 5 | daily_ctr_before_high, other_slot_ctr_after |
 | Rs 3,240 | C2_W04_D03_strip_solution_STUDENT.md | 6 | slot_value_milk_day |
@@ -353,23 +351,15 @@ Numbers traced: 2087. Numbers with no home: 0.
 | Rs 6.3 lakh | C2_W04_D03_strip_solution_STUDENT.md | 7 | recoverable_month |
 | 3.39 | C2_W04_D03_strip_solution_STUDENT.md | 8 | chips_cold_lift, pair_chips_cold_drink_lift |
 | 2.56 | C2_W04_D03_strip_solution_STUDENT.md | 8 | chips_cold_lift_per_customer |
-| 60,000 | C2_W04_D03_strip_solution_STUDENT.md | 31 | thursday_members, views_a_day_after, views_assumed |
-| 0.064 | C2_W04_D03_strip_solution_STUDENT.md | 31 | daily_ctr_before_high, other_slot_ctr_after |
-| 0.5 | C2_W04_D03_strip_solution_STUDENT.md | 31 | add_rate_assumed, add_rate_observed, coriander_chillies_conf_ba |
-| Rs 9 | C2_W04_D03_strip_solution_STUDENT.md | 31 | kalpa_twelve_charger, margin_assumed, tea_bag |
-| Rs 17,280 | C2_W04_D03_strip_solution_STUDENT.md | 31 | slot_value_other_day |
-| Rs 34,560 | C2_W04_D03_strip_solution_STUDENT.md | 31 | slot_value_no_add_rate |
-| 1,920 | C2_W04_D03_strip_solution_STUDENT.md | 31 | adds_a_day |
-| 1,920 | C2_W04_D03_strip_solution_STUDENT.md | 31 | adds_a_day |
-| Rs 4.2 lakh | C2_W04_D03_strip_solution_STUDENT.md | 32 | slot_gap_month |
-| 1.5 | C2_W04_D03_strip_solution_STUDENT.md | 32 | gs_orders_week, lift_rule_floor, milk_slots_worth |
-| Rs 6.3 lakh | C2_W04_D03_strip_solution_STUDENT.md | 32 | recoverable_month |
-| 1.2 | C2_W04_D03_strip_solution_STUDENT.md | 34 | ctr_before_milk_slot3, kirana_tea_rusk_lift, milk_slot_ctr_after |
-| 6.4 percent | C2_W04_D03_strip_solution_STUDENT.md | 34 | daily_ctr_before_high, other_slot_ctr_after |
-| Rs 12.6 lakh | C2_W04_D03_strip_solution_STUDENT.md | 39 | ceiling_month |
-| Rs 14,040 | C2_W04_D03_strip_solution_STUDENT.md | 39 | slot_gap_day |
-| 3 | C2_W04_D03_strip_solution_STUDENT.md | 39 | pair_b_lift, slice_thin_slips, tea_both |
-| Rs 12.6 lakh | C2_W04_D03_strip_solution_STUDENT.md | 42 | ceiling_month |
+| Rs 4.2 lakh | C2_W04_D03_strip_solution_STUDENT.md | 31 | slot_gap_month |
+| 1.5 | C2_W04_D03_strip_solution_STUDENT.md | 31 | gs_orders_week, lift_rule_floor, milk_slots_worth |
+| Rs 6.3 lakh | C2_W04_D03_strip_solution_STUDENT.md | 31 | recoverable_month |
+| 1.2 | C2_W04_D03_strip_solution_STUDENT.md | 33 | ctr_before_milk_slot3, kirana_tea_rusk_lift, milk_slot_ctr_after |
+| 6.4 percent | C2_W04_D03_strip_solution_STUDENT.md | 33 | daily_ctr_before_high, other_slot_ctr_after |
+| Rs 12.6 lakh | C2_W04_D03_strip_solution_STUDENT.md | 38 | ceiling_month |
+| Rs 14,040 | C2_W04_D03_strip_solution_STUDENT.md | 38 | slot_gap_day |
+| 3 | C2_W04_D03_strip_solution_STUDENT.md | 38 | pair_b_lift, slice_thin_slips, tea_both |
+| Rs 12.6 lakh | C2_W04_D03_strip_solution_STUDENT.md | 41 | ceiling_month |
 | 1 | C2_W04_D03_three_counts_solution_STUDENT.md | 3 | gs_orders_low, twelve_ice_choc, add_rate_high |
 | 2 | C2_W04_D03_three_counts_solution_STUDENT.md | 3 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
 | 3 | C2_W04_D03_three_counts_solution_STUDENT.md | 3 | slice_thin_slips, tea_both, twelve_chips |
@@ -411,40 +401,31 @@ Numbers traced: 2087. Numbers with no home: 0.
 | 3.8 percent | C2_W04_D03_ch1_one_pair_STUDENT.md | 5 | after_strip_ctr, after_strip_ctr_exact |
 | 40,000 | C2_W04_D03_ch1_one_pair_STUDENT.md | 6 | gs_households, total_carts, support_floor_carts |
 | 1 | C2_W04_D03_ch1_one_pair_STUDENT.md | 6 | gs_orders_low, twelve_ice_choc, add_rate_high |
-| 40,000 | C2_W04_D03_ch1_one_pair_STUDENT.md | 27 | gs_households, total_carts, support_floor_carts |
-| 6,000 | C2_W04_D03_ch1_one_pair_STUDENT.md | 28 | coriander_carts |
-| 3,200 | C2_W04_D03_ch1_one_pair_STUDENT.md | 29 | green_chillies_carts, paneer_carts, kirana_sugar_no_tea |
-| 1,440 | C2_W04_D03_ch1_one_pair_STUDENT.md | 30 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
-| 40,000 | C2_W04_D03_ch1_one_pair_STUDENT.md | 45 | gs_households, total_carts, support_floor_carts |
-| 15.0 percent | C2_W04_D03_ch1_one_pair_STUDENT.md | 49 | coriander_share, gs_share_week, kirana_tea_rusk_support |
-| 3.6 percent | C2_W04_D03_ch1_one_pair_STUDENT.md | 50 | coriander_chillies_support, pair_coriander_green_chillies_support, slice_viman_nagar_week_three_chips_cold_drink_lift |
-| 24 percent | C2_W04_D03_ch1_one_pair_STUDENT.md | 51 | kirana_tea_rusk_expected, slice_kothrud_evening_floor_min, bread_milk_expected_share |
-| 45 percent | C2_W04_D03_ch1_one_pair_STUDENT.md | 52 | bread_price, coriander_chillies_conf_ba |
+| 40,000 | C2_W04_D03_ch1_one_pair_STUDENT.md | 25 | gs_households, total_carts, support_floor_carts |
+| 6,000 | C2_W04_D03_ch1_one_pair_STUDENT.md | 26 | coriander_carts |
+| 3,200 | C2_W04_D03_ch1_one_pair_STUDENT.md | 27 | green_chillies_carts, paneer_carts, kirana_sugar_no_tea |
+| 1,440 | C2_W04_D03_ch1_one_pair_STUDENT.md | 28 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
+| 3.6 percent | C2_W04_D03_ch1_one_pair_STUDENT.md | 48 | coriander_chillies_support, pair_coriander_green_chillies_support, slice_viman_nagar_week_three_chips_cold_drink_lift |
+| 0.24 | C2_W04_D03_ch1_one_pair_STUDENT.md | 48 | coriander_chillies_conf_ab, bread_milk_expected_share |
+| 3.00 | C2_W04_D03_ch1_one_pair_STUDENT.md | 48 | coriander_chillies_lift, slice_thin_slips, tea_both |
+| 3.6 percent | C2_W04_D03_ch1_one_pair_STUDENT.md | 49 | coriander_chillies_support, pair_coriander_green_chillies_support, slice_viman_nagar_week_three_chips_cold_drink_lift |
+| 0.45 | C2_W04_D03_ch1_one_pair_STUDENT.md | 49 | coriander_chillies_conf_ba |
+| 3.00 | C2_W04_D03_ch1_one_pair_STUDENT.md | 49 | coriander_chillies_lift, slice_thin_slips, tea_both |
+| 15.0 percent | C2_W04_D03_ch1_one_pair_STUDENT.md | 50 | coriander_share, gs_share_week, kirana_tea_rusk_support |
+| 0.45 | C2_W04_D03_ch1_one_pair_STUDENT.md | 50 | coriander_chillies_conf_ba |
+| 3.00 | C2_W04_D03_ch1_one_pair_STUDENT.md | 50 | coriander_chillies_lift, slice_thin_slips, tea_both |
+| 3.6 percent | C2_W04_D03_ch1_one_pair_STUDENT.md | 51 | coriander_chillies_support, pair_coriander_green_chillies_support, slice_viman_nagar_week_three_chips_cold_drink_lift |
+| 0.45 | C2_W04_D03_ch1_one_pair_STUDENT.md | 51 | coriander_chillies_conf_ba |
+| 1.88 | C2_W04_D03_ch1_one_pair_STUDENT.md | 51 | conf_ratio_distractor |
+| 3.00 | C2_W04_D03_ch1_one_pair_STUDENT.md | 53 | coriander_chillies_lift, slice_thin_slips, tea_both |
 | 0.24 | C2_W04_D03_ch1_one_pair_STUDENT.md | 58 | coriander_chillies_conf_ab, bread_milk_expected_share |
-| 0.036 | C2_W04_D03_ch1_one_pair_STUDENT.md | 59 | coriander_chillies_support, pair_coriander_green_chillies_support |
-| 3.00 | C2_W04_D03_ch1_one_pair_STUDENT.md | 60 | coriander_chillies_lift, slice_thin_slips, tea_both |
-| 0.45 | C2_W04_D03_ch1_one_pair_STUDENT.md | 61 | coriander_chillies_conf_ba |
-| 1,440 | C2_W04_D03_ch1_one_pair_STUDENT.md | 67 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
-| 480 | C2_W04_D03_ch1_one_pair_STUDENT.md | 67 | coriander_chillies_expected |
-| 3.00 | C2_W04_D03_ch1_one_pair_STUDENT.md | 67 | coriander_chillies_lift, slice_thin_slips, tea_both |
-| 0.45 | C2_W04_D03_ch1_one_pair_STUDENT.md | 68 | coriander_chillies_conf_ba |
-| 0.24 | C2_W04_D03_ch1_one_pair_STUDENT.md | 68 | coriander_chillies_conf_ab, bread_milk_expected_share |
-| 1.88 | C2_W04_D03_ch1_one_pair_STUDENT.md | 68 | conf_ratio_distractor |
-| 1,440 | C2_W04_D03_ch1_one_pair_STUDENT.md | 69 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
-| 6,000 | C2_W04_D03_ch1_one_pair_STUDENT.md | 69 | coriander_carts |
-| 0.24 | C2_W04_D03_ch1_one_pair_STUDENT.md | 69 | coriander_chillies_conf_ab, bread_milk_expected_share |
-| 3,200 | C2_W04_D03_ch1_one_pair_STUDENT.md | 70 | green_chillies_carts, paneer_carts, kirana_sugar_no_tea |
-| 1,440 | C2_W04_D03_ch1_one_pair_STUDENT.md | 70 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
-| 2.22 | C2_W04_D03_ch1_one_pair_STUDENT.md | 70 | inverse_conf_distractor |
-| 3.00 | C2_W04_D03_ch1_one_pair_STUDENT.md | 72 | coriander_chillies_lift, slice_thin_slips, tea_both |
-| 0.24 | C2_W04_D03_ch1_one_pair_STUDENT.md | 77 | coriander_chillies_conf_ab, bread_milk_expected_share |
-| 0.45 | C2_W04_D03_ch1_one_pair_STUDENT.md | 77 | coriander_chillies_conf_ba |
-| 3.6 percent | C2_W04_D03_ch1_one_pair_STUDENT.md | 78 | coriander_chillies_support, pair_coriander_green_chillies_support, slice_viman_nagar_week_three_chips_cold_drink_lift |
-| 15 percent | C2_W04_D03_ch1_one_pair_STUDENT.md | 78 | coriander_share, gs_share_week, kirana_tea_rusk_support |
-| 0.45 | C2_W04_D03_ch1_one_pair_STUDENT.md | 79 | coriander_chillies_conf_ba |
-| 0.15 | C2_W04_D03_ch1_one_pair_STUDENT.md | 79 | kirana_tea_rusk_support, coriander_share, gs_share_week |
-| 1,440 | C2_W04_D03_ch1_one_pair_STUDENT.md | 80 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
-| 3,200 | C2_W04_D03_ch1_one_pair_STUDENT.md | 80 | green_chillies_carts, paneer_carts, kirana_sugar_no_tea |
+| 0.45 | C2_W04_D03_ch1_one_pair_STUDENT.md | 58 | coriander_chillies_conf_ba |
+| 3.6 percent | C2_W04_D03_ch1_one_pair_STUDENT.md | 59 | coriander_chillies_support, pair_coriander_green_chillies_support, slice_viman_nagar_week_three_chips_cold_drink_lift |
+| 15 percent | C2_W04_D03_ch1_one_pair_STUDENT.md | 59 | coriander_share, gs_share_week, kirana_tea_rusk_support |
+| 0.45 | C2_W04_D03_ch1_one_pair_STUDENT.md | 60 | coriander_chillies_conf_ba |
+| 0.15 | C2_W04_D03_ch1_one_pair_STUDENT.md | 60 | kirana_tea_rusk_support, coriander_share, gs_share_week |
+| 1,440 | C2_W04_D03_ch1_one_pair_STUDENT.md | 61 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
+| 3,200 | C2_W04_D03_ch1_one_pair_STUDENT.md | 61 | green_chillies_carts, paneer_carts, kirana_sugar_no_tea |
 | 6.1 percent | C2_W04_D03_ch3_four_pairs_STUDENT.md | 5 | before_strip_ctr, ctr_before_other_slot2 |
 | 3.8 percent | C2_W04_D03_ch3_four_pairs_STUDENT.md | 5 | after_strip_ctr, after_strip_ctr_exact |
 | 40,000 | C2_W04_D03_ch3_four_pairs_STUDENT.md | 5 | gs_households, total_carts, support_floor_carts |
@@ -501,38 +482,33 @@ Numbers traced: 2087. Numbers with no home: 0.
 | 71 percent | C2_W04_D03_strip_STUDENT.md | 4 | toned_milk_share |
 | 6.1 percent | C2_W04_D03_strip_STUDENT.md | 6 | before_strip_ctr, ctr_before_other_slot2 |
 | 3.8 percent | C2_W04_D03_strip_STUDENT.md | 6 | after_strip_ctr, after_strip_ctr_exact |
-| 60,000 | C2_W04_D03_strip_STUDENT.md | 31 | thursday_members, views_a_day_after, views_assumed |
-| 1.2 percent | C2_W04_D03_strip_STUDENT.md | 32 | ctr_before_milk_slot3, milk_slot_ctr_after, kirana_tea_rusk_lift |
-| 6.4 percent | C2_W04_D03_strip_STUDENT.md | 33 | daily_ctr_before_high, other_slot_ctr_after |
-| 50 percent | C2_W04_D03_strip_STUDENT.md | 34 | common_items, milk_share_after, milk_share_after_slot2 |
-| 0.5 | C2_W04_D03_strip_STUDENT.md | 35 | add_rate_assumed, add_rate_observed, tea_conf |
-| 0.4 | C2_W04_D03_strip_STUDENT.md | 35 | add_rate_low, bread_milk_conf_ba, chips_cold_conf_ab |
-| 0.6 | C2_W04_D03_strip_STUDENT.md | 35 | add_rate_high, kirana_tea_share, kirana_sugar_tea_conf |
-| 0.50 | C2_W04_D03_strip_STUDENT.md | 35 | add_rate_assumed, add_rate_observed, tea_conf |
-| Rs 9 | C2_W04_D03_strip_STUDENT.md | 36 | kalpa_twelve_charger, margin_assumed, margin_per_line_observed |
-| Rs 7 | C2_W04_D03_strip_STUDENT.md | 36 | margin_low, slice_hinjewadi_night_floor_min, slice_thin_carts_min |
-| Rs 11 | C2_W04_D03_strip_STUDENT.md | 36 | margin_high, pairs_per_cart |
-| Rs 9.0 | C2_W04_D03_strip_STUDENT.md | 36 | kalpa_twelve_charger, margin_assumed, margin_per_line_observed |
-| 3.39 | C2_W04_D03_strip_STUDENT.md | 37 | chips_cold_lift, pair_chips_cold_drink_lift |
-| 2.56 | C2_W04_D03_strip_STUDENT.md | 38 | chips_cold_lift_per_customer |
-| 6.4 percent | C2_W04_D03_strip_STUDENT.md | 53 | daily_ctr_before_high, other_slot_ctr_after |
-| Rs 34,560 | C2_W04_D03_strip_STUDENT.md | 57 | slot_value_no_add_rate |
-| Rs 1,920 | C2_W04_D03_strip_STUDENT.md | 58 | adds_a_day |
-| Rs 17,280 | C2_W04_D03_strip_STUDENT.md | 59 | slot_value_other_day |
-| Rs 80,197 | C2_W04_D03_strip_STUDENT.md | 60 | gross_sales_day |
-| Rs 12.6 lakh | C2_W04_D03_strip_STUDENT.md | 66 | ceiling_month |
-| Rs 4.2 lakh | C2_W04_D03_strip_STUDENT.md | 66 | slot_gap_month |
-| Rs 6.3 lakh | C2_W04_D03_strip_STUDENT.md | 67 | recoverable_month |
-| 1.5 | C2_W04_D03_strip_STUDENT.md | 67 | gs_orders_week, lift_rule_floor, milk_slots_worth |
-| Rs 4.2 lakh | C2_W04_D03_strip_STUDENT.md | 68 | slot_gap_month |
-| Rs 5.2 lakh | C2_W04_D03_strip_STUDENT.md | 69 | slot_value_other_month |
-| 3.39 | C2_W04_D03_strip_STUDENT.md | 75 | chips_cold_lift, pair_chips_cold_drink_lift |
-| 2.56 | C2_W04_D03_strip_STUDENT.md | 75 | chips_cold_lift_per_customer |
-| 3.39 | C2_W04_D03_strip_STUDENT.md | 80 | chips_cold_lift, pair_chips_cold_drink_lift |
-| 2.56 | C2_W04_D03_strip_STUDENT.md | 82 | chips_cold_lift_per_customer |
-| 0.74 | C2_W04_D03_strip_STUDENT.md | 88 | bread_milk_conf_ab, common_conf_high |
-| 1.2 percent | C2_W04_D03_strip_STUDENT.md | 89 | ctr_before_milk_slot3, milk_slot_ctr_after, kirana_tea_rusk_lift |
-| 6.4 | C2_W04_D03_strip_STUDENT.md | 89 | daily_ctr_before_high, other_slot_ctr_after |
+| 60,000 | C2_W04_D03_strip_STUDENT.md | 30 | thursday_members, views_a_day_after, views_assumed |
+| 1.2 percent | C2_W04_D03_strip_STUDENT.md | 31 | ctr_before_milk_slot3, milk_slot_ctr_after, kirana_tea_rusk_lift |
+| 6.4 percent | C2_W04_D03_strip_STUDENT.md | 32 | daily_ctr_before_high, other_slot_ctr_after |
+| 50 percent | C2_W04_D03_strip_STUDENT.md | 33 | common_items, milk_share_after, milk_share_after_slot2 |
+| 0.5 | C2_W04_D03_strip_STUDENT.md | 34 | add_rate_assumed, add_rate_observed, tea_conf |
+| 0.4 | C2_W04_D03_strip_STUDENT.md | 34 | add_rate_low, bread_milk_conf_ba, chips_cold_conf_ab |
+| 0.6 | C2_W04_D03_strip_STUDENT.md | 34 | add_rate_high, kirana_tea_share, kirana_sugar_tea_conf |
+| 0.50 | C2_W04_D03_strip_STUDENT.md | 34 | add_rate_assumed, add_rate_observed, tea_conf |
+| Rs 9 | C2_W04_D03_strip_STUDENT.md | 35 | kalpa_twelve_charger, margin_assumed, margin_per_line_observed |
+| Rs 7 | C2_W04_D03_strip_STUDENT.md | 35 | margin_low, slice_hinjewadi_night_floor_min, slice_thin_carts_min |
+| Rs 11 | C2_W04_D03_strip_STUDENT.md | 35 | margin_high, pairs_per_cart |
+| Rs 9.0 | C2_W04_D03_strip_STUDENT.md | 35 | kalpa_twelve_charger, margin_assumed, margin_per_line_observed |
+| 3.39 | C2_W04_D03_strip_STUDENT.md | 36 | chips_cold_lift, pair_chips_cold_drink_lift |
+| 2.56 | C2_W04_D03_strip_STUDENT.md | 37 | chips_cold_lift_per_customer |
+| Rs 12.6 lakh | C2_W04_D03_strip_STUDENT.md | 56 | ceiling_month |
+| Rs 4.2 lakh | C2_W04_D03_strip_STUDENT.md | 56 | slot_gap_month |
+| Rs 6.3 lakh | C2_W04_D03_strip_STUDENT.md | 57 | recoverable_month |
+| 1.5 | C2_W04_D03_strip_STUDENT.md | 57 | gs_orders_week, lift_rule_floor, milk_slots_worth |
+| Rs 4.2 lakh | C2_W04_D03_strip_STUDENT.md | 58 | slot_gap_month |
+| Rs 5.2 lakh | C2_W04_D03_strip_STUDENT.md | 59 | slot_value_other_month |
+| 3.39 | C2_W04_D03_strip_STUDENT.md | 65 | chips_cold_lift, pair_chips_cold_drink_lift |
+| 2.56 | C2_W04_D03_strip_STUDENT.md | 65 | chips_cold_lift_per_customer |
+| 3.39 | C2_W04_D03_strip_STUDENT.md | 70 | chips_cold_lift, pair_chips_cold_drink_lift |
+| 2.56 | C2_W04_D03_strip_STUDENT.md | 72 | chips_cold_lift_per_customer |
+| 0.74 | C2_W04_D03_strip_STUDENT.md | 78 | bread_milk_conf_ab, common_conf_high |
+| 1.2 percent | C2_W04_D03_strip_STUDENT.md | 79 | ctr_before_milk_slot3, milk_slot_ctr_after, kirana_tea_rusk_lift |
+| 6.4 | C2_W04_D03_strip_STUDENT.md | 79 | daily_ctr_before_high, other_slot_ctr_after |
 | 1 | C2_W04_D03_interview_STUDENT.md | 32 | gs_orders_low, twelve_ice_choc, add_rate_high |
 | 2 | C2_W04_D03_interview_STUDENT.md | 34 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
 | 3 | C2_W04_D03_interview_STUDENT.md | 36 | slice_thin_slips, tea_both, twelve_chips |

@@ -28,7 +28,7 @@ icon: triangle-alert | eyebrow: Step 3 | title: Name two doubts | body: Each wit
 icon: message-square | eyebrow: Step 4 | title: Answer the category manager | body: Two sentences: the number first, then what you concede. | tone: dark
 ```
 
-The one-page strip is what each group hands in. The strip set in `exercises/unguided` asks the same steps as five items; a group posts its five letters once its page is done.
+The one-page strip is what each group hands in. The strip set in `exercises/unguided` asks the same steps as four items; a group posts its four letters once its page is done.
 
 ```notes
 LIVE, 4 minutes to brief, then 25 minutes of group work. The TA moves between tables. A group that

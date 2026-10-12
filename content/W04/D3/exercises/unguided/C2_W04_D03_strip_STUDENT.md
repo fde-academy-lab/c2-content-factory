@@ -9,8 +9,8 @@ Illustrative case: the company is real, the situation and the data are synthetic
 class.
 
 This is the afternoon's unguided set, run on notebook 03 in the same 35 minutes as each group's
-one-page strip: the page is what the group hands in, and these five items ask the same steps, so a
-group posts its five letters once its page is done.
+one-page strip: the page is what the group hands in, and these four items ask the same steps, so a
+group posts its four letters once its page is done.
 
 **Who needs the answer.** The growth lead, who takes one strip and one rupee figure to Friday's
 review, where the category manager will argue for milk. A figure that overstates the gain spends the
@@ -18,7 +18,6 @@ growth lead's credibility the first time finance checks it.
 
 **The questions on the way.**
 
-- What does one slot earn in a day?
 - What does re-ranking recover in a month?
 - What survives the heavy-buyer check?
 - How do you answer the category manager?
@@ -37,10 +36,10 @@ What the morning found, in one table:
 | Chips and cold drink, lift per cart | 3.39 | Pairs table |
 | Chips and cold drink, lift with every customer counted once | 2.56 | Each cart weighs one over its customer's cart count |
 
-**What you post.** Five letters in item order, with no spaces, in this shape:
+**What you post.** Four letters in item order, with no spaces, in this shape:
 
 ```
-Post exactly this shape: xxxxx
+Post exactly this shape: xxxx
 ```
 
 ---
@@ -50,16 +49,7 @@ Post exactly this shape: xxxxx
 This comes up at work whenever a placement is sold internally: a team asks for a slot and finance
 asks what the slot earns.
 
-### Q1. What margin does one slot at 6.4 percent click-through earn in a day?
-
-*Level L5 · asked in product-company interviews.*
-
-a) Rs 34,560
-b) Rs 1,920
-c) Rs 17,280
-d) Rs 80,197
-
-### Q2. Milk holds half of the three slots' impressions: what does re-ranking recover in a month?
+### Q1. Milk holds half of the three slots' impressions: what does re-ranking recover in a month?
 
 *Level L5, a design call · asked in global capability centre interviews.* Use the month's 30 days.
 
@@ -72,7 +62,7 @@ d) Rs 5.2 lakh, one slot's full margin for the month
 
 This comes up at work whenever a finding meets a check and a stakeholder in the same week.
 
-### Q3. Counted with every customer once, chips and cold drink fall from 3.39 to 2.56: what should the growth lead do?
+### Q2. Counted with every customer once, chips and cold drink fall from 3.39 to 2.56: what should the growth lead do?
 
 *Level L4 · asked in product-company interviews.*
 
@@ -81,7 +71,7 @@ b) Keep quoting 3.39 and leave the heavy buyers out of Friday's note
 c) Hold every slot until each pair is recounted once per customer
 d) Keep the slot and quote 2.56, the number that survives the check
 
-### Q4. The category manager says "milk is our top seller; put it in every slot": which reply concedes what is true and answers the rest?
+### Q3. The category manager says "milk is our top seller; put it in every slot": which reply concedes what is true and answers the rest?
 
 *Level L5 · asked in every stakeholder round.*
 
@@ -96,7 +86,7 @@ This comes up in AI-company interviews, where a model's suggestions are judged b
 Held-out carts are past carts the assistant never saw while it was built, and a popularity baseline
 is a rule that always suggests the most popular items.
 
-### Q5. An AI shopping assistant suggests add-ons and shoppers accept many of them: how should it be scored first?
+### Q4. An AI shopping assistant suggests add-ons and shoppers accept many of them: how should it be scored first?
 
 *Level L6, a design call · asked in AI-startup interviews.*
 
