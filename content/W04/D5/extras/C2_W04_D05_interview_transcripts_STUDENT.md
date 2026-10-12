@@ -99,7 +99,7 @@ the launch. This variant is written for this programme and quotes no company's f
 | A calendar week taken for a festival | FADA counts its festive window from the festival each year, 42 days from the first day of Navratri (FADA's release of 7 November 2025, checked 12 October 2026) | Line years up by distance from the festival |
 | A model never compared with the simplest copy | Amazon Science's history of its recommendation algorithm records a Prime Video test in which a plain bestseller list beat a deep-learning recommender (checked 12 October 2026) | Put a copy of last year on every scoreboard |
 
-## Transcript 2: "Finance and the vendor's sponsor each want theirs in front of the plan"
+## Transcript 2: when finance and the vendor's sponsor each want their forecast in front of the plan, which goes?
 
 Tagged [D], a differentiator. The fallback hour runs this one.
 

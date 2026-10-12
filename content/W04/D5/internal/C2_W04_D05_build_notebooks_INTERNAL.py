@@ -344,18 +344,16 @@ check("no hidden week falls in the stretch around a Diwali", nearest > 5)
         d) festival-aligned, tied with finance's rule
         """),
         code('''
-def mae(f):
-    return (f - hold).abs().mean()                               # misses, signs dropped, averaged
-
+scores = pd.Series({name: (rules[name] - hold).abs().mean()     # each rule's misses, signs dropped, averaged
+                    for name in rules.columns}).round().astype(int).sort_values()
 weeks_ahead = range(1, len(hold) + 1)
 fig, axes = plt.subplots(1, 4, figsize=(13, 3.2), sharey=True)
 for ax, name in zip(axes, ["naive", "drift", "house bot", "festival-aligned"]):
     ax.plot(weeks_ahead, hold.values, color="black", label="actual")
     ax.plot(weeks_ahead, rules[name].values, ls="--", color="slateblue", label=name)
-    ax.set_title(f"{name}: MAE {mae(rules[name]):,.0f}")
+    ax.set_title(f"{name}: MAE {scores[name]:,}")
 axes[0].legend()
 plt.show()
-scores = rules.apply(mae).round().astype(int).sort_values()
 print(scores.to_string())
 check("festival-aligned and finance tie", scores["festival-aligned"] == scores["finance"])
 check("the house bot beats naive and drift", scores["house bot"] < min(scores["naive"], scores["drift"]))
@@ -373,7 +371,7 @@ check("the house bot beats naive and drift", scores["house bot"] < min(scores["n
 
         ```python
         v = vendor.set_index("week_start").vendor_shipments
-        print(f"vendor MAE: {mae(v.loc[hold.index]):,.0f}")
+        print(f"vendor MAE: {(v.loc[hold.index] - hold).abs().mean():,.0f}")
         ```
         """),
         empty(),
@@ -398,12 +396,13 @@ ax.set_ylabel("vendor minus actual, percent")
 ax.legend()
 plt.show()
 print(f"largest miss on the {len(fitted)} fitted weeks: {fit_gap:.1%}")
-print(f"vendor MAE on the hidden weeks: {mae(v.loc[hold.index]):,.0f}")
+vendor_mae = (v.loc[hold.index] - hold).abs().mean()                            # the same measure as the rules
+print(f"vendor MAE on the hidden weeks: {vendor_mae:,.0f}")
 print(f"too high by {hold_gap.iloc[:6].mean():.1%} on average in hidden weeks 1 to 6, "
       f"{hold_gap.iloc[-6:].mean():.1%} in weeks 8 to 13")
 check("the fit stays within 2 percent", fit_gap <= 0.02)
 check("the vendor's MAE is at least 30 percent above festival-aligned",
-      mae(v.loc[hold.index]) >= 1.3 * scores["festival-aligned"])
+      vendor_mae >= 1.3 * scores["festival-aligned"])
 '''),
         md("""
         **Why it is wrong.** The vendor never misses its fitted weeks by more than 1.4 percent, and
@@ -429,7 +428,7 @@ for name in rules.columns:
     miss = rules[name] - hold                                     # forecast minus actual: positive is too high
     spare_rs = miss[miss > 0].sum() * 650 / 120                    # planned and never shipped, Rs 5.42 each
     late_rs = -miss[miss < 0].sum() * 25                           # shipped late, Rs 25 each
-    rows.append({"rule": name, "MAE": round(mae(rules[name])), "weeks too high": int((miss > 0).sum()),
+    rows.append({"rule": name, "MAE": round(miss.abs().mean()), "weeks too high": int((miss > 0).sum()),
                  "spare Rs lakh": round(spare_rs / 100_000, 1),     # 100,000 rupees make a lakh
                  "late Rs lakh": round(late_rs / 100_000, 1),
                  "cost Rs lakh": round((spare_rs + late_rs) / 100_000, 1)})
@@ -530,17 +529,17 @@ spare_rs = costs["idle_packer_shift"] / 120          # an idle shift's Rs 650 ov
 late_rs = costs["late_shipment"]                      # Rs 25 a late shipment
 diwali = {2024: pd.Timestamp("2024-10-28"), 2025: pd.Timestamp("2025-10-20"), 2026: pd.Timestamp("2026-11-02")}
 
-def aligned_source(d):
-    """The week festival-aligned copies for the week d."""
+source = {}                                           # week -> the week festival-aligned copies for it
+for d in pd.date_range(y.index[52], "2026-11-30", freq="7D"):   # every week with a year of weeks behind it
+    source[d] = d - pd.Timedelta(weeks=52)            # outside the stretch: the same calendar week
     for year, w in diwali.items():
         gap = (d - w).days // 7                       # weeks from that year's Diwali week; -5 is five before
         if -5 <= gap <= 4 and year - 1 in diwali:
-            return diwali[year - 1] + pd.Timedelta(weeks=gap)    # the same distance from last year's Diwali
-    return d - pd.Timedelta(weeks=52)                 # outside the stretch: the same calendar week
+            source[d] = diwali[year - 1] + pd.Timedelta(weeks=gap)   # the same distance from last year's Diwali
 
 print(f"a spare shipment costs Rs {spare_rs:.2f}; a late one Rs {late_rs}")
-print(aligned_source(pd.Timestamp("2026-10-19")).date(), "is the source for the week of 19 Oct 2026")
-check("the week of 19 Oct 2026 copies 6 Oct 2025", aligned_source(pd.Timestamp("2026-10-19")) == pd.Timestamp("2025-10-06"))
+print(source[pd.Timestamp("2026-10-19")].date(), "is the source for the week of 19 Oct 2026")
+check("the week of 19 Oct 2026 copies 6 Oct 2025", source[pd.Timestamp("2026-10-19")] == pd.Timestamp("2025-10-06"))
 '''),
         md("""
         ## How did each rule do on 2025's festival?
@@ -566,8 +565,8 @@ back = pd.DataFrame({
     "actual": y.loc[weeks25],
     "house bot": [y[d - pd.Timedelta(weeks=52)] for d in weeks25],
     "finance": [round(y[d - pd.Timedelta(weeks=52)] * 1.04) for d in weeks25],
-    "festival-aligned": [round(y[aligned_source(d)] * 1.04) for d in weeks25],
-    "aligned, no growth": [y[aligned_source(d)] for d in weeks25],
+    "festival-aligned": [round(y[source[d]] * 1.04) for d in weeks25],
+    "aligned, no growth": [y[source[d]] for d in weeks25],
 }, index=weeks25)
 back[["actual", "house bot", "festival-aligned"]].plot(marker="o", title="2025's festival, forecast from 22 Sep 2025")
 plt.show()
@@ -609,7 +608,7 @@ ahead = pd.DataFrame({
     "house bot": [y[d - pd.Timedelta(weeks=52)] for d in weeks26],
     "finance": [round(y[d - pd.Timedelta(weeks=52)] * 1.04) for d in weeks26],
     "vendor": v.loc[weeks26].values,
-    "festival-aligned": [round(y[aligned_source(d)] * 1.04) for d in weeks26],
+    "festival-aligned": [round(y[source[d]] * 1.04) for d in weeks26],
 }, index=weeks26)
 ahead.plot(marker="o", title="Four forecasts, 28 Sep to 30 Nov 2026")
 plt.show()
@@ -635,7 +634,7 @@ check("festival-aligned's busiest week is 19 Oct 2026", ahead["festival-aligned"
         code('''
 window = weeks26[2:]                                    # 12 Oct to 30 Nov 2026, the weeks to book
 calendar_2025 = y.loc[window - pd.Timedelta(weeks=52)].sum()
-festival_2025 = y.loc[[aligned_source(d) for d in window]].sum()
+festival_2025 = y.loc[[source[d] for d in window]].sum()
 totals = ahead.loc[window].sum()
 compare = pd.DataFrame({"eight weeks": totals.map("{:,}".format),
                         "vs same calendar weeks": (totals / calendar_2025 - 1).map("{:+.1%}".format),
@@ -704,18 +703,15 @@ check("the cushion sits between the 10th and 11th sorted weeks",
         """),
         code('''
 base = ahead.loc["2026-10-19", "festival-aligned"]            # the plan's busiest week
-
-def week_cost(raise_by):
-    """Average cost of the week at this plan level, over the thirteen past misses."""
-    plan_level = base * (1 + raise_by)
+levels = [i / 1000 for i in range(-80, 101, 2)]               # 8 percent below to 10 percent above
+cost_at = []
+for g in levels:                                              # each way the plan could be raised
+    plan_level = base * (1 + g)
     total = 0
     for a in above:                                           # each past miss, as a possible demand
         demand = base * (1 + a)
         total += max(0, plan_level - demand) * spare_rs + max(0, demand - plan_level) * late_rs
-    return total / len(above) / 100_000                       # Rs lakh
-
-levels = [i / 1000 for i in range(-80, 101, 2)]               # 8 percent below to 10 percent above
-cost_at = [week_cost(g) for g in levels]
+    cost_at.append(total / len(above) / 100_000)              # the week's average cost, Rs lakh
 plt.plot([g * 100 for g in levels], cost_at, color="black")
 plt.axvline(cushion * 100, ls="--", color="slateblue")
 plt.xlabel("plan above the forecast for the week of 19 Oct 2026, percent")
@@ -877,13 +873,12 @@ months_ahead = pd.Series(range(1, 7), index=hold.index)
 naive = pd.Series(rev["2026-03"], index=hold.index)
 drift = rev["2026-03"] + months_ahead * (rev["2026-03"] - rev["2024-10"]) / 17   # 17 months, Oct 2024 to Mar 2026
 
-def mae(f):
-    return (f - hold).abs().mean() / 1e5                     # Rs lakh a month
-
-print(f"naive MAE: Rs {mae(naive):.1f} lakh   drift MAE: Rs {mae(drift):.1f} lakh")
+naive_mae = (naive - hold).abs().mean() / 1e5                # misses, signs dropped, averaged: Rs lakh a month
+drift_mae = (drift - hold).abs().mean() / 1e5
+print(f"naive MAE: Rs {naive_mae:.1f} lakh   drift MAE: Rs {drift_mae:.1f} lakh")
 pd.DataFrame({"actual": hold, "naive": naive, "drift": drift}).div(1e5).plot(marker="o", title="Six hidden months, Rs lakh")
 plt.show()
-check("naive misses by more than Rs 50 lakh a month", mae(naive) > 50)
+check("naive misses by more than Rs 50 lakh a month", naive_mae > 50)
 '''),
         md("""
         ## How do the seasonal copy and the vendor score on the same six months?
@@ -897,7 +892,9 @@ check("naive misses by more than Rs 50 lakh a month", mae(naive) > 50)
         seasonal = rev.shift(12).loc[hold.index]
         vendor_hold = vendor.loc[hold.index, "vendor_rs"]
         print(vendor.loc[hold.index, "kind"].unique())
-        print(f"seasonal MAE: Rs {mae(seasonal):.1f} lakh   vendor MAE: Rs {mae(vendor_hold):.1f} lakh")
+        seasonal_mae = (seasonal - hold).abs().mean() / 1e5
+        vendor_mae = (vendor_hold - hold).abs().mean() / 1e5
+        print(f"seasonal MAE: Rs {seasonal_mae:.1f} lakh   vendor MAE: Rs {vendor_mae:.1f} lakh")
         ```
         """),
         empty(),
@@ -933,7 +930,8 @@ growth = rev["2025-10":"2026-09"].sum() / rev["2024-10":"2025-09"].sum() - 1
 print(f"the second year grew {growth:.1%} on the first")
 print(f"plan line, Oct 2026 to Mar 2027: Rs {plan.sum() / 1e7:.2f} crore")
 copy_plus4 = (rev.shift(12).loc[hold.index] * 1.04).round()        # festival-aligned on the hidden months
-print(f"festival-aligned's own miss on Apr to Sep 2026: Rs {mae(copy_plus4):.1f} lakh a month")
+aligned_mae = (copy_plus4 - hold).abs().mean() / 1e5
+print(f"festival-aligned's own miss on Apr to Sep 2026: Rs {aligned_mae:.1f} lakh a month")
 (plan / 1e5).plot.bar(color="lavender", edgecolor="slateblue", title="The plan line, Rs lakh a month")
 plt.show()
 check("the plan line is 15 percent above last year's same months",
