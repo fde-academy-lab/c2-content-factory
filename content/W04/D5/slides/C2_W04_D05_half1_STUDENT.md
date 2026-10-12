@@ -154,7 +154,7 @@ ask what a customer does on Diwali itself. Transition: what a weekly series is m
 Read them in this order: the slow climb (trend), the repeat on a fixed beat, yearly here (season), the rise and fall with no fixed length (cycle) and what is left over (noise). A series can carry more than one season. A planner books against the first three and buys a cushion for the fourth. The numbers are invented so each shape stands alone.
 
 ```notes
-LIVE, 3 minutes. 3Blue1Brown's move: the picture first, the names after. The real series has a
+LIVE, 3 minutes. Show the picture first and the names after, as 3Blue1Brown does. The real series has a
 growth of about 4 percent a year (trend), two seasons, the festival each year and the week holding
 the 1st of each month, no cycle two years can show, and a wobble of a few percent (noise). The
 definitions follow Forecasting: Principles and Practice, section 2.3. Explorer: scene F1, the
@@ -226,7 +226,7 @@ which group's own rule came closest. Transition: the trap hidden in the copy.
 
 ```notes
 LIVE, 5 minutes. Diwali's week came one week earlier in 2025, so every calendar copy is a week out.
-Veritasium's move: the reveal follows the vote of S9. Transition: where Diwali falls in 2026.
+As in a Veritasium video, the reveal follows the vote of S9. Transition: where Diwali falls in 2026.
 ```
 
 ---
@@ -359,8 +359,8 @@ icon: list | eyebrow: d | title: Festival-aligned | body: The bot plus 4 percent
 ```
 
 ```notes
-LIVE, 3 minutes. Brilliant's move: the room answers before the scoreboard. Note the tie in d is
-announced, not hidden: the next slide says why. Transition: the answer.
+LIVE, 3 minutes. The room answers before the scoreboard runs, as learners do on Brilliant. Option d
+names the tie on purpose, and the next slide says why. Transition: the answer.
 ```
 
 ---
@@ -373,7 +373,7 @@ announced, not hidden: the next slide says why. Transition: the answer.
 Festival-aligned and finance's rule miss by 6,615 shipments a week, the house bot by 9,831, drift by 14,842 and naive by 14,923. The tie is honest: no hidden week falls between five weeks before a Diwali week and four after, so both rules copy the same week of 2025 and add the same 4 percent. They part only in the festive weeks, which this test does not hold.
 
 ```notes
-LIVE, 5 minutes. Tufte's small multiples: one rule per panel on the same axes. The bot beats naive
+LIVE, 5 minutes. The chart uses Tufte's small multiples, one rule per panel on the same axes. The bot beats naive
 because it carries the August sale; it loses to the 4 percent rules because a growing series
 makes last year too low. Transition: the vendor.
 ```
@@ -684,10 +684,10 @@ October to 2 November. Transition: what the data cannot tell us.
 |---|---|
 | The festival moves, and the sale moves with it | One festival, the 2025 back-test; another festival would settle it |
 | Two years hold two festivals | Two examples of the festival's shape; only a third year settles it |
-| The hidden weeks hold no festive week | The 2025 festival's 4,034 a week; a hold-out that spans a festival would settle it |
+| The hidden weeks hold no festive week | The 2025 festival's 4,034 a week; a rolling origin through that festival would settle it |
 | Capacity caps the peak | Overtime reached 1,638 shifts in the week of 6 October 2025 against 5 in the week of 24 November 2025, so peak demand may have run above what shipped; orders that could not ship would settle it |
 | Growth of 4 percent a year | Two years' evidence; a third year would settle it |
-| A tax change rode on the 2025 festival | Two-wheeler sales to buyers ran at 31.5 lakh in October 2025 against 12.9 lakh in September, part of it credited to cuts in GST, India's goods and services tax (FADA, the Federation of Automobile Dealers Associations, release of 7 November 2025, checked 12 October 2026); a series with the tax change marked would settle it |
+| A tax change rode on the 2025 festival | Two-wheeler retail registrations ran at 31.5 lakh in October 2025 against 12.9 lakh in September, part of it credited to cuts in GST, India's goods and services tax (FADA, the Federation of Automobile Dealers Associations, release of 7 November 2025, checked 12 October 2026); a series with the tax change marked would settle it |
 
 ```notes
 LIVE, 5 minutes. One doubt at a time, each with the fact that would settle it. The FADA figure is
@@ -700,13 +700,25 @@ trained on national data. Transition: the two role cards.
 ## S37. Close: beat the bot, place the festival, price it
 *What do finance and the vendor's sponsor hear, and what does the morning leave on the board?*
 
-```cards
-icon: calculator | eyebrow: To finance | title: Right growth, wrong weeks | body: Your 4 percent is the growth two years show. Copied by calendar, it puts the peak on 5 October, before the plan's first week, and sits 308,048 shipments short. | tone: light
-icon: trending-up | eyebrow: To the vendor's sponsor | title: A fit, never a forecast | body: Within 1.4 percent on history, and 16,400 a week off on thirteen weeks it never saw. | tone: light
-icon: badge-check | eyebrow: The rule | title: Beat the bot, then place the festival | body: Score on hidden weeks in shipments and rupees; copy by distance from Diwali; cover demand in 0.82 of weeks. | tone: dark
+```mermaid
+flowchart LR
+    T["<b>Thu</b><br/>a time axis"] --> F["<b>Fri</b><br/>the forecast,<br/>6,615 a week off"]
+    F --> P["<b>The plan</b><br/>20,275 shifts,<br/>3,719 at the peak"]
+    M["<b>Mon</b><br/>guardrails<br/>bound it"] -.-> P
+    P --> S["<b>Sat</b><br/>a new<br/>company"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class M,T known
+    class F,P lit
+    class S unknown
 ```
 
+To finance: right growth, wrong weeks, since copied by calendar the 4 percent puts the peak on 5 October and sits 308,048 shipments short. To the vendor's sponsor: a fit of 1.4 percent, and 16,400 a week off on weeks it never saw. The rule: beat the bot on hidden weeks, place the festival, cover demand in 0.82 of weeks.
+
 ```notes
-LIVE, 3 minutes. Each stakeholder is partly right: concede the true part first. The afternoon
-writes the staffing note from these three cards. Transition: lunch, then half two.
+LIVE, 3 minutes. The forecast joins the week's map as the promise the plan is held to: Thursday's
+time axis feeds it and Monday's guardrails bound what it may chase. Each stakeholder is partly
+right, so concede the true part first; the afternoon writes the staffing note from these three
+lines. Transition: lunch, then half two.
 ```

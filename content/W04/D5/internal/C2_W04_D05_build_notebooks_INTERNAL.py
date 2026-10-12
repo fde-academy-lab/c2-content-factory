@@ -519,7 +519,7 @@ def nb03():
 
         Chapter 2 scored every rule on thirteen hidden summer weeks: festival-aligned and finance's
         rule tied at 6,615 a week, the house bot scored 9,831, the vendor 16,400. None of those
-        weeks held a festival, so the hold-out could not test the one thing the plan depends on.
+        weeks held a festival, so the hold-out could not test the festive weeks the plan depends on.
 
         **Who needs the answer.** The FC planner, who books the shifts, and the regional operations
         head, who answers for late parcels in the festival's busiest weeks. A plan that puts the
@@ -559,9 +559,9 @@ check("the week of 19 Oct 2026 copies 6 Oct 2025", source[pd.Timestamp("2026-10-
         earlier date and forecasts what came next as if the later weeks were unknown: stand in the
         week of 22 September 2025 and forecast the eight weeks from 29 September to 17 November
         2025. Festival-aligned copies, from five weeks before Diwali's week to four after, the week
-        at the same distance from last year's Diwali. One honest caveat: the 4 percent growth was
-        measured later, on weeks up to June 2026, so the cell also runs festival-aligned with no
-        growth, as a planner in September 2025 could have.
+        at the same distance from last year's Diwali. The 4 percent growth was measured later, on
+        weeks up to June 2026, so the cell also runs festival-aligned with no growth, as a planner
+        in September 2025 could have.
 
         **Predict before you run.** By how many weeks does the house bot miss 2025's peak?
 

@@ -21,8 +21,78 @@ Illustrative case: the company is real, the situation and the data are synthetic
 LIVE, 2 minutes, on screen as the room comes back. The first hour is the trainer's: the staffing
 note, the interview room, the Kahoot and Saturday's preview.
 Then the IITGN faculty session W4-4 (tentative) runs, or the fallback hour.
-Read the three numbers; every group's note starts from them. Transition: what the
-note must carry.
+Read the three numbers; every group's note starts from them. Transition: the morning on one board.
+```
+
+---
+
+## S1a. One board for the day, region one: the past's shape
+*Which forecast earns the plan's trust? The board fills one region per chapter.*
+
+```mermaid
+flowchart TB
+    C["<b>Which forecast earns the plan's trust?</b><br/>The anchor: a canteen sells about 80 cups every Sunday"]
+    C --> R1["<b>1. What shape does the past have?</b><br/>Sketch: trend, season, cycle, noise<br/>Pitfall: the calendar week<br/>taken for the festival"]
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class C lit
+    class R1 known
+```
+
+Chapter 1 filled this region: both years peak two weeks before Diwali's week, so a copy counts weeks from the festival.
+
+```notes
+LIVE, 1 minute. Read the question at the top with its anchor, then region one. The board grows a
+region a slide and ends with every pitfall the morning met. Explorer: scene F1.
+Transition: region two.
+```
+
+---
+
+## S1b. Region two: the copy any forecast must beat
+*What must a forecast beat before it books a shift?*
+
+```mermaid
+flowchart TB
+    C["<b>Which forecast earns the plan's trust?</b><br/>The anchor: a canteen sells about 80 cups every Sunday"]
+    C --> R1["<b>1. What shape does the past have?</b><br/>Sketch: trend, season, cycle, noise<br/>Pitfall: the calendar week<br/>taken for the festival"]
+    C --> R2["<b>2. What must any forecast beat?</b><br/>Sketch: one baseline per panel<br/>Pitfall: a fit taken for a forecast;<br/>a spike read as growth"]
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class C lit
+    class R1,R2 known
+```
+
+Chapter 2 filled this one: a forecast earns trust only on weeks it never saw, against a copy of last year.
+
+```notes
+LIVE, 1 minute. Region two holds the vendor's two mistakes: a close fit, and the 2025 spike read
+as growth, which is why its curve climbs with the weeks ahead. Explorer: scene F2. Transition:
+region three.
+```
+
+---
+
+## S1c. Region three: how wrong, and in which direction
+*How wrong could the plan be, and which way costs more?*
+
+```mermaid
+flowchart TB
+    C["<b>Which forecast earns the plan's trust?</b><br/>The anchor: a canteen sells about 80 cups every Sunday"]
+    C --> R1["<b>1. What shape does the past have?</b><br/>Sketch: trend, season, cycle, noise<br/>Pitfall: the calendar week<br/>taken for the festival"]
+    C --> R2["<b>2. What must any forecast beat?</b><br/>Sketch: one baseline per panel<br/>Pitfall: a fit taken for a forecast;<br/>a spike read as growth"]
+    C --> R3["<b>3. How wrong, and which way?</b><br/>Sketch: the cost curve, the range<br/>Pitfall: a plan booked<br/>at the forecast itself"]
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class C lit
+    class R1,R2,R3 known
+```
+
+Chapter 3 filled the last: a late shipment costs 4.6 times a spare one, so the plan sits 2.6 percent above the forecast.
+
+```notes
+LIVE, 1 minute. The finished board is the staffing note's skeleton: one line per region, then the
+shifts. Explorer: scenes F3 and F4. Transition: what the note must carry.
 ```
 
 ---
