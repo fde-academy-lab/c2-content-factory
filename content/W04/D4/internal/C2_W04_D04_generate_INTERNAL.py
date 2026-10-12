@@ -1115,6 +1115,106 @@ toys = [
     {"id": "toy_ai_cohorts", "label": "invented",
      "values": {"launch_week_4": 0.24, "organic_week_4": 0.36}, "used_by": "L6 the AI-company variant (as the explorer Th4)"},
 ]
+# the toys the exercises, the quiz and the notes use, each rate computed from its own counts
+KAAPI_S = {"search": 5000, "product_view": 6000, "add_to_cart": 2000, "order": 1200}
+KAAPI_C = {"search": 2100, "product_view": 2400, "add_to_cart": 1400, "order": 1000}
+DABBA = {"jan": (8, [6, 4, 3]), "feb": (6, [4, 3]), "mar": (6, [3])}
+DABBA_APP = {"menu": 2000, "specials": 2400, "plan": 600, "paid": 480}
+DABBA_BLEND = {"a": (400, 0.60, 0.55), "b": (600, 0.45, 0.40), "c": (1000, None, 0.56)}
+KAHOOT_BLEND = {"a": (300, 0.60, 0.55), "b": (700, 0.40, 0.35), "c": (1000, None, 0.51)}
+NOTES_BLEND = {"a": (200, 0.45, 0.40), "b": (300, None, 0.52)}
+
+
+def blend_months(cohorts):
+    may = [(n, r0) for n, r0, _ in cohorts.values() if r0 is not None]
+    jun = [(n, r1) for n, _, r1 in cohorts.values()]
+    return (round(sum(n * r for n, r in may)), sum(n for n, _ in may),
+            round(sum(n * r for n, r in jun)), sum(n for n, _ in jun))
+
+
+jan_n, jan_a = DABBA["jan"]
+toys += [
+    {"id": "toy_kaapi_funnel", "label": "invented, Kaapi and Co., a bakery app",
+     "values": {"sessions": KAAPI_S, "customers": KAAPI_C,
+                "search_to_view_session": r3(KAAPI_S["product_view"] / KAAPI_S["search"]),
+                "view_to_cart_session": r3(KAAPI_S["add_to_cart"] / KAAPI_S["product_view"]),
+                "cart_to_order_session": r3(KAAPI_S["order"] / KAAPI_S["add_to_cart"]),
+                "view_to_cart_customer": r3(KAAPI_C["add_to_cart"] / KAAPI_C["product_view"]),
+                "search_to_cart_customer": r3(KAAPI_C["add_to_cart"] / KAAPI_C["search"]),
+                "customers_over_sessions": r3(KAAPI_C["add_to_cart"] / KAAPI_S["product_view"]),
+                "search_over_view_session": r3(KAAPI_S["search"] / KAAPI_S["product_view"]),
+                "cart_to_order_after_update": 0.48},
+     "used_by": "exercises: the chapter 3 drill"},
+    {"id": "toy_dabba_club", "label": "invented, Dabba Club, a tiffin subscription",
+     "values": {"subscribers": sum(n for n, _ in DABBA.values()),
+                "cohorts": {k: {"size": n, "active": a, "percent": [round(100 * x / n, 1) for x in a]}
+                            for k, (n, a) in DABBA.items()},
+                "jan_over_survivors": [round(100 * b / a, 1) for a, b in zip([jan_n] + jan_a, jan_a)],
+                "jan_never_orderers_dropped": [round(100 * x / jan_a[0], 1) for x in jan_a],
+                "jan_not_active": [round(100 * (jan_n - x) / jan_n, 1) for x in jan_a],
+                "april_column": [round(100 * a[-1] / n, 1) for n, a in DABBA.values()],
+                "app": DABBA_APP,
+                "app_steps": [r3(DABBA_APP["specials"] / DABBA_APP["menu"]), r3(DABBA_APP["plan"] / DABBA_APP["specials"]),
+                              r3(DABBA_APP["paid"] / DABBA_APP["plan"])],
+                "payment_march_april": 0.80, "update_day": "6 April",
+                "blend_cohorts": {k: list(v) for k, v in DABBA_BLEND.items()},
+                "blend_ordered": [round(n * r) for n, r0, r1 in DABBA_BLEND.values() for r in (r0, r1) if r is not None],
+                "blend_months": blend_months(DABBA_BLEND)},
+     "used_by": "exercises: the lab's practice set"},
+    {"id": "toy_kahoot_blend", "label": "invented",
+     "values": {"cohorts": {k: list(v) for k, v in KAHOOT_BLEND.items()}, "months": blend_months(KAHOOT_BLEND),
+                "fall_points": 5},
+     "used_by": "the Kahoot's trap item, a blend other than 38 and 41"},
+    {"id": "toy_notes_blend", "label": "invented",
+     "values": {"cohorts": {k: list(v) for k, v in NOTES_BLEND.items()}, "ordered_now": [80, 156],
+                "months": blend_months(NOTES_BLEND)},
+     "used_by": "the study notes' self-check"},
+]
+for t in toys[-3:]:
+    key = "months" if "months" in t["values"] else "blend_months"
+    a, n, b, m = t["values"][key]
+    t["values"]["blend_percent"] = [round(100 * a / n, 1), round(100 * b / m, 1)]
+flat = [t["values"]["blend_percent"] for t in toys if t["id"] in ("toy_dabba_club", "toy_kahoot_blend")]
+check("the practice set's and the quiz's blends hold flat, neither at 38 nor 41",
+      len(flat) == 2 and all(a == b and a not in (38, 41) for a, b in flat), flat)
+
+# the arithmetic the day's other files print, each from the facts above
+F_ = {n["id"]: n["value"] for n in numbers}
+lost_17 = (F_["atc_to_order_member_android_before"] - F_["atc_to_order_member_android_after"]) * F_["android_member_carts_after"]
+first_week = sorted(WEEKLY_SIZE.index)[2]
+sale_week_ids = set(m["member_id"] for m in members if D(2026, 8, 17) <= m["signup_date"] <= D(2026, 8, 23))
+derived = [
+    {"id": "lost_orders_17_days", "value": int(round(lost_17)), "how": "(58 less 44 percent) x 22,841 Android member carts",
+     "used_by": "the fix-first set, a distractor and its solution"},
+    {"id": "lost_orders_per_day", "value": int(round(lost_17 / 17)), "how": "the 17 days' loss over 17", "used_by": "the fix-first set, a distractor"},
+    {"id": "orders_at_58_percent", "value": int(round(F_["atc_to_order_member_android_before"] * F_["android_member_carts_after"])),
+     "how": "58 percent of the 22,841 carts", "used_by": "the fix-first set, a distractor"},
+    {"id": "lost_17_days_rs_lakh", "value": round(float(round(lost_17) * 400 / 1e5), 1), "how": "the 17 days' loss x Rs 400, in lakh",
+     "used_by": "the fix-first set, a distractor"},
+    {"id": "jan_drop_m1_to_m2_points", "value": round(float(100 * (F_["m1_jan"] - F_["tri_jan_m2"])), 1),
+     "how": "January's month one less its month two", "used_by": "the chapter 2 drill"},
+    {"id": "jan_even_fall_points", "value": round(float(100 * (F_["m1_jan"] - F_["tri_jan_m8"]) / 7), 1),
+     "how": "January's whole fall spread evenly over seven months (a distractor)", "used_by": "the chapter 2 drill"},
+    {"id": "not_ordering_m2_in_100", "value": 100 - 38, "how": "100 less the plateau of about 38 (a distractor)",
+     "used_by": "the Kahoot"},
+    {"id": "toy_funnel_inverted_step", "value": 200, "how": "40 searches over 20 add-to-carts (a distractor)",
+     "used_by": "the guided set"},
+    {"id": "weekly_cohorts_total", "value": int(WEEKLY_SIZE.sum()), "how": "members who joined 3 August to 13 September",
+     "used_by": "the take-home and its self-check"},
+    {"id": "sale_week_organic_members", "value": sum(1 for m in members if m["member_id"] in sale_week_ids
+                                                    and m["signup_channel"] == "organic"),
+     "how": "members who joined 17 to 23 August without the sale's discount", "used_by": "the self-check"},
+    {"id": "sale_week_w1_ordered", "value": int(round(WEEKLY.loc["2026-08-17", 1] * WEEKLY_SIZE["2026-08-17"])),
+     "how": "of the sale week's cohort, those with an order from 24 to 30 August", "used_by": "the self-check's second route"},
+    {"id": "simpson_paper_year", "value": 1951, "how": "public fact, the notes' ORIGIN line", "used_by": "the notes"},
+]
+check("the weekly cohorts sum to the members who joined 3 August to 13 September",
+      int(WEEKLY_SIZE.sum()) == sum(1 for m in members if D(2026, 8, 3) <= m["signup_date"] <= D(2026, 9, 13)),
+      int(WEEKLY_SIZE.sum()))
+check("the sale week's cohort is the sale-week members and that week's organic joiners",
+      WEEKLY_SIZE["2026-08-17"] == len(sale_week_ids)
+      == F_["aug_sale_members"] + next(d["value"] for d in derived if d["id"] == "sale_week_organic_members"))
+
 twelve_rows = {
     "rows": tw_rows,
     "hand_counts": {f"{NAMES[k[0]]}_m{k[1]}": f"{TW[k][0]} of {TW[k][1]}" for k in want_tw},
@@ -1135,6 +1235,21 @@ kalpa = {
     "app_orders_jul_sep": len(APP),
     "app_orderers": len(app_by),
     "cart_to_checkout": {b: r3(v) for b, v in K_RATE.items()},
+    "cart_to_checkout_counts": {b: {"carts": int(ksess[ksess.block == b]["add_to_cart"].sum()),
+                                    "checkouts": int(ksess[ksess.block == b]["checkout"].sum())}
+                                for b in ("before", "comparison", "window")},
+    "window_at_comparison_rate": r2(ksess[ksess.block == "window"]["add_to_cart"].sum() * K_RATE["comparison"]),
+    "window_missing_checkouts": r2(ksess[ksess.block == "window"]["add_to_cart"].sum() * K_RATE["comparison"]
+                                   - ksess[ksess.block == "window"]["checkout"].sum()),
+    "window_carts_without_checkout": {"count": int(ksess[ksess.block == "window"]["add_to_cart"].sum()
+                                                   - ksess[ksess.block == "window"]["checkout"].sum()),
+                                      "percent": round(float(100 * (1 - K_RATE["window"])), 1)},
+    "window_fall_points": round(float(100 * (K_RATE["comparison"] - K_RATE["window"])), 1),
+    "sessions": int(len(ksess)), "sessions_no_search": int((~ksess["search"]).sum()),
+    "sep_sessions": int(len(ksep)), "sep_checkout_sessions": int(ksep["checkout"].sum()),
+    "sep_active_members": int(len(k_mem)), "sep_members_with_checkout": int(k_mem.sum()),
+    "month_one_percent": {NAMES[y]: round(100 * a / n, 1) for y, (a, n) in m1_k.items()},
+    "blend_printed": "41 percent",
     "sessions_skip_search": r3(skip),
     "checkout_per_session_sep": r3(k_per_sess),
     "checkout_per_member_sep": r3(k_per_member),
@@ -1165,6 +1280,11 @@ plants = [
      "found_in": "notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the third your-turn cell"},
 ]
 public = [
+    {"id": "simpson_1951", "source": "Wikipedia, Edward H. Simpson", "checked": "12 October 2026",
+     "facts": {"paper": "The Interpretation of Interaction in Contingency Tables",
+               "journal": "Journal of the Royal Statistical Society, Series B, 1951",
+               "label": "the phrase Simpson's paradox came about twenty years later"},
+     "url": "https://en.wikipedia.org/wiki/Edward_H._Simpson"},  # checked 12 October 2026
     {"id": "Th4", "source": "Zomato, BSE filing (quarter to March 2023)", "checked": "12 October 2026",
      "facts": {"gold_members_q4fy23": "1.8 million", "gold_share_of_gov_march_2023": "about 30 percent",
                "frequency_rise_after_joining": "about 60 percent"},
@@ -1209,6 +1329,12 @@ from_other_days = [
      "source": "origin/w04-d5 528270d facts (finance_window_total, last year plus 4 percent)"},
     {"id": "friday_forecast_gap_points", "value": 18.0, "printed": "eighteen points apart", "day": "Friday",
      "source": "22 less 4; the Friday ticket's own words in origin/w04-d5 528270d half1"},
+    {"id": "friday_weeks", "value": 104, "printed": "104 weeks, beginning 30 September 2024 to 21 September 2026",
+     "day": "Friday", "source": "the case file's Friday ticket; origin/w04-d5 528270d facts series"},
+    {"id": "friday_window", "value": 8, "printed": "the eight festive weeks beginning 12 October to 30 November 2026",
+     "day": "Friday", "source": "the case file's Friday ticket; origin/w04-d5 528270d facts festive_window_2026"},
+    {"id": "friday_diwali", "value": "8 November 2026", "printed": "Diwali falls on Sunday 8 November 2026",
+     "day": "Friday", "source": "the case file's Friday ticket (F5)"},
 ]
 corrections = [
     {"line": "the dashboard's 38 percent", "case_file": "blended over members who signed up before the month",
@@ -1253,6 +1379,7 @@ facts = {
     },
     "numbers": numbers,
     "toys": toys,
+    "derived": derived,
     "twelve_rows": twelve_rows,
     "public_facts": public,
     "from_other_days": from_other_days,

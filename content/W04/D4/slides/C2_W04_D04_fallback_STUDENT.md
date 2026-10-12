@@ -120,7 +120,7 @@ Transition: the table.
 
 ![Weekly cohorts: the sale week orders once, then falls away](../whiteboards/C2_W04_D04_weekly_cohorts_STUDENT.png)
 
-Percent of each weekly cohort that ordered in each full week after joining. The sale week's 9,108 members ordered in their first week, while the discount lasted, and then fell off a cliff: 53 to 12 percent, the steepest fall of the six. The five other weeks, 1,112 to 1,247 members each, start between 27 and 38 percent.
+Percent of each weekly cohort that ordered in each full week after joining. The week of 17 August, the sale week, brought 9,108 members, the 8,027 who joined on the sale's discount among them. They ordered at 53 percent in their first full week, the most of any cohort, and then fell off a cliff to 12, the steepest fall of the six. The five other weeks, 1,112 to 1,247 members each, start between 27 and 38 percent.
 
 ```notes
 LIVE, 10 minutes. Point at the sale week's two cells. The monthly table hid this inside the
@@ -136,7 +136,7 @@ Transition: which story survives.
 | The morning said | On the weekly table |
 |---|---|
 | Every cohort falls with age | Holds, with noise: weekly cohorts of 1,112 to 1,247 members |
-| The sale cohort is the weakest | Holds after its first week; in its first week it looks strongest |
+| The sale-week members are the weakest | Holds for the sale week's cohort after its first week; in that first week it looks strongest |
 | Rates near 38 percent | Weekly rates are lower: ordering in a given week is rarer than in a month |
 | The last month counts | The last week is partial and leaves the table |
 

@@ -11,7 +11,7 @@ Header: WEEK 4  ·  DAY 4  ·  ZOMATO GOLD, CHENNAI, AN ILLUSTRATIVE CASE
 |---|---|
 | Month-two retention on the dashboard, June to September 2026 | 38 percent each month |
 | Month one by cohort, January to August | 58, 56, 55, 53, 52, 50, 49, 31 percent |
-| The August cohort, joined in a sale week | 13,000 members, 2.6 times the 5,000 a month of January to July |
+| The August cohort, grown by a sale week | 13,000 members, 2.6 times the 5,000 a month of January to July |
 | Members on Android, add-to-cart to order, before and after 14 September | 58 to 44 percent |
 | Members on iOS; non-members on Android | 57 to 56 percent; 52 to 51 percent |
 | Search to menu view per session; menu view to add-to-cart per session and per member, September | 118 percent; 34 and 61 percent |
@@ -76,7 +76,7 @@ Transition: where today ends.
 ## S3. Where today ends: two problems, two fixes
 *What sentence will the membership lead carry out of the room?*
 
-> "It is both, and they need different fixes. The dashboard reads 38 because it averages cohorts on a slow slide and has not yet counted the 13,000-member sale cohort, whose sale-week members kept 20 percent in month one; when they enter in October it drops to about 33. The order loss sits in one step, checkout start to order placed, for members on Android since the 14 September release: 72.5 to 55 percent, about 1,317 orders a week. Fix the Android checkout first, and judge the sale cohort on its own curve before buying another one."
+> "It is both, and they need different fixes. The dashboard reads 38 because it averages cohorts on a slow slide and has not yet counted the 13,000-member August cohort, whose sale-week members kept 20 percent in month one; when that cohort enters in October, the dashboard drops to about 33. The order loss sits in one step, checkout start to order placed, for members on Android since the 14 September release: 72.5 to 55 percent, about 1,317 orders a week. Fix the Android checkout first, and judge the next sale's members on their own curve before buying another sale."
 
 Each number in that sentence is earned in order: by hand on twelve members, on all 53,089, then on 1,386,235 app events.
 
@@ -376,13 +376,13 @@ Transition: the chapter's questions.
 ## S16. Chapter 2: from twelve members to 53,089
 *Who needs the answer, and which smaller questions lead to it?*
 
-**Who needs the answer.** The membership lead, about to report "nothing changed" because the number is flat. If the flat number hides falling cohorts and a weak sale cohort, the fix waits a month too long.
+**Who needs the answer.** The membership lead, about to report "nothing changed" because the number is flat. If the flat number hides falling cohorts and a weak August cohort, the fix waits a month too long.
 
 ```timeline
 label: 1 | title: What does each cohort keep, month by month? | body: One pivot_table on member_months
 label: 2 | title: What does the dashboard print, counted directly? | body: June to September
 label: 3 | title: What is September's 38 made of? | body: The weighted average, cohort by cohort
-label: 4 | title: What is outside the count? | body: The sale cohort, and what it will do in October | tone: dark
+label: 4 | title: What is outside the count? | body: The August cohort, and what it will do in October | tone: dark
 ```
 
 ```notes
@@ -448,10 +448,10 @@ b) About 38 percent every month
 
 c) A rise, because new cohorts keep joining
 
-d) Flat until September, then a drop when the sale cohort arrives
+d) Flat until September, then a drop when the August cohort arrives
 
 ```notes
-LIVE, 2 minutes. Vote. The d voters are thinking well: they expect the sale cohort to show up. Ask
+LIVE, 2 minutes. Vote. The d voters are thinking well: they expect the August cohort to show up. Ask
 them to hold that thought for four slides.
 Transition: the direct count.
 ```
@@ -481,7 +481,7 @@ Transition: the plausible wrong answer.
 ## S21. The wrong call: "38 and flat, nothing changed"
 *What would a hurried analyst conclude from four flat months, and what would it cost?*
 
-**What breaks.** "Month-two retention is 38 percent and flat, so nothing changed." The decision it would mislead: the sale cohort gets no action, the dashboard stays the month's headline, and October's drop arrives as a surprise.
+**What breaks.** "Month-two retention is 38 percent and flat, so nothing changed." The decision it would mislead: the August cohort gets no action, the dashboard stays the month's headline, and October's drop arrives as a surprise.
 
 **Why it is wrong.** The 38 is an average over cohorts of different ages, weighted by their sizes, and it only counts a member from her second month. A flat average can sit on top of every cohort falling, as batch A fell under batch B on the toy.
 
@@ -562,12 +562,12 @@ Transition: the reveal.
 
 ![The sale-week members, not August, sit low](../whiteboards/C2_W04_D04_sale_vs_organic_STUDENT.png)
 
-The answer is b: 17,248 of 48,000, 35.9 percent. Split by how they joined, the 4,973 organic August members kept 49 percent in month one, July's rate; the 8,027 sale-week members kept 20. In October they enter the dashboard; if they fall from month one to month two as July's cohort did, the dashboard drops to about 33 percent (32 to 34 if they enter anywhere from 17 to 24).
+The answer is b: 17,248 of 48,000, 35.9 percent. Split by how they joined, the 4,973 organic August members kept 49 percent in month one, July's rate; the 8,027 sale-week members kept 20. In October the whole August cohort enters the dashboard; if it falls from month one to month two as July's did, 31 to about 20.5 percent, the dashboard drops to about 33 percent (32 to 34 if it enters anywhere from 17 to 24).
 
 ```notes
 LIVE, 5 minutes. Two readings of the same month differ only by who is counted. Then the split:
 the problem is the sale week, not the month. The October estimate rests on an assumption (the
-sale cohort falls as July's did); name it as one. Strike on the hypothesis board: a cohort
+August cohort falls as July's did); name it as one. Strike on the hypothesis board: a cohort
 problem, confirmed; the cohort is the sale week's.
 Transition: the chapter's close.
 ```
@@ -785,7 +785,7 @@ Transition: the chapter's close.
 
 | Caveat | The check | What it found |
 |---|---|---|
-| Selection: the sale cohort was bought on a discount | Its organic members beside July's cohort | 49 against 49 percent; the sale-week members alone sit at 20 |
+| Selection: the sale-week members were bought on a discount | Its organic members beside July's cohort | 49 against 49 percent; the sale-week members alone sit at 20 |
 | Censoring: the newest cohorts are young | A member who has not left yet is not retained for ever | Named here; the IITGN faculty session W4-3 (tentative) takes it up |
 | Seasonality: exam months in a student-heavy zone (hypothetical) | September split by zone | No zone more than 0.9 points from the city |
 | Tracking: the release renamed an Android event | The app team's mapping; the cut moved a week | 58 to 47, and 56 to 43: the fall holds |

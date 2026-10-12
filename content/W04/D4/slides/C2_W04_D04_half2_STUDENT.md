@@ -65,10 +65,10 @@ Transition: what each problem costs.
 value: 1,317 | label: orders a week | note: not placed after the release: 22,841 Android member carts in 17 days, at 58 against 44 percent
 value: Rs 5.3 lakh | label: of orders a week | note: at Rs 400 an order, an assumption from Rs 300 (Rs 4.0 lakh) to Rs 500 (Rs 6.6 lakh)
 value: 0.23 | label: orders per sale-week member | note: in month one, against 0.61 for an organic August member
-value: 33 | label: percent, October | note: the dashboard once the sale cohort enters, if it falls as July's did (32 to 34)
+value: 33 | label: percent, October | note: the dashboard once the August cohort enters, if it falls as July's did (32 to 34)
 ```
 
-The release costs orders every week it stays live, and a code fix ends it. The sale cohort's weakness is already bought; what can still change is the next sale's design.
+The release costs orders every week it stays live, and a code fix ends it. The August cohort's weakness is already bought; what can still change is the next sale's design.
 
 ```notes
 LIVE, 4 minutes. Read each number with its assumption. The 1,317 assumes the carts that failed
@@ -110,11 +110,11 @@ Transition: the call, said in one breath.
 ## S42. The call: the Android checkout first
 *What does a hire-grade call say, in the order the membership lead needs it?*
 
-**The call.** Fix the last step of the new Android checkout for members first: it loses about 1,317 orders a week, and a code fix ends the loss. **The evidence.** Checkout start to order placed fell from 72.5 to 55 percent for members on Android from the release week; starting checkout held at 80; iOS members (57 to 56) and non-members on Android (52 to 51) held; the fall holds with the cut moved a week either way. **The cost.** About Rs 5.3 lakh of orders a week at Rs 400 an order, Rs 4.0 to 6.6 lakh across the assumption's range. **The second problem.** The sale-week members kept 20 percent in month one against 49 for organic August members; judge the next sale on its own cohort curve before running it. **What would change the order.** If the lost carts were mostly retried and ordered later, the release costs friction rather than orders, and the sale cohort would go first.
+**The call.** Fix the last step of the new Android checkout for members first: it loses about 1,317 orders a week, and a code fix ends the loss. **The evidence.** Checkout start to order placed fell from 72.5 to 55 percent for members on Android from the release week; starting checkout held at 80; iOS members (57 to 56) and non-members on Android (52 to 51) held; the fall holds with the cut moved a week either way. **The cost.** About Rs 5.3 lakh of orders a week at Rs 400 an order, Rs 4.0 to 6.6 lakh across the assumption's range. **The second problem.** The sale-week members kept 20 percent in month one against 49 for organic August members; judge the next sale on its own cohort curve before running it. **What would change the order.** If the lost carts were mostly retried and ordered later, the release costs friction rather than orders, and the next sale's design would go first.
 
 ```notes
 LIVE, 3 minutes. One group reads its call; the room scores it against the five lines. This is the
-model, not the only answer: a group that puts the sale cohort first with a reason that holds has
+model, not the only answer: a group that puts the sale-week members first with a reason that holds has
 made a defensible call, and the room should hear why.
 Transition: the interview.
 ```
@@ -151,10 +151,10 @@ flowchart LR
 
 | | A weak answer | A hire-grade answer |
 |---|---|---|
-| First sentence | "It's probably the sale cohort." | "Before a cause, I'd check the count, then what the number counts." |
+| First sentence | "It's probably the August cohort." | "Before a cause, I'd check the count, then what the number counts." |
 | The flat 38 | Accepts it | "Who does month-two retention count, and from when?" |
 | The split | Overall conversion | Cohort, platform and date, then fewer users against fewer orders each |
-| The close | "Retention dropped." | "One step on Android since 14 September, about 1,317 orders a week; the sale cohort next." |
+| The close | "Retention dropped." | "One step on Android since 14 September, about 1,317 orders a week; the sale-week members next." |
 
 ```notes
 LIVE, 6 minutes. The order is Aced's (T2): rule out data issues first, isolate by segment, then
@@ -188,7 +188,7 @@ flowchart LR
 
 ```notes
 LIVE, 4 minutes. Programme-written, every number a toy (explorer scene Th4 shows the same toy).
-The transfer: a launch cohort is a sale cohort in an AI product.
+The transfer: a launch cohort is the sale-week members of an AI product.
 Transition: the handoff.
 ```
 
@@ -239,7 +239,7 @@ Transition: the close.
 ## S47. The day in one sentence, and Friday's ticket
 *What does Thursday close on, and what is Friday's question?*
 
-**The sentence.** The dashboard was flat because of who it counts: every cohort fell, the newest started lower, and the sale cohort is outside the count until October; the orders were lost in one step, on one platform, after one date.
+**The sentence.** The dashboard was flat because of who it counts: every cohort fell, the newest started lower, and the August cohort is outside the count until October; the orders were lost in one step, on one platform, after one date.
 
 **The crux lines.** A cohort fixes the entry moment. A blend is a size-weighted average and counts who it counts. Each funnel step divides by the step before, in one named unit. A low step is not a loss until it moves.
 

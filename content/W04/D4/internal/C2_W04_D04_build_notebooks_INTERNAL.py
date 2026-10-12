@@ -36,9 +36,9 @@ TICKET = textwrap.indent('''
 dashboard reports month-two retention for Chennai, the share of members two or more months past
 their signup month who ordered in the month, as flat at 38 percent for June, July, August and
 September 2026. Each signup cohort's own curve falls with age, and each cohort's month-one rate is
-lower than the one before: January 58 percent, April 53, July 49, and August 31. The August cohort
-joined in a sale week on a discounted first month and has 13,000 members, 2.6 times the 5,000 a
-month of January to July. On Monday 14 September 2026 a new checkout flow shipped on Android; since
+lower than the one before: January 58 percent, April 53, July 49, and August 31. The August cohort,
+13,000 members, 2.6 times the 5,000 a month of January to July, grew out of a sale week with a
+discounted first month. On Monday 14 September 2026 a new checkout flow shipped on Android; since
 then members' add-to-cart to order conversion on Android fell from 58 to 44 percent, while members
 on iOS went from 57 to 56 and non-members on Android from 52 to 51. **The ask, due Friday:** is it
 a cohort problem or an everyone problem, which funnel stage owns the loss, and what should be fixed
@@ -252,7 +252,7 @@ def nb02():
         member out until her second month. This notebook does the same on every member.
         ''' + TICKET + '''
         **Who needs the answer.** The membership lead, who reads 38 percent each month and is about to
-        report "nothing changed". If the flat number is hiding falling cohorts and a weak sale cohort,
+        report "nothing changed". If the flat number is hiding falling cohorts and a weak August cohort,
         the fix waits a month too long.
 
         **The questions on the way.**
@@ -346,7 +346,7 @@ def nb02():
         - a) A fall of two or three points a month
         - b) About 38 percent every month
         - c) A rise, because new cohorts keep joining
-        - d) Flat until September, then a drop when the sale cohort arrives
+        - d) Flat until September, then a drop when the August cohort arrives
         '''),
         code('''
         # The dashboard, counted directly: members aged two or more, and the share who ordered.
@@ -361,7 +361,7 @@ def nb02():
         prints as 38 every month.
 
         **The plausible wrong answer.** "Month-two retention is 38 percent and flat, so nothing
-        changed." The decision it would mislead: the sale cohort gets no action and the dashboard stays
+        changed." The decision it would mislead: the August cohort gets no action and the dashboard stays
         as the month's headline. **Why it is wrong.** The 38 is an average over cohorts of different
         ages, weighted by their sizes, and it only counts a member from her second month. Each month a
         new cohort enters the count at about 38.5 percent, just above the older cohorts' slow slide,
@@ -458,8 +458,8 @@ def nb03():
         # Which funnel stage owns the loss, on which denominator, and for whom?
 
         **Week 4, Thursday, chapter 3 of 3 (L3).** Chapter 2 took the dashboard's flat 38 percent apart:
-        every cohort falls with age, and the 13,000-member sale cohort, 20 percent in month one for its
-        sale-week members, is outside the count until October. This notebook turns to the order flow,
+        every cohort falls with age, and the 13,000-member August cohort, whose 8,027 sale-week members
+        kept 20 percent in month one, is outside the count until October. This notebook turns to the order flow,
         where the ticket says something changed on 14 September.
         ''' + TICKET + '''
         **Who needs the answer.** The membership lead and the app team's lead, who will say the stage the

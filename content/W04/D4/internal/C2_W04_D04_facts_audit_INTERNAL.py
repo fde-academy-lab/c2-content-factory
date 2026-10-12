@@ -73,6 +73,13 @@ for p in FACTS["public_facts"]:
 for o in FACTS["from_other_days"]:
     add_value(o["value"], o["id"])
     add_value(o["printed"], o["id"])
+for d in FACTS.get("derived", []):
+    add_value(d["value"], d["id"])
+for k, v in FACTS.get("kalpa", {}).items():           # read only by files used after the lab
+    add_value(v, f"kalpa.{k}")
+for pl in FACTS.get("plants", []):
+    add_value(pl["value"], pl["id"], "share")
+    add_value(pl["how"], pl["id"])
 tw = FACTS["twelve_rows"]
 for k, v in {**tw["hand_counts"], **tw["dashboard_way"], **tw["everyone_way"], **tw["hand_count_percent"],
              **tw["ways_percent"]}.items():
@@ -94,7 +101,7 @@ for k, v in {"Q4": "4", "Q8": "8", "Q12": "12", "FY": "23 24 26 27"}.items():
 
 SKIP_LINE = re.compile(r"^(Week 4, Day 4|Kicker:|```|# |\s*label: \d)")
 STRUCTURAL = re.compile(r"\b(S\d+|D\d+|L[1-6]|W4-3|Th[1-6]|T[1-3]|M[1-9]|F[1-6]|R[12])\b|\b(week|chapter|section|part|item|Q|month|day)\s+\d+\b|\b\d+\s+(minutes|minute|cells?)\b|"
-                        r"\bC2_W04_D04\w*|\b\d{2}[a-z]?\.|https?://\S+|\[[A-Z]+\]|\bnotebook \d+\b|\b0[1-4]\b", re.I)
+                        r"\bC2_W04_D04\w*|\b\d{2}[a-z]?\.(?!\d)|https?://\S+|\[[A-Z]+\]|\bnotebook \d+\b|\b0[1-4]\b(?!\.\d)", re.I)
 NUM = re.compile(r"(?<![\w.])(\d[\d,]*\.?\d*)(?![\w])")
 
 

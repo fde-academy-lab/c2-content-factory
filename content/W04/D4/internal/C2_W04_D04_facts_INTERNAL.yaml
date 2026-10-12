@@ -1199,6 +1199,211 @@ toys:
     launch_week_4: 0.24
     organic_week_4: 0.36
   used_by: L6 the AI-company variant (as the explorer Th4)
+- id: toy_kaapi_funnel
+  label: invented, Kaapi and Co., a bakery app
+  values:
+    sessions:
+      search: 5000
+      product_view: 6000
+      add_to_cart: 2000
+      order: 1200
+    customers:
+      search: 2100
+      product_view: 2400
+      add_to_cart: 1400
+      order: 1000
+    search_to_view_session: 1.2
+    view_to_cart_session: 0.333
+    cart_to_order_session: 0.6
+    view_to_cart_customer: 0.583
+    search_to_cart_customer: 0.667
+    customers_over_sessions: 0.233
+    search_over_view_session: 0.833
+    cart_to_order_after_update: 0.48
+  used_by: 'exercises: the chapter 3 drill'
+- id: toy_dabba_club
+  label: invented, Dabba Club, a tiffin subscription
+  values:
+    subscribers: 20
+    cohorts:
+      jan:
+        size: 8
+        active:
+        - 6
+        - 4
+        - 3
+        percent:
+        - 75.0
+        - 50.0
+        - 37.5
+      feb:
+        size: 6
+        active:
+        - 4
+        - 3
+        percent:
+        - 66.7
+        - 50.0
+      mar:
+        size: 6
+        active:
+        - 3
+        percent:
+        - 50.0
+    jan_over_survivors:
+    - 75.0
+    - 66.7
+    - 75.0
+    jan_never_orderers_dropped:
+    - 100.0
+    - 66.7
+    - 50.0
+    jan_not_active:
+    - 25.0
+    - 50.0
+    - 62.5
+    april_column:
+    - 37.5
+    - 50.0
+    - 50.0
+    app:
+      menu: 2000
+      specials: 2400
+      plan: 600
+      paid: 480
+    app_steps:
+    - 1.2
+    - 0.25
+    - 0.8
+    payment_march_april: 0.8
+    update_day: 6 April
+    blend_cohorts:
+      a:
+      - 400
+      - 0.6
+      - 0.55
+      b:
+      - 600
+      - 0.45
+      - 0.4
+      c:
+      - 1000
+      - null
+      - 0.56
+    blend_ordered:
+    - 240
+    - 220
+    - 270
+    - 240
+    - 560
+    blend_months:
+    - 510
+    - 1000
+    - 1020
+    - 2000
+    blend_percent:
+    - 51.0
+    - 51.0
+  used_by: 'exercises: the lab''s practice set'
+- id: toy_kahoot_blend
+  label: invented
+  values:
+    cohorts:
+      a:
+      - 300
+      - 0.6
+      - 0.55
+      b:
+      - 700
+      - 0.4
+      - 0.35
+      c:
+      - 1000
+      - null
+      - 0.51
+    months:
+    - 460
+    - 1000
+    - 920
+    - 2000
+    fall_points: 5
+    blend_percent:
+    - 46.0
+    - 46.0
+  used_by: the Kahoot's trap item, a blend other than 38 and 41
+- id: toy_notes_blend
+  label: invented
+  values:
+    cohorts:
+      a:
+      - 200
+      - 0.45
+      - 0.4
+      b:
+      - 300
+      - null
+      - 0.52
+    ordered_now:
+    - 80
+    - 156
+    months:
+    - 90
+    - 200
+    - 236
+    - 500
+    blend_percent:
+    - 45.0
+    - 47.2
+  used_by: the study notes' self-check
+derived:
+- id: lost_orders_17_days
+  value: 3198
+  how: (58 less 44 percent) x 22,841 Android member carts
+  used_by: the fix-first set, a distractor and its solution
+- id: lost_orders_per_day
+  value: 188
+  how: the 17 days' loss over 17
+  used_by: the fix-first set, a distractor
+- id: orders_at_58_percent
+  value: 13248
+  how: 58 percent of the 22,841 carts
+  used_by: the fix-first set, a distractor
+- id: lost_17_days_rs_lakh
+  value: 12.8
+  how: the 17 days' loss x Rs 400, in lakh
+  used_by: the fix-first set, a distractor
+- id: jan_drop_m1_to_m2_points
+  value: 19.3
+  how: January's month one less its month two
+  used_by: the chapter 2 drill
+- id: jan_even_fall_points
+  value: 3.0
+  how: January's whole fall spread evenly over seven months (a distractor)
+  used_by: the chapter 2 drill
+- id: not_ordering_m2_in_100
+  value: 62
+  how: 100 less the plateau of about 38 (a distractor)
+  used_by: the Kahoot
+- id: toy_funnel_inverted_step
+  value: 200
+  how: 40 searches over 20 add-to-carts (a distractor)
+  used_by: the guided set
+- id: weekly_cohorts_total
+  value: 14892
+  how: members who joined 3 August to 13 September
+  used_by: the take-home and its self-check
+- id: sale_week_organic_members
+  value: 1081
+  how: members who joined 17 to 23 August without the sale's discount
+  used_by: the self-check
+- id: sale_week_w1_ordered
+  value: 4832
+  how: of the sale week's cohort, those with an order from 24 to 30 August
+  used_by: the self-check's second route
+- id: simpson_paper_year
+  value: 1951
+  how: public fact, the notes' ORIGIN line
+  used_by: the notes
 twelve_rows:
   rows:
   - member_id: ZG20844
@@ -1321,6 +1526,14 @@ twelve_rows:
   rule: every hand-counted rate at least five points from its full-data value and from Kalpa's retention
     plants
 public_facts:
+- id: simpson_1951
+  source: Wikipedia, Edward H. Simpson
+  checked: 12 October 2026
+  facts:
+    paper: The Interpretation of Interaction in Contingency Tables
+    journal: Journal of the Royal Statistical Society, Series B, 1951
+    label: the phrase Simpson's paradox came about twenty years later
+  url: https://en.wikipedia.org/wiki/Edward_H._Simpson
 - id: Th4
   source: Zomato, BSE filing (quarter to March 2023)
   checked: 12 October 2026
@@ -1426,6 +1639,21 @@ from_other_days:
   printed: eighteen points apart
   day: Friday
   source: 22 less 4; the Friday ticket's own words in origin/w04-d5 528270d half1
+- id: friday_weeks
+  value: 104
+  printed: 104 weeks, beginning 30 September 2024 to 21 September 2026
+  day: Friday
+  source: the case file's Friday ticket; origin/w04-d5 528270d facts series
+- id: friday_window
+  value: 8
+  printed: the eight festive weeks beginning 12 October to 30 November 2026
+  day: Friday
+  source: the case file's Friday ticket; origin/w04-d5 528270d facts festive_window_2026
+- id: friday_diwali
+  value: 8 November 2026
+  printed: Diwali falls on Sunday 8 November 2026
+  day: Friday
+  source: the case file's Friday ticket (F5)
 kalpa:
   audience: TRAINER until the lab finds it
   retention_definition: 'app activity: at least one app session in the month (the case file''s fallback)'
@@ -1475,6 +1703,33 @@ kalpa:
     before: 0.824
     comparison: 0.833
     window: 0.636
+  cart_to_checkout_counts:
+    before:
+      carts: 34
+      checkouts: 28
+    comparison:
+      carts: 12
+      checkouts: 10
+    window:
+      carts: 11
+      checkouts: 7
+  window_at_comparison_rate: 9.17
+  window_missing_checkouts: 2.17
+  window_carts_without_checkout:
+    count: 4
+    percent: 36.4
+  window_fall_points: 19.7
+  sessions: 469
+  sessions_no_search: 145
+  sep_sessions: 153
+  sep_checkout_sessions: 12
+  sep_active_members: 49
+  sep_members_with_checkout: 12
+  month_one_percent:
+    Jun: 92.3
+    Jul: 92.9
+    Aug: 81.2
+  blend_printed: 41 percent
   sessions_skip_search: 0.309
   checkout_per_session_sep: 0.078
   checkout_per_member_sep: 0.245
