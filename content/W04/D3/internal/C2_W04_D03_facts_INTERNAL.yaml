@@ -827,6 +827,36 @@ caveats:
     shown: "1.04"
     how: "the same for bread and milk"
     used_in: "chapter 3, notebook 03"
+  - id: chips_cold_lift_size
+    value: 2.4753
+    shown: "2.48"
+    how: "chips and cold drink, lift with chance counted within each cart size"
+    used_in: "interview room, half2"
+  - id: coriander_chillies_lift_size
+    value: 2.2534
+    shown: "2.25"
+    how: "coriander and green chillies, lift with chance counted within each cart size"
+    used_in: "interview room, half2"
+  - id: bread_butter_lift_size
+    value: 1.7434
+    shown: "1.74"
+    how: "bread and butter, lift with chance counted within each cart size"
+    used_in: "interview room, half2"
+  - id: onions_tomatoes_lift_size
+    value: 1.3812
+    shown: "1.38"
+    how: "onions and tomatoes, lift with chance counted within each cart size"
+    used_in: "interview room, half2"
+  - id: chips_cold_lift_both
+    value: 1.9517
+    shown: "1.95"
+    how: "chips and cold drink, each customer once and chance counted within each cart size"
+    used_in: "interview room, half2"
+  - id: onions_tomatoes_lift_both
+    value: 1.378
+    shown: "1.38"
+    how: "onions and tomatoes, each customer once and chance counted within each cart size"
+    used_in: "interview room, half2"
   - id: chips_cold_heavy_share
     value: 0.73
     shown: "73 percent"
@@ -1069,6 +1099,26 @@ slot_value:
     shown: "Rs 80,197"
     how: "1,920 adds x the average price of an added item"
     used_in: "notebook 03, the trap"
+  - id: ice_cream_views_day
+    value: 2400
+    shown: "2,400"
+    how: "60,000 views x ice cream's 4 percent of carts, if views follow carts"
+    used_in: "interview room, half1, half2, notes"
+  - id: thin_rule_month
+    value: 16848
+    shown: "about Rs 17,000"
+    how: "2,400 x (0.064 - 0.012) x 0.5 x 9 x 30: the thin pair in place of milk, clicking like the rest"
+    used_in: "interview room, half1, half2, notes"
+  - id: serving_cost_10p_month
+    value: 180000
+    shown: "Rs 1.8 lakh"
+    how: "60,000 views x Rs 0.10 x 30: ten paise of serving cost a view, a month"
+    used_in: "interview room, AI variant"
+  - id: serving_breakeven_paise
+    value: 35.1
+    shown: "35 paise"
+    how: "Rs 6.3 lakh / (60,000 x 30): the serving cost a view that uses up the re-rank's recovery"
+    used_in: "interview room, AI variant"
 
 twelve_rows:
   - id: twelve_milk
@@ -1250,6 +1300,11 @@ public:
     shown: "1,171"
     how: "Swiggy Instamart dark stores, same source (T3)"
     used_in: "guesstimate"
+  - id: instamart_cities
+    value: 131
+    shown: "131"
+    how: "cities those 1,171 dark stores span, same source (T3, checked 12 October 2026)"
+    used_in: "guesstimate"
   - id: maxxsaver_mtu_share
     value: 0.28
     shown: "over 28 percent"
@@ -1356,6 +1411,16 @@ guesstimate:
     value: 0.127
     shown: "about 13 percent"
     how: "the weekly share that lands on 1,089: 1,089 x 7 / (40,000 x 1.5)"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_share_low_day
+    value: 857.1
+    shown: "about 860"
+    how: "40,000 x 0.10 x 1.5 / 7; orders a week at 1 gives the same"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_share_high_day
+    value: 1714.3
+    shown: "about 1,710"
+    how: "40,000 x 0.20 x 1.5 / 7; orders a week at 2 gives the same"
     used_in: "guesstimate: notes and the trainer sheet"
 
 pairs_detail:

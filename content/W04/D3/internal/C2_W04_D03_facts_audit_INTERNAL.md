@@ -2,7 +2,7 @@
 
 Written by C2_W04_D03_facts_audit_INTERNAL.py from the STUDENT files and C2_W04_D03_facts_INTERNAL.yaml. A number matches when it equals a fact's value, percent, lakh or count at the precision printed. Structural numbers (slide, week, step, minutes, dates, ids) are left out.
 
-Numbers traced: 2047. Numbers with no home: 0.
+Numbers traced: 2078. Numbers with no home: 0.
 
 | Number | File | Line | Facts id |
 |---|---|---|---|
@@ -562,30 +562,43 @@ Numbers traced: 2047. Numbers with no home: 0.
 | 0.25 percent | C2_W04_D03_interview_STUDENT.md | 70 | curd_cell_low, curd_hadapsar_w1, ice_choc_support |
 | 100 | C2_W04_D03_interview_STUDENT.md | 70 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
 | 22 | C2_W04_D03_interview_STUDENT.md | 70 | ice_choc_expected, onions_share |
-| 1,600 | C2_W04_D03_interview_STUDENT.md | 70 | ice_cream_carts |
+| 4 percent | C2_W04_D03_interview_STUDENT.md | 70 | bread_milk_excess, floor_pairs_lift_1_5, ice_cream_share |
+| 2,400 | C2_W04_D03_interview_STUDENT.md | 70 | butter_carts, ice_cream_views_day, kirana_tea_rusk_expected |
+| 60,000 | C2_W04_D03_interview_STUDENT.md | 70 | thursday_members, views_a_day_after, views_assumed |
+| Rs 17,000 | C2_W04_D03_interview_STUDENT.md | 70 | thin_rule_month, slice_kothrud_evening_onions_tomatoes_carts |
+| 4 percent | C2_W04_D03_interview_STUDENT.md | 70 | bread_milk_excess, floor_pairs_lift_1_5, ice_cream_share |
+| Rs 4.2 lakh | C2_W04_D03_interview_STUDENT.md | 70 | slot_gap_month |
+| 1 percent | C2_W04_D03_interview_STUDENT.md | 70 | curd_viman_nagar_w3, gs_orders_low, support_floor |
 | 73 percent | C2_W04_D03_interview_STUDENT.md | 71 | chips_cold_heavy_share, eggs_milk_conf_ab |
 | 3.39 | C2_W04_D03_interview_STUDENT.md | 71 | chips_cold_lift, pair_chips_cold_drink_lift |
 | 2.56 | C2_W04_D03_interview_STUDENT.md | 71 | chips_cold_lift_per_customer |
-| 2.56 | C2_W04_D03_interview_STUDENT.md | 71 | chips_cold_lift_per_customer |
+| 2.48 | C2_W04_D03_interview_STUDENT.md | 71 | chips_cold_lift_size |
+| 1.70 | C2_W04_D03_interview_STUDENT.md | 71 | onions_tomatoes_lift, pair_onions_tomatoes_lift |
+| 1.38 | C2_W04_D03_interview_STUDENT.md | 71 | onions_tomatoes_lift_both, onions_tomatoes_lift_size, ctr_after_milk_slot1 |
+| 1.5 | C2_W04_D03_interview_STUDENT.md | 71 | gs_orders_week, lift_rule_floor, milk_slots_worth |
+| 1.95 | C2_W04_D03_interview_STUDENT.md | 71 | chips_cold_lift_both |
 | 0.5 | C2_W04_D03_interview_STUDENT.md | 72 | add_rate_assumed, add_rate_observed, coriander_chillies_conf_ba |
 | Rs 9 | C2_W04_D03_interview_STUDENT.md | 72 | kalpa_twelve_charger, margin_assumed, tea_bag |
 | Rs 6.3 lakh | C2_W04_D03_interview_STUDENT.md | 72 | recoverable_month |
 | Rs 3.9 lakh | C2_W04_D03_interview_STUDENT.md | 72 | recoverable_low |
 | Rs 9.3 lakh | C2_W04_D03_interview_STUDENT.md | 72 | recoverable_high |
 | Rs 80,197 | C2_W04_D03_interview_STUDENT.md | 72 | gross_sales_day |
+| Rs 17,280 | C2_W04_D03_interview_STUDENT.md | 72 | slot_value_other_day |
+| 60,000 | C2_W04_D03_interview_STUDENT.md | 94 | thursday_members, views_a_day_after, views_assumed |
+| 10 | C2_W04_D03_interview_STUDENT.md | 94 | slice_hinjewadi_night_pav_potatoes_carts, slice_thin_carts_max, tea_orders |
+| Rs 1.8 lakh | C2_W04_D03_interview_STUDENT.md | 94 | serving_cost_10p_month, impressions_a_day |
+| 35 | C2_W04_D03_interview_STUDENT.md | 95 | serving_breakeven_paise, slice_hinjewadi_night_chips_cold_drink_carts, bread_milk_conf_ba |
 | Rs 6.3 lakh | C2_W04_D03_interview_STUDENT.md | 95 | recoverable_month |
-| Rs 3.9 lakh | C2_W04_D03_interview_STUDENT.md | 95 | recoverable_low |
-| Rs 9.3 lakh | C2_W04_D03_interview_STUDENT.md | 96 | recoverable_high |
-| 1.2 | C2_W04_D03_interview_STUDENT.md | 104 | osco_transactions, ctr_before_milk_slot3, kirana_tea_rusk_lift |
-| 10 | C2_W04_D03_interview_STUDENT.md | 105 | slice_hinjewadi_night_pav_potatoes_carts, slice_thin_carts_max, tea_orders |
-| 28 percent | C2_W04_D03_interview_STUDENT.md | 106 | curd_baner_w3, curd_camp_w3, curd_hadapsar_w4 |
-| 0 | C2_W04_D03_interview_STUDENT.md | 110 | add_rate_assumed, add_rate_low, add_rate_observed |
-| 2 | C2_W04_D03_interview_STUDENT.md | 110 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
+| 1.2 | C2_W04_D03_interview_STUDENT.md | 105 | osco_transactions, ctr_before_milk_slot3, kirana_tea_rusk_lift |
+| 10 | C2_W04_D03_interview_STUDENT.md | 106 | slice_hinjewadi_night_pav_potatoes_carts, slice_thin_carts_max, tea_orders |
+| 28 percent | C2_W04_D03_interview_STUDENT.md | 107 | curd_baner_w3, curd_camp_w3, curd_hadapsar_w4 |
+| 0 | C2_W04_D03_interview_STUDENT.md | 111 | add_rate_assumed, add_rate_low, add_rate_observed |
+| 2 | C2_W04_D03_interview_STUDENT.md | 111 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
 | 6.1 | C2_W04_D03_quiz_STUDENT.md | 12 | before_strip_ctr, ctr_before_other_slot2 |
 | 3.8 | C2_W04_D03_quiz_STUDENT.md | 12 | after_strip_ctr, after_strip_ctr_exact |
 | 40,000 | C2_W04_D03_quiz_STUDENT.md | 43 | gs_households, support_floor_carts, total_carts |
 | 13,600 | C2_W04_D03_quiz_STUDENT.md | 43 | bread_carts |
-| 2,400 | C2_W04_D03_quiz_STUDENT.md | 43 | butter_carts, kirana_tea_rusk_expected, slice_kothrud_evening_floor_min |
+| 2,400 | C2_W04_D03_quiz_STUDENT.md | 43 | butter_carts, ice_cream_views_day, kirana_tea_rusk_expected |
 | 1,800 | C2_W04_D03_quiz_STUDENT.md | 43 | bread_butter_carts, pair_bread_butter_carts |
 | 0.75 | C2_W04_D03_quiz_STUDENT.md | 46 | bread_butter_conf_ba, kirana_rusk_tea_conf, tea_bag_conf |
 | 2.21 | C2_W04_D03_quiz_STUDENT.md | 47 | bread_butter_lift, pair_bread_butter_lift |
@@ -881,7 +894,9 @@ Numbers traced: 2047. Numbers with no home: 0.
 | 1 percent | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 7.5 | curd_viman_nagar_w3, gs_orders_low, support_floor |
 | 100 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 7.5 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
 | 22 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 7.6 | ice_choc_expected, onions_share |
-| 1,600 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 7.7 | ice_cream_carts |
+| 4 percent | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 7.7 | bread_milk_excess, floor_pairs_lift_1_5, ice_cream_share |
+| 2,400 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 7.7 | butter_carts, ice_cream_views_day, kirana_tea_rusk_expected |
+| 60,000 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 7.8 | thursday_members, views_a_day_after, views_assumed |
 | 100 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 8 output 2 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
 | 0.0025 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 8 output 2 | pair_chocolate_sauce_ice_cream_support, ice_choc_support, kalpa_thin_support |
 | 4.5956 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 8 output 2 | pair_chocolate_sauce_ice_cream_lift, ice_choc_lift |
@@ -932,9 +947,13 @@ Numbers traced: 2047. Numbers with no home: 0.
 | Rs 6.3 lakh | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 11.1 | recoverable_month |
 | Rs 3.9 lakh | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 11.2 | recoverable_low |
 | Rs 9.3 lakh | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 11.2 | recoverable_high |
-| 1,920 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 11.3 | adds_a_day |
-| Rs 41.77 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 11.3 | price_per_add_observed |
-| Rs 80,197 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 11.4 | gross_sales_day |
+| 2,400 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 11.3 | butter_carts, ice_cream_views_day, kirana_tea_rusk_expected |
+| Rs 17,000 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 11.4 | thin_rule_month, slice_kothrud_evening_onions_tomatoes_carts |
+| 4 percent | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 11.4 | bread_milk_excess, floor_pairs_lift_1_5, ice_cream_share |
+| Rs 4.2 lakh | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 11.5 | slot_gap_month |
+| 1,920 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 11.6 | adds_a_day |
+| Rs 41.77 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 11.6 | price_per_add_observed |
+| Rs 80,197 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 11.7 | gross_sales_day |
 | 1,920 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 12 output 1 | adds_a_day |
 | Rs 41.77 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 12 output 1 | price_per_add_observed |
 | Rs 80,197 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 12 output 1 | gross_sales_day |
@@ -1084,7 +1103,7 @@ Numbers traced: 2047. Numbers with no home: 0.
 | 3.8 percent | C2_W04_D03_preread_STUDENT.md | 79 | after_strip_ctr, after_strip_ctr_exact |
 | 38 percent | C2_W04_D03_preread_STUDENT.md | 79 | heavy_tenth_share, thursday_blended_retention, onions_tomatoes_conf_ba |
 | 4 | C2_W04_D03_fallback_STUDENT.md | 5 | floor_pairs_lift_1_5, tea_biscuit, twelve_bread |
-| 35 | C2_W04_D03_fallback_STUDENT.md | 14 | slice_hinjewadi_night_chips_cold_drink_carts, bread_milk_conf_ba |
+| 35 | C2_W04_D03_fallback_STUDENT.md | 14 | slice_hinjewadi_night_chips_cold_drink_carts, bread_milk_conf_ba, serving_breakeven_paise |
 | 40 | C2_W04_D03_fallback_STUDENT.md | 15 | kirana_rusk, plot_floor_carts, add_rate_low |
 | 20 | C2_W04_D03_fallback_STUDENT.md | 16 | slice_hinjewadi_night_coriander_green_chillies_carts, curd_milk_support_kept, gs_share_high |
 | 25 | C2_W04_D03_fallback_STUDENT.md | 17 | bread_milk_support, curd_cell_low, curd_hadapsar_w1 |
@@ -1103,32 +1122,36 @@ Numbers traced: 2047. Numbers with no home: 0.
 | 1 | C2_W04_D03_fallback_STUDENT.md | 93 | gs_orders_low, twelve_ice_choc, add_rate_high |
 | 1 | C2_W04_D03_fallback_STUDENT.md | 93 | gs_orders_low, twelve_ice_choc, add_rate_high |
 | 1 | C2_W04_D03_fallback_STUDENT.md | 94 | gs_orders_low, twelve_ice_choc, add_rate_high |
-| 2 | C2_W04_D03_fallback_STUDENT.md | 109 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
-| 1.04 | C2_W04_D03_fallback_STUDENT.md | 161 | bread_milk_lift, bread_milk_lift_per_customer, common_lift_high |
-| 0.2 percent | C2_W04_D03_fallback_STUDENT.md | 163 | bundle_z_support, curd_hadapsar_week3, kirana_rusk_share |
-| 28 percent | C2_W04_D03_fallback_STUDENT.md | 163 | curd_baner_w3, curd_camp_w3, curd_hadapsar_w4 |
-| 649 | C2_W04_D03_fallback_STUDENT.md | 164 | slice_hinjewadi_night_carts, slice_hinjewadi_night_floor |
-| 7 | C2_W04_D03_fallback_STUDENT.md | 164 | slice_hinjewadi_night_floor_min, slice_thin_carts_min, bread_margin |
-| 10 | C2_W04_D03_fallback_STUDENT.md | 164 | slice_hinjewadi_night_pav_potatoes_carts, slice_thin_carts_max, tea_orders |
-| 3 | C2_W04_D03_fallback_STUDENT.md | 173 | slice_thin_slips, tea_both, twelve_chips |
-| 5 | C2_W04_D03_fallback_STUDENT.md | 190 | light_carts_max, bundle_z_lift, chips_cold_support |
-| 1 | C2_W04_D03_fallback_STUDENT.md | 190 | gs_orders_low, twelve_ice_choc, add_rate_high |
-| 2 | C2_W04_D03_fallback_STUDENT.md | 190 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
+| 2 | C2_W04_D03_fallback_STUDENT.md | 110 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
+| 1.04 | C2_W04_D03_fallback_STUDENT.md | 162 | bread_milk_lift, bread_milk_lift_per_customer, common_lift_high |
+| 0.2 percent | C2_W04_D03_fallback_STUDENT.md | 164 | bundle_z_support, curd_hadapsar_week3, kirana_rusk_share |
+| 28 percent | C2_W04_D03_fallback_STUDENT.md | 164 | curd_baner_w3, curd_camp_w3, curd_hadapsar_w4 |
+| 649 | C2_W04_D03_fallback_STUDENT.md | 165 | slice_hinjewadi_night_carts, slice_hinjewadi_night_floor |
+| 7 | C2_W04_D03_fallback_STUDENT.md | 165 | slice_hinjewadi_night_floor_min, slice_thin_carts_min, bread_margin |
+| 10 | C2_W04_D03_fallback_STUDENT.md | 165 | slice_hinjewadi_night_pav_potatoes_carts, slice_thin_carts_max, tea_orders |
+| 3 | C2_W04_D03_fallback_STUDENT.md | 174 | slice_thin_slips, tea_both, twelve_chips |
+| 5 | C2_W04_D03_fallback_STUDENT.md | 191 | light_carts_max, bundle_z_lift, chips_cold_support |
 | 1 | C2_W04_D03_fallback_STUDENT.md | 191 | gs_orders_low, twelve_ice_choc, add_rate_high |
-| 1 | C2_W04_D03_fallback_STUDENT.md | 191 | gs_orders_low, twelve_ice_choc, add_rate_high |
-| 5 percent | C2_W04_D03_fallback_STUDENT.md | 209 | kalpa_floor, light_carts_max, practice_ctr |
-| 100 | C2_W04_D03_fallback_STUDENT.md | 212 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
-| 4 | C2_W04_D03_fallback_STUDENT.md | 222 | floor_pairs_lift_1_5, tea_biscuit, twelve_bread |
-| 2 | C2_W04_D03_fallback_STUDENT.md | 251 | common_floor, gs_orders_high, kalpa_thin_baskets |
-| 50 percent | C2_W04_D03_fallback_STUDENT.md | 251 | common_items, milk_share_after, milk_share_after_slot2 |
-| 1.2 percent | C2_W04_D03_fallback_STUDENT.md | 251 | ctr_before_milk_slot3, milk_slot_ctr_after, kirana_tea_rusk_lift |
-| 8.2 percent | C2_W04_D03_fallback_STUDENT.md | 252 | ctr_after_other_slot1 |
-| 5.4 | C2_W04_D03_fallback_STUDENT.md | 252 | ctr_after_other_slot3 |
-| 8.2 | C2_W04_D03_fallback_STUDENT.md | 268 | ctr_after_other_slot1 |
-| 7.5 percent | C2_W04_D03_fallback_STUDENT.md | 268 | ctr_before_other_slot1, onions_tomatoes_support, pair_onions_tomatoes_support |
-| 1.2 percent | C2_W04_D03_fallback_STUDENT.md | 268 | ctr_before_milk_slot3, milk_slot_ctr_after, kirana_tea_rusk_lift |
-| 2 | C2_W04_D03_fallback_STUDENT.md | 268 | common_floor, gs_orders_high, kalpa_thin_baskets |
-| 50 percent | C2_W04_D03_fallback_STUDENT.md | 268 | common_items, milk_share_after, milk_share_after_slot2 |
+| 2 | C2_W04_D03_fallback_STUDENT.md | 191 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
+| 1 | C2_W04_D03_fallback_STUDENT.md | 192 | gs_orders_low, twelve_ice_choc, add_rate_high |
+| 1 | C2_W04_D03_fallback_STUDENT.md | 192 | gs_orders_low, twelve_ice_choc, add_rate_high |
+| 5 percent | C2_W04_D03_fallback_STUDENT.md | 210 | kalpa_floor, light_carts_max, practice_ctr |
+| 100 | C2_W04_D03_fallback_STUDENT.md | 213 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
+| 4 | C2_W04_D03_fallback_STUDENT.md | 223 | floor_pairs_lift_1_5, tea_biscuit, twelve_bread |
+| 2 | C2_W04_D03_fallback_STUDENT.md | 252 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
+| 50 percent | C2_W04_D03_fallback_STUDENT.md | 252 | common_items, milk_share_after, milk_share_after_slot2 |
+| 0.9 | C2_W04_D03_fallback_STUDENT.md | 252 | ctr_after_milk_slot3, kalpa_twelve_screen_lift, paper_cups_share |
+| 1.4 percent | C2_W04_D03_fallback_STUDENT.md | 252 | ctr_after_milk_slot1, chocolate_sauce_share, onions_tomatoes_lift_both |
+| 8.2 percent | C2_W04_D03_fallback_STUDENT.md | 253 | ctr_after_other_slot1 |
+| 5.4 | C2_W04_D03_fallback_STUDENT.md | 253 | ctr_after_other_slot3 |
+| 8.2 | C2_W04_D03_fallback_STUDENT.md | 269 | ctr_after_other_slot1 |
+| 7.5 percent | C2_W04_D03_fallback_STUDENT.md | 269 | ctr_before_other_slot1, onions_tomatoes_support, pair_onions_tomatoes_support |
+| 2 | C2_W04_D03_fallback_STUDENT.md | 269 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
+| 50 percent | C2_W04_D03_fallback_STUDENT.md | 269 | common_items, milk_share_after, milk_share_after_slot2 |
+| 0.9 | C2_W04_D03_fallback_STUDENT.md | 269 | ctr_after_milk_slot3, kalpa_twelve_screen_lift, paper_cups_share |
+| 1.4 percent | C2_W04_D03_fallback_STUDENT.md | 269 | ctr_after_milk_slot1, chocolate_sauce_share, onions_tomatoes_lift_both |
+| 1.2 | C2_W04_D03_fallback_STUDENT.md | 269 | ctr_before_milk_slot3, kirana_tea_rusk_lift, milk_slot_ctr_after |
+| 0.9 | C2_W04_D03_fallback_STUDENT.md | 269 | ctr_after_milk_slot3, kalpa_twelve_screen_lift, paper_cups_share |
 | 6.1 | C2_W04_D03_half1_STUDENT.md | 1 | before_strip_ctr, ctr_before_other_slot2 |
 | 3.8 percent | C2_W04_D03_half1_STUDENT.md | 1 | after_strip_ctr, after_strip_ctr_exact |
 | 4 | C2_W04_D03_half1_STUDENT.md | 5 | floor_pairs_lift_1_5, tea_biscuit, twelve_bread |
@@ -1380,7 +1403,7 @@ Numbers traced: 2047. Numbers with no home: 0.
 | 3.8 | C2_W04_D03_half1_STUDENT.md | 512 | after_strip_ctr, after_strip_ctr_exact |
 | 8.2 percent | C2_W04_D03_half1_STUDENT.md | 528 | ctr_after_other_slot1 |
 | 5.4 | C2_W04_D03_half1_STUDENT.md | 528 | ctr_after_other_slot3 |
-| 1.4 | C2_W04_D03_half1_STUDENT.md | 528 | chocolate_sauce_share, ctr_after_milk_slot1, pair_batteries_tomatoes_lift |
+| 1.4 | C2_W04_D03_half1_STUDENT.md | 528 | chocolate_sauce_share, ctr_after_milk_slot1, onions_tomatoes_lift_both |
 | 1.1 | C2_W04_D03_half1_STUDENT.md | 528 | ctr_after_milk_slot2, fifth_pair_lift, milk_lift_band_high |
 | 0.9 percent | C2_W04_D03_half1_STUDENT.md | 528 | ctr_after_milk_slot3, kalpa_twelve_screen_lift, paper_cups_share |
 | 70 percent | C2_W04_D03_half1_STUDENT.md | 528 | milk_share_after_slot1, common_conf_low, kalpa_charger_all_orders |
@@ -1424,7 +1447,9 @@ Numbers traced: 2047. Numbers with no home: 0.
 | 1 percent | C2_W04_D03_half1_STUDENT.md | 619 | curd_viman_nagar_w3, gs_orders_low, support_floor |
 | 100 | C2_W04_D03_half1_STUDENT.md | 619 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
 | 22 | C2_W04_D03_half1_STUDENT.md | 619 | ice_choc_expected, onions_share |
-| 1,600 | C2_W04_D03_half1_STUDENT.md | 619 | ice_cream_carts |
+| 4 percent | C2_W04_D03_half1_STUDENT.md | 619 | bread_milk_excess, floor_pairs_lift_1_5, ice_cream_share |
+| 2,400 | C2_W04_D03_half1_STUDENT.md | 619 | butter_carts, ice_cream_views_day, kirana_tea_rusk_expected |
+| 60,000 | C2_W04_D03_half1_STUDENT.md | 619 | thursday_members, views_a_day_after, views_assumed |
 | 1.2 percent | C2_W04_D03_half1_STUDENT.md | 629 | ctr_before_milk_slot3, milk_slot_ctr_after, kirana_tea_rusk_lift |
 | 6.4 | C2_W04_D03_half1_STUDENT.md | 629 | daily_ctr_before_high, other_slot_ctr_after |
 | Rs 50,000 | C2_W04_D03_half1_STUDENT.md | 632 | gs_households_high, option_rs_50000 |
@@ -1454,52 +1479,52 @@ Numbers traced: 2047. Numbers with no home: 0.
 | Rs 9.3 lakh | C2_W04_D03_half1_STUDENT.md | 649 | recoverable_high |
 | 0.6 | C2_W04_D03_half1_STUDENT.md | 649 | add_rate_high, kirana_tea_share, kirana_sugar_tea_conf |
 | Rs 11 | C2_W04_D03_half1_STUDENT.md | 649 | margin_high, pairs_per_cart |
-| Rs 80,197 | C2_W04_D03_half1_STUDENT.md | 660 | gross_sales_day |
-| 6.4 percent | C2_W04_D03_half1_STUDENT.md | 663 | daily_ctr_before_high, other_slot_ctr_after |
-| 1,920 | C2_W04_D03_half1_STUDENT.md | 663 | adds_a_day |
-| Rs 41.77 | C2_W04_D03_half1_STUDENT.md | 663 | price_per_add_observed |
-| Rs 80,197 | C2_W04_D03_half1_STUDENT.md | 663 | gross_sales_day |
-| Rs 17,280 | C2_W04_D03_half1_STUDENT.md | 663 | slot_value_other_day |
-| 3.39 | C2_W04_D03_half1_STUDENT.md | 678 | chips_cold_lift, pair_chips_cold_drink_lift |
-| 2.56 | C2_W04_D03_half1_STUDENT.md | 678 | chips_cold_lift_per_customer |
-| 1.04 | C2_W04_D03_half1_STUDENT.md | 678 | bread_milk_lift, bread_milk_lift_per_customer, common_lift_high |
-| 26.0 | C2_W04_D03_half1_STUDENT.md | 679 | curd_share, curd_share_all |
-| 27.8 percent | C2_W04_D03_half1_STUDENT.md | 679 | curd_share_elsewhere, curd_share_kept |
-| 1.01 | C2_W04_D03_half1_STUDENT.md | 679 | bananas_milk_lift, curd_milk_lift, curd_milk_lift_all |
-| 80 percent | C2_W04_D03_half1_STUDENT.md | 680 | kalpa_claim_share, kirana_sugar, milk_share_morning |
-| 1.03 | C2_W04_D03_half1_STUDENT.md | 680 | bread_milk_lift_morning, bread_milk_lift_night, eggs_milk_lift |
-| 1.05 | C2_W04_D03_half1_STUDENT.md | 680 | bread_milk_lift_afternoon, bread_milk_lift_evening, pair_a_lift |
-| 8.2 percent | C2_W04_D03_half1_STUDENT.md | 681 | ctr_after_other_slot1 |
-| 5.4 | C2_W04_D03_half1_STUDENT.md | 681 | ctr_after_other_slot3 |
-| 38 percent | C2_W04_D03_half1_STUDENT.md | 696 | heavy_tenth_share, thursday_blended_retention, onions_tomatoes_conf_ba |
-| 73 percent | C2_W04_D03_half1_STUDENT.md | 696 | chips_cold_heavy_share, eggs_milk_conf_ab |
-| 4 | C2_W04_D03_half1_STUDENT.md | 696 | floor_pairs_lift_1_5, tea_biscuit, twelve_bread |
-| 0.25 | C2_W04_D03_half1_STUDENT.md | 696 | kirana_tea_rusk_conf, weight_example, bread_milk_support |
-| 3.39 | C2_W04_D03_half1_STUDENT.md | 696 | chips_cold_lift, pair_chips_cold_drink_lift |
-| 2.56 | C2_W04_D03_half1_STUDENT.md | 696 | chips_cold_lift_per_customer |
-| 1.04 | C2_W04_D03_half1_STUDENT.md | 696 | bread_milk_lift, bread_milk_lift_per_customer, common_lift_high |
-| 15 | C2_W04_D03_half1_STUDENT.md | 708 | coriander_share, gs_share_week, kirana_tea_rusk_support |
+| Rs 80,197 | C2_W04_D03_half1_STUDENT.md | 662 | gross_sales_day |
+| 6.4 percent | C2_W04_D03_half1_STUDENT.md | 665 | daily_ctr_before_high, other_slot_ctr_after |
+| 1,920 | C2_W04_D03_half1_STUDENT.md | 665 | adds_a_day |
+| Rs 41.77 | C2_W04_D03_half1_STUDENT.md | 665 | price_per_add_observed |
+| Rs 80,197 | C2_W04_D03_half1_STUDENT.md | 665 | gross_sales_day |
+| Rs 17,280 | C2_W04_D03_half1_STUDENT.md | 665 | slot_value_other_day |
+| 3.39 | C2_W04_D03_half1_STUDENT.md | 680 | chips_cold_lift, pair_chips_cold_drink_lift |
+| 2.56 | C2_W04_D03_half1_STUDENT.md | 680 | chips_cold_lift_per_customer |
+| 1.04 | C2_W04_D03_half1_STUDENT.md | 680 | bread_milk_lift, bread_milk_lift_per_customer, common_lift_high |
+| 26.0 | C2_W04_D03_half1_STUDENT.md | 681 | curd_share, curd_share_all |
+| 27.8 percent | C2_W04_D03_half1_STUDENT.md | 681 | curd_share_elsewhere, curd_share_kept |
+| 1.01 | C2_W04_D03_half1_STUDENT.md | 681 | bananas_milk_lift, curd_milk_lift, curd_milk_lift_all |
+| 80 percent | C2_W04_D03_half1_STUDENT.md | 682 | kalpa_claim_share, kirana_sugar, milk_share_morning |
+| 1.03 | C2_W04_D03_half1_STUDENT.md | 682 | bread_milk_lift_morning, bread_milk_lift_night, eggs_milk_lift |
+| 1.05 | C2_W04_D03_half1_STUDENT.md | 682 | bread_milk_lift_afternoon, bread_milk_lift_evening, pair_a_lift |
+| 8.2 percent | C2_W04_D03_half1_STUDENT.md | 683 | ctr_after_other_slot1 |
+| 5.4 | C2_W04_D03_half1_STUDENT.md | 683 | ctr_after_other_slot3 |
+| 38 percent | C2_W04_D03_half1_STUDENT.md | 698 | heavy_tenth_share, thursday_blended_retention, onions_tomatoes_conf_ba |
+| 73 percent | C2_W04_D03_half1_STUDENT.md | 698 | chips_cold_heavy_share, eggs_milk_conf_ab |
+| 4 | C2_W04_D03_half1_STUDENT.md | 698 | floor_pairs_lift_1_5, tea_biscuit, twelve_bread |
+| 0.25 | C2_W04_D03_half1_STUDENT.md | 698 | kirana_tea_rusk_conf, weight_example, bread_milk_support |
+| 3.39 | C2_W04_D03_half1_STUDENT.md | 698 | chips_cold_lift, pair_chips_cold_drink_lift |
+| 2.56 | C2_W04_D03_half1_STUDENT.md | 698 | chips_cold_lift_per_customer |
+| 1.04 | C2_W04_D03_half1_STUDENT.md | 698 | bread_milk_lift, bread_milk_lift_per_customer, common_lift_high |
 | 15 | C2_W04_D03_half1_STUDENT.md | 710 | coriander_share, gs_share_week, kirana_tea_rusk_support |
-| 12 | C2_W04_D03_half1_STUDENT.md | 710 | heavy_carts_min, slice_viman_nagar_week_three_floor_min, stockout_curd_carts |
-| 2,583 | C2_W04_D03_half1_STUDENT.md | 710 | stockout_carts |
-| 2,583 | C2_W04_D03_half1_STUDENT.md | 710 | stockout_carts |
-| 26.0 | C2_W04_D03_half1_STUDENT.md | 710 | curd_share, curd_share_all |
-| 27.8 percent | C2_W04_D03_half1_STUDENT.md | 710 | curd_share_elsewhere, curd_share_kept |
-| 1.01 | C2_W04_D03_half1_STUDENT.md | 710 | bananas_milk_lift, curd_milk_lift, curd_milk_lift_all |
-| 1% | C2_W04_D03_half1_STUDENT.md | 724 | gs_orders_low, twelve_ice_choc, add_rate_high |
-| 3.39 | C2_W04_D03_half1_STUDENT.md | 724 | chips_cold_lift, pair_chips_cold_drink_lift |
-| 4.60 | C2_W04_D03_half1_STUDENT.md | 724 | ice_choc_lift, pair_chocolate_sauce_ice_cream_lift |
-| 100 | C2_W04_D03_half1_STUDENT.md | 724 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
-| Rs 17,280 | C2_W04_D03_half1_STUDENT.md | 725 | slot_value_other_day |
-| Rs 3,240 | C2_W04_D03_half1_STUDENT.md | 725 | slot_value_milk_day |
-| Rs 6.3 lakh | C2_W04_D03_half1_STUDENT.md | 726 | recoverable_month |
-| 2.56 | C2_W04_D03_half1_STUDENT.md | 727 | chips_cold_lift_per_customer |
-| 1.01 | C2_W04_D03_half1_STUDENT.md | 727 | bananas_milk_lift, curd_milk_lift, curd_milk_lift_all |
-| 1 | C2_W04_D03_half1_STUDENT.md | 728 | gs_orders_low, twelve_ice_choc, add_rate_high |
-| 1 | C2_W04_D03_half1_STUDENT.md | 728 | gs_orders_low, twelve_ice_choc, add_rate_high |
-| 5 | C2_W04_D03_half1_STUDENT.md | 729 | light_carts_max, bundle_z_lift, chips_cold_support |
-| 1 | C2_W04_D03_half1_STUDENT.md | 729 | gs_orders_low, twelve_ice_choc, add_rate_high |
-| 2 | C2_W04_D03_half1_STUDENT.md | 729 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
+| 15 | C2_W04_D03_half1_STUDENT.md | 712 | coriander_share, gs_share_week, kirana_tea_rusk_support |
+| 12 | C2_W04_D03_half1_STUDENT.md | 712 | heavy_carts_min, slice_viman_nagar_week_three_floor_min, stockout_curd_carts |
+| 2,583 | C2_W04_D03_half1_STUDENT.md | 712 | stockout_carts |
+| 2,583 | C2_W04_D03_half1_STUDENT.md | 712 | stockout_carts |
+| 26.0 | C2_W04_D03_half1_STUDENT.md | 712 | curd_share, curd_share_all |
+| 27.8 percent | C2_W04_D03_half1_STUDENT.md | 712 | curd_share_elsewhere, curd_share_kept |
+| 1.01 | C2_W04_D03_half1_STUDENT.md | 712 | bananas_milk_lift, curd_milk_lift, curd_milk_lift_all |
+| 1% | C2_W04_D03_half1_STUDENT.md | 726 | gs_orders_low, twelve_ice_choc, add_rate_high |
+| 3.39 | C2_W04_D03_half1_STUDENT.md | 726 | chips_cold_lift, pair_chips_cold_drink_lift |
+| 4.60 | C2_W04_D03_half1_STUDENT.md | 726 | ice_choc_lift, pair_chocolate_sauce_ice_cream_lift |
+| 100 | C2_W04_D03_half1_STUDENT.md | 726 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
+| Rs 17,280 | C2_W04_D03_half1_STUDENT.md | 727 | slot_value_other_day |
+| Rs 3,240 | C2_W04_D03_half1_STUDENT.md | 727 | slot_value_milk_day |
+| Rs 6.3 lakh | C2_W04_D03_half1_STUDENT.md | 728 | recoverable_month |
+| 2.56 | C2_W04_D03_half1_STUDENT.md | 729 | chips_cold_lift_per_customer |
+| 1.01 | C2_W04_D03_half1_STUDENT.md | 729 | bananas_milk_lift, curd_milk_lift, curd_milk_lift_all |
+| 1 | C2_W04_D03_half1_STUDENT.md | 730 | gs_orders_low, twelve_ice_choc, add_rate_high |
+| 1 | C2_W04_D03_half1_STUDENT.md | 730 | gs_orders_low, twelve_ice_choc, add_rate_high |
+| 5 | C2_W04_D03_half1_STUDENT.md | 731 | light_carts_max, bundle_z_lift, chips_cold_support |
+| 1 | C2_W04_D03_half1_STUDENT.md | 731 | gs_orders_low, twelve_ice_choc, add_rate_high |
+| 2 | C2_W04_D03_half1_STUDENT.md | 731 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
 | 4 | C2_W04_D03_half2_STUDENT.md | 5 | floor_pairs_lift_1_5, tea_biscuit, twelve_bread |
 | 3 | C2_W04_D03_half2_STUDENT.md | 9 | slice_thin_slips, tea_both, twelve_chips |
 | 1 percent | C2_W04_D03_half2_STUDENT.md | 25 | curd_viman_nagar_w3, gs_orders_low, support_floor |
@@ -1523,10 +1548,13 @@ Numbers traced: 2047. Numbers with no home: 0.
 | 0.25 percent | C2_W04_D03_half2_STUDENT.md | 115 | curd_cell_low, curd_hadapsar_w1, ice_choc_support |
 | 100 | C2_W04_D03_half2_STUDENT.md | 115 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
 | 22 | C2_W04_D03_half2_STUDENT.md | 115 | ice_choc_expected, onions_share |
-| 1,600 | C2_W04_D03_half2_STUDENT.md | 115 | ice_cream_carts |
+| 2,400 | C2_W04_D03_half2_STUDENT.md | 115 | butter_carts, ice_cream_views_day, kirana_tea_rusk_expected |
+| Rs 17,000 | C2_W04_D03_half2_STUDENT.md | 115 | thin_rule_month, slice_kothrud_evening_onions_tomatoes_carts |
 | 3.39 | C2_W04_D03_half2_STUDENT.md | 116 | chips_cold_lift, pair_chips_cold_drink_lift |
 | 2.56 | C2_W04_D03_half2_STUDENT.md | 116 | chips_cold_lift_per_customer |
-| 2.56 | C2_W04_D03_half2_STUDENT.md | 116 | chips_cold_lift_per_customer |
+| 1.95 | C2_W04_D03_half2_STUDENT.md | 116 | chips_cold_lift_both |
+| 1.38 | C2_W04_D03_half2_STUDENT.md | 116 | onions_tomatoes_lift_both, onions_tomatoes_lift_size, ctr_after_milk_slot1 |
+| 1.5 | C2_W04_D03_half2_STUDENT.md | 116 | gs_orders_week, lift_rule_floor, milk_slots_worth |
 | Rs 6.3 lakh | C2_W04_D03_half2_STUDENT.md | 117 | recoverable_month |
 | Rs 3.9 lakh | C2_W04_D03_half2_STUDENT.md | 117 | recoverable_low |
 | Rs 9.3 lakh | C2_W04_D03_half2_STUDENT.md | 117 | recoverable_high |
@@ -1661,130 +1689,133 @@ Numbers traced: 2047. Numbers with no home: 0.
 | 5.4 | C2_W04_D03_notes_STUDENT.md | 138 | ctr_after_other_slot3 |
 | 70 | C2_W04_D03_notes_STUDENT.md | 138 | common_conf_low, kalpa_charger_all_orders, milk_share_after_slot1 |
 | 1.2 | C2_W04_D03_notes_STUDENT.md | 144 | osco_transactions, ctr_before_milk_slot3, kirana_tea_rusk_lift |
-| 71 percent | C2_W04_D03_notes_STUDENT.md | 152 | toned_milk_share |
-| 1.04 | C2_W04_D03_notes_STUDENT.md | 153 | bread_milk_lift, bread_milk_lift_per_customer, common_lift_high |
-| 1.2 percent | C2_W04_D03_notes_STUDENT.md | 153 | ctr_before_milk_slot3, milk_slot_ctr_after, kirana_tea_rusk_lift |
-| 4.60 | C2_W04_D03_notes_STUDENT.md | 168 | ice_choc_lift, pair_chocolate_sauce_ice_cream_lift |
-| 100 | C2_W04_D03_notes_STUDENT.md | 168 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
-| 1 percent | C2_W04_D03_notes_STUDENT.md | 168 | curd_viman_nagar_w3, gs_orders_low, support_floor |
-| 400 | C2_W04_D03_notes_STUDENT.md | 169 | floor_pairs_lift_1_5, support_floor_carts, tea_biscuit |
-| 246 | C2_W04_D03_notes_STUDENT.md | 169 | floor_pairs |
-| 3.39 | C2_W04_D03_notes_STUDENT.md | 169 | chips_cold_lift, pair_chips_cold_drink_lift |
-| 3.00 | C2_W04_D03_notes_STUDENT.md | 170 | coriander_chillies_lift, slice_thin_slips, tea_both |
-| 2.21 | C2_W04_D03_notes_STUDENT.md | 170 | bread_butter_lift, pair_bread_butter_lift |
-| 1.70 | C2_W04_D03_notes_STUDENT.md | 170 | onions_tomatoes_lift, pair_onions_tomatoes_lift |
-| 0.1 percent | C2_W04_D03_notes_STUDENT.md | 173 | plot_floor, apples_share, atta_share |
-| 1 percent | C2_W04_D03_notes_STUDENT.md | 173 | curd_viman_nagar_w3, gs_orders_low, support_floor |
-| 100 | C2_W04_D03_notes_STUDENT.md | 175 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
-| 22 | C2_W04_D03_notes_STUDENT.md | 175 | ice_choc_expected, onions_share |
-| 1,600 | C2_W04_D03_notes_STUDENT.md | 176 | ice_cream_carts |
-| 60 | C2_W04_D03_notes_STUDENT.md | 181 | add_rate_high, kirana_sugar_tea_conf, kirana_tea_share |
-| 000 | C2_W04_D03_notes_STUDENT.md | 181 | add_rate_assumed, add_rate_observed, add_rate_low |
-| 6.4 | C2_W04_D03_notes_STUDENT.md | 181 | daily_ctr_before_high, other_slot_ctr_after |
-| 0.5 | C2_W04_D03_notes_STUDENT.md | 181 | add_rate_assumed, add_rate_observed, coriander_chillies_conf_ba |
-| 9 | C2_W04_D03_notes_STUDENT.md | 181 | kalpa_twelve_charger, tea_bag, atta_share |
-| 17 | C2_W04_D03_notes_STUDENT.md | 181 | bananas_milk_support, twelve_chips_cold_support |
-| 280 | C2_W04_D03_notes_STUDENT.md | 181 | slice_hinjewadi_night_coriander_green_chillies_lift, value_per_click_low |
-| 1.2 percent | C2_W04_D03_notes_STUDENT.md | 183 | ctr_before_milk_slot3, milk_slot_ctr_after, kirana_tea_rusk_lift |
-| Rs 3,240 | C2_W04_D03_notes_STUDENT.md | 183 | slot_value_milk_day |
-| Rs 14,040 | C2_W04_D03_notes_STUDENT.md | 183 | slot_gap_day |
-| Rs 4.2 lakh | C2_W04_D03_notes_STUDENT.md | 183 | slot_gap_month |
-| 1.5 | C2_W04_D03_notes_STUDENT.md | 184 | gs_orders_week, lift_rule_floor, milk_slots_worth |
-| Rs 6.3 lakh | C2_W04_D03_notes_STUDENT.md | 184 | recoverable_month |
-| Rs 3.9 lakh | C2_W04_D03_notes_STUDENT.md | 185 | recoverable_low |
-| Rs 9.3 lakh | C2_W04_D03_notes_STUDENT.md | 185 | recoverable_high |
-| 0.4 | C2_W04_D03_notes_STUDENT.md | 185 | add_rate_low, bread_milk_conf_ba, chips_cold_conf_ab |
-| 0.6 | C2_W04_D03_notes_STUDENT.md | 185 | add_rate_high, kirana_tea_share, kirana_sugar_tea_conf |
-| Rs 7 | C2_W04_D03_notes_STUDENT.md | 185 | margin_low, slice_hinjewadi_night_floor_min, slice_thin_carts_min |
-| Rs 11 | C2_W04_D03_notes_STUDENT.md | 186 | margin_high, pairs_per_cart |
-| 1,920 | C2_W04_D03_notes_STUDENT.md | 188 | adds_a_day |
-| Rs 41.77 | C2_W04_D03_notes_STUDENT.md | 188 | price_per_add_observed |
-| Rs 80,197 | C2_W04_D03_notes_STUDENT.md | 188 | gross_sales_day |
-| Rs 17,280 | C2_W04_D03_notes_STUDENT.md | 189 | slot_value_other_day |
-| 28 percent | C2_W04_D03_notes_STUDENT.md | 194 | curd_baner_w3, curd_camp_w3, curd_hadapsar_w4 |
-| 16 percent | C2_W04_D03_notes_STUDENT.md | 195 | maxxsaver_aov_growth |
-| Rs 612 | C2_W04_D03_notes_STUDENT.md | 195 | maxxsaver_aov |
-| 3.39 | C2_W04_D03_notes_STUDENT.md | 202 | chips_cold_lift, pair_chips_cold_drink_lift |
-| 2.56 | C2_W04_D03_notes_STUDENT.md | 202 | chips_cold_lift_per_customer |
-| 38 percent | C2_W04_D03_notes_STUDENT.md | 202 | heavy_tenth_share, thursday_blended_retention, onions_tomatoes_conf_ba |
-| 15 | C2_W04_D03_notes_STUDENT.md | 203 | coriander_share, gs_share_week, kirana_tea_rusk_support |
-| 26.0 | C2_W04_D03_notes_STUDENT.md | 203 | curd_share, curd_share_all |
-| 27.8 percent | C2_W04_D03_notes_STUDENT.md | 203 | curd_share_elsewhere, curd_share_kept |
-| 1.01 | C2_W04_D03_notes_STUDENT.md | 203 | bananas_milk_lift, curd_milk_lift, curd_milk_lift_all |
-| 1.03 | C2_W04_D03_notes_STUDENT.md | 204 | bread_milk_lift_morning, bread_milk_lift_night, eggs_milk_lift |
-| 1.05 | C2_W04_D03_notes_STUDENT.md | 204 | bread_milk_lift_afternoon, bread_milk_lift_evening, pair_a_lift |
-| 8.2 percent | C2_W04_D03_notes_STUDENT.md | 205 | ctr_after_other_slot1 |
-| 5.4 | C2_W04_D03_notes_STUDENT.md | 205 | ctr_after_other_slot3 |
-| 12 | C2_W04_D03_notes_STUDENT.md | 209 | heavy_carts_min, slice_viman_nagar_week_three_floor_min, stockout_curd_carts |
-| Rs 6.3 lakh | C2_W04_D03_notes_STUDENT.md | 214 | recoverable_month |
-| Rs 14,040 | C2_W04_D03_notes_STUDENT.md | 222 | slot_gap_day |
-| Rs 199 | C2_W04_D03_notes_STUDENT.md | 226 | kalpa_charger_list_price |
-| 1 | C2_W04_D03_notes_STUDENT.md | 230 | gs_orders_low, twelve_ice_choc, add_rate_high |
-| 2 | C2_W04_D03_notes_STUDENT.md | 231 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
-| 40,000 | C2_W04_D03_notes_STUDENT.md | 231 | gs_households, total_carts, support_floor_carts |
-| 6,000 | C2_W04_D03_notes_STUDENT.md | 231 | coriander_carts |
-| 3,200 | C2_W04_D03_notes_STUDENT.md | 231 | green_chillies_carts, paneer_carts, kirana_sugar_no_tea |
-| 1,440 | C2_W04_D03_notes_STUDENT.md | 231 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
-| 3 | C2_W04_D03_notes_STUDENT.md | 232 | slice_thin_slips, tea_both, twelve_chips |
-| 1.2 percent | C2_W04_D03_notes_STUDENT.md | 232 | ctr_before_milk_slot3, milk_slot_ctr_after, kirana_tea_rusk_lift |
-| 6.4 | C2_W04_D03_notes_STUDENT.md | 232 | daily_ctr_before_high, other_slot_ctr_after |
-| 4 | C2_W04_D03_notes_STUDENT.md | 233 | floor_pairs_lift_1_5, tea_biscuit, twelve_bread |
-| 4.60 | C2_W04_D03_notes_STUDENT.md | 233 | ice_choc_lift, pair_chocolate_sauce_ice_cream_lift |
-| 100 | C2_W04_D03_notes_STUDENT.md | 233 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
-| 5 | C2_W04_D03_notes_STUDENT.md | 234 | light_carts_max, bundle_z_lift, chips_cold_support |
-| 6 | C2_W04_D03_notes_STUDENT.md | 235 | tea_chai, apples_share, before_strip_ctr |
-| 1 | C2_W04_D03_notes_STUDENT.md | 237 | gs_orders_low, twelve_ice_choc, add_rate_high |
-| 2 | C2_W04_D03_notes_STUDENT.md | 237 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
-| 1,440 | C2_W04_D03_notes_STUDENT.md | 237 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
+| 71 percent | C2_W04_D03_notes_STUDENT.md | 151 | toned_milk_share |
+| 1.04 | C2_W04_D03_notes_STUDENT.md | 152 | bread_milk_lift, bread_milk_lift_per_customer, common_lift_high |
+| 1.2 percent | C2_W04_D03_notes_STUDENT.md | 152 | ctr_before_milk_slot3, milk_slot_ctr_after, kirana_tea_rusk_lift |
+| 4.60 | C2_W04_D03_notes_STUDENT.md | 167 | ice_choc_lift, pair_chocolate_sauce_ice_cream_lift |
+| 100 | C2_W04_D03_notes_STUDENT.md | 167 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
+| 1 percent | C2_W04_D03_notes_STUDENT.md | 167 | curd_viman_nagar_w3, gs_orders_low, support_floor |
+| 400 | C2_W04_D03_notes_STUDENT.md | 168 | floor_pairs_lift_1_5, support_floor_carts, tea_biscuit |
+| 246 | C2_W04_D03_notes_STUDENT.md | 168 | floor_pairs |
+| 3.39 | C2_W04_D03_notes_STUDENT.md | 168 | chips_cold_lift, pair_chips_cold_drink_lift |
+| 3.00 | C2_W04_D03_notes_STUDENT.md | 169 | coriander_chillies_lift, slice_thin_slips, tea_both |
+| 2.21 | C2_W04_D03_notes_STUDENT.md | 169 | bread_butter_lift, pair_bread_butter_lift |
+| 1.70 | C2_W04_D03_notes_STUDENT.md | 169 | onions_tomatoes_lift, pair_onions_tomatoes_lift |
+| 0.1 percent | C2_W04_D03_notes_STUDENT.md | 172 | plot_floor, apples_share, atta_share |
+| 1 percent | C2_W04_D03_notes_STUDENT.md | 172 | curd_viman_nagar_w3, gs_orders_low, support_floor |
+| 100 | C2_W04_D03_notes_STUDENT.md | 174 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
+| 22 | C2_W04_D03_notes_STUDENT.md | 174 | ice_choc_expected, onions_share |
+| 2,400 | C2_W04_D03_notes_STUDENT.md | 175 | butter_carts, ice_cream_views_day, kirana_tea_rusk_expected |
+| 60,000 | C2_W04_D03_notes_STUDENT.md | 175 | thursday_members, views_a_day_after, views_assumed |
+| 60 | C2_W04_D03_notes_STUDENT.md | 180 | add_rate_high, kirana_sugar_tea_conf, kirana_tea_share |
+| 000 | C2_W04_D03_notes_STUDENT.md | 180 | add_rate_assumed, add_rate_observed, add_rate_low |
+| 6.4 | C2_W04_D03_notes_STUDENT.md | 180 | daily_ctr_before_high, other_slot_ctr_after |
+| 0.5 | C2_W04_D03_notes_STUDENT.md | 180 | add_rate_assumed, add_rate_observed, coriander_chillies_conf_ba |
+| 9 | C2_W04_D03_notes_STUDENT.md | 180 | kalpa_twelve_charger, tea_bag, atta_share |
+| 17 | C2_W04_D03_notes_STUDENT.md | 180 | bananas_milk_support, twelve_chips_cold_support |
+| 280 | C2_W04_D03_notes_STUDENT.md | 180 | slice_hinjewadi_night_coriander_green_chillies_lift, value_per_click_low |
+| 1.2 percent | C2_W04_D03_notes_STUDENT.md | 182 | ctr_before_milk_slot3, milk_slot_ctr_after, kirana_tea_rusk_lift |
+| Rs 3,240 | C2_W04_D03_notes_STUDENT.md | 182 | slot_value_milk_day |
+| Rs 14,040 | C2_W04_D03_notes_STUDENT.md | 182 | slot_gap_day |
+| Rs 4.2 lakh | C2_W04_D03_notes_STUDENT.md | 182 | slot_gap_month |
+| 1.5 | C2_W04_D03_notes_STUDENT.md | 183 | gs_orders_week, lift_rule_floor, milk_slots_worth |
+| Rs 6.3 lakh | C2_W04_D03_notes_STUDENT.md | 183 | recoverable_month |
+| Rs 3.9 lakh | C2_W04_D03_notes_STUDENT.md | 184 | recoverable_low |
+| Rs 9.3 lakh | C2_W04_D03_notes_STUDENT.md | 184 | recoverable_high |
+| 0.4 | C2_W04_D03_notes_STUDENT.md | 184 | add_rate_low, bread_milk_conf_ba, chips_cold_conf_ab |
+| 0.6 | C2_W04_D03_notes_STUDENT.md | 184 | add_rate_high, kirana_tea_share, kirana_sugar_tea_conf |
+| Rs 7 | C2_W04_D03_notes_STUDENT.md | 184 | margin_low, slice_hinjewadi_night_floor_min, slice_thin_carts_min |
+| Rs 11 | C2_W04_D03_notes_STUDENT.md | 185 | margin_high, pairs_per_cart |
+| Rs 17,000 | C2_W04_D03_notes_STUDENT.md | 185 | thin_rule_month, slice_kothrud_evening_onions_tomatoes_carts |
+| 1,920 | C2_W04_D03_notes_STUDENT.md | 187 | adds_a_day |
+| Rs 41.77 | C2_W04_D03_notes_STUDENT.md | 187 | price_per_add_observed |
+| Rs 80,197 | C2_W04_D03_notes_STUDENT.md | 187 | gross_sales_day |
+| Rs 17,280 | C2_W04_D03_notes_STUDENT.md | 188 | slot_value_other_day |
+| 28 percent | C2_W04_D03_notes_STUDENT.md | 193 | curd_baner_w3, curd_camp_w3, curd_hadapsar_w4 |
+| 16 percent | C2_W04_D03_notes_STUDENT.md | 194 | maxxsaver_aov_growth |
+| Rs 612 | C2_W04_D03_notes_STUDENT.md | 194 | maxxsaver_aov |
+| 3.39 | C2_W04_D03_notes_STUDENT.md | 201 | chips_cold_lift, pair_chips_cold_drink_lift |
+| 2.56 | C2_W04_D03_notes_STUDENT.md | 201 | chips_cold_lift_per_customer |
+| 38 percent | C2_W04_D03_notes_STUDENT.md | 201 | heavy_tenth_share, thursday_blended_retention, onions_tomatoes_conf_ba |
+| 15 | C2_W04_D03_notes_STUDENT.md | 202 | coriander_share, gs_share_week, kirana_tea_rusk_support |
+| 26.0 | C2_W04_D03_notes_STUDENT.md | 202 | curd_share, curd_share_all |
+| 27.8 percent | C2_W04_D03_notes_STUDENT.md | 202 | curd_share_elsewhere, curd_share_kept |
+| 1.01 | C2_W04_D03_notes_STUDENT.md | 202 | bananas_milk_lift, curd_milk_lift, curd_milk_lift_all |
+| 1.03 | C2_W04_D03_notes_STUDENT.md | 203 | bread_milk_lift_morning, bread_milk_lift_night, eggs_milk_lift |
+| 1.05 | C2_W04_D03_notes_STUDENT.md | 203 | bread_milk_lift_afternoon, bread_milk_lift_evening, pair_a_lift |
+| 8.2 percent | C2_W04_D03_notes_STUDENT.md | 204 | ctr_after_other_slot1 |
+| 5.4 | C2_W04_D03_notes_STUDENT.md | 204 | ctr_after_other_slot3 |
+| 12 | C2_W04_D03_notes_STUDENT.md | 208 | heavy_carts_min, slice_viman_nagar_week_three_floor_min, stockout_curd_carts |
+| Rs 6.3 lakh | C2_W04_D03_notes_STUDENT.md | 213 | recoverable_month |
+| Rs 14,040 | C2_W04_D03_notes_STUDENT.md | 221 | slot_gap_day |
+| Rs 199 | C2_W04_D03_notes_STUDENT.md | 225 | kalpa_charger_list_price |
+| 1 | C2_W04_D03_notes_STUDENT.md | 229 | gs_orders_low, twelve_ice_choc, add_rate_high |
+| 2 | C2_W04_D03_notes_STUDENT.md | 230 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
+| 40,000 | C2_W04_D03_notes_STUDENT.md | 230 | gs_households, total_carts, support_floor_carts |
+| 6,000 | C2_W04_D03_notes_STUDENT.md | 230 | coriander_carts |
+| 3,200 | C2_W04_D03_notes_STUDENT.md | 230 | green_chillies_carts, paneer_carts, kirana_sugar_no_tea |
+| 1,440 | C2_W04_D03_notes_STUDENT.md | 230 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
+| 3 | C2_W04_D03_notes_STUDENT.md | 231 | slice_thin_slips, tea_both, twelve_chips |
+| 1.2 percent | C2_W04_D03_notes_STUDENT.md | 231 | ctr_before_milk_slot3, milk_slot_ctr_after, kirana_tea_rusk_lift |
+| 6.4 | C2_W04_D03_notes_STUDENT.md | 231 | daily_ctr_before_high, other_slot_ctr_after |
+| 4 | C2_W04_D03_notes_STUDENT.md | 232 | floor_pairs_lift_1_5, tea_biscuit, twelve_bread |
+| 4.60 | C2_W04_D03_notes_STUDENT.md | 232 | ice_choc_lift, pair_chocolate_sauce_ice_cream_lift |
+| 100 | C2_W04_D03_notes_STUDENT.md | 232 | gs_orders_low, ice_choc_carts, pair_chocolate_sauce_ice_cream_carts |
+| 5 | C2_W04_D03_notes_STUDENT.md | 233 | light_carts_max, bundle_z_lift, chips_cold_support |
+| 6 | C2_W04_D03_notes_STUDENT.md | 234 | tea_chai, apples_share, before_strip_ctr |
+| 1 | C2_W04_D03_notes_STUDENT.md | 236 | gs_orders_low, twelve_ice_choc, add_rate_high |
+| 2 | C2_W04_D03_notes_STUDENT.md | 236 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
+| 1,440 | C2_W04_D03_notes_STUDENT.md | 236 | coriander_chillies_carts, pair_coriander_green_chillies_carts |
+| 40,000 | C2_W04_D03_notes_STUDENT.md | 236 | gs_households, total_carts, support_floor_carts |
+| 6,000 | C2_W04_D03_notes_STUDENT.md | 236 | coriander_carts |
+| 3,200 | C2_W04_D03_notes_STUDENT.md | 236 | green_chillies_carts, paneer_carts, kirana_sugar_no_tea |
+| 3.00 | C2_W04_D03_notes_STUDENT.md | 236 | coriander_chillies_lift, slice_thin_slips, tea_both |
+| 40,000 | C2_W04_D03_notes_STUDENT.md | 236 | gs_households, total_carts, support_floor_carts |
+| 3 | C2_W04_D03_notes_STUDENT.md | 236 | coriander_chillies_lift, slice_thin_slips, tea_both |
+| 3.8 percent | C2_W04_D03_notes_STUDENT.md | 237 | after_strip_ctr, after_strip_ctr_exact |
 | 40,000 | C2_W04_D03_notes_STUDENT.md | 237 | gs_households, total_carts, support_floor_carts |
-| 6,000 | C2_W04_D03_notes_STUDENT.md | 237 | coriander_carts |
-| 3,200 | C2_W04_D03_notes_STUDENT.md | 237 | green_chillies_carts, paneer_carts, kirana_sugar_no_tea |
-| 3.00 | C2_W04_D03_notes_STUDENT.md | 237 | coriander_chillies_lift, slice_thin_slips, tea_both |
-| 40,000 | C2_W04_D03_notes_STUDENT.md | 237 | gs_households, total_carts, support_floor_carts |
-| 3 | C2_W04_D03_notes_STUDENT.md | 237 | coriander_chillies_lift, slice_thin_slips, tea_both |
-| 3.8 percent | C2_W04_D03_notes_STUDENT.md | 238 | after_strip_ctr, after_strip_ctr_exact |
-| 40,000 | C2_W04_D03_notes_STUDENT.md | 238 | gs_households, total_carts, support_floor_carts |
-| 4 | C2_W04_D03_notes_STUDENT.md | 238 | after_strip_ctr, floor_pairs_lift_1_5, tea_biscuit |
-| 5 | C2_W04_D03_notes_STUDENT.md | 238 | light_carts_max, bundle_z_lift, chips_cold_support |
-| 2.56 | C2_W04_D03_notes_STUDENT.md | 238 | chips_cold_lift_per_customer |
-| 3.39 | C2_W04_D03_notes_STUDENT.md | 239 | chips_cold_lift, pair_chips_cold_drink_lift |
-| 6 | C2_W04_D03_notes_STUDENT.md | 239 | tea_chai, apples_share, before_strip_ctr |
-| 0.74 | C2_W04_D03_notes_STUDENT.md | 246 | bread_milk_conf_ab, common_conf_high |
-| 71 percent | C2_W04_D03_notes_STUDENT.md | 246 | toned_milk_share |
-| 1.04 | C2_W04_D03_notes_STUDENT.md | 246 | bread_milk_lift, bread_milk_lift_per_customer, common_lift_high |
-| 4.6 | C2_W04_D03_notes_STUDENT.md | 247 | ice_choc_lift, pair_chocolate_sauce_ice_cream_lift |
-| 0.25 percent | C2_W04_D03_notes_STUDENT.md | 247 | curd_cell_low, curd_hadapsar_w1, ice_choc_support |
-| 3.39 | C2_W04_D03_notes_STUDENT.md | 248 | chips_cold_lift, pair_chips_cold_drink_lift |
-| 2.56 | C2_W04_D03_notes_STUDENT.md | 248 | chips_cold_lift_per_customer |
-| Rs 6.3 lakh | C2_W04_D03_notes_STUDENT.md | 249 | recoverable_month |
-| 40,000 | C2_W04_D03_notes_STUDENT.md | 257 | gs_households, total_carts, support_floor_carts |
-| 30,000 | C2_W04_D03_notes_STUDENT.md | 257 | gs_households_low, practice_views |
-| 50,000 | C2_W04_D03_notes_STUDENT.md | 257 | gs_households_high, option_rs_50000 |
-| 15 percent | C2_W04_D03_notes_STUDENT.md | 257 | coriander_share, gs_share_week, kirana_tea_rusk_support |
-| 10 | C2_W04_D03_notes_STUDENT.md | 257 | slice_hinjewadi_night_pav_potatoes_carts, slice_thin_carts_max, tea_orders |
-| 20 | C2_W04_D03_notes_STUDENT.md | 257 | slice_hinjewadi_night_coriander_green_chillies_carts, curd_milk_support_kept, gs_share_high |
-| 1.5 | C2_W04_D03_notes_STUDENT.md | 257 | gs_orders_week, lift_rule_floor, milk_slots_worth |
-| 1 | C2_W04_D03_notes_STUDENT.md | 258 | gs_orders_low, twelve_ice_choc, add_rate_high |
-| 2 | C2_W04_D03_notes_STUDENT.md | 258 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
-| 1,290 | C2_W04_D03_notes_STUDENT.md | 258 | gs_orders_day |
-| 430 | C2_W04_D03_notes_STUDENT.md | 258 | gs_orders_day_low |
-| 2,860 | C2_W04_D03_notes_STUDENT.md | 258 | gs_orders_day_high |
-| 1,089 | C2_W04_D03_notes_STUDENT.md | 259 | instamart_orders_per_store |
-| 1,171 | C2_W04_D03_notes_STUDENT.md | 259 | instamart_stores |
-| 5.0 percent | C2_W04_D03_notes_STUDENT.md | 266 | bundle_z_lift, chips_cold_support, light_carts_max |
-| 0.74 | C2_W04_D03_notes_STUDENT.md | 267 | bread_milk_conf_ab, common_conf_high |
-| 3.39 | C2_W04_D03_notes_STUDENT.md | 268 | chips_cold_lift, pair_chips_cold_drink_lift |
-| 40,000 | C2_W04_D03_notes_STUDENT.md | 269 | gs_households, total_carts, support_floor_carts |
-| 71 percent | C2_W04_D03_notes_STUDENT.md | 269 | toned_milk_share |
-| 1 percent | C2_W04_D03_notes_STUDENT.md | 270 | curd_viman_nagar_w3, gs_orders_low, support_floor |
-| 400 | C2_W04_D03_notes_STUDENT.md | 270 | floor_pairs_lift_1_5, support_floor_carts, tea_biscuit |
-| 6.1 percent | C2_W04_D03_notes_STUDENT.md | 271 | before_strip_ctr, ctr_before_other_slot2 |
-| 3.8 | C2_W04_D03_notes_STUDENT.md | 271 | after_strip_ctr, after_strip_ctr_exact |
-| 40,000 | C2_W04_D03_notes_STUDENT.md | 272 | gs_households, total_carts, support_floor_carts |
-| 3.8 percent | C2_W04_D03_notes_STUDENT.md | 272 | after_strip_ctr, after_strip_ctr_exact |
-| 1.2 | C2_W04_D03_notes_STUDENT.md | 272 | ctr_before_milk_slot3, kirana_tea_rusk_lift, milk_slot_ctr_after |
-| 6.4 | C2_W04_D03_notes_STUDENT.md | 272 | daily_ctr_before_high, other_slot_ctr_after |
-| Rs 9 | C2_W04_D03_notes_STUDENT.md | 273 | kalpa_twelve_charger, margin_assumed, tea_bag |
+| 4 | C2_W04_D03_notes_STUDENT.md | 237 | after_strip_ctr, floor_pairs_lift_1_5, tea_biscuit |
+| 5 | C2_W04_D03_notes_STUDENT.md | 237 | light_carts_max, bundle_z_lift, chips_cold_support |
+| 2.56 | C2_W04_D03_notes_STUDENT.md | 237 | chips_cold_lift_per_customer |
+| 6 | C2_W04_D03_notes_STUDENT.md | 238 | tea_chai, apples_share, before_strip_ctr |
+| 0.74 | C2_W04_D03_notes_STUDENT.md | 245 | bread_milk_conf_ab, common_conf_high |
+| 71 percent | C2_W04_D03_notes_STUDENT.md | 245 | toned_milk_share |
+| 1.04 | C2_W04_D03_notes_STUDENT.md | 245 | bread_milk_lift, bread_milk_lift_per_customer, common_lift_high |
+| 4.6 | C2_W04_D03_notes_STUDENT.md | 246 | ice_choc_lift, pair_chocolate_sauce_ice_cream_lift |
+| 0.25 percent | C2_W04_D03_notes_STUDENT.md | 246 | curd_cell_low, curd_hadapsar_w1, ice_choc_support |
+| Rs 17,000 | C2_W04_D03_notes_STUDENT.md | 246 | thin_rule_month, slice_kothrud_evening_onions_tomatoes_carts |
+| 3.39 | C2_W04_D03_notes_STUDENT.md | 247 | chips_cold_lift, pair_chips_cold_drink_lift |
+| 2.56 | C2_W04_D03_notes_STUDENT.md | 247 | chips_cold_lift_per_customer |
+| 1.95 | C2_W04_D03_notes_STUDENT.md | 247 | chips_cold_lift_both |
+| Rs 6.3 lakh | C2_W04_D03_notes_STUDENT.md | 248 | recoverable_month |
+| 40,000 | C2_W04_D03_notes_STUDENT.md | 256 | gs_households, total_carts, support_floor_carts |
+| 30,000 | C2_W04_D03_notes_STUDENT.md | 256 | gs_households_low, practice_views |
+| 50,000 | C2_W04_D03_notes_STUDENT.md | 256 | gs_households_high, option_rs_50000 |
+| 15 percent | C2_W04_D03_notes_STUDENT.md | 256 | coriander_share, gs_share_week, kirana_tea_rusk_support |
+| 10 | C2_W04_D03_notes_STUDENT.md | 256 | slice_hinjewadi_night_pav_potatoes_carts, slice_thin_carts_max, tea_orders |
+| 20 | C2_W04_D03_notes_STUDENT.md | 256 | slice_hinjewadi_night_coriander_green_chillies_carts, curd_milk_support_kept, gs_share_high |
+| 1.5 | C2_W04_D03_notes_STUDENT.md | 256 | gs_orders_week, lift_rule_floor, milk_slots_worth |
+| 1 | C2_W04_D03_notes_STUDENT.md | 257 | gs_orders_low, twelve_ice_choc, add_rate_high |
+| 2 | C2_W04_D03_notes_STUDENT.md | 257 | gs_orders_high, kalpa_thin_baskets, twelve_chips_cold |
+| 1,290 | C2_W04_D03_notes_STUDENT.md | 257 | gs_orders_day |
+| 430 | C2_W04_D03_notes_STUDENT.md | 257 | gs_orders_day_low |
+| 2,860 | C2_W04_D03_notes_STUDENT.md | 257 | gs_orders_day_high |
+| 1,089 | C2_W04_D03_notes_STUDENT.md | 258 | instamart_orders_per_store |
+| 1,171 | C2_W04_D03_notes_STUDENT.md | 258 | instamart_stores |
+| 5.0 percent | C2_W04_D03_notes_STUDENT.md | 265 | bundle_z_lift, chips_cold_support, light_carts_max |
+| 0.74 | C2_W04_D03_notes_STUDENT.md | 266 | bread_milk_conf_ab, common_conf_high |
+| 3.39 | C2_W04_D03_notes_STUDENT.md | 267 | chips_cold_lift, pair_chips_cold_drink_lift |
+| 40,000 | C2_W04_D03_notes_STUDENT.md | 268 | gs_households, total_carts, support_floor_carts |
+| 71 percent | C2_W04_D03_notes_STUDENT.md | 268 | toned_milk_share |
+| 1 percent | C2_W04_D03_notes_STUDENT.md | 269 | curd_viman_nagar_w3, gs_orders_low, support_floor |
+| 400 | C2_W04_D03_notes_STUDENT.md | 269 | floor_pairs_lift_1_5, support_floor_carts, tea_biscuit |
+| 6.1 percent | C2_W04_D03_notes_STUDENT.md | 270 | before_strip_ctr, ctr_before_other_slot2 |
+| 3.8 | C2_W04_D03_notes_STUDENT.md | 270 | after_strip_ctr, after_strip_ctr_exact |
+| 40,000 | C2_W04_D03_notes_STUDENT.md | 271 | gs_households, total_carts, support_floor_carts |
+| 3.8 percent | C2_W04_D03_notes_STUDENT.md | 271 | after_strip_ctr, after_strip_ctr_exact |
+| 1.2 | C2_W04_D03_notes_STUDENT.md | 271 | ctr_before_milk_slot3, kirana_tea_rusk_lift, milk_slot_ctr_after |
+| 6.4 | C2_W04_D03_notes_STUDENT.md | 271 | daily_ctr_before_high, other_slot_ctr_after |
+| Rs 9 | C2_W04_D03_notes_STUDENT.md | 272 | kalpa_twelve_charger, margin_assumed, tea_bag |
 | 6.1 percent | C2_W04_D03_brief_STUDENT.md | 4 | before_strip_ctr, ctr_before_other_slot2 |
 | 3.8 percent | C2_W04_D03_brief_STUDENT.md | 4 | after_strip_ctr, after_strip_ctr_exact |
 | 3.39 | C2_W04_D03_brief_STUDENT.md | 5 | chips_cold_lift, pair_chips_cold_drink_lift |
@@ -1829,7 +1860,7 @@ Numbers traced: 2047. Numbers with no home: 0.
 | 6.49 | C2_W04_D03_selfcheck_STUDENT.md | 52 | slice_hinjewadi_night_floor |
 | 7 | C2_W04_D03_selfcheck_STUDENT.md | 52 | slice_hinjewadi_night_floor_min, slice_thin_carts_min, bread_margin |
 | 3.27 | C2_W04_D03_selfcheck_STUDENT.md | 56 | slice_hinjewadi_night_chips_cold_drink_lift |
-| 35 | C2_W04_D03_selfcheck_STUDENT.md | 56 | slice_hinjewadi_night_chips_cold_drink_carts, bread_milk_conf_ba |
+| 35 | C2_W04_D03_selfcheck_STUDENT.md | 56 | slice_hinjewadi_night_chips_cold_drink_carts, bread_milk_conf_ba, serving_breakeven_paise |
 | 2.80 | C2_W04_D03_selfcheck_STUDENT.md | 57 | slice_hinjewadi_night_coriander_green_chillies_lift, value_per_click_low |
 | 20 | C2_W04_D03_selfcheck_STUDENT.md | 57 | slice_hinjewadi_night_coriander_green_chillies_carts, curd_milk_support_kept, gs_share_high |
 | 2.59 | C2_W04_D03_selfcheck_STUDENT.md | 58 | slice_hinjewadi_night_coriander_ghee_lift |

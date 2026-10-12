@@ -594,6 +594,20 @@ def weighted_lift(carts, baskets, a, b):
     return pab / (pa * pb)
 
 
+def size_adjusted_lift(baskets, a, b, w=None):
+    """Lift with chance sized by cart: carts of each item count give their own expected count.
+    With weights w (one over the customer's cart count), every customer also counts once."""
+    sizes = baskets.map(len).values
+    has_a = baskets.apply(lambda s: a in s).values
+    has_b = baskets.apply(lambda s: b in s).values
+    w = pd.Series(1.0, index=range(len(sizes))).values if w is None else w.values
+    expected = 0.0
+    for k in sorted(set(sizes)):
+        m = sizes == k
+        expected += (w[m] * has_a[m]).sum() * (w[m] * has_b[m]).sum() / w[m].sum()
+    return (w * (has_a & has_b)).sum() / expected
+
+
 def verify_case(cart_df, item_df, twelve_df):
     out = {}
     n = len(cart_df)
@@ -687,6 +701,20 @@ def verify_case(cart_df, item_df, twelve_df):
     check(f"per customer, chips and cold drink fall to {out['cc_cust']:.2f} and bread with milk "
           f"stays at {out['bm_cust']:.2f}",
           out["cc_cust"] < cc["lift"] - 0.5 and abs(out["bm_cust"] - bm["lift"]) < 0.03)
+    # Sized by cart: bigger carts hold any pair by chance, so chance is counted within each cart size.
+    out["size_lift"] = {pr: size_adjusted_lift(baskets, *pr) for pr in
+                        (("chips", "cold drink"), ("coriander", "green chillies"), ("bread", "butter"),
+                         ("onions", "tomatoes"))}
+    w_cust = 1 / cart_df.groupby("customer_id").cart_id.transform("count")
+    out["both_lift"] = {pr: size_adjusted_lift(baskets, *pr, w=w_cust) for pr in
+                        (("chips", "cold drink"), ("onions", "tomatoes"))}
+    check("corrected for both, each customer once and chance sized by cart, chips and cold drink read "
+          "1.95 and onions and tomatoes 1.38",
+          [round(v, 2) for v in out["both_lift"].values()] == [1.95, 1.38])
+    sl = out["size_lift"]
+    check("sized by each cart's item count, chips and cold drink read 2.48, coriander and green chillies "
+          "2.25, bread and butter 1.74, and onions and tomatoes 1.38, below the 1.5 bar",
+          [round(v, 2) for v in sl.values()] == [2.48, 2.25, 1.74, 1.38])
     heavy_ids = set(per_cust.index[:top_n])
     pair_carts = item_df[item_df.item.isin(["chips", "cold drink"])].groupby("cart_id").item.nunique()
     both_ids = set(pair_carts[pair_carts == 2].index)
@@ -1076,6 +1104,13 @@ def write_facts(case, strip, kalpa):
     S = "caveats"
     f(S, "chips_cold_lift_per_customer", round(case["cc_cust"], 4), f"{case['cc_cust']:.2f}", "lift with every customer counted once (each cart weighs one over its customer's carts)", "chapter 3, notebook 03")
     f(S, "bread_milk_lift_per_customer", round(case["bm_cust"], 4), f"{case['bm_cust']:.2f}", "the same for bread and milk", "chapter 3, notebook 03")
+    for (a, b2), fid in ((("chips", "cold drink"), "chips_cold"), (("coriander", "green chillies"), "coriander_chillies"),
+                         (("bread", "butter"), "bread_butter"), (("onions", "tomatoes"), "onions_tomatoes")):
+        v = case["size_lift"][(a, b2)]
+        f(S, f"{fid}_lift_size", round(v, 4), f"{v:.2f}", f"{a} and {b2}, lift with chance counted within each cart size", "interview room, half2")
+    for (a, b2), fid in ((("chips", "cold drink"), "chips_cold"), (("onions", "tomatoes"), "onions_tomatoes")):
+        v = case["both_lift"][(a, b2)]
+        f(S, f"{fid}_lift_both", round(v, 4), f"{v:.2f}", f"{a} and {b2}, each customer once and chance counted within each cart size", "interview room, half2")
     f(S, "chips_cold_heavy_share", round(case["cc_heavy_share"], 4), f"{case['cc_heavy_share'] * 100:.0f} percent", "share of chips-and-cold-drink carts placed by the top tenth", "chapter 3, notebook 03")
     for bnd, v in case["milk_by_band"].items():
         f(S, f"milk_share_{bnd}", round(v, 4), f"{v * 100:.0f} percent", f"share of {bnd} carts holding milk", "chapter 3, notebook 03")
@@ -1124,6 +1159,12 @@ def write_facts(case, strip, kalpa):
     f(S, "clicks_a_day", round(60_000 * 0.064), f"{round(60_000 * 0.064):,}", "60,000 x 0.064", "board work, the cascade")
     f(S, "adds_a_day", round(adds_day), f"{round(adds_day):,}", "60,000 x 0.064 x 0.5", "notebook 03, the trap")
     f(S, "gross_sales_day", round(gross_day), f"Rs {indian(gross_day)}", "1,920 adds x the average price of an added item", "notebook 03, the trap")
+    thin_views = views * 0.04
+    thin_month = thin_views * (0.064 - 0.012) * add * margin * 30
+    f(S, "ice_cream_views_day", round(thin_views), f"{round(thin_views):,}", "60,000 views x ice cream's 4 percent of carts, if views follow carts", "interview room, half1, half2, notes")
+    f(S, "thin_rule_month", round(thin_month), "about Rs 17,000", "2,400 x (0.064 - 0.012) x 0.5 x 9 x 30: the thin pair in place of milk, clicking like the rest", "interview room, half1, half2, notes")
+    f(S, "serving_cost_10p_month", round(views * 0.10 * 30), lakh(views * 0.10 * 30), "60,000 views x Rs 0.10 x 30: ten paise of serving cost a view, a month", "interview room, AI variant")
+    f(S, "serving_breakeven_paise", round(recover / (views * 30) * 100, 1), "35 paise", "Rs 6.3 lakh / (60,000 x 30): the serving cost a view that uses up the re-rank's recovery", "interview room, AI variant")
     S = "twelve_rows"
     f(S, "twelve_milk", 8, "8", "carts of the twelve holding milk", "chapter 1, notebook 01, cheat sheet")
     f(S, "twelve_bread", 4, "4", "carts holding bread", "chapter 1, notebook 01")
@@ -1162,6 +1203,7 @@ def write_facts(case, strip, kalpa):
     S = "public"
     f(S, "instamart_orders_per_store", 1089, "1,089", "Swiggy Instamart orders per dark store per day, quarter to June 2026 (T3, checked 12 October 2026)", "guesstimate")
     f(S, "instamart_stores", 1171, "1,171", "Swiggy Instamart dark stores, same source (T3)", "guesstimate")
+    f(S, "instamart_cities", 131, "131", "cities those 1,171 dark stores span, same source (T3, checked 12 October 2026)", "guesstimate")
     f(S, "maxxsaver_mtu_share", 0.28, "over 28 percent", "Maxxsaver users among MTUs (W4)", "chapter 3, notes")
     f(S, "maxxsaver_aov", 612, "Rs 612", "Maxxsaver AOV, up 16 percent (W4)", "chapter 3, notes")
     f(S, "osco_transactions", 1_200_000, "about 1.2 million", "Osco Drug transactions, 1992 (W2)", "chapter 2, notes")
@@ -1188,7 +1230,9 @@ def write_facts(case, strip, kalpa):
             ("gs_orders_day_low", round(g_low, 1), "about 430", "30,000 x 0.10 x 1 / 7"),
             ("gs_orders_day_high", round(g_high, 1), "about 2,860", "50,000 x 0.20 x 2 / 7"),
             ("gs_gap", round(g_mid / 1089 - 1, 4), "18 percent", "the estimate above Swiggy's 1,089"),
-            ("gs_share_needed", round(1089 * 7 / (g_hh * g_ow), 4), "about 13 percent", "the weekly share that lands on 1,089: 1,089 x 7 / (40,000 x 1.5)")):
+            ("gs_share_needed", round(1089 * 7 / (g_hh * g_ow), 4), "about 13 percent", "the weekly share that lands on 1,089: 1,089 x 7 / (40,000 x 1.5)"),
+            ("gs_share_low_day", round(g_hh * g_sl * g_ow / 7, 1), "about 860", "40,000 x 0.10 x 1.5 / 7; orders a week at 1 gives the same"),
+            ("gs_share_high_day", round(g_hh * g_s_hi * g_ow / 7, 1), "about 1,710", "40,000 x 0.20 x 1.5 / 7; orders a week at 2 gives the same")):
         f(S, fid, val, shown, how, "guesstimate: notes and the trainer sheet")
     S = "pairs_detail"
     for name in sorted(sh):
