@@ -146,6 +146,7 @@ def main():
             continue
         clean = DATE.sub(" ", line)
         clean = re.sub(r"\bC2_W\d\d_D\d\d_\w+", " ", clean)
+        clean = re.sub(r"\barXiv \d+\.\d+", " ", clean)      # a citation id, never a quantity
         clean = re.sub(r"`[^`]*`", " ", clean)
         for m in NUMBER.finditer(clean):
             token, unit = m.group(1), (m.group(2) or "").strip()

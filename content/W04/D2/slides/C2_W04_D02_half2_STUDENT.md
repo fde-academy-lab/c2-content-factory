@@ -22,7 +22,7 @@ Transition: the opening question.
 ---
 
 ## S33. Predict: which number would check this estimate?
-*You have sized drivers online at the weekday evening peak. Which of these numbers checks it?*
+*You have sized drivers online at the weekday evening peak. Which of these numbers checks it in the same unit, period and definition?*
 
 a) Monday's rider requests after the launch, 256,556 over six weeks
 
@@ -43,7 +43,7 @@ Transition: the answer, and the rule behind it.
 ## S34. Answer: check in the same unit, period and definition
 *Why does only one of the four check the estimate directly, and what do you do when it does not exist?*
 
-**The answer is c, and nobody publishes it, so its slot reads "to be found".** a is a six-week total for the twelve zones the enrolled drivers work, a different period and a smaller area. b counts sign-ups, a different definition from drivers online at one moment. d checks one link in the chain, the ratio, and that is the check the afternoon uses.
+**The answer is c, and nobody publishes it, so its slot reads "to be found".** a counts rider requests over six weeks in twelve zones: another unit, a longer period and a slice of the city. b counts sign-ups, another definition from drivers online at one moment. d is not wrong: it checks one link in the chain, a ratio the case's own data holds, and when the direct check does not exist that is the honest fallback the afternoon uses.
 
 ```mermaid
 flowchart LR
@@ -51,8 +51,9 @@ flowchart LR
     U -->|"yes"| P{"same period?"}
     P -->|"yes"| D{"same definition?"}
     D -->|"yes"| OK["<b>a check</b>"]
-    U -->|"no: drivers signed up"| NO["<b>not a check</b>"]
+    U -->|"no: requests, not drivers"| NO["<b>not a check</b>"]
     P -->|"no: six weeks"| NO
+    D -->|"no: signed up"| NO
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
@@ -109,7 +110,7 @@ flowchart LR
     class V lit
 ```
 
-**Interviewers score the structure and the sanity check, and hardly ever the final number.** Aced's analyst guide says the interviewer is evaluating the estimation framework and wants each assumption stated so it can be challenged (checked 12 October 2026).
+**Interviewers listen to the structure and the stated assumptions.** Aced's guide to analyst interviews (an interview-preparation site) says the interviewer "isn't looking for a precise number" and is "evaluating your estimation framework", with each assumption stated so it can be challenged (checked 12 October 2026). A number that is wildly off still costs the answer, which is why step 4 exists.
 
 ```notes
 LIVE, 2 minutes. Point at each step. The step first estimates skip is the fourth.
@@ -118,16 +119,17 @@ Transition: the city head's question, clarified.
 
 ---
 
-## S37. Clarify: five questions pin the estimate down
+## S37. Clarify: six questions pin the estimate down
 *Which questions pin the estimate down before any number is written?*
 
 | Ask | The answer to work with |
 |---|---|
-| Which city? | The Hyderabad metro area, Uber only |
-| Which window? | The weekday evening peak, three hours long |
+| Which city, which product? | The Hyderabad metro area, Uber, one product (assume cars) |
+| Which window? | The weekday evening peak, one of the guarantee's two daily windows, three hours long |
 | Drivers online when? | At one moment inside the window, since a count summed over three hours is another unit |
-| What target? | A median rider wait under five minutes |
-| Requests or trips? | Rider requests, each one a trip to serve |
+| What target? | A median rider wait under five minutes, for the city and then zone by zone |
+| Requests or trips? | Trips: about nine in ten requests became trips in Monday's data |
+| Drivers on two apps? | A driver online on Uber may be busy on another app, so lean the idle share low |
 
 **The unit is drivers online at one moment.** Every factor in the chain must arrive in a unit that multiplies into it.
 
@@ -145,14 +147,14 @@ Transition: the map.
 ```mermaid
 flowchart TD
     D["<b>Drivers online at the peak</b>"]
-    R["<b>Rider requests an hour</b><br/>about 8,300"]
-    P["people in the city<br/>about 1 crore"]
-    S["share who ride on a weekday<br/>1 percent"]
-    E["share of trips in the evening<br/>a quarter, over 3 hours"]
+    R["<b>Trips to serve an hour</b><br/>about 8,330"]
+    P["people in the city<br/>1 crore (0.9 to 1.1)"]
+    S["weekday Uber trips<br/>per 100 people<br/>1 (0.5 to 1.5)"]
+    E["share of trips in the<br/>evening, over 3 hours<br/>a quarter (0.2 to 0.3)"]
     T["<b>Trips per online driver-hour</b><br/>1.68"]
-    B["trips a busy driver fits in an hour<br/>2.4"]
-    I["idle share at any moment<br/>0.30"]
-    X["<b>Buffer</b><br/>1.15 for the busiest half hour"]
+    B["trips a busy driver<br/>fits in an hour<br/>2.4 (2 to 3)"]
+    I["idle share at<br/>any moment<br/>0.30 (0.22 to 0.38)"]
+    X["<b>Buffer</b><br/>1.15 (1.10 to 1.25)"]
     D --> R
     D --> T
     D --> X
@@ -167,12 +169,12 @@ flowchart TD
     class R,T,X known
 ```
 
-**Drivers online = requests an hour / trips per online driver-hour x buffer.** Each leaf is an assumption with a range. A trip at the peak takes about 25 minutes from accepting to dropping, so a busy driver fits 2.4 an hour; the idle share is the share of online drivers with no rider at that moment.
+**Drivers online = (trips to serve an hour / trips per online driver-hour) x buffer.** Each leaf is a guess said aloud with its range. Counting trips per 100 people, never riders, keeps a commuter who rides both ways in the count. A peak trip takes about 25 minutes from accepting to dropping, so a busy driver fits 2.4 an hour; the buffer covers the busiest half hour.
 
 ```notes
-LIVE, 6 minutes. Build the tree on the board with the room, leaf by leaf, asking for each value.
-Explorer scene T3 has a slider per leaf. The idle share's range, 0.22 to 0.38, is Monday's own
-share of online hours with no completed trip, before and after.
+LIVE, 6 minutes. Build the tree on the board with the room, leaf by leaf, asking for each value and
+its range. Explorer scene T3 has a slider per leaf. The idle share is a guess here; the validate
+step checks it like for like.
 Transition: the running product.
 ```
 
@@ -183,64 +185,66 @@ Transition: the running product.
 
 | Step | Said aloud | Running result |
 |---|---|---|
-| People x share who ride | 1 crore x 1 percent | 1 lakh trips a day |
+| People x weekday trips per person | 1 crore x 1 per 100 | 1 lakh trips a day |
 | x share in the evening | x a quarter | 25,000 in the window |
-| / three hours | / 3 | about 8,300 requests an hour |
+| / three hours | / 3 | about 8,330 trips an hour |
 | Trips per online driver-hour | 2.4 x (1 - 0.30) | 1.68 |
-| Requests / trips per driver-hour | 8,300 / 1.68 | about 4,960 drivers |
+| Trips an hour / trips per driver-hour | 8,330 / 1.68 | about 4,960 drivers |
 | x buffer | x 1.15 | about 5,700 drivers |
 
-**Question.** Which assumption moves the answer most across its range: a) the idle share, b) the share who ride on a weekday, c) the buffer, d) the trips a busy driver fits in an hour?
+**Question.** Using the ranges on S38, which assumption moves the answer most: a) the idle share, b) weekday trips per 100 people, c) the buffer, d) the trips a busy driver fits in an hour?
 
 ```notes
 LIVE, 6 minutes. Say each step aloud and write the running result before the next. Then the
-question: letters on paper, two minutes with a neighbour, revote.
+question: letters on paper, two minutes with a neighbour, revote. A range that spans three times
+its low end beats one that spans a fifth.
 Transition: the swing chart.
 ```
 
 ---
 
-## S40. Answer: the share who ride moves it most
+## S40. Answer: how often people ride moves it most
 *How wide is the honest range, and which factor sets it?*
 
 ![How far each assumption moves the answer](../whiteboards/C2_W04_D02_guesstimate_swing_STUDENT.png)
 
-**The answer is b.** With every other factor at its central value, a ride share of 0.5 to 1.5 percent moves the answer from about 2,900 to about 8,600. The idle share moves it from about 5,100 to 6,400. **Say it as:** "about 5,700, between about 2,900 and 8,600, and mostly a question of how many people ride."
+**The answer is b.** With every other factor at its central value, weekday trips of 0.5 to 1.5 per 100 people move the answer from about 2,900 to about 8,600; the idle share moves it from about 5,100 to 6,400. **Say it as:** "about 5,700 before the check, from 2,900 to 8,600 with everything else held, and mostly a question of how often people ride."
 
 ```notes
-LIVE, 5 minutes. The ride share is also the first number to replace: Uber's own dashboard holds
-peak requests an hour. The idle share is the assumption Monday showed moving, 0.22 to 0.38 of
-online hours with no trip in six weeks.
+LIVE, 5 minutes. Trips per person is also the first number to replace: Uber's own dashboard holds
+peak trips an hour. The idle share is the assumption Monday showed moving.
 Transition: the check.
 ```
 
 ---
 
-## S41. Validate: the case can check a ratio, never the count
-*Which part of the estimate can the case's own data confirm?*
+## S41. Validate: like for like, the chain runs high
+*Which part of the estimate can the case's own data confirm, and does it move the answer?*
 
 ```stats
-value: 0.47 | label: driver-hours per request, before | note: the case's twelve zones, median wait 4.8 minutes
-value: 0.57 | label: driver-hours per request, after | note: the same zones, median wait 4.6 minutes
-value: 0.60 | label: the chain, before its buffer | note: 1 / 1.68, about a quarter above 0.47
+value: 0.53 | label: driver-hours per completed trip, before | note: the case's twelve zones, median wait 4.8 minutes
+value: 0.63 | label: driver-hours per completed trip, after | note: the same zones, median wait 4.6 minutes
+value: 0.60 | label: the chain, before its buffer | note: 1 / 1.68, about an eighth above 0.53
 ```
 
-**Monday's data counts peak hours on all seven days, two three-hour windows a day, 42 hours a week,** so its 256,556 after-window requests are about 1,018 an hour: a slice of the city run by 1,200 drivers, which can check the ratio and never the city's count. The published figure for Uber drivers online at Hyderabad's evening peak is to be found.
+**The chain needs about an eighth more driver time per trip than the before window, the one whose wait met the target, so it errs high.** Re-run at the case's 1.90 trips an hour: 8,330 / 1.90 x 1.15 = about 5,000, so say about 5,000 to 5,700. The case pools both daily windows on all seven days (42 hours a week), so it checks the ratio's size, never the city's count, and a published count of drivers online at Hyderabad's evening peak has not been found.
 
 ```notes
-LIVE, 3 minutes. Synthetic, labelled: these are the case's numbers, not Uber's. The chain errs on
-the generous side, so the buffer is the first factor to trim.
+LIVE, 3 minutes. Like for like means per completed trip on both sides: the chain counts trips, so
+the case's hours are divided by its trips, never its requests (0.47 per request mixes in the 11
+percent of requests nobody served). The idle share checks the same way: 1.90 trips x 25 minutes
+leaves an idle share of about 0.21 before the launch, the window that held the wait at 4.8 minutes.
 Transition: the trap a hurried estimate falls into.
 ```
 
 ---
 
 ## S42. The trap: a day's trips divided by an hour's
-*What goes wrong when the units are not clarified?*
+*What goes wrong when a day meets an hour?*
 
-**The plausible wrong answer.** "1 crore people, 1 percent ride, so 1 lakh trips; a driver does 2.4 trips an hour; so about 41,700 drivers." A city head who takes that to the review asks for incentives for about seven times the drivers the chain says.
+**The plausible wrong answer.** "1 crore people, 1 trip per 100 people, so 1 lakh trips; a driver does 2.4 trips an hour; so about 41,700 drivers." A city head who takes that to the review asks for incentives for about seven times the drivers the chain says.
 
-**Why it is wrong.** A day's trips were divided by an hour's trips per driver, and the idle share and the evening window were skipped. **The check:** write the unit beside every factor. **The fix:** bring the day's trips into the evening window's hour before dividing.
+**Why it is wrong.** A day's trips were divided by an hour's trips per driver, a period mismatch, and the idle share and the evening window were skipped. **The check:** write the unit beside every factor. **The fix:** bring the day's trips into the evening window's hour before dividing.
 
 ```notes
 LIVE, 5 minutes. Write 41,700 and 5,700 side by side. Ask which step of the four was skipped:
@@ -253,9 +257,9 @@ Transition: UPI, in pairs.
 ## S43. UPI in pairs: seven minutes on the clock
 *How many UPI payments happen in India on an average day?*
 
-**The drill.** In pairs, seven minutes, all four steps on one sheet. Clarify volume or value (volume: the count of payments). Map active users x payments per user a day, split between paying shops and paying people.
+**The drill.** In pairs, seven minutes, all four steps on one sheet. Clarify volume or value (volume: the count of payments). Map active users x payments per user a day, and say how many of those go to shops and how many to people, so the payments a day are believable.
 
-**What the scorer checks:** scope clarified first, every assumption written with a range, a range given, and a sanity check in the right unit. The final number scores nothing on its own.
+**What the scorer checks:** scope clarified first, every assumption written with a range, a range given, and a sanity check in the right unit.
 
 ```notes
 LIVE, 12 minutes. Three minutes to set up, seven on the clock, two to swap sheets with the next
@@ -265,14 +269,14 @@ Transition: the published number.
 
 ---
 
-## S44. The check: 802 million a day, compared per day
+## S44. The check: per day, and per payment
 *Is a pair's estimate sane, and which comparison is the honest one?*
 
-**NPCI's figure:** an average of 802 million UPI transactions a day in September 2026, and 24.07 billion in the month (Outlook Money, 2 October 2026, citing NPCI; checked 12 October 2026).
+**NPCI's figure.** NPCI, the National Payments Corporation of India, which runs UPI, reported an average of 802 million UPI payments a day in September 2026: 24.07 billion in the month, worth Rs 29.37 lakh crore (Outlook Money, 2 October 2026; checked 12 October 2026).
 
 ```mermaid
 flowchart LR
-    U["<b>payments a day</b><br/>70 crore, 700 million"] --> A["active users<br/>about 35 crore,<br/>one in four of 140 crore"]
+    U["<b>payments a day</b><br/>70 crore = 700 million<br/>(1 crore = 10 million)"] --> A["active users<br/>about 35 crore,<br/>one in four of 140 crore"]
     U --> F["payments per user a day<br/>about 2"]
     U -.->|"13 percent below"| N["<b>NPCI</b><br/>802 million a day"]
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -281,12 +285,12 @@ flowchart LR
     class A,F,N known
 ```
 
-**The catch.** September has 30 days: 24.07 billion / 30 is 802 million, while dividing by 31 gives 776 million, about 3 percent low. Compare per-day figures in the unit the source published.
+**Two checks.** Per day: September has 30 days, so 24.07 billion / 30 = 802 million; dividing by 31 gives 776 million, a small slip beside the estimate's range. Per payment: Rs 29.37 lakh crore / 24.07 billion = about Rs 1,220 a payment, far above a cup of tea, so the count holds large transfers between people.
 
 ```notes
 LIVE, 6 minutes. Read the board's estimates against 802 million. The worked chain lands 13 percent
-below: same order, a little low, and payments a day is the factor to revisit. Praise structure, not
-closeness.
+below, a little low, and payments a day is the factor to revisit: the Rs 1,220 a payment says the
+2 a day must split shops from people. Praise structure and the second check over closeness.
 Transition: three traps a sanity check catches.
 ```
 
@@ -295,18 +299,18 @@ Transition: three traps a sanity check catches.
 ## S45. Three traps a sanity check catches
 *Which skipped move lets each wrong number through?*
 
-| Trap | What a confident candidate says | What catches it | The move skipped |
+| Trap | What a confident candidate says | What catches it | The test it fails |
 |---|---|---|---|
-| Crowd as households | "A city of two million people has nine million households" (invented) | About four people to a household gives about 5 lakh households | Clarify the unit |
-| A different unit | A weekday estimate of Delhi Metro riders checked against a record day's boardings | DMRC reports 64.06 lakh journeys a day and, separately, a record 82,44,903 boardings on 17 September 2026 | Validate in the same unit |
-| A decimal | "Flipkart had 63 million concurrent users in a minute" | Flipkart's own announcement of 9 October 2026 says 6.3 million; the 63 is in its URL | Read the source's text |
+| People as households | "A city of two million people has eight million households" (invented) | Households are people divided by about four: 20 lakh / 4 = 5 lakh; this one multiplied | Unit |
+| A record day | A weekday estimate of Delhi Metro journeys, checked against 82,44,903 | DMRC's average is 64.06 lakh journeys a day; 82,44,903 was one record day, 17 September 2026 | Period |
+| A muddled source | "Flipkart had 63 million concurrent users in a minute" | Flipkart's text says 6.3 million (the 63 is in its web address), and "concurrent in a minute" mixes a moment with a minute | Definition: read the source's own words |
 
-**Each trap is one skipped step,** so the scorer names the step and the room fixes the habit.
+**Sources,** checked 12 October 2026: The Tribune (9 August 2026) and Republic World (18 September 2026), citing DMRC, the Delhi Metro Rail Corporation; Flipkart Stories (9 October 2026).
 
 ```notes
-LIVE, 6 minutes. Sources, all checked 12 October 2026: The Tribune (9 August 2026) and Republic
-World (18 September 2026), both citing DMRC; Flipkart Stories (9 October 2026). In 2018 DMRC's
-line-utilisation count tallied a trip across three lines three times (PTI, 30 May 2018).
+LIVE, 6 minutes. Each trap fails one of the three tests on the board: unit, period, definition.
+In 2018 DMRC's line-utilisation count tallied a trip across three lines three times (PTI, 30 May
+2018), another definition trap.
 Transition: what chapter 4 adds to Tuesday's node.
 ```
 
@@ -317,7 +321,7 @@ Transition: what chapter 4 adds to Tuesday's node.
 
 ```mermaid
 flowchart LR
-    M["<b>Mon</b><br/>pay for trips"] --> T["<b>Tue</b><br/>one slide, four moves<br/>about 5,700 drivers"]
+    M["<b>Mon</b><br/>pay for trips"] --> T["<b>Tue</b><br/>one slide, four moves<br/>5,000 to 5,700 drivers"]
     T -.-> W["<b>Wed</b><br/>what goes with what"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -327,7 +331,7 @@ flowchart LR
     class W unknown
 ```
 
-**Tuesday's node now carries** the slide (Rs 314 to Rs 260 per online hour, defended in four moves, one appendix page per role) and the estimate (about 5,700 drivers, between 2,900 and 8,600). **In the interview** [S]: estimate a number from nothing, aloud, and check it. The structure and the sanity check carry the score.
+**Tuesday's node now carries** the slide (Rs 314 to Rs 260 per online hour, defended in four moves, one appendix page per role) and the estimate (about 5,000 to 5,700 drivers once checked; 2,900 to 8,600 by how often people ride). **In the interview** [S]: estimate a number from nothing, aloud, and check it. The structure, the stated assumptions and the check carry most of the score.
 
 ```notes
 LIVE, 1 minute, taken from the traps slide's seven. Then the break.
@@ -358,7 +362,7 @@ icon: triangle-alert | eyebrow: Third | title: The caveat | body: In the body of
 icon: circle-check | eyebrow: Last | title: The action and its cost | body: What to do, the saving in rupees over weeks, who signs | tone: light
 ```
 
-**The reader** is the city head, with the three roles reading over a shoulder: finance reads rupees, driver operations reads drivers, marketing reads sign-ups. Words a non-technical reader would not know (denominator, ratio of sums, regression) stay off the page.
+**The reader** is the city head, with the three roles reading over a shoulder: finance reads rupees, driver operations reads drivers, marketing reads sign-ups. Words a non-technical reader would not know (denominator, index, guardrail) stay off the page, or are said in plain words.
 
 ```notes
 LIVE, 3 minutes. The checklist handed back after the slot asks five things: the claim first, one
@@ -401,14 +405,16 @@ Transition: transcript 1.
 
 | A weak opening | A hire-grade opening |
 |---|---|
-| "So I looked at the dashboard. Online hours are up 24 percent, trips are up 3 percent, trips per hour went from 1.90 to 1.58, acceptance fell, and bookings per driver-week is actually up, so it is mixed." | "The scheme is paying for online hours that carry no trips. An hour online used to bring in Rs 314 of fares and now brings in Rs 260 at the same fare. Part of that may be the monsoon. Paying per completed trip with an acceptance floor returns Rs 58 lakh to Rs 92.7 lakh over six weeks depending on whether half or a fifth of idle drivers start accepting." |
+| "So I looked at the dashboard. Online hours are up 24 percent, trips are up 3 percent, trips per hour went from 1.90 to 1.58, acceptance fell, and bookings per driver-week is actually up, so it is mixed." | "You are deciding whether to keep, end or change the guarantee. It is paying for online hours that carry no trips: an hour online brought in Rs 314 of fares and now brings in Rs 260 at the same fare, while the median wait barely moved, 4.8 to 4.6 minutes. Part of the fall may be the monsoon. Test paying per completed trip with an acceptance floor on half the drivers, picked at random, for six weeks; city-wide it saves Rs 58 lakh to Rs 92.7 lakh. You sign the test." |
 
-**The follow-ups:** what is the one caveat you would say before anyone decides; which denominator did you choose, and what would make you choose another; the finance partner says it is the monsoon, so answer in under a minute.
+**The follow-ups:** which denominator did you choose, and what would make you choose another; test or rollout, and how do you stop drivers moving into the zones you treat; the finance partner says it is the monsoon, so answer in under a minute.
 
 ```notes
 LIVE, 8 minutes. In pairs, one reads the interviewer, one the candidate; then the candidate answers
-the three follow-ups without notes. The weak opening reads nine numbers and lets the per-driver-week
-rise blur the claim.
+the three follow-ups without notes. The weak opening reads numbers and lets the per-driver-week rise
+blur the claim. The full hire-grade answer, with the per-driver-week line checked (each driver
+online four more hours a week at 17 percent less per hour; the 140 joiners pulled the read down), is
+in extras/C2_W04_D02_interview_room_STUDENT.md.
 Transition: transcript 2.
 ```
 
@@ -419,15 +425,16 @@ Transition: transcript 2.
 
 | A weak answer | A hire-grade answer |
 |---|---|
-| "About 1 crore people, 1 percent ride, so 1 lakh trips. A driver does 2.4 trips an hour, so about 41,700 drivers." | "One moment of the three-hour weekday evening peak, Uber only, median wait under five minutes. Requests an hour times the trips one online driver completes, times a buffer: about 8,300 / 1.68 x 1.15, about 5,700, between 2,900 and 8,600, set mostly by the share who ride. The case's own 0.47 driver-hours per request says the chain is a little generous." |
+| "About 1 crore people, 1 percent ride, so 1 lakh trips. A driver does 2.4 trips an hour, so about 41,700 drivers." | "One moment of the three-hour weekday evening peak, one product, the city's median wait under five minutes. Drivers online is trips an hour divided by the trips one online driver completes in an hour, times a buffer: 8,330 / 1.68 x 1.15, about 5,700; trips per person moves it most, 2,900 to 8,600. Like for like, the case's 0.53 driver-hours per trip against my 0.60 says I run an eighth high, so 5,000 to 5,700, and each thousand idle drivers costs up to Rs 9 lakh an evening at the floor." |
 
 **The follow-ups:** your idle share is a guess, so which number in the case data would catch it; the window is three hours, so what does a four-hour window do; give a range, and say which factor drives it.
 
 ```notes
-LIVE, 8 minutes. Hire-grade lines for the follow-ups: the share of online hours with no completed
-trip, 0.22 before and 0.38 after; a four-hour window spreads the evening's 25,000 trips to about
-6,250 an hour and about 4,300 drivers, unless the extra hour adds trips; about 2,900 to 8,600, set
-by the share who ride.
+LIVE, 8 minutes. Hire-grade lines for the follow-ups: the case's hours with no trip (22 and 38
+percent) are looser than idle at a moment, and like for like its trips per hour give about 0.21
+before the launch, which held the wait at 4.8 minutes and gives about 5,000; a four-hour window
+leaves the busiest half hour where it was, so the buffer rises to about 1.53 and the answer stays
+about 5,700; about 2,900 to 8,600 with everything else held, driven by trips per person.
 Transition: the AI-company variant.
 ```
 
@@ -436,13 +443,15 @@ Transition: the AI-company variant.
 ## S51. The AI variant: acceptance rate in the sales deck
 *How do you present a metric change to a head of product who quotes acceptance rate to customers?*
 
-**The setup, invented for this class.** A coding assistant's sales deck quotes "acceptance rate 32 percent", the share of suggestions developers accept. The analyst proposes a new north star: suggested text still present at the next commit, per active developer-week, with build failures and revert rate as guardrails.
+**The setup, invented for this class.** A coding assistant's sales deck quotes "acceptance rate 32 percent", the share of suggestions developers accept, even ones deleted soon after. The analyst proposes a new **north star**, the one number the team is judged on: characters of suggested code still in the file seven days after acceptance, per developer who saw a suggestion that week, with two **guardrails** that catch padding (retained characters per accepted character; edits per accepted suggestion).
 
-**The objection, partly right.** "Acceptance rate is what customers see in the deck." True: customers do see it. **The answer** keeps acceptance as a leading input on the dashboard and in the deck, and pays the team for text that survives, because a suggestion accepted and then deleted counts as accepted.
+**The objection, partly right.** "Acceptance rate is what customers see." True, and a 2022 study of GitHub Copilot's users found acceptance tracks how productive developers feel. **The answer** keeps acceptance in the deck as a **leading input**, a number that moves first, and judges the team on code that survives only once a holdout of users shows it tracks seat renewals.
 
 ```notes
 LIVE, 6 minutes. Ask which of the morning's three objections this resembles. Expect marketing's:
-both keep the visible number while the north star does the paying.
+both keep the visible number while the north star does the judging. The study: Ziegler and
+colleagues, arXiv 2205.06537, 13 May 2022 (checked 12 October 2026). A commit is a saved change to
+the code; a revert undoes one.
 Transition: scoring the transcripts.
 ```
 
@@ -454,7 +463,7 @@ Transition: scoring the transcripts.
 | Criterion | 0 | 1 | 2 |
 |---|---|---|---|
 | Clarified the scope first | skipped | partly | unit, window and target pinned |
-| Named the denominator and the window | neither | one | both |
+| Named the denominator, or the unit, and the window | neither | one | both |
 | Saw the trap | missed | named late | named and checked |
 | Sized it with a unit | no unit | a unit, unchecked | a unit carried through |
 | Said what would change their mind | no | vaguely | a named fact |
@@ -476,8 +485,8 @@ Transition: the pain points.
 |---|---|
 | The first slide carries every number | Slide A this morning: nine numbers, no claim |
 | The first defence retreats or overclaims | Round one of the studio |
-| A check in a different unit | Delhi Metro's journeys against its boardings |
-| A decimal slip in a published figure | Flipkart's 6.3 million against the 63 in its URL |
+| A check against an unusual day | Delhi Metro's average day against one record day |
+| A muddled published figure | Flipkart's 6.3 million against the 63 in its web address |
 | A memo nobody can write in an hour | Amazon's letter: a great memo probably takes a week or more |
 
 ```notes
@@ -492,7 +501,7 @@ Transition: the gallery.
 
 **Every group's final slide goes on the wall, beside three written pages.** Each learner places three dots: one on the title that most clearly states a claim a city head could act on, one on the appendix page that best answers its role's question, one on the caveat that sits most clearly in sight.
 
-**The test for a title** is the Big Idea from Storytelling with Data: one complete sentence that carries a point of view and says what is at stake (checked 12 October 2026).
+**The test for a title** is the Big Idea from Storytelling with Data, a site on presenting data: one complete sentence that carries a point of view and says what is at stake (checked 12 October 2026).
 
 ```notes
 LIVE, 10 minutes. Five minutes to walk and dot, five to read the top three titles aloud and name
@@ -522,9 +531,9 @@ Transition: where the day ends.
 ## S56. Where the day ends: a slide, a page and a range
 *What will the city head hear on Thursday, and what comes tomorrow?*
 
-> "The scheme is paying for online hours that carry no trips: Rs 314 to Rs 260 per peak online hour at a flat Rs 165 fare. Part of it may be the monsoon. Pay per completed peak trip with an acceptance floor, which returns Rs 58 lakh to Rs 92.7 lakh over six weeks depending on whether half or a fifth of idle drivers start accepting. At the evening peak the city needs about 5,700 drivers online, between 2,900 and 8,600."
+> "The scheme is paying for online hours that carry no trips: Rs 314 to Rs 260 per peak online hour at a flat Rs 165 fare. Part of it may be the monsoon. Test paying per completed peak trip with an acceptance floor: city-wide, it saves Rs 58 lakh to Rs 92.7 lakh over six weeks if a half to a fifth of the idle drivers' top-up is still paid. At the evening peak the city needs about 5,000 to 5,700 drivers online, and how often people ride could move that from 2,900 to 8,600."
 
-**The lines to keep.** A slide carries one claim, one number with its denominator, the caveat in sight and the action with its cost. Name the denominator before the number. Answer an objection in four moves. Size a number in four steps and give the factor that drives the range. Check in the same unit, period and definition.
+**The lines to keep.** A slide carries one claim, one number with its denominator, the caveat in sight and the action with its cost. Name the denominator before the number. Answer an objection in four moves. Size a number in four steps, give the factor that drives the range, and check it like for like. Check in the same unit, period and definition.
 
 **Tomorrow:** Swiggy Instamart's cart page in Pune, and a strip that suggests what goes with what.
 

@@ -18,6 +18,7 @@ Writes Tuesday:
     content/W04/D2/data/C2_W04_D02_twelve_rows_STUDENT.csv
     content/W04/D2/data/C2_W04_D02_twelve_weeks_STUDENT.csv
     content/W04/D2/data/C2_W04_D02_kalpa_dmart_anchor_STUDENT.csv
+    content/W04/D2/data/C2_W04_D02_driver_groups_STUDENT.csv
     content/W04/D2/internal/C2_W04_D02_facts_INTERNAL.yaml
 
 No randomness is used, so two runs write byte-identical files. pandas and PyYAML only.
@@ -87,12 +88,21 @@ facts = {
         "twelve_rows": f"data/{STEM}_twelve_rows_STUDENT.csv",
         "twelve_weeks": f"data/{STEM}_twelve_weeks_STUDENT.csv",
         "kalpa_dmart_anchor": f"data/{STEM}_kalpa_dmart_anchor_STUDENT.csv",
+        "driver_groups": f"data/{STEM}_driver_groups_STUDENT.csv",
     },
     "corrections": [
         "The per-driver-week read is per active driver-week, one driver with a row in driver_weeks "
-        "that week (6,360 before, 6,500 after), never per enrolled driver-week. It rose 0.8 percent "
-        "because bookings rose 3.0 percent while active driver-weeks rose 2.2 percent; hours do not "
-        "enter that ratio, so the case file's 'because hours rose' is replaced.",
+        "that week (6,360 before, 6,500 after), never per enrolled driver-week. It rose 0.8 percent: "
+        "bookings rose 3.0 percent while active driver-weeks rose 2.2 percent. The ratio's formula has "
+        "no hours in it, yet it splits into rupees per hour times hours per driver-week (Rs 313.5 x "
+        "18.55 before, Rs 260.4 x 22.51 after), so it rose because each driver-week carried about four "
+        "more online hours while each hour brought in 17 percent less. The 140 joiners pulled it down "
+        "(Rs 4,314 a driver-week); the drivers there before the launch rose 1.4 percent.",
+        "The validate step compares like with like: driver-hours per completed trip, 0.53 before the "
+        "launch, against the chain's 0.60, so the chain runs about an eighth high and the checked "
+        "answer is about 5,000 to 5,700. The draft compared per request with per trip.",
+        "A four-hour window does not shrink the busiest moment: the buffer rises to about 1.53 and the "
+        "answer stays about 5,700. The draft's 4,300 is now the weak answer in the scorecard.",
         "The fall in rupees per peak online hour is 16.9 percent (260.4 / 313.5 - 1), printed as "
         "17 percent; the draft's 17.1 was an arithmetic slip.",
         "Monday's data counts peak hours on all seven days, two three-hour windows a day, 42 hours a "
@@ -125,7 +135,13 @@ facts = {
 }
 
 
+def plain(v):
+    """A numpy number as the Python number YAML can write."""
+    return v.item() if hasattr(v, "item") else v
+
+
 def add(nid, value, shown, how, used_by, unit=""):
+    value = plain(value)
     facts["numbers"].append({"id": nid, "value": value, "shown": shown, "unit": unit,
                              "how": how, "used_by": used_by})
 
@@ -192,6 +208,9 @@ for mid, shown in [
     ("tph_core_zones_before", "1.90"), ("tph_core_zones_after", "1.79"),
     ("tph_crest_weeks_after", "1.60"),
     ("twelve_hours_change_pct", "up 23 percent"),
+    ("drivers_pre_launch", "1,060 drivers before the launch"),
+    ("acceptance_max_idle_week_after", "at most 46 percent"),
+    ("acceptance_min_other_week_after", "at least 78 percent"),
 ]:
     reuse(mid, shown)
 
@@ -204,6 +223,25 @@ check("top-up splits into Rs 1.159 crore and Rs 74.1 lakh",
       M["topup_low_acceptance_rs"] + M["topup_high_acceptance_rs"] == M["topup_after_rs"])
 check("Monday counts peak windows on seven days (2 x 3 x 7 = 42)",
       M["max_peak_hours_per_week"] == M["peak_windows_per_day"] * M["peak_window_hours"] * 7 == 42)
+
+check("the 1,060 drivers before the launch and the 140 joiners make Monday's 1,200",
+      M["drivers_pre_launch"] + M["drivers_new"] == M["drivers_total"] == 1200)
+check("Monday's low-acceptance weeks are the idle tail's weeks: every idle week after accepted at most "
+      "0.46, every other week at least 0.78", M["acceptance_max_idle_week_after"] < 0.5
+      <= M["acceptance_min_other_week_after"])
+add("idle_topup_per_hour_rs", round(M["topup_low_acceptance_rs"] / M["idle_hours_after"]),
+    "about Rs 276 an hour", "11,590,000 / 42,000: the idle tail's top-up over its peak online hours "
+    "after the launch", "half1 S4; notes")
+add("tph_after_exact", round(M["trips_after"] / M["hours_after"], 3), "1.578",
+    "230,900 / 146,300, the 1.58 before rounding", "half1 S17; notebook cells 7 and 8; notes")
+check("Rs 165 x 1.578 = Rs 260.4, so the second route lands on the first",
+      round(165 * round(M["trips_after"] / M["hours_after"], 3), 1) == 260.4)
+add("saving_low_lakh", round(M["topup_low_acceptance_rs"] / 2 / 1e5, 1), "Rs 58 lakh (57.95)",
+    "1.159 crore x 1/2 in lakh: 115.9 / 2", "half1 S4; written case brief")
+add("saving_high_lakh", round(M["topup_low_acceptance_rs"] * 0.8 / 1e5, 1), "Rs 92.7 lakh",
+    "1.159 crore x 4/5 in lakh: 115.9 x 0.8", "half1 S4; written case brief")
+add("topup_low_acceptance_lakh", round(M["topup_low_acceptance_rs"] / 1e5, 1), "115.9 lakh",
+    "Rs 1.159 crore in lakh (1 crore = 100 lakh)", "half1 S4; written case brief")
 
 # ------------------------------------------------------------------ the twelve rows (L1)
 twelve = dw[dw.driver_id.isin(TWELVE_IDS) & dw.week_start.isin(TWELVE_WEEKS)].copy()
@@ -287,6 +325,10 @@ add("full_bookings_change_pct", book_pct, "up 3.0 percent", "38,098,500 / 36,993
     "half1 S16; notebook cell 8; notes")
 add("full_driver_weeks_change_pct", rows_pct, "up 2.2 percent", "6,500 / 6,360 - 1",
     "half1 S16; notebook cell 8; notes")
+add("bookings_ratio", round(fa["bookings"] / fb["bookings"], 3), "1.030", "38,098,500 / 36,993,000",
+    "half1 S16")
+add("driver_weeks_ratio", round(fa["rows"] / fb["rows"], 3), "1.022", "6,500 / 6,360", "half1 S16")
+add("rs_per_dw_ratio", round(fa["per_dw"] / fb["per_dw"], 3), "1.008", "1.030 / 1.022", "half1 S16")
 add("rs_per_hour_per_ten", round(fa["per_hour"] / fb["per_hour"] * 10, 1), "about Rs 8.30 of every Rs 10",
     "260.4 / 313.5 x 10", "half2 transcript 1; extras transcript 1")
 joiner_rows = int(A[A.driver_id.isin(drivers[drivers.joined_month == "2026-09"].driver_id)].shape[0])
@@ -298,6 +340,48 @@ add("joiner_driver_weeks_after", joiner_rows, "140 active driver-weeks",
 hpw_b, hpw_a = fb["hours"] / fb["rows"], fa["hours"] / fa["rows"]
 add("hours_per_driver_week_before", round(hpw_b, 1), "18.6 hours", "118,000 / 6,360", "notebook depth line")
 add("hours_per_driver_week_after", round(hpw_a, 1), "22.5 hours", "146,300 / 6,500", "notebook depth line")
+check("rupees per driver-week = rupees per hour x hours per driver-week, both windows",
+      abs(fb["per_hour"] * hpw_b - fb["per_dw"]) < 1e-6 and abs(fa["per_hour"] * hpw_a - fa["per_dw"]) < 1e-6)
+add("hours_per_driver_week_change_pct", round((hpw_a / hpw_b - 1) * 100, 1), "up 21 percent",
+    "22.51 / 18.55 - 1", "half1 S16; notebook cell 8; notes; extras transcript 1")
+add("hours_per_driver_week_extra", round(hpw_a - hpw_b), "about four more hours",
+    "22.51 - 18.55", "half1 S16; notes; extras transcript 1")
+joiner_ids = set(drivers[drivers.joined_month == "2026-09"].driver_id)
+pre_a, join_a = three(A[~A.driver_id.isin(joiner_ids)]), three(A[A.driver_id.isin(joiner_ids)])
+check("the drivers who were there before the launch kept their 6,360 driver-weeks",
+      pre_a["rows"] == fb["rows"] == 6360)
+add("pre_launch_rs_per_dw_after", round(pre_a["per_dw"]), "Rs 5,895",
+    "the 1,060 pre-launch drivers' bookings after / their 6,360 driver-weeks", "half1 S16; notes; extras")
+add("pre_launch_rs_per_dw_change_pct", round((pre_a["per_dw"] / fb["per_dw"] - 1) * 100, 1), "up 1.4 percent",
+    "5,895.4 / 5,816.5 - 1", "half1 S16; notebook cell 8; notes; extras transcript 1")
+add("pre_launch_hours_per_dw_after", round(pre_a["hours"] / pre_a["rows"], 1), "22.6 hours",
+    "144,000 / 6,360", "notes; extras transcript 1")
+add("joiner_rs_per_dw", round(join_a["per_dw"]), "Rs 4,314",
+    "the 140 joiners' bookings after / their 140 driver-weeks", "half1 S16; notebook cell 8; notes; extras")
+add("joiner_hours_per_dw", round(join_a["hours"] / join_a["rows"], 1), "16.4 hours",
+    "2,300 / 140", "notes")
+check("the joiners pulled the read down: below the average, and the pre-launch drivers rose more",
+      join_a["per_dw"] < fa["per_dw"] < pre_a["per_dw"])
+groups = pd.DataFrame([
+    {"window": "before", "group": "drivers there before the launch", "driver_weeks": fb["rows"],
+     "peak_online_hours": fb["hours"], "peak_trips": fb["trips"], "peak_bookings_rs": fb["bookings"]},
+    {"window": "after", "group": "drivers there before the launch", "driver_weeks": pre_a["rows"],
+     "peak_online_hours": pre_a["hours"], "peak_trips": pre_a["trips"], "peak_bookings_rs": pre_a["bookings"]},
+    {"window": "after", "group": "the 140 joiners", "driver_weeks": join_a["rows"],
+     "peak_online_hours": join_a["hours"], "peak_trips": join_a["trips"], "peak_bookings_rs": join_a["bookings"]},
+])
+groups.to_csv(DATA / f"{STEM}_driver_groups_STUDENT.csv", index=False)
+check("the driver groups add up to the city's after window",
+      groups[groups.window == "after"][["driver_weeks", "peak_online_hours", "peak_trips", "peak_bookings_rs"]]
+      .sum().tolist() == [fa["rows"], fa["hours"], fa["trips"], fa["bookings"]])
+for nid, val, shown in [("pre_launch_hours_after", pre_a["hours"], "144,000 hours"),
+                        ("pre_launch_trips_after", pre_a["trips"], "227,240 trips"),
+                        ("pre_launch_bookings_after_rs", pre_a["bookings"], "Rs 37,494,600"),
+                        ("joiner_hours_after", join_a["hours"], "2,300 hours"),
+                        ("joiner_trips_after", join_a["trips"], "3,660 trips"),
+                        ("joiner_bookings_after_rs", join_a["bookings"], "Rs 603,900")]:
+    add(nid, val, shown, "Monday's driver_weeks split by joined_month, after the launch",
+        "data/C2_W04_D02_driver_groups_STUDENT.csv; notebook cell 8")
 check("second route: fare x trips per hour = rupees per hour, both windows",
       abs(165 * fb["trips"] / fb["hours"] - fb["per_hour"]) < 1e-9
       and abs(165 * fa["trips"] / fa["hours"] - fa["per_hour"]) < 1e-9)
@@ -335,6 +419,43 @@ add("idle_tph_after", round(M["idle_trips_after"] / M["idle_hours_after"], 1), "
     "33,440 / 42,000, the idle tail after the launch", "studio solution; notes")
 add("idle_tail_joiners", 0, "none of the 140", "joiners among the 180 idle-tail drivers",
     "half1 S20; role cards; exercises")
+
+# Where the idle money went and what riders got, for the defence and transcript 1
+zr = zw.groupby("zone").peak_requests.sum().sort_values()
+outer = set(zr.index[:M["zones_outer"]])
+A2 = A.assign(acc=A.peak_accepted / A.peak_offers)
+low = A2[A2.acc < 0.5]
+check("the low-acceptance driver-weeks carry Monday's Rs 1.159 crore", int(low.topup_rs.sum()) == M["topup_low_acceptance_rs"])
+add("idle_topup_outer_share", round(low[low.zone_mode.isin(outer)].topup_rs.sum() / low.topup_rs.sum(), 2),
+    "74 percent", "top-up to low-acceptance driver-weeks whose zone_mode is one of the three outer zones",
+    "half1 S4, S20; notes; extras transcript 1")
+add("low_acceptance_no_trip_share", round(low.peak_hours_no_trip.sum() / low.peak_online_hours.sum(), 2),
+    "72 percent", "hours with no trip over online hours, low-acceptance driver-weeks after the launch",
+    "extras transcript 1")
+zw_w = zw.assign(outer=zw.zone.isin(outer))
+add("outer_median_wait_before", round(zw_w[(zw_w.window == "before") & zw_w.outer].median_wait_min.median(), 1),
+    "6.6 minutes", "median of the outer zones' weekly median waits, before", "half1 S4; extras transcript 1")
+add("outer_median_wait_after", round(zw_w[(zw_w.window == "after") & zw_w.outer].median_wait_min.median(), 1),
+    "about 6.0 minutes", "the same, after", "half1 S4; extras transcript 1")
+wk = dw.groupby("week_start")[["peak_trips", "peak_online_hours"]].sum()
+last3 = ["2026-09-21", "2026-09-28", "2026-10-05"]
+add("tph_last_three_after", round(wk.loc[last3].peak_trips.sum() / wk.loc[last3].peak_online_hours.sum(), 2),
+    "1.56", "trips over hours in the weeks of 21 September to 5 October",
+    "half1 S20, S23; notes; extras transcript 1; studio solution")
+wr = zw.groupby("week_start").peak_requests.sum()
+add("requests_last_three_low", int(wr.loc[last3].min()), "41,161", "fewest weekly requests, last three weeks",
+    "half1 S23 notes; extras transcript 1")
+add("requests_last_three_high", int(wr.loc[last3].max()), "42,602", "most weekly requests, last three weeks",
+    "half1 S23 notes; extras transcript 1")
+before_weeks = sorted(w for w in wr.index if dt.date.fromisoformat(w) < LAUNCH)
+add("requests_before_week_low", int(wr.loc[before_weeks].min()), "41,155", "fewest weekly requests, before",
+    "half1 S23 notes; extras transcript 1")
+add("requests_before_week_high", int(wr.loc[before_weeks].max()), "42,719", "most weekly requests, before",
+    "half1 S23 notes; extras transcript 1")
+check("the last three weeks' requests sit inside the before window's weekly range",
+      wr.loc[before_weeks].min() <= wr.loc[last3].min() and wr.loc[last3].max() <= wr.loc[before_weeks].max())
+add("idle_tail_tph_before", round(M["idle_trips_before"] / M["idle_hours_before"], 2), "1.90",
+    "38,000 / 20,000: the idle tail before the launch", "half1 S20 notes; role cards; extras")
 
 # ------------------------------------------------------------------ the twelve weeks (makeover)
 weekly = dw.groupby("week_start").agg(
@@ -389,20 +510,38 @@ add("driver_hours_per_request_after", round(dh_req_a, 2), "0.57", "146,300 / 256
     "half2 S10; notebook cell 14; notes")
 check("driver-hours per request 0.47 before and 0.57 after",
       (round(dh_req_b, 2), round(dh_req_a, 2)) == (0.47, 0.57))
+dh_trip_b = M["hours_before"] / M["trips_before"]
+dh_trip_a = M["hours_after"] / M["trips_after"]
+add("driver_hours_per_trip_before", round(dh_trip_b, 2), "0.53", "118,000 / 224,200, per completed trip",
+    "half2 S41; notebook cell 13; notes; guesstimate note; extras transcript 2")
+add("driver_hours_per_trip_after", round(dh_trip_a, 2), "0.63", "146,300 / 230,900, per completed trip",
+    "half2 S41; notebook cell 13")
+add("served_share_before", round(M["trips_before"] / M["requests_before"], 2), "0.89",
+    "224,200 / 251,910", "half1 S4; extras transcript 1")
+add("served_share_after", round(M["trips_after"] / M["requests_after"], 2), "0.90",
+    "230,900 / 256,556", "half1 S4; extras transcript 1")
+extra_served = M["trips_after"] - M["requests_after"] * M["trips_before"] / M["requests_before"]
+add("extra_requests_served", round(extra_served, -2), "about 2,600 more requests served",
+    "230,900 - 256,556 x 0.890, against the before window's served share", "half1 S4; extras transcript 1")
+add("topup_per_extra_trip_rs", round(M["topup_after_rs"] / (M["trips_after"] - M["trips_before"])),
+    "at least Rs 2,836 for each extra trip", "19,000,000 / (230,900 - 224,200)", "half1 S4; extras transcript 1")
+check("about 2,600 more requests served, at Rs 2,836 of top-up for each extra trip",
+      round(extra_served, -2) == 2600 and round(19_000_000 / 6_700) == 2836)
 
 # ------------------------------------------------------------------ drivers at the evening peak
 assume("hyd_people", 1e7, 9e6, 1.1e7, "about 1 crore people",
        "a round number for the Hyderabad metro area, said aloud and to be checked", "half2 S8; notebook; note")
-assume("weekday_ride_share", 0.01, 0.005, 0.015, "1 percent",
-       "share of people who take one Uber trip on a weekday", "half2 S8; notebook; note")
+assume("weekday_ride_share", 0.01, 0.005, 0.015, "1 trip for every 100 people",
+       "weekday Uber trips per person, counted in trips, so a commuter who rides both ways counts twice",
+       "half2 S38; notebook; note")
 assume("evening_share", 0.25, 0.20, 0.30, "a quarter",
        "share of the day's trips that fall in the three evening peak hours", "half2 S8; notebook; note")
 assume("trips_per_busy_hour", 2.4, 2.0, 3.0, "2.4 trips",
        "a peak trip takes about 25 minutes from accepting to dropping, so a busy driver fits 2.4 an hour",
        "half2 S8; notebook; note")
 assume("idle_share", 0.30, 0.22, 0.38, "0.30",
-       "share of online drivers with no rider at a given moment; the range is the case's own share of "
-       "online hours with no completed trip, 0.22 before and 0.38 after", "half2 S8; notebook; note")
+       "share of online drivers with no rider at a given moment, a guess said aloud from a busy evening "
+       "to a slack one; the validate step checks it like for like", "half2 S38; notebook; note")
 assume("buffer", 1.15, 1.10, 1.25, "1.15",
        "the busiest half hour carries more than the window's average hour", "half2 S8; notebook; note")
 AS = {a["id"]: a for a in facts["assumptions"]}
@@ -430,7 +569,7 @@ check("the idle share moves it less than the ride share, more than the buffer",
       (swing["weekday_ride_share"][1] - swing["weekday_ride_share"][0])
       > (swing["idle_share"][1] - swing["idle_share"][0])
       > (swing["buffer"][1] - swing["buffer"][0]))
-add("requests_per_evening_hour", round(req_hour), "about 8,300 an hour",
+add("requests_per_evening_hour", round(req_hour), "about 8,330 an hour",
     "1 crore x 1 percent x a quarter / 3 hours", "half2 S8, S9; notebook cell 12; note; exercises")
 add("trips_per_online_hour_chain", round(base["trips_per_busy_hour"] * (1 - base["idle_share"]), 2),
     "1.68", "2.4 x (1 - 0.30)", "half2 S9, S10; notebook cell 12; note")
@@ -455,10 +594,17 @@ add("drivers_before_buffer", round(before_buffer, -1), "about 4,960 drivers", "8
     "half2 S39; note")
 add("four_hour_requests_per_hour", round(four_hour_req), "about 6,250 an hour",
     "25,000 / 4 hours, if a fourth hour adds no trips", "half2 S49; extras transcript 2; scorecards")
-add("four_hour_drivers", round(four_hour_drivers, -2), "about 4,300 drivers", "6,250 / 1.68 x 1.15",
-    "half2 S49; extras transcript 2; scorecards")
-check("a four-hour window: 6,250 requests an hour and about 4,300 drivers",
-      round(four_hour_req) == 6250 and round(four_hour_drivers, -2) == 4300)
+add("four_hour_drivers_wrong", round(four_hour_drivers, -2), "about 4,300 drivers",
+    "6,250 / 1.68 x 1.15: the weak answer, which lets a longer window shrink the busiest moment",
+    "scorecards (the weak answer)")
+peak_rate = req_hour * base["buffer"]
+add("four_hour_buffer", round(peak_rate / four_hour_req, 2), "about 1.53",
+    "8,333 x 1.15 / 6,250: the busiest half hour over a four-hour window's average hour",
+    "half2 S50 notes; extras transcript 2; scorecards")
+check("a four-hour window keeps the busiest half hour: buffer 1.53, about 5,700 drivers",
+      round(peak_rate / four_hour_req, 2) == 1.53
+      and round(four_hour_req / (base["trips_per_busy_hour"] * (1 - base["idle_share"]))
+                * peak_rate / four_hour_req, -2) == 5700)
 add("busy_share", round(1 - base["idle_share"], 2), "0.70 (70 percent)", "1 - the idle share of 0.30",
     "half2 S39; notebook; guided exercise; notes")
 add("buffer_pct", round((base["buffer"] - 1) * 100), "15 percent", "a buffer of 1.15", "extras transcript 2; notes")
@@ -466,11 +612,50 @@ add("distractor_divided_by_busy", round(base["trips_per_busy_hour"] / (1 - base[
     "2.4 / 0.70, the division done the wrong way", "guided exercise Q3 (distractor)")
 add("distractor_times_idle", round(base["trips_per_busy_hour"] * base["idle_share"], 2), "0.72",
     "2.4 x 0.30, the idle drivers' share", "guided exercise Q3 (distractor)")
+# The guided set's third item: the same two factors at Monday's after-launch idle share, 0.38
+hi_idle = M["no_trip_share_after"]
+add("tph_online_at_idle_038", round(base["trips_per_busy_hour"] * (1 - hi_idle), 2), "about 1.49",
+    "2.4 x (1 - 0.38)", "guided exercise Q3 (key)")
+add("distractor_times_idle_038", round(base["trips_per_busy_hour"] * hi_idle, 2), "0.91",
+    "2.4 x 0.38, the idle drivers' share", "guided exercise Q3 (distractor)")
+add("distractor_divided_by_busy_038", round(base["trips_per_busy_hour"] / (1 - hi_idle), 2), "3.87",
+    "2.4 / 0.62, the division done the wrong way", "guided exercise Q3 (distractor)")
+add("distractor_minus_idle_038", round(base["trips_per_busy_hour"] - hi_idle, 2), "2.02",
+    "2.4 - 0.38, a share subtracted from a rate", "guided exercise Q3 (distractor)")
+check("guided Q3: 2.4 x 0.62 = 1.49, and its three wrong ways are 0.91, 3.87 and 2.02",
+      (round(2.4 * 0.62, 2), round(2.4 * 0.38, 2), round(2.4 / 0.62, 2), round(2.4 - 0.38, 2))
+      == (1.49, 0.91, 3.87, 2.02))
 chain_dh = 1 / (base["trips_per_busy_hour"] * (1 - base["idle_share"]))
 add("driver_hours_per_request_chain", round(chain_dh, 2), "0.60",
     "1 / 1.68, before the buffer", "half2 S10; notebook cell 14; notes")
 add("chain_over_case_before", round(chain_dh / dh_req_b, 2), "about a quarter more",
     "0.595 / 0.468", "half2 S10; notebook cell 14")
+chain_trip = chain_dh / dh_trip_b
+add("chain_over_case_per_trip", round(chain_trip, 2), "about an eighth more (13 percent)",
+    "0.595 / 0.526: the chain's driver-hours per trip over the case's, before the launch",
+    "half2 S41; notebook cell 13; notes; guesstimate note; extras transcript 2")
+case_tph_b = M["trips_before"] / M["hours_before"]
+validated = req_hour / case_tph_b * base["buffer"]
+add("drivers_at_case_tph", round(validated, -2), "about 5,000 drivers",
+    "8,333 / 1.90 x 1.15: the chain re-run at the case's own trips per online hour before the launch",
+    "half2 S41, S46, S56; notebook cell 13; notes; sheet; guesstimate note; extras transcript 2")
+trip_min = 60 / base["trips_per_busy_hour"]
+add("idle_like_before", round(1 - case_tph_b * trip_min / 60, 2), "about 0.21",
+    "1 - 1.90 trips x 25 minutes / 60: idle at a moment, like for like, before the launch",
+    "half2 S41 notes; extras transcript 2; guesstimate note")
+add("idle_like_after", round(1 - M["trips_after"] / M["hours_after"] * trip_min / 60, 2), "about 0.34",
+    "1 - 1.578 trips x 25 minutes / 60, after the launch", "extras transcript 2; guesstimate note")
+two_per_100 = drivers_needed(base["hyd_people"], 2 * base["weekday_ride_share"], base["evening_share"],
+                             base["trips_per_busy_hour"], base["idle_share"], base["buffer"])
+add("drivers_at_two_per_100", round(two_per_100), "about 11,400 drivers",
+    "the chain with 2 weekday trips per 100 people: the answer doubles, since the chain is a product",
+    "notebook cells 11 and 12")
+add("extra_trips", M["trips_after"] - M["trips_before"], "6,700 extra trips", "230,900 - 224,200",
+    "half1 S29 notes; extras transcript 1")
+check("validate: the chain runs 13 percent high per trip, and the case's 1.90 trips an hour gives about 5,000",
+      round(chain_trip, 2) == 1.13 and round(validated, -2) == 5000)
+add("floor_cost_thousand_drivers_evening_rs", 1000 * M["peak_window_hours"] * 300, "up to Rs 9 lakh an evening",
+    "1,000 drivers x 3 hours x the Rs 300 floor, if they carry no trips", "extras transcript 2; scorecards")
 day_trips = base["hyd_people"] * base["weekday_ride_share"]
 wrong = day_trips / base["trips_per_busy_hour"]
 add("weekday_trips_city", round(day_trips), "1 lakh trips a day", "1 crore x 1 percent",
@@ -506,6 +691,11 @@ add("upi_estimate_per_day", int(upi_est), "70 crore a day (700 million)", "35 cr
     "half2 S12, S13; notebook cell 14; notes")
 add("upi_estimate_gap_pct", round((upi_est / 802_000_000 - 1) * 100, 1), "about 13 percent below",
     "700 million / 802 million - 1", "half2 S13; notebook cell 14; notes")
+add("upi_value_per_payment_rs", round(29.37e12 / 24.07e9), "about Rs 1,220 a payment",
+    "Rs 29.37 lakh crore / 24.07 billion: far above a tea, so the count holds large transfers between people",
+    "half2 S44; notes; guesstimate note; paired solution")
+add("upi_daily_times_31_billion", round(802e6 * 31 / 1e9, 2), "24.86 billion",
+    "802 million x 31, a month total built on the wrong number of days", "mid-session drill 2 Q1 (distractor)")
 add("upi_month_over_30", round(24_070_000_000 / 30 / 1e6), "802 million", "24.07 billion / 30 days",
     "half2 S13; Kahoot; exercises")
 add("upi_month_over_31", round(24_070_000_000 / 31 / 1e6), "776 million", "24.07 billion / 31 days",
@@ -581,6 +771,16 @@ public("upi_month_value_lakh_crore", 29.37, "Rs 29.37 lakh crore", "T3",
        "the same Outlook Money report: the September 2026 transactions were worth Rs 29.37 lakh crore",
        "mid-session drill 2 (distractor); its solution")
 
+public("ziegler_2022", 2022, "Ziegler and colleagues, 2022", "fresh check",
+       "Productivity Assessment of Neural Code Completion, arXiv 2205.06537, submitted 13 May 2022, a study "
+       "of GitHub Copilot's users: the rate at which shown suggestions are accepted, rather than the "
+       "persistence of completions in the code, drives developers' perception of productivity",
+       "half2 S51; extras AI variant; notes")
+public("metr_2025_slower_pct", 19, "19 percent longer", "fresh check",
+       "METR, 10 July 2025: 16 experienced open-source developers, 246 issues; with AI tools allowed they "
+       "took 19 percent longer, expected a 24 percent speed-up and afterwards believed 20 percent; the "
+       "page now says the results are out of date", "extras AI variant; scorecards")
+public("metr_2025_believed_pct", 20, "20 percent faster", "fresh check", "the same METR page", "extras AI variant")
 public("swiggy_instamart_ctr_before", 0.061, "6.1 percent", "case file, Wednesday ticket",
        "Wednesday's target, asserted by Wednesday's generator: strip click-through in the three "
        "weeks before 7 September 2026", "preread")
@@ -599,7 +799,7 @@ facts["toys"] += [
                 "cups_a_day": 2400},
      "used_by": "half2 S6; guided exercise; notes"},
     {"id": "toy_two_million_city", "label": "invented",
-     "values": {"people": 2_000_000, "wrong_households": 9_000_000, "people_per_household": 4,
+     "values": {"people": 2_000_000, "wrong_households": 8_000_000, "people_per_household": 4,
                 "right_households": 500_000},
      "used_by": "half2 S14; Kahoot"},
     {"id": "toy_kahoot_q6", "label": "invented",
@@ -608,6 +808,15 @@ facts["toys"] += [
     {"id": "toy_kahoot_q8", "label": "invented",
      "values": {"month_total_billion": 31, "days": 31, "per_day_billion": 1, "over_30_days_billion": 1.03},
      "used_by": "Kahoot Q8"},
+    {"id": "toy_auto_driver", "label": "invented",
+     "values": {"day_rs": 1800, "monday_rides": 20, "monday_hours": 9, "tuesday_rides": 18,
+                "tuesday_hours": 12, "monday_per_ride_rs": 90, "tuesday_per_ride_rs": 100,
+                "monday_per_hour_rs": 200, "tuesday_per_hour_rs": 150},
+     "used_by": "half1 S14, the everyday analogy for L2; notes"},
+    {"id": "toy_payments_month", "label": "invented",
+     "values": {"month_total_billion": 9, "days_in_month": 30, "per_day_million": 300,
+                "over_31_days_million": 290, "gap_pct": -3.2},
+     "used_by": "notebook cells 14 and 15, the per-day check on an invented network"},
     {"id": "toy_food_stall", "label": "invented",
      "values": {"sales_rs": 12000, "orders": 240, "staff_hours": 40, "staff_days": 5,
                 "per_order_rs": 50, "per_staff_hour_rs": 300, "per_staff_day_rs": 2400},
@@ -616,14 +825,22 @@ facts["toys"] += [
      "values": {"first_year_sales_crore": 150},
      "used_by": "Kalpa exercise Q2 and its solution"},
     {"id": "toy_ai_acceptance_rate", "label": "invented",
-     "values": {"acceptance_rate_pct": 32},
+     "values": {"acceptance_rate_pct": 32, "retained_share_of_accepted": 0.8, "retained_pct_of_shown": 26,
+                "retained_after_days": 7},
      "used_by": "half2 S21; extras AI variant; notes"},
 ]
 
+check("the auto driver's three reads: per day flat, per ride up, per hour down",
+      (1800 / 20, 1800 / 18, 1800 / 9, 1800 / 12) == (90, 100, 200, 150))
+
 # ------------------------------------------------------------------ twelve rows into the facts
 for _, r in twelve.iterrows():
-    facts["twelve_rows"].append({k: (int(v) if isinstance(v, (int,)) or str(v).isdigit() else v)
-                                 for k, v in r.items()})
+    rec = {k: (int(v) if isinstance(v, (int,)) or str(v).isdigit() else v) for k, v in r.items()}
+    rec["rs_per_hour"] = round(int(r["peak_bookings_rs"]) / int(r["peak_online_hours"]), 1)
+    facts["twelve_rows"].append(rec)
+check("E and F, the idle-tail pair, have the two lowest after-week rupees per hour on the twelve rows",
+      sorted(r["driver"] for r in facts["twelve_rows"] if r["window"] == "after"
+             and r["rs_per_hour"] < 100) == ["E", "F"])
 
 # ------------------------------------------------------------------ the room, for the studio
 facts["programme"] = {"cohort_students": 35, "threes": 11, "pairs": 1,
@@ -640,8 +857,8 @@ facts["cluttered_slides"] = {
         ("Peak online hours", "+24 percent", "hours_change_pct"),
         ("Completed peak trips", "+3 percent", "trips_change_pct"),
         ("Trips per peak online hour", "1.90 to 1.58", "tph_before, tph_after"),
-        ("Acceptance share", "0.86 to 0.73", "acceptance_before, acceptance_after"),
-        ("Online hours with no trip", "0.22 to 0.38", "no_trip_share_before, no_trip_share_after"),
+        ("Acceptance share", "86% to 73%", "acceptance_before, acceptance_after"),
+        ("Online hours with no trip", "22% to 38%", "no_trip_share_before, no_trip_share_after"),
         ("Median rider wait", "4.8 to 4.6 min", "median_wait_before, median_wait_after"),
         ("Top-up paid", "Rs 1.9 crore", "topup_after_rs"),
         ("New drivers since launch", "140", "drivers_new"),
@@ -658,16 +875,16 @@ facts["cluttered_slides"] = {
         ("Top-up, everyone else", "Rs 74 lakh", "topup_high_acceptance_rs"),
         ("Rider requests", "251,910 to 256,556", "requests_before, requests_after")),
     "C_driver_ops": ids(
-        ("Drivers", "1,200 (140 new)", "drivers_total, drivers_new"),
+        ("Drivers", "1,060 to 1,200 (140 new)", "drivers_pre_launch, drivers_total, drivers_new"),
         ("Active driver-weeks", "6,360 to 6,500", "driver_weeks_before, driver_weeks_after"),
         ("Offers shown to drivers", "269,773 to 347,583", "offers_before, offers_after"),
-        ("Acceptance share", "0.86 to 0.73", "acceptance_before, acceptance_after"),
-        ("Driver cancels after accepting", "0.04 to 0.09",
+        ("Acceptance share", "86% to 73%", "acceptance_before, acceptance_after"),
+        ("Driver cancels after accepting", "4% to 9%",
          "driver_cancel_share_before, driver_cancel_share_after"),
         ("Drivers in the idle tail", "180", "idle_tail_drivers"),
         ("Idle-tail online hours", "20,000 to 42,000", "idle_hours_before, idle_hours_after"),
         ("Idle-tail trips", "38,000 to 33,440", "idle_trips_before, idle_trips_after"),
-        ("Unfulfilled requests", "0.11 to 0.10", "unfulfilled_share_before, unfulfilled_share_after")),
+        ("Unfulfilled requests", "11% to 10%", "unfulfilled_share_before, unfulfilled_share_after")),
 }
 known = {n["id"] for n in facts["monday_ids_reused"]}
 for name, rows in facts["cluttered_slides"].items():
@@ -712,13 +929,15 @@ facts["kalpa"] = {
         "visits_per_month": {"value": 2, "low": 1, "high": 4},
         "spend_per_visit_rs": {"value": 1500, "low": 1000, "high": 2000},
         "first_year_sales_rs": 20000 * 2 * 12 * 1500,
-        "share_of_dmart_store": round(20000 * 2 * 12 * 1500 / (per_store_end * 1e7), 2),
+        "share_of_dmart_store": round(20000 * 2 * 12 * 1500 / (per_store_avg * 1e7), 2),
+        "check_against": "DMart's revenue per store on the average of the opening and closing counts, "
+                         "about Rs 146 crore, the count that was open across the year",
     },
 }
 ex = facts["kalpa"]["store_worked_example"]
 check("Kalpa worked store: 1,000 sign-ups, Rs 72 crore, about half a mature DMart store",
       ex["sign_ups_year_one"] == 50000 * 0.4 * 0.05 and ex["first_year_sales_rs"] == 720_000_000
-      and ex["share_of_dmart_store"] == 0.54)
+      and ex["share_of_dmart_store"] == 0.49)
 check("Kalpa v4 totals match the client-zero generator's constants",
       facts["kalpa"]["v4"]["q1_rs"] == 100_000_000 and facts["kalpa"]["v4"]["customers"] == 340)
 

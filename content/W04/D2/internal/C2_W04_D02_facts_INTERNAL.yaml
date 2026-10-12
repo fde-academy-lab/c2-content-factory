@@ -8,11 +8,20 @@ source_tables:
   twelve_rows: data/C2_W04_D02_twelve_rows_STUDENT.csv
   twelve_weeks: data/C2_W04_D02_twelve_weeks_STUDENT.csv
   kalpa_dmart_anchor: data/C2_W04_D02_kalpa_dmart_anchor_STUDENT.csv
+  driver_groups: data/C2_W04_D02_driver_groups_STUDENT.csv
 corrections:
-- The per-driver-week read is per active driver-week, one driver with a row in driver_weeks that week
-  (6,360 before, 6,500 after), never per enrolled driver-week. It rose 0.8 percent because bookings rose
-  3.0 percent while active driver-weeks rose 2.2 percent; hours do not enter that ratio, so the case file's
-  'because hours rose' is replaced.
+- 'The per-driver-week read is per active driver-week, one driver with a row in driver_weeks that week
+  (6,360 before, 6,500 after), never per enrolled driver-week. It rose 0.8 percent: bookings rose 3.0
+  percent while active driver-weeks rose 2.2 percent. The ratio''s formula has no hours in it, yet it
+  splits into rupees per hour times hours per driver-week (Rs 313.5 x 18.55 before, Rs 260.4 x 22.51 after),
+  so it rose because each driver-week carried about four more online hours while each hour brought in
+  17 percent less. The 140 joiners pulled it down (Rs 4,314 a driver-week); the drivers there before the
+  launch rose 1.4 percent.'
+- 'The validate step compares like with like: driver-hours per completed trip, 0.53 before the launch,
+  against the chain''s 0.60, so the chain runs about an eighth high and the checked answer is about 5,000
+  to 5,700. The draft compared per request with per trip.'
+- 'A four-hour window does not shrink the busiest moment: the buffer rises to about 1.53 and the answer
+  stays about 5,700. The draft''s 4,300 is now the weak answer in the scorecard.'
 - The fall in rupees per peak online hour is 16.9 percent (260.4 / 313.5 - 1), printed as 17 percent;
   the draft's 17.1 was an arithmetic slip.
 - Monday's data counts peak hours on all seven days, two three-hour windows a day, 42 hours a week at
@@ -26,6 +35,36 @@ corrections:
   should land on its anchor. The worked chain now uses round numbers a candidate would reach without the
   anchor and lands 13 percent below it.
 numbers:
+- id: idle_topup_per_hour_rs
+  value: 276
+  shown: about Rs 276 an hour
+  unit: ''
+  how: '11,590,000 / 42,000: the idle tail''s top-up over its peak online hours after the launch'
+  used_by: half1 S4; notes
+- id: tph_after_exact
+  value: 1.578
+  shown: '1.578'
+  unit: ''
+  how: 230,900 / 146,300, the 1.58 before rounding
+  used_by: half1 S17; notebook cells 7 and 8; notes
+- id: saving_low_lakh
+  value: 58.0
+  shown: Rs 58 lakh (57.95)
+  unit: ''
+  how: '1.159 crore x 1/2 in lakh: 115.9 / 2'
+  used_by: half1 S4; written case brief
+- id: saving_high_lakh
+  value: 92.7
+  shown: Rs 92.7 lakh
+  unit: ''
+  how: '1.159 crore x 4/5 in lakh: 115.9 x 0.8'
+  used_by: half1 S4; written case brief
+- id: topup_low_acceptance_lakh
+  value: 115.9
+  shown: 115.9 lakh
+  unit: ''
+  how: Rs 1.159 crore in lakh (1 crore = 100 lakh)
+  used_by: half1 S4; written case brief
 - id: twelve_hours_before
   value: 60
   shown: '60'
@@ -134,6 +173,24 @@ numbers:
   unit: ''
   how: 6,500 / 6,360 - 1
   used_by: half1 S16; notebook cell 8; notes
+- id: bookings_ratio
+  value: 1.03
+  shown: '1.030'
+  unit: ''
+  how: 38,098,500 / 36,993,000
+  used_by: half1 S16
+- id: driver_weeks_ratio
+  value: 1.022
+  shown: '1.022'
+  unit: ''
+  how: 6,500 / 6,360
+  used_by: half1 S16
+- id: rs_per_dw_ratio
+  value: 1.008
+  shown: '1.008'
+  unit: ''
+  how: 1.030 / 1.022
+  used_by: half1 S16
 - id: rs_per_hour_per_ten
   value: 8.3
   shown: about Rs 8.30 of every Rs 10
@@ -158,6 +215,84 @@ numbers:
   unit: ''
   how: 146,300 / 6,500
   used_by: notebook depth line
+- id: hours_per_driver_week_change_pct
+  value: 21.3
+  shown: up 21 percent
+  unit: ''
+  how: 22.51 / 18.55 - 1
+  used_by: half1 S16; notebook cell 8; notes; extras transcript 1
+- id: hours_per_driver_week_extra
+  value: 4
+  shown: about four more hours
+  unit: ''
+  how: 22.51 - 18.55
+  used_by: half1 S16; notes; extras transcript 1
+- id: pre_launch_rs_per_dw_after
+  value: 5895
+  shown: Rs 5,895
+  unit: ''
+  how: the 1,060 pre-launch drivers' bookings after / their 6,360 driver-weeks
+  used_by: half1 S16; notes; extras
+- id: pre_launch_rs_per_dw_change_pct
+  value: 1.4
+  shown: up 1.4 percent
+  unit: ''
+  how: 5,895.4 / 5,816.5 - 1
+  used_by: half1 S16; notebook cell 8; notes; extras transcript 1
+- id: pre_launch_hours_per_dw_after
+  value: 22.6
+  shown: 22.6 hours
+  unit: ''
+  how: 144,000 / 6,360
+  used_by: notes; extras transcript 1
+- id: joiner_rs_per_dw
+  value: 4314
+  shown: Rs 4,314
+  unit: ''
+  how: the 140 joiners' bookings after / their 140 driver-weeks
+  used_by: half1 S16; notebook cell 8; notes; extras
+- id: joiner_hours_per_dw
+  value: 16.4
+  shown: 16.4 hours
+  unit: ''
+  how: 2,300 / 140
+  used_by: notes
+- id: pre_launch_hours_after
+  value: 144000
+  shown: 144,000 hours
+  unit: ''
+  how: Monday's driver_weeks split by joined_month, after the launch
+  used_by: data/C2_W04_D02_driver_groups_STUDENT.csv; notebook cell 8
+- id: pre_launch_trips_after
+  value: 227240
+  shown: 227,240 trips
+  unit: ''
+  how: Monday's driver_weeks split by joined_month, after the launch
+  used_by: data/C2_W04_D02_driver_groups_STUDENT.csv; notebook cell 8
+- id: pre_launch_bookings_after_rs
+  value: 37494600
+  shown: Rs 37,494,600
+  unit: ''
+  how: Monday's driver_weeks split by joined_month, after the launch
+  used_by: data/C2_W04_D02_driver_groups_STUDENT.csv; notebook cell 8
+- id: joiner_hours_after
+  value: 2300
+  shown: 2,300 hours
+  unit: ''
+  how: Monday's driver_weeks split by joined_month, after the launch
+  used_by: data/C2_W04_D02_driver_groups_STUDENT.csv; notebook cell 8
+- id: joiner_trips_after
+  value: 3660
+  shown: 3,660 trips
+  unit: ''
+  how: Monday's driver_weeks split by joined_month, after the launch
+  used_by: data/C2_W04_D02_driver_groups_STUDENT.csv; notebook cell 8
+- id: joiner_bookings_after_rs
+  value: 603900
+  shown: Rs 603,900
+  unit: ''
+  how: Monday's driver_weeks split by joined_month, after the launch
+  used_by: data/C2_W04_D02_driver_groups_STUDENT.csv; notebook cell 8
 - id: others_trips_change_pct
   value: 4.1
   shown: up 4 percent
@@ -176,6 +311,66 @@ numbers:
   unit: ''
   how: joiners among the 180 idle-tail drivers
   used_by: half1 S20; role cards; exercises
+- id: idle_topup_outer_share
+  value: 0.74
+  shown: 74 percent
+  unit: ''
+  how: top-up to low-acceptance driver-weeks whose zone_mode is one of the three outer zones
+  used_by: half1 S4, S20; notes; extras transcript 1
+- id: low_acceptance_no_trip_share
+  value: 0.72
+  shown: 72 percent
+  unit: ''
+  how: hours with no trip over online hours, low-acceptance driver-weeks after the launch
+  used_by: extras transcript 1
+- id: outer_median_wait_before
+  value: 6.6
+  shown: 6.6 minutes
+  unit: ''
+  how: median of the outer zones' weekly median waits, before
+  used_by: half1 S4; extras transcript 1
+- id: outer_median_wait_after
+  value: 6.0
+  shown: about 6.0 minutes
+  unit: ''
+  how: the same, after
+  used_by: half1 S4; extras transcript 1
+- id: tph_last_three_after
+  value: 1.56
+  shown: '1.56'
+  unit: ''
+  how: trips over hours in the weeks of 21 September to 5 October
+  used_by: half1 S20, S23; notes; extras transcript 1; studio solution
+- id: requests_last_three_low
+  value: 41161
+  shown: 41,161
+  unit: ''
+  how: fewest weekly requests, last three weeks
+  used_by: half1 S23 notes; extras transcript 1
+- id: requests_last_three_high
+  value: 42602
+  shown: 42,602
+  unit: ''
+  how: most weekly requests, last three weeks
+  used_by: half1 S23 notes; extras transcript 1
+- id: requests_before_week_low
+  value: 41155
+  shown: 41,155
+  unit: ''
+  how: fewest weekly requests, before
+  used_by: half1 S23 notes; extras transcript 1
+- id: requests_before_week_high
+  value: 42719
+  shown: 42,719
+  unit: ''
+  how: most weekly requests, before
+  used_by: half1 S23 notes; extras transcript 1
+- id: idle_tail_tph_before
+  value: 1.9
+  shown: '1.90'
+  unit: ''
+  how: '38,000 / 20,000: the idle tail before the launch'
+  used_by: half1 S20 notes; role cards; extras
 - id: weekly_rs_per_hour_after_max
   value: 271.03
   shown: Rs 271
@@ -230,9 +425,45 @@ numbers:
   unit: ''
   how: 146,300 / 256,556
   used_by: half2 S10; notebook cell 14; notes
+- id: driver_hours_per_trip_before
+  value: 0.53
+  shown: '0.53'
+  unit: ''
+  how: 118,000 / 224,200, per completed trip
+  used_by: half2 S41; notebook cell 13; notes; guesstimate note; extras transcript 2
+- id: driver_hours_per_trip_after
+  value: 0.63
+  shown: '0.63'
+  unit: ''
+  how: 146,300 / 230,900, per completed trip
+  used_by: half2 S41; notebook cell 13
+- id: served_share_before
+  value: 0.89
+  shown: '0.89'
+  unit: ''
+  how: 224,200 / 251,910
+  used_by: half1 S4; extras transcript 1
+- id: served_share_after
+  value: 0.9
+  shown: '0.90'
+  unit: ''
+  how: 230,900 / 256,556
+  used_by: half1 S4; extras transcript 1
+- id: extra_requests_served
+  value: 2600.0
+  shown: about 2,600 more requests served
+  unit: ''
+  how: 230,900 - 256,556 x 0.890, against the before window's served share
+  used_by: half1 S4; extras transcript 1
+- id: topup_per_extra_trip_rs
+  value: 2836
+  shown: at least Rs 2,836 for each extra trip
+  unit: ''
+  how: 19,000,000 / (230,900 - 224,200)
+  used_by: half1 S4; extras transcript 1
 - id: requests_per_evening_hour
   value: 8333
-  shown: about 8,300 an hour
+  shown: about 8,330 an hour
   unit: ''
   how: 1 crore x 1 percent x a quarter / 3 hours
   used_by: half2 S8, S9; notebook cell 12; note; exercises
@@ -350,12 +581,18 @@ numbers:
   unit: ''
   how: 25,000 / 4 hours, if a fourth hour adds no trips
   used_by: half2 S49; extras transcript 2; scorecards
-- id: four_hour_drivers
+- id: four_hour_drivers_wrong
   value: 4300.0
   shown: about 4,300 drivers
   unit: ''
-  how: 6,250 / 1.68 x 1.15
-  used_by: half2 S49; extras transcript 2; scorecards
+  how: '6,250 / 1.68 x 1.15: the weak answer, which lets a longer window shrink the busiest moment'
+  used_by: scorecards (the weak answer)
+- id: four_hour_buffer
+  value: 1.53
+  shown: about 1.53
+  unit: ''
+  how: '8,333 x 1.15 / 6,250: the busiest half hour over a four-hour window''s average hour'
+  used_by: half2 S50 notes; extras transcript 2; scorecards
 - id: busy_share
   value: 0.7
   shown: 0.70 (70 percent)
@@ -380,6 +617,30 @@ numbers:
   unit: ''
   how: 2.4 x 0.30, the idle drivers' share
   used_by: guided exercise Q3 (distractor)
+- id: tph_online_at_idle_038
+  value: 1.49
+  shown: about 1.49
+  unit: ''
+  how: 2.4 x (1 - 0.38)
+  used_by: guided exercise Q3 (key)
+- id: distractor_times_idle_038
+  value: 0.91
+  shown: '0.91'
+  unit: ''
+  how: 2.4 x 0.38, the idle drivers' share
+  used_by: guided exercise Q3 (distractor)
+- id: distractor_divided_by_busy_038
+  value: 3.87
+  shown: '3.87'
+  unit: ''
+  how: 2.4 / 0.62, the division done the wrong way
+  used_by: guided exercise Q3 (distractor)
+- id: distractor_minus_idle_038
+  value: 2.02
+  shown: '2.02'
+  unit: ''
+  how: 2.4 - 0.38, a share subtracted from a rate
+  used_by: guided exercise Q3 (distractor)
 - id: driver_hours_per_request_chain
   value: 0.6
   shown: '0.60'
@@ -392,6 +653,48 @@ numbers:
   unit: ''
   how: 0.595 / 0.468
   used_by: half2 S10; notebook cell 14
+- id: chain_over_case_per_trip
+  value: 1.13
+  shown: about an eighth more (13 percent)
+  unit: ''
+  how: '0.595 / 0.526: the chain''s driver-hours per trip over the case''s, before the launch'
+  used_by: half2 S41; notebook cell 13; notes; guesstimate note; extras transcript 2
+- id: drivers_at_case_tph
+  value: 5000.0
+  shown: about 5,000 drivers
+  unit: ''
+  how: '8,333 / 1.90 x 1.15: the chain re-run at the case''s own trips per online hour before the launch'
+  used_by: half2 S41, S46, S56; notebook cell 13; notes; sheet; guesstimate note; extras transcript 2
+- id: idle_like_before
+  value: 0.21
+  shown: about 0.21
+  unit: ''
+  how: '1 - 1.90 trips x 25 minutes / 60: idle at a moment, like for like, before the launch'
+  used_by: half2 S41 notes; extras transcript 2; guesstimate note
+- id: idle_like_after
+  value: 0.34
+  shown: about 0.34
+  unit: ''
+  how: 1 - 1.578 trips x 25 minutes / 60, after the launch
+  used_by: extras transcript 2; guesstimate note
+- id: drivers_at_two_per_100
+  value: 11409
+  shown: about 11,400 drivers
+  unit: ''
+  how: 'the chain with 2 weekday trips per 100 people: the answer doubles, since the chain is a product'
+  used_by: notebook cells 11 and 12
+- id: extra_trips
+  value: 6700
+  shown: 6,700 extra trips
+  unit: ''
+  how: 230,900 - 224,200
+  used_by: half1 S29 notes; extras transcript 1
+- id: floor_cost_thousand_drivers_evening_rs
+  value: 900000
+  shown: up to Rs 9 lakh an evening
+  unit: ''
+  how: 1,000 drivers x 3 hours x the Rs 300 floor, if they carry no trips
+  used_by: extras transcript 2; scorecards
 - id: weekday_trips_city
   value: 100000
   shown: 1 lakh trips a day
@@ -429,6 +732,19 @@ numbers:
   unit: ''
   how: 700 million / 802 million - 1
   used_by: half2 S13; notebook cell 14; notes
+- id: upi_value_per_payment_rs
+  value: 1220
+  shown: about Rs 1,220 a payment
+  unit: ''
+  how: 'Rs 29.37 lakh crore / 24.07 billion: far above a tea, so the count holds large transfers between
+    people'
+  used_by: half2 S44; notes; guesstimate note; paired solution
+- id: upi_daily_times_31_billion
+  value: 24.86
+  shown: 24.86 billion
+  unit: ''
+  how: 802 million x 31, a month total built on the wrong number of days
+  used_by: mid-session drill 2 Q1 (distractor)
 - id: upi_month_over_30
   value: 802
   shown: 802 million
@@ -798,6 +1114,18 @@ monday_ids_reused:
   value: 23
   shown: up 23 percent
   source: D1 facts file
+- id: drivers_pre_launch
+  value: 1060
+  shown: 1,060 drivers before the launch
+  source: D1 facts file
+- id: acceptance_max_idle_week_after
+  value: 0.46
+  shown: at most 46 percent
+  source: D1 facts file
+- id: acceptance_min_other_week_after
+  value: 0.78
+  shown: at least 78 percent
+  source: D1 facts file
 - id: drivers_others
   value: 880
   shown: 880 drivers
@@ -935,6 +1263,31 @@ public_facts:
   source: 'the same Outlook Money report: the September 2026 transactions were worth Rs 29.37 lakh crore'
   checked: 12 October 2026
   used_by: mid-session drill 2 (distractor); its solution
+- id: ziegler_2022
+  value: 2022
+  shown: Ziegler and colleagues, 2022
+  r2: fresh check
+  source: 'Productivity Assessment of Neural Code Completion, arXiv 2205.06537, submitted 13 May 2022,
+    a study of GitHub Copilot''s users: the rate at which shown suggestions are accepted, rather than
+    the persistence of completions in the code, drives developers'' perception of productivity'
+  checked: 12 October 2026
+  used_by: half2 S51; extras AI variant; notes
+- id: metr_2025_slower_pct
+  value: 19
+  shown: 19 percent longer
+  r2: fresh check
+  source: 'METR, 10 July 2025: 16 experienced open-source developers, 246 issues; with AI tools allowed
+    they took 19 percent longer, expected a 24 percent speed-up and afterwards believed 20 percent; the
+    page now says the results are out of date'
+  checked: 12 October 2026
+  used_by: extras AI variant; scorecards
+- id: metr_2025_believed_pct
+  value: 20
+  shown: 20 percent faster
+  r2: fresh check
+  source: the same METR page
+  checked: 12 October 2026
+  used_by: extras AI variant
 - id: swiggy_instamart_ctr_before
   value: 0.061
   shown: 6.1 percent
@@ -963,9 +1316,9 @@ assumptions:
   value: 0.01
   low: 0.005
   high: 0.015
-  shown: 1 percent
-  why: share of people who take one Uber trip on a weekday
-  used_by: half2 S8; notebook; note
+  shown: 1 trip for every 100 people
+  why: weekday Uber trips per person, counted in trips, so a commuter who rides both ways counts twice
+  used_by: half2 S38; notebook; note
   label: assumption, said aloud, with its range
 - id: evening_share
   value: 0.25
@@ -988,9 +1341,9 @@ assumptions:
   low: 0.22
   high: 0.38
   shown: '0.30'
-  why: share of online drivers with no rider at a given moment; the range is the case's own share of online
-    hours with no completed trip, 0.22 before and 0.38 after
-  used_by: half2 S8; notebook; note
+  why: share of online drivers with no rider at a given moment, a guess said aloud from a busy evening
+    to a slack one; the validate step checks it like for like
+  used_by: half2 S38; notebook; note
   label: assumption, said aloud, with its range
 - id: buffer
   value: 1.15
@@ -1046,7 +1399,7 @@ toys:
   label: invented
   values:
     people: 2000000
-    wrong_households: 9000000
+    wrong_households: 8000000
     people_per_household: 4
     right_households: 500000
   used_by: half2 S14; Kahoot
@@ -1065,6 +1418,28 @@ toys:
     per_day_billion: 1
     over_30_days_billion: 1.03
   used_by: Kahoot Q8
+- id: toy_auto_driver
+  label: invented
+  values:
+    day_rs: 1800
+    monday_rides: 20
+    monday_hours: 9
+    tuesday_rides: 18
+    tuesday_hours: 12
+    monday_per_ride_rs: 90
+    tuesday_per_ride_rs: 100
+    monday_per_hour_rs: 200
+    tuesday_per_hour_rs: 150
+  used_by: half1 S14, the everyday analogy for L2; notes
+- id: toy_payments_month
+  label: invented
+  values:
+    month_total_billion: 9
+    days_in_month: 30
+    per_day_million: 300
+    over_31_days_million: 290
+    gap_pct: -3.2
+  used_by: notebook cells 14 and 15, the per-day check on an invented network
 - id: toy_food_stall
   label: invented
   values:
@@ -1085,6 +1460,9 @@ toys:
   label: invented
   values:
     acceptance_rate_pct: 32
+    retained_share_of_accepted: 0.8
+    retained_pct_of_shown: 26
+    retained_after_days: 7
   used_by: half2 S21; extras AI variant; notes
 twelve_rows:
 - driver: A
@@ -1100,6 +1478,7 @@ twelve_rows:
   peak_hours_no_trip: 1
   peak_bookings_rs: 3465
   topup_rs: 0
+  rs_per_hour: 346.5
 - driver: A
   driver_id: d_0001
   zone: Jubilee Hills
@@ -1113,6 +1492,7 @@ twelve_rows:
   peak_hours_no_trip: 1
   peak_bookings_rs: 3630
   topup_rs: 0
+  rs_per_hour: 330.0
 - driver: B
   driver_id: d_0002
   zone: Banjara Hills
@@ -1126,6 +1506,7 @@ twelve_rows:
   peak_hours_no_trip: 1
   peak_bookings_rs: 2805
   topup_rs: 0
+  rs_per_hour: 311.7
 - driver: B
   driver_id: d_0002
   zone: Banjara Hills
@@ -1139,6 +1520,7 @@ twelve_rows:
   peak_hours_no_trip: 1
   peak_bookings_rs: 2970
   topup_rs: 0
+  rs_per_hour: 297.0
 - driver: C
   driver_id: d_0003
   zone: Gachibowli
@@ -1152,6 +1534,7 @@ twelve_rows:
   peak_hours_no_trip: 2
   peak_bookings_rs: 3630
   topup_rs: 0
+  rs_per_hour: 330.0
 - driver: C
   driver_id: d_0003
   zone: Gachibowli
@@ -1165,6 +1548,7 @@ twelve_rows:
   peak_hours_no_trip: 2
   peak_bookings_rs: 3795
   topup_rs: 0
+  rs_per_hour: 316.2
 - driver: D
   driver_id: d_0004
   zone: Madhapur
@@ -1178,6 +1562,7 @@ twelve_rows:
   peak_hours_no_trip: 1
   peak_bookings_rs: 3135
   topup_rs: 0
+  rs_per_hour: 313.5
 - driver: D
   driver_id: d_0004
   zone: Madhapur
@@ -1191,6 +1576,7 @@ twelve_rows:
   peak_hours_no_trip: 2
   peak_bookings_rs: 3300
   topup_rs: 0
+  rs_per_hour: 300.0
 - driver: E
   driver_id: d_0881
   zone: Shamshabad
@@ -1204,6 +1590,7 @@ twelve_rows:
   peak_hours_no_trip: 1
   peak_bookings_rs: 2970
   topup_rs: 0
+  rs_per_hour: 297.0
 - driver: E
   driver_id: d_0881
   zone: Shamshabad
@@ -1217,6 +1604,7 @@ twelve_rows:
   peak_hours_no_trip: 14
   peak_bookings_rs: 495
   topup_rs: 4400
+  rs_per_hour: 30.9
 - driver: F
   driver_id: d_0882
   zone: Rajendranagar
@@ -1230,6 +1618,7 @@ twelve_rows:
   peak_hours_no_trip: 2
   peak_bookings_rs: 2805
   topup_rs: 0
+  rs_per_hour: 280.5
 - driver: F
   driver_id: d_0882
   zone: Rajendranagar
@@ -1243,6 +1632,7 @@ twelve_rows:
   peak_hours_no_trip: 13
   peak_bookings_rs: 330
   topup_rs: 3850
+  rs_per_hour: 23.6
 weekly_series:
 - week_start: '2026-07-20'
   window: before
@@ -1376,10 +1766,10 @@ cluttered_slides:
     shows: 1.90 to 1.58
     facts_ids: tph_before, tph_after
   - label: Acceptance share
-    shows: 0.86 to 0.73
+    shows: 86% to 73%
     facts_ids: acceptance_before, acceptance_after
   - label: Online hours with no trip
-    shows: 0.22 to 0.38
+    shows: 22% to 38%
     facts_ids: no_trip_share_before, no_trip_share_after
   - label: Median rider wait
     shows: 4.8 to 4.6 min
@@ -1423,8 +1813,8 @@ cluttered_slides:
     facts_ids: requests_before, requests_after
   C_driver_ops:
   - label: Drivers
-    shows: 1,200 (140 new)
-    facts_ids: drivers_total, drivers_new
+    shows: 1,060 to 1,200 (140 new)
+    facts_ids: drivers_pre_launch, drivers_total, drivers_new
   - label: Active driver-weeks
     shows: 6,360 to 6,500
     facts_ids: driver_weeks_before, driver_weeks_after
@@ -1432,10 +1822,10 @@ cluttered_slides:
     shows: 269,773 to 347,583
     facts_ids: offers_before, offers_after
   - label: Acceptance share
-    shows: 0.86 to 0.73
+    shows: 86% to 73%
     facts_ids: acceptance_before, acceptance_after
   - label: Driver cancels after accepting
-    shows: 0.04 to 0.09
+    shows: 4% to 9%
     facts_ids: driver_cancel_share_before, driver_cancel_share_after
   - label: Drivers in the idle tail
     shows: '180'
@@ -1447,7 +1837,7 @@ cluttered_slides:
     shows: 38,000 to 33,440
     facts_ids: idle_trips_before, idle_trips_after
   - label: Unfulfilled requests
-    shows: 0.11 to 0.10
+    shows: 11% to 10%
     facts_ids: unfulfilled_share_before, unfulfilled_share_after
 kalpa:
   no_plant_today: true
@@ -1499,7 +1889,9 @@ kalpa:
       low: 1000
       high: 2000
     first_year_sales_rs: 720000000
-    share_of_dmart_store: 0.54
+    share_of_dmart_store: 0.49
+    check_against: DMart's revenue per store on the average of the opening and closing counts, about Rs
+      146 crore, the count that was open across the year
 shared_constants:
   fare_rs: 165
   launch_date: '2026-08-31'

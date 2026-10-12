@@ -77,6 +77,10 @@ reader can act on. A hostel notice reading "Breakfast survey results" is walked 
 "Rotis replace rice at Monday breakfast, so the kitchen moves two staff to the roti line" gets two
 staff moved (invented, and Minto's answer-first rule in miniature).
 
+The denominator is a choice, and an auto driver shows why (invented): Rs 1,800 on Monday from 20
+rides in 9 hours and Rs 1,800 on Tuesday from 18 rides in 12 hours is flat per day, up per ride (Rs 90
+to Rs 100) and down per hour (Rs 200 to Rs 150).
+
 The thread: gross bookings, what riders paid for peak trips. On Monday's twelve rows (six drivers, two
 weeks) they fell from Rs 313.5 to Rs 196.2 per peak online hour, down 37 percent; from Rs 3,135 to
 Rs 2,420 per driver-week, down 23 percent; and held at Rs 165 per trip. On all driver-weeks they fell

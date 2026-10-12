@@ -85,42 +85,47 @@ def week_chart(ax):
     after = MON["rs_per_hour_after"]["value"]
     ax.hlines(before, -0.3, 5.3, color=MUTED, ls=":", lw=1.6)
     ax.hlines(after, 5.7, 11.3, color=MUTED, ls=":", lw=1.6)
-    ax.text(2.5, before + 6, f"before: Rs {before:.0f}", ha="center", fontsize=12, color=INK)
-    ax.text(8.5, after - 15, f"after: Rs {after:.0f}", ha="center", fontsize=12, color=INK)
+    ax.text(2.5, before + 6, f"before: Rs {before:.0f}", ha="center", fontsize=13, color=INK)
+    ax.text(8.5, after - 15, f"after: Rs {after:.0f}", ha="center", fontsize=13, color=INK)
     ax.axvline(5.5, color=ROSE, lw=1.4, ls="--")
-    ax.text(5.65, 336, "launch,\n31 Aug", fontsize=12, color=ROSE, va="top")
+    ax.text(5.65, 336, "launch: the week\nof 31 Aug is after", fontsize=13, color=ROSE, va="top")
     ax.set_ylim(220, 340)
     ax.set_xticks(list(xs)[::3], LABELS[::3])
-    ax.tick_params(labelsize=12)
-    ax.set_ylabel("Rs per online hour", fontsize=12)
+    ax.set_yticks([240, 280, 320])
+    ax.tick_params(labelsize=13)
+    ax.set_ylabel("Rs per online hour", fontsize=13)
 
 
 def cleared_slide():
-    """Slide A rebuilt: the four parts, numbered where they sit on the page.
+    """Slide A rebuilt: the four parts, numbered where they sit on the page, and the drawer.
 
-    Drawn at 8.4 inches with no label under 12 points, so a slide that places it about 6.3 inches
-    wide still prints every label at 9 points or more.
+    Drawn wide and short (10 by 4.8 inches) with no label under 12 points, so the slide that places
+    it about 7.5 inches wide prints every label at 9 points or more, and the sheet's anchor band,
+    which is short and wide, prints it larger than a tall drawing would get.
     """
-    fig = plt.figure(figsize=(8.4, 4.7))
-    top = fig.add_axes([0, 0, 1, 1]); top.set_xlim(0, 10); top.set_ylim(0, 5.6); top.axis("off")
-    top.text(0.15, 5.15, "1  The scheme is paying for online hours that carry no trips",
-             fontsize=15, weight="bold", color=INK)
-    top.text(0.5, 4.72, "pay per completed peak trip, with an acceptance floor", fontsize=12,
-             color=MUTED, style="italic")
-    chart = fig.add_axes([0.1, 0.1, 0.5, 0.6])
+    fig = plt.figure(figsize=(9.2, 4.6))
+    top = fig.add_axes([0, 0, 1, 1]); top.set_xlim(0, 10); top.set_ylim(0, 4.8); top.axis("off")
+    top.text(0.12, 4.42, "1  The scheme is paying for online hours that carry no trips",
+             fontsize=17, weight="bold", color=INK)
+    chart = fig.add_axes([0.075, 0.25, 0.47, 0.54])
     week_chart(chart)
-    chart.set_title("2  Gross bookings per peak online hour", fontsize=12, loc="left", color=INK,
+    chart.set_title("2  Gross bookings per peak online hour", fontsize=13, loc="left", color=INK,
                     weight="bold")
-    box(top, 6.3, 2.6, 3.6, 2.0, AMBER, AMBER_TINT)
-    top.text(6.45, 4.3, "3  Caveat", fontsize=12, weight="bold", color=AMBER)
-    top.text(6.45, 4.02, "The monsoon ended inside\nthe window and last year's\nweeks are not in the data,\n"
-             "so part of the fall may\nbe the season.", fontsize=12, color=INK, va="top")
-    box(top, 6.3, 0.2, 3.6, 2.25, GREEN, "white")
+    share = MON["topup_low_acceptance_share"]["value"]
+    top.text(0.12, 0.42, f"2  and {share:.0%} of the Rs 1.9 crore top-up paid driver-weeks\n"
+             "    that accepted fewer than half their offers", fontsize=13, color=INK, va="center")
+    box(top, 5.95, 2.55, 3.95, 1.55, AMBER, AMBER_TINT)
+    top.text(6.1, 3.85, "3  Caveat", fontsize=13, weight="bold", color=AMBER)
+    top.text(6.1, 3.58, "The monsoon ended inside the\nsix weeks, and last year's weeks\n"
+             "are missing, so part of the fall\nmay be the season.", fontsize=13, color=INK, va="top")
+    box(top, 5.95, 0.62, 3.95, 1.78, GREEN, "white")
     lo, hi = MON["saving_low_rs"]["shown"], MON["saving_high_rs"]["shown"]
-    top.text(6.45, 2.15, "4  Action, city head signs", fontsize=12, weight="bold", color=GREEN)
-    top.text(6.45, 1.87, f"Pay per completed peak trip\nwith an acceptance floor:\n{lo} to {hi} back\n"
-             "over six weeks if a fifth\nto a half of idle drivers\nstart accepting.", fontsize=12,
-             color=INK, va="top")
+    top.text(6.1, 2.17, "4  Action, the city head signs", fontsize=13, weight="bold", color=GREEN)
+    top.text(6.1, 1.9, f"Pay per completed peak trip with\nan acceptance floor, tested first\n"
+             f"on half the drivers at random:\n{lo} to {hi} saved\nover six weeks.",
+             fontsize=13, color=INK, va="top")
+    top.text(5.95, 0.28, "Appendix: one page per question a role will ask", fontsize=13,
+             color=MUTED, style="italic", va="center")
     return fig
 
 
@@ -170,30 +175,32 @@ def three_reads():
     reads = [("per online hour", "rs_per_hour", MON["rs_per_hour_before"]["value"], VIOLET),
              ("per active driver-week", "rs_per_driver_week", MON["rs_per_driver_week_before"]["value"], AMBER),
              ("per trip", "rs_per_trip", MON["fare_avg_rs"]["value"], GREEN)]
-    fig, ax = plt.subplots(figsize=(10, 5.2))
+    fig, ax = plt.subplots(figsize=(9, 4.8))
     xs = range(len(WEEKS))
     for label, key, base, colour in reads:
         ys = [100 * w[key] / base for w in WEEKS]
         ax.plot(xs, ys, color=colour, lw=2.8, marker="o", ms=5)
-        ax.text(11.3, ys[-1], label, color=colour, fontsize=13, va="center")
+        ax.text(11.3, ys[-1], label, color=colour, fontsize=15, va="center")
     ax.axhline(100, color=MUTED, lw=1, ls=":")
     ax.axvline(5.5, color=ROSE, lw=1.4, ls="--")
-    ax.text(5.6, 107.5, "launch", color=ROSE, fontsize=12)
-    ax.set_xlim(-0.4, 14.6), ax.set_ylim(78, 109)
+    ax.text(5.6, 107.5, "launch: the week of 31 Aug is after", color=ROSE, fontsize=15)
+    ax.set_xlim(-0.4, 15.6), ax.set_ylim(78, 109)
     ax.set_xticks(list(xs)[::2], LABELS[::2])
-    ax.set_ylabel("index, before window = 100")
+    ax.tick_params(labelsize=15)
+    ax.set_ylabel("week / before average x 100", fontsize=15)
     ax.set_title("The same rupees, three denominators, three directions", loc="left")
     return fig
 
 
 def guesstimate_swing():
     """One assumption at a time at its low and high end, every other factor at its central value."""
-    names = {"weekday_ride_share": "people who ride on a weekday", "evening_share": "share in the evening",
-             "trips_per_busy_hour": "trips a busy driver fits in", "idle_share": "idle share",
+    names = {"weekday_ride_share": "weekday trips per 100 people",
+             "evening_share": "share of trips in the evening",
+             "trips_per_busy_hour": "trips a busy driver fits in an hour", "idle_share": "idle share",
              "hyd_people": "people in the city", "buffer": "buffer for the busiest half hour"}
     order = sorted(names, key=lambda k: N[f"swing_{k}_high"]["value"] - N[f"swing_{k}_low"]["value"])
     central = N["drivers_at_peak_central"]["value"]
-    fig, ax = plt.subplots(figsize=(10, 5.0))
+    fig, ax = plt.subplots(figsize=(9, 4.6))
     for i, k in enumerate(order):
         lo, hi = N[f"swing_{k}_low"]["value"], N[f"swing_{k}_high"]["value"]
         ax.barh(i, hi - lo, left=lo, color=VIOLET if k == order[-1] else "#B9AEF0", height=0.55)

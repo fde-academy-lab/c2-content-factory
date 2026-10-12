@@ -7,7 +7,7 @@ Header: WEEK 4  ·  DAY 2  ·  UBER, HYDERABAD, AN ILLUSTRATIVE CASE
 ## S1. The ticket: one slide, five minutes, three objectors
 *What has the city head asked for, and which number will land first?*
 
-**Uber, Hyderabad, the driver app's peak-hour earnings guarantee, one day on.** The city head takes the redesign to Thursday's city review on one slide, in five minutes. The driver-operations lead, the marketing lead and the finance partner each lose something under it, and each will say so.
+**Uber, Hyderabad, the driver app's peak-hour earnings guarantee, one day on.** Thursday's city review gets one slide, five minutes, and three people who each lose under it. Gross bookings are what riders paid; an active driver-week is one driver with a row that week.
 
 | Six weeks each side | 20 Jul to 30 Aug | 31 Aug to 11 Oct |
 |---|---|---|
@@ -16,7 +16,7 @@ Header: WEEK 4  ·  DAY 2  ·  UBER, HYDERABAD, AN ILLUSTRATIVE CASE
 | Gross bookings per active driver-week | Rs 5,817 | Rs 5,861, up 0.8 percent |
 | Peak online hours | 118,000 | 146,300, up 24 percent |
 
-**Data.** Monday's `driver_weeks` and `zone_weeks`. **The afternoon ask.** How many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes, sized in fifteen minutes without a dataset. **Caveats.** Each objection is partly right; the peak window is three hours long; no published figure exists to check the afternoon's answer against.
+**Data.** Monday's `driver_weeks` (`peak_online_hours`, `peak_trips`, `peak_bookings_rs`, `topup_rs`) and `zone_weeks` (`peak_requests`, `median_wait_min`). **Afternoon ask.** Drivers online at the three-hour weekday evening peak for a median wait under five minutes, in fifteen minutes. **Caveats.** Each objection is partly right; no published figure checks the afternoon's answer.
 
 > Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
@@ -39,13 +39,13 @@ Transition: where Tuesday sits on the week's map.
 
 ```mermaid
 flowchart LR
-    M["<b>Mon: what should the scheme pay for?</b><br/>trips per online hour 1.9 to 1.6<br/>pay for trips"]
+    M["<b>Mon: what should the scheme pay for?</b><br/>trips per online hour 1.90 to 1.58<br/>pay for trips"]
     T["<b>Tue: can it survive one slide?</b><br/>and how big is a number<br/>nobody has measured?"]
     W["<b>Wed</b><br/>what goes with what"]
     H["<b>Thu</b><br/>who is leaving"]
     F["<b>Fri</b><br/>how much is coming"]
-    S["<b>Sat</b><br/>does it transfer"]
-    K["<b>Kalpa lab</b><br/>the north-star slide,<br/>Anand's new store"]
+    S["<b>Sat</b><br/>does the method travel?"]
+    K["<b>Kalpa lab</b><br/>the north-star slide,<br/>a new store's sign-ups"]
     M --> T --> W --> H --> F --> S
     T --> K
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -70,15 +70,16 @@ Transition: where the day ends, so the room can see the climb.
 ## S3. Where today ends: a slide its losers can repeat
 *What sentence will the city head be able to say on Thursday?*
 
-> "The scheme is paying for online hours that carry no trips: gross bookings per peak online hour fell from Rs 314 to Rs 260 while the fare held at Rs 165. The monsoon ended inside the window, so part of the fall may be the season. Pay per completed peak trip with an acceptance floor; that returns Rs 58 lakh to Rs 92.7 lakh over six weeks depending on whether half or a fifth of the idle drivers start accepting."
+> "The scheme is paying for online hours that carry no trips: gross bookings per peak online hour fell from Rs 314 to Rs 260 while the fare held at Rs 165. The monsoon ended inside the six weeks, so part of the fall may be the season. Test paying per completed peak trip with an acceptance floor: city-wide, it saves Rs 58 lakh to Rs 92.7 lakh over six weeks if a half to a fifth of the idle drivers' top-up is still paid."
 
-**By the end of the afternoon** you will also have sized the drivers the evening peak needs, said every assumption aloud, given a range, and checked it against a ratio the case's own data can confirm.
+**By the end of the afternoon** you will also have estimated how many drivers the evening peak needs, said every assumption aloud, given a range, and checked it against the case's own data.
 
 ```notes
 LIVE, 1 minute. Read the sentence once. The morning earns its four parts in order: the claim, one
 number with its denominator, the caveat, the action with its cost. The saving range is Monday's:
 Rs 1.16 crore went to driver-weeks that accepted under half their offers, and the range assumes a
-fifth to a half of that is still paid because those drivers start accepting.
+half to a fifth of that is still paid because those drivers start accepting: half still paid saves
+Rs 58 lakh, a fifth saves Rs 92.7 lakh. S4 shows the working.
 Transition: what each role loses, before anyone builds anything.
 ```
 
@@ -89,11 +90,11 @@ Transition: what each role loses, before anyone builds anything.
 
 ```cards
 icon: user | eyebrow: Driver-operations lead | title: The supply headline | body: Peak online hours up 24 percent stops being the target, and the idle drivers' hours will fall when idle hours stop paying | tone: light
-icon: user | eyebrow: Marketing lead | title: A clean hoarding line | body: "Rs 300 an hour, guaranteed" now carries a condition: the floor holds for drivers who accept | tone: light
+icon: user | eyebrow: Marketing lead | title: A clean hoarding line | body: "Rs 300 an hour, guaranteed" now carries a condition: the Rs 300 floor holds only for drivers who accept most offers | tone: light
 icon: user | eyebrow: Finance partner | title: Its own number as the headline | body: Top-up per trip becomes a guardrail, and the slide opens on bookings per online hour, Rs 314 to Rs 260 | tone: light
 ```
 
-**Monday's definition, in one line.** The scheme pays for completed peak trips per enrolled driver per week, with three guardrails: the acceptance share, the median rider wait at peak, and top-up per completed trip.
+**The scheme now.** An enrolled driver online through a whole peak window (two three-hour windows a day) is guaranteed Rs 300 per peak online hour, the floor; when the driver's trip earnings fall short, Uber pays the gap as a **top-up**. **Monday's redesign,** as a driver hears it: "The floor now pays for trips you complete, if you say yes to most offers." Saying yes to at least half the requests offered is the **acceptance floor**. Three **guardrails**, numbers that must not get worse while trips rise, watch it: the acceptance share, the median rider wait at peak and top-up per completed trip. **The saving:** Rs 1.16 crore of top-up (115.9 lakh) went to driver-weeks that accepted under half their offers; if half of it is still paid, 115.9 / 2 = Rs 58 lakh is saved over six weeks, and if a fifth is, 115.9 x 4/5 = Rs 92.7 lakh.
 
 ```notes
 LIVE, 10 minutes. Cards hidden first. Groups of three spend 6 minutes listing what each role loses;
@@ -120,15 +121,15 @@ Transition: a vote on four titles.
 ---
 
 ## S5. Predict: which of these four titles acts?
-*Which title tells the city head what to do on the first read?*
+*Finance has a slide on the top-up. Which title tells the city head what to do on the first read?*
 
-a) Peak guarantee: six-week review
+a) Top-up review, six weeks
 
-b) Online hours up 24 percent, trips up 3 percent
+b) Top-up Rs 1.9 crore, 61 percent of it to drivers accepting under half their offers
 
-c) The scheme pays for idle hours: pay per completed trip
+c) Most of the top-up pays drivers who decline offers: add an acceptance floor
 
-d) Hyderabad operations update, October
+d) Driver payments update, October
 
 **Write your letter down before the next slide.**
 
@@ -145,7 +146,7 @@ Transition: the hostel notice board.
 
 **A hostel notice board (invented for this class).** One notice reads "Breakfast survey results"; the warden walks past it for a week. The next reads "Rotis replace rice at Monday breakfast, so the kitchen moves two staff from the rice counter to the roti line"; the warden reads it once and moves two staff.
 
-**The answer is c.** a and d name a topic. b reports two numbers and leaves the reader to find the point, and it is Monday's trap resold: online hours up 24 percent is the number that rose while riders were served no better. Barbara Minto's Pyramid Principle puts the answer first and the support beneath it.
+**The answer is c.** a and d name a topic. b reports two true numbers and leaves the reader to find the point. c says what is true and what to do about it, so a reader can act on the title alone. Barbara Minto's Pyramid Principle, a book on business writing, puts the single point first and the support beneath it.
 
 ```notes
 LIVE, 3 minutes. Read the two notices aloud. Then ask which of the four titles is like the first
@@ -163,7 +164,7 @@ Transition: the four parts a slide needs.
 flowchart LR
     N["<b>Anchor</b><br/>the hostel notice board:<br/>a sentence the warden acts on"]
     C["<b>1. The claim</b><br/>a sentence with a verb,<br/>as the title"]
-    E["<b>2. The evidence</b><br/>one chart or one number,<br/>its denominator named"]
+    E["<b>2. The evidence</b><br/>one chart, its denominator named,<br/>and at most one number beside it"]
     V["<b>3. The caveat</b><br/>in plain sight,<br/>beside the evidence"]
     A["<b>4. The action</b><br/>what to do, its cost in<br/>rupees and weeks, who signs"]
     P["<b>Pitfalls</b><br/>nine numbers; a title that is a topic;<br/>a caveat out of sight"]
@@ -177,7 +178,7 @@ flowchart LR
     class P bad
 ```
 
-**The order is the point.** A slide that opens on its evidence has already given away its title, and a slide whose caveat sits off the page invites its owner to call it dishonest.
+**The order is the point.** Put the claim first: a slide that opens on its evidence makes the reader guess the point, and a caveat hidden in the appendix hands the person it affects a reason to call the slide dishonest.
 
 ```notes
 LIVE, 3 minutes. Build the board region by region: point at the anchor, then each part in order,
@@ -212,9 +213,9 @@ b) Trips per peak online hour 1.90 to 1.58 and top-up to low acceptance 61 perce
 
 c) Median rider wait 4.8 to 4.6 minutes and new drivers since launch 140
 
-d) Acceptance share 0.86 to 0.73 and top-up paid Rs 1.9 crore
+d) Acceptance share 86 to 73 percent and top-up paid Rs 1.9 crore
 
-**Low acceptance** means a driver-week that accepted fewer than half the requests offered.
+The **acceptance share** is requests a driver accepted over requests offered to them. **Low acceptance** means a driver-week that accepted fewer than half the requests offered.
 
 ```notes
 LIVE, 3 minutes. Each group writes one letter. Expect a split between a and b. The point of the
@@ -229,7 +230,7 @@ Transition: the rebuild.
 
 ![Slide A rebuilt, the four parts numbered](../whiteboards/C2_W04_D02_cleared_slide_STUDENT.png)
 
-**The answer is b.** Trips per online hour falling at a flat fare is bookings per online hour falling, Rs 314 to Rs 260, and the 61 percent says where the top-up went.
+**The answer is b.** Trips per online hour falling at a flat fare is bookings per online hour falling, Rs 314 to Rs 260: that is the chart. The 61 percent, the one number beside it, says where the top-up went. Option a is Monday's trap resold: online hours rose 24 percent while riders barely gained.
 
 ```notes
 LIVE, 5 minutes. This is the worked example of the guided exercise: rebuild it with the room
@@ -257,7 +258,7 @@ Transition: two more slides, rebuilt by the groups.
 | Top-up to everyone else | | Rs 74 lakh |
 | Rider requests | 251,910 | 256,556 |
 
-**Half worked.** The claim is drafted for you: "Rs 1.16 crore of the top-up went to driver-weeks that accepted fewer than half their offers." Choose the one number that proves it, and the caveat that sits beside it.
+**Half worked.** The claim is drafted for you: "Most of the top-up went to driver-weeks that accepted fewer than half their offers." Choose the one number that proves it, and keep the monsoon caveat beside it.
 
 ```notes
 LIVE, 3 minutes. Odd-numbered groups take slide B, even-numbered groups take slide C (next slide).
@@ -273,15 +274,15 @@ Transition: slide C.
 
 | Driver operations' tab, as sent | Before | After |
 |---|---|---|
-| Drivers | 1,200 (140 new) | |
+| Drivers | 1,060 | 1,200 (140 new) |
 | Active driver-weeks | 6,360 | 6,500 |
-| Offers shown to drivers | 269,773 | 347,583 |
-| Acceptance share | 0.86 | 0.73 |
-| Driver cancels after accepting | 0.04 | 0.09 |
+| Offers shown (a declined request is offered again) | 269,773 | 347,583 |
+| Acceptance share | 86 percent | 73 percent |
+| Driver cancels after accepting | 4 percent | 9 percent |
 | Drivers in the idle tail | | 180 |
 | Idle-tail online hours | 20,000 | 42,000 |
 | Idle-tail trips | 38,000 | 33,440 |
-| Unfulfilled requests | 0.11 | 0.10 |
+| Unfulfilled requests | 11 percent | 10 percent |
 
 **Blank.** Write the claim yourself, keep two numbers, and name the caveat. The **idle tail** is Monday's name for the 180 drivers whose trips per online hour fell under 1.0 after the launch.
 
@@ -295,9 +296,9 @@ Transition: the twelve rows, read in rupees.
 ---
 
 ## S13. The twelve rows, read in rupees three ways
-*What do six drivers in two weeks say when the denominator changes?*
+*What do six drivers, one week before the launch and one after, say when the denominator changes?*
 
-| Driver | Zone | Hours before | Trips before | Rs before | Hours after | Trips after | Rs after |
+| Driver | Zone | Hours, 10 Aug | Trips, 10 Aug | Rs, 10 Aug | Hours, 21 Sep | Trips, 21 Sep | Rs, 21 Sep |
 |---|---|---|---|---|---|---|---|
 | A | Jubilee Hills | 10 | 21 | 3,465 | 11 | 22 | 3,630 |
 | B | Banjara Hills | 9 | 17 | 2,805 | 10 | 18 | 2,970 |
@@ -310,65 +311,67 @@ Transition: the twelve rows, read in rupees.
 **Per peak online hour:** 18,810 / 60 = Rs 313.5, then 14,520 / 74 = Rs 196.2, down 37 percent. **Per driver-week:** 18,810 / 6 = Rs 3,135, then 14,520 / 6 = Rs 2,420, down 23 percent. **Per trip:** Rs 165 both times.
 
 ```notes
-LIVE, 5 minutes. The week of 10 August against the week of 21 September. Count aloud, column by
-column: 60 and 74 hours, 114 and 88 trips, 18,810 and 14,520 rupees. Divide three times for each
-week and say the three verdicts. E and F are Monday's two idle-tail drivers, which is why six
-drivers fall further than the city.
-Transition: the same arithmetic as a picture.
+LIVE, 5 minutes. Twelve driver-weeks: six drivers, the week of 10 August against the week of 21
+September. Count aloud, column by column: 60 and 74 hours, 114 and 88 trips, 18,810 and 14,520
+rupees. Divide three times for each week and say the three verdicts. E and F are Monday's two
+idle-tail drivers, which is why six drivers fall further than the city. These six drive about 10
+peak hours a week against the city's 18.6, so their rupees per driver-week sit below the city's:
+the hand count is for the method, and the city's numbers come next.
+Transition: the city does something the six did not.
 ```
 
 ---
 
-## S14. Predict: which way does each read go for the city?
-*Over all the driver-weeks, which pair of moves holds?*
+## S14. Predict: why does the city's per-driver-week rise?
+*On the six drivers per driver-week fell 23 percent; on the city it rose 0.8 percent. Why?*
 
-a) Per hour falls; per driver-week falls
+**Before the city, an auto driver (invented).** Rs 1,800 on Monday from 20 rides in 9 hours, and Rs 1,800 on Tuesday from 18 rides in 12 hours: per day flat, per ride up from Rs 90 to Rs 100, per hour down from Rs 200 to Rs 150. The denominator picks the direction.
 
-b) Per hour falls; per driver-week rises a little
+a) The 140 new drivers earned more than the rest
 
-c) Per hour holds; per driver-week falls
+b) Each driver-week carried more online hours
 
-d) Both hold nearly flat
+c) The fare rose after the launch
 
-**On the six drivers,** per driver-week fell 23 percent because the same six drivers sit in both weeks; the city's count of active driver-weeks moves.
+d) Fewer drivers sat idle after the launch
 
 ```notes
-LIVE, 2 minutes. Per driver-week here means per active driver-week. On six drivers the per-driver-week read fell, because the six are the same six in
-both weeks. The city's driver-weeks move. Each learner writes a letter.
+LIVE, 2 minutes. Per driver-week means per active driver-week: one driver with a row that week.
+Each learner writes a letter. Expect votes on a, since new drivers are the obvious change.
 Transition: the reveal.
 ```
 
 ---
 
-## S15. Answer: per hour falls, per driver-week rises
-*What do the twelve weeks show for each denominator?*
+## S15. Answer: more hours a driver-week, less per hour
+*How can per driver-week rise while per hour falls?*
 
 ![Each read divided by its own before window](../whiteboards/C2_W04_D02_three_reads_STUDENT.png)
 
-**The answer is b.** Per peak online hour the rupees fell 17 percent, Rs 314 to Rs 260. Per active driver-week they rose 0.8 percent, Rs 5,817 to Rs 5,861. Per trip they held at Rs 165. Each line is divided by its own before-window value, so all three start near 100.
+**The answer is b.** Rupees per driver-week is rupees per hour times hours per driver-week, so the hours are Rs 5,817 / Rs 313.5 = 18.6 a driver-week before and Rs 5,861 / Rs 260.4 = 22.5 after. Each driver-week carried about four more online hours while each hour brought in 17 percent less. Each line is the week over its before-window average, times 100; the amber line rose, then slid below 100.
 
 ```notes
-LIVE, 4 minutes. Trace the violet line first: a step at the launch, then flat. The amber line rises
-and then slides below 100 by the last week, so even the window's 0.8 percent rise hides a weekly
-slide. Ask which role will quote the amber line. Expect the marketing lead. Explorer scene T2 lets
-learners pick the denominator.
+LIVE, 4 minutes. Trace the violet line first: a step at the launch, then flat. Then the amber line:
+up while hours climbed, down as trips per hour kept falling. Ask which role will quote the amber
+line. Expect the marketing lead. Explorer scene T2 lets learners pick the denominator.
 Transition: the trap in that amber line.
 ```
 
 ---
 
 ## S16. The trap: "per driver-week is up, so it works"
-*Why does the rise in bookings per active driver-week say nothing about the scheme?*
+*Why does the rise in bookings per active driver-week say nothing good about the scheme?*
 
 **The plausible wrong answer.** "Bookings per driver-week rose from Rs 5,817 to Rs 5,861, so the guarantee is working; keep it as it is." Every rupee in that sentence is right, and it would keep the city paying for idle hours.
 
-**Why it is wrong.** The read is bookings over active driver-weeks, and online hours do not enter it. Bookings rose 3.0 percent because trips rose 3 percent at the same fare; active driver-weeks rose 2.2 percent, 6,360 to 6,500, because the 140 drivers who joined after the launch added 140 driver-weeks between them. The ratio rose 0.8 percent with no driver earning more for an hour online.
+**Why it is wrong.** Bookings rose 3.0 percent and active driver-weeks 2.2 percent (6,360 to 6,500), so the ratio rose 0.8 percent (1.030 / 1.022 = 1.008). The rise was bought with hours: 21 percent more online hours a driver-week for 17 percent less per hour. The 140 drivers who joined after the launch drove about one week each, at Rs 4,314 a driver-week, so they pulled the read down; the drivers there before the launch rose 1.4 percent.
 
-**The fix.** The slide names the denominator the scheme pays per, the peak online hour, and keeps the other two reads in the appendix with one line each on what moved them.
+**The fix.** The slide names the denominator the scheme pays for, the peak online hour, and says it aloud.
 
 ```notes
-LIVE, 4 minutes. Write the three growth rates on the board: bookings 3.0, driver-weeks 2.2, ratio
-0.8. An active driver-week is a driver with a row that week, never a sign-up to the guarantee.
+LIVE, 4 minutes. Write the split on the board: Rs per driver-week = Rs per hour x hours per
+driver-week. Then the three growth rates: bookings 3.0, driver-weeks 2.2, ratio 0.8. An active
+driver-week is a driver with a row that week, never a sign-up to the guarantee.
 Transition: the second route to the same number.
 ```
 
@@ -379,11 +382,11 @@ Transition: the second route to the same number.
 
 ```stats
 value: Rs 313.5 | label: Rs 165 x 1.90 trips per hour | note: the six weeks from 20 July
-value: Rs 260.4 | label: Rs 165 x 1.58 trips per hour | note: the six weeks from 31 August
+value: Rs 260.4 | label: Rs 165 x 1.578 trips per hour | note: the six weeks from 31 August
 value: Rs 165 | label: the fare, both windows | note: so the whole fall is trips per hour
 ```
 
-**Bookings divided by hours and fare times trips per hour land on the same rupees in both windows.** The finance partner will ask whether riders paid less; they did not.
+**Rupees per hour is the fare times trips per hour, so the two routes always agree; the split shows which half moved.** The fare held, so the whole fall is trips per hour, 1.90 to 1.578 (230,900 / 146,300, printed as 1.58). The finance partner will ask whether riders paid less; they did not.
 
 ```notes
 LIVE, 2 minutes. The notebook asserts the two routes agree to the paisa. Say it as one line the
@@ -408,7 +411,7 @@ flowchart LR
     class N unknown
 ```
 
-**Chapter 1 adds** the claim (the scheme pays for idle hours) and its denominator (Rs 314 to Rs 260 per peak online hour). **Said plainly:** "An hour online used to bring in Rs 314 of fares and now brings in Rs 260, because more of those hours have no rider." **In the interview** [S]: present a recommendation to a non-technical stakeholder in two minutes, opening on that sentence.
+**Chapter 1 adds** the claim (the scheme pays for idle hours) and its denominator (Rs 314 to Rs 260 per peak online hour). **Said plainly:** "An hour online used to bring in Rs 314 of fares and now brings in Rs 260, because more of those hours have no rider." **In the interview** [S], a staple asked everywhere in this programme's interview tags: present a recommendation to a non-technical stakeholder in two minutes, opening on that sentence.
 
 ```notes
 LIVE, 2 minutes. Ask two learners to say the plain sentence aloud without the slide.
@@ -429,39 +432,42 @@ Transition: the prediction.
 
 ---
 
-## S19. Predict: which role will the city head side with?
-*When the three objections land, whose side is the city head on?*
+## S19. Predict: which line best answers the monsoon?
+*The finance partner says the fall is the monsoon ending. Which line of evidence answers it best?*
 
-a) The driver-operations lead: "Drivers will log off and supply at peak will fall"
+a) Rider requests rose 1.8 percent across the six weeks after the launch, so demand never fell
 
-b) The marketing lead: "The guarantee is on every hoarding; changing it six weeks in looks like bait"
+b) With requests back at the before level, the last three weeks still ran at 1.56 trips an hour
 
-c) The finance partner: "The fall in bookings per hour is the monsoon ending"
+c) Bookings per active driver-week rose 0.8 percent, so drivers still earned
 
-d) None of them outright, because each objection is partly right
+d) The 140 drivers who joined after the launch drove only some weeks
 
 ```notes
-LIVE, 3 minutes. Vote, two minutes with a neighbour, revote. Count both votes on the board.
-Transition: the true part of each.
+LIVE, 3 minutes. Vote, two minutes with a neighbour, revote. Count both votes on the board. Expect
+votes on a, since it is the number everyone quotes.
+Transition: the true part of each objection.
 ```
 
 ---
 
-## S20. Answer: each objection is partly right
+## S20. Answer: the last three weeks answer the monsoon
 *Which part of each objection is true, and what evidence answers the rest?*
 
 | Role | The true part | The part the evidence answers |
 |---|---|---|
 | Driver operations | The 180 idle-tail drivers will log off: their idle hours are what stops being paid | The other 880 drivers, there before the launch, held at 1.90 trips per online hour and keep the floor if they accept |
 | Marketing | The hoarding promised a floor, and 140 drivers joined after it went up | The floor stays for drivers who accept; none of the 140 joiners is in the idle tail |
-| Finance | The monsoon ended inside the window, and last year's weeks are not in the data | Rider requests rose 1.8 percent; drivers who joined before the launch fell from 1.90 to 1.58 |
+| Finance | The monsoon ended inside the six weeks, and last year's weeks are not in the data | In the last three weeks requests were back at the before level and trips per hour still ran at 1.56 |
 
-**The answer is d.** A defence that sides with no one concedes each true part out loud and answers the rest from a line of evidence.
+**The answer is b.** Weekly requests fell four weeks running from 7 September, so a's six-week average hides a slide; in the last three weeks they sat inside the before window's weekly range, and trips per hour stayed at 1.56. c is the per-driver-week trap, and d explains the denominator, never the fall.
 
 ```notes
 LIVE, 5 minutes. One row at a time. Every number here is Monday's or is computed from Monday's
 tables in the facts file: the 880 are the 1,200 drivers less the 180 in the idle tail and the 140
-joiners, and none of the joiners is in the tail.
+joiners, and none of the joiners is in the tail. The 180 had also run at 1.90 trips an hour before
+the launch, so the tail is drivers who changed, never drivers who were always slow. Weekly requests
+in the last three weeks ran 41,161 to 42,602, against 41,155 to 42,719 before the launch.
 Transition: the shape a defence takes.
 ```
 
@@ -509,11 +515,11 @@ Transition: one full defence, modelled.
 
 **Restate.** "You are saying the fall in bookings per hour could be the season ending, and the scheme has not had a fair test."
 
-**Answer.** "Three lines of evidence point at the scheme: rider requests rose 1.8 percent, so demand did not fall; the three busiest weeks after the launch still ran at 1.60 trips per online hour; and drivers who joined before the launch fell from 1.90 to 1.58, so the new drivers do not explain it."
+**Answer.** "Two lines of evidence point at the scheme: in the last three weeks after the launch, requests were back at the before window's level and trips per online hour still ran at 1.56; and the drivers who were there before the launch fell from 1.90 to 1.58, so the new drivers do not explain it."
 
-**Concede.** "You are right that the monsoon ended inside the window, and that last year's weeks are not in the data."
+**Concede.** "You are right that the monsoon ended inside the six weeks, and that last year's weeks are not in the data."
 
-**What would change my mind.** "The same six weeks of last year showing a fall of this size, or the test of the redesign showing no change in trips per online hour."
+**What would change my mind.** "Last year's same six weeks showing a fall of this size, a city where the rains ended without the scheme showing the same fall, or the test of the redesign showing no change in trips per online hour."
 
 ```notes
 LIVE, 8 minutes. The trainer models this defence first, conceding on purpose, then points at each
@@ -532,7 +538,7 @@ Transition: round one of the studio.
 | Objector | Reads one role's objection from its card and pushes back once | One role card |
 | Scorer | Ticks each move heard: restate, answer, concede, change my mind | The four-moves card |
 
-**Three rounds of seven minutes.** Rotate seats after each round, so every member of a group presents once, objects once and scores once.
+**Three turns of seven minutes.** The studio is the morning's practice: build a slide, present it, take an objection, get scored, rebuild. After each turn the seats rotate inside the three, so every member presents once, objects once and scores once.
 
 ```notes
 LIVE, 23 minutes. Two minutes to form threes and hand out cards, then 3 x 7. Thirty-five learners
@@ -551,7 +557,7 @@ Transition: the pause after round one.
 | Retreat | The presenter concedes the whole claim at the first push | "Which line of your evidence did the objection touch?" |
 | Overclaim | The presenter repeats the claim louder and concedes nothing | "What would change your mind?" |
 
-**Chapter 2 adds the four moves to Tuesday's node:** restate, answer, concede, say what would change your mind. **In the interview** [F]: a stakeholder's objection is partly right; how do you answer it?
+**Chapter 2 adds the four moves to Tuesday's node:** restate, answer, concede, say what would change your mind. **In the interview** [F], frequent in GCC and product screens: a stakeholder's objection is partly right; how do you answer it?
 
 ```notes
 LIVE, 5 minutes. Name one example of each from the round, without names. Then the break.
@@ -597,7 +603,7 @@ Transition: the answer, and the drawer it goes in.
 flowchart TD
     S["<b>The slide</b><br/>claim, evidence, caveat, action"]
     A1["<b>Appendix 1: driver operations asks</b><br/>what happens to the drivers who accept?"]
-    A2["<b>Appendix 2: marketing asks</b><br/>does the sign-up story survive?"]
+    A2["<b>Appendix 2: marketing asks</b><br/>do the 140 new drivers lose out?"]
     A3["<b>Appendix 3: finance asks</b><br/>how much of the fall is the season?<br/>the other two reads live here"]
     S --> A1
     S --> A2
@@ -637,13 +643,13 @@ Transition: the drill.
 ---
 
 ## S29. Cut five elements to the two that carry the claim
-*Which two elements of a crowded draft does the claim need?*
+*A second draft argues that riders got little for the Rs 1.9 crore. Which two of its five elements carry that claim?*
 
 | Element on the draft | Keep or move? |
 |---|---|
 | The line "peak online hours up 24 percent" | |
-| The chart of bookings per peak online hour, Rs 314 to Rs 260 | |
-| A table of acceptance by zone | |
+| Median rider wait at peak, 4.8 to 4.6 minutes | |
+| Top-up for each extra trip: Rs 2,836, for a trip worth Rs 165 | |
 | The top-up split: 61 percent to low acceptance | |
 | A pie of top-up by week | |
 
@@ -652,7 +658,8 @@ Transition: the drill.
 ```notes
 LIVE, 6 minutes. This is mid-session drill 1, in exercises/unguided. Four minutes alone, two
 minutes comparing with a neighbour. Expect the 24 percent line kept by some: ask what claim it
-supports.
+supports. The two that carry it: the wait barely moved, and each extra trip cost Rs 2,836 of top-up
+(Rs 1.9 crore over the 6,700 extra trips).
 Transition: what chapter 3 adds.
 ```
 
@@ -686,9 +693,9 @@ Transition: round two of the studio.
 ## S31. Studio round two: the seats swap
 *What changes when the presenter has sat in every objector's seat?*
 
-**Each group keeps its slide and swaps seats.** The round-one presenter now objects, reading the role card that pushed hardest on their own slide; the round-one scorer presents, with the appendix pages built in chapter 3.
+**Each group keeps its threes and its rotation.** Each presenter now shows the slide rebuilt after round one, and answers each objection by naming the appendix page, from the drawer on S27, that holds the detail.
 
-**Three rounds of seven minutes, rotating, then eight minutes to rebuild the slide** with what the objections showed.
+**Three turns of seven minutes, rotating, then eight minutes to rebuild the slide** with what the objections showed.
 
 ```notes
 LIVE, 38 minutes. Three minutes to set up, 3 x 7 = 21 minutes of rounds, 8 minutes to rebuild,
