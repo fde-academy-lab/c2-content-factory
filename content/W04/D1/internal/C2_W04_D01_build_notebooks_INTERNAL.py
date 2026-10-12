@@ -1,914 +1,870 @@
-"""Build Monday W04 D1 notebooks (ponytail-small; pandas, stdlib, matplotlib).
+"""Build the four Week 4 Monday notebooks and execute each cold in its own folder.
 
-Produces four executed notebooks that build on each other:
-    01 the twelve rows counted by hand                   (12 to 15 cells)
-    02 the full driver_weeks, the trap and the idle tail (18 to 22 cells)
-    03 the definition computed, with its guardrails      (15 to 18 cells)
-    04 the Kalpa lab's your-turn cell                    (10 to 12 cells)
+    python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py          all four
+    python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py 02 03    some of them
 
-Each notebook reads the facts and the CSVs under content/W04/D1/data/.
-Nothing names a Kalpa plant in a STUDENT cell before the lab finds it.
-
-Run from the repository root:
-    python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py
+01 counts the twelve rows by hand (14 cells); 02 runs the full driver_weeks, the trap and the
+your-turn cell (21 cells); 03 prices the gaming, builds the definition and runs the caveats and the
+SQL second route (16 cells); 04 is the Kalpa lab, whose two finding cells ship empty (11 cells).
+Plain pandas, the standard library and matplotlib; each notebook defines its own three-line check.
+Every number a cell prints sits in internal/C2_W04_D01_facts_INTERNAL.yaml under its id.
 """
 import pathlib
 import sys
 
 sys.path.insert(0, "scripts")
-from nb_make import SETUP, build, code, empty, md  # noqa: E402
+from nb_make import build, code, empty, md  # noqa: E402
 
-
-DAY = pathlib.Path("content/W04/D1")
-NB = DAY / "notebooks"
+NB = pathlib.Path("content/W04/D1/notebooks")
 NB.mkdir(parents=True, exist_ok=True)
+LABEL = ("> *Illustrative case: the company is real, the situation and the data are synthetic, "
+         "built for this class.*")
 
-# A short helper block every notebook opens with: finds c2kit, loads the CSVs.
-LOAD = SETUP + '''
+TICKET = f"""
+**The ticket. Uber, Hyderabad, the driver app's peak-hour earnings guarantee.**
+
+{LABEL}
+
+On Monday 31 August 2026 the Hyderabad city team launched a peak-hour earnings guarantee for
+enrolled drivers: a driver who stays online through a whole peak window (two windows a day, each
+three hours long, set by the city team) is guaranteed a floor of Rs 300 per peak online hour, and
+Uber pays the gap between the driver's trip earnings in the window and the floor as a top-up. The
+goal written in the launch note was "more drivers on the road at peak, so riders are picked up
+faster". The terms are synthetic.
+
+Six weeks after the launch (the weeks beginning 31 August to 5 October 2026) against the six weeks
+before (the weeks beginning 20 July to 24 August 2026):
+
+| Measure | Before | After | Change |
+|---|---|---|---|
+| Peak online hours, all enrolled drivers | 118,000 | 146,300 | up 24 percent |
+| Completed peak trips | 224,200 | 230,900 | up 3 percent |
+| Trips per peak online hour | 1.90 | 1.58 | 1.9 to 1.6 |
+| Offers accepted over offers shown, at peak | 0.86 | 0.73 | down 13 points |
+| Accepted trips the driver then cancelled, share | 0.04 | 0.09 | up 5 points |
+| Peak online hours with no completed trip, share | 0.22 | 0.38 | up 16 points |
+| Median rider wait at peak, minutes | 4.8 | 4.6 | barely moved |
+| Rider requests at peak that went unfulfilled, share | 0.11 | 0.10 | barely moved |
+| Top-up paid | Rs 0 | Rs 1.9 crore | |
+
+**Data the analyst has.**
+
+| Table | Columns | Rows |
+|---|---|---|
+| `drivers` | `driver_id`, `home_zone`, `joined_month`, `enrolled` | 1,200 drivers, 140 of them joined after the launch |
+| `driver_weeks` | `driver_id`, `week_start`, `zone_mode` (the zone where most online time was), `peak_online_hours`, `peak_offers`, `peak_accepted`, `peak_driver_cancels`, `peak_trips`, `peak_hours_no_trip`, `peak_bookings_rs`, `topup_rs`, `offpeak_trips` | one row for every driver on the app that week, twelve weeks |
+| `zone_weeks` | `zone`, `week_start`, `peak_requests`, `peak_fulfilled`, `median_wait_min` | 12 zones by twelve weeks |
+
+A rider's request that one driver declines is offered to the next driver, so `driver_weeks` counts
+offers (every time a driver was shown a request) and `zone_weeks` counts rider requests.
+
+**The ask, due Friday, to the city head.** Is the scheme working? Which metric should it pay for? Is
+anyone gaming it, and how would we know?
+
+**Known caveats.** The monsoon ended inside the after window. 140 drivers joined after the launch.
+The app logs a driver as online whenever the driver app is open and the driver is marked available,
+wherever the phone is. The three outer zones (Shamshabad, Rajendranagar, Patancheru) get few
+requests at any hour. Drivers can be online on more than one platform at once, and Uber cannot see
+the other platforms.
+"""
+
+SETUP = '''
 import pandas as pd
-drivers = pd.read_csv("../data/C2_W04_D01_drivers_STUDENT.csv")
-dw = pd.read_csv("../data/C2_W04_D01_driver_weeks_STUDENT.csv")
-zones = pd.read_csv("../data/C2_W04_D01_zone_weeks_STUDENT.csv")
-print(f"drivers: {len(drivers)}, driver_weeks: {len(dw)}, zones: {len(zones)}")
+import matplotlib.pyplot as plt
+
+def check(name, ok):
+    print("PASS" if ok else "FAIL", name)
+'''
+STYLE = '''
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False, "font.size": 11})
+INK, VIOLET, ROSE, LAV, MUTED = "#1A0F5C", "#5B3FD6", "#D63A6A", "#D9A7FF", "#6B6690"
 '''
 
 
-def check_block(name, expr):
-    """A one-line check call matching the kit's check helper."""
-    return f'kit.check({name!r}, {expr})'
-
-
-# ---------------------------------------------------------------------------- notebook 01
-def build_01():
+def nb01():
     build(NB / "C2_W04_D01_01_twelve_rows_STUDENT.ipynb", [
-        md('''
-        # Can online hours rise while riders wait as long?
+        md(f'''
+        # What does "peak online hours up 24 percent" stand for, and what happened to six drivers we can count by hand?
 
-        **Week 4, Monday, chapter 1 of 3 (L1).** On Monday 31 August 2026 the Uber city team in
-        Hyderabad launched a peak-hour earnings guarantee: a floor of Rs 300 per peak online hour,
-        with Uber paying the gap between trip earnings and the floor as a top-up. Six weeks later,
-        peak online hours were up 24 percent and completed peak trips up 3 percent, so trips per
-        peak online hour fell from 1.90 to 1.58. This notebook counts six drivers in two particular
-        weeks by hand, before any groupby runs.
+        Week 4, Monday, chapter 1 of 3. Level 1: read the ticket, say what the number stands for,
+        and count it by hand on twelve rows of the case's own data.
+        {TICKET}
+        **Who needs the answer.** The Hyderabad city head decides on Friday whether the scheme is
+        working and whether to extend it. If "hours up 24 percent" is read as "more riders served"
+        and it is not, the same top-up goes to two more cities.
 
-        > *Illustrative case: the company is real, the situation and the data are synthetic, built
-        > for this class.*
-
-        **Who needs the answer.** The city head, before Friday. Driver operations, who sign off on
-        supply. Finance, who hold the top-up budget. **The questions on the way.**
-
-        1. What did the six drivers' hours and trips do between the two weeks?
-        2. What is trips per peak online hour, before and after, on the twelve rows?
-        3. Which drivers moved the ratio most, and in which direction?
-        '''),
-        md('''
-        **Setup.** The first cell finds the shared helper `c2kit` and loads the three case CSVs
-        from `../data/`. Every number below comes from those files or from the day's facts file;
-        nothing is typed in. Run this cell again after any kernel restart.
-        '''),
-        code(LOAD),
-        md('''
-        ## Where does chapter 1 sit on the day's ladder?
-        '''),
-        code('''
-kit.flow(["L1 hand count", "L2 city totals", "L3 the trap",
-          "L4 caveats", "L5 the fix in rupees", "L6 the interview"], lit=0)
-'''),
-        md('''
-        ## What are the twelve rows the case asks us to read first?
-
-        The twelve rows are six drivers (A to F), each in two particular weeks: the week beginning
-        10 August 2026 (before the launch) and the week beginning 21 September 2026 (after). Drivers
-        A to D live in core zones (Jubilee Hills, Banjara Hills, Gachibowli, Madhapur). Drivers E
-        and F live in outer zones (Shamshabad, Rajendranagar). Each row prints hours, offers,
-        accepted, cancels and trips. `driver_weeks` counts offers, every time a request was shown to a
-        driver, and a request one driver declines is offered to the next, so offers outnumber the rider
-        requests that `zone_weeks` counts.
-        '''),
-        code('''
-        twelve_ids = {"d_0001": "A", "d_0002": "B", "d_0003": "C", "d_0004": "D",
-                       "d_0881": "E", "d_0882": "F"}
-        twelve = dw[(dw["driver_id"].isin(twelve_ids))
-                    & (dw["week_start"].isin(["2026-08-10", "2026-09-21"]))].copy()
-        twelve["driver"] = twelve["driver_id"].map(twelve_ids)
-        twelve["when"] = twelve["week_start"].map({"2026-08-10": "before", "2026-09-21": "after"})
-        twelve = twelve.sort_values(["driver", "when"])[
-            ["driver", "when", "zone_mode", "peak_online_hours",
-             "peak_offers", "peak_accepted", "peak_driver_cancels", "peak_trips"]
-        ].reset_index(drop=True)
-        twelve
-        '''),
-        md('''
-        **What happened.** Row by row: A, B, C, D add about one hour and one trip from before to
-        after; their rate stays near 2 trips per hour. E jumps from 10 hours and 18 trips to 16
-        hours and 3 trips. F jumps from 10 hours and 17 trips to 14 hours and 2 trips. E and F are
-        two drivers in outer zones whose hours rose and whose trips did not follow.
-        '''),
-        md('''
-        ## What are the four totals a hand count reaches?
-
-        A rate as a ratio of two sums, never the mean of per-driver ratios: `sum(trips) /
-        sum(hours)`. The denominator says what the number is per.
-        '''),
-        code('''
-        before = twelve[twelve["when"] == "before"]
-        after = twelve[twelve["when"] == "after"]
-        totals = pd.DataFrame({
-            "window": ["before", "after"],
-            "hours":  [before["peak_online_hours"].sum(), after["peak_online_hours"].sum()],
-            "trips":  [before["peak_trips"].sum(), after["peak_trips"].sum()],
-        })
-        totals["trips_per_hour"] = (totals["trips"] / totals["hours"]).round(3)
-        totals
-        '''),
-        md('''
-        **The ratio on twelve rows.** Hours 60 to 74 (up 23 percent). Trips 114 to 88 (down 23
-        percent). Trips per peak online hour 1.90 to 1.19. The twelve rows show a sharper paradox
-        than the city will show on the full data: here, hours up means trips per hour nearly
-        halved.
-        '''),
-        md('''
-        ## Which drivers moved the ratio most, and in which direction?
-
-        **Predict first.** Among the six drivers, which two moved the per-driver trips per hour the
-        most between the two weeks, in absolute value? Letters:
-
-        - a) A and B
-        - b) C and D
-        - c) E and F
-        - d) The pair cannot be told without more data
-        '''),
-        code('''
-        pivot = twelve.pivot_table(index="driver", columns="when",
-                                   values=["peak_online_hours", "peak_trips"])
-        pivot.columns = [f"{a}_{b}" for a, b in pivot.columns]
-        pivot["tph_before"] = (pivot["peak_trips_before"] / pivot["peak_online_hours_before"]).round(2)
-        pivot["tph_after"] = (pivot["peak_trips_after"] / pivot["peak_online_hours_after"]).round(2)
-        pivot["tph_change"] = (pivot["tph_after"] - pivot["tph_before"]).round(2)
-        pivot[["tph_before", "tph_after", "tph_change"]].sort_values("tph_change")
-        '''),
-        md('''
-        **What happened.** The answer is c, drivers E and F. Their trips per peak online hour fell
-        to 0.19 and 0.14 (close to zero), while the others held between about 1.80 and 1.92. The
-        city total is pulled down by a small share of driver-weeks like these, which the next
-        notebook finds among 12,860 driver-weeks.
-        '''),
-        md('''
-        ## What picture carries the twelve rows into chapter 2?
-        '''),
-        code('''
-        import matplotlib.pyplot as plt
-        fig, ax = plt.subplots(figsize=(6.5, 4.2))
-        for driver, color in zip(["A", "B", "C", "D", "E", "F"],
-                                  ["#5B3FD6", "#5B3FD6", "#5B3FD6", "#5B3FD6",
-                                   "#D63A6A", "#D63A6A"]):
-            row = pivot.loc[driver]
-            ax.plot([0, 1], [row["tph_before"], row["tph_after"]],
-                    marker="o", color=color, linewidth=1.6)
-            ax.text(1.03, row["tph_after"], driver, color=color, fontsize=10)
-        ax.set_xticks([0, 1])
-        ax.set_xticklabels(["week of 10 Aug", "week of 21 Sep"])
-        ax.set_ylabel("trips per peak online hour")
-        ax.set_ylim(0, 2.4)
-        ax.set_title("Six drivers, two weeks, two directions", loc="left")
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
-        plt.tight_layout()
-        plt.show()
-        '''),
-        md('''
-        **What happened.** Four lines stay near 2 trips per hour. Two lines drop almost to zero.
-        The ratio for the whole twelve rows (sum over sum) is the picture the city sees, but the
-        story of the fall is in the two drivers who split off.
-        '''),
-        md('''
-        ## What do the twelve-row totals read, side by side?
-        '''),
-        code('''
-kit.bars([("hours before", int(totals.loc[0, "hours"])),
-          ("hours after", int(totals.loc[1, "hours"])),
-          ("trips before", int(totals.loc[0, "trips"])),
-          ("trips after", int(totals.loc[1, "trips"]))],
-         title="Twelve rows: hours up, trips down")
-'''),
-        md('''
-        ## What does chapter 1 close with?
-        '''),
-        code('''
-        kit.check("hand count: hours before 60", int(totals.loc[0, "hours"]) == 60)
-        kit.check("hand count: hours after 74", int(totals.loc[1, "hours"]) == 74)
-        kit.check("hand count: trips before 114", int(totals.loc[0, "trips"]) == 114)
-        kit.check("hand count: trips after 88", int(totals.loc[1, "trips"]) == 88)
-        kit.check("ratio before 1.90", float(totals.loc[0, "trips_per_hour"]) == 1.9)
-        kit.check("ratio after 1.19",
-                  abs(float(totals.loc[1, "trips_per_hour"]) - 1.189) < 0.005)
-        '''),
-        md('''
-        **Chapter 1 close.** Hours up 23 percent, trips down 23 percent, trips per peak online
-        hour nearly halved on the twelve rows. The next notebook moves from six drivers in two
-        weeks to 1,200 drivers over twelve weeks and asks whether the paradox holds on 12,860
-        driver-weeks.
-
-        > **Kavya's review.** "Six drivers is a hand count, not a result. The same question on the
-        > full data is the next thing to run; the paradox should be smaller in the city because
-        > not everyone is E or F."
-        '''),
-    ])
-
-
-# ---------------------------------------------------------------------------- notebook 02
-def build_02():
-    build(NB / "C2_W04_D01_02_full_data_trap_STUDENT.ipynb", [
-        md('''
-        # Where in the data did the fall sit, and who should the city team not have celebrated?
-
-        **Week 4, Monday, chapter 2 of 3 (L2 and L3).** The twelve rows of chapter 1 showed hours
-        up 23 percent and trips down 23 percent. This notebook runs the same count on 12,860
-        driver-weeks across 1,200 drivers, finds the segment driving the city's number, and shows
-        where the top-up money went.
-
-        > *Illustrative case: the company is real, the situation and the data are synthetic, built
-        > for this class.*
-
-        **Who needs the answer.** The city head, before extending the scheme to two more cities.
         **The questions on the way.**
 
-        1. What do the city totals look like on 12,860 driver-weeks?
-        2. Which drivers drive the fall, and where are they?
-        3. How much of the Rs 1.9 crore top-up went to idle online hours?
+        1. What happens to a number that stands in for the goal once people are paid for it?
+        2. What did six drivers' hours and trips do between one week before and one week after?
+        3. What is trips per peak online hour on those twelve rows, before and after?
+        4. Which drivers moved it, and why do the six fall further than the city?
         '''),
         md('''
-        **Setup.** The data loads as in notebook 01; the import block is identical so a learner
-        running one notebook after another meets the same first screen.
+        ## What happens to a number that stands in for the goal once people are paid for it?
+
+        A **proxy** is a number that stands in for the thing somebody wants. A canteen, with
+        **invented numbers**, wants plates served to hungry diners and pays its servers per token
+        printed, because tokens are easy to count. Tokens go from 200 to 400 a day while plates stay
+        at 200, because each plate now gets two tokens.
+
+        **Predict before you run.** What does tokens per plate do? a) stays at 1.0, since plates did
+        not change; b) rises to 2.0, since every plate now carries two tokens; c) falls to 0.5;
+        d) cannot be told without the menu.
+
+        This cell sets up the notebook and draws the canteen's two numbers side by side.
         '''),
-        code(LOAD),
-        md('''
-        ## Where does chapter 2 sit on the day's ladder?
-        '''),
-        code('''
-kit.flow(["L1 hand count", "L2 city totals", "L3 the trap",
-          "L4 caveats", "L5 the fix in rupees", "L6 the interview"], lit=(1, 2))
+        code(SETUP + STYLE + '''
+canteen = pd.DataFrame({"day": ["before", "after"], "tokens": [200, 400], "plates": [200, 200]})
+canteen["tokens_per_plate"] = canteen["tokens"] / canteen["plates"]
+fig, ax = plt.subplots(figsize=(6.4, 3.2))
+ax.bar([0, 1], canteen["tokens"], width=0.35, color=VIOLET, label="tokens printed (the proxy)")
+ax.bar([0.38, 1.38], canteen["plates"], width=0.35, color=LAV, label="plates served (the goal)")
+ax.set_xticks([0.19, 1.19], ["before", "after"])
+ax.set_title("A canteen, invented numbers: the proxy doubled, the goal did not", loc="left")
+ax.legend(frameon=False)
+plt.show()
+canteen
 '''),
         md('''
-        ## What are the city totals, before and after?
+        **What happened.** The answer is b: tokens per plate went from 1.0 to 2.0 and not one more
+        diner ate. That is the **proxy test**: could a team hit this number while the thing it
+        stands for got worse, or stayed the same? The ticket's "peak online hours" counts an hour
+        whenever the driver app is open, so it can fail the same test on the road.
+
+        ## What did six drivers' hours and trips do between one week before and one week after?
+
+        The twelve rows are six drivers, A to F, each in two weeks: the week beginning 10 August 2026
+        (before the launch) and the week beginning 21 September 2026 (after). This cell keeps those
+        twelve driver-weeks out of `driver_weeks`.
         '''),
         code('''
-        before_mask = dw["week_start"] < "2026-08-31"
-        after_mask = dw["week_start"] >= "2026-08-31"
-        before = dw[before_mask]
-        after = dw[after_mask]
-        totals = pd.DataFrame({
-            "window": ["before", "after"],
-            "hours":  [before["peak_online_hours"].sum(), after["peak_online_hours"].sum()],
-            "trips":  [before["peak_trips"].sum(), after["peak_trips"].sum()],
-            "offers":   [before["peak_offers"].sum(), after["peak_offers"].sum()],
-            "accepted": [before["peak_accepted"].sum(), after["peak_accepted"].sum()],
-            "cancels":  [before["peak_driver_cancels"].sum(), after["peak_driver_cancels"].sum()],
-            "topup":    [before["topup_rs"].sum(), after["topup_rs"].sum()],
-        })
-        totals["trips_per_hour"] = (totals["trips"] / totals["hours"]).round(3)
-        totals["acceptance"] = (totals["accepted"] / totals["offers"]).round(3)
-        totals["cancels_per_accepted"] = (totals["cancels"] / totals["accepted"]).round(3)
-        totals[["window", "hours", "trips", "trips_per_hour", "acceptance",
-                "cancels_per_accepted", "topup"]]
-        '''),
+dw = pd.read_csv("../data/C2_W04_D01_driver_weeks_STUDENT.csv")
+names = {"d_0001": "A", "d_0002": "B", "d_0003": "C", "d_0004": "D", "d_0881": "E", "d_0882": "F"}
+twelve = dw[dw["driver_id"].isin(names) & dw["week_start"].isin(["2026-08-10", "2026-09-21"])].copy()
+twelve["driver"] = twelve["driver_id"].map(names)
+twelve["week"] = twelve["week_start"].map({"2026-08-10": "before", "2026-09-21": "after"})
+twelve = twelve.sort_values(["driver", "week"], ascending=[True, False])
+twelve[["driver", "week", "zone_mode", "peak_online_hours", "peak_offers", "peak_accepted", "peak_trips"]]
+'''),
         md('''
-        **What happened.** Hours 118,000 to 146,300 (up 24 percent). Trips 224,200 to 230,900 (up
-        3 percent). Trips per peak online hour 1.90 to 1.58. Acceptance 0.86 to 0.73. Cancels per
-        accepted 0.037 to 0.090. Top-up Rs 0 to Rs 1.9 crore. The paradox is smaller than on the
-        twelve rows: the city as a whole does not look like E and F; a part of it does.
-        '''),
-        md('''
-        ## Did demand fall, or did the hours stop converting to trips?
+        **Predict before you run.** On these six drivers, what happens to trips per peak online hour
+        between the two weeks? a) holds near 1.9; b) falls to about 1.6, as the city's did; c) falls
+        to about 1.2; d) rises above 2.0.
 
-        A fall in trips per peak online hour could mean two things: fewer riders asked for a ride,
-        or riders asked and no driver completed the trip. The first is a question about demand,
-        measured in `zone_weeks`.
+        This cell adds up the hours and the trips in each week, then divides the two sums.
         '''),
         code('''
-        zb = zones[zones["week_start"] < "2026-08-31"]
-        za = zones[zones["week_start"] >= "2026-08-31"]
-        print("zone requests before:", int(zb["peak_requests"].sum()),
-              "after:", int(za["peak_requests"].sum()))
-        print("median rider wait before:", round(zb["median_wait_min"].median(), 1),
-              "after:", round(za["median_wait_min"].median(), 1))
-        '''),
+totals = twelve.groupby("week")[["peak_online_hours", "peak_trips"]].sum().loc[["before", "after"]]
+totals["trips_per_hour"] = (totals["peak_trips"] / totals["peak_online_hours"]).round(2)
+totals
+'''),
         md('''
-        **What happened.** Zone-level rider requests rose about 2 percent, not fell. Median rider
-        wait held near 4.8 minutes before and 4.6 after. The fall in trips per peak online hour is
-        not demand. The hours that rose did not convert into trips.
+        **What happened.** The answer is c. The six drivers logged 60 hours and 114 trips before,
+        74 hours and 88 trips after: hours up 23 percent, trips down 23 percent, and trips per peak
+        online hour from 1.90 to 1.19. The city fell to 1.58, and the six fall further because they
+        were chosen to show the mechanism: two of them, E and F, logged hours with almost no trips,
+        a third of this sample. How common such drivers are in the city is chapter 2's question.
+
+        ## Which drivers moved the ratio, and in which direction?
+
+        This cell takes each driver's own trips per hour in both weeks and draws one line per driver.
         '''),
+        code('''
+wide = twelve.pivot(index="driver", columns="week", values=["peak_online_hours", "peak_trips"])
+rate = (wide["peak_trips"] / wide["peak_online_hours"]).round(2)[["before", "after"]]
+fig, ax = plt.subplots(figsize=(6.4, 3.8))
+for driver, row in rate.iterrows():
+    colour = ROSE if driver in "EF" else VIOLET
+    ax.plot([0, 1], [row["before"], row["after"]], marker="o", color=colour)
+    ax.text(1.04, row["after"], driver, color=colour, va="center")
+ax.set_xticks([0, 1], ["week of 10 Aug", "week of 21 Sep"])
+ax.set_ylim(0, 2.4)
+ax.set_ylabel("trips per peak online hour")
+ax.set_title("Four drivers held near 2; E and F fell close to zero", loc="left")
+plt.show()
+rate
+'''),
         md('''
-        ## Which drivers' per-driver rate fell most? (your-turn cell)
+        **What happened.** A to D held between 1.80 and 2.10 trips an hour. E went from 10 hours and
+        18 trips to 16 hours and 3 trips, accepting 4 of the 14 offers it was shown; F went from 10
+        hours and 17 trips to 14 hours and 2 trips, accepting 3 of 12. Both sit in outer zones
+        (Shamshabad and Rajendranagar), where riders ask for few trips at any hour. Their hours went
+        up and their trips nearly vanished: the proxy rose while the thing it stands for fell.
 
-        **Predict first.** Among 1,200 drivers, roughly how many have an after-window trips per
-        peak online hour below 1.0?
+        This cell draws the six drivers' hours and trips as two pairs of bars, the picture the
+        hand count makes.
+        '''),
+        code('''
+fig, ax = plt.subplots(figsize=(6.4, 3.4))
+ax.bar([0, 1], totals["peak_online_hours"], width=0.35, color=VIOLET, label="peak online hours")
+ax.bar([0.38, 1.38], totals["peak_trips"], width=0.35, color=LAV, label="completed peak trips")
+for x, v in zip([0, 1, 0.38, 1.38], list(totals["peak_online_hours"]) + list(totals["peak_trips"])):
+    ax.text(x, v + 2, str(v), ha="center")
+ax.set_xticks([0.19, 1.19], ["before", "after"])
+ax.set_title("Six drivers: hours up 23 percent, trips down 23 percent", loc="left")
+ax.legend(frameon=False, loc="upper left")
+plt.show()
+'''),
+        md('''
+        This cell checks the claims the chapter makes about its own numbers.
+        '''),
+        code('''
+check("the canteen's tokens per plate went from 1.0 to 2.0", list(canteen["tokens_per_plate"]) == [1.0, 2.0])
+check("the twelve rows are six drivers in two weeks", len(twelve) == 12 and twelve["driver"].nunique() == 6)
+check("hours 60 before and 74 after", list(totals["peak_online_hours"]) == [60, 74])
+check("trips 114 before and 88 after", list(totals["peak_trips"]) == [114, 88])
+check("trips per peak online hour 1.90 before and 1.19 after", list(totals["trips_per_hour"]) == [1.90, 1.19])
+check("E and F fell below 0.25 trips an hour after the launch", (rate.loc[["E", "F"], "after"] < 0.25).all())
+'''),
+        md('''
+        ## What does chapter 1 answer?
 
-        - a) About 30
-        - b) About 100
-        - c) About 180
-        - d) About 400
+        1. A paid proxy drifts: the canteen's tokens doubled while plates stayed at 200 (invented).
+        2. The six drivers' hours rose from 60 to 74 while their trips fell from 114 to 88.
+        3. Trips per peak online hour on the twelve rows fell from 1.90 to 1.19.
+        4. E and F moved it: their hours rose while their trips fell to 3 and 2. The six fall further
+           than the city's 1.58 because they were chosen to show the mechanism.
 
-        The next cell is empty. **Your task:** write a small groupby on `after` that computes
-        per-driver trips per online hour and counts how many drivers come out below 1.0.
+        **The check a senior analyst runs before trusting a rate.** Read its baseline (1.90 before),
+        its denominator (hours the app was open, which a driver controls) and the evidence that the
+        thing it stands for moved (trips rose only 3 percent across the city).
+
+        **In the interview.** [S] How would you measure the success of a new feature? A hire-grade
+        answer starts from what the feature is for and names a number that cannot rise while that
+        thing gets worse. Notebook 02 runs the same count on all 12,860 driver-weeks.
+        '''),
+    ])
+
+
+def nb02():
+    build(NB / "C2_W04_D01_02_full_data_trap_STUDENT.ipynb", [
+        md(f'''
+        # What do the city totals say over twelve weeks, and which drivers and zones drive the fall?
+
+        Week 4, Monday, chapter 2 of 3. Levels 2 and 3: the same count on the full data in the
+        smallest code, then the trap, the denominator and the segment that drives the number.
+
+        **The case.** Uber's Hyderabad city team launched a peak-hour earnings guarantee on Monday
+        31 August 2026, a floor of Rs 300 per peak online hour with Uber paying the gap as a top-up.
+        Peak online hours rose 24 percent over the six weeks after the launch, completed peak trips 3
+        percent, and the city head asks whether the scheme is working, what it should pay for and
+        whether anyone is gaming it.
+
+        {LABEL}
+
+        Notebook 01 counted six drivers by hand: their hours rose from 60 to 74, their trips fell from
+        114 to 88, and trips per peak online hour fell from 1.90 to 1.19, pulled down by two drivers in
+        outer zones. This notebook runs the count on every driver-week.
+
+        **Who needs the answer.** The city head, before a proposal to extend the scheme to two more
+        cities goes out. A fall read as weak demand, or measured with the wrong denominator, sends the
+        same top-up further.
+
+        **The questions on the way.**
+
+        1. What are the city's totals before and after the launch?
+        2. Did rider demand fall?
+        3. What does a quick average of each driver-week's rate say, and why is it wrong?
+        4. Which drivers sit under 1.0 trip per peak online hour after the launch?
+        5. Where did their new hours go, and does a second route find the same drivers?
+        '''),
+        code(SETUP + STYLE + '''
+dw = pd.read_csv("../data/C2_W04_D01_driver_weeks_STUDENT.csv")
+zw = pd.read_csv("../data/C2_W04_D01_zone_weeks_STUDENT.csv")
+dw["window"] = dw["week_start"].lt("2026-08-31").map({True: "before", False: "after"})
+zw["window"] = zw["week_start"].lt("2026-08-31").map({True: "before", False: "after"})
+print(f"{len(dw):,} driver-weeks and {len(zw)} zone-weeks, twelve weeks from {dw.week_start.min()}")
+'''),
+        md('''
+        ## What are the city's totals before and after the launch?
+
+        A rate is a ratio of two sums: add up every trip, add up every hour, then divide. This cell
+        sums the six weeks on each side of the launch and takes each rate that way.
+        '''),
+        code('''
+city = dw.groupby("window")[["peak_online_hours", "peak_trips", "peak_offers", "peak_accepted",
+                             "peak_driver_cancels", "peak_hours_no_trip"]].sum().loc[["before", "after"]]
+city["trips_per_hour"] = (city["peak_trips"] / city["peak_online_hours"]).round(2)
+city["acceptance"] = (city["peak_accepted"] / city["peak_offers"]).round(3)
+city["driver_cancel_share"] = (city["peak_driver_cancels"] / city["peak_accepted"]).round(3)
+city["no_trip_share"] = (city["peak_hours_no_trip"] / city["peak_online_hours"]).round(2)
+city.T
+'''),
+        md('''
+        **What happened.** Peak online hours rose from 118,000 to 146,300 and completed peak trips from
+        224,200 to 230,900, so trips per peak online hour fell from 1.90 to 1.58. The share of offers
+        accepted fell from 0.863 to 0.730, the share of accepted trips the driver then cancelled rose
+        from 0.037 to 0.090, and the share of online hours with no completed trip rose from 0.22 to
+        0.38.
+
+        ## Did rider demand fall?
+
+        If riders asked for fewer trips, trips per online hour would fall with nobody gaming
+        anything. Demand lives in `zone_weeks`, which counts rider requests.
+
+        **Predict before you run.** From the six weeks before to the six weeks after, rider requests
+        a) fell by about a tenth; b) held flat to the hundred; c) rose a little; d) rose by a quarter,
+        as hours did.
+
+        This cell sums requests and fulfilled requests by window, takes the middle of the 72
+        zone-week median waits, and sets offers beside requests.
+        '''),
+        code('''
+demand = zw.groupby("window").agg(requests=("peak_requests", "sum"), fulfilled=("peak_fulfilled", "sum"),
+                                  median_wait=("median_wait_min", "median")).loc[["before", "after"]]
+demand["unfulfilled_share"] = (1 - demand["fulfilled"] / demand["requests"]).round(2)
+demand["offers_per_request"] = (city["peak_offers"] / demand["requests"]).round(2)
+demand
+'''),
+        md('''
+        **What happened.** The answer is c: rider requests rose from 251,910 to 256,556, up 1.8
+        percent, and the share left unfulfilled went from 0.11 to 0.10, while the median wait moved
+        from 4.8 to 4.6 minutes. The fall is not demand. Offers per request rose from 1.07 to 1.35,
+        because a request that one driver declines is offered to the next and counted again in
+        `driver_weeks`: more declining shows up as more offers for the same riders.
+
+        This cell draws the twelve weeks, hours on the left axis and trips per hour on the right, to
+        see whether the after window is two odd weeks or a level that held.
+        '''),
+        code('''
+weekly = dw.groupby("week_start")[["peak_online_hours", "peak_trips"]].sum()
+weekly["trips_per_hour"] = weekly["peak_trips"] / weekly["peak_online_hours"]
+fig, ax = plt.subplots(figsize=(8.0, 3.8))
+ax.plot(range(12), weekly["peak_online_hours"], marker="o", color=VIOLET)
+ax.set_ylabel("peak online hours", color=VIOLET)
+right = ax.twinx()
+right.plot(range(12), weekly["trips_per_hour"], marker="s", color=ROSE)
+right.set_ylabel("trips per peak online hour", color=ROSE)
+right.spines["right"].set_visible(True)
+ax.axvline(5.5, color=MUTED, linestyle="--")
+ax.set_xticks(range(12), [w[5:] for w in weekly.index], rotation=45)
+ax.set_title("Hours jumped at the launch; trips per hour fell and stayed down", loc="left")
+plt.show()
+weekly["trips_per_hour"].round(2).to_frame().T
+'''),
+        md('''
+        **What happened.** Before the launch, trips per hour wandered between 1.88 and 1.93. In the
+        launch week it read 1.64, and from then on it stayed between 1.55 and 1.59. Hours rose from
+        about 20,000 a week to about 24,000. The fall held for six weeks.
+
+        ## What does a quick average of each driver-week's rate say?
+
+        **The plausible wrong answer.** A colleague in a hurry works out trips per hour for each
+        driver-week, then takes the plain average of those rates for each window.
+
+        **Predict before you run.** What does that average print for the after window? a) 1.58;
+        b) 1.71; c) 1.19; d) 1.90.
+
+        This cell computes the colleague's number beside the ratio of the sums.
+        '''),
+        code('''
+online = dw[dw["peak_online_hours"] > 0].copy()
+online["rate"] = online["peak_trips"] / online["peak_online_hours"]
+compare = pd.DataFrame({"mean_of_rates": online.groupby("window")["rate"].mean().round(2),
+                        "ratio_of_sums": city["trips_per_hour"]}).loc[["before", "after"]]
+compare
+'''),
+        md('''
+        **Why it is wrong.** The answer is b: the average of rates prints 1.71, against 1.58 from the
+        sums, so it hides two-fifths of the fall. An average of rates gives a 10-hour driver-week the
+        same weight as a 42-hour one, and the drivers who sat online longest are the ones whose rate
+        fell most. With **invented numbers**: a driver at 2.0 trips an hour for 10 hours and a driver
+        at 1.0 for 1 hour made 21 trips in 11 hours, which is 1.91 an hour, while the average of their
+        two rates is 1.5. The fix is the ratio of the sums, with its denominator named: trips per peak
+        online hour, all hours in the window.
+
+        ## Which drivers sit under 1.0 trip per peak online hour after the launch?
+
+        **Predict before you run.** Of the 1,200 drivers, how many made fewer than one trip per peak
+        online hour across the six weeks after the launch? a) about 30; b) about 100; c) about 180;
+        d) about 400.
+
+        **Your turn.** Type these lines into the empty cell below and run it:
+
+        ```python
+        after = dw[dw["window"] == "after"]
+        per_driver = after.groupby("driver_id")[["peak_trips", "peak_online_hours"]].sum()
+        per_driver["rate"] = per_driver["peak_trips"] / per_driver["peak_online_hours"]
+        (per_driver["rate"] < 1.0).sum()
+        ```
         '''),
         empty(),
         md('''
-        **What the room finds.** 180 drivers, roughly 15 percent of the base, with per-driver
-        trips per peak online hour below 1.0 in the after window. These are the drivers who logged
-        hours without doing many trips. The analysis below reads them off.
+        Your cell prints a count of drivers. The next cell builds the same group so the rest of the
+        notebook can use it, and sets their hours and trips before and after.
         '''),
         code('''
-        after_rate = (after.groupby("driver_id")
-                            .agg(hours=("peak_online_hours", "sum"),
-                                 trips=("peak_trips", "sum"))
-                            .reset_index())
-        after_rate["tph"] = after_rate["trips"] / after_rate["hours"]
-        low = after_rate[after_rate["tph"] < 1.0]
-        print(f"drivers with after tph < 1.0: {len(low)} of {len(after_rate)}")
-        '''),
-        md('''
-        **What happened.** 180 drivers, 15 percent of the enrolled base. The answer is c.
-        '''),
-        md('''
-        ## Where did those 180 drivers' new hours go?
-
-        If the hours doubled while the trips did not follow, the question is where the new hours
-        were logged. The `zone_mode` column records the zone where the driver's online time
-        concentrated that week; the three outer zones are Shamshabad, Rajendranagar and Patancheru.
-        '''),
-        code('''
-        OUTER = {"Shamshabad", "Rajendranagar", "Patancheru"}
-        idle_ids = set(low["driver_id"].astype(str))
-        idle_rows = dw[dw["driver_id"].isin(idle_ids)]
-        idle_before = idle_rows[idle_rows["week_start"] < "2026-08-31"]
-        idle_after = idle_rows[idle_rows["week_start"] >= "2026-08-31"]
-        outer_before = idle_before[idle_before["zone_mode"].isin(OUTER)]["peak_online_hours"].sum()
-        outer_after = idle_after[idle_after["zone_mode"].isin(OUTER)]["peak_online_hours"].sum()
-        new_hours = idle_after["peak_online_hours"].sum() - idle_before["peak_online_hours"].sum()
-        print(f"idle-tail new hours: {new_hours:,}")
-        print(f"of those, outer-zone new hours: {outer_after - outer_before:,}")
-        print(f"share in outer zones: {(outer_after - outer_before) / new_hours:.2f}")
-        '''),
-        md('''
-        **What happened.** About 22,000 new hours; about 72 percent of them in the three outer
-        zones where rider demand is thin. These are driver-weeks where the floor pays even if a
-        request never comes.
-        '''),
-        md('''
-        ## How much of the Rs 1.9 crore top-up went to acceptance below 0.5?
-        '''),
-        code('''
-        after = dw[dw["week_start"] >= "2026-08-31"].copy()
-        after["acceptance"] = after["peak_accepted"] / after["peak_offers"]
-        low_topup = after.loc[after["acceptance"] < 0.5, "topup_rs"].sum()
-        total_topup = after["topup_rs"].sum()
-        print(f"topup to acceptance < 0.5: Rs {low_topup:,}")
-        print(f"total topup after: Rs {total_topup:,}")
-        print(f"share: {low_topup / total_topup:.2f}")
-        '''),
-        md('''
-        **What happened.** 61 percent of the Rs 1.9 crore top-up (Rs 1.16 crore) went to
-        driver-weeks where fewer than half of the offers the driver saw were accepted. The scheme that
-        paid for being online paid Rs 1.16 crore to drivers who stayed online without serving the
-        riders who asked for them.
-        '''),
-        md('''
-        ## The trap: the colleague's draft, exactly
-
-        > **The plausible wrong number.** "Peak online hours up 24 percent over six weeks. Supply
-        > target met. Recommendation: extend the scheme to two more cities."
-
-        **The decision it would mislead.** A proposal to extend the scheme to two more cities. The
-        check that catches it: trips per peak online hour, which fell, and median rider wait,
-        which did not. The fix: pay for completed peak trips, with an acceptance guardrail.
-        '''),
-        md('''
-        ## Does the fall survive the removal of the 140 new drivers?
-        '''),
-        code('''
-        pre_launch_ids = set(f"d_{i:04d}" for i in range(1, 1061))
-        pre = dw[dw["driver_id"].isin(pre_launch_ids)]
-        pb = pre[pre["week_start"] < "2026-08-31"]
-        pa = pre[pre["week_start"] >= "2026-08-31"]
-        print("pre-launch cohort, trips/hour before:",
-              round(pb["peak_trips"].sum() / pb["peak_online_hours"].sum(), 3))
-        print("pre-launch cohort, trips/hour after:",
-              round(pa["peak_trips"].sum() / pa["peak_online_hours"].sum(), 3))
-        '''),
-        md('''
-        **What happened.** Trips per peak online hour fell to about 1.58 on the pre-launch cohort
-        alone, so the 140 new drivers do not explain the fall. The caveat on new drivers is
-        bounded by the data; the fall is in the hours that did not convert.
-        '''),
-        md('''
-        ## Second route: the idle-tail picture
-        '''),
-        code('''
-        import matplotlib.pyplot as plt
-        after = dw[dw["week_start"] >= "2026-08-31"]
-        s = after.sample(1500, random_state=20261026)
-        fig, ax = plt.subplots(figsize=(7.0, 4.5))
-        idle_mask = s["driver_id"].isin(idle_ids)
-        ax.scatter(s.loc[~idle_mask, "peak_online_hours"],
-                   s.loc[~idle_mask, "peak_trips"],
-                   s=10, color="#CFC9EE", alpha=0.6, label="other driver-weeks")
-        ax.scatter(s.loc[idle_mask, "peak_online_hours"],
-                   s.loc[idle_mask, "peak_trips"],
-                   s=14, color="#D63A6A", alpha=0.7, label="idle-tail driver-weeks")
-        ax.plot([0, 60], [0, 60 * 1.9], color="#5B3FD6", linestyle=":",
-                label="1.9 trips per hour")
-        ax.set_xlabel("peak online hours")
-        ax.set_ylabel("peak trips")
-        ax.set_title("The idle tail: hours rose, trips did not follow", loc="left")
-        ax.legend(frameon=False)
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
-        plt.tight_layout()
-        plt.show()
-        '''),
-        md('''
-        **What happened.** The second route reaches the same answer as the groupby: the
-        lower-right cluster is the idle tail; the Rs 1.16 crore went to driver-weeks in that
-        cluster.
-        '''),
-        md('''
-        ## How does the top-up split read as a chart?
-        '''),
-        code('''
-kit.bars([("acceptance below 0.5", int(low_topup / 1e5)),
-          ("acceptance at or above 0.5", int((total_topup - low_topup) / 1e5))],
-         title="Rs 1.9 crore top-up, in Rs lakh")
+after = dw[dw["window"] == "after"]
+per_driver = after.groupby("driver_id")[["peak_trips", "peak_online_hours"]].sum()
+slow = set(per_driver.index[per_driver["peak_trips"] / per_driver["peak_online_hours"] < 1.0])
+tail = dw[dw["driver_id"].isin(slow)].groupby("window")[["peak_online_hours", "peak_trips"]].sum()
+tail = tail.loc[["before", "after"]]
+print(f"{len(slow)} drivers, {len(slow) / 1200:.0%} of the 1,200")
+print("hours, after over before:", round(tail.loc["after", "peak_online_hours"] / tail.loc["before", "peak_online_hours"], 2))
+print("trips, after over before:", round(tail.loc["after", "peak_trips"] / tail.loc["before", "peak_trips"], 2))
 '''),
         md('''
-        ## What checks does chapter 2 close with?
+        **What happened.** The answer is c: 180 drivers, 15 percent of the 1,200. Their peak online
+        hours after the launch were 2.1 times their hours before, while their trips were 0.88 times,
+        down 12 percent. Call them the **idle tail**: drivers who stayed online without driving. The
+        six of chapter 1 held two such drivers, a third of the sample against 15 percent city-wide,
+        which is why the six fell to 1.19 while the city fell to 1.58.
+
+        ## Where did the idle tail's new hours go?
+
+        This cell compares the idle tail's hours in the three outer zones before and after, then
+        draws every driver-week after the launch, hours against trips.
         '''),
         code('''
-        kit.check("city hours before 118,000", before["peak_online_hours"].sum() == 118000)
-        kit.check("city hours after 146,300",  after["peak_online_hours"].sum() == 146300)
-        kit.check("city trips before 224,200", before["peak_trips"].sum() == 224200)
-        kit.check("city trips after 230,900",  after["peak_trips"].sum() == 230900)
-        kit.check("61 percent of topup to acceptance below 0.5",
-                  abs(low_topup / total_topup - 0.61) < 0.01)
-        kit.check("180 drivers in the idle tail", len(low) == 180)
-        '''),
+OUTER = ["Shamshabad", "Rajendranagar", "Patancheru"]
+idle = dw[dw["driver_id"].isin(slow)]
+outer_hours = idle[idle["zone_mode"].isin(OUTER)].groupby("window")["peak_online_hours"].sum()
+new_hours = tail.loc["after", "peak_online_hours"] - tail.loc["before", "peak_online_hours"]
+outer_share = (outer_hours["after"] - outer_hours["before"]) / new_hours
+print(f"new hours {new_hours:,}; share logged in the outer zones {outer_share:.2f}")
+mark = after["driver_id"].isin(slow)
+fig, ax = plt.subplots(figsize=(7.4, 4.2))
+ax.scatter(after.loc[~mark, "peak_online_hours"], after.loc[~mark, "peak_trips"], s=6, color=LAV,
+           label="every other driver-week")
+ax.scatter(after.loc[mark, "peak_online_hours"], after.loc[mark, "peak_trips"], s=8, color=ROSE,
+           label="the idle tail's driver-weeks")
+ax.plot([0, 36], [0, 36 * 1.9], linestyle=":", color=VIOLET, label="1.9 trips per hour")
+ax.set_xlim(0, 45)
+ax.set_xlabel("peak online hours in the week")
+ax.set_ylabel("completed peak trips")
+ax.set_title("After the launch: the idle tail sits far right and low", loc="left")
+ax.legend(frameon=False)
+plt.show()
+'''),
         md('''
-        **Chapter 2 close.** The city's number rose because 180 driver-weeks logged outer-zone
-        hours without serving riders. 61 percent of Rs 1.9 crore paid for that. The next chapter
-        writes the definition that fixes the scheme.
+        **What happened.** The idle tail logged 22,000 new hours, and 72 percent of them sat in the
+        three outer zones, where requests are thin at any hour: a driver parked there stays online,
+        is shown few requests, and is paid the floor. A week holds at most 42 peak hours (two
+        three-hour windows a day, seven days), and many idle-tail weeks sit near that edge.
 
-        > **Kavya's review.** "Before anyone celebrates a number, I ask what is in its denominator
-        > and whether the denominator can grow without the numerator. On Monday it did."
+        ## Does a second route find the same drivers?
+
+        The first route sorted drivers by trips per hour. The second ignores trips and asks only how
+        often each driver accepted what the app offered: this cell keeps every driver whose accepted
+        share stayed under 0.5 in every week they worked after the launch, then draws requests by
+        zone to show how thin the outer zones are.
+        '''),
+        code('''
+weeks_after = after[after["peak_offers"] > 0]
+low_every_week = (weeks_after["peak_accepted"] / weeks_after["peak_offers"] < 0.5).groupby(weeks_after["driver_id"]).all()
+second = set(low_every_week.index[low_every_week])
+print(f"{len(second)} drivers by acceptance; the same drivers as the first route: {second == slow}")
+by_zone = zw.groupby("zone")["peak_requests"].sum().sort_values()
+fig, ax = plt.subplots(figsize=(7.4, 3.8))
+ax.barh(by_zone.index, by_zone.values, color=[ROSE if z in OUTER else VIOLET for z in by_zone.index])
+ax.set_xlabel("rider requests at peak, twelve weeks")
+ax.set_title("The three outer zones get a fraction of the requests", loc="left")
+plt.show()
+'''),
+        code('''
+check("hours 118,000 before and 146,300 after", list(city["peak_online_hours"]) == [118000, 146300])
+check("trips per peak online hour 1.90 before and 1.58 after", list(city["trips_per_hour"]) == [1.90, 1.58])
+check("rider requests rose, 251,910 to 256,556", list(demand["requests"]) == [251910, 256556])
+check("the average of rates prints 1.71 after, above the true 1.58", compare.loc["after", "mean_of_rates"] == 1.71)
+check("180 drivers under 1.0 trip per hour after the launch", len(slow) == 180)
+check("the idle tail's hours 2.1 times, trips 0.88 times",
+      round(tail.loc["after", "peak_online_hours"] / tail.loc["before", "peak_online_hours"], 2) == 2.1
+      and round(tail.loc["after", "peak_trips"] / tail.loc["before", "peak_trips"], 2) == 0.88)
+check("72 percent of the new hours in the outer zones", round(outer_share, 2) == 0.72)
+check("the acceptance route finds the same 180 drivers", second == slow)
+'''),
+        md('''
+        ## What does chapter 2 answer?
+
+        1. Hours rose from 118,000 to 146,300 and trips from 224,200 to 230,900: 1.90 to 1.58 trips an hour.
+        2. Demand did not fall: rider requests rose 1.8 percent, and waits moved from 4.8 to 4.6 minutes.
+        3. An average of each week's rate prints 1.71 and hides two-fifths of the fall; the ratio of
+           the sums, 1.58, is the number.
+        4. 180 drivers, 15 percent, sit under 1.0 trip an hour after the launch, with hours 2.1 times
+           and trips 0.88 times their level before.
+        5. 72 percent of their new hours sat in the three thin outer zones, and the acceptance route
+           finds the same 180 drivers.
+
+        **The check a senior analyst runs.** Before celebrating hours, set the baseline (1.90) beside
+        the new rate (1.58), name the denominator (hours the app was open), look for the evidence in
+        a second table (rider requests rose), and reach the segment a second way (acceptance finds
+        the same 180).
+
+        **In the interview.** [F] What makes a metric gameable? The measured person controls the
+        count: here a driver decides when the app is open. Notebook 03 prices what that cost and
+        writes the number the scheme should pay for.
         '''),
     ])
 
 
-# ---------------------------------------------------------------------------- notebook 03
-def build_03():
+def nb03():
     build(NB / "C2_W04_D01_03_definition_and_cost_STUDENT.ipynb", [
-        md('''
-        # Which metric should the scheme pay for, what does it cost, and what does SQL say?
+        md(f'''
+        # Which number should the scheme pay for, what did paying for hours cost, and what can the data not show?
 
-        **Week 4, Monday, chapter 3 of 3 (L4 and L5).** Chapter 2 found the 180 driver-weeks and
-        the Rs 1.16 crore cost of the gaming. This notebook builds the redesigned scheme's
-        definition, computes the number it pays for and the two guardrails, sizes the saving under
-        the redesign and reaches the same totals in SQL.
+        Week 4, Monday, chapter 3 of 3. Levels 3 to 5: the trap priced in rupees, the definition that
+        resists it, the caveats an engineer names aloud, and a second route in SQL.
 
-        > *Illustrative case: the company is real, the situation and the data are synthetic, built
-        > for this class.*
+        **The case.** Uber's Hyderabad city team launched a peak-hour earnings guarantee on Monday
+        31 August 2026: a floor of Rs 300 per peak online hour, with Uber paying the gap between a
+        driver's trip earnings and the floor as a top-up. Six weeks on, peak online hours are up 24
+        percent, completed peak trips up 3 percent, and the top-up has cost Rs 1.9 crore.
 
-        **Who needs the answer.** The Hyderabad city head, by Friday. **The questions on the
-        way.**
+        {LABEL}
 
-        1. Which definition passes the Wells Fargo test on a scheme that pays for a number?
-        2. What does the redesign's north star read, before and after?
-        3. What would the redesign have cost over the same six weeks?
-        4. Does SQL reach the same totals the groupby reaches?
+        Notebook 02 found the fall in the full data: trips per peak online hour fell from 1.90 to 1.58
+        while rider requests rose, and 180 drivers (15 percent) logged 2.1 times their hours with 12
+        percent fewer trips, 72 percent of their new hours in the three thin outer zones.
+
+        **Who needs the answer.** The city head, who must say by Friday what the scheme pays for, and
+        the finance partner, who holds the top-up budget. A scheme that keeps paying for hours keeps
+        paying drivers to sit online in zones with no riders.
+
+        **The questions on the way.**
+
+        1. How much of the Rs 1.9 crore went to driver-weeks that accepted fewer than half their offers?
+        2. What would the redesign save, under a stated assumption about how drivers respond?
+        3. What do the north star and its three guardrails read, before and after?
+        4. Which number moved first?
+        5. Which doubts does the fall survive, and which stay open?
+        6. Does SQL reach the same totals as pandas?
         '''),
-        md('''
-        **Setup.** The data loads as in notebook 01 and 02.
-        '''),
-        code(LOAD),
-        md('''
-        ## Where does chapter 3 sit on the day's ladder?
-        '''),
-        code('''
-kit.flow(["L1 hand count", "L2 city totals", "L3 the trap",
-          "L4 caveats", "L5 the fix in rupees", "L6 the interview"], lit=(3, 4))
+        code(SETUP + STYLE + '''
+dw = pd.read_csv("../data/C2_W04_D01_driver_weeks_STUDENT.csv")
+zw = pd.read_csv("../data/C2_W04_D01_zone_weeks_STUDENT.csv")
+dw["window"] = dw["week_start"].lt("2026-08-31").map({True: "before", False: "after"})
+zw["window"] = zw["week_start"].lt("2026-08-31").map({True: "before", False: "after"})
+after = dw[dw["window"] == "after"].copy()
+after["acceptance"] = after["peak_accepted"] / after["peak_offers"]
+print(f"{len(after):,} driver-weeks after the launch; top-up paid Rs {after['topup_rs'].sum():,}")
 '''),
         md('''
-        ## What are the seven lines of the definition?
+        ## How much of the Rs 1.9 crore went to driver-weeks that accepted fewer than half their offers?
 
-        A definition that pays for a number has seven lines, each catching a way of gaming the
-        number. The seven lines, with the gaming each line catches:
-        '''),
-        code('''
-        definition = pd.DataFrame({
-            "line": ["numerator", "denominator", "window", "exclusions",
-                     "what it does not reward", "guardrails", "leading inputs"],
-            "value": [
-                "trips completed inside the peak windows, counted per paying rider",
-                "drivers enrolled who were online at least one peak hour that week",
-                "the calendar week",
-                "trips cancelled by either side, test accounts, trips outside the window",
-                "hours online, requests declined, a shrinking enrolled base",
-                "acceptance share floor, median rider wait, top-up per completed trip",
-                "enrolled drivers online in the first peak hour; requests per online hour by zone",
-            ],
-        })
-        definition
-        '''),
-        md('''
-        **What happened.** The denominator carries the Wells Fargo lesson from chapter 1: the
-        measurement is counted only on drivers who completed at least one peak hour of online
-        time. The "what it does not reward" line names peak online hours, which the current scheme
-        pays for. The guardrails each catch a gaming of the north star.
-        '''),
-        md('''
-        ## What does the redesign's north star read, before and after?
+        **Predict before you run.** What share of the top-up went to driver-weeks whose accepted share
+        was under 0.5? a) 15 percent; b) 39 percent; c) 61 percent; d) 88 percent.
 
-        Completed peak trips per enrolled driver per week, counted on drivers online at least one
-        peak hour that week.
+        This cell splits the top-up at an accepted share of 0.5 and draws the two parts.
         '''),
         code('''
-        before_mask = dw["week_start"] < "2026-08-31"
-        after_mask = dw["week_start"] >= "2026-08-31"
-        dw_before = dw[before_mask]
-        dw_after = dw[after_mask]
-        north = []
-        for name, d in [("before", dw_before), ("after", dw_after)]:
-            d = d[d["peak_online_hours"] > 0]
-            weeks = d["week_start"].nunique()
-            active_dw = d.shape[0]
-            trips = d["peak_trips"].sum()
-            north.append({"window": name, "weeks": weeks,
-                           "active_driver_weeks": active_dw,
-                           "trips": trips,
-                           "trips_per_active_driver_week": round(trips / active_dw, 2)})
-        pd.DataFrame(north)
-        '''),
-        md('''
-        **What happened.** The north star reads 35.76 trips per online driver-week before and 35.89
-        after: hours rose 24 percent and trips per driver barely moved. The redesign would pay for
-        this number, never for the hours the driver was online.
-        '''),
-        md('''
-        ## Guardrail 1: what is the acceptance share, before and after?
-        '''),
-        code('''
-        g1 = []
-        for name, d in [("before", dw_before), ("after", dw_after)]:
-            acc = d["peak_accepted"].sum() / d["peak_offers"].sum()
-            g1.append({"window": name, "acceptance_share": round(acc, 3)})
-        pd.DataFrame(g1)
-        '''),
-        md('''
-        **What happened.** Acceptance share dropped from 0.86 to 0.73. A floor at (say) 0.75 would
-        have excluded the idle-tail driver-weeks from any top-up and still kept the honest
-        majority inside the scheme.
-        '''),
-        md('''
-        ## What does the acceptance drop look like in a chart?
-        '''),
-        code('''
-kit.bars([("acceptance before", 86),
-          ("acceptance after", 73),
-          ("cancels/accepted before", 4),
-          ("cancels/accepted after", 9)],
-         title="Acceptance down, cancels up (percent)")
+low = after.loc[after["acceptance"] < 0.5, "topup_rs"].sum()
+high = after.loc[after["acceptance"] >= 0.5, "topup_rs"].sum()
+fig, ax = plt.subplots(figsize=(7.0, 2.6))
+ax.barh(["accepted under 0.5", "accepted 0.5 or more"], [low / 1e5, high / 1e5], color=[ROSE, VIOLET])
+for y, v in enumerate([low, high]):
+    ax.text(v / 1e5 + 2, y, f"Rs {v / 1e5:.0f} lakh", va="center")
+ax.set_xlabel("top-up paid over six weeks, Rs lakh")
+ax.set_title("Where the Rs 1.9 crore top-up went", loc="left")
+plt.show()
+print(f"share to driver-weeks under 0.5: {low / (low + high):.2f}")
 '''),
         md('''
-        ## Guardrail 2: what is the median rider wait, before and after?
-        '''),
-        code('''
-        g2 = []
-        for name, mask in [("before", zones["week_start"] < "2026-08-31"),
-                            ("after",  zones["week_start"] >= "2026-08-31")]:
-            z = zones[mask]
-            g2.append({"window": name, "median_wait_min": round(z["median_wait_min"].median(), 2)})
-        pd.DataFrame(g2)
-        '''),
-        md('''
-        **What happened.** Rider wait held near 4.8 before and 4.6 after. The guardrail would
-        trigger if wait rose above the floor the city sets. The current rate is fine; the
-        guardrail bounds the future.
-        '''),
-        md('''
-        ## What would the redesign have cost over the same six weeks?
+        **What happened.** The answer is c: Rs 1.159 crore, 61 percent of the Rs 1.9 crore, went to
+        driver-weeks that accepted fewer than half the offers they were shown, and Rs 74 lakh went to
+        the rest. Had only the driver-weeks at or above 0.5 been paid, and had every driver behaved the
+        same, the six weeks would have cost Rs 74 lakh. A new rule changes behaviour, so that Rs 74
+        lakh is a floor on the cost, never a forecast of it.
 
-        Under the redesign, only driver-weeks with acceptance share at or above 0.5 earn the
-        floor. The gaming (acceptance below 0.5) earns zero. The top-up that would have been paid
-        is the Rs 7.4 million (Rs 74 lakh) that went to acceptance at or above 0.5.
-        '''),
-        code('''
-        after_tag = dw_after.copy()
-        after_tag["acceptance"] = after_tag["peak_accepted"] / after_tag["peak_offers"]
-        gamed_cost = after_tag.loc[after_tag["acceptance"] < 0.5, "topup_rs"].sum()
-        kept_cost  = after_tag.loc[after_tag["acceptance"] >= 0.5, "topup_rs"].sum()
-        saving = gamed_cost
-        print(f"gamed cost (acceptance below 0.5): Rs {gamed_cost:,}")
-        print(f"kept cost (acceptance at or above 0.5): Rs {kept_cost:,}")
-        print(f"saving under the redesign: Rs {saving:,}")
-        '''),
-        md('''
-        **What happened.** The redesign would have saved Rs 1.16 crore over six weeks, by not
-        paying for driver-weeks that stayed online without serving the riders who asked for
-        them. The kept cost of Rs 74 lakh is the honest cost of the scheme.
-        '''),
-        md('''
-        ## Does SQL reach the same totals as the groupby?
+        ## What would the redesign save, under a stated assumption about how drivers respond?
 
-        The second route runs the same aggregation in SQL. The query below is what the warehouse
-        version would execute; here we run it in-memory on the DataFrame via `pandasql`-shaped
-        syntax, or more simply via the same groupby.
+        Some idle-tail drivers would start accepting enough to qualify under a rule that pays for
+        trips. The share of the idle tail's top-up that would still be paid is an **assumption**:
+        0.2 at the low end, 0.5 at the high end. The A/B test of the redesign is what settles it.
+        This cell prices both ends.
         '''),
         code('''
-        sql_eq = dw.copy()
-        sql_eq["window"] = sql_eq["week_start"].apply(
-            lambda s: "before" if s < "2026-08-31" else "after")
-        agg = sql_eq.groupby("window").agg(
-            hours=("peak_online_hours", "sum"),
-            trips=("peak_trips", "sum"),
-            bookings=("peak_bookings_rs", "sum"),
-            topup=("topup_rs", "sum"),
-        ).reset_index()
-        agg["trips_per_hour"] = (agg["trips"] / agg["hours"]).round(3)
-        agg
-        '''),
+saving = pd.DataFrame({"still_paid_share": [0.2, 0.5]})
+saving["saving_rs"] = (low * (1 - saving["still_paid_share"])).round()
+saving["saving_lakh"] = (saving["saving_rs"] / 1e5).round(1)
+saving
+'''),
         md('''
-        **What happened.** The two routes reach the same numbers. The pandas groupby and the SQL
-        aggregation would print byte-identical totals on these driver-weeks; in Week 2 the room
-        met this discipline on Kalpa's warehouse, and chapter 2 of notebook 03 shows the same
-        on this day.
-        '''),
-        md('''
-        ## What does the redesign cost, in rupees, over the six weeks?
-        '''),
-        code('''
-        import matplotlib.pyplot as plt
-        labels = ["current scheme (paid)", "redesign (would have paid)",
-                  "saving (gamed share)"]
-        values = [after_tag["topup_rs"].sum(), kept_cost, gamed_cost]
-        fig, ax = plt.subplots(figsize=(7.0, 3.6))
-        bars = ax.bar(labels, [v / 1e5 for v in values],
-                       color=["#D63A6A", "#1F8A5B", "#5B3FD6"])
-        for bar, v in zip(bars, values):
-            ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 2,
-                    f"Rs {v/1e5:,.0f} lakh", ha="center", fontsize=10, color="#1A0F5C")
-        ax.set_ylabel("Rs lakh")
-        ax.set_title("What the redesign would have cost over six weeks", loc="left")
-        ax.set_ylim(0, max(values) / 1e5 * 1.25)
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
-        plt.tight_layout()
-        plt.show()
-        '''),
-        md('''
-        ## What checks does chapter 3 close with?
-        '''),
-        code('''
-        kit.check("gamed share equals 61 percent of total topup",
-                  abs(gamed_cost / after_tag["topup_rs"].sum() - 0.61) < 0.01)
-        kit.check("acceptance before 0.86", round(dw_before["peak_accepted"].sum() /
-                                                   dw_before["peak_offers"].sum(), 2) == 0.86)
-        kit.check("acceptance after 0.73", round(dw_after["peak_accepted"].sum() /
-                                                  dw_after["peak_offers"].sum(), 2) == 0.73)
-        kit.check("SQL twin reaches the same bookings before",
-                  int(agg.loc[agg["window"] == "before", "bookings"].values[0]) == 36993000)
-        kit.check("SQL twin reaches the same bookings after",
-                  int(agg.loc[agg["window"] == "after", "bookings"].values[0]) == 38098500)
-        kit.check("seven definition lines are present", len(definition) == 7)
-        '''),
-        md('''
-        **Chapter 3 close.** The scheme has a definition that pays for a number the city wants.
-        The gamed version cost Rs 1.9 crore; the redesign would have cost Rs 74 lakh. The next
-        step for the Hyderabad team is to test whether the redesign moves the number, which the
-        A/B session in the afternoon owns.
+        **What happened.** If a fifth of the idle tail's top-up were still paid, the redesign saves
+        Rs 92.7 lakh over six weeks; if half were, Rs 58.0 lakh. The range is the honest answer to
+        finance until the test reports.
 
-        > **Kavya's review.** "A number paid for in rupees needs a definition that writes down
-        > every gaming it does not reward. Yours does; the handover tomorrow builds the test."
+        ## What do the north star and its three guardrails read, before and after?
+
+        The redesign's definition, line by line:
+
+        | Line | What it says |
+        |---|---|
+        | Numerator | Trips completed inside the peak windows, counted per paying rider, as Uber counts trips |
+        | Denominator | Enrolled drivers online at least one peak hour that week, with the count printed beside the rate |
+        | Window | The calendar week |
+        | Exclusions | Trips cancelled by either side, test accounts, trips outside the windows |
+        | What it does not reward | Hours online, offers declined, a shrinking enrolled base |
+        | Guardrails | Offers accepted over offers shown, at or above a floor the city sets; median rider wait at peak; top-up per completed trip |
+        | Gaming note | Each guardrail names the way of hitting the north star that it catches |
+
+        This cell computes the north star and the three guardrails for each window.
+        '''),
+        code('''
+online = dw[dw["peak_online_hours"] > 0]
+board = pd.DataFrame({
+    "north_star_trips_per_online_driver_week": (online.groupby("window")["peak_trips"].sum()
+                                                / online.groupby("window").size()).round(2),
+    "online_driver_weeks": online.groupby("window").size(),
+    "acceptance": (dw.groupby("window")["peak_accepted"].sum() / dw.groupby("window")["peak_offers"].sum()).round(3),
+    "median_wait": zw.groupby("window")["median_wait_min"].median(),
+    "topup_per_trip_rs": (dw.groupby("window")["topup_rs"].sum() / dw.groupby("window")["peak_trips"].sum()).round(1),
+}).loc[["before", "after"]]
+board.T
+'''),
+        md('''
+        **What happened.** The north star read 35.76 trips per online driver-week before and 35.89
+        after: hours rose 24 percent and the number the scheme exists for barely moved. Acceptance
+        fell from 0.863 to 0.730, the median wait went from 4.8 to 4.6 minutes, and the top-up cost
+        Rs 82.3 per completed trip after the launch, against nothing before.
+
+        ## Which number moved first?
+
+        A **leading** input moves before the number the plan is judged on; a **lagging** one confirms
+        it later. This cell draws the weekly share of offers accepted beside bookings per online hour.
+        '''),
+        code('''
+wk = dw.groupby("week_start")[["peak_accepted", "peak_offers", "peak_bookings_rs", "peak_online_hours"]].sum()
+wk["acceptance"] = wk["peak_accepted"] / wk["peak_offers"]
+wk["rs_per_hour"] = wk["peak_bookings_rs"] / wk["peak_online_hours"]
+fig, (a1, a2) = plt.subplots(1, 2, figsize=(9.0, 3.2))
+a1.plot(range(12), wk["acceptance"], marker="o", color=VIOLET)
+a1.set_title("Offers accepted, share", loc="left")
+a2.plot(range(12), wk["rs_per_hour"], marker="s", color=ROSE)
+a2.set_title("Bookings per online hour, Rs", loc="left")
+for a in (a1, a2):
+    a.axvline(5.5, color=MUTED, linestyle="--")
+    a.set_xticks([0, 6, 11], ["20 Jul", "31 Aug", "5 Oct"])
+plt.show()
+wk.loc[["2026-08-31", "2026-09-07", "2026-09-14"], ["acceptance", "rs_per_hour"]].round(3)
+'''),
+        md('''
+        **What happened.** Acceptance dropped to its new level in the launch week (0.729) and stayed
+        there; bookings per online hour fell to Rs 271 in the launch week and kept falling to Rs 262
+        and Rs 259 over the next two. Acceptance settled two weeks before bookings per hour did, which
+        is what a leading input is for: a city team watching it would have seen the gaming in week one.
+
+        ## Which doubts does the fall survive, and which stay open?
+
+        **Predict before you run.** Take out the 140 drivers who joined after the launch. What does
+        trips per peak online hour read for the six weeks after? a) 1.90; b) 1.79; c) 1.58; d) 1.19.
+
+        This cell restates the after-window rate under each cut the data can make.
+        '''),
+        code('''
+OUTER = ["Shamshabad", "Rajendranagar", "Patancheru"]
+rate = lambda d: round(d["peak_trips"].sum() / d["peak_online_hours"].sum(), 2)
+busiest = zw.groupby("week_start")["peak_requests"].sum().nlargest(3).index
+cuts = pd.Series({
+    "before, every driver": rate(dw[dw["window"] == "before"]),
+    "after, every driver": rate(after),
+    "after, drivers who joined before the launch": rate(after[after["driver_id"] <= "d_1060"]),
+    "after, the three busiest weeks of the twelve": rate(dw[dw["week_start"].isin(busiest)]),
+    "after, core zones only": rate(after[~after["zone_mode"].isin(OUTER)]),
+})
+fig, ax = plt.subplots(figsize=(7.4, 3.2))
+ax.barh(cuts.index[::-1], cuts.values[::-1], color=[VIOLET, VIOLET, VIOLET, ROSE, LAV])
+ax.set_xlim(0, 2.2)
+ax.set_xlabel("trips per peak online hour")
+ax.set_title("The fall under each cut the data can make", loc="left")
+plt.show()
+cuts
+'''),
+        md('''
+        **What happened.** The answer is c: without the 140 new drivers the rate after the launch is
+        still 1.58, so the new drivers do not explain the fall. In the three weeks with the most rider
+        requests of all twelve (the first three after the launch, still in the rains) the rate was
+        already 1.60, which bounds the monsoon argument: demand was at its highest and the fall was
+        there. In the core zones the rate fell from 1.90 to 1.79, so most of the fall sits in the thin
+        outer zones. Three doubts stay open: drivers on two apps (Uber cannot see the other app, and
+        the data holds weeks, not hours), who chose to enrol (every driver in these tables enrolled),
+        and cause (only a test of the redesign settles whether the scheme or the season moved the
+        number).
+
+        ## Does SQL reach the same totals as pandas?
+
+        This cell loads `driver_weeks` into an in-memory SQLite database and sums the same columns
+        with one `GROUP BY`, then compares the two routes.
+        '''),
+        code('''
+import sqlite3
+con = sqlite3.connect(":memory:")
+dw.to_sql("driver_weeks", con, index=False)
+sql = pd.read_sql("""
+    SELECT window, SUM(peak_online_hours) AS hours, SUM(peak_trips) AS trips,
+           ROUND(1.0 * SUM(peak_trips) / SUM(peak_online_hours), 2) AS trips_per_hour
+    FROM driver_weeks GROUP BY window ORDER BY window DESC""", con).set_index("window")
+sql
+'''),
+        code('''
+check("61 percent of the top-up went to driver-weeks under 0.5", round(low / (low + high), 2) == 0.61)
+check("Rs 1.159 crore and Rs 74 lakh", (low, high) == (11590000, 7410000))
+check("the north star reads 35.76 before and 35.89 after", list(board.iloc[:, 0]) == [35.76, 35.89])
+check("acceptance settled in the launch week at 0.729", round(wk.loc["2026-08-31", "acceptance"], 3) == 0.729)
+check("the fall survives without the 140 new drivers", cuts["after, drivers who joined before the launch"] == 1.58)
+check("the three busiest weeks already read 1.60", cuts["after, the three busiest weeks of the twelve"] == 1.60)
+check("SQL and pandas agree on hours and trips", list(sql["hours"]) == [118000, 146300] and list(sql["trips"]) == [224200, 230900])
+'''),
+        md('''
+        ## What does chapter 3 answer?
+
+        1. Rs 1.159 crore, 61 percent of the top-up, went to driver-weeks that accepted fewer than
+           half their offers; Rs 74 lakh went to the rest.
+        2. Under a stated assumption (a fifth to a half of the idle tail's top-up still paid), the
+           redesign saves Rs 58 lakh to Rs 92.7 lakh over six weeks; the test settles where.
+        3. The north star barely moved (35.76 to 35.89 trips per online driver-week); acceptance fell
+           from 0.863 to 0.730, waits went from 4.8 to 4.6 minutes, and the top-up cost Rs 82.3 a trip.
+        4. Acceptance settled in the launch week, two weeks before bookings per hour did.
+        5. The fall survives the new drivers (1.58) and the busiest weeks (1.60); interference,
+           enrolment and cause stay open.
+        6. SQL's `GROUP BY` returns the same hours and trips as pandas.
+
+        **The check a senior analyst runs.** Price the trap in rupees, write every line of the
+        definition, name what the data cannot show and the fact that would settle it, and reach the
+        totals a second way before anything leaves the team.
+
+        **In the interview.** [F] North star against guardrail, with one example pair: completed
+        peak trips per enrolled driver per week, guarded by the share of offers accepted, which
+        catches a driver who stays online and declines. The tentative faculty block this afternoon
+        designs the test that would settle cause.
         '''),
     ])
 
 
-# ---------------------------------------------------------------------------- notebook 04
-def build_04():
+def nb04():
     build(NB / "C2_W04_D01_04_kalpa_lab_STUDENT.ipynb", [
         md('''
-        # TA LAB: does Retail-Plus's reorders-per-member reward reorders or orders?
+        # Does "reorders per member" reward what the head of Retail-Plus needs from the tier?
 
-        **Week 4, Monday, the TA-led practice lab.** The head of Retail-Plus wants a growth
-        number: reorders placed per member. The app's auto-reorder window ran from 10 to 30
-        September 2026; the comparison window is 20 August to 9 September 2026. Both windows sit
-        after the monsoon sale's last day (19 August). Compute reorders per member in each window,
-        booked revenue per member in each window, and the ratio of each. The lab's twelve rows and
-        the plant sit in the TA note; your job is to find them.
+        Week 4, Monday, the TA-led practice lab. The method of the morning, moved to Kalpa Retail,
+        the programme's fictional client: Kalpa and its people are invented, and the data are
+        synthetic.
 
-        > *Illustrative case: Kalpa Retail is the programme's fictional client.*
+        **The situation.** The head of Retail-Plus, who owns Kalpa's paid membership tier, wants a
+        growth number for the tier: reorders placed per member. The app can place a reorder on its own
+        (an auto-reorder) as well as when a member taps it, and an auto-reorder window ran from 10 to
+        30 September 2026. The comparison is the three weeks before it, 20 August to 9 September 2026;
+        both sit after the monsoon sale's last day, 19 August. The table `kalpa_app_reorders` has one
+        row per reorder placement: `reorder_id`, `customer_id`, `placed_ts`, `product_id`, `value_rs`
+        (the reorder's booked value, whatever happened to it), `auto` and `status`.
 
-        **Who needs the answer.** The head of Retail-Plus, who is about to pitch the number at the
-        growth review. **The questions on the way.**
+        **Who needs the answer.** The head of Retail-Plus, who is about to take "reorders per member"
+        to the growth review as the tier's number. If it can rise while the tier earns less, the
+        review rewards the app for placing orders nobody receives.
 
-        1. How many reorders per Retail-Plus member sit in each window?
-        2. How does booked revenue per member compare across the two windows?
-        3. What are the auto-reorders doing to each number?
+        **The questions on the way.**
+
+        1. What does the table hold, before anything is counted?
+        2. What do seven members' rows say, counted by hand?
+        3. What do reorders placed per member and booked value per member do across the two windows?
+        4. Which reorders are these, and what happened to them?
         '''),
-        md('''
-        **Setup.** Load the Kalpa data from `../data/`. Nothing in this notebook names a plant
-        before the groupby finds it.
-        '''),
-        code(SETUP + '''
-import pandas as pd
+        code(SETUP + STYLE + '''
 members = pd.read_csv("../data/C2_W04_D01_kalpa_members_STUDENT.csv")
 reorders = pd.read_csv("../data/C2_W04_D01_kalpa_app_reorders_STUDENT.csv")
-reorders["placed_date"] = pd.to_datetime(reorders["placed_ts"]).dt.date
-print(f"members: {len(members)}, reorders: {len(reorders)}")
+reorders["day"] = reorders["placed_ts"].str[:10]
+print(f"{len(members)} Retail-Plus members; {len(reorders)} reorder placements from {reorders.day.min()} to {reorders.day.max()}")
 '''),
         md('''
-        ## Where does the lab sit on the method's ladder?
+        ## What does the table hold, before anything is counted?
+
+        This cell draws three plain views of the whole table, both windows together: what a
+        placement is worth, how many each member made, and when the members joined the tier.
         '''),
         code('''
-kit.flow(["L1 count by hand", "L2 full data groupby", "L3 the plant",
-          "L4 what the counts cannot show", "L5 the Kalpa redesign"], lit=0)
+fig, ax = plt.subplots(figsize=(6.4, 2.8))
+ax.hist(reorders["value_rs"], bins=30, color=VIOLET)
+ax.set_xlabel("booked value of one placement, Rs")
+ax.set_title("What a placement is worth, both windows together", loc="left")
+plt.show()
+fig, ax = plt.subplots(figsize=(6.4, 2.8))
+ax.hist(reorders.groupby("customer_id").size(), bins=range(0, 16), color=LAV, edgecolor="white")
+ax.set_xlabel("placements per member, both windows together")
+ax.set_title("How many placements each member made", loc="left")
+plt.show()
+fig, ax = plt.subplots(figsize=(6.4, 2.8))
+members["member_since"].str[:7].value_counts().sort_index().plot.bar(ax=ax, color=MUTED)
+ax.set_title("When the 120 members joined Retail-Plus", loc="left")
+plt.show()
 '''),
         md('''
-        ## How many reorders per Retail-Plus member sit in each window?
+        ## What do seven members' rows say, counted by hand?
 
-        **Predict first.** The strip's story said "reorders placed per member in the window over
-        the comparison prints 1.22". Which direction do you think the ratio goes?
+        Your TA hands out a sheet with seven members' placements and booked values in the two
+        windows. Before any code runs, add up each window's placements and booked value for the seven,
+        divide by seven, and write the two ratios (window over comparison) on the sheet.
 
-        - a) About 0.80 (window below comparison)
-        - b) About 1.00 (identical)
-        - c) About 1.20 (window above comparison)
-        - d) About 2.00 (double)
-        '''),
-        code('''
-        import datetime as dt
-        COMP = (dt.date(2026, 8, 20), dt.date(2026, 9, 9))
-        WIN = (dt.date(2026, 9, 10), dt.date(2026, 9, 30))
+        ## What do reorders placed per member and booked value per member do across the two windows?
 
-        in_comp = reorders[reorders["placed_date"].between(*COMP)]
-        in_win = reorders[reorders["placed_date"].between(*WIN)]
-        comp_per_member = len(in_comp) / len(members)
-        win_per_member = len(in_win) / len(members)
-        ratio = win_per_member / comp_per_member
-        print(f"reorders per member, comparison: {comp_per_member:.2f}")
-        print(f"reorders per member, window: {win_per_member:.2f}")
-        print(f"ratio: {ratio:.2f}")
-        '''),
-        md('''
-        **What happened.** The answer is c. Reorders per member rose by about 22 percent from the
-        comparison window to the auto-reorder window. The number the head of Retail-Plus wants to
-        pitch is up.
-        '''),
-        md('''
-        ## How does the ratio read as a chart?
-        '''),
-        code('''
-kit.bars([("reorders/member, comparison", round(comp_per_member, 2)),
-          ("reorders/member, window", round(win_per_member, 2))],
-         title="Reorders per Retail-Plus member, two windows")
-'''),
-        md('''
-        ## How does booked revenue per member compare across the two windows?
+        **Predict before you run.** From the comparison window to the auto-reorder window, reorders
+        placed per member a) fell; b) held about level; c) rose by up to a third; d) more than doubled.
+        And booked value per member a) fell; b) held about level; c) rose by up to a third; d) more
+        than doubled.
 
-        Booked revenue is the value of every reorder placed, whatever its status.
-        '''),
-        code('''
-        comp_value = in_comp["value_rs"].sum()
-        win_value = in_win["value_rs"].sum()
-        print(f"booked revenue per member, comparison: Rs {comp_value/len(members):,.0f}")
-        print(f"booked revenue per member, window: Rs {win_value/len(members):,.0f}")
-        print(f"ratio: {win_value / comp_value:.2f}")
-        '''),
-        md('''
-        **What happened.** Booked revenue per member fell to about 0.96 of the comparison. The
-        reorders are more frequent and smaller. The number that rose and the number that fell say
-        different things about the same window.
-        '''),
-        md('''
-        ## What are the auto-reorders doing to each number? (your-turn cell)
+        **Your turn.** Type these lines into the empty cell below and run it:
 
-        **Predict first.** Of the reorders in the auto-reorder window, how many were delivered as
-        separate orders (status "delivered")? The next cell is empty. **Your task:** group the
-        window's reorders by `status` and `auto`, and read what you find.
+        ```python
+        comparison = reorders[reorders["day"].between("2026-08-20", "2026-09-09")]
+        window = reorders[reorders["day"].between("2026-09-10", "2026-09-30")]
+        placed = (len(window) / 120) / (len(comparison) / 120)
+        booked = window["value_rs"].sum() / comparison["value_rs"].sum()
+        print(round(placed, 2), round(booked, 2))
+        ```
         '''),
         empty(),
         md('''
-        **What the room finds.** The window's reorders are nearly all `auto == True`, and no
-        reorder is delivered. The statuses are `cancelled`, `merged` or `pending`. The reorders
-        count toward "reorders placed per member" but not toward "orders delivered". The growth
-        number the head of Retail-Plus wants to pitch rises on auto-reorders that never earn
-        revenue. The analysis below shows it.
-        '''),
-        code('''
-        print(in_win.groupby(["auto", "status"]).size().unstack(fill_value=0))
-        delivered_window = in_win[in_win["status"] == "delivered"]
-        print(f"delivered reorders in window: {len(delivered_window)}")
-        '''),
-        md('''
-        **What happened.** Every reorder in the window is auto and none is delivered. The 22
-        percent rise is paid for by auto-reorders that are cancelled by the member or merged into
-        the next manual order. The growth number is a Wells-Fargo-style measurement: counted
-        toward the goal, with no condition that any revenue follows.
-        '''),
-        md('''
-        ## What is the Kalpa fix, written to the same template as Uber's?
+        ## Which reorders are these, and what happened to them?
 
-        The growth plan's north star for Kalpa Retail is delivered orders per active customer per
-        month. The three guardrails are revenue per active customer, discount share of booked
-        revenue, and the return rate. The two leading inputs are add-to-cart events per active app
-        member and new Retail-Plus sign-ups. Each learner writes this definition in their own
-        words in the unguided exercise.
-        '''),
-        code('''
-        kalpa_def = pd.DataFrame({
-            "line": ["numerator", "denominator", "window", "exclusions",
-                     "what it does not reward", "guardrails", "leading inputs"],
-            "value": ["delivered orders",
-                       "customers active in the month",
-                       "the calendar month",
-                       "cancelled orders, returns within window, test accounts",
-                       "reorders placed, auto-reorders not delivered, add-to-cart counts",
-                       "revenue per active customer, discount share of booked, return rate",
-                       "add-to-cart events, new Retail-Plus sign-ups"]
-        })
-        kalpa_def
-        '''),
-        md('''
-        ## What picture closes the lab?
-        '''),
-        code('''
-        import matplotlib.pyplot as plt
-        reorders_series = pd.DataFrame({
-            "window": ["comparison", "auto-reorder"],
-            "reorders_per_member": [comp_per_member, win_per_member],
-            "revenue_per_member": [comp_value / len(members),
-                                    win_value / len(members)],
-        })
-        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9.0, 3.6))
-        ax1.bar(reorders_series["window"],
-                reorders_series["reorders_per_member"],
-                color=["#CFC9EE", "#D63A6A"])
-        ax1.set_title("reorders per member", loc="left")
-        ax1.spines["top"].set_visible(False)
-        ax1.spines["right"].set_visible(False)
-        ax2.bar(reorders_series["window"],
-                reorders_series["revenue_per_member"],
-                color=["#CFC9EE", "#1F8A5B"])
-        ax2.set_title("revenue per member", loc="left")
-        ax2.spines["top"].set_visible(False)
-        ax2.spines["right"].set_visible(False)
-        plt.tight_layout()
-        plt.show()
-        '''),
-        md('''
-        ## What does the lab close with?
-        '''),
-        code('''
-        kit.check("reorders per member ratio about 1.22", round(ratio, 2) == 1.22)
-        kit.check("booked revenue per member ratio about 0.96",
-                  round(win_value / comp_value, 2) == 0.96)
-        kit.check("no delivered reorder in the auto-reorder window",
-                  len(in_win[in_win["status"] == "delivered"]) == 0)
-        kit.check("every auto reorder status is cancelled, merged or pending",
-                  set(in_win["status"].unique()).issubset({"cancelled", "merged", "pending"}))
-        kit.check("Kalpa definition has seven lines", len(kalpa_def) == 7)
-        '''),
-        md('''
-        **Lab close.** The method travels. The head of Retail-Plus's "reorders placed per member"
-        is to Kalpa what "peak online hours" is to Uber: a number that rose on a measurement with
-        no condition that the thing it stands for (a delivered order) followed. The redesign writes
-        the seven lines, and the growth review hears the honest number.
+        **Your turn.** Type these lines into the empty cell below and run it, then say in one
+        sentence to your neighbour what the window's placements were and what became of them:
 
-        > **Kavya's review.** "You found the plant by refusing to call a reorder an order. The
-        > weekly growth review is this week."
+        ```python
+        print(window.groupby(["auto", "status"]).size())
+        print(comparison.groupby(["auto", "status"]).size())
+        print(window["value_rs"].mean(), comparison["value_rs"].mean())
+        ```
+        '''),
+        empty(),
+        md('''
+        This cell checks the table itself, so a wrong count in your cells cannot come from a broken file.
+        '''),
+        code('''
+check("120 Retail-Plus members, one row each", len(members) == 120 and members["customer_id"].is_unique)
+check("every placement has a unique id", reorders["reorder_id"].is_unique)
+check("every placement falls between 20 August and 30 September", reorders["day"].between("2026-08-20", "2026-09-30").all())
+check("every status is delivered, cancelled, merged or pending", reorders["status"].isin(["delivered", "cancelled", "merged", "pending"]).all())
+check("every booked value is positive", (reorders["value_rs"] > 0).all())
+check("every placement belongs to a member", reorders["customer_id"].isin(members["customer_id"]).all())
+'''),
+        md('''
+        ## What does the lab hand on?
+
+        Write on the TA's sheet: your two ratios from the hand count and from the full table, the one
+        sentence on what the window's placements were and what became of them, and which line of a
+        complete definition would have stopped "reorders per member" being paid for that.
+
+        **The check a senior analyst runs.** The baseline (the comparison window), the denominator
+        (the 120 members in both windows), the evidence that the thing the number stands for moved
+        (booked value and what was delivered), and a second way to the same answer (the hand count
+        against the full table).
+
+        The unguided exercise that follows writes the growth plan's own north star, delivered orders
+        per active customer per month, on the same seven-line template as the morning's.
         '''),
     ])
 
 
-def main():
-    which = set(sys.argv[1:]) or {"01", "02", "03", "04"}
-    if "01" in which:
-        build_01()
-    if "02" in which:
-        build_02()
-    if "03" in which:
-        build_03()
-    if "04" in which:
-        build_04()
-    print("done")
-
+BUILDERS = {"01": nb01, "02": nb02, "03": nb03, "04": nb04}
 
 if __name__ == "__main__":
-    main()
-
+    for key in sys.argv[1:] or BUILDERS:
+        BUILDERS[key]()
+        print("built", key)
 
 # Test inputs and expected outcomes
-# --------------------------------
 # python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py
-#     Writes four executed notebooks under content/W04/D1/notebooks/, each with
-#     saved outputs; a learner opening any on GitHub sees every table, picture
-#     and check without pressing run.
+#     builds and executes all four notebooks, printing "built 01" to "built 04"; every check PASS
 # python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py 03
-#     Builds only notebook 03.
+#     rebuilds notebook 03 alone
+# python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py 05
+#     stops with a KeyError, since there is no notebook 05

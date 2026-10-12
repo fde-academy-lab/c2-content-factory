@@ -607,6 +607,21 @@ fact("idle_trips_ratio", r2(idle.loc["after", "peak_trips"] / idle.loc["before",
      "times", "33,440 / 38,000 (down 12 percent)", "L3")
 fact("idle_new_hours_outer_share", r2(outer_share), "share",
      "(idle outer-zone hours after - before) / (idle hours after - before)", "L3")
+others = dw[dw["group"] == "ord"].groupby("window").sum(numeric_only=True)
+fact("drivers_others", ORD, "drivers", "drivers who joined before the launch and sit outside the idle tail",
+     "L5 driver operations' objection")
+for win in ("before", "after"):
+    fact(f"others_hours_{win}", int(others.loc[win, "peak_online_hours"]), "hours", f"the other 880 drivers, {win}", "L5")
+    fact(f"others_trips_{win}", int(others.loc[win, "peak_trips"]), "trips", f"the other 880 drivers, {win}", "L5")
+    fact(f"others_tph_{win}", r2(others.loc[win, "peak_trips"] / others.loc[win, "peak_online_hours"]),
+         "trips per peak online hour", f"the other 880 drivers, {win}", "L5")
+    fact(f"requests_per_hour_{win}", r2(zones.loc[win, "requests"] / city.loc[win, "peak_online_hours"]),
+         "rider requests per peak online hour", "zone requests / driver hours", "the input on the tree")
+on_after = after[after["peak_online_hours"] > 0]
+fact("acceptance_max_idle_week_after", r2(on_after.loc[on_after["group"] == "idle", "acceptance"].max()), "share",
+     "highest weekly accepted share of any idle-tail driver-week after the launch", "L5 the floor; follow-up 2")
+fact("acceptance_min_other_week_after", r2(on_after.loc[on_after["group"] != "idle", "acceptance"].min()), "share",
+     "lowest weekly accepted share of any other driver-week online after the launch", "L5 the floor; follow-up 2")
 fact("tph_pre_launch_after", r2(pre.loc["after", "peak_trips"] / pre.loc["after", "peak_online_hours"]),
      "trips per peak online hour", "after window, drivers who joined before the launch", "L4 mix")
 fact("tph_core_zones_before", r2(core.loc["before", "peak_trips"] / core.loc["before", "peak_online_hours"]),
@@ -639,6 +654,40 @@ fact("twelve_tph_after", 1.19, "trips per peak online hour", "88 / 74", "L1 hand
 fact("twelve_hours_change_pct", 23, "percent", "74 / 60 - 1", "L1 hand count")
 fact("twelve_trips_change_pct", -23, "percent", "88 / 114 - 1", "L1 hand count")
 fact("twelve_idle_share", 0.33, "share", "2 of the six drivers (E and F) sit in the idle tail", "L1; L2")
+# Added by the finishing session for the exercises, the Kahoot and the ticket's change column; every
+# value is read from the same tables, so the data files are unchanged.
+fact("acceptance_change_points", round(100 * (B["peak_accepted"] / B["peak_offers"]
+                                              - A["peak_accepted"] / A["peak_offers"])), "points",
+     "acceptance before less acceptance after, in points", "the ticket's change column")
+fact("driver_cancel_change_points", round(100 * (A["peak_driver_cancels"] / A["peak_accepted"]
+                                                 - B["peak_driver_cancels"] / B["peak_accepted"])), "points",
+     "driver-cancelled share after less before, in points", "the ticket's change column")
+fact("no_trip_change_points", round(100 * (A["peak_hours_no_trip"] / A["peak_online_hours"]
+                                           - B["peak_hours_no_trip"] / B["peak_online_hours"])), "points",
+     "share of hours with no trip after less before, in points", "the ticket's change column")
+fact("mean_of_ratios_hidden_share", r2((mean_of_ratios["after"] - A["peak_trips"] / A["peak_online_hours"])
+                                       / (B["peak_trips"] / B["peak_online_hours"]
+                                          - A["peak_trips"] / A["peak_online_hours"])), "share",
+     "(1.71 - 1.58) / (1.90 - 1.58): the part of the fall the average of rates hides", "L2 trap, two-fifths")
+fact("topup_high_acceptance_share", r2(high_topup / (low_topup + high_topup)), "share",
+     "top-up to driver-weeks at or above half accepted, over all top-up", "L5; S28 option b")
+fact("driver_weeks_total", int(len(dw)), "driver-weeks", "rows of driver_weeks, twelve weeks", "notebook 02; S17")
+fact("tph_fall", r2(B["peak_trips"] / B["peak_online_hours"] - A["peak_trips"] / A["peak_online_hours"]),
+     "trips per peak online hour", "1.90 - 1.58", "L2 trap")
+fact("mean_of_ratios_fall", r2(B["peak_trips"] / B["peak_online_hours"] - mean_of_ratios["after"]),
+     "trips per peak online hour", "1.90 - 1.71, the fall the average of rates shows", "L2 trap")
+fact("fall_hidden_by_mean", r2(mean_of_ratios["after"] - A["peak_trips"] / A["peak_online_hours"]),
+     "trips per peak online hour", "1.71 - 1.58, the part of the fall the average hides", "L2 trap")
+fact("twelve_trips_per_driver_before", r2(114 / 6), "trips per driver", "114 trips over the six drivers",
+     "explorer M3, the enrolled-driver denominator on the twelve rows")
+fact("twelve_trips_per_driver_after", r2(88 / 6), "trips per driver", "88 trips over the six drivers",
+     "explorer M3, the enrolled-driver denominator on the twelve rows")
+late = dw["week_start"].lt("2026-09-07").map({True: "before", False: "after"})
+late_city = dw.groupby(late)[["peak_trips", "peak_online_hours"]].sum()
+for win in ("before", "after"):
+    fact(f"tph_split_0907_{win}", r2(late_city.loc[win, "peak_trips"] / late_city.loc[win, "peak_online_hours"]),
+         "trips per peak online hour", f"the window flagged at 7 September, so the launch week counts as before; {win}",
+         "the lab set's Parsons problem, option d")
 
 toys = [
     {"id": "toy_canteen", "label": "invented", "values": {"tokens_before": 200, "tokens_after": 400,
@@ -676,6 +725,9 @@ facts = {
     "twelve_rows": twelve_rows,
     "kalpa": {
         "members": 120,
+        "members_joined_by_month": {m: int(n) for m, n in
+                                    pd.Series([r["member_since"][:7] for r in members]).value_counts()
+                                    .sort_index().items()},
         "reorders_comparison": int((reorders["slot"] == "comparison").sum()),
         "reorders_window": int((reorders["slot"] == "window").sum()),
         "lab_twelve_rows": lab_rows,

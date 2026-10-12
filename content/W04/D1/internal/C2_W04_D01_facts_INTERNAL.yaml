@@ -399,6 +399,61 @@ numbers:
   unit: share
   how: (idle outer-zone hours after - before) / (idle hours after - before)
   used_by: L3
+- id: drivers_others
+  value: 880
+  unit: drivers
+  how: drivers who joined before the launch and sit outside the idle tail
+  used_by: L5 driver operations' objection
+- id: others_hours_before
+  value: 98000
+  unit: hours
+  how: the other 880 drivers, before
+  used_by: L5
+- id: others_trips_before
+  value: 186200
+  unit: trips
+  how: the other 880 drivers, before
+  used_by: L5
+- id: others_tph_before
+  value: 1.9
+  unit: trips per peak online hour
+  how: the other 880 drivers, before
+  used_by: L5
+- id: requests_per_hour_before
+  value: 2.13
+  unit: rider requests per peak online hour
+  how: zone requests / driver hours
+  used_by: the input on the tree
+- id: others_hours_after
+  value: 102000
+  unit: hours
+  how: the other 880 drivers, after
+  used_by: L5
+- id: others_trips_after
+  value: 193800
+  unit: trips
+  how: the other 880 drivers, after
+  used_by: L5
+- id: others_tph_after
+  value: 1.9
+  unit: trips per peak online hour
+  how: the other 880 drivers, after
+  used_by: L5
+- id: requests_per_hour_after
+  value: 1.75
+  unit: rider requests per peak online hour
+  how: zone requests / driver hours
+  used_by: the input on the tree
+- id: acceptance_max_idle_week_after
+  value: 0.46
+  unit: share
+  how: highest weekly accepted share of any idle-tail driver-week after the launch
+  used_by: L5 the floor; follow-up 2
+- id: acceptance_min_other_week_after
+  value: 0.78
+  unit: share
+  how: lowest weekly accepted share of any other driver-week online after the launch
+  used_by: L5 the floor; follow-up 2
 - id: tph_pre_launch_after
   value: 1.58
   unit: trips per peak online hour
@@ -1004,6 +1059,71 @@ numbers:
   unit: share
   how: 2 of the six drivers (E and F) sit in the idle tail
   used_by: L1; L2
+- id: acceptance_change_points
+  value: 13
+  unit: points
+  how: acceptance before less acceptance after, in points
+  used_by: the ticket's change column
+- id: driver_cancel_change_points
+  value: 5
+  unit: points
+  how: driver-cancelled share after less before, in points
+  used_by: the ticket's change column
+- id: no_trip_change_points
+  value: 16
+  unit: points
+  how: share of hours with no trip after less before, in points
+  used_by: the ticket's change column
+- id: mean_of_ratios_hidden_share
+  value: 0.4
+  unit: share
+  how: '(1.71 - 1.58) / (1.90 - 1.58): the part of the fall the average of rates hides'
+  used_by: L2 trap, two-fifths
+- id: topup_high_acceptance_share
+  value: 0.39
+  unit: share
+  how: top-up to driver-weeks at or above half accepted, over all top-up
+  used_by: L5; S28 option b
+- id: driver_weeks_total
+  value: 12860
+  unit: driver-weeks
+  how: rows of driver_weeks, twelve weeks
+  used_by: notebook 02; S17
+- id: tph_fall
+  value: 0.32
+  unit: trips per peak online hour
+  how: 1.90 - 1.58
+  used_by: L2 trap
+- id: mean_of_ratios_fall
+  value: 0.19
+  unit: trips per peak online hour
+  how: 1.90 - 1.71, the fall the average of rates shows
+  used_by: L2 trap
+- id: fall_hidden_by_mean
+  value: 0.13
+  unit: trips per peak online hour
+  how: 1.71 - 1.58, the part of the fall the average hides
+  used_by: L2 trap
+- id: twelve_trips_per_driver_before
+  value: 19.0
+  unit: trips per driver
+  how: 114 trips over the six drivers
+  used_by: explorer M3, the enrolled-driver denominator on the twelve rows
+- id: twelve_trips_per_driver_after
+  value: 14.67
+  unit: trips per driver
+  how: 88 trips over the six drivers
+  used_by: explorer M3, the enrolled-driver denominator on the twelve rows
+- id: tph_split_0907_before
+  value: 1.86
+  unit: trips per peak online hour
+  how: the window flagged at 7 September, so the launch week counts as before; before
+  used_by: the lab set's Parsons problem, option d
+- id: tph_split_0907_after
+  value: 1.57
+  unit: trips per peak online hour
+  how: the window flagged at 7 September, so the launch week counts as before; after
+  used_by: the lab set's Parsons problem, option d
 toys:
 - id: toy_canteen
   label: invented
@@ -1182,6 +1302,13 @@ twelve_rows:
   topup_rs: 3850
 kalpa:
   members: 120
+  members_joined_by_month:
+    2026-01: 20
+    2026-02: 20
+    2026-03: 20
+    2026-04: 20
+    2026-05: 20
+    2026-06: 20
   reorders_comparison: 427
   reorders_window: 521
   lab_twelve_rows:
