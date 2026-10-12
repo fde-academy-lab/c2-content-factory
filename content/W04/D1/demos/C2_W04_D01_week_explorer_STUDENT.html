@@ -1,0 +1,2012 @@
+<!doctype html>
+<!--
+  Week 4 explorer, one offline page for the whole week.
+  Every number the page draws sits in the W4 block in the head, each with its source:
+  "case Mon ticket" means docs/detailing/W04_case_file.md, Monday's ticket table, and so on;
+  "spine 5 L2" means docs/detailing/W04_analyst_craft_spine.md, section 5, ladder level L2;
+  "derived" means arithmetic on case numbers, shown on the page; "toy" means invented to show a
+  mechanism and labelled toy where it appears. No Kalpa client-zero value appears on this page.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 4 explorer: what does an analyst do with one number?</title>
+<style data-c2kit>
+/* c2kit.css: the look every companion page inlines, taken from the orientation deck.
+ * Violet on lavender, Georgia for headings, Calibri for text, cards with a soft shadow.
+ * scripts/build_companion.py inlines this file into each page. */
+:root{
+  --ink:#1A0F5C;--night:#1A1440;--violet:#5B3FD6;--violet-mid:#2C1A86;--lav:#D9A7FF;
+  --muted:#6B6690;--soft:#A9A3D2;--lilac:#CFC9EE;--line:#E4E1F1;--tint:#EEEAFB;--surface:#F4F2FA;
+  --white:#FFFFFF;--rose:#D63A6A;--rose-tint:#FCEBF0;--green:#1F8A5B;--green-tint:#E8F5EE;
+  --serif:Georgia,"DejaVu Serif",serif;
+  --sans:Calibri,Carlito,"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --mono:Consolas,ui-monospace,SFMono-Regular,Menlo,monospace;
+  --shadow:0 2px 6px rgba(26,15,92,.10),0 1px 2px rgba(26,15,92,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#F7F5FD 0%,#F2EFFB 100%);color:var(--night);
+     font:16px/1.55 var(--sans)}
+a{color:var(--violet)}
+code,kbd{font:14px var(--mono);background:var(--tint);border-radius:4px;padding:1px 5px;color:var(--ink)}
+
+/* the dark header, like a deck cover */
+.hero{background:radial-gradient(120% 140% at 85% 10%,#5B3FD6 0%,#2C1A86 45%,#1A1440 100%);
+      color:var(--white);padding:34px 40px 30px}
+.hero .kicker{display:inline-block;border:1px solid var(--lilac);border-radius:999px;padding:4px 14px;
+      font:700 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font:400 38px/1.15 var(--serif);margin:0 0 10px}
+.hero .quote{font:italic 20px/1.4 var(--serif);color:var(--lav);max-width:860px;margin:0 0 6px}
+.hero .who{color:var(--lilac);font-size:13px;margin:0}
+.hero .promise{color:#E4E1F1;max-width:860px;margin:16px 0 0}
+
+/* the page: a left rail and the sections */
+.page{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;max-width:1240px;margin:0 auto;
+      padding:26px 28px 60px}
+@media (max-width:900px){.page{grid-template-columns:1fr}.rail{position:static}}
+.rail{position:sticky;top:18px;align-self:start;background:var(--white);border:1px solid var(--line);
+      border-radius:12px;padding:14px 12px;box-shadow:var(--shadow)}
+.rail .label{font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:2px 8px 8px}
+.rail a{display:flex;gap:10px;align-items:baseline;padding:7px 8px;border-radius:8px;color:var(--night);
+      text-decoration:none;font-size:14.5px}
+.rail a .n{font:15px var(--serif);color:var(--violet);min-width:22px}
+.rail a.on{background:var(--tint);color:var(--ink);font-weight:700}
+section.part{margin:0 0 38px;scroll-margin-top:16px}
+.part > .eyebrow{font:700 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:0 0 4px}
+.part > h2{font:400 28px/1.2 var(--serif);color:var(--ink);margin:0 0 6px}
+.part > .lede{color:var(--muted);margin:0 0 16px;max-width:860px}
+
+/* cards and strips */
+.card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+      box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
+.strip{border-radius:10px;padding:12px 16px;margin:12px 0;background:#F7F5FD;border:1px solid var(--line)}
+.strip b.tag{display:block;font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;
+      color:var(--violet);margin-bottom:3px}
+.strip.client{background:linear-gradient(135deg,#2C1A86,#1A1440);color:var(--white);border:none}
+.strip.client b.tag{color:var(--lav)}
+.strip.bad{background:var(--rose-tint);border-color:#F3C5D3}
+.strip.bad b.tag{color:var(--rose)}
+.strip.good{background:var(--green-tint);border-color:#BFE3CF}
+.strip.good b.tag{color:var(--green)}
+.c2k-row{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.c2k-svg{max-width:100%;height:auto}
+.holder{overflow-x:auto}
+
+/* the guided walk */
+.walk .narration{min-height:150px}
+.walk .step{font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.walk .narration h3{font:400 21px/1.25 var(--serif);color:var(--ink);margin:4px 0 8px}
+.meter{margin-top:14px}
+.meter .bar{position:relative;height:16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);
+      overflow:hidden}
+.meter .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#7B62E8,#5B3FD6);
+      border-radius:999px;transition:width .35s ease}
+.meter .plan{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--rose)}
+.meter .legend{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:4px}
+.big{font:34px/1.1 var(--serif);color:var(--violet)}
+.verdict{font-weight:700;color:var(--ink)}
+
+/* buttons, toggles and inputs */
+button{font:inherit;cursor:pointer}
+.btn{padding:8px 16px;border-radius:999px;border:1px solid var(--violet);background:var(--white);color:var(--violet);
+     font-weight:700}
+.btn.primary{background:var(--violet);color:var(--white)}
+.btn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.btn:focus-visible,.rail a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--lav);
+     outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.slider{margin:10px 0}
+.slider label{display:flex;justify-content:space-between;font-size:14.5px;color:var(--night)}
+.slider label b{color:var(--violet);font-family:var(--mono);font-weight:400}
+input[type=range]{width:100%;accent-color:var(--violet)}
+input[type=number],textarea{font:15px var(--mono);border:1px solid var(--lilac);border-radius:8px;padding:6px 9px;
+     color:var(--night);background:var(--white);width:100%}
+textarea{min-height:92px;resize:vertical}
+
+/* experiment cards */
+.exp{display:grid;gap:10px;align-content:start}
+.exp p{margin:0}
+.exp .result p{margin:0 0 8px}
+.exp .part-label{font:700 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.exp .result{border-top:1px dashed var(--lilac);padding-top:10px}
+.exp .result[hidden]{display:none}
+.exp .waiting{color:var(--muted);font-style:italic}
+.rule{font:italic 17px/1.4 var(--serif);color:var(--ink)}
+
+/* tables */
+table.t{border-collapse:collapse;width:100%;font-size:14.5px;margin:8px 0}
+table.t th{background:var(--ink);color:var(--white);text-align:left;padding:7px 10px;font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.t tr:nth-child(even) td{background:var(--surface)}
+table.t td.num,table.t th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+/* popups */
+dialog{border:none;border-radius:14px;padding:0;max-width:min(860px,94vw);box-shadow:0 18px 50px rgba(26,15,92,.35)}
+dialog::backdrop{background:rgba(26,20,64,.45)}
+dialog .head{background:var(--ink);color:var(--white);padding:12px 18px;font:400 19px var(--serif);
+      display:flex;justify-content:space-between;align-items:center;gap:16px}
+dialog .body{padding:16px 18px}
+dialog .close{background:transparent;border:1px solid var(--lilac);color:var(--white);border-radius:999px;
+      padding:4px 12px}
+
+/* glossary */
+dl.gloss{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 18px;margin:0}
+dl.gloss dt{font-weight:700;color:var(--ink)}
+dl.gloss dd{margin:0}
+dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
+@media (max-width:700px){dl.gloss{grid-template-columns:1fr}}
+.foot{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:10px;margin-top:30px}
+</style>
+<style>
+  :root{--amber:#B07800;--amber-tint:#FFF7E6;--amber-ink:#5C3D00;--off:#9F99C8}
+  html,body{font-size:18px}
+  body{line-height:1.5}
+  .wrap{max-width:1320px;margin:0 auto;padding:24px 28px 40px}
+  .hero{padding:30px 40px 26px}
+  .hero h1{font-size:40px}
+  .hero .promise{font-size:19px;max-width:980px;color:var(--white)}
+  .hero .label{margin:12px 0 0;color:var(--lav);font-size:16.5px;max-width:980px}
+  h2.q{font:400 30px/1.2 var(--serif);color:var(--ink);margin:0 0 8px}
+  .lede2{margin:0 0 12px;max-width:900px}
+  .daybar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0 6px}
+  .daybar .btn{font-size:17px;padding:9px 18px}
+  .status{font-size:17.5px;color:var(--ink);margin:8px 0 12px;min-height:1.5em}
+  .mapfig svg{width:100%;height:auto;display:block;border-radius:12px;background:var(--surface)}
+  .links{margin:12px 0 0;padding-left:28px;font-size:17px;color:var(--ink)}
+  .links li{margin:0 0 4px}
+  section.day{margin:44px 0 0}
+  .day-head{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:20px 24px;box-shadow:var(--shadow);scroll-margin-top:12px}
+  .ticket{border-left:5px solid var(--violet);background:var(--surface);border-radius:10px;padding:12px 16px;margin:10px 0 12px}
+  .ticket p{margin:0 0 8px;max-width:84ch}
+  .ticket p:last-child{margin:0}
+  .label-line{font-style:italic;color:var(--ink)}
+  .who{margin:10px 0 2px}
+  .jumps{display:flex;flex-direction:column;gap:6px;margin:6px 0 0}
+  .jump{text-align:left;background:var(--white);border:1px solid var(--lilac);border-radius:10px;padding:7px 12px;color:var(--ink);font-size:17px}
+  .jump b{font-family:var(--mono);color:var(--violet);margin-right:8px}
+  .jumped{font-size:16px;color:var(--ink);margin:8px 0 0;min-height:1.5em}
+  .scene{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px 24px 18px;margin:24px 0 0;box-shadow:var(--shadow);scroll-margin-top:12px}
+  .scene-head{display:flex;gap:14px;align-items:baseline;margin:0 0 10px}
+  .sid{flex:none;font:700 16px var(--mono);background:var(--ink);color:var(--white);border-radius:8px;padding:4px 10px}
+  .scene h3{font:400 27px/1.22 var(--serif);color:var(--ink);margin:0}
+  .myth{background:var(--rose-tint);border-left:5px solid var(--rose);border-radius:10px;padding:10px 14px;margin:0 0 12px;max-width:96ch}
+  .predict{margin:0 0 14px}
+  .predict .ask{margin:0 0 8px}
+  .opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  @media (max-width:900px){.opts{grid-template-columns:1fr}}
+  .opt{border:1.5px solid var(--violet);border-radius:10px;background:var(--white);color:var(--ink);padding:9px 13px;
+       text-align:left;font-size:17px;line-height:1.35;cursor:pointer}
+  .opt[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+  .opt:focus-visible,.jump:focus-visible,select:focus-visible,input[type=checkbox]:focus-visible{outline:3px solid var(--lav);outline-offset:2px}
+  .said{margin:8px 0 0;font-weight:700;color:var(--ink);min-height:1.5em}
+  .guess{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:end;max-width:760px}
+  .stage{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:22px;align-items:start}
+  @media (max-width:1000px){.stage{grid-template-columns:1fr}}
+  figure.draw{margin:0}
+  figure.draw svg{width:100%;height:auto;display:block;border-radius:10px;background:var(--surface)}
+  figure.draw figcaption{font-size:15.5px;color:var(--muted);margin-top:6px}
+  .panel{display:grid;gap:12px;align-content:start}
+  .ctl label,.ctl .lab{display:block;font-weight:700;color:var(--ink)}
+  .ctl output{display:block;font:17px var(--mono);color:var(--violet)}
+  .ctl select{font:17px var(--sans);padding:7px 10px;border:1.5px solid var(--violet);border-radius:8px;color:var(--ink);background:var(--white);width:100%}
+  input[type=range]{width:100%;height:30px;margin:2px 0}
+  input[type=checkbox]{width:20px;height:20px;accent-color:var(--violet);flex:none;margin:3px 0 0}
+  .checks{display:grid;gap:4px}
+  .checks label{display:flex;gap:9px;align-items:flex-start;font-weight:400;font-size:16.5px;color:var(--ink);cursor:pointer}
+  .nums{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 14px;margin:0;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+  .nums dt{color:var(--night);font-size:16.5px}
+  .nums dd{margin:0;text-align:right;font:600 17.5px var(--mono);color:var(--ink);font-variant-numeric:tabular-nums}
+  .nums dd.wide{grid-column:1 / -1;text-align:left;font:400 15.5px/1.45 var(--sans);color:var(--night)}
+  .reveal-row{margin:16px 0 0;display:flex;gap:10px;flex-wrap:wrap}
+  .reveal{border-top:2px dashed var(--lilac);margin-top:14px;padding-top:12px}
+  .reveal p{margin:0 0 10px;max-width:80ch}
+  .reveal .check{font-weight:700;color:var(--ink)}
+  .formula{font:18px/1.5 var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;color:var(--ink);max-width:none}
+  .formula b{font-family:var(--sans);color:var(--violet);display:block;font-size:15.5px;margin-bottom:2px}
+  .tq{border:2px solid var(--line);border-radius:12px;padding:10px 12px;margin:0 0 10px;background:var(--surface);transition:opacity .4s}
+  .tq.on{border-color:var(--violet);background:var(--white)}
+  .tq.dim{opacity:.55}
+  .tq-h{font-weight:700;color:var(--ink);margin:0 0 6px}
+  .tq-a{margin:8px 0 0;font-size:16.5px;color:var(--ink)}
+  .tq svg{width:100%;height:auto;display:block}
+  table.rows{border-collapse:collapse;width:100%;font-size:16px;background:var(--white)}
+  table.rows th{background:var(--ink);color:var(--white);padding:6px 8px;text-align:right;font-weight:700}
+  table.rows th:first-child,table.rows th:nth-child(2),table.rows td:first-child,table.rows td:nth-child(2){text-align:left}
+  table.rows td{padding:5px 8px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+  table.rows th.num-col{background:var(--violet)}
+  table.rows th.den-col{background:var(--green)}
+  table.rows tr.out td{color:var(--off);text-decoration:line-through}
+  table.rows tr.sum td{font-weight:700;border-top:2px solid var(--ink)}
+  .dot{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .dot circle{transition:fill .5s,stroke .5s,opacity .5s}
+  .dot.drive .body{animation:drive var(--dur,2.8s) ease-in-out var(--del,0s) infinite alternate}
+  @keyframes drive{from{transform:translate(0px,0px)}to{transform:translate(var(--dx),var(--dy))}}
+  .fade{transition:opacity .5s}
+  .halo{paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+  .move{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+  @media (prefers-reduced-motion:reduce){
+    .dot,.dot circle,.fade,.move{transition:none !important}
+    .dot.drive .body{animation:none !important}
+  }
+  @media print{
+    html,body{font-size:11pt;background:#fff}
+    .hero{background:#fff;color:#000;padding:0 0 8pt}
+    .hero h1,.hero .promise,.hero .label{color:#000}
+    .hero .kicker{border-color:#000;color:#000}
+    .daybar,.opts,.reveal-row,.jumps,.guess,.status,button,input,select,textarea{display:none !important}
+    section.day{display:block !important}
+    .reveal{display:block !important}
+    .scene,.day-head,.card{box-shadow:none;break-inside:avoid}
+    .stage{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+    .dot.drive .body{animation:none}
+  }
+</style>
+<script>
+/* Every number the page draws, with its source. Change a number here and every scene follows. */
+var W4 = {
+  mon: {
+    floorCase: 300,                 /* case Mon ticket: Rs 300 per peak online hour */
+    hours: [118000, 146300],        /* case Mon ticket: peak online hours, six weeks before and after */
+    trips: [224200, 230900],        /* case Mon ticket: completed peak trips */
+    accept: [0.86, 0.73],           /* case Mon ticket: accepted over received, at peak */
+    cancel: [0.04, 0.09],           /* case Mon ticket: driver cancellations after accepting */
+    idleShare: [0.22, 0.38],        /* case Mon ticket: share of online hours with no completed trip */
+    waitMin: [4.8, 4.6],            /* case Mon ticket: median rider wait at peak, minutes */
+    unfilled: [0.11, 0.10],         /* case Mon ticket: share of peak requests unfulfilled */
+    topupCrore: 1.9,                /* case Mon ticket: top-up paid over six weeks, Rs crore */
+    topupIdleCrore: 1.16,           /* case Mon L5: 1.9 x 0.61, the share paid to driver-weeks with acceptance under 0.5 */
+    respPower: 1.5,                 /* toy: the response curve between the case's two floors */
+    newcomersAtCase: 9.6,           /* derived: 40 online dots x 0.24, the dots that come online at Rs 300 */
+    /* case Mon "The twelve rows (L1)": driver, before [hours, requests, accepted, trips], after [...] */
+    rows: [
+      ["A", [10, 24, 21, 21], [11, 25, 22, 22]],
+      ["B", [9, 20, 17, 17], [10, 21, 18, 18]],
+      ["C", [11, 25, 22, 22], [12, 26, 23, 23]],
+      ["D", [10, 22, 19, 19], [11, 23, 20, 20]],
+      ["E", [10, 21, 18, 18], [16, 14, 4, 3]],
+      ["F", [10, 20, 17, 17], [14, 12, 3, 2]]
+    ],
+    weekStarts: ["20 Jul", "27 Jul", "3 Aug", "10 Aug", "17 Aug", "24 Aug", "31 Aug", "7 Sep", "14 Sep", "21 Sep", "28 Sep", "5 Oct"],
+    /* toy weekly values, invented so the six-week averages are the case's 0.86 and 0.73, Rs 314 and Rs 260 */
+    acceptWeekly: [0.87, 0.86, 0.86, 0.85, 0.86, 0.86, 0.80, 0.75, 0.72, 0.70, 0.70, 0.71],
+    bookWeekly: [316, 313, 315, 312, 314, 314, 312, 306, 270, 245, 220, 207],
+    /* toy: how the same sixty dots behave under each choice of paid number; "hours" is the case at Rs 300 */
+    pay: {
+      hours:  {label: "Online hours, the scheme as it ran", drive: 31, game: 10, idle: 19, off: 10, wait: 4.6, topupTrip: null, tilt: 14,
+               rails: ["holds", "breaks", "breaks"]},
+      trips:  {label: "Completed trips", drive: 36, game: 7, idle: 6, off: 18, wait: 4.9, topupTrip: 36, tilt: 9,
+               rails: ["breaks", "breaks", "holds"]},
+      accept: {label: "Accepted share of requests", drive: 33, game: 8, idle: 9, off: 18, wait: 5.2, topupTrip: 51, tilt: 11,
+               rails: ["breaks", "holds", "breaks"]},
+      floor:  {label: "Completed trips with an acceptance floor", drive: 40, game: 2, idle: 6, off: 14, wait: 4.4, topupTrip: 33, tilt: 2,
+               rails: ["holds", "holds", "holds"]}
+    }
+  },
+  tue: {
+    fare: 165,                      /* case Tue ticket: average peak fare, Rs */
+    perHourShown: [314, 260],       /* case Tue ticket: gross bookings per peak online hour, Rs */
+    driverWeeksToy: 6000,           /* toy: active driver-weeks in each six-week window, the same in both */
+    upiMonthBillion: 24.07,         /* case Tue public facts T3: UPI transactions in September 2026 (NPCI via Outlook Money) */
+    upiDayMillion: 802,             /* case Tue public facts T3: 24.07 billion over 30 days */
+    peakHoursSixWeeks: 180,         /* derived: 5 weekdays x 2 windows x 3 hours x 6 weeks (case Mon ticket) */
+    nine: [                         /* case Mon ticket: the nine numbers on the cluttered slide */
+      ["hours", "Peak online hours", "118,000 to 146,300"],
+      ["trips", "Completed peak trips", "224,200 to 230,900"],
+      ["tph", "Trips per online hour", "1.90 to 1.58"],
+      ["acc", "Acceptance share", "0.86 to 0.73"],
+      ["canc", "Driver cancellations", "0.04 to 0.09"],
+      ["idle", "Online hours with no trip", "0.22 to 0.38"],
+      ["wait", "Median rider wait", "4.8 to 4.6 min"],
+      ["unf", "Unfulfilled requests", "0.11 to 0.10"],
+      ["topup", "Top-up paid", "Rs 1.9 crore"]
+    ]
+  }
+};
+</script>
+</head>
+<body>
+<header class="hero">
+  <span class="kicker">Week 4 explorer</span>
+  <h1>What does an analyst do with one number?</h1>
+  <p class="promise">Five tickets at five companies, one method a day. Choose a day to light the map, predict before every reveal, and let the formula arrive last.</p>
+  <p class="label">Each day's case is illustrative: the company is real, the situation and the data are synthetic, built for this class.</p>
+</header>
+
+<main class="wrap">
+  <section class="card" aria-labelledby="mapq">
+    <h2 class="q" id="mapq">How does each day's idea feed the next?</h2>
+    <p class="lede2">The week asks one question five ways. Each day button lights its node and every earlier one, prints what the room found on the earlier nodes and opens the scenes below the map.</p>
+    <div class="daybar" role="group" aria-label="Choose a day">
+      <button type="button" class="btn" data-day="mon" aria-pressed="false">Mon 26 Oct</button>
+      <button type="button" class="btn" data-day="tue" aria-pressed="false">Tue 27 Oct</button>
+      <button type="button" class="btn" data-day="wed" aria-pressed="false">Wed 28 Oct</button>
+      <button type="button" class="btn" data-day="thu" aria-pressed="false">Thu 29 Oct</button>
+      <button type="button" class="btn" data-day="fri" aria-pressed="false">Fri 30 Oct</button>
+      <button type="button" class="btn" data-day="sat" aria-pressed="false">Sat 31 Oct</button>
+      <button type="button" class="btn" data-links aria-pressed="false">Show how the days connect</button>
+    </div>
+    <p class="status" aria-live="polite">No day is chosen yet. Choose one to light its node; every earlier day stays open with what the room found on it.</p>
+    <figure class="mapfig" style="margin:0"><div class="holder" data-map></div></figure>
+    <ol class="links" hidden>
+      <li>Monday's north star and its guardrails bound Friday's forecast: the plan is held to the number the scheme pays for.</li>
+      <li>Thursday's cohort axis, months since signup, is the time axis Friday forecasts on.</li>
+      <li>Wednesday's "beyond chance" returns on Thursday as "beyond the blend": a cohort is judged against the mix, as a pair is judged against chance.</li>
+      <li>The same idea returns on Friday as "beyond the baseline": a forecast earns its place only by beating the simple copy of last year.</li>
+    </ol>
+  </section>
+
+  <!-- MONDAY -->
+  <section class="day" id="sec-mon" hidden>
+    <div class="day-head">
+      <h2 class="q">Monday, 26 October: is the number we pay for measuring what we want?</h2>
+      <div class="ticket">
+        <p class="label-line">Illustrative case: the company is real, the situation and the data are synthetic, built for this class.</p>
+        <p>Uber, Hyderabad, the driver app. On Monday 31 August 2026 the city team launched a peak-hour earnings guarantee: an enrolled driver who stays online through a whole weekday peak window is guaranteed Rs 300 per peak online hour, and Uber tops up the gap between the driver's trip earnings and that floor.</p>
+        <p>Six weeks after the launch against the six weeks before, peak online hours rose from 118,000 to 146,300, completed peak trips rose from 224,200 to 230,900, and trips per peak online hour fell from 1.90 to 1.58.</p>
+        <p>The ask, due Friday: is the scheme working, which metric should it pay for, and is anyone gaming it? The known caveats: the monsoon ended inside the window, 140 drivers joined after the launch, the app counts a driver as online whenever the app is open, and the three outer zones get few requests at any hour.</p>
+      </div>
+      <p class="who"><b>Who needs the answer.</b> The city head, with the driver-operations lead, the marketing lead and the finance partner in the room.</p>
+      <p class="who"><b>The questions on the way.</b></p>
+      <div class="jumps">
+        <button type="button" class="jump" data-jump="M1"><b>M1</b>Can online hours rise while riders wait as long?</button>
+        <button type="button" class="jump" data-jump="M2"><b>M2</b>Which number should the scheme pay for?</button>
+        <button type="button" class="jump" data-jump="M3"><b>M3</b>What does one line of a definition change?</button>
+        <button type="button" class="jump" data-jump="M4"><b>M4</b>Which number moved first?</button>
+      </div>
+      <p class="jumped" aria-live="polite"></p>
+    </div>
+
+    <article class="scene" id="scene-M1" data-scene="M1">
+      <div class="scene-head"><span class="sid">M1</span><h3>Can online hours rise while riders wait as long?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> peak online hours are up 24 percent, so supply is up and riders are better served.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you move anything.</b> As the guarantee rises towards Rs 250 an hour, what will trips per online hour do?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. It rises, because more drivers are online.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. It stays near 1.9, because nobody drives differently.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. It falls, because the new online hours carry few trips.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. It falls only once the floor is above Rs 250.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>Sixty dots stand for the city's enrolled drivers, about twenty drivers each. Green dots drive between zones, amber dots sit online with no trip, grey rings are offline, and the three right-hand zones get few requests. The numbers at Rs 0 and Rs 300 are the case's; between them the response curve is a toy, invented to show the shape.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl">
+            <label for="m1-floor">Guarantee floor, Rs per peak online hour</label>
+            <input type="range" id="m1-floor" min="0" max="400" step="20" value="0" data-ctl="floor">
+            <output data-out="floor">Rs 0 an hour (slider value 0)</output>
+          </div>
+          <div class="ctl"><button type="button" class="btn" data-ctl="wait" aria-pressed="false">Show the rider wait</button></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>At the case's floor of Rs 300 an hour, online hours rise 24 percent, from 118,000 to 146,300, while trips rise 3 percent, from 224,200 to 230,900. Trips per online hour falls from 1.90 to 1.58, the 1.9 to 1.6 on the ticket, and about Rs 1.16 crore of the Rs 1.9 crore top-up went to idle hours. The median rider wait moved from 4.8 to 4.6 minutes.</p>
+        <p>Online hours count time with the app open, and the driver controls that count. An idle hour in an outer zone earns the same floor as a busy hour in the centre, so the number the scheme pays for rose while riders saw almost no change.</p>
+        <p class="formula"><b>The formula, last</b>trips per online hour = completed peak trips / peak online hours = 230,900 / 146,300 = 1.58</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-M2" data-scene="M2">
+      <div class="scene-head"><span class="sid">M2</span><h3>Which number should the scheme pay for?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> pay for whatever went up; online hours rose, so the scheme bought supply.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you switch.</b> Which choice of paid number makes the most dots drive riders?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Online hours, the scheme as it ran.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Completed trips.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Accepted share of requests.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Completed trips with an acceptance floor.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>The seesaw puts the paid number on the left and three guardrails on the right; the further it tips, the more the paid number rose at the guardrails' expense. Under online hours the dots are the case's six weeks after the launch; the other three choices are a toy, invented to show the direction, since the city has not run them. A rose ring shows a driver who hits the paid number without serving riders.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl">
+            <label for="m2-pay">The scheme pays for</label>
+            <select id="m2-pay" data-ctl="pay">
+              <option value="hours">Online hours, the scheme as it ran</option>
+              <option value="trips">Completed trips</option>
+              <option value="accept">Accepted share of requests</option>
+              <option value="floor">Completed trips with an acceptance floor</option>
+            </select>
+            <output data-out="pay">Paying for online hours</output>
+          </div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>Paying for completed trips with an acceptance floor puts 40 of the 60 dots to driving, against 31 when the scheme paid for online hours. Paying for trips alone lets drivers decline long trips, and paying for accepted share lets them accept and then cancel; the floor on acceptance catches both.</p>
+        <p>A number a driver can raise without serving a rider will be raised that way, so every paid number needs a guardrail that names the way of gaming it.</p>
+        <p class="formula"><b>The formula, last: the definition's lines</b>north star: completed peak trips per enrolled driver per week<br>guardrail 1: acceptance share at or above a floor the city sets<br>guardrail 2: median rider wait at peak<br>guardrail 3: top-up per completed trip<br>it does not reward: hours online, requests declined, a shrinking enrolled base</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-M3" data-scene="M3">
+      <div class="scene-head"><span class="sid">M3</span><h3>What does one line of a definition change?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> a metric is a formula, and once the formula is right the number is the number.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you switch.</b> Change the denominator from online hours to enrolled drivers. What happens to the fall from the week before to the week after?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. The fall gets bigger.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. The fall gets smaller.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. The fall turns into a rise.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Nothing changes, since the trips are the same.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-table></div><div class="holder" data-fig style="margin-top:10px"></div>
+          <figcaption>Six drivers, one peak week before the guarantee (the week of 10 August 2026) and one after (the week of 21 September 2026). The violet column is the numerator, the green column the denominator, and a struck row is excluded.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><label for="m3-num">Numerator</label>
+            <select id="m3-num" data-ctl="num"><option value="3">Completed trips</option><option value="2">Accepted requests</option><option value="1">Requests received</option></select></div>
+          <div class="ctl"><label for="m3-den">Denominator</label>
+            <select id="m3-den" data-ctl="den"><option value="0">Online hours</option><option value="d">Enrolled drivers</option><option value="1">Requests received</option></select></div>
+          <div class="ctl"><label for="m3-win">Window</label>
+            <select id="m3-win" data-ctl="win"><option value="week">Per calendar week</option><option value="day">Per weekday, five weekday peaks</option></select></div>
+          <div class="ctl"><label for="m3-exc">Exclusions</label>
+            <select id="m3-exc" data-ctl="exc"><option value="none">None</option><option value="acc">Driver-weeks with acceptance under 0.5</option><option value="ef">Drivers E and F, both weeks</option></select></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>With online hours as the denominator, the six drivers fall from 1.90 to 1.19 trips per online hour, down 37 percent. With enrolled drivers, they fall from 19.0 to 14.7 trips per driver, down 23 percent: the extra idle hours drop out of the denominator, so the fall looks smaller. Excluding driver-weeks with acceptance under 0.5 removes drivers E and F's after week, and the four other drivers alone barely move, 1.90 to 1.89.</p>
+        <p>Every line of a definition moves the number without moving a single rider: the denominator decides whose hours count, the window decides the unit, and an exclusion decides who disappears from view.</p>
+        <p class="formula"><b>The formula, last</b>a definition names the numerator, the denominator, the window, the exclusions and what it does not reward</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-M4" data-scene="M4">
+      <div class="scene-head"><span class="sid">M4</span><h3>Which number moved first?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> the problem started the week the money number fell.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you move the week.</b> Acceptance turns down in the launch week. In which week will bookings per online hour turn?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Week 7, the launch week.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Week 9.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Week 11.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. It never turns.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>Twelve peak weeks, six before the launch and six after. The weekly values are a toy, invented around the case's six-week averages: acceptance 0.86 before and 0.73 after, bookings per online hour Rs 314 before and Rs 260 after. A line turns in the first week it sits more than 5 percent below its before average.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl">
+            <label for="m4-week">Week</label>
+            <input type="range" id="m4-week" min="1" max="12" step="1" value="6" data-ctl="week">
+            <output data-out="week">Week 6, beginning 24 August 2026 (slider value 6)</output>
+          </div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>Acceptance falls below its before level in week 7, the launch week, and bookings per online hour follows in week 9: a lead of two weeks. Over the six weeks, acceptance averaged 0.86 before and 0.73 after, and bookings per online hour averaged Rs 314 before and Rs 260 after.</p>
+        <p>Drivers changed what they accepted in the week the scheme began; the money per hour showed it only once the idle hours piled up. A team that watches only the money number learns about the problem two weeks late.</p>
+        <p class="formula"><b>The formula, last</b>a leading indicator moves before the north star, so it is the one to watch for early action</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- TUESDAY -->
+  <section class="day" id="sec-tue" hidden>
+    <div class="day-head">
+      <h2 class="q">Tuesday, 27 October: can the answer survive one slide, and can a number be sized from nothing?</h2>
+      <div class="ticket">
+        <p class="label-line">Illustrative case: the company is real, the situation and the data are synthetic, built for this class.</p>
+        <p>The same Uber case in Hyderabad, one day on. The city head wants the redesign on one slide at the Thursday city review: five minutes, with the driver-operations lead, the marketing lead and the finance partner in the room, each of whom loses something under it.</p>
+        <p>The number the slide must explain: gross bookings per peak online hour fell from Rs 314 to Rs 260 over the six weeks, while the average peak fare stayed at Rs 165. In the afternoon a second ask arrives: roughly how many drivers must be online at the evening peak on a weekday to keep the median rider wait under five minutes, sized in fifteen minutes without a dataset.</p>
+      </div>
+      <p class="who"><b>Who needs the answer.</b> The city head, and the three leads who will each object to the slide.</p>
+      <p class="who"><b>The questions on the way.</b></p>
+      <div class="jumps">
+        <button type="button" class="jump" data-jump="T1"><b>T1</b>What is left when the slide says one thing?</button>
+        <button type="button" class="jump" data-jump="T2"><b>T2</b>Which denominator is the slide using?</button>
+        <button type="button" class="jump" data-jump="T3"><b>T3</b>How big is a number nobody has measured?</button>
+      </div>
+      <p class="jumped" aria-live="polite"></p>
+    </div>
+
+    <article class="scene" id="scene-T1" data-scene="T1">
+      <div class="scene-head"><span class="sid">T1</span><h3>What is left when the slide says one thing?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> a slide earns trust by showing every number, and cutting one looks like hiding it.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you untick anything.</b> Which two of the nine numbers carry a claim the city head can act on?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Online hours up 24 percent and trips up 3 percent.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Trips per online hour, 1.9 to 1.6, and the Rs 1.9 crore top-up.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Rider wait, 4.8 to 4.6 minutes, and unfulfilled requests, 0.11 to 0.10.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Acceptance, 0.86 to 0.73, and driver cancellations, 0.04 to 0.09.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>The first draft of the slide carries all nine of Monday's numbers under a topic title. Untick a number to fade it; when two remain, the title rewrites itself as the claim those two can carry.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><span class="lab">Numbers kept on the slide</span>
+            <div class="checks">
+              <label><input type="checkbox" data-keep="hours" checked> Peak online hours, 118,000 to 146,300</label>
+              <label><input type="checkbox" data-keep="trips" checked> Completed peak trips, 224,200 to 230,900</label>
+              <label><input type="checkbox" data-keep="tph" checked> Trips per online hour, 1.90 to 1.58</label>
+              <label><input type="checkbox" data-keep="acc" checked> Acceptance share, 0.86 to 0.73</label>
+              <label><input type="checkbox" data-keep="canc" checked> Driver cancellations, 0.04 to 0.09</label>
+              <label><input type="checkbox" data-keep="idle" checked> Online hours with no trip, 0.22 to 0.38</label>
+              <label><input type="checkbox" data-keep="wait" checked> Median rider wait, 4.8 to 4.6 minutes</label>
+              <label><input type="checkbox" data-keep="unf" checked> Unfulfilled requests, 0.11 to 0.10</label>
+              <label><input type="checkbox" data-keep="topup" checked> Top-up paid, Rs 1.9 crore</label>
+            </div>
+          </div>
+          <div class="ctl"><button type="button" class="btn" data-ctl="warden">Run the warden test</button></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>With trips per online hour and the top-up left, the title can say what happened and what to do: the hourly guarantee bought idle hours, so pay per completed trip with an acceptance floor. Trips per online hour, 1.9 to 1.6, is the evidence with its denominator; the Rs 1.9 crore top-up, about Rs 1.16 crore of it paid to idle hours, is the cost the action stops. The caveat goes on the slide in plain sight: the monsoon ended inside the window. The other seven numbers go to an appendix page for the lead who will ask about them.</p>
+        <p>Nine numbers make the city head do the analysis in the meeting. One claim, one piece of evidence with its denominator, one caveat and one action let a lead who loses under the redesign repeat it accurately.</p>
+        <p class="formula"><b>The formula, last</b>one slide = a claim as the title + one piece of evidence with its denominator + the caveat in plain sight + the action with its cost</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-T2" data-scene="T2">
+      <div class="scene-head"><span class="sid">T2</span><h3>Which denominator is the slide using?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> bookings are bookings, so dividing them differently cannot change the story.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you switch.</b> The same rupees are read three ways. Which reading rises while bookings per online hour falls?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Per trip.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Per driver-week.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Both of them.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Neither; all three fall together.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>Each pair of bars shows the six weeks after the launch as a percentage of the six weeks before, with the rupees printed above. Bookings are trips times the Rs 165 fare. The driver-week count is a toy, invented and held at 6,000 in both windows, so that reading moves with total bookings.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl">
+            <label for="t2-den">The slide divides bookings by</label>
+            <select id="t2-den" data-ctl="den">
+              <option value="hour">Peak online hours</option>
+              <option value="dw">Driver-weeks</option>
+              <option value="trip">Completed trips</option>
+            </select>
+            <output data-out="den">Per online hour</output>
+          </div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>Per online hour the rupees fall from Rs 314 to Rs 260, down 17 percent. Per driver-week they rise about 3 percent, because total bookings rose with trips. Per trip they hold at Rs 165, since the fare did not move. The same rupees tell three stories, so the slide names its denominator in the title.</p>
+        <p>A denominator is a choice about whose effort counts. A lead who prefers per driver-week is reading the same data, which is why the slide must say which reading it uses and why.</p>
+        <p class="formula"><b>The formula, last</b>bookings per online hour = (trips / online hours) x fare per trip = 1.578 x Rs 165 = Rs 260</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-T3" data-scene="T3">
+      <div class="scene-head"><span class="sid">T3</span><h3>How big is a number nobody has measured?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> without data nothing can be sized, so one guess is as good as another.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you move a factor.</b> UPI payments in India on an average day in September 2026: where does the published number land?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Under 100 million a day.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Between 100 and 400 million a day.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Between 400 million and 1.2 billion a day.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Over 1.2 billion a day.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw">
+          <div class="tq" data-tq="upi"><p class="tq-h">UPI payments a day in India</p><div class="holder" data-tree="upi"></div><p class="tq-a" data-anchor="upi"></p></div>
+          <div class="tq" data-tq="drv"><p class="tq-h">Drivers online at a weekday evening peak in Hyderabad</p><div class="holder" data-tree="drv"></div><p class="tq-a" data-anchor="drv"></p></div>
+          <figcaption>Each tree multiplies the factors on the right into the estimate on the left. Every factor is an assumption you set and can defend; the check is a number someone measured, in the same unit.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl">
+            <label for="t3-q">The question in focus</label>
+            <select id="t3-q" data-ctl="q">
+              <option value="upi">UPI payments a day in India</option>
+              <option value="drv">Drivers online at a weekday evening peak in Hyderabad</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label for="t3-users">UPI: active users, millions</label>
+            <input type="range" id="t3-users" min="50" max="600" step="10" value="300" data-ctl="users">
+            <output data-out="users">300 million (slider value 300)</output>
+          </div>
+          <div class="ctl">
+            <label for="t3-pay">UPI: payments a day per active user</label>
+            <input type="range" id="t3-pay" min="0.5" max="6" step="0.1" value="2" data-ctl="pay">
+            <output data-out="pay">2.0 a day (slider value 2.0)</output>
+          </div>
+          <div class="ctl">
+            <label for="t3-req">Drivers: peak requests an hour in the city</label>
+            <input type="range" id="t3-req" min="500" max="4000" step="100" value="1500" data-ctl="req">
+            <output data-out="req">1,500 an hour (slider value 1500)</output>
+          </div>
+          <div class="ctl">
+            <label for="t3-tpd">Drivers: trips one busy driver completes an hour</label>
+            <input type="range" id="t3-tpd" min="1" max="3.5" step="0.1" value="2" data-ctl="tpd">
+            <output data-out="tpd">2.0 trips an hour (slider value 2.0)</output>
+          </div>
+          <div class="ctl">
+            <label for="t3-idle">Drivers: share of online drivers idle at any moment</label>
+            <input type="range" id="t3-idle" min="0" max="0.6" step="0.02" value="0.3" data-ctl="idle">
+            <output data-out="idle">0.30 (slider value 0.30)</output>
+          </div>
+          <div class="ctl">
+            <label for="t3-buf">Drivers: buffer for the wait target, percent</label>
+            <input type="range" id="t3-buf" min="0" max="50" step="5" value="20" data-ctl="buf">
+            <output data-out="buf">20 percent (slider value 20)</output>
+          </div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>The published anchor is 24.07 billion UPI transactions in September 2026, which is 802 million a day over its 30 days (NPCI, reported by Outlook Money, checked 12 October 2026). Dividing by 31 days would give 776 million a day, the catch in comparing monthly totals. For drivers at the evening peak no published figure was found, so that check reads "to be found"; the case's own data put about 813 drivers online in an average peak hour, which is 146,300 online hours over 180 peak hours in six weeks.</p>
+        <p>A guess becomes an estimate when every factor is said aloud, the product is checked against something measured in the same unit, and the factor that moves the answer most is named. For drivers it is the idle share.</p>
+        <p class="formula"><b>The formula, last</b>clarify, map, calculate, validate; UPI a day = active users x payments a day per user</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- WEDNESDAY -->
+  <section class="day" id="sec-wed" hidden>
+    <div class="day-head">
+      <h2 class="q">Wednesday, 28 October: what goes with what beyond chance, and what is a slot worth?</h2>
+      <div class="ticket">
+        <p class="label-line">Illustrative case: the company is real, the situation and the data are synthetic, built for this class.</p>
+        <p>Swiggy Instamart, Pune, the cart page's "frequently bought together" strip of three slots. On Monday 7 September 2026 the strip switched from a curated list to the items most often found in the same cart as the items already in it. Toned milk sits in 71 percent of Pune carts and now appears beside nearly everything.</p>
+        <p>The strip's click-through fell from 6.1 percent in the three weeks before the change to 3.8 percent in the three weeks after. The data hold 40,000 carts from 1 to 28 September 2026. The ask, due Friday: rank the pairs the strip should show, say why the click-through fell, and put a rupee value on a slot. The known caveats: curd was out of stock in two zones in week three, the top tenth of customers place 38 percent of carts, and the strip itself causes part of the co-occurrence it measures.</p>
+      </div>
+      <p class="who"><b>Who needs the answer.</b> The category manager and the growth lead.</p>
+      <p class="who"><b>The questions on the way.</b></p>
+      <div class="jumps"></div>
+      <p class="jumped" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- THURSDAY -->
+  <section class="day" id="sec-thu" hidden>
+    <div class="day-head">
+      <h2 class="q">Thursday, 29 October: who is leaving, and at which step?</h2>
+      <div class="ticket">
+        <p class="label-line">Illustrative case: the company is real, the situation and the data are synthetic, built for this class.</p>
+        <p>Zomato Gold, Chennai, the membership and the app's order flow. The membership dashboard reports month-two retention for the city as flat at 38 percent for June, July, August and September 2026, while every signup cohort's own curve falls with age and each new cohort starts lower: the January 2026 cohort kept 58 percent of its members in month one, the July cohort 49 percent, and the August cohort, signed up in a sale week and 2.6 times a normal month, 31 percent.</p>
+        <p>On Monday 14 September 2026 a new checkout flow shipped on Android. Since then members' add-to-cart to order conversion on Android fell from 58 to 44 percent, while iOS held at 57 and non-members on Android at 52. The ask, due Friday: is it a cohort problem or an everyone problem, which funnel stage owns the loss, and what should be fixed first. The known caveats: the home carousel opens a menu without a search, sessions and members are different units, and the sale cohort was bought on a discount.</p>
+      </div>
+      <p class="who"><b>Who needs the answer.</b> The membership lead, with the app team, who will say the stage is fine.</p>
+      <p class="who"><b>The questions on the way.</b></p>
+      <div class="jumps"></div>
+      <p class="jumped" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- FRIDAY -->
+  <section class="day" id="sec-fri" hidden>
+    <div class="day-head">
+      <h2 class="q">Friday, 30 October: how much is coming, and how wrong could we be?</h2>
+      <div class="ticket">
+        <p class="label-line">Illustrative case: the company is real, the situation and the data are synthetic, built for this class.</p>
+        <p>Flipkart, the Lucknow fulfilment centre, festive packer headcount. The centre has 104 weeks of outbound shipments, the weeks beginning 30 September 2024 to 21 September 2026. Diwali fell on 31 October 2024 and 20 October 2025, and falls on 8 November 2026. A packer packs about 120 shipments a shift.</p>
+        <p>The planner must book packer shifts for the eight festive weeks beginning 12 October to 30 November 2026. A vendor's demand model and finance's rule of thumb disagree by eighteen points about the festive window. The ask: which forecast goes to the staffing plan, how wrong could it be in shipments and in rupees, and how many packers per week. The known caveats: the festival moves by weeks each year and the sale weeks move with it, one spike a year is two observations in two years, and a late shipment costs more than an idle shift.</p>
+      </div>
+      <p class="who"><b>Who needs the answer.</b> The FC planner and the regional operations head.</p>
+      <p class="who"><b>The questions on the way.</b></p>
+      <div class="jumps"></div>
+      <p class="jumped" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- SATURDAY -->
+  <section class="day" id="sec-sat" hidden>
+    <div class="day-head">
+      <h2 class="q">Saturday, 31 October: does the method survive a change of company?</h2>
+      <div class="ticket">
+        <p>Eight one-paragraph briefs re-pose the week: four at other companies the room uses and four at Kalpa's units. Each answer names what stays, which is the method, and what changes: the metric, the constraint and the cost of an error.</p>
+      </div>
+      <p class="who"><b>Who needs the answer.</b> Every interviewer who asks how a method travels to a business the candidate has never seen.</p>
+      <p class="who"><b>The questions on the way.</b></p>
+      <div class="jumps"></div>
+      <p class="jumped" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  Case numbers come from each day's case and carry its illustrative label; numbers marked toy are invented to show a mechanism; a public figure carries its source and the date it was checked. The page needs no network and keeps nothing between visits.
+</footer>
+
+<script data-c2kit>
+/* c2kit.js: the diagram builders and page helpers every companion page inlines.
+ *
+ * The JavaScript twin of scripts/c2kit.py, so a tree on the slide, in the notebook and on the
+ * companion page is one drawing in one violet. Every builder takes data and returns an SVG
+ * element; nothing is drawn until a page calls a builder. No storage, no network, no globals
+ * beyond window.C2K. scripts/build_companion.py inlines this file into each page.
+ */
+(function () {
+  "use strict";
+  /* The SVG namespace, an identifier rather than a link, built in two parts so no checker reads it as one. */
+  var NS = "http:" + "//www.w3.org/2000/svg";
+  var C = {
+    ink: "#1A0F5C", night: "#1A1440", violet: "#5B3FD6", lav: "#D9A7FF", muted: "#6B6690",
+    lilac: "#CFC9EE", line: "#E4E1F1", tint: "#EEEAFB", surface: "#F4F2FA", white: "#FFFFFF",
+    rose: "#D63A6A", roseTint: "#FCEBF0", green: "#1F8A5B", greenTint: "#E8F5EE"
+  };
+  var FONT = "Calibri, Carlito, 'Segoe UI', system-ui, sans-serif";
+  var SERIF = "Georgia, 'DejaVu Serif', serif";
+  var KINDS = {
+    plain: [C.tint, C.violet, 1.2, C.ink, ""],
+    lit: [C.ink, C.ink, 1.2, C.white, ""],
+    known: [C.tint, C.violet, 2.6, C.ink, ""],
+    unknown: [C.white, "#B8B2D6", 1.3, C.muted, "5 4"],
+    bad: [C.roseTint, C.rose, 1.6, C.ink, ""],
+    good: [C.greenTint, C.green, 1.6, C.ink, ""]
+  };
+
+  function el(name, attrs, text) {
+    var node = document.createElementNS(NS, name);
+    Object.keys(attrs || {}).forEach(function (k) { node.setAttribute(k, attrs[k]); });
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function wrap(text, perLine) {
+    var words = String(text).split(/\s+/), lines = [], line = "";
+    words.forEach(function (w) {
+      if (line && (line + " " + w).length > perLine) { lines.push(line); line = w; }
+      else { line = line ? line + " " + w : w; }
+    });
+    if (line) lines.push(line);
+    return lines.length ? lines : [""];
+  }
+
+  function labelLines(text, w, size) {
+    var per = Math.max(8, Math.floor(w / (size * 0.56)));
+    var parts = String(text).split("\n"), out = [];
+    wrap(parts[0], per).forEach(function (l) { out.push([l, parts.length > 1]); });
+    parts.slice(1).forEach(function (p) { wrap(p, per).forEach(function (l) { out.push([l, false]); }); });
+    return out;
+  }
+
+  function boxHeight(text, w, size) {
+    size = size || 13;
+    return Math.max(40, labelLines(text, w - 16, size).length * (size + 4) + 16);
+  }
+
+  function root(width, height, title) {
+    var svg = el("svg", { xmlns: NS, width: width, height: height, viewBox: "0 0 " + width + " " + height,
+                          role: "img", "class": "c2k-svg" });
+    var defs = el("defs");
+    var marker = el("marker", { id: "c2kArrow", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 6,
+                                markerHeight: 6, orient: "auto-start-reverse" });
+    marker.appendChild(el("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: C.violet }));
+    defs.appendChild(marker);
+    svg.appendChild(defs);
+    svg.appendChild(el("rect", { width: width, height: height, rx: 10, fill: C.surface }));
+    if (title) {
+      svg.appendChild(el("text", { x: width / 2, y: height - 8, "text-anchor": "middle", fill: C.muted,
+                                   "font-family": FONT, "font-size": 12.5 }, title));
+    }
+    return svg;
+  }
+
+  function box(svg, x, y, w, h, text, kind, size) {
+    size = size || 13;
+    var k = KINDS[kind] || KINDS.plain;
+    var g = el("g", { "class": "c2k-node c2k-" + (kind || "plain") });
+    var rect = el("rect", { x: x, y: y, width: w, height: h, rx: 8, fill: k[0], stroke: k[1],
+                            "stroke-width": k[2] });
+    if (k[4]) rect.setAttribute("stroke-dasharray", k[4]);
+    g.appendChild(rect);
+    var lines = labelLines(text, w - 16, size);
+    var top = y + h / 2 - (lines.length - 1) * (size + 4) / 2 + size * 0.36;
+    lines.forEach(function (pair, i) {
+      g.appendChild(el("text", { x: x + w / 2, y: top + i * (size + 4), "text-anchor": "middle", fill: k[3],
+                                 "font-family": FONT, "font-size": size,
+                                 "font-weight": (pair[1] || (kind === "lit" && lines.length === 1)) ? 700 : 400 },
+                       pair[0]));
+    });
+    svg.appendChild(g);
+    return g;
+  }
+
+  function arrow(svg, x1, y1, x2, y2, label) {
+    svg.appendChild(el("line", { x1: x1, y1: y1, x2: x2, y2: y2, stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+    if (label) {
+      svg.appendChild(el("text", { x: (x1 + x2) / 2, y: (y1 + y2) / 2 - 6, "text-anchor": "middle",
+                                   fill: C.muted, "font-family": FONT, "font-size": 11.5 }, label));
+    }
+  }
+
+  function curve(svg, x1, y1, x2, y2) {
+    var dx = Math.max(24, (x2 - x1) * 0.5);
+    svg.appendChild(el("path", { d: "M " + x1 + " " + y1 + " C " + (x1 + dx) + " " + y1 + ", " + (x2 - dx) + " " +
+                                 y2 + ", " + x2 + " " + y2, fill: "none", stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+  }
+
+  /* Steps left to right, with one lit; kinds sets each step's look by name. */
+  function flow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 150, gap = 28;
+    var h = Math.max.apply(null, steps.map(function (s) { return boxHeight(s, w); }));
+    var svg = root(steps.length * w + (steps.length - 1) * gap + 28, h + 28 + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      var x = 14 + i * (w + gap);
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, x, 14, w, h, s, kind);
+      if (i) arrow(svg, x - gap, 14 + h / 2, x - 2, 14 + h / 2, opts.edges ? opts.edges[i - 1] : "");
+    });
+    return svg;
+  }
+
+  /* The same, top to bottom; edges labels the arrow into each step after the first. */
+  function vflow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 300, gap = opts.edges ? 30 : 22, y = 12, parts = [];
+    steps.forEach(function (s) { parts.push(boxHeight(s, w)); });
+    var total = parts.reduce(function (a, b) { return a + b; }, 0) + gap * (steps.length - 1) + 28;
+    var svg = root(w + 28 + (opts.edges ? 150 : 0), total + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      if (i) {
+        arrow(svg, 14 + w / 2, y - gap, 14 + w / 2, y - 2);
+        if (opts.edges && opts.edges[i - 1]) {
+          svg.appendChild(el("text", { x: 14 + w / 2 + 10, y: y - gap / 2 + 4, fill: C.muted, "font-family": FONT,
+                                       "font-size": 12 }, opts.edges[i - 1]));
+        }
+      }
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, 14, y, w, parts[i], s, kind);
+      y += parts[i] + gap;
+    });
+    return svg;
+  }
+
+  function ladder(items, lit, opts) {
+    return vflow(items.map(function (t, i) { return (i + 1) + ". " + t; }), lit, opts);
+  }
+
+  /* A decision tree, top down. node: {label, kind, branches: [[edgeLabel, child], ...]}. */
+  function tree(node, opts) {
+    opts = opts || {};
+    var levels = [];
+    (function walk(n, d) {
+      if (!levels[d]) levels[d] = [];
+      var entry = { n: n, kids: [] };
+      levels[d].push(entry);
+      (n.branches || []).forEach(function (b) { entry.kids.push([b[0], walk(b[1], d + 1)]); });
+      return entry;
+    })(node, 0);
+    var w = opts.width || 196, gx = 22, gy = 44;
+    var lh = levels.map(function (l) {
+      return Math.max.apply(null, l.map(function (e) { return boxHeight(e.n.label, w); }));
+    });
+    var width = Math.max.apply(null, levels.map(function (l) { return l.length; })) * (w + gx) + 28;
+    var height = lh.reduce(function (a, b) { return a + b; }, 0) + gy * (levels.length - 1) + 24 + (opts.title ? 22 : 0);
+    var svg = root(width, height, opts.title), y = 12;
+    levels.forEach(function (level, d) {
+      var span = level.length * (w + gx) - gx, x0 = (width - span) / 2;
+      level.forEach(function (e, i) {
+        e.x = x0 + i * (w + gx); e.y = y; e.h = lh[d];
+        box(svg, e.x, e.y, w, e.h, e.n.label, e.n.kind || "plain");
+      });
+      y += lh[d] + gy;
+    });
+    levels.forEach(function (level) {
+      level.forEach(function (e) {
+        e.kids.forEach(function (k) {
+          arrow(svg, e.x + w / 2, e.y + e.h, k[1].x + w / 2, k[1].y - 2, k[0]);
+        });
+      });
+    });
+    return svg;
+  }
+
+  /* A driver tree, left to right: a total on the left, what multiplies into it on the right.
+   * node: {label, note, kind, children: [...]}. */
+  function driverTree(node, opts) {
+    opts = opts || {};
+    var w = opts.width || 156, gx = 38, gy = 12, rows = 0, placed = [];
+    function text(n) { return n.note ? n.label + "\n" + n.note : n.label; }
+    var all = [];
+    (function walk(n) { all.push(n); (n.children || []).forEach(walk); })(node);
+    var h = Math.max.apply(null, all.map(function (n) { return boxHeight(text(n), w); }));
+    (function place(n, d) {
+      var y;
+      if (!n.children || !n.children.length) { y = rows * (h + gy); rows += 1; }
+      else {
+        var ys = n.children.map(function (k) { return place(k, d + 1); });
+        y = (ys[0] + ys[ys.length - 1]) / 2;
+      }
+      placed.push([n, d, y]);
+      return y;
+    })(node, 0);
+    var depth = Math.max.apply(null, placed.map(function (p) { return p[1]; }));
+    var svg = root((depth + 1) * w + depth * gx + 28, rows * (h + gy) - gy + 24 + (opts.title ? 24 : 0), opts.title);
+    var pos = new Map();
+    placed.forEach(function (p) { pos.set(p[0], [14 + p[1] * (w + gx), 12 + p[2]]); });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      (p[0].children || []).forEach(function (k) {
+        var b = pos.get(k);
+        curve(svg, a[0] + w, a[1] + h / 2, b[0] - 2, b[1] + h / 2);
+      });
+    });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      var g = box(svg, a[0], a[1], w, h, text(p[0]), p[0].kind || "plain");
+      if (p[0].id) g.setAttribute("data-node", p[0].id);
+    });
+    return svg;
+  }
+
+  /* Every value as a dot on one axis, with named marker lines. markers: [[label, value, kind]]. */
+  function strip(values, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, width = opts.width || 760;
+    var lo = opts.lo === undefined ? 0 : opts.lo;
+    var hi = opts.hi === undefined ? niceCeil(Math.max.apply(null, values) * 1.04) : opts.hi;
+    var left = 40, right = width - 40, axis = 150, span = (hi - lo) || 1;
+    function px(v) { return left + (right - left) * (v - lo) / span; }
+    var svg = root(width, axis + 34 + (opts.title ? 22 : 0), opts.title);
+    svg.appendChild(el("line", { x1: left, y1: axis, x2: right, y2: axis, stroke: C.muted }));
+    for (var i = 0; i < 5; i++) {
+      var v = lo + span * i / 4, x = px(v);
+      svg.appendChild(el("line", { x1: x, y1: axis, x2: x, y2: axis + 5, stroke: C.muted }));
+      svg.appendChild(el("text", { x: x, y: axis + 20, "text-anchor": "middle", fill: C.muted, "font-family": FONT,
+                                   "font-size": 12 }, fmt(v)));
+    }
+    var colour = { bad: C.rose, good: C.green, plain: C.violet };
+    var lines = opts.markers || [];
+    lines.forEach(function (m, n) {
+      var x = px(m[1]), c = colour[m[2]] || C.violet;
+      /* Two lines close together would print their labels over each other, so the lower one of a
+         close pair reads leftward from its line. */
+      var left = n > 0 && Math.abs(x - px(lines[n - 1][1])) < 150 && x <= px(lines[n - 1][1]);
+      svg.appendChild(el("line", { x1: x, y1: 34 + 16 * (n % 2), x2: x, y2: axis, stroke: c, "stroke-width": 1.6,
+                                   "stroke-dasharray": "5 4", "class": "c2k-marker" }));
+      svg.appendChild(el("text", { x: left ? x - 5 : x + 5, y: 30 + 16 * (n % 2), fill: c, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700, "text-anchor": left ? "end" : "start" },
+                         m[0] + " " + fmt(m[1])));
+    });
+    var bins = {};
+    values.forEach(function (v, i) {
+      var x = px(v), key = Math.round(x / 11), level = bins[key] || 0;
+      bins[key] = level + 1;
+      svg.appendChild(el("circle", { cx: x, cy: axis - 9 - level * 11, r: 5,
+                                     fill: (opts.lit || []).indexOf(i) >= 0 ? C.ink : C.violet,
+                                     "fill-opacity": 0.8, stroke: C.white, "stroke-width": 1 }));
+    });
+    return svg;
+  }
+
+  /* The next round number at or above x: 1, 2, 2.5 or 5 times a power of ten, so axis ticks read cleanly. */
+  function niceCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = [1, 2, 2.5, 5, 10];
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x) return steps[i] * p;
+    return 10 * p;
+  }
+
+  /* The chart twins of c2kit.py's bridge, line and columns: round steps for the gridlines, a
+   * finer round top so the tallest value sits just under it, and one label style throughout. */
+  var ROUND = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8];
+  function chartCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = ROUND.concat([10]);
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x * 0.999999) return steps[i] * p;
+    return 10 * p;
+  }
+  function tickCount(span) {
+    var tries = [5, 4, 6, 3];
+    for (var i = 0; i < tries.length; i++) {
+      var step = span / tries[i];
+      if (step <= 0) break;
+      var m = Math.round(step / Math.pow(10, Math.floor(Math.log10(step))) * 1e6) / 1e6;
+      if (ROUND.indexOf(m) >= 0) return tries[i];
+    }
+    return 4;
+  }
+  function gridlines(svg, lo, hi, fmt, left, right, py) {
+    var n = tickCount(hi - lo);
+    for (var k = 0; k <= n; k++) {
+      var v = lo + (hi - lo) * k / n, y = py(v);
+      svg.appendChild(el("line", { x1: left, y1: y, x2: right, y2: y, stroke: C.line }));
+      svg.appendChild(el("text", { x: left - 8, y: y + 4, "text-anchor": "end", fill: C.muted, "font-family": FONT,
+                                   "font-size": 11.5 }, fmt(v)));
+    }
+  }
+  function under(svg, x, y, text, per, bold) {
+    wrap(text, per || 13).slice(0, 3).forEach(function (line, i) {
+      svg.appendChild(el("text", { x: x, y: y + i * 15, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12, "font-weight": bold ? 700 : 400 }, line));
+    });
+  }
+  function legend(svg, items, x, y) {
+    items.forEach(function (it) {
+      if (it[2]) svg.appendChild(el("line", { x1: x, y1: y - 4, x2: x + 18, y2: y - 4, stroke: it[1], "stroke-width": 2,
+                                              "stroke-dasharray": "5 3" }));
+      else svg.appendChild(el("rect", { x: x, y: y - 10, width: 14, height: 12, rx: 3, fill: it[1] }));
+      svg.appendChild(el("text", { x: x + 22, y: y, fill: C.ink, "font-family": FONT, "font-size": 12.5 }, it[0]));
+      x += 34 + it[0].length * 7;
+    });
+  }
+
+  /* A bridge, or waterfall: start is [label, value], moves are [[label, change], ...]; each move
+   * floats from the running total, green when it adds and rose when it takes away. opts.lo raises
+   * the axis floor when the moves are small against the totals; opts.lit outlines moves by index. */
+  function bridge(start, moves, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, lit = opts.lit || [];
+    var run = start[1], levels = [0, start[1]], cols = [[start[0], start[1], null, 0, start[1]]];
+    moves.forEach(function (m, i) { cols.push([m[0], m[1], i, run, run + m[1]]); run += m[1]; levels.push(run); });
+    cols.push([opts.endLabel || "Where it lands", run, null, 0, run]);
+    var floor = opts.lo === undefined ? Math.min(0, Math.min.apply(null, levels)) : opts.lo;
+    var hi = floor + chartCeil((Math.max.apply(null, levels) - floor) * 1.06), lo = floor;
+    var colW = 92, gap = 22, left = 86, top = 30, plotH = 230;
+    var width = opts.width || left + cols.length * (colW + gap) + 6;
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left - 6, width - 8, py);
+    cols.forEach(function (c, k) {
+      var x = left + k * (colW + gap), y1 = py(Math.max(c[3], c[4])), y2 = py(Math.max(lo, Math.min(c[3], c[4])));
+      var isMove = c[2] !== null, fill = !isMove ? C.violet : (c[1] >= 0 ? C.green : C.rose);
+      var rect = { x: x, y: y1, width: colW, height: Math.max(2, y2 - y1), rx: 4, fill: fill, "fill-opacity": 0.88 };
+      if (isMove && lit.indexOf(c[2]) >= 0) { rect.stroke = C.ink; rect["stroke-width"] = 2.5; }
+      svg.appendChild(el("rect", rect));
+      svg.appendChild(el("text", { x: x + colW / 2, y: y1 - 7, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700 }, (isMove && c[1] >= 0 ? "+" : "") + fmt(c[1])));
+      if (k < cols.length - 1) {
+        var level = py(c[4]);
+        svg.appendChild(el("line", { x1: x + colW, y1: level, x2: x + colW + gap, y2: level, stroke: C.muted,
+                                     "stroke-dasharray": "3 3" }));
+      }
+      under(svg, x + colW / 2, top + plotH + 20, c[0], 13, !isMove);
+    });
+    return svg;
+  }
+
+  /* Values over an ordered axis: series are [[name, values, kind], ...]; kind "plan" is a dashed
+   * reference line, "bad" and "good" colour a line by meaning. The last value prints at its end. */
+  function line(labels, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); };
+    var width = opts.width || 760, lo = opts.lo || 0, all = [];
+    series.forEach(function (s) { s[1].forEach(function (v) { if (v !== null && v !== undefined) all.push(v); }); });
+    var hi = lo + chartCeil((Math.max.apply(null, all) - lo) * 1.06);
+    var left = 86, right = width - 110, top = 44, plotH = 220, step = (right - left) / Math.max(1, labels.length - 1);
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 30 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left, right, py);
+    labels.forEach(function (l, i) { under(svg, left + i * step, top + plotH + 20, String(l), 10, false); });
+    var colours = { plan: C.muted, bad: C.rose, good: C.green, lit: C.ink }, keys = [];
+    series.forEach(function (s) {
+      var colour = colours[s[2]] || C.violet, dashed = s[2] === "plan", pts = [];
+      keys.push([s[0], colour, dashed]);
+      s[1].forEach(function (v, i) { if (v !== null && v !== undefined) pts.push([left + i * step, py(v), v]); });
+      var d = pts.map(function (p, j) { return (j ? "L " : "M ") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+      var path = { d: d, fill: "none", stroke: colour, "stroke-width": 2.4 };
+      if (dashed) path["stroke-dasharray"] = "6 4";
+      svg.appendChild(el("path", path));
+      if (!dashed) pts.forEach(function (p) { svg.appendChild(el("circle", { cx: p[0], cy: p[1], r: 3.6, fill: colour })); });
+      if (pts.length) {
+        var last = pts[pts.length - 1];
+        svg.appendChild(el("text", { x: last[0] + 8, y: last[1] + 4, fill: colour, "font-family": FONT, "font-size": 12.5,
+                                     "font-weight": 700 }, fmt(last[2])));
+      }
+    });
+    legend(svg, keys, left, 22);
+    return svg;
+  }
+
+  /* Vertical bars grouped by category: series are [[name, values], ...] aligned with categories,
+   * drawn light to dark in the order given, so Q1 against Q2 reads as before and after. */
+  function columns(categories, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); }, lit = opts.lit || [];
+    var shades = [C.lilac, C.violet, C.ink, C.green], all = [];
+    series.forEach(function (s) { all = all.concat(s[1]); });
+    var hi = chartCeil(Math.max.apply(null, all) * 1.1);
+    var barW = 40, inner = 6, groupGap = 34, left = 86, top = 44, plotH = 220;
+    var groupW = series.length * barW + (series.length - 1) * inner;
+    var width = opts.width || left + categories.length * (groupW + groupGap) + 10;
+    function py(v) { return top + plotH * (hi - v) / hi; }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, 0, hi, fmt, left - 6, width - 8, py);
+    categories.forEach(function (cat, c) {
+      var gx = left + c * (groupW + groupGap);
+      series.forEach(function (s, k) {
+        var v = s[1][c], x = gx + k * (barW + inner);
+        svg.appendChild(el("rect", { x: x, y: py(v), width: barW, height: Math.max(1, top + plotH - py(v)), rx: 3,
+                                     fill: shades[k % shades.length] }));
+        svg.appendChild(el("text", { x: x + barW / 2, y: py(v) - 6, "text-anchor": "middle", fill: C.ink,
+                                     "font-family": FONT, "font-size": 11, "font-weight": 700 }, fmt(v)));
+      });
+      under(svg, gx + groupW / 2, top + plotH + 20, String(cat), Math.max(10, Math.floor(groupW / 7)),
+            lit.indexOf(c) >= 0);
+    });
+    legend(svg, series.map(function (s, k) { return [s[0], shades[k % shades.length], false]; }), left, 22);
+    return svg;
+  }
+
+  /* Messages across named lanes, drawn from the run that happened. messages: [[from, to, text]]. */
+  function sequence(lanes, messages, opts) {
+    opts = opts || {};
+    var lw = opts.laneWidth || 180, top = 46, step = 44;
+    var width = lanes.length * lw + 28, height = top + Math.max(1, messages.length) * step + 34 + (opts.title ? 16 : 0);
+    var svg = root(width, height, opts.title);
+    lanes.forEach(function (lane, i) {
+      var x = 14 + i * lw;
+      box(svg, x + 10, 10, lw - 20, 30, lane, "lit", 12);
+      svg.appendChild(el("line", { x1: x + lw / 2, y1: 42, x2: x + lw / 2, y2: height - 28, stroke: C.line }));
+    });
+    messages.forEach(function (m, n) {
+      var y = top + n * step + 20;
+      var x1 = 14 + lanes.indexOf(m[0]) * lw + lw / 2, x2 = 14 + lanes.indexOf(m[1]) * lw + lw / 2;
+      if (x1 === x2) {
+        svg.appendChild(el("text", { x: x1 + 8, y: y + 4, fill: C.night, "font-family": FONT, "font-size": 12 }, m[2]));
+      } else {
+        arrow(svg, x1, y, x2 + (x2 > x1 ? -4 : 4), y, m[2]);
+      }
+    });
+    return svg;
+  }
+
+  function sideBySide() {
+    var div = document.createElement("div");
+    div.className = "c2k-row";
+    Array.prototype.forEach.call(arguments, function (svg) { div.appendChild(svg); });
+    return div;
+  }
+
+  /* Rs with Indian digit grouping, the way every Kalpa number is read aloud. */
+  function rupees(n) {
+    var sign = n < 0 ? "-" : "", s = String(Math.round(Math.abs(n)));
+    if (s.length <= 3) return sign + "Rs " + s;
+    var head = s.slice(0, -3), tail = s.slice(-3), parts = [];
+    while (head.length > 2) { parts.unshift(head.slice(-2)); head = head.slice(0, -2); }
+    if (head) parts.unshift(head);
+    return sign + "Rs " + parts.join(",") + "," + tail;
+  }
+
+  /* Put a diagram into a holder, replacing whatever was drawn there before. */
+  function draw(holder, svg) {
+    var target = typeof holder === "string" ? document.getElementById(holder) : holder;
+    target.textContent = "";
+    target.appendChild(svg);
+    return svg;
+  }
+
+  window.C2K = { colours: C, flow: flow, vflow: vflow, ladder: ladder, tree: tree, driverTree: driverTree,
+                 strip: strip, bridge: bridge, line: line, columns: columns, sequence: sequence,
+                 sideBySide: sideBySide, rupees: rupees, draw: draw };
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var NS = "http:" + "//www.w3.org/2000/svg";
+  var C = window.C2K.colours;
+  var AMBER = "#B07800", AMBER_TINT = "#FFF7E6", AMBER_INK = "#5C3D00", OFF = "#9F99C8", LILAC2 = "#B7B0E3";
+  var FONT = "Calibri, Carlito, 'Segoe UI', system-ui, sans-serif";
+  var SERIF = "Georgia, 'DejaVu Serif', serif";
+  var MONO = "Consolas, ui-monospace, SFMono-Regular, Menlo, monospace";
+
+  /* ---------- small helpers ---------- */
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function S(name, attrs, text) {
+    var n = document.createElementNS(NS, name);
+    Object.keys(attrs || {}).forEach(function (k) { n.setAttribute(k, attrs[k]); });
+    if (text !== undefined && text !== null) n.textContent = text;
+    return n;
+  }
+  function add(parent, name, attrs, text) { var n = S(name, attrs, text); parent.appendChild(n); return n; }
+  function txt(parent, x, y, s, o) {
+    o = o || {};
+    return add(parent, "text", { x: x, y: y, fill: o.fill || C.ink, "font-family": o.font || FONT,
+      "font-size": o.size || 14, "font-weight": o.weight || 400, "text-anchor": o.anchor || "start" }, s);
+  }
+  function svgRoot(w, h, label) {
+    return S("svg", { viewBox: "0 0 " + w + " " + h, role: "img", "aria-label": label, preserveAspectRatio: "xMidYMid meet" });
+  }
+  function put(holder, node) { holder.textContent = ""; holder.appendChild(node); return node; }
+  function group(n) {
+    var neg = n < 0, s = String(Math.round(Math.abs(n))), out = "";
+    while (s.length > 3) { out = "," + s.slice(-3) + out; s = s.slice(0, -3); }
+    return (neg ? "-" : "") + s + out;
+  }
+  function round100(n) { return Math.round(n / 100) * 100; }
+  function rs(n) { return "Rs " + group(n); }
+  function crore(n) { return "Rs " + (n / 1e7).toFixed(2) + " crore"; }
+  function lakh(n) { return "Rs " + (n / 1e5).toFixed(1) + " lakh"; }
+  function pctChange(a, b) {
+    var p = (b - a) / a * 100;
+    if (Math.abs(p) < 0.5) return "flat";
+    return (p > 0 ? "up " : "down ") + Math.abs(p).toFixed(0) + " percent";
+  }
+  function nums(dl, rows) {
+    dl.textContent = "";
+    rows.forEach(function (r) {
+      if (r.wide) { var d = document.createElement("dd"); d.className = "wide"; d.textContent = r.wide; dl.appendChild(d); return; }
+      var dt = document.createElement("dt"); dt.textContent = r[0];
+      var dd = document.createElement("dd"); dd.textContent = r[1];
+      dl.appendChild(dt); dl.appendChild(dd);
+    });
+  }
+  function setOut(art, key, s) { var o = $('[data-out="' + key + '"]', art); if (o) o.textContent = s; }
+
+  /* ---------- the week map ---------- */
+  var DAYS = ["mon", "tue", "wed", "thu", "fri", "sat"];
+  var DAY_NAMES = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var SCENE_DAY = {};
+  var NODES = [
+    { id: "mon", title: ["Mon: is the number", "measuring what we want?"], lines: ["Uber, Hyderabad", "online hours against trips", "metric, guardrails, gaming"],
+      found: ["1.9 to 1.6 trips an online hour:", "pay for trips"], kalpa: ["Kalpa Retail:", "the auto-reorder window"] },
+    { id: "tue", title: ["Tue: can it survive one", "slide, and be sized?"], lines: ["Uber, Hyderabad", "bookings per online hour", "one slide, the guesstimate"],
+      found: ["Rs 314 to Rs 260 an hour,", "said in one claim"], kalpa: null },
+    { id: "wed", title: ["Wed: what goes with", "what, beyond chance?"], lines: ["Swiggy Instamart, Pune", "the bought-together strip", "support, confidence, lift"],
+      found: ["milk's lift 1.04: rank by lift", "above a 1 percent floor"], kalpa: ["Kalpa Retail:", "the Rs 199 charger"] },
+    { id: "thu", title: ["Thu: who is leaving,", "and at which step?"], lines: ["Zomato Gold, Chennai", "a flat number, falling cohorts", "cohorts, funnels, denominators"],
+      found: ["38 percent flat over falling", "cohorts; Android 58 to 44"], kalpa: ["Kalpa Retail:", "the Retail-Plus tier"] },
+    { id: "fri", title: ["Fri: how much is coming,", "how wrong could we be?"], lines: ["Flipkart, Lucknow", "festive packer headcount", "baselines, hold-out, cost"],
+      found: ["festival-aligned baseline wins;", "plan at the 0.82 quantile"], kalpa: ["Kalpa Retail:", "24 months, a vendor curve"] }
+  ];
+  var nav = { day: -1, links: false, lastHash: null };
+
+  function nodeLook(i) {
+    if (nav.day < 0 || i > nav.day) return "unknown";
+    return i === nav.day ? "lit" : "known";
+  }
+  function drawMap() {
+    var W = 1200, H = 640, svg = svgRoot(W, H, "The week map with the chosen day lit");
+    var faded = nav.links ? 0.22 : 1;
+    var base = add(svg, "g", { opacity: faded, "class": "fade" });
+    var nx = function (i) { return 24 + i * 234; }, NW = 214, NY = 132, NH = 222;
+    /* the centre question */
+    add(svg, "rect", { x: 340, y: 14, width: 520, height: 72, rx: 12, fill: C.tint, stroke: C.violet, "stroke-width": 2.4 });
+    txt(svg, 600, 44, "What does an analyst do with one number?", { anchor: "middle", size: 19, weight: 700, font: SERIF });
+    txt(svg, 600, 70, "five tickets, five companies, one method a day", { anchor: "middle", size: 15, fill: C.night });
+    /* spokes from the centre to Monday, Wednesday, Thursday and Friday; Tuesday hangs off Monday */
+    [0, 2, 3, 4].forEach(function (i) {
+      add(base, "line", { x1: 600, y1: 86, x2: nx(i) + NW / 2, y2: NY - 2, stroke: C.violet, "stroke-width": 1.6 });
+    });
+    add(base, "line", { x1: nx(0) + NW, y1: NY + 60, x2: nx(1), y2: NY + 60, stroke: C.violet, "stroke-width": 1.6, "stroke-dasharray": "5 4" });
+    /* the Saturday bus */
+    for (var b = 0; b < 5; b++) add(base, "line", { x1: nx(b) + NW / 2, y1: NY + NH, x2: nx(b) + NW / 2, y2: 500, stroke: C.violet, "stroke-width": 1.4 });
+    add(base, "line", { x1: nx(0) + NW / 2, y1: 500, x2: nx(4) + NW / 2, y2: 500, stroke: C.violet, "stroke-width": 1.4 });
+    add(base, "line", { x1: 600, y1: 500, x2: 600, y2: 528, stroke: C.violet, "stroke-width": 1.4 });
+    /* the five weekday nodes */
+    NODES.forEach(function (n, i) {
+      var look = nodeLook(i), x = nx(i);
+      var fill = look === "lit" ? C.ink : (look === "known" ? C.tint : C.white);
+      var stroke = look === "unknown" ? "#B8B2D6" : (look === "lit" ? C.ink : C.violet);
+      var ink = look === "lit" ? C.white : (look === "known" ? C.ink : C.muted);
+      var r = add(svg, "rect", { x: x, y: NY, width: NW, height: NH, rx: 12, fill: fill, stroke: stroke, "stroke-width": look === "known" ? 2.6 : 1.4 });
+      if (look === "unknown") r.setAttribute("stroke-dasharray", "6 4");
+      txt(svg, x + 12, NY + 26, n.title[0], { size: 15.5, weight: 700, fill: ink });
+      txt(svg, x + 12, NY + 46, n.title[1], { size: 15.5, weight: 700, fill: ink });
+      n.lines.forEach(function (l, k) { txt(svg, x + 12, NY + 74 + k * 20, l, { size: 14.5, fill: ink }); });
+      if (look === "known") {
+        txt(svg, x + 12, NY + 146, n.found[0], { size: 14, weight: 700, fill: C.violet });
+        txt(svg, x + 12, NY + 164, n.found[1], { size: 14, weight: 700, fill: C.violet });
+      } else if (look === "lit") {
+        txt(svg, x + 12, NY + 150, "today's case", { size: 14, weight: 700, fill: C.lav });
+      }
+      if (n.kalpa) {
+        add(svg, "rect", { x: x + 8, y: NY + NH - 48, width: NW - 16, height: 40, rx: 8, fill: AMBER_TINT, stroke: AMBER, "stroke-width": 1.2 });
+        txt(svg, x + 16, NY + NH - 31, n.kalpa[0], { size: 13, weight: 700, fill: AMBER_INK });
+        txt(svg, x + 16, NY + NH - 15, n.kalpa[1], { size: 13, fill: AMBER_INK });
+      } else {
+        txt(svg, x + 12, NY + NH - 22, "the same case, defended", { size: 13, fill: ink });
+      }
+    });
+    /* Saturday */
+    var sat = nav.day === 5 ? "lit" : "unknown";
+    var sr = add(svg, "rect", { x: 370, y: 528, width: 460, height: 82, rx: 12, fill: sat === "lit" ? C.ink : C.white,
+      stroke: sat === "lit" ? C.ink : "#B8B2D6", "stroke-width": 1.4 });
+    if (sat !== "lit") sr.setAttribute("stroke-dasharray", "6 4");
+    txt(svg, 600, 560, "Sat: does the method survive a change of company?", { anchor: "middle", size: 16, weight: 700, fill: sat === "lit" ? C.white : C.muted });
+    txt(svg, 600, 586, "other companies first, then Kalpa's four units", { anchor: "middle", size: 14.5, fill: sat === "lit" ? C.white : C.muted });
+    /* the connections, drawn over a faded map */
+    if (nav.links) {
+      var defs = add(svg, "defs", {});
+      var mk = add(defs, "marker", { id: "w4arrow", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse" });
+      add(mk, "path", { d: "M 0 0 L 10 5 L 0 10 z", fill: C.ink });
+      var arcs = [[nx(0) + 70, nx(4) + 150, 478, 1], [nx(3) + 170, nx(4) + 40, 392, 2], [nx(2) + 170, nx(3) + 40, 392, 3], [nx(2) + 110, nx(4) + 95, 440, 4]];
+      arcs.forEach(function (a) {
+        var y0 = NY + NH + 2, mid = (a[0] + a[1]) / 2;
+        add(svg, "path", { d: "M " + a[0] + " " + y0 + " C " + a[0] + " " + a[2] + ", " + a[1] + " " + a[2] + ", " + a[1] + " " + (y0 + 4),
+          fill: "none", stroke: C.ink, "stroke-width": 3, "marker-end": "url(#w4arrow)" });
+        var by = y0 + (a[2] - y0) * 0.75;
+        add(svg, "circle", { cx: mid, cy: by, r: 14, fill: C.violet, stroke: C.white, "stroke-width": 2 });
+        txt(svg, mid, by + 5, String(a[3]), { anchor: "middle", size: 15, weight: 700, fill: C.white });
+      });
+    }
+    put($("[data-map]"), svg);
+  }
+
+  function statusLine() {
+    if (nav.day < 0) return "No day is chosen yet. Choose one to light its node; every earlier day stays open with what the room found on it.";
+    var d = nav.day, name = DAY_NAMES[d];
+    if (d === 0) return "Monday is lit; Tuesday to Saturday are still dashed, and Monday's scenes are open below the map.";
+    if (d === 5) return "Saturday is lit and every weekday carries what the room found; the scenes of all six days are open below the map.";
+    return name + " is lit; " + (d === 1 ? "Monday carries" : "Monday to " + DAY_NAMES[d - 1] + " carry") +
+      " what the room found, " + (d === 4 ? "Saturday is" : DAY_NAMES[d + 1] + " to Saturday are") +
+      " still dashed, and the scenes of Monday to " + name + " are open below the map.";
+  }
+
+  function setDay(i, fromHash) {
+    nav.day = i;
+    DAYS.forEach(function (d, k) { $("#sec-" + d).hidden = !(i >= 0 && k <= i); });
+    $$("[data-day]").forEach(function (b) { b.setAttribute("aria-pressed", String(DAYS.indexOf(b.getAttribute("data-day")) === i)); });
+    $(".status").textContent = statusLine();
+    drawMap();
+    if (!fromHash && i >= 0) { nav.lastHash = DAYS[i]; location.hash = DAYS[i]; }
+  }
+  function setLinks(on) {
+    nav.links = on;
+    var b = $("[data-links]");
+    b.setAttribute("aria-pressed", String(on));
+    b.textContent = on ? "Hide the connections" : "Show how the days connect";
+    $(".links").hidden = !on;
+    drawMap();
+  }
+  function goScene(id, setHash) {
+    var day = SCENE_DAY[id];
+    if (day === undefined) return false;
+    if (nav.day < day) setDay(day, true);
+    var art = $("#scene-" + id);
+    var head = $("#sec-" + DAYS[day] + " .jumped");
+    head.textContent = "You jumped to " + id + ": " + $("h3", art).textContent;
+    art.scrollIntoView({ block: "start" });
+    if (setHash) { nav.lastHash = id; location.hash = id; }
+    return true;
+  }
+  function readHash(scroll) {
+    var h = decodeURIComponent((location.hash || "").replace(/^#/, ""));
+    if (!h || h === nav.lastHash) return;
+    var d = DAYS.indexOf(h.toLowerCase());
+    if (d >= 0) { setDay(d, true); return; }
+    if (SCENE_DAY[h] !== undefined && scroll) goScene(h, false);
+  }
+
+  /* ---------- the scene frame: predict, controls, reveal ---------- */
+  var SCENES = {};
+  function scene(id, def) { SCENES[id] = def; }
+  function writeCheck(art, def, st) {
+    var p = $(".check", art);
+    if (def.check) { p.textContent = def.check(st); return; }
+    if (!st.pred) p.textContent = "No prediction was locked in before the reveal; the answer is " + def.answer + ".";
+    else if (st.pred === def.answer) p.textContent = "You predicted " + st.pred + ", and " + def.answer + " is what happens.";
+    else p.textContent = "You predicted " + st.pred + "; the answer is " + def.answer + ".";
+  }
+  function toggleReveal(art, def, st, force) {
+    var panel = $(".reveal", art), rb = $("[data-reveal]", art);
+    var show = force === undefined ? panel.hidden : force;
+    if (show) {
+      if (def.final) def.final(st, art);
+      if (def.render) def.render(st, art);
+      writeCheck(art, def, st);
+    }
+    panel.hidden = !show;
+    rb.textContent = show ? "Hide the answer" : "Reveal the answer";
+    rb.setAttribute("aria-expanded", String(show));
+  }
+  function wire(art) {
+    var id = art.getAttribute("data-scene"), def = SCENES[id];
+    if (!def) return;
+    var st = def.start ? def.start() : {};
+    def.st = st;
+    def.art = art;
+    if (def.init) def.init(st, art);
+    var said = $(".said", art);
+    $$("[data-predict]", art).forEach(function (b) {
+      b.addEventListener("click", function () {
+        st.pred = b.getAttribute("data-predict");
+        $$("[data-predict]", art).forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+        said.textContent = "Your prediction: " + b.textContent.trim();
+        if (!$(".reveal", art).hidden) writeCheck(art, def, st);
+      });
+    });
+    var lock = $("[data-lock]", art);
+    if (lock) {
+      lock.addEventListener("click", function () {
+        st.pred = def.guessValue(st);
+        said.textContent = "Locked in: " + def.guessText(st.pred) + ".";
+        if (!$(".reveal", art).hidden) writeCheck(art, def, st);
+      });
+    }
+    $("[data-reveal]", art).addEventListener("click", function () { toggleReveal(art, def, st); });
+    if (def.render) def.render(st, art);
+  }
+  function on(art, key, ev, fn) { var c = $('[data-ctl="' + key + '"]', art); c.addEventListener(ev, fn); return c; }
+  function num(art, key) { return Number($('[data-ctl="' + key + '"]', art).value); }
+
+  /* ---------- Monday: the city of sixty dots ---------- */
+  var MON = W4.mon;
+  function DotCity(svg, ox, oy) {
+    var cw = 150, ch = 104, dots = [];
+    for (var c = 0; c < 4; c++) {
+      for (var r = 0; r < 3; r++) {
+        add(svg, "rect", { x: ox + c * cw, y: oy + r * ch, width: cw - 4, height: ch - 4, rx: 8,
+          fill: c === 3 ? AMBER_TINT : C.white, stroke: c === 3 ? AMBER : C.line, "stroke-width": 1.2 });
+      }
+      if (c === 3) txt(svg, ox + 3 * cw + 8, oy + 3 * ch + 14, "few requests here", { size: 13.5, weight: 700, fill: AMBER_INK });
+    }
+    add(svg, "rect", { x: ox, y: oy + 3 * ch + 24, width: 4 * cw - 4, height: 44, rx: 8, fill: C.white, stroke: C.line });
+    txt(svg, ox + 10, oy + 3 * ch + 51, "offline", { size: 14, weight: 700, fill: C.muted });
+    function inner(i) {
+      var cell = i % 9, s = Math.floor(i / 9), col = cell % 3, row = Math.floor(cell / 3);
+      return [ox + col * cw + 22 + (s % 4) * 34, oy + row * ch + 30 + Math.floor(s / 4) * 38, col];
+    }
+    var outerIdx = function (i) { return i === 29 ? 0 : (i === 30 ? 1 : (i >= 40 ? i - 38 : -1)); };
+    function outer(i) {
+      var j = outerIdx(i), cell = j % 3, s = Math.floor(j / 3);
+      return [ox + 3 * cw + 20 + (s % 4) * 32, oy + cell * ch + 30 + Math.floor(s / 4) * 38];
+    }
+    function park(i) { return [ox + 92 + (i - 40) * 24.5, oy + 3 * ch + 46]; }
+    var layer = add(svg, "g", {});
+    for (var i = 0; i < 60; i++) {
+      var g = add(layer, "g", { "class": "dot" });
+      var cell = i % 9, col = cell % 3, row = Math.floor(cell / 3), sgn = i % 2 ? 1 : -1;
+      var dx = (col === 0 ? 1 : (col === 2 ? -1 : sgn)) * 84;
+      var dy = i % 3 === 0 ? (row === 0 ? 1 : (row === 2 ? -1 : sgn)) * 48 : 0;
+      var body = add(g, "g", { "class": "body", style: "--dx:" + dx + "px;--dy:" + dy + "px;--dur:" + (2.2 + (i % 7) * 0.2).toFixed(1) + "s;--del:-" + (i % 5) * 0.6 + "s" });
+      add(body, "circle", { r: 12, fill: "none", stroke: C.rose, "stroke-width": 3, opacity: 0, "class": "ring" });
+      add(body, "circle", { r: 7.5, fill: C.green, stroke: C.white, "stroke-width": 1.5, "class": "core" });
+      dots.push(g);
+    }
+    function setRoles(roles) {
+      var count = { drive: 0, idle: 0, off: 0, game: 0 };
+      roles.forEach(function (role, i) {
+        var g = dots[i], kind = role.replace("-game", ""), gaming = role.indexOf("-game") > 0, pos;
+        if (kind === "off") pos = park(i);
+        else if (kind === "idle-out") pos = outer(i);
+        else pos = inner(i);
+        g.style.transform = "translate(" + pos[0] + "px," + pos[1] + "px)";
+        g.setAttribute("class", "dot " + (kind === "drive" ? "drive" : (kind === "off" ? "off" : "idle")));
+        var core = g.querySelector(".core"), ring = g.querySelector(".ring");
+        core.setAttribute("fill", kind === "drive" ? C.green : (kind === "off" ? C.white : AMBER));
+        core.setAttribute("stroke", kind === "off" ? OFF : C.white);
+        core.setAttribute("stroke-width", kind === "off" ? 2.5 : 1.5);
+        ring.setAttribute("opacity", gaming ? 1 : 0);
+        if (kind === "drive") count.drive++; else if (kind === "off") count.off++; else count.idle++;
+        if (gaming) count.game++;
+      });
+      return count;
+    }
+    return { setRoles: setRoles };
+  }
+  function legendDots(svg, x, y, withRing) {
+    var items = [["driving", C.green, C.white], ["online, no trip", AMBER, C.white], ["offline", C.white, OFF]];
+    items.forEach(function (it, k) {
+      var cx = x + k * 130;
+      add(svg, "circle", { cx: cx, cy: y - 5, r: 7.5, fill: it[1], stroke: it[2], "stroke-width": it[2] === OFF ? 2.5 : 1.5 });
+      txt(svg, cx + 14, y, it[0], { size: 14.5 });
+    });
+    if (withRing) {
+      add(svg, "circle", { cx: x + 400, cy: y - 5, r: 10, fill: "none", stroke: C.rose, "stroke-width": 3 });
+      txt(svg, x + 416, y, "gaming the paid number", { size: 14.5 });
+    }
+  }
+  function m1Resp(g) { return Math.pow(g / MON.floorCase, MON.respPower); }
+  function m1Model(g) {
+    var r = m1Resp(g), lerp = function (a) { return a[0] + (a[1] - a[0]) * r; };
+    var H = lerp(MON.hours), T = lerp(MON.trips);
+    return { hours: H, trips: T, tph: T / H, idle: lerp(MON.idleShare), wait: lerp(MON.waitMin),
+             topupIdle: MON.topupIdleCrore * 1e7 * r * (g / MON.floorCase) };
+  }
+  function m1Roles(g) {
+    var n = Math.round(MON.newcomersAtCase * m1Resp(g)), roles = [];
+    for (var i = 0; i < 60; i++) {
+      if (i <= 28) roles.push("drive");
+      else if (i === 29) roles.push(g < 120 ? "drive" : "idle-out");
+      else if (i === 30) roles.push(g < 200 ? "drive" : "idle-out");
+      else if (i <= 39) roles.push("idle-in");
+      else { var k = i - 40; roles.push(k >= n ? "off" : (k < 2 ? "drive" : "idle-out")); }
+    }
+    return roles;
+  }
+
+  scene("M1", {
+    answer: "C",
+    start: function () { return { floor: 0, wait: false }; },
+    init: function (st, art) {
+      var svg = svgRoot(640, 510, "A city of twelve zones with sixty driver dots");
+      this.city = DotCity(svg, 16, 16);
+      legendDots(svg, 26, 428, false);
+      this.waitG = add(svg, "g", { opacity: 0, "class": "fade" });
+      txt(this.waitG, 16, 470, "Median rider wait at peak", { size: 15, weight: 700 });
+      add(this.waitG, "rect", { x: 220, y: 456, width: 330, height: 18, rx: 9, fill: C.white, stroke: C.line });
+      this.waitBar = add(this.waitG, "rect", { x: 220, y: 456, width: 0, height: 18, rx: 9, fill: C.violet, "class": "move" });
+      this.waitTxt = txt(this.waitG, 624, 471, "", { size: 15, weight: 700, anchor: "end" });
+      txt(this.waitG, 220, 496, "0 min", { size: 13, fill: C.muted });
+      txt(this.waitG, 550, 496, "6 min", { size: 13, fill: C.muted, anchor: "end" });
+      put($("[data-fig]", art), svg);
+      var self = this;
+      on(art, "floor", "input", function (e) { st.floor = Number(e.target.value); self.render(st, art); });
+      var wb = on(art, "wait", "click", function () {
+        st.wait = !st.wait; wb.setAttribute("aria-pressed", String(st.wait));
+        wb.textContent = st.wait ? "Hide the rider wait" : "Show the rider wait"; self.render(st, art);
+      });
+    },
+    render: function (st, art) {
+      var g = st.floor, m = m1Model(g), c = this.city.setRoles(m1Roles(g));
+      $('[data-ctl="floor"]', art).value = g;
+      setOut(art, "floor", "Rs " + g + " an hour (slider value " + g + ")");
+      this.waitG.setAttribute("opacity", st.wait ? 1 : 0);
+      this.waitBar.setAttribute("width", (330 * m.wait / 6).toFixed(1));
+      this.waitTxt.textContent = m.wait.toFixed(1) + " min";
+      var rows = [
+        ["Peak online hours, six weeks", group(round100(m.hours))],
+        ["Completed peak trips", group(round100(m.trips))],
+        ["Trips per online hour", m.tph.toFixed(2)],
+        { wide: "That is " + group(round100(m.trips)) + " / " + group(round100(m.hours)) + "." },
+        ["Online hours with no trip, share", m.idle.toFixed(2)],
+        ["Top-up paid to idle hours", crore(m.topupIdle)],
+        ["Dots: driving, idle, offline", c.drive + ", " + c.idle + ", " + c.off]
+      ];
+      if (st.wait) rows.push(["Median rider wait at peak", m.wait.toFixed(1) + " min"]);
+      nums($("[data-nums]", art), rows);
+    },
+    final: function (st) { st.floor = MON.floorCase; }
+  });
+
+  function m2Roles(key) {
+    if (key === "hours") return m1Roles(MON.floorCase).map(function (r) { return r === "idle-out" ? "idle-out-game" : r; });
+    var roles = [], i;
+    for (i = 0; i < 60; i++) roles.push("idle-in");
+    if (key === "trips") {
+      for (i = 0; i <= 33; i++) roles[i] = "drive";
+      roles[40] = roles[41] = "drive";
+      for (i = 22; i <= 28; i++) roles[i] = "drive-game";
+      for (i = 42; i <= 59; i++) roles[i] = "off";
+    } else if (key === "accept") {
+      for (i = 0; i <= 30; i++) roles[i] = "drive";
+      roles[40] = roles[41] = "drive";
+      for (i = 21; i <= 28; i++) roles[i] = "drive-game";
+      for (i = 42; i <= 59; i++) roles[i] = "off";
+    } else {
+      for (i = 0; i <= 33; i++) roles[i] = "drive";
+      for (i = 40; i <= 45; i++) roles[i] = "drive";
+      roles[27] = roles[28] = "drive-game";
+      for (i = 46; i <= 59; i++) roles[i] = "off";
+    }
+    return roles;
+  }
+  scene("M2", {
+    answer: "D",
+    start: function () { return { pay: "hours" }; },
+    init: function (st, art) {
+      var svg = svgRoot(640, 640, "A seesaw of the paid number against its guardrails, above the sixty driver dots");
+      add(svg, "path", { d: "M 296 186 L 344 186 L 320 146 Z", fill: C.ink });
+      this.beam = add(svg, "g", { "class": "move", style: "transform-box:view-box;transform-origin:320px 140px" });
+      add(this.beam, "rect", { x: 112, y: 136, width: 416, height: 8, rx: 4, fill: C.ink });
+      this.left = add(svg, "g", { "class": "move" });
+      add(this.left, "rect", { x: -100, y: -64, width: 200, height: 56, rx: 10, fill: C.tint, stroke: C.violet, "stroke-width": 2 });
+      txt(this.left, 0, -42, "pays for", { anchor: "middle", size: 13.5, fill: C.night });
+      this.leftTxt = txt(this.left, 0, -20, "", { anchor: "middle", size: 15.5, weight: 700 });
+      this.right = add(svg, "g", { "class": "move" });
+      add(this.right, "rect", { x: -112, y: -96, width: 224, height: 88, rx: 10, fill: C.white, stroke: C.violet, "stroke-width": 2 });
+      txt(this.right, 0, -76, "guardrails", { anchor: "middle", size: 13.5, fill: C.night });
+      this.rails = ["rider wait", "acceptance", "top-up per trip"].map(function (nm, k) {
+        var y = -56 + k * 20;
+        var dot = add(this.right, "circle", { cx: -96, cy: y - 5, r: 6, fill: C.green });
+        var t = txt(this.right, -84, y, nm, { size: 14 });
+        var s = txt(this.right, 100, y, "", { size: 14, weight: 700, anchor: "end" });
+        return [dot, t, s];
+      }, this);
+      this.city = DotCity(svg, 16, 212);
+      legendDots(svg, 26, 624, true);
+      put($("[data-fig]", art), svg);
+      var self = this;
+      on(art, "pay", "change", function (e) { st.pay = e.target.value; self.render(st, art); });
+    },
+    render: function (st, art) {
+      var p = MON.pay[st.pay], c = this.city.setRoles(m2Roles(st.pay));
+      $('[data-ctl="pay"]', art).value = st.pay;
+      var a = p.tilt * Math.PI / 180, L = 198;
+      this.beam.style.transform = "rotate(" + (-p.tilt) + "deg)";
+      this.left.style.transform = "translate(" + (320 - L * Math.cos(a)).toFixed(1) + "px," + (140 - L * Math.sin(a)).toFixed(1) + "px)";
+      this.right.style.transform = "translate(" + (320 + L * Math.cos(a)).toFixed(1) + "px," + (140 + L * Math.sin(a)).toFixed(1) + "px)";
+      this.leftTxt.textContent = p.label.replace(", the scheme as it ran", "").replace("Completed trips with an acceptance floor", "trips, acceptance floor");
+      p.rails.forEach(function (s, k) {
+        this.rails[k][0].setAttribute("fill", s === "holds" ? C.green : C.rose);
+        this.rails[k][2].textContent = s;
+        this.rails[k][2].setAttribute("fill", s === "holds" ? C.green : C.rose);
+      }, this);
+      setOut(art, "pay", "Paying for " + p.label.charAt(0).toLowerCase() + p.label.slice(1));
+      var online = c.drive + c.idle;
+      var topup = p.topupTrip === null ? Math.round(MON.topupCrore * 1e7 / MON.trips[1]) : p.topupTrip;
+      nums($("[data-nums]", art), [
+        ["Dots driving riders", String(c.drive)],
+        ["Dots online with no trip", String(c.idle)],
+        ["Dots offline", String(c.off)],
+        ["Dots gaming the paid number", String(c.game)],
+        ["Idle share of online dots", c.idle + " / " + online + " = " + (c.idle / online).toFixed(2)],
+        ["Median rider wait" + (st.pay === "hours" ? "" : " (toy)"), p.wait.toFixed(1) + " min"],
+        ["Top-up per completed trip" + (st.pay === "hours" ? "" : " (toy)"), rs(topup)],
+        { wide: st.pay === "hours" ? "Rs 1.9 crore over 230,900 trips is about Rs 82 a trip." : "The toy choices show direction only; the city has not run them." }
+      ]);
+    },
+    final: function (st) { st.pay = "floor"; }
+  });
+
+  /* M3: the twelve rows and the definition's four lines */
+  var COLS = ["Online hours", "Requests", "Accepted", "Trips"];
+  function m3Calc(st) {
+    var res = { before: [0, 0], after: [0, 0], kept: [] };
+    MON.rows.forEach(function (row) {
+      [1, 2].forEach(function (w) {
+        var v = row[w], out = (st.exc === "ef" && (row[0] === "E" || row[0] === "F")) || (st.exc === "acc" && v[2] / v[1] < 0.5);
+        res.kept.push(!out);
+        if (out) return;
+        var tgt = w === 1 ? res.before : res.after;
+        tgt[0] += v[Number(st.num)];
+        tgt[1] += st.den === "d" ? 1 : v[Number(st.den)];
+      });
+    });
+    var scale = (st.den === "d" && st.win === "day") ? 5 : 1;
+    res.vb = res.before[0] / res.before[1] / scale;
+    res.va = res.after[0] / res.after[1] / scale;
+    return res;
+  }
+  function m3Unit(st) {
+    var n = { 3: "trips", 2: "accepted requests", 1: "requests" }[st.num];
+    var d = st.den === "0" ? "online hour" : (st.den === "d" ? "enrolled driver" : "request received");
+    var w = (st.den === "d") ? (st.win === "day" ? " per weekday" : " per week") : "";
+    return n + " per " + d + w;
+  }
+  scene("M3", {
+    answer: "B",
+    start: function () { return { num: "3", den: "0", win: "week", exc: "none" }; },
+    init: function (st, art) {
+      var self = this;
+      ["num", "den", "win", "exc"].forEach(function (k) {
+        on(art, k, "change", function (e) { st[k] = e.target.value; self.render(st, art); });
+      });
+    },
+    render: function (st, art) {
+      ["num", "den", "win", "exc"].forEach(function (k) { $('[data-ctl="' + k + '"]', art).value = st[k]; });
+      var r = m3Calc(st), same = st.num === st.den;
+      var t = document.createElement("table"); t.className = "rows";
+      var head = "<tr><th>Driver</th><th>Week</th>" + COLS.map(function (c, k) {
+        var cls = String(k) === st.num ? "num-col" : (String(k) === st.den ? "den-col" : "");
+        return '<th class="' + cls + '">' + c + "</th>";
+      }).join("") + "<th>Accepted share</th></tr>";
+      var body = "", k = 0;
+      MON.rows.forEach(function (row) {
+        [1, 2].forEach(function (w) {
+          var v = row[w];
+          body += '<tr class="' + (r.kept[k] ? "" : "out") + '"><td>' + row[0] + "</td><td>" + (w === 1 ? "before" : "after") + "</td>" +
+            v.map(function (x) { return "<td>" + x + "</td>"; }).join("") + "<td>" + (v[2] / v[1]).toFixed(2) + "</td></tr>";
+          k++;
+        });
+      });
+      t.innerHTML = "<thead>" + head + "</thead><tbody>" + body + "</tbody>";
+      put($("[data-table]", art), t);
+      var svg = svgRoot(640, 120, "The metric before and after under the chosen lines");
+      var mx = Math.max(r.vb, r.va) || 1;
+      [["before", r.vb, LILAC2], ["after", r.va, C.violet]].forEach(function (b, i) {
+        var y = 18 + i * 48;
+        txt(svg, 16, y + 22, b[0], { size: 15, weight: 700 });
+        add(svg, "rect", { x: 90, y: y, width: Math.max(2, 420 * b[1] / mx), height: 30, rx: 4, fill: b[2], "class": "move" });
+        txt(svg, 98 + 420 * b[1] / mx, y + 22, same ? "1.00" : b[1].toFixed(b[1] >= 10 ? 1 : 2), { size: 16, weight: 700 });
+      });
+      put($("[data-fig]", art), svg);
+      var unit = m3Unit(st);
+      nums($("[data-nums]", art), same ? [{ wide: "A count over itself is always 1. Pick a numerator and a denominator that differ." }] : [
+        { wide: "The metric: " + unit + "." },
+        ["Week before", r.vb.toFixed(r.vb >= 10 ? 1 : 2)],
+        ["Week after", r.va.toFixed(r.va >= 10 ? 1 : 2)],
+        ["Change", pctChange(r.vb, r.va)],
+        { wide: "Before: " + r.before[0] + " / " + r.before[1] + (st.den === "d" && st.win === "day" ? " / 5" : "") +
+                ". After: " + r.after[0] + " / " + r.after[1] + (st.den === "d" && st.win === "day" ? " / 5" : "") + "." },
+        { wide: st.den === "d" ? "Rows kept: " + r.kept.filter(Boolean).length + " of 12." :
+                "In a ratio of two counts from the same week, the window cancels; rows kept: " + r.kept.filter(Boolean).length + " of 12." }
+      ]);
+    },
+    final: function (st) { st.num = "3"; st.den = "d"; st.win = "week"; st.exc = "none"; }
+  });
+
+  /* M4: two lines over twelve weeks */
+  function turnWeek(series, before) {
+    var avg = series.slice(0, 6).reduce(function (a, b) { return a + b; }, 0) / 6;
+    for (var w = 6; w < 12; w++) if (series[w] < avg * 0.95) return w + 1;
+    return null;
+  }
+  scene("M4", {
+    answer: "B",
+    start: function () { return { week: 6 }; },
+    init: function (st, art) {
+      var self = this;
+      on(art, "week", "input", function (e) { st.week = Number(e.target.value); self.render(st, art); });
+    },
+    render: function (st, art) {
+      var k = st.week, svg = svgRoot(640, 470, "Acceptance share and bookings per online hour over twelve weeks");
+      var X = function (w) { return 78 + (w - 1) * 48; };
+      var panels = [
+        { title: "Acceptance share, accepted over requests", s: MON.acceptWeekly, lo: 0.6, hi: 0.95, y0: 34, ticks: [0.6, 0.7, 0.8, 0.9], f: function (v) { return v.toFixed(2); } },
+        { title: "Gross bookings per peak online hour, Rs", s: MON.bookWeekly, lo: 180, hi: 340, y0: 244, ticks: [200, 250, 300], f: function (v) { return String(v); } }
+      ];
+      var turns = [];
+      panels.forEach(function (p) {
+        var h = 150, Y = function (v) { return p.y0 + 26 + h * (p.hi - v) / (p.hi - p.lo); };
+        txt(svg, 16, p.y0 + 10, p.title, { size: 15, weight: 700 });
+        p.ticks.forEach(function (t) {
+          add(svg, "line", { x1: 70, x2: 620, y1: Y(t), y2: Y(t), stroke: C.line });
+          txt(svg, 62, Y(t) + 5, p.f(t), { size: 13, fill: C.muted, anchor: "end" });
+        });
+        var pts = [];
+        for (var w = 1; w <= k; w++) pts.push(X(w).toFixed(1) + "," + Y(p.s[w - 1]).toFixed(1));
+        add(svg, "polyline", { points: pts.join(" "), fill: "none", stroke: C.violet, "stroke-width": 2.6, "stroke-linejoin": "round" });
+        for (w = 1; w <= k; w++) add(svg, "circle", { cx: X(w), cy: Y(p.s[w - 1]), r: w === k ? 7 : 4.5, fill: C.violet, stroke: C.white, "stroke-width": 2 });
+        txt(svg, X(k) + 10, Y(p.s[k - 1]) - 8, p.f(p.s[k - 1]), { size: 15, weight: 700 });
+        var tw = turnWeek(p.s);
+        turns.push(tw);
+        if (tw && tw <= k) {
+          add(svg, "circle", { cx: X(tw), cy: Y(p.s[tw - 1]), r: 12, fill: "none", stroke: C.rose, "stroke-width": 3 });
+          txt(svg, X(tw) - 16, Y(p.s[tw - 1]) + 28, "turns in week " + tw, { size: 14, weight: 700, fill: C.rose, anchor: "end" }).setAttribute("class", "halo");
+        }
+      });
+      add(svg, "line", { x1: (X(6) + X(7)) / 2, x2: (X(6) + X(7)) / 2, y1: 52, y2: 424, stroke: C.ink, "stroke-width": 1.6, "stroke-dasharray": "6 4" });
+      txt(svg, (X(6) + X(7)) / 2 + 6, 446, "guarantee launched, 31 August", { size: 13.5, weight: 700 });
+      MON.weekStarts.forEach(function (d, i) { txt(svg, X(i + 1), 466, d, { size: 12.5, anchor: "middle", fill: C.night }); });
+      put($("[data-fig]", art), svg);
+      $('[data-ctl="week"]', art).value = k;
+      var full = ["", "20 July", "27 July", "3 August", "10 August", "17 August", "24 August", "31 August", "7 September", "14 September", "21 September", "28 September", "5 October"];
+      setOut(art, "week", "Week " + k + ", beginning " + full[k] + " 2026 (slider value " + k + ")");
+      nums($("[data-nums]", art), [
+        ["Acceptance share this week", MON.acceptWeekly[k - 1].toFixed(2)],
+        ["Bookings per online hour this week", rs(MON.bookWeekly[k - 1])],
+        ["Acceptance turned", turns[0] && turns[0] <= k ? "in week " + turns[0] : "not yet"],
+        ["Bookings per hour turned", turns[1] && turns[1] <= k ? "in week " + turns[1] : "not yet"]
+      ]);
+    },
+    final: function (st) { st.week = 12; }
+  });
+
+  /* ---------- Tuesday ---------- */
+  var TUE = W4.tue;
+  var T1_TITLES = {
+    topic: "Peak guarantee: six-week review",
+    claim: "The hourly guarantee bought idle hours; pay per completed trip with an acceptance floor",
+    finding: "Trips per online hour fell from 1.9 to 1.6 under the guarantee",
+    paradox: "Online hours rose 24 percent while trips rose 3 percent",
+    none: "Two numbers left, and they do not say what to do"
+  };
+  function t1Title(keep) {
+    var k = Object.keys(keep).filter(function (x) { return keep[x]; });
+    if (k.length !== 2) return k.length > 2 ? "topic" : (k.length === 1 && k[0] === "tph" ? "finding" : (k.length ? "none" : "topic"));
+    var has = function (x) { return k.indexOf(x) >= 0; };
+    if (has("tph") && has("topup")) return "claim";
+    if (has("tph")) return "finding";
+    if (has("hours") && has("trips")) return "paradox";
+    return "none";
+  }
+  scene("T1", {
+    answer: "B",
+    start: function () {
+      var keep = {}; TUE.nine.forEach(function (n) { keep[n[0]] = true; });
+      return { keep: keep, warden: null };
+    },
+    init: function (st, art) {
+      var self = this;
+      $$("[data-keep]", art).forEach(function (cb) {
+        cb.addEventListener("change", function () { st.keep[cb.getAttribute("data-keep")] = cb.checked; st.warden = null; self.render(st, art); });
+      });
+      on(art, "warden", "click", function () { st.warden = t1Title(st.keep); self.render(st, art); });
+    },
+    render: function (st, art) {
+      $$("[data-keep]", art).forEach(function (cb) { cb.checked = !!st.keep[cb.getAttribute("data-keep")]; });
+      var left = TUE.nine.filter(function (n) { return st.keep[n[0]]; }).length;
+      var tk = t1Title(st.keep), title = T1_TITLES[tk];
+      var svg = svgRoot(640, 420, "A slide with a title and nine number tiles");
+      add(svg, "rect", { x: 16, y: 14, width: 608, height: 392, rx: 10, fill: C.white, stroke: C.lilac, "stroke-width": 2 });
+      var words = title.split(" "), lines = [], line = "";
+      words.forEach(function (w) { if ((line + " " + w).trim().length > 46) { lines.push(line.trim()); line = w; } else { line = (line + " " + w).trim(); } });
+      lines.push(line);
+      lines.slice(0, 2).forEach(function (l, i) {
+        txt(svg, 36, 50 + i * 28, l, { size: 22, font: SERIF, fill: tk === "claim" ? C.ink : C.night, weight: tk === "claim" ? 700 : 400 });
+      });
+      TUE.nine.forEach(function (n, i) {
+        var col = i % 3, row = Math.floor(i / 3), x = 32 + col * 196, y = 116 + row * 90;
+        var g = add(svg, "g", { "class": "fade", opacity: st.keep[n[0]] ? 1 : 0.1 });
+        add(g, "rect", { x: x, y: y, width: 184, height: 78, rx: 8, fill: C.surface, stroke: C.line });
+        txt(g, x + 10, y + 24, n[1], { size: 14, fill: C.night });
+        txt(g, x + 10, y + 56, n[2], { size: 19, weight: 700 });
+      });
+      if (tk === "claim") txt(svg, 36, 396, "Caveat: the monsoon ended inside the window.", { size: 14, weight: 700, fill: C.rose });
+      txt(svg, 608, 396, left + (left === 1 ? " number" : " numbers") + " on the slide", { size: 14, weight: 700, anchor: "end", fill: C.violet });
+      put($("[data-fig]", art), svg);
+      var verdict = "not run yet";
+      if (st.warden) {
+        verdict = st.warden === "claim" ? "passes: the title says what happened and what to do" :
+          (st.warden === "topic" ? "fails: the title names a topic, so the warden asks what to do" :
+            "fails: the title reports a finding with no action");
+      }
+      nums($("[data-nums]", art), [
+        ["Numbers left on the slide", left + " of 9"],
+        { wide: "Title now: " + title + "." },
+        { wide: "Warden test: " + verdict + "." }
+      ]);
+    },
+    final: function (st) {
+      TUE.nine.forEach(function (n) { st.keep[n[0]] = n[0] === "tph" || n[0] === "topup"; });
+      st.warden = "claim";
+    }
+  });
+
+  function t2Values() {
+    var M = W4.mon, f = TUE.fare;
+    var bk = [M.trips[0] * f, M.trips[1] * f];
+    return {
+      hour: { name: "Per online hour", b: bk[0] / M.hours[0], a: bk[1] / M.hours[1], how: "bookings over peak online hours" },
+      dw: { name: "Per driver-week", b: bk[0] / TUE.driverWeeksToy, a: bk[1] / TUE.driverWeeksToy, how: "bookings over 6,000 driver-weeks (toy count)" },
+      trip: { name: "Per trip", b: bk[0] / M.trips[0], a: bk[1] / M.trips[1], how: "bookings over completed trips" },
+      bk: bk
+    };
+  }
+  scene("T2", {
+    answer: "B",
+    start: function () { return { den: "hour" }; },
+    init: function (st, art) {
+      var self = this;
+      on(art, "den", "change", function (e) { st.den = e.target.value; self.render(st, art); });
+    },
+    render: function (st, art) {
+      var v = t2Values(), keys = ["hour", "dw", "trip"], sel = v[st.den];
+      $('[data-ctl="den"]', art).value = st.den;
+      var titles = { hour: "Bookings per online hour fell from Rs 314 to Rs 260", dw: "Bookings per driver-week rose 3 percent", trip: "Bookings per trip held at Rs 165" };
+      var svg = svgRoot(640, 420, "Three readings of the same bookings, before and after");
+      txt(svg, 20, 34, "The title this reading would carry:", { size: 14.5, fill: C.night });
+      txt(svg, 20, 62, titles[st.den], { size: 21, font: SERIF, weight: 700 });
+      var Y = function (ix) { return 380 - 2.3 * ix; };
+      [0, 50, 100].forEach(function (t) {
+        add(svg, "line", { x1: 60, x2: 620, y1: Y(t), y2: Y(t), stroke: t === 100 ? C.night : C.line, "stroke-dasharray": t === 100 ? "5 4" : "" });
+        txt(svg, 52, Y(t) + 5, String(t), { size: 13, fill: C.muted, anchor: "end" });
+      });
+      txt(svg, 64, Y(100) - 8, "before = 100", { size: 13, fill: C.night });
+      keys.forEach(function (key, i) {
+        var d = v[key], x = 110 + i * 175, ia = d.a / d.b * 100, isSel = key === st.den;
+        add(svg, "rect", { x: x, y: Y(100), width: 44, height: Y(0) - Y(100), rx: 4, fill: LILAC2 });
+        add(svg, "rect", { x: x + 50, y: Y(ia), width: 44, height: Y(0) - Y(ia), rx: 4, fill: C.violet, stroke: isSel ? C.ink : "none", "stroke-width": isSel ? 3 : 0 });
+        txt(svg, x + 22, Y(100) - 26, rs(Math.round(d.b)), { size: 14, anchor: "middle" });
+        txt(svg, x + 72, Y(ia) - 8, rs(Math.round(d.a)), { size: 14, anchor: "middle", weight: 700 });
+        txt(svg, x + 47, 404, d.name, { size: 15, anchor: "middle", weight: isSel ? 700 : 400 });
+      });
+      put($("[data-fig]", art), svg);
+      setOut(art, "den", sel.name);
+      nums($("[data-nums]", art), [
+        ["Six weeks before", rs(Math.round(sel.b))],
+        ["Six weeks after", rs(Math.round(sel.a))],
+        ["Change", pctChange(sel.b, sel.a)],
+        { wide: "This reading divides " + sel.how + "." },
+        { wide: "Bookings: 224,200 x Rs 165 before and 230,900 x Rs 165 after." }
+      ]);
+    },
+    final: function (st) { st.den = "dw"; }
+  });
+
+  function t3Product(st) {
+    var upi = st.users * 1e6 * st.pay;
+    var drv = st.req / st.tpd / (1 - st.idle) * (1 + st.buf / 100);
+    return { upi: upi, drv: drv };
+  }
+  scene("T3", {
+    answer: "C",
+    start: function () { return { q: "upi", users: 300, pay: 2, req: 1500, tpd: 2, idle: 0.3, buf: 20 }; },
+    init: function (st, art) {
+      var self = this;
+      on(art, "q", "change", function (e) { st.q = e.target.value; self.render(st, art); });
+      ["users", "pay", "req", "tpd", "idle", "buf"].forEach(function (k) {
+        on(art, k, "input", function (e) { st[k] = Number(e.target.value); self.render(st, art); });
+      });
+    },
+    render: function (st, art) {
+      var p = t3Product(st);
+      ["users", "pay", "req", "tpd", "idle", "buf"].forEach(function (k) { $('[data-ctl="' + k + '"]', art).value = st[k]; });
+      $('[data-ctl="q"]', art).value = st.q;
+      setOut(art, "users", st.users + " million (slider value " + st.users + ")");
+      setOut(art, "pay", st.pay.toFixed(1) + " a day (slider value " + st.pay.toFixed(1) + ")");
+      setOut(art, "req", group(st.req) + " an hour (slider value " + st.req + ")");
+      setOut(art, "tpd", st.tpd.toFixed(1) + " trips an hour (slider value " + st.tpd.toFixed(1) + ")");
+      setOut(art, "idle", st.idle.toFixed(2) + " (slider value " + st.idle.toFixed(2) + ")");
+      setOut(art, "buf", st.buf + " percent (slider value " + st.buf + ")");
+      var upiM = p.upi / 1e6, caseDrv = W4.mon.hours[1] / TUE.peakHoursSixWeeks;
+      var trees = {
+        upi: { label: "UPI payments a day", note: Math.round(upiM) + " million", kind: st.q === "upi" ? "lit" : "plain", children: [
+          { label: "Active UPI users", note: st.users + " million" },
+          { label: "Payments a day per user", note: "times " + st.pay.toFixed(1) }] },
+        drv: { label: "Drivers online at the evening peak", note: group(Math.round(p.drv)), kind: st.q === "drv" ? "lit" : "plain", children: [
+          { label: "Peak requests an hour", note: group(st.req) },
+          { label: "Trips one busy driver completes an hour", note: "divided by " + st.tpd.toFixed(1) },
+          { label: "Share of online drivers idle", note: "divided by (1 - " + st.idle.toFixed(2) + ")" },
+          { label: "Buffer for the wait target", note: "times " + (1 + st.buf / 100).toFixed(2) }] }
+      };
+      ["upi", "drv"].forEach(function (k) {
+        var svg = window.C2K.driverTree(trees[k], { width: 260 });
+        svg.removeAttribute("width"); svg.removeAttribute("height");
+        put($('[data-tree="' + k + '"]', art), svg);
+        var box = $('[data-tq="' + k + '"]', art);
+        box.className = "tq " + (st.q === k ? "on" : "dim");
+      });
+      $('[data-anchor="upi"]', art).textContent = "Measured: 802 million a day in September 2026. Your estimate is " + (upiM / TUE.upiDayMillion).toFixed(2) + " of it.";
+      $('[data-anchor="drv"]', art).textContent = "Published figure: to be found. The case's own data put about " + Math.round(caseDrv) +
+        " drivers online in an average peak hour; your estimate is " + (p.drv / caseDrv).toFixed(2) + " times that.";
+      nums($("[data-nums]", art), [
+        ["UPI estimate", Math.round(upiM) + " million a day"],
+        ["Ratio to the measured 802 million", (upiM / TUE.upiDayMillion).toFixed(2)],
+        { wide: st.users + " million x " + st.pay.toFixed(1) + " = " + Math.round(upiM) + " million." },
+        ["Drivers estimate", group(Math.round(p.drv))],
+        ["Ratio to the case's 813 a peak hour", (p.drv / (W4.mon.hours[1] / TUE.peakHoursSixWeeks)).toFixed(2)],
+        { wide: group(st.req) + " / " + st.tpd.toFixed(1) + " / " + (1 - st.idle).toFixed(2) + " x " + (1 + st.buf / 100).toFixed(2) + " = " + group(Math.round(p.drv)) + "; a published figure is to be found." }
+      ]);
+    },
+    final: function () {}
+  });
+
+  /* ---------- start ---------- */
+  $$("[data-day]").forEach(function (b) {
+    b.addEventListener("click", function () { setDay(DAYS.indexOf(b.getAttribute("data-day")), false); });
+  });
+  $("[data-links]").addEventListener("click", function () { setLinks(!nav.links); });
+  $$(".scene").forEach(function (art) {
+    var id = art.getAttribute("data-scene");
+    SCENE_DAY[id] = DAYS.indexOf(art.closest("section.day").id.replace("sec-", ""));
+    wire(art);
+  });
+  $$("[data-jump]").forEach(function (b) {
+    b.addEventListener("click", function () { goScene(b.getAttribute("data-jump"), true); });
+  });
+  window.addEventListener("hashchange", function () { readHash(true); });
+  window.addEventListener("beforeprint", function () {
+    Object.keys(SCENES).forEach(function (id) {
+      var def = SCENES[id];
+      if (def.art && $(".reveal", def.art).hidden) toggleReveal(def.art, def, def.st, true);
+    });
+  });
+  drawMap();
+  readHash(true);
+})();
+</script>
+</body>
+</html>
