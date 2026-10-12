@@ -73,7 +73,7 @@ Did the count change; what does the number count; are newer members weaker; did 
 |---|---|
 | The step | Checkout start to order, 72.5 to 55 percent, Android members, from 14 September |
 | The comparators | On the same step: iOS members 71 to 70, non-members on Android 65 to 64 |
-| The size | About 1,223 to 1,317 orders a week; Rs 3.7 to 6.6 lakh of order value |
+| The size | About 1,133 to 1,317 orders a week; Rs 3.4 to 6.6 lakh of order value |
 
 "Before a cause, I check the count and what it counts; then cohorts at one age, platform and date; then the step that changed."
 

@@ -213,10 +213,10 @@ release: 72.5 to 55 percent.
 - Which goes first, and what would reverse it?
 
 Android members added to a cart 22,841 times in 17 days after the release. At 58 percent against 44,
-that is about 1,317 orders a week, or 1,223 net of the point the comparators also lost, a quarter of
-Android members' 5,064 a week: Rs 3.7 to 6.6 lakh of order value at Rs 300 to Rs 500 an order, of
-which Zomato keeps its fees. The checkout goes first: a fix ends a weekly loss. Retries did not rise:
-after a checkout with no order, 36.5 percent ordered within a day before the release, 35.1 after.
+that is about 1,317 orders a week if no failed cart came back; counted in orders placed, which keeps
+those that did, 1,133 to 1,266, a quarter of Android members' 5,064 a week: Rs 3.4 to 6.6 lakh of
+order value at Rs 300 to Rs 500 an order, of which Zomato keeps its fees. The checkout goes first: a
+fix ends a weekly loss. Retention cannot see it, since a member it cost an order still ordered once.
 
 **WATCH OUT.** Two wrong fixes: another sale, whose cohort enters the dashboard at month two and pulls
 it down again, and work on search to menu view, a step that never broke.
@@ -225,7 +225,7 @@ it down again, and work on search to menu view, a step that never broke.
 one-month retention rose from 55 to 61 percent (Q1 FY27 letter, checked 12 October 2026): part of
 such a rise is who remains.
 
-**The answer.** Fix the Android checkout's last step first, about 1,223 to 1,317 orders a week; before
+**The answer.** Fix the Android checkout's last step first, about 1,133 to 1,317 orders a week; before
 another sale, work out whether this one's members, at 0.23 orders each in month one against 0.61 for
 an organic member, pay back their discount.
 
@@ -266,14 +266,14 @@ on the same step (the split). 6: chance, since milk is in 71 percent of carts (W
 | What denominator do you ask for before trusting a cohort chart? | Per acquired user, per retained user or the total |
 
 **The AI-company variant.** An AI writing assistant, two months after launch: counted active on a
-draft kept, its launch cohort keeps 24 percent at week four against 36 for one that came on its own
+draft kept, its launch cohort keeps 24 percent at week four against 36 for a later weekly cohort
 (invented). The transcript is in `extras/`.
 
 **The guesstimate: Delhi Metro riders on a weekday.** The Delhi Metro Rail Corporation (DMRC) counts
 a "passenger journey" for each line a rider uses, so a trip with one change counts twice (Deccan
 Herald, 30 August 2023). Its daily average of 64.06 lakh (The Tribune, 9 August 2026) and its record
-82,44,903 "boardings" on 17 September 2026 (Republic World) are that count, each checked 12 October
-2026: turn trips into line uses before validating.
+82,44,903 "boardings" on 17 September 2026 (Republic World) look like that same count, each checked
+12 October 2026: turn trips into line uses before validating.
 
 ## Which words did Thursday use?
 

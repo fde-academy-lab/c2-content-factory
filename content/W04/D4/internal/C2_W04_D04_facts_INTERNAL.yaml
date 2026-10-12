@@ -1390,6 +1390,139 @@ numbers:
   how: member order_placed sessions in the event log, Sep
   used_by: L4 the tracking check
   printed: 27,212
+- id: everyone_sep_normal_august
+  value: 0.3917
+  unit: share
+  how: September counted over everyone if August had brought 5,000 members at July's month one
+  used_by: the transcript's close
+  printed: 39.2 percent
+- id: everyone_fall_aug_to_sep_points
+  value: 3.6
+  unit: points
+  how: everyone's count, August to September
+  used_by: the transcript's close
+  printed: 3.6 points
+- id: everyone_fall_from_august_cohort_points
+  value: 3.24
+  unit: points
+  how: the part of the fall the August cohort's size and weakness explain
+  used_by: the transcript's close
+  printed: 3.2 points
+- id: everyone_fall_ordinary_points
+  value: 0.36
+  unit: points
+  how: the part a normal August would have shown
+  used_by: the transcript's close
+  printed: 0.4 points
+- id: dashboard_android_aug
+  value: 0.3792
+  unit: share
+  how: the dashboard's count on android, Aug
+  used_by: retention cannot see the checkout
+  printed: 37.9 percent
+- id: held_share_ordered_android_aug
+  value: 0.3947
+  unit: share
+  how: members who joined before August on android who ordered, Aug
+  used_by: users against use
+  printed: 39.5 percent
+- id: dashboard_ios_aug
+  value: 0.3809
+  unit: share
+  how: the dashboard's count on ios, Aug
+  used_by: retention cannot see the checkout
+  printed: 38.1 percent
+- id: held_share_ordered_ios_aug
+  value: 0.3981
+  unit: share
+  how: members who joined before August on ios who ordered, Aug
+  used_by: users against use
+  printed: 39.8 percent
+- id: dashboard_android_sep
+  value: 0.3762
+  unit: share
+  how: the dashboard's count on android, Sep
+  used_by: retention cannot see the checkout
+  printed: 37.6 percent
+- id: held_share_ordered_android_sep
+  value: 0.3762
+  unit: share
+  how: members who joined before August on android who ordered, Sep
+  used_by: users against use
+  printed: 37.6 percent
+- id: dashboard_ios_sep
+  value: 0.3801
+  unit: share
+  how: the dashboard's count on ios, Sep
+  used_by: retention cannot see the checkout
+  printed: 38.0 percent
+- id: held_share_ordered_ios_sep
+  value: 0.3801
+  unit: share
+  how: members who joined before August on ios who ordered, Sep
+  used_by: users against use
+  printed: 38.0 percent
+- id: weekly_orders_change_member_android
+  value: -0.1828
+  unit: share
+  how: orders a week, member android, after against before
+  used_by: the loss in orders placed
+  printed: down 18 percent
+- id: weekly_orders_change_member_ios
+  value: 0.0672
+  unit: share
+  how: orders a week, member ios, after against before
+  used_by: the loss in orders placed
+  printed: up 7 percent
+- id: weekly_orders_change_nonmember_android
+  value: 0.041
+  unit: share
+  how: orders a week, nonmember android, after against before
+  used_by: the loss in orders placed
+  printed: up 4 percent
+- id: lost_orders_week_vs_ios
+  value: 1266
+  unit: orders
+  how: Android members' orders a week against the change ios showed, which nets out any retry that worked
+  used_by: the cost range's floor
+  printed: 1,266
+- id: lost_orders_week_vs_nonmember_android
+  value: 1133
+  unit: orders
+  how: Android members' orders a week against the change nonmember android showed, which nets out any
+    retry that worked
+  used_by: the cost range's floor
+  printed: 1,133
+- id: lost_value_per_week_floor_rs
+  value: 339900
+  unit: Rs
+  how: the floor of the loss at Rs 300 an order
+  used_by: the cost range
+  printed: Rs 3.4 lakh
+- id: failed_checkouts_week_android_before
+  value: 1921
+  unit: sessions
+  how: Android member checkouts with no order a week, before
+  used_by: the retry argument
+  printed: 1,921
+- id: recovered_within_day_week_android_before
+  value: 701
+  unit: orders
+  how: of them, followed by the member's order within a day, a week, before
+  used_by: the retry argument
+  printed: '701'
+- id: failed_checkouts_week_android_after
+  value: 3386
+  unit: sessions
+  how: Android member checkouts with no order a week, after
+  used_by: the retry argument
+  printed: 3,386
+- id: recovered_within_day_week_android_after
+  value: 1189
+  unit: orders
+  how: of them, followed by the member's order within a day, a week, after
+  used_by: the retry argument
+  printed: 1,189
 - id: sep_sessions_search_and_menu
   value: 116797
   unit: sessions
@@ -1922,7 +2055,8 @@ public_facts:
   source: Swiggy, Q2 FY2026 shareholder letter (Instamart cohorts)
   checked: 12 October 2026
   facts:
-    triangle_index: each cohort's spend against the quarter it was acquired, Q0
+    triangle_index: every cohort's spend as a multiple of the Q4 FY24 cohort's spend in its acquisition
+      quarter, Q0
     weak_users: weaned away certain users from the platform with low potential Lifetime values
     q4fy24_cohort_spend_q6: 4.14x its spend in Q0
     aov_growth: about 40 percent year on year

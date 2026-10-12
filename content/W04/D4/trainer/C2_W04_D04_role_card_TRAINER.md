@@ -45,7 +45,7 @@ Concede only to an answer that makes Tuesday's four moves in order:
 4. **Say what would change their mind:** if the order records showed orders holding while the event
    log fell, the fall would be in the counting; and if members who failed came back and ordered later,
    the release would cost a delay rather than orders. Neither holds: the records match the log, and
-   retries within a day did not rise.
+   counted in orders placed, Android members' weekly orders fell 18 percent while iOS members' rose 7.
 
 Do not move for an answer that calls the chart wrong, that quotes the overall fall from 58 to 44
 without the step inside it, or that blames the release with no comparator.

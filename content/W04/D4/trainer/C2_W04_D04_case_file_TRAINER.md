@@ -102,7 +102,7 @@ problem: the dashboard starts counting at month two, where every cohort lands ne
 sees that each new cohort starts lower in month one, and it has not yet counted the 13,000-member
 August cohort, whose sale-week members kept 20 percent; in October the dashboard drops to about 33.
 The order loss hits members of every signup month on Android at one step from the 14 September
-release: of the checkouts started, 72.5 percent ended in an order before and 55 after, about 1,223 to
+release: of the checkouts started, 72.5 percent ended in an order before and 55 after, about 1,133 to
 1,317 orders a week. Fix the Android checkout first; before buying another sale, work out whether
 this one's members pay back their discount."
 

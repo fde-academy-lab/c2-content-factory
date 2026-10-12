@@ -62,8 +62,8 @@ Transition: what each problem costs.
 *How big is each loss, in orders and rupees, and how sure is each number?*
 
 ```stats
-value: 1,223 to 1,317 | label: orders a week | note: not placed after the release: 22,841 Android member carts in 17 days at 58 against 44 percent, less the point the comparators lost
-value: Rs 3.7 to 6.6 lakh | label: of order value a week | note: at Rs 300 to Rs 500 an order, an assumption; Zomato keeps its commission and fees from it
+value: 1,133 to 1,317 | label: orders a week | note: 1,317 from 22,841 carts at 58 against 44 percent if none came back; 1,133 counted in orders placed against non-members on Android
+value: Rs 3.4 to 6.6 lakh | label: of order value a week | note: at Rs 300 to Rs 500 an order, an assumption; Zomato keeps its commission and fees from it
 value: 0.23 | label: orders per sale-week member | note: in month one, against 0.61 for an organic August member
 value: 33 | label: percent, October | note: the dashboard once the August cohort enters, if it loses July's 10.5 points (32 to 34)
 ```
@@ -71,12 +71,12 @@ value: 33 | label: percent, October | note: the dashboard once the August cohort
 The release costs orders every week it stays live, and a code fix ends it. The August cohort's discount is already paid for; what can still change is whether the next sale runs, which waits on whether this one's members pay their discount back.
 
 ```notes
-LIVE, 4 minutes. Read each number with its assumption. The 1,317 assumes the carts that failed
-would have converted at the old rate. If members had retried and ordered later, it would overstate
-the loss; they did not: after a checkout with no order, the member ordered within a day 36.5
-percent of the time before the release and 35.1 after. Held to members who joined before August,
-Android members also ordered less each (1.45 to 1.24 orders per ordering member) while iOS held
-(1.44 and 1.45). Ask which number the membership lead can act on this week.
+LIVE, 4 minutes. Read each number with its assumption. The 1,317 assumes no failed cart came back
+as a later order. Some did: the share of failures followed by an order within a day held near 36
+percent, but failures nearly doubled (1,921 to 3,386 a week), so recoveries rose from 701 to 1,189 a
+week. Counted in orders placed, which keeps them, Android members' weekly orders fell 18 percent
+while iOS members' rose 7: a loss of 1,266 a week against iOS members, 1,133 against non-members on
+Android. Ask which number the membership lead can act on this week.
 Transition: the wrong fix.
 ```
 
@@ -112,7 +112,7 @@ Transition: the call, said in one breath.
 ## S42. The call: the Android checkout first
 *What does a strong call say, in the order the membership lead needs it?*
 
-**The call.** Fix the last step of the new Android checkout for members first: it loses about 1,223 to 1,317 orders a week, a quarter of Android members' orders, and a code fix ends the loss. **The evidence.** Checkout start to order placed fell from 72.5 to 55 percent for members on Android from the release week; starting checkout held at 80; on the same step iOS members went from 71 to 70 and non-members on Android from 65 to 64; the order records match the event log. **The cost.** Rs 3.7 to 6.6 lakh of order value a week at Rs 300 to Rs 500 an order, of which Zomato keeps its commission and fees. **The second problem.** The sale-week members kept 20 percent in month one against 49 for organic August members; before another sale, work out whether these members pay back their discount. **What would change the order.** If members who failed had come back and ordered later, the release would cost a delay rather than orders and the sale would go first; within a day, 36.5 percent did so before the release and 35.1 after.
+**The call.** Fix the member path of the new Android checkout first: it loses about 1,133 to 1,317 orders a week, a quarter of Android members' orders, and non-members on the same checkout held, so the fault sits in what only members see. **The evidence.** Checkout start to order placed fell from 72.5 to 55 percent for members on Android from the release week; starting checkout held at 80; on the same step iOS members went from 71 to 70 and non-members on Android from 65 to 64; the order records match the event log. **The cost.** Rs 3.4 to 6.6 lakh of order value a week at Rs 300 to Rs 500 an order, of which Zomato keeps its commission and fees. **The second problem.** The sale-week members kept 20 percent in month one against 49 for organic August members; before another sale, work out whether these members pay back their discount. **What would change the order.** If most members who failed had come back and ordered later, the release would cost a delay rather than orders and the sale would go first; counted in orders placed, Android members' weekly orders fell 18 percent while iOS members' rose 7, so most did not.
 
 ```notes
 LIVE, 3 minutes. One group reads its call; the room scores it against the five lines. This is the
@@ -156,7 +156,7 @@ flowchart LR
 | First sentence | "It's probably the August cohort." | "Before a cause, I'd check the count, then what the number counts." |
 | The flat 38 | Accepts it | "Who does month-two retention count, and from when?" |
 | The split | Overall conversion | Cohorts at the same age, then platform and date on the same step, then fewer users against fewer orders each, cohorts held fixed |
-| The close | "Retention dropped." | "One step on Android since 14 September, about 1,223 to 1,317 orders a week; then whether the sale paid back; October reads about 33." |
+| The close | "Retention dropped." | "About 3.2 of the 3.6-point fall is the August cohort; the checkout loses 1,133 to 1,317 orders a week that retention cannot see; then whether the sale paid back; October reads about 33." |
 
 ```notes
 LIVE, 6 minutes. The steps are the morning's hypothesis board. Aced's guide to analyst interviews
@@ -173,7 +173,7 @@ Transition: the AI-company variant.
 ## S44. The AI variant: judge each cohort at week four
 *An AI writing assistant launched two months ago and its launch week brought its biggest cohort ever. How do you know whether it is habit or novelty?*
 
-| | Launch-week cohort | A cohort that found the app on its own |
+| | Launch-week cohort | A later weekly cohort |
 |---|---|---|
 | Week one | Looks strong: the feature is new | Looks normal |
 | Week four (invented numbers) | 24 percent still active | 36 percent still active |
@@ -182,7 +182,7 @@ Transition: the AI-company variant.
 ```mermaid
 flowchart LR
     L["<b>launch-week cohort</b><br/>week four: 24 percent"] --> B["<b>blended weekly actives</b><br/>near the record"]
-    O["<b>a cohort that came on its own</b><br/>week four: 36 percent"] --> B
+    O["<b>a later weekly cohort</b><br/>week four: 36 percent"] --> B
     N["<b>new cohorts every week</b>"] --> B
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
@@ -190,7 +190,7 @@ flowchart LR
     class L,B bad
 ```
 
-**The call.** Count a user as active only on the core action, a draft she keeps, and read each cohort at the same age, week four or later (the programme's rule of thumb), with the share of drafts kept and the cost per retained user beside it. The blended count still sizes load and spend; it cannot say whether anyone formed a habit. The structure is Chennai's: a mix that hides a fall.
+**The call.** Count a user as active only on the core action, a draft she keeps; check the week's model and pricing changes first; then read each cohort's curve by weeks since signup, week four or later (the programme's rule of thumb). If later cohorts flatten while the launch cohort keeps sliding, the product sticks for the users who came looking. The blended count still sizes load and spend; it cannot say whether anyone formed a habit.
 
 ```notes
 LIVE, 4 minutes. Programme-written, every number a toy (explorer scene Th4 shows the same toy).

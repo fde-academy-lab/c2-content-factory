@@ -75,7 +75,7 @@ flowchart TD
     class X lit
 ```
 
-A cohort chart without its denominator is a shape. Swiggy's table compares each cohort's spend with the quarter it joined and calls the groups "retained user cohorts", and it states no denominator: the first thing to ask is who stays in the count. Removing users in one quarter lifts that quarter's cells and every later one, with nobody's behaviour changing.
+A cohort chart without its denominator is a shape. Swiggy's table indexes every cohort's spend to what the Q4 FY24 cohort spent in the quarter it joined and calls the groups "retained user cohorts", and it states no denominator: the first thing to ask is who stays in the count. Removing users in one quarter lifts that quarter's cells and every later one, with nobody's behaviour changing.
 
 ```notes
 LIVE, 15 minutes. Groups write what each denominator would show after a weaning. Per retained

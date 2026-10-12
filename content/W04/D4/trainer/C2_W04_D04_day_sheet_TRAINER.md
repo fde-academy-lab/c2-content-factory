@@ -44,7 +44,7 @@ fixed first?** Ask each question before its answer is shown.
 **The day's answer, said at the close (half two, S47).** "The dashboard was flat because of who it
 counts: every cohort fell after month one, each newer one started lower, and the August cohort is
 outside the count until October, when the dashboard reads about 33; the orders were lost in one step,
-checkout start to order placed, for members on Android since 14 September, about 1,223 to 1,317
+checkout start to order placed, for members on Android since 14 September, about 1,133 to 1,317
 orders a week. Fix the checkout first; before another sale, work out whether this one's members pay
 back their discount."
 
@@ -145,8 +145,8 @@ learner's own cell prints it.
 | The same step, comparators | iOS members 71 to 70; non-members on Android 65 to 64 | checkout_to_order_member_ios_before and after, checkout_to_order_nonmember_android_before and after |
 | The cohorts held fixed | Android 70.3 to 53.6; iOS 68.6 to 69.3; orders per ordering member 1.45 to 1.24 on Android | held_checkout_to_order_*, held_orders_per_active_* |
 | The tracking check | 27,212 orders in September in both the order records and the event log | order_records_sep, event_orders_sep |
-| Noise and retries | 18,273 starts (under a point); 1,600 for the non-members (2.5 points); retries 36.5 then 35.1 percent | android_member_starts_after, nonmember_android_starts_after, noise_points_*, retry_within_day_android_* |
-| The cost | about 1,223 to 1,317 orders a week, a quarter of 5,064; Rs 3.7 to 6.6 lakh of order value | lost_orders_per_week_netted, lost_orders_per_week, android_member_orders_week_before, lost_value_per_week_netted_low_rs, lost_value_per_week_high_rs |
+| Noise and retries | 18,273 starts (under a point); 1,600 for the non-members (2.5 points); recovered within a day 36.5 then 35.1 percent of failures, 701 then 1,189 a week | android_member_starts_after, nonmember_android_starts_after, noise_points_*, retry_within_day_android_* |
+| The cost | about 1,133 to 1,317 orders a week, a quarter of 5,064; Rs 3.4 to 6.6 lakh of order value | lost_orders_week_vs_nonmember_android, lost_orders_week_vs_ios, lost_orders_per_week, android_member_orders_week_before, lost_value_per_week_floor_rs, lost_value_per_week_high_rs |
 
 ## What are the interview answers, each in one breath?
 
@@ -166,7 +166,7 @@ learner's own cell prints it.
   stays near the record as new cohorts join.
 - **Riders on the Delhi Metro on a weekday.** About 30 lakh people, about 60 lakh trips, about 75
   lakh line uses at a quarter changing lines, against DMRC's 64.06 lakh journeys a day across all
-  days, which count each line used; the 82,44,903 record is the same count on a bus-strike day
+  days, which count each line used; the 82,44,903 record looks like the same count, on a bus-strike day
   (`trainer/C2_W04_D04_guesstimate_TRAINER.md`).
 
 ## Which file serves which moment?

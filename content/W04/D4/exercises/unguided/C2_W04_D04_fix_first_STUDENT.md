@@ -28,7 +28,9 @@ without its objection answered does not survive the meeting.
 **The numbers you need.** Members on Android added to a cart 22,841 times in the 17 days from 14 to 30
 September. Before the release, 58 percent of their carts became orders; after it, 44 percent. Members
 on iOS and non-members on Android each lost one point over the same weeks. Before the release,
-Android members placed about 5,064 orders a week. An order is worth Rs 400 of order value, an
+Android members placed about 5,064 orders a week. Counted in orders placed, which keeps the failed
+carts that came back as later orders, the loss is about 1,133 a week against non-members on Android
+and 1,266 against iOS members. An order is worth Rs 400 of order value, an
 assumption anywhere from Rs 300 to Rs 500, and Zomato keeps only its commission and fees from it.
 
 **What you post.** Six letters in item order, with no spaces, in this shape:
@@ -75,7 +77,7 @@ d) About 13,248 orders, what 58 percent of the carts makes
 a) Rs 5.3 lakh a week, the midpoint stated on its own, with no range around it
 b) Rs 12.8 lakh, the loss over the 17 days since the release went live
 c) Rs 5.3 crore a week at Rs 400 an order, from the same 1,317 orders
-d) Rs 3.7 to 6.6 lakh of order value a week, Rs 5.3 lakh at 1,317 and Rs 400
+d) Rs 3.4 to 6.6 lakh of order value a week, Rs 5.3 lakh at 1,317 and Rs 400
 
 ---
 

@@ -80,7 +80,7 @@ Transition: where today ends.
 ## S3. Where today ends: two problems, two fixes
 *What sentence will the membership lead carry out of the room?*
 
-> "It is both, in two numbers that need different fixes. Retention is a cohort problem: the dashboard starts counting at month two, where every cohort lands near 38.5, so it never sees that each new cohort starts lower in month one, and it has not yet counted the 13,000-member August cohort, whose sale-week members kept 20 percent; in October the dashboard drops to about 33. The order loss hits members of every signup month on Android at one step from the 14 September release: of the checkouts started, 72.5 percent ended in an order before and 55 after, about 1,223 to 1,317 orders a week. Fix the Android checkout first; before buying another sale, work out whether this one's members pay back their discount."
+> "It is both, in two numbers that need different fixes. Retention is a cohort problem: the dashboard starts counting at month two, where every cohort lands near 38.5, so it never sees that each new cohort starts lower in month one, and it has not yet counted the 13,000-member August cohort, whose sale-week members kept 20 percent; in October the dashboard drops to about 33. The order loss hits members of every signup month on Android at one step from the 14 September release: of the checkouts started, 72.5 percent ended in an order before and 55 after, about 1,133 to 1,317 orders a week. Fix the Android checkout first; before buying another sale, work out whether this one's members pay back their discount."
 
 **The words.** Month-two retention is the dashboard's name for the share of members two or more months past their signup month who ordered in the month; a member with no order in a month is not retained that month, and she is still a member. A cohort problem sits in some signup months; an everyone problem hits members of every signup month at once.
 
@@ -321,7 +321,7 @@ Transition: a real company that publishes its cohorts.
 
 ```cards
 icon: chart-line | eyebrow: Eternal, the company behind Zomato and Blinkit | title: 46 percent of customers, 150 percent of value | body: Blinkit is its quick-commerce app. In the fourth quarter after joining, 46 percent of a cohort's customers still ordered, on average. The cohort's net order value (NOV) in that quarter was 150 percent of its first quarter's, and 279 percent by the twelfth: fewer customers, more value, so those who stay order much more | tone: light
-icon: table | eyebrow: Swiggy Instamart, Swiggy's quick-commerce app | title: Spend by cohort, against the quarter it joined | body: The cohort that joined in Q4 FY24 (January to March 2024) spends 4.14 times in its sixth quarter what it spent in its first. Swiggy says it weaned away users with "low potential Lifetime values", withdrawing the offers that kept them, and the table states no denominator: per user who joined, or per user who stayed? | tone: light
+icon: table | eyebrow: Swiggy Instamart, Swiggy's quick-commerce app | title: Spend by cohort, indexed to one cohort's first quarter | body: Every cohort's spend is shown against what the Q4 FY24 cohort (January to March 2024) spent in the quarter it joined, and that cohort spends 4.14 times as much in its sixth quarter. Swiggy says it weaned away users with "low potential Lifetime values", withdrawing the offers that kept them, and the table states no denominator: per user who joined, or per user who stayed? | tone: light
 ```
 
 Sources: Eternal's Q1 FY27 shareholder letter of 22 July 2026 and Swiggy's Q2 FY26 shareholder letter, each checked 12 October 2026. India's financial year runs April to March.
@@ -840,7 +840,7 @@ flowchart LR
     class P bad
 ```
 
-**The size.** 0.14 × 22,841 carts is about 3,198 orders in 17 days: 188 a day, 1,317 a week, or 1,223 net of the point the comparators also lost, about a quarter of Android members' 5,064 orders a week. At Rs 300 to Rs 500 an order (an assumption), Rs 3.7 to 6.6 lakh of order value a week, of which Zomato keeps its commission and fees.
+**The size.** 0.14 × 22,841 carts is about 3,198 orders in 17 days: 188 a day, 1,317 a week if none came back; counted in orders placed, 1,133 to 1,266 a week, a quarter of Android members' 5,064. At Rs 300 to Rs 500 an order (an assumption), Rs 3.4 to 6.6 lakh of order value a week, of which Zomato keeps its commission and fees.
 
 **The rule.** Name the unit, split by who, where and when, and find the step that changed before blaming the step that is low.
 

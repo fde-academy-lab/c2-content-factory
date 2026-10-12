@@ -1218,6 +1218,55 @@ for month in ("2026-08", "2026-09"):
     fact(f"event_orders_{NAMES[month].lower()}", int(placed[placed.month == month].shape[0]), "orders",
          f"member order_placed sessions in the event log, {NAMES[month]}", "L4 the tracking check",
          f"{int(placed[placed.month == month].shape[0]):,}")
+# ---- the second interviewer read: the drop apportioned, retention by platform, orders netted, recoveries
+normal_aug = (DASH["2026-09"][2] + 5000 * round(float(tri.loc["2026-07", 1]), 2)) / (DASH["2026-09"][1] + 5000)
+fall_all = EVERY["2026-08"][0] - EVERY["2026-09"][0]
+fact("everyone_sep_normal_august", r4(normal_aug), "share",
+     "September counted over everyone if August had brought 5,000 members at July's month one", "the transcript's close",
+     f"{100 * normal_aug:.1f} percent")
+fact("everyone_fall_aug_to_sep_points", r2(100 * fall_all), "points", "everyone's count, August to September",
+     "the transcript's close", f"{100 * fall_all:.1f} points")
+fact("everyone_fall_from_august_cohort_points", r2(100 * (normal_aug - EVERY["2026-09"][0])), "points",
+     "the part of the fall the August cohort's size and weakness explain", "the transcript's close",
+     f"{100 * (normal_aug - EVERY['2026-09'][0]):.1f} points")
+fact("everyone_fall_ordinary_points", r2(100 * (EVERY["2026-08"][0] - normal_aug)), "points",
+     "the part a normal August would have shown", "the transcript's close",
+     f"{100 * (EVERY['2026-08'][0] - normal_aug):.1f} points")
+plat_s = mm.assign(platform=mm["member_id"].map(plat_of))
+for month in ("2026-08", "2026-09"):
+    for p_ in ("android", "ios"):
+        d_ = plat_s[(plat_s.month == month) & (plat_s.age >= 2) & (plat_s.platform == p_)]["active"].mean()
+        h_ = plat_s[(plat_s.month == month) & (plat_s.cohort_month < "2026-08") & (plat_s.platform == p_)]["active"].mean()
+        fact(f"dashboard_{p_}_{NAMES[month].lower()}", r4(d_), "share", f"the dashboard's count on {p_}, {NAMES[month]}",
+             "retention cannot see the checkout", f"{100 * d_:.1f} percent")
+        fact(f"held_share_ordered_{p_}_{NAMES[month].lower()}", r4(h_), "share",
+             f"members who joined before August on {p_} who ordered, {NAMES[month]}", "users against use", f"{100 * h_:.1f} percent")
+wk_orders = {}
+for is_m, p_ in ((True, "android"), (True, "ios"), (False, "android")):
+    o_ = sess[(sess.is_member == is_m) & (sess.platform == p_) & sess.order_placed]
+    b_ = (o_.period == "before").sum() / days_before * 7
+    a_ = (o_.period == "after").sum() / 17 * 7
+    wk_orders[(is_m, p_)] = (b_, a_)
+    slug = ("member_" if is_m else "nonmember_") + p_
+    fact(f"weekly_orders_change_{slug}", r4(a_ / b_ - 1), "share", f"orders a week, {slug.replace('_', ' ')}, after against before",
+         "the loss in orders placed", f"{round(100 * (a_ / b_ - 1)):+d} percent".replace("+", "up ").replace("-", "down "))
+b_and, a_and = wk_orders[(True, "android")]
+for slug, key in (("ios", (True, "ios")), ("nonmember_android", (False, "android"))):
+    cf = b_and * wk_orders[key][1] / wk_orders[key][0]
+    fact(f"lost_orders_week_vs_{slug}", round(cf - a_and), "orders",
+         f"Android members' orders a week against the change {slug.replace('_', ' ')} showed, which nets out any retry that worked",
+         "the cost range's floor", f"{round(cf - a_and):,}")
+floor_orders = round(b_and * wk_orders[(False, "android")][1] / wk_orders[(False, "android")][0] - a_and)
+fact("lost_value_per_week_floor_rs", floor_orders * 300, "Rs", "the floor of the loss at Rs 300 an order", "the cost range",
+     f"Rs {floor_orders * 300 / 1e5:.1f} lakh")
+for per in ("before", "after"):
+    sub = nxt[(nxt.platform == "android") & (nxt.period == per)]
+    days_ = days_before if per == "before" else 17
+    fact(f"failed_checkouts_week_android_{per}", round(len(sub) / days_ * 7), "sessions",
+         f"Android member checkouts with no order a week, {per}", "the retry argument", f"{round(len(sub) / days_ * 7):,}")
+    fact(f"recovered_within_day_week_android_{per}", round(sub["retried"].sum() / days_ * 7), "orders",
+         f"of them, followed by the member's order within a day, a week, {per}", "the retry argument",
+         f"{round(sub['retried'].sum() / days_ * 7):,}")
 n_both = int((reach["menu_view"] & reach["search"]).sum())
 fact("sep_sessions_search_and_menu", n_both, "sessions", "member sessions in September with a search and a menu view",
      "L3 the fix's working", f"{n_both:,}")
@@ -1445,7 +1494,7 @@ public = [
      "url": "https://www.eternal.com/blog/q1fy27/",  # checked 12 October 2026
      "url_letter": "https://drive.google.com/file/d/1jb9KWd4Ap4RTKHFHxzEOO7jgQqVZEGcd/view"},  # checked 12 October 2026
     {"id": "Th2", "source": "Swiggy, Q2 FY2026 shareholder letter (Instamart cohorts)", "checked": "12 October 2026",
-     "facts": {"triangle_index": "each cohort's spend against the quarter it was acquired, Q0",
+     "facts": {"triangle_index": "every cohort's spend as a multiple of the Q4 FY24 cohort's spend in its acquisition quarter, Q0",
                "weak_users": "weaned away certain users from the platform with low potential Lifetime values",
                "q4fy24_cohort_spend_q6": "4.14x its spend in Q0", "aov_growth": "about 40 percent year on year",
                "denominator": "the table states none"},

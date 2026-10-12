@@ -278,6 +278,74 @@ The sourcing items, as returned:
    NOV retention; "since those who stay spend more" is inference.
 10. Simpson 1951: cite the paper itself.
 
+## Read 2, round two: the interviewer's re-score after the fix pass
+
+A third agent, again on the opus model, findings only, re-scored the revised transcripts on 12
+October 2026, re-checked every number against the data and every public source live, and edited
+nothing.
+
+**Scores (as returned).** [S] hire-grade: 14 of 14, with 2 on each of the first three criteria. [D]
+hire-grade: 10 of 14 under the trainer file's own rule that a line counts only in the main answer
+(scope 1, count 1, mix 1 and cost 1, each because its number sat only in a follow-up or no reply was
+written). Every number in the three files reproduced from the data or the facts file.
+
+**Verdicts on the [S] answer (as returned).** Uber a lean hire at analyst level; Swiggy a hire for up
+to about three years; Google borderline, for want of one sentence apportioning the drop; an AI
+startup borderline, for the AI variant's single point and missing verdict.
+
+**Counts.** 19 findings: 0 blockers, 6 majors, 13 minors; and 7 sourcing notes.
+
+1. Major: the close never apportions the drop: of the 3.6-point fall over everyone, 3.24 is the
+   August cohort and 0.36 a normal month; retention cannot see the checkout, since the members it
+   cost an order still ordered once; the share who ordered fell alike on both platforms.
+2. Major: the candidate uses a sale that no reply disclosed, and an order value and October's 33
+   that no reply handed over.
+3. Major: the outside-causes test is wrong for a membership: a Gold price change moves members only,
+   and a fee change mostly spares members, whose delivery is free.
+4. Major: non-members ran the same new checkout and held, so the break is in the member path, and
+   the [S] answer never joins the two facts.
+5. Major: the [D] scorecard applies its main-answer rule to cost only; [D]'s questions get no
+   replies; the student rubric asks for a range and the trainer's does not.
+6. Major: the AI variant reads one point, skips the weekly model and pricing check, gives no verdict,
+   and mixes signup week with channel.
+7. Minor: the count check clears orders only and arrives third.
+8. Minor: the cost line's order value is unlabelled and "a quarter" has no base.
+9. Minor: October's 33 has no assumption, and "what would change it" is promised and not said.
+10. Minor: month one is named and then dropped from the close.
+11. Minor: the lapsed-member reply answers a different question.
+12. Minor: the sale follow-up skips incrementality (organic August 4,973 and September 5,089 sit at
+    the usual 5,000).
+13. Minor: the Swiggy follow-up gives Instamart's figures to Swiggy and states a conditional as fact.
+14. Minor: the Amplitude line drops "for activation".
+15. Minor: a flat recovery rate on a larger base is more recoveries (failures 1,921 to 3,386 a week,
+    recovered within a day 701 to 1,189), so the floor belongs in orders placed: 1,266 a week against
+    iOS members, 1,133 against non-members on Android.
+16. Minor: the weak answer's two points do not match its text.
+17. Minor: the [D] next step only investigates while orders are lost.
+18. Minor: the guesstimate states inferences as fact ("weekends included", "the same count", an
+    unnamed range, a check that leans on the candidate's own 1.25).
+19. Minor: the supply-side cross-check misses riders boarding along a run.
+
+Sourcing notes: Swiggy Q1 FY27 defines frequency as completed orders per user in a month; Swiggy Q2
+FY26 indexes every cohort to the Q4 FY24 cohort's first quarter, which the facts file and two slides
+had wrong; Zomato verified word for word; Amplitude names its 2025 Product Benchmark Report; Aced's
+page is undated and community-written; the order value and the take rate want labels; Republic World
+is the weakest outlet in the DMRC set.
+
+**What round two changed.** All 19 findings and the index error are fixed: the [S] close apportions
+the drop (3.2 of 3.6 points), says retention cannot see the checkout, gives the member path, the
+orders-placed range 1,133 to 1,317 with Rs 3.4 to 6.6 lakh, October's assumption and range, and what
+would change the order; two clarifying questions and their replies hand over the sale and the order
+value; the outside-causes test splits by member and platform; the AI variant checks the week's model
+and pricing changes, reads curve shapes and gives a verdict; the [D] transcript writes the
+interviewer's replies and moves the count, the held-fixed split and the cost range into its main
+answer, and both rubrics now ask for a range and count main answers only; the guesstimate labels its
+inferences and fixes its cross-check. Pack-wide, the cost range moved from 1,223 to 1,133 to 1,317
+and from Rs 3.7 to Rs 3.4 lakh in the decks, notes, sheet, sets, solutions, notebook 03 and the
+trainer files; every "retries did not rise" line now says what came back; the Swiggy index is fixed
+on S14, fallback S3 and in the facts. Partly: the Swiggy letter's second copy and DMRC's own post were
+not fetched (sources list).
+
 ## What did the fix pass do with each finding?
 
 Every finding was fixed in the pack, or fixed in part with the rest given its one-line reason in the

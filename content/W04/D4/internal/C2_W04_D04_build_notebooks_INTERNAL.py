@@ -740,12 +740,18 @@ def nb03():
         lost_17 = fall * carts_after
         print(f"{fall:.2f} x {carts_after:,} carts = {lost_17:,.0f} orders in 17 days, "
               f"{lost_17 / 17:,.0f} a day, {lost_17 / 17 * 7:,.0f} a week")
-        drift = ((rate.loc[(True, "ios"), "before"] - rate.loc[(True, "ios"), "after"])
-                 + (rate.loc[(False, "android"), "before"] - rate.loc[(False, "android"), "after"])) / 2
-        print(f"the comparators fell {100 * drift:.1f} point on their own; taking it off leaves "
-              f"{(fall - drift) * carts_after / 17 * 7:,.0f} a week")
-        check("about 1,317 orders a week, or about 1,223 net of the comparators' own fall",
-              round(lost_17 / 17 * 7) == 1317 and round((fall - drift) * carts_after / 17 * 7) == 1223)
+        # The same loss counted in orders placed, which keeps any failed cart that came back as a later order:
+        # Android members' orders a week against the change iOS members and non-members on Android showed.
+        per_week = flow[flow["stage"] == "order_placed"].groupby(["is_member", "platform", "side"]).size().unstack()
+        per_week = per_week.assign(before=per_week["before"] / 44 * 7, after=per_week["after"] / 17 * 7)
+        change = per_week["after"] / per_week["before"] - 1
+        for who, name in [((True, "ios"), "iOS members"), ((False, "android"), "non-members on Android")]:
+            expected = per_week.loc[(True, "android"), "before"] * (1 + change.loc[who])
+            print(f"against {name} ({change.loc[who]:+.0%}): {expected - per_week.loc[(True, 'android'), 'after']:,.0f} "
+                  f"orders a week lost")
+        check("about 1,317 a week from the carts; 1,133 to 1,266 counted in orders placed",
+              round(lost_17 / 17 * 7) == 1317 and round(per_week.loc[(True, "android"), "before"] * (1 + change.loc[(False, "android")])
+                                                        - per_week.loc[(True, "android"), "after"]) == 1133)
         '''),
         md('''
         **What happened.** Starting checkout held at 80 percent; completing an order once checkout had
@@ -755,12 +761,13 @@ def nb03():
         about 3,198 more orders in 17 days, about 188 a day, about 1,317 a week, against about 5,064
         Android member orders a week before the release: about a quarter of them.
 
-        **What happened.** About 1,317 orders a week if the whole 14-point fall is the release's, and
-        about 1,223 if the one point that iOS members and non-members on Android also lost would have
-        happened anyway. At an order value of Rs 400, an assumption anywhere from Rs 300 to Rs 500,
-        that is Rs 3.7 to 6.6 lakh of orders a week, Rs 5.3 lakh at 1,317 and Rs 400. That is order
-        value: Zomato keeps only its commission and fees from it, so the loss to Zomato itself is a
-        share of that range.
+        **What happened.** About 1,317 orders a week if none of the failed carts came back as a later
+        order. Counted in orders placed, which keeps the ones that did, Android members' weekly orders
+        fell 18 percent while iOS members' rose 7 and non-members' on Android 4: a loss of 1,266 a week
+        against iOS members and 1,133 against non-members, so the range is 1,133 to 1,317. At an order
+        value of Rs 400, an assumption anywhere from Rs 300 to Rs 500, that is Rs 3.4 to 6.6 lakh of
+        orders a week, Rs 5.3 lakh at 1,317 and Rs 400. That is order value: Zomato keeps only its
+        commission and fees from it, so the loss to Zomato itself is a share of that range.
 
         ## What could still make the call wrong, and which check settles each?
 
@@ -824,10 +831,12 @@ def nb03():
         nxt = pd.merge_asof(failed, later, left_on="t", right_on="next_order", by="user_id",
                             direction="forward", allow_exact_matches=False)
         nxt["within_a_day"] = (nxt["next_order"] - nxt["t"]) <= pd.Timedelta(days=1)
-        retry = nxt.groupby(nxt["t"] >= "2026-09-14")["within_a_day"].mean()
-        print(f"after a checkout with no order, the member ordered within a day: {100 * retry[False]:.1f} percent "
-              f"before the release, {100 * retry[True]:.1f} after")
-        check("retries did not rise after the release", retry[True] <= retry[False])
+        after = nxt["t"] >= "2026-09-14"
+        retry = nxt.groupby(after)["within_a_day"].agg(["mean", "size", "sum"])
+        retry = retry.assign(failed_a_week=retry["size"] / [44, 17] * 7, came_back_a_week=retry["sum"] / [44, 17] * 7)
+        print(retry.round(3))
+        check("the share of failures followed by an order within a day did not rise",
+              retry.loc[True, "mean"] <= retry.loc[False, "mean"])
         '''),
         code('''
         # Fewer users or less use, with the cohorts held fixed: orders per ordering member, by platform.
@@ -854,9 +863,10 @@ def nb03():
         either way keeps the fall, 58 to 47 and 56 to 43, and the weekly series dates it to the release
         week. (4) The 55 rests on 18,273 checkout starts, so chance moves it by under a point; the
         non-members' comparator rests on 1,600, so "held" there means within about 2.5 points. After
-        a checkout with no order, the member came back and ordered within a day 36.5 percent of the
-        time before the release and 35.1 after: retries did not rise, so the lost carts were not simply
-        made up later. Held fixed, Android members also ordered less each, 1.45 to 1.24 orders per
+        a checkout with no order, the member ordered within a day 36.5 percent of the time before the
+        release and 35.1 after; failures nearly doubled, from 1,921 to 3,386 a week, so more came back,
+        1,189 a week against 701, which is why the size's floor is counted in orders placed. Held
+        fixed, Android members also ordered less each, 1.45 to 1.24 orders per
         ordering member from August to September, while iOS held at 1.44 and 1.45. Over every ordering
         member the same ratio reads 1.36 to 1.20 on Android and 1.34 to 1.40 on iOS, and that iOS "rise"
         is the mix of cohorts again.
@@ -866,7 +876,7 @@ def nb03():
         searched it reads 89. (3) Per session asks how often a menu visit becomes a cart (34 percent);
         per member asks how many browsing members ever added to a cart (61 percent). (4) The fall
         belongs to members on Android, 58 to 44 percent, from the release week. (5) The step that
-        changed is checkout start to order placed, 72.5 to 55 percent, about 1,223 to 1,317 orders a
+        changed is checkout start to order placed, 72.5 to 55 percent, about 1,133 to 1,317 orders a
         week. (6) The same-step comparators, the cohorts held fixed, the order records and the size of
         each sample all leave the call standing.
         '''),

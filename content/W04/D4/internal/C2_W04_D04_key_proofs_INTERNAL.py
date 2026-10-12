@@ -73,10 +73,16 @@ carts = after[after.stage == "add_to_cart"].session_id.nunique()
 lost = (round(rate(before), 2) - round(rate(after), 2)) * carts
 check("fix-first Q1: 22,841 carts, about 1,317 orders a week (188 a day, 3,198 in 17 days)",
       carts == 22841 and round(lost / 17 * 7) == 1317 and round(lost / 17) == 188 and round(lost) == 3198)
-check("fix-first Q2: Rs 5.3 lakh at 1,317 and Rs 400; Rs 3.7 lakh at 1,223 and Rs 300, Rs 6.6 lakh at 1,317 and Rs 500",
-      [round(1317 * 400 / 1e5, 1), round(1223 * 300 / 1e5, 1), round(1317 * 500 / 1e5, 1)] == [5.3, 3.7, 6.6])
-check("fix-first: 1,223 is the 13-point fall net of the comparators' one point, a week",
-      round((0.58 - 0.44 - 0.01) * 22841 / 17 * 7) == 1223)
+check("fix-first Q2: Rs 5.3 lakh at 1,317 and Rs 400; Rs 3.4 lakh at 1,133 and Rs 300, Rs 6.6 lakh at 1,317 and Rs 500",
+      [round(1317 * 400 / 1e5, 1), round(1133 * 300 / 1e5, 1), round(1317 * 500 / 1e5, 1)] == [5.3, 3.4, 6.6])
+ev_o = pd.read_csv(DATA / "C2_W04_D04_events_STUDENT.csv.gz", usecols=["is_member", "platform", "event_ts", "stage"])
+ev_o = ev_o[ev_o["stage"] == "order_placed"]
+after_o = ev_o["event_ts"] >= "2026-09-14"
+wk = ev_o.groupby(["is_member", "platform", after_o]).size().unstack() / [44 / 7, 17 / 7]
+chg = wk[True] / wk[False] - 1
+floor = wk.loc[(True, "android"), False] * (1 + chg.loc[(False, "android")]) - wk.loc[(True, "android"), True]
+check("fix-first: 1,133 a week is Android members' orders against non-members on Android's change",
+      round(floor) == 1133)
 
 # ------------------------------------------------------------------------------ the Kalpa set
 kev = pd.read_csv(DATA / "C2_W04_D04_kalpa_events_STUDENT.csv", parse_dates=["event_ts"])
