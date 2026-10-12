@@ -38,10 +38,10 @@ Cut section 8 first if time runs short.
 | Slide | The answer | What to say |
 |---|---|---|
 | S2 and S3 | a c d e f, with the denominator (b) spare | Each fact breaches one line: no usage condition (numerator), four years unused (window), the silent 2013 addition (dated exclusions), simulated funding (what it does not reward), surveys dodged (an independent guardrail). The denominator, households, was never the problem. |
-| S5 | Each owner's attack has a true part and a line that answers it | Driver operations: trips per online hour beside the hours. City head: the accepted share, which catches cherry-picking. Finance partner: an accepted trip then cancelled, so the cancel share sits beside acceptance. |
+| S5 | Each owner's attack has a true part and a line that answers it | Driver operations: trips per online hour beside the hours. Finance partner: the accepted share, which catches cherry-picking. Marketing lead: an accepted trip then cancelled, so the cancel share sits beside acceptance. |
 | S6 and S7 | a: numbers 1 to 4 lead, 5 to 8 lag | Inputs the team can act on this week lead; bills, ratings, departures and the quarter's bookings confirm. On the case data acceptance settled in the launch week while bookings per online hour took three weeks. |
 | S8 | One guardrail per north star | Trips per driver: accepted share over a floor. Hours per driver: share of online hours with no trip, 0.22 to 0.38. Enrolled drivers: count only drivers online at least one peak hour that week. |
-| S9 | Score the [D] pair on the scorecard | The weak answer scores 1 of 14 and the hire-grade answer 13; read the line that earns each 2. |
+| S9 | Score the [D] pair on the scorecard | The weak answer scores 1 of 14 and the hire-grade answer 14; read the line that earns each 2. |
 
 ---
 

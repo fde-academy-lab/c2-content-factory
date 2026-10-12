@@ -72,15 +72,15 @@ seconds, and an item most of the room misses is the call to say again before the
 ## Q5. What is the proxy test, in one line?
 *Tests: a proxy has drifted when a team could hit it while the outcome got worse.*
 
-- Does the number rise every week for at least one full quarter?
+- Does the number move a week before the outcome it stands for?
 - Could a team hit this number while what it stands for got worse?  <- correct
 - Does the number match the same metric at the nearest competitor?
-- Can the chart of the number be read from across a large room?
+- Is the number written with its numerator, denominator and window?
 
 ---
 
 ## Q6. Averaging every driver-week's trips per hour after the launch gives 1.71; all trips over all hours gives 1.58. Which goes on the slide?
-*Tests: a rate is a ratio of two sums, never an average of each row's ratio.*
+*Tests: the city's rate is a ratio of two sums; an average of each row's rate answers a different question, the typical driver-week.*
 
 - 1.58, every trip added up over every hour added up  <- correct
 - 1.71, since every driver-week then counts equally

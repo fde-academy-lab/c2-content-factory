@@ -48,7 +48,7 @@ anyone gaming it?** Ask each question below before its answer is shown.
 
 | Part | Level | Its question | The smaller questions, in order |
 |---|---|---|---|
-| The ticket and round 1 | L1 | What did the city team launch, what moved, and how could each role's number rise while riders waited longer? | What does the ticket say, line by line? Where does today sit in the week? Where does today end? Which four questions must a number answer before anyone is paid for it? How could each of the three roles' numbers be hit badly? |
+| The ticket and round 1 | L1 | What did the city team launch, what moved, and how could each role's number rise while riders were served no better? | What does the ticket say, line by line? Where does today sit in the week? Where does today end? Which four questions must a number answer before anyone is paid for it? How could each of the three roles' numbers be hit badly? |
 | Chapter 1 | L1 | What does an hour count? | Which number can a driver raise without driving? What happens to a token once servers are paid per token? What did six drivers do, counted by hand? Why do the six fall further than the city? What did a paid proxy cost Wells Fargo? |
 | Chapter 2 | L2, L3 | Where did the fall sit? | Did demand fall? What do the twelve weeks show? What does one `groupby` give? What does an average of each week's rate print? How does Swiggy write a denominator down? How did Delhi Metro count one crowd three ways? How many drivers sit under one trip an hour? |
 | Chapter 3 | L3 to L5 | What should it pay for? | Which number would you pay drivers for? What memo would the celebrated number have sent? How much top-up went to declining weeks? How do a north star, guardrails and inputs fit? Which number moved first? What are the seven lines? Who set the clock's start at VA? What remains without the new drivers? |
@@ -56,10 +56,11 @@ anyone gaming it?** Ask each question below before its answer is shown.
 | The interview room | L6 | What does the interviewer hear? | What does a strong candidate clarify first? How do a weak and a hire-grade answer compare? Which follow-ups come next? How does the question move to an AI coding assistant? |
 | The close | | Is the number the scheme pays for measuring what the city wants? | What does the Kahoot show the room got? What is the sentence, filled? What does Tuesday ask? |
 
-**The day's answer, said at the close (afternoon S50).** "Pay for completed peak trips per enrolled
-driver online at peak, guarded by the share of offers accepted and the rider's wait, because paying
-for hours cost Rs 1.159 crore in six weeks for driver-weeks that declined most of what they were
-offered."
+**The day's answer, said at the close (afternoon S50).** "Judge the scheme by completed peak trips
+per enrolled driver online at peak, guarded by the share of offers accepted and the rider's wait,
+because paying for hours cost Rs 1.159 crore in six weeks for driver-weeks that declined most of what
+they were offered." Then the rule that follows from it: the Rs 300 floor stays only for driver-weeks
+that accept at least half their offers, an accepted trip later cancelled counting as declined.
 
 ---
 
@@ -113,7 +114,7 @@ lab: notebook 04, the Kalpa set, the lead-and-lag drill and the lab set (`traine
 | S14 and S15, notebook 02 | "Trips per hour fell because demand fell" | Blaming the season and keeping the scheme | `zone_weeks`: requests 251,910 to 256,556, up 1.8 percent | Offers per request 1.07 to 1.35: declined requests were offered again |
 | S18 and S19, notebook 02 | 1.71, the average of each driver-week's rate after the launch | A fall that looks two-fifths smaller than it is | Recompute from the sums: 1.58 | Ratio of sums, every time |
 | S27, notebook 03 | "Peak online hours up 24 percent: supply target met, extend to two more cities" | Spending the scheme in two more cities | Trips per online hour 1.90 to 1.58; median wait 4.8 to 4.6 minutes | Pay for completed peak trips, with an acceptance floor |
-| S34 and S35, notebook 03 | "The 140 new drivers explain the fall" | Dismissing the finding as mix | The rate without them: still 1.58 | Say which doubts the fall survives (new drivers, busiest weeks at 1.60, core zones at 1.79) and which stay open |
+| S34 and S35, notebook 03 | "The 140 new drivers explain the fall" | Dismissing the finding as mix | The rate without them: still 1.58 | Say which doubts the fall survives (new drivers, the three weeks with most requests at 1.60, core zones at 1.79) and which stay open |
 | S25, S26 and round 3 | "Pay per completed trip, nothing beside it" | A rule drivers game by cherry-picking short trips | The share of offers accepted falls when drivers decline | An acceptance floor between 0.46 and 0.78 |
 | Round 3, S42 | "The redesign saves Rs 1.16 crore" | A saving that assumes no driver changes behaviour | Ask what an idle driver does on Monday under the new rule | Rs 58 lakh to Rs 92.7 lakh if a fifth to a half is still paid, with the assumption stated |
 
@@ -170,9 +171,14 @@ Every number below is in `internal/C2_W04_D01_facts_INTERNAL.yaml` under the id 
 | The acceptance gap | 0.46 and 0.78 | `acceptance_max_idle_week_after`, `acceptance_min_other_week_after` |
 | The north star | 35.76 and 35.89 trips per online driver-week | `north_star_before`, `north_star_after` |
 | Top-up per completed trip, after | Rs 82.3 | `topup_per_trip_after_rs` |
-| The fall under each cut | 1.58 without new drivers; 1.60 in the busiest weeks; core zones 1.90 to 1.79 | `tph_pre_launch_after`, `tph_crest_weeks_after`, `tph_core_zones_before`, `tph_core_zones_after` |
+| The fall under each cut | 1.58 without new drivers; 1.60 in the three weeks with most requests; core zones 1.90 to 1.79 | `tph_pre_launch_after`, `tph_crest_weeks_after`, `tph_core_zones_before`, `tph_core_zones_after` |
 | Acceptance and bookings per hour, weeks 7 to 9 | 0.729, 0.735, 0.729; Rs 271.0, 261.7, 259.1 | `acceptance_2026_08_31` and the next two; `rs_per_hour_2026_08_31` and the next two |
 | The twelve rows | 60 and 74 hours; 114 and 88 trips; 1.90 and 1.19 | `twelve_hours_before` and the rest of `twelve_*` |
+| What the top-up bought | 6,700 more trips, about Rs 2,836 each, 17.2 fares | `extra_trips`, `topup_per_extra_trip_rs`, `topup_per_extra_trip_fares` |
+| The outer zones | Wait 6.6 to 5.95 minutes; about 185 extra trips; Rs 85.7 lakh to idle weeks there; about Rs 46,000 per extra trip | `outer_wait_before`, `outer_wait_after`, `outer_extra_trips`, `idle_outer_topup_rs`, `cost_per_extra_outer_trip_rs` |
+| Cancels after accepting | Others 0.037 to 0.077; idle tail 0.152 after | `cancel_share_other_before`, `cancel_share_other_after`, `cancel_share_idle_after` |
+| The floor with cancels counted as declines | Highest idle week 0.43; lowest other week 0.67 | `completed_share_max_idle_week_after`, `completed_share_min_other_week_after` |
+| If the 180 quit | 33,440 trips; about 17,600 more peak hours at 1.90 | `idle_trips_after`, `hours_to_carry_idle_trips` |
 
 ---
 
@@ -180,10 +186,10 @@ Every number below is in `internal/C2_W04_D01_facts_INTERNAL.yaml` under the id 
 
 | Question, as the row tags it | The answer in one breath |
 |---|---|
-| [S] How would you measure the success of a new feature? | Clarify the goal, the users and the harm; name one north star with its numerator, denominator and window, two guardrails, a leading input and the test; then check the number against the goal: here hours rose 24 percent while trips per online hour fell from 1.90 to 1.58 and waits barely moved, so the scheme failed its goal and should pay for trips. |
+| [S] How would you measure the success of a new feature? | Clarify the goal, the harm, the decision and the baseline; name one north star with its lines, three guardrails, a leading input and a test with zones as its unit; then read the data: hours rose 24 percent while trips per online hour stepped from 1.88 to 1.64 in the launch week and settled at 1.58, the north star barely moved, and outer-zone waits fell from 6.6 to 5.95 minutes at about Rs 46,000 per extra trip, so do not extend it, keep the floor only for weeks that accept half their offers, and test that by zone. |
 | [F] North star against guardrail, with one example pair. | The north star names the outcome the plan exists for and a guardrail catches a harmful way of hitting it: completed peak trips per enrolled driver online at peak, guarded by the share of offers accepted, which falls when drivers cherry-pick. |
-| [F] What makes a metric gameable, and how do you write one that is not? | It is gameable when the people paid can raise the count without the outcome, as an open app raises online hours; write the numerator with a usage condition, fix the denominator in advance with its count printed, name the window and dated exclusions, say what it does not reward, and add guardrails the measured cannot move. |
-| [D] Three departments each want their own target; how do you get to one, and what do you say to the two who lose? | Tie one north star to the scheme's goal, then give each losing number a named job: finance's top-up per trip is a guardrail read weekly, marketing's enrolled count is printed beside the rate and its sign-ups are an input; and say what evidence would reopen the call. |
+| [F] What makes a metric gameable, and how do you write one that is not? | It is gameable when the people paid can raise the count without the outcome, as an open app raises online hours; write the numerator with a usage condition, set the denominator by something other than the outcome and print its count, name the window and dated exclusions, say what it does not reward, and add guardrails read from data the measured cannot easily move, such as the rider's wait by zone. |
+| [D] Three departments each want their own target; how do you get to one, and what do you say to the two who lose? | Tie one north star to the scheme's goal and say aloud that none of the three teams' numbers is it; then give each a named job: hours beside trips per online hour, the enrolled count printed beside the rate, and for finance a total cap on the top-up and its cost per extra trip, Rs 2,836 under the old rule; and say what evidence would reopen the call. |
 
 ---
 

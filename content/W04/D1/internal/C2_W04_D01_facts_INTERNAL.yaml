@@ -1114,6 +1114,91 @@ numbers:
   unit: trips per driver
   how: 88 trips over the six drivers
   used_by: explorer M3, the enrolled-driver denominator on the twelve rows
+- id: outer_wait_before
+  value: 6.6
+  unit: minutes
+  how: middle value of the 18 outer zone-week medians, before
+  used_by: the interview's zone check
+- id: outer_wait_after
+  value: 5.95
+  unit: minutes
+  how: middle value of the 18 outer zone-week medians, after
+  used_by: the interview's zone check
+- id: outer_fulfil_before
+  value: 0.78
+  unit: share
+  how: outer zones' fulfilled over requests, before
+  used_by: the interview's zone check
+- id: outer_fulfil_after
+  value: 0.789
+  unit: share
+  how: outer zones' fulfilled over requests, after
+  used_by: the interview's zone check
+- id: outer_extra_trips
+  value: 185
+  unit: trips
+  how: outer fulfilled after, less outer requests after times the before fulfilment rate
+  used_by: the interview's zone check
+- id: idle_outer_topup_rs
+  value: 8573979
+  unit: Rs
+  how: top-up to idle-tail driver-weeks whose zone_mode is an outer zone, after
+  used_by: the interview's zone check
+- id: cost_per_extra_outer_trip_rs
+  value: 46000
+  unit: Rs
+  how: idle outer top-up over the extra outer trips, to the nearest thousand
+  used_by: the interview's zone check
+- id: extra_trips
+  value: 6700
+  unit: trips
+  how: 230,900 - 224,200
+  used_by: the interview's sizing
+- id: topup_per_extra_trip_rs
+  value: 2836
+  unit: Rs
+  how: Rs 1.9 crore over the 6,700 extra trips
+  used_by: the interview's sizing
+- id: topup_per_extra_trip_fares
+  value: 17.2
+  unit: fares
+  how: Rs 2,836 over the Rs 165 average fare
+  used_by: the interview's sizing
+- id: hours_to_carry_idle_trips
+  value: 17600
+  unit: hours
+  how: 33,440 idle-tail trips at 1.90 trips per hour
+  used_by: the role card; follow-up on drivers who quit
+- id: cancel_share_idle_after
+  value: 0.152
+  unit: share
+  how: driver-cancelled over accepted, idle drivers, after
+  used_by: the acceptance guardrail's gaming note
+- id: cancel_share_new_after
+  value: 0.148
+  unit: share
+  how: driver-cancelled over accepted, new drivers, after
+  used_by: the acceptance guardrail's gaming note
+- id: cancel_share_other_after
+  value: 0.077
+  unit: share
+  how: driver-cancelled over accepted, other drivers, after
+  used_by: the acceptance guardrail's gaming note
+- id: cancel_share_other_before
+  value: 0.037
+  unit: share
+  how: driver-cancelled over accepted, other drivers, before
+  used_by: the acceptance guardrail's gaming note
+- id: completed_share_max_idle_week_after
+  value: 0.43
+  unit: share
+  how: trips over offers shown, highest idle-tail week after
+  used_by: the payout rule's floor
+- id: completed_share_min_other_week_after
+  value: 0.67
+  unit: share
+  how: trips over offers shown, lowest other week online after
+  used_by: the payout rule's floor
 - id: tph_split_0907_before
   value: 1.86
   unit: trips per peak online hour
@@ -1137,15 +1222,15 @@ toys:
   values:
     rates:
     - 2.0
-    - 1.0
+    - 0.5
     hours:
     - 10
-    - 1
-    trips: 21
-    total_hours: 11
-    ratio_of_sums: 1.91
-    mean_of_ratios: 1.5
-  used_by: L2 ratio of sums
+    - 40
+    trips: 40
+    total_hours: 50
+    ratio_of_sums: 0.8
+    mean_of_ratios: 1.25
+  used_by: L2 ratio of sums; the long, slow week pulls the average up, as on the city
 - id: toy_mix
   label: invented
   values:

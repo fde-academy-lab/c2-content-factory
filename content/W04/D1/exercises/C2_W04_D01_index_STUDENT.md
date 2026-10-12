@@ -26,7 +26,7 @@ shape does every answer line take?
 | Chapter 3, with the trainer | `guided/C2_W04_D01_definition_STUDENT.md` | What does a complete definition of the number the scheme pays for say, line by line? | Four letters called aloud, and the template filled from notebook 03 |
 | Afternoon, round 3 of the war game, in your group | `unguided/C2_W04_D01_redesign_STUDENT.md` | Does the redesigned scheme survive the three roles, and what would it save? | Four letters and the group's sheet: the definition, the saving with its assumption |
 | The practice lab, after the Kalpa notebook | `unguided/C2_W04_D01_kalpa_north_star_STUDENT.md` | Which number should Kalpa's growth plan chase, and which lines stop the app from gaming it? | Five letters and Kalpa's definition on the template |
-| The practice lab, or section 8 of the metric clinic if the tentative faculty block does not run | `unguided/C2_W04_D01_lead_lag_STUDENT.md` | Which of the city's numbers move before the north star, and which guardrail does each proposed north star need? | Three letters |
+| The practice lab, or section 8 of the metric clinic, the fallback session that runs if the tentative faculty block does not | `unguided/C2_W04_D01_lead_lag_STUDENT.md` | Which of the city's numbers move before the north star, and which guardrail does each proposed north star need? | Three letters |
 | The practice lab, last | `practice/C2_W04_D01_lab_set_STUDENT.md` | Can you rebuild the day's count, sort a dashboard and write a definition on your own? | Five letters and one definition for a product you use |
 | Tonight | `../takehome/C2_W04_D01_brief_STUDENT.md` | What number would you pay a team for in a product you use every day, and what stops it being gamed? | One page and one number for Tuesday |
 
@@ -39,7 +39,9 @@ names the caveats, L5 decides and prices, L6 answers at interview depth. The twe
 and the full-data count (L2) are done in the decks and notebooks 01 and 02, so the exercises start
 where those leave off, with one code item for anyone who wants L2 again. Each item carries the
 interview question it descends from, tagged the way the week's interview list tags it: **[S]** a
-staple asked everywhere, **[F]** frequent in GCC and product screens, **[D]** a differentiator.
+staple asked everywhere, **[F]** frequent in GCC and product screens (a GCC, or global capability
+centre, is a company's own technology and analytics centre in India, such as the one Kalpa runs),
+**[D]** a differentiator.
 
 | Level | Item | What it asks | Interview question it descends from |
 |---|---|---|---|
@@ -88,7 +90,8 @@ lab notebook's two your-turn cells. The take-home is walked at the start of Tues
 
 ## What shape does every answer line take?
 
-Every letter line uses one shape: the letters in item order, no spaces, pasted as one line.
+Every letter line uses one shape: the letters in item order, no spaces, pasted as one line into the
+class chat.
 
 ```
 Post exactly this shape: xxxx

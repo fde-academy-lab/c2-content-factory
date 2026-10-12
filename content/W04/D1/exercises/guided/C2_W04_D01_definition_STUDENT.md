@@ -47,7 +47,7 @@ last three make it hard to game.
 | Numerator | What is counted on top |
 | Denominator | What the count is divided by, with that count printed beside the rate |
 | Window | The stretch of time each count covers |
-| Exclusions | What is left out of both counts, and why |
+| Exclusions | What is left out of both counts, and why, with the date of any change |
 | What it does not reward | The behaviour the number refuses to pay for, named out loud |
 | Guardrails | Numbers that must not get worse while the main number rises |
 | Gaming note | For each guardrail, the way of hitting the main number it catches |
@@ -81,7 +81,7 @@ d) Trips completed at any hour of the day, peak or not, that week
 A denominator decides who can move the rate without doing the work, which is why a reviewer asks
 for its count before trusting any ratio.
 
-### Q2. Which denominator keeps a sign-up who never drives from moving the rate?
+### Q2. Which denominator keeps a sign-up who never drives from moving the rate, without dropping a driver who sits online and completes nothing?
 
 a) Every driver enrolled in the scheme that week, whether or not they log in
 
@@ -95,8 +95,8 @@ d) The peak online hours that enrolled drivers logged that week
 
 ## What is left out of both counts?
 
-Exclusions are where definitions change quietly, so a written list with a reason for each is what
-lets next quarter's number be compared with this one.
+Exclusions are where definitions change without anyone being told, so a written list with a reason
+for each is what lets next quarter's number be compared with this one.
 
 ### Q3. The window is the calendar week. Which exclusions belong in the definition?
 
@@ -115,7 +115,7 @@ d) Trips cancelled by either side, test accounts, trips outside the windows
 A guardrail is the number a reviewer reads beside the north star; marketplaces watch one for each
 way the main number can be hit badly.
 
-### Q4. Design. Paid per completed trip, a driver accepts only short or nearby trips and declines the rest. Which guardrail catches it?
+### Q4. Design. Paid per completed trip, a driver accepts only short or nearby trips and declines the rest. Which guardrail catches it in the driver's own record, in the week it starts?
 
 a) Accepted share of offers, at or above a floor the city sets
 
@@ -140,10 +140,10 @@ whose definition cell prints them for the six weeks before and after the launch.
 | Denominator | |
 | Window | The calendar week |
 | Exclusions | |
-| What it does not reward (the behaviour that earns nothing: three things the old number paid for) | |
-| Guardrail 1 | |
-| Guardrail 2 | |
-| Guardrail 3 | |
+| What it does not reward (behaviour that earns nothing, such as hours online with no trip) | |
+| Guardrail 1, for riders | |
+| Guardrail 2, for riders | |
+| Guardrail 3, for the budget | |
 | Gaming note, one line per guardrail | |
 
 | Read on the data | Before | After |

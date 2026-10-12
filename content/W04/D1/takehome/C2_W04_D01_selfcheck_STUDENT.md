@@ -29,8 +29,8 @@ The seven lines, in plain words first, then the line's name:
 
 1. **What you count on top** is the numerator. It is the thing the product exists to deliver, counted
    the way the customer would count it.
-2. **What you divide by** is the denominator. It is fixed before anyone knows how the period went, and
-   its count is printed beside the rate.
+2. **What you divide by** is the denominator. It is set by something other than the outcome you
+   count, and its count is printed beside the rate.
 3. **The stretch of time** is the window. It is the same length on both sides of any comparison.
 4. **What you leave out, and why** are the exclusions. Each one has a reason about what the count
    means, and each would be dated if it changed.
@@ -43,9 +43,9 @@ The seven lines, in plain words first, then the line's name:
 | # | Checkpoint | What you should see | If it does not hold |
 |---|---|---|---|
 | 4 | The numerator counts an outcome | Something the customer received or did: an order delivered, a song played past its first seconds, a payment that went through | A count of screens opened, sessions or notifications sent counts activity the team can create on its own |
-| 5 | The denominator is fixed in advance | A group defined before the period starts, such as users active in the month before | "Users who did the thing this month" drops everyone who stopped, so the rate rises as people leave |
+| 5 | The denominator is set apart from the outcome | A group set by something other than what you count, such as users active in the month before, or drivers online at least one peak hour | "Users who did the thing this month" drops everyone who stopped, so the rate rises as people leave |
 | 6 | The window is named | A day, a week or a month, the same length each side | "Recently" or "so far" cannot be compared next quarter |
-| 7 | Each exclusion has a reason | Test accounts, refunds, cancelled orders, each with why | An exclusion with no reason is where a definition later changes quietly |
+| 7 | Each exclusion has a reason | Test accounts, refunds, cancelled orders, each with why | An exclusion with no reason is where a definition later changes without anyone being told |
 | 8 | What it does not reward is named | At least two behaviours, written out | If this line is empty, the team will find the behaviour by trying |
 | 9 | Each guardrail catches something | You can say what would make it move | A guardrail that is another growth count catches nothing: ask what it would catch |
 

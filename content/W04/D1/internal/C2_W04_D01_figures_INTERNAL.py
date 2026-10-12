@@ -99,7 +99,8 @@ ax.set_xlim(0, 45)
 ax.set_ylim(0, 70)
 ax.set_xlabel("peak online hours in the week")
 ax.set_ylabel("completed peak trips in the week")
-ax.set_title("After the launch: 180 drivers sat online, far right and low", loc="left", pad=12)
+ax.set_title("Each dot is one driver-week after the launch: the idle tail sits right and low",
+             loc="left", pad=12, fontsize=13)
 ax.legend(frameon=False, loc="upper left", fontsize=12)
 save(fig, "idle_tail")
 
@@ -131,7 +132,7 @@ busiest = zw.groupby("week_start")["peak_requests"].sum().nlargest(3).index
 cuts = [("before the launch, every driver", rate(dw[dw["window"] == "before"]), LAV),
         ("after, every driver", rate(after), ROSE),
         ("after, drivers who joined before the launch", rate(after[after["driver_id"] <= "d_1060"]), VIOLET),
-        ("after, the three busiest weeks of the twelve", rate(dw[dw["week_start"].isin(busiest)]), VIOLET),
+        ("after, the three weeks with most requests", rate(dw[dw["week_start"].isin(busiest)]), VIOLET),
         ("after, core zones only", rate(after[~after["zone_mode"].isin(OUTER)]), VIOLET)]
 fig, ax = plt.subplots(figsize=(9.2, 3.8))
 for y, (name, value, colour) in enumerate(reversed(cuts)):
@@ -147,8 +148,10 @@ save(fig, "fall_cuts")
 fig, (a1, a2) = plt.subplots(1, 2, figsize=(9.2, 3.6))
 a1.plot(range(12), weekly["peak_accepted"] / weekly["peak_offers"], marker="o", color=VIOLET, lw=2.2)
 a1.set_title("Offers accepted, share", loc="left", fontsize=13)
+a1.set_ylim(0.6, 0.9)
 a2.plot(range(12), weekly["peak_bookings_rs"] / weekly["peak_online_hours"], marker="s", color=ROSE, lw=2.2)
 a2.set_title("Bookings per online hour, Rs", loc="left", fontsize=13)
+a2.set_ylim(220, 330)
 for a in (a1, a2):
     a.axvline(5.5, color=INK, linestyle="--", lw=1.0, alpha=0.6)
     a.set_xticks([0, 6, 8, 11], ["20 Jul", "31 Aug", "14 Sep", "5 Oct"], fontsize=10)

@@ -31,9 +31,9 @@ Post exactly this shape: xxx
 | Word | What it means here |
 |---|---|
 | North star | The one number the scheme exists to move. Here: completed peak trips per enrolled driver online at peak, per week |
-| Leading number | A number that moves before the north star does, which the city team can act on this week |
+| Leading number | A number that moves before the north star does, which the city team can act on this week, for example by moving drivers toward zones where requests per online hour are high |
 | Lagging number | A number that confirms the north star after the trips have happened: a bill, a rating, a departure, a quarter's total |
-| Guardrail | A number that must not get worse while the north star rises, because it catches one way of hitting the north star badly |
+| Guardrail | A number that must not get worse while the north star rises, because it catches one way of hitting the north star badly. Leading and lagging say when a number moves, and a guardrail is a job a number does, so one number can be both |
 | Offer | One rider request shown to one driver; a request one driver declines is offered to the next |
 
 ---
@@ -71,7 +71,8 @@ d) 2, 3, 5 and 6
 A call on a dashboard is only as good as the reason said beside it, because the next person to read
 the dashboard will move a number only if the reason convinces them. On the case data the share of
 offers accepted fell to 0.729 in the launch week itself and stayed there, while gross bookings per
-online hour fell to Rs 271 that week, Rs 261.7 the next and Rs 259.1 the third.
+online hour, the weekly form of number 3, fell to Rs 271 that week, Rs 261.7 the next and Rs 259.1
+the third.
 
 ### Q2. Which reason defends calling number 2 leading and number 3 lagging?
 
@@ -103,7 +104,7 @@ proposes one is expected to name its guardrail in the same breath.
 | G3 | Share of enrolled drivers online at least one peak hour that week |
 | G4 | Total peak online hours across the city |
 
-### Q3. Design. Which guardrail belongs with each north star? One guardrail is left over.
+### Q3. Design. Which guardrail belongs with each north star, with one guardrail left over?
 
 a) 1 with G2, 2 with G1, 3 with G3
 

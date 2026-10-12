@@ -19,9 +19,9 @@ Transition: the five facts.
 
 ```cards
 icon: file-x | eyebrow: Fact 1 | title: No usage condition | body: Accounts and products per household counted whether or not anyone used them | tone: light
-icon: clock | eyebrow: Fact 2 | title: Four years unused | body: A debit card, the largest product, could sit unused in the count for up to four years | tone: light
-icon: eye-off | eyebrow: Fact 3 | title: A silent addition | body: In 2013 remittance accounts were added without telling investors; 0.04 of that year's 0.11 rise | tone: light
-icon: banknote | eyebrow: Fact 4 | title: Simulated funding | body: Staff moved customers' money into new accounts to meet the funding rule for sales credit | tone: light
+icon: clock | eyebrow: Fact 2 | title: Four years unused | body: A debit card, the largest product category, could stay in the count for up to four years with no use | tone: light
+icon: eye-off | eyebrow: Fact 3 | title: A silent addition | body: In 2013 remittance accounts joined the count without investors being told, giving 0.04 of that year's 0.11 rise in the ratio | tone: light
+icon: banknote | eyebrow: Fact 4 | title: Simulated funding | body: Staff moved customers' money into new accounts so the accounts counted as funded and earned sales credit | tone: light
 icon: phone-off | eyebrow: Fact 5 | title: Surveys dodged | body: Staff changed contact details so satisfaction surveys would not reach customers | tone: light
 ```
 
@@ -46,11 +46,11 @@ Transition: the match.
 | 4 | Simulated funding |
 | 5 | Surveys dodged |
 
-a) Numerator: count only accounts the customer used
+a) Numerator: count an account only if the customer used it
 
 b) Denominator: households, with the count printed beside the ratio
 
-c) Window: an account counts only if used inside the period
+c) Window: drop an account once it goes unused for the period
 
 d) Exclusions, dated: every change to what is counted is dated on the definition
 
@@ -112,8 +112,8 @@ Transition: the three numbers and their owners.
 
 ```cards
 icon: car | eyebrow: Driver-operations lead | title: Peak online hours | body: Rewards being online, whatever happens in the hour | tone: light
-icon: map-pin | eyebrow: City head | title: Completed peak trips | body: Rewards trips, including the short ones a driver cherry-picks | tone: light
-icon: wallet | eyebrow: Finance partner | title: Acceptance share | body: Rewards saying yes, including to trips later cancelled | tone: light
+icon: wallet | eyebrow: Finance partner | title: Completed peak trips | body: Rewards trips, including the short ones a driver cherry-picks; finance wants each rupee to buy a trip | tone: light
+icon: megaphone | eyebrow: Marketing lead | title: Share of offers accepted | body: Rewards saying yes, including to trips later cancelled; the number marketing can show riders | tone: light
 ```
 
 Each set writes its number as a complete definition of seven lines: numerator, denominator, window, exclusions, what it does not reward, guardrails, and the gaming note.
@@ -130,8 +130,8 @@ Transition: the attack each owner will mount.
 | Owner | The attack | The part that is true | The line that answers it |
 |---|---|---|---|
 | Driver operations | "Hours are what we control; trips depend on riders" | Supply is driver operations' job | Guardrail: trips per online hour beside the hours |
-| City head | "Trips are the outcome; why guard them?" | Trips are what the city wants | Guardrail: accepted share, which catches cherry-picking |
-| Finance partner | "Acceptance is the cheapest number to check" | It moves first, in the launch week | Gaming note: an accepted trip then cancelled; cancels beside it |
+| Finance partner | "Trips are what the money buys; why guard them?" | Trips are what the city wants | Guardrail: accepted share, which catches cherry-picking |
+| Marketing lead | "Acceptance is what riders feel first" | It moves first, in the launch week | Gaming note: an accepted trip then cancelled; the cancel share beside it |
 
 On the case data the three numbers moved 24 percent up (hours), 3 percent up (trips) and 13 points down (acceptance): three owners, three stories about the same six weeks.
 
@@ -214,7 +214,7 @@ Transition: the dispute, as an interviewer asks it.
 ```
 
 ## SECTION 9: What do you say to the teams who lose?
-*How does a candidate get three teams who each want their own target to one number, and what do they say to the two who lose?*
+*How does a candidate get three teams who each want their own target to one number, and what do they say to the teams who lose?*
 
 ```notes
 LIVE, 15 minutes: the second transcript read in pairs (10), scored (5). The transcript is the [D]
@@ -229,8 +229,8 @@ Transition: the two answers.
 |---|---|---|
 | Clarify | "Which team is right?" | "What is the scheme for, and what does each team need to see to do its job?" |
 | The call | Gives each team its own target | One north star tied to the scheme's goal: completed peak trips per enrolled driver online at peak |
-| The two who lose | Promises to revisit | Shows where their number now lives: hours as an input beside trips per hour, top-up per trip as a guardrail |
-| What would change it | Nothing | "If waits rose while the north star held, I would revisit the floor" |
+| The teams who lose | Promises to revisit | Says none of the three numbers is the target, then places each: hours beside trips per online hour; the enrolled count beside the rate; a total cap and cost per extra trip for finance |
+| What would change it | Nothing | "If the wait by zone rose under the new rule, I would revisit the acceptance floor" |
 
 ```notes
 LIVE, 8 minutes. Score both on the scorecard (trainer/C2_W04_D01_interview_scorecards_TRAINER.md).

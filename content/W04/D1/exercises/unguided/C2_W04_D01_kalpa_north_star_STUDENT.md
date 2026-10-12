@@ -54,13 +54,13 @@ d) The booked value in rupees of every placement in the month, in place of a cou
 ## Which customers belong in the denominator?
 
 A denominator that is defined by the outcome hides the customers who stop buying, which is the
-mistake a retention review is built to catch.
+mistake a review of how many customers keep buying is built to catch.
 
-### Q2. Design. Which denominator keeps the rate honest when some customers stop ordering?
+### Q2. Design. Which denominator still counts a customer who stopped ordering this month, without counting one who left years ago?
 
 a) Customers with a delivered order in that same month, count printed beside it
 
-b) Every customer who has ever placed an order with Kalpa Retail, in any channel
+b) Every customer who has ever ordered from Kalpa Retail, years ago included
 
 c) App sessions in the month, counted across every member of Retail-Plus
 
@@ -125,8 +125,8 @@ d) A window that began in July would leave out the members who joined in August
 ## What does your definition look like on the template?
 
 Write the growth plan's definition on the seven lines below, using your five answers, the three
-guardrails of the morning draft (revenue per active customer, discount share of booked revenue, and
-the return rate) and one gaming note per guardrail. Then post your five letters.
+guardrails Meera's team has proposed (revenue per active customer, discount share of booked revenue,
+and the return rate) and one gaming note per guardrail. Then post your five letters.
 
 | Line | Kalpa's growth plan |
 |---|---|

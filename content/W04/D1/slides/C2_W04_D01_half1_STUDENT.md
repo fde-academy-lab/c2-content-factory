@@ -7,17 +7,17 @@ Header: WEEK 4  ·  DAY 1  ·  UBER, HYDERABAD, AN ILLUSTRATIVE CASE
 ## S1. Ticket: Uber Hyderabad's peak-hour guarantee
 *What did the city team launch, what moved in six weeks, and what does the city head ask?*
 
-**Uber, Hyderabad, the driver app.** From Monday 31 August 2026 an enrolled driver online through a whole peak window (two a day, three hours each) is guaranteed Rs 300 per peak online hour, and Uber tops up the gap. The goal: riders picked up faster.
+**Uber, Hyderabad, the driver app.** From Monday 31 August 2026 an enrolled driver (one signed up for the scheme) online through a whole peak window (two a day, three hours each) is guaranteed Rs 300 per peak online hour: Uber tops up the gap between the driver's trip earnings and that floor. The goal: riders picked up faster.
 
 | Six weeks each side | 20 Jul to 30 Aug | 31 Aug to 11 Oct |
 |---|---|---|
 | Peak online hours; completed peak trips | 118,000; 224,200 | 146,300 (up 24%); 230,900 (up 3%) |
 | Trips per peak online hour | 1.90 | 1.58 |
-| Offers accepted; accepted, then cancelled by the driver | 0.86; 0.04 | 0.73; 0.09 |
-| Online hours with no trip; median rider wait | 0.22; 4.8 min | 0.38; 4.6 min |
-| Rider requests unfulfilled; top-up paid | 0.11; Rs 0 | 0.10; Rs 1.9 crore |
+| Share of offers accepted; share of accepted trips the driver cancelled | 0.86; 0.04 | 0.73; 0.09 |
+| Share of online hours with no trip; median rider wait | 0.22; 4.8 min | 0.38; 4.6 min |
+| Share of rider requests unfulfilled; top-up paid | 0.11; Rs 0 | 0.10; Rs 1.9 crore |
 
-**Data:** `drivers` (1,200, 140 new), `driver_weeks` (hours, offers, accepted, cancels, trips, hours with no trip, bookings, top-up; a declined request is offered again, so it counts offers), `zone_weeks` (rider requests, fulfilled, median wait). **Ask, due Friday:** is it working, what should it pay for, is anyone gaming it? **Caveats:** the monsoon ended mid-window; 140 drivers are new; online means the app is open; three outer zones are thin; drivers can be on two apps.
+**Data:** `drivers` (1,200; 140 joined after the launch), `driver_weeks` (one row per driver per week: hours, offers, accepted, cancels, trips, hours with no trip, bookings as fares riders paid, top-up; a declined request is offered again, so it counts offers), `zone_weeks` (rider requests, fulfilled, median wait). **Ask, due Friday:** is it working, what should it pay for, is anyone gaming it, raising the number without doing what it stands for? **Caveats:** the monsoon ended mid-window; 140 drivers are new; online means the app is open; three outer zones (Shamshabad, Rajendranagar, Patancheru) get few requests; drivers can be on two apps; trip earnings are not in the data.
 
 > *Illustrative case: the company is real, the situation and the data are synthetic, built for this class.*
 
@@ -83,17 +83,17 @@ Transition: where today ends.
 ## S3. Where today ends: one sentence and seven lines
 *What will the room hand the city head when the morning is done?*
 
-By the close of the afternoon's first hour the room writes one sentence with its blanks filled from the data, and a definition of seven lines that three people who lose under it cannot break.
+By the close of the afternoon's first hour the room writes one sentence with its blanks filled from the data, and a definition of seven lines that the three city-team roles, who each lose something under it, cannot break.
 
-> "Pay for ________, guarded by ________ and ________, because paying for hours cost Rs ____ in six weeks for ________."
+> "Judge the scheme by ________, guarded by ________ and ________, because paying for hours cost Rs ____ in six weeks for ________."
 
 ```timeline
 label: Line 1 | title: Numerator | body: What is counted, and when it counts
 label: Line 2 | title: Denominator | body: Per whom, with the count printed beside the rate
 label: Line 3 | title: Window | body: Over which period
-label: Line 4 | title: Exclusions | body: What is left out on purpose
+label: Line 4 | title: Exclusions | body: What is left out on purpose, each change dated
 label: Line 5 | title: What it does not reward | body: The behaviour it refuses to pay for
-label: Line 6 | title: Guardrails | body: The numbers that must not get worse
+label: Line 6 | title: Guardrails | body: Must not get worse: two for riders, one for the budget
 label: Line 7 | title: Gaming note | body: How each guardrail catches a way of hitting the number
 ```
 
@@ -112,7 +112,7 @@ flowchart LR
     Q["<b>What makes a number safe to pay for?</b>"]
     A["<b>Anchor: the canteen token</b><br/>tokens 200 to 400, plates stay 200<br/>(invented numbers)"]
     Q1["<b>What is it for?</b>"]
-    Q2["<b>How could it rise while<br/>riders waited longer?</b>"]
+    Q2["<b>How could it rise while<br/>riders were served no better?</b>"]
     Q3["<b>What stops that?</b>"]
     Q --> A
     Q --> Q1
@@ -135,15 +135,15 @@ Transition: the war game's first round.
 ```
 
 ## S5. War game, round 1: three roles, three numbers
-*Which number does each of the city team's three roles want celebrated, and how could each rise while riders waited longer?*
+*Which number does each of the city team's three roles want the scheme judged on, and how could each look good while riders were served no better?*
 
 ```cards
 icon: car | eyebrow: Driver-operations lead | title: Peak online hours | body: Wants supply at peak, the city's oldest problem; hours rose 24 percent | tone: light
-icon: megaphone | eyebrow: Marketing lead | title: Enrolled drivers | body: The guarantee is the acquisition story; every sign-up counts | tone: light
-icon: wallet | eyebrow: Finance partner | title: Top-up per trip | body: Holds the budget; wants each rupee of top-up to buy a trip | tone: light
+icon: megaphone | eyebrow: Marketing lead | title: Enrolled drivers | body: The guarantee is the story that wins new drivers; every sign-up counts | tone: light
+icon: wallet | eyebrow: Finance partner | title: Top-up per trip | body: Holds the budget; wants each rupee of top-up to buy a trip, so wants this number low | tone: light
 ```
 
-**The proxy test, three questions per number.** Could a team hit this number while riders waited longer? Who controls the count? What does the number deliberately not reward?
+**The proxy test, three questions per number.** A proxy is a number that stands in for the thing wanted. Could a team hit this number while riders were served no better? Who controls the count? What does the number deliberately not reward?
 
 ```notes
 LIVE, 8 minutes, the war game's round 1 (run sheet: trainer/C2_W04_D01_war_game_TRAINER.md).
@@ -169,8 +169,8 @@ Notebook: notebooks/C2_W04_D01_01_twelve_rows_STUDENT.ipynb.
 Transition: the question that opens the chapter.
 ```
 
-## S6. Which number can a driver raise without driving?
-*Before any data, which of four city numbers needs no rider at all to rise?*
+## S6. Which number can rise with no rider at all?
+*Before any data, which of four city numbers can a driver raise without a single rider asking for a trip?*
 
 a) Completed peak trips
 
@@ -199,12 +199,12 @@ number someone is paid for. Point back to the board's first question, what is it
 Transition: a canteen that pays for the easy count.
 ```
 
-## S8. A canteen paid per token: tokens double
+## S8. A canteen pays per token: tokens double
 *How does a proxy drift once people are paid for it?*
 
 ```mermaid
 flowchart LR
-    G["<b>What the canteen wants</b><br/>plates served to hungry diners"] --> P["<b>What it pays for</b><br/>tokens printed"]
+    G["<b>What the canteen wants</b><br/>plates served to hungry diners"] --> P["<b>What it pays servers for</b><br/>tokens handed out"]
     P --> C["<b>What a server can do</b><br/>print two tokens per plate"]
     C --> N["<b>What the number says</b><br/>tokens 200 to 400 a day"]
     C --> D["<b>What diners see</b><br/>plates stay at 200"]
@@ -222,7 +222,7 @@ what can rise with no extra plate served? Take three answers, then show the pict
 invented and the numbers are chosen to be easy. Explorer scene M1 shows the same drift on the city:
 drivers as dots go from driving to idling as the guarantee rises; open it here if it is on the
 projector.
-Transition: six real drivers from the case data.
+Transition: six drivers from the case's own data.
 ```
 
 ## S9. Six drivers, two weeks, counted by hand
@@ -237,7 +237,7 @@ Transition: six real drivers from the case data.
 | E | Shamshabad | 10 → 16 | 18 → 3 | 4 of 14 |
 | F | Rajendranagar | 10 → 14 | 17 → 2 | 3 of 12 |
 
-The before week begins 10 August 2026 and the after week 21 September 2026. These are twelve real rows of `driver_weeks`.
+The before week begins 10 August 2026 and the after week 21 September 2026. These are twelve rows of the case's own `driver_weeks`; E and F drive in two of the three outer zones, where riders are few.
 
 ```notes
 LIVE, 6 minutes, StatQuest: say each number aloud. Add the hours column for the before week (60)
@@ -289,7 +289,7 @@ Transition: a company that paid for a number with no usage condition.
 ## S12. Wells Fargo paid for accounts nobody used
 *What happens when a company pays its people for a number that does not require the thing it stands for?*
 
-**Wells Fargo's cross-sell metric** was the number of accounts and products per retail bank household. It had no usage condition: an unused debit card, the largest product in it, could stay in the count for up to four years. Staff opened accounts customers had not asked for, moved customers' money into new accounts to meet funding rules ("simulated funding"), and changed contact details so customers would miss satisfaction surveys.
+**Wells Fargo's cross-sell metric** was the number of accounts and products per retail bank household. It had no usage condition: an unused debit card, the largest product in it, could stay in the count for up to four years. Staff opened accounts customers had not asked for, moved customers' money into new accounts so the accounts would count as funded ("simulated funding"), and changed contact details so customers would not receive satisfaction surveys.
 
 ```stats
 value: 185 | label: USD million, 2016 | note: penalties, after about 1.5 million deposit and 565,000 card accounts may not have been authorised
@@ -297,7 +297,7 @@ value: 3 | label: USD billion, 2020 | note: settlement with the SEC and the Depa
 value: 2016 | label: sales goals ended | note: the bank dropped product sales goals for its employees
 ```
 
-Sources: the CFPB release of 8 September 2016, the SEC release of 21 February 2020 and the SEC order, Release 34-88257, each checked 12 October 2026.
+Sources: the release of the US Consumer Financial Protection Bureau (CFPB) of 8 September 2016, the release of the US Securities and Exchange Commission (SEC) of 21 February 2020 and the SEC order, Release 34-88257, each checked 12 October 2026.
 
 ```notes
 LIVE, 8 minutes. Tell it in order: the number (accounts per household), the missing condition
@@ -320,7 +320,7 @@ flowchart LR
     Q["<b>What makes a number safe to pay for?</b>"]
     A["<b>Anchor: the canteen token</b><br/>tokens doubled, plates did not"]
     Q1["<b>What is it for?</b><br/>riders picked up faster;<br/>hours need no rider"]
-    Q2["<b>How could it rise while<br/>riders waited longer?</b>"]
+    Q2["<b>How could it rise while<br/>riders were served no better?</b>"]
     Q3["<b>What stops that?</b>"]
     P1["<b>Pitfall: no usage condition</b><br/>Wells Fargo's unused accounts"]
     Q --> A
@@ -361,7 +361,7 @@ Brilliant (the question first), ByteByteGo (the board grows at the close).
 Transition: the first question of the chapter.
 ```
 
-## S14. Which column would show the fall is demand?
+## S14. Which column would show riders asked for less?
 *If riders simply asked for fewer trips, where would the data show it?*
 
 a) `peak_online_hours` in `driver_weeks`
@@ -401,7 +401,7 @@ Transition: twelve weeks, one week at a time.
 
 ![Hours rose at the launch while trips per hour fell and stayed down, twelve weeks](../whiteboards/C2_W04_D01_drift_STUDENT.png)
 
-Before the launch, trips per hour wandered between 1.88 and 1.93. In the launch week it read 1.64, then held between 1.55 and 1.59 for five weeks, while hours rose from about 20,000 a week to about 24,000.
+Before the launch, trips per hour wandered between 1.88 and 1.93. In the launch week it read 1.64, then held between 1.55 and 1.59 for five weeks, while hours rose from about 20,000 a week to about 24,000. The two lines use two different scales, so the point where they cross means nothing.
 
 ```notes
 LIVE, 3 minutes. The animated version, whiteboards/C2_W04_D01_drift_STUDENT.gif, draws the twelve
@@ -412,7 +412,7 @@ Transition: the groupby that produced these totals.
 ```
 
 ## S17. One groupby gives the city's totals
-*What is the smallest code that turns 12,860 driver-weeks into the ticket's numbers?*
+*What is the smallest code that turns 12,860 driver-weeks, one row for every driver on the app each week, into the ticket's numbers?*
 
 ```python
 dw["window"] = dw["week_start"].lt("2026-08-31").map({True: "before", False: "after"})
@@ -425,7 +425,7 @@ city["trips_per_hour"] = city["peak_trips"] / city["peak_online_hours"]
 | Before | 118,000 | 224,200 | 1.90 | 0.863 | 0.22 |
 | After | 146,300 | 230,900 | 1.58 | 0.730 | 0.38 |
 
-The rate is a ratio of two sums: every trip over every hour.
+The rate is a ratio of two sums: every trip over every hour. `.lt(...)` asks whether a week starts before the launch, and `.map` turns True and False into before and after; the notebook adds the two shares the same way, sum first, then divide.
 
 ```notes
 LIVE, 6 minutes, Krish Naik: run the notebook's totals cell line by line and say what each line is
@@ -452,13 +452,13 @@ Transition: the answer, and why it is wrong.
 ## S19. Answer: 1.71, which hides two-fifths of the fall
 *Why does averaging each week's rate understate the fall, and what is the fix?*
 
-**Answer: b.** The average of rates prints 1.71 after the launch, against 1.58 from the sums, so it hides two-fifths of the fall (0.19 of 0.32). It gives a 10-hour driver-week the same weight as a 42-hour one, and the drivers who sat online longest are the ones whose rate fell most.
+**Answer: b.** The average of rates prints 1.71 after the launch, against 1.58 from the sums. The true fall is 0.32, from 1.90 to 1.58; the average shows 0.19 of it and hides 0.13, about two-fifths. It gives a 42-hour week the same weight as a 10-hour one, so the long, slow weeks of the drivers online longest count no more than anyone's short, busy ones.
 
 ```mermaid
 flowchart LR
-    X["<b>Driver X</b><br/>2.0 trips an hour, 10 hours<br/>20 trips"] --> S["<b>Ratio of sums</b><br/>21 trips / 11 hours = 1.91"]
-    Y["<b>Driver Y</b><br/>1.0 trip an hour, 1 hour<br/>1 trip"] --> S
-    X --> M["<b>Average of rates</b><br/>(2.0 + 1.0) / 2 = 1.5"]
+    X["<b>Driver X</b><br/>2.0 trips an hour<br/>10 hours, 20 trips"] --> S["<b>Ratio of sums</b><br/>40 trips / 50 hours<br/>= 0.80"]
+    Y["<b>Driver Y</b><br/>0.5 trips an hour<br/>40 hours, 20 trips"] --> S
+    X --> M["<b>Average of rates</b><br/>(2.0 + 0.5) / 2 = 1.25"]
     Y --> M
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
@@ -466,7 +466,7 @@ flowchart LR
     class M bad
 ```
 
-The two drivers are invented. **The decision it would mislead:** a fall that looks a third smaller reads as noise, and the scheme is extended. **The check:** recompute from the sums. **The fix:** trips per peak online hour as a ratio of sums, the denominator named.
+The drivers are invented: Y's 40 slow hours count as one week, like X's 10, so the average reads 1.25 against a true 0.80, too high, as the city's 1.71 is. **The decision it would mislead:** a fall two-fifths smaller reads as noise, and the scheme is extended. **The check:** recompute from the sums. **The fix:** a ratio of sums, its denominator named.
 
 ```notes
 LIVE, 6 minutes. Work the invented pair aloud first, then return to 1.71 against 1.58. Week 1 met
@@ -477,7 +477,7 @@ Transition: companies that write their denominators down.
 ## S20. Swiggy writes each denominator down
 *What does a complete definition look like in a public filing?*
 
-| Swiggy term, as filed | Numerator | Denominator or unit | Window |
+| Swiggy term, as filed | What is counted | Per what | Window |
 |---|---|---|---|
 | Average Monthly Transacting Users (MTU) | Unique users with at least one completed order on the app or website | per month | the month, averaged over the period |
 | Platform frequency | Completed orders | per transacting user | the month, averaged over the period |
@@ -492,8 +492,8 @@ https://www.bseindia.com/xml-data/corpfiling/AttachHis/2495f39b-e1d1-4018-8f69-6
 Transition: one crowd, counted three ways.
 ```
 
-## S21. Delhi Metro counted one crowd three ways
-*How can one crowd give three numbers, none of them wrong?*
+## S21. Delhi Metro counts its crowd in three units
+*How can one network's crowd give three numbers, none of them wrong?*
 
 ```stats
 value: 27 lakh | label: riders a day, February 2018 | note: gate count: one entry and one exit, one rider
@@ -501,7 +501,7 @@ value: 45,35,932 | label: line utilisation, 29 May 2018 | note: every line ridde
 value: 82,44,903 | label: boardings, 17 September 2026 | note: a record day, in a third unit
 ```
 
-In 2018 DMRC began counting "line utilisation": a rider from Noida City Centre to HUDA City Centre on three lines counts three, where the gate count counts one (PTI). In 2026 the figures arrive as 64.06 lakh average daily "journeys" (The Tribune) and the record "boardings" above (Republic World); all checked 12 October 2026. A definition can move a number without moving the crowd.
+In 2018 the Delhi Metro Rail Corporation (DMRC) began counting "line utilisation": a rider from Noida City Centre to HUDA City Centre who changes across three lines counts three times, where the gate count counts one rider (PTI, the Press Trust of India). In 2026 the figures arrive as 64.06 lakh average daily "journeys" (The Tribune) and a record day of "boardings" (Republic World), each a different unit again; all checked 12 October 2026. A definition can move a number without moving the crowd.
 
 ```notes
 LIVE, 3 minutes. The parallel is on the board already: offers and requests are two units for the
@@ -531,12 +531,12 @@ a number before the reveal.
 Transition: the answer and the picture.
 ```
 
-## S23. Answer: 180 drivers, 15 percent, sat idle online
+## S23. Answer: 180 drivers, more hours, fewer trips
 *Who are they, what did their hours and trips do, and where were they online?*
 
 ![After the launch, every driver-week by hours and trips; the idle tail sits far right and low](../whiteboards/C2_W04_D01_idle_tail_STUDENT.png)
 
-**Answer: c.** 180 drivers, 15 percent: the **idle tail**. Hours 2.1 times, trips down 12 percent, 72 percent of the new hours in the outer zones. The six held two of them, a third of the sample against 15 percent city-wide.
+**Answer: c.** 180 drivers, 15 percent of the city: the **idle tail**, named for the long online hours in which they completed few trips. Their hours went to 2.1 times their level before the launch while their trips fell 12 percent, and 72 percent of their new hours were in the outer zones. Each dot is one driver-week; E's and F's weeks are the small group at the bottom left, the most extreme of the 180, which is why the six fall further than the city.
 
 ```notes
 LIVE, 6 minutes. Point at the cluster to the right of 30 hours with 25 to 35 trips: weeks online in
@@ -555,7 +555,7 @@ Transition: the chapter's close.
 flowchart LR
     Q["<b>What makes a number safe to pay for?</b>"]
     Q1["<b>What is it for?</b><br/>riders picked up faster"]
-    Q2["<b>How could it rise while<br/>riders waited longer?</b><br/>online but idle, in thin zones:<br/>180 drivers, 15 percent"]
+    Q2["<b>How could it rise while<br/>riders were served no better?</b><br/>online but idle, in thin zones:<br/>180 drivers, 15 percent"]
     Q3["<b>What stops that?</b>"]
     P1["<b>Pitfall: no usage condition</b><br/>Wells Fargo"]
     P2["<b>Pitfall: the unit moves the number</b><br/>Delhi Metro; offers and requests"]
@@ -597,13 +597,13 @@ Transition: the question that opens the chapter.
 ```
 
 ## S25. Which number would you pay drivers for?
-*If the scheme paid for one number, which would make the most drivers drive?*
+*Which rule would make drivers drive and serve riders, without paying for idling or for picking only easy trips?*
 
 a) Peak online hours, as now
 
 b) Completed peak trips, nothing beside it
 
-c) Completed peak trips, with an acceptance floor beside it
+c) Completed peak trips, with a minimum share of offers accepted
 
 d) Enrolled drivers
 
@@ -616,7 +616,7 @@ Transition: the answer.
 ## S26. Answer: trips, with a floor on acceptance
 *Why does each of the other three fail?*
 
-**Answer: c.** Hours pay for an open app, which the idle tail showed. Trips alone let a driver accept only short or nearby trips and decline the rest, which the share of offers accepted catches. Enrolled drivers rise with every sign-up whether or not anyone drives. Trips with an acceptance floor pay for the service and catch the cherry-picking.
+**Answer: c.** Hours pay for an open app, which the idle tail showed. Trips alone let a driver accept only short or nearby trips and decline the rest, which the share of offers accepted catches. Enrolled drivers rise with every sign-up whether or not anyone drives. Trips with an acceptance floor, a minimum share of offers accepted, pay for the service and catch the cherry-picking.
 
 ```notes
 LIVE, 3 minutes. Take each wrong letter in turn and say the gaming it invites; the room should hear
@@ -671,7 +671,8 @@ Transition: the answer.
 
 ```notes
 LIVE, 4 minutes. Say the behaviour line clearly, because the finance partner and every interviewer
-will ask it: a saving that assumes nobody changes is a floor on the cost, never a forecast. Round 3
+will ask it: a saving that assumes nobody changes is the most the redesign could save, and an honest
+saving says how drivers respond. Round 3
 this afternoon prices the saving under a stated range.
 Transition: the tree that replaces the single number.
 ```
@@ -684,7 +685,7 @@ flowchart TD
     N["<b>North star</b><br/>completed peak trips per enrolled<br/>driver online at peak, per week"]
     G1["<b>Guardrail 1</b><br/>offers accepted over offers shown,<br/>at or above a floor"]
     G2["<b>Guardrail 2</b><br/>median rider wait at peak"]
-    G3["<b>Guardrail 3</b><br/>top-up per completed trip"]
+    G3["<b>Guardrail 3, the budget</b><br/>top-up per completed trip"]
     L1["<b>Input</b><br/>enrolled drivers online<br/>in the first peak hour"]
     L2["<b>Input</b><br/>rider requests per online<br/>hour, by zone"]
     N --- G1
@@ -694,13 +695,13 @@ flowchart TD
     L2 -.-> N
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef kalpa fill:#FFF7E6,stroke:#C98A00,color:#5C3D00
+    classDef input fill:#FFFFFF,stroke:#5B3FD6,color:#1A0F5C,stroke-dasharray:4 3
     class N lit
     class G1,G2,G3 known
-    class L1,L2 kalpa
+    class L1,L2 input
 ```
 
-**The north star** names the outcome the scheme exists for. **Guardrails** name the ways of hitting it that hurt riders or the budget. **Inputs** are what the city team can move this week before the north star catches up. Read the north star and its guardrails as a **seesaw**: when the north star rises and a guardrail drops, the rise was bought.
+**The north star** names the outcome the scheme exists for. **Guardrails** name the ways of hitting it that hurt riders (guardrails 1 and 2) or the budget (guardrail 3). **Inputs** are what the city team can move this week, such as drivers online in the first hour of each peak window, before the north star catches up. Read the north star and its guardrails as a **seesaw**: if the north star rises while a guardrail moves the wrong way (fewer offers accepted, a longer wait, more top-up per trip), riders or the budget paid for the rise.
 
 ```notes
 LIVE, 7 minutes, 3Blue1Brown: build it on the board one region at a time. First the north star alone,
@@ -716,7 +717,7 @@ Transition: which of these moves first.
 
 ![Weekly share of offers accepted beside bookings per online hour, twelve weeks](../whiteboards/C2_W04_D01_lead_STUDENT.png)
 
-A **leading** input moves before the number the plan is judged on; a **lagging** one confirms it later. Acceptance fell to its new level in the launch week (0.729); bookings per online hour fell to Rs 271 that week and kept falling to Rs 259 by the third. A city team watching acceptance would have seen the gaming in week one.
+**Leading** and **lagging** say when a number moves: a leading number moves before the north star, a lagging one confirms it later. That is a separate question from the job a number does, so acceptance is guardrail 1 and also a leading number. It fell to its new level in the launch week (0.729), while bookings per online hour, the fares riders paid per hour, fell to Rs 271 that week and kept falling to Rs 259.1 by the third. A city team watching acceptance would have seen the gaming in week one.
 
 ```notes
 LIVE, 4 minutes. Explorer scene M4 asks which line turns first; use it if it is on the projector.
@@ -730,13 +731,13 @@ Transition: the definition, line by line.
 
 | Line | The redesign's definition |
 |---|---|
-| Numerator | Trips completed inside the peak windows, counted per paying rider, as Uber's own filing counts trips |
+| Numerator | Trips completed inside the peak windows, one per paying rider: Uber's annual report counts an UberX Share ride with three paying riders as three trips |
 | Denominator | Enrolled drivers online at least one peak hour that week, the count printed beside the rate |
 | Window | The calendar week |
 | Exclusions | Trips cancelled by either side, test accounts, trips outside the windows |
-| What it does not reward | Hours online, offers declined, a shrinking enrolled base |
-| Guardrails | Accepted share at or above a floor the city sets; median rider wait; top-up per completed trip |
-| Gaming note | Each guardrail names the way of hitting the north star it catches |
+| What it does not reward | Hours online; offers declined; a shrinking enrolled base, since fewer drivers in the count would raise the rate with no extra trip |
+| Guardrails | For riders: accepted share at or above a floor the city sets, and the median rider wait. For the budget: top-up per completed trip |
+| Gaming note | Guardrail 1 catches declining and cherry-picking; guardrail 2, supply that stops serving riders; guardrail 3, a top-up that runs away from the trips it pays for |
 
 On the data, the north star read 35.76 trips per online driver-week before and 35.89 after: hours rose 24 percent and the number the scheme exists for barely moved.
 
@@ -753,7 +754,7 @@ Transition: who controls when the clock starts.
 ## S33. VA let the measured set the clock's start
 *What happens when the people being measured control where a window begins?*
 
-The US Department of Veterans Affairs measured patient wait from a "desired date" that schedulers entered. At its Phoenix facility, of 79 staff interviewed, 30 said they had used the wrong desired date, producing false zero-day waits, and 11 said they "fixed" waits over 14 days by rebooking with a later desired date. After the Inspector General's interim report, the 14-day goal was removed from employee performance contracts (VA OIG report 14-02603-267, August 2014, checked 12 October 2026).
+The US Department of Veterans Affairs measured patient wait from a "desired date" that schedulers entered. At its Phoenix facility, of 79 staff interviewed, 30 said they had used the wrong desired date, producing false zero-day waits, and 11 said they "fixed" waits longer than the 14-day goal by rebooking with a later desired date. After the interim report of the VA's Office of Inspector General (OIG), the 14-day goal was removed from employee performance contracts (VA OIG report 14-02603-267, August 2014, checked 12 October 2026).
 
 **The parallel.** A driver decides when the app is open, so the driver sets the start of every online hour. A definition that pays per online hour hands the clock to the person it pays.
 
@@ -786,14 +787,14 @@ Transition: the answer and the other cuts.
 
 ![Trips per peak online hour after the launch under each cut the data can make](../whiteboards/C2_W04_D01_fall_cuts_STUDENT.png)
 
-**Answer: c.** Without the new drivers the rate is still 1.58. In the three busiest weeks of the twelve, the first three after the launch, it was already 1.60, which bounds the monsoon argument. In the core zones it fell from 1.90 to 1.79, so the fall sits mostly in the thin outer zones. Three doubts stay open: drivers on two apps (Uber cannot see the other app, and the data holds weeks, not hours), who chose to enrol (every driver in these tables enrolled), and cause (only a test of the redesign settles it).
+**Answer: c.** Without the new drivers the rate is still 1.58. In the three weeks with the most rider requests, the first three after the launch and still in the rains, it already read 1.60, so the monsoon's end cannot explain the fall. In the nine core zones it fell from 1.90 to 1.79, so the fall sits mostly in the three outer zones. Three doubts stay open: drivers on two apps (the data holds weekly totals, so it cannot show a decline made because another app's trip was under way), who chose to enrol (every driver here enrolled, so no group stayed out to compare with), and cause (only a test of the redesign settles it).
 
 ```notes
 LIVE, 8 minutes. Walk the six caveats in order, each with the fact that would settle it: data quality
 (online means the app is open; hours with no trip rose from 0.22 to 0.38), mix (new drivers: 1.58
-without them), seasonality (the busiest weeks: 1.60; last year's weeks are not in the data, so the
-caveat narrows and stays partly open), interference (needs hourly data and the other app), selection
-(needs the city's full driver list), cause (the tentative faculty block designs the test).
+without them), seasonality (the three weeks with most requests: 1.60; last year's weeks are not in the data, so the
+caveat narrows and stays partly open), drivers on two apps (needs hourly data and the other app), who chose to
+enrol (needs the city's full driver list), cause (the tentative faculty block designs the test).
 Transition: the finished board.
 ```
 
@@ -804,13 +805,13 @@ Transition: the finished board.
 flowchart LR
     Q["<b>Safe to pay for?</b>"]
     Q1["<b>What is it for?</b><br/>riders picked up faster"]
-    Q2["<b>How could it rise badly?</b><br/>online but idle, thin zones"]
+    Q2["<b>Can it rise badly?</b><br/>idle hours, thin zones"]
     Q3["<b>What stops that?</b><br/>north star and guardrails"]
-    S1["<b>The tree</b>"]
-    S2["<b>The seesaw</b>"]
-    S3["<b>The window's start</b>"]
+    S1["<b>The tree</b><br/>north star and inputs"]
+    S2["<b>The seesaw</b><br/>star up, guardrail down"]
+    S3["<b>The window's start</b><br/>who starts the clock"]
     P1["<b>No usage condition</b><br/>Wells Fargo"]
-    P2["<b>The unit moves it</b><br/>Delhi Metro"]
+    P2["<b>Units move numbers</b><br/>Delhi Metro"]
     P3["<b>The measured set the start</b><br/>VA"]
     Q --> Q1
     Q --> Q2
@@ -829,7 +830,7 @@ flowchart LR
     class P1,P2,P3 bad
 ```
 
-**The crux.** Pay for completed peak trips per enrolled driver online at peak, guarded by acceptance, the rider's wait and the top-up per trip.
+**The crux.** Pay for completed peak trips per enrolled driver online at peak, guarded for riders by acceptance and the wait, and for the budget by the top-up per trip.
 
 ```notes
 LIVE, 2 minutes. The board is finished; it is panel one of the cheat sheet. Read the crux line: paying
@@ -843,7 +844,7 @@ Transition: half two opens on round 3 of the war game.
 *What runs after lunch, and in what order?*
 
 ```timeline
-label: 30 minutes | title: War game, round 3 | body: Each group writes the redesign's definition and prices the saving; the three roles attack it
+label: 30 minutes | title: War game, round 3 | body: Round 2 was the morning's chapters; now each group writes and prices the redesign, and the roles attack it
 label: 15 minutes | title: The interview room | body: The transcript read in pairs and scored, then the AI-company variant
 label: 15 minutes | title: Kahoot and close | body: Eight items, one returning from Week 2 Friday
 label: 120 minutes | title: IITGN faculty block (tentative) | body: Designing the test of the redesigned scheme

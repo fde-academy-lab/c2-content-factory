@@ -22,7 +22,7 @@ Transition: what each group hands in.
 
 ```mermaid
 flowchart LR
-    W["<b>Write, 14 minutes</b><br/>the seven lines, two guardrails<br/>or more, the gaming note"] --> P["<b>Price</b><br/>the saving, with its<br/>assumption stated"]
+    W["<b>Write, 14 minutes</b><br/>the seven lines, three guardrails<br/>(two for riders), the gaming note"] --> P["<b>Price</b><br/>the saving, with its<br/>assumption stated"]
     P --> D["<b>Defend, 10 minutes</b><br/>each role attacks once;<br/>a line must answer"]
     D --> S["<b>Score, 3 minutes</b><br/>answered, conceded<br/>or lost"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
@@ -45,23 +45,25 @@ Transition: the three attacks.
 *What will each role say against the redesign, and which part of it holds?*
 
 ```cards
-icon: car | eyebrow: Driver-operations lead | title: "Drivers will log off" | body: True for the 180 who sat idle online; the other 880 drivers held 1.90 trips an hour before and after the launch | tone: light
-icon: megaphone | eyebrow: Marketing lead | title: "Changing terms looks like bait" | body: True that the floor was the promise; the redesign keeps the floor for drivers who accept | tone: light
-icon: wallet | eyebrow: Finance partner | title: "The fall is the monsoon's end" | body: Partly: the season moves requests, yet the three busiest weeks already read 1.60 | tone: light
+icon: car | eyebrow: Driver-operations lead | title: "Drivers will log off" | body: True for the 180 in the idle tail; the other 880 who joined before the launch held 1.90 trips an hour, and the wait by zone shows any loss | tone: light
+icon: megaphone | eyebrow: Marketing lead | title: "Changing terms looks like bait" | body: True that the floor was the promise; the redesign keeps it for drivers who accept at least half their offers | tone: light
+icon: wallet | eyebrow: Finance partner | title: "The fall is the monsoon's end" | body: Partly: the season moves requests, but the rate stepped from 1.88 to 1.64 in the launch week itself | tone: light
 ```
 
 Each attack is partly right by design, and a defence names the true part before answering the rest.
 
 ```notes
 LIVE, 3 minutes. Read the three cards in the roles' voices. The numbers on the cards come from the
-data: the 880 drivers outside the idle tail who joined before the launch made 1.90 trips an hour in
-both windows; the three weeks with the most rider requests already read 1.60. The top-up budget is
-finance's number, so finance decides what the floor may cost.
+data: 880 is the 1,060 drivers there before the launch less the 180 in the idle tail, and they made
+1.90 trips an hour in both windows; the rate stepped down in the launch week while weekly requests
+stayed between about 41,000 and 44,000, and the three weeks with the most requests already read
+1.60. If the 180 quit, their 33,440 trips would need about 17,600 more hours from the others. The
+top-up budget is finance's number, so finance decides what the floor may cost.
 Transition: which line answers the hardest attack.
 ```
 
 ## S40. Which line answers "drivers will log off"?
-*If drivers log off and real supply falls, which line of the definition would show it first?*
+*If drivers log off and riders wait longer, which line tells the city head that riders are worse off?*
 
 a) The numerator: trips completed in the peak windows
 
@@ -82,7 +84,7 @@ Transition: the answer.
 
 ![Weekly share of offers accepted after the launch, idle-tail weeks against every other week](../whiteboards/C2_W04_D01_acceptance_gap_STUDENT.png)
 
-**Answer: c.** If drivers who serve riders log off, riders wait longer, and the median wait is the line that moves for riders; the shrinking denominator shows it too. The acceptance floor sits in the gap: no idle-tail week accepted more than 0.46 of its offers, and no other week online accepted fewer than 0.78.
+**Answer: c.** If drivers who serve riders log off, riders wait longer, and the wait, read zone by zone, is the line that moves for riders; the shrinking count of drivers shows who left, while the north star would rise. The floor sits in the gap: no idle-tail week accepted more than 0.46 of its offers and no other week fewer than 0.78; counting an accepted trip later cancelled as declined moves the edges to 0.43 and 0.67, and half still sits between.
 
 ```notes
 LIVE, 3 minutes. The floor is the city's call; the data says a floor anywhere between the two numbers
@@ -101,7 +103,7 @@ value: Rs 58 to 92.7 lakh | label: the redesign's saving | note: if a half to a 
 value: Rs 82.3 | label: top-up per completed trip | note: after the launch; guardrail 3 watches it
 ```
 
-**The assumption, stated.** Some idle drivers would start accepting enough to qualify under a rule that pays for trips, so between a fifth and a half of the idle tail's top-up would still be paid. **What would settle it:** the test of the redesign that this afternoon's tentative faculty block designs. Rs 74 lakh, the top-up the other driver-weeks received, is what the redesign would have paid over these six weeks if every driver had behaved the same: a floor on its cost, never a forecast.
+**The rule priced.** The Rs 300 floor stays, and a driver-week earns its top-up only if the driver accepted at least half the offers shown, an accepted trip later cancelled counting as declined. **The assumption, stated.** Some idle drivers would start accepting enough to qualify, so between a fifth and a half of the idle tail's top-up would still be paid. **What would settle it:** the test of the redesign that this afternoon's tentative faculty block designs. Rs 74 lakh, what the other driver-weeks received, is what the rule would have paid had every driver behaved the same, so it is the least the redesign would cost.
 
 ```notes
 LIVE, 3 minutes. Groups compare their own saving with the range. A group that wrote "saves Rs 1.16
@@ -110,12 +112,12 @@ rule.
 Transition: two companies whose north stars had to match what they were trying to do.
 ```
 
-## S43. Maxxsaver: a success orders per month would miss
+## S43. Maxxsaver: fewer orders per user, bigger baskets
 *What happens when a north star counts the wrong thing for what the business is trying to do?*
 
-**Swiggy Instamart's Maxxsaver** unlocks extra discounts once a cart passes a threshold. In the quarter to 30 June 2025 over 28 percent of Swiggy's monthly transacting users used it, Instamart's average order value rose 16 percent quarter on quarter to Rs 612, and cart consolidation led by Maxxsaver lowered order growth (Swiggy's Q1 FY26 shareholder letter, checked 12 October 2026). Orders per month would have read that success as a fall.
+**Swiggy Instamart's Maxxsaver** unlocks extra discounts once a cart passes a threshold. In the quarter to 30 June 2025 over 28 percent of its monthly transacting users used it, Instamart's average order value rose 16 percent quarter on quarter to Rs 612, and Swiggy wrote that some cart consolidation led by Maxxsaver (customers putting more into fewer, larger orders), with some low-value orders let go, lowered order growth (Q1 FY26 shareholder letter, checked 12 October 2026). Orders per user would have read that success as a fall.
 
-**Eternal** defines net order value as GOV minus discounts (its Q1 FY26 letter), and in its Q1 FY27 letter stopped disclosing GOV "as NOV more accurately reflects underlying performance"; both checked 12 October 2026. The gross figure let discounts buy growth, so the headline moved to the net one.
+**Eternal**, whose businesses include Zomato and Blinkit, defines net order value (NOV) as gross order value (GOV), what orders were worth, minus discounts (its Q1 FY26 letter), and in its Q1 FY27 letter stopped disclosing GOV "as NOV more accurately reflects underlying performance"; both checked 12 October 2026.
 
 ```notes
 LIVE, 4 minutes. The parallel: the redesign pays for what the city wants (trips) and names what it
@@ -129,7 +131,7 @@ Transition: the interview room.
 ```
 
 ## SECTION 5: What does the interviewer hear?
-*How would you measure the success of a new feature, and an AI coding assistant without rewarding deleted suggestions, when a screen asks it cold?*
+*How would you measure the success of a new feature, and an AI coding assistant without rewarding deleted suggestions, when an interviewer asks it cold?*
 
 ```notes
 LIVE, 15 minutes: the transcript read in pairs and scored (9), the AI-company variant (4), the
@@ -145,14 +147,14 @@ Transition: the question as a screen asks it.
 
 > "Uber launched a peak-hour earnings guarantee for drivers in one city six weeks ago. How would you measure whether it is a success?"
 
-**Clarify before any number.** What was the scheme meant to change: more drivers online, or riders picked up faster? Who is in it, and who pays? What would count as harm? Which window, against which baseline?
+**Clarify before any number.** What was the scheme meant to change: more drivers online, or riders picked up faster? Who is in it, and who pays? What would count as harm? Which decision rides on the answer, and against which baseline?
 
 ```mermaid
 flowchart LR
     G["<b>Goal</b><br/>riders picked up faster"] --> N["<b>North star</b><br/>numerator, denominator,<br/>window"]
     N --> R["<b>Guardrails</b><br/>what must not<br/>get worse"]
     R --> L["<b>Leading input</b><br/>what moves first"]
-    L --> T["<b>The test</b><br/>how cause is settled"]
+    L --> T["<b>The test</b><br/>zones as the unit"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class G lit
@@ -173,11 +175,11 @@ Transition: two answers side by side.
 
 | Beat | Weak answer | Hire-grade answer |
 |---|---|---|
-| Clarify | Starts on metrics at once | Asks what the scheme is for (riders picked up faster) and what would count as harm |
-| Structure | Lists hours, satisfaction, a survey | Goal, one north star with numerator, denominator and window, three guardrails, a leading input, the test |
-| The trap | "Hours are up 24 percent, so it works" | Hours up 24, trips up 3: trips per online hour fell from 1.90 to 1.58 while requests rose |
-| Segment | None | 180 drivers doubled their hours on fewer trips, mostly in thin outer zones |
-| Decision and cost | "Roll it out to more cities" | Don't extend; 61 percent of Rs 1.9 crore paid declining weeks; redesign to pay for trips, and test it first |
+| Clarify | Starts on metrics at once | Asks what the scheme is for, what counts as harm, which decision rides on it and against what |
+| Structure | Lists hours, satisfaction, a survey | Goal, one north star with its lines, three guardrails, a leading input, the test by zone |
+| The trap | "Hours are up 24 percent, so it works" | Trips per online hour fell from 1.90 to 1.58, stepping down in the launch week, and the north star barely moved |
+| Segment and zones | None | 180 drivers added hours on fewer trips, mostly in the outer zones, where waits fell 6.6 to 5.95 minutes at about Rs 46,000 per extra trip |
+| Decision and cost | "Roll it out to more cities" | Hold it: Rs 2,836 per extra trip; floor only for weeks accepting half their offers; test by zone |
 
 ```notes
 LIVE, 4 minutes. Pairs score both answers on the scorecard's seven criteria, 0 to 2 each, then
@@ -192,8 +194,8 @@ Transition: the follow-ups an interviewer pushes on.
 | Follow-up | The hire-grade line |
 |---|---|
 | "Online hours rose 24 percent; what do you check before you celebrate?" | Trips per online hour and the rider's wait: hours rose 24 percent and trips 3, so the rate fell from 1.90 to 1.58 and waits barely moved |
-| "Which guardrail would driver operations fight, and why are they partly right?" | The acceptance floor: some declines are fair, so set the floor in the gap the data shows, below 0.78 and above 0.46 |
-| "The drivers control when they log in; what happens to your number?" | The numerator needs a rider's request, so logging in cannot raise it; print the driver count beside the rate so logging off cannot flatter it |
+| "Which guardrail would driver operations fight, and why are they partly right?" | The acceptance floor: some declines are fair, so set it in the gap the data shows, above 0.46 and below 0.78, and test two levels, since on a real city the groups overlap |
+| "The drivers control when they log in; what happens to your number?" | Logging in cannot raise it, since each trip needs a rider's request; logging off can, so print the driver count beside the rate |
 
 ```notes
 LIVE, 3 minutes. Read each follow-up in the interviewer's voice; the pair that answered cold tries
@@ -207,13 +209,14 @@ Transition: the same question at an AI company.
 | Line | Uber's guarantee | An AI coding assistant |
 |---|---|---|
 | The gamed proxy | Peak online hours | Suggestions accepted |
-| North star | Completed peak trips per enrolled driver online at peak, per week | Suggested code still present at the next commit, per active developer, per week |
-| Guardrails | Accepted share of offers; rider wait; top-up per trip | Build failures; revert rate on suggested code; time to merge |
-| Leading input | Acceptance in the launch week | Acceptance rate, kept as an input and never the target |
-| The gaming | Stay online, decline the offers | Accept short suggestions, then delete them |
-| How it is settled | A test of the redesign | A holdout of developers without the assistant |
+| North star | Completed peak trips per enrolled driver online at peak, per week | Suggested code still present at the next commit, per developer with a seat, per week |
+| Read beside it | The rider's wait, zone by zone | Time from first commit to merge |
+| Guardrails | Accepted share of offers; rider wait; top-up per trip | Build failures and reverts on suggested code; security findings; rewritten lines |
+| Leading input | Rider requests per online hour, by zone | Acceptance, an input nobody is paid on |
+| The gaming | Stay online, decline the offers | Fewer, safer suggestions shown; short ones accepted, then deleted |
+| How it is settled | A test with zones as the unit | A test with teams as the unit, old rule against new |
 
-Programme-written: the variant names no company and no figure.
+Programme-written: the variant names no company and no figure. A commit is a saved change to the code; time to merge is how long a change waits before it joins the main code.
 
 ```notes
 LIVE, 4 minutes. Ask which line catches a developer who accepts every suggestion and deletes it in
@@ -259,9 +262,11 @@ Transition: the day's close.
 ## S50. Close: the sentence, filled from the data
 *What does the room hand the city head, and what does Tuesday ask of it?*
 
-> "Pay for completed peak trips per enrolled driver online at peak, guarded by the share of offers accepted and the rider's wait, because paying for hours cost Rs 1.159 crore in six weeks for driver-weeks that declined most of what they were offered."
+> "Judge the scheme by completed peak trips per enrolled driver online at peak, guarded by the share of offers accepted and the rider's wait, because paying for hours cost Rs 1.159 crore in six weeks for driver-weeks that declined most of what they were offered."
 
-**The crux lines.** A number is safe to pay for only if hitting it requires the thing it stands for. A rate is two sums divided once, with its denominator named. A saving that assumes nobody changes is a floor on the cost, never a forecast.
+The rule that follows from it: the Rs 300 floor stays only for driver-weeks that accept at least half their offers, an accepted trip later cancelled counting as declined.
+
+**The crux lines.** A number is safe to pay for only if hitting it requires the thing it stands for. A rate is two sums divided once, with its denominator named. A saving is said as a range, with the assumption about how people respond beside it.
 
 **Tuesday's question.** Can this answer survive one slide, five minutes, in front of the three people who each lose something under it?
 

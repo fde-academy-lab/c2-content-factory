@@ -67,7 +67,7 @@ flowchart LR
     Q["<b>What makes a number safe to pay for?</b>"]
     A["<b>Anchor: the canteen token</b><br/>tokens 200 to 400, plates stay 200<br/>(invented numbers)"]
     Q1["<b>What is it for?</b>"]
-    Q2["<b>How could it rise while<br/>riders waited longer?</b>"]
+    Q2["<b>How could it rise while<br/>riders were served no better?</b>"]
     Q3["<b>What stops that?</b>"]
     Q --> A
     Q --> Q1
@@ -89,7 +89,7 @@ The canteen, invented numbers: tokens double from 200 to 400 a day while plates 
 
 ```mermaid
 flowchart LR
-    G["<b>What the canteen wants</b><br/>plates served to hungry diners"] --> P["<b>What it pays for</b><br/>tokens printed"]
+    G["<b>What the canteen wants</b><br/>plates served to hungry diners"] --> P["<b>What it pays servers for</b><br/>tokens handed out"]
     P --> C["<b>What a server can do</b><br/>print two tokens per plate"]
     C --> N["<b>What the number says</b><br/>tokens 200 to 400 a day"]
     C --> D["<b>What diners see</b><br/>plates stay at 200"]
@@ -126,7 +126,7 @@ flowchart LR
     Q["<b>What makes a number safe to pay for?</b>"]
     A["<b>Anchor: the canteen token</b><br/>tokens doubled, plates did not"]
     Q1["<b>What is it for?</b><br/>riders picked up faster;<br/>hours need no rider"]
-    Q2["<b>How could it rise while<br/>riders waited longer?</b>"]
+    Q2["<b>How could it rise while<br/>riders were served no better?</b>"]
     Q3["<b>What stops that?</b>"]
     P1["<b>Pitfall: no usage condition</b><br/>Wells Fargo's unused accounts"]
     Q --> A
@@ -148,13 +148,13 @@ flowchart LR
 
 ## Why does an average of each driver-week's rate mislead?
 
-Two invented drivers: 21 trips over 11 hours is 1.91, while the average of their rates is 1.5. On the city, the average prints 1.71 against the true 1.58.
+Two invented drivers: 40 trips over 50 hours is 0.80, while the average of their rates is 1.25, because Y's 40 slow hours count as one week, the same as X's 10. On the city, the average prints 1.71 against the true 1.58, so it shows a fall of 0.19 where the true fall is 0.32.
 
 ```mermaid
 flowchart LR
-    X["<b>Driver X</b><br/>2.0 trips an hour, 10 hours<br/>20 trips"] --> S["<b>Ratio of sums</b><br/>21 trips / 11 hours = 1.91"]
-    Y["<b>Driver Y</b><br/>1.0 trip an hour, 1 hour<br/>1 trip"] --> S
-    X --> M["<b>Average of rates</b><br/>(2.0 + 1.0) / 2 = 1.5"]
+    X["<b>Driver X</b><br/>2.0 trips an hour<br/>10 hours, 20 trips"] --> S["<b>Ratio of sums</b><br/>40 trips / 50 hours<br/>= 0.80"]
+    Y["<b>Driver Y</b><br/>0.5 trips an hour<br/>40 hours, 20 trips"] --> S
+    X --> M["<b>Average of rates</b><br/>(2.0 + 0.5) / 2 = 1.25"]
     Y --> M
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
@@ -166,13 +166,13 @@ flowchart LR
 
 ## What does the board hold after chapter 2?
 
-The second region filled: how the number rose while riders were served no faster.
+The second region filled: how the number rose while riders were served no better.
 
 ```mermaid
 flowchart LR
     Q["<b>What makes a number safe to pay for?</b>"]
     Q1["<b>What is it for?</b><br/>riders picked up faster"]
-    Q2["<b>How could it rise while<br/>riders waited longer?</b><br/>online but idle, in thin zones:<br/>180 drivers, 15 percent"]
+    Q2["<b>How could it rise while<br/>riders were served no better?</b><br/>online but idle, in thin zones:<br/>180 drivers, 15 percent"]
     Q3["<b>What stops that?</b>"]
     P1["<b>Pitfall: no usage condition</b><br/>Wells Fargo"]
     P2["<b>Pitfall: the unit moves the number</b><br/>Delhi Metro; offers and requests"]
@@ -212,14 +212,14 @@ flowchart LR
 
 ## How do a north star, its guardrails and its inputs fit together?
 
-Built one region at a time: the north star, then each guardrail with the gaming it catches, then the two inputs. Read it as a seesaw: if the north star rises and a guardrail drops, the rise was bought.
+Built one region at a time: the north star, then each guardrail with the gaming it catches (two guard riders, the third guards the budget), then the two inputs, drawn dashed because the city team can move them this week. Read it as a seesaw: if the north star rises while a guardrail moves the wrong way, riders or the budget paid for the rise.
 
 ```mermaid
 flowchart TD
     N["<b>North star</b><br/>completed peak trips per enrolled<br/>driver online at peak, per week"]
     G1["<b>Guardrail 1</b><br/>offers accepted over offers shown,<br/>at or above a floor"]
     G2["<b>Guardrail 2</b><br/>median rider wait at peak"]
-    G3["<b>Guardrail 3</b><br/>top-up per completed trip"]
+    G3["<b>Guardrail 3, the budget</b><br/>top-up per completed trip"]
     L1["<b>Input</b><br/>enrolled drivers online<br/>in the first peak hour"]
     L2["<b>Input</b><br/>rider requests per online<br/>hour, by zone"]
     N --- G1
@@ -229,10 +229,10 @@ flowchart TD
     L2 -.-> N
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef kalpa fill:#FFF7E6,stroke:#C98A00,color:#5C3D00
+    classDef input fill:#FFFFFF,stroke:#5B3FD6,color:#1A0F5C,stroke-dasharray:4 3
     class N lit
     class G1,G2,G3 known
-    class L1,L2 kalpa
+    class L1,L2 input
 ```
 
 ---
@@ -245,13 +245,13 @@ The finished board, which is panel one of the cheat sheet.
 flowchart LR
     Q["<b>Safe to pay for?</b>"]
     Q1["<b>What is it for?</b><br/>riders picked up faster"]
-    Q2["<b>How could it rise badly?</b><br/>online but idle, thin zones"]
+    Q2["<b>Can it rise badly?</b><br/>idle hours, thin zones"]
     Q3["<b>What stops that?</b><br/>north star and guardrails"]
-    S1["<b>The tree</b>"]
-    S2["<b>The seesaw</b>"]
-    S3["<b>The window's start</b>"]
+    S1["<b>The tree</b><br/>north star and inputs"]
+    S2["<b>The seesaw</b><br/>star up, guardrail down"]
+    S3["<b>The window's start</b><br/>who starts the clock"]
     P1["<b>No usage condition</b><br/>Wells Fargo"]
-    P2["<b>The unit moves it</b><br/>Delhi Metro"]
+    P2["<b>Units move numbers</b><br/>Delhi Metro"]
     P3["<b>The measured set the start</b><br/>VA"]
     Q --> Q1
     Q --> Q2
@@ -278,7 +278,7 @@ The afternoon's first drawing: write, price, defend, score.
 
 ```mermaid
 flowchart LR
-    W["<b>Write, 14 minutes</b><br/>the seven lines, two guardrails<br/>or more, the gaming note"] --> P["<b>Price</b><br/>the saving, with its<br/>assumption stated"]
+    W["<b>Write, 14 minutes</b><br/>the seven lines, three guardrails<br/>(two for riders), the gaming note"] --> P["<b>Price</b><br/>the saving, with its<br/>assumption stated"]
     P --> D["<b>Defend, 10 minutes</b><br/>each role attacks once;<br/>a line must answer"]
     D --> S["<b>Score, 3 minutes</b><br/>answered, conceded<br/>or lost"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
@@ -298,7 +298,7 @@ flowchart LR
     G["<b>Goal</b><br/>riders picked up faster"] --> N["<b>North star</b><br/>numerator, denominator,<br/>window"]
     N --> R["<b>Guardrails</b><br/>what must not<br/>get worse"]
     R --> L["<b>Leading input</b><br/>what moves first"]
-    L --> T["<b>The test</b><br/>how cause is settled"]
+    L --> T["<b>The test</b><br/>zones as the unit"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class G lit
