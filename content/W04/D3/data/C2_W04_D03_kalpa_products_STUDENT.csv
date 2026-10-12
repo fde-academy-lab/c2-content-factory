@@ -1,0 +1,16 @@
+product_id,name,category,list_price,unit_cost
+P001,phone charger 20W,Electronics,199,120
+P002,screen protector,Accessories,149,85
+P003,earphone jack adapter,Accessories,89,50
+P004,wireless earphones,Electronics,1499,950
+P005,earphone case,Accessories,299,170
+P006,car phone mount,Accessories,399,230
+P007,car charger,Electronics,349,200
+P008,power bank 10000mAh,Electronics,1199,780
+P009,phone grip,Accessories,99,55
+P010,cable organiser,Accessories,149,80
+P011,notebook A5,Stationery,79,40
+P012,pen set,Stationery,99,50
+P013,LED desk lamp,Lighting,699,420
+P014,extension cord,Electronics,499,290
+P015,USB-C cable,Electronics,249,140

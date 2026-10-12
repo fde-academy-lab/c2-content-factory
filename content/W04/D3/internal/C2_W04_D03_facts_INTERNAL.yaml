@@ -1,0 +1,2877 @@
+# content/W04/D3/internal/C2_W04_D03_facts_INTERNAL.yaml, written by the generator.
+# Every number a Wednesday learner sees, with how it was computed, the form it is printed
+# in and where it is used. Public facts carry their R2 id; toys are labelled invented.
+#
+# Corrections to the case file:
+#   milk_share_after is 50 percent, since 44 percent beside the 1.2 and 6.4 percent slot
+#     rates blends to 4.1 percent and the ticket's after rate is 3.8.
+#   twelve_bread_milk_conf is 1.00 and the lift 1.50, since the case file's 0.75 sits 0.01
+#     from the full-data 0.74 and the spine asks for five points between them.
+#   recoverable_month replaces the case file's Rs 12.6 lakh over three slots, which held
+#     only if every slot showed milk; strip_log shows milk on half the slot impressions.
+#   the twelve rows are real carts of the 40,000 and the Kalpa lines sit on v4's own 1,000
+#     orders, as the spine and the case file ask.
+
+
+ticket:
+  - id: before_strip_ctr
+    value: 0.061
+    shown: "6.1 percent"
+    how: "clicks over impressions, 17 August to 6 September 2026, strip_log"
+    used_in: "every file's ticket"
+  - id: after_strip_ctr
+    value: 0.038
+    shown: "3.8 percent"
+    how: "clicks over impressions, 7 to 27 September 2026, strip_log"
+    used_in: "every file's ticket"
+  - id: change_date
+    value: "2026-09-07"
+    shown: "Monday 7 September 2026"
+    how: "the day the ranking switched"
+    used_in: "the ticket"
+  - id: total_carts
+    value: 40000
+    shown: "40,000"
+    how: "carts in the carts table"
+    used_in: "the ticket, notebook 02"
+  - id: customers
+    value: 12000
+    shown: "12,000"
+    how: "customers in the sample, every September cart of each"
+    used_in: "notebook 02, notes"
+  - id: zones
+    value: 8
+    shown: "eight"
+    how: "Pune zones in the data"
+    used_in: "the ticket"
+  - id: items
+    value: 59
+    shown: "59"
+    how: "distinct items in cart_items (the case file says about 60)"
+    used_in: "notebook 02, notes"
+  - id: cart_window
+    value: "1 to 28 September 2026"
+    shown: "1 to 28 September"
+    how: "the carts' window, four weeks"
+    used_in: "the ticket"
+  - id: heavy_tenth_share
+    value: 0.38
+    shown: "38 percent"
+    how: "carts placed by the 1,200 customers with the most carts, over 40,000"
+    used_in: "ticket caveat, notebook 03, deck"
+  - id: heavy_customers
+    value: 1200
+    shown: "1,200"
+    how: "the top tenth of 12,000 customers"
+    used_in: "notebook 03, notes"
+  - id: heavy_carts_min
+    value: 12
+    shown: "12"
+    how: "fewest carts held by any top-tenth customer"
+    used_in: "notebook 03"
+  - id: light_carts_max
+    value: 5
+    shown: "5"
+    how: "most carts held by anyone outside the top tenth"
+    used_in: "notebook 03"
+
+strip:
+  - id: milk_slot_ctr_after
+    value: 0.012
+    shown: "1.2 percent"
+    how: "clicks over impressions on slots suggesting toned milk, after"
+    used_in: "chapter 2, notebook 02"
+  - id: other_slot_ctr_after
+    value: 0.064
+    shown: "6.4 percent"
+    how: "the same for every other suggestion, after"
+    used_in: "chapter 2, notebook 02"
+  - id: other_slot_ctr_before
+    value: 0.062
+    shown: "6.2 percent"
+    how: "every suggestion other than milk, before"
+    used_in: "chapter 2, notebook 02"
+  - id: milk_share_after
+    value: 0.5018
+    shown: "50 percent"
+    how: "milk's share of slot impressions, after (case file 44, corrected)"
+    used_in: "chapter 2, notebook 02"
+  - id: milk_share_before
+    value: 0.02
+    shown: "2 percent"
+    how: "milk's share of slot impressions under the curated list"
+    used_in: "chapter 2, notebook 02"
+  - id: ctr_before_milk_slot3
+    value: 0.012
+    shown: "1.2 percent"
+    how: "click-through on slot 3, milk, before"
+    used_in: "the slot picture, notebook 02"
+  - id: ctr_before_other_slot1
+    value: 0.075
+    shown: "7.5 percent"
+    how: "click-through on slot 1, other, before"
+    used_in: "the slot picture, notebook 02"
+  - id: ctr_before_other_slot2
+    value: 0.0612
+    shown: "6.1 percent"
+    how: "click-through on slot 2, other, before"
+    used_in: "the slot picture, notebook 02"
+  - id: ctr_before_other_slot3
+    value: 0.0491
+    shown: "4.9 percent"
+    how: "click-through on slot 3, other, before"
+    used_in: "the slot picture, notebook 02"
+  - id: ctr_after_milk_slot1
+    value: 0.0138
+    shown: "1.4 percent"
+    how: "click-through on slot 1, milk, after"
+    used_in: "the slot picture, notebook 02"
+  - id: ctr_after_milk_slot2
+    value: 0.0113
+    shown: "1.1 percent"
+    how: "click-through on slot 2, milk, after"
+    used_in: "the slot picture, notebook 02"
+  - id: ctr_after_milk_slot3
+    value: 0.009
+    shown: "0.9 percent"
+    how: "click-through on slot 3, milk, after"
+    used_in: "the slot picture, notebook 02"
+  - id: ctr_after_other_slot1
+    value: 0.082
+    shown: "8.2 percent"
+    how: "click-through on slot 1, other, after"
+    used_in: "the slot picture, notebook 02"
+  - id: ctr_after_other_slot2
+    value: 0.0675
+    shown: "6.7 percent"
+    how: "click-through on slot 2, other, after"
+    used_in: "the slot picture, notebook 02"
+  - id: ctr_after_other_slot3
+    value: 0.0539
+    shown: "5.4 percent"
+    how: "click-through on slot 3, other, after"
+    used_in: "the slot picture, notebook 02"
+  - id: milk_share_after_slot1
+    value: 0.7013
+    shown: "70 percent"
+    how: "milk's share of slot 1's impressions after the change"
+    used_in: "notebook 02, the slot picture"
+  - id: milk_share_after_slot2
+    value: 0.5034
+    shown: "50 percent"
+    how: "milk's share of slot 2's impressions after the change"
+    used_in: "notebook 02, the slot picture"
+  - id: milk_share_after_slot3
+    value: 0.3008
+    shown: "30 percent"
+    how: "milk's share of slot 3's impressions after the change"
+    used_in: "notebook 02, the slot picture"
+  - id: views_a_day_after
+    value: 60000
+    shown: "60,000"
+    how: "slot-1 impressions a day, the mean of 7 to 27 September; every view shows all three slots"
+    used_in: "chapter 3 cascade, notebook 03"
+  - id: views_a_day_before
+    value: 58800
+    shown: "58,800"
+    how: "the same for 17 August to 6 September"
+    used_in: "notebook 02"
+  - id: views_day_low
+    value: 53777
+    shown: "53,777"
+    how: "the quietest day after the change"
+    used_in: "notebook 02"
+  - id: views_day_high
+    value: 68687
+    shown: "68,687"
+    how: "the busiest day after the change"
+    used_in: "notebook 02"
+  - id: daily_ctr_after_low
+    value: 0.0355
+    shown: "3.6 percent"
+    how: "lowest daily strip click-through after the change"
+    used_in: "notebook 02"
+  - id: daily_ctr_after_high
+    value: 0.0397
+    shown: "4.0 percent"
+    how: "highest daily strip click-through after the change"
+    used_in: "notebook 02"
+  - id: daily_ctr_before_low
+    value: 0.058
+    shown: "5.8 percent"
+    how: "lowest daily strip click-through before the change"
+    used_in: "notebook 02"
+  - id: daily_ctr_before_high
+    value: 0.064
+    shown: "6.4 percent"
+    how: "highest daily strip click-through before the change"
+    used_in: "notebook 02"
+  - id: add_rate_observed
+    value: 0.5
+    shown: "0.5"
+    how: "adds over clicks after the change, strip_log"
+    used_in: "chapter 3, notebook 03"
+  - id: margin_per_line_observed
+    value: 8.99
+    shown: "Rs 9.0"
+    how: "mean margin_rs of a cart_items line, milk aside"
+    used_in: "chapter 3, notebook 03"
+  - id: milk_margin
+    value: 2.0
+    shown: "Rs 2"
+    how: "margin_rs on a pouch of toned milk"
+    used_in: "notebook 03, transcript"
+  - id: price_per_add_observed
+    value: 41.77
+    shown: "Rs 42"
+    how: "unit price of the same items, weighted by adds"
+    used_in: "notebook 03, the gross-sales trap"
+  - id: strip_rows
+    value: 1512
+    shown: "1,512"
+    how: "rows in strip_log"
+    used_in: "notebook 02"
+
+full_data:
+  - id: toned_milk_share
+    value: 0.71
+    shown: "71 percent"
+    how: "share of the 40,000 carts holding toned milk"
+    used_in: "chapter 2, notebook 02"
+  - id: toned_milk_carts
+    value: 28400
+    shown: "28,400"
+    how: "carts holding toned milk"
+    used_in: "notebook 02"
+  - id: bread_share
+    value: 0.34
+    shown: "34 percent"
+    how: "share of the 40,000 carts holding bread"
+    used_in: "chapter 2, notebook 02"
+  - id: bread_carts
+    value: 13600
+    shown: "13,600"
+    how: "carts holding bread"
+    used_in: "notebook 02"
+  - id: eggs_share
+    value: 0.29
+    shown: "29 percent"
+    how: "share of the 40,000 carts holding eggs"
+    used_in: "chapter 2, notebook 02"
+  - id: eggs_carts
+    value: 11600
+    shown: "11,600"
+    how: "carts holding eggs"
+    used_in: "notebook 02"
+  - id: curd_share
+    value: 0.26
+    shown: "26 percent"
+    how: "share of the 40,000 carts holding curd"
+    used_in: "chapter 2, notebook 02"
+  - id: curd_carts
+    value: 10400
+    shown: "10,400"
+    how: "carts holding curd"
+    used_in: "notebook 02"
+  - id: bananas_share
+    value: 0.23
+    shown: "23 percent"
+    how: "share of the 40,000 carts holding bananas"
+    used_in: "chapter 2, notebook 02"
+  - id: bananas_carts
+    value: 9200
+    shown: "9,200"
+    how: "carts holding bananas"
+    used_in: "notebook 02"
+  - id: onions_share
+    value: 0.22
+    shown: "22 percent"
+    how: "share of the 40,000 carts holding onions"
+    used_in: "chapter 2, notebook 02"
+  - id: onions_carts
+    value: 8800
+    shown: "8,800"
+    how: "carts holding onions"
+    used_in: "notebook 02"
+  - id: tomatoes_share
+    value: 0.2
+    shown: "20 percent"
+    how: "share of the 40,000 carts holding tomatoes"
+    used_in: "chapter 2, notebook 02"
+  - id: tomatoes_carts
+    value: 8000
+    shown: "8,000"
+    how: "carts holding tomatoes"
+    used_in: "notebook 02"
+  - id: potatoes_share
+    value: 0.18
+    shown: "18 percent"
+    how: "share of the 40,000 carts holding potatoes"
+    used_in: "chapter 2, notebook 02"
+  - id: potatoes_carts
+    value: 7200
+    shown: "7,200"
+    how: "carts holding potatoes"
+    used_in: "notebook 02"
+  - id: coriander_share
+    value: 0.15
+    shown: "15 percent"
+    how: "share of the 40,000 carts holding coriander"
+    used_in: "chapter 2, notebook 02"
+  - id: coriander_carts
+    value: 6000
+    shown: "6,000"
+    how: "carts holding coriander"
+    used_in: "notebook 02"
+  - id: chips_share
+    value: 0.12
+    shown: "12 percent"
+    how: "share of the 40,000 carts holding chips"
+    used_in: "chapter 2, notebook 02"
+  - id: chips_carts
+    value: 4800
+    shown: "4,800"
+    how: "carts holding chips"
+    used_in: "notebook 02"
+  - id: cold_drink_share
+    value: 0.123
+    shown: "12.3 percent"
+    how: "share of the 40,000 carts holding cold drink"
+    used_in: "chapter 2, notebook 02"
+  - id: cold_drink_carts
+    value: 4920
+    shown: "4,920"
+    how: "carts holding cold drink"
+    used_in: "notebook 02"
+  - id: green_chillies_share
+    value: 0.08
+    shown: "8 percent"
+    how: "share of the 40,000 carts holding green chillies"
+    used_in: "chapter 2, notebook 02"
+  - id: green_chillies_carts
+    value: 3200
+    shown: "3,200"
+    how: "carts holding green chillies"
+    used_in: "notebook 02"
+  - id: paneer_share
+    value: 0.08
+    shown: "8 percent"
+    how: "share of the 40,000 carts holding paneer"
+    used_in: "chapter 2, notebook 02"
+  - id: paneer_carts
+    value: 3200
+    shown: "3,200"
+    how: "carts holding paneer"
+    used_in: "notebook 02"
+  - id: butter_share
+    value: 0.06
+    shown: "6 percent"
+    how: "share of the 40,000 carts holding butter"
+    used_in: "chapter 2, notebook 02"
+  - id: butter_carts
+    value: 2400
+    shown: "2,400"
+    how: "carts holding butter"
+    used_in: "notebook 02"
+  - id: ice_cream_share
+    value: 0.04
+    shown: "4 percent"
+    how: "share of the 40,000 carts holding ice cream"
+    used_in: "chapter 2, notebook 02"
+  - id: ice_cream_carts
+    value: 1600
+    shown: "1,600"
+    how: "carts holding ice cream"
+    used_in: "notebook 02"
+  - id: chocolate_sauce_share
+    value: 0.0136
+    shown: "1.36 percent"
+    how: "share of the 40,000 carts holding chocolate sauce"
+    used_in: "chapter 2, notebook 02"
+  - id: chocolate_sauce_carts
+    value: 544
+    shown: "544"
+    how: "carts holding chocolate sauce"
+    used_in: "notebook 02"
+  - id: bread_milk_carts
+    value: 10064
+    shown: "10,064"
+    how: "carts holding both bread and toned milk"
+    used_in: "chapter 2 and 3"
+  - id: bread_milk_support
+    value: 0.2516
+    shown: "25.2 percent"
+    how: "both over 40,000"
+    used_in: "chapter 2 and 3"
+  - id: bread_milk_conf_ab
+    value: 0.74
+    shown: "0.74"
+    how: "confidence bread to toned milk"
+    used_in: "chapter 2 and 3"
+  - id: bread_milk_conf_ba
+    value: 0.3544
+    shown: "0.35"
+    how: "confidence toned milk to bread"
+    used_in: "chapter 2 and 3"
+  - id: bread_milk_lift
+    value: 1.0423
+    shown: "1.04"
+    how: "lift of bread and toned milk"
+    used_in: "chapter 2 and 3"
+  - id: bread_milk_expected
+    value: 9656
+    shown: "9,656"
+    how: "carts expected to hold both if independent"
+    used_in: "chapter 2, notebook 02"
+  - id: eggs_milk_carts
+    value: 8468
+    shown: "8,468"
+    how: "carts holding both eggs and toned milk"
+    used_in: "chapter 2 and 3"
+  - id: eggs_milk_support
+    value: 0.2117
+    shown: "21.2 percent"
+    how: "both over 40,000"
+    used_in: "chapter 2 and 3"
+  - id: eggs_milk_conf_ab
+    value: 0.73
+    shown: "0.73"
+    how: "confidence eggs to toned milk"
+    used_in: "chapter 2 and 3"
+  - id: eggs_milk_conf_ba
+    value: 0.2982
+    shown: "0.30"
+    how: "confidence toned milk to eggs"
+    used_in: "chapter 2 and 3"
+  - id: eggs_milk_lift
+    value: 1.0282
+    shown: "1.03"
+    how: "lift of eggs and toned milk"
+    used_in: "chapter 2 and 3"
+  - id: eggs_milk_expected
+    value: 8236
+    shown: "8,236"
+    how: "carts expected to hold both if independent"
+    used_in: "chapter 2, notebook 02"
+  - id: chips_cold_carts
+    value: 2000
+    shown: "2,000"
+    how: "carts holding both chips and cold drink"
+    used_in: "chapter 2 and 3"
+  - id: chips_cold_support
+    value: 0.05
+    shown: "5.0 percent"
+    how: "both over 40,000"
+    used_in: "chapter 2 and 3"
+  - id: chips_cold_conf_ab
+    value: 0.4167
+    shown: "0.42"
+    how: "confidence chips to cold drink"
+    used_in: "chapter 2 and 3"
+  - id: chips_cold_conf_ba
+    value: 0.4065
+    shown: "0.41"
+    how: "confidence cold drink to chips"
+    used_in: "chapter 2 and 3"
+  - id: chips_cold_lift
+    value: 3.3875
+    shown: "3.39"
+    how: "lift of chips and cold drink"
+    used_in: "chapter 2 and 3"
+  - id: chips_cold_expected
+    value: 590
+    shown: "590"
+    how: "carts expected to hold both if independent"
+    used_in: "chapter 2, notebook 02"
+  - id: ice_choc_carts
+    value: 100
+    shown: "100"
+    how: "carts holding both ice cream and chocolate sauce"
+    used_in: "chapter 2 and 3"
+  - id: ice_choc_support
+    value: 0.0025
+    shown: "0.25 percent"
+    how: "both over 40,000"
+    used_in: "chapter 2 and 3"
+  - id: ice_choc_conf_ab
+    value: 0.0625
+    shown: "0.06"
+    how: "confidence ice cream to chocolate sauce"
+    used_in: "chapter 2 and 3"
+  - id: ice_choc_conf_ba
+    value: 0.1838
+    shown: "0.18"
+    how: "confidence chocolate sauce to ice cream"
+    used_in: "chapter 2 and 3"
+  - id: ice_choc_lift
+    value: 4.5956
+    shown: "4.60"
+    how: "lift of ice cream and chocolate sauce"
+    used_in: "chapter 2 and 3"
+  - id: ice_choc_expected
+    value: 22
+    shown: "22"
+    how: "carts expected to hold both if independent"
+    used_in: "chapter 2, notebook 02"
+  - id: coriander_chillies_carts
+    value: 1440
+    shown: "1,440"
+    how: "carts holding both coriander and green chillies"
+    used_in: "chapter 2 and 3"
+  - id: coriander_chillies_support
+    value: 0.036
+    shown: "3.6 percent"
+    how: "both over 40,000"
+    used_in: "chapter 2 and 3"
+  - id: coriander_chillies_conf_ab
+    value: 0.24
+    shown: "0.24"
+    how: "confidence coriander to green chillies"
+    used_in: "chapter 2 and 3"
+  - id: coriander_chillies_conf_ba
+    value: 0.45
+    shown: "0.45"
+    how: "confidence green chillies to coriander"
+    used_in: "chapter 2 and 3"
+  - id: coriander_chillies_lift
+    value: 3.0
+    shown: "3.00"
+    how: "lift of coriander and green chillies"
+    used_in: "chapter 2 and 3"
+  - id: coriander_chillies_expected
+    value: 480
+    shown: "480"
+    how: "carts expected to hold both if independent"
+    used_in: "chapter 2, notebook 02"
+  - id: bread_butter_carts
+    value: 1800
+    shown: "1,800"
+    how: "carts holding both bread and butter"
+    used_in: "chapter 2 and 3"
+  - id: bread_butter_support
+    value: 0.045
+    shown: "4.5 percent"
+    how: "both over 40,000"
+    used_in: "chapter 2 and 3"
+  - id: bread_butter_conf_ab
+    value: 0.1324
+    shown: "0.13"
+    how: "confidence bread to butter"
+    used_in: "chapter 2 and 3"
+  - id: bread_butter_conf_ba
+    value: 0.75
+    shown: "0.75"
+    how: "confidence butter to bread"
+    used_in: "chapter 2 and 3"
+  - id: bread_butter_lift
+    value: 2.2059
+    shown: "2.21"
+    how: "lift of bread and butter"
+    used_in: "chapter 2 and 3"
+  - id: bread_butter_expected
+    value: 816
+    shown: "816"
+    how: "carts expected to hold both if independent"
+    used_in: "chapter 2, notebook 02"
+  - id: onions_tomatoes_carts
+    value: 3000
+    shown: "3,000"
+    how: "carts holding both onions and tomatoes"
+    used_in: "chapter 2 and 3"
+  - id: onions_tomatoes_support
+    value: 0.075
+    shown: "7.5 percent"
+    how: "both over 40,000"
+    used_in: "chapter 2 and 3"
+  - id: onions_tomatoes_conf_ab
+    value: 0.3409
+    shown: "0.34"
+    how: "confidence onions to tomatoes"
+    used_in: "chapter 2 and 3"
+  - id: onions_tomatoes_conf_ba
+    value: 0.375
+    shown: "0.38"
+    how: "confidence tomatoes to onions"
+    used_in: "chapter 2 and 3"
+  - id: onions_tomatoes_lift
+    value: 1.7045
+    shown: "1.70"
+    how: "lift of onions and tomatoes"
+    used_in: "chapter 2 and 3"
+  - id: onions_tomatoes_expected
+    value: 1760
+    shown: "1,760"
+    how: "carts expected to hold both if independent"
+    used_in: "chapter 2, notebook 02"
+  - id: curd_milk_carts
+    value: 7436
+    shown: "7,436"
+    how: "carts holding both curd and toned milk"
+    used_in: "chapter 2 and 3"
+  - id: curd_milk_support
+    value: 0.1859
+    shown: "18.6 percent"
+    how: "both over 40,000"
+    used_in: "chapter 2 and 3"
+  - id: curd_milk_conf_ab
+    value: 0.715
+    shown: "0.71"
+    how: "confidence curd to toned milk"
+    used_in: "chapter 2 and 3"
+  - id: curd_milk_conf_ba
+    value: 0.2618
+    shown: "0.26"
+    how: "confidence toned milk to curd"
+    used_in: "chapter 2 and 3"
+  - id: curd_milk_lift
+    value: 1.007
+    shown: "1.01"
+    how: "lift of curd and toned milk"
+    used_in: "chapter 2 and 3"
+  - id: curd_milk_expected
+    value: 7384
+    shown: "7,384"
+    how: "carts expected to hold both if independent"
+    used_in: "chapter 2, notebook 02"
+  - id: bananas_milk_carts
+    value: 6624
+    shown: "6,624"
+    how: "carts holding both bananas and toned milk"
+    used_in: "chapter 2 and 3"
+  - id: bananas_milk_support
+    value: 0.1656
+    shown: "16.6 percent"
+    how: "both over 40,000"
+    used_in: "chapter 2 and 3"
+  - id: bananas_milk_conf_ab
+    value: 0.72
+    shown: "0.72"
+    how: "confidence bananas to toned milk"
+    used_in: "chapter 2 and 3"
+  - id: bananas_milk_conf_ba
+    value: 0.2332
+    shown: "0.23"
+    how: "confidence toned milk to bananas"
+    used_in: "chapter 2 and 3"
+  - id: bananas_milk_lift
+    value: 1.0141
+    shown: "1.01"
+    how: "lift of bananas and toned milk"
+    used_in: "chapter 2 and 3"
+  - id: bananas_milk_expected
+    value: 6532
+    shown: "6,532"
+    how: "carts expected to hold both if independent"
+    used_in: "chapter 2, notebook 02"
+  - id: common_items
+    value: 50
+    shown: "50"
+    how: "items other than milk in at least 2 percent of carts"
+    used_in: "chapter 2, notebook 02"
+  - id: common_conf_low
+    value: 0.701
+    shown: "0.70"
+    how: "lowest confidence to milk among them"
+    used_in: "chapter 2, notebook 02"
+  - id: common_conf_high
+    value: 0.74
+    shown: "0.74"
+    how: "highest confidence to milk among them"
+    used_in: "chapter 2, notebook 02"
+  - id: common_lift_low
+    value: 0.9873
+    shown: "0.99"
+    how: "lowest lift with milk among them"
+    used_in: "chapter 2, notebook 02"
+  - id: common_lift_high
+    value: 1.0423
+    shown: "1.04"
+    how: "highest lift with milk among them"
+    used_in: "chapter 2, notebook 02"
+  - id: pairs_seen
+    value: 1711
+    shown: "1,711"
+    how: "distinct pairs found in at least one cart"
+    used_in: "notebook 02"
+  - id: lines
+    value: 189424
+    shown: "189,424"
+    how: "rows in cart_items"
+    used_in: "notebook 02"
+  - id: double_loop_checks
+    value: 68440000
+    shown: "about 68 million"
+    how: "1,711 possible pairs tested against each of 40,000 carts"
+    used_in: "notes, chapter 2 sizing"
+  - id: pair_increments
+    value: 432803
+    shown: "about 433,000"
+    how: "pairs added by Counter: each cart adds one per pair it holds"
+    used_in: "notes, chapter 2 sizing"
+  - id: items_per_cart
+    value: 4.74
+    shown: "4.7"
+    how: "mean distinct items in a cart"
+    used_in: "notes, chapter 2 sizing"
+  - id: bread_milk_excess
+    value: 0.0423
+    shown: "4 percent"
+    how: "lift 1.0423 less one: bread buyers take milk 4 percent more often than all shoppers"
+    used_in: "interview transcript"
+  - id: pairs_per_cart
+    value: 10.82
+    shown: "10.8"
+    how: "pairs Counter adds for an average cart"
+    used_in: "notes, chapter 2 sizing"
+  - id: bread_price
+    value: 45
+    shown: "Rs 45"
+    how: "bread's price in cart_items"
+    used_in: "chapter 3, the margin definition"
+  - id: bread_margin
+    value: 6.7
+    shown: "Rs 6.70"
+    how: "bread's margin in cart_items"
+    used_in: "chapter 3, the margin definition"
+  - id: cart_value_median
+    value: 262.0
+    shown: "Rs 262"
+    how: "median cart value"
+    used_in: "notebook 02"
+
+floor:
+  - id: support_floor
+    value: 0.01
+    shown: "1 percent"
+    how: "the support floor the room sets"
+    used_in: "chapter 3"
+  - id: plot_floor
+    value: 0.001
+    shown: "0.1 percent"
+    how: "the least support a pair needs to be drawn on the action map"
+    used_in: "chapter 3 picture"
+  - id: plot_floor_carts
+    value: 40
+    shown: "40"
+    how: "0.1 percent of 40,000 carts"
+    used_in: "drill 2"
+  - id: pairs_plotted
+    value: 1221
+    shown: "1,221"
+    how: "pairs with support of at least 0.1 percent"
+    used_in: "chapter 3 picture, drill 2"
+  - id: watch_band_low
+    value: 0.002
+    shown: "0.2 percent"
+    how: "the low end of the band searched for a strong thin pair"
+    used_in: "chapter 3, notebook 03"
+  - id: watch_band_low_carts
+    value: 80
+    shown: "80"
+    how: "0.2 percent of 40,000 carts"
+    used_in: "chapter 3, notebook 03"
+  - id: common_floor
+    value: 0.02
+    shown: "2 percent"
+    how: "an item counts as common at this share of carts (the case file)"
+    used_in: "chapter 2"
+  - id: kalpa_floor
+    value: 0.05
+    shown: "5 percent"
+    how: "the lab's support floor (the case file)"
+    used_in: "notebook 04, lab note"
+  - id: support_floor_carts
+    value: 400
+    shown: "400"
+    how: "1 percent of 40,000 carts"
+    used_in: "chapter 3"
+  - id: floor_pairs
+    value: 246
+    shown: "246"
+    how: "pairs at or above the floor"
+    used_in: "chapter 3, notebook 03"
+  - id: floor_pairs_lift_1_5
+    value: 4
+    shown: "4"
+    how: "of those, pairs at lift 1.5 or more"
+    used_in: "chapter 3, notebook 03"
+  - id: fifth_pair_lift
+    value: 1.0917
+    shown: "1.09"
+    how: "the fifth pair above the floor, butter and tomatoes"
+    used_in: "notebook 03"
+  - id: watch_band_pairs
+    value: 616
+    shown: "616"
+    how: "pairs between 0.2 and 1 percent support"
+    used_in: "notebook 03"
+  - id: tiny_pairs
+    value: 849
+    shown: "849"
+    how: "pairs below 0.2 percent support"
+    used_in: "notebook 03"
+  - id: tiny_lift_max
+    value: 1.8125
+    shown: "1.8"
+    how: "highest lift among them"
+    used_in: "notebook 03"
+
+caveats:
+  - id: chips_cold_lift_per_customer
+    value: 2.5599
+    shown: "2.56"
+    how: "lift with every customer counted once (each cart weighs one over its customer's carts)"
+    used_in: "chapter 3, notebook 03"
+  - id: bread_milk_lift_per_customer
+    value: 1.0397
+    shown: "1.04"
+    how: "the same for bread and milk"
+    used_in: "chapter 3, notebook 03"
+  - id: chips_cold_lift_size
+    value: 2.4753
+    shown: "2.48"
+    how: "chips and cold drink, lift with chance counted within each cart size"
+    used_in: "interview room, half2"
+  - id: coriander_chillies_lift_size
+    value: 2.2534
+    shown: "2.25"
+    how: "coriander and green chillies, lift with chance counted within each cart size"
+    used_in: "interview room, half2"
+  - id: bread_butter_lift_size
+    value: 1.7434
+    shown: "1.74"
+    how: "bread and butter, lift with chance counted within each cart size"
+    used_in: "interview room, half2"
+  - id: onions_tomatoes_lift_size
+    value: 1.3812
+    shown: "1.38"
+    how: "onions and tomatoes, lift with chance counted within each cart size"
+    used_in: "interview room, half2"
+  - id: chips_cold_lift_both
+    value: 1.9517
+    shown: "1.95"
+    how: "chips and cold drink, each customer once and chance counted within each cart size"
+    used_in: "interview room, half2"
+  - id: onions_tomatoes_lift_both
+    value: 1.378
+    shown: "1.38"
+    how: "onions and tomatoes, each customer once and chance counted within each cart size"
+    used_in: "interview room, half2"
+  - id: chips_cold_heavy_share
+    value: 0.73
+    shown: "73 percent"
+    how: "share of chips-and-cold-drink carts placed by the top tenth"
+    used_in: "chapter 3, notebook 03"
+  - id: milk_share_afternoon
+    value: 0.69
+    shown: "69 percent"
+    how: "share of afternoon carts holding milk"
+    used_in: "chapter 3, notebook 03"
+  - id: milk_share_evening
+    value: 0.68
+    shown: "68 percent"
+    how: "share of evening carts holding milk"
+    used_in: "chapter 3, notebook 03"
+  - id: milk_share_morning
+    value: 0.8
+    shown: "80 percent"
+    how: "share of morning carts holding milk"
+    used_in: "chapter 3, notebook 03"
+  - id: milk_share_night
+    value: 0.66
+    shown: "66 percent"
+    how: "share of night carts holding milk"
+    used_in: "chapter 3, notebook 03"
+  - id: bread_milk_lift_morning
+    value: 1.0278
+    shown: "1.03"
+    how: "bread and milk lift among morning carts"
+    used_in: "notebook 03"
+  - id: bread_milk_lift_afternoon
+    value: 1.0499
+    shown: "1.05"
+    how: "bread and milk lift among afternoon carts"
+    used_in: "notebook 03"
+  - id: bread_milk_lift_evening
+    value: 1.0495
+    shown: "1.05"
+    how: "bread and milk lift among evening carts"
+    used_in: "notebook 03"
+  - id: bread_milk_lift_night
+    value: 1.0336
+    shown: "1.03"
+    how: "bread and milk lift among night carts"
+    used_in: "notebook 03"
+  - id: stockout_zones
+    value: "Hadapsar and Viman Nagar"
+    shown: "Hadapsar and Viman Nagar"
+    how: "the two zones"
+    used_in: "ticket caveat, chapter 3"
+  - id: stockout_week
+    value: "15 to 21 September 2026"
+    shown: "15 to 21 September"
+    how: "week three"
+    used_in: "chapter 3"
+  - id: stockout_carts
+    value: 2583
+    shown: "2,583"
+    how: "carts in the two zones in week three"
+    used_in: "notebook 03"
+  - id: stockout_curd_carts
+    value: 12
+    shown: "12"
+    how: "of those, carts with curd"
+    used_in: "notebook 03"
+  - id: curd_share_stockout
+    value: 0.0046
+    shown: "0.5 percent"
+    how: "curd's share in the two zones in week three"
+    used_in: "chapter 3, notebook 03"
+  - id: curd_share_elsewhere
+    value: 0.2776
+    shown: "27.8 percent"
+    how: "curd's share everywhere else"
+    used_in: "chapter 3, notebook 03"
+  - id: curd_cell_low
+    value: 0.2509
+    shown: "25 percent"
+    how: "lowest curd share in any other zone-week"
+    used_in: "notebook 03"
+  - id: curd_cell_high
+    value: 0.303
+    shown: "30 percent"
+    how: "highest curd share in any other zone-week"
+    used_in: "notebook 03"
+  - id: curd_share_all
+    value: 0.26
+    shown: "26.0 percent"
+    how: "curd's share of all 40,000 carts"
+    used_in: "notebook 03"
+  - id: curd_share_kept
+    value: 0.2776
+    shown: "27.8 percent"
+    how: "curd's share with the two zone-weeks set aside"
+    used_in: "chapter 3, notebook 03"
+  - id: curd_milk_lift_all
+    value: 1.007
+    shown: "1.01"
+    how: "curd and milk lift, all carts"
+    used_in: "chapter 3, notebook 03"
+  - id: curd_milk_lift_kept
+    value: 1.0083
+    shown: "1.01"
+    how: "curd and milk lift, the two zone-weeks set aside"
+    used_in: "chapter 3, notebook 03"
+  - id: curd_milk_support_all
+    value: 0.1859
+    shown: "18.6 percent"
+    how: "curd with milk over all carts"
+    used_in: "notebook 03"
+  - id: curd_milk_support_kept
+    value: 0.1984
+    shown: "19.8 percent"
+    how: "curd with milk, the two zone-weeks set aside"
+    used_in: "notebook 03"
+
+slot_value:
+  - id: views_assumed
+    value: 60000
+    shown: "60,000"
+    how: "cart-page views a day, the after-change mean in strip_log"
+    used_in: "chapter 3, notebook 03"
+  - id: add_rate_assumed
+    value: 0.5
+    shown: "0.5"
+    how: "assumption, range 0.4 to 0.6 (strip_log reads 0.50)"
+    used_in: "chapter 3, notebook 03"
+  - id: add_rate_low
+    value: 0.4
+    shown: "0.4"
+    how: "the range's low end"
+    used_in: "chapter 3, notebook 03"
+  - id: add_rate_high
+    value: 0.6
+    shown: "0.6"
+    how: "the range's high end"
+    used_in: "chapter 3, notebook 03"
+  - id: margin_assumed
+    value: 9
+    shown: "Rs 9"
+    how: "assumption, range Rs 7 to Rs 11"
+    used_in: "chapter 3, notebook 03"
+  - id: margin_low
+    value: 7
+    shown: "Rs 7"
+    how: "the range's low end"
+    used_in: "chapter 3, notebook 03"
+  - id: margin_high
+    value: 11
+    shown: "Rs 11"
+    how: "the range's high end"
+    used_in: "chapter 3, notebook 03"
+  - id: impressions_a_day
+    value: 180000
+    shown: "180,000"
+    how: "60,000 views a day, each showing three slots"
+    used_in: "chapter 3, notebook 03"
+  - id: value_per_click_mid
+    value: 4.5
+    shown: "Rs 4.50"
+    how: "0.5 adds a click x Rs 9"
+    used_in: "chapter 3, notebook 03"
+  - id: value_per_click_low
+    value: 2.8
+    shown: "Rs 2.80"
+    how: "0.4 x Rs 7, the low end"
+    used_in: "chapter 3, notebook 03"
+  - id: value_per_click_high
+    value: 6.6
+    shown: "Rs 6.60"
+    how: "0.6 x Rs 11, the high end"
+    used_in: "chapter 3, notebook 03"
+  - id: slot_value_other_day
+    value: 17280
+    shown: "Rs 17,280"
+    how: "60,000 x 0.064 x 0.5 x 9"
+    used_in: "chapter 3, cheat sheet"
+  - id: slot_value_milk_day
+    value: 3240
+    shown: "Rs 3,240"
+    how: "60,000 x 0.012 x 0.5 x 9"
+    used_in: "chapter 3, cheat sheet"
+  - id: slot_gap_day
+    value: 14040
+    shown: "Rs 14,040"
+    how: "17,280 less 3,240, a slot a day"
+    used_in: "chapter 3"
+  - id: slot_gap_month
+    value: 421200
+    shown: "Rs 4.2 lakh"
+    how: "14,040 x 30, a slot a month (the case file's Rs 4.2 lakh)"
+    used_in: "chapter 3"
+  - id: slot_value_other_month
+    value: 518400
+    shown: "Rs 5.2 lakh"
+    how: "17,280 x 30"
+    used_in: "notebook 03"
+  - id: slot_value_milk_month
+    value: 97200
+    shown: "Rs 1.0 lakh"
+    how: "3,240 x 30"
+    used_in: "notebook 03"
+  - id: milk_slots_worth
+    value: 1.5
+    shown: "1.5"
+    how: "three slots times milk's half of the impressions"
+    used_in: "chapter 3"
+  - id: recoverable_month
+    value: 631800
+    shown: "Rs 6.3 lakh"
+    how: "14,040 x 3 x 0.50 x 30: what re-ranking recovers on milk's half"
+    used_in: "chapter 3, half2, notes"
+  - id: ceiling_month
+    value: 1263600
+    shown: "Rs 12.6 lakh"
+    how: "14,040 x 3 x 30: only if every slot showed milk (the case file's Rs 12.6 lakh)"
+    used_in: "notebook 03"
+  - id: recoverable_low
+    value: 393120
+    shown: "Rs 3.9 lakh"
+    how: "add rate 0.4 and margin Rs 7"
+    used_in: "chapter 3, notebook 03"
+  - id: recoverable_high
+    value: 926640
+    shown: "Rs 9.3 lakh"
+    how: "add rate 0.6 and margin Rs 11"
+    used_in: "chapter 3, notebook 03"
+  - id: clicks_a_day
+    value: 3840
+    shown: "3,840"
+    how: "60,000 x 0.064"
+    used_in: "board work, the cascade"
+  - id: adds_a_day
+    value: 1920
+    shown: "1,920"
+    how: "60,000 x 0.064 x 0.5"
+    used_in: "notebook 03, the trap"
+  - id: gross_sales_day
+    value: 80197
+    shown: "Rs 80,197"
+    how: "1,920 adds x the average price of an added item"
+    used_in: "notebook 03, the trap"
+  - id: ice_cream_views_day
+    value: 2400
+    shown: "2,400"
+    how: "60,000 views x ice cream's 4 percent of carts, if views follow carts"
+    used_in: "interview room, half1, half2, notes"
+  - id: sauce_margin
+    value: 37.4
+    shown: "Rs 37.40"
+    how: "margin_rs on a bottle of chocolate sauce"
+    used_in: "interview room, half1, notes"
+  - id: thin_rule_month
+    value: 85306
+    shown: "about Rs 85,000"
+    how: "2,400 x 30 x (0.064 x 0.5 x Rs 37.40 - 0.012 x 0.5 x Rs 2): sauce in place of milk beside ice cream, each add at its own margin, sauce clicking like the rest"
+    used_in: "interview room, half1, half2, notes"
+  - id: same_cells
+    value: 4
+    shown: "four"
+    how: "anchor, suggestion and slot cells other than milk shown in both windows"
+    used_in: "the [D] transcript"
+  - id: same_cells_rise_low
+    value: 0.0837
+    shown: "8 percent"
+    how: "the smallest rise in click-through among them"
+    used_in: "the [D] transcript"
+  - id: same_cells_rise_high
+    value: 0.1193
+    shown: "12 percent"
+    how: "the largest rise in click-through among them"
+    used_in: "the [D] transcript"
+  - id: recoverable_month_milk_own
+    value: 745200
+    shown: "Rs 7.5 lakh"
+    how: "60,000 x 30 x 1.5 x (0.064 x 0.5 x Rs 9 - 0.012 x 0.5 x Rs 2): milk priced at its own margin"
+    used_in: "interview room"
+  - id: trial_lift_points
+    value: 0.032
+    shown: "3.2 points"
+    how: "0.064 x 0.5: the share of ice-cream carts the strip's sauce adds would reach, if every add were new"
+    used_in: "interview room, trainer"
+  - id: trial_n_full
+    value: 1105
+    shown: "about 1,100"
+    how: "ice-cream carts an arm to detect 6.25 to 9.45 percent buying sauce, 5 percent two-sided, 80 percent power"
+    used_in: "interview room, trainer"
+  - id: trial_n_half
+    value: 4014
+    shown: "about 4,000"
+    how: "the same for half that effect, if half the adds would have come anyway"
+    used_in: "interview room, trainer"
+  - id: ice_cream_cart_margin_sd
+    value: 28.12
+    shown: "Rs 28"
+    how: "standard deviation of a whole ice-cream cart's margin"
+    used_in: "interview room, trainer"
+  - id: serving_cost_10p_month
+    value: 180000
+    shown: "Rs 1.8 lakh"
+    how: "60,000 views x Rs 0.10 x 30: ten paise of serving cost a view, a month"
+    used_in: "interview room, AI variant"
+  - id: serving_breakeven_paise
+    value: 35.1
+    shown: "35 paise"
+    how: "Rs 6.3 lakh / (60,000 x 30): the serving cost a view that uses up the re-rank's recovery"
+    used_in: "interview room, AI variant"
+
+twelve_rows:
+  - id: twelve_milk
+    value: 8
+    shown: "8"
+    how: "carts of the twelve holding milk"
+    used_in: "chapter 1, notebook 01, cheat sheet"
+  - id: twelve_bread
+    value: 4
+    shown: "4"
+    how: "carts holding bread"
+    used_in: "chapter 1, notebook 01"
+  - id: twelve_bread_milk
+    value: 4
+    shown: "4"
+    how: "carts holding bread and milk"
+    used_in: "chapter 1"
+  - id: twelve_bread_support
+    value: 0.3333
+    shown: "0.33"
+    how: "4 of 12"
+    used_in: "chapter 1"
+  - id: twelve_bread_milk_conf
+    value: 1.0
+    shown: "1.00"
+    how: "4 of 4"
+    used_in: "chapter 1, cheat sheet"
+  - id: twelve_milk_to_bread_conf
+    value: 0.5
+    shown: "0.50"
+    how: "4 of 8"
+    used_in: "chapter 1, notebook 01"
+  - id: twelve_bread_milk_expected
+    value: 2.6667
+    shown: "2.67"
+    how: "(4/12) x (8/12) x 12"
+    used_in: "chapter 1"
+  - id: twelve_bread_milk_lift
+    value: 1.5
+    shown: "1.50"
+    how: "4 over 2.67"
+    used_in: "chapter 1, cheat sheet"
+  - id: twelve_chips
+    value: 3
+    shown: "3"
+    how: "carts holding chips"
+    used_in: "chapter 1"
+  - id: twelve_cold
+    value: 3
+    shown: "3"
+    how: "carts holding a cold drink"
+    used_in: "chapter 1"
+  - id: twelve_chips_cold
+    value: 2
+    shown: "2"
+    how: "carts holding both"
+    used_in: "chapter 1"
+  - id: twelve_chips_cold_support
+    value: 0.1667
+    shown: "0.17"
+    how: "2 of 12"
+    used_in: "chapter 1"
+  - id: twelve_chips_cold_conf
+    value: 0.6667
+    shown: "0.67"
+    how: "2 of 3"
+    used_in: "chapter 1"
+  - id: twelve_chips_cold_expected
+    value: 0.75
+    shown: "0.75"
+    how: "(3/12) x (3/12) x 12"
+    used_in: "chapter 1"
+  - id: twelve_chips_cold_lift
+    value: 2.6667
+    shown: "2.67"
+    how: "2 over 0.75"
+    used_in: "chapter 1, cheat sheet"
+  - id: twelve_ice_choc
+    value: 1
+    shown: "1"
+    how: "the one cart with both"
+    used_in: "chapter 1"
+  - id: twelve_ice_choc_lift
+    value: 12.0
+    shown: "12"
+    how: "1 over (1/12)"
+    used_in: "chapter 1"
+
+toy:
+  - id: tea_orders
+    value: 10
+    shown: "10"
+    how: "invented: ten tea-stall orders"
+    used_in: "chapter 1"
+  - id: tea_chai
+    value: 6
+    shown: "6"
+    how: "invented: orders with chai"
+    used_in: "chapter 1"
+  - id: tea_biscuit
+    value: 4
+    shown: "4"
+    how: "invented: orders with biscuit"
+    used_in: "chapter 1"
+  - id: tea_both
+    value: 3
+    shown: "3"
+    how: "invented: orders with both"
+    used_in: "chapter 1"
+  - id: tea_support
+    value: 0.3
+    shown: "0.30"
+    how: "3 of 10"
+    used_in: "chapter 1"
+  - id: tea_conf
+    value: 0.5
+    shown: "0.50"
+    how: "3 of 6"
+    used_in: "chapter 1"
+  - id: tea_conf_back
+    value: 0.75
+    shown: "0.75"
+    how: "3 of 4, biscuit to chai"
+    used_in: "chapter 1"
+  - id: tea_expected
+    value: 2.4
+    shown: "2.4"
+    how: "10 x 0.6 x 0.4"
+    used_in: "chapter 1"
+  - id: tea_lift
+    value: 1.25
+    shown: "1.25"
+    how: "3 over 2.4"
+    used_in: "chapter 1"
+  - id: tea_bag
+    value: 9
+    shown: "9"
+    how: "invented: orders with a carry bag"
+    used_in: "chapter 1"
+  - id: tea_bag_conf
+    value: 0.75
+    shown: "0.75"
+    how: "biscuit to bag: 3 of 4"
+    used_in: "chapter 1"
+  - id: tea_bag_lift
+    value: 0.8333
+    shown: "0.83"
+    how: "0.75 over 0.9"
+    used_in: "chapter 1"
+  - id: tea_chai_share
+    value: 0.6
+    shown: "0.60"
+    how: "6 of 10 orders hold chai"
+    used_in: "chapter 1, the second route"
+  - id: tea_biscuit_share
+    value: 0.4
+    shown: "0.40"
+    how: "4 of 10 orders hold biscuit"
+    used_in: "chapter 1, the second route"
+  - id: weight_example_carts
+    value: 4
+    shown: "4"
+    how: "invented: a shopper with four carts"
+    used_in: "chapter 3, counting each customer once"
+  - id: weight_example
+    value: 0.25
+    shown: "0.25"
+    how: "one over four: each of that shopper's carts weighs 0.25"
+    used_in: "chapter 3, counting each customer once"
+
+public:
+  - id: instamart_orders_per_store
+    value: 1089
+    shown: "1,089"
+    how: "Swiggy Instamart orders per dark store per day, quarter to June 2026 (T3, checked 12 October 2026)"
+    used_in: "guesstimate"
+  - id: instamart_stores
+    value: 1171
+    shown: "1,171"
+    how: "Swiggy Instamart dark stores, same source (T3)"
+    used_in: "guesstimate"
+  - id: instamart_cities
+    value: 131
+    shown: "131"
+    how: "cities those 1,171 dark stores span, same source (T3, checked 12 October 2026)"
+    used_in: "guesstimate"
+  - id: maxxsaver_mtu_share
+    value: 0.28
+    shown: "over 28 percent"
+    how: "Maxxsaver users among MTUs (W4)"
+    used_in: "chapter 3, notes"
+  - id: maxxsaver_aov
+    value: 612
+    shown: "Rs 612"
+    how: "Maxxsaver AOV, up 16 percent (W4)"
+    used_in: "chapter 3, notes"
+  - id: osco_transactions
+    value: 1200000
+    shown: "about 1.2 million"
+    how: "Osco Drug transactions, 1992 (W2)"
+    used_in: "chapter 2, notes"
+  - id: uber_cross_use
+    value: 3
+    shown: "over three times"
+    how: "bookings of consumers who use rides and delivery (W4)"
+    used_in: "chapter 3, notes"
+  - id: walmart_poptarts
+    value: 7
+    shown: "about seven times"
+    how: "strawberry Pop-Tarts before Charley (W3)"
+    used_in: "fallback"
+  - id: maxxsaver_aov_growth
+    value: 0.16
+    shown: "16 percent"
+    how: "Instamart AOV growth quarter on quarter, Q1 FY26 letter (W4, checked 12 October 2026)"
+    used_in: "chapter 3, notes"
+  - id: uber_both_share
+    value: 0.2
+    shown: "about one in five"
+    how: "eligible consumers active monthly in both rides and delivery, Uber 10-K for 2025 (W4)"
+    used_in: "notes"
+
+guesstimate:
+  - id: gs_radius
+    value: 2.5
+    shown: "2.5 km"
+    how: "assumption: a dark store's delivery radius"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_area
+    value: 19.6
+    shown: "about 20 square km"
+    how: "3.14 x 2.5 x 2.5"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_density
+    value: 2000
+    shown: "about 2,000"
+    how: "assumption: households a square km in a large city's residential belt"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_households
+    value: 40000
+    shown: "40,000"
+    how: "assumption: households a dark store's catchment holds, about 20 x 2,000"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_households_low
+    value: 30000
+    shown: "30,000"
+    how: "assumption's low end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_households_high
+    value: 50000
+    shown: "50,000"
+    how: "assumption's high end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_adoption
+    value: 0.3
+    shown: "30 percent"
+    how: "assumption: households using quick commerce in a given week"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_adoption_low
+    value: 0.2
+    shown: "20"
+    how: "assumption's low end, in percent"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_adoption_high
+    value: 0.4
+    shown: "40 percent"
+    how: "assumption's high end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_slice
+    value: 0.5
+    shown: "half"
+    how: "assumption: Instamart's slice of those households"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_slice_low
+    value: 0.35
+    shown: "35"
+    how: "assumption's low end, in percent"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_slice_high
+    value: 0.65
+    shown: "65 percent"
+    how: "assumption's high end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_share_week
+    value: 0.15
+    shown: "15 percent"
+    how: "30 percent x half: share of the catchment ordering from Instamart in a given week"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_share_low
+    value: 0.07
+    shown: "7"
+    how: "20 percent x 35 percent, in percent"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_share_high
+    value: 0.26
+    shown: "26"
+    how: "40 percent x 65 percent, in percent"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_week
+    value: 1.5
+    shown: "1.5"
+    how: "assumption: orders a week from each ordering household"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_low
+    value: 1.0
+    shown: "1"
+    how: "assumption's low end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_high
+    value: 2.0
+    shown: "2"
+    how: "assumption's high end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_day
+    value: 1285.7
+    shown: "about 1,290"
+    how: "40,000 x 0.15 x 1.5 / 7"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_day_low
+    value: 300.0
+    shown: "about 300"
+    how: "30,000 x 0.07 x 1 / 7"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_day_high
+    value: 3714.3
+    shown: "about 3,710"
+    how: "50,000 x 0.26 x 2 / 7"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_gap
+    value: 0.1806
+    shown: "18 percent"
+    how: "the estimate above Swiggy's 1,089"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_share_needed
+    value: 0.127
+    shown: "about 13 percent"
+    how: "the weekly share that lands on 1,089: 1,089 x 7 / (40,000 x 1.5)"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_share_low_day
+    value: 600.0
+    shown: "about 600"
+    how: "40,000 x 0.07 x 1.5 / 7: the share alone at its low end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_share_high_day
+    value: 2228.6
+    shown: "about 2,230"
+    how: "40,000 x 0.26 x 1.5 / 7: the share alone at its high end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_only_low_day
+    value: 857.1
+    shown: "about 860"
+    how: "40,000 x 0.15 x 1 / 7: orders a week alone at its low end"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_orders_only_high_day
+    value: 1714.3
+    shown: "about 1,710"
+    how: "40,000 x 0.15 x 2 / 7: orders a week alone at its high end"
+    used_in: "guesstimate: notes and the trainer sheet"
+
+pairs_detail:
+  - id: apples_share
+    value: 0.06
+    shown: "0.060"
+    how: "share of carts holding apples"
+    used_in: "notebook 02 output"
+  - id: atta_share
+    value: 0.09
+    shown: "0.090"
+    how: "share of carts holding atta"
+    used_in: "notebook 02 output"
+  - id: bath_soap_share
+    value: 0.03
+    shown: "0.030"
+    how: "share of carts holding bath soap"
+    used_in: "notebook 02 output"
+  - id: batteries_share
+    value: 0.008
+    shown: "0.008"
+    how: "share of carts holding batteries"
+    used_in: "notebook 02 output"
+  - id: biscuits_share
+    value: 0.1
+    shown: "0.100"
+    how: "share of carts holding biscuits"
+    used_in: "notebook 02 output"
+  - id: capsicum_share
+    value: 0.04
+    shown: "0.040"
+    how: "share of carts holding capsicum"
+    used_in: "notebook 02 output"
+  - id: carrots_share
+    value: 0.04
+    shown: "0.040"
+    how: "share of carts holding carrots"
+    used_in: "notebook 02 output"
+  - id: cheese_slices_share
+    value: 0.03
+    shown: "0.030"
+    how: "share of carts holding cheese slices"
+    used_in: "notebook 02 output"
+  - id: chocolate_bar_share
+    value: 0.045
+    shown: "0.045"
+    how: "share of carts holding chocolate bar"
+    used_in: "notebook 02 output"
+  - id: coffee_share
+    value: 0.02
+    shown: "0.020"
+    how: "share of carts holding coffee"
+    used_in: "notebook 02 output"
+  - id: cucumber_share
+    value: 0.05
+    shown: "0.050"
+    how: "share of carts holding cucumber"
+    used_in: "notebook 02 output"
+  - id: curry_leaves_share
+    value: 0.03
+    shown: "0.030"
+    how: "share of carts holding curry leaves"
+    used_in: "notebook 02 output"
+  - id: detergent_share
+    value: 0.03
+    shown: "0.030"
+    how: "share of carts holding detergent"
+    used_in: "notebook 02 output"
+  - id: diapers_share
+    value: 0.015
+    shown: "0.015"
+    how: "share of carts holding diapers"
+    used_in: "notebook 02 output"
+  - id: dish_soap_share
+    value: 0.035
+    shown: "0.035"
+    how: "share of carts holding dish soap"
+    used_in: "notebook 02 output"
+  - id: garlic_share
+    value: 0.06
+    shown: "0.060"
+    how: "share of carts holding garlic"
+    used_in: "notebook 02 output"
+  - id: ghee_share
+    value: 0.025
+    shown: "0.025"
+    how: "share of carts holding ghee"
+    used_in: "notebook 02 output"
+  - id: ginger_share
+    value: 0.07
+    shown: "0.070"
+    how: "share of carts holding ginger"
+    used_in: "notebook 02 output"
+  - id: green_peas_share
+    value: 0.02
+    shown: "0.020"
+    how: "share of carts holding green peas"
+    used_in: "notebook 02 output"
+  - id: ice_cubes_share
+    value: 0.01
+    shown: "0.010"
+    how: "share of carts holding ice cubes"
+    used_in: "notebook 02 output"
+  - id: jaggery_share
+    value: 0.015
+    shown: "0.015"
+    how: "share of carts holding jaggery"
+    used_in: "notebook 02 output"
+  - id: ketchup_share
+    value: 0.03
+    shown: "0.030"
+    how: "share of carts holding ketchup"
+    used_in: "notebook 02 output"
+  - id: lemons_share
+    value: 0.06
+    shown: "0.060"
+    how: "share of carts holding lemons"
+    used_in: "notebook 02 output"
+  - id: maggi_noodles_share
+    value: 0.06
+    shown: "0.060"
+    how: "share of carts holding maggi noodles"
+    used_in: "notebook 02 output"
+  - id: mint_share
+    value: 0.02
+    shown: "0.020"
+    how: "share of carts holding mint"
+    used_in: "notebook 02 output"
+  - id: mosquito_repellent_share
+    value: 0.015
+    shown: "0.015"
+    how: "share of carts holding mosquito repellent"
+    used_in: "notebook 02 output"
+  - id: namkeen_share
+    value: 0.05
+    shown: "0.050"
+    how: "share of carts holding namkeen"
+    used_in: "notebook 02 output"
+  - id: paper_cups_share
+    value: 0.009
+    shown: "0.009"
+    how: "share of carts holding paper cups"
+    used_in: "notebook 02 output"
+  - id: pav_share
+    value: 0.04
+    shown: "0.040"
+    how: "share of carts holding pav"
+    used_in: "notebook 02 output"
+  - id: peanuts_share
+    value: 0.025
+    shown: "0.025"
+    how: "share of carts holding peanuts"
+    used_in: "notebook 02 output"
+  - id: poha_share
+    value: 0.045
+    shown: "0.045"
+    how: "share of carts holding poha"
+    used_in: "notebook 02 output"
+  - id: rice_share
+    value: 0.06
+    shown: "0.060"
+    how: "share of carts holding rice"
+    used_in: "notebook 02 output"
+  - id: rusk_share
+    value: 0.03
+    shown: "0.030"
+    how: "share of carts holding rusk"
+    used_in: "notebook 02 output"
+  - id: sabudana_share
+    value: 0.012
+    shown: "0.012"
+    how: "share of carts holding sabudana"
+    used_in: "notebook 02 output"
+  - id: sanitary_pads_share
+    value: 0.02
+    shown: "0.020"
+    how: "share of carts holding sanitary pads"
+    used_in: "notebook 02 output"
+  - id: shampoo_share
+    value: 0.02
+    shown: "0.020"
+    how: "share of carts holding shampoo"
+    used_in: "notebook 02 output"
+  - id: spinach_share
+    value: 0.05
+    shown: "0.050"
+    how: "share of carts holding spinach"
+    used_in: "notebook 02 output"
+  - id: sugar_share
+    value: 0.07
+    shown: "0.070"
+    how: "share of carts holding sugar"
+    used_in: "notebook 02 output"
+  - id: sunflower_oil_share
+    value: 0.04
+    shown: "0.040"
+    how: "share of carts holding sunflower oil"
+    used_in: "notebook 02 output"
+  - id: tea_share
+    value: 0.065
+    shown: "0.065"
+    how: "share of carts holding tea"
+    used_in: "notebook 02 output"
+  - id: tissues_share
+    value: 0.02
+    shown: "0.020"
+    how: "share of carts holding tissues"
+    used_in: "notebook 02 output"
+  - id: toor_dal_share
+    value: 0.05
+    shown: "0.050"
+    how: "share of carts holding toor dal"
+    used_in: "notebook 02 output"
+  - id: toothpaste_share
+    value: 0.025
+    shown: "0.025"
+    how: "share of carts holding toothpaste"
+    used_in: "notebook 02 output"
+  - id: by_count_bread_toned_milk
+    value: 10064
+    shown: "10,064"
+    how: "carts holding bread and toned milk, ranked by count"
+    used_in: "chapter 2, notebook 02"
+  - id: by_count_eggs_toned_milk
+    value: 8468
+    shown: "8,468"
+    how: "carts holding eggs and toned milk, ranked by count"
+    used_in: "chapter 2, notebook 02"
+  - id: by_count_curd_toned_milk
+    value: 7436
+    shown: "7,436"
+    how: "carts holding curd and toned milk, ranked by count"
+    used_in: "chapter 2, notebook 02"
+  - id: by_count_bananas_toned_milk
+    value: 6624
+    shown: "6,624"
+    how: "carts holding bananas and toned milk, ranked by count"
+    used_in: "chapter 2, notebook 02"
+  - id: by_count_onions_toned_milk
+    value: 6248
+    shown: "6,248"
+    how: "carts holding onions and toned milk, ranked by count"
+    used_in: "chapter 2, notebook 02"
+  - id: by_count_tomatoes_toned_milk
+    value: 5680
+    shown: "5,680"
+    how: "carts holding tomatoes and toned milk, ranked by count"
+    used_in: "chapter 2, notebook 02"
+  - id: pair_chips_cold_drink_carts
+    value: 2000
+    shown: "2,000"
+    how: "carts holding chips and cold drink"
+    used_in: "notebook 03 output"
+  - id: pair_chips_cold_drink_support
+    value: 0.05
+    shown: "0.0500"
+    how: "their support"
+    used_in: "notebook 03 output"
+  - id: pair_chips_cold_drink_lift
+    value: 3.3875
+    shown: "3.3875"
+    how: "their lift"
+    used_in: "notebook 03 output"
+  - id: pair_coriander_green_chillies_carts
+    value: 1440
+    shown: "1,440"
+    how: "carts holding coriander and green chillies"
+    used_in: "notebook 03 output"
+  - id: pair_coriander_green_chillies_support
+    value: 0.036
+    shown: "0.0360"
+    how: "their support"
+    used_in: "notebook 03 output"
+  - id: pair_coriander_green_chillies_lift
+    value: 3.0
+    shown: "3.0000"
+    how: "their lift"
+    used_in: "notebook 03 output"
+  - id: pair_bread_butter_carts
+    value: 1800
+    shown: "1,800"
+    how: "carts holding bread and butter"
+    used_in: "notebook 03 output"
+  - id: pair_bread_butter_support
+    value: 0.045
+    shown: "0.0450"
+    how: "their support"
+    used_in: "notebook 03 output"
+  - id: pair_bread_butter_lift
+    value: 2.2059
+    shown: "2.2059"
+    how: "their lift"
+    used_in: "notebook 03 output"
+  - id: pair_onions_tomatoes_carts
+    value: 3000
+    shown: "3,000"
+    how: "carts holding onions and tomatoes"
+    used_in: "notebook 03 output"
+  - id: pair_onions_tomatoes_support
+    value: 0.075
+    shown: "0.0750"
+    how: "their support"
+    used_in: "notebook 03 output"
+  - id: pair_onions_tomatoes_lift
+    value: 1.7045
+    shown: "1.7045"
+    how: "their lift"
+    used_in: "notebook 03 output"
+  - id: pair_butter_tomatoes_carts
+    value: 524
+    shown: "524"
+    how: "carts holding butter and tomatoes"
+    used_in: "notebook 03 output"
+  - id: pair_butter_tomatoes_support
+    value: 0.0131
+    shown: "0.0131"
+    how: "their support"
+    used_in: "notebook 03 output"
+  - id: pair_butter_tomatoes_lift
+    value: 1.0917
+    shown: "1.0917"
+    how: "their lift"
+    used_in: "notebook 03 output"
+  - id: pair_chocolate_sauce_ice_cream_carts
+    value: 100
+    shown: "100"
+    how: "carts holding chocolate sauce and ice cream"
+    used_in: "notebook 03 output"
+  - id: pair_chocolate_sauce_ice_cream_support
+    value: 0.0025
+    shown: "0.0025"
+    how: "their support"
+    used_in: "notebook 03 output"
+  - id: pair_chocolate_sauce_ice_cream_lift
+    value: 4.5956
+    shown: "4.5956"
+    how: "their lift"
+    used_in: "notebook 03 output"
+  - id: pair_batteries_tomatoes_carts
+    value: 87
+    shown: "87"
+    how: "carts holding batteries and tomatoes"
+    used_in: "notebook 03 output"
+  - id: pair_batteries_tomatoes_support
+    value: 0.0022
+    shown: "0.0022"
+    how: "their support"
+    used_in: "notebook 03 output"
+  - id: pair_batteries_tomatoes_lift
+    value: 1.3594
+    shown: "1.3594"
+    how: "their lift"
+    used_in: "notebook 03 output"
+  - id: pair_bath_soap_cucumber_carts
+    value: 80
+    shown: "80"
+    how: "carts holding bath soap and cucumber"
+    used_in: "notebook 03 output"
+  - id: pair_bath_soap_cucumber_support
+    value: 0.002
+    shown: "0.0020"
+    how: "their support"
+    used_in: "notebook 03 output"
+  - id: pair_bath_soap_cucumber_lift
+    value: 1.3333
+    shown: "1.3333"
+    how: "their lift"
+    used_in: "notebook 03 output"
+  - id: pair_namkeen_poha_carts
+    value: 116
+    shown: "116"
+    how: "carts holding namkeen and poha"
+    used_in: "notebook 03 output"
+  - id: pair_namkeen_poha_support
+    value: 0.0029
+    shown: "0.0029"
+    how: "their support"
+    used_in: "notebook 03 output"
+  - id: pair_namkeen_poha_lift
+    value: 1.2889
+    shown: "1.2889"
+    how: "their lift"
+    used_in: "notebook 03 output"
+  - id: curd_aundh_w1
+    value: 0.2619
+    shown: "26 percent"
+    how: "curd's share in Aundh, week 1"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_aundh_w2
+    value: 0.2869
+    shown: "29 percent"
+    how: "curd's share in Aundh, week 2"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_aundh_w3
+    value: 0.2967
+    shown: "30 percent"
+    how: "curd's share in Aundh, week 3"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_aundh_w4
+    value: 0.2952
+    shown: "30 percent"
+    how: "curd's share in Aundh, week 4"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_baner_w1
+    value: 0.2946
+    shown: "29 percent"
+    how: "curd's share in Baner, week 1"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_baner_w2
+    value: 0.27
+    shown: "27 percent"
+    how: "curd's share in Baner, week 2"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_baner_w3
+    value: 0.2785
+    shown: "28 percent"
+    how: "curd's share in Baner, week 3"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_baner_w4
+    value: 0.2746
+    shown: "27 percent"
+    how: "curd's share in Baner, week 4"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_camp_w1
+    value: 0.296
+    shown: "30 percent"
+    how: "curd's share in Camp, week 1"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_camp_w2
+    value: 0.271
+    shown: "27 percent"
+    how: "curd's share in Camp, week 2"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_camp_w3
+    value: 0.2801
+    shown: "28 percent"
+    how: "curd's share in Camp, week 3"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_camp_w4
+    value: 0.2741
+    shown: "27 percent"
+    how: "curd's share in Camp, week 4"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_hadapsar_w1
+    value: 0.2509
+    shown: "25 percent"
+    how: "curd's share in Hadapsar, week 1"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_hadapsar_w2
+    value: 0.2699
+    shown: "27 percent"
+    how: "curd's share in Hadapsar, week 2"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_hadapsar_w3
+    value: 0.0021
+    shown: "0 percent"
+    how: "curd's share in Hadapsar, week 3"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_hadapsar_w4
+    value: 0.283
+    shown: "28 percent"
+    how: "curd's share in Hadapsar, week 4"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_hinjewadi_w1
+    value: 0.2763
+    shown: "28 percent"
+    how: "curd's share in Hinjewadi, week 1"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_hinjewadi_w2
+    value: 0.2725
+    shown: "27 percent"
+    how: "curd's share in Hinjewadi, week 2"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_hinjewadi_w3
+    value: 0.284
+    shown: "28 percent"
+    how: "curd's share in Hinjewadi, week 3"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_hinjewadi_w4
+    value: 0.283
+    shown: "28 percent"
+    how: "curd's share in Hinjewadi, week 4"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_kalyani_nagar_w1
+    value: 0.303
+    shown: "30 percent"
+    how: "curd's share in Kalyani Nagar, week 1"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_kalyani_nagar_w2
+    value: 0.2587
+    shown: "26 percent"
+    how: "curd's share in Kalyani Nagar, week 2"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_kalyani_nagar_w3
+    value: 0.2607
+    shown: "26 percent"
+    how: "curd's share in Kalyani Nagar, week 3"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_kalyani_nagar_w4
+    value: 0.2717
+    shown: "27 percent"
+    how: "curd's share in Kalyani Nagar, week 4"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_kothrud_w1
+    value: 0.2948
+    shown: "29 percent"
+    how: "curd's share in Kothrud, week 1"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_kothrud_w2
+    value: 0.2742
+    shown: "27 percent"
+    how: "curd's share in Kothrud, week 2"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_kothrud_w3
+    value: 0.2694
+    shown: "27 percent"
+    how: "curd's share in Kothrud, week 3"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_kothrud_w4
+    value: 0.2819
+    shown: "28 percent"
+    how: "curd's share in Kothrud, week 4"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_viman_nagar_w1
+    value: 0.2638
+    shown: "26 percent"
+    how: "curd's share in Viman Nagar, week 1"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_viman_nagar_w2
+    value: 0.2575
+    shown: "26 percent"
+    how: "curd's share in Viman Nagar, week 2"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_viman_nagar_w3
+    value: 0.0076
+    shown: "1 percent"
+    how: "curd's share in Viman Nagar, week 3"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: curd_viman_nagar_w4
+    value: 0.2954
+    shown: "30 percent"
+    how: "curd's share in Viman Nagar, week 4"
+    used_in: "chapter 3 picture, notebook 03"
+  - id: bread_milk_expected_share
+    value: 0.2414
+    shown: "0.241"
+    how: "bread's share times milk's share"
+    used_in: "chapter 2, notebook 02"
+  - id: after_strip_ctr_exact
+    value: 0.0379
+    shown: "0.0379"
+    how: "the after rate before rounding to 3.8 percent"
+    used_in: "notebook 02 output"
+  - id: milk_impressions_a_day
+    value: 90325
+    shown: "90,325"
+    how: "milk impressions a day after the change, all three slots"
+    used_in: "notebook 03, the second route"
+  - id: milk_lift_band_low
+    value: 0.96
+    shown: "0.96"
+    how: "the case file's band for lift with milk, low end"
+    used_in: "notebook 02 check"
+  - id: milk_lift_band_high
+    value: 1.08
+    shown: "1.08"
+    how: "the case file's band for lift with milk, high end"
+    used_in: "notebook 02 check"
+
+predict_options:
+  - id: option_rs_50000
+    value: 50000
+    shown: "Rs 50,000"
+    how: "invented distractor on the month-recovered predict slide"
+    used_in: "chapter 3 predict"
+  - id: option_rs_2_lakh
+    value: 200000
+    shown: "Rs 2 lakh"
+    how: "invented distractor"
+    used_in: "chapter 3 predict"
+  - id: option_rs_6_lakh
+    value: 600000
+    shown: "Rs 6 lakh"
+    how: "the rounded key"
+    used_in: "chapter 3 predict"
+  - id: option_rs_50_lakh
+    value: 5000000
+    shown: "Rs 50 lakh"
+    how: "invented distractor"
+    used_in: "chapter 3 predict"
+
+exercise_numbers:
+  - id: slot_value_no_add_rate
+    value: 34560
+    shown: "Rs 34,560"
+    how: "60,000 x 0.064 x Rs 9, the add rate left out (a distractor)"
+    used_in: "unguided strip exercise"
+  - id: conf_ratio_distractor
+    value: 1.88
+    shown: "1.88"
+    how: "0.45 / 0.24, a ratio of two confidences (a distractor)"
+    used_in: "drill 1"
+  - id: inverse_conf_distractor
+    value: 2.22
+    shown: "2.22"
+    how: "3,200 / 1,440 (a distractor)"
+    used_in: "drill 1"
+  - id: lift_rule_floor
+    value: 1.5
+    shown: "1.5"
+    how: "the drill's rule: lift at least 1.5 above the support floor"
+    used_in: "drill 2"
+  - id: kalpa_charger_cost
+    value: 120
+    shown: "Rs 120"
+    how: "unit cost of the charger, products table"
+    used_in: "Kalpa exercise"
+  - id: kalpa_bundle_discount
+    value: 20
+    shown: "Rs 20"
+    how: "assumption: merchandising's discount on a bundled charger"
+    used_in: "Kalpa exercise"
+  - id: kalpa_margin_at_list
+    value: 79
+    shown: "Rs 79"
+    how: "199 less 120"
+    used_in: "Kalpa exercise"
+  - id: kalpa_margin_bundled
+    value: 59
+    shown: "Rs 59"
+    how: "199 less 20 less 120"
+    used_in: "Kalpa exercise"
+  - id: kalpa_price_bundled
+    value: 179
+    shown: "Rs 179"
+    how: "199 less 20 (a distractor)"
+    used_in: "Kalpa exercise"
+  - id: kalpa_margin_distractor
+    value: 99
+    shown: "Rs 99"
+    how: "79 plus 20 (a distractor)"
+    used_in: "Kalpa exercise"
+
+practice_toy:
+  - id: kirana_bills
+    value: 200
+    shown: "200"
+    how: "invented: a Pune kirana store's bills in a week"
+    used_in: "practice lab set"
+  - id: kirana_tea
+    value: 120
+    shown: "120"
+    how: "invented: bills with tea"
+    used_in: "practice lab set"
+  - id: kirana_rusk
+    value: 40
+    shown: "40"
+    how: "invented: bills with rusk"
+    used_in: "practice lab set"
+  - id: kirana_tea_rusk
+    value: 30
+    shown: "30"
+    how: "invented: bills with both"
+    used_in: "practice lab set"
+  - id: kirana_tea_rusk_support
+    value: 0.15
+    shown: "0.15"
+    how: "30 of 200"
+    used_in: "practice lab set"
+  - id: kirana_rusk_tea_conf
+    value: 0.75
+    shown: "0.75"
+    how: "30 of 40"
+    used_in: "practice lab set"
+  - id: kirana_tea_rusk_conf
+    value: 0.25
+    shown: "0.25"
+    how: "30 of 120"
+    used_in: "practice lab set"
+  - id: kirana_tea_rusk_expected
+    value: 24
+    shown: "24"
+    how: "200 x 120/200 x 40/200"
+    used_in: "practice lab set"
+  - id: kirana_tea_rusk_lift
+    value: 1.25
+    shown: "1.25"
+    how: "30 over 24"
+    used_in: "practice lab set"
+  - id: kirana_sugar
+    value: 80
+    shown: "80"
+    how: "invented: bills with sugar"
+    used_in: "practice lab set"
+  - id: kirana_sugar_tea
+    value: 48
+    shown: "48"
+    how: "invented: bills with sugar and tea"
+    used_in: "practice lab set"
+  - id: kirana_sugar_tea_conf
+    value: 0.6
+    shown: "0.60"
+    how: "48 of 80"
+    used_in: "practice lab set"
+  - id: kirana_sugar_tea_expected
+    value: 48
+    shown: "48"
+    how: "200 x 80/200 x 120/200"
+    used_in: "practice lab set"
+  - id: kirana_sugar_tea_lift
+    value: 1.0
+    shown: "1.00"
+    how: "48 over 48"
+    used_in: "practice lab set"
+  - id: kirana_tea_share
+    value: 0.6
+    shown: "0.6"
+    how: "120 of 200"
+    used_in: "practice lab set"
+  - id: kirana_rusk_share
+    value: 0.2
+    shown: "0.2"
+    how: "40 of 200"
+    used_in: "practice lab set"
+  - id: kirana_sugar_no_tea
+    value: 32
+    shown: "32"
+    how: "80 less 48"
+    used_in: "practice lab set"
+  - id: practice_clicks
+    value: 1500
+    shown: "1,500"
+    how: "30,000 x 0.05"
+    used_in: "practice lab set"
+  - id: practice_views
+    value: 30000
+    shown: "30,000"
+    how: "invented: cart-page views a day"
+    used_in: "practice lab set"
+  - id: practice_ctr
+    value: 0.05
+    shown: "5 percent"
+    how: "invented: click-through"
+    used_in: "practice lab set"
+  - id: practice_margin
+    value: 10
+    shown: "Rs 10"
+    how: "invented: margin an add"
+    used_in: "practice lab set"
+  - id: practice_discount
+    value: 3
+    shown: "Rs 3"
+    how: "invented: bundle discount an add"
+    used_in: "practice lab set"
+  - id: practice_adds
+    value: 750
+    shown: "750"
+    how: "30,000 x 0.05 x 0.5"
+    used_in: "practice lab set"
+  - id: practice_gross_margin
+    value: 7500
+    shown: "Rs 7,500"
+    how: "750 x Rs 10"
+    used_in: "practice lab set"
+  - id: practice_returned
+    value: 2250
+    shown: "Rs 2,250"
+    how: "750 x Rs 3"
+    used_in: "practice lab set"
+  - id: practice_net
+    value: 5250
+    shown: "Rs 5,250"
+    how: "7,500 less 2,250"
+    used_in: "practice lab set"
+  - id: practice_no_add_rate
+    value: 15000
+    shown: "Rs 15,000"
+    how: "a distractor: the add rate left out"
+    used_in: "practice lab set"
+  - id: practice_sales_distractor
+    value: 22500
+    shown: "Rs 22,500"
+    how: "a distractor: 750 adds x Rs 30 price"
+    used_in: "practice lab set"
+  - id: practice_price
+    value: 30
+    shown: "Rs 30"
+    how: "invented: price of the added item"
+    used_in: "practice lab set"
+  - id: pair_a_support
+    value: 0.12
+    shown: "12 percent"
+    how: "invented pair A"
+    used_in: "practice lab set"
+  - id: pair_a_lift
+    value: 1.05
+    shown: "1.05"
+    how: "invented pair A"
+    used_in: "practice lab set"
+  - id: pair_b_support
+    value: 0.04
+    shown: "4 percent"
+    how: "invented pair B"
+    used_in: "practice lab set"
+  - id: pair_b_lift
+    value: 2.6
+    shown: "2.6"
+    how: "invented pair B"
+    used_in: "practice lab set"
+  - id: pair_c_support
+    value: 0.004
+    shown: "0.4 percent"
+    how: "invented pair C"
+    used_in: "practice lab set"
+  - id: pair_c_lift
+    value: 6.0
+    shown: "6.0"
+    how: "invented pair C"
+    used_in: "practice lab set"
+  - id: pair_d_support
+    value: 0.02
+    shown: "2 percent"
+    how: "invented pair D"
+    used_in: "practice lab set"
+  - id: pair_d_lift
+    value: 1.8
+    shown: "1.8"
+    how: "invented pair D"
+    used_in: "practice lab set"
+  - id: bundle_x_lift
+    value: 1.02
+    shown: "1.02"
+    how: "invented bundle X"
+    used_in: "practice lab set"
+  - id: bundle_x_support
+    value: 0.3
+    shown: "30 percent"
+    how: "invented bundle X"
+    used_in: "practice lab set"
+  - id: bundle_y_lift
+    value: 2.4
+    shown: "2.4"
+    how: "invented bundle Y"
+    used_in: "practice lab set"
+  - id: bundle_y_support
+    value: 0.03
+    shown: "3 percent"
+    how: "invented bundle Y"
+    used_in: "practice lab set"
+  - id: bundle_y_margin
+    value: 12
+    shown: "Rs 12"
+    how: "invented bundle Y margin an add"
+    used_in: "practice lab set"
+  - id: bundle_z_lift
+    value: 5.0
+    shown: "5.0"
+    how: "invented bundle Z"
+    used_in: "practice lab set"
+  - id: bundle_z_support
+    value: 0.002
+    shown: "0.2 percent"
+    how: "invented bundle Z"
+    used_in: "practice lab set"
+
+kahoot_toy:
+  - id: kahoot_popular_share
+    value: 0.75
+    shown: "75 percent"
+    how: "invented: the popular item's share of carts"
+    used_in: "Kahoot"
+  - id: kahoot_partner_conf
+    value: 0.76
+    shown: "0.76"
+    how: "invented: the partner's confidence toward it"
+    used_in: "Kahoot"
+  - id: kahoot_partner_lift
+    value: 1.01
+    shown: "1.01"
+    how: "0.76 over 0.75"
+    used_in: "Kahoot"
+  - id: kahoot_blend_sum
+    value: 0.076
+    shown: "7.6 percent"
+    how: "a distractor: 1.2 plus 6.4"
+    used_in: "Kahoot"
+  - id: kahoot_blend_gap
+    value: 0.026
+    shown: "2.6 percent"
+    how: "a distractor: 6.4 less 3.8"
+    used_in: "Kahoot"
+
+fallback:
+  - id: slice_kothrud_morning_carts
+    value: 1576
+    shown: "1,576"
+    how: "carts in Kothrud, morning"
+    used_in: "fallback S6 and S7, the rerun"
+  - id: slice_kothrud_evening_carts
+    value: 2343
+    shown: "2,343"
+    how: "carts in Kothrud, evening"
+    used_in: "fallback S6 and S7, the rerun"
+  - id: slice_baner_morning_carts
+    value: 1395
+    shown: "1,395"
+    how: "carts in Baner, morning"
+    used_in: "fallback S6 and S7, the rerun"
+  - id: slice_hinjewadi_night_carts
+    value: 649
+    shown: "649"
+    how: "carts in Hinjewadi, night"
+    used_in: "fallback S6 and S7, the rerun"
+  - id: slice_hadapsar_week_three_carts
+    value: 1405
+    shown: "1,405"
+    how: "carts in Hadapsar, week three"
+    used_in: "fallback S6 and S7, the rerun"
+  - id: slice_hadapsar_week_four_carts
+    value: 1332
+    shown: "1,332"
+    how: "carts in Hadapsar, week four"
+    used_in: "fallback S6 and S7, the rerun"
+  - id: slice_viman_nagar_week_three_carts
+    value: 1178
+    shown: "1,178"
+    how: "carts in Viman Nagar, week three"
+    used_in: "fallback S6 and S7, the rerun"
+  - id: slice_kothrud_evening_chips_cold_drink_lift
+    value: 3.7037
+    shown: "3.70"
+    how: "lift of chips and cold drink in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_kothrud_evening_chips_cold_drink_carts
+    value: 132
+    shown: "132"
+    how: "carts holding chips and cold drink in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_kothrud_evening_coriander_green_chillies_lift
+    value: 2.8632
+    shown: "2.86"
+    how: "lift of coriander and green chillies in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_kothrud_evening_coriander_green_chillies_carts
+    value: 88
+    shown: "88"
+    how: "carts holding coriander and green chillies in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_kothrud_evening_bread_butter_lift
+    value: 2.1592
+    shown: "2.16"
+    how: "lift of bread and butter in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_kothrud_evening_bread_butter_carts
+    value: 94
+    shown: "94"
+    how: "carts holding bread and butter in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_kothrud_evening_onions_tomatoes_lift
+    value: 1.71
+    shown: "1.71"
+    how: "lift of onions and tomatoes in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_kothrud_evening_onions_tomatoes_carts
+    value: 170
+    shown: "170"
+    how: "carts holding onions and tomatoes in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_coriander_green_chillies_lift
+    value: 3.2625
+    shown: "3.26"
+    how: "lift of coriander and green chillies in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_coriander_green_chillies_carts
+    value: 49
+    shown: "49"
+    how: "carts holding coriander and green chillies in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_chips_cold_drink_lift
+    value: 2.8561
+    shown: "2.86"
+    how: "lift of chips and cold drink in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_chips_cold_drink_carts
+    value: 55
+    shown: "55"
+    how: "carts holding chips and cold drink in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_bread_butter_lift
+    value: 2.0038
+    shown: "2.00"
+    how: "lift of bread and butter in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_bread_butter_carts
+    value: 63
+    shown: "63"
+    how: "carts holding bread and butter in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_onions_tomatoes_lift
+    value: 1.7775
+    shown: "1.78"
+    how: "lift of onions and tomatoes in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_onions_tomatoes_carts
+    value: 106
+    shown: "106"
+    how: "carts holding onions and tomatoes in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_chips_cold_drink_lift
+    value: 3.2674
+    shown: "3.27"
+    how: "lift of chips and cold drink in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_chips_cold_drink_carts
+    value: 35
+    shown: "35"
+    how: "carts holding chips and cold drink in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_coriander_green_chillies_lift
+    value: 2.7968
+    shown: "2.80"
+    how: "lift of coriander and green chillies in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_coriander_green_chillies_carts
+    value: 20
+    shown: "20"
+    how: "carts holding coriander and green chillies in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_coriander_ghee_lift
+    value: 2.5934
+    shown: "2.59"
+    how: "lift of coriander and ghee in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_coriander_ghee_carts
+    value: 8
+    shown: "8"
+    how: "carts holding coriander and ghee in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_pav_potatoes_lift
+    value: 2.4117
+    shown: "2.41"
+    how: "lift of pav and potatoes in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_pav_potatoes_carts
+    value: 10
+    shown: "10"
+    how: "carts holding pav and potatoes in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_chips_cold_drink_lift
+    value: 3.6383
+    shown: "3.64"
+    how: "lift of chips and cold drink in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_chips_cold_drink_carts
+    value: 53
+    shown: "53"
+    how: "carts holding chips and cold drink in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_green_chillies_spinach_lift
+    value: 2.4079
+    shown: "2.41"
+    how: "lift of green chillies and spinach in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_green_chillies_spinach_carts
+    value: 13
+    shown: "13"
+    how: "carts holding green chillies and spinach in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_coriander_green_chillies_lift
+    value: 2.2993
+    shown: "2.30"
+    how: "lift of coriander and green chillies in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_coriander_green_chillies_carts
+    value: 36
+    shown: "36"
+    how: "carts holding coriander and green chillies in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_bread_butter_lift
+    value: 2.1974
+    shown: "2.20"
+    how: "lift of bread and butter in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_bread_butter_carts
+    value: 69
+    shown: "69"
+    how: "carts holding bread and butter in Viman Nagar, week three"
+    used_in: "take-home self-check"
+  - id: slice_thin_slips
+    value: 3
+    shown: "3"
+    how: "pairs above the floor that outrank bread and butter in Hinjewadi at night"
+    used_in: "fallback S7"
+  - id: slice_thin_carts_max
+    value: 10
+    shown: "10"
+    how: "most carts behind any of those pairs"
+    used_in: "fallback S7"
+  - id: slice_thin_carts_min
+    value: 7
+    shown: "7"
+    how: "fewest carts behind any of them"
+    used_in: "fallback S7"
+  - id: curd_hadapsar_week3
+    value: 0.0021
+    shown: "0.2 percent"
+    how: "curd's share in Hadapsar, week three"
+    used_in: "fallback S6"
+  - id: curd_hadapsar_week4
+    value: 0.283
+    shown: "28 percent"
+    how: "curd's share in Hadapsar, week four"
+    used_in: "fallback S6"
+  - id: slice_kothrud_evening_floor
+    value: 23.43
+    shown: "23.43"
+    how: "1 percent of the carts in Kothrud, evening"
+    used_in: "take-home brief and self-check"
+  - id: slice_kothrud_evening_floor_min
+    value: 24
+    shown: "24"
+    how: "fewest carts a pair needs to clear the floor in Kothrud, evening"
+    used_in: "take-home self-check"
+  - id: slice_baner_morning_floor
+    value: 13.95
+    shown: "13.95"
+    how: "1 percent of the carts in Baner, morning"
+    used_in: "take-home brief and self-check"
+  - id: slice_baner_morning_floor_min
+    value: 14
+    shown: "14"
+    how: "fewest carts a pair needs to clear the floor in Baner, morning"
+    used_in: "take-home self-check"
+  - id: slice_hinjewadi_night_floor
+    value: 6.49
+    shown: "6.49"
+    how: "1 percent of the carts in Hinjewadi, night"
+    used_in: "take-home brief and self-check"
+  - id: slice_hinjewadi_night_floor_min
+    value: 7
+    shown: "7"
+    how: "fewest carts a pair needs to clear the floor in Hinjewadi, night"
+    used_in: "take-home self-check"
+  - id: slice_viman_nagar_week_three_floor
+    value: 11.78
+    shown: "11.78"
+    how: "1 percent of the carts in Viman Nagar, week three"
+    used_in: "take-home brief and self-check"
+  - id: slice_viman_nagar_week_three_floor_min
+    value: 12
+    shown: "12"
+    how: "fewest carts a pair needs to clear the floor in Viman Nagar, week three"
+    used_in: "take-home self-check"
+
+preread:
+  - id: thursday_blended_retention
+    value: 0.38
+    shown: "38 percent"
+    how: "Thursday's ticket: blended month-two retention, June to September (case file target)"
+    used_in: "pre-read"
+  - id: thursday_jan_month_one
+    value: 0.58
+    shown: "58 percent"
+    how: "Thursday's ticket: January cohort's month-one rate (case file target)"
+    used_in: "pre-read"
+  - id: thursday_jul_month_one
+    value: 0.49
+    shown: "49 percent"
+    how: "Thursday's ticket: July cohort (case file target)"
+    used_in: "pre-read"
+  - id: thursday_aug_month_one
+    value: 0.31
+    shown: "31 percent"
+    how: "Thursday's ticket: August sale cohort (case file target)"
+    used_in: "pre-read"
+  - id: thursday_aug_size
+    value: 2.6
+    shown: "2.6 times"
+    how: "Thursday's ticket: the August cohort against a normal month (case file target)"
+    used_in: "pre-read"
+  - id: thursday_android_before
+    value: 0.58
+    shown: "58 percent"
+    how: "Thursday's ticket: members' add-to-cart to order on Android before 14 September (case file target)"
+    used_in: "pre-read"
+  - id: thursday_android_after
+    value: 0.44
+    shown: "44 percent"
+    how: "Thursday's ticket: the same after (case file target)"
+    used_in: "pre-read"
+  - id: thursday_members
+    value: 60000
+    shown: "60,000"
+    how: "Thursday's ticket: members signed up January to September 2026 (case file target)"
+    used_in: "pre-read"
+
+week_map:
+  - id: monday_trips_per_hour_before
+    value: 1.9
+    shown: "1.9"
+    how: "Monday's target in the W04 spine, section 5"
+    used_in: "slide two's week map"
+  - id: monday_trips_per_hour_after
+    value: 1.6
+    shown: "1.6"
+    how: "Monday's target in the W04 spine, section 5"
+    used_in: "slide two's week map"
+  - id: tuesday_bookings_per_hour_before
+    value: 314
+    shown: "Rs 314"
+    how: "Tuesday's target in the W04 spine, section 6"
+    used_in: "slide two's week map"
+  - id: tuesday_bookings_per_hour_after
+    value: 260
+    shown: "Rs 260"
+    how: "Tuesday's target in the W04 spine, section 6"
+    used_in: "slide two's week map"
+
+kalpa_lab:
+  - id: kalpa_charger_list_price
+    value: 199
+    shown: "Rs 199"
+    how: "list price of the phone charger, products table (the row)"
+    used_in: "every Kalpa mention"
+  - id: kalpa_claim_share
+    value: 0.8
+    shown: "80 percent"
+    how: "merchandising's claim in the row: the charger is in 80 percent of baskets"
+    used_in: "lab ticket"
+  - id: kalpa_orders
+    value: 1000
+    shown: "1,000"
+    how: "v4 orders, every one with lines"
+    used_in: "notebook 04, lab note"
+  - id: kalpa_baskets
+    value: 812
+    shown: "812"
+    how: "consumer orders, the basket base"
+    used_in: "notebook 04, lab note"
+  - id: kalpa_business
+    value: 188
+    shown: "188"
+    how: "Business orders, one product in bulk"
+    used_in: "notebook 04"
+  - id: kalpa_lines_max
+    value: 8
+    shown: "8"
+    how: "most lines in a consumer basket"
+    used_in: "notebook 04"
+  - id: kalpa_charger_all_orders
+    value: 0.696
+    shown: "69.6 percent"
+    how: "TRAP: the charger's share if the Business orders stay in the base"
+    used_in: "lab note"
+  - id: kalpa_charger_share
+    value: 0.8448
+    shown: "84.5 percent"
+    how: "PLANT: baskets with the charger"
+    used_in: "TRAINER until the lab"
+  - id: kalpa_screen_charger_conf
+    value: 0.82
+    shown: "0.82"
+    how: "PLANT: screen protector to charger"
+    used_in: "TRAINER until the lab"
+  - id: kalpa_screen_charger_lift
+    value: 0.9706
+    shown: "0.97"
+    how: "PLANT: their lift"
+    used_in: "TRAINER until the lab"
+  - id: kalpa_charger_conf_band
+    value: "0.82 to 0.85"
+    shown: "0.82 to 0.85"
+    how: "PLANT: confidence to the charger, every product at 2 percent or more"
+    used_in: "TRAINER until the lab"
+  - id: kalpa_charger_lift_band
+    value: "0.97 to 1.00"
+    shown: "0.97 to 1.00"
+    how: "PLANT: lift with the charger, the same products"
+    used_in: "TRAINER until the lab"
+  - id: kalpa_pair_lift
+    value: 3.1182
+    shown: "3.1"
+    how: "PLANT: wireless earphones and earphone case"
+    used_in: "TRAINER until the lab"
+  - id: kalpa_pair_support
+    value: 0.0603
+    shown: "6 percent"
+    how: "PLANT: their support"
+    used_in: "TRAINER until the lab"
+  - id: kalpa_pair_baskets
+    value: 49
+    shown: "49"
+    how: "PLANT: baskets with both"
+    used_in: "TRAINER until the lab"
+  - id: kalpa_pair_retail_plus
+    value: 0.7551
+    shown: "76 percent"
+    how: "PLANT: share of those baskets from Retail-Plus"
+    used_in: "TRAINER until the lab"
+  - id: kalpa_thin_lift
+    value: 4.0
+    shown: "4.0"
+    how: "PLANT: car phone mount and car charger"
+    used_in: "TRAINER until the lab"
+  - id: kalpa_thin_support
+    value: 0.0025
+    shown: "0.25 percent"
+    how: "PLANT: their support"
+    used_in: "TRAINER until the lab"
+  - id: kalpa_thin_baskets
+    value: 2
+    shown: "2"
+    how: "PLANT: baskets with both"
+    used_in: "TRAINER until the lab"
+  - id: kalpa_floor_pairs
+    value: 69
+    shown: "69"
+    how: "pairs at or above the 5 percent floor"
+    used_in: "lab note"
+  - id: kalpa_one_pct_baskets
+    value: 8.12
+    shown: "about 8"
+    how: "1 percent of the consumer baskets"
+    used_in: "notebook 04"
+  - id: kalpa_floor_baskets
+    value: 40.6
+    shown: "about 41"
+    how: "5 percent of the consumer baskets"
+    used_in: "notebook 04"
+  - id: kalpa_twelve_ids
+    value: "KR-00001, KR-00002, KR-00004, KR-00005, KR-00006, KR-00008, KR-00009, KR-00011, KR-00157, KR-00190, KR-00340, KR-00938"
+    shown: ""
+    how: "the lab's twelve baskets"
+    used_in: "lab note"
+  - id: kalpa_twelve_charger
+    value: 9
+    shown: "9"
+    how: "of the twelve, baskets with the charger (0.75)"
+    used_in: "lab note, notebook 04"
+  - id: kalpa_twelve_screen_conf
+    value: 0.6667
+    shown: "0.67"
+    how: "screen protector to charger on the twelve"
+    used_in: "lab note, notebook 04"
+  - id: kalpa_twelve_screen_lift
+    value: 0.8889
+    shown: "0.89"
+    how: "their lift on the twelve"
+    used_in: "lab note, notebook 04"
+  - id: kalpa_twelve_pair_lift
+    value: 2.6667
+    shown: "2.67"
+    how: "earphones and case on the twelve"
+    used_in: "lab note, notebook 04"
