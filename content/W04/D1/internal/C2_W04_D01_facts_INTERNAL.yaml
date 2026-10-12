@@ -1,0 +1,266 @@
+case:
+  company: Uber
+  city: Hyderabad
+  surface: driver app peak-hour earnings guarantee
+  launch: '2026-08-31'
+  before_window:
+    start: '2026-07-20'
+    end: '2026-08-30'
+  after_window:
+    start: '2026-08-31'
+    end: '2026-10-11'
+fare_per_trip_rs:
+  value: 165
+  how: a fixed average peak fare used in the generator
+  where: deck half1 chapter 2, notebook 02, cheat sheet panel two
+city_totals:
+  before:
+    peak_online_hours:
+      value: 118000
+      how: sum of peak_online_hours over the 6 before weeks
+      where: the ticket; deck half1 chapter 1 and 2; notebook 02
+    peak_trips:
+      value: 224200
+      how: sum of peak_trips over the 6 before weeks
+      where: the ticket; deck half1 chapter 1 and 2; notebook 02
+    trips_per_online_hour:
+      value: 1.9
+      how: sum trips / sum hours over the 6 before weeks
+      where: the ticket; deck half1 chapter 1 and 2; notebook 02
+    peak_bookings_rs:
+      value: 36993000
+      how: sum of peak_bookings_rs over the 6 before weeks
+      where: deck half1 chapter 2; notebook 02; cheat sheet
+    rs_per_online_hour:
+      value: 313.5
+      how: bookings before / hours before
+      where: deck half1 chapter 2; notebook 02
+    acceptance_share:
+      value: 0.863
+      how: sum accepted / sum requests over the 6 before weeks
+      where: the ticket; deck half1 chapter 2
+    driver_cancels_share:
+      value: 0.037
+      how: sum driver_cancels / sum accepted
+      where: the ticket
+    topup_rs:
+      value: 0
+      how: scheme not yet launched
+      where: the ticket; deck half1 chapter 2
+  after:
+    peak_online_hours:
+      value: 146300
+      how: sum of peak_online_hours over the 6 after weeks
+      where: the ticket; deck half1 chapter 1 and 2; notebook 02
+    peak_trips:
+      value: 230900
+      how: sum of peak_trips over the 6 after weeks
+      where: the ticket; deck half1 chapter 1 and 2; notebook 02
+    trips_per_online_hour:
+      value: 1.58
+      how: sum trips / sum hours over the 6 after weeks
+      where: the ticket; deck half1 chapter 1 and 2; notebook 02
+    peak_bookings_rs:
+      value: 38098500
+      how: sum of peak_bookings_rs over the 6 after weeks
+      where: deck half1 chapter 2; notebook 02; cheat sheet
+    rs_per_online_hour:
+      value: 260.4
+      how: bookings after / hours after
+      where: deck half1 chapter 2; notebook 02
+    acceptance_share:
+      value: 0.73
+      how: sum accepted / sum requests over the 6 after weeks
+      where: the ticket; deck half1 chapter 2
+    driver_cancels_share:
+      value: 0.09
+      how: sum driver_cancels / sum accepted
+      where: the ticket
+    topup_rs:
+      value: 19000000
+      how: sum of topup_rs over the 6 after weeks
+      where: the ticket; deck half1 chapter 3; notebook 03
+    topup_share_to_low_acceptance:
+      value: 0.61
+      how: topup where acceptance < 0.5 / total topup
+      where: deck half1 chapter 3; notebook 03
+zone_level:
+  before:
+    unfulfilled_share:
+      value: 0.11
+      how: 1 - sum zone fulfilled / sum zone requests
+      where: deck half1 chapter 2 (the check)
+    median_wait_min:
+      value: 4.7
+      how: median of zone-week median_wait_min
+      where: the ticket; deck half1 chapter 3
+  after:
+    unfulfilled_share:
+      value: 0.1
+      how: 1 - sum zone fulfilled / sum zone requests
+      where: deck half1 chapter 2 (the check)
+    median_wait_min:
+      value: 4.6
+      how: median of zone-week median_wait_min
+      where: the ticket; deck half1 chapter 3
+twelve_rows:
+  drivers:
+  - A
+  - B
+  - C
+  - D
+  - E
+  - F
+  zones:
+    A: Jubilee Hills
+    B: Banjara Hills
+    C: Gachibowli
+    D: Madhapur
+    E: Shamshabad
+    F: Rajendranagar
+  before:
+    A:
+      peak_online_hours: 10
+      peak_requests: 24
+      peak_accepted: 21
+      peak_driver_cancels: 0
+      peak_trips: 21
+    B:
+      peak_online_hours: 9
+      peak_requests: 20
+      peak_accepted: 17
+      peak_driver_cancels: 0
+      peak_trips: 17
+    C:
+      peak_online_hours: 11
+      peak_requests: 25
+      peak_accepted: 22
+      peak_driver_cancels: 0
+      peak_trips: 22
+    D:
+      peak_online_hours: 10
+      peak_requests: 22
+      peak_accepted: 19
+      peak_driver_cancels: 0
+      peak_trips: 19
+    E:
+      peak_online_hours: 10
+      peak_requests: 21
+      peak_accepted: 18
+      peak_driver_cancels: 0
+      peak_trips: 18
+    F:
+      peak_online_hours: 10
+      peak_requests: 20
+      peak_accepted: 17
+      peak_driver_cancels: 0
+      peak_trips: 17
+  after:
+    A:
+      peak_online_hours: 11
+      peak_requests: 25
+      peak_accepted: 22
+      peak_driver_cancels: 0
+      peak_trips: 22
+    B:
+      peak_online_hours: 10
+      peak_requests: 21
+      peak_accepted: 18
+      peak_driver_cancels: 0
+      peak_trips: 18
+    C:
+      peak_online_hours: 12
+      peak_requests: 26
+      peak_accepted: 23
+      peak_driver_cancels: 0
+      peak_trips: 23
+    D:
+      peak_online_hours: 11
+      peak_requests: 23
+      peak_accepted: 20
+      peak_driver_cancels: 0
+      peak_trips: 20
+    E:
+      peak_online_hours: 16
+      peak_requests: 14
+      peak_accepted: 4
+      peak_driver_cancels: 1
+      peak_trips: 3
+    F:
+      peak_online_hours: 14
+      peak_requests: 12
+      peak_accepted: 3
+      peak_driver_cancels: 1
+      peak_trips: 2
+  hand_count:
+    hours_before:
+      value: 60
+      how: sum of the six before rows
+    hours_after:
+      value: 74
+      how: sum of the six after rows
+    trips_before:
+      value: 114
+      how: sum of the six before trips
+    trips_after:
+      value: 88
+      how: sum of the six after trips as the rows are printed
+      note: the case file prints 110, a target 1.49 trips per hour. the row values
+        as printed sum to 88 and give 1.19. the pack uses the computed value.
+    ratio_before:
+      value: 1.9
+      how: 114 / 60
+    ratio_after:
+      value: 1.19
+      how: 88 / 74
+      note: the computed value, not the case file's 1.49.
+idle_tail:
+  driver_count: 180
+  hours_ratio:
+    value: 2.1
+    how: idle hours after / idle hours before
+    where: deck half1 chapter 3; notebook 02
+  trips_ratio:
+    value: 0.88
+    how: idle trips after / idle trips before
+    where: deck half1 chapter 3; notebook 02
+  share_new_hours_outer:
+    value: 0.72
+    how: idle-tail outer-zone new hours / total new hours
+    where: deck half1 chapter 3; notebook 02
+cost_of_gaming:
+  topup_to_idle_rs:
+    value: 11590000
+    how: 0.61 x Rs 1.9 crore
+    where: deck half1 chapter 3; notebook 03
+kalpa:
+  member_count: 120
+  comparison_window:
+    start: '2026-08-20'
+    end: '2026-09-09'
+  auto_reorder_window:
+    start: '2026-09-10'
+    end: '2026-09-30'
+  plants:
+    reorders_per_member_ratio:
+      value: 1.22
+      how: auto reorders per member / comparison per member
+      where: TRAINER lab note; the lab notebook finds it
+    booked_revenue_per_member_ratio:
+      value: 0.96
+      how: auto value per member / comparison value per member
+      where: TRAINER lab note; the lab notebook finds it
+    none_delivered:
+      value: true
+      how: no auto reorder has status delivered
+      where: TRAINER lab note; v4 orders stay frozen
+sources:
+  case_file: docs/detailing/W04_case_file.md
+  spine: docs/detailing/W04_analyst_craft_spine.md
+corrections:
+- what: The case file prints the twelve-row hand count as hours 60 to 74, trips 114
+    to 110, trips per online hour 1.90 to 1.49. The six after rows as printed sum
+    to 88 trips, which gives 1.19 trips per online hour. The facts file records the
+    computed value, and every learner file reads 88 trips and 1.19 trips per online
+    hour on the hand count.
+  where: docs/detailing/W04_case_file.md, Monday twelve rows and L1 numbers
