@@ -3127,16 +3127,22 @@ var W4 = {
         var tr = st.trend * (t - 1), se = st.season * Math.cos(2 * Math.PI * (t - 5) / 52), no = st.noise * F1N[t - 1];
         comp.trend.push(tr); comp.season.push(se); comp.noise.push(no); sum.push(200 + tr + se + no);
       }
-      var svg = svgRoot(680, 490, "Trend, season and noise added into one weekly series");
+      var svg = svgRoot(680, 510, "Trend, season and noise added into one weekly series");
+      add(svg, "line", { x1: X(53), x2: X(53), y1: 30, y2: 476, stroke: C.line, "stroke-dasharray": "4 4" });
+      txt(svg, X(26), 498, "year 1, weeks 1 to 52", { size: 12.5, anchor: "middle", fill: C.night });
+      txt(svg, X(79), 498, "year 2, weeks 53 to 104", { size: 12.5, anchor: "middle", fill: C.night });
       [["trend", 22], ["season", 112], ["noise", 202]].forEach(function (pn) {
         var y0 = pn[1] + 40, Y = function (v) { return y0 - v * 0.42; };
-        txt(svg, 16, pn[1] + 14, pn[0], { size: 14.5, weight: 700 });
+        txt(svg, 16, pn[1] + 4, pn[0] + ", thousand a week", { size: 14.5, weight: 700 });
         add(svg, "line", { x1: 70, x2: 660, y1: y0, y2: y0, stroke: C.line });
+        txt(svg, 62, y0 + 4, "0", { size: 12.5, anchor: "end", fill: C.muted });
+        add(svg, "line", { x1: 70, x2: 660, y1: Y(50), y2: Y(50), stroke: C.line, "stroke-dasharray": "2 4" });
+        txt(svg, 62, Y(50) + 4, "+50", { size: 12.5, anchor: "end", fill: C.muted });
         add(svg, "polyline", { points: comp[pn[0]].map(function (v, i) { return X(i + 1).toFixed(1) + "," + Y(v).toFixed(1); }).join(" "),
           fill: "none", stroke: pn[0] === "noise" ? C.muted : C.violet, "stroke-width": 2 });
       });
       var Y = function (v) { return 470 - (v - 100) * 0.62; };
-      txt(svg, 16, 292, "the series: 200 thousand + trend + season + noise", { size: 14.5, weight: 700 });
+      txt(svg, 16, 292, "the series, thousand a week: 200 + trend + season + noise", { size: 14.5, weight: 700 });
       [150, 250, 350].forEach(function (tv) {
         add(svg, "line", { x1: 70, x2: 660, y1: Y(tv), y2: Y(tv), stroke: C.line });
         txt(svg, 62, Y(tv) + 5, String(tv), { size: 12.5, anchor: "end", fill: C.muted });
