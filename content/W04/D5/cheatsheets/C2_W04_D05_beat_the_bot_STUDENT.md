@@ -71,12 +71,12 @@ On 2025's festival, forecast from 22 September 2025, the house bot missed by 58,
 - Why: over 100 weeks, if demand beats the plan in 18, one more shipment of plan saves 18 x Rs 25 = Rs 450 and wastes 82 x Rs 5.42 = Rs 444.
 - Sorted, the 13 hidden weeks put the 0.82 point between the 10th (2.1 percent above the forecast) and the 11th (2.7): 2.6 percent, which covers 10 of 13, the 11th just above it.
 - Shifts are festival-aligned x 1.026 over 120, rounded up: 20,275 in eight weeks, 3,719 in the week of 19 October.
-- The error bar is the forecast's average miss, 6,615 shipments a week: about Rs 35,800 when it runs that far high, Rs 1.65 lakh when that far low.
+- The error bar is the forecast's typical miss, 6,615 shipments a week, and 5 of 13 weeks missed by more: about Rs 35,800 when it runs that far high, Rs 1.65 lakh when that far low.
 
 **Crux:** Cover 0.82 of weeks: a late shipment costs 4.6 times a spare one, so the plan sits 2.6 percent above the forecast.
 
 ## Panel 7: What does the interviewer listen for?
 
-"I hold out the latest weeks, at least as many as the forecast must reach ahead, and score the misses in shipments and rupees against the seasonal naive: festival-aligned missed by 6,615 a week, the seasonal naive by 9,831." An AI company sizes launch capacity in tokens a second from the ground up, checks it against earlier launches by days from launch with the weekday kept, and books above the forecast to a latency target.
+"I hold out the latest weeks, at least as many as the forecast must reach ahead, and score the misses in shipments and rupees against the seasonal naive: festival-aligned missed by 6,615 a week, the seasonal naive by 9,831; the hidden weeks hold no festival, so I back-test one." An AI company sizes launch capacity from the ground up as requests open at once, checks it against earlier launches by days from launch with the weekday kept, and books to a latency target.
 
 **Crux:** Name the hidden weeks, the unit, the copy to beat and the direction that costs more.

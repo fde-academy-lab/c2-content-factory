@@ -617,6 +617,17 @@ def main():
     grid = [i / 1000 for i in range(-80, 101, 2)]
     lowest = min(grid, key=peak_cost)
     F.add("interview", "curve_min_pct", lowest, pct(lowest), "the lowest point of the week's cost curve, on notebook 03's grid of 0.2 percent steps", "notebook 03, slides")
+    vend_total = sum(ahead["vendor"][i] for i in WINDOW)
+    F.add("interview", "plan_minus_vendor_total", sum(plan.values()) - vend_total, n(sum(plan.values()) - vend_total),
+          "the plan's eight weeks minus the vendor's", "transcript 2")
+    F.add("interview", "plan_vendor_pct", sum(plan.values()) / vend_total - 1, pct(sum(plan.values()) / vend_total - 1),
+          "the plan's eight weeks over the vendor's", "transcript 2")
+    F.add("interview", "vendor_shifts_total", sum(math.ceil(ahead["vendor"][i] / PER_SHIFT) for i in WINDOW),
+          n(sum(math.ceil(ahead["vendor"][i] / PER_SHIFT) for i in WINDOW)), "the vendor's curve / 120, rounded up, eight weeks", "transcript 2")
+    rush = sum(plan[i] - ahead["vendor"][i] for i in (107, 108, 109))
+    F.add("interview", "plan_over_vendor_rush", rush, n(rush), "the plan minus the vendor's curve, 19 Oct to 2 Nov 2026", "transcript 2")
+    over_mae = sum(abs(hold["aligned"][i] - y[i]) > S["aligned"]["mae"] for i in HOLDOUT)
+    F.add("interview", "weeks_over_mae", over_mae, f"{over_mae} of 13", "hidden weeks festival-aligned missed by more than its MAE", "notes, transcripts")
     F.add("interview", "cushion_weibull_pct", weibull, pct(weibull),
           "the 0.82 point read at position 0.82 x 14 of the sorted thirteen, another common convention", "scorecard")
     cov_g = sum(back["aligned"][i] * (1 + cushion) >= y[i] for i in BACK)
@@ -636,11 +647,15 @@ def main():
               f"the share to cover if a short shipment is packed on overtime at {k:g} times a shift's cost (assumed)", "transcripts")
     F.add("interview", "overtime_rates", [1.5, 2], "one and a half and two times", "overtime at these multiples of a shift's cost (assumed)", "transcripts")
     F.add("toys", "ai_users", 200_000, "2 lakh", "users of the assistant at launch (invented)", "AI variant")
-    F.add("toys", "ai_peak_share", 0.10, "10 percent", "users who send a request in the peak minute (invented)", "AI variant")
-    F.add("toys", "ai_requests_minute", 20_000, "20,000", "2 lakh x 10 percent, requests in the peak minute", "AI variant")
-    F.add("toys", "ai_tokens_request", 1_500, "1,500", "tokens per request, prompt and answer together (invented)", "AI variant")
-    F.add("toys", "ai_tokens_minute", 30_000_000, "3 crore", "20,000 x 1,500, tokens in the peak minute", "AI variant")
-    F.add("toys", "ai_tokens_second", 500_000, "5 lakh", "3 crore over 60 seconds", "AI variant")
+    F.add("toys", "ai_peak_share", 0.01, "1 percent", "users who send a request in the peak minute (invented)", "AI variant")
+    F.add("toys", "ai_requests_minute", 2_000, "2,000", "2 lakh x 1 percent, requests in the peak minute", "AI variant")
+    F.add("toys", "ai_requests_second", 2_000 / 60, "about 33", "2,000 over 60 seconds", "AI variant")
+    F.add("toys", "ai_prompt_tokens", 1_000, "1,000", "prompt tokens a request (invented)", "AI variant")
+    F.add("toys", "ai_answer_tokens", 500, "500", "answer tokens a request (invented)", "AI variant")
+    F.add("toys", "ai_stream_seconds", 10, "10 seconds", "time to stream one answer (invented)", "AI variant")
+    F.add("toys", "ai_open_requests", 2_000 / 60 * 10, "about 330", "33 a second x 10 seconds, requests open at once", "AI variant")
+    F.add("toys", "ai_peak_ratio", 5, "five times", "the peak minute over the average minute (invented)", "AI variant")
+    F.add("toys", "ai_requests_user_day", 2_000 / 5 * 1_440 / 200_000, "about 3", "2,000 / 5 a minute x 1,440 minutes / 2 lakh users", "AI variant")
 
     # ---- the week map's earlier nodes, as each day's ticket prints them (docs/detailing/W04_case_file.md)
     F.add("week_map", "mon_before", 1.9, "1.9", "Monday's ticket: trips per peak online hour before the scheme", "slide 2")
@@ -851,6 +866,10 @@ def main():
                             ("first", repl * 1.10, repl * 1.20)):
         F.add("guesstimate", f"swing_{name_}_low_pct", lo_ / est - 1, pct(lo_ / est - 1, 0), f"{name_} at its low end, the rest held", "guesstimate card")
         F.add("guesstimate", f"swing_{name_}_high_pct", hi_ / est - 1, pct(hi_ / est - 1, 0), f"{name_} at its high end, the rest held", "guesstimate card")
+    F.add("guesstimate", "range_one_low", hh * own / 10 * (1 + first), f"about {hh * own / 10 * (1 + first) / 1e7:.1f} crore",
+          "replacement years at 10, the rest held", "half2 S9, notes")
+    F.add("guesstimate", "range_one_high", hh * own / 6 * (1 + first), f"about {hh * own / 6 * (1 + first) / 1e7:.1f} crore",
+          "replacement years at 6, the rest held", "half2 S9, notes")
     F.add("guesstimate", "anchor", 21_705_974, "2,17,05,974", "SIAM, FY 2025-26 domestic two-wheeler sales (T3, checked 12 Oct 2026)", "half2, transcript")
     F.add("guesstimate", "estimate_vs_anchor_pct", est / 21_705_974 - 1, pct(est / 21_705_974 - 1), "estimate over anchor, minus one", "transcript")
     F.add("guesstimate", "annualised_october", 3_149_846 * 12, f"about {3_149_846 * 12 / 1e7:.2f} crore", "October 2025 retail times 12", "half2, transcript")

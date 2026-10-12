@@ -171,7 +171,7 @@ season slider. Transition: four rules.
 | Naive | The last value | 50, 52, 49 and 51 cups on four days, so tomorrow is 51 |
 | Same week last year: the house bot, or seasonal copy | The same point one season back, here 52 weeks | Sundays sell about 80, so next Sunday is 80 |
 | Drift | The line from the first value to the last, extended | 51 plus the average step, (51 - 50) / 3: about 51.3 |
-| Festival-aligned | From five weeks before Diwali's week to four after, the week at the same distance from last year's Diwali; otherwise the same calendar week; then plus 4 percent, the growth the two years show | No canteen version: it exists because the festival moves |
+| Festival-aligned | From five weeks before Diwali's week to four after, the week at the same distance from last year's Diwali; otherwise the same calendar week; then plus 4 percent, the growth the training weeks show | No canteen version: it exists because the festival moves |
 
 ```notes
 LIVE, 4 minutes. Read each rule as one sentence a shift supervisor could repeat. A baseline is a

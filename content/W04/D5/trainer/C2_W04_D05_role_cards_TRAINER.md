@@ -14,8 +14,8 @@ Finance owns the centre's budget for the festive season. Their forecast is last 
 weeks plus 4 percent, because "last year plus 4 is what the budget holds", and they want the shift
 plan to match it.
 
-**Partly right, on purpose.** The 4 percent is the growth the two years show: the second year
-shipped 4.0 percent more than the first. On the thirteen hidden weeks their rule ties festival-aligned
+**Partly right, on purpose.** The 4 percent is the growth the two years show, and the training
+weeks alone give the same: the second year shipped 4.0 percent more than the first. On the thirteen hidden weeks their rule ties festival-aligned
 at 6,615 shipments a week. What they miss is the shape: the rule copies calendar weeks, so it puts
 2026's busiest week on 5 October, two weeks before the rush, and against last year's eight weeks
 counted from Diwali it sits 9.5 percent below, 308,048 shipments short of festival-aligned. On 2025's

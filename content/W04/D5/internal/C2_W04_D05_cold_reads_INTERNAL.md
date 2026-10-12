@@ -4,9 +4,10 @@
 given the pack frozen at commit 65d645b and told to write findings only and never edit. The first
 read as a 23-year-old fresh graduate who has never worked and has weak maths, every STUDENT file in
 learner order. The second read as a hiring interviewer from Uber, Swiggy, Google and an AI startup,
-the interview material and its scorecard. Both reports are kept below as they were returned. What
-the fix pass changed for each finding is in the last section; a finding left as it is has its
-one-line reason in `internal/C2_W04_D05_sources_INTERNAL.md`.
+the interview material and its scorecard. Both reports are kept below as they were returned, with a
+third read by a fresh interviewer agent after the fix pass, frozen at commit 478a643. What the fixes
+changed for each finding is in the last section; a finding left as it is has its one-line reason in
+`internal/C2_W04_D05_sources_INTERNAL.md`.
 
 ---
 
@@ -441,6 +442,199 @@ The guesstimate is the strongest item in the interview set. Once its definition 
 
 ---
 
+## Read 2, again: what does a fresh interviewer make of the revised material?
+
+A third agent, on the Opus model, read the interview material after the fix pass, frozen at commit 478a643, with the same brief and no sight of the earlier reads. Its report is kept below as it was returned; what the last round changed for it is in the final section.
+
+### How would a hiring interviewer judge Friday's interview material?
+
+Snapshot read: `/tmp/claude-0/-home-user-c2-content-factory/03a440af-2d67-5a4f-b57a-4df77f69f80c/scratchpad/coldread2/content/W04/D5`. File names below are relative to it. Nothing in the repository or the snapshot was edited.
+
+#### What did I read, and how did I check it?
+
+I read all eight items in the brief:
+
+- the transcripts
+- the scorecards
+- half2 S6 to S10
+- the notes' interview section and the chapters it draws on
+- cheat sheet panel 7
+- the guesstimate card with S9
+- fallback S10 to S13
+
+I recomputed every case figure the answers quote from the four data files, using the rule definitions in `internal/C2_W04_D05_make_data_INTERNAL.py`. My scripts are `/tmp/claude-0/-home-user-c2-content-factory/03a440af-2d67-5a4f-b57a-4df77f69f80c/scratchpad/cr2check/recompute.py` and `extra.py`. Every quoted figure reproduced to the unit:
+
+- the six hold-out MAEs
+- the vendor's 1.4 percent fit and its 16,108 bias
+- the priced costs, and the costs once each forecast is moved to its own 0.82 point
+- the 2025 back-test
+- the plan
+- the peak-week range
+- the 0.33 and 0.50 overtime shares
+- the guesstimate arithmetic
+
+I opened every outside source on 12 October 2026.
+
+#### How do the answers score?
+
+##### How does transcript 1's hire-grade answer score?
+
+| Criterion | Mine | Programme | Agree? | The line that earns or loses it |
+|---|---|---|---|---|
+| Clarified the scope | 2 | 2 | Yes | Four clarifiers, each tied to what it sets: the ten-week reach, Rs 25 and Rs 5.42, Diwali's move, and "Has any of the three been scored on weeks it never saw?" |
+| Named the hidden weeks and the unit | 2 | 2 | Yes | "I hold out the latest thirteen weeks, 29 June to 21 September 2026 ... from one origin, 22 June", with MAE in shipments and the priced loss "fixed before anyone scores" |
+| Saw the paradox | 2 | 2 | Yes | "though it fits its 91 past weeks within 1.4 percent" beside a 16,400 miss that is "almost all bias", and "the vendor's misses cost least ... only because it runs high" |
+| Sized it with a unit | 2 | 2 | Yes | 9,831, 6,615 and 16,400 shipments a week; Rs 8.8 lakh against Rs 10.0 lakh |
+| Said what would change their mind | 2 | 2 | Yes | The sale's distance from Diwali, a first sale week outside "5.9 percent below to 7.8 percent above", and overtime that absorbs a short week |
+| Tied it to a decision and its cost | 2 | 2 | Yes | "the plan is festival-aligned plus 2.6 percent, and it covered 10 of the 13 hidden weeks" |
+| Gave the structure before the number | 1 | 2 | No | The first words spoken are "I hold out the latest thirteen weeks, 29 June to 21 September 2026". The five-step structure sits under a heading the candidate never says aloud. |
+| Total | 13 | 14 | | |
+
+**Would I hire?** Yes, for an analyst or data-science seat at any of the four companies. The answer does what most 0 to 3 year candidates never reach; they usually stop at a time-ordered split and MAPE. It:
+
+- tests only on weeks after a fixed origin, and sets the test's length from the decision's horizon
+- puts the seasonal naive on the board
+- prices misses by direction, and compares forecasts at their own 0.82 points
+- checks coverage and admits the circularity
+- back-tests the one festival and names censored demand
+
+Two things would cost the candidate in the room. One is reciting thirty-odd figures (finding 4). The other is having no answer to "on these weeks, isn't your rule the copy of last year plus 4 percent?" (finding 5).
+
+##### How does the AI-company variant score?
+
+| Criterion | Mine | Programme | Agree? | The line that earns or loses it |
+|---|---|---|---|---|
+| Clarified the scope | 2 | 2 | Yes | Unit, latency target, lead time, what stretches within minutes, the cost each way, and whether anything like it has launched |
+| Named the hidden weeks and the unit | 1 | 2 | No | "a method can be tested only on a launch it did not see" earns half. "1,500 tokens a request, prompt and answer together" lumps two kinds of token that load a GPU very differently, and no measure of the forecast's quality is named. |
+| Saw the paradox | 1 | 2 | No | No fit-versus-forecast or cheap-miss paradox is stated. Keeping both days from launch and the weekday is a sound design point. The scorecard credits a line the answer never says (finding 2). |
+| Sized it with a unit | 2 | 2 | Yes | "20,000 requests and 3 crore tokens a minute, about 5 lakh tokens a second", with the inputs labelled invented. It stops before machines (finding 26). |
+| Said what would change their mind | 2 | 2 | Yes | "Waitlist sign-ups before launch and the first hour's tokens a second after it" |
+| Tied it to a decision and its cost | 1 | 2 | No | "sits above the forecast when a timeout costs more than an idle GPU hour" compares a per-request cost with a per-machine-hour cost. Neither cost is sized, so the rule never yields a number (finding 8). |
+| Gave the structure before the number | 2 | 2 | Yes | "Then four steps", each named before its content |
+| Total | 11 | 14 | | |
+
+**Would I hire?** A lean hire for an analytics or data-science seat at an AI startup. No hire for an inference or platform seat as written.
+
+The shape is right: a ground-up size, the last launch as the baseline, an honest "untested", stretch capacity and leading indicators. But it never reaches a machine count or a priced decision. An infrastructure interviewer's first two questions have no answer on the page: prompt tokens or output tokens, and how many requests are open at once.
+
+##### How does transcript 2's hire-grade answer score?
+
+| Criterion | Mine | Programme | Agree? | The line that earns or loses it |
+|---|---|---|---|---|
+| Clarified the scope | 2 | 2 | Yes | "Plus 4 and plus 22 against which weeks of last year?" is the best clarifier in the pack |
+| Named the hidden weeks and the unit | 2 | 2 | Yes | Thirteen hidden weeks in shipments, and 2025's festival back-tested from 22 September 2025 |
+| Saw the paradox | 1 | 2 | No | It sees why finance ties and why the vendor's misses are cheap. It misses the one the sponsor will raise: the plan books more in total than the vendor's own curve (finding 25 has the figures), and no line answers "your plan is bigger than mine". |
+| Sized it with a unit | 2 | 2 | Yes | 20,275 shifts with 3,719 at the peak; 3,082 shifts and Rs 20.0 lakh over finance's rule; 3,413 to 3,906 shifts at the peak week's extremes |
+| Said what would change their mind | 2 | 2 | Yes | "I would ask the vendor to forecast 2025's festival from data to September 2025, which can be done before Friday" |
+| Tied it to a decision and its cost | 2 | 2 | Yes | The peak week priced at both ends (Rs 2.0 lakh idle or Rs 5.6 lakh late), plus the cost to finance |
+| Gave the structure before the number | 2 | 2 | Yes | It opens on the restate and the headline "Neither goes to the plan as it stands" before any figure |
+| Total | 13 | 14 | | |
+
+**Would I hire?** Yes. The candidate:
+
+- refuses the midpoint and answers from out-of-sample evidence
+- concedes the true part of each side
+- prices the plan's cost to finance and its range at the peak
+- proposes a test the vendor can run before the deadline
+- briefs both stakeholders before the meeting
+
+That is senior behaviour at 0 to 3 years. The lost point is the sponsor's best reply, which the answer cannot meet (finding 25).
+
+##### Do the scorecards hold up against the transcripts?
+
+1. **trainer/C2_W04_D05_interview_scorecards_TRAINER.md, [S] table, "Gave the structure before the number".** The line "Measures, test set and origin, the baselines, ... in that order" does not match the answer table, which gives the test before the measure. That order holds only for the structure list, which the candidate never says aloud.
+2. **Same file, AI table, "Saw the paradox".** "The last launch's curve looks like a forecast but cannot be tested on itself" is the scorer's paraphrase and appears nowhere in the variant. That breaks the page's own rule: "Every hire-grade 2 below rests on a line the answer says."
+3. **Same file, "Why thirteen weeks?".** Citing FPP3's "about a fifth of the sample" invites the reply "a fifth of 104 is about 21, so why 13?". The real reason, that the vendor's file holds one origin, should come first.
+
+#### What would a strong interviewer reject or mark down?
+
+##### Which lines would sound memorised?
+
+4. **extras/C2_W04_D05_interview_transcripts_STUDENT.md, all six rows of transcript 1's hire-grade column, and transcript 2's "Answer" row.** The [S] answer carries about thirty-five figures, and the [D] answer row carries eight in one breath. The page's own advice rules this out: "Carry four numbers into a real screen ... A string of exact figures sounds rehearsed." Delivered as written, I would start probing for memorisation by the third row.
+
+##### Which claims overreach?
+
+5. **Transcripts, [S] rows "The bar to beat" and "The price".** "Festival-aligned and finance's rule beat it at 6,615", and the "fair comparison" sets festival-aligned against the vendor only. On the hidden weeks, festival-aligned is the seasonal naive times 1.04, so the whole MAE gap is the growth term. Moved to its own 0.82 point, the seasonal naive also costs Rs 8.8 lakh (882,420 against 882,269 in `internal/C2_W04_D05_facts_INTERNAL.yaml`). The trainer page says "only the festival separates them"; the student page never does.
+6. **Transcripts, pain-point row "A close fit taken for a good forecast".** The row says the paper "found eight machine-learning methods beaten by eight statistical ones at every horizon it examined". The paper compared eight statistical methods with ten machine-learning ones (eight plus RNN and LSTM), and its finding is about the two groups. It says the MLP's sMAPE was "only 0.19% more accurate than Naive 2", which is one of the eight statistical methods. The notes' wording ("statistical methods beat machine learning at every horizon tested") is the accurate one.
+7. **Transcripts, last sentence of the Zillow follow-up; half2 S7 "Follow-up 3"; notes interview row 4.** "The price forecast's error at a six-month horizon was wider than the whole band" is the candidate's inference. The letter gives no error at any horizon; it says forecasts "three to six months into the future" missed "by much more than we modeled as possible". S7 and the notes shorten this to "price forecasts six months out" and "the margin swung about 12", with the unit gone. Keep "three to six months", "12 percentage points" and "which suggests".
+
+##### Which methods or terms are wrong or stated loosely?
+
+8. **Transcripts, AI variant step 3, and half2 S8 notes.** The notes ask the room "which cost is the Rs 25 and which the Rs 5.42 here: a timeout and an idle GPU hour". Rs 25 and Rs 5.42 are both per shipment, so the AI pair must also be per unit of demand: the cost of one timed-out request against the idle capacity one request would have used. As written, the comparison uses unlike units and can point the plan the wrong way. The same step's "the target sets the headroom within a minute" also reads unclearly.
+9. **Transcripts, AI variant step 1.** "10 percent of them sending a request in the peak minute" is labelled invented, but it implies heavy use. If the peak minute runs three to ten times the average minute, each user averages about 14 to 48 requests a day. A sharp interviewer will ask where one user in ten in a single minute comes from, so the candidate should run that check on the placeholder.
+10. **Transcripts, follow-up "MAE in shipments or MAPE"; half2 S7 "Follow-up 1"; notes row 2.** The answer says MASE is "scaled by the naive's average miss in training". FPP3 section 5.8 scales a seasonal series by the in-sample seasonal naive instead. For weekly data with a yearly cycle, the candidate should name which scale they mean.
+11. **Same three places, on MAPE.** "Punishes a forecast that lands above the actual harder than one below" is FPP3's own sentence and survives. "Which here would tilt the pick" is never checked. On these thirteen weeks no actual is near zero, and MAPE ranks the rules exactly as MAE does (in my recomputation: festival-aligned 3.05 percent, seasonal naive 4.49, drift 6.80, naive 6.82, vendor 7.47). The stronger line is "here it changes nothing; at a store with near-zero days it would".
+12. **study-notes/C2_W04_D05_notes_STUDENT.md ("The **error bar**, how wrong the forecast could be, is its average miss" and the words table); half2 S1; cheat sheet panel 6.** An error bar is an interval; MAE is the typical miss, and 5 of the 13 hidden weeks missed by more than 6,615. Pricing it as "Rs 35,800 if it runs high, Rs 1.65 lakh if low" treats the average miss as a band. Call it the typical miss, and keep transcript 2's lowest-to-highest range as the error bar.
+13. **Transcripts, words table ("kept out of every rule and used only to score"); notes ("1.04 is the growth two years show"); transcript 2's concession ("your 4 percent is the growth two years show").** The thirteen hidden weeks also set the 2.6 percent cushion, and the two years of growth include them. Training weeks alone give 3.96 percent (`growth_train` in the facts file), which rounds to the same 4, so the scores stand. The candidate should still say so before an interviewer asks whether the test saw the future.
+14. **slides/C2_W04_D05_half2_STUDENT.md, S10.** The handoff line promises a model judged "above the festival-aligned baseline on the thirteen held-out weeks". The table's last row on the same slide says those weeks "have already picked the rule and set the cushion". The table row is right; the handoff line should point at the rolling origin.
+
+##### Do any numbers fail to follow from the data?
+
+No case figure fails; everything quoted reproduces to the unit. One figure sits awkwardly beside the case:
+
+15. **Transcripts, follow-up "The festival moves by three weeks this year. What breaks?".** The case's own move is two weeks: Diwali's week in 2026 comes 54 weeks after 2025's. A candidate who carries "three weeks off" back to the case says something false. One line marking the follow-up as hypothetical prevents it.
+
+##### Are any follow-ups answered evasively?
+
+None outright. The circularity reply opens with "A little, and for every forecast alike", which softens before it concedes. The rest of the line (4.1 against 2.6 percent, then a rolling origin) carries it.
+
+##### Are the weak answers straw men?
+
+16. **Transcripts, both "Weak answer" columns (scored 1 and 0 of 14).** The random 80 to 20 split and "whichever comes out lowest" are real junior errors, so each cell is credible. But the column fails every row. The answer most real candidates give is missing: a time-ordered hold-out, MAPE, pick the lowest, with no cost asymmetry and no festival check. That is where a hire decision is actually made, and showing it with a score of about 6 would teach more.
+
+#### Where does a hire-grade answer stop short?
+
+17. **Transcript 1. This is the single addition that matters most, here and across all three answers.** The candidate should say: "On these weeks festival-aligned is the seasonal naive plus 4 percent, and at each one's own 0.82 point they cost the same Rs 8.8 lakh. So the hidden weeks rule out the vendor and cannot rank my rule above the copy of last year. The 2025 back-test does that, on one festival, so I would roll the origin through it before trusting the festive error." That closes the gap between what the hold-out shows and what the plan claims.
+18. **Transcript 1, "The test" row: no error by horizon.** The plan books 12 October from data ending 21 September, so horizons 3 to 10 are the ones that matter. Over those weeks, festival-aligned misses by 5,842, the seasonal naive by 9,838 and the vendor by 15,150. The vendor's miss climbs from 1.8 percent at one week ahead to 14.7 percent at thirteen.
+19. **Transcript 1, structure step 2 and the circularity follow-up.** The rolling origin is named as the cure but never run. The copies can be forecast from every week since 29 September 2025, as the trainer page admits; only the vendor is limited to one origin.
+20. **Transcript 1, clarifier 2 and "The measure" row.** The 0.82 share assumes a late shipment is still packed later, so Rs 25 is pure penalty. If a short week loses the order, the shift cost is saved and the share becomes (25 minus 5.42) over 25, about 0.78. One clause stating the assumption closes the follow-up.
+21. **Transcript 1, the overtime follow-up.** It is answered as a condition, though the candidate's own file shows overtime carried the 2025 peak: 1,638 overtime shifts on a roster of about 1,847, and in every week the shifts worked equal shipments over 120, rounded up. A strong answer leads with what the data shows, then asks for the overtime rate and any orders that missed dispatch before keeping Rs 25.
+22. **Transcripts 1 and 2: carry-over is never mentioned.** A short festive week pushes work into the next week, which is still heavy (383,760 forecast for 26 October, after 434,928). A one-week newsvendor prices each week as if it stood alone.
+23. **Transcript 2, "The error" row, and transcript 1's trigger band.** The lowest-to-highest range of thirteen misses would cover a new week about 12 times in 14 if the misses were independent draws. Misses from one origin are correlated, so the band is looser than it looks. "Roughly an 85 percent band, and narrower than the truth" is the honest framing.
+24. **Transcript 1, "What would change it" row.** The trigger (a first sale week outside the range) comes with no lever. It should say which weeks' shifts can still change after 12 October, and at what lead time.
+25. **Transcript 2: the single addition that matters most for this answer is the volume concession.** Over the eight weeks the plan books 2,432,319 shipments, 22.6 percent above last year's same calendar weeks and 12,819 more than the vendor's curve (20,275 shifts against about 20,165). The line to add: "Over the eight weeks your curve and our plan book within 1 percent of each other; we differ on which weeks. Yours books its biggest week on 5 October, and about 2.6 lakh shipments too few across 19 October to 2 November." That moves the dispute from how much to which weeks, which is the case the rest of the answer makes.
+26. **AI variant: the single addition that matters most for this answer is turning tokens a second into machines.** Split prompt tokens from output tokens. Convert requests to concurrency: 20,000 a minute is about 333 a second, and at an assumed 10 seconds a reply that is about 3,300 open streams. Size GPUs from a load test at the latency target, and price both costs per request. Without that, the two-cost rule has nothing to act on.
+27. **AI variant, step 3: staged rollout is missing.** Releasing to a share of users first, and raising it as the first hours come in, is the cheapest demand lever at launch. It belongs beside the waitlist and rate limits.
+28. **Transcript 1, Zillow follow-up: the answer stops at the band.** The letter itself names the deeper lesson: conversion rose "as a result of unintentionally purchasing homes at higher prices than our current estimates of future selling prices". A forecast used to bid wins exactly where it overestimates, so the homes Zillow held carried its errors in one direction. That selection effect is the interview-grade point.
+29. **Transcripts, pain-point row 1.** The PLOS ONE and M5 findings sit side by side without the reason they differ. PLOS used single monthly M3 series of 81 to 126 months. M5 had tens of thousands of related daily series with explanatory variables, which the M5 paper says LightGBM could "effectively process". "The data decides which family wins" is the line an interviewer wants.
+30. **Notes interview row 1, and cheat sheet panel 7.** The one-line answer quotes 6,615 against 9,831 and stops. It leaves out that the hidden weeks hold no festival, which is the first follow-up anyone asks of a Diwali plan. Add "and I back-test the festival, since the hidden weeks hold none".
+
+#### Which real-world facts check out, and which need a source or correction?
+
+All sources were opened on 12 October 2026.
+
+| # | Fact as stated | Where | Source and date on the page | Matches when opened? |
+|---|---|---|---|---|
+| 31 | Zillow: forecasts three to six months ahead; guardrail of plus or minus 200 basis points of breakeven; misses in both directions; about 1,200 basis points of swing from Q2 to an expected minus 500 to minus 700 in Q4 2021; more homes bought (9,680 in Q3); renovation capacity short; USD 304 million write-down; wind-down; about 25 percent of the workforce cut | Transcript 1 follow-up, pain points, fallback S10, half2 S7 | Q3 2021 shareholder letter, SEC link, checked date | Yes, every figure. Needs correction where S7 and the notes shorten the horizon and drop the unit (finding 7). |
+| 32 | FPP3: test set about 20 percent of the sample, ideally at least as long as the horizon; MAPE undefined at zero and heavier on negative errors; MASE | Follow-up 1, scorecard | Sections 5.8 and 5.9, link, checked date | Yes. The source list should add section 5.10, where rolling origin lives (fallback S6 cites it correctly). MASE needs the seasonal scale (finding 10). |
+| 33 | PLOS ONE 2018: 1,045 monthly series; best-fitting models "did not necessarily" forecast better; eight ML methods beaten by eight statistical ones | Pain point 1, notes | Link, checked date | The quote and series count match. The method count and the wording need correction (finding 6). |
+| 34 | M5: all 50 top methods machine learning and ahead of every statistical benchmark; seasonal naive 0.847, naive 1.752, winner 0.520; 35.8 percent of teams beat the seasonal naive; 3,049 Walmart products | Pain point 1, notes | Preprint link, checked date | Yes. All top 50 beat the best benchmark (ES_bu) by more than 14 percent, and 1,972 teams (35.8 percent) beat the seasonal naive. The link is a preprint copy on a blog host; cite the journal version. |
+| 35 | Target Canada: forecasting system needed years of history; optimistic projections from headquarters; item data accurate about 30 percent of the time; distribution centres overflowing while shelves sat bare; 133 stores; about 17,600 staff | Pain point 2, fallback S11 | Canadian Business (archived) and Target's release of 15 January 2015, checked date | Yes. The Canadian Business article carries no publication date and is cited through a third-party mirror; add its date. |
+| 36 | FADA: 42-day festive window from the first day of Navratri; October 2025 two-wheeler retail 31,49,846; September 12,87,735; September's first 21 days almost quiet ahead of GST 2.0; GST cuts credited | Pain point 4, S9, notes, guesstimate card | Release of 7 November 2025, link, checked date | Yes. FADA defines the window as "1st day of Navratri to 15 days post Dhanteras due to time lag for vehicle registration", which supports the card's point that registrations lag sales. Its counts exclude Telangana and come from 1,400 of 1,458 RTOs, a footnote worth carrying. |
+| 37 | Amazon Science (Larry Hardesty, 22 November 2019): the Prime Video model lost to a bestseller list, was retrained on time-ordered data, was tested on the two weeks after its cutoff, and beat both the list and item-to-item "two to one" | Pain point 5 | Link, author and date, checked date | Yes. "Deep-learning recommender" is a fair gloss of the article's autoencoder. |
+| 38 | SIAM: 2,17,05,974 domestic two-wheeler sales in FY 2025-26, up 10.7 percent, makers' sales to dealers | S9, notes, guesstimate card | The card gives the link; S9 and the notes give only "checked 12 October 2026" | Yes (release dated 14 April 2026). S9 and the notes need the link or the release's name. |
+| 39 | Diwali on Thursday 31 October 2024, Monday 20 October 2025 and Sunday 8 November 2026 | Notes opening | "DoPT's holiday lists, checked 12 October 2026", no link | Yes, all three, checked through reproductions of the DoPT orders. Needs a link. |
+| 40 | "On 6 October 2026 Flipkart said Ekart ... had added 14 million cubic feet of warehousing ... and more than 2.5 lakh direct and indirect festive employment opportunities" | Notes, chapter 3 "IN THE FIELD" | Date only, no source | The figures match; the date does not. The 14 million cubic feet came in a statement of 29 September, reported on 30 September 2026 (Business Today, Maritime Gateway). The 2.5 lakh roles appear in coverage dated 15 and 16 September 2026 (UNI, Outlook Business, seen through search results). I found no 6 October release. Correct the date and add the source. |
+| 41 | Not on any page: The Big Billion Days 2026 opened on 9 October 2026 (Business Today, 30 September 2026) | Bears on the whole case | None | The real sale opened in the week of 5 October, four weeks before Diwali's week; the synthetic calendar puts the sale in the weeks of 12 and 19 October. The case is labelled synthetic, so nothing on the page is wrong. A Flipkart interviewer will still know the date, so the candidate should have it ready alongside the line "a sale that opens a different distance before Diwali moves the peak". |
+
+#### How good is the two-wheeler guesstimate?
+
+42. **trainer/C2_W04_D05_guesstimate_TRAINER.md, structure: strong.** The Clarify step separates buyers from dealer dispatches and says why the two differ only by dealer stock over a year. The Map step names the logic: the household fleet divided by the replacement cycle. The one-at-a-time sensitivity names the two inputs worth arguing about. That is better than most guesstimates I hear.
+43. **Same table, "Assume, with ranges": the weak input is "first-time and commercial buyers add 15 percent".** Thirty crore households, half owning one, and an eight-year cycle are defensible. But the model assumes a steady state, and SIAM's own release says FY 2025-26 set a record above the FY 2018-19 peak, with the second half up about 21.5 percent. The fleet is growing, so first-time demand is no small add-on. The close match comes partly from offsetting errors, which the card's "luck as much as method" half-admits.
+44. **Same table, "Calculate", with S9 and the notes: no page states the output range.** The swings are right: minus 20 to plus 33 percent for the replacement years, 20 percent either way for ownership, about 7 for households and about 4 for first-time buyers. The facts file holds 1.2 to 3.8 crore with every input at an extreme. S9's title and the notes give "about 2.2 crore" alone, which is the "Gives one number with no range" wrong turn the card's own table names.
+45. **Same table, "Validate".** The anchor matches SIAM exactly, but in a real screen nobody has SIAM's figure to hand. The candidate's own check should be a second route, such as a large maker's yearly volume divided by its market share, and the card teaches none. Its "Calls a match with SIAM proof" row is a good guard.
+46. **Same table, "The catch", and S9: good, and correctly caveated on the card.** The card's caveats are a festive month, September's deferred buying, registrations lagging sales, and a month of registrations set against a year of dispatches. S9 and the notes drop the last caveat and say "74 percent above the year" and "74 percent too high". The like-for-like check sets October's annualised registrations against FADA's own full-year retail count.
+
+#### What are the counts?
+
+- **Rejections or mark-downs:** 13 (findings 4 to 16). None is a case number that fails the data, and no follow-up is evasive.
+- **Shallow parts:** 14 (findings 17 to 30). The single addition that matters most is finding 17.
+- **Facts needing a source or correction:** 8 of the 11 checked (findings 31, 32, 33, 34, 35, 38, 39 and 40). Finding 41 is a real-world date the case should be ready for.
+- **Scorecard notes:** 3 (findings 1 to 3).
+- **Guesstimate mark-downs:** 3 (findings 43 to 45).
+
+---
+
 ## What did the fix pass change for each finding?
 
 Each row says what the pack does now. A separate agent audited Read 1's findings against the pack
@@ -613,3 +807,56 @@ Read 1 totals: 82 fixed and 6 partly fixed of 88 findings; all 14 sentences fixe
 | 48 | Fixed | The catch names September's quiet weeks and registrations against dispatches. |
 
 Read 2 totals: 39 fixed, 6 partly fixed and 3 needing no change, of 48 findings.
+
+### Read 2, again: the fresh interviewer, after the fix pass
+
+| # | Status | What the pack does now |
+|---|---|---|
+| 1 | Fixed | Transcript 1 opens on a "Said first" row naming the five steps; the scorecard cites it. |
+| 2 | Fixed | The variant now says "That curve looks like a forecast, and it is not one until it has predicted a launch it never saw"; the scorecard quotes it. |
+| 3 | Fixed | The scorecard's reply leads with the vendor's single-origin file. |
+| 4 | Fixed | Transcript 1's rows carry about twenty figures instead of thirty-five, and transcript 2's answer row five instead of eight. |
+| 5 | Fixed | The bar and price rows say festival-aligned is the seasonal naive plus 4 percent on these weeks and that both cost Rs 8.8 lakh at their own 0.82 points. |
+| 6 | Fixed | The PLOS ONE row states the finding for the two groups, with no method count. |
+| 7 | Fixed | The Zillow line is framed as inference ("which suggests"); S7 and the notes keep "three to six months" and "12 percentage points". |
+| 8 | Fixed | The variant's two costs are per unit of demand: a timed-out request against the idle capacity one request would use; S8's notes match. |
+| 9 | Fixed | The placeholder is 1 percent in the peak minute, checked at about 3 requests a user a day. |
+| 10 | Fixed | MASE is scaled by the seasonal naive's training miss. |
+| 11 | Fixed | The MAPE line says it ranks the rules as MAE does on these weeks. |
+| 12 | Fixed | The error bar is called the typical miss everywhere it is defined, with 5 of 13 weeks missing by more; the range is the answer to "how wrong could it be". |
+| 13 | Fixed | The concession and the notes say the training weeks show the 4 percent; the word table says the hidden weeks also set the cushion. |
+| 14 | Kept | The handoff line stays as the spine wrote it; S10's table carries the caution. |
+| 15 | Fixed | The three-week follow-up notes the case's own move is two weeks. |
+| 16 | Fixed | A typical answer sits between the columns, scored 3 of 14 on the card. |
+| 17 | Fixed | Transcript 1's price row carries the concession and what only the back-test can rank. |
+| 18 | Kept | Error by weeks ahead is not quoted. |
+| 19 | Kept | The rolling origin is named, not run. |
+| 20 | Kept | The lost-order case is not added. |
+| 21 | Fixed | The overtime follow-up leads with what the data show. |
+| 22 | Kept | Carry-over between weeks is not added. |
+| 23 | Fixed | Transcript 2 says the range covers roughly six weeks in seven and that one origin's misses move together. |
+| 24 | Kept | The trigger names no lever. |
+| 25 | Fixed | Transcript 2 concedes the totals sit within 1 percent, 12,819 shipments apart, and moves the dispute to which weeks (291,183 more across 19 October to 2 November). |
+| 26 | Fixed | The variant splits prompt and answer tokens and turns requests into about 330 open at once, then machines by load test. |
+| 27 | Fixed | A staged rollout joins the stretch options. |
+| 28 | Fixed | The Zillow line adds the selection effect with the letter's words. |
+| 29 | Fixed | The PLOS ONE row says why the two findings differ: single monthly series against tens of thousands of related daily ones. |
+| 30 | Fixed | The notes' and cheat sheet's one-line answers add the festival back-test. |
+| 31 | Fixed | See 7. |
+| 32 | Fixed | The transcripts' sources add sections 5.9 and 5.10. |
+| 33 | Fixed | See 6. |
+| 34 | Kept | The M5 paper stays cited as the preprint that was opened. |
+| 35 | Kept | The Canadian Business article stays undated. |
+| 36 | No change | The FADA figures held; the footnote is not carried. |
+| 37 | No change | The Amazon row held. |
+| 38 | Partly | S9's notes link SIAM's release; the notes keep its name and check date. |
+| 39 | Kept | The notes name DoPT's lists without a link. |
+| 40 | No change | The announcement's own page metadata gives 6 October 2026; the notes now name it. |
+| 41 | Kept | The real sale date stays off learner pages. |
+| 42 | No change | The structure held. |
+| 43 | Fixed | The card says the market grew 10.7 percent, so part of the match is errors that cancel. |
+| 44 | Fixed | S9, the notes, the card and the day sheet give the range, about 1.7 to 2.9 crore. |
+| 45 | Kept | No second validation route is added. |
+| 46 | Fixed | S9 sets a month of registrations against a year of dealer sales; the notes say "above SIAM's year". |
+
+Read 2, again, totals: 30 fixed, 1 partly fixed, 11 kept with a reason and 4 needing no change, of 46 findings.

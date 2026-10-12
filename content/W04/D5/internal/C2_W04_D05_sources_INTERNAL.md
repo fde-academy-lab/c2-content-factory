@@ -56,3 +56,11 @@ afresh in this session where marked.
 | Read 2, 25: routing, backlog, day-level planning and new hires' pace | The case's data hold weekly shipments and shifts only; overtime, which the data do hold, is answered with its shares |
 | Read 2, 37 and 41: the real 9 October sale date | It contradicts the synthetic calendar; the moving sale is answered as a hypothetical in the staffing note and the transcripts |
 | Read 2, 39: DoPT's own order is not linked | DoPT's site refused the connection when the calendar card was built; the staffnews.in copies stay until it can be reached |
+| Read 2 again, 18: error by weeks ahead is not quoted | The answer already carries more figures than a screen wants, and the read's own recount shows the order holds across the weeks the plan books; reasons 14, 19 and 41 sit with Read 2's 17, 22 and 37 above |
+| Read 2 again, 20: a short week that loses the order | The ticket sets a late shipment, still packed, as the assumed cost; a lost-order cost is a different case the data do not hold |
+| Read 2 again, 22: carry-over from a short week | The data are weekly shipments with no backlog field, and a week-by-week plan is the class's model |
+| Read 2 again, 24: the trigger names no lever | The ticket gives no roster lead times, so which weeks can still move would be invented |
+| Read 2 again, 34: the M5 journal version | The copy opened and checked is the preprint, and it is cited as one |
+| Read 2 again, 35: the Canadian Business article's date | The archived page carries no date |
+| Read 2 again, 38 and 39: SIAM and DoPT links in the notes | The notes sit at their word ceiling; S9's notes link SIAM and the festival calendar card links the DoPT lists |
+| Read 2 again, 45: a second validation route for the guesstimate | No maker's yearly volume and share were verified in this session, and an unverified figure would break the anchor rule |

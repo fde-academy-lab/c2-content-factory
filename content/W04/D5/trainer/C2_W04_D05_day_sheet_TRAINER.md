@@ -155,23 +155,27 @@ names any of them before a learner's own cell prints it.
 
 ## What are the interview answers, each in one breath?
 
-- **How do you evaluate a forecast?** Hold out the latest weeks, at least as many as the forecast
-  must reach ahead (ten here), forecast them from one origin, then roll the origin; score the misses
-  in shipments and priced by direction against the seasonal naive: festival-aligned 6,615, the
-  seasonal naive 9,831, the vendor 16,400; at each forecast's own 0.82 point, Rs 8.8 lakh against the
-  vendor's Rs 10.0 lakh.
-- **MAE or MAPE?** MAE in shipments when the cost is per shipment; MASE or WAPE across centres of
-  different sizes, since MAPE explodes near zero and punishes forecasts that land high.
+- **How do you evaluate a forecast?** Say the five steps first: the test, the measure, the bar to
+  beat, the price, what the test cannot see. Hold out the latest weeks, at least as many as the
+  forecast must reach ahead (ten here), from one origin; score the misses in shipments and priced by
+  direction against the seasonal naive: festival-aligned 6,615, the seasonal naive 9,831, the vendor
+  16,400. At each forecast's own 0.82 point festival-aligned and the seasonal naive both cost Rs 8.8
+  lakh and the vendor Rs 10.0 lakh, so the hidden weeks rule out the vendor and only the 2025
+  back-test ranks the festival copy.
+- **MAE or MAPE?** MAE in shipments when the cost is per shipment; MASE, scaled by the seasonal
+  naive, or WAPE across centres of different sizes. MAPE explodes near zero; on these weeks it ranks
+  the rules as MAE does.
 - **The festival moves three weeks?** Every calendar copy breaks; a copy by distance from the festival
   moves with it, and the sale's distance from the festival gets checked.
 - **Zillow?** A margin guardrail of plus or minus 200 basis points around breakeven; price forecasts
-  six months ahead missed by far more, the margin swung about 1,200 basis points, about USD 304
-  million was written down and the business wound down: the forecast's error was wider than the band.
-- **The AI-company variant?** Size the peak in tokens a second from the ground up, check it against
-  earlier launches by days from launch with the weekday kept (untested with fewer than two), and set
-  capacity to a latency target with headroom, booking above the forecast because a timeout costs more
-  than an idle GPU.
-- **Two-wheelers a year?** About 2.2 crore from households, ownership and replacement, against
+  three to six months ahead missed by far more, the margin swung about 1,200 basis points, about USD
+  304 million was written down and the business wound down, which suggests the forecast's error was
+  wider than the band; a forecast used to bid wins where it guesses high.
+- **The AI-company variant?** Size the peak from the ground up as requests open at once, prompt and
+  answer tokens apart, check it against earlier launches by days from launch with the weekday kept
+  (untested with fewer than two), and set capacity to a latency target with headroom, booking above
+  the forecast when a timed-out request costs more than the idle capacity it would use.
+- **Two-wheelers a year?** About 2.2 crore, 1.7 to 2.9 as the replacement years swing, against
   SIAM's 2,17,05,974 sold to dealers; never annualise October's 31,49,846 registrations
   (`trainer/C2_W04_D05_guesstimate_TRAINER.md`).
 

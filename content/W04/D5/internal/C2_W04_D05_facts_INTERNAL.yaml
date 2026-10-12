@@ -2309,6 +2309,31 @@ interview:
   shown: 2.8 percent
   how: the lowest point of the week's cost curve, on notebook 03's grid of 0.2 percent steps
   used_in: notebook 03, slides
+- id: plan_minus_vendor_total
+  value: 12819
+  shown: 12,819
+  how: the plan's eight weeks minus the vendor's
+  used_in: transcript 2
+- id: plan_vendor_pct
+  value: 0.005298
+  shown: 0.5 percent
+  how: the plan's eight weeks over the vendor's
+  used_in: transcript 2
+- id: vendor_shifts_total
+  value: 20165
+  shown: 20,165
+  how: the vendor's curve / 120, rounded up, eight weeks
+  used_in: transcript 2
+- id: plan_over_vendor_rush
+  value: 291183
+  shown: 291,183
+  how: the plan minus the vendor's curve, 19 Oct to 2 Nov 2026
+  used_in: transcript 2
+- id: weeks_over_mae
+  value: 5
+  shown: 5 of 13
+  how: hidden weeks festival-aligned missed by more than its MAE
+  used_in: notes, transcripts
 - id: cushion_weibull_pct
   value: 0.040773
   shown: 4.1 percent
@@ -2363,29 +2388,49 @@ toys:
   how: users of the assistant at launch (invented)
   used_in: AI variant
 - id: ai_peak_share
-  value: 0.1
-  shown: 10 percent
+  value: 0.01
+  shown: 1 percent
   how: users who send a request in the peak minute (invented)
   used_in: AI variant
 - id: ai_requests_minute
-  value: 20000
-  shown: 20,000
-  how: 2 lakh x 10 percent, requests in the peak minute
+  value: 2000
+  shown: 2,000
+  how: 2 lakh x 1 percent, requests in the peak minute
   used_in: AI variant
-- id: ai_tokens_request
-  value: 1500
-  shown: 1,500
-  how: tokens per request, prompt and answer together (invented)
+- id: ai_requests_second
+  value: 33.333333
+  shown: about 33
+  how: 2,000 over 60 seconds
   used_in: AI variant
-- id: ai_tokens_minute
-  value: 30000000
-  shown: 3 crore
-  how: 20,000 x 1,500, tokens in the peak minute
+- id: ai_prompt_tokens
+  value: 1000
+  shown: 1,000
+  how: prompt tokens a request (invented)
   used_in: AI variant
-- id: ai_tokens_second
-  value: 500000
-  shown: 5 lakh
-  how: 3 crore over 60 seconds
+- id: ai_answer_tokens
+  value: 500
+  shown: '500'
+  how: answer tokens a request (invented)
+  used_in: AI variant
+- id: ai_stream_seconds
+  value: 10
+  shown: 10 seconds
+  how: time to stream one answer (invented)
+  used_in: AI variant
+- id: ai_open_requests
+  value: 333.333333
+  shown: about 330
+  how: 33 a second x 10 seconds, requests open at once
+  used_in: AI variant
+- id: ai_peak_ratio
+  value: 5
+  shown: five times
+  how: the peak minute over the average minute (invented)
+  used_in: AI variant
+- id: ai_requests_user_day
+  value: 2.88
+  shown: about 3
+  how: 2,000 / 5 a minute x 1,440 minutes / 2 lakh users
   used_in: AI variant
 - id: cups
   value:
@@ -3600,6 +3645,16 @@ guesstimate:
   shown: 4 percent
   how: first at its high end, the rest held
   used_in: guesstimate card
+- id: range_one_low
+  value: 17250000.0
+  shown: about 1.7 crore
+  how: replacement years at 10, the rest held
+  used_in: half2 S9, notes
+- id: range_one_high
+  value: 28750000.0
+  shown: about 2.9 crore
+  how: replacement years at 6, the rest held
+  used_in: half2 S9, notes
 - id: anchor
   value: 21705974
   shown: 2,17,05,974

@@ -72,7 +72,7 @@ $$\text{naive: } \hat{y}_{T+h} = y_T \qquad \text{house bot: } \hat{y}_t = y_{t-
 
 Read $y_t$ as week $t$'s shipments and $\hat{y}$, y-hat, as a forecast; $T$ is the last week a rule
 may see, $h$ the weeks ahead. Festival-aligned matches distance from Diwali from five weeks before
-Diwali's week to four after, and the calendar otherwise; 1.04 is the growth two years show, and
+Diwali's week to four after, and the calendar otherwise; 1.04 is the growth the training weeks show, and
 finance's rule is the house bot times 1.04.
 
 **The twelve weeks**, six around each Diwali, in shipments:
@@ -92,8 +92,7 @@ is the festival plot.
 
 **IN THE FIELD.** In the M5 competition, on Walmart's daily sales of 3,049 products, the house bot's
 rule, there the same weekday a week earlier, scored 0.847 against naive's 1.752, lower being better;
-only 35.8 percent of teams beat it, and the machine-learning winner reached 0.520 (M5 workbook and
-paper, checked 12 October 2026).
+only 35.8 percent of teams beat it, and the winner reached 0.520 (checked 12 October 2026).
 
 **CALLBACK.** Thursday followed groups of members over time; today forecasts weeks not yet seen.
 
@@ -113,10 +112,10 @@ is booked.
 - Whose misses cost least, once priced?
 
 **Four ways to judge a forecast.** Fit on past weeks proves nothing: enough knobs fit anything. A
-random fifth lets a rule peek at later weeks. Rolling the origin forecasts again from many weeks; the
-copies could roll through 2025's festival. The vendor's file forecasts from one origin, so the fair
-race is the latest thirteen weeks, 29 June to 21 September 2026: the **hold-out**, forecast from 22
-June, the **origin**. The plan's last week sits ten weeks past the data, the **horizon**.
+random fifth lets a rule peek at later weeks. Rolling the origin forecasts again from many weeks. The
+vendor's file forecasts from one origin, so the fair race is the latest thirteen weeks, 29 June to 21
+September 2026: the **hold-out**, forecast from 22 June, the **origin**. The plan's last week sits ten
+weeks past the data, the **horizon**.
 
 **Count the miss in the business's unit.** The mean absolute error, MAE, averages the misses with
 their signs dropped: three hidden weeks missed by 10, 5 and 10 give 8.3. Here $n$ is the number of
@@ -149,8 +148,7 @@ fitted week missed by 1.4 percent; on the hidden weeks it missed by 16,400 a wee
 
 **The surprise in rupees.** Priced, the vendor's misses cost least only because it runs high, the
 cheap side, and the house bot costs more than naive since its misses run short. Moved to its own
-0.82 point, the vendor costs Rs 10.0 lakh against festival-aligned's Rs 8.8 lakh. A plan should lean
-high on purpose, by an amount the two costs choose.
+0.82 point, the vendor costs Rs 10.0 lakh against festival-aligned's Rs 8.8 lakh.
 
 **IN THE FIELD.** On 1,045 monthly series, a 2018 PLOS ONE paper by Makridakis and colleagues found
 statistical methods beat machine learning at every horizon tested; in M5 machine learning took every
@@ -178,10 +176,10 @@ unknown. From 22 September 2025, the house bot missed 2025's eight festive weeks
 later, it still missed by only 10,575. In 2026 the bot's busiest week is 5 October, two weeks early,
 since Diwali 2026's week comes 54 weeks after 2025's; festival-aligned's is 19 October.
 
-**Two windows.** Plus 22 and plus 4 compare with 2025's same calendar weeks, 13 October to 1 December,
-1,983,300 shipments holding only the festival's tail. Counted from Diwali, 29 September to 17 November
-2025, the weeks shipped 2,279,500: the vendor sits 6.1 percent above that, festival-aligned 4.0 above
-and finance 9.5 below, booking 308,048 shipments fewer than festival-aligned.
+**Two windows.** Plus 22 and plus 4 compare with 2025's same calendar weeks, 1,983,300 shipments
+holding only the festival's tail. Counted from Diwali, 29 September to 17 November 2025, the weeks
+shipped 2,279,500: the vendor sits 6.1 percent above, festival-aligned 4.0 and finance 9.5 below,
+308,048 shipments fewer than festival-aligned.
 
 **Where the plan sits.** Raise the plan by one shipment. Over 100 weeks, if demand beats the plan in
 18, that shipment saves 18 x Rs 25 = Rs 450 in late shipments and wastes 82 x Rs 5.42 = Rs 444 of idle
@@ -222,7 +220,7 @@ the forecast could be, is its average miss, 6,615 shipments a week: about Rs 35,
 
 **IN THE FIELD.** On 6 October 2026 Flipkart said Ekart, its supply chain, had added 14 million cubic
 feet of warehousing before its festive sale, and more than 2.5 lakh direct and indirect festive
-employment opportunities (checked 12 October 2026): decisions resting on a forecast.
+employment opportunities (Flipkart's announcement, checked 12 October 2026): decisions resting on a forecast.
 
 **The answer.** Festival-aligned, raised 2.6 percent, books 20,275 packer shifts, 3,719 in the week
 of 19 October, with an error bar of 6,615 shipments a week.
@@ -249,22 +247,23 @@ size, so big young groups at their best months hold it up.
 
 | The question as asked | The hire-grade line |
 |---|---|
-| How do you evaluate a forecast? | "I hold out the latest weeks, at least as many as the forecast must reach ahead, and score the misses in shipments and rupees against the seasonal naive: festival-aligned missed by 6,615 a week, the seasonal naive by 9,831." |
-| MAE or MAPE? | "Shipments when the cost is per shipment; MASE or WAPE across centres of different sizes, since MAPE explodes near zero and punishes forecasts that land high." |
+| How do you evaluate a forecast? | "I hold out the latest weeks, at least as many as the forecast must reach ahead, and score the misses in shipments and rupees against the seasonal naive: festival-aligned missed by 6,615 a week, the seasonal naive by 9,831. The hidden weeks hold no festival, so I back-test one." |
+| MAE or MAPE? | "Shipments when the cost is per shipment; MASE or WAPE across centres. MAPE explodes near zero; here it ranks the rules as MAE does." |
 | The festival moves three weeks: what breaks? | "Every calendar copy; a copy by distance from the festival moves with it." |
-| What did forecast error cost Zillow? | "Its margin guardrail was 2 percentage points either side of breakeven; price forecasts six months out missed by more, the margin swung about 12, and it wrote down about USD 304 million." |
+| What did forecast error cost Zillow? | "Its margin guardrail was 2 percentage points either side of breakeven; price forecasts three to six months out missed by more, the margin swung about 12 percentage points, and it wrote down about USD 304 million." |
 
 **The AI-company variant.** An AI company booking inference capacity, the computing that answers
-users' requests, sizes the launch peak in tokens a second from the ground up, checks it against
-earlier launches lined up by days from launch with the weekday kept, and books capacity above the
-forecast to a latency target, since a timeout costs more than an idle GPU. The transcripts, with five pain points and their
+users' requests, sizes the launch peak from the ground up as requests open at once, checks it
+against earlier launches lined up by days from launch with the weekday kept, and books capacity to a
+latency target, above the forecast when a timed-out request costs more than the idle capacity it
+would use. The transcripts, with five pain points and their
 cases, are in `extras/`.
 
 **The guesstimate: two-wheelers sold in India in a year.** 30 crore households, half owning one,
 replaced every 8 years, give about 1.9 crore a year; 15 percent more for first-time and commercial
-buyers makes about 2.2 crore, against SIAM's 2.17 crore sold to dealers in FY 2025-26 (checked 12
-October 2026). The catch: October 2025 alone registered 31.5 lakh (FADA), and twelve such months make
-about 3.78 crore, 74 percent too high.
+buyers makes about 2.2 crore, 1.7 to 2.9 as the replacement years swing, against SIAM's 2.17 crore
+sold to dealers in FY 2025-26 (checked 12 October 2026). The catch: October 2025 alone registered 31.5
+lakh (FADA), and twelve such months make about 3.78 crore, 74 percent above SIAM's year.
 
 ## Which words did Friday use?
 
@@ -276,7 +275,7 @@ about 3.78 crore, 74 percent too high.
 | Origin and horizon | The last week a rule may see, and the farthest week a forecast must reach | 22 June 2026; ten weeks |
 | Back-test | A rule rerun from an earlier date | From 22 September 2025 |
 | MAE and MAPE | The average miss in shipments, and as a percent of what shipped | 6,615 shipments a week |
-| Error bar | How wrong the forecast could be: its average miss on unseen weeks | 6,615 a week |
+| Error bar | The typical miss on unseen weeks; 5 of 13 weeks missed by more | 6,615 a week |
 | Plan share | The share of weeks the plan should cover | 0.82 |
 
 ## Where should you read next, and how long does each take?

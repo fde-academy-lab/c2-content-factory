@@ -139,7 +139,7 @@ regional head could forward unchanged. Transition: the two people who will objec
 *What is true in each objection, and what answers the rest?*
 
 ```cards
-icon: calculator | eyebrow: Finance | title: "Last year plus 4 is what the budget holds" | body: True: the two years grew 4.0 percent. Not true for the weeks: copied by calendar it puts the peak on 5 October, before the plan's first week, and sits 308,048 shipments short. | tone: light
+icon: calculator | eyebrow: Finance | title: "Last year plus 4 is what the budget holds" | body: True: the training weeks grew 4.0 percent. Not true for the weeks: copied by calendar it puts the peak on 5 October, before the plan's first week, and sits 308,048 shipments short. | tone: light
 icon: trending-up | eyebrow: The vendor's sponsor | title: "The model fits every week of history" | body: True: within 1.4 percent. That is the problem: on thirteen weeks it never saw it missed by 16,400 a week, 67 percent worse than the copy of last year. | tone: light
 ```
 
@@ -188,9 +188,9 @@ on the card. Transition: the follow-ups.
 *What does the interviewer ask next, and what does a strong candidate say?*
 
 ```timeline
-label: Follow-up 1 | title: MAE or MAPE, and when? | body: Shipments when the cost is per shipment; MASE or WAPE across centres, since MAPE explodes near zero and punishes forecasts that land high.
+label: Follow-up 1 | title: MAE or MAPE, and when? | body: Shipments when the cost is per shipment; MASE or WAPE across centres. MAPE explodes near zero, and here it ranks the rules as MAE does.
 label: Follow-up 2 | title: The festival moves three weeks: what breaks? | body: Every calendar copy, the seasonal naive and finance's rule; the festival-aligned copy moves with it.
-label: Follow-up 3 | title: What did a forecast cost Zillow? | body: Its margin guardrail was 2 percentage points either side of breakeven; price forecasts six months out missed by more, the margin swung about 12, and Zillow wrote down about USD 304 million. | tone: dark
+label: Follow-up 3 | title: What did a forecast cost Zillow? | body: Its margin guardrail was 2 percentage points either side of breakeven; price forecasts three to six months out missed by more, the margin swung about 12 percentage points, and Zillow wrote down about USD 304 million. | tone: dark
 ```
 
 ```notes
@@ -200,7 +200,8 @@ six months ahead, a public guardrail of plus or minus 200 basis points (a basis 
 hundredth of a percent) of breakeven unit economics, a swing of about 1,200 basis points to an
 expected minus 500 to minus 700, more homes bought than planned, renovation capacity short, an
 inventory write-down of about USD 304 million and the business wound down. The guardrail sat on the
-margin; the forecast's error was wider than the band. Two more follow-ups sit in the transcripts:
+margin, which suggests the forecast's error was wider than the band; and a forecast used to bid wins
+where it guesses high, so the homes bought carried its errors one way. Two more follow-ups sit in the transcripts:
 the cushion read from the scored weeks, and the overtime that may cap the peak. Transition: the same
 idea at an AI company.
 ```
@@ -212,7 +213,7 @@ idea at an AI company.
 
 ```mermaid
 flowchart LR
-    L["<b>Size it</b><br/>users x peak-minute share<br/>x tokens a request"] --> H["<b>Check history</b><br/>days from launch,<br/>weekday kept"]
+    L["<b>Size it</b><br/>users x peak-minute share,<br/>then requests open at once"] --> H["<b>Check history</b><br/>days from launch,<br/>weekday kept"]
     H --> B["<b>Beat the copy</b><br/>last launch's curve;<br/>untested with one launch"]
     B --> C["<b>Plan to latency</b><br/>headroom, the two costs,<br/>then what stretches"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
@@ -221,14 +222,15 @@ flowchart LR
     class C lit
 ```
 
-**Inference** is the computing a model does each time it answers a user. Size the peak in tokens a second from the ground up, check it against earlier launches lined up by days from launch with the weekday kept, and set capacity to the latency target with headroom; the two costs decide how much to book ahead, and on-demand capacity, rate limits and a waitlist cover the rest. Written for the programme; it quotes no company's figures.
+**Inference** is the computing a model does each time it answers a user. Size the peak from the ground up as requests open at once, with prompt and answer tokens kept apart; check it against earlier launches lined up by days from launch with the weekday kept; set capacity to the latency target with headroom. The two costs, per request, decide how much to book ahead, and a staged rollout, on-demand capacity, rate limits and a waitlist cover the rest. Written for the programme; it quotes no company's figures.
 
 ```notes
-LIVE, 3 minutes. Ask the room which cost is the Rs 25 and which the Rs 5.42 here: a timeout and an
-idle GPU hour. Ask what the forecast can be tested on if the feature has never launched: nothing,
-so say it is untested and keep capacity that can stretch. The worked sizing (2 lakh users, 10
-percent in the peak minute, 1,500 tokens, all invented, about 5 lakh tokens a second) is in the
-transcripts. Transition: the guesstimate.
+LIVE, 3 minutes. Ask the room which cost is the Rs 25 and which the Rs 5.42 here: a timed-out
+request, and the idle capacity one request would have used; both are per unit of demand, as the
+packer costs are per shipment. Ask what the forecast can be tested on if the feature has never launched: nothing,
+so say it is untested and keep capacity that can stretch. The worked sizing (2 lakh users, 1
+percent in the peak minute, 1,000 prompt and 500 answer tokens, all invented, about 330 requests open
+at once) is in the transcripts. Transition: the guesstimate.
 ```
 
 ---
@@ -248,11 +250,13 @@ flowchart LR
     class V lit
 ```
 
-**The catch.** October 2025's two-wheeler retail registrations alone were 31.5 lakh (FADA, the Federation of Automobile Dealers Associations), after a September whose first 21 days were almost quiet ahead of the GST cut; times twelve that is about 3.78 crore, 74 percent above the year: never annualise a peak month. SIAM, the Society of Indian Automobile Manufacturers, counts makers' sales to dealers: 2.17 crore in FY 2025-26 (both releases checked 12 October 2026).
+**The range and the catch.** The replacement years alone swing the answer from about 1.7 to 2.9 crore. October 2025's retail registrations were 31.5 lakh (FADA, the Federation of Automobile Dealers Associations), after a quiet September; times twelve that is about 3.78 crore, 74 percent above SIAM's year, a month of registrations set against a year of dealer sales: never annualise a peak month (both releases checked 12 October 2026).
 
 ```notes
 LIVE, 3 minutes if time allows, in pairs against a three-minute clock. The scorer checks the
-structure and the sanity check, never the final number. Transition: the handoff.
+structure and the sanity check, never the final number. SIAM's release:
+https://www.siam.in/news-&-updates/press-releases/x/605 (checked 12 October 2026). Transition: the
+handoff.
 ```
 
 ---

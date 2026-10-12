@@ -178,8 +178,8 @@ part 3, two real failures.
 | The cost | A write-down of about USD 304 million on homes bought above what they would now sell for; Zillow wound the business down and cut about 25 percent of its workforce |
 
 ```notes
-LIVE, 10 minutes. The guardrail sat on the margin, and the price forecast's error at a six-month
-horizon was wider than the whole band; Zillow did stop, by winding the business down. Groups name
+LIVE, 10 minutes. The guardrail sat on the margin, which suggests the price forecast's error three to
+six months out was wider than the whole band; Zillow did stop, by winding the business down. Groups name
 the Lucknow equivalent: a cushion thinner than the forecast's error at the plan's horizon.
 Transition: Target Canada.
 ```

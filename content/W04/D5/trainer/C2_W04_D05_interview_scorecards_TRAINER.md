@@ -15,30 +15,34 @@ rupees. Every hire-grade 2 below rests on a line the answer says.
 
 ## How do the [S] answers score?
 
-| Criterion | Weak | Hire-grade | The hire-grade line that earns it |
-|---|---|---|---|
-| Clarified the scope | 0 | 2 | Four clarifiers: the decision and how far ahead it must reach (ten weeks), the cost of a miss each way, whether the festival and the sale move, whether any forecast met unseen weeks |
-| Named the hidden weeks and the unit | 0 | 2 | Thirteen weeks, 29 June to 21 September 2026, forecast from 22 June, covering the ten-week horizon; MAE in shipments and the quantile loss at 0.82 in rupees, both fixed before scoring |
-| Saw the paradox | 0 | 2 | A fit within 1.4 percent beside a hidden-week miss of 16,400, almost all bias (16,108 a week too high); the cheapest raw misses from the forecast that loses once each is moved to its own 0.82 point, Rs 10.0 lakh against Rs 8.8 lakh |
-| Sized it with a unit | 0 | 2 | 9,831 against 6,615 against 16,400 shipments a week; Rs 8.8 lakh against Rs 10.0 lakh; 10 of 13 weeks covered |
-| Said what would change their mind | 0 | 2 | A sale at a different distance from Diwali re-lines the weeks; a first sale week outside 5.9 percent below to 7.8 percent above re-opens the plan; overtime that absorbs a short week lowers the cushion |
-| Tied it to a decision and its cost | 0 | 2 | The plan covers demand in 0.82 of weeks because a late shipment costs Rs 25 and a spare one Rs 5.42, and it covered 10 of the 13 hidden weeks |
-| Gave the structure before the number | 1 | 2 | Measures, test set and origin, the baselines, the plan's cushion, what the test cannot see, in that order |
-| Total, of 14 | 1 | 14 | |
+| Criterion | Weak | Typical | Hire-grade | The hire-grade line that earns it |
+|---|---|---|---|---|
+| Clarified the scope | 0 | 0 | 2 | Four clarifiers: the decision and how far ahead it must reach (ten weeks), the cost of a miss each way, whether the festival and the sale move, whether any forecast met unseen weeks |
+| Named the hidden weeks and the unit | 0 | 1 | 2 | Thirteen weeks forecast from one origin, 22 June, covering the ten-week reach; the miss in shipments and the quantile loss at 0.82 in rupees, both fixed before scoring |
+| Saw the paradox | 0 | 1 | 2 | A fit within 1.4 percent beside a hidden-week miss of 16,400, almost all bias; the cheapest raw misses from the forecast that loses at its own 0.82 point; and on these weeks festival-aligned is the seasonal naive plus 4 percent, so they cost the same and only the festival separates them |
+| Sized it with a unit | 0 | 0 | 2 | 9,831 against 6,615 against 16,400 shipments a week; Rs 8.8 lakh against Rs 10.0 lakh; 10 of 13 weeks covered |
+| Said what would change their mind | 0 | 0 | 2 | A sale at a different distance from Diwali re-lines the weeks; a first sale week outside the hidden weeks' range re-opens the plan; overtime that absorbs a short week lowers the cushion |
+| Tied it to a decision and its cost | 0 | 0 | 2 | The plan covers demand in 0.82 of weeks because a late shipment costs Rs 25 and a spare one Rs 5.42, and it covered 10 of the 13 hidden weeks |
+| Gave the structure before the number | 1 | 1 | 2 | "Five steps: the test, the measure, the bar to beat, the price, and what the test cannot see", said before any figure, and the answer follows that order |
+| Total, of 14 | 1 | 3 | 14 | |
 
 **Where the weak answer scores its point.** It has a shape (split, train, score, pick), which earns 1
 for structure; it fails the obvious follow-up, because a random split lets a model see weeks after the
 ones it forecasts. "Within 2 percent" is a fit, and no figure comes in shipments, shifts or rupees.
 
+**Where the typical answer scores its three.** A time-ordered hold-out earns 1, held back from 2 by a
+length nobody checked and a percent for a unit; comparing with last year's same weeks earns 1 for the
+paradox, since it sees a close fit lose to a copy; and its shape earns 1. It never prices a direction
+or asks about the festival, which is where the hire is decided.
+
 **What a strong interviewer would still push on, and the reply.**
 
-- "Why thirteen weeks?" The plan's last week is ten weeks past the data, so the test must reach ten
-  weeks ahead, and FPP3 puts a test set at about a fifth of the sample, at least as long as the
-  horizon. The copies need only a year of history, so they could be tested on far more, from many
-  origins through 2025's festival; the real limit is the vendor's file, which holds forecasts from one
-  origin only.
-- "Your 2.6 percent came from the weeks you score on; isn't that circular?" A little, for every
-  forecast alike, which is why each is compared at its own 0.82 point. On these weeks festival-aligned,
+- "Why thirteen weeks?" The vendor's file holds forecasts from one origin only, and thirteen weeks is
+  what it covers; the plan's last week is ten weeks past the data, so thirteen also covers the reach
+  FPP3 asks a test set to span. The copies need only a year of history, so they could be tested on far
+  more, from many origins through 2025's festival, and that rolling test is the next one to run.
+- "Your 2.6 percent came from the weeks you score on; isn't that circular?" Yes, equally for every
+  forecast, which is why each is compared at its own 0.82 point. On these weeks festival-aligned,
   finance's rule and the seasonal naive come out as one forecast, each at Rs 8.8 lakh, so only the
   festival separates them. The point itself is loose: 2.6 percent by pandas' default reading of the
   sorted thirteen, 4.1 by another common convention. A rolling origin would set it on weeks the final
@@ -53,12 +57,12 @@ ones it forecasts. "Within 2 percent" is a fit, and no figure comes in shipments
 
 | Criterion | Score | The line that earns it |
 |---|---|---|
-| Clarified the scope | 2 | The unit (tokens a second at the peak), the latency target, the lead time and what stretches, the cost of a timeout against an idle GPU hour, and whether anything like it has launched |
-| Named the hidden weeks and the unit | 2 | Tokens a second; a method tested only on a launch it did not see, and called untested when there is one earlier launch or none |
-| Saw the paradox | 2 | The last launch's curve looks like a forecast but cannot be tested on itself, and days from launch fix the launch curve while scrambling the weekly cycle, so both are kept |
-| Sized it with a unit | 2 | 2 lakh users, 10 percent in the peak minute, 1,500 tokens a request, all invented: about 5 lakh tokens a second |
-| Said what would change their mind | 2 | Waitlist sign-ups before launch and the first hour's tokens a second after it, against the ground-up size |
-| Tied it to a decision and its cost | 2 | Capacity booked ahead above the forecast when a timeout costs more than an idle GPU hour, with the latency target setting the headroom and on-demand capacity, rate limits and a waitlist covering the rest |
+| Clarified the scope | 2 | The unit (requests open at once at the peak, with prompt and answer tokens), the latency target, the lead time and what stretches, the cost of a timed-out request against the idle capacity one request would use, and whether anything like it has launched |
+| Named the hidden weeks and the unit | 2 | Requests open at once, tokens kept apart; a forecast tested only on a launch it never saw and scored by its miss in requests at the peak minute, and called untested with one earlier launch or none |
+| Saw the paradox | 2 | "That curve looks like a forecast, and it is not one until it has predicted a launch it never saw"; days from launch fix the launch curve while scrambling the weekly cycle, so both are kept |
+| Sized it with a unit | 2 | 2 lakh users, 1 percent in the peak minute, 1,000 prompt and 500 answer tokens, 10 seconds a stream, all invented: about 33 requests a second and about 330 open at once, with the placeholder checked at about 3 requests a user a day |
+| Said what would change their mind | 2 | Waitlist sign-ups before launch and the first hour's requests after it, against the ground-up size |
+| Tied it to a decision and its cost | 2 | Capacity booked ahead above the forecast when a timed-out request costs more than the idle capacity one request would have used, per unit of demand as with the packer shifts; the latency target sets the headroom, and a staged rollout, on-demand capacity, rate limits and a waitlist cover the rest |
 | Gave the structure before the number | 2 | Size it, check it against history, set capacity to the latency target, say what would move it |
 | Total, of 14 | 14 | |
 
@@ -70,7 +74,7 @@ Used in the fallback (part 4, S13, 25 minutes): read in pairs, played, then scor
 |---|---|---|---|
 | Clarified the scope | 0 | 2 | Plus 4 and plus 22 against which weeks; which forecast met unseen weeks and which never met a festival; who carries a short week |
 | Named the hidden weeks and the unit | 0 | 2 | Thirteen hidden weeks in shipments, and 2025's festival back-tested from 22 September 2025 |
-| Saw the paradox | 0 | 2 | Finance's rule ties on the hidden weeks because they hold no festival; the vendor's misses are cheap because they run high |
+| Saw the paradox | 0 | 2 | Finance's rule ties on the hidden weeks because they hold no festival; the vendor's misses are cheap because they run high; and the plan sits within 1 percent of the vendor's eight-week total, 12,819 shipments, so the dispute is which weeks, 291,183 more across 19 October to 2 November |
 | Sized it with a unit | 0 | 2 | 20,275 shifts, 3,719 at the peak; 3,082 shifts and about Rs 20.0 lakh over finance's rule; 3,413 to 3,906 shifts needed at the peak week's extremes |
 | Said what would change their mind | 0 | 2 | The vendor forecasting 2025's festival from data to September 2025 before Friday; a sale at a different distance from Diwali; a first sale week outside the hidden weeks' range |
 | Tied it to a decision and its cost | 0 | 2 | The plan's range priced at its ends, about Rs 2.0 lakh of idle shifts or Rs 5.6 lakh of late shipments for the peak week, and its cost to finance |
