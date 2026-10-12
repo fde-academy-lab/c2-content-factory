@@ -5,6 +5,14 @@ The requester set this blend on 12 October 2026 (decision `teaching-approach`); 
 artefact that carries each move, and the way it fails when overused. A pack blends them: no chapter
 uses one style alone, and every chapter shows at least three.
 
+Each style's full card, with its verified links, and the blend worked through on Week 4's cases are
+in `teaching-styles-playbook.md` beside this page; read the cards for the styles your artefact leads with.
+
+Four findings set the blend for learners who are weak in maths and new to business: worked examples
+first, with the steps fading as the learner improves; the wrong answer said aloud and then refuted, which
+helps the weakest learners most; retrieval, since being tested aids long-term memory; and a vote, an
+argument with a neighbour and a revote on any question that splits the room.
+
 ## The moves, style by style
 
 | Style | The moves, in order | Where it lands | Where it fails if overused |
@@ -20,6 +28,9 @@ uses one style alone, and every chapter shows at least three.
 | Worked examples that fade | One fully worked example, one half worked, then one blank, on the same pattern | Guided then unguided exercises; notebook your-turn cells | Fading too fast for weak learners; L1 and L2 keep the full worked version |
 | Peer instruction | A question that splits the room; everyone predicts and votes; neighbours argue for two minutes; everyone votes again; then the reveal | Live in class at each trap; Kahoot | Using it on questions with an obvious answer; it needs a real split |
 | Retrieval and interleaving | Ask yesterday's idea before today's starts; mix earlier topics into later practice once each is learned | Kahoot return questions; take-home self-checks; Saturday papers | Reviewing before anything is learned; retrieval follows first teaching |
+| Hans Rosling and Gapminder | Ask the room to guess a fact about the world; show how far the guesses sit from the data; let the data move on screen; name the instinct that misled | The opening of a chapter where intuition misleads; the explorer's moving charts | Turning every chapter into a quiz show; one per day is enough |
+| fast.ai, beside Karpathy | Show the whole working result first, then open it up layer by layer; Karpathy's counterweight builds the same thing from scratch in a few lines | The notebooks' first cell (the end result) and their last cell (the from-scratch version) | A from-scratch build for its own sake; the build always answers the case's question |
+| Interview rehearsal on annotated answers | Show the question as an interviewer asks it, a weak answer and a strong answer with notes on what each does, then the follow-ups; the learner rehearses aloud | The interview room of every day; the Saturday mock round | Memorised answers; the follow-ups change the question so only the reasoning transfers |
 | The case method | A real situation with a decision, the data and the people with a stake; learners argue a position and defend it | The day's ticket; role cards; the stakeholder objection at L5; build-week projects | Discussion with no evidence; every position cites a number from the data |
 
 ## How a chapter blends them

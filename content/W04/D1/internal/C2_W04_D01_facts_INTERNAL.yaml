@@ -1,0 +1,1459 @@
+day: W04/D1, Monday 26 October 2026
+written_by: C2_W04_D01_generate_INTERNAL.py, the W04 D1 finishing session, 12 October 2026
+source_tables:
+  drivers: data/C2_W04_D01_drivers_STUDENT.csv
+  driver_weeks: data/C2_W04_D01_driver_weeks_STUDENT.csv
+  zone_weeks: data/C2_W04_D01_zone_weeks_STUDENT.csv
+  kalpa_members: data/C2_W04_D01_kalpa_members_STUDENT.csv
+  kalpa_app_reorders: data/C2_W04_D01_kalpa_app_reorders_STUDENT.csv
+numbers:
+- id: launch_date
+  value: '2026-08-31'
+  unit: date
+  how: the scheme's first day, a Monday
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: window_before
+  value: 2026-07-20 to 2026-08-30
+  unit: dates
+  how: six weeks beginning 20 July
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: window_after
+  value: 2026-08-31 to 2026-10-11
+  unit: dates
+  how: six weeks beginning 31 August
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: floor_rs_per_hour
+  value: 300
+  unit: Rs per peak online hour
+  how: the guarantee's floor (synthetic terms)
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: peak_windows_per_day
+  value: 2
+  unit: windows
+  how: two peak windows a day (synthetic terms)
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: peak_window_hours
+  value: 3
+  unit: hours
+  how: each window three hours long
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: max_peak_hours_per_week
+  value: 42
+  unit: hours
+  how: 2 windows x 3 hours x 7 days
+  used_by: data dictionary; L4
+- id: fare_avg_rs
+  value: 165
+  unit: Rs per trip
+  how: bookings / trips, both windows
+  used_by: L2; Tuesday's per-trip denominator
+- id: drivers_total
+  value: 1200
+  unit: drivers
+  how: rows of drivers
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: drivers_new
+  value: 140
+  unit: drivers
+  how: joined_month 2026-09
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L4 mix
+- id: drivers_pre_launch
+  value: 1060
+  unit: drivers
+  how: 1,200 less 140
+  used_by: L4 mix
+- id: zones_total
+  value: 12
+  unit: zones
+  how: rows of zone_weeks per week
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: zones_outer
+  value: 3
+  unit: zones
+  how: Shamshabad, Rajendranagar, Patancheru
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: hours_before
+  value: 118000
+  unit: hours
+  how: sum of peak_online_hours, before
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+- id: trips_before
+  value: 224200
+  unit: trips
+  how: sum of peak_trips, before
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+- id: tph_before
+  value: 1.9
+  unit: trips per peak online hour
+  how: sum of trips / sum of hours
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+- id: offers_before
+  value: 269773
+  unit: offers
+  how: sum of peak_offers, before
+  used_by: L2
+- id: accepted_before
+  value: 232814
+  unit: offers
+  how: sum of peak_accepted, before
+  used_by: L2
+- id: driver_cancels_before
+  value: 8614
+  unit: trips
+  how: sum of peak_driver_cancels, before
+  used_by: L2
+- id: acceptance_before
+  value: 0.863
+  unit: share
+  how: sum accepted / sum offers
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2; guardrail 1
+- id: driver_cancel_share_before
+  value: 0.037
+  unit: share
+  how: sum driver cancels / sum accepted
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: no_trip_hours_before
+  value: 25960
+  unit: hours
+  how: sum of peak_hours_no_trip, before
+  used_by: L4
+- id: no_trip_share_before
+  value: 0.22
+  unit: share
+  how: sum hours with no trip / sum hours
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L4 data quality
+- id: bookings_before_rs
+  value: 36993000
+  unit: Rs
+  how: sum of peak_bookings_rs, before
+  used_by: L2; Tuesday
+- id: rs_per_hour_before
+  value: 313.5
+  unit: Rs
+  how: bookings / hours
+  used_by: L2; Tuesday
+- id: driver_weeks_before
+  value: 6360
+  unit: driver-weeks
+  how: rows of driver_weeks
+  used_by: L2; Tuesday
+- id: online_driver_weeks_before
+  value: 6270
+  unit: driver-weeks
+  how: rows with at least one peak online hour
+  used_by: L5 denominator; Tuesday
+- id: rs_per_driver_week_before
+  value: 5816.5
+  unit: Rs
+  how: bookings / driver-weeks
+  used_by: Tuesday
+- id: north_star_before
+  value: 35.76
+  unit: trips per online driver-week
+  how: trips / driver-weeks with at least one peak hour
+  used_by: L5 the redesign's north star
+- id: requests_before
+  value: 251910
+  unit: rider requests
+  how: sum of zone peak_requests
+  used_by: L2 the demand check
+- id: unfulfilled_share_before
+  value: 0.11
+  unit: share
+  how: 1 - fulfilled / requests
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: median_wait_before
+  value: 4.8
+  unit: minutes
+  how: middle value of the 72 zone-week medians
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; guardrail 2
+- id: offers_per_request_before
+  value: 1.07
+  unit: offers
+  how: driver offers / rider requests
+  used_by: L2 the two tables
+- id: mean_of_ratios_before
+  value: 1.9
+  unit: trips per peak online hour
+  how: mean of each online driver-week's trips / hours (the wrong number)
+  used_by: L2 trap
+- id: hours_after
+  value: 146300
+  unit: hours
+  how: sum of peak_online_hours, after
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+- id: trips_after
+  value: 230900
+  unit: trips
+  how: sum of peak_trips, after
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+- id: tph_after
+  value: 1.58
+  unit: trips per peak online hour
+  how: sum of trips / sum of hours
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+- id: offers_after
+  value: 347583
+  unit: offers
+  how: sum of peak_offers, after
+  used_by: L2
+- id: accepted_after
+  value: 253736
+  unit: offers
+  how: sum of peak_accepted, after
+  used_by: L2
+- id: driver_cancels_after
+  value: 22836
+  unit: trips
+  how: sum of peak_driver_cancels, after
+  used_by: L2
+- id: acceptance_after
+  value: 0.73
+  unit: share
+  how: sum accepted / sum offers
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2; guardrail 1
+- id: driver_cancel_share_after
+  value: 0.09
+  unit: share
+  how: sum driver cancels / sum accepted
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: no_trip_hours_after
+  value: 55614
+  unit: hours
+  how: sum of peak_hours_no_trip, after
+  used_by: L4
+- id: no_trip_share_after
+  value: 0.38
+  unit: share
+  how: sum hours with no trip / sum hours
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L4 data quality
+- id: bookings_after_rs
+  value: 38098500
+  unit: Rs
+  how: sum of peak_bookings_rs, after
+  used_by: L2; Tuesday
+- id: rs_per_hour_after
+  value: 260.4
+  unit: Rs
+  how: bookings / hours
+  used_by: L2; Tuesday
+- id: driver_weeks_after
+  value: 6500
+  unit: driver-weeks
+  how: rows of driver_weeks
+  used_by: L2; Tuesday
+- id: online_driver_weeks_after
+  value: 6434
+  unit: driver-weeks
+  how: rows with at least one peak online hour
+  used_by: L5 denominator; Tuesday
+- id: rs_per_driver_week_after
+  value: 5861.3
+  unit: Rs
+  how: bookings / driver-weeks
+  used_by: Tuesday
+- id: north_star_after
+  value: 35.89
+  unit: trips per online driver-week
+  how: trips / driver-weeks with at least one peak hour
+  used_by: L5 the redesign's north star
+- id: requests_after
+  value: 256556
+  unit: rider requests
+  how: sum of zone peak_requests
+  used_by: L2 the demand check
+- id: unfulfilled_share_after
+  value: 0.1
+  unit: share
+  how: 1 - fulfilled / requests
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: median_wait_after
+  value: 4.6
+  unit: minutes
+  how: middle value of the 72 zone-week medians
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; guardrail 2
+- id: offers_per_request_after
+  value: 1.35
+  unit: offers
+  how: driver offers / rider requests
+  used_by: L2 the two tables
+- id: mean_of_ratios_after
+  value: 1.71
+  unit: trips per peak online hour
+  how: mean of each online driver-week's trips / hours (the wrong number)
+  used_by: L2 trap
+- id: hours_change_pct
+  value: 24
+  unit: percent
+  how: 146,300 / 118,000 - 1
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: trips_change_pct
+  value: 3
+  unit: percent
+  how: 230,900 / 224,200 - 1
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: requests_change_pct
+  value: 1.8
+  unit: percent
+  how: 256,556 / 251,910 - 1
+  used_by: L2 the demand check
+- id: topup_before_rs
+  value: 0
+  unit: Rs
+  how: sum of topup_rs, before
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+- id: topup_after_rs
+  value: 19000000
+  unit: Rs
+  how: sum of topup_rs, after (Rs 1.9 crore)
+  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L3
+- id: topup_low_acceptance_rs
+  value: 11590000
+  unit: Rs
+  how: top-up to after driver-weeks with accepted / offers under 0.5 (Rs 1.159 crore)
+  used_by: L3; L5
+- id: topup_low_acceptance_share
+  value: 0.61
+  unit: share
+  how: 11,590,000 / 19,000,000
+  used_by: L3; L5
+- id: topup_high_acceptance_rs
+  value: 7410000
+  unit: Rs
+  how: top-up to after driver-weeks at or above 0.5 acceptance (Rs 74 lakh); what the six weeks would
+    have cost had only these driver-weeks been paid and every driver behaved the same
+  used_by: L5
+- id: topup_per_trip_after_rs
+  value: 82.3
+  unit: Rs per completed trip
+  how: top-up / trips, after
+  used_by: guardrail 3
+- id: uptake_low
+  value: 0.2
+  unit: share (assumption)
+  how: share of the idle tail's top-up that would still be paid because those drivers start accepting
+    (assumption, range 0.2 to 0.5; the A/B test settles it)
+  used_by: L5
+- id: uptake_high
+  value: 0.5
+  unit: share (assumption)
+  how: upper end of the same assumption
+  used_by: L5
+- id: saving_same_behaviour_rs
+  value: 11590000
+  unit: Rs
+  how: the top-up the redesign stops paying if nobody changes
+  used_by: L5
+- id: saving_low_rs
+  value: 5795000
+  unit: Rs
+  how: 11,590,000 x (1 - 0.5)
+  used_by: L5
+- id: saving_high_rs
+  value: 9272000
+  unit: Rs
+  how: 11,590,000 x (1 - 0.2)
+  used_by: L5
+- id: idle_tail_drivers
+  value: 180
+  unit: drivers
+  how: drivers whose after-window trips / hours is under 1.0
+  used_by: L3 your-turn cell
+- id: idle_tail_share_of_drivers
+  value: 0.15
+  unit: share
+  how: 180 / 1,200
+  used_by: L3
+- id: idle_hours_before
+  value: 20000
+  unit: hours
+  how: idle tail, before
+  used_by: L3
+- id: idle_hours_after
+  value: 42000
+  unit: hours
+  how: idle tail, after
+  used_by: L3
+- id: idle_trips_before
+  value: 38000
+  unit: trips
+  how: idle tail, before
+  used_by: L3
+- id: idle_trips_after
+  value: 33440
+  unit: trips
+  how: idle tail, after
+  used_by: L3
+- id: idle_hours_ratio
+  value: 2.1
+  unit: times
+  how: 42,000 / 20,000
+  used_by: L3
+- id: idle_trips_ratio
+  value: 0.88
+  unit: times
+  how: 33,440 / 38,000 (down 12 percent)
+  used_by: L3
+- id: idle_new_hours_outer_share
+  value: 0.72
+  unit: share
+  how: (idle outer-zone hours after - before) / (idle hours after - before)
+  used_by: L3
+- id: drivers_others
+  value: 880
+  unit: drivers
+  how: drivers who joined before the launch and sit outside the idle tail
+  used_by: L5 driver operations' objection
+- id: others_hours_before
+  value: 98000
+  unit: hours
+  how: the other 880 drivers, before
+  used_by: L5
+- id: others_trips_before
+  value: 186200
+  unit: trips
+  how: the other 880 drivers, before
+  used_by: L5
+- id: others_tph_before
+  value: 1.9
+  unit: trips per peak online hour
+  how: the other 880 drivers, before
+  used_by: L5
+- id: requests_per_hour_before
+  value: 2.13
+  unit: rider requests per peak online hour
+  how: zone requests / driver hours
+  used_by: the input on the tree
+- id: others_hours_after
+  value: 102000
+  unit: hours
+  how: the other 880 drivers, after
+  used_by: L5
+- id: others_trips_after
+  value: 193800
+  unit: trips
+  how: the other 880 drivers, after
+  used_by: L5
+- id: others_tph_after
+  value: 1.9
+  unit: trips per peak online hour
+  how: the other 880 drivers, after
+  used_by: L5
+- id: requests_per_hour_after
+  value: 1.75
+  unit: rider requests per peak online hour
+  how: zone requests / driver hours
+  used_by: the input on the tree
+- id: acceptance_max_idle_week_after
+  value: 0.46
+  unit: share
+  how: highest weekly accepted share of any idle-tail driver-week after the launch
+  used_by: L5 the floor; follow-up 2
+- id: acceptance_min_other_week_after
+  value: 0.78
+  unit: share
+  how: lowest weekly accepted share of any other driver-week online after the launch
+  used_by: L5 the floor; follow-up 2
+- id: tph_pre_launch_after
+  value: 1.58
+  unit: trips per peak online hour
+  how: after window, drivers who joined before the launch
+  used_by: L4 mix
+- id: tph_core_zones_before
+  value: 1.9
+  unit: trips per peak online hour
+  how: driver-weeks whose zone_mode is a core zone, before
+  used_by: L4 thin zones
+- id: tph_core_zones_after
+  value: 1.79
+  unit: trips per peak online hour
+  how: driver-weeks whose zone_mode is a core zone, after
+  used_by: L4 thin zones
+- id: tph_crest_weeks_after
+  value: 1.6
+  unit: trips per peak online hour
+  how: the three after weeks with the most rider requests
+  used_by: L4 seasonality bound
+- id: tph_2026_07_20
+  value: 1.88
+  unit: trips per peak online hour
+  how: week of 2026-07-20
+  used_by: the drift chart; explorer M1; Tuesday
+- id: tph_2026_07_27
+  value: 1.91
+  unit: trips per peak online hour
+  how: week of 2026-07-27
+  used_by: the drift chart; explorer M1; Tuesday
+- id: tph_2026_08_03
+  value: 1.89
+  unit: trips per peak online hour
+  how: week of 2026-08-03
+  used_by: the drift chart; explorer M1; Tuesday
+- id: tph_2026_08_10
+  value: 1.92
+  unit: trips per peak online hour
+  how: week of 2026-08-10
+  used_by: the drift chart; explorer M1; Tuesday
+- id: tph_2026_08_17
+  value: 1.93
+  unit: trips per peak online hour
+  how: week of 2026-08-17
+  used_by: the drift chart; explorer M1; Tuesday
+- id: tph_2026_08_24
+  value: 1.88
+  unit: trips per peak online hour
+  how: week of 2026-08-24
+  used_by: the drift chart; explorer M1; Tuesday
+- id: tph_2026_08_31
+  value: 1.64
+  unit: trips per peak online hour
+  how: week of 2026-08-31
+  used_by: the drift chart; explorer M1; Tuesday
+- id: tph_2026_09_07
+  value: 1.59
+  unit: trips per peak online hour
+  how: week of 2026-09-07
+  used_by: the drift chart; explorer M1; Tuesday
+- id: tph_2026_09_14
+  value: 1.57
+  unit: trips per peak online hour
+  how: week of 2026-09-14
+  used_by: the drift chart; explorer M1; Tuesday
+- id: tph_2026_09_21
+  value: 1.55
+  unit: trips per peak online hour
+  how: week of 2026-09-21
+  used_by: the drift chart; explorer M1; Tuesday
+- id: tph_2026_09_28
+  value: 1.56
+  unit: trips per peak online hour
+  how: week of 2026-09-28
+  used_by: the drift chart; explorer M1; Tuesday
+- id: tph_2026_10_05
+  value: 1.56
+  unit: trips per peak online hour
+  how: week of 2026-10-05
+  used_by: the drift chart; explorer M1; Tuesday
+- id: hours_2026_07_20
+  value: 19571
+  unit: hours
+  how: week of 2026-07-20
+  used_by: the drift chart; Tuesday
+- id: trips_2026_07_20
+  value: 36752
+  unit: trips
+  how: week of 2026-07-20
+  used_by: the drift chart; Tuesday
+- id: requests_2026_07_20
+  value: 41155
+  unit: rider requests
+  how: week of 2026-07-20
+  used_by: L4 seasonality
+- id: acceptance_2026_07_20
+  value: 0.859
+  unit: share
+  how: week of 2026-07-20
+  used_by: explorer M4; Tuesday
+- id: rs_per_hour_2026_07_20
+  value: 309.9
+  unit: Rs
+  how: week of 2026-07-20
+  used_by: explorer M4; Tuesday
+- id: bookings_2026_07_20_rs
+  value: 6064080
+  unit: Rs
+  how: week of 2026-07-20
+  used_by: Tuesday
+- id: driver_weeks_2026_07_20
+  value: 1060
+  unit: driver-weeks
+  how: week of 2026-07-20
+  used_by: Tuesday
+- id: online_drivers_2026_07_20
+  value: 1046
+  unit: drivers
+  how: week of 2026-07-20, at least one peak hour
+  used_by: L4; Tuesday
+- id: hours_2026_07_27
+  value: 19398
+  unit: hours
+  how: week of 2026-07-27
+  used_by: the drift chart; Tuesday
+- id: trips_2026_07_27
+  value: 37095
+  unit: trips
+  how: week of 2026-07-27
+  used_by: the drift chart; Tuesday
+- id: requests_2026_07_27
+  value: 41608
+  unit: rider requests
+  how: week of 2026-07-27
+  used_by: L4 seasonality
+- id: acceptance_2026_07_27
+  value: 0.864
+  unit: share
+  how: week of 2026-07-27
+  used_by: explorer M4; Tuesday
+- id: rs_per_hour_2026_07_27
+  value: 315.5
+  unit: Rs
+  how: week of 2026-07-27
+  used_by: explorer M4; Tuesday
+- id: bookings_2026_07_27_rs
+  value: 6120675
+  unit: Rs
+  how: week of 2026-07-27
+  used_by: Tuesday
+- id: driver_weeks_2026_07_27
+  value: 1060
+  unit: driver-weeks
+  how: week of 2026-07-27
+  used_by: Tuesday
+- id: online_drivers_2026_07_27
+  value: 1042
+  unit: drivers
+  how: week of 2026-07-27, at least one peak hour
+  used_by: L4; Tuesday
+- id: hours_2026_08_03
+  value: 19720
+  unit: hours
+  how: week of 2026-08-03
+  used_by: the drift chart; Tuesday
+- id: trips_2026_08_03
+  value: 37183
+  unit: trips
+  how: week of 2026-08-03
+  used_by: the drift chart; Tuesday
+- id: requests_2026_08_03
+  value: 41896
+  unit: rider requests
+  how: week of 2026-08-03
+  used_by: L4 seasonality
+- id: acceptance_2026_08_03
+  value: 0.865
+  unit: share
+  how: week of 2026-08-03
+  used_by: explorer M4; Tuesday
+- id: rs_per_hour_2026_08_03
+  value: 311.1
+  unit: Rs
+  how: week of 2026-08-03
+  used_by: explorer M4; Tuesday
+- id: bookings_2026_08_03_rs
+  value: 6135195
+  unit: Rs
+  how: week of 2026-08-03
+  used_by: Tuesday
+- id: driver_weeks_2026_08_03
+  value: 1060
+  unit: driver-weeks
+  how: week of 2026-08-03
+  used_by: Tuesday
+- id: online_drivers_2026_08_03
+  value: 1048
+  unit: drivers
+  how: week of 2026-08-03, at least one peak hour
+  used_by: L4; Tuesday
+- id: hours_2026_08_10
+  value: 19513
+  unit: hours
+  how: week of 2026-08-10
+  used_by: the drift chart; Tuesday
+- id: trips_2026_08_10
+  value: 37452
+  unit: trips
+  how: week of 2026-08-10
+  used_by: the drift chart; Tuesday
+- id: requests_2026_08_10
+  value: 42101
+  unit: rider requests
+  how: week of 2026-08-10
+  used_by: L4 seasonality
+- id: acceptance_2026_08_10
+  value: 0.867
+  unit: share
+  how: week of 2026-08-10
+  used_by: explorer M4; Tuesday
+- id: rs_per_hour_2026_08_10
+  value: 316.7
+  unit: Rs
+  how: week of 2026-08-10
+  used_by: explorer M4; Tuesday
+- id: bookings_2026_08_10_rs
+  value: 6179580
+  unit: Rs
+  how: week of 2026-08-10
+  used_by: Tuesday
+- id: driver_weeks_2026_08_10
+  value: 1060
+  unit: driver-weeks
+  how: week of 2026-08-10
+  used_by: Tuesday
+- id: online_drivers_2026_08_10
+  value: 1044
+  unit: drivers
+  how: week of 2026-08-10, at least one peak hour
+  used_by: L4; Tuesday
+- id: hours_2026_08_17
+  value: 19578
+  unit: hours
+  how: week of 2026-08-17
+  used_by: the drift chart; Tuesday
+- id: trips_2026_08_17
+  value: 37688
+  unit: trips
+  how: week of 2026-08-17
+  used_by: the drift chart; Tuesday
+- id: requests_2026_08_17
+  value: 42431
+  unit: rider requests
+  how: week of 2026-08-17
+  used_by: L4 seasonality
+- id: acceptance_2026_08_17
+  value: 0.861
+  unit: share
+  how: week of 2026-08-17
+  used_by: explorer M4; Tuesday
+- id: rs_per_hour_2026_08_17
+  value: 317.6
+  unit: Rs
+  how: week of 2026-08-17
+  used_by: explorer M4; Tuesday
+- id: bookings_2026_08_17_rs
+  value: 6218520
+  unit: Rs
+  how: week of 2026-08-17
+  used_by: Tuesday
+- id: driver_weeks_2026_08_17
+  value: 1060
+  unit: driver-weeks
+  how: week of 2026-08-17
+  used_by: Tuesday
+- id: online_drivers_2026_08_17
+  value: 1043
+  unit: drivers
+  how: week of 2026-08-17, at least one peak hour
+  used_by: L4; Tuesday
+- id: hours_2026_08_24
+  value: 20220
+  unit: hours
+  how: week of 2026-08-24
+  used_by: the drift chart; Tuesday
+- id: trips_2026_08_24
+  value: 38030
+  unit: trips
+  how: week of 2026-08-24
+  used_by: the drift chart; Tuesday
+- id: requests_2026_08_24
+  value: 42719
+  unit: rider requests
+  how: week of 2026-08-24
+  used_by: L4 seasonality
+- id: acceptance_2026_08_24
+  value: 0.862
+  unit: share
+  how: week of 2026-08-24
+  used_by: explorer M4; Tuesday
+- id: rs_per_hour_2026_08_24
+  value: 310.3
+  unit: Rs
+  how: week of 2026-08-24
+  used_by: explorer M4; Tuesday
+- id: bookings_2026_08_24_rs
+  value: 6274950
+  unit: Rs
+  how: week of 2026-08-24
+  used_by: Tuesday
+- id: driver_weeks_2026_08_24
+  value: 1060
+  unit: driver-weeks
+  how: week of 2026-08-24
+  used_by: Tuesday
+- id: online_drivers_2026_08_24
+  value: 1047
+  unit: drivers
+  how: week of 2026-08-24, at least one peak hour
+  used_by: L4; Tuesday
+- id: hours_2026_08_31
+  value: 23816
+  unit: hours
+  how: week of 2026-08-31
+  used_by: the drift chart; Tuesday
+- id: trips_2026_08_31
+  value: 39121
+  unit: trips
+  how: week of 2026-08-31
+  used_by: the drift chart; Tuesday
+- id: requests_2026_08_31
+  value: 43589
+  unit: rider requests
+  how: week of 2026-08-31
+  used_by: L4 seasonality
+- id: acceptance_2026_08_31
+  value: 0.729
+  unit: share
+  how: week of 2026-08-31
+  used_by: explorer M4; Tuesday
+- id: rs_per_hour_2026_08_31
+  value: 271.0
+  unit: Rs
+  how: week of 2026-08-31
+  used_by: explorer M4; Tuesday
+- id: bookings_2026_08_31_rs
+  value: 6454965
+  unit: Rs
+  how: week of 2026-08-31
+  used_by: Tuesday
+- id: driver_weeks_2026_08_31
+  value: 1070
+  unit: driver-weeks
+  how: week of 2026-08-31
+  used_by: Tuesday
+- id: online_drivers_2026_08_31
+  value: 1058
+  unit: drivers
+  how: week of 2026-08-31, at least one peak hour
+  used_by: L4; Tuesday
+- id: hours_2026_09_07
+  value: 24932
+  unit: hours
+  how: week of 2026-09-07
+  used_by: the drift chart; Tuesday
+- id: trips_2026_09_07
+  value: 39547
+  unit: trips
+  how: week of 2026-09-07
+  used_by: the drift chart; Tuesday
+- id: requests_2026_09_07
+  value: 43878
+  unit: rider requests
+  how: week of 2026-09-07
+  used_by: L4 seasonality
+- id: acceptance_2026_09_07
+  value: 0.735
+  unit: share
+  how: week of 2026-09-07
+  used_by: explorer M4; Tuesday
+- id: rs_per_hour_2026_09_07
+  value: 261.7
+  unit: Rs
+  how: week of 2026-09-07
+  used_by: explorer M4; Tuesday
+- id: bookings_2026_09_07_rs
+  value: 6525255
+  unit: Rs
+  how: week of 2026-09-07
+  used_by: Tuesday
+- id: driver_weeks_2026_09_07
+  value: 1076
+  unit: driver-weeks
+  how: week of 2026-09-07
+  used_by: Tuesday
+- id: online_drivers_2026_09_07
+  value: 1067
+  unit: drivers
+  how: week of 2026-09-07, at least one peak hour
+  used_by: L4; Tuesday
+- id: hours_2026_09_14
+  value: 24871
+  unit: hours
+  how: week of 2026-09-14
+  used_by: the drift chart; Tuesday
+- id: trips_2026_09_14
+  value: 39056
+  unit: trips
+  how: week of 2026-09-14
+  used_by: the drift chart; Tuesday
+- id: requests_2026_09_14
+  value: 43507
+  unit: rider requests
+  how: week of 2026-09-14
+  used_by: L4 seasonality
+- id: acceptance_2026_09_14
+  value: 0.729
+  unit: share
+  how: week of 2026-09-14
+  used_by: explorer M4; Tuesday
+- id: rs_per_hour_2026_09_14
+  value: 259.1
+  unit: Rs
+  how: week of 2026-09-14
+  used_by: explorer M4; Tuesday
+- id: bookings_2026_09_14_rs
+  value: 6444240
+  unit: Rs
+  how: week of 2026-09-14
+  used_by: Tuesday
+- id: driver_weeks_2026_09_14
+  value: 1082
+  unit: driver-weeks
+  how: week of 2026-09-14
+  used_by: Tuesday
+- id: online_drivers_2026_09_14
+  value: 1071
+  unit: drivers
+  how: week of 2026-09-14, at least one peak hour
+  used_by: L4; Tuesday
+- id: hours_2026_09_21
+  value: 24643
+  unit: hours
+  how: week of 2026-09-21
+  used_by: the drift chart; Tuesday
+- id: trips_2026_09_21
+  value: 38313
+  unit: trips
+  how: week of 2026-09-21
+  used_by: the drift chart; Tuesday
+- id: requests_2026_09_21
+  value: 42602
+  unit: rider requests
+  how: week of 2026-09-21
+  used_by: L4 seasonality
+- id: acceptance_2026_09_21
+  value: 0.731
+  unit: share
+  how: week of 2026-09-21
+  used_by: explorer M4; Tuesday
+- id: rs_per_hour_2026_09_21
+  value: 256.5
+  unit: Rs
+  how: week of 2026-09-21
+  used_by: explorer M4; Tuesday
+- id: bookings_2026_09_21_rs
+  value: 6321645
+  unit: Rs
+  how: week of 2026-09-21
+  used_by: Tuesday
+- id: driver_weeks_2026_09_21
+  value: 1086
+  unit: driver-weeks
+  how: week of 2026-09-21
+  used_by: Tuesday
+- id: online_drivers_2026_09_21
+  value: 1073
+  unit: drivers
+  how: week of 2026-09-21, at least one peak hour
+  used_by: L4; Tuesday
+- id: hours_2026_09_28
+  value: 24247
+  unit: hours
+  how: week of 2026-09-28
+  used_by: the drift chart; Tuesday
+- id: trips_2026_09_28
+  value: 37755
+  unit: trips
+  how: week of 2026-09-28
+  used_by: the drift chart; Tuesday
+- id: requests_2026_09_28
+  value: 41819
+  unit: rider requests
+  how: week of 2026-09-28
+  used_by: L4 seasonality
+- id: acceptance_2026_09_28
+  value: 0.726
+  unit: share
+  how: week of 2026-09-28
+  used_by: explorer M4; Tuesday
+- id: rs_per_hour_2026_09_28
+  value: 256.9
+  unit: Rs
+  how: week of 2026-09-28
+  used_by: explorer M4; Tuesday
+- id: bookings_2026_09_28_rs
+  value: 6229575
+  unit: Rs
+  how: week of 2026-09-28
+  used_by: Tuesday
+- id: driver_weeks_2026_09_28
+  value: 1090
+  unit: driver-weeks
+  how: week of 2026-09-28
+  used_by: Tuesday
+- id: online_drivers_2026_09_28
+  value: 1080
+  unit: drivers
+  how: week of 2026-09-28, at least one peak hour
+  used_by: L4; Tuesday
+- id: hours_2026_10_05
+  value: 23791
+  unit: hours
+  how: week of 2026-10-05
+  used_by: the drift chart; Tuesday
+- id: trips_2026_10_05
+  value: 37108
+  unit: trips
+  how: week of 2026-10-05
+  used_by: the drift chart; Tuesday
+- id: requests_2026_10_05
+  value: 41161
+  unit: rider requests
+  how: week of 2026-10-05
+  used_by: L4 seasonality
+- id: acceptance_2026_10_05
+  value: 0.731
+  unit: share
+  how: week of 2026-10-05
+  used_by: explorer M4; Tuesday
+- id: rs_per_hour_2026_10_05
+  value: 257.4
+  unit: Rs
+  how: week of 2026-10-05
+  used_by: explorer M4; Tuesday
+- id: bookings_2026_10_05_rs
+  value: 6122820
+  unit: Rs
+  how: week of 2026-10-05
+  used_by: Tuesday
+- id: driver_weeks_2026_10_05
+  value: 1096
+  unit: driver-weeks
+  how: week of 2026-10-05
+  used_by: Tuesday
+- id: online_drivers_2026_10_05
+  value: 1085
+  unit: drivers
+  how: week of 2026-10-05, at least one peak hour
+  used_by: L4; Tuesday
+- id: twelve_hours_before
+  value: 60
+  unit: hours
+  how: sum of the six before rows
+  used_by: L1 hand count
+- id: twelve_hours_after
+  value: 74
+  unit: hours
+  how: sum of the six after rows
+  used_by: L1 hand count
+- id: twelve_trips_before
+  value: 114
+  unit: trips
+  how: sum of the six before rows
+  used_by: L1 hand count
+- id: twelve_trips_after
+  value: 88
+  unit: trips
+  how: sum of the six after rows
+  used_by: L1 hand count
+- id: twelve_tph_before
+  value: 1.9
+  unit: trips per peak online hour
+  how: 114 / 60
+  used_by: L1 hand count
+- id: twelve_tph_after
+  value: 1.19
+  unit: trips per peak online hour
+  how: 88 / 74
+  used_by: L1 hand count
+- id: twelve_hours_change_pct
+  value: 23
+  unit: percent
+  how: 74 / 60 - 1
+  used_by: L1 hand count
+- id: twelve_trips_change_pct
+  value: -23
+  unit: percent
+  how: 88 / 114 - 1
+  used_by: L1 hand count
+- id: twelve_idle_share
+  value: 0.33
+  unit: share
+  how: 2 of the six drivers (E and F) sit in the idle tail
+  used_by: L1; L2
+- id: acceptance_change_points
+  value: 13
+  unit: points
+  how: acceptance before less acceptance after, in points
+  used_by: the ticket's change column
+- id: driver_cancel_change_points
+  value: 5
+  unit: points
+  how: driver-cancelled share after less before, in points
+  used_by: the ticket's change column
+- id: no_trip_change_points
+  value: 16
+  unit: points
+  how: share of hours with no trip after less before, in points
+  used_by: the ticket's change column
+- id: mean_of_ratios_hidden_share
+  value: 0.4
+  unit: share
+  how: '(1.71 - 1.58) / (1.90 - 1.58): the part of the fall the average of rates hides'
+  used_by: L2 trap, two-fifths
+- id: topup_high_acceptance_share
+  value: 0.39
+  unit: share
+  how: top-up to driver-weeks at or above half accepted, over all top-up
+  used_by: L5; S28 option b
+- id: driver_weeks_total
+  value: 12860
+  unit: driver-weeks
+  how: rows of driver_weeks, twelve weeks
+  used_by: notebook 02; S17
+- id: tph_fall
+  value: 0.32
+  unit: trips per peak online hour
+  how: 1.90 - 1.58
+  used_by: L2 trap
+- id: mean_of_ratios_fall
+  value: 0.19
+  unit: trips per peak online hour
+  how: 1.90 - 1.71, the fall the average of rates shows
+  used_by: L2 trap
+- id: fall_hidden_by_mean
+  value: 0.13
+  unit: trips per peak online hour
+  how: 1.71 - 1.58, the part of the fall the average hides
+  used_by: L2 trap
+- id: twelve_trips_per_driver_before
+  value: 19.0
+  unit: trips per driver
+  how: 114 trips over the six drivers
+  used_by: explorer M3, the enrolled-driver denominator on the twelve rows
+- id: twelve_trips_per_driver_after
+  value: 14.67
+  unit: trips per driver
+  how: 88 trips over the six drivers
+  used_by: explorer M3, the enrolled-driver denominator on the twelve rows
+- id: outer_wait_before
+  value: 6.6
+  unit: minutes
+  how: middle value of the 18 outer zone-week medians, before
+  used_by: the interview's zone check
+- id: outer_wait_after
+  value: 5.95
+  unit: minutes
+  how: middle value of the 18 outer zone-week medians, after
+  used_by: the interview's zone check
+- id: outer_fulfil_before
+  value: 0.78
+  unit: share
+  how: outer zones' fulfilled over requests, before
+  used_by: the interview's zone check
+- id: outer_fulfil_after
+  value: 0.789
+  unit: share
+  how: outer zones' fulfilled over requests, after
+  used_by: the interview's zone check
+- id: outer_extra_trips
+  value: 185
+  unit: trips
+  how: outer fulfilled after, less outer requests after times the before fulfilment rate
+  used_by: the interview's zone check
+- id: idle_outer_topup_rs
+  value: 8573979
+  unit: Rs
+  how: top-up to idle-tail driver-weeks whose zone_mode is an outer zone, after
+  used_by: the interview's zone check
+- id: cost_per_extra_outer_trip_rs
+  value: 46000
+  unit: Rs
+  how: idle outer top-up over the extra outer trips, to the nearest thousand
+  used_by: the interview's zone check
+- id: extra_trips
+  value: 6700
+  unit: trips
+  how: 230,900 - 224,200
+  used_by: the interview's sizing
+- id: topup_per_extra_trip_rs
+  value: 2836
+  unit: Rs
+  how: Rs 1.9 crore over the 6,700 extra trips
+  used_by: the interview's sizing
+- id: topup_per_extra_trip_fares
+  value: 17.2
+  unit: fares
+  how: Rs 2,836 over the Rs 165 average fare
+  used_by: the interview's sizing
+- id: hours_to_carry_idle_trips
+  value: 17600
+  unit: hours
+  how: 33,440 idle-tail trips at 1.90 trips per hour
+  used_by: the role card; follow-up on drivers who quit
+- id: cancel_share_idle_after
+  value: 0.152
+  unit: share
+  how: driver-cancelled over accepted, idle drivers, after
+  used_by: the acceptance guardrail's gaming note
+- id: cancel_share_new_after
+  value: 0.148
+  unit: share
+  how: driver-cancelled over accepted, new drivers, after
+  used_by: the acceptance guardrail's gaming note
+- id: cancel_share_other_after
+  value: 0.077
+  unit: share
+  how: driver-cancelled over accepted, other drivers, after
+  used_by: the acceptance guardrail's gaming note
+- id: cancel_share_other_before
+  value: 0.037
+  unit: share
+  how: driver-cancelled over accepted, other drivers, before
+  used_by: the acceptance guardrail's gaming note
+- id: completed_share_max_idle_week_after
+  value: 0.43
+  unit: share
+  how: trips over offers shown, highest idle-tail week after
+  used_by: the payout rule's floor
+- id: completed_share_min_other_week_after
+  value: 0.67
+  unit: share
+  how: trips over offers shown, lowest other week online after
+  used_by: the payout rule's floor
+- id: tph_split_0907_before
+  value: 1.86
+  unit: trips per peak online hour
+  how: the window flagged at 7 September, so the launch week counts as before; before
+  used_by: the lab set's Parsons problem, option d
+- id: tph_split_0907_after
+  value: 1.57
+  unit: trips per peak online hour
+  how: the window flagged at 7 September, so the launch week counts as before; after
+  used_by: the lab set's Parsons problem, option d
+toys:
+- id: toy_canteen
+  label: invented
+  values:
+    tokens_before: 200
+    tokens_after: 400
+    plates: 200
+  used_by: L1 the proxy
+- id: toy_two_drivers
+  label: invented
+  values:
+    rates:
+    - 2.0
+    - 0.5
+    hours:
+    - 10
+    - 40
+    trips: 40
+    total_hours: 50
+    ratio_of_sums: 0.8
+    mean_of_ratios: 1.25
+  used_by: L2 ratio of sums; the long, slow week pulls the average up, as on the city
+- id: toy_mix
+  label: invented
+  values:
+    drivers: 100
+    rate: 1.9
+    idle_drivers: 20
+    idle_rate: 0.2
+    blend: 1.62
+  used_by: L3 the mix behind a rate
+twelve_rows:
+- driver: A
+  driver_id: d_0001
+  zone: Jubilee Hills
+  window: before
+  week_start: '2026-08-10'
+  peak_online_hours: 10
+  peak_offers: 24
+  peak_accepted: 21
+  peak_driver_cancels: 0
+  peak_trips: 21
+  peak_hours_no_trip: 1
+  topup_rs: 0
+- driver: A
+  driver_id: d_0001
+  zone: Jubilee Hills
+  window: after
+  week_start: '2026-09-21'
+  peak_online_hours: 11
+  peak_offers: 25
+  peak_accepted: 22
+  peak_driver_cancels: 0
+  peak_trips: 22
+  peak_hours_no_trip: 1
+  topup_rs: 0
+- driver: B
+  driver_id: d_0002
+  zone: Banjara Hills
+  window: before
+  week_start: '2026-08-10'
+  peak_online_hours: 9
+  peak_offers: 20
+  peak_accepted: 17
+  peak_driver_cancels: 0
+  peak_trips: 17
+  peak_hours_no_trip: 1
+  topup_rs: 0
+- driver: B
+  driver_id: d_0002
+  zone: Banjara Hills
+  window: after
+  week_start: '2026-09-21'
+  peak_online_hours: 10
+  peak_offers: 21
+  peak_accepted: 18
+  peak_driver_cancels: 0
+  peak_trips: 18
+  peak_hours_no_trip: 1
+  topup_rs: 0
+- driver: C
+  driver_id: d_0003
+  zone: Gachibowli
+  window: before
+  week_start: '2026-08-10'
+  peak_online_hours: 11
+  peak_offers: 25
+  peak_accepted: 22
+  peak_driver_cancels: 0
+  peak_trips: 22
+  peak_hours_no_trip: 2
+  topup_rs: 0
+- driver: C
+  driver_id: d_0003
+  zone: Gachibowli
+  window: after
+  week_start: '2026-09-21'
+  peak_online_hours: 12
+  peak_offers: 26
+  peak_accepted: 23
+  peak_driver_cancels: 0
+  peak_trips: 23
+  peak_hours_no_trip: 2
+  topup_rs: 0
+- driver: D
+  driver_id: d_0004
+  zone: Madhapur
+  window: before
+  week_start: '2026-08-10'
+  peak_online_hours: 10
+  peak_offers: 22
+  peak_accepted: 19
+  peak_driver_cancels: 0
+  peak_trips: 19
+  peak_hours_no_trip: 1
+  topup_rs: 0
+- driver: D
+  driver_id: d_0004
+  zone: Madhapur
+  window: after
+  week_start: '2026-09-21'
+  peak_online_hours: 11
+  peak_offers: 23
+  peak_accepted: 20
+  peak_driver_cancels: 0
+  peak_trips: 20
+  peak_hours_no_trip: 2
+  topup_rs: 0
+- driver: E
+  driver_id: d_0881
+  zone: Shamshabad
+  window: before
+  week_start: '2026-08-10'
+  peak_online_hours: 10
+  peak_offers: 21
+  peak_accepted: 18
+  peak_driver_cancels: 0
+  peak_trips: 18
+  peak_hours_no_trip: 1
+  topup_rs: 0
+- driver: E
+  driver_id: d_0881
+  zone: Shamshabad
+  window: after
+  week_start: '2026-09-21'
+  peak_online_hours: 16
+  peak_offers: 14
+  peak_accepted: 4
+  peak_driver_cancels: 1
+  peak_trips: 3
+  peak_hours_no_trip: 14
+  topup_rs: 4400
+- driver: F
+  driver_id: d_0882
+  zone: Rajendranagar
+  window: before
+  week_start: '2026-08-10'
+  peak_online_hours: 10
+  peak_offers: 20
+  peak_accepted: 17
+  peak_driver_cancels: 0
+  peak_trips: 17
+  peak_hours_no_trip: 2
+  topup_rs: 0
+- driver: F
+  driver_id: d_0882
+  zone: Rajendranagar
+  window: after
+  week_start: '2026-09-21'
+  peak_online_hours: 14
+  peak_offers: 12
+  peak_accepted: 3
+  peak_driver_cancels: 1
+  peak_trips: 2
+  peak_hours_no_trip: 13
+  topup_rs: 3850
+kalpa:
+  members: 120
+  members_joined_by_month:
+    2026-01: 20
+    2026-02: 20
+    2026-03: 20
+    2026-04: 20
+    2026-05: 20
+    2026-06: 20
+  reorders_comparison: 427
+  reorders_window: 521
+  lab_twelve_rows:
+  - customer_id: RP-0002
+    placed_comparison: 4
+    placed_window: 6
+    booked_comparison_rs: 2035
+    booked_window_rs: 1914
+  - customer_id: RP-0012
+    placed_comparison: 4
+    placed_window: 5
+    booked_comparison_rs: 1648
+    booked_window_rs: 1369
+  - customer_id: RP-0014
+    placed_comparison: 3
+    placed_window: 4
+    booked_comparison_rs: 1337
+    booked_window_rs: 1097
+  - customer_id: RP-0021
+    placed_comparison: 5
+    placed_window: 6
+    booked_comparison_rs: 2021
+    booked_window_rs: 1672
+  - customer_id: RP-0023
+    placed_comparison: 4
+    placed_window: 6
+    booked_comparison_rs: 1742
+    booked_window_rs: 1606
+  - customer_id: RP-0031
+    placed_comparison: 4
+    placed_window: 5
+    booked_comparison_rs: 1532
+    booked_window_rs: 1390
+  - customer_id: RP-0040
+    placed_comparison: 2
+    placed_window: 3
+    booked_comparison_rs: 1093
+    booked_window_rs: 1045
+  lab_hand_count:
+    placed_ratio: 1.35
+    booked_ratio: 0.88
+  audience: TRAINER until the lab counts them
+plants:
+- id: kalpa_reorders_per_member_ratio
+  value: 1.22
+  how: reorders placed per member, 10 to 30 September over 20 August to 9 September
+  found_in: notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
+- id: kalpa_booked_value_per_member_ratio
+  value: 0.96
+  how: booked value of reorders per member, any status, the same two windows
+  found_in: notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
+- id: kalpa_window_none_delivered
+  value: true
+  how: every reorder in the window is an auto-reorder that was cancelled, merged or pending
+  found_in: notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the second your-turn cell
+shared_constants:
+  kalpa_comparison_window:
+  - '2026-08-20'
+  - '2026-09-09'
+  kalpa_auto_reorder_window:
+  - '2026-09-10'
+  - '2026-09-30'
+  monsoon_sale_last_day: '2026-08-19'
