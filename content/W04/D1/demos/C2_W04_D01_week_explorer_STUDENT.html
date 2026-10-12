@@ -341,6 +341,28 @@ var W4 = {
     /* toy, programme-written: an AI app's launch cohort against organic cohorts, weekly retention in percent */
     launch: 100000, organic: 10000,
     launchRate: [70, 46, 30, 22, 19, 17, 16, 15], organicRate: [50, 42, 38, 36, 35, 34, 34, 33]
+  },
+  fri: {
+    firstWeek: "2024-09-30",                        /* case Fri ticket: weeks beginning 30 September 2024 to 21 September 2026 */
+    diwaliWeek: {2024: 5, 2025: 56, 2026: 110},     /* case Fri ticket and F5: Diwali in the weeks of 28 Oct 2024, 20 Oct 2025, 2 Nov 2026 */
+    holdout: 13,                                    /* case Fri ticket: the last thirteen weeks are held out */
+    perShift: 120,                                  /* case Fri ticket: shipments a packer packs in a shift */
+    idleShift: 650, lateShipment: 25,               /* case Fri ticket: assumptions, ranges Rs 500 to 800 and Rs 15 to 40 */
+    growth: 1.04,                                   /* case Fri ticket: underlying growth about 4 percent a year, the drift */
+    vendorLift: 1.10,                               /* toy: the vendor's curve sits 10 percent above last year's week */
+    mae: {naive: 21000, swly: 9200, fest: 8900, vendor: 14800},   /* case Fri ticket: MAE on the hold-out */
+    /* toy: 104 weeks of shipments built to the case's shape (about 210,000 a week in late 2024, festive weeks at
+       1.5, 1.9 and 1.7 times before Diwali and 1.4 in its week), whose last 13 weeks score the case's MAE table */
+    weeks: [
+      214600, 316800, 408100, 370600, 292400, 177400, 213500, 208900, 207900, 224800, 218800, 222200, 221500,
+      220000, 221700, 226300, 225800, 219200, 208900, 208600, 210100, 220000, 211600, 216000, 210300, 216800,
+      208300, 207700, 207700, 212500, 204800, 209000, 208100, 199200, 201700, 198900, 199400, 207400, 209500,
+      205400, 209300, 199200, 203600, 203700, 210100, 210300, 208600, 206000, 223100, 224200, 225800, 222600,
+      330000, 423400, 373000, 309700, 185500, 219800, 222800, 219500, 222000, 227500, 226800, 228400, 229600,
+      227500, 233400, 230900, 235600, 236500, 216600, 216900, 219900, 222200, 223900, 224700, 223000, 221900,
+      216900, 220700, 226300, 220600, 219300, 215700, 214700, 214400, 214100, 212000, 210500, 204400, 197800,
+      211900, 205600, 221700, 195500, 217900, 210100, 221200, 224700, 212200, 219000, 238000, 235000, 227000
+    ]
   }
 };
 </script>
@@ -1089,9 +1111,162 @@ var W4 = {
       </div>
       <p class="who"><b>Who needs the answer.</b> The FC planner and the regional operations head.</p>
       <p class="who"><b>The questions on the way.</b></p>
-      <div class="jumps"></div>
+      <div class="jumps">
+        <button type="button" class="jump" data-jump="F1"><b>F1</b>What is a series made of?</button>
+        <button type="button" class="jump" data-jump="F2"><b>F2</b>How wrong on the weeks it never saw?</button>
+        <button type="button" class="jump" data-jump="F3"><b>F3</b>Where does the house bot put Diwali this year?</button>
+        <button type="button" class="jump" data-jump="F4"><b>F4</b>Where should the plan sit when being short costs more?</button>
+      </div>
       <p class="jumped" aria-live="polite"></p>
     </div>
+    <article class="scene" id="scene-F1" data-scene="F1">
+      <div class="scene-head"><span class="sid">F1</span><h3>What is a series made of?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> a weekly series is one wiggly line, so the way to forecast it is to fit a curve through every point.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you move the season.</b> Double the season's size. What does the sum beneath do?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Its peaks rise and its troughs fall by the same amount, around an unchanged trend.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. The whole series doubles.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Its peaks move to later weeks.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Nothing visible changes under the noise.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>A toy series, invented: a straight trend, a smooth yearly season and random noise, in thousands of shipments a week over two years. The three thin panels are added week by week to make the line beneath.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><label for="f1-t">Trend, thousand shipments a week</label>
+            <input type="range" id="f1-t" min="-0.3" max="0.6" step="0.05" value="0.2" data-ctl="trend">
+            <output data-out="trend">0.20 a week (slider value 0.20)</output></div>
+          <div class="ctl"><label for="f1-s">Season, the size of the yearly swing</label>
+            <input type="range" id="f1-s" min="0" max="60" step="5" value="25" data-ctl="season">
+            <output data-out="season">25 thousand (slider value 25)</output></div>
+          <div class="ctl"><label for="f1-n">Noise, the size of the weekly scatter</label>
+            <input type="range" id="f1-n" min="0" max="20" step="1" value="6" data-ctl="noise">
+            <output data-out="noise">6 thousand (slider value 6)</output></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>Doubling the season from 25 to 50 thousand doubles the swing around the trend line: each peak rises by about 25 thousand more and each trough falls by about as much, while the trend under them and the noise on top stay as they were.</p>
+        <p>A forecast that cannot say which part of the line is trend, which is season and which is noise will copy the noise and call it a pattern. Reading the shape comes before choosing any method.</p>
+        <p class="formula"><b>The formula, last</b>series = trend + season + noise</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-F2" data-scene="F2">
+      <div class="scene-head"><span class="sid">F2</span><h3>How wrong on the weeks it never saw?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> the vendor's curve fits the last two years almost exactly, so it will forecast best.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you score.</b> Which method's error sticks will be shortest on the 13 hidden weeks?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. The naive: next week equals this week.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Same week last year.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Festival-aligned with drift.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. The vendor's curve, which fits the past almost exactly.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>104 weeks of the centre's shipments, a toy built to the case's shape, whose last 13 weeks score the case's error table. The shaded weeks are hidden from every method; each stick is one week's error, amber where the forecast was too high and rose where it was too low.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><label for="f2-m">The method scored</label>
+            <select id="f2-m" data-ctl="method">
+              <option value="naive">Naive: the last training week, carried forward</option>
+              <option value="swly">Same week last year</option>
+              <option value="fest">Festival-aligned with drift</option>
+              <option value="vendor">The vendor's curve</option>
+            </select></div>
+          <div class="ctl"><label for="f2-s">The last week the methods may see</label>
+            <input type="range" id="f2-s" min="52" max="91" step="1" value="91" data-ctl="split">
+            <output data-out="split">The week of 22 June 2026 (slider value 91)</output></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>On the 13 weeks no method saw, the festival-aligned baseline with drift misses by 8,900 shipments a week on average, same week last year by 9,200, the vendor's curve by 14,800 and the naive by 21,000. The vendor's curve hugs the 91 weeks it was fitted on and still misses by more than half again the baseline's error on the weeks it never saw.</p>
+        <p>Priced with the two unit costs, the ranking changes: 12 of the vendor's 13 errors are too high, idle shifts at about Rs 5.4 a shipment, so they cost less than the baseline's mixed errors. The same size of error is cheap in one direction and dear in the other, which is why Friday's plan starts from the most accurate baseline and is raised above its middle on purpose, by the amount the costs justify, rather than bought from a curve that runs high by accident.</p>
+        <div data-board></div>
+        <p class="formula"><b>The formula, last</b>MAE = mean of |forecast - actual| over the held-out weeks, fixed before anyone scores</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-F3" data-scene="F3">
+      <div class="scene-head"><span class="sid">F3</span><h3>Where does the house bot put Diwali this year?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> same week last year is safe, because the festival comes round every year.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you move Diwali.</b> Slide Diwali's week later. Will the house bot's spike move with it?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Yes, it follows the festival.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. No, it stays on the same calendar weeks.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. It moves the other way.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. It shrinks but stays in place.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>Top: the 2025 festive weeks as the centre shipped them, with Diwali in the week of 20 October 2025. Bottom: two copies for 2026 on the same calendar weeks; the house bot copies the same week last year, and the festival-aligned copy keeps each week's distance from Diwali and adds the year's drift. The shaded weeks are the eight the planner must staff.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><label for="f3-d">Diwali's week in 2026</label>
+            <input type="range" id="f3-d" min="108" max="111" step="1" value="108" data-ctl="diwali">
+            <output data-out="diwali">The week of 19 October 2026 (slider value 108)</output></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>The house bot copies calendar weeks, so its peak stays on the week of 5 October 2026 wherever Diwali falls. Diwali falls on 8 November 2026, in the week beginning 2 November, so the festival-aligned copy puts the peak on the week of 19 October, two weeks before Diwali's week as in 2025, and the bot's spike lands two weeks early.</p>
+        <p>A staffing plan built on the bot books its biggest weeks for shipments that have not arrived and runs short when they do: idle shifts first, then late shipments, the dearer of the two errors.</p>
+        <p class="formula"><b>The formula, last</b>festival-aligned: copy the week at the same distance from the festival, then add the drift</p>
+      </div>
+    </article>
+
+    <article class="scene" id="scene-F4" data-scene="F4">
+      <div class="scene-head"><span class="sid">F4</span><h3>Where should the plan sit when being short costs more?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> plan exactly at the forecast, since anything else is padding.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you move a cost.</b> Raise the cost of a late shipment. Which way does the cheapest plan move?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Up, towards more packers.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Down, towards fewer packers.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Nowhere; it stays on the forecast.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. To the middle of the error bar.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>The expected cost of a festive week's errors against how far the plan sits above or below the forecast. Errors are assumed to spread like a bell curve whose average size is the baseline's hold-out MAE of 8,900 shipments; the two unit costs are the case's assumptions, an idle shift at Rs 650 (range Rs 500 to 800) and a late shipment at Rs 25 (range Rs 15 to 40).</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><label for="f4-o">Idle cost per over-forecast shipment, Rs</label>
+            <input type="range" id="f4-o" min="4.2" max="6.7" step="0.1" value="5.4" data-ctl="over">
+            <output data-out="over">Rs 5.4 (slider value 5.4)</output></div>
+          <div class="ctl"><label for="f4-u">Late cost per under-forecast shipment, Rs</label>
+            <input type="range" id="f4-u" min="15" max="40" step="1" value="15" data-ctl="under">
+            <output data-out="under">Rs 15 (slider value 15)</output></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>With an idle shift at Rs 650, about Rs 5.4 for each shipment of over-forecast, and Rs 25 for each late shipment, the cheapest plan sits at the 0.82 quantile of the error: about 10,300 shipments above the middle of the forecast, 86 more packer shifts a week. Planning at the middle would cost about Rs 1.35 lakh a week in expected errors, against Rs 0.88 lakh at the quantile.</p>
+        <p>When being short costs nearly five times being idle, the plan leans towards having packers waiting. The lean is set by the two costs and the size of the error, so a better baseline with a smaller MAE needs less of it.</p>
+        <p class="formula"><b>The formula, last</b>plan quantile = under-cost / (under-cost + over-cost) = 25 / (25 + 5.4) = 0.82</p>
+      </div>
+    </article>
   </section>
 
   <!-- SATURDAY -->
@@ -1103,9 +1278,56 @@ var W4 = {
       </div>
       <p class="who"><b>Who needs the answer.</b> Every interviewer who asks how a method travels to a business the candidate has never seen.</p>
       <p class="who"><b>The questions on the way.</b></p>
-      <div class="jumps"></div>
+      <div class="jumps">
+        <button type="button" class="jump" data-jump="S1"><b>S1</b>Does the method survive a change of company?</button>
+      </div>
       <p class="jumped" aria-live="polite"></p>
     </div>
+    <article class="scene" id="scene-S1" data-scene="S1">
+      <div class="scene-head"><span class="sid">S1</span><h3>Does the method survive a change of company?</h3></div>
+      <p class="myth"><b>The first answer most people give:</b> every company is different, so each one needs a method of its own.</p>
+      <div class="predict">
+        <p class="ask"><b>Predict before you choose a unit.</b> Move the week to another company. What changes on the map?</p>
+        <div class="opts">
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. The method changes with the company.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. The metric, the constraint and the cost of an error change; the method stays.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Nothing changes.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Only the company's name changes.</button>
+        </div>
+        <p class="said" aria-live="polite">No prediction yet.</p>
+      </div>
+      <div class="stage">
+        <figure class="draw"><div class="holder" data-fig></div>
+          <figcaption>The week's methods on the left stay put; the chosen unit's card on the right says what changes. The other companies' situations are hypothetical, and Kalpa's units carry the people and questions of the client the room knows.</figcaption>
+        </figure>
+        <div class="panel">
+          <div class="ctl"><label for="s1-u">The unit the method moves to</label>
+            <select id="s1-u" data-ctl="unit">
+              <option value="">Choose a unit</option>
+              <option value="ola">Ola or Rapido</option>
+              <option value="blinkit">Blinkit or Zepto</option>
+              <option value="swiggyone">Swiggy One</option>
+              <option value="amazon">Amazon India</option>
+              <option value="kfs">Kalpa Financial Services</option>
+              <option value="klog">Kalpa Logistics</option>
+              <option value="khealth">Kalpa Health</option>
+              <option value="kconnect">Kalpa Connect</option>
+            </select>
+            <output data-out="unit">No unit chosen</output></div>
+          <div class="ctl"><label for="s1-line">Your own line: what changes for a unit you would pick?</label>
+            <textarea id="s1-line" data-ctl="line" maxlength="140"></textarea>
+            <output data-out="line">Nothing written yet (0 of 140 characters)</output></div>
+          <dl class="nums" data-nums></dl>
+        </div>
+      </div>
+      <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
+      <div class="reveal" hidden>
+        <p class="check"></p>
+        <p>Across all eight units the method stays: the number is defined with its guardrails and said on one slide, judged against chance, the blend or the baseline, broken down by cohort and step, and its error priced in each direction. What changes is the metric, the constraint and what a wrong number costs, which is what each unit's card shows.</p>
+        <p>An interviewer who moves a question to a business you have never seen is checking for exactly this: that you carry the method across and rebuild only the parts that belong to the business.</p>
+        <p class="formula"><b>The formula, last</b>what stays is the method; what changes is the metric, the constraint and the cost of an error</p>
+      </div>
+    </article>
   </section>
 </main>
 
@@ -2860,6 +3082,360 @@ var W4 = {
       nums($("[data-nums]", art), rows);
     },
     final: function (st) { st.week = 8; st.blend = true; }
+  });
+
+  /* ---------- Friday ---------- */
+  var FRI = W4.fri, MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  function weekDate(t, short) {
+    var d = new Date(Date.UTC(2024, 8, 30) + 7 * (t - 1) * 86400000);
+    var m = MONTHS[d.getUTCMonth()];
+    return d.getUTCDate() + " " + (short ? m.slice(0, 3) : m) + (short ? "" : " " + d.getUTCFullYear());
+  }
+  function gauss(seed, n) {
+    var r = seeded(seed), out = [];
+    for (var i = 0; i < n; i++) out.push(Math.sqrt(-2 * Math.log(r() + 1e-12)) * Math.cos(2 * Math.PI * r()));
+    return out;
+  }
+  var F1N = gauss(52, 104), FITW = gauss(91, 104);
+
+  scene("F1", {
+    answer: "A",
+    start: function () { return { trend: 0.2, season: 25, noise: 6 }; },
+    init: function (st, art) {
+      var self = this;
+      ["trend", "season", "noise"].forEach(function (k) {
+        on(art, k, "input", function (e) { st[k] = Number(e.target.value); self.render(st, art); });
+      });
+    },
+    render: function (st, art) {
+      var X = function (t) { return 70 + (t - 1) * 590 / 103; };
+      var comp = { trend: [], season: [], noise: [] }, sum = [];
+      for (var t = 1; t <= 104; t++) {
+        var tr = st.trend * (t - 1), se = st.season * Math.cos(2 * Math.PI * (t - 5) / 52), no = st.noise * F1N[t - 1];
+        comp.trend.push(tr); comp.season.push(se); comp.noise.push(no); sum.push(200 + tr + se + no);
+      }
+      var svg = svgRoot(680, 490, "Trend, season and noise added into one weekly series");
+      [["trend", 22], ["season", 112], ["noise", 202]].forEach(function (pn) {
+        var y0 = pn[1] + 40, Y = function (v) { return y0 - v * 0.42; };
+        txt(svg, 16, pn[1] + 14, pn[0], { size: 14.5, weight: 700 });
+        add(svg, "line", { x1: 70, x2: 660, y1: y0, y2: y0, stroke: C.line });
+        add(svg, "polyline", { points: comp[pn[0]].map(function (v, i) { return X(i + 1).toFixed(1) + "," + Y(v).toFixed(1); }).join(" "),
+          fill: "none", stroke: pn[0] === "noise" ? C.muted : C.violet, "stroke-width": 2 });
+      });
+      var Y = function (v) { return 470 - (v - 100) * 0.62; };
+      txt(svg, 16, 292, "the series: 200 thousand + trend + season + noise", { size: 14.5, weight: 700 });
+      [150, 250, 350].forEach(function (tv) {
+        add(svg, "line", { x1: 70, x2: 660, y1: Y(tv), y2: Y(tv), stroke: C.line });
+        txt(svg, 62, Y(tv) + 5, String(tv), { size: 12.5, anchor: "end", fill: C.muted });
+      });
+      add(svg, "polyline", { points: sum.map(function (v, i) { return X(i + 1).toFixed(1) + "," + Y(v).toFixed(1); }).join(" "),
+        fill: "none", stroke: C.ink, "stroke-width": 2.4 });
+      add(svg, "line", { x1: X(1), x2: X(104), y1: Y(200), y2: Y(200 + st.trend * 103), stroke: C.rose, "stroke-width": 2, "stroke-dasharray": "6 4" });
+      txt(svg, 660, Y(200 + st.trend * 103) + 20, "trend", { size: 13, anchor: "end", fill: C.rose, weight: 700 }).setAttribute("class", "halo");
+      put($("[data-fig]", art), svg);
+      ["trend", "season", "noise"].forEach(function (k) { $('[data-ctl="' + k + '"]', art).value = st[k]; });
+      setOut(art, "trend", st.trend.toFixed(2) + " a week (slider value " + st.trend.toFixed(2) + ")");
+      setOut(art, "season", st.season + " thousand (slider value " + st.season + ")");
+      setOut(art, "noise", st.noise + " thousand (slider value " + st.noise + ")");
+      nums($("[data-nums]", art), [
+        ["Highest week", Math.round(Math.max.apply(null, sum)) + " thousand"],
+        ["Lowest week", Math.round(Math.min.apply(null, sum)) + " thousand"],
+        ["The season's swing", "up and down " + st.season + " thousand"],
+        ["The trend over two years", (st.trend >= 0 ? "up " : "down ") + Math.abs(st.trend * 103).toFixed(1) + " thousand"]
+      ]);
+    },
+    final: function (st) { st.trend = 0.2; st.season = 50; st.noise = 6; }
+  });
+
+  function f2Fore(m, t, split) {
+    var A = FRI.weeks;
+    if (m === "naive") return A[split - 1];
+    if (m === "swly") return A[t - 53];
+    if (m === "fest") return A[t - (t <= 83 ? 51 : 54) - 1] * FRI.growth;
+    return A[t - 53] * FRI.vendorLift;
+  }
+  function f2Score(m, split) {
+    var over = 0, under = 0, abs = 0, high = 0, n = 0, A = FRI.weeks, co = FRI.idleShift / FRI.perShift;
+    for (var t = split + 1; t <= 104; t++) {
+      var e = f2Fore(m, t, split) - A[t - 1];
+      abs += Math.abs(e); n++;
+      if (e > 0) { over += e; high++; } else under -= e;
+    }
+    return { mae: abs / n, n: n, high: high, idle: over * co, late: under * FRI.lateShipment };
+  }
+  var F2_NAMES = { naive: "Naive", swly: "Same week last year", fest: "Festival-aligned with drift", vendor: "The vendor's curve" };
+  scene("F2", {
+    answer: "C",
+    start: function () { return { method: "naive", split: 91 }; },
+    init: function (st, art) {
+      var self = this;
+      on(art, "method", "change", function (e) { st.method = e.target.value; self.render(st, art); });
+      on(art, "split", "input", function (e) { st.split = Number(e.target.value); self.render(st, art); });
+    },
+    render: function (st, art) {
+      var A = FRI.weeks, s = st.split, m = st.method, t, f, a;
+      var X = function (t) { return 64 + (t - 1) * 596 / 103; }, Y = function (v) { return 250 - 210 * (v - 140000) / 300000; };
+      var svg = svgRoot(680, 610, "104 weeks of shipments with the hidden weeks shaded, and the hidden weeks zoomed with each week's error");
+      add(svg, "rect", { x: X(s + 0.5), y: 36, width: X(104.5) - X(s + 0.5), height: 214, fill: C.violet, "fill-opacity": 0.1 });
+      txt(svg, X(s + 0.5) - 6, 52, (104 - s) + " hidden weeks", { size: 13.5, weight: 700, fill: C.violet, anchor: "end" });
+      [200000, 300000, 400000].forEach(function (v) {
+        add(svg, "line", { x1: 64, x2: 660, y1: Y(v), y2: Y(v), stroke: C.line });
+        txt(svg, 58, Y(v) + 5, group(v / 1000) + "k", { size: 12.5, anchor: "end", fill: C.muted });
+      });
+      [[1, "Oct 2024"], [14, "Jan 2025"], [27, "Apr"], [40, "Jul"], [53, "Oct 2025"], [66, "Jan 2026"], [79, "Apr"], [92, "Jul"]].forEach(function (mk) {
+        txt(svg, X(mk[0]), 270, mk[1], { size: 12.5, anchor: "middle", fill: C.night });
+      });
+      [[5, "Diwali 2024"], [56, "Diwali 2025"]].forEach(function (d) { txt(svg, X(d[0]) + 8, Y(A[d[0] - 1]) + 4, d[1], { size: 12.5, fill: C.night }).setAttribute("class", "halo"); });
+      if (m === "vendor") {
+        add(svg, "polyline", { points: A.slice(0, s).map(function (v, i) { return X(i + 1).toFixed(1) + "," + Y(v * (1 + 0.012 * FITW[i])).toFixed(1); }).join(" "),
+          fill: "none", stroke: C.violet, "stroke-width": 2, "stroke-dasharray": "5 3" });
+      }
+      add(svg, "polyline", { points: A.map(function (v, i) { return X(i + 1).toFixed(1) + "," + Y(v).toFixed(1); }).join(" "), fill: "none", stroke: C.ink, "stroke-width": 1.8 });
+      /* the hidden weeks, zoomed so each week's error reads from the back of the room */
+      var fc = [], lo = Infinity, hi = -Infinity;
+      for (t = s + 1; t <= 104; t++) { f = f2Fore(m, t, s); a = A[t - 1]; fc.push([t, f, a]); lo = Math.min(lo, f, a); hi = Math.max(hi, f, a); }
+      lo = Math.floor(lo / 20000) * 20000; hi = Math.ceil(hi / 20000) * 20000;
+      var n = fc.length, X2 = function (t) { return 76 + (t - s - 0.5) * 584 / n; }, Y2 = function (v) { return 548 - 220 * (v - lo) / (hi - lo); };
+      txt(svg, 16, 306, "the hidden weeks, zoomed: each stick is one week's error", { size: 14.5, weight: 700 });
+      [lo, (lo + hi) / 2, hi].forEach(function (v) {
+        add(svg, "line", { x1: 70, x2: 660, y1: Y2(v), y2: Y2(v), stroke: C.line });
+        txt(svg, 64, Y2(v) + 5, group(v / 1000) + "k", { size: 12.5, anchor: "end", fill: C.muted });
+      });
+      fc.forEach(function (r) {
+        add(svg, "line", { x1: X2(r[0]), x2: X2(r[0]), y1: Y2(r[2]), y2: Y2(r[1]), stroke: r[1] > r[2] ? AMBER : C.rose, "stroke-width": Math.max(2, Math.min(7, 300 / n)) });
+      });
+      add(svg, "polyline", { points: fc.map(function (r) { return X2(r[0]).toFixed(1) + "," + Y2(r[2]).toFixed(1); }).join(" "), fill: "none", stroke: C.ink, "stroke-width": 2 });
+      add(svg, "polyline", { points: fc.map(function (r) { return X2(r[0]).toFixed(1) + "," + Y2(r[1]).toFixed(1); }).join(" "), fill: "none", stroke: C.violet, "stroke-width": 2.4 });
+      txt(svg, X2(s + 1), 568, weekDate(s + 1, true), { size: 12.5, anchor: "middle", fill: C.night });
+      txt(svg, X2(104), 568, weekDate(104, true), { size: 12.5, anchor: "middle", fill: C.night });
+      var lx = 70;
+      [["actual", C.ink, false], [F2_NAMES[m].toLowerCase(), C.violet, false], ["too high", AMBER, true], ["too low", C.rose, true]].forEach(function (lg) {
+        add(svg, "line", { x1: lx, x2: lx + (lg[2] ? 0 : 22), y1: lg[2] ? 586 : 598, y2: 604, stroke: lg[1], "stroke-width": lg[2] ? 4 : 2.4 });
+        txt(svg, lx + (lg[2] ? 10 : 30), 602, lg[0], { size: 13.5 });
+        lx += (lg[2] ? 30 : 46) + lg[0].length * 7.2;
+      });
+      put($("[data-fig]", art), svg);
+      $('[data-ctl="method"]', art).value = m;
+      $('[data-ctl="split"]', art).value = s;
+      setOut(art, "split", "The week of " + weekDate(s) + ", so " + (104 - s) + " weeks are hidden, from " + weekDate(s + 1) + " (slider value " + s + ")");
+      var sc = f2Score(m, s);
+      nums($("[data-nums]", art), [
+        ["Mean absolute error", group(round100(sc.mae)) + " a week"],
+        ["Weeks forecast too high", sc.high + " of " + sc.n],
+        ["Idle shifts, at Rs 5.4 a shipment", lakh(sc.idle)],
+        ["Late shipments, at Rs 25 each", lakh(sc.late)],
+        ["The errors, priced", lakh(sc.idle + sc.late)]
+      ]);
+      var rows = ["naive", "swly", "fest", "vendor"].map(function (k) {
+        var x = f2Score(k, s);
+        return "<tr><td>" + F2_NAMES[k] + "</td><td>" + group(round100(x.mae)) + "</td><td>" + x.high + " of " + x.n + "</td><td>" + lakh(x.idle + x.late) + "</td></tr>";
+      }).join("");
+      $("[data-board]", art).innerHTML = '<table class="rows"><thead><tr><th>Method, on the hidden weeks</th><th>MAE, shipments a week</th><th>Weeks too high</th><th>Errors priced</th></tr></thead><tbody>' + rows + "</tbody></table>";
+    },
+    final: function (st) { st.method = "fest"; st.split = 91; }
+  });
+
+  scene("F3", {
+    answer: "B",
+    start: function () { return { diwali: 108 }; },
+    init: function (st, art) {
+      var self = this;
+      on(art, "diwali", "input", function (e) { st.diwali = Number(e.target.value); self.render(st, art); });
+    },
+    render: function (st, art) {
+      var A = FRI.weeks, D = st.diwali, off = D - FRI.diwaliWeek[2025];
+      var cx = function (i) { return 104 + i * 56; }, svg = svgRoot(680, 480, "The 2025 festive weeks above two copies for 2026");
+      var Ytop = function (v) { return 200 - 150 * (v - 150000) / 310000; }, Ybot = function (v) { return 430 - 150 * (v - 150000) / 310000; };
+      add(svg, "rect", { x: cx(2) - 28, y: 268, width: 8 * 56, height: 166, fill: C.violet, "fill-opacity": 0.07 });
+      txt(svg, cx(9) + 22, 428, "the eight weeks to staff", { size: 13, fill: C.violet, weight: 700, anchor: "end" });
+      txt(svg, 16, 30, "2025, as the centre shipped it", { size: 14.5, weight: 700 });
+      txt(svg, 16, 256, "2026, two copies on the same calendar weeks", { size: 14.5, weight: 700 });
+      var top = [], bot = [], ali = [];
+      for (var i = 0; i < 10; i++) {
+        top.push(A[52 + i]);
+        bot.push(A[52 + i]);
+        ali.push(A[104 + i - off] * FRI.growth);
+        txt(svg, cx(i), 222, weekDate(53 + i, true), { size: 12.5, anchor: "middle", fill: C.night });
+        txt(svg, cx(i), 452, weekDate(105 + i, true), { size: 12.5, anchor: "middle", fill: C.night });
+      }
+      var mk = function (y0, y1, x, label, ly) {
+        add(svg, "line", { x1: x, x2: x, y1: y0, y2: y1, stroke: C.rose, "stroke-width": 2.4, "stroke-dasharray": "6 4" });
+        txt(svg, x + 6, ly, label, { size: 13.5, weight: 700, fill: C.rose }).setAttribute("class", "halo");
+      };
+      mk(40, 206, cx(3), "Diwali 2025", 54);
+      mk(270, 436, cx(D - 105), "Diwali 2026", 404);
+      var line = function (vals, Y, colour, w) {
+        add(svg, "polyline", { points: vals.map(function (v, k) { return cx(k) + "," + Y(v).toFixed(1); }).join(" "), fill: "none", stroke: colour, "stroke-width": w });
+        vals.forEach(function (v, k) { add(svg, "circle", { cx: cx(k), cy: Y(v), r: 4, fill: colour }); });
+      };
+      line(top, Ytop, C.ink, 2.4);
+      line(bot, Ybot, AMBER, 2.4);
+      line(ali, Ybot, C.violet, 2.4);
+      var pk = function (vals) { return vals.indexOf(Math.max.apply(null, vals)); };
+      var pb = pk(bot), pa = pk(ali);
+      add(svg, "circle", { cx: cx(pb), cy: Ybot(bot[pb]), r: 11, fill: "none", stroke: AMBER, "stroke-width": 3 });
+      add(svg, "circle", { cx: cx(pa), cy: Ybot(ali[pa]), r: 11, fill: "none", stroke: C.violet, "stroke-width": 3 });
+      txt(svg, cx(pb) - 14, Ybot(bot[pb]) - 4, "the bot's peak", { size: 13.5, weight: 700, anchor: "end", fill: AMBER_INK }).setAttribute("class", "halo");
+      txt(svg, cx(pa) + 14, Ybot(ali[pa]) + 22, "festival-aligned peak", { size: 13.5, weight: 700, fill: C.violet }).setAttribute("class", "halo");
+      put($("[data-fig]", art), svg);
+      $('[data-ctl="diwali"]', art).value = D;
+      setOut(art, "diwali", "The week of " + weekDate(D) + " (slider value " + D + ")");
+      var early = pa - pb;
+      nums($("[data-nums]", art), [
+        ["The bot's peak", "week of " + weekDate(105 + pb, true)],
+        ["The festival-aligned peak", "week of " + weekDate(105 + pa, true)],
+        ["The bot is early by", early === 0 ? "nothing" : early + (early === 1 ? " week" : " weeks")],
+        ["Packer shifts in the aligned peak week", group(Math.round(ali[pa] / FRI.perShift))],
+        { wide: "The aligned copy of a 2026 week is the 2025 week " + off + " weeks earlier, times 1.04 for the year's drift." }
+      ]);
+    },
+    final: function (st) { st.diwali = FRI.diwaliWeek[2026]; }
+  });
+
+  function erf(x) {
+    var s = x < 0 ? -1 : 1; x = Math.abs(x);
+    var t = 1 / (1 + 0.3275911 * x);
+    var y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
+    return s * y;
+  }
+  function Phi(z) { return 0.5 * (1 + erf(z / Math.SQRT2)); }
+  function phi(z) { return Math.exp(-z * z / 2) / Math.sqrt(2 * Math.PI); }
+  function invPhi(p) { var lo = -8, hi = 8; for (var i = 0; i < 60; i++) { var mid = (lo + hi) / 2; if (Phi(mid) < p) lo = mid; else hi = mid; } return (lo + hi) / 2; }
+  scene("F4", {
+    answer: "A",
+    start: function () { return { over: 5.4, under: 15 }; },
+    init: function (st, art) {
+      var self = this;
+      on(art, "over", "input", function (e) { st.over = Number(e.target.value); self.render(st, art); });
+      on(art, "under", "input", function (e) { st.under = Number(e.target.value); self.render(st, art); });
+    },
+    render: function (st, art) {
+      var sig = FRI.mae.fest * Math.sqrt(Math.PI / 2), co = st.over, cu = st.under;
+      var idle = function (q) { var z = q / sig; return co * (q * Phi(z) + sig * phi(z)); };
+      var late = function (q) { var z = q / sig; return cu * (sig * phi(z) - q * (1 - Phi(z))); };
+      var X = function (q) { return 76 + 580 * (q + 20000) / 52000; }, Y = function (c) { return 380 - 330 * c / 600000; };
+      var svg = svgRoot(680, 440, "Expected cost of the errors against how far the plan sits from the forecast");
+      [0, 200000, 400000, 600000].forEach(function (c) {
+        add(svg, "line", { x1: 76, x2: 656, y1: Y(c), y2: Y(c), stroke: C.line });
+        txt(svg, 70, Y(c) + 5, c ? "Rs " + c / 100000 + " lakh" : "0", { size: 12.5, anchor: "end", fill: C.muted });
+      });
+      [-20000, -10000, 0, 10000, 20000, 30000].forEach(function (q) {
+        txt(svg, X(q), 400, (q > 0 ? "+" : "") + group(q), { size: 12.5, anchor: "middle", fill: C.night });
+      });
+      txt(svg, 366, 426, "plan above or below the forecast's middle, shipments a week", { size: 14, anchor: "middle", fill: C.night });
+      var curves = [[idle, AMBER, "idle shifts"], [late, C.rose, "late shipments"], [function (q) { return idle(q) + late(q); }, C.ink, "the two together"]];
+      curves.forEach(function (c, k) {
+        var pts = [];
+        for (var q = -20000; q <= 32000; q += 500) { var v = c[0](q); if (v <= 620000) pts.push(X(q).toFixed(1) + "," + Y(v).toFixed(1)); }
+        add(svg, "polyline", { points: pts.join(" "), fill: "none", stroke: c[1], "stroke-width": k === 2 ? 3 : 2 });
+      });
+      txt(svg, X(26000), Y(idle(26000)) - 10, "idle shifts", { size: 13.5, weight: 700, fill: AMBER_INK, anchor: "middle" }).setAttribute("class", "halo");
+      txt(svg, X(-15000), Y(late(-15000)) - 12, "late shipments", { size: 13.5, weight: 700, fill: C.rose, anchor: "middle" }).setAttribute("class", "halo");
+      var p = cu / (cu + co), qs = sig * invPhi(p), best = idle(qs) + late(qs), mid = idle(0) + late(0);
+      add(svg, "line", { x1: X(0), x2: X(0), y1: 40, y2: 380, stroke: C.night, "stroke-width": 1.4, "stroke-dasharray": "4 4" });
+      txt(svg, X(0) - 6, 54, "forecast's middle", { size: 13, anchor: "end", fill: C.night });
+      add(svg, "line", { x1: X(qs), x2: X(qs), y1: Y(best), y2: 380, stroke: C.violet, "stroke-width": 2, "stroke-dasharray": "6 4" });
+      add(svg, "circle", { cx: X(qs), cy: Y(best), r: 7, fill: C.violet, stroke: C.white, "stroke-width": 2 });
+      txt(svg, X(qs) + 10, Y(best) + 26, "cheapest plan: +" + group(round100(qs)), { size: 14, weight: 700, fill: C.violet }).setAttribute("class", "halo");
+      put($("[data-fig]", art), svg);
+      $('[data-ctl="over"]', art).value = co; $('[data-ctl="under"]', art).value = cu;
+      setOut(art, "over", "Rs " + co.toFixed(1) + " (slider value " + co.toFixed(1) + ")");
+      setOut(art, "under", "Rs " + cu + " (slider value " + cu + ")");
+      nums($("[data-nums]", art), [
+        ["The plan quantile", cu + " / (" + cu + " + " + co.toFixed(1) + ") = " + p.toFixed(2)],
+        ["Plan above the middle", group(round100(qs)) + " shipments"],
+        ["More packer shifts a week", group(Math.round(qs / FRI.perShift))],
+        ["Expected cost at the plan", "Rs " + (best / 1e5).toFixed(2) + " lakh a week"],
+        { wide: "Planning at the forecast's middle would cost Rs " + (mid / 1e5).toFixed(2) + " lakh a week." }
+      ]);
+    },
+    final: function (st) { st.over = 5.4; st.under = FRI.lateShipment; }
+  });
+
+  /* ---------- Saturday ---------- */
+  var METHODS = [
+    ["Mon", "Define the number and its guardrails", "the paid number and its gaming note"],
+    ["Tue", "Say it on one slide; size it from nothing", "claim, evidence, caveat, action"],
+    ["Wed", "Judge a pair against chance", "lift above a support floor"],
+    ["Thu", "Split the blend by cohort and step", "cohorts and one unit per step"],
+    ["Fri", "Beat the baseline; price the error", "hold-out and asymmetric cost"]
+  ];
+  var UNITS = {
+    ola: { name: "Ola or Rapido: a ride guarantee for two-wheeler rider-partners", days: [0, 1], metric: "completed peak rides per enrolled rider-partner per week",
+           constraint: "a rider-partner can sit online on two apps at once", cost: "the floor paid out for online time with no ride", hypo: true },
+    blinkit: { name: "Blinkit or Zepto: a dark store's bought-together strip", days: [2, 1], metric: "lift above a support floor for each suggested pair",
+           constraint: "a small catalogue per store, with stock-outs", cost: "a slot spent on the item already in every cart", hypo: true },
+    swiggyone: { name: "Swiggy One: the membership's cohorts", days: [3, 1], metric: "each signup cohort's retention at the age where habit shows",
+           constraint: "free delivery changes who joins and when", cost: "a flat blend that hides a weaker cohort", hypo: true },
+    amazon: { name: "Amazon India: a fulfilment centre's festive staffing", days: [4, 1], metric: "festive-week shipments against a festival-aligned baseline",
+           constraint: "the festival moves by weeks each year", cost: "a late shipment costs more than an idle shift", hypo: true },
+    kfs: { name: "Kalpa Financial Services, with Rohan Desai", days: [0, 4], metric: "which customers to nudge first towards a second product",
+           constraint: "a nudge in lending is a credit decision", cost: "a wrong call costs twenty times more one way than the other" },
+    klog: { name: "Kalpa Logistics, with the head of operations", days: [0, 4], metric: "parcels delivered by the date first promised",
+           constraint: "re-dating the promise games the on-time rate", cost: "Diwali parcel volumes forecast in the wrong week" },
+    khealth: { name: "Kalpa Health, with Dr Priya Menon", days: [3], metric: "patient cohorts by first-visit month, and booking to visit in dollars",
+           constraint: "claims billed in dollars across six US metro areas", cost: "a flat blend that hides weaker new-patient cohorts" },
+    kconnect: { name: "Kalpa Connect, with Ananya Bose", days: [3], metric: "churn for each subscriber cohort",
+           constraint: "a blended churn rate stays flat while cohorts worsen", cost: "the weakest cohort found after it has left" }
+  };
+  function wrapLines(text, per) {
+    var words = String(text).split(/\s+/), lines = [], line = "";
+    words.forEach(function (w) { if (line && (line + " " + w).length > per) { lines.push(line); line = w; } else { line = line ? line + " " + w : w; } });
+    if (line) lines.push(line);
+    return lines;
+  }
+  scene("S1", {
+    answer: "B",
+    start: function () { return { unit: "", line: "" }; },
+    init: function (st, art) {
+      var self = this;
+      on(art, "unit", "change", function (e) { st.unit = e.target.value; self.render(st, art); });
+      on(art, "line", "input", function (e) { st.line = e.target.value; self.render(st, art); });
+    },
+    render: function (st, art) {
+      var u = UNITS[st.unit], svg = svgRoot(680, 480, "The week's methods on the left and the chosen unit's card on the right");
+      txt(svg, 20, 22, "what stays: the method", { size: 14.5, weight: 700 });
+      txt(svg, 384, 22, "what changes: the unit's card", { size: 14.5, weight: 700 });
+      var cardTop = 34, cardH = 330;
+      METHODS.forEach(function (mth, i) {
+        var y = 34 + i * 66, lit = u && u.days.indexOf(i) >= 0;
+        add(svg, "rect", { x: 20, y: y, width: 280, height: 56, rx: 10, fill: lit ? C.ink : C.tint, stroke: C.violet, "stroke-width": lit ? 2 : 1.4 });
+        txt(svg, 32, y + 23, mth[0] + ": " + mth[1], { size: 14.5, weight: 700, fill: lit ? C.white : C.ink });
+        txt(svg, 32, y + 44, mth[2], { size: 13, fill: lit ? C.lav : C.night });
+        if (lit) add(svg, "path", { d: "M 300 " + (y + 28) + " C 340 " + (y + 28) + ", 340 " + (cardTop + cardH / 2) + ", 380 " + (cardTop + cardH / 2),
+          fill: "none", stroke: C.violet, "stroke-width": 2.4 });
+      });
+      add(svg, "rect", { x: 380, y: cardTop, width: 280, height: cardH, rx: 12, fill: u ? C.white : C.surface, stroke: u ? C.violet : "#B8B2D6", "stroke-width": u ? 2.4 : 1.4,
+        "stroke-dasharray": u ? "" : "6 4" });
+      if (!u) {
+        wrapLines("Choose a unit to see which of the week's methods it uses and what changes for it.", 34).forEach(function (l, k) {
+          txt(svg, 396, cardTop + 34 + k * 20, l, { size: 14.5, fill: C.night });
+        });
+      } else {
+        var y = cardTop + 28;
+        wrapLines(u.name, 32).forEach(function (l) { txt(svg, 396, y, l, { size: 15, weight: 700 }); y += 20; });
+        y += 8;
+        [["metric", u.metric], ["constraint", u.constraint], ["cost of an error", u.cost]].forEach(function (row) {
+          txt(svg, 396, y, row[0], { size: 13, weight: 700, fill: C.violet }); y += 18;
+          wrapLines(row[1], 36).forEach(function (l) { txt(svg, 396, y, l, { size: 14 }); y += 18; });
+          y += 8;
+        });
+        if (u.hypo) txt(svg, 396, cardTop + cardH - 14, "a hypothetical: no company figure is used", { size: 12.5, fill: C.muted });
+      }
+      add(svg, "rect", { x: 20, y: 392, width: 640, height: 74, rx: 10, fill: C.white, stroke: C.lilac, "stroke-width": 1.4 });
+      txt(svg, 34, 414, "your line", { size: 13, weight: 700, fill: C.violet });
+      var lines = st.line ? wrapLines(st.line, 78).slice(0, 2) : ["Write one line in the box: a unit you would pick and what changes for it."];
+      lines.forEach(function (l, k) { txt(svg, 34, 436 + k * 20, l, { size: 14.5, fill: st.line ? C.ink : C.muted }); });
+      put($("[data-fig]", art), svg);
+      $('[data-ctl="unit"]', art).value = st.unit;
+      setOut(art, "unit", u ? "Uses the methods of " + u.days.slice().sort().map(function (d) { return DAY_NAMES[d]; }).join(" and ") : "No unit chosen");
+      setOut(art, "line", st.line ? "Your line has " + st.line.length + " of 140 characters" : "Nothing written yet (0 of 140 characters)");
+      nums($("[data-nums]", art), u ? [
+        ["Methods it carries over", String(u.days.length)],
+        { wide: "Changes for this unit: the metric, the constraint and the cost of an error." }
+      ] : [{ wide: "Choose a unit to light the methods it carries over." }]);
+    },
+    final: function (st) { st.unit = st.unit || "klog"; }
   });
 
   /* ---------- start ---------- */
