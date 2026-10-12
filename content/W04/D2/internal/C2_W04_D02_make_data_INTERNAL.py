@@ -476,6 +476,13 @@ add("four_hour_drivers", round(four_hour_drivers, -2), "about 4,300 drivers", "6
     "half2 S49; extras transcript 2; scorecards")
 check("a four-hour window: 6,250 requests an hour and about 4,300 drivers",
       round(four_hour_req) == 6250 and round(four_hour_drivers, -2) == 4300)
+add("busy_share", round(1 - base["idle_share"], 2), "0.70 (70 percent)", "1 - the idle share of 0.30",
+    "half2 S39; notebook; guided exercise; notes")
+add("buffer_pct", round((base["buffer"] - 1) * 100), "15 percent", "a buffer of 1.15", "extras transcript 2; notes")
+add("distractor_divided_by_busy", round(base["trips_per_busy_hour"] / (1 - base["idle_share"]), 2), "3.43",
+    "2.4 / 0.70, the division done the wrong way", "guided exercise Q3 (distractor)")
+add("distractor_times_idle", round(base["trips_per_busy_hour"] * base["idle_share"], 2), "0.72",
+    "2.4 x 0.30, the idle drivers' share", "guided exercise Q3 (distractor)")
 chain_dh = 1 / (base["trips_per_busy_hour"] * (1 - base["idle_share"]))
 add("driver_hours_per_request_chain", round(chain_dh, 2), "0.60",
     "1 / 1.68, before the buffer", "half2 S10; notebook cell 14; notes")
@@ -506,7 +513,7 @@ upi = AS_u = {a["id"]: a for a in facts["assumptions"]}
 upi_est = upi["upi_active_users"]["value"] * upi["upi_payments_per_day"]["value"]
 public("upi_per_day", 802_000_000, "802 million a day", "T3",
        "Outlook Money, 2 October 2026, citing NPCI's data on X: an average of 802 million UPI "
-       "transactions a day in September 2026; https://www.outlookmoney.com/banking/"
+       "transactions a day in September 2026; checked 12 October 2026 at https://www.outlookmoney.com/banking/"
        "upi-processes-2407-billion-transactions-worth-rs-2937-lakh-crore-in-september",
        "half2 S12, S13; notebook cell 14; notes; Kahoot; exercises")
 public("upi_month_total", 24_070_000_000, "24.07 billion in the month", "T3",
@@ -522,6 +529,9 @@ add("upi_month_over_31", round(24_070_000_000 / 31 / 1e6), "776 million", "24.07
     "half2 S13; Kahoot; exercises")
 add("upi_31_day_gap_pct", round((24_070_000_000 / 31) / (24_070_000_000 / 30) * 100 - 100, 1),
     "about 3 percent low", "30 / 31 - 1", "half2 S13; Kahoot")
+add("upi_estimate_millions", 700, "700 million", "35 crore x 2, in millions", "half2 S44; notebook; notes")
+add("september_days", 30, "30 days", "the days in September 2026", "half2 S44; notebook; Kahoot; exercises")
+add("a_31_day_month", 31, "31 days", "the wrong divisor for September", "half2 S44; notebook; Kahoot; exercises")
 add("upi_users_swing_low", int(2.5e8 * 2), "50 crore", "25 crore x 2", "notebook cell 14")
 add("upi_users_swing_high", int(4.5e8 * 2), "90 crore", "45 crore x 2", "notebook cell 14")
 add("upi_payments_swing_low", int(3.5e8 * 1), "35 crore", "35 crore x 1", "notebook cell 14")
@@ -533,35 +543,36 @@ check("UPI: 70 crore a day, 13 percent below 802 million",
 public("flipkart_concurrent_users", 6_300_000, "6.3 million concurrent users in a minute", "T3",
        "Flipkart Stories, 9 October 2026: 'Flipkart recorded 6.3 million concurrent users in a "
        "minute' in the opening hour of The Big Billion Days; the URL slug reads 63 million; "
-       "https://stories.flipkart.com/announcement/india-logs-on-for-the-big-billion-days-flipkart-"
+       "checked 12 October 2026 at https://stories.flipkart.com/announcement/india-logs-on-for-the-big-billion-days-flipkart-"
        "records-63-million-concurrent-users-as-the-festive-season-opens",
        "half2 S14; Kahoot; notes; exercises")
+add("flipkart_url_number", 63, "63", "the number in the URL slug, in millions", "half2 S45, S53; notes; sheet")
 public("flipkart_url_reading", 63_000_000, "63 million (the URL slug)", "T3", "the same page's URL",
        "half2 S14; Kahoot; notes")
 public("dmrc_journeys_2026", 6_406_000, "64.06 lakh journeys a day", "M6",
        "The Tribune, updated 9 August 2026, citing DMRC: average daily ridership of 64.06 lakh "
-       "journeys; https://www.tribuneindia.com/news/delhi/delhi-metro-records-99-95-train-"
+       "journeys; checked 12 October 2026 at https://www.tribuneindia.com/news/delhi/delhi-metro-records-99-95-train-"
        "punctuality-in-2026-dmrc/", "half2 S14; exercises; notes")
 public("dmrc_boardings_record", 8_244_903, "82,44,903 boardings", "M6",
        "Republic World, 18 September 2026, quoting DMRC: highest-ever passenger boardings of "
-       "82,44,903 on 17 September 2026; https://www.republicworld.com/india/delhi-metro-breaks-"
+       "82,44,903 on 17 September 2026; checked 12 October 2026 at https://www.republicworld.com/india/delhi-metro-breaks-"
        "all-time-record-with-8244-lakh-footfall-as-dtc-strike-sends-rush-soaring-2026-09-18-137241",
        "half2 S14; exercises; notes")
 public("dmrc_line_utilisation_2018", 4_535_932, "45,35,932 line uses", "M6",
        "PTI via LatestLY, 30 May 2018: line utilisation on 29 May 2018 was 45,35,932, against gate "
-       "ridership near 27 lakh a day in February 2018; https://www.latestly.com/agency-news/dmrc-"
+       "ridership near 27 lakh a day in February 2018; checked 12 October 2026 at https://www.latestly.com/agency-news/dmrc-"
        "uses-new-count-metric-on-traffic-flow-doesnt-share-ridership-190870.html/amp",
        "notes (the unit trap)")
 public("dmrc_ridership_2018", 2_700_000, "27 lakh a day", "M6", "the same report", "notes (the unit trap)")
 public("amazon_memo_pages", 6, "six-page memo", "T1",
        "Amazon's 2017 letter to shareholders, filed 18 April 2018: 'We don't do PowerPoint (or any "
        "other slide-oriented) presentations'; memos are read silently at the start of each meeting; "
-       "'a great memo probably should take a week or more'; https://www.sec.gov/Archives/edgar/data/"
+       "'a great memo probably should take a week or more'; checked 12 October 2026 at https://www.sec.gov/Archives/edgar/data/"
        "1018724/000119312518121161/d456916dex991.htm", "half1 S27; notes; Kahoot; exercises")
 public("dmart_revenue_fy26_crore", 66968, "Rs 66,968 crore", "T3",
        "Avenue Supermarts press release, 2 May 2026: standalone total revenue for FY26 Rs 66,968 "
        "crore; 85 stores added in FY26; 500 stores at 31 March 2026; two-year-old stores grew 10.8 "
-       "percent in Q4 FY26; https://nsearchives.nseindia.com/corporate/DMART_02052026173007_"
+       "percent in Q4 FY26; checked 12 October 2026 at https://nsearchives.nseindia.com/corporate/DMART_02052026173007_"
        "ASLPressRelease02052026.pdf", "lab; Kalpa exercise; lab set; guesstimate note")
 public("dmart_stores_fy26_end", 500, "500 stores", "T3", "the same release", "lab; Kalpa exercise")
 public("dmart_stores_added_fy26", 85, "85 stores added", "T3", "the same release", "lab; Kalpa exercise")
@@ -608,6 +619,12 @@ facts["toys"] += [
      "values": {"people": 2_000_000, "wrong_households": 9_000_000, "people_per_household": 4,
                 "right_households": 500_000},
      "used_by": "half2 S14; Kahoot"},
+    {"id": "toy_kahoot_q6", "label": "invented",
+     "values": {"trips_a_day": 100000, "trips_per_busy_hour": 2.5, "wrong_drivers": 40000},
+     "used_by": "Kahoot Q6"},
+    {"id": "toy_kahoot_q8", "label": "invented",
+     "values": {"month_total_billion": 31, "days": 31, "per_day_billion": 1, "over_30_days_billion": 1.03},
+     "used_by": "Kahoot Q8"},
     {"id": "toy_food_stall", "label": "invented",
      "values": {"sales_rs": 12000, "orders": 240, "staff_hours": 40, "staff_days": 5,
                 "per_order_rs": 50, "per_staff_hour_rs": 300, "per_staff_day_rs": 2400},

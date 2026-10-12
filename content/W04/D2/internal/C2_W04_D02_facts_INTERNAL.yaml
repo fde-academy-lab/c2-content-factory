@@ -398,6 +398,30 @@ numbers:
   unit: ''
   how: 6,250 / 1.68 x 1.15
   used_by: half2 S49; extras transcript 2; scorecards
+- id: busy_share
+  value: 0.7
+  shown: 0.70 (70 percent)
+  unit: ''
+  how: 1 - the idle share of 0.30
+  used_by: half2 S39; notebook; guided exercise; notes
+- id: buffer_pct
+  value: 15
+  shown: 15 percent
+  unit: ''
+  how: a buffer of 1.15
+  used_by: extras transcript 2; notes
+- id: distractor_divided_by_busy
+  value: 3.43
+  shown: '3.43'
+  unit: ''
+  how: 2.4 / 0.70, the division done the wrong way
+  used_by: guided exercise Q3 (distractor)
+- id: distractor_times_idle
+  value: 0.72
+  shown: '0.72'
+  unit: ''
+  how: 2.4 x 0.30, the idle drivers' share
+  used_by: guided exercise Q3 (distractor)
 - id: driver_hours_per_request_chain
   value: 0.6
   shown: '0.60'
@@ -465,6 +489,24 @@ numbers:
   unit: ''
   how: 30 / 31 - 1
   used_by: half2 S13; Kahoot
+- id: upi_estimate_millions
+  value: 700
+  shown: 700 million
+  unit: ''
+  how: 35 crore x 2, in millions
+  used_by: half2 S44; notebook; notes
+- id: september_days
+  value: 30
+  shown: 30 days
+  unit: ''
+  how: the days in September 2026
+  used_by: half2 S44; notebook; Kahoot; exercises
+- id: a_31_day_month
+  value: 31
+  shown: 31 days
+  unit: ''
+  how: the wrong divisor for September
+  used_by: half2 S44; notebook; Kahoot; exercises
 - id: upi_users_swing_low
   value: 500000000
   shown: 50 crore
@@ -489,6 +531,12 @@ numbers:
   unit: ''
   how: 35 crore x 3
   used_by: notebook cell 14
+- id: flipkart_url_number
+  value: 63
+  shown: '63'
+  unit: ''
+  how: the number in the URL slug, in millions
+  used_by: half2 S45, S53; notes; sheet
 - id: dmart_stores_fy25_end
   value: 415
   shown: 415 stores
@@ -798,7 +846,7 @@ public_facts:
   shown: 802 million a day
   r2: T3
   source: 'Outlook Money, 2 October 2026, citing NPCI''s data on X: an average of 802 million UPI transactions
-    a day in September 2026; https://www.outlookmoney.com/banking/upi-processes-2407-billion-transactions-worth-rs-2937-lakh-crore-in-september'
+    a day in September 2026; checked 12 October 2026 at https://www.outlookmoney.com/banking/upi-processes-2407-billion-transactions-worth-rs-2937-lakh-crore-in-september'
   checked: 12 October 2026
   used_by: half2 S12, S13; notebook cell 14; notes; Kahoot; exercises
 - id: upi_month_total
@@ -813,7 +861,8 @@ public_facts:
   shown: 6.3 million concurrent users in a minute
   r2: T3
   source: 'Flipkart Stories, 9 October 2026: ''Flipkart recorded 6.3 million concurrent users in a minute''
-    in the opening hour of The Big Billion Days; the URL slug reads 63 million; https://stories.flipkart.com/announcement/india-logs-on-for-the-big-billion-days-flipkart-records-63-million-concurrent-users-as-the-festive-season-opens'
+    in the opening hour of The Big Billion Days; the URL slug reads 63 million; checked 12 October 2026
+    at https://stories.flipkart.com/announcement/india-logs-on-for-the-big-billion-days-flipkart-records-63-million-concurrent-users-as-the-festive-season-opens'
   checked: 12 October 2026
   used_by: half2 S14; Kahoot; notes; exercises
 - id: flipkart_url_reading
@@ -828,7 +877,7 @@ public_facts:
   shown: 64.06 lakh journeys a day
   r2: M6
   source: 'The Tribune, updated 9 August 2026, citing DMRC: average daily ridership of 64.06 lakh journeys;
-    https://www.tribuneindia.com/news/delhi/delhi-metro-records-99-95-train-punctuality-in-2026-dmrc/'
+    checked 12 October 2026 at https://www.tribuneindia.com/news/delhi/delhi-metro-records-99-95-train-punctuality-in-2026-dmrc/'
   checked: 12 October 2026
   used_by: half2 S14; exercises; notes
 - id: dmrc_boardings_record
@@ -836,7 +885,7 @@ public_facts:
   shown: 82,44,903 boardings
   r2: M6
   source: 'Republic World, 18 September 2026, quoting DMRC: highest-ever passenger boardings of 82,44,903
-    on 17 September 2026; https://www.republicworld.com/india/delhi-metro-breaks-all-time-record-with-8244-lakh-footfall-as-dtc-strike-sends-rush-soaring-2026-09-18-137241'
+    on 17 September 2026; checked 12 October 2026 at https://www.republicworld.com/india/delhi-metro-breaks-all-time-record-with-8244-lakh-footfall-as-dtc-strike-sends-rush-soaring-2026-09-18-137241'
   checked: 12 October 2026
   used_by: half2 S14; exercises; notes
 - id: dmrc_line_utilisation_2018
@@ -844,7 +893,7 @@ public_facts:
   shown: 45,35,932 line uses
   r2: M6
   source: 'PTI via LatestLY, 30 May 2018: line utilisation on 29 May 2018 was 45,35,932, against gate
-    ridership near 27 lakh a day in February 2018; https://www.latestly.com/agency-news/dmrc-uses-new-count-metric-on-traffic-flow-doesnt-share-ridership-190870.html/amp'
+    ridership near 27 lakh a day in February 2018; checked 12 October 2026 at https://www.latestly.com/agency-news/dmrc-uses-new-count-metric-on-traffic-flow-doesnt-share-ridership-190870.html/amp'
   checked: 12 October 2026
   used_by: notes (the unit trap)
 - id: dmrc_ridership_2018
@@ -860,7 +909,7 @@ public_facts:
   r2: T1
   source: 'Amazon''s 2017 letter to shareholders, filed 18 April 2018: ''We don''t do PowerPoint (or any
     other slide-oriented) presentations''; memos are read silently at the start of each meeting; ''a great
-    memo probably should take a week or more''; https://www.sec.gov/Archives/edgar/data/1018724/000119312518121161/d456916dex991.htm'
+    memo probably should take a week or more''; checked 12 October 2026 at https://www.sec.gov/Archives/edgar/data/1018724/000119312518121161/d456916dex991.htm'
   checked: 12 October 2026
   used_by: half1 S27; notes; Kahoot; exercises
 - id: dmart_revenue_fy26_crore
@@ -869,7 +918,7 @@ public_facts:
   r2: T3
   source: 'Avenue Supermarts press release, 2 May 2026: standalone total revenue for FY26 Rs 66,968 crore;
     85 stores added in FY26; 500 stores at 31 March 2026; two-year-old stores grew 10.8 percent in Q4
-    FY26; https://nsearchives.nseindia.com/corporate/DMART_02052026173007_ASLPressRelease02052026.pdf'
+    FY26; checked 12 October 2026 at https://nsearchives.nseindia.com/corporate/DMART_02052026173007_ASLPressRelease02052026.pdf'
   checked: 12 October 2026
   used_by: lab; Kalpa exercise; lab set; guesstimate note
 - id: dmart_stores_fy26_end
@@ -1015,6 +1064,21 @@ toys:
     people_per_household: 4
     right_households: 500000
   used_by: half2 S14; Kahoot
+- id: toy_kahoot_q6
+  label: invented
+  values:
+    trips_a_day: 100000
+    trips_per_busy_hour: 2.5
+    wrong_drivers: 40000
+  used_by: Kahoot Q6
+- id: toy_kahoot_q8
+  label: invented
+  values:
+    month_total_billion: 31
+    days: 31
+    per_day_billion: 1
+    over_30_days_billion: 1.03
+  used_by: Kahoot Q8
 - id: toy_food_stall
   label: invented
   values:

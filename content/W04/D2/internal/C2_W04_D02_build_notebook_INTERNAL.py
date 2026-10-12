@@ -134,7 +134,7 @@ trips each online hour carried. If the two routes agree, the fall is all trips."
 
     new_code_cell("""growth = change[["peak_bookings_rs", "active_driver_weeks"]].round(1)
 print(growth.rename("growth, percent"))
-check("1.030 / 1.022 - 1 is the 0.8 percent rise", round(((1 + change.peak_bookings_rs / 100)
+check("bookings growth over driver-week growth gives the per-driver-week rise", round(((1 + change.peak_bookings_rs / 100)
       / (1 + change.active_driver_weeks / 100) - 1) * 100, 1) == round(change.rs_per_driver_week, 1))
 fare = w.peak_bookings_rs / w.peak_trips
 trips_per_hour = w.peak_trips / w.peak_online_hours
@@ -153,7 +153,7 @@ partner asks whether riders paid less.
 
 The cluttered version is the one dashboards send: four series in four units on one axis, two of them
 divided by 20 or 100 to fit, a legend away from the lines, gridlines, and a title that names a topic.
-The clear version keeps one series, the one the scheme pays per, marks the launch, labels the two
+The clear version keeps one series, the one the scheme pays per, draws the launch, labels the two
 windows' values on the lines, and makes the title a sentence."""),
 
     new_code_cell("""x = range(len(weeks))
@@ -229,7 +229,7 @@ for i, name in enumerate(ledger.index):
     for end in ("low", "high"):
         v = list(ledger.central); v[i] = ledger.loc[name, end]; ends.append(drivers(v))
     swing[name] = (min(ends), max(ends))
-swing = pd.DataFrame(swing, index=["lowest", "highest"]).T.round(-2)
+swing = pd.DataFrame(swing, index=["lowest", "highest"]).T.round(-2).astype(int)
 swing["width"] = swing.highest - swing.lowest
 swing = swing.sort_values("width")
 print(f"requests an hour: {1e7 * 0.01 * 0.25 / 3:,.0f}; drivers online: {central:,.0f}")
@@ -244,8 +244,8 @@ check("about 5,700 drivers at the central values", round(central, -2) == 5700)
 check("the share who ride moves the answer most", swing.index[-1] == "share who ride on a weekday")"""),
 
     new_markdown_cell("""**What happened.** The answer is b. About 8,300 requests an hour divided by 1.68 trips per online
-driver-hour (2.4 x 0.70), times 1.15, is about 5,700 drivers. Moving the ride share from 0.5 to 1.5
-percent moves the answer from about 2,900 to about 8,600, wider than any other assumption, so the honest
+driver-hour (2.4 x 0.70), times 1.15, is about 5,700 drivers. Moving the ride share from 0.5 percent
+to 1.5 percent moves the answer from about 2,900 to about 8,600, wider than any other assumption, so the honest
 answer is "about 5,700, between about 2,900 and 8,600, and mostly a question of how many people ride".
 The idle share moves it less (about 5,100 to 6,400), and it is the one assumption Monday's data shows
 moving: from 0.22 to 0.38 of online hours with no trip in six weeks.
@@ -282,8 +282,8 @@ check("the per-day figure, not the month divided by 31, is the anchor", round(mo
     new_markdown_cell("""**What happened.** Before the launch, the case's twelve zones had 0.47 online driver-hours behind
 each rider request and a median wait of 4.8 minutes; after it, 0.57. The chain puts 0.60 behind each
 request before its buffer, about a quarter more than the case needed for a wait under five minutes, so
-the chain errs on the generous side, and the buffer is the first factor to trim. The UPI estimate of 700
-million a day sits 13 percent below NPCI's 802 million, the same order and a little low, which points at
+the chain errs on the generous side, and the buffer is the first factor to trim. The UPI estimate,
+700 million a day, sits 13 percent below NPCI's 802 million, the same order and a little low, which points at
 payments a day. Dividing September's 24.07 billion by 31 days gives 776 million and a wrong 3 percent.
 
 **The answers, one line each.**
