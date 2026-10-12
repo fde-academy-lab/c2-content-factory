@@ -240,7 +240,7 @@ def build_kalpa():
     shape = {m: base[m] * (1 + 0.01 * k) for k, m in enumerate(later)}
     scale = VENDOR_PROMISE * sum(base.values()) / sum(shape.values())
     for m in ahead[:6]:
-        vend.append((m, int(round(rev[f"{int(m[:4]) - 1}-{m[5:]}"] * lift[m] / 1000) * 1000), "forecast"))
+        vend.append((m, int(round(rev[f"{int(m[:4]) - 1}-{m[5:]}"] * lift[m] / 1000) * 1000), "holdout"))
     for m in later:
         vend.append((m, int(round(shape[m] * scale / 1000) * 1000), "forecast"))
     vendor = pd.DataFrame(vend, columns=["month", "vendor_rs", "kind"])
@@ -271,12 +271,15 @@ class Facts:
 
 
 def n(x):
-    """A count of shipments as the case prints it, with thousands commas: 2,385,240."""
+    """A count of shipments as the case prints it, with thousands commas: 2,385,240.
+
+    Standard formatting, so a number in a learner file matches what the learner's notebook prints.
+    """
     return f"{int(round(x)):,}"
 
 
-def lakh(rs):
-    return f"Rs {rs / 1e5:.1f} lakh"
+def lakh(rs, places=1):
+    return f"Rs {rs / 1e5:.{places}f} lakh"
 
 
 def pct(x, places=1):
@@ -410,9 +413,13 @@ def main():
           "the bot's MAE minus the aligned MAE", "chapter 2")
     vpct = [(hold["vendor"][i] - y[i]) / y[i] for i in HOLDOUT]
     early, late = sum(vpct[:6]) / 6, sum(vpct[7:]) / 6
+    F.add("holdout", "vendor_miss_week1", hold["vendor"][HOLDOUT[0]] - y[HOLDOUT[0]], n(hold["vendor"][HOLDOUT[0]] - y[HOLDOUT[0]]),
+          "the vendor's miss in hidden week 1, 29 Jun 2026, too high", "notes, the reveal GIF")
+    F.add("holdout", "bot_miss_week1", y[HOLDOUT[0]] - hold["bot"][HOLDOUT[0]], n(y[HOLDOUT[0]] - hold["bot"][HOLDOUT[0]]),
+          "the house bot's miss in hidden week 1, too low", "notes, the reveal GIF")
     F.add("holdout", "vendor_mean_high_pct", sum(vpct) / 13, pct(sum(vpct) / 13), "the vendor's mean error over the actual, in percent", "chapter 2")
-    F.add("holdout", "vendor_first6_pct", early, pct(early), "its mean error in the first six hold-out weeks", "chapter 2")
-    F.add("holdout", "vendor_last6_pct", late, pct(late), "its mean error in the last six hold-out weeks", "chapter 2")
+    F.add("holdout", "vendor_first6_pct", early, pct(early), "its mean error in hidden weeks 1 to 6, 29 Jun to 3 Aug 2026", "chapter 2")
+    F.add("holdout", "vendor_last6_pct", late, pct(late), "its mean error in hidden weeks 8 to 13, 17 Aug to 21 Sep 2026", "chapter 2")
     errs = [(y[i] - hold["aligned"][i]) / hold["aligned"][i] for i in HOLDOUT]
     cushion = round(quantile(errs, QUANTILE), 3)       # the planner rounds it to a tenth of a percent
     F.add("holdout", "aligned_low_weeks", 13 - S["aligned"]["high_weeks"], f"{13 - S['aligned']['high_weeks']}", "weeks the aligned baseline sat below the actual", "chapter 2 second route")
@@ -428,6 +435,16 @@ def main():
     F.add("holdout", "aligned_abs_total", S["aligned"]["over"] + S["aligned"]["under"],
           n(S["aligned"]["over"] + S["aligned"]["under"]), "the aligned baseline's 13 misses, signs dropped, summed", "chapter 2 second route")
     F.add("holdout", "share_short_pct", 1 - QUANTILE, pct(1 - QUANTILE, 0), "one minus the plan share", "chapter 3")
+    srt = sorted(errs)
+    F.add("holdout", "above_sorted_pct", [round(e * 100, 1) for e in srt],
+          ", ".join(f"{e * 100:.1f}" for e in srt), "demand above festival-aligned on the 13 hidden weeks, percent, smallest first", "chapter 3 cushion")
+    F.add("holdout", "above_10th_pct", srt[9], pct(srt[9]), "the 10th smallest of the 13", "chapter 3 cushion")
+    F.add("holdout", "above_11th_pct", srt[10], pct(srt[10]), "the 11th smallest of the 13", "chapter 3 cushion")
+    F.add("holdout", "weeks_covered", sum(e <= cushion for e in errs), f"{sum(e <= cushion for e in errs)} of 13",
+          "hidden weeks whose demand the raised forecast covers", "chapter 3 cushion")
+    F.add("holdout", "toy_late_side", 18 * LATE_RS, f"Rs {18 * LATE_RS}", "18 short weeks in 100 x Rs 25: one more shipment of plan saves this", "chapter 3 derivation")
+    F.add("holdout", "toy_idle_side", 82 * OVER_RS, f"Rs {82 * OVER_RS:.0f}", "82 covered weeks in 100 x Rs 5.42: one more shipment of plan wastes this", "chapter 3 derivation")
+    F.add("holdout", "toy_weeks", [18, 82, 100], "18, 82 and 100", "the derivation's weeks: short, covered and all", "chapter 3 derivation")
     F.add("holdout", "bot_low_weeks", 13 - S["bot"]["high_weeks"], f"{13 - S['bot']['high_weeks']} of 13", "weeks the bot sat below the actual", "chapter 2")
     vfit = max(abs(vend[i] - y[i]) / y[i] for i in range(ORIGIN + 1))
     F.add("holdout", "vendor_fit_max_pct", vfit, pct(vfit), "the vendor's largest miss on its 91 fitted weeks", "chapter 2")
@@ -446,7 +463,8 @@ def main():
     F.add("holdout_4", "origin_week", y[99], n(y[99]), "shipments, week of 24 Aug 2026, the four-week test's origin", "fallback, take-home")
     for m, sc in S4.items():
         F.add("holdout_4", f"{m}_mae", sc["mae"], n(sc["mae"]), f"{names[m]} on 31 Aug to 21 Sep 2026", "fallback, take-home")
-        F.add("holdout_4", f"{m}_cost_rs", sc["cost_rs"], lakh(sc["cost_rs"]), "its four misses priced", "fallback, take-home")
+        F.add("holdout_4", f"{m}_cost_rs", sc["cost_rs"], lakh(sc["cost_rs"], 2),
+              "its four misses priced, to two places so an exact half reads the same by hand and in code", "fallback, take-home")
         F.add("holdout_4", f"{m}_high_weeks", sc["high_weeks"], f"{sc['high_weeks']} of 4", "weeks too high", "take-home")
     F.add("holdout_4", "vendor_over_aligned_pct", S4["vendor"]["mae"] / S4["aligned"]["mae"] - 1,
           pct(S4["vendor"]["mae"] / S4["aligned"]["mae"] - 1, 0), "vendor over aligned on four weeks", "take-home")
@@ -481,6 +499,13 @@ def main():
         F.add("backtest_2025", f"{m}_idle_rs", s["idle_rs"], lakh(s["idle_rs"]), "over times Rs 5.42", "chapter 3")
         F.add("backtest_2025", f"{m}_late_rs", s["late_rs"], lakh(s["late_rs"]), "under times Rs 25", "chapter 3")
         F.add("backtest_2025", f"{m}_cost_rs", s["cost_rs"], lakh(s["cost_rs"]), "idle plus late", "chapter 3")
+    flat = sum(abs(y[aligned_source(i)] - y[i]) for i in BACK) / len(BACK)
+    flat_late = sum(max(0, y[i] - y[aligned_source(i)]) for i in BACK) * LATE_RS
+    flat_idle = sum(max(0, y[aligned_source(i)] - y[i]) for i in BACK) * OVER_RS
+    F.add("backtest_2025", "aligned_nogrowth_cost_rs", flat_late + flat_idle, lakh(flat_late + flat_idle),
+          "festival-aligned with no growth on 2025's festival, priced", "chapter 3 notebook")
+    F.add("backtest_2025", "aligned_nogrowth_mae", flat, n(flat),
+          "festival-aligned on 2025's festival with no growth added, as a planner in September 2025 could run it", "chapter 3")
     for i in BACK:
         F.add("backtest_weeks", f"actual_{week(i):%m_%d}", y[i], n(y[i]), f"shipments, week of {dmy(i)}", "chapter 3")
         for m in ("bot", "aligned"):
@@ -526,8 +551,9 @@ def main():
     F.add("plan", "peak_week_shifts", shifts[peak], n(shifts[peak]), f"shifts in the plan's biggest week, {dmy(peak)}", "chapter 3")
     mae_a = S["aligned"]["mae"]
     F.add("error_bar", "week_shipments", mae_a, n(mae_a), "the aligned baseline's hold-out MAE, a week", "chapter 3")
-    F.add("error_bar", "week_idle_rs", mae_a * OVER_RS, f"Rs {mae_a * OVER_RS:,.0f}", "a week's MAE too high, priced", "chapter 3")
-    F.add("error_bar", "week_late_rs", mae_a * LATE_RS, lakh(mae_a * LATE_RS), "a week's MAE too low, priced", "chapter 3")
+    F.add("error_bar", "week_idle_rs", mae_a * OVER_RS, f"about Rs {round(mae_a * OVER_RS / 100) * 100:,}",
+          "a week's MAE too high, priced: 6,615 x Rs 650 / 120, to the nearest hundred", "chapter 3")
+    F.add("error_bar", "week_late_rs", mae_a * LATE_RS, lakh(mae_a * LATE_RS, 2), "a week's MAE too low, priced: 6,615 x Rs 25", "chapter 3")
     F.add("error_bar", "window_shipments", mae_a * 8, n(mae_a * 8), "eight weeks of MAE", "chapter 3")
     F.add("error_bar", "window_idle_rs", mae_a * 8 * OVER_RS, lakh(mae_a * 8 * OVER_RS), "eight weeks too high, priced", "chapter 3")
     F.add("error_bar", "window_late_rs", mae_a * 8 * LATE_RS, lakh(mae_a * 8 * LATE_RS), "eight weeks too low, priced", "chapter 3")
@@ -592,6 +618,9 @@ def main():
     F.add("exercises", "pairs", [9_500, 6_000, 6_200], "9,500, 6,000 and 6,200", "three invented model MAEs for the good-enough drill", "chapter 2 set")
     F.add("exercises", "pair3_high", 7, "7 of 13", "invented: the third model's weeks too high", "chapter 2 set")
     F.add("exercises", "pair1_gap_pct", 1 - 9_500 / S["bot"]["mae"], pct(1 - 9_500 / S["bot"]["mae"], 0), "how far 9,500 sits under the bot's MAE", "chapter 2 set")
+    F.add("exercises", "pair1_gap", S["bot"]["mae"] - 9_500, n(S["bot"]["mae"] - 9_500), "the bot's MAE minus team A's", "chapter 2 set")
+    F.add("exercises", "pair1_gap_shifts", (S["bot"]["mae"] - 9_500) / PER_SHIFT, f"{(S['bot']['mae'] - 9_500) / PER_SHIFT:.1f}",
+          "331 shipments a week over 120 a shift", "chapter 2 set")
     F.add("exercises", "ch1_series_a", [100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144], "100, 104, 108", "invented: a climb", "chapter 1 set")
     F.add("exercises", "ch1_series_b", [100, 130, 100, 70] * 3, "100, 130, 100, 70", "invented: a repeat of four", "chapter 1 set")
     F.add("exercises", "ch1_series_c", [100, 132, 104, 76, 108, 140, 112, 84, 116, 148, 120, 92], "100, 132, 104, 76", "invented: both", "chapter 1 set")
@@ -617,6 +646,7 @@ def main():
     # ---- toys, labelled invented wherever they appear
     F.add("toys", "cups", [50, 52, 49, 51], "50, 52, 49, 51", "cups a canteen sells on four days (invented, R1)", "chapter 1")
     F.add("toys", "cups_naive", 51, "51", "tomorrow's naive forecast", "chapter 1")
+    F.add("toys", "cups_drift", 51 + (51 - 50) / 3, "51.3", "drift on the cups: 51 plus (51 - 50) / 3", "chapter 1")
     F.add("toys", "sundays", 80, "80", "cups on Sundays (invented)", "chapter 1")
     F.add("toys", "held_errors", [10, -5, 10], "10, 5 and 10", "three held-out misses, one too low (invented)", "chapter 2")
     F.add("toys", "held_mae", 25 / 3, "8.3", "(10 + 5 + 10) / 3", "chapter 2")
@@ -635,6 +665,13 @@ def main():
             for name, f in (("seasonal_naive", ksn), ("naive", knaive), ("drift", kdrift), ("vendor", kven))}
     for name, v in kmae.items():
         F.add("kalpa", f"{name}_mae_rs", v, lakh(v), f"Kalpa {name} MAE on Apr to Sep 2026, forecast from Mar 2026", "lab")
+    kal_hold = {m: round(ksn[m] * FINANCE) for m in hold_m}
+    kal_mae = sum(abs(kal_hold[m] - rev[m]) for m in hold_m) / 6
+    for m in hold_m:
+        F.add("kalpa_months", f"aligned_{m.replace('-', '_')}", kal_hold[m], lakh(kal_hold[m]),
+              f"festival-aligned for {m}: the same month of 2025 plus 4 percent", "Kalpa set")
+    F.add("kalpa", "aligned_mae_rs", kal_mae, lakh(kal_mae),
+          "festival-aligned (the seasonal copy plus 4 percent) on Apr to Sep 2026, which holds no Diwali month", "lab, Kalpa set")
     F.add("kalpa", "vendor_over_sn_pct", kmae["vendor"] / kmae["seasonal_naive"] - 1,
           pct(kmae["vendor"] / kmae["seasonal_naive"] - 1, 0), "vendor MAE over the seasonal naive's, minus one", "lab")
     for m in months:
@@ -680,6 +717,10 @@ def main():
     F.add("public", "fada_sep25", 1_287_735, "12,87,735", "FADA, September 2025 two-wheeler retail (F5)", "chapter 3 caveats")
     F.add("public", "fada_oct25_lakh", 31.5, "31.5 lakh", "31,49,846 in lakh", "guesstimate")
     F.add("public", "fada_window_days", 42, "42-day", "FADA's festive window (F5)", "chapter 3 caveats")
+    F.add("public", "fada_sep25_lakh", 12.9, "12.9 lakh", "12,87,735 in lakh", "chapter 3 caveats")
+    F.add("public", "m5_products", 3049, "3,049", "products in M5, Walmart's daily unit sales (F2)", "chapter 1")
+    F.add("public", "zillow_band_pct", 2, "2 percent", "200 basis points as a percent", "half2, transcript, notes")
+    F.add("public", "zillow_swing_points", 12, "about 12 percentage points", "1,200 basis points as percentage points", "half2, transcript, notes")
     F.add("public", "flipkart_space", 14, "14 million cubic feet", "Flipkart, warehouse space for TBBD 2026 (F6)", "chapter 1 close")
     F.add("public", "flipkart_jobs", 250_000, "more than 2.5 lakh", "Flipkart, festive jobs (F6)", "chapter 1 close")
     F.add("public", "m5_seasonal_naive", 0.847, "0.847", "M5 score of the seasonal naive (F2)", "chapter 1, notes")
@@ -694,6 +735,7 @@ def main():
     F.add("public", "zillow_workforce", 0.25, "about 25 percent", "Zillow's workforce cut (F3)", "fallback")
     F.add("public", "zillow_q4_low", -500, "minus 500", "Zillow's expected Q4 2021 unit economics, basis points, one end (F3)", "fallback")
     F.add("public", "zillow_q4_high", -700, "minus 700", "the other end (F3)", "fallback")
+    F.add("public", "zillow_q4_pct", [5, 7], "5 to 7 percent", "minus 500 to minus 700 basis points as a percent loss", "transcript")
     F.add("public", "zillow_months", [3, 6], "three to six months", "how far ahead Zillow forecast prices (F3)", "fallback")
     F.add("public", "target_stores", 133, "133", "Target Canada stores closed, release of 15 Jan 2015 (F4)", "fallback")
     F.add("public", "target_staff", 17_600, "about 17,600", "Target Canada employees (F4)", "fallback")
@@ -701,8 +743,10 @@ def main():
     F.add("public", "flipkart_release", "2026-10-06", "6 October 2026", "Flipkart's announcement date (F6)", "chapter 1 close")
     F.add("public", "split_difference", 13, "13 percent", "the midpoint of 4 and 22, the weak answer", "fallback, transcript")
 
-    F.add("kalpa_exercise", "bar_six", kmae["seasonal_naive"] * 6, f"about Rs {kmae['seasonal_naive'] * 6 / 1e5:.0f} lakh",
-          "six months of the seasonal copy's MAE, all one way", "Kalpa set")
+    F.add("kalpa_exercise", "bar_six", kal_mae * 6, f"about Rs {kal_mae * 6 / 1e5:.0f} lakh",
+          "six months of festival-aligned's hidden-month MAE, all one way", "Kalpa set")
+    F.add("kalpa_exercise", "sn_bar_six", kmae["seasonal_naive"] * 6, f"about Rs {kmae['seasonal_naive'] * 6 / 1e5:.0f} lakh",
+          "six months of the seasonal copy's MAE, all one way, a wrong option", "Kalpa set")
     F.add("kalpa_exercise", "vendor_minus_sn", kmae["vendor"] - kmae["seasonal_naive"], lakh(kmae["vendor"] - kmae["seasonal_naive"]),
           "the vendor's MAE minus the seasonal copy's, a month", "Kalpa set")
     F.add("kalpa_exercise", "gap_to_plan", sum(plan_k.values()) - sum(aligned_k.values()),

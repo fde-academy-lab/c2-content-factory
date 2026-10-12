@@ -607,6 +607,16 @@ holdout:
   shown: 3,216
   how: the bot's MAE minus the aligned MAE
   used_in: chapter 2
+- id: vendor_miss_week1
+  value: 3700
+  shown: 3,700
+  how: the vendor's miss in hidden week 1, 29 Jun 2026, too high
+  used_in: notes, the reveal GIF
+- id: bot_miss_week1
+  value: 12300
+  shown: 12,300
+  how: the house bot's miss in hidden week 1, too low
+  used_in: notes, the reveal GIF
 - id: vendor_mean_high_pct
   value: 0.073362
   shown: 7.3 percent
@@ -615,12 +625,12 @@ holdout:
 - id: vendor_first6_pct
   value: 0.035582
   shown: 3.6 percent
-  how: its mean error in the first six hold-out weeks
+  how: its mean error in hidden weeks 1 to 6, 29 Jun to 3 Aug 2026
   used_in: chapter 2
 - id: vendor_last6_pct
   value: 0.114514
   shown: 11.5 percent
-  how: its mean error in the last six hold-out weeks
+  how: its mean error in hidden weeks 8 to 13, 17 Aug to 21 Sep 2026
   used_in: chapter 2
 - id: aligned_low_weeks
   value: 7
@@ -672,6 +682,57 @@ holdout:
   shown: 18 percent
   how: one minus the plan share
   used_in: chapter 3
+- id: above_sorted_pct
+  value:
+  - -5.9
+  - -5.1
+  - -3.0
+  - -2.1
+  - -1.8
+  - -0.4
+  - 0.4
+  - 1.5
+  - 1.7
+  - 2.1
+  - 2.7
+  - 5.4
+  - 7.8
+  shown: -5.9, -5.1, -3.0, -2.1, -1.8, -0.4, 0.4, 1.5, 1.7, 2.1, 2.7, 5.4, 7.8
+  how: demand above festival-aligned on the 13 hidden weeks, percent, smallest first
+  used_in: chapter 3 cushion
+- id: above_10th_pct
+  value: 0.02103
+  shown: 2.1 percent
+  how: the 10th smallest of the 13
+  used_in: chapter 3 cushion
+- id: above_11th_pct
+  value: 0.027186
+  shown: 2.7 percent
+  how: the 11th smallest of the 13
+  used_in: chapter 3 cushion
+- id: weeks_covered
+  value: 10
+  shown: 10 of 13
+  how: hidden weeks whose demand the raised forecast covers
+  used_in: chapter 3 cushion
+- id: toy_late_side
+  value: 450
+  shown: Rs 450
+  how: '18 short weeks in 100 x Rs 25: one more shipment of plan saves this'
+  used_in: chapter 3 derivation
+- id: toy_idle_side
+  value: 444.166667
+  shown: Rs 444
+  how: '82 covered weeks in 100 x Rs 5.42: one more shipment of plan wastes this'
+  used_in: chapter 3 derivation
+- id: toy_weeks
+  value:
+  - 18
+  - 82
+  - 100
+  shown: 18, 82 and 100
+  how: 'the derivation''s weeks: short, covered and all'
+  used_in: chapter 3 derivation
 - id: bot_low_weeks
   value: 11
   shown: 11 of 13
@@ -1086,8 +1147,8 @@ holdout_4:
   used_in: fallback, take-home
 - id: naive_cost_rs
   value: 3705000.0
-  shown: Rs 37.0 lakh
-  how: its four misses priced
+  shown: Rs 37.05 lakh
+  how: its four misses priced, to two places so an exact half reads the same by hand and in code
   used_in: fallback, take-home
 - id: naive_high_weeks
   value: 0
@@ -1101,8 +1162,8 @@ holdout_4:
   used_in: fallback, take-home
 - id: drift_cost_rs
   value: 3743900.0
-  shown: Rs 37.4 lakh
-  how: its four misses priced
+  shown: Rs 37.44 lakh
+  how: its four misses priced, to two places so an exact half reads the same by hand and in code
   used_in: fallback, take-home
 - id: drift_high_weeks
   value: 0
@@ -1116,8 +1177,8 @@ holdout_4:
   used_in: fallback, take-home
 - id: bot_cost_rs
   value: 789291.666667
-  shown: Rs 7.9 lakh
-  how: its four misses priced
+  shown: Rs 7.89 lakh
+  how: its four misses priced, to two places so an exact half reads the same by hand and in code
   used_in: fallback, take-home
 - id: bot_high_weeks
   value: 1
@@ -1131,8 +1192,8 @@ holdout_4:
   used_in: fallback, take-home
 - id: finance_cost_rs
   value: 410038.333333
-  shown: Rs 4.1 lakh
-  how: its four misses priced
+  shown: Rs 4.10 lakh
+  how: its four misses priced, to two places so an exact half reads the same by hand and in code
   used_in: fallback, take-home
 - id: finance_high_weeks
   value: 3
@@ -1146,8 +1207,8 @@ holdout_4:
   used_in: fallback, take-home
 - id: aligned_cost_rs
   value: 410038.333333
-  shown: Rs 4.1 lakh
-  how: its four misses priced
+  shown: Rs 4.10 lakh
+  how: its four misses priced, to two places so an exact half reads the same by hand and in code
   used_in: fallback, take-home
 - id: aligned_high_weeks
   value: 3
@@ -1161,8 +1222,8 @@ holdout_4:
   used_in: fallback, take-home
 - id: vendor_cost_rs
   value: 585000.0
-  shown: Rs 5.8 lakh
-  how: its four misses priced
+  shown: Rs 5.85 lakh
+  how: its four misses priced, to two places so an exact half reads the same by hand and in code
   used_in: fallback, take-home
 - id: vendor_high_weeks
   value: 4
@@ -1432,6 +1493,17 @@ backtest_2025:
   value: 459448.333333
   shown: Rs 4.6 lakh
   how: idle plus late
+  used_in: chapter 3
+- id: aligned_nogrowth_cost_rs
+  value: 2115000.0
+  shown: Rs 21.1 lakh
+  how: festival-aligned with no growth on 2025's festival, priced
+  used_in: chapter 3 notebook
+- id: aligned_nogrowth_mae
+  value: 10575.0
+  shown: 10,575
+  how: festival-aligned on 2025's festival with no growth added, as a planner in September 2025 could
+    run it
   used_in: chapter 3
 backtest_weeks:
 - id: actual_09_29
@@ -2006,13 +2078,13 @@ error_bar:
   used_in: chapter 3
 - id: week_idle_rs
   value: 35831.666667
-  shown: Rs 35,832
-  how: a week's MAE too high, priced
+  shown: about Rs 35,800
+  how: 'a week''s MAE too high, priced: 6,615 x Rs 650 / 120, to the nearest hundred'
   used_in: chapter 3
 - id: week_late_rs
   value: 165376.923077
-  shown: Rs 1.7 lakh
-  how: a week's MAE too low, priced
+  shown: Rs 1.65 lakh
+  how: 'a week''s MAE too low, priced: 6,615 x Rs 25'
   used_in: chapter 3
 - id: window_shipments
   value: 52920.615385
@@ -2296,6 +2368,16 @@ exercises:
   shown: 3 percent
   how: how far 9,500 sits under the bot's MAE
   used_in: chapter 2 set
+- id: pair1_gap
+  value: 330.769231
+  shown: '331'
+  how: the bot's MAE minus team A's
+  used_in: chapter 2 set
+- id: pair1_gap_shifts
+  value: 2.75641
+  shown: '2.8'
+  how: 331 shipments a week over 120 a shift
+  used_in: chapter 2 set
 - id: ch1_series_a
   value:
   - 100
@@ -2494,6 +2576,11 @@ toys:
   shown: '51'
   how: tomorrow's naive forecast
   used_in: chapter 1
+- id: cups_drift
+  value: 51.333333
+  shown: '51.3'
+  how: 'drift on the cups: 51 plus (51 - 50) / 3'
+  used_in: chapter 1
 - id: sundays
   value: 80
   shown: '80'
@@ -2533,6 +2620,11 @@ kalpa:
   shown: Rs 38.8 lakh
   how: Kalpa vendor MAE on Apr to Sep 2026, forecast from Mar 2026
   used_in: lab
+- id: aligned_mae_rs
+  value: 345583.333333
+  shown: Rs 3.5 lakh
+  how: festival-aligned (the seasonal copy plus 4 percent) on Apr to Sep 2026, which holds no Diwali month
+  used_in: lab, Kalpa set
 - id: vendor_over_sn_pct
   value: 2.319914
   shown: 232 percent
@@ -2589,6 +2681,36 @@ kalpa:
   how: the seasonal naive's mean error on the hold-out
   used_in: unguided exercise
 kalpa_months:
+- id: aligned_2026_04
+  value: 41132000
+  shown: Rs 411.3 lakh
+  how: 'festival-aligned for 2026-04: the same month of 2025 plus 4 percent'
+  used_in: Kalpa set
+- id: aligned_2026_05
+  value: 28135120
+  shown: Rs 281.4 lakh
+  how: 'festival-aligned for 2026-05: the same month of 2025 plus 4 percent'
+  used_in: Kalpa set
+- id: aligned_2026_06
+  value: 30756960
+  shown: Rs 307.6 lakh
+  how: 'festival-aligned for 2026-06: the same month of 2025 plus 4 percent'
+  used_in: Kalpa set
+- id: aligned_2026_07
+  value: 45590480
+  shown: Rs 455.9 lakh
+  how: 'festival-aligned for 2026-07: the same month of 2025 plus 4 percent'
+  used_in: Kalpa set
+- id: aligned_2026_08
+  value: 27308320
+  shown: Rs 273.1 lakh
+  how: 'festival-aligned for 2026-08: the same month of 2025 plus 4 percent'
+  used_in: Kalpa set
+- id: aligned_2026_09
+  value: 26127920
+  shown: Rs 261.3 lakh
+  how: 'festival-aligned for 2026-09: the same month of 2025 plus 4 percent'
+  used_in: Kalpa set
 - id: rev_2024_10
   value: 41514000
   shown: Rs 415.1 lakh
@@ -2996,6 +3118,26 @@ public:
   shown: 42-day
   how: FADA's festive window (F5)
   used_in: chapter 3 caveats
+- id: fada_sep25_lakh
+  value: 12.9
+  shown: 12.9 lakh
+  how: 12,87,735 in lakh
+  used_in: chapter 3 caveats
+- id: m5_products
+  value: 3049
+  shown: 3,049
+  how: products in M5, Walmart's daily unit sales (F2)
+  used_in: chapter 1
+- id: zillow_band_pct
+  value: 2
+  shown: 2 percent
+  how: 200 basis points as a percent
+  used_in: half2, transcript, notes
+- id: zillow_swing_points
+  value: 12
+  shown: about 12 percentage points
+  how: 1,200 basis points as percentage points
+  used_in: half2, transcript, notes
 - id: flipkart_space
   value: 14
   shown: 14 million cubic feet
@@ -3066,6 +3208,13 @@ public:
   shown: minus 700
   how: the other end (F3)
   used_in: fallback
+- id: zillow_q4_pct
+  value:
+  - 5
+  - 7
+  shown: 5 to 7 percent
+  how: minus 500 to minus 700 basis points as a percent loss
+  used_in: transcript
 - id: zillow_months
   value:
   - 3
@@ -3100,9 +3249,14 @@ public:
   used_in: fallback, transcript
 kalpa_exercise:
 - id: bar_six
+  value: 2073500.0
+  shown: about Rs 21 lakh
+  how: six months of festival-aligned's hidden-month MAE, all one way
+  used_in: Kalpa set
+- id: sn_bar_six
   value: 7005000.0
   shown: about Rs 70 lakh
-  how: six months of the seasonal copy's MAE, all one way
+  how: six months of the seasonal copy's MAE, all one way, a wrong option
   used_in: Kalpa set
 - id: vendor_minus_sn
   value: 2708500.0

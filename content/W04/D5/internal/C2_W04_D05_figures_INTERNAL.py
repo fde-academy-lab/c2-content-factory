@@ -15,6 +15,7 @@ import pathlib
 
 import matplotlib
 matplotlib.use("Agg")
+import matplotlib.dates
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, PillowWriter
 import pandas as pd
@@ -69,19 +70,20 @@ def thousands(ax, axis="y"):
 
 def four_patterns():
     """A toy series in four shapes, numbers invented so each shape is plain."""
-    t = list(range(1, 53))
+    t = list(range(1, 157))                       # three years of weeks
     shapes = {
-        "Trend: a slow climb": [100 + 0.8 * x for x in t],
-        "Season: a yearly peak": [100 + (60 if x in (40, 41) else 35 if x in (39, 42) else 0) for x in t],
-        "Cycle: payday weeks": [100 + (8 if x % 4 == 1 else 0) for x in t],
+        "Trend: a slow climb": [100 + 0.3 * x for x in t],
+        "Season: a fixed beat, yearly": [100 + (60 if x % 52 in (40, 41) else 35 if x % 52 in (39, 42) else 0) for x in t],
+        "Cycle: no fixed length": [100 + 18 * math.sin(2 * math.pi * x / 130 + 0.6) for x in t],
         "Noise: what is left": [100 + 6 * math.sin(x * 2.3) * math.cos(x * 0.7) for x in t],
     }
     fig, axes = plt.subplots(1, 4, figsize=(13, 3.6), sharey=True)
     for ax, (title, ys) in zip(axes, shapes.items()):
         ax.plot(t, ys, color=VIOLET, lw=2)
         ax.set_title(title, fontsize=15)
-        ax.set_xticks([1, 26, 52])
-        ax.set_xlabel("week of the year")
+        ax.set_xticks([1, 53, 105, 156])
+        ax.set_xticklabels(["yr 1", "yr 2", "yr 3", ""])
+        ax.set_xlabel("three years of weeks")
         ax.grid(axis="y", color=LINE)
     axes[0].set_ylabel("shipments (invented)")
     fig.suptitle("Four shapes a weekly series carries, drawn apart (toy numbers, invented)", y=1.04, fontsize=16)
@@ -148,15 +150,15 @@ def actual_series():
     ax.set_ylim(0, 490_000)
     thousands(ax)
     ax.set_ylabel("shipments in the week")
+    ax.xaxis.set_major_formatter(matplotlib.dates.DateFormatter("%b %Y"))
     ax.set_title("104 weeks of outbound shipments: two festive peaks, an August sale, and the last thirteen weeks held out")
     save(fig, "actual_series")
 
 
 def baselines_panel():
-    order = [("naive", "Naive: repeat 22 Jun"), ("drift", "Drift: the line through it"),
-             ("bot", "House bot: same week last year"), ("aligned", "Festival-aligned (finance's ties)"),
-             ("vendor", "The vendor's curve")]
-    fig, axes = plt.subplots(1, 5, figsize=(16, 3.9), sharey=True)
+    order = [("naive", "Naive: repeat 22 Jun"), ("drift", "Drift: week one's line, extended"),
+             ("bot", "House bot: same week last year"), ("aligned", "Festival-aligned = finance")]
+    fig, axes = plt.subplots(1, 4, figsize=(14, 3.9), sharey=True)
     xs = list(range(1, 14))
     for ax, (m, title) in zip(axes, order):
         ax.plot(xs, [y[i] for i in HOLD], color=INK, lw=2, label="actual")
@@ -164,7 +166,7 @@ def baselines_panel():
         mae = sum(abs(hold[m][i] - y[i]) for i in HOLD) / 13
         ax.set_title(f"{title}\nMAE {mae:,.0f}", fontsize=13)
         ax.set_xticks([1, 7, 13])
-        ax.set_xlabel("hold-out week")
+        ax.set_xlabel("hidden week")
         ax.grid(axis="y", color=LINE)
     thousands(axes[0])
     axes[0].set_ylabel("shipments")
@@ -190,7 +192,8 @@ def scoreboard():
            left=[s[m]["late_rs"] / 1e5 for m, _ in names][::-1], color=LAVENDER, label="idle shifts")
     for i, (m, _) in enumerate(names[::-1]):
         b.text(s[m]["cost_rs"] / 1e5 + 0.4, i, f"Rs {s[m]['cost_rs'] / 1e5:.1f} lakh", va="center", fontsize=13)
-    b.set_title("The same misses priced: Rs 25 late, Rs 5.42 idle")
+    b.set_title("The same misses priced, added over the 13 weeks")
+    b.set_xlabel("Rs lakh: late at Rs 25, spare at Rs 5.42 a shipment")
     b.set_xlim(0, 42)
     b.legend(frameon=False, loc="lower right")
     save(fig, "scoreboard")
@@ -206,8 +209,9 @@ def fit_vs_forecast():
     ax.axhline(-2, color=MUTED, ls=":", lw=1)
     ax.set_ylim(-4, 18)
     ax.text(gen.week(2), 2.6, "2 percent", color=MUTED, fontsize=12)
+    ax.xaxis.set_major_formatter(matplotlib.dates.DateFormatter("%b %Y"))
     ax.set_ylabel("vendor minus actual, percent")
-    ax.set_title("The vendor's curve: within 2 percent on every week it was fitted to, 12 of 13 hidden weeks too high")
+    ax.set_title("The vendor's curve: within 2 percent on every fitted week, too high on 12 of 13 hidden weeks")
     ax.legend(frameon=False, loc="upper left")
     save(fig, "fit_vs_forecast")
 
@@ -226,7 +230,7 @@ def holdout_reveal():
         a.set_xlim(0.5, 13.5); a.set_ylim(180_000, 290_000)
         thousands(a)
         a.set_xticks([1, 4, 7, 10, 13])
-        a.set_xlabel("hold-out week")
+        a.set_xlabel("hidden week")
         a.set_title(f"Week {frame + 1} of 13 revealed: {dm(HOLD[frame])} 2026")
         a.legend(frameon=False, loc="upper left", fontsize=12)
         mb = sum(abs(hold["bot"][i] - y[i]) for i in shown) / len(shown)
@@ -236,7 +240,7 @@ def holdout_reveal():
             b.text(x, val + 300, f"{val:,.0f}", ha="center", fontsize=14)
         b.set_ylim(0, 20_000)
         b.yaxis.set_major_formatter(matplotlib.ticker.StrMethodFormatter("{x:,.0f}"))
-        b.set_title("MAE so far")
+        b.set_title("Average miss so far (MAE)")
         return []
 
     anim = FuncAnimation(fig, draw, frames=13, blit=False)
@@ -248,31 +252,32 @@ def holdout_reveal():
 
 
 def festival_calendar(copy=True):
-    """The three Diwali weeks; with copy=True the house bot's copy of 2025's Diwali week is hatched in.
+    """The three Diwali weeks, each box labelled by its own Monday; copy=True hatches the house bot's copy in.
 
     S12 shows the strip without the copy and round three's card adds it, so the twist is not spent early.
     """
     fig, ax = plt.subplots(figsize=(13, 3.9))
-    years = [(2024, 0, "Thu 31 Oct"), (2025, 1, "Mon 20 Oct"), (2026, 2, "Sun 8 Nov")]
-    weeks = ["29 Sep", "6 Oct", "13 Oct", "20 Oct", "27 Oct", "3 Nov", "10 Nov", "17 Nov"]
+    years = [(2024, 0, 0, "Thu 31 Oct"), (2025, 1, 52, "Mon 20 Oct"), (2026, 2, 104, "Sun 8 Nov")]
     diwali_col = {2024: 4, 2025: 3, 2026: 5}
-    for yr, row, label in years:
+    for yr, row, first, label in years:
         for c in range(8):
-            colour = ROSE if c == diwali_col[yr] else TINT
-            ax.add_patch(plt.Rectangle((c, -row), 0.92, 0.8, color=colour))
+            hot = c == diwali_col[yr]
+            ax.add_patch(plt.Rectangle((c, -row), 0.92, 0.8, color=ROSE if hot else TINT))
+            ax.text(c + 0.46, -row + 0.4, dm(first + c), ha="center", va="center", fontsize=13, zorder=5,
+                    color="white" if hot else INK,
+                    bbox=dict(facecolor=TINT, edgecolor="none", pad=1.5) if (copy and row == 2 and c == 3) else None)
         ax.text(-0.2, -row + 0.4, f"{yr}", ha="right", va="center", fontsize=15)
         ax.text(8.1, -row + 0.4, f"Diwali {label}", va="center", fontsize=14, color=ROSE)
     if copy:
         ax.add_patch(plt.Rectangle((3, -2), 0.92, 0.8, fill=False, edgecolor=INK, lw=2.5, hatch="//"))
-        ax.text(3.46, -2.45, "the house bot's copy of 2025's Diwali week:\nthe same calendar week, two weeks early",
+        ax.text(3.46, -2.45, "the house bot's copy of 2025's Diwali week:\nthe week of 19 Oct 2026, two weeks early",
                 ha="center", va="top", fontsize=13)
     else:
         ax.text(3.46, -2.45, "2026: where will a copy of last year put the rush?\nround three asks",
                 ha="center", va="top", fontsize=13)
-    for c, w in enumerate(weeks):
-        ax.text(c + 0.46, 1.05, w, ha="center", fontsize=13)
-    ax.text(3.9, 1.5, "week beginning, the nearest Monday each year", ha="center", fontsize=13, color=MUTED)
-    ax.set_xlim(-1.2, 10.5); ax.set_ylim(-3.3, 1.8)
+    ax.text(3.9, 1.15, "each box is one week, labelled by its Monday; red: the week holding Diwali",
+            ha="center", fontsize=13, color=MUTED)
+    ax.set_xlim(-1.2, 10.5); ax.set_ylim(-3.3, 1.5)
     ax.axis("off")
     ax.set_title("Diwali's week moves: one week earlier in 2025, two weeks later in 2026", fontsize=16)
     save(fig, "festival_calendar" if copy else "festival_calendar_open")
@@ -340,13 +345,37 @@ def cost_curve():
     ax.axvline(0, color=MUTED, ls=":", lw=1.3)
     ax.axvline(cushion * 100, color=VIOLET, ls="--", lw=2)
     top = ax.get_ylim()[1]
-    ax.text(cushion * 100 + 0.25, top * 0.55, f"plan at the 0.82 quantile:\n{cushion * 100:.1f} percent above", color=VIOLET, fontsize=13)
+    ax.text(cushion * 100 + 0.25, top * 0.55, f"the plan: {cushion * 100:.1f} percent above,\nthe 0.82 point of the misses", color=VIOLET, fontsize=13)
     ax.text(0.25, top * 0.80, "the forecast", color=MUTED, fontsize=13)
-    ax.set_xlabel("plan above the festival-aligned forecast, percent (week of 19 Oct 2026)")
-    ax.set_ylabel("expected cost, Rs lakh")
-    ax.set_title("Being short costs 4.6 times being long, so the cheapest plan sits above the forecast")
+    ax.set_xlabel("plan above festival-aligned's forecast for the week of 19 Oct 2026, percent")
+    ax.set_ylabel("average cost, Rs lakh")
+    ax.set_title("Each of the 13 hidden-week misses tried on one week: the total is lowest 2 to 3 percent above the forecast")
     ax.legend(frameon=False, loc="upper right", fontsize=12)
     save(fig, "cost_curve")
+
+
+def cushion_strip():
+    """The 13 hidden-week misses sorted, the 0.82 point between the 10th and 11th, the weeks covered shaded."""
+    errs = sorted((y[i] - hold["aligned"][i]) / hold["aligned"][i] * 100 for i in HOLD)
+    cushion = round(gen.quantile([e / 100 for e in errs], gen.QUANTILE), 3) * 100
+    fig, ax = plt.subplots(figsize=(13, 3.6))
+    ax.axvspan(-7, cushion, color=TINT)
+    for k, e in enumerate(errs, 1):
+        covered = e <= cushion
+        ax.plot(e, 0, "o", ms=14, color=VIOLET if covered else ROSE)
+        ax.text(e, 0.32 if k % 2 else -0.42, f"{k}", ha="center", fontsize=12, color=INK, zorder=5,
+                bbox=dict(facecolor="white", edgecolor="none", pad=0.8))
+    ax.axvline(cushion, color=INK, ls="--", lw=2)
+    ax.text(cushion + 0.15, 0.78, f"the 0.82 point: {cushion:.1f} percent", fontsize=13, color=INK)
+    ax.text(-6.8, 0.78, "covered by the plan: 10 of 13 weeks", fontsize=13, color=VIOLET)
+    ax.text(cushion + 0.15, -0.9, "short: 3 weeks", fontsize=13, color=ROSE)
+    ax.set_xlim(-7, 9); ax.set_ylim(-1.2, 1.2)
+    ax.set_yticks([])
+    ax.set_xlabel("demand above festival-aligned's forecast, percent of the forecast (numbers: smallest to largest)")
+    ax.set_title("Thirteen hidden weeks sorted: 0.82 of the way along falls between the 10th (2.1) and 11th (2.7)")
+    for side in ("left", "right", "top"):
+        ax.spines[side].set_visible(False)
+    save(fig, "cushion_strip")
 
 
 def four_vs_thirteen():
@@ -369,7 +398,7 @@ def four_vs_thirteen():
     ax.set_ylim(0, 44_000)
     ax.yaxis.set_major_formatter(matplotlib.ticker.StrMethodFormatter("{x:,.0f}"))
     ax.set_ylabel("MAE, shipments a week")
-    ax.set_title("A four-week test moves every number; the order barely moves")
+    ax.set_title("A four-week test moves every score; the top three keep their order")
     ax.legend(frameon=False, loc="upper center", ncol=2)
     save(fig, "four_vs_thirteen")
 
@@ -397,7 +426,7 @@ def main():
     for old in OUT.glob("C2_W04_D05_*"):
         old.unlink()
     four_patterns(); twelve_rows(); festival_plot(); actual_series(); baselines_panel(); scoreboard()
-    fit_vs_forecast(); holdout_reveal(); festival_calendar(); festival_calendar(copy=False); backtest(); window_2026(); cost_curve()
+    fit_vs_forecast(); holdout_reveal(); festival_calendar(); festival_calendar(copy=False); backtest(); cushion_strip(); window_2026(); cost_curve()
     four_vs_thirteen(); rolling_origin()
     print("\n".join(sorted(p.name for p in OUT.iterdir())))
 
