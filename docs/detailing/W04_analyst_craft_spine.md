@@ -25,8 +25,8 @@ id; or a target the day's generator sets and asserts, marked "target". Toy numbe
 
 ## 1. The week in one line, the collision, and the map that grows
 
-An analyst at a product company gets a ticket, never a speech. Week 4 is five tickets at five
-companies the room uses every day, one question each: is the number we pay for measuring what we
+An analyst at a product company gets a ticket, never a speech. Week 4 is five tickets at four
+companies the room uses every day (Uber twice), one question each: is the number we pay for measuring what we
 want (Uber, Hyderabad, Monday); can that answer survive one slide in front of the people who lose
 under it, and can a number be sized from nothing (the same case, Tuesday); what goes with what beyond
 chance, and what is a shelf slot worth (Swiggy Instamart, Pune, Wednesday); who is leaving and at
@@ -60,14 +60,14 @@ day control.
 
 ```mermaid
 flowchart TD
-    C["<b>What does an analyst do with one number?</b><br/>five tickets, five companies, one method a day"]
+    C["<b>What does an analyst do with one number?</b><br/>five tickets, four companies, one method a day"]
     M["<b>Mon: is the number measuring what we want?</b><br/>Uber, Hyderabad: online hours against trips served<br/>metric design, guardrails, gaming"]
     T["<b>Tue: can it survive one slide, and can I size it from nothing?</b><br/>Uber, Hyderabad: bookings per online hour explained<br/>the one-slide answer, the guesstimate"]
     W["<b>Wed: what goes with what, beyond chance?</b><br/>Swiggy Instamart, Pune: the bought-together strip<br/>support, confidence, lift, the slot in rupees"]
     H["<b>Thu: who is leaving, and at which step?</b><br/>Zomato Gold, Chennai: a flat number over falling cohorts<br/>cohorts, funnels, denominators"]
     F["<b>Fri: how much is coming, and how wrong could we be?</b><br/>Flipkart, Lucknow: festive packer headcount<br/>baselines, hold-out, asymmetric cost"]
     S["<b>Sat: does the method survive a change of company?</b><br/>other companies, then Kalpa's four units"]
-    K1["Kalpa Retail: the auto-reorder window"]
+    K1["Kalpa Retail: reorders per member"]
     K3["Kalpa Retail: the Rs 199 charger"]
     K4["Kalpa Retail: the Retail-Plus tier"]
     K5["Kalpa Retail: 24 months and a vendor curve"]
@@ -226,7 +226,7 @@ mechanism shows in miniature and asserted by its contract, and every value sits 
 under `twelve_rows`. The hand count on the twelve rows differs from the full-data case value by at
 least 0.05 on any ratio and five points on any percentage, so the room still has a reason to compute
 L2 (a shared starting value may match, as Monday's 1.90 before does, when the after value and the
-change differ), and from every Kalpa planted value by the same margin, so no case number is a plant in disguise.
+change differ), and from every Kalpa planted value of the same quantity by the same margin, so no case number is a plant in disguise.
 
 | Day | The twelve rows | The hand count | What the room sees without being told |
 |---|---|---|---|
