@@ -92,7 +92,8 @@ round one, 6 in round two and 30 in round three with the role cards.
 
 | Block | Minutes | Slides | File beside them | What must land |
 |---|---|---|---|---|
-| The staffing note, unguided | 30 | S1 to S5 | `exercises/unguided/C2_W04_D05_staffing_note_STUDENT.md`; the role cards | Five lines per group: the shifts, the peak and why, the error bar priced both ways, three facts that would move it, one line to each stakeholder |
+| The morning on one board | 3 | S1, then S1a to S1c | The concept board on the slides | The three regions, each with its sketch and pitfall, and the question they answer: which forecast earns the plan's trust |
+| The staffing note, unguided | 27 | S2 to S5 | `exercises/unguided/C2_W04_D05_staffing_note_STUDENT.md`; the role cards | Five lines per group: the shifts, the peak and why, the error bar priced both ways, three facts that would move it, one line to each stakeholder |
 | The interview room | 15 | S6 to S10 | `extras/C2_W04_D05_interview_transcripts_STUDENT.md`; `trainer/C2_W04_D05_interview_scorecards_TRAINER.md`; `trainer/C2_W04_D05_guesstimate_TRAINER.md` | The hire-grade structure; the three follow-ups; the AI-company variant; the handoff line said as written |
 | Kahoot and close | 15 | S11 and S12 | `kahoot/C2_W04_D05_quiz_STUDENT.md` | The three closing lines; tonight's take-home and Saturday's preview |
 

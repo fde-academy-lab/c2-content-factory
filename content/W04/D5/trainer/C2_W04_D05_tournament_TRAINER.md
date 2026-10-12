@@ -91,7 +91,7 @@ simple copies win, and round three settles the festival.
 |---|---|---|
 | A method that is not a rule | "We would use machine learning" | "Write it in one line a planner could run. Until then, the house bot is your entry." |
 | Trusting a curve because it fits | A group backs the vendor on its 2 percent | "Score it on the weeks it did not see." The your-turn cell prints 16,400 |
-| Hiding random weeks | A group wants a random fifth of the weeks | "What will the plan hold you to?" The latest weeks, at least as many as it books |
+| Hiding random weeks | A group wants a random fifth of the weeks | "What will the plan hold you to?" The latest weeks, at least as far ahead as the plan reaches: ten here |
 | Averaging the two forecasts | "13 percent, halfway" | "Both copy the calendar. Where does their average put the peak?" |
 | Crowning the cheapest misses | A group sends the vendor because Rs 11.9 lakh is lowest | "Who chose how high it runs, and does it run higher in October?" S24's three cards answer it |
 | A group finishes early | Its rule is scored and argued | "Price your rule's misses with a late shipment at Rs 40, the top of its range. Does the order change?" |

@@ -2,7 +2,7 @@
 
 Week 4, Friday. About 13 minutes to read, and 10 more for the self-check.
 
-Flipkart, the Lucknow fulfilment centre (FC). The centre has 104 weeks of outbound shipments, the
+Flipkart's Lucknow fulfilment centre (FC) has 104 weeks of outbound shipments, the
 weeks beginning 30 September 2024 to 21 September 2026. Diwali fell on Thursday 31 October 2024 and
 Monday 20 October 2025, and falls on Sunday 8 November 2026 (DoPT's holiday lists, checked 12
 October 2026). The planner must book packer shifts for
@@ -154,7 +154,7 @@ high on purpose, by an amount the two costs choose.
 
 **IN THE FIELD.** On 1,045 monthly series, a 2018 PLOS ONE paper by Makridakis and colleagues found
 statistical methods beat machine learning at every horizon tested; in M5 machine learning took every
-top place. Both judged on unseen weeks (checked 12 October 2026).
+top place. Both were judged on unseen weeks (checked 12 October 2026).
 
 **The answer.** Festival-aligned and finance's rule tie at 6,615 a week, ahead of the house bot's
 9,831 and the vendor's 16,400. Good enough is a claim about the decision: a better forecast is worth
@@ -224,8 +224,8 @@ the forecast could be, is its average miss, 6,615 shipments a week: about Rs 35,
 feet of warehousing before its festive sale, and more than 2.5 lakh direct and indirect festive
 employment opportunities (checked 12 October 2026): decisions resting on a forecast.
 
-**The answer.** Festival-aligned raised 2.6 percent: 20,275 packer shifts, 3,719 in the week of 19
-October, an error bar of 6,615 shipments a week.
+**The answer.** Festival-aligned, raised 2.6 percent, books 20,275 packer shifts, 3,719 in the week
+of 19 October, with an error bar of 6,615 shipments a week.
 
 ---
 

@@ -40,7 +40,7 @@ Use the field's word in the room; the class's word is how you remember it.
 
 ## Transcript 1: "How do you evaluate a forecast?"
 
-Tagged [S], a staple asked everywhere. It is the ladder's last rung, L6: the day's method said in an interview.
+It is tagged [S], a staple asked everywhere, and it is the ladder's last rung, L6: the day's method said in an interview.
 
 ### What does the interviewer say?
 
@@ -62,7 +62,7 @@ Tagged [S], a staple asked everywhere. It is the ladder's last rung, L6: the day
 ### What structure carries the answer?
 
 1. Fix the measures before scoring anything: the average miss in the business's unit, and the same
-   misses priced by direction, which is the loss this plan actually pays.
+   misses priced by direction, which is the loss this plan pays.
 2. Hold out the latest weeks as the test set, at least as many as the forecast must reach ahead, and
    forecast them from one origin; then roll the origin, since one origin is one draw.
 3. Score every forecast against the simplest baselines: the naive and the seasonal naive.
@@ -141,7 +141,7 @@ This variant is written for this programme and quotes no company's figures.
 
 ## Transcript 2: when finance and the vendor's sponsor each want their forecast in front of the plan, which goes?
 
-Tagged [D], a differentiator. The fallback hour runs this one.
+It is tagged [D], a differentiator, and the fallback hour runs it.
 
 ### What does the interviewer say?
 
@@ -161,14 +161,14 @@ Tagged [D], a differentiator. The fallback hour runs this one.
 
 ### What structure carries the answer?
 
-The four moves from Tuesday (restate, answer from the evidence, concede what is true, say what would
-change your mind), then the plan with its cost to finance, its range in each direction, and the check
-that re-opens it.
+Make the four moves from Tuesday (restate, answer from the evidence, concede what is true, say what
+would change your mind), then give the plan with its cost to finance, its range in each direction, and
+the check that re-opens it.
 
 ### Which trap is the interviewer fishing for?
 
-Splitting the difference, 13 percent between 4 and 22, or siding with the more senior person. Both
-skip the evidence, and the midpoint keeps the calendar copy's peak on the wrong week.
+The candidate splits the difference, 13 percent between 4 and 22, or sides with the more senior
+person. Both skip the evidence, and the midpoint keeps the calendar copy's peak on the wrong week.
 
 ### How do a weak answer and a hire-grade answer compare?
 
