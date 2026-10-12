@@ -254,7 +254,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   }
 </style>
 <script>
-/* Every number the page draws, with its source. Change a number here and every scene follows. */
+/* Every number the page draws, with its source. Change a number here and every drawing and readout follows;
+   the reveal sentences quote the case's numbers as text and change with them by hand. */
 var W4 = {
   mon: {
     floorCase: 300,                 /* case Mon ticket: Rs 300 per peak online hour */
@@ -382,7 +383,7 @@ var W4 = {
 <header class="hero">
   <span class="kicker">Week 4 explorer</span>
   <h1>What does an analyst do with one number?</h1>
-  <p class="promise">Five tickets at five companies, one method a day. Choose a day to light the map, predict before every reveal, and let the formula arrive last.</p>
+  <p class="promise">Five tickets, each a work request with a deadline, at four companies, one method a day. Choose a day to light the map, predict before every reveal, and let the formula arrive last.</p>
   <p class="label">Each day's case is illustrative: the company is real, the situation and the data are synthetic, built for this class.</p>
 </header>
 
@@ -399,11 +400,12 @@ var W4 = {
       <button type="button" class="btn" data-day="sat" aria-pressed="false">Sat 31 Oct</button>
       <button type="button" class="btn" data-links aria-pressed="false">Show how the days connect</button>
     </div>
+    <p class="lede2">An amber box under a day is Kalpa Retail's version of that day's question, which the lab takes up; the dashed link joins Tuesday to Monday because Tuesday carries Monday's ticket.</p>
     <p class="status" aria-live="polite">No day is chosen yet. Choose one to light its node; every earlier day stays open with what the room found on it.</p>
     <figure class="mapfig" style="margin:0"><div class="holder" data-map></div></figure>
     <ol class="links" hidden>
-      <li>Monday's north star and its guardrails bound Friday's forecast: the plan is held to the number the scheme pays for.</li>
-      <li>Thursday's cohort axis, months since signup, is the time axis Friday forecasts on.</li>
+      <li>Monday's habit of fixing the definition before reading the number returns on Friday, where the error measure is fixed before any method is scored.</li>
+      <li>Thursday's rule of reading each cohort from its own entry month returns on Friday as reading each week by its distance from the festival.</li>
       <li>Wednesday's "beyond chance" returns on Thursday as "beyond the blend": a cohort is judged against the mix, as a pair is judged against chance.</li>
       <li>The same idea returns on Friday as "beyond the baseline": a forecast earns its place only by beating the simple copy of last year.</li>
     </ol>
@@ -451,7 +453,7 @@ var W4 = {
           <div class="ctl">
             <label for="m1-floor">Guarantee floor, Rs per peak online hour</label>
             <input type="range" id="m1-floor" min="0" max="400" step="20" value="0" data-ctl="floor">
-            <output data-out="floor">Rs 0 an hour (slider value 0)</output>
+            <output data-out="floor">Rs 0 an hour</output>
           </div>
           <div class="ctl"><button type="button" class="btn" data-ctl="wait" aria-pressed="false">Show the rider wait</button></div>
           <dl class="nums" data-nums></dl>
@@ -565,7 +567,7 @@ var W4 = {
           <div class="ctl">
             <label for="m4-week">Week</label>
             <input type="range" id="m4-week" min="1" max="12" step="1" value="6" data-ctl="week">
-            <output data-out="week">Week 6, beginning 24 August 2026 (slider value 6)</output>
+            <output data-out="week">Week 6, beginning 24 August 2026</output>
           </div>
           <dl class="nums" data-nums></dl>
         </div>
@@ -712,32 +714,32 @@ var W4 = {
           <div class="ctl">
             <label for="t3-users">UPI: active users, millions</label>
             <input type="range" id="t3-users" min="50" max="600" step="10" value="100" data-ctl="users">
-            <output data-out="users">100 million (slider value 100)</output>
+            <output data-out="users">100 million</output>
           </div>
           <div class="ctl">
             <label for="t3-pay">UPI: payments a day per active user</label>
             <input type="range" id="t3-pay" min="0.5" max="6" step="0.1" value="0.5" data-ctl="pay">
-            <output data-out="pay">0.5 a day (slider value 0.5)</output>
+            <output data-out="pay">0.5 a day</output>
           </div>
           <div class="ctl">
             <label for="t3-req">Drivers: peak requests an hour in the city</label>
             <input type="range" id="t3-req" min="500" max="4000" step="100" value="1500" data-ctl="req">
-            <output data-out="req">1,500 an hour (slider value 1500)</output>
+            <output data-out="req">1,500 an hour</output>
           </div>
           <div class="ctl">
             <label for="t3-tpd">Drivers: trips one busy driver completes an hour</label>
             <input type="range" id="t3-tpd" min="1" max="3.5" step="0.1" value="2" data-ctl="tpd">
-            <output data-out="tpd">2.0 trips an hour (slider value 2.0)</output>
+            <output data-out="tpd">2.0 trips an hour</output>
           </div>
           <div class="ctl">
             <label for="t3-idle">Drivers: share of online drivers idle at any moment</label>
             <input type="range" id="t3-idle" min="0" max="0.6" step="0.02" value="0.3" data-ctl="idle">
-            <output data-out="idle">0.30 (slider value 0.30)</output>
+            <output data-out="idle">0.30</output>
           </div>
           <div class="ctl">
             <label for="t3-buf">Drivers: buffer for the wait target, percent</label>
             <input type="range" id="t3-buf" min="0" max="50" step="5" value="20" data-ctl="buf">
-            <output data-out="buf">20 percent (slider value 20)</output>
+            <output data-out="buf">20 percent</output>
           </div>
           <dl class="nums" data-nums></dl>
         </div>
@@ -792,13 +794,13 @@ var W4 = {
         <div class="panel">
           <div class="ctl"><label for="w1-a">P(A), the share of orders with chai</label>
             <input type="range" id="w1-a" min="0.05" max="0.95" step="0.01" value="0.6" data-ctl="a">
-            <output data-out="a">0.60 (slider value 0.60)</output></div>
+            <output data-out="a">0.60</output></div>
           <div class="ctl"><label for="w1-b">P(B), the share of orders with biscuit</label>
             <input type="range" id="w1-b" min="0.05" max="0.95" step="0.01" value="0.4" data-ctl="b">
-            <output data-out="b">0.40 (slider value 0.40)</output></div>
+            <output data-out="b">0.40</output></div>
           <div class="ctl"><label for="w1-o">The observed share of orders with both</label>
             <input type="range" id="w1-o" min="0" max="0.95" step="0.01" value="0.3" data-ctl="o">
-            <output data-out="o">0.30 (slider value 0.30)</output></div>
+            <output data-out="o">0.30</output></div>
           <dl class="nums" data-nums></dl>
         </div>
       </div>
@@ -864,7 +866,7 @@ var W4 = {
         <div class="panel">
           <div class="ctl"><label for="w3-m">Milk's share of carts</label>
             <input type="range" id="w3-m" min="0.1" max="0.9" step="0.01" value="0.3" data-ctl="m">
-            <output data-out="m">0.30 (slider value 0.30)</output></div>
+            <output data-out="m">0.30</output></div>
           <dl class="nums" data-nums></dl>
         </div>
       </div>
@@ -899,13 +901,13 @@ var W4 = {
             <output data-out="rank">Ranked by how often items appear together</output></div>
           <div class="ctl"><label for="w4-v">Cart-page views a day in Pune</label>
             <input type="range" id="w4-v" min="20000" max="100000" step="1000" value="60000" data-ctl="views">
-            <output data-out="views">60,000 a day (slider value 60000)</output></div>
+            <output data-out="views">60,000 a day</output></div>
           <div class="ctl"><label for="w4-a">Add rate after a click, an assumption</label>
             <input type="range" id="w4-a" min="0.3" max="0.7" step="0.05" value="0.5" data-ctl="add">
-            <output data-out="add">0.50 (slider value 0.50)</output></div>
+            <output data-out="add">0.50</output></div>
           <div class="ctl"><label for="w4-m">Margin per added item, Rs, an assumption</label>
             <input type="range" id="w4-m" min="5" max="15" step="1" value="9" data-ctl="margin">
-            <output data-out="margin">Rs 9 (slider value 9)</output></div>
+            <output data-out="margin">Rs 9</output></div>
           <dl class="nums" data-nums></dl>
         </div>
       </div>
@@ -926,7 +928,7 @@ var W4 = {
         <div class="guess">
           <div class="ctl"><label for="w5-g">Your guess</label>
             <input type="range" id="w5-g" min="0" max="9" step="1" value="0" data-guess>
-            <output data-out="guess">0 pairs (slider value 0)</output></div>
+            <output data-out="guess">0 pairs</output></div>
           <button type="button" class="btn" data-lock>Lock in my guess</button>
         </div>
         <p class="said" aria-live="polite">No prediction yet.</p>
@@ -938,7 +940,7 @@ var W4 = {
         <div class="panel">
           <div class="ctl"><label for="w5-f">Support floor, percent of carts</label>
             <input type="range" id="w5-f" min="0.1" max="5" step="0.1" value="0.1" data-ctl="floor">
-            <output data-out="floor">0.1 percent, 40 of 40,000 carts (slider value 0.1)</output></div>
+            <output data-out="floor">0.1 percent, 40 of 40,000 carts</output></div>
           <dl class="nums" data-nums></dl>
         </div>
       </div>
@@ -993,7 +995,7 @@ var W4 = {
             <output data-out="next">Reporting month: February 2026</output></div>
           <div class="ctl"><label for="th1-size">Size of the August sale cohort, times a normal month of 5,000</label>
             <input type="range" id="th1-size" min="1" max="3" step="0.1" value="2.6" data-ctl="size">
-            <output data-out="size">August: 13,000 members, 2.6 times normal (slider value 2.6)</output></div>
+            <output data-out="size">August: 13,000 members, 2.6 times normal</output></div>
           <dl class="nums" data-nums></dl>
         </div>
       </div>
@@ -1026,10 +1028,10 @@ var W4 = {
         <div class="panel">
           <div class="ctl"><label for="th2-b">Batch B's size</label>
             <input type="range" id="th2-b" min="0" max="800" step="25" value="0" data-ctl="bsize">
-            <output data-out="bsize">0 members (slider value 0)</output></div>
+            <output data-out="bsize">0 members</output></div>
           <div class="ctl"><label for="th2-a">Batch A's rate this month</label>
             <input type="range" id="th2-a" min="0.2" max="0.6" step="0.01" value="0.4" data-ctl="arate">
-            <output data-out="arate">0.40 (slider value 0.40)</output></div>
+            <output data-out="arate">0.40</output></div>
           <dl class="nums" data-nums></dl>
         </div>
       </div>
@@ -1096,7 +1098,7 @@ var W4 = {
         <div class="panel">
           <div class="ctl"><label for="th4-w">Week since joining</label>
             <input type="range" id="th4-w" min="1" max="8" step="1" value="1" data-ctl="week">
-            <output data-out="week">Week 1 (slider value 1)</output></div>
+            <output data-out="week">Week 1</output></div>
           <div class="ctl"><button type="button" class="btn" data-ctl="blend" aria-pressed="false">Show the blended actives</button></div>
           <dl class="nums" data-nums></dl>
         </div>
@@ -1150,20 +1152,20 @@ var W4 = {
         <div class="panel">
           <div class="ctl"><label for="f1-t">Trend, thousand shipments a week</label>
             <input type="range" id="f1-t" min="-0.3" max="0.6" step="0.05" value="0.2" data-ctl="trend">
-            <output data-out="trend">0.20 a week (slider value 0.20)</output></div>
+            <output data-out="trend">0.20 a week</output></div>
           <div class="ctl"><label for="f1-s">Season, the size of the yearly swing</label>
             <input type="range" id="f1-s" min="0" max="60" step="5" value="25" data-ctl="season">
-            <output data-out="season">25 thousand (slider value 25)</output></div>
+            <output data-out="season">25 thousand</output></div>
           <div class="ctl"><label for="f1-n">Noise, the size of the weekly scatter</label>
             <input type="range" id="f1-n" min="0" max="20" step="1" value="6" data-ctl="noise">
-            <output data-out="noise">6 thousand (slider value 6)</output></div>
+            <output data-out="noise">6 thousand</output></div>
           <dl class="nums" data-nums></dl>
         </div>
       </div>
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>Doubling the season from 25 to 50 thousand doubles the swing around the trend line: each peak rises by about 25 thousand more and each trough falls by about as much, while the trend under them and the noise on top stay as they were.</p>
+        <p>Doubling the season from 25 to 50 thousand doubles the swing around the trend line: the season's peaks rise 25 thousand and its troughs fall 25 thousand, so on this draw of noise the highest week moves from 255 to 277 thousand and the lowest from 167 to 146, while the trend under them and the noise on top stay as they were.</p>
         <p>A forecast that cannot say which part of the line is trend, which is season and which is noise will copy the noise and call it a pattern. Reading the shape comes before choosing any method.</p>
         <p class="formula"><b>The formula, last</b>series = trend + season + noise</p>
       </div>
@@ -1184,7 +1186,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>104 weeks of the centre's shipments, a toy built to the case's shape, whose last 13 weeks score the case's error table. The shaded weeks are hidden from every method; each stick is one week's error, amber where the forecast was too high and rose where it was too low.</figcaption>
+          <figcaption>104 weeks of the centre's shipments, a toy built to the case's shape, whose last 13 weeks score the case's error table. The shaded weeks are hidden from every method; each stick is one week's error, amber where the forecast was too high and rose where it was too low. The vendor's curve is a toy rule too: it hugs every week it saw and runs 10 percent above last year's calendar week on every week it did not.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><label for="f2-m">The method scored</label>
@@ -1196,7 +1198,7 @@ var W4 = {
             </select></div>
           <div class="ctl"><label for="f2-s">The last week the methods may see</label>
             <input type="range" id="f2-s" min="52" max="91" step="1" value="91" data-ctl="split">
-            <output data-out="split">The week of 22 June 2026 (slider value 91)</output></div>
+            <output data-out="split">The week of 22 June 2026</output></div>
           <dl class="nums" data-nums></dl>
         </div>
       </div>
@@ -1225,12 +1227,12 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Top: the 2025 festive weeks as the centre shipped them, with Diwali in the week of 20 October 2025. Bottom: two copies for 2026 on the same calendar weeks; the house bot copies the same week last year, and the festival-aligned copy keeps each week's distance from Diwali and adds the year's drift. The shaded weeks are the eight the planner must staff.</figcaption>
+          <figcaption>Top: the 2025 festive weeks of the toy series built to the case's shape, with Diwali in the week of 20 October 2025. Bottom: two copies for 2026 on the same calendar weeks; the house bot, F2's same week last year, copies the calendar week a year back, and the festival-aligned copy keeps each week's distance from Diwali and adds the year's drift. The shaded weeks are the eight the planner must staff.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><label for="f3-d">Diwali's week in 2026</label>
             <input type="range" id="f3-d" min="108" max="111" step="1" value="108" data-ctl="diwali">
-            <output data-out="diwali">The week of 19 October 2026 (slider value 108)</output></div>
+            <output data-out="diwali">The week of 19 October 2026</output></div>
           <dl class="nums" data-nums></dl>
         </div>
       </div>
@@ -1247,33 +1249,33 @@ var W4 = {
       <div class="scene-head"><span class="sid">F4</span><h3>Where should the plan sit when being short costs more?</h3></div>
       <p class="myth"><b>The first answer most people give:</b> plan exactly at the forecast, since anything else is padding.</p>
       <div class="predict">
-        <p class="ask"><b>Predict before you move a cost.</b> Raise the cost of a late shipment. Which way does the cheapest plan move?</p>
+        <p class="ask"><b>Predict before you move a cost.</b> Raise the cost of a late shipment from the case's Rs 25 towards Rs 40. Which way does the cheapest plan move?</p>
         <div class="opts">
           <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Up, towards more packers.</button>
           <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Down, towards fewer packers.</button>
           <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Nowhere; it stays on the forecast.</button>
-          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. To the middle of the error bar.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. It moves only when the idle cost changes.</button>
         </div>
         <p class="said" aria-live="polite">No prediction yet.</p>
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>The expected cost of a festive week's errors against how far the plan sits above or below the forecast. Errors are assumed to spread like a bell curve whose average size is the baseline's hold-out MAE of 8,900 shipments; the two unit costs are the case's assumptions, an idle shift at Rs 650 (range Rs 500 to 800) and a late shipment at Rs 25 (range Rs 15 to 40).</figcaption>
+          <figcaption>The expected cost of a festive week's errors against how far the plan sits above or below the forecast. Errors are assumed to spread like a bell curve whose average size is the baseline's hold-out MAE of 8,900 shipments; the two unit costs are the case's assumptions, an idle shift at Rs 650 (range Rs 500 to 800) and a late shipment at Rs 25 (range Rs 15 to 40). The 8,900 comes from hidden weeks with no festival, so it understates a festive week's error.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><label for="f4-o">Idle cost per over-forecast shipment, Rs</label>
             <input type="range" id="f4-o" min="4.2" max="6.7" step="0.1" value="5.4" data-ctl="over">
-            <output data-out="over">Rs 5.4 (slider value 5.4)</output></div>
+            <output data-out="over">Rs 5.4</output></div>
           <div class="ctl"><label for="f4-u">Late cost per under-forecast shipment, Rs</label>
-            <input type="range" id="f4-u" min="15" max="40" step="1" value="15" data-ctl="under">
-            <output data-out="under">Rs 15 (slider value 15)</output></div>
+            <input type="range" id="f4-u" min="15" max="40" step="1" value="25" data-ctl="under">
+            <output data-out="under">Rs 25</output></div>
           <dl class="nums" data-nums></dl>
         </div>
       </div>
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>With an idle shift at Rs 650, about Rs 5.4 for each shipment of over-forecast, and Rs 25 for each late shipment, the cheapest plan sits at the 0.82 quantile of the error: about 10,300 shipments above the middle of the forecast, 86 more packer shifts a week. Planning at the middle would cost about Rs 1.35 lakh a week in expected errors, against Rs 0.88 lakh at the quantile.</p>
+        <p>With an idle shift at Rs 650, about Rs 5.4 for each shipment of over-forecast, and Rs 25 for each late shipment, the cheapest plan sits at the 0.82 quantile of the error, a plan that covers the week's demand in about 82 weeks of 100: about 10,300 shipments above the middle of the forecast, 86 more packer shifts a week. Planning at the middle would cost about Rs 1.35 lakh a week in expected errors, against Rs 0.88 lakh at the quantile.</p>
         <p>When being short costs nearly five times being idle, the plan leans towards having packers waiting. The lean is set by the two costs and the size of the error, so a better baseline with a smaller MAE needs less of it.</p>
         <p class="formula"><b>The formula, last</b>plan quantile = under-cost / (under-cost + over-cost) = 25 / (25 + 5.4) = 0.82</p>
       </div>
@@ -1298,7 +1300,7 @@ var W4 = {
       <div class="scene-head"><span class="sid">S1</span><h3>Does the method survive a change of company?</h3></div>
       <p class="myth"><b>The first answer most people give:</b> every company is different, so each one needs a method of its own.</p>
       <div class="predict">
-        <p class="ask"><b>Predict before you choose a unit.</b> Move the week to another company. What changes on the map?</p>
+        <p class="ask"><b>Predict before you choose a unit.</b> Move the week to another company. What changes?</p>
         <div class="opts">
           <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Everything: each company needs its own method and its own metrics.</button>
           <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Nothing: the map, the metric and the cost of an error stay the same.</button>
@@ -1334,7 +1336,7 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>Across all eight units the method stays: the number is defined with its guardrails and said on one slide, judged against chance, the blend or the baseline, broken down by cohort and step, and its error priced in each direction. What changes is the metric, the constraint and what a wrong number costs, which is what each unit's card shows.</p>
+        <p>Each unit leans on one or two of the week's methods, and those methods come across unchanged: the number defined with its guardrails and said on one slide, judged against chance, the blend or the baseline, broken down by cohort and step, and its error priced in each direction. What changes is the metric, the constraint and what a wrong number costs, which is what each unit's card shows.</p>
         <p>An interviewer who moves a question to a business you have never seen wants to see you carry the method across and rebuild only the parts that belong to the business.</p>
         <p class="formula"><b>The formula, last</b>what stays is the method; what changes is the metric, the constraint and the cost of an error</p>
       </div>
@@ -1874,11 +1876,11 @@ var W4 = {
   var SCENE_DAY = {};
   var NODES = [
     { id: "mon", title: ["Mon: is the number", "measuring what we want?"], lines: ["Uber, Hyderabad", "online hours against trips", "metric, guardrails, gaming"],
-      found: ["1.9 to 1.6 trips an online hour:", "pay for trips"], kalpa: ["Kalpa Retail:", "the auto-reorder window"] },
+      found: ["1.9 to 1.6 trips an online hour:", "pay for trips"], kalpa: ["Kalpa Retail:", "reorders per member"] },
     { id: "tue", title: ["Tue: can it survive one", "slide, and be sized?"], lines: ["Uber, Hyderabad", "bookings per online hour", "one slide, the guesstimate"],
       found: ["Rs 314 to Rs 260 an hour,", "said in one claim"], kalpa: null },
     { id: "wed", title: ["Wed: what goes with", "what, beyond chance?"], lines: ["Swiggy Instamart, Pune", "the bought-together strip", "support, confidence, lift"],
-      found: ["milk's lift 1.04: rank by lift", "above a 1 percent floor"], kalpa: ["Kalpa Retail:", "the Rs 199 charger"] },
+      found: ["bread and milk's lift 1.04:", "rank by lift over a floor"], kalpa: ["Kalpa Retail:", "the Rs 199 charger"] },
     { id: "thu", title: ["Thu: who is leaving,", "and at which step?"], lines: ["Zomato Gold, Chennai", "a flat number, falling cohorts", "cohorts, funnels, denominators"],
       found: ["38 percent flat over falling", "cohorts; Android 58 to 44"], kalpa: ["Kalpa Retail:", "the Retail-Plus tier"] },
     { id: "fri", title: ["Fri: how much is coming,", "how wrong could we be?"], lines: ["Flipkart, Lucknow", "festive packer headcount", "baselines, hold-out, cost"],
@@ -1898,7 +1900,7 @@ var W4 = {
     /* the centre question */
     add(svg, "rect", { x: 340, y: 14, width: 520, height: 72, rx: 12, fill: C.tint, stroke: C.violet, "stroke-width": 2.4 });
     txt(svg, 600, 44, "What does an analyst do with one number?", { anchor: "middle", size: 19, weight: 700, font: SERIF });
-    txt(svg, 600, 70, "five tickets, five companies, one method a day", { anchor: "middle", size: 15, fill: C.night });
+    txt(svg, 600, 70, "five tickets, four companies, one method a day", { anchor: "middle", size: 15, fill: C.night });
     /* spokes from the centre to Monday, Wednesday, Thursday and Friday; Tuesday hangs off Monday */
     [0, 2, 3, 4].forEach(function (i) {
       add(base, "line", { x1: 600, y1: 86, x2: nx(i) + NW / 2, y2: NY - 2, stroke: C.violet, "stroke-width": 1.6 });
@@ -1980,7 +1982,6 @@ var W4 = {
     nav.links = on;
     var b = $("[data-links]");
     b.setAttribute("aria-pressed", String(on));
-    b.textContent = on ? "Hide the connections" : "Show how the days connect";
     $(".links").hidden = !on;
     drawMap();
   }
@@ -2167,7 +2168,7 @@ var W4 = {
     render: function (st, art) {
       var g = st.floor, m = m1Model(g), c = this.city.setRoles(m1Roles(g));
       $('[data-ctl="floor"]', art).value = g;
-      setOut(art, "floor", "Rs " + g + " an hour (slider value " + g + ")");
+      setOut(art, "floor", "Rs " + g + " an hour");
       this.waitG.setAttribute("opacity", st.wait ? 1 : 0);
       this.waitBar.setAttribute("width", (330 * m.wait / 6).toFixed(1));
       this.waitTxt.textContent = m.wait.toFixed(1) + " min";
@@ -2393,7 +2394,7 @@ var W4 = {
       put($("[data-fig]", art), svg);
       $('[data-ctl="week"]', art).value = k;
       var full = ["", "20 July", "27 July", "3 August", "10 August", "17 August", "24 August", "31 August", "7 September", "14 September", "21 September", "28 September", "5 October"];
-      setOut(art, "week", "Week " + k + ", beginning " + full[k] + " 2026 (slider value " + k + ")");
+      setOut(art, "week", "Week " + k + ", beginning " + full[k] + " 2026");
       nums($("[data-nums]", art), [
         ["Acceptance share this week", MON.acceptWeekly[k - 1].toFixed(2)],
         ["Bookings per online hour this week", rs(MON.bookWeekly[k - 1])],
@@ -2551,12 +2552,12 @@ var W4 = {
       var p = t3Product(st);
       ["users", "pay", "req", "tpd", "idle", "buf"].forEach(function (k) { $('[data-ctl="' + k + '"]', art).value = st[k]; });
       $('[data-ctl="q"]', art).value = st.q;
-      setOut(art, "users", st.users + " million (slider value " + st.users + ")");
-      setOut(art, "pay", st.pay.toFixed(1) + " a day (slider value " + st.pay.toFixed(1) + ")");
-      setOut(art, "req", group(st.req) + " an hour (slider value " + st.req + ")");
-      setOut(art, "tpd", st.tpd.toFixed(1) + " trips an hour (slider value " + st.tpd.toFixed(1) + ")");
-      setOut(art, "idle", st.idle.toFixed(2) + " (slider value " + st.idle.toFixed(2) + ")");
-      setOut(art, "buf", st.buf + " percent (slider value " + st.buf + ")");
+      setOut(art, "users", st.users + " million");
+      setOut(art, "pay", st.pay.toFixed(1) + " a day");
+      setOut(art, "req", group(st.req) + " an hour");
+      setOut(art, "tpd", st.tpd.toFixed(1) + " trips an hour");
+      setOut(art, "idle", st.idle.toFixed(2) + "");
+      setOut(art, "buf", st.buf + " percent");
       var upiM = p.upi / 1e6, upiTxt = upiM < 1000 ? Math.round(upiM) + " million" : (upiM / 1000).toFixed(2) + " billion";
       var trees = {
         upi: { label: "UPI payments a day", note: upiTxt, kind: st.q === "upi" ? "lit" : "plain", children: [
@@ -2650,7 +2651,7 @@ var W4 = {
       this.draw(st.a, st.b, st.o);
       ["a", "b", "o"].forEach(function (k) {
         $('[data-ctl="' + k + '"]', art).value = st[k];
-        setOut(art, k, st[k].toFixed(2) + " (slider value " + st[k].toFixed(2) + ")");
+        setOut(art, k, st[k].toFixed(2) + "");
       });
       var e = st.a * st.b;
       nums($("[data-nums]", art), [
@@ -2755,7 +2756,7 @@ var W4 = {
       this.g.lift.bar.setAttribute("width", (380 * lift / 2).toFixed(1));
       this.g.lift.label.textContent = lift.toFixed(2);
       $('[data-ctl="m"]', art).value = st.m;
-      setOut(art, "m", st.m.toFixed(2) + " (slider value " + st.m.toFixed(2) + ")");
+      setOut(art, "m", st.m.toFixed(2) + "");
       nums($("[data-nums]", art), [
         ["Milk in carts, P(B)", b.toFixed(2)],
         ["Bread in carts, P(A)", a.toFixed(2)],
@@ -2814,9 +2815,9 @@ var W4 = {
       $('[data-ctl="rank"]', art).setAttribute("aria-pressed", String(st.lift));
       ["views", "add", "margin"].forEach(function (k) { $('[data-ctl="' + k + '"]', art).value = st[k]; });
       setOut(art, "rank", st.lift ? "Ranked by lift above the floor" : "Ranked by how often items appear together");
-      setOut(art, "views", group(st.views) + " a day (slider value " + st.views + ")");
-      setOut(art, "add", st.add.toFixed(2) + " (slider value " + st.add.toFixed(2) + ")");
-      setOut(art, "margin", "Rs " + st.margin + " (slider value " + st.margin + ")");
+      setOut(art, "views", group(st.views) + " a day");
+      setOut(art, "add", st.add.toFixed(2) + "");
+      setOut(art, "margin", "Rs " + st.margin + "");
       rows.push(["The strip, a day", rs(Math.round(total))]);
       rows.push(["The strip, a month of 30 days", lakh(total * 30)]);
       rows.push({ wide: "Each slot: " + group(st.views) + " views x click-through x " + st.add.toFixed(2) + " x Rs " + st.margin + "." });
@@ -2871,7 +2872,7 @@ var W4 = {
       var self = this;
       on(art, "floor", "input", function (e) { st.floor = Number(e.target.value); self.render(st, art); });
       var g = $("[data-guess]", art);
-      g.addEventListener("input", function () { setOut(art, "guess", self.guessText(Number(g.value)) + " (slider value " + g.value + ")"); });
+      g.addEventListener("input", function () { setOut(art, "guess", self.guessText(Number(g.value)) + ""); });
     },
     render: function (st, art) {
       var f = st.floor, x = W5X(f), keep = [], drop = [];
@@ -2885,7 +2886,7 @@ var W4 = {
         (ok ? keep : drop).push(p);
       }, this);
       $('[data-ctl="floor"]', art).value = f;
-      setOut(art, "floor", f.toFixed(1) + " percent, " + group(Math.round(WED.carts * f / 100)) + " of 40,000 carts (slider value " + f.toFixed(1) + ")");
+      setOut(art, "floor", f.toFixed(1) + " percent, " + group(Math.round(WED.carts * f / 100)) + " of 40,000 carts");
       var best = keep.slice().sort(function (p, q) { return q[2] - p[2]; })[0];
       nums($("[data-nums]", art), [
         ["Pairs at or above the floor", keep.length + " of 9"],
@@ -2973,7 +2974,7 @@ var W4 = {
       setOut(art, "next", "Reporting month: " + THU.months[st.step - 1] + " 2026" + (st.step === 10 ? ", a toy month" : "") + " (step " + (st.step - 1) + " of 9)");
       $('[data-ctl="size"]', art).value = st.sizes[7];
       setOut(art, "size", "August: " + group(Math.round(st.sizes[7] * THU.normal)) + " members, " + st.sizes[7].toFixed(1) +
-        " times normal (slider value " + st.sizes[7].toFixed(1) + ")");
+        " times normal");
       var counted = 0, members = 0;
       for (c = 0; c < 8; c++) if (st.step - (c + 1) >= 2) { counted++; members += st.sizes[c] * THU.normal; }
       nums($("[data-nums]", art), [
@@ -3019,8 +3020,8 @@ var W4 = {
       });
       put($("[data-fig]", art), svg);
       $('[data-ctl="bsize"]', art).value = st.bsize; $('[data-ctl="arate"]', art).value = st.arate;
-      setOut(art, "bsize", st.bsize + " members (slider value " + st.bsize + ")");
-      setOut(art, "arate", st.arate.toFixed(2) + " (slider value " + st.arate.toFixed(2) + ")");
+      setOut(art, "bsize", st.bsize + " members");
+      setOut(art, "arate", st.arate.toFixed(2) + "");
       var c2 = cols[1];
       nums($("[data-nums]", art), [
         ["Last month", "50 of 100 = 50.0 percent"],
@@ -3109,7 +3110,7 @@ var W4 = {
       put($("[data-fig]", art), svg);
       $('[data-ctl="week"]', art).value = k;
       $('[data-ctl="blend"]', art).setAttribute("aria-pressed", String(st.blend));
-      setOut(art, "week", "Week " + k + " (slider value " + k + ")");
+      setOut(art, "week", "Week " + k + "");
       var rows = [["Launch-week cohort, week " + k, THU.launchRate[k - 1] + " percent"],
                   ["Organic cohort, week " + k, THU.organicRate[k - 1] + " percent"]];
       if (st.blend) rows.push(["Blended actives, week " + k, group(Math.round(th4Blend(k)))]);
@@ -3175,9 +3176,9 @@ var W4 = {
       txt(svg, 660, Y(200 + st.trend * 103) + 20, "trend", { size: 13, anchor: "end", fill: C.rose, weight: 700 }).setAttribute("class", "halo");
       put($("[data-fig]", art), svg);
       ["trend", "season", "noise"].forEach(function (k) { $('[data-ctl="' + k + '"]', art).value = st[k]; });
-      setOut(art, "trend", st.trend.toFixed(2) + " a week (slider value " + st.trend.toFixed(2) + ")");
-      setOut(art, "season", st.season + " thousand (slider value " + st.season + ")");
-      setOut(art, "noise", st.noise + " thousand (slider value " + st.noise + ")");
+      setOut(art, "trend", st.trend.toFixed(2) + " a week");
+      setOut(art, "season", st.season + " thousand");
+      setOut(art, "noise", st.noise + " thousand");
       nums($("[data-nums]", art), [
         ["Highest week", Math.round(Math.max.apply(null, sum)) + " thousand"],
         ["Lowest week", Math.round(Math.min.apply(null, sum)) + " thousand"],
@@ -3195,10 +3196,14 @@ var W4 = {
     if (m === "fest") return A[t - (t <= 83 ? 51 : 54) - 1] * FRI.growth;
     return A[t - 53] * FRI.vendorLift;
   }
-  function f2Score(m, split) {
+  function planRaise() {
+    var cu = FRI.lateShipment, co = FRI.idleShift / FRI.perShift;
+    return FRI.mae.fest * Math.sqrt(Math.PI / 2) * invPhi(cu / (cu + co));
+  }
+  function f2Score(m, split, shift) {
     var over = 0, under = 0, abs = 0, high = 0, n = 0, A = FRI.weeks, co = FRI.idleShift / FRI.perShift;
     for (var t = split + 1; t <= 104; t++) {
-      var e = f2Fore(m, t, split) - A[t - 1];
+      var e = f2Fore(m, t, split) + (shift || 0) - A[t - 1];
       abs += Math.abs(e); n++;
       if (e > 0) { over += e; high++; } else under -= e;
     }
@@ -3258,19 +3263,27 @@ var W4 = {
       put($("[data-fig]", art), svg);
       $('[data-ctl="method"]', art).value = m;
       $('[data-ctl="split"]', art).value = s;
-      setOut(art, "split", "The week of " + weekDate(s) + ", so " + (104 - s) + " weeks are hidden, from " + weekDate(s + 1) + " (slider value " + s + ")");
+      setOut(art, "split", "The week of " + weekDate(s) + ", so " + (104 - s) + " weeks are hidden, from " + weekDate(s + 1) + "");
       var sc = f2Score(m, s);
+      var how = { naive: "Naive: every hidden week is forecast as the last week the method saw.",
+        swly: "Same week last year: copy the calendar week a year back. This is the house bot that F3 follows.",
+        fest: "Festival-aligned with drift: copy the week that sat at the same distance from Diwali a year back, times 1.04 for the year's drift.",
+        vendor: "The vendor's curve, a toy: it hugs every week it saw and runs 10 percent above last year's calendar week on the weeks it did not." }[m];
       nums($("[data-nums]", art), [
+        { wide: how },
         ["Mean absolute error", group(round100(sc.mae)) + " a week"],
         ["Weeks forecast too high", sc.high + " of " + sc.n],
         ["Idle shifts, at Rs 5.4 a shipment", lakh(sc.idle)],
         ["Late shipments, at Rs 25 each", lakh(sc.late)],
-        ["The errors, priced", lakh(sc.idle + sc.late)]
+        ["The errors, priced", lakh(sc.idle + sc.late)],
+        { wide: "Scores depend on which weeks are hidden, so the split is fixed before anyone scores." }
       ]);
       var rows = ["naive", "swly", "fest", "vendor"].map(function (k) {
         var x = f2Score(k, s);
         return "<tr><td>" + F2_NAMES[k] + "</td><td>" + group(round100(x.mae)) + "</td><td>" + x.high + " of " + x.n + "</td><td>" + lakh(x.idle + x.late) + "</td></tr>";
       }).join("");
+      var raise = planRaise(), xr = f2Score("fest", s, raise);
+      rows += "<tr><td>Festival-aligned, raised " + group(round100(raise)) + " for the costs (scene F4)</td><td>" + group(round100(xr.mae)) + "</td><td>" + xr.high + " of " + xr.n + "</td><td>" + lakh(xr.idle + xr.late) + "</td></tr>";
       $("[data-board]", art).innerHTML = '<table class="rows"><thead><tr><th>Method, on the hidden weeks</th><th>MAE, shipments a week</th><th>Weeks too high</th><th>Errors priced</th></tr></thead><tbody>' + rows + "</tbody></table>";
     },
     final: function (st) { st.method = "fest"; st.split = 91; }
@@ -3289,7 +3302,7 @@ var W4 = {
       var Ytop = function (v) { return 200 - 150 * (v - 150000) / 310000; }, Ybot = function (v) { return 430 - 150 * (v - 150000) / 310000; };
       add(svg, "rect", { x: cx(2) - 28, y: 268, width: 8 * 56, height: 166, fill: C.violet, "fill-opacity": 0.07 });
       txt(svg, cx(9) + 22, 428, "the eight weeks to staff", { size: 13, fill: C.violet, weight: 700, anchor: "end" });
-      txt(svg, 16, 30, "2025, as the centre shipped it", { size: 14.5, weight: 700 });
+      txt(svg, 16, 30, "2025, in the toy series built to the case's shape", { size: 14.5, weight: 700 });
       txt(svg, 16, 256, "2026, two copies on the same calendar weeks", { size: 14.5, weight: 700 });
       var top = [], bot = [], ali = [];
       for (var i = 0; i < 10; i++) {
@@ -3321,7 +3334,7 @@ var W4 = {
       txt(svg, cx(pa) + 14, Ybot(ali[pa]) + 22, "festival-aligned peak", { size: 13.5, weight: 700, fill: C.violet }).setAttribute("class", "halo");
       put($("[data-fig]", art), svg);
       $('[data-ctl="diwali"]', art).value = D;
-      setOut(art, "diwali", "The week of " + weekDate(D) + " (slider value " + D + ")");
+      setOut(art, "diwali", "The week of " + weekDate(D) + "");
       var early = pa - pb;
       nums($("[data-nums]", art), [
         ["The bot's peak", "week of " + weekDate(105 + pb, true)],
@@ -3348,7 +3361,7 @@ var W4 = {
   function invPhi(p) { var lo = -8, hi = 8; for (var i = 0; i < 60; i++) { var mid = (lo + hi) / 2; if (Phi(mid) < p) lo = mid; else hi = mid; } return (lo + hi) / 2; }
   scene("F4", {
     answer: "A",
-    start: function () { return { over: 5.4, under: 15 }; },
+    start: function () { return { over: 5.4, under: 25 }; },
     init: function (st, art) {
       var self = this;
       on(art, "over", "input", function (e) { st.over = Number(e.target.value); self.render(st, art); });
@@ -3358,9 +3371,11 @@ var W4 = {
       var sig = FRI.mae.fest * Math.sqrt(Math.PI / 2), co = st.over, cu = st.under;
       var idle = function (q) { var z = q / sig; return co * (q * Phi(z) + sig * phi(z)); };
       var late = function (q) { var z = q / sig; return cu * (sig * phi(z) - q * (1 - Phi(z))); };
-      var X = function (q) { return 76 + 580 * (q + 20000) / 52000; }, Y = function (c) { return 380 - 330 * c / 600000; };
+      var top = Math.max(600000, Math.ceil(Math.max(idle(-20000) + late(-20000), idle(32000) + late(32000)) / 200000) * 200000);
+      var X = function (q) { return 76 + 580 * (q + 20000) / 52000; }, Y = function (c) { return 380 - 320 * c / top; };
       var svg = svgRoot(680, 440, "Expected cost of the errors against how far the plan sits from the forecast");
-      [0, 200000, 400000, 600000].forEach(function (c) {
+      var ticks = []; for (var tk = 0; tk <= top; tk += 200000) ticks.push(tk);
+      ticks.forEach(function (c) {
         add(svg, "line", { x1: 76, x2: 656, y1: Y(c), y2: Y(c), stroke: C.line });
         txt(svg, 70, Y(c) + 5, c ? "Rs " + c / 100000 + " lakh" : "0", { size: 12.5, anchor: "end", fill: C.muted });
       });
@@ -3371,11 +3386,15 @@ var W4 = {
       var curves = [[idle, AMBER, "idle shifts"], [late, C.rose, "late shipments"], [function (q) { return idle(q) + late(q); }, C.ink, "the two together"]];
       curves.forEach(function (c, k) {
         var pts = [];
-        for (var q = -20000; q <= 32000; q += 500) { var v = c[0](q); if (v <= 620000) pts.push(X(q).toFixed(1) + "," + Y(v).toFixed(1)); }
+        for (var q = -20000; q <= 32000; q += 500) { var v = c[0](q); if (v <= top) pts.push(X(q).toFixed(1) + "," + Y(v).toFixed(1)); }
         add(svg, "polyline", { points: pts.join(" "), fill: "none", stroke: c[1], "stroke-width": k === 2 ? 3 : 2 });
       });
-      txt(svg, X(26000), Y(idle(26000)) - 10, "idle shifts", { size: 13.5, weight: 700, fill: AMBER_INK, anchor: "middle" }).setAttribute("class", "halo");
-      txt(svg, X(-15000), Y(late(-15000)) - 12, "late shipments", { size: 13.5, weight: 700, fill: C.rose, anchor: "middle" }).setAttribute("class", "halo");
+      var lgx = 190;
+      [["idle shifts", AMBER, AMBER_INK], ["late shipments", C.rose, C.rose], ["the two together", C.ink, C.ink]].forEach(function (lg) {
+        add(svg, "line", { x1: lgx, x2: lgx + 22, y1: 26, y2: 26, stroke: lg[1], "stroke-width": 3 });
+        txt(svg, lgx + 28, 31, lg[0], { size: 13.5, weight: 700, fill: lg[2] });
+        lgx += 50 + lg[0].length * 7.4;
+      });
       var p = cu / (cu + co), qs = sig * invPhi(p), best = idle(qs) + late(qs), mid = idle(0) + late(0);
       add(svg, "line", { x1: X(0), x2: X(0), y1: 40, y2: 380, stroke: C.night, "stroke-width": 1.4, "stroke-dasharray": "4 4" });
       txt(svg, X(0) - 6, 54, "forecast's middle", { size: 13, anchor: "end", fill: C.night });
@@ -3384,10 +3403,10 @@ var W4 = {
       txt(svg, X(qs) + 10, Y(best) + 26, "cheapest plan: +" + group(round100(qs)), { size: 14, weight: 700, fill: C.violet }).setAttribute("class", "halo");
       put($("[data-fig]", art), svg);
       $('[data-ctl="over"]', art).value = co; $('[data-ctl="under"]', art).value = cu;
-      setOut(art, "over", "Rs " + co.toFixed(1) + " (slider value " + co.toFixed(1) + ")");
-      setOut(art, "under", "Rs " + cu + " (slider value " + cu + ")");
+      setOut(art, "over", "Rs " + co.toFixed(1) + "");
+      setOut(art, "under", "Rs " + cu + "");
       nums($("[data-nums]", art), [
-        ["The plan quantile", cu + " / (" + cu + " + " + co.toFixed(1) + ") = " + p.toFixed(2)],
+        ["Weeks the plan covers", Math.round(p * 100) + " in 100"],
         ["Plan above the middle", group(round100(qs)) + " shipments"],
         ["More packer shifts a week", group(Math.round(qs / FRI.perShift))],
         ["Expected cost at the plan", "Rs " + (best / 1e5).toFixed(2) + " lakh a week"],
@@ -3416,11 +3435,11 @@ var W4 = {
            constraint: "free delivery changes who joins and when", cost: "a flat blend that hides a weaker cohort", hypo: true },
     amazon: { name: "Amazon India: a fulfilment centre's festive staffing", days: [4, 1], metric: "festive-week shipments against a festival-aligned baseline",
            constraint: "the festival moves by weeks each year", cost: "a late shipment costs more than an idle shift", hypo: true },
-    kfs: { name: "Kalpa Financial Services, with Rohan Desai", days: [0, 4], metric: "which customers to nudge first towards a second product",
+    kfs: { name: "Kalpa Financial Services, with Rohan Desai", days: [0, 4], metric: "second-product take-up per 100 customers nudged",
            constraint: "a nudge in lending is a credit decision", cost: "a wrong call costs twenty times more one way than the other" },
     klog: { name: "Kalpa Logistics, with the head of operations", days: [0, 4], metric: "parcels delivered by the date first promised",
            constraint: "re-dating the promise games the on-time rate", cost: "Diwali parcel volumes forecast in the wrong week" },
-    khealth: { name: "Kalpa Health, with Dr Priya Menon", days: [3], metric: "patient cohorts by first-visit month, and booking to visit in dollars",
+    khealth: { name: "Kalpa Health, with Dr Priya Menon", days: [3], metric: "second-visit rate for each first-visit month's patients",
            constraint: "claims billed in dollars across six US metro areas", cost: "a flat blend that hides weaker new-patient cohorts" },
     kconnect: { name: "Kalpa Connect, with Ananya Bose", days: [3], metric: "churn for each subscriber cohort",
            constraint: "a blended churn rate stays flat while cohorts worsen", cost: "the weakest cohort found after it has left" }
