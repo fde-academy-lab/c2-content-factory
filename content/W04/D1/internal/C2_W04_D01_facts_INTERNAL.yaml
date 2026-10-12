@@ -399,6 +399,61 @@ numbers:
   unit: share
   how: (idle outer-zone hours after - before) / (idle hours after - before)
   used_by: L3
+- id: drivers_others
+  value: 880
+  unit: drivers
+  how: drivers who joined before the launch and sit outside the idle tail
+  used_by: L5 driver operations' objection
+- id: others_hours_before
+  value: 98000
+  unit: hours
+  how: the other 880 drivers, before
+  used_by: L5
+- id: others_trips_before
+  value: 186200
+  unit: trips
+  how: the other 880 drivers, before
+  used_by: L5
+- id: others_tph_before
+  value: 1.9
+  unit: trips per peak online hour
+  how: the other 880 drivers, before
+  used_by: L5
+- id: requests_per_hour_before
+  value: 2.13
+  unit: rider requests per peak online hour
+  how: zone requests / driver hours
+  used_by: the input on the tree
+- id: others_hours_after
+  value: 102000
+  unit: hours
+  how: the other 880 drivers, after
+  used_by: L5
+- id: others_trips_after
+  value: 193800
+  unit: trips
+  how: the other 880 drivers, after
+  used_by: L5
+- id: others_tph_after
+  value: 1.9
+  unit: trips per peak online hour
+  how: the other 880 drivers, after
+  used_by: L5
+- id: requests_per_hour_after
+  value: 1.75
+  unit: rider requests per peak online hour
+  how: zone requests / driver hours
+  used_by: the input on the tree
+- id: acceptance_max_idle_week_after
+  value: 0.46
+  unit: share
+  how: highest weekly accepted share of any idle-tail driver-week after the launch
+  used_by: L5 the floor; follow-up 2
+- id: acceptance_min_other_week_after
+  value: 0.78
+  unit: share
+  how: lowest weekly accepted share of any other driver-week online after the launch
+  used_by: L5 the floor; follow-up 2
 - id: tph_pre_launch_after
   value: 1.58
   unit: trips per peak online hour

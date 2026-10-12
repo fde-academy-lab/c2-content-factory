@@ -607,6 +607,21 @@ fact("idle_trips_ratio", r2(idle.loc["after", "peak_trips"] / idle.loc["before",
      "times", "33,440 / 38,000 (down 12 percent)", "L3")
 fact("idle_new_hours_outer_share", r2(outer_share), "share",
      "(idle outer-zone hours after - before) / (idle hours after - before)", "L3")
+others = dw[dw["group"] == "ord"].groupby("window").sum(numeric_only=True)
+fact("drivers_others", ORD, "drivers", "drivers who joined before the launch and sit outside the idle tail",
+     "L5 driver operations' objection")
+for win in ("before", "after"):
+    fact(f"others_hours_{win}", int(others.loc[win, "peak_online_hours"]), "hours", f"the other 880 drivers, {win}", "L5")
+    fact(f"others_trips_{win}", int(others.loc[win, "peak_trips"]), "trips", f"the other 880 drivers, {win}", "L5")
+    fact(f"others_tph_{win}", r2(others.loc[win, "peak_trips"] / others.loc[win, "peak_online_hours"]),
+         "trips per peak online hour", f"the other 880 drivers, {win}", "L5")
+    fact(f"requests_per_hour_{win}", r2(zones.loc[win, "requests"] / city.loc[win, "peak_online_hours"]),
+         "rider requests per peak online hour", "zone requests / driver hours", "the input on the tree")
+on_after = after[after["peak_online_hours"] > 0]
+fact("acceptance_max_idle_week_after", r2(on_after.loc[on_after["group"] == "idle", "acceptance"].max()), "share",
+     "highest weekly accepted share of any idle-tail driver-week after the launch", "L5 the floor; follow-up 2")
+fact("acceptance_min_other_week_after", r2(on_after.loc[on_after["group"] != "idle", "acceptance"].min()), "share",
+     "lowest weekly accepted share of any other driver-week online after the launch", "L5 the floor; follow-up 2")
 fact("tph_pre_launch_after", r2(pre.loc["after", "peak_trips"] / pre.loc["after", "peak_online_hours"]),
      "trips per peak online hour", "after window, drivers who joined before the launch", "L4 mix")
 fact("tph_core_zones_before", r2(core.loc["before", "peak_trips"] / core.loc["before", "peak_online_hours"]),
