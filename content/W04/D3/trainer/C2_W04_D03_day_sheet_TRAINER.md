@@ -102,7 +102,7 @@ every combination."
 | "Shoppers changed" | The fall from 6.1 to 3.8 percent read as a habit change | A redesign instead of a re-rank | Split by suggested item: milk 1.2, the rest 6.4, up from 6.2 | S23, S24 | 02, cells 14 to 19 |
 | Lift alone | Ice cream and chocolate sauce, 4.60, promoted on 100 carts | A slot spent on a pair 100 carts deep | The floor: 400 carts | S28 to S30 | 03, cells 3 to 7 |
 | Sales as the gain | Rs 80,197 a day of "strip revenue" | A rupee case four times too big | The margin kept: Rs 17,280 a day, less any discount | S33 | 03, cells 9 to 11 |
-| Heavy buyers | 3.39 quoted for chips and cold drink | A number that shrinks when finance recounts it | Each customer once: 2.56 | S35 | 03, cells 13 to 15 |
+| Heavy buyers | 3.39 quoted for chips and cold drink | A number that shrinks when finance recounts it | Each customer once: 2.56 | S33's notes (the prediction), S34, S35 | 03, cells 13 to 16 |
 | The wrong basket base (lab) | The charger in 69.6 percent of orders, Business orders kept in | Merchandising's 80 percent "disproved" on the wrong base | Consumer baskets only: 84.5 percent | | 04, the first your-turn cell |
 
 ## Where are the checkpoints?

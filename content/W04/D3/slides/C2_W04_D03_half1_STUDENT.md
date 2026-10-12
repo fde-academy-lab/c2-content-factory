@@ -666,7 +666,10 @@ The plausible wrong answer books sales: a slot at 6.4 percent makes 1,920 adds a
 
 ```notes
 LIVE, 5 minutes. Ask: "which line of the cascade would a bundle discount change?" The margin per
-add falls by the discount. Transition: what the counts cannot tell us.
+add falls by the discount. Then, before S34, the prediction for its heavy-buyer row: the top tenth of
+customers place 38 percent of carts; with every customer counted once, does chips and cold drink's
+3.39 stay above 3, fall to about 2.5, or fall to about one? Hands up, then S34. Transition: what the
+counts cannot tell us.
 ```
 
 ---

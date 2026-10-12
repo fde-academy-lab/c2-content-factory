@@ -673,6 +673,14 @@ def nb03():
         by slot showed. **The strip feeds its own counts:** an add from the strip puts both items in
         one cart, and only the holdout's shoppers, who never see the strip, show the counts without
         it.
+
+        **Predict before you run.** With every customer counted once, where does chips and cold
+        drink's lift of {s('chips_cold_lift')} land?
+
+        a) above {s('chips_cold_lift')}, since heavy buyers are loyal to the pair
+        b) unchanged, since a weight cannot move a ratio
+        c) about 2.5: lower, still well above one
+        d) about 1, since the pair was only heavy buyers all along
         """),
         code("""\
         carts["weight"] = 1 / carts.groupby("customer_id").cart_id.transform("count")
@@ -726,6 +734,13 @@ def nb03():
         check("morning carts hold milk most often", by_band.index[0] == "morning")
         """),
         md(f"""\
+        **What happened.** The answer is c: counted once per customer, chips and cold drink fall
+        from {s('chips_cold_lift')} to {s('chips_cold_lift_per_customer')} and still beat chance,
+        while bread and milk stay at {s('bread_milk_lift_per_customer')}. The plausible wrong number
+        is {s('chips_cold_lift')} quoted to finance, which shrinks the first time someone recounts
+        it; the growth lead quotes the smaller one. Curd's lift with milk holds at
+        {s('curd_milk_lift_kept')} with the stock-out set aside.
+
         ## Does a second route reach the same Rs {s('recoverable_month')[3:]}?
 
         Read the milk impressions straight from `strip_log` rather than from "half the slots":
