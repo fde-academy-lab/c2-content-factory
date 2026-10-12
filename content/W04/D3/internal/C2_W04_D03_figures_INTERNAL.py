@@ -130,7 +130,7 @@ def shrinking_universe():
     pos = [(i % 4, 2 - i // 4) for i in range(12)]
     titles = [f"All twelve carts: milk in {v('twelve_milk')}",
               f"Keep only the carts with bread: {v('twelve_bread')}",
-              f"Of those, carts that also hold milk: {v('twelve_bread_milk')}"]
+              f"Of the {v('twelve_bread')} bread carts, {v('twelve_bread_milk')} also hold milk"]
     reads = ["bread is in 4 of 12 carts",
              "confidence asks only about these 4 carts",
              f"confidence = 4 / 4 = {s('twelve_bread_milk_conf')}; milk was in 8 of 12 anyway"]
@@ -185,24 +185,29 @@ def areas():
     al.text(pb / 2, pm / 2, f"expected\n{pb:.2f} x {pm:.2f}\n= {pb * pm:.3f}", ha="center",
             va="center", color=WHITE, fontsize=13, weight="bold")
     al.set_xlabel(f"share of carts with bread: {pb:.2f}")
-    al.set_ylabel(f"share with milk: {pm:.2f}")
-    al.set_title("If bread and milk ignored each other")
+    al.set_ylabel(f"share of carts with milk: {pm:.2f}")
+    al.set_title("If bread and milk ignored each other", fontsize=14)
     ar.add_patch(mpatches.Rectangle((0, 0), pb, 1, facecolor=TINT, edgecolor=VIOLET, ls="--"))
     ar.add_patch(mpatches.Rectangle((0, 0), pb, obs / pb, facecolor=VIOLET, edgecolor=INK, lw=2))
     ar.add_patch(mpatches.Rectangle((0, 0), pb, pm, fill=False, edgecolor=ROSE, lw=2, ls="--"))
     ar.text(pb / 2, obs / pb / 2, f"seen\n{obs:.3f}", ha="center", va="center", color=WHITE,
             fontsize=13, weight="bold")
-    ar.text(pb + 0.04, (obs / pb) - 0.02, f"milk inside the bread carts: {s('bread_milk_conf_ab')}",
-            fontsize=12, color=INK, va="top")
-    ar.text(pb + 0.04, pm - 0.1, f"red dashes: the expected {pb * pm:.3f}", fontsize=12, color=ROSE)
+    ar.text(pb + 0.04, (obs / pb) + 0.01, f"height {s('bread_milk_conf_ab')}: milk inside the bread carts",
+            fontsize=12, color=INK, va="bottom")
+    ar.text(pb + 0.04, pm - 0.03, f"red dashes, height {pm:.2f}: milk in all carts", fontsize=12,
+            color=ROSE, va="top")
+    ar.text(pb + 0.04, 0.22, "area = width x height\n= share of carts holding both", fontsize=12,
+            color=MUTED)
     ar.set_xlabel(f"share of carts with bread: {pb:.2f}")
-    ar.set_title(f"What 40,000 carts show: lift {obs:.3f} / {pb * pm:.3f} = {s('bread_milk_lift')}")
+    ar.set_ylabel("share of the bread carts with milk")
+    ar.set_title(f"Seen {s('bread_milk_carts')} carts, expected {s('bread_milk_expected')}: "
+                 f"lift {s('bread_milk_lift')}", fontsize=14)
     fig.tight_layout()
     save(fig, "C2_W04_D03_areas_STUDENT.png")
 
 
 def milk_everywhere():
-    """Confidence toward milk and lift with milk for the twelve most common items."""
+    """Confidence toward milk and lift with milk for the nine most common items."""
     items, b = baskets()
     n = len(b)
     milk = b.apply(lambda x: "toned milk" in x)
@@ -214,21 +219,19 @@ def milk_everywhere():
     y = range(len(top))
     a1.barh(y, conf, color=TINT, edgecolor=VIOLET)
     a1.axvline(v("toned_milk_share"), color=INK, ls="--", lw=1.4)
-    a1.text(v("toned_milk_share") + 0.02, -0.9, f"milk's own share {s('toned_milk_share')}",
-            fontsize=12, color=INK)
     for i, c in zip(y, conf):
-        a1.text(c - 0.02, i, f"{c:.2f}", va="center", ha="right", fontsize=12, color=INK)
+        a1.text(0.03, i, f"{c:.2f}", va="center", ha="left", fontsize=12, color=INK)
     a1.set_yticks(list(y), top)
     a1.invert_yaxis()
     a1.set_xlim(0, 1)
-    a1.set_xlabel("confidence toward milk")
+    a1.set_xlabel(f"confidence toward milk (dashes: milk's own share, {s('toned_milk_share')})")
     a1.set_title("Every item looks bundled with milk")
     a2.barh(y, lift, color=TINT, edgecolor=VIOLET)
     a2.axvline(1, color=INK, ls="--", lw=1.4)
     for i, l in zip(y, lift):
-        a2.text(l - 0.02, i, f"{l:.2f}", va="center", ha="right", fontsize=12, color=INK)
+        a2.text(0.03, i, f"{l:.2f}", va="center", ha="left", fontsize=12, color=INK)
     a2.set_xlim(0, 1.25)
-    a2.set_xlabel("lift with milk")
+    a2.set_xlabel("lift with milk (dashes: one, chance)")
     a2.set_title("Lift says: about as often as chance")
     fig.tight_layout()
     save(fig, "C2_W04_D03_milk_everywhere_STUDENT.png")
@@ -283,7 +286,7 @@ def strip_daily():
 
 def ctr_by_slot():
     """Click-through by slot position: before, milk after, everything else after."""
-    groups = [("before, every suggestion", "before", "other", MUTED),
+    groups = [("before, everything else", "before", "other", MUTED),
               ("after, milk", "after", "milk", ROSE),
               ("after, everything else", "after", "other", GREEN)]
     fig, ax = plt.subplots(figsize=(12.5, 4.4))
@@ -292,13 +295,14 @@ def ctr_by_slot():
         vals = [v(f"ctr_{w}_{g}_slot{slot}") for slot in (1, 2, 3)]
         xs = [slot + (k - 1) * width for slot in (1, 2, 3)]
         ax.bar(xs, [x * 100 for x in vals], width, color=color, edgecolor=INK, label=label)
-        for x, val in zip(xs, vals):
-            ax.text(x, val * 100 + 0.12, f"{val * 100:.1f}", ha="center", fontsize=12, color=INK)
+        shown = [s(f"ctr_{w}_{g}_slot{slot}").split()[0] for slot in (1, 2, 3)]
+        for x, val, txt in zip(xs, vals, shown):
+            ax.text(x, val * 100 + 0.12, txt, ha="center", fontsize=12, color=INK)
     ax.set_xticks([1, 2, 3], ["slot 1", "slot 2", "slot 3"])
     ax.set_ylabel("click-through, %")
     ax.set_ylim(0, 10)
     ax.legend(frameon=False, loc="upper right")
-    ax.set_title("Slot 1 draws the most clicks; milk clicks low in every slot")
+    ax.set_title("Among suggestions other than milk, slot 1 draws the most clicks; milk is low in every slot")
     fig.tight_layout()
     save(fig, "C2_W04_D03_ctr_by_slot_STUDENT.png")
 
@@ -322,12 +326,14 @@ def action_map():
     ax.axvspan(0.001, 0.01, ymin=1.5 / 5.2, ymax=1, color="#FBF4E3", alpha=0.8)
     ax.scatter(p.support, p.lift, s=16, color=VIOLET, alpha=0.45, edgecolor="none")
     ax.axhline(1, color=MUTED, ls="--", lw=1.2)
+    ax.axhline(1.5, color=GREEN, ls=":", lw=1.4)
     ax.axvline(0.01, color=MUTED, ls="--", lw=1.2)
     ax.text(0.0105, 4.95, "floor: 1 percent of carts", color=MUTED, fontsize=12)
+    ax.text(0.0013, 1.58, "lift 1.5", color=GREEN, fontsize=12)
     ax.text(0.15, 4.6, "PROMOTE", color=GREEN, fontsize=15, weight="bold")
     ax.text(0.0013, 4.6, "WATCH", color=AMBER, fontsize=15, weight="bold")
-    ax.text(0.03, 0.55, "IGNORE: lift near one, where milk's pairs sit", color=MUTED, fontsize=13,
-            weight="bold")
+    ax.text(0.0013, 0.4, "IGNORE", color=MUTED, fontsize=13, weight="bold")
+    ax.text(0.02, 0.4, "TRAP: near one, on many carts", color=ROSE, fontsize=13, weight="bold")
     labels = [("chips", "cold drink", "chips + cold drink", (8, 6)),
               ("coriander", "green chillies", "coriander + chillies", (8, -16)),
               ("bread", "butter", "bread + butter", (8, 4)),
@@ -345,7 +351,7 @@ def action_map():
     ax.set_xlim(0.001, 0.6)
     ax.set_ylim(0, 5.2)
     ax.set_xticks([0.001, 0.01, 0.1, 0.5], ["0.1%", "1%", "10%", "50%"])
-    ax.set_xlabel("support: share of the 40,000 carts holding both (log scale)")
+    ax.set_xlabel("support: share of the 40,000 carts holding both (each step right is ten times more carts)")
     ax.set_ylabel("lift")
     ax.set_title(f"{len(p):,} pairs with support of at least 0.1 percent; four beat chance above the floor")
     fig.tight_layout()

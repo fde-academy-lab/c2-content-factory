@@ -713,6 +713,26 @@ full_data:
     shown: "4.7"
     how: "mean distinct items in a cart"
     used_in: "notes, chapter 2 sizing"
+  - id: bread_milk_excess
+    value: 0.0423
+    shown: "4 percent"
+    how: "lift 1.0423 less one: bread buyers take milk 4 percent more often than all shoppers"
+    used_in: "interview transcript"
+  - id: pairs_per_cart
+    value: 10.82
+    shown: "10.8"
+    how: "pairs Counter adds for an average cart"
+    used_in: "notes, chapter 2 sizing"
+  - id: bread_price
+    value: 45
+    shown: "Rs 45"
+    how: "bread's price in cart_items"
+    used_in: "chapter 3, the margin definition"
+  - id: bread_margin
+    value: 6.7
+    shown: "Rs 6.70"
+    how: "bread's margin in cart_items"
+    used_in: "chapter 3, the margin definition"
   - id: cart_value_median
     value: 262.0
     shown: "Rs 262"
@@ -744,6 +764,11 @@ floor:
     value: 0.002
     shown: "0.2 percent"
     how: "the low end of the band searched for a strong thin pair"
+    used_in: "chapter 3, notebook 03"
+  - id: watch_band_low_carts
+    value: 80
+    shown: "80"
+    how: "0.2 percent of 40,000 carts"
     used_in: "chapter 3, notebook 03"
   - id: common_floor
     value: 0.02
@@ -953,6 +978,26 @@ slot_value:
     value: 11
     shown: "Rs 11"
     how: "the range's high end"
+    used_in: "chapter 3, notebook 03"
+  - id: impressions_a_day
+    value: 180000
+    shown: "180,000"
+    how: "60,000 views a day, each showing three slots"
+    used_in: "chapter 3, notebook 03"
+  - id: value_per_click_mid
+    value: 4.5
+    shown: "Rs 4.50"
+    how: "0.5 adds a click x Rs 9"
+    used_in: "chapter 3, notebook 03"
+  - id: value_per_click_low
+    value: 2.8
+    shown: "Rs 2.80"
+    how: "0.4 x Rs 7, the low end"
+    used_in: "chapter 3, notebook 03"
+  - id: value_per_click_high
+    value: 6.6
+    shown: "Rs 6.60"
+    how: "0.6 x Rs 11, the high end"
     used_in: "chapter 3, notebook 03"
   - id: slot_value_other_day
     value: 17280
@@ -1173,6 +1218,26 @@ toy:
     shown: "0.83"
     how: "0.75 over 0.9"
     used_in: "chapter 1"
+  - id: tea_chai_share
+    value: 0.6
+    shown: "0.60"
+    how: "6 of 10 orders hold chai"
+    used_in: "chapter 1, the second route"
+  - id: tea_biscuit_share
+    value: 0.4
+    shown: "0.40"
+    how: "4 of 10 orders hold biscuit"
+    used_in: "chapter 1, the second route"
+  - id: weight_example_carts
+    value: 4
+    shown: "4"
+    how: "invented: a shopper with four carts"
+    used_in: "chapter 3, counting each customer once"
+  - id: weight_example
+    value: 0.25
+    shown: "0.25"
+    how: "one over four: each of that shopper's carts weighs 0.25"
+    used_in: "chapter 3, counting each customer once"
 
 public:
   - id: instamart_orders_per_store
@@ -1286,6 +1351,11 @@ guesstimate:
     value: 0.1806
     shown: "18 percent"
     how: "the estimate above Swiggy's 1,089"
+    used_in: "guesstimate: notes and the trainer sheet"
+  - id: gs_share_needed
+    value: 0.127
+    shown: "about 13 percent"
+    how: "the weekly share that lands on 1,089: 1,089 x 7 / (40,000 x 1.5)"
     used_in: "guesstimate: notes and the trainer sheet"
 
 pairs_detail:
@@ -2605,6 +2675,16 @@ kalpa_lab:
     shown: "69"
     how: "pairs at or above the 5 percent floor"
     used_in: "lab note"
+  - id: kalpa_one_pct_baskets
+    value: 8.12
+    shown: "about 8"
+    how: "1 percent of the consumer baskets"
+    used_in: "notebook 04"
+  - id: kalpa_floor_baskets
+    value: 40.6
+    shown: "about 41"
+    how: "5 percent of the consumer baskets"
+    used_in: "notebook 04"
   - id: kalpa_twelve_ids
     value: "KR-00001, KR-00002, KR-00004, KR-00005, KR-00006, KR-00008, KR-00009, KR-00011, KR-00157, KR-00190, KR-00340, KR-00938"
     shown: ""

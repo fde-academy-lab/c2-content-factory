@@ -742,6 +742,9 @@ def verify_case(cart_df, item_df, twelve_df):
     out["curd_grid"] = by_cell.to_dict()
     nm = item_df[item_df.item != "toned milk"]
     out["margin_line"] = nm.margin_rs.mean()
+    bread = item_df[item_df.item == "bread"]
+    check("every bread line sells at Rs 45 with a margin of Rs 6.70",
+          set(bread.price_rs) == {45} and set(bread.margin_rs.round(2)) == {6.7})
     check(f"a cart_items line earns Rs {out['margin_line']:.2f} on average, milk aside",
           8.95 <= out["margin_line"] <= 9.05)
     # The fallback's slices: the city's ranking held up, and thin ground in the smallest slice.
@@ -1047,6 +1050,10 @@ def write_facts(case, strip, kalpa):
     check("the double loop's size prints as about 68 million", 67_500_000 <= case["pairs_seen"] * N_CARTS < 68_500_000)
     f(S, "pair_increments", case["pair_increments"], f"about {round(case['pair_increments'], -3):,}", "pairs added by Counter: each cart adds one per pair it holds", "notes, chapter 2 sizing")
     f(S, "items_per_cart", round(case["items_per_cart"], 2), f"{case['items_per_cart']:.1f}", "mean distinct items in a cart", "notes, chapter 2 sizing")
+    f(S, "bread_milk_excess", 0.0423, "4 percent", "lift 1.0423 less one: bread buyers take milk 4 percent more often than all shoppers", "interview transcript")
+    f(S, "pairs_per_cart", round(case["pair_increments"] / N_CARTS, 2), f"{case['pair_increments'] / N_CARTS:.1f}", "pairs Counter adds for an average cart", "notes, chapter 2 sizing")
+    f(S, "bread_price", 45, "Rs 45", "bread's price in cart_items", "chapter 3, the margin definition")
+    f(S, "bread_margin", 6.7, "Rs 6.70", "bread's margin in cart_items", "chapter 3, the margin definition")
     f(S, "cart_value_median", case["value_median"], f"Rs {case['value_median']:.0f}", "median cart value", "notebook 02")
     S = "floor"
     f(S, "support_floor", 0.01, "1 percent", "the support floor the room sets", "chapter 3")
@@ -1054,6 +1061,7 @@ def write_facts(case, strip, kalpa):
     f(S, "plot_floor_carts", 40, "40", "0.1 percent of 40,000 carts", "drill 2")
     f(S, "pairs_plotted", case["pairs_plotted"], f"{case['pairs_plotted']:,}", "pairs with support of at least 0.1 percent", "chapter 3 picture, drill 2")
     f(S, "watch_band_low", 0.002, "0.2 percent", "the low end of the band searched for a strong thin pair", "chapter 3, notebook 03")
+    f(S, "watch_band_low_carts", 80, "80", "0.2 percent of 40,000 carts", "chapter 3, notebook 03")
     f(S, "common_floor", 0.02, "2 percent", "an item counts as common at this share of carts (the case file)", "chapter 2")
     f(S, "kalpa_floor", 0.05, "5 percent", "the lab's support floor (the case file)", "notebook 04, lab note")
     f(S, "support_floor_carts", 400, "400", "1 percent of 40,000 carts", "chapter 3")
@@ -1096,6 +1104,10 @@ def write_facts(case, strip, kalpa):
     f(S, "margin_assumed", margin, "Rs 9", "assumption, range Rs 7 to Rs 11", "chapter 3, notebook 03")
     f(S, "margin_low", 7, "Rs 7", "the range's low end", "chapter 3, notebook 03")
     f(S, "margin_high", 11, "Rs 11", "the range's high end", "chapter 3, notebook 03")
+    f(S, "impressions_a_day", 3 * views, f"{3 * views:,}", "60,000 views a day, each showing three slots", "chapter 3, notebook 03")
+    f(S, "value_per_click_mid", 4.5, "Rs 4.50", "0.5 adds a click x Rs 9", "chapter 3, notebook 03")
+    f(S, "value_per_click_low", 2.8, "Rs 2.80", "0.4 x Rs 7, the low end", "chapter 3, notebook 03")
+    f(S, "value_per_click_high", 6.6, "Rs 6.60", "0.6 x Rs 11, the high end", "chapter 3, notebook 03")
     f(S, "slot_value_other_day", round(other_day), "Rs 17,280", "60,000 x 0.064 x 0.5 x 9", "chapter 3, cheat sheet")
     f(S, "slot_value_milk_day", round(milk_day), "Rs 3,240", "60,000 x 0.012 x 0.5 x 9", "chapter 3, cheat sheet")
     f(S, "slot_gap_day", round(gap_day), "Rs 14,040", "17,280 less 3,240, a slot a day", "chapter 3")
@@ -1143,6 +1155,10 @@ def write_facts(case, strip, kalpa):
     f(S, "tea_bag", 9, "9", "invented: orders with a carry bag", "chapter 1")
     f(S, "tea_bag_conf", 0.75, "0.75", "biscuit to bag: 3 of 4", "chapter 1")
     f(S, "tea_bag_lift", 0.8333, "0.83", "0.75 over 0.9", "chapter 1")
+    f(S, "tea_chai_share", 0.6, "0.60", "6 of 10 orders hold chai", "chapter 1, the second route")
+    f(S, "tea_biscuit_share", 0.4, "0.40", "4 of 10 orders hold biscuit", "chapter 1, the second route")
+    f(S, "weight_example_carts", 4, "4", "invented: a shopper with four carts", "chapter 3, counting each customer once")
+    f(S, "weight_example", 0.25, "0.25", "one over four: each of that shopper's carts weighs 0.25", "chapter 3, counting each customer once")
     S = "public"
     f(S, "instamart_orders_per_store", 1089, "1,089", "Swiggy Instamart orders per dark store per day, quarter to June 2026 (T3, checked 12 October 2026)", "guesstimate")
     f(S, "instamart_stores", 1171, "1,171", "Swiggy Instamart dark stores, same source (T3)", "guesstimate")
@@ -1171,7 +1187,8 @@ def write_facts(case, strip, kalpa):
             ("gs_orders_day", round(g_mid, 1), "about 1,290", "40,000 x 0.15 x 1.5 / 7"),
             ("gs_orders_day_low", round(g_low, 1), "about 430", "30,000 x 0.10 x 1 / 7"),
             ("gs_orders_day_high", round(g_high, 1), "about 2,860", "50,000 x 0.20 x 2 / 7"),
-            ("gs_gap", round(g_mid / 1089 - 1, 4), "18 percent", "the estimate above Swiggy's 1,089")):
+            ("gs_gap", round(g_mid / 1089 - 1, 4), "18 percent", "the estimate above Swiggy's 1,089"),
+            ("gs_share_needed", round(1089 * 7 / (g_hh * g_ow), 4), "about 13 percent", "the weekly share that lands on 1,089: 1,089 x 7 / (40,000 x 1.5)")):
         f(S, fid, val, shown, how, "guesstimate: notes and the trainer sheet")
     S = "pairs_detail"
     for name in sorted(sh):
@@ -1323,6 +1340,8 @@ def write_facts(case, strip, kalpa):
     f(S, "kalpa_thin_support", round(th["support"], 4), f"{th['support'] * 100:.2f} percent", "PLANT: their support", "TRAINER until the lab")
     f(S, "kalpa_thin_baskets", th["nab"], str(th["nab"]), "PLANT: baskets with both", "TRAINER until the lab")
     f(S, "kalpa_floor_pairs", kalpa["floor_pairs"], str(kalpa["floor_pairs"]), "pairs at or above the 5 percent floor", "lab note")
+    f(S, "kalpa_one_pct_baskets", round(kalpa["baskets"] / 100, 2), f"about {round(kalpa['baskets'] / 100)}", "1 percent of the consumer baskets", "notebook 04")
+    f(S, "kalpa_floor_baskets", round(kalpa["baskets"] * 0.05, 2), f"about {round(kalpa['baskets'] * 0.05)}", "5 percent of the consumer baskets", "notebook 04")
     f(S, "kalpa_twelve_ids", ", ".join(kalpa["twelve"]), "", "the lab's twelve baskets", "lab note")
     f(S, "kalpa_twelve_charger", 9, "9", "of the twelve, baskets with the charger (0.75)", "lab note, notebook 04")
     f(S, "kalpa_twelve_screen_conf", round(tc["conf_ab"], 4), f"{tc['conf_ab']:.2f}", "screen protector to charger on the twelve", "lab note, notebook 04")

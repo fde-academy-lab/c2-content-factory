@@ -54,14 +54,15 @@ def nb01():
         of three suggested items under the cart. On {s('change_date')} the strip stopped showing a
         curated list and started showing the items most often found in the same cart. Toned milk
         sits in {s('toned_milk_share')} of Pune carts, so it now appears beside nearly everything,
-        and the strip's click-through (clicks over times shown) fell from {s('before_strip_ctr')}
-        in the three weeks before to {s('after_strip_ctr')} in the three weeks after. The ask, due
-        Friday: rank the pairs the strip should show, explain the fall, and put a rupee value on a
-        slot. {LABEL}
+        and the strip's click-through (clicks over impressions, an impression being one showing of
+        one slot) fell from {s('before_strip_ctr')} in the three weeks before to
+        {s('after_strip_ctr')} in the three weeks after. The ask, due Friday: rank the pairs the
+        strip should show, explain the fall, and put a rupee value on a slot. {LABEL}
 
-        **Who needs the answer.** The category manager, who picks what the strip may suggest, and
-        the growth lead, who must explain the fall on Friday. A strip filled on the wrong count
-        wastes the three most-clicked spaces on the cart page.
+        **Who needs the answer.** The category manager, who decides which products are promoted,
+        and the growth lead, who owns the strip's clicks and orders and must explain the fall at
+        Friday's review, the weekly meeting where both defend their numbers. A strip filled on the
+        wrong count wastes the three most-clicked spaces on the cart page.
 
         **The questions on the way.** How often do two items turn up in the same cart? How
         reliably does one bring the other? Do they turn up together more than chance would put
@@ -101,10 +102,12 @@ def nb01():
         md(f"""\
         **What happened.** The wrong sentence is d. Lift is a ratio of counts: the pair turns up
         25 percent more often than chance would put it there, and nothing in ten receipts says
-        why. Now add a carry bag, which goes into 9 of the 10 orders and into 3 of the 4 biscuit
+        why. Lift is also a confidence over the partner's own share, which is why it reads the same
+        from both sides: chai to biscuit 0.50 / {s('tea_biscuit_share')} = 1.25, and biscuit to
+        chai 0.75 / {s('tea_chai_share')} = 1.25. Now add a carry bag, which goes into 9 of the 10 orders and into 3 of the 4 biscuit
         orders. Confidence from biscuit to bag is {s('tea_bag_conf')}, which sounds like a bundle,
-        yet the bag is in {s('tea_bag')} of {s('tea_orders')} orders anyway, so lift is
-        0.75 / 0.90 = {s('tea_bag_lift')}: biscuit orders hold a bag slightly less often than orders
+        yet the bag is in {s('tea_bag')} of {s('tea_orders')} orders anyway, so lift, the
+        confidence over the bag's own share, is 0.75 / 0.90 = {s('tea_bag_lift')}: biscuit orders hold a bag slightly less often than orders
         in general. An item that is everywhere earns high confidence toward everything.
         """),
         code("""\
@@ -115,12 +118,13 @@ def nb01():
         ax.barh(["confidence, biscuit to bag", "bag's share of all orders"], [conf_biscuit_bag, bag / orders],
                 color=["#5B3FD6", "#E4E1F1"], edgecolor="#1A0F5C")
         ax.set_xlim(0, 1)
+        ax.set_xlabel("share of orders")
         ax.set_title(f"High confidence, lift {lift_bag:.2f}: the bag is in nearly every order")
         plt.show()
         check("the popular bag earns lift below one", lift_bag < 1)
         """),
         md("""\
-        ## What do twelve real carts from the case hold?
+        ## What do twelve carts from the case hold?
 
         These are twelve of the 40,000 Pune carts, printed as cards on each table. Each row is a
         cart and each column an item: 1 if the cart holds it. Count by hand first; the code below
@@ -190,7 +194,9 @@ def nb01():
 
         Chips and cold drink sit in 3 carts each and together in 2, where chance gives 0.75: lift
         2.67. Ice cream and chocolate sauce share one cart, and one cart makes a lift of 12, a
-        number with nothing under it. The picture puts seen beside expected for the three pairs.
+        number with nothing under it. The function above writes lift as both x n / (A x B), which
+        is seen over expected rearranged: for bread and milk, 4 / (12 x 4/12 x 8/12) is the same as
+        4 x 12 / (4 x 8), which is 1.50. The picture puts seen beside expected for the three pairs.
         """),
         code("""\
         pairs = [("bread", "toned milk"), ("chips", "cold drink"), ("ice cream", "chocolate sauce")]
@@ -283,7 +289,9 @@ def nb02():
         ## Which pairs sit together most often?
 
         The strip's new rule ranks by exactly this count. Every cart's items, taken two at a time,
-        add one to their pair's tally.
+        add one to their pair's tally: a cart holding bread, eggs and milk gives three pairs,
+        (bread, eggs), (bread, milk) and (eggs, milk). Sorting the items first keeps (bread, milk)
+        and (milk, bread) as one key.
 
         **Predict before you run.** Which pair is found together most often?
 
@@ -293,8 +301,9 @@ def nb02():
         d) onions and tomatoes
         """),
         code("""\
-        baskets = items.groupby("cart_id").item.apply(set)
-        pair_count = Counter(p for basket in baskets for p in combinations(sorted(basket), 2))
+        baskets = items.groupby("cart_id").item.apply(set)          # one set of items per cart
+        pair_count = Counter(p for basket in baskets                 # for every cart,
+                             for p in combinations(sorted(basket), 2))  # every two of its items
         for (a, b), k in pair_count.most_common(6):
             print(f"{a} + {b}: {k:,} carts")
         check("the most frequent pair holds milk", "toned milk" in pair_count.most_common(1)[0][0])
@@ -307,7 +316,8 @@ def nb02():
         7 September. A count rewards the popular item, whatever it is paired with.
         """),
         code("""\
-        single = Counter(x for basket in baskets for x in basket)
+        single = Counter(x for basket in baskets for x in basket)   # carts holding each item
+        # lift: carts with both times all carts, over the two items' own counts (seen over expected)
         table = pd.DataFrame([{"a": a, "b": b, "both": k, "support": k / n,
                                "conf_a_to_b": k / single[a], "conf_b_to_a": k / single[b],
                                "lift": k * n / (single[a] * single[b])}
@@ -336,6 +346,7 @@ def nb02():
             ax.add_patch(plt.Rectangle((0, 0), b, 1, color="#EEEAFB"))
             ax.add_patch(plt.Rectangle((0, 0), b, height, color="#5B3FD6"))
             ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.set_aspect("equal")
+            ax.set_xlabel("share of carts with bread"); ax.set_ylabel("share of those with milk")
             ax.set_title(f"{title}: {b * height:.3f}")
         plt.show()
         check("bread to milk: confidence 0.74, lift 1.04", round(seen / b, 2) == 0.74 and round(seen / (b * m), 2) == 1.04)
@@ -365,10 +376,11 @@ def nb02():
         plt.show()
         check("every common item's lift with milk sits between 0.96 and 1.08", lift_milk.between(0.96, 1.08).all())
         """),
-        md("""\
+        md(f"""\
         **What happened.** The answer is b. Confidence toward milk sits near milk's own share for
         every item, because most carts hold milk whatever else they hold, and lift divides that
-        share out. Amazon met the same trap: counting how often buyers of A also bought B would
+        share out. Milk's own share, how common it is in all carts, is its **base rate**:
+        {s('toned_milk_share')}. Amazon met the same trap: counting how often buyers of A also bought B would
         have made the bestseller the top recommendation beside everything, and the fix compares
         with what chance predicts, which is lift in spirit (Amazon Science, checked 12 October
         2026).
@@ -376,10 +388,11 @@ def nb02():
         md(f"""\
         ## Why did the strip's click-through fall from {s('before_strip_ctr')} to {s('after_strip_ctr')}?
 
-        `strip_log` counts each day's impressions (times a slot was shown), clicks and adds, by
-        slot, by the anchor item a suggestion was ranked from, and by the suggested item. Every
-        cart-page view shows all three slots. The strip shows packs, and toned milk comes in more
-        than one pack, so one view can show milk in two slots; the log names every pack by its item.
+        `strip_log` counts each day's impressions (times a slot was shown), clicks and adds (the
+        suggestions put in the cart), by slot, by the anchor item (the cart item a suggestion sits
+        beside) and by the suggested item. Every cart-page view shows all three slots. Each pack
+        size of toned milk is its own suggestion, so milk can fill two slots on one view; the log
+        names every pack by its item.
 
         **Predict before you run.** Which explanation will the log support?
 
@@ -404,9 +417,11 @@ def nb02():
         md("""\
         ### Your turn: which slots does the fall sit in?
 
-        Split the after-change rows by whether the slot suggested toned milk. For each group print
-        its share of impressions and its click-through (clicks over impressions), then check that
-        the two rates, weighted by their shares, give back the blended rate. Start from
+        A blended rate is a mix of the rates of its parts, each weighted by its share: if half
+        the impressions clicked at 2 percent and half at 8, the strip would read 5. Split the
+        after-change rows by whether the slot suggested toned milk. For each group print its share
+        of impressions and its click-through (clicks over impressions), then check that the two
+        rates, weighted by their shares, give back the blended rate. Start from
         `after = log[log.after]` and `after.suggested_item == "toned milk"`.
         """),
         empty(),
@@ -419,7 +434,12 @@ def nb02():
         print(f"milk: {weight[True]:.0%} of impressions at {ctr[True]:.1%}; "
               f"everything else: {weight[False]:.0%} at {ctr[False]:.1%}")
         print(f"weighted back together: {(ctr * weight).sum():.1%}")
+        before = log[~log.after]
+        part_b = before.groupby(before.suggested_item == "toned milk")[["impressions", "clicks"]].sum()
+        print(f"before the change: milk {part_b.impressions[True] / part_b.impressions.sum():.0%} of impressions; "
+              f"everything else at {part_b.clicks[False] / part_b.impressions[False]:.1%}")
         check("milk slots click at 1.2 percent and the rest at 6.4", round(ctr[True], 3) == 0.012 and round(ctr[False], 3) == 0.064)
+        check("before the change the rest clicked at 6.2", round(part_b.clicks[False] / part_b.impressions[False], 3) == 0.062)
         check("the two rates rebuild the blend", abs((ctr * weight).sum() - after.clicks.sum() / after.impressions.sum()) < 1e-12)
         """),
         md(f"""\
@@ -454,7 +474,7 @@ def nb02():
           {s('milk_slot_ctr_after')}; the rest clicked at {s('other_slot_ctr_after')}.
 
         **In the interview.** "Support, confidence, lift: which one cannot be fooled by
-        popularity?" Lift, because it divides by the partner's base rate; confidence toward milk
+        popularity?" Lift, because it divides by the partner's base rate, how common it is anyway; confidence toward milk
         sits near milk's own {s('toned_milk_share')} for every item.
         """),
     ]
@@ -529,19 +549,24 @@ def nb03():
         """),
         md(f"""\
         **What happened.** The answer is b. Above the floor, four pairs beat chance by a clear
-        margin: chips and cold drink {s('chips_cold_lift')}, coriander and green chillies
+        gap, lift 1.5 or more: chips and cold drink {s('chips_cold_lift')}, coriander and green chillies
         {s('coriander_chillies_lift')}, bread and butter {s('bread_butter_lift')}, onions and
         tomatoes {s('onions_tomatoes_lift')}. The next pair reads {s('fifth_pair_lift')}, which is
-        chance. The first three fill the strip; the picture places every pair.
+        chance. The strip has three slots, so the first three fill it and onions and tomatoes waits
+        as the first replacement; the picture places every pair.
         """),
         code("""\
         shown = pairs[pairs.support >= 0.001]
         fig, ax = plt.subplots(figsize=(9, 4.8))
         ax.scatter(shown.support, shown.lift, s=10, alpha=0.4, color="#5B3FD6")
         ax.axvline(floor, color="#6B6690", ls="--"); ax.axhline(1, color="#6B6690", ls="--")
-        for _, r in ranked.head(4).iterrows():
+        ax.axhline(1.5, color="#1F8A5B", ls=":")
+        top_thin = pairs[(pairs.support >= 0.002) & (pairs.support < floor)].sort_values("lift").iloc[-1]
+        for _, r in list(ranked.head(4).iterrows()) + [(None, top_thin)]:
             ax.annotate(f"{r.a} + {r.b}", (r.support, r.lift), xytext=(5, 5), textcoords="offset points")
-        ax.set_xscale("log"); ax.set_xlabel("support (log scale)"); ax.set_ylabel("lift")
+        ax.set_xscale("log"); ax.set_ylabel("lift")
+        ax.set_xticks([0.001, 0.01, 0.1], ["0.1%", "1%", "10%"])
+        ax.set_xlabel("support: share of carts holding both (each step right is ten times more carts)")
         ax.set_title("Promote above the floor and well above one; watch the strong thin pairs")
         plt.show()
         """),
@@ -549,9 +574,12 @@ def nb03():
         ## What should the watch list do with a strong pair on few carts?
 
         Ice cream and chocolate sauce read lift {s('ice_choc_lift')}, the strongest pair between
-        0.2 and 1 percent support, but they share {s('ice_choc_carts')} carts in four weeks of
-        this sample. A slot shown on every cart page cannot be repaid by a pair that thin, so it
-        goes on a **watch list**: tested in two zones before it may take a slot.
+        {s('watch_band_low')} ({s('watch_band_low_carts')} carts, too few even to trial below it)
+        and the 1 percent floor. The pair is real, {s('ice_choc_carts')} carts where chance gives
+        {s('ice_choc_expected')}, but the strip suggests it only beside ice cream, in
+        {s('ice_cream_carts')} carts over four weeks, so a rule for it earns little. It goes on a
+        **watch list**: in two zones a random half of shoppers see it, and it takes the slot on
+        ice-cream carts only if it beats the next-best suggestion there.
         """),
         code("""\
         thin = pairs[(pairs.support >= 0.002) & (pairs.support < floor)].sort_values("lift", ascending=False)
@@ -561,13 +589,19 @@ def nb03():
         md(f"""\
         ## What is one slot worth in rupees?
 
-        A slot's margin a day is the cart-page views times its click-through times the share of
-        clicks that become an add, times the margin on an added item. Views are
-        {s('views_assumed')} a day (the mean in `strip_log` since the change). The add rate
+        **Margin** is what Instamart keeps from a sale after the item's cost: bread sells for
+        {s('bread_price')} and keeps {s('bread_margin')}. A slot's margin a day is the cart-page
+        views times its click-through times the share of clicks that become an add, times the
+        margin on an added item. Views are {s('views_assumed')} a day (the mean in `strip_log`
+        since the change), each showing all three slots, so {s('impressions_a_day')} impressions
+        a day across the strip. The promoted pairs are assumed to click at the
+        {s('other_slot_ctr_after')} every suggestion other than milk drew. The add rate
         {s('add_rate_assumed')} is an assumption with a range of {s('add_rate_low')} to
         {s('add_rate_high')} (`strip_log` reads 0.50), and the margin {s('margin_assumed')} an
         assumption with a range of {s('margin_low')} to {s('margin_high')} (a `cart_items` line
-        earns {s('margin_per_line_observed')} on average, milk aside).
+        earns {s('margin_per_line_observed')} on average, milk aside). A click is worth
+        {s('value_per_click_mid')} at the middle, {s('value_per_click_low')} at the low ends
+        (0.4 x Rs 7) and {s('value_per_click_high')} at the high ends (0.6 x Rs 11).
 
         **Predict before you run.** What does moving milk's half of the impressions to pairs that
         beat chance recover in a month?
@@ -600,11 +634,12 @@ def nb03():
         md(f"""\
         **What happened.** The answer is c: {s('recoverable_month')} a month, between
         {s('recoverable_low')} and {s('recoverable_high')} across the two ranges. **The plausible
-        wrong answer** books sales as the benefit: 1,920 adds a day at about {s('price_per_add_observed')}
+        wrong answer** books sales as the benefit: 1,920 adds a day at about Rs {v('price_per_add_observed'):.2f}
         each reads as {s('gross_sales_day')} a day of "strip revenue", over four times the margin.
-        **Why it is wrong.** Growth keeps the margin, never the price; and if the strip ever adds
-        a bundle discount, that discount is margin handed back to the customer, the cost line
-        Swiggy's own letter describes for Maxxsaver (W4, checked 12 October 2026).
+        **Why it is wrong.** The growth lead counts the margin, never the price; and if the strip
+        ever adds a bundle discount, that discount is margin handed back to the customer. Swiggy's
+        shareholder letter for April to June 2025 describes Maxxsaver, a discount unlocked once a
+        basket passes a set size, in just those terms (checked 12 October 2026).
         """),
         code("""\
         after = log[log.date >= "2026-09-07"]
@@ -612,21 +647,27 @@ def nb03():
         price = items.drop_duplicates("item").set_index("item").price_rs
         price_per_add = (other.groupby("suggested_item").adds.sum() * price).sum() / other.adds.sum()
         adds = views * 0.064 * add_rate
-        print(f"{adds:,.0f} adds a day x Rs {price_per_add:.0f} = Rs {adds * price_per_add:,.0f} of sales; "
+        print(f"{adds:,.0f} adds a day x Rs {price_per_add:.2f} = Rs {adds * price_per_add:,.0f} of sales; "
               f"the margin is Rs {good:,.0f}")
         check("sales overstate the margin more than four times", adds * price_per_add > 4 * good)
         """),
-        md("""\
+        md(f"""\
         ## What can the counts not tell us?
 
-        Six doubts, each with the check that settles it. Co-occurrence is no proof of cause: a
-        party shopper buys chips and cold drink together, and promoting chips sells no cold drink
-        to anyone else; only a holdout settles that, which Monday's faculty session on A/B testing (tentative) takes up.
-        Heavy buyers: the top tenth of customers place 38 percent of carts, so lift is recomputed
-        with every customer counted once. The stock-out: curd ran out in two zones in week three.
-        Time band: morning carts hold milk more often. The strip's own pull: whatever slot 1
-        shows draws the most clicks. And per cart against per customer, which the first check
-        answers.
+        Six doubts, each with the check that settles it. **Together is no proof of cause.** Lift
+        says chips and cold drink are bought together; it does not show that suggesting cold drink
+        beside chips makes anyone buy a cold drink they would not have bought. Only a **holdout**
+        settles that, a share of shoppers kept on the old strip and compared with the rest, the
+        subject of this week's Monday faculty session on A/B testing (tentative). **Heavy buyers,
+        each placing many carts:** the top tenth of customers place 38 percent of carts, so lift is
+        recomputed with every customer counted once, which gives each cart a weight of one over its
+        customer's number of carts (a shopper with {s('weight_example_carts')} carts counts each as
+        {s('weight_example')}); the next cell. **The stock-out:** curd ran out in two zones in week
+        three; the cell after. **Time of day:** morning carts hold milk more often; the same cell.
+        **Position in the strip:** whatever slot 1 shows draws the most clicks, as chapter 2's split
+        by slot showed. **The strip feeds its own counts:** an add from the strip puts both items in
+        one cart, and only the holdout's shoppers, who never see the strip, show the counts without
+        it.
         """),
         code("""\
         carts["weight"] = 1 / carts.groupby("customer_id").cart_id.transform("count")
@@ -637,6 +678,9 @@ def nb03():
             return w[has_a & has_b].sum() / w.sum() / (pa * pb)
         top_tenth = carts.customer_id.value_counts().head(len(carts.customer_id.unique()) // 10)
         print(f"top tenth of customers: {top_tenth.sum() / n:.0%} of carts")
+        both_ids = baskets[baskets.apply(lambda x: "chips" in x and "cold drink" in x)].index
+        heavy_share = carts.set_index("cart_id").loc[both_ids, "customer_id"].isin(top_tenth.index).mean()
+        print(f"...and {heavy_share:.0%} of the carts holding both chips and a cold drink")
         per_cart = pairs.set_index(["a", "b"]).lift
         rows = {"chips + cold drink": (per_cart[("chips", "cold drink")], lift_per_customer("chips", "cold drink")),
                 "bread + milk": (per_cart[("bread", "toned milk")], lift_per_customer("bread", "toned milk"))}
@@ -648,6 +692,7 @@ def nb03():
         ax.axvline(1, color="#6B6690", ls="--"); ax.legend(frameon=False); ax.set_xlabel("lift")
         plt.show()
         check("the top tenth place 38 percent of carts", round(top_tenth.sum() / n, 2) == 0.38)
+        check("they place 73 percent of the chips and cold drink carts", round(heavy_share, 2) == 0.73)
         check("counted per customer, the party pair shrinks and milk's pair holds",
               rows["chips + cold drink"][1] < 2.7 and abs(rows["bread + milk"][1] - 1.04) < 0.01)
         """),
@@ -701,11 +746,12 @@ def nb03():
           customer, chips and cold drink fall to {s('chips_cold_lift_per_customer')} and still beat
           chance; the curd stock-out lowers curd's count and leaves its lift at
           {s('curd_milk_lift_all')}; morning carts hold milk {s('milk_share_morning')} of the time
-          and bread with milk still reads about 1.04 in every band.
+          and bread with milk reads {s('bread_milk_lift_morning')} to {s('bread_milk_lift_evening')} in every band.
 
         **In the interview.** "Turn a basket analysis into a recommendation with a number." Name
-        the pairs above a floor, the incremental adds times the margin, the cost line, and the
-        assumption that would change the call.
+        the pairs above a floor, the incremental adds (the adds that would not have happened
+        without the strip) times the margin, the cost line (what a promotion gives back, such as a
+        discount), and the assumption that would change the call.
         """),
     ]
     build(path, cells, timeout=600)
@@ -720,9 +766,10 @@ def nb04():
         md("""\
         # Does the pairs method hold up on Kalpa Retail's baskets?
 
-        **Week 4, Wednesday, the TA-led lab.** Kalpa Retail's merchandising team wants to pair
-        every product with the Rs 199 phone charger, "because it is in 80 percent of baskets", to
-        give Retail-Plus members a reason to come back. The head of merchandising asks which pairs
+        **Week 4, Wednesday, the TA-led lab.** Kalpa Retail's merchandising team, which decides
+        which products are bundled and promoted, wants to pair every product with the Rs 199 phone
+        charger, "because it is in 80 percent of baskets", to give Retail-Plus members (Kalpa's
+        paid membership tier) a reason to come back. The head of merchandising asks which pairs
         to promote and what each promotion is worth in rupees before any money is spent. The data
         are Kalpa's own: the warehouse's 1,000 orders from April to September 2026, now with their
         order lines (`order_items`: order, product, quantity, unit price) and the product list.
@@ -756,14 +803,24 @@ def nb04():
 
         A basket is one consumer order with its lines; a Business order holds one product bought
         in bulk, so it is left out. The TA hands out twelve baskets on paper. Count by hand first:
-        the charger's share, the screen protector's confidence and lift toward the charger, and the
-        lift of wireless earphones with their case. The cell below confirms your count.
+        the charger's share, the screen protector's confidence toward the charger and its lift
+        with the charger, and the lift of wireless earphones with their case. The cell below prints
+        those numbers to check your count.
         """),
-        code(f"""\
-        twelve_ids = "{ids}".split(", ")
+        code("""\
+        twelve_ids = "IDS".split(", ")
         twelve = lines[lines.order_id.isin(twelve_ids)].groupby("order_id").name.apply(set)
         for oid, held in twelve.items():
             print(oid, ", ".join(sorted(held)))
+        def on_twelve(a, b):
+            has_a = twelve.apply(lambda x: a in x); has_b = twelve.apply(lambda x: b in x)
+            both = (has_a & has_b).sum()
+            return both / has_a.sum(), both * 12 / (has_a.sum() * has_b.sum())
+        charger_share = twelve.apply(lambda x: "phone charger 20W" in x).mean()
+        conf_sp, lift_sp = on_twelve("screen protector", "phone charger 20W")
+        print(f"charger in {charger_share:.2f} of the twelve; screen protector to charger: "
+              f"confidence {conf_sp:.2f}, lift {lift_sp:.2f}; "
+              f"earphones with case: lift {on_twelve('wireless earphones', 'earphone case')[1]:.2f}")
         count = Counter(x for held in twelve for x in held)
         fig, ax = plt.subplots(figsize=(8, 3.8))
         names = sorted(count, key=count.get)
@@ -771,7 +828,7 @@ def nb04():
         ax.set_xlabel("baskets, of the twelve"); ax.set_title("Twelve Kalpa baskets, counted")
         plt.show()
         check("twelve baskets", len(twelve) == 12)
-        """),
+        """.replace("IDS", ids)),
         md("""\
         ### Your turn: how often is the charger in a basket, and what is its lift with each product?
 
@@ -779,22 +836,32 @@ def nb04():
         Print the charger's share of baskets. Then, for every product in at least 2 percent of
         baskets, print its confidence toward the charger and its lift with the charger. Write one
         sentence for merchandising on what the numbers say about "it is in 80 percent of baskets".
+        Checks you can run yourself: your baskets number 812, every share sits between 0 and 1,
+        and a pair's lift reads the same from both sides.
         """),
         empty(),
-        md("""\
+        md(f"""\
         ### Your turn: which pair beats chance above a 5 percent floor, and which is too thin?
 
         Count every pair with `Counter` over `combinations(sorted(basket), 2)`, as the Instamart
-        notebook did. Keep the pairs in at least 5 percent of baskets and rank them by lift; then
-        look below the floor for a pair with a high lift on two or three baskets. For the strongest
-        pair above the floor, check which segment its baskets come from by joining `orders`.
+        notebook did. With 812 baskets, a floor of 1 percent would be
+        {s('kalpa_one_pct_baskets')} baskets, too thin to trust, so the lab sets its floor at
+        5 percent, {s('kalpa_floor_baskets')} baskets. Keep the pairs at or above it and rank them
+        by lift; then look below the floor for a pair with a high lift on two or three baskets.
+        For the strongest pair above the floor, find which segment its baskets come from:
+        `orders.set_index("order_id").loc[ids, "segment"].value_counts()` counts the segments of a
+        list of basket ids. Kalpa's consumer segments are Retail-Core, Retail-Plus and Student, and
+        a pair whose baskets come mostly from one segment is a pair to promote to that segment.
         """),
         empty(),
         md("""\
         ## Can the data carry the answer?
 
         Before a number goes to merchandising, two checks that need no pair counts: how many lines
-        a basket holds, and whether every amount reconciles to its lines.
+        a basket holds, and whether every amount reconciles to its lines. A basket of one line
+        holds no pair, so the first picture says how many baskets the pairs table can use. An
+        order lists at most eight products, and a bigger order buys more units of each, so the
+        larger orders all sit at eight lines.
         """),
         code("""\
         per_basket = lines[lines.order_id.isin(consumer.order_id)].groupby("order_id").size()
@@ -805,7 +872,10 @@ def nb04():
         fig, ax = plt.subplots(figsize=(7, 3.6))
         ax.scatter(orders.amount, line_total.reindex(orders.order_id), s=8, color="#5B3FD6")
         ax.set_xscale("log"); ax.set_yscale("log")
-        ax.set_xlabel("order amount, Rs"); ax.set_ylabel("sum of its lines, Rs")
+        rupees = [1e3, 1e4, 1e5, 1e6, 1e7]
+        names = ["Rs 1,000", "Rs 10,000", "Rs 1 lakh", "Rs 10 lakh", "Rs 1 crore"]
+        ax.set_xticks(rupees, names); ax.set_yticks(rupees, names)
+        ax.set_xlabel("order amount"); ax.set_ylabel("sum of its lines")
         ax.set_title("Every order sits on the line: amount = sum of lines")
         plt.show()
         check("consumer baskets hold one to eight lines", per_basket.between(1, 8).all())
