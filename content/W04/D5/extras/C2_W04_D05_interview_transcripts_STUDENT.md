@@ -4,7 +4,9 @@ Written for this programme in the style of product-company and GCC screens; the 
 from the case file. A screen is an interview round, and a GCC, a global capability centre, is a
 multinational company's own technology and analytics centre in India. The numbers are Friday's
 Flipkart case at the Lucknow fulfilment centre. Illustrative case: the company is real, the
-situation and the data are synthetic, built for this class.
+situation and the data are synthetic, built for this class. In a real screen, say so in your first
+sentence ("in a forecasting exercise on synthetic data for a fulfilment centre"), so nobody takes
+the numbers for the company's own.
 
 **Who needs the answer.** You, before any analytics, data-science or AI-startup screen that asks
 about forecasts, capacity or planning. The interviewer is deciding whether you test a forecast on
@@ -12,6 +14,7 @@ weeks it never saw before you trust its story.
 
 **The questions on the way.**
 
+- Which words does an interviewer expect, and what did this class call them?
 - What does the interviewer say, and which clarifying questions come first?
 - What structure carries the answer, and which trap is being fished for?
 - How do a weak and a hire-grade answer compare?
@@ -20,9 +23,24 @@ weeks it never saw before you trust its story.
 - What does the second transcript, the dispute, ask?
 - What does the scorer listen for?
 
+## Which words does an interviewer expect, and what did this class call them?
+
+Use the field's word in the room; the class's word is how you remember it.
+
+| The field's word | What this class called it | What it means |
+|---|---|---|
+| Seasonal naive baseline | The house bot | A copy of the same week last year |
+| Naive baseline | Naive | A repeat of the last week seen |
+| Hold-out, or test set | The hidden weeks | The latest weeks, kept out of every rule and used only to score |
+| Forecast origin | The week we forecast from | The last week a rule may see |
+| Forecast horizon | How far ahead the plan reaches | The farthest week ahead the forecast must reach: ten here, from 21 September to the week of 30 November |
+| Rolling-origin back-test, or time-series cross-validation | Rolling the origin | Forecasting again from many origins, each scored on the weeks after it |
+| Newsvendor critical ratio | The plan share, 0.82 | Late cost over late plus spare cost: the share of weeks the plan should cover |
+| Quantile loss, or pinball loss, at 0.82 | The misses priced | Each miss priced by its direction; at Rs 25 late and Rs 5.42 spare it is the quantile loss at 0.82, in rupees |
+
 ## Transcript 1: "How do you evaluate a forecast?"
 
-Tagged [S], a staple asked everywhere.
+Tagged [S], a staple asked everywhere. It is the ladder's last rung, L6: the day's method said in an interview.
 
 ### What does the interviewer say?
 
@@ -31,73 +49,95 @@ Tagged [S], a staple asked everywhere.
 
 ### Which clarifying questions does a strong candidate ask first?
 
-1. "What decision does the forecast feed, and how far ahead is it booked?" The answer sets the test's
-   length: eight weeks of packer shifts.
+1. "What decision does the forecast feed, and how far ahead must it reach?" The answer sets the
+   test's length: shifts for the eight weeks from 12 October to 30 November 2026 are booked from data
+   that ends on 21 September, so the forecast reaches ten weeks ahead.
 2. "What does a miss cost in each direction?" The answer sets the price: Rs 25 for a late shipment,
-   Rs 650 for an idle shift of 120 shipments.
+   Rs 650 for an idle shift of 120 shipments, so Rs 5.42 for each spare one.
 3. "Does the festival fall on the same week every year?" It does not: Diwali moved one week earlier in
-   2025 and moves two weeks later in 2026.
+   2025 and moves two weeks later in 2026, and the sale moves with it.
 4. "Has any of the three been scored on weeks it never saw?" The answer says whether the evidence is a
    fit or a forecast.
 
 ### What structure carries the answer?
 
-1. Fix the error measure before scoring anything: the average miss in the business's unit.
-2. Hide the latest weeks, at least as many as the plan books, and forecast them from one week.
-3. Score every forecast against the simplest copies: the last week, and the same week last year.
-4. Price the misses by direction, and set the plan's cushion from the two costs.
+1. Fix the measures before scoring anything: the average miss in the business's unit, and the same
+   misses priced by direction, which is the loss this plan actually pays.
+2. Hold out the latest weeks as the test set, at least as many as the forecast must reach ahead, and
+   forecast them from one origin; then roll the origin, since one origin is one draw.
+3. Score every forecast against the simplest baselines: the naive and the seasonal naive.
+4. Set the plan's level from the two costs, the newsvendor share, and check how often it covered.
 5. Name what the test cannot see, and test that another way.
 
 ### Which trap is the interviewer fishing for?
 
-The candidate judges by fit ("the model matches two years within 2 percent"), or splits the
-difference between two forecasts. Either answer sends an untested number to the plan.
+The candidate judges by fit ("the model matches two years within 2 percent"), picks the measure after
+seeing which forecast it favours, or splits the difference between two forecasts. Each sends an
+untested number to the plan.
 
 ### How do a weak answer and a hire-grade answer compare?
 
 | | Weak answer | Hire-grade answer |
 |---|---|---|
-| The test | "I would check how well each model fits the history." | "I hide the latest thirteen weeks, 29 June to 21 September 2026, which is longer than the eight-week plan, and forecast them from 22 June." |
-| The measure | "R-squared, or maybe MAPE." (R-squared says how well a line fits past points.) | "The average miss in shipments, MAE, fixed before anyone scores, because shifts are booked in shipments." |
-| The bar to beat | Not reached. | "A copy of the same week last year, the house bot: 9,831 a week. Festival-aligned and finance's rule beat it at 6,615; the vendor's curve misses by 16,400, too high in 12 of 13 weeks, though it fits its 91 past weeks within 1.4 percent." |
-| The price | Not reached. | "Priced, the vendor's misses cost least, Rs 11.9 lakh against Rs 13.5 lakh, because spare capacity costs Rs 5.42 a shipment and a late one Rs 25. So I lean high on purpose: the plan covers demand in 0.82 of weeks, festival-aligned plus 2.6 percent." |
-| What the test cannot see | Not reached. | "The hidden weeks hold no festive week, so I back-test the 2025 festival from data to 22 September 2025: the house bot missed by 58,250 a week, festival-aligned by 4,034." |
-| What would change it | Not reached. | "A third year of data, or a sale that opens a different distance before Diwali; either would move the plan's peak." |
+| The test | "I would split the weeks 80 to 20 at random, train each model on the 80 and score it on the 20." A random split lets a model learn from weeks that come after the ones it forecasts. | "I hold out the latest thirteen weeks, 29 June to 21 September 2026, as the test set, and forecast all of them from one origin, 22 June. The plan's last week is ten weeks past the data, so the test must reach at least ten weeks ahead, and thirteen does." |
+| The measure | "RMSE or MAPE, whichever comes out lowest." | "Two, fixed before anyone scores: the average miss in shipments, MAE, because shifts are booked in shipments, and the same misses priced at Rs 25 late and Rs 5.42 spare, which is the quantile loss at 0.82 in rupees, because that is what this plan pays." |
+| The bar to beat | "The vendor's model fits within 2 percent, so it is probably the best." | "The seasonal naive, a copy of the same week last year, misses by 9,831 a week. Festival-aligned and finance's rule beat it at 6,615. The vendor's curve misses by 16,400 though it fits its 91 past weeks within 1.4 percent, and its misses are almost all bias: 16,108 a week too high on average, growing with the weeks ahead, which is the mark of a wrong trend." |
+| The price | Not reached. | "Priced as they stand, the vendor's misses cost least, Rs 11.9 lakh against Rs 13.5 lakh, only because it runs high, the cheap side. The fair comparison moves each forecast to its own 0.82 point on the same weeks: then festival-aligned costs Rs 8.8 lakh and the vendor Rs 10.0 lakh. So the plan is festival-aligned plus 2.6 percent, and it covered 10 of the 13 hidden weeks, close to the 0.82 it aims at, though the 2.6 was read from those same weeks." |
+| What the test cannot see | Not reached. | "The hidden weeks hold no festival, so I back-test 2025's festival from 22 September 2025: the calendar copy missed by 58,250 a week, festival-aligned by 4,034, or 10,575 without the 4 percent growth, which a planner then could not yet measure. Shipments are only what the centre packed: the peak week of 6 October 2025 worked 3,485 shifts, 1,638 of them overtime, so demand may have been capped, and every copy of it would run low on the costly side." |
+| What would change it | Not reached. | "A sale that opens a different distance before Diwali moves the peak, so I would re-line the weeks by the sale. Once the season starts, a first sale week outside the range the hidden weeks ran, 5.9 percent below to 7.8 percent above the forecast, re-opens the plan. And if overtime can absorb a short week, the late cost falls and the cushion with it." |
 
 ### What follows up, and which line answers each?
 
 | Follow-up | The hire-grade line |
 |---|---|
-| "MAE in shipments or MAPE in percent, and when?" | "MAE in shipments when the cost is per shipment and the plan books shipments. MAPE when I compare series of different sizes, say Lucknow with a centre twice its size, and never where an actual can sit near zero, since a percent of almost nothing explodes (Forecasting: Principles and Practice, section 5.8, checked 12 October 2026)." |
-| "The festival moves by three weeks this year. What breaks?" | "Every calendar copy, the house bot and finance's rule, puts the peak three weeks off. A copy by distance from the festival moves with it. I would also check that the sale still opens the same distance before the festival, since the peak follows the sale; if it moves, I copy by distance from the sale." |
-| "What did forecast error cost Zillow, and which guardrail failed?" | "Zillow bought homes to resell, priced on forecasts three to six months ahead, and promised to keep what it made or lost on each home, its unit economics, within 200 basis points (2 percent) of breakeven, where it makes nothing. In 2021 that swung about 1,200 basis points, 12 percentage points, toward a loss of 5 to 7 percent; it wrote down about USD 304 million, marking homes in stock below what it paid, and cut about 25 percent of its workforce (Zillow's Q3 2021 shareholder letter, checked 12 October 2026). The guardrail bounded the forecast, and the forecast was what failed." |
+| "MAE in shipments or MAPE in percent, and when?" | "MAE in shipments when the cost is per shipment and the plan books shipments. To compare centres of different sizes I would use MASE, each miss scaled by the naive's average miss in training, or WAPE, the total miss over the total shipped. MAPE explodes when an actual sits near zero, and it punishes a forecast that lands above the actual harder than one below, which here would tilt the pick toward the short side, the side that costs Rs 25 (Forecasting: Principles and Practice, section 5.8, checked 12 October 2026)." |
+| "The festival moves by three weeks this year. What breaks?" | "Every calendar copy, the seasonal naive and finance's rule, puts the peak three weeks off. A copy by distance from the festival moves with it. I would also check that the sale still opens the same distance before the festival, since the peak follows the sale; if it moves, I copy by distance from the sale." |
+| "You set the cushion on the weeks you scored. Isn't that circular?" | "A little, and for every forecast alike, which is why I compare them each at its own 0.82 point. With thirteen weeks the point is loose: read by another common convention it is 4.1 percent instead of 2.6. The cure is a rolling origin: from 29 September 2025 every week has a year behind it, so the copies can be forecast from many origins, 2025's festival included, and the cushion set on weeks the final test never touches." |
+| "In your peak week, 1,638 of 3,485 shifts were overtime. What does that do to your plan?" | "Two things. The peak may be capped, so I would ask for orders that missed their dispatch date before trusting it. And if overtime can absorb a short week, being short costs only the overtime premium: at one and a half times a shift's cost the share to cover falls to 0.33, at twice it is 0.50, so the plan would sit at or below the forecast. The 0.82 holds only while a short shipment is truly late." |
+| "What did forecast error cost Zillow, and which guardrail failed?" | "Zillow Offers bought homes to resell, which needed price forecasts three to six months ahead, and it set a public guardrail on its unit economics, what it made or lost on each home, of plus or minus 200 basis points, 2 percentage points, around breakeven. Its forecasts missed in both directions by far more than it had modelled, and unit economics swung about 1,200 basis points, 12 percentage points, to an expected minus 500 to minus 700 in the fourth quarter of 2021. It also bought more homes than planned and ran short of renovation capacity. It wrote down about USD 304 million of homes bought above what they would now sell for, wound the business down and cut about 25 percent of its workforce (Zillow's Q3 2021 shareholder letter, checked 12 October 2026). The guardrail sat on the margin, and the price forecast's error at a six-month horizon was wider than the whole band." |
 
 ### How does the same question come up at an AI company?
 
 > "We launch a new assistant feature in six weeks. How do you forecast inference demand for launch
 > week, and how do you know the forecast is any good?"
 
-The strong candidate clarifies first: "Demand in what unit, requests a minute at the peak? How long
-does it take to add capacity? What does a timeout cost us against an idle machine for an hour?"
+The strong candidate clarifies first: "Demand in what unit: tokens a second at the peak, or requests?
+What latency must a user get? How long does it take to add capacity, and what can stretch within
+minutes? What does a timeout cost us against an idle GPU for an hour? Has this feature, or one like
+it, launched before?"
 
-The launch is the festival. Line the last launch up by days from launch day, never by calendar date,
-because a weekday launch and a weekend launch peak on different dates. The copy to beat is the last
-launch's shape, scaled by how the user base has grown since. Hide the last launch's own days as the
-test, as many days as the plan books, and score every forecast in requests a minute. Then plan above
-the forecast, since a timeout loses a user and an idle machine loses an hour of rent; the share of
-minutes to cover is the cost of a timeout over the two costs added, the same arithmetic as the
-packer shifts. A model that cannot beat the last launch's shape on those hidden days does not size
-the launch. This variant is written for this programme and quotes no company's figures.
+Then four steps:
+
+1. **Size it from the ground up.** Say 2 lakh users at launch, 10 percent of them sending a request in
+   the peak minute, and 1,500 tokens a request, prompt and answer together (all three invented):
+   20,000 requests and 3 crore tokens a minute, about 5 lakh tokens a second. A load test says how
+   many tokens a second one GPU serves inside the latency target, which turns that into machines.
+2. **Check it against history, if there is any.** Line earlier launches up by days from launch day
+   for the launch curve, and keep the day of the week for the weekly cycle, since four days after a
+   Tuesday launch is a Saturday: the forecast needs both. The copy to beat is the last launch's curve
+   scaled by user growth, and a method can be tested only on a launch it did not see. With one
+   earlier launch, or none, the forecast is untested; say so, and rely on the ground-up size and a
+   similar feature's launch.
+3. **Set capacity to the latency target, with headroom.** Waiting time climbs steeply as machines
+   near full, so the target sets the headroom within a minute. The capacity booked in advance sits
+   above the forecast when a timeout costs more than an idle GPU hour, the same two-cost arithmetic
+   as the packer shifts, and what stretches covers the rest: on-demand capacity, rate limits and a
+   waitlist.
+4. **Say what would move it.** Waitlist sign-ups before launch and the first hour's tokens a second
+   after it: if either runs past the ground-up size, the stretch capacity takes the load while more
+   is booked.
+
+This variant is written for this programme and quotes no company's figures.
 
 ### Which pain points hide inside the question, each with a real case?
 
 | Pain point | The case | The check |
 |---|---|---|
-| A close fit taken for a good forecast | A 2018 PLOS ONE paper by Makridakis and colleagues: on 1,045 monthly series, statistical methods beat machine-learning ones at every horizon, and the best fits to the past did not forecast best (checked 12 October 2026) | Score on weeks the model never saw |
-| A forecast with no history | Target Canada: its replenishment system could not forecast new stores, so buyers used optimistic projections, and Target closed all 133 stores, with about 17,600 employees (Target's release of 15 January 2015, checked 12 October 2026) | Score the model on a festival it did not see before it books a shift |
-| A guardrail breached by the forecast it bounded | Zillow, 2021, above | Watch every week's miss against the band, and stop when it is breached |
+| A close fit taken for a good forecast | A 2018 PLOS ONE paper by Makridakis, Spiliotis and Assimakopoulos, on 1,045 monthly series, recalls the forecasting competitions' finding that the models that best fitted the data "did not necessarily" forecast better, and found eight machine-learning methods beaten by eight statistical ones at every horizon it examined. The M5 competition turned the second finding round: all 50 of its top methods were machine learning, ahead of every statistical benchmark (the M5 accuracy paper, checked 12 October 2026). | Score every model, of either family, on weeks it never saw, against the seasonal naive |
+| A forecast with no history | Target Canada: its forecasting and replenishment system needed years of sales history the new stores did not have, so buyers relied on optimistic projections from headquarters, and the item data feeding the system was right about 30 percent of the time. Stores sat barely stocked while distribution centres overflowed, and Target closed all 133 stores, with about 17,600 employees (Canadian Business, "The Last Days of Target"; Target's release of 15 January 2015; both checked 12 October 2026) | With no history, size from the ground up and from a similar launch, and keep capacity that can stretch |
+| A forecast error wider than the margin it must protect | Zillow, 2021, above | Size the forecast's error at the horizon the decision needs, and compare it with the margin before committing |
 | A calendar week taken for a festival | FADA counts its festive window from the festival each year, 42 days from the first day of Navratri (FADA's release of 7 November 2025, checked 12 October 2026) | Line years up by distance from the festival |
-| A model never compared with the simplest copy | Amazon Science's history of its recommendation algorithm records a Prime Video test in which a plain bestseller list beat a deep-learning recommender (checked 12 October 2026) | Put a copy of last year on every scoreboard |
+| A model never compared with the simplest baseline | Amazon Science's history of its recommendation algorithm (Larry Hardesty, 22 November 2019): a Prime Video deep-learning recommender first lost to a plain bestseller list; retrained on viewing data in time order and tested on the two weeks after its training cutoff, it beat the list, and beat the older item-to-item method two to one (checked 12 October 2026) | Put the simplest baseline on every scoreboard, and test on the weeks after the training data |
 
 ## Transcript 2: when finance and the vendor's sponsor each want their forecast in front of the plan, which goes?
 
@@ -113,15 +153,17 @@ Tagged [D], a differentiator. The fallback hour runs this one.
 
 1. "Plus 4 and plus 22 against which weeks of last year?" Both are measured against the same calendar
    weeks, which hold only the tail of last year's festival.
-2. "Has either been scored on weeks it never saw?" Both met the thirteen hidden weeks; finance's rule
-   also met 2025's festival in the back-test, and the vendor's festive promise has met none.
+2. "Has either been scored on weeks it never saw?" Both met the thirteen hidden weeks. Finance's rule
+   also met 2025's festival in the back-test; the vendor's file holds no forecast of any festival, so
+   its festive promise has never been tested.
 3. "Who carries the cost of a short week, and who of a spare shift?" The answer says which way to
    lean.
 
 ### What structure carries the answer?
 
 The four moves from Tuesday (restate, answer from the evidence, concede what is true, say what would
-change your mind), then the plan, its error bar in each direction, and the next check.
+change your mind), then the plan with its cost to finance, its range in each direction, and the check
+that re-opens it.
 
 ### Which trap is the interviewer fishing for?
 
@@ -132,23 +174,42 @@ skip the evidence, and the midpoint keeps the calendar copy's peak on the wrong 
 
 | | Weak answer | Hire-grade answer |
 |---|---|---|
-| Restate | "Both numbers have problems." | "Finance wants a rule it can explain, and the sponsor wants a model that fits history closely; both want the plan to hold in the festival." |
-| Answer | "I would average them: 13 percent." | "Neither goes to the plan as it stands. Scored on thirteen hidden weeks, finance's rule ties festival-aligned at 6,615 a week and the vendor misses by 16,400. On 2025's festival, a calendar copy missed by 58,250 a week and festival-aligned by 4,034. So the plan is festival-aligned plus 2.6 percent: 20,275 packer shifts, peaking at 3,719 in the week of 19 October." |
-| Concede | Nothing conceded. | "To finance: your 4 percent is the growth two years show, and your rule ties ours on the hidden weeks. To the sponsor: your curve fits history within 1.4 percent, and its misses on the hidden weeks are the cheap kind." |
-| What would change it | Not said. | "A third year of data, a sale that opens at a different distance from Diwali, or the curve beating the house bot on a festival it never saw." |
-| The error | One number. | "6,615 shipments a week: about Rs 35,800 of idle shifts if a week lands high, Rs 1.65 lakh of late shipments if it lands low." |
+| Restate | "The vendor's model is machine learning, so it should beat a rule of thumb." | "Finance wants a rule it can explain, and the sponsor wants a model that fits history closely; both want the plan to hold in the festival." |
+| Answer | "Go with the vendor, trimmed toward finance to keep the peace: plus 13 percent." | "Neither goes to the plan as it stands. On thirteen hidden weeks finance's rule ties festival-aligned at 6,615 a week and the vendor misses by 16,400. On 2025's festival a calendar copy missed by 58,250 a week and festival-aligned by 4,034, or 10,575 without the growth a planner then could not measure. So the plan is festival-aligned plus 2.6 percent: 20,275 packer shifts, peaking at 3,719 in the week of 19 October." |
+| Concede | Nothing conceded. | "To finance: your 4 percent is the growth two years show, and your rule ties ours on the hidden weeks. To the sponsor: your curve's misses run to the cheap side, the right direction for this plan, though nobody chose how far." |
+| The cost to finance | Not said. | "The plan books 3,082 more shifts than finance's rule would, about Rs 20.0 lakh at Rs 650 a shift, and it buys the peak in the right week." |
+| The error | One number. | "For the peak week, 19 October, the plan books 3,719 shifts for 446,236 shipments. If demand lands where the hidden weeks' lowest and highest misses would put it, the week needs 3,413 to 3,906 shifts: at the low end about Rs 2.0 lakh of idle shifts, at the high end Rs 5.6 lakh of late shipments. Those thirteen weeks held no festival, so the true range is wider." |
+| What would change it | Not said. | "A sale that opens at a different distance from Diwali, or the curve beating the seasonal naive on a festival it never saw: I would ask the vendor to forecast 2025's festival from data to September 2025, which can be done before Friday. Once the season starts, a first sale week outside the hidden weeks' range re-opens the plan." |
+| The people | Not said. | "I would show each of them the back-test before the meeting, so neither hears it first in front of the operations head, and bring the options with their costs." |
 
 ### What follows up, and which line answers each?
 
 | Follow-up | The hire-grade line |
 |---|---|
-| "Why not average the two and keep both happy?" | "Both are copies of the calendar, so their average books the peak on 5 October too, two weeks before the rush. Averaging two forecasts with the same error keeps the error." |
-| "Finance says its rule tied yours. Why not use finance's?" | "On the hidden weeks it did tie, because those weeks hold no festival. On 2025's festival, forecast from 22 September 2025, finance's rule missed by 60,488 a week against festival-aligned's 4,034." |
-| "The sponsor says the vendor's misses cost least. Answer that." | "True on the hidden weeks: Rs 11.9 lakh against Rs 13.5 lakh, because it errs high. But nobody chose how high, and it climbs with the weeks ahead, 3.6 percent too high in hidden weeks 1 to 6 and 11.5 in weeks 8 to 13. Raise festival-aligned by 2.6 percent on purpose and its misses on the same weeks cost Rs 8.8 lakh, less than the vendor's; that figure flatters the raise a little, because the 2.6 percent was read from those same weeks." |
+| "Why not average the two and keep both happy?" | "Averaging forecasts usually helps when their errors differ. These two both put the peak on 5 October, two weeks before the rush, so their average keeps that error; averaging with a forecast that places the festival by its own date would help." |
+| "Finance says its rule tied yours. Why not use finance's?" | "On the hidden weeks it did tie, because those weeks hold no festival. On 2025's festival, forecast from 22 September 2025, finance's rule missed by 60,488 a week against festival-aligned's 4,034; even without the growth, festival-aligned's 10,575 is less than a fifth of finance's miss." |
+| "The sponsor says the vendor's misses cost least. Answer that." | "As they stand, yes: Rs 11.9 lakh against Rs 13.5 lakh, because it runs high and nobody chose how far. Move each forecast to its own 0.82 point on the same weeks and the comparison is fair: festival-aligned costs Rs 8.8 lakh, the vendor Rs 10.0 lakh. Both were tuned on the weeks they are scored on, so the gap is the evidence and both levels flatter a little." |
 
 ## What does the scorer listen for?
 
 When you practise in pairs, the asker scores each of these from 0 to 2: clarified the scope; named
 the hidden weeks and the unit; saw the paradox (a close fit, or cheap misses, that do not earn the
 plan); sized it with a unit (shipments, shifts or rupees); said what would change their mind; tied
-it to a decision and its cost; gave the structure before the number.
+it to a decision and its cost; gave the structure before the number. A 2 also survives the obvious
+technical follow-up: a test that never lets a model see the future, a measure that matches what the
+decision pays, and an honest range.
+
+Carry four numbers into a real screen and let the rest come out only when asked: the test's length,
+the seasonal naive's miss, the winner's miss, and the priced comparison at each forecast's own 0.82
+point. A string of exact figures sounds rehearsed; four that you can explain sound like work you did.
+
+## Where are the sources?
+
+- Forecasting: Principles and Practice, sections 5.8 and 5.9: https://otexts.com/fpp3/toolbox.html#sec-accuracy (checked 12 October 2026)
+- Zillow's Q3 2021 shareholder letter: https://www.sec.gov/Archives/edgar/data/1617640/000161764021000085/exhibit993.htm (checked 12 October 2026)
+- Makridakis, Spiliotis and Assimakopoulos, PLOS ONE, 2018: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0194889 (checked 12 October 2026)
+- The M5 accuracy competition paper, preprint: https://statmodeling.stat.columbia.edu/wp-content/uploads/2021/10/M5_accuracy_competition.pdf (checked 12 October 2026)
+- Canadian Business, "The Last Days of Target", archived: https://www.gwern.net/docs/www/archive.canadianbusiness.com/edd0ae069905e7df1b073ae02516993a2bf4a1b9.html (checked 12 October 2026)
+- Target's release of 15 January 2015: https://corporate.target.com/press/release/2015/01/target-corporation-announces-plans-to-discontinue-canadian-operations (checked 12 October 2026)
+- FADA's release of 7 November 2025: https://fada.in/images/press-release/1690d68d7a2e6cFADA%20releases%20October%202025%20&%2042-Days%20Festive%20Vehicle%20Retail%20Data.pdf (checked 12 October 2026)
+- Amazon Science, "The history of Amazon's recommendation algorithm": https://www.amazon.science/the-history-of-amazons-recommendation-algorithm (checked 12 October 2026)
