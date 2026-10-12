@@ -53,7 +53,7 @@ Used in the fallback (part 4, S13, 25 minutes): read in pairs, played, then scor
 | Clarified the scope | 0 | 2 | Plus 4 and plus 22 against which weeks; which forecast met unseen weeks; who carries a short week |
 | Named the hidden weeks and the unit | 0 | 2 | Thirteen hidden weeks in shipments, and 2025's festival back-tested from 22 September 2025 |
 | Saw the paradox | 0 | 2 | Finance's rule ties on the hidden weeks because they hold no festival; the vendor's misses are cheap because they lean high |
-| Sized it with a unit | 1 | 2 | 20,275 shifts, 3,719 at the peak; 6,615 a week with Rs 35,832 and Rs 1.7 lakh each way |
+| Sized it with a unit | 1 | 2 | 20,275 shifts, 3,719 at the peak; 6,615 a week with about Rs 35,800 and Rs 1.65 lakh each way |
 | Said what would change their mind | 0 | 2 | A third year, a sale at a different distance from Diwali, or the curve beating the copy on a festival it never saw |
 | Tied it to a decision and its cost | 0 | 2 | The plan and its error bar priced both ways, sent to the regional operations head |
 | Gave the structure before the number | 0 | 2 | Restate, answer, concede, what would change it, then the plan |

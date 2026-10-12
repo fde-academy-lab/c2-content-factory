@@ -52,14 +52,17 @@ them (decision `w4-finding-once-found`), and the Kalpa board set prints what the
 |---|---|---|
 | Two October spikes | October 2024 is 1.45 times November 2024, its one neighbour in the data; October 2025 is 1.56 times the mean of September and November 2025 | Ask "which month is each winter's biggest, and by how much over its neighbours?" |
 | A growing business | The twelve months to September 2025 sit 3.5 percent below the twelve to September 2026 (Rs 37.40 crore against Rs 38.77 crore) | Point at cell 11's printed growth, 3.7 percent on the first year |
-| A fit that is no forecast | The vendor fits its 18 fitted months within 1.8 percent, yet on April to September 2026 it misses by Rs 38.8 lakh a month against the seasonal copy's Rs 11.7 lakh; naive and drift miss by Rs 59.4 and Rs 58.8 lakh | Ask "which rows of the vendor's file are fits, and which are forecasts?", then point at the `kind` column |
+| A fit that is no forecast | The vendor fits its 18 fitted months within 1.8 percent, yet on April to September 2026 it misses by Rs 38.8 lakh a month against the seasonal copy's Rs 11.7 lakh; naive and drift miss by Rs 59.4 and Rs 58.8 lakh | Ask "which rows of the vendor's file are fits, and which are its hold-out forecasts?", then point at the `kind` column, which reads `holdout` for the six hidden months |
 | The vendor's 22 percent | Its October 2026 to March 2027 total is Rs 23.09 crore, 22 percent above the same months a year earlier (Rs 18.93 crore); finance's is Rs 19.69 crore, 4 percent above | Ask "sum each column of your table: how far apart are the totals?" |
 | The month-aligned trap | The copy of the same month a year earlier puts the spike in October 2026, while Diwali falls on 8 November 2026; the festival-aligned copy moves it to November, Rs 444.7 lakh | Ask "which month is Diwali in this year, and which month did your copy put the spike in?" |
 
 The plan line sums to Rs 21.77 crore, 15 percent above the year before and Rs 2.08 crore (10.6
 percent) above festival-aligned. The three lines a group brings back: the board number, Rs 19.69
-crore from festival-aligned with the spike in November; its error bar, Rs 11.7 lakh a month, about
-Rs 70 lakh if all six months miss the same way; and the gap to the plan line, Rs 2.08 crore.
+crore from festival-aligned with the spike in November; its error bar, festival-aligned's own miss on
+the six hidden months, Rs 3.5 lakh a month, about Rs 21 lakh if all six miss the same way, which
+notebook 04's last code cell prints, with the spike month itself untested; and the gap to the plan
+line, Rs 2.08 crore. A group that offers the seasonal copy's Rs 11.7 lakh is asked which forecast
+that miss belongs to: the copy without the 4 percent.
 
 ## Where do learners stall, and which hint unlocks each place?
 

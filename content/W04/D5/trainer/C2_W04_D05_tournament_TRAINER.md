@@ -33,7 +33,7 @@ notices first wins the plan. A trainer who did not write the day can run it from
 | Round one | 40 | S4 to S14 | Reads the twelve rows by hand, writes its own rule in one line, forecasts Diwali 2025's week with every rule |
 | Round two | 45 | S15 to S26 | Votes on the scoreboard, watches its rule scored on the hidden weeks, prices the misses |
 | Break | 10 | | The scoreboard stays up |
-| Round three | 75 | S27 to S36 | Votes on the bot's busiest week, turns the calendar card, back-tests 2025, hears the objections, sets the plan |
+| Round three | 75 | S27 to S37 | Votes on the bot's busiest week, turns the calendar card, back-tests 2025, hears the objections, sets the plan |
 
 ## What does the trainer say at each turn?
 

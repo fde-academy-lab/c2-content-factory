@@ -1,6 +1,6 @@
 # Role cards: finance, and the vendor's sponsor
 
-**TRAINER ONLY.** In round three of the tournament (half one, S36) the trainer plays finance and the
+**TRAINER ONLY.** In round three of the tournament (half one, S37) the trainer plays finance and the
 TA plays the vendor's sponsor; in the afternoon's staffing note (half two, S4) both object again, and
 the fallback's second transcript replays them. Read both cards once before the session and say the
 lines in your own voice.

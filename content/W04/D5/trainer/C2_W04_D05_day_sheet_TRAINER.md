@@ -83,7 +83,7 @@ flowchart LR
 | Round one, chapter 1 | 40 | S4 to S14 | The twelve rows; notebook 01 | Both peaks two weeks before Diwali's week; festival-aligned within 124 on Diwali 2025's week; the calendar copy a week late in 2025 | S7's four panels to one sentence; notebook 01's last cell |
 | Round two, chapter 2 | 45 | S15 to S26 | Notebook 02; the wall scoreboard | Thirteen hidden weeks from 22 June; 6,615 against 9,831 against 16,400; the vendor fits within 1.4 percent; priced, the vendor costs least and still loses | Drift's panel; S25's second route to one sentence |
 | Break | 10 | | | The scoreboard stays on the wall | |
-| Round three, chapter 3 | 75 | S27 to S36 | Notebook 03; the festival calendar card; the two role cards | The bot's 2026 peak on 5 October; 58,250 against 4,034 on 2025's festival; plus 4 is minus 9.5 against the festival's weeks; the 0.82 share; 20,275 shifts; the objections answered | S34 to its last row; S35 to three doubts |
+| Round three, chapter 3 | 75 | S27 to S37 | Notebook 03; the festival calendar card; the two role cards | The bot's 2026 peak on 5 October; 58,250 against 4,034 on 2025's festival; plus 4 is minus 9.5 against the festival's weeks; the 0.82 share; 20,275 shifts; the objections answered | S35 to its last row; S36 to three doubts |
 
 The slides' notes carry about 130 minutes of talk; the other 40 are notebook work, about 3 minutes in
 round one, 6 in round two and 30 in round three with the role cards.
@@ -112,7 +112,7 @@ baseline on the thirteen held-out weeks."
 | MAE alone | "16,400 is the vendor's error", as if both directions cost the same | A ranking that ignores which misses hurt | Price each direction: the vendor's misses cost Rs 11.9 lakh, the least | S22 to S24 | 02, cells 14 and 15 |
 | The calendar copy in 2026 | The house bot's busiest week on 5 October 2026 | The most packers booked two weeks before the rush | The festival calendar card: Diwali's week is 2 November 2026 | S28, S29 | 03, cells 6 and 7 |
 | Plus 4 on the wrong window | Finance's plus 4 read as "4 percent more than last festival" | A window 308,048 shipments short | Count last year's weeks from Diwali: finance sits 9.5 percent below | S31 | 03, cells 8 and 9 |
-| The plan at the median | The forecast itself booked as the plan | Short in about half the weeks, at 4.6 times the cost of spare | The 0.82 share from Rs 25 and Rs 5.42 | S32, S33 | 03, cells 10 to 12 |
+| The plan at the median | The forecast itself booked as the plan | Short in about half the weeks, at 4.6 times the cost of spare | The 0.82 share from Rs 25 and Rs 5.42, read off the thirteen weeks | S32 to S34 | 03, cells 9 to 12 |
 | The month-aligned copy (lab) | Kalpa's October 2025 spike copied into October 2026 | A board number with Diwali in the wrong month | Diwali falls on 8 November 2026: festival-aligned moves the spike | | 04, the second your-turn cell |
 
 ## Where are the checkpoints?
@@ -122,7 +122,7 @@ baseline on the thirteen held-out weeks."
 | S10 | Three learners say naive's, the house bot's and festival-aligned's forecasts for Diwali 2025's week: 369,000, 356,200, 308,776 | Redo the hand count on the twelve rows before chapter 2 |
 | S19 | Every notebook prints the scoreboard with festival-aligned and finance's rule at 6,615 | Pair each stuck learner with a finished one for two minutes |
 | S21 | Every your-turn cell prints the vendor's 16,400 | The TA types the line on the projector |
-| S33 | The room reads the week of 19 October aloud: 434,928, then 446,236, then 3,719 shifts | Walk 344,448 x 1.026 = 353,404, over 120, up to 2,946 on the board |
+| S34 | The room reads the week of 19 October aloud: 434,928, then 446,236, then 3,719 shifts | Walk 344,448 x 1.026 = 353,404, over 120, up to 2,946 on the board |
 
 ## Which plants does the lab find, and what if nobody does?
 
@@ -147,7 +147,7 @@ names any of them before a learner's own cell prints it.
 | The two windows | 1,983,300 and 2,279,500 | window_2026.calendar_2025_total, window_2026.festival_2025_total |
 | The share and the cushion | 0.82; 2.6 percent | ticket.plan_quantile, holdout.cushion_pct |
 | The plan | 20,275 shifts; 3,719 at the peak | plan.shifts_total, plan.peak_week_shifts |
-| The error bar | 6,615 a week; Rs 35,832 high, Rs 1.7 lakh low | error_bar.week_shipments, error_bar.week_idle_rs, error_bar.week_late_rs |
+| The error bar | 6,615 a week; about Rs 35,800 high, Rs 1.65 lakh low | error_bar.week_shipments, error_bar.week_idle_rs, error_bar.week_late_rs |
 
 ## What are the interview answers, each in one breath?
 
