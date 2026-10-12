@@ -1,913 +1,1258 @@
-"""Generate the Wednesday case data: Swiggy Instamart Pune carts and strip_log, plus the small
-Kalpa Retail transfer tables for the TA lab. One seeded, deterministic generator; pandas and the
-standard library only; the smallest code that fully works.
+"""Generate the Wednesday case data and the Kalpa transfer tables, then write the facts file.
 
-Writes seven CSVs to content/W04/D3/data/:
-    C2_W04_D03_carts_STUDENT.csv            40,000 Pune carts, 1-28 September 2026
-    C2_W04_D03_cart_items_STUDENT.csv       items in each cart with price and margin
-    C2_W04_D03_strip_log_STUDENT.csv        daily slot impressions, clicks, adds, 17 Aug-27 Sep
-    C2_W04_D03_twelve_rows_STUDENT.csv      the twelve printed carts for the L1 hand count
-    C2_W04_D03_kalpa_products_STUDENT.csv   Kalpa Retail product catalogue including the Rs 199 charger
-    C2_W04_D03_kalpa_order_items_STUDENT.csv  Kalpa order lines for the lab, with the plants hidden
-    C2_W04_D03_kalpa_orders_STUDENT.csv     Kalpa order headers (one row per order), with amount
+Run from the repository root:
+    python3 content/W04/D3/internal/C2_W04_D03_make_data_INTERNAL.py
 
-Prints a PASS line for every asserted target and raises AssertionError on any miss. Also writes the
-day's facts file at ../internal/C2_W04_D03_facts_INTERNAL.yaml, listing every number a learner will
-see with its id, how it was computed in one line and where it is used. No number appears in a
-STUDENT file that is not in that facts file.
+One seeded, deterministic generator; pandas and the standard library only. Every target the case
+file sets is built as an exact count and then asserted, so a second run writes the same bytes.
 
-Corrections recorded in the facts file and in the drafting report:
-    the 44 percent milk-impression share after the change cannot sit beside the 1.2 and 6.4
-    percent slot click-throughs and the 3.8 percent blend, since 0.44*1.2 + 0.56*6.4 is 4.11 and
-    not 3.8; the share that reproduces 3.8 from the two is 50 percent, and the strip_log is
-    generated to that share.
+The case, Swiggy Instamart in Pune (illustrative: the company is real, the data are synthetic):
+    C2_W04_D03_carts_STUDENT.csv          40,000 carts, every September cart of 12,000 sampled customers
+    C2_W04_D03_cart_items_STUDENT.csv     one line per item in a cart, 59 items, price and margin per unit
+    C2_W04_D03_strip_log_STUDENT.csv      the strip's daily impressions, clicks and adds, 17 Aug to 27 Sep
+    C2_W04_D03_twelve_rows_STUDENT.csv    twelve real carts from the 40,000, for the hand count
 
-    the twelve-row bread to milk confidence that the case file prints as 0.75 sits 0.01 from the
-    full-data 0.74, which the spine's distance rule forbids; the twelve rows are reshaped so
-    bread is in 4 carts and all 4 of them hold milk, which gives confidence 1.00 and lift 1.50
-    cleanly separated from the full-data values.
+The Kalpa transfer, Kalpa Retail's v5 additions on v4's own 1,000 orders (TRAINER until the lab):
+    C2_W04_D03_kalpa_products_STUDENT.csv     fifteen products, the Rs 199 charger among them
+    C2_W04_D03_kalpa_orders_STUDENT.csv       v4's 1,000 orders as data/generate_client_zero.py builds them
+    C2_W04_D03_kalpa_order_items_STUDENT.csv  every order's lines, summing to its amount exactly
+
+Corrections to the case file, each recorded in the facts file:
+    milk's share of slot impressions after the change is 50 percent, since 44 percent beside the
+    1.2 and 6.4 percent slot rates blends to 4.1 percent and the ticket's after rate is 3.8;
+    the twelve carts put milk in all four bread carts (confidence 1.00, lift 1.50), since the case
+    file's 0.75 sits 0.01 from the full-data 0.74 and the spine wants five points between them;
+    the three-slot rupee figure is what re-ranking recovers on milk's half of the impressions
+    (Rs 6.3 lakh a month), since the case file's Rs 12.6 lakh assumed every slot showed milk.
 """
-import csv
+import math
 import random
-import textwrap
+import sys
+from collections import Counter
 from datetime import date, timedelta
+from itertools import combinations
 from pathlib import Path
 
 import pandas as pd
 
 HERE = Path(__file__).resolve().parent
+REPO = HERE.parents[3]
 DATA = HERE.parent / "data"
-DATA.mkdir(parents=True, exist_ok=True)
 FACTS = HERE / "C2_W04_D03_facts_INTERNAL.yaml"
+sys.path.insert(0, str(REPO / "data"))
+import generate_client_zero as cz  # noqa: E402
 
 SEED = 20261028
 N_CARTS = 40_000
-PUNE_ZONES = ["Kothrud", "Baner", "Viman Nagar", "Kalyani Nagar",
-              "Aundh", "Hadapsar", "Hinjewadi", "Camp"]
-TIME_BANDS = ["morning", "afternoon", "evening", "night"]
-START_DATE = date(2026, 9, 1)
+MONTH = [date(2026, 9, 1) + timedelta(days=i) for i in range(28)]   # 1 to 28 September 2026
+CHANGE_DAY = date(2026, 9, 7)
+LOG_DAYS = [date(2026, 8, 17) + timedelta(days=i) for i in range(42)]  # 17 Aug to 27 Sep 2026
 
-# Base prices in Rs and the 18 percent margin we take on each item sold.
-PRICES = {
-    "toned milk": 32, "bread": 45, "eggs": 72, "curd": 55, "bananas": 48,
-    "chips": 20, "cold drink": 40, "ice cream": 150, "chocolate sauce": 180,
-    "paneer": 95, "coriander": 10, "onions": 35, "potatoes": 30, "tomatoes": 40,
-}
-MARGINS = {name: round(price * 0.18, 2) for name, price in PRICES.items()}
+ZONES = {"Kothrud": 16, "Baner": 14, "Hinjewadi": 14, "Hadapsar": 13, "Viman Nagar": 12,
+         "Aundh": 12, "Kalyani Nagar": 11, "Camp": 8}
+STOCKOUT_ZONES = ("Hadapsar", "Viman Nagar")
+STOCKOUT_DAYS = (date(2026, 9, 15), date(2026, 9, 21))              # week three
+BANDS = {"morning": 10_000, "afternoon": 10_000, "evening": 15_000, "night": 5_000}
+MILK_BY_BAND = {"morning": 0.80, "afternoon": 0.69, "evening": 0.68, "night": 0.66}
 
-# Target probabilities and conditional rates calibrated to hit the case file's confidence targets.
-# Independent sampling in each cart, conditional on milk status for the milk-paired items.
-P_MILK = 0.71
-# Pair (P(item | milk), P(item | not milk)) chosen so marginal matches and confidence to milk
-# matches the case file's targets. Working for bread, which anchors the row's lift arithmetic:
-#   P(bread, milk) = conf(bread -> milk) * P(bread) = 0.74 * 0.34 = 0.2516
-#   P(bread | milk) = 0.2516 / 0.71 = 0.3544
-#   P(bread | not milk) = (0.34 - 0.2516) / 0.29 = 0.3048
-MILK_PAIRED = {
-    "bread":     (0.3544, 0.3048),  # marginal 0.34, conf->milk 0.74, lift 1.04
-    "eggs":      (0.2982, 0.2700),  # marginal 0.29, conf->milk 0.73, lift 1.03
-    "curd":      (0.2637, 0.2510),  # marginal 0.26, conf->milk 0.72, lift 1.014
-    "bananas":   (0.2332, 0.2221),  # marginal 0.23, conf->milk 0.72, lift 1.014
-    "ice cream": (0.0406, 0.0387),  # marginal 0.04,  conf->milk 0.72, lift 1.014
-}
-# Independent sampling (no coupling with milk) for items the spine does not pin to milk.
-INDEP = {
-    "paneer":    0.08,
-    "coriander": 0.15,
-    "onions":    0.22,
-    "potatoes":  0.18,
-    "tomatoes":  0.20,
-}
-
-# The chips and cold drink joint: four outcomes, independent of milk, so the chips->milk and
-# cold->milk confidences land at 0.71 and sit cleanly inside the spine's [0.68, 0.78] band.
-#   P(chips=1, cold=1) = 0.050     support 5.0 percent
-#   P(chips=1, cold=0) = 0.070     chips marginal 0.120
-#   P(chips=0, cold=1) = 0.073     cold marginal 0.123
-#   P(chips=0, cold=0) = 0.807
-CC_CUT = [0.050, 0.120, 0.193]  # cumulative
-
-# Ice cream and chocolate sauce joint; chocolate sauce only appears paired with ice cream or alone,
-# and the pair sits at 100 of 40,000, so the full-data lift at 0.0025 / (0.04 * 0.0136) is 4.60.
-# Ice cream itself follows MILK_PAIRED above, so this draw places chocolate sauce conditional on
-# whether this cart already had ice cream from the MILK_PAIRED draw.
-P_CHOC_GIVEN_ICE = 0.0025 / 0.04        # 0.0625
-P_CHOC_GIVEN_NOT_ICE = (0.0136 - 0.0025) / 0.96  # 0.01156
-
-
-def sample_cart(rng):
-    """One cart's items as a set, sampled with the calibrated distributions above."""
-    items = set()
-    has_milk = rng.random() < P_MILK
-    if has_milk:
-        items.add("toned milk")
-    for name, (p_milk, p_notmilk) in MILK_PAIRED.items():
-        if rng.random() < (p_milk if has_milk else p_notmilk):
-            items.add(name)
-    r = rng.random()
-    if r < CC_CUT[0]:
-        items.add("chips"); items.add("cold drink")
-    elif r < CC_CUT[1]:
-        items.add("chips")
-    elif r < CC_CUT[2]:
-        items.add("cold drink")
-    p_choc = P_CHOC_GIVEN_ICE if "ice cream" in items else P_CHOC_GIVEN_NOT_ICE
-    if rng.random() < p_choc:
-        items.add("chocolate sauce")
-    for name, p in INDEP.items():
-        if rng.random() < p:
-            items.add(name)
-    if not items:
-        items.add("coriander")  # the one hedge; a cart with no items would break the join
-    return items
-
-
-def write_carts():
-    """40,000 Pune carts and their items, written as two CSVs."""
-    rng = random.Random(SEED)
-    carts_rows = []
-    items_rows = []
-    # The top tenth of customers place 38 percent of the carts. 1,000 top customers against
-    # 9,000 ordinary customers places 15,200 of the 40,000 carts in the heavy tenth.
-    for i in range(N_CARTS):
-        cart_id = f"C{i:06d}"
-        day_offset = rng.randint(0, 27)
-        placed = START_DATE + timedelta(days=day_offset)
-        zone = rng.choice(PUNE_ZONES)
-        band = rng.choices(TIME_BANDS, weights=[2, 2, 3, 1])[0]
-        if rng.random() < 0.38:
-            customer_id = f"K{rng.randint(1, 1000):05d}"
-        else:
-            customer_id = f"K{rng.randint(1001, 10000):05d}"
-        items = sample_cart(rng)
-        cart_value = sum(PRICES[name] for name in items)
-        carts_rows.append({
-            "cart_id": cart_id, "customer_id": customer_id,
-            "placed_date": placed.isoformat(), "zone": zone,
-            "time_band": band, "cart_value_rs": cart_value,
-        })
-        for name in sorted(items):
-            items_rows.append({
-                "cart_id": cart_id, "item": name, "quantity": 1,
-                "price_rs": PRICES[name], "margin_rs": MARGINS[name],
-            })
-    carts = pd.DataFrame(carts_rows)
-    cart_items = pd.DataFrame(items_rows)
-    carts.to_csv(DATA / "C2_W04_D03_carts_STUDENT.csv", index=False)
-    cart_items.to_csv(DATA / "C2_W04_D03_cart_items_STUDENT.csv", index=False)
-    return carts, cart_items
-
-
-def write_strip_log():
-    """Daily strip impressions, clicks and adds for 17 August to 27 September 2026.
-
-    The strip has three slots; the before-change window runs 17 August to 6 September and the
-    after-change window 7 September to 27 September. Before the change the slots were curated so
-    no slot is called a milk slot in the log; after the change milk fills half the slot
-    impressions, which is the share that reproduces the headline 3.8 percent blended click-through
-    from the 1.2 percent on milk slots and the 6.4 percent on every other slot.
-    """
-    rng = random.Random(SEED + 1)
-    rows = []
-    total_views_per_day = 60_000  # Pune cart-page views
-    daily_slot_impressions = total_views_per_day // 3  # 20,000 per slot per day
-    before_start = date(2026, 8, 17)
-    change_day = date(2026, 9, 7)
-    end = date(2026, 9, 27)
-    anchor_items = ["bread", "eggs", "curd", "bananas"]
-    other_items = ["cold drink", "chips", "ice cream", "paneer", "coriander", "onions"]
-    d = before_start
-    while d <= end:
-        after = d >= change_day
-        for slot in [1, 2, 3]:
-            if after:
-                # Milk gets half the slot impressions, click-through 1.2 percent.
-                milk_imp = daily_slot_impressions // 2
-                other_imp = daily_slot_impressions - milk_imp
-                milk_clicks = round(milk_imp * 0.012)
-                other_clicks = round(other_imp * 0.064)
-                milk_adds = round(milk_clicks * 0.5)
-                other_adds = round(other_clicks * 0.5)
-                rows.append({
-                    "date": d.isoformat(), "slot": slot,
-                    "anchor_item": rng.choice(anchor_items), "suggested_item": "toned milk",
-                    "impressions": milk_imp, "clicks": milk_clicks, "adds": milk_adds,
-                })
-                rows.append({
-                    "date": d.isoformat(), "slot": slot,
-                    "anchor_item": rng.choice(anchor_items),
-                    "suggested_item": rng.choice(other_items),
-                    "impressions": other_imp, "clicks": other_clicks, "adds": other_adds,
-                })
-            else:
-                # Curated: no milk slot, click-through 6.1 percent averaged across the strip.
-                imp = daily_slot_impressions
-                clicks = round(imp * 0.061)
-                adds = round(clicks * 0.5)
-                rows.append({
-                    "date": d.isoformat(), "slot": slot,
-                    "anchor_item": rng.choice(anchor_items),
-                    "suggested_item": rng.choice(other_items),
-                    "impressions": imp, "clicks": clicks, "adds": adds,
-                })
-        d += timedelta(days=1)
-    df = pd.DataFrame(rows)
-    df.to_csv(DATA / "C2_W04_D03_strip_log_STUDENT.csv", index=False)
-    return df
-
-
-# ---- the twelve printed rows ---------------------------------------------------------------------
-# A fixed hand-crafted table. Milk sits in 8 of 12 carts; bread in 4, all 4 with milk, so bread to
-# milk confidence lands at 1.00 and lift at 1.50 on the twelve rows, each at least 0.05 from the
-# full-data 0.74 and 1.04. Chips and cold drink sit in 3 carts each with 2 shared, so support is
-# 2 over 12 and lift is 2.67, each separated from the full-data 0.05 / 0.42 / 3.40. Ice cream and
-# chocolate sauce ride in one cart together, support 1 over 12 and lift 12. Every value also sits
-# at least 0.05 from the Kalpa plants 0.82 confidence, 0.97 lift, 3.1 lift and 4.0 lift.
-TWELVE_ROWS = [
-    ("TR01", ["toned milk", "bread", "eggs", "bananas", "coriander", "onions", "potatoes"]),
-    ("TR02", ["toned milk", "bread", "eggs", "curd", "bananas"]),
-    ("TR03", ["toned milk", "bread", "curd", "paneer", "onions"]),
-    ("TR04", ["toned milk", "bread", "eggs", "tomatoes"]),
-    ("TR05", ["toned milk", "eggs", "chips", "cold drink", "onions"]),
-    ("TR06", ["toned milk", "chips", "cold drink", "coriander"]),
-    ("TR07", ["toned milk", "bananas", "onions", "potatoes"]),
-    ("TR08", ["toned milk", "paneer", "coriander", "tomatoes"]),
-    ("TR09", ["chips", "coriander", "onions", "potatoes"]),
-    ("TR10", ["cold drink", "curd", "bananas", "tomatoes"]),
-    ("TR11", ["eggs", "ice cream", "chocolate sauce"]),
-    ("TR12", ["curd", "onions"]),
+# The catalogue: item, price per unit in Rs, margin per unit in Rs, carts holding it (of 40,000).
+CATALOGUE = [
+    ("toned milk", 29, 2.0, 28_400), ("bread", 45, 6.3, 13_600), ("eggs", 48, 5.8, 11_600),
+    ("curd", 40, 4.8, 10_400), ("bananas", 45, 9.0, 9_200), ("onions", 38, 7.6, 8_800),
+    ("tomatoes", 22, 4.4, 8_000), ("potatoes", 34, 6.8, 7_200), ("coriander", 15, 4.5, 6_000),
+    ("chips", 20, 4.0, 4_800), ("cold drink", 40, 8.0, 4_920), ("green chillies", 10, 3.0, 3_200),
+    ("paneer", 90, 10.8, 3_200), ("butter", 58, 4.6, 2_400), ("ice cream", 160, 40.0, 1_600),
+    ("chocolate sauce", 175, 35.0, 544), ("biscuits", 30, 4.5, 4_000), ("atta", 240, 14.4, 3_600),
+    ("sugar", 46, 2.8, 2_800), ("ginger", 18, 4.5, 2_800), ("tea", 140, 14.0, 2_600),
+    ("rice", 80, 6.4, 2_400), ("lemons", 20, 5.0, 2_400), ("garlic", 30, 6.0, 2_400),
+    ("apples", 120, 21.6, 2_400), ("maggi noodles", 56, 5.6, 2_400), ("toor dal", 160, 9.6, 2_000),
+    ("cucumber", 25, 5.0, 2_000), ("spinach", 25, 6.3, 2_000), ("namkeen", 55, 9.9, 2_000),
+    ("poha", 40, 5.2, 1_800), ("chocolate bar", 50, 9.0, 1_800), ("capsicum", 30, 6.0, 1_600),
+    ("carrots", 35, 7.0, 1_600), ("sunflower oil", 155, 9.3, 1_600), ("pav", 35, 5.3, 1_600),
+    ("dish soap", 99, 17.8, 1_400), ("ketchup", 110, 13.2, 1_200), ("cheese slices", 120, 12.0, 1_200),
+    ("rusk", 45, 6.8, 1_200), ("detergent", 210, 29.4, 1_200), ("bath soap", 160, 24.0, 1_200),
+    ("curry leaves", 10, 3.0, 1_200), ("ghee", 320, 22.4, 1_000), ("peanuts", 60, 7.2, 1_000),
+    ("toothpaste", 105, 15.8, 1_000), ("coffee", 190, 22.8, 800), ("shampoo", 180, 27.0, 800),
+    ("tissues", 99, 19.8, 800), ("sanitary pads", 199, 29.9, 800), ("green peas", 45, 9.0, 800),
+    ("mint", 10, 3.0, 800), ("jaggery", 70, 8.4, 600), ("diapers", 450, 49.5, 600),
+    ("mosquito repellent", 85, 14.5, 600), ("sabudana", 60, 7.2, 480), ("ice cubes", 40, 10.0, 400),
+    ("paper cups", 60, 15.0, 360), ("batteries", 120, 24.0, 320),
 ]
+PRICE = {name: p for name, p, _, _ in CATALOGUE}
+TARGET = {name: n for name, _, _, n in CATALOGUE}
+# Margins scaled so a line in cart_items, milk aside, earns Rs 9 on average: the slot's margin per add.
+_raw = {name: m for name, _, m, _ in CATALOGUE}
+_lines = sum(TARGET[x] for x in TARGET if x != "toned milk")
+_scale = 9.0 / (sum(TARGET[x] * _raw[x] for x in TARGET if x != "toned milk") / _lines)
+MARGIN = {x: (_raw[x] if x == "toned milk" else round(_raw[x] * _scale, 1)) for x in _raw}
 
+# Carts holding both items of each designed pair, and the share of those carts that hold milk.
+BREAD_MILK, EGGS_MILK, CURD_MILK, BANANAS_MILK = 10_064, 8_468, 7_436, 6_624
+PAIRS = {("chips", "cold drink"): 2_000, ("coriander", "green chillies"): 1_440,
+         ("bread", "butter"): 1_800, ("onions", "tomatoes"): 3_000,
+         ("chocolate sauce", "ice cream"): 100}
 
-def write_twelve_rows():
-    rows = []
-    all_items = sorted({item for _, items in TWELVE_ROWS for item in items})
-    for cart_id, items in TWELVE_ROWS:
-        row = {"cart_id": cart_id}
-        for name in all_items:
-            row[name] = 1 if name in items else 0
-        rows.append(row)
-    df = pd.DataFrame(rows)
-    df.to_csv(DATA / "C2_W04_D03_twelve_rows_STUDENT.csv", index=False)
-    return df
-
-
-# ---- Kalpa Retail transfer -----------------------------------------------------------------------
-# A smaller Kalpa dataset for the lab: 600 Kalpa Retail orders of which 500 are consumer baskets
-# and 100 are Business bulk-orders. The plants are the ones the row names: the Rs 199 phone charger
-# in a dominant share of consumer baskets; a partner item whose confidence to the charger prints
-# 0.82 and whose lift prints 0.97; a stronger pair above a 5 percent support floor at lift 3.1;
-# and one thin pair at lift 4.0 with support between 0.2 and 0.4 percent.
-KALPA_PRODUCTS = [
-    # (product_id, name, category, list_price, unit_cost)
-    ("P001", "phone charger 20W",     "Electronics", 199,  120),
-    ("P002", "screen protector",      "Electronics", 149,   85),
-    ("P003", "earphone jack adapter", "Electronics",  89,   50),
-    ("P004", "wireless earphones",    "Electronics", 1499, 950),
-    ("P005", "earphone case",         "Electronics", 299,  170),
-    ("P006", "USB-C cable",           "Electronics", 249,  140),
-    ("P007", "car charger",           "Electronics", 349,  200),
-    ("P008", "power bank 10000mAh",   "Electronics", 1199, 780),
-    ("P009", "phone grip",            "Accessories",  99,   55),
-    ("P010", "cable organiser",       "Accessories", 149,   80),
-    ("P011", "notebook A5",           "Stationery",   79,   40),
-    ("P012", "pen set",               "Stationery",   99,   50),
-    ("P013", "LED desk lamp",         "Lighting",     699,  420),
-    ("P014", "extension cord",        "Electronics",  499,  290),
-    ("P015", "wall adapter",          "Electronics",  299,  170),
+# The twelve printed carts, kept as the drafting session designed them: milk in 8, bread in 4 and
+# every bread cart with milk, chips and cold drink in 3 each and together in 2, ice cream and
+# chocolate sauce together in one cart. They are real carts of the 40,000.
+TWELVE = [
+    ["toned milk", "bread", "eggs", "bananas", "coriander", "onions", "potatoes"],
+    ["toned milk", "bread", "eggs", "curd", "bananas"],
+    ["toned milk", "bread", "curd", "paneer", "onions"],
+    ["toned milk", "bread", "eggs", "tomatoes"],
+    ["toned milk", "eggs", "chips", "cold drink", "onions"],
+    ["toned milk", "chips", "cold drink", "coriander"],
+    ["toned milk", "bananas", "onions", "potatoes"],
+    ["toned milk", "paneer", "coriander", "tomatoes"],
+    ["chips", "coriander", "onions", "potatoes"],
+    ["cold drink", "curd", "bananas", "tomatoes"],
+    ["eggs", "ice cream", "chocolate sauce"],
+    ["curd", "onions"],
 ]
-
-# Plant arithmetic, with marginals and overlaps carefully set to hit the case file's shape.
-#   N_CONSUMER = 500 consumer baskets.
-#   charger (P001):      425 baskets (85 percent).
-#   screen (P002):        60 baskets, 49 of them with charger, confidence 49/60 = 0.817 ~ 0.82,
-#                         lift 0.098 / (0.12 * 0.85) = 0.961 ~ 0.97.
-#   earphones (P004):     75 baskets.
-#   case (P005):          65 baskets, together with earphones in 30, support 0.060, lift
-#                         0.060 / (0.15 * 0.13) = 3.08 ~ 3.1.
-#   usb (P006):           10 baskets.
-#   car charger (P007):   25 baskets, together with usb in 2, support 0.004, lift
-#                         0.004 / (0.02 * 0.05) = 4.00.
-N_CONSUMER = 500
-N_BUSINESS = 100
-
-PLANTS = {
-    "charger_count": 425,
-    "screen_count": 60,
-    "screen_with_charger": 49,
-    "earphones_count": 75,
-    "case_count": 65,
-    "earphones_case_together": 30,
-    "earphones_retail_plus_share": 0.72,  # above the row's 70 percent floor
-    "usb_count": 10,
-    "car_charger_count": 25,
-    "usb_car_together": 2,
-}
+TWELVE_ITEMS = sorted({i for cart in TWELVE for i in cart})
 
 
-def write_kalpa():
-    """500 consumer baskets and 100 Business bulk-orders for Kalpa Retail.
-
-    A consumer basket runs one to about eight product lines; a Business order is one product line
-    at a large quantity. Every order's lines sum to its `amount` by construction, which is what the
-    lab notebook will check. The plants above are placed in the first N_CONSUMER baskets.
-    """
-    rng = random.Random(SEED + 2)
-    product_df = pd.DataFrame(KALPA_PRODUCTS,
-                              columns=["product_id", "name", "category",
-                                       "list_price", "unit_cost"])
-    product_df.to_csv(DATA / "C2_W04_D03_kalpa_products_STUDENT.csv", index=False)
-    name_to_id = dict(zip(product_df.name, product_df.product_id))
-    price_of = dict(zip(product_df.name, product_df.list_price))
-
-    # Decide, for each consumer basket, which of the planted items it holds.
-    baskets = [[] for _ in range(N_CONSUMER)]
-    tiers = []
-    # First: assign the charger to 425 baskets, chosen as the first 425 for determinism.
-    for i in range(PLANTS["charger_count"]):
-        baskets[i].append("phone charger 20W")
-    # Screen protector: 60 baskets, 49 of them in [0..424] (charger-holders).
-    screen_with = list(range(PLANTS["screen_with_charger"]))
-    screen_without = list(range(PLANTS["charger_count"],
-                                PLANTS["charger_count"]
-                                + (PLANTS["screen_count"] - PLANTS["screen_with_charger"])))
-    for i in screen_with + screen_without:
-        baskets[i].append("screen protector")
-    # Earphones and case: a correlated pair, lift 3.1. Place 30 baskets with both, 45 with
-    # earphones only, 35 with case only.
-    rng_order = list(range(N_CONSUMER))
-    rng.shuffle(rng_order)
-    both = rng_order[:30]
-    e_only = rng_order[30:30 + 45]
-    c_only = rng_order[30 + 45:30 + 45 + 35]
-    for i in both:
-        baskets[i].append("wireless earphones"); baskets[i].append("earphone case")
-    for i in e_only:
-        baskets[i].append("wireless earphones")
-    for i in c_only:
-        baskets[i].append("earphone case")
-    # Retail-Plus marker: 72 percent of the 30 both-baskets are Retail-Plus, so 22 of them get the
-    # tier marker. The rest of the baskets each get a tier independently.
-    tier_plus = set(both[:int(round(0.72 * 30))])
-    # USB-C cable and car charger: 2 baskets with both, 8 with usb only, 23 with car charger only.
-    rng.shuffle(rng_order)
-    uc_both = rng_order[:2]
-    u_only = rng_order[2:10]
-    c_car_only = rng_order[10:33]
-    for i in uc_both:
-        baskets[i].append("USB-C cable"); baskets[i].append("car charger")
-    for i in u_only:
-        baskets[i].append("USB-C cable")
-    for i in c_car_only:
-        baskets[i].append("car charger")
-    # The thinner filler: each basket gets 0 to 4 other products drawn from the catalogue.
-    filler_pool = [p[1] for p in KALPA_PRODUCTS
-                   if p[1] not in {"phone charger 20W", "screen protector",
-                                   "wireless earphones", "earphone case",
-                                   "USB-C cable", "car charger"}]
-    for i, basket in enumerate(baskets):
-        n_filler = rng.choice([0, 0, 1, 1, 2, 3, 4])
-        for _ in range(n_filler):
-            item = rng.choice(filler_pool)
-            if item not in basket:
-                basket.append(item)
-        # Guarantee each basket has at least one line.
-        if not basket:
-            basket.append(rng.choice(filler_pool))
-
-    # Write consumer orders and their lines.
-    orders_rows = []
-    items_rows = []
-    for i, basket in enumerate(baskets):
-        order_id = f"KO{i+1:05d}"
-        customer_tier = "Retail-Plus" if i in tier_plus else rng.choice(
-            ["Retail-Core", "Retail-Plus", "Retail-Core", "Retail-Core"])
-        customer_id = f"RC{i+1:05d}" if customer_tier == "Retail-Core" else f"RP{i+1:05d}"
-        amount = 0
-        for product_name in basket:
-            qty = 1
-            unit_price = price_of[product_name]
-            items_rows.append({
-                "order_id": order_id, "product_id": name_to_id[product_name],
-                "product_name": product_name, "quantity": qty, "unit_price": unit_price,
-                "line_total": qty * unit_price,
-            })
-            amount += qty * unit_price
-        orders_rows.append({
-            "order_id": order_id, "customer_id": customer_id,
-            "customer_tier": customer_tier, "channel": "consumer",
-            "placed_date": (date(2026, 7, 1) + timedelta(days=rng.randint(0, 90))).isoformat(),
-            "amount": amount, "line_count": len(basket),
-        })
-
-    # Business orders: one product per order at a large quantity.
-    for b in range(N_BUSINESS):
-        order_id = f"KO{N_CONSUMER + b + 1:05d}"
-        product_name = rng.choice([p[1] for p in KALPA_PRODUCTS])
-        qty = rng.choice([50, 100, 200, 500])
-        unit_price = price_of[product_name]
-        items_rows.append({
-            "order_id": order_id, "product_id": name_to_id[product_name],
-            "product_name": product_name, "quantity": qty, "unit_price": unit_price,
-            "line_total": qty * unit_price,
-        })
-        orders_rows.append({
-            "order_id": order_id, "customer_id": f"KB{b+1:05d}",
-            "customer_tier": "Business", "channel": "business",
-            "placed_date": (date(2026, 7, 1) + timedelta(days=rng.randint(0, 90))).isoformat(),
-            "amount": qty * unit_price, "line_count": 1,
-        })
-
-    orders = pd.DataFrame(orders_rows)
-    items = pd.DataFrame(items_rows)
-    orders.to_csv(DATA / "C2_W04_D03_kalpa_orders_STUDENT.csv", index=False)
-    items.to_csv(DATA / "C2_W04_D03_kalpa_order_items_STUDENT.csv", index=False)
-    return orders, items
+# =========================================================================== small helpers
+def pick(rng, pool, k, weight=None):
+    """k distinct members of pool, weighted when a weight function is given (Efraimidis-Spirakis)."""
+    if k < 0 or k > len(pool):
+        raise AssertionError(f"cannot pick {k} from {len(pool)}")
+    if weight is None:
+        return rng.sample(pool, k)
+    keyed = [(rng.random() ** (1.0 / weight(i)), i) for i in pool]
+    keyed.sort(reverse=True)
+    return [i for _, i in keyed[:k]]
 
 
-# ---- assertions ----------------------------------------------------------------------------------
-def assert_within(label, actual, target, tol):
-    direction = "<=" if abs(actual - target) <= tol else "GT"
-    if abs(actual - target) > tol:
-        raise AssertionError(f"FAIL {label}: {actual:.4f} is {abs(actual - target):.4f} "
-                             f"from target {target:.4f} (tol {tol})")
-    print(f"PASS {label}: {actual:.4f} within {tol} of {target}")
+def split_counts(total, weights, rng=None, noise=0.0):
+    """Integers proportional to weights (times a little seeded noise) that sum to total exactly."""
+    w = [x * (1 + (rng.uniform(-noise, noise) if rng else 0)) for x in weights]
+    raw = [total * x / sum(w) for x in w]
+    out = [math.floor(r) for r in raw]
+    order = sorted(range(len(raw)), key=lambda i: raw[i] - out[i], reverse=True)
+    for i in order[:total - sum(out)]:
+        out[i] += 1
+    return out
 
 
-def verify_case(carts, cart_items):
-    """Check marginals, pair supports, confidences and lifts against the case file's targets."""
+def check(label, ok, shown=""):
+    if not ok:
+        raise AssertionError(f"FAIL {label} {shown}")
+    print(f"PASS {label} {shown}".rstrip())
+
+
+# =========================================================================== the carts
+def build_carts(rng):
+    """Customers, dates, zones and time bands for 40,000 carts, before any item is placed."""
+    heavy = [12] * 520 + [13] * 560 + [14] * 120                      # 1,200 customers, 15,200 carts
+    light = [1] * 3_750 + [2] * 3_000 + [3] * 1_950 + [4] * 1_300 + [5] * 800   # 10,800 and 24,800
+    counts = heavy + light
+    ids = [f"PC{n:05d}" for n in range(1, len(counts) + 1)]
+    rng.shuffle(ids)
+    customers = [{"customer_id": cid, "heavy": i < len(heavy), "carts": n,
+                  "zone": rng.choices(list(ZONES), weights=list(ZONES.values()))[0]}
+                 for i, (cid, n) in enumerate(zip(ids, counts))]
+    slots = [c for c in customers for _ in range(c["carts"])]
+    rng.shuffle(slots)
+
+    # Daily carts move with the week (weekends busier) and a few percent of noise.
+    dow = {0: 0.96, 1: 0.95, 2: 0.97, 3: 0.98, 4: 1.03, 5: 1.08, 6: 1.10}
+    per_day = split_counts(N_CARTS, [dow[d.weekday()] for d in MONTH], rng, noise=0.04)
+    days = [d for d, n in zip(MONTH, per_day) for _ in range(n)]
+    bands = [b for b, n in BANDS.items() for _ in range(n)]
+    rng.shuffle(bands)
+    band_rank = {b: i for i, b in enumerate(BANDS)}
+    carts = [{"customer": c, "day": d, "band": b, "tie": rng.random()}
+             for c, d, b in zip(slots, days, bands)]
+    carts.sort(key=lambda r: (r["day"], band_rank[r["band"]], r["tie"]))
+    for n, r in enumerate(carts, start=1):
+        r["cart_id"] = f"C{n:06d}"
+        r["zone"] = r["customer"]["zone"]
+        r["stockout"] = (r["zone"] in STOCKOUT_ZONES
+                         and STOCKOUT_DAYS[0] <= r["day"] <= STOCKOUT_DAYS[1])
+    return customers, carts
+
+
+def place_items(rng, carts):
+    """Every item placed as an exact count, stratified by milk so its lift to milk stays near one."""
     n = len(carts)
-    item_sets = cart_items.groupby("cart_id")["item"].apply(set)
-    def rate(name):
-        return int(sum(1 for s in item_sets if name in s)) / n
-    def pair(a, b):
-        return int(sum(1 for s in item_sets if a in s and b in s)) / n
-    p_milk = rate("toned milk")
-    assert_within("milk marginal", p_milk, 0.71, 0.012)
-    p_bread = rate("bread");          assert_within("bread marginal",      p_bread, 0.34, 0.010)
-    p_eggs = rate("eggs");            assert_within("eggs marginal",       p_eggs,  0.29, 0.010)
-    p_curd = rate("curd");            assert_within("curd marginal",       p_curd,  0.26, 0.010)
-    p_ban = rate("bananas");          assert_within("bananas marginal",    p_ban,   0.23, 0.010)
-    p_chips = rate("chips");          assert_within("chips marginal",      p_chips, 0.12, 0.010)
-    p_cold = rate("cold drink");      assert_within("cold drink marginal", p_cold,  0.123, 0.010)
-    p_ice = rate("ice cream");        assert_within("ice cream marginal",  p_ice,   0.04, 0.006)
-    p_choc = rate("chocolate sauce"); assert_within("choc sauce marginal", p_choc,  0.0136, 0.004)
-    # Pair-level targets.
-    p_bm = pair("bread", "toned milk")
-    conf_bm = p_bm / p_bread
-    lift_bm = p_bm / (p_bread * p_milk)
-    assert_within("bread -> milk conf", conf_bm, 0.74, 0.02)
-    assert_within("bread, milk lift",    lift_bm, 1.04, 0.03)
-    p_em = pair("eggs", "toned milk"); conf_em = p_em / p_eggs
-    lift_em = p_em / (p_eggs * p_milk)
-    assert_within("eggs -> milk conf",   conf_em, 0.73, 0.02)
-    assert_within("eggs, milk lift",     lift_em, 1.03, 0.03)
-    p_cc = pair("chips", "cold drink")
-    conf_cc = p_cc / p_chips
-    conf_ccc = p_cc / p_cold
-    lift_cc = p_cc / (p_chips * p_cold)
-    assert_within("chips, cold support", p_cc,     0.050, 0.004)
-    assert_within("chips -> cold conf",  conf_cc,  0.42,  0.03)
-    assert_within("cold -> chips conf",  conf_ccc, 0.41,  0.03)
-    assert_within("chips, cold lift",    lift_cc,  3.4,   0.25)
-    p_ic = pair("ice cream", "chocolate sauce")
-    lift_ic = p_ic / (p_ice * p_choc)
-    assert_within("ice, choc support",   p_ic,    0.0025, 0.0015)
-    assert_within("ice, choc lift",      lift_ic, 4.6,    1.5)
-    # Confidence to milk for items with support >= 2 percent sits in [0.68, 0.78], lift in [0.96, 1.08].
-    for name in ["bread", "eggs", "curd", "bananas", "chips", "cold drink", "ice cream"]:
-        p_x = rate(name)
-        p_xm = pair(name, "toned milk")
-        conf_xm = p_xm / p_x
-        lift_xm = p_xm / (p_x * p_milk)
-        if 0.68 <= conf_xm <= 0.78:
-            print(f"PASS conf({name} -> milk) in [0.68, 0.78]: {conf_xm:.3f}")
+    items = [set() for _ in range(n)]
+    # The twelve carts: spread across the month, outside the stock-out, never edited afterwards.
+    eligible = [i for i in range(n) if not carts[i]["stockout"]]
+    twelve = sorted(eligible[k * len(eligible) // 12 + 97] for k in range(12))
+    for i, cart in zip(twelve, TWELVE):
+        items[i] = set(cart)
+    reserved = set(twelve)
+    pool = [i for i in range(n) if i not in reserved]
+
+    def in12(*names):
+        return sum(1 for c in TWELVE if all(x in c for x in names))
+
+    # Milk, by time band: morning carts hold it more often.
+    milk = []
+    by_band = {b: [i for i in pool if carts[i]["band"] == b] for b in BANDS}
+    want = {b: round(MILK_BY_BAND[b] * BANDS[b]) - sum(1 for i in twelve if carts[i]["band"] == b
+                                                       and "toned milk" in items[i]) for b in BANDS}
+    want["evening"] += TARGET["toned milk"] - in12("toned milk") - sum(want.values())
+    for b in BANDS:
+        milk += pick(rng, by_band[b], want[b])
+    for i in milk:
+        items[i].add("toned milk")
+    M = sorted(i for i in pool if "toned milk" in items[i])
+    N = sorted(i for i in pool if "toned milk" not in items[i])
+
+    def place(name, k_milk, k_none, weight=None, among_m=None, among_n=None):
+        for i in pick(rng, among_m if among_m is not None else M, k_milk, weight):
+            items[i].add(name)
+        for i in pick(rng, among_n if among_n is not None else N, k_none, weight):
+            items[i].add(name)
+
+    # Bread, eggs, curd and bananas carry the case file's confidences toward milk.
+    for name, with_milk in (("bread", BREAD_MILK), ("eggs", EGGS_MILK), ("bananas", BANANAS_MILK)):
+        km = with_milk - in12(name, "toned milk")
+        kn = TARGET[name] - with_milk - (in12(name) - in12(name, "toned milk"))
+        place(name, km, kn)
+    # Curd: near zero in two zones for week three, the stock-out the ticket names.
+    km = CURD_MILK - in12("curd", "toned milk")
+    kn = TARGET["curd"] - CURD_MILK - (in12("curd") - in12("curd", "toned milk"))
+    place("curd", km, kn, weight=lambda i: 0.012 if carts[i]["stockout"] else 1.0)
+
+    # Designed pairs: both, then each side alone, each cell 71 percent milk.
+    def pair(a, b, both, weight_both=None, weight_one=None, among=None):
+        free_m = [i for i in M if a not in items[i] and b not in items[i]]
+        free_n = [i for i in N if a not in items[i] and b not in items[i]]
+        if among is not None:
+            free_m = [i for i in free_m if among(i)]
+            free_n = [i for i in free_n if among(i)]
+        k = both - in12(a, b)
+        km = round(0.71 * both) - in12(a, b, "toned milk")
+        for i in pick(rng, free_m, km, weight_both) + pick(rng, free_n, k - km, weight_both):
+            items[i].update((a, b))
+        for name, other in ((a, b), (b, a)):
+            alone = TARGET[name] - both - (in12(name) - in12(name, other))
+            free_m = [i for i in M if name not in items[i] and other not in items[i]]
+            free_n = [i for i in N if name not in items[i] and other not in items[i]]
+            km = round(0.71 * (TARGET[name] - both)) - (in12(name, "toned milk")
+                                                       - in12(name, other, "toned milk"))
+            for i in pick(rng, free_m, km, weight_one) + pick(rng, free_n, alone - km, weight_one):
+                items[i].add(name)
+
+    # Party shoppers: the top tenth place three in four of the carts holding both, while carts
+    # holding only one of the two lean the other way, so counting each customer once shrinks lift.
+    party = lambda i: (4.9 if carts[i]["customer"]["heavy"] else 1.0) * \
+        (1.4 if carts[i]["band"] in ("evening", "night") else 1.0)
+    lean = lambda i: (0.8 if carts[i]["customer"]["heavy"] else 1.0)
+    pair("chips", "cold drink", PAIRS[("chips", "cold drink")], party, lean)
+    pair("coriander", "green chillies", PAIRS[("coriander", "green chillies")])
+    pair("onions", "tomatoes", PAIRS[("onions", "tomatoes")])
+    pair("chocolate sauce", "ice cream", PAIRS[("chocolate sauce", "ice cream")])
+    # Butter: 1,800 of its 2,400 carts hold bread, so it follows bread's milk share.
+    bread_m = [i for i in M if "bread" in items[i]]
+    bread_n = [i for i in N if "bread" in items[i]]
+    with_bread = PAIRS[("bread", "butter")]
+    km = round(with_bread * len(bread_m) / (len(bread_m) + len(bread_n)))
+    place("butter", km, with_bread - km, among_m=bread_m, among_n=bread_n)
+    rest_m = [i for i in M if "bread" not in items[i]]
+    rest_n = [i for i in N if "bread" not in items[i]]
+    alone = TARGET["butter"] - with_bread
+    km = round(alone * len(rest_m) / (len(rest_m) + len(rest_n)))
+    place("butter", km, alone - km, among_m=rest_m, among_n=rest_n)
+
+    # Every other item: an exact count, its milk share drawn between 0.70 and 0.735.
+    done = {"toned milk", "bread", "eggs", "curd", "bananas", "butter"} | {x for p in PAIRS for x in p}
+    for name, _, _, total in CATALOGUE:
+        if name in done:
+            continue
+        k = total - in12(name)
+        km = round(rng.uniform(0.70, 0.735) * total) - in12(name, "toned milk")
+        place(name, km, k - km)
+
+    # A cart with no item cannot exist: move one free-standing item into it from a full cart
+    # without milk, which keeps every count and every milk share exactly as placed.
+    movable = [name for name, _, _, _ in CATALOGUE if name not in done]
+    empties = [i for i in N if not items[i]]
+    donors = [i for i in N if len(items[i]) >= 4 and any(x in movable for x in items[i])]
+    rng.shuffle(donors)
+    if len(donors) < len(empties):
+        raise AssertionError("too few full carts to repair the empty ones")
+    for i, d in zip(empties, donors):
+        name = sorted(x for x in items[d] if x in movable)[0]
+        items[d].discard(name)
+        items[i].add(name)
+    if any(not s for s in items):
+        raise AssertionError("an empty cart survived the repair")
+    return items, twelve
+
+
+def write_case(rng):
+    customers, carts = build_carts(rng)
+    items, twelve = place_items(rng, carts)
+    cart_rows, line_rows = [], []
+    for r, held in zip(carts, items):
+        value = 0
+        for name in sorted(held):
+            if name == "toned milk":
+                q = rng.choices([1, 2, 3], weights=[55, 35, 10])[0]
+            elif name == "eggs":
+                q = rng.choices([1, 2], weights=[85, 15])[0]
+            else:
+                q = rng.choices([1, 2], weights=[90, 10])[0]
+            value += q * PRICE[name]
+            line_rows.append({"cart_id": r["cart_id"], "item": name, "quantity": q,
+                              "price_rs": PRICE[name], "margin_rs": MARGIN[name]})
+        cart_rows.append({"cart_id": r["cart_id"], "customer_id": r["customer"]["customer_id"],
+                          "placed_date": r["day"].isoformat(), "zone": r["zone"],
+                          "time_band": r["band"], "cart_value_rs": value})
+    cart_df = pd.DataFrame(cart_rows)
+    item_df = pd.DataFrame(line_rows)
+    cart_df.to_csv(DATA / "C2_W04_D03_carts_STUDENT.csv", index=False)
+    item_df.to_csv(DATA / "C2_W04_D03_cart_items_STUDENT.csv", index=False, float_format="%.2f")
+    rows = []
+    for k, i in enumerate(twelve):
+        row = {"cart_id": carts[i]["cart_id"]}
+        row.update({name: int(name in items[i]) for name in TWELVE_ITEMS})
+        rows.append(row)
+    twelve_df = pd.DataFrame(rows)
+    twelve_df.to_csv(DATA / "C2_W04_D03_twelve_rows_STUDENT.csv", index=False)
+    return cart_df, item_df, twelve_df
+
+
+# =========================================================================== the strip log
+# Each anchor's suggestions for slots 1, 2 and 3: the curated list before 7 September, and the
+# best non-milk partner by co-occurrence after it (milk's share of each slot is set separately).
+ANCHORS = {"bread": 0.22, "eggs": 0.16, "curd": 0.14, "onions": 0.14, "bananas": 0.10,
+           "paneer": 0.10, "chips": 0.08, "atta": 0.06}
+CURATED = {"bread": ["butter", "eggs", "cheese slices"], "eggs": ["bread", "butter", "onions"],
+           "curd": ["cucumber", "sugar", "mint"], "onions": ["tomatoes", "potatoes", "green chillies"],
+           "bananas": ["apples", "biscuits", "poha"], "paneer": ["capsicum", "green peas", "butter"],
+           "chips": ["cold drink", "namkeen", "ice cubes"], "atta": ["ghee", "sunflower oil", "toned milk"]}
+COUNT_RANKED = {"bread": ["eggs", "curd", "bananas"], "eggs": ["bread", "curd", "bananas"],
+                "curd": ["bread", "eggs", "bananas"], "onions": ["tomatoes", "potatoes", "bread"],
+                "bananas": ["bread", "eggs", "curd"], "paneer": ["onions", "tomatoes", "bread"],
+                "chips": ["cold drink", "bread", "eggs"], "atta": ["onions", "potatoes", "bread"]}
+MILK_SLOT_SHARE = {1: 0.70, 2: 0.50, 3: 0.30}
+MILK_ANCHOR_TILT = {"bread": 1.06, "eggs": 1.04, "curd": 1.0, "onions": 1.0, "bananas": 1.02,
+                    "paneer": 0.97, "chips": 0.80, "atta": 1.0}
+SLOT_PULL = {1: 1.22, 2: 1.00, 3: 0.80}          # the position effect on click-through
+TARGETS = {("before", "milk"): 0.0120, ("before", "other"): 0.0620,
+           ("after", "milk"): 0.0120, ("after", "other"): 0.0640}
+ADD_RATE = 0.50
+
+
+def write_strip_log(rng):
+    """Impressions, clicks and adds by day, slot, anchor and suggestion, calibrated to the ticket."""
+    dow = {0: 0.96, 1: 0.95, 2: 0.96, 3: 0.98, 4: 1.02, 5: 1.10, 6: 1.12}
+    views = [dow[d.weekday()] * (1 + 0.004 * k) * (1 + rng.uniform(-0.03, 0.03))
+             for k, d in enumerate(LOG_DAYS)]
+    before, after = views[:21], views[21:]
+    views = ([round(v * 58_800 * 21 / sum(before)) for v in before]
+             + [round(v * 60_000 * 21 / sum(after)) for v in after])
+    views[-1] += 60_000 * 21 - sum(views[21:])                        # the after mean is 60,000
+    rows = []
+    for d, v in zip(LOG_DAYS, views):
+        window = "after" if d >= CHANGE_DAY else "before"
+        day_pull = (1.05 if d.weekday() >= 5 else 1.0) * (1 + rng.uniform(-0.04, 0.04))
+        shares = split_counts(v, list(ANCHORS.values()), rng, noise=0.08)
+        for slot in (1, 2, 3):
+            for (anchor, _), imp in zip(ANCHORS.items(), shares):
+                if window == "before":
+                    parts = [(CURATED[anchor][slot - 1], imp)]
+                else:
+                    m = round(imp * min(0.95, MILK_SLOT_SHARE[slot] * MILK_ANCHOR_TILT[anchor]
+                                        * (1 + rng.uniform(-0.05, 0.05))))
+                    parts = [("toned milk", m), (COUNT_RANKED[anchor][slot - 1], imp - m)]
+                for item, k in parts:
+                    group = "milk" if item == "toned milk" else "other"
+                    pull = SLOT_PULL[slot] * day_pull * (1 + rng.uniform(-0.06, 0.06))
+                    rows.append({"date": d.isoformat(), "slot": slot, "anchor_item": anchor,
+                                 "suggested_item": item, "impressions": k,
+                                 "_window": window, "_group": group, "_pull": pull})
+    log = pd.DataFrame(rows)
+    # Calibrate clicks so each window and group lands on its target rate, then adds at half.
+    for (window, group), target in TARGETS.items():
+        sel = (log._window == window) & (log._group == group)
+        raw = log.loc[sel, "impressions"] * log.loc[sel, "_pull"]
+        scale = target * log.loc[sel, "impressions"].sum() / raw.sum()
+        log.loc[sel, "clicks"] = (raw * scale).round()
+        gap = round(target * log.loc[sel, "impressions"].sum()) - int(log.loc[sel, "clicks"].sum())
+        top = log.loc[sel, "impressions"].idxmax()
+        log.loc[top, "clicks"] += gap
+    log["clicks"] = log["clicks"].astype(int)
+    noise = [1 + rng.uniform(-0.08, 0.08) for _ in range(len(log))]
+    log["adds"] = [round(c * ADD_RATE * z) for c, z in zip(log.clicks, noise)]
+    for window in ("before", "after"):
+        for group in ("milk", "other"):
+            sel = (log._window == window) & (log._group == group)
+            if not sel.any():
+                continue
+            gap = round(ADD_RATE * log.loc[sel, "clicks"].sum()) - int(log.loc[sel, "adds"].sum())
+            top = log.loc[sel, "clicks"].idxmax()
+            log.loc[top, "adds"] += gap
+    log = log.drop(columns=["_window", "_group", "_pull"])
+    log = log[log.impressions > 0].reset_index(drop=True)
+    log.to_csv(DATA / "C2_W04_D03_strip_log_STUDENT.csv", index=False)
+    return log
+
+
+# =========================================================================== the Kalpa transfer
+KALPA_PRODUCTS = [
+    ("P001", "phone charger 20W", "Electronics", 199, 120),
+    ("P002", "screen protector", "Accessories", 149, 85),
+    ("P003", "earphone jack adapter", "Accessories", 89, 50),
+    ("P004", "wireless earphones", "Electronics", 1499, 950),
+    ("P005", "earphone case", "Accessories", 299, 170),
+    ("P006", "car phone mount", "Accessories", 399, 230),
+    ("P007", "car charger", "Electronics", 349, 200),
+    ("P008", "power bank 10000mAh", "Electronics", 1199, 780),
+    ("P009", "phone grip", "Accessories", 99, 55),
+    ("P010", "cable organiser", "Accessories", 149, 80),
+    ("P011", "notebook A5", "Stationery", 79, 40),
+    ("P012", "pen set", "Stationery", 99, 50),
+    ("P013", "LED desk lamp", "Lighting", 699, 420),
+    ("P014", "extension cord", "Electronics", 499, 290),
+    ("P015", "USB-C cable", "Electronics", 249, 140),
+]
+KP = {p[0]: p for p in KALPA_PRODUCTS}
+FILLERS = {"P003": 1.0, "P008": 0.9, "P009": 1.1, "P010": 1.0, "P011": 1.3, "P012": 1.2,
+           "P013": 0.9, "P014": 1.0, "P015": 1.2}
+KALPA = {"charger": 686, "screen": 100, "screen_with_charger": 82,
+         "earphones": 110, "case": 116, "earphones_and_case": 49, "pair_retail_plus": 37,
+         "mount": 14, "car_charger": 29, "mount_and_car_charger": 2}
+
+
+def kalpa_tables():
+    """v4's customers and orders, exactly as the client-zero generator builds them."""
+    t = cz.build_v4()
+    segment = {c["customer_id"]: c["segment"] for c in t["customers"]}
+    orders = [dict(o, segment=segment[o["customer_id"]]) for o in t["orders"]]
+    return sorted(orders, key=lambda o: o["order_id"])
+
+
+def write_kalpa(rng):
+    """Order lines for v4's 1,000 orders: consumer baskets of one to eight lines, Business orders
+    of one product in bulk, every order's lines summing to its amount."""
+    orders = kalpa_tables()
+    consumer = [o for o in orders if o["segment"] != "Business"]
+    business = [o for o in orders if o["segment"] == "Business"]
+    basket = {o["order_id"]: [] for o in consumer}
+    amount = {o["order_id"]: o["amount"] for o in orders}
+    ids = [o["order_id"] for o in consumer]
+
+    def listed(oid):
+        return sum(KP[p][3] for p in basket[oid])
+
+    def place(pid, pool, k, need_room=0):
+        fits = [oid for oid in pool if pid not in basket[oid]
+                and listed(oid) + KP[pid][3] + need_room <= amount[oid]]
+        for oid in pick(rng, sorted(fits), k):
+            basket[oid].append(pid)
+
+    charger = set(pick(rng, ids, KALPA["charger"]))
+    with_c = sorted(charger)
+    without_c = sorted(set(ids) - charger)
+    share = len(with_c) / len(ids)
+    plus = {o["order_id"] for o in consumer if o["segment"] == "Retail-Plus"}
+
+    # The strongest pair, mostly Retail-Plus, each cell split by the charger's share.
+    both = KALPA["earphones_and_case"]
+    k_plus_c = round(KALPA["pair_retail_plus"] * share)
+    k_rest_c = round(both * share) - k_plus_c
+    room = 1499 + 299 + 199
+    place("P004", [o for o in with_c if o in plus], k_plus_c, 299 + 199)
+    place("P004", [o for o in without_c if o in plus], KALPA["pair_retail_plus"] - k_plus_c, 299)
+    place("P004", [o for o in with_c if o not in plus], k_rest_c, 299 + 199)
+    place("P004", [o for o in without_c if o not in plus],
+          both - KALPA["pair_retail_plus"] - k_rest_c, 299)
+    paired = [oid for oid in ids if "P004" in basket[oid]]
+    for oid in paired:
+        basket[oid].append("P005")
+    for pid, total in (("P004", KALPA["earphones"]), ("P005", KALPA["case"])):
+        alone = total - both
+        kc = round(total * share) - sum(1 for o in paired if o in charger)
+        free_c = [o for o in with_c if "P004" not in basket[o] and "P005" not in basket[o]]
+        free_n = [o for o in without_c if "P004" not in basket[o] and "P005" not in basket[o]]
+        place(pid, free_c, kc, 199)
+        place(pid, free_n, alone - kc)
+    # The thin pair: two baskets hold the car phone mount and the car charger together.
+    k = KALPA["mount_and_car_charger"]
+    duo = pick(rng, sorted(o for o in with_c if listed(o) + 399 + 349 + 199 <= amount[o]), k)
+    for oid in duo:
+        basket[oid] += ["P006", "P007"]
+    for pid, other, total in (("P006", "P007", KALPA["mount"]), ("P007", "P006", KALPA["car_charger"])):
+        kc = round(total * share) - k
+        free_c = [o for o in with_c if other not in basket[o]]
+        free_n = [o for o in without_c if other not in basket[o]]
+        place(pid, free_c, kc, 199)
+        place(pid, free_n, total - k - kc)
+    # The charger's partner: confidence toward the charger 0.82.
+    place("P002", with_c, KALPA["screen_with_charger"], 199)
+    place("P002", without_c, KALPA["screen"] - KALPA["screen_with_charger"])
+    for oid in with_c:
+        basket[oid].append("P001")
+
+    # Fill each basket from the free-standing products until its list total covers the amount,
+    # balancing every filler between baskets with and without the charger.
+    seen = {s: Counter() for s in (True, False)}
+    size = {True: len(with_c), False: len(without_c)}
+    lines = {}
+    for oid in ids:
+        a, s = amount[oid], oid in charger
+        qty = Counter(basket[oid])
+        total = sum(KP[p][3] * q for p, q in qty.items())
+        while total < a:
+            room_left = a / 0.85 - total
+            options = [p for p in FILLERS if p not in qty and KP[p][3] <= room_left
+                       and len(qty) < 8]
+            if options:
+                p = min(options, key=lambda p: ((seen[s][p] + 1) / (size[s] * FILLERS[p]))
+                        * (1 + rng.uniform(0, 0.35)))
+                seen[s][p] += 1
+            else:
+                # Another unit of a cheap line, never of the dearest, which stays a single unit.
+                top = max(qty, key=lambda p: (KP[p][3], p))
+                cheap = sorted((p for p in qty if p != top), key=lambda p: KP[p][3])
+                fit = [p for p in cheap if KP[p][3] <= room_left] or cheap[:1] or [top]
+                p = fit[0]
+            qty[p] += 1
+            total += KP[p][3]
+        lines[oid] = qty
+    item_rows = []
+    for oid in ids:
+        qty = lines[oid]
+        a = amount[oid]
+        total = sum(KP[p][3] * q for p, q in qty.items())
+        # The discount from list to amount, shared in whole rupees: each multi-unit line takes its
+        # proportional share per unit, and the single-unit lines absorb what is left.
+        cut = total - a
+        off = {p: (cut * KP[p][3] // total if qty[p] > 1 else 0) for p in qty}
+        left = cut - sum(off[p] * qty[p] for p in qty)
+        singles = sorted((p for p in qty if qty[p] == 1), key=lambda p: (-KP[p][3], p))
+        room = sum(KP[p][3] for p in singles)
+        for p in singles:
+            off[p] = left * KP[p][3] // room
+        off[singles[0]] += left - sum(off[p] for p in singles)
+        price = {p: KP[p][3] - off[p] for p in qty}
+        if sum(price[p] * q for p, q in qty.items()) != a:
+            raise AssertionError(f"cannot settle {oid}")
+        for p in sorted(qty):
+            item_rows.append({"order_id": oid, "product_id": p, "quantity": qty[p],
+                              "unit_price": price[p]})
+    # Business: one product in bulk at a unit price within a quarter of its list price.
+    for o in business:
+        a = o["amount"]
+        for pid in pick(rng, sorted(KP), len(KP)):
+            lp = KP[pid][3]
+            fits = [u for u in range(lp, int(0.75 * lp) - 1, -1) if a % u == 0]
+            if fits:
+                u = fits[0]
+                item_rows.append({"order_id": o["order_id"], "product_id": pid,
+                                  "quantity": a // u, "unit_price": u})
+                break
         else:
-            raise AssertionError(f"FAIL conf({name} -> milk)={conf_xm:.3f} outside [0.68, 0.78]")
-        if 0.96 <= lift_xm <= 1.08:
-            print(f"PASS lift({name}, milk) in [0.96, 1.08]: {lift_xm:.3f}")
-        else:
-            raise AssertionError(f"FAIL lift({name}, milk)={lift_xm:.3f} outside [0.96, 1.08]")
-    # Heavy-tenth check: top ten percent of customers place about 38 percent of carts.
-    cust_counts = carts["customer_id"].value_counts()
-    top_n = max(1, int(round(0.10 * len(cust_counts))))
-    heavy_share = cust_counts.iloc[:top_n].sum() / len(carts)
-    assert_within("top 10 percent of customers place share", heavy_share, 0.38, 0.03)
-    return {
-        "milk_marginal": p_milk, "bread_marginal": p_bread, "eggs_marginal": p_eggs,
-        "curd_marginal": p_curd, "bananas_marginal": p_ban, "chips_marginal": p_chips,
-        "cold_marginal": p_cold, "icecream_marginal": p_ice, "chocsauce_marginal": p_choc,
-        "bread_milk_support": p_bm, "bread_milk_conf": conf_bm, "bread_milk_lift": lift_bm,
-        "eggs_milk_conf": conf_em, "eggs_milk_lift": lift_em,
-        "chips_cold_support": p_cc, "chips_cold_conf_c": conf_cc, "chips_cold_conf_d": conf_ccc,
-        "chips_cold_lift": lift_cc,
-        "ice_choc_support": p_ic, "ice_choc_lift": lift_ic,
-        "heavy_tenth_share": heavy_share,
-    }
+            raise AssertionError(f"no bulk price settles {o['order_id']}")
+    products = pd.DataFrame(KALPA_PRODUCTS, columns=["product_id", "name", "category",
+                                                      "list_price", "unit_cost"])
+    order_df = pd.DataFrame([{k: o[k] for k in ("order_id", "customer_id", "segment", "order_date",
+                                                "channel", "amount", "status")} for o in orders])
+    item_df = pd.DataFrame(item_rows).sort_values(["order_id", "product_id"]).reset_index(drop=True)
+    products.to_csv(DATA / "C2_W04_D03_kalpa_products_STUDENT.csv", index=False)
+    order_df.to_csv(DATA / "C2_W04_D03_kalpa_orders_STUDENT.csv", index=False)
+    item_df.to_csv(DATA / "C2_W04_D03_kalpa_order_items_STUDENT.csv", index=False)
+    return products, order_df, item_df
 
 
-def verify_strip(strip):
-    """Check the before and after click-throughs reproduce the headline rates."""
-    before = strip[strip.date < "2026-09-07"]
-    after = strip[strip.date >= "2026-09-07"]
-    before_ctr = before.clicks.sum() / before.impressions.sum()
-    after_ctr = after.clicks.sum() / after.impressions.sum()
-    assert_within("before-change blended CTR", before_ctr, 0.061, 0.001)
-    assert_within("after-change blended CTR",  after_ctr,  0.038, 0.001)
-    milk_after = after[after.suggested_item == "toned milk"]
-    other_after = after[after.suggested_item != "toned milk"]
-    milk_ctr = milk_after.clicks.sum() / milk_after.impressions.sum()
-    other_ctr = other_after.clicks.sum() / other_after.impressions.sum()
-    assert_within("milk-slot CTR after",  milk_ctr,  0.012, 0.001)
-    assert_within("other-slot CTR after", other_ctr, 0.064, 0.001)
-    milk_share = milk_after.impressions.sum() / after.impressions.sum()
-    # The milk impression share after the change sits at the 50 percent that reproduces the 3.8
-    # blend from the 1.2 and 6.4 slot rates, which is the correction recorded in the facts file.
-    assert_within("milk-slot impression share after", milk_share, 0.50, 0.01)
-    return {"before_ctr": before_ctr, "after_ctr": after_ctr,
-            "milk_slot_ctr": milk_ctr, "other_slot_ctr": other_ctr,
-            "milk_slot_share_after": milk_share}
+# =========================================================================== measuring
+def measures(baskets, a, b):
+    """Support, the two confidences and lift for one pair over a list of item sets."""
+    n = len(baskets)
+    na = sum(1 for s in baskets if a in s)
+    nb = sum(1 for s in baskets if b in s)
+    nab = sum(1 for s in baskets if a in s and b in s)
+    return {"n": n, "na": na, "nb": nb, "nab": nab, "support": nab / n, "conf_ab": nab / na,
+            "conf_ba": nab / nb, "lift": nab * n / (na * nb)}
 
 
-def verify_twelve_rows(df):
-    """The twelve rows hand count: assert the ratios the deck and the cheat sheet will print."""
-    def cnt(col): return int(df[col].sum())
-    def tog(a, b): return int(((df[a] == 1) & (df[b] == 1)).sum())
-    milk = cnt("toned milk"); bread = cnt("bread"); eggs = cnt("eggs")
-    chips = cnt("chips"); cold = cnt("cold drink")
-    ice = cnt("ice cream"); choc = cnt("chocolate sauce")
-    bm = tog("bread", "toned milk"); cc = tog("chips", "cold drink")
-    ic = tog("ice cream", "chocolate sauce")
-    # Hand counts.
-    assert milk == 8, f"milk 8 expected, got {milk}"; print(f"PASS twelve rows milk count: 8")
-    assert bread == 4, f"bread 4 expected, got {bread}"; print(f"PASS twelve rows bread count: 4")
-    assert bm == 4, f"bread with milk 4 expected, got {bm}"
-    print(f"PASS twelve rows bread with milk count: 4 (bread -> milk conf 1.00, lift 1.50)")
-    assert chips == 3 and cold == 3 and cc == 2
-    print(f"PASS twelve rows chips 3, cold 3, together 2 (support 0.167, conf 0.667, lift 2.667)")
-    assert ice == 1 and choc == 1 and ic == 1
-    print(f"PASS twelve rows ice-choc 1 together (support 0.083, lift 12)")
-    return {
-        "milk_n": milk, "bread_n": bread, "bread_milk_n": bm,
-        "chips_n": chips, "cold_n": cold, "chips_cold_n": cc,
-        "ice_n": ice, "choc_n": choc, "ice_choc_n": ic,
-        "milk_marginal_12": milk / 12, "bread_marginal_12": bread / 12,
-        "bread_milk_conf_12": bm / bread,
-        "bread_milk_lift_12": (bm / 12) / ((bread / 12) * (milk / 12)),
-        "chips_cold_support_12": cc / 12,
-        "chips_cold_conf_12": cc / chips,
-        "chips_cold_lift_12": (cc / 12) / ((chips / 12) * (cold / 12)),
-        "ice_choc_support_12": ic / 12,
-        "ice_choc_lift_12": (ic / 12) / ((ice / 12) * (choc / 12)),
-    }
+def pairs_table(baskets):
+    """Every pair that appears in at least one basket, with support and lift."""
+    n = len(baskets)
+    single = Counter(x for s in baskets for x in s)
+    double = Counter(p for s in baskets for p in combinations(sorted(s), 2))
+    rows = [{"a": a, "b": b, "both": k, "support": k / n,
+             "conf_ab": k / single[a], "conf_ba": k / single[b],
+             "lift": k * n / (single[a] * single[b])} for (a, b), k in double.items()]
+    return pd.DataFrame(rows).sort_values(["lift", "a", "b"], ascending=[False, True, True])
 
 
-def verify_kalpa(orders, items):
-    """The Kalpa transfer plants: charger share, screen partner confidence and lift, strongest and
-    thinnest pairs, and the Business order shape."""
-    consumer = orders[orders.channel == "consumer"]
-    basket_items = items[items.order_id.isin(consumer.order_id)].groupby("order_id")["product_name"].apply(set)
-    n = len(basket_items)
-    def rate(name): return int(sum(1 for s in basket_items if name in s)) / n
-    def pair_rate(a, b):
-        return int(sum(1 for s in basket_items if a in s and b in s)) / n
-    p_charger = rate("phone charger 20W")
-    p_screen = rate("screen protector")
-    pair_sc = pair_rate("screen protector", "phone charger 20W")
-    conf_sc = pair_sc / p_screen
-    lift_sc = pair_sc / (p_screen * p_charger)
-    assert 0.84 <= p_charger <= 0.86, f"charger share {p_charger:.3f} outside [0.84, 0.86]"
-    print(f"PASS Kalpa charger share: {p_charger:.3f}")
-    assert_within("Kalpa screen -> charger conf", conf_sc, 0.82, 0.02)
-    assert_within("Kalpa screen, charger lift",    lift_sc, 0.97, 0.03)
-    p_ear = rate("wireless earphones"); p_case = rate("earphone case")
-    pair_ec = pair_rate("wireless earphones", "earphone case")
-    lift_ec = pair_ec / (p_ear * p_case)
-    assert pair_ec >= 0.05, f"strongest pair support {pair_ec:.3f} below 0.05"
-    assert_within("Kalpa strongest pair lift", lift_ec, 3.1, 0.3)
-    p_usb = rate("USB-C cable"); p_cc = rate("car charger")
-    pair_uc = pair_rate("USB-C cable", "car charger")
-    lift_uc = pair_uc / (p_usb * p_cc)
-    assert 0.002 <= pair_uc <= 0.004, f"thin pair support {pair_uc:.4f} outside [0.002, 0.004]"
-    assert_within("Kalpa thin pair lift", lift_uc, 4.0, 0.4)
-    # Every order's lines must sum to orders.amount.
-    line_sums = items.groupby("order_id")["line_total"].sum()
-    merged = orders.set_index("order_id")["amount"]
-    joined = line_sums.to_frame("sum").join(merged.to_frame("amount"))
-    if not (joined["sum"] == joined["amount"]).all():
-        raise AssertionError("order lines do not sum to order amount for every order")
-    print(f"PASS Kalpa order lines sum to amount for every one of {len(orders)} orders")
-    return {
-        "charger_share": p_charger, "screen_conf_to_charger": conf_sc,
-        "screen_charger_lift": lift_sc, "strongest_pair_lift": lift_ec,
-        "strongest_pair_support": pair_ec, "thin_pair_lift": lift_uc,
-        "thin_pair_support": pair_uc, "consumer_count": n,
-        "business_count": int((orders.channel == "business").sum()),
-    }
+def weighted_lift(carts, baskets, a, b):
+    """Lift with every customer counted once: each cart weighs one over its customer's cart count."""
+    w = 1 / carts.groupby("customer_id").cart_id.transform("count")
+    has_a = baskets.apply(lambda s: a in s).values
+    has_b = baskets.apply(lambda s: b in s).values
+    total = w.sum()
+    pa, pb = (w * has_a).sum() / total, (w * has_b).sum() / total
+    pab = (w * (has_a & has_b)).sum() / total
+    return pab / (pa * pb)
 
 
-# ---- facts file ----------------------------------------------------------------------------------
-def write_facts(case, strip, twelve, kalpa):
-    """Write every learner-visible number with its id, how-computed line, and where it is used."""
-    text = textwrap.dedent(f"""
-    # content/W04/D3/internal/C2_W04_D03_facts_INTERNAL.yaml
-    # Every number a Wednesday pack learner will see, with its id, how it was computed and where
-    # it is used. The generator writes this file alongside the CSVs; a figure script, a deck or a
-    # notebook that prints a number not listed here fails the pack's own self-check.
-    #
-    # Corrections. Two figures the case file lists cannot stand together, so they were adjusted:
-    #   milk_slot_share_after was set to 0.50 because 44 percent beside 1.2 and 6.4 percent slot
-    #     click-throughs produces a 4.11 percent blend and not the 3.8 percent the headline fall
-    #     calls for. 0.50 is the share that reproduces 3.8 from the two slot rates.
-    #   twelve_bread_milk_conf was moved from 0.75 to 1.00 (every bread cart also holds milk) so
-    #     the hand count sits at least 0.05 from the full-data 0.74, which the spine's distance
-    #     rule requires.
-
-    day:
-      week: W04
-      day: D3
-      date: 2026-10-28
-      case: Swiggy Instamart, Pune, the frequently bought together strip
-      kalpa_transfer: Rs 199 phone charger across Kalpa Retail consumer baskets
-
-    # ----------------------------------------------------------------- the case ticket
-    ticket:
-      - id: before_strip_ctr
-        value: 0.061
-        how: "clicks over impressions for the three slots, 17 August to 6 September 2026"
-        used_in: deck half1 cover, notebook 01 cell 1, cheat sheet panel 1
-      - id: after_strip_ctr
-        value: 0.038
-        how: "clicks over impressions for the three slots, 7 to 27 September 2026"
-        used_in: deck half1 cover, notebook 01 cell 1, cheat sheet panel 1
-      - id: milk_slot_ctr_after
-        value: {strip['milk_slot_ctr']:.4f}
-        how: "clicks over impressions on the slots suggesting toned milk, 7 to 27 September 2026"
-        used_in: deck half1 chapter 2, notebook 02 your-turn
-      - id: other_slot_ctr_after
-        value: {strip['other_slot_ctr']:.4f}
-        how: "clicks over impressions on the slots suggesting any item other than toned milk"
-        used_in: deck half1 chapter 2, notebook 02 your-turn
-      - id: milk_slot_share_after
-        value: {strip['milk_slot_share_after']:.4f}
-        how: "milk-slot impressions over total slot impressions, 7 to 27 September 2026"
-        used_in: deck half1 chapter 3, notebook 03
-      - id: total_carts
-        value: 40000
-        how: "fixed by the generator"
-        used_in: ticket, notebook 02 cell 1
-      - id: cart_window_days
-        value: 28
-        how: "1 to 28 September 2026 inclusive"
-        used_in: ticket
-      - id: pune_zones
-        value: 8
-        how: "fixed city map used by the Pune Instamart surface"
-        used_in: ticket
-
-    # ----------------------------------------------------------------- the full-data pairs table
-    full_data:
-      - id: milk_marginal
-        value: {case['milk_marginal']:.4f}
-        how: "share of the 40,000 carts that hold toned milk"
-        used_in: deck half1 chapter 2, notebook 02, cheat sheet panel 1
-      - id: bread_marginal
-        value: {case['bread_marginal']:.4f}
-        how: "share of the 40,000 carts that hold bread"
-        used_in: deck half1 chapter 2, notebook 02
-      - id: eggs_marginal
-        value: {case['eggs_marginal']:.4f}
-        how: "share of the 40,000 carts that hold eggs"
-        used_in: deck half1 chapter 2
-      - id: curd_marginal
-        value: {case['curd_marginal']:.4f}
-        how: "share of the 40,000 carts that hold curd"
-        used_in: deck half1 chapter 2
-      - id: bananas_marginal
-        value: {case['bananas_marginal']:.4f}
-        how: "share of the 40,000 carts that hold bananas"
-        used_in: deck half1 chapter 2
-      - id: chips_marginal
-        value: {case['chips_marginal']:.4f}
-        how: "share of the 40,000 carts that hold chips"
-        used_in: deck half1 chapter 2, cheat sheet panel 1
-      - id: cold_marginal
-        value: {case['cold_marginal']:.4f}
-        how: "share of the 40,000 carts that hold a cold drink"
-        used_in: deck half1 chapter 2, cheat sheet panel 1
-      - id: icecream_marginal
-        value: {case['icecream_marginal']:.4f}
-        how: "share of the 40,000 carts that hold ice cream"
-        used_in: deck half1 chapter 2
-      - id: chocsauce_marginal
-        value: {case['chocsauce_marginal']:.4f}
-        how: "share of the 40,000 carts that hold chocolate sauce"
-        used_in: deck half1 chapter 2
-      - id: bread_milk_support
-        value: {case['bread_milk_support']:.4f}
-        how: "share of the 40,000 carts that hold both bread and toned milk"
-        used_in: notebook 02 cell 7
-      - id: bread_milk_conf
-        value: {case['bread_milk_conf']:.4f}
-        how: "P(milk | bread), computed as bread_milk_support divided by bread_marginal"
-        used_in: deck half1 chapter 2 trap slide, notebook 02 cell 8, cheat sheet panel 1
-      - id: bread_milk_lift
-        value: {case['bread_milk_lift']:.4f}
-        how: "bread_milk_support divided by (bread_marginal times milk_marginal)"
-        used_in: deck half1 chapter 2 reveal slide, notebook 02 cell 9, cheat sheet panel 1
-      - id: eggs_milk_conf
-        value: {case['eggs_milk_conf']:.4f}
-        how: "P(milk | eggs), the same shape as bread -> milk"
-        used_in: notebook 02 cell 10
-      - id: eggs_milk_lift
-        value: {case['eggs_milk_lift']:.4f}
-        how: "symmetric lift between eggs and toned milk"
-        used_in: notebook 02 cell 10
-      - id: chips_cold_support
-        value: {case['chips_cold_support']:.4f}
-        how: "share of the 40,000 carts that hold both chips and a cold drink"
-        used_in: deck half1 chapter 2 reveal slide, notebook 02 cell 12
-      - id: chips_cold_conf
-        value: {case['chips_cold_conf_c']:.4f}
-        how: "P(cold | chips), chips_cold_support divided by chips_marginal"
-        used_in: notebook 02 cell 12
-      - id: cold_chips_conf
-        value: {case['chips_cold_conf_d']:.4f}
-        how: "P(chips | cold), chips_cold_support divided by cold_marginal"
-        used_in: notebook 02 cell 12
-      - id: chips_cold_lift
-        value: {case['chips_cold_lift']:.4f}
-        how: "chips_cold_support divided by (chips_marginal times cold_marginal)"
-        used_in: deck half1 chapter 2, notebook 02 cell 13, cheat sheet panel 1
-      - id: ice_choc_support
-        value: {case['ice_choc_support']:.6f}
-        how: "share of the 40,000 carts that hold both ice cream and chocolate sauce"
-        used_in: deck half1 chapter 2, notebook 02 cell 14
-      - id: ice_choc_lift
-        value: {case['ice_choc_lift']:.4f}
-        how: "ice_choc_support divided by (icecream_marginal times chocsauce_marginal)"
-        used_in: deck half1 chapter 2 thin-pair slide, notebook 02 cell 14
-      - id: heavy_tenth_share
-        value: {case['heavy_tenth_share']:.4f}
-        how: "carts placed by the top ten percent of customers, divided by total carts"
-        used_in: deck half1 chapter 3 caveat slide, notebook 03
-
-    # ----------------------------------------------------------------- the twelve printed rows
-    twelve_rows:
-      - id: twelve_milk
-        value: {twelve['milk_n']}
-        how: "the number of the twelve printed carts that hold toned milk"
-        used_in: deck half1 chapter 1, notebook 01 cell 4, cheat sheet panel 2
-      - id: twelve_bread
-        value: {twelve['bread_n']}
-        how: "the number of the twelve printed carts that hold bread"
-        used_in: deck half1 chapter 1, notebook 01 cell 4
-      - id: twelve_bread_milk
-        value: {twelve['bread_milk_n']}
-        how: "the number of the twelve printed carts that hold both bread and toned milk"
-        used_in: deck half1 chapter 1, notebook 01 cell 5
-      - id: twelve_bread_milk_conf
-        value: {twelve['bread_milk_conf_12']:.4f}
-        how: "twelve_bread_milk divided by twelve_bread; the hand count's confidence"
-        used_in: deck half1 chapter 1 reveal slide, notebook 01 cell 5, cheat sheet panel 2
-      - id: twelve_bread_milk_lift
-        value: {twelve['bread_milk_lift_12']:.4f}
-        how: "the hand count's lift from the twelve rows"
-        used_in: deck half1 chapter 1 reveal slide, notebook 01 cell 6, cheat sheet panel 2
-      - id: twelve_chips
-        value: {twelve['chips_n']}
-        how: "the number of the twelve printed carts that hold chips"
-        used_in: deck half1 chapter 1, notebook 01 cell 7
-      - id: twelve_cold
-        value: {twelve['cold_n']}
-        how: "the number of the twelve printed carts that hold a cold drink"
-        used_in: deck half1 chapter 1, notebook 01 cell 7
-      - id: twelve_chips_cold
-        value: {twelve['chips_cold_n']}
-        how: "the number of the twelve printed carts that hold both chips and a cold drink"
-        used_in: deck half1 chapter 1, notebook 01 cell 7
-      - id: twelve_chips_cold_support
-        value: {twelve['chips_cold_support_12']:.4f}
-        how: "twelve_chips_cold divided by 12"
-        used_in: notebook 01 cell 8, cheat sheet panel 2
-      - id: twelve_chips_cold_conf
-        value: {twelve['chips_cold_conf_12']:.4f}
-        how: "twelve_chips_cold divided by twelve_chips"
-        used_in: notebook 01 cell 8
-      - id: twelve_chips_cold_lift
-        value: {twelve['chips_cold_lift_12']:.4f}
-        how: "the hand count's lift for the chips and cold-drink pair"
-        used_in: notebook 01 cell 8, cheat sheet panel 2
-      - id: twelve_ice_choc
-        value: {twelve['ice_choc_n']}
-        how: "the number of the twelve printed carts that hold both ice cream and chocolate sauce"
-        used_in: deck half1 chapter 1 rare-pair slide, notebook 01 cell 9
-      - id: twelve_ice_choc_lift
-        value: {twelve['ice_choc_lift_12']:.4f}
-        how: "the hand count's lift for the ice cream and chocolate sauce pair"
-        used_in: notebook 01 cell 9
-
-    # ----------------------------------------------------------------- the Rs 9 slot value
-    slot_value:
-      - id: pune_cart_views_a_day
-        value: 60000
-        how: "assumption with a range of 50,000 to 70,000; labelled on every slide and sheet"
-        used_in: deck half1 chapter 3, notebook 03
-      - id: strip_add_rate
-        value: 0.50
-        how: "assumption with a range of 0.4 to 0.6; labelled on every slide and sheet"
-        used_in: deck half1 chapter 3, notebook 03
-      - id: margin_per_add_rs
-        value: 9
-        how: "assumption with a range of Rs 7 to Rs 11; labelled on every slide and sheet"
-        used_in: deck half1 chapter 3, notebook 03
-      - id: slot_value_at_other_rs_day
-        value: 17280
-        how: "60,000 x 0.064 x 0.5 x 9, in Rs per day"
-        used_in: deck half1 chapter 3 waterfall slide, notebook 03, cheat sheet panel 2
-      - id: slot_value_at_milk_rs_day
-        value: 3240
-        how: "60,000 x 0.012 x 0.5 x 9, in Rs per day"
-        used_in: deck half1 chapter 3 waterfall slide, notebook 03, cheat sheet panel 2
-      - id: slot_value_gap_rs_month
-        value: 421200
-        how: "(17280 - 3240) x 30, in Rs per month per slot"
-        used_in: deck half1 chapter 3, notebook 03
-      - id: slot_value_three_slots_rs_month
-        value: 1263600
-        how: "3 x slot_value_gap_rs_month, in Rs per month"
-        used_in: deck half1 chapter 3 close, notebook 03
-      - id: support_floor_percent
-        value: 1.0
-        how: "the floor the room sets to count the pairs that qualify; 1 percent of 40,000 is 400"
-        used_in: deck half1 chapter 3, notebook 03
-
-    # ----------------------------------------------------------------- the Kalpa transfer, lab only
-    # These numbers sit in TRAINER files and in notebook 04's your-turn cell outputs. No STUDENT
-    # file names them before the lab, per decision w4-finding-once-found.
-    kalpa_lab:
-      - id: kalpa_consumer_baskets
-        value: {kalpa['consumer_count']}
-        how: "consumer baskets in the Kalpa transfer dataset"
-        used_in: notebook 04 cell 1, trainer lab note
-      - id: kalpa_business_orders
-        value: {kalpa['business_count']}
-        how: "Business orders in the Kalpa transfer dataset"
-        used_in: notebook 04 cell 1
-      - id: kalpa_charger_share
-        value: {kalpa['charger_share']:.4f}
-        how: "share of Kalpa consumer baskets that hold the Rs 199 phone charger"
-        used_in: notebook 04 your-turn output, trainer lab note (TRAINER until the lab)
-      - id: kalpa_screen_charger_conf
-        value: {kalpa['screen_conf_to_charger']:.4f}
-        how: "P(charger | screen protector), the plant the row names"
-        used_in: notebook 04 cell 7 output (TRAINER until the lab)
-      - id: kalpa_screen_charger_lift
-        value: {kalpa['screen_charger_lift']:.4f}
-        how: "symmetric lift between screen protector and the charger"
-        used_in: notebook 04 cell 7 output (TRAINER until the lab)
-      - id: kalpa_strongest_pair_lift
-        value: {kalpa['strongest_pair_lift']:.4f}
-        how: "lift of the strongest pair above a 5 percent support floor, wireless earphones and earphone case"
-        used_in: notebook 04 cell 8 output (TRAINER until the lab)
-      - id: kalpa_strongest_pair_support
-        value: {kalpa['strongest_pair_support']:.4f}
-        how: "support of wireless earphones and earphone case"
-        used_in: notebook 04 cell 8 output (TRAINER until the lab)
-      - id: kalpa_thin_pair_lift
-        value: {kalpa['thin_pair_lift']:.4f}
-        how: "lift of the one pair with support between 0.2 and 0.4 percent, USB-C cable and car charger"
-        used_in: notebook 04 cell 9 output (TRAINER until the lab)
-      - id: kalpa_thin_pair_support
-        value: {kalpa['thin_pair_support']:.4f}
-        how: "support of USB-C cable and car charger"
-        used_in: notebook 04 cell 9 output (TRAINER until the lab)
-    """).lstrip("\n")
-    FACTS.write_text(text, encoding="utf-8")
-    print(f"\nFacts file written: {FACTS.relative_to(HERE.parent.parent.parent.parent)}")
+def verify_case(cart_df, item_df, twelve_df):
+    out = {}
+    n = len(cart_df)
+    check("40,000 carts", n == N_CARTS)
+    baskets = item_df.groupby("cart_id").item.apply(set).reindex(cart_df.cart_id)
+    check("every cart holds at least one item", baskets.notna().all() and baskets.map(len).min() >= 1)
+    single = Counter(x for s in baskets for x in s)
+    for name, _, _, total in CATALOGUE:
+        if single[name] != total:
+            raise AssertionError(f"FAIL {name} in {single[name]} carts, target {total}")
+    check("every one of the 59 items sits in exactly its target number of carts",
+          len(single) == len(CATALOGUE) == 59)
+    out["items"] = len(single)
+    out["lines"] = len(item_df)
+    out["share"] = {name: single[name] / n for name in single}
+    out["count"] = dict(single)
+    pairs = pairs_table(list(baskets))
+    out["pairs_seen"] = len(pairs)
+    for (a, b), k in PAIRS.items():
+        m = measures(list(baskets), a, b)
+        check(f"{a} with {b} in {k:,} carts", m["nab"] == k)
+    for name, k in (("bread", BREAD_MILK), ("eggs", EGGS_MILK), ("curd", CURD_MILK),
+                    ("bananas", BANANAS_MILK)):
+        check(f"{name} with milk in {k:,} carts", measures(list(baskets), name, "toned milk")["nab"] == k)
+    out["m"] = {}
+    for a, b in (("bread", "toned milk"), ("eggs", "toned milk"), ("curd", "toned milk"),
+                 ("bananas", "toned milk"), ("chips", "cold drink"), ("ice cream", "chocolate sauce"),
+                 ("coriander", "green chillies"), ("bread", "butter"), ("onions", "tomatoes")):
+        out["m"][(a, b)] = measures(list(baskets), a, b)
+    bm, em = out["m"][("bread", "toned milk")], out["m"][("eggs", "toned milk")]
+    check("bread to milk confidence 0.74, lift 1.04",
+          round(bm["conf_ab"], 2) == 0.74 and round(bm["lift"], 2) == 1.04)
+    check("eggs to milk confidence 0.73, lift 1.03",
+          round(em["conf_ab"], 2) == 0.73 and round(em["lift"], 2) == 1.03)
+    cc = out["m"][("chips", "cold drink")]
+    check("chips and cold drink: support 5.0 percent, confidences 0.42 and 0.41, lift 3.4",
+          round(cc["support"], 3) == 0.050 and round(cc["conf_ab"], 2) == 0.42
+          and round(cc["conf_ba"], 2) == 0.41 and round(cc["lift"], 1) == 3.4)
+    ic = out["m"][("ice cream", "chocolate sauce")]
+    check("ice cream and chocolate sauce: 100 carts, support 0.25 percent, lift 4.6",
+          ic["nab"] == 100 and round(ic["lift"], 1) == 4.6)
+    # Every item in at least 2 percent of carts: confidence to milk 0.68 to 0.78, lift 0.96 to 1.08.
+    common = sorted(x for x in single if x != "toned milk" and single[x] / n >= 0.02)
+    lo_c = lo_l = 9.0
+    hi_c = hi_l = 0.0
+    for x in common:
+        m = measures(list(baskets), x, "toned milk")
+        lo_c, hi_c = min(lo_c, m["conf_ab"]), max(hi_c, m["conf_ab"])
+        lo_l, hi_l = min(lo_l, m["lift"]), max(hi_l, m["lift"])
+    check(f"{len(common)} items in at least 2 percent of carts: confidence to milk "
+          f"{lo_c:.2f} to {hi_c:.2f}, lift {lo_l:.2f} to {hi_l:.2f}",
+          0.68 <= lo_c and hi_c <= 0.78 and 0.96 <= lo_l and hi_l <= 1.08)
+    out["common"] = (len(common), lo_c, hi_c, lo_l, hi_l)
+    # The floor, the ranking and the watch list.
+    floor = pairs[pairs.support >= 0.01]
+    top = floor.head(4)
+    names = [(r.a, r.b) for r in top.itertuples()]
+    check("above the 1 percent floor, the ranking by lift opens chips and cold drink, coriander "
+          "and green chillies, bread and butter, onions and tomatoes",
+          names == [("chips", "cold drink"), ("coriander", "green chillies"), ("bread", "butter"),
+                    ("onions", "tomatoes")])
+    nxt = floor.iloc[4]
+    check("every other pair above the floor sits below lift 1.15", nxt.lift < 1.15,
+          f"(next is {nxt.a} and {nxt.b} at {nxt.lift:.2f})")
+    out["floor_pairs"] = len(floor)
+    out["floor_above_1_5"] = int((floor.lift >= 1.5).sum())
+    out["next_after_four"] = (nxt.a, nxt.b, nxt.lift)
+    band = pairs[(pairs.support >= 0.002) & (pairs.support < 0.01)]
+    best = band.iloc[0]
+    check("between 0.2 and 1 percent support, ice cream and chocolate sauce has the highest lift",
+          (best.a, best.b) == ("chocolate sauce", "ice cream"))
+    out["watch_band_pairs"] = len(band)
+    thin = pairs[pairs.support < 0.002]
+    out["tiny"] = (len(thin), thin.lift.max())
+    # The top tenth.
+    per_cust = cart_df.customer_id.value_counts()
+    top_n = len(per_cust) // 10
+    share = per_cust.iloc[:top_n].sum() / n
+    check("12,000 customers, and the top tenth place 38 percent of carts",
+          len(per_cust) == 12_000 and round(share, 4) == 0.38)
+    out["customers"] = len(per_cust)
+    out["heavy_share"] = share
+    out["heavy_min"], out["light_max"] = int(per_cust.iloc[top_n - 1]), int(per_cust.iloc[top_n])
+    # Per customer: each customer counted once.
+    out["cc_cust"] = weighted_lift(cart_df, baskets, "chips", "cold drink")
+    out["bm_cust"] = weighted_lift(cart_df, baskets, "bread", "toned milk")
+    check(f"per customer, chips and cold drink fall to {out['cc_cust']:.2f} and bread with milk "
+          f"stays at {out['bm_cust']:.2f}",
+          out["cc_cust"] < cc["lift"] - 0.5 and abs(out["bm_cust"] - bm["lift"]) < 0.03)
+    heavy_ids = set(per_cust.index[:top_n])
+    pair_carts = item_df[item_df.item.isin(["chips", "cold drink"])].groupby("cart_id").item.nunique()
+    both_ids = set(pair_carts[pair_carts == 2].index)
+    owner = cart_df.set_index("cart_id").customer_id
+    out["cc_heavy_share"] = sum(1 for c in both_ids if owner[c] in heavy_ids) / len(both_ids)
+    # Time band.
+    milk_ids = set(item_df.loc[item_df.item == "toned milk", "cart_id"])
+    cart_df = cart_df.assign(milk=cart_df.cart_id.isin(milk_ids))
+    by_band = cart_df.groupby("time_band").milk.mean()
+    out["milk_by_band"] = by_band.to_dict()
+    check("morning carts hold milk most often", by_band.idxmax() == "morning"
+          and by_band["morning"] - by_band.drop("morning").max() >= 0.09)
+    out["bm_by_band"] = {}
+    for b in BANDS:
+        ids = cart_df.loc[cart_df.time_band == b, "cart_id"]
+        out["bm_by_band"][b] = measures(list(baskets.loc[ids]), "bread", "toned milk")["lift"]
+    check("bread with milk reads lift 1.02 to 1.06 in every band",
+          all(1.01 <= v <= 1.07 for v in out["bm_by_band"].values()))
+    # The stock-out.
+    cart_df = cart_df.assign(day=pd.to_datetime(cart_df.placed_date))
+    curd_ids = set(item_df.loc[item_df.item == "curd", "cart_id"])
+    cart_df = cart_df.assign(curd=cart_df.cart_id.isin(curd_ids),
+                             week=(cart_df.day.dt.day - 1) // 7 + 1)
+    hit = cart_df.zone.isin(STOCKOUT_ZONES) & (cart_df.week == 3)
+    out["stock_carts"] = int(hit.sum())
+    out["stock_curd"] = int(cart_df.loc[hit, "curd"].sum())
+    out["curd_in_stock"] = cart_df.loc[hit, "curd"].mean()
+    out["curd_elsewhere"] = cart_df.loc[~hit, "curd"].mean()
+    by_cell = cart_df.groupby(["zone", "week"]).curd.mean()
+    others = by_cell.drop([(z, 3) for z in STOCKOUT_ZONES])
+    check(f"curd near zero in {', '.join(STOCKOUT_ZONES)} in week three "
+          f"({out['stock_curd']} of {out['stock_carts']} carts) and above 0.22 in every other zone-week",
+          out["curd_in_stock"] < 0.02 and others.min() > 0.22)
+    out["curd_cell_min"], out["curd_cell_max"] = others.min(), others.max()
+    kept = list(baskets.loc[cart_df.loc[~hit, "cart_id"]])
+    out["curd_kept"] = measures(kept, "curd", "toned milk")
+    out["curd_all"] = measures(list(baskets), "curd", "toned milk")
+    # The twelve rows.
+    t = twelve_df
+    def cnt(*cols):
+        return int(t[list(cols)].all(axis=1).sum())
+    check("twelve rows: milk 8, bread 4, bread with milk 4, chips 3, cold drink 3, both 2, "
+          "ice cream with chocolate sauce 1",
+          (cnt("toned milk"), cnt("bread"), cnt("bread", "toned milk"), cnt("chips"),
+           cnt("cold drink"), cnt("chips", "cold drink"), cnt("ice cream", "chocolate sauce"))
+          == (8, 4, 4, 3, 3, 2, 1))
+    real = set(cart_df.cart_id)
+    check("the twelve rows are real carts of the 40,000", set(t.cart_id) <= real)
+    by_count = pairs.sort_values(["both", "a", "b"], ascending=[False, True, True]).head(6)
+    out["top_by_count"] = [(r.a, r.b, r.both) for r in by_count.itertuples()]
+    out["floor_rows"] = [(r.a, r.b, r.both, r.support, r.lift) for r in floor.head(5).itertuples()]
+    out["band_rows"] = [(r.a, r.b, r.both, r.support, r.lift) for r in band.head(4).itertuples()]
+    out["curd_grid"] = by_cell.to_dict()
+    nm = item_df[item_df.item != "toned milk"]
+    out["margin_line"] = nm.margin_rs.mean()
+    check(f"a cart_items line earns Rs {out['margin_line']:.2f} on average, milk aside",
+          8.95 <= out["margin_line"] <= 9.05)
+    # The fallback's slices: the city's ranking held up, and thin ground in the smallest slice.
+    out["slices"] = {}
+    for name, mask in (("Kothrud, morning", (cart_df.zone == "Kothrud") & (cart_df.time_band == "morning")),
+                       ("Kothrud, evening", (cart_df.zone == "Kothrud") & (cart_df.time_band == "evening")),
+                       ("Baner, morning", (cart_df.zone == "Baner") & (cart_df.time_band == "morning")),
+                       ("Hinjewadi, night", (cart_df.zone == "Hinjewadi") & (cart_df.time_band == "night")),
+                       ("Hadapsar, week three", (cart_df.zone == "Hadapsar") & (cart_df.week == 3)),
+                       ("Hadapsar, week four", (cart_df.zone == "Hadapsar") & (cart_df.week == 4))):
+        part = list(baskets.loc[cart_df.loc[mask, "cart_id"]])
+        table = pairs_table(part)
+        above = table[table.support >= 0.01]
+        out["slices"][name] = (len(part), [(r.a, r.b, r.lift, r.both) for r in above.head(6).itertuples()])
+    lead = [("chips", "cold drink"), ("coriander", "green chillies")]
+    check("chips with cold drink and coriander with chillies lead every slice",
+          all({(a, b) for a, b, _, _ in rows[:2]} == set(lead) for _, rows in out["slices"].values()))
+    n_small, rows = out["slices"]["Hinjewadi, night"]
+    bb = [i for i, r in enumerate(rows) if r[:2] == ("bread", "butter")][0]
+    out["thin_slips"] = rows[2:bb]
+    check(f"in the smallest slice, {len(out['thin_slips'])} thin pairs slip in above bread with butter",
+          n_small < 700 and len(out["thin_slips"]) >= 2 and all(r[3] <= 12 for r in out["thin_slips"]))
+    out["curd_hadapsar"] = by_cell.loc[("Hadapsar", 3)], by_cell.loc[("Hadapsar", 4)]
+    # Quantities and value.
+    out["value_median"] = cart_df.cart_value_rs.median()
+    out["value_mean"] = cart_df.cart_value_rs.mean()
+    out["per_day"] = cart_df.groupby("placed_date").size()
+    out["zones"] = cart_df.zone.value_counts().to_dict()
+    return out
 
 
-# ---- main ---------------------------------------------------------------------------------------
+def verify_strip(log):
+    out = {}
+    log = log.assign(window=(log.date >= CHANGE_DAY.isoformat()).map({True: "after", False: "before"}),
+                     milk=log.suggested_item == "toned milk")
+    for w in ("before", "after"):
+        part = log[log.window == w]
+        out[(w, "ctr")] = part.clicks.sum() / part.impressions.sum()
+        out[(w, "milk_share")] = part[part.milk].impressions.sum() / part.impressions.sum()
+        for g, sel in (("milk", part.milk), ("other", ~part.milk)):
+            sub = part[sel]
+            out[(w, g)] = sub.clicks.sum() / sub.impressions.sum()
+            out[(w, g, "add")] = sub.adds.sum() / sub.clicks.sum()
+            out[(w, g, "slot")] = (sub.groupby("slot").clicks.sum()
+                                   / sub.groupby("slot").impressions.sum()).to_dict()
+        out[(w, "milk_by_slot")] = (part[part.milk].groupby("slot").impressions.sum()
+                                    / part.groupby("slot").impressions.sum()).to_dict()
+        daily = part.groupby("date")[["impressions", "clicks"]].sum()
+        out[(w, "daily_ctr")] = (daily.clicks / daily.impressions)
+        views = part[part.slot == 1].groupby("date").impressions.sum()
+        out[(w, "views")] = views
+    check("strip click-through 6.1 percent before and 3.8 after",
+          round(out[("before", "ctr")], 3) == 0.061 and round(out[("after", "ctr")], 3) == 0.038)
+    check("after the change: milk slots 1.2 percent, every other suggestion 6.4, milk on half the "
+          "slot impressions",
+          round(out[("after", "milk")], 3) == 0.012 and round(out[("after", "other")], 3) == 0.064
+          and round(out[("after", "milk_share")], 2) == 0.50)
+    check("before the change: milk on 2 percent of slot impressions, everything else 6.2 percent",
+          round(out[("before", "milk_share")], 2) == 0.02 and round(out[("before", "other")], 3) == 0.062)
+    check("cart-page views average 60,000 a day after the change",
+          out[("after", "views")].mean() == 60_000)
+    for w in ("before", "after"):
+        for g in ("milk", "other"):
+            s = out[(w, g, "slot")]
+            if len(s) == 3:
+                check(f"{w}, {g}: slot 1 draws more clicks than slot 2, slot 2 more than slot 3",
+                      s[1] > s[2] > s[3])
+        d = out[(w, "daily_ctr")]
+        check(f"{w}: daily click-through moves (spread {d.min():.4f} to {d.max():.4f})",
+              d.std() / d.mean() > 0.01 and d.nunique() == len(d))
+    check("adds are half of clicks in each window, row by row they vary",
+          abs(out[("after", "other", "add")] - 0.5) < 0.002
+          and log.assign(r=log.adds / log.clicks.where(log.clicks > 0)).r.std() > 0.02)
+    # What an added item sells for, from the items the strip suggested after the change.
+    after = log[(log.date >= CHANGE_DAY.isoformat()) & (log.suggested_item != "toned milk")]
+    w = after.groupby("suggested_item").adds.sum()
+    out["price_per_add"] = sum(PRICE[i] * k for i, k in w.items()) / w.sum()
+    milk_after = log[(log.date >= CHANGE_DAY.isoformat()) & (log.suggested_item == "toned milk")]
+    out["milk_imp_day"] = milk_after.groupby("date").impressions.sum().mean()
+    part = log[log.date >= CHANGE_DAY.isoformat()]
+    out["after_ctr_exact"] = part.clicks.sum() / part.impressions.sum()
+    out["rows"] = len(log)
+    return out
+
+
+def verify_kalpa(products, orders, items):
+    out = {}
+    lines = items.groupby("order_id").apply(lambda g: (g.quantity * g.unit_price).sum())
+    check("every one of the 1,000 v4 orders has lines that sum to its amount",
+          len(orders) == 1000 and (lines.reindex(orders.order_id).values == orders.amount.values).all())
+    q1 = orders[orders.order_date < "2026-07-01"].amount.sum()
+    q2 = orders[orders.order_date >= "2026-07-01"].amount.sum()
+    check("v4's quarters still sum to Rs 10.00 crore and Rs 9.84 crore",
+          q1 == cz.V4_Q1_TOTAL and q2 == cz.V4_Q2_TOTAL)
+    lp = products.set_index("product_id").list_price
+    disc = items.unit_price / items.product_id.map(lp)
+    check("every unit price sits between 75 and 100 percent of its list price",
+          disc.min() >= 0.75 and disc.max() <= 1.0, f"({disc.min():.3f} to {disc.max():.3f})")
+    consumer = orders[orders.segment != "Business"].order_id
+    business = orders[orders.segment == "Business"].order_id
+    per = items.groupby("order_id").size()
+    check("consumer baskets hold one to eight lines; Business orders one line",
+          per.reindex(consumer).between(1, 8).all() and (per.reindex(business) == 1).all())
+    name = products.set_index("product_id").name
+    baskets = items[items.order_id.isin(consumer)].groupby("order_id").product_id.apply(
+        lambda s: set(name[p] for p in s)).reindex(consumer)
+    out["baskets"] = len(baskets)
+    out["business"] = len(business)
+    out["lines_min"], out["lines_max"] = int(per.reindex(consumer).min()), int(per.reindex(consumer).max())
+    b = list(baskets)
+    n = len(b)
+    single = Counter(x for s in b for x in s)
+    out["charger"] = single["phone charger 20W"] / n
+    check(f"the charger in {single['phone charger 20W']} of {n} baskets, 84 to 85 percent",
+          0.84 <= out["charger"] <= 0.85)
+    sc = measures(b, "screen protector", "phone charger 20W")
+    out["screen"] = sc
+    check("screen protector to charger: confidence prints 0.82, lift prints 0.97",
+          f"{sc['conf_ab']:.2f}" == "0.82" and f"{sc['lift']:.2f}" == "0.97")
+    lo_c = lo_l = 9.0
+    hi_c = hi_l = 0.0
+    for x in single:
+        if x == "phone charger 20W" or single[x] / n < 0.02:
+            continue
+        m = measures(b, x, "phone charger 20W")
+        lo_c, hi_c = min(lo_c, m["conf_ab"]), max(hi_c, m["conf_ab"])
+        lo_l, hi_l = min(lo_l, m["lift"]), max(hi_l, m["lift"])
+    out["charger_band"] = (lo_c, hi_c, lo_l, hi_l)
+    check(f"every product in at least 2 percent of baskets: confidence to the charger {lo_c:.2f} to "
+          f"{hi_c:.2f}, lift {lo_l:.2f} to {hi_l:.2f}",
+          0.78 <= lo_c and hi_c <= 0.86 and 0.93 <= lo_l and hi_l <= 1.02)
+    pairs = pairs_table(b)
+    floor = pairs[pairs.support >= 0.05]
+    top = floor.iloc[0]
+    ec = measures(b, "earphone case", "wireless earphones")
+    out["pair"] = ec
+    seg = orders.set_index("order_id").segment
+    pair_ids = [oid for oid, s in baskets.items() if {"wireless earphones", "earphone case"} <= s]
+    out["pair_plus"] = sum(1 for o in pair_ids if seg[o] == "Retail-Plus") / len(pair_ids)
+    check(f"above a 5 percent floor the strongest pair is earphones with their case, lift prints 3.1 "
+          f"at support {ec['support']:.1%}, {out['pair_plus']:.0%} of it Retail-Plus",
+          {top.a, top.b} == {"wireless earphones", "earphone case"} and f"{top.lift:.1f}" == "3.1"
+          and round(ec["support"], 2) == 0.06 and out["pair_plus"] >= 0.70)
+    thin = pairs[(pairs.support >= 0.002) & (pairs.support <= 0.004) & (pairs.lift >= 3.5)]
+    check("exactly one pair in two or three baskets at lift 4.0", len(thin) == 1
+          and {thin.iloc[0].a, thin.iloc[0].b} == {"car phone mount", "car charger"}
+          and round(thin.iloc[0].lift, 1) == 4.0)
+    out["thin"] = measures(b, "car phone mount", "car charger")
+    out["floor_pairs"] = len(floor)
+    # The lab's twelve baskets: chosen by pattern, every value five points from the plants.
+    want = [({"phone charger 20W", "screen protector", "wireless earphones", "earphone case"}, set()),
+            ({"phone charger 20W", "screen protector"}, {"wireless earphones", "earphone case"}),
+            ({"screen protector"}, {"phone charger 20W", "wireless earphones", "earphone case"}),
+            ({"phone charger 20W", "wireless earphones", "earphone case"}, {"screen protector"}),
+            (set(), {"phone charger 20W", "screen protector", "wireless earphones", "earphone case"}),
+            ({"phone charger 20W", "wireless earphones"}, {"earphone case", "screen protector"}),
+            ({"earphone case"}, {"phone charger 20W", "wireless earphones", "screen protector"})] + \
+        [({"phone charger 20W"}, {"screen protector", "wireless earphones", "earphone case"})] * 5
+    plain = {"car phone mount", "car charger"}
+    chosen = []
+    for has, lacks in want:
+        for oid, s in baskets.items():
+            if oid in chosen or not has <= s or s & lacks or plain & s or len(s) > 6:
+                continue
+            chosen.append(oid)
+            break
+    if len(chosen) != 12:
+        raise AssertionError("the lab's twelve baskets could not be found")
+    chosen.sort()
+    t = [baskets[o] for o in chosen]
+    tc = measures(t, "screen protector", "phone charger 20W")
+    te = measures(t, "wireless earphones", "earphone case")
+    share12 = sum(1 for s in t if "phone charger 20W" in s) / 12
+    check("the lab's twelve baskets: charger in 9, screen protector to charger 0.67 and lift 0.89, "
+          "earphones with case lift 2.67",
+          share12 == 0.75 and round(tc["conf_ab"], 2) == 0.67 and round(tc["lift"], 2) == 0.89
+          and round(te["lift"], 2) == 2.67)
+    out["twelve"] = chosen
+    out["twelve_sets"] = t
+    out["twelve_m"] = (share12, tc, te)
+    return out
+
+
+# =========================================================================== the facts file
+def lakh(rs):
+    return f"Rs {rs / 1e5:.1f} lakh"
+
+
+def indian(n):
+    """Rs amounts in the Indian grouping: 12,64,000."""
+    s = f"{int(round(n))}"
+    if len(s) <= 3:
+        return s
+    head, tail = s[:-3], s[-3:]
+    groups = []
+    while len(head) > 2:
+        groups.insert(0, head[-2:])
+        head = head[:-2]
+    if head:
+        groups.insert(0, head)
+    return ",".join(groups + [tail])
+
+
+def write_facts(case, strip, kalpa):
+    """Every number a learner sees, with how it was computed and the form it is printed in."""
+    sh, m = case["share"], case["m"]
+    bm, em = m[("bread", "toned milk")], m[("eggs", "toned milk")]
+    cc, ic = m[("chips", "cold drink")], m[("ice cream", "chocolate sauce")]
+    cg, bb, ot = m[("coriander", "green chillies")], m[("bread", "butter")], m[("onions", "tomatoes")]
+    views, add, margin = 60_000, 0.5, 9
+    other_day = views * 0.064 * add * margin
+    milk_day = views * 0.012 * add * margin
+    gap_day = other_day - milk_day
+    gap_month = gap_day * 30
+    share_after = strip[("after", "milk_share")]
+    recover = gap_day * 3 * 0.5 * 30            # milk on half the impressions, 1.5 slots' worth
+    ceiling = gap_day * 3 * 30
+    adds_day = views * 0.064 * add
+    gross_day = adds_day * strip["price_per_add"]
+    F = []
+
+    def f(section, fid, value, shown, how, used):
+        F.append((section, fid, value, shown, how, used))
+
+    S = "ticket"
+    f(S, "before_strip_ctr", 0.061, "6.1 percent", "clicks over impressions, 17 August to 6 September 2026, strip_log", "every file's ticket")
+    f(S, "after_strip_ctr", 0.038, "3.8 percent", "clicks over impressions, 7 to 27 September 2026, strip_log", "every file's ticket")
+    f(S, "change_date", "2026-09-07", "Monday 7 September 2026", "the day the ranking switched", "the ticket")
+    f(S, "total_carts", N_CARTS, "40,000", "carts in the carts table", "the ticket, notebook 02")
+    f(S, "customers", case["customers"], "12,000", "customers in the sample, every September cart of each", "notebook 02, notes")
+    f(S, "zones", len(ZONES), "eight", "Pune zones in the data", "the ticket")
+    f(S, "items", case["items"], "59", "distinct items in cart_items (the case file says about 60)", "notebook 02, notes")
+    f(S, "cart_window", "1 to 28 September 2026", "1 to 28 September", "the carts' window, four weeks", "the ticket")
+    f(S, "heavy_tenth_share", round(case["heavy_share"], 4), "38 percent", "carts placed by the 1,200 customers with the most carts, over 40,000", "ticket caveat, notebook 03, deck")
+    f(S, "heavy_customers", 1200, "1,200", "the top tenth of 12,000 customers", "notebook 03, notes")
+    f(S, "heavy_carts_min", case["heavy_min"], str(case["heavy_min"]), "fewest carts held by any top-tenth customer", "notebook 03")
+    f(S, "light_carts_max", case["light_max"], str(case["light_max"]), "most carts held by anyone outside the top tenth", "notebook 03")
+    S = "strip"
+    f(S, "milk_slot_ctr_after", 0.012, "1.2 percent", "clicks over impressions on slots suggesting toned milk, after", "chapter 2, notebook 02")
+    f(S, "other_slot_ctr_after", 0.064, "6.4 percent", "the same for every other suggestion, after", "chapter 2, notebook 02")
+    f(S, "other_slot_ctr_before", 0.062, "6.2 percent", "every suggestion other than milk, before", "chapter 2, notebook 02")
+    f(S, "milk_share_after", round(share_after, 4), "50 percent", "milk's share of slot impressions, after (case file 44, corrected)", "chapter 2, notebook 02")
+    f(S, "milk_share_before", round(strip[("before", "milk_share")], 4), "2 percent", "milk's share of slot impressions under the curated list", "chapter 2, notebook 02")
+    for w in ("before", "after"):
+        for g in ("milk", "other"):
+            s = strip[(w, g, "slot")]
+            for k, v in s.items():
+                f(S, f"ctr_{w}_{g}_slot{k}", round(v, 4), f"{v * 100:.1f} percent", f"click-through on slot {k}, {g}, {w}", "the slot picture, notebook 02")
+    for k, v in strip[("after", "milk_by_slot")].items():
+        f(S, f"milk_share_after_slot{k}", round(v, 4), f"{v * 100:.0f} percent", f"milk's share of slot {k}'s impressions after the change", "notebook 02, the slot picture")
+    va, vb = strip[("after", "views")], strip[("before", "views")]
+    f(S, "views_a_day_after", 60_000, "60,000", "slot-1 impressions a day, the mean of 7 to 27 September; every view shows all three slots", "chapter 3 cascade, notebook 03")
+    f(S, "views_a_day_before", round(vb.mean()), f"{round(vb.mean()):,}", "the same for 17 August to 6 September", "notebook 02")
+    f(S, "views_day_low", int(va.min()), f"{int(va.min()):,}", "the quietest day after the change", "notebook 02")
+    f(S, "views_day_high", int(va.max()), f"{int(va.max()):,}", "the busiest day after the change", "notebook 02")
+    d = strip[("after", "daily_ctr")]
+    f(S, "daily_ctr_after_low", round(d.min(), 4), f"{d.min() * 100:.1f} percent", "lowest daily strip click-through after the change", "notebook 02")
+    f(S, "daily_ctr_after_high", round(d.max(), 4), f"{d.max() * 100:.1f} percent", "highest daily strip click-through after the change", "notebook 02")
+    d = strip[("before", "daily_ctr")]
+    f(S, "daily_ctr_before_low", round(d.min(), 4), f"{d.min() * 100:.1f} percent", "lowest daily strip click-through before the change", "notebook 02")
+    f(S, "daily_ctr_before_high", round(d.max(), 4), f"{d.max() * 100:.1f} percent", "highest daily strip click-through before the change", "notebook 02")
+    f(S, "add_rate_observed", round(strip[("after", "other", "add")], 4), "0.5", "adds over clicks after the change, strip_log", "chapter 3, notebook 03")
+    f(S, "margin_per_line_observed", round(case["margin_line"], 2), f"Rs {case['margin_line']:.1f}", "mean margin_rs of a cart_items line, milk aside", "chapter 3, notebook 03")
+    f(S, "milk_margin", MARGIN["toned milk"], f"Rs {MARGIN['toned milk']:.0f}", "margin_rs on a pouch of toned milk", "notebook 03, transcript")
+    f(S, "price_per_add_observed", round(strip["price_per_add"], 2), f"Rs {strip['price_per_add']:.0f}", "unit price of the same items, weighted by adds", "notebook 03, the gross-sales trap")
+    f(S, "strip_rows", strip["rows"], f"{strip['rows']:,}", "rows in strip_log", "notebook 02")
+    S = "full_data"
+    for name in ("toned milk", "bread", "eggs", "curd", "bananas", "onions", "tomatoes", "potatoes",
+                 "coriander", "chips", "cold drink", "green chillies", "paneer", "butter",
+                 "ice cream", "chocolate sauce"):
+        fid = name.replace(" ", "_") + "_share"
+        v = sh[name]
+        shown = f"{v * 100:.2f} percent" if v < 0.02 else f"{v * 100:.1f} percent".replace(".0 percent", " percent")
+        f(S, fid, round(v, 4), shown, f"share of the 40,000 carts holding {name}", "chapter 2, notebook 02")
+        f(S, fid.replace("_share", "_carts"), case["count"][name], f"{case['count'][name]:,}", f"carts holding {name}", "notebook 02")
+    for key, fid in ((("bread", "toned milk"), "bread_milk"), (("eggs", "toned milk"), "eggs_milk"),
+                     (("chips", "cold drink"), "chips_cold"), (("ice cream", "chocolate sauce"), "ice_choc"),
+                     (("coriander", "green chillies"), "coriander_chillies"), (("bread", "butter"), "bread_butter"),
+                     (("onions", "tomatoes"), "onions_tomatoes"), (("curd", "toned milk"), "curd_milk"),
+                     (("bananas", "toned milk"), "bananas_milk")):
+        x = m[key]
+        f(S, f"{fid}_carts", x["nab"], f"{x['nab']:,}", f"carts holding both {key[0]} and {key[1]}", "chapter 2 and 3")
+        sup = x["support"]
+        f(S, f"{fid}_support", round(sup, 4), f"{sup * 100:.2f} percent" if sup < 0.01 else f"{sup * 100:.1f} percent", f"both over 40,000", "chapter 2 and 3")
+        f(S, f"{fid}_conf_ab", round(x["conf_ab"], 4), f"{x['conf_ab']:.2f}", f"confidence {key[0]} to {key[1]}", "chapter 2 and 3")
+        f(S, f"{fid}_conf_ba", round(x["conf_ba"], 4), f"{x['conf_ba']:.2f}", f"confidence {key[1]} to {key[0]}", "chapter 2 and 3")
+        f(S, f"{fid}_lift", round(x["lift"], 4), f"{x['lift']:.2f}", f"lift of {key[0]} and {key[1]}", "chapter 2 and 3")
+        f(S, f"{fid}_expected", round(x["na"] * x["nb"] / N_CARTS), f"{round(x['na'] * x['nb'] / N_CARTS):,}", f"carts expected to hold both if independent", "chapter 2, notebook 02")
+    n2, lo_c, hi_c, lo_l, hi_l = case["common"]
+    f(S, "common_items", n2, str(n2), "items other than milk in at least 2 percent of carts", "chapter 2, notebook 02")
+    f(S, "common_conf_low", round(lo_c, 4), f"{lo_c:.2f}", "lowest confidence to milk among them", "chapter 2, notebook 02")
+    f(S, "common_conf_high", round(hi_c, 4), f"{hi_c:.2f}", "highest confidence to milk among them", "chapter 2, notebook 02")
+    f(S, "common_lift_low", round(lo_l, 4), f"{lo_l:.2f}", "lowest lift with milk among them", "chapter 2, notebook 02")
+    f(S, "common_lift_high", round(hi_l, 4), f"{hi_l:.2f}", "highest lift with milk among them", "chapter 2, notebook 02")
+    f(S, "pairs_seen", case["pairs_seen"], f"{case['pairs_seen']:,}", "distinct pairs found in at least one cart", "notebook 02")
+    f(S, "lines", case["lines"], f"{case['lines']:,}", "rows in cart_items", "notebook 02")
+    f(S, "cart_value_median", case["value_median"], f"Rs {case['value_median']:.0f}", "median cart value", "notebook 02")
+    S = "floor"
+    f(S, "support_floor", 0.01, "1 percent", "the support floor the room sets", "chapter 3")
+    f(S, "plot_floor", 0.001, "0.1 percent", "the least support a pair needs to be drawn on the action map", "chapter 3 picture")
+    f(S, "watch_band_low", 0.002, "0.2 percent", "the low end of the band searched for a strong thin pair", "chapter 3, notebook 03")
+    f(S, "common_floor", 0.02, "2 percent", "an item counts as common at this share of carts (the case file)", "chapter 2")
+    f(S, "kalpa_floor", 0.05, "5 percent", "the lab's support floor (the case file)", "notebook 04, lab note")
+    f(S, "support_floor_carts", 400, "400", "1 percent of 40,000 carts", "chapter 3")
+    f(S, "floor_pairs", case["floor_pairs"], str(case["floor_pairs"]), "pairs at or above the floor", "chapter 3, notebook 03")
+    f(S, "floor_pairs_lift_1_5", case["floor_above_1_5"], str(case["floor_above_1_5"]), "of those, pairs at lift 1.5 or more", "chapter 3, notebook 03")
+    a, b2, l = case["next_after_four"]
+    f(S, "fifth_pair_lift", round(l, 4), f"{l:.2f}", f"the fifth pair above the floor, {a} and {b2}", "notebook 03")
+    f(S, "watch_band_pairs", case["watch_band_pairs"], str(case["watch_band_pairs"]), "pairs between 0.2 and 1 percent support", "notebook 03")
+    tn, tl = case["tiny"]
+    f(S, "tiny_pairs", tn, f"{tn:,}", "pairs below 0.2 percent support", "notebook 03")
+    f(S, "tiny_lift_max", round(tl, 4), f"{tl:.1f}", "highest lift among them", "notebook 03")
+    S = "caveats"
+    f(S, "chips_cold_lift_per_customer", round(case["cc_cust"], 4), f"{case['cc_cust']:.2f}", "lift with every customer counted once (each cart weighs one over its customer's carts)", "chapter 3, notebook 03")
+    f(S, "bread_milk_lift_per_customer", round(case["bm_cust"], 4), f"{case['bm_cust']:.2f}", "the same for bread and milk", "chapter 3, notebook 03")
+    f(S, "chips_cold_heavy_share", round(case["cc_heavy_share"], 4), f"{case['cc_heavy_share'] * 100:.0f} percent", "share of chips-and-cold-drink carts placed by the top tenth", "chapter 3, notebook 03")
+    for bnd, v in case["milk_by_band"].items():
+        f(S, f"milk_share_{bnd}", round(v, 4), f"{v * 100:.0f} percent", f"share of {bnd} carts holding milk", "chapter 3, notebook 03")
+    for bnd, v in case["bm_by_band"].items():
+        f(S, f"bread_milk_lift_{bnd}", round(v, 4), f"{v:.2f}", f"bread and milk lift among {bnd} carts", "notebook 03")
+    f(S, "stockout_zones", "Hadapsar and Viman Nagar", "Hadapsar and Viman Nagar", "the two zones", "ticket caveat, chapter 3")
+    f(S, "stockout_week", "15 to 21 September 2026", "15 to 21 September", "week three", "chapter 3")
+    f(S, "stockout_carts", case["stock_carts"], f"{case['stock_carts']:,}", "carts in the two zones in week three", "notebook 03")
+    f(S, "stockout_curd_carts", case["stock_curd"], str(case["stock_curd"]), "of those, carts with curd", "notebook 03")
+    f(S, "curd_share_stockout", round(case["curd_in_stock"], 4), f"{case['curd_in_stock'] * 100:.1f} percent", "curd's share in the two zones in week three", "chapter 3, notebook 03")
+    f(S, "curd_share_elsewhere", round(case["curd_elsewhere"], 4), f"{case['curd_elsewhere'] * 100:.1f} percent", "curd's share everywhere else", "chapter 3, notebook 03")
+    f(S, "curd_cell_low", round(case["curd_cell_min"], 4), f"{case['curd_cell_min'] * 100:.0f} percent", "lowest curd share in any other zone-week", "notebook 03")
+    f(S, "curd_cell_high", round(case["curd_cell_max"], 4), f"{case['curd_cell_max'] * 100:.0f} percent", "highest curd share in any other zone-week", "notebook 03")
+    ca, ck = case["curd_all"], case["curd_kept"]
+    f(S, "curd_share_all", round(ca["na"] / ca["n"], 4), f"{ca['na'] / ca['n'] * 100:.1f} percent", "curd's share of all 40,000 carts", "notebook 03")
+    f(S, "curd_share_kept", round(ck["na"] / ck["n"], 4), f"{ck['na'] / ck['n'] * 100:.1f} percent", "curd's share with the two zone-weeks set aside", "chapter 3, notebook 03")
+    f(S, "curd_milk_lift_all", round(ca["lift"], 4), f"{ca['lift']:.2f}", "curd and milk lift, all carts", "chapter 3, notebook 03")
+    f(S, "curd_milk_lift_kept", round(ck["lift"], 4), f"{ck['lift']:.2f}", "curd and milk lift, the two zone-weeks set aside", "chapter 3, notebook 03")
+    f(S, "curd_milk_support_all", round(ca["nab"] / ca["n"], 4), f"{ca['nab'] / ca['n'] * 100:.1f} percent", "curd with milk over all carts", "notebook 03")
+    f(S, "curd_milk_support_kept", round(ck["nab"] / ck["n"], 4), f"{ck['nab'] / ck['n'] * 100:.1f} percent", "curd with milk, the two zone-weeks set aside", "notebook 03")
+    S = "slot_value"
+    f(S, "views_assumed", views, "60,000", "cart-page views a day, the after-change mean in strip_log", "chapter 3, notebook 03")
+    f(S, "add_rate_assumed", add, "0.5", "assumption, range 0.4 to 0.6 (strip_log reads 0.50)", "chapter 3, notebook 03")
+    f(S, "add_rate_low", 0.4, "0.4", "the range's low end", "chapter 3, notebook 03")
+    f(S, "add_rate_high", 0.6, "0.6", "the range's high end", "chapter 3, notebook 03")
+    f(S, "margin_assumed", margin, "Rs 9", "assumption, range Rs 7 to Rs 11", "chapter 3, notebook 03")
+    f(S, "margin_low", 7, "Rs 7", "the range's low end", "chapter 3, notebook 03")
+    f(S, "margin_high", 11, "Rs 11", "the range's high end", "chapter 3, notebook 03")
+    f(S, "slot_value_other_day", round(other_day), "Rs 17,280", "60,000 x 0.064 x 0.5 x 9", "chapter 3, cheat sheet")
+    f(S, "slot_value_milk_day", round(milk_day), "Rs 3,240", "60,000 x 0.012 x 0.5 x 9", "chapter 3, cheat sheet")
+    f(S, "slot_gap_day", round(gap_day), "Rs 14,040", "17,280 less 3,240, a slot a day", "chapter 3")
+    f(S, "slot_gap_month", round(gap_month), lakh(gap_month), "14,040 x 30, a slot a month (the case file's Rs 4.2 lakh)", "chapter 3")
+    f(S, "slot_value_other_month", round(other_day * 30), lakh(other_day * 30), "17,280 x 30", "notebook 03")
+    f(S, "slot_value_milk_month", round(milk_day * 30), lakh(milk_day * 30), "3,240 x 30", "notebook 03")
+    f(S, "milk_slots_worth", 1.5, "1.5", "three slots times milk's half of the impressions", "chapter 3")
+    f(S, "recoverable_month", round(recover), lakh(recover), "14,040 x 3 x 0.50 x 30: what re-ranking recovers on milk's half", "chapter 3, half2, notes")
+    f(S, "ceiling_month", round(ceiling), lakh(ceiling), "14,040 x 3 x 30: only if every slot showed milk (the case file's Rs 12.6 lakh)", "notebook 03")
+    lo = views * (0.064 - 0.012) * 0.4 * 7 * 3 * 0.5 * 30
+    hi = views * (0.064 - 0.012) * 0.6 * 11 * 3 * 0.5 * 30
+    f(S, "recoverable_low", round(lo), lakh(lo), "add rate 0.4 and margin Rs 7", "chapter 3, notebook 03")
+    f(S, "recoverable_high", round(hi), lakh(hi), "add rate 0.6 and margin Rs 11", "chapter 3, notebook 03")
+    f(S, "adds_a_day", round(adds_day), f"{round(adds_day):,}", "60,000 x 0.064 x 0.5", "notebook 03, the trap")
+    f(S, "gross_sales_day", round(gross_day), f"Rs {indian(gross_day)}", "1,920 adds x the average price of an added item", "notebook 03, the trap")
+    S = "twelve_rows"
+    f(S, "twelve_milk", 8, "8", "carts of the twelve holding milk", "chapter 1, notebook 01, cheat sheet")
+    f(S, "twelve_bread", 4, "4", "carts holding bread", "chapter 1, notebook 01")
+    f(S, "twelve_bread_milk", 4, "4", "carts holding bread and milk", "chapter 1")
+    f(S, "twelve_bread_support", 0.3333, "0.33", "4 of 12", "chapter 1")
+    f(S, "twelve_bread_milk_conf", 1.0, "1.00", "4 of 4", "chapter 1, cheat sheet")
+    f(S, "twelve_milk_to_bread_conf", 0.5, "0.50", "4 of 8", "chapter 1, notebook 01")
+    f(S, "twelve_bread_milk_expected", 2.6667, "2.67", "(4/12) x (8/12) x 12", "chapter 1")
+    f(S, "twelve_bread_milk_lift", 1.5, "1.50", "4 over 2.67", "chapter 1, cheat sheet")
+    f(S, "twelve_chips", 3, "3", "carts holding chips", "chapter 1")
+    f(S, "twelve_cold", 3, "3", "carts holding a cold drink", "chapter 1")
+    f(S, "twelve_chips_cold", 2, "2", "carts holding both", "chapter 1")
+    f(S, "twelve_chips_cold_support", 0.1667, "0.17", "2 of 12", "chapter 1")
+    f(S, "twelve_chips_cold_conf", 0.6667, "0.67", "2 of 3", "chapter 1")
+    f(S, "twelve_chips_cold_expected", 0.75, "0.75", "(3/12) x (3/12) x 12", "chapter 1")
+    f(S, "twelve_chips_cold_lift", 2.6667, "2.67", "2 over 0.75", "chapter 1, cheat sheet")
+    f(S, "twelve_ice_choc", 1, "1", "the one cart with both", "chapter 1")
+    f(S, "twelve_ice_choc_lift", 12.0, "12", "1 over (1/12)", "chapter 1")
+    S = "toy"
+    f(S, "tea_orders", 10, "10", "invented: ten tea-stall orders", "chapter 1")
+    f(S, "tea_chai", 6, "6", "invented: orders with chai", "chapter 1")
+    f(S, "tea_biscuit", 4, "4", "invented: orders with biscuit", "chapter 1")
+    f(S, "tea_both", 3, "3", "invented: orders with both", "chapter 1")
+    f(S, "tea_support", 0.3, "0.30", "3 of 10", "chapter 1")
+    f(S, "tea_conf", 0.5, "0.50", "3 of 6", "chapter 1")
+    f(S, "tea_conf_back", 0.75, "0.75", "3 of 4, biscuit to chai", "chapter 1")
+    f(S, "tea_expected", 2.4, "2.4", "10 x 0.6 x 0.4", "chapter 1")
+    f(S, "tea_lift", 1.25, "1.25", "3 over 2.4", "chapter 1")
+    f(S, "tea_bag", 9, "9", "invented: orders with a carry bag", "chapter 1")
+    f(S, "tea_bag_conf", 0.75, "0.75", "biscuit to bag: 3 of 4", "chapter 1")
+    f(S, "tea_bag_lift", 0.8333, "0.83", "0.75 over 0.9", "chapter 1")
+    S = "public"
+    f(S, "instamart_orders_per_store", 1089, "1,089", "Swiggy Instamart orders per dark store per day, quarter to June 2026 (T3, checked 12 October 2026)", "guesstimate")
+    f(S, "instamart_stores", 1171, "1,171", "Swiggy Instamart dark stores, same source (T3)", "guesstimate")
+    f(S, "maxxsaver_mtu_share", 0.28, "over 28 percent", "Maxxsaver users among MTUs (W4)", "chapter 3, notes")
+    f(S, "maxxsaver_aov", 612, "Rs 612", "Maxxsaver AOV, up 16 percent (W4)", "chapter 3, notes")
+    f(S, "osco_transactions", 1_200_000, "about 1.2 million", "Osco Drug transactions, 1992 (W2)", "chapter 2, notes")
+    f(S, "uber_cross_use", 3, "over three times", "bookings of consumers who use rides and delivery (W4)", "chapter 3, notes")
+    f(S, "walmart_poptarts", 7, "about seven times", "strawberry Pop-Tarts before Charley (W3)", "fallback")
+    S = "pairs_detail"
+    for name in sorted(sh):
+        if name in ("toned milk", "bread", "eggs", "curd", "bananas", "onions", "tomatoes", "potatoes",
+                    "coriander", "chips", "cold drink", "green chillies", "paneer", "butter",
+                    "ice cream", "chocolate sauce"):
+            continue
+        f(S, name.replace(" ", "_") + "_share", round(sh[name], 4), f"{sh[name]:.3f}", f"share of carts holding {name}", "notebook 02 output")
+    for a, b2, k in case["top_by_count"]:
+        f(S, f"by_count_{a}_{b2}".replace(" ", "_"), k, f"{k:,}", f"carts holding {a} and {b2}, ranked by count", "chapter 2, notebook 02")
+    for a, b2, k, sup, l in case["floor_rows"] + case["band_rows"]:
+        key = f"pair_{a}_{b2}".replace(" ", "_")
+        if f"{key}_carts" in {x[1] for x in F}:
+            continue
+        f(S, f"{key}_carts", k, f"{k:,}", f"carts holding {a} and {b2}", "notebook 03 output")
+        f(S, f"{key}_support", round(sup, 4), f"{sup:.4f}", f"their support", "notebook 03 output")
+        f(S, f"{key}_lift", round(l, 4), f"{l:.4f}", f"their lift", "notebook 03 output")
+    for (zone, week), val in sorted(case["curd_grid"].items()):
+        f(S, f"curd_{zone}_w{week}".replace(" ", "_").lower(), round(val, 4), f"{val * 100:.0f} percent", f"curd's share in {zone}, week {week}", "chapter 3 picture, notebook 03")
+    f(S, "bread_milk_expected_share", round(sh["bread"] * sh["toned milk"], 4), f"{sh['bread'] * sh['toned milk']:.3f}", "bread's share times milk's share", "chapter 2, notebook 02")
+    f(S, "after_strip_ctr_exact", round(strip["after_ctr_exact"], 4), f"{strip['after_ctr_exact']:.4f}", "the after rate before rounding to 3.8 percent", "notebook 02 output")
+    f(S, "milk_impressions_a_day", round(strip["milk_imp_day"]), f"{round(strip['milk_imp_day']):,}", "milk impressions a day after the change, all three slots", "notebook 03, the second route")
+    f(S, "milk_lift_band_low", 0.96, "0.96", "the case file's band for lift with milk, low end", "notebook 02 check")
+    f(S, "milk_lift_band_high", 1.08, "1.08", "the case file's band for lift with milk, high end", "notebook 02 check")
+    S = "predict_options"
+    f(S, "option_rs_50000", 50_000, "Rs 50,000", "invented distractor on the month-recovered predict slide", "chapter 3 predict")
+    f(S, "option_rs_2_lakh", 200_000, "Rs 2 lakh", "invented distractor", "chapter 3 predict")
+    f(S, "option_rs_6_lakh", 600_000, "Rs 6 lakh", "the rounded key", "chapter 3 predict")
+    f(S, "option_rs_50_lakh", 5_000_000, "Rs 50 lakh", "invented distractor", "chapter 3 predict")
+    S = "fallback"
+    for name, (k, rows) in case["slices"].items():
+        fid = "slice_" + name.replace(", ", "_").replace(" ", "_").lower()
+        f(S, fid + "_carts", k, f"{k:,}", f"carts in {name}", "fallback S6 and S7, the rerun")
+    slips = case["thin_slips"]
+    f(S, "slice_thin_slips", len(slips), str(len(slips)), "pairs above the floor that outrank bread and butter in Hinjewadi at night", "fallback S7")
+    f(S, "slice_thin_carts_max", max(r[3] for r in slips), str(max(r[3] for r in slips)), "most carts behind any of those pairs", "fallback S7")
+    f(S, "slice_thin_carts_min", min(r[3] for r in slips), str(min(r[3] for r in slips)), "fewest carts behind any of them", "fallback S7")
+    w3, w4 = case["curd_hadapsar"]
+    f(S, "curd_hadapsar_week3", round(w3, 4), f"{w3 * 100:.1f} percent", "curd's share in Hadapsar, week three", "fallback S6")
+    f(S, "curd_hadapsar_week4", round(w4, 4), f"{w4 * 100:.0f} percent", "curd's share in Hadapsar, week four", "fallback S6")
+    S = "week_map"
+    f(S, "monday_trips_per_hour_before", 1.9, "1.9", "Monday's target in the W04 spine, section 5", "slide two's week map")
+    f(S, "monday_trips_per_hour_after", 1.6, "1.6", "Monday's target in the W04 spine, section 5", "slide two's week map")
+    f(S, "tuesday_bookings_per_hour_before", 314, "Rs 314", "Tuesday's target in the W04 spine, section 6", "slide two's week map")
+    f(S, "tuesday_bookings_per_hour_after", 260, "Rs 260", "Tuesday's target in the W04 spine, section 6", "slide two's week map")
+    S = "kalpa_lab"
+    f(S, "kalpa_charger_list_price", 199, "Rs 199", "list price of the phone charger, products table (the row)", "every Kalpa mention")
+    f(S, "kalpa_claim_share", 0.8, "80 percent", "merchandising's claim in the row: the charger is in 80 percent of baskets", "lab ticket")
+    t_share, tc, te = kalpa["twelve_m"]
+    f(S, "kalpa_orders", 1000, "1,000", "v4 orders, every one with lines", "notebook 04, lab note")
+    f(S, "kalpa_baskets", kalpa["baskets"], str(kalpa["baskets"]), "consumer orders, the basket base", "notebook 04, lab note")
+    f(S, "kalpa_business", kalpa["business"], str(kalpa["business"]), "Business orders, one product in bulk", "notebook 04")
+    f(S, "kalpa_lines_max", kalpa["lines_max"], str(kalpa["lines_max"]), "most lines in a consumer basket", "notebook 04")
+    f(S, "kalpa_charger_share", round(kalpa["charger"], 4), f"{kalpa['charger'] * 100:.1f} percent", "PLANT: baskets with the charger", "TRAINER until the lab")
+    sc = kalpa["screen"]
+    f(S, "kalpa_screen_charger_conf", round(sc["conf_ab"], 4), f"{sc['conf_ab']:.2f}", "PLANT: screen protector to charger", "TRAINER until the lab")
+    f(S, "kalpa_screen_charger_lift", round(sc["lift"], 4), f"{sc['lift']:.2f}", "PLANT: their lift", "TRAINER until the lab")
+    lc, hc, ll, hl = kalpa["charger_band"]
+    f(S, "kalpa_charger_conf_band", f"{lc:.2f} to {hc:.2f}", f"{lc:.2f} to {hc:.2f}", "PLANT: confidence to the charger, every product at 2 percent or more", "TRAINER until the lab")
+    f(S, "kalpa_charger_lift_band", f"{ll:.2f} to {hl:.2f}", f"{ll:.2f} to {hl:.2f}", "PLANT: lift with the charger, the same products", "TRAINER until the lab")
+    ep = kalpa["pair"]
+    f(S, "kalpa_pair_lift", round(ep["lift"], 4), f"{ep['lift']:.1f}", "PLANT: wireless earphones and earphone case", "TRAINER until the lab")
+    f(S, "kalpa_pair_support", round(ep["support"], 4), f"{ep['support'] * 100:.0f} percent", "PLANT: their support", "TRAINER until the lab")
+    f(S, "kalpa_pair_baskets", ep["nab"], str(ep["nab"]), "PLANT: baskets with both", "TRAINER until the lab")
+    f(S, "kalpa_pair_retail_plus", round(kalpa["pair_plus"], 4), f"{kalpa['pair_plus'] * 100:.0f} percent", "PLANT: share of those baskets from Retail-Plus", "TRAINER until the lab")
+    th = kalpa["thin"]
+    f(S, "kalpa_thin_lift", round(th["lift"], 4), f"{th['lift']:.1f}", "PLANT: car phone mount and car charger", "TRAINER until the lab")
+    f(S, "kalpa_thin_support", round(th["support"], 4), f"{th['support'] * 100:.2f} percent", "PLANT: their support", "TRAINER until the lab")
+    f(S, "kalpa_thin_baskets", th["nab"], str(th["nab"]), "PLANT: baskets with both", "TRAINER until the lab")
+    f(S, "kalpa_floor_pairs", kalpa["floor_pairs"], str(kalpa["floor_pairs"]), "pairs at or above the 5 percent floor", "lab note")
+    f(S, "kalpa_twelve_ids", ", ".join(kalpa["twelve"]), "", "the lab's twelve baskets", "lab note")
+    f(S, "kalpa_twelve_charger", 9, "9", "of the twelve, baskets with the charger (0.75)", "lab note, notebook 04")
+    f(S, "kalpa_twelve_screen_conf", round(tc["conf_ab"], 4), f"{tc['conf_ab']:.2f}", "screen protector to charger on the twelve", "lab note, notebook 04")
+    f(S, "kalpa_twelve_screen_lift", round(tc["lift"], 4), f"{tc['lift']:.2f}", "their lift on the twelve", "lab note, notebook 04")
+    f(S, "kalpa_twelve_pair_lift", round(te["lift"], 4), f"{te['lift']:.2f}", "earphones and case on the twelve", "lab note, notebook 04")
+
+    head = ("# content/W04/D3/internal/C2_W04_D03_facts_INTERNAL.yaml, written by the generator.\n"
+            "# Every number a Wednesday learner sees, with how it was computed, the form it is printed\n"
+            "# in and where it is used. Public facts carry their R2 id; toys are labelled invented.\n"
+            "#\n"
+            "# Corrections to the case file:\n"
+            "#   milk_share_after is 50 percent, since 44 percent beside the 1.2 and 6.4 percent slot\n"
+            "#     rates blends to 4.1 percent and the ticket's after rate is 3.8.\n"
+            "#   twelve_bread_milk_conf is 1.00 and the lift 1.50, since the case file's 0.75 sits 0.01\n"
+            "#     from the full-data 0.74 and the spine asks for five points between them.\n"
+            "#   recoverable_month replaces the case file's Rs 12.6 lakh over three slots, which held\n"
+            "#     only if every slot showed milk; strip_log shows milk on half the slot impressions.\n"
+            "#   the twelve rows are real carts of the 40,000 and the Kalpa lines sit on v4's own 1,000\n"
+            "#     orders, as the spine and the case file ask.\n\n")
+    out = [head]
+    section = None
+    for sec, fid, value, shown, how, used in F:
+        if sec != section:
+            out.append(f"\n{sec}:\n")
+            section = sec
+        v = value if isinstance(value, (int, float)) else f'"{value}"'
+        out.append(f"  - id: {fid}\n    value: {v}\n    shown: \"{shown}\"\n"
+                   f"    how: \"{how}\"\n    used_in: \"{used}\"\n")
+    FACTS.write_text("".join(out), encoding="utf-8")
+    ids = [x[1] for x in F]
+    check("every fact id is unique", len(ids) == len(set(ids)))
+    return F
+
+
 def main():
-    print("Building the Wednesday case data...")
-    carts, cart_items = write_carts()
-    print(f"  wrote {len(carts):,} carts and {len(cart_items):,} cart item lines")
-    strip = write_strip_log()
-    print(f"  wrote {len(strip):,} strip_log rows")
-    twelve = write_twelve_rows()
-    print(f"  wrote the twelve printed carts")
-    kalpa_orders, kalpa_items = write_kalpa()
-    print(f"  wrote {len(kalpa_orders):,} Kalpa orders and {len(kalpa_items):,} order lines")
-    print("\nVerifying the case targets...")
-    case_results = verify_case(carts, cart_items)
-    print("\nVerifying the strip_log click-throughs...")
-    strip_results = verify_strip(strip)
-    print("\nVerifying the twelve-row hand counts...")
-    twelve_results = verify_twelve_rows(twelve)
-    print("\nVerifying the Kalpa transfer plants...")
-    kalpa_results = verify_kalpa(kalpa_orders, kalpa_items)
-    write_facts(case_results, strip_results, twelve_results, kalpa_results)
-    print("\nAll assertions passed.")
+    rng = random.Random(SEED)
+    DATA.mkdir(parents=True, exist_ok=True)
+    print("The case: carts, items and the twelve rows")
+    cart_df, item_df, twelve_df = write_case(rng)
+    case = verify_case(cart_df, item_df, twelve_df)
+    print("\nThe strip log")
+    log = write_strip_log(random.Random(SEED + 1))
+    strip = verify_strip(log)
+    print("\nThe Kalpa transfer on v4's orders")
+    products, orders, items = write_kalpa(random.Random(SEED + 2))
+    kalpa = verify_kalpa(products, orders, items)
+    write_facts(case, strip, kalpa)
+    print(f"\nWrote {len(cart_df):,} carts, {len(item_df):,} cart lines, {len(log):,} strip_log rows, "
+          f"{len(items):,} Kalpa lines and the facts file.")
 
 
 if __name__ == "__main__":

@@ -1,204 +1,219 @@
-# The three slots and the Kalpa transfer
+# Instamart Pune: the strip re-ranked, priced and defended
 
 Week 4, Day 3. Half two.
 
 Kicker: WEEK 4  ·  WEDNESDAY  ·  AFTERNOON
-Quote: Which three pairs fill the strip, and which measure cannot be fooled by popularity.
-Who: The afternoon's unguided chapter, the interview room and the handoff into the IITGN block
+Quote: Rank the pairs the strip should show, explain why its click-through fell, and put a rupee value on a slot, by Friday.
+Who: The ask on the ticket, to the category manager and the growth lead. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
 ```notes
-Open with the morning's close summary already in view: three slots, two caveats, Rs 12.6 lakh a
-month. The afternoon's first 60 minutes run the unguided chapter 3 part 2 and the interview
-transcript, then the handoff line into the W4-2 faculty block (tentative).
-Transition: the unguided block's prompt.
+On screen after lunch. The morning ended with the method: lift above a 1 percent floor, a slot
+priced at Rs 17,280 against Rs 3,240 a day, Rs 6.3 lakh a month recovered. The afternoon's first
+60 minutes run the unguided strip, the interview room and the Kahoot.
+The IITGN faculty session (tentative) takes the next 120. Transition: the brief.
 ```
 
 ---
 
-## SECTION 6: Pick three slots and defend them
-*The afternoon's unguided chapter 3 part 2.*
-
-**Who needs the answer.** The category manager.
-
-**The questions on the way.** Which three pairs, what each slot earns, and the answer to "milk is in most carts".
+## SECTION 3: Which strip would you ship?
+*Which three pairs, priced how, and how do you answer a category manager who wants milk in every slot?*
 
 ```notes
-LIVE, 30 minutes in nine groups. Each group picks three pairs from the pairs table, writes the
-one-paragraph proposal with the rupee value and the caveat, and answers the category manager's
-one line in two sentences.
-Transition: the prompt in full.
+LIVE, 1 minute. Chapter 3, part two, level L5, unguided in the nine groups on notebook 03.
+Transition: the brief.
 ```
 
 ---
 
-## S30. The prompt: 30 minutes, nine groups, one proposal
-*What the room produces by the end of the block.*
+## S38. Ship one strip in 35 minutes, priced and defended
+*What does each group hand in?*
 
 ```cards
-icon: list | eyebrow: Step 1 | title: Pick three pairs | body: From the notebook's pairs table, three with support at least 1 percent and lift well above 1. | tone: light
-icon: calculator | eyebrow: Step 2 | title: Price each slot | body: Views, click-through, add rate, margin per add; each labelled with its range. | tone: light
-icon: book | eyebrow: Step 3 | title: Write the caveat | body: The heavy tenth and the stock-out; what each would change about the number. | tone: light
-icon: message-square | eyebrow: Step 4 | title: Answer the manager | body: Two sentences. The number comes before the explanation. | tone: dark
+icon: list-ordered | eyebrow: Step 1 | title: Rank three pairs | body: From the pairs table: support at least 1 percent, lift well above one, each with its two numbers. | tone: light
+icon: indian-rupee | eyebrow: Step 2 | title: Price the strip | body: A slot a day and the month recovered, each assumption with its range. | tone: light
+icon: triangle-alert | eyebrow: Step 3 | title: Name two doubts | body: Each with the check and the number it gave. | tone: light
+icon: message-square | eyebrow: Step 4 | title: Answer the category manager | body: Two sentences: the number first, then what you concede. | tone: dark
 ```
 
 ```notes
-LIVE, 2 minutes. Say the four steps and the time. Say the TA will circulate; a group's proposal
-is judged on the lift above the floor, the labelled rupee gap and the two-sentence answer to the
-manager.
-Transition: the proposal template.
+LIVE, 4 minutes to brief, then 25 minutes of group work. The TA moves between tables. A group that
+picks a pair below the floor is asked "how many carts would the slot touch?". A group that prices
+sales instead of margin is asked "which number does the growth lead keep?". Transition: the
+template.
 ```
 
 ---
 
-## S31. The proposal template, four fields in one line each
-*What a group's handed-in proposal has to say.*
-
-| Field | Expected |
-|---|---|
-| The three pairs | Named, with support and lift from the notebook |
-| The rupee value per slot per month | From the model, with each assumption's range beside it |
-| The two caveats | Heavy-tenth share and the stock-out, with the recomputation the paper would run |
-| The answer to the manager | Two sentences, the number first, then the mechanism |
-
-```notes
-LIVE, 1 minute. Hand each group the one-page template. The template lives in exercises/guided
-and the solutions in exercises/solutions, released at the close.
-Transition: into the interview question.
-```
-
----
-
-## S32. The method ladder for the strip proposal
-*What goes from the pairs table to a one-sentence answer?*
-
-```mermaid
-flowchart TD
-    T["<b>pairs table</b><br/>every pair's support, confidence, lift"] --> F["<b>support floor</b><br/>at least 1 percent of carts"]
-    F --> R["<b>rank by lift</b><br/>top three above the floor"]
-    R --> V["<b>price each slot</b><br/>views x CTR x add x margin"]
-    V --> C["<b>caveats</b><br/>heavy tenth, stock-out"]
-    C --> A["<b>answer in two sentences</b><br/>number first, mechanism second"]
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class T,F,R,V,C known
-    class A lit
-```
-
-The method is a line: table, floor, lift, rupees, caveats, two sentences. The caveats are a labelled line in the proposal, with the recomputation the paper would carry.
-
-```notes
-LIVE, 2 minutes. Walk the six boxes. Say the room has 30 minutes to run this on the notebook
-output they wrote in chapter 2 and the rupee model from chapter 3.
-Transition: into the interview question.
-```
-
----
-
-## SECTION 7: The interview question the day equips
-*A transcript the room reads in pairs, then the AI-company variant.*
-
-**Who needs the answer.** The learner, who will be asked the question at the next screen with Uber, Swiggy or an AI startup.
-
-**The questions on the way.** Which measure cannot be fooled by popularity, how to explain lift in one sentence, and how to score an LLM shopping assistant's add-ons.
-
-```notes
-LIVE, 15 minutes. Read the transcript aloud with one learner playing the candidate. The weak
-answer and the hire-grade answer sit side by side. Score on the Aced criteria: structure, the
-denominator named, the trap seen, the number tied to a decision.
-Transition: the transcript.
-```
-
----
-
-## S40. The question, asked exactly as it reaches the room
-*Support, confidence, lift: which cannot be fooled by popularity?*
-
-```cards
-icon: user | eyebrow: Interviewer | title: The question | body: "Support, confidence, lift. Which one cannot be fooled by popularity, and why? Follow up with a product example." | tone: dark
-icon: triangle-alert | eyebrow: Weak answer | title: Confidence | body: Says confidence is "how likely they are to go together" and stops. The interviewer waits. | tone: light
-icon: check | eyebrow: Hire-grade | title: Lift | body: "Lift divides by the base rate, so a popular item cannot inflate it. On Instamart, milk's confidence to bread is 0.74 and its lift is 1.04; lift says they are nearly independent." | tone: light
-icon: message-square | eyebrow: Follow-up | title: AI assistant | body: "An LLM shopping assistant suggests milk often. How would you score it?" | tone: light
-```
-
-```notes
-LIVE, 6 minutes. Walk the two answers side by side. Say what the interviewer listens for: the
-base rate named, the mechanism named, a decision drawn. Say Aced's scorecard: structure first,
-assumptions stated, trap seen, decision named, each 0 to 2.
-Transition: the AI-company variant answered.
-```
-
----
-
-## S41. AI variant: lift over a popularity baseline
-*What is the measure for an LLM shopping assistant's add-on suggestions?*
+## S39. The one-page strip: four fields, one line each
+*What must the handed-in page say?*
 
 ```mermaid
 flowchart LR
-    S["<b>LLM suggests</b><br/>milk is accepted often<br/>because milk is popular"] --> O["<b>offline score</b><br/>lift over popularity baseline<br/>on held-out carts"]
-    O --> P["<b>production holdout</b><br/>incremental adds per cart<br/>against the baseline"]
+    A["<b>The strip</b><br/>three pairs, each with<br/>support and lift"] --> B["<b>The price</b><br/>a slot a day and the month,<br/>low and high ends"]
+    B --> C["<b>The doubts</b><br/>two, each with its check<br/>and its number"]
+    C --> D["<b>The answer</b><br/>two sentences to the<br/>category manager"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class S known
-    class O,P lit
+    class A,B,C known
+    class D lit
 ```
 
-The assistant that suggests milk is "accepted" often because milk is popular. The measure is lift of the assistant's suggestions over a popularity baseline, computed on held-out carts. The number is then validated by a holdout in production: run the assistant on half the carts, the baseline on the other half, measure incremental adds per cart. The base-rate trap is the same one Amazon fixed.
+A strip that names a pair without its support, or a rupee figure without its ranges, is sent back.
 
 ```notes
-LIVE, 3 minutes. Walk the two steps: offline on held-out carts by lift over the base rate, then
-online by a holdout. Say the lesson transfers: whenever a popular item looks like a winner,
-divide by the base rate before celebrating.
-Transition: the Kahoot and the handoff.
+LIVE, 1 minute. The template sits in exercises/unguided; the worked answer is released at the
+close. Transition: the objection each group must answer.
 ```
 
 ---
 
-## SECTION 8: The handoff into the W4-2 faculty block (tentative)
-*What the trainer hands to the faculty, in one line.*
+## S40. "Milk is our top seller; put it in every slot"
+*Which part of the category manager's objection is right, and what answers the rest?*
 
-**Who needs the answer.** The IITGN faculty session (tentative), where association rules as probability, independence and the Apriori pruning principle are taught in the W4-2 block.
-
-**The questions on the way.** How does lift read as a probability ratio, and why can an algorithm skip counting every combination.
+```cards
+icon: ear | eyebrow: Restate | title: Milk anchors the cart | body: It is in 71 percent of carts and brings shoppers back daily. | tone: light
+icon: chart-column | eyebrow: Answer | title: The slot moves nothing | body: Milk slots click at 1.2 percent against 6.4; lift with every common item sits near one. | tone: light
+icon: handshake | eyebrow: Concede | title: Milk belongs in the cart | body: Which is why it needs no reminder; keep it on the home screen and in search. | tone: light
+icon: refresh-cw | eyebrow: What would change it | title: If milk clicked like the rest | body: A two-zone test where milk slots matched 6.4 percent would put milk back. | tone: dark
+```
 
 ```notes
-LIVE, 2 minutes. Hand the room over with the sentence below. Say the faculty block is tentative
-until IITGN confirms (`data/programme/facts.yaml`, decision `faculty`).
-Transition: the handoff line.
+LIVE, 5 minutes. Tuesday's four moves, used on today's numbers: restate until the owner agrees,
+answer from the evidence, concede what is true, say what would change your mind. Two groups read
+their answers aloud; the room names the move each sentence makes. Transition: the interview room.
 ```
 
 ---
 
-## S45. Handoff: lift read as probability
-*What the trainer says, word for word, before the faculty takes over.*
-
-> You counted support, confidence and lift on twelve carts and on forty thousand. The next 120 minutes show the same three numbers as probabilities: a lift near one is independence made visible, which is what milk showed you. The support floor you set is what lets an algorithm skip counting every combination.
+## SECTION 4: The interview room
+*How does a strong candidate answer the day's question as Uber, Swiggy, Google or an AI startup would ask it?*
 
 ```notes
-LIVE, 1 minute. Read it aloud as it stands. Say the W4-2 block is tentative until IIT Gandhinagar
-confirms. Tomorrow's pre-read ships tonight.
-Transition: the Kahoot and the close.
+LIVE, 10 minutes for the section. Level L6. The full transcript with its scorecard is read in pairs
+from the extras folder. Transition: the question.
 ```
 
 ---
 
-## S46. Kahoot and close
-*The eight items of today's ungraded quiz.*
+## S41. Lift is the count popularity cannot fool
+*"Support, confidence, lift: which one cannot be fooled by popularity, and why?"*
+
+```cards
+icon: x | eyebrow: Weak answer | title: Confidence | body: "Confidence is the probability they go together, so the highest confidence pair goes in the strip." It ranks milk first. | tone: light
+icon: check | eyebrow: Hire-grade answer | title: Lift, because it divides by the base rate | body: "Bread to milk reads confidence 0.74, but milk is in 71 percent of carts anyway, so lift is 1.04. Chips and cold drink read 0.42 and lift 3.39. I rank by lift above a support floor." | tone: dark
+icon: ear | eyebrow: What the interviewer listens for | title: The base rate named | body: Three questions kept apart, the denominator said aloud, a floor, a decision. | tone: light
+```
+
+```notes
+LIVE, 4 minutes. Pairs read the two answers side by side and score both on the scorecard's seven
+lines. The weak answer is not wrong about confidence's meaning; it is wrong about what to do with
+it. Transition: the follow-ups.
+```
+
+---
+
+## S42. Three follow-ups and the line that answers each
+*What does the interviewer ask next, and what does a hire-grade answer say?*
+
+| Follow-up | The hire-grade line |
+|---|---|
+| A pair has lift 4.6 and support 0.25 percent: act? | Not yet: 100 carts cannot repay a slot shown to everyone; it goes on a watch list and a two-zone test |
+| Heavy buyers buy everything: what does that do to lift? | It inflates the pair counts of whatever they buy together; count each customer once and the party pair falls from 3.39 to 2.56 |
+| Make it a rupee recommendation: what cost line do most forget? | The margin handed back by any bundle discount, and the adds that would have happened anyway; sales are never the gain |
+
+```notes
+LIVE, 3 minutes. Each follow-up is one of the morning's traps asked as a question. Transition: the
+same idea at an AI company.
+```
+
+---
+
+## S43. An LLM shopping assistant meets the same base rate
+*How would you score an assistant that suggests add-ons?*
+
+```mermaid
+flowchart LR
+    A["<b>The assistant suggests milk</b><br/>shoppers accept it often<br/>because milk is popular"] --> B["<b>Offline</b><br/>held-out carts: lift of its<br/>suggestions over a popularity baseline"]
+    B --> C["<b>Online</b><br/>a holdout: assistant on half the carts,<br/>the baseline on the other half"]
+    C --> D["<b>The number</b><br/>incremental adds per cart,<br/>times margin, less the cost"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class A,B,C known
+    class D lit
+```
+
+An assistant that suggests milk is "accepted" often because milk is popular. Score it offline by the lift of its accepted suggestions over a baseline that always suggests the most popular items, on carts it never saw; then confirm online with a holdout, counting only the adds the assistant caused.
+
+```notes
+LIVE, 3 minutes. Programme-written variant; it names no company figure. The base-rate trap is the
+same one the strip fell into, now inside a model's evaluation. Transition: the handoff.
+```
+
+---
+
+## SECTION 5: The handoff and the close
+*What does the next session take from here, and what does the room take home?*
+
+```notes
+LIVE, 15 minutes for the section: the handoff, the Kahoot and the close. Transition: the handoff
+line.
+```
+
+---
+
+## S44. Handoff: lift read as probability, next
+*What does the IITGN faculty session (tentative) pick up from the morning?*
+
+> You counted lift on twelve carts and on forty thousand. The next 120 minutes show the same three numbers as probabilities: a lift near one is independence made visible, which is what milk showed you, and the support floor you set is what lets an algorithm skip counting every combination.
+
+The IITGN faculty session is tentative until IIT Gandhinagar confirms it.
+
+```notes
+LIVE, 1 minute. Read the line as it stands. Park any question about how long a watch-list trial
+must run for the faculty session (tentative). Transition: the Kahoot.
+```
+
+---
+
+## S45. Eight questions, twenty seconds each
+*Can the room make the day's calls at speed?*
 
 ```timeline
-label: Item 1 | title: Milk and bread | body: Which number is 0.74 on 40,000 Pune carts? Confidence from bread to milk.
-label: Item 2 | title: Lift read right | body: A pair's lift of 1.04 means found together as often as independence predicts.
-label: Item 3 | title: The blend | body: 50 percent milk-slot impressions at 1.2 CTR plus 50 percent other at 6.4 blends to 3.8 percent.
-label: Item 4 | title: The thin pair | body: Ice cream and chocolate sauce at lift 4.47 on 100 carts: watch list, not promote.
-label: Item 5 | title: The rupee | body: Rs 14,040 a day per slot is the gap between a milk slot and a chance-beating slot.
-label: Item 6 | title: Return question | body: The four defence moves from Tuesday, by name: restate, answer, concede, what would change your mind.
-label: Item 7 | title: The caveat | body: Recomputing per customer drops chips and cold drink's lift because of heavy shoppers.
-label: Item 8 | title: AI variant | body: An LLM assistant that suggests milk is scored on lift over a popularity baseline, then by a holdout.
+label: Items 1 to 3 | title: The three counts | body: Match each count to its question; compute lift from three counts; a popular partner read right.
+label: Items 4 and 5 | title: The floor and the rupee | body: A strong thin pair; what a promotion is worth.
+label: Item 6 | title: Tuesday's return question | body: The four moves of an answer to an objection that is partly right.
+label: Items 7 and 8 | title: The fall and the doubts | body: A blended rate split; counting each customer once.
 ```
 
 ```notes
-LIVE, 15 minutes. Run the Kahoot. Item 6 is the return question from Tuesday; the rest cover
-today's five levels. Close the day with the one-line summary: pairs beat chance by lift, three
-slots pay the growth lead's bill, and the Kalpa lab repeats the same method on the Rs 199
-charger.
-Transition: the day ends; tomorrow is Zomato Gold and the cohort triangle.
+LIVE, 10 minutes. Run the Kahoot pack from the kahoot folder; it is ungraded. Re-teach in one line
+any item most of the room misses. Transition: the close.
+```
+
+---
+
+## S46. The sentence for Friday, and Thursday's question
+*What does the room say on Friday, and what comes next?*
+
+**The sentence.** "The click-through fell because the strip gave half its slots to milk, which shoppers buy anyway; ranked by lift above a 1 percent floor, the strip shows chips with cold drink, coriander with green chillies and bread with butter, and recovers about Rs 6.3 lakh a month."
+
+**Tomorrow.** Zomato Gold in Chennai: a retention number that stays flat while every group of members shrinks. Who is leaving, and at which step?
+
+```mermaid
+flowchart LR
+    M["<b>Mon</b><br/>pay for trips"] --> T["<b>Tue</b><br/>one slide"]
+    T --> W["<b>Wed</b><br/>lift: beyond chance"]
+    W --> H["<b>Thu</b><br/>beyond the blend?"]
+    H --> F["<b>Fri</b><br/>beyond the baseline?"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class M,T known
+    class W lit
+    class H,F unknown
+```
+
+```notes
+LIVE, 4 minutes. Ask two learners to say the sentence without notes. The lab after class runs the
+same method on Kalpa Retail's baskets. Tomorrow's pre-read ships tonight.
 ```

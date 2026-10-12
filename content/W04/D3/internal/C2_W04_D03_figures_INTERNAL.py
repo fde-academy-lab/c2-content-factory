@@ -1,418 +1,451 @@
-"""Draw the Wednesday data pictures the deck, the cheat sheet and the notes place by path.
+"""Draw the Wednesday pictures the decks, the cheat sheet and the notes place by path.
 
-Every picture is drawn by matplotlib from the generated CSVs and the facts file; nothing is pasted
-in. The GIF ships beside its first and last stills, since PowerPoint plays motion in slideshow
-mode only and LibreOffice renders the still at build time. Labels are checked against the nine-
-points-on-a-slide and five-points-on-a-sheet bar; where they would fall under, the picture is
-reshaped shorter or narrower before saving.
+Run from the repository root, after the generator:
+    python3 content/W04/D3/internal/C2_W04_D03_figures_INTERNAL.py
 
-Writes PNG and GIF files to content/W04/D3/whiteboards/.
+Every picture is drawn by matplotlib from the generated CSVs and the facts file, so a number on a
+picture is a number in the facts file. The GIF ships beside its first and last stills. Labels are
+set at 12 points or more on pictures a slide shows at about full width, so they print above nine
+points on a slide; the cheat sheet's anchor is drawn at the sheet's own width.
 """
-import math
+from collections import Counter
+from itertools import combinations
 from pathlib import Path
 
 import matplotlib
 matplotlib.use("Agg")
+import matplotlib.dates as mdates
+import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, PillowWriter
-import matplotlib.patches as mpatches
 import pandas as pd
+import yaml
 
 HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data"
 OUT = HERE.parent / "whiteboards"
 OUT.mkdir(parents=True, exist_ok=True)
+FACTS = {r["id"]: r for rows in yaml.safe_load((HERE / "C2_W04_D03_facts_INTERNAL.yaml")
+                                                .read_text(encoding="utf-8")).values()
+         for r in rows}
 
-INK = "#1A0F5C"
-NIGHT = "#1A1440"
-VIOLET = "#5B3FD6"
-LAVENDER = "#D9A7FF"
-TINT = "#EEEAFB"
-MUTED = "#6B6690"
-LINE = "#E4E1F1"
-WHITE = "#FFFFFF"
-ROSE = "#D63A6A"
-GREEN = "#1F8A5B"
 
+def v(fid):
+    return FACTS[fid]["value"]
+
+
+def s(fid):
+    return FACTS[fid]["shown"]
+
+
+INK, VIOLET, TINT, MUTED, LINE = "#1A0F5C", "#5B3FD6", "#EEEAFB", "#6B6690", "#E4E1F1"
+ROSE, GREEN, AMBER, WHITE, LAV = "#D63A6A", "#1F8A5B", "#C98A00", "#FFFFFF", "#D9A7FF"
 plt.rcParams.update({
-    "font.family": "DejaVu Sans",
-    "font.size": 11,
-    "axes.labelcolor": INK,
-    "axes.edgecolor": LINE,
-    "axes.titleweight": "bold",
-    "axes.titlecolor": INK,
-    "xtick.color": INK,
-    "ytick.color": INK,
+    "font.family": "DejaVu Sans", "font.size": 13, "axes.titlesize": 15, "axes.labelsize": 13,
+    "xtick.labelsize": 12, "ytick.labelsize": 12, "legend.fontsize": 12,
+    "axes.labelcolor": INK, "axes.edgecolor": "#B8B2D6", "axes.titleweight": "bold",
+    "axes.titlecolor": INK, "xtick.color": INK, "ytick.color": INK,
+    "axes.spines.top": False, "axes.spines.right": False,
 })
 
-MILK_MARG = 0.7110
-BREAD_MARG = 0.3420
-EGGS_MARG = 0.2906
-CURD_MARG = 0.2581
-BANANAS_MARG = 0.2315
-CHIPS_MARG = 0.1218
-COLD_MARG = 0.1235
-ICE_MARG = 0.0393
-CHOC_MARG = 0.0145
-BREAD_MILK_SUP = BREAD_MARG * 0.7419
-BREAD_MILK_LIFT = 1.0435
-CHIPS_COLD_SUP = 0.0500
-CHIPS_COLD_LIFT = 3.3223
-ICE_CHOC_SUP = 0.0026
-ICE_CHOC_LIFT = 4.4720
+
+def save(fig, name):
+    fig.savefig(OUT / name, dpi=170, bbox_inches="tight", facecolor=WHITE)
+    plt.close(fig)
+    print("  wrote", name)
 
 
-def ten_dot_venn():
-    """The ten tea-stall orders as dots in two circles, with the 2 by 2 table beside it. The toy
-    the L1 chapter uses in its first beat, labelled invented on the deck and the cheat sheet."""
-    fig, (ax_left, ax_right) = plt.subplots(1, 2, figsize=(10, 4.5), gridspec_kw={"width_ratios": [1.1, 1]})
-    for ax in (ax_left, ax_right):
-        ax.set_aspect("equal"); ax.axis("off")
-    # Ten orders: chai in 6, biscuit in 4, both in 3.
-    chai_only = [(1.0, 2.0), (1.5, 1.2), (2.0, 2.6)]
-    both = [(2.8, 2.0), (3.0, 1.3), (2.6, 2.7)]
-    biscuit_only = [(4.5, 2.0)]
-    others = [(5.6, 2.4), (5.3, 1.4), (6.0, 2.0)]
-    chai_circle = plt.Circle((2.0, 2.0), 1.3, fill=True, facecolor=TINT, edgecolor=VIOLET, linewidth=2)
-    biscuit_circle = plt.Circle((3.5, 2.0), 1.3, fill=True, facecolor="none", edgecolor=VIOLET,
-                                linewidth=2, alpha=0.0)
-    bisc_fill = plt.Circle((3.5, 2.0), 1.3, fill=True, facecolor="#F6EEFC", edgecolor=VIOLET,
-                           linewidth=2, alpha=0.5)
-    ax_left.add_patch(chai_circle)
-    ax_left.add_patch(bisc_fill)
-    ax_left.add_patch(biscuit_circle)
-    for pt in chai_only + both + biscuit_only + others:
-        ax_left.plot(pt[0], pt[1], "o", color=INK, markersize=8)
-    ax_left.text(1.3, 3.5, "chai in 6", color=VIOLET, fontsize=12, weight="bold")
-    ax_left.text(4.0, 3.5, "biscuit in 4", color=VIOLET, fontsize=12, weight="bold")
-    ax_left.text(2.65, 0.4, "both in 3", color=INK, fontsize=12, weight="bold", ha="center")
-    ax_left.set_xlim(0, 7); ax_left.set_ylim(0, 4)
-    # 2 by 2 table on the right.
-    cell_colors = [[TINT, LINE], [LINE, "#F6F3FB"]]
-    cells = [[3, 3], [1, 3]]
-    tab = ax_right.table(cellText=[["3", "3"], ["1", "3"]],
-                         rowLabels=["chai", "no chai"],
-                         colLabels=["biscuit", "no biscuit"],
-                         cellColours=cell_colors,
-                         loc="center", cellLoc="center",
-                         bbox=[0.1, 0.2, 0.8, 0.6])
-    tab.auto_set_font_size(False); tab.set_fontsize(13)
+def baskets():
+    items = pd.read_csv(DATA / "C2_W04_D03_cart_items_STUDENT.csv")
+    return items, items.groupby("cart_id").item.apply(set)
+
+
+# =========================================================================== chapter 1
+def ten_dots(name="C2_W04_D03_ten_dots_STUDENT.png", width=11.5):
+    """The tea stall's ten invented orders as dots in two circles, beside the 2 by 2 table."""
+    fig, (ax, at) = plt.subplots(1, 2, figsize=(width, 4.6), gridspec_kw={"width_ratios": [1.15, 1]})
+    for a in (ax, at):
+        a.axis("off")
+    ax.set_aspect("equal")
+    ax.add_patch(plt.Circle((2.2, 2.0), 1.45, facecolor=TINT, edgecolor=VIOLET, lw=2.2))
+    ax.add_patch(plt.Circle((3.9, 2.0), 1.45, facecolor="#F6EEFC", edgecolor=VIOLET, lw=2.2, alpha=0.75))
+    chai_only = [(1.3, 2.4), (1.6, 1.4), (2.0, 2.9)]
+    both = [(3.0, 2.5), (3.1, 1.6), (2.75, 2.05)]
+    biscuit_only = [(4.6, 2.0)]
+    neither = [(6.3, 3.0), (6.6, 2.0), (6.3, 1.0)]
+    for x, y in chai_only + both + biscuit_only + neither:
+        ax.plot(x, y, "o", color=INK, ms=11)
+    ax.text(1.4, 3.75, "chai: 6", color=VIOLET, fontsize=14, weight="bold")
+    ax.text(3.9, 3.75, "biscuit: 4", color=VIOLET, fontsize=14, weight="bold")
+    ax.text(2.95, 0.2, "both: 3", color=INK, fontsize=14, weight="bold", ha="center")
+    ax.text(6.45, 0.2, "neither: 3", color=MUTED, fontsize=13, ha="center")
+    ax.set_xlim(0.5, 7.3)
+    ax.set_ylim(-0.1, 4.2)
+    tab = at.table(cellText=[["3", "3", "6"], ["1", "3", "4"], ["4", "6", "10"]],
+                   rowLabels=["chai", "no chai", "all"], colLabels=["biscuit", "no biscuit", "all"],
+                   cellColours=[[TINT, WHITE, "#F7F5FD"], [WHITE, WHITE, "#F7F5FD"],
+                                ["#F7F5FD", "#F7F5FD", "#F7F5FD"]],
+                   loc="center", cellLoc="center", bbox=[0.18, 0.25, 0.78, 0.6])
+    tab.auto_set_font_size(False)
+    tab.set_fontsize(14)
     for (r, c), cell in tab.get_celld().items():
-        cell.set_edgecolor(LINE); cell.set_linewidth(1.2)
-        if r == 0: cell.set_text_props(weight="bold", color=INK)
-        if c == -1: cell.set_text_props(weight="bold", color=INK)
-    ax_right.text(0.5, 0.9, "the 2 by 2 the circles stand for",
-                  transform=ax_right.transAxes, ha="center", color=MUTED, fontsize=11)
-    ax_right.text(0.5, 0.08, "support 3 of 10, confidence 0.50, lift 1.25",
-                  transform=ax_right.transAxes, ha="center", color=INK, fontsize=11, weight="bold")
-    plt.tight_layout()
-    fig.savefig(OUT / "C2_W04_D03_ten_dots_STUDENT.png", dpi=180, bbox_inches="tight",
-                facecolor=WHITE)
-    plt.close(fig)
+        cell.set_edgecolor("#B8B2D6")
+        if r == 0 or c == -1:
+            cell.set_text_props(weight="bold", color=INK)
+    at.text(0.57, 0.93, "ten orders, invented", transform=at.transAxes, ha="center", color=MUTED, fontsize=13)
+    at.text(0.57, 0.1, f"support {s('tea_support')}   confidence {s('tea_conf')}   lift {s('tea_lift')}",
+            transform=at.transAxes, ha="center", color=INK, fontsize=14, weight="bold")
+    fig.tight_layout()
+    save(fig, name)
 
 
-def actual_vs_expected_bars():
-    """Lift as a ratio of two bars: for each featured pair, draw the expected and the actual share
-    of carts. Reads from the full-data facts."""
-    pairs = [
-        ("bread and milk", BREAD_MARG * MILK_MARG, BREAD_MILK_SUP),
-        ("eggs and milk", EGGS_MARG * MILK_MARG, EGGS_MARG * 0.7267),
-        ("chips and cold", CHIPS_MARG * COLD_MARG, CHIPS_COLD_SUP),
-        ("ice cream and choc sauce", ICE_MARG * CHOC_MARG, ICE_CHOC_SUP),
-    ]
-    labels = [p[0] for p in pairs]
-    expected = [p[1] for p in pairs]
-    actual = [p[2] for p in pairs]
-    fig, ax = plt.subplots(figsize=(9.5, 5))
-    y = range(len(pairs))
-    bar_h = 0.35
-    ax.barh([i - bar_h / 2 for i in y], expected, bar_h, color=LINE, edgecolor=VIOLET,
-            label="expected if independent")
-    ax.barh([i + bar_h / 2 for i in y], actual, bar_h, color=VIOLET, edgecolor=INK,
-            label="actually seen")
-    for i, (e, a) in enumerate(zip(expected, actual)):
-        lift = a / e if e > 0 else 0
-        ax.text(max(e, a) * 1.02, i, f"lift {lift:.2f}", va="center", color=INK, fontsize=11,
-                weight="bold")
-    ax.set_yticks(list(y)); ax.set_yticklabels(labels, color=INK)
-    ax.set_xlabel("share of the 40,000 Pune carts")
-    ax.set_title("Lift reads off the gap between expected and seen")
-    ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
-    ax.legend(loc="lower right", frameon=False)
-    plt.tight_layout()
-    fig.savefig(OUT / "C2_W04_D03_actual_vs_expected_STUDENT.png", dpi=180, bbox_inches="tight",
-                facecolor=WHITE)
-    plt.close(fig)
+def carry_bag():
+    """The popular partner in miniature: biscuit to carry bag reads 0.75, under the bag's own 0.9."""
+    fig, ax = plt.subplots(figsize=(10.5, 3.8))
+    rows = [("confidence, biscuit to bag", v("tea_bag_conf"), VIOLET),
+            ("share of all ten orders with a bag", 0.9, MUTED)]
+    for i, (label, val, color) in enumerate(rows):
+        ax.barh(i, val, color=color if i == 0 else LINE, edgecolor=INK, height=0.55)
+        ax.text(val + 0.015, i, f"{val:.2f}", va="center", fontsize=15, weight="bold", color=INK)
+    ax.set_yticks([0, 1], [r[0] for r in rows])
+    ax.set_xlim(0, 1.12)
+    ax.invert_yaxis()
+    ax.set_xlabel("share of orders")
+    ax.set_title(f"Bag in 9 of 10 orders: lift = 0.75 / 0.90 = {s('tea_bag_lift')}, below one (invented)")
+    fig.tight_layout()
+    save(fig, "C2_W04_D03_carry_bag_STUDENT.png")
 
 
-def ctr_by_slot_bars():
-    """The click-through by suggested item: milk slots against every other slot, before and after,
-    showing the blended fall as a mix of two rates."""
-    labels = ["before change\nany suggestion", "after change\nmilk slots",
-              "after change\nother slots", "after change\nblended"]
-    values = [0.061, 0.012, 0.064, 0.038]
-    colors = [MUTED, ROSE, GREEN, INK]
-    fig, ax = plt.subplots(figsize=(9, 5))
-    bars = ax.bar(labels, values, color=colors, edgecolor=INK, linewidth=0.8)
-    for bar, v in zip(bars, values):
-        ax.text(bar.get_x() + bar.get_width() / 2, v + 0.002, f"{v*100:.1f}%",
-                ha="center", color=INK, weight="bold", fontsize=11)
-    ax.set_ylabel("click-through rate")
-    ax.set_title("The fall sits in the milk slots")
-    ax.set_ylim(0, 0.08)
-    ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
-    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f"{x*100:.0f}%"))
-    ax.tick_params(axis="x", labelsize=10)
-    plt.tight_layout()
-    fig.savefig(OUT / "C2_W04_D03_ctr_by_slot_STUDENT.png", dpi=180, bbox_inches="tight",
-                facecolor=WHITE)
-    plt.close(fig)
+def twelve():
+    t = pd.read_csv(DATA / "C2_W04_D03_twelve_rows_STUDENT.csv")
+    return t, [(r.cart_id, {c for c in t.columns[1:] if getattr(r, c.replace(" ", "_"), 0) == 1})
+               for r in t.rename(columns=lambda c: c.replace(" ", "_")).itertuples()]
 
 
-def action_map_scatter():
-    """Every pair above the support floor plotted on a lift against support board, with the four
-    regions: promote (lift high, support above floor), watch (lift high, support below floor),
-    ignore (lift near 1), trap (lift near 1 with high confidence from a popular partner)."""
-    # Representative pairs computed from the facts, with the twelve rows and the lab's plants kept
-    # off the board.
-    pairs = [
-        ("chips and cold", CHIPS_COLD_SUP, CHIPS_COLD_LIFT),
-        ("ice cream and choc sauce", ICE_CHOC_SUP, ICE_CHOC_LIFT),
-        ("bread and milk", BREAD_MILK_SUP, BREAD_MILK_LIFT),
-        ("eggs and milk", EGGS_MARG * 0.7267, 1.0221),
-        ("curd and milk", CURD_MARG * 0.715, 1.006),
-        ("bananas and milk", BANANAS_MARG * 0.718, 1.010),
-        ("bread and eggs", 0.11, 1.11),
-        ("curd and bananas", 0.065, 1.08),
-    ]
-    fig, ax = plt.subplots(figsize=(9.5, 6.2))
-    ax.axhline(1.0, color=MUTED, lw=1, ls="--", alpha=0.7)
-    ax.axvline(0.01, color=MUTED, lw=1, ls="--", alpha=0.7)  # 1 percent floor
-    ax.text(0.011, 4.9, "support floor at 1%", color=MUTED, fontsize=10)
-    ax.text(0.5, 1.03, "lift = 1 (independence)", color=MUTED, fontsize=10, ha="right")
-    # Shade quadrants.
-    ax.axhspan(1.2, 6, xmin=0.165, xmax=1.0, facecolor="#E8F5EE", alpha=0.6)
-    ax.axhspan(1.2, 6, xmin=0, xmax=0.165, facecolor="#FBF4E3", alpha=0.6)
-    ax.axhspan(0, 1.2, xmin=0, xmax=1.0, facecolor="#F6F3FB", alpha=0.5)
-    # Region labels.
-    ax.text(0.08, 5.2, "PROMOTE", color=GREEN, fontsize=14, weight="bold", ha="center")
-    ax.text(0.004, 5.2, "WATCH", color="#C98A00", fontsize=14, weight="bold", ha="center")
-    ax.text(0.15, 0.6, "IGNORE and the popularity trap", color=MUTED, fontsize=12, weight="bold")
-    for label, sup, lift in pairs:
-        color = VIOLET
-        ax.scatter(sup, lift, s=70, color=color, edgecolor=INK, zorder=3)
-        ax.text(sup * 1.1, lift + 0.08, label, color=INK, fontsize=10)
-    ax.set_xscale("log")
-    ax.set_xlim(0.001, 0.5)
-    ax.set_ylim(0, 5.5)
-    ax.set_xlabel("support (log scale)")
-    ax.set_ylabel("lift")
-    ax.set_title("Where every pair sits on the action map")
-    ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
-    plt.tight_layout()
-    fig.savefig(OUT / "C2_W04_D03_action_map_STUDENT.png", dpi=180, bbox_inches="tight",
-                facecolor=WHITE)
-    plt.close(fig)
+def shrinking_universe():
+    """Confidence as a smaller denominator: twelve carts, then the bread carts, then bread with milk."""
+    t = pd.read_csv(DATA / "C2_W04_D03_twelve_rows_STUDENT.csv")
+    carts = [(row["cart_id"], {c for c in t.columns[1:] if row[c] == 1}) for _, row in t.iterrows()]
+    short = {"toned milk": "milk", "chocolate sauce": "choc sauce", "cold drink": "cold drink"}
+    pos = [(i % 4, 2 - i // 4) for i in range(12)]
+    titles = [f"All twelve carts: milk in {v('twelve_milk')}",
+              f"Keep only the carts with bread: {v('twelve_bread')}",
+              f"Of those, carts that also hold milk: {v('twelve_bread_milk')}"]
+    reads = ["bread is in 4 of 12 carts",
+             "confidence asks only about these 4 carts",
+             f"confidence = 4 / 4 = {s('twelve_bread_milk_conf')}; milk was in 8 of 12 anyway"]
 
-
-def slot_value_waterfall():
-    """Margin gained, less margin returned to the customer, less the slot's opportunity cost,
-    giving the net value of a slot a day. Reads from the facts."""
-    labels = ["impressions\n60,000", "clicks at 6.4%\n3,840",
-              "adds at 50%\n1,920", "margin at Rs 9\nRs 17,280",
-              "milk slots at 1.2%\nRs 3,240", "the gap\nRs 14,040/day"]
-    values = [0, 3840, 1920, 17280, 3240, 14040]
-    fig, ax = plt.subplots(figsize=(10, 4.5))
-    # Simple cascade: show the four computations as side-by-side bars on different scales.
-    # Draw stacked explanation blocks.
-    ax.axis("off")
-    x = 0.05
-    for i, (lab, val) in enumerate(zip(labels, values)):
-        colour = VIOLET if i < 4 else ROSE if i == 4 else INK
-        ax.add_patch(mpatches.FancyBboxPatch((x, 0.3), 0.14, 0.5,
-                                              boxstyle="round,pad=0.02",
-                                              facecolor=TINT if i < 4 else "#FBE9EF" if i == 4 else INK,
-                                              edgecolor=colour, linewidth=1.5))
-        text_colour = WHITE if i == 5 else INK
-        ax.text(x + 0.07, 0.55, lab, ha="center", va="center", color=text_colour, fontsize=11,
-                weight="bold")
-        if i < 5:
-            ax.annotate("", xy=(x + 0.16, 0.55), xytext=(x + 0.14, 0.55),
-                        arrowprops=dict(arrowstyle="->", color=INK, lw=1.3))
-        x += 0.158
-    ax.set_xlim(0, 1); ax.set_ylim(0, 1)
-    ax.text(0.5, 0.15, "A slot full of the top-seller earns five times less than a slot that beats chance.",
-            ha="center", color=MUTED, fontsize=11, style="italic")
-    plt.tight_layout()
-    fig.savefig(OUT / "C2_W04_D03_slot_value_cascade_STUDENT.png", dpi=180, bbox_inches="tight",
-                facecolor=WHITE)
-    plt.close(fig)
-
-
-def shrinking_universe_gif():
-    """Confidence as a smaller denominator: the twelve carts, then only those with bread, then
-    those with bread and milk. Writes the GIF and its first and last frames as PNGs."""
-    cart_items = {
-        "TR01": {"milk", "bread", "eggs", "bananas"},
-        "TR02": {"milk", "bread", "eggs", "curd"},
-        "TR03": {"milk", "bread", "curd", "paneer"},
-        "TR04": {"milk", "bread", "eggs"},
-        "TR05": {"milk", "eggs", "chips", "cold"},
-        "TR06": {"milk", "chips", "cold"},
-        "TR07": {"milk", "bananas"},
-        "TR08": {"milk", "paneer"},
-        "TR09": {"chips"},
-        "TR10": {"cold", "curd"},
-        "TR11": {"eggs", "ice cream", "choc"},
-        "TR12": {"curd", "onions"},
-    }
-    labels = list(cart_items.keys())
-    # Positions: 4 wide, 3 tall.
-    pos = {labels[i]: (i % 4, 2 - i // 4) for i in range(12)}
-
-    def draw_state(ax, stage):
-        ax.clear(); ax.set_xlim(-0.5, 3.5); ax.set_ylim(-0.5, 2.5); ax.set_aspect("equal")
+    def draw(ax, stage):
+        ax.clear()
+        ax.set_xlim(-0.55, 3.55)
+        ax.set_ylim(-0.75, 2.5)
         ax.axis("off")
-        for cid, (x, y) in pos.items():
-            items = cart_items[cid]
-            if stage == 0:
-                face = TINT; edge = VIOLET; alpha = 1.0
-            elif stage == 1:
-                has_bread = "bread" in items
-                face = TINT if has_bread else WHITE
-                edge = VIOLET if has_bread else "#B8B2D6"
-                alpha = 1.0 if has_bread else 0.25
-            else:
-                has_both = "bread" in items and "milk" in items
-                face = TINT if has_both else WHITE
-                edge = VIOLET if has_both else "#B8B2D6"
-                alpha = 1.0 if has_both else 0.2
-            ax.add_patch(mpatches.FancyBboxPatch((x - 0.4, y - 0.3), 0.8, 0.6,
-                                                  boxstyle="round,pad=0.03",
-                                                  facecolor=face, edgecolor=edge,
-                                                  linewidth=1.5, alpha=alpha))
-            ax.text(x, y + 0.08, cid, ha="center", color=INK, fontsize=10, weight="bold",
-                    alpha=min(alpha + 0.3, 1.0))
-            short = " ".join(sorted(items))[:28]
-            ax.text(x, y - 0.18, short, ha="center", color=MUTED, fontsize=7, alpha=alpha)
-        titles = ["Every cart: 12",
-                  "Carts that hold bread: 4",
-                  "Of those, carts that also hold milk: 4"]
-        reads = ["bread share = 4/12 = 0.33",
-                 "shrink the world to the 4 bread carts",
-                 "confidence(bread -> milk) = 4/4 = 1.00"]
-        ax.set_title(titles[stage], fontsize=14, color=INK)
-        ax.text(1.5, -0.4, reads[stage], ha="center", color=INK, fontsize=11, weight="bold")
+        for (cid, held), (x, y) in zip(carts, pos):
+            on = stage == 0 or ("bread" in held and (stage == 1 or "toned milk" in held))
+            ax.add_patch(mpatches.FancyBboxPatch((x - 0.46, y - 0.36), 0.92, 0.72,
+                                                 boxstyle="round,pad=0.02", lw=1.6,
+                                                 facecolor=TINT if on else WHITE,
+                                                 edgecolor=VIOLET if on else "#D5D1E8",
+                                                 alpha=1 if on else 0.6))
+            ax.text(x, y + 0.17, cid, ha="center", fontsize=12, weight="bold",
+                    color=INK if on else "#B8B2D6")
+            label = "milk" if "toned milk" in held else "no milk"
+            label += ", bread" if "bread" in held else ""
+            ax.text(x, y - 0.13, label, ha="center", fontsize=11, color=INK if on else "#C9C5DD")
+        ax.set_title(titles[stage], fontsize=16)
+        ax.text(1.5, -0.62, reads[stage], ha="center", fontsize=14, weight="bold", color=INK)
 
-    fig, ax = plt.subplots(figsize=(9, 5))
-    def frame(i): draw_state(ax, i)
-    # Still frames.
-    draw_state(ax, 0)
-    fig.savefig(OUT / "C2_W04_D03_shrink_still_first_STUDENT.png", dpi=180,
-                bbox_inches="tight", facecolor=WHITE)
-    draw_state(ax, 2)
-    fig.savefig(OUT / "C2_W04_D03_shrink_still_last_STUDENT.png", dpi=180,
-                bbox_inches="tight", facecolor=WHITE)
-    anim = FuncAnimation(fig, frame, frames=3, interval=1600, repeat=True)
-    anim.save(OUT / "C2_W04_D03_shrink_STUDENT.gif", writer=PillowWriter(fps=0.75))
-    plt.close(fig)
-
-
-def milk_everywhere_bars():
-    """For every item with support of at least 2 percent, the confidence toward milk and the lift,
-    showing that the lift sits near 1 for all of them even as confidence varies, which is the
-    popularity trap in one chart."""
-    items = [
-        ("bread", 0.3420, 0.7419, 1.0435),
-        ("eggs", 0.2906, 0.7267, 1.0221),
-        ("curd", 0.2581, 0.715, 1.006),
-        ("bananas", 0.2315, 0.718, 1.010),
-        ("chips", 0.1218, 0.713, 1.003),
-        ("cold drink", 0.1235, 0.714, 1.004),
-        ("ice cream", 0.0393, 0.731, 1.028),
-    ]
-    labels = [i[0] for i in items]
-    confs = [i[2] for i in items]
-    lifts = [i[3] for i in items]
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
-    ax1.barh(labels, confs, color=TINT, edgecolor=VIOLET, linewidth=1.4)
-    ax1.axvline(0.71, color=INK, lw=1.3, ls="--")
-    ax1.text(0.73, 6.1, "milk's share\n0.71", color=INK, fontsize=10)
-    ax1.set_xlim(0, 1); ax1.set_xlabel("confidence to milk")
-    ax1.set_title("every pair looks like a bundle...")
-    ax1.spines["top"].set_visible(False); ax1.spines["right"].set_visible(False)
-    for i, c in enumerate(confs):
-        ax1.text(c + 0.01, i, f"{c:.2f}", va="center", color=INK, fontsize=10)
-    ax2.barh(labels, lifts, color=TINT, edgecolor=VIOLET, linewidth=1.4)
-    ax2.axvline(1.0, color=INK, lw=1.3, ls="--")
-    ax2.set_xlim(0, 1.3); ax2.set_xlabel("lift")
-    ax2.set_title("...until lift says independence")
-    ax2.spines["top"].set_visible(False); ax2.spines["right"].set_visible(False)
-    for i, l in enumerate(lifts):
-        ax2.text(l + 0.01, i, f"{l:.2f}", va="center", color=INK, fontsize=10)
-    plt.tight_layout()
-    fig.savefig(OUT / "C2_W04_D03_milk_everywhere_STUDENT.png", dpi=180, bbox_inches="tight",
+    fig, ax = plt.subplots(figsize=(12.5, 5.0))
+    draw(ax, 0)
+    fig.savefig(OUT / "C2_W04_D03_shrink_still_first_STUDENT.png", dpi=170, bbox_inches="tight",
                 facecolor=WHITE)
-    plt.close(fig)
-
-
-def milk_share_rect():
-    """A unit square with P(A) as a vertical band, P(B) as a horizontal band, their expected
-    overlap shaded, and the observed overlap drawn beside it. The scene the explorer repeats, drawn
-    once as a still so the deck and the sheet can place it."""
-    fig, (axL, axR) = plt.subplots(1, 2, figsize=(10, 5))
-    for ax in (axL, axR):
-        ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.set_aspect("equal")
-        ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
-        ax.set_xticks([0, 0.5, 1.0]); ax.set_yticks([0, 0.5, 1.0])
-    # Left: expected if independent.
-    axL.add_patch(mpatches.Rectangle((0, 0), BREAD_MARG, 1, facecolor=TINT, alpha=0.6, edgecolor=VIOLET))
-    axL.add_patch(mpatches.Rectangle((0, 0), 1, MILK_MARG, facecolor=LAVENDER, alpha=0.4, edgecolor=INK))
-    axL.add_patch(mpatches.Rectangle((0, 0), BREAD_MARG, MILK_MARG, facecolor=VIOLET, alpha=0.8,
-                                      edgecolor=INK, linewidth=2))
-    axL.text(BREAD_MARG / 2, 1.05, f"P(bread) = {BREAD_MARG:.2f}", ha="center", color=INK, fontsize=11)
-    axL.text(1.05, MILK_MARG / 2, f"P(milk) = {MILK_MARG:.2f}", color=INK, fontsize=11)
-    axL.text(BREAD_MARG / 2, MILK_MARG / 2, f"expected\n{BREAD_MARG * MILK_MARG:.3f}",
-             ha="center", va="center", color=WHITE, fontsize=11, weight="bold")
-    axL.set_title("Expected if independent")
-    # Right: observed.
-    obs = BREAD_MILK_SUP
-    axR.add_patch(mpatches.Rectangle((0, 0), BREAD_MARG, 1, facecolor=TINT, alpha=0.4, edgecolor=VIOLET,
-                                      linestyle="--"))
-    axR.add_patch(mpatches.Rectangle((0, 0), 1, MILK_MARG, facecolor=LAVENDER, alpha=0.3, edgecolor=INK,
-                                      linestyle="--"))
-    # Observed overlap: draw as a rectangle with area obs sitting inside both bands.
-    w = BREAD_MARG; h = obs / w
-    axR.add_patch(mpatches.Rectangle((0, 0), w, h, facecolor=VIOLET, alpha=0.9, edgecolor=INK,
-                                      linewidth=2))
-    axR.text(w / 2, h / 2, f"observed\n{obs:.3f}", ha="center", va="center", color=WHITE,
-             fontsize=11, weight="bold")
-    axR.set_title(f"Observed; lift = {BREAD_MILK_LIFT:.2f}")
-    plt.tight_layout()
-    fig.savefig(OUT / "C2_W04_D03_areas_STUDENT.png", dpi=180, bbox_inches="tight",
+    draw(ax, 2)
+    fig.savefig(OUT / "C2_W04_D03_shrink_still_last_STUDENT.png", dpi=170, bbox_inches="tight",
                 facecolor=WHITE)
+    anim = FuncAnimation(fig, lambda i: draw(ax, i), frames=3, interval=1800)
+    anim.save(OUT / "C2_W04_D03_shrink_STUDENT.gif", writer=PillowWriter(fps=0.6))
     plt.close(fig)
+    print("  wrote the shrink GIF and its two stills")
+
+
+# =========================================================================== chapter 2
+def areas():
+    """Lift as a ratio of two areas: bread's band times milk's band against the observed overlap."""
+    pb, pm, obs = v("bread_share"), v("toned_milk_share"), v("bread_milk_support")
+    fig, (al, ar) = plt.subplots(1, 2, figsize=(12.5, 5.0))
+    for a in (al, ar):
+        a.set_xlim(0, 1)
+        a.set_ylim(0, 1)
+        a.set_aspect("equal")
+        a.set_xticks([0, 0.5, 1])
+        a.set_yticks([0, 0.5, 1])
+    al.add_patch(mpatches.Rectangle((0, 0), pb, 1, facecolor=TINT, edgecolor=VIOLET))
+    al.add_patch(mpatches.Rectangle((0, 0), 1, pm, facecolor=LAV, alpha=0.35, edgecolor=INK))
+    al.add_patch(mpatches.Rectangle((0, 0), pb, pm, facecolor=VIOLET, edgecolor=INK, lw=2))
+    al.text(pb / 2, pm / 2, f"expected\n{pb:.2f} x {pm:.2f}\n= {pb * pm:.3f}", ha="center",
+            va="center", color=WHITE, fontsize=13, weight="bold")
+    al.set_xlabel(f"share of carts with bread: {pb:.2f}")
+    al.set_ylabel(f"share with milk: {pm:.2f}")
+    al.set_title("If bread and milk ignored each other")
+    ar.add_patch(mpatches.Rectangle((0, 0), pb, 1, facecolor=TINT, edgecolor=VIOLET, ls="--"))
+    ar.add_patch(mpatches.Rectangle((0, 0), pb, obs / pb, facecolor=VIOLET, edgecolor=INK, lw=2))
+    ar.add_patch(mpatches.Rectangle((0, 0), pb, pm, fill=False, edgecolor=ROSE, lw=2, ls="--"))
+    ar.text(pb / 2, obs / pb / 2, f"seen\n{obs:.3f}", ha="center", va="center", color=WHITE,
+            fontsize=13, weight="bold")
+    ar.text(pb + 0.04, (obs / pb) - 0.02, f"milk inside the bread carts: {s('bread_milk_conf_ab')}",
+            fontsize=12, color=INK, va="top")
+    ar.text(pb + 0.04, pm - 0.1, f"red dashes: the expected {pb * pm:.3f}", fontsize=12, color=ROSE)
+    ar.set_xlabel(f"share of carts with bread: {pb:.2f}")
+    ar.set_title(f"What 40,000 carts show: lift {obs:.3f} / {pb * pm:.3f} = {s('bread_milk_lift')}")
+    fig.tight_layout()
+    save(fig, "C2_W04_D03_areas_STUDENT.png")
+
+
+def milk_everywhere():
+    """Confidence toward milk and lift with milk for the twelve most common items."""
+    items, b = baskets()
+    n = len(b)
+    milk = b.apply(lambda x: "toned milk" in x)
+    share = items.groupby("item").cart_id.nunique().drop("toned milk").sort_values(ascending=False)
+    top = list(share.index[:9])
+    conf = [(b.apply(lambda x: t in x) & milk).sum() / b.apply(lambda x: t in x).sum() for t in top]
+    lift = [c / v("toned_milk_share") for c in conf]
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(12.5, 4.6), sharey=True)
+    y = range(len(top))
+    a1.barh(y, conf, color=TINT, edgecolor=VIOLET)
+    a1.axvline(v("toned_milk_share"), color=INK, ls="--", lw=1.4)
+    a1.text(v("toned_milk_share") + 0.02, -0.9, f"milk's own share {s('toned_milk_share')}",
+            fontsize=12, color=INK)
+    for i, c in zip(y, conf):
+        a1.text(c - 0.02, i, f"{c:.2f}", va="center", ha="right", fontsize=12, color=INK)
+    a1.set_yticks(list(y), top)
+    a1.invert_yaxis()
+    a1.set_xlim(0, 1)
+    a1.set_xlabel("confidence toward milk")
+    a1.set_title("Every item looks bundled with milk")
+    a2.barh(y, lift, color=TINT, edgecolor=VIOLET)
+    a2.axvline(1, color=INK, ls="--", lw=1.4)
+    for i, l in zip(y, lift):
+        a2.text(l - 0.02, i, f"{l:.2f}", va="center", ha="right", fontsize=12, color=INK)
+    a2.set_xlim(0, 1.25)
+    a2.set_xlabel("lift with milk")
+    a2.set_title("Lift says: about as often as chance")
+    fig.tight_layout()
+    save(fig, "C2_W04_D03_milk_everywhere_STUDENT.png")
+
+
+def actual_vs_expected():
+    """For four pairs, the carts expected to hold both if independent against the carts that do."""
+    pairs = [("bread and milk", "bread_milk"), ("eggs and milk", "eggs_milk"),
+             ("chips and cold drink", "chips_cold"), ("ice cream and choc sauce", "ice_choc")]
+    fig, axes = plt.subplots(1, 4, figsize=(12.5, 4.6))
+    for a, (label, key) in zip(axes, pairs):
+        e, o = v(f"{key}_expected"), v(f"{key}_carts")
+        a.bar([0, 1], [e, o], color=[LINE, VIOLET], edgecolor=INK, width=0.6)
+        for x, val in ((0, e), (1, o)):
+            a.text(x, val * 1.02, f"{val:,}", ha="center", va="bottom", fontsize=12, color=INK)
+        a.set_xticks([0, 1], ["expected", "seen"])
+        a.set_yticks([])
+        a.spines["left"].set_visible(False)
+        a.set_ylim(0, max(e, o) * 1.25)
+        a.set_title(f"{label}\nlift {s(key + '_lift')}", fontsize=13)
+    fig.suptitle("Carts holding both: expected if independent, against what 40,000 carts show",
+                 fontsize=15, weight="bold", color=INK)
+    fig.tight_layout()
+    save(fig, "C2_W04_D03_actual_vs_expected_STUDENT.png")
+
+
+def strip_daily():
+    """Daily strip click-through and milk's share of slot impressions, 17 August to 27 September."""
+    log = pd.read_csv(DATA / "C2_W04_D03_strip_log_STUDENT.csv", parse_dates=["date"])
+    day = log.groupby("date")[["impressions", "clicks"]].sum()
+    day["ctr"] = day.clicks / day.impressions
+    milk = log[log.suggested_item == "toned milk"].groupby("date").impressions.sum()
+    day["milk"] = (milk / day.impressions).fillna(0)
+    fig, (a1, a2) = plt.subplots(2, 1, figsize=(12.5, 4.6), sharex=True,
+                                 gridspec_kw={"height_ratios": [1.5, 1]})
+    a1.plot(day.index, day.ctr * 100, color=VIOLET, lw=2.4, marker="o", ms=4)
+    a1.axvline(pd.Timestamp("2026-09-07"), color=ROSE, ls="--", lw=1.6)
+    a1.text(pd.Timestamp("2026-09-07"), 6.6, "  7 Sep: ranked by count", color=ROSE, fontsize=13)
+    a1.set_ylabel("click-through, %")
+    a1.set_ylim(3, 7)
+    a1.set_title(f"Strip click-through by day: about {s('before_strip_ctr')} before, "
+                 f"{s('after_strip_ctr')} after")
+    a2.bar(day.index, day.milk * 100, color=[ROSE if d >= pd.Timestamp("2026-09-07") else LINE
+                                             for d in day.index], edgecolor=INK, lw=0.4)
+    a2.set_ylabel("milk's share\nof slots, %")
+    a2.set_ylim(0, 60)
+    a2.xaxis.set_major_locator(mdates.WeekdayLocator(byweekday=mdates.MO))
+    a2.xaxis.set_major_formatter(mdates.DateFormatter("%d %b"))
+    fig.tight_layout()
+    save(fig, "C2_W04_D03_strip_daily_STUDENT.png")
+
+
+def ctr_by_slot():
+    """Click-through by slot position: before, milk after, everything else after."""
+    groups = [("before, every suggestion", "before", "other", MUTED),
+              ("after, milk", "after", "milk", ROSE),
+              ("after, everything else", "after", "other", GREEN)]
+    fig, ax = plt.subplots(figsize=(12.5, 4.4))
+    width = 0.26
+    for k, (label, w, g, color) in enumerate(groups):
+        vals = [v(f"ctr_{w}_{g}_slot{slot}") for slot in (1, 2, 3)]
+        xs = [slot + (k - 1) * width for slot in (1, 2, 3)]
+        ax.bar(xs, [x * 100 for x in vals], width, color=color, edgecolor=INK, label=label)
+        for x, val in zip(xs, vals):
+            ax.text(x, val * 100 + 0.12, f"{val * 100:.1f}", ha="center", fontsize=12, color=INK)
+    ax.set_xticks([1, 2, 3], ["slot 1", "slot 2", "slot 3"])
+    ax.set_ylabel("click-through, %")
+    ax.set_ylim(0, 10)
+    ax.legend(frameon=False, loc="upper right")
+    ax.set_title("Slot 1 draws the most clicks; milk clicks low in every slot")
+    fig.tight_layout()
+    save(fig, "C2_W04_D03_ctr_by_slot_STUDENT.png")
+
+
+# =========================================================================== chapter 3
+def pairs_frame(b):
+    n = len(b)
+    single = Counter(x for st in b for x in st)
+    double = Counter(p for st in b for p in combinations(sorted(st), 2))
+    return pd.DataFrame([{"a": a, "b": c, "support": k / n, "lift": k * n / (single[a] * single[c])}
+                         for (a, c), k in double.items()])
+
+
+def action_map():
+    """Every pair with support of at least 0.1 percent, lift against support, with the floor."""
+    _, b = baskets()
+    p = pairs_frame(list(b))
+    p = p[p.support >= 0.001]
+    fig, ax = plt.subplots(figsize=(12.5, 5.0))
+    ax.axvspan(0.01, 0.6, ymin=1.5 / 5.2, ymax=1, color="#E8F5EE", alpha=0.7)
+    ax.axvspan(0.001, 0.01, ymin=1.5 / 5.2, ymax=1, color="#FBF4E3", alpha=0.8)
+    ax.scatter(p.support, p.lift, s=16, color=VIOLET, alpha=0.45, edgecolor="none")
+    ax.axhline(1, color=MUTED, ls="--", lw=1.2)
+    ax.axvline(0.01, color=MUTED, ls="--", lw=1.2)
+    ax.text(0.0105, 4.95, "floor: 1 percent of carts", color=MUTED, fontsize=12)
+    ax.text(0.15, 4.6, "PROMOTE", color=GREEN, fontsize=15, weight="bold")
+    ax.text(0.0013, 4.6, "WATCH", color=AMBER, fontsize=15, weight="bold")
+    ax.text(0.03, 0.55, "IGNORE: lift near one, where milk's pairs sit", color=MUTED, fontsize=13,
+            weight="bold")
+    labels = [("chips", "cold drink", "chips + cold drink", (8, 6)),
+              ("coriander", "green chillies", "coriander + chillies", (8, -16)),
+              ("bread", "butter", "bread + butter", (8, 4)),
+              ("onions", "tomatoes", "onions + tomatoes", (8, 6)),
+              ("chocolate sauce", "ice cream", "ice cream + choc sauce", (8, 4)),
+              ("bread", "toned milk", "bread + milk", (-10, 10))]
+    for a, c, label, off in labels:
+        row = p[(p.a == a) & (p.b == c)]
+        x, y = row.support.iloc[0], row.lift.iloc[0]
+        ax.scatter([x], [y], s=70, color=INK, zorder=3)
+        ax.annotate(f"{label}  {y:.2f}", (x, y), textcoords="offset points", xytext=off,
+                    fontsize=12, color=INK, weight="bold",
+                    ha="right" if off[0] < 0 else "left")
+    ax.set_xscale("log")
+    ax.set_xlim(0.001, 0.6)
+    ax.set_ylim(0, 5.2)
+    ax.set_xticks([0.001, 0.01, 0.1, 0.5], ["0.1%", "1%", "10%", "50%"])
+    ax.set_xlabel("support: share of the 40,000 carts holding both (log scale)")
+    ax.set_ylabel("lift")
+    ax.set_title(f"{len(p):,} pairs with support of at least 0.1 percent; four beat chance above the floor")
+    fig.tight_layout()
+    save(fig, "C2_W04_D03_action_map_STUDENT.png")
+
+
+def heavy_tenth():
+    """Per cart against per customer: the party pair shrinks, milk's pair does not move."""
+    rows = [("chips + cold drink", v("chips_cold_lift"), v("chips_cold_lift_per_customer")),
+            ("bread + milk", v("bread_milk_lift"), v("bread_milk_lift_per_customer"))]
+    fig, ax = plt.subplots(figsize=(12.5, 3.8))
+    for i, (label, per_cart, per_cust) in enumerate(rows):
+        ax.barh(i - 0.18, per_cart, 0.34, color=VIOLET, edgecolor=INK,
+                label="every cart counted" if i == 0 else None)
+        ax.barh(i + 0.18, per_cust, 0.34, color=LAV, edgecolor=INK,
+                label="every customer counted once" if i == 0 else None)
+        ax.text(per_cart + 0.04, i - 0.18, f"{per_cart:.2f}", va="center", fontsize=13, color=INK)
+        ax.text(per_cust + 0.04, i + 0.18, f"{per_cust:.2f}", va="center", fontsize=13, color=INK)
+    ax.set_yticks([0, 1], [r[0] for r in rows])
+    ax.invert_yaxis()
+    ax.axvline(1, color=MUTED, ls="--", lw=1.2)
+    ax.set_xlim(0, 4)
+    ax.set_xlabel("lift")
+    ax.legend(frameon=False, loc="lower right")
+    ax.set_title(f"The top tenth place {s('heavy_tenth_share')} of carts and "
+                 f"{s('chips_cold_heavy_share')} of the chips + cold drink carts")
+    fig.tight_layout()
+    save(fig, "C2_W04_D03_heavy_tenth_STUDENT.png")
+
+
+def stockout():
+    """Curd's share of carts by zone and week, the two stock-out cells near zero."""
+    carts = pd.read_csv(DATA / "C2_W04_D03_carts_STUDENT.csv", parse_dates=["placed_date"])
+    items = pd.read_csv(DATA / "C2_W04_D03_cart_items_STUDENT.csv")
+    curd = set(items.loc[items.item == "curd", "cart_id"])
+    carts["curd"] = carts.cart_id.isin(curd)
+    carts["week"] = (carts.placed_date.dt.day - 1) // 7 + 1
+    grid = carts.pivot_table(index="zone", columns="week", values="curd", aggfunc="mean")
+    grid = grid.loc[grid.mean(axis=1).sort_values(ascending=False).index]
+    fig, ax = plt.subplots(figsize=(12.5, 4.6))
+    im = ax.imshow(grid.values, cmap="Purples", vmin=0, vmax=0.35, aspect="auto")
+    for i in range(grid.shape[0]):
+        for j in range(grid.shape[1]):
+            val = grid.values[i, j]
+            ax.text(j, i, f"{val * 100:.0f}%", ha="center", va="center", fontsize=13,
+                    color=WHITE if val > 0.2 else ROSE, weight="bold")
+    ax.set_xticks(range(4), ["week 1\n1-7 Sep", "week 2\n8-14 Sep", "week 3\n15-21 Sep",
+                             "week 4\n22-28 Sep"])
+    ax.set_yticks(range(len(grid)), grid.index)
+    ax.spines[:].set_visible(False)
+    ax.set_title("Share of carts holding curd, by zone and week")
+    fig.tight_layout()
+    save(fig, "C2_W04_D03_stockout_STUDENT.png")
+
+
+def slot_value():
+    """The rupee value of one slot a day, and what re-ranking recovers in a month."""
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(13, 4.3), gridspec_kw={"width_ratios": [1.1, 1]})
+    vals = [v("slot_value_other_day"), v("slot_value_milk_day")]
+    a1.bar([0, 1], vals, color=[GREEN, ROSE], edgecolor=INK, width=0.6)
+    for x, val in zip([0, 1], vals):
+        a1.text(x, val + 300, f"Rs {val:,}", ha="center", fontsize=14, weight="bold", color=INK)
+    a1.annotate("", xy=(0.5, vals[1]), xytext=(0.5, vals[0]),
+                arrowprops=dict(arrowstyle="<->", color=INK, lw=1.6))
+    a1.text(0.55, (vals[0] + vals[1]) / 2, f"gap\n{s('slot_gap_day')}", fontsize=13, color=INK)
+    a1.set_xticks([0, 1], ["a slot showing a pair\nthat beats chance (6.4%)",
+                           "a slot showing\nmilk (1.2%)"])
+    a1.set_yticks([])
+    a1.spines["left"].set_visible(False)
+    a1.set_ylim(0, 20500)
+    a1.set_title("One slot, one day: 60,000 views x CTR x 0.5 x Rs 9", fontsize=14)
+    steps = [("gap a slot a day", v("slot_gap_day")), ("x 30 days", v("slot_gap_month")),
+             ("x 1.5 slots' worth\nof milk impressions", v("recoverable_month"))]
+    a2.barh([2, 1, 0], [x[1] for x in steps], color=[LINE, TINT, VIOLET], edgecolor=INK)
+    shown = [s("slot_gap_day"), s("slot_gap_month"), s("recoverable_month")]
+    for y, (label, val), txt in zip([2, 1, 0], steps, shown):
+        a2.text(val + 12000, y, txt, va="center", fontsize=14, weight="bold", color=INK)
+    a2.set_yticks([2, 1, 0], [x[0] for x in steps])
+    a2.set_xticks([])
+    a2.spines["bottom"].set_visible(False)
+    a2.set_xlim(0, 900_000)
+    a2.set_title("What re-ranking recovers in a month", fontsize=14)
+    fig.tight_layout()
+    save(fig, "C2_W04_D03_slot_value_STUDENT.png")
 
 
 def main():
-    print("Drawing Wednesday's pictures...")
-    ten_dot_venn()
-    print("  wrote ten_dots")
-    milk_share_rect()
-    print("  wrote areas")
-    actual_vs_expected_bars()
-    print("  wrote actual_vs_expected")
-    milk_everywhere_bars()
-    print("  wrote milk_everywhere")
-    ctr_by_slot_bars()
-    print("  wrote ctr_by_slot")
-    action_map_scatter()
-    print("  wrote action_map")
-    slot_value_waterfall()
-    print("  wrote slot_value_cascade")
-    shrinking_universe_gif()
-    print("  wrote shrink gif and its two stills")
-    print("Done.")
+    print("Drawing Wednesday's pictures from the data and the facts file")
+    ten_dots()
+    carry_bag()
+    shrinking_universe()
+    areas()
+    milk_everywhere()
+    actual_vs_expected()
+    strip_daily()
+    ctr_by_slot()
+    action_map()
+    heavy_tenth()
+    stockout()
+    slot_value()
 
 
 if __name__ == "__main__":
