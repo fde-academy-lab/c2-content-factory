@@ -34,7 +34,7 @@ objection, and the headline a flat blend owes its reader.
 | Q3, the artefact | b | 2,400 sessions reached the specials and only 2,000 opened the menu, because the notification skips the menu | a reads a low step as a loss, though a low step is a loss only when it moves; c is 80 percent, under 100; d cannot be, since a session counts once at a stage |
 | Q4, the order | a | Age first, then active, then keep month one on, then the pivot | b runs, and its table carries a month-zero column the joining month fills, the trap that runs without an error; c filters on an age that does not exist yet; d pivots before age exists |
 | Q5, the two charts | d | The lead is right overall; the split by renewing against new and by platform shows where payment fell, and the weekly view shows it starting at the update | a shows the overall number the lead already quoted; b says nothing about this app's fall; c shows traffic, never conversion |
-| Q6, the headline | b | A: 240 of 400 to 220; B: 270 of 600 to 240; C adds 560 of 1,000; 510 of 1,000 and 1,020 of 2,000 are both 51 percent | a reports the blend that hides two falls; c ranks a cohort in its first month against cohorts in later months; d is false, since a large strong new cohort is exactly what holds a blend |
+| Q6, the headline | b | A: 240 of 400 to 220; B: 270 of 600 to 240; C, in June its month one, adds 560 of 1,000; 510 of 1,000 and 1,020 of 2,000 are both 51 percent | a reports the blend that hides two falls; c ranks a cohort in its first month against cohorts in later months; d is false, since a large strong new cohort is exactly what holds a blend |
 
 ## Which item is worth arguing about?
 

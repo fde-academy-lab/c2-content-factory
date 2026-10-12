@@ -6,7 +6,8 @@ time says what was lost. The cohorts in item 3 are invented for the quiz.
 
 Today's case: Zomato Gold in Chennai, where the membership dashboard read month-two retention flat at
 38 percent while every signup cohort fell, and members' add-to-cart to order on Android fell from 58
-to 44 percent after a release on 14 September. Illustrative case: the company is real, the situation
+to 44 percent after a release on 14 September. A member with no order in a month is not retained that
+month, and she is still a member. Illustrative case: the company is real, the situation
 and the data are synthetic, built for this class.
 
 **Who needs the answer.** The trainer needs it to close the day, and every learner needs it before
@@ -36,13 +37,13 @@ wrong on Friday, so the trainer says it again before the room leaves.
 
 ---
 
-## Q2. Android members: cart to checkout start held at 80; checkout start to order fell 72.5 to 55. Which step owns the loss?
+## Q2. Android members: add-to-cart to checkout start held at 80; checkout start to order fell 72.5 to 55. Which step owns the loss?
 *Tests: reading the step that changed, inside the checkout.*
 
-- Cart to checkout start, since it is where checkout begins
+- Add-to-cart to checkout start, since it is where checkout begins
 - Search to menu view, since it reads 118 percent
 - Checkout start to order placed  <- correct
-- Menu view to cart, since at 34 percent it is the lowest
+- Menu view to add-to-cart, since at 34 percent it is the lowest
 
 ---
 
@@ -66,7 +67,7 @@ wrong on Friday, so the trainer says it again before the room leaves.
 
 ---
 
-## Q5. Search to menu view reads 118 percent per session. How can you tell it is an artefact?
+## Q5. Search to menu view reads 118 percent per session. How can you tell it is an artefact, a number made by the way the count is taken?
 *Tests: the skippable step.*
 
 - Members search more than once in a session, so searches are counted twice
@@ -86,7 +87,7 @@ wrong on Friday, so the trainer says it again before the room leaves.
 
 ---
 
-## Q7. Menu view to cart reads 34 percent per session and 61 percent per member. Which number is wrong?
+## Q7. Menu view to add-to-cart reads 34 percent per session and 61 percent per member. Which number is wrong?
 *Tests: two units, two questions.*
 
 - The 34, since a member is what the business keeps

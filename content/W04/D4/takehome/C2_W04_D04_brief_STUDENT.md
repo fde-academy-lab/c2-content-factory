@@ -25,10 +25,17 @@ state with its grain.
 ## What do you build, and what do you hand in?
 
 Use `members` and `events` in `content/W04/D4/data/` (the log is `C2_W04_D04_events_STUDENT.csv.gz`;
-pandas reads it as it is). A week starts on Monday. A member's signup week is the week holding her
-signup date, and her **week k** is the k-th full week after it. She is **active** in week k when the
-log holds an `order_placed` event of hers in that week. The week of 28 September is three days long,
-so the table stops at the week of 21 September.
+pandas reads it as it is). In `events`, `user_id` is the same id as `member_id` in `members` for every
+member, so a member's orders join to her signup date on it. A week starts on Monday. A member's signup
+week is the week holding her signup date, and her **week k** is the k-th full week after it. She is
+**active** in week k when the log holds an `order_placed` event of hers in that week. The week of 28
+September is three days long, so the table stops at the week of 21 September.
+
+**How to get a week from two dates.** `dates.dt.to_period("W-SUN").dt.start_time` gives the Monday
+that starts each date's week: `W-SUN` names the Sunday a week ends on, so each week runs Monday to
+Sunday. Two Mondays are `(later - earlier).dt.days // 7` weeks apart. For example, a member who joined
+on Wednesday 19 August has the signup week of Monday 17 August; an order on Tuesday 25 August falls in
+the week of Monday 24 August, 7 days later, so it is her week 1.
 
 If the faculty session (tentative) slipped today and the fallback block ran, you built part 2 in class
 in pairs: rebuild it on your own tonight, then add the rest.

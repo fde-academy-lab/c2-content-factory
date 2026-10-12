@@ -7,9 +7,11 @@ invented for practice.
 
 This is a drill inside chapter 3, on paper, with no code.
 
-**Who needs the answer.** Kaapi and Co.'s product lead, who has one engineer for the next sprint and
-wants to spend that engineer on the step that loses customers. An engineer sent to a step that only
-looks broken is a sprint lost.
+**How to read an item.** Its level runs from L1, a count by hand, to L6, the call an interviewer asks for; "a design call" asks you to choose a way and say why. "Screens" are interviews, and a GCC is a global capability centre, a multinational company's own technology and analytics centre in India.
+
+**Who needs the answer.** Kaapi and Co.'s product lead, who has one engineer for the next two weeks
+and wants to spend that engineer on the step that loses customers. An engineer sent to a step that
+only looks broken is two weeks lost.
 
 **The questions on the way.**
 

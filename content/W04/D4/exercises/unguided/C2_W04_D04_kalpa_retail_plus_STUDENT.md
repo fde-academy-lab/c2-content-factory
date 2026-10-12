@@ -6,12 +6,20 @@ monsoon sale and never came back? And the app team says the reorder feature has 
 blended retention number has not moved. Where are we actually losing people?" The data are Kalpa's
 own: the 120 Retail-Plus customers of the Week 2 warehouse with the date each membership started,
 their app sessions from July to September 2026, one row per event (visit, search, add to cart,
-checkout), and their app orders. Kalpa counts a member as **active** in a month when she opened the
-app at least once that month, and **blended retention** for a month is the share of members who
-joined before that month who were active in it.
+checkout), and their app orders. The members whose membership started in August joined during the
+monsoon sale. Kalpa's warehouse holds too few Retail-Plus orders a month for a cohort table on
+orders, so Kalpa counts a member as **active** in a month when she opened the app at least once that
+month, and reads frequency through that; **blended retention** for a month is the share of members
+who joined before that month who were active in it, counted from each member's month one. From 10
+to 30 September the app's auto-reorder feature ran, placing repeat orders for members on its own;
+the app team says the reorder feature has since been fixed.
 
-This set moves the afternoon's call to Kalpa. Item 1 can be sat at any time. Items 2 to 4 sit on
-their own page and use what your lab notebook found, so sit them after the lab.
+This set moves the afternoon's call to Kalpa, and its second page is the day's last write-up: the
+lab notebook's three sentences become its first lines. Item 1 can be sat at any time. Items 2 to 4
+sit on their own page and use what your lab notebook found, so sit them after the lab, and the
+practice set after them.
+
+**How to read an item.** Its level runs from L1, a count by hand, to L6, the call an interviewer asks for; "a design call" asks you to choose a way and say why. "Screens" are interviews, and a GCC is a global capability centre, a multinational company's own technology and analytics centre in India.
 
 **Who needs the answer.** The head of Retail-Plus, who decides on Friday whether to chase the
 monsoon-sale members or send the app team back to the checkout. Kavya Nair, the senior analyst,
@@ -67,8 +75,8 @@ The window from 10 to 30 September is the one Monday's lab fixed, when the app's
 
 *Level L5 · asked in every analytics screen.*
 
-a) Every cohort fell, the monsoon one started lowest, and the flat 41 hides both
-b) Retail-Plus is stable, since blended retention held at 41 percent all quarter
+a) Older cohorts fell, the monsoon one started lowest, and the flat 41 hides both
+b) Retail-Plus is stable, since blended retention held at 41 percent all quarter long
 c) Everyone fell in September at once, so the app broke for the whole tier
 d) The monsoon cohort is the only one falling, and the older cohorts hold
 
@@ -85,8 +93,8 @@ d) About 20, the fall from 83 to 64 read as a count of checkouts
 
 *Level L5, a design call · asked in GCC analytics screens.*
 
-a) Chase the monsoon-sale members first, since their cohort is both the largest and the weakest
-b) Check the window's checkout step first and confirm it; judge the monsoon cohort on its curve
+a) Chase the monsoon-sale members first, since their cohort holds the blended number down
+b) Confirm the checkout fall over three more weeks; judge the monsoon cohort at month two
 c) Report the flat 41 percent, since the blend held and the reorder fix has worked
 d) Rebuild the search step first, since 31 percent of sessions skip it and never search
 

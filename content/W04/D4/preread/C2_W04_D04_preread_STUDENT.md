@@ -64,8 +64,9 @@ a week this October? Bring your answer as one sentence, since you will be asked 
 
 Nothing needs installing, and each check takes under five minutes.
 
-1. Run Restart and Run All on Thursday's four notebooks, 01 to 04. Each ends on its checks passing,
-   and if one does not, post its last error line in the cohort channel before the session.
+1. Run Restart and Run All on Thursday's four notebooks, 01 to 04. Notebooks 01 to 03 end on their
+   checks passing; notebook 04 passes its checks near the top and then stops at the cells you filled
+   in the lab. If a check fails, bring its last error line to the TA before the session.
 2. Save your take-home notebook with its outputs showing, since a notebook that ran but was not saved
    looks empty to everyone else.
 

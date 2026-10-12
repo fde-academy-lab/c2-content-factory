@@ -169,7 +169,7 @@ A coaching centre (invented numbers) takes 10 students in June and 10 in July. I
 LIVE, 4 minutes. Count the dots aloud: six, four, ten of twenty. Ask: if the centre only ever
 printed "50 percent", which batch would it worry about? Neither, because the average names neither.
 The toy is invented (R1); say so.
-Transition: twelve real members of the case.
+Transition: twelve members of the case data.
 ```
 
 ---
@@ -480,7 +480,7 @@ value: 37.9 | label: August | note: 11,359 of 29,943
 value: 37.8 | label: September | note: 13,218 of 35,000
 ```
 
-The answer is b: the dashboard prints 38 every month. Each month one more cohort enters the count at about 38.5 percent, just above the older cohorts' slow slide, so the average holds while every cohort falls.
+The answer is b: the dashboard prints 38 every month. Each month one more cohort enters the count at about 38.5 percent, just above the older cohorts' slow slide, so the average holds while every cohort falls. It counts every member aged two or more, so it is not the table's month-two column.
 
 ```notes
 LIVE, 3 minutes. Read the four counts. Point at the denominators growing by about 5,000 a month:

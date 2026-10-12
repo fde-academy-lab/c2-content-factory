@@ -4,12 +4,15 @@ Zomato Gold, Chennai. The morning found two problems. The dashboard reads 38 per
 averages cohorts on a slow slide and has not yet counted the 13,000-member August cohort, whose
 8,027 sale-week members kept 20 percent in month one against 49 for the organic August members.
 Separately, completing an order once checkout has started fell from 72.5 to 55 percent for members on
-Android from the 14 September release, while starting checkout held at 80 percent and members on iOS
-(57 to 56) and non-members on Android (52 to 51) held. One engineering team can take one problem
+Android from the 14 September release, while starting checkout held at 80 percent and, on the same
+step, members on iOS went from 71 to 70 and non-members on Android from 65 to 64. One engineering team can take one problem
 first. Illustrative case: the company is real, the situation and the data are synthetic, built for
 this class.
 
 This is the afternoon's unguided set: 30 minutes in your group, the page first and the items after.
+It is the first of the day's two pages; the second, for Kalpa, comes after the lab.
+
+**How to read an item.** Its level runs from L1, a count by hand, to L6, the call an interviewer asks for; "a design call" asks you to choose a way and say why. "Screens" are interviews, and a GCC is a global capability centre, a multinational company's own technology and analytics centre in India.
 
 **Who needs the answer.** The membership lead, who takes one call to Friday's review, and the app
 team's lead, who will say the checkout is fine. A call without its cost cannot be weighed, and a call
@@ -23,8 +26,10 @@ without its objection answered does not survive the meeting.
 - What does another sale do to the dashboard?
 
 **The numbers you need.** Members on Android added to a cart 22,841 times in the 17 days from 14 to 30
-September. Before the release, 58 percent of their carts became orders; after it, 44 percent. An
-order is worth Rs 400 of order value, an assumption anywhere from Rs 300 to Rs 500.
+September. Before the release, 58 percent of their carts became orders; after it, 44 percent. Members
+on iOS and non-members on Android each lost one point over the same weeks. Before the release,
+Android members placed about 5,064 orders a week. An order is worth Rs 400 of order value, an
+assumption anywhere from Rs 300 to Rs 500, and Zomato keeps only its commission and fees from it.
 
 **What you post.** Six letters in item order, with no spaces, in this shape:
 
@@ -67,10 +72,10 @@ d) About 13,248 orders, what 58 percent of the carts makes
 
 *Level L5, a design call · asked in product-company screens.*
 
-a) Rs 5.3 lakh a week, the midpoint stated alone, with no range around it
+a) Rs 5.3 lakh a week, the midpoint stated on its own, with no range around it
 b) Rs 12.8 lakh, the loss over the 17 days since the release went live
 c) Rs 5.3 crore a week at Rs 400 an order, from the same 1,317 orders
-d) Rs 4.0 to 6.6 lakh a week, Rs 5.3 lakh at the assumed Rs 400 an order
+d) Rs 3.7 to 6.6 lakh of order value a week, Rs 5.3 lakh at 1,317 and Rs 400
 
 ---
 
@@ -110,10 +115,10 @@ the right part before it brings the split.
 
 a) "Your chart is wrong: conversion on Android fell 14 points after your release."
 b) "You're right that starts held; completion fell 72.5 to 55 for Android members."
-c) "Eighty percent is an average over platforms; split it and Android shows the fall."
+c) "Eighty percent averages the platforms; Android's own start rate must have fallen."
 d) "Let's wait for October's numbers before anyone changes the checkout flow."
 
-### Q6. The growth team proposes another sale to refill the top of the funnel: what does it do to the dashboard?
+### Q6. The growth team proposes another sale to bring in a new wave of members: what does it do to the dashboard?
 
 *Level L6, a design call · asked in product-company screens.*
 

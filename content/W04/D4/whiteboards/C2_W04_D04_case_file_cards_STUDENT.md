@@ -1,9 +1,9 @@
 # Which causes could explain the flat 38, and what does each reveal strike or confirm?
 
-Print part 1 once per group and part 2 once per learner before the session; the trainer hands out
-parts 3, 4 and 5 one at a time, at the moment each reveal opens. Zomato Gold, Chennai: the membership
-dashboard reads month-two retention flat at 38 percent from June to September 2026, and members'
-Android add-to-cart to order fell from 58 to 44 percent after the 14 September release. Illustrative
+Your group's board and card for the morning, then the three reveals, each read when the trainer opens
+it. Zomato Gold, Chennai: the membership dashboard reads month-two retention, members two or more
+months past joining who ordered in the month, flat at 38 percent from June to September 2026, and
+members' Android add-to-cart to order fell from 58 to 44 percent after the 14 September release. Illustrative
 case: the company is real, the situation and the data are synthetic, built for this class.
 
 **Who needs the answer.** Your group, which writes its causes and their tests before any data opens
@@ -12,7 +12,7 @@ and keeps the board up all morning.
 **The questions on the way.**
 
 - Which causes could explain the ticket, in the order you would check them?
-- What do twelve real members say, counted by hand?
+- What do twelve members of the case data say, counted by hand?
 - What does the full cohort table show?
 - What is September's 38 made of?
 - Which step changed, for whom, and since when?
@@ -35,10 +35,11 @@ other.
 
 ---
 
-## Part 2: Which of twelve real members ordered in each month after joining?
+## Part 2: Which of twelve members ordered in each month after joining?
 
-A 1 means she placed at least one order that calendar month. **Month one** is the first full calendar
-month after joining; the joining month is month zero and is never counted.
+Twelve members picked from the case data, which is synthetic like all of it, to show the pattern on
+one card. A 1 means she placed at least one order that calendar month. **Month one** is the first
+full calendar month after joining; the joining month is month zero and is never counted.
 
 | Member | Joined | Channel | Jun | Jul | Aug | Sep |
 |---|---|---|---|---|---|---|
@@ -133,3 +134,10 @@ Members on Android, inside the checkout:
 |---|---|---|
 | Add-to-cart to checkout start | 80 percent | 80 percent |
 | Checkout start to order placed | 72.5 percent | 55 percent |
+
+Checkout start to order placed, the same step, for the comparators:
+
+| Who | Before | After |
+|---|---|---|
+| Members on iOS | 71 percent | 70 percent |
+| Non-members on Android | 65 percent | 64 percent |

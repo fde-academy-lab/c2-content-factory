@@ -597,6 +597,7 @@ def nb03():
         '''),
         code('''
         # The toy's step rates, each one over the step before, then the same checkouts in two units.
+        # shift(1) moves each count down one row, so dividing by it divides each step by the one before.
         toy = pd.Series({"session": 100, "search": 40, "add_to_cart": 20, "checkout": 10})
         print((toy / toy.shift(1)).dropna().map("{:.0%}".format).to_string())
         people, people_who_checked_out = 20, 10
@@ -639,6 +640,7 @@ def nb03():
         '''),
         code('''
         # The fix: of the sessions that searched, the share that went on to a menu.
+        # Two sets of session ids: & keeps the sessions in both, - the ones in the first only.
         searched = set(sep.loc[sep["stage"] == "search", "session_id"])
         menu = set(sep.loc[sep["stage"] == "menu_view", "session_id"])
         both_ = len(searched & menu)
@@ -698,6 +700,8 @@ def nb03():
         '''),
         code('''
         # Carts and orders by membership, platform and side of the release, then the rate.
+        # size() counts rows in each group; unstack() turns the last part of the row label into columns,
+        # once for the stages and once more for the side of the release.
         flow = ev[ev["stage"].isin(["add_to_cart", "checkout_start", "order_placed"])].copy()
         flow["side"] = (flow["event_ts"] >= "2026-09-14").map({False: "before", True: "after"})
         counts = flow.groupby(["is_member", "platform", "side", "stage"]).size().unstack()

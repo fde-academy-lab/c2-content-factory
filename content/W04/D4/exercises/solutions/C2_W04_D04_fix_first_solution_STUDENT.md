@@ -3,8 +3,11 @@
 Answers: 1b 2d 3a 4c 5b 6a
 
 The set sized the Android checkout's loss and made the call. Members' Android carts, 22,841 in 17
-days, would have made about 1,317 more orders a week at the old 58 percent than at the new 44, about
-Rs 5.3 lakh a week at Rs 400 an order and Rs 4.0 to 6.6 lakh across the assumption's range. The
+days, would have made about 1,317 more orders a week at the old 58 percent than at the new 44, or
+about 1,223 after taking off the one point the comparators also lost: about a quarter of the 5,064
+orders a week Android members placed before. That is Rs 3.7 to 6.6 lakh of order value a week across
+the orders and the Rs 300 to Rs 500 assumption, Rs 5.3 lakh at 1,317 and Rs 400, of which Zomato keeps
+its commission and fees. The
 checkout goes first because it loses orders every week it stays live and a fix ends it; the August
 cohort's month one is already spent. Illustrative case: the company is real, the situation and the
 data are synthetic, built for this class.
@@ -30,15 +33,18 @@ answered by conceding what is true, and the wrong fix named before someone propo
 
 1. **The call.** Fix the last step of the new Android checkout for members first.
 2. **The evidence.** Completing an order once checkout has started fell from 72.5 to 55 percent for
-   members on Android from the release week; starting checkout held at 80; members on iOS (57 to 56)
-   and non-members on Android (52 to 51) held; the fall holds with the cut moved a week either way.
-3. **The cost.** About 1,317 orders a week, about Rs 5.3 lakh at Rs 400 an order, Rs 4.0 to 6.6 lakh
-   across Rs 300 to Rs 500.
+   members on Android from the release week; starting checkout held at 80; on the same step, members
+   on iOS went from 71 to 70 and non-members on Android from 65 to 64; the order records match the
+   event log, so no orders went missing from the count.
+3. **The cost.** About 1,223 to 1,317 orders a week, a quarter of Android members' orders; Rs 3.7 to
+   6.6 lakh of order value a week at Rs 300 to Rs 500 an order, of which Zomato keeps its commission
+   and fees.
 4. **The objection.** The app team's lead is right that checkout starts held; the step that broke is
    the one after it, and only members on Android fell, so the place to look is something in the new
    flow that only members see.
-5. **What would change it.** If most lost carts were retried and ordered within days, the release cost
-   friction rather than orders, and the next sale's design would go first.
+5. **What would change it.** If most lost carts were retried and ordered within days, the release
+   would cost a delay rather than orders, and the question of whether the sale pays back would go
+   first.
 
 A weak page says "fix retention", quotes the dashboard's 38, gives a rupee figure with no order
 value beside it, or calls the app team wrong.
@@ -48,19 +54,21 @@ value beside it, or calls the app team wrong.
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
 | Q1, orders a week | b | 22,841 carts times 14 points is about 3,198 orders over 17 days, and 3,198 over 17 days, times 7, is about 1,317 a week | a is a day, 3,198 over 17; c is the whole 17 days, never put on a weekly page; d is the orders 58 percent would make, with no comparison |
-| Q2, the rupee line | d | The range across the assumption, with the midpoint and the order value it rests on | a hides the assumption that moves the number by a quarter either way; b is the 17 days, beside a weekly call; c is a hundred times too big, crore for lakh |
+| Q2, the rupee line | d | The range across the orders and the price assumed, named as order value, with the midpoint and what it rests on | a hides the assumption that moves the number by a quarter either way; b is the 17 days, beside a weekly call; c is a hundred times too big, crore for lakh |
 | Q3, which goes first | a | The checkout loses orders every week it stays live, and a code fix ends the loss; the August cohort's month one is already spent | b counts members, where the call weighs the loss each week; c splits one team in two; d waits a month while the checkout keeps losing orders |
-| Q4, the fact that reverses it | c | If the lost carts came back as orders within days, the release cost friction rather than orders, and the weekly loss shrinks toward nothing | a makes the checkout's loss larger; b is the estimate already on the page; d is already known, and is the reason the sale-week members, not August, are the cohort problem |
+| Q4, the fact that reverses it | c | If the lost carts came back as orders within days, the release cost a delay rather than orders, and the weekly loss shrinks toward nothing | a makes the checkout's loss larger; b is the estimate already on the page; d is already known, and is the reason the sale-week members, not August, are the cohort problem |
 | Q5, the reply | b | It concedes the true part, starts held, and brings the step that fell, for whom | a calls the true chart wrong and loses the room; c is false, since starts held at 80 on Android as well; d defers a weekly loss for a month |
 | Q6, another sale | a | A new discounted cohort enters the dashboard at its month two and, if it behaves like the sale-week members, pulls it down again, at the discount's cost | b forgets that the dashboard never counts month one; c forgets that an average moves when a weak cohort enters; d has the order of events wrong, since month two is what the dashboard counts first |
 
 ## Which item is worth arguing about?
 
 Q4. A group may argue that some lost carts were retried and ordered later, so the checkout's loss is
-smaller than 1,317 a week. The orders table answers it: orders per active Android member fell from
-1.36 in August to 1.20 in September while iOS rose from 1.34 to 1.40, so most of the loss did not
-come back as later orders. A group that wants the sale-week members first has to bring a count of
-retried carts that says otherwise, and if it does, the room should hear it.
+smaller than 1,317 a week. The event log answers it: after a checkout with no order, the member
+ordered within a day 36.5 percent of the time before the release and 35.1 after, so retries did not
+rise. Held to members who joined before August, Android members also ordered less each, 1.45 to 1.24
+orders per ordering member, while iOS held at 1.44 and 1.45. A group that wants the sale-week members
+first has to bring a count of retried carts that says otherwise, and if it does, the room should
+hear it.
 
 ## Where does the pattern live at work?
 

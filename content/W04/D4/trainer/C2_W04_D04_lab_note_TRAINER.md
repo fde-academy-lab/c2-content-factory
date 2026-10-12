@@ -4,7 +4,7 @@
 re-runs levels L1 to L3 on Kalpa Retail's Retail-Plus tier: a hand count first, then notebook 04, then
 the Kalpa set's after-lab page, then the practice set. The programme's facts set no length for the
 lab, so the parts below run in this order and the practice set is cut from its end when time runs
-short. Never cut the hand count or the three your-turn cells.
+short. Never cut the hand count or the first three your-turn cells.
 
 ## What does the lab ask, and what is the order of work?
 
@@ -13,7 +13,11 @@ joined during the monsoon sale and never came back? And the app team says the re
 been fixed, but our blended retention number has not moved. Where are we actually losing people?"
 Kalpa counts a member as active in a month when she opened the app at least once, since v4 cannot
 carry the orders-based version (the facts file's correction); say so if a learner asks why the
-definition differs from Zomato's.
+definition differs from Zomato's, and that the head's "frequency" is read through it. The table has
+no channel column: the members whose membership started in August are the monsoon-sale members (the
+case file's August monsoon cohort). The auto-reorder feature placed repeat orders for members on its
+own from 10 to 30 September (Monday's window); the app team says it has since been fixed, so the
+window is the stretch to check.
 
 | Order | Part | File |
 |---|---|---|
@@ -22,8 +26,9 @@ definition differs from Zomato's.
 | 3 | Your turn: the cohort table and blended retention | Notebook 04, cell 5, empty |
 | 4 | Your turn: add-to-cart to checkout in three stretches | Notebook 04, cell 7, empty |
 | 5 | Your turn: sessions with no search, and checkout in two units | Notebook 04, cell 9, empty |
-| 6 | Items 2 to 4 of the Kalpa set, and its second page | `exercises/unguided/C2_W04_D04_kalpa_retail_plus_STUDENT.md` |
-| 7 | The practice set | `exercises/practice/C2_W04_D04_lab_set_STUDENT.md` |
+| 6 | Your turn: Kavya's second route, the blend rebuilt from the cohort rows | Notebook 04, cell 11, empty |
+| 7 | The three sentences to the TA, then items 2 to 4 of the Kalpa set and its second page | `exercises/unguided/C2_W04_D04_kalpa_retail_plus_STUDENT.md` |
+| 8 | The practice set | `exercises/practice/C2_W04_D04_lab_set_STUDENT.md` |
 
 ## What do the hand-count tables hold, and what should the count give?
 

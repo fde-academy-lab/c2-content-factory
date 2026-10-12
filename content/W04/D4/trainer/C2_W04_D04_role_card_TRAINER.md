@@ -16,8 +16,8 @@ release and look at the membership: "the sale members never meant to stay".
 
 **Partly right, on purpose.** Starting checkout did not break, and the sale-week members are weak.
 What they miss is the next step: once checkout has started, members on Android complete the order
-55 percent of the time against 72.5 before the release, while members on iOS and non-members on
-Android held.
+55 percent of the time against 72.5 before the release, while on that same step members on iOS went
+from 71 to 70 and non-members on Android from 65 to 64.
 
 **The chart they bring.** Carts that start checkout, by platform, from 1 August to 30 September with
 14 September marked: a flat line at 80 percent on every platform, for members and non-members alike.
@@ -42,9 +42,10 @@ Concede only to an answer that makes Tuesday's four moves in order:
    percent for members on Android, from the release week, while starts held at 80.
 3. **Concede what is true:** the chart is right about starting checkout, and the sale-week members
    are weak, which is a separate problem with its own fix.
-4. **Say what would change their mind:** if the step that fell maps to the renamed event in a way the
-   team's mapping missed, the room reruns it on the team's mapping; and if non-members on Android had
-   fallen too, the step would belong to everyone.
+4. **Say what would change their mind:** if the order records showed orders holding while the event
+   log fell, the fall would be in the counting; and if members who failed came back and ordered later,
+   the release would cost a delay rather than orders. Neither holds: the records match the log, and
+   retries within a day did not rise.
 
 Do not move for an answer that calls the chart wrong, that quotes the overall fall from 58 to 44
 without the step inside it, or that blames the release with no comparator.

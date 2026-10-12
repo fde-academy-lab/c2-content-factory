@@ -1,7 +1,9 @@
 # Can you run the cohort and funnel method on a business you have never seen?
 
-The practice set for the TA-led lab, after the Kalpa lab notebook. It moves the day's method to Dabba
-Club, an invented tiffin subscription in Pune, so the counts are small enough to do by hand. Every
+The practice set for the TA-led lab, the last thing in it, after the Kalpa set. It moves the day's
+method to Dabba Club, an invented tiffin subscription in Pune that sells a monthly plan of home-style
+lunches, so the counts are small enough to do by hand. A subscriber **renews** when she pays for the
+next month's plan. Every
 number on this page is invented for practice. The items climb from a hand count to the call a
 product lead would pay for.
 
@@ -17,9 +19,12 @@ settles a dispute return on Saturday's paper and in every retention question an 
 - Which two charts settle a product lead's objection?
 - What is the honest headline when a blend holds?
 
-Three terms, defined once. A **cohort** is the subscribers who joined in the same calendar month.
+Four terms, defined once. A **cohort** is the subscribers who joined in the same calendar month.
 **Month one** is the first full calendar month after joining; the joining month is month zero and is
-never counted. A subscriber is **active** in a month when she took at least one tiffin in it.
+never counted. A subscriber is **active** in a month when she took at least one tiffin in it. An
+**artefact** is a number made by the way something is counted rather than by what people did.
+
+**How to read an item.** Its level runs from L1, a count by hand, to L6, the call an interviewer asks for; "a design call" asks you to choose a way and say why. "Screens" are interviews, and a GCC is a global capability centre, a multinational company's own technology and analytics centre in India.
 
 Dabba Club's twenty subscribers, January to April. A 1 means she took at least one tiffin that month.
 
@@ -132,7 +137,7 @@ b) A competitor's payment completion rate, to show what a good one looks like
 c) App sessions in March and April, to show that the traffic held steady
 d) Payment split by renewal and platform, then by week with the update marked
 
-### Q6. Cohort A, 400 subscribers, kept 60 percent in May and 55 in June; cohort B, 600, kept 45 and then 40; cohort C, 1,000 new in June, kept 56. Blended retention read 51 percent in both months. What is the honest headline?
+### Q6. Cohort A, 400 subscribers, kept 60 percent in May and 55 in June; cohort B, 600, kept 45 and then 40; cohort C, 1,000 who joined in May, kept 56 in June, its month one. Blended retention read 51 percent in both months. What is the honest headline?
 
 *Level L5, a design call · asked in product-company screens.*
 

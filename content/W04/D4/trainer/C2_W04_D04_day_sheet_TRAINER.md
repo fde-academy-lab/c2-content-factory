@@ -42,10 +42,11 @@ fixed first?** Ask each question before its answer is shown.
 | The close | What does the room carry out? | What does the faculty session (tentative) pick up? |
 
 **The day's answer, said at the close (half two, S47).** "The dashboard was flat because of who it
-counts: every cohort fell, the newest started lower, and the August cohort is outside the count until
-October; the orders were lost in one step, checkout start to order placed, for members on Android
-since 14 September, about 1,317 orders a week. Fix the checkout first, and judge the next sale's
-members on their own curve before buying another sale."
+counts: every cohort fell after month one, each newer one started lower, and the August cohort is
+outside the count until October, when the dashboard reads about 33; the orders were lost in one step,
+checkout start to order placed, for members on Android since 14 September, about 1,223 to 1,317
+orders a week. Fix the checkout first; before another sale, work out whether this one's members pay
+back their discount."
 
 ---
 
@@ -56,7 +57,7 @@ members on their own curve before buying another sale."
 | **Start from** | Week 1 Thursday's reversal (Kalpa's total rose while every segment fell), Monday's habit of naming a metric's denominator, Tuesday's four moves for a partly right objection, and Wednesday's "compared with what?". Open on the ticket and let the room say why a flat number might hide a fall. |
 | **Go as far as** | Every learner counts a cohort's row by hand, builds the cohort table with one `pivot_table`, rebuilds September's 38 as a size-weighted average that lands on 13,218 of 35,000, reads the funnel step over step in a named unit, finds the step that changed by membership, platform and date, and makes the fix-first call with its cost. |
 | **Stop before** | Survival curves, censoring beyond its name, hazard, tests of whether two curves differ and lifetime value, which the faculty block (tentative) owns; causal methods for "does Gold cause more orders", only described. |
-| **Comes later** | Friday turns the cohort axis into a forecast's time axis ("beyond the baseline"); Week 5 defines its target on a table like today's; Saturday's paper tests the cohort, the blend, the funnel's denominators and the dispute. |
+| **Comes later** | Friday turns the cohort axis into a forecast's time axis; Week 5 defines its target on a table like today's; Saturday's paper tests the cohort, the blend, the funnel's denominators and the dispute. |
 | **Cut first** | The third funnel example (the toy on S29 to one spoken sentence), then the release split's weekly view (S34's picture described, the before and after kept). Never cut the blend decomposition or the Kalpa lab. |
 
 ---
@@ -135,12 +136,17 @@ learner's own cell prints it.
 | Month one by cohort | 58, 56, 55, 53, 52, 50, 49, 31 percent | m1_jan to m1_aug |
 | The August cohort | 13,000 members; 4,973 organic at 49, 8,027 sale-week at 20 | cohort_size_aug, aug_organic_members, aug_m1_organic, aug_sale_members, aug_m1_sale |
 | Counting everyone, September | 17,248 of 48,000, 35.9 percent | everyone_sep_ordered, everyone_sep_counted, everyone_sep |
+| Counting everyone, June to August | 40.9, 40.0, 39.5 percent | everyone_jun, everyone_jul, everyone_aug |
 | October's dashboard | about 33 percent, 32 to 34 | oct_dashboard_estimate, oct_dashboard_low, oct_dashboard_high |
 | The skippable step | 118 percent; 89 among sessions that searched | search_to_menu_session_sep, search_to_menu_searched_sep |
 | Two units | 34 per session, 61 per member | menu_to_cart_session_sep, menu_to_cart_member_sep |
 | The release split | 58 to 44 Android members; 57 to 56 iOS; 52 to 51 non-members on Android | atc_to_order_member_android_before and after, and the iOS and non-member ids |
 | Inside the checkout | starts 80 to 80; completion 72.5 to 55 | android_members_cart_to_checkout_before and after, android_members_checkout_to_order_before and after |
-| The cost | about 1,317 orders a week; Rs 5.3 lakh (Rs 4.0 to 6.6 lakh) | lost_orders_per_week, lost_value_per_week_rs, lost_value_per_week_low_rs, lost_value_per_week_high_rs |
+| The same step, comparators | iOS members 71 to 70; non-members on Android 65 to 64 | checkout_to_order_member_ios_before and after, checkout_to_order_nonmember_android_before and after |
+| The cohorts held fixed | Android 70.3 to 53.6; iOS 68.6 to 69.3; orders per ordering member 1.45 to 1.24 on Android | held_checkout_to_order_*, held_orders_per_active_* |
+| The tracking check | 27,212 orders in September in both the order records and the event log | order_records_sep, event_orders_sep |
+| Noise and retries | 18,273 starts (under a point); 1,600 for the non-members (2.5 points); retries 36.5 then 35.1 percent | android_member_starts_after, nonmember_android_starts_after, noise_points_*, retry_within_day_android_* |
+| The cost | about 1,223 to 1,317 orders a week, a quarter of 5,064; Rs 3.7 to 6.6 lakh of order value | lost_orders_per_week_netted, lost_orders_per_week, android_member_orders_week_before, lost_value_per_week_netted_low_rs, lost_value_per_week_high_rs |
 
 ## What are the interview answers, each in one breath?
 
@@ -148,15 +154,19 @@ learner's own cell prints it.
   and date, then fewer users against less use, then the step that changed, then the call with its
   cost.
 - **Blended flat while every cohort declines; how?** A size-weighted average of cohorts at different
-  ages, propped by a new cohort entering at about 38.5 each month.
+  ages, held by a new cohort entering at about 38.5 each month; what it misses is month one, falling
+  cohort after cohort, and the uncounted August cohort.
 - **How would you use cohort analysis?** Fix the entry month, read rows for decay and columns for each
   cohort's start, rebuild the blend from the cohorts.
 - **The app team says your stage is fine.** Concede that starts held at 80; bring completion, 72.5 to
-  55, for Android members from the release week, with iOS and non-members as comparators.
-- **The AI-company variant.** Read each cohort at week four; the launch cohort keeps 24 against 36
-  (invented), while the blended count looks like recovery.
-- **Riders on the Delhi Metro on a weekday.** About 30 lakh people, about 60 lakh journeys, against
-  DMRC's 64.06 lakh journeys; the 82,44,903 record counts boardings
+  55, for Android members from the release week, with iOS members (71 to 70) and non-members on
+  Android (65 to 64) on the same step as comparators.
+- **The AI-company variant.** Two months after launch, count active on a draft kept and read each
+  cohort at week four: the launch cohort keeps 24 against 36 (invented), while the blended count
+  stays near the record as new cohorts join.
+- **Riders on the Delhi Metro on a weekday.** About 30 lakh people, about 60 lakh trips, about 75
+  lakh line uses at a quarter changing lines, against DMRC's 64.06 lakh journeys a day across all
+  days, which count each line used; the 82,44,903 record is the same count on a bus-strike day
   (`trainer/C2_W04_D04_guesstimate_TRAINER.md`).
 
 ## Which file serves which moment?

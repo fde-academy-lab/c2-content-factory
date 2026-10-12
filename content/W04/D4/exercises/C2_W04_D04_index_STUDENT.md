@@ -13,6 +13,7 @@ programme's client.
 
 - Which sets run in the morning, and which in the afternoon?
 - Which set moves the method to Kalpa, and when is it sat?
+- In what order do the day's two written pages come?
 - How many items ask for a design call?
 - Where are the answers?
 
@@ -26,6 +27,14 @@ programme's client.
 | Afternoon, 30 minutes in groups | `unguided/C2_W04_D04_fix_first_STUDENT.md` | 6 | L5, L6 | The five-line page, the loss in orders and rupees, the order of work, the app team answered |
 | Lab, item 1 any time, items 2 to 4 after the Kalpa notebook | `unguided/C2_W04_D04_kalpa_retail_plus_STUDENT.md` | 4 | L5 | The head of Retail-Plus's call on Kalpa's own counts, and the second page |
 | Lab, the practice set | `practice/C2_W04_D04_lab_set_STUDENT.md` | 6 | L1 to L5 | The whole method on an invented tiffin subscription, with the cohort table's lines put in order |
+
+## In what order do the day's two written pages come?
+
+Two pages are written, each with the same five lines: the call, the evidence, the cost, the
+objection answered and what would change it. The first is the fix-first set's page for Zomato
+Gold's membership lead, in the afternoon. In the lab, notebook 04 ends on three sentences for the TA,
+which become the first lines of the second page, the Kalpa set's page for the head of Retail-Plus,
+written after its items 2 to 4. The practice set comes last and asks for letters only.
 
 ## How many items ask for a design call?
 

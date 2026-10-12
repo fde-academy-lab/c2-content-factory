@@ -31,6 +31,7 @@ jun = card[card.signup_month == "Jun"]
 jun_row = [int(jun[f"ordered_in_{m}"].sum()) for m in ("jul", "aug", "sep")]
 check("guided Q2: June keeps 2, 1 and 1 of 3 (67, 33, 33)", jun_row == [2, 1, 1] and len(jun) == 3)
 check("guided Q3: the toy's first two steps read 40 and 50 percent", (40 / 100, 20 / 40) == (0.4, 0.5))
+check("guided Q4: the same 10 checkouts read 10 of 100 sessions and 10 of 20 people", (10 / 100, 10 / 20) == (0.1, 0.5))
 
 # ------------------------------------------------------------------------- the chapter 2 drill
 members = pd.read_csv(DATA / "C2_W04_D04_members_STUDENT.csv")
@@ -72,8 +73,10 @@ carts = after[after.stage == "add_to_cart"].session_id.nunique()
 lost = (round(rate(before), 2) - round(rate(after), 2)) * carts
 check("fix-first Q1: 22,841 carts, about 1,317 orders a week (188 a day, 3,198 in 17 days)",
       carts == 22841 and round(lost / 17 * 7) == 1317 and round(lost / 17) == 188 and round(lost) == 3198)
-check("fix-first Q2: Rs 5.3 lakh at Rs 400, Rs 4.0 to 6.6 lakh across Rs 300 to Rs 500",
-      [round(1317 * v / 1e5, 1) for v in (400, 300, 500)] == [5.3, 4.0, 6.6])
+check("fix-first Q2: Rs 5.3 lakh at 1,317 and Rs 400; Rs 3.7 lakh at 1,223 and Rs 300, Rs 6.6 lakh at 1,317 and Rs 500",
+      [round(1317 * 400 / 1e5, 1), round(1223 * 300 / 1e5, 1), round(1317 * 500 / 1e5, 1)] == [5.3, 3.7, 6.6])
+check("fix-first: 1,223 is the 13-point fall net of the comparators' one point, a week",
+      round((0.58 - 0.44 - 0.01) * 22841 / 17 * 7) == 1223)
 
 # ------------------------------------------------------------------------------ the Kalpa set
 kev = pd.read_csv(DATA / "C2_W04_D04_kalpa_events_STUDENT.csv", parse_dates=["event_ts"])
@@ -86,6 +89,15 @@ check("Kalpa: 28 of 34, 10 of 12 and 7 of 11 carts checked out",
       [tuple(k.loc[b]) for b in ("before", "comparison", "window")] == [(34, 28), (12, 10), (11, 7)])
 missing = k.loc["window", "add_to_cart"] * 10 / 12 - k.loc["window", "checkout"]
 check("Kalpa Q3: about 2 checkouts missing from the window", round(missing) == 2)
+mem_k = pd.read_csv(DATA / "C2_W04_D04_kalpa_memberships_STUDENT.csv")
+kev["month"] = kev["event_ts"].dt.strftime("%Y-%m")
+active_sep = set(kev.loc[kev["month"] == "2026-09", "customer_id"])
+joined_before = mem_k[mem_k["member_since"] < "2026-09-01"]
+aug = joined_before[joined_before["member_since"] >= "2026-08-01"]
+rest = joined_before[joined_before["member_since"] < "2026-08-01"]
+aug_act, rest_act = aug["customer_id"].isin(active_sep).sum(), rest["customer_id"].isin(active_sep).sum()
+check("Kalpa Q4: the monsoon cohort, 26 of 32 in September, holds the blend up; without it, 23 of 88",
+      (aug_act, len(aug), rest_act, len(rest)) == (26, 32, 23, 88) and aug_act / len(aug) > (aug_act + rest_act) / len(joined_before))
 
 # ---------------------------------------------------------------------------- the practice set
 check("practice Q1: January keeps 6, 4 and 3 of 8 (75, 50 and 37.5)",

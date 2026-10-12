@@ -7,6 +7,8 @@ company is real, the situation and the data are synthetic, built for this class.
 
 This is a drill at the close of chapter 2, on paper, with no code.
 
+**How to read an item.** Its level runs from L1, a count by hand, to L6, the call an interviewer asks for; "a design call" asks you to choose a way and say why. "Screens" are interviews, and a GCC is a global capability centre, a multinational company's own technology and analytics centre in India.
+
 **Who needs the answer.** The membership lead, about to report "nothing changed" because the number
 is flat. A cohort ranked on the wrong comparison sends the follow-up to the wrong group of members.
 
@@ -56,7 +58,7 @@ d) Flat from month two on, which is why the dashboard reads flat
 
 *Level L2, a design call · asked in product-company screens.*
 
-a) Each cohort in September, 36.9, 37.7 and 38.5, so July is the strongest
+a) Each cohort's rate in September, the latest month, so July is the strongest
 b) Each cohort's average over every month it has had, so the oldest looks weakest
 c) Each cohort at the same age, month one, 58, 53 and 49, so July is the weakest
 d) Each cohort's size, since the largest cohort carries the most weight in the blend

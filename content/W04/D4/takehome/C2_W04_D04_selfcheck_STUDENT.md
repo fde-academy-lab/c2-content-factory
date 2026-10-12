@@ -78,10 +78,10 @@ days, so both rest on fewer sessions.
 
 | The morning said | On the weekly table |
 |---|---|
-| Every cohort falls with age | Holds, with noise: weekly cohorts of 1,112 to 1,247 members wobble a few points from week to week |
+| Every cohort falls with age | Holds over the weeks, though not week by week: a cohort of 1,112 to 1,247 members can tick up a point (3 August's 29 to 30) while the falls are large (10 August's 38 to 17) |
 | The sale-week members are the weakest | Holds after the first week; in its first week the sale week's cohort is the strongest of the six, at 53 percent |
 | Rates near 38 percent | The words change: weekly shares sit far lower, since ordering in one week is rarer than in a month |
-| The last month leaves the count | The words change: the last week is partial, so the table stops a week early |
+| September, the last month, is whole and counted | The words change: the week of 28 September has three days, so it is left out |
 | The Android fall starts with the release | Holds: one week breaks, the release week, and none before it |
 
 The weekly view shows what the monthly one hid: the sale week's members ordered heavily in the days

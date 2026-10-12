@@ -21,13 +21,16 @@ A row counted over the wrong members makes a weak group look strong.
 - What does each of a funnel's first two steps read, over the step before?
 - Which checkout rate belongs on the membership lead's chart?
 
-Four terms, defined once. A **cohort** is the members who joined in the same calendar month. **Month
+Five terms, defined once. A **cohort** is the members who joined in the same calendar month. **Month
 one** is the first full calendar month after joining; the joining month is month zero and is never
-counted. A member is **active** in a month when she placed at least one order in it. A funnel
-**step's rate** divides those who reached the step by those who reached the step before, in one unit.
+counted. A member is **active** in a month when she placed at least one order in it. A **session** is
+one visit to the app, from opening it to leaving it. A funnel **step's rate** divides those who
+reached the step by those who reached the step before, in one unit: sessions or people.
 
-These are seven of the twelve members on the chapter 1 card, real rows of the case data. A 1 means
-she placed at least one order that calendar month.
+These are seven of the twelve members on the chapter 1 card, rows of the case data, which is
+synthetic like all of it. A 1 means she placed at least one order that calendar month.
+
+**How to read an item.** Its level runs from L1, a count by hand, to L6, the call an interviewer asks for; "a design call" asks you to choose a way and say why. "Screens" are interviews, and a GCC is a global capability centre, a multinational company's own technology and analytics centre in India.
 
 | Member | Joined | Jun | Jul | Aug | Sep |
 |---|---|---|---|---|---|
@@ -81,22 +84,24 @@ d) 33, 67 and 67 percent
 This comes up at work when a product team brings a funnel: each rate divides by the step just before
 it, and the chart names whether it counts sessions or people.
 
-A toy funnel, invented for chapter 3: 100 app visits, 40 searches, 20 add-to-carts and 10 checkouts.
+A toy funnel, invented for chapter 3, counted in sessions: 100 sessions, 40 with a search, 20 with an
+add-to-cart and 10 with a checkout. The 100 sessions came from 20 people, and the 10 checkouts from
+10 of them.
 
 ### Q3. What do the first two steps read, each over the step before?
 
 *Level L3 · asked in every analytics screen.*
 
-a) 40 and 20 percent, both over the 100 visits
+a) 40 and 20 percent, both over the 100 sessions
 b) 40 and 50 percent, each over the step before
 c) 60 and 50 percent, the share lost at each step
 d) 40 and 200 percent, searches over add-to-carts
 
-### Q4. The 10 checkouts came from 50 sessions of 20 people: which checkout rate belongs on the membership lead's chart?
+### Q4. A chart reads "checkout: 10 percent", and the membership lead says one member in ten checks out: what does the chart need?
 
 *Level L3, a design call · asked in product-company screens.*
 
-a) 10 of 50, since a funnel is counted in sessions alone
-b) 10 of 20, since the lead pays for people and never for visits
-c) 10 of 100 visits, so that every step shares one denominator
-d) Either one, with the unit it counts named on the chart
+a) Nothing, since 10 percent is the funnel's rate from the top
+b) Its numbers redone per person, since people are what the lead pays for
+c) Its denominator moved to the 40 sessions that had a search
+d) Its unit named: 10 of 100 sessions is 10 of 20 people, half of them

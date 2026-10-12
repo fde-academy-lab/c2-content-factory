@@ -91,19 +91,20 @@ Turned to at the close of chapter 3, and again after the dispute.
 
 | Line of the board | Verdict | The evidence, with its number |
 |---|---|---|
-| 1. Tracking | Struck | The release renamed one Android event and the app team mapped it; the fall holds with the cut on 7 September (58 to 47) and on 21 September (56 to 43) |
+| 1. Tracking | Struck | The order records and the event log count the same 27,212 orders in September, so no orders went missing after the rename; the cut moved to 7 September (58 to 47) or 21 September (56 to 43) dates the fall and cannot test tracking |
 | 2. Definition | Explained | Month-two retention counts members from their second month, so the 13,000-member August cohort is outside September's count; counting everyone gives 17,248 of 48,000, 35.9 percent |
 | 3. A cohort problem | Confirmed | Every cohort falls with age; month one runs 58 for January to 49 for July and 31 for August; the 8,027 sale-week members kept 20 against 49 for the 4,973 organic August members |
 | 4. An everyone problem | Struck for retention | No calendar month drops every cohort at once: each row slides about 0.3 points a month with age, and September by zone stays within 0.9 points of the city; the one change shared by everyone on a platform is the Android checkout, which line 5 owns |
-| 5. A stage | Confirmed | Checkout start to order placed: 72.5 to 55 percent for members on Android from the release week; starts held at 80; iOS members 57 to 56; non-members on Android 52 to 51 |
+| 5. A stage | Confirmed | Checkout start to order placed: 72.5 to 55 percent for members on Android from the release week; starts held at 80; on the same step iOS members 71 to 70, non-members on Android 65 to 64; held to members who joined before August, Android 70.3 to 53.6 and iOS 68.6 to 69.3 |
 
-**The day's answer.** "It is both, and they need different fixes. The dashboard reads 38 because it
-averages cohorts on a slow slide and has not yet counted the 13,000-member August cohort, whose
-sale-week members kept 20 percent in month one; when that cohort enters in October, the dashboard
-drops to about 33. The order loss sits in one step, checkout start to order placed, for members on
-Android since the 14 September release: 72.5 to 55 percent, about 1,317 orders a week. Fix the
-Android checkout first, and judge the next sale's members on their own curve before buying another
-sale."
+**The day's answer.** "It is both, in two numbers that need different fixes. Retention is a cohort
+problem: the dashboard starts counting at month two, where every cohort lands near 38.5, so it never
+sees that each new cohort starts lower in month one, and it has not yet counted the 13,000-member
+August cohort, whose sale-week members kept 20 percent; in October the dashboard drops to about 33.
+The order loss hits members of every signup month on Android at one step from the 14 September
+release: of the checkouts started, 72.5 percent ended in an order before and 55 after, about 1,223 to
+1,317 orders a week. Fix the Android checkout first; before buying another sale, work out whether
+this one's members pay back their discount."
 
 **The dispute, answered.** The app team's chart, carts that start checkout on every platform, reads
 80 percent before and after: true, and it measures the step that did not break. Completing the order

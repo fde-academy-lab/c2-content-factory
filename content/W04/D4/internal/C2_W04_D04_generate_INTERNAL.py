@@ -1383,6 +1383,9 @@ kalpa = {
     "sep_active_members": int(len(k_mem)), "sep_members_with_checkout": int(k_mem.sum()),
     "month_one_percent": {NAMES[y]: round(100 * a / n, 1) for y, (a, n) in m1_k.items()},
     "blend_printed": "41 percent",
+    "sep_without_august": f"{K_BLEND['2026-09'][2] - m1_k['2026-08'][0]} of {K_BLEND['2026-09'][1] - m1_k['2026-08'][1]}",
+    "sep_without_august_percent": round(100 * (K_BLEND['2026-09'][2] - m1_k['2026-08'][0])
+                                        / (K_BLEND['2026-09'][1] - m1_k['2026-08'][1]), 1),
     "sessions_skip_search": r3(skip),
     "checkout_per_session_sep": r3(k_per_sess),
     "checkout_per_member_sep": r3(k_per_member),
@@ -1413,34 +1416,53 @@ plants = [
      "found_in": "notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the third your-turn cell"},
 ]
 public = [
-    {"id": "simpson_1951", "source": "Wikipedia, Edward H. Simpson", "checked": "12 October 2026",
+    {"id": "simpson_1951", "source": "the paper's Crossref record; Wikipedia, Edward H. Simpson, for the name's date",
+     "checked": "12 October 2026",
      "facts": {"paper": "The Interpretation of Interaction in Contingency Tables",
-               "journal": "Journal of the Royal Statistical Society, Series B, 1951",
+               "journal": "Journal of the Royal Statistical Society, Series B, volume 13, issue 2, pages 238 to 241, 1951",
                "label": "the phrase Simpson's paradox came about twenty years later"},
-     "url": "https://en.wikipedia.org/wiki/Edward_H._Simpson"},  # checked 12 October 2026
+     "url": "https://doi.org/10.1111/j.2517-6161.1951.tb00088.x",  # checked 12 October 2026
+     "url_name": "https://en.wikipedia.org/wiki/Edward_H._Simpson"},  # checked 12 October 2026
     {"id": "Th4", "source": "Zomato, BSE filing (quarter to March 2023)", "checked": "12 October 2026",
      "facts": {"gold_members_q4fy23": "1.8 million", "gold_share_of_gov_march_2023": "about 30 percent",
-               "frequency_rise_after_joining": "about 60 percent"},
+               "frequency_rise_after_joining": "about 60 percent", "gold_benefit": "free delivery"},
      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/42b3bf3b-1edb-4da7-849a-87ca9da27ff8.pdf"},  # checked 12 October 2026
-    {"id": "Th1", "source": "Eternal, Q1 FY27 blog (Blinkit)", "checked": "12 October 2026",
-     "facts": {"q4_retention_avg": "46 percent", "nov_retention_q4": "150 percent", "nov_retention_q12": "279 percent"},
-     "url": "https://www.eternal.com/blog/q1fy27/"},  # checked 12 October 2026
+    {"id": "Th1", "source": "Eternal, Q1 FY27 shareholder letter of 22 July 2026 (Blinkit), linked from its results page",
+     "checked": "12 October 2026",
+     "facts": {"q4_retention_avg": "46 percent of a cohort's customers order in the fourth quarter after acquisition",
+               "nov_retention_q4": "150 percent", "nov_retention_q12": "279 percent",
+               "letter_words": "a cohort of customers is spending nearly 3x three years after acquisition than in its first quarter"},
+     "url": "https://www.eternal.com/blog/q1fy27/",  # checked 12 October 2026
+     "url_letter": "https://drive.google.com/file/d/1jb9KWd4Ap4RTKHFHxzEOO7jgQqVZEGcd/view"},  # checked 12 October 2026
     {"id": "Th2", "source": "Swiggy, Q2 FY2026 shareholder letter (Instamart cohorts)", "checked": "12 October 2026",
-     "facts": {"triangle_index": "indexed to the Q4 FY24 cohort", "weak_users": "weaned away",
-               "q4fy24_cohort_spend_q6": "4.14x its spend in Q0"},
+     "facts": {"triangle_index": "each cohort's spend against the quarter it was acquired, Q0",
+               "weak_users": "weaned away certain users from the platform with low potential Lifetime values",
+               "q4fy24_cohort_spend_q6": "4.14x its spend in Q0", "aov_growth": "about 40 percent year on year",
+               "denominator": "the table states none"},
      "url": "https://www.swiggy.com/corporate/wp-content/uploads/2025/10/Q2-FY2026-Shareholder-letter.pdf"},  # checked 12 October 2026
     {"id": "Th3", "source": "Swiggy, Q1 FY27 shareholder letter", "checked": "12 October 2026",
-     "facts": {"mtu_rise": "27.4 percent", "mtu": "21.6 million (Q1 FY26) to 27.5 million (Q1 FY27)",
-               "frequency": "4.13 to 3.87 orders per user per month", "frequency_fall": "6.3 percent, our arithmetic",
-               "users_weaned": "over 4 million over three quarters", "one_month_retention": "61 from 55 percent"},
-     "url": "the Swiggy Q1 FY27 URL in docs/detailing/W04_research_cases.md (Wednesday's table)"},
+     "facts": {"mtu_rise": "27.4 percent year on year, platform-wide", "mtu": "21.6 million (Q1 FY26) to 27.5 million (Q1 FY27)",
+               "frequency": "platform frequency 4.13 to 3.87, Q1 FY26 to Q1 FY27", "frequency_fall": "6.3 percent, our arithmetic",
+               "users_weaned": "over 4 million unprofitable Instamart users over three quarters",
+               "one_month_retention": "Instamart's transacting user base, 61 from 55 percent"},
+     "url": "https://nsearchives.nseindia.com/corporate/SWIGGY_30072026154100_Covering_Letter_Letter_to_Shareholders_-_signed.pdf"},  # checked 12 October 2026
     {"id": "Th5", "source": "Amplitude blog", "checked": "12 October 2026",
-     "facts": {"day7_top_quartile": "7 percent", "enterprise_median": "2.1 percent"},
+     "facts": {"day7_top_quartile": "7 percent of a cohort back on day seven puts a product in the top 25 percent",
+               "companies": "more than 2,600", "method": "the blog gives none", "enterprise_median": "2.1 percent"},
      "url": "https://www.amplitude.com/blog/7-percent-retention-rule"},  # checked 12 October 2026
-    {"id": "M6", "source": "DMRC figures cited in R2 (M6, T3)", "checked": "12 October 2026",
-     "facts": {"avg_daily_journeys_2026": "64.06 lakh", "record_boardings_2026_09_17": "82,44,903"}},
+    {"id": "M6", "source": "DMRC figures as The Tribune, Republic World and Deccan Herald (PTI) report them", "checked": "12 October 2026",
+     "facts": {"avg_daily_journeys_current": "64.06 lakh, 'currently', all days",
+               "record_boardings_2026_09_17": "82,44,903 on a bus-strike day",
+               "previous_record": "more than 81 lakh passenger journeys on 8 August 2025",
+               "unit": "journey or line utilisation, one count per corridor a passenger uses (Deccan Herald, 30 August 2023)",
+               "line_utilisation_since": "May 2018 (PTI via LatestLY)"},
+     "url": "https://www.tribuneindia.com/news/delhi/delhi-metro-records-99-95-train-punctuality-in-2026-dmrc/",  # checked 12 October 2026
+     "url_record": "https://www.republicworld.com/india/delhi-metro-breaks-all-time-record-with-8244-lakh-footfall-as-dtc-strike-sends-rush-soaring-2026-09-18-137241",  # checked 12 October 2026
+     "url_unit": "https://www.deccanherald.com/india/delhi/delhi-metro-records-highest-ever-footfall-on-aug-29-2666561"},  # checked 12 October 2026
     {"id": "T2", "source": "Aced, data analyst interview questions", "checked": "12 October 2026",
-     "facts": {"order": "tracking first, then the definition, segments, fewer users against less use"},
+     "facts": {"order": "its sample answer to a 10 percent drop in Facebook's daily post views: define the metric, "
+                        "rule out a data issue first, segment by platform, place and time, keep fewer users apart "
+                        "from fewer views per user, then outside and inside causes"},
      "url": "https://www.aced.io/blog/top-data-analyst-interview-questions"},  # checked 12 October 2026
 ]
 from_other_days = [
@@ -1488,6 +1510,21 @@ corrections = [
     {"line": "Kalpa retention", "case_file": "orders of any status", "here": "app activity, the case file's fallback",
      "why": "37 of the 120 Retail-Plus customers ordered in September in v4, so no assignment of membership months "
             "reaches 41 percent on orders"},
+    {"line": "the funnel toy", "case_file": "100 visits; checkout 10 of 50 per session against 10 of 20 per member",
+     "here": "100 sessions; checkout 10 of 100 sessions against 10 of 20 people",
+     "why": "a toy that counts 100 visits and then 50 sessions mixes units, and 10 of 50 is not a step over the step "
+            "before (the first cold read's blocker)"},
+    {"line": "the guesstimate's catch", "case_file": "journeys and boardings are different units",
+     "here": "DMRC's passenger journeys count each line a rider uses, and the 82,44,903 boardings record beat the "
+             "81 lakh passenger-journeys record, so both are one line-use count; the catch is trips against line uses",
+     "why": "Deccan Herald (PTI), 30 August 2023, and The Tribune, both checked 12 October 2026"},
+    {"line": "the walk's source", "case_file": "Aced: tracking first, segments before a root cause",
+     "here": "the hypothesis board's order, with Aced cited only for what its page says",
+     "why": "Aced's sample answer starts by defining the metric and says to rule out data issues first"},
+    {"line": "the tracking check", "case_file": "the app team's mapping and the release date moved a week",
+     "here": "the order records against the event log; the moved cut dates the fall",
+     "why": "the rename shipped with the release, so a logging fault would also start on 14 September (the second "
+            "cold read)"},
 ]
 facts = {
     "day": "W04/D4, Thursday 29 October 2026",
