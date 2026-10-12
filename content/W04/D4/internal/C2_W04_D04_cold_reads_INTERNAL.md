@@ -1,9 +1,10 @@
 # Week 4 Thursday: the two cold reads
 
 INTERNAL. Two separate agents read the pack cold on 12 October 2026, each on the opus model, each
-told to report findings only and never to edit. Their reports are below as they returned them; what
-the fix pass did with each finding is in the last section of this file, and every finding not fixed
-carries its one-line reason in `internal/C2_W04_D04_sources_INTERNAL.md`.
+told to report findings only and never to edit. Two more agents re-scored the interview transcripts
+after the fix pass, under the same rule. Their reports are below as they returned them; what the fix
+pass did with each finding is in the round sections and the last section of this file, and every
+finding not fixed carries its one-line reason in `internal/C2_W04_D04_sources_INTERNAL.md`.
 
 ## Read 1: a fresh graduate who opens only the STUDENT files, in a learner's order
 
@@ -346,6 +347,67 @@ trainer files; every "retries did not rise" line now says what came back; the Sw
 on S14, fallback S3 and in the facts. Partly: the Swiggy letter's second copy and DMRC's own post were
 not fetched (sources list).
 
+## Read 2, round three: a narrow re-score of the two transcripts
+
+A fourth agent, on the opus model, findings only, scored the [D] main answer line by line under the
+rubric, re-read the [S] passages round two had changed, recomputed every figure from the data on 12
+October 2026, and edited nothing.
+
+**Scores (as returned).** [D] hire-grade: 10 of 14 under the rubric as written: mix, step and cost
+at 1, because no reply handed over their figures, and structure at 1, for no preview of the moves
+and no chart in the main answer; 13 if the premise is read as handing the candidate their own
+tables. Every figure in the [S] clarifying replies and the four rewritten hire-grade cells
+reproduced from the data.
+
+**Counts.** 11 findings: 0 blockers, 3 majors, 8 minors.
+
+1. Major ([S]): the outside-causes paragraph said the member and platform splits separate the
+   outside causes; delivery times and a competitor's offer move every platform and both member
+   groups, so the platform split separates them from the release and none from one another. The
+   start date and the zone split do that, and every zone sat within 0.9 points of the city in
+   September.
+2. Major ([D]): the 2s on mix, step and cost rested on figures no reply handed over.
+3. Major ([D]): the main answer named no chart and previewed no moves, though its structure promised
+   one chart.
+4. Minor ([S]): the step line named no unit; the step reads 64 percent per session and 84 per member
+   over all members in September.
+5. Minor ([S]): the users-or-use line held the cohorts but not their age, since July's cohort moves
+   from month one to month two inside "joined before August"; held to members who joined before
+   July, the share reads 37.9 to 37.5 on Android and 38.1 to 37.9 on iOS, and orders per ordering
+   member 1.45 to 1.24 against 1.45 to 1.46.
+6. Minor ([S]): "a member it cost an order still ordered once" claimed every member; the data support
+   most.
+7. Minor ([S]): October's 32 to 34 gave no basis, which is August's month two at 17 to 24 percent.
+8. Minor ([S]): clarifying row 2 repeated row 1's question, and its reply left open whether nobody
+   lapsed or the table cannot see a lapse.
+9. Minor ([S]): row 5's reply named platform and week while the step line also uses membership and
+   version, and the count row said orders where it meant member orders (the log holds 29,756
+   September orders once non-members are in).
+10. Minor ([D]): the concession was too small: the August cohort explains 3.2 of the 3.6 retention
+    points, so the app team is right about retention and the candidate about orders.
+11. Minor ([D]): the count came after the claim, and the "payment included" reply was never used.
+
+**What round three changed.** All 11 are fixed in the two interview files. The outside-causes
+paragraph says the platform split separates all four causes from the release and the member split,
+the start date and the zone split separate them from one another, with the 0.9 points. A fourth
+[D] clarifying question names the candidate's own tables (completion by membership, platform and
+week with its starts, the same for members who joined before August, and member orders a week by
+segment) and the interviewer hands them over, so mix, step and cost are asked for before they are
+used. The [D] answer opens on its moves, leads with the count, says the failing step is part of the
+new flow, payment included, gives the app team retention (3.2 of the 3.6 points) and keeps orders,
+and carries a chart row: weekly completion of a started checkout for Android members, iOS members
+and non-members on Android, 14 September marked. The [S] step line says per session; the
+users-or-use line uses members who joined before July, from eight new facts
+(`held_july_share_ordered_*`, `held_july_orders_per_active_*`) and a new contract line, with every
+data file byte-identical; the close says most members, and gives October's basis; row 2 asks
+whether a member who stops paying leaves the count and the reply says the tables carry no
+cancellation field, which the number line then uses; row 5 adds membership and checkout version;
+the count row says member orders. Both scorecards' quoted lines match the new text, and the [D]
+summary says what earns the 2s. This round was not re-scored by a fifth agent: the session
+recomputed the chart's weekly series from the events (Android members near 72 in every week to 7
+September, then near 55; the other two groups flat within their weekly noise), and the facts audit
+traces every new number.
+
 ## What did the fix pass do with each finding?
 
 Every finding was fixed in the pack, or fixed in part with the rest given its one-line reason in the
@@ -453,7 +515,7 @@ sources list. Decks were rebuilt, every changed notebook re-executed, the cheat 
 | 14 | Partly: the variant defines active on a kept draft, adds the share of drafts kept and the cost per retained user, and keeps the blend for load and spend; no cost number (sources list). |
 | 15 | Fixed: the guesstimate validates trips against DMRC's line-use count, says all days, and treats the record as the same count on a strike day. |
 | 16 | Fixed: the transcript says the label misleads and what it counts. |
-| 17 | Fixed: the transcript asks whether retained means ordered or renewed. |
+| 17 | Fixed: the transcript asks whether retained means ordered or renewed; round three narrowed the question to whether a member who stops paying leaves the count. |
 | 18 | Fixed: the transcript names the outside causes and the check that clears them. |
 | 19 | Fixed: the transcript's close warns that October reads about 33. |
 | 20 | Fixed: the transcript, S14 and the fallback quote 'low potential Lifetime values', say the table states no denominator and that weaning lifts that quarter's cells and later ones. |
