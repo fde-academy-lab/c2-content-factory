@@ -2,24 +2,15 @@
 
 Week 4, Day 2. Half two.
 
-Kicker: WEEK 4  ·  TUESDAY  ·  AFTERNOON, 180 MINUTES
-Quote: Before the review, roughly how many drivers must be online at the evening peak on a weekday to keep the median rider wait under five minutes? Fifteen minutes, no dataset, assumptions stated.
-Who: The Hyderabad city head, Uber, to the same analyst, after the morning's studio
-
-```notes
-LIVE, 15 seconds. The afternoon runs the dojo (a number sized from nothing, then checked), the
-written case (the morning's slide as one page), the two transcripts and the gallery. No new
-technique: the dojo is the morning's discipline without data.
-Transition: chapter 4.
-```
-
----
+Header: WEEK 4  ·  DAY 2  ·  UBER, HYDERABAD, AN ILLUSTRATIVE CASE
 
 ## SECTION 4: How big is the unknown?
 *How many drivers must be online at the evening peak, sized from stated assumptions, and how do you know the answer is sane?*
 
 ```notes
-LIVE, 65 minutes: the dojo opens on the canteen's tea (10), drivers at the evening peak worked
+LIVE, 65 minutes. Say once that the afternoon runs the dojo (a number sized from nothing,
+then checked), the written case (the morning's slide as one page), the two transcripts and the
+gallery, with no new technique. The dojo opens on the canteen's tea (10), drivers at the evening peak worked
 together (30), UPI in pairs against the clock (25). Chapter 4 is L5 of the ladder on an estimate.
 Styles: Brilliant (the chapter opens on which number to check against), StatQuest (round numbers
 spoken aloud, the running product on the board), explorable explanations (explorer scene T3, the

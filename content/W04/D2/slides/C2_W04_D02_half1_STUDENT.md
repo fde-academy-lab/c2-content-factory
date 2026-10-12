@@ -2,19 +2,7 @@
 
 Week 4, Day 2. Half one.
 
-Kicker: WEEK 4  ·  TUESDAY  ·  MORNING, 180 MINUTES
-Quote: One slide, five minutes, at Thursday's city review. The driver-operations lead, the marketing lead and the finance partner will be in the room, and each loses something under the redesign.
-Who: The Hyderabad city head, Uber, to the analyst who built Monday's definition
-
-```notes
-LIVE, 15 seconds. Say once that this is Monday's illustrative Uber case, one day on, and that the
-deliverable today is the slide the city head takes to the review. The morning is a studio: build,
-present, take the objection, get scored, rebuild. The afternoon is a dojo: a number sized from
-nothing, under a clock, then checked. No new technique arrives today.
-Transition: the ticket, in full.
-```
-
----
+Header: WEEK 4  ·  DAY 2  ·  UBER, HYDERABAD, AN ILLUSTRATIVE CASE
 
 ## S1. The ticket: one slide, five minutes, three objectors
 *What has the city head asked for, and which number will land first?*
@@ -33,7 +21,11 @@ Transition: the ticket, in full.
 > Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
 ```notes
-LIVE, 3 minutes. Read the ticket top to bottom. Gross bookings are what riders paid for the trips,
+LIVE, 3 minutes. Say once that this is Monday's illustrative Uber case, one day on, and that the
+deliverable today is the slide the city head takes to the review. The morning is a studio: build,
+present, take the objection, get scored, rebuild. The afternoon is a dojo: a number sized from
+nothing, under a clock, then checked. No new technique arrives today. Then read the ticket top to
+bottom. Gross bookings are what riders paid for the trips,
 before Uber's share and before any top-up. An active driver-week is one driver with a row that
 week. Pause on the three reads of the same rupees: down, up, flat. Ask which of the three roles will
 quote which row; leave it open, chapter 2 answers it.
