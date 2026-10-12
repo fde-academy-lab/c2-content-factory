@@ -963,10 +963,10 @@ Numbers traced: 2078. Numbers with no home: 0.
 | 0.25 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 13.11 | kirana_tea_rusk_conf, weight_example, bread_milk_support |
 | 38% | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 14 output 1 | heavy_tenth_share, onions_tomatoes_conf_ba, thursday_blended_retention |
 | 73% | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 14 output 2 | chips_cold_heavy_share, eggs_milk_conf_ab |
-| 3.39 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 14 output 1 | chips_cold_lift, pair_chips_cold_drink_lift |
-| 2.56 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 14 output 1 | chips_cold_lift_per_customer |
-| 1.04 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 14 output 2 | bread_milk_lift, bread_milk_lift_per_customer, common_lift_high |
-| 1.04 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 14 output 2 | bread_milk_lift, bread_milk_lift_per_customer, common_lift_high |
+| 3.39 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 14 output 3 | chips_cold_lift, pair_chips_cold_drink_lift |
+| 2.56 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 14 output 3 | chips_cold_lift_per_customer |
+| 1.04 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 14 output 4 | bread_milk_lift, bread_milk_lift_per_customer, common_lift_high |
+| 1.04 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 14 output 4 | bread_milk_lift, bread_milk_lift_per_customer, common_lift_high |
 | 38 percent | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 14 output 1 | heavy_tenth_share, thursday_blended_retention, onions_tomatoes_conf_ba |
 | 73 percent | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 14 output 2 | chips_cold_heavy_share, eggs_milk_conf_ab |
 | 1 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 15 output 1 | gs_orders_low, twelve_ice_choc, add_rate_high |
@@ -1015,8 +1015,8 @@ Numbers traced: 2078. Numbers with no home: 0.
 | 0.66 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 15 output 3 | milk_share_night |
 | 1.03 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 15 output 4 | bread_milk_lift_morning, bread_milk_lift_night, eggs_milk_lift |
 | 1.05 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 15 output 5 | bread_milk_lift_afternoon, bread_milk_lift_evening, pair_a_lift |
-| 1.05 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 15 output 1 | bread_milk_lift_afternoon, bread_milk_lift_evening, pair_a_lift |
-| 1.03 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 15 output 2 | bread_milk_lift_morning, bread_milk_lift_night, eggs_milk_lift |
+| 1.05 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 15 output 6 | bread_milk_lift_afternoon, bread_milk_lift_evening, pair_a_lift |
+| 1.03 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 15 output 7 | bread_milk_lift_morning, bread_milk_lift_night, eggs_milk_lift |
 | Rs 6.3 lakh | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 16.1 | recoverable_month |
 | 90,325 | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 17 output 1 | milk_impressions_a_day |
 | Rs 6.3 lakh | C2_W04_D03_03_action_map_STUDENT.ipynb | cell 17 output 1 | recoverable_month |

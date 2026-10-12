@@ -177,41 +177,41 @@ def nb01():
         same count on 40,000.
         """),
         code("""\
-        def three_counts(a, b):
+        rows = []
+        for a, b in [("bread", "toned milk"), ("chips", "cold drink"), ("ice cream", "chocolate sauce")]:
             has_a, has_b = twelve[a] == 1, twelve[b] == 1
             both = (has_a & has_b).sum()
-            return both, has_a.sum(), has_b.sum(), both / n, both / has_a.sum(), both * n / (has_a.sum() * has_b.sum())
-
-        for a, b in [("chips", "cold drink"), ("ice cream", "chocolate sauce")]:
-            both, na, nb, sup, conf, lift = three_counts(a, b)
-            print(f"{a} and {b}: {na} and {nb} carts, both {both}, support {sup:.2f}, "
-                  f"confidence {conf:.2f}, lift {lift:.2f}")
-        check("chips and cold drink: lift 2.67", round(three_counts("chips", "cold drink")[5], 2) == 2.67)
-        check("ice cream and chocolate sauce: one cart, lift 12", three_counts("ice cream", "chocolate sauce")[0] == 1)
+            rows.append({"pair": f"{a} + {b}", "carts_a": has_a.sum(), "carts_b": has_b.sum(), "both": both,
+                         "expected": has_a.sum() * has_b.sum() / n, "support": both / n,
+                         "confidence": both / has_a.sum(), "lift": both * n / (has_a.sum() * has_b.sum())})
+        counts = pd.DataFrame(rows).set_index("pair")
+        for pair in ["chips + cold drink", "ice cream + chocolate sauce"]:
+            r = counts.loc[pair]
+            print(f"{pair}: {r.carts_a:.0f} and {r.carts_b:.0f} carts, both {r.both:.0f}, support {r.support:.2f}, "
+                  f"confidence {r.confidence:.2f}, lift {r.lift:.2f}")
+        check("chips and cold drink: lift 2.67", round(counts.loc["chips + cold drink", "lift"], 2) == 2.67)
+        check("ice cream and chocolate sauce: one cart, lift 12", counts.loc["ice cream + chocolate sauce", "both"] == 1)
         """),
         md("""\
         ## Which pair beat chance on the twelve, and which number should nobody act on?
 
         Chips and cold drink sit in 3 carts each and together in 2, where chance gives 0.75: lift
         2.67. Ice cream and chocolate sauce share one cart, and one cart makes a lift of 12, a
-        number with nothing under it. The function above writes lift as both x n / (A x B), which
+        number with nothing under it. The loop above writes lift as both x n / (A x B), which
         is seen over expected rearranged: for bread and milk, 4 / (12 x 4/12 x 8/12) is the same as
         4 x 12 / (4 x 8), which is 1.50. The picture puts seen beside expected for the three pairs.
         """),
         code("""\
-        pairs = [("bread", "toned milk"), ("chips", "cold drink"), ("ice cream", "chocolate sauce")]
-        seen = [three_counts(a, b)[0] for a, b in pairs]
-        expect = [three_counts(a, b)[1] * three_counts(a, b)[2] / n for a, b in pairs]
         fig, ax = plt.subplots(figsize=(8, 3.6))
-        x = range(len(pairs))
-        ax.bar([i - 0.18 for i in x], expect, 0.36, color="#E4E1F1", edgecolor="#1A0F5C", label="expected by chance")
-        ax.bar([i + 0.18 for i in x], seen, 0.36, color="#5B3FD6", edgecolor="#1A0F5C", label="seen")
-        ax.set_xticks(list(x), [f"{a} + {b}" for a, b in pairs])
+        x = range(len(counts))
+        ax.bar([i - 0.18 for i in x], counts.expected, 0.36, color="#E4E1F1", edgecolor="#1A0F5C", label="expected by chance")
+        ax.bar([i + 0.18 for i in x], counts.both, 0.36, color="#5B3FD6", edgecolor="#1A0F5C", label="seen")
+        ax.set_xticks(list(x), counts.index)
         ax.set_ylabel("carts of the twelve")
         ax.legend(frameon=False)
         ax.set_title("Lift is seen over expected")
         plt.show()
-        check("every pair here was seen more often than chance", all(s > e for s, e in zip(seen, expect)))
+        check("every pair here was seen more often than chance", (counts.both > counts.expected).all())
         """),
         md(f"""\
         ## What did the twelve carts answer?
@@ -616,9 +616,8 @@ def nb03():
         """),
         code("""\
         views, add_rate, margin = 60_000, 0.5, 9
-        def slot_day(ctr):
-            return views * ctr * add_rate * margin
-        good, milk = slot_day(0.064), slot_day(0.012)
+        good = views * 0.064 * add_rate * margin     # a slot a day, showing pairs that beat chance
+        milk = views * 0.012 * add_rate * margin     # the same slot showing milk
         gap_month = (good - milk) * 30
         recovered = gap_month * 3 * 0.5            # three slots, milk on half the impressions
         low = views * (0.064 - 0.012) * 0.4 * 7 * 30 * 1.5
@@ -678,20 +677,19 @@ def nb03():
         code("""\
         carts["weight"] = 1 / carts.groupby("customer_id").cart_id.transform("count")
         w = carts.set_index("cart_id").weight
-        def lift_per_customer(a, b):
-            has_a = baskets.apply(lambda x: a in x); has_b = baskets.apply(lambda x: b in x)
-            pa, pb = w[has_a].sum() / w.sum(), w[has_b].sum() / w.sum()
-            return w[has_a & has_b].sum() / w.sum() / (pa * pb)
         top_tenth = carts.customer_id.value_counts().head(len(carts.customer_id.unique()) // 10)
         print(f"top tenth of customers: {top_tenth.sum() / n:.0%} of carts")
         both_ids = baskets[baskets.apply(lambda x: "chips" in x and "cold drink" in x)].index
         heavy_share = carts.set_index("cart_id").loc[both_ids, "customer_id"].isin(top_tenth.index).mean()
         print(f"...and {heavy_share:.0%} of the carts holding both chips and a cold drink")
         per_cart = pairs.set_index(["a", "b"]).lift
-        rows = {"chips + cold drink": (per_cart[("chips", "cold drink")], lift_per_customer("chips", "cold drink")),
-                "bread + milk": (per_cart[("bread", "toned milk")], lift_per_customer("bread", "toned milk"))}
-        for name, (per_cart, per_cust) in rows.items():
-            print(f"{name}: lift {per_cart:.2f} per cart, {per_cust:.2f} with each customer counted once")
+        rows = {}
+        for a, b, name in [("chips", "cold drink", "chips + cold drink"), ("bread", "toned milk", "bread + milk")]:
+            has_a = baskets.apply(lambda x: a in x); has_b = baskets.apply(lambda x: b in x)
+            pa, pb = w[has_a].sum() / w.sum(), w[has_b].sum() / w.sum()
+            rows[name] = (per_cart[(a, b)], w[has_a & has_b].sum() / w.sum() / (pa * pb))
+        for name, (every_cart, each_once) in rows.items():
+            print(f"{name}: lift {every_cart:.2f} per cart, {each_once:.2f} with each customer counted once")
         fig, ax = plt.subplots(figsize=(7, 2.8))
         ax.barh(list(rows), [r[1] for r in rows.values()], color="#D9A7FF", label="each customer once")
         ax.scatter([r[0] for r in rows.values()], list(rows), color="#1A0F5C", zorder=3, label="every cart")
@@ -709,19 +707,22 @@ def nb03():
         print((grid * 100).round().astype(int).to_string())
         hit = carts.zone.isin(["Hadapsar", "Viman Nagar"]) & (carts.week == 3)
         kept = baskets[carts.loc[~hit, "cart_id"]]
-        def lift_in(bs, a, b):
-            k = len(bs); na = bs.apply(lambda x: a in x).sum(); nb = bs.apply(lambda x: b in x).sum()
-            return bs.apply(lambda x: a in x and b in x).sum() * k / (na * nb)
         print(f"curd's share: {carts.curd.mean():.1%} of all carts, {carts.loc[~hit, 'curd'].mean():.1%} "
               f"with the two zone-weeks set aside")
-        print(f"curd and milk lift: {lift_in(baskets, 'curd', 'toned milk'):.2f} and {lift_in(kept, 'curd', 'toned milk'):.2f}")
+        curd_lift = []
+        for bs in (baskets, kept):
+            has_curd = bs.apply(lambda x: "curd" in x); has_milk = bs.apply(lambda x: "toned milk" in x)
+            curd_lift.append((has_curd & has_milk).sum() * len(bs) / (has_curd.sum() * has_milk.sum()))
+        print(f"curd and milk lift: {curd_lift[0]:.2f} and {curd_lift[1]:.2f}")
         check("curd is near zero in the two zones in week three", carts.loc[hit, "curd"].mean() < 0.01)
         by_band = carts.assign(milk=carts.cart_id.isin(items.loc[items.item == "toned milk", "cart_id"])) \\
             .groupby("time_band").milk.mean().sort_values(ascending=False)
         print("share of carts holding milk, by time band:", by_band.round(2).to_dict())
         for band in by_band.index:
-            ids = carts.loc[carts.time_band == band, "cart_id"]
-            print(f"  {band}: bread and milk lift {lift_in(baskets[ids], 'bread', 'toned milk'):.2f}")
+            bs = baskets[carts.loc[carts.time_band == band, "cart_id"]]
+            has_bread = bs.apply(lambda x: "bread" in x); has_milk = bs.apply(lambda x: "toned milk" in x)
+            print(f"  {band}: bread and milk lift "
+                  f"{(has_bread & has_milk).sum() * len(bs) / (has_bread.sum() * has_milk.sum()):.2f}")
         check("morning carts hold milk most often", by_band.index[0] == "morning")
         """),
         md(f"""\
@@ -818,15 +819,15 @@ def nb04():
         twelve = lines[lines.order_id.isin(twelve_ids)].groupby("order_id").name.apply(set)
         for oid, held in twelve.items():
             print(oid, ", ".join(sorted(held)))
-        def on_twelve(a, b):
-            has_a = twelve.apply(lambda x: a in x); has_b = twelve.apply(lambda x: b in x)
-            both = (has_a & has_b).sum()
-            return both / has_a.sum(), both * 12 / (has_a.sum() * has_b.sum())
-        charger_share = twelve.apply(lambda x: "phone charger 20W" in x).mean()
-        conf_sp, lift_sp = on_twelve("screen protector", "phone charger 20W")
-        print(f"charger in {charger_share:.2f} of the twelve; screen protector to charger: "
-              f"confidence {conf_sp:.2f}, lift {lift_sp:.2f}; "
-              f"earphones with case: lift {on_twelve('wireless earphones', 'earphone case')[1]:.2f}")
+        charger = twelve.apply(lambda x: "phone charger 20W" in x)
+        protector = twelve.apply(lambda x: "screen protector" in x)
+        phones = twelve.apply(lambda x: "wireless earphones" in x)
+        case = twelve.apply(lambda x: "earphone case" in x)
+        conf_sp = (protector & charger).sum() / protector.sum()
+        lift_sp = (protector & charger).sum() * 12 / (protector.sum() * charger.sum())
+        lift_ec = (phones & case).sum() * 12 / (phones.sum() * case.sum())
+        print(f"charger in {charger.mean():.2f} of the twelve; screen protector to charger: "
+              f"confidence {conf_sp:.2f}, lift {lift_sp:.2f}; earphones with case: lift {lift_ec:.2f}")
         count = Counter(x for held in twelve for x in held)
         fig, ax = plt.subplots(figsize=(8, 3.8))
         names = sorted(count, key=count.get)
