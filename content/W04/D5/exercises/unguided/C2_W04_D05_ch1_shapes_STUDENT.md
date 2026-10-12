@@ -24,7 +24,7 @@ one beat back; here the beat is four weeks.
 | Series B | 100 | 130 | 100 | 70 | 100 | 130 | 100 | 70 | 100 | 130 | 100 | 70 |
 | Series C | 100 | 132 | 104 | 76 | 108 | 140 | 112 | 84 | 116 | 148 | 120 | 92 |
 
-**What you post.** Three letters in item order, with no spaces, in this shape:
+**What you post,** in this set's thread in the cohort channel: three letters in item order, with no spaces, in this shape:
 
 ```
 Post exactly this shape: xxx
@@ -59,6 +59,6 @@ d) Naive 100, seasonal copy 100
 *Level L3, a design call · asked in product-company screens.*
 
 a) Naive: the last value, since it already carries the climb
-b) The copy from four weeks back, plus the 8 a cycle adds
+b) The copy from four weeks back, plus the 8 each repeat adds
 c) The mean of the last four values, which smooths the repeat
-d) The copy from eight weeks back, two full cycles earlier
+d) The copy from eight weeks back, two repeats earlier

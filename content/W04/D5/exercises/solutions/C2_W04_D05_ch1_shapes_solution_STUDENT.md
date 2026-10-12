@@ -3,7 +3,7 @@
 Answers: 1b 2a 3b
 
 Series A climbs 4 a week with no repeat, series B repeats 100, 130, 100, 70 with no climb, and series C
-does both, rising 8 every cycle of four weeks. The numbers are invented so each shape stands alone.
+does both, rising 8 with every four-week repeat. The numbers are invented so each shape stands alone.
 
 **Who needs the answer.** You, to check your letters. The planner who misreads a shape picks a rule
 that copies the wrong thing.
@@ -27,7 +27,7 @@ in miniature.
 |---|---|---|---|
 | Q1, the three shapes | b | A rises 4 every week; B repeats every four weeks and never climbs; C repeats and climbs | a swaps A and B; c calls B noise, when its repeat is exact; d calls A seasonal and C a trend only |
 | Q2, B's week 13 | a | Naive repeats week 12, 70; the seasonal copy takes week 9, four back, 100 | b swaps the two rules; c takes week 10, three back; d gives B's mean, 100, to naive as well |
-| Q3, the fix for C | b | Each cycle sits 8 above the last, so the copy from four back is 8 low; adding the 8 fixes the level and keeps the repeat | a carries the climb but loses the repeat; c smooths away the repeat; d is 16 low, two cycles of climb |
+| Q3, the fix for C | b | Each four-week repeat sits 8 above the last, so the copy from four back is 8 low; adding the 8 fixes the level and keeps the repeat | a carries the climb but loses the repeat; c smooths away the repeat; d is 16 low, two repeats of climb |
 
 ## Which item is worth arguing about?
 

@@ -56,7 +56,7 @@ head wrong, so the trainer says it again before the room leaves.
 - Yes, since a fit that close beats every simple rule
 - Yes, if the fit also holds on the festival weeks
 - Unknown until it is scored on weeks it never saw  <- correct
-- No, since a fit within 2 percent is always overfitted
+- No, since a fit that close is always overfitted, copying noise
 
 ---
 
@@ -90,7 +90,7 @@ head wrong, so the trainer says it again before the room leaves.
 
 ---
 
-## Q7. A late shipment costs Rs 25 and a planned shipment that never comes Rs 5.42: what share of weeks should the plan cover?
+## Q7. A late shipment costs Rs 25 and a spare shipment, planned and never shipped, Rs 5.42: what share of weeks should the plan cover?
 *Tests: the plan quantile from two unit costs.*
 
 - 0.50, the middle of the error bar

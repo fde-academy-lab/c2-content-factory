@@ -25,8 +25,12 @@ be trusted.
 ## What do you build, and what do you hand in?
 
 Start from a copy of notebook 02, which reads `content/W04/D5/data/C2_W04_D05_weekly_shipments_STUDENT.csv`
-and the vendor's file beside it. Move the split: the last week every rule may see is 24 August 2026,
-the 100th row (position 99), and the four rows after it are hidden.
+and the vendor's file beside it. Move the split by changing one line in its second cell, `split = 91`,
+to `split = 100`: the last week every rule may see becomes 24 August 2026, the 100th row (position
+99), and the four rows after it are hidden. Every later cell counts the hidden weeks for itself. One
+check will print FAIL: it says that on the hidden weeks the vendor's priced misses cost less than
+festival-aligned's, which held on thirteen weeks; your paragraph says why it fails on four. If the
+fallback hour ran today, you have seen this test once; tonight you run it yourself.
 
 Hand in one notebook that runs top to bottom, with these five things, each under a heading that is a
 question:
@@ -47,8 +51,8 @@ question:
 
 ## What makes the paragraph strong?
 
-It names the origin week's shipments and says what that did to naive. It says which rules never
-looked at the origin, and so barely moved. It says how far ahead of its own forecast the vendor's
+It names the origin week's shipments and says what that did to naive. It names the rules that never
+use the origin week, the copies of last year, and says why their scores moved least. It says how far ahead of its own forecast the vendor's
 four weeks sit. It ends on one call the regional operations head can repeat, with the length of test
 the plan needs.
 

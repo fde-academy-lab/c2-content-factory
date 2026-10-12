@@ -7,7 +7,9 @@ October 2025 (the week of 20 October). Illustrative case: the company is real, t
 data are synthetic, built for this class.
 
 The trainer builds this set with the room. The first item is fully worked, the second half worked,
-and the third is yours.
+and the third is yours. Each item carries its level, from L1 for a count by hand to L6 for an
+interview question, and where such items are asked: a screen is an interview round, and a GCC, a
+global capability centre, is a multinational company's own technology centre in India.
 
 **Who needs the answer.** The FC planner, who may send only a rule that has been scored on weeks it
 never saw. A rule judged on how it sounds books packers for the wrong weeks.
@@ -33,7 +35,7 @@ These are twelve of the centre's 104 weeks, shipments in each week beginning on 
 | 4 Nov 2024 | 180,600 | 27 Oct 2025 | 188,600 |
 | 11 Nov 2024 | 212,700 | 3 Nov 2025 | 227,900 |
 
-**What you post.** Three letters in item order, with no spaces, in this shape:
+**What you post,** in this set's thread in the cohort channel: three letters in item order, with no spaces, in this shape:
 
 ```
 Post exactly this shape: xxx
@@ -57,10 +59,12 @@ b) 6 October 2025, 418,200 shipments
 c) 14 October 2024, 401,000 shipments
 d) 14 October 2024, 417,040 shipments
 
-### Q2. Hide the weeks of 13, 20 and 27 October 2025: what MAE does the rule score on them?
+### Q2. Stand in the week of 6 October 2025 and hide the next three weeks: what MAE does the rule score on them?
 
-*Level L2 · asked in every analytics screen.* Half worked: the rule's copies are 401,000, 356,200 and
-296,900, and what shipped was 369,000, 308,900 and 188,600. The first miss is 32,000 too high. Work
+*Level L2 · asked in every analytics screen.* The hidden weeks are 13, 20 and 27 October 2025. The
+copy needs nothing after 6 October, so hiding them only stops you peeking at what they shipped. Half
+worked: the rule's copies are 401,000, 356,200 and 296,900, and what shipped was 369,000, 308,900 and
+188,600. The first miss is 32,000 too high. Work
 the other two misses, drop the signs, and average the three. Which MAE is right?
 
 a) 15,633

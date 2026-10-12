@@ -2,7 +2,8 @@
 
 Flipkart, the Lucknow fulfilment centre. The planner must book packer shifts for the eight weeks
 beginning 12 October to 30 November 2026. Diwali falls on Sunday 8 November 2026, so its week begins
-2 November. Illustrative case: the company is real, the situation and the data are synthetic, built
+2 November. The festive sale runs in the third and second weeks before Diwali's week, and the peak
+comes with it. Illustrative case: the company is real, the situation and the data are synthetic, built
 for this class.
 
 What the morning found:
@@ -14,7 +15,8 @@ What the morning found:
 | Vendor's curve | 16,400 | 5 October | 22.0 percent above | 6.1 percent above |
 | Festival-aligned, plus 4 percent | 6,615 | 19 October | 19.5 percent above | 4.0 percent above |
 
-A packer packs about 120 shipments a shift. A late shipment costs Rs 25 and an idle shift Rs 650,
+The plan covers 12 October to 30 November, so a forecast whose busiest week is 5 October books its
+rush before the first week staffed. A packer packs about 120 shipments a shift. A late shipment costs Rs 25 and an idle shift Rs 650,
 Rs 5.42 a shipment, so the plan covers demand in 0.82 of weeks: festival-aligned raised by 2.6
 percent. Festival-aligned forecasts 434,928 shipments for the week of 19 October 2026.
 
@@ -28,7 +30,7 @@ late parcels in the busiest weeks.
 - Which change would move the plan's peak?
 - What does the note say, line by line?
 
-**What you post.** Three letters in item order, with no spaces, in this shape, then the note:
+**What you post,** in this set's thread in the cohort channel: three letters in item order, with no spaces, in this shape, then the note:
 
 ```
 Post exactly this shape: xxx

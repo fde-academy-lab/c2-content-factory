@@ -5,8 +5,8 @@ Answers: 1c 2b 3c
 The guided set built the house bot's rule on twelve real weeks and hid three of them. The rule
 copied 14 October 2024 (401,000) into 13 October 2025, then scored an MAE of 62,533 on the three
 hidden weeks, every miss too high, because Diwali's week came one week earlier in the 2025 calendar
-(20 October against 28 October 2024) and each calendar copy carried a week that sat closer to the
-2024 festival.
+(20 October against 28 October 2024), so each week's copy came from a week one step nearer the
+2024 festival, when shipments ran higher.
 
 **Who needs the answer.** You, to check your three letters after the guided build. The planner
 books shifts from whichever rule wins, so the scoring has to be right before any code runs.

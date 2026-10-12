@@ -17,7 +17,7 @@ something on a whiteboard.
 - In which order do the lines of the house bot's code run?
 - What share of weeks should a plan cover, given two costs?
 
-**What you post.** Six letters in problem order, with no spaces, in this shape:
+**What you post,** in this set's thread in the cohort channel: six letters in problem order, with no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxxx
@@ -46,11 +46,11 @@ b) X a trend, Y a season, Z noise
 c) X a trend, Y noise, Z a season
 d) X noise, Y a season, Z a trend
 
-### Q2. A gift shop's festival moved a week later this year: what do naive, the same week last year and festival-aligned forecast for this year's week 5?
+### Q2. A gift shop's festival moved a week later this year: what does festival-aligned forecast for this year's week 5?
 
 *Level L1 · asked in retail analytics screens.* Last year's six weeks, festival in week 3: 40, 55, 70,
-50, 35, 41. This year's first four weeks, festival in week 4: 42, 44, 58, 73. Treat this year as level
-with last year. Which value is festival-aligned's?
+50, 35, 41. This year's first four weeks, festival in week 4: 42, 44, 58, 73. Treat this year as the
+same size as last year. Which value is festival-aligned's?
 
 a) 73, this year's festival week, the week before
 b) 35, the same calendar week of last year

@@ -28,7 +28,7 @@ beat the bot by enough to change a decision, and a price on each direction chang
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
 | Q1, the leaky naive | a | shift(1) hands each hidden week the actual of the week before it, so weeks 2 to 13 use data from after 22 June | b describes the house bot, not naive; c changes the measure, not the leak; d is untrue: loc[hold.index] keeps 29 June to 21 September |
-| Q2, three models | c | A beats the bot by 3 percent on thirteen weeks, too little to pay a contract for; B's 6,000 is a fit, so it needs rescoring on hidden weeks; C beats the bot on hidden weeks and its misses lean neither way (7 of 13 high) | a counts a fit as a score; b adopts a fit and rejects an honest score; d pays a contract for 3 percent and rejects the one honest winner |
+| Q2, three models | c | A beats the bot by 331 shipments a week, 2.8 packer-shifts, too little to pay a contract for; B's 6,000 is a fit, so it needs rescoring on hidden weeks; C beats the bot on hidden weeks and errs neither way (7 of 13 high), but none of those weeks is festive, so it has earned the ordinary weeks only | a counts a fit as a score; b adopts a fit and rejects an honest score; d pays a contract for 3 percent and rejects the one honest winner |
 | Q3, priced misses | b | Being short costs 4.6 times being long, so a plan should lean high by an amount the two costs set: the 0.82 share, a cushion of 2.6 percent | a takes an unsized lean that grows with the weeks ahead and copies the wrong festive weeks; c blends a calendar copy into the plan; d throws away the one fact that separates the directions |
 
 ## Which item is worth arguing about?

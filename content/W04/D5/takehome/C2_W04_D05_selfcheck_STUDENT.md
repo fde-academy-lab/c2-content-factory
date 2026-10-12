@@ -47,12 +47,16 @@ shipped 238,400, 233,700, 230,300 and 232,200, an average of 233,650.
 
 | Rule | MAE, four weeks | Weeks too high | Misses priced | MAE, thirteen weeks |
 |---|---|---|---|---|
-| Finance's rule | 8,104 | 3 of 4 | Rs 4.1 lakh | 6,615 |
-| Festival-aligned | 8,104 | 3 of 4 | Rs 4.1 lakh | 6,615 |
-| House bot | 8,500 | 1 of 4 | Rs 7.9 lakh | 9,831 |
-| Vendor's curve | 27,000 | 4 of 4 | Rs 5.8 lakh | 16,400 |
-| Naive | 37,050 | 0 of 4 | Rs 37.0 lakh | 14,923 |
-| Drift | 37,439 | 0 of 4 | Rs 37.4 lakh | 14,842 |
+| Finance's rule | 8,104 | 3 of 4 | Rs 4.10 lakh | 6,615 |
+| Festival-aligned | 8,104 | 3 of 4 | Rs 4.10 lakh | 6,615 |
+| House bot | 8,500 | 1 of 4 | Rs 7.89 lakh | 9,831 |
+| Vendor's curve | 27,000 | 4 of 4 | Rs 5.85 lakh | 16,400 |
+| Naive | 37,050 | 0 of 4 | Rs 37.05 lakh | 14,923 |
+| Drift | 37,439 | 0 of 4 | Rs 37.44 lakh | 14,842 |
+
+The costs are printed to two places; your notebook rounds to one, so Rs 5.85 lakh may print as 5.8
+and Rs 37.05 lakh as 37.0. The one check that prints FAIL is the price claim from the thirteen-week
+test: here the vendor's Rs 5.85 lakh is more than festival-aligned's Rs 4.10 lakh.
 
 Finance's rule and festival-aligned print the same numbers because these four weeks sit more than
 five weeks before Diwali's week, where festival-aligned copies the calendar week a year back plus 4
@@ -63,15 +67,17 @@ percent, as finance does.
 - **Naive and drift more than doubled.** The week of 24 August shipped 196,600, a dip that sat 37,050
   below the four hidden weeks' average, and both rules start from it. The thirteen-week test started
   from 218,300, close to its hidden weeks' average of 217,746, which is luck in the other direction.
-- **The bot, finance's rule and festival-aligned barely moved.** They copy 2025's weeks and never look
-  at the origin, so only the four weeks being scored changed.
+- **The copies of last year moved least.** The house bot, finance's rule and festival-aligned copy
+  2025's weeks and never use the origin, so their forecasts did not change at all; only the weeks
+  being scored did, which moved their scores by a few thousand while naive's more than doubled.
 - **The vendor's gap grew.** Its four rows are its forecast for 10 to 13 weeks after 22 June, the
   farthest it looked ahead, and its misses grow with distance: 148 percent above festival-aligned's
   MAE on thirteen weeks, 233 percent on these four. A fair four-week test would need the vendor to
   forecast again from 24 August, which its file cannot do.
 - **Priced, the vendor beats the bot.** Its MAE is about three times the bot's, yet its misses cost
-  Rs 5.8 lakh against Rs 7.9 lakh, because every vendor miss is too high, where a shipment costs Rs
-  5.42, and the bot's big misses are too low, where a shipment costs Rs 25.
+  Rs 5.85 lakh against Rs 7.89 lakh, because every vendor miss is too high, where a shipment costs Rs
+  5.42, and the bot's big misses are too low, where a shipment costs Rs 25. On four weeks the vendor
+  no longer undercuts festival-aligned, whose misses here are small.
 
 The pick does not change: festival-aligned still ties finance's rule for the lowest MAE, and neither
 test holds a festive week, so the festival placement still rests on the 2025 back-test.

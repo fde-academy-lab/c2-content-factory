@@ -16,7 +16,7 @@ is booked: a score read wrongly sends the wrong forecast to the plan.
 - Which of three models earns a place over the house bot?
 - What do priced misses say the plan should do?
 
-**What you post.** Three letters in item order, with no spaces, in this shape:
+**What you post,** in this set's thread in the cohort channel: three letters in item order, with no spaces, in this shape:
 
 ```
 Post exactly this shape: xxx
@@ -38,16 +38,18 @@ naive = y.shift(1).loc[hold.index]           # each hidden week's week before
 print((naive - hold).abs().mean())           # 13,654
 ```
 
-Which line names the defect?
+`shift(1)` slides the series down one row, so each week's row holds the week before's value. Which
+line names the defect?
 
 a) It feeds each hidden week the week before's actual, unknown on 22 June
 b) shift(1) should be shift(52), since naive copies the same week last year
-c) The MAE should square each miss before averaging, as RMSE does
+c) The score should square each miss first, as RMSE, the root mean squared error, does
 d) loc[hold.index] starts the hidden weeks one week late, on 6 July
 
 ## Which model earns a place over the house bot?
 
-A model earns its place only on weeks it never saw, and only by enough to change a decision.
+A model earns its place only on weeks it never saw, and only by enough to change a decision: enough
+shipments a week to change the packer-shifts booked, at about 120 shipments a shift.
 
 ### Q2. Three teams bring a model each against the house bot's 9,831: which line gives the right call on all three?
 
@@ -57,7 +59,7 @@ A model earns its place only on weeks it never saw, and only by enough to change
 |---|---|---|---|
 | A | 9,500 | the thirteen hidden weeks | a vendor contract to run it |
 | B | 6,000 | the 91 weeks it was fitted to | |
-| C | 6,200 | the thirteen hidden weeks | 7 of 13 weeks too high |
+| C | 6,200 | the thirteen hidden weeks, none of them festive | 7 of 13 weeks too high |
 
 Which line is right?
 
