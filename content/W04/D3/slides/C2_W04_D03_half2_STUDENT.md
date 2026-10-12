@@ -22,11 +22,13 @@ the Kahoot. The IITGN faculty session (tentative) takes the next 120. Transition
 *What does each group hand in?*
 
 ```cards
-icon: list-ordered | eyebrow: Step 1 | title: Rank three pairs | body: From the pairs table: support at least 1 percent, lift well above one, each with its two numbers. | tone: light
+icon: list-ordered | eyebrow: Step 1 | title: Rank three pairs | body: From the pairs table: support at least 1 percent and lift 1.5 or more, each with its two numbers. | tone: light
 icon: indian-rupee | eyebrow: Step 2 | title: Price the strip | body: A slot a day and the month recovered, each assumption with its range. | tone: light
 icon: triangle-alert | eyebrow: Step 3 | title: Name two doubts | body: Each with the check and the number it gave. | tone: light
 icon: message-square | eyebrow: Step 4 | title: Answer the category manager | body: Two sentences: the number first, then what you concede. | tone: dark
 ```
+
+The one-page strip is what each group hands in. The strip set in `exercises/unguided` asks the same steps as five items; a group posts its five letters once its page is done.
 
 ```notes
 LIVE, 4 minutes to brief, then 25 minutes of group work. The TA moves between tables. A group that
@@ -54,7 +56,7 @@ flowchart LR
 A strip that names a pair without its support, or a rupee figure without its ranges, is sent back.
 
 ```notes
-LIVE, 1 minute. The template sits in exercises/unguided; the worked answer is released at the
+LIVE, 1 minute. The four fields on this slide are the template; the strip set's solutions file is released at the
 close. Transition: the objection each group must answer.
 ```
 
@@ -64,7 +66,7 @@ close. Transition: the objection each group must answer.
 *Which part of the category manager's objection is right, and what answers the rest?*
 
 ```cards
-icon: ear | eyebrow: Restate | title: Milk anchors the cart | body: It is in 71 percent of carts and brings shoppers back daily. | tone: light
+icon: ear | eyebrow: Restate | title: Milk is in most carts | body: It is in 71 percent of carts and brings shoppers back daily. | tone: light
 icon: chart-column | eyebrow: Answer | title: The slot moves nothing | body: Milk slots click at 1.2 percent against 6.4; lift with every common item sits near one. | tone: light
 icon: handshake | eyebrow: Concede | title: Milk belongs in the cart | body: Which is why it needs no reminder; keep it on the home screen and in search. | tone: light
 icon: refresh-cw | eyebrow: What would change it | title: If milk clicked like the rest | body: A two-zone test where milk slots matched 6.4 percent would put milk back. | tone: dark
@@ -79,7 +81,7 @@ their answers aloud; the room names the move each sentence makes. Transition: th
 ---
 
 ## SECTION 4: Which measure can popularity not fool?
-*How does a strong candidate answer the day's question as Uber, Swiggy, Google or an AI startup would ask it?*
+*How does a strong candidate answer the day's question in a product-analytics interview?*
 
 ```notes
 LIVE, 10 minutes for the section. Level L6. The full transcript is read in pairs from the extras
@@ -88,13 +90,13 @@ folder, and each pair scores the other on its seven criteria. Transition: the qu
 
 ---
 
-## S41. Lift is the count popularity cannot fool
+## S41. Lift divides popularity out; confidence does not
 *"Support, confidence, lift: which one cannot be fooled by popularity, and why?"*
 
 ```cards
-icon: x | eyebrow: Weak answer | title: Confidence | body: "Confidence is the probability they go together, so the highest confidence pair goes in the strip." It ranks milk first. | tone: light
+icon: x | eyebrow: Weak answer | title: Confidence | body: "Confidence, because it is the probability of B given A, so the highest-confidence pair goes in the strip." It ranks milk first. | tone: light
 icon: check | eyebrow: Hire-grade answer | title: Lift, because it divides by the base rate | body: "Bread to milk reads confidence 0.74, but milk is in 71 percent of carts anyway, so lift is 1.04. Chips and cold drink read 0.42 and lift 3.39. I rank by lift above a support floor." | tone: dark
-icon: ear | eyebrow: What the interviewer listens for | title: The base rate named | body: Three questions kept apart, the denominator said aloud, a floor, a decision. | tone: light
+icon: ear | eyebrow: What the interviewer listens for | title: The base rate and its window | body: Three questions kept apart, the denominator and window said aloud, a floor, a decision. | tone: light
 ```
 
 ```notes
@@ -110,9 +112,9 @@ it. Transition: the follow-ups.
 
 | Follow-up | The hire-grade line |
 |---|---|
-| A pair has lift 4.6 and support 0.25 percent: act? | Not yet: 100 carts cannot repay a slot shown to everyone; it goes on a watch list and a two-zone test |
-| Heavy buyers buy everything: what does that do to lift? | It inflates the pair counts of whatever they buy together; count each customer once and the party pair falls from 3.39 to 2.56 |
-| Make it a rupee recommendation: what cost line do most forget? | The margin handed back by any bundle discount, and the adds that would have happened anyway; sales are never the gain |
+| A pair has lift 4.6 and support 0.25 percent: act? | The pair is real, 100 carts against 22 by chance, but it shows only beside ice cream, 1,600 carts in four weeks, so it is worth little in rupees; it goes on the watch list and a test on ice-cream carts |
+| Heavy buyers buy everything: what does that do to lift? | They repeat the party pair, so count each customer once and 3.39 falls to 2.56; bigger baskets hold any pair by chance, so size the expected count by cart; rank on 2.56 |
+| Make it a rupee recommendation: what cost line do most forget? | Incrementality: some adds come through search or habit anyway, so the Rs 6.3 lakh a month (Rs 3.9 lakh to Rs 9.3 lakh) is a ceiling a holdout measures; sales are never the gain |
 
 ```notes
 LIVE, 3 minutes. Each follow-up is one of the morning's traps asked as a question. Transition: the
@@ -126,20 +128,22 @@ same idea at an AI company.
 
 ```mermaid
 flowchart LR
-    A["<b>The assistant suggests milk</b><br/>shoppers accept it often<br/>because milk is popular"] --> B["<b>Offline</b><br/>held-out carts: lift of its<br/>suggestions over a popularity baseline"]
-    B --> C["<b>Online</b><br/>a holdout: assistant on half the carts,<br/>the baseline on the other half"]
-    C --> D["<b>The number</b><br/>incremental adds per cart,<br/>times margin, less the cost"]
+    A["<b>The assistant suggests milk</b><br/>shoppers accept it often<br/>because milk is popular"] --> B["<b>Offline, a gate</b><br/>carts after a cutoff date:<br/>beat a popularity list<br/>and the current strip"]
+    B --> C["<b>Online, the decision</b><br/>customers randomised to<br/>no suggestions, the strip<br/>or the assistant"]
+    C --> D["<b>The number</b><br/>incremental margin<br/>per customer, less<br/>serving cost"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class A,B,C known
     class D lit
 ```
 
-An assistant that suggests milk is "accepted" often because milk is popular. Score it offline by the lift of its accepted suggestions over a baseline that always suggests the most popular items, on carts it never saw; then confirm online with a holdout, counting only the adds the assistant caused.
+Acceptance flatters an assistant as confidence flattered milk. Offline is a gate: on held-out carts placed after a cutoff date, which it never saw while it was built, hide one item in each and check that it recovers the item more often than a popularity list and the current strip, leaving out each shopper's weekly staples. Online decides: customers, never carts, randomised to three arms for a length fixed in advance, scored on incremental adds, the ones that would not have happened without it, as margin per customer less serving cost.
 
 ```notes
-LIVE, 3 minutes. Programme-written variant; it names no company figure. The base-rate trap is the
-same one the strip fell into, now inside a model's evaluation. Transition: the handoff.
+LIVE, 3 minutes. Programme-written variant. The base-rate trap is the same one the strip fell
+into, now inside a model's evaluation. Amazon's Prime Video team saw why the cutoff date matters
+(Amazon Science, checked 12 October 2026): its first autoencoder trailed a popularity ranking of
+recent rentals until it was trained on viewing sorted by time. Transition: the handoff.
 ```
 
 ---
@@ -159,7 +163,7 @@ line.
 
 > You counted lift on twelve carts and on forty thousand. The next 120 minutes show the same three numbers as probabilities: a lift near one is independence made visible, which is what milk showed you, and the support floor you set is what lets an algorithm skip counting every combination.
 
-The IITGN faculty session is tentative until IIT Gandhinagar confirms it.
+Independent means that knowing one item is in the cart tells you nothing about the other, and a rule is a sentence such as "bread, so milk". The IITGN faculty session is tentative until IIT Gandhinagar confirms it.
 
 ```notes
 LIVE, 1 minute. Read the line as it stands. Park any question about how long a watch-list trial
@@ -168,7 +172,7 @@ must run for the faculty session (tentative). Transition: the Kahoot.
 
 ---
 
-## S45. Eight questions, twenty seconds each
+## S45. Eight quick questions, one with a minute to compute
 *Can the room make the day's calls at speed?*
 
 ```timeline
@@ -196,8 +200,8 @@ any item most of the room misses. Transition: the close.
 flowchart LR
     M["<b>Mon</b><br/>pay for trips"] --> T["<b>Tue</b><br/>one slide"]
     T --> W["<b>Wed</b><br/>lift: beyond chance"]
-    W --> H["<b>Thu</b><br/>beyond the blend?"]
-    H --> F["<b>Fri</b><br/>beyond the baseline?"]
+    W --> H["<b>Thu</b><br/>groups behind<br/>one number?"]
+    H --> F["<b>Fri</b><br/>a forecast against<br/>a simple rule?"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3

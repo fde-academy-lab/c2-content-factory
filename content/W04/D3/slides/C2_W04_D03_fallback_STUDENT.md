@@ -40,10 +40,10 @@ Transition: the four decisions.
 *Where, for how long, against what, and what stops it?*
 
 ```cards
-icon: map-pin | eyebrow: Where | title: Two zones alike | body: Two zones with similar carts and similar ice cream sales, one shown the pair and one left as it is. | tone: light
+icon: map-pin | eyebrow: Where | title: Two zones, shoppers split | body: In two zones, a random half of shoppers see the pair beside ice cream and the other half do not. | tone: light
 icon: calendar | eyebrow: How long | title: Fixed before it starts | body: The length is chosen before the first day and never stretched to chase a result. | tone: light
-icon: target | eyebrow: Against what | title: The slot's own record | body: The pair must beat the click-through that slot drew in the same zones before the trial. | tone: light
-icon: octagon-x | eyebrow: What stops it | title: A shock in either zone | body: A stock-out or a campaign in either zone voids the window and the trial restarts. | tone: dark
+icon: target | eyebrow: Against what | title: The shoppers who do not see it | body: The pair's slot must beat the same slot for the other half, over the same weeks. | tone: light
+icon: octagon-x | eyebrow: What stops it | title: A shock to one half | body: A stock-out or a campaign that reaches one half and not the other voids the window. | tone: dark
 ```
 
 ```notes
@@ -85,7 +85,7 @@ Transition: the pass rule.
 
 ```mermaid
 flowchart LR
-    T["<b>Trial zones</b><br/>the pair's slot<br/>click-through"] --> G["<b>Beats the slot's</b><br/>own record by a<br/>margin fixed in advance"]
+    T["<b>Shoppers shown it</b><br/>the pair's slot<br/>click-through"] --> G["<b>Beats the half</b><br/>not shown it, by a<br/>gap fixed in advance"]
     R["<b>Rupees</b><br/>adds x margin,<br/>less any discount"] --> G
     G --> P["<b>Promote</b><br/>city-wide"]
     G --> W["<b>Stays on the watch list</b><br/>if either fails"]
@@ -97,7 +97,7 @@ flowchart LR
     class W bad
 ```
 
-The pair is promoted when its slot beats the slot's own record by a margin set before the trial and its adds repay the slot in margin, after any bundle discount. If either fails, it stays on the watch list, which is what a watch list is for.
+The pair is promoted when its slot beats the same slot for the shoppers not shown it, by a gap set before the trial, and its adds earn the slot's margin back, after any bundle discount. If either fails, it stays on the watch list, which is what a watch list is for.
 
 ```notes
 LIVE, 15 minutes. Groups present their pass rule in two sentences. The weak rule names only the
@@ -208,7 +208,7 @@ with cold drink?" Transition: the answer.
 ```timeline
 label: A pair rule, today | title: Chips with cold drink | body: Found together in about 5 percent of carts, week after week.
 label: An event, Friday | title: Pop-Tarts before a storm | body: Sales jump around a known future event, which a forecast with the event in it captures.
-label: Friday's method | title: Line up the event | body: Compare each week with the same distance from the event, never the same calendar week.
+label: Friday's method | title: Line up the event | body: Diwali fell on 31 October 2024 and 20 October 2025, so the week before Diwali is compared with the week before Diwali, never the same calendar week.
 label: What stays | title: Two events are two points | body: A pattern seen twice is thin ground, as a pair on 100 carts is.
 ```
 
@@ -247,10 +247,10 @@ Transition: the four moves.
 *How does the growth lead answer without dismissing the manager?*
 
 ```cards
-icon: ear | eyebrow: Restate | title: Habits may have shifted | body: The monsoon ended inside the window, so a change in habits is possible. | tone: light
-icon: chart-column | eyebrow: Answer | title: The fall sits in milk's slots | body: Milk slots clicked 1.2 percent; every other slot 6.4, up from 6.2 before the change. | tone: light
-icon: handshake | eyebrow: Concede | title: Position matters | body: Slot 1 draws 8.2 percent against 5.4 for slot 3, so a layout is worth testing on its own. | tone: light
-icon: refresh-cw | eyebrow: What would change it | title: If other slots fell too | body: Had the non-milk slots fallen with milk's, the habits story would lead. | tone: dark
+icon: ear | eyebrow: Restate | title: Habits may have shifted | body: You think shoppers changed when the monsoon ended, and a new layout would win the clicks back. | tone: light
+icon: chart-column | eyebrow: Answer | title: No rate fell; the mix moved | body: Milk went from 2 to 50 percent of impressions, clicking 1.2 percent in both windows; the rest rose in every slot. | tone: light
+icon: handshake | eyebrow: Concede | title: Position matters | body: Among suggestions other than milk, slot 1 draws 8.2 percent against 5.4 for slot 3; a test that shuffles the order separates position from the strongest suggestion. | tone: light
+icon: refresh-cw | eyebrow: What would change it | title: If the rest had fallen too | body: Had the suggestions other than milk fallen with the blend, the habits story would lead. | tone: dark
 ```
 
 ```notes
@@ -265,10 +265,10 @@ chart to hand the manager.
 
 ![Click-through by slot position: before the change, milk after, everything else after](../whiteboards/C2_W04_D03_ctr_by_slot_STUDENT.png)
 
-In every slot, suggestions other than milk clicked as well after the change as before; milk clicked low in all three. Shoppers who had changed their habits would have stopped clicking everything. A new layout is worth a test of its own; it is not what fell.
+In every slot, suggestions other than milk clicked better after the change than before, 8.2 against 7.5 percent in slot 1; milk clicked 1.2 percent before and after, and only its share of impressions grew, from 2 to 50 percent. A new layout earns a test of its own, run beside the ranking as a two-by-two with customers randomised.
 
 ```notes
-LIVE, 7 minutes. The sentence to carry: "a redesign is worth testing; the ranking is what fell".
+LIVE, 7 minutes. The sentence to carry: "no rate fell; the mix moved, and a layout gets its own test".
 Transition: the close.
 ```
 

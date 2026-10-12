@@ -11,14 +11,15 @@ Header: WEEK 4  ·  WEDNESDAY  ·  SWIGGY INSTAMART, PUNE  ·  ILLUSTRATIVE CASE
 
 | On the ticket | What it says |
 |---|---|
-| Company, city, surface | Swiggy Instamart, Pune: the cart page's strip of three suggested items |
+| Company, city, part of the app | Swiggy Instamart, Pune: the cart page's strip of three suggested items, each in a slot |
 | The change | Monday 7 September 2026: a curated list became the items most often found in the same cart; toned milk is in 71 percent of carts, so it now sits beside nearly everything |
-| The metric | Strip click-through (clicks over impressions): 6.1 percent from 17 August to 6 September, 3.8 percent from 7 to 27 September |
-| The data | `carts` (cart_id, customer_id, placed_date, zone, time_band, cart_value_rs): 40,000 carts, 1 to 28 September, eight zones; `cart_items` (cart_id, item, quantity, price_rs, margin_rs); `strip_log` (date, slot, anchor_item, suggested_item, impressions, clicks, adds) |
+| The metric | Strip click-through, clicks over impressions (an impression is one showing of one slot): 6.1 percent from 17 August to 6 September, 3.8 percent from 7 to 27 September |
+| The data | `carts` (cart_id, customer_id, placed_date, zone, time_band, cart_value_rs): a sample of 40,000 carts, every September cart of 12,000 customers in eight zones; `cart_items` (cart_id, item, quantity, price_rs, margin_rs); `strip_log` (date, slot, anchor_item, the cart item a suggestion sits beside, suggested_item, impressions, clicks, adds, the suggestions put in the cart) |
 | The ask, due Friday | Rank the pairs the strip should show, explain the fall, put a rupee value on a slot |
-| Caveats | Curd ran out in two zones in week three; the top tenth of customers place 38 percent of carts; the strip causes some of the co-occurrence it counts; a cart is one order, a customer places many |
+| Who asks | The growth lead, who owns the strip's clicks and orders, and the category manager, who decides which products are promoted; Friday's review is the weekly meeting where both defend their numbers |
+| Caveats | Curd ran out in two zones in week three; the top tenth of customers place 38 percent of carts; the strip causes some of the pairs it counts, since a milk add from the strip puts bread and milk in one cart; a cart is one order, a customer places many |
 
-Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
+This page is the ticket, the work request the analyst is handed. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
 ```notes
 LIVE, 6 minutes, on screen as the room sits down. Read the table top to bottom, then the label line:
@@ -36,7 +37,7 @@ without judging them. Transition: where today sits in the week.
 
 ```mermaid
 flowchart LR
-    C["<b>One number,</b><br/>five tickets"]
+    C["<b>One question,</b><br/>five tickets:<br/>compared with what?"]
     M["<b>Mon · Uber, Hyderabad</b><br/>trips an online hour<br/>1.9 to 1.6: pay for trips"]
     T["<b>Tue · the same city</b><br/>Rs 314 to Rs 260<br/>an hour, on one slide"]
     W["<b>Wed · Instamart, Pune</b><br/>what goes with what,<br/>beyond chance?"]
@@ -75,7 +76,7 @@ Transition: where today ends.
 *What will the growth lead carry out of the room?*
 
 ```cards
-icon: list-checks | eyebrow: Promote | title: Three pairs above a 1 percent floor | body: Chips and cold drink 3.39, coriander and green chillies 3.00, bread and butter 2.21. Milk takes no slot. | tone: light
+icon: list-checks | eyebrow: Promote | title: Three pairs above a floor | body: Lift 3.39 for chips and cold drink, 3.00 for coriander and green chillies, 2.21 for bread and butter, each in at least 1 percent of carts, the floor. Milk takes no slot. | tone: light
 icon: eye | eyebrow: Watch | title: One strong, thin pair | body: Ice cream and chocolate sauce: lift 4.60 on 100 carts, tested before it is promoted. | tone: light
 icon: indian-rupee | eyebrow: Price | title: A slot, in rupees | body: Rs 17,280 a day with a pair that beats chance, Rs 3,240 with milk; re-ranking recovers Rs 6.3 lakh a month. | tone: dark
 ```
@@ -89,7 +90,7 @@ lunch. Transition: chapter 1, counting by hand.
 ---
 
 ## SECTION 1: What does together mean?
-*Which items go together on twelve real carts, counted three ways by hand before any code opens?*
+*Which items go together on twelve carts from the case, counted three ways by hand before any code opens?*
 
 ```notes
 LIVE, 1 minute. Chapter 1 of 3, level L1. Receipts on the table: the tea stall first, then the
@@ -141,14 +142,15 @@ Transition: the dots.
 
 ![The ten invented tea-stall orders as dots in two circles, beside the 2 by 2 table of counts](../whiteboards/C2_W04_D03_ten_dots_STUDENT.png)
 
-If chai and biscuit ignored each other, 60 percent of the 4 biscuit orders, 2.4 orders, would hold chai. Three do. Lift is 3 / 2.4 = 1.25, and from biscuit's side it is 0.75 / 0.60, the same 1.25. The pair turns up a quarter more often than chance would put it there; ten receipts cannot say why.
+If chai and biscuit ignored each other, 60 percent of the 4 biscuit orders, 2.4 orders, would hold chai. Three do, so lift is 3 / 2.4 = 1.25. Lift is also a confidence over the partner's own share, so it reads the same from both sides: chai to biscuit 0.50 / 0.40 = 1.25, and biscuit to chai 0.75 / 0.60 = 1.25. The pair turns up a quarter more often than chance would put it there; ten receipts cannot say why.
 
 ```notes
 LIVE, 7 minutes. Count each cell of the 2 by 2 aloud from the dots (StatQuest). Support: the
 shaded cell over all ten. Confidence: shrink the world to the chai row, 3 of 6. Expected: the
 chai share times the biscuit share times ten, 0.6 x 0.4 x 10. Lift: seen over expected. Then the
 reverse direction. Ask: "what would make the 1.25 a cause?" Only a test that changes chai and
-watches biscuit, which Monday's faculty session on A/B testing (tentative) took up. Transition: a carry bag.
+watches biscuit, the subject of this week's Monday faculty session (tentative) on A/B testing.
+Transition: a carry bag.
 ```
 
 ---
@@ -158,7 +160,7 @@ watches biscuit, which Monday's faculty session on A/B testing (tentative) took 
 
 ![Confidence from biscuit to carry bag beside the bag's share of all orders, invented counts](../whiteboards/C2_W04_D03_carry_bag_STUDENT.png)
 
-Add a carry bag, invented, in 9 of the 10 orders and in 3 of the 4 biscuit orders. Confidence from biscuit to bag is 0.75, which sounds like a bundle. The bag is in 0.90 of all orders, so lift is 0.75 / 0.90 = 0.83: biscuit orders hold a bag a little less often than orders in general. The item in every bag earns high confidence toward everything.
+Add a carry bag, invented, in 9 of the 10 orders and in 3 of the 4 biscuit orders. Confidence from biscuit to bag is 0.75, which sounds like a bundle. The bag is in 0.90 of all orders, so lift, the confidence over the bag's own share, is 0.75 / 0.90 = 0.83: biscuit orders hold a bag a little less often than orders in general. The item in every bag earns high confidence toward everything.
 
 ```notes
 LIVE, 6 minutes. This is the day's trap in miniature, on numbers small enough to hold in the head.
@@ -168,7 +170,7 @@ listen for: because it is in nearly every order. Transition: twelve real carts.
 
 ---
 
-## S8. Twelve real carts: milk in 8, bread in 4
+## S8. Twelve carts from the 40,000: milk in 8, bread in 4
 *What do twelve of the 40,000 carts hold, card by card?*
 
 | Cart | Items held |
@@ -242,7 +244,7 @@ Transition: what confidence threw away.
 
 ![The twelve carts, then only the four bread carts, then the four that also hold milk](../whiteboards/C2_W04_D03_shrink_still_last_STUDENT.png)
 
-The plausible wrong answer: "confidence 1.00, so show milk beside bread." Confidence looked only inside the four bread carts. The check: milk is in 8 of 12 carts anyway. The fix: read lift, 1.50, on too few carts to trust.
+The plausible wrong answer: "confidence 1.00, so show milk beside bread." Confidence looked only inside the four bread carts. The check: milk is in 8 of 12 carts anyway. The fix: read lift instead, 1.50, though twelve carts are too few to trust it.
 
 ```notes
 LIVE, 6 minutes. The GIF beside this still dims the carts in two steps (whiteboards folder). Say
@@ -276,7 +278,7 @@ counted.
 
 ```mermaid
 flowchart LR
-    subgraph A["Anchor"]
+    subgraph A["The example"]
         A1["<b>a tea stall</b><br/>chai in 6, biscuit in 4,<br/>both in 3 of 10"]
     end
     subgraph Q["Questions"]
@@ -300,7 +302,7 @@ flowchart LR
     class P1,P2 trap
 ```
 
-The concept board "Which pairs beat chance?", finished. Lift joins the week's map as "beyond chance": Thursday asks the same of a cohort against the blend, Friday of a forecast against the baseline. Twelve carts cannot say whether 1.50 is a real pull or four lucky carts.
+The concept board "Which pairs beat chance?", finished. Lift joins the week's map as "beyond chance": Thursday asks the same of one group of members against the city's single number, and Friday of a forecast against a simple rule. Twelve carts cannot say whether 1.50 is a real pull or four lucky carts.
 
 ```notes
 LIVE, 5 minutes. The board was built region by region on the whiteboard through the chapter: the
@@ -391,7 +393,7 @@ single = Counter(x for b in baskets for x in b)              # carts holding eac
 lift = pair_count[("bread", "toned milk")] * n / (single["bread"] * single["toned milk"])
 ```
 
-A cart becomes a set of items; every pair inside it adds one to its tally; lift is carts with both, times all carts, over the two items' own counts. The same three counts as the cards, with `n` = 40,000.
+A cart becomes a set of items, and every pair inside it adds one to its tally. The last line is the cards' seen over expected, rearranged: on the twelve carts, 4 / (12 x 4/12 x 8/12) is the same as 4 x 12 / (4 x 8), which is 1.50. Here `n` is 40,000.
 
 ```notes
 LIVE, 5 minutes. Code along in notebook 02 (Krish Naik): say what each line is for before running
@@ -406,7 +408,7 @@ sorted?" is a common follow-up. Transition: bread and milk on every cart.
 
 ![Bread's share times milk's share as the overlap chance would give, beside the overlap seen in 40,000 carts](../whiteboards/C2_W04_D03_areas_STUDENT.png)
 
-On twelve carts lift read 1.50 because all four bread carts happened to hold milk. On 40,000 carts bread to milk reads confidence 0.74 and lift 1.04: milk sits beside bread about as often as it sits in any cart. Chance gives 0.34 x 0.71 = 0.241 of carts holding both; 0.252 do.
+On twelve carts lift read 1.50 because all four bread carts happened to hold milk. On 40,000 carts bread to milk reads confidence 0.74: chance gives 0.34 x 0.71 x 40,000 = 9,656 carts holding both, 10,064 do, and 10,064 / 9,656 = 1.04. A few carts can make a pull look strong; the full count shows milk beside bread about as often as in any cart.
 
 ```notes
 LIVE, 6 minutes. Read the picture as two areas (3Blue1Brown): bread's band times milk's band is
@@ -437,7 +439,7 @@ LIVE, 2 minutes. A quick vote. Transition: the chart.
 ## S20. Answer: b, near one for every common item
 *Why does every item look bundled with milk, and what does lift say?*
 
-![Confidence toward milk and lift with milk for the twelve most common items](../whiteboards/C2_W04_D03_milk_everywhere_STUDENT.png)
+![Confidence toward milk and lift with milk for the nine most common items](../whiteboards/C2_W04_D03_milk_everywhere_STUDENT.png)
 
 For all 50 items in at least 2 percent of carts, confidence toward milk runs 0.70 to 0.74, near milk's own 0.71, and lift runs 0.99 to 1.04. Lift divides milk's popularity out.
 
@@ -453,7 +455,7 @@ Transition: a company that met this trap.
 ## S21. Amazon met the same popular-partner trap
 *Where has a real recommender met the item that sits beside everything?*
 
-**Amazon.** Its recommender team wrote that counting how often buyers of A also bought B would have made a bestseller such as Harry Potter the top recommendation beside everything. The fix compared what was seen with what chance would predict, which is lift in spirit. Years later the team measured the base rate per purchase, because heavy buyers inflate every count (Amazon Science, checked 12 October 2026).
+**Amazon.** Amazon Science's history of the company's recommendation algorithm says that counting how often buyers of one item bought another would make a few bestsellers, such as Harry Potter books and trash bags, the top recommendations for every customer. The fix compared what was seen with what chance would predict, which is lift in spirit. Later the team measured the base rate, how likely an item is anyway, with any given purchase, scaling heavy buyers down, because they inflate every count (Amazon Science, checked 12 October 2026).
 
 The cost of the trap is a recommendation slot spent on an item the shopper was buying anyway.
 
@@ -473,9 +475,9 @@ side by side.
 | bread, toned milk | 25.2% | 0.74 | 0.35 | 1.04 |
 | eggs, toned milk | 21.2% | 0.73 | 0.30 | 1.03 |
 | chips, cold drink | 5.0% | 0.42 | 0.41 | 3.39 |
-| ice cream, chocolate sauce | 0.25% | 0.06 | 0.18 | 4.60 |
+| chocolate sauce, ice cream | 0.25% | 0.18 | 0.06 | 4.60 |
 
-The second route: lift is also confidence over the partner's share. Bread to milk 0.74 / 0.71 = 1.04, and milk to bread 0.35 / 0.34 = 1.04. Both routes agree and lift reads the same from either side.
+Support is a share of all carts, written as a percent; confidence is a share of A's carts, written as a decimal. The second route: lift is also confidence over the partner's share. Bread to milk 0.74 / 0.71 = 1.04, and milk to bread 0.354 / 0.34 = 1.04.
 
 ```notes
 LIVE, 4 minutes. Point at the chips row: confidence 0.42 looks weak beside 0.74, yet its lift is
@@ -507,7 +509,7 @@ thinks it through; let the room find that. Transition: the split.
 
 ![Daily strip click-through from 17 August to 27 September, and milk's share of slot impressions](../whiteboards/C2_W04_D03_strip_daily_STUDENT.png)
 
-Milk took half the slot impressions at 1.2 percent; everything else clicked at 6.4, up from 6.2. Half of 1.2 plus half of 6.4 is 3.8. The plausible wrong answer, "shoppers changed after the monsoon", fails the split by suggested item.
+Milk took half the slot impressions at 1.2 percent; everything else clicked at 6.4, up from 6.2 before the change, when milk held 2 percent of them. Half of 1.2 plus half of 6.4 is 3.8. The plausible wrong answer, "shoppers changed after the monsoon", fails the split by suggested item.
 
 ```notes
 LIVE, 6 minutes. This is notebook 02's your-turn cell: each learner splits the after rows by
@@ -563,7 +565,7 @@ Notebook 03. Transition: the questions.
 ## S27. Four questions from a ranking to rupees
 *Who needs the answer, and which questions lead to it?*
 
-**Who needs the answer.** The growth lead, who takes a ranked list and a rupee figure to Friday's review, where the category manager will argue that milk anchors the cart.
+**Who needs the answer.** The growth lead, who takes a ranked list and a rupee figure to Friday's review, where the category manager will argue that milk, the top seller, belongs in every slot.
 
 ```timeline
 label: Question 1 | title: Which pairs beat chance by enough, on enough carts? | body: Lift above a support floor.
@@ -600,7 +602,7 @@ is usually b against c. Transition: every pair on one picture.
 
 ![Every pair with support of at least 0.1 percent: lift against support, with the 1 percent floor](../whiteboards/C2_W04_D03_action_map_STUDENT.png)
 
-Above a floor of 1 percent of carts (400 carts), 246 pairs qualify and four beat chance clearly: chips and cold drink 3.39, coriander and green chillies 3.00, bread and butter 2.21, onions and tomatoes 1.70. The fifth reads 1.09.
+Above a floor of 1 percent of carts (400 carts), 246 pairs qualify and four reach lift 1.5 or more: chips and cold drink 3.39, coriander and green chillies 3.00, bread and butter 2.21, onions and tomatoes 1.70. The fifth reads 1.09. The strip has three slots, so onions and tomatoes waits as the first replacement. Each step right on the picture is ten times more carts.
 
 ```notes
 LIVE, 8 minutes. Walk the regions: promote above the floor and well above one; watch, high lift
@@ -614,7 +616,7 @@ the pairs that survive. Transition: the thin pair.
 ## S30. The watch list holds lift 4.60 on 100 carts
 *What should a team do with a strong pair that almost nobody buys?*
 
-Ice cream and chocolate sauce read lift 4.60, the strongest pair between 0.2 and 1 percent support, on 100 carts in four weeks of this sample. A slot is shown on every cart page, so a pair that thin cannot repay it. It goes on a watch list: tried in two zones for two weeks and promoted only if its click-through beats the slot's own record. Acting on lift alone is the trap a floor exists to stop.
+Ice cream and chocolate sauce read lift 4.60, the strongest pair between 0.2 percent (80 carts, too few even to trial below it) and the 1 percent floor. The pair is real, 100 carts where chance gives 22, but the strip suggests it only beside ice cream, in 1,600 carts over four weeks, so a rule for it earns little. It goes on a watch list: for two weeks in two zones, a random half of shoppers see it, and it takes the slot on ice-cream carts only if it beats the next-best suggestion there. Acting on lift alone is the trap a floor exists to stop.
 
 ```notes
 LIVE, 4 minutes. How long a trial must run to trust its answer is a sample-size question, parked by
@@ -644,7 +646,7 @@ LIVE, 3 minutes. Guess first, then build it. Transition: the cascade.
 
 ![One slot a day at 6.4 and at 1.2 percent, and the month recovered by moving milk's impressions](../whiteboards/C2_W04_D03_slot_value_STUDENT.png)
 
-60,000 views a day (`strip_log`) x click-through x 0.5 adds per click (range 0.4 to 0.6) x Rs 9 margin an add (range Rs 7 to 11). Milk's half of three slots is 1.5 slots' worth: Rs 4.2 lakh x 1.5 = Rs 6.3 lakh a month, from Rs 3.9 lakh to Rs 9.3 lakh across the ranges.
+Margin is what Instamart keeps from a sale after the item's cost: bread sells for Rs 45 and keeps Rs 6.70. A slot's day is 60,000 views (`strip_log`) x click-through x 0.5 adds per click (`strip_log`, range 0.4 to 0.6) x Rs 9 margin an add (the average `cart_items` line, range Rs 7 to Rs 11), with the promoted pairs assumed to click at the 6.4 percent the rest drew. Milk holds 1.5 slots' worth: Rs 4.2 lakh x 1.5 = Rs 6.3 lakh a month, Rs 3.9 lakh at 0.4 x Rs 7 and Rs 9.3 lakh at 0.6 x Rs 11.
 
 ```notes
 LIVE, 7 minutes. Build it left to right on the board. Each factor is said with its source and its
@@ -658,7 +660,7 @@ by lift. Transition: the number people get wrong.
 ## S33. The trap: Rs 80,197 of sales is not the gain
 *Which number would overstate the slot four times over?*
 
-The plausible wrong answer books sales: a slot at 6.4 percent makes 1,920 adds a day, each selling for about Rs 42, so Rs 80,197 a day of "strip revenue". The growth lead keeps the margin, Rs 17,280. If the strip ever adds a bundle discount, the discount is margin handed back for adds that might have happened anyway. Swiggy's own letter describes its Maxxsaver discount as margin returned to the user, the cost line a rupee case must carry (W4, checked 12 October 2026).
+The plausible wrong answer books sales: a slot at 6.4 percent makes 1,920 adds a day, each selling for about Rs 41.77, so Rs 80,197 a day of "strip revenue". The growth lead keeps the margin, Rs 17,280. If the strip ever adds a bundle discount, the discount is margin handed back for adds that might have happened anyway. Swiggy's shareholder letter for April to June 2025 describes Maxxsaver, a discount unlocked once a basket passes a set size, as margin returned to the user: the cost line a rupee case must carry (checked 12 October 2026).
 
 ```notes
 LIVE, 5 minutes. Ask: "which line of the cascade would a bundle discount change?" The margin per
@@ -672,12 +674,12 @@ add falls by the discount. Transition: what the counts cannot tell us.
 
 | Doubt | The check | What it showed |
 |---|---|---|
-| Together is no proof of cause | A holdout that changes the strip | Monday's faculty session on A/B testing (tentative) |
-| Heavy buyers | Count each customer once | Chips and cold drink 3.39 falls to 2.56; milk's pair stays 1.04 |
+| Together is no proof of cause | A holdout: a share of shoppers kept on the old strip, compared with the rest | This week's Monday faculty session on A/B testing (tentative) |
+| Heavy buyers, each placing many carts | Count each customer once | Chips and cold drink 3.39 falls to 2.56; milk's pair stays 1.04 |
 | Curd stock-out | Set aside two zones in week three | Curd's share 26.0 rises to 27.8 percent; its lift with milk stays 1.01 |
-| Time of day | Morning carts only | Morning carts hold milk 80 percent of the time; bread with milk still about 1.04 |
-| The strip's own pull | Click-through by slot | Slot 1 draws 8.2 percent, slot 3 5.4; milk is low in all three |
-| Per cart against per customer | The heavy-buyer check | Answered above |
+| Time of day | Each time band alone | Morning carts hold milk 80 percent of the time; bread with milk reads 1.03 to 1.05 in every band |
+| Position in the strip | Click-through by slot | Among suggestions other than milk, slot 1 draws 8.2 percent and slot 3 5.4; milk is low in all three |
+| The strip feeds its own counts | The holdout's shoppers, who never see the strip | Not in this data; the holdout in the first row settles it |
 
 ```notes
 LIVE, 6 minutes. One doubt at a time, each with its number from notebook 03. A check that comes
@@ -691,7 +693,7 @@ back clean is said in one line, as the time-of-day check does. Transition: the h
 
 ![Lift per cart against lift with every customer counted once, for chips and cold drink and for bread and milk](../whiteboards/C2_W04_D03_heavy_tenth_STUDENT.png)
 
-The top tenth of customers place 38 percent of the carts and 73 percent of the carts holding both chips and a cold drink. Counted with every customer once, the pair's lift falls from 3.39 to 2.56 and still beats chance; bread and milk stays at 1.04. The pair keeps its slot, and the growth lead says the smaller number.
+The top tenth of customers place 38 percent of the carts and 73 percent of the carts holding both chips and a cold drink. Counting every customer once gives each cart a weight of one over its customer's number of carts, so a shopper with 4 carts counts each as 0.25. Counted that way, the pair's lift falls from 3.39 to 2.56 and still beats chance; bread and milk stays at 1.04. The pair keeps its slot, and the growth lead says the smaller number.
 
 ```notes
 LIVE, 4 minutes. "Counted once" means each cart weighs one over its customer's number of carts, so
@@ -705,7 +707,7 @@ a shopper with fourteen carts counts as much as a shopper with one. Transition: 
 
 ![Share of carts holding curd, by zone and week: Hadapsar and Viman Nagar near zero from 15 to 21 September](../whiteboards/C2_W04_D03_stockout_STUDENT.png)
 
-In Hadapsar and Viman Nagar from 15 to 21 September, curd is in 12 of 2,583 carts. Set those aside and curd's share rises from 26.0 to 27.8 percent; its lift with milk stays 1.01. A stock-out cuts the count, never the pull.
+In Hadapsar and Viman Nagar from 15 to 21 September, curd is in 12 of 2,583 carts. Set those 2,583 carts aside and curd's share rises from 26.0 to 27.8 percent; its lift with milk stays 1.01. A stock-out cuts the count, never the pull.
 
 ```notes
 LIVE, 4 minutes. A caveat is a labelled line and a recomputation, never a disclaimer. Transition:
@@ -729,7 +731,7 @@ flowchart LR
     class M lit
 ```
 
-After lunch each group re-ranks the strip, prices its three slots and answers the category manager, who will say that milk anchors the cart.
+After lunch each group re-ranks the strip, prices its three slots and answers the category manager, who will say that milk belongs in every slot. The strip suggests a different item, which is cross-sell; suggesting a bigger pack of the same item is upsell, a question for another day.
 
 ```notes
 LIVE, 2 minutes. Read the chain left to right. The afternoon's first 35 minutes run unguided on
