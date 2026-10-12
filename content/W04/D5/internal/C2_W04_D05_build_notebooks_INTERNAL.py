@@ -96,7 +96,8 @@ check("drift adds the average step to the last value", round(drift, 1) == 51.3)
 diwali = pd.to_datetime(["2024-10-28", "2025-10-20"])   # the weeks holding Diwali
 colours = ["crimson" if d in diwali else "lavender" for d in rows.week_start]
 fig, ax = plt.subplots()
-ax.bar(rows.week_start.dt.strftime("%d %b %y"), rows.shipments, color=colours, edgecolor="slateblue")
+labels = rows.week_start.dt.strftime("%d %b %y")                 # each date as text, such as 14 Oct 24
+ax.bar(labels, rows.shipments, color=colours, edgecolor="slateblue")
 ax.tick_params(axis="x", rotation=60)
 ax.set_title("Twelve weeks around two Diwalis (red: the week holding Diwali)")
 plt.show()
@@ -277,8 +278,8 @@ check("the vendor's rows for the hidden weeks are forecasts made from 22 June, n
         md("""
         ## Which weeks do we hide, and how is the score counted?
 
-        The plan books eight weeks ahead; that reach is the **horizon**. The test hides at least as
-        many weeks at the end of the data: the last thirteen, 29 June to 21 September 2026, the
+        The plan's last week, 30 November, sits ten weeks past the last week of data; that reach is
+        the **horizon**. The test hides at least as many weeks at the end of the data: the last thirteen, 29 June to 21 September 2026, the
         **hidden weeks** (also called the hold-out, or the test set). The rules may see only the 91
         **training weeks** before them, and every rule forecasts all thirteen from the last of
         those, the week of 22 June 2026, called the **origin**. The vendor's file labels its rows
@@ -406,8 +407,9 @@ plt.show()
 print(f"largest miss on the {len(fitted)} fitted weeks: {fit_gap:.1%}")
 vendor_mae = (v.loc[hold.index] - hold).abs().mean()                            # the same measure as the rules
 print(f"vendor MAE on the hidden weeks: {vendor_mae:,.0f}")
-print(f"too high by {hold_gap.iloc[:6].mean():.1%} on average in hidden weeks 1 to 6, "
-      f"{hold_gap.iloc[-6:].mean():.1%} in weeks 8 to 13")
+k = len(hold) // 2                                                              # six of thirteen
+print(f"too high by {hold_gap.iloc[:k].mean():.1%} on average in hidden weeks 1 to {k}, "
+      f"{hold_gap.iloc[-k:].mean():.1%} in weeks {len(hold) - k + 1} to {len(hold)}")
 check("the fit stays within 2 percent", fit_gap <= 0.02)
 check("the vendor's MAE is at least 30 percent above festival-aligned",
       vendor_mae >= 1.3 * scores["festival-aligned"])
@@ -480,11 +482,12 @@ check("the printed table gives the same MAE", round(by_hand) == scores["festival
         md("""
         ## How would you answer "how do you evaluate a forecast?" in an interview?
 
-        Hide the latest weeks, at least as many as the plan's horizon, and forecast them from one
-        origin. Fix the error measure before anyone scores, in the business's unit: shipments,
-        then rupees. Compare every candidate with naive and the house bot, and send nothing that
-        loses to them. Report which way the misses run, because a late shipment and a spare one
-        cost different amounts. The trap the interviewer fishes for is judging by the fit.
+        Hold out the latest weeks as a test set, at least as many as the forecast must reach
+        ahead, and forecast them from one origin; then roll the origin, since one origin is one
+        draw. Fix two measures before anyone scores: the miss in shipments, and the misses priced
+        by direction, which is what the plan pays. Compare every candidate with the naive and the
+        seasonal naive, here the house bot, and send nothing that loses to them. The trap the
+        interviewer fishes for is judging by the fit.
         """),
         md("""
         ## What did chapter 2 answer?
@@ -718,13 +721,16 @@ check("the cushion sits between the 10th and 11th sorted weeks",
         7.8 percent above. The 0.82 point sits between the 10th week, 2.1 percent, and the 11th,
         2.7 percent; `quantile` reads it 0.82 of the way along the list, at 2.6 percent. The raised
         forecast covers 10 of the 13 weeks, and the 11th misses by a hair. With thirteen weeks the
-        true point could sit anywhere from about 2 to 3 percent; the curve below shows why that
-        stretch costs almost the same.
+        point is loose: read by another common convention it lands at 4.1 percent. The curve below
+        shows why that matters little: the busiest week costs about Rs 1.4 lakh anywhere from 2 to
+        4 percent above the forecast, against Rs 2.1 lakh booked at the forecast itself.
 
         ## How does a week's cost change as the plan is raised?
 
-        Try every level of plan on the busiest week, 19 October 2026, and for each level replay
-        the thirteen hidden-week misses as thirteen possible demands; average their costs.
+        Try every height of plan on the busiest week, 19 October 2026, and for each one replay the
+        thirteen hidden-week misses as thirteen possible demands; average their costs. For one
+        demand the week costs the spare shipments, `max(0, plan_level - demand)`, at Rs 5.42, plus
+        the late ones, `max(0, demand - plan_level)`, at Rs 25; at most one of the two is above zero.
         """),
         code('''
 base = ahead.loc["2026-10-19", "festival-aligned"]            # the plan's busiest week
@@ -745,7 +751,7 @@ plt.title("Too little plan costs more than too much, so the lowest point sits ab
 plt.show()
 lowest = levels[cost_at.index(min(cost_at))]
 print(f"the lowest cost sits {lowest:.1%} above the forecast; the plan takes {cushion:.1%}")
-check("the cheapest level sits above the forecast", lowest > 0)
+check("the cheapest plan sits above the forecast", lowest > 0)
 '''),
         md("""
         ## How many packer shifts does each week need?
@@ -784,7 +790,7 @@ for name, b in booked.items():
     gap = b - expected                                         # positive: spare capacity
     scenario[name] = (gap[gap > 0].sum() * spare_rs - gap[gap < 0].sum() * late_rs) / 100_000
     print(f"{name}: Rs {scenario[name]:.1f} lakh")
-check("the plan costs least in this scenario", min(scenario, key=scenario.get) == "plan")
+check("the plan costs least in this scenario", scenario["plan"] == min(scenario.values()))
 '''),
         md("""
         **What happened.** If demand follows festival-aligned, the house bot's weeks cost Rs 111.6
@@ -859,6 +865,7 @@ rev = pd.read_csv("../data/C2_W04_D05_kalpa_monthly_revenue_STUDENT.csv").set_in
 vendor = pd.read_csv("../data/C2_W04_D05_kalpa_vendor_forecast_STUDENT.csv").set_index("month")
 plan = pd.read_csv("../data/C2_W04_D05_kalpa_plan_line_STUDENT.csv").set_index("month").plan_rs
 print(f"{len(rev)} months, {rev.index[0]} to {rev.index[-1]}")
+# 1e5 is 100,000 rupees, a lakh; 1e7 is a hundred lakh, a crore
 print(f"Apr to Jun 2026: Rs {rev['2026-04':'2026-06'].sum() / 1e7:.2f} crore; Jul to Sep: Rs {rev['2026-07':'2026-09'].sum() / 1e7:.2f} crore")
 check("24 months", len(rev) == 24)
 check("the two quarters match the warehouse", (rev['2026-04':'2026-06'].sum(), rev['2026-07':'2026-09'].sum()) == (100_000_000, 98_400_000))
@@ -930,7 +937,7 @@ check("naive misses by more than Rs 50 lakh a month", naive_mae > 50)
         days just before Diwali, so its spike sits in Diwali's own month: October in 2024 and 2025,
         and November in 2026, since the days before 8 November fall in November. Flipkart's
         shipments peaked two weeks earlier because parcels leave the centre in the sale weeks. The
-        month-aligned copy takes each month from the same month last year. The festival-aligned copy
+        seasonal copy takes each month from the same month last year. The festival-aligned copy
         swaps two months: this November gets last year's Diwali month, October 2025, and this
         October gets last year's November; then it adds 4 percent.
 
