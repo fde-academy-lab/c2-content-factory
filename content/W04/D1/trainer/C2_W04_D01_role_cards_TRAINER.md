@@ -38,7 +38,7 @@ What does the marketing lead want? What does the finance partner want? What does
 | **Round 1, said aloud** | "140 new drivers in six weeks. That is the scheme working." |
 | **Round 3, the attack** | "Changing the terms six weeks in looks like bait. Drivers signed up for an hourly floor." |
 | **The part that is true** | The floor was the promise, and breaking it costs trust. |
-| **The answer the room should reach** | The redesign keeps the floor for every driver who accepts at or above the city's floor, so the promise holds for drivers who serve riders. Uber's own 10-K counts a monthly active platform consumer only when that consumer completed a ride or received a delivery in the month, so even Uber's own count asks for activity, never a sign-up alone. |
+| **The answer the room should reach** | The redesign keeps the floor for every driver who accepts at or above the city's floor, so the promise holds for drivers who serve riders. Uber's own 10-K counts a monthly active platform consumer only when that consumer completed a ride or received a delivery in the month, so even Uber's own count asks for a completed ride or delivery. |
 | **What they lose** | The sign-up count as the measure of success. |
 
 ---

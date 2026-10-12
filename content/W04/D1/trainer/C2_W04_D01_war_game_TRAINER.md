@@ -59,7 +59,7 @@ number. Do not correct anything yet: round 2 is where the room learns to attack 
 ## What does round 2 add?
 
 Round 2 is the morning's three chapters. Name it once at the start of chapter 1: "Round 2 is the
-morning. By lunch you will attack with numbers, not instinct." Each chapter close adds a region to
+morning. By lunch you will attack with numbers." Each chapter close adds a region to
 the concept board, and each region answers one of round 1's attacks with the data.
 
 ---

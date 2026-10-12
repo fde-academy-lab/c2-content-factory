@@ -1079,6 +1079,41 @@ numbers:
   unit: share
   how: '(1.71 - 1.58) / (1.90 - 1.58): the part of the fall the average of rates hides'
   used_by: L2 trap, two-fifths
+- id: topup_high_acceptance_share
+  value: 0.39
+  unit: share
+  how: top-up to driver-weeks at or above half accepted, over all top-up
+  used_by: L5; S28 option b
+- id: driver_weeks_total
+  value: 12860
+  unit: driver-weeks
+  how: rows of driver_weeks, twelve weeks
+  used_by: notebook 02; S17
+- id: tph_fall
+  value: 0.32
+  unit: trips per peak online hour
+  how: 1.90 - 1.58
+  used_by: L2 trap
+- id: mean_of_ratios_fall
+  value: 0.19
+  unit: trips per peak online hour
+  how: 1.90 - 1.71, the fall the average of rates shows
+  used_by: L2 trap
+- id: fall_hidden_by_mean
+  value: 0.13
+  unit: trips per peak online hour
+  how: 1.71 - 1.58, the part of the fall the average hides
+  used_by: L2 trap
+- id: twelve_trips_per_driver_before
+  value: 19.0
+  unit: trips per driver
+  how: 114 trips over the six drivers
+  used_by: explorer M3, the enrolled-driver denominator on the twelve rows
+- id: twelve_trips_per_driver_after
+  value: 14.67
+  unit: trips per driver
+  how: 88 trips over the six drivers
+  used_by: explorer M3, the enrolled-driver denominator on the twelve rows
 - id: tph_split_0907_before
   value: 1.86
   unit: trips per peak online hour

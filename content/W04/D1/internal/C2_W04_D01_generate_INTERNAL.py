@@ -669,6 +669,19 @@ fact("mean_of_ratios_hidden_share", r2((mean_of_ratios["after"] - A["peak_trips"
                                        / (B["peak_trips"] / B["peak_online_hours"]
                                           - A["peak_trips"] / A["peak_online_hours"])), "share",
      "(1.71 - 1.58) / (1.90 - 1.58): the part of the fall the average of rates hides", "L2 trap, two-fifths")
+fact("topup_high_acceptance_share", r2(high_topup / (low_topup + high_topup)), "share",
+     "top-up to driver-weeks at or above half accepted, over all top-up", "L5; S28 option b")
+fact("driver_weeks_total", int(len(dw)), "driver-weeks", "rows of driver_weeks, twelve weeks", "notebook 02; S17")
+fact("tph_fall", r2(B["peak_trips"] / B["peak_online_hours"] - A["peak_trips"] / A["peak_online_hours"]),
+     "trips per peak online hour", "1.90 - 1.58", "L2 trap")
+fact("mean_of_ratios_fall", r2(B["peak_trips"] / B["peak_online_hours"] - mean_of_ratios["after"]),
+     "trips per peak online hour", "1.90 - 1.71, the fall the average of rates shows", "L2 trap")
+fact("fall_hidden_by_mean", r2(mean_of_ratios["after"] - A["peak_trips"] / A["peak_online_hours"]),
+     "trips per peak online hour", "1.71 - 1.58, the part of the fall the average hides", "L2 trap")
+fact("twelve_trips_per_driver_before", r2(114 / 6), "trips per driver", "114 trips over the six drivers",
+     "explorer M3, the enrolled-driver denominator on the twelve rows")
+fact("twelve_trips_per_driver_after", r2(88 / 6), "trips per driver", "88 trips over the six drivers",
+     "explorer M3, the enrolled-driver denominator on the twelve rows")
 late = dw["week_start"].lt("2026-09-07").map({True: "before", False: "after"})
 late_city = dw.groupby(late)[["peak_trips", "peak_online_hours"]].sum()
 for win in ("before", "after"):
