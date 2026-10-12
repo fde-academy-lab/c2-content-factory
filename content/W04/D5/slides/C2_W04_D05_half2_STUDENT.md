@@ -11,8 +11,8 @@ Header: WEEK 4  ·  FRIDAY  ·  FLIPKART, LUCKNOW  ·  ILLUSTRATIVE CASE
 
 ```stats
 value: 20,275 | label: packer shifts over eight weeks | note: festival-aligned, raised 2.6 percent, 3,719 in the week of 19 October
-value: 6,615 | label: shipments a week, the error bar | note: on thirteen hidden weeks: about Rs 35,800 if high, Rs 1.65 lakh if low
-value: 0.82 | label: the share of weeks to cover | note: 25 / (25 + 5.42): being short costs 4.6 times being long
+value: 6,615 | label: shipments a week, the error bar | note: the forecast's average miss on thirteen hidden weeks: about Rs 35,800 if it runs high, Rs 1.65 lakh if low
+value: 0.82 | label: the share of weeks to cover | note: 25 / (25 + 5.42): a late shipment costs 4.6 times a spare one
 ```
 
 Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
@@ -56,7 +56,7 @@ the hidden weeks. Transition: what a strong first line looks like.
 |---|---|
 | "Forecasting analysis for the festive season" | "Book 20,275 packer shifts for 12 October to 30 November, peaking at 3,719 in the week of 19 October" |
 | "The vendor projects 22 percent growth" | "The vendor's curve lost to a copy of last year on thirteen hidden weeks, so it does not set the plan" |
-| "Finance suggests plus 4 percent" | "Finance's 4 percent is the right growth on the wrong weeks: it books the peak on 5 October" |
+| "Finance suggests plus 4 percent" | "Finance's 4 percent is the right growth on the wrong weeks: it puts the peak on 5 October, before the plan's first week" |
 
 ```notes
 LIVE, 3 minutes. Tuesday's rule: the title is the claim. Read each pair aloud and ask which line a
@@ -69,7 +69,7 @@ regional head could forward unchanged. Transition: the two people who will objec
 *What is true in each objection, and what answers the rest?*
 
 ```cards
-icon: calculator | eyebrow: Finance | title: "Last year plus 4 is what the budget holds" | body: True: the two years grew 4.0 percent. Not true for the weeks: copied by calendar it books the peak on 5 October and sits 308,048 shipments short. | tone: light
+icon: calculator | eyebrow: Finance | title: "Last year plus 4 is what the budget holds" | body: True: the two years grew 4.0 percent. Not true for the weeks: copied by calendar it puts the peak on 5 October, before the plan's first week, and sits 308,048 shipments short. | tone: light
 icon: trending-up | eyebrow: The vendor's sponsor | title: "The model fits every week of history" | body: True: within 1.4 percent. That is the problem: on thirteen weeks it never saw it missed by 16,400 a week, 67 percent worse than the copy of last year. | tone: light
 ```
 
@@ -86,7 +86,7 @@ Transition: the interview question.
 
 ![Four forecasts for 28 September to 30 November 2026](../whiteboards/C2_W04_D05_window_2026_STUDENT.png)
 
-The house bot, finance's rule and the vendor book their biggest week on 5 October; festival-aligned books it on 19 October, two weeks before Diwali's week.
+The house bot, finance's rule and the vendor put their biggest week on 5 October, a week before the plan's first week; festival-aligned puts it on 19 October, two weeks before Diwali's week.
 
 ```notes
 LIVE, 2 minutes. The picture every note should be able to describe in one sentence. Transition:
@@ -100,9 +100,9 @@ the interview question.
 
 | Weak answer | Hire-grade answer |
 |---|---|
-| "We used a good model and the fit was within 2 percent." | "I hide the latest weeks, at least as many as the plan covers, and forecast them from one week." |
-| Judges by the fit to history | Scores only weeks the model never saw |
-| One number for the error | The error in shipments, then priced in each direction |
+| "We used a good model and the fit was within 2 percent." | "I hold out the latest weeks as a test set, at least as many as the forecast must reach ahead, and forecast them from one origin." |
+| Judges by the fit to history, or a random split | Scores only weeks after the origin, then rolls the origin |
+| One number for the error | The error in shipments, then priced each way, each forecast at its own 0.82 point |
 | Picks the model with the best story | Sends nothing that loses to a copy of last year |
 | Takes the calendar for granted | Checks where the festival falls this year |
 
@@ -118,17 +118,21 @@ on the card. Transition: the follow-ups.
 *What does the interviewer ask next, and what does a strong candidate say?*
 
 ```timeline
-label: Follow-up 1 | title: MAE or MAPE, and when? | body: Shipments when the cost is per shipment; percent only to compare series of different sizes.
-label: Follow-up 2 | title: The festival moves three weeks: what breaks? | body: Every calendar copy, the house bot and finance's rule; the festival-aligned copy moves with it.
-label: Follow-up 3 | title: What did a forecast cost Zillow? | body: Its profit on each resold home was meant to stay within 2 percent of zero; it swung about 12 percentage points, and USD 304 million of homes were marked down. | tone: dark
+label: Follow-up 1 | title: MAE or MAPE, and when? | body: Shipments when the cost is per shipment; MASE or WAPE across centres, since MAPE explodes near zero and punishes forecasts that land high.
+label: Follow-up 2 | title: The festival moves three weeks: what breaks? | body: Every calendar copy, the seasonal naive and finance's rule; the festival-aligned copy moves with it.
+label: Follow-up 3 | title: What did a forecast cost Zillow? | body: Its margin guardrail was 2 percentage points either side of breakeven; price forecasts six months out missed by more, the margin swung about 12, and Zillow wrote down about USD 304 million. | tone: dark
 ```
 
 ```notes
 LIVE, 3 minutes. Each follow-up changes the question so only the reasoning transfers. Zillow's
-figures are from its Q3 2021 shareholder letter, checked 12 October 2026: a guardrail of plus or
-minus 200 basis points (a basis point is a hundredth of a percent) of breakeven unit economics, a
-swing of about 1,200 basis points, an inventory write-down of about USD 304 million. Transition: the same idea
-at an AI company.
+figures are from its Q3 2021 shareholder letter, checked 12 October 2026: price forecasts three to
+six months ahead, a public guardrail of plus or minus 200 basis points (a basis point is a
+hundredth of a percent) of breakeven unit economics, a swing of about 1,200 basis points to an
+expected minus 500 to minus 700, more homes bought than planned, renovation capacity short, an
+inventory write-down of about USD 304 million and the business wound down. The guardrail sat on the
+margin; the forecast's error was wider than the band. Two more follow-ups sit in the transcripts:
+the cushion read from the scored weeks, and the overtime that may cap the peak. Transition: the same
+idea at an AI company.
 ```
 
 ---
@@ -138,40 +142,43 @@ at an AI company.
 
 ```mermaid
 flowchart LR
-    L["<b>The launch</b><br/>a known date, a spike,<br/>little history"] --> H["<b>Hide the horizon</b><br/>score the last launch's days<br/>in requests a minute"]
-    H --> B["<b>Beat the copy</b><br/>last launch's shape<br/>is the house bot"]
-    B --> C["<b>Plan above</b><br/>a timeout costs more<br/>than an idle server"]
+    L["<b>Size it</b><br/>users x peak-minute share<br/>x tokens a request"] --> H["<b>Check history</b><br/>days from launch,<br/>weekday kept"]
+    H --> B["<b>Beat the copy</b><br/>last launch's curve;<br/>untested with one launch"]
+    B --> C["<b>Plan to latency</b><br/>headroom, the two costs,<br/>then what stretches"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class L,H,B known
     class C lit
 ```
 
-**Inference** is the computing a model does each time it answers a user. The launch is the festival: line it up by days from the launch, never by calendar date. The plan sits above the forecast because being short means timeouts. This variant is written for the programme and quotes no company's figures.
+**Inference** is the computing a model does each time it answers a user. Size the peak in tokens a second from the ground up, check it against earlier launches lined up by days from launch with the weekday kept, and set capacity to the latency target with headroom; the two costs decide how much to book ahead, and on-demand capacity, rate limits and a waitlist cover the rest. Written for the programme; it quotes no company's figures.
 
 ```notes
-LIVE, 3 minutes. Ask the room which cost is the Rs 25 and which the Rs 5.42 here. Transition: the
-guesstimate.
+LIVE, 3 minutes. Ask the room which cost is the Rs 25 and which the Rs 5.42 here: a timeout and an
+idle GPU hour. Ask what the forecast can be tested on if the feature has never launched: nothing,
+so say it is untested and keep capacity that can stretch. The worked sizing (2 lakh users, 10
+percent in the peak minute, 1,500 tokens, all invented, about 5 lakh tokens a second) is in the
+transcripts. Transition: the guesstimate.
 ```
 
 ---
 
-## S9. Two-wheelers a year: about 2.16 crore, checked
+## S9. Two-wheelers a year: about 2.2 crore, checked
 *How do you size a number from nothing, and check it against something known?*
 
 ```mermaid
 flowchart LR
     H["<b>Households</b><br/>30 crore, assumed"] --> O["<b>Own one</b><br/>half, assumed"]
     O --> R["<b>Replace every 8 years</b><br/>about 1.9 crore a year"]
-    R --> F["<b>Plus first-time buyers</b><br/>15 percent, assumed:<br/>about 2.16 crore"]
-    F --> V["<b>Validate</b><br/>SIAM: 2.17 crore<br/>in FY 2025-26"]
+    R --> F["<b>Plus first-time and<br/>commercial buyers</b><br/>15 percent, assumed:<br/>about 2.2 crore"]
+    F --> V["<b>Validate</b><br/>SIAM: 2.17 crore sold<br/>to dealers, FY 2025-26"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class H,O,R,F known
     class V lit
 ```
 
-**The catch.** October 2025's two-wheeler sales to buyers alone were 31.5 lakh (FADA, the Federation of Automobile Dealers Associations); times twelve that is about 3.78 crore, 74 percent too high: never annualise a festive month. SIAM, the Society of Indian Automobile Manufacturers, reported 2.17 crore for FY 2025-26 (its release, checked 12 October 2026).
+**The catch.** October 2025's two-wheeler retail registrations alone were 31.5 lakh (FADA, the Federation of Automobile Dealers Associations), after a September whose first 21 days were almost quiet ahead of the GST cut; times twelve that is about 3.78 crore, 74 percent above the year: never annualise a peak month. SIAM, the Society of Indian Automobile Manufacturers, counts makers' sales to dealers: 2.17 crore in FY 2025-26 (both releases checked 12 October 2026).
 
 ```notes
 LIVE, 3 minutes if time allows, in pairs against a three-minute clock. The scorer checks the
@@ -191,6 +198,7 @@ structure and the sanity check, never the final number. Transition: the handoff.
 | Autocorrelation | It measures how closely each week's shipments follow the week a fixed number of weeks earlier, one back or 52 back. |
 | Smoothing | It forecasts from an average of past weeks that gives the most recent weeks the most weight. |
 | ARIMA | It forecasts from the series' own past weeks and its own past misses, the pattern autocorrelation measures. |
+| Held-out weeks | These thirteen have already picked the rule and set the cushion, so a new model is fairest judged on weeks no choice has used, such as a rolling origin through 2025's festival. |
 
 ```notes
 LIVE, 2 minutes. Read the handoff line as written, then point at the four words: the faculty

@@ -44,7 +44,7 @@ y[t] is week t's shipments, T the last week a rule may see, h the weeks ahead. F
 
 ## Panel 4: How is a forecast scored?
 
-- Hide the latest weeks, at least as many as the plan books: here 13, 29 June to 21 September 2026, forecast from 22 June.
+- Hide the latest weeks, at least as many as the forecast must reach ahead, ten here: the test hides 13, 29 June to 21 September 2026, forecast from 22 June.
 - MAE is the average of the misses with their signs dropped, in shipments.
 - Price each miss by its direction: Rs 5.42 for a spare shipment, Rs 25 for a late one.
 - The vendor's curve missed its 91 fitted weeks by at most 1.4 percent, and the hidden weeks by 16,400 a week.
@@ -69,14 +69,14 @@ On 2025's festival, forecast from 22 September 2025, the house bot missed by 58,
 `share of weeks covered = late / (late + spare) = 25 / (25 + 5.42) = 0.82`
 
 - Why: over 100 weeks, if demand beats the plan in 18, one more shipment of plan saves 18 x Rs 25 = Rs 450 and wastes 82 x Rs 5.42 = Rs 444.
-- Sorted, the 13 hidden weeks put the 0.82 point between the 10th (2.1 percent above the forecast) and the 11th (2.7): 2.6 percent, which covers 10 of 13.
+- Sorted, the 13 hidden weeks put the 0.82 point between the 10th (2.1 percent above the forecast) and the 11th (2.7): 2.6 percent, which covers 10 of 13, the 11th just above it.
 - Shifts are festival-aligned x 1.026 over 120, rounded up: 20,275 in eight weeks, 3,719 in the week of 19 October.
-- The error bar is 6,615 shipments a week: about Rs 35,800 if a week lands high, Rs 1.65 lakh if low.
+- The error bar is the forecast's average miss, 6,615 shipments a week: about Rs 35,800 when it runs that far high, Rs 1.65 lakh when that far low.
 
 **Crux:** Cover 0.82 of weeks: a late shipment costs 4.6 times a spare one, so the plan sits 2.6 percent above the forecast.
 
 ## Panel 7: What does the interviewer listen for?
 
-"I hide the latest weeks, as many as the plan covers, and score the misses in shipments against a copy of last year: festival-aligned missed by 6,615 a week, the house bot by 9,831." An AI company's launch capacity is planned the same way: days from launch, the last launch as the copy to beat, the plan above the forecast because a timeout costs more than an idle server.
+"I hold out the latest weeks, at least as many as the forecast must reach ahead, and score the misses in shipments and rupees against the seasonal naive: festival-aligned missed by 6,615 a week, the seasonal naive by 9,831." An AI company sizes launch capacity in tokens a second from the ground up, checks it against earlier launches by days from launch with the weekday kept, and books above the forecast to a latency target.
 
 **Crux:** Name the hidden weeks, the unit, the copy to beat and the direction that costs more.

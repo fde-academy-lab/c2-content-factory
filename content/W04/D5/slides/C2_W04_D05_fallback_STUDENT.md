@@ -36,7 +36,7 @@ part 1.
 
 ![MAE by rule on thirteen hidden weeks and on the last four](../whiteboards/C2_W04_D05_four_vs_thirteen_STUDENT.png)
 
-The order barely moves; the numbers move a great deal. The four-week test rests on four misses and on one origin week.
+Festival-aligned and finance's rule still lead and the house bot stays next, while naive and drift fall below the vendor; every number moves a great deal. The four-week test rests on four misses and on one origin week.
 
 ```notes
 LIVE, 10 minutes. Groups run notebook 02 with the split moved to 24 August 2026, or read this table.
@@ -81,11 +81,11 @@ because they copy last year's weeks and ignore the origin. Transition: the rule 
 
 ---
 
-## S5. A test shorter than the plan judges too little
-*Why must the hidden weeks span at least the eight weeks the plan covers?*
+## S5. A test shorter than the horizon judges too little
+*Why must the hidden weeks reach at least as far ahead as the plan does, ten weeks?*
 
 ```cards
-icon: ruler | eyebrow: The rule | title: At least as long as the horizon | body: The plan books eight weeks, so the test hides at least eight (FPP3, section 5.8, checked 12 October 2026). | tone: dark
+icon: ruler | eyebrow: The rule | title: At least as long as the horizon | body: The plan's last week is ten weeks past the data, so the test must reach ten weeks ahead; four cannot (FPP3, section 5.8, checked 12 October 2026). | tone: dark
 icon: trending-up | eyebrow: The vendor | title: Its gap grows with the weeks ahead | body: 148 percent worse than festival-aligned on thirteen weeks, 233 percent on its four farthest. | tone: light
 icon: shuffle | eyebrow: The luck | title: One origin can flatter or punish | body: A rule that looked fine from 22 June looks poor from 24 August. | tone: light
 ```
@@ -167,19 +167,21 @@ part 3, two real failures.
 
 ---
 
-## S10. Zillow: a forecast broke its own guardrail
+## S10. Zillow: a forecast's error outran its guardrail
 *What did Zillow's forecasting miss cost, and which guardrail failed?*
 
 | | Zillow Offers, 2021 (Zillow's Q3 2021 shareholder letter, checked 12 October 2026) |
 |---|---|
 | The forecast | Home prices three to six months ahead, to buy homes and resell them |
-| The guardrail | Public targets of plus or minus 200 basis points, 2 percent, of breakeven unit economics: what Zillow made or lost on each home it resold was meant to stay near zero |
-| The miss | Unit economics swung about 1,200 basis points, 12 percentage points, from Q2 to an expected minus 500 to minus 700 basis points in Q4 2021 |
-| The cost | A write-down of about USD 304 million: homes in stock marked below what Zillow paid; the business wound down, and about 25 percent of the workforce was cut |
+| The guardrail | Public targets of plus or minus 200 basis points, 2 percentage points, of breakeven unit economics: what Zillow made or lost on each home it resold was meant to stay near zero |
+| The miss | Price forecasts missed in both directions by far more than Zillow had modelled, and unit economics swung about 1,200 basis points, 12 percentage points, from Q2 to an expected minus 500 to minus 700 basis points in Q4 2021; more offers were accepted than planned, and renovation capacity ran short |
+| The cost | A write-down of about USD 304 million on homes bought above what they would now sell for; Zillow wound the business down and cut about 25 percent of its workforce |
 
 ```notes
-LIVE, 10 minutes. Groups name the Lucknow equivalent: a vendor forecast allowed to run past its
-own error bar with nobody watching it. Transition: Target Canada.
+LIVE, 10 minutes. The guardrail sat on the margin, and the price forecast's error at a six-month
+horizon was wider than the whole band; Zillow did stop, by winding the business down. Groups name
+the Lucknow equivalent: a cushion thinner than the forecast's error at the plan's horizon.
+Transition: Target Canada.
 ```
 
 ---
@@ -190,8 +192,8 @@ own error bar with nobody watching it. Transition: Target Canada.
 | | Target Canada, 2013 to 2015 (Target's release of 15 January 2015 and Canadian Business, checked 12 October 2026) |
 |---|---|
 | The decision | Target announced on 15 January 2015 that it would close all 133 Canadian stores, about 17,600 employees |
-| The forecasting failure | Its forecasting and replenishment system needed years of history and could not forecast new stores, so buyers used optimistic projections instead |
-| What followed | Distribution centres overflowed while shelves sat empty |
+| The forecasting failure | Its forecasting and replenishment system needed years of sales history the new stores did not have, so buyers used optimistic projections from headquarters, and the item data feeding it was right about 30 percent of the time |
+| What followed | Distribution centres overflowed while shelves sat barely stocked |
 
 ```notes
 LIVE, 10 minutes. The forecasting account is Canadian Business's, through the archived copy the
@@ -206,8 +208,8 @@ Transition: the two side by side.
 
 | The failure | The Lucknow version | The check that catches it |
 |---|---|---|
-| Zillow: a forecast ran past its own guardrail | The vendor's curve, high on 12 of 13 hidden weeks and climbing | Score every week's miss against the error bar, and stop when it is breached |
-| Target Canada: a forecast with no history | A vendor model never scored on a Lucknow festival | Score it on 2025's festival from data to September 2025 before it books a shift |
+| Zillow: a forecast's error wider than its margin guardrail | The vendor's curve, high on 12 of 13 hidden weeks and climbing | Size the forecast's miss at the plan's horizon, and compare it with the cushion before booking |
+| Target Canada: a forecast with no history | A vendor model never scored on a Lucknow festival | Score it on 2025's festival from data to September 2025 before it books a shift; with no history at all, size from the ground up and keep capacity that can stretch |
 
 ```notes
 LIVE, 10 minutes. Each group writes the check in one line. Transition: part 4, the second
@@ -221,8 +223,8 @@ transcript.
 
 | A weak answer | A hire-grade answer |
 |---|---|
-| "I would average the two: 13 percent sits between 4 and 22." | "I would score both on weeks neither saw, against a copy of last year, in shipments and in rupees." |
-| Picks the more senior stakeholder's number | Concedes what is true in each: finance's growth, the vendor's fit |
+| "I would go with the vendor, trimmed toward finance: plus 13 percent." | "I would score both on weeks neither saw, against a copy of last year, in shipments and in rupees." |
+| Picks the more senior stakeholder's number | Concedes what is true in each: finance's growth, the vendor's tilt to the cheap side |
 | Gives one number with no range | Gives the plan, its error bar in each direction, and what would change it |
 
 ```notes
