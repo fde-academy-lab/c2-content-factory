@@ -1,6 +1,6 @@
 # Guesstimate of the day: how many two-wheelers are sold in India in a year?
 
-**TRAINER ONLY.** Five minutes, in the interview room slot (half two, S9) or as the lab's warm-up.
+**TRAINER ONLY.** Three minutes in the interview room slot (half two, S9), or five as the lab's warm-up.
 The room estimates first; the anchor is revealed last.
 
 ## How does a strong candidate run it?

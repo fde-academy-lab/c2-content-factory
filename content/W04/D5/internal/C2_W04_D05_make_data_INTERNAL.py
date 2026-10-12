@@ -439,10 +439,10 @@ def main():
               f"aligned minus actual, week of {dmy(i)}", "chapter 2 second route")
 
     # ---- the four-week hold-out (fallback part 1, take-home): the origin moves to 24 Aug 2026
-    short = range(100, 104)
-    s4 = forecasts(y, short, 99)
-    s4["vendor"] = {i: vend[i] for i in short}
-    S4 = {m: score(f, y, short) for m, f in s4.items()}
+    last4 = range(100, 104)
+    s4 = forecasts(y, last4, 99)
+    s4["vendor"] = {i: vend[i] for i in last4}
+    S4 = {m: score(f, y, last4) for m, f in s4.items()}
     F.add("holdout_4", "origin_week", y[99], n(y[99]), "shipments, week of 24 Aug 2026, the four-week test's origin", "fallback, take-home")
     for m, sc in S4.items():
         F.add("holdout_4", f"{m}_mae", sc["mae"], n(sc["mae"]), f"{names[m]} on 31 Aug to 21 Sep 2026", "fallback, take-home")
@@ -450,11 +450,11 @@ def main():
         F.add("holdout_4", f"{m}_high_weeks", sc["high_weeks"], f"{sc['high_weeks']} of 4", "weeks too high", "take-home")
     F.add("holdout_4", "vendor_over_aligned_pct", S4["vendor"]["mae"] / S4["aligned"]["mae"] - 1,
           pct(S4["vendor"]["mae"] / S4["aligned"]["mae"] - 1, 0), "vendor over aligned on four weeks", "take-home")
-    for i in short:
+    for i in last4:
         F.add("holdout_4_weeks", f"naive_miss_{week(i):%m_%d}", s4["naive"][i] - y[i], n(s4["naive"][i] - y[i]),
               f"naive minus actual from 24 Aug, week of {dmy(i)}", "take-home self-check")
     F.add("holdout_4", "origin_position", 99, "99", "the origin's position in the 104 rows, counting from 0; drift's step divides by it", "take-home")
-    F.add("holdout_4", "hold_mean", sum(y[i] for i in short) / 4, n(sum(y[i] for i in short) / 4),
+    F.add("holdout_4", "hold_mean", sum(y[i] for i in last4) / 4, n(sum(y[i] for i in last4) / 4),
           "the four hidden weeks' average shipments", "take-home self-check")
     F.add("holdout_4", "vendor_steps", [10, 13], "10 to 13", "weeks ahead of 22 Jun 2026 that the vendor's four rows forecast", "take-home self-check")
     F.add("saturday", "minutes", [120, 20, 20, 60, 30, 30, 20], "120, 20, 20, 60, 30, 30 and 20",

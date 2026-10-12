@@ -2,7 +2,7 @@
 
 Written by C2_W04_D05_facts_audit_INTERNAL.py from the STUDENT files and C2_W04_D05_facts_INTERNAL.yaml. A number matches when a fact's printed form holds it or it equals the fact's value, percent, lakh or crore at the precision printed. Structural numbers (slide, chapter, level, item, minutes, dates, years, code parameters) are left out.
 
-Numbers traced: 1757. Numbers with no home: 0.
+Numbers traced: 1766. Numbers with no home: 0.
 
 | Number | File | Line | Facts id |
 |---|---|---|---|
@@ -322,30 +322,30 @@ Numbers traced: 1757. Numbers with no home: 0.
 | 446,236 | C2_W04_D05_staffing_note_solution_STUDENT.md | 7 | plan_10_19 |
 | 3,718.6 | C2_W04_D05_staffing_note_solution_STUDENT.md | 7 | plan_10_19_raw |
 | 3,719 | C2_W04_D05_staffing_note_solution_STUDENT.md | 7 | shifts_10_19, peak_week_shifts, plan_10_19_raw |
-| 9.5 percent | C2_W04_D05_staffing_note_solution_STUDENT.md | 28 | finance_vs_festival_pct |
-| 434,928 | C2_W04_D05_staffing_note_solution_STUDENT.md | 29 | finance_10_05, aligned_10_19 |
-| 1.026 | C2_W04_D05_staffing_note_solution_STUDENT.md | 29 | cushion_factor |
-| 446,236 | C2_W04_D05_staffing_note_solution_STUDENT.md | 29 | plan_10_19 |
-| 120 | C2_W04_D05_staffing_note_solution_STUDENT.md | 29 | per_shift, minutes, ch1_series_a |
-| 3,718.6 | C2_W04_D05_staffing_note_solution_STUDENT.md | 29 | plan_10_19_raw |
-| 3,719 | C2_W04_D05_staffing_note_solution_STUDENT.md | 29 | shifts_10_19, peak_week_shifts, plan_10_19_raw |
-| 434,928 | C2_W04_D05_staffing_note_solution_STUDENT.md | 29 | finance_10_05, aligned_10_19 |
-| 120 | C2_W04_D05_staffing_note_solution_STUDENT.md | 29 | per_shift, minutes, ch1_series_a |
-| 3,625 | C2_W04_D05_staffing_note_solution_STUDENT.md | 29 | base_shifts_10_19, shifts_no_cushion_10_19 |
-| 20,275 | C2_W04_D05_staffing_note_solution_STUDENT.md | 34 | shifts_total |
-| 3,719 | C2_W04_D05_staffing_note_solution_STUDENT.md | 34 | shifts_10_19, peak_week_shifts, plan_10_19_raw |
-| 19 | C2_W04_D05_staffing_note_solution_STUDENT.md | 34 | series_z, seasonal_naive_total |
-| 4 percent | C2_W04_D05_staffing_note_solution_STUDENT.md | 36 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 6,615 | C2_W04_D05_staffing_note_solution_STUDENT.md | 37 | finance_mae, aligned_mae, week_shipments |
-| 35,832 | C2_W04_D05_staffing_note_solution_STUDENT.md | 37 | week_idle_rs |
-| 1.7 lakh | C2_W04_D05_staffing_note_solution_STUDENT.md | 38 | festive_ratio_m1, week_late_rs |
-| 4,034 | C2_W04_D05_staffing_note_solution_STUDENT.md | 38 | aligned_mae, festive_mae_2025 |
-| 1,638 | C2_W04_D05_staffing_note_solution_STUDENT.md | 40 | peak_overtime_2025 |
-| 4 percent | C2_W04_D05_staffing_note_solution_STUDENT.md | 40 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 9.5 percent | C2_W04_D05_staffing_note_solution_STUDENT.md | 29 | finance_vs_festival_pct |
+| 434,928 | C2_W04_D05_staffing_note_solution_STUDENT.md | 30 | finance_10_05, aligned_10_19 |
+| 1.026 | C2_W04_D05_staffing_note_solution_STUDENT.md | 30 | cushion_factor |
+| 446,236 | C2_W04_D05_staffing_note_solution_STUDENT.md | 30 | plan_10_19 |
+| 120 | C2_W04_D05_staffing_note_solution_STUDENT.md | 30 | per_shift, minutes, ch1_series_a |
+| 3,718.6 | C2_W04_D05_staffing_note_solution_STUDENT.md | 30 | plan_10_19_raw |
+| 3,719 | C2_W04_D05_staffing_note_solution_STUDENT.md | 30 | shifts_10_19, peak_week_shifts, plan_10_19_raw |
+| 434,928 | C2_W04_D05_staffing_note_solution_STUDENT.md | 30 | finance_10_05, aligned_10_19 |
+| 120 | C2_W04_D05_staffing_note_solution_STUDENT.md | 30 | per_shift, minutes, ch1_series_a |
+| 3,625 | C2_W04_D05_staffing_note_solution_STUDENT.md | 30 | base_shifts_10_19, shifts_no_cushion_10_19 |
+| 20,275 | C2_W04_D05_staffing_note_solution_STUDENT.md | 35 | shifts_total |
+| 3,719 | C2_W04_D05_staffing_note_solution_STUDENT.md | 35 | shifts_10_19, peak_week_shifts, plan_10_19_raw |
+| 19 | C2_W04_D05_staffing_note_solution_STUDENT.md | 35 | series_z, seasonal_naive_total |
+| 4 percent | C2_W04_D05_staffing_note_solution_STUDENT.md | 37 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 6,615 | C2_W04_D05_staffing_note_solution_STUDENT.md | 38 | finance_mae, aligned_mae, week_shipments |
+| 35,832 | C2_W04_D05_staffing_note_solution_STUDENT.md | 38 | week_idle_rs |
+| 1.7 lakh | C2_W04_D05_staffing_note_solution_STUDENT.md | 39 | festive_ratio_m1, week_late_rs |
+| 4,034 | C2_W04_D05_staffing_note_solution_STUDENT.md | 39 | aligned_mae, festive_mae_2025 |
+| 1,638 | C2_W04_D05_staffing_note_solution_STUDENT.md | 41 | peak_overtime_2025 |
 | 4 percent | C2_W04_D05_staffing_note_solution_STUDENT.md | 41 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 5 | C2_W04_D05_staffing_note_solution_STUDENT.md | 41 | ordinary_overtime, over_rs, held_errors |
-| 1.4 percent | C2_W04_D05_staffing_note_solution_STUDENT.md | 42 | festive_ratio_p0, vendor_fit_max_pct, oct24_ratio |
-| 16,400 | C2_W04_D05_staffing_note_solution_STUDENT.md | 43 | vendor_mae |
+| 4 percent | C2_W04_D05_staffing_note_solution_STUDENT.md | 42 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 5 | C2_W04_D05_staffing_note_solution_STUDENT.md | 42 | ordinary_overtime, over_rs, held_errors |
+| 1.4 percent | C2_W04_D05_staffing_note_solution_STUDENT.md | 43 | festive_ratio_p0, vendor_fit_max_pct, oct24_ratio |
+| 16,400 | C2_W04_D05_staffing_note_solution_STUDENT.md | 44 | vendor_mae |
 | 1 | C2_W04_D05_ch1_shapes_STUDENT.md | 21 | bot_high_weeks, festive_ratio_p0, festive_ratio_p1 |
 | 2 | C2_W04_D05_ch1_shapes_STUDENT.md | 21 | bot_high_weeks, fit_band_pct, ordinary_week |
 | 3 | C2_W04_D05_ch1_shapes_STUDENT.md | 21 | finance_high_weeks, aligned_high_weeks, pair1_gap_pct |
@@ -693,8 +693,13 @@ Numbers traced: 1757. Numbers with no home: 0.
 | 180600 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 10 out 7 | row_2024_11_04, bot_11_03 |
 | 221208 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 10 out 7 | aligned_11_03 |
 | 401,000 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 11.2 | row_2024_10_14, peak_2024, bot_peak_2025 |
-| 14 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 12.5 | flipkart_space, finance_cost_rs, aligned_cost_rs |
-| 2 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 12 out 2 | bot_high_weeks, fit_band_pct, ordinary_week |
+| 52 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 11.10 | lag_weeks, cups, m5_winner |
+| 7 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 12.2 | aligned_low_weeks, pair3_high, vendor_mean_high_pct |
+| 54 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 12.5 | lag_2026 |
+| 54 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 12.5 | lag_2026 |
+| 54 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 12 out 1 | lag_2026 |
+| 52 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 12 out 2 | lag_weeks, cups, m5_winner |
+| 54 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 12 out 3 | lag_2026 |
 | 104 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 13.3 | history_weeks, finance_cost_rs, growth_factor |
 | 210,000 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 13.4 | ordinary_week |
 | 104 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 14.8 | history_weeks, finance_cost_rs, growth_factor |
@@ -708,7 +713,9 @@ Numbers traced: 1757. Numbers with no home: 0.
 | 356,200 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 15.7 | row_2024_10_21, bot, bot_10_20 |
 | 308,776 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 15.7 | aligned, aligned_10_20 |
 | 308,900 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 15.7 | row_2025_10_20, diwali25_actual, bot_2026_source |
-| 210,000 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 15.11 | ordinary_week |
+| 54 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 15.9 | lag_2026 |
+| 52 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 15.9 | lag_weeks, cups, m5_winner |
+| 210,000 | C2_W04_D05_01_twelve_rows_STUDENT.ipynb | cell 15.12 | ordinary_week |
 | 3 | C2_W04_D05_02_holdout_scoreboard_STUDENT.ipynb | cell 1.3 | finance_high_weeks, aligned_high_weeks, pair1_gap_pct |
 | 104 | C2_W04_D05_02_holdout_scoreboard_STUDENT.ipynb | cell 1.4 | history_weeks, finance_cost_rs, growth_factor |
 | 120 | C2_W04_D05_02_holdout_scoreboard_STUDENT.ipynb | cell 1.6 | per_shift, minutes, ch1_series_a |
@@ -1097,376 +1104,378 @@ Numbers traced: 1757. Numbers with no home: 0.
 | 18 | C2_W04_D05_saturday_preview_STUDENT.md | 37 | share_short_pct, points_apart, series_z |
 | 01 | C2_W04_D05_saturday_preview_STUDENT.md | 60 | festive_ratio_p0, festive_ratio_p1, plan_quantile |
 | 04 | C2_W04_D05_saturday_preview_STUDENT.md | 60 | finance_rule_pct, row_2024_10_14, row_2024_10_21 |
+| 6,615 | C2_W04_D05_saturday_preview_STUDENT.md | 70 | finance_mae, aligned_mae, week_shipments |
+| 9,831 | C2_W04_D05_saturday_preview_STUDENT.md | 71 | bot_mae |
 | 4 | C2_W04_D05_fallback_STUDENT.md | 5 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 35 | C2_W04_D05_fallback_STUDENT.md | 10 | ratio, series_y, shop_last |
-| 30 | C2_W04_D05_fallback_STUDENT.md | 10 | first_week, minutes, vendor_floor_ratio |
-| 30 | C2_W04_D05_fallback_STUDENT.md | 10 | first_week, minutes, vendor_floor_ratio |
-| 14,923 | C2_W04_D05_fallback_STUDENT.md | 53 | naive_mae |
-| 37,050 | C2_W04_D05_fallback_STUDENT.md | 53 | naive_mae |
-| 196,600 | C2_W04_D05_fallback_STUDENT.md | 58 | actual_08_24, origin_week |
-| 4 percent | C2_W04_D05_fallback_STUDENT.md | 60 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 14,923 | C2_W04_D05_fallback_STUDENT.md | 49 | naive_mae |
+| 37,050 | C2_W04_D05_fallback_STUDENT.md | 49 | naive_mae |
+| 196,600 | C2_W04_D05_fallback_STUDENT.md | 54 | actual_08_24, origin_week |
+| 4 percent | C2_W04_D05_fallback_STUDENT.md | 56 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 196,600 | C2_W04_D05_fallback_STUDENT.md | 66 | actual_08_24, origin_week |
 | 196,600 | C2_W04_D05_fallback_STUDENT.md | 70 | actual_08_24, origin_week |
-| 196,600 | C2_W04_D05_fallback_STUDENT.md | 74 | actual_08_24, origin_week |
-| 41,800 | C2_W04_D05_fallback_STUDENT.md | 75 | naive_miss_08_31 |
-| 37,100 | C2_W04_D05_fallback_STUDENT.md | 75 | naive_miss_09_07 |
-| 33,700 | C2_W04_D05_fallback_STUDENT.md | 75 | naive_miss_09_14 |
-| 35,600 | C2_W04_D05_fallback_STUDENT.md | 75 | naive_miss_09_21 |
-| 37,050 | C2_W04_D05_fallback_STUDENT.md | 76 | naive_mae |
-| 14,923 | C2_W04_D05_fallback_STUDENT.md | 76 | naive_mae |
-| 148 percent | C2_W04_D05_fallback_STUDENT.md | 93 | vendor_over_aligned_pct, ch1_series_c |
-| 233 percent | C2_W04_D05_fallback_STUDENT.md | 93 | vendor_over_aligned_pct |
-| 331,200 | C2_W04_D05_fallback_STUDENT.md | 131 | row_2025_09_29, naive_10_06, actual_09_29 |
-| 87,000 | C2_W04_D05_fallback_STUDENT.md | 131 | naive_miss_10_06 |
-| 417,040 | C2_W04_D05_fallback_STUDENT.md | 131 | aligned_10_06, guided_first_copy_plus |
-| 1,160 | C2_W04_D05_fallback_STUDENT.md | 131 | aligned_miss_10_06 |
-| 418,200 | C2_W04_D05_fallback_STUDENT.md | 132 | row_2025_10_06, peak_2025, bot_2026_peak |
-| 49,200 | C2_W04_D05_fallback_STUDENT.md | 132 | naive_miss_10_13 |
-| 370,448 | C2_W04_D05_fallback_STUDENT.md | 132 | aligned_10_13 |
-| 1,448 | C2_W04_D05_fallback_STUDENT.md | 132 | aligned_miss_10_13 |
-| 369,000 | C2_W04_D05_fallback_STUDENT.md | 133 | row_2025_10_13, naive, naive_10_20 |
-| 60,100 | C2_W04_D05_fallback_STUDENT.md | 133 | naive_miss, naive_miss_10_20 |
-| 308,776 | C2_W04_D05_fallback_STUDENT.md | 133 | aligned, aligned_10_20 |
-| 124 | C2_W04_D05_fallback_STUDENT.md | 133 | aligned_miss, aligned_miss_10_20, ch1_series_a |
-| 308,900 | C2_W04_D05_fallback_STUDENT.md | 134 | row_2025_10_20, diwali25_actual, bot_2026_source |
-| 120,300 | C2_W04_D05_fallback_STUDENT.md | 134 | naive_miss_10_27 |
-| 187,824 | C2_W04_D05_fallback_STUDENT.md | 134 | aligned_10_27 |
-| 776 | C2_W04_D05_fallback_STUDENT.md | 134 | aligned_miss_10_27 |
-| 188,600 | C2_W04_D05_fallback_STUDENT.md | 135 | row_2025_10_27, naive_11_03, actual_10_27 |
-| 39,300 | C2_W04_D05_fallback_STUDENT.md | 135 | naive_miss_11_03 |
-| 221,208 | C2_W04_D05_fallback_STUDENT.md | 135 | aligned_11_03 |
-| 6,692 | C2_W04_D05_fallback_STUDENT.md | 135 | aligned_miss_11_03 |
-| 4 percent | C2_W04_D05_fallback_STUDENT.md | 139 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 71,180 | C2_W04_D05_fallback_STUDENT.md | 165 | naive_mae |
-| 2,040 | C2_W04_D05_fallback_STUDENT.md | 165 | aligned_mae |
-| 71,180 | C2_W04_D05_fallback_STUDENT.md | 168 | naive_mae |
-| 2,040 | C2_W04_D05_fallback_STUDENT.md | 168 | aligned_mae |
-| 200 | C2_W04_D05_fallback_STUDENT.md | 180 | zillow_band, diwali_move_weeks, bot_high_weeks |
-| 1,200 | C2_W04_D05_fallback_STUDENT.md | 181 | zillow_swing, vendor_high_weeks, errors |
-| 500 | C2_W04_D05_fallback_STUDENT.md | 181 | idle_shift_low, zillow_q4_low, ordinary_overtime |
-| 700 | C2_W04_D05_fallback_STUDENT.md | 181 | zillow_q4_high, aligned_low_weeks, pair3_high |
-| 304 | C2_W04_D05_fallback_STUDENT.md | 182 | zillow_writedown |
-| 25 percent | C2_W04_D05_fallback_STUDENT.md | 182 | late_rs, zillow_workforce |
-| 133 | C2_W04_D05_fallback_STUDENT.md | 196 | target_stores |
-| 17,600 | C2_W04_D05_fallback_STUDENT.md | 196 | target_staff |
-| 12 | C2_W04_D05_fallback_STUDENT.md | 213 | vendor_high_weeks, vendor_cost_rs, errors |
-| 13 | C2_W04_D05_fallback_STUDENT.md | 213 | naive_high_weeks, drift_high_weeks, bot_high_weeks |
-| 13 percent | C2_W04_D05_fallback_STUDENT.md | 228 | naive_high_weeks, drift_high_weeks, bot_high_weeks |
-| 4 | C2_W04_D05_fallback_STUDENT.md | 228 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 22 | C2_W04_D05_fallback_STUDENT.md | 228 | vendor_promise_pct, drift_late_rs, vendor_vs_calendar_pct |
-| 71,180 | C2_W04_D05_fallback_STUDENT.md | 244 | naive_mae |
+| 41,800 | C2_W04_D05_fallback_STUDENT.md | 71 | naive_miss_08_31 |
+| 37,100 | C2_W04_D05_fallback_STUDENT.md | 71 | naive_miss_09_07 |
+| 33,700 | C2_W04_D05_fallback_STUDENT.md | 71 | naive_miss_09_14 |
+| 35,600 | C2_W04_D05_fallback_STUDENT.md | 71 | naive_miss_09_21 |
+| 37,050 | C2_W04_D05_fallback_STUDENT.md | 72 | naive_mae |
+| 14,923 | C2_W04_D05_fallback_STUDENT.md | 72 | naive_mae |
+| 233,650 | C2_W04_D05_fallback_STUDENT.md | 75 | hold_mean |
+| 218,300 | C2_W04_D05_fallback_STUDENT.md | 75 | origin_week |
+| 217,746 | C2_W04_D05_fallback_STUDENT.md | 75 | holdout_mean |
+| 148 percent | C2_W04_D05_fallback_STUDENT.md | 89 | vendor_over_aligned_pct, ch1_series_c |
+| 233 percent | C2_W04_D05_fallback_STUDENT.md | 89 | vendor_over_aligned_pct |
+| 331,200 | C2_W04_D05_fallback_STUDENT.md | 127 | row_2025_09_29, naive_10_06, actual_09_29 |
+| 87,000 | C2_W04_D05_fallback_STUDENT.md | 127 | naive_miss_10_06 |
+| 417,040 | C2_W04_D05_fallback_STUDENT.md | 127 | aligned_10_06, guided_first_copy_plus |
+| 1,160 | C2_W04_D05_fallback_STUDENT.md | 127 | aligned_miss_10_06 |
+| 418,200 | C2_W04_D05_fallback_STUDENT.md | 128 | row_2025_10_06, peak_2025, bot_2026_peak |
+| 49,200 | C2_W04_D05_fallback_STUDENT.md | 128 | naive_miss_10_13 |
+| 370,448 | C2_W04_D05_fallback_STUDENT.md | 128 | aligned_10_13 |
+| 1,448 | C2_W04_D05_fallback_STUDENT.md | 128 | aligned_miss_10_13 |
+| 369,000 | C2_W04_D05_fallback_STUDENT.md | 129 | row_2025_10_13, naive, naive_10_20 |
+| 60,100 | C2_W04_D05_fallback_STUDENT.md | 129 | naive_miss, naive_miss_10_20 |
+| 308,776 | C2_W04_D05_fallback_STUDENT.md | 129 | aligned, aligned_10_20 |
+| 124 | C2_W04_D05_fallback_STUDENT.md | 129 | aligned_miss, aligned_miss_10_20, ch1_series_a |
+| 308,900 | C2_W04_D05_fallback_STUDENT.md | 130 | row_2025_10_20, diwali25_actual, bot_2026_source |
+| 120,300 | C2_W04_D05_fallback_STUDENT.md | 130 | naive_miss_10_27 |
+| 187,824 | C2_W04_D05_fallback_STUDENT.md | 130 | aligned_10_27 |
+| 776 | C2_W04_D05_fallback_STUDENT.md | 130 | aligned_miss_10_27 |
+| 188,600 | C2_W04_D05_fallback_STUDENT.md | 131 | row_2025_10_27, naive_11_03, actual_10_27 |
+| 39,300 | C2_W04_D05_fallback_STUDENT.md | 131 | naive_miss_11_03 |
+| 221,208 | C2_W04_D05_fallback_STUDENT.md | 131 | aligned_11_03 |
+| 6,692 | C2_W04_D05_fallback_STUDENT.md | 131 | aligned_miss_11_03 |
+| 4 percent | C2_W04_D05_fallback_STUDENT.md | 135 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 71,180 | C2_W04_D05_fallback_STUDENT.md | 161 | naive_mae |
+| 2,040 | C2_W04_D05_fallback_STUDENT.md | 161 | aligned_mae |
+| 71,180 | C2_W04_D05_fallback_STUDENT.md | 164 | naive_mae |
+| 2,040 | C2_W04_D05_fallback_STUDENT.md | 164 | aligned_mae |
+| 200 | C2_W04_D05_fallback_STUDENT.md | 176 | zillow_band, diwali_move_weeks, bot_high_weeks |
+| 1,200 | C2_W04_D05_fallback_STUDENT.md | 177 | zillow_swing, vendor_high_weeks, errors |
+| 500 | C2_W04_D05_fallback_STUDENT.md | 177 | idle_shift_low, zillow_q4_low, ordinary_overtime |
+| 700 | C2_W04_D05_fallback_STUDENT.md | 177 | zillow_q4_high, aligned_low_weeks, pair3_high |
+| 304 | C2_W04_D05_fallback_STUDENT.md | 178 | zillow_writedown |
+| 25 percent | C2_W04_D05_fallback_STUDENT.md | 178 | late_rs, zillow_workforce |
+| 133 | C2_W04_D05_fallback_STUDENT.md | 192 | target_stores |
+| 17,600 | C2_W04_D05_fallback_STUDENT.md | 192 | target_staff |
+| 12 | C2_W04_D05_fallback_STUDENT.md | 209 | vendor_high_weeks, vendor_cost_rs, errors |
+| 13 | C2_W04_D05_fallback_STUDENT.md | 209 | naive_high_weeks, drift_high_weeks, bot_high_weeks |
+| 13 percent | C2_W04_D05_fallback_STUDENT.md | 224 | naive_high_weeks, drift_high_weeks, bot_high_weeks |
+| 4 | C2_W04_D05_fallback_STUDENT.md | 224 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 22 | C2_W04_D05_fallback_STUDENT.md | 224 | vendor_promise_pct, drift_late_rs, vendor_vs_calendar_pct |
+| 71,180 | C2_W04_D05_fallback_STUDENT.md | 240 | naive_mae |
 | 18 | C2_W04_D05_half1_STUDENT.md | 1 | share_short_pct, points_apart, series_z |
 | 4 | C2_W04_D05_half1_STUDENT.md | 5 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 18 | C2_W04_D05_half1_STUDENT.md | 18 | share_short_pct, points_apart, series_z |
-| 104 | C2_W04_D05_half1_STUDENT.md | 24 | history_weeks, finance_cost_rs, growth_factor |
-| 210,000 | C2_W04_D05_half1_STUDENT.md | 24 | ordinary_week |
-| 1.5 | C2_W04_D05_half1_STUDENT.md | 25 | festive_ratio_m3, vendor_over_aligned_pct |
-| 1.9 | C2_W04_D05_half1_STUDENT.md | 25 | festive_ratio_m2, mon_before, replacement |
-| 1.7 | C2_W04_D05_half1_STUDENT.md | 25 | festive_ratio_m1, week_late_rs |
-| 1.4 | C2_W04_D05_half1_STUDENT.md | 25 | festive_ratio_p0, vendor_fit_max_pct, oct24_ratio |
-| 22 percent | C2_W04_D05_half1_STUDENT.md | 26 | vendor_promise_pct, vendor_vs_calendar_pct, series_x |
-| 4 percent | C2_W04_D05_half1_STUDENT.md | 26 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 650 | C2_W04_D05_half1_STUDENT.md | 28 | idle_shift_rs |
-| 500 | C2_W04_D05_half1_STUDENT.md | 28 | idle_shift_low, zillow_q4_low, ordinary_overtime |
-| 800 | C2_W04_D05_half1_STUDENT.md | 28 | idle_shift_high, window_weeks, naive_high_weeks |
-| 25 | C2_W04_D05_half1_STUDENT.md | 28 | late_rs, zillow_workforce |
-| 15 | C2_W04_D05_half1_STUDENT.md | 28 | late_low, plan_factor, errors |
-| 40 | C2_W04_D05_half1_STUDENT.md | 28 | late_high, shop_last |
-| 120 | C2_W04_D05_half1_STUDENT.md | 28 | per_shift, minutes, ch1_series_a |
-| 1.6 | C2_W04_D05_half1_STUDENT.md | 50 | mon_after, oct25_ratio |
-| 314 | C2_W04_D05_half1_STUDENT.md | 51 | tue_before |
-| 260 | C2_W04_D05_half1_STUDENT.md | 51 | tue_after |
-| 3.8 percent | C2_W04_D05_half1_STUDENT.md | 52 | wed_after, sn_err_mean_pct, range_high |
-| 44 percent | C2_W04_D05_half1_STUDENT.md | 53 | thu_after, shop_this |
-| 20,275 | C2_W04_D05_half1_STUDENT.md | 84 | shifts_total |
-| 20,275 | C2_W04_D05_half1_STUDENT.md | 88 | shifts_total |
-| 3,719 | C2_W04_D05_half1_STUDENT.md | 88 | shifts_10_19, peak_week_shifts, plan_10_19_raw |
-| 6,615 | C2_W04_D05_half1_STUDENT.md | 89 | finance_mae, aligned_mae, week_shipments |
-| 35,832 | C2_W04_D05_half1_STUDENT.md | 89 | week_idle_rs |
-| 1.7 lakh | C2_W04_D05_half1_STUDENT.md | 89 | festive_ratio_m1, week_late_rs |
-| 104 | C2_W04_D05_half1_STUDENT.md | 104 | history_weeks, finance_cost_rs, growth_factor |
-| 3 | C2_W04_D05_half1_STUDENT.md | 107 | finance_high_weeks, aligned_high_weeks, pair1_gap_pct |
-| 401,000 | C2_W04_D05_half1_STUDENT.md | 154 | row_2024_10_14, peak_2024, bot_peak_2025 |
-| 418,200 | C2_W04_D05_half1_STUDENT.md | 154 | row_2025_10_06, peak_2025, bot_2026_peak |
-| 296,900 | C2_W04_D05_half1_STUDENT.md | 154 | row_2024_10_28, aligned_source, bot_10_27 |
-| 308,900 | C2_W04_D05_half1_STUDENT.md | 154 | row_2025_10_20, diwali25_actual, bot_2026_source |
-| 4 percent | C2_W04_D05_half1_STUDENT.md | 173 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 50 | C2_W04_D05_half1_STUDENT.md | 184 | naive_check_floor, shop_last, share_other |
-| 52 | C2_W04_D05_half1_STUDENT.md | 184 | lag_weeks, cups, m5_winner |
-| 49 | C2_W04_D05_half1_STUDENT.md | 184 | cups |
-| 51 | C2_W04_D05_half1_STUDENT.md | 184 | lag_2025, cups, cups_naive |
-| 51 | C2_W04_D05_half1_STUDENT.md | 184 | lag_2025, cups, cups_naive |
-| 52 | C2_W04_D05_half1_STUDENT.md | 185 | lag_weeks, cups, m5_winner |
-| 80 | C2_W04_D05_half1_STUDENT.md | 185 | sundays, bot_cost_rs |
-| 80 | C2_W04_D05_half1_STUDENT.md | 185 | sundays, bot_cost_rs |
-| 4 percent | C2_W04_D05_half1_STUDENT.md | 191 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 52 | C2_W04_D05_half1_STUDENT.md | 202 | lag_weeks, cups, m5_winner |
-| 4 percent | C2_W04_D05_half1_STUDENT.md | 203 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 10,000 | C2_W04_D05_half1_STUDENT.md | 204 | within_10000, ch1_series_a, ch1_series_b |
-| 308,900 | C2_W04_D05_half1_STUDENT.md | 209 | row_2025_10_20, diwali25_actual, bot_2026_source |
+| 18 | C2_W04_D05_half1_STUDENT.md | 9 | share_short_pct, points_apart, series_z |
+| 104 | C2_W04_D05_half1_STUDENT.md | 15 | history_weeks, finance_cost_rs, growth_factor |
+| 210,000 | C2_W04_D05_half1_STUDENT.md | 15 | ordinary_week |
+| 1.5 | C2_W04_D05_half1_STUDENT.md | 16 | festive_ratio_m3, vendor_over_aligned_pct |
+| 1.9 | C2_W04_D05_half1_STUDENT.md | 16 | festive_ratio_m2, mon_before, replacement |
+| 1.7 | C2_W04_D05_half1_STUDENT.md | 16 | festive_ratio_m1, week_late_rs |
+| 1.4 | C2_W04_D05_half1_STUDENT.md | 16 | festive_ratio_p0, vendor_fit_max_pct, oct24_ratio |
+| 22 percent | C2_W04_D05_half1_STUDENT.md | 17 | vendor_promise_pct, vendor_vs_calendar_pct, series_x |
+| 4 percent | C2_W04_D05_half1_STUDENT.md | 17 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 650 | C2_W04_D05_half1_STUDENT.md | 19 | idle_shift_rs |
+| 500 | C2_W04_D05_half1_STUDENT.md | 19 | idle_shift_low, zillow_q4_low, ordinary_overtime |
+| 800 | C2_W04_D05_half1_STUDENT.md | 19 | idle_shift_high, window_weeks, naive_high_weeks |
+| 25 | C2_W04_D05_half1_STUDENT.md | 19 | late_rs, zillow_workforce |
+| 15 | C2_W04_D05_half1_STUDENT.md | 19 | late_low, plan_factor, errors |
+| 40 | C2_W04_D05_half1_STUDENT.md | 19 | late_high, shop_last |
+| 120 | C2_W04_D05_half1_STUDENT.md | 19 | per_shift, minutes, ch1_series_a |
+| 1.6 | C2_W04_D05_half1_STUDENT.md | 43 | mon_after, oct25_ratio |
+| 314 | C2_W04_D05_half1_STUDENT.md | 44 | tue_before |
+| 260 | C2_W04_D05_half1_STUDENT.md | 44 | tue_after |
+| 3.8 percent | C2_W04_D05_half1_STUDENT.md | 45 | wed_after, sn_err_mean_pct, range_high |
+| 44 percent | C2_W04_D05_half1_STUDENT.md | 46 | thu_after, shop_this |
+| 20,275 | C2_W04_D05_half1_STUDENT.md | 77 | shifts_total |
+| 20,275 | C2_W04_D05_half1_STUDENT.md | 81 | shifts_total |
+| 3,719 | C2_W04_D05_half1_STUDENT.md | 81 | shifts_10_19, peak_week_shifts, plan_10_19_raw |
+| 6,615 | C2_W04_D05_half1_STUDENT.md | 82 | finance_mae, aligned_mae, week_shipments |
+| 35,832 | C2_W04_D05_half1_STUDENT.md | 82 | week_idle_rs |
+| 1.7 lakh | C2_W04_D05_half1_STUDENT.md | 82 | festive_ratio_m1, week_late_rs |
+| 104 | C2_W04_D05_half1_STUDENT.md | 97 | history_weeks, finance_cost_rs, growth_factor |
+| 3 | C2_W04_D05_half1_STUDENT.md | 100 | finance_high_weeks, aligned_high_weeks, pair1_gap_pct |
+| 401,000 | C2_W04_D05_half1_STUDENT.md | 147 | row_2024_10_14, peak_2024, bot_peak_2025 |
+| 418,200 | C2_W04_D05_half1_STUDENT.md | 147 | row_2025_10_06, peak_2025, bot_2026_peak |
+| 296,900 | C2_W04_D05_half1_STUDENT.md | 147 | row_2024_10_28, aligned_source, bot_10_27 |
+| 308,900 | C2_W04_D05_half1_STUDENT.md | 147 | row_2025_10_20, diwali25_actual, bot_2026_source |
+| 4 percent | C2_W04_D05_half1_STUDENT.md | 166 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 50 | C2_W04_D05_half1_STUDENT.md | 177 | naive_check_floor, shop_last, share_other |
+| 52 | C2_W04_D05_half1_STUDENT.md | 177 | lag_weeks, cups, m5_winner |
+| 49 | C2_W04_D05_half1_STUDENT.md | 177 | cups |
+| 51 | C2_W04_D05_half1_STUDENT.md | 177 | lag_2025, cups, cups_naive |
+| 51 | C2_W04_D05_half1_STUDENT.md | 177 | lag_2025, cups, cups_naive |
+| 52 | C2_W04_D05_half1_STUDENT.md | 178 | lag_weeks, cups, m5_winner |
+| 80 | C2_W04_D05_half1_STUDENT.md | 178 | sundays, bot_cost_rs |
+| 80 | C2_W04_D05_half1_STUDENT.md | 178 | sundays, bot_cost_rs |
+| 4 percent | C2_W04_D05_half1_STUDENT.md | 184 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 52 | C2_W04_D05_half1_STUDENT.md | 195 | lag_weeks, cups, m5_winner |
+| 4 percent | C2_W04_D05_half1_STUDENT.md | 196 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 10,000 | C2_W04_D05_half1_STUDENT.md | 197 | within_10000, ch1_series_a, ch1_series_b |
+| 308,900 | C2_W04_D05_half1_STUDENT.md | 202 | row_2025_10_20, diwali25_actual, bot_2026_source |
+| 124 | C2_W04_D05_half1_STUDENT.md | 207 | aligned_miss, aligned_miss_10_20, ch1_series_a |
+| 369,000 | C2_W04_D05_half1_STUDENT.md | 212 | row_2025_10_13, naive, naive_10_20 |
+| 60,100 | C2_W04_D05_half1_STUDENT.md | 212 | naive_miss, naive_miss_10_20 |
+| 356,200 | C2_W04_D05_half1_STUDENT.md | 213 | row_2024_10_21, bot, bot_10_20 |
+| 47,300 | C2_W04_D05_half1_STUDENT.md | 213 | bot_miss, guided_misses |
+| 4 percent | C2_W04_D05_half1_STUDENT.md | 214 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 308,776 | C2_W04_D05_half1_STUDENT.md | 214 | aligned, aligned_10_20 |
 | 124 | C2_W04_D05_half1_STUDENT.md | 214 | aligned_miss, aligned_miss_10_20, ch1_series_a |
-| 369,000 | C2_W04_D05_half1_STUDENT.md | 219 | row_2025_10_13, naive, naive_10_20 |
-| 60,100 | C2_W04_D05_half1_STUDENT.md | 219 | naive_miss, naive_miss_10_20 |
-| 356,200 | C2_W04_D05_half1_STUDENT.md | 220 | row_2024_10_21, bot, bot_10_20 |
-| 47,300 | C2_W04_D05_half1_STUDENT.md | 220 | bot_miss, guided_misses |
-| 4 percent | C2_W04_D05_half1_STUDENT.md | 221 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 308,776 | C2_W04_D05_half1_STUDENT.md | 221 | aligned, aligned_10_20 |
-| 124 | C2_W04_D05_half1_STUDENT.md | 221 | aligned_miss, aligned_miss_10_20, ch1_series_a |
-| 308,900 | C2_W04_D05_half1_STUDENT.md | 223 | row_2025_10_20, diwali25_actual, bot_2026_source |
-| 296,900 | C2_W04_D05_half1_STUDENT.md | 226 | row_2024_10_28, aligned_source, bot_10_27 |
-| 1.04 | C2_W04_D05_half1_STUDENT.md | 226 | growth_factor, finance_cost_rs |
-| 308,776 | C2_W04_D05_half1_STUDENT.md | 226 | aligned, aligned_10_20 |
-| 401,000 | C2_W04_D05_half1_STUDENT.md | 237 | row_2024_10_14, peak_2024, bot_peak_2025 |
-| 369,000 | C2_W04_D05_half1_STUDENT.md | 237 | row_2025_10_13, naive, naive_10_20 |
-| 418,200 | C2_W04_D05_half1_STUDENT.md | 237 | row_2025_10_06, peak_2025, bot_2026_peak |
-| 312,900 | C2_W04_D05_half1_STUDENT.md | 237 | row_2024_10_07, bot_10_06 |
-| 52 | C2_W04_D05_half1_STUDENT.md | 251 | lag_weeks, cups, m5_winner |
-| 14 | C2_W04_D05_half1_STUDENT.md | 266 | flipkart_space, finance_cost_rs, aligned_cost_rs |
-| 2.5 lakh | C2_W04_D05_half1_STUDENT.md | 266 | flipkart_jobs, aug_sale_2026, actual_08_10 |
-| 124 | C2_W04_D05_half1_STUDENT.md | 283 | aligned_miss, aligned_miss_10_20, ch1_series_a |
-| 0.847 | C2_W04_D05_half1_STUDENT.md | 291 | m5_seasonal_naive |
-| 1.752 | C2_W04_D05_half1_STUDENT.md | 291 | m5_naive |
-| 3 | C2_W04_D05_half1_STUDENT.md | 304 | finance_high_weeks, aligned_high_weeks, pair1_gap_pct |
-| 22 percent | C2_W04_D05_half1_STUDENT.md | 313 | vendor_promise_pct, vendor_vs_calendar_pct, series_x |
-| 25 | C2_W04_D05_half1_STUDENT.md | 320 | late_rs, zillow_workforce |
-| 5.42 | C2_W04_D05_half1_STUDENT.md | 320 | over_rs |
-| 104 | C2_W04_D05_half1_STUDENT.md | 332 | history_weeks, finance_cost_rs, growth_factor |
-| 91 | C2_W04_D05_half1_STUDENT.md | 337 | training_weeks |
-| 8.3 | C2_W04_D05_half1_STUDENT.md | 348 | held_mae |
-| 10 | C2_W04_D05_half1_STUDENT.md | 348 | raised_high_weeks, vendor_steps, held_errors |
-| 5 | C2_W04_D05_half1_STUDENT.md | 348 | ordinary_overtime, over_rs, held_errors |
-| 10 | C2_W04_D05_half1_STUDENT.md | 348 | raised_high_weeks, vendor_steps, held_errors |
-| 10 | C2_W04_D05_half1_STUDENT.md | 348 | raised_high_weeks, vendor_steps, held_errors |
-| 5 | C2_W04_D05_half1_STUDENT.md | 348 | ordinary_overtime, over_rs, held_errors |
-| 10 | C2_W04_D05_half1_STUDENT.md | 348 | raised_high_weeks, vendor_steps, held_errors |
-| 3 | C2_W04_D05_half1_STUDENT.md | 348 | finance_high_weeks, aligned_high_weeks, pair1_gap_pct |
-| 4 percent | C2_W04_D05_half1_STUDENT.md | 369 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 6,615 | C2_W04_D05_half1_STUDENT.md | 379 | finance_mae, aligned_mae, week_shipments |
-| 6,615 | C2_W04_D05_half1_STUDENT.md | 384 | finance_mae, aligned_mae, week_shipments |
-| 9,831 | C2_W04_D05_half1_STUDENT.md | 384 | bot_mae |
-| 14,842 | C2_W04_D05_half1_STUDENT.md | 384 | drift_mae |
-| 14,923 | C2_W04_D05_half1_STUDENT.md | 384 | naive_mae |
-| 4 percent | C2_W04_D05_half1_STUDENT.md | 384 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 2 percent | C2_W04_D05_half1_STUDENT.md | 395 | bot_high_weeks, fit_band_pct, festive_ratio_m3 |
-| 6,615 | C2_W04_D05_half1_STUDENT.md | 401 | finance_mae, aligned_mae, week_shipments |
-| 16,400 | C2_W04_D05_half1_STUDENT.md | 411 | vendor_mae |
-| 2 percent | C2_W04_D05_half1_STUDENT.md | 414 | bot_high_weeks, fit_band_pct, festive_ratio_m3 |
-| 1.4 percent | C2_W04_D05_half1_STUDENT.md | 416 | festive_ratio_p0, vendor_fit_max_pct, oct24_ratio |
-| 22 | C2_W04_D05_half1_STUDENT.md | 416 | vendor_promise_pct, drift_late_rs, vendor_vs_calendar_pct |
-| 22 percent | C2_W04_D05_half1_STUDENT.md | 416 | vendor_promise_pct, vendor_vs_calendar_pct, series_x |
-| 16,400 | C2_W04_D05_half1_STUDENT.md | 416 | vendor_mae |
-| 67 percent | C2_W04_D05_half1_STUDENT.md | 416 | vendor_over_bot_pct |
-| 25 | C2_W04_D05_half1_STUDENT.md | 426 | late_rs, zillow_workforce |
-| 5.42 | C2_W04_D05_half1_STUDENT.md | 426 | over_rs |
-| 6,615 | C2_W04_D05_half1_STUDENT.md | 429 | finance_mae, aligned_mae, week_shipments |
-| 16,400 | C2_W04_D05_half1_STUDENT.md | 430 | vendor_mae |
-| 9,831 | C2_W04_D05_half1_STUDENT.md | 431 | bot_mae |
-| 14,923 | C2_W04_D05_half1_STUDENT.md | 432 | naive_mae |
-| 650 | C2_W04_D05_half1_STUDENT.md | 436 | idle_shift_rs |
-| 120 | C2_W04_D05_half1_STUDENT.md | 436 | per_shift, minutes, ch1_series_a |
-| 5.42 | C2_W04_D05_half1_STUDENT.md | 436 | over_rs |
-| 11.9 lakh | C2_W04_D05_half1_STUDENT.md | 442 | vendor_cost_rs |
-| 12 | C2_W04_D05_half1_STUDENT.md | 447 | vendor_high_weeks, vendor_cost_rs, errors |
-| 13 | C2_W04_D05_half1_STUDENT.md | 447 | naive_high_weeks, drift_high_weeks, bot_high_weeks |
-| 11.9 lakh | C2_W04_D05_half1_STUDENT.md | 447 | vendor_cost_rs |
-| 13.5 lakh | C2_W04_D05_half1_STUDENT.md | 447 | finance_cost_rs, aligned_cost_rs |
-| 11 | C2_W04_D05_half1_STUDENT.md | 447 | bot_low_weeks, finance_late_rs, aligned_late_rs |
-| 13 | C2_W04_D05_half1_STUDENT.md | 447 | naive_high_weeks, drift_high_weeks, bot_high_weeks |
-| 30.5 lakh | C2_W04_D05_half1_STUDENT.md | 447 | bot_cost_rs |
-| 28.8 lakh | C2_W04_D05_half1_STUDENT.md | 447 | naive_cost_rs |
-| 4.6 | C2_W04_D05_half1_STUDENT.md | 451 | cost_ratio, aligned_cost_rs |
-| 3.6 percent | C2_W04_D05_half1_STUDENT.md | 461 | vendor_first6_pct, aligned_late_rs |
-| 11.5 percent | C2_W04_D05_half1_STUDENT.md | 461 | vendor_last6_pct |
-| 85,996 | C2_W04_D05_half1_STUDENT.md | 474 | aligned_abs_total |
-| 13 | C2_W04_D05_half1_STUDENT.md | 474 | naive_high_weeks, drift_high_weeks, bot_high_weeks |
-| 6,615 | C2_W04_D05_half1_STUDENT.md | 475 | finance_mae, aligned_mae, week_shipments |
-| 40,748 | C2_W04_D05_half1_STUDENT.md | 478 | finance_over, aligned_over |
-| 6 | C2_W04_D05_half1_STUDENT.md | 478 | finance_high_weeks, aligned_high_weeks, nearest_holdout_gap |
-| 45,248 | C2_W04_D05_half1_STUDENT.md | 479 | finance_under, aligned_under |
-| 7 | C2_W04_D05_half1_STUDENT.md | 479 | aligned_low_weeks, pair3_high, vendor_mean_high_pct |
-| 6,615 | C2_W04_D05_half1_STUDENT.md | 480 | finance_mae, aligned_mae, week_shipments |
-| 40,748 | C2_W04_D05_half1_STUDENT.md | 480 | finance_over, aligned_over |
-| 45,248 | C2_W04_D05_half1_STUDENT.md | 480 | finance_under, aligned_under |
-| 13 | C2_W04_D05_half1_STUDENT.md | 480 | naive_high_weeks, drift_high_weeks, bot_high_weeks |
-| 85,996 | C2_W04_D05_half1_STUDENT.md | 480 | aligned_abs_total |
-| 13 | C2_W04_D05_half1_STUDENT.md | 480 | naive_high_weeks, drift_high_weeks, bot_high_weeks |
-| 6,615 | C2_W04_D05_half1_STUDENT.md | 483 | finance_mae, aligned_mae, week_shipments |
-| 6 | C2_W04_D05_half1_STUDENT.md | 483 | finance_high_weeks, aligned_high_weeks, nearest_holdout_gap |
-| 7 | C2_W04_D05_half1_STUDENT.md | 483 | aligned_low_weeks, pair3_high, vendor_mean_high_pct |
-| 6,615 | C2_W04_D05_half1_STUDENT.md | 497 | finance_mae, aligned_mae, week_shipments |
-| 9,831 | C2_W04_D05_half1_STUDENT.md | 497 | bot_mae |
-| 16,400 | C2_W04_D05_half1_STUDENT.md | 497 | vendor_mae |
-| 11.9 lakh | C2_W04_D05_half1_STUDENT.md | 498 | vendor_cost_rs |
-| 30.5 lakh | C2_W04_D05_half1_STUDENT.md | 498 | bot_cost_rs |
-| 1,045 | C2_W04_D05_half1_STUDENT.md | 506 | plos_series |
-| 3 | C2_W04_D05_half1_STUDENT.md | 518 | finance_high_weeks, aligned_high_weeks, pair1_gap_pct |
-| 22 | C2_W04_D05_half1_STUDENT.md | 532 | vendor_promise_pct, drift_late_rs, vendor_vs_calendar_pct |
-| 4 | C2_W04_D05_half1_STUDENT.md | 532 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 52 | C2_W04_D05_half1_STUDENT.md | 547 | lag_weeks, cups, m5_winner |
-| 418,200 | C2_W04_D05_half1_STUDENT.md | 566 | row_2025_10_06, peak_2025, bot_2026_peak |
-| 434,928 | C2_W04_D05_half1_STUDENT.md | 566 | finance_10_05, aligned_10_19 |
-| 497,900 | C2_W04_D05_half1_STUDENT.md | 566 | vendor_10_05 |
-| 434,928 | C2_W04_D05_half1_STUDENT.md | 566 | finance_10_05, aligned_10_19 |
-| 418,200 | C2_W04_D05_half1_STUDENT.md | 569 | row_2025_10_06, peak_2025, bot_2026_peak |
-| 1.04 | C2_W04_D05_half1_STUDENT.md | 570 | growth_factor, finance_cost_rs |
-| 58,250 | C2_W04_D05_half1_STUDENT.md | 581 | bot_mae |
-| 79.8 lakh | C2_W04_D05_half1_STUDENT.md | 581 | bot_cost_rs |
-| 69.6 lakh | C2_W04_D05_half1_STUDENT.md | 581 | bot_late_rs |
-| 4,034 | C2_W04_D05_half1_STUDENT.md | 581 | aligned_mae, festive_mae_2025 |
-| 4.6 lakh | C2_W04_D05_half1_STUDENT.md | 581 | cost_ratio, aligned_cost_rs |
-| 22 | C2_W04_D05_half1_STUDENT.md | 585 | vendor_promise_pct, drift_late_rs, vendor_vs_calendar_pct |
-| 4 | C2_W04_D05_half1_STUDENT.md | 585 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 22 | C2_W04_D05_half1_STUDENT.md | 590 | vendor_promise_pct, drift_late_rs, vendor_vs_calendar_pct |
-| 4 | C2_W04_D05_half1_STUDENT.md | 590 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 1,983,300 | C2_W04_D05_half1_STUDENT.md | 595 | calendar_2025_total, bot_total |
-| 13.0 percent | C2_W04_D05_half1_STUDENT.md | 595 | finance_idle_rs, bot_vs_festival_pct, finance_under_aligned_pct |
-| 2,062,632 | C2_W04_D05_half1_STUDENT.md | 596 | finance_total |
-| 4.0 percent | C2_W04_D05_half1_STUDENT.md | 596 | growth_measured, growth_train, finance_vs_calendar_pct |
-| 9.5 percent | C2_W04_D05_half1_STUDENT.md | 596 | finance_vs_festival_pct |
-| 2,419,500 | C2_W04_D05_half1_STUDENT.md | 597 | vendor_total |
-| 22.0 percent | C2_W04_D05_half1_STUDENT.md | 597 | vendor_vs_calendar_pct, vendor_vs_last_pct, vendor_promise_pct |
-| 6.1 percent | C2_W04_D05_half1_STUDENT.md | 597 | vendor_vs_festival_pct, wed_before |
-| 2,370,680 | C2_W04_D05_half1_STUDENT.md | 598 | aligned_total |
-| 19.5 percent | C2_W04_D05_half1_STUDENT.md | 598 | aligned_vs_calendar_pct |
-| 4.0 percent | C2_W04_D05_half1_STUDENT.md | 598 | growth_measured, growth_train, finance_vs_calendar_pct |
-| 1,983,300 | C2_W04_D05_half1_STUDENT.md | 600 | calendar_2025_total, bot_total |
-| 2,279,500 | C2_W04_D05_half1_STUDENT.md | 600 | festival_2025_total |
-| 4 | C2_W04_D05_half1_STUDENT.md | 600 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 4 | C2_W04_D05_half1_STUDENT.md | 600 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 308,048 | C2_W04_D05_half1_STUDENT.md | 600 | finance_under_aligned |
-| 22 | C2_W04_D05_half1_STUDENT.md | 600 | vendor_promise_pct, drift_late_rs, vendor_vs_calendar_pct |
-| 2.1 percent | C2_W04_D05_half1_STUDENT.md | 600 | vendor_over_aligned_pct |
-| 19.5 | C2_W04_D05_half1_STUDENT.md | 605 | aligned_vs_calendar_pct |
-| 4.6 | C2_W04_D05_half1_STUDENT.md | 610 | cost_ratio, aligned_cost_rs |
-| 650 | C2_W04_D05_half1_STUDENT.md | 615 | idle_shift_rs |
-| 120 | C2_W04_D05_half1_STUDENT.md | 615 | per_shift, minutes, ch1_series_a |
-| 5.42 | C2_W04_D05_half1_STUDENT.md | 615 | over_rs |
-| 25 | C2_W04_D05_half1_STUDENT.md | 615 | late_rs, zillow_workforce |
-| 25 | C2_W04_D05_half1_STUDENT.md | 615 | late_rs, zillow_workforce |
-| 25 | C2_W04_D05_half1_STUDENT.md | 615 | late_rs, zillow_workforce |
-| 5.42 | C2_W04_D05_half1_STUDENT.md | 615 | over_rs |
-| 0.82 | C2_W04_D05_half1_STUDENT.md | 615 | plan_quantile, vendor_cost_rs |
-| 2.6 percent | C2_W04_D05_half1_STUDENT.md | 615 | cushion_pct |
-| 18 percent | C2_W04_D05_half1_STUDENT.md | 615 | share_short_pct, points_apart, series_z |
-| 40 | C2_W04_D05_half1_STUDENT.md | 619 | late_high, shop_last |
-| 20,275 | C2_W04_D05_half1_STUDENT.md | 625 | shifts_total |
-| 2.6 percent | C2_W04_D05_half1_STUDENT.md | 628 | cushion_pct |
-| 344,448 | C2_W04_D05_half1_STUDENT.md | 630 | finance_09_28, aligned_10_12 |
-| 353,404 | C2_W04_D05_half1_STUDENT.md | 630 | plan_10_12 |
-| 2,946 | C2_W04_D05_half1_STUDENT.md | 630 | shifts_10_12 |
-| 434,928 | C2_W04_D05_half1_STUDENT.md | 631 | finance_10_05, aligned_10_19 |
-| 446,236 | C2_W04_D05_half1_STUDENT.md | 631 | plan_10_19 |
-| 3,719 | C2_W04_D05_half1_STUDENT.md | 631 | shifts_10_19, peak_week_shifts, plan_10_19_raw |
-| 383,760 | C2_W04_D05_half1_STUDENT.md | 632 | finance_10_12, aligned_10_26 |
-| 393,738 | C2_W04_D05_half1_STUDENT.md | 632 | plan_10_26 |
-| 3,282 | C2_W04_D05_half1_STUDENT.md | 632 | shifts_10_26 |
-| 321,256 | C2_W04_D05_half1_STUDENT.md | 633 | finance_10_19, aligned_11_02 |
-| 329,609 | C2_W04_D05_half1_STUDENT.md | 633 | plan_11_02 |
-| 2,747 | C2_W04_D05_half1_STUDENT.md | 633 | shifts_11_02 |
-| 196,144 | C2_W04_D05_half1_STUDENT.md | 634 | finance_10_26, aligned_11_09 |
-| 201,244 | C2_W04_D05_half1_STUDENT.md | 634 | plan_11_09 |
-| 1,678 | C2_W04_D05_half1_STUDENT.md | 634 | shifts_11_09 |
-| 237,016 | C2_W04_D05_half1_STUDENT.md | 635 | finance_11_02, aligned_11_16 |
-| 243,178 | C2_W04_D05_half1_STUDENT.md | 635 | plan_11_16 |
-| 2,027 | C2_W04_D05_half1_STUDENT.md | 635 | shifts_11_16 |
-| 225,992 | C2_W04_D05_half1_STUDENT.md | 636 | finance_11_09, aligned_11_23 |
-| 231,868 | C2_W04_D05_half1_STUDENT.md | 636 | plan_11_23 |
-| 1,933 | C2_W04_D05_half1_STUDENT.md | 636 | shifts_11_23 |
-| 227,136 | C2_W04_D05_half1_STUDENT.md | 637 | finance_11_16, aligned_11_30 |
-| 233,042 | C2_W04_D05_half1_STUDENT.md | 637 | plan_11_30 |
-| 1,943 | C2_W04_D05_half1_STUDENT.md | 637 | shifts_11_30 |
-| 120 | C2_W04_D05_half1_STUDENT.md | 639 | per_shift, minutes, ch1_series_a |
-| 20,275 | C2_W04_D05_half1_STUDENT.md | 639 | shifts_total |
-| 6,615 | C2_W04_D05_half1_STUDENT.md | 639 | finance_mae, aligned_mae, week_shipments |
-| 35,832 | C2_W04_D05_half1_STUDENT.md | 639 | week_idle_rs |
-| 1.7 lakh | C2_W04_D05_half1_STUDENT.md | 639 | festive_ratio_m1, week_late_rs |
-| 4,034 | C2_W04_D05_half1_STUDENT.md | 639 | aligned_mae, festive_mae_2025 |
-| 344,448 | C2_W04_D05_half1_STUDENT.md | 642 | finance_09_28, aligned_10_12 |
-| 1.026 | C2_W04_D05_half1_STUDENT.md | 642 | cushion_factor |
-| 353,404 | C2_W04_D05_half1_STUDENT.md | 642 | plan_10_12 |
-| 120 | C2_W04_D05_half1_STUDENT.md | 642 | per_shift, minutes, ch1_series_a |
-| 2,946 | C2_W04_D05_half1_STUDENT.md | 643 | shifts_10_12 |
+| 308,900 | C2_W04_D05_half1_STUDENT.md | 216 | row_2025_10_20, diwali25_actual, bot_2026_source |
+| 296,900 | C2_W04_D05_half1_STUDENT.md | 219 | row_2024_10_28, aligned_source, bot_10_27 |
+| 1.04 | C2_W04_D05_half1_STUDENT.md | 219 | growth_factor, finance_cost_rs |
+| 308,776 | C2_W04_D05_half1_STUDENT.md | 219 | aligned, aligned_10_20 |
+| 401,000 | C2_W04_D05_half1_STUDENT.md | 230 | row_2024_10_14, peak_2024, bot_peak_2025 |
+| 369,000 | C2_W04_D05_half1_STUDENT.md | 230 | row_2025_10_13, naive, naive_10_20 |
+| 418,200 | C2_W04_D05_half1_STUDENT.md | 230 | row_2025_10_06, peak_2025, bot_2026_peak |
+| 312,900 | C2_W04_D05_half1_STUDENT.md | 230 | row_2024_10_07, bot_10_06 |
+| 54 | C2_W04_D05_half1_STUDENT.md | 244 | lag_2026 |
+| 14 | C2_W04_D05_half1_STUDENT.md | 259 | flipkart_space, finance_cost_rs, aligned_cost_rs |
+| 2.5 lakh | C2_W04_D05_half1_STUDENT.md | 259 | flipkart_jobs, aug_sale_2026, actual_08_10 |
+| 124 | C2_W04_D05_half1_STUDENT.md | 276 | aligned_miss, aligned_miss_10_20, ch1_series_a |
+| 0.847 | C2_W04_D05_half1_STUDENT.md | 284 | m5_seasonal_naive |
+| 1.752 | C2_W04_D05_half1_STUDENT.md | 284 | m5_naive |
+| 3 | C2_W04_D05_half1_STUDENT.md | 297 | finance_high_weeks, aligned_high_weeks, pair1_gap_pct |
+| 22 percent | C2_W04_D05_half1_STUDENT.md | 306 | vendor_promise_pct, vendor_vs_calendar_pct, series_x |
+| 25 | C2_W04_D05_half1_STUDENT.md | 313 | late_rs, zillow_workforce |
+| 5.42 | C2_W04_D05_half1_STUDENT.md | 313 | over_rs |
+| 104 | C2_W04_D05_half1_STUDENT.md | 325 | history_weeks, finance_cost_rs, growth_factor |
+| 91 | C2_W04_D05_half1_STUDENT.md | 330 | training_weeks |
+| 8.3 | C2_W04_D05_half1_STUDENT.md | 341 | held_mae |
+| 10 | C2_W04_D05_half1_STUDENT.md | 341 | raised_high_weeks, vendor_steps, held_errors |
+| 5 | C2_W04_D05_half1_STUDENT.md | 341 | ordinary_overtime, over_rs, held_errors |
+| 10 | C2_W04_D05_half1_STUDENT.md | 341 | raised_high_weeks, vendor_steps, held_errors |
+| 10 | C2_W04_D05_half1_STUDENT.md | 341 | raised_high_weeks, vendor_steps, held_errors |
+| 5 | C2_W04_D05_half1_STUDENT.md | 341 | ordinary_overtime, over_rs, held_errors |
+| 10 | C2_W04_D05_half1_STUDENT.md | 341 | raised_high_weeks, vendor_steps, held_errors |
+| 3 | C2_W04_D05_half1_STUDENT.md | 341 | finance_high_weeks, aligned_high_weeks, pair1_gap_pct |
+| 4 percent | C2_W04_D05_half1_STUDENT.md | 362 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 6,615 | C2_W04_D05_half1_STUDENT.md | 372 | finance_mae, aligned_mae, week_shipments |
+| 6,615 | C2_W04_D05_half1_STUDENT.md | 377 | finance_mae, aligned_mae, week_shipments |
+| 9,831 | C2_W04_D05_half1_STUDENT.md | 377 | bot_mae |
+| 14,842 | C2_W04_D05_half1_STUDENT.md | 377 | drift_mae |
+| 14,923 | C2_W04_D05_half1_STUDENT.md | 377 | naive_mae |
+| 4 percent | C2_W04_D05_half1_STUDENT.md | 377 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 2 percent | C2_W04_D05_half1_STUDENT.md | 388 | bot_high_weeks, fit_band_pct, festive_ratio_m3 |
+| 6,615 | C2_W04_D05_half1_STUDENT.md | 394 | finance_mae, aligned_mae, week_shipments |
+| 16,400 | C2_W04_D05_half1_STUDENT.md | 404 | vendor_mae |
+| 2 percent | C2_W04_D05_half1_STUDENT.md | 407 | bot_high_weeks, fit_band_pct, festive_ratio_m3 |
+| 1.4 percent | C2_W04_D05_half1_STUDENT.md | 409 | festive_ratio_p0, vendor_fit_max_pct, oct24_ratio |
+| 22 | C2_W04_D05_half1_STUDENT.md | 409 | vendor_promise_pct, drift_late_rs, vendor_vs_calendar_pct |
+| 22 percent | C2_W04_D05_half1_STUDENT.md | 409 | vendor_promise_pct, vendor_vs_calendar_pct, series_x |
+| 16,400 | C2_W04_D05_half1_STUDENT.md | 409 | vendor_mae |
+| 67 percent | C2_W04_D05_half1_STUDENT.md | 409 | vendor_over_bot_pct |
+| 25 | C2_W04_D05_half1_STUDENT.md | 419 | late_rs, zillow_workforce |
+| 5.42 | C2_W04_D05_half1_STUDENT.md | 419 | over_rs |
+| 6,615 | C2_W04_D05_half1_STUDENT.md | 422 | finance_mae, aligned_mae, week_shipments |
+| 16,400 | C2_W04_D05_half1_STUDENT.md | 423 | vendor_mae |
+| 9,831 | C2_W04_D05_half1_STUDENT.md | 424 | bot_mae |
+| 14,923 | C2_W04_D05_half1_STUDENT.md | 425 | naive_mae |
+| 650 | C2_W04_D05_half1_STUDENT.md | 429 | idle_shift_rs |
+| 120 | C2_W04_D05_half1_STUDENT.md | 429 | per_shift, minutes, ch1_series_a |
+| 5.42 | C2_W04_D05_half1_STUDENT.md | 429 | over_rs |
+| 11.9 lakh | C2_W04_D05_half1_STUDENT.md | 435 | vendor_cost_rs |
+| 12 | C2_W04_D05_half1_STUDENT.md | 440 | vendor_high_weeks, vendor_cost_rs, errors |
+| 13 | C2_W04_D05_half1_STUDENT.md | 440 | naive_high_weeks, drift_high_weeks, bot_high_weeks |
+| 11.9 lakh | C2_W04_D05_half1_STUDENT.md | 440 | vendor_cost_rs |
+| 13.5 lakh | C2_W04_D05_half1_STUDENT.md | 440 | finance_cost_rs, aligned_cost_rs |
+| 11 | C2_W04_D05_half1_STUDENT.md | 440 | bot_low_weeks, finance_late_rs, aligned_late_rs |
+| 13 | C2_W04_D05_half1_STUDENT.md | 440 | naive_high_weeks, drift_high_weeks, bot_high_weeks |
+| 30.5 lakh | C2_W04_D05_half1_STUDENT.md | 440 | bot_cost_rs |
+| 28.8 lakh | C2_W04_D05_half1_STUDENT.md | 440 | naive_cost_rs |
+| 4.6 | C2_W04_D05_half1_STUDENT.md | 444 | cost_ratio, aligned_cost_rs |
+| 3.6 percent | C2_W04_D05_half1_STUDENT.md | 454 | vendor_first6_pct, aligned_late_rs |
+| 11.5 percent | C2_W04_D05_half1_STUDENT.md | 454 | vendor_last6_pct |
+| 85,996 | C2_W04_D05_half1_STUDENT.md | 467 | aligned_abs_total |
+| 13 | C2_W04_D05_half1_STUDENT.md | 467 | naive_high_weeks, drift_high_weeks, bot_high_weeks |
+| 6,615 | C2_W04_D05_half1_STUDENT.md | 468 | finance_mae, aligned_mae, week_shipments |
+| 40,748 | C2_W04_D05_half1_STUDENT.md | 471 | finance_over, aligned_over |
+| 6 | C2_W04_D05_half1_STUDENT.md | 471 | finance_high_weeks, aligned_high_weeks, nearest_holdout_gap |
+| 45,248 | C2_W04_D05_half1_STUDENT.md | 472 | finance_under, aligned_under |
+| 7 | C2_W04_D05_half1_STUDENT.md | 472 | aligned_low_weeks, pair3_high, vendor_mean_high_pct |
+| 6,615 | C2_W04_D05_half1_STUDENT.md | 473 | finance_mae, aligned_mae, week_shipments |
+| 40,748 | C2_W04_D05_half1_STUDENT.md | 473 | finance_over, aligned_over |
+| 45,248 | C2_W04_D05_half1_STUDENT.md | 473 | finance_under, aligned_under |
+| 13 | C2_W04_D05_half1_STUDENT.md | 473 | naive_high_weeks, drift_high_weeks, bot_high_weeks |
+| 85,996 | C2_W04_D05_half1_STUDENT.md | 473 | aligned_abs_total |
+| 13 | C2_W04_D05_half1_STUDENT.md | 473 | naive_high_weeks, drift_high_weeks, bot_high_weeks |
+| 6,615 | C2_W04_D05_half1_STUDENT.md | 476 | finance_mae, aligned_mae, week_shipments |
+| 6 | C2_W04_D05_half1_STUDENT.md | 476 | finance_high_weeks, aligned_high_weeks, nearest_holdout_gap |
+| 7 | C2_W04_D05_half1_STUDENT.md | 476 | aligned_low_weeks, pair3_high, vendor_mean_high_pct |
+| 6,615 | C2_W04_D05_half1_STUDENT.md | 490 | finance_mae, aligned_mae, week_shipments |
+| 9,831 | C2_W04_D05_half1_STUDENT.md | 490 | bot_mae |
+| 16,400 | C2_W04_D05_half1_STUDENT.md | 490 | vendor_mae |
+| 11.9 lakh | C2_W04_D05_half1_STUDENT.md | 491 | vendor_cost_rs |
+| 30.5 lakh | C2_W04_D05_half1_STUDENT.md | 491 | bot_cost_rs |
+| 1,045 | C2_W04_D05_half1_STUDENT.md | 499 | plos_series |
+| 3 | C2_W04_D05_half1_STUDENT.md | 511 | finance_high_weeks, aligned_high_weeks, pair1_gap_pct |
+| 22 | C2_W04_D05_half1_STUDENT.md | 525 | vendor_promise_pct, drift_late_rs, vendor_vs_calendar_pct |
+| 4 | C2_W04_D05_half1_STUDENT.md | 525 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 52 | C2_W04_D05_half1_STUDENT.md | 540 | lag_weeks, cups, m5_winner |
+| 418,200 | C2_W04_D05_half1_STUDENT.md | 559 | row_2025_10_06, peak_2025, bot_2026_peak |
+| 434,928 | C2_W04_D05_half1_STUDENT.md | 559 | finance_10_05, aligned_10_19 |
+| 497,900 | C2_W04_D05_half1_STUDENT.md | 559 | vendor_10_05 |
+| 434,928 | C2_W04_D05_half1_STUDENT.md | 559 | finance_10_05, aligned_10_19 |
+| 418,200 | C2_W04_D05_half1_STUDENT.md | 562 | row_2025_10_06, peak_2025, bot_2026_peak |
+| 1.04 | C2_W04_D05_half1_STUDENT.md | 563 | growth_factor, finance_cost_rs |
+| 58,250 | C2_W04_D05_half1_STUDENT.md | 574 | bot_mae |
+| 79.8 lakh | C2_W04_D05_half1_STUDENT.md | 574 | bot_cost_rs |
+| 69.6 lakh | C2_W04_D05_half1_STUDENT.md | 574 | bot_late_rs |
+| 4,034 | C2_W04_D05_half1_STUDENT.md | 574 | aligned_mae, festive_mae_2025 |
+| 4.6 lakh | C2_W04_D05_half1_STUDENT.md | 574 | cost_ratio, aligned_cost_rs |
+| 22 | C2_W04_D05_half1_STUDENT.md | 578 | vendor_promise_pct, drift_late_rs, vendor_vs_calendar_pct |
+| 4 | C2_W04_D05_half1_STUDENT.md | 578 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 22 | C2_W04_D05_half1_STUDENT.md | 583 | vendor_promise_pct, drift_late_rs, vendor_vs_calendar_pct |
+| 4 | C2_W04_D05_half1_STUDENT.md | 583 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 1,983,300 | C2_W04_D05_half1_STUDENT.md | 588 | calendar_2025_total, bot_total |
+| 13.0 percent | C2_W04_D05_half1_STUDENT.md | 588 | finance_idle_rs, bot_vs_festival_pct, finance_under_aligned_pct |
+| 2,062,632 | C2_W04_D05_half1_STUDENT.md | 589 | finance_total |
+| 4.0 percent | C2_W04_D05_half1_STUDENT.md | 589 | growth_measured, growth_train, finance_vs_calendar_pct |
+| 9.5 percent | C2_W04_D05_half1_STUDENT.md | 589 | finance_vs_festival_pct |
+| 2,419,500 | C2_W04_D05_half1_STUDENT.md | 590 | vendor_total |
+| 22.0 percent | C2_W04_D05_half1_STUDENT.md | 590 | vendor_vs_calendar_pct, vendor_vs_last_pct, vendor_promise_pct |
+| 6.1 percent | C2_W04_D05_half1_STUDENT.md | 590 | vendor_vs_festival_pct, wed_before |
+| 2,370,680 | C2_W04_D05_half1_STUDENT.md | 591 | aligned_total |
+| 19.5 percent | C2_W04_D05_half1_STUDENT.md | 591 | aligned_vs_calendar_pct |
+| 4.0 percent | C2_W04_D05_half1_STUDENT.md | 591 | growth_measured, growth_train, finance_vs_calendar_pct |
+| 1,983,300 | C2_W04_D05_half1_STUDENT.md | 593 | calendar_2025_total, bot_total |
+| 2,279,500 | C2_W04_D05_half1_STUDENT.md | 593 | festival_2025_total |
+| 4 | C2_W04_D05_half1_STUDENT.md | 593 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 4 | C2_W04_D05_half1_STUDENT.md | 593 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 308,048 | C2_W04_D05_half1_STUDENT.md | 593 | finance_under_aligned |
+| 22 | C2_W04_D05_half1_STUDENT.md | 593 | vendor_promise_pct, drift_late_rs, vendor_vs_calendar_pct |
+| 2.1 percent | C2_W04_D05_half1_STUDENT.md | 593 | vendor_over_aligned_pct |
+| 19.5 | C2_W04_D05_half1_STUDENT.md | 598 | aligned_vs_calendar_pct |
+| 4.6 | C2_W04_D05_half1_STUDENT.md | 603 | cost_ratio, aligned_cost_rs |
+| 650 | C2_W04_D05_half1_STUDENT.md | 608 | idle_shift_rs |
+| 120 | C2_W04_D05_half1_STUDENT.md | 608 | per_shift, minutes, ch1_series_a |
+| 5.42 | C2_W04_D05_half1_STUDENT.md | 608 | over_rs |
+| 25 | C2_W04_D05_half1_STUDENT.md | 608 | late_rs, zillow_workforce |
+| 25 | C2_W04_D05_half1_STUDENT.md | 608 | late_rs, zillow_workforce |
+| 25 | C2_W04_D05_half1_STUDENT.md | 608 | late_rs, zillow_workforce |
+| 5.42 | C2_W04_D05_half1_STUDENT.md | 608 | over_rs |
+| 0.82 | C2_W04_D05_half1_STUDENT.md | 608 | plan_quantile, vendor_cost_rs |
+| 2.6 percent | C2_W04_D05_half1_STUDENT.md | 608 | cushion_pct |
+| 18 percent | C2_W04_D05_half1_STUDENT.md | 608 | share_short_pct, points_apart, series_z |
+| 40 | C2_W04_D05_half1_STUDENT.md | 612 | late_high, shop_last |
+| 20,275 | C2_W04_D05_half1_STUDENT.md | 618 | shifts_total |
+| 2.6 percent | C2_W04_D05_half1_STUDENT.md | 621 | cushion_pct |
+| 344,448 | C2_W04_D05_half1_STUDENT.md | 623 | finance_09_28, aligned_10_12 |
+| 353,404 | C2_W04_D05_half1_STUDENT.md | 623 | plan_10_12 |
+| 2,946 | C2_W04_D05_half1_STUDENT.md | 623 | shifts_10_12 |
+| 434,928 | C2_W04_D05_half1_STUDENT.md | 624 | finance_10_05, aligned_10_19 |
+| 446,236 | C2_W04_D05_half1_STUDENT.md | 624 | plan_10_19 |
+| 3,719 | C2_W04_D05_half1_STUDENT.md | 624 | shifts_10_19, peak_week_shifts, plan_10_19_raw |
+| 383,760 | C2_W04_D05_half1_STUDENT.md | 625 | finance_10_12, aligned_10_26 |
+| 393,738 | C2_W04_D05_half1_STUDENT.md | 625 | plan_10_26 |
+| 3,282 | C2_W04_D05_half1_STUDENT.md | 625 | shifts_10_26 |
+| 321,256 | C2_W04_D05_half1_STUDENT.md | 626 | finance_10_19, aligned_11_02 |
+| 329,609 | C2_W04_D05_half1_STUDENT.md | 626 | plan_11_02 |
+| 2,747 | C2_W04_D05_half1_STUDENT.md | 626 | shifts_11_02 |
+| 196,144 | C2_W04_D05_half1_STUDENT.md | 627 | finance_10_26, aligned_11_09 |
+| 201,244 | C2_W04_D05_half1_STUDENT.md | 627 | plan_11_09 |
+| 1,678 | C2_W04_D05_half1_STUDENT.md | 627 | shifts_11_09 |
+| 237,016 | C2_W04_D05_half1_STUDENT.md | 628 | finance_11_02, aligned_11_16 |
+| 243,178 | C2_W04_D05_half1_STUDENT.md | 628 | plan_11_16 |
+| 2,027 | C2_W04_D05_half1_STUDENT.md | 628 | shifts_11_16 |
+| 225,992 | C2_W04_D05_half1_STUDENT.md | 629 | finance_11_09, aligned_11_23 |
+| 231,868 | C2_W04_D05_half1_STUDENT.md | 629 | plan_11_23 |
+| 1,933 | C2_W04_D05_half1_STUDENT.md | 629 | shifts_11_23 |
+| 227,136 | C2_W04_D05_half1_STUDENT.md | 630 | finance_11_16, aligned_11_30 |
+| 233,042 | C2_W04_D05_half1_STUDENT.md | 630 | plan_11_30 |
+| 1,943 | C2_W04_D05_half1_STUDENT.md | 630 | shifts_11_30 |
+| 120 | C2_W04_D05_half1_STUDENT.md | 632 | per_shift, minutes, ch1_series_a |
+| 20,275 | C2_W04_D05_half1_STUDENT.md | 632 | shifts_total |
+| 6,615 | C2_W04_D05_half1_STUDENT.md | 632 | finance_mae, aligned_mae, week_shipments |
+| 35,832 | C2_W04_D05_half1_STUDENT.md | 632 | week_idle_rs |
+| 1.7 lakh | C2_W04_D05_half1_STUDENT.md | 632 | festive_ratio_m1, week_late_rs |
+| 4,034 | C2_W04_D05_half1_STUDENT.md | 632 | aligned_mae, festive_mae_2025 |
+| 344,448 | C2_W04_D05_half1_STUDENT.md | 635 | finance_09_28, aligned_10_12 |
+| 1.026 | C2_W04_D05_half1_STUDENT.md | 635 | cushion_factor |
+| 353,404 | C2_W04_D05_half1_STUDENT.md | 635 | plan_10_12 |
+| 120 | C2_W04_D05_half1_STUDENT.md | 635 | per_shift, minutes, ch1_series_a |
+| 2,946 | C2_W04_D05_half1_STUDENT.md | 636 | shifts_10_12 |
+| 82.2 lakh | C2_W04_D05_half1_STUDENT.md | 642 | vendor_cost_rs |
+| 48,672 | C2_W04_D05_half1_STUDENT.md | 647 | bot_over |
+| 436,052 | C2_W04_D05_half1_STUDENT.md | 647 | bot_under |
+| 111.6 lakh | C2_W04_D05_half1_STUDENT.md | 647 | bot_cost_rs |
+| 87,360 | C2_W04_D05_half1_STUDENT.md | 648 | finance_over |
+| 395,408 | C2_W04_D05_half1_STUDENT.md | 648 | finance_under |
+| 103.6 lakh | C2_W04_D05_half1_STUDENT.md | 648 | finance_cost_rs |
+| 310,364 | C2_W04_D05_half1_STUDENT.md | 649 | vendor_over |
+| 261,544 | C2_W04_D05_half1_STUDENT.md | 649 | vendor_under |
 | 82.2 lakh | C2_W04_D05_half1_STUDENT.md | 649 | vendor_cost_rs |
-| 48,672 | C2_W04_D05_half1_STUDENT.md | 654 | bot_over |
-| 436,052 | C2_W04_D05_half1_STUDENT.md | 654 | bot_under |
-| 111.6 lakh | C2_W04_D05_half1_STUDENT.md | 654 | bot_cost_rs |
-| 87,360 | C2_W04_D05_half1_STUDENT.md | 655 | finance_over |
-| 395,408 | C2_W04_D05_half1_STUDENT.md | 655 | finance_under |
-| 103.6 lakh | C2_W04_D05_half1_STUDENT.md | 655 | finance_cost_rs |
-| 310,364 | C2_W04_D05_half1_STUDENT.md | 656 | vendor_over |
-| 261,544 | C2_W04_D05_half1_STUDENT.md | 656 | vendor_under |
-| 82.2 lakh | C2_W04_D05_half1_STUDENT.md | 656 | vendor_cost_rs |
-| 2.6 percent | C2_W04_D05_half1_STUDENT.md | 657 | cushion_pct |
-| 61,639 | C2_W04_D05_half1_STUDENT.md | 657 | plan_over |
-| 0 | C2_W04_D05_half1_STUDENT.md | 657 | naive_high_weeks, drift_high_weeks, plan_under |
-| 3.3 lakh | C2_W04_D05_half1_STUDENT.md | 657 | extra_shifts_rs, plan_cost_rs, row_2025_09_29 |
-| 3.3 lakh | C2_W04_D05_half1_STUDENT.md | 659 | extra_shifts_rs, plan_cost_rs, row_2025_09_29 |
-| 4,034 | C2_W04_D05_half1_STUDENT.md | 675 | aligned_mae, festive_mae_2025 |
-| 1,638 | C2_W04_D05_half1_STUDENT.md | 676 | peak_overtime_2025 |
-| 5 | C2_W04_D05_half1_STUDENT.md | 676 | ordinary_overtime, over_rs, held_errors |
-| 4 percent | C2_W04_D05_half1_STUDENT.md | 677 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 31,49,846 | C2_W04_D05_half1_STUDENT.md | 678 | fada_oct25 |
-| 12,87,735 | C2_W04_D05_half1_STUDENT.md | 678 | fada_sep25 |
-| 4 percent | C2_W04_D05_half1_STUDENT.md | 692 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 308,048 | C2_W04_D05_half1_STUDENT.md | 692 | finance_under_aligned |
-| 1.4 percent | C2_W04_D05_half1_STUDENT.md | 693 | festive_ratio_p0, vendor_fit_max_pct, oct24_ratio |
-| 16,400 | C2_W04_D05_half1_STUDENT.md | 693 | vendor_mae |
-| 0.82 | C2_W04_D05_half1_STUDENT.md | 694 | plan_quantile, vendor_cost_rs |
+| 2.6 percent | C2_W04_D05_half1_STUDENT.md | 650 | cushion_pct |
+| 61,639 | C2_W04_D05_half1_STUDENT.md | 650 | plan_over |
+| 0 | C2_W04_D05_half1_STUDENT.md | 650 | naive_high_weeks, drift_high_weeks, plan_under |
+| 3.3 lakh | C2_W04_D05_half1_STUDENT.md | 650 | extra_shifts_rs, plan_cost_rs, row_2025_09_29 |
+| 3.3 lakh | C2_W04_D05_half1_STUDENT.md | 652 | extra_shifts_rs, plan_cost_rs, row_2025_09_29 |
+| 4,034 | C2_W04_D05_half1_STUDENT.md | 668 | aligned_mae, festive_mae_2025 |
+| 1,638 | C2_W04_D05_half1_STUDENT.md | 669 | peak_overtime_2025 |
+| 5 | C2_W04_D05_half1_STUDENT.md | 669 | ordinary_overtime, over_rs, held_errors |
+| 4 percent | C2_W04_D05_half1_STUDENT.md | 670 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 31,49,846 | C2_W04_D05_half1_STUDENT.md | 671 | fada_oct25 |
+| 12,87,735 | C2_W04_D05_half1_STUDENT.md | 671 | fada_sep25 |
+| 4 percent | C2_W04_D05_half1_STUDENT.md | 685 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 308,048 | C2_W04_D05_half1_STUDENT.md | 685 | finance_under_aligned |
+| 1.4 percent | C2_W04_D05_half1_STUDENT.md | 686 | festive_ratio_p0, vendor_fit_max_pct, oct24_ratio |
+| 16,400 | C2_W04_D05_half1_STUDENT.md | 686 | vendor_mae |
+| 0.82 | C2_W04_D05_half1_STUDENT.md | 687 | plan_quantile, vendor_cost_rs |
 | 4 | C2_W04_D05_half2_STUDENT.md | 5 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 20,275 | C2_W04_D05_half2_STUDENT.md | 22 | shifts_total |
-| 2.6 percent | C2_W04_D05_half2_STUDENT.md | 22 | cushion_pct |
-| 3,719 | C2_W04_D05_half2_STUDENT.md | 22 | shifts_10_19, peak_week_shifts, plan_10_19_raw |
-| 6,615 | C2_W04_D05_half2_STUDENT.md | 23 | finance_mae, aligned_mae, week_shipments |
-| 35,832 | C2_W04_D05_half2_STUDENT.md | 23 | week_idle_rs |
-| 1.7 lakh | C2_W04_D05_half2_STUDENT.md | 23 | festive_ratio_m1, week_late_rs |
-| 0.82 | C2_W04_D05_half2_STUDENT.md | 24 | plan_quantile, vendor_cost_rs |
-| 25 | C2_W04_D05_half2_STUDENT.md | 24 | late_rs, zillow_workforce |
-| 25 | C2_W04_D05_half2_STUDENT.md | 24 | late_rs, zillow_workforce |
-| 5.42 | C2_W04_D05_half2_STUDENT.md | 24 | over_rs |
-| 4.6 | C2_W04_D05_half2_STUDENT.md | 24 | cost_ratio, aligned_cost_rs |
-| 1 | C2_W04_D05_half2_STUDENT.md | 38 | bot_high_weeks, festive_ratio_p0, festive_ratio_p1 |
-| 2 | C2_W04_D05_half2_STUDENT.md | 39 | bot_high_weeks, fit_band_pct, ordinary_week |
-| 3 | C2_W04_D05_half2_STUDENT.md | 40 | finance_high_weeks, aligned_high_weeks, pair1_gap_pct |
-| 4 | C2_W04_D05_half2_STUDENT.md | 41 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 5 | C2_W04_D05_half2_STUDENT.md | 42 | ordinary_overtime, over_rs, held_errors |
-| 4 | C2_W04_D05_half2_STUDENT.md | 50 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 22 | C2_W04_D05_half2_STUDENT.md | 50 | vendor_promise_pct, drift_late_rs, vendor_vs_calendar_pct |
-| 20,275 | C2_W04_D05_half2_STUDENT.md | 61 | shifts_total |
-| 3,719 | C2_W04_D05_half2_STUDENT.md | 61 | shifts_10_19, peak_week_shifts, plan_10_19_raw |
-| 22 percent | C2_W04_D05_half2_STUDENT.md | 62 | vendor_promise_pct, vendor_vs_calendar_pct, series_x |
-| 4 percent | C2_W04_D05_half2_STUDENT.md | 63 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 4 percent | C2_W04_D05_half2_STUDENT.md | 63 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 4 | C2_W04_D05_half2_STUDENT.md | 76 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 4.0 percent | C2_W04_D05_half2_STUDENT.md | 76 | growth_measured, growth_train, finance_vs_calendar_pct |
-| 308,048 | C2_W04_D05_half2_STUDENT.md | 76 | finance_under_aligned |
-| 1.4 percent | C2_W04_D05_half2_STUDENT.md | 77 | festive_ratio_p0, vendor_fit_max_pct, oct24_ratio |
-| 16,400 | C2_W04_D05_half2_STUDENT.md | 77 | vendor_mae |
-| 67 percent | C2_W04_D05_half2_STUDENT.md | 77 | vendor_over_bot_pct |
-| 2 percent | C2_W04_D05_half2_STUDENT.md | 107 | bot_high_weeks, fit_band_pct, festive_ratio_m3 |
-| 200 | C2_W04_D05_half2_STUDENT.md | 127 | zillow_band, diwali_move_weeks, bot_high_weeks |
-| 1,200 | C2_W04_D05_half2_STUDENT.md | 127 | zillow_swing, vendor_high_weeks, errors |
-| 304 | C2_W04_D05_half2_STUDENT.md | 127 | zillow_writedown |
-| 25 | C2_W04_D05_half2_STUDENT.md | 155 | late_rs, zillow_workforce |
-| 5.42 | C2_W04_D05_half2_STUDENT.md | 155 | over_rs |
-| 2.16 crore | C2_W04_D05_half2_STUDENT.md | 161 | estimate |
-| 1.9 crore | C2_W04_D05_half2_STUDENT.md | 167 | festive_ratio_m2, mon_before, replacement |
-| 2.16 crore | C2_W04_D05_half2_STUDENT.md | 168 | estimate |
-| 2,17,05,974 | C2_W04_D05_half2_STUDENT.md | 169 | anchor |
-| 31,49,846 | C2_W04_D05_half2_STUDENT.md | 176 | fada_oct25 |
-| 3.78 crore | C2_W04_D05_half2_STUDENT.md | 176 | annualised_october, vendor_2026_12 |
-| 74 percent | C2_W04_D05_half2_STUDENT.md | 176 | annualised_over_pct |
-| 1 | C2_W04_D05_half2_STUDENT.md | 205 | bot_high_weeks, festive_ratio_p0, festive_ratio_p1 |
-| 2 | C2_W04_D05_half2_STUDENT.md | 206 | bot_high_weeks, fit_band_pct, ordinary_week |
-| 3 | C2_W04_D05_half2_STUDENT.md | 207 | finance_high_weeks, aligned_high_weeks, pair1_gap_pct |
-| 2 percent | C2_W04_D05_half2_STUDENT.md | 207 | bot_high_weeks, fit_band_pct, festive_ratio_m3 |
+| 20,275 | C2_W04_D05_half2_STUDENT.md | 13 | shifts_total |
+| 2.6 percent | C2_W04_D05_half2_STUDENT.md | 13 | cushion_pct |
+| 3,719 | C2_W04_D05_half2_STUDENT.md | 13 | shifts_10_19, peak_week_shifts, plan_10_19_raw |
+| 6,615 | C2_W04_D05_half2_STUDENT.md | 14 | finance_mae, aligned_mae, week_shipments |
+| 35,832 | C2_W04_D05_half2_STUDENT.md | 14 | week_idle_rs |
+| 1.7 lakh | C2_W04_D05_half2_STUDENT.md | 14 | festive_ratio_m1, week_late_rs |
+| 0.82 | C2_W04_D05_half2_STUDENT.md | 15 | plan_quantile, vendor_cost_rs |
+| 25 | C2_W04_D05_half2_STUDENT.md | 15 | late_rs, zillow_workforce |
+| 25 | C2_W04_D05_half2_STUDENT.md | 15 | late_rs, zillow_workforce |
+| 5.42 | C2_W04_D05_half2_STUDENT.md | 15 | over_rs |
+| 4.6 | C2_W04_D05_half2_STUDENT.md | 15 | cost_ratio, aligned_cost_rs |
+| 1 | C2_W04_D05_half2_STUDENT.md | 34 | bot_high_weeks, festive_ratio_p0, festive_ratio_p1 |
+| 2 | C2_W04_D05_half2_STUDENT.md | 35 | bot_high_weeks, fit_band_pct, ordinary_week |
+| 3 | C2_W04_D05_half2_STUDENT.md | 36 | finance_high_weeks, aligned_high_weeks, pair1_gap_pct |
+| 4 | C2_W04_D05_half2_STUDENT.md | 37 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 5 | C2_W04_D05_half2_STUDENT.md | 38 | ordinary_overtime, over_rs, held_errors |
+| 4 | C2_W04_D05_half2_STUDENT.md | 46 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 22 | C2_W04_D05_half2_STUDENT.md | 46 | vendor_promise_pct, drift_late_rs, vendor_vs_calendar_pct |
+| 20,275 | C2_W04_D05_half2_STUDENT.md | 57 | shifts_total |
+| 3,719 | C2_W04_D05_half2_STUDENT.md | 57 | shifts_10_19, peak_week_shifts, plan_10_19_raw |
+| 22 percent | C2_W04_D05_half2_STUDENT.md | 58 | vendor_promise_pct, vendor_vs_calendar_pct, series_x |
+| 4 percent | C2_W04_D05_half2_STUDENT.md | 59 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 4 percent | C2_W04_D05_half2_STUDENT.md | 59 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 4 | C2_W04_D05_half2_STUDENT.md | 72 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 4.0 percent | C2_W04_D05_half2_STUDENT.md | 72 | growth_measured, growth_train, finance_vs_calendar_pct |
+| 308,048 | C2_W04_D05_half2_STUDENT.md | 72 | finance_under_aligned |
+| 1.4 percent | C2_W04_D05_half2_STUDENT.md | 73 | festive_ratio_p0, vendor_fit_max_pct, oct24_ratio |
+| 16,400 | C2_W04_D05_half2_STUDENT.md | 73 | vendor_mae |
+| 67 percent | C2_W04_D05_half2_STUDENT.md | 73 | vendor_over_bot_pct |
+| 2 percent | C2_W04_D05_half2_STUDENT.md | 103 | bot_high_weeks, fit_band_pct, festive_ratio_m3 |
+| 200 | C2_W04_D05_half2_STUDENT.md | 123 | zillow_band, diwali_move_weeks, bot_high_weeks |
+| 1,200 | C2_W04_D05_half2_STUDENT.md | 123 | zillow_swing, vendor_high_weeks, errors |
+| 304 | C2_W04_D05_half2_STUDENT.md | 123 | zillow_writedown |
+| 25 | C2_W04_D05_half2_STUDENT.md | 151 | late_rs, zillow_workforce |
+| 5.42 | C2_W04_D05_half2_STUDENT.md | 151 | over_rs |
+| 2.16 crore | C2_W04_D05_half2_STUDENT.md | 157 | estimate |
+| 1.9 crore | C2_W04_D05_half2_STUDENT.md | 163 | festive_ratio_m2, mon_before, replacement |
+| 2.16 crore | C2_W04_D05_half2_STUDENT.md | 164 | estimate |
+| 2,17,05,974 | C2_W04_D05_half2_STUDENT.md | 165 | anchor |
+| 31,49,846 | C2_W04_D05_half2_STUDENT.md | 172 | fada_oct25 |
+| 3.78 crore | C2_W04_D05_half2_STUDENT.md | 172 | annualised_october, vendor_2026_12 |
+| 74 percent | C2_W04_D05_half2_STUDENT.md | 172 | annualised_over_pct |
+| 1 | C2_W04_D05_half2_STUDENT.md | 201 | bot_high_weeks, festive_ratio_p0, festive_ratio_p1 |
+| 2 | C2_W04_D05_half2_STUDENT.md | 202 | bot_high_weeks, fit_band_pct, ordinary_week |
+| 3 | C2_W04_D05_half2_STUDENT.md | 203 | finance_high_weeks, aligned_high_weeks, pair1_gap_pct |
+| 2 percent | C2_W04_D05_half2_STUDENT.md | 203 | bot_high_weeks, fit_band_pct, festive_ratio_m3 |
+| 4 | C2_W04_D05_half2_STUDENT.md | 204 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
+| 5 | C2_W04_D05_half2_STUDENT.md | 205 | ordinary_overtime, over_rs, held_errors |
+| 6 | C2_W04_D05_half2_STUDENT.md | 206 | finance_high_weeks, aligned_high_weeks, nearest_holdout_gap |
+| 7 | C2_W04_D05_half2_STUDENT.md | 207 | aligned_low_weeks, pair3_high, vendor_mean_high_pct |
+| 8 | C2_W04_D05_half2_STUDENT.md | 208 | diwali_2026, naive_high_weeks, drift_high_weeks |
 | 4 | C2_W04_D05_half2_STUDENT.md | 208 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 5 | C2_W04_D05_half2_STUDENT.md | 209 | ordinary_overtime, over_rs, held_errors |
-| 6 | C2_W04_D05_half2_STUDENT.md | 210 | finance_high_weeks, aligned_high_weeks, nearest_holdout_gap |
-| 7 | C2_W04_D05_half2_STUDENT.md | 211 | aligned_low_weeks, pair3_high, vendor_mean_high_pct |
-| 8 | C2_W04_D05_half2_STUDENT.md | 212 | diwali_2026, naive_high_weeks, drift_high_weeks |
-| 4 | C2_W04_D05_half2_STUDENT.md | 212 | finance_rule_pct, naive_high_weeks, drift_high_weeks |
-| 0.82 | C2_W04_D05_half2_STUDENT.md | 228 | plan_quantile, vendor_cost_rs |
-| 4.6 | C2_W04_D05_half2_STUDENT.md | 228 | cost_ratio, aligned_cost_rs |
-| 2.6 percent | C2_W04_D05_half2_STUDENT.md | 228 | cushion_pct |
+| 0.82 | C2_W04_D05_half2_STUDENT.md | 224 | plan_quantile, vendor_cost_rs |
+| 4.6 | C2_W04_D05_half2_STUDENT.md | 224 | cost_ratio, aligned_cost_rs |
+| 2.6 percent | C2_W04_D05_half2_STUDENT.md | 224 | cushion_pct |
 | 10 | C2_W04_D05_notes_STUDENT.md | 3 | raised_high_weeks, vendor_steps, held_errors |
 | 104 | C2_W04_D05_notes_STUDENT.md | 5 | history_weeks, finance_cost_rs, growth_factor |
 | 120 | C2_W04_D05_notes_STUDENT.md | 8 | per_shift, minutes, ch1_series_a |

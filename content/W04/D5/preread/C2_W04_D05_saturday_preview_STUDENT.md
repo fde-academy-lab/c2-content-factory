@@ -64,7 +64,8 @@ Nothing needs installing, and each check takes under five minutes.
 
 ---
 
-## Which line is worth carrying into Saturday?
+## Which line, with its number, is worth carrying into Saturday?
 
 > Every number this week was compared with something: a denominator, a slide's ask, chance, a group,
-> and a copy of last year.
+> and a copy of last year, which festival-aligned beat on hidden weeks by missing 6,615 shipments a
+> week against the house bot's 9,831.

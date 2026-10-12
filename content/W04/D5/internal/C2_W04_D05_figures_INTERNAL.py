@@ -247,7 +247,11 @@ def holdout_reveal():
     plt.close(fig)
 
 
-def festival_calendar():
+def festival_calendar(copy=True):
+    """The three Diwali weeks; with copy=True the house bot's copy of 2025's Diwali week is hatched in.
+
+    S12 shows the strip without the copy and round three's card adds it, so the twist is not spent early.
+    """
     fig, ax = plt.subplots(figsize=(13, 3.9))
     years = [(2024, 0, "Thu 31 Oct"), (2025, 1, "Mon 20 Oct"), (2026, 2, "Sun 8 Nov")]
     weeks = ["29 Sep", "6 Oct", "13 Oct", "20 Oct", "27 Oct", "3 Nov", "10 Nov", "17 Nov"]
@@ -258,16 +262,20 @@ def festival_calendar():
             ax.add_patch(plt.Rectangle((c, -row), 0.92, 0.8, color=colour))
         ax.text(-0.2, -row + 0.4, f"{yr}", ha="right", va="center", fontsize=15)
         ax.text(8.1, -row + 0.4, f"Diwali {label}", va="center", fontsize=14, color=ROSE)
-    ax.add_patch(plt.Rectangle((3, -2), 0.92, 0.8, fill=False, edgecolor=INK, lw=2.5, hatch="//"))
-    ax.text(3.46, -2.45, "the house bot's copy of 2025's Diwali week:\nthe same calendar week, two weeks early",
-            ha="center", va="top", fontsize=13)
+    if copy:
+        ax.add_patch(plt.Rectangle((3, -2), 0.92, 0.8, fill=False, edgecolor=INK, lw=2.5, hatch="//"))
+        ax.text(3.46, -2.45, "the house bot's copy of 2025's Diwali week:\nthe same calendar week, two weeks early",
+                ha="center", va="top", fontsize=13)
+    else:
+        ax.text(3.46, -2.45, "2026: where will a copy of last year put the rush?\nround three asks",
+                ha="center", va="top", fontsize=13)
     for c, w in enumerate(weeks):
         ax.text(c + 0.46, 1.05, w, ha="center", fontsize=13)
     ax.text(3.9, 1.5, "week beginning, the nearest Monday each year", ha="center", fontsize=13, color=MUTED)
     ax.set_xlim(-1.2, 10.5); ax.set_ylim(-3.3, 1.8)
     ax.axis("off")
     ax.set_title("Diwali's week moves: one week earlier in 2025, two weeks later in 2026", fontsize=16)
-    save(fig, "festival_calendar")
+    save(fig, "festival_calendar" if copy else "festival_calendar_open")
 
 
 def backtest():
@@ -389,7 +397,7 @@ def main():
     for old in OUT.glob("C2_W04_D05_*"):
         old.unlink()
     four_patterns(); twelve_rows(); festival_plot(); actual_series(); baselines_panel(); scoreboard()
-    fit_vs_forecast(); holdout_reveal(); festival_calendar(); backtest(); window_2026(); cost_curve()
+    fit_vs_forecast(); holdout_reveal(); festival_calendar(); festival_calendar(copy=False); backtest(); window_2026(); cost_curve()
     four_vs_thirteen(); rolling_origin()
     print("\n".join(sorted(p.name for p in OUT.iterdir())))
 

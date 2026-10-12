@@ -2,15 +2,7 @@
 
 Week 4, Day 5. Fallback.
 
-Kicker: WEEK 4  ·  FRIDAY  ·  IF THE TENTATIVE FACULTY SESSION SLIPS
-Quote: Before the plan is signed, would a shorter test, or a test that rolls week by week, have told the planner something different?
-Who: The FC planner, testing the morning's choice. Runs only if the IITGN faculty session W4-4 (tentative) does not run. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
-
-```notes
-On screen only if the faculty session (tentative) slips. Four parts, 35, 30, 30 and 25 minutes.
-Nothing here teaches autocorrelation, smoothing or ARIMA: the faculty session (tentative) owns them.
-Transition: the four parts.
-```
+Header: WEEK 4  ·  FRIDAY  ·  FLIPKART, LUCKNOW  ·  FALLBACK
 
 ---
 
@@ -28,8 +20,12 @@ flowchart LR
     class B,C,D known
 ```
 
+This hour runs only if the IITGN faculty session W4-4 (tentative) does not run. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
+
 ```notes
-LIVE, 2 minutes. Read the four parts. Each ends on one line a group writes down. Transition:
+LIVE, 2 minutes, on screen only if the faculty session (tentative) slips. Nothing here teaches
+autocorrelation, smoothing or ARIMA: the faculty session (tentative) owns them. Read the four parts.
+Each ends on one line a group writes down. Transition:
 part 1.
 ```
 
@@ -76,7 +72,7 @@ value: 41,800 | label: its first miss, too low | note: then 37,100, 33,700 and 3
 value: 37,050 | label: naive's MAE on four weeks | note: against 14,923 on thirteen
 ```
 
-A short test judges the origin as much as the rule. The thirteen-week test spread that luck over thirteen weeks; four weeks cannot.
+A short test judges the origin as much as the rule. All four of naive's misses are too low, so its MAE is the gap between the dip and the four weeks' average, 233,650. The thirteen-week test started from 218,300, close to its hidden weeks' average of 217,746: luck in the other direction.
 
 ```notes
 LIVE, 5 minutes. Show the four misses on the board. The house bot and festival-aligned barely move

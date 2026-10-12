@@ -18,8 +18,9 @@ whatever the note says.
 
 ## What does the set test?
 
-It tests the afternoon's decision end to end: choosing the forecast on evidence rather than
-on a single score, sizing a week's shifts from it, and naming the fact that would move the plan.
+It tests the afternoon's decision end to end: choosing the forecast on the hidden weeks, the 2025
+festival and the priced misses together, sizing a week's shifts from it, and naming the fact that
+would move the plan.
 
 ## Why is each key right, and each other letter wrong?
 

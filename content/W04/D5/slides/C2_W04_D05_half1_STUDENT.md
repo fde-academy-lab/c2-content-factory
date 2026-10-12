@@ -2,16 +2,7 @@
 
 Week 4, Day 5. Half one.
 
-Kicker: WEEK 4  ·  FRIDAY  ·  ILLUSTRATIVE CASE
-Quote: Which forecast goes to the staffing plan for 12 October to 30 November 2026, how wrong could it be in shipments and in rupees, and how many packer shifts a week?
-Who: The ask on the ticket, to the FC planner and the regional operations head, due Friday. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
-
-```notes
-On screen as the room sits down. Read the title and the ask aloud, then the label line: the company
-is real, the situation and the data are synthetic. Today is a tournament in three rounds: count by
-hand, score on hidden weeks, then place the festival and price the plan. Transition: the ticket,
-line by line.
-```
+Header: WEEK 4  ·  FRIDAY  ·  FLIPKART, LUCKNOW  ·  ILLUSTRATIVE CASE
 
 ---
 
@@ -32,7 +23,9 @@ line by line.
 Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
 ```notes
-LIVE, 5 minutes. Read the table top to bottom. Define two words as they appear: a packer-shift is
+LIVE, 5 minutes, on screen as the room sits down. Read the title, then the table top to bottom, then
+the label line. Today is a tournament in three rounds: count by hand, score on hidden weeks, then
+place the festival and price the plan. Define two words as they appear: a packer-shift is
 one packer working one shift, and a forecast is a number for a week nobody has seen yet. Point at
 the four tables and their columns; every number today comes from them. Ask the room what would
 make each forecast wrong, and write the answers on the board without judging them. Transition:
@@ -238,22 +231,22 @@ which group's own rule came closest. Transition: the trap hidden in the copy.
 
 ```notes
 LIVE, 5 minutes. Diwali's week came one week earlier in 2025, so every calendar copy is a week out.
-Veritasium's move: the reveal follows the vote of S9. Transition: what the same copy does in 2026.
+Veritasium's move: the reveal follows the vote of S9. Transition: where Diwali falls in 2026.
 ```
 
 ---
 
-## S12. In 2026 the same copy lands two weeks early
-*Where does a copy of 2025 put Diwali's week in 2026?*
+## S12. In 2026 Diwali's week moves two weeks later
+*Where does Diwali fall in 2026, against the two years the rules copy?*
 
-![Diwali's week in 2024, 2025 and 2026, and where the copy puts it](../whiteboards/C2_W04_D05_festival_calendar_STUDENT.png)
+![Diwali's week in 2024, 2025 and 2026](../whiteboards/C2_W04_D05_festival_calendar_open_STUDENT.png)
 
-The week of 20 October 2025, copied 52 weeks on, lands on the week of 19 October 2026. Diwali 2026 falls on Sunday 8 November, so its week begins 2 November: the copy is two weeks early, and it carries the whole festival with it.
+Diwali 2026 falls on Sunday 8 November, so its week begins 2 November, 54 weeks after Diwali 2025's week and two weeks later in the calendar. Hold one question for round three: where will a copy of last year put this year's rush?
 
 ```notes
-LIVE, 3 minutes. Count the Mondays on the strip with the room. The house bot will make this
-mistake in round three; say so now and let the room hold it. Explorer: scene F3, the Diwali
-slider. Transition: the real company.
+LIVE, 3 minutes. Count the Mondays on the strip with the room. Do not answer where the copy lands:
+round three asks it on S28, and the festival calendar card answers it on S29. Explorer: scene F3,
+the Diwali slider. Transition: the real company.
 ```
 
 ---

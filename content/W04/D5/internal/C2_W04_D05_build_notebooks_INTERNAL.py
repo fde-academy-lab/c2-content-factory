@@ -158,16 +158,18 @@ check("the actual peak is 6 Oct 2025", y25.idxmax() == week("2025-10-06"))
         their distance from Diwali before copying. The week of 29 September 2025 shows a blank in
         the copy, because its source, 30 September 2024, is not one of the twelve rows.
 
-        ## Where does a copy of 2025 put Diwali in 2026?
+        ## How far does Diwali's week move between 2025 and 2026?
 
-        Diwali 2026 falls on Sunday 8 November, so its week begins Monday 2 November 2026.
+        Diwali 2026 falls on Sunday 8 November, so its week begins Monday 2 November 2026. Count the
+        weeks from Diwali 2025's week, and set them beside the 52 weeks a copy of last year steps
+        back. Where that puts this year's rush is chapter 3's question, so hold your answer.
         """),
         code('''
-lands = week("2025-10-20") + pd.Timedelta(weeks=52)       # 2025's Diwali week, copied a year on
-diwali_2026 = week("2026-11-02")
-print("the copy puts Diwali 2025's week on the week of", lands.date())
-print("weeks before the real Diwali week:", (diwali_2026 - lands).days // 7)
-check("the copy lands two weeks early", (diwali_2026 - lands).days == 14)
+diwali_2025, diwali_2026 = week("2025-10-20"), week("2026-11-02")
+gap = (diwali_2026 - diwali_2025).days // 7                # weeks from one Diwali week to the next
+print("weeks from Diwali 2025's week to Diwali 2026's:", gap)
+print("weeks a copy of last year steps back: 52")
+check("Diwali's week moves 54 weeks on, more than a year of weeks", gap == 54)
 '''),
         md("""
         ## Does the full series show the same shape?
@@ -195,8 +197,9 @@ check("the twelve rows are rows of the full series",
         - **Where is the peak?** Two weeks before Diwali's week in both years, 401,000 and 418,200.
         - **What do three rules say for 20 October 2025?** Naive 369,000, same week last year
           356,200, festival-aligned 308,776 against 308,900 shipped.
-        - **Where does a copy of last year put the peak?** A week late in 2025, and two weeks early
-          in 2026, on the week of 19 October against Diwali's week of 2 November.
+        - **Where does a copy of last year put the peak?** A week late in 2025. In 2026 Diwali's
+          week comes 54 weeks after 2025's, where a copy steps back 52; chapter 3 asks what that
+          does to this year's rush.
         - **Does the full series agree?** Yes: two festive peaks, an August sale, ordinary weeks a
           little above 210,000.
 
@@ -741,6 +744,8 @@ plt.show()
 check("naive misses by more than Rs 50 lakh a month", mae(naive) > 50)
 '''),
         md("""
+        ## How do the seasonal copy and the vendor score on the same six months?
+
         **Your turn.** Score the seasonal copy (the same month a year earlier) and the vendor's
         forecast on the same six months. Type these lines into the empty cell below and run them:
 
@@ -783,7 +788,7 @@ check("the plan line is 15 percent above last year's same months",
       abs(plan.sum() / rev["2025-10":"2026-03"].sum() - 1.15) < 0.001)
 '''),
         md("""
-        ## What do you bring to the TA?
+        ## What do you bring to the TA, in rupees?
 
         Anand's board number in one paragraph: the forecast you would send, the months it puts the
         spike in, its error bar in Rs lakh from the six hidden months, and the gap to the plan line.

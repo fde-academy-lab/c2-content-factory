@@ -82,8 +82,8 @@ one line goes back to its group.
 | Vendor's curve | 16,400 | 12 of 13 | Rs 11.9 lakh |
 
 Each group's own rule takes its row from the notebook. A rule that copies last year's week and adds
-3 to 5 percent lands within a few hundred shipments of the 6,615 row, which is the point: on
-festival-free weeks the simple copies win, and the festival is settled in round three.
+3 to 5 percent lands within a few hundred shipments of the 6,615 row: on festival-free weeks the
+simple copies win, and round three settles the festival.
 
 ## What do you do when it stalls?
 

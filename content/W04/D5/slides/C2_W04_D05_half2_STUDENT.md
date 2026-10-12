@@ -2,16 +2,7 @@
 
 Week 4, Day 5. Half two.
 
-Kicker: WEEK 4  ·  FRIDAY  ·  ILLUSTRATIVE CASE
-Quote: Send the staffing note: the method, packer shifts a week, the error bar in rupees in each direction, and what would make it wrong.
-Who: The ask on the ticket, to the FC planner and the regional operations head, due Friday. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
-
-```notes
-On screen as the room comes back. The first hour is the trainer's: the staffing note in groups,
-the interview transcript in pairs, the Kahoot and Saturday's preview.
-Then the IITGN faculty session W4-4 (tentative), or the fallback hour.
-Transition: where the morning left the plan.
-```
+Header: WEEK 4  ·  FRIDAY  ·  FLIPKART, LUCKNOW  ·  ILLUSTRATIVE CASE
 
 ---
 
@@ -24,15 +15,20 @@ value: 6,615 | label: shipments a week, the error bar | note: on thirteen hidden
 value: 0.82 | label: the share of weeks to cover | note: 25 / (25 + 5.42): being short costs 4.6 times being long
 ```
 
+Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
+
 ```notes
-LIVE, 2 minutes. Read the three numbers; every group's note starts from them. Transition: what the
+LIVE, 2 minutes, on screen as the room comes back. The first hour is the trainer's: the staffing
+note, the interview room, the Kahoot and Saturday's preview.
+Then the IITGN faculty session W4-4 (tentative) runs, or the fallback hour.
+Read the three numbers; every group's note starts from them. Transition: what the
 note must carry.
 ```
 
 ---
 
 ## S2. The staffing note: five lines, one page
-*What does each group hand the regional operations head in thirty minutes?*
+*What does each group hand the regional operations head in twenty minutes?*
 
 ```cards
 icon: file-text | eyebrow: 1 | title: The claim as the title | body: How many shifts, which weeks, from which forecast, in one sentence. | tone: light
@@ -45,7 +41,7 @@ icon: scale | eyebrow: 5 | title: The two answered | body: One line to finance, 
 The set is `exercises/unguided/C2_W04_D05_staffing_note_STUDENT.md`: the note's decisions as lettered items, then the note itself.
 
 ```notes
-LIVE, 30 minutes, unguided, in the nine groups. TAs circulate with the scorer's card from Tuesday:
+LIVE, 20 minutes, unguided, in groups of about four. TAs circulate with the scorer's card from Tuesday:
 claim as title, one piece of evidence with its denominator, the caveat in sight, the action with its
 cost. A group that splits the difference between 4 and 22 is asked which rule either one beat on
 the hidden weeks. Transition: what a strong first line looks like.
@@ -111,7 +107,7 @@ the interview question.
 | Takes the calendar for granted | Checks where the festival falls this year |
 
 ```notes
-LIVE, 5 minutes. The full transcript, with the clarifying questions and the scorecard, is in
+LIVE, 4 minutes. The full transcript, with the clarifying questions and the scorecard, is in
 `extras/C2_W04_D05_interview_transcripts_STUDENT.md`; pairs read it and score the hire-grade answer
 on the card. Transition: the follow-ups.
 ```
@@ -128,7 +124,7 @@ label: Follow-up 3 | title: What did a forecast cost Zillow? | body: A guardrail
 ```
 
 ```notes
-LIVE, 4 minutes. Each follow-up changes the question so only the reasoning transfers. Zillow's
+LIVE, 3 minutes. Each follow-up changes the question so only the reasoning transfers. Zillow's
 figures are from its Q3 2021 shareholder letter, checked 12 October 2026. Transition: the same idea
 at an AI company.
 ```
@@ -176,7 +172,7 @@ flowchart LR
 **The catch.** October 2025's retail alone was 31,49,846 two-wheelers (FADA, F5); times twelve that is about 3.78 crore, 74 percent too high: never annualise a festive month. SIAM's figure is from its FY 2025-26 release (T3, checked 12 October 2026).
 
 ```notes
-LIVE, 5 minutes if time allows, in pairs against a five-minute clock. The scorer checks the
+LIVE, 3 minutes if time allows, in pairs against a three-minute clock. The scorer checks the
 structure and the sanity check, never the final number. Transition: the handoff.
 ```
 
@@ -212,7 +208,7 @@ Transition: the Kahoot.
 | 8 | Plus 4 against which window |
 
 ```notes
-LIVE, 9 minutes. Kahoot is ungraded. The pack is `kahoot/C2_W04_D05_quiz_STUDENT.md`. Spend two
+LIVE, 12 minutes. Kahoot is ungraded. The pack is `kahoot/C2_W04_D05_quiz_STUDENT.md`. Spend two
 minutes on item 6 if the room splits: the blend is a size-weighted average of cohort rates.
 Transition: Saturday.
 ```
