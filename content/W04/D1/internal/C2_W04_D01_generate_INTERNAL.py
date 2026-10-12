@@ -654,6 +654,27 @@ fact("twelve_tph_after", 1.19, "trips per peak online hour", "88 / 74", "L1 hand
 fact("twelve_hours_change_pct", 23, "percent", "74 / 60 - 1", "L1 hand count")
 fact("twelve_trips_change_pct", -23, "percent", "88 / 114 - 1", "L1 hand count")
 fact("twelve_idle_share", 0.33, "share", "2 of the six drivers (E and F) sit in the idle tail", "L1; L2")
+# Added by the finishing session for the exercises, the Kahoot and the ticket's change column; every
+# value is read from the same tables, so the data files are unchanged.
+fact("acceptance_change_points", round(100 * (B["peak_accepted"] / B["peak_offers"]
+                                              - A["peak_accepted"] / A["peak_offers"])), "points",
+     "acceptance before less acceptance after, in points", "the ticket's change column")
+fact("driver_cancel_change_points", round(100 * (A["peak_driver_cancels"] / A["peak_accepted"]
+                                                 - B["peak_driver_cancels"] / B["peak_accepted"])), "points",
+     "driver-cancelled share after less before, in points", "the ticket's change column")
+fact("no_trip_change_points", round(100 * (A["peak_hours_no_trip"] / A["peak_online_hours"]
+                                           - B["peak_hours_no_trip"] / B["peak_online_hours"])), "points",
+     "share of hours with no trip after less before, in points", "the ticket's change column")
+fact("mean_of_ratios_hidden_share", r2((mean_of_ratios["after"] - A["peak_trips"] / A["peak_online_hours"])
+                                       / (B["peak_trips"] / B["peak_online_hours"]
+                                          - A["peak_trips"] / A["peak_online_hours"])), "share",
+     "(1.71 - 1.58) / (1.90 - 1.58): the part of the fall the average of rates hides", "L2 trap, two-fifths")
+late = dw["week_start"].lt("2026-09-07").map({True: "before", False: "after"})
+late_city = dw.groupby(late)[["peak_trips", "peak_online_hours"]].sum()
+for win in ("before", "after"):
+    fact(f"tph_split_0907_{win}", r2(late_city.loc[win, "peak_trips"] / late_city.loc[win, "peak_online_hours"]),
+         "trips per peak online hour", f"the window flagged at 7 September, so the launch week counts as before; {win}",
+         "the lab set's Parsons problem, option d")
 
 toys = [
     {"id": "toy_canteen", "label": "invented", "values": {"tokens_before": 200, "tokens_after": 400,
@@ -691,6 +712,9 @@ facts = {
     "twelve_rows": twelve_rows,
     "kalpa": {
         "members": 120,
+        "members_joined_by_month": {m: int(n) for m, n in
+                                    pd.Series([r["member_since"][:7] for r in members]).value_counts()
+                                    .sort_index().items()},
         "reorders_comparison": int((reorders["slot"] == "comparison").sum()),
         "reorders_window": int((reorders["slot"] == "window").sum()),
         "lab_twelve_rows": lab_rows,

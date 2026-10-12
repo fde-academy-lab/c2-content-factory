@@ -101,7 +101,7 @@ value: Rs 58 to 92.7 lakh | label: the redesign's saving | note: if a half to a 
 value: Rs 82.3 | label: top-up per completed trip | note: after the launch; guardrail 3 watches it
 ```
 
-**The assumption, stated.** Some idle drivers would start accepting enough to qualify under a rule that pays for trips, so between a fifth and a half of the idle tail's top-up would still be paid. **What would settle it:** the test of the redesign that this afternoon's tentative faculty block designs. Rs 74 lakh, the top-up to every other driver-week, is what the six weeks cost if nobody had changed, which is a floor on the cost and never a forecast.
+**The assumption, stated.** Some idle drivers would start accepting enough to qualify under a rule that pays for trips, so between a fifth and a half of the idle tail's top-up would still be paid. **What would settle it:** the test of the redesign that this afternoon's tentative faculty block designs. Rs 74 lakh, the top-up the other driver-weeks received, is what the redesign would have paid over these six weeks if every driver had behaved the same: a floor on its cost, never a forecast.
 
 ```notes
 LIVE, 3 minutes. Groups compare their own saving with the range. A group that wrote "saves Rs 1.16

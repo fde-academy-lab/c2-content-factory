@@ -1059,6 +1059,36 @@ numbers:
   unit: share
   how: 2 of the six drivers (E and F) sit in the idle tail
   used_by: L1; L2
+- id: acceptance_change_points
+  value: 13
+  unit: points
+  how: acceptance before less acceptance after, in points
+  used_by: the ticket's change column
+- id: driver_cancel_change_points
+  value: 5
+  unit: points
+  how: driver-cancelled share after less before, in points
+  used_by: the ticket's change column
+- id: no_trip_change_points
+  value: 16
+  unit: points
+  how: share of hours with no trip after less before, in points
+  used_by: the ticket's change column
+- id: mean_of_ratios_hidden_share
+  value: 0.4
+  unit: share
+  how: '(1.71 - 1.58) / (1.90 - 1.58): the part of the fall the average of rates hides'
+  used_by: L2 trap, two-fifths
+- id: tph_split_0907_before
+  value: 1.86
+  unit: trips per peak online hour
+  how: the window flagged at 7 September, so the launch week counts as before; before
+  used_by: the lab set's Parsons problem, option d
+- id: tph_split_0907_after
+  value: 1.57
+  unit: trips per peak online hour
+  how: the window flagged at 7 September, so the launch week counts as before; after
+  used_by: the lab set's Parsons problem, option d
 toys:
 - id: toy_canteen
   label: invented
@@ -1237,6 +1267,13 @@ twelve_rows:
   topup_rs: 3850
 kalpa:
   members: 120
+  members_joined_by_month:
+    2026-01: 20
+    2026-02: 20
+    2026-03: 20
+    2026-04: 20
+    2026-05: 20
+    2026-06: 20
   reorders_comparison: 427
   reorders_window: 521
   lab_twelve_rows:

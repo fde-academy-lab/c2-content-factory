@@ -146,9 +146,9 @@ icon: wallet | eyebrow: Finance partner | title: Top-up per trip | body: Holds t
 **The proxy test, three questions per number.** Could a team hit this number while riders waited longer? Who controls the count? What does the number deliberately not reward?
 
 ```notes
-LIVE, 12 minutes, the war game's round 1 (run sheet: trainer/C2_W04_D01_war_game_TRAINER.md).
+LIVE, 8 minutes, the war game's round 1 (run sheet: trainer/C2_W04_D01_war_game_TRAINER.md).
 The trainer voices the three role cards, or three learners read them. Each of the nine groups has
-four minutes to give one way to game each number, from instinct only, and its scorer holds the
+three minutes to give one way to game each number, from instinct only, and its scorer holds the
 proxy-test card. Write the answers on the board under each role. Expect: hours rise if drivers stay
 logged in and idle; enrolled drivers rise if people sign up and never drive; top-up per trip falls
 if drivers take only short trips. Park "what would the data show" until chapter 2.
@@ -406,7 +406,8 @@ Before the launch, trips per hour wandered between 1.88 and 1.93. In the launch 
 ```notes
 LIVE, 3 minutes. The animated version, whiteboards/C2_W04_D01_drift_STUDENT.gif, draws the twelve
 weeks one at a time; play it on the projector and stop at the dashed line to ask what the next week
-will show. Then show this full picture and read the two ranges.
+will show. Then show this full picture and read the two ranges. Explorer scene M1 draws the same
+drift with drivers as dots; use it here if it is on the projector.
 Transition: the groupby that produced these totals.
 ```
 
