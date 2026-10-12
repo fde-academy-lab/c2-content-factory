@@ -1,29 +1,27 @@
-# The rolling-origin hour, if the block slips
+# Flipkart Lucknow: the rolling-origin hour
 
-Week 4, Day 5. Fallback deck (120 minutes).
+Week 4, Day 5. Fallback.
 
-Kicker: WEEK 4  ·  FRIDAY  ·  FALLBACK
-Quote: The baseline is still the thing to beat; the fallback hour shows what happens when the hold-out is shorter or when the forecast's history was borrowed.
-Who: the FC planner at Flipkart's Lucknow fulfilment centre
+Kicker: WEEK 4  ·  FRIDAY  ·  IF THE TENTATIVE FACULTY SESSION SLIPS
+Quote: Before the plan is signed, would a shorter test, or a test that rolls week by week, have told the planner something different?
+Who: The FC planner, testing the morning's choice. Runs only if the IITGN faculty session W4-4 (tentative) does not run. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
 ```notes
-On screen before the fallback begins. Runs only if W4-4 slips. Teaches nothing the IITGN block
-owns: no autocorrelation, no smoothing, no ARIMA. Four parts of 35, 30, 30 and 25 minutes.
-Transition: S1, the four parts.
+On screen only if the faculty session (tentative) slips. Four parts, 35, 30, 30 and 25 minutes.
+Nothing here teaches autocorrelation, smoothing or ARIMA: the faculty session (tentative) owns them.
+Transition: the four parts.
 ```
 
 ---
 
-## S1. The four parts of the fallback hour
-*What runs if the IITGN block (tentative) slips, and in what order?*
+## S1. Four parts, each testing the morning's choice
+*What runs in the next 120 minutes, and in what order?*
 
 ```mermaid
 flowchart LR
-    A["<b>Part 1 · 35 min</b><br/>Rescore with four weeks held out<br/>and name what breaks"]
-    B["<b>Part 2 · 30 min</b><br/>Rolling origin on the twelve rows<br/>one week ahead, six origins"]
-    C["<b>Part 3 · 30 min</b><br/>Zillow and Target Canada<br/>Lucknow equivalents"]
-    D["<b>Part 4 · 25 min</b><br/>[D] finance and the vendor sponsor<br/>second transcript"]
-    A --> B --> C --> D
+    A["<b>Part 1</b><br/>35 minutes<br/>hide four<br/>weeks"] --> B["<b>Part 2</b><br/>30 minutes<br/>roll the<br/>origin"]
+    B --> C["<b>Part 3</b><br/>30 minutes<br/>Zillow and<br/>Target Canada"]
+    C --> D["<b>Part 4</b><br/>25 minutes<br/>finance and<br/>the sponsor"]
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class A lit
@@ -31,98 +29,223 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes. Read the four parts as a plan the room can see. Nobody is being tested on the
-model; this is a reflection on what the morning taught, with two guardrail cases from real
-companies.
-Transition: S2, part one.
+LIVE, 2 minutes. Read the four parts. Each ends on one line a group writes down. Transition:
+part 1.
 ```
 
 ---
 
-## S2. Part 1: rescore with four weeks held out
-*What changes when the hold-out is shorter than the horizon?*
+## S2. Hide four weeks, forecast from 24 August
+*What do the rules score when only the last four weeks are hidden?*
 
-| | 13-week hold-out | 4-week hold-out |
+![MAE by rule on thirteen hidden weeks and on the last four](../whiteboards/C2_W04_D05_four_vs_thirteen_STUDENT.png)
+
+The order barely moves; the numbers move a great deal. The four-week test rests on four misses and on one origin week.
+
+```notes
+LIVE, 10 minutes. Groups run notebook 02 with the split moved to 24 August 2026, or read this table.
+The vendor's four weeks are its old forecast, made from 22 June, so they are its farthest weeks
+ahead. Transition: why naive moved most.
+```
+
+---
+
+## S3. Why did naive jump from 14,923 to 37,050?
+*What, in the four-week test, made naive's average miss more than double?*
+
+```cards
+icon: list | eyebrow: a | title: The last four weeks are harder | body: September ships more than July. | tone: light
+icon: list | eyebrow: b | title: The origin week was a dip | body: The week of 24 August shipped 196,600. | tone: light
+icon: list | eyebrow: c | title: Four weeks are too few to average | body: Any one miss moves the mean. | tone: light
+icon: list | eyebrow: d | title: Naive ignores growth | body: It never adds the 4 percent. | tone: light
+```
+
+```notes
+LIVE, 4 minutes. Vote, argue for one minute, vote again. a and c are partly true; b is the cause.
+Transition: the answer.
+```
+
+---
+
+## S4. Answer: the origin week was a dip, 196,600
+*How does one origin week set every naive miss?*
+
+```stats
+value: 196,600 | label: the week of 24 August 2026 | note: the origin naive repeats four times
+value: 41,800 | label: its first miss, too low | note: then 37,100, 33,700 and 35,600, all too low
+value: 37,050 | label: naive's MAE on four weeks | note: against 14,923 on thirteen
+```
+
+A short test judges the origin as much as the rule. The thirteen-week test spread that luck over thirteen weeks; four weeks cannot.
+
+```notes
+LIVE, 5 minutes. Show the four misses on the board. The house bot and festival-aligned barely move
+because they copy last year's weeks and ignore the origin. Transition: the rule this proves.
+```
+
+---
+
+## S5. A test shorter than the plan judges too little
+*Why must the hidden weeks span at least the eight weeks the plan covers?*
+
+```cards
+icon: ruler | eyebrow: The rule | title: At least as long as the horizon | body: The plan books eight weeks, so the test hides at least eight (FPP3, section 5.8, checked 12 October 2026). | tone: dark
+icon: trending-up | eyebrow: The vendor | title: Its gap grows with the weeks ahead | body: 148 percent worse than festival-aligned on thirteen weeks, 233 percent on its four farthest. | tone: light
+icon: shuffle | eyebrow: The luck | title: One origin can flatter or punish | body: A rule that looked fine from 22 June looks poor from 24 August. | tone: light
+```
+
+```notes
+LIVE, 6 minutes. Each group writes one line: what a four-week test would have let the vendor's
+sponsor claim. Transition: part 2, rolling the origin.
+```
+
+---
+
+## S6. Roll the origin: one week ahead, five times
+*What does a rolling origin show that one hidden block cannot?*
+
+```mermaid
+flowchart LR
+    O1["<b>From 29 Sep</b><br/>forecast<br/>6 Oct"] --> O2["<b>From 6 Oct</b><br/>forecast<br/>13 Oct"]
+    O2 --> O3["<b>From 13 Oct</b><br/>forecast<br/>20 Oct"]
+    O3 --> O4["<b>From 20 Oct</b><br/>forecast<br/>27 Oct"]
+    O4 --> O5["<b>From 27 Oct</b><br/>forecast<br/>3 Nov"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class O1,O2,O3,O4,O5 known
+```
+
+Each forecast is made from the week before and scored, then the origin moves on one week. The twelve rows hold five such steps in 2025: from 29 September to 27 October, forecasting the week after each.
+
+```notes
+LIVE, 4 minutes. This is the rolling-origin picture of FPP3's section 5.10 (checked 12 October
+2026), on the twelve printed rows. Groups work it by hand. Transition: the five forecasts.
+```
+
+---
+
+## S7. Five one-week forecasts, worked by hand
+*What do naive and festival-aligned forecast one week ahead through 2025's festival?*
+
+| Week forecast | Naive: the week before | Naive's miss | Festival-aligned | Its miss |
+|---|---|---|---|---|
+| 6 Oct 2025 | 331,200 | 87,000 too low | 417,040 | 1,160 too low |
+| 13 Oct 2025 | 418,200 | 49,200 too high | 370,448 | 1,448 too high |
+| 20 Oct 2025 | 369,000 | 60,100 too high | 308,776 | 124 too low |
+| 27 Oct 2025 | 308,900 | 120,300 too high | 187,824 | 776 too low |
+| 3 Nov 2025 | 188,600 | 39,300 too low | 221,208 | 6,692 too low |
+
+```notes
+LIVE, 10 minutes. Each group takes one row and calls out its two misses. Festival-aligned copies
+2024's week at the same distance from Diwali, plus 4 percent. Transition: the vote.
+```
+
+---
+
+## S8. Which rule swings most through the festival?
+*Over the five one-week forecasts, whose average miss is larger, and by how much?*
+
+```cards
+icon: list | eyebrow: a | title: Naive, by about ten times | body: The week before is a poor guide when weeks change fast. | tone: light
+icon: list | eyebrow: b | title: Naive, by about thirty times | body: Every festive week differs sharply from the last. | tone: light
+icon: list | eyebrow: c | title: Festival-aligned, narrowly | body: Copying 2024 adds 2024's own noise. | tone: light
+icon: list | eyebrow: d | title: Level: one week ahead, both are close | body: A week is short. | tone: light
+```
+
+```notes
+LIVE, 3 minutes. Groups add their row's misses to the board first. Transition: the answer.
+```
+
+---
+
+## S9. Answer: naive, by about thirty-five times
+*What does the rolling origin say about naive near a festival?*
+
+![Naive and festival-aligned, one week ahead from five origins](../whiteboards/C2_W04_D05_rolling_origin_STUDENT.png)
+
+Naive's five misses average 71,180 a week and festival-aligned's 2,040. Near a festival the week before is a poor guide, because the weeks change sharply; last year's week at the same distance from Diwali is a good one.
+
+```notes
+LIVE, 3 minutes. 71,180 over 2,040 is about thirty-five: b was the closest option. Transition:
+part 3, two real failures.
+```
+
+---
+
+## S10. Zillow: a forecast broke its own guardrail
+*What did Zillow's forecasting miss cost, and which guardrail failed?*
+
+| | Zillow Offers, 2021 (F3, Zillow's Q3 2021 shareholder letter, checked 12 October 2026) |
+|---|---|
+| The forecast | Home prices three to six months ahead, to buy homes and resell them |
+| The guardrail | Public targets of plus or minus 200 basis points of breakeven unit economics |
+| The miss | Unit economics swung about 1,200 basis points from Q2 to an expected minus 500 to minus 700 in Q4 2021 |
+| The cost | A write-down of about USD 304 million on inventory; the business wound down, and about 25 percent of the workforce was cut |
+
+```notes
+LIVE, 10 minutes. Groups name the Lucknow equivalent: a vendor forecast allowed to run past its
+own error band with nobody watching the band. Transition: Target Canada.
+```
+
+---
+
+## S11. Target Canada: a forecast with no history
+*What did Target's buyers have to forecast with in Canada?*
+
+| | Target Canada, 2013 to 2015 (F4, checked 12 October 2026) |
+|---|---|
+| The decision | Target announced on 15 January 2015 that it would close all 133 Canadian stores, about 17,600 employees |
+| The forecasting failure | Its forecasting and replenishment system needed years of history and could not forecast new stores, so buyers used optimistic projections instead |
+| What followed | Distribution centres overflowed while shelves sat empty |
+
+```notes
+LIVE, 10 minutes. The forecasting account is Canadian Business's, through the archived copy the
+research ledger cites. The Lucknow version: a vendor model with no Lucknow festival in its record.
+Transition: the two side by side.
+```
+
+---
+
+## S12. Two failures, and their Lucknow versions
+*Which check in today's plan would have caught each failure?*
+
+| The failure | The Lucknow version | The check that catches it |
 |---|---|---|
-| Naive MAE | 22,046 | about 10,000 (one summer month) |
-| SWLY MAE | 9,346 | about 7,500 |
-| Festival-aligned MAE | 5,674 | about 4,000 |
-| Vendor MAE | 16,985 | about 11,000 |
-
-A shorter hold-out looks friendlier to every method, including the vendor, because the window is smaller and the noise averages out less. A four-week test for an eight-week horizon rewards the method that was lucky on the week after training.
+| Zillow: a forecast ran past its own guardrail | The vendor's curve, high on 12 of 13 hidden weeks and climbing | Score every week against the error band, and stop when it is breached |
+| Target Canada: a forecast with no history | A vendor model never scored on a Lucknow festival | Score it on 2025's festival from data to September 2025 before it books a shift |
 
 ```notes
-LIVE, 35 minutes. Each group runs the four-week version in the notebook (notebook 02's `holdout_n`
-switch), then reports what changed and what did not. The vendor's share of the error falls by
-about a third; its ranking does not change. The lesson is sharp: a test shorter than the horizon
-tempts a vendor's sponsor to claim capability the horizon still has to earn.
-Transition: S3, part two.
+LIVE, 10 minutes. Each group writes the check in one line. Transition: part 4, the second
+transcript.
 ```
 
 ---
 
-## S3. Part 2: rolling origin by hand
-*How does the error look when the forecast's starting point moves one week at a time?*
+## S13. [D] Finance and the sponsor each want theirs
+*How does a candidate choose between two stakeholders' forecasts, and present the error?*
 
-![The hold-out slides across the series; errors accumulate](../whiteboards/C2_W04_D05_holdout_slide_still_STUDENT.png)
-
-For each of six origins over the summer, forecast one week ahead with each baseline. Six one-week errors give a line; the line says whether the method is steady or drifts.
+| A weak answer | A hire-grade answer |
+|---|---|
+| "I would average the two: 13 percent sits between 4 and 22." | "I would score both on weeks neither saw, against a copy of last year, in shipments and in rupees." |
+| Picks the more senior stakeholder's number | Concedes what is true in each: finance's growth, the vendor's fit |
+| Gives one number with no range | Gives the plan, its error bar in each direction, and what would change it |
 
 ```notes
-LIVE, 30 minutes. Rolling origin is Hyndman and Athanasopoulos's figure (FPP3, R1): forecast once
-from origin t, then from origin t + 1, and so on. The still PNG shows one frame of the sliding
-hold-out. In class, use the GIF beside this slide if the projector plays it; otherwise rely on the
-still. The reveal: SWLY's one-week-ahead error is steady; the vendor's grows as it drifts further
-from the training window.
-Transition: S4, Zillow and Target Canada.
+LIVE, 15 minutes. Pairs play the planner and one stakeholder, then swap. The full [D] transcript is
+in `extras/C2_W04_D05_interview_transcripts_STUDENT.md`. Transition: the close.
 ```
 
 ---
 
-## S4. Part 3: Zillow and Target Canada, two failures
-*What did Zillow and Target Canada tell forecasters that the Lucknow planner must remember?*
+## S14. Close: the rule that holds without the session
+*What survives this hour, whether or not the faculty session (tentative) runs?*
 
-| | Zillow (F3) | Target Canada (F4) |
-|---|---|---|
-| The forecast | A home-price model used to buy for Zillow Offers | A sales forecast system Target brought over from the US |
-| The miss | Public guardrail breached by 1,200 basis points on a plus-or-minus-200 bp band | Buyers used optimistic projections; shelves ran out or were overstocked |
-| The cost | Inventory write-down about USD 304 million; business wound down; workforce cut by about a quarter | 133 Canadian stores closed within two years of opening |
-| The Lucknow equivalent | A vendor forecast allowed to drift past its stated error band | A new vendor model trained on a US retail series with no Lucknow history |
-
-```notes
-LIVE, 30 minutes. Each group names the Lucknow equivalent for both: the guardrail Zillow lacked
-(an operational trigger when the forecast's actual error exceeded the band), and the history
-Target Canada needed (two to three years of Canadian store data, not a US model). Interview-grade
-answers close the activity.
-Transition: S5, the second transcript.
+```cards
+icon: ruler | eyebrow: The test | title: As long as the plan | body: Hide at least as many weeks as the plan books, from one origin. | tone: light
+icon: calendar | eyebrow: The festival | title: Copy by distance from Diwali | body: One week ahead, naive missed by 71,180 through the festival. | tone: light
+icon: badge-check | eyebrow: The plan | title: Beat the bot, then price it | body: Nothing books a shift until it beats a copy of last year on hidden weeks. | tone: dark
 ```
 
----
-
-## S5. [D] Finance and the vendor's sponsor each want theirs
-*What does the planner say when two stakeholders push forecasts the baseline beats?*
-
-| Stakeholder | Their claim (partly right) | The one-line answer |
-|---|---|---|
-| Finance | 'Last year plus 4 percent is the budget' | Right about the total, wrong about the shape; the shape puts the peak in the wrong week. |
-| Vendor's sponsor | 'The model fits every week of history' | Fit on 91 training weeks is not forecast on the 13 held-out weeks; its hold-out MAE is 200 percent above the chosen baseline's. |
-
 ```notes
-LIVE, 25 minutes. Pair the room; one plays the planner, one plays finance, then swap and the
-other plays the sponsor. Scorecard as in Tuesday's studio. The partly-right half of each claim
-has to be conceded; the plan's shape and the hold-out score are what survive the defence.
-Transition: S6, the close.
-```
-
----
-
-## S6. The one rule the fallback leaves
-*What survives this hour even without the IITGN block?*
-
-A forecast earns the plan only after it beats the simplest baseline on weeks it has not seen. The baseline for a seasonal business is same-week-last-year or its festival-aligned twin. The hold-out spans the horizon.
-
-```notes
-LIVE, 2 minutes. The one rule carries into the Saturday paper's part 5. The IITGN block
-(tentative), when it runs on another day, picks up autocorrelation and smoothing from here.
-Transition: Kahoot and close in half 2.
+LIVE, 2 minutes. The faculty session (tentative) picks up autocorrelation and smoothing from here
+whenever it runs. Transition: close for the day.
 ```

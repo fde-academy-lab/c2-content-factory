@@ -1,201 +1,236 @@
-# The staffing note, the interview, and Saturday's bridge
+# Flipkart Lucknow: the staffing note and its error bar
 
 Week 4, Day 5. Half two.
 
-Kicker: WEEK 4  ·  FRIDAY  ·  AFTERNOON
-Quote: The plan goes to Friday with its error bar, its cost per direction, and the baseline it had to beat.
-Who: the FC planner at Flipkart's Lucknow fulfilment centre, hand-off to the regional operations head
+Kicker: WEEK 4  ·  FRIDAY  ·  ILLUSTRATIVE CASE
+Quote: Send the staffing note: the method, packer shifts a week, the error bar in rupees in each direction, and what would make it wrong.
+Who: The ask on the ticket, to the FC planner and the regional operations head, due Friday. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
 ```notes
-On screen before the room comes back. The morning's chosen forecast is on the board with its MAE
-in rupees. The afternoon is unguided: each group writes the staffing note, then the room reads
-the interview transcripts and the AI-company variant, and the handoff lines up Saturday's
-transfer drill.
-Transition: S1, the morning's result.
+On screen as the room comes back. The first hour is the trainer's: the staffing note in groups,
+the interview transcript in pairs, the Kahoot and Saturday's preview.
+Then the IITGN faculty session W4-4 (tentative), or the fallback hour.
+Transition: where the morning left the plan.
 ```
 
 ---
 
-## S1. Where the morning left the plan
-*What did chapter 3 land, and what is left for the afternoon?*
+## S1. The morning left a plan, a bar and a share
+*What did the three chapters settle before lunch?*
+
+```stats
+value: 20,275 | label: packer shifts over eight weeks | note: festival-aligned, raised 2.6 percent, 3,719 in the week of 19 October
+value: 6,615 | label: shipments a week, the error bar | note: on thirteen hidden weeks: Rs 35,832 if high, Rs 1.7 lakh if low
+value: 0.82 | label: the share of weeks to cover | note: 25 / (25 + 5.42): being short costs 4.6 times being long
+```
+
+```notes
+LIVE, 2 minutes. Read the three numbers; every group's note starts from them. Transition: what the
+note must carry.
+```
+
+---
+
+## S2. The staffing note: five lines, one page
+*What does each group hand the regional operations head in thirty minutes?*
 
 ```cards
-icon: badge-check | eyebrow: Chosen forecast | title: Festival-aligned with drift | body: Beats the vendor by 200 percent on the hold-out; places the peak at the right week.
-icon: shield | eyebrow: Error bar | title: Hold-out MAE 5,674 | body: Shipments per week; priced in rupees per direction (Rs 30,760 if over, Rs 1.42 lakh if under).
-icon: calculator | eyebrow: Plan quantile | title: 0.82 | body: From 25 over 25 plus 5.42; the plan sits above the median because being short costs 4.6 times being long. | tone: dark
+icon: file-text | eyebrow: 1 | title: The claim as the title | body: How many shifts, which weeks, from which forecast, in one sentence. | tone: light
+icon: calendar | eyebrow: 2 | title: The festival placed | body: Which week is the peak and why: the distance from Diwali, never the calendar. | tone: light
+icon: ruler | eyebrow: 3 | title: The error bar in rupees | body: Shipments a week, priced in each direction, and the festival's own record. | tone: light
+icon: circle-alert | eyebrow: 4 | title: What would make it wrong | body: Three facts that would move the number, each with its check. | tone: light
+icon: scale | eyebrow: 5 | title: The two answered | body: One line to finance, one to the vendor's sponsor, conceding the true part. | tone: dark
 ```
 
-The afternoon writes the staffing note each group hands to the regional operations head, with the method, the forecast, the error bar in rupees and three facts that would move it.
+The set is `exercises/unguided/C2_W04_D05_staffing_note_STUDENT.md`: the note's decisions as lettered items, then the note itself.
 
 ```notes
-LIVE, 2 minutes. The morning picked the forecast and set its error bar. The afternoon turns that
-into a staffing note the room can defend. The transcript follows the note, so the interview
-language carries the room's own number.
-Transition: S2, the brief for the unguided exercise.
+LIVE, 30 minutes, unguided, in the nine groups. TAs circulate with the scorer's card from Tuesday:
+claim as title, one piece of evidence with its denominator, the caveat in sight, the action with its
+cost. A group that splits the difference between 4 and 22 is asked which rule either one beat on
+the hidden weeks. Transition: what a strong first line looks like.
 ```
 
 ---
 
-## S2. The unguided exercise: write the staffing note
-*What does each group produce in the next 30 minutes, and who is the reader?*
+## S3. A note's first line carries the decision
+*Which first line lets the operations head act without reading on?*
+
+| A first line that stalls | A first line that decides |
+|---|---|
+| "Forecasting analysis for the festive season" | "Book 20,275 packer shifts for 12 October to 30 November, peaking at 3,719 in the week of 19 October" |
+| "The vendor projects 22 percent growth" | "The vendor's curve lost to a copy of last year on thirteen hidden weeks, so it does not set the plan" |
+| "Finance suggests plus 4 percent" | "Finance's 4 percent is the right growth on the wrong weeks: it books the peak on 5 October" |
+
+```notes
+LIVE, 3 minutes. Tuesday's rule: the title is the claim. Read each pair aloud and ask which line a
+regional head could forward unchanged. Transition: the two people who will object.
+```
+
+---
+
+## S4. Finance and the vendor's sponsor are each partly right
+*What is true in each objection, and what answers the rest?*
 
 ```cards
-icon: file-text | eyebrow: One page | title: Method, forecast, error bar | body: Name the method, give the eight-week shipment forecast, state the hold-out MAE in rupees per direction.
-icon: users | eyebrow: Packers per week | title: Shifts raised to 0.82 | body: Shipments divided by 120, raised toward the 0.82 quantile from the error bar.
-icon: circle-alert | eyebrow: What would make it wrong | title: Three facts | body: Which facts would move the number: a festival-adjacent GST change, a new vendor without Lucknow history, a capacity-clipped series. | tone: dark
+icon: calculator | eyebrow: Finance | title: "Last year plus 4 is what the budget holds" | body: True: the two years grew 4.0 percent. Not true for the weeks: copied by calendar it books the peak on 5 October and sits 308,048 shipments short. | tone: light
+icon: trending-up | eyebrow: The vendor's sponsor | title: "The model fits every week of history" | body: True: within 1.4 percent. That is the problem: on thirteen weeks it never saw it missed by 16,400 a week, 67 percent worse than the copy of last year. | tone: light
 ```
 
 ```notes
-LIVE, 30 minutes, unguided. Groups work in their nine seats; the TAs circulate. The scorecard is
-the one from Tuesday's studio: claim as the title, one piece of evidence with its denominator or
-one chart, the caveat in plain sight, the action with its cost in rupees and weeks. If a group
-splits the vendor's 22 and finance's 4, challenge the choice: "which baseline did either of them
-beat on the hold-out?"
-Transition: S3, the interview transcript.
+LIVE, 3 minutes. Concede the true half first, then answer from the evidence, then say what would
+change your mind: a vendor forecast scored on 2025's festival from data to September 2025.
+Transition: the interview question.
 ```
 
 ---
 
-## S3. Interview transcript: how do you evaluate a forecast
-*What does a strong answer look like, and what does a weak answer skip?*
+## S5. Three of four forecasts book the wrong week
+*Which weeks does each forecast book the most packers for?*
+
+![Four forecasts for 28 September to 30 November 2026](../whiteboards/C2_W04_D05_window_2026_STUDENT.png)
+
+The house bot, finance's rule and the vendor book their biggest week on 5 October; festival-aligned books it on 19 October, two weeks before Diwali's week.
+
+```notes
+LIVE, 2 minutes. The picture every note should be able to describe in one sentence. Transition:
+the interview question.
+```
+
+---
+
+## S6. "How do you evaluate a forecast?" Two answers
+*What separates a weak answer from a hire-grade one?*
 
 | Weak answer | Hire-grade answer |
 |---|---|
-| "We used ARIMA and the fit was good." | "I hold out as many periods as the horizon, score in the business's unit, and compare with the naive and the seasonal naive before trusting any model." |
-| Judges by in-sample fit. | Names the baseline and the hold-out, both set before scoring. |
-| Picks a model. | Earns a model's place over a baseline. |
-| Reports one number. | Reports MAE in the two directions, since the costs are not the same. |
+| "We used a good model and the fit was within 2 percent." | "I hide the latest weeks, at least as many as the plan covers, and forecast them from one week." |
+| Judges by the fit to history | Scores only weeks the model never saw |
+| One number for the error | The error in shipments, then priced in each direction |
+| Picks the model with the best story | Sends nothing that loses to a copy of last year |
+| Takes the calendar for granted | Checks where the festival falls this year |
 
 ```notes
-LIVE, 5 minutes. Three follow-ups the interviewer uses: 'MAE in shipments or MAPE in percent, and
-when' (shipments when the per-shipment cost is the planning cost; percent when sizes vary across
-series). 'The festival moves by three weeks this year; what breaks' (SWLY and finance both break;
-festival-aligned moves with it). 'What did forecast error cost Zillow, and which guardrail failed'
-(the public plus or minus 200 bp was breached, the swing was 1,200, the write-down about USD 304
-million, the workforce cut by about a quarter, F3). The weak answer opens on the method; the
-hire-grade answer opens on the measure.
-Transition: S4, the AI-company variant.
+LIVE, 5 minutes. The full transcript, with the clarifying questions and the scorecard, is in
+`extras/C2_W04_D05_interview_transcripts_STUDENT.md`; pairs read it and score the hire-grade answer
+on the card. Transition: the follow-ups.
 ```
 
 ---
 
-## S4. AI variant: forecast inference demand for a launch
-*How do you forecast requests per minute around an AI product launch?*
+## S7. Three follow-ups that change the question
+*What does the interviewer ask next, and what does a strong candidate say?*
 
-```mermaid
-flowchart LR
-    L["<b>Launch minute</b><br/>spike like a festival<br/>known date, short history"] --> H["<b>Hold-out spans the horizon</b><br/>last-launch shape as baseline"]
-    H --> C["<b>Asymmetric cost</b><br/>over-provisioned weekly<br/>vs timeouts in launch minute"]
-    C --> P["<b>Plan above the median</b><br/>capacity model must beat<br/>last-launch baseline"]
-    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class L,C known
-    class H,P lit
+```timeline
+label: Follow-up 1 | title: MAE or MAPE, and when? | body: Shipments when the cost is per shipment; percent only to compare series of different sizes.
+label: Follow-up 2 | title: The festival moves three weeks: what breaks? | body: Every calendar copy, the house bot and finance's rule; the festival-aligned copy moves with it.
+label: Follow-up 3 | title: What did a forecast cost Zillow? | body: A guardrail of plus or minus 200 basis points swung about 1,200; a write-down of about USD 304 million (F3). | tone: dark
 ```
 
-| | |
-|---|---|
-| The spike | The launch window acts like the festival: a known date, a known shape, a short history to learn from. |
-| The hold-out | Spans the horizon the capacity plan has to cover; nothing shorter is honest. |
-| The baseline | A traffic model for the days around the launch, built from the last launch's shape. The vendor model has to beat it. |
-| The asymmetric cost | Over-provisioned capacity is a weekly cost; timeouts in the launch minute cost a product's reputation. The plan sits above the median. |
-
 ```notes
-LIVE, 3 minutes. This is the programme-written AI variant; no public company's figure is quoted
-here. The shape of the method is the same as the festival: find the horizon, hold out, pick a
-baseline, measure in the right unit, cost the two directions. The variant works for payments load
-on sale day and for ride-hailing surge too.
-Transition: S5, the morning handoff into the IITGN block or the fallback.
+LIVE, 4 minutes. Each follow-up changes the question so only the reasoning transfers. Zillow's
+figures are from its Q3 2021 shareholder letter, checked 12 October 2026. Transition: the same idea
+at an AI company.
 ```
 
 ---
 
-## S5. Handoff to the faculty block (W4-4, tentative)
-*Where does the afternoon stop, and what will the IITGN block pick up?*
+## S8. AI variant: inference capacity for a launch
+*How would the same method size servers for an AI product launch?*
 
 ```mermaid
 flowchart LR
-    A["<b>Morning</b><br/>baseline chosen<br/>error bar in rupees"] --> B["<b>Afternoon staffing note</b><br/>shifts per week<br/>at the 0.82 quantile"]
-    B --> C["<b>IITGN block (tentative)</b><br/>autocorrelation, smoothing<br/>what a model must beat"]
-    C --> D["<b>Saturday</b><br/>method survives at another company"]
-    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    L["<b>The launch</b><br/>a known date, a spike,<br/>little history"] --> H["<b>Hide the horizon</b><br/>score the last launch's days<br/>in requests a minute"]
+    H --> B["<b>Beat the copy</b><br/>last launch's shape<br/>is the house bot"]
+    B --> C["<b>Plan above</b><br/>a timeout costs more<br/>than an idle server"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    class A,B known
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class L,H,B known
     class C lit
-    class D unknown
 ```
+
+The launch is the festival: line it up by days from the launch, never by calendar date. The plan sits above the forecast because being short means timeouts. This variant is written for the programme and quotes no company's figures.
+
+```notes
+LIVE, 3 minutes. Ask the room which cost is the Rs 25 and which the Rs 5.42 here. Transition: the
+guesstimate.
+```
+
+---
+
+## S9. Two-wheelers a year: about 2.16 crore, checked
+*How do you size a number from nothing, and check it against something known?*
+
+```mermaid
+flowchart LR
+    H["<b>Households</b><br/>30 crore, assumed"] --> O["<b>Own one</b><br/>half, assumed"]
+    O --> R["<b>Replace every 8 years</b><br/>about 1.9 crore a year"]
+    R --> F["<b>Plus first-time buyers</b><br/>15 percent, assumed:<br/>about 2.16 crore"]
+    F --> V["<b>Validate</b><br/>SIAM: 2,17,05,974<br/>in FY 2025-26"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class H,O,R,F known
+    class V lit
+```
+
+**The catch.** October 2025's retail alone was 31,49,846 two-wheelers (FADA, F5); times twelve that is about 3.78 crore, 74 percent too high: never annualise a festive month. SIAM's figure is from its FY 2025-26 release (T3, checked 12 October 2026).
+
+```notes
+LIVE, 5 minutes if time allows, in pairs against a five-minute clock. The scorer checks the
+structure and the sanity check, never the final number. Transition: the handoff.
+```
+
+---
+
+## S10. Handoff: the baseline is the bar to beat
+*What does the IITGN faculty session W4-4 (tentative) pick up from here?*
 
 **The handoff line.** Your baseline is hard to beat, and you now know what any model must beat and on which weeks. The next 120 minutes show how a series remembers itself, autocorrelation, and what a smoothing or ARIMA model would have to do to earn its place above the festival-aligned baseline on the thirteen held-out weeks.
 
-<!-- sync:faculty-day:W04/D5 -->
-<!-- /sync:faculty-day:W04/D5 -->
-
-Faculty block tentative; confirmation pending from IIT Gandhinagar. If the block slips, the fallback below runs in its place.
+The faculty session is tentative until IIT Gandhinagar confirms it; if it does not run today, the fallback hour runs in its place.
 
 ```notes
-LIVE, 2 minutes. Read the handoff and set the question. The faculty session is tentative until
-IIT Gandhinagar confirms (sync block above), and a STUDENT file says tentative beside any
-mention of the block. If the block slips, S6 opens the rolling-origin hour.
-Transition: S6, the fallback brief.
+LIVE, 2 minutes. Read the handoff line as written.
+Park any "is the vendor's model an ARIMA" question for the faculty session (tentative).
+Transition: the Kahoot.
 ```
 
 ---
 
-## S6. Fallback: the rolling-origin hour
-*What runs if the block slips, and what does it earn?*
+## S11. Kahoot: eight calls in twenty seconds each
+*Which of today's calls can the room make fast?*
 
-```timeline
-label: Part 1 | title: Shorter hold-out | body: Rescore with four weeks held out instead of thirteen; name what changed and why a test shorter than the horizon misleads.
-label: Part 2 | title: Rolling origin | body: Forecast one week ahead from each of six origins; read the errors as a line.
-label: Part 3 | title: Zillow and Target Canada | body: Which guardrail failed at Zillow (F3) and what history Target's buyers had (F4); the Lucknow equivalent of each.
-label: Part 4 | title: Second transcript | body: Finance and the vendor's sponsor each want theirs in front of the plan.
-```
-
-```notes
-LIVE, 120 minutes if run. The fallback teaches nothing the block owns: no autocorrelation, no
-smoothing, no ARIMA. The row of parts above gives the minute budget by eye (35, 30, 30, 25).
-Transition: S7, Kahoot.
-```
-
----
-
-## S7. Kahoot: eight questions in nine minutes
-*What does the room take away, and what returns from Thursday?*
-
-| | Question |
+| Item | What it tests |
 |---|---|
-| Q1 | The seasonal naive forecast for next November's Diwali week is which number from the twelve rows? |
-| Q2 | MAE in shipments versus MAPE in percent: which when, and why? |
-| Q3 (trap) | The vendor curve fits every training week within 2 percent; is it a good forecast? |
-| Q4 | Good enough is a claim about which of these: the model, the data, the decision, or the week? |
-| Q5 | Which thirteen weeks did we hold out, and why those weeks? |
-| Return from Thursday | Blended retention stayed flat while every cohort declined; what is the one-sentence mechanism? |
-| Bonus 1 | Diwali 2026 falls on Sun 8 Nov; the Diwali week begins on which Monday? |
-| Bonus 2 | A plan at the median when the under-cost is 4.6 times the over-cost: which direction is wrong and by how much? |
+| 1 | Which week a copy of last year uses for Diwali 2026's week |
+| 2 | Shipments or percent for the error, and when |
+| 3 | A curve that fits every past week within 2 percent |
+| 4 | What "good enough" is a claim about |
+| 5 | Which weeks to hide, and how many |
+| 6 | Thursday's return: a flat blend over falling cohorts |
+| 7 | The share of weeks a plan should cover |
+| 8 | Plus 4 against which window |
 
 ```notes
-LIVE, 9 minutes. Kahoot is daily and ungraded. The trap item (Q3) is already answered on the
-scoreboard, but the return question from Thursday is worth two minutes of discussion if the room
-is slow: the mechanism is a size-weighted blend of cohort rates, where larger younger cohorts
-mask the older cohorts' decline.
-Transition: S8, Saturday's preview.
+LIVE, 9 minutes. Kahoot is ungraded. The pack is `kahoot/C2_W04_D05_quiz_STUDENT.md`. Spend two
+minutes on item 6 if the room splits: the blend is a size-weighted average of cohort rates.
+Transition: Saturday.
 ```
 
 ---
 
-## S8. Close: Saturday tests the method on new companies
-*What does Saturday test, and what carries from today?*
+## S12. Close: beat the bot, place the festival, price it
+*What does the week close on, and what does Saturday test?*
 
 ```cards
-icon: shuffle | eyebrow: Saturday morning | title: The transfer drill | body: Monday's method at Ola or Rapido, Wednesday's at Blinkit or Zepto, Thursday's at Swiggy One, Friday's at Amazon India. What stays is the method, what changes is the metric, the constraint and the cost of an error.
-icon: file-pen | eyebrow: Saturday paper | title: 120 minutes, 43 items | body: Six parts, interview grade, every arithmetic key recomputed on the day's facts.
-icon: badge-check | eyebrow: What Friday leaves | title: One rule, one plan | body: A forecast must beat the baseline on weeks it has not seen before it earns the plan; the baseline for a seasonal business is same-week-last-year or its festival-aligned twin. | tone: dark
+icon: badge-check | eyebrow: The rule | title: Beat the bot on hidden weeks | body: In shipments, then rupees, against a copy of last year, before any model earns the plan. | tone: dark
+icon: calendar | eyebrow: The calendar | title: Copy by distance from Diwali | body: A calendar copy moved 2025's peak a week late and moves 2026's two weeks early. | tone: light
+icon: scale | eyebrow: The cost | title: Plan at the 0.82 share | body: Being short costs 4.6 times being long, so the plan sits 2.6 percent above the forecast. | tone: light
 ```
 
+**Saturday** runs the recap paper and moves each day's method to another company: Friday's goes to Amazon India's festive staffing, then to Kalpa's four units. Tonight: the take-home and Saturday's preview.
+
 ```notes
-LIVE, 3 minutes. Hand over Saturday's preview with the three briefs it opens on (Amazon India's
-fulfilment centre is the one for today's method). The one-rule line is what the week closes on
-in the Saturday paper's part 5.
-Transition: close.
+LIVE, 3 minutes. The three cards are the cheat sheet's crux lines, word for word. Transition: the
+faculty session (tentative) or the fallback.
 ```
