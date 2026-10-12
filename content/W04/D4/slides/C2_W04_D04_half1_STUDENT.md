@@ -41,14 +41,14 @@ Transition: where Thursday sits in the week.
 
 ```mermaid
 flowchart TD
-    C["<b>What does an analyst do with one number?</b>"]
-    M["<b>Mon · Uber, Hyderabad</b><br/>trips per online hour, 1.90 to 1.58:<br/>is the number paid for the one wanted?"]
-    T["<b>Tue · Uber, Hyderabad</b><br/>Rs 314 to Rs 260 an online hour,<br/>told on one slide"]
-    W["<b>Wed · Swiggy Instamart, Pune</b><br/>bread with milk, lift 1.04:<br/>a pair counts only above chance"]
-    H["<b>Thu · Zomato Gold, Chennai</b><br/>a flat 38 over falling cohorts:<br/>what does the average hide?"]
-    F["<b>Fri · Flipkart, Lucknow</b><br/>how much is coming,<br/>and how wrong could it be?"]
+    C["<b>One number, five tickets</b>"]
+    M["<b>Mon · Uber, Hyderabad</b><br/>trips an hour, 1.90 to 1.58"]
+    T["<b>Tue · Uber, Hyderabad</b><br/>Rs 314 to Rs 260, one slide"]
+    W["<b>Wed · Instamart, Pune</b><br/>bread with milk, lift 1.04"]
+    H["<b>Thu · Zomato Gold, Chennai</b><br/>a flat 38 over falling cohorts"]
+    F["<b>Fri · Flipkart, Lucknow</b><br/>how much is coming?"]
     S["<b>Sat · the week's paper</b>"]
-    K["<b>Kalpa Retail, the lab</b><br/>the Retail-Plus tier"]
+    K["<b>Kalpa lab</b><br/>the Retail-Plus tier"]
     C --> M --> T
     C --> W
     C --> H
