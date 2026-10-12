@@ -36,17 +36,17 @@ Transition: where the day sits in the week.
 
 ```mermaid
 flowchart TD
-    C["<b>What does an analyst do with one number?</b><br/>five tickets, five companies, one method a day"]
-    M["<b>Mon: is the number measuring what we want?</b><br/>Uber, Hyderabad: online hours against trips<br/>metric design, guardrails, gaming"]
-    T["<b>Tue: can it survive one slide?</b><br/>Uber, Hyderabad, one day on<br/>the one-slide answer, the guesstimate"]
-    W["<b>Wed: what goes with what?</b><br/>Swiggy Instamart, Pune<br/>support, confidence, lift"]
-    H["<b>Thu: who is leaving, at which step?</b><br/>Zomato Gold, Chennai<br/>cohorts, funnels, denominators"]
-    F["<b>Fri: how much is coming?</b><br/>Flipkart, Lucknow<br/>baselines, hold-out, cost"]
-    S["<b>Sat: does the method travel?</b><br/>other companies, then Kalpa"]
-    K1["Kalpa Retail: the auto-reorder window"]
-    K3["Kalpa Retail: the Rs 199 charger"]
-    K4["Kalpa Retail: the Retail-Plus tier"]
-    K5["Kalpa Retail: 24 months and a vendor curve"]
+    C["<b>One number, five tickets</b><br/>four companies, one method a day"]
+    M["<b>Mon: Uber, Hyderabad</b><br/>is the number right?"]
+    T["<b>Tue: Uber, Hyderabad</b><br/>one slide, one estimate"]
+    W["<b>Wed: Instamart, Pune</b><br/>what goes with what?"]
+    H["<b>Thu: Zomato Gold, Chennai</b><br/>who leaves, and where?"]
+    F["<b>Fri: Flipkart, Lucknow</b><br/>how much is coming?"]
+    S["<b>Sat: does it travel?</b>"]
+    K1["Kalpa: reorders per member"]
+    K3["Kalpa: the Rs 199 charger"]
+    K4["Kalpa: Retail-Plus"]
+    K5["Kalpa: 24 months"]
     C --> M
     C --> W
     C --> H
@@ -802,17 +802,17 @@ Transition: the finished board.
 *What does the finished board say?*
 
 ```mermaid
-flowchart LR
+flowchart TD
     Q["<b>Safe to pay for?</b>"]
-    Q1["<b>What is it for?</b><br/>riders picked up faster"]
-    Q2["<b>Can it rise badly?</b><br/>idle hours, thin zones"]
-    Q3["<b>What stops that?</b><br/>north star and guardrails"]
-    S1["<b>The tree</b><br/>north star and inputs"]
+    Q1["<b>What is it for?</b><br/>faster pickups"]
+    Q2["<b>Can it rise badly?</b><br/>idle hours"]
+    Q3["<b>What stops that?</b><br/>star and guardrails"]
+    S1["<b>The tree</b><br/>star and inputs"]
     S2["<b>The seesaw</b><br/>star up, guardrail down"]
     S3["<b>The window's start</b><br/>who starts the clock"]
     P1["<b>No usage condition</b><br/>Wells Fargo"]
     P2["<b>Units move numbers</b><br/>Delhi Metro"]
-    P3["<b>The measured set the start</b><br/>VA"]
+    P3["<b>Who sets the start?</b><br/>VA"]
     Q --> Q1
     Q --> Q2
     Q --> Q3
