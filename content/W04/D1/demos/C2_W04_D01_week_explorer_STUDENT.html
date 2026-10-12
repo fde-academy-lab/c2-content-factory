@@ -145,6 +145,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 </style>
 <style>
   :root{--amber:#B07800;--amber-tint:#FFF7E6;--amber-ink:#5C3D00;--off:#9F99C8}
+  .foot{color:var(--night);font-size:14px}
   html,body{font-size:18px}
   body{line-height:1.5}
   .wrap{max-width:1320px;margin:0 auto;padding:24px 28px 40px}
@@ -1279,7 +1280,7 @@ var W4 = {
     <div class="day-head">
       <h2 class="q">Saturday, 31 October: does the method survive a change of company?</h2>
       <div class="ticket">
-        <p>Eight one-paragraph briefs re-pose the week: four at other companies the room uses and four at Kalpa's units. Each answer names what stays, which is the method, and what changes: the metric, the constraint and the cost of an error.</p>
+        <p>Eight one-paragraph briefs re-pose the week: four at other companies the room uses and four at Kalpa's units. Each answer says what carries over from the week and what has to be rebuilt for the new business.</p>
       </div>
       <p class="who"><b>Who needs the answer.</b> Every interviewer who asks how a method travels to a business the candidate has never seen.</p>
       <p class="who"><b>The questions on the way.</b></p>
@@ -3362,7 +3363,9 @@ var W4 = {
         ["Plan above the middle", group(round100(qs)) + " shipments"],
         ["More packer shifts a week", group(Math.round(qs / FRI.perShift))],
         ["Expected cost at the plan", "Rs " + (best / 1e5).toFixed(2) + " lakh a week"],
-        { wide: "Planning at the forecast's middle would cost Rs " + (mid / 1e5).toFixed(2) + " lakh a week." }
+        { wide: "Planning at the forecast's middle would cost Rs " + (mid / 1e5).toFixed(2) + " lakh a week." },
+        { wide: cu === FRI.lateShipment && Math.abs(co - 5.4) < 0.05 ? "These are the case's own costs: Rs 650 an idle shift and Rs 25 a late shipment." :
+          "The case's own costs are Rs 650 an idle shift, about Rs 5.4 a shipment, and Rs 25 a late shipment; the sliders try other values inside the case's ranges." }
       ]);
     },
     final: function (st) { st.over = 5.4; st.under = FRI.lateShipment; }
