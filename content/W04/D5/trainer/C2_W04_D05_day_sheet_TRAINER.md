@@ -173,8 +173,8 @@ names any of them before a learner's own cell prints it.
   wider than the band; a forecast used to bid wins where it guesses high.
 - **The AI-company variant?** Size the peak from the ground up as requests open at once, prompt and
   answer tokens apart, check it against earlier launches by days from launch with the weekday kept
-  (untested with fewer than two), and set capacity to a latency target with headroom, booking above
-  the forecast when a timed-out request costs more than the idle capacity it would use.
+  (untested with fewer than two), and set capacity to a latency target with headroom, adding a GPU
+  while the timeouts it prevents cost more than its rent for the whole booking.
 - **Two-wheelers a year?** About 2.2 crore, 1.7 to 2.9 as the replacement years swing, against
   SIAM's 2,17,05,974 sold to dealers; never annualise October's 31,49,846 registrations
   (`trainer/C2_W04_D05_guesstimate_TRAINER.md`).

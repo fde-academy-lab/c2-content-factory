@@ -2427,6 +2427,26 @@ toys:
   shown: five times
   how: the peak minute over the average minute (invented)
   used_in: AI variant
+- id: ai_prompt_tokens_minute
+  value: 2000000
+  shown: 20 lakh
+  how: 2,000 requests x 1,000 prompt tokens, a minute
+  used_in: AI variant
+- id: ai_answer_tokens_minute
+  value: 1000000
+  shown: 10 lakh
+  how: 2,000 requests x 500 answer tokens, a minute
+  used_in: AI variant
+- id: ai_gpu_holds
+  value: 20
+  shown: '20'
+  how: open requests of this mix one GPU holds inside the latency target, from a load test (invented)
+  used_in: AI variant
+- id: ai_gpus
+  value: 17
+  shown: about 17
+  how: 330 open requests over 20 a GPU, before headroom
+  used_in: AI variant
 - id: ai_requests_user_day
   value: 2.88
   shown: about 3
@@ -3644,6 +3664,18 @@ guesstimate:
   value: 0.043478
   shown: 4 percent
   how: first at its high end, the rest held
+  used_in: guesstimate card
+- id: vehicles_per_home
+  value:
+  - 1
+  - 1.25
+  shown: 1, from 1 to 1.25
+  how: vehicles per owning household, assumption
+  used_in: guesstimate card
+- id: swing_vehicles_pct
+  value: 0.25
+  shown: 25 percent
+  how: a second vehicle in one owning home in four, the rest held
   used_in: guesstimate card
 - id: range_one_low
   value: 17250000.0

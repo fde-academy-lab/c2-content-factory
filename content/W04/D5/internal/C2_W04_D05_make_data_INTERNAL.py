@@ -655,6 +655,10 @@ def main():
     F.add("toys", "ai_stream_seconds", 10, "10 seconds", "time to stream one answer (invented)", "AI variant")
     F.add("toys", "ai_open_requests", 2_000 / 60 * 10, "about 330", "33 a second x 10 seconds, requests open at once", "AI variant")
     F.add("toys", "ai_peak_ratio", 5, "five times", "the peak minute over the average minute (invented)", "AI variant")
+    F.add("toys", "ai_prompt_tokens_minute", 2_000 * 1_000, "20 lakh", "2,000 requests x 1,000 prompt tokens, a minute", "AI variant")
+    F.add("toys", "ai_answer_tokens_minute", 2_000 * 500, "10 lakh", "2,000 requests x 500 answer tokens, a minute", "AI variant")
+    F.add("toys", "ai_gpu_holds", 20, "20", "open requests of this mix one GPU holds inside the latency target, from a load test (invented)", "AI variant")
+    F.add("toys", "ai_gpus", math.ceil(2_000 / 60 * 10 / 20), "about 17", "330 open requests over 20 a GPU, before headroom", "AI variant")
     F.add("toys", "ai_requests_user_day", 2_000 / 5 * 1_440 / 200_000, "about 3", "2,000 / 5 a minute x 1,440 minutes / 2 lakh users", "AI variant")
 
     # ---- the week map's earlier nodes, as each day's ticket prints them (docs/detailing/W04_case_file.md)
@@ -866,6 +870,8 @@ def main():
                             ("first", repl * 1.10, repl * 1.20)):
         F.add("guesstimate", f"swing_{name_}_low_pct", lo_ / est - 1, pct(lo_ / est - 1, 0), f"{name_} at its low end, the rest held", "guesstimate card")
         F.add("guesstimate", f"swing_{name_}_high_pct", hi_ / est - 1, pct(hi_ / est - 1, 0), f"{name_} at its high end, the rest held", "guesstimate card")
+    F.add("guesstimate", "vehicles_per_home", [1, 1.25], "1, from 1 to 1.25", "vehicles per owning household, assumption", "guesstimate card")
+    F.add("guesstimate", "swing_vehicles_pct", 0.25, "25 percent", "a second vehicle in one owning home in four, the rest held", "guesstimate card")
     F.add("guesstimate", "range_one_low", hh * own / 10 * (1 + first), f"about {hh * own / 10 * (1 + first) / 1e7:.1f} crore",
           "replacement years at 10, the rest held", "half2 S9, notes")
     F.add("guesstimate", "range_one_high", hh * own / 6 * (1 + first), f"about {hh * own / 6 * (1 + first) / 1e7:.1f} crore",

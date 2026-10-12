@@ -11,7 +11,7 @@ Header: WEEK 4  ·  FRIDAY  ·  FLIPKART, LUCKNOW  ·  ILLUSTRATIVE CASE
 
 ```stats
 value: 20,275 | label: packer shifts over eight weeks | note: festival-aligned, raised 2.6 percent, 3,719 in the week of 19 October
-value: 6,615 | label: shipments a week, the error bar | note: the forecast's average miss on thirteen hidden weeks: about Rs 35,800 if it runs high, Rs 1.65 lakh if low
+value: 6,615 | label: shipments a week, the typical miss | note: the forecast's average miss on thirteen hidden weeks: about Rs 35,800 if it runs high, Rs 1.65 lakh if low
 value: 0.82 | label: the share of weeks to cover | note: 25 / (25 + 5.42): a late shipment costs 4.6 times a spare one
 ```
 
@@ -189,8 +189,8 @@ on the card. Transition: the follow-ups.
 
 ```timeline
 label: Follow-up 1 | title: MAE or MAPE, and when? | body: Shipments when the cost is per shipment; MASE or WAPE across centres. MAPE explodes near zero, and here it ranks the rules as MAE does.
-label: Follow-up 2 | title: The festival moves three weeks: what breaks? | body: Every calendar copy, the seasonal naive and finance's rule; the festival-aligned copy moves with it.
-label: Follow-up 3 | title: What did a forecast cost Zillow? | body: Its margin guardrail was 2 percentage points either side of breakeven; price forecasts three to six months out missed by more, the margin swung about 12 percentage points, and Zillow wrote down about USD 304 million. | tone: dark
+label: Follow-up 2 | title: Suppose the festival moves three weeks: what breaks? | body: Every calendar copy, the seasonal naive and finance's rule; the festival-aligned copy moves with it.
+label: Follow-up 3 | title: What did a forecast cost Zillow? | body: Its margin guardrail was 2 percentage points either side of breakeven; price forecasts three to six months out missed both ways by more than Zillow had modelled, the margin swung about 12 percentage points, and Zillow wrote down about USD 304 million. | tone: dark
 ```
 
 ```notes
@@ -222,12 +222,12 @@ flowchart LR
     class C lit
 ```
 
-**Inference** is the computing a model does each time it answers a user. Size the peak from the ground up as requests open at once, with prompt and answer tokens kept apart; check it against earlier launches lined up by days from launch with the weekday kept; set capacity to the latency target with headroom. The two costs, per request, decide how much to book ahead, and a staged rollout, on-demand capacity, rate limits and a waitlist cover the rest. Written for the programme; it quotes no company's figures.
+**Inference** is the computing a model does each time it answers a user. Size the peak from the ground up as requests open at once, with prompt and answer tokens kept apart; check it against earlier launches lined up by days from launch with the weekday kept; set capacity to the latency target with headroom. The two costs, per machine over the booking, decide how much to book ahead, and a staged rollout, on-demand capacity, rate limits and a waitlist cover the rest. Written for the programme; it quotes no company's figures.
 
 ```notes
-LIVE, 3 minutes. Ask the room which cost is the Rs 25 and which the Rs 5.42 here: a timed-out
-request, and the idle capacity one request would have used; both are per unit of demand, as the
-packer costs are per shipment. Ask what the forecast can be tested on if the feature has never launched: nothing,
+LIVE, 3 minutes. Ask the room which cost is the Rs 25 and which the Rs 5.42 here: the timeouts a
+GPU would prevent, and its rent for the whole booking; both are set per machine, as the packer costs
+are set per shipment of a booked shift. Ask what the forecast can be tested on if the feature has never launched: nothing,
 so say it is untested and keep capacity that can stretch. The worked sizing (2 lakh users, 1
 percent in the peak minute, 1,000 prompt and 500 answer tokens, all invented, about 330 requests open
 at once) is in the transcripts. Transition: the guesstimate.
@@ -272,7 +272,7 @@ handoff.
 | Autocorrelation | It measures how closely each week's shipments follow the week a fixed number of weeks earlier, one back or 52 back. |
 | Smoothing | It forecasts from an average of past weeks that gives the most recent weeks the most weight. |
 | ARIMA | It forecasts from the series' own past weeks and its own past misses, the pattern autocorrelation measures. |
-| Held-out weeks | These thirteen have already picked the rule and set the cushion, so a new model is fairest judged on weeks no choice has used, such as a rolling origin through 2025's festival. |
+| Held-out weeks | The thirteen the handoff line names; since they also picked the rule and set the cushion, a new model that beats the baseline there is checked again on a rolling origin through 2025's festival. |
 
 ```notes
 LIVE, 2 minutes. Read the handoff line as written, then point at the four words: the faculty

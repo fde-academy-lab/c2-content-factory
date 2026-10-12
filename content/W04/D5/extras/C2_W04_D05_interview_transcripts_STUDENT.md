@@ -91,15 +91,15 @@ untested number to the plan.
 **The answer most candidates give** sits between the two columns: "I would hold out the last couple of
 months, compare each model's MAPE with a copy of last year's same weeks, and send the lowest." It keeps
 time order and a baseline, which most weak answers lose, and it misses the measure that matches the
-plan, the price of each direction and the festival the test cannot see. It scores 3 of 14 on the card.
+plan, the price of each direction and the festival the test cannot see. It scores 2 of 14 on the card.
 
 ### What follows up, and which line answers each?
 
 | Follow-up | The hire-grade line |
 |---|---|
-| "MAE in shipments or MAPE in percent, and when?" | "MAE in shipments when the cost is per shipment and the plan books shipments. To compare centres of different sizes I would use MASE, each miss scaled by the seasonal naive's average miss in training, since the series has a yearly season, or WAPE, the total miss over the total shipped. MAPE explodes when an actual sits near zero and punishes a forecast that lands above the actual harder than one below. On these thirteen weeks no actual sits near zero and MAPE ranks the rules as MAE does, so here it changes nothing; at a store with near-zero days it would (Forecasting: Principles and Practice, section 5.8, checked 12 October 2026)." |
-| "The festival moves by three weeks this year. What breaks?" | "Every calendar copy, the seasonal naive and finance's rule, puts the peak three weeks off, the way it put this case's peak two weeks off. A copy by distance from the festival moves with it. I would also check that the sale still opens the same distance before the festival, since the peak follows the sale; if it moves, I copy by distance from the sale." |
-| "You set the cushion on the weeks you scored. Isn't that circular?" | "Yes, equally for every forecast, which is why I compare them each at its own 0.82 point. With thirteen weeks the point is loose: read by another common convention it is 4.1 percent instead of 2.6. The cure is a rolling origin: from 29 September 2025 every week has a year behind it, so the copies can be forecast from many origins, 2025's festival included, and the cushion set on weeks the final test never touches." |
+| "MAE in shipments or MAPE in percent, and when?" | "MAE in shipments when the cost is per shipment and the plan books shipments. To compare centres of different sizes I would use MASE, each miss scaled by the seasonal naive's average miss in training, since the series has a yearly season, or WAPE, the total miss over the total shipped. MAPE explodes when an actual sits near zero, and for the same miss it scores a forecast above the actual worse than one below, since the percent is taken of the smaller number. On these thirteen weeks no actual sits near zero and MAPE ranks the rules as MAE does, so here it changes nothing; at a store with near-zero days it would (Forecasting: Principles and Practice, section 5.8, checked 12 October 2026)." |
+| "Suppose the festival moves by three weeks this year. What breaks?" | "Every calendar copy, the seasonal naive and finance's rule, puts the peak three weeks off, the way it put this case's peak two weeks off. A copy by distance from the festival moves with it. I would also check that the sale still opens the same distance before the festival, since the peak follows the sale; if it moves, I copy by distance from the sale." |
+| "You set the cushion on the weeks you scored. Isn't that circular?" | "Yes, and each forecast was tuned the same way, which is why I compare them each at its own 0.82 point; how much the tuning flatters each depends on its own misses. With thirteen weeks the point is loose: read by another common convention it is 4.1 percent instead of 2.6. The cure is a rolling origin: from 29 September 2025 every week has a year behind it, so the copies can be forecast from many origins, 2025's festival included, and the cushion set on weeks the final test never touches." |
 | "In your peak week, 1,638 of 3,485 shifts were overtime. What does that do to your plan?" | "The data say overtime carried the 2025 peak, so first I would ask what an overtime shift costs and whether any orders missed their dispatch date, since a capped peak makes every copy of it run low. If overtime can absorb a short week, being short costs only the overtime premium: at one and a half times a shift's cost the share to cover falls to 0.33, at twice it is 0.50, so the plan would sit at or below the forecast. The 0.82 holds only while a short shipment is truly late." |
 | "What did forecast error cost Zillow, and which guardrail failed?" | "Zillow Offers bought homes to resell, which needed price forecasts three to six months ahead, and it set a public guardrail on its unit economics, what it made or lost on each home, of plus or minus 200 basis points, 2 percentage points, around breakeven. Its forecasts missed in both directions by far more than it had modelled, and unit economics swung about 1,200 basis points, 12 percentage points, to an expected minus 500 to minus 700 in the fourth quarter of 2021. It also bought more homes than planned and ran short of renovation capacity. It wrote down about USD 304 million of homes bought above what they would now sell for, wound the business down and cut about 25 percent of its workforce (Zillow's Q3 2021 shareholder letter, checked 12 October 2026). The guardrail sat on the margin, which suggests the price forecast's error three to six months out was wider than the whole band. And a price forecast used to bid wins most where it guesses high, so the homes Zillow bought carried its errors one way: the letter says it bought homes 'at higher prices than our current estimates of future selling prices'." |
 
@@ -110,29 +110,30 @@ plan, the price of each direction and the festival the test cannot see. It score
 
 The strong candidate clarifies first: "Demand in what unit: requests open at once at the peak, and
 how many prompt and answer tokens each? What latency must a user get? How long does it take to add
-capacity, and what can stretch within minutes? What does a timed-out request cost us against the idle
-capacity one request would use? Has this feature, or one like it, launched before?"
+capacity, and what can stretch within minutes? What does a timed-out request cost us, and what does a
+GPU cost for the whole booking? Has this feature, or one like it, launched before?"
 
 Then four steps:
 
 1. **Size it from the ground up.** Say 2 lakh users at launch, 1 percent of them sending a request in
    the peak minute, each request 1,000 prompt tokens and 500 answer tokens (all invented): 2,000
-   requests a minute, about 33 a second. At 10 seconds to stream an answer, also invented, about 330
-   requests are open at once. Prompt and answer tokens load a GPU differently, so a load test at the
-   latency target says how many open requests one GPU holds, which turns 330 into machines. Check the
-   placeholder too: if the peak minute runs five times the average, each user sends about 3 requests
+   requests a minute, about 33 a second, carrying 20 lakh prompt tokens and 10 lakh answer tokens a
+   minute. At 10 seconds to stream an answer, also invented, about 330 requests are open at once.
+   Prompt and answer tokens load a GPU differently, so a load test at the latency target, run on this
+   mix, says how many open requests one GPU holds: at 20 (invented), that is about 17 GPUs before
+   headroom. Check the placeholder too: if the peak minute runs five times the average, each user sends about 3 requests
    a day, which the product team can confirm.
 2. **Check it against history, if there is any.** Line earlier launches up by days from launch day
    for the launch curve, and keep the day of the week for the weekly cycle, since four days after a
    Tuesday launch is a Saturday: the forecast needs both. The copy to beat is the last launch's curve
    scaled by user growth. That curve looks like a forecast, and it is not one until it has predicted a
-   launch it never saw, scored by its miss in requests at the peak minute. With one earlier launch, or
+   launch it never saw, scored by its miss in prompt and answer tokens at the peak minute. With one earlier launch, or
    none, the forecast is untested; say so, and rely on the ground-up size and a similar feature's
    launch.
 3. **Set capacity to the latency target, with headroom.** Waiting time climbs steeply as machines
-   near full, so the latency target sets how much spare room each minute needs. The capacity booked in
-   advance sits above the forecast when a timed-out request costs more than the idle capacity one
-   request would have used, the same two-cost arithmetic as the packer shifts, per unit of demand.
+   near full, so the latency target sets how much spare room each minute needs. Book one more GPU in
+   advance when the timeouts it would prevent across the busy minutes cost more than its rent for the
+   whole booking, the same two-cost arithmetic as the packer shifts, set per machine.
    What stretches covers the rest: a staged rollout to a share of users first, on-demand capacity,
    rate limits and a waitlist.
 4. **Say what would move it.** Waitlist sign-ups before launch and the first hour's requests after
@@ -147,7 +148,7 @@ This variant is written for this programme and quotes no company's figures.
 |---|---|---|
 | A close fit taken for a good forecast | A 2018 PLOS ONE paper by Makridakis, Spiliotis and Assimakopoulos, on 1,045 monthly series, recalls the forecasting competitions' finding that the models that best fitted the data "did not necessarily" forecast better, and found the machine-learning methods it tested beaten by statistical ones at every horizon it examined, on single monthly series. The M5 competition turned that round on tens of thousands of related daily series with prices and calendar events to learn from: all 50 of its top methods were machine learning, ahead of every statistical benchmark (the M5 accuracy paper, checked 12 October 2026). The data decides which family wins. | Score every model, of either family, on weeks it never saw, against the seasonal naive |
 | A forecast with no history | Target Canada: its forecasting and replenishment system needed years of sales history the new stores did not have, so buyers relied on optimistic projections from headquarters, and the item data feeding the system was right about 30 percent of the time. Stores sat barely stocked while distribution centres overflowed, and Target closed all 133 stores, with about 17,600 employees (Canadian Business, "The Last Days of Target"; Target's release of 15 January 2015; both checked 12 October 2026) | With no history, size from the ground up and from a similar launch, and keep capacity that can stretch |
-| A forecast error wider than the margin it must protect | Zillow, 2021, above | Size the forecast's error at the horizon the decision needs, and compare it with the margin before committing |
+| Price-forecast swings that overran a margin guardrail | Zillow, 2021, above | Size the forecast's error at the horizon the decision needs, and compare it with the margin before committing |
 | A calendar week taken for a festival | FADA counts its festive window from the festival each year, 42 days from the first day of Navratri (FADA's release of 7 November 2025, checked 12 October 2026) | Line years up by distance from the festival |
 | A model never compared with the simplest baseline | Amazon Science's history of its recommendation algorithm (Larry Hardesty, 22 November 2019): a Prime Video deep-learning recommender first lost to a plain bestseller list; retrained on viewing data in time order and tested on the two weeks after its training cutoff, it beat the list, and beat the older item-to-item method two to one (checked 12 October 2026) | Put the simplest baseline on every scoreboard, and test on the weeks after the training data |
 
@@ -187,9 +188,9 @@ person. Both skip the evidence, and the midpoint keeps the calendar copy's peak 
 | | Weak answer | Hire-grade answer |
 |---|---|---|
 | Restate | "The vendor's model is machine learning, so it should beat a rule of thumb." | "Finance wants a rule it can explain, and the sponsor wants a model that fits history closely; both want the plan to hold in the festival." |
-| Answer | "Go with the vendor, trimmed toward finance to keep the peace: plus 13 percent." | "Neither goes to the plan as it stands. On the hidden weeks finance's rule ties festival-aligned and the vendor misses by 16,400 a week; on 2025's festival a calendar copy missed by 58,250 a week and festival-aligned by 4,034. So the plan is festival-aligned plus 2.6 percent: 20,275 packer shifts." |
+| Answer | "Go with the vendor, trimmed toward finance to keep the peace: plus 13 percent." | "Neither goes to the plan as it stands. On the hidden weeks finance's rule ties festival-aligned and the vendor misses by 16,400 a week; on 2025's festival, with no growth added to either, a calendar copy missed by 58,250 a week and festival-aligned by 10,575, or 4,034 with the growth measured later. So the plan is festival-aligned plus 2.6 percent: 20,275 packer shifts." |
 | Concede | Nothing conceded. | "To finance: your 4 percent is the growth the training weeks show, and your rule ties ours on the hidden weeks. To the sponsor: over the eight weeks your curve and our plan sit within 1 percent of each other, 12,819 shipments apart, and your misses run to the cheap side. We differ on which weeks: our plan books 291,183 more than your curve across 19 October to 2 November and less in the weeks around them." |
-| The cost to finance | Not said. | "The plan books 3,082 more shifts than finance's rule would, about Rs 20.0 lakh at Rs 650 a shift, and it buys the peak in the right week." |
+| The cost to finance | Not said. | "The plan books 3,082 more shifts than finance's rule would, about Rs 20.0 lakh at Rs 650 a shift. If the rush lands where festival-aligned puts it, finance's own plan costs about Rs 103.6 lakh in idle shifts and late shipments." |
 | The error | One number. | "For the peak week, 19 October, the plan books 3,719 shifts. If demand lands where the hidden weeks' lowest and highest misses would put it, the week needs 3,413 to 3,906 shifts: at the low end about Rs 2.0 lakh of idle shifts, at the high end Rs 5.6 lakh of late shipments. The range of thirteen misses covers roughly six weeks in seven, and misses from one origin move together and include no festival, so the true range is wider." |
 | What would change it | Not said. | "A sale that opens at a different distance from Diwali, or the curve beating the seasonal naive on a festival it never saw: I would ask the vendor to forecast 2025's festival from data to September 2025, which can be done before Friday. Once the season starts, a first sale week outside the hidden weeks' range re-opens the plan." |
 | The people | Not said. | "I would show each of them the back-test before the meeting, so neither hears it first in front of the operations head, and bring the options with their costs." |
@@ -198,7 +199,7 @@ person. Both skip the evidence, and the midpoint keeps the calendar copy's peak 
 
 | Follow-up | The hire-grade line |
 |---|---|
-| "Why not average the two and keep both happy?" | "Averaging forecasts usually helps when their errors differ. These two both put the peak on 5 October, two weeks before the rush, so their average keeps that error; averaging with a forecast that places the festival by its own date would help." |
+| "Why not average the two and keep both happy?" | "Averaging forecasts usually helps when their errors are independent. These two both put the peak on 5 October, two weeks before the rush, so their average keeps that error, and averaging either with a forecast that places the festival elsewhere would smear the peak across the wrong weeks." |
 | "Finance says its rule tied yours. Why not use finance's?" | "On the hidden weeks it did tie, because those weeks hold no festival. On 2025's festival, forecast from 22 September 2025, finance's rule missed by 60,488 a week against festival-aligned's 4,034; even without the growth, festival-aligned's 10,575 is less than a fifth of finance's miss." |
 | "The sponsor says the vendor's misses cost least. Answer that." | "As they stand, yes: Rs 11.9 lakh against Rs 13.5 lakh, because it runs high and nobody chose how far. Move each forecast to its own 0.82 point on the same weeks and the comparison is fair: festival-aligned costs Rs 8.8 lakh, the vendor Rs 10.0 lakh. Both were tuned on the weeks they are scored on, so the gap is the evidence and both levels flatter a little." |
 

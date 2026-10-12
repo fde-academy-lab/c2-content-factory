@@ -255,8 +255,7 @@ size, so big young groups at their best months hold it up.
 **The AI-company variant.** An AI company booking inference capacity, the computing that answers
 users' requests, sizes the launch peak from the ground up as requests open at once, checks it
 against earlier launches lined up by days from launch with the weekday kept, and books capacity to a
-latency target, above the forecast when a timed-out request costs more than the idle capacity it
-would use. The transcripts, with five pain points and their
+latency target, adding a GPU while the timeouts it prevents cost more than its rent. The transcripts, with five pain points and their
 cases, are in `extras/`.
 
 **The guesstimate: two-wheelers sold in India in a year.** 30 crore households, half owning one,

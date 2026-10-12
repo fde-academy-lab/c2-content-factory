@@ -635,6 +635,65 @@ All sources were opened on 12 October 2026.
 
 ---
 
+## Read 2, checked: did the last round answer the fresh interviewer?
+
+A fourth agent, on the Opus model, re-scored the first three criteria and checked the earlier reader's items against the live files after the last round. Its report is kept below as it was returned; the round that followed it is the last table of this file.
+
+I edited no repository files; my recompute scripts are in the scratchpad. I loaded no skill, because this was a read-only review and `scripts/skills_index.py` writes into the repository.
+
+I recomputed every case figure in the four files from `data/` and every one reproduces: the hold-out MAEs, each forecast's cost at its own 0.82 point, the 2025 back-test, the 2026 window, the peak-week range, the overtime shares, the AI arithmetic and the guesstimate. The quotes match the PLOS ONE paper, the M5 preprint and the Zillow Q3 2021 letter.
+
+#### How do the three hire-grade answers score on the first three criteria?
+
+| Answer | Criterion | Score | The line that earns or loses it |
+|---|---|---|---|
+| Transcript 1 | Clarified the scope | 2 | "What decision does the forecast feed, and how far ahead must it reach?" comes with the cost each way, whether the festival moves, and whether any forecast met unseen weeks. Each clarifier sets a number the answer uses: ten weeks, Rs 25 and Rs 5.42, and the festival-aligned copy. |
+| Transcript 1 | Named the hidden weeks and the unit | 2 | "I hold out the latest thirteen weeks ... from one origin, 22 June ... thirteen covers the reach", with "the average miss in shipments ... the quantile loss at 0.82 in rupees". It survives the look-ahead probe because the back-test says "or 10,575 without the growth measured later" and the price row admits "the 2.6 was read from them". |
+| Transcript 1 | Saw the paradox | 2 | "fits its past within 1.4 percent and misses by 16,400, almost all of it bias", and "these weeks rule out the vendor and cannot rank my rule above the copy of last year". The recompute gives 1.44 percent, a bias of 16,108, and Rs 8.82, 8.82 and 9.99 lakh at each forecast's own 0.82 point. |
+| AI variant | Clarified the scope | 2 | "Demand in what unit ... What latency must a user get? How long does it take to add capacity ... What does a timed-out request cost us ... Has this feature, or one like it, launched before?" |
+| AI variant | Named the hidden weeks and the unit | 1 | It earns 1 for "it is not one until it has predicted a launch it never saw ... With one earlier launch, or none, the forecast is untested". It loses 1 because the test is "scored by its miss in requests at the peak minute", while the answer itself says "Prompt and answer tokens load a GPU differently". Ask "what if answers run twice as long?" and a request-count score passes a forecast that books half the machines needed. |
+| AI variant | Saw the paradox | 2 | "That curve looks like a forecast, and it is not one until it has predicted a launch it never saw", plus the launch calendar's trap: "four days after a Tuesday launch is a Saturday". |
+| Transcript 2 | Clarified the scope | 2 | "Plus 4 and plus 22 against which weeks of last year?", "Has either been scored on weeks it never saw?" and "Who carries the cost of a short week, and who of a spare shift?" |
+| Transcript 2 | Named the hidden weeks and the unit | 1 | It earns 1 for "On the hidden weeks finance's rule ties festival-aligned and the vendor misses by 16,400 a week", in shipments and then shifts. It loses 1 on "on 2025's festival a calendar copy missed by 58,250 a week and festival-aligned by 4,034". The 58,250 copy has no growth, while the 4,034 includes the 4 percent measured after that festival, and the line does not flag it. That makes the gap look like 14 times; the fair pair, 58,250 against 10,575, is 5.5 times. The fair figure only appears in a later follow-up. |
+| Transcript 2 | Saw the paradox | 2 | "your rule ties ours on the hidden weeks", explained by "because those weeks hold no festival"; "your misses run to the cheap side"; and "within 1 percent of each other, 12,819 shipments apart ... We differ on which weeks". |
+
+Transcript 1 scores 6 of 6, and the AI variant and transcript 2 score 5 of 6 each. The scorecard gives 2 in all nine cells.
+
+#### Do the current files resolve the earlier reader's items?
+
+| Item | Status | The current words |
+|---|---|---|
+| Too many exact figures | Partly | The close now says "Carry four numbers into a real screen ... A string of exact figures sounds rehearsed". The hire-grade cells still speak about eighteen figures each, down to "291,183" and "3,413 to 3,906 shifts". |
+| No concession that festival-aligned is the seasonal naive plus 4 percent | Resolved | "on these weeks festival-aligned is that copy plus 4 percent, so the gap is the growth", and "cannot rank my rule above the copy of last year". |
+| PLOS ONE miscount | Resolved | The row no longer counts methods: "the machine-learning methods it tested beaten by statistical ones at every horizon it examined". This matches the abstract. One nit: the paper credits "empirical studies" for "did not necessarily" and does not name the competitions. |
+| Zillow error stated as fact | Partly | The transcript and the S7 notes now hedge with "which suggests". The S7 slide body still says "price forecasts three to six months out missed by more", and a pain-point row is headed "A forecast error wider than the margin it must protect" beside "Zillow, 2021". The letter gives no forecast error in percent at any horizon. |
+| Timeout set against an idle GPU hour | Resolved | Both costs are now per request: "a timed-out request cost us against the idle capacity one request would use ... per unit of demand". |
+| 10 percent of users in the peak minute | Resolved | "1 percent of them", checked as "each user sends about 3 requests a day"; I recomputed it at 2.88. |
+| MASE scaled by the naive | Resolved | "scaled by the seasonal naive's average miss in training, since the series has a yearly season". |
+| MAPE tilt never checked | Partly | The ranking check is new and true: MAPE runs 3.05, 3.05, 4.49, 6.80, 6.82 and 7.47 percent, the same order as MAE. The tilt is still only asserted: "punishes a forecast that lands above the actual harder than one below". Against an actual of 100, forecasts of 90 and 110 both score 10 percent, so the line cannot answer that obvious follow-up. |
+| Error bar is an average shown as a band | Partly | The transcript now gives "Typical miss, with a range" and the 3,413 to 3,906 range. Half two S1 and S2 sit outside S6 to S10 but still call the bare 6,615 "the error bar" and price it all one way: "about Rs 35,800 if it runs high, Rs 1.65 lakh if low". |
+| 4 percent from two years including the hidden weeks | Resolved | "your 4 percent is the growth the training weeks show" (3.96 percent recomputed), and "or 10,575 without the growth measured later". |
+| S10 judges new models on the thirteen weeks | Partly | The handoff line is unchanged: "earn its place ... on the thirteen held-out weeks". The notes say to read it "as written", but the table below it now says "a new model is fairest judged on weeks no choice has used", so the slide contradicts itself. |
+| "Moves three weeks" could be carried back as fact | Partly | The answer now ties it to the case: "the way it put this case's peak two weeks off". The interviewer's line still says "this year", and the S7 title "The festival moves three weeks: what breaks?" has no "suppose". |
+| Straw-man weak answers, no typical answer | Partly | Transcript 1 now has "The answer most candidates give ... It scores 3 of 14". Transcript 2 has no typical answer, and its weak answer still scores 0 of 14. That includes 0 for structure, even though the transcript 1 weak answer's shape earns 1. |
+| No reply to "your plan books more than my curve" | Resolved | "within 1 percent of each other, 12,819 shipments apart ... 291,183 more ... across 19 October to 2 November and less in the weeks around them". I recomputed both figures. |
+| AI variant never reaches machines or splits tokens | Partly | The answer now says "a load test at the latency target says how many open requests one GPU holds, which turns 330 into machines". It never reaches a machine count, and the 1,000 and 500 tokens never enter any arithmetic. |
+
+#### What would a strong interviewer still mark down?
+
+- **Transcript 2 prices only one side of the decision.** "3,082 more shifts than finance's rule would, about Rs 20.0 lakh" never meets what finance's rule costs if the rush lands as planned. The facts file's own scenario (`scenario_2026`, `finance_cost_rs`) puts that at about Rs 103.6 lakh.
+- **The averaging reply is wrong if read literally.** It says "averaging with a forecast that places the festival by its own date would help". Averaging the vendor with festival-aligned gives 306,130 for 26 October against festival-aligned's 383,760, which moves part of the peak back to the wrong weeks. Averaging helps when errors are independent, and a two-week shift is not.
+- **The AI variant's idle cost per request ignores the booking period.** Capacity booked for the peak is paid for across the whole reservation, while one request holds it for about 10 seconds. So the cost of overbooking is far above "the idle capacity one request would use". The packer arithmetic works because a shift and its shipments share one week.
+- **The scorecard's Typical column overscores the paradox.** It gives 1 "since it sees a close fit lose to a copy", but the typical answer it quotes never mentions a fit. That answer should score 2 of 14, and the student file's "3 of 14" should change with it.
+- **"Yes, equally for every forecast" in the circularity reply is asserted, not shown.** Tuning on the scored weeks flatters each forecast by an amount set by its own errors. The vendor's errors grow from 3.6 to 11.5 percent across the hidden weeks, so the honest claim is only that each forecast was tuned the same way.
+- **The guesstimate assumes one vehicle per owning household and never says so.** "Households, times the share that own a two-wheeler, gives the household fleet" counts one per household, and vehicles per household is missing from the sensitivity list. A second scooter in one owning household in four raises the answer 25 percent, more than any input except the replacement years.
+
+#### Would a strong interviewer reject anything that remains?
+
+Verdict: nothing that remains would make a strong interviewer reject any of the three hire-grade answers. They would mark down transcript 2's unflagged 4,034 comparison, its one-sided cost and its averaging line, and the AI variant's request-count test. Fix S7's "missed by more" and S10's handoff line before the room repeats them in a screen.
+
+---
+
 ## What did the fix pass change for each finding?
 
 Each row says what the pack does now. A separate agent audited Read 1's findings against the pack
@@ -860,3 +919,25 @@ Read 2 totals: 39 fixed, 6 partly fixed and 3 needing no change, of 48 findings.
 | 46 | Fixed | S9 sets a month of registrations against a year of dealer sales; the notes say "above SIAM's year". |
 
 Read 2, again, totals: 30 fixed, 1 partly fixed, 11 kept with a reason and 4 needing no change, of 46 findings.
+
+### Read 2, checked: what the last round changed
+
+| Item | What the pack does now |
+|---|---|
+| Transcript 2, named the hidden weeks and the unit, scored 1 | The answer row flags the growth: 58,250 against 10,575 with none added, 4,034 with the growth measured later. |
+| AI variant, named the hidden weeks and the unit, scored 1 | The forecast is scored by its miss in prompt and answer tokens at the peak minute; the tokens enter the arithmetic (20 lakh and 10 lakh a minute) and reach about 17 GPUs at an invented 20 open requests a GPU. |
+| Too many figures | Partly: about eighteen a cell remain, beside the advice to carry four. |
+| Zillow stated as fact | S7's body says the forecasts "missed both ways by more than Zillow had modelled", the letter's own claim; the pain-point row is headed "Price-forecast swings that overran a margin guardrail". |
+| The MAPE tilt | The line now says why: for the same miss, the percent is taken of the smaller number. |
+| The error bar as a band | Half two S1 labels 6,615 "the typical miss". |
+| The handoff line | Kept as the spine wrote it; S10's table now says a model that beats the baseline there is checked again on a rolling origin, which adds to the line instead of contradicting it. |
+| Three weeks taken as fact | The follow-up and S7 open on "Suppose". |
+| Transcript 2 has no typical answer | Kept: transcript 1 shows the typical answer, and transcript 2's weak answer scores what it says. |
+| The AI machine count and tokens | About 17 GPUs before headroom, from the token mix and a load test. |
+| Transcript 2's one-sided cost | The row gives both sides: Rs 20.0 lakh more, against about Rs 103.6 lakh if finance's plan meets the rush. |
+| The averaging reply | It now says averaging helps when errors are independent and that averaging with a differently placed forecast would smear the peak. |
+| The idle cost per request | The rule is set per machine: book one more GPU when the timeouts it would prevent cost more than its rent for the whole booking. |
+| The typical column | It scores 2 of 14, with no paradox point, and the transcript says so. |
+| The circularity reply | It says each forecast was tuned the same way and that the flattery depends on each one's misses. |
+| One vehicle per owning home | The card adds vehicles per home, 1 to 1.25, worth up to 25 percent. |
+
