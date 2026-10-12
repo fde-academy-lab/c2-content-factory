@@ -1,0 +1,672 @@
+day: W04/D2, Tuesday 27 October 2026
+written_by: C2_W04_D02_make_data_INTERNAL.py; the W04 D2 drafting session, 12 October 2026
+source_tables:
+  monday_driver_weeks: ../D1/data/C2_W04_D01_driver_weeks_STUDENT.csv
+  monday_drivers: ../D1/data/C2_W04_D01_drivers_STUDENT.csv
+  monday_facts: ../D1/internal/C2_W04_D01_facts_INTERNAL.yaml
+  twelve_rows: data/C2_W04_D02_twelve_rows_STUDENT.csv
+  three_denominators: data/C2_W04_D02_three_denominators_STUDENT.csv
+  kalpa_dmart_anchor: data/C2_W04_D02_kalpa_dmart_anchor_STUDENT.csv
+numbers:
+- id: twelve_hours_before
+  value: 60
+  unit: hours
+  how: sum of the six before rows
+  used_by: L1 hand count; cheat sheet panel 2
+- id: twelve_hours_after
+  value: 74
+  unit: hours
+  how: sum of the six after rows
+  used_by: L1 hand count; cheat sheet panel 2
+- id: twelve_trips_before
+  value: 114
+  unit: trips
+  how: sum of the six before rows
+  used_by: L1 hand count
+- id: twelve_trips_after
+  value: 88
+  unit: trips
+  how: sum of the six after rows
+  used_by: L1 hand count
+- id: twelve_bookings_before_rs
+  value: 18810
+  unit: Rs
+  how: sum of peak_bookings_rs for the six before rows (165 Rs/trip x 114 trips)
+  used_by: L1, L2 hand count
+- id: twelve_bookings_after_rs
+  value: 14520
+  unit: Rs
+  how: sum of peak_bookings_rs for the six after rows (165 Rs/trip x 88 trips)
+  used_by: L1, L2 hand count
+- id: twelve_rs_per_hour_before
+  value: 313.5
+  unit: Rs per peak online hour
+  how: 18,810 / 60
+  used_by: L1 three denominators; half1 chapter 1; notebook 01
+- id: twelve_rs_per_hour_after
+  value: 196.2
+  unit: Rs per peak online hour
+  how: 14,520 / 74
+  used_by: L1 three denominators; half1 chapter 1; notebook 01
+- id: twelve_rs_per_driver_week_before
+  value: 3135
+  unit: Rs per driver-week
+  how: 18,810 / 6
+  used_by: L1 three denominators; half1 chapter 1; notebook 01
+- id: twelve_rs_per_driver_week_after
+  value: 2420
+  unit: Rs per driver-week
+  how: 14,520 / 6
+  used_by: L1 three denominators; half1 chapter 1; notebook 01
+- id: twelve_rs_per_trip_before
+  value: 165
+  unit: Rs per trip
+  how: 18,810 / 114
+  used_by: L1 three denominators; half1 chapter 1; notebook 01
+- id: twelve_rs_per_trip_after
+  value: 165
+  unit: Rs per trip
+  how: 14,520 / 88
+  used_by: L1 three denominators; half1 chapter 1; notebook 01
+- id: twelve_rs_per_hour_change_pct
+  value: -37.4
+  unit: percent
+  how: 196.2 / 313.5 - 1
+  used_by: L1, half1 chapter 1
+- id: twelve_rs_per_driver_week_change_pct
+  value: -22.8
+  unit: percent
+  how: 2420 / 3135 - 1
+  used_by: L1, half1 chapter 1
+- id: twelve_rs_per_trip_change_pct
+  value: 0
+  unit: percent
+  how: 165 / 165 - 1
+  used_by: L1, half1 chapter 1
+- id: full_rs_per_hour_before
+  value: 313.5
+  unit: Rs per peak online hour
+  how: sum of peak_bookings_rs / sum of peak_online_hours over all before rows
+  used_by: L2 three denominators; half1 chapter 2; notebook 01
+- id: full_rs_per_hour_after
+  value: 260.4
+  unit: Rs per peak online hour
+  how: sum of peak_bookings_rs / sum of peak_online_hours over all after rows
+  used_by: L2 three denominators; half1 chapter 2; notebook 01
+- id: full_rs_per_driver_week_before
+  value: 5817.0
+  unit: Rs per driver-week
+  how: sum of peak_bookings_rs / count of driver-weeks over all before rows
+  used_by: L2 three denominators; half1 chapter 2; notebook 01
+- id: full_rs_per_driver_week_after
+  value: 5861.0
+  unit: Rs per driver-week
+  how: sum of peak_bookings_rs / count of driver-weeks over all after rows
+  used_by: L2 three denominators; half1 chapter 2; notebook 01
+- id: full_rs_per_trip_before
+  value: 165
+  unit: Rs per trip
+  how: sum of peak_bookings_rs / sum of peak_trips over all before rows
+  used_by: L2 three denominators; half1 chapter 2; notebook 01
+- id: full_rs_per_trip_after
+  value: 165
+  unit: Rs per trip
+  how: sum of peak_bookings_rs / sum of peak_trips over all after rows
+  used_by: L2 three denominators; half1 chapter 2; notebook 01
+- id: full_rs_per_hour_change_pct
+  value: -17.1
+  unit: percent
+  how: 260.4 / 313.5 - 1
+  used_by: L2; half1 chapter 2
+- id: full_rs_per_driver_week_change_pct
+  value: 0.8
+  unit: percent
+  how: 5861.3 / 5816.5 - 1
+  used_by: L2; half1 chapter 2
+- id: peak_window_minutes
+  value: 180
+  unit: minutes
+  how: three hours of evening peak
+  used_by: L5 guesstimate map; dojo
+- id: hyd_peak_requests_per_hour_low
+  value: 8000
+  unit: requests per hour (assumption, range 7,000 to 12,000)
+  how: clarifying assumption said aloud, lower bound
+  used_by: L5 guesstimate map; dojo
+- id: hyd_peak_requests_per_hour_mid
+  value: 10000
+  unit: requests per hour (assumption)
+  how: clarifying assumption said aloud, central value
+  used_by: L5 guesstimate map; dojo
+- id: trips_per_driver_per_peak_hour
+  value: 2
+  unit: trips per hour (assumption)
+  how: a driver completes about two peak trips an hour, from the case's 1.6 to 1.9
+  used_by: L5 guesstimate map; dojo
+- id: idle_share_assumption
+  value: 0.3
+  unit: share (assumption, range 0.20 to 0.40)
+  how: share of online drivers idle at any moment of peak; the number that moves the answer most
+  used_by: L5 guesstimate map; dojo
+- id: buffer_for_wait
+  value: 1.15
+  unit: multiplier (assumption)
+  how: 15 percent buffer above drivers needed, so median wait sits under five minutes
+  used_by: L5 guesstimate map; dojo
+- id: guesstimate_drivers_online_peak
+  value: 8200
+  unit: drivers (central value)
+  how: 10,000 requests/hour divided by 2 trips/driver/hour, divided by 0.70, times 1.15; rounded to two
+    significant figures
+  used_by: L5 guesstimate; dojo; cheat sheet panel 2
+- id: guesstimate_drivers_online_peak_range_low
+  value: 5000
+  unit: drivers (range low)
+  how: 7,000 requests/hour, 20 percent idle, same buffer
+  used_by: L5 guesstimate; dojo
+- id: guesstimate_drivers_online_peak_range_high
+  value: 11500
+  unit: drivers (range high)
+  how: 12,000 requests/hour, 40 percent idle, same buffer
+  used_by: L5 guesstimate; dojo
+- id: hyd_published_drivers_online_peak
+  value: null
+  unit: drivers (not verified)
+  how: no published figure in the research ledger; the finishing session may fetch and date a primary
+    source
+  used_by: L5 validate; dojo (slot reads 'to be found')
+- id: upi_active_users_assumption
+  value: 350000000
+  unit: users (assumption)
+  how: about 35 crore active UPI users, said aloud
+  used_by: L5 paired guesstimate; dojo
+- id: upi_payments_per_user_per_day
+  value: 2.3
+  unit: payments per day (assumption)
+  how: about 2 to 3 payments a day per active user, said aloud
+  used_by: L5 paired guesstimate; dojo
+- id: upi_guesstimate_per_day
+  value: 805000000
+  unit: transactions per day
+  how: 35 crore users x 2.3 payments; rounded to the nearest 5 million
+  used_by: L5 paired guesstimate; dojo
+- id: upi_published_per_day
+  value: 802000000
+  unit: transactions per day
+  how: NPCI through Outlook Money, September 2026 average (R2 T3)
+  used_by: L5 paired guesstimate; dojo
+- id: upi_published_month_total
+  value: 24070000000
+  unit: transactions in September 2026
+  how: NPCI through Outlook Money, September 2026 total (R2 T3)
+  used_by: L5 paired guesstimate; dojo
+- id: thirty_vs_thirty_one_days
+  value: 30
+  unit: days
+  how: a 30-day month against a 31-day month moves the monthly total
+  used_by: L5 paired guesstimate catch
+- id: slide_elements_cluttered
+  value: 9
+  unit: elements
+  how: a cluttered slide of nine Monday numbers rebuilt live
+  used_by: L1, L4 declutter
+- id: slide_elements_cut_to
+  value: 2
+  unit: elements
+  how: 'nine numbers cut to two: the claim''s own evidence and its denominator'
+  used_by: L1, L4 declutter
+- id: amazon_memo_pages
+  value: 6
+  unit: pages
+  how: Amazon's six-page memo read in silence (letter to shareholders 2017, R2 T1)
+  used_by: L3 the defence shape
+- id: dmart_fy26_revenue_rs_crore
+  value: 66968
+  unit: Rs crore
+  how: D-Mart Supermarts FY 2025-26 standalone revenue (press release 2 May 2026, R2 T3)
+  used_by: lab Kalpa guesstimate anchor
+- id: dmart_stores_fy26_end
+  value: 500
+  unit: stores
+  how: 500 stores at FY26 end, 85 added during the year (R2 T3)
+  used_by: lab Kalpa guesstimate anchor
+- id: dmart_stores_fy25_end
+  value: 415
+  unit: stores
+  how: 500 at FY26 end less the 85 added during FY26
+  used_by: lab Kalpa guesstimate anchor
+- id: dmart_revenue_per_store_year_end
+  value: 133.9
+  unit: Rs crore
+  how: 66,968 / 500; our arithmetic
+  used_by: lab Kalpa guesstimate anchor; cheat sheet panel 2
+- id: dmart_revenue_per_store_average
+  value: 146.4
+  unit: Rs crore
+  how: 66,968 / ((500 + 415) / 2); our arithmetic
+  used_by: lab Kalpa guesstimate anchor
+monday_ids_reused:
+- id: launch_date
+  value: '2026-08-31'
+  source: D1 facts file
+- id: window_before
+  value: 2026-07-20 to 2026-08-30
+  source: D1 facts file
+- id: window_after
+  value: 2026-08-31 to 2026-10-11
+  source: D1 facts file
+- id: floor_rs_per_hour
+  value: 300
+  source: D1 facts file
+- id: fare_avg_rs
+  value: 165
+  source: D1 facts file
+- id: drivers_total
+  value: 1200
+  source: D1 facts file
+- id: drivers_new
+  value: 140
+  source: D1 facts file
+- id: hours_before
+  value: 118000
+  source: D1 facts file
+- id: trips_before
+  value: 224200
+  source: D1 facts file
+- id: tph_before
+  value: 1.9
+  source: D1 facts file
+- id: acceptance_before
+  value: 0.863
+  source: D1 facts file
+- id: no_trip_share_before
+  value: 0.22
+  source: D1 facts file
+- id: bookings_before_rs
+  value: 36993000
+  source: D1 facts file
+- id: rs_per_hour_before
+  value: 313.5
+  source: D1 facts file
+- id: driver_weeks_before
+  value: 6360
+  source: D1 facts file
+- id: online_driver_weeks_before
+  value: 6270
+  source: D1 facts file
+- id: rs_per_driver_week_before
+  value: 5816.5
+  source: D1 facts file
+- id: hours_after
+  value: 146300
+  source: D1 facts file
+- id: trips_after
+  value: 230900
+  source: D1 facts file
+- id: tph_after
+  value: 1.58
+  source: D1 facts file
+- id: acceptance_after
+  value: 0.73
+  source: D1 facts file
+- id: no_trip_share_after
+  value: 0.38
+  source: D1 facts file
+- id: bookings_after_rs
+  value: 38098500
+  source: D1 facts file
+- id: rs_per_hour_after
+  value: 260.4
+  source: D1 facts file
+- id: driver_weeks_after
+  value: 6500
+  source: D1 facts file
+- id: online_driver_weeks_after
+  value: 6434
+  source: D1 facts file
+- id: rs_per_driver_week_after
+  value: 5861.3
+  source: D1 facts file
+- id: hours_change_pct
+  value: 24
+  source: D1 facts file
+- id: trips_change_pct
+  value: 3
+  source: D1 facts file
+- id: topup_after_rs
+  value: 19000000
+  source: D1 facts file
+- id: topup_low_acceptance_rs
+  value: 11590000
+  source: D1 facts file
+- id: topup_low_acceptance_share
+  value: 0.61
+  source: D1 facts file
+- id: idle_tail_drivers
+  value: 180
+  source: D1 facts file
+- id: idle_hours_before
+  value: 20000
+  source: D1 facts file
+- id: idle_hours_after
+  value: 42000
+  source: D1 facts file
+- id: idle_trips_before
+  value: 38000
+  source: D1 facts file
+- id: idle_trips_after
+  value: 33440
+  source: D1 facts file
+- id: median_wait_before
+  value: 4.8
+  source: D1 facts file
+- id: median_wait_after
+  value: 4.6
+  source: D1 facts file
+- id: requests_before
+  value: 251910
+  source: D1 facts file
+- id: requests_after
+  value: 256556
+  source: D1 facts file
+toys:
+- id: toy_notice_board
+  label: invented
+  values:
+    headline_topic: Breakfast survey results
+    headline_claim: Rotis replace rice at Monday breakfast; the kitchen moves two staff from the rice
+      counter to the roti line
+  used_by: L1 the title is the claim
+- id: toy_canteen_tea
+  label: invented
+  values:
+    students: 2000
+    share_who_buy_tea: 0.6
+    cups_per_person_per_day: 2.0
+    cups_per_day: 2400
+  used_by: L5 the dojo's warm-up
+- id: toy_hyd_crowd
+  label: invented
+  values:
+    wrong_households: 9000000
+    right_households: 500000
+    note: a city of two million people cannot have nine million households
+  used_by: L5 the Kahoot trap
+twelve_rows:
+- driver: A
+  driver_id: d_0001
+  zone: Jubilee Hills
+  window: before
+  week_start: '2026-08-10'
+  peak_online_hours: 10
+  peak_offers: 24
+  peak_accepted: 21
+  peak_driver_cancels: 0
+  peak_trips: 21
+  peak_hours_no_trip: 1
+  peak_bookings_rs: 3465
+  topup_rs: 0
+- driver: A
+  driver_id: d_0001
+  zone: Jubilee Hills
+  window: after
+  week_start: '2026-09-21'
+  peak_online_hours: 11
+  peak_offers: 25
+  peak_accepted: 22
+  peak_driver_cancels: 0
+  peak_trips: 22
+  peak_hours_no_trip: 1
+  peak_bookings_rs: 3630
+  topup_rs: 0
+- driver: B
+  driver_id: d_0002
+  zone: Banjara Hills
+  window: before
+  week_start: '2026-08-10'
+  peak_online_hours: 9
+  peak_offers: 20
+  peak_accepted: 17
+  peak_driver_cancels: 0
+  peak_trips: 17
+  peak_hours_no_trip: 1
+  peak_bookings_rs: 2805
+  topup_rs: 0
+- driver: B
+  driver_id: d_0002
+  zone: Banjara Hills
+  window: after
+  week_start: '2026-09-21'
+  peak_online_hours: 10
+  peak_offers: 21
+  peak_accepted: 18
+  peak_driver_cancels: 0
+  peak_trips: 18
+  peak_hours_no_trip: 1
+  peak_bookings_rs: 2970
+  topup_rs: 0
+- driver: C
+  driver_id: d_0003
+  zone: Gachibowli
+  window: before
+  week_start: '2026-08-10'
+  peak_online_hours: 11
+  peak_offers: 25
+  peak_accepted: 22
+  peak_driver_cancels: 0
+  peak_trips: 22
+  peak_hours_no_trip: 2
+  peak_bookings_rs: 3630
+  topup_rs: 0
+- driver: C
+  driver_id: d_0003
+  zone: Gachibowli
+  window: after
+  week_start: '2026-09-21'
+  peak_online_hours: 12
+  peak_offers: 26
+  peak_accepted: 23
+  peak_driver_cancels: 0
+  peak_trips: 23
+  peak_hours_no_trip: 2
+  peak_bookings_rs: 3795
+  topup_rs: 0
+- driver: D
+  driver_id: d_0004
+  zone: Madhapur
+  window: before
+  week_start: '2026-08-10'
+  peak_online_hours: 10
+  peak_offers: 22
+  peak_accepted: 19
+  peak_driver_cancels: 0
+  peak_trips: 19
+  peak_hours_no_trip: 1
+  peak_bookings_rs: 3135
+  topup_rs: 0
+- driver: D
+  driver_id: d_0004
+  zone: Madhapur
+  window: after
+  week_start: '2026-09-21'
+  peak_online_hours: 11
+  peak_offers: 23
+  peak_accepted: 20
+  peak_driver_cancels: 0
+  peak_trips: 20
+  peak_hours_no_trip: 2
+  peak_bookings_rs: 3300
+  topup_rs: 0
+- driver: E
+  driver_id: d_0881
+  zone: Shamshabad
+  window: before
+  week_start: '2026-08-10'
+  peak_online_hours: 10
+  peak_offers: 21
+  peak_accepted: 18
+  peak_driver_cancels: 0
+  peak_trips: 18
+  peak_hours_no_trip: 1
+  peak_bookings_rs: 2970
+  topup_rs: 0
+- driver: E
+  driver_id: d_0881
+  zone: Shamshabad
+  window: after
+  week_start: '2026-09-21'
+  peak_online_hours: 16
+  peak_offers: 14
+  peak_accepted: 4
+  peak_driver_cancels: 1
+  peak_trips: 3
+  peak_hours_no_trip: 14
+  peak_bookings_rs: 495
+  topup_rs: 4400
+- driver: F
+  driver_id: d_0882
+  zone: Rajendranagar
+  window: before
+  week_start: '2026-08-10'
+  peak_online_hours: 10
+  peak_offers: 20
+  peak_accepted: 17
+  peak_driver_cancels: 0
+  peak_trips: 17
+  peak_hours_no_trip: 2
+  peak_bookings_rs: 2805
+  topup_rs: 0
+- driver: F
+  driver_id: d_0882
+  zone: Rajendranagar
+  window: after
+  week_start: '2026-09-21'
+  peak_online_hours: 14
+  peak_offers: 12
+  peak_accepted: 3
+  peak_driver_cancels: 1
+  peak_trips: 2
+  peak_hours_no_trip: 13
+  peak_bookings_rs: 330
+  topup_rs: 3850
+weekly_series:
+- week_start: '2026-07-20'
+  window: before
+  hours: 19571
+  trips: 36752
+  driver_weeks: 1060
+  bookings_rs: 6064080
+  rs_per_hour: 309.85
+  rs_per_driver_week: 5720.83
+  rs_per_trip: 165.0
+- week_start: '2026-07-27'
+  window: before
+  hours: 19398
+  trips: 37095
+  driver_weeks: 1060
+  bookings_rs: 6120675
+  rs_per_hour: 315.53
+  rs_per_driver_week: 5774.22
+  rs_per_trip: 165.0
+- week_start: '2026-08-03'
+  window: before
+  hours: 19720
+  trips: 37183
+  driver_weeks: 1060
+  bookings_rs: 6135195
+  rs_per_hour: 311.12
+  rs_per_driver_week: 5787.92
+  rs_per_trip: 165.0
+- week_start: '2026-08-10'
+  window: before
+  hours: 19513
+  trips: 37452
+  driver_weeks: 1060
+  bookings_rs: 6179580
+  rs_per_hour: 316.69
+  rs_per_driver_week: 5829.79
+  rs_per_trip: 165.0
+- week_start: '2026-08-17'
+  window: before
+  hours: 19578
+  trips: 37688
+  driver_weeks: 1060
+  bookings_rs: 6218520
+  rs_per_hour: 317.63
+  rs_per_driver_week: 5866.53
+  rs_per_trip: 165.0
+- week_start: '2026-08-24'
+  window: before
+  hours: 20220
+  trips: 38030
+  driver_weeks: 1060
+  bookings_rs: 6274950
+  rs_per_hour: 310.33
+  rs_per_driver_week: 5919.76
+  rs_per_trip: 165.0
+- week_start: '2026-08-31'
+  window: after
+  hours: 23816
+  trips: 39121
+  driver_weeks: 1070
+  bookings_rs: 6454965
+  rs_per_hour: 271.03
+  rs_per_driver_week: 6032.68
+  rs_per_trip: 165.0
+- week_start: '2026-09-07'
+  window: after
+  hours: 24932
+  trips: 39547
+  driver_weeks: 1076
+  bookings_rs: 6525255
+  rs_per_hour: 261.72
+  rs_per_driver_week: 6064.36
+  rs_per_trip: 165.0
+- week_start: '2026-09-14'
+  window: after
+  hours: 24871
+  trips: 39056
+  driver_weeks: 1082
+  bookings_rs: 6444240
+  rs_per_hour: 259.11
+  rs_per_driver_week: 5955.86
+  rs_per_trip: 165.0
+- week_start: '2026-09-21'
+  window: after
+  hours: 24643
+  trips: 38313
+  driver_weeks: 1086
+  bookings_rs: 6321645
+  rs_per_hour: 256.53
+  rs_per_driver_week: 5821.04
+  rs_per_trip: 165.0
+- week_start: '2026-09-28'
+  window: after
+  hours: 24247
+  trips: 37755
+  driver_weeks: 1090
+  bookings_rs: 6229575
+  rs_per_hour: 256.92
+  rs_per_driver_week: 5715.21
+  rs_per_trip: 165.0
+- week_start: '2026-10-05'
+  window: after
+  hours: 23791
+  trips: 37108
+  driver_weeks: 1096
+  bookings_rs: 6122820
+  rs_per_hour: 257.36
+  rs_per_driver_week: 5586.51
+  rs_per_trip: 165.0
+kalpa:
+  lab_shape: every learner presents Monday's Kalpa north star (delivered orders per active customer per
+    month) on one slide to a TA, three minutes, scored on the four moves; then Anand's new-store question,
+    mapped and validated against DMart (R2 T3), with the catch that a first-year store sells less
+  no_plant_today: true
+  dmart_anchor_file: data/C2_W04_D02_kalpa_dmart_anchor_STUDENT.csv
+shared_constants:
+  fare_rs: 165
+  launch_date: '2026-08-31'
+  window_before: 2026-07-20 to 2026-08-30
+  window_after: 2026-08-31 to 2026-10-11
+  diwali_2026: '2026-11-08'
