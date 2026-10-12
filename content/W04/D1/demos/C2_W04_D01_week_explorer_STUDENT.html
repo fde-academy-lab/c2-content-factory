@@ -705,13 +705,13 @@ var W4 = {
           </div>
           <div class="ctl">
             <label for="t3-users">UPI: active users, millions</label>
-            <input type="range" id="t3-users" min="50" max="600" step="10" value="300" data-ctl="users">
-            <output data-out="users">300 million (slider value 300)</output>
+            <input type="range" id="t3-users" min="50" max="600" step="10" value="100" data-ctl="users">
+            <output data-out="users">100 million (slider value 100)</output>
           </div>
           <div class="ctl">
             <label for="t3-pay">UPI: payments a day per active user</label>
-            <input type="range" id="t3-pay" min="0.5" max="6" step="0.1" value="2" data-ctl="pay">
-            <output data-out="pay">2.0 a day (slider value 2.0)</output>
+            <input type="range" id="t3-pay" min="0.5" max="6" step="0.1" value="0.5" data-ctl="pay">
+            <output data-out="pay">0.5 a day (slider value 0.5)</output>
           </div>
           <div class="ctl">
             <label for="t3-req">Drivers: peak requests an hour in the city</label>
@@ -1303,7 +1303,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>The week's methods on the left stay put; the chosen unit's card on the right says what changes. The other companies' situations are hypothetical, and Kalpa's units carry the people and questions of the client the room knows.</figcaption>
+          <figcaption>The week's methods on the left; the chosen unit's card on the right. The other companies' situations are hypothetical, and Kalpa's units carry the people and questions of the client the room knows.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><label for="s1-u">The unit the method moves to</label>
@@ -2526,7 +2526,7 @@ var W4 = {
   }
   scene("T3", {
     answer: "C",
-    start: function () { return { q: "upi", users: 300, pay: 2, req: 1500, tpd: 2, idle: 0.3, buf: 20 }; },
+    start: function () { return { q: "upi", users: 100, pay: 0.5, req: 1500, tpd: 2, idle: 0.3, buf: 20, checked: false }; },
     init: function (st, art) {
       var self = this;
       on(art, "q", "change", function (e) { st.q = e.target.value; self.render(st, art); });
@@ -2562,19 +2562,21 @@ var W4 = {
         var box = $('[data-tq="' + k + '"]', art);
         box.className = "tq " + (st.q === k ? "on" : "dim");
       });
-      $('[data-anchor="upi"]', art).textContent = "Measured: 802 million a day in September 2026. Your estimate is " + (upiM / TUE.upiDayMillion).toFixed(2) + " of it.";
+      $('[data-anchor="upi"]', art).textContent = st.checked ?
+        "Measured: 802 million a day in September 2026. Your estimate is " + (upiM / TUE.upiDayMillion).toFixed(2) + " of it." :
+        "Measured: hidden until the reveal, so your " + Math.round(upiM) + " million a day stands on its factors alone.";
       $('[data-anchor="drv"]', art).textContent = "Published figure: to be found. The case's own data put about " + Math.round(caseDrv) +
         " drivers online in an average peak hour; your estimate is " + (p.drv / caseDrv).toFixed(2) + " times that.";
       nums($("[data-nums]", art), [
         ["UPI estimate", Math.round(upiM) + " million a day"],
-        ["Ratio to the measured 802 million", (upiM / TUE.upiDayMillion).toFixed(2)],
+        st.checked ? ["Ratio to the measured 802 million", (upiM / TUE.upiDayMillion).toFixed(2)] : ["Ratio to the measured number", "at the reveal"],
         { wide: st.users + " million x " + st.pay.toFixed(1) + " = " + Math.round(upiM) + " million." },
         ["Drivers estimate", group(Math.round(p.drv))],
         ["Ratio to the case's 813 a peak hour", (p.drv / (W4.mon.hours[1] / TUE.peakHoursSixWeeks)).toFixed(2)],
         { wide: group(st.req) + " / " + st.tpd.toFixed(1) + " / " + (1 - st.idle).toFixed(2) + " x " + (1 + st.buf / 100).toFixed(2) + " = " + group(Math.round(p.drv)) + "; a published figure is to be found." }
       ]);
     },
-    final: function () {}
+    final: function (st) { st.checked = true; }
   });
 
   /* ---------- Wednesday ---------- */
