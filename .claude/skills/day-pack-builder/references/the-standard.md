@@ -11,7 +11,10 @@ and a deck carries each chapter in full depth. Form still follows
 `content/W01/D1`: its deck syntax, notebook helper and rhythm, companion build, workbook build and day
 sheet are the model, and its rebuild to this bar becomes the model for content too. Where a week has
 an approved spine in `docs/detailing/`, that spine sets each day's case, chapters and traps; this page
-sets the form and the volume. The mechanics stay in the skills and scripts it points to.
+sets the form and the volume. Where the spine also sets its own day shapes, as Week 4's does (decision
+`w4-case-led`), it replaces "The day", "Volume per teaching day", the per-step paragraphs of "The
+question ladder" and "The depth loop" for that week, and this page then sets only the form of each
+family the spine names. The mechanics stay in the skills and scripts it points to.
 
 ## The bar
 
