@@ -59,7 +59,7 @@ G numbers are the fresh graduate's findings and I numbers the hiring interviewer
 | Finding | Why it carries a reason in place of a fix |
 |---|---|
 | G7 | S2's later-day words are the spine's week map, and each day defines its own words when it reaches them. |
-| G8 | S2's Kalpa labels are the spine's, and tying S37 to the auto-reorder window in the morning would point at the lab's plant. |
+| G8 | S2's Kalpa labels follow the spine, whose Monday node now reads "Kalpa Retail: reorders per member" (pull request 233), so no morning slide names the window the lab finds. |
 | G10, in part | Anchor, drift, crux, baseline, tail, segment, test accounts and diagnostic are said aloud with their meaning, and glossing all eight would crowd the slides. |
 | G14, in part | What a group hands in for round 1 and how it is scored is the trainer's to say from the war-game run sheet. |
 | G18 | The 880 hold 1.90 together (186,200 trips over 98,000 hours, then 193,800 over 102,000); A to D are four of them and vary week to week. |
