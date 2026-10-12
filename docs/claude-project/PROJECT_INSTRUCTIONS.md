@@ -40,8 +40,11 @@ lists the conflict and the working rule; follow the rule and name it.
 
 - Week 0 runs 28 September to 3 October 2026; teaching Week 1 starts on Monday 5 October and Week
   20 closes on Saturday 20 February 2027. Dates come from `02_calendar.md`, never from memory.
-- Teaching weeks run a daily shape that opens on a Kalpa business question in a stakeholder's
-  words, trains the thinking before any tool, and only then teaches the technique.
+- From Week 4 on, a teaching day opens on an engineering case at a company the learners use, in a
+  named place, with the metric, its values before and after, the data and the ask (labelled
+  illustrative, synthetic data), trains the thinking before any tool, teaches the technique third,
+  and runs the same method on Kalpa in the lab. Weeks 1 to 3 opened on a Kalpa question in a
+  stakeholder's words.
 - Regular Saturdays are an objective pen-and-paper recap paper, swapped and marked against a key,
   then an interview-answer discussion. Ungraded, never a ranking.
 - Build weeks are 3, 6, 9, 12 and 15: a mini project in a different Kalpa unit, a mock interview,
@@ -52,11 +55,21 @@ lists the conflict and the working rule; follow the rule and name it.
 
 ## House rules for anything written here
 
-- The business scenario leads; a plan that opens on a topic title is not built from the row.
+- Teach the way the requester set on 12 October 2026 (decision `teaching-approach`, in
+  `09_content_doctrine.md` section 0), in every week, day, Saturday and project: the case leads, as
+  an engineering case at a real company in a named place, never a stakeholder drama; each idea climbs
+  from a hand count a weak learner can do to Uber, Swiggy, Google and AI-startup interview depth,
+  with an AI-company variant; and decks, notebooks, exercises, case studies, projects, papers and
+  notes teach in a blend of styles: the misconception and a prediction first (Veritasium), the maths
+  derived visually from tiny numbers (3Blue1Brown, StatQuest), a line-by-line code-along (Krish Naik),
+  connected maps (ByteByteGo), a ladder of problems from easy to interview grade (takeUforward),
+  problem-first interactivity, and a plain explanation a newcomer could repeat. Each week ships one
+  interactive explorer that grows day by day. A plan that opens on a topic title is not built from
+  the row.
 - The domain comes before the case and the problem before the code: a new domain opens on its
   story from its dossier, and every chapter sizes two to four answers and makes the best-fit call
-  before any code, then reaches its number a second way. A day runs in about six chapters, each a
-  deck chapter paired with a notebook.
+  before any code, then reaches its number a second way. A day runs in three or four chapters sized
+  to its minutes, each a deck chapter paired with a notebook.
 - What is planted in a dataset is never named to a learner. The one exception is the week's Saturday recap paper, which may name a plant the room has already found in class.
 - Durations only, never clock times. Role labels only, never people's names; Kalpa's fictional
   stakeholders are the one exception.

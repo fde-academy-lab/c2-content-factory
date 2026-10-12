@@ -5,6 +5,32 @@ The content carries the session. Trainers rotate week to week, arrive with varyi
 
 ---
 
+## 0. THE TEACHING APPROACH (12 October 2026)
+
+The requester set this for every week, day, Saturday and project built from 12 October 2026 on
+(decision `teaching-approach`); `.claude/skills/day-pack-builder/references/the-standard.md`, section
+"The teaching approach", is the single source, and where it and the sections below disagree it wins.
+Weeks 1 to 3 were built before it and keep their shape until rebuilt.
+
+- **The case leads.** A day opens on an engineering case at a company the learners use (Uber,
+  Swiggy, Zomato, Blinkit, Flipkart, Google, an AI startup), in a named city, state or country: the
+  metric, its value before and after with dates, the data the analyst holds, the ask and the known
+  caveats. It is labelled illustrative, its data are synthetic and seeded, and it claims nothing the
+  company actually did. No stakeholder drama opens a day. Kalpa carries the same method as the client
+  in the lab, so the weeks stay connected.
+- **The ladder.** The case breaks into sub-problems from L1, a hand count a weak learner can do, to L6,
+  the interview at Uber, Swiggy, Google and AI-startup depth, with an AI-company variant.
+- **The blend.** Every deck, notebook, exercise, case study, project, paper and note teaches each idea
+  with the misconception and a prediction first (Veritasium), the maths derived visually from tiny
+  numbers (3Blue1Brown, StatQuest), a line-by-line code-along to a working result (Krish Naik), a
+  connected map to earlier and later ideas (ByteByteGo), a ladder of problems from easy to interview
+  grade (takeUforward), problem-first interactivity, and a plain explanation a newcomer could repeat.
+- **The explorer.** Each week ships one interactive page that grows day by day, animating each
+  mechanism and asking for a prediction before the reveal.
+- **The volume.** Three or four chapters a day, sized to the minutes; pictures drawn by our own code.
+
+---
+
 ## 1. THE BUSINESS PROBLEM COMES FIRST
 
 Every teaching day opens on a business question in a stakeholder's words, trains the thinking an
