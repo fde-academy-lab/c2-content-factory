@@ -61,7 +61,7 @@ times being long, books 20,275 packer shifts, 3,719 in the week of 19 October, w
 | | |
 |---|---|
 | **Start from** | Thursday's cohort table, which gave the week a time axis; today the axis runs forward. Open on the ticket and let the room say what would make either forecast wrong. |
-| **Go as far as** | Every learner reads the festival's shape by hand, scores six forecasts on thirteen hidden weeks in shipments and rupees, back-tests the 2025 festival, sets the plan's level from the two costs, and writes the staffing note with its error bar. |
+| **Go as far as** | Every learner reads the festival's shape by hand, scores six forecasts on thirteen hidden weeks in shipments and rupees, back-tests the 2025 festival, sets the plan's cushion from the two costs, and writes the staffing note with its error bar. |
 | **Stop before** | Exponential smoothing, ARIMA, autocorrelation and any fitted model, which the faculty block (tentative) owns; the rolling origin, which only the fallback runs. |
 | **Comes later** | Saturday's paper tests the hold-out, the festival trap and the plan share; Week 5 turns the customer table into a model; the forecast returns in the capstone as the plan line. |
 | **Cut first** | Drift (S8's fourth row and notebook 02's drift line, kept as one spoken sentence), then MAPE (keep MAE), then the cost curve's picture on S32 (keep the 0.82 arithmetic). Never cut the hold-out, the vendor against the baseline, the festival trap or the Kalpa lab. |

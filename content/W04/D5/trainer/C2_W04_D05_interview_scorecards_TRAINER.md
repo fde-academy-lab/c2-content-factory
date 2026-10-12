@@ -28,7 +28,7 @@ without saying what it would be compared with, which earns 1 for sizing and noth
 eight?" Thirteen covers the eight-week horizon with room, and FPP3 puts a test set at about a fifth
 of the sample and at least as long as the horizon; 13 of 104 is an eighth, which is the honest
 limit of two years. "Your 2.6 percent came from the same thirteen weeks you score on; isn't that
-circular?" Yes, a little, which is why the plan's level is named an assumption and checked against
+circular?" Yes, a little, which is why the plan's cushion is named an assumption and checked against
 2025's festival, where festival-aligned missed by 4,034 a week.
 
 ## How does the AI-company variant score?
@@ -41,7 +41,7 @@ circular?" Yes, a little, which is why the plan's level is named an assumption a
 | Sized it with a unit | 1 | The share of minutes to cover from the two costs, with no figure, since the variant quotes none |
 | Said what would change their mind | 2 | A model that cannot beat the last launch's shape on hidden days does not size the launch |
 | Tied it to a decision and its cost | 2 | Capacity booked above the forecast because a timeout loses a user and an idle machine an hour's rent |
-| Gave the structure before the number | 2 | Clarify, line up by launch day, the copy to beat, the test, the plan's level |
+| Gave the structure before the number | 2 | Clarify, line up by launch day, the copy to beat, the test, the plan's cushion |
 | Total, of 14 | 13 | |
 
 ## How do the [D] answers score?

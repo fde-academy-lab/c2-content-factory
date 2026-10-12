@@ -2,7 +2,7 @@
 
 The TA-led practice lab, after the Kalpa notebook. Every shop, series and cost below is invented, so
 the method is all that carries over from the morning: read the shape, apply the rules, hide weeks and
-score them, judge a pitch, and set a plan's level from two costs. The problems climb from a reading
+score them, judge a pitch, and set a plan's cushion from two costs. The problems climb from a reading
 to a plan.
 
 **Who needs the answer.** You, before Saturday's paper and before an interviewer asks you to forecast
@@ -79,7 +79,7 @@ b) How fast does it retrain each week on new data?
 c) Can it fit three years of history within 1 percent?
 d) On which hidden weeks did it beat a copy of last year?
 
-## Can you put the code in order and set a plan's level?
+## Can you put the code in order and set a plan's cushion?
 
 The last two problems join the code to the decision.
 

@@ -55,7 +55,7 @@ y[t] is week t's shipments, T the last week a rule may see, h the weeks ahead. F
 
 | Forecast | Busiest week | Against 13 Oct to 1 Dec 2025 | Against 29 Sep to 17 Nov 2025 |
 |---|---|---|---|
-| House bot | 5 Oct | level | 13.0 percent below |
+| House bot | 5 Oct | the same | 13.0 percent below |
 | Finance's rule | 5 Oct | 4.0 percent above | 9.5 percent below |
 | Vendor's curve | 5 Oct | 22.0 percent above | 6.1 percent above |
 | Festival-aligned | 19 Oct | 19.5 percent above | 4.0 percent above |

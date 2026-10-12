@@ -45,7 +45,7 @@ Tagged [S], a staple asked everywhere.
 1. Fix the error measure before scoring anything: the average miss in the business's unit.
 2. Hide the latest weeks, at least as many as the plan books, and forecast them from one week.
 3. Score every forecast against the simplest copies: the last week, and the same week last year.
-4. Price the misses by direction, and set the plan's level from the two costs.
+4. Price the misses by direction, and set the plan's cushion from the two costs.
 5. Name what the test cannot see, and test that another way.
 
 ### Which trap is the interviewer fishing for?

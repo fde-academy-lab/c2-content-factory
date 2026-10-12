@@ -10,7 +10,7 @@ What the morning found:
 
 | Forecast | Hidden-week MAE | Its busiest 2026 week | Eight weeks against 13 Oct to 1 Dec 2025 | Against 29 Sep to 17 Nov 2025 |
 |---|---|---|---|---|
-| House bot, same week last year | 9,831 | 5 October | level | 13.0 percent below |
+| House bot, same week last year | 9,831 | 5 October | the same | 13.0 percent below |
 | Finance's rule, the bot plus 4 percent | 6,615 | 5 October | 4.0 percent above | 9.5 percent below |
 | Vendor's curve | 16,400 | 5 October | 22.0 percent above | 6.1 percent above |
 | Festival-aligned, plus 4 percent | 6,615 | 19 October | 19.5 percent above | 4.0 percent above |
@@ -40,7 +40,7 @@ Post exactly this shape: xxx
 
 ## Which forecast, and how many shifts?
 
-This is the call every capacity planner makes before a peak: one forecast, a level above it, and a
+This is the call every capacity planner makes before a peak: one forecast, a cushion above it, and a
 count of people.
 
 ### Q1. Which forecast goes to the staffing plan?

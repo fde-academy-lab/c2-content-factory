@@ -144,7 +144,7 @@ LIVE, 10 minutes. Each group takes one row and calls out its two misses. Festiva
 icon: list | eyebrow: a | title: Naive, by about ten times | body: The week before is a poor guide when weeks change fast. | tone: light
 icon: list | eyebrow: b | title: Naive, by about thirty-five times | body: Every festive week differs sharply from the last. | tone: light
 icon: list | eyebrow: c | title: Festival-aligned, narrowly | body: Copying 2024 adds 2024's own noise. | tone: light
-icon: list | eyebrow: d | title: Level: one week ahead, both are close | body: A week is short. | tone: light
+icon: list | eyebrow: d | title: A tie: one week ahead, both are close | body: A week is short. | tone: light
 ```
 
 ```notes

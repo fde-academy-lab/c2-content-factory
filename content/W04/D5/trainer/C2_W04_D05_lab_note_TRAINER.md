@@ -81,7 +81,7 @@ scoring cell, `shift(52)` included, arrives scrambled.
 
 | Item | Where learners stall | The one hint |
 |---|---|---|
-| Q1, three series | Calling Z's wobble a trend | "Does Z climb, or only move around one level?" |
+| Q1, three series | Calling Z's wobble a trend | "Does Z climb, or only wobble around the same height?" |
 | Q2, the gift shop | Copying the same calendar week, 35 | "Which week of last year sat at the same distance after its festival?" |
 | Q3, five misses | Averaging the signed misses to 0 | "Does a miss of 8 too low cancel a miss of 12 too high on the packing floor?" |
 | Q4, the vendor's pitch | Asking how the model works first | "Which weeks would you score it on?" |

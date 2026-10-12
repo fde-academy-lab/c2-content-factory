@@ -104,6 +104,6 @@ head wrong, so the trainer says it again before the room leaves.
 *Tests: which window a percentage is measured against.*
 
 - 4.0 percent above, the same as the calendar window
-- Level with them, since both windows are eight weeks
+- Equal to them, since both windows are eight weeks
 - 22.0 percent above, as the vendor's curve is
 - 9.5 percent below, missing the peak weeks  <- correct

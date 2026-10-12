@@ -518,7 +518,7 @@ alongside. Transition: the questions.
 label: Place | title: Where is this year's peak? | body: Which week each forecast makes the busiest.
 label: Evidence | title: Did placement matter before? | body: 2025's festival, forecast a month ahead.
 label: Windows | title: Plus what, against what? | body: The 22 and the 4 against two windows.
-label: Level | title: How far above? | body: The cushion two costs justify.
+label: Cushion | title: How far above? | body: The cushion two costs justify.
 label: Plan | title: How many shifts? | body: Eight weeks, priced. | tone: dark
 ```
 

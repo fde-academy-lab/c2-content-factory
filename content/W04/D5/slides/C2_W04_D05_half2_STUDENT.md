@@ -181,14 +181,20 @@ structure and the sanity check, never the final number. Transition: the handoff.
 ---
 
 ## S10. Handoff: the baseline is the bar to beat
-*What does the IITGN faculty session W4-4 (tentative) pick up from here?*
+*What does the IITGN faculty session W4-4 pick up from here? It is tentative, and the fallback hour runs if it cannot.*
 
 **The handoff line.** Your baseline is hard to beat, and you now know what any model must beat and on which weeks. The next 120 minutes show how a series remembers itself, autocorrelation, and what a smoothing or ARIMA model would have to do to earn its place above the festival-aligned baseline on the thirteen held-out weeks.
 
-The faculty session is tentative until IIT Gandhinagar confirms it; if it does not run today, the fallback hour runs in its place.
+| The word you will hear | What it means here |
+|---|---|
+| Baseline | It is the simple copy any model must beat on the hidden weeks: festival-aligned, which missed by 6,615 a week. |
+| Autocorrelation | It measures how closely each week's shipments follow the week a fixed number of weeks earlier, one back or 52 back. |
+| Smoothing | It forecasts from an average of past weeks that gives the most recent weeks the most weight. |
+| ARIMA | It forecasts from the series' own past weeks and its own past misses, the pattern autocorrelation measures. |
 
 ```notes
-LIVE, 2 minutes. Read the handoff line as written.
+LIVE, 2 minutes. Read the handoff line as written, then point at the four words: the faculty
+session defines them properly, and this table only says what each one is for.
 Park any "is the vendor's model an ARIMA" question for the faculty session (tentative).
 Transition: the Kahoot.
 ```
