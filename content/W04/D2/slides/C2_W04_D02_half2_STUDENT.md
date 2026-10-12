@@ -1,357 +1,541 @@
-# The dojo, the written case, and two transcripts
+# How many drivers does the evening peak need, and can you say it on one page?
 
 Week 4, Day 2. Half two.
 
 Kicker: WEEK 4  ·  TUESDAY  ·  AFTERNOON, 180 MINUTES
-Quote: Before the review, roughly how many drivers must be online at the evening peak on a weekday to keep rider wait under five minutes. Fifteen minutes, no dataset, assumptions stated.
-Who: The Hyderabad city head, Uber, to the senior analyst at 14:30
+Quote: Before the review, roughly how many drivers must be online at the evening peak on a weekday to keep the median rider wait under five minutes? Fifteen minutes, no dataset, assumptions stated.
+Who: The Hyderabad city head, Uber, to the same analyst, after the morning's studio
 
 ```notes
-LIVE, 15 seconds. Half 2 runs the dojo (chapter 4), the paired guesstimate against the
-clock, the AI-free written business case, and two transcripts. No new technique arrives;
-every move was taught in Half 1 or is a step of the four-step guesstimate.
-Transition: a prediction on an estimate the room has never heard.
+LIVE, 15 seconds. The afternoon runs the dojo (a number sized from nothing, then checked), the
+written case (the morning's slide as one page), the two transcripts and the gallery. No new
+technique: the dojo is the morning's discipline without data.
+Transition: chapter 4.
 ```
 
 ---
 
-## SECTION 4: How big is a number nobody has measured?
-*What are the four steps, and what makes an estimate honest when there is no dataset?*
+## SECTION 4: How big is the unknown?
+*How many drivers must be online at the evening peak, sized from stated assumptions, and how do you know the answer is sane?*
 
 ```notes
-LIVE, 55 minutes: the warm-up (10, the canteen's cups of tea), the four steps (10), the
-drivers-at-peak estimate worked together (25), the paired UPI estimate against the clock
-(10). Chapter 4 is L5 of the ladder on an estimate rather than on a decision; the discipline
-is the same as Monday's L5. Styles: Feynman (plain words first), StatQuest (round numbers
-spoken aloud), explorable explanations (every assumption said and so moveable).
-Transition: a chapter opener, four options.
+LIVE, 65 minutes: the dojo opens on the canteen's tea (10), drivers at the evening peak worked
+together (30), UPI in pairs against the clock (25). Chapter 4 is L5 of the ladder on an estimate.
+Styles: Brilliant (the chapter opens on which number to check against), StatQuest (round numbers
+spoken aloud, the running product on the board), explorable explanations (explorer scene T3, the
+guesstimate tree with a slider per factor). Mid-session drill 2, four estimates and their checks,
+is in exercises/unguided for the lab if the room runs short here.
+Transition: the opening question.
 ```
 
 ---
 
-## S23. Predict: which number is the sanity check?
-*The chapter opens on the sanity check before the method is taught.*
+## S33. Predict: which number would check this estimate?
+*You have sized drivers online at the weekday evening peak. Which of these numbers checks it?*
 
-**For a weekday evening peak in Hyderabad, which of the following is the sanity check you would want?**
-
-- a) Monday's full after total of rider requests, 256,556 across six weeks
-- b) A single after week's rider requests, about 42,000
-- c) A one-hour evening count from the Monday rush, if we could find one
-- d) The published total of registered drivers in Hyderabad (if any)
-
-**Write your letter.** The reveal is after the four steps are taught.
+- a) Monday's rider requests after the launch, 2,56,556 over six weeks
+- b) A published count of Uber drivers signed up in Hyderabad
+- c) A published count of Uber drivers online at one weekday evening peak in Hyderabad
+- d) The online driver-hours behind each rider request in the case's own data
 
 ```notes
-LIVE, 3 minutes. Hands for each; write counts. Expect (b) and (c) to tie. The reveal shows
-why (c) is the honest one if we had it: an evening peak is one hour of one day; everything
-else is in a different unit. The point of the predict is that the sanity check sits in the
-same unit as the estimate.
-Transition: the warm-up, the canteen's cups of tea.
+LIVE, 3 minutes. Letters on paper, then a show of letters. Expect a, because it is the only number
+on the list the room has seen.
+Transition: the answer, and the rule behind it.
 ```
 
 ---
 
-## S24. Answer: the canteen's tea, four steps, one toy
-*What does the shape of a guesstimate look like when nothing is at stake?*
+## S34. Answer: check in the same unit, period and definition
+*Why does only one of the four check the estimate directly, and what do you do when it does not exist?*
 
-**On a weekday the campus canteen sells how many cups of tea?** The toy, invented for this class.
-
-**Clarify.** Weekday, cups not litres, one canteen, not the whole campus. The room asks the question that pins the scope: a hostel or the canteen in the main building; which hours; whether to count cups re-ordered at the same seat.
-
-**Map.** Students on campus on a weekday, about 2,000. Share who buy tea, about 60 percent. Cups per tea-drinker per weekday, about 2.
-
-**Calculate.** 2,000 x 0.6 x 2 is 2,400 cups. Said aloud; written on the board as the three numbers get fixed.
-
-**Validate.** Against the canteen's own till for the Monday the room is standing in, if it has one. If not, against a rough comparator the room agrees on (the next canteen; a hostel's recent order).
-
-```notes
-LIVE, 6 minutes. Walk the four steps aloud with the toy's numbers. Say: the four steps are
-the shape of every estimate on this day and in every interview. Every assumption said so a
-listener can push back. Invented numbers labelled as such on the slide.
-Transition: the steps as a strip.
-```
-
----
-
-## S25. The four steps, as the dojo runs them
-*What does the room hold on its sheet as every pair tries one?*
+**The answer is c, and nobody publishes it, so its slot reads "to be found".** a is a six-week total for the twelve zones the enrolled drivers work, a different period and a smaller area. b counts sign-ups, a different definition from drivers online at one moment. d checks one link in the chain, the ratio, and that is the check the afternoon uses.
 
 ```mermaid
 flowchart LR
-    C["<b>1. Clarify</b><br/>the question's scope,<br/>the unit, the window"]
-    M["<b>2. Map</b><br/>the product tree of factors<br/>that multiplies to the answer"]
-    L["<b>3. Calculate</b><br/>each factor said aloud,<br/>the product written down"]
-    V["<b>4. Validate</b><br/>against a known number<br/>in the same unit"]
-    C --> M --> L --> V
-    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    X["<b>an estimate</b><br/>drivers online,<br/>one evening moment"] --> U{"same unit?"}
+    U -->|"yes"| P{"same period?"}
+    P -->|"yes"| D{"same definition?"}
+    D -->|"yes"| OK["<b>a check</b>"]
+    U -->|"no: drivers signed up"| NO["<b>not a check</b>"]
+    P -->|"no: six weeks"| NO
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class C,M,L,V known
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class X,U,P,D known
+    class OK lit
+    class NO bad
 ```
 
-**The scorer's card for the dojo**: did the estimator clarify before mapping? did they say every assumption aloud? did they validate in the right unit? and did they give a range before the final number? The scorer marks the four moves and never the final number.
-
 ```notes
-LIVE, 4 minutes. Point at each step. Say: an estimate is wrong when any one step is skipped;
-calling it an estimate is not an excuse for not clarifying. Ask: in the canteen example,
-which step pinned the scope? Expect: clarify. Which step is the one the room most forgets?
-Expect: validate.
-Transition: the city head's question, worked together.
+LIVE, 2 minutes. Write the three words on the board: unit, period, definition. They stay up all
+afternoon.
+Transition: the warm-up, with nothing at stake.
 ```
 
 ---
 
-## S26. Drivers online at the evening peak, worked
-*What is the city head asking for, and what does the map look like?*
+## S35. The canteen's tea, in four steps aloud
+*How many cups of tea does the campus canteen sell on a weekday?*
 
-![The guesstimate tree](../whiteboards/C2_W04_D02_guesstimate_tree_STUDENT.png)
-
-**Clarify.** Evening peak only (one of Monday's two peak windows). Hyderabad city, not Telangana. Drivers online, not drivers logged in; drivers at any single minute of peak, not across the three-hour window.
-
-**Map.** Peak requests per hour. Trips per driver per peak hour. The idle share (the share of online drivers who are not on a trip at that moment). A small buffer so median wait sits under the target.
-
-**Calculate, aloud.** About 10,000 requests per hour (said aloud as the assumption that pins the demand) / 2 trips per driver per hour (from Monday's 1.6 to 1.9) is about 5,000 driver-hours of demand each hour. With 30 percent idle (an assumption, range 20 to 40), divide by 0.70. Multiply by 1.15 for the wait buffer. **About 8,200 drivers at any peak minute, range 5,000 to 11,500.**
-
-**Validate.** Against the case's own `zone_weeks` after window, the city received about 256,556 requests over 42 peak hours a week times six weeks, which is a density that lines up with the 10,000-per-hour assumption. Against a published figure of drivers online in Hyderabad: **to be found**. The research ledger does not hold one; the finishing session may fetch and date a primary source.
-
-```notes
-LIVE, 15 minutes. Build the map on the board with four nodes. For each factor, ask the room
-for a value, write every answer, pick the one the room coalesces around, say it as an
-assumption. Compute aloud, with rounding. Say the range. Point at the "to be found" slot and
-name it: this is where a strong analyst goes looking before the review.
-Transition: UPI, in pairs, against the clock.
-```
-
----
-
-## S27. UPI transactions a day, in pairs, seven minutes
-*What is the paired drill, and what does the scorer watch for?*
-
-**The paired estimate.** How many UPI transactions happen in India on an average day in September 2026? Seven minutes, in pairs, every assumption written on the sheet.
+**A toy, invented for this class.** Clarify: one canteen, one weekday, cups and not litres. Map: students on campus x the share who buy tea x cups each. Calculate: 2,000 x 0.6 x 2 = 2,400 cups. Validate: the canteen's till for one weekday; failing that, cups counted at the counter for one busy half hour.
 
 ```mermaid
 flowchart LR
-    U["<b>UPI payments per day</b><br/>the product"]
-    A["<b>Active UPI users</b><br/>about 35 crore (assumption)"]
-    P["<b>Payments per user per day</b><br/>about 2.3 (assumption)"]
-    A --> U
-    P --> U
-    V["<b>Validate</b><br/>802 million per day in September 2026<br/>(NPCI, Outlook Money, R2 T3)"]
-    U --> V
-    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class U lit
-    class A,P,V known
-```
-
-**The map.** About 35 crore active UPI users (an assumption said aloud). About 2 to 3 payments a day per active user, split between person-to-merchant and person-to-person. 35 crore times 2.3 is about 80.5 crore, which rounds to about 80 crore.
-
-**The validate.** NPCI, through Outlook Money (verified 12 October 2026, R2 T3), reported 802 million per day on average in September 2026 and 24.07 billion in the month. **The catch**: a 30-day September against a 31-day October moves the monthly total by 3 percent, so a per-day figure is honest in a way a monthly total is not. Learners who divide the month by 31 get a lower per-day; the right unit is the per-day the source published.
-
-```notes
-LIVE, 10 minutes. Clock on at the slide; each pair hands in a sheet with its four steps. The
-scorer card marks structure, not the final number (Aced, T2). The reveal is one minute at
-the end: 80 crore sits within 2 percent of 802 million; the room reads this as a success of
-the method, since no pair held the published figure.
-Transition: two traps that the room would want to catch, before the written case.
-```
-
----
-
-## S28. The three traps a sanity check saves you from
-*What goes wrong when the validate step is skipped or run in the wrong unit?*
-
-| Trap | What a confident candidate says | What the sanity check does | Where this bites |
-|---|---|---|---|
-| The crowd mistaken for the household | "Hyderabad has about 9 million households" | A city of about 10 million people cannot hold 9 million households | A Kahoot item last week; a brochure number any analyst will fact-check soon |
-| The validation in the wrong unit | Comparing journeys to boardings, one trip taken against one gate opened | A journey involves two gate openings on average | Delhi Metro's own figures, M6 |
-| The published number read by a decimal | "Flipkart saw 63 million concurrent users in a minute" | The press release says 6.3 million; the URL slug reads 63 million | Flipkart stories, R2 T3 |
-
-**Each trap is one skipped move**: clarify (crowds against households), validate (journeys against boardings), read (a decimal). The dojo's scorer marks the move; the room's estimates do not have to be close, only honest.
-
-```notes
-LIVE, 4 minutes. Walk one row at a time. Ask the room which move each trap skips. Expect
-the right answer in each case; the point is that the scorer card maps each row to one move.
-The decimal trap is the one the room is most likely to meet in a resume case; name it twice.
-Transition: into chapter 5, the written case.
-```
-
----
-
-## SECTION 5: What goes on the one page to the city head?
-*How does the slide's claim become a page a non-technical leader can read in two minutes?*
-
-```notes
-LIVE, 40 minutes individual, AI-free, handed in. Chapter 5 is L5 of the ladder in writing;
-the dojo is L5 on an estimate. Each learner writes one page: the slide, longer, in sentences.
-Style: Feynman (plain words first), Minto (the answer first).
-Transition: the brief for the one page.
-```
-
----
-
-## S29. The brief for the one page
-*What is asked of a page a city head reads in two minutes?*
-
-```mermaid
-flowchart TD
-    C["<b>Claim</b><br/>the opening sentence a city head can act on"]
-    N["<b>Number</b><br/>one, with its denominator named"]
-    V["<b>Caveat</b><br/>in sight, not in a parenthesis at the end"]
-    A["<b>Action</b><br/>with its signer and the saving as a range"]
-    C --> N --> V --> A
+    C["<b>cups a weekday</b><br/>2,400"] --> S["students on campus<br/>2,000"]
+    C --> B["share who buy tea<br/>0.6, so 1,200 buyers"]
+    C --> K["cups each<br/>2"]
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class C lit
-    class N,V,A known
+    class S,B,K known
 ```
 
-**Audience.** The Hyderabad city head and the three roles in the review. Non-technical in parts: finance speaks rupees, driver operations speaks per-driver, marketing speaks sign-ups.
-
-**Length.** One page, half the room is weak on English; a page is a sentence a reader can carry.
-
-**Shape.** The claim first, as the opening sentence. The number with its denominator in the next sentence. The caveat in sight (a labelled hypothetical where it is not yet settled). The action in a sentence, the role who signs it, the saving in rupees over the six weeks the room has data for, as a range.
-
-**AI-free.** Written on the sheet, 40 minutes. Handed in at the end of the slot; the trainer picks three for the solution discussion.
-
 ```notes
-LIVE, 3 minutes. Read the four lines of the shape aloud. Say: a page that opens on method
-has lost the city head by sentence two. The three the trainer will pick are the one that
-opens on the claim, the one that handles the caveat best, and the one that names the action
-with its signer. No learner names.
-Transition: forty minutes on the clock.
+LIVE, 5 minutes. Ask the room for each value and write the one it settles on; say the running
+product aloud: 2,000, then 1,200 who buy, then 2,400 cups.
+Transition: the four steps as a strip.
 ```
 
 ---
 
-## S30. The one page, written, forty minutes
-*What is the writer doing, and what is the scorer looking for?*
+## S36. A guesstimate runs in four steps
+*What does every estimate in the dojo, and in an interview, do in order?*
 
-**Each learner writes on the sheet.** No laptops; the sheet is the record. Every writer is a solo writer; a seatmate reads the finished page only after the slot closes.
+```mermaid
+flowchart LR
+    C["<b>1. Clarify</b><br/>scope, unit, window,<br/>what counts"]
+    M["<b>2. Map</b><br/>the chain of factors<br/>that multiplies out"]
+    L["<b>3. Calculate</b><br/>each factor said aloud,<br/>the running product shown"]
+    V["<b>4. Validate</b><br/>against a number in the<br/>same unit, period and definition"]
+    C --> M --> L --> V
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class C,M,L known
+    class V lit
+```
 
-**The scorer sheet** (handed with the one page, to the writer, after the slot):
-
-- Claim as the opening sentence? Yes or no.
-- Number named with its denominator? Yes or no.
-- Caveat in sight (not in a parenthesis at the end)? Yes or no.
-- Action named, with its signer and the saving as a range in rupees?
-- Did the page avoid method words (regression, variance, ratio of sums, denominator) that a non-technical reader would not know?
-
-**One mark per yes; three or more passes.** The three the trainer picks for the solution discussion are three different passes.
+**Interviewers score the structure and the sanity check, and hardly ever the final number.** Aced's analyst guide says the interviewer is evaluating the estimation framework and wants each assumption stated so it can be challenged (checked 12 October 2026).
 
 ```notes
-LIVE, 40 minutes silent writing. The trainer walks once in the first five minutes to answer
-a scope question, once in the last five minutes to signal the clock. No teaching inside the
-slot.
+LIVE, 2 minutes. Point at each step. The step first estimates skip is the fourth.
+Transition: the city head's question, clarified.
+```
+
+---
+
+## S37. Clarify: five questions pin the estimate down
+*Which questions pin the estimate down before any number is written?*
+
+| Ask | The answer to work with |
+|---|---|
+| Which city? | The Hyderabad metro area, Uber only |
+| Which window? | The weekday evening peak, three hours long |
+| Drivers online when? | At one moment of the window, not counted across it |
+| What target? | A median rider wait under five minutes |
+| Requests or trips? | Rider requests, each one a trip to serve |
+
+**The unit is drivers online at one moment.** Every factor in the chain must arrive in a unit that multiplies into it.
+
+```notes
+LIVE, 3 minutes. Ask the room for the clarifying questions before showing the table. A candidate
+who skips this step is the one who lands on the trap at S42.
+Transition: the map.
+```
+
+---
+
+## S38. Map: drivers online as a chain of factors
+*Which factors multiply into drivers online at the evening peak?*
+
+```mermaid
+flowchart TD
+    D["<b>Drivers online at the peak</b><br/>requests an hour / trips per online driver-hour x buffer"]
+    R["<b>Rider requests an hour</b><br/>about 8,300"]
+    P["people in the city<br/>about 1 crore"]
+    S["share who ride on a weekday<br/>1 percent"]
+    E["share of trips in the evening<br/>a quarter, over 3 hours"]
+    T["<b>Trips per online driver-hour</b><br/>1.68"]
+    B["trips a busy driver fits in an hour<br/>2.4"]
+    I["idle share at any moment<br/>0.30"]
+    X["<b>Buffer</b><br/>1.15 for the busiest half hour"]
+    D --> R
+    D --> T
+    D --> X
+    R --> P
+    R --> S
+    R --> E
+    T --> B
+    T --> I
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class D lit
+    class R,T,X known
+```
+
+**Each leaf is an assumption with a range.** A trip at the peak takes about 25 minutes from accepting to dropping, so a busy driver fits 2.4 an hour; the idle share is the share of online drivers with no rider at that moment.
+
+```notes
+LIVE, 6 minutes. Build the tree on the board with the room, leaf by leaf, asking for each value.
+Explorer scene T3 has a slider per leaf. The idle share's range, 0.22 to 0.38, is Monday's own
+share of online hours with no completed trip, before and after.
+Transition: the running product.
+```
+
+---
+
+## S39. Calculate aloud: about 5,700 drivers
+*What does the chain multiply out to, step by step?*
+
+| Step | Said aloud | Running result |
+|---|---|---|
+| People x share who ride | 1 crore x 1 percent | 1 lakh trips a day |
+| x share in the evening | x a quarter | 25,000 in the window |
+| / three hours | / 3 | about 8,300 requests an hour |
+| Trips per online driver-hour | 2.4 x (1 - 0.30) | 1.68 |
+| Requests / trips per driver-hour | 8,300 / 1.68 | about 4,960 drivers |
+| x buffer | x 1.15 | about 5,700 drivers |
+
+**Question.** Which assumption moves the answer most across its range: a) the idle share, b) the share who ride on a weekday, c) the buffer, d) the trips a busy driver fits in an hour?
+
+```notes
+LIVE, 6 minutes. Say each step aloud and write the running result before the next. Then the
+question: letters on paper, two minutes with a neighbour, revote.
+Transition: the swing chart.
+```
+
+---
+
+## S40. Answer: the share who ride moves it most
+*How wide is the honest range, and which factor sets it?*
+
+![How far each assumption moves the answer](../whiteboards/C2_W04_D02_guesstimate_swing_STUDENT.png)
+
+**The answer is b.** With every other factor at its central value, a ride share of 0.5 to 1.5 percent moves the answer from about 2,900 to about 8,600. The idle share moves it from about 5,100 to 6,400. **Say it as:** "about 5,700, between about 2,900 and 8,600, and mostly a question of how many people ride."
+
+```notes
+LIVE, 5 minutes. The ride share is also the first number to replace: Uber's own dashboard holds
+peak requests an hour. The idle share is the assumption Monday showed moving, 0.22 to 0.38 of
+online hours with no trip in six weeks.
+Transition: the check.
+```
+
+---
+
+## S41. Validate: the case can check a ratio, never the count
+*Which part of the estimate can the case's own data confirm?*
+
+```stats
+value: 0.47 | label: driver-hours per request, before | note: the case's twelve zones, median wait 4.8 minutes
+value: 0.57 | label: driver-hours per request, after | note: the same zones, median wait 4.6 minutes
+value: 0.60 | label: the chain, before its buffer | note: 1 / 1.68, about a quarter above 0.47
+```
+
+**Monday's data counts peak hours on all seven days, two three-hour windows a day, 42 hours a week,** so its 2,56,556 after-window requests are about 1,018 an hour: a slice of the city run by 1,200 drivers, which can check the ratio and never the city's count. The published figure for Uber drivers online at Hyderabad's evening peak is to be found.
+
+```notes
+LIVE, 3 minutes. Synthetic, labelled: these are the case's numbers, not Uber's. The chain errs on
+the generous side, so the buffer is the first factor to trim.
+Transition: the trap a hurried estimate falls into.
+```
+
+---
+
+## S42. The trap: a day's trips divided by an hour's
+*What goes wrong when the units are not clarified?*
+
+**The plausible wrong answer.** "1 crore people, 1 percent ride, so 1 lakh trips; a driver does 2.4 trips an hour; so about 41,700 drivers." A city head who takes that to the review asks for incentives for about seven times the drivers the chain says.
+
+**Why it is wrong.** A day's trips were divided by an hour's trips per driver, and the idle share and the evening window were skipped. **The check:** write the unit beside every factor. **The fix:** bring the day's trips into the evening window's hour before dividing.
+
+```notes
+LIVE, 5 minutes. Write 41,700 and 5,700 side by side. Ask which step of the four was skipped:
+clarify. This is the trap the interviewer fishes for in transcript 2.
+Transition: UPI, in pairs.
+```
+
+---
+
+## S43. UPI in pairs: seven minutes on the clock
+*How many UPI payments happen in India on an average day?*
+
+**The drill.** In pairs, seven minutes, all four steps on one sheet. Clarify volume or value (volume: the count of payments). Map active users x payments per user a day, split between paying shops and paying people.
+
+**What the scorer checks:** scope clarified first, every assumption written with a range, a range given, and a sanity check in the right unit. The final number scores nothing on its own.
+
+```notes
+LIVE, 12 minutes. Three minutes to set up, seven on the clock, two to swap sheets with the next
+pair. Collect three pairs' estimates on the board before the next slide.
+Transition: the published number.
+```
+
+---
+
+## S44. The check: 802 million a day, compared per day
+*Is a pair's estimate sane, and which comparison is the honest one?*
+
+**NPCI's figure:** an average of 802 million UPI transactions a day in September 2026, and 24.07 billion in the month (Outlook Money, 2 October 2026, citing NPCI; checked 12 October 2026).
+
+```mermaid
+flowchart LR
+    U["<b>payments a day</b><br/>70 crore, 700 million"] --> A["active users<br/>about 35 crore,<br/>one in four of 140 crore"]
+    U --> F["payments per user a day<br/>about 2"]
+    U -.->|"13 percent below"| N["<b>NPCI</b><br/>802 million a day"]
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class U lit
+    class A,F,N known
+```
+
+**The catch.** September has 30 days: 24.07 billion / 30 is 802 million, while dividing by 31 gives 776 million, about 3 percent low. Compare per-day figures in the unit the source published.
+
+```notes
+LIVE, 6 minutes. Read the board's estimates against 802 million. The worked chain lands 13 percent
+below: same order, a little low, and payments a day is the factor to revisit. Praise structure, not
+closeness.
+Transition: three traps a sanity check catches.
+```
+
+---
+
+## S45. Three traps a sanity check catches
+*Which skipped move lets each wrong number through?*
+
+| Trap | What a confident candidate says | What catches it | The move skipped |
+|---|---|---|---|
+| Crowd as households | "A city of two million people has nine million households" (invented) | About four people to a household gives about 5 lakh households | Clarify the unit |
+| A different unit | A weekday estimate of Delhi Metro riders checked against a record day's boardings | DMRC reports 64.06 lakh journeys a day and, separately, a record 82,44,903 boardings on 17 September 2026 | Validate in the same unit |
+| A decimal | "Flipkart had 63 million concurrent users in a minute" | Flipkart's own announcement of 9 October 2026 says 6.3 million; the 63 is in its URL | Read the source's text |
+
+**Each trap is one skipped step,** so the scorer names the step and the room fixes the habit.
+
+```notes
+LIVE, 6 minutes. Sources, all checked 12 October 2026: The Tribune (9 August 2026) and Republic
+World (18 September 2026), both citing DMRC; Flipkart Stories (9 October 2026). In 2018 DMRC's
+line-utilisation count tallied a trip across three lines three times (PTI, 30 May 2018).
+Transition: what chapter 4 adds to Tuesday's node.
+```
+
+---
+
+## S46. Chapter 4 adds a number sized from nothing
+*What does Tuesday's node carry now, and what does it hand to Wednesday?*
+
+```mermaid
+flowchart LR
+    M["<b>Mon</b><br/>pay for trips"] --> T["<b>Tue</b><br/>one slide: Rs 314 to Rs 260 per online hour<br/>four moves; one appendix page per role<br/>about 5,700 drivers, 2,900 to 8,600"]
+    T -.-> W["<b>Wed</b><br/>what goes with what"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class M known
+    class T lit
+    class W unknown
+```
+
+**In the interview** [S]: estimate a number from nothing, aloud, and check it. The structure and the sanity check carry the score.
+
+```notes
+LIVE, 1 minute, taken from the traps slide's seven. Then the break.
+Transition: break, 10 minutes, then the written case.
+```
+
+---
+
+## SECTION 5: What goes on one page?
+*What goes on the one page to the city head, so that the morning's slide reads in two minutes?*
+
+```notes
+LIVE, 40 minutes, individual, AI-free, handed in. The written case is the memo form of the
+morning's slide: L5 in writing. Style: Feynman (plain words a driver would follow), Minto (the
+answer first).
+Transition: the brief.
+```
+
+---
+
+## S47. The brief: one page, four parts, in sentences
+*What must the page do in the first two minutes of reading?*
+
+```cards
+icon: target | eyebrow: First sentence | title: The claim | body: What the city head should believe, in words a driver would follow | tone: light
+icon: hash | eyebrow: Second | title: One number and its denominator | body: The rupees per peak online hour, before and after | tone: light
+icon: triangle-alert | eyebrow: Third | title: The caveat | body: In the body of the page, not in a bracket at the end | tone: light
+icon: circle-check | eyebrow: Last | title: The action and its cost | body: What to do, the saving in rupees over weeks, who signs | tone: light
+```
+
+**The reader** is the city head, with the three roles reading over a shoulder: finance reads rupees, driver operations reads drivers, marketing reads sign-ups. Words a non-technical reader would not know (denominator, ratio of sums, regression) stay off the page.
+
+```notes
+LIVE, 3 minutes. The checklist handed back after the slot asks five things: the claim first, one
+number with its denominator, the caveat in sight, the action with its cost and signer, no method
+words. Three or more is a pass.
+Transition: the forty minutes.
+```
+
+---
+
+## S48. Forty minutes, on paper, alone
+*What are the rules for the written case?*
+
+**On one sheet, by hand.** No laptop and no phone, so the page is your own thinking. Write the page; then read it once as the finance partner would and fix the sentence they would attack.
+
+**At the end of the slot the page is handed in.** Three pages, chosen for one strong part each, come back at the gallery.
+
+```notes
+LIVE, 37 minutes of silent writing. Walk once early to answer scope questions and once near the
+end to signal the clock. No teaching inside the slot.
 Transition: the transcripts.
 ```
 
 ---
 
-## SECTION 6: What does the slide sound like, spoken?
-*What does a weak answer open on, and what does a hire-grade answer open on?*
+## SECTION 6: What does it sound like?
+*What does the slide sound like spoken in an interview, and what does a hire-grade answer open on?*
 
 ```notes
-LIVE, 25 minutes. Chapter 6 is L6 of the ladder: the transfer. Two transcripts read in
-pairs; the AI-company variant adds the move. Style: the case method as a transcript rather
-than a card.
-Transition: the first transcript, "present this to a non-technical leader".
+LIVE, 25 minutes. Chapter 6 is L6 of the ladder: two transcripts and the AI-company variant, read
+in pairs and scored. The full transcripts are in extras/C2_W04_D02_interview_room_STUDENT.md.
+Style: interview rehearsal on annotated answers.
+Transition: transcript 1.
 ```
 
 ---
 
-## S31. Transcript 1: present it to a non-technical leader
-*What are the first thirty seconds a hire-grade candidate opens on?*
+## S49. Transcript 1: two openings, side by side
+*"Present this recommendation to a non-technical leader in two minutes." How do the first lines differ?*
 
-**The interviewer.** "Present this recommendation to a non-technical leader in two minutes."
+| A weak opening | A hire-grade opening |
+|---|---|
+| "So I looked at the dashboard. Online hours are up 24 percent, trips are up 3 percent, trips per hour went from 1.90 to 1.58, acceptance fell, and bookings per driver-week is actually up, so it is mixed." | "The scheme is paying for online hours that carry no trips. An hour online used to bring in Rs 314 of fares and now brings in Rs 260 at the same fare. Part of that may be the monsoon. Paying per completed trip with an acceptance floor returns Rs 58 lakh to Rs 93 lakh over six weeks if a fifth to a half of idle drivers start accepting." |
 
-**A weak opening (what the interviewer hears).** "So we looked at the dashboard, there are nine numbers, and I ran a regression. Peak online hours are up 24 percent, trips are up 3 percent, trips per hour fell from 1.9 to 1.6, acceptance dropped. We think the scheme is paying for hours."
-
-**A hire-grade opening.** "The peak scheme is paying for online hours that do not carry trips. For every ten rupees of gross bookings an online hour used to earn, it now earns eight. The redesign is to pay per completed peak trip, with an acceptance guardrail. On the data we have, this saves between Rs 58 lakh and Rs 93 lakh over six weeks."
-
-**The three follow-ups the interviewer asks.**
-
-1. "What is the one caveat you would say aloud before any decision is taken?"
-2. "Which denominator did you choose, and what would make you choose a different one?"
-3. "Which role in the review will side with you first?"
+**The follow-ups:** what is the one caveat you would say before anyone decides; which denominator did you choose, and what would make you choose another; the finance partner says it is the monsoon, so answer in under a minute.
 
 ```notes
-LIVE, 8 minutes. In pairs: one plays the interviewer, one plays the candidate. Each pair
-reads the weak and hire-grade openings once, then the candidate attempts the three follow-ups.
-Swap in five minutes. The scorecard the pair fills is in the trainer file; no learner marks
-go on the slide.
+LIVE, 8 minutes. In pairs, one reads the interviewer, one the candidate; then the candidate answers
+the three follow-ups without notes. The weak opening reads nine numbers and lets the per-driver-week
+rise blur the claim.
+Transition: transcript 2.
+```
+
+---
+
+## S50. Transcript 2: the drivers estimate, two answers
+*"How many drivers must be online at the evening peak in a city?" What does each answer do first?*
+
+| A weak answer | A hire-grade answer |
+|---|---|
+| "About 1 crore people, 1 percent ride, so 1 lakh trips. A driver does 2.4 trips an hour, so about 41,700 drivers." | "One moment of the three-hour weekday evening peak, Uber only, median wait under five minutes. Requests an hour times the trips one online driver completes, times a buffer: about 8,300 / 1.68 x 1.15, about 5,700, between 2,900 and 8,600, set mostly by the share who ride. The case's own 0.47 driver-hours per request says the chain is a little generous." |
+
+**The follow-ups:** your idle share is a guess, so which number in the case data would catch it; the window is three hours, so what does a four-hour window do; give a range, and say which factor drives it.
+
+```notes
+LIVE, 8 minutes. Hire-grade lines for the follow-ups: the share of online hours with no completed
+trip, 0.22 before and 0.38 after; a four-hour window spreads the evening's 25,000 trips to about
+6,250 an hour and about 4,300 drivers, unless the extra hour adds trips; about 2,900 to 8,600, set
+by the share who ride.
 Transition: the AI-company variant.
 ```
 
 ---
 
-## S32. AI variant: acceptance rate in a sales deck
-*What does the same shape sound like when the metric is an AI coding assistant's?*
+## S51. The AI variant: acceptance rate in the sales deck
+*How do you present a metric change to a head of product who quotes acceptance rate to customers?*
 
-**The setup.** A head of product at an AI coding-assistant company has quoted "acceptance rate of 32 percent" to the sales deck for a year. The product analyst wants to change the measure: retained-text at the next commit, with acceptance rate as a leading input and build failures and revert rate as guardrails.
+**The setup, invented for this class.** A coding assistant's sales deck quotes "acceptance rate 32 percent", the share of suggestions developers accept. The analyst proposes a new north star: suggested text still present at the next commit, per active developer-week, with build failures and revert rate as guardrails.
 
-**The objection.** "Acceptance rate is what customers see in the deck; cut it and the whole story changes."
-
-**The partly-right part.** The objection is right that acceptance rate is what customers see, so it should stay in the deck. The redesign keeps it as a leading input, under a north star that cannot be gamed by accepting and deleting.
-
-**A hire-grade reply.** "Acceptance rate stays in the deck as the leading input. The north star we optimise, and report by cohort, is suggested text still present at the next commit. The two guardrails that stop a game are build failures and revert rate. The transition is one quarter: both are reported, the deck still carries acceptance."
+**The objection, partly right.** "Acceptance rate is what customers see in the deck." True: customers do see it. **The answer** keeps acceptance as a leading input on the dashboard and in the deck, and pays the team for text that survives, because a suggestion accepted and then deleted counts as accepted.
 
 ```notes
-LIVE, 6 minutes. Read the setup, the objection, and the reply. Ask: which of Monday's three
-objections is this most like? Expect: marketing's "the guarantee is the acquisition story",
-because both keep the gamed proxy visible while the real north star does the paying. The
-transfer is the same shape; the difference is the metric lives in a sales deck rather than
-on a city hoarding.
-Transition: the makeover gallery and the solution discussion.
+LIVE, 6 minutes. Ask which of the morning's three objections this resembles. Expect marketing's:
+both keep the visible number while the north star does the paying.
+Transition: scoring the transcripts.
 ```
 
 ---
 
-## S33. The makeover gallery and the solution discussion
-*What do the three slides the trainer picked show the room?*
+## S52. How a pair scores a transcript
+*What does an interviewer listen for, and how is each part scored?*
 
-**Three slides on the wall, kept from the morning's gallery.** One with the strongest claim as its title. One with the clearest in-sight caveat. One with the longest appendix, as a cautionary example.
-
-**Three pages from the written case.** One opens on the claim, one handles the caveat best, one names the action with its signer.
-
-**Fifteen minutes of discussion**: the room reads one slide and one page, then the trainer names the move in each (claim, caveat, action). No marks; the gallery is a mirror.
+| Criterion | 0 | 1 | 2 |
+|---|---|---|---|
+| Clarified the scope first | skipped | partly | unit, window and target pinned |
+| Named the denominator and the window | neither | one | both |
+| Saw the trap | missed | named late | named and checked |
+| Sized it with a unit | no unit | a unit, unchecked | a unit carried through |
+| Said what would change their mind | no | vaguely | a named fact |
+| Tied it to a decision and its cost | no | a decision | a decision and its rupees |
+| Gave the structure before the number | number first | mixed | structure first |
 
 ```notes
-LIVE, 15 minutes. Hand the three slides and three pages around. Walk them in order. Say:
-every one of these does one of the four things well; no one does all four, and that is the
-point of the morning. Call out one trap on each (a stray method word, a caveat late, a
-missing signer).
-Transition: Kahoot, close, and tomorrow's pre-read.
+LIVE, 3 minutes. Each pair scores both answers of one transcript on paper and compares with a
+neighbouring pair. The trainer's scored copies are in the trainer pack.
+Transition: the pain points.
 ```
 
 ---
 
-## S34. Kahoot: eight items, no marks
-*What does the room run before the day closes?*
+## S53. Pain points, each with the case that shows it
+*Where do first attempts at a slide and an estimate usually break?*
 
-**The Kahoot pack has eight items, used in the last fifteen minutes.** Five from the row (reworded with the city's numbers), one return question from Monday (the guardrail for a scheme that pays per trip), two more on the four moves of a defence and the sanity check. The trap item uses values other than 314 and 260 so the Kahoot cannot be answered by memorising the slide.
-
-**No marks on a Kahoot in a build week.** The reader's leaderboard is a prompt, not a grade.
+| Pain point | Where you saw it |
+|---|---|
+| The first slide carries every number | Slide A this morning: nine numbers, no claim |
+| The first defence retreats or overclaims | Round one of the studio |
+| A check in a different unit | Delhi Metro's journeys against its boardings |
+| A decimal slip in a published figure | Flipkart's 6.3 million against the 63 in its URL |
+| A memo nobody can write in an hour | Amazon's letter: a great memo probably takes a week or more |
 
 ```notes
-LIVE, 15 minutes. Run the eight items. After each, read one sentence of what it tested: the
-title, the denominator, the four moves, the four steps, the Hyderabad crowd trap, the UPI
-unit catch, the Delhi Metro unit trap, the Flipkart decimal trap. The Kahoot is in the
-trainer pack; a learner never sees the key.
-Transition: the handoff.
+LIVE, 5 minutes. One line each; ask the room which one bit them today.
+Transition: the gallery.
 ```
 
 ---
 
-## S35. The handoff: tomorrow is the strip at Instamart
-*What have you earned today, and what does the pre-read open on?*
+## S54. The makeover gallery: three dots each
+*Which rebuilt titles would a city head act on?*
 
-**You earned today.** One slide the three roles in the review can repeat accurately. The four moves of a defence under three objections, each partly right. A number sized from nothing, with every assumption said aloud and validated against a published figure in the right unit. One page to the city head, AI-free, handed in.
+**Every group's final slide goes on the wall, beside three written pages.** Each learner places three dots: one on the title that most clearly states a claim a city head could act on, one on the appendix page that best answers its role's question, one on the caveat that sits most clearly in sight.
 
-**Tomorrow opens** on the Instamart cart page in Pune: three slots on the "frequently bought together" strip, a new ranking, and a click-through that fell. The pre-read on your sheet names the terms (support, confidence, lift) and lands them on no numbers yet.
+**The test for a title** is the Big Idea from Storytelling with Data: one complete sentence that carries a point of view and says what is at stake (checked 12 October 2026).
 
 ```notes
-LIVE, 2 minutes. Read the "You earned today" lines once. Point at the pre-read on the
-sheet; nothing to do before the morning but open it on the bus home. Close with: the
-afternoon dojo is the shape of every interview case the room will do in Weeks 15 and 20.
+LIVE, 10 minutes. Five minutes to walk and dot, five to read the top three titles aloud and name
+the part each does well. A high-scoring title that is still a topic is the example to discuss.
+Transition: the Kahoot.
+```
+
+---
+
+## S55. Kahoot: eight questions, ungraded
+*Which of today's ideas can you retrieve under a timer?*
+
+```cards
+icon: list-ordered | eyebrow: Questions 1 to 3 | title: The slide | body: The four parts in order; keep or cut; the defence that never concedes | tone: light
+icon: calculator | eyebrow: Questions 4 to 6 | title: The estimate | body: The four steps; the city of two million; a day against an hour | tone: light
+icon: refresh-cw | eyebrow: Questions 7 and 8 | title: Back to Monday and the check | body: The guardrail for a scheme that pays per trip; a monthly total over the wrong number of days | tone: light
+```
+
+```notes
+LIVE, 20 minutes. Run the eight items from the Kahoot pack, read one line after each on what it
+tested, and revisit any item under 50 percent correct. Nothing is graded.
+Transition: where the day ends.
+```
+
+---
+
+## S56. Where the day ends: a slide, a page and a range
+*What will the city head hear on Thursday, and what comes tomorrow?*
+
+> "The scheme is paying for online hours that carry no trips: Rs 314 to Rs 260 per peak online hour at a flat Rs 165 fare. Part of it may be the monsoon. Pay per completed peak trip with an acceptance floor, which returns Rs 58 lakh to Rs 93 lakh over six weeks if a fifth to a half of idle drivers start accepting. At the evening peak the city needs about 5,700 drivers online, between 2,900 and 8,600."
+
+**The lines to keep.** A slide carries one claim, one number with its denominator, the caveat in sight and the action with its cost. Name the denominator before the number. Answer an objection in four moves. Size a number in four steps and give the factor that drives the range. Check in the same unit, period and definition.
+
+**Tomorrow:** Swiggy Instamart's cart page in Pune, and a strip that suggests what goes with what.
+
+```notes
+LIVE, 5 minutes. Read the sentence once. Wednesday's pre-read ships tonight: the Instamart ticket's
+first lines and three terms, terms only.
 Transition: close.
 ```

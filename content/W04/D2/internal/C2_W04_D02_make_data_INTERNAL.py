@@ -460,6 +460,20 @@ add("drivers_at_peak_range_low", round(swing["weekday_ride_share"][0], -2), "abo
     "the ride share at 0.5 percent, every other factor central", "half2 S9; notes; sheet")
 add("drivers_at_peak_range_high", round(swing["weekday_ride_share"][1], -2), "about 8,600",
     "the ride share at 1.5 percent, every other factor central", "half2 S9; notes; sheet")
+evening_trips = base["hyd_people"] * base["weekday_ride_share"] * base["evening_share"]
+before_buffer = req_hour / (base["trips_per_busy_hour"] * (1 - base["idle_share"]))
+four_hour_req = evening_trips / 4
+four_hour_drivers = four_hour_req / (base["trips_per_busy_hour"] * (1 - base["idle_share"])) * base["buffer"]
+add("evening_window_trips", round(evening_trips), "25,000 trips in the window", "1 lakh x a quarter",
+    "half2 S39, S49; notebook; note")
+add("drivers_before_buffer", round(before_buffer, -1), "about 4,960 drivers", "8,333 / 1.68",
+    "half2 S39; note")
+add("four_hour_requests_per_hour", round(four_hour_req), "about 6,250 an hour",
+    "25,000 / 4 hours, if a fourth hour adds no trips", "half2 S49; extras transcript 2; scorecards")
+add("four_hour_drivers", round(four_hour_drivers, -2), "about 4,300 drivers", "6,250 / 1.68 x 1.15",
+    "half2 S49; extras transcript 2; scorecards")
+check("a four-hour window: 6,250 requests an hour and about 4,300 drivers",
+      round(four_hour_req) == 6250 and round(four_hour_drivers, -2) == 4300)
 chain_dh = 1 / (base["trips_per_busy_hour"] * (1 - base["idle_share"]))
 add("driver_hours_per_request_chain", round(chain_dh, 2), "0.60",
     "1 / 1.68, before the buffer", "half2 S10; notebook cell 14; notes")
@@ -578,7 +592,8 @@ facts["toys"] += [
                                "staff from the rice counter to the roti line", "staff_moved": 2},
      "used_by": "half1 S6; notes; sheet"},
     {"id": "toy_canteen_tea", "label": "invented",
-     "values": {"students": 2000, "share_who_buy_tea": 0.6, "cups_each": 2, "cups_a_day": 2400},
+     "values": {"students": 2000, "share_who_buy_tea": 0.6, "tea_buyers": 1200, "cups_each": 2,
+                "cups_a_day": 2400},
      "used_by": "half2 S6; guided exercise; notes"},
     {"id": "toy_two_million_city", "label": "invented",
      "values": {"people": 2_000_000, "wrong_households": 9_000_000, "people_per_household": 4,
@@ -593,6 +608,11 @@ facts["toys"] += [
 for _, r in twelve.iterrows():
     facts["twelve_rows"].append({k: (int(v) if isinstance(v, (int,)) or str(v).isdigit() else v)
                                  for k, v in r.items()})
+
+# ------------------------------------------------------------------ the room, for the studio
+facts["programme"] = {"cohort_students": 35, "threes": 11, "pairs": 1,
+                      "source": "data/programme/facts.yaml, cohort.students; 35 = 11 threes and one pair"}
+check("35 learners make eleven threes and one pair", 11 * 3 + 2 == 35)
 
 # ------------------------------------------------------------------ the three cluttered slides
 def ids(*pairs):

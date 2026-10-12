@@ -368,6 +368,30 @@ numbers:
   unit: ''
   how: the ride share at 1.5 percent, every other factor central
   used_by: half2 S9; notes; sheet
+- id: evening_window_trips
+  value: 25000
+  shown: 25,000 trips in the window
+  unit: ''
+  how: 1 lakh x a quarter
+  used_by: half2 S39, S49; notebook; note
+- id: drivers_before_buffer
+  value: 4960.0
+  shown: about 4,960 drivers
+  unit: ''
+  how: 8,333 / 1.68
+  used_by: half2 S39; note
+- id: four_hour_requests_per_hour
+  value: 6250
+  shown: about 6,250 an hour
+  unit: ''
+  how: 25,000 / 4 hours, if a fourth hour adds no trips
+  used_by: half2 S49; extras transcript 2; scorecards
+- id: four_hour_drivers
+  value: 4300.0
+  shown: about 4,300 drivers
+  unit: ''
+  how: 6,250 / 1.68 x 1.15
+  used_by: half2 S49; extras transcript 2; scorecards
 - id: driver_hours_per_request_chain
   value: 0.6
   shown: '0.60'
@@ -954,6 +978,7 @@ toys:
   values:
     students: 2000
     share_who_buy_tea: 0.6
+    tea_buyers: 1200
     cups_each: 2
     cups_a_day: 2400
   used_by: half2 S6; guided exercise; notes
@@ -1390,3 +1415,8 @@ shared_constants:
   window_before: 2026-07-20 to 2026-08-30
   window_after: 2026-08-31 to 2026-10-11
   diwali_2026: '2026-11-08'
+programme:
+  cohort_students: 35
+  threes: 11
+  pairs: 1
+  source: data/programme/facts.yaml, cohort.students; 35 = 11 threes and one pair

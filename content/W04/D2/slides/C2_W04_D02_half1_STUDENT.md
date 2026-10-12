@@ -1,209 +1,303 @@
-# Can the redesign survive one slide in front of three losers?
+# Can the redesign survive one slide in front of three people who lose under it?
 
 Week 4, Day 2. Half one.
 
 Kicker: WEEK 4  ·  TUESDAY  ·  MORNING, 180 MINUTES
-Quote: Thursday 15:00. One slide. Five minutes. The driver-operations lead, the marketing lead and the finance partner in the room, each losing something under the redesign.
-Who: The Hyderabad city head, Uber, to the senior analyst who built Monday's definition
+Quote: One slide, five minutes, at Thursday's city review. The driver-operations lead, the marketing lead and the finance partner will be in the room, and each loses something under the redesign.
+Who: The Hyderabad city head, Uber, to the analyst who built Monday's definition
 
 ```notes
-LIVE, 15 seconds, before the first chapter runs. Say once that this is the same illustrative
-Uber case as Monday, built for this class, and today the slide the city head takes to the
-review is the deliverable. The morning is a studio: build, present, take the objection, get
-scored, rebuild. The three roles are Monday's three, now holding Monday's objections. The
-afternoon dojo sizes a number from nothing, worked in Half 2.
+LIVE, 15 seconds. Say once that this is Monday's illustrative Uber case, one day on, and that the
+deliverable today is the slide the city head takes to the review. The morning is a studio: build,
+present, take the objection, get scored, rebuild. The afternoon is a dojo: a number sized from
+nothing, under a clock, then checked. No new technique arrives today.
 Transition: the ticket, in full.
 ```
 
 ---
 
-## S1. The ticket: one slide, five minutes, three losers
-*What has the city head asked for, and which number lands first?*
+## S1. The ticket: one slide, five minutes, three objectors
+*What has the city head asked for, and which number will land first?*
 
-**The ask.** The city head takes the redesign to the Thursday city review: one slide, five minutes, with Monday's three roles in the room. Each one loses something under the redesign and each will say so. **The number the slide must explain first, because finance will raise it before anyone sits down:** gross bookings per peak online hour fell from Rs 314 in the six weeks before the launch to Rs 260 in the six weeks after, while the average peak fare stayed at Rs 165 and online hours rose 24 percent.
+**Uber, Hyderabad, the driver app's peak-hour earnings guarantee, one day on.** The city head takes the redesign to Thursday's city review on one slide, in five minutes, with the driver-operations lead, the marketing lead and the finance partner in the room. Each loses something under the redesign and each will say so.
 
-**The same rupees read three ways.** Per peak online hour, down 17 percent. Per enrolled driver-week, up less than one percent (because hours and driver-weeks both rose). Per completed trip, flat at Rs 165. The slide must say which denominator it is reading before it says what the number did.
+| The number the slide must explain | Six weeks from 20 July | Six weeks from 31 August | Change |
+|---|---|---|---|
+| Gross bookings per peak online hour | Rs 314 | Rs 260 | down 17 percent |
+| Average peak fare (bookings per trip) | Rs 165 | Rs 165 | flat |
+| Gross bookings per active driver-week | Rs 5,817 | Rs 5,861 | up 0.8 percent |
+| Peak online hours | 1,18,000 | 1,46,300 | up 24 percent |
 
-**The afternoon ask.** Before the review, roughly how many drivers must be online at the evening peak on a weekday to keep the median rider wait under five minutes. Fifteen minutes, no dataset, assumptions stated.
+**Data.** Monday's tables: `driver_weeks` (one row per driver per week, with `peak_online_hours`, `peak_trips`, `peak_bookings_rs`, `topup_rs`) and `zone_weeks` (rider requests and median wait by zone and week). **The afternoon ask.** Roughly how many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes, in fifteen minutes, without a dataset. **Caveats.** Each objection is partly right; the peak window is three hours long; no published figure exists for the number a sanity check on the afternoon ask would want.
 
-**Data.** Monday's three tables. **Caveats.** The three objections are each partly right; the peak window is three hours long; the published figure a validate step would want is not in the research ledger.
-
-> *Illustrative case: the company is real, the situation and the data are synthetic, built for this class.*
+> Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
 ```notes
-LIVE, 2 minutes. Read the ticket in order; name the three denominators once each. Pause on
-"each loses something under the redesign". Ask: which of the three roles will side with the
-city head when the five minutes end? Leave the answer open; the role cards hold the surprise.
-Transition: the week's map, with Tuesday lit.
+LIVE, 3 minutes. Read the ticket top to bottom. Gross bookings are what riders paid for the trips,
+before Uber's share and before any top-up. An active driver-week is one driver with a row that
+week. Pause on the three reads of the same rupees: down, up, flat. Ask which of the three roles will
+quote which row; leave it open, chapter 2 answers it.
+Transition: where Tuesday sits on the week's map.
 ```
 
 ---
 
-## S2. The week map, Tuesday lit
-*Where does today sit, and what has Monday's node earned?*
+## S2. The week map: Monday's number in, Tuesday lit
+*Where does today sit, and what did Monday's node earn?*
 
 ```mermaid
 flowchart LR
-    M["<b>Mon</b><br/>metric design<br/>trips per online hour<br/>1.9 to 1.6"]
-    T["<b>Tue</b><br/>one slide<br/>the number three ways"]
-    W["<b>Wed</b><br/>lift"]
-    H["<b>Thu</b><br/>cohorts"]
-    F["<b>Fri</b><br/>forecast"]
-    S["<b>Sat</b><br/>transfer"]
+    M["<b>Mon: what should the scheme pay for?</b><br/>trips per online hour 1.9 to 1.6<br/>pay for trips"]
+    T["<b>Tue: can it survive one slide?</b><br/>and how big is a number<br/>nobody has measured?"]
+    W["<b>Wed</b><br/>what goes with what"]
+    H["<b>Thu</b><br/>who is leaving"]
+    F["<b>Fri</b><br/>how much is coming"]
+    S["<b>Sat</b><br/>does it transfer"]
+    K["<b>Kalpa lab</b><br/>the north-star slide,<br/>Anand's new store"]
     M --> T --> W --> H --> F --> S
+    T --> K
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    classDef kalpa fill:#FFF7E6,stroke:#C98A00,color:#5C3D00
     class M known
     class T lit
     class W,H,F,S unknown
+    class K kalpa
 ```
 
 ```notes
-LIVE, 1 minute. Point to Monday's node: it now reads with the number the room produced
-yesterday. Tuesday is lit; the three days to the right stay dashed. Every chapter close
-today adds one more thing to Tuesday's node, so by the handoff the node reads with the
-slide's claim in one sentence.
-Transition: where today ends.
+LIVE, 1 minute. Monday's node now carries the number the room produced and the decision it led to.
+Tuesday is lit; the days to the right stay dashed. Each chapter close today adds a line to Tuesday's
+node. The amber node is the TA lab, where the same studio runs on Kalpa Retail.
+Transition: where the day ends, so the room can see the climb.
 ```
 
 ---
 
-## S3. Where today ends: a slide the loser can repeat
-*What sentence closes the day?*
+## S3. Where today ends: a slide its losers can repeat
+*What sentence will the city head be able to say on Thursday?*
 
-**By the end of the morning**, the room has built a one-slide answer the losing roles can repeat accurately back to the city head:
+> "The scheme is paying for online hours that carry no trips: gross bookings per peak online hour fell from Rs 314 to Rs 260 while the fare held at Rs 165. The monsoon ended inside the window, so part of the fall may be the season. Pay per completed peak trip with an acceptance floor; that returns Rs 58 lakh to Rs 93 lakh over six weeks if a fifth to a half of the idle drivers start accepting."
 
-> *"The peak scheme is paying for online hours that do not carry trips. Pay per completed peak trip, with an acceptance guardrail, saves Rs 58 lakh to Rs 93 lakh over six weeks on last window's data. The number we read is bookings per peak online hour, Rs 314 to Rs 260; the driver-week and per-trip reads are in the appendix."*
-
-**By the end of the afternoon dojo**, every learner has sized drivers online at the evening peak from nothing, said each assumption aloud, and validated the number against the case's own request data.
-
-The room has not earned either yet. The morning climbs from the one claim through the three denominators to the defence that survives three objections; the afternoon brings a Fermi walk, a seven-minute paired estimate against the clock and a one-page business case written AI-free.
+**By the end of the afternoon** you will also have sized the drivers the evening peak needs, said every assumption aloud, given a range, and checked it against a ratio the case's own data can confirm.
 
 ```notes
-LIVE, 1 minute. Read the one-slide sentence once. Say: everything in the morning is how the
-room earns the right to say it in that order. Nothing to write down.
+LIVE, 1 minute. Read the sentence once. The morning earns its four parts in order: the claim, one
+number with its denominator, the caveat, the action with its cost. The saving range is Monday's:
+Rs 1.16 crore went to driver-weeks that accepted under half their offers, and the range assumes a
+fifth to a half of that is still paid because those drivers start accepting.
+Transition: what each role loses, before anyone builds anything.
+```
+
+---
+
+## S4. Each role loses one thing it can point to
+*What does each of the three roles lose under Monday's definition?*
+
+```cards
+icon: user | eyebrow: Driver-operations lead | title: The supply headline | body: Peak online hours up 24 percent stops being the target, and the idle drivers' hours will fall when idle hours stop paying | tone: light
+icon: user | eyebrow: Marketing lead | title: A clean hoarding line | body: "Rs 300 an hour, guaranteed" now carries a condition: the floor holds for drivers who accept | tone: light
+icon: user | eyebrow: Finance partner | title: Its own number as the headline | body: Top-up per trip becomes a guardrail, and the slide opens on bookings per online hour, Rs 314 to Rs 260 | tone: light
+```
+
+**Monday's definition, in one line.** The scheme pays for completed peak trips per enrolled driver per week, with three guardrails: the acceptance share, the median rider wait at peak, and top-up per completed trip.
+
+```notes
+LIVE, 10 minutes. Cards hidden first. Groups of three spend 6 minutes listing what each role loses;
+take one loss per role from three groups and write them on the board (2 minutes), then show the
+cards (2 minutes). A loss the room names that the cards miss goes on the board as well: it will
+come back as an objection in chapter 2.
 Transition: chapter 1, the title is the claim.
 ```
 
 ---
 
-## SECTION 1: What is the one claim, and which number carries it?
-*How does a title that is a topic turn into a title that is a sentence a city head could act on?*
+## SECTION 1: What is the one claim?
+*What is the one claim, and which number carries it, so that nine numbers become one sentence a city head can act on?*
 
 ```notes
-LIVE, 45 minutes in two parts: the hostel notice board (12 minutes), then the cluttered Monday
-slide rebuilt live by the room (33 minutes). Laptops closed for the first part. Chapter 1 is
-L1 and L2 of the ladder: the title as the claim, and the denominator the slide names.
-Styles on this chapter: Brilliant (the chapter opens on a question with options), StatQuest
-(the twelve rows summed aloud three ways), Minto and SWD (the makeover and the Big Idea test).
-Transition: a predict item on what makes a title act.
+LIVE, 45 minutes. Chapter 1 is L1 and L2 of the ladder: the title as the claim, and the
+denominator the slide names. Laptops closed until S13. Styles: Brilliant (the chapter opens on a
+question), Veritasium (predict, then reveal), StatQuest (the twelve rows summed aloud), Storytelling
+with Data and Minto (the makeover, the answer first). Explorer scene T1 runs beside S8 to S10 and
+scene T2 beside S14 and S15.
+Transition: a vote on four titles.
 ```
 
 ---
 
-## S4. Predict: which of these four titles acts?
-*The chapter opens on a prediction before any method is taught.*
+## S5. Predict: which of these four titles acts?
+*Which title tells the city head what to do on the first read?*
 
-The chapter begins with a lettered vote. Four candidate titles for the slide:
+- a) Peak guarantee: six-week review
+- b) Online hours up 24 percent, trips up 3 percent
+- c) The scheme pays for idle hours: pay per completed trip
+- d) Hyderabad operations update, October
 
-- a) **Peak guarantee: six-week review**
-- b) **Online hours up 24 percent, trips up 3 percent**
-- c) **Pay for completed peak trips, not for online hours**
-- d) **Hyderabad operations update, October**
-
-**The question.** Which title tells the city head what to do when she reaches it on the printed page? The room votes before the method arrives.
+**Write your letter down before the next slide.**
 
 ```notes
-LIVE, 3 minutes. Take hands for each letter in turn and write the counts on the board. Expect
-a cluster at (a) and (b), with (c) picking up as the morning goes on. Say nothing about which
-is right; the warden test will choose it.
-Transition: the hostel notice board, with its topic title.
+LIVE, 3 minutes. Hands for each letter, counts on the board. Expect votes on b, since it carries
+numbers. Say nothing about which is right.
+Transition: the hostel notice board.
 ```
 
 ---
 
-## S5. Answer: the title that acts is a sentence
-*Why does the hostel warden act when the title is a sentence?*
+## S6. Answer: a title that acts is a sentence with a verb
+*Why does a reader act on c and walk past a, b and d?*
 
-**A warden walks past a notice board.** The notice reads "Breakfast survey results". The warden walks on; the results sit there for a week. The next notice reads "Rotis replace rice at Monday breakfast; the kitchen moves two staff from the rice counter to the roti line". The warden stops, reads once, and sends two staff.
+**A hostel notice board (invented for this class).** One notice reads "Breakfast survey results"; the warden walks past it for a week. The next reads "Rotis replace rice at Monday breakfast, so the kitchen moves two staff from the rice counter to the roti line"; the warden reads it once and moves two staff.
 
-**The claim is a sentence a reader can act on.** The topic names the subject. The sentence names the answer, who it is for, and what moves. Pyramid Principle, Minto's phrase: the answer comes first.
+**The answer is c.** a and d name a topic. b reports two numbers and leaves the reader to find the point, and it is Monday's trap resold: online hours up 24 percent is the number that rose while riders were served no better. Barbara Minto's Pyramid Principle puts the answer first and the support beneath it.
 
 ```notes
-LIVE, 4 minutes. Walk through the two notices in order. The second notice is a toy, invented
-for this class, but the shape is Minto's. Ask: which of the four titles from the vote is like
-the first notice, which like the second. Expect (a) and (d) called topic, (c) called sentence.
-Transition: how does the eye read a slide full of numbers.
+LIVE, 3 minutes. Read the two notices aloud. Then ask which of the four titles is like the first
+notice. Minto's site describes ideas organised as a pyramid under a single point
+(barbaraminto.com, checked 12 October 2026).
+Transition: the four parts a slide needs.
 ```
 
 ---
 
-## S6. Nine numbers from Monday's dashboard
-*What happens when a dashboard arrives on the city head's desk at 09:00?*
-
-![The cluttered Monday slide](../whiteboards/C2_W04_D02_cluttered_STUDENT.png)
-
-**The slide the Hyderabad operations analyst sent on Monday morning.** Nine numbers from Monday's dashboard, laid out as a grid. **The warden test fails.** A city head reading this at 09:00 cannot act. Every number is up or down. The title names the subject and nothing more.
-
-```notes
-LIVE, 3 minutes. Project the image, then ask the room what the slide is asking the city head
-to do. Nothing to write; the next slide rebuilds this. The nine numbers are the ones Monday's
-pack already published, no new figure is on this page.
-Transition: the rebuild, one piece at a time.
-```
-
----
-
-## S7. The same evidence, rebuilt to one claim
-*What does the slide become when it names the number, the claim and the action?*
-
-![The redesign slide, cleared](../whiteboards/C2_W04_D02_cleared_STUDENT.png)
-
-**One claim, one chart, one caveat, one action.** The claim is a sentence. The chart is one number: bookings per peak online hour, Rs 314 to Rs 260. The caveat sits where the eye lands, not in the appendix. The action names what to do and roughly what it saves.
-
-**The warden test.** A reader who sees the slide for five seconds can repeat the claim and the action.
-
-```notes
-LIVE, 6 minutes. Walk from the title to the chart, to the caveat, to the action, in that
-order. Point at each in sight of the room. Ask: which of the two slides lets the city head
-do something next. Expect every hand on the second. The reveal is the shape, not the number;
-the number is still Monday's.
-Transition: the four parts of a slide a loser can repeat.
-```
-
----
-
-## S8. The four parts of a slide the loser can repeat
-*What are the parts, in what order, and where do they land on the page?*
+## S7. One slide carries four parts, in this order
+*What lets one slide carry a decision?*
 
 ```mermaid
-flowchart TD
-    T["<b>1. The claim</b><br/>a sentence a reader can act on,<br/>as the title"]
-    E["<b>2. The evidence</b><br/>one chart or one number<br/>with its denominator named"]
-    C["<b>3. The caveat</b><br/>in plain sight, not in the appendix<br/>under the chart or beside it"]
-    A["<b>4. The action</b><br/>what to do, roughly what it costs,<br/>who decides"]
-    T --> E --> C --> A
-    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+flowchart LR
+    N["<b>Anchor</b><br/>the hostel notice board:<br/>a sentence the warden acts on"]
+    C["<b>1. The claim</b><br/>a sentence with a verb,<br/>as the title"]
+    E["<b>2. The evidence</b><br/>one chart or one number,<br/>its denominator named"]
+    V["<b>3. The caveat</b><br/>in plain sight,<br/>beside the evidence"]
+    A["<b>4. The action</b><br/>what to do, its cost in<br/>rupees and weeks, who signs"]
+    P["<b>Pitfalls</b><br/>nine numbers; a title that is a topic;<br/>a caveat out of sight"]
+    N --> C --> E --> V --> A
+    A -.-> P
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class T lit
-    class E,C,A known
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class N,E,V,A known
+    class C lit
+    class P bad
 ```
 
-**Panel order on the page.** The claim at the top. The chart filling the left two-thirds. The caveat beside the chart, in a tinted box. The action at the bottom right, with its cost and the role who signs it. **An appendix is one page per role**, each page headed by the question that role will ask on Thursday.
+**The order is the point.** A slide that opens on its evidence has already given away its title, and a slide whose caveat sits off the page invites its owner to call it dishonest.
 
 ```notes
-LIVE, 3 minutes. Point at each box as it is named. Say: the four parts are an order, so a
-slide that opens on evidence has already lost the title. Ask: what goes on the appendix page
-headed by the driver-operations lead? Expect: idle hours, the outer zones, acceptance's
-guardrail floor.
-Transition: into the second part of chapter 1, the twelve rows read three ways.
+LIVE, 3 minutes. Build the board region by region: point at the anchor, then each part in order,
+then the pitfalls. This is the Week 1 four-part note (claim, evidence, caveat, action) made into one
+page.
+Transition: slide A, exactly as it arrived.
 ```
 
 ---
 
-## S9. The twelve driver-weeks, read in rupees three ways
-*What do the same twelve rows say when the denominator changes?*
+## S8. Slide A arrived with nine numbers and no claim
+*What is a city head meant to do with this slide?*
+
+![Slide A as the operations analyst sent it](../whiteboards/C2_W04_D02_cluttered_slide_STUDENT.png)
+
+**Nine numbers from Monday's dashboard, each given the same weight, under a title that names a topic.** The reader cannot tell which number matters, and the first number the eye meets is the one Monday showed to be the wrong one to celebrate.
+
+```notes
+LIVE, 3 minutes. Give the room 30 seconds of silence with the slide, then ask what it is asking the
+city head to do. Every number here is Monday's. Explorer scene T1 starts from this slide.
+Transition: which two of the nine carry a claim.
+```
+
+---
+
+## S9. Which two of the nine numbers carry the claim?
+*If the slide may keep only two numbers, which two make the case?*
+
+- a) Peak online hours +24 percent and completed peak trips +3 percent
+- b) Trips per peak online hour 1.90 to 1.58 and top-up to low acceptance 61 percent
+- c) Median rider wait 4.8 to 4.6 minutes and new drivers since launch 140
+- d) Acceptance share 0.86 to 0.73 and top-up paid Rs 1.9 crore
+
+**Low acceptance** means a driver-week that accepted fewer than half the requests offered.
+
+```notes
+LIVE, 3 minutes. Each group writes one letter. Expect a split between a and b. The point of the
+vote is that a carries two true numbers and no claim, which is why the room reaches for it.
+Transition: the rebuild.
+```
+
+---
+
+## S10. Answer: slide A rebuilt to one claim and its evidence
+*What does the slide become when it keeps one claim, one number and its denominator?*
+
+![Slide A rebuilt, the four parts numbered](../whiteboards/C2_W04_D02_cleared_slide_STUDENT.png)
+
+**The answer is b.** Trips per online hour falling at a flat fare is bookings per online hour falling, Rs 314 to Rs 260, and the 61 percent says where the top-up went.
+
+```notes
+LIVE, 5 minutes. This is the worked example of the guided exercise: rebuild it with the room
+mirroring, part by part. Point at 1, 2, 3, 4 in order: the chart names its denominator in its title,
+the caveat sits beside the evidence, and the action states the saving with the assumption behind it. The drop lands in the launch week: the
+highest after week, Rs 271, sits below the lowest before week, Rs 310, which is why the chart, not
+the bar pair, is the evidence.
+Transition: two more slides, rebuilt by the groups.
+```
+
+---
+
+## S11. Slide B: nine numbers from finance's tab
+*Which one claim does finance's slide carry, and which number proves it?*
+
+| Finance's tab, as sent | Before | After |
+|---|---|---|
+| Gross peak bookings | Rs 3.70 crore | Rs 3.81 crore |
+| Bookings per online hour | Rs 314 | Rs 260 |
+| Bookings per active driver-week | Rs 5,817 | Rs 5,861 |
+| Bookings per trip | Rs 165 | Rs 165 |
+| Top-up paid | Rs 0 | Rs 1.9 crore |
+| Top-up per completed trip | | Rs 82.3 |
+| Top-up to low acceptance | | Rs 1.16 crore |
+| Top-up to everyone else | | Rs 74 lakh |
+| Rider requests | 2,51,910 | 2,56,556 |
+
+**Half worked.** The claim is drafted for you: "Rs 1.16 crore of the top-up went to driver-weeks that accepted fewer than half their offers." Choose the one number that proves it, and the caveat that sits beside it.
+
+```notes
+LIVE, 3 minutes. Odd-numbered groups take slide B, even-numbered groups take slide C (next slide).
+Six minutes in total across S11 and S12 once both are on screen, then two groups read their
+rebuilt titles. The guided exercise file carries both slides.
+Transition: slide C.
+```
+
+---
+
+## S12. Slide C: nine numbers from driver operations
+*Which one claim does driver operations' slide carry, in a sentence of your own?*
+
+| Driver operations' tab, as sent | Before | After |
+|---|---|---|
+| Drivers | 1,200 (140 new) | |
+| Active driver-weeks | 6,360 | 6,500 |
+| Offers shown to drivers | 2,69,773 | 3,47,583 |
+| Acceptance share | 0.86 | 0.73 |
+| Driver cancels after accepting | 0.04 | 0.09 |
+| Drivers in the idle tail | | 180 |
+| Idle-tail online hours | 20,000 | 42,000 |
+| Idle-tail trips | 38,000 | 33,440 |
+| Unfulfilled requests | 0.11 | 0.10 |
+
+**Blank.** Write the claim yourself, keep two numbers, and name the caveat. The **idle tail** is Monday's name for the 180 drivers whose trips per online hour fell under 1.0 after the launch.
+
+```notes
+LIVE, 3 minutes. The faded step: no drafted claim. Collect two titles. A strong one reads close
+to "180 drivers doubled their online hours while their trips fell": idle hours up 2.1 times
+(20,000 to 42,000), trips down 12 percent.
+Transition: the twelve rows, read in rupees.
+```
+
+---
+
+## S13. The twelve rows, read in rupees three ways
+*What do six drivers in two weeks say when the denominator changes?*
 
 | Driver | Zone | Hours before | Trips before | Rs before | Hours after | Trips after | Rs after |
 |---|---|---|---|---|---|---|---|
@@ -215,254 +309,288 @@ Transition: into the second part of chapter 1, the twelve rows read three ways.
 | F | Rajendranagar | 10 | 17 | 2,805 | 14 | 2 | 330 |
 | **Total** | | **60** | **114** | **18,810** | **74** | **88** | **14,520** |
 
-**Three denominators, three sentences.** Per peak online hour: Rs 18,810 over 60 is Rs 313.5, Rs 14,520 over 74 is Rs 196.2, down 37 percent. Per driver-week: Rs 18,810 over 6 is Rs 3,135, Rs 14,520 over 6 is Rs 2,420, down 23 percent. Per trip: Rs 18,810 over 114 is Rs 165, Rs 14,520 over 88 is Rs 165, flat.
+**Per peak online hour:** 18,810 / 60 = Rs 313.5, then 14,520 / 74 = Rs 196.2, down 37 percent. **Per driver-week:** 18,810 / 6 = Rs 3,135, then 14,520 / 6 = Rs 2,420, down 23 percent. **Per trip:** Rs 165 both times.
 
 ```notes
-LIVE, 6 minutes. Count aloud: 60, 74 (hours); 114, 88 (trips); 18,810, 14,520 (rupees).
-Divide three times for before, three times for after. Say the three verdicts in order: down
-37, down 23, flat. Ask: which denominator does the slide read first? Expect the room to say
-per peak online hour, since that is what moves most; the next slide shows why that is also
-the honest read when the scheme pays for hours.
-Transition: the picture, three bars.
+LIVE, 5 minutes. The week of 10 August against the week of 21 September. Count aloud, column by
+column: 60 and 74 hours, 114 and 88 trips, 18,810 and 14,520 rupees. Divide three times for each
+week and say the three verdicts. E and F are Monday's two idle-tail drivers, which is why six
+drivers fall further than the city.
+Transition: the same arithmetic as a picture.
 ```
 
 ---
 
-## S10. The same rupees, three stories
-*Why does the picture say what the arithmetic has just said?*
+## S14. Predict: which way does each read go for the city?
+*Over all the driver-weeks, which pair of moves holds?*
 
-![The twelve rows, three ways](../whiteboards/C2_W04_D02_three_denominators_STUDENT.png)
+- a) Per hour falls; per driver-week falls
+- b) Per hour falls; per driver-week rises a little
+- c) Per hour holds; per driver-week falls
+- d) Both hold nearly flat
 
-**Three bar pairs on one picture.** Per peak online hour falls by about a third. Per driver-week falls by about a quarter (the twelve rows have the same six drivers both weeks, so the denominator does not move; the full data moves it the other way). Per trip holds at Rs 165, because a trip pays its fare.
-
-**The slide says which denominator it reads before it reads the number.** This is the one rule that stops the three roles from each quoting their favourite number.
-
-```notes
-LIVE, 3 minutes. Walk left to right. Each bar pair carries its unit as a label. Say: a trip
-pays its fare; that is why the per-trip read is flat. Ask: which role would quote per
-driver-week? Expect: the marketing lead. Which would quote per trip? Expect: the finance
-partner. The city head's slide is the one that names the number the scheme pays for.
-Transition: a trap, before the method.
-```
-
----
-
-## S11. Predict: which denominator do you expect?
-*The chapter stages its trap before the data arrives.*
-
-```mermaid
-flowchart LR
-    A["<b>Over twelve weeks of Monday's data,</b><br/>Rs per peak online hour and<br/>Rs per driver-week each read a story.<br/><br/>Which pair matches reality?"]
-    B["<b>a</b>) Rs/hour falls sharply,<br/>Rs/driver-week also falls"]
-    C["<b>b</b>) Rs/hour falls sharply,<br/>Rs/driver-week rises slightly"]
-    D["<b>c</b>) Rs/hour holds flat,<br/>Rs/driver-week falls"]
-    E["<b>d</b>) Both read nearly flat"]
-    A --> B
-    A --> C
-    A --> D
-    A --> E
-    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class A lit
-    class B,C,D,E known
-```
-
-**Write your letter down.** The reveal is on the next slide; the one who wrote stays with the one who did not.
+**On the six drivers,** per driver-week fell 23 percent because the same six drivers sit in both weeks; the city's count of active driver-weeks moves.
 
 ```notes
-LIVE, 3 minutes. Hands up for each letter; write counts on the board. Expect the room to
-split (a) and (c). The reveal shows (b): the hours rose by more than the bookings fell, so
-the per-driver-week number barely moved; this is why the city head's roles will each quote
-whichever denominator favours their case.
+LIVE, 2 minutes. Per driver-week here means per active driver-week. On six drivers the per-driver-week read fell, because the six are the same six in
+both weeks. The city's driver-weeks move. Each learner writes a letter.
 Transition: the reveal.
 ```
 
 ---
 
-## S12. Answer: Rs 314 falls, Rs 5,817 holds
-*What does the twelve-week picture show about each denominator?*
+## S15. Answer: per hour falls, per driver-week rises
+*What do the twelve weeks show for each denominator?*
 
-![Twelve weeks of the two reads](../whiteboards/C2_W04_D02_denominator_drift_STUDENT.png)
+![Each read divided by its own before window](../whiteboards/C2_W04_D02_three_reads_STUDENT.png)
 
-**Twelve weeks, two lines, one axis each.** Rs per peak online hour drops from about Rs 314 to about Rs 260 after the launch date. Rs per driver-week rises from Rs 5,817 to Rs 5,861, less than one percent, because hours and driver-weeks both rose. The flat per-trip read is drawn in the notebook; here the two reads that disagree are the ones the slide must choose between.
-
-**The honest choice.** Pay the scheme per peak online hour and the number is falling. Pay the scheme per enrolled driver-week and the number is holding. The city head's job is to say which one the scheme pays for.
+**The answer is b.** Per peak online hour the rupees fell 17 percent, Rs 314 to Rs 260. Per active driver-week they rose 0.8 percent, Rs 5,817 to Rs 5,861. Per trip they held at Rs 165. Each line is divided by its own before-window value, so all three start near 100.
 
 ```notes
-LIVE, 4 minutes. Trace the fall line first, then the near-flat line. Point at the vertical
-dashed line (launch) and say: six weeks either side, the two lines move in different ways
-because they are measuring different things. Ask: which line will the marketing lead quote,
-and which will the city head? Expect: marketing takes the flat line; the city head takes the
-falling one, because that is what the scheme actually pays for.
-Transition: into chapter 2, the three objections.
+LIVE, 4 minutes. Trace the violet line first: a step at the launch, then flat. The amber line rises
+and then slides below 100 by the last week, so even the window's 0.8 percent rise hides a weekly
+slide. Ask which role will quote the amber line. Expect the marketing lead. Explorer scene T2 lets
+learners pick the denominator.
+Transition: the trap in that amber line.
 ```
 
 ---
 
-## SECTION 2: Which objection is partly right, and which part?
-*How does a defence under three objections stay honest, and where does the slide bend?*
+## S16. The trap: "per driver-week is up, so it works"
+*Why does the rise in bookings per active driver-week say nothing about the scheme?*
+
+**The plausible wrong answer.** "Bookings per driver-week rose from Rs 5,817 to Rs 5,861, so the guarantee is working; keep it as it is." Every rupee in that sentence is right, and it would keep the city paying for idle hours.
+
+**Why it is wrong.** The read is bookings over active driver-weeks, and online hours do not enter it. Bookings rose 3.0 percent because trips rose 3 percent at the same fare; active driver-weeks rose 2.2 percent, 6,360 to 6,500, because the 140 drivers who joined after the launch added 140 driver-weeks between them. The ratio rose 0.8 percent with no driver earning more for an hour online.
+
+**The fix.** The slide names the denominator the scheme pays per, the peak online hour, and keeps the other two reads in the appendix with one line each on what moved them.
 
 ```notes
-LIVE, 50 minutes in two parts: the four moves of a defence (12 minutes), and the studio's
-first round (38 minutes). Each role is partly right by design. Chapter 2 is L3 and L4 of the
-ladder: defence as a shape, with the appendix as the drawer for what leaves the slide.
-Styles on this chapter: the case method (the three role cards from Monday return), Veritasium
-(predict which role sides with the city head before the cards reveal), ByteByteGo (the slide
-grows an appendix drawer, not a longer slide).
-Transition: the four moves.
+LIVE, 4 minutes. Write the three growth rates on the board: bookings 3.0, driver-weeks 2.2, ratio
+0.8. An active driver-week is a driver with a row that week, never a sign-up to the guarantee.
+Transition: the second route to the same number.
 ```
 
 ---
 
-## S13. Defence under objection, in four moves
-*How does the owner of a slide survive three objections and keep every honest line?*
+## S17. A second route: fare times trips per hour
+*Is the fall in rupees per hour all trips, or some of it fare?*
 
-![The four moves of a defence](../whiteboards/C2_W04_D02_four_moves_STUDENT.png)
+```stats
+value: Rs 313.5 | label: Rs 165 x 1.90 trips per hour | note: the six weeks from 20 July
+value: Rs 260.4 | label: Rs 165 x 1.58 trips per hour | note: the six weeks from 31 August
+value: Rs 165 | label: the fare, both windows | note: so the whole fall is trips per hour
+```
 
-**Four moves in order.** Restate the objection, in your own words, until the owner agrees. Answer from the evidence on the slide, by line. Concede what is true, in plain words, without surrendering the claim. Say what would change your mind, naming the fact that would move you.
-
-**The loser can repeat the slide accurately when every move happens in sight of the room.** Nobody wins by repeating the claim louder. Nobody wins by moving a caveat into the appendix.
+**Bookings divided by hours and fare times trips per hour land on the same rupees in both windows.** The finance partner will ask whether riders paid less; they did not.
 
 ```notes
-LIVE, 5 minutes. Walk the four moves on the picture. Say: a slide that cannot survive the
-third move (concede) is a slide that does not know what is true. The trainer models one full
-defence first, conceding on purpose, before the groups try one.
-Transition: three cards, three objections.
+LIVE, 2 minutes. The notebook asserts the two routes agree to the paisa. Say it as one line the
+slide's owner can repeat: the fare held, the trips per hour fell.
+Transition: what chapter 1 adds to Tuesday's node.
 ```
 
 ---
 
-## S14. The three roles return, with Monday's objections
-*What does each role say about the redesign, and which part is partly right?*
+## S18. Chapter 1 adds the claim and its denominator
+*What can you now say in one sentence a driver would understand?*
 
-```cards
-icon: user  | eyebrow: Driver operations | title: "Drivers will log off" | body: Pay per completed trip and the honest majority stops staying online in dead windows; the idle tail is already gone | tone: light
-icon: user  | eyebrow: Marketing         | title: "The guarantee is the acquisition story" | body: Every hoarding reads 'Rs 300 an hour'; cut it and the sign-up curve breaks | tone: light
-icon: user  | eyebrow: Finance partner   | title: "The fall is just the monsoon" | body: The monsoon ended inside the window; demand fell with it; the scheme has not had a fair chance | tone: light
+```mermaid
+flowchart LR
+    M["<b>Mon</b><br/>pay for trips"] --> T["<b>Tue, chapter 1</b><br/>the claim: the scheme pays for idle hours<br/>the evidence: Rs 314 to Rs 260 per online hour"]
+    T -.-> N["<b>chapter 2</b><br/>the defence"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class M known
+    class T lit
+    class N unknown
 ```
 
-**The city head reads these in order.** Each one is partly right. Each one's partly-right part is a line the slide must concede in sight of the room.
+**Said plainly:** "An hour online used to bring in Rs 314 of fares and now brings in Rs 260, because more of those hours have no rider." **In the interview** [S]: present a recommendation to a non-technical stakeholder in two minutes, opening on that sentence.
 
 ```notes
-LIVE, 4 minutes. Read each card aloud. Ask the room, before the next slide, which of the
-three the city head will side with on Thursday afternoon. Collect three answers; write the
-tallies on the board; the surprise is that the city head sides with none of them because
-each is partly right.
-Transition: the partly-right part of each, named.
+LIVE, 2 minutes. Ask two learners to say the plain sentence aloud without the slide.
+Transition: chapter 2, the objections.
 ```
 
 ---
 
-## S15. The partly-right part of each objection
-*What does the slide concede, and where does the evidence land?*
-
-| Role | What they say | Where they are partly right | What the slide answers |
-|---|---|---|---|
-| Driver operations | "Drivers will log off" | True for the idle tail: Rs 1.159 crore of top-up went to driver-weeks under 0.5 acceptance, almost all in outer zones | The honest majority still has the floor; the guardrail is acceptance, so the floor stays for drivers who accept |
-| Marketing | "The guarantee is the acquisition story" | True that the hoarding sells the floor; 140 drivers joined in September | The slide keeps the floor as a sign-up story; the redesign changes the pay unit, not the acquisition line |
-| Finance partner | "The fall is just the monsoon" | True inside the first after week; demand did ease | The L4 cuts: the fall survives among drivers present in both windows, and in weekday peaks only, and after the monsoon-ended cut |
-
-**Each row is one appendix page.** The question in the "What they say" column is the heading of that role's appendix slide, so when the role asks on Thursday, the city head's analyst turns to a page that answers that question.
+## SECTION 2: Which objection holds?
+*Which objection is partly right, and which part, so that the defence stays honest in front of all three roles?*
 
 ```notes
-LIVE, 6 minutes. Walk one row at a time. Say which number on the slide answers each line
-(bookings per hour for driver operations, Rs 1.9 crore top-up for marketing, the monsoon-ended
-cut for finance). Ask: if driver operations says "but my honest drivers lose money", what is
-on their appendix page? Expect: the pay to driver-weeks above 0.5 acceptance, which stays.
-Transition: the studio's first round.
+LIVE, 50 minutes. Chapter 2 is L3 of the ladder, with round one of the studio as L5 practice.
+Styles: Veritasium (predict which role the city head sides with), the case method (Monday's three
+roles return, each partly right), peer instruction (the vote and the revote).
+Transition: the prediction.
 ```
 
 ---
 
-## S16. The studio's first round: three minutes, three roles
-*How does a group present the slide, and what does the scorer hold?*
+## S19. Predict: which role will the city head side with?
+*When the three objections land, whose side is the city head on?*
 
-**Three per group**: a presenter (five minutes with one slide), an objector (reads one role card), a scorer (holds the four-moves card). Three rounds of seven minutes, so each learner takes each seat once in the morning. The scorer marks the four moves and never the final number.
-
-**What a studio defender is listening for**, in the scorer's card:
-
-- Did the presenter restate the objection in their own words before answering?
-- Did the answer name the line of the slide it rested on?
-- Did they concede the part that is true, in plain words?
-- Did they say what would change their mind?
-
-**The trainer models one defence first**, conceding on purpose, so the room sees what the shape looks like before trying it.
+- a) The driver-operations lead: "Drivers will log off and supply at peak will fall"
+- b) The marketing lead: "The guarantee is on every hoarding; changing it six weeks in looks like bait"
+- c) The finance partner: "The fall in bookings per hour is the monsoon ending, not the scheme"
+- d) None of them outright, because each objection is partly right
 
 ```notes
-LIVE, 10 minutes for the trainer's model. Pick finance's objection ("just the monsoon"), run
-the four moves, and concede the first after week honestly. Point at the L4 cut as the fact
-that answers it. Then split the room into threes and start the clock. Nine groups, three
-rounds, seven minutes each.
-Transition: the mid-studio check.
+LIVE, 3 minutes. Vote, two minutes with a neighbour, revote. Count both votes on the board.
+Transition: the true part of each.
 ```
 
 ---
 
-## S17. The studio's mid-point: two patterns that fail
-*What do the groups do that costs them the slide?*
+## S20. Answer: each objection is partly right
+*Which part of each objection is true, and what evidence answers the rest?*
 
-**Two failures the scorer watches for.** The retreat: a presenter concedes everything after the first objection and loses the claim; the room cannot tell what the slide was about. The over-claim: a presenter repeats the claim louder when challenged, never conceding; the loser gives up on hearing anything new.
+| Role | The true part | The part the evidence answers |
+|---|---|---|
+| Driver operations | The 180 idle-tail drivers will log off: their idle hours are what stops being paid | The other 1,020 drivers held at 1.90 to 1.89 trips per online hour and keep the floor if they accept |
+| Marketing | The hoarding promised a floor, and 140 drivers joined after it went up | The floor stays for drivers who accept; none of the 140 joiners is in the idle tail |
+| Finance | The monsoon ended inside the window, and last year's weeks are not in the data | Rider requests rose 1.8 percent; drivers who joined before the launch fell from 1.90 to 1.58 |
 
-**One hint fits each**:
-
-- To the presenter who retreats, ask: "Which line of your evidence did the objection touch?"
-- To the presenter who over-claims, ask: "What would change your mind?"
-
-Both are moves three and four of the shape; both appear on the four-moves card.
+**The answer is d.** A defence that sides with no one concedes each true part out loud and answers the rest from a line of evidence.
 
 ```notes
-LIVE, 3 minutes. Pause the studio after round one. Call out two or three examples from the
-groups; name the pattern, give the hint, send the next round. No new teaching; the rule is
-the same.
-Transition: a prediction before chapter 3.
+LIVE, 5 minutes. One row at a time. Every number here is Monday's or is computed from Monday's
+tables in the facts file: the 1,020 are the 1,200 drivers less the idle tail.
+Transition: the shape a defence takes.
 ```
 
 ---
 
-## SECTION 3: What leaves the slide, and where does it go?
-*How does the appendix hold what the four moves leave behind, without hiding it?*
+## S21. A defence runs in four moves
+*What does the owner of a slide do when an objection lands?*
+
+```timeline
+label: Move 1 | title: Restate | body: Say the objection back until its owner agrees with your version
+label: Move 2 | title: Answer | body: Answer from the evidence, naming the line of the slide it rests on
+label: Move 3 | title: Concede | body: Say the true part out loud, in plain words, without dropping the claim
+label: Move 4 | title: Change my mind | body: Name the fact that would move you, and how you would get it | tone: dark
+```
+
+**Move 4 is the one first defences skip.** It is also the move that tells the objector the claim can be tested.
 
 ```notes
-LIVE, 20 minutes: Amazon's six-page memo as the opposite stance (5 minutes), then the
-appendix drawer with its one page per role (15 minutes). Chapter 3 is L4 of the ladder: what
-to cut and where to put it. Styles: the case method again (Amazon's letter as a decision
-forced by its own CEO), Minto (one appendix page answers one question).
-Transition: Amazon in 2017.
+LIVE, 3 minutes. The scorer in each three holds a card with these four moves and ticks each one
+it hears; it never scores the final number.
+Transition: two ways to get it wrong.
 ```
 
 ---
 
-## S18. Amazon's six-page memo, the opposite stance
-*Why does a company that bans slides read a memo in silence?*
+## S22. The trap: conceding nothing, or everything
+*Which two defences lose the room, and what does each cost?*
 
-**Amazon, 2017 letter to shareholders.** Jeff Bezos wrote: no PowerPoint-style presentations in meetings. In their place, a six-page memo written by the owner of the decision, read by the room in silence for the first fifteen minutes of the meeting.
+**Concedes nothing.** "The data is clear. The scheme pays for idle hours. The monsoon is irrelevant." The finance partner hears a claim repeated louder and stops listening; the slide is rejected as one-sided and the city keeps paying.
 
-**The memo's argument.** Writing in full sentences forces thinking that bullets hide. Reading in silence makes every participant start from the same baseline, which a presenter's voice cannot.
+**Concedes everything.** "You may be right that it is the monsoon; let us wait another six weeks." The claim is gone, and six more weeks of the same top-up follow.
 
-**For a city head who reads a slide in five minutes, not fifteen**, the lesson is the opposite: every bullet earns its place because the reader will not read a sentence that is not on the page.
-
-> *Source: Amazon shareholder letter, 2017; the memo convention. R2 id T1.*
+**The check.** Did the reply name the true part and the line of evidence, in that order? The fix is the four moves.
 
 ```notes
-LIVE, 4 minutes. Say: Amazon's rule is not the city head's constraint, so the slide is not
-replaced by a memo. The lesson Amazon's rule teaches is: pretend the city head reads the
-slide in silence, in five minutes, and ask what each line earns there. Ask: which of the
-nine Monday numbers would survive that test? Expect the room to say: the one that moves
-most, named with its denominator.
-Transition: the appendix drawer.
+LIVE, 3 minutes. Read both defences in character. The Kahoot's trap item asks whether the best
+defence never concedes anything; it is false.
+Transition: one full defence, modelled.
 ```
 
 ---
 
-## S19. The appendix drawer, one page per role
-*What goes behind the slide, and in what order?*
+## S23. The monsoon objection, answered in four moves
+*What does a complete defence of finance's objection sound like?*
+
+**Restate.** "You are saying the fall in bookings per hour could be the season ending, and the scheme has not had a fair test."
+
+**Answer.** "Three lines of evidence point at the scheme: rider requests rose 1.8 percent, so demand did not fall; the three busiest weeks after the launch still ran at 1.60 trips per online hour; and drivers who joined before the launch fell from 1.90 to 1.58, so the new drivers do not explain it."
+
+**Concede.** "You are right that the monsoon ended inside the window, and that last year's weeks are not in the data."
+
+**What would change my mind.** "The same six weeks of last year showing a fall of this size, or the test of the redesign showing no change in trips per online hour."
+
+```notes
+LIVE, 8 minutes. The trainer models this defence first, conceding on purpose, then points at each
+move on the S21 card. Every number is Monday's L4 cut, from the facts file.
+Transition: round one of the studio.
+```
+
+---
+
+## S24. Studio round one: three seats, seven minutes each
+*How does each group run the round, and what does the scorer hold?*
+
+| Seat | What it does | What it holds |
+|---|---|---|
+| Presenter | Presents the rebuilt slide in five minutes, then answers one objection | The slide |
+| Objector | Reads one role's objection from its card and pushes back once | One role card |
+| Scorer | Ticks each move heard: restate, answer, concede, change my mind | The four-moves card |
+
+**Three rounds of seven minutes.** Rotate seats after each round, so every member of a group presents once, objects once and scores once.
+
+```notes
+LIVE, 23 minutes. Two minutes to form threes and hand out cards, then 3 x 7. Thirty-five learners
+make eleven threes and one pair; in the pair a TA takes the objector seat. Walk the room; note one
+strong concession and one retreat to use on S25.
+Transition: the pause after round one.
+```
+
+---
+
+## S25. A defence fails by retreating or by overclaiming
+*What do failing defences do, and which question fixes each?*
+
+| The failure | What it sounds like | The question that fixes it |
+|---|---|---|
+| Retreat | The presenter concedes the whole claim at the first push | "Which line of your evidence did the objection touch?" |
+| Overclaim | The presenter repeats the claim louder and concedes nothing | "What would change your mind?" |
+
+**Chapter 2 adds the four moves to Tuesday's node:** restate, answer, concede, say what would change your mind. **In the interview** [F]: a stakeholder's objection is partly right; how do you answer it?
+
+```notes
+LIVE, 5 minutes. Name one example of each from the round, without names. Then the break.
+Transition: break, 10 minutes, then chapter 3.
+```
+
+---
+
+## SECTION 3: What leaves the slide?
+*What leaves the slide and where does it go, so that nothing a role will ask about is hidden?*
+
+```notes
+LIVE, 20 minutes. Chapter 3 is L4 of the ladder. Styles: Veritasium (predict where a caveat goes),
+the case method (Amazon's memo as the opposite rule), Minto (one appendix page answers one
+question). The mid-session drill, cut five elements to two, runs on S30.
+Transition: a prediction.
+```
+
+---
+
+## S26. Predict: which of these belongs in the appendix?
+*Of four things the slide could carry, which one moves behind it?*
+
+- a) The caveat that the monsoon ended inside the window
+- b) The per-driver-week and per-trip reads, with one line each on what moved them
+- c) The action and its saving range
+- d) The chart of bookings per peak online hour
+
+```notes
+LIVE, 3 minutes. Letters on paper. Expect some votes for a, since caveats feel like detail.
+Transition: the answer, and the drawer it goes in.
+```
+
+---
+
+## S27. Answer: the caveat stays; detail goes in a drawer
+*What sits behind the slide, page by page?*
 
 ```mermaid
 flowchart TD
-    S["<b>The slide</b><br/>the four parts the city head reads<br/>in five minutes"]
-    A1["<b>Appendix 1</b><br/>Driver operations' question:<br/>what happens to the honest majority?"]
-    A2["<b>Appendix 2</b><br/>Marketing's question:<br/>does the sign-up story survive?"]
-    A3["<b>Appendix 3</b><br/>Finance partner's question:<br/>what has the monsoon done to the fall?"]
+    S["<b>The slide</b><br/>claim, evidence, caveat, action"]
+    A1["<b>Appendix 1: driver operations asks</b><br/>what happens to the drivers who accept?"]
+    A2["<b>Appendix 2: marketing asks</b><br/>does the sign-up story survive?"]
+    A3["<b>Appendix 3: finance asks</b><br/>how much of the fall is the season?<br/>the other two reads live here"]
     S --> A1
     S --> A2
     S --> A3
@@ -472,65 +600,109 @@ flowchart TD
     class A1,A2,A3 known
 ```
 
-**Each appendix page is one question's answer.** The question is the heading. The evidence sits beneath it. The caveat is on the page where it belongs, not hidden; if a caveat is important enough that the role will ask about it, moving it to the appendix is dishonest.
+**The answer is b.** A caveat moved to the appendix is found there by its owner, who then calls the slide dishonest. Each appendix page is headed by the question one role will ask, so the analyst turns to it when the question comes.
 
 ```notes
-LIVE, 4 minutes. Walk the three pages. Ask: can a caveat live only in the appendix? The
-answer is no: a caveat belongs in plain sight on the slide where it changes the action, with
-the appendix carrying the detail if the role goes looking. The city head's own slide names
-the monsoon-end cut on the main page.
-Transition: into the studio's second round.
+LIVE, 5 minutes. The trap here is a caveat in the drawer. Walk the three pages and ask what each
+role's page must hold. The common wrong answer in an interview is "I put everything in the
+appendix".
+Transition: a company that bans slides.
 ```
 
 ---
 
-## S20. The studio's second round: roles swapped
-*What changes when the presenter sits in the objector's seat and defends their old slide?*
+## S28. Amazon reads a six-page memo in silence
+*Why would a company reject slides, and what does that teach a one-slide answer?*
 
-**Each group holds the same slide**, but the three learners swap roles. The presenter from round one becomes the objector in round two. The objector reads the role card that most argued against the slide they built. The scorer rotates to the third learner.
+**In its 2017 letter to shareholders, Amazon said it does no PowerPoint or slide presentations in meetings.** The owner writes a narratively structured six-page memo, the room reads it in silence at the start of the meeting, and the letter says a great memo probably takes a week or more to write.
 
-**The second round's test**: a presenter can only defend their slide well when they have sat in every objector's chair. By round two the room has heard every objection three times; the defence is now the moves, not the slide.
+**What it teaches the slide.** The memo forces full sentences where bullets hide the reasoning. The city head will read one slide in five minutes, so every element on it must earn its place the way a sentence earns its place in a memo.
 
-**Rotation**: three rounds of seven minutes in round one, three of seven minutes in round two, with two minutes of regroup between rounds. Six minutes of scoring at the end.
+> Source: Amazon's 2017 letter to shareholders, filed 18 April 2018 (checked 12 October 2026).
 
 ```notes
-LIVE, 25 minutes. Reset the clock. The groups swap seats on the trainer's word, not between
-rooms. At minute 12 (mid-round-two), pause and ask one group to name the move that most
-helped them. Expect: concede. The move that most hurt them: restate (because an objection
-restated weak sticks).
-Transition: into the gallery and chapter 3's reveal.
+LIVE, 4 minutes. Ask: which is better for Thursday, a slide or a memo? There is no single answer:
+the afternoon's written case is the memo form of this morning's slide.
+Transition: the drill.
 ```
 
 ---
 
-## S21. The gallery: slides on the wall, voted
-*Which titles would a city head actually act on?*
+## S29. Cut five elements to the two that carry the claim
+*Which two elements of a crowded draft does the claim need?*
 
-**At the end of the studio**, every group pins its final slide on the wall. The room walks the gallery for five minutes. Each learner holds three dots. One dot on the title that most clearly states a claim a city head could act on. One dot on the appendix page that most clearly answers its role's question. One dot on the slide whose caveat sits most clearly in sight.
+| Element on the draft | Keep or move? |
+|---|---|
+| The line "peak online hours up 24 percent" | |
+| The chart of bookings per peak online hour, Rs 314 to Rs 260 | |
+| A table of acceptance by zone | |
+| The top-up split: 61 percent to low acceptance | |
+| A pie of top-up by week | |
 
-**Two patterns the trainer watches**: a slide the room votes highly on whose claim is still a topic ("Peak scheme analysis"); a slide the room votes highly on whose caveat has been moved to the appendix. Both are examples for the solution discussion that closes the morning.
+**Your task.** Keep two, and for every element you move, write the role whose appendix page receives it.
 
 ```notes
-LIVE, 10 minutes. Dots on; walk; count. The vote is a cheap read of what the room has learnt,
-not a grading. Save the trainer's own vote for the solution discussion. The gallery doubles
-as the Big Idea test of SWD (R1 T1): a title that is a claim a city head could act on survives
-the vote; a topic title does not.
-Transition: the morning closes on where it opened.
+LIVE, 6 minutes. This is mid-session drill 1, in exercises/unguided. Four minutes alone, two
+minutes comparing with a neighbour. Expect the 24 percent line kept by some: ask what claim it
+supports.
+Transition: what chapter 3 adds.
 ```
 
 ---
 
-## S22. Where the morning closes
-*What has the room earned by the end of chapter 3?*
+## S30. Chapter 3 adds the appendix drawer
+*What is left on the slide, and what is waiting behind it?*
 
-**Three things.** The one-slide answer the three roles can repeat (claim, chart with its denominator, caveat, action). The four moves of a defence under objection, with the trainer having modelled one and the room having run six. The appendix as a drawer, not as a hiding place.
+```mermaid
+flowchart LR
+    T1["<b>chapter 1</b><br/>claim and denominator"] --> T2["<b>chapter 2</b><br/>four moves"] --> T3["<b>chapter 3</b><br/>one appendix page<br/>per role's question"]
+    T3 -.-> T4["<b>afternoon</b><br/>a number from nothing"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class T1,T2 known
+    class T3 lit
+    class T4 unknown
+```
 
-**Four things the room has not yet done**, which the afternoon takes up: a number sized from nothing, under the clock; a one-page business case written AI-free; two transcripts of the slide presented to a non-technical leader read and scored; the gallery's lessons for the city head's own slide.
+**In the interview** [F]: what do you leave off the slide, and where does it go? Answer with the drawer: one page per question a named role will ask.
 
 ```notes
-LIVE, 2 minutes. Read the three in order; read the four not yet done. Say that the Half 2
-notebook, the dojo and the written case fill the afternoon. The handoff line now sits at
-the bottom of the trainer sheet: "You have a slide a city head could act on. The afternoon
-asks whether you can estimate the number you do not have, and write the slide down."
-Transition: break, then Half 2.
+LIVE, 2 minutes. One learner says the slide's four parts and the three appendix headings from
+memory.
+Transition: round two of the studio.
+```
+
+---
+
+## S31. Studio round two: the seats swap
+*What changes when the presenter has sat in every objector's seat?*
+
+**Each group keeps its slide and swaps seats.** The round-one presenter now objects, reading the role card that pushed hardest on their own slide; the round-one scorer presents, with the appendix pages built in chapter 3.
+
+**Three rounds of seven minutes, rotating, then eight minutes to rebuild the slide** with what the objections showed.
+
+```notes
+LIVE, 38 minutes. Three minutes to set up, 3 x 7 = 21 minutes of rounds, 8 minutes to rebuild,
+6 minutes for two groups to present their final slide to the room. Hold the slides for the
+afternoon gallery.
+Transition: where the morning ends.
+```
+
+---
+
+## S32. Where the morning ends: three parts earned
+*What can you do now that you could not do at the start of the morning?*
+
+```cards
+icon: file-text | eyebrow: Chapter 1 | title: The claim and its denominator | body: The scheme pays for idle hours: Rs 314 to Rs 260 per peak online hour, the fare flat | tone: light
+icon: shield | eyebrow: Chapter 2 | title: The four moves | body: Restate, answer, concede, say what would change your mind | tone: light
+icon: archive | eyebrow: Chapter 3 | title: The appendix drawer | body: One page per question a role will ask; the caveat stays on the slide | tone: light
+```
+
+**The afternoon asks the second question on the ticket:** how many drivers the evening peak needs, sized without a dataset.
+
+```notes
+LIVE, 2 minutes. Read the three cards. Lunch.
+Transition: half two, the dojo.
 ```

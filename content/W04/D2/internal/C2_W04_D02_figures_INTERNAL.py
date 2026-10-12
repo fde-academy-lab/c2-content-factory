@@ -76,7 +76,7 @@ def cluttered_slide():
     return fig
 
 
-def week_chart(ax, emphasis=True):
+def week_chart(ax):
     """Rupees per peak online hour over the twelve weeks, the slide's one piece of evidence."""
     xs = range(len(WEEKS))
     ys = [w["rs_per_hour"] for w in WEEKS]
@@ -85,37 +85,42 @@ def week_chart(ax, emphasis=True):
     after = MON["rs_per_hour_after"]["value"]
     ax.hlines(before, -0.3, 5.3, color=MUTED, ls=":", lw=1.6)
     ax.hlines(after, 5.7, 11.3, color=MUTED, ls=":", lw=1.6)
-    ax.text(2.5, before + 6, f"six weeks before: Rs {before:.0f}", ha="center", fontsize=13, color=INK)
-    ax.text(8.5, after - 13, f"six weeks after: Rs {after:.0f}", ha="center", fontsize=13, color=INK)
+    ax.text(2.5, before + 6, f"before: Rs {before:.0f}", ha="center", fontsize=12, color=INK)
+    ax.text(8.5, after - 15, f"after: Rs {after:.0f}", ha="center", fontsize=12, color=INK)
     ax.axvline(5.5, color=ROSE, lw=1.4, ls="--")
-    ax.text(5.6, 334, "launch,\n31 Aug", fontsize=12, color=ROSE, va="top")
+    ax.text(5.65, 336, "launch,\n31 Aug", fontsize=12, color=ROSE, va="top")
     ax.set_ylim(220, 340)
-    ax.set_xticks(list(xs)[::2], LABELS[::2])
-    ax.set_ylabel("Rs per peak online hour")
+    ax.set_xticks(list(xs)[::3], LABELS[::3])
+    ax.tick_params(labelsize=12)
+    ax.set_ylabel("Rs per online hour", fontsize=12)
 
 
 def cleared_slide():
-    """Slide A rebuilt: the four parts, numbered where they sit on the page."""
-    fig = plt.figure(figsize=(10, 5.6))
+    """Slide A rebuilt: the four parts, numbered where they sit on the page.
+
+    Drawn at 8.4 inches with no label under 12 points, so a slide that places it about 6.3 inches
+    wide still prints every label at 9 points or more.
+    """
+    fig = plt.figure(figsize=(8.4, 4.7))
     top = fig.add_axes([0, 0, 1, 1]); top.set_xlim(0, 10); top.set_ylim(0, 5.6); top.axis("off")
-    top.text(0.25, 5.2, "1  The scheme is paying for online hours that carry no trips",
-             fontsize=17, weight="bold", color=INK)
-    top.text(0.55, 4.82, "pay per completed peak trip, with an acceptance floor", fontsize=13,
+    top.text(0.15, 5.15, "1  The scheme is paying for online hours that carry no trips",
+             fontsize=15, weight="bold", color=INK)
+    top.text(0.5, 4.72, "pay per completed peak trip, with an acceptance floor", fontsize=12,
              color=MUTED, style="italic")
-    chart = fig.add_axes([0.07, 0.12, 0.55, 0.62])
+    chart = fig.add_axes([0.1, 0.1, 0.5, 0.6])
     week_chart(chart)
-    chart.set_title("2  Gross bookings per peak online hour", fontsize=14, loc="left", color=INK)
-    box(top, 6.55, 2.75, 3.25, 1.75, AMBER, AMBER_TINT)
-    top.text(6.7, 4.2, "3  Caveat", fontsize=13, weight="bold", color=AMBER)
-    top.text(6.7, 3.95, "The monsoon ended inside the\nwindow, and last year's weeks\n"
-             "are not in the data, so part\nof the fall may be the season.", fontsize=12, color=INK,
-             va="top")
-    box(top, 6.55, 0.55, 3.25, 1.95, GREEN, "white")
+    chart.set_title("2  Gross bookings per peak online hour", fontsize=12, loc="left", color=INK,
+                    weight="bold")
+    box(top, 6.3, 2.6, 3.6, 2.0, AMBER, AMBER_TINT)
+    top.text(6.45, 4.3, "3  Caveat", fontsize=12, weight="bold", color=AMBER)
+    top.text(6.45, 4.02, "The monsoon ended inside\nthe window and last year's\nweeks are not in the data,\n"
+             "so part of the fall may\nbe the season.", fontsize=12, color=INK, va="top")
+    box(top, 6.3, 0.2, 3.6, 2.25, GREEN, "white")
     lo, hi = MON["saving_low_rs"]["shown"], MON["saving_high_rs"]["shown"]
-    top.text(6.7, 2.2, "4  Action, for the city head", fontsize=13, weight="bold", color=GREEN)
-    top.text(6.7, 1.95, f"Pay per completed peak trip\nwith an acceptance floor:\n{lo} to {hi} back over\n"
-             "six weeks if a fifth to a half\nof idle drivers start accepting.", fontsize=12, color=INK,
-             va="top")
+    top.text(6.45, 2.15, "4  Action, city head signs", fontsize=12, weight="bold", color=GREEN)
+    top.text(6.45, 1.87, f"Pay per completed peak trip\nwith an acceptance floor:\n{lo} to {hi} back\n"
+             "over six weeks if a fifth\nto a half of idle drivers\nstart accepting.", fontsize=12,
+             color=INK, va="top")
     return fig
 
 
@@ -142,18 +147,19 @@ def three_denominators():
               ("Per driver-week", "twelve_rs_per_driver_week_before", "twelve_rs_per_driver_week_after",
                "twelve_rs_per_driver_week_change_pct"),
               ("Per trip", "twelve_rs_per_trip", "twelve_rs_per_trip", None)]
-    fig, axes = plt.subplots(1, 3, figsize=(10, 4.8))
+    fig, axes = plt.subplots(1, 3, figsize=(10, 3.6))
     for ax, (title, b, a, pct) in zip(axes, panels):
         vals = [N[b]["value"], N[a]["value"]]
         ax.bar(["before", "after"], vals, color=[VIOLET, ROSE if pct else GREEN], width=0.6)
         for i, v in enumerate(vals):
             ax.text(i, v * 1.02, f"Rs {v:,.0f}" if v >= 1000 else f"Rs {v:g}", ha="center",
-                    fontsize=13, weight="bold", color=INK)
+                    fontsize=14, weight="bold", color=INK)
         ax.set_ylim(0, max(vals) * 1.25), ax.set_yticks([])
         ax.spines["left"].set_visible(False)
-        ax.set_title(title, fontsize=14)
-        ax.text(0.5, -0.17, N[pct]["shown"] if pct else "flat", transform=ax.transAxes,
-                ha="center", fontsize=13, color=MUTED, style="italic")
+        ax.set_title(title, fontsize=15)
+        ax.tick_params(axis="x", labelsize=14)
+        ax.text(0.5, -0.25, N[pct]["shown"] if pct else "flat", transform=ax.transAxes,
+                ha="center", fontsize=14, color=MUTED, style="italic")
     fig.suptitle("Six drivers, two weeks, the same rupees three ways", fontsize=15, weight="bold", color=INK)
     fig.tight_layout()
     return fig
