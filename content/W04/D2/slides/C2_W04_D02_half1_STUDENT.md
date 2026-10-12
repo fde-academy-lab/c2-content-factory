@@ -435,26 +435,26 @@ Transition: the prediction.
 
 ---
 
-## S19. Predict: which line best answers the monsoon?
-*The finance partner says the fall is the monsoon ending. Which line of evidence answers it best?*
+## S19. Predict: which role will the city head side with?
+*When the three objections land, whose side is the city head on?*
 
-a) Rider requests rose 1.8 percent across the six weeks after the launch, so demand never fell
+a) The driver-operations lead: "Drivers will log off and supply at peak will fall"
 
-b) With requests back at the before level, the last three weeks still ran at 1.56 trips an hour
+b) The marketing lead: "The guarantee is on every hoarding; changing it six weeks in looks like bait"
 
-c) Bookings per active driver-week rose 0.8 percent, so drivers still earned
+c) The finance partner: "The fall in bookings per hour is the monsoon ending"
 
-d) The 140 drivers who joined after the launch drove only some weeks
+d) None of them outright, because each objection is partly right
 
 ```notes
 LIVE, 3 minutes. Vote, two minutes with a neighbour, revote. Count both votes on the board. Expect
-votes on a, since it is the number everyone quotes.
+votes on c, since the monsoon sounds like the safest explanation.
 Transition: the true part of each objection.
 ```
 
 ---
 
-## S20. Answer: the last three weeks answer the monsoon
+## S20. Answer: each objection is partly right
 *Which part of each objection is true, and what evidence answers the rest?*
 
 | Role | The true part | The part the evidence answers |
@@ -463,7 +463,7 @@ Transition: the true part of each objection.
 | Marketing | The hoarding promised a floor, and 140 drivers joined after it went up | The floor stays for drivers who accept; none of the 140 joiners is in the idle tail |
 | Finance | The monsoon ended inside the six weeks, and last year's weeks are not in the data | In the last three weeks requests were back at the before level and trips per hour still ran at 1.56 |
 
-**The answer is b.** Weekly requests fell four weeks running from 7 September, so a's six-week average hides a slide; in the last three weeks they sat inside the before window's weekly range, and trips per hour stayed at 1.56. c is the per-driver-week trap, and d explains the denominator, never the fall.
+**The answer is d.** A defence that sides with no one concedes each true part out loud and answers the rest from a line of evidence. Finance's row is the hardest: weekly requests fell four weeks running from 7 September, so the six-week rise of 1.8 percent hides a slide; the last three weeks answer it.
 
 ```notes
 LIVE, 5 minutes. One row at a time. Every number here is Monday's or is computed from Monday's

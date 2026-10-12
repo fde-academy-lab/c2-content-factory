@@ -67,7 +67,8 @@ notes, the sheet, the Kahoot, the take-home and every trainer file; the rescored
 reach 2 on the first three criteria. Every finding is fixed except the lines below, each with its
 reason.
 
-- **Graduate 18, in part.** The code-along's chapter-1 cells confirm in code what the deck counted by hand; their predictions now ask for what no slide shows (which drivers explain the fall, how many more hours a driver-week carried, what doubling a factor does).
+- **Graduate 18, in part.** S19 keeps the spine's prediction (the Veritasium row of section 6's styles table), though S1's caveat says each objection is partly right: the question asks whose side the city head is on, which the caveat does not settle. The code-along's cells confirm in code what the deck counted by hand; their predictions now ask for what no slide shows (which drivers explain the fall, how many more hours a driver-week carried, what doubling a factor does).
+- **Graduate 5, the week map.** The spine's styles table quotes Monday's node as "1.9 to 1.6"; the node prints 1.90 to 1.58, the two decimals every other file uses.
 - **Graduate 29, "read" as a noun.** It stays, used only beside its three examples (per hour, per driver-week, per trip), which define it where it first appears.
 - **Graduate 38, two items.** Drill 2's item 4 re-asks S33 minutes after it, by the design of a mid-session retrieval drill; the Kalpa store's item 1 is a computation the stem sets up, and item 2 no longer prints its answer.
 - **Graduate 53, "vanity metric".** It sits in the weak answer on purpose: it is the jargon a weak candidate reaches for.
