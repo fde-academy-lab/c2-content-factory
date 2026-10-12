@@ -50,8 +50,8 @@ rupees, and how many packer shifts a week?** Ask each question before its answer
 | The interview room | How do you evaluate a forecast? | MAE or MAPE? The festival moves three weeks? What did Zillow's forecast cost? |
 
 **The day's answer, said at the close (half two, S12).** "Nothing books a shift until it beats a copy
-of last year on hidden weeks. Festival-aligned, raised 2.6 percent because being short costs 4.6
-times being long, books 20,275 packer shifts, 3,719 in the week of 19 October, with an error bar of
+of last year on hidden weeks. Festival-aligned, raised 2.6 percent because a late shipment costs 4.6
+times a spare one, books 20,275 packer shifts, 3,719 in the week of 19 October, with an error bar of
 6,615 shipments a week."
 
 ---
@@ -147,23 +147,31 @@ names any of them before a learner's own cell prints it.
 | The two windows | 1,983,300 and 2,279,500 | window_2026.calendar_2025_total, window_2026.festival_2025_total |
 | The share and the cushion | 0.82; 2.6 percent | ticket.plan_quantile, holdout.cushion_pct |
 | The plan | 20,275 shifts; 3,719 at the peak | plan.shifts_total, plan.peak_week_shifts |
-| The error bar | 6,615 a week; about Rs 35,800 high, Rs 1.65 lakh low | error_bar.week_shipments, error_bar.week_idle_rs, error_bar.week_late_rs |
+| The error bar | the forecast's 6,615 a week; about Rs 35,800 if it runs high, Rs 1.65 lakh if low | error_bar.week_shipments, error_bar.week_idle_rs, error_bar.week_late_rs |
+| The fair price | each forecast at its own 0.82 point: festival-aligned Rs 8.8 lakh, the vendor Rs 10.0 lakh | interview.own_raised_cost_aligned_rs, interview.own_raised_cost_vendor_rs |
+| The peak week's range | 3,413 to 3,906 shifts needed against 3,719 booked | interview.peak_low_shifts, interview.peak_high_shifts, plan.peak_week_shifts |
+| The horizon | ten weeks, 21 September to the week of 30 November | ticket.horizon_weeks |
 
 ## What are the interview answers, each in one breath?
 
-- **How do you evaluate a forecast?** Hide the latest weeks, at least as many as the plan books,
-  forecast them from one week, and score the misses in shipments against a copy of last year:
-  festival-aligned 6,615, the house bot 9,831, the vendor 16,400.
-- **MAE or MAPE?** MAE in shipments when the cost is per shipment; MAPE only to compare series of
-  different sizes, never near zero.
+- **How do you evaluate a forecast?** Hold out the latest weeks, at least as many as the forecast
+  must reach ahead (ten here), forecast them from one origin, then roll the origin; score the misses
+  in shipments and priced by direction against the seasonal naive: festival-aligned 6,615, the
+  seasonal naive 9,831, the vendor 16,400; at each forecast's own 0.82 point, Rs 8.8 lakh against the
+  vendor's Rs 10.0 lakh.
+- **MAE or MAPE?** MAE in shipments when the cost is per shipment; MASE or WAPE across centres of
+  different sizes, since MAPE explodes near zero and punishes forecasts that land high.
 - **The festival moves three weeks?** Every calendar copy breaks; a copy by distance from the festival
   moves with it, and the sale's distance from the festival gets checked.
-- **Zillow?** A band of plus or minus 200 basis points swung about 1,200; about USD 304 million written
-  down; the forecast inside the band was what failed.
-- **The AI-company variant?** Line the last launch up by days from launch day, beat its shape on
-  hidden days, plan above the forecast because a timeout costs more than an idle server.
-- **Two-wheelers a year?** About 2.16 crore from households, ownership and replacement, against
-  SIAM's 2,17,05,974; never annualise October's 31,49,846
+- **Zillow?** A margin guardrail of plus or minus 200 basis points around breakeven; price forecasts
+  six months ahead missed by far more, the margin swung about 1,200 basis points, about USD 304
+  million was written down and the business wound down: the forecast's error was wider than the band.
+- **The AI-company variant?** Size the peak in tokens a second from the ground up, check it against
+  earlier launches by days from launch with the weekday kept (untested with fewer than two), and set
+  capacity to a latency target with headroom, booking above the forecast because a timeout costs more
+  than an idle GPU.
+- **Two-wheelers a year?** About 2.2 crore from households, ownership and replacement, against
+  SIAM's 2,17,05,974 sold to dealers; never annualise October's 31,49,846 registrations
   (`trainer/C2_W04_D05_guesstimate_TRAINER.md`).
 
 ## Which file serves which moment?

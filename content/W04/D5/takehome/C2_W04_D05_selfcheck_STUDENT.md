@@ -69,7 +69,7 @@ percent, as finance does.
   from 218,300, close to its hidden weeks' average of 217,746, which is luck in the other direction.
 - **The copies of last year moved least.** The house bot, finance's rule and festival-aligned copy
   2025's weeks and never use the origin, so their forecasts did not change at all; only the weeks
-  being scored did, which moved their scores by a few thousand while naive's more than doubled.
+  being scored did, which moved their scores by 1,331 and 1,489 a week while naive's more than doubled.
 - **The vendor's gap grew.** Its four rows are its forecast for 10 to 13 weeks after 22 June, the
   farthest it looked ahead, and its misses grow with distance: 148 percent above festival-aligned's
   MAE on thirteen weeks, 233 percent on these four. A fair four-week test would need the vendor to
@@ -86,7 +86,7 @@ test holds a festive week, so the festival placement still rests on the 2025 bac
 
 A strong paragraph names the dip at 196,600 and what it did to naive; names the rules that never look
 at the origin; says the vendor's four weeks are its farthest ahead; and ends on one call: keep
-festival-aligned, and judge any rule on at least as many hidden weeks as the plan books, eight here,
-since a test should be at least as long as the horizon (FPP3, section 5.8, checked 12 October 2026).
+festival-aligned, and judge any rule on at least as many hidden weeks as the forecast must reach
+ahead, ten here, since a test should be at least as long as the horizon (FPP3, section 5.8, checked 12 October 2026).
 A weak one reports the new numbers without the origin week, calls naive "much worse" as if the rule
 had changed, or calls the vendor "cheaper" without saying why its misses are cheap.

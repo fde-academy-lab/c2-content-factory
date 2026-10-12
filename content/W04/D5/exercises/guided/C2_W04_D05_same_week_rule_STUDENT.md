@@ -1,7 +1,7 @@
 # How does the same-week-last-year rule score when you build it by hand and hide three weeks?
 
 Flipkart, the Lucknow fulfilment centre. The planner must book packer shifts for the eight festive
-weeks beginning 12 October to 30 November 2026, and the tournament's house rule copies the same week
+weeks beginning 12 October to 30 November 2026, and the tournament's house bot copies the same week
 of last year. Diwali fell on Thursday 31 October 2024 (the week of 28 October) and on Monday 20
 October 2025 (the week of 20 October). Illustrative case: the company is real, the situation and the
 data are synthetic, built for this class.

@@ -57,7 +57,7 @@ shipments a week to change the packer-shifts booked, at about 120 shipments a sh
 
 | Team | Model MAE | Scored on | Also |
 |---|---|---|---|
-| A | 9,500 | the thirteen hidden weeks | a vendor contract to run it |
+| A | 9,800 | the thirteen hidden weeks | a vendor contract to run it |
 | B | 6,000 | the 91 weeks it was fitted to | |
 | C | 6,200 | the thirteen hidden weeks, none of them festive | 7 of 13 weeks too high |
 

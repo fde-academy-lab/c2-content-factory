@@ -70,11 +70,11 @@ head wrong, so the trainer says it again before the room leaves.
 
 ---
 
-## Q5. The plan books eight weeks ahead: which weeks do you hide from every forecast before scoring?
+## Q5. The plan's last week is ten weeks past the data: which weeks do you hide from every forecast before scoring?
 *Tests: the hold-out sits at the end and spans the horizon.*
 
 - A random fifth of all weeks, so every season is tested
-- The latest weeks, at least as many as the plan books  <- correct
+- The latest weeks, as far ahead as the plan reaches  <- correct
 - The festival weeks, since they matter most to the plan
 - The first weeks, so the model learns from the newest data
 
@@ -91,7 +91,7 @@ head wrong, so the trainer says it again before the room leaves.
 ---
 
 ## Q7. A late shipment costs Rs 25 and a spare shipment, planned and never shipped, Rs 5.42: what share of weeks should the plan cover?
-*Tests: the plan quantile from two unit costs.*
+*Tests: the plan share from two unit costs.*
 
 - 0.50, the middle of the error bar
 - 0.18, the share of weeks left short
