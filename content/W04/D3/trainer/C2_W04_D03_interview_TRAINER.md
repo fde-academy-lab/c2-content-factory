@@ -8,7 +8,7 @@ screens; the facts inside are from the case file.
 ## How do the [S] answers score?
 
 The seven criteria, each 0 to 2: 0 absent, 1 present but incomplete or failing the obvious follow-up,
-2 complete and surviving it. Every hire-grade 2 below rests on a line the answer actually says.
+2 complete and surviving it. Every hire-grade 2 below rests on a line the answer says.
 
 | Criterion | Weak | Hire-grade | The hire-grade line that earns it |
 |---|---|---|---|
