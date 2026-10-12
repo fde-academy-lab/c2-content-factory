@@ -7,12 +7,12 @@ estimates first; the anchor is revealed last.
 
 | Step | What they say | The numbers |
 |---|---|---|
-| Clarify | "One dark store, one ordinary day, orders placed, not items." | |
-| Map | "Households in the catchment, times the share that orders in a given week, times orders a week from each, over seven days." | |
+| Clarify | "One dark store, one ordinary day, completed orders, not items." | |
+| Map | "Households in the catchment, which is the delivery radius's area times households a square kilometre; times the share ordering in a given week, which is the households using quick commerce at all times Instamart's share of them; times orders a week from each, over seven days." | |
 | Assume, with ranges | "40,000 households, from 30,000 to 50,000; 15 percent order in a week, from 10 to 20; 1.5 orders a week each, from 1 to 2." | Every input is an assumption, said as one |
-| Calculate | "40,000 x 0.15 x 1.5 / 7 is about 1,290 a day." | About 430 to about 2,860 across the ranges |
-| Validate | "Swiggy reported 1,089 orders per dark store per day across 1,171 stores in the quarter to June 2026, so I am 18 percent high." | Swiggy Q1 FY27 shareholder letter, key metrics table (T3, checked 12 October 2026) |
-| The catch | "Swiggy counts per active store-day, so a store's days count only once it is live, and a new store does not pull the average down before it opens." | The letter's footnote to the same table |
+| Calculate | "40,000 x 0.15 x 1.5 / 7 is about 1,290 a day. My least certain input is the share; landing on 1,089 needs about 13 percent, which I find believable." | About 430 to about 2,860 across the ranges, every extreme multiplied together, so the share is the input to argue about |
+| Validate | "Swiggy reported 1,089 completed orders per active store-day in the quarter to June 2026, a quarter it ended with 1,171 active stores, so I am 18 percent high." | Swiggy Q1 FY27 shareholder letter, key metrics table and definitions (T3, checked 12 October 2026) |
+| The catch | "That average counts only the days each store was active, and it spans young stores still ramping up and stores across 131 cities, so a mature Pune store 18 percent above it is what I would expect." | The letter's footnote to the same table; an active store is one with at least one completed order on the period's last day |
 
 ## What does each wrong turn look like, and what do you say?
 

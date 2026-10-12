@@ -21,7 +21,7 @@ from this page alone.
 | The 2 by 2 grid | The same file, the second table | Three per group, one per pair |
 | The ten dots and their counts | `whiteboards/C2_W04_D03_board_work_STUDENT.md`, the first drawing | Drawn on the board before the room sits |
 | The action-map board | The board work's sixth drawing: four regions, support across with the floor in the middle, lift up | One, on the wall or the whiteboard |
-| Pair cards | `whiteboards/C2_W04_D03_pair_cards_STUDENT.md` | One set of nine per group, held back until chapter 2 has run |
+| Pair cards | `whiteboards/C2_W04_D03_pair_cards_STUDENT.md` | One set of nine per group, held back until notebook 03's first cells have run |
 | The category manager's role card | `trainer/C2_W04_D03_role_card_TRAINER.md` | One copy, for the TA |
 | Tape for the pair cards, markers | | One roll and four markers per group |
 
@@ -51,7 +51,7 @@ both 4 as the groups call them. Then chips and cold drink (3, 3, both 2), then i
 chocolate sauce (1, 1, both 1). Name support, confidence and lift only after all three rows are on
 the board.
 
-**The sort.** Hand out the pair cards after notebook 02 has printed the pairs table. "Every number
+**The sort.** Hand out the pair cards once notebook 03 has ranked the pairs above the floor and listed the thin ones below it. "Every number
 on these cards is one you just computed. Place each card on the map, then pick one card your group
 would defend to the growth lead." Each group reads its sentence; the room says whether the card
 stays.
@@ -63,7 +63,7 @@ stays.
 | Confidence taken as the answer | A group writes 1.00 for bread and milk and stops | "How many carts have milk whether or not they have bread?" |
 | Expected count stuck | A group cannot get 2.67 | "If milk ignored bread, how many of the 4 bread carts would hold milk, with milk in 8 of 12?" |
 | Lift read as a cause | "Chai sells 25 percent more biscuits" | "What would you have to change at the stall to see that?" |
-| The thin pair promoted | Ice cream and chocolate sauce placed in Promote | "How many carts would the slot touch?" It is 100 in four weeks, against 400 at the floor |
+| The thin pair promoted | Ice cream and chocolate sauce placed in Promote | "How many carts would the slot touch?" It shows beside ice cream only, 1,600 carts in four weeks, and the pair sits in 100 of them, against 400 at the floor |
 | The trap pair promoted | Bread and milk placed in Promote because of 10,064 carts | "What would chance alone put beside bread, with milk in 71 percent of carts?" |
 | A group finishes early | All nine cards placed in under ten minutes | Hand it namkeen and poha, lift 1.29 on 116 carts: watch or ignore? |
 
@@ -78,7 +78,7 @@ stays.
 | butter, tomatoes | Trap | Above the floor on 524 carts, at 1.09: the floor alone would let it in |
 | bread, toned milk | Trap | 10,064 carts and lift 1.04: a count puts it first |
 | eggs, toned milk | Trap | 8,468 carts and lift 1.03 |
-| ice cream, chocolate sauce | Watch | 4.60 on 100 carts: tried in two zones first |
+| ice cream, chocolate sauce | Watch | 4.60 on 100 carts, real but shown only beside ice cream: tested first |
 | namkeen, poha | Ignore, argued | 1.29 on 116 carts: too thin and too weak; a group that says watch must say what the trial would show |
 
 ## What is on the board when the activity ends?

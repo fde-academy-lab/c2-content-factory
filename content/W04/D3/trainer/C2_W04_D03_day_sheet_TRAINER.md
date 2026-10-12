@@ -142,11 +142,13 @@ a learner's own cell prints it.
 
 - **Which measure cannot be fooled by popularity?** Lift, since it divides by the base rate: bread to
   milk reads 0.74, but milk is in 71 percent of carts, so lift is 1.04.
-- **Lift 4.6 on 0.25 percent support: act?** Not yet: 100 carts cannot repay a slot shown to everyone,
-  so it goes on the watch list.
-- **Heavy buyers?** Count each customer once: 3.39 falls to 2.56 and still beats chance.
-- **The rupee recommendation's forgotten cost?** Margin, never sales, less any discount handed back.
-- **The LLM shopping assistant?** Lift over a popularity baseline on held-out carts, then a holdout.
+- **Lift 4.6 on 0.25 percent support: act?** The pair is real, 100 carts against 22 by chance, but it
+  shows only beside ice cream, so it is worth little; it goes on the watch list and a test.
+- **Heavy buyers?** Count each customer once: 3.39 falls to 2.56, the number the strip ranks on.
+- **The rupee recommendation's forgotten cost?** Incrementality: some adds come anyway, so Rs 6.3 lakh
+  a month is a ceiling a holdout measures, and sales are never the gain.
+- **The LLM shopping assistant?** An offline gate against a popularity list and the current strip on
+  carts after a cutoff date, then customers randomised to three arms online.
 - **Orders a dark store handles in a day?** About 1,290 from households, share and frequency, against
   Swiggy's 1,089 per active store-day (`trainer/C2_W04_D03_guesstimate_TRAINER.md`).
 
