@@ -984,13 +984,13 @@ def nb04():
         check("July to September hold 45 app orders", len(orders) == 45)
         '''),
         md('''
-        ## Is every Retail-Plus cohort falling, and what does blended retention read? (your turn)
+        ## Is every Retail-Plus cohort falling, and what does blended retention read?
 
-        Take each member's cohort, the month her membership started, and her active months. Build the
+        **Your turn.** Take each member's cohort, the month her membership started, and her active months. Build the
         cohort table by age, as the morning did, then blended retention for July, August and
         September. What each line does: `how="cross"` pairs every member with each of the three months;
         the next line keeps only the months after she joined and adds whether she was active; a month
-        with no session has no row in `active`, so `fillna(False)` marks it as not active; the age is
+        with no session has no row in `active`, so `fillna(False)` sets it to not active; the age is
         the gap in months, written as year x 12 + month as in notebook 02. The lines to type:
 
         ```python
@@ -1012,9 +1012,9 @@ def nb04():
         '''),
         empty(),
         md('''
-        ## Where in the app is the loss, and when? (your turn)
+        ## Where in the app is the loss, and when?
 
-        Add-to-cart to checkout, per session, in three stretches: before 20 August, Monday's comparison
+        **Your turn.** Add-to-cart to checkout, per session, in three stretches: before 20 August, Monday's comparison
         window (20 August to 9 September) and the auto-reorder window (10 to 30 September). The lines
         to type:
 
@@ -1030,9 +1030,9 @@ def nb04():
         '''),
         empty(),
         md('''
-        ## Which step can members skip, and which unit does each rate use? (your turn)
+        ## Which step can members skip, and which unit does each rate use?
 
-        Using `s` from the cell above: the share of sessions with no search, and September's checkout
+        **Your turn.** Using `s` from the cell above: the share of sessions with no search, and September's checkout
         rate from the top, counted two ways: of September's sessions, the share that reached a checkout,
         and of September's active members, the share who checked out at least once. Both run from
         opening the app to checkout, end to end, so neither is a step over the step before. The lines

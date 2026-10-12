@@ -2,7 +2,7 @@
 
 Every number in the day's STUDENT prose (deck slides, notebook markdown, exercise, note, sheet and pre-read files), traced to its home in `C2_W04_D04_facts_INTERNAL.yaml`: a `numbers` id, a toy, a twelve-row count, a public fact with its R2 id, a number copied from another day, or a calendar date the ticket fixes. Speaker notes, code and code output are left out: notes are the trainer's words and code prints what it computes from the data. Written by C2_W04_D04_facts_audit_INTERNAL.py.
 
-Numbers traced: 2228. Numbers with no home: 0.
+Numbers traced: 2229. Numbers with no home: 0.
 
 | Number | File | Line | Facts id |
 |---|---|---|---|
@@ -791,42 +791,43 @@ Numbers traced: 2228. Numbers with no home: 0.
 | 0.23 | extras/C2_W04_D04_interview_STUDENT.md | 85 | aug_sale_orders_per_member_m1, toy_kaapi_funnel |
 | 0.61 | extras/C2_W04_D04_interview_STUDENT.md | 85 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 |
 | 40 | extras/C2_W04_D04_interview_STUDENT.md | 86 | everyone_jul, everyone_aug, toy_blend and more |
-| 12 | extras/C2_W04_D04_interview_STUDENT.md | 90 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
-| 2026 | extras/C2_W04_D04_interview_STUDENT.md | 90 | friday_weeks, friday_window, friday_diwali and more |
-| 24 | extras/C2_W04_D04_interview_STUDENT.md | 101 | toy_ai_cohorts, kalpa.checkout_per_member_sep, kalpa_checkout_per_member_sep and more |
-| 36 | extras/C2_W04_D04_interview_STUDENT.md | 102 | everyone_sep, retry_within_day_android_before, toy_ai_cohorts and more |
-| 27.4 | extras/C2_W04_D04_interview_STUDENT.md | 113 | Th3 |
-| 4.13 | extras/C2_W04_D04_interview_STUDENT.md | 113 | Th3 |
-| 3.87 | extras/C2_W04_D04_interview_STUDENT.md | 113 | Th3 |
+| 12 | extras/C2_W04_D04_interview_STUDENT.md | 89 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 2026 | extras/C2_W04_D04_interview_STUDENT.md | 89 | friday_weeks, friday_window, friday_diwali and more |
+| 24 | extras/C2_W04_D04_interview_STUDENT.md | 100 | toy_ai_cohorts, kalpa.checkout_per_member_sep, kalpa_checkout_per_member_sep and more |
+| 36 | extras/C2_W04_D04_interview_STUDENT.md | 101 | everyone_sep, retry_within_day_android_before, toy_ai_cohorts and more |
+| 27.4 | extras/C2_W04_D04_interview_STUDENT.md | 112 | Th3 |
+| 4.13 | extras/C2_W04_D04_interview_STUDENT.md | 112 | Th3 |
+| 3.87 | extras/C2_W04_D04_interview_STUDENT.md | 112 | Th3 |
+| 12 | extras/C2_W04_D04_interview_STUDENT.md | 112 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 2026 | extras/C2_W04_D04_interview_STUDENT.md | 112 | friday_weeks, friday_window, friday_diwali and more |
 | 12 | extras/C2_W04_D04_interview_STUDENT.md | 113 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
 | 2026 | extras/C2_W04_D04_interview_STUDENT.md | 113 | friday_weeks, friday_window, friday_diwali and more |
+| 60 | extras/C2_W04_D04_interview_STUDENT.md | 114 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
+| 19 | extras/C2_W04_D04_interview_STUDENT.md | 114 | jan_drop_m1_to_m2_points, calendar.zomato_letter, calendar.kalpa_windows |
+| 2023 | extras/C2_W04_D04_interview_STUDENT.md | 114 | M6, calendar.zomato_letter |
 | 12 | extras/C2_W04_D04_interview_STUDENT.md | 114 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
 | 2026 | extras/C2_W04_D04_interview_STUDENT.md | 114 | friday_weeks, friday_window, friday_diwali and more |
-| 60 | extras/C2_W04_D04_interview_STUDENT.md | 115 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
-| 19 | extras/C2_W04_D04_interview_STUDENT.md | 115 | jan_drop_m1_to_m2_points, calendar.zomato_letter, calendar.kalpa_windows |
-| 2023 | extras/C2_W04_D04_interview_STUDENT.md | 115 | M6, calendar.zomato_letter |
-| 12 | extras/C2_W04_D04_interview_STUDENT.md | 115 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
-| 2026 | extras/C2_W04_D04_interview_STUDENT.md | 115 | friday_weeks, friday_window, friday_diwali and more |
-| 34 | extras/C2_W04_D04_interview_STUDENT.md | 116 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 61 | extras/C2_W04_D04_interview_STUDENT.md | 116 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
-| 7 | extras/C2_W04_D04_interview_STUDENT.md | 117 | weekly_cohort_2026-08-17_w3, toy_weaned, Th5 and more |
-| 25 | extras/C2_W04_D04_interview_STUDENT.md | 117 | toy_dabba_club, Th5, twelve_rows.May_m3 and more |
-| 2,600 | extras/C2_W04_D04_interview_STUDENT.md | 117 | Th5 |
-| 12 | extras/C2_W04_D04_interview_STUDENT.md | 117 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
-| 2026 | extras/C2_W04_D04_interview_STUDENT.md | 117 | friday_weeks, friday_window, friday_diwali and more |
+| 34 | extras/C2_W04_D04_interview_STUDENT.md | 115 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 61 | extras/C2_W04_D04_interview_STUDENT.md | 115 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
+| 7 | extras/C2_W04_D04_interview_STUDENT.md | 116 | weekly_cohort_2026-08-17_w3, toy_weaned, Th5 and more |
+| 25 | extras/C2_W04_D04_interview_STUDENT.md | 116 | toy_dabba_club, Th5, twelve_rows.May_m3 and more |
+| 2,600 | extras/C2_W04_D04_interview_STUDENT.md | 116 | Th5 |
+| 12 | extras/C2_W04_D04_interview_STUDENT.md | 116 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 2026 | extras/C2_W04_D04_interview_STUDENT.md | 116 | friday_weeks, friday_window, friday_diwali and more |
 | 12 | extras/C2_W04_D04_interview_STUDENT.md | 121 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
 | 2026 | extras/C2_W04_D04_interview_STUDENT.md | 121 | friday_weeks, friday_window, friday_diwali and more |
-| 19 | extras/C2_W04_D04_interview_STUDENT.md | 121 | jan_drop_m1_to_m2_points, calendar.zomato_letter, calendar.kalpa_windows |
-| 2023 | extras/C2_W04_D04_interview_STUDENT.md | 121 | M6, calendar.zomato_letter |
+| 19 | extras/C2_W04_D04_interview_STUDENT.md | 122 | jan_drop_m1_to_m2_points, calendar.zomato_letter, calendar.kalpa_windows |
+| 2023 | extras/C2_W04_D04_interview_STUDENT.md | 122 | M6, calendar.zomato_letter |
 | 12 | extras/C2_W04_D04_interview_STUDENT.md | 123 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
 | 2026 | extras/C2_W04_D04_interview_STUDENT.md | 123 | friday_weeks, friday_window, friday_diwali and more |
-| 12 | extras/C2_W04_D04_interview_STUDENT.md | 124 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
-| 2026 | extras/C2_W04_D04_interview_STUDENT.md | 124 | friday_weeks, friday_window, friday_diwali and more |
-| 0 | extras/C2_W04_D04_interview_STUDENT.md | 128 | m1_jun, m1_jul, m1_aug and more |
-| 2 | extras/C2_W04_D04_interview_STUDENT.md | 128 | noise_points_nonmember_android, simpson_1951, tph_before and more |
-| 0 | extras/C2_W04_D04_interview_STUDENT.md | 128 | m1_jun, m1_jul, m1_aug and more |
-| 1 | extras/C2_W04_D04_interview_STUDENT.md | 128 | m1_jan, m1_feb, m1_mar and more |
+| 7 | extras/C2_W04_D04_interview_STUDENT.md | 124 | weekly_cohort_2026-08-17_w3, toy_weaned, Th5 and more |
+| 12 | extras/C2_W04_D04_interview_STUDENT.md | 125 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 2026 | extras/C2_W04_D04_interview_STUDENT.md | 125 | friday_weeks, friday_window, friday_diwali and more |
+| 0 | extras/C2_W04_D04_interview_STUDENT.md | 129 | m1_jun, m1_jul, m1_aug and more |
 | 2 | extras/C2_W04_D04_interview_STUDENT.md | 129 | noise_points_nonmember_android, simpson_1951, tph_before and more |
+| 0 | extras/C2_W04_D04_interview_STUDENT.md | 129 | m1_jun, m1_jul, m1_aug and more |
+| 1 | extras/C2_W04_D04_interview_STUDENT.md | 129 | m1_jan, m1_feb, m1_mar and more |
+| 2 | extras/C2_W04_D04_interview_STUDENT.md | 130 | noise_points_nonmember_android, simpson_1951, tph_before and more |
 | 38 | kahoot/C2_W04_D04_quiz_STUDENT.md | 8 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
 | 58 | kahoot/C2_W04_D04_quiz_STUDENT.md | 8 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
 | 44 | kahoot/C2_W04_D04_quiz_STUDENT.md | 9 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 |
@@ -1788,166 +1789,166 @@ Numbers traced: 2228. Numbers with no home: 0.
 | 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 134 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
 | 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 134 | friday_weeks, friday_window, friday_diwali and more |
 | 1951 | study-notes/C2_W04_D04_notes_STUDENT.md | 138 | simpson_1951, simpson_paper_year |
-| 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 139 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 140 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
 | 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 140 | friday_weeks, friday_window, friday_diwali and more |
-| 38 | study-notes/C2_W04_D04_notes_STUDENT.md | 142 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 100 | study-notes/C2_W04_D04_notes_STUDENT.md | 153 | comparator_drift_points, android_v2_share_after, toy_blend and more |
-| 34 | study-notes/C2_W04_D04_notes_STUDENT.md | 159 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 100 | study-notes/C2_W04_D04_notes_STUDENT.md | 162 | comparator_drift_points, android_v2_share_after, toy_blend and more |
-| 40 | study-notes/C2_W04_D04_notes_STUDENT.md | 162 | everyone_jul, everyone_aug, toy_blend and more |
-| 20 | study-notes/C2_W04_D04_notes_STUDENT.md | 162 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
-| 10 | study-notes/C2_W04_D04_notes_STUDENT.md | 163 | toy_two_batches, toy_funnel, T2 and more |
+| 38 | study-notes/C2_W04_D04_notes_STUDENT.md | 143 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 100 | study-notes/C2_W04_D04_notes_STUDENT.md | 154 | comparator_drift_points, android_v2_share_after, toy_blend and more |
+| 34 | study-notes/C2_W04_D04_notes_STUDENT.md | 160 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 100 | study-notes/C2_W04_D04_notes_STUDENT.md | 163 | comparator_drift_points, android_v2_share_after, toy_blend and more |
 | 40 | study-notes/C2_W04_D04_notes_STUDENT.md | 163 | everyone_jul, everyone_aug, toy_blend and more |
-| 50 | study-notes/C2_W04_D04_notes_STUDENT.md | 163 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
-| 50 | study-notes/C2_W04_D04_notes_STUDENT.md | 163 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
-| 10 | study-notes/C2_W04_D04_notes_STUDENT.md | 163 | toy_two_batches, toy_funnel, T2 and more |
-| 100 | study-notes/C2_W04_D04_notes_STUDENT.md | 163 | comparator_drift_points, android_v2_share_after, toy_blend and more |
-| 100 | study-notes/C2_W04_D04_notes_STUDENT.md | 163 | comparator_drift_points, android_v2_share_after, toy_blend and more |
-| 20 | study-notes/C2_W04_D04_notes_STUDENT.md | 164 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
+| 20 | study-notes/C2_W04_D04_notes_STUDENT.md | 163 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
 | 10 | study-notes/C2_W04_D04_notes_STUDENT.md | 164 | toy_two_batches, toy_funnel, T2 and more |
+| 40 | study-notes/C2_W04_D04_notes_STUDENT.md | 164 | everyone_jul, everyone_aug, toy_blend and more |
+| 50 | study-notes/C2_W04_D04_notes_STUDENT.md | 164 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
+| 50 | study-notes/C2_W04_D04_notes_STUDENT.md | 164 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
 | 10 | study-notes/C2_W04_D04_notes_STUDENT.md | 164 | toy_two_batches, toy_funnel, T2 and more |
-| 10 | study-notes/C2_W04_D04_notes_STUDENT.md | 164 | toy_two_batches, toy_funnel, T2 and more |
-| 20 | study-notes/C2_W04_D04_notes_STUDENT.md | 164 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
-| 118 | study-notes/C2_W04_D04_notes_STUDENT.md | 167 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
+| 100 | study-notes/C2_W04_D04_notes_STUDENT.md | 164 | comparator_drift_points, android_v2_share_after, toy_blend and more |
+| 100 | study-notes/C2_W04_D04_notes_STUDENT.md | 164 | comparator_drift_points, android_v2_share_after, toy_blend and more |
+| 20 | study-notes/C2_W04_D04_notes_STUDENT.md | 165 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
+| 10 | study-notes/C2_W04_D04_notes_STUDENT.md | 165 | toy_two_batches, toy_funnel, T2 and more |
+| 10 | study-notes/C2_W04_D04_notes_STUDENT.md | 165 | toy_two_batches, toy_funnel, T2 and more |
+| 10 | study-notes/C2_W04_D04_notes_STUDENT.md | 165 | toy_two_batches, toy_funnel, T2 and more |
+| 20 | study-notes/C2_W04_D04_notes_STUDENT.md | 165 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
 | 118 | study-notes/C2_W04_D04_notes_STUDENT.md | 168 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
-| 89 | study-notes/C2_W04_D04_notes_STUDENT.md | 169 | search_to_menu_searched_sep |
-| 34 | study-notes/C2_W04_D04_notes_STUDENT.md | 169 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 61 | study-notes/C2_W04_D04_notes_STUDENT.md | 170 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
-| 58 | study-notes/C2_W04_D04_notes_STUDENT.md | 174 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 44 | study-notes/C2_W04_D04_notes_STUDENT.md | 174 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 |
-| 58 | study-notes/C2_W04_D04_notes_STUDENT.md | 174 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 45 | study-notes/C2_W04_D04_notes_STUDENT.md | 174 | android_members_week_2026-09-14, android_member_week_2026-09-14, toy_dabba_club and more |
-| 43 | study-notes/C2_W04_D04_notes_STUDENT.md | 174 | android_members_week_2026-09-21, shift_21_sep_after, held_atc_to_order_android_after and more |
+| 118 | study-notes/C2_W04_D04_notes_STUDENT.md | 169 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
+| 89 | study-notes/C2_W04_D04_notes_STUDENT.md | 170 | search_to_menu_searched_sep |
+| 34 | study-notes/C2_W04_D04_notes_STUDENT.md | 170 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 61 | study-notes/C2_W04_D04_notes_STUDENT.md | 171 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
+| 58 | study-notes/C2_W04_D04_notes_STUDENT.md | 175 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
 | 44 | study-notes/C2_W04_D04_notes_STUDENT.md | 175 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 |
-| 57 | study-notes/C2_W04_D04_notes_STUDENT.md | 175 | atc_to_order_member_ios_before, kalpa.lab_hand_counts, twelve_rows.everyone_Jul |
-| 56 | study-notes/C2_W04_D04_notes_STUDENT.md | 175 | m1_feb, atc_to_order_member_ios_after, shift_21_sep_before and more |
-| 52 | study-notes/C2_W04_D04_notes_STUDENT.md | 175 | m1_may, atc_to_order_nonmember_android_before, toy_blend and more |
-| 80 | study-notes/C2_W04_D04_notes_STUDENT.md | 176 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 72.5 | study-notes/C2_W04_D04_notes_STUDENT.md | 176 | android_members_checkout_to_order_before |
-| 55 | study-notes/C2_W04_D04_notes_STUDENT.md | 176 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
-| 0.80 | study-notes/C2_W04_D04_notes_STUDENT.md | 176 | sep_step_session_add_to_cart_to_checkout_start, sep_step_member_checkout_start_to_order_placed, android_members_cart_to_checkout_before and more |
-| 72.5 | study-notes/C2_W04_D04_notes_STUDENT.md | 176 | android_members_checkout_to_order_before |
-| 58 | study-notes/C2_W04_D04_notes_STUDENT.md | 176 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 0.80 | study-notes/C2_W04_D04_notes_STUDENT.md | 176 | sep_step_session_add_to_cart_to_checkout_start, sep_step_member_checkout_start_to_order_placed, android_members_cart_to_checkout_before and more |
+| 58 | study-notes/C2_W04_D04_notes_STUDENT.md | 175 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 45 | study-notes/C2_W04_D04_notes_STUDENT.md | 175 | android_members_week_2026-09-14, android_member_week_2026-09-14, toy_dabba_club and more |
+| 43 | study-notes/C2_W04_D04_notes_STUDENT.md | 175 | android_members_week_2026-09-21, shift_21_sep_after, held_atc_to_order_android_after and more |
+| 44 | study-notes/C2_W04_D04_notes_STUDENT.md | 176 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 |
+| 57 | study-notes/C2_W04_D04_notes_STUDENT.md | 176 | atc_to_order_member_ios_before, kalpa.lab_hand_counts, twelve_rows.everyone_Jul |
+| 56 | study-notes/C2_W04_D04_notes_STUDENT.md | 176 | m1_feb, atc_to_order_member_ios_after, shift_21_sep_before and more |
+| 52 | study-notes/C2_W04_D04_notes_STUDENT.md | 176 | m1_may, atc_to_order_nonmember_android_before, toy_blend and more |
+| 80 | study-notes/C2_W04_D04_notes_STUDENT.md | 177 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 72.5 | study-notes/C2_W04_D04_notes_STUDENT.md | 177 | android_members_checkout_to_order_before |
 | 55 | study-notes/C2_W04_D04_notes_STUDENT.md | 177 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
-| 71 | study-notes/C2_W04_D04_notes_STUDENT.md | 177 | checkout_to_order_member_ios_before, android_share_cohort_high, toned_milk_share |
-| 70 | study-notes/C2_W04_D04_notes_STUDENT.md | 177 | checkout_to_order_member_ios_after, held_checkout_to_order_android_before, android_share_cohort_low and more |
-| 65 | study-notes/C2_W04_D04_notes_STUDENT.md | 177 | checkout_to_order_nonmember_android_before |
-| 7 | study-notes/C2_W04_D04_notes_STUDENT.md | 183 | weekly_cohort_2026-08-17_w3, toy_weaned, Th5 and more |
-| 25 | study-notes/C2_W04_D04_notes_STUDENT.md | 183 | toy_dabba_club, Th5, twelve_rows.May_m3 and more |
-| 2,600 | study-notes/C2_W04_D04_notes_STUDENT.md | 183 | Th5 |
-| 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 184 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
-| 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 184 | friday_weeks, friday_window, friday_diwali and more |
-| 49 | study-notes/C2_W04_D04_notes_STUDENT.md | 188 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
-| 49 | study-notes/C2_W04_D04_notes_STUDENT.md | 188 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
-| 0.9 | study-notes/C2_W04_D04_notes_STUDENT.md | 190 | search_to_menu_searched_sep, sep_step_member_open_to_search, sep_step_member_add_to_cart_to_checkout_start and more |
-| 27,212 | study-notes/C2_W04_D04_notes_STUDENT.md | 191 | sep_sessions_order_placed, order_records_sep, event_orders_sep |
-| 70.3 | study-notes/C2_W04_D04_notes_STUDENT.md | 192 | held_checkout_to_order_android_before |
-| 53.6 | study-notes/C2_W04_D04_notes_STUDENT.md | 192 | held_checkout_to_order_android_after |
-| 68.6 | study-notes/C2_W04_D04_notes_STUDENT.md | 192 | held_checkout_to_order_ios_before |
-| 69.3 | study-notes/C2_W04_D04_notes_STUDENT.md | 192 | held_checkout_to_order_ios_after |
-| 34 | study-notes/C2_W04_D04_notes_STUDENT.md | 193 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 61 | study-notes/C2_W04_D04_notes_STUDENT.md | 193 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
-| 60 | study-notes/C2_W04_D04_notes_STUDENT.md | 194 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
-| 19 | study-notes/C2_W04_D04_notes_STUDENT.md | 198 | jan_drop_m1_to_m2_points, calendar.zomato_letter, calendar.kalpa_windows |
-| 2023 | study-notes/C2_W04_D04_notes_STUDENT.md | 198 | M6, calendar.zomato_letter |
-| 1.8 | study-notes/C2_W04_D04_notes_STUDENT.md | 198 | Th4 |
-| 60 | study-notes/C2_W04_D04_notes_STUDENT.md | 199 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
-| 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 199 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
-| 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 199 | friday_weeks, friday_window, friday_diwali and more |
-| 14 | study-notes/C2_W04_D04_notes_STUDENT.md | 202 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
-| 72.5 | study-notes/C2_W04_D04_notes_STUDENT.md | 203 | android_members_checkout_to_order_before |
-| 55 | study-notes/C2_W04_D04_notes_STUDENT.md | 203 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
-| 22,841 | study-notes/C2_W04_D04_notes_STUDENT.md | 214 | android_member_carts_after |
-| 17 | study-notes/C2_W04_D04_notes_STUDENT.md | 214 | days_after_release, weekly_cohort_2026-08-03_w4, weekly_cohort_2026-08-10_w3 and more |
-| 58 | study-notes/C2_W04_D04_notes_STUDENT.md | 214 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 44 | study-notes/C2_W04_D04_notes_STUDENT.md | 214 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 |
-| 1,317 | study-notes/C2_W04_D04_notes_STUDENT.md | 215 | lost_orders_per_week |
-| 1,223 | study-notes/C2_W04_D04_notes_STUDENT.md | 215 | lost_orders_per_week_netted |
-| 5,064 | study-notes/C2_W04_D04_notes_STUDENT.md | 216 | android_member_orders_week_before |
-| 3.7 | study-notes/C2_W04_D04_notes_STUDENT.md | 216 | lost_value_per_week_netted_low_rs |
-| 6.6 | study-notes/C2_W04_D04_notes_STUDENT.md | 216 | lost_value_per_week_high_rs |
-| 300 | study-notes/C2_W04_D04_notes_STUDENT.md | 216 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
-| 500 | study-notes/C2_W04_D04_notes_STUDENT.md | 216 | order_value_high_rs, toy_blend, toy_notes_blend |
-| 36.5 | study-notes/C2_W04_D04_notes_STUDENT.md | 218 | retry_within_day_android_before |
-| 35.1 | study-notes/C2_W04_D04_notes_STUDENT.md | 218 | retry_within_day_android_after |
-| 4 | study-notes/C2_W04_D04_notes_STUDENT.md | 223 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
-| 55 | study-notes/C2_W04_D04_notes_STUDENT.md | 224 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
-| 61 | study-notes/C2_W04_D04_notes_STUDENT.md | 224 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
-| 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 224 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
-| 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 224 | friday_weeks, friday_window, friday_diwali and more |
-| 1,223 | study-notes/C2_W04_D04_notes_STUDENT.md | 227 | lost_orders_per_week_netted |
-| 1,317 | study-notes/C2_W04_D04_notes_STUDENT.md | 227 | lost_orders_per_week |
-| 0.23 | study-notes/C2_W04_D04_notes_STUDENT.md | 228 | aug_sale_orders_per_member_m1, toy_kaapi_funnel |
-| 0.61 | study-notes/C2_W04_D04_notes_STUDENT.md | 228 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 |
-| 1 | study-notes/C2_W04_D04_notes_STUDENT.md | 244 | m1_jan, m1_feb, m1_mar and more |
-| 2 | study-notes/C2_W04_D04_notes_STUDENT.md | 245 | noise_points_nonmember_android, simpson_1951, tph_before and more |
-| 200 | study-notes/C2_W04_D04_notes_STUDENT.md | 245 | toy_notes_blend, toy_funnel_inverted_step |
-| 45 | study-notes/C2_W04_D04_notes_STUDENT.md | 245 | android_members_week_2026-09-14, android_member_week_2026-09-14, toy_dabba_club and more |
-| 40 | study-notes/C2_W04_D04_notes_STUDENT.md | 245 | everyone_jul, everyone_aug, toy_blend and more |
-| 300 | study-notes/C2_W04_D04_notes_STUDENT.md | 245 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
-| 52 | study-notes/C2_W04_D04_notes_STUDENT.md | 245 | m1_may, atc_to_order_nonmember_android_before, toy_blend and more |
-| 3 | study-notes/C2_W04_D04_notes_STUDENT.md | 247 | aug_times_normal, toy_weaned, toy_dabba_club and more |
-| 118 | study-notes/C2_W04_D04_notes_STUDENT.md | 247 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
-| 4 | study-notes/C2_W04_D04_notes_STUDENT.md | 248 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
-| 34 | study-notes/C2_W04_D04_notes_STUDENT.md | 248 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 61 | study-notes/C2_W04_D04_notes_STUDENT.md | 248 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
-| 5 | study-notes/C2_W04_D04_notes_STUDENT.md | 249 | toy_weaned, toy_kahoot_blend, kalpa.active_by_cohort |
-| 80 | study-notes/C2_W04_D04_notes_STUDENT.md | 249 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 6 | study-notes/C2_W04_D04_notes_STUDENT.md | 250 | weekly_cohort_2026-08-17_w4, weekly_cohort_2026-08-17_w5, toy_two_batches and more |
-| 0.74 | study-notes/C2_W04_D04_notes_STUDENT.md | 250 | noise_points_android_members, bread_milk_conf_ab |
-| 1 | study-notes/C2_W04_D04_notes_STUDENT.md | 250 | m1_jan, m1_feb, m1_mar and more |
-| 1 | study-notes/C2_W04_D04_notes_STUDENT.md | 252 | m1_jan, m1_feb, m1_mar and more |
-| 2 | study-notes/C2_W04_D04_notes_STUDENT.md | 252 | noise_points_nonmember_android, simpson_1951, tph_before and more |
-| 80 | study-notes/C2_W04_D04_notes_STUDENT.md | 252 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 156 | study-notes/C2_W04_D04_notes_STUDENT.md | 252 | toy_notes_blend |
-| 500 | study-notes/C2_W04_D04_notes_STUDENT.md | 252 | order_value_high_rs, toy_blend, toy_notes_blend |
-| 47.2 | study-notes/C2_W04_D04_notes_STUDENT.md | 252 | toy_notes_blend |
-| 45 | study-notes/C2_W04_D04_notes_STUDENT.md | 253 | android_members_week_2026-09-14, android_member_week_2026-09-14, toy_dabba_club and more |
-| 3 | study-notes/C2_W04_D04_notes_STUDENT.md | 253 | aug_times_normal, toy_weaned, toy_dabba_club and more |
-| 89 | study-notes/C2_W04_D04_notes_STUDENT.md | 254 | search_to_menu_searched_sep |
-| 4 | study-notes/C2_W04_D04_notes_STUDENT.md | 254 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
-| 5 | study-notes/C2_W04_D04_notes_STUDENT.md | 254 | toy_weaned, toy_kahoot_blend, kalpa.active_by_cohort |
-| 72.5 | study-notes/C2_W04_D04_notes_STUDENT.md | 255 | android_members_checkout_to_order_before |
-| 55 | study-notes/C2_W04_D04_notes_STUDENT.md | 255 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
-| 6 | study-notes/C2_W04_D04_notes_STUDENT.md | 256 | weekly_cohort_2026-08-17_w4, weekly_cohort_2026-08-17_w5, toy_two_batches and more |
-| 71 | study-notes/C2_W04_D04_notes_STUDENT.md | 256 | checkout_to_order_member_ios_before, android_share_cohort_high, toned_milk_share |
-| 24 | study-notes/C2_W04_D04_notes_STUDENT.md | 268 | toy_ai_cohorts, kalpa.checkout_per_member_sep, kalpa_checkout_per_member_sep and more |
-| 36 | study-notes/C2_W04_D04_notes_STUDENT.md | 268 | everyone_sep, retry_within_day_android_before, toy_ai_cohorts and more |
-| 30 | study-notes/C2_W04_D04_notes_STUDENT.md | 273 | weekly_cohort_2026-08-03_w2, toy_weaned, Th4 and more |
-| 2023 | study-notes/C2_W04_D04_notes_STUDENT.md | 273 | M6, calendar.zomato_letter |
-| 64.06 | study-notes/C2_W04_D04_notes_STUDENT.md | 273 | M6 |
-| 9 | study-notes/C2_W04_D04_notes_STUDENT.md | 273 | kalpa.window_at_comparison_rate, kalpa_cart_to_checkout_comparison, calendar.kalpa_windows |
-| 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 273 | friday_weeks, friday_window, friday_diwali and more |
-| 82,44,903 | study-notes/C2_W04_D04_notes_STUDENT.md | 274 | M6 |
-| 17 | study-notes/C2_W04_D04_notes_STUDENT.md | 274 | days_after_release, weekly_cohort_2026-08-03_w4, weekly_cohort_2026-08-10_w3 and more |
+| 0.80 | study-notes/C2_W04_D04_notes_STUDENT.md | 177 | sep_step_session_add_to_cart_to_checkout_start, sep_step_member_checkout_start_to_order_placed, android_members_cart_to_checkout_before and more |
+| 72.5 | study-notes/C2_W04_D04_notes_STUDENT.md | 177 | android_members_checkout_to_order_before |
+| 58 | study-notes/C2_W04_D04_notes_STUDENT.md | 177 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 0.80 | study-notes/C2_W04_D04_notes_STUDENT.md | 177 | sep_step_session_add_to_cart_to_checkout_start, sep_step_member_checkout_start_to_order_placed, android_members_cart_to_checkout_before and more |
+| 55 | study-notes/C2_W04_D04_notes_STUDENT.md | 178 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 71 | study-notes/C2_W04_D04_notes_STUDENT.md | 178 | checkout_to_order_member_ios_before, android_share_cohort_high, toned_milk_share |
+| 70 | study-notes/C2_W04_D04_notes_STUDENT.md | 178 | checkout_to_order_member_ios_after, held_checkout_to_order_android_before, android_share_cohort_low and more |
+| 65 | study-notes/C2_W04_D04_notes_STUDENT.md | 178 | checkout_to_order_nonmember_android_before |
+| 7 | study-notes/C2_W04_D04_notes_STUDENT.md | 184 | weekly_cohort_2026-08-17_w3, toy_weaned, Th5 and more |
+| 25 | study-notes/C2_W04_D04_notes_STUDENT.md | 184 | toy_dabba_club, Th5, twelve_rows.May_m3 and more |
+| 2,600 | study-notes/C2_W04_D04_notes_STUDENT.md | 184 | Th5 |
+| 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 185 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 185 | friday_weeks, friday_window, friday_diwali and more |
+| 49 | study-notes/C2_W04_D04_notes_STUDENT.md | 189 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 49 | study-notes/C2_W04_D04_notes_STUDENT.md | 189 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 0.9 | study-notes/C2_W04_D04_notes_STUDENT.md | 191 | search_to_menu_searched_sep, sep_step_member_open_to_search, sep_step_member_add_to_cart_to_checkout_start and more |
+| 27,212 | study-notes/C2_W04_D04_notes_STUDENT.md | 192 | sep_sessions_order_placed, order_records_sep, event_orders_sep |
+| 70.3 | study-notes/C2_W04_D04_notes_STUDENT.md | 193 | held_checkout_to_order_android_before |
+| 53.6 | study-notes/C2_W04_D04_notes_STUDENT.md | 193 | held_checkout_to_order_android_after |
+| 68.6 | study-notes/C2_W04_D04_notes_STUDENT.md | 193 | held_checkout_to_order_ios_before |
+| 69.3 | study-notes/C2_W04_D04_notes_STUDENT.md | 193 | held_checkout_to_order_ios_after |
+| 34 | study-notes/C2_W04_D04_notes_STUDENT.md | 194 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 61 | study-notes/C2_W04_D04_notes_STUDENT.md | 194 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
+| 60 | study-notes/C2_W04_D04_notes_STUDENT.md | 195 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
+| 19 | study-notes/C2_W04_D04_notes_STUDENT.md | 199 | jan_drop_m1_to_m2_points, calendar.zomato_letter, calendar.kalpa_windows |
+| 2023 | study-notes/C2_W04_D04_notes_STUDENT.md | 199 | M6, calendar.zomato_letter |
+| 1.8 | study-notes/C2_W04_D04_notes_STUDENT.md | 199 | Th4 |
+| 60 | study-notes/C2_W04_D04_notes_STUDENT.md | 200 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
+| 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 200 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 200 | friday_weeks, friday_window, friday_diwali and more |
+| 14 | study-notes/C2_W04_D04_notes_STUDENT.md | 203 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
+| 72.5 | study-notes/C2_W04_D04_notes_STUDENT.md | 204 | android_members_checkout_to_order_before |
+| 55 | study-notes/C2_W04_D04_notes_STUDENT.md | 204 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 22,841 | study-notes/C2_W04_D04_notes_STUDENT.md | 215 | android_member_carts_after |
+| 17 | study-notes/C2_W04_D04_notes_STUDENT.md | 215 | days_after_release, weekly_cohort_2026-08-03_w4, weekly_cohort_2026-08-10_w3 and more |
+| 58 | study-notes/C2_W04_D04_notes_STUDENT.md | 215 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 44 | study-notes/C2_W04_D04_notes_STUDENT.md | 215 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 |
+| 1,317 | study-notes/C2_W04_D04_notes_STUDENT.md | 216 | lost_orders_per_week |
+| 1,223 | study-notes/C2_W04_D04_notes_STUDENT.md | 216 | lost_orders_per_week_netted |
+| 5,064 | study-notes/C2_W04_D04_notes_STUDENT.md | 217 | android_member_orders_week_before |
+| 3.7 | study-notes/C2_W04_D04_notes_STUDENT.md | 217 | lost_value_per_week_netted_low_rs |
+| 6.6 | study-notes/C2_W04_D04_notes_STUDENT.md | 217 | lost_value_per_week_high_rs |
+| 300 | study-notes/C2_W04_D04_notes_STUDENT.md | 217 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
+| 500 | study-notes/C2_W04_D04_notes_STUDENT.md | 217 | order_value_high_rs, toy_blend, toy_notes_blend |
+| 36.5 | study-notes/C2_W04_D04_notes_STUDENT.md | 219 | retry_within_day_android_before |
+| 35.1 | study-notes/C2_W04_D04_notes_STUDENT.md | 219 | retry_within_day_android_after |
+| 4 | study-notes/C2_W04_D04_notes_STUDENT.md | 224 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
+| 55 | study-notes/C2_W04_D04_notes_STUDENT.md | 225 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 61 | study-notes/C2_W04_D04_notes_STUDENT.md | 225 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
+| 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 225 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 225 | friday_weeks, friday_window, friday_diwali and more |
+| 1,223 | study-notes/C2_W04_D04_notes_STUDENT.md | 228 | lost_orders_per_week_netted |
+| 1,317 | study-notes/C2_W04_D04_notes_STUDENT.md | 228 | lost_orders_per_week |
+| 0.23 | study-notes/C2_W04_D04_notes_STUDENT.md | 229 | aug_sale_orders_per_member_m1, toy_kaapi_funnel |
+| 0.61 | study-notes/C2_W04_D04_notes_STUDENT.md | 229 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 |
+| 1 | study-notes/C2_W04_D04_notes_STUDENT.md | 245 | m1_jan, m1_feb, m1_mar and more |
+| 2 | study-notes/C2_W04_D04_notes_STUDENT.md | 246 | noise_points_nonmember_android, simpson_1951, tph_before and more |
+| 200 | study-notes/C2_W04_D04_notes_STUDENT.md | 246 | toy_notes_blend, toy_funnel_inverted_step |
+| 45 | study-notes/C2_W04_D04_notes_STUDENT.md | 246 | android_members_week_2026-09-14, android_member_week_2026-09-14, toy_dabba_club and more |
+| 40 | study-notes/C2_W04_D04_notes_STUDENT.md | 246 | everyone_jul, everyone_aug, toy_blend and more |
+| 300 | study-notes/C2_W04_D04_notes_STUDENT.md | 246 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
+| 52 | study-notes/C2_W04_D04_notes_STUDENT.md | 246 | m1_may, atc_to_order_nonmember_android_before, toy_blend and more |
+| 3 | study-notes/C2_W04_D04_notes_STUDENT.md | 248 | aug_times_normal, toy_weaned, toy_dabba_club and more |
+| 118 | study-notes/C2_W04_D04_notes_STUDENT.md | 248 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
+| 4 | study-notes/C2_W04_D04_notes_STUDENT.md | 249 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
+| 34 | study-notes/C2_W04_D04_notes_STUDENT.md | 249 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 61 | study-notes/C2_W04_D04_notes_STUDENT.md | 249 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
+| 5 | study-notes/C2_W04_D04_notes_STUDENT.md | 250 | toy_weaned, toy_kahoot_blend, kalpa.active_by_cohort |
+| 80 | study-notes/C2_W04_D04_notes_STUDENT.md | 250 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 6 | study-notes/C2_W04_D04_notes_STUDENT.md | 251 | weekly_cohort_2026-08-17_w4, weekly_cohort_2026-08-17_w5, toy_two_batches and more |
+| 0.74 | study-notes/C2_W04_D04_notes_STUDENT.md | 251 | noise_points_android_members, bread_milk_conf_ab |
+| 1 | study-notes/C2_W04_D04_notes_STUDENT.md | 251 | m1_jan, m1_feb, m1_mar and more |
+| 1 | study-notes/C2_W04_D04_notes_STUDENT.md | 253 | m1_jan, m1_feb, m1_mar and more |
+| 2 | study-notes/C2_W04_D04_notes_STUDENT.md | 253 | noise_points_nonmember_android, simpson_1951, tph_before and more |
+| 80 | study-notes/C2_W04_D04_notes_STUDENT.md | 253 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 156 | study-notes/C2_W04_D04_notes_STUDENT.md | 253 | toy_notes_blend |
+| 500 | study-notes/C2_W04_D04_notes_STUDENT.md | 253 | order_value_high_rs, toy_blend, toy_notes_blend |
+| 47.2 | study-notes/C2_W04_D04_notes_STUDENT.md | 253 | toy_notes_blend |
+| 45 | study-notes/C2_W04_D04_notes_STUDENT.md | 254 | android_members_week_2026-09-14, android_member_week_2026-09-14, toy_dabba_club and more |
+| 3 | study-notes/C2_W04_D04_notes_STUDENT.md | 254 | aug_times_normal, toy_weaned, toy_dabba_club and more |
+| 89 | study-notes/C2_W04_D04_notes_STUDENT.md | 255 | search_to_menu_searched_sep |
+| 4 | study-notes/C2_W04_D04_notes_STUDENT.md | 255 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
+| 5 | study-notes/C2_W04_D04_notes_STUDENT.md | 255 | toy_weaned, toy_kahoot_blend, kalpa.active_by_cohort |
+| 72.5 | study-notes/C2_W04_D04_notes_STUDENT.md | 256 | android_members_checkout_to_order_before |
+| 55 | study-notes/C2_W04_D04_notes_STUDENT.md | 256 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 6 | study-notes/C2_W04_D04_notes_STUDENT.md | 257 | weekly_cohort_2026-08-17_w4, weekly_cohort_2026-08-17_w5, toy_two_batches and more |
+| 71 | study-notes/C2_W04_D04_notes_STUDENT.md | 257 | checkout_to_order_member_ios_before, android_share_cohort_high, toned_milk_share |
+| 24 | study-notes/C2_W04_D04_notes_STUDENT.md | 269 | toy_ai_cohorts, kalpa.checkout_per_member_sep, kalpa_checkout_per_member_sep and more |
+| 36 | study-notes/C2_W04_D04_notes_STUDENT.md | 269 | everyone_sep, retry_within_day_android_before, toy_ai_cohorts and more |
+| 30 | study-notes/C2_W04_D04_notes_STUDENT.md | 274 | weekly_cohort_2026-08-03_w2, toy_weaned, Th4 and more |
+| 2023 | study-notes/C2_W04_D04_notes_STUDENT.md | 274 | M6, calendar.zomato_letter |
+| 64.06 | study-notes/C2_W04_D04_notes_STUDENT.md | 274 | M6 |
+| 9 | study-notes/C2_W04_D04_notes_STUDENT.md | 274 | kalpa.window_at_comparison_rate, kalpa_cart_to_checkout_comparison, calendar.kalpa_windows |
 | 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 274 | friday_weeks, friday_window, friday_diwali and more |
-| 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 274 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 82,44,903 | study-notes/C2_W04_D04_notes_STUDENT.md | 275 | M6 |
+| 17 | study-notes/C2_W04_D04_notes_STUDENT.md | 275 | days_after_release, weekly_cohort_2026-08-03_w4, weekly_cohort_2026-08-10_w3 and more |
 | 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 275 | friday_weeks, friday_window, friday_diwali and more |
-| 4 | study-notes/C2_W04_D04_notes_STUDENT.md | 281 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
-| 38 | study-notes/C2_W04_D04_notes_STUDENT.md | 282 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 58 | study-notes/C2_W04_D04_notes_STUDENT.md | 283 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
-| 38.7 | study-notes/C2_W04_D04_notes_STUDENT.md | 283 | tri_jan_m2, tri_may_m2 |
-| 194,211 | study-notes/C2_W04_D04_notes_STUDENT.md | 284 | sep_sessions_open |
-| 80 | study-notes/C2_W04_D04_notes_STUDENT.md | 285 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 118 | study-notes/C2_W04_D04_notes_STUDENT.md | 286 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
-| 34 | study-notes/C2_W04_D04_notes_STUDENT.md | 287 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
-| 61 | study-notes/C2_W04_D04_notes_STUDENT.md | 287 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
-| 1 | study-notes/C2_W04_D04_notes_STUDENT.md | 293 | m1_jan, m1_feb, m1_mar and more |
-| 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 293 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
-| 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 293 | friday_weeks, friday_window, friday_diwali and more |
-| 2 | study-notes/C2_W04_D04_notes_STUDENT.md | 294 | noise_points_nonmember_android, simpson_1951, tph_before and more |
+| 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 275 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 276 | friday_weeks, friday_window, friday_diwali and more |
+| 4 | study-notes/C2_W04_D04_notes_STUDENT.md | 282 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
+| 38 | study-notes/C2_W04_D04_notes_STUDENT.md | 283 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 58 | study-notes/C2_W04_D04_notes_STUDENT.md | 284 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 38.7 | study-notes/C2_W04_D04_notes_STUDENT.md | 284 | tri_jan_m2, tri_may_m2 |
+| 194,211 | study-notes/C2_W04_D04_notes_STUDENT.md | 285 | sep_sessions_open |
+| 80 | study-notes/C2_W04_D04_notes_STUDENT.md | 286 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 118 | study-notes/C2_W04_D04_notes_STUDENT.md | 287 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
+| 34 | study-notes/C2_W04_D04_notes_STUDENT.md | 288 | oct_dashboard_high, menu_to_cart_session_sep, sep_step_session_menu_view_to_add_to_cart and more |
+| 61 | study-notes/C2_W04_D04_notes_STUDENT.md | 288 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 and more |
+| 1 | study-notes/C2_W04_D04_notes_STUDENT.md | 294 | m1_jan, m1_feb, m1_mar and more |
 | 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 294 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
 | 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 294 | friday_weeks, friday_window, friday_diwali and more |
-| 3 | study-notes/C2_W04_D04_notes_STUDENT.md | 295 | aug_times_normal, toy_weaned, toy_dabba_club and more |
+| 2 | study-notes/C2_W04_D04_notes_STUDENT.md | 295 | noise_points_nonmember_android, simpson_1951, tph_before and more |
 | 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 295 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
 | 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 295 | friday_weeks, friday_window, friday_diwali and more |
-| 4 | study-notes/C2_W04_D04_notes_STUDENT.md | 296 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
+| 3 | study-notes/C2_W04_D04_notes_STUDENT.md | 296 | aug_times_normal, toy_weaned, toy_dabba_club and more |
 | 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 296 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
 | 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 296 | friday_weeks, friday_window, friday_diwali and more |
-| 5 | study-notes/C2_W04_D04_notes_STUDENT.md | 297 | toy_weaned, toy_kahoot_blend, kalpa.active_by_cohort |
+| 4 | study-notes/C2_W04_D04_notes_STUDENT.md | 297 | lost_value_per_week_low_rs, toy_two_batches, toy_weaned and more |
 | 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 297 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
 | 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 297 | friday_weeks, friday_window, friday_diwali and more |
+| 5 | study-notes/C2_W04_D04_notes_STUDENT.md | 298 | toy_weaned, toy_kahoot_blend, kalpa.active_by_cohort |
+| 12 | study-notes/C2_W04_D04_notes_STUDENT.md | 298 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 298 | friday_weeks, friday_window, friday_diwali and more |
 | 53,089 | takehome/C2_W04_D04_brief_STUDENT.md | 3 | members_total |
 | 38 | takehome/C2_W04_D04_brief_STUDENT.md | 4 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
 | 8,027 | takehome/C2_W04_D04_brief_STUDENT.md | 5 | aug_sale_members |

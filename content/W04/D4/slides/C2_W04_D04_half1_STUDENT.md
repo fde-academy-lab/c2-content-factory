@@ -317,7 +317,7 @@ Transition: a real company that publishes its cohorts.
 
 ---
 
-## S14. Blinkit and Swiggy publish cohorts, not one blend
+## S14. Blinkit and Swiggy report retention by cohort
 *How do two Indian companies report retention, and what does each figure count?*
 
 ```cards

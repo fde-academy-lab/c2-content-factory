@@ -32,8 +32,8 @@ flowchart LR
     class H lit
 ```
 
-Thursday compares a blended number with its cohorts. Censoring was only named; the IITGN faculty
-session after class (tentative) takes it up.
+Thursday compares a blended number with its cohorts. Censoring was only named; the
+IITGN faculty session after class (tentative) takes it up.
 
 ## Which one picture holds the day?
 
@@ -136,8 +136,9 @@ ordering less, or new ones ordering little?
 
 **ORIGIN.** A total that runs against its parts is called Simpson's paradox, after E. H. Simpson's
 1951 paper, "The Interpretation of Interaction in Contingency Tables", in the Journal of the Royal
-Statistical Society, Series B, https://doi.org/10.1111/j.2517-6161.1951.tb00088.x (checked 12
-October 2026); the name came about twenty years later.
+Statistical Society, Series B,
+https://doi.org/10.1111/j.2517-6161.1951.tb00088.x (checked 12 October 2026);
+the name came about twenty years later.
 
 **The answer.** The 38 is a size-weighted average of cohorts at different ages, counted from month
 two; each new cohort starts lower, and the weak August cohort is outside it until October.

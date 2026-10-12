@@ -85,9 +85,8 @@ blend at face value without asking who it counts.
 | "Was the sale a mistake?" | "Not yet known. A sale-week member placed 0.23 orders in month one against 0.61 for an organic member; I'd set what each sale-week member contributes over six months against the discount she was given before anyone runs another sale." |
 | "Before trusting a company's published cohort chart, what do you ask?" | "Its denominator and its measure: users, orders or spend; per user who joined or per user who stayed. Swiggy says it weaned away users with 'low potential Lifetime values', and its cohort spend table states no denominator; letting users go in one quarter lifts that quarter's cells and every later one with nobody's behaviour changing, and its average order value grew about 40 percent in the same year." |
 
-The Swiggy line is from its Q2 FY26 shareholder letter,
-https://www.swiggy.com/corporate/wp-content/uploads/2025/10/Q2-FY2026-Shareholder-letter.pdf (checked
-12 October 2026).
+The Swiggy line is from its Q2 FY26 shareholder letter:
+https://www.swiggy.com/corporate/wp-content/uploads/2025/10/Q2-FY2026-Shareholder-letter.pdf (checked 12 October 2026)
 
 ## How does the same question come up at an AI company?
 
@@ -116,12 +115,14 @@ spend. This variant is written for this programme and names no company's figures
 | Two units on one chart | This case, synthetic: menu view to add-to-cart reads 34 percent per session and 61 per member | Name the unit on every chart |
 | A universal "good retention" number | Amplitude, a product-analytics vendor, puts 7 percent of a cohort back on day seven in the top 25 percent of more than 2,600 companies, and its blog gives no method (checked 12 October 2026) | Define retention before comparing it |
 
-The letters: Swiggy Q1 FY27,
-https://nsearchives.nseindia.com/corporate/SWIGGY_30072026154100_Covering_Letter_Letter_to_Shareholders_-_signed.pdf
-(checked 12 October 2026); Zomato, 19 May 2023,
-https://www.bseindia.com/xml-data/corpfiling/AttachHis/42b3bf3b-1edb-4da7-849a-87ca9da27ff8.pdf
-(checked 12 October 2026); Amplitude, https://www.amplitude.com/blog/7-percent-retention-rule (checked
-12 October 2026).
+The sources, in the order of the table:
+
+- Swiggy, Q1 FY27 shareholder letter:
+  https://nsearchives.nseindia.com/corporate/SWIGGY_30072026154100_Covering_Letter_Letter_to_Shareholders_-_signed.pdf (checked 12 October 2026)
+- Zomato, shareholder letter of 19 May 2023:
+  https://www.bseindia.com/xml-data/corpfiling/AttachHis/42b3bf3b-1edb-4da7-849a-87ca9da27ff8.pdf (checked 12 October 2026)
+- Amplitude, the 7 percent retention rule:
+  https://www.amplitude.com/blog/7-percent-retention-rule (checked 12 October 2026)
 
 ## What does the scorer listen for?
 
