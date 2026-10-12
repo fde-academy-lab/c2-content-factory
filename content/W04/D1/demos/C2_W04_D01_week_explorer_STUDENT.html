@@ -969,18 +969,18 @@ var W4 = {
       <div class="scene-head"><span class="sid">Th1</span><h3>How can every batch shrink while the average stays flat?</h3></div>
       <p class="myth"><b>The first answer most people give:</b> the dashboard reads 38 percent every month, so nothing has changed.</p>
       <div class="predict">
-        <p class="ask"><b>Predict before you step.</b> The August sale cohort, 2.6 times a normal month, joins the table in September. What does the dashboard's 38 percent do?</p>
+        <p class="ask"><b>Predict before you step.</b> In September the August sale cohort joins the table, 2.6 times a normal month and at 31 percent in month one, and the dashboard still reads 38. What holds the 38 up?</p>
         <div class="opts">
-          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. It falls sharply.</button>
-          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. It holds at 38.</button>
-          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. It rises.</button>
-          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. It swings and recovers within the month.</button>
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. The older cohorts climbed back that month and made up the gap.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. The sale cohort is outside the count until its second month.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. The sale members ordered more than their 31 percent shows.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. The dashboard rounds a fall of a few points away to 38.</button>
         </div>
         <p class="said" aria-live="polite">No prediction yet.</p>
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Each row is a signup cohort, as tall as its number of members; each column is a reporting month, and a cell is the cohort's share that ordered that month. Month-one rates and cohort sizes are the case's; the later cells are a toy, built so the dashboard's number matches the case's flat 38 percent. The dashboard counts a member from the second month after signup, so the dashed diagonal of month-one cells is outside its count.</figcaption>
+          <figcaption>Each row is a signup cohort, as tall as its number of members; each column is a reporting month, and a cell is the cohort's share that ordered that month. Month-one rates and cohort sizes are the case's; the later cells are a toy, built so the dashboard's number matches the case's flat 38 percent. The dashed diagonal marks each cohort's month-one cells.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><button type="button" class="btn" data-ctl="next">Next month</button>
@@ -1002,9 +1002,9 @@ var W4 = {
 
     <article class="scene" id="scene-Th2" data-scene="Th2">
       <div class="scene-head"><span class="sid">Th2</span><h3>What is the flat number made of?</h3></div>
-      <p class="myth"><b>The first answer most people give:</b> if the average holds at 50 percent, each batch is holding at 50 percent.</p>
+      <p class="myth"><b>The first answer most people give:</b> when one batch falls, the average falls with it.</p>
       <div class="predict">
-        <p class="ask"><b>Predict before you move a batch.</b> Batch A of 100 stood at 50 percent last month and stands at 40 now; a new batch B of 400 joins at 52.5 percent. What does the blend do?</p>
+        <p class="ask"><b>Predict before you slide batch B in.</b> Batch A of 100 stood at 50 percent last month and stands at 40 now; a new batch B of 400 joins at 52.5 percent. What does the blend do?</p>
         <div class="opts">
           <button type="button" class="opt" data-predict="A" aria-pressed="false">A. It rises.</button>
           <button type="button" class="opt" data-predict="B" aria-pressed="false">B. It falls.</button>
@@ -1019,8 +1019,8 @@ var W4 = {
         </figure>
         <div class="panel">
           <div class="ctl"><label for="th2-b">Batch B's size</label>
-            <input type="range" id="th2-b" min="0" max="800" step="25" value="400" data-ctl="bsize">
-            <output data-out="bsize">400 members (slider value 400)</output></div>
+            <input type="range" id="th2-b" min="0" max="800" step="25" value="0" data-ctl="bsize">
+            <output data-out="bsize">0 members (slider value 0)</output></div>
           <div class="ctl"><label for="th2-a">Batch A's rate this month</label>
             <input type="range" id="th2-a" min="0.2" max="0.6" step="0.01" value="0.4" data-ctl="arate">
             <output data-out="arate">0.40 (slider value 0.40)</output></div>
@@ -1040,24 +1040,24 @@ var W4 = {
       <div class="scene-head"><span class="sid">Th3</span><h3>Which stage owns the loss?</h3></div>
       <p class="myth"><b>The first answer most people give:</b> a step that converts above 100 percent must be the best step in the app.</p>
       <div class="predict">
-        <p class="ask"><b>Predict before you toggle.</b> Counting per session, which step of the order flow shows a rate above 100 percent?</p>
+        <p class="ask"><b>Predict before you toggle.</b> The dashboard also counts the menus opened from the home carousel, per session. Once those are counted, which step's rate passes 100 percent?</p>
         <div class="opts">
           <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Open to search.</button>
           <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Search to menu view.</button>
           <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Menu view to add to cart.</button>
-          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Add to cart to order placed.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Checkout start to order placed.</button>
         </div>
         <p class="said" aria-live="polite">No prediction yet.</p>
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Gold members' order flow in September. Each bar's length is the count at that step, and each rate divides a step by the step before it. The rates 118, 34 and 61 percent are the case's; the counts are a toy, built to those rates.</figcaption>
+          <figcaption>Gold members' order flow in September. Each bar's length is the count at that step, and each rate divides a step by the step before it. The counts are a toy, built to the case's rates.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><button type="button" class="btn" data-ctl="unit" aria-pressed="false">Count per member</button>
             <output data-out="unit">Counting per session</output></div>
-          <div class="ctl"><button type="button" class="btn" data-ctl="carousel" aria-pressed="true">Include carousel entries</button>
-            <output data-out="carousel">Carousel entries are counted</output></div>
+          <div class="ctl"><button type="button" class="btn" data-ctl="carousel" aria-pressed="false">Include carousel entries</button>
+            <output data-out="carousel">Carousel entries are left out</output></div>
           <dl class="nums" data-nums></dl>
         </div>
       </div>
@@ -2964,7 +2964,7 @@ var W4 = {
 
   scene("Th2", {
     answer: "C",
-    start: function () { return { bsize: THU.toyBatch.b, arate: THU.toyBatch.aNow }; },
+    start: function () { return { bsize: 0, arate: THU.toyBatch.aNow }; },
     init: function (st, art) {
       var self = this;
       on(art, "bsize", "input", function (e) { st.bsize = Number(e.target.value); self.render(st, art); });
@@ -3009,7 +3009,7 @@ var W4 = {
 
   scene("Th3", {
     answer: "B",
-    start: function () { return { member: false, carousel: true }; },
+    start: function () { return { member: false, carousel: false }; },
     init: function (st, art) {
       var self = this;
       on(art, "unit", "click", function () { st.member = !st.member; self.render(st, art); });
