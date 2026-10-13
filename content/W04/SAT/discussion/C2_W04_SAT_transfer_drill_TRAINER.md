@@ -20,7 +20,7 @@ other units, and Part 6 of the paper already matched their first questions to a 
 | Tables and briefs | 2 min | The room sits in eight tables of four or five, two pairs to a table where the seating allows; table 1 takes brief 1 and so on, so every brief is answered once. |
 | Prepare | 8 min | Each table fills the grid on its sheet in full sentences. Walk the tables and ask one question at each: "what changed, and where is the number?" |
 | Answer aloud | 16 min | Eight tables at 2 minutes each: one speaker reads the grid in 90 seconds, then you ask the follow-up below and a different member answers it. Take the tables in brief order, so the four companies come before Kalpa's units. |
-| Redraw the map | 4 min | Two tables read their week map in their company's words; ask the room which day's box changed most, and why. |
+| Redraw the map | 4 min | Two tables read their week map in their company's words; ask the room which day's box changed most, and why. Then open scene S1 of the week's explorer (`content/W04/D1/demos/C2_W04_D01_week_explorer_STUDENT.html`), take the room's letter, and choose one of the two tables' units: its card is a second, shorter example of the same move, read beside the table's map. |
 
 Hold every table to the grid's order. When a speaker says "the same as Monday", ask which line of
 Monday's definition carries over and which line had to be rewritten. When an answer names a

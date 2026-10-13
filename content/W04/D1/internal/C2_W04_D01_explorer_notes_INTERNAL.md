@@ -19,7 +19,9 @@ carries each day's row subtopics, every scene's controls and reveal wait behind 
 every scene that taught a retired example or printed a value its deck now reaches later moved onto the
 day's own invented example or the day's rebuilt numbers. A trainer who did not write the week then
 read the page against the five decks' opening slides and their scene calls, and one fix pass followed,
-both on 13 October 2026; the section on the cold read below records each finding and what changed.
+both on 13 October 2026; the section on the cold read below records each finding and what changed. A
+fifth pass, the same day on branch `w04-deck-calls`, moved the scene calls the cold read named, in the
+decks' notes and one Saturday run sheet alone, and the table of calls below reads the decks after it.
 
 ## How the page is built and checked
 
@@ -89,15 +91,17 @@ reveal sets the scene to its set's own state and says so.
 ## Which deck slide calls which scene
 
 Every day's deck names its scenes in the slide's notes fence (spine section 11). Read from the five
-rebuilt decks on 13 October 2026; Saturday's deck reopens the home screen.
+decks after the deck-calls pass of 13 October 2026; Saturday has no deck, and the transfer drill's run
+sheet calls S1.
 
 | Day | Slide, and the scene it calls |
 |---|---|
-| Mon | half1 S2's and S4's notes, the home screen; S10's notes (SECTION 1) point to M1 as chapter 7's, and S67 (SECTION 8) runs it; S17's notes (SECTION 2) point to M2 as chapter 9's, and S75 and S80 (SECTION 9) run it; S28 (SECTION 3), on the case's weekly data, M4; S33's notes (SECTION 4) point to M3 as chapter 9's, and S81 (SECTION 9) runs it |
-| Tue | half1 S2, the home screen with T1 to T3 named; SECTION 4's opener, S33, S34 and S35 T1; S39 and S40 T2; half2 SECTION 8's opener, S74 and S76 T3, on its drivers question |
-| Wed | half1 S2, the home screen; on the canteen set, S13 (SECTION 2) W2, S19 (SECTION 3) W1, S24 (SECTION 4) W3 and S33 (SECTION 6) W5; on the case set, S41 (SECTION 7) W2, S47 (SECTION 8) W1 and S49 (SECTION 8) W3; half2 S63 (SECTION 10) W5 on the case set and S66 (SECTION 10) W4 |
-| Thu | half1 S2, the home screen; SECTION 3's opener Th2; SECTION 6's opener and S47 Th1; SECTION 7's opener and S58 Th3; half2 S78 and S80 (SECTION 9) Th4 |
-| Fri | half1 S2, the home screen; S4 and S8 (SECTION 1) F1; on the stall set, S19 (SECTION 2) F3 and S24 (SECTION 3) F2; on the case set, S46 (SECTION 5) F3, S50 (SECTION 6) F2 and half2 S3 (SECTION 7) F3; the fallback deck's S11 F4 |
+| Mon | half1 S2's and S4's notes, the home screen; S10's notes (SECTION 1) name M1 as chapter 8's, which opens it at S67 (SECTION 8); S17's notes (SECTION 2) name M2 as chapter 9's, which opens it at S75, after the vote, and at S80 (SECTION 9); S27 (SECTION 3), before S28 shows the turn, M4 on the case's weekly data; S33's notes (SECTION 4) name M3, on chapter 7's six drivers, as chapter 9's, which opens it at S81 (SECTION 9) |
+| Tue | half1 S2, the home screen with T1 to T3 named; SECTION 4's opener, S33, S34 and S35 T1; S39 T2, once every letter is written and before S40; half2 SECTION 8's opener, S74 and S76 T3, on its drivers question |
+| Wed | half1 S2, the home screen; on the canteen set, S12 (SECTION 2) W2 on the slide's own vote, S17 (SECTION 3) W1 and S22 (SECTION 4) W3, each once the second vote is in, and S33 (SECTION 6) W5, last on the slide, before S34's map; on the case set, S39 (SECTION 7) W2 once every group has committed, S45 (SECTION 8) W1 before notebook 08 runs, and S48 (SECTION 8) W3 once the vote is in; half2 S63 (SECTION 10) W5 on the case set and S66 (SECTION 10) W4 |
+| Thu | half1 S2, the home screen; SECTION 3's opener Th2, on the gym's older members and January joiners; SECTION 6's opener, and S52 Th1, once the vote is in and before S53 prints the October estimate; SECTION 7's opener, and S64 Th3, after S63; half2 S78 and S80 (SECTION 9) Th4 |
+| Fri | half1 S2 and S4, the home screen; S8 (SECTION 1) F1; on the stall set, S18 (SECTION 2) F3, the copy's reach, last on the slide before S19, and S24 (SECTION 3) F2; on the case set, S57 (SECTION 6) F2, after S56, and half2 S3 (SECTION 7) F3, after the second vote; the fallback deck's S11 F4 |
+| Sat | The transfer drill's run sheet, `content/W04/SAT/discussion/C2_W04_SAT_transfer_drill_TRAINER.md`, opens S1 at its map step, after the tables have answered aloud |
 
 ## Where the numbers come from
 
@@ -199,26 +203,28 @@ One fresh reader, a trainer who did not write the week, opened the page at 1,366
 rows and the five decks' opening slides beside it, lit every day, walked all 21 scenes in both sets, and
 wrote findings without editing; the report sat in this session's scratchpad as `cold_read_trainer.md`.
 The topics were visible on every weekday and on no Saturday line, and no console error appeared. The
-decks lie outside this branch's files, so a call the page cannot fix is named in the last column.
+decks lie outside this branch's files, so a call the page cannot fix is named in the last column. The
+deck-calls pass made each of those changes in the notes on 13 October 2026, and the last column says
+how, with the reason wherever the move departs from what the reader asked.
 
 | Finding | What the reader saw | What the page now does | What a deck still needs |
 |---|---|---|---|
 | 1, blocker | T1's nine numbers, letters, key and rebuilt title differed from Tuesday's S33 to S35 | T1 draws slide A's nine tiles from Tuesday's facts, asks S34's question with its four pairs and key b, and rebuilds the slide in S35's four parts under S35's title | Nothing |
-| 2 | Monday's S10, S17 and S33 point concept chapters at case scenes under wrong chapter labels, and M3 printed S62's 1.19 before any prediction | M3 holds its values until a prediction, and its question no longer states the fall | The notes at S10, S17 and S33 drop their pointers or name the chapters that run the scenes: M1 at S67 in chapter 8, M2 at S75 and S80 in chapter 9, and M3 at S81 in chapter 9, on chapter 7's six drivers |
+| 2 | Monday's S10, S17 and S33 point concept chapters at case scenes under wrong chapter labels, and M3 printed S62's 1.19 before any prediction | M3 holds its values until a prediction, and its question no longer states the fall | The notes at S10, S17 and S33 drop their pointers or name the chapters that run the scenes: M1 at S67 in chapter 8, M2 at S75 and S80 in chapter 9, and M3 at S81 in chapter 9, on chapter 7's six drivers. Done: each pointer now names its chapter and the slides that open the scene, and S33's names chapter 7's six drivers |
 | 3 | M3 offered no denominator matching S81's and printed only the six drivers | M3's denominator reads "enrolled drivers online at least one peak hour", and its reveal adds S81's 35.76 to 35.89 on the full data, so the scene stays with S81's call | Nothing |
 | 4 | M2's letters, key and north star differed from S75 and S80 | M2 takes S75's first three choices in order with key c and S80's north star word for word; its fourth choice stays, as the decisions above record | Nothing |
 | 5 | M1 printed S79's Rs 1.16 crore after a prediction at S67 | The readout line, the reveal's sentence and the constant behind them are gone | Nothing |
-| 6 | Thursday's SECTION 3 note names a coaching centre, and Th2's A and B were swapped against S21 | Th2's choices follow S21's order and words | The opener's note, line 523 of Thursday's half1 deck, names the neighbourhood gym |
-| 7 | Th1, called at S47, prints S49's and S53's numbers and the October estimate | Nothing, since the scene's answer is the blend and its estimate | The note at S47 calls Th1 at S53 or later |
-| 8 | Th3, called at S58, shows S59's 61 percent per member and stated S63's finding | The reveal no longer states S60's 61 per member or S63's checkout break | The note at S58 moves the call after S63 |
-| 9 | F1 added its parts where Friday's S10 multiplies them, and S4 calls F1 where every other day's concept map calls the home screen | F1 multiplies a trend in cups, each day's share of a weekday and a wobble factor | The note at Friday's S4 opens the home screen |
-| 10 | F2's case vote differed from S51's letters, its select printed S54's 16,400, and its reveal held S56's priced order and a 0.82 column | F2's case asks S51's question with its letters and key d; the 0.82 column and the cushion sentence are gone | The note at Friday's S50 opens F2's case set after S56 |
-| 11 | F3's case printed half2 S4's answer before any prediction, and its reveal held half2 S6's table | F3's case asks half2 S3's question with its letters, draws the 2026 forecasts only after the prediction, and its reveal no longer holds the two windows | Friday's half1 S46 note drops its F3 call, and half2 S3's note opens F3 after the vote |
+| 6 | Thursday's SECTION 3 note names a coaching centre, and Th2's A and B were swapped against S21 | Th2's choices follow S21's order and words | The opener's note, line 523 of Thursday's half1 deck, names the neighbourhood gym. Done: the note names the gym's older members and January joiners |
+| 7 | Th1, called at S47, prints S49's and S53's numbers and the October estimate | Nothing, since the scene's answer is the blend and its estimate | The note at S47 calls Th1 at S53 or later. Done at S52 instead, once its vote is in: S53 prints the October reading of about 33 percent that the scene asks the room to predict, so a call there opens on its own answer, and S47's note keeps the GIF alone |
+| 8 | Th3, called at S58, shows S59's 61 percent per member and stated S63's finding | The reveal no longer states S60's 61 per member or S63's checkout break | The note at S58 moves the call after S63. Done: S64 calls Th3. The ticket on S5 and the question on S56 already print the 118 the scene asks about, so no slide can open it before that answer is seen; after S63 its unit toggle and its line on the split no longer answer S59 to S63 before their votes |
+| 9 | F1 added its parts where Friday's S10 multiplies them, and S4 calls F1 where every other day's concept map calls the home screen | F1 multiplies a trend in cups, each day's share of a weekday and a wobble factor | The note at Friday's S4 opens the home screen. Done |
+| 10 | F2's case vote differed from S51's letters, its select printed S54's 16,400, and its reveal held S56's priced order and a 0.82 column | F2's case asks S51's question with its letters and key d; the 0.82 column and the cushion sentence are gone | The note at Friday's S50 opens F2's case set after S56. Done: S57 calls it. S52 prints the scene's key, so the call opens after its answer; any slide before S52 would let its board answer S53's and S55's votes |
+| 11 | F3's case printed half2 S4's answer before any prediction, and its reveal held half2 S6's table | F3's case asks half2 S3's question with its letters, draws the 2026 forecasts only after the prediction, and its reveal no longer holds the two windows | Friday's half1 S46 note drops its F3 call, and half2 S3's note opens F3 after the vote. Done |
 | 12 | The map's Friday finding and F2's and F3's reveals carried the fallback's 0.82 plan | The finding reads half2 S7's 19,760-shift plan, F4 says it goes beyond the five topics, and no other scene cites F4 | Nothing |
 | 13 | Option letters differed where a scene repeats a slide's vote | Letters and keys follow the slide in W2's canteen set, W4, Th2, F2's case and M2's first three choices | Nothing |
-| 14 | Calls sit on answer slides: W1 at S19 and S47, W2 at S13 and S41, W3 at S24 and S49, M4 at S28, F3's stall at S19, and T2 at S40 | Nothing | Each call moves to the prediction slide before it |
-| 15 | Notes describe scenes wrongly: Wednesday's S33 names W5 for S34's sort, half2 S66 describes W4 by ranks, and Friday's S19 names a festival marker | W4's toggle reads "Rank by lift: take milk out of the strip", so S66's words fit | Wednesday's S33 call moves to S34, and Friday's S19 note names the copy's reach |
-| 16 | Saturday's box carried no topics, and no Saturday file calls S1 | Saturday's nine interview anchors open under the map | A Saturday file calls S1 beside the transfer briefs |
+| 14 | Calls sit on answer slides: W1 at S19 and S47, W2 at S13 and S41, W3 at S24 and S49, M4 at S28, F3's stall at S19, and T2 at S40 | Nothing | Each call moves to the prediction slide before it. Done: W1 to S17 and S45, W2 to S12 and S39, W3 to S22 and S48, M4 to S27, F3's stall to S18 and T2 to S39, each opened once the vote it would answer is in. S45, S27 and S18 carry no prediction of their own for the scene, and each is the last slide before its scene's answer appears |
+| 15 | Notes describe scenes wrongly: Wednesday's S33 names W5 for S34's sort, half2 S66 describes W4 by ranks, and Friday's S19 names a festival marker | W4's toggle reads "Rank by lift: take milk out of the strip", so S66's words fit | Wednesday's S33 call moves to S34, and Friday's S19 note names the copy's reach. Done in part: W5's call stays last on S33 and now names the canteen's thirteen pairs, since S34's map prints the count the scene asks the room to guess; Friday's call names the copy's reach from S18, where finding 14 moved it |
+| 16 | Saturday's box carried no topics, and no Saturday file calls S1 | Saturday's nine interview anchors open under the map | A Saturday file calls S1 beside the transfer briefs. Done: the transfer drill's run sheet opens S1 at its map step, after the tables have answered aloud, since its unit cards would otherwise hand the tables a metric, a constraint and a cost before they write their own |
 | 17 | Scenes run taller than the screen, the map's topic lines print at about 11.7 pixels, W1's overlap slider snapped back and printed "1 orders", and the Monday ticket said "weekday peak window" | W1's overlap slider runs only across what the bands allow and says "1 order"; the Monday ticket says "a whole peak window, two a day of three hours each", as Monday's deck does; the heights and the line size stay | Nothing |
 
 ## The sources' contradictions, and what settled each

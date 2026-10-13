@@ -335,8 +335,9 @@ icon: check | eyebrow: d | title: 1.00 | body: Every papad order holds dal rice.
 ```notes
 LIVE, 3 minutes. Put the common wrong answer to the room in its own words first: "confidence is
 the chance the two go together, so it reads the same both ways". Vote, argue, vote again; the
-split is usually a against b. Option c is support, which the room met in chapter 1. Transition:
-both directions, counted.
+split is usually a against b. Option c is support, which the room met in chapter 1. Explorer:
+scene W2, two buttons that grey the baskets without A, then without B; its letters and key are this
+slide's, so read the second vote into it. Transition: both directions, counted.
 ```
 
 ---
@@ -351,7 +352,7 @@ From dal rice, the world shrinks to its 6 orders and 3 hold papad: 3 / 6 = 0.50.
 ```notes
 LIVE, 3 minutes. Count both directions on the cards. The GIF of the shrinking world (whiteboards,
 canteen_shrink) dims the orders in two steps: all twelve, then dal rice's six, then the three with
-papad. Explorer: scene W2, two buttons that grey the baskets without A, then without B.
+papad.
 Transition: how far direction can swing a number.
 ```
 
@@ -458,7 +459,9 @@ icon: hash | eyebrow: d | title: 4 | body: Roti's own count. | tone: light
 LIVE, 2 minutes. Two misconceptions said aloud: "expected means what I expect to see", when it
 means what chance alone would give; and "ignoring each other means never meeting", when two
 items that ignore each other still share baskets at their own rates. Vote, argue, vote again;
-the split is usually b against c. Transition: the proportion, counted.
+the split is usually b against c. Explorer: scene W1, sliders for the two shares and the overlap,
+once the second vote is in, since its question prints roti and sabzi's lift of 2.25. Transition:
+the proportion, counted.
 ```
 
 ---
@@ -497,9 +500,8 @@ print((3 / 4) / (4 / 12))  # also 2.25
 LIVE, 8 minutes, 4 on the picture and the formula and 4 in notebook 03, which runs the second
 route and the thirteen pairs' lifts. Read the picture as two areas (3Blue1Brown): roti's band times sabzi's band is
 the box chance gives; the seen box is taller. Show the cancelling step on the board:
-3 / (12 x 4/12 x 4/12) = 3 x 12 / (4 x 4). Explorer: scene W1, sliders for the two shares and the
-overlap. Check question: "Papad is in 5 orders, chaas in 9, both in 3. Chance? Lift?" 3.75 and
-0.80. Transition: the rules, and what lift never says.
+3 / (12 x 4/12 x 4/12) = 3 x 12 / (4 x 4). Check question: "Papad is in 5 orders, chaas in 9,
+both in 3. Chance? Lift?" 3.75 and 0.80. Transition: the rules, and what lift never says.
 ```
 
 ---
@@ -582,7 +584,9 @@ icon: percent | eyebrow: d | title: 0.75 | body: Chaas's own share of the orders
 ```notes
 LIVE, 3 minutes. The misconception, in the manager's words: "every dal rice order has chaas, so
 chaas is dal rice's perfect partner; print the combo." Peer instruction here: the room usually
-splits between a and c. Vote, two minutes with a neighbour, vote again. Transition: the reveal.
+splits between a and c. Vote, two minutes with a neighbour, vote again. Explorer: scene W3, the
+slider that raises the popular item's share, once the second vote is in, since its reveal names the
+1.33 this vote asks for. Transition: the reveal.
 ```
 
 ---
@@ -623,8 +627,7 @@ for share in [0.2, 0.5, 0.9]:
 
 ```notes
 LIVE, 2 minutes 30 seconds. Notebook 04's cells 6 to 10 run the chaas pairs and the sweep for any learner
-who wants the code. Explorer: scene W3, the slider that raises the popular item's share while lift
-stays put. Check question: "An item is in 60 percent of a shop's bills. A partner reads confidence
+who wants the code. Check question: "An item is in 60 percent of a shop's bills. A partner reads confidence
 0.66 toward it. Bundle them?" Lift 1.10, near one: no, since the partner's buyers take it about
 as often as everyone does. Transition: the rules.
 ```
@@ -868,8 +871,9 @@ Nothing in this month pulls any item toward another, yet gulab jamun and jalebi 
 
 ```notes
 LIVE, 3 minutes. Read the picture left to right: wild on the left, flat on the right. Explorer:
-scene W5, the floor slider that counts the pairs that qualify. Transition: the floor, set on the
-twelve orders.
+scene W5, the floor slider that counts the pairs that qualify, draws the canteen's thirteen pairs;
+open it last on this slide, since S34's map prints the count it asks the room to guess. Transition:
+the floor, set on the twelve orders.
 ```
 
 ---
@@ -1028,7 +1032,8 @@ icon: percent | eyebrow: d | title: 0.67 | body: Milk's share of all twelve cart
 ```notes
 LIVE, 2 minutes. The drill gave bread to milk; this asks the other direction, which no item of the
 guided set computed. Groups commit in writing; the split is usually a against b. Option a is
-chapter 2's misconception on the case's carts. Transition: the count.
+chapter 2's misconception on the case's carts. Explorer: scene W2 on the case set, once every group
+has committed its letter. Transition: the count.
 ```
 
 ---
@@ -1067,8 +1072,8 @@ The plausible wrong answer: "confidence 1.00, so show milk beside bread." This i
 
 ```notes
 LIVE, 3 minutes. The room now predicts this trap, since chapter 4 met it on chaas. The GIF beside
-this still dims the carts in two steps (whiteboards folder). Explorer: scene W2. Transition: the
-other pairs on the cards.
+this still dims the carts in two steps (whiteboards folder). Transition: the other pairs on the
+cards.
 ```
 
 ---
@@ -1158,7 +1163,8 @@ label: Question 4 | title: Why did the click-through fall? | body: Split by what
 LIVE, 5 minutes, opening on the five-minute paper check
 `exercises/unguided/C2_W04_D03_ch8_one_pair_STUDENT.md`: four counts from the case, three numbers
 and a second route, letters posted before the notebook runs. Then read the four questions; each
-ends on a number from notebook 08. Transition: the five lines.
+ends on a number from notebook 08. Explorer: scene W1 on the case set, after question 2 and before
+notebook 08 runs, since the notebook prints bread and milk's lift. Transition: the five lines.
 ```
 
 ---
@@ -1195,8 +1201,8 @@ On twelve carts lift read 1.50 because all four bread carts happened to hold mil
 LIVE, 4 minutes. Read the picture as two areas, the same picture chapter 3 drew for roti and
 sabzi: bread's band times milk's band is the overlap chance gives; the overlap seen is barely
 bigger. The 4 percent above chance is no pull: bigger carts hold any two staples more often, and
-the interview extra counts chance within each cart size. Explorer: scene W1. Transition: is bread
-special, or is every item like this?
+the interview extra counts chance within each cart size. Transition: is bread special, or is every
+item like this?
 ```
 
 ---
@@ -1212,7 +1218,8 @@ icon: shuffle | eyebrow: d | title: It scatters | body: Each item goes its own w
 ```
 
 ```notes
-LIVE, 2 minutes. A quick vote; the room that sat chapter 4 should predict b from chaas.
+LIVE, 2 minutes. A quick vote; the room that sat chapter 4 should predict b from chaas. Explorer:
+scene W3 on the case set, once the vote is in, since its reveal gives the 50 items' range.
 Transition: the chart.
 ```
 
@@ -1228,8 +1235,7 @@ For all 50 items in at least 2 percent of carts, confidence toward milk runs 0.7
 ```notes
 LIVE, 3 minutes. The left panel is what the new strip ranked by; the right panel is what it
 should have read. The Feynman line again: "the item in every bag makes a weak bundle partner,
-because it was going in the bag anyway". Explorer: scene W3. Transition: a company that met this
-trap.
+because it was going in the bag anyway". Transition: a company that met this trap.
 ```
 
 ---

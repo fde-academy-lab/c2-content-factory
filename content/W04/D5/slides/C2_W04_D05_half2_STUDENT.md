@@ -77,7 +77,9 @@ icon: calendar | eyebrow: d | title: 2 November 2026 | body: Diwali's own week. 
 
 ```notes
 LIVE, 3 minutes. Round three's twist: the house bot itself is wrong about which week Diwali falls
-in, and the group that notices wins the plan. Vote, argue, vote again. Explorer: scene F3.
+in, and the group that notices wins the plan. Vote, argue, vote again. Explorer: scene F3 on the
+case set, after the second vote; its letters and key are this slide's, so read the room's letter
+into it.
 Transition: the answer.
 ```
 

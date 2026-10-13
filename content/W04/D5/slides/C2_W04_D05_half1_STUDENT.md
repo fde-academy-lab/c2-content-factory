@@ -104,7 +104,7 @@ chapter 1, Week 2 Wednesday's LAG in chapter 2 (a seasonal copy is LAG by a seas
 average that one giant miss can move and Week 1 Tuesday's matched windows in chapter 3, Wednesday's
 lift beyond chance in chapter 4, and Thursday's rule to align cohorts and never blend them in the
 case's festival alignment. The map returns, with the current chapter lit, at every chapter's close.
-Explorer: scene F1. Transition: the destination.
+Explorer: the home screen, whose Friday box lists the same five topics. Transition: the destination.
 ```
 
 ---
@@ -410,6 +410,8 @@ move: the seasonal naive times a growth factor. The formulas are FPP3's, section
 https://otexts.com/fpp3/toolbox.html#sec-simple-methods (checked 13 October 2026), where the
 seasonal naive's general form reaches back whole seasons when h is longer than one season. Naive
 here is re-run every day, a one-step forecast, which chapter 3 will not accept as a hold-out score.
+Explorer: scene F3 on the stall set, its slider the copy's reach, 50 to 53 weeks back; open it last
+on this slide, before S19 shows where the calendar copy puts the dip.
 Transition: a festival that moves.
 ```
 
@@ -425,7 +427,7 @@ Transition: a festival that moves.
 ```notes
 LIVE, 4 minutes. The left panel's dip arrives a week late; the right panel's sits on Diwali week.
 Say plainly that festival-aligned is this course's construction, built on the textbook's seasonal
-naive, so nobody quotes it as a standard method. Explorer: scene F3, the festival marker.
+naive, so nobody quotes it as a standard method.
 Transition: the rules.
 ```
 
@@ -993,8 +995,8 @@ Diwali 2026 falls on Sunday 8 November, so its week begins 2 November, 54 weeks 
 
 ```notes
 LIVE, 3 minutes. Count the Mondays on the strip with the room. Do not answer where the copy lands:
-round three asks it in half two, and the festival calendar card answers it there. Explorer: scene F3,
-the Diwali slider. Transition: the real company.
+round three asks it in half two, and the festival calendar card answers it there. Transition: the
+real company.
 ```
 
 ---
@@ -1080,7 +1082,7 @@ Chapter 3's rule on Flipkart's weeks: the hidden weeks are 29 June to 21 Septemb
 ```notes
 LIVE, 3 minutes. The plan books eight weeks, but its last week is ten weeks past the data, and the
 horizon is the farthest week ahead. Point at the August sale inside the hidden weeks: a copy of last
-year knows about it, naive does not. Explorer: scene F2, the split slider. Transition: the vote.
+year knows about it, naive does not. Transition: the vote.
 ```
 
 ---
@@ -1201,7 +1203,8 @@ icon: badge-check | eyebrow: The fix | title: Send festival-aligned, priced | bo
 LIVE, 2 minutes. The plan's case rests on two things this hold-out cannot test: the festival's
 placement, which chapter 7 tests on 2025's festival, and how high to lean, which the plan quantile
 sizes beyond the row, that is, beyond today's five topics (the fallback session, and notebook 07's
-depth section). Transition: the same score a second way.
+depth section). Explorer: scene F2 on the case set, the split slider; with the vendor chosen, its
+sticks show the misses growing across the hidden weeks. Transition: the same score a second way.
 ```
 
 ---

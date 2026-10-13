@@ -284,7 +284,8 @@ number is a proxy that has drifted." The word proxy as research uses it: Chou, "
 Metrics with a North Star", arXiv 2606.21745 (June 2026), whose abstract describes proxies as numbers
 used in place of outcomes the experimenter does not observe:
 https://arxiv.org/abs/2606.21745 (checked 13 October 2026). Explorer: scene M1 draws the same drift
-on the city's drivers; it belongs to chapter 7. Transition: the same test in code.
+on the city's drivers; it belongs to chapter 8, which opens it at S67. Transition: the same test in
+code.
 ```
 
 ---
@@ -447,7 +448,8 @@ https://www.amplitude.com/blog/good-bad-north-star-metric.md (checked 13 October
 Confidence's glossary: "A guardrail metric is a metric monitored during an experiment to ensure the
 change doesn't cause unintended harm, even when the success metric improves":
 https://confidence.spotify.com/glossary/guardrail-metric (checked 13 October 2026). Explorer: scene
-M2, the seesaw, on the city's drivers; it belongs to chapter 9. Transition: the same split in code.
+M2, the seesaw, on the city's drivers; it belongs to chapter 9, which opens it at S75 and S80.
+Transition: the same split in code.
 ```
 
 ---
@@ -660,8 +662,9 @@ column at over 19, where the result takes over. Transition: the rules.
 LIVE, 1 minute 30 seconds. Ask the leading-lagging set's first item aloud: the eight Kalpa numbers,
 called leading or lagging by letter, then say the key and one reason; two learners defend one call
 each in a sentence, as the curriculum row asks
-(exercises/unguided/C2_W04_D01_leading_lagging_set_STUDENT.md, Q1). Transition: the same split on
-the case's own weeks.
+(exercises/unguided/C2_W04_D01_leading_lagging_set_STUDENT.md, Q1). Explorer: scene M4 asks which
+line turns first; use it here, before S28 shows the turn, if it is on the projector. Transition: the
+same split on the case's own weeks.
 ```
 
 ---
@@ -675,8 +678,8 @@ On the case's twelve weeks the share of offers accepted went from 0.862 in the w
 
 ```notes
 LIVE, 1 minute. The connected example, on the case's synthetic data: acceptance is guardrail 1 in
-chapter 9 and a leading number here, the job and the timing being two questions. Explorer: scene M4
-asks which line turns first; use it if it is on the projector. Transition: where the idea goes.
+chapter 9 and a leading number here, the job and the timing being two questions. Transition: where
+the idea goes.
 ```
 
 ---
@@ -790,8 +793,8 @@ denominator exclusions, its numerator and its time interval, and says "Denominat
 to criteria that result in removal of patients or cases from the denominator before calculating the
 numerator": https://mmshub.cms.gov/measure-lifecycle/measure-specification/develop-specification and
 https://mmshub.cms.gov/measure-lifecycle/measure-specification/develop-specification/denominator-exclusions
-(both checked 13 October 2026). Explorer: scene M3 rebuilds a definition line by line on the city's
-drivers; it belongs to chapter 9. Transition: the four lines in code.
+(both checked 13 October 2026). Explorer: scene M3 rebuilds a definition line by line on chapter
+7's six drivers; it belongs to chapter 9, which opens it at S81. Transition: the four lines in code.
 ```
 
 ---
