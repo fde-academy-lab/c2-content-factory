@@ -1875,7 +1875,7 @@ check("the acceptance route finds the same 180 drivers", second == slow)
 def case09():
     build(NB / "C2_W04_D01_09_north_star_guardrails_cost_STUDENT.ipynb", [
         md(f'''
-        # The redesign's north star, guardrails, leading inputs and seven-line page: what should the scheme pay for, and what did paying for hours cost?
+        # The redesign's north star, guardrails, leading inputs, resistant lines and seven-line page: what should the scheme pay for, and what did paying for hours cost?
 
         **Week 4, Monday, chapter 9 of 11, the third case chapter.** It applies four of the morning's
         topics: *North-star and guardrail metrics*, taught in `C2_W04_D01_02_north_star_guardrails_STUDENT.ipynb`;

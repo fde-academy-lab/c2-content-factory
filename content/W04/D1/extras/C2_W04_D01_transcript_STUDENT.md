@@ -8,9 +8,10 @@ head's ticket: is the peak-hour guarantee working, what should it pay for, and i
 
 **The questions on the way.** What does the interviewer ask, word for word? What does a strong
 candidate ask first? What structure comes before any number? Which trap is the interviewer setting?
-How do a weak and a hire-grade answer compare? How does the hire-grade candidate think aloud? Which
-follow-ups come next, and which harder ones? How does the same question move to an AI coding
-assistant? How does a candidate settle three teams who each want their own target?
+How do a weak and a hire-grade answer compare? Which seven checks does a pair tick? How does the
+hire-grade candidate think aloud? Which follow-ups come next, and which harder ones? How does the
+same question move to an AI coding assistant? How does a candidate settle three teams who each want
+their own target?
 
 ---
 
@@ -96,6 +97,21 @@ stops. Online hours count an open app, and the guarantee paid for exactly that.
 | The cost | None | Rs 1.9 crore bought 6,700 more peak trips, about Rs 2,836 each, 17 times the Rs 165 fare; Rs 1.159 crore went to driver-weeks that accepted under half their offers |
 | The decision | "Roll it out to more cities" | Hold the extension; keep the floor only for driver-weeks that accept at least half their offers, an accepted trip later cancelled counting as declined; test it by zone first |
 | What would change it | Nothing | If, without the hourly floor, outer-zone waits went back up to 6.6 minutes, keep a smaller floor in those three zones only |
+
+## Which seven checks does a pair tick for each answer?
+
+Read both answers in the table above and tick each check yes, partly or no for each. Then hear the
+trainer's reading and compare it with yours.
+
+| Check | What a full yes sounds like |
+|---|---|
+| Clarified scope | The answer asks what the scheme is for, who it serves and what counts as harm, then uses what it heard. |
+| Named the denominator and window | The answer says aloud what the number is counted per and over which period. |
+| Saw the paradox | The answer names, with numbers, the paid number rising while the thing it stands for did not. |
+| Sized it with a unit | The answer gives a size with its unit and its base, such as rupees per extra trip over six weeks. |
+| Said what would change its mind | The answer names a condition a test or the data could show. |
+| Tied it to a decision and its cost | The answer ends on a decision and says what it costs. |
+| Gave the structure before the number | The answer lays out the goal, the north star, the guardrails, the leading input and the test before any number. |
 
 ---
 
