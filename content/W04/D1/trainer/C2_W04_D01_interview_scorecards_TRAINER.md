@@ -1,10 +1,10 @@
 # How do you score Monday's interview answers, criterion by criterion?
 
 **TRAINER ONLY.** The transcripts are in `extras/C2_W04_D01_transcript_STUDENT.md`. Pairs score the
-weak and the hire-grade answer in the afternoon's interview room (S45), and the [D] pair in section 9
+weak and the hire-grade answer in the afternoon's interview room (S93), and the [D] pair in section 16
 of the metric clinic if the tentative faculty block does not run. The seven criteria are the spine's,
 built on what interviewers score per Aced's guide: structure, assumptions and scope before the method
-(case file T2, https://www.aced.io/blog/top-data-analyst-interview-questions, checked 12 October 2026).
+(case file T2, https://www.aced.io/blog/top-data-analyst-interview-questions, checked 13 October 2026).
 
 **Who needs the answer.** The trainer, who reads the scores back to the room, and any learner who
 asks why an answer that sounded confident scored low.

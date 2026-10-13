@@ -70,7 +70,7 @@ merged decks; Saturday's pack is not built yet, and the spine has its deck reope
 
 | Day | Slide, and the scene it calls |
 |---|---|
-| Mon | half1 S2 the home screen; S8 and S16 M1; S25 and S30 M2; S32 M3; S31 M4 |
+| Mon | half1 S2 and S4's notes, the home screen; S10's notes and S67 M1; S17's notes, S75 and S80 M2; S33's notes and S81 M3; S28 M4 (renumbered 13 October 2026, when the concept chapters came first) |
 | Tue | half1 section 1, S8, S9 and S10 T1; S14 and S15 T2; half2 section 4, S38 and S40 T3 |
 | Wed | half1 S2 the home screen; S18 W1; S11 W2; S20 W3; S32 W4; S29 W5 |
 | Thu | half1 S2 the home screen, Thursday lit; section 1 and S12 Th2; sections 1 and 2, S18 and S22 Th1; section 3 and S30 Th3; half2 section 5 and S44 Th4 |

@@ -17,19 +17,19 @@ answers? What do you do when a section stalls? What do you never do in the clini
 
 ```mermaid
 flowchart LR
-    A["<b>Section 6</b><br/>Wells Fargo dissection<br/>35"] --> B["<b>Section 7</b><br/>three numbers defined<br/>and attacked, 40"] --> C["<b>Section 8</b><br/>lead, lag, guardrails<br/>30"] --> D["<b>Section 9</b><br/>the [D] transcript<br/>15"]
+    A["<b>Section 13</b><br/>Wells Fargo dissection<br/>35"] --> B["<b>Section 14</b><br/>three numbers defined<br/>and attacked, 40"] --> C["<b>Section 15</b><br/>lead, lag, guardrails<br/>30"] --> D["<b>Section 16</b><br/>the [D] transcript<br/>15"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class A,B,C,D known
 ```
 
 | Section | Minutes | Slides | Materials |
 |---|---|---|---|
-| 6. Which line would have caught it? | 35 | S1 to S3 | The five SEC facts on S1; the match on S2 |
-| 7. Does each number survive its owner? | 40 | S4 and S5 | The definition template, `exercises/guided/C2_W04_D01_definition_STUDENT.md` |
-| 8. Which numbers lead, and which lag? | 30 | S6 to S8 | S6's eight numbers; or `exercises/unguided/C2_W04_D01_lead_lag_STUDENT.md` as the handout |
-| 9. What do you say to the teams who lose? | 15 | S9 and S10 | The [D] section of `extras/C2_W04_D01_transcript_STUDENT.md`; `trainer/C2_W04_D01_interview_scorecards_TRAINER.md` |
+| 13. Which line would have caught it? | 35 | S1 to S3 | The five SEC facts on S1; the match on S2 |
+| 14. Does each number survive its owner? | 40 | S4 and S5 | The definition template, `exercises/guided/C2_W04_D01_definition_STUDENT.md` |
+| 15. Which numbers lead, and which lag? | 30 | S6 to S8 | S6's eight numbers; or `exercises/unguided/C2_W04_D01_lead_lag_STUDENT.md` as the handout |
+| 16. What do you say to the teams who lose? | 15 | S9 and S10 | The [D] section of `extras/C2_W04_D01_transcript_STUDENT.md`; `trainer/C2_W04_D01_interview_scorecards_TRAINER.md` |
 
-Cut section 8 first if time runs short.
+Cut section 15 first if time runs short.
 
 ---
 
@@ -49,11 +49,11 @@ Cut section 8 first if time runs short.
 
 | Stall | The one move |
 |---|---|
-| Section 6: groups argue fact 1 is the denominator | Ask: "was the number of households ever wrong? Or was it what got counted on top?" |
-| Section 7: a set writes a definition with no exclusions | Point at fact 3 from section 6: a change to what is counted needs a date |
-| Section 8: a group calls the month's top-up leading | Ask: "can the city team change this month's top-up bill this week, or only read it?" |
-| Section 8: a guardrail that is another growth count | Ask: "what would that guardrail catch?" |
-| Section 9: pairs score the weak answer high because it sounded sure | Ask them to read the line that earned each point |
+| Section 13: groups argue fact 1 is the denominator | Ask: "was the number of households ever wrong? Or was it what got counted on top?" |
+| Section 14: a set writes a definition with no exclusions | Point at fact 3 from section 13: a change to what is counted needs a date |
+| Section 15: a group calls the month's top-up leading | Ask: "can the city team change this month's top-up bill this week, or only read it?" |
+| Section 15: a guardrail that is another growth count | Ask: "what would that guardrail catch?" |
+| Section 16: pairs score the weak answer high because it sounded sure | Ask them to read the line that earned each point |
 
 ---
 

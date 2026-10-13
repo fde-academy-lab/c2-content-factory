@@ -3,10 +3,11 @@
 **TRAINER ONLY.** Print one card per role and one proxy-test card per group. The trainer voices the
 roles, or three learners read them. Every number on a card is in
 `internal/C2_W04_D01_facts_INTERNAL.yaml`; the one public fact is Uber's own definition in its 10-K
-for 2025 (case file M5, checked 12 October 2026).
+for 2025 (case file M5, checked 13 October 2026).
 
-**Who needs the answer.** The trainer running the war game: round 1 opens the day with these cards,
-and round 3 closes the trainer's time with the objections on them.
+**Who needs the answer.** The trainer running the war game: round 1 opens the case after the
+concept chapters with these cards (S58), and round 3, chapter 10, closes the trainer's time with the
+objections on them.
 
 **The questions on the way.** What does the driver-operations lead want, and what will they say?
 What does the marketing lead want? What does the finance partner want? What does each scorer hold?
