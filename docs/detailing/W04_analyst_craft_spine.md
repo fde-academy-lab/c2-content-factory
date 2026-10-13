@@ -115,9 +115,11 @@ with the chapter that teaches it, its minutes and its notebook) and the concept 
 the same bullets, today's nodes lit, each node joined to the earlier idea it rests on and the later
 one it feeds, and the day's case as a node beneath them labelled "applied to". Slide five is the
 ticket of section 2.1 in one slide, as the destination. Then the concept block runs, 60 to 120
-minutes: one chapter per subtopic of about 8 to 25 minutes, its `## SECTION n:` title the subtopic as
-the row words it (shortened only where a pill needs it, and never losing a word that names an idea),
-its italic promise the chapter's question. The chapters run in the row's order unless the day's
+minutes: one chapter per subtopic of about 8 to 25 minutes, its opener written
+`## SECTION n: <subtopic>: <short question>?`, the subtopic as the row words it (shortened only where
+one subtopic spans several chapters or two share one, and never losing a word that names an idea),
+the short question starting lower-case and running to about 24 characters because the pills print
+it, and the italic promise beneath saying what the chapter delivers. The chapters run in the row's order unless the day's
 section records a reason to teach them in another (Thursday's does), and they fill the morning, except
 that a chapter the day's section moves to the afternoon goes into `half2`, still before the case
 chapter that applies it. A concept chapter teaches from zero on one simple, complete, relatable
@@ -188,9 +190,10 @@ Three Week 4 rules replace the-standard.md's grid for this week:
   the case file with its R2 id and check date, or is labelled a hypothetical in the sentence that
   carries it. A toy is labelled invented. An assumption is labelled with its range. Nothing else.
 - **The question ladder stays at the day and chapter level, and the chapter title carries the topic.**
-  The day asks the ticket's question; each chapter's `## SECTION` title carries its topic (the row's
-  subtopic for a concept chapter, the case step for a case chapter) and its italic promise asks the
-  chapter's question, with **Who needs the answer.** and **The questions on the way.** beneath on the
+  The day asks the ticket's question; each chapter's opener is written
+  `## SECTION n: <topic>: <short question>?`, its topic the row's subtopic for a concept chapter and
+  the case step with the subtopics it applies for a case chapter, and its italic promise says what the
+  chapter delivers, with **Who needs the answer.** and **The questions on the way.** beneath on the
   chapter's map slide; a step heading inside a chapter is a plain question with nothing under it. The
   headings-only read tells the day's topics in the row's order and then the case's story.
 
