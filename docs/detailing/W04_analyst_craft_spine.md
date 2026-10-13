@@ -243,7 +243,7 @@ below), never printed in a STUDENT file before the lab, because it carries the p
 
 **The ticket (the case file holds it in full).** Uber, Hyderabad, the driver app. On Monday 31 August
 2026 the city team launched a peak-hour earnings guarantee: a driver who is online for the whole of a
-weekday peak window is guaranteed a floor per online hour, and Uber tops up the gap between the
+peak window, two a day on every day of the week, is guaranteed a floor per online hour, and Uber tops up the gap between the
 driver's trip earnings and the floor. Six weeks later, against the six weeks before: peak online hours
 are up 24 percent, completed peak trips are up 3 percent, and trips per peak online hour fell from 1.9
 to 1.6 (targets). Data: `drivers` (driver, home zone, joined month, enrolled), `driver_weeks` (driver,
