@@ -124,7 +124,7 @@ after WHERE, so WHERE cannot test a place that does not exist yet.
 
 ---
 
-## Chapter 1. Which fifty members spent the most in Q2?
+## Chapter 1. ORDER BY inside the window: which fifty members spent the most in Q2?
 
 **Who needs the answer.** The marketing lead spends the protect budget, a call and a renewal offer,
 on the members this list names, and a list built on the wrong unit misses best members and rings
@@ -204,7 +204,7 @@ list.
 
 ---
 
-## Chapter 2. Which fifty members lead each of the four segments?
+## Chapter 2. PARTITION BY; top-N per group; filtering on a window via a CTE: which fifty members lead each of the four segments?
 
 **Who needs the answer.** The marketing lead spends each segment's budget on its own members, so a
 list that gives Retail-Plus eleven places leaves the tier Marketing worries about mostly unprotected.
@@ -284,7 +284,7 @@ rule chapter 3 questions.
 
 ---
 
-## Chapter 3. When two members tie at fiftieth place, how many does a list ship, and which rule did the head of Retail-Plus ask for?
+## Chapter 3. ROW_NUMBER, RANK and DENSE_RANK: when two members tie at fiftieth place, how many does a list ship, and which rule did the head of Retail-Plus ask for?
 
 **Who needs the answer.** The head of Retail-Plus defends the list: a member dropped by a coin toss
 has a fair complaint, a "top fifty" of fifty-two spends calls nobody planned, and
@@ -377,7 +377,7 @@ your own run.
 
 ---
 
-## Chapter 4. Whose monthly spend fell two months running?
+## Chapter 4. LAG and LEAD: whose monthly spend fell two months running?
 
 **Who needs the answer.** The member team rings each flagged member with an offer. A wrong flag
 tells a loyal customer they are slipping, and a missed fall is a member nobody rang.
@@ -468,7 +468,7 @@ Sixteen members fell two months running with their months kept apart, against tw
 
 ---
 
-## Chapter 5. Has Q2 revenue kept pace with the plan line week by week, and where did it stand at mid-quarter?
+## Chapter 5. Running totals and determinism: has Q2 revenue kept pace with the plan line week by week, and where did it stand at mid-quarter?
 
 **Who needs the answer.** Meera Raghavan decides at mid-quarter whether to hold the plan, push a
 campaign or move budget; a false gap sends Marketing after it with discounts.
@@ -568,7 +568,7 @@ Q2 closed Rs 10 ahead, on plan, after a mid-quarter lead of Rs 1,57,51,980 built
 
 ---
 
-## Chapter 6. Which listed members does Marketing call first, and does each flag hold up when a member says they were on holiday?
+## Chapter 6. Month-on-month comparison per customer: which listed members does Marketing call first, and does each flag hold up when a member says they were on holiday?
 
 **Who needs the answer.** The member team rings the flagged members this week, and the head of
 Retail-Plus answers for every call; accusing a member who was away costs that member's goodwill.
