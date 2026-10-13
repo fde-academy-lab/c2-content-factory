@@ -688,7 +688,7 @@ For anyone who finishes early. Nothing here is counted. Stretch 1 to 4 are the k
 
 ### Stretch 1
 
-In Hyderabad the 180 drivers in the idle tail completed 33,440 peak trips in the six weeks after the launch. If the redesign drives all of them off the app, who carries those trips, and how many more peak online hours does that take at the other drivers' 1.90 trips an hour?
+In Hyderabad the 180 drivers in the idle tail completed 33,440 peak trips in the six weeks after the launch, about 31 trips and 39 peak online hours a driver a week, well above the single weeks Exhibit 1B prints for E and F. If the redesign drives all of them off the app, who carries those trips, and how many more peak online hours does that take at the other drivers' 1.90 trips an hour?
 
 ### Stretch 2
 
