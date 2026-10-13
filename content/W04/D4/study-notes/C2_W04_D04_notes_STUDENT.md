@@ -20,7 +20,7 @@ invented gym and an invented college. Part two applies them to Zomato Gold.
 - **Cohort construction.** You can fix each member's joining month, count a cohort's row by age by
   hand, and build the whole table with one `pivot_table`.
 - **Retention curves: shape and floor.** You can read how fast a cohort falls, call its floor only
-  once two ages agree, and rank cohorts at the same age.
+  once two ages agree within a point, and rank cohorts at the same age.
 - **Blended numbers against cohort truth.** You can take a flat blended number apart into its cohorts
   and rebuild it as a size-weighted average that lands on the direct count.
 - **Funnel stages, drop-off, denominators.** You can read each step over the step before in one named
@@ -125,8 +125,11 @@ strong first month, always looks best. Compare cohorts at the same age.
 **ON GOLD.** SECTION 5 counts twelve Gold members the same way: May's four kept 3, 2, 1 and 1 of 4,
 June's three 2, 1 and 1 of 3, and the five from the August sale week 0 of 5 in month one.
 
-**IN THE INTERVIEW.** [S] "Retention dropped; walk me through your investigation." The first move: fix
-each member's joining month and compare cohorts at the same age before reading any blended number.
+**IN THE INTERVIEW.** [S] "Retention dropped; walk me through your investigation." A strong first
+move: confirm what the number counts and that the count is right, then fix each member's joining month
+and compare cohorts at the same age before reading any blended number. The tag says how often a
+question is asked: [S] a staple everywhere, [F] frequent in GCC (global capability centre) and product
+screens, [D] a question that sets a candidate apart.
 
 ## Retention curves: shape and floor: where does a curve stop falling?
 
@@ -142,7 +145,7 @@ early staffs for members who are about to leave.
 
 A **retention curve** is one cohort's row of the table, drawn by age. Its **shape** is how fast it
 falls in its first ages; its **floor** is the level where it stops falling. January reads 80, 60, 50,
-50 and 50: it lost 20 points, then 20, then 10, then none, and its floor is 50 percent, the five of
+50 and 50: it fell 20 points from age one to age two, then 10, then none, and its floor is 50 percent, the five of
 ten who made visiting a habit. February's floor is 30. March reads 60, 40 and 30 and is still falling,
 so its floor is not known yet.
 
@@ -151,23 +154,29 @@ so its floor is not known yet.
 **Churn** is the share lost, counted two ways. Counted so far, it is 100 less the retention: January
 has lost 20 percent of its joiners by age one, 40 by age two and 50 by age three. Counted month to
 month, it divides those who stopped by those still visiting the month before: at age two, 2 of the 8
-who visited at age one stopped, 25 percent. A chart that prints a churn number says which of the two
-it is.
+who visited at age one stopped, 25 percent. Both counts work here because nobody in the branch came
+back after stopping; where members do come back, a team first picks when a member counts as gone, for
+example 60 days with no visit, and labels that a choice. A chart that prints a churn number says which
+of the two it is.
 
-**The rule we use, this programme's own.** Call a floor only when two ages in a row read the same
-share; until then the curve is still falling. After February's age two, 5 of 10, the owner staffed
+**The rule we use, this programme's own.** Call a floor only when two ages in a row read within a
+point of each other; on a batch of ten that means two equal ages, and until then the curve is still
+falling. After February's age two, 5 of 10, the owner staffed
 for five regulars; ages three and four read 3 of 10, two regulars fewer. Ranked fairly, at age two,
 the order is January 60, February 50 and March 40, the reverse of April's calendar row. A young
 cohort's open end is what the faculty session (tentative) calls censoring.
 
 **ON GOLD.** Every Gold cohort drops to about 38.5 percent in month two and then slides about 0.3
-points a month. No two ages read exactly the same, so the floor is called one that erodes slowly;
-compared at month one, the cohorts run from 58 down to 31.
+points a month. Ages two and three agree within a point, so by our rule each cohort old enough to show
+it reaches its floor at month two, and the floor erodes slowly. Members come back after a month with
+no order, so the floor is the share ordering in a typical month, and the 38 who order are not always
+the same 38. Compared at month one, the cohorts run from 58 down to 31.
 
 **IN THE FIELD.** Eternal, which runs Zomato and Blinkit, says 46 percent of a Blinkit cohort's
 customers order in the fourth quarter after joining while its net order value is 150 percent of its
-first quarter's: fewer customers, more value (letter of 22 July 2026, checked 12 October 2026). The
-customers above the floor carry the business.
+first quarter's (letter of 22 July 2026, checked 12 October 2026). The two numbers measure different
+things, a share of the cohort's customers and the cohort's order value, and together they say the
+customers who stay carry the business: fewer of them, each spending more.
 
 **IN THE INTERVIEW.** [F] "How would you use cohort analysis to find a retention issue?" Read each
 cohort's shape and floor, rank cohorts at the same age, and look for the cohort whose curve starts
@@ -202,8 +211,8 @@ Rebuilt from its cohorts, the blend lands on the direct count, 250 of 500; a reb
 count has left a cohort out or counted one twice.
 
 **WATCH OUT.** The plain mean of the rates, (40 + 52.5) ÷ 2 = 46.25 percent, gives 100 older members
-the same vote as 400 joiners. It is neither the count nor the older members' own 40, and it equals
-the blend only when every cohort is the same size.
+the same vote as 400 joiners. It is neither the count nor the older members' own 40, and it matches
+the blend only when the cohorts are the same size or read the same rate.
 
 **CALLBACK.** Week 1, Thursday met the same arithmetic as a reversal: a total moved one way while each
 segment moved the other.
@@ -212,18 +221,20 @@ segment moved the other.
 1951 paper, "The Interpretation of Interaction in Contingency Tables", in the Journal of the Royal
 Statistical Society, Series B,
 https://doi.org/10.1111/j.2517-6161.1951.tb00088.x (checked 13 October 2026);
-the name came about twenty years later. A flat blend over falling cohorts is its retention form.
+the name came about twenty years later. A flat blend over falling cohorts uses the same arithmetic, a
+weighted average whose weights moved; nothing reverses there, so it is called a mix effect.
 
 **ON GOLD.** The dashboard's 38 is this weighted average over seven cohorts at different ages, and a
-new cohort of about 5,000 enters it each month just above the older cohorts' slide (part two).
+new cohort of about 5,000 enters it each month just above the older cohorts' slide, which props
+September by about half a point (part two).
 
 **IN THE FIELD.** Swiggy's users who order in a month rose 27.4 percent year on year while platform
 frequency fell from 4.13 to 3.87 (letter of 30 July 2026, checked 12 October 2026): old users
 ordering less, or new ones ordering little? One blended number cannot say.
 
-**IN THE INTERVIEW.** [F] "Blended retention is flat while every cohort declines; how?" A growing young
-cohort at its high early rate carries more weight each month, so the average holds while each cohort
-falls; the fix is to read the cohorts at the same age.
+**IN THE INTERVIEW.** [F] "Blended retention is flat while every cohort declines; how?" A mix shift:
+a growing young cohort at its high early rate carries more weight each month, so the average holds
+while each cohort falls; read the cohorts at the same age.
 
 ## Funnel stages, drop-off, denominators: which step owns a loss?
 
@@ -242,22 +253,27 @@ accepted an offer, joined. This cycle the college's main programme counted 1,000
 240 applications at the five stages. Each **step rate** divides a stage by the stage before, in one
 unit: 80, 50, 75 and 80 percent. **Drop-off** is 100 less the step rate: 20, 50, 25 and 20. The
 **overall conversion** divides the last stage by the first, 240 of 1,000, 24 percent against 28.8 last
-cycle, and the step rates multiply to it: 0.80 × 0.50 × 0.75 × 0.80 = 0.24.
+cycle, and since each stage is a subset of the one before, the step rates multiply to it: 0.80 × 0.50
+× 0.75 × 0.80 = 0.24.
 
 ![Each step's rate, last cycle and this cycle (invented)](../whiteboards/C2_W04_D04_college_steps_STUDENT.png)
 
 Only one step moved: offer acceptance, from 90 to 75 percent. Shortlisting reads 50 because the
-college selects half by design, and it read 50 in both cycles. **A low step is a loss only when it
-moves against its own past.**
+college selects half by design, and it read 50 in both cycles. **When the overall falls, the step that
+moved against its own past owns the fall; a low, steady step is how the process runs, and where to
+invest is a separate question.**
 
 **WATCH OUT.** A step above 100 percent. The sister programme's test is optional: 300 sat it and 320
 were shortlisted, 230 who sat the test and 90 on school results alone, so "test to shortlist" reads 107
 percent. The 107 is an **artefact**, a number made by the way the count is taken; counted among those
-who sat the test, the step reads 230 of 300, 77 percent.
+who sat the test, the step reads 230 of 300, 77 percent. A rate above 100 means the numerator holds
+people the denominator never had: here a skipped step; elsewhere a double count, two units or two time
+windows.
 
 **The unit.** This cycle's 1,000 applications came from 900 applicants, so the same 240 joiners are
-24 percent of applications and 26.7 percent of applicants. A person can try more than once, so a
-funnel read per person reads at least as high, and a chart names its unit. The definitions match
+24 percent of applications and 26.7 percent of applicants. Each applicant joins at most once, so the
+overall reads higher per person; a middle step can move either way, so its direction is read from the
+data, and a chart names its unit. The definitions match
 those analytics tools print: step conversion over the previous step, funnel conversion from the first
 step, and drop-off as 100 less the step's conversion (HockeyStack's funnel reports, checked 13 October
 2026).
@@ -265,8 +281,9 @@ step, and drop-off as 100 less the step's conversion (HockeyStack's funnel repor
 **ON GOLD.** Search to menu view reads 118 percent per session because the home carousel opens menus
 with no search, and menu view to add-to-cart reads 34 percent per session and 61 per member (part two).
 
-**IN THE INTERVIEW.** [D] "The team that owns the step says it is fine; what do you bring?" The step's
-rate against its own past, split by group and date, in a named unit, with a step beside it that held.
+**IN THE INTERVIEW.** [S] "Checkout conversion fell this month; how do you find where?" Check the count
+first, then read each step over the step before in one named unit against its own past, split by
+platform, group and date, and name the step that moved beside a step that held.
 
 ## The fix-first decision and its evidence: what does a call carry?
 
@@ -280,21 +297,25 @@ wrong fix leaves the lost students lost for another year.
 - How big is it, and what does it cost?
 - What answers the objection?
 
-The dean has two problems. 200 of 1,000 applications skip the entrance test every cycle, and offer
-acceptance fell from 90 to 75 percent this cycle. The bigger count never moved, so it is how the test
+The dean has two problems. 200 of 1,000 applications never sat the entrance test this cycle, the same
+20 percent as every cycle, and offer acceptance fell from 90 to 75 percent. The bigger count never moved, so it is how the test
 runs; acceptance moved, so it goes first. Split by home state, students from other states went from 87
 to 50 percent from the cycle the fee-payment deadline was cut from 21 to 7 days after the offer, while
-in-state students, the **comparator** on the same step, held at 92 to 90.
+in-state students on the same step, who met the same shorter deadline, held at 92 to 90. A
+**comparator** like this places the fall in one group, and the date ties it to the change.
 
 ![Offers accepted by home state, three cycles (invented)](../whiteboards/C2_W04_D04_college_acceptance_STUDENT.png)
 
 **The size and the cost.** At last cycle's rates the shortlist would have accepted 360; 300 did, so
 60 fewer, 5 in-state and 55 from other states. Eight in ten of those who accept join, so that is 48
 fewer students, and the joiners counted directly agree: 288 last cycle, 240 this cycle. At a
-first-year fee of Rs 1 to 1.5 lakh, an assumption, that is Rs 48 to 72 lakh of fee income a year.
+first-year fee of Rs 1 to 1.5 lakh, an assumption, that is Rs 48 to 72 lakh of first-year fees. The
+no-show, sized the same way: if half of the 200 sat the test and passed on at this cycle's rates, an
+assumption, about 30 more would join, a gain worth planning for that explains none of this cycle's
+fall.
 
-**The page, in five lines.** The call: give other-state offers a longer fee deadline first; the test
-waits. The evidence: the step against its own past, the group, the date and the comparator. The
+**The page, in five lines.** The call: give other-state offers their 21-day fee deadline back in the
+next round, a cheap change that can be undone; the test waits. The evidence: the step against its own past, the group, the date and the comparator. The
 cost: 48 students, Rs 48 to 72 lakh, the assumption ranged. The objection: "our offers go out within
 two days" is true, and the fall sits after the offer. What would change it: other-state acceptance
 falling before the deadline changed; it read 86 and 87 in the two cycles before.
@@ -353,12 +374,41 @@ hides a weak August cohort, the fix waits a month too long.
 rule inside it; one `pivot_table`, once each row carries its age, states the rule once. The call is
 the pivot; a table too big for memory would move to SQL as a `GROUP BY` on cohort and age.
 
+**In SQL, and the trap in a sparse table.** The same table as a `GROUP BY`, on member_months, which
+holds a row for every member in every month since she joined, with or without an order (it runs as
+written on Postgres and on SQLite):
+
+```sql
+WITH aged AS (
+  SELECT m.cohort_month,
+         (CAST(SUBSTR(mm.month, 1, 4) AS INTEGER) * 12 + CAST(SUBSTR(mm.month, 6, 2) AS INTEGER))
+       - (CAST(SUBSTR(m.cohort_month, 1, 4) AS INTEGER) * 12
+          + CAST(SUBSTR(m.cohort_month, 6, 2) AS INTEGER)) AS age,
+         mm.orders
+  FROM member_months AS mm
+  JOIN members AS m ON m.member_id = mm.member_id
+)
+SELECT cohort_month, age,
+       ROUND(100 * AVG(CASE WHEN orders > 0 THEN 1.0 ELSE 0.0 END), 1) AS percent_active
+FROM aged
+WHERE age >= 1
+GROUP BY cohort_month, age
+ORDER BY cohort_month, age;
+```
+
+It prints January's row as 58.0, 38.7 and down to 36.9, the triangle's. Run the same query on a table
+that holds a row only when a member ordered, and every cell reads 100 percent: the members who did not
+order have left the denominator. The cohort is the denominator, so the table under the query must keep
+the months with no order, or the query must divide by each cohort's size from `members`.
+
 Read as Retention curves: shape and floor taught, every row drops to about 38.5 percent in month two,
-then erodes slowly, and each cohort starts lower in month one. Counted directly, the dashboard prints
+reaches its floor there by our rule, then erodes slowly, and each cohort starts lower in month one. Counted directly, the dashboard prints
 38.2, 38.0, 37.9 and 37.8 percent from June to September, 13,218 of 35,000 in September. Its name
 misleads: it counts every member aged two or more, so it is no cohort's month-two column.
 
 ![The table filling one month at a time, with the dashboard drawn beside it](../whiteboards/C2_W04_D04_cohort_fill_STUDENT.gif)
+
+![The same picture's last frame, as a still](../whiteboards/C2_W04_D04_cohort_fill_last_STUDENT.png)
 
 **The trap, exactly.** "Month-two retention is 38 percent and flat, so nothing changed": the August
 cohort gets no action, and October's drop arrives as a surprise.
@@ -366,14 +416,15 @@ cohort gets no action, and October's drop arrives as a surprise.
 **The decomposition, and the second route.** As Blended numbers against cohort truth showed on the
 gym, the 38 is a size-weighted average: September's seven cohorts give 13,218 orderers of 35,000, the
 direct count to the last digit. Each month one more cohort of about 5,000 enters at about 38.5
-percent, just above the older cohorts' slide, so the average holds; it never sees month one, where
-each new cohort starts lower.
+percent, just above the older cohorts' slide, which props September by about half a point: held to
+June's four cohorts, it reads 37.3. The bigger reasons the number looks flat are the slow slide and a
+count that never sees month one, where each new cohort starts lower.
 
 **What the count leaves out.** The August cohort, 13,000 members, is outside the September count.
 Counting everyone who joined before each month, the four months read 40.9, 40.0, 39.5 and 35.9
 percent. August's 4,973 organic members kept 49 percent in month one, its 8,027 sale-week members
 20. If the cohort loses July's 10.5 points into month two (49 to 38.5), 31 becomes about 20.5 and
-October's dashboard reads about 33 percent, 32 to 34 for anything from 17 to 24.
+October's dashboard reads about 33 percent, an estimate, 32 to 34 for anything from 17 to 24.
 
 **WATCH OUT.** A mean of rates: the eight September rates averaged with no weights give 36.9 percent
 against the true 35.9, since August's 13,000 get one vote in eight.
@@ -393,7 +444,7 @@ room blames is fine: blaming the wrong step sends engineers to one that works.
 - Whose conversion fell, and where inside the checkout?
 - What can the data not show?
 
-**Four ways to look, and the call.** The overall rate says something fell, not where; the lowest
+**Four ways to look, and the call.** The overall rate shows that something fell without saying where; the lowest
 step, at 34 percent, is low every month; each step over the step before shows where people stop; and
 that step split by membership, platform and date shows who and since when. The call: the last two,
 the four funnel rules from the college at work.
@@ -402,7 +453,9 @@ A **session** is one visit to the app. In September, Gold members' search to men
 percent per session, because the home carousel, the row of restaurants on the home screen, opens a
 menu with no search. The 118 is an artefact, like the sister programme's 107; among the sessions that
 searched, 89 percent opened a menu. Menu view to add-to-cart reads 34 percent per session and 61 per
-member, both true, with the unit named.
+member, both true, with the unit named. In this data every step except search to menu view reads
+higher per member, since a member who fails in one session can succeed in another; a member who
+orders in many sessions can pull a per-member rate lower, so the direction is read from the data.
 
 ![September, Gold members: one funnel, two units](../whiteboards/C2_W04_D04_funnel_two_units_STUDENT.png)
 
@@ -415,14 +468,14 @@ starting held at 80 percent of carts and completing fell from 72.5 to 55: 0.80 �
 It sits in members on Android after one date; the app team is right about everywhere else.
 
 **WATCH OUT.** A "good" retention number with no definition: Amplitude, a product-analytics vendor,
-puts 7 percent of a cohort back on day seven in the top 25 percent of more than 2,600 companies, with
-no method given (its blog, checked 12 October 2026).
+puts 7 percent of a cohort back on day seven in the top 25 percent for activation among more than
+2,600 companies, with no method given (its blog, checked 12 October 2026).
 
 | The doubt | The check | What it found |
 |---|---|---|
 | Sale-week members bought on a discount | Organic August members beside July's | 49 against 49; sale-week 20 |
 | Young cohorts, few months on record | Compare only ages all have reached | Censoring, for the faculty session (tentative) |
-| Exam months in one zone (hypothetical) | September by zone | No zone 0.9 points off |
+| Exam months in one zone (hypothetical) | September by zone | No zone more than 0.9 points off |
 | A renamed Android event | Order records against the event log | The same 27,212 September orders |
 | The August cohort aged across the cut | Members who joined before August | Android 70.3 to 53.6, iOS 68.6 to 69.3 |
 | Sessions against members | The unit named | 34 and 61, both true |
@@ -448,9 +501,11 @@ release: 72.5 to 55 percent.
 
 The college's page carries over line by line. Android members added to a cart 22,841 times in 17 days
 after the release. At 58 percent against 44, that is about 1,317 orders a week if no failed cart came
-back; counted in orders placed, which keeps those that did, 1,133 to 1,266, a quarter of Android
-members' 5,064 a week: Rs 3.4 to 6.6 lakh of order value at Rs 300 to Rs 500 an order, of which
-Zomato keeps its fees. The checkout goes first: a fix ends a weekly loss. Retention cannot see it:
+back; counted in orders placed, which keeps those that did, 1,133 to 1,266, about a quarter of the
+5,064 orders a week Android members placed before the release: Rs 3.4 to 6.6 lakh of order value at Rs 300 to Rs 500 an order, of which
+Zomato keeps its fees. The checkout goes first: a fix ends a weekly loss, and until it ships, Android
+members go back to the old checkout today, or half of them get the old path for two days, which
+confirms the cause and stops most of the loss. Retention cannot see it:
 most members it cost an order still ordered that month.
 
 **WATCH OUT.** Two wrong fixes: another sale, whose cohort enters the dashboard at month two and pulls
@@ -506,11 +561,14 @@ notes).
 draft kept, its launch cohort keeps 24 percent at week four against 36 for a later weekly cohort
 (invented). The transcript is in `extras/`.
 
-**The guesstimate: Delhi Metro riders on a weekday.** The Delhi Metro Rail Corporation (DMRC) counts
-a "passenger journey" for each line a rider uses, so a trip with one change counts twice (Deccan
-Herald, 30 August 2023). Its daily average of 64.06 lakh (The Tribune, 9 August 2026) and its record
-82,44,903 "boardings" on 17 September 2026 (Republic World) look like that same count, each checked
-12 October 2026: turn trips into line uses before validating.
+**The guesstimate: how many people ride the Delhi Metro on a weekday?** Estimate people first, then
+their trips, and only then check against what the Delhi Metro Rail Corporation (DMRC) publishes,
+after asking what it counts. DMRC counts a "passenger journey" for each line a rider uses, so a trip
+with one change counts twice (Deccan Herald, 30 August 2023). Its daily average of 64.06 lakh (The
+Tribune, 9 August 2026) and its record 82,44,903 "boardings" on 17 September 2026 (Republic World)
+look like that same count, each checked 12 October 2026. So before validating, divide DMRC's count by
+one plus the share of trips that change lines once, an assumption you state, and then by the trips
+each rider makes in a day.
 
 ## Which words did Thursday use?
 
@@ -520,18 +578,18 @@ Herald, 30 August 2023). Its daily average of 64.06 lakh (The Tribune, 9 August 
 | Age, month zero | Months since joining; the joining month is age zero and is never counted | A January joiner is at age one in February |
 | Cohort table | Joining months down the side, ages across, each cell over the whole cohort | The triangle |
 | Retention curve | One cohort's share active at each age | January: 58, then 38.7 |
-| Floor | The level where a curve stops falling, called once two ages agree | The gym's January: 50 |
+| Floor | Where a curve stops falling: two ages within a point, by our rule | The gym's January: 50 |
 | Churn | The share lost, so far or since the month before | January's 25 percent at age two, month to month |
 | Blend | One rate over several cohorts, weighted by size | The dashboard's 38 |
 | Weighted average | Each rate times its cohort's size, summed, over the total size | 250 of 500 at the gym |
 | Mix | Each cohort's share of the count, which moves the blend by itself | 400 joiners, four votes in five |
-| Session | One visit to the app | 194,211 in September |
+| Session | One visit to the app | 194,211 Gold-member sessions in September |
 | Step rate | Those who reached a step over those who reached the one before | Add-to-cart to checkout start: 80 percent |
 | Drop-off | 100 less the step rate | Shortlisting at the college: 50 |
 | Overall conversion | The last step over the first, which the step rates multiply to | 24 percent at the college |
 | Artefact | A number made by the counting | Search to menu view: 118 percent |
 | Unit | What a rate counts: sessions, members, applications or applicants | 34 per session, 61 per member |
-| Comparator | A group on the same step that held, set beside the one that fell | iOS members, 71 to 70 |
+| Comparator | A group on the same step that held while another fell; it places the fall in one group, and it is no control group, since it often met the same change | iOS members, 71 to 70 |
 
 ## Where should you read next, and how long does each take?
 

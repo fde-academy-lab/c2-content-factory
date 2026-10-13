@@ -31,13 +31,13 @@ flowchart LR
     class C kalpa
 ```
 
-**Crux:** A cohort fixes the entry moment. A curve's floor is read only once two ages agree. A blend is a size-weighted average and counts who it counts. Each funnel step divides by the step before, in one named unit. A low step is not a loss until it moves, and a fix-first call carries its comparator, its date and its cost.
+**Crux:** A cohort fixes the entry moment. A curve's floor, by our rule, is read only once two ages agree within a point. A blend is a size-weighted average and counts who it counts. Each funnel step divides by the step before, in one named unit. When the overall falls, the step that moved owns the fall, and a fix-first call carries its comparator, its date and its cost.
 
 ## Panel 3: Retention curves and blended numbers: where is the floor?
 
 | Idea | The gym (invented) | Gold |
 |---|---|---|
-| Floor: two equal ages in a row | January 80, 60, 50, 50, 50 | 38.5, eroding 0.3 a month |
+| Floor: two ages within a point | January 80, 60, 50, 50, 50 | 38.5, eroding 0.3 a month |
 | Blend: size-weighted average | 100 at 40, 400 at 52.5: 250 of 500 | 13,218 of 35,000 |
 | Plain mean: one vote a cohort | 46.25 against 50 | 36.9 against 35.9 |
 
@@ -54,7 +54,7 @@ flowchart LR
 
 `step rate = this step / the step before, in one unit`; drop-off = 100 less it; overall = last / first.
 
-**Crux:** Above 100 is a step people can skip; of sessions that searched, 89 percent opened a menu.
+**Crux:** Here, above 100 is a step members skip; of sessions that searched, 89 percent opened a menu.
 
 ## Panel 5: The fix-first decision and its evidence: what goes first?
 
