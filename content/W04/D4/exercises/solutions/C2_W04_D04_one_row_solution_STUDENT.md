@@ -1,14 +1,12 @@
-# Which answers hold in the guided set on one cohort's row and a funnel's first steps, and why?
+# Which answers hold in the guided set on one cohort's row, and why?
 
-Answers: 1c 2a 3b 4d
+Answers: 1c 2a
 
-The set counted two cohort rows on seven members of the Zomato Gold case data and read a toy
-funnel's first two steps. May's four members kept 3, 2, 1 and 1 of 4 at months one to four, and
-June's three kept 2, 1 and 1 of 3. On the toy, 40 sessions with a search out of 100 is 40 percent,
-and 20 with an add-to-cart out of 40 is 50 percent. Illustrative case: the company is real, the situation and the data are
-synthetic, built for this class.
+The set counted two cohort rows on seven members of the Zomato Gold case data. May's four members
+kept 3, 2, 1 and 1 of 4 at months one to four, and June's three kept 2, 1 and 1 of 3. Illustrative
+case: the company is real, the situation and the data are synthetic, built for this class.
 
-**Who needs the answer.** You, to check your four letters. The membership lead reads every row the
+**Who needs the answer.** You, to check your two letters. The membership lead reads every row the
 room builds today, and a row over the wrong members makes a weak group look strong.
 
 **The questions on the way.**
@@ -20,9 +18,9 @@ room builds today, and a row over the wrong members makes a weak group look stro
 
 ## What does the set test?
 
-It tests the two denominators the day lives on. A cohort's share at every age divides by everyone who
-joined in that month, including the member who never ordered. A funnel step divides by the step just
-before it, in one unit the chart names.
+It tests the denominator every cohort row lives on: a cohort's share at every age divides by everyone
+who joined in that month, including the member who never ordered. The funnel's denominators are the
+drill on SECTION 4.
 
 ## Why is each key right, and each other letter wrong?
 
@@ -30,8 +28,6 @@ before it, in one unit the chart names.
 |---|---|---|---|
 | Q1, May's row | c | 3, 2, 1 and 1 of 4: every share keeps all four May members underneath it | a divides each month by those who ordered the month before (2 of 3, 1 of 2, 1 of 1), so the row climbs back to 100; b drops ZG22634, who never ordered; d counts the members who did not order |
 | Q2, June's row | a | 2, 1 and 1 of 3 | b divides by the members still ordering the month before; c drops ZG28603, who never ordered; d counts the ones who stopped |
-| Q3, the first two steps | b | 40 of 100, then 20 of 40 | a divides every step by the 100 sessions, which mixes how far a step is from the start with how well it works; c is the share lost at each step; d turns the second step upside down |
-| Q4, the chart | d | The 10 checkouts are 10 of 100 sessions and 10 of 20 people; the lead read a session rate as a people rate, so the chart names its unit | a leaves the misreading in place; b calls the session unit wrong, though it answers its own question; c moves the denominator to the step before, which is the step's rate, a third number |
 
 ## Which item is worth arguing about?
 
@@ -44,5 +40,5 @@ underneath every cell, which is why a reader can put two rows side by side.
 ## Where does the pattern live at work?
 
 Every retention table a product team publishes, from a subscription app's weekly cohorts to a bank's
-card-activation curves, is built on these two denominators. The first question a reviewer asks of
+card-activation curves, is built on this denominator. The first question a reviewer asks of
 any such table is who sits underneath each cell, and from which month.

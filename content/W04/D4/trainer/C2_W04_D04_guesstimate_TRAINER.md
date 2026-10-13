@@ -1,6 +1,7 @@
 # Guesstimate of the day: how many people ride the Delhi Metro on a weekday?
 
-**TRAINER ONLY.** Five minutes, in the interview room slot or as the lab's warm-up. The room
+**TRAINER ONLY.** Five minutes, as the lab's warm-up, or in the fallback block when it runs; SECTION 9's
+interview walk has no room for it. The room
 estimates first; the anchor is revealed last. The catch is the day's lesson in another city: a number
 is only as good as its unit. People, trips from gate to gate, and DMRC's passenger journeys, which
 count each line a rider uses, are three different counts of one crowd.

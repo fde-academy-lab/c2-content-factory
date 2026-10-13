@@ -4,7 +4,7 @@ Week 4, Day 4. Fallback for the tentative faculty block.
 
 Header: WEEK 4  ·  DAY 4  ·  THE FALLBACK, IF THE TENTATIVE FACULTY BLOCK SLIPS
 
-## SECTION 7: Can weaning lift retention?
+## SECTION 12: Can weaning lift retention?
 *Zomato Gold, Chennai, continued, beside Swiggy's own published cohorts: Swiggy removed users with low expected value, so how much of a retention rise can that alone produce?*
 
 ```notes
@@ -85,7 +85,7 @@ Transition: the rerun, by week.
 
 ---
 
-## SECTION 8: Does a weekly table agree?
+## SECTION 13: Does a weekly table agree?
 *Rebuilt by signup week instead of signup month, which part of the morning's story holds and which needs new words?*
 
 ```notes
@@ -151,7 +151,7 @@ Transition: Zomato's own number.
 
 ---
 
-## SECTION 9: Did Gold cause the orders?
+## SECTION 14: Did Gold cause the orders?
 *Zomato says Gold members order about 60 percent more after joining; what comparison would let anyone say Gold caused it?*
 
 ```notes
@@ -204,7 +204,7 @@ Transition: the second transcript.
 
 ---
 
-## SECTION 10: Is the app team's stage fine?
+## SECTION 15: Is the app team's stage fine?
 *The app team says the funnel stage the room blamed is fine: how does a strong candidate answer a dispute that is partly right?*
 
 ```notes
@@ -226,7 +226,7 @@ Transition: the transcript.
 | What would change my mind | Nothing | "If the order records showed orders holding while the event log fell, or if members who failed came back and ordered later, I'd withdraw it." |
 
 ```notes
-LIVE, 15 minutes. Pairs score the hire-grade side on the scorecard. The move is Tuesday's: restate,
+LIVE, 18 minutes. Pairs read the dispute, then score the hire-grade side on the scorecard. The move is Tuesday's: restate,
 answer from the evidence, concede what is true, say what would change your mind.
 Transition: the close.
 ```
@@ -240,6 +240,6 @@ A retention number can rise or hold because of who is counted, with nobody's beh
 
 ```notes
 LIVE, 2 minutes. Nothing here touched survival curves, censoring or tests between curves; the
-faculty block (tentative) takes them whenever it runs. Then return to the Kahoot if it has not run.
+faculty block (tentative) takes them whenever it runs.
 Transition: end of the block.
 ```

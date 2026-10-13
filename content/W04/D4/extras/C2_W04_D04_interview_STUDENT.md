@@ -86,7 +86,7 @@ blend at face value without asking who it counts.
 
 | Follow-up | The hire-grade line |
 |---|---|
-| "Blended retention is flat while every cohort declines. How?" | "Each month one more cohort reaches month two and enters the count at about 38.5, a little above the older cohorts' slide, so the blend holds; that prop is worth well under a point. The question that matters is what the count leaves out: month one, which fell cohort after cohort, and August's 13,000 at 31. Rebuilt from its cohorts, September's lands on 13,218 of 35,000, which proves the rebuild, not the cause." |
+| "Blended retention is flat while every cohort declines. How?" | "Each month one more cohort reaches month two and enters the count at about 38.5, a little above the older cohorts' slide, so the blend holds; that prop is worth well under a point. The question that matters is what the count leaves out: month one, which fell cohort after cohort, and August's 13,000 at 31. Rebuilt from its cohorts, September's lands on 13,218 of 35,000, which proves the rebuild and says nothing yet about the cause." |
 | "The app team says the stage you blamed is fine. What do you bring?" | "The part they're right about first: starting checkout held at 80 on every platform. Then the next step, on the same rate for everyone: completion fell from 72.5 to 55 for Android members while iOS members went 71 to 70 and non-members on Android 65 to 64, from the release week." |
 | "Was the sale a mistake?" | "Not yet known. A sale-week member placed 0.23 orders in month one against 0.61 for an organic member. The organic August members, 4,973, and September's 5,089 sit near the usual 5,000, so the 8,027 sale-week members look like extra members rather than members pulled forward. I'd set what each contributes over six months against the discount she was given before anyone runs another sale." |
 | "Before trusting a company's published cohort chart, what do you ask?" | "Its denominator and its measure: users, orders or spend; per user who joined or per user who stayed. Swiggy says it weaned away Instamart users with 'low potential Lifetime values', and its cohort spend table states no denominator. If those cells are spend per user who stayed, letting users go lifts that quarter's cells and every later one with nobody's behaviour changing; and Instamart's average order value grew about 40 percent in the same year." |
@@ -111,7 +111,7 @@ new week's cohort adds to it. The verdict turns on the curves' shape: if the lat
 by week six while the launch cohort keeps sliding, the product sticks for the users who came looking
 for it, and the launch week's crowd was trying it out. Beside each cohort sit the share of drafts
 kept and the cost per retained user, since every active user costs inference. Week four is the
-programme's rule of thumb, not a published law; the blended count still sizes load and spend. This
+programme's rule of thumb, which no published source sets; the blended count still sizes load and spend. This
 variant is written for this programme and names no company's figures.
 
 ## Which pain points hide inside the question, and where has each shown up?

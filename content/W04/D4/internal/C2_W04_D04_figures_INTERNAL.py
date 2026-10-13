@@ -168,7 +168,7 @@ ax.set_ylim(28, 61)
 save(fig, "retention_curves")
 
 # ------------------------------------------------------------------ 3. the blend decomposed
-fig, ax = plt.subplots(figsize=(9.0, 3.9))
+fig, ax = plt.subplots(figsize=(8.2, 3.7))
 months = ["2026-06", "2026-07", "2026-08", "2026-09"]
 for x, m in enumerate(months):
     bottom = 0
@@ -307,43 +307,187 @@ ax.set_xlim(0.8, 9.6)
 ax.legend(frameon=False, title="signup week", title_fontsize=12.5, loc="upper right")
 save(fig, "weekly_cohorts")
 
-# ------------------------------------------------------------------ 9. the toys (invented)
-t = TOYS["toy_two_batches"]
-fig, ax = plt.subplots(figsize=(7.4, 2.2))
-for i, (name, size, back) in enumerate((("June batch", t["june_batch"], t["june_back_m2"]),
-                                         ("July batch", t["july_batch"], t["july_back_m2"]))):
-    for j in range(size):
-        ax.add_patch(plt.Circle((j, -i * 1.4), 0.38, color=VIOLET if j < back else LINE))
-    ax.text(-0.9, -i * 1.4, name, ha="right", va="center", fontsize=14)
-    ax.text(size - 0.2, -i * 1.4, f"{back} of {size} back", va="center", fontsize=14)
-ax.set_xlim(-4.2, 13.4)
-ax.set_ylim(-2.0, 0.6)
-ax.set_aspect("equal")
-ax.axis("off")
-save(fig, "toy_batches")
+# ------------------------------------------------------------------ 9. the concept chapters (invented)
+# One gym's joiners and dashboard, and one college's admissions: the examples the five concept
+# chapters teach on, read from the files the generator writes and checked against the facts file.
+roster = pd.read_csv(DATA / f"{STEM}_toy_gym_roster_STUDENT.csv", dtype=str).fillna("")
+GYM_COLS = ["jan", "feb", "mar", "apr", "may", "jun"]
+JOINED = {"jan": "January", "feb": "February", "mar": "March"}
+gym = {}
+for j, name in JOINED.items():
+    rows = roster[roster["joined"] == j]
+    start_at = list(JOINED).index(j)
+    gym[name] = [int((rows[GYM_COLS[start_at + k]] == "1").sum()) for k in range(1, 6 - start_at)]
+assert gym == {"January": [8, 6, 5, 5, 5], "February": [7, 5, 3, 3], "March": [6, 4, 3]}, gym
+assert TOYS["toy_gym_roster"]["visited_by_age"] == {"Jan": [8, 6, 5, 5, 5], "Feb": [7, 5, 3, 3], "Mar": [6, 4, 3]}
 
-t = TOYS["toy_blend"]
-fig, axes = plt.subplots(1, 2, figsize=(8.4, 3.4), sharey=True)
-panels = [("Last month", [("A", t["a_size"], round(t["a_size"] * t["a_last_month"]))]),
-          ("This month", [("A", t["a_size"], round(t["a_size"] * t["a_now"])),
-                          ("B", t["b_size"], round(t["b_size"] * t["b_rate"]))])]
-for ax, (title, parts) in zip(axes, panels):
+fig, ax = plt.subplots(figsize=(7.6, 3.3))
+x, groups = 0, []
+for j, name in JOINED.items():
+    rows = roster[roster["joined"] == j]
+    groups.append((x + (len(rows) - 1) / 2, f"{name} joiners"))
+    for _, r in rows.iterrows():
+        for i, col in enumerate(GYM_COLS):
+            v = r[col]
+            if v == "":
+                continue
+            zero = col == j
+            ax.scatter(x, -i, s=62, marker="o", linewidths=1.4,
+                       facecolor="white" if zero else (VIOLET if v == "1" else LINE),
+                       edgecolor=INK if zero else "none")
+        x += 1
+    x += 1.0
+ax.add_patch(plt.Rectangle((-0.6, -3.42), x - 0.6, 0.84, color=AMBER, alpha=0.16, lw=0))
+for gx, label in groups:
+    ax.text(gx, 0.85, label, ha="center", fontsize=13.5, color=INK)
+ax.set_yticks([-i for i in range(6)])
+ax.set_yticklabels(["Jan", "Feb", "Mar", "Apr", "May", "Jun"], fontsize=13.5)
+ax.set_xticks([])
+ax.tick_params(axis="y", length=0)
+ax.set_xlim(-1.0, x - 0.8)
+ax.set_ylim(-7.6, 1.4)
+for sp in ax.spines.values():
+    sp.set_visible(False)
+ax.text(-0.9, -6.0, "ring: the joining month, never counted; dark: visited;\nlight: did not; "
+        "shaded: the April row the owner reads", ha="left", va="top", fontsize=12.5, color=MUTED)
+save(fig, "gym_register")
+
+fig, ax = plt.subplots(figsize=(7.6, 2.9))
+for i, (name, row) in enumerate(gym.items()):
+    for k, v in enumerate(row, start=1):
+        ax.add_patch(plt.Rectangle((k - 0.5, i - 0.5), 1, 1, facecolor=VIOLET if k == 1 else "#CFC7F4",
+                                   edgecolor="white", lw=2))
+        ax.text(k, i, f"{10 * v}", ha="center", va="center", fontsize=14,
+                color="white" if k == 1 else INK, fontweight="bold" if k == 1 else None)
+    ax.text(0, i, "10", ha="center", va="center", fontsize=13, color=MUTED)
+ax.set_xlim(-0.5, 5.5)
+ax.set_ylim(2.5, -0.5)
+ax.xaxis.tick_top()
+ax.set_xticks(range(0, 6))
+ax.set_xticklabels(["joiners"] + [f"age {k}" for k in range(1, 6)], fontsize=13)
+ax.set_yticks(range(3))
+ax.set_yticklabels(list(gym), fontsize=13)
+ax.tick_params(length=0)
+for s in ax.spines.values():
+    s.set_visible(False)
+ax.text(4.5, 2.0, "each cell: percent\nof the batch who\nvisited at that age", fontsize=12, color=MUTED,
+        ha="center", va="center")
+save(fig, "gym_triangle")
+
+fig, ax = plt.subplots(figsize=(7.6, 3.4))
+style = {"January": (INK, "o"), "February": (VIOLET, "s"), "March": (AMBER, "^")}
+for name, row in gym.items():
+    colour, marker = style[name]
+    ax.plot(range(1, len(row) + 1), [10 * v for v in row], marker=marker, ms=7, lw=2.4, color=colour)
+    if name != "March":
+        ax.text(len(row) + 0.12, 10 * row[-1], name, fontsize=13, color=colour, va="center")
+ax.plot([3, 5], [50, 50], color=INK, lw=7, alpha=0.18, solid_capstyle="round")
+ax.text(4.0, 54, "floor 50", fontsize=12.5, color=INK, ha="center")
+ax.plot([3, 4], [30, 30], color=VIOLET, lw=7, alpha=0.18, solid_capstyle="round")
+ax.text(3.5, 33.5, "floor 30", fontsize=12.5, color=VIOLET, ha="center")
+ax.text(3.08, 23.0, "March: still falling, no floor yet", fontsize=12.5, color=AMBER, ha="left", va="center")
+ax.set_xticks(range(1, 6))
+ax.set_xticklabels([f"age {k}" for k in range(1, 6)])
+ax.set_xlim(0.7, 6.1)
+ax.set_ylim(15, 88)
+ax.set_ylabel("percent who visited")
+save(fig, "gym_curves")
+
+dash = pd.read_csv(DATA / f"{STEM}_toy_gym_dashboard_STUDENT.csv")
+g = dash[dash["example"] == "gym"].copy()
+g["rate"] = g["visited"] / g["members"]
+older = g[g["cohort"] == "joined before 2026"].set_index("month")["rate"]
+joiners = g[g["cohort"] == "joined in January 2026"].set_index("month")["rate"]
+board = g.groupby("month")["visited"].sum() / g.groupby("month")["members"].sum()
+assert [round(100 * v, 1) for v in board] == [50.0, 50.0] and round(100 * joiners["2026-02"], 1) == 52.5
+fig, ax = plt.subplots(figsize=(7.6, 3.4))
+ax.plot([0, 1], [100 * v for v in older], marker="o", ms=8, lw=2.4, color=ROSE)
+ax.text(1.06, 100 * older.iloc[-1], "older members: 50 to 40", fontsize=13, color=ROSE, va="center")
+ax.plot([1], [100 * joiners.iloc[0]], marker="s", ms=9, color=VIOLET)
+ax.text(1.06, 100 * joiners.iloc[0] + 1.6, "January joiners: 52.5", fontsize=13, color=VIOLET, va="center")
+ax.plot([0, 1], [100 * v for v in board], lw=3.2, color=INK, ls="--")
+ax.text(-0.06, 100 * board.iloc[0] + 2.6, "the dashboard: 50, then 50", fontsize=13, color=INK)
+ax.set_xticks([0, 1])
+ax.set_xticklabels(["January", "February"])
+ax.set_xlim(-0.25, 1.95)
+ax.set_ylim(30, 62)
+ax.set_ylabel("percent who visited")
+save(fig, "gym_dashboard")
+
+fig, axes = plt.subplots(1, 2, figsize=(7.8, 3.5), sharey=True)
+for ax, month in zip(axes, ["2026-01", "2026-02"]):
     bottom = 0
-    for name, size, came in parts:
-        ax.bar(0, came, bottom=bottom, color=VIOLET, width=0.5)
-        ax.bar(0, size - came, bottom=bottom + came, color=TINT, width=0.5)
-        ax.text(0.32, bottom + size / 2, f"batch {name}:\n{came} of {size}", va="center", fontsize=13)
-        bottom += size
-    total = sum(p[2] for p in parts)
-    members_ = sum(p[1] for p in parts)
-    ax.set_title(f"{title}: {total} of {members_},\n{100 * total / members_:.0f} percent", fontsize=13.5)
-    ax.set_xlim(-0.4, 1.5)
+    for _, r in g[g["month"] == month].iterrows():
+        ax.bar(0, r["visited"], bottom=bottom, color=VIOLET, width=0.5)
+        ax.bar(0, r["members"] - r["visited"], bottom=bottom + r["visited"], color=TINT, width=0.5)
+        label = "older" if r["cohort"].startswith("joined before") else "January joiners"
+        ax.text(0.32, bottom + r["members"] / 2, f"{label}:\n{r['visited']} of {r['members']}", va="center", fontsize=13)
+        bottom += r["members"]
+    came = int(g[g["month"] == month]["visited"].sum())
+    ax.set_title(f"{'January' if month == '2026-01' else 'February'}\n{came} of {bottom}, "
+                 f"{100 * came / bottom:.0f} percent", fontsize=13.5)
+    ax.set_xlim(-0.4, 1.7)
     ax.set_xticks([])
-axes[0].set_ylabel("members")
-save(fig, "toy_blend")
+axes[0].set_ylabel("members counted")
+save(fig, "gym_dashboard_stack")
+
+adm = pd.read_csv(DATA / f"{STEM}_toy_admissions_STUDENT.csv")
+STG = ["applied", "sat_test", "shortlisted", "accepted", "joined"]
+STG_LABEL = ["applied", "sat the test", "shortlisted", "accepted", "joined"]
+main_ = adm[(adm["programme"] == "main") & (adm["unit"] == "applications") & (adm["group"] == "all")]
+cyc = {c: main_[main_["cycle"] == c].set_index("stage")["count"].reindex(STG) for c in (2025, 2026)}
+fig, ax = plt.subplots(figsize=(7.4, 3.1))
+for off, (c, colour) in zip((-0.21, 0.21), ((2025, LAV), (2026, VIOLET))):
+    ax.bar([i + off for i in range(5)], cyc[c].values, width=0.4, color=colour,
+           label="last cycle" if c == 2025 else "this cycle")
+    for i, v in enumerate(cyc[c].values):
+        ax.text(i + off, v - 22, f"{v:,}", ha="center", va="top", fontsize=12,
+                rotation=90 if v >= 1000 else 0, color="white" if c == 2026 else INK)
+ax.set_xticks(range(5))
+ax.set_xticklabels(["applied", "sat the\ntest", "short-\nlisted", "accepted", "joined"], fontsize=13)
+ax.set_ylabel("applications")
+ax.set_ylim(0, 1150)
+ax.legend(frameon=False, ncol=2, loc="upper right")
+save(fig, "college_funnel")
+
+steps = {c: [cyc[c].iloc[i + 1] / cyc[c].iloc[i] for i in range(4)] for c in cyc}
+assert [round(100 * v) for v in steps[2026]] == [80, 50, 75, 80] and [round(100 * v) for v in steps[2025]] == [80, 50, 90, 80]
+fig, ax = plt.subplots(figsize=(8.4, 3.3))
+names = ["applied to\nsat the test", "sat the test to\nshortlisted", "shortlisted to\naccepted", "accepted to\njoined"]
+for off, (c, colour) in zip((-0.2, 0.2), ((2025, LAV), (2026, VIOLET))):
+    vals = [100 * v for v in steps[c]]
+    ax.bar([i + off for i in range(4)], vals, width=0.38,
+           color=[ROSE if (c == 2026 and i == 2) else colour for i in range(4)],
+           label="last cycle" if c == 2025 else "this cycle")
+    for i, v in enumerate(vals):
+        ax.text(i + off, v + 2, f"{v:.0f}", ha="center", fontsize=13)
+ax.set_xticks(range(4))
+ax.set_xticklabels(names, fontsize=12.5)
+ax.set_ylabel("percent of the step before")
+ax.set_ylim(0, 112)
+ax.legend(frameon=False, ncol=2, loc="upper right")
+save(fig, "college_steps")
+
+grp = adm[(adm["programme"] == "main") & adm["group"].isin(["in-state", "other states"])]
+acc_ = grp.pivot_table(index=["group", "cycle"], columns="stage", values="count")
+rate = (acc_["accepted"] / acc_["shortlisted"]).unstack("cycle")
+assert [round(100 * rate.loc["other states", c]) for c in (2024, 2025, 2026)] == [86, 87, 50]
+fig, ax = plt.subplots(figsize=(8.4, 3.4))
+for grp_name, colour, marker in (("in-state", VIOLET, "o"), ("other states", ROSE, "s")):
+    vals = [100 * rate.loc[grp_name, c] for c in (2024, 2025, 2026)]
+    ax.plot([0, 1, 2], vals, marker=marker, ms=8, lw=2.4, color=colour)
+    ax.text(2.1, vals[-1], f"{grp_name}: {vals[1]:.0f} to {vals[2]:.0f}", fontsize=13, color=colour, va="center")
+ax.axvline(1.5, color=INK, lw=1.2, ls="--")
+ax.text(1.55, 78, "fee deadline cut\nfrom 21 to 7 days", fontsize=12.5, color=INK, va="center")
+ax.set_xticks([0, 1, 2])
+ax.set_xticklabels(["two cycles ago", "last cycle", "this cycle"])
+ax.set_xlim(-0.3, 3.3)
+ax.set_ylim(40, 100)
+ax.set_ylabel("offers accepted, percent")
+save(fig, "college_acceptance")
 
 # Test inputs and expected outcomes
 # python3 content/W04/D4/internal/C2_W04_D04_figures_INTERNAL.py (after the generator)
-#     writes nine PNGs, one GIF and the GIF's first and last frames to whiteboards/, and prints each path
+#     writes fifteen PNGs, one GIF and the GIF's first and last frames to whiteboards/, and prints each path
 # the same run without the events file in data/
 #     stops at section 4 with FileNotFoundError, after the triangle, curves and blend pictures are written

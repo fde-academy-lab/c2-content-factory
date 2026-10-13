@@ -10,7 +10,7 @@ no hazard and no test of whether two retention curves differ.
 | Part | Minutes | Slides | Materials |
 |---|---|---|---|
 | Swiggy's weaned users: how removing weak users lifts the rate | 35 | S1 to S3 | The ten-member table on S2, built on the board with the room |
-| The cohort table by signup week, the row's after-class task in class | 40 | S4 to S6 | The event log and notebook 02's pivot; pairs predict the sale week's row before computing it |
+| The cohort table by signup week, the row's after-class task in class | 40 | S4 to S6 | The event log and notebook 06's pivot; pairs predict the sale week's row before computing it |
 | Zomato Gold's 60 percent: what comparison would show cause? | 25 | S7 and S8 | Nothing printed |
 | The second transcript: the app team says the stage is fine | 20 | S9 and S10 | `trainer/C2_W04_D04_interview_TRAINER.md`, the [D] transcript and its scorecard; the role card |
 
@@ -23,8 +23,8 @@ no hazard and no test of whether two retention curves differ.
 | Gold's 60 percent | Before and after joining mixes the choice with the effect; matched non-joiners, the trend before joining and a holdout each control for something and miss something; kept descriptive | A group that says "so Gold works": "who chooses to join a membership?" |
 | The transcript | The four moves answered with the split: starts held at 80, completion fell from 72.5 to 55 for members on Android while, on the same step, iOS members went 71 to 70 and non-members on Android 65 to 64 | A pair that calls the app team wrong: "which part of their chart is true?" |
 
-The second part is the take-home's first part done in class. When the fallback runs, tell the room
-the take-home stands, and its part 2 is rebuilt alone tonight.
+The fallback's second part builds item 2 of the take-home in class. When the fallback runs, tell the
+room the take-home stands: item 2 is rebuilt alone tonight, then the rest.
 
 ## What do you say about the faculty session?
 

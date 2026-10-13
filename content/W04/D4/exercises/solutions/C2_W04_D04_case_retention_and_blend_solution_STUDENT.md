@@ -4,7 +4,8 @@ Answers: 1b 2c 3a 4d
 
 The drill read three rows of the Zomato Gold cohort table and took September's number apart.
 January drops about 19 points after month one and then slides about 0.3 points a month. Read at the
-same age, July is the weakest of the three cohorts. A plain average of the eight September rates
+same age, July starts lowest of the three, 49 in month one, though by month two all three read
+within a fraction of a point. A plain average of the eight September rates
 misses the true reading because the August cohort is 2.6 times a normal month, and the dashboard's
 37.8 is proved by weighting the seven cohorts' rates by their sizes. Illustrative case: the company
 is real, the situation and the data are synthetic, built for this class.
@@ -22,7 +23,7 @@ to whichever cohort the room ranks weakest.
 ## What does the drill test?
 
 It tests reading a row for how members leave, comparing cohorts at the same age rather than in the
-same calendar month, and the two weighting ideas chapter 2 rests on: a blend is a size-weighted
+same calendar month, and the two weighting ideas SECTION 6 rests on: a blend is a size-weighted
 average, and its second route has to land on the direct count.
 
 ## Why is each key right, and each other letter wrong?
@@ -30,7 +31,7 @@ average, and its second route has to land on the direct count.
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
 | Q1, January's row | b | 58 to 38.7 is a drop of about 19 points; 38.7 to 36.9 over six months is about 0.3 a month | a spreads the whole fall evenly, (58 less 36.9) over seven, and hides that almost all of it happens once; c is the opposite of the slide's shape; d calls a slide flat, and the dashboard's flatness has another cause |
-| Q2, the fair comparison | c | At the same age, month one, the three read 58, 53 and 49, so July starts lowest | a compares the cohorts in one calendar month, September, where January reads 36.9, April 37.7 and July 38.5, and July, the youngest, looks best; b punishes the oldest cohort for having more months; d says how much a cohort weighs in the blend, nothing about how its members behave |
+| Q2, the fair comparison | c | At the same age, month one, the three read 58, 53 and 49, so July starts lowest; at month two they read 38.7, 38.6 and 38.5, so the gap is in how each cohort starts | a compares the cohorts in one calendar month, September, where January reads 36.9, April 37.7 and July 38.5, and July, the youngest, looks best; b punishes the oldest cohort for having more months; d says how much a cohort weighs in the blend, nothing about how its members behave |
 | Q3, the plain average | a | The true reading weights each cohort by its members; the plain average gives August, 13,000 of 48,000, the same vote as a cohort of about 5,000 | b is false, since each rate already counts its non-ordering members; c is false, since the reading counts members who joined before September; d is false, since the gap of a point comes from the weights |
 | Q4, the second route | d | Size times rate summed over the seven cohorts gives 13,218, and 13,218 of 35,000 is 37.8, the direct count to the last digit | a averages the readings themselves and proves nothing about September; b counts orders, where the dashboard counts members who ordered; c reads one cohort, while the dashboard counts seven |
 
@@ -43,7 +44,8 @@ In September, July looks strongest only because it is the youngest of the three.
 
 ## Where does the pattern live at work?
 
-Every company that publishes cohorts, from Blinkit's retention by quarter after acquisition to Swiggy's
-spend triangle, lines its cohorts up by age for exactly this reason. A dashboard that reports one
+Every company that publishes cohorts, from Blinkit's retention by quarter after joining (Eternal's Q1
+FY27 letter of 22 July 2026, checked 12 October 2026) to Swiggy Instamart's spend triangle (Swiggy's
+Q2 FY26 shareholder letter, checked 12 October 2026), lines its cohorts up by age for exactly this reason. A dashboard that reports one
 blended number owes its reader the second route: the cohort rows, weighted by size, landing on the
 same digit.
