@@ -1,0 +1,38 @@
+programme,cycle,fee_deadline_days,unit,group,stage,count
+main,2024,21,applications,all,applied,950
+main,2024,21,applications,all,sat_test,760
+main,2024,21,applications,all,shortlisted,380
+main,2024,21,applications,all,accepted,342
+main,2024,21,applications,all,joined,274
+main,2025,21,applications,all,applied,1000
+main,2025,21,applications,all,sat_test,800
+main,2025,21,applications,all,shortlisted,400
+main,2025,21,applications,all,accepted,360
+main,2025,21,applications,all,joined,288
+main,2026,7,applications,all,applied,1000
+main,2026,7,applications,all,sat_test,800
+main,2026,7,applications,all,shortlisted,400
+main,2026,7,applications,all,accepted,300
+main,2026,7,applications,all,joined,240
+main,2026,7,applicants,all,applied,900
+main,2026,7,applicants,all,sat_test,760
+main,2026,7,applicants,all,shortlisted,390
+main,2026,7,applicants,all,accepted,300
+main,2026,7,applicants,all,joined,240
+main,2024,21,applications,in-state,shortlisted,240
+main,2024,21,applications,in-state,accepted,221
+main,2024,21,applications,other states,shortlisted,140
+main,2024,21,applications,other states,accepted,121
+main,2025,21,applications,in-state,shortlisted,250
+main,2025,21,applications,in-state,accepted,230
+main,2025,21,applications,other states,shortlisted,150
+main,2025,21,applications,other states,accepted,130
+main,2026,7,applications,in-state,shortlisted,250
+main,2026,7,applications,in-state,accepted,225
+main,2026,7,applications,other states,shortlisted,150
+main,2026,7,applications,other states,accepted,75
+sister,2026,7,applications,all,applied,1000
+sister,2026,7,applications,all,sat_test,300
+sister,2026,7,applications,all,shortlisted,320
+sister,2026,7,applications,sat the test,shortlisted,230
+sister,2026,7,applications,board marks,shortlisted,90

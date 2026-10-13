@@ -1,5 +1,6 @@
 day: W04/D4, Thursday 29 October 2026
-written_by: C2_W04_D04_generate_INTERNAL.py, the W04 D4 finishing session, 12 October 2026
+written_by: C2_W04_D04_generate_INTERNAL.py, the W04 D4 finishing session, 12 October 2026; the concept
+  chapters' toy_ examples added by the concept-first rebuild, 13 October 2026
 label_line: 'Illustrative case: the company is real, the situation and the data are synthetic, built for
   this class.'
 source_tables:
@@ -26,7 +27,7 @@ numbers:
   value: 53089
   unit: members
   how: rows of members
-  used_by: the ticket (half1 S1, notebook 01 cell 1, notes, cheat sheet)
+  used_by: the ticket (half1 S5; notebook 05 cell 1; notes; cheat sheet)
   printed: 53,089
 - id: cohort_size_jan
   value: 4854
@@ -86,13 +87,13 @@ numbers:
   value: 5000
   unit: members
   how: mean of the January to July cohort sizes
-  used_by: the ticket (half1 S1, notebook 01 cell 1, notes, cheat sheet)
+  used_by: the ticket (half1 S5; notebook 05 cell 1; notes; cheat sheet)
   printed: 5,000
 - id: aug_times_normal
   value: 2.6
   unit: times
   how: 13,000 / 5,000
-  used_by: the ticket (half1 S1, notebook 01 cell 1, notes, cheat sheet)
+  used_by: the ticket (half1 S5; notebook 05 cell 1; notes; cheat sheet)
   printed: '2.6'
 - id: aug_sale_members
   value: 8027
@@ -158,169 +159,169 @@ numbers:
   value: 0.3869
   unit: share
   how: Jan members who ordered in month 2
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.7 percent
 - id: tri_jan_m3
   value: 0.384
   unit: share
   how: Jan members who ordered in month 3
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.4 percent
 - id: tri_jan_m4
   value: 0.3809
   unit: share
   how: Jan members who ordered in month 4
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.1 percent
 - id: tri_jan_m5
   value: 0.378
   unit: share
   how: Jan members who ordered in month 5
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 37.8 percent
 - id: tri_jan_m6
   value: 0.3749
   unit: share
   how: Jan members who ordered in month 6
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 37.5 percent
 - id: tri_jan_m7
   value: 0.3721
   unit: share
   how: Jan members who ordered in month 7
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 37.2 percent
 - id: tri_jan_m8
   value: 0.369
   unit: share
   how: Jan members who ordered in month 8
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 36.9 percent
 - id: tri_feb_m2
   value: 0.386
   unit: share
   how: Feb members who ordered in month 2
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.6 percent
 - id: tri_feb_m3
   value: 0.383
   unit: share
   how: Feb members who ordered in month 3
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.3 percent
 - id: tri_feb_m4
   value: 0.38
   unit: share
   how: Feb members who ordered in month 4
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.0 percent
 - id: tri_feb_m5
   value: 0.3771
   unit: share
   how: Feb members who ordered in month 5
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 37.7 percent
 - id: tri_feb_m6
   value: 0.3741
   unit: share
   how: Feb members who ordered in month 6
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 37.4 percent
 - id: tri_feb_m7
   value: 0.3709
   unit: share
   how: Feb members who ordered in month 7
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 37.1 percent
 - id: tri_mar_m2
   value: 0.3865
   unit: share
   how: Mar members who ordered in month 2
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.6 percent
 - id: tri_mar_m3
   value: 0.3836
   unit: share
   how: Mar members who ordered in month 3
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.4 percent
 - id: tri_mar_m4
   value: 0.3804
   unit: share
   how: Mar members who ordered in month 4
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.0 percent
 - id: tri_mar_m5
   value: 0.3775
   unit: share
   how: Mar members who ordered in month 5
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 37.8 percent
 - id: tri_mar_m6
   value: 0.3746
   unit: share
   how: Mar members who ordered in month 6
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 37.5 percent
 - id: tri_apr_m2
   value: 0.3861
   unit: share
   how: Apr members who ordered in month 2
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.6 percent
 - id: tri_apr_m3
   value: 0.383
   unit: share
   how: Apr members who ordered in month 3
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.3 percent
 - id: tri_apr_m4
   value: 0.3799
   unit: share
   how: Apr members who ordered in month 4
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.0 percent
 - id: tri_apr_m5
   value: 0.377
   unit: share
   how: Apr members who ordered in month 5
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 37.7 percent
 - id: tri_may_m2
   value: 0.387
   unit: share
   how: May members who ordered in month 2
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.7 percent
 - id: tri_may_m3
   value: 0.3841
   unit: share
   how: May members who ordered in month 3
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.4 percent
 - id: tri_may_m4
   value: 0.381
   unit: share
   how: May members who ordered in month 4
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.1 percent
 - id: tri_jun_m2
   value: 0.3889
   unit: share
   how: Jun members who ordered in month 2
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.9 percent
 - id: tri_jun_m3
   value: 0.386
   unit: share
   how: Jun members who ordered in month 3
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.6 percent
 - id: tri_jul_m2
   value: 0.3854
   unit: share
   how: Jul members who ordered in month 2
-  used_by: L2 the triangle (notebook 02, the heatmap)
+  used_by: L2 the triangle (notebook 06, the heatmap)
   printed: 38.5 percent
 - id: aug_m1_organic
   value: 0.49
@@ -1641,13 +1642,13 @@ numbers:
   value: 1386235
   unit: rows
   how: rows of events
-  used_by: notebook 03
+  used_by: notebook 07
   printed: 1,386,235
 - id: events_sessions
   value: 444218
   unit: sessions
   how: sessions in events
-  used_by: notebook 03
+  used_by: notebook 07
   printed: 444,218
 - id: nonmember_users
   value: 4000
@@ -1659,7 +1660,7 @@ numbers:
   value: 241492
   unit: rows
   how: rows of member_months
-  used_by: notebook 02
+  used_by: notebook 06
   printed: 241,492
 toys:
 - id: toy_two_batches
@@ -1670,7 +1671,8 @@ toys:
     june_back_m2: 6
     july_back_m2: 4
     together: 10 of 20
-  used_by: L1 the coaching-centre analogy
+  used_by: 'retired from learner files: SECTION 1 keeps the coaching batches as a one-line analogy with
+    no numbers'
 - id: toy_blend
   label: invented
   values:
@@ -1685,7 +1687,8 @@ toys:
     ordered_now: 250
     members_now: 500
     blend_now: 0.5
-  used_by: 'L1 and L2: the blend that holds while every batch falls; the explorer Th2'
+  used_by: the explorer's Th2 (content/W04/D1), which draws these numbers as batches A and B; SECTION
+    3 teaches them on the gym's dashboard (toy_gym_dashboard)
 - id: toy_funnel
   label: invented
   values:
@@ -1695,7 +1698,7 @@ toys:
     checkouts: 10
     per_session_checkout: 10 of 50
     per_member_checkout: 10 of 20
-  used_by: L3 the funnel toy
+  used_by: 'retired from learner files: the college''s admissions carry the funnel (toy_college_funnel)'
 - id: toy_weaned
   label: invented
   values:
@@ -1747,7 +1750,7 @@ toys:
     customers_over_sessions: 0.233
     search_over_view_session: 0.833
     cart_to_order_after_update: 0.48
-  used_by: 'exercises: the chapter 3 drill'
+  used_by: 'exercises: the Kaapi and Co. drill, in the lab''s practice set'
 - id: toy_dabba_club
   label: invented, Dabba Club, a tiffin subscription
   values:
@@ -1882,6 +1885,315 @@ toys:
     - 45.0
     - 47.2
   used_by: the study notes' self-check
+- id: toy_gym_roster
+  label: invented, one branch of a neighbourhood gym
+  how: invented for the concept chapter on Cohort construction
+  values:
+    file: data/C2_W04_D04_toy_gym_roster_STUDENT.csv
+    joiners: 30
+    per_joining_month: 10
+    joining_months: January, February and March 2026
+    roster_months: January to June 2026
+    visited_by_age:
+      Jan:
+      - 8
+      - 6
+      - 5
+      - 5
+      - 5
+      Feb:
+      - 7
+      - 5
+      - 3
+      - 3
+      Mar:
+      - 6
+      - 4
+      - 3
+    percent_by_age:
+      Jan:
+      - 80
+      - 60
+      - 50
+      - 50
+      - 50
+      Feb:
+      - 70
+      - 50
+      - 30
+      - 30
+      Mar:
+      - 60
+      - 40
+      - 30
+    april_column:
+      by_joining_month:
+      - 5
+      - 5
+      - 6
+      together: 16 of 30
+      percent: 53.3
+    may_column:
+      by_joining_month:
+      - 5
+      - 3
+      - 4
+      together: 12 of 30, never printed as a blend
+    june_column:
+      by_joining_month:
+      - 5
+      - 3
+      - 3
+      together: 11 of 30, never printed as a blend
+    age_two_percent:
+    - 60
+    - 50
+    - 40
+    age_one_percent:
+    - 80
+    - 70
+    - 60
+  used_by: SECTION 1 (half1 opener to its map node); notebook 01; drill c1; the notes' first topic; the
+    cheat sheet's topic panel; the board work
+- id: toy_gym_curves
+  label: invented, the same gym branch read as curves
+  how: 'invented for the concept chapter on Retention curves: shape and floor'
+  values:
+    curves_percent:
+      Jan:
+      - 80
+      - 60
+      - 50
+      - 50
+      - 50
+      Feb:
+      - 70
+      - 50
+      - 30
+      - 30
+      Mar:
+      - 60
+      - 40
+      - 30
+    floor_percent:
+      Jan: 50
+      Feb: 30
+      Mar: none yet
+    floor_from_age:
+      Jan: 3
+      Feb: 3
+    floor_rule: two successive ages read the same share (the programme's own rule)
+    jan_churn_percent:
+    - 20
+    - 40
+    - 50
+    - 50
+    - 50
+    jan_month_to_month_churn_percent:
+    - 20.0
+    - 25.0
+    - 16.7
+    - 0.0
+    - 0.0
+    predict_options: under 10; about 25; 50; back up to 80
+    feb_misread_floor: 50
+  used_by: SECTION 2; notebook 02; drill c2; Kahoot Q4's stem; the notes; the cheat sheet
+- id: toy_gym_dashboard
+  label: invented, the whole gym's dashboard, January and February 2026
+  how: invented for the concept chapter on Blended numbers against cohort truth
+  values:
+    file: data/C2_W04_D04_toy_gym_dashboard_STUDENT.csv
+    january:
+      older_members: 100
+      visited: 50
+      percent: 50.0
+    february:
+      older_members: 100
+      older_visited: 40
+      january_joiners: 400
+      joiners_visited: 210
+      joiners_percent: 52.5
+      together: 250 of 500
+      percent: 50.0
+    plain_mean_of_rates: 46.25
+    same_numbers_as: toy_blend (the explorer's Th2 batches A and B)
+  used_by: SECTION 3; notebook 03; drill c3; the notes; the cheat sheet; the board work
+- id: toy_second_gym
+  label: invented, three cohorts at a second gym
+  how: invented for the concept chapter on Blended numbers against cohort truth
+  values:
+    X:
+      members: 200
+      percent:
+      - 60
+      - 55
+    Y:
+      members: 300
+      percent:
+      - 40
+      - 36
+    Z:
+      members: 500
+      percent_month_one: 52
+      joined: in the first month
+    blend_percent:
+    - 48.0
+    - 47.8
+    visited:
+    - 240
+    - 478
+    plain_mean_second_month: 47.7
+  used_by: SECTION 3's check question; notebook 03's faded example; drill c3 Q1
+- id: toy_college_funnel
+  label: invented, one college's admissions to one programme
+  how: invented for the concept chapter on Funnel stages, drop-off, denominators
+  values:
+    file: data/C2_W04_D04_toy_admissions_STUDENT.csv
+    stages: applied, sat the entrance test, shortlisted, accepted the offer, joined
+    counts:
+      '2024':
+      - 950
+      - 760
+      - 380
+      - 342
+      - 274
+      '2025':
+      - 1000
+      - 800
+      - 400
+      - 360
+      - 288
+      '2026':
+      - 1000
+      - 800
+      - 400
+      - 300
+      - 240
+    step_percent:
+      '2026':
+      - 80
+      - 50
+      - 75
+      - 80
+      '2025':
+      - 80
+      - 50
+      - 90
+      - 80
+      '2024':
+      - 80
+      - 50
+      - 90
+      - 80.1
+    drop_off_percent_2026:
+    - 20
+    - 50
+    - 25
+    - 20
+    overall_percent:
+      '2026': 24.0
+      '2025': 28.8
+    no_show: 200 of 1,000 applications skip the test (20 percent), every cycle
+  used_by: SECTION 4; SECTION 8's opening; notebooks 04 and 08; drills c4 and c5; the notes; the cheat
+    sheet
+- id: toy_college_applicants
+  label: invented, the same cycle counted per applicant
+  how: invented for the concept chapter on Funnel stages, drop-off, denominators
+  values:
+    applicants: 900
+    applications: 1000
+    counts:
+    - 900
+    - 760
+    - 390
+    - 300
+    - 240
+    step_percent:
+    - 84.4
+    - 51.3
+    - 76.9
+    - 80.0
+    joined_per_applicant_percent: 26.7
+    joined_per_application_percent: 24.0
+  used_by: SECTION 4's unit slide; notebook 04; drill c4 Q2
+- id: toy_sister_programme
+  label: invented, the college's sister programme with an optional test
+  how: invented for the concept chapter on Funnel stages, drop-off, denominators
+  values:
+    applications: 1000
+    sat_test: 300
+    shortlisted: 320
+    shortlisted_test_takers: 230
+    shortlisted_board_marks: 90
+    test_to_shortlist_percent: 106.7
+    printed: 107 percent
+    among_test_takers_percent: 76.7
+    printed_fix: 77 percent
+    shortlisted_over_applications: 32.0
+    test_takers_over_applications: 30.0
+    skipped_the_test_percent: 70.0
+  used_by: SECTION 4's artefact slide; notebook 04; drill c4 Q4 and Q5
+- id: toy_college_by_group
+  label: invented, the same college's offer acceptance by home state
+  how: invented for the concept chapter on The fix-first decision and its evidence
+  values:
+    shortlisted:
+      '2024':
+      - 240
+      - 140
+      '2025':
+      - 250
+      - 150
+      '2026':
+      - 250
+      - 150
+    accepted:
+      '2024':
+      - 221
+      - 121
+      '2025':
+      - 230
+      - 130
+      '2026':
+      - 225
+      - 75
+    acceptance_percent:
+      '2024':
+      - 92.1
+      - 86.4
+      '2025':
+      - 92.0
+      - 86.7
+      '2026':
+      - 90.0
+      - 50.0
+    groups: in-state, other states
+    fee_deadline_days:
+      '2024': 21
+      '2025': 21
+      '2026': 7
+    offers_out_within_days: 2
+    expected_2026_at_2025_rates: 360
+    lost_acceptances:
+      in-state: 5
+      other states: 55
+    lost_joiners: 48
+    joining_rate: 0.8
+  used_by: SECTION 8; notebook 08; drill c5; the notes; the cheat sheet
+- id: toy_college_fee
+  label: an assumption on the invented college
+  how: invented for the concept chapter on The fix-first decision and its evidence
+  values:
+    first_year_fee_rs_lakh:
+      low: 1.0
+      middle: 1.2
+      high: 1.5
+    cost_rs_lakh:
+      low: 48.0
+      middle: 57.6
+      high: 72.0
+    counted_on: joiners, 48 a cycle
+  used_by: SECTION 8's cost slide; notebook 08; drill c5
 derived:
 - id: lost_orders_17_days
   value: 3198
@@ -1902,11 +2214,11 @@ derived:
 - id: jan_drop_m1_to_m2_points
   value: 19.3
   how: January's month one less its month two
-  used_by: the chapter 2 drill
+  used_by: the SECTION 6 drill
 - id: jan_even_fall_points
   value: 3.0
   how: January's whole fall spread evenly over seven months (a distractor)
-  used_by: the chapter 2 drill
+  used_by: the SECTION 6 drill
 - id: not_ordering_m2_in_100
   value: 62
   how: 100 less the plateau of about 38 (a distractor)
@@ -1934,11 +2246,11 @@ derived:
 - id: month_count_sep_2026
   value: 24321
   how: year x 12 + month for September 2026
-  used_by: notebook 02's worked age
+  used_by: notebook 06's worked age
 - id: month_count_jul_2026
   value: 24319
   how: year x 12 + month for July 2026
-  used_by: notebook 02's worked age
+  used_by: notebook 06's worked age
 - id: july_drop_m1_to_m2_points
   value: 10.5
   how: July's month one less its month two, in points (49 to 38.5)
@@ -2360,43 +2672,43 @@ plants:
 - id: kalpa_blend_jul
   value: 0.4054
   how: members who joined before Jul with an app session in it, 30 of 74
-  found_in: notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
+  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_blend_aug
   value: 0.4091
   how: members who joined before Aug with an app session in it, 36 of 88
-  found_in: notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
+  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_blend_sep
   value: 0.4083
   how: members who joined before Sep with an app session in it, 49 of 120
-  found_in: notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
+  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_every_cohort_falls
   value: true
   how: each cohort's active share, July to September
-  found_in: notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
+  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_aug_m1
   value: 0.8125
   how: August members active in September, 26 of 32, the lowest month one
-  found_in: notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
+  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_cart_to_checkout_comparison
   value: 0.8333
   how: checkout sessions over add_to_cart sessions, 20 August to 9 September
-  found_in: notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the second your-turn cell
+  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the second your-turn cell
 - id: kalpa_cart_to_checkout_window
   value: 0.6364
   how: the same, 10 to 30 September
-  found_in: notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the second your-turn cell
+  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the second your-turn cell
 - id: kalpa_skip_search
   value: 0.3092
   how: sessions with no search over all sessions
-  found_in: notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the third your-turn cell
+  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell
 - id: kalpa_checkout_per_session_sep
   value: 0.0784
   how: September sessions with a checkout
-  found_in: notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the third your-turn cell
+  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell
 - id: kalpa_checkout_per_member_sep
   value: 0.2449
   how: September members with a checkout
-  found_in: notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the third your-turn cell
+  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell
 shared_constants:
   kalpa_comparison_window:
   - '2026-08-20'
@@ -2406,6 +2718,27 @@ shared_constants:
   - '2026-09-30'
   monsoon_sale_last_day: '2026-08-19'
 corrections:
+- line: the fix-first concept chapter's cost (D4_plan.md section 3, chapter 5; the spine's Thursday table)
+  case_file: '60 students times a first-year fee of Rs 1 to 1.5 lakh: Rs 60 to 90 lakh a year'
+  here: '48 joiners (60 fewer acceptances x the 80 percent who join, or 288 less 240) times Rs 1 to 1.5
+    lakh: Rs 48 to 72 lakh, Rs 57.6 lakh at Rs 1.2 lakh'
+  why: fee income arrives from students who join, and the plan's own second route counts 48 joiners; pricing
+    acceptances would put a unit error in the chapter that teaches the cost in its unit
+- line: the college's applicants (D4_plan.md section 3, chapter 4)
+  case_file: 850 applicants, 28 percent joined
+  here: 900 applicants, 26.7 percent joined
+  why: 28 percent sat beside last cycle's 28.8 in the same chapter; the spine fixes only the applications
+- line: the gym's dashboard (the spine's Thursday table)
+  case_file: the 400 January joiners counted in January
+  here: the dashboard counts a member from the month after she joins, so January reads the 100 older members
+    and February adds the January joiners in their month one
+  why: SECTION 1 teaches that the joining month is month zero and is never counted, so the gym's own dashboard
+    keeps the same rule
+- line: the gym's roster (D4_plan.md section 4)
+  case_file: one row per member per month
+  here: one row per member with a column per month, as a gym's register is kept; notebook 01 turns it
+    into one row per member per month with melt
+  why: the concept notebook prints the example in full, and thirty rows print where 150 would not
 - line: the dashboard's 38 percent
   case_file: blended over members who signed up before the month
   here: members two or more months past their signup month (the ticket's words, month-two retention)

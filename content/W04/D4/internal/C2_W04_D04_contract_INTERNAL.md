@@ -81,5 +81,26 @@ Written by `C2_W04_D04_generate_INTERNAL.py`; every line must read PASS.
 | PASS | every Android session from 14 September runs v2, and every other session v1 | 1.0 | 1.0 |
 | PASS | joined before July, the share who ordered moves under a point on each platform while orders per ordering member fall only on Android |  |  |
 | PASS | the practice set's and the quiz's blends hold flat, neither at 38 nor 41 | [[51.0, 51.0], [46.0, 46.0]] |  |
+| PASS | the gym: thirty joiners, ten a month, counted by age as designed | {'2026-01': [8, 6, 5, 5, 5], '2026-02': [7, 5, 3, 3], '2026-03': [6, 4, 3]} |  |
+| PASS | the gym's April column reads 5, 5 and 6 of 10, 16 of 30, so March looks best by calendar month |  |  |
+| PASS | the gym: at the same age March is the weakest batch (age one 80, 70, 60; age two 60, 50, 40) |  |  |
+| PASS | the gym's floors: January 5 of 10, February 3 of 10, March none yet | {'2026-01': 5, '2026-02': 3, '2026-03': None} |  |
+| PASS | every gym row falls or holds with age, never rises |  |  |
+| PASS | the gym's dashboard holds at 50 percent (50 of 100, then 250 of 500) while the older members fall 50 to 40 |  |  |
+| PASS | the plain mean of February's two rates is 46.25, not the 50 percent counted |  |  |
+| PASS | the second gym's blend reads 48.0 then 47.8 percent while X and Y fall |  |  |
+| PASS | the college's step rates: 80, 50, 75, 80 this cycle against 80, 50, 90, 80 last cycle |  |  |
+| PASS | the step rates multiply to the overall conversion, 24 percent against 28.8 |  |  |
+| PASS | the test is sat by 80 percent of applications in each of three cycles, so its no-show never moved |  |  |
+| PASS | per applicant reads higher than per application at every step, and 26.7 against 24 from the top |  |  |
+| PASS | the sister programme's test to shortlist reads 107 percent, an artefact; 77 among test-takers |  |  |
+| PASS | the groups add up to the programme's shortlist and acceptances in every cycle |  |  |
+| PASS | acceptance: in-state 92 to 90, other states 87 to 50; 60 fewer acceptances, 55 of them from other states |  |  |
+| PASS | the loss in joiners two ways: 288 less 240 = 48 = 60 fewer acceptances x the 80 percent who join |  |  |
+| PASS | the cost on joiners: Rs 48 to 72 lakh of first-year fees, Rs 57.6 lakh at Rs 1.2 lakh | [48.0, 57.6, 72.0] |  |
+| PASS | every printed toy blend sits five points from 41, 38, 36 and 33 | [53.3, 50.0, 50.0, 46.2, 48.0, 47.8] |  |
+| PASS | the toy artefact and its fix sit five points from the case's 118 and 89 |  |  |
+| PASS | the toy skip shares (20 and 70 percent) sit five points from Kalpa's 31 percent with no search |  |  |
+| PASS | no toy blend echoes the Saturday bank or the Kahoot, and no toy funnel count echoes the bank's funnel |  |  |
 | PASS | the weekly cohorts sum to the members who joined 3 August to 13 September | 14892 |  |
 | PASS | the sale week's cohort is the sale-week members and that week's organic joiners |  |  |
