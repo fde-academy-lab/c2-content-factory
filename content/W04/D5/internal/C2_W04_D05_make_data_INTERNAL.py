@@ -836,7 +836,7 @@ def main():
     F.add("public", "flipkart_release", "2026-10-06", "6 October 2026", "Flipkart's announcement date (F6)", "chapter 1 close")
     F.add("public", "split_difference", 13, "13 percent", "the midpoint of 4 and 22, the weak answer", "fallback, transcript")
     F.add("public", "m5_top_ml", 50, "50", "M5: all 50 top-performing methods were machine learning (the M5 accuracy paper, checked 12 Oct 2026)", "transcript, notes")
-    F.add("public", "m5_beat_snaive_pct", 0.358, "35.8 percent", "M5: 1,972 teams, 35.8 percent of them, beat the seasonal naive (the accuracy paper, checked 12 Oct 2026)", "half1 S14, notes")
+    F.add("public", "m5_beat_snaive_pct", 0.358, "35.8 percent", "M5: 1,972 of the 5,507 teams, 35.8 percent, beat the seasonal naive (the accuracy paper, checked 12 Oct 2026)", "half1 S14, notes")
     F.add("public", "m5_snaive_period", 7, "7", "M5's seasonal naive copies the value 7 days back, since the series are daily", "half1 S14, notes")
     F.add("public", "plos_methods", 8, "eight", "PLOS ONE 2018: eight machine-learning and eight statistical methods", "transcript, notes")
     F.add("public", "target_data_accuracy", 0.30, "about 30 percent", "Canadian Business: item data in Target Canada's system was accurate about 30 percent of the time", "transcript, notes")
