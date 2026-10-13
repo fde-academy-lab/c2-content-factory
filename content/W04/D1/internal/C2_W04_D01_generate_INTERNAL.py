@@ -628,6 +628,10 @@ check("Kalpa lab twelve rows: seven of the 107 with placements in both windows, 
       len(lab) == 7 and set(lab) <= set(base) and (lab_t[["size_comparison", "size_window"]] > 0).all().all()
       and abs(lab_count_ratio - 1.22) >= 0.05 and abs(lab_value_ratio - 0.96) >= 0.05,
       (r2(lab_count_ratio), r2(lab_value_ratio)))
+sale = next(c for c in copy_block("campaigns") if c["name"] == "Monsoon Sale")
+check("Kalpa: v4's monsoon sale runs 5 to 19 August for Retail-Plus, its last day the shared constant",
+      (sale["start_date"], sale["end_date"], sale["segment"]) == ("2026-08-05", MONSOON_SALE_LAST_DAY.isoformat(),
+                                                                  "Retail-Plus"), (sale["start_date"], sale["end_date"]))
 thursday = yaml.safe_load((REPO / "content/W04/D4/internal/C2_W04_D04_facts_INTERNAL.yaml")
                           .read_text(encoding="utf-8"))["shared_constants"]
 shared = {"kalpa_comparison_window": [d.isoformat() for d in COMPARISON],
@@ -884,6 +888,14 @@ lab_rows = [{"customer_id": cid, "placed_comparison": int(r["size_comparison"]),
              "placed_window": int(r["size_window"]), "booked_comparison_rs": int(r["sum_comparison"]),
              "booked_window_rs": int(r["sum_window"])} for cid, r in lab_t.iterrows()]
 example = next(c for c in late_joiners if since[c] == "2026-08-25")
+lab_mean = {"placed_ratio": r2((lab_t["size_window"] / lab_t["size_comparison"]).mean()),
+            "booked_ratio": r2((lab_t["sum_window"] / lab_t["sum_comparison"]).mean())}
+on_20 = reorders["customer_id"].isin([c for c, s in since.items() if s <= COMPARISON[0].isoformat()])
+cut_20 = {"members": sum(s <= COMPARISON[0].isoformat() for s in since.values()),
+          "placed_ratio": r2((on_20 & (reorders["slot"] == "window")).sum()
+                             / (on_20 & (reorders["slot"] == "comparison")).sum()),
+          "booked_ratio": r2(reorders.loc[on_20 & (reorders["slot"] == "window"), "value_rs"].sum()
+                             / reorders.loc[on_20 & (reorders["slot"] == "comparison"), "value_rs"].sum())}
 example_days = (COMPARISON[1] - dt.date.fromisoformat(since[example])).days + 1
 
 
@@ -944,6 +956,10 @@ facts = {
                        "booked_comparison_rs": int(lab_t["sum_comparison"].sum()),
                        "booked_window_rs": int(lab_t["sum_window"].sum())},
         "lab_hand_count": {"placed_ratio": r2(lab_count_ratio), "booked_ratio": r2(lab_value_ratio)},
+        "lab_mean_of_member_ratios": lab_mean,
+        "base_cut_on_20_august": cut_20,
+        "monsoon_sale": {"first_day": sale["start_date"], "last_day": sale["end_date"], "campaign_id": sale["campaign_id"]},
+        "window_three_weeks_earlier": ["2026-07-30", "2026-08-19"],
         "audience": "TRAINER until the lab counts them",
     },
     "plants": [
@@ -983,7 +999,7 @@ if __name__ == "__main__":
 
 # Test inputs and expected outcomes
 # python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py
-#     writes five CSVs and the facts file, prints "61 of 61 contract lines PASS" and exits 0
+#     writes five CSVs and the facts file, prints "62 of 62 contract lines PASS" and exits 0
 # python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py --contract
 #     the same, with one PASS line per target printed first
 # python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py --list

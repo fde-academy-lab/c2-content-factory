@@ -64,4 +64,5 @@ Written by `C2_W04_D01_generate_INTERNAL.py`; every line must read PASS.
 | PASS | Kalpa: v4's scale, a few tenths of a placement per member per window | (0.34, 0.41) |  |
 | PASS | Kalpa: over all 120 members both ratios print otherwise, so the base of 107 changes the answer | (1.17, 0.9) |  |
 | PASS | Kalpa lab twelve rows: seven of the 107 with placements in both windows, both ratios at least 0.05 from 1.22 and 0.96 | (1.33, 0.84) |  |
+| PASS | Kalpa: v4's monsoon sale runs 5 to 19 August for Retail-Plus, its last day the shared constant | ('2026-08-05', '2026-08-19') |  |
 | PASS | shared constants: the two Kalpa windows and the monsoon sale's last day, equal to Thursday's |  |  |

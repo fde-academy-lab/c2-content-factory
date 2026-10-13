@@ -1495,6 +1495,20 @@ kalpa:
   lab_hand_count:
     placed_ratio: 1.33
     booked_ratio: 0.84
+  lab_mean_of_member_ratios:
+    placed_ratio: 1.5
+    booked_ratio: 1.11
+  base_cut_on_20_august:
+    members: 108
+    placed_ratio: 1.19
+    booked_ratio: 0.92
+  monsoon_sale:
+    first_day: '2026-08-05'
+    last_day: '2026-08-19'
+    campaign_id: CMP-MONSOON-26
+  window_three_weeks_earlier:
+  - '2026-07-30'
+  - '2026-08-19'
   audience: TRAINER until the lab counts them
 plants:
 - id: kalpa_reorders_per_member_ratio
