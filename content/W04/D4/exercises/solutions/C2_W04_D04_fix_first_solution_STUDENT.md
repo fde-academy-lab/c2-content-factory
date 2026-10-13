@@ -32,7 +32,9 @@ answered by conceding what is true, and the wrong fix named before someone propo
 
 ## What does a strong page say?
 
-1. **The call.** Fix the last step of the new Android checkout for members first.
+1. **The call.** Fix the last step of the new Android checkout for members first. Until the fix
+   ships, switch Android members back to the old checkout today, or give half of them the old path
+   for two days, which confirms the cause and stops most of the loss.
 2. **The evidence.** Completing an order once checkout has started fell from 72.5 to 55 percent for
    members on Android from the release week; starting checkout held at 80; on the same step, members
    on iOS went from 71 to 70 and non-members on Android from 65 to 64; the order records match the
@@ -57,7 +59,7 @@ value beside it, or calls the app team wrong.
 | Q1, orders a week | b | 22,841 carts times 14 points is about 3,198 orders over 17 days, and 3,198 over 17 days, times 7, is about 1,317 a week | a is a day, 3,198 over 17; c is the whole 17 days, never put on a weekly page; d is the orders 58 percent would make, with no comparison |
 | Q2, the rupee line | d | The range across the orders and the price assumed, named as order value, with the midpoint and what it rests on | a hides the assumption that moves the number by a quarter either way; b is the 17 days, beside a weekly call; c is a hundred times too big, crore for lakh |
 | Q3, which goes first | a | The checkout loses orders every week it stays live, and a code fix ends the loss; the August cohort's month one is already spent | b counts members, where the call weighs the loss each week; c splits one team in two; d waits a month while the checkout keeps losing orders |
-| Q4, the fact that reverses it | c | If the lost carts came back as orders within days, the release cost a delay rather than orders, and the weekly loss shrinks toward nothing | a makes the checkout's loss larger; b is the estimate already on the page; d is already known, and is the reason the sale-week members, not August, are the cohort problem |
+| Q4, the fact that reverses it | c | If the lost carts came back as orders within days, the release cost a delay rather than orders, and the weekly loss shrinks toward nothing | a makes the checkout's loss larger; b is the estimate already on the page; d is already known: it is why the cohort problem sits with the sale-week members alone |
 | Q5, the reply | b | It concedes the true part, starts held, and brings the step that fell, for whom | a calls the true chart wrong and loses the room; c is false, since starts held at 80 on Android as well; d defers a weekly loss for a month |
 | Q6, another sale | a | A new discounted cohort enters the dashboard at its month two and, if it behaves like the sale-week members, pulls it down again, at the discount's cost | b forgets that the dashboard never counts month one; c forgets that an average moves when a weak cohort enters; d has the order of events wrong, since month two is what the dashboard counts first |
 

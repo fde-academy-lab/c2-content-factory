@@ -24,7 +24,7 @@ wrong on Friday, so the trainer says it again before the room leaves.
 - How can you tell a step's number is an artefact?
 - What was Wednesday's verdict on bread and milk?
 - Which of two units is wrong?
-- In what order does a strong candidate investigate a retention drop?
+- Which of Gold's two problems goes first?
 
 ---
 
@@ -43,7 +43,7 @@ wrong on Friday, so the trainer says it again before the room leaves.
 
 - Add-to-cart to checkout start, since it is where checkout begins
 - Search to menu view, since it reads 118 percent
-- Checkout start to order placed  <- correct
+- Checkout start to order placed, the step that moved  <- correct
 - Menu view to add-to-cart, since at 34 percent it is the lowest
 
 ---
@@ -58,10 +58,10 @@ wrong on Friday, so the trainer says it again before the room leaves.
 
 ---
 
-## Q4. Each Gold cohort drops to about 38.5 percent in month two, then slides 0.3 points a month, a floor that erodes slowly. What does that floor mean for the business?
+## Q4. Each Gold cohort drops to about 38.5 percent in month two, then slides 0.3 points a month, a floor that erodes slowly, and members who skip a month often order again later. What does that floor mean for the business?
 *Tests: Retention curves: shape and floor, what a curve's floor means for the business.*
 
-- About 38 in 100 members make ordering a habit and carry repeat orders  <- correct
+- In any month, about 38 in 100 order, though not always the same 38  <- correct
 - The dashboard's target is met, so the membership needs no further work
 - About 62 in 100 members cancel Gold in their second month
 - The curve has stopped falling, so no cohort can drop any further
@@ -98,10 +98,10 @@ wrong on Friday, so the trainer says it again before the room leaves.
 
 ---
 
-## Q8. "Retention dropped; walk me through it." What comes first?
-*Tests: The fix-first decision and its evidence, the order of the investigation, the interview staple.*
+## Q8. Gold has two problems: a checkout step losing about 1,133 to 1,317 orders a week, and sale-week members who kept 20 percent in month one. Which goes first?
+*Tests: The fix-first decision and its evidence, which of two problems goes first, on Gold.*
 
-- Name the likeliest cause, then look for the data that supports it
-- Split by platform, since a release is the most common cause
-- Build the cohort table, since a cohort shows every cause at once
-- Check the count is right, then what the number counts  <- correct
+- The sale-week members, since 8,027 people outnumber a weekly order loss
+- Both at once, split across two teams, so that neither problem waits
+- Neither, until October's dashboard shows how far retention falls
+- The checkout: it moved, it loses orders every week, and a fix ends it  <- correct

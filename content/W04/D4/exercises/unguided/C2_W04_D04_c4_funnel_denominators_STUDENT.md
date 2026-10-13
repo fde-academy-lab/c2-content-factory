@@ -84,8 +84,9 @@ d) Decline: the test comes first, so its 200 no-shows are where the loss starts
 
 ## What does a step above 100 percent say?
 
-This comes up at work when a step on a dashboard reads above 100 percent: the step is one people can
-skip, and the number is made by the way it is counted.
+This comes up at work when a step on a dashboard reads above 100 percent: the numerator holds people
+the denominator never had, most often because people can skip the step, and the number is made by the
+way it is counted.
 
 ### Q4. Why does the sister programme's test to shortlist read 107 percent?
 

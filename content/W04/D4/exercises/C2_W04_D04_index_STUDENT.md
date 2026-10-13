@@ -37,20 +37,20 @@ items to redo on a topic that did not land.
 | When | Set | Items | Levels | What it practises |
 |---|---|---|---|---|
 | Inside SECTION 1, on paper | `unguided/C2_W04_D04_c1_cohort_construction_STUDENT.md` | 3 | L1, L2 | A gym's register counted by age; the table that compares batches at the same age |
-| Inside SECTION 2, on paper | `unguided/C2_W04_D04_c2_retention_curves_STUDENT.md` | 3 | L2, L3 | A floor read where two ages agree; three batches ranked at the same age; a young batch's open end |
+| Inside SECTION 2, on paper | `unguided/C2_W04_D04_c2_retention_curves_STUDENT.md` | 3 | L2, L3 | A floor read where two ages agree within a point; three batches ranked at the same age; a young batch's open end |
 | Inside SECTION 3, on paper | `unguided/C2_W04_D04_c3_blended_vs_cohort_STUDENT.md` | 3 | L2, L3 | A dashboard over three cohorts read both ways; the plain mean against the weighted blend; the second route |
 | Inside SECTION 4, on paper | `unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md` | 5 | L1, L3 | A college's step rates and overall; the unit; the step that moved; a step above 100 percent and its fix |
 | SECTION 5, with the trainer | `guided/C2_W04_D04_one_row_STUDENT.md` | 2 | L1 | Two Gold cohort rows counted by hand on the twelve-member card |
-| Close of SECTION 6, on paper | `unguided/C2_W04_D04_case_retention_and_blend_STUDENT.md` | 4 | L2, L3 | Three Gold cohort rows read by age; the plain average against the weighted blend; the second route |
-| Inside SECTION 8, on paper | `unguided/C2_W04_D04_c5_fix_first_evidence_STUDENT.md` | 2 | L5 | The college's order of work and the fact that reverses it; the cost line with its unit and range |
-| SECTION 9, 25 minutes in groups | `unguided/C2_W04_D04_fix_first_STUDENT.md` | 6 | L5, L6 | The five-line page for Gold, the loss in orders and rupees, the order of work, the app team answered |
-| Lab, item 1 any time, items 2 to 4 after the Kalpa notebook | `unguided/C2_W04_D04_kalpa_retail_plus_STUDENT.md` | 4 | L5 | The head of Retail-Plus's call on Kalpa's own counts, and the second page |
+| Lab, on paper, after notebook 06 | `unguided/C2_W04_D04_case_retention_and_blend_STUDENT.md` | 4 | L2, L3 | Three Gold cohort rows read by age; the plain average against the weighted blend; the second route |
+| Lab, on paper, after notebook 08 | `unguided/C2_W04_D04_c5_fix_first_evidence_STUDENT.md` | 2 | L5 | The college's order of work and the fact that would change the call; the cost line with its unit and range |
+| SECTION 9, the page in groups; the items in the lab | `unguided/C2_W04_D04_fix_first_STUDENT.md` | 6 | L5, L6 | The five-line page for Gold, the loss in orders and rupees, the order of work, the app team answered |
+| Lab, after notebook 12 | `unguided/C2_W04_D04_kalpa_retail_plus_STUDENT.md` | 4 | L5 | The head of Retail-Plus's call on Kalpa's own counts, and the second page |
 | Lab, the practice set | `practice/C2_W04_D04_lab_set_STUDENT.md` | 6 | L1 to L5 | The whole method on an invented tiffin subscription, with the cohort table's lines put in order |
 | Lab, after the practice set | `practice/C2_W04_D04_kaapi_funnel_STUDENT.md` | 4 | L3, L4 | A four-stage funnel at an invented bakery app: the skippable step, the unit, counting against ordering |
 
-Each concept drill takes three to five minutes, with letters posted. When a chapter runs long, its
-drill moves to the lab, and the topic's row in the first table says which later items practise the
-same idea.
+Drills c1 to c4 take three or four minutes inside their chapters, with letters posted; drill c5 and
+the case drill run in the lab. When a chapter runs long, its drill moves to the lab too, and the
+topic's row in the first table says which later items practise the same idea.
 
 ## In what order do the day's two written pages come?
 

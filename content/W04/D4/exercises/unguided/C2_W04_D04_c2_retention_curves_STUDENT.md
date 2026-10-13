@@ -19,7 +19,8 @@ wrong batch.
 - Can March's floor be called yet?
 
 The three curves, percent of each batch of ten who visited. The rule we use, this programme's own:
-call a floor only when two ages in a row read the same share.
+call a floor only when two ages in a row read within a point of each other; a batch of ten moves in
+steps of ten points, so here that means two equal ages.
 
 | Joined | Age one | Age two | Age three | Age four | Age five |
 |---|---|---|---|---|---|
@@ -38,7 +39,7 @@ Post exactly this shape: xxx
 ## Where does a curve stop falling?
 
 This comes up at work whenever a team plans for its regular customers: the floor of the curve is the
-share that stays.
+share that stays, where people who stop do not come back.
 
 ### Q1. Where is January's floor, and from which age is it read?
 
@@ -75,5 +76,5 @@ plans for customers who are still leaving.
 
 a) Yes, at 30, since February's floor is also 30
 b) Yes, at 30, since the fall slowed from 20 points to 10
-c) No, since a batch of ten is too small for any floor at all
-d) No, since no two ages in a row have read the same yet
+c) No, since March is the youngest batch, and the youngest never has a floor
+d) No, since no two ages in a row read within a point yet
