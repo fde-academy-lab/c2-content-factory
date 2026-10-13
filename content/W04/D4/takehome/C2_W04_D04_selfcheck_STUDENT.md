@@ -26,8 +26,8 @@ Say each of these aloud, in one sentence, before reading on:
    monthly ones, and the two tables cannot be compared cell for cell.
 3. A cohort that joined on a discount orders at once and then falls away faster than any other.
 
-If any sentence would not come out, re-read chapter 1's card slide, where month zero is defined, and
-notebook 02's age cell before checking numbers.
+If any sentence would not come out, re-read Cohort construction, SECTION 1 of half one, whose
+answer slide S8 defines month zero, and notebook 06's age cell before checking numbers.
 
 ## Did your six cohorts come out right?
 

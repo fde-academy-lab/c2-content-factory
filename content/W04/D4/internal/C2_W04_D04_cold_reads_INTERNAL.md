@@ -537,3 +537,336 @@ sources list. Decks were rebuilt, every changed notebook re-executed, the cheat 
 | 8 | Fixed: the LatestLY page returned HTTP 200 in the fix pass; DMRC's post is quoted as Republic World carries it. |
 | 9 | Partly: the letter's own words replace 'spend'; the exchange copy was not found (sources list). |
 | 10 | Fixed: the notes cite the paper's DOI. |
+
+---
+
+# The concept-first rebuild of 13 October 2026: three cold reads
+
+Three separate agents read the rebuilt pack cold on 13 October 2026, each on the opus model, each
+told to report findings only and never to edit; none changed a repository file (two wrote a
+throwaway notebook-dump helper in the session scratchpad, outside the repository, to read the
+notebooks). Their reports are below as they returned them, with ranges written with "to" in place
+of the dashes the house does not print. What the one fix pass did with each finding is in the last
+section, and every finding not fixed carries its reason in `internal/C2_W04_D04_sources_INTERNAL.md`.
+
+## Rebuild read 1: a fresh graduate who opens only the STUDENT files, in a learner's order
+
+**Overall impression (as returned).** The gym and the college chapters are the clearest cohort and
+funnel teaching I have read. I could count every number by hand, and each picture matched its table:
+I checked the register dots, the triangle, the curves, the stacks and the college bars cell by cell.
+Each case chapter names the topic it applies ("Applies: Cohort construction (SECTION 1)" and so on).
+The numbers agree across the deck, the notebooks, the cards, the drills, the notes and the cheat
+sheet. I recomputed the main ones from the CSVs, read-only, and they all reproduce. I got lost in
+five places: the deck's own rule says a curve has no floor until two ages read the same, and then it
+calls Gold's slide "a floor that erodes"; I could not tell why the 38 is really flat, since the deck
+says the younger cohorts prop it while the interview file says that prop is "worth well under a
+point"; the interview close says "3.2 of the 3.6-point fall", and nothing works it out; one slide
+says the sale "has not paid back", while other files say that is "not yet known"; the handoff line
+about censoring describes a table that is not the one we built.
+
+**Letters.** c1 bca, c2 cad, c3 dbc, c4 cdbab, guided ca, case drill bcad, c5 ba, fix-first bdacba,
+Kalpa dacb, lab set cabadb, Kaapi acbd, Kahoot a c d a b c b d: 42 of 42 drill items and 8 of 8
+Kahoot items match their keys; no key is wrong.
+
+**Counts.** 33 findings: 1 blocker, 7 majors, 25 minors.
+
+1. BLOCKER. The pack teaches a false general rule, that per person (or per member) a funnel always
+   reads at least as high: nb04 cell 13, h1 S32, the notes' "The unit", h1 S60 and nb07 cell 8. One
+   member with 10 converting sessions plus two one-session browsers reads 83 percent per session and
+   33 per member. Fix: say "here", and state the condition.
+2. MAJOR. "Floor" contradicts the day's own rule: h1 S47 ("a floor that erodes slowly"), Kahoot Q4,
+   the notes' ON GOLD under Retention curves, cheat sheet panel 3, nb07 cell 0 ("holds near 38.5")
+   and nb03 cell 0 ("every batch... holds at its floor", though March has none). Fix: call Gold's
+   level no floor by our rule, a slow slide, and re-key Kahoot Q4.
+3. MAJOR. Two stories for why Gold's 38 is flat: the mix story (S49 to S51, the [F] line in S25,
+   nb03, the notes) against the definition story (the extras interview: the prop "is worth well
+   under a point"; the cause is what the count leaves out). Fix: size the prop and lead with the
+   month-two start.
+4. MAJOR. h2 S76 says "so this sale has not paid back" with no discount or margin; S37, S77, the
+   board work and the interview say "not yet known". Fix: "whether it pays back is open".
+5. MAJOR. h2 S81's handoff line is untrue for today's table, which leaves unlived ages blank (S64)
+   and counts a non-ordering member as not retained. Fix: describe censoring as a young cohort's
+   open end, or as an unknown time to leave.
+6. MAJOR. h2 S79 and the extras close say "About 3.2 of the 3.6-point fall is the August cohort";
+   nothing works out the 3.6 (39.5 to 35.9) or the 3.2. Fix: one worked line, or an nb06 cell.
+7. MAJOR. The Kalpa set says "Item 1 can be sat at any time", and the same page holds the "After the
+   lab" table with every number the lab's empty cells are meant to find. Fix: put the table and items
+   2 to 4 where only the lab opens them.
+8. MAJOR. The c4 solution's "worth arguing about" says the test's no-show is "the biggest count of
+   lost applications on the page, 200 a cycle"; shortlisting drops 400. Fix: reword.
+9. minor. S15, nb02 cell 5 and the notes say "January lost 20 points, then 20, then 10, then none";
+   the row starts at 80, so the first 20 comes from an unshown age zero.
+10. minor. S16's "stopped since the month before" row assumes nobody comes back; the condition sits
+    only in the notes and nb02.
+11. minor. S4, the board work and the notes credit the denominator habit to "W1 Mon"; S34 says "W1
+    Tue · W4 Mon".
+12. minor. The interview tags [S] and [D] are never explained; [F] is glossed once, in S44.
+13. minor. S18 and the notes: "The customers above the floor carry the business" is unclear.
+14. minor. S46's comment says `mm` is member_months, but the code uses `cohort_month` and `active`,
+    which that file lacks.
+15. minor. S4 and S19 use "censoring" and "IITGN W4-3" before anything explains them.
+16. minor. The S5 ticket shows "Month-two retention 38" and defines it only at S37.
+17. minor. S37 prints 38.5, 20, about 33, 72.5 to 55 and 1,133 to 1,317 before the predictions at
+    S48, S52 and S56 to S62.
+18. minor. Prediction options give the answer away: S28 option b is the only one with a before and
+    after; S52 option d reveals the organic 49; S56's key d is twice the others' length; Kahoot Q2's
+    key is the only option without a "since" reason.
+19. minor. S65 and nb07 cell 12 give "1,133 to 1,266" and "5,064" with no working and no unit.
+20. minor. The interview's "Users or use" row holds cohorts to "before July"; nb07 cell 15 uses
+    "before August" and calls that held fixed.
+21. minor. S53 states "drops to about 33 percent" as fact before D1 names the assumption.
+22. minor. "Skip" is used for the test's no-shows (S28 d, S67, c5, nb08 cell 3), against S31's "step
+    people can skip"; and "200 of 1,000 every cycle" was 190 of 950 two cycles ago.
+23. minor. Kahoot Q8 is the fix-first topic's only item, but it tests the investigation order.
+24. minor. In h2 S80's table the "blended weekly actives" row sits under per-cohort columns.
+25. minor. S26, nb03 cell 11 and the notes call a flat blend over falling cohorts Simpson's paradox's
+    "retention form"; nothing reverses, so it is a mix effect.
+26. minor. The notes' doubts table says "No zone 0.9 points off"; the finding is "none more than 0.9
+    off".
+27. minor. The notes' glossary gives "Session... 194,211 in September" without saying these are
+    member sessions.
+28. minor. The notes' guesstimate poses no question and works nothing out.
+29. minor. "X, not Y" contrasts in the c4 and fix-first solutions, the interview, the notes and nb07
+    cells 4 and 8; one of the house's banned connectives in the Kaapi solution's Q1 row.
+30. minor. Garbled: S41 ("the three groups are comparable at all") and S5 ("one row per stage each
+    app session, one visit to the app, reached").
+31. minor. 74 of the 85 deck slide headings are statements with the question in the italic line
+    beneath; ignore if the deck convention exempts slide titles.
+32. minor. The notes embed the cohort-fill GIF with no still beside it.
+33. minor. The Kalpa Q2 key rests on 26 of 32 against 13 of 14 and 12 of 13 with no thin-count
+    caveat.
+
+## Rebuild read 2: a hiring interviewer who runs analyst screens at Uber, Swiggy, Google and an AI startup
+
+**Overall verdict (as returned).** The arithmetic is very solid: every case number reconciles with
+the data, every real-company fact carries a checked date, and the hypothesis board, the tracking
+check against an independent record, the comparators on the same step, the cohorts held fixed and
+the concede-then-split move are hire-grade. A candidate would be caught on the rules: three
+statements are taught as fact and are false (the per-person funnel, a 38 percent month-active
+plateau read as 38 habitual members, the censoring handoff line), and several rules are stated
+without the condition that makes them true (above 100 percent means a skippable step; a low step is
+a loss only when it moves; churn is 100 less retention; a floor is two exactly equal shares). The pack
+gives two different first moves for the same staple question, has no SQL, and puts no rollback step
+in any student file.
+
+**Scores.** SECTION 1 (S11) 2/5: it names a technique as the walk's first move and skips the count
+and the definition. SECTION 2 (S18) 3/5: no diagonal read for a calendar shock, no definition of an
+active member, no small-cohort caveat. SECTION 3 (S25) 4/5: the mix mechanism is right, never named
+as a mix shift. SECTION 4 (S33) 3/5: a stakeholder question, not a funnel question, and the same as
+SECTION 8's. SECTION 8 (S71) 3/5: a good evidence bundle with no cheap reversible test, and the
+choice between two problems is never sized. The [S] transcript 4/5; the [D] transcript 4/5; the AI
+variant 3/5.
+
+**Counts.** 27 findings: 3 blockers, 9 majors, 15 minors.
+
+1. BLOCKER. The per-person funnel claim is false in general (nb04 cell 13; S32; S60; nb07 cell 8; the
+   notes' "The unit"). Fix: say it holds in this data; only the overall is guaranteed higher per
+   person, and only when each person converts at most once.
+2. BLOCKER. The Gold floor read as a habit (Kahoot Q4's key; S18 rule 2 applied to Gold): members
+   come back after a month with no order, and only 16.5 percent of January's cohort ordered in every
+   month from age 2 to 8 while 59 percent ordered at least once. Fix: key Q4 as "in any month about 38
+   in 100 order", and scope rule 2 to products with no returners.
+3. BLOCKER. The handoff line on censoring is false for the table taught today, which leaves unlived
+   cells empty. Fix: "Your table leaves a young cohort's later ages empty; the moment you estimate how
+   long members stay, the member who has not left yet needs a name: censored."
+4. MAJOR. Two first moves for the same staple question: S11, nb01 and the notes say fix the joining
+   month; S79, the transcript and Kahoot Q8 put the count and the definition first.
+5. MAJOR. "A low step is a loss only when it moves" mixes diagnosing a change with choosing where to
+   invest, and the 200 no-shows are never sized beside the 48.
+6. MAJOR. "Above 100 percent means a skippable step" misses duplicates, mixed units, mismatched
+   windows and entry from another path; the c4 solution dismisses double counting wrongly.
+7. MAJOR. The floor rule uses exact equality and never fires on real data; drill c2 Q3's option c is
+   arguable with a batch of ten.
+8. MAJOR. The churn formulas are printed without their condition (no returners); add the
+   inactivity-window definition.
+9. MAJOR. c5 Q1's "reversal" fact would change the cause and the fix, not which problem goes first.
+10. MAJOR. No mitigation in any student file: rolling back or switching v2 off for Android members,
+    and the two-day half test, appear only in the TRAINER interview file.
+11. MAJOR. SECTIONs 4 and 8 ask the same "owning team says its step is fine" question, so no funnel
+    staple is prepared; no SQL anywhere; the pandas mean is a share only because member_months holds
+    zero-order months, and on a sparse orders table the same code prints 100 percent in every cell.
+12. MAJOR. S76's rule box overclaims the payback against an organic member.
+13. minor. The plain-mean rule is overstated: it also matches when rates are equal or unrelated to
+    size.
+14. minor. The Simpson's paradox label is loose; call it a mix effect.
+15. minor. Rule 2 (step rates multiply to the overall) needs "in a strict funnel".
+16. minor. The sampling margin treats sessions as independent; sessions cluster within members.
+17. minor. October's 33 is stated as fact on S37, S53 and S84.
+18. minor. The comparator definition is incomplete: in-state students met the change too, so they
+    locate the effect rather than control for it.
+19. minor. Two transcript numbers cannot be reproduced from student notebooks (3.2 of 3.6; the
+    joined-before-July split).
+20. minor. The programme's own floor rule loses its label in S19, S84's crux and the glossary.
+21. minor. Amplitude misquoted: the source says "top 25% for activation".
+22. minor. S69's snippet does not reproduce its comment: with the printed 87 percent it rounds to 56.
+23. minor. The fee cost is first-year fees only; label it.
+24. minor. Case drill Q2's key overstates: at month two the three cohorts read 38.7, 38.6 and 38.5;
+    say "July starts lowest".
+25. minor. S41: "the three groups are comparable at all".
+26. minor. Sourcing gaps: the case-drill solution names Blinkit's and Swiggy's charts with no date;
+    Blinkit's letter date is missing from the sources' confirmation column; S18's notes say the
+    two Blinkit numbers "disagree by a factor of three" when they measure different things.
+27. minor. S49 and S54 credit Gold's flat 38 to the blend; the mix props it by about half a point over
+    three months, and the rest is a slow slide plus a definition that leaves out month one and August.
+
+## Rebuild read 3: a trainer who did not write the day, with the row open
+
+**The five subtopics (as returned).** Cohort construction: half1 S6 to S12, notebook 01, c1 Q1 to Q3
+and the guided set, Kahoot Q1, taught from zero on the gym before SECTION 5. Funnel stages, drop-off,
+denominators: half1 S27 to S34, notebook 04, c4 Q1 to Q5 and the Kaapi drill, Kahoot Q2, Q5 and Q7,
+taught on the college before SECTION 7. Retention curves: shape and floor: half1 S13 to S19, notebook
+02, c2 Q1 to Q3 and the case drill, Kahoot Q4, taught on the gym before SECTION 6. Blended numbers
+against cohort truth: half1 S20 to S26, notebook 03, c3 Q1 to Q3 and the case drill, Kahoot Q3, taught
+on the gym before SECTION 6. The fix-first decision and its evidence: half2 S66 to S72, notebook 08,
+c5 Q1 and Q2 and the fix-first set, Kahoot Q8 (a weak fit), taught on the college before SECTION 9.
+Every subtopic was found; `coverage_check.py` passes with 3 warnings. The LIVE minutes in the notes
+match the day sheet section by section (180 and 60, 240 in all); about 40 references were
+spot-checked and all but 3 are right.
+
+**Counts.** 20 findings: 0 blockers, 6 majors, 14 minors.
+
+1. MAJOR. The concept drills c1 to c5, the guided set and the case drill appear in no speaker note,
+   and each SECTION's slide minutes already fill its allowance, so the drills either drop or run about
+   20 minutes over. Fix: cue each drill and take its minutes from named slides, or move the drills to
+   the lab.
+2. MAJOR. SECTION 10 cannot run in 10 minutes: pairs are asked to read the 2,493-word transcript in
+   S79's 5 minutes, and the files disagree on the AI variant (5 minutes with a pair answering cold;
+   3 minutes read aloud) and on the guesstimate's slot.
+3. MAJOR. The run sheet strikes tracking at Reveal 3 because "the fall holds with the date moved a
+   week"; S62 and the answer key say the moved cut cannot test tracking, which S64's order-records
+   match settles.
+4. MAJOR. The day sheet's cut ("S64's last four rows to the notes") cuts rows that must land.
+5. MAJOR. Several predictions are answered before they are asked: the ticket (S5, re-read at S36)
+   prints the 38, the 34 and 61 and the platform split that S48, S59 and S61 ask for; S37 reads out
+   38.5, 20, about 33 and 72.5 to 55; reveal 2, handed out at S50, prints S53's split.
+6. MAJOR. The Kalpa set's item 1 "can be sat at any time", and the same file prints every plant in its
+   after-lab section.
+7. minor. The day sheet's "calendar comparison, on Gold" trap points at slides that stage the card;
+   in September June reads 38.6, above July.
+8. minor. The run sheet's minutes differ from the notes (7 and 8 for the board and the card; 3 for the
+   dispute).
+9. minor. S74's notes have a learner read the role card; the TA plays the lead, and the slide shows
+   "What answers it" before the room answers.
+10. minor. The board's verdict words clash with the answer key (strike, confirm, explain).
+11. minor. The day sheet skips deviations from the row: the guided set holds only the card rows; the
+    row's mid-session drills are shorter here; Kahoot Q6's 0.74 and 1.04 differ from the row's.
+12. minor. Kahoot Q8 tests the walk's first move, not the fix-first decision.
+13. minor. Notebook cell numbers count from 0 and nothing says so.
+14. minor. The concept notebooks have no slot in the lab note.
+15. minor. The handoff line says "the next 120 minutes" with the Kahoot and close still to run.
+16. minor. S60 and nb07 cell 8 say every step reads higher per member; search to menu view reads 118
+    per session and 101 per member.
+17. minor. SECTION 9's groups get 13 writing minutes for a page and six items, against the set's "25
+    minutes in your group".
+18. minor. Cut cues and hand-outs live only in the day sheet and the run sheet, not in the SECTION
+    opener notes.
+19. minor. The fallback block runs 117 of its 120 minutes, says "return to the Kahoot if it has not
+    run", mixes "first part" with "part 2", and reuses the main day's SECTION numbers.
+20. minor. Wording: the SECTION 11 opener says "The map (1)" with no map on S82; S82 says "one Kahoot
+    item per topic" though the funnel has three; S41's sentence.
+
+## What did the one fix pass do with each rebuild finding?
+
+The fix pass ran once, on 13 October 2026, after all three reads. No read returned a "not found":
+every subtopic was found where the matrix says it is taught. Each row says what changed and where;
+a finding left as it was carries its reason in `internal/C2_W04_D04_sources_INTERNAL.md`.
+
+### The graduate's 33 findings
+
+| # | What the fix pass did |
+|---|---|
+| 1 | Fixed: S32, S60, notebook 04 (cells 12 and 13), notebook 07 (cell 8), the notes and the c4 solution say only the overall is sure to read higher per person, when each converts once; the middle steps' direction is read from the data |
+| 2 | Fixed: the floor rule reads two ages within a point (S17's `floor_of(row, within=0.01)`, notebook 02, drill c2, the notes, the cheat sheet), so Gold's rows reach a floor at month two that erodes (S47, notebook 06, the notes); Kahoot Q4 re-keyed; notebooks 03 and 07 reworded |
+| 3 | Fixed: S48 asks why the dashboard holds; S49, S51, notebook 06 and the notes size the prop at about half a point (37.3 held to June's four cohorts) and lead with the slow slide and the month-two start |
+| 4 | Fixed: S76 leaves the payback open until the discount and the margin sit beside the orders |
+| 5 | Fixed: S81 and the day sheet carry a line that is true for the table taught; the departure from the spine is in the sources |
+| 6 | Fixed: S79's notes work 39.5 to 35.9, and a normal August at 39.2, so about 3.2 of the 3.6 is the August cohort (facts `everyone_fall_aug_to_sep_points`, `everyone_sep_normal_august`, `everyone_fall_ordinary_points` and `everyone_fall_from_august_cohort_points`, which the transcript already rested on) |
+| 7 | Fixed: the Kalpa set is sat whole after notebook 12 (its opening, the index, the lab note) |
+| 8 | Fixed: the c4 solution's paragraph sizes the no-show at about 30 joiners if half sat and drops "the biggest count" |
+| 9 | Fixed: "fell 20 points from age one to age two, then 10, then none" on S15, in notebook 02 and the notes |
+| 10 | Fixed: S16, notebook 02 and the notes state that nobody came back, and how a team picks when a member counts as gone where members return |
+| 11 | Fixed: S34 reads "W1 Mon · W4 Mon", matching S4 and the row (Week 1 Monday's "numerator and denominator for every rate") |
+| 12 | Fixed: S11, notebook 01 and the notes gloss [S], [F] and [D] |
+| 13 | Fixed: "The customers who stay carry the business: fewer of them, each spending more" (S18, the notes) |
+| 14 | Fixed: S46's comment says `mm` is member_months joined to members, with active as orders above zero |
+| 15 | Fixed: S4's and the day sheet's maps say "members still here"; S19 names the IITGN faculty session |
+| 16 | Fixed: S5 defines month-two retention |
+| 17 | Fixed: S37 is a sentence with blanks; the case file holds the filled sentence and the blanks' order |
+| 18 | Fixed: S28's b and d, S52's d, S56's four options and Kahoot Q2's key reworded so no option carries the answer's shape |
+| 19 | Fixed: S65's notes work the range from 5,064 and 4,138 orders a week against the comparators' change, and the slide names the unit |
+| 20 | Left: both holds are true; reason in the sources |
+| 21 | Fixed: S53, S84, the notes and the day sheet give October's 33 as an estimate on one assumption; D1 says why the assumption is the weak point |
+| 22 | Fixed: "never sit" on S28, S67, drill c5, notebook 08 and the notes; S67 says the same 20 percent as every cycle, and the facts record 190 of 950 in 2024 |
+| 23 | Fixed: Kahoot Q8 asks which of Gold's two problems goes first, and S83's card follows |
+| 24 | Left: reason in the sources |
+| 25 | Fixed: S26, notebook 03 and the notes call it a mix effect that uses the same arithmetic |
+| 26 | Fixed: "No zone more than 0.9 points off" |
+| 27 | Fixed: "194,211 Gold-member sessions in September" |
+| 28 | Fixed: the notes' guesstimate asks the question and gives the conversion from line uses to trips to riders |
+| 29 | Fixed: notebook 07 (cells 4 and 8), the notes, the c4, fix-first and Kaapi solutions and the transcript's two contrasts reworded |
+| 30 | Fixed: S41 and S5 rewritten |
+| 31 | Left: the deck convention; reason in the sources |
+| 32 | Fixed: the notes print the GIF's last frame as a still beside it |
+| 33 | Fixed: the Kalpa solution's Q2 row says the cohorts' order is the finding and each gap is rough |
+
+### The interviewer's 27 findings
+
+| # | What the fix pass did |
+|---|---|
+| 1 | Fixed, as the graduate's 1 |
+| 2 | Fixed: Kahoot Q4's key reads "In any month, about 38 in 100 order, though not always the same 38"; S18's rule 2 is scoped to members who never return; S47, notebook 06 and the notes say so |
+| 3 | Fixed, as the graduate's 5 |
+| 4 | Fixed: S11, notebook 01 and the notes open on confirming what the number counts and that the count is right |
+| 5 | Fixed: rule 3 on S29, S33, S57, notebooks 04 and 07 and the notes separates the step that owns a fall from where to invest; S69, notebook 08 and the notes size the no-show beside the 48 |
+| 6 | Fixed: S31, S33, notebooks 04 and 07, the notes and drill c4 name a skipped step, a double count and mixed units or windows; the c4 solution's Q4 row treats a double count as a real cause the counts rule out |
+| 7 | Fixed: within a point; drill c2's Q3 option c reworded |
+| 8 | Fixed, as the graduate's 10 |
+| 9 | Fixed: drill c5's Q1 asks which fact would change the call, and its solution says that fact changes the fix |
+| 10 | Fixed: S77, the fix-first solution, the notes and the case file switch Android members back to the old checkout until the fix ships, or give half of them the old path for two days |
+| 11 | Fixed: S33, notebook 04 and the notes ask the funnel staple "Checkout conversion fell this month; how do you find where?"; the notes add the cohort table in SQL, run on Postgres 16 and SQLite, and the sparse-table trap |
+| 12 | Fixed, as the graduate's 4 |
+| 13 | Fixed: the plain mean matches the blend only when the cohorts are the same size or read the same rate |
+| 14 | Fixed, as the graduate's 25 |
+| 15 | Fixed: rule 2 holds where each stage is a subset of the one before |
+| 16 | Fixed: S63's notes and notebook 07 say the margin assumes independent sessions and is wider since sessions cluster within members |
+| 17 | Fixed, as the graduate's 21 |
+| 18 | Fixed: S68, notebook 08 and the notes say in-state students met the same deadline and place the fall in one group; the glossary says a comparator is no control group |
+| 19 | Partly: the 3.2 of 3.6 is worked; the before-July hold stays, as the graduate's 20 |
+| 20 | Fixed: S19, S84's crux, the cheat sheet and the glossary say "by our rule" |
+| 21 | Fixed: "top 25 percent for activation", the page re-read on 13 October 2026 |
+| 22 | Fixed: S69's snippet divides counts, 230 less 225 and 130 less 75, and notebook 08 computes it the same way |
+| 23 | Fixed: first-year fees on S69, drill c5, notebook 08 and the notes |
+| 24 | Fixed: drill Q2 asks which comparison ranks the three fairly, keyed "so July starts lowest"; the solution adds month two's 38.7, 38.6 and 38.5 |
+| 25 | Fixed, as the graduate's 30 |
+| 26 | Fixed: the case drill's solution dates both charts; the sources give the Eternal page's date; S18's notes say the two numbers measure different things |
+| 27 | Fixed: S49 sizes the prop; S54's rule, the blend's arithmetic, stands |
+
+### The trainer's 20 findings
+
+| # | What the fix pass did |
+|---|---|
+| 1 | Fixed: drills c1 to c4 run inside their chapters, cued in the notes of S11, S18, S25 and S33, with minutes taken from named slides; drill c5 and the case drill run in the lab; the guided set is cued at S39 |
+| 2 | Fixed: pairs work from S79's table only; the transcript is for the evening; the AI variant is read aloud in 3 minutes with no discussion (S80, the day sheet, the interview sheet); the guesstimate moves to the lab's warm-up or the fallback |
+| 3 | Fixed: the run sheet strikes tracking at S64, on the order records |
+| 4 | Fixed: the day sheet's cut names S64's four self-study rows and keeps the three that must land |
+| 5 | Fixed: the ticket drops the 61; S48 asks why and S61 asks when; S37 has blanks; reveal 2 is handed at S53 |
+| 6 | Fixed, as the graduate's 7 |
+| 7 | Fixed: the trap row points at S47, notebook 06 cell 5 and the case drill's Q2 |
+| 8 | Fixed: the run sheet reads 7, 8 and 3 minutes |
+| 9 | Fixed: the TA plays the lead from the role card, and S74 goes up only after a group has answered |
+| 10 | Fixed: the run sheet's verdicts read strike, confirm or explain, with the definition explained |
+| 11 | Fixed: the day sheet's new section lists the departures from the row and why |
+| 12 | Fixed, as the graduate's 23 |
+| 13 | Fixed: the day sheet says cell numbers count from 0 |
+| 14 | Fixed: the lab note's row 0 runs any unfinished concept notebook |
+| 15 | Fixed: the handoff line says "After the close" |
+| 16 | Fixed, as the graduate's 1 |
+| 17 | Fixed: SECTION 9 runs 12 minutes of slides and 13 of writing, and the set's six items run in the lab |
+| 18 | Fixed: every SECTION opener's notes carry its hand-out and its cut |
+| 19 | Fixed: the fallback deck runs SECTIONs 12 to 15 in 120 minutes with no Kahoot line, and the note and the take-home say "item 2" |
+| 20 | Fixed: SECTION 11's opener, S82 and S41 reworded |
+
+**After the fix pass.** The orchestrating session's review of 13 October 2026 folded SECTIONs 10
+and 11 into SECTION 9's close, gave SECTION 9 notebook 09 and renumbered the lab notebook from 12 to
+10. Every slide number the reads cite is unchanged; where a read names SECTION 10 or 11, the slides
+are S78 to S81 and S82 to S84 of SECTION 9, and its notebook 12 is notebook 10.

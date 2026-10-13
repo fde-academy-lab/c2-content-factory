@@ -1,7 +1,7 @@
 # Interview room: the scorecards, and the fallback's dispute transcript
 
-**TRAINER ONLY.** The [S] transcript the room reads is `extras/C2_W04_D04_interview_STUDENT.md`; this
-page scores it, and carries the [D] transcript the fallback block's last part runs (fallback deck,
+**TRAINER ONLY.** The [S] transcript is `extras/C2_W04_D04_interview_STUDENT.md`, which learners read
+in the evening; in SECTION 9's interview walk (S78 to S81) the pairs work from S79's table only. This page scores the transcript, and carries the [D] transcript the fallback block's last part runs (fallback deck,
 S9). [S] marks a staple asked everywhere and [D] a differentiator, where a strong candidate separates.
 Written for this programme in the style of product-company and GCC screens. Zomato Gold, Chennai:
 illustrative case, the company is real, the situation and the data are synthetic, built for this
@@ -112,8 +112,9 @@ about 70 percent Android (70 to 71 percent across cohorts).
 
 ## How is the AI-company variant run?
 
-After the [S] transcript, five minutes: one pair reads the AI question aloud and answers it cold,
-then the room compares the answer with the extras page. Explorer scene Th4 shows the same toy: the
+In SECTION 9's interview walk it runs as S80, read aloud in 3 minutes with no discussion. When the fallback block or
+the lab has time, one pair answers the AI question cold and the room compares the answer with the
+extras page. Explorer scene Th4 shows the same toy: the
 launch cohort at 24 percent and a later cohort at 36 at week four, with the blended count's toggle.
 The premise is two months after launch, so week four exists for several cohorts. The moves to listen
 for: active defined on the core action, the weekly model and pricing changes checked first, "read

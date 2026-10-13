@@ -15,7 +15,7 @@ Writes to content/W04/D4/data/:
     events.csv.gz        every app session of every member in August and September 2026, and of a
                          comparison sample of non-member users, one row per stage reached; gzipped
                          because it runs to about a million rows, and pandas reads it as it is
-    twelve_rows          the twelve members chapter 1 counts by hand, real rows of the data
+    twelve_rows          the twelve members SECTION 5 counts by hand, real rows of the data
     kalpa_memberships    the Kalpa lab: Kalpa Retail's 120 Retail-Plus customers from the frozen v4
                          warehouse, each with the month the membership started
     kalpa_events         their app sessions, July to September 2026
@@ -932,7 +932,7 @@ ours = {"kalpa_comparison_window": [COMPARISON[0].isoformat(), COMPARISON[1].iso
 check(f"shared constants equal Monday's ({source})", all(mon.get(k) == v for k, v in ours.items()))
 
 # ================================================================================= the facts
-TICKET = "the ticket (half1 S1, notebook 01 cell 1, notes, cheat sheet)"
+TICKET = "the ticket (half1 S5; notebook 05 cell 1; notes; cheat sheet)"
 fact("members_total", len(members), "members", "rows of members", TICKET, f"{len(members):,}")
 for ym in MONTHS:
     fact(f"cohort_size_{NAMES[ym].lower()}", SIZES[ym], "members", f"members whose signup month is {NAMES[ym]} 2026",
@@ -951,7 +951,7 @@ for ym in M1:
         v = tri.loc[ym, k]
         if pd.notna(v) and k >= 2:
             fact(f"tri_{NAMES[ym].lower()}_m{k}", r4(v), "share", f"{NAMES[ym]} members who ordered in month {k}",
-                 "L2 the triangle (notebook 02, the heatmap)", f"{100 * v:.1f} percent")
+                 "L2 the triangle (notebook 06, the heatmap)", f"{100 * v:.1f} percent")
 fact("aug_m1_organic", r4(org_m1["organic"]), "share", "organic August members who ordered in September",
      "L4 selection", pct(org_m1["organic"]))
 fact("aug_m1_sale", r4(org_m1["sale"]), "share", "sale-week August members who ordered in September",
@@ -1293,11 +1293,11 @@ for w, v in weekly.items():
     fact(f"android_member_week_{w.start_time.date().isoformat()}", r4(v), "share",
          f"Android members, add_to_cart to order_placed, the week of {w.start_time.date().isoformat()}",
          "L3 the weekly series", f"{round(100 * v)} percent")
-fact("events_rows", len(ev), "rows", "rows of events", "notebook 03", f"{len(ev):,}")
-fact("events_sessions", int(ev.session_id.nunique()), "sessions", "sessions in events", "notebook 03",
+fact("events_rows", len(ev), "rows", "rows of events", "notebook 07", f"{len(ev):,}")
+fact("events_sessions", int(ev.session_id.nunique()), "sessions", "sessions in events", "notebook 07",
      f"{ev.session_id.nunique():,}")
 fact("nonmember_users", NON_MEMBERS, "users", "the comparison sample of non-member users", "the ticket", f"{NON_MEMBERS:,}")
-fact("member_months_rows", len(mm), "rows", "rows of member_months", "notebook 02", f"{len(mm):,}")
+fact("member_months_rows", len(mm), "rows", "rows of member_months", "notebook 06", f"{len(mm):,}")
 
 toys = [
     {"id": "toy_two_batches", "label": "invented",
@@ -1311,7 +1311,7 @@ toys = [
     {"id": "toy_funnel", "label": "invented",
      "values": {"visits": 100, "searches": 40, "carts": 20, "checkouts": 10, "per_session_checkout": "10 of 50",
                 "per_member_checkout": "10 of 20"},
-     "used_by": "L3 the funnel toy"},
+     "used_by": "L3 the funnel toy (retired, see below)"},
     {"id": "toy_weaned", "label": "invented",
      "values": {"all_ten": [7, 5, 4, 3], "strong_five": [5, 5, 4, 3], "all_ten_percent": [70, 50, 40, 30],
                 "strong_five_percent": [100, 100, 80, 60]}, "used_by": "the fallback hour"},
@@ -1347,7 +1347,7 @@ toys += [
                 "customers_over_sessions": r3(KAAPI_C["add_to_cart"] / KAAPI_S["product_view"]),
                 "search_over_view_session": r3(KAAPI_S["search"] / KAAPI_S["product_view"]),
                 "cart_to_order_after_update": 0.48},
-     "used_by": "exercises: the chapter 3 drill"},
+     "used_by": "exercises: the Kaapi and Co. drill, in the lab's practice set"},
     {"id": "toy_dabba_club", "label": "invented, Dabba Club, a tiffin subscription",
      "values": {"subscribers": sum(n for n, _ in DABBA.values()),
                 "cohorts": {k: {"size": n, "active": a, "percent": [round(100 * x / n, 1) for x in a]}
@@ -1381,12 +1381,308 @@ flat = [t["values"]["blend_percent"] for t in toys if t["id"] in ("toy_dabba_clu
 check("the practice set's and the quiz's blends hold flat, neither at 38 nor 41",
       len(flat) == 2 and all(a == b and a not in (38, 41) for a, b in flat), flat)
 
+# ======================================================================= the concept chapters' examples
+# The five concept chapters teach the row's subtopics before the case, on two invented worlds: one
+# branch of a neighbourhood gym and the whole gym's dashboard (cohort construction, retention curves,
+# the blend), and one college's admissions to one programme (the funnel, the fix-first decision).
+# Nothing here draws from a random stream, so the case files above stay byte-identical. Every number
+# is written to data/ for the concept notebooks and recorded below under a toy_ id.
+GYM_MONTHS = ["2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06"]
+GYM_COLS = ["jan", "feb", "mar", "apr", "may", "jun"]
+GYM_LAST_AGE = {  # each joiner's last month of age with a visit; the joining month is age zero
+    "2026-01": [5, 1, 5, 0, 2, 5, 5, 1, 0, 5],
+    "2026-02": [4, 0, 2, 4, 1, 0, 4, 2, 0, 1],
+    "2026-03": [3, 0, 1, 3, 0, 2, 0, 3, 1, 0],
+}
+GYM_WANT = {"2026-01": [8, 6, 5, 5, 5], "2026-02": [7, 5, 3, 3], "2026-03": [6, 4, 3]}
+roster, gym_id = [], 0
+for joined, lasts in GYM_LAST_AGE.items():
+    j = GYM_MONTHS.index(joined)
+    for last in lasts:
+        gym_id += 1
+        cells = ["" if i < j else str(int(i - j <= last)) for i in range(len(GYM_MONTHS))]
+        roster.append([f"G{gym_id:02d}", GYM_COLS[j]] + cells)
+with open(DATA / f"{STEM}_toy_gym_roster_STUDENT.csv", "w", newline="", encoding="utf-8") as f:
+    w = csv.writer(f, lineterminator="\n")
+    w.writerow(["member_id", "joined"] + GYM_COLS)
+    w.writerows(roster)
+gym_age = {joined: [sum(1 for last in lasts if last >= k) for k in range(1, len(GYM_MONTHS) - GYM_MONTHS.index(joined))]
+           for joined, lasts in GYM_LAST_AGE.items()}
+gym_cal = {m: {joined: (sum(1 for r in roster if r[1] == GYM_COLS[GYM_MONTHS.index(joined)] and r[2 + i] == "1"), 10)
+               for joined in GYM_LAST_AGE if GYM_MONTHS.index(joined) < i}
+           for i, m in enumerate(GYM_MONTHS)}
+check("the gym: thirty joiners, ten a month, counted by age as designed", gym_age == GYM_WANT and len(roster) == 30,
+      gym_age)
+april = gym_cal["2026-04"]
+check("the gym's April column reads 5, 5 and 6 of 10, 16 of 30, so March looks best by calendar month",
+      [a for a, _ in april.values()] == [5, 5, 6] and sum(a for a, _ in april.values()) == 16)
+check("the gym: at the same age March is the weakest batch (age one 80, 70, 60; age two 60, 50, 40)",
+      [gym_age[j][0] for j in GYM_LAST_AGE] == [8, 7, 6] and [gym_age[j][1] for j in GYM_LAST_AGE] == [6, 5, 4])
+
+
+def floor_of(row):
+    """The share a curve holds once two successive ages read the same (the programme's rule), else None."""
+    return next((row[k] for k in range(len(row) - 1) if row[k] == row[k + 1]), None)
+
+
+gym_floor = {j: floor_of(row) for j, row in gym_age.items()}
+check("the gym's floors: January 5 of 10, February 3 of 10, March none yet",
+      gym_floor == {"2026-01": 5, "2026-02": 3, "2026-03": None}, gym_floor)
+check("every gym row falls or holds with age, never rises", all(all(b <= a for a, b in zip(r, r[1:])) for r in gym_age.values()))
+jan_row = [10] + gym_age["2026-01"]
+jan_m2m = [round(100 * (a - b) / a, 1) for a, b in zip(jan_row, jan_row[1:])]
+
+DASH_TOY = [("gym", "2026-01", "joined before 2026", 100, 50),
+            ("gym", "2026-02", "joined before 2026", 100, 40),
+            ("gym", "2026-02", "joined in January 2026", 400, 210),
+            ("second gym", "first month", "X", 200, 120),
+            ("second gym", "first month", "Y", 300, 120),
+            ("second gym", "second month", "X", 200, 110),
+            ("second gym", "second month", "Y", 300, 108),
+            ("second gym", "second month", "Z", 500, 260)]
+with open(DATA / f"{STEM}_toy_gym_dashboard_STUDENT.csv", "w", newline="", encoding="utf-8") as f:
+    w = csv.writer(f, lineterminator="\n")
+    w.writerow(["example", "month", "cohort", "members", "visited"])
+    w.writerows(DASH_TOY)
+
+
+def toy_blend(example, month):
+    rows = [(n, a) for e, m, _, n, a in DASH_TOY if e == example and m == month]
+    return sum(a for _, a in rows), sum(n for n, _ in rows), [a / n for n, a in rows]
+
+
+g_jan, g_feb = toy_blend("gym", "2026-01"), toy_blend("gym", "2026-02")
+s_one, s_two = toy_blend("second gym", "first month"), toy_blend("second gym", "second month")
+gym_plain_mean = sum(g_feb[2]) / len(g_feb[2])
+check("the gym's dashboard holds at 50 percent (50 of 100, then 250 of 500) while the older members fall 50 to 40",
+      (g_jan[0], g_jan[1], g_feb[0], g_feb[1]) == (50, 100, 250, 500))
+check("the plain mean of February's two rates is 46.25, not the 50 percent counted",
+      round(100 * gym_plain_mean, 2) == 46.25)
+check("the second gym's blend reads 48.0 then 47.8 percent while X and Y fall",
+      (round(100 * s_one[0] / s_one[1], 1), round(100 * s_two[0] / s_two[1], 1)) == (48.0, 47.8))
+
+ADM = []  # programme, cycle, fee_deadline_days, unit, group, stage, count
+STAGES = ["applied", "sat_test", "shortlisted", "accepted", "joined"]
+DEADLINE = {"2024": 21, "2025": 21, "2026": 7}
+for cycle, counts in {"2024": [950, 760, 380, 342, 274], "2025": [1000, 800, 400, 360, 288],
+                      "2026": [1000, 800, 400, 300, 240]}.items():
+    ADM += [("main", cycle, DEADLINE[cycle], "applications", "all", s, c) for s, c in zip(STAGES, counts)]
+ADM += [("main", "2026", 7, "applicants", "all", s, c) for s, c in zip(STAGES, [900, 760, 390, 300, 240])]
+for cycle, split in {"2024": [(240, 221), (140, 121)], "2025": [(250, 230), (150, 130)],
+                     "2026": [(250, 225), (150, 75)]}.items():
+    for group, (short, acc) in zip(["in-state", "other states"], split):
+        ADM += [("main", cycle, DEADLINE[cycle], "applications", group, "shortlisted", short),
+                ("main", cycle, DEADLINE[cycle], "applications", group, "accepted", acc)]
+ADM += [("sister", "2026", 7, "applications", "all", "applied", 1000),
+        ("sister", "2026", 7, "applications", "all", "sat_test", 300),
+        ("sister", "2026", 7, "applications", "all", "shortlisted", 320),
+        ("sister", "2026", 7, "applications", "sat the test", "shortlisted", 230),
+        ("sister", "2026", 7, "applications", "school results", "shortlisted", 90)]
+with open(DATA / f"{STEM}_toy_admissions_STUDENT.csv", "w", newline="", encoding="utf-8") as f:
+    w = csv.writer(f, lineterminator="\n")
+    w.writerow(["programme", "cycle", "fee_deadline_days", "unit", "group", "stage", "count"])
+    w.writerows(ADM)
+
+
+def adm(programme, cycle, unit="applications", group="all"):
+    return {s: c for p, cy, _, u, g, s, c in ADM if (p, cy, u, g) == (programme, cycle, unit, group)}
+
+
+def steps(c):
+    have = [s for s in STAGES if s in c]
+    return [c[b] / c[a] for a, b in zip(have, have[1:])]
+
+
+m26, m25, m24, per_person = adm("main", "2026"), adm("main", "2025"), adm("main", "2024"), adm("main", "2026", "applicants")
+sis, sis_test = adm("sister", "2026"), adm("sister", "2026", group="sat the test")
+check("the college's step rates: 80, 50, 75, 80 this cycle against 80, 50, 90, 80 last cycle",
+      [round(100 * x, 1) for x in steps(m26)] == [80.0, 50.0, 75.0, 80.0]
+      and [round(100 * x, 1) for x in steps(m25)] == [80.0, 50.0, 90.0, 80.0])
+check("the step rates multiply to the overall conversion, 24 percent against 28.8",
+      abs(math.prod(steps(m26)) - m26["joined"] / m26["applied"]) < 1e-12
+      and (round(100 * m26["joined"] / m26["applied"], 1), round(100 * m25["joined"] / m25["applied"], 1)) == (24.0, 28.8))
+check("the test is sat by 80 percent of applications in each of three cycles, so its no-show never moved",
+      [round(c["sat_test"] / c["applied"], 3) for c in (m24, m25, m26)] == [0.8, 0.8, 0.8])
+check("per applicant reads higher than per application at every step, and 26.7 against 24 from the top",
+      all(b >= a for a, b in zip(steps(m26), steps(per_person)))
+      and round(100 * per_person["joined"] / per_person["applied"], 1) == 26.7)
+check("the sister programme's test to shortlist reads 107 percent, an artefact; 77 among test-takers",
+      round(100 * sis["shortlisted"] / sis["sat_test"]) == 107 and round(100 * sis_test["shortlisted"] / sis["sat_test"]) == 77)
+by_group = {cy: {g: adm("main", cy, group=g) for g in ("in-state", "other states")} for cy in ("2024", "2025", "2026")}
+check("the groups add up to the programme's shortlist and acceptances in every cycle",
+      all(sum(by_group[cy][g][s] for g in by_group[cy]) == adm("main", cy)[s]
+          for cy in by_group for s in ("shortlisted", "accepted")))
+acc = {cy: {g: by_group[cy][g]["accepted"] / by_group[cy][g]["shortlisted"] for g in by_group[cy]} for cy in by_group}
+expected_26 = {g: by_group["2026"][g]["shortlisted"] * acc["2025"][g] for g in by_group["2026"]}
+lost_acc = {g: round(expected_26[g] - by_group["2026"][g]["accepted"]) for g in expected_26}
+lost_join = m25["joined"] - m26["joined"]
+check("acceptance: in-state 92 to 90, other states 87 to 50; 60 fewer acceptances, 55 of them from other states",
+      [round(100 * acc[cy]["in-state"]) for cy in ("2025", "2026")] == [92, 90]
+      and [round(100 * acc[cy]["other states"]) for cy in ("2025", "2026")] == [87, 50]
+      and sum(lost_acc.values()) == 60 and lost_acc["other states"] == 55)
+check("the loss in joiners two ways: 288 less 240 = 48 = 60 fewer acceptances x the 80 percent who join",
+      lost_join == 48 == round(60 * m26["joined"] / m26["accepted"]))
+FEE_LAKH = (1.0, 1.2, 1.5)   # an assumption: the first-year fee in Rs lakh, low, middle, high
+fee_cost = [round(lost_join * f, 1) for f in FEE_LAKH]
+check("the cost on joiners: Rs 48 to 72 lakh of first-year fees, Rs 57.6 lakh at Rs 1.2 lakh",
+      fee_cost == [48.0, 57.6, 72.0], fee_cost)
+
+# The guard, read kind by kind: a toy may not stand in for a plant or for the case's lesson numbers.
+# Every printed toy blend sits at least five points from Kalpa's flat blend (40.5 to 41) and from the
+# case's flat 38, its 36 counting everyone and October's 33; the toy artefact and its fix sit five
+# points from the case's 118 and 89; the toy skip shares sit five points from Kalpa's 31 percent of
+# sessions with no search; no toy blend is the Saturday bank's 41, 46 or 47.5 or the Kahoot's 46, and
+# the toy funnel shares no count with the bank's 10,000, 6,000, 2,400 and 600.
+printed_blends = [100 * 16 / 30, 50.0, 50.0, 46.25, 48.0, 47.8]
+check("every printed toy blend sits five points from 41, 38, 36 and 33",
+      all(abs(b - v) >= 5 for b in printed_blends for v in (40.5, 40.9, 41.0, 38.0, 36.0, 33.0)),
+      [round(b, 1) for b in printed_blends])
+check("the toy artefact and its fix sit five points from the case's 118 and 89",
+      abs(106.7 - 118) >= 5 and abs(76.7 - 89) >= 5)
+check("the toy skip shares (20 and 70 percent) sit five points from Kalpa's 31 percent with no search",
+      all(abs(s - 30.9) >= 5 for s in (20.0, 70.0)))
+check("no toy blend echoes the Saturday bank or the Kahoot, and no toy funnel count echoes the bank's funnel",
+      not {round(b, 1) for b in printed_blends} & {41.0, 46.0, 47.5}
+      and not {c for *_, c in ADM} & {10000, 6000, 2400, 600})
+
+TOY_HOW = "invented for the concept chapter on "
+
+
+def over_last(row):
+    """Each age's visitors over the visitors the age before, the misreading a drill offers as a distractor."""
+    prev = [10] + list(row[:-1])
+    return [round(100 * b / a, 1) for a, b in zip(prev, row)]
+
+
+second_by_cohort = {c: [a for e, m, cc, n, a in DASH_TOY if e == "second gym" and cc == c] for c in ("X", "Y", "Z")}
+xy_second = sum(a for e, m, c, n, a in DASH_TOY if e == "second gym" and m == "second month" and c in ("X", "Y"))
+check("the drills' distractors: X and Y alone read 218 of 500 in the second month, 43.6 percent; the plain "
+      "mean of X and Y reads 50.0 in the first month",
+      xy_second == 218 and round(100 * xy_second / 500, 1) == 43.6 and round(100 * sum(s_one[2]) / 2, 1) == 50.0)
+toys += [
+    {"id": "toy_gym_roster", "label": "invented, one branch of a neighbourhood gym",
+     "how": TOY_HOW + "Cohort construction",
+     "values": {"file": f"data/{STEM}_toy_gym_roster_STUDENT.csv", "joiners": 30, "per_joining_month": 10,
+                "joining_months": "January, February and March 2026", "roster_months": "January to June 2026",
+                "visited_by_age": {NAMES[j]: gym_age[j] for j in gym_age},
+                "percent_by_age": {NAMES[j]: [10 * a for a in gym_age[j]] for j in gym_age},
+                "april_column": {"by_joining_month": [5, 5, 6], "together": "16 of 30", "percent": round(100 * 16 / 30, 1)},
+                "may_column": {"by_joining_month": [5, 3, 4], "together": "12 of 30, never printed as a blend"},
+                "june_column": {"by_joining_month": [5, 3, 3], "together": "11 of 30, never printed as a blend"},
+                "age_two_percent": [60, 50, 40], "age_one_percent": [80, 70, 60],
+                "jan_over_last_month_percent": over_last(gym_age["2026-01"]),
+                "feb_over_last_month_percent": over_last(gym_age["2026-02"])},
+     "used_by": "SECTION 1 (half1 opener to its map node); notebook 01; drill c1 (unguided/C2_W04_D04_c1_cohort_construction); the notes' first topic; "
+                "the cheat sheet's topic panel; the board work"},
+    {"id": "toy_gym_curves", "label": "invented, the same gym branch read as curves",
+     "how": TOY_HOW + "Retention curves: shape and floor",
+     "values": {"curves_percent": {NAMES[j]: [10 * a for a in gym_age[j]] for j in gym_age},
+                "floor_percent": {"Jan": 50, "Feb": 30, "Mar": "none yet"}, "floor_from_age": {"Jan": 3, "Feb": 3},
+                "floor_rule": "two successive ages read the same share (the programme's own rule)",
+                "jan_churn_percent": [100 - 10 * a for a in gym_age["2026-01"]],
+                "jan_month_to_month_churn_percent": jan_m2m,
+                "predict_options": "under 10; about 25; 50; back up to 80", "feb_misread_floor": 50},
+     "used_by": "SECTION 2; notebook 02; drill c2 (unguided/C2_W04_D04_c2_retention_curves); the notes; the cheat sheet"},
+    {"id": "toy_gym_dashboard", "label": "invented, the whole gym's dashboard, January and February 2026",
+     "how": TOY_HOW + "Blended numbers against cohort truth",
+     "values": {"file": f"data/{STEM}_toy_gym_dashboard_STUDENT.csv",
+                "january": {"older_members": 100, "visited": 50, "percent": 50.0},
+                "february": {"older_members": 100, "older_visited": 40, "january_joiners": 400,
+                             "joiners_visited": 210, "joiners_percent": 52.5, "together": "250 of 500", "percent": 50.0},
+                "plain_mean_of_rates": 46.25, "plain_mean_gap_points": 3.75,
+                "same_numbers_as": "toy_blend (the explorer's Th2 batches A and B)"},
+     "used_by": "SECTION 3; notebook 03; drill c3 (unguided/C2_W04_D04_c3_blended_vs_cohort); the notes; the cheat sheet; the board work"},
+    {"id": "toy_second_gym", "label": "invented, three cohorts at a second gym",
+     "how": TOY_HOW + "Blended numbers against cohort truth",
+     "values": {"X": {"members": 200, "percent": [60, 55]}, "Y": {"members": 300, "percent": [40, 36]},
+                "Z": {"members": 500, "percent_month_one": 52, "joined": "in the first month"},
+                "blend_percent": [48.0, 47.8], "visited": [240, 478],
+                "plain_mean_second_month": round(100 * sum(s_two[2]) / 3, 1),
+                "plain_mean_first_month": round(100 * sum(s_one[2]) / 2, 1),
+                "visited_by_cohort": second_by_cohort,
+                "x_and_y_second_month": {"visited": xy_second, "members": 500, "percent": round(100 * xy_second / 500, 1)}},
+     "used_by": "SECTION 3's check question; notebook 03's faded example; drill c3 (unguided/C2_W04_D04_c3_blended_vs_cohort)"},
+    {"id": "toy_college_funnel", "label": "invented, one college's admissions to one programme",
+     "how": TOY_HOW + "Funnel stages, drop-off, denominators",
+     "values": {"file": f"data/{STEM}_toy_admissions_STUDENT.csv",
+                "stages": "applied, sat the entrance test, shortlisted, accepted the offer, joined",
+                "counts": {"2024": [950, 760, 380, 342, 274], "2025": [1000, 800, 400, 360, 288],
+                           "2026": [1000, 800, 400, 300, 240]},
+                "step_percent": {"2026": [80, 50, 75, 80], "2025": [80, 50, 90, 80], "2024": [80, 50, 90, 80.1]},
+                "drop_off_percent_2026": [20, 50, 25, 20], "overall_percent": {"2026": 24.0, "2025": 28.8},
+                "over_the_top_percent_2026": [80, 40, 30, 24], "lost_overall_percent_2026": 76,
+                "no_show": "200 of 1,000 applications never sit the test (20 percent), every cycle; 190 of 950 in 2024"},
+     "used_by": "SECTION 4; SECTION 8's opening; notebooks 04 and 08; drills c4 and c5 (unguided/C2_W04_D04_c4_funnel_denominators, c5_fix_first_evidence); the notes; the cheat sheet"},
+    {"id": "toy_college_applicants", "label": "invented, the same cycle counted per applicant",
+     "how": TOY_HOW + "Funnel stages, drop-off, denominators",
+     "values": {"applicants": 900, "applications": 1000, "counts": [900, 760, 390, 300, 240],
+                "step_percent": [round(100 * x, 1) for x in steps(per_person)],
+                "joined_per_applicant_percent": 26.7, "joined_per_application_percent": 24.0},
+     "used_by": "SECTION 4's unit slide; notebook 04; drill c4 Q2"},
+    {"id": "toy_sister_programme", "label": "invented, the college's sister programme with an optional test",
+     "how": TOY_HOW + "Funnel stages, drop-off, denominators",
+     "values": {"applications": 1000, "sat_test": 300, "shortlisted": 320, "shortlisted_test_takers": 230,
+                "shortlisted_on_school_results": 90, "test_to_shortlist_percent": 106.7, "printed": "107 percent",
+                "among_test_takers_percent": 76.7, "printed_fix": "77 percent", "shortlisted_over_applications": 32.0,
+                "test_takers_over_applications": 30.0, "skipped_the_test_percent": 70.0},
+     "used_by": "SECTION 4's artefact slide; notebook 04; drill c4 Q4 and Q5"},
+    {"id": "toy_college_by_group", "label": "invented, the same college's offer acceptance by home state",
+     "how": TOY_HOW + "The fix-first decision and its evidence",
+     "values": {"shortlisted": {"2024": [240, 140], "2025": [250, 150], "2026": [250, 150]},
+                "accepted": {"2024": [221, 121], "2025": [230, 130], "2026": [225, 75]},
+                "acceptance_percent": {cy: [round(100 * acc[cy]["in-state"], 1), round(100 * acc[cy]["other states"], 1)]
+                                       for cy in acc},
+                "groups": "in-state, other states", "fee_deadline_days": DEADLINE,
+                "offers_out_within_days": 2, "expected_2026_at_2025_rates": 360, "lost_acceptances": lost_acc,
+                "lost_joiners": lost_join, "joining_rate": 0.8,
+                "no_show_half_sat_joiners": round(100 * (400 / 800) * (300 / 400) * (240 / 300)),
+                "no_show_half_sat_how": "half of the 200 who never sit the test, sitting it and passing on at this cycle's "
+                                        "rates (an assumption): 100 x 0.5 x 0.75 x 0.8"},
+     "used_by": "SECTION 8; notebook 08; drill c5; the notes; the cheat sheet"},
+    {"id": "toy_college_fee", "label": "an assumption on the invented college",
+     "how": TOY_HOW + "The fix-first decision and its evidence",
+     "values": {"first_year_fee_rs_lakh": {"low": 1.0, "middle": 1.2, "high": 1.5},
+                "cost_rs_lakh": {"low": 48.0, "middle": 57.6, "high": 72.0}, "counted_on": "joiners, 48 a cycle"},
+     "used_by": "SECTION 8's cost slide; notebook 08; drill c5"},
+]
+for t in toys:
+    if t["id"] == "toy_two_batches":
+        t["used_by"] = "retired from learner files: SECTION 1 keeps the coaching batches as a one-line analogy with no numbers"
+    if t["id"] == "toy_blend":
+        t["used_by"] = "the explorer's Th2 (content/W04/D1), which draws these numbers as batches A and B; SECTION 3 " \
+                       "teaches them on the gym's dashboard (toy_gym_dashboard)"
+    if t["id"] == "toy_funnel":
+        t["used_by"] = "retired from learner files: the college's admissions carry the funnel (toy_college_funnel)"
+
 # the arithmetic the day's other files print, each from the facts above
 F_ = {n["id"]: n["value"] for n in numbers}
 lost_17 = (F_["atc_to_order_member_android_before"] - F_["atc_to_order_member_android_after"]) * F_["android_member_carts_after"]
 first_week = sorted(WEEKLY_SIZE.index)[2]
 sale_week_ids = set(m["member_id"] for m in members if D(2026, 8, 17) <= m["signup_date"] <= D(2026, 8, 23))
+# The cold reads of 13 October 2026 asked how much the cohorts entering each month prop the dashboard; the
+# answer comes from the tables just written, and the check re-reads September with a normal-sized August,
+# which the facts already hold as everyone_sep_normal_august.
+_mem = pd.read_csv(DATA / f"{STEM}_members_STUDENT.csv")
+_mm = pd.read_csv(DATA / f"{STEM}_member_months_STUDENT.csv").merge(_mem[["member_id", "cohort_month"]], on="member_id")
+_mm["age"] = (_mm["month"].str[:4].astype(int) * 12 + _mm["month"].str[5:].astype(int)
+              - _mm["cohort_month"].str[:4].astype(int) * 12 - _mm["cohort_month"].str[5:].astype(int))
+_mm["active"] = _mm["orders"] > 0
+_june = sorted(_mm[(_mm["month"] == "2026-06") & (_mm["age"] >= 2)]["cohort_month"].unique())
+_sep_dash = _mm[(_mm["month"] == "2026-09") & (_mm["age"] >= 2)]
+_sep_june_only = _sep_dash[_sep_dash["cohort_month"].isin(_june)]["active"].mean()
+_prop = _sep_dash["active"].mean() - _sep_june_only
+_every = {m: _mm[(_mm["month"] == m) & (_mm["age"] >= 1)]["active"].mean() for m in ("2026-08", "2026-09")}
+_normal_aug = (_sep_dash["active"].sum() + 5000 * 0.49) / (len(_sep_dash) + 5000)
+check("held to June's four cohorts, September's dashboard reads 37.3, so the cohorts entering after June prop it by "
+      "about half a point; with a normal August, September counted for everyone reads 39.2",
+      round(100 * _sep_june_only, 1) == 37.3 and 0.4 <= 100 * _prop <= 0.6 and round(100 * _normal_aug, 1) == 39.2)
 derived = [
+    {"id": "dashboard_sep_june_cohorts_only", "value": round(float(100 * _sep_june_only), 1),
+     "how": "September's dashboard counted over June's four cohorts only, January to April",
+     "used_by": "S49's notes; notebook 06's answer cell"},
+    {"id": "mix_prop_points_sep", "value": round(float(100 * _prop), 1), "printed": "about half a point",
+     "how": "September's dashboard less the same count held to June's four cohorts",
+     "used_by": "S49; notebook 06; the notes"},
     {"id": "lost_orders_17_days", "value": int(round(lost_17)), "how": "(58 less 44 percent) x 22,841 Android member carts",
      "used_by": "the fix-first set, a distractor and its solution"},
     {"id": "lost_orders_per_day", "value": int(round(lost_17 / 17)), "how": "the 17 days' loss over 17", "used_by": "the fix-first set, a distractor"},
@@ -1395,9 +1691,9 @@ derived = [
     {"id": "lost_17_days_rs_lakh", "value": round(float(round(lost_17) * 400 / 1e5), 1), "how": "the 17 days' loss x Rs 400, in lakh",
      "used_by": "the fix-first set, a distractor"},
     {"id": "jan_drop_m1_to_m2_points", "value": round(float(100 * (F_["m1_jan"] - F_["tri_jan_m2"])), 1),
-     "how": "January's month one less its month two", "used_by": "the chapter 2 drill"},
+     "how": "January's month one less its month two", "used_by": "the SECTION 6 drill"},
     {"id": "jan_even_fall_points", "value": round(float(100 * (F_["m1_jan"] - F_["tri_jan_m8"]) / 7), 1),
-     "how": "January's whole fall spread evenly over seven months (a distractor)", "used_by": "the chapter 2 drill"},
+     "how": "January's whole fall spread evenly over seven months (a distractor)", "used_by": "the SECTION 6 drill"},
     {"id": "not_ordering_m2_in_100", "value": 100 - 38, "how": "100 less the plateau of about 38 (a distractor)",
      "used_by": "the Kahoot"},
     {"id": "toy_funnel_inverted_step", "value": 200, "how": "40 searches over 20 add-to-carts (a distractor)",
@@ -1411,9 +1707,9 @@ derived = [
      "how": "of the sale week's cohort, those with an order from 24 to 30 August", "used_by": "the self-check's second route"},
     {"id": "simpson_paper_year", "value": 1951, "how": "public fact, the notes' ORIGIN line", "used_by": "the notes"},
     {"id": "month_count_sep_2026", "value": 2026 * 12 + 9, "how": "year x 12 + month for September 2026",
-     "used_by": "notebook 02's worked age"},
+     "used_by": "notebook 06's worked age"},
     {"id": "month_count_jul_2026", "value": 2026 * 12 + 7, "how": "year x 12 + month for July 2026",
-     "used_by": "notebook 02's worked age"},
+     "used_by": "notebook 06's worked age"},
     {"id": "july_drop_m1_to_m2_points", "value": float(round(100 * (tri.loc["2026-07", 1] - tri.loc["2026-07", 2]), 1)),
      "how": "July's month one less its month two, in points (49 to 38.5)", "used_by": "the October assumption"},
     {"id": "simpson_volume_pages", "value": "13 238 241", "how": "Simpson (1951), JRSS B volume 13, pages 238 to 241",
@@ -1475,23 +1771,23 @@ kalpa = {
 plants = [
     {"id": f"kalpa_blend_{NAMES[m].lower()}", "value": r4(K_BLEND[m][0]),
      "how": f"members who joined before {NAMES[m]} with an app session in it, {K_BLEND[m][2]} of {K_BLEND[m][1]}",
-     "found_in": "notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell"} for m in KMONTHS] + [
+     "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell"} for m in KMONTHS] + [
     {"id": "kalpa_every_cohort_falls", "value": True, "how": "each cohort's active share, July to September",
-     "found_in": "notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell"},
+     "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell"},
     {"id": "kalpa_aug_m1", "value": r4(m1_k["2026-08"][0] / m1_k["2026-08"][1]),
      "how": f"August members active in September, {m1_k['2026-08'][0]} of {m1_k['2026-08'][1]}, the lowest month one",
-     "found_in": "notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell"},
+     "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell"},
     {"id": "kalpa_cart_to_checkout_comparison", "value": r4(K_RATE["comparison"]),
      "how": "checkout sessions over add_to_cart sessions, 20 August to 9 September",
-     "found_in": "notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the second your-turn cell"},
+     "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the second your-turn cell"},
     {"id": "kalpa_cart_to_checkout_window", "value": r4(K_RATE["window"]),
-     "how": "the same, 10 to 30 September", "found_in": "notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the second your-turn cell"},
+     "how": "the same, 10 to 30 September", "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the second your-turn cell"},
     {"id": "kalpa_skip_search", "value": r4(skip), "how": "sessions with no search over all sessions",
-     "found_in": "notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the third your-turn cell"},
+     "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell"},
     {"id": "kalpa_checkout_per_session_sep", "value": r4(k_per_sess), "how": "September sessions with a checkout",
-     "found_in": "notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the third your-turn cell"},
+     "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell"},
     {"id": "kalpa_checkout_per_member_sep", "value": r4(k_per_member), "how": "September members with a checkout",
-     "found_in": "notebooks/C2_W04_D04_04_kalpa_lab_STUDENT.ipynb, the third your-turn cell"},
+     "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell"},
 ]
 public = [
     {"id": "simpson_1951", "source": "the paper's Crossref record; Wikipedia, Edward H. Simpson, for the name's date",
@@ -1570,6 +1866,24 @@ from_other_days = [
      "day": "Friday", "source": "the case file's Friday ticket (F5)"},
 ]
 corrections = [
+    {"line": "the fix-first concept chapter's cost (D4_plan.md section 3, chapter 5; the spine's Thursday table)",
+     "case_file": "60 students times a first-year fee of Rs 1 to 1.5 lakh: Rs 60 to 90 lakh a year",
+     "here": "48 joiners (60 fewer acceptances x the 80 percent who join, or 288 less 240) times Rs 1 to 1.5 lakh: "
+             "Rs 48 to 72 lakh, Rs 57.6 lakh at Rs 1.2 lakh",
+     "why": "fee income arrives from students who join, and the plan's own second route counts 48 joiners; pricing "
+            "acceptances would put a unit error in the chapter that teaches the cost in its unit"},
+    {"line": "the college's applicants (D4_plan.md section 3, chapter 4)", "case_file": "850 applicants, 28 percent joined",
+     "here": "900 applicants, 26.7 percent joined",
+     "why": "28 percent sat beside last cycle's 28.8 in the same chapter; the spine fixes only the applications"},
+    {"line": "the gym's dashboard (the spine's Thursday table)", "case_file": "the 400 January joiners counted in January",
+     "here": "the dashboard counts a member from the month after she joins, so January reads the 100 older members "
+             "and February adds the January joiners in their month one",
+     "why": "SECTION 1 teaches that the joining month is month zero and is never counted, so the gym's own dashboard "
+            "keeps the same rule"},
+    {"line": "the gym's roster (D4_plan.md section 4)", "case_file": "one row per member per month",
+     "here": "one row per member with a column per month, as a gym's register is kept; notebook 01 turns it into one "
+             "row per member per month with melt",
+     "why": "the concept notebook prints the example in full, and thirty rows print where 150 would not"},
     {"line": "the dashboard's 38 percent", "case_file": "blended over members who signed up before the month",
      "here": "members two or more months past their signup month (the ticket's words, month-two retention)",
      "why": "with every cohort falling and the 13,000-member sale cohort at 31 percent in month one, a blend that "
@@ -1607,7 +1921,8 @@ corrections = [
 ]
 facts = {
     "day": "W04/D4, Thursday 29 October 2026",
-    "written_by": "C2_W04_D04_generate_INTERNAL.py, the W04 D4 finishing session, 12 October 2026",
+    "written_by": "C2_W04_D04_generate_INTERNAL.py, the W04 D4 finishing session, 12 October 2026; the concept "
+                  "chapters' toy_ examples added by the concept-first rebuild, 13 October 2026",
     "label_line": "Illustrative case: the company is real, the situation and the data are synthetic, built for this class.",
     "source_tables": {
         "members": f"data/{STEM}_members_STUDENT.csv", "member_months": f"data/{STEM}_member_months_STUDENT.csv",

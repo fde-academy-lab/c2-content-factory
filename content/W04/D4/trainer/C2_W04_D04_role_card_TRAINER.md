@@ -1,6 +1,6 @@
 # Role card: the app team's lead who says the checkout is fine
 
-**TRAINER ONLY.** The TA plays this role in the afternoon's unguided block (half two, S39), and the
+**TRAINER ONLY.** The TA plays this role in the afternoon's unguided block (half two, SECTION 9, S74), and the
 trainer plays it in the fallback block's last part (S9 of the fallback deck). Read it once before
 the session; say the lines in your own voice.
 
