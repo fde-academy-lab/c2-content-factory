@@ -51,7 +51,8 @@ flowchart LR
 ```notes
 LIVE, 1 minute. Monday's node now carries the number the room produced and the decision it led to.
 Tuesday is lit; the days to the right stay dashed. The amber node is the TA lab, where the same
-studio runs on Kalpa Retail. Explorer: the home screen, Tuesday lit.
+studio runs on Kalpa Retail. The week's explorer, Monday's page at content/W04/D1/demos/C2_W04_D01_week_explorer_STUDENT.html: the home screen, Tuesday
+lit; its scenes T1 to T3 are Tuesday's.
 Transition: the five topics.
 ```
 
@@ -68,7 +69,7 @@ Transition: the five topics.
 | 4 | The guesstimate: clarify, map, calculate, validate | 6, after lunch | 30 | 06 |
 | 5 | The AI-free written business case | 7, after lunch | 10 | 07 |
 
-Chapters 4 and 5 apply topics 1 to 3 to Uber's slide before lunch; chapters 8 to 10 apply topics 4 and 5 after it, with topics 1 and 3 back in the page and the interview room; and the lab runs the guesstimate on Kalpa Retail in notebook 11. A slide numbered D is for self-study, and each interview line carries this programme's tag: [S] a staple asked everywhere, [F] frequent in product-company and global capability centre screens, [D] a differentiator.
+Chapters 4 and 5 apply topics 1 to 3 to Uber's slide before lunch; chapters 8 to 10 apply topics 4 and 5 after it, with topics 1 and 3 back in the page and the interview room; and the lab runs the guesstimate on Kalpa Retail in notebook 11. A slide numbered D is for self-study; L1 to L6 in the notes mark the day's ladder, from a hand count anyone can do (L1) to the depth a hard interview asks (L6); and each interview line carries this programme's tag: [S] a staple asked everywhere, [F] frequent in product-company and global capability centre screens, [D] a differentiator.
 
 ```notes
 LIVE, 1 minute. Read the five topics down the second column once: these are the curriculum's
@@ -121,7 +122,7 @@ chapter with that chapter's box filled. Transition: the case these topics will b
 ## S5. The ticket: one slide, five minutes, three objectors
 *What has the city head asked for, and which number will land first?*
 
-**Uber, Hyderabad, the driver app's peak-hour earnings guarantee, one day on.** Thursday's city review gets one slide, five minutes, and three people who each lose under the redesign. Gross bookings are what riders paid; an active driver-week is one driver with a row that week.
+**Uber, Hyderabad, the driver app's peak-hour earnings guarantee, one day on.** The scheme promises each enrolled driver Rs 300 per peak online hour and pays any shortfall as a top-up; Monday's redesign pays for completed peak trips instead, to drivers who accept at least half the requests offered. Thursday's city review gets one slide, five minutes, and three people who each lose under the redesign. Gross bookings are what riders paid; an active driver-week is one driver with a row that week.
 
 | Six weeks each side | 20 Jul to 30 Aug | 31 Aug to 11 Oct |
 |---|---|---|
@@ -163,7 +164,7 @@ needs the answer.
 
 **The topic.** The one-slide answer: claim, evidence, caveat, action.
 
-**Who needs the answer.** Ramesh, who owns a kirana shop (invented) and opened it two more hours a day from October; he must decide whether the longer hours stay. His son argued for them and loses if they go.
+**Who needs the answer.** Ramesh, who owns a kirana shop, a neighbourhood grocery (invented), and opened it two more hours a day from October; he must decide whether the longer hours stay. His son argued for them and loses if they go.
 
 ```timeline
 label: Question 1 | title: What is the claim? | body: One sentence with a verb, as the title, saying what is true and what to do.
@@ -239,15 +240,20 @@ then organizes supporting points underneath it". Transition: which number carrie
 | Sales a day | Rs 11,900 | Rs 12,600 |
 | Sales per hour: sales a day / hours open | Rs 1,190 | Rs 1,050 |
 | Sales per customer: sales a day / customers | Rs 100 | Rs 100 |
+| Each of the two added hours: the Rs 700 rise / 2 hours | | at most Rs 350 |
 
-**Both are right, and the denominator decides which sentence the slide carries.** Per day the shop is up Rs 700, 5.9 percent; per hour it is down 11.8 percent; per customer it is flat. The decision on the table is whether the two extra hours pay, so the evidence is priced per hour.
+**Both are right, and the denominator decides which sentence the slide carries.** Per day the shop is up Rs 700, 5.9 percent; per hour it is down 11.8 percent; per customer it is flat. The decision is whether the two extra hours pay, so the evidence divides by what the decision buys: the two added hours sold at most Rs 350 each, against Rs 1,190 in each of the old ten. The average fell because quieter hours joined it, and the Rs 350 says how much quieter.
 
 ```notes
 LIVE, 7 minutes. The hand count, aloud, row by row, the way Week 1 Monday counted every rate:
 11,900 / 10 = 1,190; 12,600 / 12 = 1,050; 11,900 / 119 = 100; 12,600 / 126 = 100. Have two
 learners say the son's sentence and the father's sentence, each with its denominator named. Then
-ask which denominator answers the question Ramesh faces, "do the two extra hours pay?": per hour.
-Callback: since Week 1, a rate without its denominator has been a rumour. A second example of the
+ask which denominator answers the question Ramesh faces, "do the two extra hours pay?": per hour,
+and the sharpest per-hour number is the added hours' own, (12,600 - 11,900) / 2 = 350. It is the
+most they can have sold: if the festival lifted the old ten hours too, the evening brought less.
+Rs 350 is sales, before the cost of the goods; the shop's records hold no figure for what the goods
+cost, so the slide cannot say yet whether the evening covers the helper's Rs 170 a day, and the
+action has to count it. Callback: since Week 1, a rate without its denominator has been a rumour. A second example of the
 same shape, an auto driver's day (invented), sits in notebook 01's your-turn cell and the notes.
 Transition: the four parts, named.
 ```
@@ -295,8 +301,8 @@ parts are claim, evidence, caveat and action. Transition: Ramesh's slide, built.
 ```notes
 LIVE, 6 minutes. Point at 1, 2, 3, 4 in order. The chart is the shop's 56 days as one line of sales
 per hour, the change marked; the cluttered version of the same days is chapter 2's. The caveat sits
-beside the evidence because the son will raise it first: a festival fortnight fell inside October,
-so part of the Rs 700 may be the season. The action carries its cost, Rs 170 a day for the helper's
+beside the evidence because Ramesh will raise it first, since it is the reason the son's Rs 700 may
+not last: a festival fortnight fell inside October, so part of the Rs 700 may be the season. The action carries its cost, Rs 170 a day for the helper's
 two extra hours, and who signs. Ask two learners to say the title in the son's voice, then in the
 father's. Transition: the trap.
 ```
@@ -304,11 +310,11 @@ father's. Transition: the trap.
 ---
 
 ## S12. The trap: "Rs 700 more a day, so the hours work"
-*Why is a true number the wrong evidence for this decision?*
+*Why is a true number the wrong evidence for this decision, on the shop's invented days?*
 
-**The plausible wrong answer.** "Sales a day rose from Rs 11,900 to Rs 12,600, so the longer hours work; keep them." Every rupee is right, and it would keep paying the helper for two hours while each hour of the day earns less than before.
+**The plausible wrong answer.** "Sales a day rose from Rs 11,900 to Rs 12,600, so the longer hours work; keep them." Every rupee is right, and it would keep paying the helper for two hours nobody has priced.
 
-**Why it is wrong.** The rise was bought with two more hours: per hour the shop earns 11.8 percent less. **The check:** name the denominator the decision is priced in, here the hour, before reading the number. **The fix:** the evidence is sales per hour, with sales per customer beside it.
+**Why it is wrong.** Rs 700 is sales before the cost of the goods, part of it may be the festival, and a day's total hides what each added hour brings: at most Rs 350, against Rs 1,190 in each old hour. **The check:** divide by what the decision buys, here the two extra hours, before reading the number. **The fix:** the evidence is per hour, the added hours' Rs 350 beside the old hours' Rs 1,190, and the action counts the evening's sales on their own for a month.
 
 ```python
 m = days.groupby("month").agg(sales=("sales_rs", "sum"),
@@ -317,13 +323,14 @@ m = days.groupby("month").agg(sales=("sales_rs", "sum"),
 m["per_day"] = m.sales / m.days            # 11,900 and 12,600
 m["per_hour"] = m.per_day / m.hours        # 1,190 and 1,050
 m["per_customer"] = m.sales / m.customers  # 100 and 100
+added = m.per_day.diff().iloc[-1] / m.hours.diff().iloc[-1]  # 350
 ```
 
 ```notes
 LIVE, 5 minutes. Read the wrong sentence in the son's voice and ask what decision it would make.
 Then the code, one line at a time, said as a sentence: add up each month, divide by its days, divide again by
-the hours open, and divide the sales by the customers. Notebook 01 runs it on the 56 days and checks
-it against the hand count. Transition: the rules.
+the hours open, divide the sales by the customers, and divide the rise by the hours added. Notebook
+01 runs it on the 56 days and checks it against the hand count. Transition: the rules.
 ```
 
 ---
@@ -332,7 +339,7 @@ it against the hand count. Transition: the rules.
 *What should a learner keep from chapter 1, and where is it used next?*
 
 1. The title is the claim: a sentence with a verb that says what is true and what to do.
-2. The evidence is one number with its denominator and window, or one chart, chosen by the decision it prices.
+2. The evidence is one number divided by what the decision buys, with its window, or one chart.
 3. The caveat sits beside the evidence, in plain sight.
 4. The action names what to do, its cost in rupees and weeks, and who signs.
 
@@ -400,7 +407,7 @@ draft itself.
 | Chart: sales per hour, by day | Rs 1,190 an hour in September, Rs 1,050 in October |
 | Total sales, four weeks | Rs 3.33 lakh in September, Rs 3.53 lakh in October |
 | Customers a day | 119 in September, 126 in October |
-| Rain days | 5 in September, 2 in October |
+| Rain days | 2 in September, 2 in October |
 | The son's hours at the counter | 4 a day in September, 6 in October |
 | The helper's wage | Rs 85 an hour; the two extra hours cost Rs 170 a day |
 | The festival fortnight | 14 of October's 28 days |
@@ -453,7 +460,7 @@ forgotten. Transition: where the five that leave go.
 | The slide | The per-hour chart; sales per customer; the festival fortnight, as the caveat |
 | The son's page: did my extra hours bring customers? | Customers a day; the son's hours at the counter |
 | The accounts page: what did the hours cost, and what did they bring? | Total sales over four weeks; the helper's wage |
-| Nowhere: nobody will ask | Rain days |
+| Nowhere: two in each month, so they explain none of the change, and nobody will ask | Rain days |
 
 ```python
 def route(e):
@@ -475,7 +482,7 @@ on the eight elements. Transition: the same rule on a chart.
 
 ![The shop's 56 invented days drawn cluttered, then as the one line that carries the claim](../whiteboards/C2_W04_D02_kirana_makeover_STUDENT.png)
 
-**Five of the six series leave, with the legend, the gridlines and the border; one line and two labels stay.** Storytelling with Data's declutter test asks of each element, "Is it adding any informative value? If the answer is no, then take it out!"
+**Five of the six series leave, with the legend, the gridlines and the border; one line stays, with four short labels that read it: the two months' averages, the change and the festival.** Storytelling with Data's declutter test asks of each element, "Is it adding any informative value? If the answer is no, then take it out!"
 
 ```notes
 LIVE, 1 minute 30 seconds. Point at the left chart first and ask what it claims; nobody can say in
@@ -551,7 +558,7 @@ survives the objector being right about one part. Transition: the staff meeting.
 ---
 
 ## S21. Which reply wins the headmaster?
-*The teacher says the new timetable, from week 3, raised attendance. The sports teacher objects: "Attendance rose because the exams began." Which reply wins?*
+*The teacher says the new timetable, from week 3, raised attendance (invented). The sports teacher objects: "Attendance rose because the exams began." Which reply wins?*
 
 a) The numbers again, louder: attendance rose 12.8 points this term, from 76.5 to 89.3 percent
 
@@ -606,7 +613,7 @@ stands on. Transition: the shape a defence takes.
 ---
 
 ## S24. A defence runs in four moves, worked here
-*What does a complete defence of the sports teacher's objection sound like?*
+*What does a complete defence of the sports teacher's objection sound like, on the school's invented numbers?*
 
 ```timeline
 label: Move 1 | title: Restate | body: "You are saying attendance rose because the exams began, so the timetable may have done nothing."
@@ -615,7 +622,7 @@ label: Move 3 | title: Concede | body: "You are right that exam weeks run about 
 label: Move 4 | title: Change my mind | body: "If a school with the same exams and the old timetable showed the same rise in weeks 3 to 5, I would drop the claim." | tone: dark
 ```
 
-**These are the four moves: restate, answer, concede, what would change your mind.** Restating comes first because the objector has to agree with your version before any answer lands; Rapoport's rules, which the philosopher Daniel Dennett set out, open the same way.
+**These are the four moves: restate, answer, concede, what would change your mind.** Restating comes first because the objector has to agree with your version before any answer lands; Rapoport's rules, the philosopher Daniel Dennett's guide to criticising an argument fairly, open the same way.
 
 ```notes
 LIVE, 5 minutes. Read the four moves in character, then name them, the rule arriving last. Move 4 is
@@ -648,7 +655,7 @@ never concedes anything; it is false. Transition: the two numbers, in code.
 ---
 
 ## S26. The concession and the answer, in four lines of code
-*Which two numbers does the defence stand on, computed?*
+*Which two numbers does the defence stand on, computed from the invented table?*
 
 ```python
 w = att.pivot(index="week", columns="year", values="attendance_pct")
@@ -738,7 +745,7 @@ claim, evidence, caveat, action, the appendix. Transition: where today ends.
 ## S29. Where today ends: a slide its losers can repeat
 *What sentence will the city head be able to say on Thursday?*
 
-> "The scheme is paying for online hours that carry no trips: gross bookings per peak online hour fell from Rs 314 to Rs 260 while the fare held at Rs 165. The monsoon ended inside the six weeks, so part of the fall may be the season. Test paying per completed peak trip with an acceptance floor: city-wide, it saves Rs 58 lakh to Rs 92.7 lakh over six weeks if a half to a fifth of the idle drivers' top-up is still paid."
+> "The scheme is paying for online hours that carry no trips: gross bookings per peak online hour fell from Rs 314 to Rs 260 while the fare held at Rs 165. The monsoon ended inside the six weeks, so part of the fall may be the season. Test paying per completed peak trip with an acceptance floor: across the enrolled drivers, Monday's arithmetic saves Rs 58 lakh to Rs 92.7 lakh over six weeks if a half to a fifth of the idle drivers' top-up is still paid, and the per-trip rate, not yet set, decides where it lands."
 
 **By the end of the afternoon** you will also have estimated how many drivers the evening peak needs, said every assumption aloud, given a range, and checked it against the case's own data.
 
@@ -747,7 +754,11 @@ LIVE, 1 minute. Read the sentence once. The morning earns its four parts in orde
 number with its denominator, the caveat, the action with its cost. The saving range is Monday's:
 Rs 1.16 crore went to driver-weeks that accepted under half their offers, and the range assumes a
 half to a fifth of that is still paid because those drivers start accepting: half still paid saves
-Rs 58 lakh, a fifth saves Rs 92.7 lakh. S30 shows the working.
+Rs 58 lakh, a fifth saves Rs 92.7 lakh. The range runs to a tenth of a lakh only because it is
+arithmetic on Monday's total; the per-trip rate is the real unknown, since a rate set high pays back
+what the floor stops paying, so the sentence names it. The saving is the scheme's, across the 1,200
+enrolled drivers in Monday's data; a test on half of them saves about half of it while it runs. S30
+shows the working.
 Transition: what each role loses, chapter 1's loser test on real roles.
 ```
 
@@ -758,16 +769,19 @@ Transition: what each role loses, chapter 1's loser test on real roles.
 
 ```cards
 icon: user | eyebrow: Driver-operations lead | title: The supply headline | body: Peak online hours up 24 percent stops being the target, and the idle drivers' hours will fall when idle hours stop paying | tone: light
-icon: user | eyebrow: Marketing lead | title: A clean hoarding line | body: "Rs 300 an hour, guaranteed" now carries a condition: the Rs 300 floor holds only for drivers who accept most offers | tone: light
+icon: user | eyebrow: Marketing lead | title: A clean hoarding line | body: "Rs 300 an hour, guaranteed" now carries a condition: the Rs 300 floor holds only for drivers who accept at least half their offers | tone: light
 icon: user | eyebrow: Finance partner | title: Its own number as the headline | body: Top-up per trip becomes a guardrail, and the slide opens on bookings per online hour, Rs 314 to Rs 260 | tone: light
 ```
 
-**The scheme now.** An enrolled driver online through a whole peak window (two three-hour windows a day) is guaranteed Rs 300 per peak online hour, the floor; when the driver's trip earnings fall short, Uber pays the gap as a **top-up**. **Monday's redesign,** as a driver hears it: "The floor now pays for trips you complete, if you say yes to most offers." Saying yes to at least half the requests offered is the **acceptance floor**. Three **guardrails**, numbers that must not get worse while trips rise, watch it: the acceptance share, the median rider wait at peak and top-up per completed trip. **The saving:** Rs 1.16 crore of top-up (115.9 lakh) went to driver-weeks that accepted under half their offers; if half of it is still paid, 115.9 / 2 = Rs 58 lakh is saved over six weeks, and if a fifth is, 115.9 x 4/5 = Rs 92.7 lakh.
+**The scheme now.** An enrolled driver online through a whole peak window (two three-hour windows a day) is guaranteed Rs 300 per peak online hour, the floor; when the driver's trip earnings in a window fall short, Uber pays the gap as a **top-up**. The trip earnings are the driver's share of the fares, and neither that share nor the window-by-window record is in Monday's tables, so a week's top-up cannot be rebuilt from its bookings. **Monday's redesign,** as a driver hears it: "The floor now pays for trips you complete, if you say yes to most offers." Saying yes to at least half the requests offered is the **acceptance floor**. Three **guardrails**, numbers that must not get worse while trips rise, watch it: the acceptance share, the median rider wait at peak and top-up per completed trip. **The saving:** Rs 1.16 crore of top-up (115.9 lakh) went to driver-weeks that accepted under half their offers; if half of it is still paid, 115.9 / 2 = Rs 58 lakh is saved over six weeks, and if a fifth is, 115.9 x 4/5 = Rs 92.7 lakh.
 
 ```notes
 LIVE, 5 minutes. If a learner asks how a Rs 300 floor costs Rs 1.9 crore when an hour brought in Rs 260
-of fares: the floor is checked driver by driver, week by week, on the driver's own trip earnings, and
-the idle tail's 42,000 hours carried Rs 1.16 crore of it, about Rs 276 an hour. Cards hidden first.
+of fares, or why the 880 drivers whose fares averaged Rs 313.5 an hour drew Rs 74 lakh: the floor is
+checked window by window on the driver's share of the fares, so every slow window pays a top-up even
+when the driver's average hour clears Rs 300, and the share is below the fare. Monday's caveats say
+the share and the window record are not in the tables, so the top-up is read as Monday recorded it
+and never rebuilt from the bookings. Cards hidden first.
 Groups of three spend 3 minutes listing what each role loses, the loser test of chapter 1 on three
 real roles; take one loss per role from three groups and write them on the board (1 minute), then
 show the cards (1 minute). A loss the room names that the cards miss goes on the board as well: it
@@ -949,7 +963,7 @@ Transition: the city does something the six did not.
 ---
 
 ## S39. Predict: why does the city's per-driver-week rise?
-*On the six drivers, rupees per driver-week fell 23 percent; city-wide, it rose 0.8 percent. Why?*
+*On the six drivers, rupees per driver-week fell 23 percent; on all driver-weeks, it rose 0.8 percent. Why?*
 
 **Recall chapter 1:** the denominator picks the direction. Ramesh's shop rose per day and fell per hour on the same rupees.
 
@@ -975,12 +989,16 @@ Transition: the reveal.
 
 ![Each read divided by its own before window](../whiteboards/C2_W04_D02_three_reads_STUDENT.png)
 
-**The answer is b.** Rupees per driver-week is rupees per hour times hours per driver-week, so the hours are Rs 5,817 / Rs 313.5 = 18.6 a driver-week before and Rs 5,861 / Rs 260.4 = 22.5 after. Each driver-week carried about four more online hours while each hour brought in 17 percent less. Each line is the week over its before-window average, times 100; the amber line rose, then slid below 100.
+**The answer is b.** Rupees per driver-week is rupees per hour times hours per driver-week, so the hours are Rs 5,817 / Rs 313.5 = 18.6 a driver-week before and Rs 5,861 / Rs 260.4 = 22.5 after. The average driver-week carried about four more online hours, most of them the idle tail's, while each hour brought in 17 percent less. Each line is the week over its before-window average, times 100; the amber line rose, then slid below 100.
 
 ```notes
 LIVE, 3 minutes. Trace the violet line first: a step at the launch, then flat. Then the amber line:
-up while hours climbed, down as trips per hour kept falling. Ask which role will quote the amber
-line. Expect the marketing lead. Explorer scene T2 lets learners pick the denominator.
+up while hours climbed, down as trips per hour kept falling. Where the extra hours came from: the
+idle tail's 180 drivers doubled their online hours, to about 39 a week, while completing 12 percent
+fewer trips; the other 880 added under one hour a week. Ask which role will quote the amber
+line. Expect the driver-operations lead, since it is closest to what a driver takes home in a week;
+notebook 04's table gives each role its favourite. Explorer scene T2 lets learners pick the
+denominator.
 Transition: the trap in that amber line.
 ```
 
@@ -991,7 +1009,7 @@ Transition: the trap in that amber line.
 
 **The plausible wrong answer.** "Bookings per driver-week rose from Rs 5,817 to Rs 5,861, so the guarantee is working; keep it as it is." Every rupee in that sentence is right, and it would keep the city paying for idle hours.
 
-**Why it is wrong.** Bookings rose 3.0 percent and active driver-weeks 2.2 percent (6,360 to 6,500), so the ratio rose 0.8 percent (1.030 / 1.022 = 1.008). The rise was bought with hours: 21 percent more online hours a driver-week for 17 percent less per hour. The 140 drivers who joined after the launch drove about one week each, at Rs 4,314 a driver-week, so they pulled the read down; for the drivers there before the launch, it rose 1.4 percent.
+**Why it is wrong.** Bookings rose 3.0 percent and active driver-weeks 2.2 percent (6,360 to 6,500), so the ratio rose 0.8 percent (1.030 / 1.022 = 1.008). The rise was bought with hours: 21 percent more online hours a driver-week for 17 percent less per hour, most of them the idle tail's. The 140 drivers who joined after the launch drove about one week each, at Rs 4,314 a driver-week, so they pulled the read down; for the drivers there before the launch, it rose 1.4 percent.
 
 **The fix.** The slide names the denominator the scheme pays for, the peak online hour, and the presenter says it aloud.
 
@@ -1105,11 +1123,11 @@ Transition: the true part of each objection.
 
 | Role | The true part | The part the evidence answers |
 |---|---|---|
-| Driver operations | The 180 idle-tail drivers will log off: their idle hours are what stops being paid | The other 880 drivers, there before the launch, held at 1.90 trips per online hour and keep the floor if they accept |
+| Driver operations | The 180 idle-tail drivers will log off: their idle hours are what stops being paid | The other 880 of the 1,060 drivers there before the launch held at 1.90 trips per online hour and keep the floor if they accept |
 | Marketing | The hoarding promised a floor, and 140 drivers joined after it went up | The floor stays for drivers who accept; none of the 140 joiners is in the idle tail |
 | Finance | The monsoon ended inside the six weeks, and last year's weeks are not in the data | In the last three weeks requests were back at the before level and trips per hour still ran at 1.56 |
 
-**The answer is d.** A defence that sides with no one concedes each true part out loud and answers the rest from a line of evidence. Finance's row is the hardest: weekly requests fell four weeks running from 7 September, so the six-week rise of 1.8 percent hides that decline; the last three weeks answer it.
+**The answer is d.** A defence that sides with no one concedes each true part out loud and answers the rest from a line of evidence. Driver operations' true part has a place: 74 percent of the idle money went to driver-weeks in the three outer zones, which get few requests, and the outer zones' median wait fell furthest, from 6.6 to about 6 minutes, so that is the wait a change could cost first. Finance's row is the hardest: weekly requests fell four weeks running from 7 September, so the six-week rise of 1.8 percent hides that decline; the last three weeks answer it.
 
 ```notes
 LIVE, 5 minutes. One row at a time. Every number here is Monday's or is computed from Monday's
@@ -1147,7 +1165,7 @@ Transition: one full defence, modelled.
 
 **Restate.** "You are saying the fall in bookings per hour could be the season ending, and the scheme has not had a fair test."
 
-**Answer.** "Two lines of evidence point at the scheme: in the last three weeks after the launch, requests were back at the before window's level and trips per online hour still ran at 1.56; and the drivers who were there before the launch fell from 1.90 to 1.58 as a group, all of it in the 180 of the idle tail while the other 880 held at 1.90, so the new drivers do not explain it."
+**Answer.** "Two lines of evidence point at the scheme: in the last three weeks after the launch, requests were back at the before window's level and trips per online hour still ran at 1.56; and the 1,060 drivers who were there before the launch fell from 1.90 to 1.58 as a group, all of it in the 180 of the idle tail while the other 880 held at 1.90, so the new drivers do not explain it."
 
 **Concede.** "You are right that the monsoon ended inside the six weeks, and that last year's weeks are not in the data."
 
@@ -1155,7 +1173,8 @@ Transition: one full defence, modelled.
 
 ```notes
 LIVE, 5 minutes 30 seconds. The trainer models this defence first, conceding on purpose, then points at each
-move on the S47 card. Every number is Monday's L4 cut, from the facts file.
+move on the S47 card. Every number is Monday's, recounted from Monday's tables when Tuesday's data
+was built.
 Transition: round one of the studio.
 ```
 
