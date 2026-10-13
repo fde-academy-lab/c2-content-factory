@@ -1361,7 +1361,10 @@ def sheet_rows(printed, with_key=False):
                 row["key"] = tf_key(i["key"])
             tf.append(row)
         else:
-            row = {"q": i["q"], "kind": kind, "kindLabel": KIND_SHEET[kind], "steps": len(options)}
+            # An ordering item that leaves lines out is answered in as many letters as its key holds,
+            # so the sheet gives it that many boxes, never one per line printed.
+            steps = len(letters_of(i["key"])) if kind == "order" else 0
+            row = {"q": i["q"], "kind": kind, "kindLabel": KIND_SHEET[kind], "steps": steps or len(options)}
             if with_key:
                 row["key"] = upper_key(i["key"]) if kind in ("order", "bank", "match") else str(i["key"])
             written.append(row)
@@ -1455,6 +1458,9 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
                 " | ungraded")
     timed = sum(i["min"] for i in printed)
     company = " ".join(str(source.get("company") or "").split())
+    # The line on reading code prints only where the paper carries code, in an exhibit or a stem.
+    has_code = any(b.get("code") or any(str(ln).lstrip().startswith("```") for ln in b.get("lines") or [])
+                   for s in sections for b in s["blocks"])
     rules = [
         ["Time", f"{minutes} minutes in one sitting for {count(n)}, which the blueprint paces at "
                  f"{timed:g} minutes. Each part gives its minutes as a guide; move on when an item is "
@@ -1467,8 +1473,8 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
         ["Levels", "Every item shows its level beside its number, easy, medium or hard. A hard item is "
                    "several steps on an exhibit, never an obscure fact."],
         ["Exhibits", "An exhibit is printed once, labelled by its part as Exhibit 2A, 2B, and every item "
-                     "that reads it follows it. Read code and queries as written: Python 3 and "
-                     "PostgreSQL unless the item says otherwise."],
+                     "that reads it follows it." + (" Read code and queries as written: Python 3 and "
+                                                   "PostgreSQL unless the item says otherwise." if has_code else "")],
         ["Afterwards", "Papers are swapped and marked against the key, then the discussion takes the "
                        "items the room missed most. The paper is ungraded and ranks nobody; the room's "
                        "rates by part and by tag set Monday's revision."],
@@ -1976,4 +1982,8 @@ if __name__ == "__main__":
 #     The build stops: the room sits the Word paper, so an exhibit that cannot render is a failure.
 # An ordering addition with seven lines, (a) to (g), four of them keyed
 #     All seven print as options a) to g) in the markdown and A. to G. in the Word paper, in order,
-#     and the answer sheet gives the item seven boxes; an eighth line, (h), prints as stem text.
+#     and the answer sheet gives the item four boxes, one per letter of its key; an eighth line, (h),
+#     prints as stem text.
+# A paper with no code in any exhibit or stem, built with --docx
+#     The Word paper's Exhibits rule leaves out the line on reading Python 3 and PostgreSQL; a paper
+#     with a code exhibit or a fenced stem keeps it.
