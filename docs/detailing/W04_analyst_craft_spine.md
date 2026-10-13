@@ -504,8 +504,8 @@ the cut defended. Parsons problem for the weak learner: notebook 08's `groupby` 
 TA note says where learners stall (a guardrail that is another growth count) and the one hint ("what
 would the guardrail catch?").
 
-**Cut first.** The GIF, then the fallback's leading-and-lagging drill. Never cut round 3, the twelve-row
-count or the Kalpa lab.
+**Cut first.** The GIF, then the fallback's leading-and-lagging drill. Never cut a concept chapter, round
+3, the twelve-row count or the Kalpa lab.
 
 ## 6. Tuesday, 27 October: can the answer survive one slide, and can a number be sized from nothing?
 
@@ -1248,8 +1248,10 @@ plan, an error measure and the question the room would ask about the festival. P
 `shift(52)` cell scrambled. The TA note: learners stall on which weeks to hide (the last ones, as many
 as the horizon) and the hint is "what will the plan hold you to?".
 
-**Cut first.** Drift, then MAPE (keep MAE), as the row cuts; then the fan. Never cut the hold-out, the
-vendor-against-baseline comparison, the festival trap or the Kalpa lab.
+**Cut first.** Drift, then MAPE (keep MAE), as the row cuts, from the case chapters only: each is part of
+a row subtopic, so concept chapters 2 and 3 teach both in their own minutes; then the fan. Never cut a
+concept chapter, the hold-out, the vendor-against-baseline comparison, the festival trap or the Kalpa
+lab.
 
 ## 10. Saturday, 31 October: does the method survive a change of company, and the paper
 

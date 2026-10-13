@@ -38,7 +38,7 @@ built before it and keep their shape until they are rebuilt.
    question of about 24 characters that the pills print, and an italic promise saying what the chapter
    delivers. A concept chapter teaches from zero on one simple, complete, relatable educational
    example with invented numbers labelled invented (a canteen that pays per token, a hostel canteen's
-   twelve lunch orders, two coaching batches, four days of cups), in this order: the broken default or
+   twelve lunch orders, a neighbourhood gym's monthly joiners, a chai stall's cups), in this order: the broken default or
    the misconception with a prediction, the hand count on the tiny numbers, the picture that makes the
    mechanism visible, the formula or rule named last, a glimpse of three to six lines of code that
    reproduce the count, three to five one-sentence rules a learner photographs, and the map node that

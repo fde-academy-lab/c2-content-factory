@@ -381,8 +381,9 @@ many carts.
 ### The twelve rows (L1)
 
 Twelve carts with their items (the generator picks twelve real carts; the shape to hit): milk in 8 of
-12; bread in 4, three of them with milk, so bread to milk confidence 0.75 and lift 1.13 (0.75 over
-0.67); chips and cold drink in 3 carts each, together in 2, so support 2 of 12, confidence 0.67 and
+12; bread in 4, all four of them with milk, so bread to milk confidence 1.00 and lift 1.50 (1.00 over
+0.67), as Wednesday's facts file corrects the earlier 0.75, which sat 0.01 from the full data's 0.74;
+chips and cold drink in 3 carts each, together in 2, so support 2 of 12, confidence 0.67 and
 lift 2.67; ice cream and chocolate sauce together in exactly one cart; curd, eggs, bananas, paneer,
 coriander and others filling the rest. Every value at least 0.05 from Kalpa's 0.82, 0.97, 3.1 and 4.0
 and from the case's own 0.74, 1.04, 3.4 and 4.6.
@@ -391,9 +392,9 @@ and from the case's own 0.74, 1.04, 3.4 and 4.6.
 
 **L1. Which items go together on the twelve carts, and what does "together" mean?** Concepts, one
 at a time: support is counting; confidence shrinks the world to the carts that hold A; lift compares
-with chance; lift is symmetric. Analogy: ten tea-stall orders as dots: chai in 6, biscuit in 4, both
-in 3; support 3 of 10, confidence 0.5, expected 10 times 0.6 times 0.4 = 2.4 against 3 seen, lift 1.25
-both ways; a carry bag in 9 of 10 gives biscuit to bag confidence 0.75 and lift 0.83 (toy, R1).
+with chance; lift is symmetric. The concept chapters teach the three measures first on an invented hostel
+canteen's twelve lunch orders (the spine's Wednesday concept block); the tea-stall analogy retired on
+13 October 2026.
 Numbers: the twelve rows. Trap: confidence read as the answer. Interviewer listens for: the three
 questions named (how often, how reliably, against chance). Common wrong answer: "confidence is the
 probability they go together".

@@ -23,7 +23,7 @@ Remember:
   in the row's order unless the week's spine records a reason, its opener titled with the subtopic as
   the row words it and then a short question, taught from zero on a simple, complete, relatable
   educational example with invented numbers (a canteen that pays per token, a hostel canteen's twelve
-  lunch orders, two coaching batches, four days of cups), climbing from the misconception and a
+  lunch orders, a neighbourhood gym's monthly joiners, a chai stall's cups), climbing from the misconception and a
   prediction through the hand count and the picture to the formula or rule named last, with three to
   five rules and a map node, and paired with one short notebook of the same name, which loads the
   example's table from the day's data and prints it in full. A concept chapter may open the
