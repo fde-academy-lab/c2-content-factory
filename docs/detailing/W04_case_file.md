@@ -37,8 +37,8 @@ the numbers to target, the trap, what the interviewer listens for and the common
 real, the situation and the data are synthetic, built for this class).**
 
 On Monday 31 August 2026 the Hyderabad city team launched a peak-hour earnings guarantee for enrolled
-drivers: a driver who stays online through a whole weekday peak window (two windows a day, each three
-hours long, set by the city team) is guaranteed a floor of Rs 300 per peak online hour, and Uber pays
+drivers: a driver who stays online through a whole peak window (two windows a day on every day of the
+week, each three hours long, set by the city team, so at most 42 peak hours a week) is guaranteed a floor of Rs 300 per peak online hour, and Uber pays
 the gap between the driver's trip earnings in the window and the floor as a top-up (the terms are
 synthetic). The goal written in the launch note was "more drivers on the road at peak, so riders are
 picked up faster".
