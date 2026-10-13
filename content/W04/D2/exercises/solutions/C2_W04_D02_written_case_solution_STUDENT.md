@@ -34,7 +34,7 @@ Hyderabad, launched on 31 August 2026.
 
 ## Why does it pass each rule?
 
-Typed one part a line, as notebook 09 asks, the page passes all five of `page_check`'s rules.
+Typed one part a line, as notebook 09 asks, the page passes all five rules that notebook 09 runs.
 
 | Rule | Where the page meets it |
 |---|---|

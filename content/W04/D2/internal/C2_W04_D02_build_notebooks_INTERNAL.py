@@ -119,8 +119,8 @@ plt.show()
         ## Which denominator prices Ramesh's decision?
 
         The decision on the table is whether the two extra hours pay, and a decision about hours is
-        priced per hour. The cell writes that choice as a function: name the unit the decision buys
-        or loses, then read the rate in that unit.
+        priced per hour. The cell names the unit each question buys or loses, then reads the rate in
+        that unit.
 
         **Predict before you run.** Ramesh's accountant asks a different question: did each
         customer spend less after the change? Which rate answers her?
@@ -131,14 +131,12 @@ plt.show()
         d) Total sales over the four weeks
         """),
         code('''
-def evidence_for(unit, table):
-    """The rate a decision is priced in: its denominator is the unit the decision buys or loses."""
-    before, after = table[f"per_{unit}"]
-    return f"sales per {unit}: Rs {before:,.0f} in September, Rs {after:,.0f} in October"
-
-print("Ramesh, do the two extra hours pay?        ", evidence_for("hour", m))
-print("The accountant, does each customer spend less?", evidence_for("customer", m))
-check("the hours decision reads per hour", evidence_for("hour", m).startswith("sales per hour"))
+# the rate a decision is priced in: its denominator is the unit the decision buys or loses
+for asker, unit in [("Ramesh, do the two extra hours pay?", "hour"),
+                    ("The accountant, does each customer spend less?", "customer")]:
+    before, after = m[f"per_{unit}"]
+    print(f"{asker:<47} sales per {unit}: Rs {before:,.0f} in September, Rs {after:,.0f} in October")
+check("sales per hour fell from September to October", m.per_hour.iloc[1] < m.per_hour.iloc[0])
 check("per customer did not move between the months", m.per_customer.nunique() == 1)
 '''),
         md("""
@@ -199,24 +197,21 @@ check("the festival days sell more a day than October's other days",
         what is true and what to do. The **evidence** is one number with its denominator, or one
         chart. The **caveat** is what the evidence cannot show yet, beside it. The **action** says
         what to do, its cost in rupees and weeks, and who signs. Together they are the one-slide
-        answer: claim, evidence, caveat, action. The function below assembles them and the picture
-        draws them where a reader meets them.
+        answer: claim, evidence, caveat, action. The cell below writes them in that order, and the
+        picture draws them where a reader meets them.
         """),
         code('''
-def one_slide(claim, evidence, caveat, action):
-    """The one-slide answer: four parts, in the order a reader needs them."""
-    slide = {"claim": claim, "evidence": evidence, "caveat": caveat, "action": action}
-    for part, text in slide.items():
-        print(f"{part:>8}: {text}")
-    return slide
-
 added = m.per_day.diff().iloc[-1] / m.hours.diff().iloc[-1]   # what each of the two added hours sold, at most
-slide = one_slide(
-    claim="The longer hours add Rs 700 a day but earn less per hour, so count the evening on its own before deciding",
-    evidence=evidence_for("hour", m) + f"; each added hour at most Rs {added:,.0f}; sales per customer held at Rs 100",
-    caveat="A festival fortnight fell inside October, so part of the extra Rs 700 a day may be the season",
-    action="Keep the hours through November, count the evening's sales apart and decide after thirty days; "
-           "the helper's two extra hours cost Rs 170 a day, and Ramesh signs")
+before, after = m.per_hour
+slide = {                                                     # the four parts, in the order a reader needs them
+    "claim": "The longer hours add Rs 700 a day but earn less per hour, so count the evening on its own before deciding",
+    "evidence": (f"sales per hour: Rs {before:,.0f} in September, Rs {after:,.0f} in October; "
+                 f"each added hour at most Rs {added:,.0f}; sales per customer held at Rs 100"),
+    "caveat": "A festival fortnight fell inside October, so part of the extra Rs 700 a day may be the season",
+    "action": ("Keep the hours through November, count the evening's sales apart and decide after thirty days; "
+               "the helper's two extra hours cost Rs 170 a day, and Ramesh signs")}
+for part, text in slide.items():
+    print(f"{part:>8}: {text}")
 
 fig = plt.figure(figsize=(10, 5.2))
 fig.text(0.02, 0.97, "1  " + textwrap.fill(slide["claim"], 80), fontsize=13, weight="bold", color=INK, va="top")
@@ -363,13 +358,11 @@ print(elements.to_string(index=False))
         d) All 8
         """),
         code('''
-def route(e):
-    """The sort: the caveat and what the claim needs stay; a named reader's question gets a page; the rest leaves."""
-    if e.is_caveat == "yes" or e.supports_claim == "yes":
-        return "the slide"
-    return f"{e.whose_question}'s page" if e.whose_question else "leaves"
-
-elements["goes_to"] = elements.apply(route, axis=1)
+# the sort: the caveat and what the claim needs stay; a named reader's question gets a page; the rest leaves
+asked = elements.whose_question != ""
+elements["goes_to"] = "leaves"
+elements.loc[asked, "goes_to"] = elements.whose_question + "'s page"
+elements.loc[(elements.is_caveat == "yes") | (elements.supports_claim == "yes"), "goes_to"] = "the slide"
 print(elements[["element", "goes_to"]].to_string(index=False))
 where = elements.goes_to.value_counts()
 check("three stay on the slide", where["the slide"] == 3)
@@ -431,17 +424,15 @@ check("every page is headed by a question", all(q.endswith("?") for q in questio
         d) Off the slide and out of every page
         """),
         code('''
-def hurried_route(e):
-    """The same sort with the caveat question skipped."""
-    if e.supports_claim == "yes":
-        return "the slide"
-    return f"{e.whose_question}'s page" if e.whose_question else "leaves"
-
-festival = elements[elements.element == "The festival fortnight"].iloc[0]
-print("the hurried sort sends the festival fortnight to:", hurried_route(festival))
-print("the rule keeps it on:", route(festival))
-check("the hurried sort drops the caveat", hurried_route(festival) == "leaves")
-check("the rule keeps the caveat on the slide", route(festival) == "the slide")
+# the same sort with the caveat question skipped
+elements["hurried"] = "leaves"
+elements.loc[asked, "hurried"] = elements.whose_question + "'s page"
+elements.loc[elements.supports_claim == "yes", "hurried"] = "the slide"
+festival = elements.set_index("element").loc["The festival fortnight"]
+print("the hurried sort sends the festival fortnight to:", festival.hurried)
+print("the rule keeps it on:", festival.goes_to)
+check("the hurried sort drops the caveat", festival.hurried == "leaves")
+check("the rule keeps the caveat on the slide", festival.goes_to == "the slide")
 '''),
         md("""
         **Why it is wrong.** The answer is d, and Ramesh will raise the festival first, since it is
@@ -513,7 +504,9 @@ check("one series of the six carries the claim", len(series) + 1 == 6 and len(ke
         bank["supports_claim"] = "no"
         needs = ["The helper's wage", ___]               # the element that shows what the hours brought
         bank.loc[bank.element.isin(needs), "supports_claim"] = "yes"
-        bank["goes_to"] = bank.apply(route, axis=1)
+        bank["goes_to"] = "leaves"
+        bank.loc[asked, "goes_to"] = bank.whose_question + "'s page"
+        bank.loc[(bank.is_caveat == "yes") | (bank.supports_claim == "yes"), "goes_to"] = "the slide"
         print(bank[["element", "goes_to"]].to_string(index=False))
         check("the festival fortnight stays on the slide whatever the claim",
               bank.set_index("element").goes_to["The festival fortnight"] == "the slide")
@@ -698,22 +691,18 @@ plt.show()
         loud. Say **what would change your mind**, so the claim can be tested. Restating comes
         first because the objector has to accept your version before any answer lands; Rapoport's
         rules, the philosopher Daniel Dennett's guide to criticising an argument fairly (as The
-        Marginalian quotes his Intuition Pumps, checked 13 October 2026), open the same way. The function
-        builds the four moves from the two numbers the cells computed.
+        Marginalian quotes his Intuition Pumps, checked 13 October 2026), open the same way. The cell
+        writes the four moves from the two numbers the cells computed.
         """),
         code('''
-def defend(restate, answer, concede, change_mind):
-    """Defending under challenge: restate, answer, concede, what would change your mind."""
-    moves = {"restate": restate, "answer": answer, "concede": concede, "change my mind": change_mind}
-    for move, words in moves.items():
-        print(f"{move:>15}: {words}")
-    return moves
-
-moves = defend(
-    restate="You are saying attendance rose because the exams began, so the timetable may have done nothing.",
-    answer=f"Weeks 3 to 5 this year sit {rise} points above the same weeks last year, before any exam.",
-    concede=f"You are right that exam weeks run about {exam_lift.mean():.0f} points higher; they did in both years.",
-    change_mind="If a school with the same exams and the old timetable showed the same rise in weeks 3 to 5, I would drop the claim.")
+moves = {                                       # defending under challenge: the four moves, in order
+    "restate": "You are saying attendance rose because the exams began, so the timetable may have done nothing.",
+    "answer": f"Weeks 3 to 5 this year sit {rise} points above the same weeks last year, before any exam.",
+    "concede": f"You are right that exam weeks run about {exam_lift.mean():.0f} points higher; they did in both years.",
+    "change my mind": ("If a school with the same exams and the old timetable showed the same rise in weeks 3 to 5, "
+                       "I would drop the claim.")}
+for move, words in moves.items():
+    print(f"{move:>15}: {words}")
 check("the answer names the line of evidence, 4.7 points", str(rise) in moves["answer"])
 check("the concession names the true part, the exams", "exam" in moves["concede"])
 '''),
@@ -722,7 +711,7 @@ check("the concession names the true part, the exams", "exam" in moves["concede"
         fade." Find the evidence in the exam weeks: compare this year's exam weeks with last year's,
         then check that the gap holds about the size it had before the exams. Fill the blank, type
         the lines into the empty cell below and run them, then write the four moves for the new
-        objection with `defend`:
+        objection the same way, as a new `moves`:
 
         ```python
         exam_gap = w.loc[6:8, "this year"].mean() - w.loc[6:8, "last year"].___()
@@ -1224,20 +1213,15 @@ plt.show()
         computed.
         """),
         code('''
-def defend(restate, answer, concede, change_mind):
-    """Defending under challenge: restate, answer, concede, what would change your mind."""
-    moves = {"restate": restate, "answer": answer, "concede": concede, "change my mind": change_mind}
-    for move, words in moves.items():
-        print(f"{move:>15}: {textwrap.fill(words, 110, subsequent_indent=' ' * 17)}")
-    return moves
-
-moves = defend(
-    restate="You are saying the fall in bookings per hour could be the season ending, so the scheme has not had a fair test.",
-    answer=(f"In the last three weeks requests were back at the before window's level and trips per online hour still "
-            f"ran at {last3_tph:.2f}; the 880 drivers there before the launch held at 1.90, so the fall sits in the idle tail."),
-    concede="You are right that the monsoon ended inside the six weeks, and that last year's weeks are not in the data.",
-    change_mind=("Last year's same six weeks showing a fall of this size, or the test of the redesign showing no change "
-                 "in trips per online hour."))
+moves = {                                       # notebook 03's four moves, in order
+    "restate": "You are saying the fall in bookings per hour could be the season ending, so the scheme has not had a fair test.",
+    "answer": (f"In the last three weeks requests were back at the before window's level and trips per online hour still "
+               f"ran at {last3_tph:.2f}; the 880 drivers there before the launch held at 1.90, so the fall sits in the idle tail."),
+    "concede": "You are right that the monsoon ended inside the six weeks, and that last year's weeks are not in the data.",
+    "change my mind": ("Last year's same six weeks showing a fall of this size, or the test of the redesign showing no change "
+                       "in trips per online hour.")}
+for move, words in moves.items():
+    print(f"{move:>15}: {textwrap.fill(words, 110, subsequent_indent=' ' * 17)}")
 check("the answer names a line of evidence", "1.56" in moves["answer"])
 check("the concession says the true part", "monsoon" in moves["concede"])
 '''),
@@ -1410,19 +1394,15 @@ plt.show()
         d) All three move it equally
         """),
         code('''
-def swing(ledger):
-    """Each factor moved to its low and its high end, the others held at their central values."""
-    out = {}
-    for factor in ledger.index:
-        ends = []
-        for end in ("low", "high"):
-            values = ledger.central.copy()
-            values[factor] = ledger.loc[factor, end]
-            ends.append(values.prod())
-        out[factor] = ends
-    return pd.DataFrame(out, index=["low", "high"]).T
-
-sw = swing(ledger)
+rows = {}
+for factor in ledger.index:                     # each factor to its low and its high end, the others held
+    ends = []
+    for end in ("low", "high"):
+        values = ledger.central.copy()
+        values[factor] = ledger.loc[factor, end]
+        ends.append(values.prod())
+    rows[factor] = ends
+sw = pd.DataFrame(rows, index=["low", "high"]).T
 sw["width"] = sw.high - sw.low
 sw = sw.sort_values("width")
 print(sw[["low", "high"]].round(0).astype(int).to_string())
@@ -1538,20 +1518,19 @@ plt.show()
         Named last, the four steps the canteen ran: **clarify** the unit, the period and what
         counts; **map** the answer as a chain of factors; **calculate** each factor aloud with its
         range; **validate** against a number counted in the same unit, period and definition. That
-        is the guesstimate: clarify, map, calculate, validate. The function below is the last
-        step, and it refuses a comparison that fails any of the three tests.
+        is the guesstimate: clarify, map, calculate, validate. The cell below runs the last step,
+        and it gives no verdict on a comparison that fails any of the three tests.
         """),
         code('''
-def validate(estimate, known, same_unit, same_period, same_definition):
-    """The gap between an estimate and a counted number, or no verdict when the comparison is unfair."""
-    if not (same_unit and same_period and same_definition):
-        return "not a check"
-    return f"{estimate / known - 1:+.1%}"
-
-print("the till:", validate(cups, till_mean, True, True, True))
-print("the campus head count:", validate(cups, ledger.loc["students on campus", "central"], False, True, True))
-check("the till is a check", validate(cups, till_mean, True, True, True) != "not a check")
-check("a head count is no check on cups", validate(cups, 3000, False, True, True) == "not a check")
+known = pd.DataFrame({"counted": [till_mean, ledger.loc["students on campus", "central"]],
+                      "same unit": [True, False], "same period": [True, True], "same definition": [True, True]},
+                     index=["the till", "the campus head count"])
+known["a check?"] = known[["same unit", "same period", "same definition"]].all(axis=1)
+known["the chain against it"] = [f"{cups / counted - 1:+.1%}" if fair else "no verdict"
+                                 for counted, fair in zip(known.counted, known["a check?"])]
+print(known.drop(columns="counted").to_string())
+check("the till is a check, and the chain runs 15.4 percent above it", known.loc["the till", "the chain against it"] == "+15.4%")
+check("a head count is no check on cups", not known.loc["the campus head count", "a check?"])
 '''),
         md("""
         **Your turn.** Re-run the chain with the share the till implies and show that it lands on
@@ -1634,14 +1613,10 @@ check("the page has four sentences", len(page) == 4)
         """),
         code('''
 METHOD = ["denominator", "index", "guardrail", "north star"]
-
-def counts(body):
-    """Lines, numbers and method words a reader has to get through."""
+table = pd.DataFrame(index=["lines", "numbers", "method words"])     # what a reader has to get through
+for name, body in [("the draft", draft_text), ("the page", page_text)]:
     lines = [l for l in body.splitlines() if l.strip() and not l.startswith("VERSION")]
-    return {"lines": len(lines), "numbers": len(re.findall(r"\\d[\\d,.]*", body)),
-            "method words": sum(word in body.lower() for word in METHOD)}
-
-table = pd.DataFrame({"the draft": counts(draft_text), "the page": counts(page_text)})
+    table[name] = [len(lines), len(re.findall(r"\\d[\\d,.]*", body)), sum(word in body.lower() for word in METHOD)]
 print("Opening A:", " / ".join(draft[:3]))
 print("Opening B:", page[0])
 print(table.to_string())
@@ -1721,8 +1696,7 @@ plt.show()
         4. The action names what to do, its cost in rupees and weeks, and who signs.
         5. No method word stays on the page: write "divided by", never "denominator".
 
-        The cell below writes the five rules as one function and runs it on both versions, one part
-        a line.
+        The cell below runs the five rules on both versions, one part a line.
 
         **Predict before you run.** Of the five rules, how many does the draft pass?
 
@@ -1735,17 +1709,16 @@ plt.show()
 DOUBT = ["may ", "might ", "cannot", "part of", "not in the data"]     # words a caveat is said in
 PER = r"\\bper\\b|an hour|a day|a week|a customer|divided by"           # what a number is divided by
 
-def page_check(text):
-    """Chapter 7's five rules, checked as a reader checks them; the page typed one part a line."""
+grid = {}
+for name, text in [("the draft", draft_text), ("the page", page_text)]:   # chapter 7's five rules, one part a line
     parts = [l.strip() for l in text.splitlines() if l.strip() and not l.startswith("VERSION")]
-    second = parts[1].lower() if len(parts) > 1 else ""
-    return {"1 the claim first, with what to do and why": " because " in parts[0] or " so " in parts[0],
-            "2 one number, and what it is divided by": bool(re.search(r"\\d", second) and re.search(PER, second)),
-            "3 the caveat before the action": any(w in part.lower() for part in parts[1:-1] for w in DOUBT),
-            "4 the action, its cost in rupees and who signs": "Rs" in parts[-1] and "sign" in parts[-1],
-            "5 no method word": not any(w in text.lower() for w in METHOD)}
-
-grid = pd.DataFrame({"the draft": page_check(draft_text), "the page": page_check(page_text)})
+    second = parts[1].lower()
+    grid[name] = {"1 the claim first, with what to do and why": " because " in parts[0] or " so " in parts[0],
+                  "2 one number, and what it is divided by": bool(re.search(r"\\d", second) and re.search(PER, second)),
+                  "3 the caveat before the action": any(w in part.lower() for part in parts[1:-1] for w in DOUBT),
+                  "4 the action, its cost in rupees and who signs": "Rs" in parts[-1] and "sign" in parts[-1],
+                  "5 no method word": not any(w in text.lower() for w in METHOD)}
+grid = pd.DataFrame(grid)
 print(grid.to_string())
 print("words on the page:", sum(len(s.split()) for s in page))
 check("the page passes all five rules", grid["the page"].all())
@@ -1786,10 +1759,13 @@ plt.show()
         my_page = \"\"\"
         ___
         \"\"\".strip()
-        mine = page_check(my_page)
-        print(pd.Series(mine).to_string())
-        check("my page opens on its claim", mine["1 the claim first, with what to do and why"])
-        check("my page passes all five rules", all(mine.values()))
+        parts = [l.strip() for l in my_page.splitlines() if l.strip()]
+        second = parts[1].lower() if len(parts) > 1 else ""
+        check("1 the claim first, with what to do and why", " because " in parts[0] or " so " in parts[0])
+        check("2 one number, and what it is divided by", bool(re.search(r"\\d", second) and re.search(PER, second)))
+        check("3 the caveat before the action", any(w in part.lower() for part in parts[1:-1] for w in DOUBT))
+        check("4 the action, its cost in rupees and who signs", "Rs" in parts[-1] and "sign" in parts[-1])
+        check("5 no method word", not any(w in my_page.lower() for w in METHOD))
         ```
         """),
         empty(),
@@ -1867,16 +1843,12 @@ print(weeks[["week_start", "window", "peak_online_hours", "peak_trips", "rider_r
         **Predict before you run.** Which candidate passes all three tests?
         """),
         code('''
-def is_check(same_unit, same_period, same_definition):
-    """Notebook 06's three tests: a check counts the same unit, period and definition as the estimate."""
-    return same_unit and same_period and same_definition
-
-candidates = pd.DataFrame({
+candidates = pd.DataFrame({                     # notebook 06's three tests, asked of each candidate
     "same unit":       [False, True,  True,  False],
     "same period":     [False, False, True,  False],
     "same definition": [False, False, True,  True],
 }, index=["a) requests over six weeks", "b) drivers signed up", "c) drivers online at one peak", "d) driver-hours per trip"])
-candidates["a check?"] = [is_check(*r) for r in candidates.values]
+candidates["a check?"] = candidates.all(axis=1)              # a check passes all three
 print(candidates.to_string())
 check("only a published count of drivers online at one peak passes all three", candidates["a check?"].sum() == 1
       and candidates["a check?"].iloc[2])
@@ -2211,9 +2183,9 @@ plt.show()
         ## Which opening does the city head act on?
 
         Two openings from the interview room's first transcript. A page is read alone, so its first
-        sentence has to name the decision and what to do about it. The cell writes that test as a
-        function and runs notebook 07's page rules, restated here, on Ramesh's page (invented) to
-        prove them.
+        sentence has to name the decision and what to do about it. The cell tests both openings,
+        then runs notebook 07's five rules on Ramesh's page (invented) and on a page built from the
+        case's own numbers.
 
         **Predict before you run.** Which opening gives the city head something to do?
 
@@ -2228,28 +2200,16 @@ weak = "So I looked at the dashboard."
 hire = ("You are deciding whether to keep, end or change the guarantee, so my answer first: the scheme is paying "
         "for online hours that carry no trips, and I recommend testing a change before the city pays for another six weeks.")
 
-def acts(sentence):
-    \"\"\"A first sentence a reader can act on names the decision and what to do.\"\"\"
-    return any(word in sentence.lower() for word in ("recommend", "keep", "end ", "change", "test"))
+ACT = ("recommend", "keep", "end ", "change", "test")          # a first sentence a reader can act on names one
+weak_acts = any(word in weak.lower() for word in ACT)
+hire_acts = any(word in hire.lower() for word in ACT)
+print("the weak opening acts:", weak_acts, "   the hire-grade opening acts:", hire_acts)
+check("only the hire-grade opening names the decision", hire_acts and not weak_acts)
 
 METHOD = ["denominator", "index", "guardrail", "north star"]
 DOUBT = ["may ", "might ", "cannot", "part of", "not in the data"]
 PER = r"\\bper\\b|an hour|a day|a week|a customer|divided by"
-
-def page_check(text):
-    \"\"\"Notebook 07's five rules, restated: what a reader checks in two minutes, one part a line.\"\"\"
-    parts = [l.strip() for l in text.splitlines() if l.strip() and not l.startswith("VERSION")]
-    second = parts[1].lower() if len(parts) > 1 else ""
-    return {"1 the claim first, with what to do and why": " because " in parts[0] or " so " in parts[0],
-            "2 one number, and what it is divided by": bool(re.search(r"\\d", second) and re.search(PER, second)),
-            "3 the caveat before the action": any(w in part.lower() for part in parts[1:-1] for w in DOUBT),
-            "4 the action, its cost in rupees and who signs": "Rs" in parts[-1] and "sign" in parts[-1],
-            "5 no method word": not any(w in text.lower() for w in METHOD)}
-
 ramesh = open("../data/C2_W04_D02_kirana_page_STUDENT.txt", encoding="utf-8").read().split("=====")[1]
-print("the weak opening acts:", acts(weak), "   the hire-grade opening acts:", acts(hire))
-check("only the hire-grade opening names the decision", acts(hire) and not acts(weak))
-check("the page rules pass Ramesh's page (invented)", all(page_check(ramesh).values()))
 
 city_page = "\\n".join([                                        # the page's four lines, on the case's own numbers
     "The scheme is paying for online hours that carry no trips, so I recommend testing a change before the city pays for another six weeks.",
@@ -2257,7 +2217,20 @@ city_page = "\\n".join([                                        # the page's fou
     "The monsoon ended inside the same six weeks and last year's weeks are not in the data, so part of the fall may be the season.",
     f"Test paying per completed peak trip, with an acceptance floor, on half the drivers for six weeks; rolled out to every enrolled driver the change saves Rs {saved.iloc[0]:.0f} lakh to Rs {saved.iloc[1]} lakh over six weeks if a half to a fifth of the idle top-up is still paid, the per-trip rate can move that within the range or beyond it, and the city head signs."])
 print(city_page)
-check("a page built from the case's own numbers passes every rule", all(page_check(city_page).values()))
+
+grid = {}
+for name, text in [("Ramesh's page (invented)", ramesh), ("the page on the case's numbers", city_page)]:
+    parts = [l.strip() for l in text.splitlines() if l.strip() and not l.startswith("VERSION")]
+    second = parts[1].lower()                   # notebook 07's five rules, one part a line
+    grid[name] = {"1 the claim first, with what to do and why": " because " in parts[0] or " so " in parts[0],
+                  "2 one number, and what it is divided by": bool(re.search(r"\\d", second) and re.search(PER, second)),
+                  "3 the caveat before the action": any(w in part.lower() for part in parts[1:-1] for w in DOUBT),
+                  "4 the action, its cost in rupees and who signs": "Rs" in parts[-1] and "sign" in parts[-1],
+                  "5 no method word": not any(w in text.lower() for w in METHOD)}
+grid = pd.DataFrame(grid)
+print(grid.to_string())
+check("the page rules pass Ramesh's page (invented)", grid["Ramesh's page (invented)"].all())
+check("a page built from the case's own numbers passes every rule", grid["the page on the case's numbers"].all())
 
 fig, ax = plt.subplots(figsize=(10, 3.2))
 parts = [("claim", "the scheme pays for online\\nhours that carry no trips"),
@@ -2290,10 +2263,14 @@ plt.show()
         my_page = \"\"\"
         ___
         \"\"\".strip()
-        mine = page_check(my_page)
-        print(pd.Series(mine).to_string())
-        check("my first sentence names the decision", acts(my_page.splitlines()[0]))
-        check("my page passes every rule", all(mine.values()))
+        parts = [l.strip() for l in my_page.splitlines() if l.strip()]
+        second = parts[1].lower() if len(parts) > 1 else ""
+        check("my first sentence names the decision", any(word in parts[0].lower() for word in ACT))
+        check("1 the claim first, with what to do and why", " because " in parts[0] or " so " in parts[0])
+        check("2 one number, and what it is divided by", bool(re.search(r"\\d", second) and re.search(PER, second)))
+        check("3 the caveat before the action", any(w in part.lower() for part in parts[1:-1] for w in DOUBT))
+        check("4 the action, its cost in rupees and who signs", "Rs" in parts[-1] and "sign" in parts[-1])
+        check("5 no method word", not any(w in my_page.lower() for w in METHOD))
         ```
         """),
         empty(),
@@ -2520,9 +2497,9 @@ plt.show()
         ## Does each hire-grade answer keep its structure?
 
         An interviewer hears the structure before the numbers. The cell holds each answer as data, one
-        part a line in the order it is spoken, and checks it with two functions: the one-slide
-        answer's order (claim, evidence, caveat, action) and the guesstimate's four steps (clarify,
-        map, calculate, validate).
+        part a line in the order it is spoken, and checks it against one of two orders: the one-slide
+        answer's (claim, evidence, caveat, action, with a cost and a signer in the action) and the
+        guesstimate's four steps (clarify, map, calculate, validate).
 
         **Predict before you run.** Which part does transcript 2's weak answer speak first?
 
@@ -2551,28 +2528,22 @@ estimate_hire = [("clarify", "one moment of the weekday evening peak, one produc
                  ("decision", "the number sets the evening incentive")]
 estimate_weak = [("calculate", "1 crore x 1 percent, over 2.4: about 41,700")]
 
-def in_order(parts, wanted):
-    \"\"\"Every wanted part is spoken, in the wanted order.\"\"\"
+ONE_SLIDE, FOUR_STEPS = ["claim", "evidence", "caveat", "action"], ["clarify", "map", "calculate", "validate"]
+keeps = {}
+for label, parts, wanted in [("transcript 1, hire-grade", recommend_hire, ONE_SLIDE),
+                             ("transcript 1, weak", recommend_weak, ONE_SLIDE),
+                             ("transcript 2, hire-grade", estimate_hire, FOUR_STEPS),
+                             ("transcript 2, weak", estimate_weak, FOUR_STEPS)]:
     names = [name for name, _ in parts]
-    places = [names.index(w) for w in wanted if w in names]
-    return len(places) == len(wanted) and places == sorted(places)
-
-def one_slide_spoken(parts):
+    places = [names.index(w) for w in wanted if w in names]          # where each wanted part is spoken
     action = dict(parts).get("action", "")
-    return in_order(parts, ["claim", "evidence", "caveat", "action"]) and "Rs" in action and "sign" in action
-
-def four_steps_spoken(parts):
-    return in_order(parts, ["clarify", "map", "calculate", "validate"])
-
-for label, parts, rule in [("transcript 1, hire-grade", recommend_hire, one_slide_spoken),
-                           ("transcript 1, weak", recommend_weak, one_slide_spoken),
-                           ("transcript 2, hire-grade", estimate_hire, four_steps_spoken),
-                           ("transcript 2, weak", estimate_weak, four_steps_spoken)]:
-    print(f"{label:>26}: {' > '.join(name for name, _ in parts)}  ->  {'keeps' if rule(parts) else 'breaks'} the structure")
-check("the hire-grade recommendation keeps the one-slide order, with a cost and a signer", one_slide_spoken(recommend_hire))
-check("the weak recommendation breaks it", not one_slide_spoken(recommend_weak))
-check("the hire-grade estimate runs the four steps in order", four_steps_spoken(estimate_hire))
-check("the weak estimate starts at the calculation", estimate_weak[0][0] == "calculate" and not four_steps_spoken(estimate_weak))
+    priced = wanted != ONE_SLIDE or ("Rs" in action and "sign" in action)
+    keeps[label] = len(places) == len(wanted) and places == sorted(places) and priced
+    print(f"{label:>26}: {' > '.join(names)}  ->  {'keeps' if keeps[label] else 'breaks'} the structure")
+check("the hire-grade recommendation keeps the one-slide order, with a cost and a signer", keeps["transcript 1, hire-grade"])
+check("the weak recommendation breaks it", not keeps["transcript 1, weak"])
+check("the hire-grade estimate runs the four steps in order", keeps["transcript 2, hire-grade"])
+check("the weak estimate starts at the calculation", estimate_weak[0][0] == "calculate" and not keeps["transcript 2, weak"])
 
 colours = {"decision": INK, "claim": INK, "evidence": VIOLET, "caveat": AMBER, "action": VIOLET,
            "change my mind": LILAC, "method": ROSE, "clarify": INK, "map": VIOLET, "calculate": VIOLET,
@@ -2749,42 +2720,38 @@ plt.show()
         store's first-year sales, which can be laid beside what a mature DMart store sells. The
         sign-up share stays a stated guess.
 
-        The two functions below are notebook 06's, restated so this notebook stands alone. The
-        cell proves them on notebook 06's canteen (invented) before you use them.
+        The cell below runs notebook 06's chain and swing on whatever table `ledger` holds, here
+        notebook 06's canteen (invented), so the lines are proven before you run them on yours.
         """),
         code('''
-def chain(ledger):
-    """The answer at the central guesses: the factors multiplied."""
-    return ledger.central.prod()
+ledger = pd.read_csv("../data/C2_W04_D02_canteen_ledger_STUDENT.csv").set_index("factor")   # notebook 06's canteen
 
-def swing(ledger):
-    """Each factor moved to its low and its high end, the others held at their central values."""
-    out = {}
-    for factor in ledger.index:
-        ends = []
-        for end in ("low", "high"):
-            values = ledger.central.copy()
-            values[factor] = ledger.loc[factor, end]
-            ends.append(values.prod())
-        out[factor] = ends
-    return pd.DataFrame(out, index=["low", "high"]).T
+# the chain and the swing, notebook 06's lines: they run on whatever table ledger holds
+central = ledger.central.prod()
+rows = {}
+for factor in ledger.index:
+    ends = []
+    for end in ("low", "high"):
+        values = ledger.central.copy()
+        values[factor] = ledger.loc[factor, end]
+        ends.append(values.prod())
+    rows[factor] = ends
+sw = pd.DataFrame(rows, index=["low", "high"]).T
+sw["width"] = sw.high - sw.low
+sw = sw.sort_values("width")
+print(f"the answer at the central guesses: {central:,.0f}")
+print(sw[["low", "high"]].round(0).to_string())
+fig, ax = plt.subplots(figsize=(9, 3.2))
+ax.barh(sw.index, sw.width, left=sw.low, color=LILAC)
+ax.axvline(central, color=ROSE)
+ax.set_xlabel("the answer with one guess at each end, the others held")
+ax.set_title("Which guess moves the answer most?", loc="left")
+plt.show()
 
-canteen = pd.read_csv("../data/C2_W04_D02_canteen_ledger_STUDENT.csv").set_index("factor")
-sw = swing(canteen)
-check("the chain reproduces notebook 06's 2,700 cups", chain(canteen) == 2700)
-check("the swing reproduces the share's 1,500 to 3,900", sw.loc["share who buy tea on a weekday"].tolist() == [1500, 3900])
+check("the chain reproduces notebook 06's 2,700 cups", central == 2700)
+check("the swing reproduces the share's 1,500 to 3,900",
+      sw.loc["share who buy tea on a weekday", ["low", "high"]].tolist() == [1500, 3900])
 check("every factor's low end gives a smaller answer than its high end", (sw.low <= sw.high).all())
-
-def draw_swing(sw, central, unit):
-    sw = sw.assign(width=sw.high - sw.low).sort_values("width")
-    fig, ax = plt.subplots(figsize=(9, 3.2))
-    ax.barh(sw.index, sw.width, left=sw.low, color=LILAC)
-    ax.axvline(central, color=ROSE)
-    ax.set_xlabel(unit)
-    ax.set_title("Which guess moves the answer most?", loc="left")
-    plt.show()
-
-draw_swing(sw, chain(canteen), "cups of tea on a weekday (notebook 06's invented canteen)")
 
 fig, ax = plt.subplots(figsize=(10, 2.6))
 boxes = ["households\\nnear the store", "x share who shop\\nthere in year one", "= shoppers",
@@ -2804,20 +2771,18 @@ plt.show()
         md("""
         **Your turn: size Anand's question.** Write your ledger with a central value, a low and a
         high for each of the three factors and one line of why, then run the chain and the swing.
-        Type the lines into the empty cell below, with your own numbers in the blanks:
+        Type the lines into the empty cell below, with your own numbers in the blanks, then paste
+        under them the lines of the cell above from `central = ledger.central.prod()` down to the
+        first `plt.show()`, unchanged, and run the cell:
 
         ```python
-        store = pd.DataFrame([
+        ledger = pd.DataFrame([
             ("households near the store",        ___, ___, ___, "___"),
             ("share who shop there in year one", ___, ___, ___, "___"),
             ("share of shoppers who sign up",    ___, ___, ___, "___"),
         ], columns=["factor", "central", "low", "high", "why"]).set_index("factor")
-        print(f"sign-ups at the central guesses: {chain(store):,.0f}")
-        store_swing = swing(store)
-        print(store_swing.round(0))
-        draw_swing(store_swing, chain(store), "sign-ups in the first year")
         check("every low sits below its central and every high above it",
-              ((store.low <= store.central) & (store.central <= store.high)).all())
+              ((ledger.low <= ledger.central) & (ledger.central <= ledger.high)).all())
         ```
         """),
         empty(),
@@ -2827,7 +2792,7 @@ plt.show()
         sell less than a mature store; an estimate above it means a guess is too high.
 
         ```python
-        shoppers = store.loc["households near the store", "central"] * store.loc["share who shop there in year one", "central"]
+        shoppers = ledger.loc["households near the store", "central"] * ledger.loc["share who shop there in year one", "central"]
         visits_a_month, spend_per_visit = ___, ___          # your guesses, each said aloud
         first_year_crore = shoppers * visits_a_month * spend_per_visit * 12 / 1e7
         dmart_per_store = a["FY26 standalone total revenue, Rs crore"] / average_count
