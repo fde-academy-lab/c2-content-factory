@@ -1099,6 +1099,11 @@ slot_value:
     shown: "Rs 80,197"
     how: "1,920 adds x the average price of an added item"
     used_in: "notebook 10, the trap"
+  - id: gross_sales_day_about
+    value: 80197
+    shown: "about Rs 80,200"
+    how: "the same rounded to the hundred, since 1,920 x Rs 41.77 by hand gives Rs 80,198"
+    used_in: "half2 S67, notes, the trap"
   - id: ice_cream_views_day
     value: 2400
     shown: "2,400"
@@ -1129,6 +1134,86 @@ slot_value:
     shown: "12 percent"
     how: "the largest rise in click-through among them"
     used_in: "the [D] transcript"
+  - id: slot1_other_ctr_low
+    value: 0.0812
+    shown: "8.1 percent"
+    how: "lowest click-through of any suggestion other than milk in slot 1 after the change, cell by cell"
+    used_in: "half2 S66, notebook 10"
+  - id: slot1_other_ctr_high
+    value: 0.0838
+    shown: "8.4 percent"
+    how: "highest click-through of any suggestion other than milk in slot 1 after the change, cell by cell"
+    used_in: "half2 S66, notebook 10"
+  - id: slot2_other_ctr_low
+    value: 0.067
+    shown: "6.7 percent"
+    how: "lowest click-through of any suggestion other than milk in slot 2 after the change, cell by cell"
+    used_in: "half2 S66, notebook 10"
+  - id: slot2_other_ctr_high
+    value: 0.068
+    shown: "6.8 percent"
+    how: "highest click-through of any suggestion other than milk in slot 2 after the change, cell by cell"
+    used_in: "half2 S66, notebook 10"
+  - id: slot3_other_ctr_low
+    value: 0.053
+    shown: "5.3 percent"
+    how: "lowest click-through of any suggestion other than milk in slot 3 after the change, cell by cell"
+    used_in: "half2 S66, notebook 10"
+  - id: slot3_other_ctr_high
+    value: 0.0545
+    shown: "5.5 percent"
+    how: "highest click-through of any suggestion other than milk in slot 3 after the change, cell by cell"
+    used_in: "half2 S66, notebook 10"
+  - id: chips_cold_slot1_ctr
+    value: 0.0823
+    shown: "8.2 percent"
+    how: "cold drink suggested beside chips in slot 1 after the change, lift 3.39"
+    used_in: "half2 S66, notebook 10"
+  - id: eggs_bread_slot1_ctr
+    value: 0.0838
+    shown: "8.4 percent"
+    how: "bread suggested beside eggs in slot 1 after the change"
+    used_in: "half2 S66, notebook 10"
+  - id: bread_eggs_lift
+    value: 0.9914
+    shown: "0.99"
+    how: "bread and eggs: a staple pair at chance"
+    used_in: "half2 S66, notebook 10"
+  - id: strip_margin_per_add
+    value: 6.95
+    shown: "about Rs 7"
+    how: "margin_rs of the items the strip added after the change, milk aside, weighted by adds"
+    used_in: "half2 S66 notes, interview room"
+  - id: recoverable_month_own_margins
+    value: 568386
+    shown: "Rs 5.7 lakh"
+    how: "60,000 x 1.5 x 30 x 0.5 x (0.064 x Rs 6.95 - 0.012 x Rs 2): each add at what the strip's own adds and milk actually earn"
+    used_in: "half2 S66 notes, interview room"
+  - id: milk_lift_ceiling
+    value: 1.4085
+    shown: "1.41"
+    how: "one over milk's 0.71: the highest lift any item can reach with milk"
+    used_in: "half1 S49, half2 S63 and S71, interview room"
+  - id: ic_sauce_lift_low95
+    value: 3.7776
+    shown: "3.8"
+    how: "4.60 x e to the minus 1.96 over the square root of 100 shared carts: the low end of luck's 95 percent swing"
+    used_in: "interview room"
+  - id: ic_sauce_lift_high95
+    value: 5.5907
+    shown: "5.6"
+    how: "the high end of the same swing"
+    used_in: "interview room"
+  - id: interval_level
+    value: 0.95
+    shown: "95 percent"
+    how: "the share of luck's swings the quoted range for 4.60 covers, two of the log's standard errors either way"
+    used_in: "interview room"
+  - id: bread_milk_lift_size
+    value: 0.9736
+    shown: "below one"
+    how: "bread and milk with chance counted within each cart size (never printed as a number: it sits on a lab plant)"
+    used_in: "interview room, trainer"
   - id: recoverable_month_milk_own
     value: 745200
     shown: "Rs 7.5 lakh"
@@ -1953,6 +2038,36 @@ toy:
     shown: "1.00"
     how: "invented for the concept chapter on The support floor and the watch list: highest lift among them"
     used_by: "half1 SECTION 6, notebook 06, notes"
+  - id: toy_month_mid_top_lift
+    value: 1.8265
+    shown: "1.83"
+    how: "invented for the concept chapter on The support floor and the watch list: the strongest pair on 3 to 29 orders, fruit plate and papad, a lift chance alone made"
+    used_by: "half1 SECTION 6, notebook 06"
+  - id: toy_month_mid_top_orders
+    value: 4
+    shown: "4"
+    how: "invented for the concept chapter on The support floor and the watch list: orders holding fruit plate and papad"
+    used_by: "half1 SECTION 6, notebook 06"
+  - id: toy_month_bar_safe_orders
+    value: 8
+    shown: "8"
+    how: "invented for the concept chapter on The support floor and the watch list: the fewest orders from which no pair of the month reaches the 1.5 bar: where chance stops carrying a lift past it"
+    used_by: "half1 SECTION 6, notebook 06, notes"
+  - id: toy_month_bar_safe_top
+    value: 1.3699
+    shown: "1.37"
+    how: "invented for the concept chapter on The support floor and the watch list: the highest lift of any pair on 8 or more orders, gulab jamun and papad on 10"
+    used_by: "half1 SECTION 6, notebook 06"
+  - id: toy_chaas_lift_ceiling
+    value: 1.3333
+    shown: "1.33"
+    how: "invented for the concept chapter on The confidence trap; lift near one: one over chaas's share of 0.75: the highest lift any item can reach with chaas"
+    used_by: "half1 SECTION 4, notebook 04, notes, cheat sheet panel 2"
+  - id: toy_month_mid_over_bar
+    value: 3
+    shown: "three"
+    how: "invented for the concept chapter on The support floor and the watch list: pairs on 3 to 29 orders that clear the 1.5 bar by chance alone"
+    used_by: "half1 SECTION 6, notebook 06"
   - id: toy_kirana_bills
     value: 1000
     shown: "1,000"
@@ -3754,4 +3869,14 @@ kalpa_lab:
     value: 2.6667
     shown: "2.67"
     how: "earphones and case on the twelve"
+    used_in: "lab note, notebook 11"
+  - id: kalpa_twelve_grip_expected
+    value: 2.0833
+    shown: "2.08"
+    how: "pen set with phone grip on the twelve: 12 x 5/12 x 5/12, what chance gives"
+    used_in: "lab note, notebook 11"
+  - id: kalpa_twelve_grip_lift
+    value: 1.92
+    shown: "1.92"
+    how: "pen set with phone grip on the twelve, the hand count's third number"
     used_in: "lab note, notebook 11"

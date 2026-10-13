@@ -226,7 +226,9 @@ def canteen_direction():
     ax.plot([0, 1.05], [0, 1.05], color=MUTED, ls="--", lw=1.2)
     ax.text(0.12, 0.2, "both ways equal", color=MUTED, fontsize=12, rotation=28)
     ax.scatter(p.ab, p.ba, s=80, color=VIOLET, edgecolor=INK, zorder=3)
-    marks = {("curd", "gulab jamun"): ("curd to gulab\njamun 0.50,\nback 1.00", (1.08, 1.08)),
+    ring = p[(p.a == "papad") & (p.b == "pickle")].iloc[0]
+    ax.scatter([ring.ab], [ring.ba], s=260, facecolor="none", edgecolor=ROSE, lw=2.2, zorder=4)
+    marks = {("papad", "pickle"): ("papad to pickle 0.40, back 1.00", (0.02, 1.17)),
              ("roti", "sabzi"): ("roti and sabzi:\n0.75 both ways", (1.08, 0.62)),
              ("dal rice", "papad"): ("dal rice to\npapad 0.50,\nback 0.60", (1.08, 0.24))}
     for (a, b), (label, at) in marks.items():
@@ -315,11 +317,13 @@ def chaas_partner():
     a1.set_title("Every item looks bundled with chaas")
     a2.barh(list(y), [m["lift"] for m in ms], color=TINT, edgecolor=VIOLET, lw=2)
     a2.axvline(1, color=INK, ls="--", lw=1.6)
+    a2.axvline(1.5, color=GREEN, ls=":", lw=2)
+    a2.text(1.48, 3.55, "the 1.5 bar", color=GREEN, fontsize=13, ha="right")
     for i, m in zip(y, ms):
         a2.text(0.03, i, f"{m['lift']:.2f}", va="center", fontsize=14, color=INK, weight="bold")
     a2.set_xlim(0, 1.6)
     a2.set_xlabel("lift with chaas (dashes: one, chance)")
-    a2.set_title("Lift: about as often as chance")
+    a2.set_title("Lift with chaas: none reaches the bar")
     fig.suptitle("The four items in four or more of the twelve orders, invented", fontsize=13, color=MUTED)
     fig.tight_layout()
     save(fig, "C2_W04_D03_chaas_partner_STUDENT.png")
@@ -414,6 +418,7 @@ def canteen_action_map():
     ax.text(3.2, 0.2, "TRAP: near one", color=ROSE, fontsize=12, weight="bold")
     marks = {("roti", "sabzi"): ("roti + sabzi 2.25", (8, 6)), ("papad", "pickle"): ("papad +\npickle 2.40", (-8, 10)),
              ("curd", "gulab jamun"): ("gulab jamun\n+ curd 6.00", (10, -12)),
+             ("pickle", "roti"): ("roti + pickle 1.50", (9, 5)),
              ("chaas", "dal rice"): ("dal rice + chaas 1.33", None)}
     for (a, b), (label, off) in marks.items():
         r = p[(p.a == a) & (p.b == b)].iloc[0]

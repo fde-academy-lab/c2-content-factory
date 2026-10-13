@@ -644,7 +644,8 @@ def verify_case(cart_df, item_df, twelve_df):
     out["m"] = {}
     for a, b in (("bread", "toned milk"), ("eggs", "toned milk"), ("curd", "toned milk"),
                  ("bananas", "toned milk"), ("chips", "cold drink"), ("ice cream", "chocolate sauce"),
-                 ("coriander", "green chillies"), ("bread", "butter"), ("onions", "tomatoes")):
+                 ("coriander", "green chillies"), ("bread", "butter"), ("onions", "tomatoes"),
+                 ("bread", "eggs")):
         out["m"][(a, b)] = measures(list(baskets), a, b)
     bm, em = out["m"][("bread", "toned milk")], out["m"][("eggs", "toned milk")]
     check("bread to milk confidence 0.74, lift 1.04",
@@ -717,6 +718,9 @@ def verify_case(cart_df, item_df, twelve_df):
     check("corrected for both, each customer once and chance sized by cart, chips and cold drink read "
           "1.95 and onions and tomatoes 1.38",
           [round(v, 2) for v in out["both_lift"].values()] == [1.95, 1.38])
+    out["bm_size"] = size_adjusted_lift(baskets, "bread", "toned milk")
+    check("sized by cart, bread and milk fall below one: the 4 percent above chance is cart size",
+          out["bm_size"] < 1)
     sl = out["size_lift"]
     check("sized by each cart's item count, chips and cold drink read 2.48, coriander and green chillies "
           "2.25, bread and butter 1.74, and onions and tomatoes 1.38, below the 1.5 bar",
@@ -866,6 +870,21 @@ def verify_strip(log):
     out["milk_imp_day"] = milk_after.groupby("date").impressions.sum().mean()
     part = log[log.date >= CHANGE_DAY.isoformat()]
     out["after_ctr_exact"] = part.clicks.sum() / part.impressions.sum()
+    # Inside one slot, does a suggestion's pull move its click-through? Every cell other than milk.
+    cells_after = (part[part.suggested_item != "toned milk"]
+                   .groupby(["slot", "anchor_item", "suggested_item"])[["impressions", "clicks"]].sum())
+    out["cell_ctr"] = cells_after.clicks / cells_after.impressions
+    out["slot_ctr_range"] = {k: (float(out["cell_ctr"].loc[k].min()), float(out["cell_ctr"].loc[k].max()))
+                             for k in (1, 2, 3)}
+    check("after the change, inside each slot every suggestion other than milk clicks within half a "
+          "point of the others, whatever its pull: slot 1 runs 8.1 to 8.4 percent",
+          all(hi - lo < 0.005 for lo, hi in out["slot_ctr_range"].values())
+          and [round(x * 100, 1) for x in out["slot_ctr_range"][1]] == [8.1, 8.4])
+    # What the strip's own adds earned: margin_rs of the items it added after the change, milk aside.
+    w_after = after.groupby("suggested_item").adds.sum()
+    out["margin_per_add_after"] = sum(MARGIN[i] * k for i, k in w_after.items()) / w_after.sum()
+    check("the strip's own adds other than milk earned about Rs 7 each after the change",
+          round(out["margin_per_add_after"]) == 7)
     # The same anchor, suggestion and slot in both windows, milk aside: like against like.
     cells = (log[~log.milk].groupby(["anchor_item", "suggested_item", "slot", "window"])
              [["impressions", "clicks"]].sum().unstack("window").dropna())
@@ -968,6 +987,10 @@ def verify_kalpa(products, orders, items):
     t = [baskets[o] for o in chosen]
     tc = measures(t, "screen protector", "phone charger 20W")
     te = measures(t, "wireless earphones", "earphone case")
+    tg = measures(t, "pen set", "phone grip")
+    check("the lab's hand count reads pen set with phone grip, a pair that is no lab finding: "
+          "4 baskets where chance gives 2.08, lift 1.92",
+          tg["nab"] == 4 and round(tg["lift"], 2) == 1.92)
     share12 = sum(1 for s in t if "phone charger 20W" in s) / 12
     check("the lab's twelve baskets: charger in 9, screen protector to charger 0.67 and lift 0.89, "
           "earphones with case lift 2.67",
@@ -976,6 +999,7 @@ def verify_kalpa(products, orders, items):
     out["twelve"] = chosen
     out["twelve_sets"] = t
     out["twelve_m"] = (share12, tc, te)
+    out["twelve_grip"] = tg
     return out
 
 
@@ -1149,6 +1173,16 @@ def verify_toys(lines, month_df, kirana):
           "thin_above_6": sum(1 for r in thin if r["lift"] > 6)}
     mo["thick_low"] = min(r["lift"] for r in thick)
     mo["thick_high"] = max(r["lift"] for r in thick)
+    # pairs between the toy floor of 3 and thirty orders: chance alone still clears the 1.5 bar
+    mid = sorted((r for r in rows if 3 <= r["both"] < 30), key=lambda r: -r["lift"])
+    mo["mid_top"] = mid[0]
+    mo["mid_over_bar"] = sum(1 for r in mid if r["lift"] >= 1.5)
+    # The floor chance sets: the fewest orders from which no pair of the month reaches the 1.5 bar.
+    safe = min(k for k in range(1, 31) if all(r["lift"] < 1.5 for r in rows if r["both"] >= k))
+    mo["bar_safe_orders"] = safe
+    mo["bar_safe_top"] = max(r["lift"] for r in rows if r["both"] >= safe)
+    check("month: from 8 orders up no pair reaches the 1.5 bar, the highest reading 1.37",
+          (safe, round(mo["bar_safe_top"], 2)) == (8, 1.37))
     top = thin[0]
     mo["top"] = top
     check("month: 600 orders, 14 items", (n, len(single)) == (MONTH_ORDERS, len(MONTH_MENU)))
@@ -1156,6 +1190,8 @@ def verify_toys(lines, month_df, kirana):
     check("month: every pair on 30 or more orders sits between 0.8 and 1.25",
           0.8 <= mo["thick_low"] and mo["thick_high"] <= 1.25)
     check("month: the most common pair sits near one", abs(max(thick, key=lambda r: r["both"])["lift"] - 1) < 0.1)
+    check("month: on 3 to 29 orders, chance alone clears the 1.5 bar three times, at best 1.83 on 4 orders",
+          (mo["mid_over_bar"], round(mo["mid_top"]["lift"], 2), mo["mid_top"]["both"]) == (3, 1.83, 4))
 
     print("  Sharma Kirana's month (invented)")
     k = dict(zip(kirana.line, kirana.value))
@@ -1287,6 +1323,18 @@ def toy_facts(f, t, mo, ko):
     f(S, "toy_month_thick_pairs", mo["thick_count"], str(mo["thick_count"]), inv(SUB4, "pairs on 30 or more orders"), "half1 SECTION 6, notebook 06")
     f(S, "toy_month_thick_low", round(mo["thick_low"], 4), f"{mo['thick_low']:.2f}", inv(SUB4, "lowest lift among them"), "half1 SECTION 6, notebook 06, notes")
     f(S, "toy_month_thick_high", round(mo["thick_high"], 4), f"{mo['thick_high']:.2f}", inv(SUB4, "highest lift among them"), "half1 SECTION 6, notebook 06, notes")
+    f(S, "toy_month_mid_top_lift", round(mo["mid_top"]["lift"], 4), f"{mo['mid_top']['lift']:.2f}",
+      inv(SUB4, "the strongest pair on 3 to 29 orders, fruit plate and papad, a lift chance alone made"), "half1 SECTION 6, notebook 06")
+    f(S, "toy_month_mid_top_orders", mo["mid_top"]["both"], str(mo["mid_top"]["both"]),
+      inv(SUB4, "orders holding fruit plate and papad"), "half1 SECTION 6, notebook 06")
+    f(S, "toy_month_bar_safe_orders", mo["bar_safe_orders"], str(mo["bar_safe_orders"]),
+      inv(SUB4, "the fewest orders from which no pair of the month reaches the 1.5 bar: where chance stops carrying a lift past it"), "half1 SECTION 6, notebook 06, notes")
+    f(S, "toy_month_bar_safe_top", round(mo["bar_safe_top"], 4), f"{mo['bar_safe_top']:.2f}",
+      inv(SUB4, "the highest lift of any pair on 8 or more orders, gulab jamun and papad on 10"), "half1 SECTION 6, notebook 06")
+    f(S, "toy_chaas_lift_ceiling", round(1 / 0.75, 4), "1.33",
+      inv(SUB2, "one over chaas's share of 0.75: the highest lift any item can reach with chaas"), "half1 SECTION 4, notebook 04, notes, cheat sheet panel 2")
+    f(S, "toy_month_mid_over_bar", mo["mid_over_bar"], "three",
+      inv(SUB4, "pairs on 3 to 29 orders that clear the 1.5 bar by chance alone"), "half1 SECTION 6, notebook 06")
     s9 = "half2 SECTION 9"
     for key, val, shown, why in (
             ("bills", ko["bills"], "1,000", "Sharma Kirana's bills in one month"),
@@ -1553,6 +1601,7 @@ def write_facts(case, strip, kalpa, toys):
     f(S, "clicks_a_day", round(60_000 * 0.064), f"{round(60_000 * 0.064):,}", "60,000 x 0.064", "board work, the cascade")
     f(S, "adds_a_day", round(adds_day), f"{round(adds_day):,}", "60,000 x 0.064 x 0.5", "notebook 03, the trap")
     f(S, "gross_sales_day", round(gross_day), f"Rs {indian(gross_day)}", "1,920 adds x the average price of an added item", "notebook 03, the trap")
+    f(S, "gross_sales_day_about", round(gross_day), "about Rs 80,200", "the same rounded to the hundred, since 1,920 x Rs 41.77 by hand gives Rs 80,198", "half2 S67, notes, the trap")
     thin_views = views * 0.04
     m_sauce, m_milk = MARGIN["chocolate sauce"], MARGIN["toned milk"]
     thin_month = thin_views * 30 * (0.064 * add * m_sauce - 0.012 * add * m_milk)
@@ -1563,6 +1612,25 @@ def write_facts(case, strip, kalpa, toys):
     f(S, "same_cells", n_same, "four", "anchor, suggestion and slot cells other than milk shown in both windows", "the [D] transcript")
     f(S, "same_cells_rise_low", round(r_lo, 4), f"{r_lo * 100:.0f} percent", "the smallest rise in click-through among them", "the [D] transcript")
     f(S, "same_cells_rise_high", round(r_hi, 4), f"{r_hi * 100:.0f} percent", "the largest rise in click-through among them", "the [D] transcript")
+    for k, (lo_k, hi_k) in strip["slot_ctr_range"].items():
+        f(S, f"slot{k}_other_ctr_low", round(lo_k, 4), f"{lo_k * 100:.1f} percent", f"lowest click-through of any suggestion other than milk in slot {k} after the change, cell by cell", "half2 S66, notebook 10")
+        f(S, f"slot{k}_other_ctr_high", round(hi_k, 4), f"{hi_k * 100:.1f} percent", f"highest click-through of any suggestion other than milk in slot {k} after the change, cell by cell", "half2 S66, notebook 10")
+    c_cc = strip["cell_ctr"].loc[(1, "chips", "cold drink")]
+    c_eb = strip["cell_ctr"].loc[(1, "eggs", "bread")]
+    f(S, "chips_cold_slot1_ctr", round(c_cc, 4), f"{c_cc * 100:.1f} percent", "cold drink suggested beside chips in slot 1 after the change, lift 3.39", "half2 S66, notebook 10")
+    f(S, "eggs_bread_slot1_ctr", round(c_eb, 4), f"{c_eb * 100:.1f} percent", "bread suggested beside eggs in slot 1 after the change", "half2 S66, notebook 10")
+    eb = m[("bread", "eggs")]
+    f(S, "bread_eggs_lift", round(eb["lift"], 4), f"{eb['lift']:.2f}", "bread and eggs: a staple pair at chance", "half2 S66, notebook 10")
+    m_own = strip["margin_per_add_after"]
+    f(S, "strip_margin_per_add", round(m_own, 2), "about Rs 7", "margin_rs of the items the strip added after the change, milk aside, weighted by adds", "half2 S66 notes, interview room")
+    own = views * 1.5 * 30 * add * (0.064 * m_own - 0.012 * m_milk)
+    f(S, "recoverable_month_own_margins", round(own), lakh(own), "60,000 x 1.5 x 30 x 0.5 x (0.064 x Rs 6.95 - 0.012 x Rs 2): each add at what the strip's own adds and milk actually earn", "half2 S66 notes, interview room")
+    f(S, "milk_lift_ceiling", round(1 / sh["toned milk"], 4), f"{1 / sh['toned milk']:.2f}", "one over milk's 0.71: the highest lift any item can reach with milk", "half1 S49, half2 S63 and S71, interview room")
+    ic_l = ic["lift"]
+    f(S, "ic_sauce_lift_low95", round(ic_l * math.exp(-1.96 / math.sqrt(ic["nab"])), 4), f"{ic_l * math.exp(-1.96 / math.sqrt(ic['nab'])):.1f}", "4.60 x e to the minus 1.96 over the square root of 100 shared carts: the low end of luck's 95 percent swing", "interview room")
+    f(S, "ic_sauce_lift_high95", round(ic_l * math.exp(1.96 / math.sqrt(ic["nab"])), 4), f"{ic_l * math.exp(1.96 / math.sqrt(ic['nab'])):.1f}", "the high end of the same swing", "interview room")
+    f(S, "interval_level", 0.95, "95 percent", "the share of luck's swings the quoted range for 4.60 covers, two of the log's standard errors either way", "interview room")
+    f(S, "bread_milk_lift_size", round(case["bm_size"], 4), "below one", "bread and milk with chance counted within each cart size (never printed as a number: it sits on a lab plant)", "interview room, trainer")
     milk_at_own = views * 30 * 3 * 0.5 * (0.064 * add * margin - 0.012 * add * m_milk)
     f(S, "recoverable_month_milk_own", round(milk_at_own), lakh(milk_at_own), "60,000 x 30 x 1.5 x (0.064 x 0.5 x Rs 9 - 0.012 x 0.5 x Rs 2): milk priced at its own margin", "interview room")
     p0 = case["m"][("ice cream", "chocolate sauce")]["conf_ab"]
@@ -1804,6 +1872,10 @@ def write_facts(case, strip, kalpa, toys):
     f(S, "kalpa_twelve_screen_conf", round(tc["conf_ab"], 4), f"{tc['conf_ab']:.2f}", "screen protector to charger on the twelve", "lab note, notebook 04")
     f(S, "kalpa_twelve_screen_lift", round(tc["lift"], 4), f"{tc['lift']:.2f}", "their lift on the twelve", "lab note, notebook 04")
     f(S, "kalpa_twelve_pair_lift", round(te["lift"], 4), f"{te['lift']:.2f}", "earphones and case on the twelve", "lab note, notebook 04")
+    tg = kalpa["twelve_grip"]
+    tg_e = tg["na"] * tg["nb"] / tg["n"]
+    f(S, "kalpa_twelve_grip_expected", round(tg_e, 4), f"{tg_e:.2f}", "pen set with phone grip on the twelve: 12 x 5/12 x 5/12, what chance gives", "lab note, notebook 11")
+    f(S, "kalpa_twelve_grip_lift", round(tg["lift"], 4), f"{tg['lift']:.2f}", "pen set with phone grip on the twelve, the hand count's third number", "lab note, notebook 11")
 
     head = ("# content/W04/D3/internal/C2_W04_D03_facts_INTERNAL.yaml, written by the generator.\n"
             "# Every number a Wednesday learner sees, with how it was computed, the form it is printed\n"
