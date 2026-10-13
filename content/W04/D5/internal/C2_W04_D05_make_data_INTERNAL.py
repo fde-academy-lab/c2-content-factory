@@ -276,8 +276,8 @@ STALL_EXAMS = [date(2024, 11, 27), date(2025, 4, 23), date(2025, 11, 26), date(2
 STALL_DIWALI_WEEKS = [date(2024, 10, 28), date(2025, 10, 20)]   # the Mondays of the weeks holding Diwali
 STALL_ALIGN_DAYS = 14                      # the festival-aligned copy's stretch either side of Diwali's week
 STALL_PINS = {
-    # chapter 1: a Sunday and the Monday after it, and the same two days 52 weeks later
-    date(2024, 10, 6): 60, date(2024, 10, 7): 100, date(2025, 10, 5): 66, date(2025, 10, 6): 110,
+    # chapter 1: two Mondays a week apart, the Sunday between, and the same days 52 weeks later
+    date(2024, 9, 30): 100, date(2024, 10, 6): 60, date(2024, 10, 7): 100, date(2025, 10, 5): 66, date(2025, 10, 6): 110,
     # chapter 2: last Sunday, the last four days, and next Sunday
     date(2025, 1, 12): 61, date(2025, 1, 15): 98, date(2025, 1, 16): 104, date(2025, 1, 17): 101,
     date(2025, 1, 18): 103, date(2025, 1, 19): 60,
@@ -534,6 +534,14 @@ def stall_facts(F, stall, tables, y, ahead, S):
     grown = round(e1 * STALL_GROWTH)
     F.toy("ch2_exam_grown", grown, str(grown), concept(2, "the yearly copy times 1.10"), ["half1 SECTION 2", "notebook 02"])
     F.toy("ch2_growth_factor", STALL_GROWTH, "1.10", concept(2, "the growth chapter 1 read, as a multiplier"), ["half1 SECTION 2", "notebook 02"])
+    exam_days = [date(2025, 11, 12) + timedelta(days=k) for k in range(28)]
+    for name, rule, detail in (("naive", lambda d: c(d - timedelta(days=1)), "yesterday's cups"),
+                               ("copy", lambda d: c(d - timedelta(weeks=52)), "the day 364 back"),
+                               ("grown", lambda d: round(c(d - timedelta(weeks=52)) * STALL_GROWTH), "the day 364 back times 1.10")):
+        m = sum(abs(rule(d) - c(d)) for d in exam_days) / len(exam_days)
+        F.toy(f"ch2_exam_window_mae_{name}", m, f"{m:.1f}",
+              concept(2, f"the average miss of {detail} on the 28 days from 12 Nov 2025, the fortnight before the exams and the exam fortnight"),
+              ["half1 SECTION 2 picture", "notebook 02"])
     d24, d25 = date(2024, 10, 31), date(2025, 10, 20)
     pairs = {"diwali_2025": (d25, d25 - timedelta(weeks=52)), "after_2025": (date(2025, 10, 30), date(2025, 10, 30) - timedelta(weeks=52))}
     for name, (t, src) in pairs.items():
@@ -578,7 +586,7 @@ def stall_facts(F, stall, tables, y, ahead, S):
     unsold = sum(m for m in miss if m > 0)
     F.toy("ch3_origin", origin, str(origin), concept(3, "day 11, Tue 11 Feb 2025, the last day the rule may see"), ["half1 SECTION 3", "notebook 03", "notes"])
     F.toy("ch3_hidden", acts, ", ".join(map(str, acts)), concept(3, "days 12 to 14, what sold"), ["half1 SECTION 3", "notebook 03", "notes"])
-    F.toy("ch3_misses", miss, ", ".join(f"{m:+d}" for m in miss), concept(3, "the naive's 100 minus what sold, each day"), ["half1 SECTION 3", "notebook 03", "notes"])
+    F.toy("ch3_misses", miss, ", ".join(f"{m:+d}" if m else "0" for m in miss), concept(3, "the naive's 100 minus what sold, each day"), ["half1 SECTION 3", "notebook 03", "notes"])
     F.toy("ch3_abs_sum", sum(map(abs, miss)), str(sum(map(abs, miss))), concept(3, "the misses' sizes added: 10 + 5 + 0"), ["half1 SECTION 3", "notebook 03"])
     F.toy("ch3_mae", mae, f"{mae:.1f}", concept(3, "MAE: 15 cups over 3 days"), ["half1 SECTION 3", "notebook 03", "notes", "Kahoot"])
     F.toy("ch3_mape", mape, pct(mape), concept(3, "MAPE: (10/110 + 5/95 + 0/100) / 3"), ["half1 SECTION 3", "notebook 03", "notes"])

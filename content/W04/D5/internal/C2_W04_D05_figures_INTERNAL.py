@@ -422,12 +422,231 @@ def rolling_origin():
     save(fig, "rolling_origin")
 
 
+# ------------------------------------------------------------------------------------- the stall
+# The concept chapters' pictures, drawn from the invented chai stall the generator writes.
+
+stall = pd.read_csv(DAY / "data" / "C2_W04_D05_chai_stall_daily_STUDENT.csv", parse_dates=["date"])
+cups = stall.set_index("date").cups
+INVENTED = "invented numbers"
+
+
+def day_label(d):
+    return f"{d:%a} {d.day} {d:%b}"
+
+
+def stall_first_fortnight():
+    t = stall.iloc[:14]
+    fig, ax = plt.subplots(figsize=(12, 4.4))
+    colours = [ROSE if d.weekday() == 6 else TINT for d in t.date]
+    ax.bar(range(14), t.cups, color=colours, edgecolor=[ROSE if d.weekday() == 6 else VIOLET for d in t.date], lw=1.5)
+    for x, v in enumerate(t.cups):
+        ax.text(x, v + 2, str(v), ha="center", fontsize=13)
+    ax.set_xticks(range(14))
+    ax.set_xticklabels([f"{d:%a}\n{d.day} {d:%b}" for d in t.date], fontsize=12)
+    ax.set_ylim(0, 125)
+    ax.set_ylabel("cups sold")
+    ax.set_title(f"The stall's first fourteen days ({INVENTED}): Sundays dip to about 60, other days about 100")
+    save(fig, "stall_first_fortnight")
+
+
+def stall_two_years():
+    weeks = {}
+    for year, start in ((2024, pd.Timestamp("2024-09-30")), (2025, pd.Timestamp("2025-09-29"))):
+        weeks[year] = [int(cups[start + pd.Timedelta(weeks=w):start + pd.Timedelta(weeks=w, days=6)].sum()) for w in range(52)]
+    fig, ax = plt.subplots(figsize=(12.5, 4.6))
+    xs = range(1, 53)
+    ax.plot(xs, weeks[2024], color=LAVENDER, lw=2.5, marker="o", ms=4, label="2024-25, from Mon 30 Sep 2024")
+    ax.plot(xs, weeks[2025], color=VIOLET, lw=2.5, marker="o", ms=4, label="2025-26, from Mon 29 Sep 2025")
+    ax.annotate("exam fortnights: about 1.4 times\nan ordinary fortnight, both years", xy=(10, weeks[2025][9]), xytext=(13, 1010),
+                fontsize=13, color=INK, arrowprops=dict(arrowstyle="->", color=MUTED))
+    ax.annotate("Diwali week: about 0.4,\na week earlier in 2025", xy=(4, weeks[2025][3]), xytext=(6.5, 330),
+                fontsize=13, color=ROSE, arrowprops=dict(arrowstyle="->", color=ROSE))
+    ax.set_xlabel("week of the stall's year (week 1 begins on the Monday nearest 30 September)")
+    ax.set_ylabel("cups in the week")
+    ax.set_ylim(200, 1150)
+    ax.legend(frameon=False, loc="lower right")
+    ax.set_title(f"Two years of the stall's weeks, laid over each other ({INVENTED}): same shape, about 10 percent higher")
+    save(fig, "stall_two_years")
+
+
+def stall_three_rules():
+    t = stall[(stall.date >= "2025-01-12") & (stall.date <= "2025-01-19")]
+    fig, ax = plt.subplots(figsize=(12, 4.4))
+    xs = list(range(len(t)))
+    ax.bar(xs, t.cups, color=[TINT] * 7 + [LINE], edgecolor=VIOLET, lw=1.5)
+    for x, v in zip(xs, t.cups):
+        ax.text(x, v + 2, str(v), ha="center", fontsize=13)
+    last = xs[-1]
+    ax.plot(last - 0.2, 103, "D", ms=11, color=MUTED)
+    ax.plot(last + 0.2, 104.67, "D", ms=11, color=AMBER)
+    ax.plot(last + 0.3, 61, "D", ms=11, color=ROSE)
+    ax.text(last + 0.45, 118, "naive 103,\ndrift 104.7", va="center", fontsize=13, color=INK)
+    ax.text(last + 0.45, 66, "seasonal\nnaive 61", va="center", fontsize=13, color=ROSE)
+    ax.set_xticks(xs)
+    ax.set_xticklabels([f"{d:%a}\n{d.day} {d:%b}" for d in t.date], fontsize=12)
+    ax.set_xlim(-0.6, last + 2.4)
+    ax.set_ylim(0, 132)
+    ax.set_ylabel("cups sold")
+    ax.set_title(f"Next Sunday's forecast from three rules ({INVENTED}): the 60 sold sits beside the seasonal naive's 61")
+    save(fig, "stall_three_rules")
+
+
+def stall_exam_rules():
+    days = pd.date_range("2025-11-12", "2025-12-09")
+    actual = cups.loc[days]
+    rules = [("naive: yesterday's cups", cups.shift(1).loc[days]),
+             ("yearly copy: 364 days back", pd.Series([cups[d - pd.Timedelta(days=364)] for d in days], index=days)),
+             ("yearly copy x 1.10", pd.Series([round(cups[d - pd.Timedelta(days=364)] * 1.10) for d in days], index=days))]
+    fig, axes = plt.subplots(1, 3, figsize=(13.5, 3.9), sharey=True)
+    for ax, (name, f) in zip(axes, rules):
+        mae = (f - actual).abs().mean()
+        ax.plot(range(28), actual.values, color=INK, lw=2, label="sold")
+        ax.plot(range(28), f.values, color=ROSE, lw=2, ls="--", label="forecast")
+        ax.axvspan(14, 27.5, color=TINT)
+        ax.set_title(f"{name}\naverage miss {mae:.1f} cups", fontsize=14)
+        ax.set_xticks([0, 14, 27])
+        ax.set_xticklabels(["12 Nov", "26 Nov", "9 Dec"], fontsize=12)
+    axes[0].set_ylabel("cups a day")
+    axes[0].legend(frameon=False, loc="upper left", fontsize=12)
+    axes[0].text(14.5, 40, "exams", fontsize=13, color=VIOLET)
+    fig.suptitle(f"The November 2025 exam fortnight under three rules ({INVENTED}): the copy needs the growth", y=1.06, fontsize=16)
+    save(fig, "stall_exam_rules")
+
+
+def stall_diwali_moved():
+    days = pd.date_range("2025-10-13", "2025-11-02")
+    actual = cups.loc[days]
+    cal = pd.Series([cups[d - pd.Timedelta(weeks=52)] for d in days], index=days)
+    ali = pd.Series([cups[pd.Timestamp(gen.stall_aligned_source(d.date()))] for d in days], index=days)
+    fig, axes = plt.subplots(1, 2, figsize=(13, 4.2), sharey=True)
+    for ax, (name, f) in zip(axes, (("the calendar copy, 52 weeks back", cal), ("festival-aligned, 51 weeks back here", ali))):
+        worst = (f - actual).abs().max()
+        ax.plot(range(21), actual.values, color=INK, lw=2, marker="o", ms=4, label="sold")
+        ax.plot(range(21), f.values, color=ROSE, lw=2, ls="--", marker="o", ms=4, label="the copy")
+        ax.axvspan(7, 13.5, color=TINT)
+        ax.text(7.2, 128, "Diwali week 2025", fontsize=13, color=VIOLET)
+        ax.set_title(f"{name}: worst miss {worst:.0f} cups", fontsize=14)
+        ax.set_xticks([0, 7, 14, 20])
+        ax.set_xticklabels(["13 Oct", "20 Oct", "27 Oct", "2 Nov"], fontsize=12)
+    axes[0].set_ylabel("cups a day")
+    axes[0].set_ylim(0, 140)
+    axes[0].legend(frameon=False, loc="lower left", fontsize=12)
+    fig.suptitle(f"Diwali came eleven days earlier in 2025 ({INVENTED}): the calendar copy lands its dip a week late", y=1.04, fontsize=16)
+    save(fig, "stall_diwali_moved")
+
+
+def stall_hidden_days():
+    t = pd.read_csv(DAY / "data" / "C2_W04_D05_chai_stall_hidden_days_STUDENT.csv", parse_dates=["date"])
+    fig, ax = plt.subplots(figsize=(12, 4.4))
+    ax.bar(t.day, t.cups, color=[LINE if h else TINT for h in t.hidden], edgecolor=VIOLET, lw=1.5)
+    for x, v, h in zip(t.day, t.cups, t.hidden):
+        ax.text(x, v - 11 if h else v + 2, str(v), ha="center", fontsize=13)
+    ax.axvspan(11.5, 14.5, color=LAVENDER, alpha=0.25)
+    ax.plot([11.6, 14.4], [100, 100], color=ROSE, lw=2.5, ls="--")
+    ax.text(11.6, 132, "hidden: days 12 to 14,\nthe naive says 100 each", fontsize=13, color=ROSE)
+    ax.annotate("origin: day 11", xy=(11, 101), xytext=(7.0, 134), fontsize=13, color=INK, arrowprops=dict(arrowstyle="->", color=MUTED))
+    ax.set_xticks(t.day)
+    ax.set_xticklabels([f"{d}\n{w}" for d, w in zip(t.day, t.weekday)], fontsize=12)
+    ax.set_ylim(0, 150)
+    ax.set_ylabel("cups sold")
+    ax.set_title(f"Fourteen days, the last three hidden ({INVENTED}): every forecast is made from day 11")
+    save(fig, "stall_hidden_days")
+
+
+def stall_mape():
+    fig, (a, b) = plt.subplots(1, 2, figsize=(12, 4.2))
+    names = ["ordinary day:\n100 said, 85 sold", "rain day:\n20 said, 5 sold"]
+    for ax, vals, label, fmt in ((a, [15, 15], "miss in cups", "{:.0f} cups"), (b, [15 / 85 * 100, 300], "miss in percent of what sold", "{:.1f} percent")):
+        ax.bar([0, 1], vals, color=[TINT, ROSE], edgecolor=VIOLET, lw=1.5, width=0.55)
+        for x, v in enumerate(vals):
+            ax.text(x, v * 1.03 + 0.5, fmt.format(v), ha="center", fontsize=14)
+        ax.set_xticks([0, 1])
+        ax.set_xticklabels(names, fontsize=13)
+        ax.set_title(label, fontsize=15)
+        ax.set_ylim(0, max(vals) * 1.25)
+    fig.suptitle(f"The same miss of 15 cups, two ways ({INVENTED}): MAE treats the days alike, MAPE does not", y=1.04, fontsize=16)
+    save(fig, "stall_mape")
+
+
+def stall_lean():
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4.0), sharey=True)
+    for ax, (name, misses, cost) in zip(axes, (("rule P: always over", [10, 10], 120), ("rule Q: over, then short", [10, -10], 180))):
+        ax.axhline(0, color=MUTED, lw=1.2)
+        for x, m in enumerate(misses, 1):
+            ax.vlines(x, 0, m, color=LAVENDER if m > 0 else ROSE, lw=10)
+            ax.text(x, m + (1.5 if m > 0 else -3.5), f"{m:+d}", ha="center", fontsize=14)
+        ax.set_xticks([1, 2])
+        ax.set_xticklabels(["day 1", "day 2"], fontsize=13)
+        ax.set_xlim(0.4, 2.6)
+        ax.set_title(f"{name}\nMAE 10 cups, costs Rs {cost}", fontsize=14)
+    axes[0].set_ylim(-16, 16)
+    axes[0].set_ylabel("forecast minus sold, cups")
+    fig.suptitle(f"Same MAE, different rupees ({INVENTED}): a cup short costs Rs 12, a cup unsold Rs 6", y=1.06, fontsize=16)
+    save(fig, "stall_lean")
+
+
+def stall_fit_forecast():
+    import numpy as np
+    xs, vals = [1, 2, 3, 4], [100, 104, 98, 110]
+    line = np.polyfit(xs, vals, 1)
+    curve = np.polyfit(xs, vals, 3)
+    grid = np.linspace(0.8, 5.05, 200)
+    fig, ax = plt.subplots(figsize=(12, 4.6))
+    ax.plot(grid, np.polyval(curve, grid), color=ROSE, lw=2.5, label="the curve through all four days")
+    ax.plot(grid, np.polyval(line, grid), color=VIOLET, lw=2.5, ls="--", label="the straight line")
+    ax.plot(xs, vals, "o", ms=11, color=INK, label="the four days the rules saw")
+    ax.plot([5], [102], "s", ms=12, color=GREEN, label="day 5, what sold: 102")
+    ax.text(5.1, 168, "curve: 168", fontsize=13, color=ROSE, va="center")
+    ax.text(5.1, 109, "line: 109", fontsize=13, color=VIOLET, va="center")
+    ax.text(5.1, 98, "sold: 102", fontsize=13, color=GREEN, va="center")
+    ax.axvspan(4.5, 5.6, color=TINT)
+    ax.set_xticks([1, 2, 3, 4, 5])
+    ax.set_xticklabels(["day 1", "day 2", "day 3", "day 4", "day 5,\nhidden"], fontsize=13)
+    ax.set_xlim(0.7, 5.9)
+    ax.set_ylim(80, 180)
+    ax.set_ylabel("cups sold")
+    ax.legend(frameon=False, loc="upper left", fontsize=12)
+    ax.set_title(f"A perfect fit on four days, a miss of 66 cups on the fifth ({INVENTED})")
+    save(fig, "stall_fit_forecast")
+
+
+def stall_cans():
+    t = pd.read_csv(DAY / "data" / "C2_W04_D05_chai_stall_nephew_STUDENT.csv", parse_dates=["date"])
+    seen, hid = t.cups.iloc[:7].tolist(), t.cups.iloc[7:].tolist()
+    mean7 = sum(seen) / 7
+    rows = [("seasonal naive", [math.ceil(v / 40) for v in seen]),
+            ("perfect forecast", [math.ceil(v / 40) for v in hid]),
+            ("nephew's 7-day mean", [math.ceil(mean7 / 40)] * 7)]
+    fig, ax = plt.subplots(figsize=(12, 3.6))
+    for r, (name, cans_) in enumerate(rows):
+        for k, n_ in enumerate(cans_):
+            wrong = n_ != rows[1][1][k]
+            ax.add_patch(plt.Rectangle((k - 0.42, 2 - r - 0.38), 0.84, 0.76, color=ROSE if wrong else TINT, ec=VIOLET))
+            ax.text(k, 2 - r, str(n_), ha="center", va="center", fontsize=16, color=WHITE_TEXT if wrong else INK)
+    ax.set_yticks([2, 1, 0])
+    ax.set_yticklabels([n_ for n_, _ in rows], fontsize=13)
+    ax.set_xticks(range(7))
+    ax.set_xticklabels([f"{d:%a}\n{d.day} {d:%b}" for d in t.date.iloc[7:]], fontsize=12)
+    ax.set_xlim(-0.6, 6.6)
+    ax.set_ylim(-0.6, 2.6)
+    for side in ("left", "right", "top", "bottom"):
+        ax.spines[side].set_visible(False)
+    ax.tick_params(length=0)
+    ax.set_title(f"Cans of milk ordered for the seven hidden days, 40 cups a can ({INVENTED})")
+    save(fig, "stall_cans")
+
+
+WHITE_TEXT = "#FFFFFF"
+
+
 def main():
-    for old in OUT.glob("C2_W04_D05_*"):
+    for old in list(OUT.glob("C2_W04_D05_*.png")) + list(OUT.glob("C2_W04_D05_*.gif")):
         old.unlink()
     four_patterns(); twelve_rows(); festival_plot(); actual_series(); baselines_panel(); scoreboard()
     fit_vs_forecast(); holdout_reveal(); festival_calendar(); festival_calendar(copy=False); backtest(); cushion_strip(); window_2026(); cost_curve()
     four_vs_thirteen(); rolling_origin()
+    stall_first_fortnight(); stall_two_years(); stall_three_rules(); stall_exam_rules(); stall_diwali_moved()
+    stall_hidden_days(); stall_mape(); stall_lean(); stall_fit_forecast(); stall_cans()
     print("\n".join(sorted(p.name for p in OUT.iterdir())))
 
 

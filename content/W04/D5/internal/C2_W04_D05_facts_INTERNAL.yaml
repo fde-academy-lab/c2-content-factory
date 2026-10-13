@@ -3782,7 +3782,7 @@ toy:
   - notes
 - id: toy_ch1_cups_2024
   value:
-  - 92
+  - 100
   - 98
   - 99
   - 99
@@ -3796,7 +3796,7 @@ toy:
   - 97
   - 101
   - 61
-  shown: 92, 98, 99, 99, 99, 101, 60, 100, 101, 100, 99, 97, 101, 61
+  shown: 100, 98, 99, 99, 99, 101, 60, 100, 101, 100, 99, 97, 101, 61
   how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the stall''s
     first fourteen days, 30 Sep to 13 Oct 2024'
   used_by:
@@ -3888,17 +3888,17 @@ toy:
   - notebook 01
   - notes
 - id: toy_ch1_fortnight_growth
-  value: 0.109411
-  shown: 10.9 percent
+  value: 0.102662
+  shown: 10.3 percent
   how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the fourteen
     days of 2025 over the same days of 2024, minus one'
   used_by:
   - notebook 01
 - id: toy_ch1_fortnight_totals
   value:
-  - 1307
+  - 1315
   - 1450
-  shown: 1,307 and 1,450
+  shown: 1,315 and 1,450
   how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the two fortnights''
     totals'
   used_by:
@@ -3924,15 +3924,15 @@ toy:
   - notebook 01
   - half1 SECTION 1
 - id: toy_ch1_left_mean
-  value: 0.119886
+  value: 0.094886
   shown: '0.1'
   how: 'invented for the concept chapter on Trend and seasonality, read before modelling: what is left
     after the growth and the beats are copied out, its mean, Diwali''s fortnight aside'
   used_by:
   - notebook 01
 - id: toy_ch1_left_spread
-  value: 4.762592
-  shown: '4.8'
+  value: 4.72935
+  shown: '4.7'
   how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the same, its
     standard deviation in cups'
   used_by:
@@ -4112,6 +4112,32 @@ toy:
     1 read, as a multiplier'
   used_by:
   - half1 SECTION 2
+  - notebook 02
+- id: toy_ch2_exam_window_mae_naive
+  value: 20.571429
+  shown: '20.6'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the average miss
+    of yesterday''s cups on the 28 days from 12 Nov 2025, the fortnight before the exams and the exam
+    fortnight'
+  used_by:
+  - half1 SECTION 2 picture
+  - notebook 02
+- id: toy_ch2_exam_window_mae_copy
+  value: 10.464286
+  shown: '10.5'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the average miss
+    of the day 364 back on the 28 days from 12 Nov 2025, the fortnight before the exams and the exam fortnight'
+  used_by:
+  - half1 SECTION 2 picture
+  - notebook 02
+- id: toy_ch2_exam_window_mae_grown
+  value: 3.0
+  shown: '3.0'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the average miss
+    of the day 364 back times 1.10 on the 28 days from 12 Nov 2025, the fortnight before the exams and
+    the exam fortnight'
+  used_by:
+  - half1 SECTION 2 picture
   - notebook 02
 - id: toy_ch2_diwali_2025
   value: 44
@@ -4296,7 +4322,7 @@ toy:
   - -10
   - 5
   - 0
-  shown: -10, +5, +0
+  shown: -10, +5, 0
   how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: the naive''s
     100 minus what sold, each day'
   used_by:
