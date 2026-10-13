@@ -224,10 +224,14 @@ def main():
     per_driver = 2.4 * (1 - 0.30)
     assert round(trips_hour) == 8333 and round(per_driver, 2) == 1.68
     assert round(trips_hour / per_driver, -1) == 4960 and round(trips_hour / per_driver * 1.15, -2) == 5700
-    assert d2["drivers_at_peak_central"] == 5704 and d2["wrong_unit_drivers"] == 41700.0
-    assert round(1e5 / 2.4, -2) == 41700
+    assert d2["drivers_at_peak_central"] == 5704
+    # The spoiling step checks trips against requests: 8,333 trips an hour over 2.13 requests per
+    # online driver-hour is about 3,900, and requests ran above trips before the launch.
+    assert round(trips_hour / num(1, "requests_per_hour_before"), -2) == 3900
+    assert num(1, "requests_before") > num(1, "trips_before")
+    assert "2.13" in options(it)["c"] and "3,900" in options(it)["c"]
     assert close(d2["driver_hours_per_trip_before"], 0.53) and close(d2["driver_hours_per_request_chain"], 0.60)
-    show(it, "8,333 an hour over 1.68 is 4,960, times 1.15 is 5,700; 41,700 is a day over an hour")
+    show(it, "8,333 an hour over 1.68 is 4,960, times 1.15 is 5,700; 3,900 checks trips against requests")
 
     it = BY_ID["four-checks"]
     assert it["key"] == "a, c"
@@ -432,7 +436,7 @@ def main():
     assert close(pub["m5_beat_snaive_pct"], 0.358, 0.0001) and pub["m5_products"] == 3049
     assert 1 - pub["m5_beat_snaive_pct"] > 0.5 and round(1972 / 5507, 3) == 0.358
     assert "1,972 of the 5,507 teams, 35.8 percent" in it["exhibit"]["caption"].replace("\n", " ")
-    keyed(it, "A fit is no forecast", "most teams")
+    keyed(it, "A fit is no forecast", "against it on hidden weeks")
     show(it, "M5 scores from Friday's facts; 35.8 percent beat the seasonal naive, so most did not")
 
     it = BY_ID["asym"]

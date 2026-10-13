@@ -2,7 +2,7 @@
 
 TRAINER. Rendered from the tracker's item bank and the week's source file by `scripts/build_saturday_paper.py`. Change an item in the tracker, an option in `data/programme/paper_edits.yaml` or anything in `content/W04/SAT/internal/C2_W04_SAT_paper_source_INTERNAL.yaml`, and rebuild; never edit this file by hand. A stem, a situation or an option can be reworded in `data/programme/paper_edits.yaml`.
 
-Saturday 31 October 2026. A 120-minute paper holding 39 items at 118 minutes by the blueprint's pace: 2 easy, 14 medium and 23 hard. 29 of them are new and not yet in the tracker.
+Saturday 31 October 2026. A 120-minute paper holding 39 items at 118 minutes by the blueprint's pace: 8 easy, 8 medium and 23 hard. 29 of them are new and not yet in the tracker.
 
 ## Marking
 
@@ -17,17 +17,17 @@ Saturday 31 October 2026. A 120-minute paper holding 39 items at 118 minutes by 
 
 | Part | What it shows | Items | Minutes | Easy | Medium | Hard |
 |---|---|---|---|---|---|---|
-| 1. Which number should the plan chase, and which should a scheme pay for? | whether you can write a metric a team cannot hit while the outcome gets worse, and read what a gamed one did | Q1 to Q7 (7) | 19 | 1 | 3 | 3 |
-| 2. Can the number survive the room, and can you size a city from nothing? | whether you can put one claim on one slide, defend it without retreating, and size a number from nothing with a check in the right unit | Q8 to Q14 (7) | 23 | 0 | 2 | 5 |
+| 1. Which number should the plan chase, and which should a scheme pay for? | whether you can write a metric a team cannot hit while the outcome gets worse, and read what a gamed one did | Q1 to Q7 (7) | 19 | 2 | 2 | 3 |
+| 2. Can the number survive the room, and can you size a city from nothing? | whether you can put one claim on one slide, defend it without retreating, and size a number from nothing with a check in the right unit | Q8 to Q14 (7) | 23 | 1 | 0 | 6 |
 | 3. Which pairs beat chance, and what is a slot worth? | whether you can tell a pair that beats chance from one that rides a popular item, and put a slot's value in margin | Q15 to Q21 (7) | 21.5 | 0 | 3 | 4 |
 | 4. Where is the tier losing people? | whether you can separate a cohort problem from an everyone problem and find the step that changed, in the right unit | Q22 to Q28 (7) | 22.5 | 0 | 2 | 5 |
 | 5. Which forecast earns the plan's trust? | whether you can choose a forecast on weeks it never saw, place the festival in the right month and price a miss in each direction | Q29 to Q33 (5) | 20 | 1 | 0 | 4 |
-| 6. What changes when the method moves company? | whether you can carry the week's methods to another company and name what changed, the metric, the constraint and the cost of an error | Q34 to Q39 (6) | 12 | 0 | 4 | 2 |
-| Total | | 39 | 118 | 2 | 14 | 23 |
+| 6. What changes when the method moves company? | whether you can carry the week's methods to another company and name what changed, the metric, the constraint and the cost of an error | Q34 to Q39 (6) | 12 | 4 | 1 | 1 |
+| Total | | 39 | 118 | 8 | 8 | 23 |
 
 ## What guessing alone would score
 
-A learner who guessed every item blind would average 6.5 of 39, since a written answer cannot be guessed from a list, and fewer than one guesser in twenty would reach 11. A score of 10 or below is therefore within reach of guessing alone, and the tally reads such a paper as a conversation to have on Monday, never as a result.
+A learner who guessed every item blind would average 6.4 of 39, since a written answer cannot be guessed from a list, and fewer than one guesser in twenty would reach 11. A score of 10 or below is therefore within reach of guessing alone, and the tally reads such a paper as a conversation to have on Monday, never as a result.
 
 ## Reading the items after marking
 
@@ -39,15 +39,15 @@ The workbook flags an item to check when fewer than one learner in five got it r
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1 | e (guardrails) | Fill in the blank | 1 | Easy | [S] | BA | Mon | 1.5 | bank 1 | North-star against guardrail, with one example pair. |
 | 2 | b (window) | Fill in the blank | 1 | Medium | [F] | BA | Mon | 1.5 | bank 2 | What makes a metric gameable, and how do you write one that is not? |
-| 3 | c | True or false | 1 | Medium | [F] | BA | Mon | 2.5 | new | North-star against guardrail, with one example pair. |
+| 3 | c | True or false | 1 | Easy | [F] | BA | Mon | 2.5 | new | North-star against guardrail, with one example pair. |
 | 4 | a | One correct option | 1 | Hard | [S] | BA, DS | Mon | 4 | new | How would you measure the success of a new feature? Walk your metric design. |
 | 5 | d | True or false | 1 | Medium | [F] | BA, FDE | Mon | 2.5 | new | What makes a metric gameable, and how do you write one that is not? |
 | 6 | b | One correct option | 1 | Hard | [F] | BA, FDE | Mon | 3.5 | new | What makes a metric gameable, and how do you write one that is not? |
 | 7 | c, d, e | More than one correct | 1 | Hard | [F] | BA | Mon | 3.5 | new | North-star against guardrail, with one example pair. |
 | 8 | c, d, b, a | Order the steps | 2 | Hard | [S] | BA | Tue | 3.5 | new | Present a recommendation to a non-technical stakeholder in two minutes. |
-| 9 | a, c | More than one correct | 2 | Medium | [F] | BA | Tue | 2.5 | new | What do you leave off the slide, and where does it go? |
+| 9 | a, c | More than one correct | 2 | Hard | [F] | BA | Tue | 2.5 | new | What do you leave off the slide, and where does it go? |
 | 10 | c | True or false | 2 | Hard | [F] | BA, FDE | Tue | 3.5 | new | A stakeholder's objection is partly right; how do you answer it? |
-| 11 | d | True or false | 2 | Medium | [F] | BA | Tue | 2.5 | new | Present a recommendation to a non-technical stakeholder in two minutes. |
+| 11 | d | True or false | 2 | Easy | [F] | BA | Tue | 2.5 | new | Present a recommendation to a non-technical stakeholder in two minutes. |
 | 12 | b, d, e, a | Order the steps | 2 | Hard | [S] | BA, DS | Tue | 3.5 | new | A guesstimate: how many drivers must be online at the evening peak? |
 | 13 | a, c | More than one correct | 2 | Hard | [S] | BA, DS | Tue | 4 | new | A guesstimate: how many customers could a new store sign up to a loyalty tier in its first year? |
 | 14 | a | One correct option | 2 | Hard | [S] | BA, DS | Tue | 3.5 | new | A guesstimate: how many drivers must be online at the evening peak? |
@@ -70,11 +70,11 @@ The workbook flags an item to check when fewer than one learner in five got it r
 | 31 | a | One correct option | 5 | Hard | [F] | BA, DS | Fri | 4 | new | A vendor promises 22 percent growth; how do you test the claim? |
 | 32 | d | One correct option | 5 | Hard | [S] | BA, DS, FDE | Fri | 5 | new | How do you evaluate a forecast? |
 | 33 | b | One correct option | 5 | Hard | [D] | BA, FDE | Fri | 4 | new | Two forecasts, eighteen points apart; choose one for the board and present its error. |
-| 34 | a, b, d | More than one correct | 6 | Hard | [D] | BA, FDE | Sat | 2.5 | bank 29 | Kalpa Financial Services asks 'which customers should we nudge first'; what stays the same in your method and what changes? |
-| 35 | d (a definition whose window the measured cannot move, with a guardrail) | Match the following | 6 | Medium | [D] | BA, FDE | Sat | 1.5 | new | Kalpa Financial Services asks 'which customers should we nudge first'; say what stays the same in your method and what changes. |
-| 36 | e (each funnel step over the step before, in one unit) | Match the following | 6 | Medium | [D] | BA, FDE | Sat | 1.5 | new | Kalpa Financial Services asks 'which customers should we nudge first'; say what stays the same in your method and what changes. |
-| 37 | b (cohorts by start month, each read at the same age) | Match the following | 6 | Medium | [D] | BA, FDE | Sat | 1.5 | new | Kalpa Financial Services asks 'which customers should we nudge first'; say what stays the same in your method and what changes. |
-| 38 | f (lift above a support floor, valued in margin) | Match the following | 6 | Medium | [D] | BA, FDE | Sat | 1.5 | new | Kalpa Financial Services asks 'which customers should we nudge first'; say what stays the same in your method and what changes. |
+| 34 | a, b, d | More than one correct | 6 | Medium | [D] | BA, FDE | Sat | 2.5 | bank 29 | Kalpa Financial Services asks 'which customers should we nudge first'; what stays the same in your method and what changes? |
+| 35 | d (a definition whose window the measured cannot move, with a guardrail) | Match the following | 6 | Easy | [D] | BA, FDE | Sat | 1.5 | new | Kalpa Financial Services asks 'which customers should we nudge first'; say what stays the same in your method and what changes. |
+| 36 | e (each funnel step over the step before, in one unit) | Match the following | 6 | Easy | [D] | BA, FDE | Sat | 1.5 | new | Kalpa Financial Services asks 'which customers should we nudge first'; say what stays the same in your method and what changes. |
+| 37 | b (cohorts by start month, each read at the same age) | Match the following | 6 | Easy | [D] | BA, FDE | Sat | 1.5 | new | Kalpa Financial Services asks 'which customers should we nudge first'; say what stays the same in your method and what changes. |
+| 38 | f (lift above a support floor, valued in margin) | Match the following | 6 | Easy | [D] | BA, FDE | Sat | 1.5 | new | Kalpa Financial Services asks 'which customers should we nudge first'; say what stays the same in your method and what changes. |
 | 39 | a | One correct option | 6 | Hard | [D] | BA, FDE | Sat | 3.5 | new | Kalpa Financial Services asks 'which customers should we nudge first'; say what stays the same in your method and what changes. |
 
 ## Why each answer holds
@@ -87,13 +87,13 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q2, key b (window)
 
-**Why it holds.** A complete definition names its numerator, its denominator, its window and its exclusions, and the window is the period counted, which decides what a before-and-after comparison holds. Kalpa's growth-plan comparison started on 20 August because the monsoon sale ended on 19 August, so the sale's extra orders sat in neither window. A baseline is what a number is compared with, and a target is what the plan hopes it reaches; neither is part of the definition. The plural words in the bank do not fit the singular blank.
+**Why it holds.** A complete definition names its numerator, its denominator, its window and its exclusions, and the window is the period counted, which decides what a before-and-after comparison holds. Kalpa's growth-plan comparison started on 20 August because the monsoon sale ended on 19 August, so the sale's extra orders sat in neither window. A baseline is what a number is compared with, and a target is what the plan hopes it reaches; neither is part of the definition. Guardrails sit beside a definition as numbers of their own, and each word in the bank is used once, so guardrails belongs to Q1.
 
 **In the interview.** A number is computable once its numerator, denominator, window and exclusions are written down, and it is safe to pay for once its guardrails are.
 
 ### Q3, key c
 
-**Why it holds.** False. A leading indicator moves before the north star, while a team can still act on it; a lagging number confirms later. Rider requests per peak online hour, by zone, say where riders are waiting before the week's completed trips are counted, so the city can send drivers there. It fell from 2.13 to 1.75 because the new online hours went where riders were few, while the north star barely moved, from 35.76 to 35.89 trips per online driver-week.
+**Why it holds.** False. A leading indicator moves before the north star, while a team can still act on it; a lagging number confirms later. Rider requests per peak online hour, by zone, say where riders are waiting before the week's completed trips are counted, so the city can send drivers there. It fell from 2.13 to 1.75 because the new online hours went where riders were few, while the north star barely moved, from 35.76 to 35.89 trips per online driver-week (Monday's case data).
 
 - (a) The north star barely moved, 35.76 to 35.89, so requests per online hour fell without the north star moving first; confirming afterwards is what a lagging number does.
 - (b) A number read after the quarter's result is in is a lagging number by definition, and it arrives too late to change the quarter.
@@ -107,13 +107,13 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 - (b) Hours rose, and trips fell 23 percent with them; A to D held their rate, but E and F made 5 trips in 30 hours after the launch, and the note hides them inside the total.
 - (c) Rider requests rose 1.8 percent city-wide; E and F were shown fewer offers because they sat in outer zones where riders are few, which is the gaming, never a fall in demand.
-- (d) 1.31 is the average of each driver's own rate, which gives a 10-hour week and a 16-hour week the same weight; the city's rate is all trips over all hours, and both fell.
+- (d) 1.31 is the average of each driver's own rate, which gives a 10-hour week and a 16-hour week the same weight; the city's rate is all trips over all hours, and both fell. A higher floor per online hour pays more for the same idle hours, the thing the rows show going wrong.
 
 **In the interview.** Before I call online hours supply, I ask whether a driver could raise them without a rider being served, and I read trips per online hour and the wait by zone beside them.
 
 ### Q5, key d
 
-**Why it holds.** True. Staff measured on the cross-sell count changed what they did to move it, in ways the bank never meant: accounts customers had not asked for, money moved in so a new account counted as funded, and contact details changed so surveys missed the customers (SEC order, Release 34-88257, checked 13 October 2026). The same thing happened on a smaller scale in Hyderabad, where 180 drivers took their peak online hours to 2.1 times while their trips fell 12 percent. The 2016 penalties, the CFPB's USD 100 million with the OCC's USD 35 million and Los Angeles's USD 50 million, came to USD 185 million (the CFPB's release of 8 September 2016, checked 13 October 2026), and the 2020 settlement with the SEC and the Justice Department to USD 3 billion.
+**Why it holds.** True. Staff measured on the cross-sell count changed what they did to move it, in ways the bank never meant: accounts customers had not asked for, money moved in so a new account counted as funded, and contact details changed so surveys missed the customers (SEC order, Release 34-88257, checked 13 October 2026). The same thing happened on a smaller scale in Hyderabad, where 180 drivers took their peak online hours to 2.1 times while their trips fell 12 percent. The 2016 penalties, the CFPB's USD 100 million with the OCC's USD 35 million and Los Angeles's USD 50 million, came to USD 185 million between them by our sum (the CFPB's release of 8 September 2016, checked 13 October 2026), and the 2020 settlement with the SEC and the Justice Department to USD 3 billion.
 
 - (a) The order describes the staff's behaviour moving with the target the bank paid on; a gap in the rules is what any target finds, which is the statement's point.
 - (b) Staff sales credit rode on the same count, and the count moved with the accounts staff opened; the 2013 addition was a second, separate way it rose.
@@ -126,7 +126,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 **Why it holds.** 0.04 of the 0.11 rise is about 36 percent, and it came from counting a new kind of account, so that much of the year's rise reflected no change in what households held. The line that shows it is the dated change log: every change to what is counted carries a date and a note, and the year of the change prints the ratio on both definitions so a reader can see the step. The SEC's order (Release 34-88257, checked 13 October 2026) says investors were not told of the 2013 addition, which is the breach, and that the rest of the 0.11 came from accounts and products inactive for at least 365 days, so none of the year's rise was households using more.
 
 - (a) Satisfaction surveys measure the customers' view, and the order says staff changed contact details so the surveys missed them; a guardrail the measured can redirect guards nothing, and neither would catch a definition change.
-- (c) 0.04 is a change in the ratio, and its share of the 0.11 rise is 36 percent; the window decides the period counted and cannot show a new kind of account joining the count.
+- (c) The share is right; the window decides the period counted, and a shorter one counts the new accounts sooner without ever saying they are a new kind of account.
 - (d) The accounts may be real products, and the ratio still rose by counting a new kind of account that the year before did not count, which says nothing about households holding more.
 
 **In the interview.** Every change to what a metric counts goes in a dated change log, with the old definition run beside the new for the year it changes, so a step is never read as growth.
@@ -142,7 +142,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q8, key c, d, b, a
 
-**Why it holds.** A one-slide answer runs claim, evidence, caveat, action: the title states the claim a reader could act on from the title alone, one number with its denominator carries it, the caveat sits in plain sight, and the action names its cost and who signs. The topic title (e) gives the reader nothing to act on, and "peak online hours up 24 percent" (f) is Monday's trap resold, the number that looked like success while trips per online hour fell from 1.90 to 1.58.
+**Why it holds.** A one-slide answer runs claim, evidence, caveat, action: the title states the claim a reader could act on from the title alone, one number with its denominator carries it, the caveat sits in plain sight, and the action names its cost and who signs. The topic title (e) gives the reader nothing to act on, and "peak online hours up 24 percent" (f) is Monday's trap resold, the number that looked like success while trips per online hour fell from 1.90 to 1.58. The second claim title (g) rests on the flattering denominator: bookings per active driver-week rose 0.8 percent, Rs 5,817 to Rs 5,861, only because each driver-week carried about four more online hours while each hour earned Rs 260 against Rs 314. The order is Tuesday's template, the Week 1 four-part note on one slide; the action closes the slide because its six-week test answers the caveat above it.
 
 **In the interview.** Claim in the title, one number with its denominator, the caveat on the page, then the action with its cost and who signs it.
 
@@ -162,32 +162,33 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 - (a) Conceding nothing is the weak defence: the room hears the true part go unanswered, and the claim loses the people who already believe it.
 - (b) The fare held, which says each trip earned the same; it cannot say whether the season cut the trips an hour carries, which is finance's point.
-- (d) Conceding everything drops a claim the evidence supports, and the scheme keeps paying for another six weeks while the room waits for a year of data.
+- (d) The concession is right and the evidence is wrong: a steady fare says each trip earned the same, and it cannot say whether the season cut the trips an hour carries, which is the finance partner's point; the requests and the trips per hour answer it.
 
 **In the interview.** I restate the objection, answer it from the evidence, concede the true part in the open, and say which fact would change my mind.
 
 ### Q11, key d
 
-**Why it holds.** False. The ask is one slide, five minutes, at Thursday's review, and the letter itself says a great memo probably takes a week or more (Amazon's 2017 letter to shareholders, filed 18 April 2018, checked 13 October 2026). The memo's lesson carries to the slide: every element must earn its place the way a sentence does in a memo. The afternoon's written case was the memo form of the same answer, for a reader with the time to read it.
+**Why it holds.** False. The ask is one slide, five minutes, at Thursday's review, and the letter's own key point is that a great memo probably should take a week or more (Amazon's 2017 letter to shareholders, filed 18 April 2018, checked 13 October 2026). A memo serves a reader with an hour and a writer with a week; the city head asked for five minutes. The afternoon's written case was the memo form of the same answer, for a reader with the time to read it.
 
 - (a) Full sentences are the memo's strength, and the format still has to fit the reader's slot; a five-minute review is no place for six pages.
 - (b) The appendix pages exist for questions a role will ask; folding them into a memo makes every reader read every role's answer before the claim.
 - (c) The letter says the memo is read in silence at the start of the meeting, so this reason gets the source wrong.
 
-**In the interview.** I choose the form the decision-maker asked for and make every element earn its place; the memo is for the reader who has an hour and a week to write for.
+**In the interview.** I choose the form the decision-maker asked for: a slide for five minutes, and a memo for the reader who has an hour, written by someone who has a week.
 
 ### Q12, key b, d, e, a
 
-**Why it holds.** Clarify (b), map (d), calculate (e), validate (a): the dojo's four steps. The chain's numbers are assumptions said aloud: about 1 crore people, 1 weekday Uber trip for every 100 people, a quarter of the day's trips in the three evening hours, 2.4 trips an hour for a busy driver and about 30 percent of online drivers idle at a moment, so 1.68 trips per online driver-hour, and a buffer of 1.15. The check compares like with like, online driver-hours per completed trip, 0.60 in the chain against the case's 0.53, so the chain runs about an eighth high and the checked answer is about 5,000 to 5,700. Step c divides a day's trips by an hour's rate, a day treated as an hour, which is why it spoils the estimate.
+**Why it holds.** Clarify (b), map (d), calculate (e), validate (a): the dojo's four steps. The chain's numbers are assumptions said aloud: about 1 crore people, 1 weekday Uber trip for every 100 people, a quarter of the day's trips in the three evening hours, 2.4 trips an hour for a busy driver and about 30 percent of online drivers idle at a moment, so 1.68 trips per online driver-hour, and a buffer of 1.15. The check compares like with like, online driver-hours per completed trip, 0.60 in the chain against the case's 0.53, so the chain runs about an eighth high and the checked answer is about 5,000 to 5,700. Step c checks in the wrong unit: 8,333 trips an hour over 2.13 rider requests per online hour, about 3,900, divides trips served by riders asking, and requests ran above trips (251,910 against 224,200 before the launch), so it moves the answer the wrong way.
 
 **In the interview.** Clarify the moment and the window, say the formula, calculate aloud with a unit on every factor, then check against a figure in the same unit and move the answer if the check says so.
 
 ### Q13, key a, c
 
-**Why it holds.** Two hold. NPCI's 24.07 billion for September 2026, over that month's 30 days, is the 802 million a day Outlook Money reported (2 October 2026, checked 13 October 2026), and a per-day estimate is compared per day. DMart's revenue spread over the stores open across the year, the average of 415 and 500, gives about Rs 146 crore a store (Avenue Supermarts, 2 May 2026, checked 13 October 2026); a first-year store sells less than that, which is why DMart reports two-year-old stores separately. Flipkart's own text says 6.3 million concurrent users in a minute; the 63 is in its web address. Households are people divided by about four, 20 lakh over 4 is 5 lakh, so eight million households is people multiplied.
+**Why it holds.** Two hold. NPCI's 24.07 billion for September 2026, over that month's 30 days, is the 802 million a day Outlook Money reported (2 October 2026, checked 13 October 2026), and a per-day estimate is compared per day. DMart's revenue spread over the stores open across the year, the average of 415 and 500, gives about Rs 146 crore a store (Avenue Supermarts, 2 May 2026, checked 13 October 2026). It is a rough check: 58 of the 85 new stores opened in the last quarter, so with openings spread evenly the year held about 439 store-years, about Rs 152 crore each, and a first-year estimate sits below either figure. Flipkart's own text says 6.3 million concurrent users in a minute; the 63 is in its web address. Households are people divided by about four, 20 lakh over 4 is 5 lakh, so eight million households is people multiplied.
 
 - (b) The page's text says 6.3 million (Flipkart Stories, 9 October 2026, checked 13 October 2026); the web address reads 63, so the check is ten times high, and "concurrent in a minute" mixes a moment with a minute.
 - (d) Households can never outnumber people; at four to a household, two million people make about 5 lakh households.
+- (e) The unit matches and the period does not: 802 million is September's average day, and a festival day's payments are a different period, so the check would pull a sound Diwali-day estimate down toward an ordinary day.
 
 **In the interview.** Before I validate against a published number I read the source's own words, its unit and its period, and I check that my estimate is counted the same way.
 
@@ -235,7 +236,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q19, key c
 
-**Why it holds.** A lift of 0.97 means case buyers take a charger slightly less often than shoppers in general, so a bundle would pay a discount on chargers the case buyers were buying anyway and sell no extra one. The confidence of 0.825 looks strong only because the charger is in 85 percent of all baskets. The lab's three lines for merchandising were the same call on Kalpa's real counts: refuse the charger bundle, promote the wireless earphones with their case (lift 3.1 at a support of 6 percent, 49 baskets, three-quarters of them Retail-Plus) and watch the car pair.
+**Why it holds.** A lift of 0.97 means case buyers take a charger slightly less often than shoppers in general, so a bundle would pay a discount on chargers the case buyers were buying anyway and sell no extra one. The confidence of 0.825 looks strong only because the charger is in 85 percent of all baskets. The lab's three lines for merchandising were the same call on the lab's own counts: refuse the charger bundle, promote the wireless earphones with their case (lift 3.1 at a support of 6 percent, 49 baskets, three-quarters of them Retail-Plus) and watch the car pair.
 
 - (a) More than 80 percent of case buyers take a charger because more than 80 percent of everyone does; confidence is the measure a popular partner fools.
 - (b) 1,000 baskets support a lift well enough when the pair sits in 165 of them; a small sample is the problem of a pair in two or three baskets.
@@ -281,7 +282,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 - (b) C retains better only because it is in its first month; read at the same age, every cohort here falls.
 - (c) A flat 41 percent hides two falling cohorts, so a plan that changes nothing keeps losing the members already in.
-- (d) The blend is consistent: it is the sizes times the rates, and 1,640 over 4,000 and 2,460 over 6,000 are both 41 percent.
+- (d) Cohort C's 47.5 percent is its first month and cohort A's 50 percent in May is A at an older age, so the comparison sets two ages side by side; read at the same age, A and B fell and C propped the blend.
 
 **In the interview.** A flat blend over falling cohorts is a mix effect, so I say the cohorts fell, name the cohort that propped up the blend, and show each at the same age.
 
@@ -291,16 +292,16 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 - (a) 34 percent is per session, and a member browses menus across several sessions; per member the step converts 61 percent, and a low step is a loss only when it fell.
 - (b) Dividing every step by the opening count hides which step lost whom: each step's base is the step before, so the reader sees where people stop.
-- (c) The carousel opens menus with no search, so more menu views than searches is the flow itself; the order records match the event log, 27,212 member orders in September.
+- (c) The carousel opens menus with no search, so more menu views than searches is the flow itself; the order records match the event log, 27,212 member orders in September (Thursday's case data).
 
 **In the interview.** Before I blame a stage I name its unit, divide each step by the step before, and check for steps people can skip, so an artefact is never read as a loss.
 
 ### Q26, key b
 
-**Why it holds.** The fall sits in one step for one group: completing a started checkout, for Android members, from the release date, while iOS members and non-members on the same new checkout held, so the break is in what only members see, such as the free-delivery line or the membership check at payment. The size: 14 points of 22,841 carts is about 3,198 orders over 17 days, and 7 days of 17 is about 1,317 a week, Rs 4.0 lakh at Rs 300 and Rs 6.6 lakh at Rs 500. Fixing it ends a weekly loss, which is why it goes before the sale cohort's question.
+**Why it holds.** The fall sits in one step for one group: completing a started checkout, for Android members, from the release date, while iOS members and non-members on the same new checkout held, so the break is in what only members see, such as the free-delivery line or the membership check at payment. The size: 14 points of 22,841 carts is about 3,198 orders over 17 days, and 7 days of 17 is about 1,317 a week, Rs 4.0 lakh at Rs 300 and Rs 6.6 lakh at Rs 500. With iOS members as the comparator, the fall that belongs to the release is 13 points, about 1,223 orders a week; the option's 1,317 is against the members' own old rate, as it says, and no option offers the comparator figure. Fixing it ends a weekly loss, which is why it goes before the sale cohort's question.
 
 - (a) 3,198 is the loss over the 17 days; a week is 7 of them, about 1,317 orders.
-- (c) Non-members on Android went from 52 to 51 percent on the same checkout, so the fault is in the member path, and rolling back everyone's checkout loses what non-members kept.
+- (c) The number is the members' loss and the diagnosis is wrong: non-members on Android went from 52 to 51 percent on the same checkout, so the fault is in the member path, and rolling back everyone's checkout loses what non-members kept.
 - (d) The sale cohort's weak month one is a separate cost; the checkout fall hit members on Android across every cohort from one date.
 
 **In the interview.** I bring the step that changed, for whom and from when, beside comparators on the same step, then the weekly cost with its range, and I concede what the app team got right first.
@@ -309,7 +310,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** In the third quarter 4 of the cohort's users are active: 4 of the 10 who joined is 40 percent, and 4 of the 5 who stayed is 80. Letting the weak users go doubles that cell and every later one with nobody's behaviour changing. So before trusting a published cohort chart, ask what it divides by, users who joined or users who stayed, and what it counts, users, orders or spend. Swiggy's letter (Q2 FY26, checked 13 October 2026) indexes each cohort's spend to the Q4 FY24 cohort's first quarter and states no denominator; the question is fair to ask of it, and the invented cohort says nothing about Swiggy's own numbers.
 
-- (b) On the base of users who joined, the five weaned users stay in the denominator, so the cell reads 40 percent; only the base of users who stayed reads 80.
+- (b) The numbers are right and the question is not: before a cohort chart's shape is read, it has to say what it divides by and what it counts; the acquisition quarter is a second question and explains nothing about a cell that rose with nobody's behaviour changing.
 - (c) 60 percent is the fourth quarter, 3 of 5; the third quarter's 4 of 5 is 80.
 - (d) The bases are swapped: dividing by the 10 who joined gives the lower number, 40 percent.
 
@@ -320,7 +321,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 **Why it holds.** Checkout per cart fell from 82 and 83 percent to 64 inside the window, which is the stage's conversion by date that settles the dispute. It rests on 11 carts: at the earlier 10 in 12, about 9 would have checked out and 7 did, so about 2 checkouts are missing in three weeks. The call is to flag the step with its dates and counts and read the next three weeks before anyone rebuilds it. Blended retention cannot see a step inside a session, so its flat 41 percent says nothing about the checkout.
 
 - (a) Retention counts members who opened the app at all, so a member who opened it and failed to check out still counts as retained; the step fell while the blend held.
-- (b) The window's carts came from members of every cohort, and the fall sits in one step inside one window; a cohort's weakness is a different question.
+- (b) The blend cannot see a step inside a session, so its flat 41 percent says nothing about the checkout in either direction; the evidence is the step's conversion by date, with its counts.
 - (d) Eleven carts and about 2 missing checkouts are a reason to look, never to rebuild; the next three weeks confirm or clear it.
 
 **In the interview.** I show the step by date, with its counts, concede that a small window could be noise, and ask for the weeks that would confirm it before anything is rebuilt.
@@ -333,7 +334,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q30, key Seasonal naive: October Rs 427.6 lakh and November Rs 297.0 lakh, which puts the spike in October. Festival-aligned for November, Diwali's month in 2026: October 2025's Rs 427.6 lakh times 1.04, about Rs 444.7 lakh. The spike belongs in November.
 
-**Why it holds.** The seasonal naive copies the same month a year earlier: October 2026 gets October 2025's Rs 427.6 lakh and November gets Rs 297.0 lakh, so it puts the spike in October. Diwali fell in October in 2024 and 2025 and falls on 8 November 2026, so the copy carries a festival month into a month with no festival. The festival-aligned copy gives November 2026, Diwali's month, last year's Diwali month: Rs 427.6 lakh times 1.04, about Rs 444.7 lakh. Accept the three numbers to the nearest lakh with November named. Friday's lab built the rest of the winter the same way, swapping last year's October and November, so October 2026 reads Rs 297.0 lakh times 1.04, about Rs 308.8 lakh; a learner who adds it has gone further than the item asks. Both Octobers in the exhibit are about 1.44 times their November, which is the festival.
+**Why it holds.** The seasonal naive copies the same month a year earlier: October 2026 gets October 2025's Rs 427.6 lakh and November gets Rs 297.0 lakh, so it puts the spike in October. Diwali fell in October in 2024 and 2025 and falls on 8 November 2026, so the copy carries a festival month into a month with no festival. The baseline that puts the festival in its own month is the festival-aligned copy: November 2026, Diwali's month, gets last year's Diwali month, Rs 427.6 lakh times 1.04, about Rs 444.7 lakh. Accept the three numbers to the nearest lakh with November named. November 2024, straight after a Diwali on 31 October, shows no lift, so the festival's lift sits in its run-up; an answer that gives November the Diwali week and says part of the run-up may land in late October 2026 has gone further and is right. Friday's lab built the rest of the winter the same way, swapping last year's October and November, so October 2026 reads Rs 297.0 lakh times 1.04, about Rs 309 lakh on the printed figure. Both Octobers in the exhibit are about 1.44 times their November, which is the festival.
 
 **In the interview.** A seasonal copy is the bar to beat only when the season repeats on the calendar; when the festival moves, I copy by distance from the festival.
 
@@ -342,7 +343,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 **Why it holds.** M5 judged every entry on days it never saw, and on that test the seasonal naive, at 0.847, beat the perceptron's 0.977 and the random forest's 1.010, and only 1,972 of the 5,507 teams, 35.8 percent, beat it; the top entries that did win were machine learning, which is why the honest test is the same for any model. The vendor's curve fits its 91 training weeks within 1.4 percent, and on the thirteen hidden weeks it missed by 16,400 shipments a week against the seasonal naive's 9,831, almost all of it too high. Makridakis and colleagues (PLOS ONE, 2018) made the same point on 1,045 monthly series: the models that fitted best did not necessarily forecast best.
 
 - (b) M5's winners were machine learning that beat the seasonal naive on days they never saw; a fit to past weeks is a different test, and the sponsor's curve has not passed the forecast one.
-- (c) A curve tuned to its own past can fit within 2 percent and miss the next weeks widely; the vendor's missed by 16,400 a week.
+- (c) The hidden weeks are the right test and the bar is wrong: a curve's own fit is no baseline; it has to beat the seasonal naive on the same weeks, and the vendor's 16,400 a week against the copy's 9,831 did not.
 - (d) Any measure on the fitted weeks scores the fit; only weeks the curve never saw score the forecast.
 
 **In the interview.** I score every model, of any family, on the latest periods it never saw, against the naive and the seasonal naive, before its fit counts for anything.
@@ -377,7 +378,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q35, key d (a definition whose window the measured cannot move, with a guardrail)
 
-**Why it holds.** The rate's window ends at a promised date the measured dispatchers can move, the way the Phoenix VA's wait times ran from a "desired date" that 30 of 79 schedulers interviewed said they entered wrongly (VA Office of Inspector General, report 14-02603-267, 26 August 2014, checked 13 October 2026); the fix fixes the promise when the order is placed and guards it with the share of promises moved. What changed from Uber: the people who move the number are dispatchers, and the cost of an error is a customer told a parcel was on time when it was not.
+**Why it holds.** The rate's window ends at a promised date the measured dispatchers can move, the way the Phoenix VA's wait times ran from a "desired date" that 30 of the 79 scheduling staff interviewed said they entered wrongly (VA Office of Inspector General, report 14-02603-267, 26 August 2014, checked 13 October 2026); the fix fixes the promise when the order is placed and guards it with the share of promises moved. What changed from Uber: the people who move the number are dispatchers, and the cost of an error is a customer told a parcel was on time when it was not.
 
 **In the interview.** A metric whose window the measured can move measures their moves, so I fix the window at the order and guard it with the share of dates changed.
 
@@ -416,9 +417,9 @@ The workbook flags an item to check when fewer than one learner in five got it r
 - [F] (17): Q2, Q3, Q5, Q6, Q7, Q9, Q10, Q11, Q16, Q20, Q21, Q22, Q23, Q27, Q29, Q30, Q31
 - [SV] (0): none
 - [D] (11): Q19, Q24, Q26, Q28, Q33, Q34, Q35, Q36, Q37, Q38, Q39
-- Easy (2): Q1, Q29
-- Medium (14): Q2, Q3, Q5, Q9, Q11, Q17, Q18, Q19, Q22, Q23, Q35, Q36, Q37, Q38
-- Hard (23): Q4, Q6, Q7, Q8, Q10, Q12, Q13, Q14, Q15, Q16, Q20, Q21, Q24, Q25, Q26, Q27, Q28, Q30, Q31, Q32, Q33, Q34, Q39
+- Easy (8): Q1, Q3, Q11, Q29, Q35, Q36, Q37, Q38
+- Medium (8): Q2, Q5, Q17, Q18, Q19, Q22, Q23, Q34
+- Hard (23): Q4, Q6, Q7, Q8, Q9, Q10, Q12, Q13, Q14, Q15, Q16, Q20, Q21, Q24, Q25, Q26, Q27, Q28, Q30, Q31, Q32, Q33, Q39
 - Mon (7): Q1, Q2, Q3, Q4, Q5, Q6, Q7
 - Tue (7): Q8, Q9, Q10, Q11, Q12, Q13, Q14
 - Wed (7): Q15, Q16, Q17, Q18, Q19, Q20, Q21
@@ -435,34 +436,34 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 These items come from the week's source file, not the tracker. Accept one by adding it to the tracker's Saturday papers tab and deleting it from the source file.
 
-- Q3 (True or false, Medium, [F]): The city team's dashboard puts rider requests per peak online hour, zone by zone, beside its north star, completed peak trips per enrolled driver online at peak each week. Statement: a leading indicator moves after the north-star metric has already moved. True or false, and why?
+- Q3 (True or false, Easy, [F]): The city team's dashboard puts rider requests per peak online hour, zone by zone, beside its north star, completed peak trips per enrolled driver online at peak each week. Statement: a leading indicator moves after the north-star metric has already moved. True or false, and why?
 - Q4 (One correct option, Hard, [S]): The city team's note to the city head reads: "Peak online hours up 24 percent: supply target met. We recommend extending the guarantee to two more cities." Using the six drivers in Exhibit 1B, what do the rows show, and what should the city head be told?
 - Q5 (True or false, Medium, [F]): Statement: any target changes the behaviour of the people who are paid to hit it. Judge it on Exhibit 1C. True or false, and why?
 - Q6 (One correct option, Hard, [F]): Exhibit 1C's last row is the 2013 change. What share of Wells Fargo's 2013 rise in the ratio came from the change of definition alone, and what record kept beside the definition would have shown it to investors?
 - Q7 (More than one correct, Hard, [F]): Meera Raghavan, Kalpa Retail's CEO, wants one number for the growth plan and the numbers that stop it being gamed. The head of Retail-Plus proposed reorders per member, and the lab found Exhibit 1D. Which lines of the plan's definition sheet are right? Mark every correct option.
-- Q8 (Order the steps, Hard, [S]): Four of these six lines make the city head's slide, and two would spoil it. Leave those two out and write the other four in the order Tuesday's one-slide template puts them, from the top.
-- Q9 (More than one correct, Medium, [F]): A second draft argues that riders got little for the Rs 1.9 crore of top-up. Which two elements carry that claim? Mark both; every other element moves to an appendix page headed by the question a named role will ask.
+- Q8 (Order the steps, Hard, [S]): Four of these seven lines make the city head's slide, and three would spoil it. Leave those three out and write the other four in the order Tuesday's one-slide template puts them, from the top.
+- Q9 (More than one correct, Hard, [F]): A second draft argues that riders got little for the Rs 1.9 crore of top-up. Which two elements carry that claim? Mark both; every other element moves to an appendix page headed by the question a named role will ask.
 - Q10 (True or false, Hard, [F]): At the review the finance partner says: "The fall in bookings per hour is the monsoon's end, not your scheme." In the last three of the six weeks after the launch, weekly peak rider requests ran from 41,161 to 42,602, against 41,155 to 42,719 in the six weeks before, and trips per peak online hour ran at 1.56. Statement: the strongest reply concedes nothing, since any concession hands the objector the meeting. True or false, and why?
-- Q11 (True or false, Medium, [F]): A colleague cites Amazon's 2017 letter to shareholders, which says Amazon's meetings start with a six-page memo read in silence, use no slides, and that a great memo probably takes a week or more to write. Statement: the city head's Thursday review should get a memo in place of the one slide. True or false, and why?
+- Q11 (True or false, Easy, [F]): A colleague cites Amazon's 2017 letter to shareholders, which says Amazon's meetings start with a six-page memo read in silence, use no slides, and that a great memo probably takes a week or more to write. Statement: the city head's Thursday review should get a memo in place of the one slide. True or false, and why?
 - Q12 (Order the steps, Hard, [S]): The city head's afternoon ask is roughly how many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes. Four of these five steps make the estimate, and one would spoil it. Leave that one out and write the other four in the order they run.
-- Q13 (More than one correct, Hard, [S]): Before the review, a colleague lines up four numbers to check estimates against: NPCI's UPI count as Outlook Money reported it, Flipkart Stories' post of 9 October 2026, Avenue Supermarts' FY26 release for DMart, and a city invented for a drill. Which checks are sound? Mark every correct option.
+- Q13 (More than one correct, Hard, [S]): Before the review, a colleague lines up five checks on four numbers: NPCI's UPI count as Outlook Money reported it, Flipkart Stories' post of 9 October 2026, Avenue Supermarts' FY26 release for DMart, and a city invented for a drill. Which checks are sound? Mark every correct option.
 - Q14 (One correct option, Hard, [S]): A pair's chain puts Delhi Metro at about 60 lakh rider trips on a weekday, each trip counted once from the gate where the rider enters to the gate where they leave (invented). They set it against Exhibit 2B, call their estimate 6 to 27 percent low, and raise it. Which reading of the check is right?
 - Q15 (One correct option, Hard, [S]): The growth lead's draft for the category manager reads: "Shoppers clicked the strip less after the monsoon, so the strip needs a redesign." Using Exhibit 3B, which reading holds?
 - Q16 (One correct option, Hard, [F]): The strip gives a slot only to a pair with a lift of at least 1.5, above a support floor of 1 percent of carts. Exhibit 3C holds two pairs' counts and their lifts recomputed for cart size and for heavy buyers. Which pairs keep a slot?
-- Q20 (True or false, Hard, [F]): Statement: a pair with a lift of about 4 and a support of about 0.25 percent belongs on a watch list before it belongs in a campaign. Judge it on both pairs in Exhibit 3E. True or false, and why?
+- Q20 (True or false, Hard, [F]): Statement: a pair with a lift of about 4 and a support of about 0.25 percent belongs on a watch list, to be counted again or tested, before it belongs in a campaign. Judge it on both pairs in Exhibit 3E. True or false, and why?
 - Q21 (One correct option, Hard, [F]): Swiggy's shareholder letter for April to June 2025 describes Maxxsaver, a discount unlocked once a cart passes a set size, as handing part of the larger basket's margin back to the user. A growth lead proposes a bundle slot on the same logic, with these invented numbers: 30,000 cart-page views a day; 5 percent of views click the slot; half the clicks add the item; the item sells for Rs 30 and earns Rs 10 of margin before a Rs 3 bundle discount; and half of the adds would have happened anyway, through search or habit. What is the slot worth a day?
 - Q25 (One correct option, Hard, [S]): The membership lead's chart for September reads "search to menu view: 118 percent" and "menu view to add-to-cart: 34 percent, the biggest loss". Exhibit 4C counts the same flow two ways, for September alone. Which reading holds?
 - Q26 (One correct option, Hard, [D]): The app team says the new Android checkout cannot be at fault, since non-members use the same checkout and held at 51 percent. Android members reached add-to-cart in 22,841 sessions from 14 to 30 September, 17 days. What is fixed first, and what does the loss cost a week, at Rs 300 to Rs 500 of order value an order?
 - Q27 (One correct option, Hard, [F]): Swiggy's shareholder letter for July to September 2025 says it "weaned away certain users from the platform with low potential Lifetime values", and its table of Instamart cohort spend states no denominator. Exhibit 4E is invented. A deck shows this cohort's third quarter after the weakest five are weaned away and calls it strong retention. What does the third quarter read on each base, and what do you ask before trusting a published cohort chart?
 - Q28 (One correct option, Hard, [D]): The app team says the auto-reorder feature has been fixed and asks the head of Retail-Plus to close the ticket, since blended retention has not moved. Which reply holds on Exhibit 4F?
-- Q30 (Applied maths, Hard, [F]): Anand's board line needs October and November 2026. Using Exhibits 5A and 5B, give the seasonal naive for both months, then the festival-aligned copy, last year's Diwali month plus 4 percent, for the one 2026 month that holds Diwali, and say which month should carry the festival's spike.
+- Q30 (Applied maths, Hard, [F]): Anand's board line needs October and November 2026. Using Exhibits 5A and 5B, give the seasonal naive for both months, then a seasonal baseline with Friday's 4 percent growth that puts the festival in its own month, and say which month should carry the festival's spike.
 - Q31 (One correct option, Hard, [F]): The vendor's sponsor says: "Our curve fits two years of Lucknow's weeks within 2 percent, and machine learning won M5, so the curve should go to the plan." Using Exhibit 5C, which reply holds?
 - Q32 (One correct option, Hard, [S]): What is each forecast's mean absolute error a week, which costs least on these weeks with its misses priced, and what follows for the plan?
-- Q33 (One correct option, Hard, [D]): Anand asks which number goes in front of the board for October 2026 to March 2027, and how wrong it could be. Diwali falls on 8 November 2026. Using Exhibit 5E, which sentence answers him?
-- Q35 (Match the following, Medium, [D]): Kalpa Logistics' head of operations: the on-time delivery rate has risen since dispatchers were allowed to move a parcel's promised date once a delay was known.
-- Q36 (Match the following, Medium, [D]): Dr Priya Menon: which step between a test booked and a visit completed loses the most dollars, metro area by metro area?
-- Q37 (Match the following, Medium, [D]): Ananya Bose: blended monthly churn has held steady for four months while subscribers who joined since the spring seem to cancel sooner.
-- Q38 (Match the following, Medium, [D]): Rohan Desai: which second product should a customer be offered first, beyond what any customer takes up anyway?
+- Q33 (One correct option, Hard, [D]): Anand asks which number goes in front of the board for October 2026 to March 2027, and how wrong it could be. Using Exhibits 5A and 5E, which sentence answers him?
+- Q35 (Match the following, Easy, [D]): Kalpa Logistics' head of operations: the on-time delivery rate has risen since dispatchers were allowed to move a parcel's promised date once a delay was known.
+- Q36 (Match the following, Easy, [D]): Dr Priya Menon: which step between a test booked and a visit completed loses the most dollars, metro area by metro area?
+- Q37 (Match the following, Easy, [D]): Ananya Bose: blended monthly churn has held steady for four months while subscribers who joined since the spring seem to cancel sooner.
+- Q38 (Match the following, Easy, [D]): Rohan Desai: which second product should a customer be offered first, beyond what any customer takes up anyway?
 - Q39 (One correct option, Hard, [D]): Amazon India, a fulfilment centre's festive packer plan (illustrative case: the company is real, and every number below except Amazon's own figure is hypothetical). Amazon says its Great Indian Festival 2025 drew over 276 crore customer visits, 70 percent of them from tier 2 and 3 cities. Suppose its centre in a tier 2 city pays Rs 650 for an idle packer-shift of 120 shipments, as Lucknow does, while a late shipment costs it Rs 10, against Lucknow's Rs 25. What share of weeks should its plan cover, and what carries over from Lucknow unchanged?
 
 ## Bank items folded into deeper items
@@ -516,7 +517,7 @@ These options differ from the tracker's wording or order, each for the reason gi
 
 - Bank 29, Q34, option b, c (proposed): Options b and c ran 21 and 31 characters against 60 for option a, under the paper's balance rule; each now says what it is, a guardrail the measured team cannot move and the rupee amount each kind of wrong nudge costs, at 49 and 47 characters, and the same three options stay correct. A learner's cold read took the first wording of c, a cost in each direction, as the practice of pricing both errors, which carries over, so c now names the amounts, which change.
 - Bank 32, Q19, option a (proposed): The key, option c, was the longest option by 9 characters; option a, the confidence trap, now names the case as well, at 106 characters, and the same option stays correct.
-- Bank 35, Q24, option c (proposed): The key, option a, was the longest option by one character; option c, the reading that a flat blend needs no action, now says it held from May to June, at 92 characters, and the same option stays correct. An earlier wording printed the 41 percent that Q22 and Q23 ask for, which a learner's cold read caught.
+- Bank 35, Q24, option c, d (proposed): The key, option a, was the longest option by one character; option c, the reading that a flat blend needs no action, now says it held from May to June, at 92 characters, and the same option stays correct. An earlier wording printed the 41 percent that Q22 and Q23 ask for, which a learner's cold read caught. Option d, the tracker's "the data is inconsistent", fell at a glance, so it now names the decline and blames the new cohort by setting two ages side by side, which a hiring interviewer's cold read asked for; the same option stays correct.
 
 ## Levels and paces the paper sets
 
@@ -527,6 +528,7 @@ The tracker's level or minutes for these items differ from what the paper, as re
 - Q19 (bank 32): level Medium, where the tracker says Hard
 - Q23 (bank 34): level Medium, where the tracker says Hard
 - Q29 (bank 41): 3 minutes, where the tracker says 4
+- Q34 (bank 29): level Medium, where the tracker says Hard
 
 ## The stretch page
 
