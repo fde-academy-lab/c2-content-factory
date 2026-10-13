@@ -7,13 +7,15 @@ wrong day fails here rather than overwriting another day's pack. Every file must
 the subfolders its folder type allows, so a pack cannot quietly invent its own layout. And no
 file may sit loose at the day folder's root.
 
-This one command then calls the five proof scripts, so a pack is proved by running one thing:
+This one command then calls the six proof scripts, so a pack is proved by running one thing:
 
   nb_check.py          every code cell carries an output, three diagrams and five checks render
   distractor_audit.py  no key is the longest option, keys spread, no format line gives them away
   xlsx_recalc.py       LibreOffice recalculates the workbook and the verdicts move when flipped
   html_sweep.py        a browser clicks every control on every companion page
   deck_md_check.py     the slide markdown's numbering, titles, question pairing and diagram share
+  coverage_check.py    every row subtopic has a chapter and a notebook carrying its name, on a
+                       teaching day from Week 4 on (day-pack-builder's references/coverage-matrix.md)
 
 Decks route by extension. The markdown source always goes to deck_md_check.py. A built .pptx goes
 to deck_check.py only when it is newer than the markdown it came from, since a stale pptx measures
@@ -230,6 +232,10 @@ def run_proofs(target):
     if decks:
         fails += run_proof("deck_md_check.py", [str(target)],
                            "the slide source numbers, pairs and draws what it should")
+
+    if re.search(r"W\d{2}[/\\]D\d$", str(target.resolve())):
+        fails += run_proof("coverage_check.py", [str(target)],
+                           "every row subtopic has a chapter and a notebook carrying its name")
 
     sheets = [p for p in files if p.parent.name == "cheatsheets" and p.suffix == ".md"]
     stale_pdf = [p.with_suffix(".pdf") for p in sheets

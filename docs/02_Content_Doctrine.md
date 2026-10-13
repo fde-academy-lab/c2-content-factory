@@ -12,12 +12,15 @@ The requester set this for every week, day, Saturday and project built from 12 O
 "The teaching approach", is the single source, and where it and the sections below disagree it wins.
 Weeks 1 to 3 were built before it and keep their shape until rebuilt.
 
-- **The case leads.** A day opens on an engineering case at a company the learners use (Uber,
-  Swiggy, Zomato, Blinkit, Flipkart, Google, an AI startup), in a named city, state or country: the
-  metric, its value before and after with dates, the data the analyst holds, the ask and the known
-  caveats. It is labelled illustrative, its data are synthetic and seeded, and it claims nothing the
-  company actually did. No stakeholder drama opens a day. Kalpa carries the same method as the client
-  in the lab, so the weeks stay connected.
+- **The topics lead, then the case.** A day opens on its topic and a concept map that names every
+  subtopic of the curriculum row, verbatim and in order, teaches each in a named concept chapter on a
+  simple, complete, relatable educational example with a notebook of the same name (decision
+  `concept-first-case-second`, 13 October 2026), and then carries an engineering case at a company the
+  learners use (Uber, Swiggy, Zomato, Blinkit, Flipkart, Google, an AI startup), in a named city,
+  state or country: the metric, its value before and after with dates, the data the analyst holds, the
+  ask and the known caveats. The case is labelled illustrative, its data are synthetic and seeded, and
+  it claims nothing the company actually did. No stakeholder drama opens a day. Kalpa carries the
+  same method as the client in the lab, so the weeks stay connected.
 - **The ladder.** The case breaks into sub-problems from L1, a hand count a weak learner can do, to L6,
   the interview at Uber, Swiggy, Google and AI-startup depth, with an AI-company variant.
 - **The blend.** Every deck, notebook, exercise, case study, project, paper and note teaches each idea
@@ -27,7 +30,10 @@ Weeks 1 to 3 were built before it and keep their shape until rebuilt.
   grade (takeUforward), problem-first interactivity, and a plain explanation a newcomer could repeat.
 - **The explorer.** Each week ships one interactive page that grows day by day, animating each
   mechanism and asking for a prediction before the reveal.
-- **The volume.** Three or four chapters a day, sized to the minutes; pictures drawn by our own code.
+- **The volume.** A concept block of one chapter per row subtopic, 60 to 120 minutes, then three or
+  four case chapters sized to the remaining minutes; one notebook per chapter; a coverage matrix per
+  day (`.claude/skills/day-pack-builder/references/coverage-matrix.md`) that a script checks;
+  pictures drawn by our own code.
 
 ---
 
@@ -45,8 +51,11 @@ yours.
 
 **Rules.**
 
-- The day's row opens with the scenario in the stakeholders' words and the questions they are asking.
-  A day pack that opens on a technique has not been built from the row.
+- The day's row opens with the scenario in the stakeholders' words and the questions they are asking,
+  and its Subtopics column lists what the day teaches, in order. From Week 4 on the pack opens on
+  those subtopics as a concept map and teaches each in a named chapter before the case; in Weeks 1 to
+  3 the pack opens on the scenario. A day pack whose chapters cannot be mapped to the row's subtopics
+  has not been built from the row, whichever half it opens on.
 - The thinking is written down before any tool appears, and it is what the learner keeps. The Week 1
   canonical example is the revenue tree: revenue is customers, times orders per customer, times items
   per order, times price per item, less discounts. A learner who can state that tree, pick the branch

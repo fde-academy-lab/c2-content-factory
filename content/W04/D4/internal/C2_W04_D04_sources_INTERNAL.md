@@ -35,18 +35,21 @@ Each is also in the facts file's `corrections` block, with the arithmetic or the
 | Aced: tracking first | The hypothesis board's order, with Aced cited only for what its page says | Aced's sample answer defines the metric first and rules out data issues first |
 | The tracking check: the mapping and the cut moved a week | The order records against the event log; the moved cut dates the fall | The rename shipped with the release, so a logging fault would also start on 14 September |
 
-## Which items stay open for the orchestrator?
+## Which items did the orchestrator close, and how?
 
-- Wednesday's pre-read for Thursday (`origin/w04-d3`) prints "60,000 members" and "the August group
-  signed up in a sale week"; Thursday's data holds 53,089 members, and 8,027 of August's 13,000 joined
-  in the sale week.
-- Monday's lab (`origin/w04-d1`) and Thursday's lab share the window of 10 to 30 September; the
-  shared constants are checked in the generator against Monday's facts file and agree.
-- Monday's `kalpa_members` names the 120 Retail-Plus members `RP-0001` to `RP-0120` with its own
-  `member_since` dates; Thursday's `kalpa_memberships` uses v4's own customer ids (`C-0151` and on),
-  which join to the Week 2 warehouse, with Thursday's dates. The two days' Kalpa tables do not join.
-- The case file's DMRC catch and its Aced line (R2 M6, T3 and T2) want the same corrections in any
-  other day that uses them.
+Each was checked on `main` on 13 October 2026.
+
+- Wednesday's pre-read for Thursday now prints the 53,089 members who joined from January to
+  September and says the August group was grown by a sale week, so it agrees with Thursday's data.
+- Monday's lab and Thursday's lab share the window of 10 to 30 September, and the shared constants
+  agree in both facts files.
+- Monday's Kalpa lab was rebuilt on Thursday's table (pull request 246): `C2_W04_D01_kalpa_members`
+  is a byte copy of `C2_W04_D04_kalpa_memberships`, with v4's customer ids, and every order id in
+  Monday's reorder log is a v4 order with the same customer, date, amount and status, so the two
+  days' Kalpa tables join.
+- The DMRC catch reads trips against line uses in the case file, Monday's deck and Tuesday's
+  solutions, and the Aced line "tracking first" appears only in Thursday's and Saturday's sources,
+  each of which cites Aced only for what its page says.
 
 ## Which cold-read findings were not fixed, and why?
 

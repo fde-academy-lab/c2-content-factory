@@ -33,8 +33,7 @@ week's approved spine: then that spine is gate 2, and you state the envelope and
 1. **Envelope and continuity.** The day's business scenario in one line, which of the three threads it
    advances (Growth, Trust, Cost and risk), what the room already knows, what today must not repeat, what
    comes later. All from the row, in one short block.
-2. **The spine, one screen.** The scenario and the thinking it trains; the domain beat; the six or so
-   chapters, each with its question, options, sizing and second route, and the afternoon's two cases; the section list per artifact; the day's mental-model arc in one sentence;
+2. **The spine, one screen.** The scenario and the thinking it trains; the domain beat; the row's subtopics verbatim, each with its concept chapter title, its educational example, its minutes and its notebook name; the case chapters, each with its question, the subtopics it applies, its options, sizing and second route; the day's minutes against its envelope; the section list per artifact; the day's mental-model arc in one sentence;
    the traps with their exact wrong numbers; the activity choice and its toggle; the take-home shape
    with its resistance patterns named; the interview questions the day equips, with their tags. Wait for my
    approval. Build nothing past this without an explicit yes.
@@ -42,9 +41,9 @@ week's approved spine: then that spine is gate 2, and you state the envelope and
    (d) exercises with solutions, (e) take-home with its self-check spine, (f) Kahoot pack, (g) study notes,
    cheat sheet and pre-read. Build each family to
    `.claude/skills/day-pack-builder/references/the-standard.md`, opening its model file in
-   `content/W01/D1` before the pass. Then run the standard's depth loop: the domain and problem-first
-   passes yourself, then the rigor and the pedagogy-and-language passes by fresh reviewer agents who
-   write findings and never edit, each logged in the provenance.
+   `content/W01/D1` before the pass. Then run the standard's review: the domain and problem-first passes yourself, then three cold reads by
+   fresh reviewer agents who write findings and never edit (the fresh graduate, the hiring interviewer,
+   the trainer with the row open), each logged in the sources list, and one fix pass.
 4. **Verification.** The skill checklist, then `python3 scripts/verify.py content/W{W}/D{D}`, then the file
    list with audience tags, then `python3 scripts/sync_programme.py --check`. Report what failed and what
    you fixed, and show the verify output before calling the pack done.
@@ -52,8 +51,7 @@ week's approved spine: then that spine is gate 2, and you state the envelope and
    stop: the orchestrating session reviews the pack, opens its pull request and merges it. A day session
    never opens, merges or closes a pull request.
 
-Binding rules: the business scenario is slide one and the notebook's first markdown cell, and it is never
-cut; the thinking is drawn before any tool opens; mental model first and spiral always; at most four new
+Binding rules: the deck opens on the day's topic, the week map, the topics slide and the concept map that name every row subtopic verbatim, and the case ticket as the destination, and none of the five is cut; every concept chapter's opener reads `## SECTION n: <subtopic>: <short question>?` and its notebook carries the subtopic's name, and `scripts/coverage_check.py` passes; the thinking is drawn before any tool opens; mental model first and spiral always; at most four new
 ideas per two-hour block; application before theory; every chapter's trap a plausible wrong number
 with its business consequence, never a syntax error; every technique the answer to a stated problem,
 with its options, a sizing, the best-fit call and a second route; the domain's story on its first day,

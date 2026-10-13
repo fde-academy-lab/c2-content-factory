@@ -245,23 +245,22 @@ direction, which print no decimals, and relabelled by the rule in the levels row
 file's last sections take them finding by finding. The paper rebuilt after it proves on all 39 keys,
 passes the distractor audit and holds 11 hard items of 39.
 
-## Open points for the orchestrating session
+## Which open points did the orchestrating session close, and which stay open?
 
-- The edits in `data/programme/paper_edits.yaml` carry status accepted, from the requester's
-  acceptance of the paper's edits on 13 October 2026 and the ask of the same day that the paper be
-  edited; the 29 additions, the 32 folds and the one move to the stretch page wait for the tracker's
-  owner, as the key lists them.
-- Friday's facts file notes M5 as "1,972 teams, 35.8 percent of them"; the key prints 1,972 of the
-  5,507 teams, 35.8 percent, the guide prints the 1,972 of 5,507, the paper no longer prints either,
-  and Friday's learner files print only the 35.8 percent.
-- Monday's synthetic idle tail averages about 39 peak online hours a driver a week against the 14
-  and 16 of drivers E and F in the twelve rows, which a learner noticed on the stretch page. Main's
-  Monday deck (S9) and sheet, from #246, now say E and F keep shorter weeks than the tail's average,
-  so the gap is explained where the room meets it; a merge of main into this branch, tried on 13
-  October 2026, is clean, and the proofs, verify and both checks pass on it.
-- Q20, Q25, Q32 and Q39 print at Hard on the levels row's rule after the blind check read them
-  medium for cues this pass removed, and no second sitting has read them, since the skill allows one
-  sitting a paper; the room's rates in the item-analysis workbook are the first test of them, and of
-  11 hard items against the decision's about 60 percent.
-- Interview Query, the Saturday row's student link, could not be reached on 13 October 2026, so no
-  file in the pack carries it.
+Each was checked on `main` on 13 October 2026.
+
+- Closed: Friday's facts file and generator read M5 as "1,972 of the 5,507 teams, 35.8 percent",
+  as the key and the guide print it.
+- Closed: Monday's deck (S9) and sheet say E and F keep shorter weeks than the idle tail's average of
+  about 39 peak online hours a driver a week (pull request 246), so the stretch page's gap is explained
+  where the room meets it.
+- Open, for the tracker's owner: the edits in `data/programme/paper_edits.yaml` carry status
+  accepted, from the requester's acceptance of 13 October 2026; the 29 additions, the 32 folds and the
+  one move to the stretch page wait for the tracker's owner, as the key lists them.
+- Open, scheduled: the paper holds 11 hard items of 39 against the decision's about 60 percent. Q20,
+  Q25, Q32 and Q39 print at Hard on the levels row's rule after the blind check read them medium for
+  cues this pass removed. About twelve items are rebuilt and sat blind again after Week 4's
+  concept-first rebuild merges, so the paper tests the days as rebuilt; the room's rates in the
+  item-analysis workbook are the first test of the levels until then.
+- Open, unverifiable today: Interview Query, the Saturday row's student link, could not be reached on
+  13 October 2026, so no file in the pack carries it.

@@ -198,17 +198,22 @@ None on Monday. Tuesday's drivers-at-peak question uses Monday's `zone_weeks` as
 ### The Kalpa transfer
 
 The lab's case: the head of Retail-Plus's "reorders per member", inflatable by auto-reorders (the
-row). The Monday generator writes `app_reorders` (`reorder_id`, `customer_id`, `placed_ts`,
-`product_id`, `value_rs`, `auto`, `status`: cancelled, merged into a later order, pending) for
-Retail-Plus members over July to September 2026, with the auto-reorder window fixed at 10 to 30
-September 2026 and the comparison at 20 August to 9 September 2026. Plants (TRAINER until the lab):
-reorders placed per Retail-Plus member in the window over the comparison prints 1.22; booked revenue
-per member (orders of any status) prints 0.96; the auto-reorders are low-value consumables, most
-cancelled by members and the rest merged into the next manual order, so none is a separate delivered
-order and v4's orders stay frozen. The lab's twelve rows: seven members with their orders and
-placements in the two windows, values kept at least 0.05 from 1.22 and 0.96. If no window satisfies
-both ratios with v4 untouched, the generator may re-date Retail-Plus orders within July to September
-only, keeping every v4 contract line true, and says so in the facts file. The unguided exercise writes
+row). The lab reads Thursday's membership table, `kalpa_memberships` (120 Retail-Plus members, copied
+byte for byte into Monday's `kalpa_members`), and the Monday generator writes `kalpa_app_reorders`
+(`reorder_id`, `customer_id`, `placed_ts`, `value_rs`, `auto`, `status`: delivered, returned,
+cancelled, merged into a basket the member already had open, or pending; and `order_id`, the v4
+warehouse order a placement became, blank if none): 89 placements by the 120 members across two
+windows, the auto-reorder window fixed at 10 to 30 September 2026 and the comparison at 20 August to 9
+September 2026. Both windows are
+divided by the same 107 members, those in the tier by 19 August 2026, the monsoon sale's last day.
+Plants (TRAINER until the lab): reorders placed per member in the window over the comparison prints
+1.22 (44 placements against 36); booked value per member (placements of any status) prints 0.96; and
+every placement in the window is an auto-reorder that was cancelled (22), merged (16) or is pending
+(6), so none became an order and v4's orders stay frozen. The ten comparison-window placements that
+became orders are v4 orders with the same customer, date, amount and status, and the seven
+Retail-Plus app orders v4 holds for 10 to 30 September sit outside the log by design. The lab's twelve
+rows: seven of the 107 with placements in both windows, whose hand count (1.33 and 0.84) leans the way
+the full table does and sits at least 0.10 from each ratio. The unguided exercise writes
 Kalpa's growth-plan north star on the same template: delivered orders per active customer per month,
 with revenue per active customer, discount share of booked revenue and the return rate as guardrails,
 and add-to-cart events per active app member and new Retail-Plus sign-ups as leading inputs (the
@@ -376,8 +381,9 @@ many carts.
 ### The twelve rows (L1)
 
 Twelve carts with their items (the generator picks twelve real carts; the shape to hit): milk in 8 of
-12; bread in 4, three of them with milk, so bread to milk confidence 0.75 and lift 1.13 (0.75 over
-0.67); chips and cold drink in 3 carts each, together in 2, so support 2 of 12, confidence 0.67 and
+12; bread in 4, all four of them with milk, so bread to milk confidence 1.00 and lift 1.50 (1.00 over
+0.67), as Wednesday's facts file corrects the earlier 0.75, which sat 0.01 from the full data's 0.74;
+chips and cold drink in 3 carts each, together in 2, so support 2 of 12, confidence 0.67 and
 lift 2.67; ice cream and chocolate sauce together in exactly one cart; curd, eggs, bananas, paneer,
 coriander and others filling the rest. Every value at least 0.05 from Kalpa's 0.82, 0.97, 3.1 and 4.0
 and from the case's own 0.74, 1.04, 3.4 and 4.6.
@@ -386,9 +392,9 @@ and from the case's own 0.74, 1.04, 3.4 and 4.6.
 
 **L1. Which items go together on the twelve carts, and what does "together" mean?** Concepts, one
 at a time: support is counting; confidence shrinks the world to the carts that hold A; lift compares
-with chance; lift is symmetric. Analogy: ten tea-stall orders as dots: chai in 6, biscuit in 4, both
-in 3; support 3 of 10, confidence 0.5, expected 10 times 0.6 times 0.4 = 2.4 against 3 seen, lift 1.25
-both ways; a carry bag in 9 of 10 gives biscuit to bag confidence 0.75 and lift 0.83 (toy, R1).
+with chance; lift is symmetric. The concept chapters teach the three measures first on an invented hostel
+canteen's twelve lunch orders (the spine's Wednesday concept block); the tea-stall analogy retired on
+13 October 2026.
 Numbers: the twelve rows. Trap: confidence read as the answer. Interviewer listens for: the three
 questions named (how often, how reliably, against chance). Common wrong answer: "confidence is the
 probability they go together".

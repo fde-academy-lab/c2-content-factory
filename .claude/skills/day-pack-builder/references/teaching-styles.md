@@ -33,26 +33,53 @@ argument with a neighbour and a revote on any question that splits the room.
 | Interview rehearsal on annotated answers | Show the question as an interviewer asks it, a weak answer and a strong answer with notes on what each does, then the follow-ups; the learner rehearses aloud | The interview room of every day; the Saturday mock round | Memorised answers; the follow-ups change the question so only the reasoning transfers |
 | The case method | A real situation with a decision, the data and the people with a stake; learners argue a position and defend it | The day's ticket; role cards; the stakeholder objection at L5; build-week projects | Discussion with no evidence; every position cites a number from the data |
 
-## How a chapter blends them
+## How a concept chapter blends them
 
-A chapter of the case ladder runs in this order, and each beat names its style:
+A concept chapter teaches one row subtopic from zero on its educational example, and runs in this
+order, each beat naming its style. The example is simple, complete and relatable: a canteen's
+tokens, a hostel canteen's twelve lunch orders, a coaching centre, a chai stall's Sundays, with
+invented numbers small enough to count on one hand and labelled invented wherever they appear. The
+day's seeded generator writes its table to `data/` and the facts file records its numbers under
+`toy_` ids.
+
+1. The broken default: what goes wrong without this idea, in one line on the example (lesson-architecture's slot 3).
+2. The misconception said aloud and a prediction voted, on the example's numbers (Veritasium, peer instruction).
+3. The hand count on the tiny numbers, every step said aloud (StatQuest).
+4. The picture that makes the mechanism visible, and the formula or rule named last as the shorthand for what the picture showed (3Blue1Brown).
+5. A glimpse of three to six lines of code that reproduce the count, each line's purpose in plain words; the concept notebook does it in full (Krish Naik).
+6. A second example of the same shape with one step missing, then the bare problem (worked examples that fade).
+7. Three to five one-sentence rules a learner photographs (lesson-architecture's slot 9), and the interview line the idea earns.
+8. The map node: the idea joined to the previous subtopic, the next one and the case chapter that applies it, with the chapter named (ByteByteGo).
+
+## How a case chapter blends them
+
+A chapter of the case ladder runs in this order, and each beat names its style. Where a beat uses an
+idea a concept chapter taught, it recalls that chapter by name in one line and goes to the data; the
+connected example lives here and the clearest example lives in the concept chapter, so every idea has
+both (lesson-architecture's two-examples rule).
 
 1. The question on screen, before any explanation (Brilliant).
 2. The misconception said aloud and a prediction voted (Veritasium, peer instruction).
-3. The hand count on tiny numbers (StatQuest).
-4. The picture that makes the mechanism visible, and the formula named last (3Blue1Brown).
+3. The hand count on the twelve rows (StatQuest).
+4. The picture that makes the mechanism visible on the case's data, and the formula recalled by its concept chapter's name (3Blue1Brown).
 5. The code-along on the full data to a working result (Krish Naik).
 6. The trap: the plausible wrong number, revealed against the prediction (Veritasium).
-7. The map slide linking the idea to earlier and later ones (ByteByteGo).
+7. The map slide linking the idea to earlier and later ones and to the concept chapters it applied (ByteByteGo).
 8. The rung of practice problems at this level (takeUforward), with worked examples fading.
 9. The plain one-sentence explanation the learner could repeat in an interview (Feynman).
 
 ## How each artefact family carries the blend
 
-- **Decks** carry beats 1, 2, 4, 6 and 7 on slides, beat 3 on the board or a slide of tiny numbers,
-  beat 5 as a short code glimpse, and beat 9 as the chapter's closing line.
-- **Notebooks** carry beats 3, 5 and 6: the twelve rows reproduced, the code-along with one sentence
-  above each cell, the your-turn cell where the trap is found, and the second route that agrees.
+- **Decks** carry the concept map after the week map, then every concept chapter's beats 1 to 4, 7
+  and 8 on slides with beat 5 as a code glimpse, then every case chapter's beats 1, 2, 4, 6 and 7 on
+  slides, beat 3 on the board or a slide of tiny numbers, beat 5 as a short code glimpse, and beat 9
+  as the chapter's closing line.
+- **Notebooks** come one per chapter. A concept notebook carries its chapter's beats 3 to 7: the
+  example loaded from `data/` and printed in full, labelled invented, the count by hand and by code
+  asserted equal, the picture, the formula as a function, the faded second example as a your-turn
+  cell, and the rules. A case notebook carries beats 3, 5 and 6: the twelve rows reproduced, the
+  code-along with one sentence above each cell, the your-turn cell where the trap is found, and the
+  second route that agrees.
 - **The explorer** carries beats 1, 2 and 4 as scenes: a question, a prediction, a moving picture, a
   number, then the formula.
 - **Exercises** carry beat 8 as a tagged ladder from L1 to L6, with fading worked examples and some

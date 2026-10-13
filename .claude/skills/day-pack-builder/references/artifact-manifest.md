@@ -6,11 +6,18 @@ Every specification below binds the build. Where this file and an older day-pack
 
 A teaching day ships two decks: the morning deck (half one), which carries the ask, the thinking and chapters 1 to 5, and the afternoon deck (half two), which carries chapter 6, the escalated case, the debrief of wrong answers, the second case, the interview drill and the close. Each chapter is opened by its own `## SECTION n:` and matches one notebook by number and title. Their sizes and a chapter's slide sequence are in `the-standard.md`.
 
-**The deck opens on the day's business scenario**, taken from column 2 of the row and said in the
-stakeholder's words, with the questions they are asking. Slide two is the thinking that scenario demands,
-drawn as one picture, before any tool appears. Those two slides are never cut and never reordered, because
-the review that produced this schema found that a day opening on a technique teaches code rather than
-analysis. The deck closes on the sentence the learner would actually send the stakeholder, with its caveat.
+**The deck opens on the day's topic, the week map, the topics slide and the concept map**, which name
+every bullet of the row's Subtopics column verbatim and in the row's order, each with the chapter that
+teaches it, then shows the case ticket in one slide as the destination (from Week 4 on, decision
+`concept-first-case-second`; Weeks 1 to 3 open on the scenario in the stakeholder's words and keep
+that until rebuilt). The concept chapters follow, one per subtopic, in the row's order unless the
+week's spine records a reason, each on a simple relatable educational example with the thinking drawn
+before any tool, and a concept chapter may open the afternoon, before the case chapter that applies
+it; then the case chapters, each naming the subtopics it applies. The topics slide, the concept map
+and the ticket are never cut and never reordered: the September review found that a day opening on a
+technique teaches code rather than analysis, and the October review found that a day opening on a case
+alone hides the curriculum. The deck closes on the sentence the learner would actually send the
+stakeholder, with its caveat and the topics it used.
 
 Deck behaviour: visual and thin, narration in the trainer notes, one idea per slide, the day's mental-model diagram repeated at each section boundary with the current part lit, a numbered step card closing every section, and the crux line on the final card. The deck teaches in the spiral order: everyday anchor, whole pipeline shallow, then the day's designated deep stops.
 
@@ -18,7 +25,7 @@ Deck behaviour: visual and thin, narration in the trainer notes, one idea per sl
 
 A notebook is a teaching document that happens to run. **Its first markdown cell is the same business
 scenario the deck opened on**, so a learner who reopens the notebook a month later meets the question before
-the code. A day carries one notebook per chapter, about six, each climbing three or four levels of one business question and each building on the one before, plus the two case notebooks. Each opens on the need and its options table with a sizing cell and the best-fit call, and closes on a second route that reaches the same number another way. Cell order per level: the idea in one markdown beat; a diagram or a chart; the working demo; its visible output; at the trap, the plausible wrong number computed the way a hurried analyst would, why it is wrong in business terms, the check that exposes it and the fix; and, at each milestone, one industry example of the technique in production and one interview question the milestone just made answerable.
+the code. A day carries one notebook per chapter: a concept notebook of 8 to 18 cells per row subtopic, named by the subtopic and built on its educational example, then a case notebook per case chapter, each climbing the levels of one business question and each building on the one before, plus the lab notebook. Each opens on the need and its options table with a sizing cell and the best-fit call, and closes on a second route that reaches the same number another way. Cell order per level: the idea in one markdown beat; a diagram or a chart; the working demo; its visible output; at the trap, the plausible wrong number computed the way a hurried analyst would, why it is wrong in business terms, the check that exposes it and the fix; and, at each milestone, one industry example of the technique in production and one interview question the milestone just made answerable.
 
 Progression is the notebook's spine: build the thing in variations, smallest first, exactly one new element per step. The canonical shape, kept from delivered work: a simple agent loop by hand, then the loop with one tool, then many tools, then one turn, then multiple turns. Apply the same ladder logic to any topic: each notebook section is the previous section plus one decision.
 

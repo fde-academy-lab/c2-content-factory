@@ -81,6 +81,10 @@ The opening day ships the introduction pack: the client-zero narrative deck (the
 9. Raised on 30 September 2026: a day runs in about six chapters, each one deck chapter paired with one notebook; each chapter puts the problem, its options and their sizing before the code and closes on a second route; a new domain opens on its dossier and story; and every pack runs the five-pass depth loop.
 9. Exercise volume is capped by session minutes rather than by the manifest, with think-heavy, type-light answers.
 10. A day folder is a set of subfolders by artifact type rather than a flat list of files, Saturday moves out of the numbered days into `SAT/`, and a day with no session gets no folder at all. `content/README.md` is the layout's home and `scripts/verify.py` enforces it.
+11. Raised on 13 October 2026: a day teaches the row's subtopics first, as named concept chapters on
+    educational examples each paired with a notebook of the same name, then applies them to the case;
+    every day ships a coverage matrix, in the shape `.claude/skills/day-pack-builder/references/coverage-matrix.md`
+    sets, that `scripts/coverage_check.py` reads inside `verify.py`.
 
 ## 7. What changed at curriculum schema v2, 13 September 2026
 
