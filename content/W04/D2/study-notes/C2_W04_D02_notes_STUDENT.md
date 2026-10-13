@@ -1,122 +1,132 @@
-# Can the redesign survive one slide, and can a number be sized from nothing?
+# Stakeholder communication: how does a decision survive one slide, one page and a number nobody has measured?
 
-Week 4 · Tuesday · Analyst craft · Uber, Hyderabad, one day on
-One claim, one number with its denominator, a caveat in sight and an action with its cost; then a number sized aloud and checked.
-13 minute read · 4 figures
+Week 4, Tuesday. About 13 minutes to read, and 10 more for the self-check.
 
-> Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
+Tuesday teaches five topics on invented examples small enough to count by hand: Ramesh's kirana shop,
+Gulmohar Secondary School and a campus canteen. Then Uber's Hyderabad city head uses all five: one
+slide for Thursday's city review, three objections from people who lose under it, a number sized from
+nothing, and one page written by hand. Illustrative case: the company is real, the situation and the
+data are synthetic, built for this class.
 
-## What can you do now that you could not do this morning?
+---
 
-**Who needs the answer.** You, deciding what to practise tonight. **The questions on the way.** Which
-moves are new, and which come back every build week?
+## What can you do after Tuesday?
 
-1. Turn a slide of nine numbers into one claim with one piece of evidence, its denominator named.
-2. Read the same rupees three ways and say which read the decision needs, and why the others moved.
-3. Answer an objection that is partly right in four moves without retreating or overclaiming.
-4. Decide what leaves the slide and which person's appendix page it goes to.
-5. Size a number from stated assumptions, give its range and the factor that sets it, and check it in the same unit.
+- Put a decision on one slide in four parts, and pick its evidence by the unit the decision buys.
+- Decide what stays on the slide, which person's appendix page takes the rest, and why the caveat never leaves.
+- Answer an objection that is partly right in four moves, conceding its true part out loud.
+- Size a number nobody has measured in four steps, give its range, and check it like for like.
+- Write the slide's four parts as four sentences on one page, by hand, in plain words.
 
-## Where does today sit in the week and the programme?
-
-**Who needs the answer.** Anyone explaining to a manager what Tuesday was for. **The questions on the
-way.** What was worked, what was only mentioned, and what comes next?
-
-**What this session covered.** Worked: the one-slide answer on the Uber case, rebuilt from three
-cluttered slides; the three reads of gross bookings; two rounds of role-played defence; the
-drivers-at-peak estimate and the paired UPI estimate; a one-page written case by hand. Mentioned
-only: Amazon's six-page memo, the Delhi Metro's record day, Flipkart's muddled figure.
+## Which map holds the day?
 
 ```mermaid
 flowchart LR
-    M["<b>Mon</b><br/>pay for trips"] --> T["<b>Tue</b><br/>one slide, four moves,<br/>a number sized and checked"]
-    T --> W["<b>Wed</b><br/>what goes with what"]
-    W --> H["<b>Thu</b><br/>who is leaving"]
-    H --> F["<b>Fri</b><br/>how much is coming"]
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    T1["<b>Chapter 1</b><br/>The one-slide<br/>answer: claim,<br/>evidence, caveat,<br/>action"] --> T2["<b>Chapter 2</b><br/>What to leave<br/>out, and the<br/>appendix"]
+    T2 --> T3["<b>Chapter 3</b><br/>Defending under<br/>challenge: restate,<br/>answer, concede,<br/>what would<br/>change your mind"]
+    T3 --> T4["<b>Chapter 6</b><br/>The guesstimate:<br/>clarify, map,<br/>calculate,<br/>validate"]
+    T4 --> T5["<b>Chapter 7</b><br/>The AI-free<br/>written business<br/>case"]
+    T5 --> C["<b>The case</b><br/>Uber, Hyderabad:<br/>chapters 4, 5<br/>and 8 to 10"]
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    class M known
-    class T lit
-    class W,H,F unknown
+    classDef kalpa fill:#FFF7E6,stroke:#C98A00,color:#5C3D00
+    class T1,T2,T3,T4,T5 lit
+    class C kalpa
 ```
 
-| | |
-|---|---|
-| In the subject | A number becomes a decision only when the person who loses under it can repeat it |
-| In this programme | Monday wrote the metric; today puts it in front of the people it judges |
-| In the work | The review where a metric replaces three departments' targets, and the round that opens "estimate this, aloud" |
+Each topic leans on the one before it: say the claim, cut to it, hold it, size it, write it down.
 
-The outcome tie: this is the moment in the capstone, the programme's final project, when you present a
-finding to a panel in five minutes and take the first hostile question. Left out: slide design as a
-craft and the theory of sizing whole markets; the guesstimate returns about once a month.
+---
 
-## What is the one picture to remember?
+## The one-slide answer: claim, evidence, caveat, action: what does a slide carry?
 
-**Who needs the answer.** Anyone who has to rebuild a slide from memory. **The questions on the way.**
-What are the four parts, and where do they sit?
+**Who needs the answer.** Ramesh (invented), who opened his kirana shop two more hours a day from
+October and must decide whether the hours stay, and later the Uber city head, who has one slide and
+five minutes.
 
-![The four-part slide](../whiteboards/C2_W04_D02_cleared_slide_STUDENT.png)
+**The questions on the way.** What makes a title act? Which number is the evidence? Where do the
+caveat and the action sit?
 
-Call it **the four-part slide**: the claim as the title, the evidence with its denominator, the caveat
-beside it, the action with its cost and who signs.
+A slide with no claim makes every reader hunt for a point. A hostel notice reading "Breakfast survey
+results" is walked past for a week; one reading "Rotis replace rice at Monday breakfast, so the
+kitchen moves two staff from the rice counter to the roti line" gets two staff moved (invented). The
+**claim** is that second kind of title: a sentence with a verb saying what is true and what to do.
 
-The five lines to keep: A slide carries one claim, one number
-with its denominator, the caveat in sight and the action with its cost. Name the denominator before the
-number. Answer an objection in four moves. Size a number in four steps, give the factor that drives
-the range, and check it like for like. Check in the same unit, period and definition.
+The evidence is one number with its **denominator**, what the total is divided by, and the decision
+picks it. Ramesh's shop (invented) sold Rs 11,900 a day at 10 hours in September and Rs 12,600 a day
+at 12 hours in October: per day up Rs 700, 5.9 percent, the son's sentence; per hour down from Rs 1,190
+to Rs 1,050, 11.8 percent, the father's; per customer flat at Rs 100. The decision is whether two extra
+hours pay, so it is priced per hour.
 
-## What is the one claim, and which number carries it?
+![Ramesh's slide in its four parts, every number invented](../whiteboards/C2_W04_D02_kirana_slide_STUDENT.png)
 
-**Who needs the answer.** The Hyderabad city head, who has one slide and five minutes at Thursday's
-city review. **The questions on the way.** What makes a title act? Which denominator does the slide
-name? Why does one read rise while another falls?
+The four parts, in the order a reader needs them: the **claim** as the title; the **evidence**, one
+number with its denominator and window, or one chart; the **caveat**, what the evidence cannot show
+yet, beside it (a festival fortnight fell inside October, so part of the Rs 700 may be the season);
+the **action**, with its cost in rupees and weeks and who signs (keep the hours through November,
+count the evening's sales apart, decide after thirty days; the helper's two hours cost Rs 170 a day;
+Ramesh signs). The test: the person who loses under the slide can repeat it accurately while
+disagreeing.
 
-Without a claim, a slide is a list the reader must decode. A claim is a sentence with a verb that a
-reader can act on. A hostel notice reading "Breakfast survey results" is walked past; one reading
-"Rotis replace rice at Monday breakfast, so the kitchen moves two staff to the roti line" gets two
-staff moved (invented, and Minto's answer-first rule in miniature).
+> **WATCH OUT** · "Sales a day rose from Rs 11,900 to Rs 12,600, so the longer hours work" is true to
+> the rupee and prices an hours decision per day.
 
-The denominator is a choice, and an auto driver shows why (invented): earning Rs 1,800 on Monday from
-20 rides in 9 hours and Rs 1,800 on Tuesday from 18 rides in 12 hours, the driver is flat per day, up
-per ride (Rs 90 to Rs 100) and down per hour (Rs 200 to Rs 150).
+**At Uber.** Chapter 4 reads the city's gross bookings the same three ways and puts Rs 314 to Rs 260
+per peak online hour on the slide.
 
-The thread: gross bookings, what riders paid for peak trips. On Monday's twelve rows (six drivers, two
-weeks) they fell 37 percent per online hour (Rs 313.5 to Rs 196.2), 23 percent per driver-week and not
-at all per trip. On all driver-weeks they fell 17 percent per online hour (Rs 314 to Rs 260), rose 0.8
-percent per active driver-week (Rs 5,817 to Rs 5,861) and held at Rs 165 per trip. A second route splits the fall: Rs 165 x 1.90 trips per hour
-is Rs 313.5, and Rs 165 x 1.578 (230,900 / 146,300, printed 1.58) is Rs 260.4, so the fare held and the
-whole fall is trips per hour.
+Say it to a hostel warden: "Put the decision in the title, one number that proves it, what you are
+unsure of, and what to do with its cost."
 
-![The same rupees, three denominators, three directions](../whiteboards/C2_W04_D02_three_reads_STUDENT.png)
+## What to leave out, and the appendix: where does the rest go?
 
-> **WATCH OUT** · "Bookings per driver-week rose, so the guarantee works" is true to the rupee and
-> wrong as a reason. Rupees per driver-week is rupees per hour times hours per driver-week: hours went
-> from 18.6 to 22.5 a driver-week while each hour brought in 17 percent less, so the scheme bought
-> hours. The 140 joiners drove about one week each at Rs 4,314, below the average, so they pulled the
-> read down; the drivers there before the launch rose 1.4 percent. The tell: a read that rises while
-> the read the scheme pays in falls.
+**Who needs the answer.** Ramesh (invented), who reads in five minutes, and two readers who each look
+for their own question behind the slide: his son and the shop's accountant.
 
-> **IN THE FIELD** · Storytelling with Data's declutter makeover (4 January 2011) strips borders,
-> gridlines and most markers, and labels the lines directly: the moves of today's makeover.
+**The questions on the way.** How many elements stay? Where do the rest go? Can the caveat leave?
 
-> **CALLBACK** · Monday, chapter 2: trips per peak online hour fell from 1.90 to 1.58 while online
-> hours rose 24 percent. Today's Rs 314 to Rs 260 is that fall in rupees.
+Ask three questions of every element on the draft: does the claim need it; if not, will a named person
+ask about it; and is it the caveat, which stays whatever else happens. Ramesh's first draft (invented)
+carried eight elements. Three stay: the per-hour chart and sales per customer carry the claim, and the
+festival fortnight is the caveat. The son's page, headed "did my extra hours at the counter bring
+customers?", takes customers a day and his hours at the counter; the accountant's page, headed "what
+did the longer hours cost, and what did they bring?", takes the four weeks' totals and the helper's
+wage; the rain days leave, because nobody will ask. The **appendix** is those pages, shown only when
+someone asks.
 
-Say it to a hostel warden: "An hour online used to bring in Rs 314 of fares and now brings in Rs 260,
-because more of those hours have no rider." (The week's explorer draws this in
-scenes T1 and T2.)
+A chart obeys the same rule. Storytelling with Data's declutter post (4 January 2011) asks of every
+element, "Is it adding any informative value? If the answer is no, then take it out!" Six series, a
+legend and a grid become one line with two labels.
 
-## Which objection is partly right, and which part?
+> **WATCH OUT** · "The slide is crowded, so the caveat goes to the appendix." An owner who finds the
+> caveat in the drawer calls the slide dishonest; something else leaves instead.
 
-**Who needs the answer.** The analyst whose slide must survive three roles who each lose something.
-**The questions on the way.** What is each objection's true part? What are the four moves? What does a
-failing defence sound like?
+**At Uber.** Nine dashboard numbers become two, and each of the three roles gets one appendix page
+headed by its own question (chapters 4 and 5).
 
-A defence that concedes nothing loses the room; one that concedes everything loses the claim. The four
-moves: restate the objection until its owner agrees, answer from a named line of evidence, concede the
-true part, say what would change your mind. Think of a referee explaining a decision to both captains:
-the call stands, the replay is shown, the close part is admitted.
+Say it to a hostel warden: "Keep the point and the doubt on the notice; file the rest under the
+question each sheet answers."
+
+## Defending under challenge: restate, answer, concede, what would change your mind: how do you hold a claim?
+
+**Who needs the answer.** A teacher at Gulmohar Secondary School (invented) who claims the new
+timetable, from week 3, raised attendance, and the headmaster, who decides whether it stays.
+
+**The questions on the way.** Which part of the objection is true? Which evidence answers the rest?
+What does a full defence sound like?
+
+The sports teacher objects: "Attendance rose because the exams began." She is partly right. In both
+years the exam weeks run about 8 points above the three weeks before them: 8.3 last year, 8.0 this
+year. Weeks 3 to 5 this year sit 4.7 points above last year's same weeks, before any exam, and weeks 1
+and 2 sit at 76.5 in both years. The concession carries one number and the answer another.
+
+![Gulmohar's attendance over two years, invented](../whiteboards/C2_W04_D02_school_two_years_STUDENT.png)
+
+The four moves: **restate** the objection until its owner agrees with your version; **answer** from a
+named line of the evidence; **concede** the true part out loud; say **what would change your mind**,
+so the claim can be tested. Restating comes first, as in Rapoport's rules, which the philosopher
+Daniel Dennett set out. A defence fails two ways: overclaiming concedes nothing ("exams are
+irrelevant"), and retreating concedes everything ("let us wait a term").
+
+**At Uber.** Chapter 5 finds each role's true part in the case's tables:
 
 | Role | True part | Answered by |
 |---|---|---|
@@ -124,139 +134,143 @@ the call stands, the replay is shown, the close part is admitted.
 | Marketing: "it looks like bait" | The hoarding promised a floor | The floor stays for drivers who accept; no joiner is in the idle tail |
 | Finance: "it is the monsoon" | The season changed; last year's weeks are missing | With requests back at the before level, the last three weeks still ran at 1.56 trips an hour |
 
-> **IN THE FIELD** · Amazon's 2017 letter to shareholders says its meetings use no slides: a
-> six-page memo is read in silence at the start (letter filed 18 April 2018).
+Say it to a hostel warden: "Repeat their point, show your proof, admit what they got right, and say
+what would change your mind."
 
-> **CALLBACK** · Week 1, Thursday: the four-part note (claim, evidence, caveat, action), now on one
-> slide.
+## The guesstimate: clarify, map, calculate, validate: how big is an unknown?
 
-Say it to a hostel warden: "When someone pushes back, repeat their point, show your proof, admit what
-they got right, and say what would change your mind."
+**Who needs the answer.** The campus canteen's head (invented), who must order milk for a weekday
+before any till report exists, and any interviewer who asks for a number aloud.
 
-## What leaves the slide, and where does it go?
+**The questions on the way.** What exactly is counted? Which guess sets the range? Is the answer sane?
 
-**Who needs the answer.** The city head, who reads in five minutes, and the three roles, who each look
-for their own question. **The questions on the way.** What stays? Where do the rest go? Can a caveat
-leave?
+**Clarify** the unit, the period and what counts: one canteen, one weekday, cups of tea. **Map** a chain
+that multiplies out in that unit: students x the share who buy x cups each. **Calculate** aloud: 3,000
+students, then 1,350 who buy at 0.45, then 2,700 cups at 2 each. Moving one guess at a time to its
+ends, the share who buy moves the answer from 1,500 to 3,900, wider than either other guess, so it is
+the one to count first. **Validate** against a number counted the same way: the till averages 2,340
+cups a weekday, so the chain runs 15.4 percent high and the share that lands on the till is 0.39.
 
-Nine numbers become two: the chart of bookings per online hour and the 61 percent of the Rs 1.9 crore
-top-up that went to driver-weeks accepting fewer than half their offers. Everything else goes to an
-appendix page headed by the question one role will ask. The caveat never leaves: an owner who finds it
-in the drawer calls the slide dishonest.
+![Which guess moves the canteen's cups most, invented](../whiteboards/C2_W04_D02_canteen_swing_STUDENT.png)
 
-> **IN THE FIELD** · In 2018 the Delhi Metro reported "line utilisation", a trip across three lines
-> counted three times, in place of ridership, and the press asked where ridership went (PTI, 30 May
-> 2018).
+A check counts only in the same **unit**, **period** and **definition**: a town of 24,000 people
+(invented) has about 6,000 households, never 96,000; a 28-day pack of 1.5 GB a day (42 GB) and a 30-day
+month (45 GB) match per day; Gulmohar's 113 passes are 83.7 percent of the 135 who sat and 75.3 percent
+of the 150 enrolled. Think Insights' guide says the interviewer is "interested in your thought process;
+not the final result".
 
-Say it to a hostel warden: "Keep the two numbers that make the point on the notice; put the rest in a
-folder labelled with the question each one answers."
+> **WATCH OUT** · A careful chain that multiplies a unit it should divide. The tell: a factor whose
+> unit nobody wrote down.
 
-## How big is a number nobody has measured?
-
-**Who needs the answer.** The city head, who wants drivers at the evening peak before data exists.
-**The questions on the way.** What are the four steps? Which assumption sets the range? What can the
-check confirm?
-
-Clarify, map, calculate, validate. The chain: 1 crore people x 1 weekday Uber trip per 100 people x a
-quarter of trips in the three evening hours = about 8,330 trips an hour; a busy driver fits 2.4 trips
-an hour and 30 percent of online drivers have no rider, so each completes 1.68; 8,330 / 1.68 x 1.15 for
-the busiest half hour is about 5,700 drivers. Counting trips, never riders, counts a commuter who rides
-both ways twice. Trips per person moves the answer from about 2,900 to about 8,600 with
-everything else held. Units: 1 lakh is 100,000; 1 crore is 10 million; 100 crore is 1 billion.
-
-![Which assumption moves the answer most](../whiteboards/C2_W04_D02_guesstimate_swing_STUDENT.png)
-
-The case's data can check one ratio in the chain, like for like, and holds no city count: its twelve
-zones used 0.53 online driver-hours per completed trip before the launch, when the median wait was 4.8
-minutes, against the chain's 0.60. The chain runs about an eighth high, and at the case's 1.90 trips an
-hour it gives about 5,000, so the checked answer is about 5,000 to 5,700. A published count of drivers
-online at Hyderabad's evening peak has not been found.
-
-> **WATCH OUT** · Dividing a day's trips by an hour's rate gives about 41,700 drivers, about seven
-> times the chain. The tell: a unit that changes between factors without anyone saying so.
-
-> **IN THE FIELD** · NPCI, which runs UPI, averaged 802 million transactions a day in September 2026
-> (Outlook Money, 2 October 2026); 24.07 billion over 31 days would give 776 million. At about Rs 1,220
-> a payment, large transfers between people sit inside the count.
+**At Uber.** Chapter 8 sizes drivers online at the weekday evening peak at about 5,700, checks the
+chain's driver-hours per trip against the case's own, and says about 5,000 to 5,700.
 
 Say it to a hostel warden: "Break the big number into small guesses you can defend, multiply, and check
-against something counted the same way." (The week's explorer draws the chain in scene T3.)
+against something counted the same way."
 
-## Where does this show up in the work?
+## The AI-free written business case: what must a page carry?
 
-**Who needs the answer.** Anyone wondering when they will use this. **The questions on the way.** Which
-meetings, which costs?
+**Who needs the answer.** Ramesh (invented), reading his son's page alone in the evening, and the city
+head, reading the page each learner writes by hand in chapter 9.
 
-- A metric review: a slide that cannot name its denominator hands each department a read to argue with.
-- A funding decision before data exists, where an estimate with no range commits money to one point.
-- An AI product whose acceptance rate rises while users delete what they accepted.
+**The questions on the way.** Which opening does the reader act on? What goes on the page, in what
+order? Which words stay off it?
 
-## Can you answer these without writing anything?
+A **business case** says what to do, why, what it costs and what could go wrong. It is one page because
+the reader has two minutes, and AI-free because it shows your own thinking. The son's draft (invented)
+ran nine lines, 13 numbers and four method words. The page runs four sentences: the claim with its
+reason, one number with what it is divided by, the caveat, then the action with its cost and who
+signs. The caveat comes before the action, so the reader meets the doubt before the cost.
 
-**Who needs the answer.** You, tonight. **The questions on the way.** Which section answers each of
-the five checks?
+![The draft against the page, invented](../whiteboards/C2_W04_D02_kirana_page_counts_STUDENT.png)
 
-1. Rs per active driver-week rose 0.8 percent. Is that evidence the guarantee works?
-2. Which of the four moves do first defences skip?
-3. Can the monsoon caveat move to the appendix?
-4. Which factor sets the range of the drivers estimate?
-5. From Monday: which guardrail catches drivers who accept only short trips?
+Method words stay off: "divided by" replaces denominator, "compared with the month before" replaces
+index, "a number that must not get worse" replaces guardrail. Amazon's 2017 letter to shareholders
+(filed 18 April 2018) says its meetings use no slides: a six-page memo is read in silence at the start.
 
-Key: 1, no: each driver-week carried about four more online hours at 17 percent less per hour. 2, the
-fourth, what would change your mind. 3, no: a caveat stays beside the evidence. 4, how often people
-ride, in trips per 100 people. 5, the acceptance share.
+**At Uber.** Chapter 9 is the page to the city head, by hand, in 35 minutes, handed in.
 
-## Where does this get tested?
+Say it to a hostel warden: "Write what to do and why first, one number second, the doubt third and
+the cost last."
 
-**Who needs the answer.** Anyone with an analyst interview coming. **The questions on the way.** What
-is asked, and what makes an answer weak? The tags are this programme's: [S] a staple asked everywhere,
-[F] frequent in GCC and product screens, [D] a differentiator.
+---
+
+## The case: what does the city head take to Thursday's review?
+
+**Who needs the answer.** The Hyderabad city head, who must keep, end or change the peak-hour earnings
+guarantee. **The questions on the way.** Which number carries the slide? Which objections hold? How
+many drivers does the evening peak need?
+
+Since the launch on 31 August 2026, peak online hours rose 24 percent while completed peak trips rose 3
+percent. On all driver-weeks, gross bookings (what riders paid) fell 17 percent per peak online hour,
+Rs 314 to Rs 260, rose 0.8 percent per active driver-week and held at Rs 165 per trip. A second route
+splits the fall: Rs 165 x 1.90 trips an hour is Rs 313.5, and Rs 165 x 1.578 is Rs 260.4, so the
+whole fall is trips per hour.
+
+![Slide A rebuilt in its four parts](../whiteboards/C2_W04_D02_cleared_slide_STUDENT.png)
+
+> **WATCH OUT** · "Bookings per driver-week rose, so the guarantee works." Rupees per driver-week is
+> rupees per hour times hours per driver-week: hours went from 18.6 to 22.5 while each hour brought in
+> 17 percent less, so the scheme bought hours.
+
+The drivers estimate: 1 crore people x 1 weekday Uber trip per 100 people x a quarter of trips in the
+three evening hours is about 8,330 trips an hour; each online driver completes 2.4 x (1 - 0.30 idle) =
+1.68 an hour; 8,330 / 1.68 x 1.15 for the busiest half hour is about 5,700, from about 2,900 to 8,600
+by trips per person. Like for like, the case's 0.53 online driver-hours per trip against the chain's
+0.60 says the chain runs an eighth high: about 5,000 to 5,700. A day's trips over an hour's rate gives
+about 41,700. No published count of drivers online at Hyderabad's evening peak has been found. Units: 1
+lakh is 100,000; 1 crore is 10 million.
+
+
+## Can you answer these without notes?
+
+1. Ramesh's sales a day rose Rs 700. Is that the evidence for keeping the longer hours?
+2. The slide is crowded. Can the caveat move to the appendix?
+3. Which of the four moves do first defences skip?
+4. Which known number checks the canteen's weekday estimate?
+5. Where on a one-page case does the caveat sit?
+6. From Monday: which guardrail catches drivers who accept only short trips?
+
+Key: 1, no: the decision is about hours, and per hour the shop earns 11.8 percent less. 2, no: the
+caveat stays and something else leaves. 3, the fourth, what would change your mind. 4, the till for one
+weekday: same unit, period and definition. 5, before the action. 6, the acceptance share.
+
+## Which interview questions does Tuesday prepare you for?
+
+The tags are this programme's: [S] a staple asked everywhere, [F] frequent in GCC and product screens,
+[D] a differentiator.
 
 | Question | A strong answer | What makes it weak |
 |---|---|---|
-| [S] Present a recommendation to a non-technical leader in two minutes | The decision, the claim, one number with its denominator, what riders got, the caveat, the action with cost and signer | Opening on method and nine numbers |
-| [S] How many drivers must be online at the evening peak? | Clarify, the formula, a range with its driving factor, a check like for like that moves the answer | A day's trips divided by an hour's rate: about 41,700 |
+| [S] Present a recommendation to a non-technical leader in two minutes | The claim, one number with its denominator, the caveat, the action with cost and signer | Opening on method and nine numbers |
+| [S] How many drivers must be online at the evening peak? | Clarify, the formula, a range with its driving factor, a like-for-like check that moves the answer | A day's trips divided by an hour's rate |
 | [F] A stakeholder's objection is partly right; how do you answer it? | The four moves, the concession in the open | Retreating, or repeating the claim louder |
-| [F] What do you leave off the slide, and where does it go? | Two elements stay; the rest go to pages headed by each role's question | "Everything goes in the appendix" |
-| [D] The person who loses under your metric controls the meeting | Concede their true part, keep their number as a leading input, and agree the test and its deciding result before the meeting | Fighting for a clean sweep |
+| [F] What do you leave off the slide, and where does it go? | What the claim needs stays; the rest goes to pages headed by each role's question | "Everything goes in the appendix" |
+| [D] The person who loses under your claim controls the meeting | Concede their true part, keep their number on the page, and agree the deciding test beforehand | Fighting for a clean sweep |
 
 The AI-company variant: a coding assistant's deck quotes acceptance rate; keep it as a leading input,
-and make suggested code still in the file seven days after acceptance the north star once a holdout
-of users shows it tracks renewals.
+and make suggested code still in the file seven days after acceptance the north star once a holdout of
+users shows it tracks renewals.
 
-## Which words did today use?
-
-**Who needs the answer.** Anyone rereading a slide a month from now. **The questions on the way.** What
-does each term mean?
+## Which words did Tuesday use?
 
 | Term | Plain meaning | Example |
 |---|---|---|
 | Claim | The sentence the slide wants the reader to act on | The scheme pays for idle hours |
-| Denominator | What a total is divided by | Per online hour, per driver-week, per trip |
-| Gross bookings | What riders paid for trips, before Uber's share and any top-up | Rs 314 an online hour |
-| Active driver-week | One driver with a row in the week's table | 6,360 before, 6,500 after |
-| Caveat | What the evidence cannot show yet | The monsoon ended inside the window |
-| Appendix page | A page behind the slide, headed by one role's question | Driver operations' page |
-| Idle share | The share of online drivers with no rider at a moment | 0.30 in the chain |
-| Floor | The Rs 300 guaranteed for each peak online hour | Rs 300 an hour |
-| Top-up | What Uber pays to lift a driver's trip earnings up to the floor | Rs 1.9 crore in six weeks |
-| Acceptance share | Requests a driver accepted over requests offered to them | 86 percent before, 73 percent after |
-| Acceptance floor | The redesign's condition: accept at least half the requests offered | Half the offers |
-| Idle tail | Monday's 180 drivers whose trips per online hour fell under 1.0; theirs are the weeks that accepted under half | 180 drivers |
-| Guardrail | A number that must not get worse while the paid-for number rises | The median rider wait at peak |
-| North star | The one number a scheme or a team is judged on | Completed peak trips per enrolled driver |
-| Leading input | A number that moves first and can be acted on this week | Acceptance rate in the sales deck |
-| Buffer | Extra drivers for the busiest half hour of the window | 1.15 in the chain |
-| Index | A week's value over its before-window average, times 100 | 100 is "unchanged" |
-| Sanity check | A comparison with a number counted the same way | 802 million a day |
+| Denominator | What a total is divided by | Per hour, per day, per customer |
+| Caveat | What the evidence cannot show yet | A festival fortnight fell inside October |
+| Appendix page | A page behind the slide, headed by one reader's question | The accountant's page |
+| Objection | The reason a listener gives for not accepting a claim | "Attendance rose because the exams began" |
+| Concede | To say an objection's true part out loud | The exams add about 8 points |
+| Guesstimate | A rough count of something nobody has measured | Cups of tea on a weekday |
+| Range | The lowest and highest answer you would still defend | 1,500 to 3,900 cups |
+| Check | A number counted in the same unit, period and definition | The till's 2,340 cups |
+| Business case | A written argument for a decision | Ramesh's four sentences |
 
-## Where should you go next, and in what order?
-
-**Who needs the answer.** Anyone with an evening to spend. **The questions on the way.** What should you
-read first, and how long does each take?
+## Where should you read next, and how long does each take?
 
 | Order | What | Time |
 |---|---|---|
-| 1 | Storytelling with Data, "what's the Big Idea?" (6 February 2014): https://www.storytellingwithdata.com/blog/2014/02/whats-big-idea (checked 12 October 2026) | 5 minutes |
-| 2 | Storytelling with Data, "a new year's resolution: declutter your graphics": https://www.storytellingwithdata.com/blog/2011/01/new-years-resolution-declutter-your (checked 12 October 2026) | 5 minutes |
-| 3 | Amazon's 2017 letter to shareholders, the memo section: https://www.sec.gov/Archives/edgar/data/1018724/000119312518121161/d456916dex991.htm (checked 12 October 2026) | 10 minutes |
+| 1 | Storytelling with Data, "a new year's resolution: declutter your graphics": https://www.storytellingwithdata.com/blog/2011/01/new-years-resolution-declutter-your (checked 13 October 2026) | 5 minutes |
+| 2 | Storytelling with Data, "what's the Big Idea?" (6 February 2014): https://www.storytellingwithdata.com/blog/2014/02/whats-big-idea (checked 12 October 2026) | 5 minutes |
+| 3 | Amazon's 2017 letter to shareholders, the memo section: https://www.sec.gov/Archives/edgar/data/1018724/000119312518121161/d456916dex991.htm (checked 13 October 2026) | 10 minutes |

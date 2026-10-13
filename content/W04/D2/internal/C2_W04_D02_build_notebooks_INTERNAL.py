@@ -149,8 +149,8 @@ check("per customer did not move between the months", m.per_customer.nunique() =
         ## Does the fall per hour hold on every day, or only on a few?
 
         A monthly average can hide a handful of bad days. The chart draws sales per hour for each of
-        the 56 days, marks the rain days, shades October's festival fortnight, and carries the
-        claim as its title.
+        the 56 days, with the rain days as dots and October's festival fortnight shaded, and it
+        carries the claim as its title.
 
         **Predict before you run.** How many October days earned more per hour than the weakest dry
         September day?

@@ -11,7 +11,7 @@ checks it, and what is the catch?
 
 ## How many drivers must be online at the weekday evening peak?
 
-**Who needs the answer.** The trainer at S37 to S42. **The questions on the way.** Which values, which
+**Who needs the answer.** The trainer at S73 to S78. **The questions on the way.** Which values, which
 range, which check?
 
 | Factor | Central | Range | Why |
@@ -59,7 +59,7 @@ told so. The idle share is the one factor Monday's data shows moving.
 
 ## How many UPI payments happen in India on an average day?
 
-**Who needs the answer.** The trainer at S43 and S44. **The questions on the way.** Which worked chain,
+**Who needs the answer.** The trainer at S79 and S80. **The questions on the way.** Which worked chain,
 which anchor, which catch?
 
 | Factor | Central | Range |
@@ -109,8 +109,11 @@ half a mature store's sales passes; a first-year store above a mature store's sa
 of several sizes; its release gives stores two years and older their own growth figure, 10.8 percent in
 the last quarter of FY26. The year-end count gives about Rs 134 crore, about 9 percent lower.
 
-## Why does the canteen's tea open the dojo?
+## Why does the canteen's tea come before the city head's question?
 
-The warm-up is a toy, invented for this class: 2,000 students x 0.6 who buy tea x 2 cups = 2,400 cups,
-validated against the canteen's till or a count at the counter for one busy half hour. It shows the
-four steps on numbers nobody will argue with, before the city head's question.
+Chapter 6 teaches the four steps on a campus canteen invented for the class, so the method is learned
+on numbers nobody will argue with before the city head's question: 3,000 students x 0.45 who buy tea x
+2 cups = 2,700 cups a weekday; the share who buy, 0.25 to 0.65, moves it from 1,500 to 3,900 with the
+other guesses held; the till's five weekdays average 2,340, so the chain runs 15.4 percent high and
+the share that lands on the till is 0.39. The chapter's three tests, unit, period and definition,
+stay on the board for chapter 8, and notebook 06 runs every step.

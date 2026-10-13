@@ -1,7 +1,7 @@
 # Scorecards, Week 4 Tuesday: how does each answer in the interview room score, and why?
 
 **TRAINER ONLY.** The scored copies of the two transcripts and the AI-company variant in
-`extras/C2_W04_D02_interview_room_STUDENT.md`. Pairs score in class from the criteria on slide S52;
+`extras/C2_W04_D02_interview_room_STUDENT.md`. Pairs score in class from the criteria on slide S90;
 this page is the trainer's key for the comparison that follows. Seven criteria, each 0 to 2, are the
 programme's own; Aced's guide to analyst interviews supports two of them, that the interviewer
 listens for the estimation framework over a precise number and wants each assumption stated so it can

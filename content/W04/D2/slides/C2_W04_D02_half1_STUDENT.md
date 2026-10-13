@@ -68,7 +68,7 @@ Transition: the five topics.
 | 4 | The guesstimate: clarify, map, calculate, validate | 6, after lunch | 30 | 06 |
 | 5 | The AI-free written business case | 7, after lunch | 10 | 07 |
 
-Chapters 4 and 5 apply topics 1 to 3 to Uber's slide before lunch, chapters 8 to 10 apply topics 4 and 5 after it, and the lab runs the guesstimate on Kalpa Retail in notebook 11. A slide numbered D is for self-study, and each interview line carries this programme's tag: [S] a staple asked everywhere, [F] frequent in product-company and global capability centre screens, [D] a differentiator.
+Chapters 4 and 5 apply topics 1 to 3 to Uber's slide before lunch; chapters 8 to 10 apply topics 4 and 5 after it, with topics 1 and 3 back in the page and the interview room; and the lab runs the guesstimate on Kalpa Retail in notebook 11. A slide numbered D is for self-study, and each interview line carries this programme's tag: [S] a staple asked everywhere, [F] frequent in product-company and global capability centre screens, [D] a differentiator.
 
 ```notes
 LIVE, 1 minute. Read the five topics down the second column once: these are the curriculum's
@@ -702,7 +702,7 @@ map's third box. Then the break, 10 minutes. Transition: after the break, the ca
 *The one-slide answer applied: Uber's slides A, B and C rebuilt to one claim, one number with its denominator, the caveat in sight and the action with its cost, so the city head can act on one slide.*
 
 ```notes
-LIVE, 30 seconds. The first case chapter, levels L1 and L2 of the ladder, 41 minutes with the six on
+LIVE, 30 seconds. The first case chapter, levels L1 and L2 of the ladder, 40 minutes with the five on
 what each role loses. Laptops closed until the twelve rows. Styles: Brilliant (the chapter opens on
 a question), Veritasium (predict, then reveal), StatQuest (the twelve rows summed aloud),
 Storytelling with Data and Minto (the makeover, the answer first). Explorer scene T1 runs beside
@@ -765,11 +765,11 @@ icon: user | eyebrow: Finance partner | title: Its own number as the headline | 
 **The scheme now.** An enrolled driver online through a whole peak window (two three-hour windows a day) is guaranteed Rs 300 per peak online hour, the floor; when the driver's trip earnings fall short, Uber pays the gap as a **top-up**. **Monday's redesign,** as a driver hears it: "The floor now pays for trips you complete, if you say yes to most offers." Saying yes to at least half the requests offered is the **acceptance floor**. Three **guardrails**, numbers that must not get worse while trips rise, watch it: the acceptance share, the median rider wait at peak and top-up per completed trip. **The saving:** Rs 1.16 crore of top-up (115.9 lakh) went to driver-weeks that accepted under half their offers; if half of it is still paid, 115.9 / 2 = Rs 58 lakh is saved over six weeks, and if a fifth is, 115.9 x 4/5 = Rs 92.7 lakh.
 
 ```notes
-LIVE, 6 minutes. If a learner asks how a Rs 300 floor costs Rs 1.9 crore when an hour brought in Rs 260
+LIVE, 5 minutes. If a learner asks how a Rs 300 floor costs Rs 1.9 crore when an hour brought in Rs 260
 of fares: the floor is checked driver by driver, week by week, on the driver's own trip earnings, and
 the idle tail's 42,000 hours carried Rs 1.16 crore of it, about Rs 276 an hour. Cards hidden first.
 Groups of three spend 3 minutes listing what each role loses, the loser test of chapter 1 on three
-real roles; take one loss per role from three groups and write them on the board (2 minutes), then
+real roles; take one loss per role from three groups and write them on the board (1 minute), then
 show the cards (1 minute). A loss the room names that the cards miss goes on the board as well: it
 will come back as an objection in chapter 5.
 Transition: four titles for finance's slide.
@@ -1248,7 +1248,7 @@ LIVE, 6 minutes. This is mid-session drill 1, in exercises/unguided. Four minute
 minutes comparing with a neighbour. Expect the 24 percent line kept by some: ask what claim it
 supports. The two that carry it: the wait barely moved, and each extra trip cost Rs 2,836 of top-up
 (Rs 1.9 crore over the 6,700 extra trips).
-Transition: what chapter 3 adds.
+Transition: what chapter 5 adds.
 ```
 
 ---

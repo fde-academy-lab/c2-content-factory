@@ -632,7 +632,7 @@ LIVE, 1 minute. The published versions of chapter 6's three tests, one line each
 one of the three tests on the board, unit, period or definition.
 In 2018 DMRC's line-utilisation count tallied a trip across three lines three times (PTI, 30 May
 2018), another definition trap.
-Transition: what chapter 4 adds to Tuesday's node.
+Transition: what chapter 8 adds to Tuesday's node.
 ```
 
 ---

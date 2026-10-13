@@ -12,10 +12,12 @@ each turn? What do you do when it stalls? What is printed?
 
 ## Who sits where in the studio?
 
-**Who needs the answer.** The trainer, forming groups at S24. **The questions on the way.** How many
+**Who needs the answer.** The trainer, forming groups at S49. **The questions on the way.** How many
 groups, which seats, and what if the numbers do not divide?
 
-Thirty-five learners make eleven threes and one pair. In each three:
+The studio practises the morning's three topics, which chapters 1 to 3 teach first on the kirana shop
+and the school: the one-slide answer, what to leave out and the appendix, and defending under
+challenge. Thirty-five learners make eleven threes and one pair. In each three:
 
 | Seat | What it does | What it holds |
 |---|---|---|
@@ -24,36 +26,36 @@ Thirty-five learners make eleven threes and one pair. In each three:
 | Scorer | Ticks each move heard, and says one sentence of feedback at the end | The four-moves card |
 
 In the pair, a TA takes the objector seat. Seats rotate after each turn so every learner presents
-once, objects once and scores once in round one, and again in round two.
+once, objects once and scores once in round one; round two, after lunch, runs two turns.
 
 ## What runs, for how many minutes?
 
 **Who needs the answer.** The trainer, holding the clock. **The questions on the way.** What is the
-order of the morning, and where is the slack?
+order of the morning, and where does the studio sit in it?
 
 | Minutes | What runs | Slides |
 |---|---|---|
-| 15 | The ticket; the groups list what each role loses; the cards | S1 to S4 |
-| 45 | Chapter 1: the title, the four parts, slide A rebuilt with the room, slides B and C rebuilt by groups, the three reads, the trap, the second route | S5 to S18 |
-| 8 | The trainer models one full defence of the finance partner's objection, conceding on purpose | S23 |
-| 23 | Round one: 2 minutes to form threes, then three turns of seven minutes, rotating seats after each | S24 |
-| 19 | Chapter 2's other slides: the prediction, the true parts, the four moves, the trap, the two failures | S19 to S22, S25 |
+| 5 | The topic, the week map, the five topics, the concept map, the ticket | S1 to S5 |
+| 72 | Concept chapters 1 to 3, taught from the deck on the kirana shop and the school; no studio seats yet | S6 to S27 |
 | 10 | Break | |
-| 20 | Chapter 3: the appendix, Amazon's memo, the cut-to-two drill | S26 to S30 |
-| 38 | Round two: 3 minutes to set up, three turns of seven minutes with the rebuilt slide, 8 minutes to rebuild, 6 minutes for two groups to present to the room | S31 |
-| 2 | Where the morning ends | S32 |
+| 40 | Chapter 4: what each role loses (cards, 5 minutes), the titles, slide A rebuilt with the room, slides B and C rebuilt by groups, the three reads, the trap, the second route | S28 to S43 |
+| 16 | Chapter 5's opening: the prediction, the true parts, the scorer's card, then the trainer models one full defence of the finance partner's objection, conceding on purpose | S44 to S48 |
+| 23 | Round one: 2 minutes to form threes, then three turns of seven minutes, rotating seats after each | S49 |
+| 12 | The drawer: which element belongs in the appendix, the answer, the cut-to-two drill | S50 to S52 |
+| 2 | Chapter 5's close and where the morning ends | S53, S54 |
+| 20 | Round two, straight after lunch: two turns of seven minutes with the rebuilt slide, then six minutes to rebuild | S55 |
 
 ## What do you say at each turn?
 
 **Who needs the answer.** The trainer, word for word where the words matter. **The questions on the
 way.** What opens, what models, what closes?
 
-- **At S1.** "This is Monday's case one day on. The deliverable today is the slide the city head takes to Thursday's review, and the three people in that room each lose something under it."
-- **At S4.** "Before anyone builds anything: what does each role lose under Monday's definition? Three minutes in your threes, one loss per role."
-- **At S10.** "Rebuild it with me, part by part: the claim, the evidence and its denominator, the caveat, the action with its cost."
-- **At S23, the modelled defence.** Read the four moves in order, and concede the monsoon out loud: "You are right that the monsoon ended inside the six weeks, and that last year's weeks are not in the data." If finance pushes on the four weeks of falling requests, the answer is the last three weeks: requests back inside the before range, trips per hour still 1.56.
-- **At S24.** "Presenter, five minutes. Objector, read the card, then push once more after the answer. Scorer, tick what you hear and say one sentence at the end. Seven minutes, then rotate."
-- **At S31.** "Same threes, same rotation, your rebuilt slide. When an objection lands, name the appendix page that holds the detail."
+- **At S5, the ticket.** "This is Monday's case one day on. The deliverable today is the slide the city head takes to Thursday's review, and the three people in that room each lose something under it. The five topics come first; the ticket is where they are used."
+- **At S30.** "Before anyone builds anything: what does each role lose under Monday's definition? Three minutes in your threes, one loss per role. This is chapter 1's loser test, on real roles."
+- **At S35.** "Rebuild it with me, part by part, as Ramesh's slide was built: the claim, the evidence and its denominator, the caveat, the action with its cost."
+- **At S48, the modelled defence.** Read the four moves in order, and concede the monsoon out loud: "You are right that the monsoon ended inside the six weeks, and that last year's weeks are not in the data." If finance pushes on the four weeks of falling requests, the answer is the last three weeks: requests back inside the before range, trips per hour still 1.56.
+- **At S49.** "Presenter, five minutes. Objector, read the card, then push once more after the answer. Scorer, tick what you hear and say one sentence at the end. Seven minutes, then rotate."
+- **At S55.** "Same threes, your rebuilt slide, two turns. When an objection lands, name the appendix page that holds the detail."
 
 ## What do you do when the studio stalls?
 
@@ -69,43 +71,29 @@ Which stall, which line?
 | An objector reads the card and stops | "Push once more: what part of the answer did not convince you?" |
 | A group finishes early | Give them slide C's claim to rebuild with a different denominator, then ask what changed |
 
-## How does the gallery run?
-
-**Who needs the answer.** The trainer at S54. **The questions on the way.** What goes up, how do the
-dots work, what do you say?
-
-Every group's final slide goes on the wall beside three written pages chosen for one strong part each
-(the claim, the caveat, the action). Each learner places three dots: the title that most clearly
-states a claim a city head could act on, the appendix page that best answers its role's question, and
-the caveat that sits most clearly in sight. Five minutes to walk, five to read the top three titles
-aloud. The test for a title is Storytelling with Data's Big Idea: one complete sentence that carries a
-point of view and says what is at stake. A high-scoring title that is still a topic is the example to
-discuss; no learner is named.
-
 ## How does the dojo run?
 
-**Who needs the answer.** The trainer from S33 to S46. **The questions on the way.** Which steps go on
+**Who needs the answer.** The trainer from S70 to S82. **The questions on the way.** Which steps go on
 the board, what is worked together, what runs in pairs?
 
-The four steps go on the board as headings, left to right: clarify, map, calculate, validate. Under
-them, three words stay up all afternoon: unit, period, definition.
+Chapter 6 has already taught the four steps on the campus canteen (invented): 3,000 students x 0.45
+who buy x 2 cups = 2,700, the share who buy setting 1,500 to 3,900, checked against the till's 2,340.
+Leave its board up: the four steps as headings, left to right, clarify, map, calculate, validate, and
+under them three words that stay all afternoon: unit, period, definition.
 
 | Minutes | What runs | What you say or do |
 |---|---|---|
-| 3 | S33: which number would check the estimate? | Letters on paper; expect votes for a and d |
-| 2 | S34: the answer and the sanity-check list | "c would check it directly and nobody publishes it; d checks one link, and that is the honest fallback." |
-| 5 | S35: the canteen's tea, invented numbers | Ask for each value; say the running product aloud: 2,000, then 1,200 who buy, then 2,400 cups |
-| 2 | S36: the four steps | Point at each; the step that first estimates skip is the fourth |
-| 3 | S37: clarify | Collect the room's clarifying questions before showing the table |
-| 6 | S38: map | Build the tree leaf by leaf; ask the room for each value and its range; count trips per person, never riders |
-| 6 | S39: calculate | Running product aloud; then the question, a vote, two minutes with a neighbour, a revote |
-| 5 | S40: the swing chart | "About 5,700 before the check, from 2,900 to 8,600 with everything else held, mostly a question of how often people ride." |
-| 3 | S41: validate | "Like for like, per completed trip: the case used 0.53, the chain 0.60, an eighth high. Re-run at 1.90 trips an hour: about 5,000. Say 5,000 to 5,700." |
-| 5 | S42: the trap | Write 41,700 and 5,700 side by side; ask which step was skipped |
-| 12 | S43: UPI in pairs | Three minutes to set up, seven on the clock, two to swap sheets with the next pair |
-| 6 | S44: the check | Read three pairs' estimates against 802 million, then the second check, about Rs 1,220 a payment; praise structure over closeness |
-| 6 | S45: three traps | One row each: which test does each fail, unit, period or definition? |
-| 1 | S46: chapter close | The map node |
+| 4.5 | SECTION 8 to S72: what the chapter applies, which number would check the estimate, and the answer | Letters on paper; expect votes for a and d; "c would check it directly and nobody publishes it; d checks one link, and that is the honest fallback." |
+| 2.5 | S73: clarify | Collect the room's clarifying questions before showing the table |
+| 3.5 | S74: map | Build the tree leaf by leaf; ask the room for each value and its range; count trips per person, never riders |
+| 4 | S75: calculate | Running product aloud; then the question, a vote, two minutes with a neighbour, a revote |
+| 3 | S76: the swing chart | "About 5,700 before the check, from 2,900 to 8,600 with everything else held, mostly a question of how often people ride." |
+| 3 | S77: validate | "Like for like, per completed trip: the case used 0.53, the chain 0.60, an eighth high. Re-run at 1.90 trips an hour: about 5,000. Say 5,000 to 5,700." |
+| 3 | S78: the trap | Write 41,700 and 5,700 side by side; ask which step was skipped |
+| 10 | S79: UPI in pairs | Three minutes to set up, seven on the clock; collect three pairs' estimates on the board |
+| 2 | S80: the check | Read the board's estimates against 802 million, then the second check, about Rs 1,220 a payment; praise structure over closeness |
+| 1 | S81: three traps | One row each: which test does each fail, unit, period or definition? |
+| 0.5 | S82: chapter close | The map node, then the break |
 
 **The dojo scorer's card** (printed below) marks four things: scope clarified first, every assumption
 with a range, a range for the answer, a check in the right unit. A number that is wildly off still
@@ -136,8 +124,7 @@ what?
 | The four-moves scorer's card | 12 | Below |
 | The dojo scorer's card | 18 | Below |
 | The written case's brief and a blank sheet | 35 | `exercises/unguided/C2_W04_D02_written_case_STUDENT.md` |
-| The cluttered slides A, B and C, if the projector fails | 12 sets | The morning deck, S8, S11, S12 |
-| Three dots for each learner | 35 sets of three | |
+| The cluttered slides A, B and C, if the projector fails | 12 sets | The morning deck, S33, S36, S37 |
 | The Kalpa role cards for the lab | 3 | `trainer/C2_W04_D02_role_cards_TRAINER.md` |
 
 ## Printable: what does the four-moves scorer tick?

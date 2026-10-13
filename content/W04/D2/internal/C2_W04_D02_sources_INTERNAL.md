@@ -1,10 +1,59 @@
 # Sources, W04 D2 (Tuesday 27 October 2026): what the pack rests on, what it changed, and why
 
 Built by the W04 D2 finishing session on 12 October 2026 from `docs/detailing/W04_analyst_craft_spine.md`
-(section 6), `docs/detailing/W04_case_file.md` (Tuesday) and Monday's tables. Data command:
-`python3 content/W04/D2/internal/C2_W04_D02_make_data_INTERNAL.py`, then the figures, notebook and
-audit scripts beside it. Tools: Python 3.13.16, pandas 3.0.5, matplotlib 3.11.2, PyYAML 6.0.1,
-python-pptx 1.0.2, mermaid-cli 12.0.0, nbconvert 7.17.2, LibreOffice 24.2.7.2.
+(section 6), `docs/detailing/W04_case_file.md` (Tuesday) and Monday's tables, and rebuilt concept first
+on 13 October 2026 on branch `w04-d2`. Data command:
+`python3 content/W04/D2/internal/C2_W04_D02_make_data_INTERNAL.py`, then the figures, notebooks and
+audit scripts beside it (`C2_W04_D02_figures_INTERNAL.py`, `C2_W04_D02_build_notebooks_INTERNAL.py`,
+`C2_W04_D02_facts_audit_INTERNAL.py`), and `C2_W04_D02_renumber_INTERNAL.py` once after the decks were
+assembled. Tools on 13 October 2026: Python 3.13.16, pandas 3.0.5, matplotlib 3.11.2, PyYAML 6.0.1,
+nbclient 0.11.0, nbformat 5.11.1, python-pptx 1.0.2, mermaid-cli 12.0.0, WeasyPrint 70.0, LibreOffice
+24.2.7.2.
+
+## What did the concept-first rebuild of 13 October 2026 change, and what does it rest on?
+
+The row's five subtopics now lead, each as its own chapter on an invented example, in the row's
+order: SECTIONs 1 to 3 in the morning, 4 and 5 applying them to Uber, 6 and 7 after studio round two,
+then 8 to 10 applying them. The case's numbers, traps, transcripts and Kalpa lab are unchanged except
+where a beat moved; `C2_W04_D02_slide_map_INTERNAL.md` maps every merged slide number to its new one.
+
+### Which references lock each topic, and when were they checked?
+
+| Topic | Written reference, checked 13 October 2026 | Video, checked 13 October 2026 (title and channel read through YouTube's oembed endpoint) |
+|---|---|---|
+| 1. The one-slide answer: claim, evidence, caveat, action | Management Consulted, "The Pyramid Principle" (page updated 2 September 2026): it "starts with the conclusion first, then organizes supporting points underneath it"; WebFetch returned 403 and curl with a browser user agent returned the page. https://managementconsulted.com/pyramid-principle/ (checked 13 October 2026) ; Barbara Minto's own site, https://www.barbaraminto.com/ (checked 13 October 2026) | Analyst Academy, "Consulting Slide Structure: How McKinsey, Bain, and BCG create slides", https://www.youtube.com/watch?v=ZXslsi3jK6Y (checked 13 October 2026) |
+| 2. What to leave out, and the appendix | Storytelling with Data, "a new year's resolution: declutter your graphics" (4 January 2011): "Is it adding any informative value? If the answer is no, then take it out!" https://www.storytellingwithdata.com/blog/2011/01/new-years-resolution-declutter-your (checked 13 October 2026) | storytelling with data, "How to eliminate clutter from Excel graphs", https://www.youtube.com/watch?v=XgY1-BsZSzM (checked 13 October 2026) ; it covers what leaves a chart and says nothing about an appendix, so the appendix half's video is to be found |
+| 3. Defending under challenge: restate, answer, concede, what would change your mind | The Marginalian, "How to Criticize with Kindness: Philosopher Daniel Dennett on the Four Steps to Arguing Intelligently" (dated 6 October 2026 on the page), quoting Rapoport's rules from Dennett's Intuition Pumps: re-express the target's position "so clearly, vividly, and fairly" that the target says "Thanks, I wish I'd thought of putting it that way". https://www.themarginalian.org/2026/10/06/daniel-dennett-rapoport-rules-criticism/ (checked 13 October 2026) | Stanford Graduate School of Business, "Answering Tough Questions", https://www.youtube.com/watch?v=hSeAGSPDG4w (checked 13 October 2026) |
+| 4. The guesstimate: clarify, map, calculate, validate | Think Insights, "Guesstimates" (3 December 2018), the row's own reference, whose four steps are the row's: the interviewer "is interested in your thought process; not the final result", and "the best candidates validate their results & try to spot their own mistake before telling their interviewer they are done". https://thinkinsights.net/strategy/guesstimates (checked 13 October 2026) ; Aced, "The interviewer isn't looking for a precise number", https://www.aced.io/blog/top-data-analyst-interview-questions (checked 13 October 2026) | Hacking the Case Interview, "Market Sizing: Full Tutorial for Beginners", https://www.youtube.com/watch?v=8_9I8XMFNfs (checked 13 October 2026) |
+| 5. The AI-free written business case | Amazon's 2017 letter to shareholders, filed 18 April 2018: "We don't do PowerPoint (or any other slide-oriented) presentations at Amazon"; memos read silently at the start of each meeting; a great memo "probably should take a week or more". https://www.sec.gov/Archives/edgar/data/1018724/000119312518121161/d456916dex991.htm (checked 13 October 2026) | ProjectManager, "How to Write a Business Case - Project Managment Training" (the title's spelling), https://www.youtube.com/watch?v=UQP5MmCAQ3Y (checked 13 October 2026) ; for why Amazon writes memos, Lex Clips, "Jeff Bezos on banning Powerpoint in meetings at Amazon", https://www.youtube.com/watch?v=e47wAgIhZ7o (checked 13 October 2026) |
+
+The case file marks the Think Insights and Management Consulted pages "not to be used" because both
+returned 403 on 12 October 2026. Both loaded on 13 October 2026, so the rebuild uses them with that
+date; the requester's direction to use the row's references first decides it. IGotAnOffer's
+market-sizing page returned 403 again on 13 October 2026: not verified on 13 October 2026, and not
+used.
+
+### Which decisions did the rebuild take, and why?
+
+- **Notebook numbers follow SECTION numbers.** Notebooks 01, 02, 03, 06 and 07 are the concept notebooks; 04, 05 and 08 the case notebooks; chapters 9 and 10 have none, since the page is written by hand with laptops closed and the interview room is spoken, so the coverage gate warns twice; the lab notebook takes 11, the number after the day's last SECTION.
+- **SECTION 2's topic is quoted in its heading**, `"What to leave out, and the appendix": where does the rest go?`, because `scripts/build_deck.py` does not split a topic that opens on a question word and the unsplit cover overflowed (deck_check failed slide 15 by 25 px); the builder's guard belongs to the orchestrating session.
+- **The canteen has new invented numbers.** The merged pack's 2,000 x 0.6 x 2 = 2,400 became 3,000 x 0.45 x 2 = 2,700 with a till of five weekdays averaging 2,340, so the validate step meets a counted number; the guided set and the trainer files use the new ones.
+- **The Kahoot.** Every item names the topic it tests; Q8 now tests the written case, and the old Q8 (31 billion in a 31-day month) moved to the chapter 6 set as Q6.
+- **Minutes.** The concept chapters' 112 minutes came from studio round two (40 to 20, two turns and a rebuild), the interview room's live minutes (25 to 12, transcripts 2 and 3 now the evening's reading), the close (40 to 20, the gallery staying cut), the opening (15 to 5, the roles' losses moving into chapter 4) and the case chapters' own trims; the morning's S30 activity runs 5 minutes so the morning holds 180. The day sheet carries the before and after table.
+- **The written case runs 35 minutes**, as chapter 9 does; its brief had said forty.
+- **The facts audit** now homes a number a notebook prints from one of the day's own data tables, since a concept notebook prints its invented table in full; prose numbers still need a facts id.
+- **The facts file's `used_by` slide numbers predate the rebuild.** Most are the merged pack's numbers, which the slide map translates; 38 come from an older numbering that restarted in half2. The `toy_` ids added on 13 October name SECTIONs instead of slides.
+- **Sizes.** The decks run 59 and 44 slides against the artefact row's "about 48" and "about 38", inside its caps: half1 carries 30 case slides of at most 35, half2 28 of at most 30, and each concept chapter 7 to 9 slides with its opener, within 6 to 12. The notes run 2,980 words, under the acceptance line's 3,000 and above the row's "about 2,000".
+- **The Kalpa lab notebook** sets up the tools and the anchor and leaves the sizing to two empty cells, so the worked answer (about 1,000 sign-ups) stays in the TRAINER note and the lab set's solution.
+- **The DMart table** `data/C2_W04_D02_kalpa_dmart_anchor_STUDENT.csv` carries both per-store figures, which answer the Kalpa store set's Q1; it stays byte-identical to the merged pack, as the brief requires of the case tables, and notebook 11 prints only its first four rows.
+
+### What did the rebuild invent, and where is it recorded?
+
+Ramesh's kirana shop (56 days, eight draft elements, the draft and the page), the auto driver's two
+days, Gulmohar Secondary School's sixteen weeks and its board exam, the campus canteen's ledger and
+till, the town of 24,000 people and the phone pack. Each is written by the generator to `data/` where
+a notebook loads it, and each number sits under a `toy_` id in `C2_W04_D02_facts_INTERNAL.yaml` with
+what it was invented for and where it is used; every file that shows one says invented.
 
 ## Which public sources were fetched, and when?
 
