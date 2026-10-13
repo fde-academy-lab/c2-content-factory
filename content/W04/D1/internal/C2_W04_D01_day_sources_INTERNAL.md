@@ -1,28 +1,49 @@
 # Where does every Monday fact come from, and what departs from a source?
 
-**INTERNAL.** One page: the public facts with their check dates, the data, the case-file sharpenings,
-what was left out, and the cold-read findings that carry a reason in place of a fix.
+**INTERNAL.** One page: the written reference that locks each concept chapter's rule, the public facts
+with their check dates, the data and the invented examples, the case-file sharpenings, the decisions
+the concept-first rebuild of 13 October 2026 took, what was left out, and the cold-read findings that
+carry a reason in place of a fix.
+
+## Which written reference locks each concept chapter's rule, and when was it checked?
+
+The row's own references came first, as the rebuild's brief asks. Exponent's address now redirects
+to Aced's page, which loads on 13 October 2026 and carries the question "measure whether a new
+feature launch was successful" with no north star, guardrail or definition lines; GeeksforGeeks loads
+on 13 October 2026 and its metric items are general; Interview Query answered 429 on 13 October 2026,
+so it is **not verified on 13 October 2026**. None of the three states a rule a chapter names, so each
+rule is locked to the written reference below, and where a rule is the programme's own summary the
+table says so.
+
+| Chapter | The rule it names last | Reference | Checked |
+|---|---|---|---|
+| 1. What to measure and why; the proxy test | A proxy stands in for the thing wanted; the proxy test asks whether a team could hit the number while what it stands for got worse | The row's own words ("if a department could hit the number while the business got worse, the number is a proxy that has drifted"); Chou, "Blending Proxy Metrics with a North Star", arXiv 2606.21745, June 2026, whose abstract describes proxies as metrics used in place of outcomes the experimenter does not observe: https://arxiv.org/abs/2606.21745 | 13 October 2026 |
+| 2. North-star and guardrail metrics | A north star best captures the value the people served get; a guardrail is watched so that hitting it does no hidden harm | Amplitude, "What Makes a Good vs Bad North Star Metric" (Julia Sholtz, 15 August 2024): https://www.amplitude.com/blog/good-bad-north-star-metric.md; Spotify Confidence's glossary entry for a guardrail metric: https://confidence.spotify.com/glossary/guardrail-metric | 13 October 2026 |
+| 3. Leading against lagging indicators | A leading number moves before the north star while a team can act; a lagging one confirms it | The same Amplitude article: "these are lagging indicators", "Revenue is a lagging indicator", and a good north star as "a leading indicator of revenue" | 13 October 2026 |
+| 4. Definitions: numerator, denominator, window, exclusions | Four lines make a number computable | The US Centers for Medicare and Medicaid Services' Measures Management System, "Develop Specifications" (last updated Jun 2026, listing the numerator, denominator and denominator exclusions, with a step to define any time intervals) and "Define the Denominator Exclusions" (last updated Jun 2025, "Denominator exclusions refer to criteria that result in removal of patients or cases from the denominator before calculating the numerator"): https://mmshub.cms.gov/measure-lifecycle/measure-specification/develop-specification and https://mmshub.cms.gov/measure-lifecycle/measure-specification/develop-specification/denominator-exclusions, which redirect to the pages' current addresses | 13 October 2026 |
+| 5. Gaming, and definitions that resist it | A definition resists gaming when its numerator needs a receipt, its denominator is set by someone other than the people paid, its clock starts at a system time, its exclusions are dated, and it says what it does not reward | The programme's own summary of four failures, each from a written record: the SEC's 2020 order against Wells Fargo (Release 34-88257) and the VA inspector general's report 14-02603-267, both in the table below | 13 October 2026 |
+| 6. The metric definition artifact | The seven-line page: four lines that make the number computable and three that make it safe to pay for | The row's own words, which name the numerator, the denominator, the window, the exclusions, what it deliberately does not reward, the guardrails and the gaming note; the CMS pages above for a measure specified on one written page | 13 October 2026 |
 
 ## Which public facts does the pack use, and when was each checked?
 
-Every URL below was fetched on 12 October 2026; the ids are the case file's.
+Every URL below was first fetched on 12 October 2026 and fetched again on 13 October 2026 for the concept-first rebuild; the ids are the case file's. The rebuild quotes the Q1 FY26 letter's own words, "over 28% of our MTUs" and "a slightly lower number of orders by the same user", and the SEC release's "combined $3 billion settlement with the SEC and the Department of Justice".
 
 | Id | Fact, as used | URL |
 |---|---|---|
-| M8 | CFPB: USD 100 million, with the OCC's USD 35 million and Los Angeles's USD 50 million, USD 185 million in all, 8 September 2016; roughly 1.5 million deposit and 565,000 credit card accounts that may not have been authorised | https://www.consumerfinance.gov/about-us/newsroom/consumer-financial-protection-bureau-fines-wells-fargo-100-million-widespread-illegal-practice-secretly-opening-unauthorized-accounts/ (checked 12 October 2026) |
-| M8 | SEC: USD 3 billion settlement with the DOJ and the SEC, USD 500 million of it the SEC's penalty, February 2020 | https://www.sec.gov/newsroom/press-releases/2020-38 (checked 12 October 2026) |
-| M8 | SEC order 34-88257: no usage condition; debit cards counted up to four years unused; the 2013 remittance addition (0.04 of 0.11); simulated funding; surveys dodged | https://www.sec.gov/files/litigation/admin/2020/34-88257.pdf (checked 12 October 2026) |
-| M8 | VA OIG 14-02603-267: 30 of 79 Phoenix staff used a wrong desired date; the 14-day goal left performance contracts | https://www.vaoig.gov/sites/default/files/reports/2014-08/VAOIG-14-02603-267.pdf (checked 12 October 2026) |
-| M1 | Swiggy Q2 FY25 letter: MTU and platform frequency defined; frequency 4.53, MTU 17.1 million | https://www.bseindia.com/xml-data/corpfiling/AttachHis/2495f39b-e1d1-4018-8f69-6ff250345e98.pdf (checked 12 October 2026) |
-| M9 | Swiggy Q1 FY26 letter: Maxxsaver over 28 percent of MTUs; AOV up 16 percent to Rs 612, which Maxxsaver helped raise; cart consolidation and dropped low-value orders slowed order growth | https://www.swiggy.com/corporate/wp-content/uploads/2025/07/Q1-FY2026-Shareholder-letter.pdf (checked 12 October 2026) |
-| M2 | Eternal Q1 FY26 letter: NOV = GOV minus discounts | https://drive.google.com/file/d/1VtoiLsA2OpKauFnkKIlhXRmnbvxL-6ha/view (checked 12 October 2026) |
-| M2 | Eternal Q1 FY27 letter: GOV disclosure sunset, "NOV more accurately reflects underlying performance"; the blog page links it and lists Zomato, Blinkit, District and Hyperpure | https://drive.google.com/file/d/1jb9KWd4Ap4RTKHFHxzEOO7jgQqVZEGcd/view ; https://www.eternal.com/blog/q1fy27/ (checked 12 October 2026) |
-| M6 | Delhi Metro: 45,35,932 line utilisation on 29 May 2018 against nearly 27 lakh riders a day in February 2018 (PTI, 30 May 2018); 64.06 lakh journeys on an average day now and the record of more than 81 lakh passenger journeys on 8 August 2025 (The Tribune); 82,44,903 passenger boardings on 17 September 2026, the highest ever, during a bus strike (Republic World carrying DMRC's post); a journey counts each line used (Deccan Herald, PTI, 30 August 2023); that journeys and boardings are one count is the pack's reading, labelled so on S21 | https://www.latestly.com/agency-news/dmrc-uses-new-count-metric-on-traffic-flow-doesnt-share-ridership-190870.html/amp ; https://www.tribuneindia.com/news/delhi/delhi-metro-records-99-95-train-punctuality-in-2026-dmrc/ ; https://www.republicworld.com/india/delhi-metro-breaks-all-time-record-with-8244-lakh-footfall-as-dtc-strike-sends-rush-soaring-2026-09-18-137241 ; https://www.deccanherald.com/india/delhi/delhi-metro-records-highest-ever-footfall-on-aug-29-2666561 (checked 12 October 2026) |
-| M5 | Uber 10-K for 2025: a trip counted per paying consumer (an UberX Share ride with three paying riders is three trips); monthly active platform consumers need a completed ride or delivery | https://www.sec.gov/Archives/edgar/data/1543151/000154315126000015/uber-20251231.htm (checked 12 October 2026) |
-| M4 | Airbnb S-1: nights booked net of cancellations, minus 4.1 million in March 2020 | https://www.sec.gov/Archives/edgar/data/1559720/000119312520294801/d81668ds1.htm (checked 12 October 2026) |
-| M5 | Spotify 20-F for 2025: an MAU has more than zero milliseconds of consumption in thirty days | https://www.sec.gov/Archives/edgar/data/1639920/000162828026006874/ck0001639920-20251231.htm (checked 12 October 2026) |
-| T2 | Aced: interviewers score structure, assumptions and scope before the method | https://www.aced.io/blog/top-data-analyst-interview-questions (checked 12 October 2026) |
-| Added | Ziegler and others, "Productivity Assessment of Neural Code Completion", 13 May 2022: the acceptance rate, more than persistence in the code, drives perceived productivity | https://arxiv.org/abs/2205.06537 (checked 12 October 2026) |
+| M8 | CFPB: USD 100 million, with the OCC's USD 35 million and Los Angeles's USD 50 million, USD 185 million in all, 8 September 2016; roughly 1.5 million deposit and 565,000 credit card accounts that may not have been authorised | https://www.consumerfinance.gov/about-us/newsroom/consumer-financial-protection-bureau-fines-wells-fargo-100-million-widespread-illegal-practice-secretly-opening-unauthorized-accounts/ (checked 13 October 2026) |
+| M8 | SEC: USD 3 billion settlement with the DOJ and the SEC, USD 500 million of it the SEC's penalty, February 2020 | https://www.sec.gov/newsroom/press-releases/2020-38 (checked 13 October 2026) |
+| M8 | SEC order 34-88257: no usage condition; debit cards counted up to four years unused; the 2013 remittance addition (0.04 of 0.11); simulated funding; surveys dodged | https://www.sec.gov/files/litigation/admin/2020/34-88257.pdf (checked 13 October 2026) |
+| M8 | VA OIG 14-02603-267: 30 of 79 Phoenix staff used a wrong desired date; the 14-day goal left performance contracts | https://www.vaoig.gov/sites/default/files/reports/2014-08/VAOIG-14-02603-267.pdf (checked 13 October 2026) |
+| M1 | Swiggy Q2 FY25 letter: MTU and platform frequency defined; frequency 4.53, MTU 17.1 million | https://www.bseindia.com/xml-data/corpfiling/AttachHis/2495f39b-e1d1-4018-8f69-6ff250345e98.pdf (checked 13 October 2026) |
+| M9 | Swiggy Q1 FY26 letter: Maxxsaver over 28 percent of MTUs; AOV up 16 percent to Rs 612, which Maxxsaver helped raise; cart consolidation and dropped low-value orders slowed order growth | https://www.swiggy.com/corporate/wp-content/uploads/2025/07/Q1-FY2026-Shareholder-letter.pdf (checked 13 October 2026) |
+| M2 | Eternal Q1 FY26 letter: NOV = GOV minus discounts | https://drive.google.com/file/d/1VtoiLsA2OpKauFnkKIlhXRmnbvxL-6ha/view (checked 13 October 2026) |
+| M2 | Eternal Q1 FY27 letter: GOV disclosure sunset, "NOV more accurately reflects underlying performance"; the blog page links it and lists Zomato, Blinkit, District and Hyperpure | https://drive.google.com/file/d/1jb9KWd4Ap4RTKHFHxzEOO7jgQqVZEGcd/view ; https://www.eternal.com/blog/q1fy27/ (checked 13 October 2026) |
+| M6 | Delhi Metro: 45,35,932 line utilisation on 29 May 2018 against nearly 27 lakh riders a day in February 2018 (PTI, 30 May 2018); 64.06 lakh journeys on an average day now and the record of more than 81 lakh passenger journeys on 8 August 2025 (The Tribune); 82,44,903 passenger boardings on 17 September 2026, the highest ever, during a bus strike (Republic World carrying DMRC's post); a journey counts each line used (Deccan Herald, PTI, 30 August 2023); that journeys and boardings are one count is the pack's reading, labelled so on S21 | https://www.latestly.com/agency-news/dmrc-uses-new-count-metric-on-traffic-flow-doesnt-share-ridership-190870.html/amp ; https://www.tribuneindia.com/news/delhi/delhi-metro-records-99-95-train-punctuality-in-2026-dmrc/ ; https://www.republicworld.com/india/delhi-metro-breaks-all-time-record-with-8244-lakh-footfall-as-dtc-strike-sends-rush-soaring-2026-09-18-137241 ; https://www.deccanherald.com/india/delhi/delhi-metro-records-highest-ever-footfall-on-aug-29-2666561 (checked 13 October 2026) |
+| M5 | Uber 10-K for 2025: a trip counted per paying consumer (an UberX Share ride with three paying riders is three trips); monthly active platform consumers need a completed ride or delivery | https://www.sec.gov/Archives/edgar/data/1543151/000154315126000015/uber-20251231.htm (checked 13 October 2026) |
+| M4 | Airbnb S-1: nights booked net of cancellations, minus 4.1 million in March 2020 | https://www.sec.gov/Archives/edgar/data/1559720/000119312520294801/d81668ds1.htm (checked 13 October 2026) |
+| M5 | Spotify 20-F for 2025: an MAU has more than zero milliseconds of consumption in thirty days | https://www.sec.gov/Archives/edgar/data/1639920/000162828026006874/ck0001639920-20251231.htm (checked 13 October 2026) |
+| T2 | Aced: interviewers score structure, assumptions and scope before the method | https://www.aced.io/blog/top-data-analyst-interview-questions (checked 13 October 2026) |
+| Added | Ziegler and others, "Productivity Assessment of Neural Code Completion", 13 May 2022: the acceptance rate, more than persistence in the code, drives perceived productivity | https://arxiv.org/abs/2205.06537 (checked 13 October 2026) |
 
 Not used, because unverified: Wells Fargo firing counts, the "3.5 million accounts" figure, Goodhart's
 wording, the NHS examples.
@@ -30,7 +51,11 @@ wording, the NHS examples.
 ## Where does the data come from?
 
 `python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py`, seed 20261026, writes the five
-CSVs, the contract and the facts file; a second run is byte-identical. It reads Thursday's
+case CSVs, the six invented tables of the concept chapters, the contract (79 lines) and the facts
+file; a second run is byte-identical. The invented tables draw nothing from the case's random streams,
+and the contract compares `drivers`, `driver_weeks` and `zone_weeks` byte for byte with
+`git show origin/main`, so Tuesday's and Thursday's readers of Monday's facts get what they read
+before. It reads Thursday's
 `data/C2_W04_D04_kalpa_memberships_STUDENT.csv` and v4's orders from
 `content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql`, and asserts the three case tables against
 their checksums on origin/main of 13 October 2026. The Kalpa rebuild of 13 October 2026 rebuilt the
@@ -38,6 +63,21 @@ sheet and the morning deck with mermaid-cli 11.17.0 installed in the session, be
 container's default 12.0.0 lays the sheet's anchor out at 744 by 646 and prints its labels at 2.5pt. Tools: Python 3.13.16, pandas
 3.0.5, matplotlib 3.11.2, numpy 2.5.3, nbclient 0.11.0, python-pptx 1.0.2, mermaid-cli 11.17.0,
 weasyprint 70.0, LibreOffice 24.2.7.2.
+
+## Which invented numbers do the concept chapters use, and where does each live?
+
+Every number of the six invented examples sits in `internal/C2_W04_D01_facts_INTERNAL.yaml` under a
+`toy_` id, with `how: invented for the concept chapter on <subtopic>` and the files that print it;
+`internal/C2_W04_D01_build_notebooks_INTERNAL.py` stops the build when a number it writes differs
+from its id.
+
+| Chapter | The example (invented) | Its numbers, by id prefix |
+|---|---|---|
+| 1 | A school canteen's ten days: plates 200 a day, tokens 200 then 400 once servers are paid per token; 150 g of rice a plate at Rs 50 a kg; the school bus, 40 then 55 km a day for 30 children, as the your-turn | `toy_canteen_*`, `toy_bus_*` |
+| 2 | A driving school of four instructors and 100 learners a year: 100 took the test and 60 passed in 2025; 40 took it and 36 passed in 2026 | `toy_driving_*` |
+| 3 | A T20 chase of 160 against 159: 6 an over for ten overs (60 for 3), then 7 to 11, ending on 147 for 7, lost by 12 | `toy_chase_*` |
+| 4 | One student's 60-day term: 10 holidays, 40 present, 8 absent, 2 medical; the last 20 working days 14, 4 and 2; a scholarship at 75 percent | `toy_register_*` |
+| 5 and 6 | Balaji Kirana, a corner shop in Hyderabad: 50 orders in four weeks (12, 13, 12, 13), all marked done, 40 OTP-confirmed, 35 within 30 minutes of the bill, 6 complaints on the 10 orders with no OTP, Rs 20 a delivery; the weak page "Deliveries, monthly, plus 20 percent" | `toy_kirana_*`, `toy_artifact_*` |
 
 ## What does the pack sharpen from the case file?
 
@@ -56,16 +96,37 @@ weasyprint 70.0, LibreOffice 24.2.7.2.
   own placements. `product_id` is dropped, since a press re-places a past basket and Wednesday's
   order items list several products per order. The per-member comparison counts the 107 who joined by
   19 August. No warehouse SQL file is written; `order_id` joins to the Week 2 warehouse as it stands.
-- The cheat sheet's ticket sits in its top band and the concept board in panel one, since the spine
-  asks for both in first position.
-- S19's invented pair is rebuilt (X at 2.0 trips an hour for 10 hours, Y at 0.5 for 40) so its
-  average errs high, as the city's 1.71 does against 1.58; notebook 02, the notes and the board work
-  carry the same pair.
+- The cheat sheet's ticket sits in its top band, the six topics' map in panel one and the finished
+  case board in panel two, since the brief asks for a topic panel printing the concept map and the
+  spine for the board; the sheet now runs to two pages, as Friday's does.
+- S70's invented pair (S19 before the renumbering) is rebuilt (X at 2.0 trips an hour for 10 hours,
+  Y at 0.5 for 40) so its average errs high, as the city's 1.71 does against 1.58; notebook 08 and the
+  board work carry the same pair.
+
+## Which decisions did the concept-first rebuild of 13 October 2026 take?
+
+| Decision | Why |
+|---|---|
+| Chapter 2's coaching batch became a driving school, every number and step of the plan kept | The brief: Thursday's deck opens its cohort chapter on two coaching batches |
+| Monday's kirana is Balaji Kirana, in Hyderabad | The brief: Tuesday's is Ramesh's and Wednesday's is Sharma Kirana in Pune |
+| The chase ends on 147 and loses by 12 to the other side's 159 | The plan printed 148 in one place and "lost by 12" in another; the spine's "lost by 12" is kept |
+| Chapter 4's window is the term's last 20 working days, read 14 / 20 = 70.0 | The plan read 14 / 20 as "the second month alone", and this register's second month holds 25 working days |
+| Chapter 1's topic is in quotation marks on its opener | `scripts/build_deck.py` reads a topic opening on "What" as a question; outside this folder, so the report names it |
+| The fallback deck's sections became 13 to 16 | 6 to 9 collided with the new concept chapters, and 12 is the lab's notebook number |
+| The lab notebook was renamed to 12 and not executed again | The brief keeps the lab as merged; the build script rebuilds it only when asked for by number |
+| Notebook 07 lost its canteen cells and gained a picture of the offers each driver accepted, counts only | The canteen belongs to chapter 1; the picture keeps three pictures and adds no new case figure |
+| Notebook 03 carries no case cell | The two-examples rule: the chase is the concept chapter's example, and notebook 09 reads which of Uber's numbers moved first |
+| Complaints are counted per 100 orders billed | "Per 100 deliveries" divided by orders billed, which include the 10 parcels never delivered |
+| Chapter 4 names four lines that make a number computable, and leaves "complete" to the seven-line page | The row calls a definition complete only when it also says what it does not reward |
+| The definition-lines set is `four_definition_lines_set` | The plan's `definition_lines_set` shares its prefix with the guided `definition`, and the distractor audit keyed the guided file from the wrong solution |
+| The slide minutes were re-cut to the spine's envelope | Chapter 5's prediction (S39) gained 30 seconds; round 1 (S58) gave two minutes to the hand count (S60, S62), so chapter 7 runs 12 and 20; S87 and S90 gained the minute and a half chapter 10's opener already counted, so it runs 25 |
 
 ## Which cold-read findings carry a reason in place of a fix?
 
 G numbers are the fresh graduate's findings and I numbers the hiring interviewer's, in
-`internal/C2_W04_D01_cold_reads_INTERNAL.md`.
+`internal/C2_W04_D01_cold_reads_INTERNAL.md`. The slide numbers in this table are the merged pack's of
+12 October 2026, before the concept chapters; `internal/C2_W04_D01_renumber_INTERNAL.py` prints where
+each went.
 
 | Finding | Why it carries a reason in place of a fix |
 |---|---|

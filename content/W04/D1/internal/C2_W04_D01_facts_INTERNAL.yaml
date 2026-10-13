@@ -1,6 +1,7 @@
 day: W04/D1, Monday 26 October 2026
 written_by: C2_W04_D01_generate_INTERNAL.py, the W04 D1 finishing session, 12 October 2026; the Kalpa
-  lab rebuilt on Thursday's membership table, 13 October 2026
+  lab rebuilt on Thursday's membership table, 13 October 2026; the six concept chapters' invented tables
+  and their toy_ ids, 13 October 2026
 source_tables:
   drivers: data/C2_W04_D01_drivers_STUDENT.csv
   driver_weeks: data/C2_W04_D01_driver_weeks_STUDENT.csv
@@ -8,37 +9,43 @@ source_tables:
   kalpa_members: data/C2_W04_D01_kalpa_members_STUDENT.csv (a byte copy of Thursday's data/C2_W04_D04_kalpa_memberships_STUDENT.csv)
   kalpa_app_reorders: data/C2_W04_D01_kalpa_app_reorders_STUDENT.csv (its order_id rows are orders of
     content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql)
+  canteen_days: data/C2_W04_D01_canteen_days_STUDENT.csv (invented, chapter 1)
+  school_bus_days: data/C2_W04_D01_school_bus_days_STUDENT.csv (invented, chapter 1's your-turn)
+  driving_school: data/C2_W04_D01_driving_school_STUDENT.csv (invented, chapter 2)
+  chase_overs: data/C2_W04_D01_chase_overs_STUDENT.csv (invented, chapter 3)
+  attendance_register: data/C2_W04_D01_attendance_register_STUDENT.csv (invented, chapter 4)
+  kirana_deliveries: data/C2_W04_D01_kirana_deliveries_STUDENT.csv (invented, chapters 5 and 6)
 numbers:
 - id: launch_date
   value: '2026-08-31'
   unit: date
   how: the scheme's first day, a Monday
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: window_before
   value: 2026-07-20 to 2026-08-30
   unit: dates
   how: six weeks beginning 20 July
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: window_after
   value: 2026-08-31 to 2026-10-11
   unit: dates
   how: six weeks beginning 31 August
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: floor_rs_per_hour
   value: 300
   unit: Rs per peak online hour
   how: the guarantee's floor (synthetic terms)
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: peak_windows_per_day
   value: 2
   unit: windows
   how: two peak windows a day (synthetic terms)
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: peak_window_hours
   value: 3
   unit: hours
   how: each window three hours long
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: max_peak_hours_per_week
   value: 42
   unit: hours
@@ -53,12 +60,12 @@ numbers:
   value: 1200
   unit: drivers
   how: rows of drivers
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: drivers_new
   value: 140
   unit: drivers
   how: joined_month 2026-09
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L4 mix
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L4 mix
 - id: drivers_pre_launch
   value: 1060
   unit: drivers
@@ -68,27 +75,27 @@ numbers:
   value: 12
   unit: zones
   how: rows of zone_weeks per week
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: zones_outer
   value: 3
   unit: zones
   how: Shamshabad, Rajendranagar, Patancheru
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: hours_before
   value: 118000
   unit: hours
   how: sum of peak_online_hours, before
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2
 - id: trips_before
   value: 224200
   unit: trips
   how: sum of peak_trips, before
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2
 - id: tph_before
   value: 1.9
   unit: trips per peak online hour
   how: sum of trips / sum of hours
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2
 - id: offers_before
   value: 269773
   unit: offers
@@ -108,12 +115,13 @@ numbers:
   value: 0.863
   unit: share
   how: sum accepted / sum offers
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2; guardrail 1
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2; guardrail
+    1
 - id: driver_cancel_share_before
   value: 0.037
   unit: share
   how: sum driver cancels / sum accepted
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: no_trip_hours_before
   value: 25960
   unit: hours
@@ -123,7 +131,8 @@ numbers:
   value: 0.22
   unit: share
   how: sum hours with no trip / sum hours
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L4 data quality
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L4 data
+    quality
 - id: bookings_before_rs
   value: 36993000
   unit: Rs
@@ -163,12 +172,13 @@ numbers:
   value: 0.11
   unit: share
   how: 1 - fulfilled / requests
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: median_wait_before
   value: 4.8
   unit: minutes
   how: middle value of the 72 zone-week medians
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; guardrail 2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; guardrail
+    2
 - id: offers_per_request_before
   value: 1.07
   unit: offers
@@ -183,17 +193,17 @@ numbers:
   value: 146300
   unit: hours
   how: sum of peak_online_hours, after
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2
 - id: trips_after
   value: 230900
   unit: trips
   how: sum of peak_trips, after
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2
 - id: tph_after
   value: 1.58
   unit: trips per peak online hour
   how: sum of trips / sum of hours
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2
 - id: offers_after
   value: 347583
   unit: offers
@@ -213,12 +223,13 @@ numbers:
   value: 0.73
   unit: share
   how: sum accepted / sum offers
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2; guardrail 1
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2; guardrail
+    1
 - id: driver_cancel_share_after
   value: 0.09
   unit: share
   how: sum driver cancels / sum accepted
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: no_trip_hours_after
   value: 55614
   unit: hours
@@ -228,7 +239,8 @@ numbers:
   value: 0.38
   unit: share
   how: sum hours with no trip / sum hours
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L4 data quality
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L4 data
+    quality
 - id: bookings_after_rs
   value: 38098500
   unit: Rs
@@ -268,12 +280,13 @@ numbers:
   value: 0.1
   unit: share
   how: 1 - fulfilled / requests
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: median_wait_after
   value: 4.6
   unit: minutes
   how: middle value of the 72 zone-week medians
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; guardrail 2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; guardrail
+    2
 - id: offers_per_request_after
   value: 1.35
   unit: offers
@@ -288,12 +301,12 @@ numbers:
   value: 24
   unit: percent
   how: 146,300 / 118,000 - 1
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: trips_change_pct
   value: 3
   unit: percent
   how: 230,900 / 224,200 - 1
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: requests_change_pct
   value: 1.8
   unit: percent
@@ -303,12 +316,12 @@ numbers:
   value: 0
   unit: Rs
   how: sum of topup_rs, before
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: topup_after_rs
   value: 19000000
   unit: Rs
   how: sum of topup_rs, after (Rs 1.9 crore)
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L3
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L3
 - id: topup_low_acceptance_rs
   value: 11590000
   unit: Rs
@@ -555,12 +568,12 @@ numbers:
   value: 0.859
   unit: share
   how: week of 2026-07-20
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_07_20
   value: 309.9
   unit: Rs
   how: week of 2026-07-20
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_07_20_rs
   value: 6064080
   unit: Rs
@@ -595,12 +608,12 @@ numbers:
   value: 0.864
   unit: share
   how: week of 2026-07-27
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_07_27
   value: 315.5
   unit: Rs
   how: week of 2026-07-27
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_07_27_rs
   value: 6120675
   unit: Rs
@@ -635,12 +648,12 @@ numbers:
   value: 0.865
   unit: share
   how: week of 2026-08-03
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_08_03
   value: 311.1
   unit: Rs
   how: week of 2026-08-03
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_08_03_rs
   value: 6135195
   unit: Rs
@@ -675,12 +688,12 @@ numbers:
   value: 0.867
   unit: share
   how: week of 2026-08-10
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_08_10
   value: 316.7
   unit: Rs
   how: week of 2026-08-10
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_08_10_rs
   value: 6179580
   unit: Rs
@@ -715,12 +728,12 @@ numbers:
   value: 0.861
   unit: share
   how: week of 2026-08-17
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_08_17
   value: 317.6
   unit: Rs
   how: week of 2026-08-17
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_08_17_rs
   value: 6218520
   unit: Rs
@@ -755,12 +768,12 @@ numbers:
   value: 0.862
   unit: share
   how: week of 2026-08-24
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_08_24
   value: 310.3
   unit: Rs
   how: week of 2026-08-24
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_08_24_rs
   value: 6274950
   unit: Rs
@@ -795,12 +808,12 @@ numbers:
   value: 0.729
   unit: share
   how: week of 2026-08-31
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_08_31
   value: 271.0
   unit: Rs
   how: week of 2026-08-31
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_08_31_rs
   value: 6454965
   unit: Rs
@@ -835,12 +848,12 @@ numbers:
   value: 0.735
   unit: share
   how: week of 2026-09-07
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_09_07
   value: 261.7
   unit: Rs
   how: week of 2026-09-07
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_09_07_rs
   value: 6525255
   unit: Rs
@@ -875,12 +888,12 @@ numbers:
   value: 0.729
   unit: share
   how: week of 2026-09-14
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_09_14
   value: 259.1
   unit: Rs
   how: week of 2026-09-14
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_09_14_rs
   value: 6444240
   unit: Rs
@@ -915,12 +928,12 @@ numbers:
   value: 0.731
   unit: share
   how: week of 2026-09-21
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_09_21
   value: 256.5
   unit: Rs
   how: week of 2026-09-21
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_09_21_rs
   value: 6321645
   unit: Rs
@@ -955,12 +968,12 @@ numbers:
   value: 0.726
   unit: share
   how: week of 2026-09-28
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_09_28
   value: 256.9
   unit: Rs
   how: week of 2026-09-28
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_09_28_rs
   value: 6229575
   unit: Rs
@@ -995,12 +1008,12 @@ numbers:
   value: 0.731
   unit: share
   how: week of 2026-10-05
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_10_05
   value: 257.4
   unit: Rs
   how: week of 2026-10-05
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_10_05_rs
   value: 6122820
   unit: Rs
@@ -1091,12 +1104,12 @@ numbers:
   value: 0.39
   unit: share
   how: top-up to driver-weeks at or above half accepted, over all top-up
-  used_by: L5; S28 option b
+  used_by: L5; half1 S78 option b
 - id: driver_weeks_total
   value: 12860
   unit: driver-weeks
   how: rows of driver_weeks, twelve weeks
-  used_by: notebook 02; S17
+  used_by: notebook 08; half1 S68
 - id: tph_fall
   value: 0.32
   unit: trips per peak online hour
@@ -1917,91 +1930,91 @@ toys:
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: data/C2_W04_D01_attendance_register_STUDENT.csv,
     one student''s term'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
 - id: toy_register_days
   value: 60
   unit: calendar days
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: the
     term'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
 - id: toy_register_holidays
   value: 10
   unit: days
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: eight
     Sundays and two festival days'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
 - id: toy_register_working
   value: 50
   unit: days
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: 60
     - 10'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
 - id: toy_register_present
   value: 40
   unit: days
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: the
     student''s days present'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
 - id: toy_register_absent
   value: 8
   unit: days
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: days
     absent'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
 - id: toy_register_medical
   value: 2
   unit: days
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: days
     on medical leave'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
 - id: toy_register_pct_school
   value: 80.0
   unit: percent
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: present
     / working days'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set; Kahoot
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set; Kahoot
 - id: toy_register_pct_calendar
   value: 66.7
   unit: percent
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: present
     / calendar days'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
 - id: toy_register_pct_medical_out
   value: 83.3
   unit: percent
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: medical
     leave out of both counts'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
 - id: toy_register_pct_medical_present
   value: 84.0
   unit: percent
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: medical
     leave counted present'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
 - id: toy_register_window_days
   value: 20
   unit: working days
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: the
     window: the term''s last 20 working days'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
 - id: toy_register_window_present
   value: 14
   unit: days
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: present
     in the last 20 working days'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
 - id: toy_register_window_absent
   value: 4
   unit: days
@@ -2022,7 +2035,7 @@ toys:
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: 14
     / 20'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
 - id: toy_register_pct_window_medical_out
   value: 77.8
   unit: percent
@@ -2050,7 +2063,7 @@ toys:
   label: invented
   how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: the
     scholarship''s attendance rule in the trap'
-  used_by: half1 SECTION 4; notebook 04; notes; definition_lines set
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
 - id: toy_kirana_table
   value:
   - order_id: K01
@@ -2905,16 +2918,16 @@ plants:
   value: 1.22
   how: reorders placed per member, the 107 who joined by 19 August, 10 to 30 September over 20 August
     to 9 September
-  found_in: notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
+  found_in: notebooks/C2_W04_D01_12_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_booked_value_per_member_ratio
   value: 0.96
   how: booked value of reorders per member, any status, the same 107 and the same two windows
-  found_in: notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
+  found_in: notebooks/C2_W04_D01_12_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_window_none_delivered
   value: true
   how: every placement in the window is an auto-reorder that was cancelled, merged or pending, and none
     became an order
-  found_in: notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the second your-turn cell
+  found_in: notebooks/C2_W04_D01_12_kalpa_lab_STUDENT.ipynb, the second your-turn cell
 shared_constants:
   kalpa_comparison_window:
   - '2026-08-20'

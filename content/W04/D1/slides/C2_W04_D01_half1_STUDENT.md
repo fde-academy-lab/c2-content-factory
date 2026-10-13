@@ -484,7 +484,7 @@ number had to match what they were trying to do.
 *What happens when a north star counts the wrong thing for what the business is trying to do?*
 
 ```stats
-value: 28% | label: of Instamart's users | note: used Maxxsaver, its larger-basket offer, in the quarter to 30 June 2025
+value: 28% | label: of MTUs, in Swiggy's words | note: had used Maxxsaver, Instamart's larger-basket offer, in its first quarter, to 30 June 2025
 value: Rs 612 | label: average order value | note: up 16 percent on the quarter before, with slightly fewer orders per user
 value: NOV | label: Eternal's headline | note: net order value, gross order value minus discounts, from its Q1 FY27 letter
 ```
@@ -814,7 +814,7 @@ result against a count made by filtering the table directly. Transition: the rul
 
 ```notes
 LIVE, 1 minute. Ask the definition-lines set's first item aloud
-(exercises/unguided/C2_W04_D01_definition_lines_set_STUDENT.md, Q1). Transition: a company that
+(exercises/unguided/C2_W04_D01_four_definition_lines_set_STUDENT.md, Q1). Transition: a company that
 writes its lines down.
 ```
 
@@ -913,7 +913,7 @@ icon: circle-help | eyebrow: d | title: It cannot be told | body: The app keeps 
 ```
 
 ```notes
-LIVE, 1 minute. The misconception under a: "if we pay per delivery, we get more deliveries".
+LIVE, 1 minute 30 seconds. The misconception under a: "if we pay per delivery, we get more deliveries".
 Transition: the answer, counted by hand.
 ```
 
@@ -1345,9 +1345,9 @@ icon: wallet | eyebrow: Finance partner | title: Top-up per trip | body: Holds t
 **The proxy test, from chapter 1, three questions per number.** Could a team hit this number while riders were served no better? Who controls the count? What does the number deliberately not reward?
 
 ```notes
-LIVE, 7 minutes, the war game's round 1 (run sheet: trainer/C2_W04_D01_war_game_TRAINER.md).
+LIVE, 5 minutes, the war game's round 1 (run sheet: trainer/C2_W04_D01_war_game_TRAINER.md).
 The trainer voices the three role cards, or three learners read them. Each of the nine groups has
-three minutes to give one way to game each number, now with chapter 1's proxy test and chapter 5's
+two minutes to give one way to game each number, now with chapter 1's proxy test and chapter 5's
 four ways in hand, and its scorer holds the proxy-test card. Write the answers on the board under each
 role. Expect: hours rise if drivers stay logged in and idle; enrolled drivers rise if people sign up
 and never drive; top-up per trip falls if drivers take only short trips. Park "what would the data
@@ -1399,7 +1399,7 @@ Transition: six drivers from the case's own data.
 The before week begins 10 August 2026 and the after week 21 September 2026. These are twelve rows of the case's own `driver_weeks`; E and F drive in two of the three outer zones, where riders are few. E and F also keep shorter weeks than most drivers who idle like them, which chapter 8's full data shows.
 
 ```notes
-LIVE, 6 minutes, StatQuest: say each number aloud. Add the hours column for the before week (60)
+LIVE, 7 minutes, StatQuest: say each number aloud. Add the hours column for the before week (60)
 and the after week (74), then the trips (114 and 88), writing the four sums on the board. Point at
 E and F before saying anything about them: hours up, offers down because Shamshabad and
 Rajendranagar get few requests, and most of those offers declined.
@@ -1442,7 +1442,7 @@ flowchart LR
 **Answer: c.** Hours rose 23 percent and trips fell 23 percent, so trips per peak online hour fell from 1.90 to 1.19: add the trips, add the hours, divide once, chapter 4's numerator over its denominator. The city fell to 1.58; the six fall further because they were chosen to show the mechanism, and two of them, E and F, logged hours with almost no trips, a third of this sample. How common such drivers are in the city is chapter 8's question.
 
 ```notes
-LIVE, 5 minutes. Say the step aloud: for every ten hours online the six made 19 trips before and 12
+LIVE, 6 minutes. Say the step aloud: for every ten hours online the six made 19 trips before and 12
 after. Then say why the six are not the city: the rows were picked so the mechanism shows in
 miniature. Watch for anyone averaging each driver's own ratio; chapter 8 shows what that average
 prints on the full data and why it misleads.

@@ -11,6 +11,11 @@ every value the orchestrator's review of 12 October 2026 holds, every Kalpa plan
 the join to v4 and the case tables' checksums on origin/main are asserted; a failed line makes the
 script exit 1.
 
+It also writes the six invented tables the concept chapters count by hand (the canteen's ten days, the
+school bus, the driving school, the chase, one student's register and Balaji Kirana's four weeks), each
+with no draw from the case's generator, so the case tables stay byte-identical to main, and records
+every number of them under a toy_ id in the facts file.
+
     python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py              write, then check
     python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py --contract   also print every line
     python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py --list       print the facts ids
@@ -781,7 +786,7 @@ def fact(fid, value, unit, how, used_by):
     numbers.append({"id": fid, "value": value, "unit": unit, "how": how, "used_by": used_by})
 
 
-TICKET = "the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes"
+TICKET = "the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes"
 fact("launch_date", "2026-08-31", "date", "the scheme's first day, a Monday", TICKET)
 fact("window_before", "2026-07-20 to 2026-08-30", "dates", "six weeks beginning 20 July", TICKET)
 fact("window_after", "2026-08-31 to 2026-10-11", "dates", "six weeks beginning 31 August", TICKET)
@@ -898,8 +903,10 @@ for week, r in weekly.iterrows():
     fact(f"hours_{key}", int(r["hours"]), "hours", f"week of {week}", "the drift chart; Tuesday")
     fact(f"trips_{key}", int(r["trips"]), "trips", f"week of {week}", "the drift chart; Tuesday")
     fact(f"requests_{key}", int(r["requests"]), "rider requests", f"week of {week}", "L4 seasonality")
-    fact(f"acceptance_{key}", r3(r["accepted"] / r["offers"]), "share", f"week of {week}", "explorer M4; Tuesday")
-    fact(f"rs_per_hour_{key}", round(r["bookings"] / r["hours"], 1), "Rs", f"week of {week}", "explorer M4; Tuesday")
+    fact(f"acceptance_{key}", r3(r["accepted"] / r["offers"]), "share", f"week of {week}",
+         "explorer M4; half1 S28; notebook 09; Tuesday")
+    fact(f"rs_per_hour_{key}", round(r["bookings"] / r["hours"], 1), "Rs", f"week of {week}",
+         "explorer M4; half1 S28; notebook 09; Tuesday")
     fact(f"bookings_{key}_rs", int(r["bookings"]), "Rs", f"week of {week}", "Tuesday")
     fact(f"driver_weeks_{key}", int(r["rows"]), "driver-weeks", f"week of {week}", "Tuesday")
     fact(f"online_drivers_{key}", int(r["online"]), "drivers", f"week of {week}, at least one peak hour",
@@ -932,8 +939,8 @@ fact("mean_of_ratios_hidden_share", r2((mean_of_ratios["after"] - A["peak_trips"
                                           - A["peak_trips"] / A["peak_online_hours"])), "share",
      "(1.71 - 1.58) / (1.90 - 1.58): the part of the fall the average of rates hides", "L2 trap, two-fifths")
 fact("topup_high_acceptance_share", r2(high_topup / (low_topup + high_topup)), "share",
-     "top-up to driver-weeks at or above half accepted, over all top-up", "L5; S28 option b")
-fact("driver_weeks_total", int(len(dw)), "driver-weeks", "rows of driver_weeks, twelve weeks", "notebook 02; S17")
+     "top-up to driver-weeks at or above half accepted, over all top-up", "L5; half1 S78 option b")
+fact("driver_weeks_total", int(len(dw)), "driver-weeks", "rows of driver_weeks, twelve weeks", "notebook 08; half1 S68")
 fact("tph_fall", r2(B["peak_trips"] / B["peak_online_hours"] - A["peak_trips"] / A["peak_online_hours"]),
      "trips per peak online hour", "1.90 - 1.58", "L2 trap")
 fact("mean_of_ratios_fall", r2(B["peak_trips"] / B["peak_online_hours"] - mean_of_ratios["after"]),
@@ -1016,7 +1023,7 @@ def toy(fid, value, unit, n, how, used_by):
 
 
 CH = {n: f"half1 SECTION {n}; notebook {n:02d}; notes; {s} set" for n, s in
-      {1: "proxy_test", 2: "north_star_guardrails", 3: "leading_lagging", 4: "definition_lines", 5: "gaming",
+      {1: "proxy_test", 2: "north_star_guardrails", 3: "leading_lagging", 4: "four_definition_lines", 5: "gaming",
        6: "artifact"}.items()}
 r1 = lambda x: round(float(x), 1)  # noqa: E731
 toy("toy_canteen_table", canteen.to_dict("records"), "rows", 1,
@@ -1188,7 +1195,8 @@ def by_status(frame):
 facts = {
     "day": "W04/D1, Monday 26 October 2026",
     "written_by": "C2_W04_D01_generate_INTERNAL.py, the W04 D1 finishing session, 12 October 2026; the Kalpa "
-                  "lab rebuilt on Thursday's membership table, 13 October 2026",
+                  "lab rebuilt on Thursday's membership table, 13 October 2026; the six concept chapters' "
+                  "invented tables and their toy_ ids, 13 October 2026",
     "source_tables": {
         "drivers": "data/C2_W04_D01_drivers_STUDENT.csv",
         "driver_weeks": "data/C2_W04_D01_driver_weeks_STUDENT.csv",
@@ -1197,6 +1205,12 @@ facts = {
                          "data/C2_W04_D04_kalpa_memberships_STUDENT.csv)",
         "kalpa_app_reorders": "data/C2_W04_D01_kalpa_app_reorders_STUDENT.csv (its order_id rows are orders of "
                               "content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql)",
+        "canteen_days": "data/C2_W04_D01_canteen_days_STUDENT.csv (invented, chapter 1)",
+        "school_bus_days": "data/C2_W04_D01_school_bus_days_STUDENT.csv (invented, chapter 1's your-turn)",
+        "driving_school": "data/C2_W04_D01_driving_school_STUDENT.csv (invented, chapter 2)",
+        "chase_overs": "data/C2_W04_D01_chase_overs_STUDENT.csv (invented, chapter 3)",
+        "attendance_register": "data/C2_W04_D01_attendance_register_STUDENT.csv (invented, chapter 4)",
+        "kirana_deliveries": "data/C2_W04_D01_kirana_deliveries_STUDENT.csv (invented, chapters 5 and 6)",
     },
     "numbers": numbers,
     "toys": toys,
@@ -1248,14 +1262,14 @@ facts = {
         {"id": "kalpa_reorders_per_member_ratio", "value": r2(k_count_ratio),
          "how": "reorders placed per member, the 107 who joined by 19 August, 10 to 30 September over 20 August "
                 "to 9 September",
-         "found_in": "notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell"},
+         "found_in": "notebooks/C2_W04_D01_12_kalpa_lab_STUDENT.ipynb, the empty your-turn cell"},
         {"id": "kalpa_booked_value_per_member_ratio", "value": r2(k_value_ratio),
          "how": "booked value of reorders per member, any status, the same 107 and the same two windows",
-         "found_in": "notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell"},
+         "found_in": "notebooks/C2_W04_D01_12_kalpa_lab_STUDENT.ipynb, the empty your-turn cell"},
         {"id": "kalpa_window_none_delivered", "value": True,
          "how": "every placement in the window is an auto-reorder that was cancelled, merged or pending, and "
                 "none became an order",
-         "found_in": "notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the second your-turn cell"},
+         "found_in": "notebooks/C2_W04_D01_12_kalpa_lab_STUDENT.ipynb, the second your-turn cell"},
     ],
     "shared_constants": shared,
 }
@@ -1281,7 +1295,7 @@ if __name__ == "__main__":
 
 # Test inputs and expected outcomes
 # python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py
-#     writes five CSVs and the facts file, prints "62 of 62 contract lines PASS" and exits 0
+#     writes eleven CSVs and the facts file, prints "79 of 79 contract lines PASS" and exits 0
 # python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py --contract
 #     the same, with one PASS line per target printed first
 # python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py --list

@@ -82,7 +82,7 @@ icon: wallet | eyebrow: Finance partner | title: "The fall is the monsoon's end"
 Each attack is partly right by design, and a defence names the true part before answering the rest.
 
 ```notes
-LIVE, 2 minutes. Read the three cards in the roles' voices. The numbers on the cards come from the
+LIVE, 2 minutes 30 seconds. Read the three cards in the roles' voices. The numbers on the cards come from the
 data: 880 is the 1,060 drivers there before the launch less the 180 in the idle tail, and they made
 1.90 trips an hour in both windows; the rate stepped down in the launch week while weekly requests
 stayed between about 41,000 and 44,000, and the three weeks with the most requests already read
@@ -141,10 +141,10 @@ value: Rs 82.3 | label: top-up per completed trip | note: after the launch; guar
 **The rule priced.** The Rs 300 floor stays, and a driver-week earns its top-up only if the driver accepted at least half the offers shown, an accepted trip later cancelled counting as declined. **The assumption, stated.** Some idle drivers would start accepting enough to qualify, so between a fifth and a half of the idle tail's top-up would still be paid. **What would settle it:** the test of the redesign that this afternoon's tentative faculty block designs. Rs 74 lakh, what the other driver-weeks received, is what the rule would have paid had every driver behaved the same, so it is the least the redesign would cost.
 
 ```notes
-LIVE, 2 minutes. Groups compare their own saving with the range. A group that wrote "saves Rs 1.16
+LIVE, 3 minutes: the comparison (2), then the scoring (1). Groups compare their own saving with the range. A group that wrote "saves Rs 1.16
 crore" has assumed nobody changes; ask what the idle tail would do on Monday morning under the new
 rule. Chapter 2's Maxxsaver made the same point from the other side: a north star has to match what
-the business is trying to do, and this one pays for trips. Then 1 minute of scoring.
+the business is trying to do, and this one pays for trips. Then the scoring.
 Transition: the interview room.
 ```
 
@@ -321,16 +321,16 @@ Transition: the day's close.
 
 > "Judge the scheme by completed peak trips per enrolled driver online at peak, guarded by the share of offers accepted and the rider's wait, because paying for hours cost Rs 1.159 crore in six weeks for driver-weeks that declined most of what they were offered."
 
-The rule that follows from it: the Rs 300 floor stays only for driver-weeks that accept at least half their offers, an accepted trip later cancelled counting as declined.
+The rule: the Rs 300 floor stays only for driver-weeks that accept at least half their offers, a cancelled trip counting as declined.
 
-```timeline
-label: 1 | title: The proxy test | body: Hours need no rider; trips do.
-label: 2 | title: North star and guardrails | body: Trips per enrolled driver, with acceptance and the wait.
-label: 3 | title: Leading and lagging | body: Acceptance moved in the launch week.
-label: 4 | title: The four lines | body: A ratio of sums, its denominator named.
-label: 5 | title: Resisting gaming | body: Pay for trips a rider asked for.
-label: 6 | title: The page | body: Seven lines the city can sign. | tone: dark
-```
+| Topic | On Uber's scheme |
+|---|---|
+| 1. The proxy test | Hours need no rider |
+| 2. North star, guardrails | Trips, with acceptance and the wait |
+| 3. Leading, lagging | Acceptance moved first |
+| 4. The four lines | All trips over all hours |
+| 5. Gaming | Pay for trips riders asked for |
+| 6. The page | Seven lines the city signs |
 
 **Tuesday's question.** Can this answer survive one slide, five minutes, in front of the three people who each lose something under it?
 
