@@ -2,6 +2,7 @@
 
 Written by `C2_W04_D04_renumber_slides_INTERNAL.py` in the concept-first rebuild, 13 October 2026.
 The old numbers are the merged decks' of 12 October 2026 (half one S1 to S37, half two S38 to S47).
+The titles are as the cold-read fix pass of the same day left them.
 A slide the rebuild removed or merged is listed under the last table.
 
 | Old | Deck | New | Title now |
@@ -9,7 +10,7 @@ A slide the rebuild removed or merged is listed under the last table.
 | S2 | half1 | S2 | The week map, Thursday lit |
 | S1 | half1 | S5 | The ticket: a flat 38 and a release on Android |
 | S5 | half1 | S35 | Twelve members: the board, then the card |
-| S3 | half1 | S37 | Where today ends: two problems, two fixes |
+| S3 | half1 | S37 | Where today ends: one sentence with blanks |
 | S4 | half1 | S38 | Five causes on the board, each with its test |
 | S7 | half1 | S39 | The card: twelve members, four months |
 | S8 | half1 | S40 | Predict: which group keeps the most in month one? |
@@ -20,8 +21,8 @@ A slide the rebuild removed or merged is listed under the last table.
 | S16 | half1 | S45 | From twelve members to 53,089 |
 | S17 | half1 | S46 | Predict: which way does each cohort's row run? |
 | S18 | half1 | S47 | Answer: every row falls, and each starts lower |
-| S19 | half1 | S48 | Predict: what does the dashboard print? |
-| S20 | half1 | S49 | Answer: 38.2, 38.0, 37.9, 37.8 percent |
+| S19 | half1 | S48 | Predict: why does the dashboard hold near 38? |
+| S20 | half1 | S49 | Answer: a slow slide, refilled each month |
 | S21 | half1 | S50 | The wrong call: "38 and flat, nothing changed" |
 | S23 | half1 | S51 | Second route: 13,218 of 35,000, both ways |
 | S24 | half1 | S52 | Predict: counting everyone, what is September? |
@@ -32,8 +33,8 @@ A slide the rebuild removed or merged is listed under the last table.
 | S30 | half1 | S58 | 118 percent: the carousel skips search |
 | S31 | half1 | S59 | Predict: per member, what does menu to cart read? |
 | S32 | half1 | S60 | Answer: 61 per member, 34 per session |
-| S33 | half1 | S61 | Predict: whose conversion fell after 14 September? |
-| S34 | half1 | S62 | Answer: members on Android, from the release week |
+| S33 | half1 | S61 | Predict: when did members' Android rate break? |
+| S34 | half1 | S62 | Answer: flat, then a break in the release week |
 | S35 | half1 | S63 | The step that broke: checkout start to order |
 | S36 | half1 | S64 | Seven checks before the call |
 | S37 | half1 | S65 | One step, one platform, one date |
@@ -66,7 +67,7 @@ A slide the rebuild removed or merged is listed under the last table.
 | half1 | S14 | Predict: what does January read at age five? |
 | half1 | S15 | Answer: January holds at 50 from age three |
 | half1 | S16 | Churn is the share lost, counted two ways |
-| half1 | S17 | A floor needs two ages that read the same |
+| half1 | S17 | A floor needs two ages that agree |
 | half1 | S18 | Four rules for reading a retention curve |
 | half1 | S19 | The floor feeds the blend and the case |
 | half1 | S20 | Blended numbers: four questions, one dashboard |
@@ -75,7 +76,7 @@ A slide the rebuild removed or merged is listed under the last table.
 | half1 | S23 | A blend is an average weighted by size |
 | half1 | S24 | The plain mean of the rates is the wrong number |
 | half1 | S25 | Four rules for a blended number |
-| half1 | S26 | The blend is Week 1 Thursday's reversal again |
+| half1 | S26 | The blend uses Week 1 Thursday's arithmetic |
 | half1 | S27 | The funnel: four questions, one college |
 | half1 | S28 | Predict: which step owns this cycle's loss? |
 | half1 | S29 | Answer: offer acceptance, the step that moved |

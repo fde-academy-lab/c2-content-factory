@@ -11,7 +11,8 @@ Header: WEEK 4  ·  DAY 4  ·  COHORT AND FUNNEL
 Sixty trainer minutes: the fifth topic on the college (10), the fix-first call on Zomato Gold,
 unguided (25), the interview walk and the AI-company variant (10), the Kahoot and the close (15).
 Then the IITGN faculty session W4-3 runs (tentative), or the weaned-users fallback if it slips.
-LIVE, 10 minutes. Laptops closed; notebook 08 afterwards or in the lab. Styles: Veritasium (the
+LIVE, 10 minutes. Laptops closed; notebook 08 afterwards or in the lab; drill c5 runs in the lab.
+If late: S70 in one sentence. Styles: Veritasium (the
 bigger count against the step that moved), the case method (the admissions office's claim,
 partly right), Feynman (the page in five plain lines).
 Transition: the chapter's questions.
@@ -42,7 +43,7 @@ Transition: the dean's two problems.
 ---
 
 ## S67. Predict: which problem does the dean fix first?
-*The dean has two problems: 200 of 1,000 applications skip the entrance test every cycle, and offer acceptance fell from 90 to 75 percent this cycle (invented). Which goes first?*
+*The dean has two problems: 200 of 1,000 applications never sat the entrance test this cycle, the same 20 percent as every cycle, and offer acceptance fell from 90 to 75 percent (invented). Which goes first?*
 
 | The college's two problems (invented) | Two cycles ago | Last cycle | This cycle |
 |---|---|---|---|
@@ -69,7 +70,7 @@ Transition: the split.
 
 ![Offers accepted by home state, three cycles (invented)](../whiteboards/C2_W04_D04_college_acceptance_STUDENT.png)
 
-The answer is c. The test's no-show has read 20 percent for three cycles, so it is how the test runs, and nothing changed there. Acceptance fell for one group: students from other states went from 87 to 50 percent, from the cycle the fee-payment deadline was cut from 21 to 7 days after the offer, while in-state students, the comparator on the same step, held at 92 to 90.
+The answer is c. The test's no-show has read 20 percent for three cycles, so it is how the test runs, and nothing changed there. Acceptance fell for one group: students from other states went from 87 to 50 percent, from the cycle the fee-payment deadline was cut from 21 to 7 days after the offer, while in-state students on the same step, who met the same shorter deadline, held at 92 to 90: the comparator places the fall in one group, and the date ties it to the change.
 
 ```notes
 LIVE, 2 minutes. Three things turn a fall into a case: the group it hurts, the date it started,
@@ -89,11 +90,11 @@ Transition: how big it is.
 | Accepted | 225 | 75 | 300 |
 | Fewer acceptances | 5 | 55 | 60 |
 
-Since 80 percent of those who accept join, 60 fewer acceptances are 48 fewer students, and the joiners counted directly say the same: 288 last cycle, 240 this cycle. At a first-year fee of Rs 1 to 1.5 lakh, an assumption, that is Rs 48 to 72 lakh of fee income a year, Rs 57.6 lakh at Rs 1.2 lakh.
+Since 80 percent of those who accept join, 60 fewer acceptances are 48 fewer students, and the joiners counted directly say the same: 288 last cycle, 240 this cycle. At a first-year fee of Rs 1 to 1.5 lakh, an assumption, that is Rs 48 to 72 lakh of first-year fees, Rs 57.6 lakh at Rs 1.2 lakh. The no-show, sized the same way: if half of the 200 sat the test and passed on at this cycle's rates, an assumption, about 30 more would join. That gain is worth planning for, and it is how the test has always run; the 48 is a loss that started this cycle.
 
 ```python
-lost = (shortlisted * last_cycle_rate - accepted).round()   # 5 in-state, 55 other states
-joiners_lost = lost.sum() * 0.8                              # 48; 288 - 240 says the same
+lost = shortlisted * accepted_last / shortlisted_last - accepted   # 230 - 225 = 5; 130 - 75 = 55
+joiners_lost = lost.sum() * 0.8                                    # 48; 288 - 240 says the same
 ```
 
 ```notes
@@ -131,7 +132,7 @@ Transition: the page.
 ## S71. The fix-first page: five lines, each with a number
 *What does a call carry to survive the meeting, filled in for the dean?*
 
-1. **The call.** Give other-state offers a longer fee deadline first; the test's no-show waits, since it never moved.
+1. **The call.** Give other-state offers their 21-day fee deadline back in the next round, a cheap change that can be undone; the test's no-show waits, since it never moved.
 2. **The evidence.** Offer acceptance fell from 90 to 75 percent; for other-state students from 87 to 50, while in-state held at 92 to 90 on the same step, from the cycle the deadline went from 21 to 7 days.
 3. **The cost.** 60 fewer acceptances, 48 fewer students, Rs 48 to 72 lakh of first-year fees at an assumed Rs 1 to 1.5 lakh.
 4. **The objection.** Offers did go out in two days, which is true; the fall came after the offer, for one group, after one change.
@@ -180,7 +181,9 @@ Transition: SECTION 9, the call on Zomato Gold.
 *The morning found two problems, a dashboard that reads 38 because of who it counts and one broken step on Android. With the page SECTION 8 built, which goes first, on what evidence, at what cost, and what does the app team's lead say?*
 
 ```notes
-LIVE, 25 minutes, unguided, in the nine groups. L5. Styles: the case method (the app team's lead
+LIVE, 25 minutes, unguided, in the nine groups: 12 minutes of slides and 13 of writing; the set's
+items run in the lab. Hand out: the fix-first set and the role card to the TA. If late: S76 in one
+sentence. L5. Styles: the case method (the app team's lead
 argues from a role card and is partly right), Feynman (the call in one sentence a membership lead
 could repeat).
 Transition: the task.
@@ -221,8 +224,9 @@ Transition: the app team's lead.
 **The claim.** "Carts that start checkout held at 80 percent on every platform, before and after 14 September, so the new flow works." **What is true.** Starting checkout did not break. **What answers it.** Completing the order once checkout has started fell from 72.5 to 55 percent, for members on Android, from the release week. Concede the true part, restate the question, bring the split.
 
 ```notes
-LIVE, 3 minutes. A learner reads the role card aloud (TRAINER role card); one group answers in
-the four moves from Tuesday: restate, answer from the evidence, concede what is true, say what
+LIVE, 3 minutes. Keep S73 up while the TA, playing the app team's lead from the role card (TRAINER
+role card), reads the claim; one group answers in the four moves from Tuesday, and only then does
+this slide, the model answer, go up. The four moves: restate, answer from the evidence, concede what is true, say what
 would change your mind. A response that calls the app team wrong has lost; the chart is right
 about the step it measures. It is the college's admissions office again, on a real company.
 Transition: what each problem costs.
@@ -267,13 +271,13 @@ flowchart LR
 
 **What breaks.** "Retention will recover if we run another sale." The next discounted cohort enters the count at its month two and, if it behaves like this one, pulls the dashboard down again at the discount's cost.
 
-**The rule.** Before buying another sale, set what a sale-week member returns against her discount: 0.23 orders in month one against 0.61 for an organic member, so this sale has not paid back. Leave search to menu view alone: 118 percent was never a broken step.
+**The rule.** Before another sale, set a sale-week member's 0.23 orders in month one, against an organic member's 0.61, beside her discount and the margin; until then the payback is open. Leave search to menu view alone: 118 was never a broken step.
 
 ```notes
 LIVE, 2 minutes. Two traps of L5: acquiring your way out of a retention problem, and fixing the
 skippable stage. If a group asks what a real company did instead: Swiggy went the other way and
-weaned away more than 4 million unprofitable Instamart users (its Q1 FY27 letter, the fallback
-block's first part). Then the groups finish their page.
+weaned away more than 4 million unprofitable Instamart users (its Q1 FY27 letter; the fallback
+deck opens on it). Then the groups finish their page.
 Source:
 https://nsearchives.nseindia.com/corporate/SWIGGY_30072026154100_Covering_Letter_Letter_to_Shareholders_-_signed.pdf (checked 12 October 2026)
 Transition: the call, said in one breath.
@@ -284,7 +288,7 @@ Transition: the call, said in one breath.
 ## S77. The call: the Android checkout first
 *What does a strong call say, in the order the membership lead needs it?*
 
-**The call.** Fix the member path of the new Android checkout first: it loses about 1,133 to 1,317 orders a week, a quarter of Android members' orders, and non-members on the same checkout held, so the fault sits in what only members see. **The evidence.** Checkout start to order placed fell from 72.5 to 55 percent for members on Android from the release week; starting checkout held at 80; on the same step iOS members went from 71 to 70 and non-members on Android from 65 to 64; the order records match the event log. **The cost.** Rs 3.4 to 6.6 lakh of order value a week at Rs 300 to Rs 500 an order, of which Zomato keeps its commission and fees. **The second problem.** The sale-week members kept 20 percent in month one against 49 for organic August members; before another sale, work out whether these members pay back their discount. **What would change the order.** If most members who failed had come back and ordered later, the release would cost a delay rather than orders and the sale would go first; counted in orders placed, Android members' weekly orders fell 18 percent while iOS members' rose 7, so most did not.
+**The call.** Fix the member path of the new Android checkout first: it loses about 1,133 to 1,317 orders a week, a quarter of Android members' orders, and non-members on the same checkout held, so the fault sits in what only members see. Until the fix ships, switch Android members back to the old checkout today, or give half of them the old path for two days, which confirms the cause and stops most of the loss. **The evidence.** Checkout start to order placed fell from 72.5 to 55 percent for members on Android from the release week; starting checkout held at 80; on the same step iOS members went from 71 to 70 and non-members on Android from 65 to 64; the order records match the event log. **The cost.** Rs 3.4 to 6.6 lakh of order value a week at Rs 300 to Rs 500 an order, of which Zomato keeps its commission and fees. **The second problem.** The sale-week members kept 20 percent in month one against 49 for organic August members; before another sale, work out whether these members pay back their discount. **What would change the order.** If most members who failed had come back and ordered later, the release would cost a delay rather than orders and the sale would go first; counted in orders placed, Android members' weekly orders fell 18 percent while iOS members' rose 7, so most did not.
 
 ```notes
 LIVE, 2 minutes. One group reads its call; the room scores it against the five lines. This is the
@@ -299,9 +303,9 @@ Transition: the interview.
 *"Retention dropped; walk me through your investigation." How does a hire-grade candidate, one whose answer gets the job, order it with all five topics, and how does the same idea apply to an AI product?*
 
 ```notes
-LIVE, 10 minutes. L6. Pairs read the transcript in the extras folder: one plays the interviewer,
-one the candidate; they score the hire-grade answer on the scorecard's seven lines and swap.
-Explorer scene Th4 carries the AI-company variant.
+LIVE, 10 minutes. L6. Pairs work from S79's table only: one asks the question, one answers in the
+hire-grade order, and they swap; the full transcript in the extras folder is for the evening. The
+AI variant is read aloud, 3 minutes, no discussion; explorer scene Th4 carries it.
 Transition: the chapter's questions.
 ```
 
@@ -346,10 +350,14 @@ flowchart LR
 | First sentence | "It's probably the August cohort." | "Before a cause, I'd check the count, then what the number counts." |
 | The flat 38 | Accepts it | "Who does month-two retention count, and from when?" |
 | The split | Overall conversion | Cohorts at the same age, then platform and date on the same step, then fewer users against fewer orders each, cohorts held fixed |
-| The close | "Retention dropped." | "About 3.2 of the 3.6-point fall is the August cohort; the checkout loses 1,133 to 1,317 orders a week that retention cannot see; then whether the sale paid back; October reads about 33." |
+| The close | "Retention dropped." | "About 3.2 of the 3.6-point fall is the August cohort; the checkout loses 1,133 to 1,317 orders a week that retention cannot see; then whether the sale pays back; October reads about 33 on one assumption." |
 
 ```notes
-LIVE, 5 minutes. The steps are the morning's hypothesis board. Aced's guide to analyst interviews
+LIVE, 5 minutes. Pairs read only this table: one asks, one answers in the hire-grade order, then
+swap. The 3.6 and the 3.2, worked: counted for everyone, the month read 39.5 in August and 35.9 in
+September, a fall of 3.6 points; with a normal August cohort, 5,000 members at July's 49 percent in
+month one, September would read 39.2, a fall of about 0.4, so about 3.2 of the 3.6 is the August
+cohort. The steps are the morning's hypothesis board. Aced's guide to analyst interviews
 says the same about a metric drop: rule out a data issue first, segment before a root cause, and
 keep fewer users apart from fewer views each (checked 12 October 2026). The weak answer names a
 cause in its first sentence.
@@ -395,7 +403,7 @@ Transition: the handoff.
 ## S81. The handoff: the member who has not left yet
 *What does the cohort table get wrong about its newest members, and who picks it up?*
 
-**The handoff line.** "Your cohort table treats a member who has not left yet as if she were retained for ever, and that flatters every curve. The next 120 minutes give that member a name, censored, and show when two curves really differ by more than chance."
+**The handoff line.** "Your table leaves a young cohort's later ages empty, and a member who has not left yet has no end date. Treat her as retained for ever and every curve looks better than it is. After the close, the faculty session (tentative) gives that member a name, censored, and shows when two curves really differ by more than chance."
 
 The next block is the IITGN faculty session W4-3 on survival curves, censoring and hazard, tentative until IIT Gandhinagar confirms it.
 
@@ -411,7 +419,8 @@ Transition: the Kahoot.
 *Which of the day's calls can the room make in seconds, one topic at a time, and what does the day close on before Friday's ticket?*
 
 ```notes
-LIVE, 15 minutes. The map (1), the Kahoot (10) and the close (4).
+LIVE, 15 minutes. The two questions (1), the Kahoot (10) and the close (4). If late: the close
+keeps the sentence and Friday's ticket.
 Transition: the chapter's questions.
 ```
 
@@ -423,7 +432,7 @@ Transition: the chapter's questions.
 **Who needs the answer.** You, tonight, before the take-home: a call missed in the Kahoot is a call likely to reach the membership lead wrong. Applies: all five topics.
 
 ```timeline
-label: 1 | title: Which calls can you make in seconds? | body: One Kahoot item per topic, and Wednesday's return question
+label: 1 | title: Which calls can you make in seconds? | body: At least one Kahoot item per topic, and Wednesday's return question
 label: 2 | title: What does the day close on? | body: The sentence to the membership lead, then Friday's ticket | tone: dark
 ```
 
@@ -440,7 +449,7 @@ Transition: the Kahoot.
 ```cards
 icon: users | eyebrow: Items 1, 3 and 4 | title: Cohorts, the blend and the curves | body: Cohort construction: what a cohort fixes; blended numbers against cohort truth: a blend that holds while two old cohorts fall; retention curves: what the floor says | tone: light
 icon: filter | eyebrow: Items 2, 5 and 7 | title: Funnel stages, drop-off, denominators | body: The step that owns the Android loss; a step above 100 percent; per session against per member | tone: light
-icon: rotate-ccw | eyebrow: Items 8 and 6 | title: The fix-first decision, then Wednesday | body: The first move in a retention walk; then bread to milk, confidence 0.74 and lift 1.04, the verdict in one breath | tone: dark
+icon: rotate-ccw | eyebrow: Items 8 and 6 | title: The fix-first decision, then Wednesday | body: Which of Gold's two problems goes first, and why; then bread to milk, confidence 0.74 and lift 1.04, the verdict in one breath | tone: dark
 ```
 
 ```notes
@@ -454,9 +463,9 @@ Transition: the close.
 ## S84. The day in one sentence, and Friday's ticket
 *What does Thursday close on, and what is Friday's question?*
 
-**The sentence.** The dashboard was flat because of who it counts: every cohort fell after month one, each newer one started lower, and the August cohort is outside the count until October, when the dashboard reads about 33; the orders were lost in one step, on one platform, after one date.
+**The sentence.** The dashboard was flat because of who it counts: every cohort fell after month one, each newer one started lower, and the August cohort is outside the count until October, when the dashboard, on one assumption, reads about 33; the orders were lost in one step, on one platform, after one date.
 
-**The crux lines.** A cohort fixes the entry moment. A curve's floor is read only once two ages agree. A blend is a size-weighted average and counts who it counts. Each funnel step divides by the step before, in one named unit. A low step is not a loss until it moves, and a fix-first call carries its comparator, its date and its cost.
+**The crux lines.** A cohort fixes the entry moment. A curve's floor, by our rule, is read only once two ages agree within a point. A blend is a size-weighted average and counts who it counts. Each funnel step divides by the step before, in one named unit. When the overall falls, the step that moved owns the fall, and a fix-first call carries its comparator, its date and its cost.
 
 **Friday.** Flipkart's Lucknow fulfilment centre must book packer shifts for the festive weeks, and two forecasts sit eighteen points apart: which one goes to the plan, and how wrong could it be? The pre-read ships tonight: the ticket's first lines and Friday's five topics, as terms.
 
