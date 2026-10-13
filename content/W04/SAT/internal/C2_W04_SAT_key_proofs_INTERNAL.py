@@ -206,6 +206,9 @@ def main():
 
     it = BY_ID["concede"]
     keyed(it, "False", "1.56 against 1.90")
+    stem = it["text"].split("\n")[0]
+    for n in ("41,161", "42,602", "41,155", "42,719", "1.56"):
+        assert n in stem, ("the stem must print what the keyed reply uses", n)
     assert close(d2["tph_last_three_after"], 1.56)
     assert d2["requests_last_three_low"] >= d2["requests_before_week_low"]
     assert d2["requests_last_three_high"] <= d2["requests_before_week_high"]
@@ -242,6 +245,8 @@ def main():
     assert "64.06 lakh" in pf["M6"]["facts"]["avg_daily_journeys_current"]
     assert round((64.06 - 60) / 64.06 * 100) == 6 and round((82.44903 - 60) / 82.44903 * 100) == 27
     keyed(it, "line uses", "record day")
+    assert rows[2][0] == "How a journey is counted" and "each line" in rows[2][1]
+    assert "highest-ever day" in rows[1][2]
     show(it, "6 and 27 percent from 60 lakh; DMRC's journeys count each line used (Thursday's sources)")
 
     # ---------------------------------------------------------------- Part 3
@@ -351,7 +356,7 @@ def main():
     assert round(ses["Add to cart"] / ses["Menu view"] * 100) == 34
     assert round(mem["Add to cart"] / mem["Menu view"] * 100) == 61
     assert [round(ses[k] / ses["Open"] * 100) for k in ("Search", "Menu view", "Add to cart")] == [68, 80, 27]
-    keyed(it, "61 percent", "artefact")
+    keyed(it, "61 percent", "a step members can skip")
     show(it, "118, 34 and 61 percent; option b's 68, 80, 27 over the opening sessions")
 
     it = BY_ID["android"]
