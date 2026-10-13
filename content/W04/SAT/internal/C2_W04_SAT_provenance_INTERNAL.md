@@ -255,7 +255,10 @@ passes the distractor audit and holds 11 hard items of 39.
   5,507 teams, 35.8 percent, the guide prints the 1,972 of 5,507, the paper no longer prints either,
   and Friday's learner files print only the 35.8 percent.
 - Monday's synthetic idle tail averages about 39 peak online hours a driver a week against the 14
-  and 16 of drivers E and F in the twelve rows, which a learner noticed on the stretch page.
+  and 16 of drivers E and F in the twelve rows, which a learner noticed on the stretch page. Main's
+  Monday deck (S9) and sheet, from #246, now say E and F keep shorter weeks than the tail's average,
+  so the gap is explained where the room meets it; a merge of main into this branch, tried on 13
+  October 2026, is clean, and the proofs, verify and both checks pass on it.
 - Q20, Q25, Q32 and Q39 print at Hard on the levels row's rule after the blind check read them
   medium for cues this pass removed, and no second sitting has read them, since the skill allows one
   sitting a paper; the room's rates in the item-analysis workbook are the first test of them, and of
