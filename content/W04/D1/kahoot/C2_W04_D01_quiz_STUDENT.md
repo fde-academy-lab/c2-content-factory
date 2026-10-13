@@ -2,11 +2,12 @@
 
 *Illustrative case: the company is real, the situation and the data are synthetic, built for this class.*
 
-Eight items, ungraded, scored on correctness and speed together. Seven are today's, on Uber
-Hyderabad's peak-hour guarantee: an enrolled driver online through a whole peak window was
-guaranteed Rs 300 per peak online hour from 31 August 2026, and six weeks later peak online hours
-were up 24 percent while trips per peak online hour fell from 1.90 to 1.58. The last is the return
-question from Week 2 Friday, one level up.
+Eight items, ungraded, scored on correctness and speed together. Seven are today's, one or more on
+each of the day's six topics, mostly on Uber Hyderabad's peak-hour guarantee: an enrolled driver
+online through a whole peak window was guaranteed Rs 300 per peak online hour from 31 August 2026,
+and six weeks later peak online hours were up 24 percent while trips per peak online hour fell from
+1.90 to 1.58. The last is the return question from Week 2 Friday, one level up. Each item's *Tests*
+line names the topic it tests, as the curriculum words it.
 
 A **north star** is the one number a plan exists to move; a **guardrail** is a number that must not
 get worse while it rises; a **leading** number moves first, and a **lagging** one confirms later.
@@ -24,13 +25,13 @@ seconds, and an item most of the room misses is the call to say again before the
 - Which four lines make a number computable?
 - What is the proxy test, in one line?
 - Which trips per hour goes on the slide, 1.71 or 1.58?
-- What should an AI coding assistant's team count in place of suggestions accepted?
+- Which blank line of an AI coding assistant's one-page definition would refuse to pay for text accepted, then deleted?
 - A pivot reads twice the city's peak online hours; where do you look first?
 
 ---
 
 ## Q1. Which pair gives a north star and a guardrail one job each?
-*Tests: the north star names the outcome, and a guardrail catches a bad way of reaching it.*
+*Tests: North-star and guardrail metrics: the north star names the outcome, and a guardrail catches a bad way of reaching it.*
 
 - North star: the number finance reports; guardrail: the number operations reports
 - North star: the outcome the scheme is for; guardrail: catches a harmful way to it  <- correct
@@ -40,7 +41,7 @@ seconds, and an item most of the room misses is the call to say again before the
 ---
 
 ## Q2. Of five city numbers, which ones lead: (1) acceptance this week, (2) the month's top-up, (3) drivers online in the first peak hour, (4) the quarter's bookings, (5) requests per online hour by zone?
-*Tests: a leading number moves before the north star, while the team can still act on it.*
+*Tests: Leading against lagging indicators: a leading number moves before the north star, while the team can still act on it.*
 
 - 1, 3 and 5  <- correct
 - 1, 2 and 3
@@ -50,7 +51,7 @@ seconds, and an item most of the room misses is the call to say again before the
 ---
 
 ## Q3. After the launch the idle tail's peak online hours went to 2.1 times their level while its trips fell 12 percent. What happened?
-*Tests: the day's trap, a count that rose while the thing it stands for fell.*
+*Tests: Gaming, and definitions that resist it: the day's trap, a count the paid person controls that rose while the thing it stands for fell.*
 
 - They drove more, since more hours online mean more supply at peak
 - Riders stopped requesting trips in the zones where they drove
@@ -60,7 +61,7 @@ seconds, and an item most of the room misses is the call to say again before the
 ---
 
 ## Q4. Which four lines make a number computable, before the guardrails make it safe to pay for?
-*Tests: numerator, denominator, window and exclusions come before what it does not reward.*
+*Tests: Definitions: numerator, denominator, window, exclusions: the four lines come before what it does not reward.*
 
 - Numerator, denominator, target and the team that owns it
 - Mean, median, total and the trend over the quarter
@@ -70,7 +71,7 @@ seconds, and an item most of the room misses is the call to say again before the
 ---
 
 ## Q5. What is the proxy test, in one line?
-*Tests: a proxy has drifted when a team could hit it while the outcome got worse.*
+*Tests: What to measure and why; the proxy test: a proxy has drifted when a team could hit it while the outcome got worse.*
 
 - Does the number move a week before the outcome it stands for?
 - Could a team hit this number while what it stands for got worse?  <- correct
@@ -80,7 +81,7 @@ seconds, and an item most of the room misses is the call to say again before the
 ---
 
 ## Q6. Averaging every driver-week's trips per hour after the launch gives 1.71; all trips over all hours gives 1.58. Which goes on the slide?
-*Tests: the city's rate is a ratio of two sums; an average of each row's rate answers a different question, the typical driver-week.*
+*Tests: Definitions: numerator, denominator, window, exclusions, with Week 1's ratio of sums: the city's rate divides all trips by all hours; an average of each row's rate answers a different question, the typical driver-week.*
 
 - 1.58, every trip added up over every hour added up  <- correct
 - 1.71, since every driver-week then counts equally
@@ -89,18 +90,18 @@ seconds, and an item most of the room misses is the call to say again before the
 
 ---
 
-## Q7. An AI coding assistant's team reports suggestions accepted. What should it count in its place?
-*Tests: the AI-company variant, where the accepted share is the proxy and the kept text is the outcome.*
+## Q7. An AI coding assistant's one-page definition counts suggestions accepted, and developers accept text, then delete it. Which blank line would refuse to pay for that?
+*Tests: The metric definition artifact, in the AI-company variant: the line on what the number does not reward names the behaviour it refuses to pay for.*
 
-- Suggestions shown to each developer on each working day
-- The developers' satisfaction score from a monthly survey
-- Suggested text still in the code at the next commit  <- correct
-- Lines of code each developer writes in a working week
+- The window: accepted this week, set against last week
+- The guardrails: suggestions shown per developer per day
+- What it does not reward: text accepted, then deleted  <- correct
+- The target: a higher accepted share than last quarter
 
 ---
 
 ## Q8. A pivot of `driver_weeks` reads twice the city's 146,300 peak online hours after the launch. Where do you look first?
-*Tests: Week 2 Friday's check, one level up: the grain under a total, before anything else.*
+*Tests: the return question from Week 2 Friday, one level up, the grain under a total, which Definitions: numerator, denominator, window, exclusions rests on.*
 
 - The chart's axis, which may start well above zero
 - The weeks the pivot covers, which may run past the six-week window
