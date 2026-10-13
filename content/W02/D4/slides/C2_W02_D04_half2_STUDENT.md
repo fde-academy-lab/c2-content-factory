@@ -11,11 +11,51 @@ LIVE, one minute. The morning built the table a chapter at a time: 340 customers
 reached, Retail-Plus down 29.4 percent, three tools agreeing on 107 of 130, and Finance's number
 given to SQL. The afternoon makes the table rebuild itself (chapter 6), then the room builds it alone
 (the escalated case), then pairs answer Kavya in three tools, then the interview drill and the close.
+Then the six topics, and the two that chapter 6 owns.
 ```
 
 ---
 
-## SECTION 6: Will Monday rebuild it?
+## S0. Today teaches groupby, merge and reshape in six topics
+*Which of the six topics does chapter 6 own, and where did the morning teach the rest?*
+
+| Topic, in the curriculum's words | Chapter | Minutes |
+|---|---|---|
+| read_sql from the warehouse into a DataFrame | 1, then 6 inside the refresh | within chapters 1 and 6 |
+| groupby and agg; named aggregations; the customer table (recency, frequency, monetary) | 1, with recency in days in 6 | 30 |
+| merge with validate= and the count habit | 2, first used in 1 | 30 |
+| Reshape: pivot_table and melt | 3 | 30 |
+| Chained transformations and dtype checks | 6, first met in 1 | 30 |
+| The three-tool re-expression and the tool-choice note | 4, then 5, then the second case | 30, 30 and 40 |
+
+```mermaid
+flowchart LR
+    MON["<b>Monday</b><br/>the warehouse,<br/>GROUP BY"] --> RS["<b>read_sql</b><br/>warehouse to DataFrame"]
+    RS --> GB["<b>groupby and agg</b><br/>named aggregations,<br/>the customer table"]
+    MON --> GB
+    WED["<b>Wednesday</b><br/>each member's months"] --> RE["<b>reshape</b><br/>pivot_table and melt"]
+    GB --> RE
+    GB --> MG["<b>merge, validate=</b><br/>the count habit"]
+    TUE["<b>Tuesday</b><br/>joins, the row count"] --> MG
+    MG --> TT["<b>three-tool re-expression</b><br/>the tool-choice note"]
+    MG --> CH["<b>chained transformations</b><br/>dtype checks"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class MON,TUE,WED,GB,MG,RE,TT known
+    class RS,CH bet
+```
+
+```notes
+LIVE, 1 minute. The morning taught chapters 1 to 5. Chapter 6 owns the two dark topics: the refresh
+reads every input from the warehouse itself, and it runs the day's steps as one chained
+transformation, where a type can change on the way without an error, so the chain ends on a check.
+It also finishes recency, which the morning left as a date. The escalated case then puts all six to
+work, and the second case practises the last. Then chapter 6.
+```
+
+---
+
+## SECTION 6: read_sql from the warehouse into a DataFrame; chained transformations and dtype checks: will Monday rebuild it?
 *Can the table rebuild itself every Monday and refuse to ship when something breaks, before the growth team sends a single code?*
 
 ```notes
@@ -132,7 +172,63 @@ LIVE, 3 minutes. Every input is a chance to be told something wrong, so the refr
 warehouse connection and the feed's path and nothing else. The customers, their numbers and the sale
 all come from the data, so the function cannot be told a stale count. The notebook's section 2 asks
 the room to predict the inputs first. Recency is the one column still missing, and it needs a date to
-count to.
+count to. Before it, the chain inside build_table(), step by step.
+```
+
+---
+
+## S5a. A chain can change a dtype without raising an error
+*What is a chained transformation, and where does its dtype check go?*
+
+A chained transformation is a run of steps, each taking the frame the step before it returned and handing a new one on. `build_table()` is one: `read_sql` from the warehouse, `groupby` and `agg`, a merge onto the customer list, a merge with the sale's feed, then the fill. No step checks the one before it, so a type that changes on the way changes in silence. Three invented customers:
+
+| Step, on invented customers A, B and C | n, the count | Its dtype |
+|---|---|---|
+| `orders.groupby("customer").agg(n=("order", "count"))` | A 2, B 1 | int64 |
+| `customers.merge(counts, on="customer", how="left")` | A 2.0, B 1.0, C NaN | float64 |
+| `t["n"].fillna(0).astype("int64")` | A 2, B 1, C 0 | int64 |
+
+**Question.** `build_table()` runs these steps on Kalpa's 340 customers. Leave `.astype("int64")` off its fill: what does the table ship, as a letter? a) int64, since fillna(0) puts the whole numbers back; b) float64, with the 39 at 0.0 and no error raised; c) a ValueError at the merge, where 39 customers have no count; d) 301 rows, since fillna drops the rows it cannot fill.
+
+```notes
+LIVE, 2 minutes with S5b. The customers are invented: A ordered twice, B once, C never. The merge
+gives C a missing count, and NumPy's int64 cannot hold a missing value, so the whole column turns
+float64, which is chapter 1's S16 on three rows. Letters in chat, then the answer.
+```
+
+---
+
+## S5b. Answer: float64, and no step raises an error
+*Where in build_table() does the count change type, and what catches it?*
+
+```mermaid
+flowchart LR
+    R["<b>read_sql</b><br/>1,000 orders"] --> G["<b>groupby, agg</b><br/>301 rows, int64"]
+    G --> M["<b>merge the list</b><br/>340 rows, float64,<br/>39 missing"]
+    M --> E["<b>merge the feed</b><br/>340 rows, float64"]
+    E --> F["<b>fillna(0)</b><br/>340 rows,<br/>still float64"]
+    F --> A["<b>astype int64</b><br/>340 rows, int64"]
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class M,E,F bad
+    class A bet
+```
+
+| Letter | Why it does not hold |
+|---|---|
+| a) | `fillna(0)` writes 0.0 into the gaps and keeps the column float64 |
+| c) | A left merge keeps a customer with no match and raises nothing |
+| d) | A fill keeps every row, so the table stays at 340 |
+
+**The rule.** End a chain on a check of what the next step relies on, its rows, its totals and its dtypes: `table["frequency"].dtype == "int64"` is one line, the check chapter 1 ran after its fix.
+
+```notes
+LIVE, inside S5a's two minutes. The answer is b. fillna fills the 39 gaps with 0.0 and leaves the
+column float64; only astype turns it back, and no step in between raises an error. Read the three
+rows of the table: a is the belief the question tests, c expects the merge to complain, and d
+confuses a fill with a drop. The 39 still read as a frequency of 0, since 0.0 equals 0, so nothing
+downstream fails today, and the check keeps a type nobody chose out of the CSV Friday opens. Then
+recency, the one column still missing.
 ```
 
 ---
