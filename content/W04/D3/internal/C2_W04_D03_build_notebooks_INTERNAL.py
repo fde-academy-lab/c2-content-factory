@@ -9,8 +9,9 @@ month). Notebooks 07, 08 and 10 are the Instamart case chapters, and 11 is the K
 notebook runs cold in its own folder and ships executed. The prose reads its numbers from the facts
 file, so a sentence and the output under it cannot disagree. Code stays small: pandas, the standard
 library and matplotlib, and a three-line check defined in the notebook itself. A concept notebook's
-your-turn cell is empty, and the check under it prints the reference and compares the learner's
-number only once one is typed. The lab notebook finds Kalpa's planted values only in its empty
+your-turn cell is empty and comes before any cell that prints its answer, and the check under
+it computes the reference and prints it only once the learner's own number exists, compared at
+two decimals. The lab notebook finds Kalpa's planted values only in its empty
 your-turn cells.
 """
 import pathlib
@@ -193,17 +194,18 @@ def nb01():
 
         Papad is in 5 orders and pickle in 2. In the empty cell below, count the orders holding
         both and divide by all orders, the way the roti and sabzi cell did, and store the answer
-        as `papad_pickle`. Then run the check under it, which prints the reference and compares
-        your number with it.
+        as `papad_pickle`. Then run the check under it, which compares your number with the
+        reference at two decimals and shows the reference only once your number exists.
         """),
         empty(),
         code("""\
-        reference = (has("papad") & has("pickle")).sum() / n
         mine = globals().get("papad_pickle")
-        print(f"reference: {reference:.2f}" + ("" if mine is None else f"; yours: {mine:.2f}"))
-        check("papad and pickle: support 0.17", round(reference, 2) == 0.17)
-        if mine is not None:
-            check("your support matches the reference", abs(mine - reference) < 1e-9)
+        if mine is None:
+            print("Store your answer as papad_pickle in the empty cell above, then run this cell again.")
+        else:
+            reference = (has("papad") & has("pickle")).sum() / n
+            print(f"reference: {reference:.2f}; yours: {mine:.2f}")
+            print("matches at two decimals" if abs(mine - reference) <= 0.005 else "not yet: count the orders again")
         """),
         md(f"""\
         ## What should you keep from chapter 1?
@@ -299,11 +301,12 @@ def nb02():
         pair_count = Counter(p for b in baskets for p in combinations(sorted(b), 2))
         table = pd.DataFrame([{"a": a, "b": b, "both": k, "a_to_b": k / single[a], "b_to_a": k / single[b]}
                               for (a, b), k in pair_count.items()])
-        print(table.round(2).to_string(index=False))
+        print(table[~((table.a == "chaas") & (table.b == "dal rice"))].round(2).to_string(index=False))
+        print("(chaas and dal rice is left out: it is the your-turn pair below)")
         fig, ax = plt.subplots(figsize=(6, 5.4))
         ax.plot([0, 1.05], [0, 1.05], color="#6B6690", ls="--", lw=1)
         ax.scatter(table.a_to_b, table.b_to_a, s=70, color="#5B3FD6", edgecolor="#1A0F5C", zorder=3)
-        place = {("curd", "gulab jamun"): (8, 8, "left"), ("chaas", "sabzi"): (-8, -18, "right"),
+        place = {("papad", "pickle"): (-8, 8, "right"), ("chaas", "sabzi"): (-8, -18, "right"),
                  ("roti", "sabzi"): (8, 4, "left"), ("dal rice", "papad"): (8, -14, "left")}
         for r in table.itertuples():
             if (r.a, r.b) in place:
@@ -314,10 +317,10 @@ def nb02():
         ax.set_ylabel("confidence from the second item")
         ax.set_title("Off the diagonal, direction changes the number")
         plt.show()
-        gc = table[(table.a == "curd") & (table.b == "gulab jamun")].iloc[0]
+        pp = table[(table.a == "papad") & (table.b == "pickle")].iloc[0]
         rs = table[(table.a == "roti") & (table.b == "sabzi")].iloc[0]
         check("13 pairs, each counted once", len(table) == 13)
-        check("gulab jamun to curd 1.00, curd to gulab jamun 0.50", (gc.b_to_a, gc.a_to_b) == (1.0, 0.5))
+        check("the widest swing: pickle to papad 1.00, papad to pickle 0.40", (pp.b_to_a, pp.a_to_b) == (1.0, 0.4))
         check("roti and sabzi read 0.75 both ways", rs.a_to_b == rs.b_to_a == 0.75)
         """),
         md(f"""\
@@ -355,14 +358,15 @@ def nb02():
         """),
         empty(),
         code("""\
-        both_dc = (has("dal rice") & has("chaas")).sum()
-        reference = (both_dc / has("chaas").sum(), both_dc / has("dal rice").sum())
         mine = (globals().get("chaas_to_dal"), globals().get("dal_to_chaas"))
-        print(f"reference: chaas to dal rice {reference[0]:.2f}, dal rice to chaas {reference[1]:.2f}")
-        check("chaas to dal rice 0.67 and dal rice to chaas 1.00", (round(reference[0], 2), reference[1]) == (0.67, 1.0))
-        if None not in mine:
-            check("your two confidences match the reference",
-                  all(abs(m - r) < 1e-9 for m, r in zip(mine, reference)))
+        if None in mine:
+            print("Store your answers as chaas_to_dal and dal_to_chaas in the empty cell above, then run this cell again.")
+        else:
+            both_dc = (has("dal rice") & has("chaas")).sum()
+            reference = (both_dc / has("chaas").sum(), both_dc / has("dal rice").sum())
+            print(f"reference: chaas to dal rice {reference[0]:.2f}, dal rice to chaas {reference[1]:.2f}")
+            ok = all(abs(m - r) <= 0.005 for m, r in zip(mine, reference))
+            print("both match at two decimals" if ok else "not yet: which pile is each denominator?")
         """),
         md(f"""\
         ## What should you keep from chapter 2?
@@ -410,7 +414,7 @@ def nb03():
         many orders hold both?
 
         a) 0, since items that ignore each other never meet.
-        b) 1.33, since a third of the roti orders hold sabzi.
+        b) 1.33, a third of roti's 4 orders, if sabzi ignored roti.
         c) 3, since three orders hold both on the cards.
         d) 4, since that is roti's own count.
         """),
@@ -455,7 +459,7 @@ def nb03():
 
         The formula, named last: lift = seen / chance = both x all / (A x B) =
         3 x 12 / (4 x 4) = {s('toy_canteen_roti_sabzi_lift')}. Divided through, lift is also
-        confidence over the partner's share: from roti, 0.75 / 0.33; from sabzi, the same, which
+        confidence over the partner's share: from roti, 0.75 / (4/12); from sabzi, the same, which
         is why lift has no direction. The picture draws it as two areas on a unit square: roti's
         band times sabzi's band is the box chance gives, and the seen box is taller.
         """),
@@ -482,10 +486,11 @@ def nb03():
         md("""\
         ## What does lift say about every pair of the twelve orders?
 
-        Lift below one means together less often than chance, near one means chance, and above
-        one a pull. The cell computes it three ways for all 13 pairs and checks that the three
-        agree: seen over chance, confidence from the first over the second's share, and
-        confidence from the second over the first's share.
+        Lift below one means together less often than chance, exactly one means chance, and
+        above one more often. The cell computes it three ways for all 13 pairs and checks that
+        the three agree: seen over chance, confidence from the first over the second's share, and
+        confidence from the second over the first's share. Sabzi and chaas are left out of the
+        printout, since they are the your-turn pair below.
         """),
         code("""\
         single = Counter(x for b in baskets for x in b)
@@ -500,7 +505,8 @@ def nb03():
             lifts.append((f"{a} + {b}", k, one))
         lifts.sort(key=lambda r: r[2])
         for name, k, lift in lifts[::-1]:
-            print(f"{name}: lift {lift:.2f} on {k} order{'s' if k > 1 else ''}")
+            if name != "chaas + sabzi":
+                print(f"{name}: lift {lift:.2f} on {k} order{'s' if k > 1 else ''}")
         fig, ax = plt.subplots(figsize=(8, 5))
         colours = ["#1F8A5B" if l > 1.001 else ("#6B6690" if l > 0.999 else "#D63A6A") for _, _, l in lifts]
         ax.barh([name for name, _, _ in lifts], [l for _, _, l in lifts], color=colours)
@@ -519,14 +525,15 @@ def nb03():
         """),
         empty(),
         code("""\
-        ref_chance = n * has("sabzi").mean() * has("chaas").mean()
-        ref_lift = (has("sabzi") & has("chaas")).sum() / ref_chance
         mine = (globals().get("sabzi_chaas_chance"), globals().get("sabzi_chaas_lift"))
-        print(f"reference: chance {ref_chance:.2f} orders, lift {ref_lift:.2f}")
-        check("sabzi and chaas: chance 3, lift 1.33", (round(ref_chance, 2), round(ref_lift, 2)) == (3.0, 1.33))
-        if None not in mine:
-            check("your chance and lift match the reference",
-                  abs(mine[0] - ref_chance) < 1e-9 and abs(mine[1] - ref_lift) < 1e-9)
+        if None in mine:
+            print("Store your answers as sabzi_chaas_chance and sabzi_chaas_lift in the empty cell above, then run this cell again.")
+        else:
+            ref_chance = n * has("sabzi").mean() * has("chaas").mean()
+            ref_lift = (has("sabzi") & has("chaas")).sum() / ref_chance
+            print(f"reference: chance {ref_chance:.2f} orders, lift {ref_lift:.2f}")
+            ok = abs(mine[0] - ref_chance) <= 0.005 and abs(mine[1] - ref_lift) <= 0.005
+            print("both match at two decimals" if ok else "not yet: total x share x share, then seen over chance")
         """),
         md(f"""\
         ## What should you keep from chapter 3?
@@ -553,7 +560,7 @@ def nb04():
     path = OUT / "C2_W04_D03_04_confidence_trap_lift_near_one_STUDENT.ipynb"
     cells = [
         concept_head(
-            "The confidence trap; lift near one: who is the worst partner?",
+            "The confidence trap; lift near one: does 1.00 mean a bundle?",
             "chapter 4 of the concept block",
             "The confidence trap; lift near one",
             "The canteen manager, who is told that every dal rice order has chaas and is tempted to "
@@ -642,14 +649,15 @@ def nb04():
         plt.show()
         check("lift stays at one across the sweep", (sweep.lift - 1).abs().max() < 1e-9)
         """),
-        md("""\
+        md(f"""\
         ## How close to chance does each chaas pair sit?
 
         The rule, named last: for a partner that ignores it, confidence toward an item equals
-        that item's share, so the most popular item wins every confidence ranking while lift
-        stays at one. Lift is the count popularity cannot fool. The picture shows the same thing
-        on the canteen's four chaas pairs as counts: the seen orders beside the orders chance
-        alone gives.
+        that item's share, so the most popular item tops the confidence ranking beside almost
+        every item, while lift stays at one. Lift with chaas has a ceiling too: a partner cannot
+        hold chaas more than every time, so lift stops at one over chaas's share,
+        {s('toy_chaas_lift_ceiling')}, where dal rice sits. The picture shows the four chaas pairs
+        as counts: the seen orders beside the orders chance alone gives.
         """),
         code("""\
         rows = []
@@ -673,29 +681,35 @@ def nb04():
         ### Your turn: should a shop bundle a partner with its most popular item?
 
         An item is in 60 percent of a shop's bills, and a partner reads confidence 0.66 toward
-        it. In the empty cell below, compute the pair's lift and store it as `partner_lift`, then
-        write in a comment whether you would bundle the two. Run the check under it.
+        it. The shop bundles a pair only at a lift of 1.5 or more, the bar chapter 6 uses. In the
+        empty cell below, compute the pair's lift and store it as `partner_lift`, then write in a
+        comment whether the shop's rule bundles the two. Run the check under it.
         """),
         empty(),
         code("""\
-        reference = 0.66 / 0.60
         mine = globals().get("partner_lift")
-        print(f"reference: lift {reference:.2f}" + ("" if mine is None else f"; yours: {mine:.2f}"))
-        check("a confidence of 0.66 toward an item in 60 percent of bills is lift 1.10", round(reference, 2) == 1.1)
-        if mine is not None:
-            check("your lift matches the reference", abs(mine - reference) < 1e-9)
+        if mine is None:
+            print("Store your answer as partner_lift in the empty cell above, then run this cell again.")
+        else:
+            reference = 0.66 / 0.60
+            print(f"reference: lift {reference:.2f}; yours: {mine:.2f}")
+            print("matches at two decimals" if abs(mine - reference) <= 0.005 else "not yet: confidence over the item's share")
+            print("under the 1.5 bar, so the shop's rule does not bundle them" if reference < 1.5 else "over the bar")
         """),
         md(f"""\
         ## What should you keep from chapter 4?
 
         - A base rate is how common an item is in all baskets anyway: chaas
           {s('toy_canteen_chaas_share')}.
-        - An item in most baskets earns high confidence toward everything, near its own share:
-          {s('toy_canteen_chaas_conf_low')} to {s('toy_canteen_chaas_conf_high')} toward chaas.
-        - Lift divides the base rate out, so only lift can rank the partners of a popular item:
-          {s('toy_canteen_chaas_lift_low')} to {s('toy_canteen_chaas_lift_high')} with chaas.
-        - The item in every basket is the worst bundle partner, because it was going into the
-          basket anyway.
+        - Confidence toward an item in most baskets is high from every partner, near its own
+          share, so its size says nothing: {s('toy_canteen_chaas_conf_low')} to
+          {s('toy_canteen_chaas_conf_high')} toward chaas.
+        - Beside one item, confidence ranks the candidates by share times pull, and lift divides
+          each candidate's share out: {s('toy_canteen_chaas_lift_low')} to
+          {s('toy_canteen_chaas_lift_high')} with chaas.
+        - Lift with an item cannot pass one over its share, {s('toy_chaas_lift_ceiling')} for
+          chaas, so the item in most baskets stays near one, under the 1.5 bar, because it was
+          going into the basket anyway.
 
         **In the interview.** A weak answer says "confidence, since dal rice to chaas is 1.00". A
         hire-grade answer says "lift, since chaas is in 0.75 of orders anyway, so 1.00 is only
@@ -741,8 +755,8 @@ def nb05():
         many pairs do they hold?
 
         a) 33, one pair for every order line.
-        b) 30, three pairs for each three-line order and one for each two-line order.
-        c) 60, every pair counted in both orders of its two names.
+        b) 30, each order's own pairs, added up.
+        c) 60, every pair, its names read both ways round.
         d) 28, every pair the eight menu items could form.
         """),
         code("""\
@@ -760,12 +774,17 @@ def nb05():
         {s('toy_canteen_pairs_from_three')} and three two-line orders give 3, so
         {s('toy_canteen_pair_lines')}. `combinations` of a sorted basket gives each pair once with
         its names in order (Python's itertools documentation, checked 13 October 2026). **The
-        trap, exactly:** keys left unsorted, so chaas with dal rice and dal rice with chaas become
-        two keys and the count reads {s('toy_canteen_pair_lines_both_orders')}, every pair doubled.
+        trap, exactly:** counted with its names both ways round, as `permutations` does, every pair
+        counts twice and the total reads {s('toy_canteen_pair_lines_both_orders')}; left unsorted, a
+        pair that two bills list in opposite orders lands under two keys and its count splits. The
+        decision it misleads is a ranking built on doubled or split counts; the check is each
+        basket's k x (k - 1) / 2 added up.
         """),
         code("""\
         both_orders = Counter(p for b in baskets for p in permutations(b, 2))
-        print(f"names left unsorted, every pair in both orders: {sum(both_orders.values())} counts")
+        print(f"every pair counted with its names both ways round: {sum(both_orders.values())} counts")
+        split = Counter([*combinations(["dal rice", "chaas"], 2), *combinations(["chaas", "dal rice"], 2)])
+        print(f"one pair listed both ways round on two bills, names unsorted: {len(split)} keys of {max(split.values())} each")
         size = baskets.apply(len)
         per_order = size * (size - 1) // 2
         print(f"{(size == 3).sum()} three-line orders give {per_order[size == 3].sum()}; "
@@ -776,7 +795,8 @@ def nb05():
         ax.set_yticks([0, 1, 2, 3])
         ax.set_title("Each order adds k x (k - 1) / 2 pairs, 30 in all")
         plt.show()
-        check("unsorted keys double the count", sum(both_orders.values()) == 2 * sum(pair_count.values()))
+        check("both name orders double the count", sum(both_orders.values()) == 2 * sum(pair_count.values()))
+        check("unsorted names split one pair across two keys", len(split) == 2)
         """),
         md("""\
         ## What does the pairs table hold?
@@ -842,12 +862,13 @@ def nb05():
         """),
         empty(),
         code("""\
-        reference = len(list(combinations(sorted({"roti", "sabzi", "chaas", "papad"}), 2)))
         mine = globals().get("t13_pairs")
-        print(f"reference: {reference} pairs" + ("" if mine is None else f"; yours: {mine}"))
-        check("a basket of four items adds six pairs, 4 x 3 / 2", reference == 6)
-        if mine is not None:
-            check("your count matches the reference", mine == reference)
+        if mine is None:
+            print("Store your answer as t13_pairs in the empty cell above, then run this cell again.")
+        else:
+            reference = len(list(combinations(sorted({"roti", "sabzi", "chaas", "papad"}), 2)))
+            print(f"reference: {reference} pairs; yours: {mine}")
+            print("matches" if mine == reference else "not yet: list the pairs one by one")
         """),
         md(f"""\
         ## What should you keep from chapter 5?
@@ -911,14 +932,15 @@ def nb06():
         Week 1 Thursday's rule was to distrust any rate built on fewer than thirty observations.
         Gulab jamun and curd read lift 6.0 on one of the twelve orders. The month below was
         invented so that no item depends on another: every item goes into an order on its own
-        coin, so every true lift is one.
+        coin, so nothing pulls any pair together, and since an order must hold at least one item,
+        every true lift sits a shade under one.
 
         **Predict before you run.** On one or two orders, how high can a lift read?
 
         a) About 1.2, since items that ignore each other stay near one.
         b) About 2, since luck can double a lift and no more.
         c) About 3, since luck can triple it.
-        d) Above 6, since one or two orders can read anything.
+        d) Above 6, more than six times chance.
         """),
         code("""\
         m = pairs_of(month_baskets)
@@ -938,9 +960,11 @@ def nb06():
         yet gulab jamun and jalebi read lift {s('toy_month_thin_top_lift')} on
         {s('toy_month_thin_top_orders')} orders, where chance gives
         {s('toy_month_thin_top_expected')}. The {s('toy_month_thick_pairs')} pairs on 30 or more
-        orders read {s('toy_month_thick_low')} to {s('toy_month_thick_high')}, close to the one
-        chance gives. A lift on a handful of baskets says more about luck than about the pair. The
-        picture reads left to right: wild on the left, flat on the right.
+        orders read {s('toy_month_thick_low')} to {s('toy_month_thick_high')}, a shade under one.
+        In between, {s('toy_month_mid_over_bar')} pairs on 4 to 7 orders still pass 1.5, up to
+        {s('toy_month_mid_top_lift')}, and none on {s('toy_month_bar_safe_orders')} or more orders
+        does. A lift on a handful of baskets says more about luck than about the pair. The picture
+        reads left to right: wild on the left, flat on the right.
         """),
         code("""\
         mid = m[(m.both > 2) & (m.both < 30)]
@@ -959,15 +983,18 @@ def nb06():
         ax.set_title("600 invented orders, no item depending on another")
         plt.show()
         """),
-        md("""\
+        md(f"""\
         ## Where does each canteen pair go once a floor is set?
 
         A **support floor** is the fewest baskets a pair must sit in before anyone acts on its
-        lift. It is a decision, stated as a count before the ranking is read: 3 of the twelve
-        orders here, 1 percent of the carts in the case. The rule, named last: read a lift only at
-        or above the floor, and promote only at a lift of 1.5 or more. That sorts every pair into
-        four regions: promote, watch (strong but thin), trap (near one on plenty of baskets) and
-        ignore.
+        lift. It is a decision, stated as a count before the ranking is read, and it belongs where
+        luck stops carrying a lift past the bar: {s('toy_month_bar_safe_orders')} orders in the
+        month above, Week 1's thirty when no such month is to hand, 1 percent of the carts in the
+        case. Twelve orders are too few for any floor, so a floor of 3 here only shows the sort.
+        The rule, named last: read a lift only at or above the floor, and promote only at a lift
+        of 1.5 or more. That sorts every pair into four regions: promote, watch (strong but thin),
+        trap (near one on plenty of baskets) and ignore. Roti and sabzi, 2.25 on three orders,
+        lands in promote and would still be trialled first.
         """),
         code("""\
         FLOOR, BAR = 3, 1.5     # orders, lift
@@ -1012,7 +1039,9 @@ def nb06():
 
         A pair above the bar and below the floor goes on a **watch list**: the pair, its lift and
         its count, a trial (where, for how long, and against which other half of customers) and a
-        pass rule written before the trial starts. Gulab jamun and curd, lift
+        pass rule written before the trial starts. A **pass rule** says what the trial must show:
+        the half that sees the pair buys it more often than the other half, by a gap fixed in
+        advance. Gulab jamun and curd, lift
         {s('toy_canteen_gulab_curd_lift')} on one order, earn a trial and never a printed card. How
         long a trial must run is a sample-size question for the IITGN faculty session (tentative).
         The picture shows why the floor is a decision: lower it and the one-order pairs flood in.
@@ -1033,33 +1062,38 @@ def nb06():
               region(1, 6.0) == "watch" and promoted[0] > promoted[2])
         """),
         md("""\
-        ### Your turn: which of the month's pairs clear a floor of 30 orders?
+        ### Your turn: which of the month's pairs clear a floor of 15 orders?
 
-        In the empty cell below, keep the month's pairs (`m`) on at least 30 orders, and store
-        how many there are as `thick_count` and their lowest and highest lift as `thick_range`.
-        Then run the check under it.
+        In the empty cell below, keep the month's pairs (`m`) on at least 15 orders, and store
+        how many there are as `floor15_count` and their lowest and highest lift, as a pair of
+        numbers, as `floor15_range`. Then run the check under it, and say in a comment whether any
+        of them would pass the 1.5 bar.
         """),
         empty(),
         code("""\
-        ref = m[m.both >= 30]
-        mine = (globals().get("thick_count"), globals().get("thick_range"))
-        print(f"reference: {len(ref)} pairs, lift {ref.lift.min():.2f} to {ref.lift.max():.2f}")
-        check("ten pairs clear a floor of 30 orders", len(ref) == 10)
-        if None not in mine:
-            check("your count and range match the reference",
-                  mine[0] == len(ref) and abs(min(mine[1]) - ref.lift.min()) < 1e-9 and abs(max(mine[1]) - ref.lift.max()) < 1e-9)
+        mine = (globals().get("floor15_count"), globals().get("floor15_range"))
+        if None in mine:
+            print("Store your answers as floor15_count and floor15_range in the empty cell above, then run this cell again.")
+        else:
+            ref = m[m.both >= 15]
+            print(f"reference: {len(ref)} pairs, lift {ref.lift.min():.2f} to {ref.lift.max():.2f}")
+            ok = (mine[0] == len(ref) and abs(min(mine[1]) - ref.lift.min()) <= 0.005
+                  and abs(max(mine[1]) - ref.lift.max()) <= 0.005)
+            print("matches at two decimals" if ok else "not yet: filter on both >= 15 first")
         """),
         md(f"""\
         ## What should you keep from chapter 6?
 
         - A lift on one or two baskets swings by luck: {s('toy_month_thin_top_lift')} on
           {s('toy_month_thin_top_orders')} orders in a month where every true lift is one.
-        - The floor is a decision stated as a count of baskets, set before the ranking is read:
-          {s('toy_canteen_floor_orders')} orders here.
-        - A strong pair below the floor goes on a watch list, with a trial and a pass rule set
-          first.
-        - A pair near one is ignored at any support; the trap region holds the pairs a count ranks
-          first.
+        - The floor is a count of baskets set where luck stops carrying a lift past the bar,
+          before the ranking is read: {s('toy_month_bar_safe_orders')} orders in the month,
+          {s('toy_canteen_floor_orders')} on the twelve only to show the sort.
+        - A strong pair below the floor goes on a watch list: a trial on a random half of
+          customers, its pass rule written first, shows whether the pull is real and whether it
+          sells.
+        - A pair near one is never promoted: below the floor it is ignored, and above it, where a
+          count ranks it first, it is the trap.
 
         **In the interview.** "A pair has a high lift on very few baskets; act or not?" Watch it:
         test it on a random half of customers with a pass rule set first. Chapter 7 refuses a
@@ -1381,10 +1415,12 @@ def nb08():
         **What happened.** The answer is b. Confidence toward milk sits near milk's own share for
         every item, because most carts hold milk whatever else they hold, and lift divides that
         share out. Milk's own share, how common it is in all carts, is its **base rate**:
-        {s('toned_milk_share')}. This is chapter 4's chaas at the scale of a city. Amazon met the
+        {s('toned_milk_share')}. This is chapter 4's chaas at the scale of a city, ceiling and all:
+        no item's lift with milk can pass one over milk's share, {s('milk_lift_ceiling')}. Amazon met the
         same trap: counting how often buyers of A also bought B would have made the bestseller the
-        top recommendation beside everything, and the fix compares with what chance predicts,
-        which is lift in spirit (Amazon Science, checked 13 October 2026).
+        top recommendation beside everything, and the fix scored how much more likely buyers of A
+        were to buy B than the average customer, a difference in probabilities where lift takes a
+        ratio (Amazon Science, checked 13 October 2026).
         """),
         md(f"""\
         ## Why did the strip's click-through fall from {s('before_strip_ctr')} to {s('after_strip_ctr')}?
@@ -1514,15 +1550,17 @@ def nb09():
         n, tea, rusk, both = (int(k[x]) for x in ["bills", "bills_with_tea", "bills_with_rusk", "bills_with_both"])
         lift = both / (n * (tea / n) * (rusk / n))
         print(f"tea and rusk: support {both / n:.2f}, lift {lift:.2f}, chapter 3's count")
-        check("tea and rusk beat chance: lift 1.25", round(lift, 2) == 1.25)
+        check("tea and rusk meet a little more often than chance: lift 1.25, under the 1.5 bar", round(lift, 2) == 1.25)
         """)),
         md("""\
         ## What is the tea-and-rusk card worth in a month?
 
-        The pair beats chance on plenty of bills, so the question is no longer whether tea and
-        rusk go together. It is what a card that sells them together is worth. The card gives
-        Rs 1 back on every bill holding both, and the owner assumes 4 percent of the tea bills
-        without rusk will add a pack, somewhere between 2 and 6 percent.
+        Tea and rusk meet a little more often than chance on plenty of bills, lift 1.25, under
+        chapter 6's 1.5 bar: a weak pull that would earn no slot of its own. A card is the shop's
+        cheapest bet on it, and the question is what that bet is worth. The card gives Rs 1 back
+        on every bill holding both, and the owner assumes 4 percent of the tea bills without rusk
+        will add a pack, somewhere between 2 and 6 percent; the card is assumed to change no
+        other bill.
 
         **Predict before you run.** Which number should the owner weigh against the card?
 
@@ -1545,8 +1583,8 @@ def nb09():
         check("the discount is paid on 168 bills, the 18 new ones among them", combos == 168 and new == 18)
         """),
         md(f"""\
-        **What happened.** The answer is d. Only the {s('toy_kirana_tea_only')} tea bills without
-        rusk can change, and {s('toy_kirana_packs')} of them add a pack worth
+        **What happened.** The answer is d. The card is assumed to change only the
+        {s('toy_kirana_tea_only')} tea bills without rusk, and {s('toy_kirana_packs')} of them add a pack worth
         {s('toy_kirana_margin')} of margin: {s('toy_kirana_incremental_margin')}. The card hands
         {s('toy_kirana_discount')} back on all {s('toy_kirana_combos')} bills that hold both, the
         {s('toy_kirana_both_bills')} that held both anyway among them, and the cards cost
@@ -1618,8 +1656,9 @@ def nb09():
         ## What decides the sign?
 
         Two numbers the owner sets or guesses move the answer. Every extra rupee off costs
-        {s('toy_kirana_discount_back')} a month, since it is paid on every combo bill, so the card
-        earns nothing at about {s('toy_kirana_breakeven')} off. And the 4 percent is an assumption:
+        {s('toy_kirana_discount_back')} a month, since it is paid on every combo bill, so at the
+        same 4 percent response the card earns nothing at about {s('toy_kirana_breakeven')} off; a
+        bigger discount may draw more buyers, which only a trial of the card would show. And the 4 percent is an assumption:
         at {s('toy_kirana_response_low')} the card loses money, at {s('toy_kirana_response_high')}
         it earns more. An assumed response is said with its range, and the answer travels with it.
         """),
@@ -1664,12 +1703,13 @@ def nb09():
         """),
         empty(),
         code("""\
-        reference = round(2000 * 0.05) * 10 - 600
         mine = globals().get("big_card")
-        print(f"reference: Rs {reference:,}" + ("" if mine is None else f"; yours: Rs {mine:,.0f}"))
-        check("100 packs at Rs 10, less Rs 600: Rs 400", reference == 400)
-        if mine is not None:
-            check("your value matches the reference", abs(mine - reference) < 1e-9)
+        if mine is None:
+            print("Store your answer as big_card in the empty cell above, then run this cell again.")
+        else:
+            reference = round(2000 * 0.05) * 10 - 600
+            print(f"reference: Rs {reference:,}; yours: Rs {mine:,.0f}")
+            print("matches" if abs(mine - reference) < 0.5 else "not yet: new packs x margin, less the cost")
         """),
         md(f"""\
         ## What should you keep from chapter 9?
@@ -1687,8 +1727,9 @@ def nb09():
           {s('toy_kirana_response_high')}.
 
         **In the interview.** "A combo offer lifts the pair's sales; is it worth running?" Margin
-        on the purchases that would not have happened, less the discount paid on all of them, less
-        the fixed cost, said as a range. Chapter 10 prices one of Instamart's strip slots the same
+        on the purchases the offer creates, less the discount paid on every purchase that takes
+        it, including those that would have happened anyway, less the fixed cost, said as a
+        range. Chapter 10 prices one of Instamart's strip slots the same
         way, and the lab prices Kalpa's charger bundle.
         """),
     ]
@@ -1749,7 +1790,8 @@ def nb10():
         must sit in before it may take a slot. A floor of {s('support_floor')} of carts is
         {s('support_floor_carts')} carts.
 
-        **Predict before you run.** Which pair should take the first slot?
+        **Predict before you run.** Under a floor of 1 percent of carts and a bar of lift 1.5,
+        which pair ranks first?
 
         a) bread and milk: support 25.2 percent, lift 1.04
         b) chips and cold drink: support 5.0 percent, lift 3.39
@@ -1768,9 +1810,12 @@ def nb10():
         **What happened.** The answer is b. Above the floor, four pairs beat chance by a clear
         gap, lift 1.5 or more: chips and cold drink {s('chips_cold_lift')}, coriander and green chillies
         {s('coriander_chillies_lift')}, bread and butter {s('bread_butter_lift')}, onions and
-        tomatoes {s('onions_tomatoes_lift')}. The next pair reads {s('fifth_pair_lift')}, which is
-        chance. The strip has three slots, so the first three fill it and onions and tomatoes waits
-        as the first replacement; the picture places every pair.
+        tomatoes {s('onions_tomatoes_lift')}. The next pair reads {s('fifth_pair_lift')}, near one.
+        A slot sits beside an item already in the cart, so a pair fills a slot only beside its own
+        item, cold drink beside chips and butter beside bread; beside an item with no partner over
+        the bar, the strip falls back to the curated list it ran before 7 September. No partner of
+        milk can reach the bar: milk is in 71 percent of carts, so its lift cannot pass one over
+        that share, {s('milk_lift_ceiling')}. The picture places every pair.
         """),
         code("""\
         shown = pairs[pairs.support >= 0.001]
@@ -1790,9 +1835,10 @@ def nb10():
         md(f"""\
         ## What should the watch list do with a strong pair on few carts?
 
-        Ice cream and chocolate sauce read lift {s('ice_choc_lift')}, the strongest pair between
-        {s('watch_band_low')} ({s('watch_band_low_carts')} carts, too few even to trial below it)
-        and the 1 percent floor. The pair is real, {s('ice_choc_carts')} carts where chance gives
+        Ice cream and chocolate sauce read lift {s('ice_choc_lift')}, the strongest pair below the
+        1 percent floor with enough carts to trial: the search runs between {s('watch_band_low')}
+        ({s('watch_band_low_carts')} carts) and the floor, since thousands of pairs on a handful of
+        carts read wild lifts by luck, as chapter 6's month showed. The pair is real, {s('ice_choc_carts')} carts where chance gives
         {s('ice_choc_expected')}, but the strip suggests it only beside ice cream, which is in
         {s('ice_cream_share')} of carts: about {s('ice_cream_views_day')} of the strip's
         {s('views_assumed')} cart-page views a day, if views follow carts, and
@@ -1800,7 +1846,7 @@ def nb10():
         prices it). It goes on a **watch list**: in two zones a random half of shoppers see it
         beside ice cream, and it takes the slot only if their ice-cream carts buy sauce more often
         than the other half's, by a gap set before the trial, with margin per shopper as the
-        guardrail.
+        guardrail, a number that must not fall while the trial runs.
         """),
         code("""\
         thin = pairs[(pairs.support >= 0.002) & (pairs.support < floor)].sort_values("lift", ascending=False)
@@ -1825,8 +1871,8 @@ def nb10():
         {s('value_per_click_mid')} at the middle, {s('value_per_click_low')} at the low ends
         (0.4 x Rs 7) and {s('value_per_click_high')} at the high ends (0.6 x Rs 11).
 
-        **Predict before you run.** What does moving milk's half of the impressions to pairs that
-        beat chance recover in a month?
+        **Predict before you run.** What does taking milk out recover in a month, its half of the
+        impressions given to suggestions that click at {s('other_slot_ctr_after')}?
 
         a) about Rs 50,000
         b) about Rs 2 lakh
@@ -1835,44 +1881,80 @@ def nb10():
         """),
         code("""\
         views, add_rate, margin = 60_000, 0.5, 9
-        good = views * 0.064 * add_rate * margin     # a slot a day, showing pairs that beat chance
+        good = views * 0.064 * add_rate * margin     # a slot a day, showing any suggestion but milk
         milk = views * 0.012 * add_rate * margin     # the same slot showing milk
         gap_month = (good - milk) * 30
         recovered = gap_month * 3 * 0.5            # three slots, milk on half the impressions
         low = views * (0.064 - 0.012) * 0.4 * 7 * 30 * 1.5
         high = views * (0.064 - 0.012) * 0.6 * 11 * 30 * 1.5
-        print(f"a slot a day: Rs {good:,.0f} with a pair that beats chance, Rs {milk:,.0f} with milk")
+        print(f"a slot a day: Rs {good:,.0f} with any suggestion but milk, Rs {milk:,.0f} with milk")
         print(f"gap: Rs {good - milk:,.0f} a day, Rs {gap_month / 1e5:.1f} lakh a month per slot")
         print(f"recovered on milk's 1.5 slots' worth: Rs {recovered / 1e5:.1f} lakh a month "
               f"(Rs {low / 1e5:.1f} lakh to Rs {high / 1e5:.1f} lakh across the ranges)")
         fig, ax = plt.subplots(figsize=(7, 3.2))
-        ax.bar(["pair that beats chance", "milk"], [good, milk], color=["#1F8A5B", "#D63A6A"])
+        ax.bar(["any suggestion but milk", "milk"], [good, milk], color=["#1F8A5B", "#D63A6A"])
         ax.set_ylabel("Rs a day, one slot"); ax.set_title("One slot, one day")
         plt.show()
         check("a slot earns Rs 17,280 or Rs 3,240 a day", round(good) == 17_280 and round(milk) == 3_240)
-        check("re-ranking recovers Rs 6.3 lakh a month", round(recovered / 1e5, 1) == 6.3)
+        check("taking milk out recovers Rs 6.3 lakh a month", round(recovered / 1e5, 1) == 6.3)
         """),
         md(f"""\
         **What happened.** The answer is c: {s('recoverable_month')} a month, between
-        {s('recoverable_low')} and {s('recoverable_high')} across the two ranges. The watch-list
-        pair, priced at its own margins ({s('sauce_margin')} for sauce against {s('milk_margin')}
-        for milk) on about {s('ice_cream_views_day')} views a day in place of milk, would earn
-        {s('thin_rule_month')} a month, which is why it earns a test and never a blind slot.
-        **The plausible
-        wrong answer** books sales as the benefit: 1,920 adds a day at about Rs {v('price_per_add_observed'):.2f}
-        each reads as {s('gross_sales_day')} a day of "strip revenue", over four times the margin.
-        **Why it is wrong.** The growth lead counts the margin, never the price; and if the strip
+        {s('recoverable_low')} and {s('recoverable_high')} across the two ranges, before the adds
+        that would have come anyway. Every add is priced at the basket's average Rs 9, milk's too.
+        Two corrections pull opposite ways: milk earns only {s('milk_margin')} a pouch, which
+        raises the gain, and the strip's own adds earned {s('strip_margin_per_add')}, which lowers
+        it; with both, {s('recoverable_month_own_margins')}, inside the range. Where does the money
+        come from? The cell below splits the strip's clicks by slot and by suggestion.
+        """),
+        code("""\
+        after = log[log.date >= "2026-09-07"]
+        other = after[after.suggested_item != "toned milk"]
+        lift_of = {(a, b): l for a, b, l in zip(pairs.a, pairs.b, pairs.lift)}
+        by_cell = other.groupby(["slot", "anchor_item", "suggested_item"])[["impressions", "clicks"]].sum()
+        by_cell["ctr"] = by_cell.clicks / by_cell.impressions
+        by_cell["lift"] = [lift_of[tuple(sorted((a, s)))] for _, a, s in by_cell.index]
+        for slot, part in by_cell.groupby(level="slot"):
+            print(f"slot {slot}: every suggestion other than milk clicked at {part.ctr.min():.1%} to {part.ctr.max():.1%}")
+        cc, eb = by_cell.loc[(1, "chips", "cold drink")], by_cell.loc[(1, "eggs", "bread")]
+        print(f"slot 1: cold drink beside chips, lift {cc.lift:.2f}, {cc.ctr:.1%}; bread beside eggs, lift {eb.lift:.2f}, {eb.ctr:.1%}")
+        fig, ax = plt.subplots(figsize=(8, 3.6))
+        for slot, colour in [(1, "#1A0F5C"), (2, "#5B3FD6"), (3, "#B8B2D6")]:
+            part = by_cell.loc[slot]
+            ax.scatter(part.lift, part.ctr * 100, s=70, color=colour, edgecolor="#1A0F5C", label=f"slot {slot}")
+        ax.set_xlabel("the pair's lift")
+        ax.set_ylabel("click-through, percent")
+        ax.set_ylim(0, 10)
+        ax.legend(frameon=False, ncol=3, loc="lower right")
+        ax.set_title("Inside a slot, a suggestion's lift does not move its clicks")
+        plt.show()
+        check("inside each slot, suggestions other than milk click within half a point of each other",
+              all(p.ctr.max() - p.ctr.min() < 0.005 for _, p in by_cell.groupby(level="slot")))
+        """),
+        md(f"""\
+        **What the split shows.** Inside each slot, every suggestion other than milk clicked alike,
+        whatever its lift: in slot 1, cold drink beside chips (lift {s('chips_cold_lift')}) drew
+        {s('chips_cold_slot1_ctr')} and bread beside eggs (lift {s('bread_eggs_lift')})
+        {s('eggs_bread_slot1_ctr')}. So the money comes from taking milk out, which ranking by
+        lift above the 1.5 bar does by arithmetic. Whether a lift-ranked pair clicks better than
+        any other suggestion is not in this log: a test with a count-ranked arm, milk left out,
+        against a lift-ranked arm measures it. The watch-list pair, priced at its own margins
+        ({s('sauce_margin')} for sauce against {s('milk_margin')} for milk) on about
+        {s('ice_cream_views_day')} views a day in place of milk, earns 2,400 x 30 x (0.064 x 0.5 x
+        Rs 37.40 less 0.012 x 0.5 x Rs 2), {s('thin_rule_month')} a month, which is why it earns a
+        test and never a blind slot. **The plausible wrong answer** books sales as the benefit:
+        1,920 adds a day at Rs {v('price_per_add_observed'):.2f} on average reads as
+        {s('gross_sales_day_about')} a day of "strip revenue", over four and a half times the
+        margin. **Why it is wrong.** The growth lead counts the margin, never the price; and if the strip
         ever adds a bundle discount, that discount is margin handed back to the customer. Swiggy's
         shareholder letter for April to June 2025 describes Maxxsaver, a discount unlocked once a
         basket passes a set size, in just those terms (checked 12 October 2026).
         """),
         code("""\
-        after = log[log.date >= "2026-09-07"]
-        other = after[after.suggested_item != "toned milk"]
         price = items.drop_duplicates("item").set_index("item").price_rs
         price_per_add = (other.groupby("suggested_item").adds.sum() * price).sum() / other.adds.sum()
         adds = views * 0.064 * add_rate
-        print(f"{adds:,.0f} adds a day x Rs {price_per_add:.2f} = Rs {adds * price_per_add:,.0f} of sales; "
+        print(f"{adds:,.0f} adds a day x Rs {price_per_add:.2f} = about Rs {round(adds * price_per_add, -2):,.0f} of sales; "
               f"the margin is Rs {good:,.0f}")
         check("sales overstate the margin more than four times", adds * price_per_add > 4 * good)
         """),
@@ -1882,15 +1964,15 @@ def nb10():
         Six doubts, each with the check that settles it. **Together is no proof of cause.** Lift
         says chips and cold drink are bought together; it does not show that suggesting cold drink
         beside chips makes anyone buy a cold drink they would not have bought. Only a **holdout**
-        settles that, a share of shoppers kept on the old strip and compared with the rest, the
+        settles that, a random share of shoppers who see no strip, compared with the rest, the
         subject of this week's Monday faculty session on A/B testing (tentative). **Heavy buyers,
         each placing many carts:** the top tenth of customers place 38 percent of carts, so lift is
         recomputed with every customer counted once, which gives each cart a weight of one over its
         customer's number of carts (a shopper with {s('weight_example_carts')} carts counts each as
         {s('weight_example')}); the next cell. **The stock-out:** curd ran out in two zones in week
         three; the cell after. **Time of day:** morning carts hold milk more often; the same cell.
-        **Position in the strip:** whatever slot 1 shows draws the most clicks, as chapter 8's split
-        by slot showed. **The strip feeds its own counts:** an add from the strip puts both items in
+        **Position in the strip:** whatever slot 1 shows draws the most clicks, as D54's picture
+        and the slot split above show. **The strip feeds its own counts:** an add from the strip puts both items in
         one cart, and only the holdout's shoppers, who never see the strip, show the counts without
         it.
 
@@ -1964,8 +2046,8 @@ def nb10():
         ## Does a second route reach the same Rs {s('recoverable_month')[3:]}?
 
         Read the milk impressions straight from `strip_log` rather than from "half the slots":
-        every milk impression moved to a suggestion that beats chance gains the gap in click-through
-        times the add rate times the margin.
+        every milk impression given to any suggestion other than milk gains the gap in
+        click-through times the add rate times the margin.
         """),
         code("""\
         milk_per_day = after[after.suggested_item == "toned milk"].groupby("date").impressions.sum().mean()
@@ -1976,14 +2058,17 @@ def nb10():
         md(f"""\
         ## What does the growth lead take to Friday?
 
-        - **Which pairs?** Above a floor of {s('support_floor')} of carts: chips and cold drink
-          {s('chips_cold_lift')}, coriander and green chillies {s('coriander_chillies_lift')},
-          bread and butter {s('bread_butter_lift')}. Milk takes no slot.
+        - **Which pairs?** Above a floor of {s('support_floor')} of carts and the 1.5 bar, each
+          beside its own item: chips and cold drink {s('chips_cold_lift')}, coriander and green
+          chillies {s('coriander_chillies_lift')}, bread and butter {s('bread_butter_lift')},
+          onions and tomatoes {s('onions_tomatoes_lift')}; the curated list elsewhere. No partner
+          of milk can pass {s('milk_lift_ceiling')}.
         - **The watch list?** Ice cream and chocolate sauce, lift {s('ice_choc_lift')} on
           {s('ice_choc_carts')} carts, tested before it is promoted.
-        - **A slot in rupees?** {s('slot_value_other_day')} a day with a pair that beats chance,
-          {s('slot_value_milk_day')} with milk; moving milk's half of the impressions recovers
-          {s('recoverable_month')} a month.
+        - **A slot in rupees?** {s('slot_value_other_day')} a day with any suggestion but milk,
+          {s('slot_value_milk_day')} with milk, every add at Rs 9; taking milk out recovers
+          {s('recoverable_month')} a month before the adds that would have come anyway, and a test
+          shows whether lift beats a count ranking without milk.
         - **What the counts cannot say?** Whether the pair causes the purchase; counted per
           customer, chips and cold drink fall to {s('chips_cold_lift_per_customer')} and still beat
           chance; the curd stock-out lowers curd's count and leaves its lift at
@@ -2051,7 +2136,7 @@ def nb11():
         A basket is one consumer order with its lines; a Business order holds one product bought
         in bulk, so it is left out. The TA hands out twelve baskets on paper. Count by hand first:
         the charger's share, the screen protector's confidence toward the charger and its lift
-        with the charger, and the lift of wireless earphones with their case. The cell below prints
+        with the charger, and the lift of the pen set with the phone grip. The cell below prints
         those numbers to check your count.
         """),
         code("""\
@@ -2061,13 +2146,13 @@ def nb11():
             print(oid, ", ".join(sorted(held)))
         charger = twelve.apply(lambda x: "phone charger 20W" in x)
         protector = twelve.apply(lambda x: "screen protector" in x)
-        phones = twelve.apply(lambda x: "wireless earphones" in x)
-        case = twelve.apply(lambda x: "earphone case" in x)
+        pens = twelve.apply(lambda x: "pen set" in x)
+        grip = twelve.apply(lambda x: "phone grip" in x)
         conf_sp = (protector & charger).sum() / protector.sum()
         lift_sp = (protector & charger).sum() * 12 / (protector.sum() * charger.sum())
-        lift_ec = (phones & case).sum() * 12 / (phones.sum() * case.sum())
+        lift_pg = (pens & grip).sum() * 12 / (pens.sum() * grip.sum())
         print(f"charger in {charger.mean():.2f} of the twelve; screen protector to charger: "
-              f"confidence {conf_sp:.2f}, lift {lift_sp:.2f}; earphones with case: lift {lift_ec:.2f}")
+              f"confidence {conf_sp:.2f}, lift {lift_sp:.2f}; pen set with phone grip: lift {lift_pg:.2f}")
         count = Counter(x for held in twelve for x in held)
         fig, ax = plt.subplots(figsize=(8, 3.8))
         names = sorted(count, key=count.get)
@@ -2093,7 +2178,8 @@ def nb11():
         Count every pair with `Counter` over `combinations(sorted(basket), 2)`, as notebook 05 did
         on the canteen and notebook 08 on Instamart's carts. With 812 baskets, a floor of 1 percent would be
         {s('kalpa_one_pct_baskets')} baskets, too thin to trust, so the lab sets its floor at
-        5 percent, {s('kalpa_floor_baskets')} baskets. Keep the pairs at or above it and rank them
+        5 percent, {s('kalpa_floor_baskets')} baskets: still thin, so a pair earns a promotion
+        there only with a lift far above the 1.5 bar. Keep the pairs at or above it and rank them
         by lift; then look below the floor for a pair with a high lift on two or three baskets.
         For the strongest pair above the floor, find which segment its baskets come from:
         `orders.set_index("order_id").loc[ids, "segment"].value_counts()` counts the segments of a
