@@ -9,11 +9,13 @@ Thursday can start on its ticket from the first minute.
 
 > **Zomato Gold, Chennai, the membership and the app's order flow.** The membership dashboard reports
 > month-two retention for Chennai as flat at 38 percent for the reporting months June, July, August
-> and September 2026 (blended: members active in the month over members who signed up before it). Each signup month's own group of members keeps fewer members as it ages, and
-> each new month keeps fewer in its first month than the one before: January 2026, 58 percent; July,
-> 49; August, 31. The August group signed up in a sale week and is 2.6 times the size of a normal
-> month's. On Monday 14 September 2026 a new checkout flow shipped on Android, and since then members'
-> add-to-cart to order rate on Android fell from 58 to 44 percent. The data covers 60,000 members.
+> and September 2026: the share of members two or more months past their signup month who ordered in
+> the month. Each signup month's own group of members keeps fewer members as it ages, and each new
+> month keeps fewer in its first month than the one before: January 2026, 58 percent; July, 49;
+> August, 31. The August group, grown by a sale week, is 13,000 members, 2.6 times the 5,000 a month
+> of January to July. On Monday 14 September 2026 a new checkout flow shipped on Android, and since
+> then members' add-to-cart to order rate on Android fell from 58 to 44 percent. The data covers the
+> 53,089 members who joined from January to September.
 > The ask, due Friday: is it a problem of one signup month or of everyone, which step of the order
 > flow owns the loss, and what should be fixed first?
 >
@@ -45,7 +47,7 @@ minutes assume you have tried, and a word you leave blank is the one to listen f
 |---|---|---|
 | Cohort | The members who signed up in the same month are followed together. | |
 | Retention | The ticket's flat number is a share of members still ordering. | |
-| Blended | The dashboard's 38 percent mixes members of every signup month. | |
+| Blended | The dashboard's 38 percent mixes members of every signup month old enough to be counted. | |
 | Funnel | The order flow runs from opening the app to an order placed, step by step. | |
 | Month-one rate and month-two retention | The ticket sets each signup month's month-one rate beside the dashboard's month-two number; they are different measures. | |
 | Add-to-cart to order rate | The step of the order flow the Android release touched. | |
