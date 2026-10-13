@@ -30,7 +30,7 @@ and size the error bar from the chosen forecast's own misses.
 |---|---|---|---|
 | Q1, the two scores | b | The seasonal copy missed by Rs 11.7 lakh a month, the vendor by Rs 38.8 lakh, Rs 27.1 lakh worse | a gives the gap to the wrong side; c is true but compares with naive, where the stem asks about the vendor; d invents a tie |
 | Q2, the board number | c | It totals what finance's does, Rs 19.69 crore, and puts the spike in November, where Diwali falls in 2026 | a lost the hidden months by Rs 27.1 lakh a month; b keeps the spike in October, so October is over-forecast and November short by the same amount; d is a target, not a forecast |
-| Q3, the error bar | a | The board forecast's own miss on the hidden months: festival-aligned, the copy plus 4 percent, missed by Rs 3.5 lakh a month, about Rs 21 lakh if all six months miss the same way; no hidden month holds Diwali, so the spike month itself is untested | b is a different forecast's miss, the copy without the 4 percent; c is the rejected forecast's miss; d confuses a target's margin with the forecast's error |
+| Q3, the error bar | a | The board forecast's own miss on the hidden months: festival-aligned, the copy plus 4 percent, missed by Rs 3.5 lakh a month, about Rs 21 lakh if all six months missed by that typical amount the same way, a scenario rather than a ceiling; no hidden month holds Diwali, so the spike month itself is untested and could miss by more | b is a different forecast's miss, the copy without the 4 percent; c is the rejected forecast's miss; d confuses a target's margin with the forecast's error |
 
 ## Which item is worth arguing about?
 

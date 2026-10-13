@@ -1,9 +1,9 @@
 # Role cards: finance, and the vendor's sponsor
 
-**TRAINER ONLY.** In round three of the tournament (half one, S37) the trainer plays finance and the
-TA plays the vendor's sponsor; in the afternoon's staffing note (half two, S4) both object again, and
-the fallback's second transcript replays them. Read both cards once before the session and say the
-lines in your own voice.
+**TRAINER ONLY.** On half two's S14, in the staffing note's minutes, the trainer plays finance and the
+TA plays the vendor's sponsor, one exchange each, 4 minutes in all: each says the card's opening line
+and one group answers. The rest of each card serves the lab's interview room and the fallback's second
+transcript. Read both cards once before the session and say the lines in your own voice.
 
 Flipkart, the Lucknow fulfilment centre. Illustrative case: the company is real, the situation and
 the data are synthetic, built for this class.
@@ -19,7 +19,8 @@ weeks alone give the same: the second year shipped 4.0 percent more than the fir
 at 6,615 shipments a week. What they miss is the shape: the rule copies calendar weeks, so it puts
 2026's busiest week on 5 October, two weeks before the rush, and against last year's eight weeks
 counted from Diwali it sits 9.5 percent below, 308,048 shipments short of festival-aligned. On 2025's
-festival a calendar copy like theirs missed by 60,488 a week.
+festival a calendar copy like theirs missed by 58,250 a week with no growth added, against 10,575
+for the copy counted from Diwali; no growth could be measured in September 2025.
 
 ### What do you say, and when?
 
@@ -39,7 +40,8 @@ Concede only to an answer that makes Tuesday's four moves in order:
    two years show."
 2. **Answer from the evidence:** the tie is real on weeks far from Diwali, where the two rules are the
    same arithmetic; around the festival the calendar copy books the peak on 5 October, and on 2025's
-   festival it missed by 60,488 a week against 4,034 for the copy counted from Diwali.
+   festival a calendar copy missed by 58,250 a week against 10,575 for the copy counted from Diwali,
+   both with no growth added.
 3. **Concede what is true:** the 4 percent stays in the plan; festival-aligned is your rule with the
    weeks moved to match Diwali.
 4. **Say what would change it:** a third year, or a sale that opens at a different distance from
@@ -59,7 +61,7 @@ skipped.
 ## Card 2: who is the vendor's sponsor, and what do they want?
 
 The vendor's sponsor is the manager who brought the vendor's demand model in. The model was fitted
-to the 104 weeks and promises the festive window 22 percent above last year, and the sponsor wants
+to 91 weeks and promises the festive window 22 percent above last year, and the sponsor wants
 it to set the plan.
 
 **Partly right, on purpose.** The model does fit history closely: its worst fitted week is 1.4
@@ -88,9 +90,10 @@ Concede only to an answer that makes the four moves in order:
    last year can."
 2. **Answer from the evidence:** a fit is no forecast; on hidden weeks it missed by 16,400 and its
    misses grow the further it looks; its festive peak lands on 5 October.
-3. **Concede what is true:** its fit is close, and leaning high is the right instinct; the plan leans
-   high on purpose, festival-aligned plus 2.6 percent, whose misses on the same weeks price at Rs 8.8
-   lakh, flattered a little because the 2.6 was read from those weeks.
+3. **Concede what is true:** its fit is close, and leaning high is the right instinct at these costs:
+   the plan books festival-aligned and prices both directions, about Rs 35,800 a week if it runs high
+   against Rs 1.65 lakh if low, so any margin belongs above it, sized on purpose. How far above is the
+   plan quantile, beyond today's row, which the fallback session reads at 2.6 percent.
 4. **Say what would change it:** the model scored on 2025's festival from data up to 22 September 2025,
    beating the copy counted from Diwali, before it books a shift.
 

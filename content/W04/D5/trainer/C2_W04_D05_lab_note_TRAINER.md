@@ -1,10 +1,11 @@
 # TA lab note: the forecasting method on Kalpa's 24 months, then the practice set
 
 **TRAINER ONLY.** For the TA who runs the practice lab after the faculty block (tentative). The lab
-re-runs levels L1 to L3 on Kalpa Retail's monthly revenue in notebook 04, sits the Kalpa board set,
-then works the practice set. The programme's facts set no length for the lab, so the parts below run
-in this order and the practice set is cut from its end when time runs short. Never cut the twelve
-rows or the two your-turn cells.
+opens on the interview room in pairs, then the four concept sets from item 2 to the end, then re-runs the
+day's five topics on Kalpa Retail's monthly revenue in notebook 08, sits the Kalpa board set and works
+the practice set. The programme's facts set no length for the lab, so the parts below run in this
+order and the practice set is cut from its end when time runs short. Never cut the twelve rows or the
+two your-turn cells.
 
 ## What does the lab ask, and what is the order of work?
 
@@ -16,14 +17,17 @@ the board, and how wrong could it be?"
 
 | Order | Part | File |
 |---|---|---|
-| 1 | The twelve rows read by hand on paper: which month is each winter's biggest? | The table below, printed one per group |
-| 2 | The 24 months loaded and drawn | Notebook 04, cells 2 to 4 |
-| 3 | Naive and drift scored on April to September 2026 | Notebook 04, cell 6 |
-| 4 | Your turn: the seasonal copy and the vendor scored on the same six months | Notebook 04, cell 8, empty |
-| 5 | Your turn: which month each copy puts Diwali in, and the six months summed | Notebook 04, cell 10, empty |
-| 6 | The growth and the plan line | Notebook 04, cell 11 |
-| 7 | The Kalpa board set, sat after the notebook | `exercises/unguided/C2_W04_D05_kalpa_board_STUDENT.md` |
-| 8 | The practice set | `exercises/practice/C2_W04_D05_lab_set_STUDENT.md` |
+| 1 | The interview room in pairs, 15 minutes: each learner asks the other the [S] question and one follow-up, then, in the second round, the [D] question; then they swap | Half two's D1 to D4; `extras/C2_W04_D05_interview_transcripts_STUDENT.md`; `trainer/C2_W04_D05_interview_scorecards_TRAINER.md` |
+| 2 | The four concept sets from item 2 to the end, 20 minutes, then the guided set's items 2 and 3 and the chapter 6 scoreboard set | `exercises/unguided/` c1 to c4 sets; `exercises/guided/`; `exercises/unguided/C2_W04_D05_ch6_scoreboard_STUDENT.md` |
+| 3 | The twelve rows read by hand on paper: which month is each winter's biggest? | The table below, printed one per group |
+| 4 | The 24 months loaded and drawn | Notebook 08, cells 2 to 4 |
+| 5 | Naive and drift scored on April to September 2026 | Notebook 08, cell 6 |
+| 6 | Your turn: the seasonal copy and the vendor scored on the same six months | Notebook 08, cell 8, empty |
+| 7 | Your turn: which month each copy puts Diwali in, and the six months summed | Notebook 08, cell 10, empty |
+| 8 | The growth and the plan line | Notebook 08, cell 11 |
+| 9 | The Kalpa board set, sat after the notebook | `exercises/unguided/C2_W04_D05_kalpa_board_STUDENT.md` |
+| 10 | The practice set, and the staffing note's prose | `exercises/practice/C2_W04_D05_lab_set_STUDENT.md`; the staffing note set |
+| 11 | If the faculty block ran, groups that finish read notebook 07's depth section, the plan share, which Saturday's paper tests | Notebook 07, its last section |
 
 ## What do the twelve rows hold, and what should the hand count give?
 
@@ -60,7 +64,7 @@ The plan line sums to Rs 21.77 crore, 15 percent above the year before and Rs 2.
 percent) above festival-aligned. The three lines a group brings back: the board number, Rs 19.69
 crore from festival-aligned with the spike in November; its error bar, festival-aligned's own miss on
 the six hidden months, Rs 3.5 lakh a month, about Rs 21 lakh if all six miss the same way, which
-notebook 04's last code cell prints, with the spike month itself untested; and the gap to the plan
+notebook 08's last code cell prints, with the spike month itself untested; and the gap to the plan
 line, Rs 2.08 crore. A group that offers the seasonal copy's Rs 11.7 lakh is asked which forecast
 that miss belongs to: the copy without the 4 percent.
 
@@ -76,17 +80,17 @@ that miss belongs to: the copy without the 4 percent.
 
 ## Where do learners stall in the practice set, and which hint unlocks each item?
 
-The practice set's keys are 1b, 2c, 3a, 4d, 5a and 6d. Item 5 is the Parsons problem: the house bot's
+The practice set's keys are 1b, 2c, 3a, 4d, 5a and 6c. Item 5 is the Parsons problem: the house bot's
 scoring cell, `shift(52)` included, arrives scrambled.
 
 | Item | Where learners stall | The one hint |
 |---|---|---|
 | Q1, three series | Calling Z's wobble a trend | "Does Z climb, or only wobble around the same height?" |
 | Q2, the gift shop | Copying the same calendar week, 35 | "Which week of last year sat at the same distance after its festival?" |
-| Q3, five misses | Averaging the signed misses to 0 | "Does a miss of 8 too low cancel a miss of 12 too high on the packing floor?" |
+| Q3, five misses | Averaging the signed misses to 2.0 | "Does a miss of 6 too low cancel a miss of 9 too high on the packing floor?" |
 | Q4, the vendor's pitch | Asking how the model works first | "Which weeks would you score it on?" |
 | Q5, the scrambled cell | Scoring before the hidden weeks exist | "Which line uses a name no earlier line has made?" |
-| Q6, the plan share | Dividing the cheap cost by the sum, 0.14 | "Which side of the forecast do you want to be on more often?" |
+| Q6, the priced miss | Calling the two rules equal because both miss by 1,000 | "Which direction costs Rs 30 a shipment, and which Rs 5?" |
 
 ## What do you send the trainer after the lab?
 

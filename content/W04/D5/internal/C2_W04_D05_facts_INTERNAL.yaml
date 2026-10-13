@@ -1,7 +1,11 @@
 # content/W04/D5/internal/C2_W04_D05_facts_INTERNAL.yaml, written by C2_W04_D05_make_data_INTERNAL.py.
 # Every number a Friday learner sees, with the form it prints in, how it was computed and where
 # it is used. Public facts carry their R2 id; toys are labelled invented where they appear; the
-# kalpa sections are TRAINER until the lab finds them.
+# kalpa sections are TRAINER until the lab finds them. The toy section holds the chai stall and
+# the hostel mess, invented for the concept chapters, each row under a toy_ id with how it was
+# invented and the files that use it (used_by). In the case sections, used_in names the case's
+# chapters as built before 13 October 2026: its chapters 1 to 3 are now SECTIONs 5 to 7, and
+# notebooks 01 to 04 are now 05 to 08.
 #
 # Corrections to the case file (docs/detailing/W04_case_file.md, Friday):
 #   1. Hold-out MAEs are forecasts from one origin (22 Jun 2026), so no rule sees a week it is
@@ -295,6 +299,11 @@ hand_count:
   shown: '-124'
   how: aligned minus actual
   used_in: chapter 1
+- id: aligned_nogrowth_miss
+  value: -12000
+  shown: -12,000
+  how: 'festival-aligned with no growth, as October 2025 could run it: 28 Oct 2024 minus the actual'
+  used_in: half1 S44, notebook 05, notes
 - id: peak_2024
   value: 401000
   shown: 401,000
@@ -637,6 +646,36 @@ holdout:
   shown: '7'
   how: weeks the aligned baseline sat below the actual
   used_in: chapter 2 second route
+- id: aligned_mape
+  value: 0.030491
+  shown: 3.05 percent
+  how: aligned's MAPE on the 13 hidden weeks
+  used_in: notebook 06, half2 D2
+- id: finance_mape
+  value: 0.030491
+  shown: 3.05 percent
+  how: finance's MAPE on the 13 hidden weeks
+  used_in: notebook 06, half2 D2
+- id: bot_mape
+  value: 0.044883
+  shown: 4.49 percent
+  how: bot's MAPE on the 13 hidden weeks
+  used_in: notebook 06, half2 D2
+- id: drift_mape
+  value: 0.068033
+  shown: 6.80 percent
+  how: drift's MAPE on the 13 hidden weeks
+  used_in: notebook 06, half2 D2
+- id: naive_mape
+  value: 0.068247
+  shown: 6.82 percent
+  how: naive's MAPE on the 13 hidden weeks
+  used_in: notebook 06, half2 D2
+- id: vendor_mape
+  value: 0.074725
+  shown: 7.47 percent
+  how: vendor's MAPE on the 13 hidden weeks
+  used_in: notebook 06, half2 D2
 - id: aligned_err_min_pct
   value: -0.058573
   shown: -5.9 percent
@@ -1412,6 +1451,66 @@ rolling_origin:
   value: 34.892157
   shown: about 35
   how: naive's average miss over festival-aligned's
+  used_in: fallback part 2
+- id: aligned_nogrowth_10_06
+  value: 401000
+  shown: 401,000
+  how: festival-aligned with no growth for 6 Oct 2025
+  used_in: fallback part 2
+- id: aligned_nogrowth_miss_10_06
+  value: -17200
+  shown: -17,200
+  how: that minus actual
+  used_in: fallback part 2
+- id: aligned_nogrowth_10_13
+  value: 356200
+  shown: 356,200
+  how: festival-aligned with no growth for 13 Oct 2025
+  used_in: fallback part 2
+- id: aligned_nogrowth_miss_10_13
+  value: -12800
+  shown: -12,800
+  how: that minus actual
+  used_in: fallback part 2
+- id: aligned_nogrowth_10_20
+  value: 296900
+  shown: 296,900
+  how: festival-aligned with no growth for 20 Oct 2025
+  used_in: fallback part 2
+- id: aligned_nogrowth_miss_10_20
+  value: -12000
+  shown: -12,000
+  how: that minus actual
+  used_in: fallback part 2
+- id: aligned_nogrowth_10_27
+  value: 180600
+  shown: 180,600
+  how: festival-aligned with no growth for 27 Oct 2025
+  used_in: fallback part 2
+- id: aligned_nogrowth_miss_10_27
+  value: -8000
+  shown: -8,000
+  how: that minus actual
+  used_in: fallback part 2
+- id: aligned_nogrowth_11_03
+  value: 212700
+  shown: 212,700
+  how: festival-aligned with no growth for 3 Nov 2025
+  used_in: fallback part 2
+- id: aligned_nogrowth_miss_11_03
+  value: -15200
+  shown: -15,200
+  how: that minus actual
+  used_in: fallback part 2
+- id: aligned_nogrowth_mae
+  value: 13040.0
+  shown: 13,040
+  how: festival-aligned's five misses with no growth, averaged
+  used_in: fallback part 2
+- id: ratio_nogrowth
+  value: 5.458589
+  shown: about 5.5
+  how: naive's average miss over that
   used_in: fallback part 2
 backtest_2025:
 - id: bot_mae
@@ -2381,6 +2480,23 @@ interview:
   shown: one and a half and two times
   how: overtime at these multiples of a shift's cost (assumed)
   used_in: transcripts
+error_range:
+- id: peak_low_spare_rs
+  value: 137990.727092
+  shown: Rs 1.4 lakh
+  how: booked at the forecast, the week of 19 Oct 2026's spare shipments at the range's low end, at Rs
+    5.42
+  used_in: half2 S7, notes, staffing note
+- id: peak_high_late_rs
+  value: 843610.344828
+  shown: Rs 8.4 lakh
+  how: booked at the forecast, its late shipments at the range's high end, at Rs 25
+  used_in: half2 S7, notes, staffing note
+- id: mae_share_of_level
+  value: 0.03038
+  shown: 3.0 percent
+  how: festival-aligned's MAE over the hidden weeks' average week
+  used_in: half2 S7, notes
 toys:
 - id: ai_users
   value: 200000
@@ -2452,43 +2568,6 @@ toys:
   shown: about 3
   how: 2,000 / 5 a minute x 1,440 minutes / 2 lakh users
   used_in: AI variant
-- id: cups
-  value:
-  - 50
-  - 52
-  - 49
-  - 51
-  shown: 50, 52, 49, 51
-  how: cups a canteen sells on four days (invented, R1)
-  used_in: chapter 1
-- id: cups_naive
-  value: 51
-  shown: '51'
-  how: tomorrow's naive forecast
-  used_in: chapter 1
-- id: cups_drift
-  value: 51.333333
-  shown: '51.3'
-  how: 'drift on the cups: 51 plus (51 - 50) / 3'
-  used_in: chapter 1
-- id: sundays
-  value: 80
-  shown: '80'
-  how: cups on Sundays (invented)
-  used_in: chapter 1
-- id: held_errors
-  value:
-  - 10
-  - -5
-  - 10
-  shown: 10, 5 and 10
-  how: three held-out misses, one too low (invented)
-  used_in: chapter 2
-- id: held_mae
-  value: 8.333333
-  shown: '8.3'
-  how: (10 + 5 + 10) / 3
-  used_in: chapter 2
 week_map:
 - id: mon_before
   value: 1.9
@@ -2700,6 +2779,21 @@ exercises:
   shown: '0.3'
   how: 31 shipments a week over 120 a shift
   used_in: chapter 2 set
+- id: pair1_vs_aligned
+  value: 3184.923077
+  shown: 3,185
+  how: team A's MAE above festival-aligned's
+  used_in: chapter 4 set
+- id: pair3_lead
+  value: 415.076923
+  shown: '415'
+  how: team C's lead over festival-aligned, shipments a week
+  used_in: chapter 4 set
+- id: pair3_lead_rs
+  value: 10376.923077
+  shown: about Rs 10,400
+  how: 'the most that lead saves a week: each shipment a late one at Rs 25'
+  used_in: chapter 4 set
 - id: ch1_series_a
   value:
   - 100
@@ -3610,6 +3704,13 @@ guesstimate:
   shown: 8 years
   how: years before a household replaces it, assumption, range 6 to 10
   used_in: half2, transcript
+- id: replace_years_range
+  value:
+  - 6
+  - 10
+  shown: 6 to 10 years
+  how: the replacement years' assumed range
+  used_in: half2 D4, transcript
 - id: replacement
   value: 18750000.0
   shown: about 1.9 crore
@@ -3722,3 +3823,1695 @@ guesstimate:
   shown: 10.7 percent
   how: SIAM's FY 2025-26 two-wheeler growth on the year before (T3)
   used_in: guesstimate card
+toy:
+- id: toy_stall_days
+  value: 730
+  shown: 730 days
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the stall''s
+    record, 30 Sep 2024 to 29 Sep 2026'
+  used_by:
+  - notebooks 01 to 04
+  - half1 SECTIONs 1 to 4
+- id: toy_stall_level
+  value: 100
+  shown: about 100 cups
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: an ordinary
+    weekday at the start'
+  used_by:
+  - half1 SECTION 1
+  - notebook 01
+  - notes
+- id: toy_stall_growth
+  value: 0.1
+  shown: about 10 percent a year
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the level''s
+    growth as the hostel fills'
+  used_by:
+  - half1 SECTION 1
+  - notebook 01
+  - notes
+- id: toy_stall_sunday_share
+  value: 0.6
+  shown: '0.6'
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: a Sunday''s
+    cups over an ordinary weekday''s'
+  used_by:
+  - half1 SECTION 1
+  - notebook 01
+- id: toy_stall_exam_factor
+  value: 1.4
+  shown: '1.4'
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: a day of the
+    exam fortnight over an ordinary day'
+  used_by:
+  - half1 SECTION 1
+  - notebook 01
+- id: toy_stall_diwali_factor
+  value: 0.4
+  shown: '0.4'
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: a day of Diwali
+    week over an ordinary day'
+  used_by:
+  - half1 SECTION 1
+  - notebook 01
+- id: toy_stall_exam_days
+  value: 14
+  shown: a fortnight
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the exam fortnight
+    that closes each semester, two a year'
+  used_by:
+  - half1 SECTION 1
+- id: toy_stall_week
+  value: 7
+  shown: 7 days
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the season''s
+    length of the weekly beat'
+  used_by:
+  - half1 SECTIONs 1 and 2
+  - notebooks 01 and 02
+- id: toy_stall_year_lag
+  value: 364
+  shown: 364 days
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: 52 weeks back,
+    so a copy lands on the same weekday'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_stall_aligned_lag
+  value: 357
+  shown: 357 days
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: 51 weeks back,
+    the festival-aligned copy near Diwali''s week'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_stall_diwali_shift
+  value: 11
+  shown: eleven days
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: Diwali on 20 Oct
+    2025 came eleven days earlier in the calendar than 31 Oct 2024'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+  - notes
+- id: toy_ch1_cups_2024
+  value:
+  - 100
+  - 98
+  - 99
+  - 99
+  - 99
+  - 101
+  - 60
+  - 100
+  - 101
+  - 100
+  - 99
+  - 97
+  - 101
+  - 61
+  shown: 100, 98, 99, 99, 99, 101, 60, 100, 101, 100, 99, 97, 101, 61
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the stall''s
+    first fourteen days, 30 Sep to 13 Oct 2024'
+  used_by:
+  - notebook 01
+  - half1 SECTION 1
+- id: toy_ch1_cups_2025
+  value:
+  - 112
+  - 111
+  - 108
+  - 118
+  - 104
+  - 109
+  - 66
+  - 110
+  - 108
+  - 105
+  - 110
+  - 111
+  - 111
+  - 67
+  shown: 112, 111, 108, 118, 104, 109, 66, 110, 108, 105, 110, 111, 111, 67
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the same fourteen
+    days 52 weeks later, 29 Sep to 12 Oct 2025'
+  used_by:
+  - notebook 01
+  - half1 SECTION 1
+- id: toy_ch1_sunday
+  value: 60
+  shown: '60'
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: cups on Sun
+    06 Oct 2024'
+  used_by:
+  - half1 SECTION 1
+  - notebook 01
+  - notes
+- id: toy_ch1_monday
+  value: 100
+  shown: '100'
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: cups on Mon
+    07 Oct 2024'
+  used_by:
+  - half1 SECTION 1
+  - notebook 01
+  - notes
+- id: toy_ch1_sunday_next
+  value: 66
+  shown: '66'
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: cups on Sun
+    05 Oct 2025'
+  used_by:
+  - half1 SECTION 1
+  - notebook 01
+  - notes
+- id: toy_ch1_monday_next
+  value: 110
+  shown: '110'
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: cups on Mon
+    06 Oct 2025'
+  used_by:
+  - half1 SECTION 1
+  - notebook 01
+  - notes
+- id: toy_ch1_wrong_growth
+  value: 0.666667
+  shown: 67 percent
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: Monday over
+    Sunday, minus one: the weekly beat read as growth'
+  used_by:
+  - half1 SECTION 1
+  - notebook 01
+  - Kahoot Q8
+  - notes
+- id: toy_ch1_share
+  value: 0.6
+  shown: '0.6'
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: Sunday''s 60
+    over Monday''s 100'
+  used_by:
+  - half1 SECTION 1
+  - notebook 01
+- id: toy_ch1_growth
+  value: 0.1
+  shown: 10 percent
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: this Monday
+    over the same Monday 52 weeks back, minus one'
+  used_by:
+  - half1 SECTION 1
+  - notebook 01
+  - notes
+- id: toy_ch1_fortnight_growth
+  value: 0.102662
+  shown: 10.3 percent
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the fourteen
+    days of 2025 over the same days of 2024, minus one'
+  used_by:
+  - notebook 01
+- id: toy_ch1_fortnight_totals
+  value:
+  - 1315
+  - 1450
+  shown: 1,315 and 1,450
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the two fortnights''
+    totals'
+  used_by:
+  - notebook 01
+- id: toy_ch1_exam_ratio
+  value:
+  - 1.39
+  - 1.41
+  shown: 1.39 and 1.41
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the first exam
+    fortnight''s weekdays over the fortnight before it, 2024 and 2025'
+  used_by:
+  - notebook 01
+  - half1 SECTION 1
+- id: toy_ch1_diwali_ratio
+  value:
+  - 0.4
+  - 0.4
+  shown: 0.40 and 0.40
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: Diwali week''s
+    weekdays over the fortnight before it, 2024 and 2025'
+  used_by:
+  - notebook 01
+  - half1 SECTION 1
+- id: toy_ch1_left_mean
+  value: 0.094886
+  shown: '0.1'
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: what is left
+    after the growth and the beats are copied out, its mean, Diwali''s fortnight aside'
+  used_by:
+  - notebook 01
+- id: toy_ch1_left_spread
+  value: 4.72935
+  shown: '4.7'
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the same, its
+    standard deviation in cups'
+  used_by:
+  - notebook 01
+  - notes
+- id: toy_ch1_left_worst
+  value: 70.3
+  shown: '70'
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the largest
+    left-over in the fortnight Diwali moved into, cups'
+  used_by:
+  - notebook 01
+- id: toy_ch1_left_days
+  value: 352
+  shown: '352'
+  how: 'invented for the concept chapter on Trend and seasonality, read before modelling: the year-two
+    days outside that fortnight'
+  used_by:
+  - notebook 01
+- id: toy_ch2_week
+  value:
+  - 61
+  - 103
+  - 99
+  - 98
+  - 104
+  - 101
+  - 103
+  - 60
+  shown: 61, 103, 99, 98, 104, 101, 103, 60
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: Sun 12 Jan to Sun
+    19 Jan 2025'
+  used_by:
+  - notebook 02
+  - half1 SECTION 2
+- id: toy_ch2_four
+  value:
+  - 98
+  - 104
+  - 101
+  - 103
+  shown: 98, 104, 101, 103
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the four days before
+    next Sunday, Wed 15 to Sat 18 Jan 2025'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+  - notes
+  - c2 set
+- id: toy_ch2_last_sunday
+  value: 61
+  shown: '61'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: Sun 12 Jan 2025'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+  - notes
+- id: toy_ch2_next_sunday
+  value: 60
+  shown: '60'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: Sun 19 Jan 2025,
+    what the forecasts are scored on'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_ch2_naive
+  value: 103
+  shown: '103'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the naive: Saturday''s
+    103 repeated'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+  - notes
+- id: toy_ch2_drift_step
+  value: 1.666667
+  shown: '1.67'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: drift''s step:
+    (103 - 98) / 3'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_ch2_drift
+  value: 104.666667
+  shown: '104.7'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: drift: 103 plus
+    the step, about 105'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+  - notes
+- id: toy_ch2_drift_round
+  value: 105
+  shown: '105'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: drift rounded to
+    a cup'
+  used_by:
+  - half1 SECTION 2
+  - notes
+- id: toy_ch2_miss_naive
+  value: 43
+  shown: '+43'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: naive minus next
+    Sunday''s 60'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_ch2_miss_drift
+  value: 44.666667
+  shown: '+44.7'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: drift minus next
+    Sunday''s 60'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_ch2_miss_snaive
+  value: 1
+  shown: '+1'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: snaive minus next
+    Sunday''s 60'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_ch2_exam_2024
+  value: 140
+  shown: '140'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the first day of
+    the November exam fortnight, Wed 27 Nov 2024'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_ch2_exam_eve
+  value: 110
+  shown: '110'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the day before
+    it a year later, Tue 25 Nov 2025'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_ch2_exam_2025
+  value: 154
+  shown: '154'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the first exam
+    day of 2025, Wed 26 Nov 2025'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+  - notes
+- id: toy_ch2_exam_miss_naive
+  value: -44
+  shown: '-44'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the naive''s miss
+    on the first exam day'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_ch2_exam_miss_copy
+  value: -14
+  shown: '-14'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the yearly copy''s
+    miss: the growth'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_ch2_exam_grown
+  value: 154
+  shown: '154'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the yearly copy
+    times 1.10'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_ch2_growth_factor
+  value: 1.1
+  shown: '1.10'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the growth chapter
+    1 read, as a multiplier'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_ch2_exam_window_mae_naive
+  value: 20.571429
+  shown: '20.6'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the average miss
+    of yesterday''s cups on the 28 days from 12 Nov 2025, the fortnight before the exams and the exam
+    fortnight'
+  used_by:
+  - half1 SECTION 2 picture
+  - notebook 02
+- id: toy_ch2_exam_window_mae_copy
+  value: 10.464286
+  shown: '10.5'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the average miss
+    of the day 364 back on the 28 days from 12 Nov 2025, the fortnight before the exams and the exam fortnight'
+  used_by:
+  - half1 SECTION 2 picture
+  - notebook 02
+- id: toy_ch2_exam_window_mae_grown
+  value: 3.0
+  shown: '3.0'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the average miss
+    of the day 364 back times 1.10 on the 28 days from 12 Nov 2025, the fortnight before the exams and
+    the exam fortnight'
+  used_by:
+  - half1 SECTION 2 picture
+  - notebook 02
+- id: toy_ch2_diwali_2025
+  value: 44
+  shown: '44'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: cups on Mon 20
+    Oct 2025'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+  - notes
+- id: toy_ch2_diwali_2025_copy
+  value: 100
+  shown: '100'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the calendar copy''s
+    source, Mon 21 Oct 2024'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_ch2_diwali_2025_miss
+  value: 56
+  shown: '+56'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the calendar copy
+    minus what sold'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+  - notes
+- id: toy_ch2_after_2025
+  value: 110
+  shown: '110'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: cups on Thu 30
+    Oct 2025'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+  - notes
+- id: toy_ch2_after_2025_copy
+  value: 40
+  shown: '40'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the calendar copy''s
+    source, Thu 31 Oct 2024'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+- id: toy_ch2_after_2025_miss
+  value: -70
+  shown: '-70'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the calendar copy
+    minus what sold'
+  used_by:
+  - half1 SECTION 2
+  - notebook 02
+  - notes
+- id: toy_ch2_window_cal_worst
+  value: 71
+  shown: '71'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the calendar copy''s
+    worst miss, 13 Oct to 2 Nov 2025'
+  used_by:
+  - notebook 02
+  - half1 SECTION 2
+- id: toy_ch2_window_aligned_worst
+  value: 13
+  shown: '13'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the festival-aligned
+    copy''s worst miss on the same days'
+  used_by:
+  - notebook 02
+  - half1 SECTION 2
+- id: toy_ch2_window_cal_mae
+  value: 41.142857
+  shown: '41.1'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the calendar copy''s
+    average miss on those 21 days'
+  used_by:
+  - notebook 02
+- id: toy_ch2_window_aligned_mae
+  value: 6.47619
+  shown: '6.5'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the festival-aligned
+    copy''s average miss on those 21 days'
+  used_by:
+  - notebook 02
+- id: toy_ch2_window_days
+  value: 21
+  shown: 21 days
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the three weeks
+    around Diwali''s week of 2025'
+  used_by:
+  - notebook 02
+- id: toy_ch2_weekly_totals
+  value:
+  - 674
+  - 674
+  - 668
+  - 659
+  - 687
+  - 679
+  - 672
+  - 682
+  - 690
+  - 683
+  - 701
+  - 685
+  shown: 674, 674, 668, 659, 687, 679, 672, 682, 690, 683, 701, 685
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the stall''s weekly
+    totals, the twelve weeks from Mon 30 Dec 2024'
+  used_by:
+  - notebook 02
+- id: toy_ch2_weekly_step
+  value: 1.0
+  shown: '1.0'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: drift''s step on
+    the weekly totals: (week 12 - week 1) / 11'
+  used_by:
+  - notebook 02
+- id: toy_ch2_weekly_forecast
+  value: 686.0
+  shown: '686'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: drift''s forecast
+    for week 13'
+  used_by:
+  - notebook 02
+- id: toy_ch2_weekly_actual
+  value: 688
+  shown: '688'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: what week 13 sold'
+  used_by:
+  - notebook 02
+- id: toy_ch2_weekly_miss
+  value: -2.0
+  shown: '-2'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: drift''s miss on
+    week 13'
+  used_by:
+  - notebook 02
+- id: toy_ch2_turn_monday
+  value: 105
+  shown: '105'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the your-turn:
+    cups on Mon 20 Jan 2025, the day after next Sunday'
+  used_by:
+  - notebook 02
+- id: toy_ch2_turn_naive_miss
+  value: -45
+  shown: '-45'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the naive copies
+    Sunday''s 60 into Monday: its miss'
+  used_by:
+  - notebook 02
+- id: toy_ch2_turn_snaive
+  value: 103
+  shown: '103'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the seasonal naive
+    copies last Monday, 13 Jan 2025'
+  used_by:
+  - notebook 02
+- id: toy_ch2_turn_snaive_miss
+  value: -2
+  shown: '-2'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the seasonal naive''s
+    miss on that Monday'
+  used_by:
+  - notebook 02
+- id: toy_ch3_cups
+  value:
+  - 103
+  - 63
+  - 102
+  - 102
+  - 104
+  - 102
+  - 104
+  - 103
+  - 62
+  - 103
+  - 100
+  - 110
+  - 95
+  - 100
+  shown: 103, 63, 102, 102, 104, 102, 104, 103, 62, 103, 100, 110, 95, 100
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: fourteen
+    days, Sat 1 to Fri 14 Feb 2025'
+  used_by:
+  - notebook 03
+  - half1 SECTION 3
+- id: toy_ch3_origin
+  value: 100
+  shown: '100'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: day 11,
+    Tue 11 Feb 2025, the last day the rule may see'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+  - notes
+- id: toy_ch3_hidden
+  value:
+  - 110
+  - 95
+  - 100
+  shown: 110, 95, 100
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: days 12
+    to 14, what sold'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+  - notes
+- id: toy_ch3_misses
+  value:
+  - -10
+  - 5
+  - 0
+  shown: -10, +5, 0
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: the naive''s
+    100 minus what sold, each day'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+  - notes
+- id: toy_ch3_abs_sum
+  value: 15
+  shown: '15'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: the misses''
+    sizes added: 10 + 5 + 0'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+- id: toy_ch3_mae
+  value: 5.0
+  shown: '5.0'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: MAE: 15
+    cups over 3 days'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+  - notes
+  - Kahoot
+- id: toy_ch3_mape
+  value: 0.047847
+  shown: 4.8 percent
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: MAPE:
+    (10/110 + 5/95 + 0/100) / 3'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+  - notes
+- id: toy_ch3_pct_day12
+  value: 0.090909
+  shown: 9.1 percent
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: the miss
+    over what sold, day12'
+  used_by:
+  - notebook 03
+- id: toy_ch3_pct_day13
+  value: 0.052632
+  shown: 5.3 percent
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: the miss
+    over what sold, day13'
+  used_by:
+  - notebook 03
+- id: toy_ch3_lean
+  value: -1.666667
+  shown: '-1.7'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: the signed
+    misses averaged: the rule runs 1.7 cups low'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+  - notes
+- id: toy_ch3_unsold_rs
+  value: 6
+  shown: Rs 6
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: a cup''s
+    milk wasted when it does not sell'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+  - notes
+- id: toy_ch3_short_rs
+  value: 12
+  shown: Rs 12
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: a cup''s
+    margin lost when the milk runs out'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+  - notes
+- id: toy_ch3_short_cups
+  value: 10
+  shown: '10'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: cups short
+    across the hidden days'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+- id: toy_ch3_unsold_cups
+  value: 5
+  shown: '5'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: cups unsold
+    across the hidden days'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+- id: toy_ch3_short_cost
+  value: 120
+  shown: Rs 120
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: 10 short
+    x Rs 12'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+- id: toy_ch3_unsold_cost
+  value: 30
+  shown: Rs 30
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: 5 unsold
+    x Rs 6'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+- id: toy_ch3_cost
+  value: 150
+  shown: Rs 150
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: the three
+    days'' misses in rupees'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+  - notes
+- id: toy_ch3_horizon
+  value: 3
+  shown: three days
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: the milk
+    order reaches three days ahead, so three days are hidden'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+- id: toy_ch3_train_days
+  value: 11
+  shown: 11 days
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: days 1
+    to 11, the training days'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+- id: toy_ch3_mape_days
+  value:
+  - 100
+  - 20
+  - 85
+  - 5
+  shown: 100 and 85; 20 and 5
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: two days
+    apart from the stall''s record: forecast and sold on an ordinary day and a rain day'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+  - notes
+- id: toy_ch3_mape_miss
+  value: 15
+  shown: '15'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: both days
+    miss by 15 cups'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+  - notes
+- id: toy_ch3_mape_pcts
+  value:
+  - 0.1765
+  - 3.0
+  shown: 17.6 and 300 percent
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: 15 over
+    85, and 15 over 5'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+  - notes
+- id: toy_ch3_mape_mean
+  value: 1.588235
+  shown: 158.8 percent
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: the two
+    days'' MAPE'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+- id: toy_ch3_rule_p_misses
+  value:
+  - 10
+  - 10
+  shown: +10, +10
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: rule P''s
+    two misses'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+- id: toy_ch3_rule_p_mae
+  value: 10.0
+  shown: '10'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: rule P''s
+    MAE'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+- id: toy_ch3_rule_p_lean
+  value: 10.0
+  shown: '+10'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: rule P''s
+    lean'
+  used_by:
+  - notebook 03
+- id: toy_ch3_rule_p_cost
+  value: 120
+  shown: Rs 120
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: rule P''s
+    misses at Rs 6 unsold and Rs 12 short'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+  - notes
+- id: toy_ch3_rule_q_misses
+  value:
+  - 10
+  - -10
+  shown: +10, -10
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: rule Q''s
+    two misses'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+- id: toy_ch3_rule_q_mae
+  value: 10.0
+  shown: '10'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: rule Q''s
+    MAE'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+- id: toy_ch3_rule_q_lean
+  value: 0.0
+  shown: '+0'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: rule Q''s
+    lean'
+  used_by:
+  - notebook 03
+- id: toy_ch3_rule_q_cost
+  value: 180
+  shown: Rs 180
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: rule Q''s
+    misses at Rs 6 unsold and Rs 12 short'
+  used_by:
+  - half1 SECTION 3
+  - notebook 03
+  - notes
+- id: toy_ch3_turn_forecasts
+  value:
+  - 104
+  - 102
+  - 104
+  shown: 104, 102, 104
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: the your-turn:
+    the seasonal naive copies days 5 to 7 into days 12 to 14'
+  used_by:
+  - notebook 03
+- id: toy_ch3_turn_misses
+  value:
+  - -6
+  - 7
+  - 4
+  shown: -6, +7, +4
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: its misses,
+    forecast minus sold'
+  used_by:
+  - notebook 03
+- id: toy_ch3_turn_mae
+  value: 5.666667
+  shown: '5.7'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: its MAE
+    on the three hidden days'
+  used_by:
+  - notebook 03
+- id: toy_ch3_turn_lean
+  value: 1.666667
+  shown: '+1.7'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: its lean'
+  used_by:
+  - notebook 03
+- id: toy_ch3_turn_short_cups
+  value: 6
+  shown: '6'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: cups short
+    across the three days'
+  used_by:
+  - notebook 03
+- id: toy_ch3_turn_unsold_cups
+  value: 11
+  shown: '11'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: cups unsold
+    across the three days'
+  used_by:
+  - notebook 03
+- id: toy_ch3_turn_cost
+  value: 138
+  shown: Rs 138
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: its misses
+    in rupees: short at Rs 12, unsold at Rs 6'
+  used_by:
+  - notebook 03
+- id: toy_ch3_cover_share
+  value: 0.666667
+  shown: two days in three
+  how: 'invented for the concept chapter on The good-enough call and the forecast note: the stall''s plan
+    share, Rs 12 over Rs 12 plus Rs 6, which opens notebook 07''s depth section'
+  used_by:
+  - notebook 07
+- id: toy_ch4_four
+  value:
+  - 100
+  - 104
+  - 98
+  - 110
+  shown: 100, 104, 98, 110
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the nephew''s
+    four days, Mon 3 to Thu 6 Mar 2025'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+  - c4 set
+- id: toy_ch4_day5
+  value: 102
+  shown: '102'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: day 5, Fri
+    7 Mar 2025, what sold'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+- id: toy_ch4_line_slope
+  value: 2.4
+  shown: '2.4'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the straight
+    line''s slope through the four days'
+  used_by:
+  - notebook 04
+- id: toy_ch4_line_start
+  value: 97.0
+  shown: '97'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the line''s
+    value at day 0'
+  used_by:
+  - notebook 04
+- id: toy_ch4_line
+  value: 109.0
+  shown: '109'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the line''s
+    forecast for day 5'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+  - c4 set
+- id: toy_ch4_line_fit_mae
+  value: 3.1
+  shown: '3.1'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the line''s
+    average distance from the four days it was drawn through'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+- id: toy_ch4_differences
+  value:
+  - 4
+  - -6
+  - 12
+  - -10
+  - 18
+  - 28
+  shown: 4, -6, 12; -10, 18; 28
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the four days''
+    differences, three rounds deep'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+- id: toy_ch4_curve
+  value: 168
+  shown: '168'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the curve through
+    all four days, extended to day 5'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+  - c4 set
+- id: toy_ch4_curve_next_d2
+  value: 46
+  shown: '46'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the next second
+    difference: 18 + 28'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+- id: toy_ch4_curve_next_d1
+  value: 58
+  shown: '58'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the next first
+    difference: 12 + 46'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+- id: toy_ch4_curve_mean
+  value: 138.5
+  shown: '138.5'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the average
+    of the curve and the line, a wrong option'
+  used_by:
+  - c4 set
+- id: toy_ch4_miss_line
+  value: 7.0
+  shown: '7'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the line''s
+    miss on day 5'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+- id: toy_ch4_miss_curve
+  value: 66
+  shown: '66'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the curve''s
+    miss on day 5'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+- id: toy_ch4_miss_naive
+  value: 8
+  shown: '8'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the naive''s
+    miss on day 5'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+- id: toy_ch4_cups
+  value:
+  - 100
+  - 104
+  - 98
+  - 110
+  - 102
+  - 106
+  - 63
+  - 103
+  - 104
+  - 104
+  - 105
+  - 113
+  - 109
+  - 63
+  shown: 100, 104, 98, 110, 102, 106, 63, 103, 104, 104, 105, 113, 109, 63
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: Mon 3 to Sun
+    16 Mar 2025; the last seven are hidden'
+  used_by:
+  - notebook 04
+- id: toy_ch4_mean7
+  value: 97.571429
+  shown: '97.6'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the nephew''s
+    rule: the mean of the last seven days'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+- id: toy_ch4_snaive_mae
+  value: 4.0
+  shown: '4.0'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the seasonal
+    naive (same day last week) on the seven hidden days'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+- id: toy_ch4_mean7_mae
+  value: 12.44898
+  shown: '12.4'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the nephew''s
+    mean on the same days'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+- id: toy_ch4_snaive_lean
+  value: -2.571429
+  shown: '-2.6'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the seasonal
+    naive''s lean'
+  used_by:
+  - notebook 04
+- id: toy_ch4_mean7_lean
+  value: -2.571429
+  shown: '-2.6'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the mean''s
+    lean'
+  used_by:
+  - notebook 04
+- id: toy_ch4_mean7_sunday_miss
+  value: 34.571429
+  shown: '+34.6'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the mean''s
+    miss on the hidden Sunday'
+  used_by:
+  - notebook 04
+- id: toy_ch4_can
+  value: 40
+  shown: 40 cups
+  how: 'invented for the concept chapter on The good-enough call and the forecast note: cups of tea one
+    milk can makes'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+  - c4 set
+- id: toy_ch4_cans_snaive
+  value:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 2
+  shown: 3, 3, 3, 3, 3, 3, 2
+  how: 'invented for the concept chapter on The good-enough call and the forecast note: cans the seasonal
+    naive orders, Mon to Sun'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+- id: toy_ch4_cans_perfect
+  value:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 2
+  shown: 3, 3, 3, 3, 3, 3, 2
+  how: 'invented for the concept chapter on The good-enough call and the forecast note: cans a forecast
+    that knew the future would order'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+- id: toy_ch4_cans_mean7
+  value:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  shown: 3, 3, 3, 3, 3, 3, 3
+  how: 'invented for the concept chapter on The good-enough call and the forecast note: cans the nephew''s
+    mean orders'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+- id: toy_ch4_cans_differ_snaive
+  value: 0
+  shown: '0'
+  how: 'invented for the concept chapter on The good-enough call and the forecast note: days on which
+    the seasonal naive''s cans differ from a perfect forecast''s'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+- id: toy_ch4_cans_differ_mean7
+  value: 1
+  shown: '1'
+  how: 'invented for the concept chapter on The good-enough call and the forecast note: days on which
+    the nephew''s cans differ: the Sunday'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+- id: toy_ch4_spare_can_rs
+  value: 240
+  shown: Rs 240
+  how: 'invented for the concept chapter on The good-enough call and the forecast note: a whole can of
+    milk wasted: 40 cups x Rs 6'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+- id: toy_ch4_bar_high_rs
+  value: 24.0
+  shown: Rs 24
+  how: 'invented for the concept chapter on The good-enough call and the forecast note: the seasonal naive''s
+    MAE priced if it runs high'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+- id: toy_ch4_bar_low_rs
+  value: 48.0
+  shown: Rs 48
+  how: 'invented for the concept chapter on The good-enough call and the forecast note: the same MAE priced
+    if it runs short'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+- id: toy_ch4_weekday_cans
+  value: 3
+  shown: 3 cans
+  how: 'invented for the concept chapter on The good-enough call and the forecast note: the note: 3 cans
+    a day Monday to Saturday'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+  - c4 set
+- id: toy_ch4_sunday_cans
+  value: 2
+  shown: 2 cans
+  how: 'invented for the concept chapter on The good-enough call and the forecast note: the note: 2 cans
+    on Sunday'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+  - c4 set
+- id: toy_ch4_note_lines
+  value: 4
+  shown: four lines
+  how: 'invented for the concept chapter on The good-enough call and the forecast note: the forecast note:
+    number, method, error bar, what would make it wrong'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+  - notes
+- id: toy_mess_weekday_kg
+  value: 25
+  shown: 25 kg
+  how: 'invented for the exercise set on Trend and seasonality, read before modelling: rice a weekday
+    at the hostel mess'
+  used_by:
+  - c1 set
+  - c2 set
+  - c3 set
+- id: toy_mess_sunday_kg
+  value: 40
+  shown: 40 kg
+  how: 'invented for the exercise set on Trend and seasonality, read before modelling: rice on a Sunday,
+    biryani day'
+  used_by:
+  - c1 set
+  - c2 set
+- id: toy_mess_sixteen_weeks
+  value:
+  - 190
+  - 186
+  - 194
+  - 238
+  - 192
+  - 188
+  - 196
+  - 240
+  - 194
+  - 190
+  - 198
+  - 242
+  - 196
+  - 192
+  - 200
+  - 244
+  shown: 190, 186, 194, 238, 192, 188, 196, 240, 194, 190, 198, 242, 196, 192, 200, 244
+  how: 'invented for the exercise set on Trend and seasonality, read before modelling: sixteen weeks of
+    rice, a guest dinner every fourth week, 2 kg more each cycle'
+  used_by:
+  - c1 set
+- id: toy_mess_guest_extra
+  value: 48
+  shown: 48 kg
+  how: 'invented for the exercise set on Trend and seasonality, read before modelling: the guest week
+    over an ordinary week'
+  used_by:
+  - c1 set
+- id: toy_mess_cycle_climb
+  value: 2
+  shown: 2 kg
+  how: 'invented for the exercise set on Trend and seasonality, read before modelling: the climb from
+    one cycle to the next'
+  used_by:
+  - c1 set
+- id: toy_mess_four_days
+  value:
+  - 25
+  - 26
+  - 25
+  - 27
+  shown: 25, 26, 25 and 27 kg
+  how: 'invented for the exercise set on Naive, seasonal naive and drift baselines: the last four days
+    at the mess'
+  used_by:
+  - c2 set
+- id: toy_mess_last_sunday
+  value: 42
+  shown: 42 kg
+  how: 'invented for the exercise set on Naive, seasonal naive and drift baselines: last Sunday at the
+    mess'
+  used_by:
+  - c2 set
+- id: toy_mess_drift
+  value: 27.666667
+  shown: '27.7'
+  how: 'invented for the exercise set on Naive, seasonal naive and drift baselines: drift: 27 plus (27
+    - 25) / 3'
+  used_by:
+  - c2 set
+- id: toy_mess_mean_four
+  value: 25.75
+  shown: '25.75'
+  how: 'invented for the exercise set on Naive, seasonal naive and drift baselines: the four days'' mean,
+    a wrong option'
+  used_by:
+  - c2 set
+- id: toy_mess_misses
+  value:
+  - 12
+  - -8
+  - 5
+  - -15
+  - 6
+  shown: 12, -8, 5, -15 and 6
+  how: 'invented for the exercise set on Holding out; MAE and MAPE in the business''s units: five hidden
+    days'' misses, kg'
+  used_by:
+  - c3 set
+- id: toy_mess_miss_sum
+  value: 46
+  shown: '46'
+  how: 'invented for the exercise set on Holding out; MAE and MAPE in the business''s units: their sizes
+    added'
+  used_by:
+  - c3 set
+- id: toy_mess_mae
+  value: 9.2
+  shown: '9.2'
+  how: 'invented for the exercise set on Holding out; MAE and MAPE in the business''s units: 46 / 5'
+  used_by:
+  - c3 set
+- id: toy_mess_rule_misses
+  value:
+  - 10
+  - 10
+  - 10
+  - -10
+  shown: +10, +10 against +10, -10
+  how: 'invented for the exercise set on Holding out; MAE and MAPE in the business''s units: two rules''
+    misses for the lean item, cups'
+  used_by:
+  - c3 set
+- id: toy_lab_series_x
+  value:
+  - 50
+  - 53
+  - 56
+  - 59
+  - 62
+  - 65
+  - 68
+  - 71
+  shown: 50, 53, 56
+  how: 'invented for the exercise set on Trend and seasonality, read before modelling: practice set: a
+    climb'
+  used_by:
+  - lab set
+- id: toy_lab_series_y
+  value:
+  - 50
+  - 50
+  - 70
+  - 50
+  - 50
+  - 50
+  - 70
+  - 50
+  shown: 50, 50, 70, 50
+  how: 'invented for the exercise set on Trend and seasonality, read before modelling: practice set: a
+    repeat of four'
+  used_by:
+  - lab set
+- id: toy_lab_series_z
+  value:
+  - 50
+  - 54
+  - 47
+  - 52
+  - 49
+  - 53
+  - 48
+  - 51
+  shown: 50, 54, 47, 52
+  how: 'invented for the exercise set on Trend and seasonality, read before modelling: practice set: a
+    wobble'
+  used_by:
+  - lab set
+- id: toy_lab_misses
+  value:
+  - 9
+  - -6
+  - 14
+  - -3
+  - -4
+  shown: 9, -6, 14, -3 and -4
+  how: 'invented for the exercise set on Holding out; MAE and MAPE in the business''s units: practice
+    set: five misses'
+  used_by:
+  - lab set
+- id: toy_lab_miss_sum
+  value: 36
+  shown: '36'
+  how: 'invented for the exercise set on Holding out; MAE and MAPE in the business''s units: their sizes
+    added'
+  used_by:
+  - lab set
+- id: toy_lab_mae
+  value: 7.2
+  shown: '7.2'
+  how: 'invented for the exercise set on Holding out; MAE and MAPE in the business''s units: 36 / 5'
+  used_by:
+  - lab set
+- id: toy_lab_signed_mean
+  value: 2
+  shown: '2.0'
+  how: 'invented for the exercise set on Holding out; MAE and MAPE in the business''s units: the signed
+    misses averaged, a wrong option'
+  used_by:
+  - lab set
+- id: toy_lab_rule_miss
+  value: 1000
+  shown: 1,000
+  how: 'invented for the exercise set on Holding out; MAE and MAPE in the business''s units: practice
+    set: two rules each miss by this many shipments a week'
+  used_by:
+  - lab set
+- id: toy_lab_rule_high_rs
+  value: 5000
+  shown: Rs 5,000
+  how: 'invented for the exercise set on Holding out; MAE and MAPE in the business''s units: always high:
+    1,000 x Rs 5'
+  used_by:
+  - lab set
+- id: toy_lab_rule_low_rs
+  value: 30000
+  shown: Rs 30,000
+  how: 'invented for the exercise set on Holding out; MAE and MAPE in the business''s units: always low:
+    1,000 x Rs 30'
+  used_by:
+  - lab set
+good_enough:
+- id: bot_gap_shifts
+  value: 26.797436
+  shown: '27'
+  how: the bot's MAE minus festival-aligned's, over 120 shipments a shift
+  used_in: half2 SECTION 7, notebook 07
+- id: vendor_gap
+  value: 9784.923077
+  shown: 9,785
+  how: the vendor's MAE minus festival-aligned's
+  used_in: half2 SECTION 7, notebook 07
+- id: vendor_gap_shifts
+  value: 81.541026
+  shown: '82'
+  how: that gap over 120 shipments a shift
+  used_in: half2 SECTION 7, notebook 07
+- id: error_bar_shifts
+  value: 55.125641
+  shown: about 55
+  how: 'festival-aligned''s MAE, 6,615, over 120: shifts a week'
+  used_in: half2 SECTION 7, notes, cheat sheet
+- id: better_by
+  value: 100
+  shown: 100 shipments
+  how: a rule that beat festival-aligned by this much a week
+  used_in: half2 SECTION 7, notebook 04, notebook 07
+- id: better_saves_rs
+  value: 2500
+  shown: Rs 2,500
+  how: 'the most an MAE 100 lower saves a week: 100 late shipments at Rs 25'
+  used_in: half2 SECTION 7, notebook 07, notes
+- id: better_saves_low_rs
+  value: 541.666667
+  shown: Rs 542
+  how: 'the least it saves a week: 100 spare shipments at Rs 5.42'
+  used_in: half2 SECTION 7, notebook 07, notes
+- id: better_window_low_rs
+  value: 4333.333333
+  shown: Rs 4,300
+  how: the same over the eight window weeks, low end
+  used_in: half2 SECTION 7, notebook 07
+- id: better_window_high_rs
+  value: 20000
+  shown: Rs 20,000
+  how: the same over the eight window weeks, high end
+  used_in: half2 SECTION 7, notebook 07
+- id: better_shifts_moved
+  value:
+  - 1
+  - 1
+  - 0
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  shown: 1, 1, 0, 1, 1, 1, 1, 1
+  how: shifts such a rule would book differently in each window week, 12 Oct to 30 Nov 2026
+  used_in: half2 SECTION 7, notebook 07
+- id: better_weeks_moved
+  value: 7
+  shown: 7 of 8
+  how: window weeks in which it moves a shift at all
+  used_in: half2 SECTION 7, notebook 07
+- id: peak_raw_shifts
+  value: 3624.4
+  shown: 3,624.4
+  how: 434,928 / 120 before rounding up
+  used_in: staffing set
+- id: peak_round_down
+  value: 3624
+  shown: 3,624
+  how: rounded down, a wrong option that leaves shipments unpacked
+  used_in: staffing set
+- id: fitted_rows
+  value: 91
+  shown: '91'
+  how: the vendor file's fitted rows
+  used_in: notebook 04
+- id: holdout_rows
+  value: 13
+  shown: '13'
+  how: its holdout rows
+  used_in: notebook 04
+- id: forecast_rows
+  value: 10
+  shown: '10'
+  how: its forecast rows
+  used_in: notebook 04
+sensitivity:
+- id: aligned_late15_idle500_rs
+  value: 848503.333333
+  shown: Rs 8.5 lakh
+  how: aligned's hidden-week misses at Rs 15 late and Rs 500 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late15_idle500_rs
+  value: 908916.666667
+  shown: Rs 9.1 lakh
+  how: vendor's hidden-week misses at Rs 15 late and Rs 500 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late15_idle650_rs
+  value: 899438.333333
+  shown: Rs 9.0 lakh
+  how: aligned's hidden-week misses at Rs 15 late and Rs 650 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late15_idle650_rs
+  value: 1173041.666667
+  shown: Rs 11.7 lakh
+  how: vendor's hidden-week misses at Rs 15 late and Rs 650 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late15_idle800_rs
+  value: 950373.333333
+  shown: Rs 9.5 lakh
+  how: aligned's hidden-week misses at Rs 15 late and Rs 800 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late15_idle800_rs
+  value: 1437166.666667
+  shown: Rs 14.4 lakh
+  how: vendor's hidden-week misses at Rs 15 late and Rs 800 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late25_idle500_rs
+  value: 1300983.333333
+  shown: Rs 13.0 lakh
+  how: aligned's hidden-week misses at Rs 25 late and Rs 500 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late25_idle500_rs
+  value: 927916.666667
+  shown: Rs 9.3 lakh
+  how: vendor's hidden-week misses at Rs 25 late and Rs 500 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late25_idle650_rs
+  value: 1351918.333333
+  shown: Rs 13.5 lakh
+  how: aligned's hidden-week misses at Rs 25 late and Rs 650 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late25_idle650_rs
+  value: 1192041.666667
+  shown: Rs 11.9 lakh
+  how: vendor's hidden-week misses at Rs 25 late and Rs 650 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late25_idle800_rs
+  value: 1402853.333333
+  shown: Rs 14.0 lakh
+  how: aligned's hidden-week misses at Rs 25 late and Rs 800 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late25_idle800_rs
+  value: 1456166.666667
+  shown: Rs 14.6 lakh
+  how: vendor's hidden-week misses at Rs 25 late and Rs 800 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late40_idle500_rs
+  value: 1979703.333333
+  shown: Rs 19.8 lakh
+  how: aligned's hidden-week misses at Rs 40 late and Rs 500 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late40_idle500_rs
+  value: 956416.666667
+  shown: Rs 9.6 lakh
+  how: vendor's hidden-week misses at Rs 40 late and Rs 500 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late40_idle650_rs
+  value: 2030638.333333
+  shown: Rs 20.3 lakh
+  how: aligned's hidden-week misses at Rs 40 late and Rs 650 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late40_idle650_rs
+  value: 1220541.666667
+  shown: Rs 12.2 lakh
+  how: vendor's hidden-week misses at Rs 40 late and Rs 650 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late40_idle800_rs
+  value: 2081573.333333
+  shown: Rs 20.8 lakh
+  how: aligned's hidden-week misses at Rs 40 late and Rs 800 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late40_idle800_rs
+  value: 1484666.666667
+  shown: Rs 14.8 lakh
+  how: vendor's hidden-week misses at Rs 40 late and Rs 800 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_cheaper_corners
+  value: 5
+  shown: 5 of 9
+  how: cost pairs from the ticket's ranges at which the vendor's misses cost less
+  used_in: half1 S56, transcripts

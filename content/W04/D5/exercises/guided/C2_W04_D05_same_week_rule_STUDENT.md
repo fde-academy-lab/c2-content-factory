@@ -1,4 +1,4 @@
-# How does the same-week-last-year rule score when you build it by hand and hide three weeks?
+# How does the seasonal naive, same week last year, score when you build it by hand and hide three weeks?
 
 At Flipkart's Lucknow fulfilment centre, the planner must book packer shifts for the eight festive
 weeks beginning 12 October to 30 November 2026, and the tournament's house bot copies the same week
@@ -6,7 +6,10 @@ of last year. Diwali fell on Thursday 31 October 2024 (the week of 28 October) a
 October 2025 (the week of 20 October). Illustrative case: the company is real, the situation and the
 data are synthetic, built for this class.
 
-The trainer builds this set with the room. The first item is fully worked, the second half worked,
+The trainer works the first item with the room in chapter 5, beside S43 and S44, and the second and
+third are sat in the TA lab. It applies two of the day's topics, the
+naive, seasonal naive and drift baselines and holding out with MAE, to twelve of the case's weeks.
+The first item is fully worked, the second half worked,
 and the third is yours. Each item carries its level, from L1 for a count by hand to L6 for an
 interview question, and where such items are asked: a screen is an interview round, and a GCC, a
 global capability centre, is a multinational company's own technology centre in India.
@@ -20,8 +23,9 @@ never saw. A rule judged on how it sounds books packers for the wrong weeks.
 - What does it score on three hidden weeks?
 - Which rule should take over on festive weeks?
 
-The set uses three words, each defined once here. **Same week last year** forecasts a week by copying the week 52 weeks
-earlier. **A miss** is the forecast minus what shipped: positive is too high. **MAE**, the mean
+The set uses three words, each defined once here. **The seasonal naive** with a season of 52 weeks,
+which the planners call same week last year and the tournament calls the house bot, forecasts a week
+by copying the week 52 weeks earlier. **A miss** is the forecast minus what shipped: positive is too high. **MAE**, the mean
 absolute error, drops each miss's sign and averages the misses.
 
 These are twelve of the centre's 104 weeks, shipments in each week beginning on the Monday shown.

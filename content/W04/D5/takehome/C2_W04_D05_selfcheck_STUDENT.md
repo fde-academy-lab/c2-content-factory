@@ -25,7 +25,7 @@ Say each of these aloud, in one sentence, before reading on:
 3. A forecast made further ahead misses by more, so the last weeks of a forecast are its worst.
 4. A test shorter than the plan cannot tell you how a rule does over the whole plan.
 
-If a sentence would not come out, re-read chapter 2's hold-out slides and notebook 02's split cell
+If a sentence would not come out, re-read chapter 3's hold-out slides, chapter 6's split of the case's weeks and notebook 06's split cell
 before checking numbers.
 
 ## Did your rules give these numbers?
@@ -87,6 +87,6 @@ test holds a festive week, so the festival placement still rests on the 2025 bac
 A strong paragraph names the dip at 196,600 and what it did to naive; names the rules that never look
 at the origin; says the vendor's four weeks are its farthest ahead; and ends on one call: keep
 festival-aligned, and judge any rule on at least as many hidden weeks as the forecast must reach
-ahead, ten here, since a test should be at least as long as the horizon (FPP3, section 5.8, checked 12 October 2026).
+ahead, ten here, since a test should be at least as long as the horizon (FPP3, section 5.8, checked 13 October 2026).
 A weak one reports the new numbers without the origin week, calls naive "much worse" as if the rule
 had changed, or calls the vendor "cheaper" without saying why its misses are cheap.

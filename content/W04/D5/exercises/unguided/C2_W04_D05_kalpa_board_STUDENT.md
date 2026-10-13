@@ -7,7 +7,7 @@ Iyer, the finance controller: "Two forecasts, eighteen points apart. Which one d
 the board, and how wrong could it be?" Diwali fell on 31 October 2024 and 20 October 2025, and falls
 on 8 November 2026. Kalpa's revenue is booked when shoppers buy, in the days just before Diwali, so
 its spike sits in Diwali's own month: October in 2024 and 2025, November in 2026. This set is sat in
-the lab after notebook 04, and its tables carry what the lab found.
+the lab after notebook 08, and its tables carry what the lab found.
 
 **Who needs the answer.** Anand, who signs the board number, and the head of Retail-Plus, whose stock
 and staff follow it for two quarters.
@@ -44,6 +44,9 @@ October 2026 to March 2027, Rs lakh:
 | February | 275.7 | 286.7 | 286.7 | 341.9 | 317.0 |
 | March | 297.0 | 308.9 | 308.9 | 371.9 | 341.6 |
 | Six months, Rs crore | 18.93 | 19.69 | 19.69 | 23.09 | 21.77 |
+
+November 2025 and March 2026 both print as 297.0; to two places they are 296.97 and 297.02, which is
+why plus 4 percent gives 308.8 and 308.9.
 
 **What you post,** in this set's thread in the cohort channel: three letters in item order, with no spaces, in this shape:
 

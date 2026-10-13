@@ -1,289 +1,268 @@
-# How much is coming to Flipkart's Lucknow centre this festive season, and how wrong could the forecast be?
+# Forecasting basics: how much does the plan deliver, against a baseline that is hard to beat?
 
-Week 4, Friday. About 13 minutes to read, and 10 more for the self-check.
+Week 4, Friday. About 12 minutes to read, and 10 more for the self-check.
 
-Flipkart's Lucknow fulfilment centre (FC) has 104 weeks of outbound shipments, the
-weeks beginning 30 September 2024 to 21 September 2026. Diwali fell on Thursday 31 October 2024 and
-Monday 20 October 2025, and falls on Sunday 8 November 2026 (DoPT's holiday lists, checked 12
-October 2026). The planner must book packer shifts for
-the eight weeks beginning 12 October to 30 November 2026, at about 120 shipments a shift. A vendor's
-model promises those weeks 22 percent above last year; finance's rule is last year plus 4 percent.
-Illustrative case: the company is real, the situation and the data are synthetic, built for this
+Friday teaches five topics on a chai stall at a hostel gate (invented), small enough to count by
+hand; then Flipkart's Lucknow fulfilment centre (FC) uses all five to book packer shifts for eight
+festive weeks, between a vendor's plus 22 percent and finance's plus 4. Illustrative case: the company is real, the situation and the data are synthetic, built for this
 class.
 
 ---
 
 ## What can you do after Friday?
 
-- You can read a festival's shape off weekly shipments and forecast a week by hand.
-- You can hide the latest weeks, score every rule on them in shipments, and price each miss.
-- You can say, with a number, why a close fit can still forecast badly.
-- You can turn a forecast into shifts a week, raised by what two costs choose.
+- Read a series' trend and seasons before choosing any rule.
+- Run naive, seasonal naive and drift by hand, and say when each copy fails.
+- Hide the latest periods and score a rule in the business's unit, both ways.
+- Say why a close fit proves nothing until a rule beats the baseline.
+- Stop improving when a better forecast is worth less than it costs, and write the note.
 
-## Where does Friday sit in the week?
-
-**What was worked, and what was only mentioned.** Friday read twelve weeks by hand, scored six
-forecasts on hidden weeks, back-tested 2025's festival, priced a plan. Smoothing and ARIMA belong
-to the IITGN faculty session W4-4 (tentative).
+## Which map holds the day?
 
 ```mermaid
 flowchart LR
-    M["<b>Mon · Uber</b><br/>1.9 to 1.6"] --> T["<b>Tue · Uber</b><br/>Rs 314 to Rs 260"]
-    T --> W["<b>Wed · Instamart</b><br/>6.1 to 3.8 percent"]
-    W --> H["<b>Thu · Zomato Gold</b><br/>58 to 44 percent"]
-    H --> F["<b>Fri · Flipkart</b><br/>how much, how wrong"]
+    T1["<b>Chapter 1</b><br/>Trend and<br/>seasonality,<br/>read before<br/>modelling"] --> T2["<b>Chapter 2</b><br/>Naive,<br/>seasonal naive<br/>and drift<br/>baselines"]
+    T2 --> T3["<b>Chapter 3</b><br/>Holding out;<br/>MAE and MAPE<br/>in the<br/>business's<br/>units"]
+    T3 --> T4["<b>Chapter 4</b><br/>Beating the<br/>baseline; the<br/>vendor curve<br/>tested"]
+    T4 --> T5["<b>Chapter 4,</b><br/><b>second half</b><br/>The<br/>good-enough<br/>call and the<br/>forecast note"]
+    T5 --> C["<b>The case</b><br/>Flipkart,<br/>Lucknow;<br/>chapters 5,<br/>6 and 7"]
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class F lit
+    classDef kalpa fill:#FFF7E6,stroke:#C98A00,color:#5C3D00
+    class T1,T2,T3,T4,T5 lit
+    class C kalpa
 ```
 
-## Which one picture holds the day?
+Each topic needs the one before it: read, copy, score, beat, stop.
+
+---
+
+## Trend and seasonality, read before modelling: what does a series tell you before any rule is chosen?
+
+**Who needs the answer.** The stall's owner (invented), who orders milk for three days at a time,
+and the FC planner, who books shifts weeks ahead.
+
+**The questions on the way.** What repeats, and how often? Is the stall (invented) growing? What is left?
+
+A **time series** is one number per equal period, in time order; a **forecast** is a number for a
+period nobody has seen. The invented stall sold 60 cups on Sunday 6 October 2024 and 100 on Monday.
+Up 67 percent? No: both Sundays of its first fortnight sold about 60 and every other day about 100. A
+repeat on a fixed beat is a **season**, and its **length** is the periods before it repeats: 7 days
+at the stall, 52 weeks in Flipkart's year.
+
+Read growth at the same point a season apart: a week apart shows a week's change, too small to see,
+and a year apart the year's growth. Monday 6 October 2025 sold 110 against 100 a year earlier: up 10
+percent. Sunday stays 0.6 of a Monday in both years, so the beat keeps its shape while the level, the **trend**, climbs. Seasons go both ways:
+the exam fortnight runs about 1.4 times an ordinary one and Diwali week about 0.4, a dip. What is left
+is the **remainder**. Read in cups, a yearly copy's misses hold the remainder of both years, with a
+typical size, the standard deviation, of about 4.7 cups, except where Diwali moved: up to 70.
+
+$$y_t = T_t + S_t + R_t \qquad y_t = T_t \times S_t \times R_t$$
+
+Forecasting: Principles and Practice adds the parts when the seasons keep their size and multiplies
+them when they grow with the level, as the stall's do (section 3.2, checked 13 October 2026). A **cycle**, a rise and fall with no fixed length, needs more than two years to see.
+
+**At Flipkart.** A level near 210,000 shipments a week, growth of about 4 percent a year, a festive
+peak each year.
+
+## Naive, seasonal naive and drift baselines: what does each copy, and when does the copy fail?
+
+**Who needs the answer.** The owner (invented), who needs a rule a person can run on paper, and the
+planner, whose house bot, this case's name for the seasonal naive, is one of these rules.
+
+**The questions on the way.** What does each rule copy? Which wins on a beat? Where does it fail?
+
+A **baseline** is the simplest rule that could be right, and its job is to be beaten. Forecast the
+invented stall's Sunday 19 January 2025 from the four days before it, 98, 104, 101 and 103, and last
+Sunday's 61:
+
+- **Naive** repeats the last value: 103, which misses the 60 sold by 43.
+- **Drift** extends the line from the first value to the last, the four days taken as the whole
+  history: 103 + (103 - 98) / 3, about 104.7.
+- **Seasonal naive** copies one season back, last Sunday: 61, a miss of 1.
+
+With $T$ the last period a rule may see, $h$ the periods ahead and $m$ the season's length
+(Forecasting: Principles and Practice, section 5.2, checked 13 October 2026):
+
+$$\hat{y}_{T+h} = y_T \qquad \hat{y}_{T+h} = y_{T+h-m}\ (h \le m) \qquad \hat{y}_{T+h} = y_T + h\,\frac{y_T - y_1}{T - 1}$$
+
+A yearly copy carries last year's level: on the invented stall's first exam day, which sold 154, the
+same weekday 364 days back said 140, and times 1.10, 154. A
+copy fails when the season moves. Diwali came eleven days earlier in 2025, so the calendar copy put
+Diwali's 40 cups on a day that sold 110, a miss of 70, and missed by up to 71 across those three
+weeks. Copying the day at the same distance from last year's festival, with no growth so the move
+shows alone, misses by at most 13. This programme calls that **festival-aligned**: its own
+extension of the seasonal naive.
+
+**At Flipkart.** The seasonal naive with $m = 52$ is "the same week last year", which the afternoon's
+tournament calls the house bot; finance's rule is the house bot times 1.04.
+
+## Holding out; MAE and MAPE in the business's units: how is a forecast scored honestly?
+
+**Who needs the answer.** The owner (invented), before trusting a rule, and the regional operations
+head, before a vendor's curve books a shift.
+
+**The questions on the way.** Which periods do we hide? How is a miss counted? Which way is it wrong?
+
+Hide the latest periods, at least as many as the forecast must reach ahead. The invented stall's milk
+order reaches three days, so days 12 to 14 of a fortnight are **hidden**, day 11 is the **origin**,
+the last day a rule may see, and three days is the **horizon**. The test set should "ideally be at
+least as large as the maximum forecast horizon required" (Forecasting: Principles and Practice,
+section 5.8, checked 13 October 2026).
+
+Naive says 100 for each hidden day; they sold 110, 95 and 100. A **miss** is the forecast minus what
+sold: -10, +5 and 0. The book writes sold minus forecast, so its signs run the other way.
+
+$$\text{MAE} = \frac{1}{n}\sum_t \left|\text{miss}_t\right| \qquad \text{MAPE} = \frac{1}{n}\sum_t \frac{\left|\text{miss}_t\right|}{y_t}$$
+
+Here $n$ is the number of hidden periods. The MAE is 5.0 cups and the MAPE about 4.8 percent; the
+**lean**, the misses averaged with their signs, is -1.7 cups. Priced at Rs 12 a cup short and Rs 6 a
+cup unsold, the three days cost Rs 150. MAPE divides by what sold, so a near-empty day swamps it: a
+15-cup miss is 300 percent of a rain day's 5 cups. A miss below what sold cannot pass 100 percent
+while one above has no ceiling, so a rule picked by MAPE runs low. Keep MAE for the order and MAPE
+for comparing stalls of different sizes.
+
+**WATCH OUT.** Misses of +10, +10 and of +10, -10 share an MAE of 10 and cost Rs 120 and Rs 180.
+Report the MAE and the lean together.
+
+**At Flipkart.** Thirteen weeks are hidden, forecast from 22 June 2026, and the plan reaches ten
+weeks past the data. A spare shipment costs Rs 650 a shift over 120 shipments, Rs 5.42; a late one Rs 25.
+
+## Beating the baseline; the vendor curve tested: why is a close fit no proof?
+
+**Who needs the answer.** The owner (invented), offered a "model" by a nephew, and the operations head, offered
+a vendor's curve that fits history within 2 percent.
+
+**The questions on the way.** What does a perfect fit say about tomorrow? Does the clever rule win?
+
+**Fit** is how close a rule sits to the periods it was built on; **forecast error** is how far it
+misses periods it never saw. A curve through the invented stall's four days, 100, 104, 98 and 110,
+fits them with an error of 0 and says 168 for day 5, which sold 102: a miss of 66. The straight line,
+97 + 2.4 a day, says 109 and misses by 7. By hand: the differences are 4, -6 and 12, theirs -10 and
+18, and theirs 28; held level, the next row is 28, 46 and 58, and 110 + 58 = 168. "A model which fits the training data well will not
+necessarily forecast well" (Forecasting: Principles and Practice, section 5.8, checked 13 October
+2026).
+
+The nephew's second rule (invented), the mean of the last seven days, misses seven hidden days by 12.4 cups; the
+seasonal naive by 4.0. Nothing goes to the order unless it beats the seasonal naive on hidden
+periods, by the measure fixed before either ran.
+
+**At Flipkart.** The vendor's curve fits its 91 weeks within 1.4 percent and misses the thirteen
+hidden weeks by 16,400 a week, 67 percent worse than the house bot's 9,831. In the M5 competition
+only 35.8 percent of teams beat the seasonal naive (checked 12 October 2026).
+
+## The good-enough call and the forecast note: when do you stop improving, and what do you send?
+
+**Who needs the answer.** The owner (invented), deciding whether a better rule is worth having, and
+the milkman, who reads the order.
+
+**The questions on the way.** Would a better forecast change the order? What goes in the note?
+
+Milk comes in cans of 40 cups (invented). On the seven hidden days the seasonal naive orders 3 cans a
+weekday and 2 on Sunday, exactly what a forecast that knew the future would order; the nephew's mean
+orders a third can on Sunday, Rs 240 of milk that sours. **Good enough** is a claim about the
+decision, never about the model: a better forecast is worth having only when what it changes in the
+order is worth more than the work. Here it changes no can.
+
+The **forecast note** to the milkman (invented) carries four lines: the number, 3 cans a day Monday
+to Saturday and 2 on Sunday; the method, the same day last week; the error bar, a typical miss of 4.0
+cups a day, Rs 24 high or Rs 48 short; and what would make it wrong, exams starting early or the
+hostel emptying.
+
+**At Flipkart.** A shift is 120 shipments, small beside the typical miss, so good enough becomes a
+question in rupees: a rule whose MAE is 100 lower is worth Rs 542 to Rs 2,500 a week. The staffing
+note puts number and method in its title and adds the festival's week and a reply to each objector.
+
+---
+
+## The case: how much is coming to Flipkart's Lucknow centre, and how wrong could the forecast be?
+
+**Who needs the answer.** The FC planner, who books the shifts, and the regional operations head, who
+answers for late parcels in the busiest weeks.
+
+**The questions on the way.** Where is the peak? Which rule wins on hidden weeks? How many shifts?
+
+The centre has 104 weeks of outbound shipments. Diwali fell on
+Thursday 31 October 2024 and Monday 20 October 2025, and falls on Sunday 8 November 2026 (the holiday lists of DoPT, the
+government's personnel department, checked 12 October 2026).
 
 ![Two festive seasons on one axis: shipments by weeks from Diwali, 2024 and 2025 overlaid](../whiteboards/C2_W04_D05_festival_plot_STUDENT.png)
 
-Call it **the festival plot**. By calendar date, 2024's peak and 2025's peak sit a week apart. By
-weeks from Diwali, they sit on top of each other: both years peak two weeks before Diwali's week, in
-the festive sale. A rule that copies the calendar puts the rush in the wrong week whenever the
-festival moves.
+**Chapter 5.** Both years peak two weeks before Diwali's week, in the festive sale: 401,000 and
+418,200 shipments. For Diwali 2025's week, which shipped 308,900, naive said 369,000 and the seasonal
+naive 356,200, both far too high; festival-aligned, with no growth, which October 2025 could not yet
+measure, said 296,900, 12,000 low.
+
+**Chapter 6.** On the thirteen hidden weeks festival-aligned and finance's rule tie at 6,615 a week,
+since no hidden week sits near Diwali; the house bot scores 9,831, naive 14,923 and the vendor
+16,400. Priced, the vendor's misses cost least, Rs 11.9 lakh against Rs 13.5 lakh, only because it
+errs high, the cheap side, and only at Rs 25 a late shipment: at Rs 15 festival-aligned costs least.
+
+**Chapter 7.** On 2025's festival the house bot missed by 58,250 a week and festival-aligned, with no
+growth, by 10,575, placing the peak right. In 2026 the calendar copies put the busiest week on 5
+October and festival-aligned on 19 October. Finance's plus 4 is read against 2025's calendar weeks,
+which held only the festival's tail; counted from Diwali it sits 9.5 percent below.
+The plan books festival-aligned's forecast over 120 shipments a shift, rounded up: 19,760 shifts.
+
+The **error bar** has two parts: a typical miss of 6,615 shipments a week, about Rs 35,800 of idle
+shifts when that far high and Rs 1.65 lakh of late shipments when that far low; and the hidden weeks'
+range, 5.9 percent below to 7.8 percent above, which puts the week of 19 October at 3,413 to 3,906
+shifts. Two years hold only two festivals, and capacity may cap the peak: overtime hit 1,638 shifts in
+the week of 6 October 2025. How far above the forecast to plan, the plan quantile, goes beyond the
+five topics.
 
 **Say it to a shift supervisor.** "The computer copied last year's dates, but Diwali falls on a
 different date this year, so it books the most packers two weeks before the real rush. We count the
 weeks from Diwali instead."
 
----
-
-## What shape do the weeks have, and what would simple rules say for one week?
-
-**Who needs the answer.** The FC planner, who books shifts weeks ahead: a rule that puts the peak in
-the wrong week books packers for a quiet week.
-
-**The questions on the way.**
-
-- What does a forecast copy from the past?
-- Where is each year's peak?
-- What do the rules say for Diwali 2025's own week?
-
-**A toy first.** A canteen sold 50, 52, 49 and 51 cups on four days, so the naive forecast for
-tomorrow is 51, and drift, the line from the first day to the last extended one step, is about 51.3.
-Its Sundays sell about 80, so next Sunday's forecast is 80, a copy of the same day last week. For
-weekly shipments that copy is the same week last year: the seasonal copy, which the tournament calls
-the house bot.
-
-$$\text{naive: } \hat{y}_{T+h} = y_T \qquad \text{house bot: } \hat{y}_t = y_{t-52} \qquad \text{festival-aligned: } \hat{y}_t = 1.04 \times y_{\text{same distance from last Diwali}}$$
-
-Read $y_t$ as week $t$'s shipments and $\hat{y}$, y-hat, as a forecast; $T$ is the last week a rule
-may see, $h$ the weeks ahead. Festival-aligned matches distance from Diwali from five weeks before
-Diwali's week to four after, and the calendar otherwise; 1.04 is the growth the training weeks show, and
-finance's rule is the house bot times 1.04.
-
-**The twelve weeks**, six around each Diwali, in shipments:
-
-| Weeks from Diwali's week | -3 | -2 | -1 | Diwali's week | +1 | +2 |
-|---|---|---|---|---|---|---|
-| 2024 | 312,900 | 401,000 | 356,200 | 296,900 | 180,600 | 212,700 |
-| 2025 | 331,200 | 418,200 | 369,000 | 308,900 | 188,600 | 227,900 |
-
-For Diwali 2025's week, which shipped 308,900, naive repeats the week before, 369,000, 60,100 too
-high. The house bot copies the week of 21 October 2024, a week before Diwali 2024, 356,200, 47,300 too
-high. Festival-aligned copies Diwali 2024's own week, 296,900, times 1.04: 308,776, 124 too low.
-
-**WATCH OUT.** The calendar copy books 401,000 for the week of 13 October 2025, when 369,000 shipped,
-and 312,900 for the real peak, 418,200 on 6 October: the most packers a week after the rush. The check
-is the festival plot.
-
-**IN THE FIELD.** In the M5 competition, on Walmart's daily sales of 3,049 products, the house bot's
-rule, there the same weekday a week earlier, scored 0.847 against naive's 1.752, lower being better;
-only 35.8 percent of teams beat it, and the winner reached 0.520 (checked 12 October 2026).
-
-**CALLBACK.** Thursday followed groups of members over time; today forecasts weeks not yet seen.
-
-**The answer.** Both years peak two weeks before Diwali's week; a calendar copy misplaces the peak,
-and a copy by distance from Diwali puts it on time.
-
-## How does each rule score on the thirteen weeks it never saw?
-
-**Who needs the answer.** The regional operations head, who says yes or no to a model before a shift
-is booked.
-
-**The questions on the way.**
-
-- Which weeks do we hide, and how many?
-- How do we count a miss?
-- Does a curve that fits history beat the house bot?
-- Whose misses cost least, once priced?
-
-**Four ways to judge a forecast.** Fit on past weeks proves nothing: enough knobs fit anything. A
-random fifth lets a rule peek at later weeks. Rolling the origin forecasts again from many weeks. The
-vendor's file forecasts from one origin, so the fair race is the latest thirteen weeks, 29 June to 21
-September 2026: the **hold-out**, forecast from 22 June, the **origin**. The plan's last week sits ten
-weeks past the data, the **horizon**.
-
-**Count the miss in the business's unit.** The mean absolute error, MAE, averages the misses with
-their signs dropped: three hidden weeks missed by 10, 5 and 10 give 8.3. Here $n$ is the number of
-weeks and $\sum$ adds over them.
-
-$$\text{MAE} = \frac{1}{n}\sum_{t} \left| y_t - \hat{y}_t \right|$$
-
-![The last of the thirteen hidden weeks revealed: the house bot's and the vendor's average miss](../whiteboards/C2_W04_D05_holdout_reveal_last_STUDENT.png)
-
-Its animation, `holdout_reveal_STUDENT.gif`, reveals the weeks one by one: the vendor leads in week
-1, 3,700 to 12,300, and trails by week 13, 16,400 to 9,831.
-
-| Rule | MAE, shipments a week | Weeks too high | Misses priced, 13 weeks |
-|---|---|---|---|
-| Festival-aligned | 6,615 | 6 of 13 | Rs 13.5 lakh |
-| Finance's rule | 6,615 | 6 of 13 | Rs 13.5 lakh |
-| House bot | 9,831 | 2 of 13 | Rs 30.5 lakh |
-| Drift | 14,842 | 8 of 13 | Rs 28.0 lakh |
-| Naive | 14,923 | 8 of 13 | Rs 28.8 lakh |
-| Vendor's curve | 16,400 | 12 of 13 | Rs 11.9 lakh |
-
-Each miss is priced at Rs 25 for a late shipment and Rs 5.42 for a spare one, planned and never
-shipped. Festival-aligned and finance's rule tie because no hidden week sits near Diwali, where the
-two differ. The second route: festival-aligned's misses add to 40,748 too high and 45,248 too low,
-85,996 in all, and 85,996 over 13 is 6,615.
-
-**WATCH OUT.** "The vendor's curve fits two years within 2 percent, so it forecasts well." Its worst
-fitted week missed by 1.4 percent; on the hidden weeks it missed by 16,400 a week, too high in 12 of
-13 and climbing with the weeks ahead.
-
-**The surprise in rupees.** Priced, the vendor's misses cost least only because it runs high, the
-cheap side, and the house bot costs more than naive since its misses run short. Moved to its own
-0.82 point, the vendor costs Rs 10.0 lakh against festival-aligned's Rs 8.8 lakh.
-
-**IN THE FIELD.** On 1,045 monthly series, a 2018 PLOS ONE paper by Makridakis and colleagues found
-statistical methods beat machine learning at every horizon tested; in M5 machine learning took every
-top place. Both were judged on unseen weeks (checked 12 October 2026).
-
-**The answer.** Festival-aligned and finance's rule tie at 6,615 a week, ahead of the house bot's
-9,831 and the vendor's 16,400. Good enough is a claim about the decision: a better forecast is worth
-having only if it books different shifts.
-
-## Which forecast books the shifts, and what does being wrong cost?
-
-**Who needs the answer.** The regional operations head, who signs the shift plan and answers for late
-parcels.
-
-**The questions on the way.**
-
-- Where does each forecast put 2026's busiest week?
-- How did the rules do on 2025's festival?
-- What do plus 22 and plus 4 measure?
-- How far above the forecast should the plan sit?
-
-**The calendar trap, tested.** A **back-test** forecasts an earlier stretch as if the later weeks were
-unknown. From 22 September 2025, the house bot missed 2025's eight festive weeks by 58,250 a week, Rs
-79.8 lakh, and festival-aligned by 4,034, Rs 4.6 lakh; with none of the 4 percent, measured only
-later, it still missed by only 10,575. In 2026 the bot's busiest week is 5 October, two weeks early,
-since Diwali 2026's week comes 54 weeks after 2025's; festival-aligned's is 19 October.
-
-**Two windows.** Plus 22 and plus 4 compare with 2025's same calendar weeks, 1,983,300 shipments
-holding only the festival's tail. Counted from Diwali, 29 September to 17 November 2025, the weeks
-shipped 2,279,500: the vendor sits 6.1 percent above, festival-aligned 4.0 and finance 9.5 below,
-308,048 shipments fewer than festival-aligned.
-
-**Where the plan sits.** Raise the plan by one shipment. Over 100 weeks, if demand beats the plan in
-18, that shipment saves 18 x Rs 25 = Rs 450 in late shipments and wastes 82 x Rs 5.42 = Rs 444 of idle
-shift: about even, so stop there. That is the newsvendor rule:
-
-$$q = \frac{\text{late cost}}{\text{late cost} + \text{spare cost}} = \frac{25}{25 + 5.42} \approx 0.82$$
-
-Sort the thirteen hidden weeks by how far demand came above festival-aligned: 0.82 of the way along
-falls between the 10th week, 2.1 percent, and the 11th, 2.7. Read there, the cushion is 2.6 percent,
-and the plan, festival-aligned times 1.026, covers 10 of the 13 weeks, the 11th just above it. Shifts are the plan over 120,
-rounded up.
-
-![The average cost of a week's plan against how far it is raised: lowest 2 to 3 percent above the forecast](../whiteboards/C2_W04_D05_cost_curve_STUDENT.png)
-
-| Week of | Forecast | Plan | Packer shifts |
-|---|---|---|---|
-| 12 Oct | 344,448 | 353,404 | 2,946 |
-| 19 Oct | 434,928 | 446,236 | 3,719 |
-| 26 Oct | 383,760 | 393,738 | 3,282 |
-| 2 Nov | 321,256 | 329,609 | 2,747 |
-| 9 Nov | 196,144 | 201,244 | 1,678 |
-| 16 Nov | 237,016 | 243,178 | 2,027 |
-| 23 Nov | 225,992 | 231,868 | 1,933 |
-| 30 Nov | 227,136 | 233,042 | 1,943 |
-
-That is 20,275 shifts, 515 more than the 19,760 the forecast alone needs. The **error bar**, how wrong
-the forecast could be, is its average miss, 6,615 shipments a week: about Rs 35,800 of idle shifts
-(6,615 x Rs 650 / 120) when it runs that far high, Rs 1.65 lakh of late shipments (6,615 x Rs 25) when that far low.
-
-**Four doubts, each with its check.**
-
-| Doubt | What we have, and what would settle it |
-| --- | --- |
-| The festival and its sale move | Two festivals; a third |
-| The hidden weeks hold no festive week | One back-test; a rolling origin through 2025's festival |
-| Capacity caps the peak | Overtime hit 1,638 shifts in the week of 6 October 2025 against 5 on 24 November; orders that could not ship |
-| A tax change rode on the 2025 festival | FADA, the vehicle dealers' federation, credits part of October 2025's two-wheeler jump, 31.5 lakh against 12.9 lakh in September, to GST cuts (checked 12 October 2026); a festival with no tax change |
-
-**IN THE FIELD.** On 6 October 2026 Flipkart said Ekart, its supply chain, had added 14 million cubic
-feet of warehousing before its festive sale, and more than 2.5 lakh direct and indirect festive
-employment opportunities (Flipkart's announcement, checked 12 October 2026): decisions resting on a forecast.
-
-**The answer.** Festival-aligned, raised 2.6 percent, books 20,275 packer shifts, 3,719 in the week
-of 19 October, with an error bar of 6,615 shipments a week.
+**The answer.** Festival-aligned books 19,760 packer shifts, 3,625 in the week of 19 October, with a
+typical miss of 6,615 shipments a week.
 
 ---
-
-Tonight's lab moves the method to Kalpa Retail, where Anand owes the board one number.
 
 ## Can you answer these without notes?
 
-1. Diwali's week moves from 20 October to 2 November: which week of last year does the house bot
+1. The hostel mess (invented) used 25 kg of rice on Monday and 40 kg on Sunday: which comparison
+   reads growth?
+2. Diwali's week moves from 20 October to 2 November: which week of last year does the house bot
    copy into 2 November?
-2. Five hidden weeks missed by 12, -8, 5, -15 and 6: what is the MAE?
-3. A curve fits every past week within 2 percent: what do you ask before trusting it?
-4. A late shipment costs Rs 30 and a spare one Rs 5: what share of weeks should the plan cover?
-5. Why can a forecast with a higher MAE cost less, once priced?
+3. Naive missed three hidden days by -10, +5 and 0 cups: what are the MAE and the lean?
+4. A curve fits every past week within 2 percent: what do you ask before trusting it?
+5. What is a forecast whose MAE is 100 shipments a week lower than festival-aligned's worth?
 6. From Thursday: why can blended retention stay flat while each signup month's falls?
 
-**Key.** 1: 3 November. 2: 46 / 5 = 9.2. 3: its score on weeks it never saw, against a copy of last
-year. 4: 30 / 35, about 0.86. 5: its misses run to the cheap side. 6: the blend weights groups by
-size, so big young groups at their best months hold it up.
+**Key.** 1: the same day a week back, or the same week a year back. 2: 3 November. 3: 5.0 cups, and
+-1.7, running low. 4: its score on periods it never saw, against the seasonal naive. 5: Rs 542 to Rs
+2,500 a week, so it earns a place only if it costs less. 6: the blend weights groups by size, so big
+young groups at their best months hold it up.
 
 ## Which interview questions does Friday prepare you for?
 
 | The question as asked | The hire-grade line |
 |---|---|
-| How do you evaluate a forecast? | "I hold out the latest weeks, at least as many as the forecast must reach ahead, and score the misses in shipments and rupees against the seasonal naive: festival-aligned missed by 6,615 a week, the seasonal naive by 9,831. The hidden weeks hold no festival, so I back-test one." |
-| MAE or MAPE? | "Shipments when the cost is per shipment; MASE or WAPE across centres. MAPE explodes near zero; here it ranks the rules as MAE does." |
-| The festival moves three weeks: what breaks? | "Every calendar copy; a copy by distance from the festival moves with it." |
-| What did forecast error cost Zillow? | "Its margin guardrail was 2 percentage points either side of breakeven; price forecasts three to six months out missed by more, the margin swung about 12 percentage points, and it wrote down about USD 304 million." |
+| [S] How do you evaluate a forecast? | "I hide the latest weeks, as many as the horizon, score the misses in shipments and rupees against the seasonal naive, and back-test the festival the hidden weeks lack." |
+| [F] What baseline must any forecast beat, and why? | "Naive with no season, the seasonal naive with one, plus the growth when it trends; a copy costs nothing, so a model that cannot beat it adds cost for no accuracy." |
+| [F] A vendor promises 22 percent growth: how do you test it? | "Restate the 22 against the same weeks, score the curve on weeks it never saw, 16,400 a week after a 1.4 percent fit, and ask for its record on a festival it did not see." |
+| [D] Finance and Marketing each want their forecast in front of the board; how do you choose, and how do you present the error? | "I score both on weeks neither saw against a copy of last year, send the winner with its typical miss priced each way and its range, and concede what each got right." |
 
-**The AI-company variant.** An AI company booking inference capacity, the computing that answers
-users' requests, sizes the launch peak from the ground up as requests open at once, checks it
-against earlier launches lined up by days from launch with the weekday kept, and books capacity to a
-latency target, adding a GPU while the timeouts it prevents cost more than its rent. The transcripts, with five pain points and their
-cases, are in `extras/`.
+The tags: [S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
 
-**The guesstimate: two-wheelers sold in India in a year.** 30 crore households, half owning one,
-replaced every 8 years, give about 1.9 crore a year; 15 percent more for first-time and commercial
-buyers makes about 2.2 crore, 1.7 to 2.9 as the replacement years swing, against SIAM's 2.17 crore
-sold to dealers in FY 2025-26 (checked 12 October 2026). The catch: October 2025 alone registered 31.5
-lakh (FADA), and twelve such months make about 3.78 crore, 74 percent above SIAM's year.
+**The AI-company variant**, sizing inference capacity for a launch, is in the transcripts in `extras/`.
 
 ## Which words did Friday use?
 
 | Term | Plain meaning | Example |
 |---|---|---|
-| House bot | A copy of the same week last year | 52 weeks back |
-| Festival-aligned | A copy at the same distance from last year's Diwali, plus 4 percent | 19 October 2026 copies 6 October 2025 |
-| Hold-out | Hidden weeks, kept out of every forecast and used to score it | 29 June to 21 September 2026 |
-| Origin and horizon | The last week a rule may see, and the farthest week a forecast must reach | 22 June 2026; ten weeks |
-| Back-test | A rule rerun from an earlier date | From 22 September 2025 |
-| MAE and MAPE | The average miss in shipments, and as a percent of what shipped | 6,615 shipments a week |
-| Error bar | The typical miss on unseen weeks; 5 of 13 weeks missed by more | 6,615 a week |
-| Plan share | The share of weeks the plan should cover | 0.82 |
+| Festival-aligned | This programme's extension: a copy at the same distance from last year's festival | 19 October 2026 copies 6 October 2025 |
+| MAE, MAPE, lean | The average miss's size; as a percent; with signs kept, which an interviewer calls bias | 5.0 cups; 4.8 percent; -1.7 |
+| Error bar | The typical miss on unseen periods, priced both ways, and the range of misses | 6,615 shipments a week; 3,413 to 3,906 shifts at the peak |
 
 ## Where should you read next, and how long does each take?
 
 | Order | Source | Time |
 |---|---|---|
-| 1 | Hyndman and Athanasopoulos, Forecasting: Principles and Practice, section 5.2, https://otexts.com/fpp3/toolbox.html#sec-simple-methods (checked 12 October 2026) | 20 minutes |
-| 2 | The same book, section 5.8, on forecast accuracy, https://otexts.com/fpp3/toolbox.html#sec-accuracy (checked 12 October 2026) | 20 minutes |
-| 3 | IBM Technology, "What is Time Series Analysis?", https://www.youtube.com/watch?v=GE3JOFwTWVM (checked 12 October 2026) | 8 minutes |
+| 1 | Hyndman and Athanasopoulos, Forecasting: Principles and Practice, section 2.3, time series patterns, https://otexts.com/fpp3/graphics.html#sec-tspatterns (checked 13 October 2026) | 10 minutes |
+| 2 | The same book, section 5.2, simple forecasting methods, https://otexts.com/fpp3/toolbox.html#sec-simple-methods (checked 13 October 2026) | 20 minutes |
+| 3 | The same book, section 5.8, forecast accuracy, https://otexts.com/fpp3/toolbox.html#sec-accuracy (checked 13 October 2026) | 20 minutes |
+| 4 | IBM Technology, "What is Time Series Analysis?", a video, https://www.youtube.com/watch?v=GE3JOFwTWVM (checked 13 October 2026) | length not verified |
 
-The week's explorer, `content/W04/D1/demos/C2_W04_D01_week_explorer_STUDENT.html`, replays the day:
-scene F1 builds a series, F2 slides the hidden weeks, F3 moves Diwali, F4 moves the two costs.
+The week's explorer, `content/W04/D1/demos/C2_W04_D01_week_explorer_STUDENT.html`, replays the day.

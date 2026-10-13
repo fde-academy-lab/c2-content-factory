@@ -38,7 +38,7 @@ Q3's option b. Raising the copy by 4 percent looks responsible, since the centre
 percent a year, and it is exactly finance's rule. On festive weeks it fixes the wrong thing: the
 copy is a week out of place, and growth on a week out of place makes the miss bigger. On ordinary
 weeks, far from the festival, the same 4 percent is right, which is why finance's rule ties
-festival-aligned on the summer weeks of chapter 2.
+festival-aligned on the summer weeks of chapter 6.
 
 ## Where does the pattern live at work?
 

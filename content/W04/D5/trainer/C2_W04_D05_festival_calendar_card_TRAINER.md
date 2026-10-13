@@ -1,9 +1,10 @@
 # The festival calendar card
 
-**TRAINER ONLY until S29.** Print the card below large and keep it face down. Round one's S12 shows
-the room where Diwali falls in each year and stops there. In round three, ask the room "Which week
-does the bot put Diwali in this year?", take the vote on S28, and turn the card on S29: it adds the
-house bot's copy to the strip S12 showed.
+**TRAINER ONLY until half two's S4.** Print the card below large and keep it face down. In chapter 5,
+round one, half one's S46 shows the room where Diwali falls in each year and stops there. In chapter
+7, round three, ask the room the question on half two's S3, "Which week does the bot make 2026's
+busiest?", take the vote, and turn the card on S4: it adds the house bot's busiest week and the rush to
+the strip S46 showed.
 
 ## What does the card say?
 
@@ -20,7 +21,7 @@ house bot's copy to the strip S12 showed.
 - **Where the peak should go.** Two weeks before Diwali's week, as in both years: the week of 19
   October 2026.
 
-![Diwali's week in 2024, 2025 and 2026, with the house bot's copy hatched](../whiteboards/C2_W04_D05_festival_calendar_STUDENT.png)
+![Diwali's week in 2024, 2025 and 2026, with the house bot's busiest week hatched and the rush outlined](../whiteboards/C2_W04_D05_festival_calendar_STUDENT.png)
 
 ## Where are the dates from?
 
