@@ -222,6 +222,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   table.rows th{background:var(--ink);color:var(--white);padding:6px 8px;text-align:right;font-weight:700}
   table.rows th:first-child,table.rows th:nth-child(2),table.rows td:first-child,table.rows td:nth-child(2){text-align:left}
   table.rows td{padding:5px 8px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+  table.rows.board th:nth-child(2),table.rows.board td:nth-child(2){text-align:right}
   table.rows th.num-col{background:var(--violet)}
   table.rows th.den-col{background:var(--green)}
   table.rows tr.out td{color:var(--off);text-decoration:line-through}
@@ -1005,7 +1006,7 @@ var W4 = {
       <div class="scene-head"><span class="sid">Th1</span><h3>How can every batch shrink while the average stays flat?</h3></div>
       <p class="myth"><b>The first answer most people give:</b> the dashboard reads 38 percent every month, so nothing has changed.</p>
       <div class="predict">
-        <p class="ask"><b>Predict before you step.</b> In October the August cohort, 13,000 members, enters the dashboard's count. If it loses the 10.5 points July's cohort lost from month one to month two, it enters at about 20.5 percent. Where does October's reading land?</p>
+        <p class="ask"><b>Predict before you step.</b> In October the August cohort, 13,000 members bought on a discount, enters the dashboard's count. Every cohort falls after month one, and if this one loses the 10.5 points July's cohort lost from month one to month two, its 31 becomes about 20.5 percent. Where does October's reading land?</p>
         <div class="opts">
           <button type="button" class="opt" data-predict="A" aria-pressed="false">A. It falls to about 21.</button>
           <button type="button" class="opt" data-predict="B" aria-pressed="false">B. It falls to about 33.</button>
@@ -1016,7 +1017,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Each row is a signup cohort, as tall as its number of members; each column is a reporting month, and a cell is the cohort's share that ordered that month. Every size and cell is the day's own, counted from Thursday's member_months table. The dashboard counts a member from her month two, the second calendar month after the month she joined, so the dashed month-one cells sit outside its count. October has not happened yet: its column, on amber, is an estimate on the day's assumption.</figcaption>
+          <figcaption>Each row is a signup cohort, the batch of members who joined in one month, drawn as tall as its number of members; each column is a reporting month, and a cell is the cohort's share that ordered that month, shaded darker for a higher share. Every size and cell is the day's own, counted from Thursday's member_months table. The dashboard counts a member from her month two, the second calendar month after the month she joined, so the dashed month-one cells sit outside its count. October's month has not closed: its column, on amber, is an estimate on the day's assumption.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><button type="button" class="btn" data-ctl="next">Next month</button>
@@ -1031,7 +1032,7 @@ var W4 = {
       <div class="reveal" hidden>
         <p class="check"></p>
         <p>Every row falls after month one, and each cohort starts lower than the one before: 58, 56, 55, 53, 52, 50 and 49 percent in month one, then the August cohort's 31. From month two every cohort sits near 38.5 percent and slides about 0.3 points a month. The dashboard reads 38.2, 38.0, 37.9 and 37.8 from June to September, because each month one more cohort of about 5,000 enters its count at about 38.5, just above the older cohorts' slide, and in September the August cohort, 13,000 members in their month one, sits outside it.</p>
-        <p>In October that cohort enters. If its 31 loses the 10.5 points July's lost, it enters at about 20.5 and the reading falls to about 33: (35,000 x 37.5 + 13,000 x 20.5) / 48,000. Any rate from 17 to 24 percent gives 32 to 34, and at a normal 5,000 members the same cohort would pull the reading only to about 35. Counted from each member's month one instead, everyone who joined before the month, September already reads 35.9, so the definition decides whether the dashboard ever looked flat: a blend holds while every part shrinks as long as new parts keep arriving and the weakest part has not been counted yet.</p>
+        <p>In October that cohort enters. If its 31 loses the 10.5 points July's lost, it enters at about 20.5 and the reading falls to about 33: (35,000 x 37.5 + 13,000 x 20.5) / 48,000, where 37.5 is the seven older cohorts' October average after their 0.3-point slide. Any rate from 17 to 24 percent gives 32 to 34, and at a normal 5,000 members the same cohort would pull the reading only to about 35. Counted with the dashed month-one cells too, everyone who joined before the month, September already reads 35.9, so the definition decides whether the dashboard ever looked flat: a blend holds while every part shrinks as long as new parts keep arriving and the weakest part has not been counted yet.</p>
         <p class="formula"><b>The formula, last</b>blend = sum of (cohort size x cohort rate) / sum of sizes, over the cohorts the dashboard counts</p>
       </div>
     </article>
@@ -1055,11 +1056,11 @@ var W4 = {
         </figure>
         <div class="panel">
           <div class="ctl"><label for="th2-b">Batch B's size</label>
-            <input type="range" id="th2-b" min="0" max="800" step="25" value="0" data-ctl="bsize">
+            <input type="range" id="th2-b" min="0" max="800" step="40" value="0" data-ctl="bsize">
             <output data-out="bsize">0 members</output></div>
           <div class="ctl"><label for="th2-a">Batch A's rate this month</label>
             <input type="range" id="th2-a" min="0.2" max="0.6" step="0.01" value="0.4" data-ctl="arate">
-            <output data-out="arate">0.40</output></div>
+            <output data-out="arate">40 percent</output></div>
           <dl class="nums" data-nums></dl>
         </div>
       </div>
@@ -1087,7 +1088,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Gold members' order flow in September, counted from the day's events table. Each bar's length is the count at that step, and each rate divides a step by the step before it. With the carousel's menu opens left out, the counts from menu view on keep only the sessions that included a search, and per member, only what members did in those sessions.</figcaption>
+          <figcaption>Gold members' order flow in September, counted from the day's events table. Each bar's length is the count at that step, and each rate divides a step by the step before it. With the carousel's menu opens left out, the counts from menu view on keep only the sessions that included a search, and per member, only what members did in those sessions. The funnel pools every platform and the whole of September, so no step on it shows the ticket's loss, which needs the split by platform and date.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><button type="button" class="btn" data-ctl="unit" aria-pressed="false">Count per member</button>
@@ -1101,14 +1102,14 @@ var W4 = {
       <div class="reveal" hidden>
         <p class="check"></p>
         <p>Counted per session with the carousel's entries in, menu views are 118 percent of searches: 38,932 of September's 155,729 member sessions with a menu view opened it from the home carousel, with no search. Search is a step members can skip, so the 118 is an artefact of the count; among the sessions that searched it reads 89 percent. Per member it still reads 101: the skippable step pushes it past 100 in either unit. Menu view to add-to-cart reads 34 percent per session and 61 per member: per session asks how often a menu visit becomes a cart, per member how many members who browsed added to a cart that month.</p>
-        <p>Neither of those steps owns the ticket's loss, which sits inside the checkout: for members on Android from 14 September, checkout start to order fell from 72.5 to 55 percent while starting checkout held at 80, and members on iOS and non-members on Android held. A rate above 100 percent says the two counts are not the same people in the same unit; before blaming a step, name the unit on the chart, check that every member had to pass the step before, and find the step that changed before blaming the step that is low.</p>
+        <p>Neither of those steps owns the ticket's loss, which sits inside the checkout: for members on Android from 14 September, checkout start to order per session fell from 72.5 to 55 percent while starting checkout held at 80, and members on iOS and non-members on Android held. A rate above 100 percent says the two counts are not the same people in the same unit; before blaming a step, name the unit on the chart, check that every member had to pass the step before, and find the step that changed before blaming the step that is low.</p>
         <p class="formula"><b>The formula, last</b>each step's rate divides by the step before, in one unit, and the chart names the unit</p>
       </div>
     </article>
 
     <article class="scene" id="scene-Th4" data-scene="Th4">
       <div class="scene-head"><span class="sid">Th4</span><h3>Is it novelty or habit?</h3></div>
-      <p class="myth"><b>The first answer most people give:</b> weekly actives hit a record in launch week and are still near it two months on, so the AI app has found its market.</p>
+      <p class="myth"><b>The first answer most people give:</b> an AI writing assistant's weekly actives hit a record in its launch week and are still near it two months on, so the product has found its market.</p>
       <div class="predict">
         <p class="ask"><b>Predict before you move the week.</b> Where will the launch-week cohort sit at week four, against a later weekly cohort of users who came looking for the app?</p>
         <div class="opts">
@@ -1135,7 +1136,7 @@ var W4 = {
       <div class="reveal" hidden>
         <p class="check"></p>
         <p>At week four the launch cohort keeps 24 percent and a later weekly cohort 36 percent: much of the launch week's crowd came to try the app. The blended weekly actives set their record of 70,000 in launch week, dip to 48,400 in week three and are back at 69,800 by week eight, near the record, because a new cohort of 20,000 joins every week. The blended chart says the product is holding while the launch cohort slides to 16 percent.</p>
-        <p>Between week one and week four the launch cohort loses 46 of every 100 who joined and a later cohort loses 14, so a launch's first weeks measure novelty. Read each cohort by weeks since signup, at week four or later, which is the programme's rule of thumb, and read the blend only as a sum of cohorts: it still sizes load and spend.</p>
+        <p>Between week one and week four the launch cohort loses 46 of every 100 who joined and a later cohort loses 14, so a launch's first weeks measure novelty. The launch cohort plays the part of Gold's sale-week members: a big cohort brought in by one event, weaker than the members who came looking. Read each cohort by weeks since signup, at week four or later, which is the programme's rule of thumb, and read the blend only as a sum of cohorts; it still sizes the servers' load and the inference spend.</p>
         <p class="formula"><b>The formula, last</b>judge each cohort at the age where habit shows; read the blend only as the sum of its cohorts</p>
       </div>
     </article>
@@ -1148,9 +1149,9 @@ var W4 = {
       <div class="ticket">
         <p class="label-line">Illustrative case: the company is real, the situation and the data are synthetic, built for this class.</p>
         <p>Flipkart, the Lucknow fulfilment centre, festive packer headcount. The centre has 104 weeks of outbound shipments, the weeks beginning 30 September 2024 to 21 September 2026, and an ordinary week in late 2024 ships about 210,000. Diwali fell on 31 October 2024 and 20 October 2025, and falls on 8 November 2026. A packer packs about 120 shipments a shift.</p>
-        <p>The planner must book packer shifts for the eight festive weeks beginning 12 October to 30 November 2026. A vendor's model promises the window 22 percent above the same weeks last year, and finance's rule is those weeks plus 4 percent: eighteen points apart. The ask, due Friday: which forecast goes to the staffing plan, how wrong could it be in shipments and in rupees, and how many packer shifts a week. The known caveats: the festival moves by weeks each year and the sale weeks move with it, two years hold two festivals, and a late shipment, assumed at Rs 25, costs more than an idle packer-shift, assumed at Rs 650, or Rs 5.42 a spare shipment.</p>
+        <p>The planner must book packer shifts for the eight festive weeks beginning 12 October to 30 November 2026. A vendor's model promises the window 22 percent above the same weeks last year, and finance's rule is those weeks plus 4 percent: eighteen points apart. The ask, due Friday: which forecast goes to the staffing plan, how wrong could it be in shipments and in rupees, and how many packer shifts a week. The known caveats: the festival moves by weeks each year and the sale weeks move with it, two years hold two festivals, peak weeks are capped by the centre's own capacity, and a late shipment costs more than a spare one. The costs are assumptions: a late shipment Rs 25, and an idle packer-shift Rs 650, which over its 120 shipments is Rs 5.42 for each shipment planned and never shipped.</p>
       </div>
-      <p class="who"><b>Who needs the answer.</b> The FC planner and the regional operations head.</p>
+      <p class="who"><b>Who needs the answer.</b> The fulfilment centre's planner and the regional operations head.</p>
       <p class="who"><b>The questions on the way.</b></p>
       <div class="jumps">
         <button type="button" class="jump" data-jump="F1"><b>F1</b>What is a series made of?</button>
@@ -1178,9 +1179,9 @@ var W4 = {
           <figcaption>A toy series, invented: a straight trend, a smooth yearly season and random noise, in thousands of shipments a week over two years. The three thin panels are added week by week to make the line beneath. The toy leaves out a cycle, a rise and fall with no fixed length, which two years of weeks cannot show.</figcaption>
         </figure>
         <div class="panel">
-          <div class="ctl"><label for="f1-t">Trend, thousand shipments a week</label>
+          <div class="ctl"><label for="f1-t">Trend, thousand shipments added each week</label>
             <input type="range" id="f1-t" min="-0.3" max="0.6" step="0.05" value="0.2" data-ctl="trend">
-            <output data-out="trend">0.20 a week</output></div>
+            <output data-out="trend">0.20 thousand more each week</output></div>
           <div class="ctl"><label for="f1-s">Season, the size of the yearly swing</label>
             <input type="range" id="f1-s" min="0" max="60" step="5" value="25" data-ctl="season">
             <output data-out="season">25 thousand</output></div>
@@ -1195,7 +1196,7 @@ var W4 = {
         <p class="check"></p>
         <p>Doubling the season from 25 to 50 thousand doubles the swing around the trend line: the season's peaks rise 25 thousand and its troughs fall 25 thousand, so on this draw of noise the highest week moves from 255 to 277 thousand and the lowest from 167 to 146, while the trend under them and the noise on top stay as they were.</p>
         <p>A forecast that cannot say which part of the line is trend, which is season and which is noise will copy the noise and call it a pattern. The centre's own weeks rise about 4 percent a year and peak two weeks before Diwali's week each year, and a series can also carry a cycle and more than one season. A planner books against trend, season and cycle and buys a cushion for the noise, so reading the shape comes before choosing any rule.</p>
-        <p class="formula"><b>The formula, last</b>series = trend + season + noise</p>
+        <p class="formula"><b>The formula, last</b>series = trend + season + noise, here on a level of 200 thousand a week</p>
       </div>
     </article>
 
@@ -1203,18 +1204,18 @@ var W4 = {
       <div class="scene-head"><span class="sid">F2</span><h3>How wrong on the weeks it never saw?</h3></div>
       <p class="myth"><b>The first answer most people give:</b> the vendor's curve sits within 2 percent of every week it was fitted to, so it will forecast best.</p>
       <div class="predict">
-        <p class="ask"><b>Predict before you score.</b> Every rule forecasts the 13 hidden weeks from the week of 22 June 2026. Whose miss sticks will be shortest?</p>
+        <p class="ask"><b>Predict before you score.</b> Every rule forecasts the 13 hidden weeks from the week of 22 June 2026. Naive repeats that week; the house bot copies the same week of 2025; festival-aligned copies the 2025 week at the same distance from Diwali and adds 4 percent; the vendor sends its own forecast. Whose misses, the sticks in the lower panel, will be shortest?</p>
         <div class="opts">
-          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Naive: repeat the week of 22 June.</button>
-          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. The house bot: copy the same week of 2025.</button>
-          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Festival-aligned, tied with finance's rule here.</button>
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Naive.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. The house bot.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Festival-aligned.</button>
           <button type="button" class="opt" data-predict="D" aria-pressed="false">D. The vendor's curve, within 2 percent of every week it was fitted to.</button>
         </div>
         <p class="said" aria-live="polite">No prediction yet.</p>
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>The centre's 104 weeks from the day's weekly_shipments table, and the vendor's own forecasts from its vendor_forecast table. The shaded weeks are hidden, and every rule forecasts them from the last week it may see; the vendor's model was run once, from the week of 22 June 2026, so it scores only from that week. Each stick is one week's miss, amber where the forecast was too high and rose where it was too low.</figcaption>
+          <figcaption>The centre's 104 weeks from the day's weekly_shipments table, and the vendor's own forecasts from its vendor_forecast table. The shaded weeks are hidden, and every rule forecasts them from the last week it may see; the vendor made its forecast of these weeks once, from the week of 22 June 2026, so it scores only from that week, and its fit to the weeks before is drawn dashed. Each stick is one week's miss, amber where the forecast was too high and rose where it was too low, on one scale for every rule.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><label for="f2-m">The rule scored</label>
@@ -1236,7 +1237,7 @@ var W4 = {
       <div class="reveal" hidden>
         <p class="check"></p>
         <p>On the 13 weeks no rule saw, forecast from 22 June, festival-aligned and finance's rule tie at 6,615 shipments a week, the house bot misses by 9,831, drift by 14,842 and naive by 14,923. The tie is honest: no hidden week falls between five weeks before a Diwali week and four after, so both rules copy the same week of 2025 and add the same 4 percent. The vendor sits within 1.4 percent of every week it was fitted to and misses by 16,400 a week on the weeks it never saw, 67 percent worse than the house bot.</p>
-        <p>Priced, the order changes, because the vendor errs high on 12 of 13 weeks, the cheap kind of miss at Rs 650 / 120 = Rs 5.42 a spare shipment, so its misses cost Rs 11.9 lakh against festival-aligned's Rs 13.5 lakh, while the house bot errs low on 11 of 13 and costs Rs 30.5 lakh, more than naive's Rs 28.8 lakh. The vendor still does not get the plan: nobody chose how high it runs, it runs higher with the weeks ahead, 3.6 percent too high in hidden weeks 1 to 6 and 11.5 percent in weeks 8 to 13, and the hidden weeks hold no festive week. Raised to its own 0.82 point, 2.6 percent (scene F4), festival-aligned's misses cost Rs 8.8 lakh, on the same weeks the raise was read from.</p>
+        <p>Priced, the order changes, because the vendor errs high on 12 of 13 weeks, the cheap kind of miss at Rs 650 / 120 = Rs 5.42 a spare shipment, so its misses cost Rs 11.9 lakh against festival-aligned's Rs 13.5 lakh, while the house bot errs low on 11 of 13 and costs Rs 30.5 lakh, more than naive's Rs 28.8 lakh. The vendor still does not get the plan: nobody chose how high it runs, it runs higher with the weeks ahead, 3.6 percent too high in hidden weeks 1 to 6 and 11.5 percent in weeks 8 to 13, and the hidden weeks hold no festive week. The fair price raises each rule by the cushion its own misses justify, which scene F4 sizes: festival-aligned, finance's rule and the house bot then cost Rs 8.8 lakh each, the vendor Rs 10.0 lakh, and naive and drift Rs 17.7 lakh, so on weeks with no festival only the festival can separate festival-aligned from the bot, which is scene F3's question.</p>
         <div data-board></div>
         <p class="formula"><b>The formula, last</b>MAE = mean of |forecast - actual| over the held-out weeks, fixed before anyone scores</p>
       </div>
@@ -1262,7 +1263,7 @@ var W4 = {
         <div class="panel">
           <div class="ctl"><label for="f3-d">Diwali's week in 2026</label>
             <input type="range" id="f3-d" min="108" max="111" step="1" value="108" data-ctl="diwali">
-            <output data-out="diwali">The week of 19 October 2026</output></div>
+            <output data-out="diwali">The week of 19 October 2026, a what-if; the case's Diwali week is 2 November</output></div>
           <dl class="nums" data-nums></dl>
         </div>
       </div>
@@ -1270,7 +1271,7 @@ var W4 = {
       <div class="reveal" hidden>
         <p class="check"></p>
         <p>The house bot copies calendar weeks, so its biggest week stays on 5 October 2026, 418,200 shipments, wherever Diwali falls; finance's rule and the vendor copy the same calendar and peak there too, at 434,928 and 497,900. Diwali falls on 8 November 2026, in the week beginning 2 November, so festival-aligned books its peak on 19 October at 434,928, two weeks before Diwali's week as in both earlier years: finance's number, in the right week. The window opens on 12 October, so the calendar copies book the most for its first week and far too little for 19 and 26 October.</p>
-        <p>Plus 22 and plus 4 measure different windows. Against 2025's same calendar weeks, 13 October to 1 December, finance's rule sits 4.0 percent above and festival-aligned 19.5; against 2025's same weeks counted from Diwali, 29 September to 17 November, finance's rule sits 9.5 percent below and festival-aligned 4.0 above. The calendar window holds only the tail of 2025's festival, because 2025's peak came before 13 October. If demand follows festival-aligned, booking the eight weeks by the house bot costs Rs 111.6 lakh, most of it late shipments, against Rs 3.3 lakh for the plan; that is a scenario resting on festival-aligned being right, since none of the eight weeks has happened yet.</p>
+        <p>Plus 22 and plus 4 measure different windows. Against 2025's same calendar weeks, 13 October to 1 December, finance's rule sits 4.0 percent above and festival-aligned 19.5; against 2025's same weeks counted from Diwali, 29 September to 17 November, finance's rule sits 9.5 percent below and festival-aligned 4.0 above. The calendar window holds only the tail of 2025's festival, because 2025's peak came before 13 October. If demand follows festival-aligned, booking the eight weeks by the house bot costs Rs 111.6 lakh, most of it late shipments, against Rs 3.3 lakh for the plan that scene F4 sizes; that is a scenario resting on festival-aligned being right, since none of the eight weeks has happened yet.</p>
         <div data-windows></div>
         <p class="formula"><b>The formula, last</b>festival-aligned: copy the week at the same distance from the festival, then add the growth</p>
       </div>
@@ -1291,7 +1292,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>The average cost of one festive week's misses against how far the plan sits above or below the forecast: the week of 19 October 2026, forecast at 434,928 shipments, with each of festival-aligned's thirteen hidden-week misses from F2 tried as its demand. The dots under the axis are those thirteen misses, from the day's data. The two unit costs are the case's assumptions: an idle packer-shift at Rs 650 (range Rs 500 to 800), so Rs 5.42 a spare shipment, and a late shipment at Rs 25 (range Rs 15 to 40). The hidden weeks hold no festive week; on 2025's festival the same rule missed by 4,034 a week.</figcaption>
+          <figcaption>The average cost of one festive week's misses against how far the plan sits above or below the forecast: the week of 19 October 2026, forecast at 434,928 shipments, with each of festival-aligned's thirteen hidden-week misses from F2, taken as a percent of its own week's forecast, tried as this week's demand. This week is about twice a summer week, so the same misses cost about twice what F2 prices a week. The dots under the axis are those thirteen misses: violet where the plan covers the week's demand, rose where it falls short. The two unit costs are the case's assumptions: an idle packer-shift at Rs 650 (range Rs 500 to 800), so Rs 5.42 a spare shipment, and a late shipment at Rs 25 (range Rs 15 to 40). The hidden weeks hold no festive week; forecast from 22 September 2025, the same rule missed 2025's festive weeks, 29 September to 17 November, by 4,034 a week.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><label for="f4-o">An idle packer-shift, Rs</label>
@@ -1307,7 +1308,7 @@ var W4 = {
       <div class="reveal" hidden>
         <p class="check"></p>
         <p>A late shipment costs Rs 25 and a spare one Rs 650 / 120 = Rs 5.42, so being short costs 4.6 times being idle. Raise the plan by one shipment: over 100 weeks, if demand beats the plan in 18, that shipment saves 18 x Rs 25 = Rs 450 and wastes 82 x Rs 5.42 = Rs 444, about even. So the cheapest plan covers demand in 25 / (25 + 5.42), about 0.82, of weeks. Sorted by how far demand came above festival-aligned, the thirteen hidden weeks run from 5.9 percent below to 7.8 percent above; 0.82 of the way along falls between the 10th week, 2.1 percent, and the 11th, 2.7, at 2.6 percent, and a plan that far above the forecast covers 10 of the 13.</p>
-        <p>For the week of 19 October the plan books 446,236 shipments, 3,719 packer shifts against 3,625 at the forecast itself; over the eight weeks, 20,275 shifts, 515 more than the 19,760 the forecast alone needs, about Rs 3.3 lakh if every one of them sat idle. With thirteen weeks the true point could sit anywhere from about 2 to 3 percent, where the curve is nearly flat, and a late cost nearer Rs 40 moves it up.</p>
+        <p>For the week of 19 October the plan books 446,236 shipments, 3,719 packer shifts against 3,625 at the forecast itself; over the eight weeks, 20,275 shifts, 515 more than the 19,760 the forecast alone needs, about Rs 3.3 lakh if every one of them sat idle. With thirteen weeks the point is loose: read by another common convention it lands at 4.1 percent, and the week costs about Rs 1.4 lakh anywhere from 2 to 4 percent above the forecast, against Rs 2.1 lakh booked at the forecast itself. A late cost nearer Rs 40 moves the point up.</p>
         <p class="formula"><b>The formula, last</b>plan quantile = under-cost / (under-cost + over-cost) = 25 / (25 + 5.42) = 0.82</p>
       </div>
     </article>
@@ -2039,11 +2040,11 @@ var W4 = {
   var SCENES = {};
   function scene(id, def) { SCENES[id] = def; }
   function writeCheck(art, def, st) {
-    var p = $(".check", art);
-    if (def.check) { p.textContent = def.check(st); return; }
-    if (!st.pred) p.textContent = "No prediction was locked in before the reveal; the answer is " + def.answer + ".";
-    else if (st.pred === def.answer) p.textContent = "You predicted " + st.pred + ", and " + def.answer + " is what happens.";
-    else p.textContent = "You predicted " + st.pred + "; the answer is " + def.answer + ".";
+    var p = $(".check", art), reset = " The controls now show the case's own state.";
+    if (def.check) { p.textContent = def.check(st) + reset; return; }
+    if (!st.pred) p.textContent = "No prediction was locked in before the reveal; the answer is " + def.answer + "." + reset;
+    else if (st.pred === def.answer) p.textContent = "You predicted " + st.pred + ", and " + def.answer + " is what happens." + reset;
+    else p.textContent = "You predicted " + st.pred + "; the answer is " + def.answer + "." + reset;
   }
   function toggleReveal(art, def, st, force) {
     var panel = $(".reveal", art), rb = $("[data-reveal]", art);
@@ -3068,7 +3069,7 @@ var W4 = {
       put($("[data-fig]", art), svg);
       $('[data-ctl="bsize"]', art).value = st.bsize; $('[data-ctl="arate"]', art).value = st.arate;
       setOut(art, "bsize", st.bsize + " members");
-      setOut(art, "arate", st.arate.toFixed(2) + "");
+      setOut(art, "arate", Math.round(st.arate * 100) + " percent");
       var c2 = cols[1];
       nums($("[data-nums]", art), [
         ["Last month", "50 of 100 = 50.0 percent"],
@@ -3090,10 +3091,11 @@ var W4 = {
     },
     render: function (st, art) {
       var counts = THU.funnel[st.member ? "member" : "session"][st.carousel ? "with" : "without"];
-      var svg = svgRoot(680, 430, "The order flow as bars, each step's rate against the step before");
+      var svg = svgRoot(680, 450, "The order flow as bars, each step's rate against the step before");
       var rows = [];
+      txt(svg, 16, 24, "September, Gold members, counted in " + (st.member ? "members" : "sessions") + (st.carousel ? ", carousel menus in" : ", carousel menus left out"), { size: 14.5, weight: 700 });
       THU.stages.forEach(function (name, i) {
-        var y = 24 + i * 66, w = 280 * counts[i] / counts[0];
+        var y = 44 + i * 66, w = 280 * counts[i] / counts[0];
         txt(svg, 16, y + 23, name, { size: 15, weight: 700 });
         add(svg, "rect", { x: 170, y: y, width: Math.max(2, w), height: 32, rx: 4, fill: i === 2 && st.carousel ? C.rose : C.violet, "fill-opacity": 0.85 });
         txt(svg, 178 + w, y + 22, group(counts[i]), { size: 14.5, weight: 700 });
@@ -3109,8 +3111,9 @@ var W4 = {
       setOut(art, "unit", st.member ? "Counting per member, each member once" : "Counting per session");
       setOut(art, "carousel", st.carousel ? "Carousel entries are counted" : "Carousel entries are left out");
       rows.push({ wide: "Each rate divides a step's count by the step before it, in " + (st.member ? "members" : "sessions") + "." });
-      rows.push({ wide: st.carousel ? "Counted in: " + group(THU.carouselSessions) + " member sessions in September opened a menu from the home carousel with no search." :
-        "Left out: the menus opened from the home carousel, so menu view and every step after it count only sessions that searched." });
+      rows.push({ wide: !st.carousel ? "The menus opened from the home carousel are left out, so menu view and every step after it count only " + (st.member ? "what members did in sessions that searched." : "sessions that searched.") :
+        (st.member ? "The menus opened from the home carousel are counted, so a member who reached a menu only from the carousel counts at menu view without a search." :
+          "The menus opened from the home carousel are counted: " + group(THU.carouselSessions) + " member sessions in September opened one with no search.") });
       nums($("[data-nums]", art), rows);
     },
     final: function (st) { st.member = false; st.carousel = true; }
@@ -3138,15 +3141,22 @@ var W4 = {
         txt(svg, 64, Y(t) + 5, t + "%", { size: 12.5, anchor: "end", fill: C.muted });
       });
       for (var w = 1; w <= 8; w++) txt(svg, X(w), 282, "week " + w, { size: 12.5, anchor: "middle", fill: C.night });
-      [["launch-week cohort", THU.launchRate, C.rose], ["a later cohort", THU.weeklyRate, C.violet]].forEach(function (s) {
+      var series = [["launch-week cohort", THU.launchRate, C.rose], ["a later cohort", THU.weeklyRate, C.violet]];
+      /* the two end labels sit at least 17 px apart, so close values never print over each other */
+      var ly = series.map(function (s) { return Y(s[1][k - 1]) + 5; });
+      if (Math.abs(ly[0] - ly[1]) < 17) {
+        var mid = (ly[0] + ly[1]) / 2, up = ly[0] <= ly[1] ? 0 : 1;
+        ly[up] = mid - 8.5; ly[1 - up] = mid + 8.5;
+      }
+      series.forEach(function (s, j) {
         var pts = [];
         for (var w = 1; w <= k; w++) pts.push(X(w) + "," + Y(s[1][w - 1]).toFixed(1));
         add(svg, "polyline", { points: pts.join(" "), fill: "none", stroke: s[2], "stroke-width": 2.6 });
         for (w = 1; w <= k; w++) add(svg, "circle", { cx: X(w), cy: Y(s[1][w - 1]), r: w === k ? 6.5 : 4, fill: s[2], stroke: C.white, "stroke-width": 2 });
-        txt(svg, X(k) + 10, Y(s[1][k - 1]) + 5, s[0] + ", " + s[1][k - 1] + "%", { size: 14, weight: 700, fill: C.ink }).setAttribute("class", "halo");
+        txt(svg, X(k) + 10, ly[j], s[0] + ", " + s[1][k - 1] + "%", { size: 14, weight: 700, fill: C.ink }).setAttribute("class", "halo");
       });
       var bg = add(svg, "g", { opacity: st.blend ? 1 : 0, "class": "fade" });
-      txt(bg, 16, 318, "blended actives, everyone active in each week since the launch", { size: 14.5, weight: 700 });
+      txt(bg, 16, 318, "blended actives, everyone active in each week after the launch, on the weeks above", { size: 14.5, weight: 700 });
       var Y2 = function (n) { return 452 - 110 * n / 80000; };
       [0, 40000, 80000].forEach(function (t) {
         add(bg, "line", { x1: 72, x2: 640, y1: Y2(t), y2: Y2(t), stroke: C.line });
@@ -3200,39 +3210,43 @@ var W4 = {
     diw.forEach(function (d) { if (d < t - 26 && d > prev) prev = d; });
     return prev + o;
   }
+  /* the generator rounds in Python, half to even, so an exact half rounds the same way here */
+  function pyRound(x) { var r = Math.round(x); return Math.abs(x % 1) === 0.5 && r % 2 !== 0 ? r - 1 : r; }
   function fFore(m, t, s, diw) {
     if (m === "naive") return yAt(s);
-    if (m === "drift") return Math.round(yAt(s) + (t - s) * (yAt(s) - yAt(1)) / (s - 1));
+    if (m === "drift") return pyRound(yAt(s) + (t - s) * (yAt(s) - yAt(1)) / (s - 1));
     if (m === "bot") return yAt(t - 52);
-    if (m === "finance") return Math.round(yAt(t - 52) * FRI.growth);
-    if (m === "aligned") return Math.round(yAt(fSource(t, diw || diwaliList())) * FRI.growth);
-    return t > FRI.origin && s === FRI.origin ? FRI.vendor[t - 1] : null;   /* the vendor ran once, from week 91 */
+    if (m === "finance") return pyRound(yAt(t - 52) * FRI.growth);
+    if (m === "aligned") return pyRound(yAt(fSource(t, diw || diwaliList())) * FRI.growth);
+    return t > FRI.origin && s === FRI.origin ? FRI.vendor[t - 1] : null;   /* its hold-out forecast was made from week 91 */
   }
   function fScore(m, s, cushion) {
     var over = 0, under = 0, abs = 0, high = 0, n = 0, co = FRI.idleShift / FRI.perShift;
     for (var t = s + 1; t <= 104; t++) {
       var f = fFore(m, t, s);
       if (f === null) return null;
-      if (cushion) f = Math.round(f * (1 + cushion));
+      if (cushion) f = pyRound(f * (1 + cushion));
       var e = f - yAt(t);
       abs += Math.abs(e); n++;
       if (e > 0) { over += e; high++; } else under -= e;
     }
     return { mae: abs / n, n: n, high: high, idle: over * co, late: under * FRI.lateShipment };
   }
-  /* festival-aligned's misses on the hidden weeks after s, actual less forecast over forecast, smallest first */
-  function alignedMisses(s) {
+  /* a rule's misses on the hidden weeks after s, actual less forecast over forecast, smallest first */
+  function missesOf(m, s) {
     var out = [];
-    for (var t = s + 1; t <= 104; t++) { var f = fFore("aligned", t, s); out.push((yAt(t) - f) / f); }
+    for (var t = s + 1; t <= 104; t++) { var f = fFore(m, t, s); if (f === null) return null; out.push((yAt(t) - f) / f); }
     return out.sort(function (a, b) { return a - b; });
   }
+  function alignedMisses(s) { return missesOf("aligned", s); }
   /* the p point of sorted values, read along them with straight lines between, as pandas reads a quantile */
   function quantileOf(sorted, p) {
     var pos = p * (sorted.length - 1), lo = Math.floor(pos), hi = Math.min(lo + 1, sorted.length - 1);
     return sorted[lo] + (pos - lo) * (sorted[hi] - sorted[lo]);
   }
-  /* the cushion: the p point of the misses, rounded to a tenth of a percent as the planner rounds it */
-  function cushionAt(s, p) { return Math.round(quantileOf(alignedMisses(s), p) * 1000) / 1000; }
+  /* a rule's cushion: the p point of its own misses, rounded to a tenth of a percent as the planner rounds it */
+  function cushionOf(m, s, p) { var e = missesOf(m, s); return e ? pyRound(quantileOf(e, p) * 1000) / 1000 : null; }
+  function cushionAt(s, p) { return cushionOf("aligned", s, p); }
   function caseQuantile() { var co = FRI.idleShift / FRI.perShift; return FRI.lateShipment / (FRI.lateShipment + co); }
 
   scene("F1", {
@@ -3262,6 +3276,8 @@ var W4 = {
         txt(svg, 62, y0 + 4, "0", { size: 12.5, anchor: "end", fill: C.muted });
         add(svg, "line", { x1: 70, x2: 660, y1: Y(50), y2: Y(50), stroke: C.line, "stroke-dasharray": "2 4" });
         txt(svg, 62, Y(50) + 4, "+50", { size: 12.5, anchor: "end", fill: C.muted });
+        add(svg, "line", { x1: 70, x2: 660, y1: Y(-50), y2: Y(-50), stroke: C.line, "stroke-dasharray": "2 4" });
+        txt(svg, 62, Y(-50) + 4, "-50", { size: 12.5, anchor: "end", fill: C.muted });
         add(svg, "polyline", { points: comp[pn[0]].map(function (v, i) { return X(i + 1).toFixed(1) + "," + Y(v).toFixed(1); }).join(" "),
           fill: "none", stroke: pn[0] === "noise" ? C.muted : C.violet, "stroke-width": 2 });
       });
@@ -3277,7 +3293,7 @@ var W4 = {
       txt(svg, 660, Y(200 + st.trend * 103) + 20, "trend", { size: 13, anchor: "end", fill: C.rose, weight: 700 }).setAttribute("class", "halo");
       put($("[data-fig]", art), svg);
       ["trend", "season", "noise"].forEach(function (k) { $('[data-ctl="' + k + '"]', art).value = st[k]; });
-      setOut(art, "trend", st.trend.toFixed(2) + " a week");
+      setOut(art, "trend", Math.abs(st.trend).toFixed(2) + " thousand " + (st.trend < 0 ? "fewer" : "more") + " each week");
       setOut(art, "season", st.season + " thousand");
       setOut(art, "noise", st.noise + " thousand");
       nums($("[data-nums]", art), [
@@ -3315,16 +3331,19 @@ var W4 = {
         txt(svg, X(mk[0]), 270, mk[1], { size: 12.5, anchor: "middle", fill: C.night });
       });
       [[5, "Diwali 2024"], [56, "Diwali 2025"]].forEach(function (d) { txt(svg, X(d[0]) + 8, Y(A[d[0] - 1]) + 4, d[1], { size: 12.5, fill: C.night }).setAttribute("class", "halo"); });
-      if (m === "vendor" && atOrigin) {
-        add(svg, "polyline", { points: FRI.vendor.slice(0, FRI.origin).map(function (v, i) { return X(i + 1).toFixed(1) + "," + Y(v).toFixed(1); }).join(" "),
-          fill: "none", stroke: C.violet, "stroke-width": 2, "stroke-dasharray": "5 3" });
-      }
       add(svg, "polyline", { points: A.map(function (v, i) { return X(i + 1).toFixed(1) + "," + Y(v).toFixed(1); }).join(" "), fill: "none", stroke: C.ink, "stroke-width": 1.8 });
-      /* the hidden weeks, zoomed so each week's miss reads from the back of the room */
+      if (m === "vendor" && atOrigin) {
+        /* the vendor's fit, drawn over the actual line so its closeness shows */
+        add(svg, "polyline", { points: FRI.vendor.slice(0, FRI.origin).map(function (v, i) { return X(i + 1).toFixed(1) + "," + Y(v).toFixed(1); }).join(" "),
+          fill: "none", stroke: C.violet, "stroke-width": 2.2, "stroke-dasharray": "5 3" });
+        txt(svg, X(14), 244, "dashed: the vendor's fit, within 1.4 percent of every week it saw", { size: 13, weight: 700, fill: C.violet }).setAttribute("class", "halo");
+      }
+      /* the hidden weeks, zoomed so each week's miss reads from the back of the room, on one scale for every rule */
       var fc = [], lo = Infinity, hi = -Infinity;
       for (t = s + 1; t <= 104; t++) {
         f = fFore(m, t, s); a = A[t - 1]; fc.push([t, f, a]);
-        lo = Math.min(lo, a, f === null ? a : f); hi = Math.max(hi, a, f === null ? a : f);
+        F2_ORDER.forEach(function (k) { var g = fFore(k, t, s); if (g !== null) { lo = Math.min(lo, g); hi = Math.max(hi, g); } });
+        lo = Math.min(lo, a); hi = Math.max(hi, a);
       }
       var none = fc[0][1] === null;
       lo = Math.floor(lo / 20000) * 20000; hi = Math.ceil(hi / 20000) * 20000;
@@ -3341,9 +3360,10 @@ var W4 = {
       }
       add(svg, "polyline", { points: fc.map(function (r) { return X2(r[0]).toFixed(1) + "," + Y2(r[2]).toFixed(1); }).join(" "), fill: "none", stroke: C.ink, "stroke-width": 2 });
       if (!none) add(svg, "polyline", { points: fc.map(function (r) { return X2(r[0]).toFixed(1) + "," + Y2(r[1]).toFixed(1); }).join(" "), fill: "none", stroke: C.violet, "stroke-width": 2.4 });
-      else txt(svg, 368, 336, "no vendor forecast from this week: it ran once, from 22 June 2026", { size: 14, weight: 700, anchor: "middle", fill: C.rose }).setAttribute("class", "halo");
-      txt(svg, X2(s + 1), 568, weekDate(s + 1, true), { size: 12.5, anchor: "middle", fill: C.night });
-      txt(svg, X2(104), 568, weekDate(104, true), { size: 12.5, anchor: "middle", fill: C.night });
+      else txt(svg, 368, 336, "no vendor forecast from this week: it forecast these weeks once, from 22 June 2026", { size: 14, weight: 700, anchor: "middle", fill: C.rose }).setAttribute("class", "halo");
+      var yearOf = function (t) { return new Date(Date.UTC(2024, 8, 30) + 7 * (t - 1) * 86400000).getUTCFullYear(); };
+      txt(svg, X2(s + 1) - 6, 568, weekDate(s + 1, true) + " " + yearOf(s + 1), { size: 12.5, anchor: "start", fill: C.night });
+      txt(svg, X2(104) + 6, 568, weekDate(104, true) + " " + yearOf(104), { size: 12.5, anchor: "end", fill: C.night });
       var lx = 70;
       [["actual", C.ink, false], [F2_SHORT[m], C.violet, false], ["too high", AMBER, true], ["too low", C.rose, true]].forEach(function (lg) {
         add(svg, "line", { x1: lx, x2: lx + (lg[2] ? 0 : 22), y1: lg[2] ? 586 : 598, y2: 604, stroke: lg[1], "stroke-width": lg[2] ? 4 : 2.4 });
@@ -3357,32 +3377,31 @@ var W4 = {
         (atOrigin ? ", the day's split" : ""));
       var sc = fScore(m, s);
       var slope = (yAt(s) - yAt(1)) / (s - 1);
-      var how = { naive: "Naive: every hidden week is forecast as the last week the rule may see, " + group(yAt(s)) + " shipments.",
-        drift: "Drift: the straight line from the first week through the last week seen, carried on; here it " + (slope < 0 ? "falls " : "rises ") + group(Math.abs(slope)) + " shipments a week.",
-        bot: "The house bot: copy the same week of the year before, 52 weeks back. Scene F3 follows where it puts the festival.",
-        finance: "Finance's rule: the house bot plus 4 percent.",
-        aligned: "Festival-aligned: from five weeks before a Diwali week to four after, copy the week at the same distance from the year before's Diwali, otherwise the same calendar week, then add 4 percent, the growth the two years show.",
-        vendor: "The vendor's curve: its own forecasts of the hidden weeks, made from the data to the week of 22 June 2026." }[m];
+      var how = { naive: "Naive forecasts every hidden week as the last week the rule may see, " + group(yAt(s)) + " shipments.",
+        drift: "Drift draws the straight line from the first week through the last week seen and carries it on; here it " + (slope < 0 ? "falls " : "rises ") + group(Math.abs(slope)) + " shipments a week.",
+        bot: "The house bot copies the same week of the year before, 52 weeks back; scene F3 follows where it puts the festival.",
+        finance: "Finance's rule is the house bot plus 4 percent.",
+        aligned: "Festival-aligned copies, from five weeks before a Diwali week to four after, the week at the same distance from the year before's Diwali, and otherwise the same calendar week, then adds 4 percent, the growth the training weeks show.",
+        vendor: "The vendor's curve is its own forecast of the hidden weeks, made from the data to the week of 22 June 2026." }[m];
       var rows = [{ wide: how }];
       if (sc) {
         rows.push(["Mean absolute error", group(sc.mae) + " a week"], ["Weeks forecast too high", sc.high + " of " + sc.n],
           ["Idle shifts, at Rs 5.42 a spare shipment", lakh(sc.idle)], ["Late shipments, at Rs 25 each", lakh(sc.late)],
           ["The misses, priced", lakh(sc.idle + sc.late)]);
       } else {
-        rows.push(["Mean absolute error", "no forecast"], { wide: "The vendor's model was run once, from the week of 22 June 2026, so it has no forecast from any other week." });
+        rows.push(["Mean absolute error", "no forecast"], { wide: "The vendor forecast the hidden weeks once, from the week of 22 June 2026, so it has no forecast of them from any other week." });
       }
       rows.push({ wide: atOrigin ? "Scores depend on which weeks are hidden, so the split is fixed before anyone scores." :
-        "Scores depend on which weeks are hidden, so the split is fixed before anyone scores; the day's is the week of 22 June 2026. From an earlier week the 4 percent was measured on weeks the rules may not see." });
+        "Scores depend on which weeks are hidden, so the split is fixed before anyone scores; the day's is the week of 22 June 2026, and the board under the reveal stays there. From an earlier week the 4 percent was measured on weeks the rules may not see." });
       nums($("[data-nums]", art), rows);
+      /* the board stays at the day's split, so it always agrees with the reveal's sentences */
+      var o = FRI.origin, q = caseQuantile();
       var board = F2_ORDER.map(function (k) {
-        var x = fScore(k, s);
-        if (!x) return "<tr><td>" + F2_NAMES[k] + "</td><td>no forecast from this week</td><td></td><td></td></tr>";
-        return "<tr><td>" + F2_NAMES[k] + "</td><td>" + group(x.mae) + "</td><td>" + x.high + " of " + x.n + "</td><td>" + lakh(x.idle + x.late) + "</td></tr>";
+        var x = fScore(k, o), c = cushionOf(k, o, q), xr = fScore(k, o, c);
+        return "<tr><td>" + F2_NAMES[k] + "</td><td>" + group(x.mae) + "</td><td>" + x.high + " of " + x.n + "</td><td>" + lakh(x.idle + x.late) +
+          "</td><td>" + (c < 0 ? "-" : "+") + Math.abs(c * 100).toFixed(1) + " percent, " + lakh(xr.idle + xr.late) + "</td></tr>";
       }).join("");
-      var cush = cushionAt(s, caseQuantile()), xr = fScore("aligned", s, cush);
-      board += "<tr><td>Festival-aligned, raised to its own 0.82 point, " + (cush * 100).toFixed(1) + " percent (scene F4)</td><td>" + group(xr.mae) + "</td><td>" +
-        xr.high + " of " + xr.n + "</td><td>" + lakh(xr.idle + xr.late) + "</td></tr>";
-      $("[data-board]", art).innerHTML = '<table class="rows"><thead><tr><th>Rule, on the hidden weeks</th><th>MAE, shipments a week</th><th>Weeks too high</th><th>Misses priced</th></tr></thead><tbody>' + board + "</tbody></table>";
+      $("[data-board]", art).innerHTML = '<table class="rows board"><thead><tr><th>Rule, forecast from 22 June 2026</th><th>MAE, shipments a week</th><th>Weeks too high</th><th>Misses priced</th><th>Raised to its own 0.82 point, priced</th></tr></thead><tbody>' + board + "</tbody></table>";
     },
     final: function (st) { st.method = "aligned"; st.split = FRI.origin; }
   });
@@ -3402,6 +3421,15 @@ var W4 = {
       txt(svg, cx(9) + 22, 428, "the eight weeks to staff", { size: 13, fill: C.violet, weight: 700, anchor: "end" });
       txt(svg, 16, 30, "2025, the centre's shipments", { size: 14.5, weight: 700 });
       txt(svg, 16, 256, "2026, two forecasts on the same calendar weeks", { size: 14.5, weight: 700 });
+      /* one scale for both panels, in thousand shipments a week */
+      [[Ytop, 200000], [Ytop, 400000], [Ybot, 200000], [Ybot, 400000]].forEach(function (g) {
+        add(svg, "line", { x1: 76, x2: 660, y1: g[0](g[1]), y2: g[0](g[1]), stroke: C.line });
+        txt(svg, 70, g[0](g[1]) + 4, g[1] / 1000 + "k", { size: 12.5, anchor: "end", fill: C.muted });
+      });
+      [["the house bot", AMBER, 404], ["festival-aligned", C.violet, 520]].forEach(function (lg) {
+        add(svg, "line", { x1: lg[2], x2: lg[2] + 22, y1: 251, y2: 251, stroke: lg[1], "stroke-width": 3 });
+        txt(svg, lg[2] + 28, 256, lg[0], { size: 13.5, weight: 700, fill: lg[1] === AMBER ? AMBER_INK : C.violet });
+      });
       var top = [], bot = [], ali = [];
       for (var i = 0; i < 10; i++) {
         top.push(yAt(53 + i));
@@ -3424,6 +3452,15 @@ var W4 = {
       line(top, Ytop, C.ink, 2.4);
       line(bot, Ybot, AMBER, 2.4);
       line(ali, Ybot, C.violet, 2.4);
+      /* a drawn week outside the band copies its calendar week; when that week was in 2025's festival, ring it */
+      var edge = [];
+      for (i = 0; i < 10; i++) {
+        var src = fSource(105 + i, diw);
+        if (fOffset(105 + i, diw) === null && fOffset(src, diw) !== null) {
+          edge.push(105 + i);
+          add(svg, "circle", { cx: cx(i), cy: Ybot(ali[i]), r: 8, fill: C.white, stroke: C.violet, "stroke-width": 2, "stroke-dasharray": "3 2" });
+        }
+      }
       var pk = function (vals) { return vals.indexOf(Math.max.apply(null, vals)); };
       var pb = pk(bot), pa = pk(ali);
       add(svg, "circle", { cx: cx(pb), cy: Ybot(bot[pb]), r: 11, fill: "none", stroke: AMBER, "stroke-width": 3 });
@@ -3432,23 +3469,27 @@ var W4 = {
       txt(svg, cx(pa), Ybot(ali[pa]) - 18, "festival-aligned peak", { size: 13.5, weight: 700, fill: C.violet, anchor: "middle" }).setAttribute("class", "halo");
       put($("[data-fig]", art), svg);
       $('[data-ctl="diwali"]', art).value = D;
-      setOut(art, "diwali", "The week of " + weekDate(D) + "");
+      setOut(art, "diwali", "The week of " + weekDate(D) + (D === FRI.diwaliWeek[2026] ? ", the case's own Diwali week" : ", a what-if; the case's Diwali week is 2 November"));
       var early = pa - pb, w = f3Windows(D);
-      nums($("[data-nums]", art), [
+      var rows = [
         ["The bot's peak", "week of " + weekDate(105 + pb, true) + ", " + group(bot[pb])],
         ["The festival-aligned peak", "week of " + weekDate(105 + pa, true) + ", " + group(ali[pa])],
         ["The bot is early by", early === 0 ? "nothing" : early + (early === 1 ? " week" : " weeks")],
-        ["Packer shifts in the aligned peak week", group(Math.ceil(ali[pa] / FRI.perShift))],
+        ["Packer shifts that week at the forecast itself, before F4's cushion", group(Math.ceil(ali[pa] / FRI.perShift))],
         { wide: "Near Diwali the aligned copy of a 2026 week is the 2025 week at the same distance from Diwali 2025, here " + off +
-          " weeks earlier, times 1.04; further from Diwali it copies the same calendar week, as the bot does." },
+          " weeks earlier, times 1.04; further from Diwali it copies the same calendar week, as the bot does, and adds the same 4 percent." },
         { wide: "Over the eight weeks from 12 October, festival-aligned books " + group(w.aligned) + ": " + vsText(w.aligned, w.calendar) +
-          " 2025's same calendar weeks and " + vsText(w.aligned, w.diwali) + " 2025's same weeks counted from Diwali." },
-        { wide: D === FRI.diwaliWeek[2026] ? "This is 2026's own Diwali week, the case's position." :
-          (off === 52 ? "Here Diwali 2026 sits on the same calendar week as Diwali 2025, so the bot happens to be right; in 2026 Diwali falls in the week of " + weekDate(FRI.diwaliWeek[2026]) + "." :
-            "In 2026 Diwali falls in the week of " + weekDate(FRI.diwaliWeek[2026]) + "; the slider tries other weeks to show what each copy does.") }
-      ]);
+          " 2025's same calendar weeks and " + vsText(w.aligned, w.diwali) + " 2025's same weeks counted from Diwali." }
+      ];
+      edge.forEach(function (t) {
+        rows.push({ wide: "The ringed week of " + weekDate(t) + " sits " + Math.abs(t - D) + " weeks before this Diwali, outside the band of five weeks before to four after, so the rule copies the same calendar week of 2025, which was a festival week; the eight weeks to staff start later, so their total is untouched." });
+      });
+      rows.push({ wide: D === FRI.diwaliWeek[2026] ? "This is 2026's own Diwali week, the case's position." :
+        (off === 52 ? "Here Diwali 2026 sits on the same calendar week as Diwali 2025, so the bot happens to be right; in 2026 Diwali falls in the week of " + weekDate(FRI.diwaliWeek[2026]) + "." :
+          "In 2026 Diwali falls in the week of " + weekDate(FRI.diwaliWeek[2026]) + "; the slider tries other weeks to show what each copy does.") });
+      nums($("[data-nums]", art), rows);
       var cw = f3Windows(FRI.diwaliWeek[2026]);
-      $("[data-windows]", art).innerHTML = '<table class="rows"><thead><tr><th>12 Oct to 30 Nov 2026</th><th>Eight weeks</th><th>Against 13 Oct to 1 Dec 2025</th><th>Against 29 Sep to 17 Nov 2025</th></tr></thead><tbody>' +
+      $("[data-windows]", art).innerHTML = '<table class="rows board"><thead><tr><th>12 Oct to 30 Nov 2026</th><th>Eight weeks</th><th>Against 13 Oct to 1 Dec 2025</th><th>Against 29 Sep to 17 Nov 2025</th></tr></thead><tbody>' +
         [["The house bot", "bot"], ["Finance's rule", "finance"], ["The vendor", "vendor"], ["Festival-aligned", "aligned"]].map(function (r) {
           return "<tr><td>" + r[0] + "</td><td>" + group(cw[r[1]]) + "</td><td>" + vsText(cw[r[1]], cw.calendar, true) + "</td><td>" + vsText(cw[r[1]], cw.diwali, true) + "</td></tr>";
         }).join("") + "</tbody></table>";
@@ -3520,6 +3561,10 @@ var W4 = {
       ["the plan:", "+" + (cush * 100).toFixed(1) + " percent,", "the " + p.toFixed(2) + " point"].forEach(function (s, k) {
         txt(svg, X(cush) + 8, 104 + k * 18, s, { size: 14, weight: 700, fill: C.violet }).setAttribute("class", "halo");
       });
+      /* ring the curve's own lowest point, read on notebook 03's grid of 0.2 percent steps as the day reads it */
+      var low = [0, Infinity];
+      for (var gi = -80; gi <= 100; gi += 2) { var gc = cost(gi / 1000); if (gc.idle + gc.late < low[1]) low = [gi / 1000, gc.idle + gc.late]; }
+      add(svg, "circle", { cx: X(low[0]), cy: Y(low[1]), r: 10, fill: "none", stroke: C.ink, "stroke-width": 2 });
       /* the thirteen misses beneath the axis: violet where the plan covers the week, rose where it falls short */
       var covered = 0;
       misses.forEach(function (e) {
@@ -3545,6 +3590,7 @@ var W4 = {
         ["Packer shifts, the eight weeks", group(shifts)],
         ["Average cost a week at the plan", "Rs " + (best / 1e5).toFixed(2) + " lakh"],
         ["Average cost a week at the forecast", "Rs " + (mid / 1e5).toFixed(2) + " lakh"],
+        ["The curve's lowest point, ringed, on a 0.2 percent grid", (low[0] < 0 ? "-" : "+") + Math.abs(low[0] * 100).toFixed(1) + " percent"],
         { wide: "The week of 19 October books " + group(plan) + " shipments at the plan, " + group(Math.ceil(plan / FRI.perShift)) + " packer shifts against " +
           group(Math.ceil(F / FRI.perShift)) + " at the forecast itself; the eight weeks book " + group(shifts) + " shifts, " + group(shifts - base) +
           " more than the " + group(base) + " at the forecast alone." },
