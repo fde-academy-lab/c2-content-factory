@@ -81,8 +81,8 @@ d) The 1,200 drivers in Monday's driver table, counted as the city's supply
 
 ---
 
-**How do you check your letters against the deck?** The afternoon deck's S34 names the three tests
-(unit, period, definition), and S45 shows one trap for each.
+**How do you check your letters against the deck?** The afternoon deck's S72 names the three tests
+(unit, period, definition), chapter 6's S61 draws them as a flow, and S81 shows one trap for each.
 
 **In the interview.** [S] A guesstimate: how many drivers must be online at the evening peak, and
 how would you check it?

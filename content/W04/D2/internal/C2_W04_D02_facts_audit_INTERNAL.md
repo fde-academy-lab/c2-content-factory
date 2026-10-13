@@ -2,7 +2,7 @@
 
 Written by C2_W04_D02_facts_audit_INTERNAL.py from the STUDENT files and C2_W04_D02_facts_INTERNAL.yaml. A number matches when it equals a value in the facts file at the precision printed, read as itself, a percent, a lakh, a crore, a million or a billion. Structural numbers (slide, level, item, chapter, minutes, dates, years) and the speaker notes are left out.
 
-Numbers traced: 1995. Numbers with no home: 0.
+Numbers traced: 2176. Numbers with no home: 0.
 
 | Number | File | Line | Facts id |
 |---|---|---|---|
@@ -33,18 +33,28 @@ Numbers traced: 1995. Numbers with no home: 0.
 | 802 million | C2_W04_D02_one_slide_STUDENT.md | 48 | numbers.upi_month_over_30.value |
 | 6.3 million | C2_W04_D02_one_slide_STUDENT.md | 49 | public_facts.flipkart_concurrent_users.value |
 | 63 | C2_W04_D02_one_slide_STUDENT.md | 49 | numbers.driver_hours_per_trip_after.value |
-| 314 | C2_W04_D02_index_STUDENT.md | 4 | numbers.twelve_rs_per_hour_before.value |
-| 260 | C2_W04_D02_index_STUDENT.md | 4 | monday_ids_reused.rs_per_hour_after.value |
-| 165 | C2_W04_D02_index_STUDENT.md | 4 | numbers.twelve_rs_per_trip.value |
-| 3 | C2_W04_D02_index_STUDENT.md | 25 | numbers.full_bookings_change_pct.value |
-| 2 | C2_W04_D02_index_STUDENT.md | 26 | numbers.tph_after_exact.value |
-| 1 | C2_W04_D02_index_STUDENT.md | 27 | numbers.full_rs_per_driver_week_change_pct.value |
+| 314 | C2_W04_D02_index_STUDENT.md | 8 | numbers.twelve_rs_per_hour_before.value |
+| 260 | C2_W04_D02_index_STUDENT.md | 8 | monday_ids_reused.rs_per_hour_after.value |
+| 165 | C2_W04_D02_index_STUDENT.md | 9 | numbers.twelve_rs_per_trip.value |
+| 5 | C2_W04_D02_index_STUDENT.md | 26 | monday_ids_reused.median_wait_before.value |
+| 3 | C2_W04_D02_index_STUDENT.md | 27 | numbers.full_bookings_change_pct.value |
 | 4 | C2_W04_D02_index_STUDENT.md | 28 | numbers.hours_per_driver_week_extra.value |
-| 0 | C2_W04_D02_index_STUDENT.md | 29 | numbers.idle_tail_joiners.value |
-| 0 | C2_W04_D02_index_STUDENT.md | 30 | numbers.idle_tail_joiners.value |
-| 2 | C2_W04_D02_index_STUDENT.md | 31 | numbers.tph_after_exact.value |
-| 2 | C2_W04_D02_index_STUDENT.md | 32 | numbers.tph_after_exact.value |
-| 0 | C2_W04_D02_index_STUDENT.md | 33 | numbers.idle_tail_joiners.value |
+| 3 | C2_W04_D02_index_STUDENT.md | 29 | numbers.full_bookings_change_pct.value |
+| 2 | C2_W04_D02_index_STUDENT.md | 30 | numbers.tph_after_exact.value |
+| 1 | C2_W04_D02_index_STUDENT.md | 31 | numbers.full_rs_per_driver_week_change_pct.value |
+| 6 | C2_W04_D02_index_STUDENT.md | 32 | numbers.twelve_driver_weeks.value |
+| 3 | C2_W04_D02_index_STUDENT.md | 33 | numbers.full_bookings_change_pct.value |
+| 4 | C2_W04_D02_index_STUDENT.md | 34 | numbers.hours_per_driver_week_extra.value |
+| 0 | C2_W04_D02_index_STUDENT.md | 35 | numbers.idle_tail_joiners.value |
+| 0 | C2_W04_D02_index_STUDENT.md | 36 | numbers.idle_tail_joiners.value |
+| 2 | C2_W04_D02_index_STUDENT.md | 37 | numbers.tph_after_exact.value |
+| 2 | C2_W04_D02_index_STUDENT.md | 38 | numbers.tph_after_exact.value |
+| 0 | C2_W04_D02_index_STUDENT.md | 39 | numbers.idle_tail_joiners.value |
+| 1 | C2_W04_D02_index_STUDENT.md | 49 | numbers.full_rs_per_driver_week_change_pct.value |
+| 2 | C2_W04_D02_index_STUDENT.md | 50 | numbers.tph_after_exact.value |
+| 3 | C2_W04_D02_index_STUDENT.md | 51 | numbers.full_bookings_change_pct.value |
+| 4 | C2_W04_D02_index_STUDENT.md | 52 | numbers.hours_per_driver_week_extra.value |
+| 5 | C2_W04_D02_index_STUDENT.md | 53 | monday_ids_reused.median_wait_before.value |
 | 1 | C2_W04_D02_kalpa_slide_template_STUDENT.md | 31 | numbers.full_rs_per_driver_week_change_pct.value |
 | 2 | C2_W04_D02_kalpa_slide_template_STUDENT.md | 32 | numbers.tph_after_exact.value |
 | 3 | C2_W04_D02_kalpa_slide_template_STUDENT.md | 33 | numbers.full_bookings_change_pct.value |
@@ -104,8 +114,10 @@ Numbers traced: 1995. Numbers with no home: 0.
 | 1.0 | C2_W04_D02_slide_and_estimate_STUDENT.md | 94 | numbers.bookings_ratio.value |
 | 42,000 | C2_W04_D02_slide_and_estimate_STUDENT.md | 95 | monday_ids_reused.idle_hours_after.value |
 | 33,440 | C2_W04_D02_slide_and_estimate_STUDENT.md | 95 | monday_ids_reused.idle_trips_after.value |
-| 2 | C2_W04_D02_slide_and_estimate_STUDENT.md | 114 | numbers.tph_after_exact.value |
-| 2,400 | C2_W04_D02_slide_and_estimate_STUDENT.md | 114 | numbers.twelve_rs_per_driver_week_after.value |
+| 2 | C2_W04_D02_slide_and_estimate_STUDENT.md | 115 | numbers.tph_after_exact.value |
+| 2,700 | C2_W04_D02_slide_and_estimate_STUDENT.md | 115 | toys.toy_canteen_tea.values.cups_a_day |
+| 2,340 | C2_W04_D02_slide_and_estimate_STUDENT.md | 115 | toy_numbers.toy_canteen_till_mean.value |
+| 15.4 percent | C2_W04_D02_slide_and_estimate_STUDENT.md | 116 | toy_numbers.toy_canteen_gap_pct.value |
 | 1 crore | C2_W04_D02_slide_and_estimate_STUDENT.md | 130 | numbers.full_rs_per_driver_week_change_pct.value |
 | 1 | C2_W04_D02_slide_and_estimate_STUDENT.md | 130 | numbers.full_rs_per_driver_week_change_pct.value |
 | 100 | C2_W04_D02_slide_and_estimate_STUDENT.md | 130 | numbers.saving_low_lakh.value |
@@ -128,6 +140,65 @@ Numbers traced: 1995. Numbers with no home: 0.
 | 12,000 | C2_W04_D02_lab_set_STUDENT.md | 56 | toys.toy_food_stall.values.sales_rs |
 | 240 | C2_W04_D02_lab_set_STUDENT.md | 56 | toys.toy_food_stall.values.orders |
 | 5 | C2_W04_D02_lab_set_STUDENT.md | 57 | monday_ids_reused.median_wait_before.value |
+| 1,800 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 5 | toys.toy_auto_driver.values.day_rs |
+| 20 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 5 | monday_ids_reused.uptake_low.value |
+| 18 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 6 | toys.toy_auto_driver.values.tuesday_rides |
+| 700 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 6 | numbers.upi_estimate_millions.value |
+| 11.8 percent | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 6 | toy_numbers.toy_kirana_per_hour_pct.value |
+| 1 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 28 | numbers.full_rs_per_driver_week_change_pct.value |
+| 2 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 29 | numbers.tph_after_exact.value |
+| 200 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 29 | numbers.twelve_rs_per_hour_after.value |
+| 150 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 29 | toys.toy_auto_driver.values.tuesday_per_hour_rs |
+| 3 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 30 | numbers.full_bookings_change_pct.value |
+| 700 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 30 | numbers.upi_estimate_millions.value |
+| 4 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 31 | numbers.hours_per_driver_week_extra.value |
+| 170 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 31 | toy_numbers.toy_kirana_helper_cost.value |
+| 5 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 32 | monday_ids_reused.median_wait_before.value |
+| 11.8 percent | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 32 | toy_numbers.toy_kirana_per_hour_pct.value |
+| 90 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 36 | numbers.served_share_after.value |
+| 100 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 36 | numbers.saving_low_lakh.value |
+| 50 | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 37 | monday_ids_reused.uptake_high.value |
+| 37 percent | C2_W04_D02_ch1_one_slide_answer_solution_STUDENT.md | 44 | numbers.twelve_rs_per_hour_change_pct.value |
+| 1 | C2_W04_D02_ch2_leave_out_appendix_solution_STUDENT.md | 28 | numbers.full_rs_per_driver_week_change_pct.value |
+| 2 | C2_W04_D02_ch2_leave_out_appendix_solution_STUDENT.md | 29 | numbers.tph_after_exact.value |
+| 3 | C2_W04_D02_ch2_leave_out_appendix_solution_STUDENT.md | 30 | numbers.full_bookings_change_pct.value |
+| 8 | C2_W04_D02_ch3_defending_under_challenge_solution_STUDENT.md | 5 | numbers.rs_per_hour_per_ten.value |
+| 8.3 | C2_W04_D02_ch3_defending_under_challenge_solution_STUDENT.md | 6 | numbers.rs_per_hour_per_ten.value |
+| 8.0 | C2_W04_D02_ch3_defending_under_challenge_solution_STUDENT.md | 6 | toy_numbers.toy_draft_elements.value |
+| 5 | C2_W04_D02_ch3_defending_under_challenge_solution_STUDENT.md | 6 | monday_ids_reused.median_wait_before.value |
+| 4.7 | C2_W04_D02_ch3_defending_under_challenge_solution_STUDENT.md | 6 | toy_numbers.toy_school_pre_rise.value |
+| 1 | C2_W04_D02_ch3_defending_under_challenge_solution_STUDENT.md | 27 | numbers.full_rs_per_driver_week_change_pct.value |
+| 2 | C2_W04_D02_ch3_defending_under_challenge_solution_STUDENT.md | 28 | numbers.tph_after_exact.value |
+| 8 | C2_W04_D02_ch3_defending_under_challenge_solution_STUDENT.md | 28 | numbers.rs_per_hour_per_ten.value |
+| 3 | C2_W04_D02_ch3_defending_under_challenge_solution_STUDENT.md | 29 | numbers.full_bookings_change_pct.value |
+| 4 | C2_W04_D02_ch3_defending_under_challenge_solution_STUDENT.md | 30 | numbers.hours_per_driver_week_extra.value |
+| 12.8 | C2_W04_D02_ch3_defending_under_challenge_solution_STUDENT.md | 34 | toy_numbers.toy_school_whole_rise.value |
+| 3,000 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 5 | toys.toy_canteen_tea.values.students |
+| 0.45 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 5 | toys.toy_canteen_tea.values.share_who_buy_tea |
+| 2 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 5 | numbers.tph_after_exact.value |
+| 2,700 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 5 | toys.toy_canteen_tea.values.cups_a_day |
+| 3,900 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 6 | toy_numbers.toy_canteen_swing_share_high.value |
+| 2,340 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 6 | toy_numbers.toy_canteen_till_mean.value |
+| 15.4 percent | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 7 | toy_numbers.toy_canteen_gap_pct.value |
+| 0.39 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 7 | toy_numbers.toy_canteen_implied_share.value |
+| 1 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 27 | numbers.full_rs_per_driver_week_change_pct.value |
+| 2 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 28 | numbers.tph_after_exact.value |
+| 3 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 29 | numbers.full_bookings_change_pct.value |
+| 3,900 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 29 | toy_numbers.toy_canteen_swing_share_high.value |
+| 2,970 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 29 | toy_numbers.toy_canteen_swing_students_high.value |
+| 3,375 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 29 | toy_numbers.toy_canteen_swing_cups_high.value |
+| 4 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 30 | numbers.hours_per_driver_week_extra.value |
+| 5 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 31 | monday_ids_reused.median_wait_before.value |
+| 30 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 31 | numbers.september_days.value |
+| 1.5 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 31 | numbers.four_hour_buffer.value |
+| 6 | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 32 | numbers.twelve_driver_weeks.value |
+| 1 billion | C2_W04_D02_ch6_guesstimate_solution_STUDENT.md | 32 | numbers.full_rs_per_driver_week_change_pct.value |
+| 13 | C2_W04_D02_ch7_written_case_solution_STUDENT.md | 6 | numbers.upi_estimate_gap_pct.value |
+| 1 | C2_W04_D02_ch7_written_case_solution_STUDENT.md | 27 | numbers.full_rs_per_driver_week_change_pct.value |
+| 2 | C2_W04_D02_ch7_written_case_solution_STUDENT.md | 28 | numbers.tph_after_exact.value |
+| 3 | C2_W04_D02_ch7_written_case_solution_STUDENT.md | 29 | numbers.full_bookings_change_pct.value |
+| 35 | C2_W04_D02_ch7_written_case_solution_STUDENT.md | 39 | programme.cohort_students |
+| 07 | C2_W04_D02_ch7_written_case_solution_STUDENT.md | 40 | numbers.wrong_unit_ratio.value |
 | 314 | C2_W04_D02_interview_rungs_solution_STUDENT.md | 6 | numbers.twelve_rs_per_hour_before.value |
 | 260 | C2_W04_D02_interview_rungs_solution_STUDENT.md | 6 | monday_ids_reused.rs_per_hour_after.value |
 | 165 | C2_W04_D02_interview_rungs_solution_STUDENT.md | 7 | numbers.twelve_rs_per_trip.value |
@@ -227,8 +298,8 @@ Numbers traced: 1995. Numbers with no home: 0.
 | 500 | C2_W04_D02_mid_check_against_solution_STUDENT.md | 34 | numbers.dmart_average_store_count.value |
 | 134 crore | C2_W04_D02_mid_check_against_solution_STUDENT.md | 34 | numbers.dmart_revenue_per_store_year_end.value |
 | 146 crore | C2_W04_D02_mid_check_against_solution_STUDENT.md | 35 | numbers.dmart_revenue_per_store_average.value |
-| 6.3 million | C2_W04_D02_mid_check_against_solution_STUDENT.md | 46 | public_facts.flipkart_concurrent_users.value |
-| 63 | C2_W04_D02_mid_check_against_solution_STUDENT.md | 46 | numbers.driver_hours_per_trip_after.value |
+| 6.3 million | C2_W04_D02_mid_check_against_solution_STUDENT.md | 47 | public_facts.flipkart_concurrent_users.value |
+| 63 | C2_W04_D02_mid_check_against_solution_STUDENT.md | 47 | numbers.driver_hours_per_trip_after.value |
 | 1.9 crore | C2_W04_D02_mid_cut_to_two_solution_STUDENT.md | 6 | numbers.idle_tail_tph_before.value |
 | 24 percent | C2_W04_D02_mid_cut_to_two_solution_STUDENT.md | 6 | monday_ids_reused.hours_change_pct.value |
 | 2,836 | C2_W04_D02_mid_cut_to_two_solution_STUDENT.md | 7 | numbers.topup_per_extra_trip_rs.value |
@@ -300,13 +371,13 @@ Numbers traced: 1995. Numbers with no home: 0.
 | 0.8 percent | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 30 | numbers.full_rs_per_driver_week_change_pct.value |
 | 22.5 | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 31 | numbers.hours_per_driver_week_after.value |
 | 17 percent | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 31 | numbers.full_rs_per_hour_change_pct.value |
-| 01 | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 42 | numbers.full_rs_per_driver_week_change_pct.value |
+| 08 | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 42 | numbers.rs_per_hour_per_ten.value |
 | 2 | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 45 | numbers.tph_after_exact.value |
-| 1 | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 45 | numbers.full_rs_per_driver_week_change_pct.value |
-| 0.30 | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 45 | assumptions.evening_share.high |
-| 1.68 | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 46 | numbers.trips_per_online_hour_chain.value |
-| 6,400 | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 46 | numbers.swing_idle_share_high.value |
-| 0.38 | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 46 | monday_ids_reused.no_trip_share_after.value |
+| 1 | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 47 | numbers.full_rs_per_driver_week_change_pct.value |
+| 0.30 | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 47 | assumptions.evening_share.high |
+| 1.68 | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 47 | numbers.trips_per_online_hour_chain.value |
+| 6,400 | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 47 | numbers.swing_idle_share_high.value |
+| 0.38 | C2_W04_D02_slide_and_estimate_solution_STUDENT.md | 47 | monday_ids_reused.no_trip_share_after.value |
 | 314 | C2_W04_D02_studio_brief_solution_STUDENT.md | 7 | numbers.twelve_rs_per_hour_before.value |
 | 260 | C2_W04_D02_studio_brief_solution_STUDENT.md | 7 | monday_ids_reused.rs_per_hour_after.value |
 | 165 | C2_W04_D02_studio_brief_solution_STUDENT.md | 7 | numbers.twelve_rs_per_trip.value |
@@ -334,6 +405,118 @@ Numbers traced: 1995. Numbers with no home: 0.
 | 260 | C2_W04_D02_written_case_solution_STUDENT.md | 37 | monday_ids_reused.rs_per_hour_after.value |
 | 17 percent | C2_W04_D02_written_case_solution_STUDENT.md | 49 | numbers.full_rs_per_hour_change_pct.value |
 | 17 percent | C2_W04_D02_written_case_solution_STUDENT.md | 51 | numbers.full_rs_per_hour_change_pct.value |
+| 1,800 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 33 | toys.toy_auto_driver.values.day_rs |
+| 20 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 33 | monday_ids_reused.uptake_low.value |
+| 1,800 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 33 | toys.toy_auto_driver.values.day_rs |
+| 18 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 34 | toys.toy_auto_driver.values.tuesday_rides |
+| 1,800 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 41 | toys.toy_auto_driver.values.day_rs |
+| 20 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 41 | monday_ids_reused.uptake_low.value |
+| 18 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 41 | toys.toy_auto_driver.values.tuesday_rides |
+| 9 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 41 | numbers.dmart_denominator_gap_pct.value |
+| 1,800 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 56 | toys.toy_auto_driver.values.day_rs |
+| 1,800 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 56 | toys.toy_auto_driver.values.day_rs |
+| 90 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 57 | numbers.served_share_after.value |
+| 100 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 57 | numbers.saving_low_lakh.value |
+| 20 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 58 | monday_ids_reused.uptake_low.value |
+| 18 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 58 | toys.toy_auto_driver.values.tuesday_rides |
+| 200 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 59 | numbers.twelve_rs_per_hour_after.value |
+| 150 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 59 | toys.toy_auto_driver.values.tuesday_per_hour_rs |
+| 12 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 68 | monday_ids_reused.zones_total.value |
+| 11,900 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 68 | toy_numbers.toy_kirana_sales_day_sep.value |
+| 12,600 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 69 | toy_numbers.toy_kirana_sales_day_oct.value |
+| 1,190 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 69 | toy_numbers.toy_kirana_per_hour_sep.value |
+| 1,050 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 69 | toy_numbers.toy_kirana_per_hour_oct.value |
+| 100 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 69 | numbers.saving_low_lakh.value |
+| 170 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 70 | toy_numbers.toy_kirana_helper_cost.value |
+| 100 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 77 | numbers.saving_low_lakh.value |
+| 700 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 78 | numbers.upi_estimate_millions.value |
+| 1,190 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 80 | toy_numbers.toy_kirana_per_hour_sep.value |
+| 1,050 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 80 | toy_numbers.toy_kirana_per_hour_oct.value |
+| 170 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 92 | toy_numbers.toy_kirana_helper_cost.value |
+| 11,900 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 103 | toy_numbers.toy_kirana_sales_day_sep.value |
+| 12,600 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 103 | toy_numbers.toy_kirana_sales_day_oct.value |
+| 11.8 percent | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 108 | toy_numbers.toy_kirana_per_hour_pct.value |
+| 100 | C2_W04_D02_ch1_one_slide_answer_STUDENT.md | 109 | numbers.saving_low_lakh.value |
+| 3 | C2_W04_D02_ch2_leave_out_appendix_STUDENT.md | 5 | numbers.full_bookings_change_pct.value |
+| 5 | C2_W04_D02_ch2_leave_out_appendix_STUDENT.md | 29 | monday_ids_reused.median_wait_before.value |
+| 2 | C2_W04_D02_ch2_leave_out_appendix_STUDENT.md | 30 | numbers.tph_after_exact.value |
+| 85 | C2_W04_D02_ch2_leave_out_appendix_STUDENT.md | 73 | public_facts.dmart_stores_added_fy26.value |
+| 8 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 13 | numbers.rs_per_hour_per_ten.value |
+| 1 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 15 | numbers.full_rs_per_driver_week_change_pct.value |
+| 2 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 15 | numbers.tph_after_exact.value |
+| 3 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 15 | numbers.full_bookings_change_pct.value |
+| 4 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 15 | numbers.hours_per_driver_week_extra.value |
+| 5 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 15 | monday_ids_reused.median_wait_before.value |
+| 6 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 15 | numbers.twelve_driver_weeks.value |
+| 7 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 15 | numbers.wrong_unit_ratio.value |
+| 8 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 15 | numbers.rs_per_hour_per_ten.value |
+| 76 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 17 | toy_numbers.toy_school_last_w1.value |
+| 77 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 17 | toy_numbers.toy_school_last_w2.value |
+| 76 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 17 | toy_numbers.toy_school_last_w1.value |
+| 77 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 17 | toy_numbers.toy_school_last_w2.value |
+| 77 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 17 | toy_numbers.toy_school_last_w2.value |
+| 85 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 17 | public_facts.dmart_stores_added_fy26.value |
+| 85 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 17 | public_facts.dmart_stores_added_fy26.value |
+| 85 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 17 | public_facts.dmart_stores_added_fy26.value |
+| 77 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 18 | toy_numbers.toy_school_last_w2.value |
+| 76 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 18 | toy_numbers.toy_school_last_w1.value |
+| 81 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 18 | toy_numbers.toy_school_this_w3.value |
+| 82 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 18 | monday_ids_reused.topup_per_trip_after_rs.value |
+| 81 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 18 | toy_numbers.toy_school_this_w3.value |
+| 89 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 18 | numbers.served_share_before.value |
+| 90 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 18 | numbers.served_share_after.value |
+| 89 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 18 | numbers.served_share_before.value |
+| 5 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 44 | monday_ids_reused.median_wait_before.value |
+| 4.7 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 44 | toy_numbers.toy_school_pre_rise.value |
+| 8 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 46 | numbers.rs_per_hour_per_ten.value |
+| 12.8 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 60 | toy_numbers.toy_school_whole_rise.value |
+| 2 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 61 | numbers.tph_after_exact.value |
+| 76.5 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 61 | toy_numbers.toy_school_start_mean.value |
+| 5 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 62 | monday_ids_reused.median_wait_before.value |
+| 4.7 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 62 | toy_numbers.toy_school_pre_rise.value |
+| 8 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 63 | numbers.rs_per_hour_per_ten.value |
+| 8.3 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 63 | numbers.rs_per_hour_per_ten.value |
+| 8.0 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 63 | toy_numbers.toy_draft_elements.value |
+| 5 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 77 | monday_ids_reused.median_wait_before.value |
+| 12.8 | C2_W04_D02_ch3_defending_under_challenge_STUDENT.md | 91 | toy_numbers.toy_school_whole_rise.value |
+| 3,000 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 15 | toys.toy_canteen_tea.values.students |
+| 2,700 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 15 | toys.toy_canteen_tea.values.cups_a_day |
+| 3,300 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 15 | toy_numbers.toy_kirana_customers_sep_total.value |
+| 0.45 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 16 | toys.toy_canteen_tea.values.share_who_buy_tea |
+| 0.25 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 16 | assumptions.evening_share.value |
+| 0.65 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 16 | toy_numbers.toy_canteen_share_high.value |
+| 2 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 17 | numbers.tph_after_exact.value |
+| 1.5 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 17 | numbers.four_hour_buffer.value |
+| 2.5 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 17 | toys.toy_kahoot_q6.values.trips_per_busy_hour |
+| 3,900 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 78 | toy_numbers.toy_canteen_swing_share_high.value |
+| 3,000 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 94 | toys.toy_canteen_tea.values.students |
+| 28 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 104 | toy_numbers.toy_kirana_days_each_month.value |
+| 1.5 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 104 | numbers.four_hour_buffer.value |
+| 30 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 104 | numbers.september_days.value |
+| 42 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 104 | monday_ids_reused.max_peak_hours_per_week.value |
+| 45 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 104 | toys.toy_canteen_tea.values.share_who_buy_tea |
+| 42 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 108 | monday_ids_reused.max_peak_hours_per_week.value |
+| 45 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 108 | toys.toy_canteen_tea.values.share_who_buy_tea |
+| 1.5 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 110 | numbers.four_hour_buffer.value |
+| 31 billion | C2_W04_D02_ch6_guesstimate_STUDENT.md | 113 | numbers.a_31_day_month.value |
+| 31 | C2_W04_D02_ch6_guesstimate_STUDENT.md | 113 | numbers.a_31_day_month.value |
+| 1 billion | C2_W04_D02_ch6_guesstimate_STUDENT.md | 113 | numbers.full_rs_per_driver_week_change_pct.value |
+| 31 billion | C2_W04_D02_ch6_guesstimate_STUDENT.md | 117 | numbers.a_31_day_month.value |
+| 1 billion | C2_W04_D02_ch6_guesstimate_STUDENT.md | 117 | numbers.full_rs_per_driver_week_change_pct.value |
+| 31 billion | C2_W04_D02_ch6_guesstimate_STUDENT.md | 118 | numbers.a_31_day_month.value |
+| 1.03 billion | C2_W04_D02_ch6_guesstimate_STUDENT.md | 118 | numbers.bookings_ratio.value |
+| 31 billion | C2_W04_D02_ch6_guesstimate_STUDENT.md | 120 | numbers.a_31_day_month.value |
+| 1 billion | C2_W04_D02_ch6_guesstimate_STUDENT.md | 120 | numbers.full_rs_per_driver_week_change_pct.value |
+| 11,900 | C2_W04_D02_ch7_written_case_STUDENT.md | 30 | toy_numbers.toy_kirana_sales_day_sep.value |
+| 12,600 | C2_W04_D02_ch7_written_case_STUDENT.md | 31 | toy_numbers.toy_kirana_sales_day_oct.value |
+| 1,190 | C2_W04_D02_ch7_written_case_STUDENT.md | 31 | toy_numbers.toy_kirana_per_hour_sep.value |
+| 1,050 | C2_W04_D02_ch7_written_case_STUDENT.md | 31 | toy_numbers.toy_kirana_per_hour_oct.value |
+| 11,900 | C2_W04_D02_ch7_written_case_STUDENT.md | 37 | toy_numbers.toy_kirana_sales_day_sep.value |
+| 12,600 | C2_W04_D02_ch7_written_case_STUDENT.md | 37 | toy_numbers.toy_kirana_sales_day_oct.value |
+| 700 | C2_W04_D02_ch7_written_case_STUDENT.md | 38 | numbers.upi_estimate_millions.value |
+| 88 | C2_W04_D02_ch7_written_case_STUDENT.md | 40 | numbers.twelve_trips_after.value |
+| 58 lakh | C2_W04_D02_ch7_written_case_STUDENT.md | 69 | numbers.saving_low_lakh.value |
+| 92.7 lakh | C2_W04_D02_ch7_written_case_STUDENT.md | 69 | numbers.saving_high_lakh.value |
 | 314 | C2_W04_D02_interview_rungs_STUDENT.md | 5 | numbers.twelve_rs_per_hour_before.value |
 | 260 | C2_W04_D02_interview_rungs_STUDENT.md | 5 | monday_ids_reused.rs_per_hour_after.value |
 | 165 | C2_W04_D02_interview_rungs_STUDENT.md | 5 | numbers.twelve_rs_per_trip.value |
@@ -430,6 +613,7 @@ Numbers traced: 1995. Numbers with no home: 0.
 | 2 | C2_W04_D02_written_case_STUDENT.md | 35 | numbers.tph_after_exact.value |
 | 58 lakh | C2_W04_D02_written_case_STUDENT.md | 35 | numbers.saving_low_lakh.value |
 | 92.7 lakh | C2_W04_D02_written_case_STUDENT.md | 35 | numbers.saving_high_lakh.value |
+| 07 | C2_W04_D02_written_case_STUDENT.md | 53 | numbers.wrong_unit_ratio.value |
 | 24 percent | C2_W04_D02_interview_room_STUDENT.md | 43 | monday_ids_reused.hours_change_pct.value |
 | 3 percent | C2_W04_D02_interview_room_STUDENT.md | 43 | numbers.full_bookings_change_pct.value |
 | 1.58 | C2_W04_D02_interview_room_STUDENT.md | 43 | numbers.tph_after_exact.value |
@@ -482,15 +666,12 @@ Numbers traced: 1995. Numbers with no home: 0.
 | 1 lakh | C2_W04_D02_quiz_STUDENT.md | 68 | numbers.full_rs_per_driver_week_change_pct.value |
 | 2.5 | C2_W04_D02_quiz_STUDENT.md | 68 | toys.toy_kahoot_q6.values.trips_per_busy_hour |
 | 40,000 | C2_W04_D02_quiz_STUDENT.md | 68 | toys.toy_kahoot_q6.values.wrong_drivers |
-| 31 billion | C2_W04_D02_quiz_STUDENT.md | 88 | numbers.a_31_day_month.value |
-| 31 | C2_W04_D02_quiz_STUDENT.md | 88 | numbers.a_31_day_month.value |
-| 1 billion | C2_W04_D02_quiz_STUDENT.md | 88 | numbers.full_rs_per_driver_week_change_pct.value |
-| 31 billion | C2_W04_D02_quiz_STUDENT.md | 91 | numbers.a_31_day_month.value |
-| 1 billion | C2_W04_D02_quiz_STUDENT.md | 91 | numbers.full_rs_per_driver_week_change_pct.value |
-| 31 billion | C2_W04_D02_quiz_STUDENT.md | 92 | numbers.a_31_day_month.value |
-| 1.03 billion | C2_W04_D02_quiz_STUDENT.md | 92 | numbers.bookings_ratio.value |
-| 31 billion | C2_W04_D02_quiz_STUDENT.md | 93 | numbers.a_31_day_month.value |
-| 1 billion | C2_W04_D02_quiz_STUDENT.md | 93 | numbers.full_rs_per_driver_week_change_pct.value |
+| 8 | C2_W04_D02_quiz_STUDENT.md | 69 | numbers.rs_per_hour_per_ten.value |
+| 11,900 | C2_W04_D02_quiz_STUDENT.md | 91 | toy_numbers.toy_kirana_sales_day_sep.value |
+| 12,600 | C2_W04_D02_quiz_STUDENT.md | 91 | toy_numbers.toy_kirana_sales_day_oct.value |
+| 12 | C2_W04_D02_quiz_STUDENT.md | 91 | monday_ids_reused.zones_total.value |
+| 88 | C2_W04_D02_quiz_STUDENT.md | 93 | numbers.twelve_trips_after.value |
+| 700 | C2_W04_D02_quiz_STUDENT.md | 94 | numbers.upi_estimate_millions.value |
 | 5 | C2_W04_D02_01_one_slide_answer_STUDENT.ipynb | cell 1.3 | monday_ids_reused.median_wait_before.value |
 | 28 | C2_W04_D02_01_one_slide_answer_STUDENT.ipynb | cell 2 out 1 | toy_numbers.toy_kirana_days_each_month.value |
 | 12 | C2_W04_D02_01_one_slide_answer_STUDENT.ipynb | cell 2 out 2 | monday_ids_reused.zones_total.value |

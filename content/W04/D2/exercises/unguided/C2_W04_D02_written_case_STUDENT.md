@@ -24,7 +24,7 @@ shoulder.
 
 ## What are the rules?
 
-This is AI-free individual work: forty minutes, on one sheet, by hand, handed in at the end of the
+This is AI-free individual work: 35 minutes, on one sheet, by hand, handed in at the end of the
 slot. You may not use a laptop, a phone or any notes beyond this brief, which carries every number the page needs.
 
 | What you may use | The number, from the case |
@@ -45,11 +45,12 @@ This comes up at work whenever a decision-maker asks for "a page on it" instead 
 |---|---|
 | First sentence | The claim, in words a driver would follow |
 | Second | One number with its denominator: rupees per peak online hour, before and after |
-| In the body | The caveat, in a full sentence, never in a bracket at the end |
+| Third, before the action | The caveat, in a full sentence, never in a bracket at the end |
 | Last | The action, its saving in rupees over a stated number of weeks with the assumption behind it, and who signs |
 
 Keep off the page the words a non-technical reader would not know: denominator, index, guardrail. Say
-what they mean instead.
+what they mean instead. Chapter 7 taught these rules on Ramesh's page (invented), and once the page is
+handed in, notebook 07's `page_check` runs the same rules on a typed copy.
 
 ---
 

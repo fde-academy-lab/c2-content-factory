@@ -39,9 +39,10 @@ that reads the money in a different unit from the one the scheme pays in lets ea
 that flatters it. The same rule decides whether a cloud bill is read per request or per user, and
 whether an AI product's cost is read per query or per active seat.
 
-## What does notebook 01 confirm?
+## What do notebooks 04 and 08 confirm?
 
-`notebooks/C2_W04_D02_01_makeover_and_ledger_STUDENT.ipynb` prints the three reads on the twelve rows
-and on all driver-weeks (items 1 and 2), and its ledger cell computes the chain at 2.4 x (1 - 0.30) =
-1.68 and how far the idle share moves it, up to about 6,400 drivers at 0.38 (item 3). The three predict
-cells answer c, b and a.
+`notebooks/C2_W04_D02_04_case_one_slide_answer_three_denominators_STUDENT.ipynb` prints the three reads
+on the twelve rows and on all driver-weeks (items 1 and 2), and its two predict cells answer c and b.
+`notebooks/C2_W04_D02_08_case_guesstimate_drivers_at_peak_STUDENT.ipynb` computes the chain at 2.4 x
+(1 - 0.30) = 1.68 and how far the idle share moves it, up to about 6,400 drivers at 0.38 (item 3); its
+ledger cell's predict answers a.

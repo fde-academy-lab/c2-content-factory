@@ -67,7 +67,7 @@ d) No page, since an element that leaves the slide is cut for good
 
 ---
 
-**How do you check your letters against the deck?** The morning deck's S29 runs this drill, and its
-S27 shows the appendix drawer with one page per role.
+**How do you check your letters against the deck?** The morning deck's S52 runs this drill, and its
+S51 shows the appendix drawer with one page per role; chapter 2's S16 draws the sort itself.
 
 **In the interview.** [F] What do you leave off the slide, and where does it go?

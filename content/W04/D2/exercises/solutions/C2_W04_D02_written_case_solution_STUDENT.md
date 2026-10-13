@@ -35,7 +35,7 @@ pass them in other words. The case: Uber's peak-hour guarantee in Hyderabad, lau
 |---|---|
 | The claim is the first sentence | "The peak-hour guarantee is paying for online hours that carry no trips." |
 | One number with its denominator | Rs 314 to Rs 260 of fares per online hour at peak |
-| The caveat sits in the body | The third paragraph, in full sentences |
+| The caveat sits before the action | The third paragraph, in full sentences |
 | The action with its cost and who signs | The last paragraph: the test, the saving range with its assumption, the city head, and the result that would stop the change |
 | No method words | It says "fares per online hour", never "denominator" or "ratio" |
 

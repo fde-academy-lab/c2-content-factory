@@ -110,10 +110,10 @@ d) Per enrolled driver, since enrolment is the number marketing reports
 
 This comes up in interviews as the warm-up, and at work whenever a number is needed before the data is.
 
-This one is worked in full, with invented numbers. **Clarify:** one canteen, one weekday, cups and not litres.
-**Map:** students on campus x share who buy tea x cups each. **Calculate:** 2,000 x 0.6 x 2 = 2,400
-cups. **Validate:** the canteen's till for one weekday, or cups counted at the counter for one busy
-half hour.
+This one is worked in full, with chapter 6's invented numbers. **Clarify:** one canteen, one weekday,
+cups and not litres. **Map:** students on campus x share who buy tea x cups each. **Calculate:** 3,000 x
+0.45 x 2 = 2,700 cups. **Validate:** the canteen's till for one weekday, which averages 2,340 cups, so
+the chain runs 15.4 percent high and the share who buy is the guess to replace first.
 
 ---
 
@@ -148,10 +148,11 @@ d) 3.87
 The third estimate is the afternoon's paired drill: UPI payments in India on an average day, in
 seven minutes, all four steps on one sheet. Bring it to the dojo.
 
-**How do you check your letters against the notebook?** Open
-`notebooks/C2_W04_D02_01_makeover_and_ledger_STUDENT.ipynb`: its second and third code cells compute
-the three reads of the rupees, and its sixth code cell computes the chain and how far each assumption
-moves it. Change a letter only if your reasoning changes with it.
+**How do you check your letters against the notebooks?** Open
+`notebooks/C2_W04_D02_04_case_one_slide_answer_three_denominators_STUDENT.ipynb`: its second and third
+code cells compute the three reads of the rupees. Then open
+`notebooks/C2_W04_D02_08_case_guesstimate_drivers_at_peak_STUDENT.ipynb`: its ledger cell computes the
+chain and how far each assumption moves it. Change a letter only if your reasoning changes with it.
 
 **In the interview.** [S] Present a recommendation to a non-technical stakeholder in two minutes.
 [S] A guesstimate: how many drivers must be online at the evening peak?

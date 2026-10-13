@@ -42,6 +42,6 @@ figure". The first question back is "in which unit, for which period, counted ho
 
 ## What does the deck confirm?
 
-The afternoon deck's S34 names the three tests, S41 shows the ratio check for drivers at the peak, and
-S45 shows a record day against an average day and Flipkart's 6.3 million against the 63 in its web
-address.
+The afternoon deck's S72 names the three tests, chapter 6's S61 draws them as a flow, S77 shows the
+ratio check for drivers at the peak, and S81 shows a record day against an average day and Flipkart's
+6.3 million against the 63 in its web address.
