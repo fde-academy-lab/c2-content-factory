@@ -91,13 +91,16 @@ first chapter meets the same mistake from the other side.
 
 ---
 
-## Chapter 1. How recently, how often and how much has each of Kalpa's 340 customers bought?
+## Chapter 1. groupby and agg; named aggregations; the customer table (recency, frequency, monetary): how recently, how often and how much has each of Kalpa's 340 customers bought?
 
 **Who needs the answer.** The growth team, which decides every Monday who gets an offer: a win-back
 code for customers who have gone quiet, a first-order nudge for customers who signed up and never
 bought. A customer missing from the table gets no offer at all. The metric is three numbers per
 customer, recency, frequency and spend, which retailers call RFM; spend is the retail dossier's GMV,
-the value of the orders at the prices charged, at the grain of one customer.
+the value of the orders at the prices charged, at the grain of one customer. Spend is RFM's M,
+monetary value, so it adds every order: of two invented customers, one with orders of Rs 1,200, Rs 800
+and Rs 500 and one with a single order of Rs 2,500, both hold Rs 2,500, and only frequency tells them
+apart.
 
 **The questions on the way.**
 
@@ -137,7 +140,9 @@ pandas can sum, and `parse_dates` makes `order_date` a real date that chapter 6 
 The two agree on all 301 customers who ordered. `groupby` splits the orders into one group per customer,
 applies a calculation to each group and combines one row per customer: Week 1's accumulator written
 once, and SQL's `GROUP BY`. One `agg` call computes all three numbers, each name on the left becoming a
-column. The largest spender, a Business account, bought Rs 2,23,10,600, so spend is always read by segment: Business holds 99.1 percent of it.
+column. pandas calls this form named aggregation: in `spend=("amount", "sum")` the keyword names the
+column, and the pair says which column to read and which function to run on each group, as SQL's
+`sum(amount) AS spend` does. The largest spender, a Business account, bought Rs 2,23,10,600, so spend is always read by segment: Business holds 99.1 percent of it.
 
 ### How many customers on the list have never ordered?
 
@@ -168,7 +173,7 @@ The chapter's answer: 340 rows with three numbers each, 39 of them customers who
 
 ---
 
-## Chapter 2. Which customers did the monsoon sale reach, and what did the reached customers spend?
+## Chapter 2. merge with validate= and the count habit: which customers did the monsoon sale reach, and what did the reached customers spend?
 
 **Who needs the answer.** The marketing lead, who owns acquisition and campaigns and is about to ask
 for the monsoon sale's budget again for November. The sale ran in August 2026 at 15 percent off. A
@@ -255,7 +260,7 @@ The chapter's answer: 130 customers reached, who spent Rs 8,78,980, with the tab
 
 ---
 
-## Chapter 3. How far did Retail-Plus members' spend fall from Q1 to Q2, month by month?
+## Chapter 3. Reshape: pivot_table and melt: how far did Retail-Plus members' spend fall from Q1 to Q2, month by month?
 
 **Who needs the answer.** The head of Retail-Plus, Kalpa's paid membership tier, who takes one number to
 the growth review and uses each member's months to decide whom to protect. A number that is too small
@@ -336,7 +341,7 @@ The chapter's answer: Retail-Plus spend fell 29.4 percent, Rs 1,72,390, and 67 o
 
 ---
 
-## Chapter 4. Of the 130 customers the sale reached, how many bought, and do plain Python, SQL and pandas agree?
+## Chapter 4. The three-tool re-expression: of the 130 customers the sale reached, how many bought, and do plain Python, SQL and pandas agree?
 
 **Who needs the answer.** The marketing lead, through Kavya. The share of reached customers who bought
 is the November case's second line, after the reach. A share that leaves out the reached customers who
@@ -411,7 +416,7 @@ definition of a customer's segment.
 
 ---
 
-## Chapter 5. Which tool should own each of Marketing's and Finance's recurring numbers, and which would you refuse for Finance?
+## Chapter 5. The tool-choice note: which tool should own each of Marketing's and Finance's recurring numbers, and which would you refuse for Finance?
 
 **Who needs the answer.** Kavya, and behind her Anand Iyer, the finance controller, whose analyst reruns
 every number the team sends. A number that lives in two tools drifts into two numbers, and two numbers
@@ -490,7 +495,7 @@ explanation, and a pandas notebook is refused for Finance.
 
 ---
 
-## Chapter 6. Can the table rebuild itself every Monday and refuse to ship when something breaks?
+## Chapter 6. read_sql from the warehouse into a DataFrame; chained transformations and dtype checks: can the table rebuild itself every Monday and refuse to ship when something breaks?
 
 **Who needs the answer.** The growth team, who act on Monday's table with no analyst watching the run:
 the win-back code goes to every customer the table flags as lapsed, no order in the 60 days before the
@@ -530,8 +535,15 @@ makes d the home, with the same checks moved into the warehouse's own tests.
 ### What does the refresh need to be told, and what can it read from the data itself?
 
 Two things: the warehouse connection and the feed's path. Everything else it reads, so it cannot be
-told a stale count: the 340 customers, their numbers, the sale's first exposure. Recency is the one
-column still missing, and it needs a date to count to.
+told a stale count: the 340 customers, their numbers, the sale's first exposure. Inside,
+`build_table()` is a chained transformation, a run of steps in which each takes the frame the step
+before returned and hands a new one on: `read_sql` from the warehouse, `groupby` and `agg`, a merge
+onto the customer list, a merge with the sale's feed, then the fill. No step raises an error when a
+type changes on the way. The merge onto the list turns the count into `float64`, since 39 customers
+arrive with no count; `fillna(0)` writes 0.0 into those gaps and keeps the column `float64`; only
+`astype("int64")` brings back whole numbers, and a one-line check where the chain ends,
+`table["frequency"].dtype == "int64"`, proves it. Recency is the one column still missing, and it
+needs a date to count to.
 
 ### How many customers land on the win-back list when the refresh runs on Monday 19 October?
 
