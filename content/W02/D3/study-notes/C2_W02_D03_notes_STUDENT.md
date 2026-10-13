@@ -50,9 +50,9 @@ the marketing lead's member team, whose calls go to the members these measures p
 - How does today feed Thursday and the Saturday paper?
 
 **What the session covered.** Six chapters on one case, each with its options, its trap and a
-second route; LEAD was shown on one member's months and used in no query. The escalated case,
-Marketing's Monday package of lists, calls, revenue shares and a sentence for Meera, ran parts 1 and
-2 in the afternoon, and parts 3 to 5 run in the TA-led practice lab. The second case, Retail-Core ranked by how often members ordered, is the
+second route; LEAD was shown on one member's months, and the tiered extras run it on the warehouse.
+The escalated case, Marketing's Monday package of lists, calls, revenue shares and a sentence for
+Meera, ran parts 1 and 2 in the afternoon, and parts 3 to 5 run in the TA-led practice lab. The second case, Retail-Core ranked by how often members ordered, is the
 take-home.
 
 **What the asks measure.** Q2 is July to September 2026, and Q2 revenue per member is booked revenue,
@@ -426,10 +426,13 @@ member's own months, here for C-0040 of Retail-Core, who bought in all six.
 | Spend, Rs | 7,980 | 3,170 | 1,320 | 4,260 | 4,770 | 4,520 |
 | lag 1, Rs | NULL | 7,980 | 3,170 | 1,320 | 4,260 | 4,770 |
 | lag 2, Rs | NULL | NULL | 7,980 | 3,170 | 1,320 | 4,260 |
+| lead 1, Rs | 3,170 | 1,320 | 4,260 | 4,770 | 4,520 | NULL |
 
 April has no row before it, so LAG returns NULL, its documented default (PostgreSQL 16
 documentation, section 9.22, checked 1 October 2026). A flag read at June would fire; at September
-it does not, because August rose above July.
+it does not, because August rose above July. `lead(spend, 1)` over the same window reads the next row
+instead, so September, the member's last month, gets NULL; the flag looks back from September, so it
+reads LAG.
 
 ### What does LAG read when the window has no PARTITION BY?
 
@@ -776,7 +779,7 @@ since each is defined here the way today used it.
 | Monthly spend | A member's booked revenue in one calendar month | Chapter 4 | C-0040, Rs 7,980 in April |
 | The falling flag | September below August, and August below July | Chapter 4 | 16 flagged, then 9 |
 | date_trunc | Cuts a date to the first day of its week or month | Chapter 4 | `date_trunc('month', order_date)` |
-| LEAD | Reads the next row, the mirror of LAG; shown on C-0040's months and used in no query | Chapter 4 | Next month's spend |
+| LEAD | Reads the next row, the mirror of LAG; shown on C-0040's months | Chapter 4 | Next month's spend |
 | Plan line | Kalpa's Q2 plan: 13 weeks from 6 July at Rs 75,69,230 each | Chapter 5 | Rs 9,83,99,990 in all |
 | To date | Every week up to and including the one on the row | Chapter 5 | Rs 6,87,36,590 at mid-quarter |
 | Mid-quarter | The end of the seventh plan week, the week of 17 August | Chapter 5 | Rs 1,57,51,980 ahead |
