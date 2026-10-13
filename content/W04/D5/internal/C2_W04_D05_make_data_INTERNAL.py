@@ -570,6 +570,14 @@ def stall_facts(F, stall, tables, y, ahead, S):
     F.toy("ch2_weekly_forecast", dfore, f"{dfore:,.0f}", concept(2, "drift's forecast for week 13"), ["notebook 02"])
     F.toy("ch2_weekly_actual", totals[nweeks], f"{totals[nweeks]:,}", concept(2, "what week 13 sold"), ["notebook 02"])
     F.toy("ch2_weekly_miss", dfore - totals[nweeks], f"{dfore - totals[nweeks]:+.0f}", concept(2, "drift's miss on week 13"), ["notebook 02"])
+    mon, sun_before, mon_before = c(date(2025, 1, 20)), c(date(2025, 1, 19)), c(date(2025, 1, 13))
+    F.toy("ch2_turn_monday", mon, str(mon), concept(2, "the your-turn: cups on Mon 20 Jan 2025, the day after next Sunday"),
+          ["notebook 02"])
+    F.toy("ch2_turn_naive_miss", sun_before - mon, f"{sun_before - mon:+d}", concept(2, "the naive copies Sunday's 60 into Monday: its miss"),
+          ["notebook 02"])
+    F.toy("ch2_turn_snaive", mon_before, str(mon_before), concept(2, "the seasonal naive copies last Monday, 13 Jan 2025"), ["notebook 02"])
+    F.toy("ch2_turn_snaive_miss", mon_before - mon, f"{mon_before - mon:+d}", concept(2, "the seasonal naive's miss on that Monday"),
+          ["notebook 02"])
     out.update(four=four, drift=drift, exam_days=(e0, e1, e2), cal_worst=max(map(abs, cal_miss)),
                ali_worst=max(map(abs, ali_miss)), weekly=(totals, dstep, dfore))
 
@@ -623,6 +631,20 @@ def stall_facts(F, stall, tables, y, ahead, S):
         F.toy(f"ch3_{key}_mae", sum(map(abs, m)) / 2, f"{sum(map(abs, m)) / 2:.0f}", concept(3, f"{r}'s MAE"), ["half1 SECTION 3", "notebook 03"])
         F.toy(f"ch3_{key}_lean", sum(m) / 2, f"{sum(m) / 2:+.0f}", concept(3, f"{r}'s lean"), ["notebook 03"])
         F.toy(f"ch3_{key}_cost", cost, f"Rs {cost}", concept(3, f"{r}'s misses at Rs 6 unsold and Rs 12 short"), ["half1 SECTION 3", "notebook 03", "notes"])
+    week_back = hidden.cups.iloc[4:7].tolist()                 # days 5 to 7, the same weekdays a week before days 12 to 14
+    t_miss = [f - a for f, a in zip(week_back, acts)]
+    t_short, t_unsold = sum(-m for m in t_miss if m < 0), sum(m for m in t_miss if m > 0)
+    F.toy("ch3_turn_forecasts", week_back, ", ".join(map(str, week_back)), concept(3, "the your-turn: the seasonal naive copies days 5 to 7 into days 12 to 14"),
+          ["notebook 03"])
+    F.toy("ch3_turn_misses", t_miss, ", ".join(f"{m:+d}" for m in t_miss), concept(3, "its misses, forecast minus sold"), ["notebook 03"])
+    F.toy("ch3_turn_mae", sum(map(abs, t_miss)) / 3, f"{sum(map(abs, t_miss)) / 3:.1f}", concept(3, "its MAE on the three hidden days"), ["notebook 03"])
+    F.toy("ch3_turn_lean", sum(t_miss) / 3, f"{sum(t_miss) / 3:+.1f}", concept(3, "its lean"), ["notebook 03"])
+    F.toy("ch3_turn_short_cups", t_short, str(t_short), concept(3, "cups short across the three days"), ["notebook 03"])
+    F.toy("ch3_turn_unsold_cups", t_unsold, str(t_unsold), concept(3, "cups unsold across the three days"), ["notebook 03"])
+    F.toy("ch3_turn_cost", t_short * SHORT_RS + t_unsold * UNSOLD_RS, f"Rs {t_short * SHORT_RS + t_unsold * UNSOLD_RS}",
+          concept(3, "its misses in rupees: short at Rs 12, unsold at Rs 6"), ["notebook 03"])
+    F.toy("ch3_cover_share", SHORT_RS / (SHORT_RS + UNSOLD_RS), "two days in three",
+          concept(5, "the stall's plan share, Rs 12 over Rs 12 plus Rs 6, which opens notebook 07's depth section"), ["notebook 07"])
     out.update(mae=mae, mape=mape, lean=lean, cost=short * SHORT_RS + unsold * UNSOLD_RS, rules=rules, mape_days=mp_pct)
 
     # ---- chapter 4: fit against forecast, the baseline race, the cans, the note

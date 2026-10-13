@@ -4274,6 +4274,34 @@ toy:
     week 13'
   used_by:
   - notebook 02
+- id: toy_ch2_turn_monday
+  value: 105
+  shown: '105'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the your-turn:
+    cups on Mon 20 Jan 2025, the day after next Sunday'
+  used_by:
+  - notebook 02
+- id: toy_ch2_turn_naive_miss
+  value: -45
+  shown: '-45'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the naive copies
+    Sunday''s 60 into Monday: its miss'
+  used_by:
+  - notebook 02
+- id: toy_ch2_turn_snaive
+  value: 103
+  shown: '103'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the seasonal naive
+    copies last Monday, 13 Jan 2025'
+  used_by:
+  - notebook 02
+- id: toy_ch2_turn_snaive_miss
+  value: -2
+  shown: '-2'
+  how: 'invented for the concept chapter on Naive, seasonal naive and drift baselines: the seasonal naive''s
+    miss on that Monday'
+  used_by:
+  - notebook 02
 - id: toy_ch3_cups
   value:
   - 103
@@ -4563,6 +4591,67 @@ toy:
   - half1 SECTION 3
   - notebook 03
   - notes
+- id: toy_ch3_turn_forecasts
+  value:
+  - 104
+  - 102
+  - 104
+  shown: 104, 102, 104
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: the your-turn:
+    the seasonal naive copies days 5 to 7 into days 12 to 14'
+  used_by:
+  - notebook 03
+- id: toy_ch3_turn_misses
+  value:
+  - -6
+  - 7
+  - 4
+  shown: -6, +7, +4
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: its misses,
+    forecast minus sold'
+  used_by:
+  - notebook 03
+- id: toy_ch3_turn_mae
+  value: 5.666667
+  shown: '5.7'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: its MAE
+    on the three hidden days'
+  used_by:
+  - notebook 03
+- id: toy_ch3_turn_lean
+  value: 1.666667
+  shown: '+1.7'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: its lean'
+  used_by:
+  - notebook 03
+- id: toy_ch3_turn_short_cups
+  value: 6
+  shown: '6'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: cups short
+    across the three days'
+  used_by:
+  - notebook 03
+- id: toy_ch3_turn_unsold_cups
+  value: 11
+  shown: '11'
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: cups unsold
+    across the three days'
+  used_by:
+  - notebook 03
+- id: toy_ch3_turn_cost
+  value: 138
+  shown: Rs 138
+  how: 'invented for the concept chapter on Holding out; MAE and MAPE in the business''s units: its misses
+    in rupees: short at Rs 12, unsold at Rs 6'
+  used_by:
+  - notebook 03
+- id: toy_ch3_cover_share
+  value: 0.666667
+  shown: two days in three
+  how: 'invented for the concept chapter on The good-enough call and the forecast note: the stall''s plan
+    share, Rs 12 over Rs 12 plus Rs 6, which opens notebook 07''s depth section'
+  used_by:
+  - notebook 07
 - id: toy_ch4_four
   value:
   - 100

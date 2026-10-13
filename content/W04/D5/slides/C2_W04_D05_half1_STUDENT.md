@@ -251,7 +251,7 @@ yearly = cups / cups.shift(364)
 `shift(364)` slides the whole series down 364 rows, so each day's row holds the same weekday 52 weeks earlier; Week 2 Wednesday's LAG did the same in SQL. Notebook 01 runs these lines on all 730 days and draws each picture.
 
 ```notes
-LIVE, 2 minutes. Krish Naik's move: one plain sentence for each line. Why 364 and never 365: 364 is
+LIVE, 2 minutes. Krish Naik's move: one plain sentence for each line. Why 364 and never a calendar year of days: 364 is
 52 whole weeks, so a Monday lands on a Monday and the weekly beat stays in step. Transition: the
 rules.
 ```
@@ -686,7 +686,7 @@ Transition: the answer.
 
 ![A perfect fit on four days and its forecast for day 5 (invented numbers)](../whiteboards/C2_W04_D05_stall_fit_forecast_STUDENT.png)
 
-The answer is c, with the line close behind. Day 5 sold 102. The curve through all four days fits them perfectly, with an error of 0, and said 168: a miss of 66. The straight line, about 3.1 cups from the four days on average, said 109 and missed by 7; naive said 110 and missed by 8. **Fit** is how close a rule sits to the days it was built on; **forecast error** is how far it misses days it never saw. An interviewer says in-sample and out-of-sample.
+The answer is a, with naive a cup behind. Day 5 sold 102. The curve through all four days fits them perfectly, with an error of 0, and said 168: a miss of 66. The straight line, about 3.1 cups from the four days on average, said 109 and missed by 7; naive said 110 and missed by 8. **Fit** is how close a rule sits to the days it was built on; **forecast error** is how far it misses days it never saw. An interviewer says in-sample and out-of-sample.
 
 ```notes
 LIVE, 3 minutes. The curve's 168 needs no algebra: the four days' differences are 4, -6 and 12, their
