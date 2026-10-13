@@ -29,6 +29,7 @@ import hashlib
 import itertools
 import pathlib
 import random
+import subprocess
 import sys
 from collections import Counter
 
@@ -428,6 +429,88 @@ reorders.insert(0, "reorder_id", [f"re_{i:06d}" for i in range(1, len(reorders) 
 reorders = reorders[["reorder_id", "customer_id", "placed_ts", "value_rs", "auto", "status", "order_id"]]
 reorders.to_csv(DATA / f"{STEM}_kalpa_app_reorders_STUDENT.csv", index=False)
 
+# ---------------------------------------------------------------------------------- the concept chapters
+# The six concept chapters each teach one subtopic of the row on an everyday example whose numbers are
+# invented and small enough to count by hand. Each table is written here, so a notebook loads it from
+# data/ and prints it in full, and every number a chapter shows is recorded below under a toy_ id. The
+# tables use no draw from the case's generator, so the case tables stay byte-identical.
+SUBTOPIC = {1: "What to measure and why; the proxy test", 2: "North-star and guardrail metrics",
+            3: "Leading against lagging indicators", 4: "Definitions: numerator, denominator, window, exclusions",
+            5: "Gaming, and definitions that resist it", 6: "The metric definition artifact"}
+
+# 1. A school canteen pays its servers per token from day 6; the owner cooks tomorrow's rice from the count.
+canteen = pd.DataFrame({"day": range(1, 11), "servers_paid_per_token": ["no"] * 5 + ["yes"] * 5,
+                        "tokens": [200] * 5 + [400] * 5, "plates": [200] * 10})
+canteen.to_csv(DATA / f"{STEM}_canteen_days_STUDENT.csv", index=False)
+RICE_KG_PER_PLATE, RICE_RS_PER_KG = 0.15, 50
+# The faded second example: the same school pays its bus driver per kilometre logged from day 6.
+bus = pd.DataFrame({"day": range(1, 11), "driver_paid_per_km": ["no"] * 5 + ["yes"] * 5,
+                    "km_logged": [40] * 5 + [55] * 5, "children_dropped_home": [30] * 10})
+bus.to_csv(DATA / f"{STEM}_school_bus_days_STUDENT.csv", index=False)
+
+# 2. A driving school's four instructors, 25 learners each; this year each books the test only for the
+#    learners they are surest of. (Chapter 2's coaching centre moved here, numbers and logic kept.)
+driving = pd.DataFrame([(2025, "A", 25, 25, 16), (2025, "B", 25, 25, 15), (2025, "C", 25, 25, 15),
+                        (2025, "D", 25, 25, 14), (2026, "A", 25, 11, 10), (2026, "B", 25, 10, 9),
+                        (2026, "C", 25, 10, 9), (2026, "D", 25, 9, 8)],
+                       columns=["year", "instructor", "enrolled", "took_test", "passed"])
+driving.to_csv(DATA / f"{STEM}_driving_school_STUDENT.csv", index=False)
+dsum = driving.groupby("year")[["enrolled", "took_test", "passed"]].sum()
+
+# 3. A T20 chase: the other side made 159, so 160 wins; 60 for 3 at the halfway mark, 147 at the end.
+chase = pd.DataFrame({"over": range(1, 21), "runs": [6] * 10 + [7, 8, 9, 10, 8, 9, 10, 11, 9, 6],
+                      "wickets_lost": [0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0]})
+chase.to_csv(DATA / f"{STEM}_chase_overs_STUDENT.csv", index=False)
+CHASE_TARGET, CHASE_OTHER_SIDE = 160, 159
+chase_runs = chase["runs"].cumsum()
+chase_need = [(CHASE_TARGET - (0 if k == 0 else chase_runs.iloc[k - 1])) / (20 - k) for k in range(20)]
+
+# 4. One student's 60-day term register: Sundays and two festival days are holidays.
+REG_HOLIDAYS = [7, 14, 18, 21, 28, 35, 42, 45, 49, 56]
+working_days = [d for d in range(1, 61) if d not in REG_HOLIDAYS]
+reg_status = {d: "holiday" for d in REG_HOLIDAYS}
+for i, d in enumerate(working_days):
+    reg_status[d] = ("absent" if i in (4, 11, 17, 24, 32, 37, 43, 48)
+                 else "medical" if i in (40, 41) else "present")
+register = pd.DataFrame({"day": range(1, 61), "status": [reg_status[d] for d in range(1, 61)]})
+register.to_csv(DATA / f"{STEM}_attendance_register_STUDENT.csv", index=False)
+reg_counts = register["status"].value_counts()
+last20 = register[register["day"].isin(working_days[-20:])]["status"].value_counts()
+
+# 5. Balaji Kirana, a corner shop in Hyderabad: four weeks of home deliveries, Rs 20 to the delivery boy
+#    for each one marked done. 40 of the 50 were confirmed by the customer's OTP; the boy types the
+#    dispatch time himself, so minutes from his typed time all read 30 or under.
+trng = random.Random(f"{SEED} concept toys")
+WEEK_ORDERS, WEEK_UNCONFIRMED = [12, 13, 12, 13], [2, 3, 2, 3]
+kirana_rows = []
+for w, (n, u) in enumerate(zip(WEEK_ORDERS, WEEK_UNCONFIRMED)):
+    wk_days = sorted(trng.choice(range(7 * w + 1, 7 * w + 8)) for _ in range(n))
+    wk_flags = [False] * u + [True] * (n - u)
+    trng.shuffle(wk_flags)
+    kirana_rows += [{"week": w + 1, "day": d, "otp_confirmed": f} for d, f in zip(wk_days, wk_flags)]
+kirana_conf_ix = [i for i, r in enumerate(kirana_rows) if r["otp_confirmed"]]
+kirana_gate_ix = [i for i, r in enumerate(kirana_rows) if not r["otp_confirmed"]]
+kirana_late = set(trng.sample(kirana_conf_ix, 10)) | set(trng.sample(kirana_gate_ix, 5))
+kirana_complained = set(trng.sample(kirana_gate_ix, 6))
+for i, r in enumerate(kirana_rows):
+    r["order_id"] = f"K{i + 1:02d}"
+    r["marked_done"] = True
+    r["minutes_from_typed_dispatch"] = trng.randint(9, 28)
+    r["minutes_from_bill"] = trng.randint(33, 54) if i in kirana_late else trng.randint(14, 30)
+    r["complaint"] = i in kirana_complained
+kirana = pd.DataFrame(kirana_rows)[["order_id", "week", "day", "marked_done", "otp_confirmed",
+                               "minutes_from_typed_dispatch", "minutes_from_bill", "complaint"]]
+kirana.to_csv(DATA / f"{STEM}_kirana_deliveries_STUDENT.csv", index=False)
+PAY_RS, PAY_RAISED_RS = 20, 25
+k_conf = kirana[kirana["otp_confirmed"]]
+k_week = kirana.groupby("week").agg(billed=("order_id", "size"), marked=("marked_done", "sum"),
+                                    confirmed=("otp_confirmed", "sum"))
+
+# 6. The metric definition artifact: the seven lines, and the weak page the growth plan started from.
+ARTIFACT_LINES = ["numerator", "denominator", "window", "exclusions", "does_not_reward", "guardrails",
+                  "gaming_note"]
+WEAK_PAGE = {"numerator": "deliveries", "window": "monthly"}       # "Deliveries, monthly, plus 20 percent"
+
 # ---------------------------------------------------------------------------------- the numbers
 dw["window"] = dw["week_start"].lt(LAUNCH.isoformat()).map({True: "before", False: "after"})
 dw["group"] = dw["driver_id"].map(GROUP)
@@ -641,6 +724,52 @@ check("shared constants: the two Kalpa windows and the monsoon sale's last day, 
       shared == thursday and shared["kalpa_comparison_window"] == ["2026-08-20", "2026-09-09"]
       and shared["kalpa_auto_reorder_window"] == ["2026-09-10", "2026-09-30"]
       and shared["monsoon_sale_last_day"] == "2026-08-19")
+for t, want in CASE_SHA256.items():                 # the same proof, read live from origin/main
+    try:
+        main_bytes = subprocess.run(["git", "show", f"origin/main:content/W04/D1/data/{STEM}_{t}_STUDENT.csv"],
+                                    cwd=REPO, capture_output=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        main_bytes = None
+    if main_bytes is not None:
+        check(f"the case table {t} is byte-identical to git show origin/main",
+              (DATA / f"{STEM}_{t}_STUDENT.csv").read_bytes() == main_bytes)
+
+# The concept chapters' invented examples, each number as the chapter teaches it.
+check("toy canteen: tokens per plate 1.0 on days 1 to 5 and 2.0 on days 6 to 10, plates 200 every day",
+      list(canteen["tokens"] / canteen["plates"]) == [1.0] * 5 + [2.0] * 5 and (canteen["plates"] == 200).all())
+check("toy canteen: rice from tokens 60 kg against 30 kg from plates, Rs 1,500 a day wasted",
+      (round(400 * RICE_KG_PER_PLATE), round(200 * RICE_KG_PER_PLATE), round(200 * RICE_KG_PER_PLATE * RICE_RS_PER_KG))
+      == (60, 30, 1500))
+check("toy school bus: kilometres 40 then 55 while children dropped stay at 30",
+      (bus["km_logged"].iloc[0], bus["km_logged"].iloc[-1], set(bus["children_dropped_home"])) == (40, 55, {30}))
+check("toy driving school: 100 enrolled both years; 100 took and 60 passed, then 40 took and 36 passed",
+      dsum.loc[2025].tolist() == [100, 100, 60] and dsum.loc[2026].tolist() == [100, 40, 36])
+check("toy driving school: pass rate 0.60 to 0.90 while licences per enrolled learner fall 0.60 to 0.36",
+      (dsum.loc[2025, "passed"] / dsum.loc[2025, "took_test"], dsum.loc[2026, "passed"] / dsum.loc[2026, "took_test"],
+       dsum.loc[2026, "passed"] / dsum.loc[2026, "enrolled"]) == (0.6, 0.9, 0.36))
+check("toy chase: required rate 8.0 at the start and 10.0 after over 10 at 60 for 3; 147 all told, lost by 12",
+      (chase_need[0], chase_need[10], int(chase_runs.iloc[9]), int(chase["wickets_lost"][:10].sum()),
+       int(chase_runs.iloc[-1]), CHASE_OTHER_SIDE - int(chase_runs.iloc[-1])) == (8.0, 10.0, 60, 3, 147, 12))
+check("toy chase: the required rate first reaches 10 at the end of over 10",
+      next(k for k, r in enumerate(chase_need) if r >= 10) == 10)
+check("toy register: 60 days, 10 holidays, 50 working; present 40, absent 8, medical 2",
+      (len(register), reg_counts["holiday"], len(working_days), reg_counts["present"], reg_counts["absent"],
+       reg_counts["medical"]) == (60, 10, 50, 40, 8, 2))
+check("toy register: the five readings 80.0, 66.7, 83.3, 84.0 and 70.0 percent",
+      [round(100 * x, 1) for x in (40 / 50, 40 / 60, 40 / 48, 42 / 50, last20["present"] / 20)]
+      == [80.0, 66.7, 83.3, 84.0, 70.0])
+check("toy register: the last 20 working days hold 14 present, 4 absent and 2 medical",
+      (last20["present"], last20["absent"], last20["medical"]) == (14, 4, 2))
+check("toy kirana: 50 marked done, 40 OTP-confirmed, 6 complaints all on unconfirmed orders",
+      (int(kirana["marked_done"].sum()), int(kirana["otp_confirmed"].sum()), int(kirana["complaint"].sum()),
+       int(kirana.loc[kirana["otp_confirmed"], "complaint"].sum())) == (50, 40, 6, 0))
+check("toy kirana: on time 1.00 from the typed dispatch and 0.70 from the bill; 30 of the 40 confirmed",
+      ((kirana["minutes_from_typed_dispatch"] <= 30).mean(), (kirana["minutes_from_bill"] <= 30).mean(),
+       int((k_conf["minutes_from_bill"] <= 30).sum())) == (1.0, 0.7, 30))
+check("toy kirana: four weeks of 12, 13, 12 and 13 orders, 10 confirmed each week",
+      k_week["billed"].tolist() == WEEK_ORDERS and k_week["confirmed"].tolist() == [10, 10, 10, 10])
+check("toy artifact: the weak page holds 2 of the 7 lines",
+      len(ARTIFACT_LINES) == 7 and sum(line in WEAK_PAGE for line in ARTIFACT_LINES) == 2)
 
 # ---------------------------------------------------------------------------------- the facts file
 numbers = []
@@ -867,16 +996,161 @@ for win in ("before", "after"):
          "the lab set's Parsons problem, option d")
 
 toys = [
-    {"id": "toy_canteen", "label": "invented", "values": {"tokens_before": 200, "tokens_after": 400,
-                                                          "plates": 200}, "used_by": "L1 the proxy"},
     {"id": "toy_two_drivers", "label": "invented",
      "values": {"rates": [2.0, 0.5], "hours": [10, 40], "trips": 40, "total_hours": 50,
                 "ratio_of_sums": 0.8, "mean_of_ratios": 1.25},
-     "used_by": "L2 ratio of sums; the long, slow week pulls the average up, as on the city"},
+     "used_by": "case chapter 8 (half1 S70), notebook 08, notes, board work: the long, slow week pulls the "
+                "average up, as on the city"},
     {"id": "toy_mix", "label": "invented",
      "values": {"drivers": 100, "rate": 1.9, "idle_drivers": 20, "idle_rate": 0.2, "blend": 1.62},
-     "used_by": "L3 the mix behind a rate"},
+     "used_by": "the mix behind a rate (notes)"},
 ]
+
+
+def toy(fid, value, unit, n, how, used_by):
+    """One number of a concept chapter's invented example, under its toy_ id."""
+    if hasattr(value, "item"):
+        value = value.item()
+    toys.append({"id": fid, "value": value, "unit": unit, "label": "invented",
+                 "how": f"invented for the concept chapter on {SUBTOPIC[n]}: {how}", "used_by": used_by})
+
+
+CH = {n: f"half1 SECTION {n}; notebook {n:02d}; notes; {s} set" for n, s in
+      {1: "proxy_test", 2: "north_star_guardrails", 3: "leading_lagging", 4: "definition_lines", 5: "gaming",
+       6: "artifact"}.items()}
+r1 = lambda x: round(float(x), 1)  # noqa: E731
+toy("toy_canteen_table", canteen.to_dict("records"), "rows", 1,
+    "data/C2_W04_D01_canteen_days_STUDENT.csv, ten days of tokens and plates", CH[1])
+toy("toy_canteen_days", 10, "days", 1, "five days before the pay change and five after", CH[1])
+toy("toy_canteen_plates", 200, "plates a day", 1, "plates served every day, before and after", CH[1] + "; Kahoot")
+toy("toy_canteen_tokens_before", 200, "tokens a day", 1, "days 1 to 5, one token a plate", CH[1])
+toy("toy_canteen_tokens_after", 400, "tokens a day", 1, "days 6 to 10, once servers are paid per token", CH[1])
+toy("toy_canteen_tokens_per_plate_before", 1.0, "tokens per plate", 1, "200 / 200", CH[1])
+toy("toy_canteen_tokens_per_plate_after", 2.0, "tokens per plate", 1, "400 / 200", CH[1])
+toy("toy_canteen_tokens_rise_pct", 100, "percent", 1, "400 / 200 - 1", CH[1])
+toy("toy_canteen_rice_kg_per_plate", RICE_KG_PER_PLATE, "kg", 1, "150 g of rice a plate", CH[1])
+toy("toy_canteen_rice_from_plates_kg", round(200 * RICE_KG_PER_PLATE), "kg a day", 1, "200 x 0.15", CH[1])
+toy("toy_canteen_rice_from_tokens_kg", round(400 * RICE_KG_PER_PLATE), "kg a day", 1, "400 x 0.15", CH[1])
+toy("toy_canteen_rice_wasted_kg", round(200 * RICE_KG_PER_PLATE), "kg a day", 1, "60 - 30", CH[1])
+toy("toy_canteen_rice_rs_per_kg", RICE_RS_PER_KG, "Rs a kg", 1, "the price of rice", CH[1])
+toy("toy_canteen_waste_rs_day", round(200 * RICE_KG_PER_PLATE * RICE_RS_PER_KG), "Rs a day", 1, "30 kg x Rs 50",
+    CH[1])
+toy("toy_canteen_waste_rs_five_days", 5 * round(200 * RICE_KG_PER_PLATE * RICE_RS_PER_KG), "Rs", 1,
+    "Rs 1,500 x the five paid days", CH[1])
+toy("toy_canteen_waste_rs_month", 30 * round(200 * RICE_KG_PER_PLATE * RICE_RS_PER_KG), "Rs", 1,
+    "Rs 1,500 x 30 days, if the rule ran a month", CH[1])
+toy("toy_bus_table", bus.to_dict("records"), "rows", 1,
+    "data/C2_W04_D01_school_bus_days_STUDENT.csv, the faded second example", "notebook 01's your-turn cell; notes")
+toy("toy_bus_km_before", 40, "km a day", 1, "days 1 to 5", "notebook 01; notes")
+toy("toy_bus_km_after", 55, "km a day", 1, "days 6 to 10, once the driver is paid per km", "notebook 01; notes")
+toy("toy_bus_children", 30, "children a day", 1, "children dropped home, every day", "notebook 01; notes")
+toy("toy_bus_km_per_child_before", round(40 / 30, 2), "km per child", 1, "40 / 30", "notebook 01")
+toy("toy_bus_km_per_child_after", round(55 / 30, 2), "km per child", 1, "55 / 30", "notebook 01")
+toy("toy_driving_table", driving.to_dict("records"), "rows", 2,
+    "data/C2_W04_D01_driving_school_STUDENT.csv, four instructors over two years", CH[2])
+toy("toy_driving_enrolled", int(dsum.loc[2025, "enrolled"]), "learners", 2, "four instructors x 25, both years",
+    CH[2])
+toy("toy_driving_took_2025", int(dsum.loc[2025, "took_test"]), "learners", 2, "every learner took the test", CH[2])
+toy("toy_driving_passed_2025", int(dsum.loc[2025, "passed"]), "learners", 2, "16 + 15 + 15 + 14", CH[2])
+toy("toy_driving_took_2026", int(dsum.loc[2026, "took_test"]), "learners", 2,
+    "each instructor books only the learners they are surest of: 11 + 10 + 10 + 9", CH[2])
+toy("toy_driving_passed_2026", int(dsum.loc[2026, "passed"]), "learners", 2, "10 + 9 + 9 + 8", CH[2])
+for y in (2025, 2026):
+    toy(f"toy_driving_pass_rate_{y}", round(float(dsum.loc[y, "passed"] / dsum.loc[y, "took_test"]), 2), "share", 2,
+        f"passed / took the test, {y}: the number the school's hoarding prints", CH[2] + "; Kahoot")
+    toy(f"toy_driving_took_share_{y}", round(float(dsum.loc[y, "took_test"] / dsum.loc[y, "enrolled"]), 2), "share",
+        2, f"took the test / enrolled, {y}: the guardrail", CH[2])
+    toy(f"toy_driving_per_enrolled_{y}", round(float(dsum.loc[y, "passed"] / dsum.loc[y, "enrolled"]), 2), "share",
+        2, f"passed / enrolled, {y}: licences per learner who paid", CH[2])
+dD = driving[driving["instructor"] == "D"].set_index("year")
+toy("toy_driving_d_pass_rate_2026", round(float(dD.loc[2026, "passed"] / dD.loc[2026, "took_test"]), 3), "share", 2,
+    "instructor D, 8 / 9, the faded example", "notebook 02's your-turn cell")
+toy("toy_driving_d_took_share_2026", round(float(dD.loc[2026, "took_test"] / dD.loc[2026, "enrolled"]), 2), "share",
+    2, "instructor D, 9 / 25", "notebook 02's your-turn cell")
+toy("toy_driving_d_per_enrolled_2026", round(float(dD.loc[2026, "passed"] / dD.loc[2026, "enrolled"]), 2), "share",
+    2, "instructor D, 8 / 25", "notebook 02's your-turn cell")
+toy("toy_driving_d_per_enrolled_2025", round(float(dD.loc[2025, "passed"] / dD.loc[2025, "enrolled"]), 2), "share",
+    2, "instructor D, 14 / 25", "notebook 02's your-turn cell")
+toy("toy_chase_table", chase.to_dict("records"), "rows", 3,
+    "data/C2_W04_D01_chase_overs_STUDENT.csv, twenty overs of runs and wickets", CH[3])
+toy("toy_chase_other_side", CHASE_OTHER_SIDE, "runs", 3, "the first innings", CH[3])
+toy("toy_chase_target", CHASE_TARGET, "runs", 3, "159 + 1, the runs that win", CH[3])
+toy("toy_chase_runs_per_over_first_ten", 6, "runs an over", 3, "overs 1 to 10", CH[3])
+toy("toy_chase_score_after_10", int(chase_runs.iloc[9]), "runs", 3, "6 x 10", CH[3])
+toy("toy_chase_wickets_after_10", int(chase["wickets_lost"][:10].sum()), "wickets", 3, "in overs 3, 7 and 10", CH[3])
+toy("toy_chase_rate_start", chase_need[0], "runs an over", 3, "160 / 20", CH[3] + "; Kahoot")
+toy("toy_chase_rate_after_10", chase_need[10], "runs an over", 3, "(160 - 60) / 10", CH[3])
+toy("toy_chase_score_after_5", int(chase_runs.iloc[4]), "runs", 3, "6 x 5", CH[3])
+toy("toy_chase_rate_after_5", round(chase_need[5], 1), "runs an over", 3, "(160 - 30) / 15", CH[3])
+toy("toy_chase_score_after_15", int(chase_runs.iloc[14]), "runs", 3, "60 + 7 + 8 + 9 + 10 + 8", "notebook 03")
+toy("toy_chase_rate_after_15", round(chase_need[15], 1), "runs an over", 3, "(160 - 102) / 5, the faded example",
+    "notebook 03's your-turn cell")
+toy("toy_chase_final", int(chase_runs.iloc[-1]), "runs", 3, "60 + 87", CH[3])
+toy("toy_chase_wickets_final", int(chase["wickets_lost"].sum()), "wickets", 3, "three, then four more", CH[3])
+toy("toy_chase_margin", CHASE_OTHER_SIDE - int(chase_runs.iloc[-1]), "runs", 3, "159 - 147, lost by", CH[3])
+toy("toy_register_table", register.to_dict("records"), "rows", 4,
+    "data/C2_W04_D01_attendance_register_STUDENT.csv, one student's term", CH[4])
+toy("toy_register_days", 60, "calendar days", 4, "the term", CH[4])
+toy("toy_register_holidays", int(reg_counts["holiday"]), "days", 4, "eight Sundays and two festival days", CH[4])
+toy("toy_register_working", len(working_days), "days", 4, "60 - 10", CH[4])
+toy("toy_register_present", int(reg_counts["present"]), "days", 4, "the student's days present", CH[4])
+toy("toy_register_absent", int(reg_counts["absent"]), "days", 4, "days absent", CH[4])
+toy("toy_register_medical", int(reg_counts["medical"]), "days", 4, "days on medical leave", CH[4])
+toy("toy_register_pct_school", r1(100 * 40 / 50), "percent", 4, "present / working days", CH[4] + "; Kahoot")
+toy("toy_register_pct_calendar", r1(100 * 40 / 60), "percent", 4, "present / calendar days", CH[4])
+toy("toy_register_pct_medical_out", r1(100 * 40 / 48), "percent", 4, "medical leave out of both counts", CH[4])
+toy("toy_register_pct_medical_present", r1(100 * 42 / 50), "percent", 4, "medical leave counted present", CH[4])
+toy("toy_register_window_days", 20, "working days", 4, "the window: the term's last 20 working days", CH[4])
+toy("toy_register_window_present", int(last20["present"]), "days", 4, "present in the last 20 working days", CH[4])
+toy("toy_register_window_absent", int(last20["absent"]), "days", 4, "absent in the last 20 working days",
+    "notebook 04")
+toy("toy_register_window_medical", int(last20["medical"]), "days", 4, "medical in the last 20 working days",
+    "notebook 04")
+toy("toy_register_pct_window", r1(100 * last20["present"] / 20), "percent", 4, "14 / 20", CH[4])
+toy("toy_register_pct_window_medical_out", r1(100 * last20["present"] / 18), "percent", 4,
+    "14 / 18, the faded example", "notebook 04's your-turn cell")
+toy("toy_register_first_working", 30, "working days", 4, "the term's first 30 working days", "notebook 04")
+toy("toy_register_first_present", 26, "days", 4, "present in the first 30 working days", "notebook 04")
+toy("toy_register_threshold_pct", 75, "percent", 4, "the scholarship's attendance rule in the trap", CH[4])
+toy("toy_kirana_table", kirana.to_dict("records"), "rows", 5,
+    "data/C2_W04_D01_kirana_deliveries_STUDENT.csv, Balaji Kirana's four weeks of deliveries", CH[5] + "; " + CH[6])
+toy("toy_kirana_orders", len(kirana), "orders", 5, "orders billed and sent out in four weeks", CH[5] + "; " + CH[6])
+toy("toy_kirana_week_orders", WEEK_ORDERS, "orders a week", 6, "12, 13, 12 and 13", CH[6])
+toy("toy_kirana_week_confirmed", k_week["confirmed"].tolist(), "orders a week", 6, "10 confirmed each week", CH[6])
+toy("toy_kirana_marked", int(kirana["marked_done"].sum()), "orders", 5, "marked done by the delivery boy",
+    CH[5] + "; Kahoot")
+toy("toy_kirana_confirmed", int(kirana["otp_confirmed"].sum()), "orders", 5, "confirmed by the customer's OTP",
+    CH[5] + "; " + CH[6] + "; Kahoot")
+toy("toy_kirana_unconfirmed", int((~kirana["otp_confirmed"]).sum()), "orders", 5, "marked done with no OTP", CH[5])
+toy("toy_kirana_complaints", int(kirana["complaint"].sum()), "complaints", 5, "all on orders with no OTP", CH[5])
+toy("toy_kirana_complaints_per_100", round(100 * int(kirana["complaint"].sum()) / len(kirana)), "per 100", 5,
+    "6 / 50 x 100", CH[5] + "; " + CH[6])
+toy("toy_kirana_pay_rs", PAY_RS, "Rs a delivery", 5, "the delivery boy's rate", CH[5])
+toy("toy_kirana_pay_marked_rs", PAY_RS * int(kirana["marked_done"].sum()), "Rs", 5, "50 x Rs 20", CH[5])
+toy("toy_kirana_pay_confirmed_rs", PAY_RS * int(kirana["otp_confirmed"].sum()), "Rs", 5, "40 x Rs 20", CH[5])
+toy("toy_kirana_pay_gap_rs", PAY_RS * int((~kirana["otp_confirmed"]).sum()), "Rs", 5, "1,000 - 800", CH[5])
+toy("toy_kirana_pay_raised_rs", PAY_RAISED_RS, "Rs a delivery", 5, "the trap: the owner raises the rate",
+    CH[5])
+toy("toy_kirana_pay_raised_marked_rs", PAY_RAISED_RS * len(kirana), "Rs", 5, "50 x Rs 25", CH[5])
+toy("toy_kirana_ontime_typed", float((kirana["minutes_from_typed_dispatch"] <= 30).mean()), "share", 5,
+    "within 30 minutes of the dispatch time the boy typed", CH[5])
+toy("toy_kirana_ontime_bill", float((kirana["minutes_from_bill"] <= 30).mean()), "share", 5,
+    "within 30 minutes of the shop's bill", CH[5])
+toy("toy_kirana_ontime_bill_count", int((kirana["minutes_from_bill"] <= 30).sum()), "orders", 5, "35 of 50", CH[5])
+toy("toy_kirana_confirmed_ontime", int((k_conf["minutes_from_bill"] <= 30).sum()), "orders", 5,
+    "OTP-confirmed and within 30 minutes of the bill", CH[5] + "; " + CH[6])
+toy("toy_kirana_confirmed_ontime_share", round(float((k_conf["minutes_from_bill"] <= 30).mean()), 2), "share", 6,
+    "30 / 40, guardrail 2 on the page", CH[6])
+toy("toy_kirana_pay_confirmed_ontime_rs", PAY_RS * int((k_conf["minutes_from_bill"] <= 30).sum()), "Rs", 5,
+    "30 x Rs 20, the faded example", "notebook 05's your-turn cell")
+toy("toy_kirana_confirmed_share", round(float(kirana["otp_confirmed"].mean()), 2), "share", 6,
+    "40 / 50, OTP-confirmed deliveries per order billed", CH[6])
+toy("toy_artifact_lines", len(ARTIFACT_LINES), "lines", 6, "numerator, denominator, window, exclusions, what it "
+    "does not reward, guardrails, gaming note", CH[6] + "; Kahoot")
+toy("toy_artifact_weak_lines", sum(line in WEAK_PAGE for line in ARTIFACT_LINES), "lines", 6,
+    "the weak page 'Deliveries, monthly, plus 20 percent' names what is counted and the window", CH[6])
+toy("toy_artifact_weak_missing", len(ARTIFACT_LINES) - len(WEAK_PAGE), "lines", 6, "7 - 2", CH[6])
+toy("toy_artifact_target_pct", 20, "percent", 6, "the weak page's target, which is no line of a definition", CH[6])
 
 twelve_rows = []
 for label, (did, zone, before_row, after_row) in TWELVE.items():
