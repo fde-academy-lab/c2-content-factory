@@ -28,6 +28,8 @@ same weeks last year; finance's rule is those weeks plus 4 percent: eighteen per
 A late shipment costs Rs 25 (assumed, Rs 15 to 40). A spare shipment, planned for and never shipped,
 leaves part of a packer-shift idle: Rs 650 a shift (assumed, Rs 500 to 800) over 120 shipments, Rs
 5.42 a shipment. {LABEL}"""
+# indented to match the md() blocks it sits in, so dedent strips every line alike
+TICKET_MD = TICKET.replace("\n", "\n        ")
 
 SETUP = '''import math
 import pandas as pd
@@ -100,15 +102,18 @@ check("by hand and by code, Monday reads 67 percent above Sunday", round(by_hand
 check("against the Monday before, the stall did not move", cups["2024-10-07"] == cups["2024-09-30"])
 '''),
         md("""
-        **What happened.** The answer is b. Both Sundays sold about 60 (60 and 61) and every other
-        day about 100. A repeat on a fixed beat is a **season**, and its **length** is the number of
-        periods before it repeats: 7 days here, 52 weeks in Flipkart's year. Monday against the
-        Monday before reads 100 against 100, so nothing grew this week.
+        **What happened.** The answer is b. Both Sundays at the stall (invented) sold about 60 (60
+        and 61) and every other day about 100. A repeat on a fixed beat is a **season**, and its
+        **length** is the number of periods before it repeats: 7 days here, 52 weeks in Flipkart's
+        year. Monday against the Monday before, one weekly season apart, reads 100 against 100, so
+        nothing grew this week.
 
         ## Is the stall growing?
 
-        Count it by hand first, comparing the same point a season apart. Monday 6 October 2025
-        sold 110 against Monday 7 October 2024's 100: 110 over 100 is 1.10, up 10 percent in a
+        Count it by hand first. A week apart shows a week's change, too small to see under a
+        wobble of a few cups, so compare the same point a year apart: 364 days, 52 whole weeks,
+        which clears the weekly beat and the yearly seasons alike. Monday 6 October 2025 sold 110
+        against Monday 7 October 2024's 100 (invented): 110 over 100 is 1.10, up 10 percent in a
         year. Sunday 5 October 2025 sold 66 against 60: 1.10 again. The **trend** is that slow
         climb, and the function below reads it for any pair of points.
         """),
@@ -120,7 +125,7 @@ def season_apart(now, before):
 monday = season_apart(two.cups_2025[7], two.cups_2024[7])            # Mon 6 Oct 2025 against Mon 7 Oct 2024
 fortnight = season_apart(two.cups_2025.sum(), two.cups_2024.sum())    # all fourteen days at once
 share = [two.cups_2024[6] / two.cups_2024[7], two.cups_2025[6] / two.cups_2025[7]]   # Sunday over Monday
-print(f"Monday a season apart: {monday:.0%}")
+print(f"Monday a year apart: {monday:.0%}")
 print(f"the two fortnights: {two.cups_2025.sum():,} over {two.cups_2024.sum():,}, {fortnight:.1%}")
 print(f"Sunday's share of Monday: {share[0]:.1f} in 2024 and {share[1]:.1f} in 2025")
 ax = two[["cups_2024", "cups_2025"]].set_axis(["2024", "2025"], axis=1).plot.bar(color=["lavender", "slateblue"],
@@ -176,23 +181,25 @@ check("the exam fortnight is about 1.4 times an ordinary fortnight, both years",
 check("Diwali week is about 0.4 times an ordinary fortnight, both years", all(abs(r - 0.4) < 0.1 for r in diwali))
 '''),
         md("""
-        **What happened.** Diwali week is a dip, about 0.4 of an ordinary week in both years (0.40
-        and 0.40), and the exam fortnight a peak, about 1.4 (1.39 and 1.41). A season repeats on a
+        **What happened.** At the stall (invented), Diwali week is a dip, about 0.4 of an ordinary
+        week in both years (0.40 and 0.40), and the exam fortnight a peak, about 1.4 (1.39 and 1.41). A season repeats on a
         fixed beat, up or down, so seasonal never means only a spike. Diwali's dip also lands a
         week earlier in 2025, since the festival came eleven days earlier in the calendar, which
         notebook 02 will need.
 
-        Named last: a series is a **trend** times its **seasons** times a **remainder**, what is
-        left over. Forecasting: Principles and Practice writes the parts as a sum, y = T + S + R,
-        when the seasons keep their size as the level grows, and as a product when they grow with
-        it, as the stall's do (section 3.2, checked 13 October 2026). A **cycle**, a rise and fall
-        with no fixed length, needs more than two years to see.
+        Named last: a series is built from a **trend**, its **seasons** and a **remainder**, what
+        is left over. Forecasting: Principles and Practice adds the parts, y = T + S + R, when the
+        seasons keep their size as the level grows, and multiplies them, y = T x S x R, when they
+        grow with it, as the stall's do (section 3.2, checked 13 October 2026). A **cycle**, a rise
+        and fall with no fixed length, needs more than two years to see.
 
         ## What is left over?
 
-        Copy each day of the second year from the same weekday 364 days back, times 1.10 for the
-        year's growth; what the copy misses is the remainder. The fortnight Diwali moved into is
-        set aside, because there the copy lands the festival on the wrong days.
+        Copy each day of the stall's second year (invented) from the same weekday 364 days back,
+        times 1.10 for the year's growth. What the copy misses, read in cups, holds the remainder
+        of both years, this one's and last one's; its typical size is its **standard deviation**,
+        the spread the cell prints. The fortnight Diwali moved into is set aside, because there the
+        copy lands the festival on the wrong days.
         """),
         code('''
 cups = stall.set_index("date").cups
@@ -206,7 +213,7 @@ ax.set_xlabel("cups left over: sold minus (the same day last year x 1.10)")
 ax.set_ylabel("days")
 ax.set_title("What is left after the trend and the beats, Diwali's fortnight aside (invented)")
 plt.show()
-print(f"{len(rest)} days: mean {rest.mean():.1f} cups, spread {rest.std():.1f} cups either way")
+print(f"{len(rest)} days: mean {rest.mean():.1f} cups, typical size (standard deviation) {rest.std():.1f} cups either way")
 print(f"in the fortnight Diwali moved into, the worst day is {left[moved].abs().max():.0f} cups off")
 check("what is left has a mean near zero", abs(rest.mean()) < 1)
 check("what is left wobbles by a few cups", rest.std() < 6)
@@ -241,7 +248,8 @@ check("what is left wobbles by a few cups", rest.std() < 6)
 
         1. Read the series' shape before choosing any rule that copies it.
         2. A season repeats on a fixed beat, up or down, so count its length before using it.
-        3. Read growth by comparing the same point a season apart, never neighbours.
+        3. Read growth at the same point a season apart, never neighbours: a week apart shows a
+           week's change, and a year apart, 364 days, shows the year's growth.
         4. What is left after the trend and the seasons is the remainder, and a cycle needs years
            to see.
 
@@ -268,9 +276,9 @@ check("Flipkart's weeks grow about 4 percent a year", round(growth, 2) == 0.04)
         | Question | The stall's answer, in invented numbers |
         |---|---|
         | What repeats, and how often? | A Sunday dip every 7 days: Sunday sells 0.6 of a Monday |
-        | Is the stall growing? | By 10 percent a year, read a season apart; Monday's 67 percent over Sunday is the beat |
+        | Is the stall growing? | By 10 percent a year, read a year apart; Monday's 67 percent over Sunday is the beat |
         | What repeats once a year? | The exam fortnight, about 1.4 times an ordinary one, and Diwali week, about 0.4 |
-        | What is left over? | A wobble of 4.7 cups either way, except where the festival moved: up to 70 |
+        | What is left over? | A yearly copy's misses of typical size 4.7 cups either way, except where the festival moved: up to 70 |
 
         Flipkart's 104 weeks read the same way: a level near 210,000 shipments a week, growth of
         about 4 percent a year and a festive peak each year. Chapter 5's notebook,
@@ -289,8 +297,8 @@ def nb02():
         01 found its weekly beat of 7 days and its growth of 10 percent a year.
 
         **Who needs the answer.** The stall's owner (invented), who needs a rule a person can run on
-        paper before any spreadsheet opens, and Flipkart's FC planner, whose house bot is one of
-        these rules.
+        paper before any spreadsheet opens, and Flipkart's FC planner, whose house bot, this
+        case's name for the seasonal naive, is one of these rules.
 
         **The questions on the way.** What does each rule copy? Which wins next Sunday? What does a
         yearly copy miss? What breaks when the festival moves? Where does drift do its job?
@@ -310,8 +318,9 @@ week                                          # every number invented
         hand first:
 
         - **Naive** repeats the last day: 103.
-        - **Drift** takes the last value and adds the average step so far, here over the last four
-          days, 98, 104, 101 and 103: 103 + (103 - 98) / 3, about 104.7.
+        - **Drift** extends the line from the first value to the last. Treat the last four days,
+          98, 104, 101 and 103, as the whole history: the line climbs (103 - 98) / 3 a day, so it
+          says 103 + (103 - 98) / 3, about 104.7.
         - **Seasonal naive** copies the value one season back. The beat is 7 days, so next Sunday
           copies last Sunday: 61.
 
@@ -370,8 +379,9 @@ check("the seasonal naive lands nearest", min(forecasts, key=lambda k: abs(forec
 
         The stall (invented) has a yearly beat too. The November exam fortnight began on Wednesday
         27 November 2024 at 140 cups and on Wednesday 26 November 2025 at 154. Stand on Tuesday 25
-        November 2025, which sold 110. Naive copies it and falls 44 cups short on the first exam
-        day. The yearly copy, the same weekday 364 days back, says 140 and falls 14 short, the
+        November 2025, which sold 110. Naive, re-run each day from the day before (a one-step
+        forecast, which chapter 3 will not accept as a hold-out score), copies it and falls 44 cups
+        short on the first exam day. The yearly copy, the same weekday 364 days back, says 140 and falls 14 short, the
         year's growth; times 1.10 it says 154.
         """),
         code('''
@@ -402,9 +412,10 @@ check("the yearly copy with growth lands within 2 cups", abs(rules.loc[first].il
         md("""
         **What happened.** Across the 28 days naive misses by 20.6 cups a day, since it copies an
         ordinary day into the first exam day; the yearly copy misses by 10.5, the year's growth;
-        the yearly copy times 1.10 by 3.0. The copy reaches 364 days back, never a calendar year of
-        days, because 364 is 52 whole weeks: a Wednesday lands on a Wednesday and the weekly beat
-        stays in step. Finance's habit at Flipkart, "last year plus 4 percent", is this rule: the
+        the yearly copy times 1.10 by 3.0. The copy reaches 364 days back, 52 whole weeks, so a
+        Wednesday lands on a Wednesday and the weekly beat stays in step; anything tied to a date,
+        the 1st of a month or 15 August, drifts a day a year under it, so each effect is copied by
+        the calendar that drives it. Finance's habit at Flipkart, "last year plus 4 percent", is this rule: the
         seasonal naive times a growth factor, read as notebook 01 reads trend.
 
         ## What breaks when the festival moves?
@@ -444,14 +455,17 @@ check("the calendar copy misses the moved festival by more than 50 cups", calend
 check("festival-aligned misses by less than 15", aligned.abs().max() < 15)
 '''),
         md("""
-        **Why it is wrong.** The calendar copy misses by up to 71 cups, 41.1 a day on average
+        **Why it is wrong.** At the stall (invented), the calendar copy misses by up to 71 cups, 41.1 a day on average
         across the three weeks around Diwali's week; the festival-aligned copy by at most 13 and 6.5
         on average. **The decision it misleads:** milk 70 cups short on 30 October and 56 cups too
         much on Diwali itself, which sours. **The check:** the calendar. **The fix:** near the
         festival, copy the day at the same distance from last year's festival, 357 days back here,
         since Diwali's week came 51 weeks after 2024's. The fix is this programme's own extension of
         the seasonal naive, which it calls **festival-aligned**; away from the festival it is the
-        plain seasonal naive.
+        plain seasonal naive. Here it adds no growth, so the picture shows the move alone; at
+        Flipkart it adds the year's growth where the data can measure it. Forecasting: Principles
+        and Practice handles a holiday that moves, its example Easter, with a dummy variable, one in
+        the period that holds the holiday and zero otherwise (section 7.4, checked 13 October 2026).
 
         ## Where does drift do its job?
 
@@ -530,7 +544,8 @@ check("the house bot holds the week 52 rows up", house_bot.iloc[52] == y.iloc[0]
         | Where does drift do its job? | On a plain climb: 686 for week 13 against 688 sold |
 
         At Flipkart the seasonal naive with m = 52 is "the same week last year", which the
-        tournament calls the house bot; finance's rule is the house bot times 1.04; drift's step is
+        afternoon's tournament, a contest that scores every rule on weeks it never saw, calls the
+        house bot; finance's rule is the house bot times 1.04; drift's step is
         about 70 shipments a week. Chapter 5's notebook,
         `C2_W04_D05_05_case_shape_and_baselines_STUDENT.ipynb`, runs these rules on Diwali 2025's
         week; notebook 03 scores a rule on days it never saw.
@@ -563,7 +578,7 @@ days                             # every number invented
         md("""
         ## Which days do we hide?
 
-        The owner orders milk for the next three days. To judge a rule, hide some days, forecast
+        The owner (invented) orders milk for the next three days. To judge a rule, hide some days, forecast
         them as if each were tomorrow, and count the misses.
 
         **Predict before you run.** To judge a three-day milk order, which three of the fourteen
@@ -598,9 +613,9 @@ check("as many hidden days as the order reaches ahead", len(hidden) == 3)
         days ahead is the **horizon**; days 1 to 11 are the **training** days and days 12 to 14 the
         **hidden** days, also called the hold-out or the test set. Tomorrow looks most like the
         newest days, and a random hole would let a rule borrow days that come after the one it
-        forecasts, which a real tomorrow never offers. The test set should be "at least as large
-        as the maximum forecast horizon required" (Forecasting: Principles and Practice, section
-        5.8, checked 13 October 2026).
+        forecasts, which a real tomorrow never offers. The test set should "ideally be at least as
+        large as the maximum forecast horizon required" (Forecasting: Principles and Practice,
+        section 5.8, checked 13 October 2026).
 
         ## How is a miss counted?
 
@@ -729,6 +744,11 @@ check("rule P costs Rs 120 and rule Q Rs 180", table["cost Rs"].tolist() == [120
         """),
         empty(),
         md("""
+        **After your turn.** The seasonal naive scores 5.7 cups against naive's 5.0 at the stall
+        (invented). The hidden days are a Wednesday, a Thursday and a Friday, all ordinary days, so
+        the Sunday dip the seasonal naive respects never comes up, and its copies are a week older
+        than naive's. A beat helps only where the hidden days hold it.
+
         ## Which rules does the chapter leave?
 
         1. Hide the latest periods, at least as many as the forecast must reach ahead, and forecast
@@ -806,8 +826,8 @@ days                              # every number invented
         ## What does a perfect fit say about tomorrow?
 
         **Fit** is how close a rule sits to the days it was built on; **forecast error** is how far
-        it misses days it never saw. The nephew's first offer is a curve through the first four
-        days, 100, 104, 98 and 110 cups, which passes through every one of them exactly.
+        it misses days it never saw. The nephew's first offer (invented) is a curve through the
+        first four days, 100, 104, 98 and 110 cups, which passes through every one of them exactly.
 
         **Predict before you run.** Which forecast for day 5 lands closest?
 
@@ -827,7 +847,7 @@ def line_through(values):
     return slope, ym - slope * xm
 
 def curve_at(t, values):
-    """The one curve that passes through every day exactly, read at day t."""
+    """The one curve of degree three or less through all four days exactly, read at day t."""
     total = 0
     for i, v in zip(x, values):
         term = v
@@ -855,25 +875,28 @@ plt.show()
 print(f"the line: slope {slope:.1f}, value at day 0 {start:.0f}, {line_fit:.1f} cups from the four days on average; day 5: {line5:.0f}")
 print(f"the curve: {curve_fit:.0f} cups from the four days; day 5: {curve5:.0f}")
 print(f"day 5 sold {day5}: the line misses by {abs(line5 - day5):.0f}, the curve by {abs(curve5 - day5):.0f}, naive by {abs(four[-1] - day5)}")
-check("by hand and by code, the curve says 168", round(curve5) == 110 + 12 + 18 + 28)
+check("by hand and by code, the curve says 168", round(curve5) == 110 + (12 + (18 + 28)))   # the difference table's new row
 check("the curve fits the four days exactly", curve_fit < 1e-9)
 check("its forecast misses day 5 by more than 50", abs(curve5 - day5) > 50)
 check("the line, which fits worse, misses by less than 10", abs(line5 - day5) < 10)
 '''),
         md("""
-        **What happened.** The answer is a, with naive a cup behind. Day 5 sold 102. The curve
-        through all four days fits them perfectly, with an error of 0, and said 168: a miss of 66,
-        the worst in the room. The straight line sits about 3.1 cups from the four days on average,
-        said 109 and missed by 7; naive said 110 and missed by 8. The curve's 168 needs no algebra:
-        the four days' differences are 4, -6 and 12, their differences -10 and 18, and theirs 28;
-        carry each last difference down and the curve climbs to 110 + 12 + 18 + 28 = 168. An
-        interviewer calls fit in-sample and forecast error out-of-sample: "A model which fits the
+        **What happened.** The answer is a, with naive a cup behind. Day 5 at the stall (invented)
+        sold 102. The curve through all four days fits them perfectly, with an error of 0, and said
+        168: a miss of 66, the worst in the room. The straight line climbs 2.4 cups a day from 97
+        at day 0, so it says 97 + 2.4 x 5 = 109 for day 5, sits about 3.1 cups from the four days
+        on average, and missed by 7; naive said 110 and missed by 8. The curve's 168 needs no
+        algebra. The four days' differences are 4, -6 and 12; their differences -10 and 18; and
+        theirs 28. A curve of degree three keeps that last difference level, so the new row is 28
+        again: the next second difference is 18 + 28 = 46, the next first difference 12 + 46 =
+        58, and day 5 is 110 + 58 = 168. An interviewer calls fit in-sample and forecast error out-of-sample: "A model which fits the
         training data well will not necessarily forecast well" (Forecasting: Principles and
         Practice, section 5.8, checked 13 October 2026).
 
         ## Does the clever rule beat the baseline?
 
-        The nephew's second offer is the mean of the last seven days, 97.6 cups every day. Score
+        The nephew's second offer (invented) is the mean of the last seven days, 97.6 cups every
+        day. Score
         it against the seasonal naive, the same day last week, on the seven hidden days, 10 to 16
         March, by the measure notebook 03 fixed.
 
@@ -944,11 +967,12 @@ check("the seasonal naive orders a perfect forecast's cans on all seven days", d
 check("the nephew's mean orders a third can on the Sunday", differ["nephew's mean"] == 1 and order["nephew's mean"].iloc[-1] == 3)
 '''),
         md("""
-        **What happened.** On none: the seasonal naive orders 3 cans a weekday and 2 on Sunday,
-        exactly what a forecast that knew the future would order, on all seven days. The nephew's
-        mean orders a third can on Sunday, milk that sours. Named last: **good enough** is a claim
-        about the decision, never about the model. A better forecast is worth having only if it
-        would change what gets ordered, so the owner stops improving here.
+        **What happened.** On none: the seasonal naive orders 3 cans a weekday and 2 on Sunday at
+        the stall (invented), exactly what a forecast that knew the future would order, on all
+        seven days. The nephew's mean orders a third can on Sunday, milk that sours. Named last:
+        **good enough** is a claim about the decision, never about the model. A better forecast is
+        worth having only when what it changes in the order is worth more than the work of getting
+        it; here it changes no can at all, so the owner stops improving.
 
         ## What goes to the milkman?
 
@@ -962,17 +986,18 @@ bar = scores["seasonal naive"]
 note = [
     f"The number: {order['seasonal naive'].iloc[0]} cans a day Monday to Saturday, {order['seasonal naive'].iloc[-1]} on Sunday.",
     "The method: the same day last week, the seasonal naive, which beat the nephew's mean on seven hidden days.",
-    f"The error bar: {bar:.1f} cups a day on those days, about Rs {bar * unsold_rs:.0f} a day if it runs high "
+    f"The error bar: a typical miss of {bar:.1f} cups a day on those days, about Rs {bar * unsold_rs:.0f} a day if it runs high "
     f"and Rs {bar * short_rs:.0f} if it runs short.",
     "What would make it wrong: exams starting early, or the hostel emptying for a holiday.",
 ]
+print("The note to the milkman (invented):")
 print("\\n".join(note))
 check("the note holds four lines", len(note) == 4)
 check("the error bar is in cups and in rupees", "cups" in note[2] and "Rs" in note[2])
 '''),
         md("""
-        **The plausible wrong answer.** "The model fits 100 percent of history; order for 168
-        cups." **The decision it misleads:** 168 cups is 5 cans against the 3 that day 5 needed,
+        **The plausible wrong answer.** "The nephew's model (invented) fits 100 percent of history;
+        order for 168 cups." **The decision it misleads:** 168 cups is 5 cans against the 3 that day 5 needed,
         two cans of milk that sour. **The check:** the score on hidden days. **The fix:** the
         baseline's number with its error bar.
         """),
@@ -995,14 +1020,18 @@ check("the error bar is in cups and in rupees", "cups" in note[2] and "Rs" in no
         1. Fit is measured on the days a rule was built on, and it proves nothing about tomorrow.
         2. Nothing goes to the order unless it beats the seasonal naive on hidden days, by the
            measure fixed first.
-        3. Good enough is a claim about the decision: stop improving when a better forecast would
-           order the same.
+        3. Good enough is a claim about the decision: keep improving only while a better forecast
+           would change the order by more than the work of getting it costs.
         4. The note carries the number, the method, the error bar in the unit and in rupees, and
            what would make it wrong.
 
-        **In the interview.** [F] "What baseline must any forecast beat, and why?" [F] "A vendor
-        promises 22 percent growth; how do you test the claim?" Each is answered with the hidden
-        periods and the seasonal naive, never with the fit.
+        **In the interview.** The tags say how often a question comes up: [S] a staple asked
+        everywhere, [F] frequent in GCC and product screens, [D] a differentiator. [F] "What baseline must any
+        forecast beat, and why?" Naive when the series has no season, the seasonal naive when it
+        has one, plus the year's growth when it trends; because a baseline costs nothing to run, a
+        model that cannot beat it adds cost for no accuracy. [F] "A vendor promises 22 percent
+        growth; how do you test the claim?" Restate it against the same weeks, score the curve on
+        weeks it never saw, and ask for its record on a festival it did not see.
         """),
         code('''
 vendor = pd.read_csv("../data/C2_W04_D05_vendor_forecast_STUDENT.csv", parse_dates=["week_start"])
@@ -1013,7 +1042,9 @@ print(f"against festival-aligned, the house bot misses by {(bot_mae - aligned_ma
       f"a week and the vendor by {(vendor_mae - aligned_mae) / per_shift:.0f}")
 check("the vendor's file labels fits, hidden-week forecasts and the weeks ahead",
       set(vendor.kind) == {"fitted", "holdout", "forecast"})
-check("a rule better by 100 shipments a week gains less than one shift", 100 < per_shift)
+saves = (100 * 650 / per_shift, 100 * 25)                     # an MAE 100 lower: that many spare, or late, shipments saved
+print(f"a rule whose MAE is 100 lower saves Rs {saves[0]:,.0f} to Rs {saves[1]:,} a week")
+check("a rule 100 better is worth at most Rs 2,500 a week", saves[1] == 2500)
 '''),
         md("""
         ## What did the chapter answer?
@@ -1027,7 +1058,8 @@ check("a rule better by 100 shipments a week gains less than one shift", 100 < p
 
         At Flipkart the vendor's curve fits its 91 weeks within 1.4 percent and misses the thirteen
         hidden weeks by 16,400 a week. The decision unit is a shift of 120 shipments, so the house
-        bot's gap is 27 shifts a week and the vendor's 82. Chapter 6's notebook,
+        bot's gap is 27 shifts a week and the vendor's 82, while a rule whose MAE is 100 lower is
+        worth Rs 542 to Rs 2,500 a week, to be weighed against the work. Chapter 6's notebook,
         `C2_W04_D05_06_case_holdout_scoreboard_STUDENT.ipynb`, tests the vendor's curve, and
         chapter 7's, `C2_W04_D05_07_case_good_enough_forecast_note_STUDENT.ipynb`, makes the
         good-enough call and books the plan.
@@ -1046,7 +1078,7 @@ def nb05():
         those notebooks found a weekly beat of 7 days, growth of 10 percent a year read a season
         apart, and a seasonal naive that missed next Sunday by 1 cup where naive missed by 43.
 
-        {TICKET}
+        {TICKET_MD}
 
         **Who needs the answer.** The FC planner, who books packer shifts weeks before the festival
         and cannot add a shift on the day, and the regional operations head, who signs the plan. A
@@ -1103,12 +1135,14 @@ check("both peaks sit two weeks before Diwali's week", peaks == list(pd.to_datet
         ## What do three rules forecast for Diwali 2025's own week?
 
         Stand in the week of 13 October 2025 and forecast the next week, 20 October 2025, with the
-        rules notebook 02 built on the stall. **Naive** repeats the week before. **The seasonal
-        naive** with a season of 52 weeks copies the week 52 weeks back, the week of 21 October
-        2024; the planners call it **same week last year**, and the tournament calls it **the house
-        bot**. **Festival-aligned** copies the week at the same distance from last year's Diwali,
-        which is Diwali 2024's own week, 28 October 2024, and adds the 4 percent a year the centre
-        grew.
+        rules notebook 02 built on the stall (invented). **Naive** repeats the week before. **The
+        seasonal naive** with a season of 52 weeks copies the week 52 weeks back, the week of 21
+        October 2024; the planners call it **same week last year**, and the afternoon's tournament,
+        a contest that scores every rule on weeks it never saw, calls it **the house bot**.
+        **Festival-aligned** copies the week at the same distance from last year's Diwali, which is
+        Diwali 2024's own week, 28 October 2024. It adds no growth here: in October 2025 the data
+        held no full year outside the festival to measure growth on, and the 4 percent that
+        chapter 6 uses is measured on weeks up to June 2026, which this forecast cannot see.
 
         **Predict before you run.** Which rule lands closest to the 308,900 that shipped?
 
@@ -1121,7 +1155,7 @@ check("both peaks sit two weeks before Diwali's week", peaks == list(pd.to_datet
 actual = s[pd.Timestamp("2025-10-20")]                    # Diwali 2025's own week
 naive = s[pd.Timestamp("2025-10-13")]                     # the week before
 seasonal = s[pd.Timestamp("2024-10-21")]                  # 52 weeks back: same week last year
-aligned = round(s[pd.Timestamp("2024-10-28")] * 1.04)     # Diwali 2024's own week, plus 4 percent
+aligned = s[pd.Timestamp("2024-10-28")]                  # Diwali 2024's own week; no growth, which October 2025 could not measure
 for name, forecast in [("naive", naive), ("seasonal naive", seasonal), ("festival-aligned", aligned)]:
     print(f"{name}: forecast {forecast:,}, miss {forecast - actual:+,}")
 check("festival-aligned lands closest",
@@ -1129,8 +1163,9 @@ check("festival-aligned lands closest",
 '''),
         md("""
         **What happened.** The answer is c. Naive misses by 60,100 and the seasonal naive by
-        47,300, both too high; festival-aligned misses by 124. A miss here is the forecast minus
-        what shipped, so a positive miss is too high. The week 52 weeks back looks like "the same
+        47,300, both too high; festival-aligned misses by 12,000, too low, by about the year's
+        growth that nobody could measure yet. A miss here is the forecast minus what shipped, so a
+        positive miss is too high. The week 52 weeks back looks like "the same
         week", but in 2024 it was the week before Diwali, and the week before Diwali ships more than
         Diwali's own week.
 
@@ -1146,7 +1181,7 @@ y25 = s[s.index.year == 2025]                             # the six 2025 rows
 copy52, copy51 = {}, {}
 for d in y25.index:
     copy52[d] = s.get(d - pd.Timedelta(weeks=52))           # blank when that week is not in the twelve rows
-    copy51[d] = round(s[d - pd.Timedelta(weeks=51)] * 1.04)  # the week at the same distance from Diwali
+    copy51[d] = s[d - pd.Timedelta(weeks=51)]                # the week at the same distance from Diwali, no growth
 table = pd.DataFrame({"actual": y25, "seasonal naive": pd.Series(copy52).astype("Int64"),
                       "festival-aligned": pd.Series(copy51)})
 print(table.to_string())
@@ -1160,7 +1195,8 @@ check("the actual peak is 6 Oct 2025", y25.idxmax() == pd.Timestamp("2025-10-06"
         **Why it is wrong.** Diwali's week came one week earlier in 2025, so the copy of the same
         calendar week put 2024's peak (401,000) on 13 October 2025, a week late, and left the real
         peak week short. The check that catches it is the calendar: line up each year's weeks by
-        their distance from Diwali before copying, as notebook 02 did for the stall's days. The
+        their distance from Diwali before copying, as notebook 02 did for the stall's days
+        (invented). Every festival-aligned week sits a little low, by the growth it leaves out. The
         week of 29 September 2025 shows a blank in the copy, because its source, 30 September 2024,
         is not one of the twelve rows.
 
@@ -1211,7 +1247,7 @@ check("each festive sale runs three and two weeks before Diwali's week", sorted(
         - **Where is the peak?** Two weeks before Diwali's week in both years, in the sale weeks:
           401,000 and 418,200.
         - **What do three rules say for 20 October 2025?** Naive 369,000, the seasonal naive (same
-          week last year) 356,200, festival-aligned 308,776 against 308,900 shipped.
+          week last year) 356,200, festival-aligned 296,900, 12,000 low, against 308,900 shipped.
         - **Where does a copy of last year put the peak?** A week late in 2025. In 2026 Diwali's
           week comes 54 weeks after 2025's, where a copy steps back 52; chapter 7 asks what that
           does to this year's rush.
@@ -1236,7 +1272,7 @@ def nb06():
         scored naive at an MAE of 5.0 cups with a lean of -1.7, and the nephew's mean lost to the
         seasonal naive, 12.4 cups against 4.0.
 
-        {TICKET}
+        {TICKET_MD}
 
         Chapter 5 found the peak two weeks before Diwali's week and showed that a copy of the same
         calendar week lands it a week late in 2025. This notebook scores every rule, and the
@@ -1341,6 +1377,9 @@ for ax, name in zip(axes, ["naive", "drift", "house bot", "festival-aligned"]):
 axes[0].legend()
 plt.show()
 print(scores.to_string())
+mape = pd.Series({name: ((rules[name] - hold).abs() / hold).mean() for name in rules.columns})   # each miss over what shipped
+print("MAPE:", "; ".join(f"{name} {m:.2%}" for name, m in mape.sort_values().items()))
+check("MAPE ranks the rules as MAE does", (mape.rank(method="min") == scores.rank(method="min")[mape.index]).all())
 check("festival-aligned and finance tie", scores["festival-aligned"] == scores["finance"])
 check("the house bot beats naive and drift", scores["house bot"] < min(scores["naive"], scores["drift"]))
 '''),
@@ -1393,8 +1432,8 @@ print(f"largest miss on the {len(fitted)} fitted weeks: {fit_gap:.1%}")
 vendor_mae = (v.loc[hold.index] - hold).abs().mean()                            # the same measure as the rules
 print(f"vendor MAE on the hidden weeks: {vendor_mae:,.0f}")
 k = len(hold) // 2                                                              # six of thirteen
-print(f"too high by {hold_gap.iloc[:k].mean():.1%} on average in hidden weeks 1 to {k}, "
-      f"{hold_gap.iloc[-k:].mean():.1%} in weeks {len(hold) - k + 1} to {len(hold)}")
+print(f"too high by {hold_gap.iloc[:k].mean():.1%} on average in the first {k} hidden weeks, "
+      f"{hold_gap.iloc[-k:].mean():.1%} in the last {k}, the middle week aside")
 check("the fit stays within 2 percent", fit_gap <= 0.02)
 check("the vendor's MAE is at least 30 percent above festival-aligned",
       vendor_mae >= 1.3 * scores["festival-aligned"])
@@ -1404,8 +1443,8 @@ check("the vendor's MAE is at least 30 percent above festival-aligned",
         1.4 percent, and it misses the hidden weeks by 16,400 a week, 148 percent worse than
         festival-aligned and 67 percent worse than the house bot. The check is the one the room
         fixed before scoring: error on the weeks it never saw. The fix is to send nothing to the
-        plan that loses to the house bot there, as the stall's owner sent nothing that lost to the
-        seasonal naive in notebook 04.
+        plan that loses to the house bot there, as the stall's owner (invented) sent nothing that
+        lost to the seasonal naive in notebook 04.
 
         ## Which way is each rule wrong, and what does each direction cost?
 
@@ -1418,6 +1457,7 @@ check("the vendor's MAE is at least 30 percent above festival-aligned",
         d) naive
         """),
         code('''
+v = vendor.set_index("week_start").vendor_shipments                 # the vendor's numbers, as cell 11 reads them
 rules["vendor"] = v.loc[hold.index]
 rows = []
 for name in rules.columns:
@@ -1436,6 +1476,12 @@ plt.show()
 check("the vendor errs high on most hidden weeks", priced.loc["vendor", "weeks too high"] > len(hold) / 2)
 check("on these hidden weeks, priced, the vendor costs less than festival-aligned",
       priced.loc["vendor", "cost Rs lakh"] < priced.loc["festival-aligned", "cost Rs lakh"])
+at15 = {}
+for name in ["festival-aligned", "vendor"]:                       # the same misses at the ticket's low end, Rs 15 late
+    miss = rules[name] - hold
+    at15[name] = round(float(miss[miss > 0].sum() * 650 / 120 - miss[miss < 0].sum() * 15) / 100_000, 1)
+print("at Rs 15 a late shipment, Rs lakh:", at15)
+check("at Rs 15 a late shipment, festival-aligned's misses cost less", at15["festival-aligned"] < at15["vendor"])
 '''),
         md("""
         **What happened.** The answer is b, and it is the uncomfortable result. The vendor's
@@ -1443,16 +1489,19 @@ check("on these hidden weeks, priced, the vendor costs less than festival-aligne
         each added over the thirteen weeks. The vendor errs high on 12 of 13 weeks, and a spare
         shipment costs Rs 5.42 against Rs 25 for a late one, so its bigger misses are the cheaper
         kind. The house bot's misses are the dear kind: 11 of its 13 weeks are too low, which is why
-        it costs more than naive while scoring a lower MAE. The stall showed the same in notebook
-        03: one MAE, two prices.
+        it costs more than naive while scoring a lower MAE. The stall (invented) showed the same in
+        notebook 03: one MAE, two prices.
 
-        This says that erring high pays at these costs. It does not hand the vendor the plan:
-        nobody chose how far high it runs, it runs higher the further ahead it looks (3.6 percent
-        too high in hidden weeks 1 to 6, 11.5 percent in weeks 8 to 13), and no hidden week holds a
-        festival, where the vendor copies the wrong weeks. Chapter 7 books the plan at
-        festival-aligned's forecast and prices its error bar each way; how far above the forecast a
-        plan should sit, the plan quantile, goes beyond today's curriculum row and runs in the
-        fallback hour and in notebook 07's depth section.
+        This says that erring high pays at these costs, and only at these costs. At Rs 15 a late
+        shipment, the low end of the ticket's range, festival-aligned's misses cost Rs 9.0 lakh
+        against the vendor's Rs 11.7 lakh; across the ticket's ranges for both costs the vendor
+        is cheaper in 5 of 9 pairings. It does not hand the vendor the plan: nobody chose how far
+        high it runs, it runs higher the further ahead it looks (3.6 percent too high in the first
+        six hidden weeks, 11.5 percent in the last six), and no hidden week holds a festival, where
+        the vendor copies the wrong weeks. Chapter 7 books the plan at festival-aligned's forecast
+        and prices its error bar each way. How far above the forecast a plan should sit, which a
+        later step calls the plan quantile, goes beyond the row, that is, beyond today's five
+        topics; the fallback session and notebook 07's depth section teach it.
 
         ## Does the score match the printed error table?
 
@@ -1472,8 +1521,9 @@ check("the printed table gives the same MAE", round(by_hand) == scores["festival
         ## How would you answer "how do you evaluate a forecast?" in an interview?
 
         Hold out the latest weeks as a test set, at least as many as the forecast must reach
-        ahead, and forecast them from one origin; then roll the origin, since one origin is one
-        draw. Fix two measures before anyone scores: the miss in shipments, and the misses priced
+        ahead, and forecast them from one origin; then **roll the origin**, moving it on a week at
+        a time and forecasting again, since one origin gives one draw of the luck (the fallback
+        session works five origins by hand). Fix two measures before anyone scores: the miss in shipments, and the misses priced
         by direction, which is what the plan pays. Compare every candidate with the naive and the
         seasonal naive, here the house bot, and send nothing that loses to them. The trap the
         interviewer fishes for is judging by the fit.
@@ -1492,9 +1542,9 @@ check("the printed table gives the same MAE", round(by_hand) == scores["festival
           30.5 lakh.
         - **Does the table agree?** Yes, 6,615 from the printed misses.
         - **Is festival-aligned good enough?** Good enough is a claim about the decision: a better
-          forecast is worth having only if it would book different shifts. Chapter 7 asks where the
-          festival falls this year and how many packer shifts the plan books, which these weeks
-          cannot test.
+          forecast is worth having only when what it changes in the plan is worth more than the
+          work of getting it. Chapter 7 asks where the festival falls this year and how many packer
+          shifts the plan books, which these weeks cannot test.
         """),
     ]
 
@@ -1513,7 +1563,7 @@ def nb07():
         a perfect forecast would order the same cans as the seasonal naive, so the owner stopped
         improving and sent a four-line note.
 
-        {TICKET}
+        {TICKET_MD}
 
         Chapter 6 scored every rule on thirteen hidden summer weeks: festival-aligned and finance's
         rule tied at 6,615 a week, the house bot scored 9,831, the vendor 16,400. None of those
@@ -1557,9 +1607,12 @@ check("the week of 19 Oct 2026 copies 6 Oct 2025", source[pd.Timestamp("2026-10-
         earlier date and forecasts what came next as if the later weeks were unknown: stand in the
         week of 22 September 2025 and forecast the eight weeks from 29 September to 17 November
         2025. Festival-aligned copies, from five weeks before Diwali's week to four after, the week
-        at the same distance from last year's Diwali. The 4 percent growth was measured later, on
-        weeks up to June 2026, so the cell also runs festival-aligned with no growth, as a planner
-        in September 2025 could have.
+        at the same distance from last year's Diwali. It adds no growth: in September 2025 the data
+        held one year, so no week had a twin a year earlier to measure growth on. The 4 percent
+        chapter 6 uses was measured later, on weeks up to June 2026; the cell runs that version too,
+        labelled, to show how much of the miss is growth. One more caution: this course set the
+        stretch, five weeks before Diwali's week to four after, to cover both festivals' busy weeks,
+        so even this back-test has seen the shape it tests, and the next festival is the clean test.
 
         **Predict before you run.** By how many weeks does the house bot, the seasonal naive, miss
         2025's peak?
@@ -1575,12 +1628,12 @@ back = pd.DataFrame({
     "actual": y.loc[weeks25],
     "house bot": [y[d - pd.Timedelta(weeks=52)] for d in weeks25],
     "finance": [round(y[d - pd.Timedelta(weeks=52)] * 1.04) for d in weeks25],
-    "festival-aligned": [round(y[source[d]] * 1.04) for d in weeks25],
-    "aligned, no growth": [y[source[d]] for d in weeks25],
+    "festival-aligned": [y[source[d]] for d in weeks25],                         # no growth: none could be measured yet
+    "aligned, growth known later": [round(y[source[d]] * 1.04) for d in weeks25],  # the 4 percent from weeks up to June 2026
 }, index=weeks25)
 back[["actual", "house bot", "festival-aligned"]].plot(marker="o", title="2025's festival, forecast from 22 Sep 2025")
 plt.show()
-for rule in ["house bot", "finance", "festival-aligned", "aligned, no growth"]:
+for rule in ["house bot", "finance", "festival-aligned", "aligned, growth known later"]:
     miss = back[rule] - back.actual                                  # positive: too high
     spare = miss[miss > 0].sum() * spare_rs
     late = -miss[miss < 0].sum() * late_rs
@@ -1595,9 +1648,11 @@ check("festival-aligned peaks on 6 Oct 2025 with the actual", back["festival-ali
         **What happened.** The answer is b. The house bot put 2024's peak on 13 October 2025, a
         week late: MAE 58,250 and Rs 79.8 lakh of misses, Rs 69.6 lakh of it late shipments in the
         weeks where 2025's rush came before the copy expected it. Finance's rule, the same copy plus
-        4 percent, missed by 60,488 a week. Festival-aligned missed by 4,034 a week and Rs 4.6 lakh,
-        and with no growth added it still missed by only 10,575. One festival is a thin test, so the
-        plan treats this as evidence about placement, never as a precise error.
+        4 percent, missed by 60,488 a week. Festival-aligned, run as a planner in September 2025
+        could run it, missed by 10,575 a week and Rs 21.1 lakh, every week too low by about the
+        growth it could not yet measure, and it put the peak in the right week; with the growth
+        measured later it would have missed by 4,034. One festival is a thin test, so the plan
+        treats this as evidence about placement, never as a precise error.
 
         ## Which week does each forecast put this year's peak in?
 
@@ -1637,8 +1692,8 @@ check("festival-aligned's busiest week is 19 Oct 2026", ahead["festival-aligned"
 
         ## How do the four forecasts compare with last year's window?
 
-        "Last year's window" has two readings, as notebook 01 read the stall's growth only against
-        the same point a season apart. The same calendar weeks, 13 October to 1 December 2025, hold
+        "Last year's window" has two readings, as notebook 01 read the stall's growth (invented)
+        only against the same point a year apart. The same calendar weeks, 13 October to 1 December 2025, hold
         only the tail of 2025's festival. The same weeks counted from Diwali, 29 September to 17
         November 2025, hold all of it.
 
@@ -1676,9 +1731,10 @@ check("finance sits below festival-aligned", totals["finance"] < totals["festiva
         ## How many packer shifts does each week need, and how wrong could the plan be?
 
         The plan books festival-aligned's forecast: each week's shipments over 120 a shift, rounded
-        up, since a shipment that does not fill a shift still needs one. The error bar is chapter
-        6's MAE in the business's unit, then priced each way, as notebook 03 priced the stall's
-        misses.
+        up, since a shipment that does not fill a shift still needs one. The error bar has two
+        parts. Its typical miss is chapter 6's MAE in the business's unit, priced each way, as
+        notebook 03 priced the stall's misses (invented). Its range is how far the hidden weeks'
+        misses ran either way, applied to the plan's busiest week.
         """),
         code('''
 forecast = ahead.loc[window, "festival-aligned"]
@@ -1688,9 +1744,18 @@ print(staffing.to_string())
 error_bar = 6615                                                 # chapter 6's MAE, shipments a week
 print(f"Book {shifts.sum():,} packer shifts for 12 October to 30 November, peaking at {shifts.max():,} "
       f"in the week of {shifts.idxmax():%d %B}.")
-print(f"The error bar: {error_bar:,} shipments a week, about {error_bar / 120:.0f} shifts; about "
+print(f"The typical miss: {error_bar:,} shipments a week, about {error_bar / 120:.0f} shifts; about "
       f"Rs {round(error_bar * spare_rs, -2):,.0f} of idle shifts a week if it runs that far high, "
       f"Rs {error_bar * late_rs / 100_000:.2f} lakh of late shipments if that far low.")
+hold = y.iloc[91:]                                               # chapter 6's thirteen hidden weeks
+fa_hold = (y.shift(52).loc[hold.index] * 1.04).round()           # festival-aligned on them
+share = (hold - fa_hold) / fa_hold                               # each week's miss as a share of the forecast
+peak = forecast["2026-10-19"]
+low, high = peak * (1 + share.min()), peak * (1 + share.max())
+print(f"The range: the hidden weeks ran from {-share.min():.1%} below the forecast to {share.max():.1%} above; "
+      f"for the week of 19 October that is {math.ceil(low / 120):,} to {math.ceil(high / 120):,} shifts against "
+      f"{shifts['2026-10-19']:,} booked, about Rs {(peak - low) * spare_rs / 100_000:.1f} lakh of idle shifts at "
+      f"one end and Rs {(high - peak) * late_rs / 100_000:.1f} lakh of late shipments at the other.")
 staffing["packer shifts"].plot.bar(color="lavender", edgecolor="slateblue", title="Packer shifts a week, at the forecast")
 plt.show()
 check("the plan books 19,760 packer shifts", shifts.sum() == 19760)
@@ -1698,30 +1763,39 @@ check("the busiest week of the plan is 19 Oct 2026", shifts.idxmax() == pd.Times
 '''),
         md("""
         **What happened.** The plan books 19,760 packer shifts over the eight weeks, peaking at
-        3,625 in the week of 19 October; the error bar is 6,615 shipments a week, about 55 shifts.
-        A late shipment costs 4.6 times a spare one, so the same miss is dear when the plan runs
-        short and cheap when it runs high, which is why the note prices both.
+        3,625 in the week of 19 October. Its typical miss is 6,615 shipments a week, about 55
+        shifts, 3.0 percent of an ordinary summer week; the festive weeks are bigger and may miss by
+        more. Its range at the peak runs from 3,413 to 3,906 shifts. A late shipment costs 4.6 times
+        a spare one, so the same miss is dear when the plan runs short and cheap when it runs high,
+        which is why the note prices both. The plan books the forecast itself; a margin, if the
+        planner adds one, goes above it, since short is the dear side, and how far is the plan
+        quantile, a step beyond today's five topics.
 
         ## Is a better forecast worth having?
 
-        Good enough is a claim about the decision, as the stall's cans showed in notebook 04. Here
-        the decision unit is a shift of 120 shipments. A forecast earns its place only if it would
-        book different shifts.
+        Good enough is a claim about the decision, as the stall's cans (invented) showed in notebook
+        04: a better forecast is worth having only when what it changes in the order is worth more
+        than the work of getting it. At the stall it changed no can. Here a shift is 120 shipments,
+        small beside a typical miss of 6,615 a week, so any better forecast changes some shifts, and
+        the question becomes one of rupees.
         """),
         code('''
-gaps = {"house bot": (9831 - 6615) / 120, "vendor": (16400 - 6615) / 120}    # chapter 6's MAEs, over a shift
-print("extra miss against festival-aligned, shifts a week:", {k: round(g) for k, g in gaps.items()})
-moved = shifts - ((forecast - 100) / 120).apply(math.ceil)                    # a rule better by 100 shipments a week
-print("shifts that rule would book differently, week by week:", moved.tolist())
-print(f"weeks it moves a shift at all: {(moved > 0).sum()} of {len(moved)}, against {shifts.min():,} to {shifts.max():,} booked")
-check("the house bot and the vendor each miss by more than a shift a week more", min(gaps.values()) > 1)
-check("a rule 100 shipments better moves at most one shift in any week", moved.max() <= 1)
+gaps = {"house bot": 9831 - 6615, "vendor": 16400 - 6615}                     # chapter 6's MAEs: extra miss a week
+print("extra miss against festival-aligned, shifts' worth a week:", {k: round(g / 120) for k, g in gaps.items()})
+better = 100                                                                   # a rule whose MAE is 100 lower
+week_low, week_high = better * spare_rs, better * late_rs                      # those 100 shipments spare, or late
+print(f"a rule whose MAE is {better} lower saves Rs {week_low:,.0f} to Rs {week_high:,.0f} a week, "
+      f"Rs {round(8 * week_low, -2):,.0f} to Rs {8 * week_high:,.0f} over the eight weeks")
+check("the house bot and the vendor each miss by more than a shift a week more", min(gaps.values()) > 120)
+check("a rule 100 better saves at most Rs 20,000 over the eight weeks", 8 * week_high == 20_000)
 '''),
         md("""
-        **What happened.** Festival-aligned is good enough: the house bot misses by 27 more shifts a
-        week and the vendor by 82, so both lose real shifts, while a rule 100 shipments a week
-        better would move one shift in 7 of the 8 weeks against 1,635 to 3,625 booked. The next
-        model must earn its place by more than a shift a week, on hidden weeks.
+        **What happened.** Festival-aligned goes to the plan. The house bot misses by 27 more
+        shifts' worth a week and the vendor by 82: gaps that cost real money every week. A rule
+        whose MAE is 100 shipments lower would save Rs 542 to Rs 2,500 a week, Rs 4,300 to Rs
+        20,000 over the eight weeks, so it is worth building only if it costs less than that to
+        build and run, and only after it wins on a test that did not choose it: a rolling origin
+        and the next festival.
 
         ## What would the other plans cost if demand follows the festival-aligned forecast?
 
@@ -1752,8 +1826,11 @@ check("every calendar-copied plan costs more than Rs 80 lakh in this scenario", 
           back-test.
         - **Two years hold only two festivals,** so the festival's shape rests on two examples; no
           check inside the data closes that.
-        - **The hidden weeks hold no festive week,** so their 6,615 is an ordinary-week error; the
-          2025 festival gave 4,034 on one festival.
+        - **The hidden weeks hold no festive week,** so their 6,615 is an ordinary-week error; on
+          2025's festival festival-aligned missed by 10,575 a week with no growth added, one
+          festival's evidence.
+        - **The stretch around Diwali** was set by this course to cover both festivals' busy weeks,
+          so the 2025 back-test has seen the shape it tests; the next festival is the clean test.
         - **Capacity caps the peak.** Overtime reached 1,638 shifts in the week of 6 October 2025
           against 5 in the week of 24 November 2025, as the back-test cell printed, so peak demand
           may have run above what shipped.
@@ -1763,8 +1840,8 @@ check("every calendar-copied plan costs more than Rs 80 lakh in this scenario", 
 
         ## Depth, beyond the row: how far above the forecast should the plan sit?
 
-        This section goes beyond the five topics of Friday's curriculum row. It is the plan
-        quantile, which the fallback hour teaches; the plan above books the forecast itself. It
+        This section goes beyond the row, that is, beyond Friday's five topics. It is the plan
+        quantile, which the fallback session teaches; the plan above books the forecast itself. It
         opens on the chai stall (invented): a cup short costs Rs 12 and a cup unsold Rs 6, so one
         more cup of milk pays off whenever the stall would sell it on more than one day in three,
         and the owner should cover demand on two days in three, 12 over 12 plus 6.
@@ -1799,6 +1876,12 @@ print(f"raised by {cushion:.1%}, these weeks' misses cost Rs {raised_cost:.1f} l
 check("the plan share is about 0.82", round(q, 2) == 0.82)
 check("the cushion sits between the 10th and 11th sorted weeks",
       sorted(above)[9] <= cushion <= sorted(above)[10])
+own = {}
+for name, col in [("festival-aligned", fa_hold), ("house bot", y.shift(52).loc[hold.index]), ("vendor", v.loc[hold.index])]:
+    share_up = (hold - col) / col                                 # each forecast's own misses, as a share
+    gap = (col * (1 + round(share_up.quantile(q), 3))).round() - hold       # moved to its own 0.82 point
+    own[name] = round(float(gap[gap > 0].sum() * spare_rs - gap[gap < 0].sum() * late_rs) / 100_000, 1)
+print("each forecast at its own 0.82 point, misses priced on the same weeks, Rs lakh:", own)
 '''),
         md("""
         **What happened.** The answer is b. Raise the plan by one shipment and two things can happen.
@@ -1815,9 +1898,10 @@ check("the cushion sits between the 10th and 11th sorted weeks",
         7.8 percent above. The 0.82 point sits between the 10th week, 2.1 percent, and the 11th,
         2.7 percent; `quantile` reads it 0.82 of the way along the list, at 2.6 percent. The raised
         forecast covers 10 of the 13 weeks, and the 11th misses by a hair. With thirteen weeks the
-        point is loose: read by another common convention it lands at 4.1 percent. The curve below
-        shows why that matters little: the busiest week costs about Rs 1.4 lakh anywhere from 2 to
-        4 percent above the forecast, against Rs 2.1 lakh booked at the forecast itself.
+        point is loose: `quantile`'s 2.6 percent is one reading, and the cost curve below bottoms
+        out at the 11th sorted week, 2.7 percent (2.8 on its grid of steps). It also shows why the
+        reading matters little: the busiest week costs about Rs 1.4 lakh anywhere from 2 to 4
+        percent above the forecast, against Rs 2.1 lakh booked at the forecast itself.
 
         For one possible demand the week costs the spare shipments, `max(0, plan_level - demand)`,
         at Rs 5.42, plus the late ones, `max(0, demand - plan_level)`, at Rs 25; at most one of the
@@ -1847,6 +1931,12 @@ print(f"raised, the plan books {raised_shifts.sum():,} shifts, {raised_shifts.su
       f"{shifts.sum():,} at the forecast, and {raised_shifts.max():,} in the week of 19 October")
 check("the cheapest plan sits above the forecast", lowest > 0)
 check("the raised plan books 20,275 shifts", raised_shifts.sum() == 20275)
+raised_week = (forecast * (1 + cushion)).round()
+vend = ahead.loc[window, "vendor"]
+fin_shifts = (ahead.loc[window, "finance"] / 120).apply(math.ceil).sum()
+print(f"raised plan against the vendor: {abs(raised_week.sum() - vend.sum()):,.0f} shipments apart over the eight weeks, "
+      f"{(raised_week - vend)['2026-10-19':'2026-11-02'].sum():,.0f} more across 19 October to 2 November; "
+      f"{raised_shifts.sum() - fin_shifts:,} more shifts than finance's rule")
 '''),
         md("""
         **What happened.** Raised by the 2.6 percent cushion, the plan books 20,275 packer shifts,
@@ -1859,23 +1949,25 @@ check("the raised plan books 20,275 shifts", raised_shifts.sum() == 20275)
 
         **Inference** is the computing a model does each time it answers a user. A product launch
         is the festival: a known date, a spike, little history. Line the last launch up by days from
-        launch day, hide as many days as the plan covers, score in requests a minute, beat the last
-        launch's shape, and set capacity above the forecast, because a timeout costs more than an
-        idle server.
+        launch day, hide its later days as the test, score in requests and tokens a minute, beat a
+        copy of the last launch's shape, and set capacity above the forecast, because a timeout
+        costs more than an idle server. With no earlier launch, say the forecast is untested and
+        watch the first hour's requests against it.
 
         ## What did chapter 7 answer?
 
         - **2025's festival:** the house bot landed the peak a week late (Rs 79.8 lakh of misses);
-          festival-aligned missed by Rs 4.6 lakh.
+          festival-aligned, with no growth, placed it right and missed by 10,575 a week, Rs 21.1
+          lakh.
         - **This year's peak:** the house bot, finance and the vendor put it on 5 October 2026;
           festival-aligned on 19 October.
         - **Last year's windows:** festival-aligned is 19.5 percent above the calendar weeks and 4.0
           percent above the weeks from Diwali; finance is 9.5 percent below the festival weeks.
-        - **Shifts, and how wrong:** 19,760 over eight weeks, 3,625 in the week of 19 October, with
-          an error bar of 6,615 shipments a week, about Rs 35,800 if it runs high and Rs 1.65 lakh
-          if low.
-        - **Is a better forecast worth having?** Only one that moves more than a shift a week; a
-          rule 100 shipments better moves at most one.
+        - **Shifts, and how wrong:** 19,760 over eight weeks, 3,625 in the week of 19 October; a
+          typical miss of 6,615 shipments a week, about Rs 35,800 if it runs high and Rs 1.65 lakh
+          if low, and a range at the peak of 3,413 to 3,906 shifts.
+        - **Is a better forecast worth having?** Only if it saves more than it costs: a rule whose
+          MAE is 100 lower saves Rs 542 to Rs 2,500 a week.
         - **The others' cost:** Rs 82.2 to 111.6 lakh if demand follows festival-aligned.
         - **Beyond the row:** cover 0.82 of weeks with a 2.6 percent cushion, 20,275 shifts.
         """),
@@ -1963,17 +2055,21 @@ check("naive misses by more than Rs 50 lakh a month", naive_mae > 50)
         ## How do the seasonal copy and the vendor score on the same six months?
 
         **Your turn.** Score the seasonal copy (the same month a year earlier, Kalpa's house bot)
-        and the vendor's forecast on the same six months. Type these lines into the empty cell below
-        and run them; the vendor's `kind` column says which of its rows are fits and which are
-        forecasts for the hidden months:
+        and the vendor's forecast on the same six months. Fill the blank, type the lines into the
+        empty cell below and run them. The vendor's `kind` column says which of its rows are fits
+        and which are forecasts for the hidden months, and the checks print PASS when the scoring
+        is set up right:
 
         ```python
-        seasonal = rev.shift(12).loc[hold.index]
+        seasonal = rev.shift(___).loc[hold.index]          # how many rows back is the same month last year?
         vendor_hold = vendor.loc[hold.index, "vendor_rs"]
         print(vendor.loc[hold.index, "kind"].unique())
         seasonal_mae = (seasonal - hold).abs().mean() / 1e5
         vendor_mae = (vendor_hold - hold).abs().mean() / 1e5
         print(f"seasonal MAE: Rs {seasonal_mae:.1f} lakh   vendor MAE: Rs {vendor_mae:.1f} lakh")
+        check("the copy reaches back one year of months", seasonal.iloc[0] == rev["2025-04"])
+        check("the vendor is scored on its forecasts for the hidden months, never its fits",
+              set(vendor.loc[hold.index, "kind"]) == {"holdout"})
         ```
         """),
         empty(),
@@ -1981,26 +2077,31 @@ check("naive misses by more than Rs 50 lakh a month", naive_mae > 50)
         ## Which month does each copy put Diwali in this year?
 
         Diwali 2026 falls on Sunday 8 November. Kalpa's revenue is booked when shoppers buy, in the
-        days just before Diwali, so its spike sits in Diwali's own month: October in 2024 and 2025,
-        and November in 2026, since the days before 8 November fall in November. Flipkart's
-        shipments peaked two weeks earlier because parcels leave the centre in the sale weeks. The
-        seasonal copy takes each month from the same month last year. The festival-aligned copy
-        swaps two months: this November gets last year's Diwali month, October 2025, and this
-        October gets last year's November; then it adds 4 percent.
+        days just before Diwali, so its spike sits in the month that holds those days. Flipkart's
+        shipments peaked two weeks before Diwali's week because parcels leave the centre in the sale
+        weeks. The seasonal copy takes each month from the same month last year. The
+        festival-aligned copy takes each month from the month at the same distance from last
+        year's Diwali month, then adds 4 percent, finance's figure, which the data's own growth
+        comes close to.
 
-        **Your turn.** Type these lines into the empty cell below:
+        **Your turn.** Decide which month of 2026 holds this year's Diwali spike, and which month of
+        last year the festival-aligned copy must take for each of the six board months. Write that
+        list as `aligned_source`, type the lines into the empty cell below and run them:
 
         ```python
         months = ["2026-10", "2026-11", "2026-12", "2027-01", "2027-02", "2027-03"]
         year_before = ["2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"]
-        swapped = ["2025-11", "2025-10", "2025-12", "2026-01", "2026-02", "2026-03"]
+        aligned_source = [___]                                    # six months of last year, one per board month
         table = pd.DataFrame({"same month last year": [rev[m] for m in year_before],
                               "finance: plus 4 percent": [round(rev[m] * 1.04) for m in year_before],
-                              "festival-aligned": [round(rev[m] * 1.04) for m in swapped],
+                              "festival-aligned": [round(rev[m] * 1.04) for m in aligned_source],
                               "vendor": vendor.loc[months, "vendor_rs"].values,
                               "plan line": plan.loc[months].values}, index=months) / 1e5
         print(table.round(1).to_string())
+        print(table.idxmax().to_string())                         # the month each column makes the biggest
         print((table.sum() / 100).round(2).to_string())          # six months, Rs crore
+        check("six board months, each copied from a month of last year",
+              len(aligned_source) == 6 and all(m in year_before for m in aligned_source))
         ```
         """),
         empty(),
@@ -2026,8 +2127,10 @@ check("the plan line is 15 percent above last year's same months",
 
         - **The two winters:** October is the biggest month of each.
         - **Naive and drift:** they miss April to September 2026 by Rs 59.4 and Rs 58.8 lakh a month.
-        - **The seasonal copy and the vendor:** your first cell.
-        - **Diwali this year, and the six months' totals:** your second cell.
+        - **The seasonal copy and the vendor:** your first cell prints both; the Kalpa board set's
+          first item uses them.
+        - **Diwali this year, and the six months' totals:** your second cell prints the month each
+          forecast makes the biggest, and each column's six-month total.
         - **The error bar:** festival-aligned, the seasonal copy plus 4 percent, missed the six
           hidden months by Rs 3.5 lakh a month, about Rs 21 lakh if all six miss the same way. No
           hidden month holds Diwali, so the spike month itself is untested.
@@ -2036,6 +2139,21 @@ check("the plan line is 15 percent above last year's same months",
           carries Diwali.
         """),
     ]
+
+
+def indented_prose(cells):
+    """Markdown lines outside a fence that start with four spaces, which GitHub prints as code."""
+    found = []
+    for i, cell in enumerate(cells):
+        if cell.cell_type != "markdown":
+            continue
+        fenced = False
+        for line in cell.source.split("\n"):
+            if line.startswith("```"):
+                fenced = not fenced
+            elif not fenced and line.startswith("    ") and line.strip():
+                found.append((i, line.strip()[:60]))
+    return found
 
 
 if __name__ == "__main__":
@@ -2051,5 +2169,8 @@ if __name__ == "__main__":
     for name, make in names:
         path = NB / f"C2_W04_D05_{name}_STUDENT.ipynb"
         cells = make()
+        bad = indented_prose(cells)
+        if bad:
+            sys.exit(f"{path.name}: markdown indented as code in cell {bad[0][0]}: {bad[0][1]}")
         build(path, cells)
         print("built", path.name, len(cells), "cells")
