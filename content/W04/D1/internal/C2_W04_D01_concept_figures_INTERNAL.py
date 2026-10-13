@@ -95,10 +95,10 @@ save(fig, "chase_rate")
 reg = load("attendance_register")
 work = reg[reg["status"] != "holiday"]
 last20 = work.tail(20)["status"]
-readings = {"the school's rule\n40 / 50": 40 / 50, "denominator:\ncalendar days\n40 / 60": 40 / 60,
-            "exclusions: medical\nout of both\n40 / 48": 40 / 48,
-            "exclusions: medical\ncounted present\n42 / 50": 42 / 50,
-            "window: last 20\nworking days\n14 / 20": (last20 == "present").sum() / 20}
+readings = {"school's rule\n40 / 50": 40 / 50, "denominator:\ncalendar days\n40 / 60": 40 / 60,
+            "exclusions:\nmedical out\n40 / 48": 40 / 48,
+            "numerator:\nmedical in\n42 / 50": 42 / 50,
+            "window:\nlast 20 days\n14 / 20": (last20 == "present").sum() / 20}
 fig, ax = plt.subplots(figsize=(9.6, 4.4))
 colours = [VIOLET, ROSE, LAV, LAV, ROSE]
 ax.bar(range(5), [100 * v for v in readings.values()], color=colours, width=0.62)

@@ -502,6 +502,9 @@ for i, r in enumerate(kirana_rows):
     r["marked_done"] = True
     r["minutes_from_typed_dispatch"] = trng.randint(9, 28)
     r["minutes_from_bill"] = trng.randint(33, 54) if i in kirana_late else trng.randint(14, 30)
+    # The boy types the dispatch time after the bill exists, at least 3 minutes after it (no new draw,
+    # so every later number of the toys stays as it was).
+    r["minutes_from_typed_dispatch"] = min(r["minutes_from_typed_dispatch"], r["minutes_from_bill"] - 3)
     r["complaint"] = i in kirana_complained
 kirana = pd.DataFrame(kirana_rows)[["order_id", "week", "day", "marked_done", "otp_confirmed",
                                "minutes_from_typed_dispatch", "minutes_from_bill", "complaint"]]
@@ -771,6 +774,8 @@ check("toy kirana: 50 marked done, 40 OTP-confirmed, 6 complaints all on unconfi
 check("toy kirana: on time 1.00 from the typed dispatch and 0.70 from the bill; 30 of the 40 confirmed",
       ((kirana["minutes_from_typed_dispatch"] <= 30).mean(), (kirana["minutes_from_bill"] <= 30).mean(),
        int((k_conf["minutes_from_bill"] <= 30).sum())) == (1.0, 0.7, 30))
+check("toy kirana: every typed dispatch time falls at least 3 minutes after the bill",
+      (kirana["minutes_from_typed_dispatch"] <= kirana["minutes_from_bill"] - 3).all())
 check("toy kirana: four weeks of 12, 13, 12 and 13 orders, 10 confirmed each week",
       k_week["billed"].tolist() == WEEK_ORDERS and k_week["confirmed"].tolist() == [10, 10, 10, 10])
 check("toy artifact: the weak page holds 2 of the 7 lines",
@@ -1308,7 +1313,7 @@ if __name__ == "__main__":
 
 # Test inputs and expected outcomes
 # python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py
-#     writes eleven CSVs and the facts file, prints "79 of 79 contract lines PASS" and exits 0
+#     writes eleven CSVs and the facts file, prints "80 of 80 contract lines PASS" and exits 0
 # python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py --contract
 #     the same, with one PASS line per target printed first
 # python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py --list

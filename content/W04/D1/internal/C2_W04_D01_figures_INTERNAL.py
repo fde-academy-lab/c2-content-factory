@@ -177,7 +177,7 @@ ax.set_xlim(0, 1)
 ax.set_xlabel("share of offers accepted in the week, after the launch")
 ax.set_ylabel("driver-weeks")
 ax.legend(frameon=False, loc="upper left")
-ax.set_title("A floor anywhere in the gap stops the idling and spares the rest", loc="left", pad=12)
+ax.set_title("An acceptance floor anywhere in the gap stops only the idling", loc="left", pad=12)
 save(fig, "acceptance_gap")
 
 for p in sorted(OUT.glob(f"{STEM}_*")):

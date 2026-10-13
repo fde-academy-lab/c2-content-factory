@@ -2096,7 +2096,7 @@ toys:
     day: 1
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 25
+    minutes_from_typed_dispatch: 12
     minutes_from_bill: 15
     complaint: false
   - order_id: K02
@@ -2104,7 +2104,7 @@ toys:
     day: 1
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 26
+    minutes_from_typed_dispatch: 19
     minutes_from_bill: 22
     complaint: false
   - order_id: K03
@@ -2152,7 +2152,7 @@ toys:
     day: 5
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 28
+    minutes_from_typed_dispatch: 25
     minutes_from_bill: 28
     complaint: false
   - order_id: K09
@@ -2160,7 +2160,7 @@ toys:
     day: 5
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 19
+    minutes_from_typed_dispatch: 11
     minutes_from_bill: 14
     complaint: false
   - order_id: K10
@@ -2184,7 +2184,7 @@ toys:
     day: 7
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 26
+    minutes_from_typed_dispatch: 16
     minutes_from_bill: 19
     complaint: false
   - order_id: K13
@@ -2192,7 +2192,7 @@ toys:
     day: 8
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 14
+    minutes_from_typed_dispatch: 11
     minutes_from_bill: 14
     complaint: false
   - order_id: K14
@@ -2240,7 +2240,7 @@ toys:
     day: 11
     marked_done: true
     otp_confirmed: false
-    minutes_from_typed_dispatch: 19
+    minutes_from_typed_dispatch: 15
     minutes_from_bill: 18
     complaint: true
   - order_id: K20
@@ -2264,7 +2264,7 @@ toys:
     day: 13
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 22
+    minutes_from_typed_dispatch: 20
     minutes_from_bill: 23
     complaint: false
   - order_id: K23
@@ -2296,7 +2296,7 @@ toys:
     day: 15
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 26
+    minutes_from_typed_dispatch: 19
     minutes_from_bill: 22
     complaint: false
   - order_id: K27
@@ -2328,7 +2328,7 @@ toys:
     day: 16
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 27
+    minutes_from_typed_dispatch: 19
     minutes_from_bill: 22
     complaint: false
   - order_id: K31
@@ -2344,7 +2344,7 @@ toys:
     day: 17
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 28
+    minutes_from_typed_dispatch: 18
     minutes_from_bill: 21
     complaint: false
   - order_id: K33
@@ -2360,7 +2360,7 @@ toys:
     day: 18
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 28
+    minutes_from_typed_dispatch: 22
     minutes_from_bill: 25
     complaint: false
   - order_id: K35
@@ -2376,7 +2376,7 @@ toys:
     day: 19
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 28
+    minutes_from_typed_dispatch: 24
     minutes_from_bill: 27
     complaint: false
   - order_id: K37
@@ -2408,7 +2408,7 @@ toys:
     day: 22
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 28
+    minutes_from_typed_dispatch: 23
     minutes_from_bill: 26
     complaint: false
   - order_id: K41
@@ -2432,7 +2432,7 @@ toys:
     day: 23
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 23
+    minutes_from_typed_dispatch: 13
     minutes_from_bill: 16
     complaint: false
   - order_id: K44
@@ -2464,7 +2464,7 @@ toys:
     day: 28
     marked_done: true
     otp_confirmed: true
-    minutes_from_typed_dispatch: 14
+    minutes_from_typed_dispatch: 13
     minutes_from_bill: 16
     complaint: false
   - order_id: K48

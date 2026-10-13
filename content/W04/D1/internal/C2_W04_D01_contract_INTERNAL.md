@@ -81,5 +81,6 @@ Written by `C2_W04_D01_generate_INTERNAL.py`; every line must read PASS.
 | PASS | toy register: the last 20 working days hold 14 present, 4 absent and 2 medical |  |  |
 | PASS | toy kirana: 50 marked done, 40 OTP-confirmed, 6 complaints all on unconfirmed orders |  |  |
 | PASS | toy kirana: on time 1.00 from the typed dispatch and 0.70 from the bill; 30 of the 40 confirmed |  |  |
+| PASS | toy kirana: every typed dispatch time falls at least 3 minutes after the bill |  |  |
 | PASS | toy kirana: four weeks of 12, 13, 12 and 13 orders, 10 confirmed each week |  |  |
 | PASS | toy artifact: the weak page holds 2 of the 7 lines |  |  |

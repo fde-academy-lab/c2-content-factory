@@ -11,11 +11,12 @@ your-turn), the driving school (02), the chase (03), the register (04) and Balaj
 prints its table in full, asks for a prediction, counts by hand a line per step and by code with a
 check that the two agree, draws the picture, holds the rule as a short function, leaves a faded
 your-turn cell with a check that shows the reference only once the learner's answer exists, and ends
-on the rules and the case notebook that applies them (13 to 16 cells, three pictures, five checks or
+on the rules and the case notebook that applies them (12 to 16 cells, three pictures, five checks or
 more). 07 to 11 are the Uber case chapters (07 the twelve rows by hand, 14 cells; 08 the full
-driver_weeks, the trap and the your-turn cell, 20 cells; 09 the page, the cost, the caveats and SQL,
-16 cells; 10 the page tested against each way of gaming it and against the three roles' objections,
-20 cells; 11 the interview room's numbers checked on the data and the coding assistant's page drafted
+driver_weeks, the trap and the your-turn cell, 20 cells; 09 the page, the cost of paying for hours,
+the caveats and SQL, 14 cells; 10 the page tested against each way of gaming it and against the three
+roles' objections, then the saving priced under its assumption, 22 cells; 11 the interview room's
+numbers checked on the data and the coding assistant's page drafted
 in the your-turn cell, 16 cells), each naming the subtopics it applies and the concept notebooks that
 taught them. 12 is the Kalpa lab, merged on 13 October 2026 and kept as it is: it is rebuilt only
 when asked for by number.
@@ -146,6 +147,9 @@ def topic_map(lit):
         (xa, ya), (xb, yb) = PLACE[a], PLACE[b]
         ax.annotate("", xy=(xb - w / 2, yb), xytext=(xa + w / 2, ya),
                     arrowprops={"arrowstyle": "-|>", "color": MUTED, "lw": 1.3})
+    (x2, y2), (x6, y6) = PLACE[1], PLACE[5]   # chapter 2's guardrails feed the page, curved under box 3
+    ax.annotate("", xy=(x6 - w / 2, y6 + 0.15), xytext=(x2 + w / 2, y2 - 0.6),
+                arrowprops={"arrowstyle": "-|>", "color": MUTED, "lw": 1.3, "connectionstyle": "arc3,rad=0.25"})
     for i, ((x, y), label) in enumerate(zip(PLACE, TOPICS), start=1):
         on = i == lit
         ax.add_patch(FancyBboxPatch((x - w / 2, y - h / 2), w, h, boxstyle="round,pad=0,rounding_size=0.15",
@@ -175,13 +179,14 @@ def c01():
         concept_head(
             1, "What to measure and why; the proxy test: what is a number for, and how do you tell the goal "
                "from its stand-in?",
-            "A school canteen's owner (invented), who cooks tomorrow's rice from today's count and pays the "
-            "servers by it: a count that drifts from the plates wastes rice and money every day. After the "
+            "A school canteen's owner (invented), whose kitchen cooks rice to the count of tokens the counter "
+            "hands out and who pays the servers by the same count: a count that drifts from the plates wastes "
+            "rice and money every day. After the "
             "break the same question reaches Uber's Hyderabad city head, whose scheme pays drivers on peak "
             "online hours.",
             ["What does the canteen's table hold?",
              "What did tokens per plate do once the servers were paid per token?",
-             "How much rice did the owner cook for nobody, and what did it cost?",
+             "How much rice did the kitchen cook for nobody, and what did it cost?",
              "What is the proxy test, written as a rule a team can run?",
              "Does a school bus driver's kilometres pass the test, in your turn?"]),
         code(CONCEPT_SETUP + "\ntopic_map(1)"),
@@ -191,8 +196,9 @@ def c01():
         A **metric** is a number a person watches in order to decide something: how much rice to cook,
         whom to pay, whether to keep a scheme. A **target** is a metric with a value somebody is asked to
         hit, and a person paid on a target works to hit it. The canteen (invented) hands each diner a
-        token with every plate, because tokens are easy to count and plates are not, and the owner reads
-        today's tokens to decide tomorrow's rice. From day 6 the servers are paid per token handed out.
+        token with every plate, because tokens are easy to count and plates are not, and the kitchen
+        cooks rice to the token count, batch by batch through lunch. From day 6 the servers are paid per
+        token handed out.
 
         This cell loads the ten days and prints every row.
         '''),
@@ -213,8 +219,8 @@ check("ten days, with 200 plates served on every one", len(days) == 10 and (days
         d) It cannot be told without the menu.
 
         The next cell counts by hand first, one line per step, with numbers read off the table above;
-        then it counts every day by code and checks that the two agree. The owner cooks 150 g of rice a
-        plate and buys rice at Rs 50 a kg, both invented.
+        then it counts every day by code and checks that the two agree. The kitchen cooks 150 g of rice
+        for every token and the owner buys rice at Rs 50 a kg, both invented.
         '''),
         code('''
 # By hand, one line per step, from the table above
@@ -226,7 +232,7 @@ hand_waste_rs = (hand_cooked - hand_eaten) * 50  # rupees of rice thrown away th
 
 # By code, on every day of the table
 days["per_plate"] = days["tokens"] / days["plates"]
-days["rice_kg"] = days["tokens"] * 0.15          # what the owner cooks from tokens
+days["rice_kg"] = days["tokens"] * 0.15          # what the kitchen cooks from tokens
 days["eaten_kg"] = days["plates"] * 0.15         # what the diners eat
 days["waste_rs"] = (days["rice_kg"] - days["eaten_kg"]) * 50
 print(days[["day", "servers_paid_per_token", "per_plate", "rice_kg", "eaten_kg", "waste_rs"]].to_string(index=False))
@@ -236,8 +242,8 @@ check("hand and code agree: Rs 1,500 of rice thrown away on day 6", days.loc[5, 
 '''),
         md('''
         **What happened.** The answer is b: tokens per plate went from 1.0 to 2.0 on day 6 and not one
-        more diner ate. The plausible wrong reading is the owner's: tokens up 100 percent read as diners
-        up 100 percent, so 60 kg of rice is cooked for 30 kg of eating. The check that catches it is the
+        more diner ate. The plausible wrong reading is the kitchen's: tokens up 100 percent read as
+        diners up 100 percent, so 60 kg of rice is cooked for 30 kg of eating. The check that catches it is the
         plates column, which the pay rule never touched; the fix is to cook and to pay on plates.
 
         ## What does the drift look like, day by day?
@@ -292,7 +298,7 @@ check("Rs 7,500 thrown away over the five paid days and nothing before",
 
         A **proxy** is a number that stands in for the thing somebody wants: tokens stand in for plates,
         and plates stand in for children fed. Named last: the **proxy test** asks whether a team could
-        hit this number while the thing it stands for got worse or stayed the same. The curriculum row
+        hit this number while the thing it stands for got worse or stayed the same. The course outline
         puts it in one line: if a department could hit the number while the business got worse, the
         number is a proxy that has drifted. Any target bends behaviour toward itself.
 
@@ -468,10 +474,11 @@ plt.show()
         md('''
         The hoarding's rate rose because the share who took the test fell: a **seesaw**, one side up
         because the other went down. Named last: a **north star** is the one number that best captures
-        the value the people served get; here it is licences per learner who enrolled, 0.60 then 0.36. A
-        **guardrail** is a number watched beside it so that hitting it does no hidden harm; the share
-        who took the test, 1.00 then 0.40, catches this school's move. The two multiply into the honest
-        number: 0.90 x 0.40 = 0.36.
+        the value the people served get; here it is licences per learner who enrolled, 0.60 then 0.36,
+        which no instructor can raise by holding learners back. The hoarding chased the pass rate
+        instead. A **guardrail** is a number watched beside the number being chased, so that hitting it
+        does no hidden harm: beside the pass rate, the share who took the test, 1.00 then 0.40, catches
+        this school's move. The two multiply into the honest number: 0.90 x 0.40 = 0.36.
 
         ## Can the rule be written so a dashboard runs it?
 
@@ -487,15 +494,22 @@ def seesaw(rate, guardrail):
 second = (school.groupby("year")["passed"].sum() / school.groupby("year")["enrolled"].sum()).round(2)
 print("the seesaw rule on the hoarding's rate:", seesaw(year["pass_rate"], year["took_share"]))
 print("licences per learner who enrolled, by the second route:", second.to_dict())
-fig, (a1, a2) = plt.subplots(1, 2, figsize=(9.0, 3.6), layout="constrained")
-for name, rows in school.groupby("instructor"):
-    a1.plot(rows["year"], rows["took_test"] / rows["enrolled"], marker="o", color=ROSE, alpha=0.8)
-    a2.plot(rows["year"], rows["passed"] / rows["took_test"], marker="o", color=VIOLET, alpha=0.8)
-for a, title in ((a1, "took the test / enrolled"), (a2, "passed / took the test")):
-    a.set_xticks([2025, 2026])
-    a.set_xlim(2024.8, 2026.2)
-    a.set_ylim(0, 1.08)
-    a.set_title(title, loc="left")
+fig, (a1, a2) = plt.subplots(1, 2, figsize=(9.0, 3.4), layout="constrained", sharey=True)
+names = sorted(school["instructor"].unique())
+for k, name in enumerate(names):
+    rows = school[school["instructor"] == name].set_index("year")
+    row_y = len(names) - 1 - k
+    for a, share in ((a1, rows["took_test"] / rows["enrolled"]), (a2, rows["passed"] / rows["took_test"])):
+        a.annotate("", xy=(share[2026], row_y), xytext=(share[2025], row_y),
+                   arrowprops={"arrowstyle": "-|>", "color": MUTED})
+        a.scatter([share[2025]], [row_y], color=LAV, s=70, zorder=3, label="2025" if k == 0 else None)
+        a.scatter([share[2026]], [row_y], color=VIOLET, s=70, zorder=3, label="2026" if k == 0 else None)
+a1.set_yticks(range(len(names)), [f"instructor {n}" for n in names[::-1]])
+a1.set_xlim(0, 1.08)
+a2.set_xlim(0.5, 1.0)
+a1.set_title("took the test / enrolled", loc="left")
+a2.set_title("passed / took the test", loc="left")
+a1.legend(frameon=False, loc="center left")
 fig.suptitle("Each of the four instructors (invented): fewer booked, a higher rate", x=0.02, ha="left")
 plt.show()
 check("the seesaw rule flags the hoarding's rate", seesaw(year["pass_rate"], year["took_share"]))
@@ -504,7 +518,8 @@ check("the second route gives the same 0.60 and 0.36 licences per learner",
 '''),
         md('''
         **What happened.** Every instructor booked fewer learners for the test in 2026, and every
-        instructor's rate rose, so all four instructors made the move. The second route
+        instructor's rate rose, so all four instructors made the move; B and C moved by the same amounts,
+        so their rows match. The second route
         lands on the same 0.36, because licences per learner is passes over everyone enrolled, whichever
         way the passes are added up.
 
@@ -540,15 +555,17 @@ else:
         2. The hoarding's rate rose from 0.60 to 0.90 because the instructors booked the test for 40
            learners where 100 had taken it.
         3. Licences per learner who enrolled fell from 0.60 to 0.36, 24 fewer licences.
-        4. The north star is licences per learner who enrolled; the guardrail, the share who took the
-           test, catches the move, and `seesaw(rate, guardrail)` flags it.
+        4. The north star is licences per learner who enrolled; beside the pass rate the hoarding chased,
+           the guardrail, the share who took the test, catches the move, and `seesaw(rate, guardrail)`
+           flags it.
         5. Every instructor moved the same way, and the second route gives the same 0.36.
 
         **The rules.**
 
         - Chase one number: the one that best captures the value the people served get.
-        - Read every north star beside a guardrail that catches a harmful way of hitting it.
-        - Choose a guardrail by the gaming it catches, since a second growth count catches nothing.
+        - Read the number a plan chases beside a guardrail that catches a harmful way of hitting it.
+        - Choose a guardrail by the gaming it catches: a second growth target, such as "orders up 20
+          percent", is one more number to chase and catches none.
         - A rate can rise because its denominator shrank, so print the count beside the rate.
 
         **In the interview.** [F] North-star against guardrail, with one example pair.
@@ -664,8 +681,9 @@ plt.show()
 
         ## Which number is read beside the warning one?
 
-        A leading number is read beside a guardrail: 10 an over with 7 wickets in hand is a different
-        chase from 10 an over with 2. This cell draws the runs made against the 8 an over that 160 asked
+        A leading number is read beside a guardrail: a side that chases the rate by swinging at every
+        ball loses wickets, so 10 an over with 7 wickets in hand is a different chase from 10 an over with
+        2. This cell draws the runs made against the 8 an over that 160 asked
         for, and the wickets in hand over by over, then reads the result.
         '''),
         code('''
@@ -739,7 +757,8 @@ else:
         1. The chase (invented): 6 an over for ten overs, then 7 to 11, ending on 147 for 7 against 160.
         2. The runs an over needed first reached 10 after over 10, at 60 for 3.
         3. The result, 147 against 159 and lost by 12, arrived only after over 20, ten overs later.
-        4. Wickets in hand, 7 after over 10, are the guardrail the warning number is read with.
+        4. Wickets in hand, 7 after over 10, are the guardrail read beside the warning number: they show
+           the harm of chasing the rate by swinging at every ball.
         5. `first_crossing(values, level)` finds the point a warning number reaches the level set in
            advance.
 
@@ -751,13 +770,12 @@ else:
           chase from 10 an over with 2.
         - A dashboard of lagging numbers alone lets a drift run for weeks before anyone sees it.
 
-        **In the interview.** [F] North-star against guardrail, with one example pair, and the leading
-        input that moves first.
+        **In the interview.** [F] North-star against guardrail, with one example pair.
 
         **Where it goes next.** Notebook 04 writes down the four lines that make any of these numbers
         computable. After the break, `C2_W04_D01_09_north_star_guardrails_cost_STUDENT.ipynb` asks which
-        of Uber's numbers moved first, and finds the share of offers accepted settling in the scheme's
-        first week while bookings per online hour kept falling for two more.
+        of Uber's numbers settled first, and finds the share of offers accepted at its new level in the
+        scheme's first week while bookings per online hour kept falling for two more.
         '''),
     ])
 
@@ -778,7 +796,7 @@ def c04():
             "cost a student a scholarship. After the break, the Uber analyst whose `driver_weeks` table "
             "counts offers while `zone_weeks` counts rider requests, two units for the same riders.",
             ["What does the register hold?",
-             "How many different numbers can four honest clerks get from it?",
+             "How many different numbers can five honest clerks get from it?",
              "Which line moved each reading?",
              "Can one short function hold all four lines and reproduce every reading?",
              "What does a certificate printed on the wrong line cost?",
@@ -819,8 +837,9 @@ check("40 present, 8 absent and 2 on medical leave",
         md('''
         ## How many numbers can one honest register give?
 
-        **Predict before you run.** Four honest clerks compute the student's attendance percentage from
-        this one register. How many different numbers come out?
+        **Predict before you run.** Five honest clerks compute the student's attendance percentage from
+        this one register, each reading the school's rule in their own way. How many different numbers
+        come out?
 
         a) One, since a register is a register.
         b) Two: with holidays, or without them.
@@ -835,7 +854,7 @@ check("40 present, 8 absent and 2 on medical leave",
 hand = {"the school's rule: present over working days": 100 * 40 / 50,          # 80.0
         "denominator: present over calendar days": 100 * 40 / 60,                # 66.7
         "exclusions: medical leave out of both counts": 100 * 40 / 48,           # 83.3
-        "exclusions: medical leave counted present": 100 * 42 / 50,              # 84.0
+        "numerator: medical leave counted present": 100 * 42 / 50,               # 84.0
         "window: the last 20 working days": 100 * 14 / 20}                       # 70.0
 
 # By code, filtering the table directly for each reading
@@ -847,7 +866,7 @@ last20 = work.tail(20)
 direct = {"the school's rule: present over working days": 100 * present(work) / len(work),
           "denominator: present over calendar days": 100 * present(reg) / len(reg),
           "exclusions: medical leave out of both counts": 100 * present(work) / (work["status"] != "medical").sum(),
-          "exclusions: medical leave counted present": 100 * work["status"].isin(["present", "medical"]).sum() / len(work),
+          "numerator: medical leave counted present": 100 * work["status"].isin(["present", "medical"]).sum() / len(work),
           "window: the last 20 working days": 100 * present(last20) / len(last20)}
 for k in hand:
     print(f"{k:<46} by hand {hand[k]:5.1f}   by code {direct[k]:5.1f}")
@@ -858,8 +877,8 @@ check("five different readings, from 66.7 to 84.0, out of one register", len({ro
         md('''
         **What happened.** The answer is c: five numbers, each honest, each answering a different
         question. 80.0 counts present days over the 50 working days; 66.7 divides by all 60 calendar
-        days, holidays included; 83.3 leaves the two medical days out of both counts; 84.0 counts them as
-        present; 70.0 reads only the term's last 20 working days. The window matters on its own: the
+        days, holidays included; 83.3 leaves the two medical days out of both counts, an exclusion; 84.0
+        changes the numerator, counting them as present; 70.0 reads only the term's last 20 working days. The window matters on its own: the
         first 30 working days held 26 present days and the last 20 only 14.
 
         Named last: four lines make a number computable. The **numerator** is what is counted on top;
@@ -879,18 +898,20 @@ def attendance(days, top=("present",), bottom=("present", "absent", "medical")):
     """Attendance in percent: days whose status is in top, over days whose status is in bottom."""
     return round(100 * days["status"].isin(top).sum() / days["status"].isin(bottom).sum(), 1)
 
-readings = {"the school's rule\\n40 / 50": attendance(reg),
+readings = {"school's rule\\n40 / 50": attendance(reg),
             "denominator:\\ncalendar days\\n40 / 60": attendance(reg, bottom=("present", "absent", "medical", "holiday")),
-            "exclusions: medical\\nout of both\\n40 / 48": attendance(reg, bottom=("present", "absent")),
-            "exclusions: medical\\ncounted present\\n42 / 50": attendance(reg, top=("present", "medical")),
-            "window: last 20\\nworking days\\n14 / 20": attendance(work.tail(20))}
+            "exclusions:\\nmedical out\\n40 / 48": attendance(reg, bottom=("present", "absent")),
+            "numerator:\\nmedical in\\n42 / 50": attendance(reg, top=("present", "medical")),
+            "window:\\nlast 20 days\\n14 / 20": attendance(work.tail(20))}
 fig, ax = plt.subplots(figsize=(9.4, 4.2))
-ax.bar(range(5), list(readings.values()), color=[VIOLET, ROSE, LAV, LAV, ROSE], width=0.62)
+bar_colours = [VIOLET, ROSE, LAV, LAV, ROSE]
+ax.bar(range(5), list(readings.values()), color=bar_colours, width=0.62)
 for i, v in enumerate(readings.values()):
-    ax.text(i, v + 1.5, f"{v:.1f}", ha="center", fontweight="bold", color=INK)
+    ax.text(i, 5, f"{v:.1f}", ha="center", va="bottom", fontweight="bold", fontsize=12,
+            color=INK if bar_colours[i] == LAV else "white")
 ax.axhline(75, color=INK, linestyle="--", lw=1.2)
-ax.text(4.42, 75, "75\\npercent", va="center", color=INK)
-ax.set_xlim(-0.5, 5.0)
+ax.text(4.45, 77, "75 percent", va="bottom", color=INK)
+ax.set_xlim(-0.5, 5.4)
 ax.set_xticks(range(5), list(readings), fontsize=10)
 ax.set_ylim(0, 100)
 ax.set_ylabel("attendance, percent")
@@ -938,8 +959,9 @@ else:
         ## What does chapter 4 leave?
 
         1. The register (invented) holds 60 days: 10 holidays, 40 present, 8 absent and 2 on medical leave.
-        2. Four honest clerks can print five numbers from it, from 66.7 to 84.0 percent.
-        3. The denominator moved it to 66.7, the exclusions to 83.3 and 84.0, and the window to 70.0.
+        2. Five honest clerks can print five numbers from it, from 66.7 to 84.0 percent.
+        3. The denominator moved it to 66.7, the exclusions to 83.3, the numerator to 84.0 and the
+           window to 70.0.
         4. One function, `attendance(days, top, bottom)`, holds the four lines and reproduces all five.
         5. Printed on the wrong line, the same student loses a scholarship set at 75 percent.
 
@@ -1045,7 +1067,9 @@ check("hand and code agree: on time 1.00 on the boy's clock and 0.70 on the shop
         **What happened.** The answer is b: the boy marked 50 done and customers confirmed 40, so pay on
         his count is Rs 1,000 and on theirs Rs 800. The Rs 200 gap is the gaming: 10 orders were marked
         done at the gate and never handed over. His clock reads every order on time because he types the
-        dispatch time himself; the shop's bill clock reads 35 of 50, 0.70. The plausible wrong belief is
+        dispatch time himself, always after the bill; the shop's bill clock reads 35 of 50, 0.70. Both
+        clocks stop at his done press, so they time all 50 marked orders, the 10 never handed over
+        included; chapter 6's page times only the 40 the customer confirmed. The plausible wrong belief is
         a: if we pay per delivery, we get more deliveries.
 
         ## Whose counts read higher?
@@ -1129,8 +1153,8 @@ check("the resistant rule counts 30 deliveries where the gamed one counts 50", (
         |---|---|---|---|
         | The paid person controls the count | The boy presses done | Uber's case: an open app counts as online (chapter 7) | A count the person served confirms |
         | No receipt or use is needed | Done with no OTP | Wells Fargo counted accounts nobody used | A receipt condition in the numerator |
-        | The person timed sets the clock's start | The boy types the dispatch time | US Veterans Affairs schedulers typed a "desired date" | A window that starts at the system's time |
-        | A quiet change of definition | The shop starts counting attempts | Wells Fargo added remittance accounts to its count in 2013 without telling investors | Exclusions and changes dated on the page |
+        | The person timed sets the clock's start | The boy types the dispatch time | At US Veterans Affairs the wait ran from a "desired date" the scheduler typed, and typing the next open slot made it read zero | A clock that starts at the system's time |
+        | A quiet change of definition | The shop starts counting attempts | Wells Fargo added accounts for sending money abroad to its count in 2013 without telling investors | Exclusions and changes dated on the page |
 
         ### Your turn: what does the resistant rule pay?
 
@@ -1267,7 +1291,7 @@ full = {"numerator": "deliveries confirmed with the customer's OTP",
         "exclusions": "orders the customer cancelled before dispatch, each change dated; none in these four weeks",
         "does_not_reward": "a done press with no OTP, a dispatch time typed by hand, a shrinking order count",
         "guardrails": ["complaints per 100 orders billed", "confirmed deliveries within 30 minutes of the bill"],
-        "gaming_note": {"complaints per 100 orders billed": "catches gate-marking",
+        "gaming_note": {"complaints per 100 orders billed": "catches an OTP asked for by phone before the goods arrive",
                         "confirmed deliveries within 30 minutes of the bill": "catches a dispatch time typed late"}}
 SHORT = {"numerator": "OTP-confirmed deliveries", "denominator": "orders billed, count printed",
          "window": "the calendar week", "exclusions": "cancelled before dispatch",
@@ -1327,17 +1351,22 @@ check("the full page reads 0.80 over the four weeks, its guardrails 12 per 100 a
         deliveries within 30 minutes of the bill, 0.75.
 
         Named last: the **metric definition artifact** is the seven-line page a company adopts, four
-        lines that make the number computable and three that make it safe to pay for. The curriculum row
-        sets the bar: a definition is complete only when it names its numerator, its denominator, its
-        window, and what it deliberately does not reward.
+        lines that make the number computable and three that make it safe to pay for. The course outline
+        sets the bar in its own words: a definition is complete only when it names its numerator, its
+        denominator, its window, and what it deliberately does not reward. The page adds the exclusions
+        from chapter 4, since an exclusion changed without a date moves the number with nobody told.
+        Once the numerator needs an OTP, a press at the gate pays nothing, so the complaints guardrail
+        watches the move that is left: an OTP asked for by phone before the goods arrive.
 
         ## Can a check find a blank line, or a guardrail that catches nothing?
 
         This cell writes the check as a short function. It lists every line left blank, and every
         guardrail the gaming note does not say it catches, since a guardrail earns its place by the
-        gaming it catches (chapter 2's third rule). **The trap:** the son adds "orders billed up" as a
-        third guardrail. It is a second growth count, it catches no way of gaming the first, and the
-        check flags it; the fix is to drop it or to name the gaming it catches.
+        gaming it catches (chapter 2's third rule). **The trap:** the son adds "orders billed up 20
+        percent" as a third guardrail. It is a growth target, one more number to chase, and its gaming
+        note names nothing it catches, so the check flags it. A shrinking order count is already on the
+        page twice: the denominator prints the count beside the rate, and the line on what the page does
+        not reward names it. The fix is to drop the target.
         '''),
         code('''
 def written(value):
@@ -1351,20 +1380,24 @@ def missing_lines(page):
     unnamed = [g for g in page.get("guardrails") or [] if not written(note.get(g))]
     return blank_lines + [f"a guardrail that catches nothing named: {g}" for g in unnamed]
 
-trap = {**full, "guardrails": full["guardrails"] + ["orders billed up"]}
-for name, page in (("the weak page", weak), ("the full page", full), ("the full page plus a growth count", trap)):
+trap = {**full, "guardrails": full["guardrails"] + ["orders billed up 20 percent"]}
+for name, page in (("the weak page", weak), ("the full page", full), ("the full page plus a growth target", trap)):
     print(f"{name}: {missing_lines(page) or 'nothing missing'}")
 check("the check finds the weak page's five blank lines", missing_lines(weak) == blank)
 check("the full page passes the check", missing_lines(full) == [])
-check("a growth count added as a guardrail is flagged",
-      missing_lines(trap) == ["a guardrail that catches nothing named: orders billed up"])
+check("a growth target added as a guardrail is flagged",
+      missing_lines(trap) == ["a guardrail that catches nothing named: orders billed up 20 percent"])
 '''),
         md('''
         ### Your turn: does your page for the driving school pass the check?
 
         Write chapter 2's driving school (invented) as a seven-line page whose north star is licences per
         learner who enrolled. Two lines are filled for you; fill the other five, naming in the gaming
-        note each guardrail you list and what it catches. In the empty cell below, edit and run:
+        note each guardrail you list and what it catches. Two hints: for the exclusions, think of learners
+        who left before their first lesson; for a guardrail, ask how an instructor could raise licences
+        per enrolled learner without teaching better, for example by turning away slow learners at
+        enrolment. Each key of the gaming note must repeat a guardrail's words exactly, since the check
+        matches them. In the empty cell below, edit and run:
 
         ```python
         school_page = {"numerator": "learners who passed the licence test",
@@ -1904,11 +1937,10 @@ def case09():
         **The questions on the way.**
 
         1. How much of the Rs 1.9 crore went to driver-weeks that accepted fewer than half their offers?
-        2. What would the redesign save, under a stated assumption about how drivers respond?
-        3. What do the north star and its three guardrails read, before and after?
-        4. Which number moved first?
-        5. Which doubts does the fall survive, and which stay open?
-        6. Does SQL reach the same totals as pandas?
+        2. What do the north star and its three guardrails read, before and after?
+        3. Which number settled first?
+        4. Which doubts does the fall survive, and which stay open?
+        5. Does SQL reach the same totals as pandas?
         '''),
         code(SETUP + STYLE + '''
 dw = pd.read_csv("../data/C2_W04_D01_driver_weeks_STUDENT.csv")
@@ -1944,27 +1976,8 @@ print(f"share to driver-weeks under 0.5: {low / (low + high):.2f}")
         driver-weeks that accepted fewer than half the offers they were shown, and Rs 74 lakh went to
         the rest. Had only the driver-weeks at or above 0.5 been paid, and had every driver behaved the
         same, the six weeks would have cost Rs 74 lakh. A new rule changes behaviour, so Rs 74 lakh is
-        the least the six weeks would have cost under it.
-
-        ## What would the redesign save, under a stated assumption about how drivers respond?
-
-        The driver-weeks under 0.5 are the idle tail's: its highest week after the launch accepted
-        0.46 of its offers and every other driver's lowest accepted 0.78, so the Rs 1.159 crore is the
-        idle tail's top-up. Some idle-tail drivers would start accepting enough to qualify under a rule
-        that pays for trips. The share of the idle tail's top-up that would still be paid is an **assumption**:
-        0.2 at the low end, 0.5 at the high end. A test of the redesign, which this afternoon's
-        tentative faculty block designs, is what settles it. This cell prices both ends.
-        '''),
-        code('''
-saving = pd.DataFrame({"still_paid_share": [0.2, 0.5]})
-saving["saving_rs"] = (low * (1 - saving["still_paid_share"])).round()
-saving["saving_lakh"] = (saving["saving_rs"] / 1e5).round(1)
-saving
-'''),
-        md('''
-        **What happened.** If a fifth of the idle tail's top-up were still paid, the redesign saves
-        Rs 92.7 lakh over six weeks; if half were, Rs 58.0 lakh. The range is the honest answer to
-        finance until the test reports.
+        the least the six weeks would have cost under it. What the redesign would save, under a stated
+        assumption about how drivers respond, is round 3's question after lunch, priced in notebook 10.
 
         ## What do the north star and its three guardrails read, before and after?
 
@@ -1977,7 +1990,7 @@ saving
         | Window | The calendar week |
         | Exclusions | Trips cancelled by either side, test accounts, trips outside the windows |
         | What it does not reward | Hours online; offers declined; a shrinking enrolled base, since fewer drivers in the count would raise the rate with no extra trip |
-        | Guardrails | For riders: offers accepted over offers shown, at or above a floor the city sets, and the median rider wait at peak. For the budget: top-up per completed trip |
+        | Guardrails | For riders: offers accepted over offers shown, at or above an acceptance floor the city sets, and the median rider wait at peak. For the budget: top-up per completed trip |
         | Gaming note | Guardrail 1 catches declining and cherry-picking; guardrail 2, supply that stops serving riders; guardrail 3, a top-up that runs away from the trips it pays for |
 
         This cell computes the north star and the three guardrails for each window.
@@ -2000,7 +2013,7 @@ board.T
         fell from 0.863 to 0.730, the median wait went from 4.8 to 4.6 minutes, and the top-up cost
         Rs 82.3 per completed trip after the launch, against nothing before.
 
-        ## Which number moved first?
+        ## Which number settled first?
 
         Chapter 3's chase named the two kinds: a **leading** input moves before the number the plan is
         judged on, while the team can still act; a **lagging** one confirms it later. This cell draws
@@ -2099,20 +2112,19 @@ check("SQL and pandas agree on hours and trips", list(sql["hours"]) == [118000, 
         ## What does chapter 9 answer?
 
         1. Rs 1.159 crore, 61 percent of the top-up, went to driver-weeks that accepted fewer than
-           half their offers; Rs 74 lakh went to the rest.
-        2. Under a stated assumption about how idle drivers respond, the redesign saves Rs 92.7 lakh
-           over six weeks if a fifth of the idle tail's top-up is still paid and Rs 58 lakh if half
-           is; the test settles where.
-        3. The north star barely moved (35.76 to 35.89 trips per online driver-week); acceptance fell
+           half their offers; Rs 74 lakh went to the rest. Notebook 10 prices what the redesign would
+           save.
+        2. The north star barely moved (35.76 to 35.89 trips per online driver-week); acceptance fell
            from 0.863 to 0.730, waits went from 4.8 to 4.6 minutes, and the top-up cost Rs 82.3 a trip.
-        4. Acceptance settled in the launch week, two weeks before bookings per hour did.
-        5. The fall survives the new drivers (1.58) and the three weeks with most requests (1.60);
+        3. Acceptance settled in the launch week, two weeks before bookings per hour did.
+        4. The fall survives the new drivers (1.58) and the three weeks with most requests (1.60);
            drivers on two apps, who chose to enrol and cause stay open.
-        6. SQL's `GROUP BY` returns the same hours and trips as pandas.
+        5. SQL's `GROUP BY` returns the same hours and trips as pandas.
 
         **The check a senior analyst runs.** Price the trap in rupees, write every line of the
         definition, name what the data cannot show and the fact that would settle it, and reach the
-        totals a second way before anything leaves the team.
+        totals a second way before anything leaves the team. Notebook 10 then puts the page under attack
+        and prices the redesign's saving.
 
         **In the interview.** [F] North star against guardrail, with one example pair: completed
         peak trips per enrolled driver per week, guarded by the share of offers accepted, which
@@ -2142,9 +2154,9 @@ uber = {"numerator": "trips completed inside the peak windows, one per paying ri
         "window": "the calendar week",
         "exclusions": "trips cancelled by either side, test accounts, trips outside the windows",
         "does_not_reward": "hours online, offers declined, a shrinking enrolled base",
-        "guardrails": ["offers accepted over offers shown, at or above a floor",
+        "guardrails": ["offers accepted over offers shown, at or above an acceptance floor",
                        "median rider wait at peak, by zone", "top-up per completed trip"],
-        "gaming_note": {"offers accepted over offers shown, at or above a floor": "catches declining and cherry-picking",
+        "gaming_note": {"offers accepted over offers shown, at or above an acceptance floor": "catches declining and cherry-picking",
                         "median rider wait at peak, by zone": "catches supply that stops serving riders",
                         "top-up per completed trip": "catches a top-up that runs away from the trips it pays for"}}
 '''
@@ -2169,11 +2181,12 @@ def case10():
 
         {LABEL}
 
-        Notebook 09 wrote the redesign's seven-line page, found Rs 1.159 crore of the top-up paid to
-        driver-weeks that accepted fewer than half their offers, and put the redesign's saving at
-        Rs 58 to 92.7 lakh under a stated assumption. This notebook puts the page under attack: first
-        from each way of gaming the scheme, then from the three people in the room who each lose
-        something under it.
+        Notebook 09 wrote the redesign's seven-line page and found Rs 1.159 crore of the top-up paid to
+        driver-weeks that accepted fewer than half their offers. This notebook puts the page under
+        attack, first from each way of gaming the scheme, then from the three people in the room who
+        each lose something under it, and prices what the redesign would save. Two floors run through
+        it: the Rs 300 floor is what a driver-week is guaranteed, and the acceptance floor is the share
+        of offers a driver-week must accept to earn it.
 
         **Who needs the answer.** The city head, who signs the page on Friday, and the three people
         who each lose something under it: the driver-operations lead, the marketing lead and the
@@ -2185,9 +2198,10 @@ def case10():
         1. Does the redesign's page hold all seven lines?
         2. Does each line resist the gaming it must?
         3. Driver operations: if drivers log off, what would riders lose, and which line shows it?
-        4. Marketing: does the floor stay for every driver who serves riders?
+        4. Marketing: does the Rs 300 floor stay for every driver who serves riders?
         5. Finance: is the fall the monsoon's end?
-        6. Where does the floor sit if an accepted trip later cancelled counts as declined?
+        6. What would the redesign save, under a stated assumption about how drivers respond?
+        7. Where does the acceptance floor sit if an accepted trip later cancelled counts as declined?
         '''),
         code(SETUP + STYLE + '''
 dw = pd.read_csv("../data/C2_W04_D01_driver_weeks_STUDENT.csv")
@@ -2272,7 +2286,7 @@ moves
 
         This cell draws each way of gaming the scheme against the lines of the page, with a filled
         square where a line stops the move. The last move is one the redesign itself invites: a driver
-        parked in a thin zone who accepts the few offers shown there passes the acceptance floor, and
+        parked in a thin zone who accepts the few offers shown there clears the acceptance floor, and
         only top-up per completed trip shows what that week cost. The redesign has not run, so the data
         cannot show that move yet.
         '''),
@@ -2311,8 +2325,8 @@ for c, move in enumerate(MOVES):
 
         ## Driver operations: if drivers log off, what would riders lose, and which line shows it?
 
-        The driver-operations lead says drivers will log off once the floor asks that half their offers
-        be accepted. Part of that is true: the 180 drivers of the idle tail may well log off. The rest
+        The driver-operations lead says drivers will log off once the acceptance floor asks that half
+        their offers be accepted. Part of that is true: the 180 drivers of the idle tail may well log off. The rest
         is a question the data can answer: did the drivers who serve riders change how they drove?
 
         This cell sums hours and trips by window for the idle tail and for the other 880 who joined
@@ -2350,9 +2364,10 @@ print(f"if the idle tail logged off, its {idle_trips:,} trips would need about {
         served them leaves, while the north star, as the cell above showed, would rise. The line that
         answers driver operations is guardrail 2, and the count printed beside the rate shows who left.
 
-        ## Marketing: does the floor stay for every driver who serves riders?
+        ## Marketing: does the Rs 300 floor stay for every driver who serves riders?
 
-        The marketing lead says changing the terms looks like bait, since the floor was the promise.
+        The marketing lead says changing the terms looks like bait, since the Rs 300 floor was the
+        promise.
         The redesign keeps the Rs 300 floor for every driver-week that accepts at least half its
         offers, so the question for the data is how many driver-weeks outside the idle tail would lose
         it.
@@ -2362,7 +2377,7 @@ print(f"if the idle tail logged off, its {idle_trips:,} trips would need about {
         2,000.
 
         This cell draws each driver-week's accepted share after the launch, the idle tail against every
-        other driver-week, with the floor at 0.5.
+        other driver-week, with the acceptance floor at 0.5.
         '''),
         code('''
 share = on_after["peak_accepted"] / on_after["peak_offers"]
@@ -2372,11 +2387,11 @@ fig, ax = plt.subplots(figsize=(8.0, 3.6))
 ax.hist(share[in_tail], bins=bins, color=ROSE, label="idle-tail driver-weeks")
 ax.hist(share[~in_tail], bins=bins, color=VIOLET, alpha=0.85, label="every other driver-week")
 ax.axvline(0.5, color=INK, linestyle="--")
-ax.text(0.51, 0.93, "the floor, 0.5", color=INK, transform=ax.get_xaxis_transform())
+ax.text(0.51, 0.93, "the acceptance floor, 0.5", color=INK, transform=ax.get_xaxis_transform())
 ax.set_xlabel("offers accepted over offers shown, one driver-week after the launch")
 ax.set_ylabel("driver-weeks")
 ax.legend(frameon=False, loc="upper left")
-ax.set_title("No week outside the idle tail falls under the floor", loc="left")
+ax.set_title("No week outside the idle tail falls under the acceptance floor", loc="left")
 plt.show()
 edges = (round(share[in_tail].max(), 2), round(share[~in_tail].min(), 2))
 under = int((share[~in_tail] < 0.5).sum())
@@ -2386,10 +2401,11 @@ print(f"the idle tail's highest week accepted {edges[0]}; every other week at le
         md('''
         **What happened.** The answer is a: no driver-week outside the idle tail accepted fewer than
         half its offers. The idle tail's highest week accepted 0.46 and every other week at least 0.78,
-        so a floor at 0.5 takes the top-up from idle-tail weeks only, and every driver who serves
-        riders keeps the promise. The gap is this clean because the data is synthetic; on a real city
-        the two groups overlap, and where the floor sits becomes a trade-off the test measures. The
-        line that answers marketing is guardrail 1's floor, written into the payout rule.
+        so an acceptance floor at 0.5 takes the top-up from idle-tail weeks only, and every driver who
+        serves riders keeps the promise. The gap is this clean because the data is synthetic; on a real
+        city the two groups overlap, and where the acceptance floor sits becomes a trade-off the test
+        measures. The line that answers marketing is guardrail 1's acceptance floor, written into the
+        payout rule.
 
         ## Finance: is the fall the monsoon's end?
 
@@ -2428,12 +2444,40 @@ print(f"the three weeks with most requests ({', '.join(busiest)}) read {crest:.2
         rains, read 1.60. The season moved requests within a narrow band; the rate fell in the week the
         scheme began. The line that answers finance is the window: a calendar week shows the step that
         six-week totals blur. The top-up budget is finance's own number, so finance watches guardrail 3,
-        top-up per completed trip, and decides what the floor may cost.
+        top-up per completed trip, and decides what the Rs 300 floor may cost.
 
-        ### Your turn: where does the floor sit if an accepted trip later cancelled counts as declined?
+        ## What would the redesign save, under a stated assumption about how drivers respond?
+
+        The redesign keeps the Rs 300 floor only for driver-weeks that clear the acceptance floor of
+        half the offers shown. The weeks under half are the idle tail's, as the marketing cell showed:
+        its highest week accepted 0.46 and every other week at least 0.78. Some idle-tail drivers would
+        start accepting enough to qualify, so the share of their top-up that would still be paid is an
+        **assumption**: 0.2 at the low end, 0.5 at the high end. A test of the redesign, which this
+        afternoon's tentative faculty block designs, is what settles it. This cell splits the top-up at
+        half accepted, checks that the part under half is exactly the idle tail's, and prices both ends.
+        '''),
+        code('''
+acc = after["peak_accepted"] / after["peak_offers"]
+low = after.loc[acc < 0.5, "topup_rs"].sum()
+high = after.loc[acc >= 0.5, "topup_rs"].sum()
+idle_topup = after.loc[after["driver_id"].isin(idle), "topup_rs"].sum()
+saving = pd.DataFrame({"still_paid_share": [0.2, 0.5]})
+saving["saving_rs"] = (low * (1 - saving["still_paid_share"])).round().astype(int)
+saving["saving_lakh"] = (saving["saving_rs"] / 1e5).round(1)
+print(f"top-up to weeks under half: Rs {low:,}; to the rest: Rs {high:,}; the idle tail's own: Rs {idle_topup:,}")
+saving
+'''),
+        md('''
+        **What happened.** Rs 1.159 crore went to weeks under half, all of it the idle tail's, and
+        Rs 74 lakh to the rest. If a fifth of the idle tail's top-up were still paid, the redesign saves
+        Rs 92.7 lakh over six weeks; if half were, Rs 58.0 lakh. The range is the honest answer to
+        finance until the test reports, and Rs 74 lakh, what the other weeks received, is the least the
+        redesign would cost.
+
+        ### Your turn: where does the acceptance floor sit if an accepted trip later cancelled counts as declined?
 
         The payout rule counts an accepted trip that the driver later cancelled as declined, so a
-        driver cannot pass the floor by accepting and cancelling. In this data every accepted trip
+        driver cannot clear the acceptance floor by accepting and cancelling. In this data every accepted trip
         either became a completed trip or was cancelled by the driver, so the rule's share is trips
         completed over offers shown. Fill the two blanks, then type and run the lines in the empty
         cell below:
@@ -2480,6 +2524,9 @@ check("the idle tail's 33,440 trips would need about 17,600 hours at 1.90", (idl
 check("idle-tail weeks accept at most 0.46, every other week at least 0.78, none of them under 0.5",
       edges == (0.46, 0.78) and under == 0)
 check("the rate stepped from 1.88 to 1.64 in the launch week", step == (1.88, 1.64))
+check("Rs 1.159 crore to weeks under half, all of it the idle tail's; Rs 74 lakh to the rest",
+      (low, high, idle_topup) == (11590000, 7410000, 11590000))
+check("the saving runs from Rs 58 lakh to Rs 92.7 lakh", saving["saving_rs"].tolist() == [9272000, 5795000])
 check("weekly requests stayed between 41,155 and 43,878; the three busiest weeks read 1.60",
       (weeks["requests"].min(), weeks["requests"].max()) == (41155, 43878) and crest == 1.6)
 '''),
@@ -2491,16 +2538,18 @@ check("weekly requests stayed between 41,155 and 43,878; the three busiest weeks
         2. Each way of gaming the scheme meets a line that stops it. Logging in for longer moves
            neither the numerator nor the denominator, so the north star stays at 35.89. Logging off
            raises it to 36.88, and the count beside the rate and the wait catch it. Declining and
-           accepting then cancelling meet the floor; a thin zone's few accepted offers meet top-up per
-           completed trip.
+           accepting then cancelling meet the acceptance floor; a thin zone's few accepted offers meet
+           top-up per completed trip.
         3. Driver operations is answered by guardrail 2: the other 880 held 1.90 trips an hour, and if
            the idle tail logged off, its 33,440 trips would need about 17,600 hours from them.
-        4. Marketing is answered by the floor: no driver-week outside the idle tail accepted under half
-           its offers, so every driver who serves riders keeps the promise.
+        4. Marketing is answered by the acceptance floor: no driver-week outside the idle tail accepted
+           under half its offers, so every driver who serves riders keeps the Rs 300 floor.
         5. Finance is answered by the window: requests stayed between 41,155 and 43,878 a week while
            the rate stepped from 1.88 to 1.64 in the launch week.
-        6. Your turn found where the floor's edges sit when an accepted trip later cancelled counts as
-           declined.
+        6. Under a stated assumption, the redesign saves Rs 58 lakh to Rs 92.7 lakh over six weeks; the
+           test settles where.
+        7. Your turn found where the acceptance floor's edges sit when an accepted trip later cancelled
+           counts as declined.
 
         **The rules.**
 
@@ -2698,16 +2747,16 @@ print(f"the whole top-up per extra trip across the city: Rs {per_extra_trip:,}, 
         hours in the three outer zones. There the middle wait fell from 6.6 to 5.95 minutes, so riders
         in the thin zones gained a little, and the idle tail's top-up in those zones came to about
         Rs 46,000 for each extra trip they fulfilled. Across the city the Rs 1.9 crore came to Rs 2,836
-        for each of the 6,700 extra trips. That is the decision line: hold the scheme, keep the floor
-        only for weeks that accept at least half their offers, and test the redesign with zones as the
-        unit.
+        for each of the 6,700 extra trips. That is the decision line: hold the scheme, keep the Rs 300
+        floor only for weeks that accept at least half their offers, and test the redesign with zones as
+        the unit.
 
         ## Which line answers each follow-up?
 
         | The interviewer pushes | The hire-grade line, from the numbers above |
         |---|---|
         | "Online hours rose 24 percent; what do you check before you celebrate?" | Trips per online hour and the rider's wait: hours rose 24 percent and trips 3, so the rate fell from 1.90 to 1.58 and waits barely moved |
-        | "Which guardrail would driver operations fight, and why are they partly right?" | The acceptance floor: some declines are fair, so set it in the gap the data shows, above 0.46 and below 0.78, and test two levels, since on a real city the groups overlap |
+        | "Which guardrail would driver operations fight, and why are they partly right?" | The acceptance floor: some declines are fair, so set it in the gap the data shows, above 0.46 and below 0.78, or 0.43 and 0.67 once an accepted trip later cancelled counts as declined, and test two levels, since on a real city the groups overlap |
         | "The drivers control when they log in; what happens to your number?" | Logging in cannot raise it, since each trip needs a rider's request; logging off can, so print the driver count beside the rate |
 
         Notebook 10 ran the third line on the data: doubling the idle tail's hours left the north star
