@@ -192,7 +192,7 @@ flowchart LR
     V["<b>views</b><br/>60,000 a day"] --> C["<b>clicks</b><br/>x 6.4 percent<br/>= 3,840"]
     C --> A["<b>adds</b><br/>x 0.5<br/>= 1,920"]
     A --> M["<b>margin</b><br/>x Rs 9<br/>= Rs 17,280 a day"]
-    M --> R["<b>re-ranked, a month</b><br/>Rs 6.3 lakh recovered"]
+    M --> R["<b>milk taken out, a month</b><br/>about Rs 6.3 lakh, gross"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class V,C,A known
@@ -206,14 +206,15 @@ sentence for Friday written under them all.
 
 ```mermaid
 flowchart LR
-    R["<b>Rank</b><br/>lift above a 1% floor<br/>3.39, 3.00, 2.21"] --> W["<b>Watch</b><br/>ice cream and sauce<br/>4.60 on 100 carts"]
+    R["<b>Rank</b><br/>lift 1.5 up, 1% floor<br/>3.39, 3.00, 2.21, 1.70"] --> W["<b>Watch</b><br/>ice cream and sauce<br/>4.60 on 100 carts"]
     W --> P["<b>Price</b><br/>Rs 17,280 against<br/>Rs 3,240 a day"]
-    P --> M["<b>Month</b><br/>Rs 6.3 lakh recovered"]
+    P --> M["<b>Month</b><br/>milk out: about<br/>Rs 6.3 lakh, gross"]
     M --> D["<b>Doubts</b><br/>per customer 2.56<br/>curd's lift stays 1.01"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class R,W,P,M,D known
 ```
 
-> The click-through fell because the strip gave half its slots to milk, which shoppers buy anyway;
-> ranked by lift above a 1 percent floor, the strip shows chips with cold drink, coriander with green
-> chillies and bread with butter, and recovers about Rs 6.3 lakh a month.
+> The click-through fell because the strip gave half its slots to milk, which shoppers buy anyway.
+> Taking milk out, which ranking by lift above a 1 percent floor and a 1.5 bar does by arithmetic,
+> recovers about Rs 6.3 lakh a month before the adds that would have come anyway; a test against a
+> count ranking without milk shows whether lift earns more.

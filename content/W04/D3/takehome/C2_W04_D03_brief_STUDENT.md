@@ -53,3 +53,11 @@ call the growth lead can repeat.
 
 The self-check (`takehome/C2_W04_D03_selfcheck_STUDENT.md`) lists the numbers each slice should give.
 Open it after your notebook runs, never before.
+
+## What else is due before Thursday?
+
+- **Read.** Practical Business Python's "Introduction to Market Basket Analysis in Python",
+  https://pbpython.com/market-basket-analysis.html (checked 13 October 2026): skip the library set-up
+  and read the section on lift, about 20 minutes.
+- **Recap.** Write one line, in your own words, on what a lift below one says about two items, with
+  one pair from today that reads below one. Bring it to Thursday's first minutes.
