@@ -3,10 +3,13 @@
 Seeded, so two runs write byte-identical files. Standard library, pandas and PyYAML only.
 
 Writes to content/W04/D1/data/ the three case tables (drivers, driver_weeks, zone_weeks) and the two
-Kalpa transfer tables (kalpa_members, kalpa_app_reorders); writes to internal/ the facts file and the
-contract output. Every target in the Monday section of docs/detailing/W04_case_file.md, every value
-the orchestrator's review of 12 October 2026 holds, and every Kalpa plant is asserted; a failed line
-makes the script exit 1.
+Kalpa transfer tables: kalpa_members, a byte copy of Thursday's kalpa_memberships, and
+kalpa_app_reorders, whose placements that became orders are the frozen v4 warehouse's own app orders
+(read from content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql). Writes to internal/ the facts
+file and the contract output. Every target in the Monday section of docs/detailing/W04_case_file.md,
+every value the orchestrator's review of 12 October 2026 holds, every Kalpa plant, both directions of
+the join to v4 and the case tables' checksums on origin/main are asserted; a failed line makes the
+script exit 1.
 
     python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py              write, then check
     python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py --contract   also print every line
@@ -22,6 +25,8 @@ all (the driver drove off-peak only), so the drivers online at peak change week 
 row counts per window stay at 6,360 and 6,500.
 """
 import datetime as dt
+import hashlib
+import itertools
 import pathlib
 import random
 import sys
@@ -318,48 +323,109 @@ for window, (core_centre, _) in WAIT.items():
 zw.to_csv(DATA / f"{STEM}_zone_weeks_STUDENT.csv", index=False)
 
 # ---------------------------------------------------------------------------------- the Kalpa transfer
-# Retail-Plus members and their app reorders for the TA lab. These two tables were first drawn by
-# the draft generator after its case section had used 195,632 random 32-bit words; replaying that
-# many words keeps them byte-identical, so the plants and the lab's counts stay where they were.
-krng = random.Random(SEED)
-krng.getrandbits(32 * 195632)
+# The TA lab's two tables. kalpa_members is Thursday's kalpa_memberships, copied byte for byte, so the
+# two days describe one tier. kalpa_app_reorders logs every reorder placement from 20 August to 30
+# September. Before 10 September members reordered with the Reorder button: a placement that became
+# an order is one of the frozen v4 warehouse's app orders (same customer, date, amount and status,
+# its id in order_id), and the rest merged into a basket the member already had open. From 10
+# September the app's auto-reorder feature placed every row itself, and none became an order; the
+# members' own checkouts in that window are v4's other app orders, outside the log. The per-member
+# comparison runs on the 107 who had joined by the monsoon sale's last day, so each was a member for
+# the whole of both windows; the 13 who joined inside the comparison window stay in the tables.
+REPO = HERE.parents[3]
+V4_SQL = REPO / "content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql"
+THURSDAY_MEMBERS = REPO / "content/W04/D4/data/C2_W04_D04_kalpa_memberships_STUDENT.csv"
 COMPARISON = (dt.date(2026, 8, 20), dt.date(2026, 9, 9))
 AUTO_WINDOW = (dt.date(2026, 9, 10), dt.date(2026, 9, 30))
+MONSOON_SALE_LAST_DAY = dt.date(2026, 8, 19)
+MERGED, AUTO = 29, 44               # the 107's: 7 v4 orders + 29 merged = 36 placements, then 44 (1.22)
+LATE_MERGED, LATE_AUTO = 2, 4       # the 13's, beside their 3 v4 orders
+POOL, AUTO_EXTRA = 30, 8            # the 107 who use the Reorder button, and the others the feature reached
+CASE_SHA256 = {                     # git show origin/main:<path> | sha256sum, 13 October 2026
+    "drivers": "c93a28b597e50ee8828663a4030dd8ae678b6676b2ea6e3ff476d5036f756b8b",
+    "driver_weeks": "9d18cc7ba078dea7e48114e658ddafb816f33859aa6d167734994a48da169219",
+    "zone_weeks": "ad6c2463bd43a69e43c2f1571fab6b7f7943734998df283a8b6bb81be37c2b48",
+}
+sql_lines = V4_SQL.read_text(encoding="utf-8").splitlines()
 
-members = [{"customer_id": f"RP-{i:04d}", "tier": "Retail-Plus",
-            "member_since": f"2026-{(i % 6) + 1:02d}-{(i % 25) + 1:02d}"} for i in range(1, 121)]
-pd.DataFrame(members).to_csv(DATA / f"{STEM}_kalpa_members_STUDENT.csv", index=False)
 
-
-def reorders_block(who, start, end, lo, hi, auto, mean, sd, statuses):
-    out, rid = [], 10000 + len(who) * (0 if start == COMPARISON[0] else 1) * 5
-    for m in who:
-        for _ in range(krng.randint(lo, hi)):
-            day = start + dt.timedelta(days=krng.randint(0, (end - start).days))
-            value = max(20, int(round(krng.gauss(mean, sd))))
-            status = statuses[krng.randrange(len(statuses))]
-            rid += 1
-            out.append({"reorder_id": f"re_{rid:06d}", "customer_id": m["customer_id"],
-                        "placed_ts": f"{day.isoformat()}T{krng.randint(8, 21):02d}:"
-                                     f"{krng.randint(0, 59):02d}:00",
-                        "product_id": f"p_{krng.randint(1, 60):03d}", "value_rs": value,
-                        "auto": auto, "status": status})
+def copy_block(table):
+    """One table of the v4 dump as a list of dicts, read the way Thursday's generator reads it."""
+    start = next(i for i, line in enumerate(sql_lines) if line.startswith(f"COPY {table} "))
+    cols = sql_lines[start].split("(")[1].split(")")[0].split(", ")
+    out, i = [], start + 1
+    while sql_lines[i] != "\\.":
+        out.append(dict(zip(cols, sql_lines[i].split("\t"))))
+        i += 1
     return out
 
 
-AUTO_STATUSES = ["cancelled", "merged", "pending"]
-compare = reorders_block(members, *COMPARISON, 2, 5, False, 380, 120, ["delivered", "cancelled", "merged"])
-auto = reorders_block(members, *AUTO_WINDOW, 3, 6, True, 250, 90, AUTO_STATUSES)
-want = int(round(len(compare) * 1.22))
-if len(auto) < want:
-    auto += reorders_block(members[: want - len(auto)], *AUTO_WINDOW, 1, 1, True, 250, 90, AUTO_STATUSES)
-auto = auto[:want]
-delta = int(round(sum(r["value_rs"] for r in compare) * 0.96)) - sum(r["value_rs"] for r in auto)
-per, rem = divmod(delta, len(auto))
-for i, r in enumerate(auto):
-    r["value_rs"] = max(20, r["value_rs"] + per + (1 if i < rem else 0))
-reorders = (pd.DataFrame(compare + auto).sort_values(["placed_ts", "reorder_id"])
-            .reset_index(drop=True))
+def days_in(span):
+    return [span[0] + dt.timedelta(days=d) for d in range((span[1] - span[0]).days + 1)]
+
+
+members_bytes = THURSDAY_MEMBERS.read_bytes()
+(DATA / f"{STEM}_kalpa_members_STUDENT.csv").write_bytes(members_bytes)
+members = pd.read_csv(THURSDAY_MEMBERS)
+since = dict(zip(members["customer_id"], members["member_since"]))
+base = sorted(c for c, s in since.items() if s <= MONSOON_SALE_LAST_DAY.isoformat())
+late_joiners = sorted(c for c in since if c not in set(base))
+v4_app = [o for o in copy_block("orders") if o["customer_id"] in since and o["channel"] == "app"]
+in_span = lambda o, span: span[0].isoformat() <= o["order_date"] <= span[1].isoformat()  # noqa: E731
+v4_comparison = sorted((o for o in v4_app if in_span(o, COMPARISON)), key=lambda o: (o["order_date"], o["order_id"]))
+v4_window = [o for o in v4_app if in_span(o, AUTO_WINDOW)]
+AMOUNTS = sorted(int(o["amount"]) for o in v4_app if "2026-07-01" <= o["order_date"] <= "2026-09-30")
+
+krng = random.Random(f"{SEED} kalpa")
+k_rows = [{"customer_id": o["customer_id"], "day": o["order_date"], "value_rs": int(o["amount"]), "auto": False,
+           "status": o["status"], "order_id": o["order_id"]} for o in v4_comparison]
+users = sorted({o["customer_id"] for o in v4_comparison} & set(base))
+non_users = [c for c in base if c not in users]
+krng.shuffle(non_users)
+pool = sorted(users + non_users[: POOL - len(users)])
+auto_pool = pool + sorted(non_users[POOL - len(users): POOL - len(users) + AUTO_EXTRA])
+order_days = {(o["customer_id"], o["order_date"]) for o in v4_comparison}
+
+
+def merged_row(r, who):
+    """A Reorder press whose items joined an open basket: never on a day the member's own order was placed."""
+    open_days = [d.isoformat() for d in days_in(COMPARISON)
+                 if d.isoformat() >= since[who] and (who, d.isoformat()) not in order_days]
+    return {"customer_id": who, "day": r.choice(open_days), "value_rs": r.choice(AMOUNTS), "auto": False,
+            "status": "merged", "order_id": ""}
+
+
+def auto_row(r, who):
+    """A placement the app made itself: cancelled or merged, or pending if placed in the last week."""
+    day = r.choice(days_in(AUTO_WINDOW))
+    status = r.choice(["cancelled", "merged", "pending"] if day >= dt.date(2026, 9, 24) else ["cancelled", "merged"])
+    return {"customer_id": who, "day": day.isoformat(), "value_rs": r.choice(AMOUNTS), "auto": True,
+            "status": status, "order_id": ""}
+
+
+k_rows += [merged_row(krng, krng.choice(pool)) for _ in range(MERGED)]
+autos = [auto_row(krng, krng.choice(auto_pool)) for _ in range(AUTO)]
+# The auto placements' values, scaled in tens so the 107's booked value in the window is 0.96 of the comparison's.
+comparison_rs = sum(r["value_rs"] for r in k_rows if r["customer_id"] in set(base))
+want_rs = 10 * round(0.96 * comparison_rs / 10)
+scale = want_rs / sum(r["value_rs"] for r in autos)
+for r in autos:
+    r["value_rs"] = 10 * round(r["value_rs"] * scale / 10)
+gap = (want_rs - sum(r["value_rs"] for r in autos)) // 10
+for i in range(abs(gap)):
+    autos[i % len(autos)]["value_rs"] += 10 if gap > 0 else -10
+k_rows += autos
+lrng = random.Random(f"{SEED} kalpa late")
+k_rows += [merged_row(lrng, lrng.choice(late_joiners)) for _ in range(LATE_MERGED)]
+for _ in range(LATE_AUTO):
+    r = auto_row(lrng, lrng.choice(late_joiners))
+    r["value_rs"] = 10 * round(r["value_rs"] * scale / 10)
+    k_rows.append(r)
+for r in k_rows:
+    r["placed_ts"] = f"{r['day']}T{krng.randint(8, 21):02d}:{krng.randint(0, 59):02d}:00"
+reorders = pd.DataFrame(k_rows).sort_values(["placed_ts", "customer_id"], kind="stable").reset_index(drop=True)
+reorders.insert(0, "reorder_id", [f"re_{i:06d}" for i in range(1, len(reorders) + 1)])
+reorders = reorders[["reorder_id", "customer_id", "placed_ts", "value_rs", "auto", "status", "order_id"]]
 reorders.to_csv(DATA / f"{STEM}_kalpa_app_reorders_STUDENT.csv", index=False)
 
 # ---------------------------------------------------------------------------------- the numbers
@@ -397,25 +463,29 @@ weekly = weekly.join(zw.groupby("week_start").agg(requests=("peak_requests", "su
                                                   fulfilled=("peak_fulfilled", "sum")))
 north = (dw[dw["peak_online_hours"] > 0].groupby("window")["peak_trips"].sum() / online_n)
 
-# The lab's twelve rows: seven members whose hand count shows the mechanism without landing on a plant.
+# The lab's numbers, counted the way the notebook counts them: the 107, per member, in each window.
 reorders["day"] = reorders["placed_ts"].str[:10]
-reorders["slot"] = reorders["day"].map(
-    lambda d: "comparison" if "2026-08-20" <= d <= "2026-09-09" else "window")
-per_member = reorders.pivot_table(index="customer_id", columns="slot", values="value_rs",
-                                  aggfunc=["size", "sum"], fill_value=0)
-per_member.columns = [f"{a}_{b}" for a, b in per_member.columns]
-lab = []
-for cid, r in per_member.iterrows():
-    if r["size_window"] > r["size_comparison"] and r["sum_window"] < r["sum_comparison"]:
-        lab.append(cid)
-lab = lab[:7]
-lab_t = per_member.loc[lab]
-lab_count_ratio = lab_t["size_window"].sum() / lab_t["size_comparison"].sum()
-lab_value_ratio = lab_t["sum_window"].sum() / lab_t["sum_comparison"].sum()
-k_count_ratio = (reorders["slot"] == "window").sum() / (reorders["slot"] == "comparison").sum()
-k_value_ratio = (reorders.loc[reorders["slot"] == "window", "value_rs"].sum()
-                 / reorders.loc[reorders["slot"] == "comparison", "value_rs"].sum())
+reorders["slot"] = reorders["day"].map(lambda d: "comparison" if d <= COMPARISON[1].isoformat() else "window")
+in_base = reorders["customer_id"].isin(base)
+counts = reorders[in_base].groupby("slot").size()
+booked = reorders[in_base].groupby("slot")["value_rs"].sum()
+k_count_ratio = (counts["window"] / len(base)) / (counts["comparison"] / len(base))
+k_value_ratio = (booked["window"] / len(base)) / (booked["comparison"] / len(base))
+all_counts = reorders.groupby("slot").size()
+all_booked = reorders.groupby("slot")["value_rs"].sum()
 window_rows = reorders[reorders["slot"] == "window"]
+# The lab's twelve rows: the first seven of the 107, in id order, with placements in both windows whose
+# hand count leans the way the full table does and sits at least 0.10 from each of its two ratios.
+per_member = reorders[in_base].pivot_table(index="customer_id", columns="slot", values="value_rs",
+                                           aggfunc=["size", "sum"], fill_value=0)
+per_member.columns = [f"{a}_{b}" for a, b in per_member.columns]
+both = per_member[(per_member["size_comparison"] > 0) & (per_member["size_window"] > 0)]
+for lab in itertools.combinations(both.index, 7):
+    lab_t = both.loc[list(lab)]
+    lab_count_ratio = lab_t["size_window"].sum() / lab_t["size_comparison"].sum()
+    lab_value_ratio = lab_t["sum_window"].sum() / lab_t["sum_comparison"].sum()
+    if lab_count_ratio >= k_count_ratio + 0.10 and lab_value_ratio <= k_value_ratio - 0.10:
+        break
 
 # ---------------------------------------------------------------------------------- the contract
 lines = []
@@ -500,17 +570,77 @@ check("twelve rows: 1.90 to 1.19 trips per hour",
       (r2(114 / 60), r2(88 / 74)) == (1.90, 1.19))
 check("twelve-row hand count at least 0.05 from the city's 1.58",
       abs(88 / 74 - A["peak_trips"] / A["peak_online_hours"]) >= 0.05)
-check("Kalpa: 120 Retail-Plus members", len(members) == 120)
-check("Kalpa plant: reorders placed per member 1.22 times", r2(k_count_ratio) == 1.22, r2(k_count_ratio), 1.22)
-check("Kalpa plant: booked value per member 0.96 times", r2(k_value_ratio) == 0.96, r2(k_value_ratio), 0.96)
-check("Kalpa plant: no reorder in the window delivered, each cancelled, merged or pending",
-      window_rows["status"].isin(AUTO_STATUSES).all())
-check("Kalpa lab twelve rows: seven members, both ratios at least 0.05 from the plants",
-      len(lab) == 7 and abs(lab_count_ratio - 1.22) >= 0.05 and abs(lab_value_ratio - 0.96) >= 0.05,
+idle_after_rows = dw[(dw["group"] == "idle") & (dw["window"] == "after")]
+idle_week_hours = idle_after_rows["peak_online_hours"].sum() / (len(slow) * len(AFTER))
+check("the idle tail averages 39 peak online hours a driver-week after the launch; E and F log 16 and 14",
+      round(idle_week_hours) == 39 and len(idle_after_rows) == len(slow) * len(AFTER)
+      and (TWELVE["E"][3][0], TWELVE["F"][3][0]) == (16, 14), round(idle_week_hours, 1), 39)
+written = {t: hashlib.sha256((DATA / f"{STEM}_{t}_STUDENT.csv").read_bytes()).hexdigest() for t in CASE_SHA256}
+check("the case tables (drivers, driver_weeks, zone_weeks) are byte-identical to origin/main", written == CASE_SHA256)
+check("Kalpa: kalpa_members is Thursday's kalpa_memberships, byte for byte",
+      (DATA / f"{STEM}_kalpa_members_STUDENT.csv").read_bytes() == THURSDAY_MEMBERS.read_bytes())
+by_month = members["member_since"].str[:7].value_counts().sort_index()
+check("Kalpa: 120 members, C-0151 to C-0270; 11 to 14 joined a month from January to July, 32 in August, "
+      "the last on 29 August",
+      len(members) == 120 and members["customer_id"].is_unique
+      and (members["customer_id"].min(), members["customer_id"].max()) == ("C-0151", "C-0270")
+      and by_month.loc["2026-01":"2026-07"].between(11, 14).all() and by_month.get("2026-08") == 32
+      and members["member_since"].max() == "2026-08-29")
+check("Kalpa: 107 joined by 19 August, the monsoon sale's last day, and 13 from 20 to 29 August",
+      (len(base), len(late_joiners)) == (107, 13) and min(since[c] for c in late_joiners) >= "2026-08-20",
+      (len(base), len(late_joiners)), (107, 13))
+check("Kalpa: every placement falls from 20 August to 30 September, never before its member joined",
+      reorders["day"].between(COMPARISON[0].isoformat(), AUTO_WINDOW[1].isoformat()).all()
+      and (reorders["day"] >= reorders["customer_id"].map(since)).all())
+v4_by_id = {o["order_id"]: o for o in v4_comparison}
+as_orders = reorders[reorders["order_id"] != ""]
+check("Kalpa join, log to warehouse: every placement with an order_id is a v4 app order of 20 August to 9 "
+      "September, with its customer, date, amount and status",
+      all(r.order_id in v4_by_id and (r.customer_id, r.day, r.value_rs, r.status)
+          == (v4_by_id[r.order_id]["customer_id"], v4_by_id[r.order_id]["order_date"],
+              int(v4_by_id[r.order_id]["amount"]), v4_by_id[r.order_id]["status"])
+          for r in as_orders.itertuples()))
+check("Kalpa join, warehouse to log: each of v4's 10 Retail-Plus app orders of that window appears exactly once",
+      sorted(as_orders["order_id"]) == sorted(v4_by_id) and len(v4_by_id) == 10, len(as_orders), 10)
+comparison_rows = reorders[reorders["slot"] == "comparison"]
+check("Kalpa: the comparison window holds members' own placements only, the rest merged with no order_id",
+      (~comparison_rows["auto"]).all()
+      and comparison_rows.loc[comparison_rows["order_id"] == "", "status"].eq("merged").all())
+check("Kalpa: every placement in the window is the app's own, cancelled, merged or pending, with no order_id",
+      window_rows["auto"].all() and window_rows["status"].isin(["cancelled", "merged", "pending"]).all()
+      and window_rows["order_id"].eq("").all())
+check("Kalpa: v4's 7 Retail-Plus app orders of 10 to 30 September are members' own checkouts, outside the log",
+      len(v4_window) == 7 and not {o["order_id"] for o in v4_window} & set(reorders["order_id"]), len(v4_window), 7)
+check("Kalpa plant: reorders placed per member, the 107, 1.22 times", r2(k_count_ratio) == 1.22, r2(k_count_ratio),
+      1.22)
+check("Kalpa plant: booked value per member, the 107, any status, 0.96 times", r2(k_value_ratio) == 0.96,
+      r2(k_value_ratio), 0.96)
+check("Kalpa plant: none of the window's placements delivered", not window_rows["status"].eq("delivered").any())
+check("Kalpa: v4's scale, a few tenths of a placement per member per window",
+      all(0.2 <= counts[s] / len(base) <= 0.5 for s in ("comparison", "window")),
+      (r2(counts["comparison"] / len(base)), r2(counts["window"] / len(base))))
+check("Kalpa: over all 120 members both ratios print otherwise, so the base of 107 changes the answer",
+      abs(all_counts["window"] / all_counts["comparison"] - k_count_ratio) >= 0.03
+      and abs(all_booked["window"] / all_booked["comparison"] - k_value_ratio) >= 0.03,
+      (r2(all_counts["window"] / all_counts["comparison"]), r2(all_booked["window"] / all_booked["comparison"])))
+check("Kalpa lab twelve rows: seven of the 107 with placements in both windows, both ratios at least 0.05 from "
+      "1.22 and 0.96",
+      len(lab) == 7 and set(lab) <= set(base) and (lab_t[["size_comparison", "size_window"]] > 0).all().all()
+      and abs(lab_count_ratio - 1.22) >= 0.05 and abs(lab_value_ratio - 0.96) >= 0.05,
       (r2(lab_count_ratio), r2(lab_value_ratio)))
-check("shared constants: the two Kalpa windows",
-      (COMPARISON, AUTO_WINDOW) == ((dt.date(2026, 8, 20), dt.date(2026, 9, 9)),
-                                    (dt.date(2026, 9, 10), dt.date(2026, 9, 30))))
+sale = next(c for c in copy_block("campaigns") if c["name"] == "Monsoon Sale")
+check("Kalpa: v4's monsoon sale runs 5 to 19 August for Retail-Plus, its last day the shared constant",
+      (sale["start_date"], sale["end_date"], sale["segment"]) == ("2026-08-05", MONSOON_SALE_LAST_DAY.isoformat(),
+                                                                  "Retail-Plus"), (sale["start_date"], sale["end_date"]))
+thursday = yaml.safe_load((REPO / "content/W04/D4/internal/C2_W04_D04_facts_INTERNAL.yaml")
+                          .read_text(encoding="utf-8"))["shared_constants"]
+shared = {"kalpa_comparison_window": [d.isoformat() for d in COMPARISON],
+          "kalpa_auto_reorder_window": [d.isoformat() for d in AUTO_WINDOW],
+          "monsoon_sale_last_day": MONSOON_SALE_LAST_DAY.isoformat()}
+check("shared constants: the two Kalpa windows and the monsoon sale's last day, equal to Thursday's",
+      shared == thursday and shared["kalpa_comparison_window"] == ["2026-08-20", "2026-09-09"]
+      and shared["kalpa_auto_reorder_window"] == ["2026-09-10", "2026-09-30"]
+      and shared["monsoon_sale_last_day"] == "2026-08-19")
 
 # ---------------------------------------------------------------------------------- the facts file
 numbers = []
@@ -654,6 +784,9 @@ fact("twelve_tph_after", 1.19, "trips per peak online hour", "88 / 74", "L1 hand
 fact("twelve_hours_change_pct", 23, "percent", "74 / 60 - 1", "L1 hand count")
 fact("twelve_trips_change_pct", -23, "percent", "88 / 114 - 1", "L1 hand count")
 fact("twelve_idle_share", 0.33, "share", "2 of the six drivers (E and F) sit in the idle tail", "L1; L2")
+fact("idle_hours_per_driver_week_after", round(idle_week_hours), "peak online hours a driver-week",
+     "idle_hours_after 42,000 over 180 drivers and six weeks (38.9), to the nearest hour; E and F log 16 and 14",
+     "the twelve rows: the card's two idle drivers keep shorter weeks than the tail's average")
 # Added by the finishing session for the exercises, the Kahoot and the ticket's change column; every
 # value is read from the same tables, so the data files are unchanged.
 fact("acceptance_change_points", round(100 * (B["peak_accepted"] / B["peak_offers"]
@@ -754,47 +887,95 @@ for label, (did, zone, before_row, after_row) in TWELVE.items():
 lab_rows = [{"customer_id": cid, "placed_comparison": int(r["size_comparison"]),
              "placed_window": int(r["size_window"]), "booked_comparison_rs": int(r["sum_comparison"]),
              "booked_window_rs": int(r["sum_window"])} for cid, r in lab_t.iterrows()]
+example = next(c for c in late_joiners if since[c] == "2026-08-25")
+lab_mean = {"placed_ratio": r2((lab_t["size_window"] / lab_t["size_comparison"]).mean()),
+            "booked_ratio": r2((lab_t["sum_window"] / lab_t["sum_comparison"]).mean())}
+on_20 = reorders["customer_id"].isin([c for c, s in since.items() if s <= COMPARISON[0].isoformat()])
+cut_20 = {"members": sum(s <= COMPARISON[0].isoformat() for s in since.values()),
+          "placed_ratio": r2((on_20 & (reorders["slot"] == "window")).sum()
+                             / (on_20 & (reorders["slot"] == "comparison")).sum()),
+          "booked_ratio": r2(reorders.loc[on_20 & (reorders["slot"] == "window"), "value_rs"].sum()
+                             / reorders.loc[on_20 & (reorders["slot"] == "comparison"), "value_rs"].sum())}
+example_days = (COMPARISON[1] - dt.date.fromisoformat(since[example])).days + 1
+
+
+def by_status(frame):
+    return {s: int(n) for s, n in frame.groupby("status").size().items()}
+
 
 facts = {
     "day": "W04/D1, Monday 26 October 2026",
-    "written_by": "C2_W04_D01_generate_INTERNAL.py, the W04 D1 finishing session, 12 October 2026",
+    "written_by": "C2_W04_D01_generate_INTERNAL.py, the W04 D1 finishing session, 12 October 2026; the Kalpa "
+                  "lab rebuilt on Thursday's membership table, 13 October 2026",
     "source_tables": {
         "drivers": "data/C2_W04_D01_drivers_STUDENT.csv",
         "driver_weeks": "data/C2_W04_D01_driver_weeks_STUDENT.csv",
         "zone_weeks": "data/C2_W04_D01_zone_weeks_STUDENT.csv",
-        "kalpa_members": "data/C2_W04_D01_kalpa_members_STUDENT.csv",
-        "kalpa_app_reorders": "data/C2_W04_D01_kalpa_app_reorders_STUDENT.csv",
+        "kalpa_members": "data/C2_W04_D01_kalpa_members_STUDENT.csv (a byte copy of Thursday's "
+                         "data/C2_W04_D04_kalpa_memberships_STUDENT.csv)",
+        "kalpa_app_reorders": "data/C2_W04_D01_kalpa_app_reorders_STUDENT.csv (its order_id rows are orders of "
+                              "content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql)",
     },
     "numbers": numbers,
     "toys": toys,
     "twelve_rows": twelve_rows,
     "kalpa": {
-        "members": 120,
-        "members_joined_by_month": {m: int(n) for m, n in
-                                    pd.Series([r["member_since"][:7] for r in members]).value_counts()
-                                    .sort_index().items()},
-        "reorders_comparison": int((reorders["slot"] == "comparison").sum()),
-        "reorders_window": int((reorders["slot"] == "window").sum()),
+        "members": len(members),
+        "members_base": len(base),
+        "members_joined_in_comparison": len(late_joiners),
+        "base_rule": "members whose member_since is on or before 19 August 2026, the monsoon sale's last day, "
+                     "so each was a member for the whole of both windows",
+        "members_joined_by_month": {m: int(n) for m, n in by_month.items()},
+        "window_days": {"comparison": len(days_in(COMPARISON)), "auto_reorder": len(days_in(AUTO_WINDOW))},
+        "late_example": {"customer_id": example, "member_since": since[example], "comparison_days": example_days,
+                         "comparison_days_missed": len(days_in(COMPARISON)) - example_days},
+        "rows_in_log": len(reorders),
+        "reorders_comparison": int(counts["comparison"]),
+        "reorders_window": int(counts["window"]),
+        "booked_comparison_rs": int(booked["comparison"]),
+        "booked_window_rs": int(booked["window"]),
+        "placed_per_member": {s: r3(counts[s] / len(base)) for s in ("comparison", "window")},
+        "booked_per_member_rs": {s: round(float(booked[s] / len(base)), 1) for s in ("comparison", "window")},
+        "mean_value_rs": {s: round(float(booked[s] / counts[s])) for s in ("comparison", "window")},
+        "mean_value_ratio": r2((booked["window"] / counts["window"]) / (booked["comparison"] / counts["comparison"])),
+        "status_comparison": by_status(reorders[in_base & (reorders["slot"] == "comparison")]),
+        "status_window": by_status(reorders[in_base & (reorders["slot"] == "window")]),
+        "orders_in_comparison": len(v4_by_id),
+        "orders_in_comparison_base": int((in_base & (reorders["order_id"] != "")).sum()),
+        "merged_in_comparison_base": MERGED,
+        "v4_app_orders_in_window_outside_log": len(v4_window),
+        "all_members": {"reorders_comparison": int(all_counts["comparison"]),
+                        "reorders_window": int(all_counts["window"]),
+                        "placed_ratio": r2(all_counts["window"] / all_counts["comparison"]),
+                        "booked_ratio": r2(all_booked["window"] / all_booked["comparison"])},
+        "lab_rule": "the first seven of the 107, in id order, with placements in both windows whose hand count "
+                    "leans the way the full table does and sits at least 0.10 from each of its two ratios",
         "lab_twelve_rows": lab_rows,
+        "lab_totals": {"placed_comparison": int(lab_t["size_comparison"].sum()),
+                       "placed_window": int(lab_t["size_window"].sum()),
+                       "booked_comparison_rs": int(lab_t["sum_comparison"].sum()),
+                       "booked_window_rs": int(lab_t["sum_window"].sum())},
         "lab_hand_count": {"placed_ratio": r2(lab_count_ratio), "booked_ratio": r2(lab_value_ratio)},
+        "lab_mean_of_member_ratios": lab_mean,
+        "base_cut_on_20_august": cut_20,
+        "monsoon_sale": {"first_day": sale["start_date"], "last_day": sale["end_date"], "campaign_id": sale["campaign_id"]},
+        "window_three_weeks_earlier": ["2026-07-30", "2026-08-19"],
         "audience": "TRAINER until the lab counts them",
     },
     "plants": [
         {"id": "kalpa_reorders_per_member_ratio", "value": r2(k_count_ratio),
-         "how": "reorders placed per member, 10 to 30 September over 20 August to 9 September",
+         "how": "reorders placed per member, the 107 who joined by 19 August, 10 to 30 September over 20 August "
+                "to 9 September",
          "found_in": "notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell"},
         {"id": "kalpa_booked_value_per_member_ratio", "value": r2(k_value_ratio),
-         "how": "booked value of reorders per member, any status, the same two windows",
+         "how": "booked value of reorders per member, any status, the same 107 and the same two windows",
          "found_in": "notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell"},
         {"id": "kalpa_window_none_delivered", "value": True,
-         "how": "every reorder in the window is an auto-reorder that was cancelled, merged or pending",
+         "how": "every placement in the window is an auto-reorder that was cancelled, merged or pending, and "
+                "none became an order",
          "found_in": "notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the second your-turn cell"},
     ],
-    "shared_constants": {
-        "kalpa_comparison_window": ["2026-08-20", "2026-09-09"],
-        "kalpa_auto_reorder_window": ["2026-09-10", "2026-09-30"],
-        "monsoon_sale_last_day": "2026-08-19",
-    },
+    "shared_constants": shared,
 }
 
 if __name__ == "__main__":
@@ -818,7 +999,7 @@ if __name__ == "__main__":
 
 # Test inputs and expected outcomes
 # python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py
-#     writes five CSVs and the facts file, prints "54 of 54 contract lines PASS" and exits 0
+#     writes five CSVs and the facts file, prints "62 of 62 contract lines PASS" and exits 0
 # python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py --contract
 #     the same, with one PASS line per target printed first
 # python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py --list
