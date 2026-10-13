@@ -19,7 +19,7 @@ hint? What does the TA say at the end?
 
 | Part | File | What the room does | About |
 |---|---|---|---|
-| 1 | `notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb` | Reads the table, counts seven members by hand from the sheet below, predicts, then types the two your-turn cells | 40 minutes |
+| 1 | `notebooks/C2_W04_D01_12_kalpa_lab_STUDENT.ipynb` | Reads the table, counts seven members by hand from the sheet below, predicts, then types the two your-turn cells | 40 minutes |
 | 2 | `exercises/unguided/C2_W04_D01_kalpa_north_star_STUDENT.md` | Writes the growth plan's north star on the morning's seven lines; five letters | 25 minutes |
 | 3 | `exercises/practice/C2_W04_D01_lab_set_STUDENT.md` | The Parsons problem, the lead-and-lag drill as its problem 2 (unless the room sat it in the metric clinic), a product definition, the nine-number dashboard; five letters | 45 minutes |
 | 4 | The solutions, then the close | Walks the answers and hears the closing line below | 10 minutes |

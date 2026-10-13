@@ -2,9 +2,9 @@
 
 Week 4, Day 1. Fallback for the tentative faculty block.
 
-Header: WEEK 4  ·  DAY 1  ·  THE METRIC CLINIC, IF THE TENTATIVE FACULTY BLOCK SLIPS
+Header: WEEK 4  ·  MONDAY  ·  THE METRIC CLINIC, IF THE TENTATIVE FACULTY BLOCK SLIPS
 
-## SECTION 6: Which line would have caught it?
+## SECTION 13: Which line would have caught it?
 *Which line of a complete definition does each of five facts in the SEC's Wells Fargo order breach, before the room writes its own definitions again?*
 
 ```notes
@@ -93,12 +93,12 @@ The denominator (b) was households throughout; the gaming sat in what was counte
 ```notes
 LIVE, 12 minutes. Take the most-argued fact first. Then the Uber parallel, one line each: an hour
 counted with no trip (fact 1), an online hour that starts when the driver chooses (fact 2's window,
-and VA's desired date from the morning), a definition change in Uber's own count (none in the case;
+and VA's desired date from chapter 5), a definition change in Uber's own count (none in the case;
 say so), a top-up for idling (fact 4), a check the drivers cannot touch (the rider's wait, fact 5).
 Transition: the city's three numbers, written out in full.
 ```
 
-## SECTION 7: Does each number survive its owner?
+## SECTION 14: Does each number survive its owner?
 *What happens when each of three proposed numbers is written as a complete definition and its owner attacks it?*
 
 ```notes
@@ -120,7 +120,9 @@ Each set writes its number as a complete definition of seven lines: numerator, d
 
 ```notes
 LIVE, 5 minutes to set. The template is in exercises/guided/C2_W04_D01_definition_STUDENT.md. Twenty
-minutes to write.
+minutes to write. The finance and marketing readers argue different numbers here than on their round 1
+cards, on purpose: each defends a number it did not choose, so the room hears each attack from the
+other side.
 Transition: the attack each owner will mount.
 ```
 
@@ -141,7 +143,7 @@ Score as in round 3: answered, conceded, or lost.
 Transition: which numbers move first.
 ```
 
-## SECTION 8: Which numbers lead, and which lag?
+## SECTION 15: Which numbers lead, and which lag?
 *Which of eight city numbers move before the north star and which confirm it later, and which guardrail does each north star need?*
 
 ```notes
@@ -155,25 +157,27 @@ Transition: the eight numbers.
 
 | # | City number |
 |---|---|
-| 1 | Enrolled drivers online in the first peak hour |
-| 2 | Rider requests per online hour, by zone |
-| 3 | Share of offers accepted this week |
-| 4 | New driver sign-ups this week |
-| 5 | Top-up paid for the month |
-| 6 | Rider rating at month end |
-| 7 | Drivers who left the platform next quarter |
-| 8 | Gross bookings for the quarter |
+| 1 | Rider rating of this week's trips |
+| 2 | Share of offers accepted this week |
+| 3 | Gross bookings this week |
+| 4 | Enrolled drivers online in this week's first peak hours |
+| 5 | Top-up paid for this week |
+| 6 | New driver sign-ups this week |
+| 7 | Rider complaints filed about this week's trips |
+| 8 | Rider requests per online hour this week, by zone |
 
-a) 1, 2, 3 and 4 lead; 5, 6, 7 and 8 lag
+a) 2, 4, 6 and 8 lead; the other four lag
 
-b) 1, 3, 5 and 7 lead; 2, 4, 6 and 8 lag
+b) 1, 2, 4 and 8 lead; the other four lag
 
-c) 1 and 2 lead; the other six lag
+c) 2, 4 and 8 lead; the other five lag
 
-d) 3, 5 and 8 lead; the other five lag
+d) 2, 3, 5 and 6 lead; the other four lag
 
 ```notes
-LIVE, 8 minutes. Letters first, then each group defends two of its calls aloud.
+LIVE, 12 minutes. The eight numbers and the options are the handout's Q1, in its order
+(exercises/unguided/C2_W04_D01_lead_lag_STUDENT.md); its Q2 is the defence. Letters first, then
+each group defends two of its calls aloud.
 Transition: the answer.
 ```
 
@@ -182,8 +186,8 @@ Transition: the answer.
 
 ```mermaid
 flowchart LR
-    I["<b>Leading: 1 to 4</b><br/>drivers online in the first hour,<br/>requests per online hour,<br/>acceptance, sign-ups"] --> N["<b>North star</b><br/>completed peak trips<br/>per enrolled driver"]
-    N --> C["<b>Lagging: 5 to 8</b><br/>the month's top-up, ratings,<br/>departures, the quarter's bookings"]
+    I["<b>Leading: 2, 4, 6 and 8</b><br/>acceptance, drivers online<br/>in the first hour, sign-ups,<br/>requests per online hour"] --> N["<b>North star</b><br/>completed peak trips<br/>per enrolled driver"]
+    N --> C["<b>Lagging: 1, 3, 5 and 7</b><br/>ratings, the week's bookings,<br/>the week's top-up, complaints"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class I,C known
@@ -193,7 +197,7 @@ flowchart LR
 **Answer: a.** The four inputs move before trips per driver do, and the city team can act on them this week; the four confirmations arrive after the trips have happened. On the case data acceptance settled in the launch week while bookings per online hour took three weeks.
 
 ```notes
-LIVE, 4 minutes. A dashboard of only lagging numbers lets a drift run for weeks before anyone sees
+LIVE, 6 minutes. A dashboard of only lagging numbers lets a drift run for weeks before anyone sees
 it; a dashboard of only leading numbers never says whether the outcome came.
 Transition: three north stars and the guardrail each needs.
 ```
@@ -203,21 +207,21 @@ Transition: three north stars and the guardrail each needs.
 
 | North star | How it could be hit badly | The guardrail |
 |---|---|---|
-| Completed peak trips per enrolled driver per week | Drivers accept short trips and decline the rest | Share of offers accepted, at or above a floor |
-| Peak online hours per enrolled driver | Drivers sit online in zones with no riders | Share of online hours with no completed trip (0.22 to 0.38 on the case) |
+| Completed peak trips per enrolled driver per week | Drivers accept short trips and decline the rest | Share of offers accepted, at or above an acceptance floor |
+| Peak online hours per enrolled driver | Drivers sit online in zones with few riders | Share of online hours with no completed trip (0.22 to 0.38 on the case) |
 | Enrolled drivers | Drivers sign up and never drive | Count only drivers online at least one peak hour that week |
 
 ```notes
 LIVE, 12 minutes. Each group writes one more guardrail for a north star of its choice and names the
-gaming it catches. A guardrail that is another growth count gets the question: what would it catch?
+gaming it catches. A growth target offered as a guardrail gets the question: what would it catch?
 Transition: the dispute, as an interviewer asks it.
 ```
 
-## SECTION 9: What do you say to the teams who lose?
+## SECTION 16: What do you say to the teams who lose?
 *How does a candidate get three teams who each want their own target to one number, and what do they say to the teams who lose?*
 
 ```notes
-LIVE, 15 minutes: the second transcript read in pairs (10), scored (5). The transcript is the [D]
+LIVE, 15 minutes: the second transcript read in pairs (8), scored (5), the close (2). The transcript is the [D]
 section of extras/C2_W04_D01_transcript_STUDENT.md.
 Transition: the two answers.
 ```
@@ -233,7 +237,8 @@ Transition: the two answers.
 | What would change it | Nothing | "If the wait by zone rose under the new rule, I would revisit the acceptance floor" |
 
 ```notes
-LIVE, 8 minutes. Score both on the scorecard (trainer/C2_W04_D01_interview_scorecards_TRAINER.md).
+LIVE, 13 minutes: read in pairs (8), then score both on the scorecard (5)
+(trainer/C2_W04_D01_interview_scorecards_TRAINER.md).
 Transition: the clinic's close.
 ```
 

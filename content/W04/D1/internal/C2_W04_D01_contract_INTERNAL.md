@@ -66,3 +66,21 @@ Written by `C2_W04_D01_generate_INTERNAL.py`; every line must read PASS.
 | PASS | Kalpa lab twelve rows: seven of the 107 with placements in both windows, both ratios at least 0.05 from 1.22 and 0.96 | (1.33, 0.84) |  |
 | PASS | Kalpa: v4's monsoon sale runs 5 to 19 August for Retail-Plus, its last day the shared constant | ('2026-08-05', '2026-08-19') |  |
 | PASS | shared constants: the two Kalpa windows and the monsoon sale's last day, equal to Thursday's |  |  |
+| PASS | the case table drivers is byte-identical to git show origin/main |  |  |
+| PASS | the case table driver_weeks is byte-identical to git show origin/main |  |  |
+| PASS | the case table zone_weeks is byte-identical to git show origin/main |  |  |
+| PASS | toy canteen: tokens per plate 1.0 on days 1 to 5 and 2.0 on days 6 to 10, plates 200 every day |  |  |
+| PASS | toy canteen: rice from tokens 60 kg against 30 kg from plates, Rs 1,500 a day wasted |  |  |
+| PASS | toy school bus: kilometres 40 then 55 while children dropped stay at 30 |  |  |
+| PASS | toy driving school: 100 enrolled both years; 100 took and 60 passed, then 40 took and 36 passed |  |  |
+| PASS | toy driving school: pass rate 0.60 to 0.90 while licences per enrolled learner fall 0.60 to 0.36 |  |  |
+| PASS | toy chase: required rate 8.0 at the start and 10.0 after over 10 at 60 for 3; 147 all told, lost by 12 |  |  |
+| PASS | toy chase: the required rate first reaches 10 at the end of over 10 |  |  |
+| PASS | toy register: 60 days, 10 holidays, 50 working; present 40, absent 8, medical 2 |  |  |
+| PASS | toy register: the five readings 80.0, 66.7, 83.3, 84.0 and 70.0 percent |  |  |
+| PASS | toy register: the last 20 working days hold 14 present, 4 absent and 2 medical |  |  |
+| PASS | toy kirana: 50 marked done, 40 OTP-confirmed, 6 complaints all on unconfirmed orders |  |  |
+| PASS | toy kirana: on time 1.00 from the typed dispatch and 0.70 from the bill; 30 of the 40 confirmed |  |  |
+| PASS | toy kirana: every typed dispatch time falls at least 3 minutes after the bill |  |  |
+| PASS | toy kirana: four weeks of 12, 13, 12 and 13 orders, 10 confirmed each week |  |  |
+| PASS | toy artifact: the weak page holds 2 of the 7 lines |  |  |

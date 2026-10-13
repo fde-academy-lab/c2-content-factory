@@ -17,19 +17,19 @@ answers? What do you do when a section stalls? What do you never do in the clini
 
 ```mermaid
 flowchart LR
-    A["<b>Section 6</b><br/>Wells Fargo dissection<br/>35"] --> B["<b>Section 7</b><br/>three numbers defined<br/>and attacked, 40"] --> C["<b>Section 8</b><br/>lead, lag, guardrails<br/>30"] --> D["<b>Section 9</b><br/>the [D] transcript<br/>15"]
+    A["<b>Section 13</b><br/>Wells Fargo dissection<br/>35"] --> B["<b>Section 14</b><br/>three numbers defined<br/>and attacked, 40"] --> C["<b>Section 15</b><br/>lead, lag, guardrails<br/>30"] --> D["<b>Section 16</b><br/>the [D] transcript<br/>15"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class A,B,C,D known
 ```
 
 | Section | Minutes | Slides | Materials |
 |---|---|---|---|
-| 6. Which line would have caught it? | 35 | S1 to S3 | The five SEC facts on S1; the match on S2 |
-| 7. Does each number survive its owner? | 40 | S4 and S5 | The definition template, `exercises/guided/C2_W04_D01_definition_STUDENT.md` |
-| 8. Which numbers lead, and which lag? | 30 | S6 to S8 | S6's eight numbers; or `exercises/unguided/C2_W04_D01_lead_lag_STUDENT.md` as the handout |
-| 9. What do you say to the teams who lose? | 15 | S9 and S10 | The [D] section of `extras/C2_W04_D01_transcript_STUDENT.md`; `trainer/C2_W04_D01_interview_scorecards_TRAINER.md` |
+| 13. Which line would have caught it? | 35 | S1 to S3 | The five SEC facts on S1; the match on S2 |
+| 14. Does each number survive its owner? | 40 | S4 and S5 | The definition template, `exercises/guided/C2_W04_D01_definition_STUDENT.md` |
+| 15. Which numbers lead, and which lag? | 30 | S6 to S8 | `exercises/unguided/C2_W04_D01_lead_lag_STUDENT.md` as the handout: S6 prints its Q1 in the same order with the same letters, S6's defence is its Q2 and S8 its Q3, so a room that sits it here skips it in the lab |
+| 16. What do you say to the teams who lose? | 15 | S9 and S10 | The [D] section of `extras/C2_W04_D01_transcript_STUDENT.md`; `trainer/C2_W04_D01_interview_scorecards_TRAINER.md` |
 
-Cut section 8 first if time runs short.
+Cut section 15 first if time runs short.
 
 ---
 
@@ -39,8 +39,8 @@ Cut section 8 first if time runs short.
 |---|---|---|
 | S2 and S3 | a c d e f, with the denominator (b) spare | Each fact breaches one line: no usage condition (numerator), four years unused (window), the silent 2013 addition (dated exclusions), simulated funding (what it does not reward), surveys dodged (an independent guardrail). The denominator, households, was never the problem. |
 | S5 | Each owner's attack has a true part and a line that answers it | Driver operations: trips per online hour beside the hours. Finance partner: the accepted share, which catches cherry-picking. Marketing lead: an accepted trip then cancelled, so the cancel share sits beside acceptance. |
-| S6 and S7 | a: numbers 1 to 4 lead, 5 to 8 lag | Inputs the team can act on this week lead; bills, ratings, departures and the quarter's bookings confirm. On the case data acceptance settled in the launch week while bookings per online hour took three weeks. |
-| S8 | One guardrail per north star | Trips per driver: accepted share over a floor. Hours per driver: share of online hours with no trip, 0.22 to 0.38. Enrolled drivers: count only drivers online at least one peak hour that week. |
+| S6 and S7 | a: numbers 2, 4, 6 and 8 lead; 1, 3, 5 and 7 lag | Every number reads the same week. Inputs the team can act on before the week's trips are counted lead; the week's top-up bill, ratings, complaints and bookings confirm. On the case data acceptance settled in the launch week while bookings per online hour took three weeks. |
+| S8 | One guardrail per north star | Trips per driver: accepted share over an acceptance floor. Hours per driver: share of online hours with no trip, 0.22 to 0.38. Enrolled drivers: count only drivers online at least one peak hour that week. |
 | S9 | Score the [D] pair on the scorecard | The weak answer scores 1 of 14 and the hire-grade answer 14; read the line that earns each 2. |
 
 ---
@@ -49,11 +49,11 @@ Cut section 8 first if time runs short.
 
 | Stall | The one move |
 |---|---|
-| Section 6: groups argue fact 1 is the denominator | Ask: "was the number of households ever wrong? Or was it what got counted on top?" |
-| Section 7: a set writes a definition with no exclusions | Point at fact 3 from section 6: a change to what is counted needs a date |
-| Section 8: a group calls the month's top-up leading | Ask: "can the city team change this month's top-up bill this week, or only read it?" |
-| Section 8: a guardrail that is another growth count | Ask: "what would that guardrail catch?" |
-| Section 9: pairs score the weak answer high because it sounded sure | Ask them to read the line that earned each point |
+| Section 13: groups argue fact 1 is the denominator | Ask: "was the number of households ever wrong? Or was it what got counted on top?" |
+| Section 14: a set writes a definition with no exclusions | Point at fact 3 from section 13: a change to what is counted needs a date |
+| Section 15: a group calls the week's top-up leading | Ask: "is this week's top-up known before the week's trips are counted, or only after them?" |
+| Section 15: a growth target offered as a guardrail | Ask: "what would that guardrail catch?" |
+| Section 16: pairs score the weak answer high because it sounded sure | Ask them to read the line that earned each point |
 
 ---
 
