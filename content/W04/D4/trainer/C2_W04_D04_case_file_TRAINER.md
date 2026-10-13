@@ -23,21 +23,21 @@ data are synthetic, built for this class.
 | The hypothesis board template | `whiteboards/C2_W04_D04_case_file_cards_STUDENT.md`, part 1 | Nine, one per group, A3 if the printer allows |
 | The twelve-member card | The same file, part 2 | 35, one per learner |
 | Reveal 1: the cohort table | The same file, part 3, or slide S47 and notebook 06 | Nine, held back until S47 |
-| Reveal 2: the blend taken apart | The same file, part 4, or slides S50 to S53 | Nine, held back until S50 |
+| Reveal 2: the blend taken apart | The same file, part 4, or slides S50 to S53 | Nine, held back until S53 |
 | Reveal 3: the funnel with the release date | The same file, part 5, or slides S58 to S63 | Nine, held back until S62 |
 | The app team's lead's role card | `trainer/C2_W04_D04_role_card_TRAINER.md` | One copy, for the TA |
 | The answer-key page | The last section of this sheet | One copy, for the trainer, turned to at the close |
-| Markers in two colours | | Two per group: one to strike, one to confirm |
+| Markers in two colours | | Two per group: one to strike, one to confirm or explain |
 
 ## How do the minutes run?
 
 | Turn | Minutes | Slides | What the room does |
 |---|---|---|---|
-| The board opens, SECTION 5 | 5 | S35 to S38 | Reads the ticket in full, writes its causes in order with the test each needs, then sees the ladder |
-| The card, SECTION 5 | 10 | S39 to S44 | Counts the twelve members by hand, as SECTION 1 counted the gym; strikes or confirms "a cohort problem" |
+| The board opens, SECTION 5 | 7 | S35 to S38 | Reads the ticket in full, writes its causes in order with the test each needs, then sees the ladder |
+| The card, SECTION 5 | 8 | S39 to S44 | Counts the twelve members by hand, as SECTION 1 counted the gym; strikes or confirms "a cohort problem" |
 | Reveals 1 and 2, SECTION 6 | 30 | S45 to S54 | Reads the cohort table and the blend taken apart, as SECTIONs 2 and 3 read the gym; confirms the cohort line, writes "the sale week" beside it |
-| Reveal 3, SECTION 7 | 30 | S55 to S65 | Reads the funnel with SECTION 4's rules, finds the step, the segment and the date; strikes tracking and the definition |
-| The dispute, SECTION 9 | 5 in the afternoon | S74 | Hears the app team's lead and answers with the four moves |
+| Reveal 3, SECTION 7 | 30 | S55 to S65 | Reads the funnel with SECTION 4's rules, finds the step, the segment and the date; strikes tracking at S64 on the order records |
+| The dispute, SECTION 9 | 3 in the afternoon | S74 | Hears the app team's lead and answers with the four moves |
 
 ## What does the trainer say at each turn?
 
@@ -53,15 +53,18 @@ starts lower; nothing yet says why the dashboard stays flat.
 **Reveal 1 (S47).** Hand out reveal 1. "Read one row across and one column down, then tell me what
 your board says now." Every row falls; the month-one column falls from 58 to 49, then 31 for August.
 
-**Reveal 2 (S50 to S53).** Hand out reveal 2. "The dashboard says 38 every month. Rebuild September's
-38 from its cohorts, and tell me who is outside the count." The weighted average lands on 13,218 of
-35,000; the August cohort is outside it; its sale-week members kept 20 percent. Confirm "a cohort
-problem" and write "the sale week, not August" beside it.
+**Reveal 2 (S53).** The room has rebuilt September's 38 in notebook 06 and voted at S52; hand out
+reveal 2 as S53 goes up, never earlier, since it prints S53's split. "Who is outside the count, and
+which of its members sit low?" The weighted average lands on 13,218 of 35,000; the August cohort is
+outside it; its sale-week members kept 20 percent. Mark "the definition" explained, since the
+dashboard counts from month two; confirm "a cohort problem" and write "the sale week's members"
+beside it.
 
 **Reveal 3 (S62).** Hand out reveal 3. "Which step changed, for whom, since when?" The groups find
-members on Android from the release week, then the step inside the checkout. Strike "tracking"
-(the fall holds with the date moved a week) and "the definition"; mark "a stage" with checkout start
-to order placed.
+members on Android from the release week, then the step inside the checkout. Confirm "a stage" with
+checkout start to order placed. A cut moved a week dates the fall and cannot test tracking, since a
+logging fault would also start on 14 September; strike "tracking" only at S64, where the order
+records and the event log count the same 27,212 member orders in September.
 
 **The dispute (afternoon, S74).** Say it exactly: "They are partly right; find the part." Then the TA
 reads the app team's lead's opening line from the role card.
@@ -73,13 +76,13 @@ reads the app team's lead's opening line from the role card.
 | A cause with no test | A board line reads "users got bored" | "What would you look at that could prove you wrong?" |
 | Blaming a stage from the overall rate | "Conversion fell, so checkout is broken" | "Split it by platform and by week. Who fell, and since when?" |
 | The flat blend does not land | A group cannot see how 38 holds while every row falls | Point it back to SECTION 3's gym: 400 joiners at 52.5 held the blend at 50 while the older members fell to 40; ask what happens next month when the joiners age too and no big batch arrives |
-| Calendar comparison | A group says July is the strongest cohort because it reads 38.5 in September | "At what age is July in September, and at what age is January?" |
+| Calendar comparison | A group ranks the youngest cohorts strongest because June and July read 38.6 and 38.5 in September | "At what age is July in September, and at what age is January?" |
 | The 118 read as a success | "Search to menu view is our best step" | "Can a member open a menu without searching?" |
 | A group finishes early | Every line struck or confirmed before S62 | Ask for the size: how many orders a week does the step lose, and what would make that number smaller? |
 
 ## What is on the board when the activity ends?
 
-Each group's ladder with tracking struck, the definition struck and explained (month two on), "a
+Each group's ladder with tracking struck, the definition explained (month two on), "a
 cohort problem" confirmed with "the sale week" beside it, "an everyone problem" struck, and "a stage"
 confirmed with checkout start to order placed, members on Android, from 14 September. Under it, the
 app team's lead's line with the four moves written beneath.
@@ -101,11 +104,16 @@ Turned to at the close of SECTION 7, and again after the dispute.
 **The day's answer.** "It is both, in two numbers that need different fixes. Retention is a cohort
 problem: the dashboard starts counting at month two, where every cohort lands near 38.5, so it never
 sees that each new cohort starts lower in month one, and it has not yet counted the 13,000-member
-August cohort, whose sale-week members kept 20 percent; in October the dashboard drops to about 33.
+August cohort, whose sale-week members kept 20 percent; in October, on one assumption, the dashboard drops to about 33.
 The order loss hits members of every signup month on Android at one step from the 14 September
 release: of the checkouts started, 72.5 percent ended in an order before and 55 after, about 1,133 to
-1,317 orders a week. Fix the Android checkout first; before buying another sale, work out whether
-this one's members pay back their discount."
+1,317 orders a week. Fix the Android checkout first, with Android members switched back to the old
+checkout until the fix ships; before buying another sale, work out whether this one's members pay back
+their discount."
+
+**S37's blanks, in the order the room fills them.** Both; two; that each new cohort starts lower in
+month one; the 13,000-member August cohort; Android; checkout start to order placed; the 14 September
+release; the Android checkout; whether this one's members pay back their discount.
 
 **The dispute, answered.** The app team's chart, carts that start checkout on every platform, reads
 80 percent before and after: true, and it measures the step that did not break. Completing the order

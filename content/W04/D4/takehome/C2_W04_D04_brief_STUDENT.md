@@ -37,7 +37,7 @@ Sunday. Two Mondays are `(later - earlier).dt.days // 7` weeks apart. For exampl
 on Wednesday 19 August has the signup week of Monday 17 August; an order on Tuesday 25 August falls in
 the week of Monday 24 August, 7 days later, so it is her week 1.
 
-If the faculty session (tentative) slipped today and the fallback block ran, you built part 2 in class
+If the faculty session (tentative) slipped today and the fallback block ran, you built item 2 in class
 in pairs: rebuild it on your own tonight, then add the rest.
 
 Hand in one notebook that runs top to bottom, with these five things, each under a heading that is a

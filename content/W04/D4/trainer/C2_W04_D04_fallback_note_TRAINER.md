@@ -23,8 +23,8 @@ no hazard and no test of whether two retention curves differ.
 | Gold's 60 percent | Before and after joining mixes the choice with the effect; matched non-joiners, the trend before joining and a holdout each control for something and miss something; kept descriptive | A group that says "so Gold works": "who chooses to join a membership?" |
 | The transcript | The four moves answered with the split: starts held at 80, completion fell from 72.5 to 55 for members on Android while, on the same step, iOS members went 71 to 70 and non-members on Android 65 to 64 | A pair that calls the app team wrong: "which part of their chart is true?" |
 
-The second part is the take-home's first part done in class. When the fallback runs, tell the room
-the take-home stands, and its part 2 is rebuilt alone tonight.
+The fallback's second part builds item 2 of the take-home in class. When the fallback runs, tell the
+room the take-home stands: item 2 is rebuilt alone tonight, then the rest.
 
 ## What do you say about the faculty session?
 

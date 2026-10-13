@@ -21,14 +21,16 @@ window is the stretch to check.
 
 | Order | Part | File |
 |---|---|---|
+| 0 | The warm-up, five minutes: the guesstimate; then any concept notebook a learner did not finish in class, run cold | `trainer/C2_W04_D04_guesstimate_TRAINER.md`; notebooks 01 to 04 and 08 |
 | 1 | Seven members and one member's week, counted by hand on paper | The two tables below, printed one per group |
 | 2 | The tables loaded and checked against the warehouse | Notebook 12, cells 1 to 3 |
 | 3 | Your turn: the cohort table and blended retention | Notebook 12, cell 5, empty |
 | 4 | Your turn: add-to-cart to checkout in three stretches | Notebook 12, cell 7, empty |
 | 5 | Your turn: sessions with no search, and checkout in two units | Notebook 12, cell 9, empty |
 | 6 | Your turn: Kavya's second route, the blend rebuilt from the cohort rows | Notebook 12, cell 11, empty, the last |
-| 7 | The three sentences to the TA, then items 2 to 4 of the Kalpa set and its second page | `exercises/unguided/C2_W04_D04_kalpa_retail_plus_STUDENT.md` |
-| 8 | The practice set | `exercises/practice/C2_W04_D04_lab_set_STUDENT.md` |
+| 7 | The three sentences to the TA, then the Kalpa set, items 1 to 4, and its second page | `exercises/unguided/C2_W04_D04_kalpa_retail_plus_STUDENT.md` |
+| 8 | The day's carried items, letters only: drill c5, the case drill and the fix-first set's six items | `exercises/unguided/`, the c5, case_retention_and_blend and fix_first files |
+| 9 | The practice set, then the Kaapi and Co. drill | `exercises/practice/C2_W04_D04_lab_set_STUDENT.md`; `exercises/practice/C2_W04_D04_kaapi_funnel_STUDENT.md` |
 
 ## What do the hand-count tables hold, and what should the count give?
 
