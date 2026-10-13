@@ -96,6 +96,16 @@ rate at what keeps the drivers who already accept whole, about Rs 38 a completed
 whole scheme costs at most about Rs 87 lakh over six weeks, and stops the test early only on a zone's
 median wait more than half a minute above its last six weeks' level, two weeks running.
 
+### Which house reads ran on the rebuilt pack, and what did they change?
+
+Two fresh agents ran the humanizer read in file mode on 13 October 2026 and edited nothing: one over
+the decks, the notes, the cheat sheet, the pre-read, the board work and the transcripts (10 findings),
+the other over the exercises, the Kahoot, the take-home, the trainer files and the notebooks' prose in
+the build script (12 findings). All 22 are applied. Three of them corrected facts as well as wording:
+the chapter 6 set said three checks where its items hold two, the rungs solution said three openings
+lead with a claim or a method where all four do, and notebook 08's trap question read as an hour's
+cost. The tic scanner then read all 53 files clean.
+
 ## Which public sources were fetched, and when?
 
 All fetched and read on 12 October 2026.

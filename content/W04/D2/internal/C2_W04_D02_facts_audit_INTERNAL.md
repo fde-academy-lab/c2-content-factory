@@ -2,7 +2,7 @@
 
 Written by C2_W04_D02_facts_audit_INTERNAL.py from the STUDENT files and C2_W04_D02_facts_INTERNAL.yaml. A number matches when it equals a value in the facts file at the precision printed, read as itself, a percent, a lakh, a crore, a million or a billion. Structural numbers (slide, level, item, chapter, minutes, dates, years) and the speaker notes are left out.
 
-Numbers traced: 2535. Numbers with no home: 0.
+Numbers traced: 2537. Numbers with no home: 0.
 
 | Number | File | Line | Facts id |
 |---|---|---|---|
@@ -2449,6 +2449,8 @@ Numbers traced: 2535. Numbers with no home: 0.
 | 1 | C2_W04_D02_notes_STUDENT.md | 117 | numbers.full_rs_per_driver_week_change_pct.value |
 | 2 | C2_W04_D02_notes_STUDENT.md | 118 | numbers.tph_after_exact.value |
 | 76.5 | C2_W04_D02_notes_STUDENT.md | 118 | toy_numbers.toy_school_start_mean.value |
+| 8 | C2_W04_D02_notes_STUDENT.md | 118 | numbers.rs_per_hour_per_ten.value |
+| 4.7 | C2_W04_D02_notes_STUDENT.md | 118 | toy_numbers.toy_school_pre_rise.value |
 | 13 | C2_W04_D02_notes_STUDENT.md | 125 | numbers.upi_estimate_gap_pct.value |
 | 180 | C2_W04_D02_notes_STUDENT.md | 133 | monday_ids_reused.idle_tail_drivers.value |
 | 880 | C2_W04_D02_notes_STUDENT.md | 133 | monday_ids_reused.drivers_others.value |
