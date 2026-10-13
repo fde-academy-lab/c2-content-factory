@@ -1,0 +1,7 @@
+example,day,forecast,sold
+mape,an ordinary day,100,85
+mape,"a rain day, the stall shut after an hour",20,5
+rule P,day 1,110,100
+rule P,day 2,110,100
+rule Q,day 1,110,100
+rule Q,day 2,90,100
