@@ -116,26 +116,25 @@ the same bullets, today's nodes lit, each node joined to the earlier idea it res
 one it feeds, and the day's case as a node beneath them labelled "applied to". Slide five is the
 ticket of section 2.1 in one slide, as the destination. Then the concept block runs, 60 to 120
 minutes: one chapter per subtopic of about 8 to 25 minutes, its opener written
-`## SECTION n: <subtopic>: <short question>?`, the subtopic as the row words it (shortened only where
-one subtopic spans several chapters or two share one, and never losing a word that names an idea),
-the short question starting lower-case and running to about 24 characters because the pills print
-it, and the italic promise beneath saying what the chapter delivers. The chapters run in the row's order unless the day's
-section records a reason to teach them in another (Thursday's does), and they fill the morning, except
-that a chapter the day's section moves to the afternoon goes into `half2`, still before the case
-chapter that applies it. A concept chapter teaches from zero on one simple, complete, relatable
-educational example with invented numbers labelled invented, in the order teaching-styles.md gives
-for a concept chapter: the broken default, the misconception and a prediction, the hand count on the
-tiny numbers, the picture, the formula or rule named last, a glimpse of code, a faded second example,
-the rules and the map node naming the case chapter that applies it. Each pairs with one notebook of 8
-to 18 cells carrying the same name. The case chapters of sections 5 to 9 follow, renumbered after the
-concept chapters, the first of them opening on the full ticket read where the day plan moves it there,
-each opener gaining the line "Applies: ..." that names the concept chapters it uses, and each case
-beat that once introduced an idea mid-climb now recalls it by name in one line and goes to the data;
-each day's "The concept block" table says which beat moved where and which minutes it freed. The
-tables give each opener in full; its short question is cut from the day plan's own chapter question,
-and a day session may reword it within about 24 characters while the subtopic stays as the row words
-it. Each day's plan in `docs/detailing/W04_concept_first/` holds its chapters slide by slide and its
-notebooks cell by cell.
+`## SECTION n: <subtopic>: <short question>?`, the subtopic as the row words it (shortened only where one subtopic spans several chapters or two share one, and never
+losing a word that names an idea), the short question starting lower-case and running to about 24
+characters because the pills print it, and the italic promise beneath saying what the chapter
+delivers. The chapters run in the row's order unless the day's section records a reason to teach them
+in another (Thursday's does), and they fill the morning, except that a chapter the day's section moves
+to the afternoon goes into `half2`, still before the case chapter that applies it. A concept chapter
+teaches from zero on one simple, complete, relatable educational example with invented numbers
+labelled invented, in the order teaching-styles.md gives for a concept chapter: the broken default,
+the misconception and a prediction, the hand count on the tiny numbers, the picture, the formula or
+rule named last, a glimpse of code, a faded second example, the rules and the map node naming the case
+chapter that applies it. Each pairs with one notebook of 8 to 18 cells carrying the same name. The
+case chapters of sections 5 to 9 follow, renumbered after the concept chapters, the first of them
+opening on the full ticket read where the day plan moves it there, each opener gaining the line
+"Applies: ..." that names the concept chapters it uses, and each case beat that once introduced an
+idea mid-climb now recalls it by name in one line and goes to the data; each day's "The concept block"
+table says which beat moved where and which minutes it freed. The tables give each opener in full; its
+short question is cut from the day plan's own chapter question, and a day session may reword it within
+about 24 characters while the subtopic stays as the row words it. Each day's plan in
+`docs/detailing/W04_concept_first/` holds its chapters slide by slide and its notebooks cell by cell.
 
 ### 2.1 The case ticket, the register of every opening
 
@@ -304,11 +303,11 @@ know whether riders are better served.
 | | 63 | concept | The concept block: one chapter per row subtopic, each on its educational example, each with its notebook (the table below) |
 | | 10 | | Break |
 | | 12 | L1 | The full ticket read; the war game's round 1, the three city-team roles stating their numbers from role cards and the room attacking each with the proxy test now in hand; where today ends |
-| | 20 | L1 | SECTION 7, What does an hour count?: the twelve driver-weeks counted by hand (applies the proxy test and the four definition lines) |
-| | 30 | L2, L3 | SECTION 8, Where did the fall sit?: the full `driver_weeks` in code; the trap found in the your-turn cell; the idle tail and the dead zones (applies the definition lines and gaming) |
-| | 38 | L3, L4 | SECTION 9, What should it pay for?: the vote, the wrong memo and the cost; the Uber page filled line by line with the room (guided); the caveats named one by one with the fact that would settle each (applies the north star and guardrails, the leading inputs, the resistant lines and the artifact) |
-| Afternoon, first 60 | 25 | L5 | SECTION 10, war game round 3 (unguided): each group writes the redesigned scheme's metric with two guardrails and the gaming note, prices the top-up paid to idle hours, and answers the three roles |
-| | 15 | L6 | SECTION 11, the interview transcript read in pairs and scored; the AI-company variant |
+| | 20 | L1 | SECTION 7 (what does an hour count?): the twelve driver-weeks counted by hand (applies the proxy test and the four definition lines) |
+| | 30 | L2, L3 | SECTION 8 (where did the fall sit?): the full `driver_weeks` in code; the trap found in the your-turn cell; the idle tail and the dead zones (applies the definition lines and gaming) |
+| | 38 | L3, L4 | SECTION 9 (what should it pay for?): the vote, the wrong memo and the cost; the Uber page filled line by line with the room (guided); the caveats named one by one with the fact that would settle each (applies the north star and guardrails, the leading inputs, the resistant lines and the artifact) |
+| Afternoon, first 60 | 25 | L5 | SECTION 10 (does it survive the roles?): war game round 3, unguided: each group writes the redesigned scheme's metric with two guardrails and the gaming note, prices the top-up paid to idle hours, and answers the three roles |
+| | 15 | L6 | SECTION 11 (what does the interviewer hear?): the interview transcript read in pairs and scored; the AI-company variant |
 | | 20 | | Kahoot, the handoff line, and the close with the six ideas on one strip |
 | IITGN block | 120 | | W4-1 (tentative): designing the A/B test of the redesigned scheme |
 | Lab | the lab's length | L1 to L3 on Kalpa | The Kalpa transfer below, TA-led |
@@ -506,16 +505,16 @@ case, as Monday's label says.
 | | 72 | concept | The concept block's morning part: chapters 1 to 3, each on its educational example, each with its notebook (the table below) |
 | | 10 | | Break |
 | | 6 | L1 | What each of the three Uber roles loses under Monday's definition |
-| | 35 | L1, L2 | SECTION 6, Which number carries Uber's slide?: slide A rebuilt with the room, B and C by groups; the twelve rows read three ways (per online hour, per driver-week, per trip); the trap; the second route (applies the one-slide answer and what to leave out) |
-| | 40 | L3, L5 | SECTION 7, Which Uber objection is partly right?: the prediction, the true parts, the modelled defence, round one in threes with the three role cards, rotating (applies defending under challenge and what to leave out) |
+| | 35 | L1, L2 | SECTION 6 (which number carries the slide?): slide A rebuilt with the room, B and C by groups; the twelve rows read three ways (per online hour, per driver-week, per trip); the trap; the second route (applies the one-slide answer and what to leave out) |
+| | 40 | L3, L5 | SECTION 7 (which objection is partly right?): the prediction, the true parts, the modelled defence, round one in threes with the three role cards, rotating (applies defending under challenge and what to leave out) |
 | | 12 | L4 | SECTION 7 continued: the appendix drawer with one page per role, and the cut-to-two drill |
 | Afternoon | 20 | L5 | Studio round two: two turns of seven minutes, six to rebuild |
 | | 40 | concept | The concept block's afternoon part: chapters 4 and 5 (the table below) |
-| | 25 | L2, L3 | SECTION 8, How many drivers does Uber's peak need?: clarify, map, calculate, the swing, validate against the case's own `zone_weeks`, the trap (applies the guesstimate) |
+| | 25 | L2, L3 | SECTION 8 (how many drivers at peak?): clarify, map, calculate, the swing, validate against the case's own `zone_weeks`, the trap (applies the guesstimate) |
 | | 12 | L5 | UPI in pairs: seven minutes on the clock, checked against 802 million a day (T3), with the sanity check required |
 | | 10 | | Break |
-| | 35 | L5 | SECTION 9, What goes on the page to the city head?: the AI-free written business case, by hand, handed in (applies the written business case) |
-| | 12 | L6 | SECTION 10, transcript 1 read in pairs with its follow-ups; transcripts 2 and 3 and the AI-company variant assigned with the scorecard as the evening's reading |
+| | 35 | L5 | SECTION 9 (what goes on the page?): the AI-free written business case, by hand, handed in (applies the written business case) |
+| | 12 | L6 | SECTION 10 (what does it sound like?): transcript 1 read in pairs with its follow-ups; transcripts 2 and 3 and the AI-company variant assigned with the scorecard as the evening's reading |
 | | 20 | | The close: the Kahoot's eight items, the pain points in one line each, the day's sentence, the handoff; Wednesday's pre-read ships tonight |
 | | 6 | | Slack: three handed-in pages read aloud if the clock allows |
 | Lab | the lab's length | Kalpa | Every learner presents the Kalpa north-star slide to a TA playing one head; Anand's store sized against DMart (T3) in notebook 09 |
@@ -686,9 +685,9 @@ synthetic, built for this class.
 | | 60 | concept | The concept block's first part: chapters 1 to 4 on the canteen's twelve lunch orders (the table below) |
 | | 10 | | Break |
 | | 27 | concept | The concept block's second part: chapters 5 and 6 |
-| | 73 | L1 to L3 | SECTION 7, the case on twelve Instamart carts and then 40,000: the twelve-cart drill, the milk trap predicted and found, the same five lines on every cart, the fall in click-through split in the your-turn cell; Amazon's own account of the trap (W1) (applies support, confidence and lift, the confidence trap, basket analysis and the support floor) |
+| | 73 | L1 to L3 | SECTION 7 (what do twelve carts say?): the case on twelve Instamart carts and then 40,000: the twelve-cart drill, the milk trap predicted and found, the same five lines on every cart, the fall in click-through split in the your-turn cell; Amazon's own account of the trap (W1) (applies support, confidence and lift, the confidence trap, basket analysis and the support floor) |
 | Afternoon, first 60 | 18 | concept | SECTION 8, the concept block's last chapter: cross-sell and upsell, and expected value in rupees, on the kirana's month |
-| | 14 | L4, L5 | SECTION 9, the strip ranked and priced: the action map and the watch list, the re-ranking cascade, the Rs 80,197 sales trap; the three doubts and the heavy tenth become D slides for self-study (applies the support floor and expected value) |
+| | 14 | L4, L5 | SECTION 9 (what is a slot worth?): the strip ranked and priced: the action map and the watch list, the re-ranking cascade, the Rs 80,197 sales trap; the three doubts and the heavy tenth become D slides for self-study (applies the support floor and expected value) |
 | | 15 | L5 | Unguided: one re-ranked strip with its rupee value per group; the category manager's role card answered |
 | | 3 | L6 | The interview room's [S] answer on case numbers; the transcript, its follow-ups and the AI-company variant are read in pairs in the lab |
 | | 10 | | The handoff line, the Kahoot and the sentence for Friday |
@@ -819,8 +818,8 @@ before the lab.
 
 | Family | What Wednesday ships |
 |---|---|
-| Decks | `half1` of at most 40 slides; `half2` of at most 15; `fallback` of at most 20 |
-| Notebooks | Four: 01 the dots and the twelve carts (12 to 15 cells); 02 every cart, the pairs table, the trap and the your-turn cell (18 to 22); 03 the action map, the slot's value and the second route (15 to 18); 04 `kalpa_lab` with its empty your-turn cell (10 to 12) |
+| Decks | `half1` of at most 40 case slides plus the concept block's slides, 5 or 6 per chapter (the topic cover, the week map, the topics slide, the concept map, the ticket, concept chapters 1 to 6, then SECTION 7, the case on twelve carts and 40,000); `half2` of at most 15 case slides plus chapter 8's 6 (SECTION 8, then SECTION 9, the unguided strip, the interview room, the Kahoot); `fallback` of at most 20 |
+| Notebooks | One per chapter: seven concept notebooks named by the row's subtopics, subtopic 1 across three of them (14 to 16 cells each, the educational example inline and labelled invented), then the case notebooks: 08 the twelve carts (about 11 cells) and 09 every cart, the pairs table, the trap and the your-turn cell (18 to 22), both for SECTION 7; 10 the action map, the slot's value and the second route (15 to 18) for SECTION 9. Plus the lab notebook `11_kalpa_basket_analysis_order_items` with its empty your-turn cells (10 to 12) |
 | Activity | The carts and the action-map board with their run sheet; the pair cards; the category manager's role card (TRAINER) |
 | Exercises | Guided: the three measures for two pairs on the carts. Unguided: all pairs ranked with a support floor, the trap pair named, the strip re-ranked and valued; the Kalpa charger proposal costed and refused. Mid-session: one pair's three measures on paper; four pairs ranked for action from lift and support together. About 14 items by level, at least five design items |
 | Take-home | Rerun the analysis for one zone or one time band and say what changed; the self-check lists the numbers to reach, from the facts file, and the pairs that should move, plain words first |
@@ -863,16 +862,38 @@ number is 38 and never 41, so Kalpa's plant stays Kalpa's.
 
 | Block | Minutes | Level | What runs |
 |---|---|---|---|
-| Morning | 10 | L1 | The ticket; the hypothesis board opens: causes listed and ordered, with the test each needs, before any data (the Yammer habit, R1) |
-| | 50 | L1 | Chapter 1, reveal one: two coaching batches (toy), the twelve members' three cohorts and the blend by hand; Blinkit's and Swiggy's published cohorts (Th1, Th2) |
-| | 45 | L2, L3 | Chapter 2, reveal two: the cohort table on 53,089 members; the curves; the blend decomposed in the your-turn cell; the sale cohort found |
-| | 10 | | Break |
-| | 65 | L3, L4 | Chapter 3, reveal three: the funnel by stage with the right denominator; the skippable stage; the Android checkout drop by cohort, platform and date; the caveats; the app team disputes |
-| Afternoon, first 60 | 30 | L5 | Unguided: the fix-first call with its evidence and its cost; the app team's role card answered |
-| | 15 | L6 | The transcript; the AI-company variant; the handoff line |
-| | 15 | | Kahoot and close |
+| Morning | 10 | | The topic, the week map, the topics slide and the concept map, the ticket as the destination; the hypothesis board opens: causes listed and ordered, with the test each needs, before any data (the Yammer habit, R1) |
+| | 85 | concept | The concept block's morning part: chapters 1 to 4 on the gym and the college, in the order the table below gives |
+| | 10 | | Break, the seam between the concepts and the case |
+| | 15 | L1 | SECTION 5 (who entered when?): the groups' hypothesis boards; the twelve-member card counted by hand (applies cohort construction) |
+| | 30 | L2, L3 | SECTION 6 (what is the 38 made of?): the cohort table on 53,089 members; the curves; the 38 rebuilt in the your-turn cell; the sale cohort found (applies cohort construction, retention curves and the blend) |
+| | 30 | L3, L4 | SECTION 7 (which stage owns the loss?): the funnel by stage with the right denominator; the 118 percent artefact; members against sessions; the Android checkout drop by release; three checks read aloud (applies the funnel's stages, drop-off and denominators) |
+| Afternoon, first 60 | 10 | concept | SECTION 8, the concept block's last chapter: the fix-first decision and its evidence, on the college |
+| | 25 | L5 | SECTION 9 (what is fixed first?): unguided, the fix-first call with its evidence and its cost; the app team's role card answered (applies the fix-first decision) |
+| | 10 | L6 | SECTION 10: the transcript's walk; the AI-company variant read aloud; the handoff line |
+| | 15 | | SECTION 11: Kahoot and close |
 | IITGN block | 120 | | W4-3 (tentative): survival curves, censoring and hazard |
-| Lab | the lab's length | Kalpa | The Retail-Plus tier (the row's plants), TA-led |
+| Lab | the lab's length | Kalpa | The Retail-Plus tier (the row's plants), TA-led, in notebook 09; the Kaapi and Co. funnel drill joins the practice set |
+
+### The concept block
+
+| # | Subtopic (verbatim from the row) | Chapter title (`SECTION n:`) | The educational example (invented, labelled) | Minutes | Notebook | The case beat it absorbs |
+|---|---|---|---|---|---|---|
+| 1 | Cohort construction | SECTION 1: Cohort construction: who joined when? | One branch of a neighbourhood gym: ten joiners in each of January, February and March 2026, counted by age into a triangle (January 8, 6, 5, 5, 5 of 10 at ages one to five), while April's calendar column reads 16 of 30, which names no batch | 25 | `C2_W04_D04_01_cohort_construction_STUDENT.ipynb` | The two coaching batches (S6) leave case SECTION 5 as a one-line analogy; Swiggy's cohort card (S14) moves here |
+| 2 | Funnel stages, drop-off, denominators | SECTION 4: Funnel stages, drop-off, denominators: which step owns a loss? | A college's admissions to one programme: step rates of 80, 50, 75 and 80 percent give 240 joined of 1,000 applications, 24 percent against 28.8 last cycle; a sister programme's optional test reads 107 percent from test to shortlist, an artefact | 25 | `C2_W04_D04_04_funnel_denominators_STUDENT.ipynb` | S29 ("a low step is not a loss until it moves") moves here as the chapter's prediction; the Kaapi and Co. drill moves to the lab's practice set, the row's own cut-first |
+| 3 | Retention curves: shape and floor | SECTION 2: Retention curves: shape and floor: where is the floor? | The same gym roster read as curves: January's 80, 60, 50, 50, 50 falls for two months and then holds at a floor of 50, February's floor is 30, and March has no floor yet | 15 | `C2_W04_D04_02_retention_curves_STUDENT.ipynb` | New teaching, since the merged deck never names the floor; Blinkit's cohort card (S14) moves here, and SECTION 6's curves recall it |
+| 4 | Blended numbers against cohort truth | SECTION 3: Blended numbers against cohort truth: what is a blend made of? | The whole gym: 100 older members fall from 50 to 40 percent while 400 January joiners stand at 52.5 percent, so the dashboard still reads 250 of 500, 50 percent | 20 | `C2_W04_D04_03_blended_vs_cohort_STUDENT.ipynb` | The blend toy (S12, S13) leaves case SECTION 5; the 38.2 to 37.8 reveal stays in SECTION 6 |
+| 5 | The fix-first decision and its evidence | SECTION 8: The fix-first decision and its evidence: what does a call carry? | The same college: other-state acceptance falls from 87 to 50 percent after the fee deadline shrinks from 21 to 7 days while in-state holds at 92 to 90, about 60 students and Rs 60 to 90 lakh of fee income a year at an assumed fee of Rs 1 to 1.5 lakh | 10 | `C2_W04_D04_05_fix_first_evidence_STUDENT.ipynb` | The hypothesis board (S4) stays as the opening of the case block; the fix-first call (S38 to S42) stays in SECTION 9, its wrong fix becoming the chapter's anti-pattern slide |
+
+Thursday teaches the row's subtopics in the order 1, 3, 4, 2, 5 because cohort construction,
+retention curves and the blend share one invented gym and one cohort table that the room builds once
+and reads three ways, the funnel brings a second world in a college's admissions, and the fix-first
+decision, a decision pattern where the other four are techniques, opens `half2` right before the
+Zomato Gold call that applies it. The block's minutes come from the case beats named in the last
+column, and the day's total stays at the envelope's trainer minutes. The notebooks follow the teaching
+order, so notebook 05 serves SECTION 8; the case notebooks are `06_case_cohort_construction`,
+`07_case_retention_and_blend` and `08_case_funnel_denominators`, and the lab is
+`09_kalpa_lab_cohort_and_funnel` (`D4_plan.md`, section 4).
 
 **Handoff line.** "Your cohort table treats a member who has not left yet as if she were retained for
 ever, and that flatters every curve. The next 120 minutes give that member a name, censored, and show
@@ -988,8 +1009,8 @@ Retail-Plus's fix-first call, which is what the Saturday bank's items 5, 12, 13,
 
 | Family | What Thursday ships |
 |---|---|
-| Decks | `half1` of at most 40 slides; `half2` of at most 15; `fallback` of at most 20 |
-| Notebooks | Four: 01 the toys and the twelve members (12 to 15 cells); 02 the cohort table, curves and the blend decomposed, with the your-turn cell and the second route (18 to 22); 03 the funnel with its denominators, the artefact and the release split (15 to 18); 04 `kalpa_lab` with its empty your-turn cell (10 to 12) |
+| Decks | `half1` of at most 40 case slides plus the concept block's morning slides, 6 to 8 per chapter (the topic cover, the week map, the topics slide, the concept map, the ticket, concept chapters 1 to 4, then SECTION 5 to 7), about 58 live slides and 5 D slides in all; `half2` of at most 15 case slides plus chapter 8's 6 (SECTION 8 to 11), about 16 in all; `fallback` of at most 20 |
+| Notebooks | One per chapter: five concept notebooks named by the row's subtopics, in the teaching order (about 14 to 16 cells each, the educational example inline and labelled invented), then the case notebooks: 06 the twelve members (at most 15 cells, its toy cells gone to notebooks 01 and 03); 07 the cohort table, curves and the blend decomposed, with the your-turn cell and the second route (18 to 22); 08 the funnel with its denominators, the artefact and the release split (15 to 18). Plus the lab notebook `09_kalpa_lab_cohort_and_funnel` with its empty your-turn cell (10 to 12) |
 | Activity | The hypothesis board and the three reveals with their run sheet; the app team's role card; the answer-key page |
 | Exercises | Guided: one cohort's row built together; the funnel's first two stages with denominators. Unguided: the full cohort table, the full funnel, the fix-first call with evidence and cost; the Kalpa fix-first call in the lab. Mid-session: three retention curves read and the cohorts ranked; the denominator artefact found in a four-stage funnel. About 14 items by level, at least five design items |
 | Take-home | Rerun the cohort table weekly instead of monthly and say which story survives; the self-check names the cohorts and stages to compare, from the facts file, plain words first |
@@ -1031,16 +1052,36 @@ class; Flipkart's own festive-capacity statements (F6) are the only public facts
 
 | Block | Minutes | Level | What runs |
 |---|---|---|---|
-| Morning | 10 | L1 | Two forecasts eighteen points apart; the room says what would make either wrong; the tournament rules |
-| | 40 | L1 | Round one, chapter 1: the canteen's cups (toy), then the twelve weeks around the two Diwalis read by hand: trend, the festival shape, naive, same-week-last-year and festival-aligned for one week |
-| | 45 | L2, L3 | Round two, chapter 2: hold out the last thirteen weeks; every baseline and the vendor curve scored by MAE in shipments; the scoreboard; the vendor's fit against its forecast |
+| Morning | 15 | | The topic, the week map, the topics slide and the concept map (5); then the ticket as the destination, read in full: two forecasts eighteen points apart, the tournament's rule, where today ends (10) |
+| | 75 | concept | The concept block's first part: chapters 1 to 3 on the gate chai stall (the table below) |
 | | 10 | | Break |
-| | 75 | L3, L4, L5 | Round three, chapter 3: the festive window forecast with its error bar; the error in rupees with asymmetric costs; finance and the vendor's sponsor object; then the festival trap and the staffing call |
-| Afternoon, first 60 | 30 | L5 | Unguided: the staffing note: method, packers per week, error bar in rupees, what would make it wrong, with the festival alignment stated |
-| | 15 | L6 | The transcript; the AI-company variant; the handoff line |
-| | 15 | | Kahoot and close; Saturday's preview |
+| | 20 | concept | The concept block's second part: chapter 4, which carries subtopics 4 and 5 |
+| | 30 | L1, L2 | SECTION 5 (what shape do the weeks have?): the twelve weeks around the two Diwalis by hand, the three rules for one week, the calendar trap (applies trend and seasonality and the three baselines) |
+| | 30 | L2, L3 | SECTION 6 (which rule wins on hidden weeks?): the thirteen hidden weeks, the scoreboard by MAE in shipments, the vendor's fit against its forecast, the misses priced (applies holding out and beating the baseline) |
+| Afternoon, first 60 | 35 | L3 to L5 | SECTION 7 (which forecast books the shifts?): the festival placed, the 2025 back-test, the two windows, the cushion for asymmetric costs, the plan; finance and the vendor's sponsor object in one exchange each (applies the good-enough call and the forecast note) |
+| | 15 | L5 | The staffing note's lettered items decided in groups; the prose is written in the lab |
+| | 10 | | The handoff line, the Kahoot and the close; Saturday's preview |
 | IITGN block | 120 | | W4-4 (tentative): autocorrelation, stationarity, smoothing, ARIMA at recognition depth |
-| Lab | the lab's length | Kalpa | The 24 months and the vendor curve (the row's plants), TA-led |
+| Lab | the lab's length | Kalpa | The interview room in pairs, run by the TA from the transcripts and scorecards (15); the four concept sets (20); the 24 months and the vendor curve (the row's plants) in notebook 08; the Kalpa board set; the practice set; the staffing note's prose |
+
+### The concept block
+
+| # | Subtopic (verbatim from the row) | Chapter title (`SECTION n:`) | The educational example (invented, labelled) | Minutes | Notebook | The case beat it absorbs |
+|---|---|---|---|---|---|---|
+| 1 | Trend and seasonality, read before modelling | SECTION 1: Trend and seasonality, read before modelling: what does a series tell? | A chai stall at a hostel gate: about 100 cups on a weekday and 60 on a Sunday, about 140 a day in exam fortnights and 40 in Diwali week, the level growing about 10 percent a year under a wobble of a few cups | 22 | `C2_W04_D05_01_trend_and_seasonality_STUDENT.ipynb` | "Four shapes at once" (S7) leaves case part 1, now SECTION 5 |
+| 2 | Naive, seasonal naive and drift baselines | SECTION 2: Naive, seasonal naive and drift baselines: when does a copy fail? | The same stall: tomorrow's cups by the naive copy, next Sunday's by the seasonal naive, and the drift line, each run by hand | 23 | `C2_W04_D05_02_naive_seasonal_naive_drift_STUDENT.ipynb` | Most of S8, the rules as lines of copying, leaves case part 1; case notebook 05 loses its toy cells |
+| 3 | Holding out; MAE and MAPE in the business's units | SECTION 3: Holding out; MAE and MAPE in the business's units: how is a forecast scored? | The stall's latest days hidden and scored in cups and in rupees, a cup unsold wasting about Rs 6 of milk and a cup short losing about Rs 12 of margin | 30 | `C2_W04_D05_03_holdout_mae_mape_STUDENT.ipynb` | S16's definitions and S17's toy leave case part 2, now SECTION 6, whose notebook's toy MAE cell shrinks to one sentence |
+| 4 | Beating the baseline; the vendor curve tested | SECTION 4: Beating the baseline; the vendor curve tested; the good-enough call and the forecast note: when does it earn trust? | A curve a nephew bends through every past day of the stall fits the seen days closely and misses the hidden ones | 20, shared with subtopic 5 | `C2_W04_D05_04_beating_the_baseline_good_enough_STUDENT.ipynb`, shared with subtopic 5 | The vendor's fit against its forecast stays in SECTION 6 as the data |
+| 5 | The good-enough call and the forecast note | SECTION 4, shared with subtopic 4 | The stall's forecast note: the method, the typical error in cups, what would make it wrong, and whether that error changes the evening's milk order | in chapter 4's 20 | the same notebook | Case part 3, now SECTION 7, falls from 75 to 35 minutes as S35's table and three of S36's doubts go and the role-card objections shorten to one exchange each |
+
+Subtopics 4 and 5 share chapter 4 because both rest on one decision: a forecast earns trust by beating
+the baseline on hidden periods, and it is good enough when a better one would change no decision; the
+shared title carries both subtopics as the row words them
+(`.claude/skills/day-pack-builder/references/coverage-matrix.md`). The interview room moves to the lab's first fifteen minutes, run by the TA, and the staffing note's
+prose finishes there too. The block's minutes come from the case beats named in the last column, and
+the day's total stays at the envelope's trainer minutes. The case notebooks follow as
+`05_case_shape_and_baselines`, `06_case_holdout_scoreboard` and `07_case_good_enough_forecast_note`,
+and the lab is `08_kalpa_lab_forecast_note` (`D5_plan.md`, section 4).
 
 **Handoff line.** "Your baseline is hard to beat, and you now know what any model must beat and on
 which weeks. The next 120 minutes show how a series remembers itself, autocorrelation, and what a
@@ -1152,8 +1193,8 @@ Anand's board number with its error bar, which is what the Saturday bank's items
 
 | Family | What Friday ships |
 |---|---|
-| Decks | `half1` of at most 40 slides; `half2` of at most 15; `fallback` of at most 20 |
-| Notebooks | Four: 01 the shape and the rules by hand on the twelve weeks (12 to 15 cells); 02 the hold-out and the scoreboard, with the your-turn cell for the vendor's score and the second route (18 to 22); 03 the festive window, the error bar, the festival alignment and the costed plan (15 to 18); 04 `kalpa_lab` with its empty your-turn cell (10 to 12) |
+| Decks | `half1` of at most 40 case slides plus the concept block's slides, 9 to 11 per chapter (the topic cover, the week map, the topics slide, the concept map, the ticket, concept chapters 1 to 4, then SECTION 5 and 6), about 62 in all; `half2` of about 22 slides, four of them D slides (SECTION 7, the staffing note, the interview room for the lab, the handoff, the Kahoot); `fallback` of at most 20 |
+| Notebooks | One per chapter: four concept notebooks named by the row's subtopics, chapter 4's carrying two (16 to 19 cells each, the educational example inline and labelled invented), then the case notebooks: 05 the shape and the rules by hand on the twelve weeks (12 to 15 cells); 06 the hold-out and the scoreboard, with the your-turn cell for the vendor's score and the second route (18 to 22); 07 the festive window, the error bar, the festival alignment and the costed plan (15 to 18). Plus the lab notebook `08_kalpa_lab_forecast_note` with its empty your-turn cell (10 to 12) |
 | Activity | The tournament with its run sheet, scoreboard, the two role cards and the festival calendar card |
 | Exercises | Guided: the same-week-last-year rule built by hand, then held out and scored. Unguided: the vendor curve scored against the baselines, the pick, the staffing note with its error bar in rupees; the Kalpa board number in the lab. Mid-session: trend and seasonality read off three series; good enough or not on three baseline-against-model error pairs. About 14 items by level, at least five design items |
 | Take-home | Rescore with the last four weeks held out instead of thirteen and say what changed; the self-check gives the numbers to reach from the facts file, plain words first |
@@ -1318,10 +1359,19 @@ A reviewer applies every line to any Week 4 pack, from the STUDENT files alone u
 TRAINER file, and a line that fails is named with the file and the place. The pack passes when every
 line passes.
 
-1. **The first minute is a ticket.** The cover is the case ticket in the register of section 2.1
-   (company, city, surface, metric before and after with dates, data as tables and columns, the ask,
-   the caveats, the label line); no quote, no drama, no topic title; slide two is the week map with
-   today lit and the earlier days' numbers on their nodes; slide three shows where today ends.
+0. **Every row subtopic has a home a trainer can find.** The coverage matrix exists in `internal/`, in
+   the shape `.claude/skills/day-pack-builder/references/coverage-matrix.md` sets, every bullet of the
+   row's Subtopics column is in it verbatim, each has a `## SECTION` chapter whose title carries its
+   name and a notebook whose file name and first heading carry its name, with slides, exercise items
+   and Kahoot items that exist, and every case chapter applies at least one subtopic;
+   `python3 scripts/coverage_check.py content/W04/D{d}` passes and its output is in the report.
+1. **The first minutes are the topics, then the ticket.** The cover names the day's topic as the row's
+   Day focus words it and asks the day's question; slide two is the week map with today lit and the
+   earlier days' numbers on their nodes; slide three is the topics slide and slide four the concept
+   map, which name every row subtopic verbatim in the row's order, each with the chapter that teaches
+   it; slide five is the case ticket in the register of section 2.1 (company, city, surface, metric
+   before and after with dates, data as tables and columns, the ask, the caveats, the label line), as
+   the destination; no quote and no drama anywhere in the opening.
 2. **The first number is counted by hand.** Chapter 1 counts the twelve-row case table before any
    code, and the hand values sit at least 0.05 on a ratio and five points on a percentage from the
    full-data case value (a shared starting value may match when the after value and the change differ)
@@ -1378,9 +1428,11 @@ line passes.
 16. **The sizes are honest.** No deck half exceeds the slide count this page gives; no notebook exceeds
     22 cells; notes stay under 3,000 words; the exercise set has at least a third design items; a pack
     that exceeds a size is cut, never excused.
-17. **The headings tell the story.** Read only the headings of every learner file in order: they ask
-    the day's questions as a chain, each understandable alone, and the last one is answered with a
-    number.
+17. **The headings tell the topics and then the story.** Read only the chapter openers and the headings
+    of every learner file in order: the openers name the row's subtopics in the row's order, or in the
+    order the day's section records with its reason, and then the case's steps; the openers' short
+    questions, the promises and the step headings ask the day's questions as a chain, each
+    understandable alone, and the last one is answered with a number.
 
 ## 13. The method changes this spine needs
 
@@ -1484,6 +1536,16 @@ a panel. A one-slide test deck with a PNG and a GIF is built, rendered through L
 since the GIF's still frame is what the render shows and PowerPoint plays the motion only in slideshow
 mode; the method session confirms both and records it. `html_sweep.py` needs no change: the explorer is
 built to pass it as it stands.
+
+**Applied on 13 October 2026.** The requester read every Week 4 deck and found the curriculum's
+subtopics taught without their names and without the concept-first chapters the 12 October morning
+message asked for. CLAUDE.md, the standard, the styles note, the day-pack-builder skill and its
+references, the two generation prompts, the doctrine, the schema, the memory update and the Project
+instructions now carry decision `concept-first-case-second`; `scripts/coverage_check.py` runs inside
+`verify.py`; this spine gained section 2.0, a concept block per day and acceptance line 0. The
+planning record is the `concept_first/` folder of the 13 October planning session (INTROSPECTION.md,
+DOCTRINE_EDITS.md, WORKFLOW.md and SPINE_TEMPLATE.md), and the five day plans with their index sit in
+`docs/detailing/W04_concept_first/`.
 
 ## 14. Checked on 12 October 2026, and what stays as the rows have it
 

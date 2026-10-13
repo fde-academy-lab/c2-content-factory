@@ -15,12 +15,14 @@ The sync checks that the sources agree before it writes anything: every holiday 
 no-session day in the tracker and the other way round, the 20-Week Plan's dates match the day tabs,
 every faculty session sits on a teaching day inside its own week, the violet column of the tracker
 and the faculty workbook place each session on the same day, the per-week session counts agree,
-and no faculty name reaches the repository while facts.yaml says names stay unpublished. Then it
-writes:
+no faculty name reaches the repository while facts.yaml says names stay unpublished, and every
+decision whose text replaces, supersedes, says "do not apply" or "no longer" carries a drops: list
+whose named decision ids the file holds. Then it writes:
 
     docs/curriculum/*.md, docs/faculty/*.md, docs/journey/*.md   the workbook exports
     data/programme/days.json      one record per day, which scripts/board_sync.py reads
-    docs/programme/*.md           the calendar, the faculty plan and the decisions register
+    docs/programme/*.md           the calendar, the faculty plan and the decisions register, each
+                                  decision's keeps:, drops: and applies_from_week: printed under its text
     content/W{ww}/SAT/paper and answer-key, for every week whose paper is already built,
                                   with data/programme/paper_edits.yaml laid on top
     every <!-- sync:NAME --> ... <!-- /sync:NAME --> block in the markdown under docs/, content/,
@@ -515,10 +517,50 @@ def render_evaluation(ctx, arg, audience):
                        f"recorded {att['recorded']}."] if att else []) + settled)
 
 
+def as_list(value):
+    if value is None:
+        return []
+    return [str(v) for v in value] if isinstance(value, list) else [str(value)]
+
+
+def decision_text(d):
+    """A decision's text with its keeps:, drops: and applies_from_week: as short lines beneath it."""
+    lines = [d["text"]]
+    if d.get("keeps"):
+        lines.append("Keeps: " + "; ".join(as_list(d["keeps"])) + ".")
+    if d.get("drops"):
+        lines.append("Drops: " + "; ".join(as_list(d["drops"])) + ".")
+    if d.get("applies_from_week"):
+        lines.append(f"Applies from {d['applies_from_week']}.")
+    return "\n".join(lines)
+
+
+REDIRECT_WORDS = ("replaces", "supersedes", "do not apply", "no longer")
+DECISION_ID_REFS = (re.compile(r"\bdecisions?\s+`?([a-z0-9]+(?:-[a-z0-9]+)+)"),
+                    re.compile(r"`([a-z0-9]+(?:-[a-z0-9]+)+)`"),
+                    re.compile(r"\b([a-z0-9]+(?:-[a-z0-9]+)+)(?:'s|\u2019s)\b"))
+
+
+def check_decisions(facts, report):
+    """A redirection names what it drops, and a drops: list names only decisions the file holds."""
+    ids = {d.get("id") for d in facts["decisions"]}
+    for d in facts["decisions"]:
+        text = str(d.get("text", "")).lower()
+        said = [w for w in REDIRECT_WORDS if w in text]
+        if said and not d.get("drops"):
+            report.error(f"facts.yaml decision {d.get('id')}: its text says \"{said[0]}\" but it carries no "
+                         f"drops: list naming what stops and why")
+        for line in as_list(d.get("drops")):
+            named = {m for rx in DECISION_ID_REFS for m in rx.findall(line)}
+            for unknown in sorted(named - ids):
+                report.error(f"facts.yaml decision {d.get('id')}: drops: names decision {unknown}, which "
+                             f"the file does not hold")
+
+
 def render_decisions(ctx, arg, audience):
     if audience == "STUDENT":
         raise ValueError("the decisions block never renders in a STUDENT file")
-    rows = [[d["id"], d["status"], d["closes"], d["text"], d["blocks"]] for d in ctx.facts["decisions"]]
+    rows = [[d["id"], d["status"], d["closes"], decision_text(d), d["blocks"]] for d in ctx.facts["decisions"]]
     lines = ["Open decisions:", ""] + ec.md_table(["Decision", "Status", "Closed by", "What",
                                                    "What it blocks"], rows)
     rows = [[c["id"], ", ".join(c["sources"]), c["text"], c["working_rule"]]
@@ -866,6 +908,7 @@ def build(report):
 
     check_calendar(days, plan, capstone, facts, report)
     check_faculty(sessions, days, plan, facts, report)
+    check_decisions(facts, report)
     ctx = Context(facts, days, weeks, capstone, plan, sessions)
 
     for name, text in redact_faculty_exports(faculty_exports(FACULTY), sessions, facts).items():
@@ -977,3 +1020,10 @@ if __name__ == "__main__":
 #     FAIL: the W03 gd criteria add to 31, not 30; nothing written.
 # A file with <!-- sync:day-date:W02/D1 -->x<!-- /sync:day-date:W02/D1 -->
 #     The x becomes "Mon 12 Oct 2026" on the same line.
+# facts.yaml: a decision whose text says "supersedes" and that carries no drops: list
+#     FAIL naming the decision's id; --check exits 1 and the plain run writes nothing.
+# facts.yaml: a drops: line that reads "decision chapter-standards' count ..." or "`no-such-id`"
+#     FAIL naming the id the file does not hold.
+# python3 scripts/sync_programme.py, after a decision gains keeps:, drops: or applies_from_week:
+#     docs/programme/decisions.md, every sync:decisions block and the Project pack's facts page print
+#     them as Keeps:, Drops: and Applies from lines under the decision's text.

@@ -32,7 +32,8 @@ Weeks 1 to 3 were built before it and keep their shape until rebuilt.
   mechanism and asking for a prediction before the reveal.
 - **The volume.** A concept block of one chapter per row subtopic, 60 to 120 minutes, then three or
   four case chapters sized to the remaining minutes; one notebook per chapter; a coverage matrix per
-  day that a script checks; pictures drawn by our own code.
+  day (`.claude/skills/day-pack-builder/references/coverage-matrix.md`) that a script checks;
+  pictures drawn by our own code.
 
 ---
 

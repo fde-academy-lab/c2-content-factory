@@ -23,28 +23,28 @@ file, the cases' data and every number the cases print stand.
    its chapter, its minutes and its notebook. The concept map shows how today's ideas connect to each
    other, to Weeks 1 to 3 and to the rest of the week. Then the case ticket in one slide, as the
    destination the topics will be used on.
-3. The concept chapters, at the front of `slides/C2_W04_D0{d}_half1_STUDENT.md`, right after the topics
-   slide, the map and the ticket slide. Each chapter's opener is headed
-   `## SECTION n: <Name>: <short question>?`. The Name is the row's subtopic in the row's words (about 48 characters at most), which
-   the coverage gate reads; the short question starts lower-case, ends in a question mark and runs to
-   about 24 characters, since the deck prints the Name over the question on the opener and the short
-   question alone in the chapter pills, whose room is about 22 characters; the italic promise beneath
-   says what the chapter delivers. Where a plan titles a chapter as a question, that question becomes the
-   promise. The chapter is taught from zero and runs the misconception and a prediction, one invented
-   everyday example (labelled) carried through the chapter, the idea derived from tiny numbers, a worked
-   example and a check question, and it hands over to the case chapter that applies it. A concept chapter
-   that the four-ideas-per-two-hours rule moves to the afternoon opens `half2`, still before the case
-   chapter that applies it.
+3. The concept chapters, at the front of `slides/C2_W04_D0{d}_half1_STUDENT.md`, right after the topics slide, the map and the ticket slide.
+   Each chapter's opener is headed `## SECTION n: <Name>: <short question>?`. The Name is the row's subtopic verbatim (Wednesday's spanning
+   Name excepted), which the coverage gate reads; the short question starts lower-case, ends in a
+   question mark and runs to about 24 characters, since the deck prints the Name over the question on the
+   opener and the short question alone in the chapter pills, whose room is about 22 characters; the
+   italic promise beneath says what the chapter delivers. Where a plan titles a chapter as a question,
+   that question becomes the promise. The chapter is taught from zero and runs the misconception and a
+   prediction, one invented everyday example (labelled) carried through the chapter, the idea derived
+   from tiny numbers, a worked example and a check question, and it hands over to the case chapter that
+   applies it. A concept chapter that the four-ideas-per-two-hours rule moves to the afternoon opens `half2`,
+   still before the case chapter that applies it.
 4. The case chapters, after the concept block in the same decks, each opener headed the same way with the
    case step and the subtopics it applies as its topic. The full ticket read opens them where the plan
    moves it there.
 5. The Kalpa lab last.
 
-The day's notebooks follow the same order: the concept notebooks first, one per concept chapter and named
-by its topic (`C2_W04_D0{d}_01_<topic>_STUDENT.ipynb`, the file name carrying at least two of the Name's
-idea-words, so Monday's `04_definition_lines` becomes `04_numerator_denominator_window_exclusions` and
-Tuesday's `04_guesstimate` becomes `04_guesstimate_clarify_map_calculate_validate`), then the case
-notebooks renamed with the topic they apply, then the Kalpa lab.
+SECTION numbers run in deck order, `half1` then `half2`, and each notebook is numbered as its chapter, so
+the morning's concept notebooks come first: `C2_W04_D0{d}_0n_<topic>_STUDENT.ipynb`, the file name
+carrying at least two of the Name's idea-words, so Monday's `04_definition_lines` becomes
+`04_numerator_denominator_window_exclusions` and Tuesday's guesstimate notebook carries
+`guesstimate_clarify_map_calculate_validate`. Each case notebook is renamed with the topic it applies,
+and the Kalpa lab comes last.
 `internal/C2_W04_D0{d}_coverage_INTERNAL.md`, in the shape
 `.claude/skills/day-pack-builder/references/coverage-matrix.md` sets, maps each row subtopic to its chapter, slides, notebook,
 exercise items, Kahoot items and minutes, and each case chapter to the subtopics it applies;
@@ -75,3 +75,13 @@ the front of `half1` instead and the plan is otherwise unchanged.
 - Weeks 1 to 3: Week 2 Wednesday to Friday name their topics in their decks before each day runs; Week 1
   and Week 2 Monday and Tuesday, already taught, get revision notes headed by their row subtopics before
   ME1, the first major exam, in Week 5; Week 3 Monday gets a topics slide.
+- Tuesday's guesstimate and written-business-case chapters open the afternoon after studio round two,
+  each before the case chapter that applies it, as its plan keeps each example beside the case step that
+  uses it; the morning carries the first three.
+- Wednesday's 73-minute case chapter splits in two, the twelve carts and the three measures, then the
+  pairs table and the confidence trap on 40,000 carts, so each chapter has one notebook; cross-sell
+  becomes SECTION 9 and the afternoon's case chapter SECTION 10. The afternoon runs the cross-sell
+  chapter, the priced strip, the unguided round, a short interview beat and the close in 60 minutes,
+  and the interview room's reading moves to the lab.
+- The invented example tables are written to `data/` by the day's seeded generator and recorded under
+  `toy_` ids; each concept notebook loads its table and prints it in full, labelled invented.
