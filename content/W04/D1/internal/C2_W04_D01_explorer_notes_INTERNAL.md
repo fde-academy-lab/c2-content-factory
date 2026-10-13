@@ -96,7 +96,7 @@ in a headless browser at each scene's revealed state and at the sliders' ends.
 | Choice | What the page does | Why |
 |---|---|---|
 | Which day sections show | A day button opens its own section and every earlier one, and dashes nothing below | The map lights every earlier node, and the sweep reaches every control only if the last day button opens all six days |
-| The prediction form | Lettered choices in twenty scenes, with the key on A five times, B four, C six and D five; a guess slider with a lock button in W5, where the prediction is a count | The spine allows a choice or a slider guess; a key that sits on one letter or is always the longest lets a learner answer without thinking. Since the second pass M4's key, A, is its longest option, which that pass's scene owns (see the open items) |
+| The prediction form | Lettered choices in twenty scenes, with the key on A five times, B four, C six and D five; a guess slider with a lock button in W5, where the prediction is a count | The spine allows a choice or a slider guess; a key that sits on one letter or is always the longest lets a learner answer without thinking. M4's option A now reads "Week 7, beginning 31 August.", parallel with B and C, so no key is its scene's longest option |
 | Opening states | Every scene opens before the state its prediction asks about: T2 draws a reading once it is chosen, T3 holds the measured 802 million for the reveal and opens its UPI tree at 50 million a day, Th2 opens before batch B joins, Th3 opens with the carousel's opens left out, F4 opens at the case's costs, and no caption or myth line prints the answer a prediction asks for | A drawing that shows the answer first turns the prediction into reading |
 | Th1's October | An estimate on amber, each older cohort sliding another 0.3 points from September and the August cohort entering at 20.5 percent, with the readout giving the 17 to 24 range; the size slider keeps the 20.5 | The day estimates October this way (`oct_dashboard_estimate`, half1 S25) and names the assumption as one; the spine asks Th1's slider for the new cohort's size, so the rate stays the day's |
 | Th1's prediction | Where October's reading lands, with options 21, 33, 36 and 38 and the key on 33 | The ticket prints the flat 38 for June to September, so the question moves to the month the August cohort is counted, as the first pass decided; the key follows the day's 32.9 |
@@ -223,9 +223,6 @@ spine.
 
 Still open, for the orchestrator or the next pass:
 
-- M4's key, A, is its longest option, against the page's own rule. The second pass set it, and this
-  pass left Monday's and Tuesday's scenes alone as the task asked; lengthening option D, "It never
-  turns.", would clear it.
 - W5 prints the Wednesday case's thin pair, ice cream with chocolate sauce, at 0.25 percent of carts,
   the same quantity and value as Kalpa's planted thin pair (`kalpa_thin_support`, 0.25 percent).
   Wednesday's own pack prints the same number, so a change belongs to Wednesday first.
