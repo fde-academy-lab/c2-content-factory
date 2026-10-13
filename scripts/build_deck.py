@@ -25,6 +25,9 @@ scripts/brand.py). What a source can ask for:
                                          numeral is the one written, so an afternoon deck that
                                          opens on SECTION 6 prints 06, on its opener and in the
                                          cover's chapter strip
+    ## SECTION 4: LAG and LEAD: whose    topic first: the opener prints the topic over the
+       spend is falling?                 question, and the pills, footer and cover strip keep
+                                         the short question
     *A CEO asks what sales are made of.* its first italic line is the chapter's promise
 
     ## S3. An action title               a content slide
@@ -311,6 +314,26 @@ def chapter_name(title):
     name = (m.group(2) if m else title).strip()
     name = re.sub(r"^[A-Z0-9]{1,2}[.:)]\s+", "", name)
     return name[:1].upper() + name[1:].lower() if name.isupper() else name
+
+
+TOPIC_FIRST = re.compile(r"^(?P<topic>.+?):\s+(?P<question>[a-z].*\?)$")
+QUESTION_WORD = re.compile(r"^(?:who|whom|whose|what|which|when|where|why|how|can|could|does|do|"
+                           r"did|is|are|was|were|will|would|should|has|have)\b", re.I)
+
+
+def chapter_parts(name):
+    """`LAG and LEAD: whose spend is falling?` becomes ("LAG and LEAD", "Whose spend is falling?").
+
+    A chapter named topic first keeps its short question for the pills, the footer and the cover's
+    strip, which have room for about 22 characters, and its opener prints the topic over the
+    question. A name with no topic before a lower-case question comes back whole, as it always has,
+    and so does a question that holds a colon itself, such as "Who asks: the lead or the CEO?".
+    """
+    m = TOPIC_FIRST.match(name)
+    if not m or QUESTION_WORD.match(m.group("topic")):
+        return None, name
+    question = m.group("question")
+    return m.group("topic").strip(), question[:1].upper() + question[1:]
 
 
 CACHE = pathlib.Path(tempfile.gettempdir()) / "c2_mermaid_cache"
@@ -912,7 +935,7 @@ def build(src, out, footer):
     meta = deck_meta(md, pathlib.Path(src).stem)
     prepare_icons(slides)
     sections = [t for t, _ in slides if t.upper().startswith("SECTION")]
-    chapters = [chapter_name(t) for t in sections]
+    chapters = [chapter_parts(chapter_name(t))[1] for t in sections]
     numbers = []
     for i, t in enumerate(sections):
         sec = SECTION_TITLE.match(t)
@@ -936,8 +959,11 @@ def build(src, out, footer):
             # chapter 6 prints 06; a SECTION with no number takes its place in the file.
             sec = SECTION_TITLE.match(title)
             number = int(sec.group(1)) if sec and sec.group(1) else current + 1
-            section_slide(s, prs, number, chapter_name(title), promise, chapters, current,
-                          footer, total, n)
+            # A topic travels as a keyword only when there is one, so a wrapper written for the
+            # old positional call, as the Week 1 Monday deck build has, still works.
+            topic, question = chapter_parts(chapter_name(title))
+            section_slide(s, prs, number, question, promise, chapters, current,
+                          footer, total, n, **({"topic": topic} if topic else {}))
             set_notes(s, notes)
             continue
         m = SLIDE_ID.match(title)
@@ -1036,6 +1062,10 @@ if __name__ == "__main__":
 #     Becomes a row of steps with the bold one filled, which is where the room is in the day.
 # A slide titled "SECTION 2: DECIDING PER FIELD"
 #     Gets the accent background, the title centred large, and its breadcrumb drawn in white.
+# A slide titled "SECTION 4: LAG and LEAD: whose spend is falling?"
+#     Its opener prints "LAG and LEAD" in lavender over "Whose spend is falling?" at 40 points,
+#     and the pills, every footer and the cover's strip read "Whose spend is falling?" alone.
+#     "SECTION D: Can you answer the interviewer?" has no topic and builds as it always did.
 # A slide holding the client-zero unit map or entity mermaid fence
 #     Gets boxes and connectors drawn as PowerPoint shapes, never the mermaid source as text.
 # content/W02/D3/slides/C2_W02_D03_deck_STUDENT.md, slide 22, a small fence drawn across the slide

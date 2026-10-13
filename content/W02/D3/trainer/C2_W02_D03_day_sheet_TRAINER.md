@@ -57,15 +57,31 @@ run; have two learners read theirs first.
 
 ---
 
+## Which of the row's six topics does each chapter teach, and which item tests each?
+
+Every chapter opener names its topic over its question, and the topics slide, S6a in the morning
+deck and S1a in the afternoon's, lists the six in the row's words with their chapters and minutes.
+
+| Subtopic, as the row writes it | Chapter | Slides | Notebook | Items that test it |
+|---|---|---|---|---|
+| ROW_NUMBER, RANK and DENSE_RANK, and what a tie does to each | 3, with ROW_NUMBER first numbering the members in chapter 1 | Morning S35 to S48 | 03 `tie_rule`, sections 1 to 4 | Chapter 3 set Q1 to Q3; the guided build Q1 to Q3; the escalated case Q1; the practice lab Q1 to Q3; Kahoot Q1, Q5 and Q6 |
+| PARTITION BY; ORDER BY inside the window | 1 for ORDER BY inside the window, 2 for PARTITION BY | Morning S10, S11 and S14 in chapter 1; S24, S25, S30 and S31 in chapter 2 | 01 `top_fifty`, section 2; 02 `each_segment`, section 3 | Chapter 2 set Q1 and Q3; the escalated case Q2, Q3 and Q5; Kahoot Q2 |
+| Top-N per group | 2 | Morning S21 to S34 | 02 `each_segment`, sections 1 to 3 and the second route | Chapter 1 set Q1; chapter 2 set Q2 and Q5; the practice lab Q5 |
+| LAG and LEAD; month-on-month comparison per customer | 4 for LAG and LEAD, 6 for the comparison against calendar months | Morning S49 to S61, with LEAD on S55a; afternoon S2 to S16 | 04 `falling_spend`, sections 2 to 4, whose depth cell names `lead()`; 06 `call_first`, sections 2 and 3 | Chapter 4 set Q2 and Q3; chapter 6 set Q1 and Q2; the escalated case Q3 and Q4; the practice lab Q7; Kahoot Q3 and Q7. No lettered item tests LEAD; S55a's check question and the tiered extras' chapter 6 stretch, which runs `lead(month)` on the warehouse, check it |
+| Running totals and determinism | 5 | Morning S62 to S76, with determinism on S74a | 05 `against_plan`, sections 1 to 4 | Chapter 5 set Q2 to Q4; the escalated case Q7 and Q8; the practice lab Q9; Kahoot Q4 |
+| Filtering on a window via a CTE | 2, after its first use in chapter 1 | Morning S11 and S14 in chapter 1; S32 and S32a in chapter 2 | 01 `top_fifty`, section 2; 02 `each_segment`, its interview cell | Chapter 6 set Q3, whose flag filter runs in the step after its window; the practice lab Q5, whose places 1 to 3 are kept outside the window. No lettered item asks why WHERE refuses a window, so the drill asks it aloud (afternoon D22) |
+
+---
+
 ## What does the day start from, and where does it stop?
 
 | | |
 |---|---|
 | **Start from** | Monday's suite and its booked Q2 of Rs 9,84,00,000 on 462 orders, and Tuesday's rule that a join is only done when its row count is explained. Open on Marketing's ask and let somebody try GROUP BY and LIMIT 50, so the window arrives as the missing piece. |
 | **Go as far as** | Every learner ranks members inside each segment under the head of Retail-Plus's rule and says the count it ships, flags members whose spend fell in calendar months with LAG partitioned by member and a month check, and builds the running total against plan that closes on Rs 9,84,00,000, each with its options, its best-fit call and a second route. |
-| **Stop before** | Frame clauses (ROWS BETWEEN), named windows, percentiles and performance. LEAD is named once on S53 and never taught. The row stops before any question of whether a fall is real or noise, which the tentative IITGN block takes up. |
+| **Stop before** | Frame clauses (ROWS BETWEEN), named windows, percentiles and performance. LEAD gets one slide, S55a, on C-0040's months, and no chapter's query uses it; the tiered extras' chapter 6 stretch runs it. The row stops before any question of whether a fall is real or noise, which the tentative IITGN block takes up. |
 | **Comes later** | Thursday builds Marketing's one table per customer in pandas, with today's flag as one of its columns; Friday puts the protect list in the leadership workbook; Week 4's cohorts read retention month by month. Say the arc once and preview no later day's trap. |
-| **Cut first** | Chapter 5's order-level running total (S73 and S74) to one sentence; then each chapter's second-route slide to its stats line (S19, S33, S47, S60, S75); then the company slides to their quote. Never cut the tie demonstration (S39 to S46), any trap with its check and fix, or the start of the escalated case. |
+| **Cut first** | LEAD's slide (S55a) to its rule line, since the row cuts LEAD first; then chapter 5's order-level running total (S73 and S74) to one sentence, keeping S74a, whose four invented orders carry determinism on their own; then each chapter's second-route slide to its stats line (S19, S33, S47, S60, S75); then the company slides to their quote. Never cut the tie demonstration (S39 to S46), any trap with its check and fix, or the start of the escalated case. |
 
 ---
 
@@ -80,13 +96,13 @@ flowchart LR
 
 | Part | Slides (morning deck) | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| The ask, 20 | Cover, S1 to S6 | The board's first drawing, the day's picture, which stays up all day | The day's question and its six chapter questions (S1); the three asks and their costs (S2, S3); answer c on S4, so GROUP BY's limit is the room's own finding (S5); the three windows (S6) | S3 to its first two rows |
+| The ask, 20 | Cover, S1 to S6 and S6a | The board's first drawing, the day's picture, which stays up all day | The day's question and its six chapter questions (S1); the three asks and their costs (S2, S3); answer c on S4, so GROUP BY's limit is the room's own finding (S5); the three windows (S6); the six topics in the curriculum's words, each with its chapter and minutes, and their map (S6a) | S3 to its first two rows |
 | Chapter 1, 30 | SECTION 1, S7 to S20 | Notebook 01, `sql/C2_W02_D03_01_top_fifty_STUDENT.sql` | 227 member rows (S13); three segments on the one list, Business ending at place 35 (S15); fifty orders naming 28 members, the check and the fix (S16 to S18) | S19 to its stats line |
-| Chapter 2, 30 | SECTION 2, S21 to S34 | Notebook 02 | GROUP BY's 4 rows (S27); Retail-Plus 11 and Student none from one numbering (S28), the fifty-or-every-buyer check (S29); 155 under PARTITION BY (S31); the WHERE refusal in two minutes (S32) | S33 to its stats line |
+| Chapter 2, 30 | SECTION 2, S21 to S34 with S32a | Notebook 02 | GROUP BY's 4 rows (S27); Retail-Plus 11 and Student none from one numbering (S28), the fifty-or-every-buyer check (S29); 155 under PARTITION BY (S31); the WHERE refusal in two minutes (S32) and the same filter on five invented members in one more (S32a) | S33 to its stats line |
 | Chapter 3, 30 | SECTION 3, S35 to S48 | Notebook 03, the guided build `exercises/guided/C2_W02_D03_tie_STUDENT.md`, the companion page | 4, 5, 5 and 3 rows for an invented top four (S39, S40); the three functions on paper (S41, S42); DENSE_RANK's 52 for Retail-Core with its check (S43, S44); every learner runs the Retail-Plus count alone and writes the sentence before any number is shared (S46) | S37 to its quote; never S39 to S46 |
 | Break, 10 | After S48 | | The room leaves with its own Retail-Plus count and sentence written | |
-| Chapter 4, 30 | SECTION 4, S49 to S61 | Notebook 04 | NULL on a first month (S55); 20 flags with no partition, 4 borrowed (S57), the check (S58), 16 with PARTITION BY (S59) | S60 to its stats line |
-| Chapter 5, 30 | SECTION 5, S62 to S76 | Notebook 05 | The plan-first close Rs 15,39,810 short (S68); the check against Monday's total and the five missing days (S69); Rs 10 ahead after the fix (S70); Rs 1.58 crore ahead at mid-quarter from one July week, six of seven weeks below since 10 August (S72) | S73 and S74 to one sentence |
+| Chapter 4, 30 | SECTION 4, S49 to S61 with S55a | Notebook 04 | NULL on a first month (S55); LEAD's row after, NULL on C-0040's September (S55a); 20 flags with no partition, 4 borrowed (S57), the check (S58), 16 with PARTITION BY (S59) | S55a to its rule line; S60 to its stats line |
+| Chapter 5, 30 | SECTION 5, S62 to S76 with S74a | Notebook 05 | The plan-first close Rs 15,39,810 short (S68); the check against Monday's total and the five missing days (S69); Rs 10 ahead after the fix (S70); Rs 1.58 crore ahead at mid-quarter from one July week, six of seven weeks below since 10 August (S72); a unique ORDER BY on four invented orders (S74a) | S73 and S74 to one sentence, keeping S74a |
 
 Each chapter's set (`exercises/unguided/C2_W02_D03_ch{n}_*_STUDENT.md`) runs two items live in the
 chapter's last minutes if the chapter ran to time: items 2 and 3 in chapter 1, since item 1's key is the
@@ -127,7 +143,7 @@ flowchart LR
 
 | Part | Slides (afternoon deck) | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| Chapter 6, 30 | Cover, S1, SECTION 6, S2 to S16 | Notebook 06 | Four readings of "last month" sized (S5); all 16 flagged are on a list (S8); C-0216's July read as last month (S10); 16 calls (S11), 7 over an empty month (S12), 9 after the check (S13); the calendar join's same nine (S14) | S4 to its quote; S14 to its stats line |
+| Chapter 6, 30 | Cover, S1, S1a, SECTION 6, S2 to S16 | Notebook 06 | Four readings of "last month" sized (S5); all 16 flagged are on a list (S8); C-0216's July read as last month (S10); 16 calls (S11), 7 over an empty month (S12), 9 after the check (S13); the calendar join's same nine (S14) | S4 to its quote; S14 to its stats line |
 | Escalated case, parts 1 and 2, 20 | SECTION 7, S17 and S18 | `notebooks/C2_W02_D03_ex1_escalated_case_STUDENT.ipynb`, `exercises/unguided/C2_W02_D03_escalated_case_STUDENT.md` | Three minutes on the brief, seventeen alone: every learner ships part 1, each segment's list with its count, and starts part 2, the members to ring | Nothing; start on time |
 | The close, 10 | SECTION 8, S19 to S21 and S26 | `kahoot/C2_W02_D03_quiz_STUDENT.md` | The day's answer after two learners read theirs (S19); the six rules read together (S20); eight Kahoot items with a reason aloud after each (S21); the growth team's ask left open (S26) | S20 read by you alone |
 
