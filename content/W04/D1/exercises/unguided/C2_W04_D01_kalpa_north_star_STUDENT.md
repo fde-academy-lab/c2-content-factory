@@ -11,9 +11,10 @@ does not, I want to know before the board does."
 
 The growth plan's proposed north star is **delivered orders per active customer per month**. The
 lab's table, `kalpa_app_reorders`, holds one row per reorder placement: `reorder_id`, `customer_id`,
-`placed_ts`, `product_id`, `value_rs` (the placement's booked value, whatever happened to it), `auto`
-(True when the app placed it on its own) and `status`, which is one of delivered, cancelled, merged
-into a later order, or pending.
+`placed_ts`, `value_rs` (the placement's booked value, whatever happened to it), `auto` (True when the
+app placed it on its own), `status`, which is one of delivered, returned, cancelled, merged into a
+basket the member already had open, or pending, and `order_id`, the order in Kalpa's warehouse that
+the placement became, blank if none.
 
 **Who needs the answer.** Meera, who takes one number to the board, and the three department heads,
 each of whom loses their own target under it. A north star the app can raise by itself would show
@@ -108,7 +109,9 @@ Every before-and-after comparison at a retailer is checked for a sale or a festi
 and not the other, because a sale moves orders by itself.
 
 The lab compared reorders in 10 to 30 September 2026 with 20 August to 9 September 2026. The
-monsoon sale's last day was 19 August 2026.
+monsoon sale's last day was 19 August 2026. The lab counted only the 107 members who had joined by
+19 August, because a member who joined later had fewer of the comparison window's days to reorder
+in: one who joined on 25 August had 16 of its 21.
 
 ### Q5. Design. Why does the comparison window start on 20 August rather than in July?
 
@@ -118,7 +121,7 @@ b) Both windows then sit after the sale, so the sale's extra orders are in neith
 
 c) A comparison window has to sit in the same calendar month as the one it is set against
 
-d) A window that began in July would leave out the members who joined in August
+d) Every one of the 120 members was then in the tier for the whole of both windows
 
 ---
 
