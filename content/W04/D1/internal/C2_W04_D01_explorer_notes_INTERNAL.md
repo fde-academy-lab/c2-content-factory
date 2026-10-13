@@ -2,17 +2,25 @@
 
 **INTERNAL.** The notes behind `demos/C2_W04_D01_week_explorer_STUDENT.html`, the one interactive page
 for the whole of Week 4 (spine section 11). They say what each scene draws and what each control moves,
-where every number comes from, what the build decided where the spine left a choice, what the two
-reviews found and what changed, where the sources disagree with themselves, and what the proofs returned.
+which deck slide calls which scene, where every number comes from, what the build decided where the
+spine or the facts files left a choice, what the reviews found and what changed, which of the sources'
+contradictions are now settled and by what, and what the proofs returned.
+
+The page was built in three passes. The first, on 12 October 2026, built every scene from the case file
+and the spine before any day pack existed. The second (commit 6998f38) moved Monday's and Tuesday's
+scenes onto Monday's final data. The third, recorded here, moved Thursday's and Friday's scenes onto
+their merged day packs (commits c4b8353, b070fea and 1aeaead and the fixes after the reviews), after
+pull requests 232 and 233 had settled the other days' contradictions in the case file and the spine.
 
 ## How the page is built and checked
 
 | Step | Command or place | What it does |
 |---|---|---|
 | The house look and the diagram builders | `python3 scripts/build_companion.py content/W04/D1/demos/C2_W04_D01_week_explorer_STUDENT.html` | Fills the page's `<style data-c2kit>` and `<script data-c2kit>` blocks from `scripts/companion/`; T3's two trees are drawn by `C2K.driverTree` |
-| Every number | The `W4` block in the page's head | One constants block, each value with its source in a comment: the case file or the spine for case numbers, "derived" for arithmetic on them, "toy" for invented values that the page labels toy where they appear. Drawings and readouts compute from the block; the reveal sentences quote the case's numbers as text, so a changed value is edited there by hand too |
+| Every number | The `W4` block in the page's head | One constants block, each value with its source in a comment: the case file or the spine for Monday to Wednesday's case numbers, Monday's data for M4 and T2, Thursday's and Friday's facts files by id and Friday's two data tables for Th1 to F4, "derived" for arithmetic on them, and "toy" for invented values that the page labels toy where they appear. Drawings and readouts compute from the block; the reveal sentences quote the day's numbers as text, so a changed value is edited there by hand too |
+| Friday's rules | The page's script, after `F1N` | Naive, drift, the house bot, finance's rule, festival-aligned, the cushion and the plan, ported from `content/W04/D5/internal/C2_W04_D05_make_data_INTERNAL.py` with weeks counted from 1; the vendor's rows are read from its table, never computed |
 | The browser sweep | `python3 scripts/html_sweep.py content/W04/D1/demos` | Clicks every control in DOM order and fails on a control that changes nothing, a console error or a covered dropdown |
-| The day gate | `python3 scripts/verify.py content/W04/D1` | The layout, naming and writing rules, then the sweep |
+| The day gate | `python3 scripts/verify.py content/W04/D1` | The layout, naming and writing rules, then every proof script on the day's folder, the sweep among them |
 
 The six day buttons come first in the DOM, and choosing a day opens that day's section and every
 earlier one, so by the time the sweep reaches the scenes the Saturday button has opened all six days
@@ -30,81 +38,96 @@ before the state its prediction asks about, and the reveal sets the scene to the
 
 | Id | The question | What is drawn | What each control moves | The reveal |
 |---|---|---|---|---|
-| M1 | Can online hours rise while riders wait as long? | A city of twelve zones with sixty driver dots that drive, idle or sit offline, a picture with no scale | The floor slider, Rs 0 to 400 in steps of 20, moves dots online and into the outer zones and moves online hours, trips, trips per online hour, the idle share, the total top-up, the part paid to driver-weeks accepting under half their requests and the dot counts; the rider-wait toggle shows the wait meter and its minutes | At Rs 300: 118,000 to 146,300 hours, 224,200 to 230,900 trips, 1.90 to 1.58, Rs 1.16 crore of Rs 1.9 crore to driver-weeks accepting under half their requests, wait 4.8 to 4.6, and 1.83 already at Rs 100; trips per online hour = trips / online hours |
+| M1 | Can online hours rise while riders wait as long? | A city of twelve zones with sixty driver dots that drive, idle or sit offline, a picture with no scale | The floor slider, Rs 0 to 400 in steps of 20, moves dots online and into the outer zones and moves online hours, trips, trips per online hour, the idle share, the total top-up, the part paid to driver-weeks accepting under half their offers and the dot counts; the rider-wait toggle shows the wait meter and its minutes | At Rs 300: 118,000 to 146,300 hours, 224,200 to 230,900 trips, 1.90 to 1.58, Rs 1.16 crore of Rs 1.9 crore to driver-weeks accepting under half their offers, wait 4.8 to 4.6, and 1.83 already at Rs 100; trips per online hour = trips / online hours |
 | M2 | Which number should the scheme pay for? | A seesaw of the paid number against three guardrails, above the same sixty dots | The select of four paid numbers re-places the dots, tips the seesaw, flips the guardrail chips and moves the dot counts, the idle share, the wait, the top-up per trip and the acceptance share, against guardrail lines printed in the readout | Trips with an acceptance floor puts 40 of 60 dots to driving against 31; which line catches which way of gaming; the definition's lines, with the north star defined |
 | M3 | What does one line of a definition change? | The twelve driver-weeks as a table, with a before and after bar | Four selects (numerator, denominator, window, exclusions) recolour the columns, strike excluded rows and move the before, after and change readouts; the window select prints the counts it divides | Per online hour 1.90 to 1.19, per enrolled driver 19.0 to 14.7; the acceptance exclusion compares six drivers with four (the four alone fall 1.98 to 1.89) and, with enrolled drivers, turns the fall into a rise, 19.0 to 20.8; a definition names numerator, denominator, window, exclusions and what it does not reward |
-| M4 | Which number moved first? | Acceptance share and bookings per online hour over twelve weeks, the launch marked | The week slider, 1 to 12, draws both lines to that week, rings each turn and moves the week's values and the turn readouts | Acceptance turns in week 7, bookings in week 9, a lead of two weeks; a leading indicator moves before the outcome it leads |
+| M4 | Which number moved first? | Monday's weekly acceptance share and bookings per online hour over twelve peak weeks, the launch marked | The week slider, 1 to 12, draws both lines to that week, rings each turn and moves the week's values and the turn readouts | Both lines turn in week 7, the launch week; acceptance leads because it can be read per offer while the launch week runs; a leading input is a number you can read, and act on, before the outcome is reported |
 | T1 | What is left when the slide says one thing? | A slide with nine of Monday's numbers under a topic title | Nine checkboxes fade tiles, count the numbers left and rewrite the title when two remain; the warden test, defined in its readout as whether a reader outside the field could act on the title alone, prints its verdict on the current title | Trips per online hour and the top-up carry the claim; acceptance and cancellations show the gaming without its cost, so they go to the appendix; claim, evidence, caveat, action |
-| T2 | Which denominator is the slide using? | The same bookings over three denominators as indexed bars | The select draws the chosen reading's bars; a reading not yet chosen stays a dashed outline; the select also moves the slide title and the before, after and change readouts | Rs 314 to Rs 260 per online hour, per driver-week up 3 percent on a toy count that leaves out the 140 joiners, per trip flat at Rs 165; bookings per online hour = trips per online hour x fare |
+| T2 | Which denominator is the slide using? | The same bookings over three denominators as indexed bars | The select draws the chosen reading's bars; a reading not yet chosen stays a dashed outline; the select also moves the slide title and the before, after and change readouts | Rs 314 to Rs 260 per online hour; per active driver-week Rs 5,817 to Rs 5,861 on Monday's 6,360 and 6,500 driver-weeks; per trip flat at Rs 165; bookings per online hour = trips per online hour x fare |
 | T3 | How big is a number nobody has measured? | Two guesstimate trees, UPI payments a day and drivers at the evening peak, each titled as a question | The select moves the focus between the trees; six sliders move the factors, the products and the anchors' lines; the UPI anchor and its ratio print at the reveal | 802 million a day in September 2026 (776 million over 31 days); drivers at peak: to be found, with the case's 656 drivers online before the launch named as a different unit; on these ranges peak requests moves the drivers' estimate most; clarify, map, calculate, validate |
 | W1 | Why is lift a ratio of two areas? | A unit square with two bands and their overlap, the observed overlap beside it | Three sliders, P(A), P(B) and the observed share, in steps of 0.01, move the bands, the areas, observed over expected and the range the overlap can take at those bands | Bands widened to 0.70 and 0.50 at a fixed 0.30 overlap give lift 0.86; at 0.80 and 0.70 the overlap is forced to at least 0.50; the tea stall's 1.25; lift = P(A and B) / (P(A) P(B)) |
 | W2 | What does confidence throw away? | A hundred carts in the case's proportions, with a legend for bread, milk, both and neither | Two filter buttons and a reset move carts to the right or fade them and move the counts | 34 carts left, 25 with milk, 25 / 34 = 0.74 against milk's 0.71, lift 1.04 as W1's ratio of areas; confidence = P(A and B) / P(A) |
 | W3 | Why does the item in every cart look like the best partner? | The square with bread and milk, and two gauges | The milk-share slider, 0.10 to 0.90, moves milk's band, the overlap, confidence, lift and the carts holding both | At 0.71, confidence 0.74 and lift 1.04, with the held-lift assumption stated; confidence follows popularity, lift divides it out |
-| W4 | What does a strip slot earn? | A cart page with three slots under a cart holding chips | The rank toggle swaps milk's slot for dip's; three sliders move every slot's rupees and the strip's day and month totals | Rs 3,240 against Rs 17,280 a day, about Rs 4.2 lakh a month for one slot; value = views x click-through x add rate x margin |
+| W4 | What does a strip slot earn? | A cart page with three slots under a cart holding chips | The rank toggle swaps milk's slot for dip's; three sliders move every slot's rupees and the strip's day and month totals | Rs 3,240 against Rs 17,280 a day, about Rs 4.2 lakh a month for one slot, which Wednesday's S32 multiplies by milk's 1.5 slots; value = views x click-through x add rate x margin |
 | W5 | Where should the support floor sit? | Lift against support for nine pairs on a log scale, filled dots for the case's numbers and open dots drawn inside its band | A guess slider and lock record the prediction and then lock; the floor slider, 0.1 to 5 in steps of 0.1, moves the floor line and the counts | Eight of nine survive 1 percent; ice cream with chocolate sauce, about four carts a day, goes on a watch list; any floor from 0.3 to 2.9 percent keeps the same eight; act above the floor, watch below it |
-| Th1 | How can every batch shrink while the average stays flat? | The cohort staircase filling month by month under the dashboard's line, with October as a labelled toy month | Next month adds a column up to October, then starts again from February; the slider resizes the August sale cohort and moves its row, the counted members and October's reading | 38 from June to September while every row falls and the sale cohort sits outside the count; 34 in October as it enters at 2.6 times normal, 36 at normal size; counted from the first month, September would read 36; blend = sum of size x rate / sum of sizes |
-| Th2 | What is the flat number made of? | Two months of a coaching centre's batches, stacked by size, opening before batch B joins | Batch B's size, from 0, and batch A's rate move the stacks and the blended share | 250 of 500 is still 50 percent; the weighted average written out |
-| Th3 | Which stage owns the loss? | The order flow as bars whose lengths are the counts, opening with the carousel's menu opens left out | The unit toggle and the carousel toggle swap the counts and move every step's rate | 118 percent search to menu view per session; 34 and 61 percent menu view to add-to-cart; the loss at add-to-cart to order on Android; each step divides by the step before in one unit |
-| Th4 | Is it novelty or habit? | A launch cohort against an organic cohort over eight weeks, and the blended actives since the launch | The week slider draws both curves to that week; the blend toggle shows the blended line | At week four the launch cohort keeps 24 percent and the organic 36; the blend bottoms at 36,600 in week five and climbs to 42,900 by week eight; judge each cohort at the age where habit shows |
-| F1 | What is a series made of? | Trend, season and noise panels on one scale, summed into one series over two labelled years | Three sliders move their panels, the series, its highest and lowest weeks and the trend's rise | The season's peaks and troughs move 25 thousand; on this noise the highest week goes from 255 to 277 thousand and the lowest from 167 to 146; series = trend + season + noise |
-| F2 | How wrong on the weeks it never saw? | The 104 weeks with the hidden weeks shaded, and the hidden weeks zoomed with each week's error | The method select and the split slider, 52 to 91, move the forecast, the sticks, the method's description, the MAE, the priced errors and the scoreboard | MAE 21,000, 9,200, 8,900 and 14,800; priced, the vendor Rs 10.9 lakh, the baseline Rs 18.6 lakh and the baseline raised for the costs Rs 10.9 lakh, with the no-festival caveat; MAE = mean of absolute errors on held-out weeks |
-| F3 | Where does the house bot put Diwali this year? | The toy series' 2025 festive weeks above two 2026 copies on the same calendar weeks | The Diwali slider, the weeks of 19 October to 9 November 2026, moves the 2026 marker and the festival-aligned copy while the bot stays; the readout says when the slider sits on 2026's own week | The bot two weeks early at the 2026 date; festival-aligned copies the week at the same distance from the festival |
-| F4 | Where should the plan sit when being short costs more? | The idle, late and total expected cost against the plan's distance from the forecast, scaled to the tallest curve | Two cost sliders, opening at the case's Rs 5.4 and Rs 25, move the curves, the minimum, the weeks covered, the packer shifts and the expected costs | The 0.82 quantile, a plan that covers about 82 weeks in 100, about 10,300 shipments and 86 shifts above the middle; plan quantile = under-cost / (under-cost + over-cost) |
+| Th1 | How can every batch shrink while the average stays flat? | Thursday's cohort staircase, the day's sizes and cells, filling month by month under the dashboard's line, with October on amber as the day's estimate | Next month adds a column up to October, then starts again from February; the slider resizes the August cohort from 1 to 3 times a normal 5,000 and moves its row, the counted members, October's reading and its range | 38.2, 38.0, 37.9 and 37.8 from June to September while every row falls and the August cohort sits outside the count; October about 33 (32.9; 31.9 to 33.8 for a month-two rate of 17 to 24 percent), about 35 at a normal size; everyone who joined before September reads 35.9; blend = sum of size x rate / sum of sizes |
+| Th2 | What is the flat number made of? | Two months of a coaching centre's batches, stacked by size, opening before batch B joins | Batch B's size, from 0, and batch A's rate move the stacks and the blended share | 250 of 500 is still 50 percent; the Gold dashboard's gentler prop, one cohort of about 5,000 entering at about 38.5 a month; the weighted average written out |
+| Th3 | Which stage owns the loss? | Gold members' September order flow from the day's events table, as bars whose lengths are the counts, opening with the carousel's menu opens left out | The unit toggle and the carousel toggle swap among four sets of counts and move every step's rate and the carousel line | 118 percent per session with the carousel in, 89 among sessions that searched, 101 per member; 34 and 61 percent; the loss inside the checkout, checkout start to order 72.5 to 55 percent for members on Android; each step divides by the step before in one unit |
+| Th4 | Is it novelty or habit? | A launch-week cohort against a later weekly cohort over eight weeks, and the blended weekly actives since the launch, every number a toy | The week slider draws both curves to that week; the blend toggle shows the blended line, its value and the launch week's record | At week four 24 against 36 percent; the blend sets its record of 70,000 in launch week, dips to 48,400 in week three and is back at 69,800 by week eight; read each cohort by weeks since signup, at week four or later |
+| F1 | What is a series made of? | Trend, season and noise panels on one scale, summed into one series over two labelled years, a toy | Three sliders move their panels, the series, its highest and lowest weeks and the trend's rise | The season's peaks and troughs move 25 thousand; on this noise the highest week goes from 255 to 277 thousand and the lowest from 167 to 146; the centre's own shapes and the cycle the toy leaves out; series = trend + season + noise |
+| F2 | How wrong on the weeks it never saw? | Friday's 104 weeks with the hidden weeks shaded, and the hidden weeks zoomed with each week's miss | The rule select (six rules) and the split slider, 52 to 91, move the forecast, the sticks, the rule's description, the MAE, the priced misses and the scoreboard; the vendor scores only at the day's split | 6,615 for festival-aligned and finance's rule, 9,831 for the house bot, 14,842 for drift, 14,923 for naive and 16,400 for the vendor; priced, Rs 13.5, 30.5, 28.0, 28.8 and 11.9 lakh; festival-aligned raised to its own 0.82 point, 2.6 percent, 7,879 and Rs 8.8 lakh; MAE = mean of absolute misses on held-out weeks |
+| F3 | Where does the house bot put Diwali this year? | Friday's 2025 festive weeks above the house bot's and festival-aligned's 2026 forecasts on the same calendar weeks | The Diwali slider, the weeks of 19 October to 9 November 2026, moves the marker, festival-aligned's copy, its eight-week total against both 2025 windows and the readouts; the bot stays | The bot peaks on 5 October at 418,200 and festival-aligned on 19 October at 434,928; the eight weeks against both 2025 windows, as a table of four forecasts; the bot's Rs 111.6 lakh scenario; copy the week at the same distance from the festival, then add the growth |
+| F4 | Where should the plan sit when being short costs more? | The average cost of the week of 19 October's misses against the plan's distance above the forecast, with festival-aligned's thirteen hidden-week misses tried as its demand and drawn as dots beneath | Two cost sliders, an idle packer-shift from Rs 500 to 800 and a late shipment from Rs 15 to 40, move the curves, the plan's point, the dots it covers, the shifts and the costs | 82 weeks in 100; the 0.82 point of the misses, 2.6 percent, covering 10 of 13; 446,236 shipments and 3,719 shifts for 19 October against 3,625; 20,275 shifts over eight weeks, 515 above 19,760; plan quantile = under-cost / (under-cost + over-cost) |
 | S1 | Does the method survive a change of company? | The week's methods on the left and the chosen unit's card on the right | The unit select lights the one or two methods the unit leans on and fills the card; the textarea writes the learner's own line into the map | Each unit leans on one or two methods, which come across unchanged; what changes is the metric, the constraint and the cost of an error |
 
-The day decks name the scene each slide calls in the slide's notes fence (spine section 11); the decks
-were not built when the page was, so the slide-to-scene list belongs to the week read.
+## Which deck slide calls which scene
+
+Every day's deck names its scenes in the slide's notes fence (spine section 11). Read from the five
+merged decks; Saturday's pack is not built yet, and the spine has its deck reopen the home screen.
+
+| Day | Slide, and the scene it calls |
+|---|---|
+| Mon | half1 S2 the home screen; S8 and S16 M1; S25 and S30 M2; S32 M3; S31 M4 |
+| Tue | half1 section 1, S8, S9 and S10 T1; S14 and S15 T2; half2 section 4, S38 and S40 T3 |
+| Wed | half1 S2 the home screen; S18 W1; S11 W2; S20 W3; S32 W4; S29 W5 |
+| Thu | half1 S2 the home screen, Thursday lit; section 1 and S12 Th2; sections 1 and 2, S18 and S22 Th1; section 3 and S30 Th3; half2 section 5 and S44 Th4 |
+| Fri | half1 S2 the home screen, Friday lit; S7 F1; S16 F2; S12 and S28 F3; S32 F4; half2 S1a F1, S1b F2, S1c F3 and F4 |
 
 ## Where the numbers come from
 
-The five day facts files did not exist when the page was built (this session ran on the day the spine
-was approved), so every case number comes straight from `docs/detailing/W04_case_file.md` and
-`docs/detailing/W04_analyst_craft_spine.md` as approved on 12 October 2026. When the facts files land,
-the week read swaps the `W4` block's values for the facts files' values by id and edits the reveal
-sentences that quote them.
-
-| Day | Case numbers, with their place in the sources | Derived on the page | Toy, labelled toy on the page |
+| Day | The day's numbers, with their place in the sources | Derived on the page | Toy, labelled toy on the page |
 |---|---|---|---|
-| Mon | The ticket table: 118,000 and 146,300 hours, 224,200 and 230,900 trips, 0.86 and 0.73, 0.04 and 0.09, 0.22 and 0.38, 4.8 and 4.6 minutes, 0.11 and 0.10, Rs 1.9 crore; L5's Rs 1.16 crore; the floor of Rs 300; the twelve rows' table | Rs 82 of top-up per trip (Rs 1.9 crore over 230,900); the four drivers' 1.98 to 1.89 and the enrolled base's 19.0 to 20.8 from the rows | The response curve between and above the case's two floors; the dots' behaviour, wait, top-up and acceptance under the three other paid numbers; the guardrail lines of 0.80 acceptance and Rs 40 a trip; the twelve weekly values of M4, set around the case's six-week figures |
-| Tue | Rs 314, Rs 260 and Rs 165 (ticket); 24.07 billion and 802 million a day (T3, NPCI through Outlook Money, checked 12 October 2026) | 776 million over 31 days; 656 drivers online in an average peak hour before the launch (118,000 hours over 180 peak hours: 5 weekdays, two windows of three hours, six weeks); per driver-week up 3 percent | The 6,000 driver-weeks behind the per driver-week reading; every factor in the two guesstimate trees, which the learner sets |
+| Mon | The ticket table: 118,000 and 146,300 hours, 224,200 and 230,900 trips, 0.86 and 0.73, 0.04 and 0.09, 0.22 and 0.38, 4.8 and 4.6 minutes, 0.11 and 0.10, Rs 1.9 crore; L5's Rs 1.16 crore; the floor of Rs 300; the twelve rows' table; M4's twelve weekly ratios, Monday's facts file (`acceptance_2026_MM_DD`, `rs_per_hour_2026_MM_DD`) | Rs 82 of top-up per trip (Rs 1.9 crore over 230,900); the four drivers' 1.98 to 1.89 and the enrolled base's 19.0 to 20.8 from the rows | The response curve between and above the case's two floors; the dots' behaviour, wait, top-up and acceptance under the three other paid numbers; the guardrail lines of 0.80 acceptance and Rs 40 a trip |
+| Tue | Rs 314, Rs 260 and Rs 165 (ticket); Monday's 6,360 and 6,500 active driver-weeks; 24.07 billion and 802 million a day (T3, NPCI through Outlook Money, checked 12 October 2026) | 776 million over 31 days; 656 drivers online in an average peak hour before the launch (118,000 hours over 180 peak hours: 5 weekdays, two windows of three hours, six weeks); Rs 5,817 and Rs 5,861 a driver-week | Every factor in the two guesstimate trees, which the learner sets |
 | Wed | 71 percent milk, 34 percent bread, 0.74 and 1.04 for bread to milk, 0.73 and 1.03 for eggs, 5.0 percent and 3.4 for chips with cold drink, 0.25 percent and 4.6 for ice cream with chocolate sauce, the milk band of lifts near one (the case file's 0.96 to 1.08, used to place pairs and no longer printed), 1.2 and 6.4 percent click-through, 60,000 views, 0.5 add rate, Rs 9 margin, 40,000 carts | The hundred carts (25, 9, 46, 20) in the case's proportions; each pair's support from share times confidence; Rs 17,280, Rs 3,240, Rs 14,040 and Rs 4.2 lakh | The tea stall (R1); peanuts, dip and namkeen beside chips; milk's 0.75 and 1.06 beside chips, inside the band; the other milk pairs at lifts 1.03 to 1.07 |
-| Thu | Month-one retention 58, 56, 55, 53, 52, 50, 49 and 31; 5,000 a normal month and 2.6 times for August; 38 percent flat; 118, 34 and 61 percent; 58 to 44, 57 and 52 for the checkout | The blend from the cells and the sizes, and September's 36 under the first-month count | The cells after month one, built to hold within 0.15 of 38.0 from June to September; the sale cohort's month-two 24 percent and the October month; the coaching batches (R1); the funnel's counts; the AI app's two cohorts |
-| Fri | The 104 weeks' dates; Diwali on 31 October 2024, 20 October 2025 and 8 November 2026 (F5, `facts.yaml`); 120 shipments a shift; Rs 650 and Rs 25 with their ranges; the MAE table; 4 percent a year of drift; the festive shape | Rs 5.4 a shipment; the 0.82 quantile; 10,300 shipments and 86 shifts; Rs 0.88 and Rs 1.35 lakh a week; the priced errors, the raised baseline's among them | The 104 weekly values, built to the case's shape and solved so the last 13 weeks score 21,000, 9,200, 8,900 and 14,800; the vendor's curve at 1.10 times last year's week; the trend, season and noise of F1 |
+| Thu | Thursday's facts: `cohort_size_jan` to `cohort_size_sep` (4,854 to 13,000 and 5,089), `cohort_mean_jan_jul` 5,000, `aug_times_normal` 2.6, `m1_jan` to `m1_aug`, the triangle's cells `tri_jan_m2` to `tri_jul_m2`, the dashboard's 38.2, 38.0, 37.9 and 37.8 (`dashboard_jun` to `dashboard_sep`), `everyone_sep` 35.9, `oct_sale_m2_assumed` 20.5 with its range of 17 to 24 and `oct_dashboard_estimate` 32.9, the September funnel per session and per member (`sep_sessions_*`, `sep_members_*`), `sep_menu_sessions_no_search` 38,932, `search_to_menu_searched_sep` 89 percent, the release's 58 to 44, 57 to 56 and 52 to 51, and checkout start to order 72.5 to 55 | The dashboard and October's blend from the cells and the sizes, with each older cohort sliding another 0.3 points in October as the generator's `october()` does; the funnel's counts with the carousel left out from menu view on (39,766, 31,748 and 20,477 sessions; 43,470, 24,183, 21,501 and 17,124 members), counted from the day's events table by the rule behind `search_to_menu_searched_sep` | The coaching batches (`toy_blend`); the AI app's two cohorts, whose week-four 24 and 36 are the day's `toy_ai_cohorts` and whose other weeks, the 100,000 launch cohort and the weekly 20,000 are this page's |
+| Fri | Friday's data: the 104 weeks of `weekly_shipments` and the vendor's 114 rows of `vendor_forecast` (fitted to week 91, its hold-out forecast for weeks 92 to 104, its forecast for weeks 105 to 114); Friday's facts: the weeks and Diwali dates, `training_weeks` 91, `holdout_weeks` 13, `per_shift` 120, the costs and their ranges, `growth_factor` 1.04, the alignment band of five weeks before Diwali's week to four after, and the facts the reveals quote (the hold-out's MAEs, high weeks and priced misses, the vendor's 1.4 percent fit and its 3.6 and 11.5 percent drift, the cushion, the plan and its shifts, the window totals, the back-test's 4,034, the scenario's Rs 111.6 and Rs 3.3 lakh) | Every rule's forecast, MAE, priced miss and the scoreboard at any split; the cushion at any pair of costs; the plan's shifts; the eight weeks against both 2025 windows; the cost curve and its readouts | The trend, season and noise of F1 |
 | Sat | Rohan Desai's "twenty times more one way than the other" (`docs/07_Client_Zero.md`, stakeholder table); Kalpa Health's six US metro areas billed in dollars (decision `build1-us-data`); the brief lines of spine section 10 and the case file's Saturday table | None | None: the four company cards carry no figure and say they are hypothetical |
 
-Finance's rule of thumb scores 9,600 in the case's MAE table and drift alone 11,500; the page draws the
-four methods spine section 11 names and leaves those two to the Friday notebook.
+At the case's state every Thursday and Friday readout reproduces its facts file to the printed digit:
+a scratch script ports the same rules onto the CSVs in Python and the page's readouts were read back
+in a headless browser at each scene's revealed state and at the sliders' ends.
 
-## What the build decided where the spine left a choice
+## What the build decided where the spine or the facts files left a choice
 
 | Choice | What the page does | Why |
 |---|---|---|
 | Which day sections show | A day button opens its own section and every earlier one, and dashes nothing below | The map lights every earlier node, and the sweep reaches every control only if the last day button opens all six days |
-| The prediction form | Lettered choices in twenty scenes, with the key on A four times, B five, C six and D five, and never the longest option; a guess slider with a lock button in W5, where the prediction is a count | The spine allows a choice or a slider guess; a key that sits on one letter or is always the longest lets a learner answer without thinking |
+| The prediction form | Lettered choices in twenty scenes, with the key on A five times, B four, C six and D five; a guess slider with a lock button in W5, where the prediction is a count | The spine allows a choice or a slider guess; a key that sits on one letter or is always the longest lets a learner answer without thinking. Since the second pass M4's key, A, is its longest option, which that pass's scene owns (see the open items) |
 | Opening states | Every scene opens before the state its prediction asks about: T2 draws a reading once it is chosen, T3 holds the measured 802 million for the reveal and opens its UPI tree at 50 million a day, Th2 opens before batch B joins, Th3 opens with the carousel's opens left out, F4 opens at the case's costs, and no caption or myth line prints the answer a prediction asks for | A drawing that shows the answer first turns the prediction into reading |
-| Thursday's dashboard | Counts a member from the second month after signup, says so in Th1's caption, and adds October as a labelled toy month where the sale cohort enters the count | Under the spine's first-month definition the case's flat 38 through September cannot hold (see the source list); the case's own words, "month-two retention", support this reading, and the toy October shows the cohort's size at work, the mechanism spine section 11 asks Th1 to show |
-| Th1's prediction | Where October's reading lands when the sale cohort enters the count, with options 24, 34, 36 and 38 | The ticket prints the flat 38 for June to September, so the spine's "what will the blend do" is answered before it is asked unless it moves to the month the cohort is counted |
-| Monday's twelve rows | The case file's table as printed, so M3's hand count is 1.90 to 1.19 | The table is the only set of rows the sources fix; the case file's own hand count disagrees with it (see the source list) |
+| Th1's October | An estimate on amber, each older cohort sliding another 0.3 points from September and the August cohort entering at 20.5 percent, with the readout giving the 17 to 24 range; the size slider keeps the 20.5 | The day estimates October this way (`oct_dashboard_estimate`, half1 S25) and names the assumption as one; the spine asks Th1's slider for the new cohort's size, so the rate stays the day's |
+| Th1's prediction | Where October's reading lands, with options 21, 33, 36 and 38 and the key on 33 | The ticket prints the flat 38 for June to September, so the question moves to the month the August cohort is counted, as the first pass decided; the key follows the day's 32.9 |
+| Th1's everyone-count | The reveal gives September's 35.9 alone | June's 40.9 is the same quantity and value as Kalpa's planted August blend, 40.9 (36 of 88), and September's 35.9 carries the point |
+| Th3's carousel left out | From menu view on, the counts keep only member sessions that included a search; per member, what members did in those sessions | The day's fix counts menu views among sessions that searched (89 percent, half1 S30); carrying the same rule down the funnel keeps every step a share of the step before |
+| Th4's blend | Later weekly cohorts of 20,000, so the blend sets its record in launch week, dips and is back near it, 69,800 against 70,000, by week eight | The day's transcript and S44 say weekly actives are still near the launch-week record two months on; under a launch spike and a steady weekly inflow the blend has to dip before it returns, so the page shows the dip and the return |
+| F2's rules | Six rules in the select and the scoreboard, made as Friday's generator makes them, each from the split week | The day scores six (half1 S19 and S21); spine section 11 names four, and finance's rule and drift sit in the day's own table |
+| F2's vendor | Scored only at the day's split, the week of 22 June 2026; elsewhere the page says it has no forecast | The vendor's hold-out rows are one forecast from that week (correction 1 in Friday's facts header); a fitted value is never scored |
+| F2's other splits | Every other rule is forecast from the chosen week with the day's 4 percent, and the readout says the 4 percent was measured on weeks after an early split | The day's own back-test keeps the 4 percent and says it was measured later (half1 S30) |
+| F2's raised row | Festival-aligned raised to its own 0.82 point on the hidden weeks, which is 2.6 percent at the day's split, with the in-sample caveat in the reveal | The day compares every forecast at its own 0.82 point on the same weeks and states that the cushion is read from them (Friday's sources, departures) |
+| F3's windows | The readout states festival-aligned's eight weeks against both 2025 windows at the slider's Diwali, and the reveal's table states all four forecasts at the case's Diwali | The facts' `window_2026` block and half1 S31; the table stays at the case's position so it never disagrees with the reveal's prose |
+| The vendor's 22 percent | Printed on the Friday ticket and in F3's table | The first pass kept the vendor's 22 off the page because Kalpa's lab mirrors it; the merged Friday ticket (S1) and its window table (S31) print it, and the task asks for both windows, so the page follows the day |
+| F4's curve | The day's empirical curve: the thirteen hidden-week misses tried as the week of 19 October's demand, with the plan read 0.82 of the way along the sorted misses | The bell curve on an MAE of 8,900 behind the first pass's 10,300 shipments has no place in the merged day, whose S32 and S33 read the 2.6 percent off the thirteen weeks |
+| F4's idle slider | Set in rupees an idle packer-shift, Rs 500 to 800 in steps of 10, with the cost of a spare shipment printed beside it | The case states the idle cost and its range per shift, and Rs 650 / 120 = Rs 5.42 is not on a grid a slider of rupees a shipment can step through |
 | S1's map | The week's five methods on the left, the unit's card on the right | The home map's nodes become the methods that stay, and the card shows what changes |
 | Motion | CSS transitions and one CSS animation (the driving dots), switched off under reduced motion; nothing animates by timer | Motion explains the mechanism without changing the page between the sweep's before and after reads |
-| Toggle labels | Every toggle keeps its label and carries its state in `aria-pressed`, which the pressed style shows | The WAI-ARIA authoring practice for toggle buttons keeps the label fixed while the state changes; the map's toggle now follows the same rule |
+| Toggle labels | Every toggle keeps its label and carries its state in `aria-pressed`, which the pressed style shows | The WAI-ARIA authoring practice for toggle buttons keeps the label fixed while the state changes; the map's toggle follows the same rule |
 | Light theme only | The house companion look, tuned for a projector | The house pages are light; a dark theme would need every drawing's colours as variables, which the house library does not carry yet |
 
-## What the two reviews found and what changed
+## What the first pass's two reviews found and what changed
 
 Two fresh reviewers, who wrote findings and edited nothing, walked the page while it was being fixed:
 a fresh graduate meeting each scene cold (43 rows at commit fcf106f: none blocking, 25 slowing, 16
 cosmetic, 2 scenes that simply work, plus 12 findings fixed during the walk, two of which blocked
 learning) and a rigor and numbers pass (32 number findings, 19 of them in the sources, 6 arithmetic, 9
-against the spec, 13 plant placements judged and 4 style points). Their reports sit in the session's
+against the spec, 13 plant placements judged and 4 style points). Their reports sat in that session's
 scratchpad as `walk_fresh_graduate.md` and `review_rigor.md`.
 
 | Where | What the reviews found | What changed |
 |---|---|---|
 | W1 | The reveal's bands of 0.80 and 0.70 with an overlap of 0.30 cannot happen | Bands of 0.70 and 0.50 (lift 0.86); the readout prints the range the overlap can take |
 | T2, W2, T3, Th2, Th3, W3, S1 | A drawing, caption, myth line or header printed the answer before the prediction | Each now opens before its answer (see the opening states above) |
-| Th1 | The reading was unstated, the unrounded blend drifted 0.8 points, the slider never moved the dashboard and the steps stopped at September | Reading stated, cells flattened to within 0.15 of 38.0, October added as a toy month, slider resizes the sale cohort |
-| F2 | The vendor priced cheapest with nothing reconciling it, the vendor's rule was unstated, the methods were undefined | The raised baseline priced in prose and as a scoreboard row, each method described as it is scored, the split's meaning printed |
+| Th1 | The reading was unstated, the unrounded blend drifted 0.8 points, the slider never moved the dashboard and the steps stopped at September | Reading stated, October added, slider resizes the August cohort; the third pass replaced the flattened toy cells with the day's |
+| F2 | The vendor priced cheapest with nothing reconciling it, the vendor's rule was unstated, the methods were undefined | The raised baseline priced in prose and as a scoreboard row, each rule described as it is scored, the split's meaning printed |
 | M3 | The four drivers "1.90 to 1.89" compared six drivers with four | The reveal gives 1.98 to 1.89 for the four, and names the shrinking-base rise |
 | M1, M2, M4 | The top-up's base, the guardrails' lines, the ring's meaning, the dots' scale, the north star and the mean of weekly ratios were unclear or loose | Each is now stated on the page |
 | W4, W5 | A partner at chance earned a full slot; milk's toy lifts sat in Kalpa's band; dots, regions and the floor were unexplained | Peanuts replace bread, milk's toy lifts move to 1.03 to 1.07, a legend, plain region labels and a floor sized from W4 |
@@ -120,81 +143,99 @@ Declined, with the reason:
 | Lighting a later day prints the earlier days' findings on the map (walk) | Spine section 1 asks for it; the map never prints the chosen day's own finding, so nothing is spoiled in class, and a learner who opens a later day first has chosen to read ahead |
 | T3 asks where the published number lands, where the spine says "within what range the product will land" (rigor) | The options are ranges and the learner builds a product to back a choice; the reveal names the anchor as the spine does |
 | Th3 has no platform split, so the drawing cannot show the Android loss (walk) | Spine section 11 fixes Th3's drawing and its two toggles; the reveal names the stage, and the split belongs to the Thursday notebook |
-| The reveal sentences do not follow the constants block (rigor) | The head comment now says so; generating reveal numbers from the block is a later engineering task |
+| The reveal sentences do not follow the constants block (rigor) | The head comment says so; generating reveal numbers from the block is a later engineering task |
 | W1's readout labels its expected area P(A) x P(B) before the reveal (rigor) | The two areas are the scene's drawing |
-| F2 prices an idle shipment at Rs 5.417 and F4 at Rs 5.4 (rigor) | No printed figure changes |
-| M1 asks about Rs 250 while the case's floor is Rs 300 (walk) | Spine section 11 fixes the Rs 250 question; the reveal now quotes the 1.83 at Rs 100 |
+| M1 asks about Rs 250 while the case's floor is Rs 300 (walk) | Spine section 11 fixes the Rs 250 question; the reveal quotes the 1.83 at Rs 100 |
 | Toggles should flip their labels (walk) | See toggle labels above |
 
-## Where the sources disagree with themselves
+## What the third pass's two reviews found and what changed
 
-These need the orchestrator, because the case file says no session changes a target alone. The page
-works around each one as stated; nothing here changed a source file.
+Two fresh reviewers, who write findings and edit nothing, were started on the eight rebuilt scenes at
+commit d1f3019: a rigor and numbers pass against the Thursday and Friday facts files, decks and
+generators, and a fresh graduate walking Th1 to F4 cold. Their findings, and what changed because of
+them, are recorded here when they report.
 
-1. **Monday's twelve rows.** The case file's table sums to 60 and 74 hours and 114 and 88 trips, a hand count of 1.90 to 1.19 trips per online hour, while the same section states 114 to 110 trips and 1.90 to 1.49, and spine section 5 says two drivers' hours doubled where E and F rise 1.6 and 1.4 times. Reaching 110 trips needs drivers A to D at about 2.4 an hour against 2.0 before. The rows also break spine section 4's margins: 1.90 before equals the city's 1.90, hours rise 23 percent against the city's 24 and the Kalpa plant's 22, and acceptance runs 0.86 to 0.74 against the city's 0.86 to 0.73.
-2. **Monday's Rs 1.16 crore.** The case file computes it from "61 percent of the top-up paid to driver-weeks with acceptance under 0.5" and then calls it "paid to idle hours"; a driver-week holds busy and idle hours. The page says driver-weeks.
-3. **Tuesday's per driver-week reading.** The case file says it rises "because hours rose", and hours do not enter it; with Monday's 140 drivers who joined after the launch it falls about 9 percent if every driver is active weekly. The page holds a toy 6,000 driver-weeks and says it leaves the joiners out. The case file's 1.58 x Rs 165 is Rs 261; Rs 260 needs the unrounded 1.578, which the page uses.
-4. **Wednesday's ticket.** Milk on 44 percent of slot impressions at 1.2 percent and the rest at 6.4 percent blend to 4.1 percent, against the stated 3.8; one of the four numbers has to change. The page does not print the blend. The twelve rows' bread to milk confidence of 0.75 sits 0.01 from the case's own 0.74, against the case file's own margin, and the case's milk band (confidence 0.68 to 0.78, lift 0.96 to 1.08) overlaps Kalpa's charger band (0.78 to 0.86 and 0.93 to 1.02); the page no longer prints the band.
-5. **Thursday's flat 38 percent.** Under the spine's definition (members who signed up before the month, counted from their first month) September cannot read 38: with the January to July cohorts at 38 and the August cohort entering at 31 percent with 13,000 members, September is at most 36.1. The case's sale cohort also enters below the blend, so it cannot prop the blend up the way the row's Kalpa plant and the Th2 toy describe. The page counts from the second month and says so; the definition, and the sale cohort's role, need settling before the Thursday pack is built, or learners will carry a reading into the lab that does not reproduce Kalpa's 41.
-6. **Thursday's other numbers.** The twelve rows hold at most 5 of 12 in September (41.7 percent, 0.7 from the Kalpa plant 41); 60,000 members against eight months of 5,000 and 13,000 for August is 53,000 (at 60,000 a normal month is about 5,875 and August 2.2 times); the ticket's 58 to 44 names no unit on the day whose lesson is the unit; and the Android release on 14 September with a 14-point fall sits inside Kalpa's planted window of 10 to 30 September, one point from its 15-point fall.
-7. **Friday's hold-out and vendor.** "The last thirteen weeks, beginning 22 June to 21 September 2026" is fourteen weeks; the page uses 29 June, which keeps 91 training weeks. The spine and `vendor_forecast` fit the vendor to all 104 weeks while the case's table scores it on 13 held out; a forecast scored on the hold-out has to be made from data to the week of 22 June.
-8. **Friday's calendar.** It has 112 weeks, to the week of 16 November 2026, while the festive window to staff runs to the week of 30 November, which needs 114.
-9. **Friday's errors priced.** On the page's toy weeks, which score the case's MAE table exactly, the vendor's errors, 12 of 13 too high, price at Rs 10.9 lakh against the baseline's Rs 18.6 lakh, and the baseline raised by 10,300 shipments prices at Rs 10.9 lakh, level with the vendor. The hold-out holds no festive week, so the case's argument for the baseline rests on a window the hold-out cannot test, and the 8,900 behind F4's plan comes from weeks with no festival. The Friday deck should be ready for a learner who spots it.
-10. **Friday's wording and plant equalities.** "A late shipment costs five times an idle shift" compares Rs 25 with Rs 5.4 a shipment, 4.6 times, with Rs 650 a shift. The plan quantile 0.82 equals Wednesday's Kalpa 0.82, the 4 percent drift and the festive multiples sit inside Kalpa's ranges, and "within 2 percent" and "at least 30 percent above" copy the Kalpa vendor plant; mirroring is the design, and the exact equalities are avoidable.
-11. **Spine section 1's map.** "Five tickets, five companies" counts Uber twice, and K1 "Kalpa Retail: the auto-reorder window" names the three-week window the row keeps for trainers; the page says four companies and "reorders per member", and every deck's slide two inherits the spine's wording until it changes.
+## The sources' contradictions, and what settled each
+
+The first pass found eleven places where the case file or the spine disagreed with itself and worked
+around each on the page. Pull requests 232 and 233 settled Monday's, Tuesday's, Wednesday's and
+Friday's in the case file and the spine, and the merged day packs settled Thursday's and carried the
+rest into their data.
+
+| | The contradiction | What settled it | What the page does now |
+|---|---|---|---|
+| 1 | Monday's twelve rows summed to 114 and 88 trips while the case file said 114 to 110 and 1.90 to 1.49, and "two drivers' hours doubled" | Pull request 232: the case file and the spine's L1 read 114 to 88 and 1.90 to 1.19, E's and F's hours "rose by about half", and the margin rule lets the shared starting 1.90 match | M3 prints 1.90 to 1.19, as before |
+| 2 | Monday's Rs 1.16 crore was called "paid to idle hours" | Pull request 233: paid to driver-weeks that accepted under half their offers | M1 says so |
+| 3 | Tuesday's per driver-week reading "rose because hours rose" | Pull requests 232 and 233: Rs 5,817 to Rs 5,861 on 6,360 and 6,500 active driver-weeks, bookings up 3 percent against driver-weeks up 2.2 | T2 reads Monday's driver-weeks since the second pass; its formula keeps the unrounded 1.578, so 1.578 x Rs 165 = Rs 260 |
+| 4 | Wednesday's milk on 44 percent of impressions blended to 4.1 percent against the stated 3.8; the twelve rows' bread to milk confidence sat 0.01 from the full data's 0.74; the milk band overlapped Kalpa's charger band | Pull request 233 and Wednesday's facts header: milk on half the slot impressions; the twelve rows' bread to milk now 1.00 with lift 1.50; the band stays a notebook check | The page prints neither the share, the blend, the twelve rows nor the band |
+| 5 | Thursday's flat 38 could not hold under the spine's first-month definition | Thursday's facts, `definitions` and the first correction: the dashboard counts members two or more months past their signup month, the reading the first pass took | Th1 draws the day's cells under that definition |
+| 6 | Thursday's twelve rows held 5 of 12 in September, 0.7 from Kalpa's 41; 60,000 members against 53,000; the 58 to 44 named no unit; the release's 14-point fall sat a point from Kalpa's planted 15 | Thursday's corrections: the twelve rows read 0 of 5 for the August members' month one and 2 of 12 for everyone in September; 53,089 members; the 58 to 44 counts sessions; Kalpa's planted fall in the window is now 83.3 to 63.6 percent, 19.7 points | The ticket prints 53,089 and the August cohort's 13,000; the page prints no twelve-row count |
+| 7 | Friday's hold-out of "22 June to 21 September" was fourteen weeks, and the vendor was fitted to the weeks it was scored on | Pull request 233 and Friday's corrections 1 and 6: thirteen weeks from 29 June, every forecast from 22 June, the vendor's hold-out rows a forecast from that week | F2 reads the vendor's own rows and scores it only from 22 June |
+| 8 | Friday's calendar stopped at 16 November, short of the 30 November window | Pull request 233: 114 weeks | The page's weeks run to 114, the vendor's forecast rows among them |
+| 9 | On the first pass's toy weeks the vendor's errors priced level with a raised baseline, with no festive week in the hold-out | Friday's pack prices every rule and lets the vendor's cheaper misses stand (S23), names why it still loses the plan (S24) and tests placement on the 2025 festival (S30: 4,034 against 58,250 a week) | F2 and F3 follow the day |
+| 10 | "A late shipment costs five times an idle shift"; the plan quantile and other Friday numbers equalled Kalpa's plants | Pull request 233: 4.6 times a spare shipment; the plant-margin rule applies to Kalpa planted values of the same quantity | F4 prints 4.6 times; the 0.82 stays beside Wednesday's Kalpa confidence 0.82, a different quantity |
+| 11 | Spine section 1's map counted five companies and named a trainer-only window | Pull request 233: four companies, and Kalpa's node names reorders per member | The map already said so |
+
+Still open, for the orchestrator or the next pass:
+
+- M4's key, A, is its longest option, against the page's own rule. The second pass set it, and this
+  pass left Monday's and Tuesday's scenes alone as the task asked; lengthening option D, "It never
+  turns.", would clear it.
+- W5 prints the Wednesday case's thin pair, ice cream with chocolate sauce, at 0.25 percent of carts,
+  the same quantity and value as Kalpa's planted thin pair (`kalpa_thin_support`, 0.25 percent).
+  Wednesday's own pack prints the same number, so a change belongs to Wednesday first.
+- Th3's 64 percent, checkout start to order per session, prints beside Kalpa's planted cart to
+  checkout in the window, 63.6. The steps differ and Thursday's own S28 prints the 64, so it stays.
 
 ## The proofs
 
 ### The browser sweep
 
-The sweep's last lines on the final page, with the pre-installed Chromium at `/opt/pw-browsers`
-(`setup.sh` was not needed):
+The sweep's last lines on the final page, with the pre-installed Chromium at `/opt/pw-browsers`:
 
 ```
       C2_W04_D01_week_explorer_STUDENT.html: 187 controls clicked, 0 inert, 0 not visible in the opening state, 0 console errors
 RESULT: PASS (0 failures)
 ```
 
-`python3 scripts/verify.py content/W04/D1` returned `PASS  2 files, every stem C2_W04_D01_ and every
-folder valid for a teaching day`, the same sweep result and `RESULT: PASS (0 failures)`; the two files
-are the page and these notes, since the Monday sessions' files were not on this branch. The page is
-plain ASCII with no URL, no external file, no storage call and no network request.
+`python3 scripts/verify.py content/W04/D1` returned `RESULT: PASS (0 failures)` over the 59 files of
+Monday's merged folder, with the same sweep result. The page is plain ASCII at 259 KB, under the
+spine's 400 KB, with no URL, no external file, no storage call and no network request.
 
 ### The plant grep
 
-A script reads the page three ways (rendered with every day open, rendered with every scene revealed,
-and the `W4` constants block) and searches for every Kalpa value the spine and the case file plant
-(sections 5, 7, 8 and 9 of the spine, the case file's Kalpa transfers and the row's PLANTED lines).
-Values moved off planted numbers during the build: the launch cohort's curve (22 and 15 percent and a
-blended 41,900 became 24 and 16 percent and 42,900), the chips and milk pair (0.97 became 1.06), the
-other milk pairs drawn in the band (0.99 and 1.01 became 1.03 to 1.07), the support axis (its 0.3 and
-30 percent labels are gone), the milk band's printed 0.96 to 1.08, a constants comment that listed
-festive multiples between 1.4 and 1.9, and M3's "down 4 percent", now the exact 4.5. The Friday ticket
-gives the vendor and finance as eighteen points apart and the page never prints the vendor's 22.
-
-The 26 hits that remain are the case's own numbers or false matches:
+A scratch script reads the page with every scene revealed and the `W4` constants block, and searches
+for every planted Kalpa value in its printed forms: the `plants` blocks of Monday's and Thursday's
+facts files, the PLANT entries of Wednesday's `kalpa_lab`, and the Friday Kalpa plants of the case
+file's list, with their values from Friday's `kalpa` block. Nineteen hits remain, each the case's own
+number or a different quantity:
 
 | The hit | Where | Why it stays |
 |---|---|---|
-| 6.4 and 1.2 percent, matched as "4 percent" and "2 percent" through their decimals | W4's strip, caption and reveal | The case's two click-through rates |
-| "at least 2 percent of carts" | W3's reveal | The case file's own sentence for the milk band (its line 394) |
-| 0.82 | F4's reveal and formula, the Friday node on the map | Spine section 11 fixes F4's reveal at about 0.82, the case's 25 over 25 plus 5.4 |
-| About 4 percent a year | A constants comment | The Friday case's drift; the page prints it as "times 1.04 for the year's drift" |
-| 30% | An axis tick on Th1's chart | A tick on a scale |
-| "more than 5 percent below its before average" | M4's caption | M4's own rule for when a toy line turns |
+| 0.82, seven times | The Friday node, F2's reveal and scoreboard, F4's drawing, readouts, reveal and formula | Friday's plan quantile (`plan_quantile`), set beside Wednesday's Kalpa confidence 0.82, a different quantity |
+| 0.84 | M2's readout | M2's toy acceptance under the acceptance floor, beside Kalpa's charger share of 84.5 percent |
+| 0.25 percent | W5's reveal | Wednesday's case number (see the open items) |
+| 64 percent, twice | Th3's readout and drawing | The day's checkout start to order per session (see the open items) |
+| 31 percent | The Thursday ticket | The August cohort's month one, beside Kalpa's 30.9 percent of sessions skipping search |
+| 7.8 percent | F4's reveal | Festival-aligned's largest hidden-week miss, beside Kalpa's checkout per session |
+| 24 percent, four times | T1's options, Th1's readout and reveal, Th4's reveal | Monday's 24 percent rise in hours, the day's 17 to 24 range, and the day's AI toy, beside Kalpa's checkout per member of 24.5 |
+| 22 percent and 22.0 percent | The Friday ticket and F3's table | The Friday case's vendor promise (`vendor_promise_pct`), which Kalpa's lab mirrors by design |
 
 ### The writing checks
 
 | Check | Scope | Result |
 |---|---|---|
 | The style sweep inside `verify.py` (dashes, banned words, the contrast construction it rejects, clock times, the rupee glyph, invisible Unicode, names, faculty sessions, undated links) | The page and these notes | Pass |
-| `tic_scan.py` from the llm-tic-scrubber skill | The page rendered with every scene revealed, 1,467 runs; these notes | Clean |
-| The house-rule words and glyphs, searched again on the rendered text | Every scene revealed | None found |
-| The humanizer skill's read, in file mode on prose only | Every reveal paragraph | Sentences that carried an aphorism now carry a number (W5, Th1, Th2, Th4, F2 and S1) |
+| `tic_scan.py` from the llm-tic-scrubber skill | The Thursday and Friday sections rendered with every scene revealed, 265 runs | Clean |
+| The humanizer skill's read, in file mode on prose only | The rebuilt tickets, captions, readout lines and reveals | Two staged lines rewritten: F2's "Priced, the order changes." now carries its reason, and F3's scenario names what it rests on |
 
 ### Screenshots
 
-Taken after the last fix with the pre-installed Chromium, each scene revealed, in the session's
-scratchpad under `final_shots/`: each day's last scene (`M4.png`, `T3.png`, `W5.png`, `Th4.png`,
-`F4.png`, `S1.png`), all 21 scenes under `final_shots/all/`, and the map at load, with each day lit and
-with the connections shown under `final_shots/map/`.
+Taken with the pre-installed Chromium, each rebuilt scene in its revealed state and at its sliders' ends,
+in this session's scratchpad: `shots/` holds Th1 to Th4 and F1 to F4 revealed, `shots_f2early/` F2 at
+the week of 22 September 2025 with the vendor chosen, `shots_f3_108/` and `shots_f3_111/` F3 with
+Diwali on 19 October and 9 November, and `shots_f4_hi/` and `shots_f4_lo/` F4 at Rs 500 and Rs 40 and
+at Rs 800 and Rs 15. Each was looked at. Th3's bars were narrowed before drawing so the day's longer
+counts clear the rate labels, and Th4's curve label was shortened to fit; the screenshots then showed
+F3's festival-aligned label crossing its own line, F4's long readouts squeezing their labels to a word
+a line, and F4's plan label crossing the forecast line at the high costs, and each was moved or split.
