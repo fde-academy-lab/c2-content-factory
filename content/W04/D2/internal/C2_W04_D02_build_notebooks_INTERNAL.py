@@ -239,6 +239,13 @@ check("the son can repeat the title, since it carries his Rs 700", "Rs 700" in s
         **The plausible wrong answer.** "Sales a day rose from Rs 11,900 to Rs 12,600, so the longer
         hours work; keep them." Every rupee in it is right, and a hurried read reaches it in one
         line.
+
+        **Predict before you run.** What bought the extra Rs 700 a day?
+
+        a) More customers, each spending more
+        b) Two more hours a day, each hour earning less
+        c) Higher prices on the same goods
+        d) The festival fortnight alone
         """),
         code('''
 hurried = m.per_day.diff().iloc[-1]                  # sales a day, October less September
@@ -249,8 +256,8 @@ check("the hurried read is true to the rupee", hurried == 700)
 check("and it was bought with two more hours a day", extra_hours == 2)
 '''),
         md("""
-        **Why it is wrong.** The rise was bought with two more hours a day, and the decision is
-        about those hours: per hour the shop earns 11.8 percent less. The sentence would keep
+        **Why it is wrong.** The answer is b: the rise was bought with two more hours a day, and the
+        decision is about those hours: per hour the shop earns 11.8 percent less. The sentence would keep
         paying the helper Rs 170 a day without asking whether the evening earns it. **The check:**
         name the unit the decision is priced in, here the hour, before reading any number. **The
         fix:** the evidence is sales per hour, Rs 1,190 to Rs 1,050, with sales per customer beside
@@ -399,6 +406,13 @@ check("every page is headed by a question", all(q.endswith("?") for q in questio
         **The plausible wrong answer.** "The slide is crowded, so the festival fortnight goes to the
         appendix with the rain days; it is only a detail." A hurried sort that asks only the first
         two questions puts it there.
+
+        **Predict before you run.** Where does the hurried sort send the festival fortnight?
+
+        a) The slide
+        b) The son's page
+        c) The accountant's page
+        d) Off the slide and out of every page
         """),
         code('''
 def hurried_route(e):
@@ -414,8 +428,8 @@ check("the hurried sort drops the caveat", hurried_route(festival) == "leaves")
 check("the rule keeps the caveat on the slide", route(festival) == "the slide")
 '''),
         md("""
-        **Why it is wrong.** The son will raise the festival first, and when he finds it missing he
-        calls the slide dishonest, after which Ramesh trusts nothing on it. **The check:** is the
+        **Why it is wrong.** The answer is d, and the son will raise the festival first: when he
+        finds it missing he calls the slide dishonest, after which Ramesh trusts nothing on it. **The check:** is the
         caveat on the slide itself? **The fix:** ask the caveat question first; when the slide is
         crowded, something else leaves instead.
 
@@ -626,6 +640,14 @@ plt.show()
         **The plausible wrong answer.** "Attendance rose 12.8 points this term, from 76.5 to 89.3,
         so the timetable did it, and the exams are irrelevant." It concedes nothing, and every
         number in it is right.
+
+        **Predict before you run.** Last year, with the old timetable, how far did the exam weeks
+        rise above weeks 3 to 5?
+
+        a) Not at all
+        b) About 4 points
+        c) About 8 points
+        d) The full 12.8 points
         """),
         code('''
 overclaim = round(w.loc[6:8, "this year"].mean() - start["this year"], 1)
@@ -643,8 +665,9 @@ ax.set_title("Concede the exams' 8, keep the 4.7 (invented)", loc="left")
 plt.show()
 '''),
         md("""
-        **Why it is wrong.** The 12.8 points run from the first weeks to the exam weeks, so they
-        carry the exams' lift, which last year shows without any new timetable. The sports teacher
+        **Why it is wrong.** The answer is c, 8.3 points: the 12.8 points run from the first weeks to
+        the exam weeks, so they carry the exams' lift, which last year shows without any new
+        timetable. The sports teacher
         is partly right, and a reply that denies it hands the staff room to her. **The check:** did
         the reply name the true part and the line of evidence, in that order? **The fix:** concede
         the exams' 8 points and claim only what the like-for-like weeks show, 4.7.
@@ -1442,6 +1465,14 @@ plt.show()
         **The plausible wrong answer.** "A town of 24,000 people (invented) has 96,000 households."
         Size a household business on it and the market is sixteen times too large. A hurried chain
         multiplies where it should divide, and every step after it is careful.
+
+        **Predict before you run.** With about 4 people to a household, which pair is the hurried
+        count and then the right one?
+
+        a) 96,000 hurried, about 6,000 right
+        b) 6,000 hurried, about 96,000 right
+        c) 24,000 both ways, since the town does not change
+        d) 96,000 both ways, since four is the household size
         """),
         code('''
 t = tests.set_index(["test", "quantity"]).value
@@ -1473,8 +1504,8 @@ fig.tight_layout()
 plt.show()
 '''),
         md("""
-        **Why it is wrong.** Households are people divided by about four, so the town has about
-        6,000; the chain multiplied the unit, and nothing after it could repair that. **The
+        **Why it is wrong.** The answer is a. Households are people divided by about four, so the town
+        has about 6,000; the chain multiplied the unit, and nothing after it could repair that. **The
         check:** households never exceed people. **The fix:** write the unit beside every factor
         before multiplying. The other two tests fail the same quiet way: a 28-day pack of 1.5 GB a
         day is 42 GB and a 30-day month at the same rate is 45 GB, so compare per day; Gulmohar's
@@ -1658,7 +1689,14 @@ plt.show()
 
         **The plausible wrong answer.** "The draft is the thorough version: it carries every
         number, so it should go to Ramesh." The check below is the rule as a function, run on both
-        versions; the draft fails it where a reader would.
+        versions.
+
+        **Predict before you run.** Of the five rules, how many does the draft pass?
+
+        a) All five
+        b) Four
+        c) One
+        d) None
         """),
         code('''
 def page_check(text):
@@ -1691,8 +1729,9 @@ ax.set_title("The same rules, run on both versions (invented)", loc="left")
 plt.show()
 '''),
         md("""
-        **Why it is wrong.** Thorough is measured by what the reader can act on in two minutes. The
-        draft opens on a list of figures with no claim, needs four method words decoded, and puts
+        **Why it is wrong.** The answer is c: the draft passes only the length rule. Thorough is
+        measured by what the reader can act on in two minutes. The draft opens on a list of figures
+        with no claim, needs four method words decoded, and puts
         no cost or signer in its last line; the page carries 108 words and passes every rule.
         **The check:** read the first sentence alone: does it say what to do and why? **The fix:**
         the four parts as four sentences, in plain words.
@@ -1896,6 +1935,13 @@ check("trips per person moves the answer most", swing.index[-1] == "weekday Uber
         **The plausible wrong answer.** "1 crore people, 1 trip per 100 people, so 1 lakh trips; a
         driver does 2.4 trips an hour; so about 41,700 drivers." A city head who takes that to the
         review asks for incentives for about seven times the drivers the chain says are needed.
+
+        **Predict before you run.** Which step did the hurried chain skip?
+
+        a) The buffer for the busiest half hour
+        b) The day's trips were never brought into an hour of the evening window
+        c) The people in the city were counted twice
+        d) None: it is the chain, rounded differently
         """),
         code('''
 day_trips = 10_000_000 * 0.01                          # a day's trips
@@ -1918,8 +1964,8 @@ plt.show()
 check("a second route, step by step, reaches the same drivers", abs(running.iloc[-1] - central) < 1e-6)
 '''),
         md("""
-        **Why it is wrong.** A day's trips were divided by an hour's trips per driver: a period
-        mismatch, and the idle share and the evening window were skipped as well. **The check:**
+        **Why it is wrong.** The answer is b. A day's trips were divided by an hour's trips per
+        driver: a period mismatch, and the idle share and the buffer were skipped as well. **The check:**
         write the unit beside every factor. **The fix:** bring the day's trips into the evening
         window's hour before dividing. The step-by-step chain above is a second route to the same
         5,700, and it agrees with the vectorised chain to the driver.

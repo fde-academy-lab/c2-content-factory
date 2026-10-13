@@ -321,7 +321,7 @@ m["per_customer"] = m.sales / m.customers  # 100 and 100
 
 ```notes
 LIVE, 5 minutes. Read the wrong sentence in the son's voice and ask what decision it would make.
-Then the code, line by line in plain words: add up each month, divide by its days, divide again by
+Then the code, one line at a time, said as a sentence: add up each month, divide by its days, divide again by
 the hours open, and divide the sales by the customers. Notebook 01 runs it on the 56 days and checks
 it against the hand count. Transition: the rules.
 ```
@@ -660,7 +660,7 @@ rise = early["this year"] - early["last year"]        # 4.7 points, before any e
 **The concession carries one number and the answer carries another.** Exams lift both years by about 8 points; the timetable's weeks sit 4.7 points above last year's before any exam.
 
 ```notes
-LIVE, 1 minute 30 seconds. Read each line in plain words: one row per week, one column per year;
+LIVE, 1 minute 30 seconds. Read each line aloud as a sentence: one row per week, one column per year;
 the exam weeks against the three weeks before them; the early weeks this year against last year.
 Notebook 03 runs it and composes the four moves from the two numbers. Transition: the rules.
 ```

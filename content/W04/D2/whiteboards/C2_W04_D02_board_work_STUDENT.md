@@ -172,7 +172,7 @@ flowchart LR
 
 ---
 
-## What stays on the board at the end of the day?
+## What stays on the board when the day closes?
 
 The concept map with all five boxes lit, the four steps with unit, period and definition beneath them,
 and the day's sentence from S93: the scheme is paying for online hours that carry no trips, Rs 314 to
