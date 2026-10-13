@@ -26,7 +26,7 @@ and expected value no video was verified in the session, so those slots read "to
 
 | R2 | Fact as the pack states it | Source and its check date | What the fetch confirmed |
 |---|---|---|---|
-| W1 | Counting co-purchases would make a few bestsellers, such as Harry Potter books and trash bags, the top recommendations for every customer; the team then measured the increased likelihood of buying B "with any given purchase", scaling heavy buyers down; Prime Video's first autoencoder trailed a list of the past two weeks' most popular rentals until it was trained on viewing before a cutoff and scored on the two weeks after it | https://www.amazon.science/the-history-of-amazons-recommendation-algorithm (checked 13 October 2026 for the bestseller, base-rate and heavy-buyer passages; 12 October 2026 for Prime Video) | All three passages, the Prime Video one refetched on 12 October 2026 for its baseline ("the most popular movie rentals of the previous two weeks") and its test ("the two-week period after the cutoff time"); the article is Larry Hardesty's, 22 November 2019, so the pack says "Amazon Science's history" and never quotes the team |
+| W1 | Counting co-purchases would make a few bestsellers, such as Harry Potter books and trash bags, the top recommendations for every customer; the fix was a relatedness metric based on differential probabilities, how much more likely buyers of A are to buy B than the average customer, a difference where lift takes a ratio; the team then measured the increased likelihood of buying B "with any given purchase", scaling heavy buyers down; Prime Video's first autoencoder trailed a list of the past two weeks' most popular rentals until it was trained on viewing before a cutoff and scored on the two weeks after it | https://www.amazon.science/the-history-of-amazons-recommendation-algorithm (checked 13 October 2026 for the bestseller, base-rate and heavy-buyer passages; 12 October 2026 for Prime Video) | All three passages, the relatedness passage refetched on 13 October 2026 ("a relatedness metric based on differential probabilities ... The greater the difference in probability, the greater the items' relatedness"), the Prime Video one refetched on 12 October 2026 for its baseline ("the most popular movie rentals of the previous two weeks") and its test ("the two-week period after the cutoff time"); the article is Larry Hardesty's, 22 November 2019, so the pack says "Amazon Science's history" and never quotes the team |
 | W1 | Linden, Smith and York, item-to-item collaborative filtering | https://www.cs.umd.edu/~samir/498/Amazon-Recommendations.pdf (checked 12 October 2026) | Title, authors, IEEE Internet Computing, January and February 2003, from the PDF's own text |
 | W2 | 1992, about 1.2 million baskets from Osco Drug stores, early evening, and the chain does not appear to have moved any shelf | https://www.theregister.com/2006/08/15/beer_diapers/ (checked 12 October 2026) | 1992 and Teradata's team under Thomas Blischok; "between 5pm and 7pm", written as early evening by the case file's rule; the shelf move hedged in the source ("does not appear to have exploited the information") |
 | W4 | Maxxsaver: over 28 percent of MTUs; AOV up 16 percent quarter on quarter to Rs 612; part of the larger basket's margin funnelled back to the user; it sometimes consolidates carts into fewer orders | https://www.swiggy.com/corporate/wp-content/uploads/2025/07/Q1-FY2026-Shareholder-letter.pdf (checked 12 October 2026) | Question 9 of the letter's Q&A, page 13, quoted; the letter never says the discount is paid on adds that would have happened anyway, so the pack states that as the analyst's reading |
@@ -65,6 +65,13 @@ and expected value no video was verified in the session, so those slots read "to
 
 ## Which cold-read findings were not fixed, and why?
 
+The concept-first rebuild's three reads (13 October 2026: a trainer who did not write the day, a
+fresh graduate and a hiring interviewer, 103 findings, one blocker) close in
+`internal/C2_W04_D03_cold_reads_INTERNAL.md`, whose last section lists the seven not fixed in full
+and why: the explorer outside this folder, sample size parked for the faculty session, upsell
+defined once, notebook 08's revealed split, the definitional sweep, the case file's Rs 9 targets,
+and the spine's verbatim handoff line. The case-first build's reads closed as follows.
+
 Four findings were not fixed in full, each for the reason below; every other finding of the two
 reads, all seven of the interviewer re-check and all eight of the confirmation read, was fixed, and
 `internal/C2_W04_D03_cold_reads_INTERNAL.md` maps each one to its change.
@@ -78,9 +85,11 @@ reads, all seven of the interviewer re-check and all eight of the confirmation r
 
 - Slide one is the topic slide, with no quote cover, so slides two to five carry the week map, the
   five topics, the concept map and the ticket (acceptance line 1). Each concept chapter runs to six
-  slides with its opener; half one holds 63 slides and half two 22.
+  slides with its opener; half one holds 63 slides and half two 21, SECTION 10 at 15 with its opener
+  after the Kahoot slide folded into S73's minutes.
 - Four numbers in the plan were corrected in the deck and in the generator's assertions: the support
-  trap adds 4 and 4 to 8, not 7; unsorted keys count 60 pairs, not 66; the top lift on the twelve
+  trap adds 4 and 4 to 8, not 7; both name orders count 60 pairs, not 66, and names left unsorted
+  split a pair across two keys; the top lift on the twelve
   orders is gulab jamun and curd at 6.0; the chaas band (confidence 0.60 to 1.00, lift 0.80 to 1.33)
   holds for the four items in four or more orders.
 - The Kahoot's item 2 computes lift from the twelve carts' counts (4, 8 and 4 give 1.50), keeping
@@ -92,7 +101,7 @@ reads, all seven of the interviewer re-check and all eight of the confirmation r
   repeated Sharma Kirana's, to an invented Nagpur hardware shop (paint, brushes, sandpaper; lift 1.24
   and a pair at exactly 1.00), clear of Kalpa's catalogue and of Instamart's items.
 - Chapter 9 holds the second concept drill, items 5 to 7, inside its 18 minutes; chapter 10 opens on
-  ch3_four_pairs as a four-minute paper check, and the pair-card sort runs inside S63.
+  ch10_four_pairs as a four-minute paper check, and the pair-card sort runs inside S63.
 - The decks drop the stock-out picture slide, the morning's-answer slide, the follow-ups slide and
   the AI-variant slide (read in the lab from extras), and the stock-out and actual-against-expected
   pictures retire from the figure script; the tea stall's two pictures are deleted.
@@ -103,5 +112,35 @@ reads, all seven of the interviewer re-check and all eight of the confirmation r
   the board.
 - A loss prints as "-Rs 71", and the facts audit matches a loss by its size. A toy fact's `used_by`
   keeps its new chapter numbers, after a renumbering pass had sent notebook 04 to 11.
-- The study notes run to 3,696 prose words against about 3,500, after a pass that cut repeated
-  sentences rather than whole sections.
+- The study notes run to 2,836 words of running prose, under the spine's 3,000, and about 3,640
+  with their tables and headings, against the plan's cap of about 3,500: the fix pass added the
+  reads' corrections and cut repeated sentences rather than whole sections.
+
+## Which decisions did the fix pass after the three reads take?
+
+- The case's money is credited to taking milk out. `strip_log` shows every suggestion other than
+  milk clicking alike inside each slot, whatever its lift (slot 1, 8.1 to 8.4 percent; a generator
+  check holds it), so the Rs 6.3 lakh comes from moving milk's impressions, the 1.5 bar removes milk
+  by arithmetic (no partner can pass 1 / 0.71 = 1.41), and whether lift beats a count ranking without
+  milk is left to a test. Regenerating `strip_log` so click-through rises with lift was the other
+  route; it would have changed the case tables the brief keeps byte-identical.
+- Rs 9 an add, Rs 17,280 and Rs 3,240 stay central, since the approved case file (L5) sets them; the
+  pack says every add is priced at the basket's Rs 9, milk's too, and names both corrections: milk's
+  own Rs 2 raises the gain, the strip's own adds at about Rs 7 lower it, about Rs 5.7 lakh with both.
+- "Ceiling" and "up to" are gone: the figure is about Rs 6.3 lakh at the central assumptions, its
+  range, gross before the adds that would have come anyway.
+- Chapter 4 teaches lift's ceiling, one over the partner's share (1.33 for chaas, 1.41 for milk), and
+  defines near one as under the 1.5 bar; its short question became "does 1.00 mean a bundle?".
+- The floor goes where luck stops carrying a lift past the bar: 8 orders in the invented month, where
+  no pair reaches 1.5 (the interviewer's 11 marked where lifts settle into 0.90 to 1.25, a different
+  test); twelve orders are too few for any floor, so roti and sabzi is trialled before a card.
+- S39 asks the direction the twelve-cart drill never computes, milk to bread, so the vote stays a
+  prediction.
+- The lab's hand count reads pen set with phone grip (1.92 on the twelve, 1.12 on all 812 baskets) in
+  place of the earphones and their case, the lab's finding.
+- A concept notebook's your-turn check prints its reference only once the learner's number exists,
+  compares at two decimals and prints "not yet" instead of stopping the run.
+- The 0.97 that bread and milk read with chance sized by cart is never printed in a STUDENT file,
+  since the lab's plant shares the number; learner files say "below one".
+- S73's handoff line stays the spine's verbatim line, though the interviewer asked for "once cart size
+  is counted"; the extra and the TRAINER file carry the cart-size point.
