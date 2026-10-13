@@ -22,7 +22,7 @@ to whichever cohort the room ranks weakest.
 ## What does the drill test?
 
 It tests reading a row for how members leave, comparing cohorts at the same age rather than in the
-same calendar month, and the two weighting ideas chapter 2 rests on: a blend is a size-weighted
+same calendar month, and the two weighting ideas SECTION 6 rests on: a blend is a size-weighted
 average, and its second route has to land on the direct count.
 
 ## Why is each key right, and each other letter wrong?

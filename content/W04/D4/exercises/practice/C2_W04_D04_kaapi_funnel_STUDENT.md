@@ -1,11 +1,11 @@
 # Which step of a four-stage funnel only looks like a loss, or a win?
 
-Chapter 3 found Zomato Gold's loss in one step of the Android checkout, after reading past a search
-step that passed 100 percent. This drill moves the same reading to a shop you have never seen:
+SECTION 7 found Zomato Gold's loss in one step of the Android checkout, after reading past a search
+step that passed 100 percent, with the funnel rules SECTION 4 taught on a college. This drill moves the same reading to a shop you have never seen:
 Kaapi and Co., an invented bakery chain with an ordering app in Chennai. Every number on this page is
 invented for practice.
 
-This is a drill inside chapter 3, on paper, with no code.
+This is a drill for the lab's practice time, on paper, with no code, after the practice set.
 
 **How to read an item.** Its level runs from L1, a count by hand, to L6, the call an interviewer asks for; "a design call" asks you to choose a way and say why. "Screens" are interviews, and a GCC is a global capability centre, a multinational company's own technology and analytics centre in India.
 

@@ -1,4 +1,4 @@
-# How is one cohort's row counted, and how do a funnel's first two steps divide?
+# How is one cohort's row counted on the twelve-member card?
 
 Zomato Gold, Chennai. The membership dashboard reports month-two retention as flat at 38 percent
 from June to September 2026, while every signup cohort's own curve falls with age, and since a new
@@ -7,9 +7,8 @@ Android checkout shipped on 14 September, members' add-to-cart to order on Andro
 everyone problem, and which step of the order flow owns the loss. Illustrative case: the company is
 real, the situation and the data are synthetic, built for this class.
 
-The trainer builds this set with the room. Items 1 and 2 run in chapter 1 on the twelve-member card:
-the first is fully worked, the second half worked. Items 3 and 4 open chapter 3 on a toy funnel, and
-both are yours.
+The trainer builds this set with the room in SECTION 5, on the twelve-member card, which applies
+SECTION 1's cohort construction to Gold: the first item is fully worked, the second half worked.
 
 **Who needs the answer.** The membership lead, who will read every cohort row the room builds today.
 A row counted over the wrong members makes a weak group look strong.
@@ -18,16 +17,12 @@ A row counted over the wrong members makes a weak group look strong.
 
 - What does the May group keep at each month since joining?
 - What does the June group keep, once its first month is counted?
-- What does each of a funnel's first two steps read, over the step before?
-- Which checkout rate belongs on the membership lead's chart?
 
-Five terms, defined once. A **cohort** is the members who joined in the same calendar month. **Month
-one** is the first full calendar month after joining; the joining month is month zero and is never
-counted. A member is **active** in a month when she placed at least one order in it. A **session** is
-one visit to the app, from opening it to leaving it. A funnel **step's rate** divides those who
-reached the step by those who reached the step before, in one unit: sessions or people.
+Three terms, defined once. A **cohort** is the members who joined in the same calendar month.
+**Month one** is the first full calendar month after joining; the joining month is month zero and is
+never counted. A member is **active** in a month when she placed at least one order in it.
 
-These are seven of the twelve members on the chapter 1 card, rows of the case data, which is
+These are seven of the twelve members on the SECTION 5 card, rows of the case data, which is
 synthetic like all of it. A 1 means she placed at least one order that calendar month.
 
 **How to read an item.** Its level runs from L1, a count by hand, to L6, the call an interviewer asks for; "a design call" asks you to choose a way and say why. "Screens" are interviews, and a GCC is a global capability centre, a multinational company's own technology and analytics centre in India.
@@ -42,10 +37,10 @@ synthetic like all of it. A 1 means she placed at least one order that calendar 
 | ZG27475 | Jun | joined | 1 | 0 | 0 |
 | ZG28603 | Jun | joined | 0 | 0 | 0 |
 
-**What you post.** Four letters in item order, with no spaces, in this shape:
+**What you post.** Two letters in item order, with no spaces, in this shape:
 
 ```
-Post exactly this shape: xxxx
+Post exactly this shape: xx
 ```
 
 ---
@@ -76,32 +71,3 @@ a) 67, 33 and 33 percent
 b) 67, 50 and 100 percent
 c) 100, 50 and 50 percent
 d) 33, 67 and 67 percent
-
----
-
-## How does a funnel's first step read, and in which unit?
-
-This comes up at work when a product team brings a funnel: each rate divides by the step just before
-it, and the chart names whether it counts sessions or people.
-
-A toy funnel, invented for chapter 3, counted in sessions: 100 sessions, 40 with a search, 20 with an
-add-to-cart and 10 with a checkout. The 100 sessions came from 20 people, and the 10 checkouts from
-10 of them.
-
-### Q3. What do the first two steps read, each over the step before?
-
-*Level L3 · asked in every analytics screen.*
-
-a) 40 and 20 percent, both over the 100 sessions
-b) 40 and 50 percent, each over the step before
-c) 60 and 50 percent, the share lost at each step
-d) 40 and 200 percent, searches over add-to-carts
-
-### Q4. A chart reads "checkout: 10 percent", and the membership lead says one member in ten checks out: what does the chart need?
-
-*Level L3, a design call · asked in product-company screens.*
-
-a) Nothing, since 10 percent is the funnel's rate from the top
-b) Its numbers redone per person, since people are what the lead pays for
-c) Its denominator moved to the 40 sessions that had a search
-d) Its unit named: 10 of 100 sessions is 10 of 20 people, half of them

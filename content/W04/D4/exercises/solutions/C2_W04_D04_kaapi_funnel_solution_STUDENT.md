@@ -21,7 +21,7 @@ two weeks on whichever step the room says loses customers.
 ## What does the drill test?
 
 It tests the three ways a funnel step misleads: a step people can skip, two units on one chart, and a
-change in the log mistaken for a change in behaviour. Each is the chapter 3 check moved to a new shop.
+change in the log mistaken for a change in behaviour. Each is a SECTION 7 check moved to a new shop.
 
 ## Why is each key right, and each other letter wrong?
 
@@ -44,6 +44,6 @@ orders, kept by a system the update did not touch, that did not fall.
 
 Every product release review asks these three questions in this order: can people skip the step, is
 the chart in sessions or in people, and does an independent record agree. Zomato Gold's Android
-checkout in chapter 3 passed all three: nobody skips the last step of a checkout, the rates were per
+checkout in SECTION 7 passed all three: nobody skips the last step of a checkout, the rates were per
 session throughout, and the order records in `member_months` count the same 27,212 September orders
 as the event log, so no orders went missing from the count after the release.
