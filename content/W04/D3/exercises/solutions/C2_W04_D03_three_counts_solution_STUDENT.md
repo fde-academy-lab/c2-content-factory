@@ -5,7 +5,7 @@ Answers: 1c 2b 3d
 **Applies:** Support, confidence and lift, derived by counting (chapters 1 to 3, items 1 and 2); The
 support floor and the watch list (chapter 6, item 3).
 
-The guided set counted two pairs on twelve real Instamart carts by hand. Bread and milk read support
+The guided set counted two pairs on twelve of the case's synthetic Instamart carts by hand. Bread and milk read support
 0.33, confidence from bread to milk 1.00 and lift 1.50, because all four bread carts held milk while
 milk sat in 8 of the 12 carts anyway. Chips and cold drink read lift 2.67. Ice cream and chocolate
 sauce shared a single cart, which makes a lift of 12 with nothing under it.

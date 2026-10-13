@@ -59,7 +59,7 @@ d) Rs 59
 
 Sit this page after the lab. It uses the three findings your lab notebook's your-turn cells produced.
 
-### Q2. Your lab found the charger in most baskets and its lift with every common product just under one: what does the bundle cost, and what does it buy?
+### Q2. Read your lab's first your-turn cell, the charger's share and its lift with every common product: given what it printed, what does the bundle cost, and what does it buy?
 
 *Level L5, a design call · asked in product-company interviews.*
 
@@ -68,11 +68,11 @@ b) It costs nothing extra, since a lift near one means the bundle changes nothin
 c) It costs Rs 20 only on the chargers the bundle adds, and it buys a charger in every single basket
 d) It costs Rs 20 a charger, and it buys the whole gap between the charger's share and every basket
 
-### Q3. Which plan fits the lab's other two findings: a strong pair above the 5 percent floor, mostly in Retail-Plus baskets, and a pair with a higher lift on very few baskets?
+### Q3. Read your lab's second your-turn cell, the pairs above and below the 5 percent floor: which plan fits what it printed?
 
 *Level L5, a design call · asked in global capability centre interviews.*
 
 a) Bundle both pairs, the thin one first, since its lift is the higher of the two pairs found
-b) Bundle the strong pair for Retail-Plus with a stated uplift range, and watch the thin one
+b) Bundle the strong pair for its own segment with an uplift range, and watch the thin one
 c) Bundle neither pair until a full year of baskets has arrived and the counts can be redone
 d) Bundle the thin pair in every store first, since a higher lift repays a discount faster

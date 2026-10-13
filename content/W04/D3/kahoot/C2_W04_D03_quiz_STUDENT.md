@@ -18,7 +18,7 @@ on Friday, so the trainer says it again before the room leaves.
 
 **The questions on the way.**
 
-- Which count answers "more than chance"?
+- Which question does each count answer?
 - What is a pair's lift from three counts?
 - What does a popular partner's confidence hide?
 - What stops a strong thin pair taking a slot?
@@ -29,13 +29,13 @@ on Friday, so the trainer says it again before the room leaves.
 
 ---
 
-## Q1. Which count answers "do these two turn up together more than chance would put them?"
-*Tests: Support, confidence and lift, derived by counting: which count answers which question.*
+## Q1. Support, confidence, lift: which line matches each count to its question?
+*Tests: Support, confidence and lift, derived by counting: each count matched to its question.*
 
-- Support, the share of carts holding both items
-- Confidence, the share of one item's carts that also hold the other item
-- Lift, the carts seen holding both over the carts chance gives  <- correct
-- The pair count, the number of carts that hold both of the items
+- Support: how reliably; confidence: beyond chance; lift: how often
+- Support: beyond chance; confidence: how often; lift: how reliably
+- Support: how often; confidence: how reliably; lift: beyond chance  <- correct
+- Support: how often; confidence: beyond chance; lift: how reliably
 
 ---
 
@@ -63,7 +63,7 @@ on Friday, so the trainer says it again before the room leaves.
 *Tests: The support floor and the watch list.*
 
 - The lift is too high to be anything but an error in the data
-- It shows beside ice cream only, too rarely to earn a slot  <- correct
+- Below the 1 percent floor, it earns a trial before a slot  <- correct
 - Ice cream sells only in the summer months, so it is seasonal
 - Chocolate sauce carries the higher margin of the two items
 
@@ -74,7 +74,7 @@ on Friday, so the trainer says it again before the room leaves.
 
 - Total sales times the margin, less the slot's own cost
 - Clicks times the selling price, less the returns that follow the sale
-- Incremental adds times the margin, less the discount handed back  <- correct
+- Incremental adds times margin, less all takers' discount and fixed cost  <- correct
 - Impressions times the confidence, less the item's own base rate in carts
 
 ---

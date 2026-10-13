@@ -83,8 +83,8 @@ This comes up at work whenever a list of pairs has to become a decision with a c
 
 *Level L3, a design call · asked in global capability centre interviews.*
 
-a) C, then B, then D take slots, and A is ignored as no better than chance
-b) B and D take slots; A is ignored; C goes on the watch list
+a) C, then B, then D take slots, and A is left out as no better than chance
+b) B and D take slots; A is a trap near one; C goes on the watch list
 c) A and B take slots, since both clear the support floor
 d) B, C and D take slots, since each lift clears 1.5
 

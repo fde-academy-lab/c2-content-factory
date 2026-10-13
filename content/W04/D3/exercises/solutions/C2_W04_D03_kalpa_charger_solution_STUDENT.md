@@ -31,7 +31,7 @@ can buy, and a plan that treats a strong pair and a thin pair differently.
 |---|---|---|---|
 | Q1, the margin left | d | Rs 199 less Rs 20 less Rs 120 is Rs 59 | a forgets the discount, Rs 79; b is the bundled price with the cost forgotten; c adds the discount to the margin, Rs 99 |
 | Q2, what the charger bundle costs and buys | a | A product already in most baskets, with lift just under one beside every common product, gains almost nothing from a bundle, and the discount is paid on every charger sold anyway | b treats a lift near one as a free action, when the discount is paid regardless; c pays the discount only on added chargers, which no bundle can do; d buys a gap nobody showed the bundle would close |
-| Q3, the strong pair and the thin pair | b | A strong pair above the floor, mostly Retail-Plus, is bundled for that tier with its uplift stated as a range; the thin pair is watched | a leads with the pair resting on the fewest baskets; c waits a year for an answer the counts give today; d rolls out the least supported pair everywhere |
+| Q3, the strong pair and the thin pair | b | A strong pair above the floor is bundled for the segment its baskets come from, with its uplift stated as a range; the thin pair is watched | a leads with the pair resting on the fewest baskets; c waits a year for an answer the counts give today; d rolls out the least supported pair everywhere |
 
 ## Which item is worth arguing about?
 

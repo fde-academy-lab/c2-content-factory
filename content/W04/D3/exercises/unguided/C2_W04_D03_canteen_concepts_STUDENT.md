@@ -82,7 +82,7 @@ d) 0.83 by chance, so lift 2.40, above chance
 
 a) Print it, since a confidence of 1.00 is the strongest bundle on the menu
 b) Print chaas beside every item, since chaas goes with everything
-c) Hold it: the lift is 1.33, since chaas was in most orders anyway
+c) Hold it: the lift is 1.33, as high as any lift with chaas can go
 d) Take chaas off the menu, since it sells without any help
 
 ## How do order lines, floors and rupees change the call?
