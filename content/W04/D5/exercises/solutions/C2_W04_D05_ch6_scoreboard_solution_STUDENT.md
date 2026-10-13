@@ -37,11 +37,11 @@ an error and its direction are two different numbers, and a price on each direct
 
 Q3's option a. The vendor's misses really are cheaper on these weeks: 12 of its 13 sit too high, and
 spare capacity is the cheap mistake. The case against it is what nobody chose: nobody sized how far
-high it runs, it ran 3.6 percent high in the first six hidden weeks and 11.5 percent in the last six,
-and in the festive weeks it copies 2025's calendar. Its edge also rests on Rs 25 a late shipment:
-at Rs 15 festival-aligned's misses cost Rs 9.0 lakh against its Rs 11.7 lakh. How far above the
-forecast a plan should sit is the plan quantile, which goes beyond the row, that is, beyond today's
-five topics, and runs in the fallback session.
+high it runs, it ran 3.6 percent high in the first six hidden weeks and 11.5 percent in the last
+six, and in the festive weeks it copies 2025's calendar. Its edge also rests on Rs 25 a late
+shipment: at Rs 15 festival-aligned's misses cost Rs 2.7 lakh less than the vendor's, and the two
+cost the same at about Rs 21. How far above the forecast a plan should sit is the plan quantile,
+which goes beyond the row, that is, beyond today's five topics, and runs in the fallback session.
 
 ## Where does the pattern live at work?
 

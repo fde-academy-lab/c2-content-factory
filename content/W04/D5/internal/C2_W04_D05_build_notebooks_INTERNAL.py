@@ -1476,12 +1476,15 @@ plt.show()
 check("the vendor errs high on most hidden weeks", priced.loc["vendor", "weeks too high"] > len(hold) / 2)
 check("on these hidden weeks, priced, the vendor costs less than festival-aligned",
       priced.loc["vendor", "cost Rs lakh"] < priced.loc["festival-aligned", "cost Rs lakh"])
-at15 = {}
-for name in ["festival-aligned", "vendor"]:                       # the same misses at the ticket's low end, Rs 15 late
-    miss = rules[name] - hold
-    at15[name] = round(float(miss[miss > 0].sum() * 650 / 120 - miss[miss < 0].sum() * 15) / 100_000, 1)
-print("at Rs 15 a late shipment, Rs lakh:", at15)
-check("at Rs 15 a late shipment, festival-aligned's misses cost less", at15["festival-aligned"] < at15["vendor"])
+spare = {n: float((rules[n] - hold).clip(lower=0).sum()) for n in ["festival-aligned", "vendor"]}   # shipments
+short = {n: float((hold - rules[n]).clip(lower=0).sum()) for n in ["festival-aligned", "vendor"]}   # shipments
+at15 = {n: spare[n] * 650 / 120 + short[n] * 15 for n in spare}  # the same misses at the ticket's low end, Rs 15 late
+gap = at15["vendor"] - at15["festival-aligned"]
+even = (spare["vendor"] - spare["festival-aligned"]) * 650 / 120 / (short["festival-aligned"] - short["vendor"])
+print(f"at Rs 15 a late shipment festival-aligned's misses cost Rs {gap / 100_000:.1f} lakh less than the vendor's")
+print(f"the two cost the same at about Rs {even:.0f} a late shipment")
+check("at Rs 15 a late shipment, festival-aligned's misses cost less", gap > 0)
+check("the two cross inside the ticket's range, Rs 15 to Rs 40", 15 < even < 40)
 '''),
         md("""
         **What happened.** The answer is b, and it is the uncomfortable result. The vendor's
@@ -1493,9 +1496,9 @@ check("at Rs 15 a late shipment, festival-aligned's misses cost less", at15["fes
         notebook 03: one MAE, two prices.
 
         This says that erring high pays at these costs, and only at these costs. At Rs 15 a late
-        shipment, the low end of the ticket's range, festival-aligned's misses cost Rs 9.0 lakh
-        against the vendor's Rs 11.7 lakh; across the ticket's ranges for both costs the vendor
-        is cheaper in 5 of 9 pairings. It does not hand the vendor the plan: nobody chose how far
+        shipment, the low end of the ticket's range, festival-aligned's misses cost Rs 2.7 lakh
+        less than the vendor's, and the two cost the same at about Rs 21; across the ticket's ranges
+        for both costs the vendor is cheaper in 5 of 9 pairings. It does not hand the vendor the plan: nobody chose how far
         high it runs, it runs higher the further ahead it looks (3.6 percent too high in the first
         six hidden weeks, 11.5 percent in the last six), and no hidden week holds a festival, where
         the vendor copies the wrong weeks. Chapter 7 books the plan at festival-aligned's forecast
