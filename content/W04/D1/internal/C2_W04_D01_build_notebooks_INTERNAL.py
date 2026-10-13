@@ -45,8 +45,9 @@ LABEL = ("> *Illustrative case: the company is real, the situation and the data 
 INVENTED = ("Every number in this notebook is invented for the chapter and small enough to count by hand. "
             "It is read from a table the day's generator wrote to `data/`, and the code only confirms "
             "the count.")
-TAGS = ("([S] marks a staple asked everywhere, [F] one frequent in GCC and product screens and [D] a "
-        "differentiator: the curriculum's own calibration for early-career candidates in India.)")
+TAGS = ("([S] marks a staple asked everywhere, [F] one frequent in product screens and in global "
+        "capability centres (GCCs, the offices global companies run in India), and [D] a differentiator: the "
+        "curriculum's own calibration for early-career candidates in India.)")
 
 
 def need(**values):

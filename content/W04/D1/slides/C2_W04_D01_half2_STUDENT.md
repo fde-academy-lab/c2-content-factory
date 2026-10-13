@@ -66,8 +66,8 @@ flowchart LR
 LIVE, 14 minutes: the brief (2), then groups write and price (12). Hand out the definition template (exercises/guided/C2_W04_D01_definition_STUDENT.md
 carries it, the same seven lines as Balaji Kirana's page in chapter 6). Nine groups work at once;
 the trainer voices one role per visit and rotates.
-When it stalls: a group with a guardrail that is another growth count ("bookings per driver") is
-asked what that guardrail would catch.
+When it stalls: a group that offers a growth target as a guardrail ("bookings per driver up 20
+percent") is asked what that guardrail would catch.
 Transition: the three attacks.
 ```
 

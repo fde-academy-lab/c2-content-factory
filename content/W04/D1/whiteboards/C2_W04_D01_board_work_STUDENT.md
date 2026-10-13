@@ -17,7 +17,7 @@ to redraw the board from memory before Tuesday.
 
 ## Which six topics does Monday teach, and how do they join?
 
-Goes up while S2 to S4 are on screen, and stays up all day. The six boxes are the curriculum row's
+Goes up while S2 to S4 are on screen, and stays up all day. The six boxes are the course outline's
 six topics in its order, drawn unlit; each concept chapter lights its own box when it closes, and the
 case node fills after the break. The drawing below is the map at the end of chapter 6, every box lit.
 

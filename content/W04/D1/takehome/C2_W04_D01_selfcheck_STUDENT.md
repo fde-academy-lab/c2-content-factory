@@ -47,7 +47,7 @@ The seven lines, in plain words first, then the line's name:
 | 6 | The window is named | A day, a week or a month, the same length each side | "Recently" or "so far" cannot be compared next quarter |
 | 7 | Each exclusion has a reason | Test accounts, refunds, cancelled orders, each with why | An exclusion with no reason is where a definition later changes without anyone being told |
 | 8 | What it does not reward is named | At least two behaviours, written out | If this line is empty, the team will find the behaviour by trying |
-| 9 | Each guardrail catches something | You can say what would make it move | A guardrail that is another growth count catches nothing: ask what it would catch |
+| 9 | Each guardrail catches something | You can say what would make it move | A growth target offered as a guardrail catches nothing: ask what it would catch |
 
 ---
 

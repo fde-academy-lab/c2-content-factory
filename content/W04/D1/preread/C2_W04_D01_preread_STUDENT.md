@@ -30,7 +30,7 @@ tonight? What line is worth carrying in?
 
 ## Which five topics does Tuesday teach?
 
-Tuesday teaches the curriculum row's five topics first, in this order, each as its own chapter with
+Tuesday teaches the course outline's five topics first, in this order, each as its own chapter with
 its own notebook, then applies them to the Uber slide:
 
 1. The one-slide answer: claim, evidence, caveat, action
