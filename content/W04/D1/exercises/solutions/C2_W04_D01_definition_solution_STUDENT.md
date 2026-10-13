@@ -68,8 +68,8 @@ against Wells Fargo shows the other side: its cross-sell ratio counted accounts 
 or not anyone used them, a numerator with no usage condition (SEC order, Release 34-88257, checked
 12 October 2026).
 
-## What does notebook 03 confirm?
+## What does notebook 09 confirm?
 
-Notebook 03's definition cell prints the north star at 35.76 before and 35.89 after, over 6,270 and
+Notebook 09's definition cell prints the north star at 35.76 before and 35.89 after, over 6,270 and
 6,434 online driver-weeks, beside the three guardrails: acceptance 0.863 and 0.73, the median wait
 4.8 and 4.6 minutes, and the top-up per completed trip Rs 0 and Rs 82.3.

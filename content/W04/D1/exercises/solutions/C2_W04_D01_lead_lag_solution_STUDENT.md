@@ -35,14 +35,14 @@ for G4 the answer is nothing.
 
 ## Where does a north star without the right guardrail show up at work?
 
-Swiggy Instamart's Maxxsaver unlocks extra discounts once a cart passes a threshold. In the quarter to
-30 June 2025 over 28 percent of Swiggy's monthly transacting users used it, Instamart's average order
-value rose 16 percent quarter on quarter to Rs 612, and Swiggy wrote that cart consolidation led by
-Maxxsaver lowered order growth (Swiggy's Q1 FY26 shareholder letter, checked 12 October 2026). A
-north star of orders per month, read with no guardrail on value, would have shown that change as a
-fall.
+Swiggy Instamart's Maxxsaver unlocks extra discounts once a cart passes a threshold. Launched at the
+start of the quarter to 30 June 2025, it had been used by "over 28% of our MTUs", the letter's
+monthly transacting users; Instamart's average order value rose 16 percent quarter on quarter to
+Rs 612, and Swiggy wrote that cart consolidation led by Maxxsaver lowered order growth (Swiggy's Q1
+FY26 shareholder letter, checked 13 October 2026). A north star of orders per month, read with no
+guardrail on value, would have shown that change as a fall.
 
-## What does notebook 03 confirm?
+## What does notebook 09 confirm?
 
 The cell under "Which number moved first?" prints acceptance at 0.729, 0.735 and 0.729 for the three
 weeks from 31 August, beside bookings per online hour of Rs 271, Rs 261.7 and Rs 259.1, and the

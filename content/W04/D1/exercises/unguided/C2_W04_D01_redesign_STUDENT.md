@@ -128,7 +128,7 @@ d) It drops the north star to zero, since drivers would stop logging in at all
 
 ## Where do you check the numbers?
 
-Notebook 03, `notebooks/C2_W04_D01_03_definition_and_cost_STUDENT.ipynb`, prints the split of the
+Notebook 09, `notebooks/C2_W04_D01_09_north_star_guardrails_cost_STUDENT.ipynb`, prints the split of the
 top-up and the saving under both ends of the assumption, in its first two code cells after the
 setup. Run them, write your saving with its assumption on the group's sheet, and post your four
 letters.

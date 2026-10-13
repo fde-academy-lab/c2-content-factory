@@ -27,7 +27,7 @@ riders wait just as long sends money to the wrong drivers, Rs 1.9 crore of it in
 is left out of both counts? Which guardrail catches a driver who picks only easy trips? What does
 the finished definition read on the data?
 
-You build this with the trainer in chapter 3, one line at a time. The room calls each letter aloud
+You build this with the trainer in chapter 9, one line at a time. The room calls each letter aloud
 before the trainer writes the line. Items marked **Design** ask for the best-fit approach, the fact
 that would switch it, or the second route that would confirm a number.
 
@@ -130,7 +130,7 @@ d) Peak online hours per enrolled driver, read each week
 ## What does the finished definition read on the data?
 
 Fill each line as the room settles it. Round 3 this afternoon hands this template back to your group,
-and the values come from notebook 03, `notebooks/C2_W04_D01_03_definition_and_cost_STUDENT.ipynb`,
+and the values come from notebook 09, `notebooks/C2_W04_D01_09_north_star_guardrails_cost_STUDENT.ipynb`,
 whose definition cell prints them for the six weeks before and after the launch.
 
 | Line | Your definition |
@@ -153,5 +153,5 @@ whose definition cell prints them for the six weeks before and after the launch.
 | Guardrail: median rider wait at peak, minutes | | |
 | Guardrail: top-up per completed trip, Rs | | |
 
-**The hands-on part.** Run notebook 03 top to bottom, copy the four pairs of values into the table
+**The hands-on part.** Run notebook 09 top to bottom, copy the four pairs of values into the table
 above, and post your four letters.

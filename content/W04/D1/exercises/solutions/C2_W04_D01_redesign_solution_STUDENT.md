@@ -44,7 +44,7 @@ underlying performance" (both checked 12 October 2026). The redesign makes a sim
 floor stays, but hours alone stop earning it, and the city judges the scheme by completed trips per
 driver, with hours kept off the headline.
 
-## What does notebook 03 confirm?
+## What does notebook 09 confirm?
 
 The first code cell after the setup prints 0.61 as the share of the top-up that went to driver-weeks
 under 0.5, and the next prints the saving at Rs 92.7 lakh when a fifth is still paid and Rs 58 lakh

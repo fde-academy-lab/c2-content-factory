@@ -32,7 +32,7 @@ Post exactly this shape: xxxxx
 Every analyst rebuilds a team's totals from the raw table before trusting a dashboard, and the
 order of the steps is the part people get wrong.
 
-Five of these eight lines rebuild notebook 02's count, and three are wrong turns mixed in. The
+Five of these eight lines rebuild notebook 08's count, and three are wrong turns mixed in. The
 city's rate is a ratio of two sums: add every trip, add every hour, then divide.
 
 | Line | Code |

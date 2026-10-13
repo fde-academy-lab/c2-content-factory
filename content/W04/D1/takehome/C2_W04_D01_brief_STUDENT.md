@@ -67,7 +67,7 @@ catches one of them, add a guardrail and say what it would catch.
 Tuesday puts the redesign on one slide in front of the driver-operations lead, the marketing lead
 and the finance partner, and every slide is carried by one number. Choose the one you would put at
 the top from the day's case, write it with its denominator, its window and its before and after
-values, and in one sentence say why that number and none of the others. Notebooks 01 to 03 print
+values, and in one sentence say why that number and none of the others. Notebooks 07 to 09 print
 every number you might choose.
 
 ---

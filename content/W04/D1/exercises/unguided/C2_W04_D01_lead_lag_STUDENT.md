@@ -16,7 +16,7 @@ before anyone sees it; a north star without a guardrail pays for the drift.
 **The questions on the way.** Which of eight numbers move first? Which reasons defend two of those
 calls? Which guardrail does each of three proposed north stars need?
 
-You sit this set in the practice lab, or in section 8 of the metric clinic if the tentative faculty
+You sit this set in the practice lab, or in section 15 of the metric clinic if the tentative faculty
 block does not run. Every item has one right answer. Items marked **Design** ask for the best-fit
 approach, the fact that would switch it, or the second route that would confirm a number.
 
@@ -118,7 +118,7 @@ d) 1 with G1, 2 with G2, 3 with G3
 
 ## Where do you check your calls on the data?
 
-Open notebook 03, `notebooks/C2_W04_D01_03_definition_and_cost_STUDENT.ipynb`, and find the cell
+Open notebook 09, `notebooks/C2_W04_D01_09_north_star_guardrails_cost_STUDENT.ipynb`, and find the cell
 under "Which number moved first?". It prints the share of offers accepted and the bookings per online
 hour for the three weeks after the launch, which are the two numbers Q2 asks you to defend. Then post
 your three letters.
