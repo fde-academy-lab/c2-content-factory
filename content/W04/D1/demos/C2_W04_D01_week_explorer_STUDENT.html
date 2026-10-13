@@ -193,6 +193,11 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   .sets label{font-weight:700;color:var(--ink)}
   .sets select{font:17px var(--sans);padding:6px 10px;border:1.5px solid var(--violet);border-radius:8px;color:var(--ink);background:var(--white);max-width:100%}
   .maplegend{margin:4px 0 10px;max-width:1080px;font-size:16.5px;color:var(--ink)}
+  .anchors{margin:10px 0 0;max-width:1080px}
+  .anchors summary{cursor:pointer;font-weight:700;color:var(--ink)}
+  .anchors ol{margin:8px 0 6px 24px;padding:0}
+  .anchors li{margin:3px 0}
+  .beyond{color:var(--muted);margin:-4px 0 12px;max-width:96ch}
   .guess{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:end;max-width:760px}
   .stage{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:22px;align-items:start}
   @media (max-width:1000px){.stage{grid-template-columns:1fr}}
@@ -276,7 +281,6 @@ var W4 = {
     waitMin: [4.8, 4.6],            /* case Mon ticket: median rider wait at peak, minutes */
     unfilled: [0.11, 0.10],         /* case Mon ticket: share of peak requests unfulfilled */
     topupCrore: 1.9,                /* case Mon ticket: top-up paid over six weeks, Rs crore */
-    topupIdleCrore: 1.16,           /* case Mon L5: 1.9 x 0.61, the share paid to driver-weeks with acceptance under 0.5 */
     respPower: 1.5,                 /* toy: the response curve between the case's two floors */
     newcomersAtCase: 9.6,           /* derived: 40 online dots x 0.24, the dots that come online at Rs 300 */
     /* case Mon "The twelve rows (L1)": driver, before [hours, offers, accepted, trips], after [...] */
@@ -288,6 +292,7 @@ var W4 = {
       ["E", [10, 21, 18, 18], [16, 14, 4, 3]],
       ["F", [10, 20, 17, 17], [14, 12, 3, 2]]
     ],
+    northStar: [35.76, 35.89],      /* Mon facts north_star_before, north_star_after: trips per enrolled driver online at peak, per week */
     weekStarts: ["20 Jul", "27 Jul", "3 Aug", "10 Aug", "17 Aug", "24 Aug", "31 Aug", "7 Sep", "14 Sep", "21 Sep", "28 Sep", "5 Oct"],
     /* Monday's facts file, ids acceptance_2026_MM_DD and rs_per_hour_2026_MM_DD: each week's ratio of totals */
     acceptWeekly: [0.859, 0.864, 0.865, 0.867, 0.861, 0.862, 0.729, 0.735, 0.729, 0.731, 0.726, 0.731],
@@ -307,8 +312,8 @@ var W4 = {
     }
   },
   tue: {
-    fare: 165,                      /* case Tue ticket: average peak fare, Rs */
-    perHourShown: [314, 260],       /* case Tue ticket: gross bookings per peak online hour, Rs */
+    fare: 165,                      /* Tue facts fare_avg_rs: average peak fare, Rs */
+    perHourShown: [314, 260],       /* Tue facts rs_per_hour_before, rs_per_hour_after: gross bookings per peak online hour, Rs */
     driverWeeks: [6360, 6500],      /* Monday's data: active driver-weeks, the six weeks before and after */
     upiMonthBillion: 24.07,         /* Tue facts upi_month_total: UPI transactions in September 2026 (NPCI via Outlook Money) */
     upiValueLakhCrore: 29.37,       /* Tue facts upi_month_value_lakh_crore: their value, Rs lakh crore */
@@ -327,17 +332,19 @@ var W4 = {
       usersCrore: [35, 25, 45],     /* upi_active_users */
       pay: [2, 1, 3]                /* upi_payments_per_day */
     },
-    nine: [                         /* case Mon ticket: the nine numbers on the cluttered slide */
-      ["hours", "Peak online hours", "118,000 to 146,300"],
-      ["trips", "Completed peak trips", "224,200 to 230,900"],
-      ["tph", "Trips per online hour", "1.90 to 1.58"],
-      ["acc", "Acceptance share", "0.86 to 0.73"],
-      ["canc", "Driver cancellations", "0.04 to 0.09"],
-      ["idle", "Online hours with no trip", "0.22 to 0.38"],
-      ["wait", "Median rider wait", "4.8 to 4.6 min"],
-      ["unf", "Unfulfilled requests", "0.11 to 0.10"],
-      ["topup", "Top-up paid", "Rs 1.9 crore"]
-    ]
+    /* Tue facts cluttered_slides.A_dashboard: slide A's nine tiles as S33 prints them, [key, label, shown] */
+    nine: [
+      ["hours", "Peak online hours", "+24 percent"],            /* hours_change_pct */
+      ["trips", "Completed peak trips", "+3 percent"],           /* trips_change_pct */
+      ["tph", "Trips per peak online hour", "1.90 to 1.58"],     /* tph_before, tph_after */
+      ["acc", "Acceptance share", "86% to 73%"],                  /* acceptance_before, acceptance_after */
+      ["idle", "Online hours with no trip", "22% to 38%"],        /* no_trip_share_before, no_trip_share_after */
+      ["wait", "Median rider wait", "4.8 to 4.6 min"],            /* median_wait_before, median_wait_after */
+      ["topup", "Top-up paid", "Rs 1.9 crore"],                  /* topup_after_rs */
+      ["fresh", "New drivers since launch", "140"],               /* drivers_new */
+      ["low", "Top-up to low acceptance", "61 percent"]           /* topup_low_acceptance_share */
+    ],
+    saving: [58, 92.7]              /* Tue facts saving_low_lakh, saving_high_lakh: S35's action, Rs lakh over six weeks */
   },
   wed: {
     /* Wed facts (content/W04/D3/internal/C2_W04_D03_facts_INTERNAL.yaml) by id. "toy" is the hostel canteen's
@@ -515,9 +522,24 @@ var W4_TOPICS = {
       <button type="button" class="btn" data-day="sat" aria-pressed="false">Sat 31 Oct</button>
       <button type="button" class="btn" data-links aria-pressed="false">Show how the days connect</button>
     </div>
-    <p class="maplegend"><b>Reading a day's box.</b> The bold lines are the day's question, the next line is the company and city of its case, and the numbered lines are the day's topics in the curriculum's own words and in its row's order. Once a later day is chosen, the violet lines say what the room found on that day, and the amber box is Kalpa Retail's version of the question, which the lab takes up. A line from the week's question runs to each day's case, the dashed line joins Tuesday to Monday because Tuesday carries Monday's case, and the lines under the boxes meet at Saturday, where the methods move to other companies.</p>
+    <p class="maplegend"><b>Reading a day's box.</b> The bold lines are the day's question, the next line is the company and city of its case, and the numbered lines are the day's topics in the curriculum's own words and in its row's order. Once a later day is chosen, the violet lines say what the room found on that day, and the amber box is Kalpa Retail's version of the question, which the lab takes up. A line from the week's question runs to each day's case, the dashed line joins Tuesday to Monday because Tuesday carries Monday's case, and the lines under the boxes meet at Saturday, where the methods move to other companies. Saturday's row names its topics as nine interview anchors, which open in the list under the map.</p>
     <p class="status" aria-live="polite">No day is chosen yet. Choose one to light its node; every earlier day stays open with what the room found on it.</p>
     <figure class="mapfig" style="margin:0"><div class="holder" data-map></div></figure>
+    <details class="anchors">
+      <summary>Saturday's topics: the row's nine interview anchors, questions only</summary>
+      <ol>
+        <li>[S] How would you measure the success of a new feature? Walk your metric design.</li>
+        <li>[F] North-star against guardrail, with one example pair.</li>
+        <li>[S] Support, confidence, lift: which cannot be fooled by popularity, and why?</li>
+        <li>[S] Retention dropped: walk me through your investigation.</li>
+        <li>[F] Blended retention is flat while every cohort declines; how?</li>
+        <li>[S] What baseline must any forecast beat before it earns trust?</li>
+        <li>[F] A pair has lift 4 and support 0.3 percent; act or not?</li>
+        <li>[D] Kalpa Financial Services asks 'which customers should we nudge first'; say what stays the same in your method and what changes.</li>
+        <li>[D] Two forecasts, eighteen points apart; choose one for the board and present its error.</li>
+      </ol>
+      <p>The tags: [S] is a staple asked everywhere, [F] is frequent in GCC and product screens, and [D] is a differentiator.</p>
+    </details>
     <ol class="links" hidden>
       <li>Monday's habit of fixing the definition before reading the number returns on Friday, where the error measure is fixed before any method is scored.</li>
       <li>Thursday's rule of reading each cohort from its own entry month returns on Friday as reading each week by its distance from the festival.</li>
@@ -532,7 +554,7 @@ var W4_TOPICS = {
       <h2 class="q">Monday, 26 October: is the number we pay for measuring what we want?</h2>
       <div class="ticket">
         <p class="label-line">Illustrative case: the company is real, the situation and the data are synthetic, built for this class.</p>
-        <p>Uber, Hyderabad, the driver app. On Monday 31 August 2026 the city team launched a peak-hour earnings guarantee: an enrolled driver who stays online through a whole weekday peak window is guaranteed Rs 300 per peak online hour, and Uber tops up the gap between the driver's trip earnings and that floor.</p>
+        <p>Uber, Hyderabad, the driver app. On Monday 31 August 2026 the city team launched a peak-hour earnings guarantee: an enrolled driver, one signed up for the scheme, who stays online through a whole peak window, two a day of three hours each, is guaranteed Rs 300 per peak online hour, and Uber tops up the gap between the driver's trip earnings and that floor.</p>
         <p>Six weeks after the launch against the six weeks before, peak online hours rose from 118,000 to 146,300, completed peak trips rose from 224,200 to 230,900, and trips per peak online hour fell from 1.90 to 1.58.</p>
         <p>The ask, due Friday: is the scheme working, which metric should it pay for, and is anyone gaming it? The known caveats: the monsoon ended inside the window, 140 drivers joined after the launch, the app counts a driver as online whenever the app is open, and the three outer zones get few requests at any hour.</p>
       </div>
@@ -577,7 +599,7 @@ var W4_TOPICS = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>At the case's floor of Rs 300 an hour, online hours rise 24 percent, from 118,000 to 146,300, while trips rise 3 percent, from 224,200 to 230,900. Trips per online hour falls from 1.90 to 1.58, which the city quotes as 1.9 to 1.6, and about Rs 1.16 crore of the Rs 1.9 crore top-up went to driver-weeks that accepted under half their offers. The median rider wait moved from 4.8 to 4.6 minutes. The fall starts with the first rupees of the floor: on the toy curve, trips per online hour already reads 1.83 at Rs 100.</p>
+        <p>At the case's floor of Rs 300 an hour, online hours rise 24 percent, from 118,000 to 146,300, while trips rise 3 percent, from 224,200 to 230,900. Trips per online hour falls from 1.90 to 1.58, which the city quotes as 1.9 to 1.6, and the median rider wait moved from 4.8 to 4.6 minutes. The fall starts with the first rupees of the floor: on the toy curve, trips per online hour already reads 1.83 at Rs 100.</p>
         <p>Online hours count time with the app open, and the driver controls that count. An idle hour in an outer zone earns the same floor as a busy hour in the centre, so the number the scheme pays for rose while riders saw almost no change.</p>
         <p class="formula"><b>The formula, last</b>trips per online hour = completed peak trips / peak online hours = 230,900 / 146,300 = 1.58</p>
       </div>
@@ -589,10 +611,10 @@ var W4_TOPICS = {
       <div class="predict">
         <p class="ask"><b>Predict before you switch.</b> Which choice of paid number makes the most dots drive riders?</p>
         <div class="opts">
-          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Online hours, the number the scheme paid as it ran.</button>
-          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Completed trips.</button>
-          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Accepted share of offers.</button>
-          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Completed trips with an acceptance floor.</button>
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Peak online hours, as the scheme ran.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Completed peak trips, nothing beside it.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Completed peak trips, with an acceptance floor.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. The share of offers accepted, nothing beside it.</button>
         </div>
         <p class="said" aria-live="polite">No prediction yet.</p>
       </div>
@@ -606,8 +628,8 @@ var W4_TOPICS = {
             <select id="m2-pay" data-ctl="pay">
               <option value="hours">Online hours, the scheme as it ran</option>
               <option value="trips">Completed trips</option>
-              <option value="accept">Accepted share of offers</option>
               <option value="floor">Completed trips with an acceptance floor</option>
+              <option value="accept">Accepted share of offers</option>
             </select>
             <output data-out="pay">Paying for online hours</output>
           </div>
@@ -617,9 +639,9 @@ var W4_TOPICS = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>Paying for completed trips with an acceptance floor puts 40 of the 60 dots to driving, against 31 when the scheme paid for online hours. Paying for trips alone lets drivers decline long trips, which the acceptance floor catches, and paying for accepted share lets them accept and then cancel, which paying only for completed trips catches; the definition needs both lines.</p>
+        <p>Paying for completed trips with an acceptance floor puts 40 of the 60 dots to driving, against 31 when the scheme paid for online hours. Paying for trips alone lets drivers decline long trips, which the acceptance floor catches, and paying for accepted share lets them accept and then cancel, which paying only for completed trips catches; the definition needs both lines. The deck's fourth choice, enrolled drivers, is not drawn here, since a dot that signs up and never drives looks the same as one that never enrolled: that count rises with every sign-up whether or not anyone drives, which is why the north star counts only drivers online at peak.</p>
         <p>A number a driver can raise without serving a rider will be raised that way, so every paid number needs a guardrail that names the way of gaming it.</p>
-        <p class="formula"><b>The formula, last: the definition's lines</b>north star, the one number the team steers by: completed peak trips per enrolled driver per week<br>guardrail 1: acceptance share at or above a floor the city sets<br>guardrail 2: median rider wait at peak<br>guardrail 3: top-up per completed trip<br>it does not reward: hours online, requests declined, a shrinking enrolled base</p>
+        <p class="formula"><b>The formula, last: the definition's lines</b>north star, the one number the team steers by: completed peak trips per enrolled driver online at peak, per week<br>guardrail 1: offers accepted over offers shown, at or above an acceptance floor<br>guardrail 2: median rider wait at peak<br>guardrail 3: top-up per completed trip<br>it does not reward: hours online, offers declined, a shrinking enrolled base</p>
       </div>
     </article>
 
@@ -627,12 +649,12 @@ var W4_TOPICS = {
       <div class="scene-head"><span class="sid">M3</span><h3>What does one line of a definition change?</h3></div>
       <p class="myth"><b>The first answer most people give:</b> a metric is a formula, and once the formula is right the number is the number.</p>
       <div class="predict">
-        <p class="ask"><b>Predict before you switch.</b> Change the denominator from online hours to enrolled drivers. What happens to the fall from the week before to the week after?</p>
+        <p class="ask"><b>Predict before you switch.</b> On these six drivers, trips per online hour moves between the week before and the week after. Switch the denominator to enrolled drivers online at least one peak hour that week: what happens to that move?</p>
         <div class="opts">
-          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. The fall gets bigger.</button>
-          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. The fall turns into a rise.</button>
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. It gets bigger.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. It turns the other way.</button>
           <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Nothing changes, since the trips are the same.</button>
-          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. The fall gets smaller.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. It gets smaller.</button>
         </div>
         <p class="said" aria-live="polite">No prediction yet.</p>
       </div>
@@ -644,7 +666,7 @@ var W4_TOPICS = {
           <div class="ctl"><label for="m3-num">Numerator</label>
             <select id="m3-num" data-ctl="num"><option value="3">Completed trips</option><option value="2">Accepted offers</option><option value="1">Offers received</option></select></div>
           <div class="ctl"><label for="m3-den">Denominator</label>
-            <select id="m3-den" data-ctl="den"><option value="0">Online hours</option><option value="d">Enrolled drivers</option><option value="1">Requests received</option></select></div>
+            <select id="m3-den" data-ctl="den"><option value="0">Online hours</option><option value="d">Enrolled drivers online at least one peak hour</option><option value="1">Requests received</option></select></div>
           <div class="ctl"><label for="m3-win">Window</label>
             <select id="m3-win" data-ctl="win"><option value="week">Per calendar week</option><option value="day">Per weekday</option></select></div>
           <div class="ctl"><label for="m3-exc">Exclusions</label>
@@ -655,7 +677,7 @@ var W4_TOPICS = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>With online hours as the denominator, the six drivers fall from 1.90 to 1.19 trips per online hour, down 37 percent. With enrolled drivers, they fall from 19.0 to 14.7 trips per driver, down 23 percent: the extra idle hours drop out of the denominator, so the fall looks smaller. Excluding driver-weeks with acceptance under 0.5 removes only drivers E and F's after week, so the comparison becomes six drivers before against four after, 1.90 to 1.89; the four on their own fall from 1.98 to 1.89, down 4.5 percent. Combine that exclusion with enrolled drivers and the fall turns into a rise, 19.0 to 20.8, because the base shrank from six drivers to four, the shrinking enrolled base Monday's definition refuses to reward.</p>
+        <div data-revealed></div>
         <p>Every line of a definition moves the number without moving a single rider: the denominator decides whose hours count, the window decides the unit, and an exclusion decides who disappears from view.</p>
         <p class="formula"><b>The formula, last</b>a definition names the numerator, the denominator, the window, the exclusions and what it does not reward</p>
       </div>
@@ -720,32 +742,22 @@ var W4_TOPICS = {
       <div class="scene-head"><span class="sid">T1</span><h3>What is left when the slide says one thing?</h3></div>
       <p class="myth"><b>The first answer most people give:</b> a slide earns trust by showing every number, and cutting one looks like hiding it.</p>
       <div class="predict">
-        <p class="ask"><b>Predict before you untick anything.</b> Which two of the nine numbers carry a claim the city head can act on?</p>
+        <p class="ask"><b>Predict before you untick anything.</b> Slide A arrived with nine numbers and no claim. If it may keep only two numbers, which two make the case?</p>
         <div class="opts">
-          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Online hours up 24 percent and trips up 3 percent.</button>
-          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Rider wait, 4.8 to 4.6 minutes, and unfulfilled requests, 0.11 to 0.10.</button>
-          <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Acceptance, 0.86 to 0.73, and driver cancellations, 0.04 to 0.09.</button>
-          <button type="button" class="opt" data-predict="D" aria-pressed="false">D. Trips per online hour, 1.9 to 1.6, and the Rs 1.9 crore top-up.</button>
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B.</button>
+          <button type="button" class="opt" data-predict="C" aria-pressed="false">C.</button>
+          <button type="button" class="opt" data-predict="D" aria-pressed="false">D.</button>
         </div>
         <p class="said" aria-live="polite">No prediction yet.</p>
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>The first draft of the slide carries all nine of Monday's numbers under a topic title. Untick a number to fade it; when two remain, the title rewrites itself as the claim those two can carry.</figcaption>
+          <figcaption>Slide A as the operations analyst sent it: all nine of Monday's dashboard numbers under a title that names a topic. Untick a number to fade it. When the two numbers that carry a claim are the only ones left, the slide rebuilds itself in four parts: the claim as its title, the evidence, the caveat and the action.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><span class="lab">Numbers kept on the slide</span>
-            <div class="checks">
-              <label><input type="checkbox" data-keep="hours" checked> Peak online hours, 118,000 to 146,300</label>
-              <label><input type="checkbox" data-keep="trips" checked> Completed peak trips, 224,200 to 230,900</label>
-              <label><input type="checkbox" data-keep="tph" checked> Trips per online hour, 1.90 to 1.58</label>
-              <label><input type="checkbox" data-keep="acc" checked> Acceptance share, 0.86 to 0.73</label>
-              <label><input type="checkbox" data-keep="canc" checked> Driver cancellations, 0.04 to 0.09</label>
-              <label><input type="checkbox" data-keep="idle" checked> Online hours with no trip, 0.22 to 0.38</label>
-              <label><input type="checkbox" data-keep="wait" checked> Median rider wait, 4.8 to 4.6 minutes</label>
-              <label><input type="checkbox" data-keep="unf" checked> Unfulfilled requests, 0.11 to 0.10</label>
-              <label><input type="checkbox" data-keep="topup" checked> Top-up paid, Rs 1.9 crore</label>
-            </div>
+            <div class="checks" data-checks></div>
           </div>
           <div class="ctl"><button type="button" class="btn" data-ctl="warden">Run the warden test</button></div>
           <dl class="nums" data-nums></dl>
@@ -754,7 +766,7 @@ var W4_TOPICS = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>With trips per online hour and the top-up left, the title can say what happened and what to do: the hourly guarantee bought idle hours, so pay per completed trip with an acceptance floor. Trips per online hour, 1.9 to 1.6, is the evidence with its denominator; the Rs 1.9 crore top-up, about Rs 1.16 crore of it paid to driver-weeks that accepted under half their offers, is the cost the action stops. The caveat goes on the slide in plain sight: the monsoon ended inside the window. Acceptance and cancellations show how drivers gamed the scheme, but neither says what it cost or what to change, so they go with the other five numbers to an appendix page for the lead who will ask about them.</p>
+        <div data-revealed></div>
         <p>Nine numbers make the city head do the analysis in the meeting. One claim, one piece of evidence with its denominator, one caveat and one action let a lead who loses under the redesign repeat it accurately.</p>
         <p class="formula"><b>The formula, last</b>one slide = a claim as the title + one piece of evidence with its denominator + the caveat in plain sight + the action with its cost</p>
       </div>
@@ -1015,8 +1027,8 @@ var W4_TOPICS = {
           <figcaption></figcaption>
         </figure>
         <div class="panel">
-          <div class="ctl"><button type="button" class="btn" data-ctl="rank" aria-pressed="false">Take milk out of the strip</button>
-            <output data-out="rank">Milk in the strip, as it ran</output></div>
+          <div class="ctl"><button type="button" class="btn" data-ctl="rank" aria-pressed="false">Rank by lift: take milk out of the strip</button>
+            <output data-out="rank">Ranked by count, milk in the strip, as it ran</output></div>
           <div class="ctl"><label for="w4-views" data-lab="views"></label>
             <input type="range" id="w4-views" min="50000" max="70000" step="1000" value="60000" data-ctl="views">
             <output data-out="views"></output></div>
@@ -1133,8 +1145,8 @@ var W4_TOPICS = {
       <div class="predict">
         <p class="ask"><b>Predict before you slide the joiners in.</b> In January 50 of the gym's 100 older members visited, 50 percent. In February they slip to 40 of 100, and 400 members who joined in January arrive in the count, visiting at 52.5 percent. What does the dashboard's blend do?</p>
         <div class="opts">
-          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. It rises.</button>
-          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. It falls.</button>
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. It falls, because the older members fell.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. It rises, because 400 members joined.</button>
           <button type="button" class="opt" data-predict="C" aria-pressed="false">C. It holds at 50 percent.</button>
           <button type="button" class="opt" data-predict="D" aria-pressed="false">D. It cannot be read without more months.</button>
         </div>
@@ -1191,8 +1203,8 @@ var W4_TOPICS = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>Counted per session with the carousel's entries in, menu views are 118 percent of searches: 38,932 of September's 155,729 member sessions with a menu view opened it from the home carousel, with no search. Search is a step members can skip, so the 118 is an artefact of the count; among the sessions that searched it reads 89 percent. Per member it still reads 101: the skippable step pushes it past 100 in either unit. Menu view to add-to-cart reads 34 percent per session and 61 per member: per session asks how often a menu visit becomes a cart, per member how many members who browsed added to a cart that month.</p>
-        <p>Neither of those steps owns the ticket's loss, which sits inside the checkout: for members on Android from 14 September, checkout start to order per session fell from 72.5 to 55 percent while starting checkout held at 80, and members on iOS and non-members on Android held. A rate above 100 percent says the two counts are not the same people in the same unit; before blaming a step, name the unit on the chart, check that every member had to pass the step before, and find the step that changed before blaming the step that is low.</p>
+        <p>Counted per session with the carousel's entries in, menu views are 118 percent of searches: 38,932 of September's 155,729 member sessions with a menu view opened it from the home carousel, with no search. Search is a step members can skip, so the 118 is an artefact of the count; among the sessions that searched it reads 89 percent. Per member it still reads 101: the skippable step pushes it past 100 in either unit. Switching the unit changes the question every rate answers: per session, how often a visit moves on to the next step; per member, how many members who reached a step reached the next one that month.</p>
+        <p>Neither unit finds the ticket's loss on its own, since the funnel pools every platform and the whole of September: the step that broke shows only once the counts are split by platform and date. A rate above 100 percent says the two counts are not the same people in the same unit; before blaming a step, name the unit on the chart, check that every member had to pass the step before, and find the step that changed before blaming the step that is low.</p>
         <p class="formula"><b>The formula, last</b>each step's rate divides by the step before, in one unit, and the chart names the unit</p>
       </div>
     </article>
@@ -1247,7 +1259,7 @@ var W4_TOPICS = {
         <button type="button" class="jump" data-jump="F1"><b>F1</b>What is a series made of?</button>
         <button type="button" class="jump" data-jump="F2"><b>F2</b>How wrong on what it never saw?</button>
         <button type="button" class="jump" data-jump="F3"><b>F3</b>Where does a yearly copy put Diwali?</button>
-        <button type="button" class="jump" data-jump="F4"><b>F4</b>Where should the plan sit when being short costs more?</button>
+        <button type="button" class="jump" data-jump="F4"><b>F4</b>Beyond the five topics: where should the plan sit when being short costs more?</button>
       </div>
       <p class="jumped" aria-live="polite"></p>
     </div>
@@ -1272,10 +1284,10 @@ var W4_TOPICS = {
           <div class="ctl"><label for="f1-t">Trend, growth in percent a year</label>
             <input type="range" id="f1-t" min="0" max="100" step="5" value="10" data-ctl="trend">
             <output data-out="trend">10 percent a year</output></div>
-          <div class="ctl"><label for="f1-s">Season, the Sunday dip in cups below a weekday</label>
-            <input type="range" id="f1-s" min="0" max="80" step="5" value="40" data-ctl="season">
-            <output data-out="season">40 cups</output></div>
-          <div class="ctl"><label for="f1-n">Wobble, the day-to-day scatter in cups</label>
+          <div class="ctl"><label for="f1-s">Season, a Sunday's share of a weekday</label>
+            <input type="range" id="f1-s" min="0.1" max="1" step="0.05" value="0.6" data-ctl="season">
+            <output data-out="season">0.60 of a weekday</output></div>
+          <div class="ctl"><label for="f1-n">Wobble, the day-to-day scatter in cups on a weekday</label>
             <input type="range" id="f1-n" min="0" max="10" step="0.1" value="4.7" data-ctl="noise">
             <output data-out="noise">4.7 cups</output></div>
           <dl class="nums" data-nums></dl>
@@ -1332,7 +1344,7 @@ var W4_TOPICS = {
         <div data-for="toy"><div data-revealed></div></div>
         <div data-for="case" hidden>
           <p>On the 13 weeks no rule saw, forecast from 22 June, festival-aligned and finance's rule tie at 6,615 shipments a week, the house bot misses by 9,831, drift by 14,842 and naive by 14,923. The tie is honest: no hidden week falls between five weeks before a Diwali week and four after, so both rules copy the same week of 2025 and add the same 4 percent. The vendor sits within 1.4 percent of every week it was fitted to and misses by 16,400 a week on the weeks it never saw, 67 percent worse than the house bot.</p>
-          <p>Priced, the order changes, because the vendor errs high on 12 of 13 weeks, the cheap kind of miss at Rs 650 / 120 = Rs 5.42 a spare shipment, so its misses cost Rs 11.9 lakh against festival-aligned's Rs 13.5 lakh, while the house bot errs low on 11 of 13 and costs Rs 30.5 lakh, more than naive's Rs 28.8 lakh. The vendor still does not get the plan: nobody chose how high it runs, it runs higher with the weeks ahead, 3.6 percent too high in hidden weeks 1 to 6 and 11.5 percent in weeks 8 to 13, and the hidden weeks hold no festive week. The fair price raises each rule by the cushion its own misses justify, which scene F4 sizes: festival-aligned, finance's rule and the house bot then cost Rs 8.8 lakh each, the vendor Rs 10.0 lakh, and naive and drift Rs 17.7 lakh, so on weeks with no festival only the festival can separate festival-aligned from the bot, which is scene F3's question.</p>
+          <p>Priced, the order changes, because the vendor errs high on 12 of 13 weeks, the cheap kind of miss at Rs 650 / 120 = Rs 5.42 a spare shipment, so its misses cost Rs 11.9 lakh against festival-aligned's Rs 13.5 lakh, while the house bot errs low on 11 of 13 and costs Rs 30.5 lakh, more than naive's Rs 28.8 lakh. The vendor still does not get the plan: nobody chose how high it runs, it runs higher with the weeks ahead, 3.6 percent too high in hidden weeks 1 to 6 and 11.5 percent in weeks 8 to 13, and the hidden weeks hold no festive week. On weeks with no festival, only the festival can separate festival-aligned from the bot, which is scene F3's question.</p>
           <div data-board></div>
           <p class="formula"><b>The formula, last</b>MAE = mean of |forecast - actual| over the held-out weeks, fixed before anyone scores</p>
         </div>
@@ -1374,8 +1386,7 @@ var W4_TOPICS = {
         <div data-for="toy"><div data-revealed></div></div>
         <div data-for="case" hidden>
           <p>The house bot copies calendar weeks, so its biggest week stays on 5 October 2026, 418,200 shipments, wherever Diwali falls; finance's rule and the vendor copy the same calendar and peak there too, at 434,928 and 497,900. Diwali falls on 8 November 2026, in the week beginning 2 November, so festival-aligned books its peak on 19 October at 434,928, two weeks before Diwali's week as in both earlier years: finance's number, in the right week. The window opens on 12 October, so the calendar copies book the most for its first week and far too little for 19 and 26 October.</p>
-          <p>Plus 22 and plus 4 measure different windows. Against 2025's same calendar weeks, 13 October to 1 December, finance's rule sits 4.0 percent above and festival-aligned 19.5; against 2025's same weeks counted from Diwali, 29 September to 17 November, finance's rule sits 9.5 percent below and festival-aligned 4.0 above. The calendar window holds only the tail of 2025's festival, because 2025's peak came before 13 October. If demand follows festival-aligned, booking the eight weeks by the house bot costs Rs 111.6 lakh, most of it late shipments, against Rs 3.3 lakh for the plan that scene F4 sizes; that is a scenario resting on festival-aligned being right, since none of the eight weeks has happened yet.</p>
-          <div data-windows></div>
+          <p>If demand follows festival-aligned, booking the eight weeks by the house bot costs Rs 111.6 lakh, most of it late shipments in the weeks of 19 October to 2 November; that is a scenario resting on festival-aligned being right, since none of the eight weeks has happened yet.</p>
           <p class="formula"><b>The formula, last</b>festival-aligned: copy the week at the same distance from the festival, then add the growth</p>
         </div>
       </div>
@@ -1383,6 +1394,7 @@ var W4_TOPICS = {
 
     <article class="scene" id="scene-F4" data-scene="F4">
       <div class="scene-head"><span class="sid">F4</span><h3>Where should the plan sit when being short costs more?</h3></div>
+      <p class="beyond">This scene goes beyond Friday's five topics: how far above the forecast to book is the plan quantile, taught in the fallback session. The day's own plan books the festival-aligned forecast itself, rounded up to whole packer shifts.</p>
       <p class="myth"><b>The first answer most people give:</b> plan exactly at the forecast, since anything else is padding.</p>
       <div class="predict">
         <p class="ask"><b>Predict before you move a cost.</b> Raise the cost of a late shipment from the case's Rs 25 towards Rs 40. Which way does the cheapest plan move?</p>
@@ -2019,7 +2031,8 @@ var W4_TOPICS = {
     { id: "thu", title: ["Thu: who is leaving,", "and at which step?"], where: "Zomato Gold, Chennai",
       found: ["38 percent flat over falling", "cohorts; Android 58 to 44"], kalpa: ["Kalpa Retail:", "the Retail-Plus tier"] },
     { id: "fri", title: ["Fri: how much is coming,", "how wrong could we be?"], where: "Flipkart, Lucknow",
-      found: ["festival-aligned baseline wins;", "plan at the 0.82 quantile"], kalpa: ["Kalpa Retail:", "24 months, a vendor curve"] }
+      /* Fri facts base_shifts_total: the plan books the festival-aligned forecast, rounded up to whole shifts */
+      found: ["festival-aligned wins; plan", "19,760 packer shifts"], kalpa: ["Kalpa Retail:", "24 months, a vendor curve"] }
   ];
   var nav = { day: -1, links: false, lastHash: null };
 
@@ -2077,11 +2090,12 @@ var W4_TOPICS = {
     });
     /* Saturday */
     var sat = nav.day === 5 ? "lit" : "unknown";
-    var sr = add(svg, "rect", { x: 370, y: BUS + 14, width: 460, height: 76, rx: 12, fill: sat === "lit" ? C.ink : C.white,
+    var sr = add(svg, "rect", { x: 370, y: BUS + 14, width: 460, height: 96, rx: 12, fill: sat === "lit" ? C.ink : C.white,
       stroke: sat === "lit" ? C.ink : "#B8B2D6", "stroke-width": 1.4 });
     if (sat !== "lit") sr.setAttribute("stroke-dasharray", "6 4");
     txt(svg, 600, BUS + 44, "Sat: does the method survive a change of company?", { anchor: "middle", size: 16, weight: 700, fill: sat === "lit" ? C.white : C.muted });
     txt(svg, 600, BUS + 70, "other companies first, then Kalpa's four units", { anchor: "middle", size: 14.5, fill: sat === "lit" ? C.white : C.muted });
+    txt(svg, 600, BUS + 94, "its topics: nine interview anchors, listed under the map", { anchor: "middle", size: 13, fill: sat === "lit" ? C.lav : C.muted });
     /* the connections, drawn over a faded map in the band between the boxes and the Saturday line */
     if (nav.links) {
       var defs = add(svg, "defs", {});
@@ -2335,8 +2349,7 @@ var W4_TOPICS = {
   function m1Model(g) {
     var r = m1Resp(g), lerp = function (a) { return a[0] + (a[1] - a[0]) * r; };
     var H = lerp(MON.hours), T = lerp(MON.trips);
-    return { hours: H, trips: T, tph: T / H, idle: lerp(MON.idleShare), wait: lerp(MON.waitMin),
-             topupIdle: MON.topupIdleCrore * 1e7 * r * (g / MON.floorCase) };
+    return { hours: H, trips: T, tph: T / H, idle: lerp(MON.idleShare), wait: lerp(MON.waitMin) };
   }
   function m1Roles(g) {
     var n = Math.round(MON.newcomersAtCase * m1Resp(g)), roles = [];
@@ -2385,7 +2398,6 @@ var W4_TOPICS = {
         { wide: "That is " + group(round100(m.trips)) + " / " + group(round100(m.hours)) + "." },
         ["Online hours with no trip, share", m.idle.toFixed(2)],
         ["Top-up paid in all, six weeks", crore(MON.topupCrore * 1e7 * m1Resp(st.floor) * (st.floor / MON.floorCase))],
-        ["Of which, to driver-weeks accepting under half their offers", crore(m.topupIdle)],
         ["Dots: driving, idle, offline", c.drive + ", " + c.idle + ", " + c.off]
       ];
       if (st.wait) rows.push(["Median rider wait at peak", m.wait.toFixed(1) + " min"]);
@@ -2417,7 +2429,7 @@ var W4_TOPICS = {
     return roles;
   }
   scene("M2", {
-    answer: "D",
+    answer: "C",
     start: function () { return { pay: "hours" }; },
     init: function (st, art) {
       var svg = svgRoot(640, 640, "A seesaw of the paid number against its guardrails, above the sixty driver dots");
@@ -2497,7 +2509,7 @@ var W4_TOPICS = {
   }
   function m3Unit(st) {
     var n = { 3: "trips", 2: "accepted offers", 1: "offers" }[st.num];
-    var d = st.den === "0" ? "online hour" : (st.den === "d" ? "enrolled driver" : "request received");
+    var d = st.den === "0" ? "online hour" : (st.den === "d" ? "enrolled driver online at peak" : "request received");
     var w = (st.den === "d") ? (st.win === "day" ? " per weekday" : " per week") : "";
     return n + " per " + d + w;
   }
@@ -2530,15 +2542,25 @@ var W4_TOPICS = {
       t.innerHTML = "<thead>" + head + "</thead><tbody>" + body + "</tbody>";
       put($("[data-table]", art), t);
       var svg = svgRoot(640, 120, "The metric before and after under the chosen lines");
-      var mx = Math.max(r.vb, r.va) || 1;
+      var mx = Math.max(r.vb, r.va) || 1, wait = locked(this);
       [["before", r.vb, LILAC2], ["after", r.va, C.violet]].forEach(function (b, i) {
         var y = 18 + i * 48;
         txt(svg, 16, y + 22, b[0], { size: 15, weight: 700 });
+        if (wait) {
+          add(svg, "rect", { x: 90, y: y, width: 420, height: 30, rx: 4, fill: "none", stroke: C.lilac, "stroke-dasharray": "6 4" });
+          txt(svg, 300, y + 22, "?", { size: 16, weight: 700, anchor: "middle", fill: C.muted });
+          return;
+        }
         add(svg, "rect", { x: 90, y: y, width: Math.max(2, 420 * b[1] / mx), height: 30, rx: 4, fill: b[2], "class": "move" });
         txt(svg, 98 + 420 * b[1] / mx, y + 22, same ? "1.00" : b[1].toFixed(b[1] >= 10 ? 1 : 2), { size: 16, weight: 700 });
       });
       put($("[data-fig]", art), svg);
       var unit = m3Unit(st);
+      if (wait) {
+        nums($("[data-nums]", art), [{ wide: "The metric: " + unit + "." },
+          { wide: "Its value before and after prints once you have a prediction; the table holds every count it is made from." }]);
+        return;
+      }
       nums($("[data-nums]", art), same ? [{ wide: "A count over itself is always 1. Pick a numerator and a denominator that differ." }] : [
         { wide: "The metric: " + unit + "." },
         ["Week before", r.vb.toFixed(r.vb >= 10 ? 1 : 2)],
@@ -2546,13 +2568,27 @@ var W4_TOPICS = {
         ["Change", pctChange(r.vb, r.va)],
         { wide: "Before: " + r.before[0] + " / " + r.before[1] + (st.den === "d" && st.win === "day" ? " / 5" : "") +
                 ". After: " + r.after[0] + " / " + r.after[1] + (st.den === "d" && st.win === "day" ? " / 5" : "") + "." },
-        { wide: st.den === "d" ? "The denominator is the enrolled drivers, counted once a week, so no column turns green; rows kept: " + r.kept.filter(Boolean).length + " of 12." :
+        { wide: st.den === "d" ? "The denominator counts the enrolled drivers online at least one peak hour that week, once each, so no column turns green; rows kept: " + r.kept.filter(Boolean).length + " of 12." :
                 "Per " + (st.win === "day" ? "weekday, each count over 5: before " + (r.before[0] / 5).toFixed(1) + " / " + (r.before[1] / 5).toFixed(1) + ", after " + (r.after[0] / 5).toFixed(1) + " / " + (r.after[1] / 5).toFixed(1) :
                   "week: before " + r.before[0] + " / " + r.before[1] + ", after " + r.after[0] + " / " + r.after[1]) +
                 ". In a ratio of two counts from the same week the window cancels; rows kept: " + r.kept.filter(Boolean).length + " of 12." }
       ]);
     },
-    final: function (st) { st.num = "3"; st.den = "d"; st.win = "week"; st.exc = "none"; }
+    final: function (st) { st.num = "3"; st.den = "d"; st.win = "week"; st.exc = "none"; },
+    /* every value below is computed from the twelve rows (case Mon L1) and Monday's facts */
+    reveal: function () {
+      var f = function (den, exc) { return m3Calc({ num: "3", den: den, win: "week", exc: exc }); };
+      var v = function (x) { return x.toFixed(x >= 10 ? 1 : 2); };
+      var hr = f("0", "none"), dr = f("d", "none"), ax = f("0", "acc"), ef = f("0", "ef"), dx = f("d", "acc");
+      return "<p>With online hours as the denominator, the six drivers fall from " + v(hr.vb) + " to " + v(hr.va) + " trips per online hour, " + pctChange(hr.vb, hr.va) +
+        ". With enrolled drivers online at least one peak hour, all six in both weeks, they fall from " + v(dr.vb) + " to " + v(dr.va) + " trips per driver, " + pctChange(dr.vb, dr.va) +
+        ": the extra idle hours drop out of the denominator, so the fall looks smaller. Excluding driver-weeks with acceptance under 0.5 removes only drivers E and F's after week, so the comparison becomes six drivers before against four after, " +
+        v(ax.vb) + " to " + v(ax.va) + "; the four on their own fall from " + v(ef.vb) + " to " + v(ef.va) + ", " + pctChange(ef.vb, ef.va) +
+        ". Combine that exclusion with enrolled drivers and the fall turns into a rise, " + v(dx.vb) + " to " + v(dx.va) +
+        ", because the base shrank from six drivers to four, the shrinking enrolled base Monday's definition refuses to reward.</p>" +
+        "<p>On the full data, the redesign's definition, trips over enrolled drivers online at least one peak hour that week, reads " + MON.northStar[0].toFixed(2) + " before and " +
+        MON.northStar[1].toFixed(2) + " after, while online hours went " + pctChange(MON.hours[0], MON.hours[1]) + ": the number the scheme exists for barely moved.</p>";
+    }
   });
 
   /* M4: two lines over twelve weeks */
@@ -2620,76 +2656,125 @@ var W4_TOPICS = {
 
   /* ---------- Tuesday ---------- */
   var TUE = W4.tue;
-  var T1_TITLES = {
-    topic: "Peak guarantee: six-week review",
-    claim: "The hourly guarantee bought idle hours; pay per completed trip with an acceptance floor",
-    finding: "Trips per online hour fell from 1.9 to 1.6 under the guarantee",
-    paradox: "Online hours rose 24 percent while trips rose 3 percent",
-    none: "Two numbers left, and they do not say what to do"
-  };
-  function t1Title(keep) {
-    var k = Object.keys(keep).filter(function (x) { return keep[x]; });
-    if (k.length !== 2) return k.length > 2 ? "topic" : (k.length === 1 && k[0] === "tph" ? "finding" : (k.length ? "none" : "topic"));
-    var has = function (x) { return k.indexOf(x) >= 0; };
-    if (has("tph") && has("topup")) return "claim";
-    if (has("tph")) return "finding";
-    if (has("hours") && has("trips")) return "paradox";
-    return "none";
+  /* T1: slide A (S33), the vote on its two numbers (S34, key b) and the rebuilt slide (S35) */
+  var T1_TOPIC = "Peak guarantee: six-week review";
+  var T1_CLAIM = "The scheme is paying for online hours that carry no trips";
+  var T1_CAVEAT = "The monsoon ended inside the six weeks, and last year's weeks are missing, so part of the fall may be the season.";
+  var T1_PAIRS = [["hours", "trips"], ["tph", "low"], ["wait", "fresh"], ["acc", "topup"]];
+  function t1Tile(key) { return TUE.nine.filter(function (n) { return n[0] === key; })[0]; }
+  function t1Pair(keys) {
+    return keys.map(function (k, i) {
+      var n = t1Tile(k);
+      return (i ? n[1].charAt(0).toLowerCase() + n[1].slice(1) : n[1]) + " " + n[2];
+    }).join(" and ");
+  }
+  function t1Action() {
+    return "Pay per completed peak trip with an acceptance floor, tested first on half the drivers at random. All enrolled drivers: Rs " +
+      TUE.saving[0] + " lakh to Rs " + TUE.saving[1] + " lakh saved over six weeks.";
+  }
+  function t1State(keep) {
+    var k = TUE.nine.filter(function (n) { return keep[n[0]]; }).map(function (n) { return n[0]; });
+    if (k.length > 2) return { kind: "topic", title: T1_TOPIC };
+    if (k.length === 2 && k.indexOf("tph") >= 0 && k.indexOf("low") >= 0) return { kind: "claim", title: T1_CLAIM };
+    if (k.length) return { kind: "pair", title: t1Pair(k) };
+    return { kind: "empty", title: "A title with no number under it" };
   }
   scene("T1", {
-    answer: "D",
+    answer: "B",
     start: function () {
       var keep = {}; TUE.nine.forEach(function (n) { keep[n[0]] = true; });
       return { keep: keep, warden: null };
     },
     init: function (st, art) {
       var self = this;
+      $$("[data-predict]", art).forEach(function (b, i) { b.textContent = "ABCD".charAt(i) + ". " + t1Pair(T1_PAIRS[i]) + "."; });
+      $("[data-checks]", art).innerHTML = TUE.nine.map(function (n) {
+        return '<label><input type="checkbox" data-keep="' + n[0] + '" checked> ' + n[1] + ", " + n[2] + "</label>";
+      }).join("");
       $$("[data-keep]", art).forEach(function (cb) {
         cb.addEventListener("change", function () {
-          if (locked(self)) { askFirst(art, self); return; }
+          if (locked(self)) { cb.checked = !!st.keep[cb.getAttribute("data-keep")]; askFirst(art, self); return; }
           st.keep[cb.getAttribute("data-keep")] = cb.checked; st.warden = null; self.render(st, art);
         });
       });
-      on(art, "warden", "click", function () { st.warden = t1Title(st.keep); self.render(st, art); });
+      on(art, "warden", "click", function () { st.warden = t1State(st.keep).kind; self.render(st, art); });
     },
     render: function (st, art) {
       $$("[data-keep]", art).forEach(function (cb) { cb.checked = !!st.keep[cb.getAttribute("data-keep")]; });
       var left = TUE.nine.filter(function (n) { return st.keep[n[0]]; }).length;
-      var tk = t1Title(st.keep), title = T1_TITLES[tk];
-      var svg = svgRoot(640, 420, "A slide with a title and nine number tiles");
+      var s = t1State(st.keep), claim = s.kind === "claim";
+      var svg = svgRoot(640, 420, claim ? "Slide A rebuilt in four parts: the claim, the evidence, the caveat and the action" : "Slide A: a title over nine number tiles");
       add(svg, "rect", { x: 16, y: 14, width: 608, height: 392, rx: 10, fill: C.white, stroke: C.lilac, "stroke-width": 2 });
-      var words = title.split(" "), lines = [], line = "";
-      words.forEach(function (w) { if ((line + " " + w).trim().length > 46) { lines.push(line.trim()); line = w; } else { line = (line + " " + w).trim(); } });
-      lines.push(line);
-      lines.slice(0, 2).forEach(function (l, i) {
-        txt(svg, 36, 50 + i * 28, l, { size: 22, font: SERIF, fill: tk === "claim" ? C.ink : C.night, weight: tk === "claim" ? 700 : 400 });
+      function tag(x, y, n, fill) {
+        add(svg, "circle", { cx: x, cy: y, r: 11, fill: fill });
+        txt(svg, x, y + 5, String(n), { size: 14, weight: 700, anchor: "middle", fill: C.white });
+      }
+      wrapLines(s.title, claim ? 42 : 46).slice(0, 2).forEach(function (l, i) {
+        txt(svg, claim ? 58 : 36, 50 + i * 28, l, { size: 22, font: SERIF, fill: claim ? C.ink : C.night, weight: claim ? 700 : 400 });
       });
-      TUE.nine.forEach(function (n, i) {
-        var col = i % 3, row = Math.floor(i / 3), x = 32 + col * 196, y = 116 + row * 90;
-        var g = add(svg, "g", { "class": "fade", opacity: st.keep[n[0]] ? 1 : 0.1 });
-        add(g, "rect", { x: x, y: y, width: 184, height: 78, rx: 8, fill: C.surface, stroke: C.line });
-        txt(g, x + 10, y + 24, n[1], { size: 14, fill: C.night });
-        txt(g, x + 10, y + 56, n[2], { size: 19, weight: 700 });
-      });
-      if (tk === "claim") txt(svg, 36, 396, "Caveat: the monsoon ended inside the window.", { size: 14, weight: 700, fill: C.rose });
+      if (claim) {
+        tag(38, 43, 1, C.ink);
+        var ev = [["tph", "bookings per online hour, Rs " + TUE.perHourShown[0] + " to Rs " + TUE.perHourShown[1] + ", at a Rs " + TUE.fare + " fare"],
+                  ["low", "of the " + t1Tile("topup")[2] + " top-up paid driver-weeks that accepted fewer than half their offers"]];
+        var y = 104;
+        ev.forEach(function (e, i) {
+          var n = t1Tile(e[0]), sub = wrapLines(e[1], 34), h = 84 + sub.length * 18;
+          add(svg, "rect", { x: 32, y: y, width: 280, height: h, rx: 8, fill: C.surface, stroke: C.violet, "stroke-width": 1.5 });
+          if (!i) tag(32, y, 2, C.violet);
+          txt(svg, 48, y + 26, n[1], { size: 14, fill: C.night });
+          txt(svg, 48, y + 56, n[2], { size: 21, weight: 700 });
+          sub.forEach(function (l, j) { txt(svg, 48, y + 82 + j * 18, l, { size: 13.5, fill: C.night }); });
+          y += h + 12;
+        });
+        var boxes = [[3, "Caveat", T1_CAVEAT, AMBER, AMBER_TINT, AMBER_INK], [4, "Action, the city head signs", t1Action(), C.green, C.greenTint, C.green]];
+        y = 104;
+        boxes.forEach(function (b) {
+          var lines = wrapLines(b[2], 34), h = 40 + lines.length * 19;
+          add(svg, "rect", { x: 328, y: y, width: 280, height: h, rx: 8, fill: b[4], stroke: b[3], "stroke-width": 1.5 });
+          tag(328, y, b[0], b[3]);
+          txt(svg, 344, y + 26, b[1], { size: 15, weight: 700, fill: b[5] });
+          lines.forEach(function (l, j) { txt(svg, 344, y + 48 + j * 19, l, { size: 14, fill: C.night }); });
+          y += h + 12;
+        });
+        txt(svg, 36, 396, "Appendix: one page per question a role will ask", { size: 13.5, fill: C.muted });
+      } else {
+        TUE.nine.forEach(function (n, i) {
+          var col = i % 3, row = Math.floor(i / 3), x = 32 + col * 196, y = 104 + row * 92;
+          var g = add(svg, "g", { "class": "fade", opacity: st.keep[n[0]] ? 1 : 0.1 });
+          add(g, "rect", { x: x, y: y, width: 184, height: 80, rx: 8, fill: C.tint, stroke: C.line });
+          txt(g, x + 92, y + 28, n[1], { size: 13.5, fill: C.night, anchor: "middle" });
+          txt(g, x + 92, y + 60, n[2], { size: 20, weight: 700, anchor: "middle" });
+        });
+      }
       txt(svg, 608, 396, left + (left === 1 ? " number" : " numbers") + " on the slide", { size: 14, weight: 700, anchor: "end", fill: C.violet });
       put($("[data-fig]", art), svg);
       var verdict = "not run yet; it asks whether a reader outside the field, say a hostel warden, could act on the title alone";
       if (st.warden) {
-        verdict = st.warden === "claim" ? "passes: the title says what happened and what to do" :
-          (st.warden === "topic" ? "fails: the title names a topic, so the warden asks what to do" :
-            (st.warden === "none" ? "fails: these two numbers carry no claim the warden could act on" :
-              "fails: the title reports a finding with no action"));
+        verdict = { claim: "passes: the title says what is true, and the action beside it says what to do",
+                    topic: "fails: the title names a topic, so the warden asks what to do",
+                    pair: "fails: the title reports true numbers and leaves the reader to find the point",
+                    empty: "fails: a title with no number under it is an opinion" }[st.warden];
       }
       nums($("[data-nums]", art), [
-        ["Numbers left on the slide", left + " of 9"],
-        { wide: "Title now: " + title + "." },
+        ["Numbers left on the slide", left + " of " + TUE.nine.length],
+        { wide: "Title now: " + s.title + "." },
         { wide: "Warden test: " + verdict + "." }
       ]);
     },
     final: function (st) {
-      TUE.nine.forEach(function (n) { st.keep[n[0]] = n[0] === "tph" || n[0] === "topup"; });
+      TUE.nine.forEach(function (n) { st.keep[n[0]] = n[0] === "tph" || n[0] === "low"; });
       st.warden = "claim";
+    },
+    /* S35's answer, from slide A's tiles and Tuesday's facts */
+    reveal: function () {
+      var h = t1Tile("hours")[2], t = t1Tile("trips")[2];
+      return "<p>At a flat fare of Rs " + TUE.fare + ", fewer trips per peak online hour, " + t1Tile("tph")[2] +
+        ", means lower bookings per online hour, Rs " + TUE.perHourShown[0] + " to Rs " + TUE.perHourShown[1] +
+        ", and that fall is the evidence the rebuilt slide draws. The " + t1Tile("low")[2] + ", the one number beside it, says where the " +
+        t1Tile("topup")[2] + " top-up went: to driver-weeks that accepted fewer than half their offers. Option A is Monday's trap resold: online hours " +
+        h.replace("+", "rose ") + " while trips " + t.replace("+", "rose ") + ", so riders barely gained. Options C and D each pair two true numbers and leave the reader to find the point.</p>" +
+        "<p>The other seven numbers go to an appendix, one page per question a role will ask. The caveat stays on the slide in plain sight, and the action states what it saves: " +
+        "Rs " + TUE.saving[0] + " lakh to Rs " + TUE.saving[1] + " lakh over six weeks across all enrolled drivers.</p>";
     }
   });
 
@@ -2985,15 +3070,20 @@ var W4_TOPICS = {
     render: function (st, art) {
       var toy = st.set === "toy", n = toy ? T.n : 1, e = st.a * st.b / n, lift = e ? st.o / e : 0;
       this.draw(st.a / n, st.b / n, st.o / n, {
-        a: toy ? "A, roti: " + st.a + " of 12 orders" : "A, bread: P(A) = " + f2(st.a),
-        b: toy ? "B: " + st.b + " of 12 orders" : "B, milk: P(B) = " + f2(st.b),
+        a: toy ? "A, roti: " + st.a + " of " + T.n + " orders" : "A, bread: P(A) = " + f2(st.a),
+        b: toy ? "B: " + st.b + " of " + T.n + " orders" : "B, milk: P(B) = " + f2(st.b),
         exp: "chance " + f2(e), obs: "seen " + (toy ? st.o : f2(st.o)), ratio: "seen / chance = " + f2(lift)
       });
+      /* the overlap slider runs only across what the two bands allow, so it never snaps back */
+      var oc = $('[data-ctl="o"]', art), r2 = function (x) { return Math.round(x * 100) / 100; };
+      oc.min = toy ? Math.max(0, st.a + st.b - n) : r2(Math.max(0, st.a + st.b - 1));
+      oc.max = toy ? Math.min(st.a, st.b) : r2(Math.min(st.a, st.b));
+      var ord = function (x, s) { return s + (Math.abs(x - 1) < 1e-9 ? " order" : " orders"); };
       ["a", "b", "o"].forEach(function (k) {
         $('[data-ctl="' + k + '"]', art).value = st[k];
-        setOut(art, k, toy ? st[k] + (st[k] === 1 ? " order" : " orders") : f2(st[k]));
+        setOut(art, k, toy ? ord(st[k], String(st[k])) : f2(st[k]));
       });
-      var rows = toy ? [["Chance gives, 12 x A/12 x B/12", nTxt(e) + " orders"], ["Seen", st.o + " orders"], ["Lift, seen over chance", f2(lift)]] :
+      var rows = toy ? [["Chance gives, " + T.n + " x A/" + T.n + " x B/" + T.n, ord(e, nTxt(e))], ["Seen", ord(st.o, String(st.o))], ["Lift, seen over chance", f2(lift)]] :
         [["Chance gives, P(A) x P(B)", f2(st.a) + " x " + f2(st.b) + " = " + f2(e)], ["Seen", f2(st.o)], ["Lift, seen over chance", f2(lift)]];
       rows.push({ wide: lift > 1.005 ? "The pair turns up together more often than chance would put it together." :
         (lift < 0.995 ? "The pair turns up together less often than chance would put it together." : "The pair turns up together exactly as often as chance predicts.") });
@@ -3007,18 +3097,18 @@ var W4_TOPICS = {
     reveal: function (st) {
       if (st.set === "toy") {
         var e1 = T.roti * T.sabzi / T.n;
-        return "<p>Roti and sabzi: chance alone would put 12 x " + T.roti + "/12 x " + T.sabzi + "/12 = " + f2(e1) + " orders with both, and " + T.rotiSabzi +
+        return "<p>Roti and sabzi: chance alone would put " + T.n + " x " + T.roti + "/" + T.n + " x " + T.sabzi + "/" + T.n + " = " + f2(e1) + " orders with both, and " + T.rotiSabzi +
           " are seen, so lift is " + T.rotiSabzi + " / " + f2(e1) + " = " + f2(RS_LIFT) + ". Widen B to chaas's " + T.chaas + " orders with the overlap still " + T.rotiChaas +
-          ": chance now gives 12 x " + T.roti + "/12 x " + T.chaas + "/12 = " + nTxt(RC_EXP) + " orders, exactly the " + T.rotiChaas + " seen, so lift is " + T.rotiChaas +
+          ": chance now gives " + T.n + " x " + T.roti + "/" + T.n + " x " + T.chaas + "/" + T.n + " = " + nTxt(RC_EXP) + " orders, exactly the " + T.rotiChaas + " seen, so lift is " + T.rotiChaas +
           " / " + nTxt(RC_EXP) + " = " + f2(T.rotiChaas / RC_EXP) + ", the overlap chance alone gives.</p>" +
           "<p>Lift asks how much more often a pair turns up than chance predicts. A popular partner widens its band and raises what chance predicts, so the same " +
           T.rotiChaas + " orders that read " + f2(RS_LIFT) + " beside sabzi read " + f2(T.rotiChaas / RC_EXP) + " beside chaas.</p>" +
-          '<p class="formula"><b>The formula, last</b>lift = P(A and B) / (P(A) x P(B)) = (' + T.rotiSabzi + "/12) / ((" + T.roti + "/12) x (" + T.sabzi + "/12)) = " + f2(RS_LIFT) + " for roti and sabzi</p>";
+          '<p class="formula"><b>The formula, last</b>lift = P(A and B) / (P(A) x P(B)) = (' + T.rotiSabzi + "/" + T.n + ") / ((" + T.roti + "/" + T.n + ") x (" + T.sabzi + "/" + T.n + ")) = " + f2(RS_LIFT) + " for roti and sabzi</p>";
       }
       var B = WED.breadMilk;
       return "<p>On " + group(WED.carts) + " carts chance gives " + f2(WED.bread) + " x " + f2(WED.milk) + " x " + group(WED.carts) + " = " + group(B.expected) +
         " carts holding both; " + group(B.carts) + " do, so lift is " + group(B.carts) + " / " + group(B.expected) + " = " + f2(B.lift) + ". On the twelve carts lift read " +
-        f2(WED.twelveLift) + " because all four bread carts happened to hold milk; on all of them, bread and milk meet barely more often than chance.</p>" +
+        f2(WED.twelveLift) + " because all " + TW.bread + " bread carts happened to hold milk; on all of them, bread and milk meet barely more often than chance.</p>" +
         "<p>Lift asks how much more often a pair turns up than chance predicts, so a partner as common as milk cannot buy itself a high lift: its band is wide, and chance already predicts most of the overlap.</p>" +
         '<p class="formula"><b>The formula, last</b>lift = P(A and B) / (P(A) x P(B)) = ' + group(B.carts) + " / " + group(B.expected) + " = " + f2(B.lift) + "</p>";
     }
@@ -3030,19 +3120,25 @@ var W4_TOPICS = {
     return WED.twelve.map(function (c) { return [c[0], c[1] === 1, c[2] === 1]; });
   }
   var W2N = { toy: { a: "papad", b: "dal rice", unit: "orders" }, case: { a: "bread", b: "milk", unit: "carts" } };
+  /* the twelve carts' own counts, read from the rows */
+  var TW = { n: WED.twelve.length,
+    bread: WED.twelve.filter(function (c) { return c[1]; }).length,
+    milk: WED.twelve.filter(function (c) { return c[2]; }).length,
+    both: WED.twelve.filter(function (c) { return c[1] && c[2]; }).length };
   scene("W2", {
     sets: {
       toy: { myth: "papad and dal rice share three orders, so the confidence between them reads the same from either side.", lead: "Predict before you press.",
         ask: "Dal rice is in " + T.dal + " of the " + T.n + " orders, papad in " + T.papad + ", and " + T.dalPapad + " hold both, so from dal rice to papad confidence reads " +
           T.dalPapad + " / " + T.dal + " = " + f2(T.dalPapad / T.dal) + ". The first button keeps papad's orders and the second keeps those with dal rice too. What is the confidence from papad to dal rice?",
-        opts: ["A. " + f2(T.dalPapad / T.papad) + ", from papad's " + T.papad + " orders.", "B. " + f2(T.dalPapad / T.dal) + ", the same in both directions.",
+        opts: ["A. " + f2(T.dalPapad / T.dal) + ", the same in both directions.", "B. " + f2(T.dalPapad / T.papad) + ", from papad's " + T.papad + " orders.",
                "C. " + f2(T.dalPapad / T.n) + ", the share of all twelve with both.", "D. 1.00, since every papad order holds it."],
-        answer: "A",
+        answer: "B",
         caption: "The hostel canteen's twelve lunch orders, invented, one dot each. A violet dot holds papad and an amber ring holds dal rice. The orders still in play move to the right; the rest fade where they stood." },
       case: { myth: "all four bread carts hold milk, so bread and milk are a perfect pair.", lead: "Predict before you press.",
-        ask: "All four bread carts among the twelve hold milk, so bread to milk reads 1.00, and milk is in 8 of the 12 carts anyway. Once milk's own share is counted in, how many times chance do bread and milk meet?",
-        opts: ["A. 1.00 times, the confidence itself.", "B. " + f2(WED.twelveExpected) + " times, the carts chance would give.",
-               "C. 0.67 times, milk's share of the twelve.", "D. " + f2(WED.twelveLift) + " times."],
+        ask: "All " + TW.bread + " bread carts among the " + TW.n + " hold milk, so bread to milk reads " + f2(TW.both / TW.bread) + ", and milk is in " + TW.milk + " of the " + TW.n +
+          " carts anyway. Once milk's own share is counted in, how many times chance do bread and milk meet?",
+        opts: ["A. " + f2(TW.both / TW.bread) + " times, the confidence itself.", "B. " + f2(WED.twelveExpected) + " times, the carts chance would give.",
+               "C. " + f2(TW.milk / TW.n) + " times, milk's share of the twelve.", "D. " + f2(WED.twelveLift) + " times."],
         answer: "D",
         caption: "Twelve of Swiggy Instamart's Pune carts, the case's own rows, one dot each. A violet dot holds bread and an amber ring holds milk. The carts still in play move to the right; the rest fade where they stood." }
     },
@@ -3105,11 +3201,12 @@ var W4_TOPICS = {
           "<p>Confidence shrinks the world to the baskets that hold A and forgets how common B is everywhere else; that forgetting is what lets a popular B look like a strong partner of anything.</p>" +
           '<p class="formula"><b>The formula, last</b>confidence(papad to dal rice) = orders with both / orders with papad = ' + T.dalPapad + " / " + T.papad + " = " + f2(T.dalPapad / T.papad) + "</p>";
       }
-      return "<p>After the first button 4 carts are left, the carts with bread, and all 4 hold milk, so confidence from bread to milk is 4 / 4 = 1.00. Milk is in 8 of the 12 carts anyway, " +
-        f2(8 / 12) + ", so chance alone would put milk in " + f2(WED.twelveExpected) + " of the 4 bread carts, and lift is 4 / " + f2(WED.twelveExpected) + " = " + f2(WED.twelveLift) +
+      return "<p>After the first button " + TW.bread + " carts are left, the carts with bread, and all " + TW.both + " hold milk, so confidence from bread to milk is " + TW.both + " / " + TW.bread +
+        " = " + f2(TW.both / TW.bread) + ". Milk is in " + TW.milk + " of the " + TW.n + " carts anyway, " +
+        f2(TW.milk / TW.n) + ", so chance alone would put milk in " + f2(WED.twelveExpected) + " of the " + TW.bread + " bread carts, and lift is " + TW.both + " / " + f2(WED.twelveExpected) + " = " + f2(WED.twelveLift) +
         " from either side. Confidence looked only inside the bread carts and threw away how common milk is in every cart.</p>" +
         "<p>Twelve carts are too few to trust either number, which is why chapter 8 counts every one of the " + group(WED.carts) + ".</p>" +
-        '<p class="formula"><b>The formula, last</b>lift = confidence(bread to milk) / P(milk) = 1.00 / (8/12) = ' + f2(WED.twelveLift) + "</p>";
+        '<p class="formula"><b>The formula, last</b>lift = confidence(bread to milk) / P(milk) = ' + f2(TW.both / TW.bread) + " / (" + TW.milk + "/" + TW.n + ") = " + f2(WED.twelveLift) + "</p>";
     }
   });
 
@@ -3200,8 +3297,8 @@ var W4_TOPICS = {
       case: { myth: "toned milk is the top seller, so it deserves a slot on the strip.", lead: "Predict before you switch.",
         ask: "Milk fills " + WED.milkSlots.map(pctTxt).join(", ").replace(/, ([^,]*)$/, " and $1") + " percent of the three slots' views and is clicked " + (WED.ctrMilk * 100).toFixed(1) +
           " percent of the time; every other suggestion is clicked " + (WED.ctrOther * 100).toFixed(1) + " percent of the time. Taking milk out of the strip recovers about how much margin a month?",
-        opts: ["A. About Rs 50 lakh, the sales of every add.", "B. About Rs 2 lakh, one slot for half a month.", "C. About Rs 50,000, a rounding error.", "D. About Rs 6 lakh."],
-        answer: "D",
+        opts: ["A. About Rs 50,000, a rounding error.", "B. About Rs 2 lakh, one slot for half a month.", "C. About Rs 6 lakh.", "D. About Rs 50 lakh, the sales of every add."],
+        answer: "C",
         caption: "Swiggy Instamart's strip of three slots under the cart page in Pune, the case. Each slot's bar shows the share of its views that suggested milk, in rose, and any other suggestion, in violet, with the margin the slot earns a day beneath. The add rate and the margin are assumptions, each slider running across its stated range." }
     },
     start: function () { return { lift: false, views: WED.views, add: WED.add, margin: WED.margin }; },
@@ -3252,7 +3349,7 @@ var W4_TOPICS = {
       });
       $('[data-ctl="rank"]', art).setAttribute("aria-pressed", String(st.lift));
       ["views", "add", "margin"].forEach(function (k) { $('[data-ctl="' + k + '"]', art).value = st[k]; });
-      setOut(art, "rank", st.lift ? "Milk taken out, ranking by lift above the floor" : "Milk in the strip, as it ran");
+      setOut(art, "rank", st.lift ? "Ranked by lift above the floor, milk taken out" : "Ranked by count, milk in the strip, as it ran");
       setOut(art, "views", group(st.views) + " a day");
       setOut(art, "add", f2(st.add) + " adds per click");
       setOut(art, "margin", "Rs " + st.margin + " an add");
@@ -3706,32 +3803,32 @@ var W4_TOPICS = {
     var pos = p * (sorted.length - 1), lo = Math.floor(pos), hi = Math.min(lo + 1, sorted.length - 1);
     return sorted[lo] + (pos - lo) * (sorted[hi] - sorted[lo]);
   }
-  /* a rule's cushion: the p point of its own misses, rounded to a tenth of a percent as the planner rounds it */
-  function cushionOf(m, s, p) { var e = missesOf(m, s); return e ? pyRound(quantileOf(e, p) * 1000) / 1000 : null; }
-  function cushionAt(s, p) { return cushionOf("aligned", s, p); }
-  function caseQuantile() { var co = FRI.idleShift / FRI.perShift; return FRI.lateShipment / (FRI.lateShipment + co); }
 
   /* F1: the chai stall's eight weeks as trend, season and wobble; the season is the Sunday dip */
   var STALL = FRI.stall, F1W = gauss(7, 56);
+  /* the stall's parts multiply, y = T x S x R, as Friday's S10 reads them: the trend in cups, each day's share of a weekday,
+     and the wobble as a factor near 1 whose spread is the stall's wobble in cups on a weekday */
   function f1Series(st) {
     var comp = { trend: [], season: [], noise: [] }, sum = [];
     for (var t = 0; t < 56; t++) {
-      var tr = STALL.level * (st.trend / 100) * t / 365, se = t % 7 === 6 ? -st.season : 0, no = st.noise * F1W[t];
-      comp.trend.push(tr); comp.season.push(se); comp.noise.push(no); sum.push(STALL.level + tr + se + no);
+      var tr = STALL.level * (1 + (st.trend / 100) * t / 365), se = t % 7 === 6 ? st.season : 1, no = 1 + (st.noise / STALL.level) * F1W[t];
+      comp.trend.push(tr); comp.season.push(se); comp.noise.push(no); sum.push(tr * se * no);
     }
     return { comp: comp, sum: sum };
   }
+  function f1Deep() { return Math.round((1 - 2 * (1 - STALL.sunday)) * 100) / 100; }
   scene("F1", {
     answer: "A",
     toyOnly: true,
     finalSays: "the stall with its Sunday dip doubled.",
-    start: function () { return { trend: STALL.growth * 100, season: Math.round(STALL.level * (1 - STALL.sunday)), noise: STALL.wobble }; },
+    start: function () { return { trend: STALL.growth * 100, season: STALL.sunday, noise: STALL.wobble }; },
     init: function (st, art) {
-      var self = this, dip = Math.round(STALL.level * (1 - STALL.sunday));
-      $(".ask", art).innerHTML = "<b>Predict before you move the season.</b> Double the stall's Sunday dip, from " + dip + " cups below a weekday to " + 2 * dip + ". What does the line beneath do?";
+      var self = this;
+      $(".ask", art).innerHTML = "<b>Predict before you move the season.</b> A Sunday sells " + STALL.sunday.toFixed(1) + " of a weekday, a dip of " + (1 - STALL.sunday).toFixed(1) +
+        ". Double the dip, so a Sunday sells " + f1Deep().toFixed(1) + " of a weekday. What does the line beneath do?";
       $("figcaption", art).textContent = "A chai stall at a hostel gate, invented, the example of Friday's chapters 1 to 4: eight weeks of cups a day from " + STALL.start +
         ", built from the stall's own parts, about " + STALL.level + " cups on a weekday growing about " + STALL.growth * 100 + " percent a year, Sundays at " + STALL.sunday +
-        " of a weekday, and a day-to-day wobble of about " + STALL.wobble + " cups. The three thin panels add day by day into the line beneath; the stall's exam fortnights and Diwali week are left out of this picture.";
+        " of a weekday, and a day-to-day wobble of about " + STALL.wobble + " cups. The three thin panels multiply day by day into the line beneath, since the stall's Sunday stays the same share of a weekday as the level grows; its exam fortnights and Diwali week are left out of this picture.";
       ["trend", "season", "noise"].forEach(function (k) {
         on(art, k, "input", function (e) { st[k] = Number(e.target.value); self.render(st, art); });
       });
@@ -3740,53 +3837,54 @@ var W4_TOPICS = {
       var X = function (t) { return 70 + t * 590 / 55; }, f = f1Series(st);
       var svg = svgRoot(680, 520, "The stall's eight weeks as a trend, a Sunday dip and a wobble, added into one line");
       for (var w = 0; w < 8; w++) txt(svg, X(w * 7), 508, ["30 Sep", "7 Oct", "14 Oct", "21 Oct", "28 Oct", "4 Nov", "11 Nov", "18 Nov"][w], { size: 12.5, anchor: "middle", fill: C.night });
-      [["trend", 22, "trend, cups added since 30 September", 20], ["season", 104, "season: the Sunday dip, cups", 80], ["noise", 186, "wobble, cups", 20]].forEach(function (pn) {
-        var y0 = pn[1] + 40, sc = 24 / pn[3], Y = function (v) { return y0 - v * sc; };
+      var L = STALL.level;
+      [["trend", 22, "trend, cups a day on a weekday", [L, L + 10, L + 20]], ["season", 104, "season, each day as a share of a weekday", [0, 0.5, 1]],
+       ["noise", 186, "wobble, the factor left over", [0.8, 1, 1.2]]].forEach(function (pn) {
+        var lo = pn[3][0], hi = pn[3][2], top = pn[1] + 16, Y = function (v) { return top + 48 - 48 * (Math.max(lo, Math.min(hi, v)) - lo) / (hi - lo); };
         txt(svg, 16, pn[1] + 4, pn[2], { size: 14.5, weight: 700 });
-        add(svg, "line", { x1: 70, x2: 660, y1: y0, y2: y0, stroke: C.line });
-        txt(svg, 62, y0 + 4, "0", { size: 12.5, anchor: "end", fill: C.muted });
-        [pn[3], -pn[3]].forEach(function (v) {
-          add(svg, "line", { x1: 70, x2: 660, y1: Y(v), y2: Y(v), stroke: C.line, "stroke-dasharray": "2 4" });
-          txt(svg, 62, Y(v) + 4, (v > 0 ? "+" : "") + v, { size: 12.5, anchor: "end", fill: C.muted });
+        pn[3].forEach(function (v, k) {
+          add(svg, "line", { x1: 70, x2: 660, y1: Y(v), y2: Y(v), stroke: C.line, "stroke-dasharray": k === 1 ? "2 4" : "none" });
+          txt(svg, 62, Y(v) + 4, String(v), { size: 12.5, anchor: "end", fill: C.muted });
         });
         add(svg, "polyline", { points: f.comp[pn[0]].map(function (v, i) { return X(i).toFixed(1) + "," + Y(v).toFixed(1); }).join(" "),
           fill: "none", stroke: pn[0] === "noise" ? C.muted : C.violet, "stroke-width": 2 });
       });
-      var Y = function (v) { return 482 - v * 1.5; };
-      txt(svg, 16, 280, "the line, cups a day: " + STALL.level + " + trend + season + wobble", { size: 14.5, weight: 700 });
+      var Y = function (v) { return 482 - v * 1.35; };
+      txt(svg, 16, 280, "the line, cups a day: trend x season x wobble", { size: 14.5, weight: 700 });
       [0, 50, 100].forEach(function (tv) {
         add(svg, "line", { x1: 70, x2: 660, y1: Y(tv), y2: Y(tv), stroke: C.line });
         txt(svg, 62, Y(tv) + 5, String(tv), { size: 12.5, anchor: "end", fill: C.muted });
       });
       add(svg, "polyline", { points: f.sum.map(function (v, i) { return X(i).toFixed(1) + "," + Y(v).toFixed(1); }).join(" "), fill: "none", stroke: C.ink, "stroke-width": 2.2 });
       f.sum.forEach(function (v, i) { if (i % 7 === 6) add(svg, "circle", { cx: X(i), cy: Y(v), r: 3.5, fill: C.rose }); });
-      add(svg, "line", { x1: X(0), x2: X(55), y1: Y(STALL.level), y2: Y(STALL.level + f.comp.trend[55]), stroke: C.violet, "stroke-width": 2, "stroke-dasharray": "6 4" });
-      txt(svg, 660, Y(STALL.level + f.comp.trend[55]) - 8, "trend", { size: 13, anchor: "end", fill: C.violet, weight: 700 }).setAttribute("class", "halo");
+      add(svg, "line", { x1: X(0), x2: X(55), y1: Y(f.comp.trend[0]), y2: Y(f.comp.trend[55]), stroke: C.violet, "stroke-width": 2, "stroke-dasharray": "6 4" });
+      txt(svg, 660, Y(f.comp.trend[55]) - 8, "trend", { size: 13, anchor: "end", fill: C.violet, weight: 700 }).setAttribute("class", "halo");
       put($("[data-fig]", art), svg);
       ["trend", "season", "noise"].forEach(function (k) { $('[data-ctl="' + k + '"]', art).value = st[k]; });
       setOut(art, "trend", st.trend + " percent a year");
-      setOut(art, "season", st.season + " cups");
-      setOut(art, "noise", st.noise.toFixed(1) + " cups");
+      setOut(art, "season", st.season.toFixed(2) + " of a weekday");
+      setOut(art, "noise", st.noise.toFixed(1) + " cups on a weekday");
       var sundays = f.sum.filter(function (v, i) { return i % 7 === 6; });
       nums($("[data-nums]", art), [
         ["Highest day", Math.round(Math.max.apply(null, f.sum)) + " cups"],
         ["Lowest day", Math.round(Math.min.apply(null, f.sum)) + " cups"],
         ["The eight Sundays, on average", Math.round(sundays.reduce(function (a, b) { return a + b; }, 0) / 8) + " cups"],
-        ["The trend over the eight weeks", "up " + f.comp.trend[55].toFixed(1) + " cups"],
-        { wide: "A rose dot marks each Sunday." }
+        ["The trend over the eight weeks", "up " + (f.comp.trend[55] - f.comp.trend[0]).toFixed(1) + " cups"],
+        { wide: "A rose dot sits on each Sunday." }
       ]);
     },
-    final: function (st) { st.trend = STALL.growth * 100; st.season = 2 * Math.round(STALL.level * (1 - STALL.sunday)); st.noise = STALL.wobble; },
+    final: function (st) { st.trend = STALL.growth * 100; st.season = f1Deep(); st.noise = STALL.wobble; },
     reveal: function () {
-      var dip = Math.round(STALL.level * (1 - STALL.sunday)), base = { trend: STALL.growth * 100, noise: STALL.wobble };
-      var a = f1Series({ trend: base.trend, season: dip, noise: base.noise }), b = f1Series({ trend: base.trend, season: 2 * dip, noise: base.noise });
+      var base = { trend: STALL.growth * 100, noise: STALL.wobble };
+      var a = f1Series({ trend: base.trend, season: STALL.sunday, noise: base.noise }), b = f1Series({ trend: base.trend, season: f1Deep(), noise: base.noise });
       var low = function (x) { return Math.round(Math.min.apply(null, x.sum)); };
-      return "<p>Doubling the Sunday dip from " + dip + " to " + 2 * dip + " cups drops each Sunday from about " + (STALL.level - dip) + " to about " + (STALL.level - 2 * dip) +
-        " cups, while the weekdays, the trend under them and the wobble on top stay as they were: on this draw the lowest day moves from " + low(a) + " to " + low(b) + " cups.</p>" +
+      return "<p>Doubling the Sunday dip, from " + STALL.sunday.toFixed(1) + " of a weekday to " + f1Deep().toFixed(1) + ", drops each Sunday from about " + Math.round(STALL.level * STALL.sunday) +
+        " to about " + Math.round(STALL.level * f1Deep()) + " cups, while the weekdays, the trend under them and the wobble stay as they were: on this draw the lowest day moves from " +
+        low(a) + " to " + low(b) + " cups.</p>" +
         "<p>A rule that cannot say which part of the line is trend, which is season and which is wobble will copy the wobble and call it a pattern. At the stall's " + (STALL.growth * 100) +
-        " percent a year the trend adds about " + a.comp.trend[55].toFixed(1) + " cups over these eight weeks and hides under a wobble of about " + STALL.wobble +
-        " cups, which is why chapter 1 reads growth a year apart, a Monday against the same Monday.</p>" +
-        '<p class="formula"><b>The formula, last</b>series = trend + season + wobble, here on a level of ' + STALL.level + " cups a day</p>";
+        " percent a year the trend adds about " + (a.comp.trend[55] - a.comp.trend[0]).toFixed(1) + " cups over these eight weeks and hides under a wobble of about " + STALL.wobble +
+        " cups, which is why chapter 1 reads growth a year apart, a Monday against the same Monday. The parts multiply because a Sunday stays the same share of a weekday as the level grows.</p>" +
+        '<p class="formula"><b>The formula, last</b>series = trend x season x wobble, here from a level of ' + STALL.level + " cups on a weekday</p>";
     }
   });
 
@@ -3849,9 +3947,10 @@ var W4_TOPICS = {
                "C. " + f2ToyScore(STALL.origin).abs + " cups: the misses' sizes added.", "D. 0 cups, since day 14 was exactly right."],
         answer: "B",
         caption: "The chai stall's fourteen days, 1 to 14 February 2025, invented, from Friday's chapter 3. The shaded days are hidden; naive forecasts each one as the last day it may see, and each stick is one day's miss, amber where the forecast was too high and rose where it was too low. A cup short loses about Rs " + STALL.shortRs + " of margin and a cup unsold wastes about Rs " + STALL.unsoldRs + " of milk." },
-      case: { myth: "the vendor's curve sits within 2 percent of every week it was fitted to, so it will forecast best.", lead: "Predict before you score.",
-        ask: "Every rule forecasts the 13 hidden weeks from the week of 22 June 2026. Naive repeats that week; the house bot copies the same week of 2025; festival-aligned copies the 2025 week at the same distance from Diwali and adds 4 percent; the vendor sends its own forecast. Whose misses, the sticks in the lower panel, will be shortest?",
-        opts: ["A. Naive.", "B. The house bot.", "C. Festival-aligned.", "D. The vendor's curve, within 2 percent of every week it was fitted to."], answer: "C",
+      case: { myth: "the newest week is the best guide to the weeks ahead, so the rule that repeats it will miss least.", lead: "Predict before you score.",
+        ask: "Every rule forecasts the 13 hidden weeks from the week of 22 June 2026. Naive repeats that week; drift draws the line from the first week through it; the house bot copies the same week of 2025; festival-aligned copies the 2025 week at the same distance from Diwali and adds 4 percent. Which rule misses least on weeks it never saw?",
+        opts: ["A. Naive, the week of 22 June repeated.", "B. Drift, the line from the first week through 22 June.", "C. The house bot, the same week of 2025 copied.",
+               "D. Festival-aligned, plus 4 percent."], answer: "D",
         caption: "The centre's 104 weeks from the day's weekly_shipments table, and the vendor's own forecasts from its vendor_forecast table. The shaded weeks are hidden, and every rule forecasts them from the last week it may see; the vendor made its forecast of these weeks once, from the week of 22 June 2026, so it scores only from that week, and its fit to the weeks before is drawn dashed. Each stick is one week's miss, amber where the forecast was too high and rose where it was too low, on one scale for every rule." }
     },
     start: function (set) { return set === "case" ? { method: "naive", split: FRI.origin } : { split: 7 }; },
@@ -3954,13 +4053,12 @@ var W4_TOPICS = {
         "Scores depend on which weeks are hidden, so the split is fixed before anyone scores; the day's is the week of 22 June 2026, and the board under the reveal stays there. From an earlier week the 4 percent was measured on weeks the rules may not see." });
       nums($("[data-nums]", art), rows);
       /* the board stays at the day's split, so it always agrees with the reveal's sentences */
-      var o = FRI.origin, q = caseQuantile();
+      var o = FRI.origin;
       var board = F2_ORDER.map(function (k) {
-        var x = fScore(k, o), c = cushionOf(k, o, q), xr = fScore(k, o, c);
-        return "<tr><td>" + F2_NAMES[k] + "</td><td>" + group(x.mae) + "</td><td>" + x.high + " of " + x.n + "</td><td>" + lakh(x.idle + x.late) +
-          "</td><td>" + (c < 0 ? "-" : "+") + Math.abs(c * 100).toFixed(1) + " percent, " + lakh(xr.idle + xr.late) + "</td></tr>";
+        var x = fScore(k, o);
+        return "<tr><td>" + F2_NAMES[k] + "</td><td>" + group(x.mae) + "</td><td>" + x.high + " of " + x.n + "</td><td>" + lakh(x.idle + x.late) + "</td></tr>";
       }).join("");
-      $("[data-board]", art).innerHTML = '<table class="rows board"><thead><tr><th>Rule, forecast from 22 June 2026</th><th>MAE, shipments a week</th><th>Weeks too high</th><th>Misses priced</th><th>Raised to its own 0.82 point, priced</th></tr></thead><tbody>' + board + "</tbody></table>";
+      $("[data-board]", art).innerHTML = '<table class="rows board"><thead><tr><th>Rule, forecast from 22 June 2026</th><th>MAE, shipments a week</th><th>Weeks too high</th><th>Misses priced</th></tr></thead><tbody>' + board + "</tbody></table>";
     },
     final: function (st) { if (st.set === "toy") st.split = STALL.origin; else { st.method = "aligned"; st.split = FRI.origin; } }
   });
@@ -4018,12 +4116,12 @@ var W4_TOPICS = {
           " days earlier. A yearly copy takes the same weekday 52 weeks back. Where does it put the stall's Diwali dip in 2025?",
         opts: ["A. A week after Diwali week.", "B. On Diwali week itself.", "C. A week before Diwali week.", "D. Nowhere, since the copy has no dip."], answer: "A",
         caption: "The chai stall's cups from 13 October to 2 November 2025, invented, from Friday's chapter 2, with this year's Diwali week shaded, beside a copy of the same weekday a set number of weeks back. Fifty-two weeks back is the calendar copy; fifty-one weeks back puts last year's Diwali week on this year's." },
-      case: { myth: "same week last year is safe, because the festival comes round every year.", lead: "Predict before you move Diwali.",
-        ask: "Slide Diwali's week later. Will the house bot's spike move with it?",
-        opts: ["A. Yes, it follows the festival to its new week.", "B. No, it stays on the same calendar weeks.", "C. It moves the other way.", "D. It shrinks but stays in place."], answer: "B",
+      case: { myth: "same week last year is safe, because the festival comes round every year.", lead: "Predict before the forecasts draw.",
+        ask: "Diwali 2026 falls in the week of " + weekDate(FRI.diwaliWeek[2026]) + ". Copying 2025 week for week, which week of 2026 does the house bot book the most packers for?",
+        opts: ["A. 5 October 2026.", "B. 19 October 2026, two weeks before Diwali's week.", "C. 26 October 2026, one week before Diwali's week.", "D. 2 November 2026, Diwali's own week."], answer: "A",
         caption: "Top: the centre's 2025 festive weeks, from the day's weekly_shipments table, with Diwali in the week of 20 October 2025. Bottom: two forecasts for 2026 on the same calendar weeks, made from all 104 weeks: the house bot, F2's same week last year, copies the calendar week a year back, and festival-aligned copies the week at the same distance from Diwali, from five weeks before Diwali's week to four after, and adds 4 percent. The shaded weeks are the eight the planner must staff." }
     },
-    start: function (set) { return set === "case" ? { diwali: 108 } : { back: STALL.alignedLag / 7 - 1 }; },
+    start: function (set) { return set === "case" ? { diwali: FRI.diwaliWeek[2026] } : { back: STALL.alignedLag / 7 - 1 }; },
     controls: function (st, art) {
       var toy = st.set === "toy", el = $('[data-ctl="diwali"]', art);
       $('[data-lab="diwali"]', art).textContent = toy ? "The copy reaches back, weeks" : "Diwali's week in 2026";
@@ -4045,7 +4143,7 @@ var W4_TOPICS = {
     },
     render: function (st, art) {
       if (st.set === "toy") return f3Toy(st, art);
-      var D = st.diwali, off = D - FRI.diwaliWeek[2025], diw = diwaliList(D);
+      var D = st.diwali, off = D - FRI.diwaliWeek[2025], diw = diwaliList(D), wait = locked(this);
       var cx = function (i) { return 104 + i * 56; }, svg = svgRoot(680, 490, "The 2025 festive weeks above two forecasts for 2026");
       var Ytop = function (v) { return 200 - 150 * (v - 150000) / 310000; }, Ybot = function (v) { return 430 - 150 * (v - 150000) / 310000; };
       add(svg, "rect", { x: cx(2) - 28, y: 268, width: 8 * 56, height: 166, fill: C.violet, "fill-opacity": 0.07 });
@@ -4081,6 +4179,14 @@ var W4_TOPICS = {
         vals.forEach(function (v, k) { add(svg, "circle", { cx: cx(k), cy: Y(v), r: 4, fill: colour }); });
       };
       line(top, Ytop, C.ink, 2.4);
+      $('[data-ctl="diwali"]', art).value = D;
+      setOut(art, "diwali", "The week of " + weekDate(D) + (D === FRI.diwaliWeek[2026] ? ", the case's own Diwali week" : ", a what-if; the case's Diwali week is 2 November"));
+      if (wait) {
+        txt(svg, 368, 352, "the two 2026 forecasts draw once you have a prediction", { size: 14, weight: 700, anchor: "middle", fill: C.muted }).setAttribute("class", "halo");
+        put($("[data-fig]", art), svg);
+        nums($("[data-nums]", art), [{ wide: "Where each 2026 forecast peaks prints once you have a prediction; the top panel is 2025 as it shipped." }]);
+        return;
+      }
       line(bot, Ybot, AMBER, 2.4);
       line(ali, Ybot, C.violet, 2.4);
       /* a drawn week outside the band copies its calendar week; when that week was in 2025's festival, ring it */
@@ -4099,14 +4205,12 @@ var W4_TOPICS = {
       txt(svg, cx(pb) - 14, Ybot(bot[pb]) - 4, "the bot's peak", { size: 13.5, weight: 700, anchor: "end", fill: AMBER_INK }).setAttribute("class", "halo");
       txt(svg, cx(pa), Ybot(ali[pa]) - 18, "festival-aligned peak", { size: 13.5, weight: 700, fill: C.violet, anchor: "middle" }).setAttribute("class", "halo");
       put($("[data-fig]", art), svg);
-      $('[data-ctl="diwali"]', art).value = D;
-      setOut(art, "diwali", "The week of " + weekDate(D) + (D === FRI.diwaliWeek[2026] ? ", the case's own Diwali week" : ", a what-if; the case's Diwali week is 2 November"));
       var early = pa - pb, w = f3Windows(D);
       var rows = [
         ["The bot's peak", "week of " + weekDate(105 + pb, true) + ", " + group(bot[pb])],
         ["The festival-aligned peak", "week of " + weekDate(105 + pa, true) + ", " + group(ali[pa])],
         ["The bot is early by", early === 0 ? "nothing" : early + (early === 1 ? " week" : " weeks")],
-        ["Packer shifts that week at the forecast itself, before F4's cushion", group(Math.ceil(ali[pa] / FRI.perShift))],
+        ["Packer shifts that week, the forecast over " + FRI.perShift + " rounded up", group(Math.ceil(ali[pa] / FRI.perShift))],
         { wide: "Near Diwali the aligned copy of a 2026 week is the 2025 week at the same distance from Diwali 2025, here " + off +
           " weeks earlier, times 1.04; further from Diwali it copies the same calendar week, as the bot does, and adds the same 4 percent." },
         { wide: "Over the eight weeks from 12 October, festival-aligned books " + group(w.aligned) + ": " + vsText(w.aligned, w.calendar) +
@@ -4119,11 +4223,6 @@ var W4_TOPICS = {
         (off === 52 ? "Here Diwali 2026 sits on the same calendar week as Diwali 2025, so the bot happens to be right; in 2026 Diwali falls in the week of " + weekDate(FRI.diwaliWeek[2026]) + "." :
           "In 2026 Diwali falls in the week of " + weekDate(FRI.diwaliWeek[2026]) + "; the slider tries other weeks to show what each copy does.") });
       nums($("[data-nums]", art), rows);
-      var cw = f3Windows(FRI.diwaliWeek[2026]);
-      $("[data-windows]", art).innerHTML = '<table class="rows board"><thead><tr><th>12 Oct to 30 Nov 2026</th><th>Eight weeks</th><th>Against 13 Oct to 1 Dec 2025</th><th>Against 29 Sep to 17 Nov 2025</th></tr></thead><tbody>' +
-        [["The house bot", "bot"], ["Finance's rule", "finance"], ["The vendor", "vendor"], ["Festival-aligned", "aligned"]].map(function (r) {
-          return "<tr><td>" + r[0] + "</td><td>" + group(cw[r[1]]) + "</td><td>" + vsText(cw[r[1]], cw.calendar, true) + "</td><td>" + vsText(cw[r[1]], cw.diwali, true) + "</td></tr>";
-        }).join("") + "</tbody></table>";
     },
     final: function (st) { if (st.set === "toy") st.back = STALL.yearLag / 7; else st.diwali = FRI.diwaliWeek[2026]; }
   });
