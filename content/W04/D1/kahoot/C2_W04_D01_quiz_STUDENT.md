@@ -40,8 +40,8 @@ seconds, and an item most of the room misses is the call to say again before the
 
 ---
 
-## Q2. Of five city numbers, which ones lead: (1) acceptance this week, (2) the month's top-up, (3) drivers online in the first peak hour, (4) the quarter's bookings, (5) requests per online hour by zone?
-*Tests: Leading against lagging indicators: a leading number moves before the north star, while the team can still act on it.*
+## Q2. Of five city numbers, all read this week, which ones lead: (1) acceptance, (2) the top-up paid, (3) drivers online in the first peak hours, (4) gross bookings, (5) requests per online hour by zone?
+*Tests: Leading against lagging indicators: a leading number moves before the north star, while the team can still act on it; with every number on the same week, the call turns on whether it moves before the trips are counted.*
 
 - 1, 3 and 5  <- correct
 - 1, 2 and 3

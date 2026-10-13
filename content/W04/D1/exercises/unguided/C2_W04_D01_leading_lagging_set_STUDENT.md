@@ -35,13 +35,16 @@ customer and the average order value. The north star counts orders once they are
 | # | A number on Kalpa's growth dashboard |
 |---|---|
 | 1 | Orders booked this week, before any of them is delivered |
-| 2 | Delivered revenue for the quarter |
+| 2 | Revenue from orders delivered this week |
 | 3 | Items added to baskets this week |
-| 4 | Customers lost over the quarter |
-| 5 | Delivered average order value for the quarter |
+| 4 | Customers marked as lost this week |
+| 5 | Average order value of orders delivered this week |
 | 6 | Share of this week's orders out for delivery on the day promised |
-| 7 | Returns booked for the month |
+| 7 | Returns booked this week |
 | 8 | App sessions per active customer this week |
+
+Every number reads the same week, so the window cannot decide a call: what decides it is whether the
+number counts something that happens before an order is delivered, or after.
 
 ### Q1. Which list holds every leading number among the eight, and nothing else?
 
@@ -64,7 +67,7 @@ the dashboard moves a number only if the reason convinces them.
 
 a) Booked orders are a count and revenue is in rupees, and counts move first
 
-b) The growth team reads booked orders daily while finance reads revenue each quarter
+b) The growth team reads booked orders every day while finance reads revenue once a week
 
 c) Orders are booked days before delivery; revenue sums deliveries already made
 

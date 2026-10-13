@@ -157,14 +157,14 @@ Transition: the eight numbers.
 
 | # | City number |
 |---|---|
-| 1 | Rider rating at month end |
+| 1 | Rider rating of this week's trips |
 | 2 | Share of offers accepted this week |
-| 3 | Gross bookings for the quarter |
-| 4 | Enrolled drivers online in the first peak hour |
-| 5 | Top-up paid for the month |
+| 3 | Gross bookings this week |
+| 4 | Enrolled drivers online in this week's first peak hours |
+| 5 | Top-up paid for this week |
 | 6 | New driver sign-ups this week |
-| 7 | Drivers who left the platform the next quarter |
-| 8 | Rider requests per online hour, by zone |
+| 7 | Rider complaints filed about this week's trips |
+| 8 | Rider requests per online hour this week, by zone |
 
 a) 2, 4, 6 and 8 lead; the other four lag
 
@@ -187,7 +187,7 @@ Transition: the answer.
 ```mermaid
 flowchart LR
     I["<b>Leading: 2, 4, 6 and 8</b><br/>acceptance, drivers online<br/>in the first hour, sign-ups,<br/>requests per online hour"] --> N["<b>North star</b><br/>completed peak trips<br/>per enrolled driver"]
-    N --> C["<b>Lagging: 1, 3, 5 and 7</b><br/>ratings, the quarter's bookings,<br/>the month's top-up, departures"]
+    N --> C["<b>Lagging: 1, 3, 5 and 7</b><br/>ratings, the week's bookings,<br/>the week's top-up, complaints"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class I,C known

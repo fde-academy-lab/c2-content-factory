@@ -32,7 +32,7 @@ Post exactly this shape: xxx
 |---|---|
 | North star | The one number the scheme exists to move. Here: completed peak trips per enrolled driver online at peak, per week |
 | Leading number | A number that moves before the north star does, which the city team can act on this week, for example by moving drivers toward zones where requests per online hour are high |
-| Lagging number | A number that confirms the north star after the trips have happened: a bill, a rating, a departure, a quarter's total |
+| Lagging number | A number that confirms the north star after the trips have happened: a bill, a rating, a complaint, a week's total |
 | Guardrail | A number that must not get worse while the north star rises, because it catches one way of hitting the north star badly. Leading and lagging say when a number moves, and a guardrail is a job a number does, so one number can be both |
 | Offer | One rider request shown to one driver; a request one driver declines is offered to the next |
 
@@ -45,14 +45,17 @@ it can still change this week.
 
 | # | A number on the city's dashboard |
 |---|---|
-| 1 | Rider rating at month end |
+| 1 | Rider rating of this week's trips |
 | 2 | Share of offers accepted this week |
-| 3 | Gross bookings for the quarter |
-| 4 | Enrolled drivers online in the first peak hour |
-| 5 | Top-up paid for the month |
+| 3 | Gross bookings this week |
+| 4 | Enrolled drivers online in this week's first peak hours |
+| 5 | Top-up paid for this week |
 | 6 | New driver sign-ups this week |
-| 7 | Drivers who left the platform the next quarter |
-| 8 | Rider requests per online hour, by zone |
+| 7 | Rider complaints filed about this week's trips |
+| 8 | Rider requests per online hour this week, by zone |
+
+Every number reads the same week, so the window cannot decide a call: what decides it is whether the
+number moves before this week's trips are counted, or adds up trips already done.
 
 ### Q1. Which list holds every leading number among the eight, and nothing else?
 
@@ -71,14 +74,14 @@ d) 2, 3, 5 and 6
 A call on a dashboard is only as good as the reason said beside it, because the next person to read
 the dashboard will move a number only if the reason convinces them. On the case data the share of
 offers accepted fell to 0.729 in the launch week itself and stayed there, while gross bookings per
-online hour, the weekly form of number 3, fell to Rs 271 that week, Rs 261.7 the next and Rs 259.1
+online hour, number 3 read per online hour, fell to Rs 271 that week, Rs 261.7 the next and Rs 259.1
 the third.
 
 ### Q2. Which reason defends calling number 2 leading and number 3 lagging?
 
 a) A share always moves before a rupee total, so number 2 must lead number 3
 
-b) The city team reads acceptance every day, while finance reads bookings once a quarter
+b) The city team reads acceptance every day, while finance reads the bookings only once a week
 
 c) Acceptance hit its new level in the launch week; bookings add up trips already done
 
