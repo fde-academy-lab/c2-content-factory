@@ -275,9 +275,11 @@ def nb01():
         May's row says it again: read by calendar month it ranks March above February, 4 of 10 against
         3, while at the same age February keeps more, 7 against 6 at age one and 5 against 4 at age two.
 
-        **In the interview.** [S] "Retention dropped; walk me through your investigation." The first
-        move a strong candidate makes: "I'd fix each member's joining month and compare cohorts at the
-        same age before I read any blended number."
+        **In the interview.** [S] "Retention dropped; walk me through your investigation." A strong
+        first move: "I'd confirm what the number counts and that the count is right, then fix each
+        member's joining month and compare cohorts at the same age before I read any blended number."
+        The tag says how often a question is asked: [S] a staple everywhere, [F] frequent in GCC (global
+        capability centre) and product screens, [D] a question that sets a candidate apart.
 
         **What comes next.** Notebook 02 reads each row of this table as a curve and finds where it
         stops falling. Notebook 05 counts twelve Zomato Gold members the same way, by hand and then in
@@ -355,7 +357,7 @@ def nb02():
         '''),
         md('''
         **What happened.** The answer is b: 80, 60, 50, 50, 50. A curve's **shape** is how fast it falls
-        in its first ages: January lost 20 points, then 20, then 10, then none. A point is the gap
+        in its first ages: January fell 20 points from age one to age two, then 10, then none. A point is the gap
         between two percentages, so 80 to 60 is a fall of 20 points. Its **floor** is the level where it
         stops falling: January's is 50, the five of ten who made visiting a habit, and February's is 30.
         March reads 60, 40, 30 and is still falling, so its floor is not known yet.
@@ -366,8 +368,10 @@ def nb02():
         percent of its joiners by age one, 40 by age two and 50 by age three. Counted month to month, it
         divides those who stopped by those still visiting the month before: at age two, 2 of the 8 who
         visited at age one stopped, 25 percent. By hand, January's month-to-month churn reads 20, 25,
-        16.7, 0 and 0. In this branch no member came back after stopping, which is what lets the
-        month-to-month count divide by last month's visitors.
+        16.7, 0 and 0. In this branch no member came back after stopping, which is what lets both
+        counts work and the month-to-month count divide by last month's visitors. Where members do come
+        back, a team first picks when a member counts as gone, for example 60 days with no visit, and
+        labels that a choice.
         '''),
         code('''
         # Churn two ways for January, against the hand count, and drawn side by side.
@@ -393,20 +397,24 @@ def nb02():
         **The plausible wrong answer.** After February's age two, 5 of 10, the owner staffed for a floor
         of five regulars. Ages three and four read 3 of 10, so the plan counted two regulars too many.
         **Why it is wrong.** One age after a big drop looks settled and is not. **The rule we use, this
-        programme's own:** call a floor only when two ages in a row read the same share; until then the
-        curve is still falling. The next cell writes the rule as a function, `floor_of`, and tests it on
-        January's row and on February's row as the owner saw it after age two.
+        programme's own:** call a floor only when two ages in a row read within a point of each other;
+        until then the curve is still falling. A batch of ten moves in steps of ten points, so on the
+        gym that means two equal ages; on a large cohort exact equality almost never happens, which is
+        why the rule allows a point. The next cell writes the rule as a function, `floor_of`, and tests
+        it on January's row and on February's row as the owner saw it after age two.
         '''),
         code('''
         # The two-ages rule as a function, tested on January and on February cut at age two.
-        def floor_of(row):                                       # row: shares at ages 1, 2, 3, ...
+        def floor_of(row, within=0.01):                          # row: shares at ages 1, 2, 3, ...
             pairs = zip(row, row[1:])
-            return next((a for a, b in pairs if a == b), None)   # None: still falling
+            near = (b for a, b in pairs if abs(a - b) <= within)
+            return next(near, None)                              # None: still falling
 
         jan_row, feb_row = list(tri.loc["jan"].dropna()), list(tri.loc["feb"].dropna())
         print("January:", jan_row, "floor:", floor_of(jan_row))
         print("February as the owner saw it after age two:", feb_row[:2], "floor:", floor_of(feb_row[:2]))
-        check("January's floor is 0.5, first read at age three", floor_of(jan_row) == 0.5 and jan_row.index(0.5) + 1 == 3)
+        check("January's floor is 0.5, reached at age three and called at age four",
+              floor_of(jan_row) == 0.5 and jan_row.index(0.5) + 1 == 3)
         check("February cut at age two has no floor yet", floor_of(feb_row[:2]) is None)
         fig, ax = plt.subplots(figsize=(7.2, 3.0))
         ax.plot(range(1, len(feb_row) + 1), [100 * v for v in feb_row], marker="o", color="#5B3FD6", label="February")
@@ -473,7 +481,8 @@ def nb02():
         ## What does an analyst read off every retention curve?
 
         1. A retention curve is one cohort's row of the table, drawn by age.
-        2. The shape says how fast a cohort leaves, and the floor says how many stay.
+        2. The shape says how fast a cohort leaves; the floor says how many stay where members who stop
+           never return, and otherwise the share active in a typical month.
         3. Cohorts are ranked at the same age, never by the latest calendar month.
         4. A young cohort has no floor yet, since it has not lived the ages that would show one.
 
@@ -495,8 +504,8 @@ def nb03():
 
         **Week 4, Thursday, SECTION 3, the third of five concept notebooks.** The gym's dashboard and
         every count on it are invented. Notebook 02 read each batch's row as a curve: every batch falls,
-        then holds at its floor. This notebook puts one number over all the gym's members and takes it
-        apart.
+        and the batches old enough to show one level off at a floor. This notebook puts one number over
+        all the gym's members and takes it apart.
 
         **Who needs the answer.** The gym's owner, who reads one dashboard number each month, the share
         of members who visited. A flat number read as "nothing changed" leaves a falling cohort with no
@@ -608,10 +617,11 @@ def nb03():
         100 older members the same vote as 400 joiners. It is neither the count, 50 percent, nor the
         older members' own 40, and a report of "46.25 percent, down 3.75 points" describes no group in
         the gym. **The check that catches it:** the weighted average must equal the direct count, and
-        the plain mean does not. The plain mean equals the blend only when every cohort is the same size.
+        the plain mean does not. The plain mean matches the blend only when the cohorts are the same
+        size or read the same rate.
         '''),
         code('''
-        # The plain mean beside the blend, and the one case where the two agree: cohorts of equal size.
+        # The plain mean beside the blend, and one case where the two agree: cohorts of equal size.
         plain = feb["rate"].mean()
         print(f"plain mean of the rates {100 * plain:.2f} percent; blend {100 * weighted:.0f} percent")
         check("the plain mean, 46.25, misses the blend", round(100 * plain, 2) == 46.25 and abs(plain - weighted) > 0.01)
@@ -621,10 +631,11 @@ def nb03():
         md('''
         ## Where has this arithmetic been met before?
 
-        Week 1 Thursday met it as a reversal: a total moved one way while each segment moved the other.
-        A total that runs against its parts is called Simpson's paradox, after E. H. Simpson's 1951 paper
-        in the Journal of the Royal Statistical Society; a flat blend over falling cohorts is its
-        retention form.
+        Week 1 Thursday met the same arithmetic as a reversal: a total moved one way while each segment
+        moved the other. A total that runs against its parts is called Simpson's paradox, after E. H.
+        Simpson's 1951 paper in the Journal of the Royal Statistical Society. A flat blend over falling
+        cohorts uses the same arithmetic, a weighted average whose weights moved; nothing reverses here,
+        so it is called a mix effect.
 
         ## Your turn: what does a second gym's dashboard read?
 
@@ -670,14 +681,15 @@ def nb03():
         1. A number over several cohorts is their average weighted by cohort size.
         2. It moves when the mix of young and old cohorts moves, as well as when behaviour does.
         3. Rebuild it from its cohorts, and check the rebuild equals the direct count, before believing it.
-        4. A plain mean of cohort rates is never the blend unless every cohort is the same size.
+        4. A plain mean of cohort rates gives each cohort one vote, so it matches the blend only when the
+           cohorts are the same size or read the same rate.
 
         The second gym says it again: X fell from 60 to 55 percent and Y from 40 to 36, while the
         dashboard moved only from 48.0 to 47.8, because Z joined 500 strong at 52.
 
-        **In the interview.** [F] "Blended retention is flat while every cohort declines; how?" A
-        growing young cohort at its high early rate carries more weight each month, so the average holds
-        while each cohort falls; the fix is to read the cohorts at the same age.
+        **In the interview.** [F] "Blended retention is flat while every cohort declines; how?" A mix
+        shift: a growing young cohort at its high early rate carries more weight each month, so the
+        average holds while each cohort falls; read the cohorts at the same age.
 
         **What comes next.** Notebook 04 turns from who stays to which step people pass. Notebook 06
         rebuilds Gold's flat 38 from its cohorts the same way.
@@ -727,9 +739,9 @@ def nb04():
         before you run.** The next cell draws both cycles; which step owns this cycle's loss?
 
         - a) Shortlisting, the lowest step at 50 percent
-        - b) Offer acceptance, 90 to 75 percent
+        - b) Offer acceptance, at 75 percent this cycle
         - c) Joining, at 80 percent
-        - d) The test, which 200 applications skip
+        - d) The test, which 200 applications never sit
         '''),
         code('''
         # The two cycles' funnels as bars, counted in applications.
@@ -773,8 +785,9 @@ def nb04():
         md('''
         **What happened.** The answer is b. Offer acceptance fell from 90 to 75 percent of those
         shortlisted, and every other step read the same in both cycles. Shortlisting reads 50 percent
-        because the college selects half by design, and it did not move: a low step is a loss only when
-        it moves. **Named last, the formulas.** Step rate = those who reached a step ÷ those who reached
+        because the college selects half by design, and it did not move: when the overall falls, the
+        step that moved against its own past owns the fall, and a low, steady step is how the process
+        runs. **Named last, the formulas.** Step rate = those who reached a step ÷ those who reached
         the step before, in one unit. Drop-off = 100 less the step rate. Overall conversion = the last
         step ÷ the first: 240 ÷ 1,000 = 24 percent this cycle against 28.8 last cycle, and the step
         rates multiply to it, 0.80 × 0.50 × 0.75 × 0.80 = 0.24.
@@ -795,8 +808,9 @@ def nb04():
         applications, 300 sat the test, and 320 were shortlisted, 230 who sat the test and 90 on school
         results alone. **The plausible wrong answer.** "Test to shortlist reads 107 percent, our best
         step." 320 ÷ 300 puts 90 students who never sat the test over the test-takers. A rate above 100
-        says the numerator holds people who never passed the denominator's step, so the step is one
-        people can skip, and the 107 is an **artefact**, a number made by the way the count is taken.
+        says the numerator holds people the denominator never had: here, students who skipped the test;
+        elsewhere, a double count, two units or two time windows. The 107 is an **artefact**, a number
+        made by the way the count is taken.
         **The fix** counts the shortlist among those who sat the test.
         '''),
         code('''
@@ -834,15 +848,17 @@ def nb04():
             ax.set_title(f"per {u[:-1]}: overall {100 * units[u].iloc[-1] / units[u].iloc[0]:.1f} percent")
         axes[0].set_ylabel("percent of the step before"); plt.show()
         print((100 * by_unit).round(1))
-        check("per applicant every step reads at least as high as per application",
+        check("in this data every step reads at least as high per applicant; only the overall is sure to",
               (by_unit["applicants"] >= by_unit["applications"]).all())
         check("joined per applicant 26.7 percent against 24.0 per application",
               [round(100 * units[u].iloc[-1] / units[u].iloc[0], 1) for u in ("applicants", "applications")] == [26.7, 24.0])
         '''),
         md('''
         **What happened.** The answer is a: 240 joiners are 24 percent of applications and 26.7 percent
-        of applicants. A person can try more than once, so a funnel read per person reads at least as high
-        at every step, and a chart names its unit.
+        of applicants. Each applicant joins at most once, so the overall reads higher per person. In this
+        data every middle step reads at least as high per applicant too; that is this data's pattern, and
+        a middle step can move either way, so its direction is read from the data, and a chart names its
+        unit.
 
         ## Your turn: did any step move in the cycle before last?
 
@@ -871,13 +887,17 @@ def nb04():
         ## What does an analyst check at every step of a funnel?
 
         1. Each step divides by the step before, in one named unit, and drop-off is 100 less that rate.
-        2. The overall rate divides the last step by the first, and the step rates multiply to it.
-        3. A low step is a loss only when it moves against its own past.
-        4. A rate above 100 percent is a step people can skip, so count only those who passed the step before.
+        2. The overall rate divides the last step by the first, and where each stage is a subset of the
+           one before, the step rates multiply to it.
+        3. When the overall falls, the step that moved against its own past owns the fall; a low, steady
+           step is how the process runs, and where to invest is a separate question.
+        4. A rate above 100 percent means the numerator holds people the denominator never had: a
+           skipped step, a double count, or mixed units or windows; count only those who passed the step
+           before.
 
-        **In the interview.** [D] "The team that owns the step says it is fine; what do you bring?" The
-        step's rate against its own past, split by group and date, in a named unit, with a step beside it
-        that held.
+        **In the interview.** [S] "Checkout conversion fell this month; how do you find where?" Check the
+        count first, then read each step over the step before in one named unit against its own past,
+        split by platform, group and date, and name the step that moved beside a step that held.
 
         **What comes next.** Notebook 07 reads Gold's order flow on the event log with the same four
         rules. Notebook 08 asks which of the college's two problems the dean fixes first.
@@ -893,8 +913,8 @@ def nb08():
 
         **Week 4, Thursday, SECTION 8, the last of five concept notebooks.** The college and its counts
         are invented, the same as notebook 04, which found this cycle's loss at one step: offer
-        acceptance fell from 90 to 75 percent while the lowest step, shortlisting, held at 50. The fee of
-        Rs 1 to 1.5 lakh a year is an assumption, given with its range.
+        acceptance fell from 90 to 75 percent while the lowest step, shortlisting, held at 50. The
+        first-year fee of Rs 1 to 1.5 lakh is an assumption, given with its range.
 
         **Who needs the answer.** The college's dean, who has one admissions team for one fix before the
         next cycle. The wrong fix leaves the lost students lost for another year.
@@ -922,9 +942,9 @@ def nb08():
         md('''
         ## Which of two problems goes first?
 
-        The dean has two problems: 200 of 1,000 applications skip the entrance test every cycle, and
-        offer acceptance fell from 90 to 75 percent this cycle. **Predict before you run.** Which goes
-        first?
+        The dean has two problems: 200 of 1,000 applications never sat the entrance test this cycle, the
+        same 20 percent as every cycle, and offer acceptance fell from 90 to 75 percent. **Predict before
+        you run.** Which goes first?
 
         - a) Both at once, split across the team
         - b) The test's no-show, the bigger count at 200
@@ -968,6 +988,10 @@ def nb08():
         check("other-state acceptance fell from 87 to 50", [round(100 * v) for v in rate["other states"].loc[[2025, 2026]]] == [87, 50])
         '''),
         md('''
+        **What happened.** Other-state acceptance fell from 87 to 50 percent from the cycle the deadline
+        was cut, while in-state students on the same step, who met the same shorter deadline, held at 92
+        to 90: the comparator places the fall in one group, and the date ties it to the change.
+
         ## How big is it, and what does it cost?
 
         By hand: at last cycle's rates, the 250 in-state students shortlisted this cycle would have
@@ -979,13 +1003,13 @@ def nb08():
         '''),
         code('''
         # The size as a function, the hand count checked, the second route, and the cost with its range.
-        def lost_at_old_rates(shortlisted_now, accepted_now, old_rate):
+        def lost_at_old_rates(shortlisted_now, accepted_now, accepted_last, shortlisted_last):
             """Acceptances lost: what last cycle's rate would have kept, less what this cycle kept."""
-            return (shortlisted_now * old_rate - accepted_now).round()
+            return shortlisted_now * accepted_last / shortlisted_last - accepted_now
 
         by_hand = {"in-state": 5, "other states": 55}
         now, last = g.loc[2026], g.loc[2025]
-        lost = lost_at_old_rates(now["shortlisted"], now["accepted"], last["accepted"] / last["shortlisted"])
+        lost = lost_at_old_rates(now["shortlisted"], now["accepted"], last["accepted"], last["shortlisted"])
         print(lost)
         check("the code's size equals the hand count: 5 in-state, 55 from other states", lost.to_dict() == by_hand)
         joiners_lost = lost.sum() * 0.8
@@ -994,8 +1018,14 @@ def nb08():
               joiners_lost == joined[2025] - joined[2026] == 48)
         cost = {k: joiners_lost * v for k, v in FEE_LAKH.items()}
         print({k: f"Rs {v:.1f} lakh" for k, v in cost.items()})
+        # The no-show sized the same way: half of the 200 sitting the test, then this cycle's rates (an assumption).
+        r26 = c.loc[2026]
+        no_show_gain = (0.5 * (r26["applied"] - r26["sat_test"]) * r26["shortlisted"] / r26["sat_test"]
+                        * r26["accepted"] / r26["shortlisted"] * r26["joined"] / r26["accepted"])
+        print(f"if half the no-show sat the test: about {no_show_gain:.0f} more joiners, a gain to plan for")
+        check("half the no-show, at this cycle's rates, is about 30 joiners", round(no_show_gain) == 30)
         fig, ax = plt.subplots(figsize=(6.4, 2.2))
-        ax.barh(["fee income lost a year"], [cost["middle"]], color="#5B3FD6")
+        ax.barh(["first-year fees lost"], [cost["middle"]], color="#5B3FD6")
         ax.errorbar([cost["middle"]], [0], xerr=[[cost["middle"] - cost["low"]], [cost["high"] - cost["middle"]]],
                     color="#1A0F5C", capsize=8)
         ax.text(cost["high"] + 1, 0.25, f"Rs {cost['low']:.0f} to {cost['high']:.0f} lakh", va="center")
@@ -1006,7 +1036,9 @@ def nb08():
         **The plausible wrong answer.** "Fix the test first: 200 applications never sit it." The decision
         it would mislead: the one admissions team spends a cycle on a step that has read 80 percent for
         three cycles, while 55 students from other states a cycle keep turning the offer down. **Why it is
-        wrong.** The step never moved, so fixing it wins back nothing lost this cycle.
+        wrong.** The step never moved, so fixing it wins back nothing lost this cycle. Sized the same way,
+        half of the 200 sitting the test would bring about 30 more joiners, on an assumption: a gain worth
+        planning for, and where to invest is a separate question from which step owns this cycle's fall.
 
         ## What answers the objection?
 
@@ -1039,7 +1071,8 @@ def nb08():
               list(before) == [86.4, 86.7])
         acc = 100 * two["offers accepted"]
         page = [
-            "The call. Give other-state offers a longer fee deadline first; the test's no-show waits, since it never moved.",
+            "The call. Give other-state offers their 21-day fee deadline back in the next round, a cheap change that can be "
+            "undone; the test's no-show waits, since it never moved.",
             f"The evidence. Offer acceptance fell from {acc[2025]:.0f} to {acc[2026]:.0f} percent; for other-state students "
             f"from {100 * rate['other states'][2025]:.0f} to {100 * rate['other states'][2026]:.0f}, while in-state held at "
             f"{100 * rate['in-state'][2025]:.0f} to {100 * rate['in-state'][2026]:.0f} on the same step, from the cycle the "
@@ -1337,10 +1370,14 @@ def nb06():
         to about 38.5 percent, then slides about 0.3 points a month. A gap between two percentages is
         counted in points: January's 38.7 to 36.9 percent is a fall of 1.8 points. Each cohort also
         starts lower than the one before: 58 percent in January's month one, 49 in July's, and 31 in
-        August's. So two things sit under a flat dashboard. Each newer cohort starts lower and still
-        lands near 38.5 in month two, so a count that starts at month two never sees the weaker start;
-        and the August cohort has not reached month two yet. Drawn as lines, the curves fall on top of
-        each other after month one.
+        August's. By notebook 02's rule, ages two and three agree within a point, so each cohort old
+        enough to show it, January to June, reaches its floor at month two, and the floor then erodes
+        about 0.3 points a month; July has not lived month three. Members come back after a month with
+        no order, so the floor is the share ordering in a typical month, and the 38 who order are not
+        always the same 38. So two things sit under a flat dashboard. Each newer cohort starts lower and
+        still lands near 38.5 in month two, so a count that starts at month two never sees the weaker
+        start; and the August cohort has not reached month two yet. Drawn as lines, the curves fall on
+        top of each other after month one.
         '''),
         code('''
         # The curves: one line per cohort, month one on the left; August has one month so far.
@@ -1357,13 +1394,13 @@ def nb06():
         ## What does the dashboard print from June to September, counted directly?
 
         The dashboard takes, in each reporting month, every member two or more months past her signup
-        month and asks what share ordered. **Predict before you run.** With every cohort falling, what
-        does it print from June to September?
+        month and asks what share ordered. It printed 38 percent from June to September while every
+        cohort's row fell. **Predict before you run.** Which reason holds?
 
-        - a) A fall of two or three points a month
-        - b) About 38 percent every month
-        - c) A rise, because new cohorts keep joining
-        - d) Flat until September, then a drop when the August cohort arrives
+        - a) Members who stopped ordering came back the next month, so the share held
+        - b) After month two, rows slide 0.3 a month and each new cohort enters near 38.5
+        - c) The dashboard averages the seven cohorts' rates without weighting by size
+        - d) The 13,000-member August cohort, counted from September, holds the share up
         '''),
         code('''
         # The dashboard, counted directly: members aged two or more, and the share who ordered.
@@ -1371,11 +1408,23 @@ def nb06():
         dash = (mm[mm["month"].isin(report) & (mm["age"] >= 2)]
                 .groupby("month")["active"].agg(counted="size", ordered="sum", rate="mean"))
         dash["rate"] = (100 * dash["rate"]).round(1)
+        # How much the cohorts that entered after June prop September: the same count held to June's four.
+        june_four = sorted(mm[(mm["month"] == "2026-06") & (mm["age"] >= 2)]["cohort_month"].unique())
+        sep_dash = mm[(mm["month"] == "2026-09") & (mm["age"] >= 2)]
+        held = sep_dash[sep_dash["cohort_month"].isin(june_four)]["active"].mean()
+        print(f"September held to June's four cohorts, {june_four[0]} to {june_four[-1]}: {100 * held:.1f} percent; "
+              f"the cohorts that entered after June prop it by {100 * (sep_dash['active'].mean() - held):.1f} points")
+        check("held to June's four cohorts September reads 37.3, so the newer cohorts prop it by about half a point",
+              round(100 * held, 1) == 37.3)
         dash
         '''),
         md('''
-        **What happened.** The answer is b: 38.2, 38.0, 37.9 and 37.8 percent, which the dashboard
-        prints as 38 every month.
+        **What happened.** The answer is b. Counted directly, the dashboard reads 38.2, 38.0, 37.9 and
+        37.8 percent, printed as 38 every month. After month two each row slides only about 0.3 points a
+        month, and each month a new cohort enters the count near 38.5, which props September by about
+        half a point: held to June's four cohorts, it reads 37.3. The weak starts sit in month one, which
+        the dashboard never counts. Members do come back, as option a says, and the rows already count
+        every returner, so returners cannot hold a share flat while every row falls.
 
         Two numbers sit near 38 and are easy to mix up. The table's month-two column is one age: each
         cohort's share in its second month after joining, about 38.5 for every cohort. The dashboard's
@@ -1440,7 +1489,7 @@ def nb06():
         - a) Still 38 percent
         - b) About 36 percent
         - c) About 31 percent, August's rate
-        - d) About 49 percent, the organic August members' rate
+        - d) About 49 percent, the July cohort's month-one rate
         '''),
         code('''
         # September counted two ways, and the August cohort split by how its members joined.
@@ -1467,12 +1516,12 @@ def nb06():
 
         ## Depth, for self-study: what will October read once the August cohort is counted?
 
-        In October the August cohort reaches its month two and enters the dashboard. Its month-two
-        rate is not known yet, so it is an assumption: that it loses the same 10.5 points from month
-        one to month two that July's cohort lost (49 to 38.5), which takes it from 31 to about 20.5
-        percent. The seven older cohorts each slide one month further, about 0.3 points. The next cell
-        computes October at the assumption, and at 17 and 24 percent to show how much the answer
-        leans on it.
+        In October the August cohort reaches its month two and enters the dashboard. Nobody has seen
+        its month-two rate yet, so the estimate rests on an assumption: that it loses the same 10.5
+        points from month one to month two that July's cohort lost (49 to 38.5), which takes it from 31
+        to about 20.5 percent. The sale-week members may fall faster or slower than July's organic
+        members, which is why the cell also runs 17 and 24 percent. The seven older cohorts each slide
+        one month further, about 0.3 points.
         '''),
         code('''
         # October, estimated: the old cohorts one month older, and the August cohort in at an assumed month two.
@@ -1515,10 +1564,11 @@ def nb06():
 
         **The questions, answered.** (1) Every cohort falls with age, from 58 to 49 percent in month
         one across January to July and 31 for August, then to about 38.5 and slowly down. (2) The
-        dashboard prints 38 from June to September. (3) September's 38 is the size-weighted average of
-        seven cohorts, and the weighted average equals the direct count. (4) The 13,000-member August
-        cohort is outside the count; with it in, September reads 36, and October, once it enters,
-        about 33.
+        dashboard prints 38 from June to September: a slide of 0.3 points a month, refilled by each new
+        cohort near 38.5, which props it by about half a point. (3) September's 38 is the size-weighted
+        average of seven cohorts, and the weighted average equals the direct count. (4) The
+        13,000-member August cohort is outside the count; with it in, September reads 36, and October,
+        once it enters, about 33 on one assumption.
         '''),
     ])
 
@@ -1532,7 +1582,8 @@ def nb07():
         **Week 4, Thursday, SECTION 7, the third case notebook (L3 and L4).** It applies Funnel stages,
         drop-off, denominators, which notebook 04 taught on an invented college. SECTION 6 took the
         dashboard's flat 38
-        percent apart: every cohort steps down after month one and then holds near 38.5, each newer
+        percent apart: every cohort steps down after month one to about 38.5 and then slides about 0.3
+        points a month, each newer
         cohort starts lower in month one, and the 13,000-member August cohort, whose 8,027 sale-week
         members kept 20 percent in month one, is outside the count until October. This notebook turns
         to the order flow, where the ticket says something changed on 14 September.
@@ -1545,7 +1596,7 @@ def nb07():
         1. What does each step of the funnel read in September, per session?
         2. Why does one step read above 100 percent, and what does it really read?
         3. Per session or per member: which unit answers which question?
-        4. Where did add-to-cart to order fall after 14 September, and for whom?
+        4. When did members' Android rate break, and did anyone else's fall?
         5. Which step inside the checkout changed, and how many orders a week does it cost?
         6. What could still make the call wrong, and which check settles each?
 
@@ -1574,9 +1625,11 @@ def nb07():
 
         Funnel stages, drop-off, denominators, on the college in notebook 04, left four rules. Each step
         divides by the step before, in one named unit, and drop-off is 100 less that rate. The overall
-        rate divides the last step by the first, and the step rates multiply to it. A low step is a loss
-        only when it moves against its own past. A rate above 100 percent is a step people can skip.
-        Gold's event log needs all four, in that order.
+        rate divides the last step by the first, and where each stage is a subset of the one before, the
+        step rates multiply to it. When the overall falls, the step that moved against its own past owns
+        the fall; a low, steady step is how the process runs. A rate above 100 percent means the
+        numerator holds people the denominator never had: a skipped step, a double count, or mixed units
+        or windows. Gold's event log needs all four, in that order.
 
         ## What does each step of the funnel read in September, per session?
 
@@ -1606,7 +1659,7 @@ def nb07():
         the 118 is wrong.** The home carousel, the row of restaurants on the app's home screen, opens a
         menu without a search, so many menu views come from sessions that never searched: search is a
         step members can skip, and the ratio divides two counts of different sessions. A number like
-        this is an **artefact**: it is made by the way the count is taken, not by anything members did.
+        this is an **artefact**: the way the count is taken made it.
         **The fix** counts menu views only among sessions that searched.
         '''),
         code('''
@@ -1648,23 +1701,26 @@ def nb07():
         **What happened.** The answer is c: 61 percent per member against 34 per session. Neither is
         wrong; each answers a different question, and a chart that does not name its unit invites
         the wrong one. Per member, search to menu view still reads 101 percent, because some members
-        only ever used the carousel: counting members shrinks the artefact and leaves it in place. The
-        skippable step, not the unit, makes the 118. Every step reads higher per member, because a
-        member who fails in one session can succeed in another the same month: checkout start to order
-        reads 84 per member and 64 per session. This chart pools every platform and all of September,
-        so neither panel shows the loss on the ticket; it appears only once the rate is split by
-        platform and date, next.
+        only ever used the carousel: counting members shrinks the artefact and leaves it in place, since
+        members skip search in either unit. Here every step except search to menu view reads higher per
+        member, because a member who fails in one session can succeed in another the same month:
+        checkout start to order reads 84 per member and 64 per session. That is this data's pattern; a
+        member who orders in many sessions can pull a per-member rate below the per-session one, so the
+        direction is read from the data each time. This chart pools every platform and all of
+        September, so neither panel shows the loss on the ticket; it appears only once the rate is split
+        by platform and date, next.
 
-        ## Where did add-to-cart to order fall after 14 September, and for whom?
+        ## When did members' Android rate break, and did anyone else's fall?
 
         Add-to-cart to order is sessions that placed an order over sessions that added to a cart. Before
-        is 1 August to 13 September, after is 14 to 30 September. **Predict before you run.** Who does
-        the fall belong to?
+        is 1 August to 13 September, after is 14 to 30 September, and the ticket says members' rate on
+        Android read 58 before and 44 after. **Predict before you run.** Week by week, what does their
+        line look like?
 
-        - a) Everyone, on every platform
-        - b) Members on every platform
-        - c) Members on Android
-        - d) Non-members on Android
+        - a) A slow slide across August and September
+        - b) Flat near 58 for seven weeks, then a break in the release week
+        - c) A fall that started a week before the release
+        - d) A dip in the release week that recovered by the month's end
         '''),
         code('''
         # Carts and orders by membership, platform and side of the release, then the rate.
@@ -1691,7 +1747,7 @@ def nb07():
         check("non-members on Android: 52 before, 51 after", [round(100 * v) for v in rate.loc[(False, "android")]] == [52, 51])
         '''),
         md('''
-        **What happened.** The answer is c. Members on Android fell from 58 to 44 percent: about 58 in
+        **What happened.** The answer is b. Members on Android fell from 58 to 44 percent: about 58 in
         each of the seven weeks before the release, then 45, 43 and 44. Members on iOS held at 57 to
         56, and non-members on Android at 52 to 51. **The plausible wrong answer** is "the drop is at
         add-to-cart to order for everyone, so the whole checkout flow is broken". The split by
@@ -1807,7 +1863,8 @@ def nb07():
         for who in [(True, "android"), (False, "android")]:
             n_ = starts_after.loc[who]
             print(f"{'members' if who[0] else 'non-members'} on {who[1]}: {n_:,} checkout starts after the "
-                  f"release, so chance moves the rate by about {100 / n_ ** 0.5:.1f} points either way")
+                  f"release, so chance moves the rate by about {100 / n_ ** 0.5:.1f} points either way, "
+                  f"if sessions were independent")
         a = ev[ev["is_member"] & (ev["platform"] == "android")]
         s = a.groupby("session_id").agg(user_id=("user_id", "first"), t=("event_ts", "min"))
         s = s.join(a.pivot_table(index="session_id", columns="stage", values="user_id", aggfunc="size", fill_value=0).gt(0))
@@ -1846,8 +1903,10 @@ def nb07():
         Android session from 14 September ran the new checkout, so the date and the version are one
         split here, and only a staged release would let them be read apart. Moving the cut a week
         either way keeps the fall, 58 to 47 and 56 to 43, and the weekly series dates it to the release
-        week. (4) The 55 rests on 18,273 checkout starts, so chance moves it by under a point; the
-        non-members' comparator rests on 1,600, so "held" there means within about 2.5 points. After
+        week. (4) The 55 rests on 18,273 checkout starts, so chance moves it by under a point if sessions
+        were independent; sessions cluster within members, so the honest margin is somewhat wider and
+        still far under the 17.5-point fall. The non-members' comparator rests on 1,600, so "held" there
+        means within about 2.5 points. After
         a checkout with no order, the member ordered within a day 36.5 percent of the time before the
         release and 35.1 after; failures nearly doubled, from 1,921 to 3,386 a week, so more came back,
         1,189 a week against 701, which is why the size's floor is counted in orders placed. Held
@@ -1859,8 +1918,9 @@ def nb07():
         **The questions, answered.** (1) Per session, the steps read 68, 118, 34, 80 and 64 percent.
         (2) Search to menu view reads 118 because the carousel skips search; among sessions that
         searched it reads 89. (3) Per session asks how often a menu visit becomes a cart (34 percent);
-        per member asks how many browsing members ever added to a cart (61 percent). (4) The fall
-        belongs to members on Android, 58 to 44 percent, from the release week. (5) The step that
+        per member asks how many browsing members ever added to a cart (61 percent). (4) Members' rate
+        on Android sat near 58 for seven weeks and broke in the release week, to 44, while members on
+        iOS and non-members on Android held. (5) The step that
         changed is checkout start to order placed, 72.5 to 55 percent, about 1,133 to 1,317 orders a
         week. (6) The same-step comparators, the cohorts held fixed, the order records and the size of
         each sample all leave the call standing.
