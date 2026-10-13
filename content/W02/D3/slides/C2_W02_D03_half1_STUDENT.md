@@ -31,7 +31,49 @@ label: Chapter 6 | title: Who does Marketing call? | body: The flag, checked bef
 ```notes
 LIVE, 2 minutes. Read the day's question, then the six chapter questions in order: each is the
 question the answer before it raises, and each chapter closes on its own answer with a number.
-Chapter 6 runs after lunch, before the afternoon's tentative IITGN block. Then who is asking.
+Chapter 6 runs after lunch, before the afternoon's tentative IITGN block. Then the six topics the
+chapters teach.
+```
+
+---
+
+## S1a. Today teaches SQL window functions in six topics
+*What will today teach?*
+
+| Topic, in the curriculum's words | Chapter | Minutes |
+|---|---|---|
+| ROW_NUMBER, RANK and DENSE_RANK, and what a tie does to each | 3 | 30 |
+| PARTITION BY; ORDER BY inside the window | 2, with ORDER BY from 1 | 30 each |
+| Top-N per group | 2 | the same 30 |
+| LAG and LEAD; month-on-month comparison per customer | 4, and 6 on the calendar | 30 each |
+| Running totals and determinism | 5 | 30 |
+| Filtering on a window via a CTE | 2, first used in 1 | 4 of chapter 2's 30 |
+
+```mermaid
+flowchart TD
+    MON["<b>Monday</b><br/>GROUP BY, run order,<br/>named steps"] --> WIN["<b>the window</b><br/>PARTITION BY,<br/>ORDER BY"]
+    TUE["<b>Tuesday</b><br/>a join's rows<br/>explained"]
+    WIN --> RK["<b>ranks</b><br/>ROW_NUMBER<br/>RANK, DENSE_RANK"]
+    WIN --> LAG["<b>LAG, LEAD</b><br/>month on month"]
+    WIN --> RUN["<b>running totals</b><br/>determinism"]
+    TUE --> RUN
+    RK --> TOP["<b>top-N per group</b>"]
+    TOP --> CTE["<b>filter via a CTE</b>"]
+    MON --> CTE
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class MON,TUE known
+    class WIN,RK,TOP,CTE,LAG,RUN bet
+```
+
+Monday's GROUP BY collapses the rows a window keeps, and WHERE runs before any window, so a filter on the place waits for a CTE; Tuesday's join check closes chapter 5's running total on the quarter.
+
+```notes
+LIVE, 1 minute. Read the six topics in the curriculum's words and the chapter that teaches each,
+then walk the map once: Monday's GROUP BY, run order and named steps at the top, the window under it
+with every topic hanging off it, and Tuesday's join rule closing chapter 5's loop on the quarter.
+Each topic arrives later as the answer to one of Marketing's asks, so name them here and teach none
+of them yet. If the ask runs long, cut S3 to its first two rows. Then who is asking.
 ```
 
 ---
@@ -145,7 +187,7 @@ dense_rank for the place, lag for the month before, sum for the total so far. Th
 
 ---
 
-## SECTION 1: Who are the top fifty?
+## SECTION 1: ORDER BY inside the window: who are the top fifty?
 *Which fifty members spent the most in Q2, the list Marketing's protect budget starts from?*
 
 ```notes
@@ -454,7 +496,7 @@ Then chapter 2.
 
 ---
 
-## SECTION 2: Top fifty per segment?
+## SECTION 2: PARTITION BY; top-N per group; filtering on a window via a CTE: top fifty per segment?
 *Which fifty members lead each of the four segments, so that no segment's protect budget goes unspent?*
 
 ```notes
@@ -701,7 +743,38 @@ flowchart LR
 ```notes
 LIVE, 2 minutes, and never longer. Somebody writes the filter in WHERE; Postgres prints "ERROR:
 window functions are not allowed in WHERE". Read the last line, point at Monday's drawing of the
-order a query runs in, move the place into a CTE, and move on. Then a second route with no window.
+order a query runs in, move the place into a CTE, and move on. Then the same filter on five
+invented members.
+```
+
+---
+
+## S32a. Number in a named step, then keep places outside it
+*How do you keep each group's top two when WHERE cannot see a window's value?*
+
+A window's value exists only once SELECT runs, after WHERE has chosen the rows, so a filter on it waits one step: compute it in a named step, a CTE written `WITH name AS (...)`, and filter in the query outside. Five invented members in two segments:
+
+```sql
+WITH toy(member, segment, spend) AS (VALUES ('A', 'North', 900), ('B', 'North', 700),
+       ('C', 'North', 500), ('D', 'South', 800), ('E', 'South', 600)),     -- invented
+ranked AS (SELECT member, segment,
+                  row_number() OVER (PARTITION BY segment ORDER BY spend DESC) AS place
+           FROM toy)                                     -- step 1: every row gets its place
+SELECT member, place FROM ranked WHERE place <= 2;       -- step 2: A 1, B 2, D 1, E 2
+-- in one step, WHERE row_number() OVER (...) <= 2 stops with
+-- ERROR:  window functions are not allowed in WHERE
+```
+
+**Check yourself.** `SELECT member, row_number() OVER (ORDER BY spend DESC) AS place FROM toy WHERE spend > 550` runs in one step: does Postgres refuse it, and which places come back?
+
+```notes
+LIVE, 2 minutes. The members and their spend are invented, small enough to count by eye. Read step
+1's five places first (A 1, B 2, C 3 in North; D 1, E 2 in South), then step 2's four rows. The
+check's answer: Postgres runs it, since spend is a column that exists before WHERE; C is dropped
+first and the four left are numbered A 1, D 2, B 3, E 4. A filter on a column runs before the
+window and changes what it numbers; a filter on the window's own value waits for the step outside.
+Writing WHERE place <= 2 in step 1 fails too, with ERROR: column "place" does not exist, because
+WHERE cannot see a name SELECT gives. Then a second route with no window.
 ```
 
 ---
@@ -753,7 +826,7 @@ two members who booked the same. Then chapter 3, the head of Retail-Plus's quest
 
 ---
 
-## SECTION 3: Who makes it at a tie?
+## SECTION 3: ROW_NUMBER, RANK and DENSE_RANK: who makes it at a tie?
 *When two members tie at fiftieth place, how many does a list ship, and which rule did the head of Retail-Plus ask for?*
 
 ```notes
@@ -1052,7 +1125,7 @@ line; ROW_NUMBER always ships N and hides the tie. Then the break, and chapter 4
 
 ---
 
-## SECTION 4: Whose spend is falling?
+## SECTION 4: LAG and LEAD: whose spend is falling?
 *Whose monthly spend fell two months running, so Marketing can ring them before they drift further?*
 
 ```notes
@@ -1195,7 +1268,32 @@ LIVE, 2 minutes. C-0040 of Retail-Core bought in all six months. Letters in chat
 **The check.** June sits below May and May below April, so a flag read at June would fire. September is below August but August is above July, so the flag read at September does not fire for C-0040.
 
 ```notes
-LIVE, 2 minutes. The answer is b. Then the quickest version of the flag.
+LIVE, 2 minutes. The answer is b. Then LEAD, the row after.
+```
+
+---
+
+## S55a. LEAD reads the row after, NULL on the last month
+*What does LEAD put beside the same member's months?*
+
+`lead(spend, 1) OVER (PARTITION BY customer_id ORDER BY month)` reads the next row inside the member's own months, the mirror of LAG, and gives NULL where no row follows. C-0040 of Retail-Core bought in all six months:
+
+| Month | Apr | May | Jun | Jul | Aug | Sep |
+|---|---|---|---|---|---|---|
+| Spend, Rs | 7,980 | 3,170 | 1,320 | 4,260 | 4,770 | 4,520 |
+| lag 1, Rs | NULL | 7,980 | 3,170 | 1,320 | 4,260 | 4,770 |
+| lead 1, Rs | 3,170 | 1,320 | 4,260 | 4,770 | 4,520 | NULL |
+
+**The rule.** LAG looks back from a row and LEAD looks forward. Marketing's flag stands on September and looks back at August and July, so it reads LAG; a question about the month after a row, such as whether spend rose the month after an offer, reads LEAD.
+
+**Check yourself.** Which of C-0040's months does `lead(spend, 2)` leave NULL?
+
+```notes
+LIVE, 2 minutes. Read the lead 1 row against the spend row: each month carries the next month's
+figure, and September carries NULL, as April did under LAG on S55. The check's answer: August and
+September, since no row sits two after them; lead(spend, 2) on July reads September's Rs 4,520.
+The row cuts LEAD first when time is short: keep the rule line and drop the table. Then the
+quickest version of the flag.
 ```
 
 ---
@@ -1326,7 +1424,7 @@ window partitioned by the customer and ordered by month, and keep the rows that 
 
 ---
 
-## SECTION 5: On track against plan?
+## SECTION 5: Running totals and determinism: on track against plan?
 *Has Q2 revenue kept pace with the plan line week by week, and where did it stand at mid-quarter, when Meera decides whether to act?*
 
 ```notes
@@ -1580,7 +1678,35 @@ adds all of a row's peers at once. Letters in chat. Then the answer.
 ```notes
 LIVE, 2 minutes. The answer is b. By date alone, all twelve orders show the day's closing total, so
 no row can say which order crossed Rs 3.5 crore; with the order id added, KR-00580's step is the one
-that crosses. Then a second route.
+that crosses. Then the same rule on four invented orders.
+```
+
+---
+
+## S74a. A unique ORDER BY makes a window deterministic
+*What makes a window give every row the same figure on every run?*
+
+A query is deterministic when the same rows give every row the same figure on every run. Rows that share the window's ORDER BY value are peers, and nothing says which of them comes first. Four invented orders, two on 2 July:
+
+| Order, date (invented) | Amount | ROW_NUMBER by date | SUM by date | SUM by date, order id |
+|---|---|---|---|---|
+| A-1, 1 Jul | Rs 100 | 1 | Rs 100 | Rs 100 |
+| A-2, 2 Jul | Rs 300 | 2 or 3 | Rs 600 | Rs 400 |
+| A-3, 2 Jul | Rs 200 | 3 or 2 | Rs 600 | Rs 600 |
+| A-4, 3 Jul | Rs 400 | 4 | Rs 1,000 | Rs 1,000 |
+
+**The rule.** When each row needs its own figure, as ROW_NUMBER's places and a running total's steps do, add a column no two rows share to the window's ORDER BY, such as the customer id or the order id, and name that tiebreak in the report. RANK gives peers one place on purpose, so the head of Retail-Plus's rule takes no tiebreaker.
+
+**Check yourself.** Which column can name the order that took the running total past Rs 500, and which order does it name?
+
+```notes
+LIVE, 2 minutes. The orders are invented. ROW_NUMBER by date alone numbers the two 2 July orders in
+whatever order the rows arrive: on Postgres 16, listing A-3 first gives A-3 the 2 and A-2 the 3.
+The SUM by date gives both peers the day's close, Rs 600, on every run, so it repeats and names no
+order. The check's answer: the SUM by date and order id, whose step from Rs 400 to Rs 600 is A-3's,
+by the stated tiebreak; the date-only SUM shows Rs 600 on both and names neither. Typed as one query
+with all three windows, Postgres sorts once by date and order id and the swap hides, so run the
+ROW_NUMBER column alone with A-3 listed first to see it. Then a second route.
 ```
 
 ---
