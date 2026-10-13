@@ -11,7 +11,7 @@ acceptance rate, the share of suggestions developers accept.
 
 The rungs test structure before the number, with judgment inside it: the decision and the claim first, then one
 number with its denominator, then the caveat, then the action. Three of the four openings in item 1
-lead with a claim or a method; only one leads with a claim the data can carry. The second rung adds the transfer: the
+lead with a method or a claim the data cannot carry; only one leads with the decision and a claim the data can carry. The second rung adds the transfer: the
 same shape on a system the learner has not met, where the number customers see is easy to inflate.
 
 ## Why is each key right, and why does each other option fail?

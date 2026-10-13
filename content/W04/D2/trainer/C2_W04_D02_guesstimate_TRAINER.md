@@ -1,6 +1,6 @@
 # Guesstimate note, Week 4 Tuesday: what are the day's three estimates, their anchors and their catches?
 
-**TRAINER ONLY.** The worked versions of the day's estimates: drivers at the evening peak (worked with
+**TRAINER ONLY.** This page holds the worked versions of the day's estimates: drivers at the evening peak (worked with
 the room), UPI payments a day (in pairs), and Anand's new store (in the lab). Every value in a chain is
 an assumption said aloud with its range.
 

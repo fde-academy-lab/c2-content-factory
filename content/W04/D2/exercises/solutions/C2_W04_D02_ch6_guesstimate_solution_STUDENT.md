@@ -17,7 +17,7 @@ chain runs 15.4 percent high and the share the till implies is 0.39.
 
 ## What does the set test?
 
-Each of the four steps on its own, then two checks that fail quietly: one in its period, one in the
+The set tests each of the four steps on its own, then two checks whose failure is easy to miss: one in its period, one in the
 days a month is divided by.
 
 ## Why is each key right, and each other letter wrong?
@@ -39,6 +39,6 @@ head count would agree with any estimate built on it.
 
 ## Where does the pattern live at work?
 
-Every number a meeting needs before the data exists: drivers at a peak, orders at a dark store, members
+It lives in every number a meeting needs before the data exists: drivers at a peak, orders at a dark store, members
 a new store could sign up. Chapter 8 runs the four steps on Uber's evening peak and checks the chain
 against the case's own driver-hours per trip, since no published count of drivers online exists.

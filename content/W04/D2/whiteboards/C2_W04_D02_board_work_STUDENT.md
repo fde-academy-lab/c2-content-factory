@@ -18,7 +18,7 @@ the drawings go up, and the last asks what stays on the board at the end.
 
 ## How do the five topics connect, and where does the case use them?
 
-Goes up first, at S4, and stays up all day. Each topic's box is lit as its chapter closes.
+This map goes up first, at S4, and stays up all day. Each topic's box is lit as its chapter closes.
 
 ```mermaid
 flowchart LR
@@ -58,7 +58,7 @@ flowchart LR
 
 ## What to leave out, and the appendix: where does each element go?
 
-Drawn during chapter 2. The three questions, asked of each of the draft's eight elements.
+Drawn during chapter 2, it asks the three questions of each of the draft's eight elements.
 
 ```mermaid
 flowchart LR
@@ -97,7 +97,7 @@ flowchart LR
 
 ## Which number carries Uber's slide, and what goes behind it?
 
-Drawn during chapters 4 and 5. The slide in its four parts, with one appendix page per role.
+Drawn during chapters 4 and 5, it shows the slide in its four parts with one appendix page per role.
 
 ```mermaid
 flowchart TD

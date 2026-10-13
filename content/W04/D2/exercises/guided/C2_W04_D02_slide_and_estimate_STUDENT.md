@@ -145,8 +145,8 @@ d) 3.87
 
 ## What is left for you to size?
 
-The third estimate is the afternoon's paired drill: UPI payments in India on an average day, in
-seven minutes, all four steps on one sheet. Bring it to the afternoon's paired drill.
+The third estimate is yours at the afternoon's paired drill: UPI payments in India on an average day,
+in seven minutes, all four steps on one sheet.
 
 **How do you check your letters against the notebooks?** Open
 `notebooks/C2_W04_D02_04_case_one_slide_answer_three_denominators_STUDENT.ipynb`: its second and third

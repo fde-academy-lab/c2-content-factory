@@ -1,7 +1,7 @@
 # The guesstimate: clarify, map, calculate, validate: how do you size and check a number nobody has measured?
 
 This set practises chapter 6, the guesstimate: clarify, map, calculate, validate, on the campus canteen
-from the chapter and three checks that fail quietly. The canteen, its till, the phone pack and the
+from the chapter and two checks whose failure is easy to miss. The canteen, its till, the phone pack and the
 payments network are invented. Item 1 doubles as the chapter's closing check; the rest are the
 evening's practice, or the lab's opening twenty minutes.
 
@@ -22,7 +22,7 @@ The canteen's guesses (invented):
 - Which chain multiplies out in the right unit?
 - Which guess sets the range?
 - Which number checks the estimate?
-- Which test does a quiet mistake fail?
+- Which test does a hidden mistake fail?
 
 Post one line, six letters in item order, no spaces:
 
@@ -96,7 +96,7 @@ d) The coffee count for the same weekday
 
 ---
 
-## Which test does a quiet mistake fail?
+## Which test does a hidden mistake fail?
 
 This comes up at work when a careful calculation compares two numbers that were never counted the same
 way.

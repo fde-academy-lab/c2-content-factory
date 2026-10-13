@@ -1,6 +1,6 @@
 # Role cards, Week 4 Tuesday: what does each objector say, which part is true, and what answers the rest?
 
-**TRAINER ONLY.** Printed, cut and handed to the objector in each three. Each card is partly right by
+**TRAINER ONLY.** These cards are printed, cut and handed to the objector in each three. Each card is partly right by
 design. The three Uber roles are Monday's three, whose cards are
 `content/W04/D1/trainer/C2_W04_D01_role_cards_TRAINER.md`: on Monday they proposed a number and
 attacked the definition, and on Tuesday they object to the slide. The answers here use Monday's own

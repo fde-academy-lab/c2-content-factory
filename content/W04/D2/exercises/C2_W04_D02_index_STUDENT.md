@@ -29,7 +29,7 @@ this class.
 | Chapter 4, with the trainer, and chapter 8 for the estimate | `guided/C2_W04_D02_slide_and_estimate_STUDENT.md` | 3 | L1, L2, L5 | A slide rebuilt and an estimate sized, worked, then half worked, then yours |
 | Chapter 5, six minutes | `unguided/C2_W04_D02_mid_cut_to_two_STUDENT.md` | 2 | L4 | Five elements cut to the two that carry the claim, and where the rest go |
 | Chapter 5's round one and the afternoon's round two, in threes | `unguided/C2_W04_D02_studio_brief_STUDENT.md` | 1 | L3 | The redesign slide presented and defended in four moves |
-| Chapter 6's close, then the evening or the lab | `unguided/C2_W04_D02_ch6_guesstimate_STUDENT.md` | 6 | L1 to L5 | Each of the four steps, then two checks that fail quietly |
+| Chapter 6's close, then the evening or the lab | `unguided/C2_W04_D02_ch6_guesstimate_STUDENT.md` | 6 | L1 to L5 | Each of the four steps, then two checks whose failure is easy to miss |
 | Chapter 7's close, then the evening | `unguided/C2_W04_D02_ch7_written_case_STUDENT.md` | 3 | L1 to L3 | The page's first sentence, its caveat's place, and a last sentence someone can sign |
 | Chapter 8, or the lab if time runs short | `unguided/C2_W04_D02_mid_check_against_STUDENT.md` | 4 | L5 | The known number each of four estimates is checked against |
 | Chapter 8, seven minutes in pairs | `unguided/C2_W04_D02_paired_estimate_STUDENT.md` | 0 | L5 | UPI payments a day, sized and checked |

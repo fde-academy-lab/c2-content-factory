@@ -115,7 +115,7 @@ What does a full defence sound like?
 The sports teacher objects: "Attendance rose because the exams began." She is partly right. In both
 years the exam weeks run about 8 points above the three weeks before them: 8.3 last year, 8.0 this
 year. Weeks 3 to 5 this year sit 4.7 points above last year's same weeks, before any exam, and weeks 1
-and 2 sit at 76.5 in both years. The concession carries one number and the answer another.
+and 2 sit at 76.5 in both years. The concession carries the 8 points and the answer the 4.7.
 
 ![Gulmohar's attendance over two years, invented](../whiteboards/C2_W04_D02_school_two_years_STUDENT.png)
 
@@ -159,7 +159,7 @@ month (45 GB) match per day; Gulmohar's 113 passes are 83.7 percent of the 135 w
 of the 150 enrolled. Think Insights' guide (3 December 2018, checked 13 October 2026) says the
 interviewer is "interested in your thought process; not the final result".
 
-> **WATCH OUT** · A careful chain that multiplies a unit it should divide. The tell: a factor whose
+> **WATCH OUT** · A careful chain can multiply a unit it should divide; the tell is a factor whose
 > unit nobody wrote down.
 
 **At Uber.** Chapter 8 sizes drivers online at the weekday evening peak at about 5,700, checks the
@@ -190,7 +190,7 @@ that must not get worse" for guardrail, "the one number the team is judged on" f
 Amazon's 2017 letter to shareholders (filed 18 April 2018, checked 13 October 2026) says its meetings
 use no slides: a six-page memo is read in silence at the start.
 
-**At Uber.** Chapter 9 is the page to the city head, by hand, in 35 minutes, handed in.
+**At Uber.** In chapter 9 each learner writes the page to the city head by hand in 35 minutes and hands it in.
 
 Say it to a hostel warden: "Write what to do and why first, one number second, the doubt third and
 the cost last."

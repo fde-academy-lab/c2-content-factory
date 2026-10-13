@@ -1,6 +1,6 @@
 # Run sheet, Week 4 Tuesday: how does a trainer who did not write this day run the studio and the dojo?
 
-**TRAINER ONLY.** The morning's studio (build, present, take the objection, get scored, rebuild) and
+**TRAINER ONLY.** This page sets out the morning's studio (build, present, take the objection, get scored, rebuild) and
 the afternoon's dojo (a number sized aloud from nothing, then checked) as a stranger would run them:
 the roles, the minutes, the materials, the lines to say, and what to do when each part stalls. The
 printable cards are at the end of this file.

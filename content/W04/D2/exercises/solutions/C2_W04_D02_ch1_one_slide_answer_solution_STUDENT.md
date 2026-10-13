@@ -17,7 +17,7 @@ hour after opening two more hours a day, each added hour selling at most Rs 350.
 
 ## What does the set test?
 
-The four parts of the one-slide answer, each on its own: a title that acts, evidence read in the unit
+The set tests the four parts of the one-slide answer, each on its own: a title that acts, evidence read in the unit
 the decision buys, a caveat that names what the evidence cannot show yet, and an action with its cost
 and its owner. Item 5 hands you a plausible wrong slide to debug.
 
@@ -39,7 +39,7 @@ the appendix page for whoever asks about fares.
 
 ## Where does the pattern live at work?
 
-Every review slide built from a dashboard: the analyst picks the denominator the decision is priced in,
+It lives in every review slide built from a dashboard, where the analyst picks the denominator the decision is priced in,
 writes the claim as the title, puts the caveat beside the number and ends on an action with its cost.
 Chapter 4 does it on Uber's twelve driver-weeks, where per hour falls 37 percent, per driver-week 23
 percent and per trip not at all.

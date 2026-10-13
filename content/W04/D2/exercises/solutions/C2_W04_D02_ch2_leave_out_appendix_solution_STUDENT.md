@@ -17,7 +17,7 @@ page, and the rain days leave.
 
 ## What does the set test?
 
-The sort, one question at a time: does the claim need the element; if not, will a named person ask
+The set tests the sort, one question at a time: does the claim need the element; if not, will a named person ask
 about it; and is it the caveat, which stays whatever else happens. Then the heading of a page behind
 the slide.
 
@@ -37,6 +37,6 @@ second, longer draft.
 
 ## Where does the pattern live at work?
 
-Every review deck cut down from a dashboard. The analyst who can say which page each cut number moved
+It lives in every review deck cut down from a dashboard. The analyst who can say which page each cut number moved
 to, and who keeps the caveat on the slide, survives the meeting. Chapter 5 does it for Uber's driver
 operations, marketing and finance.

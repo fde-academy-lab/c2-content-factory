@@ -84,7 +84,7 @@ d) Sales per hour fell from Rs 1,190 in September to Rs 1,050 in October
 
 ## Which action can someone sign?
 
-This comes up at work at the end of every review: an action without its cost and its owner is a hope.
+This comes up at work at the end of every review, where nobody can sign an action that names no cost and no owner.
 
 ### Q4. Design. Which action line is complete enough for Ramesh to sign?
 

@@ -17,7 +17,7 @@ points above last year's same weeks, before any exam.
 
 ## What does the set test?
 
-The four moves one at a time, the true part of an objection found in the numbers, the overclaim that
+The set tests the four moves one at a time, the true part of an objection found in the numbers, the overclaim that
 concedes nothing, and the plan for a meeting the objector controls.
 
 ## Why is each key right, and each other letter wrong?
@@ -37,6 +37,6 @@ without any new timetable.
 
 ## Where does the pattern live at work?
 
-Every review where the person who loses under a claim sits in the room. The analyst who concedes the
+It lives in every review where the person who loses under a claim sits in the room. The analyst who concedes the
 true part and answers the rest from one named line of evidence keeps the claim; chapter 5 does it with
 Uber's driver operations, marketing and finance.

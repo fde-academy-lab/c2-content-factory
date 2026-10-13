@@ -1,6 +1,6 @@
 # Lab note for the TA, Week 4 Tuesday: how do you run the Kalpa transfer and the practice set?
 
-**TRAINER ONLY.** The TA-led practice lab after the afternoon block. It re-runs the day's two moves on
+**TRAINER ONLY.** The TA-led practice lab runs after the afternoon block and re-runs the day's two moves on
 Kalpa Retail: the studio as a three-minute slide to a TA playing one Kalpa head, then the dojo on Anand
 Iyer's new-store question, checked against DMart. No plant today. The three Kalpa role cards and
 Anand's question are proposed for client zero v2.3 (the row, 21 September 2026, not yet locked).

@@ -1,8 +1,8 @@
 # How does a strong candidate present the redesign, and size drivers at the peak, out loud?
 
-Written for this programme in the style of product-company and global capability centre (GCC) screens; the facts inside are from
-the case file and the day's data. It holds three transcripts, the third an AI-company variant. No
-transcript claims to reproduce any company's real interview.
+These three transcripts, the third an AI-company variant, were written for this programme in the style of
+product-company and global capability centre (GCC) screens, and their facts come from the case file and
+the day's data. No transcript claims to reproduce any company's real interview.
 
 > Illustrative case: the company is real, the situation and the data are synthetic, built for this class. The coding-assistant company in the third transcript is invented.
 
@@ -120,7 +120,7 @@ things, suggestions by characters, into one percentage.
 
 1. "What if retained code falls when we ship a faster model?" "Read the four factors. If suggestions shown per seat rose while the share accepted fell, the model shows more that developers reject; if characters per accepted suggestion rose while the share still there fell, it is padding; if suggestions shown fell, developers are writing more themselves. A test of the new model against the old one, by account, settles which."
 2. "Isn't retained code easy to game too?" "Yes: long boilerplate that compiles and is never reverted survives a week, so survival alone cannot catch padding. Padding shows first in characters per accepted suggestion, which jumps when the model pads, so that guardrail has a ceiling agreed before launch, and the monthly sample read by engineers says whether what survives is useful or boilerplate."
-3. "Why not just ask developers whether it helps?" "Because how developers feel and what they get can point opposite ways. In METR's randomised study of 16 experienced open-source developers, published 10 July 2025, tasks took 19 percent longer with AI tools allowed while the developers believed they had been 20 percent faster. It timed whole tasks of about two hours, never completions, and METR's page now says those results are out of date, so I cite it for one point only: a feeling is not a measure. The business is paid on seat renewals, which is why the check runs against them."
+3. "Why not just ask developers whether it helps?" "Because how developers feel and what they get can point opposite ways. In METR's randomised study of 16 experienced open-source developers, published 10 July 2025, tasks took 19 percent longer with AI tools allowed while the developers believed they had been 20 percent faster. It timed whole tasks of about two hours, never completions, and METR's page now says those results are out of date, so I cite it only for the gap between what the developers believed and what the clock measured. The business is paid on seat renewals, which is why the check runs against them."
 
 **Sources for the third transcript.** Ziegler and colleagues, "Productivity Assessment of Neural Code
 Completion", arXiv 2205.06537, 13 May 2022

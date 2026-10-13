@@ -17,7 +17,7 @@ numbers and four method words.
 
 ## What does the set test?
 
-The page's first sentence, the place of its caveat, and a last sentence that names what to do, its
+The set tests the page's first sentence, the place of its caveat, and a last sentence that names what to do, its
 cost and who signs, in plain words.
 
 ## Why is each key right, and each other letter wrong?
@@ -35,6 +35,6 @@ the reader with nothing to sign, and it uses three method words a city head woul
 
 ## Where does the pattern live at work?
 
-Every memo read when its author is not in the room, from a store owner's evening page to Amazon's
+It lives in every memo read when its author is not in the room, from a store owner's evening page to Amazon's
 six-page memos. Chapter 9 is yours: the morning's slide as one page to the city head, by hand, in 35
 minutes, and notebook 09 runs the page rules on it afterwards.
