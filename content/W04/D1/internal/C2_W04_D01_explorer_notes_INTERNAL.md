@@ -11,7 +11,9 @@ and the spine before any day pack existed. The second (commit 6998f38) moved Mon
 scenes onto Monday's final data. The third, recorded here, moved Thursday's and Friday's scenes onto
 their merged day packs (commits c4b8353, b070fea, 1aeaead and d1f3019, then 23634c7 after the two
 reviews), after pull requests 232 and 233 had settled the other days' contradictions in the case file
-and the spine.
+and the spine. Pull request 239 then wrote Thursday's corrections into the case file and the spine,
+and a second merge of main (756e35f) and one line of Th1's prompt (3bc59c0) brought the page level
+with them.
 
 ## How the page is built and checked
 
@@ -202,7 +204,8 @@ Declined, with the reason:
 The first pass found eleven places where the case file or the spine disagreed with itself and worked
 around each on the page. Pull requests 232 and 233 settled Monday's, Tuesday's, Wednesday's and
 Friday's in the case file and the spine, and the merged day packs settled Thursday's and carried the
-rest into their data.
+rest into their data; pull request 239 then wrote Thursday's corrections into the case file and the
+spine.
 
 | | The contradiction | What settled it | What the page does now |
 |---|---|---|---|
@@ -211,7 +214,7 @@ rest into their data.
 | 3 | Tuesday's per driver-week reading "rose because hours rose" | Pull requests 232 and 233: Rs 5,817 to Rs 5,861 on 6,360 and 6,500 active driver-weeks, bookings up 3 percent against driver-weeks up 2.2 | T2 reads Monday's driver-weeks since the second pass; its formula keeps the unrounded 1.578, so 1.578 x Rs 165 = Rs 260 |
 | 4 | Wednesday's milk on 44 percent of impressions blended to 4.1 percent against the stated 3.8; the twelve rows' bread to milk confidence sat 0.01 from the full data's 0.74; the milk band overlapped Kalpa's charger band | Pull request 233 and Wednesday's facts header: milk on half the slot impressions; the twelve rows' bread to milk now 1.00 with lift 1.50; the band stays a notebook check | The page prints neither the share, the blend, the twelve rows nor the band |
 | 5 | Thursday's flat 38 could not hold under the spine's first-month definition | Thursday's facts, `definitions` and the first correction: the dashboard counts members two or more months past their signup month, the reading the first pass took | Th1 draws the day's cells under that definition |
-| 6 | Thursday's twelve rows held 5 of 12 in September, 0.7 from Kalpa's 41; 60,000 members against 53,000; the 58 to 44 named no unit; the release's 14-point fall sat a point from Kalpa's planted 15 | Thursday's corrections: the twelve rows read 0 of 5 for the August members' month one and 2 of 12 for everyone in September; 53,089 members; the 58 to 44 counts sessions; Kalpa's planted fall in the window is now 83.3 to 63.6 percent, 19.7 points | The ticket prints 53,089 and the August cohort's 13,000; the page prints no twelve-row count |
+| 6 | Thursday's twelve rows held 5 of 12 in September, 0.7 from Kalpa's 41; 60,000 members against 53,000; the 58 to 44 named no unit; the release's 14-point fall sat a point from Kalpa's planted 15 | Thursday's corrections, written into the case file and the spine by pull request 239: the twelve rows read 0 of 5 for the August members' month one and 2 of 12 for everyone in September; 53,089 members; the 58 to 44 counts sessions; Kalpa's planted fall in the window is now 83.3 to 63.6 percent, 19.7 points; 8,027 of the August cohort's 13,000 joined on the sale (`aug_sale_members`) | The ticket prints 53,089 and the August cohort's 13,000; Th1's prompt says the cohort was grown by a discounted sale week, where it had called all 13,000 bought on a discount; the page prints no twelve-row count |
 | 7 | Friday's hold-out of "22 June to 21 September" was fourteen weeks, and the vendor was fitted to the weeks it was scored on | Pull request 233 and Friday's corrections 1 and 6: thirteen weeks from 29 June, every forecast from 22 June, the vendor's hold-out rows a forecast from that week | F2 reads the vendor's own rows and scores it only from 22 June |
 | 8 | Friday's calendar stopped at 16 November, short of the 30 November window | Pull request 233: 114 weeks | The page's weeks run to 114, the vendor's forecast rows among them |
 | 9 | On the first pass's toy weeks the vendor's errors priced level with a raised baseline, with no festive week in the hold-out | Friday's pack prices every rule and lets the vendor's cheaper misses stand (S23), names why it still loses the plan (S24) and tests placement on the 2025 festival (S30: 4,034 against 58,250 a week) | F2 and F3 follow the day |
@@ -231,6 +234,11 @@ Still open, for the orchestrator or the next pass:
 - At a 390 px phone width every chart label prints at 5 to 6 px, and M3's table scrolls the page
   sideways by 117 px. A phone layout means reshaping all 21 drawings, which belongs to a pass of its
   own.
+- The case file, since pull request 239, says 8,027 of the August cohort's 13,000 "joined that
+  week", and the facts' `aug_sale_members` says the same; Thursday's self-check and fallback deck
+  say the sale week brought 9,108, the 8,027 who joined on the sale's discount and 1,081 who did not
+  (`sale_week_organic_members`). The page prints neither count, so the fix belongs to the case file's
+  one sentence and the facts' `how` line.
 
 ## The proofs
 
@@ -271,7 +279,7 @@ number or a different quantity:
 | Check | Scope | Result |
 |---|---|---|
 | The style sweep inside `verify.py` (dashes, banned words, the contrast construction it rejects, clock times, the rupee glyph, invisible Unicode, names, faculty sessions, undated links) | The page and these notes | Pass |
-| `tic_scan.py` from the llm-tic-scrubber skill | The Thursday and Friday sections rendered with every scene revealed, outputs and readout labels included, 367 runs after the reviews' fixes; these notes, 238 runs | Clean |
+| `tic_scan.py` from the llm-tic-scrubber skill | The Thursday and Friday sections rendered with every scene revealed, outputs and readout labels included, 367 runs after the reviews' fixes; these notes, 295 runs | Clean |
 | The humanizer skill's read, in file mode on prose only | The rebuilt tickets, captions, readout lines and reveals | Two staged lines rewritten: F2's "Priced, the order changes." now carries its reason, and F3's scenario names what it rests on |
 | Characters | The page and these notes | Plain ASCII, with none of the contrast construction the style sweep rejects |
 
