@@ -138,7 +138,7 @@ count (the driver controls being online) before blaming anyone. Common wrong ans
 are lazy", with no segment and no number.
 
 **L4. What can the data not show, and what would settle each doubt?** Six caveats, each a one-line
-check in the notebook: data quality (online means the app is open; the check is hours with zero
+check in notebook 09 (`C2_W04_D01_09_north_star_guardrails_cost_STUDENT.ipynb`): data quality (online means the app is open; the check is hours with zero
 requests in zones with requests); mix (the 140 new drivers; the fall restated for drivers present in
 both windows, target: the fall survives); seasonality (the monsoon ended; the check is the same
 comparison for last year's weeks, which the data does not hold, so the caveat stays open and is
@@ -268,7 +268,7 @@ guarantee: six-week review").
 denominator is a choice and the slide says which. Numbers: Rs 314 to Rs 260 per online hour; per
 driver-week up slightly, Rs 5,817 to Rs 5,861 on Monday's data (6,360 driver-weeks before, 6,500
 after); per trip Rs 165 flat; the twelve-week series drawn cluttered, then clear
-(the makeover notebook). Trap: reading the per-driver-week rise as the scheme working. Interviewer
+(notebook 04, `C2_W04_D02_04_case_one_slide_answer_three_denominators_STUDENT.ipynb`). Trap: reading the per-driver-week rise as the scheme working. Interviewer
 listens for: the unit said aloud before the number. Common wrong answer: quoting the one that favours
 the claim without saying so.
 
