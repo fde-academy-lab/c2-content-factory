@@ -941,3 +941,826 @@ Read 2, again, totals: 30 fixed, 1 partly fixed, 11 kept with a reason and 4 nee
 | The circularity reply | It says each forecast was tuned the same way and that the flattery depends on each one's misses. |
 | One vehicle per owning home | The card adds vehicles per home, 1 to 1.25, worth up to 25 percent. |
 
+
+---
+
+# The concept-first rebuild of 13 October 2026: what did three fresh reads find?
+
+**INTERNAL.** Three cold reads of the rebuilt pack, each by a fresh agent on the Opus model at max
+effort, each given the pack frozen at commit 11c4991 on branch `w04-d5` and told to write findings
+only and never edit: Read 3 as a 23-year-old fresh graduate reading every STUDENT file in learner
+order, Read 4 as a hiring interviewer scoring the interview material, and Read 5 as a trainer who did
+not write the day, reading with the row open and naming where each subtopic is taught or writing "not
+found". The reports are kept below as they were returned, except one sentence of Read 5 re-punctuated
+with no change of meaning, so that the house style check passes. Read 5 found no subtopic "not found",
+so the build did not stop. What the one fix pass changed for each finding is in the section after the
+reports, and a finding left as it is has its reason in `internal/C2_W04_D05_sources_INTERNAL.md`.
+
+## Read 3: what stopped a weak learner in the concept-first rebuild?
+
+I read the pack as a 23-year-old fresh graduate with weak maths and a little pandas, in the learner's order: the morning deck, notebooks 01 to 06, the exercise index and the morning sets, the afternoon deck, notebook 07, the staffing note, the Kahoot, the transcripts, notebook 08 and the lab sets, then the take-home, notes, cheat sheet, board work, pre-read, every solution and the fallback deck. I looked at every picture a slide uses. I made no edits and ran no git commands that change anything. My scripts were read-only and printed notebook cells and recomputed numbers from the CSVs; my scratch files are in /tmp/coldread_grad/. All paths below sit under `/home/user/c2-content-factory/content/W04/D5/`.
+
+### What did I read, and what held?
+
+- **Can I follow each concept chapter from its opener to its rules slide?** Chapters 2 and 3 work for me with their notebooks open. Notebook 03 is the clearest page of the day. Chapter 1 lost me at S9 to S10 (findings 3 and 4). Chapter 4 lost me at S31 to S34 (findings 16, 17 and 20).
+- **Can I fill each concept notebook's "your turn" cell?** Yes. I worked all four blanks from what each notebook had given me, and each check passed and made sense:
+  - Notebook 01: `two.cups_2025[6]` and `season_apart(sunday_now, sunday_then)` give 0.10.
+  - Notebook 02: `naive(eight)` gives 60 and `seasonal_naive(eight, 7)` gives 103.
+  - Notebook 03: `zip(week_back, sold)` gives misses of -6, +7 and +4, an MAE of 5.7 and Rs 138.
+  - Notebook 04: `extra * can * unsold_rs` gives Rs 240.
+- **Is the stall or the mess always labelled invented?** No. Findings 23 and 53 list every place it is not. The mess is labelled in every set's introduction and in the notes' self-check.
+- **Do the case chapters say which topics they apply?** Yes: S38, S49, half two's S2 and the first cell of notebooks 05 to 07. The notebooks also link back to the stall in plain words. On the slides that link sits mostly in the notes (finding 24), and the notebooks' bridging paragraph renders as code (finding 28).
+- **Do the numbers agree across files?** Almost everything I recomputed agrees across the deck, notebooks, notes, cheat sheet and exercises:
+  - the scoreboard (6,615, 9,831, 14,842, 14,923 and 16,400) and the priced misses;
+  - 19,760 shifts with every week's count, and 20,275 raised;
+  - the two windows' percentages and 308,048;
+  - the take-home self-check table, the Kalpa MAEs, the guided set's 62,533 and every exercise key.
+
+  The ones that disagree are in the findings.
+- **Style:** there is no em dash or en dash, none of the banned words, no rupee glyph and no clock time in any learner file. Every heading outside the decks is a question; the two small exceptions are in finding 54.
+
+### What stopped me, finding by finding?
+
+1. **slides/half1, S3 and S4.** Kind: order. Severity: minor. "The vendor curve tested" is chapter 4's topic two slides before any vendor exists (S5), and long before the stall's own curve (S31). I could not picture what a vendor curve would be at a chai stall. *Unblock:* add "at the stall, the nephew's curve" beside the topic.
+2. **slides/half1, S5.** Kind: missing. Severity: minor. The ticket row is called "Before and after", but it gives only a before (about 210,000 in late 2024) and a date range, with no after. *Unblock:* rename the row or give the after.
+3. **slides/half1, S6, S8 and S9; notebook 01 cell 4; S12 rule 3; cheat sheet panel 2.** Kind: word. Severity: major.
+   - S8 makes a season 7 days long and checks Monday against the Monday before.
+   - S9's title then says "Read growth a season apart: up 10 percent a year" and compares days 52 weeks apart, before S10 has shown me any yearly season.
+   - S6 already said "a season apart" before S8 defined a season.
+   - The spoken line on S9 says a week apart cannot show growth, yet c1 Q1's key d and Kahoot Q8 accept "a week back".
+
+   I could not tell whether "a season apart" means 7 days or a year. *Unblock:* introduce the yearly season before S9 and write "a year apart" there.
+4. **slides/half1, S10; notebook 01 cells 8 and 9; notes lines 59 to 67.** Kind: contradiction. Severity: minor. S10 says a series is a trend "times" its seasons "times" a remainder of "about 4.7 cups either way", then shows the sum y = T + S + R. If the parts multiply, I expected the remainder to be a ratio, not cups. The 4.7 is a standard deviation (`.std()`, called "spread") that no page names. The notes print only the sum formula, which they say does not fit the stall. *Unblock:* call 4.7 cups the typical size of the leftover and print the product form too.
+5. **slides/half1, S13.** Kind: contradiction. Severity: major. It says Flipkart has "two seasons (the festive weeks, and the week that holds the first of the month)". No notebook, picture or note shows a first-of-month season. Notebook 05 and the actual_series picture show an August sale instead. In the data's ordinary weeks, weeks holding the 1st average 216,095 shipments against 216,446 for the rest. *Unblock:* name the August sale.
+6. **slides/half1, S14, S21, S40 and S46; notebook 02 cells 0 and 14; notebook 05 cell 4; the guided set; notes line 100.** Kind: order. Severity: minor. "Tournament", "round three" and, in notebook 02 cell 0, "house bot" arrive long before S40's one-line rule. Nothing ever says what the rounds are. *Unblock:* one line at S14 explaining the tournament and its rounds.
+7. **slides/half1, S16 to S18; notebook 02 cells 2 and 9.** Kind: step. Severity: minor. Drift's "average step so far" is worked over only the last four days. S18's formula, and notebook 02's later drift, draw the line from y(1), the series' first value. I could not tell where the line starts. *Unblock:* say the hand count treats the four days as the whole history.
+8. **slides/half1, S17 and S33 code.** Kind: step. Severity: minor. `cups` is a 730-day series on S11. On S17, `cups.shift(7)` returns a whole column where the table says 61. On S33, `cups[:7]` treats `cups` as a 14-day March list; with S11's `cups` it would return late September 2024. *Unblock:* give the March list its own name.
+9. **slides/half1, S18; notebook 02 cell 5; the exam picture.** Kind: contradiction. Severity: minor. This naive is "yesterday's cups", re-made every day, which breaks the slide's own formula y(T). The scoreboard set's Q1 later calls exactly this one-step move "the defect". *Unblock:* say this naive is re-run daily and is not a hold-out score.
+10. **slides/half1, S19 and S20 against S43 and S51; notebook 02 cell 7; notebook 05 cell 4.** Kind: contradiction. Severity: minor. Festival-aligned at the stall adds no growth, even though S20 rule 3 says a yearly copy needs growth. At Flipkart, festival-aligned "adds 4 percent". One name covers two rules. *Unblock:* define it once, with or without the growth factor.
+11. **slides/half1, S24 and S25.** Kind: missing. Severity: minor. The fourteen days are never dated on the slides. I assumed S8's first fortnight, whose day 14 is a Sunday that sold 61, but S25's day 14 sold 100. Notebook 03 says 1 to 14 February 2025. *Unblock:* date the fortnight.
+12. **slides/half1, S26 against notebook 03 cell 6 and the stall_mape picture.** Kind: contradiction. Severity: minor. The slide calls the 85-cup day "a busy day". The notebook and the picture call it "an ordinary day", and 85 is below the stall's usual 100. *Unblock:* say "ordinary day".
+13. **slides/half1, S28 and S36; notebook 03 cell 13; notebook 04 cell 13; notes; cheat sheet panel 7.** Kind: order. Severity: minor. The tags [S] and [F] mean nothing to me until the transcripts define [S] and [D]. [F] is defined only in the Saturday pre-read, the last file I read. *Unblock:* define the tags at first use.
+14. **preread line 40 against S36, notebook 04 and notes line 257.** Kind: contradiction. Severity: minor. "What baseline must any forecast beat" is tagged [S] in the pre-read and [F] everywhere else. *Unblock:* pick one tag.
+15. **slides/half1, S29; notebook 03 cell 15; notes line 130; cheat sheet panel 4.** Kind: word. Severity: minor. "The origin is 22 June and the horizon ten weeks", yet thirteen weeks are hidden. S24 taught horizon as the reach from the origin, but these ten weeks count from 21 September. S50 resolves it. The same slide also gives Rs 5.42 before S39 derives it. *Unblock:* say "the plan's horizon, counted from the last week of data".
+16. **slides/half1, S31 and S32; notebook 04 cell 3.** Kind: number. Severity: minor. "The best line ... about 109" and "about 3.1 cups from the four days" need least squares. Least squares is only named in a code docstring, and I could not get 109 by hand. *Unblock:* one line giving the slope 2.4 and 97 + 2.4 × 5 = 109.
+17. **slides/half1, S32; notebook 04 cell 4.** Kind: step. Severity: minor. On the slide, 168 has no working; the working is in the notes. The notebook's "110 + 12 + 18 + 28" skips the new differences 46 and 58. *Unblock:* show the difference table with its new row.
+18. **whiteboards/stall_fit_forecast (S32 and notebook 04).** Kind: picture. Severity: minor. The red curve runs past day 5 and tops out near 173, while its label says 168. *Unblock:* stop the curve at day 5.
+19. **whiteboards/stall_three_rules (S16).** Kind: picture. Severity: minor. Two diamonds share one label, "naive 103, drift 104.7", so I could not tell which is which. *Unblock:* label each marker.
+20. **slides/half1, S34.** Kind: step. Severity: minor. The slide jumps to "3 cans a weekday and 2 on Sunday". The rule "forecast over 40, rounded up" is only in notebook 04 cell 6. *Unblock:* add the rule and 97.6 / 40 = 2.44, so 3 cans.
+21. **slides/half1, S35 and notes line 178 against half2 S12 and the staffing set.** Kind: contradiction. Severity: minor. S35 says "the same four lines and one more". S12 instead shows number and method merged into a title, a new "festival placed" line, and a fifth line that holds two replies. *Unblock:* name both new lines on S35.
+22. **slides/half1, S37.** Kind: order. Severity: minor. "Anand's board number" comes before notebook 08 introduces Anand Iyer. *Unblock:* add his role on S37.
+23. **slides/half1: stall or nephew content with no "invented" on the slide.** Kind: missing. Severity: major. The slides are S6, S9, S11, S14, the SECTION 3 opener, S22 (including its Rs 12 and Rs 6 costs), S23, S25, S30, S33 and S35. *Unblock:* add "(invented)" to each.
+24. **slides/half1, S43 to S56, and half2 S4.** Kind: missing. Severity: minor. The case slides cite "chapter 2's fix" and "Chapter 3's rule". The actual stall comparisons sit only in the notes of S45, S52, S53, S56 and half two's S4: the dip that moved, the Rs 12 against Rs 6, the curve through four days. *Unblock:* put one stall line on each slide.
+25. **half1 S40; half2 S7 and S18; Kahoot Q7; notes; cheat sheet panel 6; board work; staffing-note solution.** Kind: number. Severity: minor. From the printed Rs 5.42, 6,615 × 5.42 is Rs 35,853, which I round to Rs 35,900. The pages say Rs 35,800, which comes only from 650 / 120 unrounded. *Unblock:* show 6,615 × 650 / 120 once.
+26. **slides/half1, S57; notebook 06 cells 10 and 13; scoreboard solution.** Kind: number. Severity: minor. "Hidden weeks 1 to 6 ... weeks 8 to 13" drops week 7 without a word. *Unblock:* say why.
+27. **slides/half1, S48 and S59; notes line 190; fallback S5; self-check.** Kind: word. Severity: minor. These terms are never defined: "M5's weighted scaled error", "Naive 2, a seasonal random walk", "DoPT" and "FPP3". I could not tell whether Naive 2 is my seasonal naive. I believe that paper's Naive 2 is the naive run on seasonally adjusted data, so the gloss may need checking. *Unblock:* define each at first use.
+28. **notebooks 05, 06 and 07, cell 0.** Kind: style. Severity: major. The title and opening paragraphs are indented eight spaces, so any Markdown viewer shows them as a grey code block. The notebook has no visible title, the literal `#` and `**` marks show, and the "It applies ... (concept notebook 01)" bridge back to the stall is inside that block. *Unblock:* remove the indentation.
+29. **notebook 03 cell 11.** Kind: missing. Severity: minor. "Why can the weekly beat add nothing when no Sunday sits among the hidden days?" is answered nowhere in the pack. *Unblock:* answer it in the next cell.
+30. **notebook 06 cells 13 and 15; half2 S8, S10, S16 and D1; cheat sheet panel 6.** Kind: order. Severity: minor. "The plan quantile", "roll the origin" and "one origin is one draw" appear before any definition, inside the hire-grade answer I am told to carry. They are taught only in the fallback hour, which runs only if the faculty session does not. *Unblock:* one sentence defining each where it first appears.
+31. **notebook 06 cell 13; notebook 07 cells 14 and 18; half2 S8; fallback S1 and S10; cheat sheet; transcripts; scoreboard solution.** Kind: word. Severity: minor. "Curriculum row", "beyond the row" and "the spine's addition" are production words that mean nothing to a learner. *Unblock:* say "beyond today's five topics".
+32. **The exercise index and `unguided/C2_W04_D05_ch2_scoreboard_STUDENT.md`.** Kind: contradiction. Severity: minor. The file is chapter 6's set, but "ch2" sent me looking for it after chapter 2. *Unblock:* rename the file or note the case-chapter numbering.
+33. **c1 to c4 items.** Kind: order. Severity: minor. "Analytics screens" and "GCC screens" are defined only later, in the guided set. *Unblock:* define them in the index.
+34. **c3 Q2 key d.** Kind: step. Severity: minor. "Their costs differ" relies on a kg short costing more than a kg thrown away, which the mess set never states. *Unblock:* give the mess's two costs.
+35. **The exercise index against the deck.** Kind: missing. Severity: minor. The guided set ("chapter 5, with the trainer") and the scoreboard set ("chapter 6's close, 15 minutes") are cued on no slide; S59 goes straight to lunch. *Unblock:* a cue slide for each.
+36. **slides/half2, S5 and S7; notes chapter 7; staffing set line 3; staffing-note solution; backtest_2025 picture; fallback S7 to S9.** Kind: contradiction. Severity: major.
+   - Chapter 3 and scoreboard Q1 taught me never to peek past the origin.
+   - S5 gives festival-aligned's 2025 record as 4,034, "without the 4 percent, measured only later, ... 10,575". I could not parse that until notebook 07 cell 2 told me the 4 percent came from weeks up to June 2026.
+   - S7's error bar, the notes and the model note then quote 4,034 with no caveat. The fallback's rolling origin (2,040) uses the same later 4 percent.
+   - The staffing note's third line asks for "the festival's own record from 2025".
+
+   I did not know whether to write 4,034, 10,575 or 2,040. *Unblock:* name 10,575 as the honest record.
+37. **slides/half2, S8; notebook 07 cells 11 and 12; notes self-check Q5.** Kind: contradiction. Severity: major. Chapter 4 taught me "stop improving when a better forecast would order the same". S8 then shows a rule 100 better moving a shift in 7 of 8 weeks and still calls festival-aligned good enough, with a new bar of "more than a shift a week" and no reason given. The cell also models "better" as a forecast 100 lower, which is not the same as a lower MAE. *Unblock:* state and justify the materiality bar.
+38. **half2 S8; notebooks 06 and 07; take-home brief; fallback deck title against fallback S1.** Kind: contradiction. Severity: minor. It is called "the fallback hour", but S1 says "the next 120 minutes". *Unblock:* one name with the right length.
+39. **slides/half2, D2.** Kind: word. Severity: minor. MASE, WAPE and "wrote down" are undefined on the slide. "Here it ranks the rules as MAE does" is computed nowhere; I checked it myself (3.05, 4.49, 6.80, 6.82 and 7.47 percent) and it holds. *Unblock:* define the terms and show the MAPE column.
+40. **slides/half2, D3.** Kind: word. Severity: minor. "Tokens", "latency", "headroom", "GPU" and "rate limits" are undefined, and every number sits in the notes or the transcripts. *Unblock:* define the terms and put the worked sizing on the slide.
+41. **slides/half2, D4.** Kind: number. Severity: minor. "1.7 to 2.9 crore" needs a replacement range of about 6 to 10 years, which the slide never states. *Unblock:* state the range.
+42. **extras/transcripts, "The bar to beat".** Kind: word. Severity: minor. "Bias" appears with no link to the day's "lean", though the vocabulary table maps every other term. *Unblock:* add a "bias = the lean" row.
+43. **extras/transcripts.** Kind: number. Severity: minor. These figures appear in no notebook: the seasonal naive's and the vendor's costs at their own 0.82 points ("the same" as Rs 8.8 lakh, and Rs 10.0 lakh), 12,819, 291,183 and 3,082. *Unblock:* print them in notebook 07's depth section.
+44. **notebook 08, cells 6 to 11.** Kind: missing. Severity: minor. The two your-turn cells have no expected values and no check, and the summary points to "your first cell". Read on GitHub, the notebook shows no seasonal or vendor score; the Kalpa set has them. *Unblock:* add the expected values.
+45. **unguided/kalpa_board, second table.** Kind: number. Severity: minor. Last year's November and March both print as 297.0, yet times 1.04 they show as 308.8 and 308.9. *Unblock:* print one more decimal.
+46. **practice/lab_set Q1; Kahoot Q3; fallback S8.** Kind: word. Severity: minor. "Noise" and "overfitted" are undefined; the day said "remainder" and "wobble". *Unblock:* use the day's words.
+47. **study-notes line 95.** Kind: number. Severity: minor. "Put Diwali's 40 cups on a day that sold 110, a worst miss of 71": 110 − 40 is 70, and the 71 belongs to 28 October or 1 November. Line 61 of the same notes and notebook 01 say "up to 70"; notebook 02 and the cheat sheet say 71. *Unblock:* separate the two days.
+48. **The notes' map, cheat sheet panel 1 and the board work's first map.** Kind: contradiction. Severity: minor. Topic 5 gets a box marked "5", while the deck teaches it as chapter 4's second half, and the next box says "chapters 5, 6 and 7". *Unblock:* mark the box "4b".
+49. **cheat sheet panel 2.** Kind: style. Severity: minor. "Read growth the same point a season apart" is missing "at". *Unblock:* add it.
+50. **solutions/c2, Q2.** Kind: contradiction. Severity: minor. "Last year's Diwali week whenever the festival moved" holds only when it moved about a week earlier; if it moved later, the 364-day copy lands after the festival. *Unblock:* say "moved earlier".
+51. **solutions/staffing_note.** Kind: missing. Severity: minor. The model note's title omits "from which forecast", and its three facts carry no checks, though the set asks for both. The file also lacks the "item worth arguing about" that the index promises for every set. *Unblock:* meet the set's own spec.
+52. **fallback S2 and the four_vs_thirteen picture's title against the self-check.** Kind: contradiction. Severity: minor. "Every number moves a great deal" against "the copies of last year moved least". *Unblock:* agree on one reading.
+53. **Unlabelled stall or nephew mentions outside the deck.** Kind: missing. Severity: minor. Each of these sits below a file-level or notebook-level "invented" label but repeats the stall without it. The c4 solution file is the one place with no "invented" anywhere.
+    - Notebook 01 cells 4 and 8; notebook 04 cells 2, 4, 8 and 9 (including the printed milkman note); notebook 05 cells 4 and 8; notebook 06 cells 11 and 13; notebook 07 cells 6, 8 and 10.
+    - Cheat sheet panels 4 and 5.
+    - c1 Q1 and Q3; c2 Q1 and Q2; c3 Q2 to Q4; c4 Q3.
+    - The c4 solution file.
+
+    *Unblock:* label the c4 solution and the printed note.
+54. **The decks' file titles, and the transcripts' "Transcript 1" heading.** Kind: style. Severity: minor. The three deck file titles are statements. "## Transcript 1: "How do you evaluate a forecast?"" ends on a quote mark rather than a question. *Unblock:* phrase each as a question.
+
+### How do the findings count by kind and severity?
+
+| Kind | Blocker | Major | Minor | Total |
+|---|---|---|---|---|
+| Word | 0 | 1 | 7 | 8 |
+| Number | 0 | 0 | 7 | 7 |
+| Step | 0 | 0 | 5 | 5 |
+| Picture | 0 | 0 | 2 | 2 |
+| Order | 0 | 0 | 6 | 6 |
+| Missing | 0 | 1 | 8 | 9 |
+| Contradiction | 0 | 3 | 11 | 14 |
+| Style | 0 | 1 | 2 | 3 |
+| All | 0 | 6 | 48 | 54 |
+
+### Where is a weak learner most likely to give up?
+
+1. **Half one, S8 to S10, with notebook 01 cells 4 to 9 (findings 3 and 4).** In the first twenty minutes, a season is 7 days on one slide and a year on the next. Then comes a "times" model whose leftover is measured in cups and summarised by an unnamed standard deviation. Everything later rests on this reading.
+2. **Half one, S31 to S34, with notebook 04 cells 3 to 7 (findings 16, 17, 18 and 20).** This is the heaviest hand arithmetic of the day: a "best" line I cannot draw by hand, a 168 built from third differences with steps skipped, a picture that overshoots its label, and a can rule that the slide leaves out.
+3. **Half two, S5 to S8, and the staffing note's third line (findings 36 and 37).** There are three festive records (4,034, 10,575 and 2,040), one of which peeks past its origin. The good-enough rule also changes from "would the order change" to "more than a shift a week" just as I am asked to write the note.
+
+---
+
+## Read 4: what would a hiring interviewer reject in the concept-first rebuild?
+
+All pack paths below are relative to /home/user/c2-content-factory/content/W04/D5/. I read both transcripts (with the AI-company variant and the pain points), both scorecards, half two's S7 to S11 and D1 to D4, half one's rules slides (S12, S20, S28, S36) and answer slides (S8, S16, S24 to S27, S32 to S35), the study notes' interview table, cheat sheet panel 7, the interview and formula cells of notebooks 01 to 04 and 07, and the c4 and ch2 sets with their solutions. I traced each claim back to the slide, notebook cell or CSV behind it. I recomputed the case from the shipped data with read-only scripts in /tmp/coldread_int/. On 13 October 2026 I checked the outside claims against FPP3 sections 5.2, 5.8 and 7.4, the PLOS ONE paper, the M5 accuracy preprint and Zillow's Q3 2021 shareholder letter. I changed nothing in the repository.
+
+The verdict: the [S] answer would pass most product-company screens. Its two paradoxes reproduce to the shipment: a curve that fits within 1.4 percent yet misses by 16,400 a week, and misses that are cheap only because they run high. A hard panel would reject five narrower things, and all of them can be fixed:
+- the festival evidence borrows growth from the future;
+- the error bar is an average presented as a range;
+- the good-enough call is never priced;
+- one headline result flips inside the ticket's own cost ranges;
+- the row's two [F] questions and its [D] question have no in-row answer a learner can say aloud.
+
+### Part 1: the three answers, scored as I would in a debrief
+
+**Transcript 1, hire-grade [S] answer: the pack gives 14, I give 13.**
+
+| Criterion | Pack | Mine | Why |
+|---|---|---|---|
+| Clarified the scope | 2 | 2 | Four clarifiers, and each one changes the test: the decision and how far it reaches, the cost of a miss each way, a festival that moves, and whether any forecast met unseen weeks. |
+| Named the hidden weeks and the unit | 2 | 2 | Thirteen time-ordered weeks from 22 June that cover the ten-week reach, scored in shipments then rupees, with the measures fixed first. I would still push on two things. The score pools horizons 1 to 13 while the plan lives at 3 to 10. The festival figure it quotes first, 4,034, borrows later growth (finding 4). |
+| Saw the paradox | 2 | 2 | A 1.4 percent fit beside a 16,400 miss that is 98 percent bias, and misses that are cheap only because they run high. |
+| Sized it with a unit | 2 | 2 | It says 9,831, 6,615 and 16,400 shipments a week and 19,760 shifts. The card's own evidence for this row, Rs 13.5 against Rs 11.9 lakh, appears only in transcript 2. |
+| Said what would change their mind | 2 | 2 | A sale at a new distance from Diwali, a first sale week outside the hidden range, and overtime that absorbs a short week. |
+| Tied it to a decision and its cost | 2 | 1 | It books 19,760 shifts at the forecast and says it "prices its error bar both ways" without naming a price. The Rs 35,800, Rs 1.65 lakh and "4.6 times" that the card cites are never said, and the only lean it offers is labelled beyond the row. Booking at the median straight after showing a 4.6 to 1 cost invites "then why not above it?", and the in-row answer cannot meet that. |
+| Gave the structure before the number | 2 | 2 | "Five steps" comes before any figure and the table follows it. The section above it lists a different five, and the table adds a sixth row. |
+| Total | 14 | 13 | |
+
+As a debrief note, this is a hire on content. As written it runs 346 words with 17 figures, so a panel would interrupt by the third number, and the line it would pounce on is the festival's 4,034.
+
+**AI-company variant: the pack gives 14, I give 12.**
+
+| Criterion | Pack | Mine | Why |
+|---|---|---|---|
+| Clarified the scope | 2 | 2 | The unit, the latency target, the lead time and what can stretch, both costs, and whether anything similar has launched. |
+| Named the hidden weeks and the unit | 2 | 1 | The unit is right: requests open at once, with prompt and answer tokens kept apart. The test is weak. For this launch the answer settles for "untested". A strong candidate would turn the staged rollout into the hold-out, and would back-test each driver (requests per user, the share of users active in the peak minute, tokens per request) on the existing product's logs. |
+| Saw the paradox | 2 | 2 | "It is not one until it has predicted a launch it never saw", plus the two calendars: days from launch and the weekday. |
+| Sized it with a unit | 2 | 2 | Little's law is worked correctly, though never named: about 33 requests a second held for 10 seconds gives about 330 open at once, so 17 GPUs before headroom. The 1 percent placeholder is checked at about 3 requests per user a day. I would ask for p95 latency rather than the mean. |
+| Said what would change their mind | 2 | 2 | Waitlist sign-ups and the first hour's requests, compared against the ground-up size. |
+| Tied it to a decision and its cost | 2 | 1 | The marginal rule for booking one more GPU is right, but it is never priced, even with invented figures. The headroom is never sized either, so "how many GPUs" stops at 17 before headroom. |
+| Gave the structure before the number | 2 | 2 | "Then four steps" comes before the numbers. |
+| Total | 14 | 12 | |
+
+**Transcript 2, hire-grade [D] answer: the pack gives 14, I give 13.**
+
+| Criterion | Pack | Mine | Why |
+|---|---|---|---|
+| Clarified the scope | 2 | 2 | Which weeks the 4 and the 22 are measured against, which forecast met unseen weeks, and who carries the cost of a short week. |
+| Named the hidden weeks and the unit | 2 | 2 | It gives the hidden weeks in shipments and leads the festival back-test with the leak-free 10,575, flagging the borrowed growth. Transcript 1 should copy this honest order. |
+| Saw the paradox | 2 | 2 | Finance ties only because the hidden weeks hold no festival, and the vendor's misses are cheap because they run high. The two totals sit within 1 percent, so the dispute is about which weeks. |
+| Sized it with a unit | 2 | 2 | 20,275 shifts with 3,719 at the peak, 3,082 shifts and Rs 20.0 lakh above finance's plan, and 3,413 to 3,906 shifts at the extremes. |
+| Said what would change their mind | 2 | 2 | A vendor forecast of 2025's festival made from data up to September 2025, which can be run before Friday. |
+| Tied it to a decision and its cost | 2 | 2 | Both sides of finance's choice are priced. The peak week's range is priced at both ends, with its coverage of six weeks in seven and a warning that the true range is wider. I would challenge "Rs 103.6 lakh if finance's plan meets the rush", which prices finance against our own forecast, though the answer does word it as a condition. |
+| Gave the structure before the number | 2 | 1 | No roadmap sentence is spoken. The card credits "Restate, answer, concede...", which is the transcript's instruction to the reader, not a line the candidate says. By the card's own rule that earns 1. |
+| Total | 14 | 13 | |
+
+Its headline numbers rest on the cushion that the day labels beyond the row (finding 24).
+
+**Finding 1 (major). The scorecard credits lines the answers never say.**
+- Where: trainer/C2_W04_D05_interview_scorecards_TRAINER.md. The [S] rows "Sized it with a unit" (line 23) and "Tied it to a decision and its cost" (line 25), the [D] row "Gave the structure before the number" (line 84), and the [S] "Saw the paradox" line (line 22).
+- What is wrong: the card says at line 14 that "Every hire-grade 2 below rests on a line the answer says". Yet it credits transcript 1 with "Rs 13.5 against Rs 11.9 lakh", which only transcript 2's follow-up says (line 208). It also credits Rs 35,800, Rs 1.65 lakh and "4.6 times", which neither transcript says. It credits [D]'s structure using the reader's instruction. Its [S] paradox line says festival-aligned "is the seasonal naive plus 4 percent, so only the festival separates them". That holds only once each forecast is moved to its own 0.82 point. On the raw scores it is the 4 percent that separates them: 6,615 against 9,831.
+- Why an interviewer cares: TAs score the Friday and Saturday pairs with this card. A debrief that scores lines nobody said would not survive an interviewer calibration session.
+
+**Finding 2 (minor). The model answers are too long to say aloud, and transcript 1 states its structure two ways.**
+- Where: extras/C2_W04_D05_interview_transcripts_STUDENT.md. The hire-grade columns at lines 85 to 91 and 194 to 200, the scorer's advice at lines 219 and 220, and the structure list at lines 67 to 73.
+- What is wrong: the two answers run 346 words with 17 figures and 376 words with 25. The pack's own advice is to carry four numbers, because "a string of exact figures sounds rehearsed". The line said first orders the steps as test, measure, bar to beat, price, blind spot. The structure list starts with the measure and puts the newsvendor share fourth.
+- Why an interviewer cares: learners memorise model answers word for word, and an answer this long gets cut off.
+
+**Finding 3 (minor). D3 and D4 in the interview room are under-probed.**
+- Where: the AI variant (transcripts lines 108 to 145, scorecard lines 58 to 69), notebook 07 cell 18, study notes lines 260 to 262, and half two D4.
+- What is wrong: beyond the two points in the AI table above, the unit differs between files. Notebook 07 scores a launch "in requests a minute", while the transcript scores "prompt and answer tokens at the peak minute". The notes' summary says the company "hides as many days as the plan covers", which the transcript itself says cannot be done with one earlier launch or none. In D4, the guesstimate sizes two-wheeler replacement from the households that own one, but replacement follows the vehicles in use, and a 15 percent uplift is left to close the gap to SIAM's figure.
+- Why an interviewer cares: AI-startup screens push on "how would you know on launch day?", and the model answer stops at "say it is untested". A guesstimate interviewer asks "households or vehicles?" first.
+
+### Part 2: the technical claims
+
+These claims are checked and correct, so a reviewer need not redo them:
+- **Definitions:** naive, origin, horizon and hold-out match FPP3.
+- **The curve through four points:** the curve through 100, 104, 98 and 110 says 168, both by Lagrange in notebook 04 and by differences (4, -6, 12; then -10, 18; then 28, so the next differences are 46 and 58).
+- **The least-squares line:** slope 2.4 and intercept 97. It says 109 for day 5 and sits 3.1 cups from the four days on average.
+- **Hidden-week scores:** every one reproduces. MAE 6,615, 9,831, 14,842, 14,923 and 16,400; priced at Rs 13.5, 30.5, 28.0, 28.8 and 11.9 lakh; 40,748 plus 45,248 is 85,996.
+- **The vendor's curve:** it errs high in 12 of 13 hidden weeks, and its mean error is 98 percent of its MAE. Its worst fitted week is 1.44 percent off. It runs 3.6 percent high in hidden weeks 1 to 6 and 11.5 percent high in weeks 8 to 13.
+- **MAPE and RMSE:** on these weeks both rank the five rules exactly as MAE does.
+- **Newsvendor arithmetic:** the share is 25 over 30.42, which is 0.822. The overtime shares of 0.33 and 0.50 are right. Moved to its own 0.82 point, each forecast costs Rs 8.8, 8.8 and 10.0 lakh.
+- **Range coverage:** "the range of thirteen misses covers roughly six weeks in seven" is (n - 1)/(n + 1), or 12 in 14.
+- **M5:** the figures match the preprint: 5,507 teams, 1,972 of them (35.8 percent) beat the seasonal naive, scores of 1.752, 0.847 and 0.520, a seasonal period of 7, and "all 50 top-performing methods were ML".
+- **PLOS ONE:** the claims match the paper, apart from finding 13.
+- **Zillow:** the figures match the shareholder letter.
+
+**Finding 4 (blocker). The festival back-tests borrow growth from the future, and most places that quote them never say so.**
+- Where:
+  - half one S43, S44 and the S48 map ("festival-aligned, within 124 shipments");
+  - half two's S1 map, S7 ("on 2025's festival it missed by 4,034 a week") and S10;
+  - study notes lines 197 and 214;
+  - the hire-grade staffing note in exercises/solutions/C2_W04_D05_staffing_note_solution_STUDENT.md, line 42;
+  - fallback S7 and S9 (2,040 a week, "thirty-five times");
+  - the trainer day sheet's one-breath [S] answer at line 235, which sets 4,034 (with growth) against the house bot's 58,250 (without growth);
+  - transcript 1's hire-grade answer (line 90), which leads with 4,034 before conceding 10,575.
+- What is wrong:
+  - **The source of the growth.** Festival-aligned adds the 4 percent that notebook 06 measures on the latest 39 training weeks, which run to June 2026.
+  - **Why it cannot be measured at those origins.** At the 22 September 2025 origin the series holds 52 weeks, so no week has a year-earlier twin and no growth can be measured. At the 13 October 2025 origin there are three twins, all inside the festival.
+  - **Who admits it.** Only notebook 07 cell 2 and half two S5 say so.
+  - **The leak-free numbers.**
+    - The festival back-test misses by 10,575 a week, which is 3.7 percent of a festive week, above the hidden weeks' 3.0 percent. The festival is the harder stretch, as the row says.
+    - Diwali 2025's week is 12,000 too low, not 124.
+    - The fallback's one-week origins miss by 13,040 a week, which makes naive 5.5 times worse, not 35.
+  - **What survives.** The placement lesson survives every correction; the error sizes do not.
+  - **The window.** The pack never says how the window of five weeks before to four weeks after Diwali was chosen. If it was read off both festivals, even the no-growth back-test is partly in-sample.
+- Why an interviewer cares: the scorecard's own bar for a 2 is "a test that never lets a model see the future". A learner who quotes 4,034 or 124 will be asked where the 4 percent came from in September 2025, and the honest answer is that it came from the future.
+
+**Finding 5 (major). The "error bar" is a summer average applied flat to festive weeks and presented as "how wrong it could be".**
+- Where:
+  - half one S40 ("The error bar: how wrong it could be, 6,615 shipments a week");
+  - half two S7;
+  - study notes lines 224 and 225, and the word table at line 273;
+  - cheat sheet panel 6, notebook 07 cell 9, and the model staffing note;
+  - on the stall, half one S35 and notebook 04 cell 9;
+  - the Kalpa board set's Q3, key a ("Rs 3.5 lakh a month, about Rs 21 lakh if all six miss one way").
+- What is wrong:
+  - **What 6,615 is.** It is the mean absolute miss on hidden weeks that average 217,746 shipments, so 3.0 percent of the level. Five of the 13 weeks missed by more, the worst by 15,444.
+  - **Scaled to the peak.** The plan's peak week is 434,928 shipments. At the hidden weeks' 3.0 percent the typical miss there is about 13,200; at the leak-free festive 3.7 percent it is about 16,100.
+  - **Read as an interval.** The hidden weeks missed by between 5.9 percent below and 7.8 percent above the forecast. That puts 19 October at about 409,000 to 469,000 shipments, or 3,413 to 3,906 shifts. Against the 3,625 shifts booked, that is about Rs 1.4 lakh of idle shifts at one end and Rs 8.4 lakh of late shipments at the other. The late end is five times the Rs 1.65 lakh on the slide.
+  - **The Kalpa key.** Six times the monthly MAE is not a bound on a half-year's miss either.
+  - **What the pack already does right.** Transcript 2 already presents the error this way ("covers roughly six weeks in seven"). The main path never does, and the words "interval" and "coverage" appear in no learner file.
+- Why an interviewer cares: "how wrong could it be" is Anand's question and the row's, and [D] asks "how do you present the error?". A planning interviewer at Flipkart or Swiggy who sees an average miss shown as an error bar concludes the candidate cannot tell accuracy from uncertainty.
+
+**Finding 6 (major). The in-row plan books at the median after proving a 4.6 to 1 cost, and the beyond-the-row fix slips into the [S] answer unlabelled.**
+- Where: half two S7 and S8; the ch2 set's Q3 key b ("a margin goes above it, sized on purpose") and its solution. Transcript 1's structure, step 4 (line 72): "Set the plan's level from the two costs, the newsvendor share, and check how often it covered". The overtime follow-up (line 105).
+- What is wrong:
+  - **The contradiction.** Every in-row artifact concludes that any margin belongs above the forecast. It then books 19,760 shifts at the forecast, which is roughly the median: 6 hidden weeks ran high and 7 low. The size of the margin is parked in the fallback hour, which runs only if the faculty session does not.
+  - **The unlabelled leak.** Step 4 of transcript 1 teaches the newsvendor rule as part of the staple answer with no beyond-the-row label, although the vocabulary table and the hire-grade row both carry one. In the overtime follow-up, the 0.33 and 0.50 are newsvendor arithmetic, but only "the 0.82" is labelled.
+- Why an interviewer cares: the first follow-up to "a late shipment costs 4.6 times a spare one" is "so where do you book?", and the in-row learner can only say "beyond today's row".
+- Fix: either bring the one-line rule (cover 25 over 25 plus 5.42 of weeks) into the row as the note's fifth line, or label step 4 and give an in-row reply to that follow-up.
+
+**Finding 7 (major). The good-enough call converts an MAE gap into shifts in a way that does not hold, and it is never priced.**
+- Where:
+  - half two S8 ("1 shift, at most, for a rule 100 better");
+  - notebook 07 cell 11, where "a rule better by 100 shipments a week" is coded as `forecast - 100`;
+  - notebook 04 cell 14, whose check is `100 < per_shift`;
+  - study notes line 177 and self-check question 5;
+  - the c4 set's Q2 key ("0.3 of a packer shift, which changes no shift booked").
+- What is wrong:
+  - **The conflation.** A rule whose MAE is 100 lower does not make forecasts 100 away from festival-aligned. Its forecasts can differ by thousands in a given week and book very different shifts.
+  - **The inconsistent test.** The stall's test says a forecast is worth having only if it would change what gets ordered. A rule that moves a shift in 7 of 8 weeks does change the order. The Flipkart threshold of "more than a shift a week" then appears without derivation.
+  - **No price.** Lowering the MAE by 100 shipments a week is worth about Rs 540 to Rs 2,500 a week at the case's costs. Over eight weeks that is Rs 4,300 to Rs 20,000 for one centre. That has to be set against the cost of building and running the better model, and the sum changes across centres and seasons.
+- Why an interviewer cares: "when is a better model worth shipping?" is a standard product-analytics question. The expected answer prices the gain at the decision and weighs it against the cost and risk of the change.
+
+**Finding 8 (major). "Priced, the vendor's misses cost least" flips inside the ticket's own cost ranges.**
+- Where: half one S55 to S57 and the S59 map; the study notes' chapter 6 table; cheat sheet panel 6; transcript 1's "The price" row; transcript 2's follow-up ("As they stand, yes"); the scorecard's paradox lines.
+- What is wrong:
+  - **The ranges.** The costs table gives a late shipment at Rs 15 to 40 and an idle shift at Rs 500 to 800.
+  - **Where it flips.** At Rs 15 per late shipment, festival-aligned's misses are cheapest at every idle cost: Rs 9.0 against Rs 11.7 lakh at Rs 650. Festival-aligned is also cheapest at Rs 25 per late shipment with Rs 800 per idle shift: Rs 14.0 against Rs 14.6 lakh. The vendor wins in only 5 of the 9 corners.
+  - **The overclaim.** The principle on S56, that a forecast which errs high can cost less, is right. But the result is presented as a fact of the data when it holds only at one assumed price.
+- Why an interviewer cares: the first question finance or an interviewer asks of a priced comparison is whether it survives its assumptions. The [D] reply should be: "at Rs 25, yes. At finance's own low end of Rs 15, ours is cheaper, and with each forecast at its own 0.82 point ours wins."
+
+**Finding 9 (minor). MAPE's asymmetry is stated loosely, its consequence is missing, and the deck and the transcript recommend different measures for comparing sizes.**
+- Where: transcript 1's first follow-up (line 102); half one S26 and S28 rule 3; study notes lines 124 and 125.
+- What is wrong:
+  - **The direction is the textbook's.** FPP3 section 5.8 does say that percentage errors "put a heavier penalty on negative errors than on positive errors", with its error defined as actual minus forecast.
+  - **The wording fails.** "For the same miss" does not hold when the actual is fixed: a miss of d above or below an actual y scores d over y either way. The asymmetry appears only when the forecast is fixed or the pair is swapped.
+  - **The missing consequence.** No file makes the point a screen wants. Under-forecasts cap at 100 percent and over-forecasts do not, so choosing or training on MAPE pulls forecasts low. That is the side this case prices at 4.6 times.
+  - **Two different recommendations.** The deck keeps MAPE "for comparing series of different sizes", while the transcript uses MASE or WAPE for that, which is what FPP3 recommends.
+- Why an interviewer cares: "MAPE or WAPE, and why?" is close to certain at e-commerce and quick-commerce companies, where WAPE is the house measure.
+
+**Finding 10 (minor). The baseline and hold-out definitions carry small slips.**
+- Where:
+  - drift: half one S16 and S17, study notes line 84, cheat sheet panel 3;
+  - the seasonal naive: half one S18, study notes line 90, cheat sheet panel 3;
+  - the test's length: half one S24, study notes lines 112 to 114, notebook 03 cell 4, fallback S5;
+  - the docstring in notebook 04 cell 3.
+- What is wrong:
+  - **Drift.** It is defined as the line from y(1), the first value, to y(T). The worked 104.7 instead uses four days picked by hand (notebook 02 says "here over the last four days"). Over the seven days the rule saw, it would say 110.
+  - **Seasonal naive.** It is printed as y(T + h - m) without "for h up to m". Notebook 02 carries the condition, and FPP3 writes y(T + h - m(k + 1)) with k the integer part of (h - 1)/m. The deck note's "when h is longer than one" drops the word "season".
+  - **Test length.** FPP3 says the test set "should ideally be at least as large as the maximum forecast horizon required". The pack quotes it without "ideally", and the fallback turns it into "must".
+  - **The curve.** The docstring calls the cubic "the one curve that passes through every day exactly". Infinitely many curves do; the cubic is the only polynomial of degree three or less that does.
+- Why an interviewer cares: these are the definitions a candidate recites, and an interviewer who knows the textbook hears each slip.
+
+**Finding 11 (minor). The sign of a miss runs opposite to FPP3, and it flips again in notebook 07.**
+- Where: study notes line 116; cheat sheet panel 4; half one S25, flagged only in its speaker note; notebook 03 cell 4, where it is flagged; notebook 07 cells 14 to 16, where the miss becomes demand minus forecast, divided by forecast.
+- What is wrong: the pack's miss is forecast minus actual, so its lean of -1.7 is FPP3's mean error of +1.7. The study notes and cheat sheet never say so.
+- Why an interviewer cares: "is your bias positive?" means nothing until the candidate states the convention. A learner who says "minus 1.7, so it runs low" to an interviewer who uses actual minus forecast sounds as though they have the sign wrong.
+
+**Finding 12 (minor). The 364-day copy is stated as an absolute, and the festival copy lacks the field's name.**
+- Where: half one S11's note and notebook 02 cell 6 ("never a calendar year of days"); half one S13, which names "the week that holds the first of the month" as a season; half one S19, notebook 02 cell 8, and the transcripts' vocabulary table.
+- What is wrong:
+  - **The drift.** A lag of 364 days keeps weekdays aligned but drifts by a day a year, two across a leap day, against anything tied to a date. That covers salary days, the first of the month the deck itself names, 26 January, 15 August and the financial year end.
+  - **The honest rule.** Copy by the calendar that drives the effect: the weekday for the weekly pattern, the date for dated events, the festival for a moving festival.
+  - **The missing term.** The pack rightly says festival-aligned is its own construction, but it never gives the field's term, a moving-holiday effect. FPP3 section 7.4 handles Easter, its example, with a dummy variable.
+- Why an interviewer cares: an interviewer will say "holiday effect" or "event regressor". A candidate who knows only "festival-aligned copy" sounds coached rather than trained.
+
+**Finding 13 (minor). Naive 2 is called "a seasonal random walk".**
+- Where: half one S59.
+- What is wrong: the PLOS ONE paper uses that loose label once, in section 4. Section 3.3 defines Naive 2 as "a random walk model adjusted for seasonality", meaning the random walk applied to seasonally adjusted data. The deck defines the seasonal naive as "the value one season back", so the label tells learners Naive 2 is the seasonal naive. It is not: Naive 2 carries the latest level times a seasonal index, and never last year's value.
+- Why an interviewer cares: a candidate who names an M-competition benchmark gets asked what it is.
+
+**Finding 14 (minor). The "remainder" of 4.7 cups is really the spread of a year-on-year difference.**
+- Where: half one S10, notebook 01 cell 9, study notes line 61, cheat sheet panel 2.
+- What is wrong: 4.7 cups is the spread of cups sold minus 1.10 times the same weekday 364 days earlier, so it carries two years' noise. The generator's daily noise is 3 percent, about 3.3 cups on a weekday. The true remainder is therefore about 3.3 cups, and 4.7 is about 1.4 times that.
+- Why an interviewer cares: an interviewer who knows decomposition will say this is a seasonal naive's error, not the remainder.
+
+**Finding 15 (minor, beyond the row). Two details of the quantile depth section are loose.**
+- Where: the transcripts' vocabulary table (line 42), notebook 07 cell 16, the fallback's S12 note, transcript 1's circularity follow-up, and scorecard lines 49 and 50.
+- What is wrong:
+  - **The scale.** The priced miss equals Rs 30.42 times the pinball loss at 0.82; FPP3's version also doubles the pinball loss. So "it is the quantile loss at 0.82, in rupees" needs that scale factor.
+  - **The looseness.** The material says the cushion is 2.6 percent by pandas' default and 4.1 percent "by another common convention". That overstates how uncertain the point is. On 13 weeks the cost-minimising cushion is the 11th sorted miss, 2.72 percent, which the notebook's own cost curve finds (2.8 on its grid).
+- Why an interviewer cares: a candidate who offers the newsvendor rule will be asked to derive the optimum, and the answer is that order statistic, not a quantile convention.
+
+**Finding 16 (minor). Half two S6's title contradicts transcript 2.**
+- Where: half two S6, titled "Plus 22 and plus 4 measure different windows", against transcript 2's first clarifier, "Both are measured against the same calendar weeks".
+- What is wrong: both figures are measured against the same calendar weeks. S6 then shows each forecast against two windows.
+- Why an interviewer cares: a candidate who says the two figures use different windows is wrong on the case's own facts.
+
+### Part 3: unfair scoring, and follow-ups the material does not answer
+
+**Finding 17 (major). The scorecard has no line for the baseline, so the typical answer's best idea earns nothing.**
+- Where: the scorecard's criteria and its note on the typical answer (lines 10 to 36), and the transcript's account of the typical answer (lines 93 to 96).
+- What is wrong:
+  - **The missing criterion.** None of the seven criteria rewards "compared with the right baseline". That is the row's core thinking ("a forecast earns trust only by beating a naive baseline on a stated error measure") and the subject of its first [F] question.
+  - **The typical answer.** "Hold out the last couple of months, compare each model's MAPE with a copy of last year's same weeks, and send the lowest" puts the seasonal naive on a time-ordered hold-out. The transcript calls that a strength "most weak answers lose", yet the card gives it 0 for the paradox and 2 of 14 overall.
+  - **My score.** On the card as written I also reach 2. In a real debrief for a 0 to 3 year role it is a coachable lean-no-hire, about 4 of 16 once the card has a baseline line.
+  - **The weak answer.** Its score of 1 is fair, but its real red flag, "whichever comes out lowest", is choosing the measure after seeing the results, and it deserves its own name on the card.
+- Why an interviewer cares: a card that cannot tell "compared with a copy of last year" from "trained a few models" mis-ranks exactly the candidates this programme produces.
+
+**Finding 18 (major). The c4 set's Q2 sets the wrong bar and adopts a model the deck says must be re-tested.**
+- Where: exercises/unguided/C2_W04_D05_c4_beat_baseline_good_enough_STUDENT.md, Q2, and its solution row.
+- What is wrong:
+  - **The bar.** The stem sets the bar at the house bot's 9,831, although the day's own winner sets it at 6,615.
+  - **Team A.** Its real failure is losing to festival-aligned by 3,185 shipments a week. That is a stronger reason than "0.3 of a shift", which also repeats finding 7's conflation.
+  - **Team C.** Key c adopts team C for ordinary weeks on a lead of 415 a week, about 6 percent, over 13 correlated weeks from one origin. Half two S16 says such a model must be "checked again on a rolling origin". Nobody asks Wednesday's question of whether 415 is beyond chance.
+  - **Why it matters for drilling.** The item is tagged "asked in product-company and GCC screens", so it drills the screen answer.
+- Why an interviewer cares: the hire-grade reply to "three teams beat the bot" is that a model must beat the best baseline, by enough money at the decision, on a test that did not choose it.
+
+**Finding 19 (minor). The c4 set's Q1 key contradicts the chapter's own rule.**
+- Where: c4 Q1, key b ("The line for now, and score both on unseen days before ordering"), against half one S36 rule 2.
+- What is wrong: the rule is that nothing goes into the order unless it beats the baseline on unseen days. The key trusts an unscored fitted trend for tonight's order, which is the vendor's mistake at a stall's scale. The option the day actually teaches, naive's 110 until the line beats it on unseen days, is not offered.
+- Why an interviewer cares: an interviewer who hears "trust the line for now" hears the vendor's sponsor.
+
+**Finding 20 (minor). The ch2 set's Q1 calls a one-step-ahead naive "leaky".**
+- Where: the ch2 scoreboard's Q1 and its solution (line 31).
+- What is wrong: `y.shift(1)` scored on each hidden week is a rolling-origin evaluation one week ahead. That is the evaluation FPP3 section 5.10 describes and transcript 1 praises. Its real defect here is a horizon mismatch, since the plan reaches three to ten weeks ahead. Option a's wording ("unknown on 22 June") is right within the single-origin protocol; the solution's label "the leaky naive" is the problem.
+- Why an interviewer cares: a learner taught that this is a leak will call time-series cross-validation a leak in an interview.
+
+**Finding 21 (major). A hard screen's follow-ups run past the material by the second question.**
+- Where: the words "median", "interval", "coverage" and "significance" appear in no learner file, and RMSE appears only as the weak answer's measure and as a distractor.
+- What is missing, in the order an interviewer would ask:
+  1. Why MAE and not RMSE? FPP3 section 5.8 says minimising MAE gives the median and minimising RMSE gives the mean. For an asymmetric cost the answer is neither: it is the quantile at the cost ratio, which the pack already computes beyond the row.
+  2. Give me an interval with its coverage (finding 5).
+  3. Is 6,615 against 9,831, or team C's 6,200 against 6,615, beyond chance on 13 correlated weeks? A paired test on the weekly loss differences, or a rolling-origin re-run, would answer it. Wednesday's lesson on chance never reaches forecast comparison.
+  4. What is the error at the decision's horizons of 3 to 10 weeks? The test pools horizons 1 to 13. S28's rule 1 says "forecast them all from one origin", while transcript 1 says one origin is one draw.
+  5. The 13 hidden weeks chose the rule, would set the cushion and would judge any new model, so what clean test is left? Only half two S16 hints at this.
+  6. Do the rankings survive the cost ranges (finding 8)?
+  7. Shipments are capped by capacity, so how would you recover true demand? The pack names the doubt but gives no method, such as using orders placed or missed dispatch dates.
+  8. Does a weekly total divided by 120 still hold when the sale's first days peak inside the week?
+  9. What would you try next to beat festival-aligned, and how would you test it? The pack parks this for the faculty session. A candidate is still expected to name one model and its rolling-origin test, for example a regression or ETS with a festival dummy (FPP3 section 7.4 does this for Easter) or gradient boosting with calendar features.
+  10. With many centres, do you build one model per centre or forecast top-down, and how do you score across them? Only the MASE and WAPE line touches this.
+- Why an interviewer cares: questions 1 to 6 are the standard depth probes after "how do you evaluate a forecast?" at Google, Uber and Swiggy. A candidate who has only the pack's answers runs out by the second one.
+
+### Part 4: is the row's interview angle honoured?
+
+The [S] question, "How do you evaluate a forecast?", is honoured, and it is the strongest part of the pack. It has a transcript with clarifiers, a trap, follow-ups and a scorer, plus D1 and D2, half one S28, the notes, the cheat sheet, and a timed pair drill that opens the lab. Its risks are findings 4 to 6.
+
+**Finding 22 (major). The [F] question "What baseline must any forecast beat, and why?" gets one line and no "why".**
+- Where: study notes line 257; half one S20 and notebook 02 cell 12; half one S36 and notebook 04 cell 13, which point at the question without answering it; trainer day sheet lines 236 to 238. Cheat sheet panel 7 leaves it out.
+- What is wrong:
+  - **The answer given.** "The seasonal naive: on seasonal data it is the plainest copy that respects the beat."
+  - **What it leaves out.**
+    - Naive is the baseline when there is no season.
+    - When the series trends, the bar is the seasonal naive plus the year's growth, or plus drift. The case's own house bot errs low on 11 of 13 weeks and loses to finance's rule by exactly the growth.
+    - The "why" is missing: a baseline costs nothing to run, and a model that cannot beat it adds cost and risk for no accuracy. The baseline also sets the scale that MASE divides by, and the competitions show it is hard to beat (in M5 only 35.8 percent of 5,507 teams beat it).
+  - **The pieces exist.** Half one S18's rule 3, S48, S59 and the transcript's MASE line hold every piece, but they are never assembled. The question has no transcript, scorer line or follow-up, even though Saturday's preview promotes it to an [S] question asked aloud.
+- Why an interviewer cares: "and why?" is the half of the question that separates candidates.
+
+**Finding 23 (major). The [F] question "A vendor promises 22 percent growth; how do you test the claim?" has its pieces in four places and no assembled answer.**
+- Where: study notes line 258; cheat sheet panel 7; half one S36; trainer day sheet lines 239 to 241.
+- What is wrong:
+  - **The answer given.** "Score its curve on weeks it never saw against the seasonal naive", plus, in the cheat sheet and day sheet, "read the 22 against the right window".
+  - **The strongest moves sit elsewhere and are never joined.**
+    - Restating the 22 like for like. Half two S6 shows that plus 22.0 percent on the calendar weeks is plus 6.1 percent on the weeks counted from Diwali, against 4.0 percent trend growth. So the festival moving into the window explains most of the gap.
+    - The bias that grows with the horizon. Half one S57 shows the curve 3.6 percent high in hidden weeks 1 to 6 and 11.5 percent high in weeks 8 to 13, which is how a trend claim gets tested.
+    - Asking for an out-of-sample record on a festival the model did not see. Transcript 2 asks the vendor to forecast 2025's festival from data up to September 2025.
+  - **No support.** There is no transcript, scorer line or follow-up for this question.
+- Why an interviewer cares: in a screen this is a three-move answer: restate the claim like for like, test the trend out of sample, and ask for the record. The pack teaches only the second move as the answer.
+
+**Finding 24 (major). The [D] question has no in-row spoken answer and no in-row rehearsal.**
+- Where: the transcripts (lines 157 to 161); the fallback note's part 5; the lab note (line 20); the trainer day sheet (lines 242 to 244); the study notes' interview table; cheat sheet panel 7.
+- What is wrong:
+  - **When it runs.** The [D] transcript is spoken only in the fallback hour, which runs only if the IITGN session W4-4 does not.
+  - **The lab drills [S] only.** The lab's interview room has "each learner asks the other the [S] question and one follow-up". That contradicts the day sheet's claim that "the lab's interview room drills it".
+  - **Beyond-the-row numbers.** The hire-grade numbers rest on the raised plan that the day labels beyond the row: 20,275 shifts, a 2.6 percent cushion, 3,719 at the peak. A learner who missed the fallback hour cannot give them.
+  - **Not in the take-home material.** Neither the study notes nor the cheat sheet carries [D] at all.
+  - **Only as letters in the row.** In the row it is practised only as multiple-choice letters in the Kalpa board set (Q2 and Q3), whose error-bar key is the flat MAE from finding 5. Saturday's preview does ask it aloud.
+- Why an interviewer cares: the row tags this as the differentiator. The in-row learner reaches Saturday with no answer to say and no way of presenting the error beyond an average.
+
+### Count, and the one change that would most raise hiring value
+
+By severity there is 1 blocker (finding 4), 11 major findings (1, 5, 6, 7, 8, 17, 18, 21, 22, 23 and 24) and 12 minor findings (2, 3, 9 to 16, 19 and 20), 24 in all.
+
+The single change: replace the flat, partly leaky error bar with one honest interval, and carry it through every interview artifact.
+1. **Build it.** Use the hidden weeks' misses as percentages of the forecast: from 5.9 percent below to 7.8 percent above, a range that covers about six weeks in seven.
+2. **Apply it week by week.** For 19 October that gives 3,413 to 3,906 shifts against the 3,625 booked: about Rs 1.4 lakh of idle shifts at one end and Rs 8.4 lakh of late shipments at the other.
+3. **Check it against the leak-free festival back-test.** Use 10,575 a week, which replaces 4,034, 124 and 2,040 everywhere they appear.
+4. **Carry it through.** Put the interval in half one S40, half two S7, the notes, the cheat sheet, the model staffing note, transcript 1's answer and the scorecard.
+
+That one change removes the blocker. It also answers "how wrong could it be" and [D]'s "how do you present the error" inside the row, and it gives every learner an error statement that survives the first follow-up. Transcript 2 already shows the pack can do it.
+
+---
+
+## Read 5: can a trainer who did not write the day find every subtopic and run the day?
+
+I read the pack at commit 11c4991 on branch w04-d5 as a trainer who has to deliver it next week from the files alone. I started with the Friday row (docs/curriculum/W4_Analyst_craft.md, lines 419 to 522), then skimmed the approved plan (docs/detailing/W04_concept_first/D5_plan.md). After that I read the three deck markdowns and their .pptx files, all eight notebooks (cells counted from 1), every exercise set and solution, the Kahoot, notes, cheat sheet, pre-read, take-home, the eight trainer files and the facts file. I changed nothing in the repository; my scratch work is in /tmp/coldread_trainer/.
+
+**Verdict.** All five subtopics have a named chapter, slides, a notebook, exercise items, a Kahoot item and a notes section, so none is NOT FOUND. The minutes reconcile exactly: the day sheet gives 240 trainer minutes and the notes fences agree slide by slide. The day can be run, but ten major problems would trip a trainer in the room. None is a stop.
+
+---
+
+### Part 1: where is each subtopic taught?
+
+**Subtopic 1, "Trend and seasonality, read before modelling".**
+- **Chapter:** "## SECTION 1: Trend and seasonality, read before modelling: what does a series tell?" in half one, slides S6 to S13.
+- **Notebook:** notebooks/C2_W04_D05_01_trend_and_seasonality_STUDENT.ipynb, whose title cell carries the subtopic verbatim.
+- **Exercises:** c1 set Q1 to Q3, staffing note Q4 and practice set Q1. **Kahoot:** Q8.
+- **Notes section:** "Trend and seasonality, read before modelling: what does a series tell you before any rule is chosen?"
+- **Applied in:** SECTION 5 (S41, S42, S45, S46) and half two S6.
+
+**Subtopic 2, "Naive, seasonal naive and drift baselines".**
+- **Chapter:** "## SECTION 2: Naive, seasonal naive and drift baselines: when does a copy fail?", slides S14 to S21.
+- **Notebook:** 02_naive_seasonal_naive_drift.
+- **Exercises:** c2 set Q1 to Q3, guided same-week-rule Q1 and Q3, practice Q2 and Q5. **Kahoot:** Q1.
+- **Notes section:** headed by the subtopic.
+- **Applied in:** S43, S44, S51 and S52.
+
+**Subtopic 3, "Holding out; MAE and MAPE in the business's units".**
+- **Chapter:** "## SECTION 3: ...: how is a forecast scored?", slides S22 to S29.
+- **Notebook:** 03_holdout_mae_mape. MAPE is computed in cells 6 and 8.
+- **Exercises:** c3 set Q1 to Q4, guided Q2, scoreboard Q1 and Q2, Kalpa board Q1, practice Q3 and Q6. **Kahoot:** Q2, Q5 and Q7.
+- **Notes section:** headed by the subtopic.
+- **Applied in:** S50 to S58 and half two S5 and S7.
+
+**Subtopic 4, "Beating the baseline; the vendor curve tested".**
+- **Chapter:** the first half of the shared "## SECTION 4: Beating the baseline; the vendor curve tested; the good-enough call and the forecast note: when does it earn trust?", slides S30 to S33.
+- **Notebook:** 04_beating_the_baseline_good_enough, cells 3 to 6.
+- **Exercises:** c4 Q1 and Q2, scoreboard Q3, Kalpa board Q2, practice Q4. **Kahoot:** Q3.
+- **Notes section:** "Beating the baseline; the vendor curve tested: why is a close fit no proof?"
+- **Applied in:** S53, S54 and S57.
+
+**Subtopic 5, "The good-enough call and the forecast note".**
+- **Chapter:** the second half of SECTION 4, slides S34 to S37.
+- **Notebook:** notebook 04, cells 7 to 13.
+- **Exercises:** c4 Q2 and Q3, staffing note Q1 to Q3 and the note, Kalpa board Q3. **Kahoot:** Q4.
+- **Notes section:** "The good-enough call and the forecast note: when do you stop improving, and what do you send?"
+- **Applied in:** half two S8 and S11 to S15, and notebook 07 cells 11 to 13.
+
+**Check against the matrix.** internal/C2_W04_D05_coverage_INTERNAL.md agrees with every location above. It has no study-notes column, which it does not need. It gives subtopics 4 and 5 ten minutes each where the notes fences give 11 and 9; neither difference changes delivery.
+
+**Finding 1 (minor).**
+- **Where:** SECTION 4 and notebook 04.
+- **What is wrong:** Subtopics 4 and 5 share one 20-minute chapter and one notebook. CLAUDE.md and decision concept-first-case-second ask for one chapter and one notebook per subtopic. Chapter 3 runs 30 minutes, above the rule's "about 8 to 25". The approved plan records the reason for both.
+- **In the room:** the trainer finds both subtopics easily, because S3 and S3's notes explain the split. They just teach SECTION 4 as two halves.
+
+---
+
+### Part 2: can the day be run from the trainer files?
+
+**What checks out.**
+- **Minutes:** the day sheet's morning is 8 + 95 + 37 + 30 + 10 = 180, and the first afternoon hour is 2 + 33 + 15 + 10 = 60, so 240 in all. The notes fences agree:
+  - half one's live minutes sum to 170, plus the 10-minute break after S29;
+  - half two's sum to 60, with D1 to D4 marked self-study;
+  - the fallback's sum to 120, in parts of 25, 30, 20, 20 and 25;
+  - the concept chapters' notes total 22, 23, 30 and 20, as S3 says.
+- **Slide numbers:** every S number in the day sheet, tournament, calendar card, scorecards, guesstimate and fallback note points at the slide it names, except the role cards' S10 (finding 3). In the .pptx each SECTION opener is its own slide, so positions drift from the S numbers (S7 is slide 8 of 65). Every footer prints both, so slides are findable.
+- **Notebook cells:** these all match when counted from 1:
+  - the lab note's notebook 08 cells 2 to 4, 6, 8, 10 and 11;
+  - the tournament's notebook 06 cells 5, 7 and 13;
+  - the take-home's "second cell, split = 91";
+  - the deck's "notebook 06's empty cell" (cell 9).
+- **Take-home:** I ran notebook 06 with split = 100, as the take-home asks. Exactly one check fails, as the brief warns.
+- **Numbers:** every value in the day sheet's numbers table matches its facts id. The scoreboard, plan, windows, back-test, rolling origin, raised plan, Kalpa plants and guesstimate numbers match the facts file and the notebooks' printed outputs.
+- **Concept chapters:** no concept chapter is ever cut.
+
+**Finding 2 (major). The round-three vote asks one question while the script asks another.**
+- **Where:** the tournament sheet's Round three; the festival calendar card's first paragraph and its picture (whiteboards/C2_W04_D05_festival_calendar_STUDENT.png); half two S3 and S4.
+- **What is wrong:**
+  - Both trainer files tell the trainer to "say exactly: 'Which week does the bot put Diwali in this year?'" and then take the vote on S3.
+  - S3 asks something else: "Which week does the bot make 2026's busiest?" S4 answers 5 October.
+  - The answer to the scripted question is 19 October, which is option b on S3. The card's own picture hatches 19 October as "the house bot's copy of 2025's Diwali week".
+  - The tournament then awards the plan to the first group to place the peak on 19 October.
+- **In the room:** a group that answers the spoken question correctly is told on S4 that it is wrong. The card then shows 19 October hatched next to a slide saying 5 October. The trainer has to improvise in the round that decides who wins the plan.
+
+**Finding 3 (major). The role-play has three locations and no minutes.**
+- **Where:** the role cards' first paragraph ("chapter 7, half two S10", and S14 again); the tournament's Round three (objections after S4); the notes on half two S10 and S14.
+- **What is wrong:**
+  - S10 is a 2-minute doubts slide whose notes never mention the cards. S14 is also 2 minutes. Chapter 7's 33 minutes are already spent slide by slide.
+  - Each card has five lines and a close addressed to every group. There are 35 learners in nine groups (facts.yaml), and that cannot run in 2 minutes.
+- **In the room:** the trainer either skips the role cards or overruns chapter 7, which squeezes the staffing note before the faculty block.
+
+**Finding 4 (major). Two in-class exercise sets have no time slot.**
+- **Where:** exercises/C2_W04_D05_index_STUDENT.md puts the guided same_week_rule set in chapter 5 and the ch2_scoreboard set at "Chapter 6's close, 15 minutes". The guided file itself says "The trainer builds this set with the room in chapter 5". The day sheet calls them "Chapter 5's drill" and "Chapter 6's drill".
+- **What is wrong:**
+  - Neither set has minutes in the day sheet, and no notes fence in S38 to S59 cues either one. The morning already totals 180.
+  - The guided set is the row's GUIDED exercise. Its hide-and-score item (Q2) is never done live; S43 and S44 cover only its first item.
+  - The file name "ch2" is an old chapter number for what is now chapter 6's set.
+- **In the room:** running both costs about 25 minutes and pushes chapter 6 into lunch. Skipping them leaves the row's guided exercise half done.
+
+**Finding 5 (major). The tournament's scoring steps throw an error.**
+- **Where:** the tournament sheet, "How does the TA score a group's own rule?"; notebook 06.
+- **What is wrong:**
+  - The sheet says to add each group's line after cell 5, then run cell 7 and then cell 13.
+  - Cell 13 opens with `rules["vendor"] = v.loc[hold.index]`. The variable `v` is first defined in cell 11, or in the learners' your-turn cell at S53.
+  - Round two scores the groups at S51 and S52, which is earlier. I ran cells 2, 5, a group line, 7 and 13 in a scratch namespace: cell 7 printed 6,942 for "last year plus 3 percent", and cell 13 stopped with NameError: name 'v' is not defined.
+  - Inserting a new cell after cell 5 also renumbers cells 7 and 13 to 8 and 14, so the sheet's numbers no longer point at the right cells.
+- **In the room:** the TA hits an error in front of the room during the signature activity.
+
+**Finding 6 (major). The cut list recovers only about four minutes and drops the row's cut order.**
+- **Where:** the day sheet's "Cut first" row; every notes fence; the row's CUT FIRST.
+- **What is wrong:**
+  - No notes fence mentions cutting. That means the notes do not contradict the day sheet; they also give no cue to a trainer in presenter view.
+  - The day sheet's four cuts are S47, S58, drift's row of S52 and S57. Together they recover about four of the morning's 67 case minutes.
+  - The row says "drift, then MAPE (keep MAE)", and the approved plan expected drift to be cut first live. The pack keeps drift and MAPE inside chapters marked "Never cut" and moves drift to third place in the case.
+- **In the room:** a room 10 to 15 minutes behind has nowhere named to recover the time.
+
+**Finding 7 (major). Notebook 08 gives away the lab's month-aligned trap.**
+- **Where:** notebook 08 cells 7 and 9. In the lab note: the plant row "The month-aligned trap" and the stall rows "The seasonal copy" and "The festival-aligned copy". In the day sheet: "Which plants does the lab find" and the traps row for the lab.
+- **What is wrong:**
+  - Cell 9 states the answer before anything runs: the spike sits in "October in 2024 and 2025, and November in 2026", and festival-aligned "swaps two months". The code to type already contains the swapped month list.
+  - The day sheet promises that "No learner file names any of them before a learner's own cell prints it".
+  - The stalls the lab note anticipates, such as typing shift(52) on monthly data or moving every month, cannot happen, because cells 7 and 9 hand over the full code.
+- **In the room:** the TA's "if nobody finds it" hint is already answered by the notebook. The lab's one transfer check becomes a typing exercise.
+
+**Finding 8 (major). The case notebooks open on a broken title cell.**
+- **Where:** notebooks 05, 06 and 07, cell 1.
+- **What is wrong:**
+  - Every line of the title, the "applies" paragraph, the first ticket line, "Who needs the answer" and "The questions on the way" starts with eight spaces.
+  - Markdown therefore renders the cell as a grey code block, with # and ** printed literally. I confirmed this with a CommonMark renderer.
+  - Notebooks 01 to 04 and 08 render correctly.
+- **In the room:** the trainer projects notebook 05 at S43, 06 in chapter 6 and 07 in chapter 7, and each opens on a broken first screen. Learners see the same in Codespaces and on GitHub.
+
+**Finding 9 (minor). The trainer files never say where the explorer is.**
+- **What is wrong:** notes on half one S2, S4, S8, S19, S24, S46 and S50, half two S3 and fallback S11 cite explorer scenes. No trainer file gives the explorer's path. Only the notes' last line does: content/W04/D1/demos/C2_W04_D01_week_explorer_STUDENT.html.
+- **In the room:** a trainer who did not teach Monday cannot find it and skips the scenes.
+
+**Finding 10 (minor). c3 Q4 is never scheduled.**
+- **What is wrong:** the day sheet and the lab note schedule the concept sets' "items 2 and 3" for the lab. The c3 set has four items, and its design item Q4 has no slot, even though the day sheet's topic table counts "c3 set Q1 to Q4".
+- **In the room:** the TA stops after Q3.
+
+**Finding 11 (minor). Role card 2 gives the wrong fitted-week count.**
+- **What is wrong:** card 2 says the vendor's model "was fitted to the 104 weeks". The vendor file has 91 fitted rows, and S54, notebook 06 and the day sheet all say 91.
+- **In the room:** a TA narrating from the card contradicts the notebook the room has just run.
+
+**Finding 12 (minor). Three small mismatches in the fallback hour.**
+- The fallback note offers "S2's table", and S2's notes say "read this table", but S2 is a bar chart.
+- The note says a test is too short against "the eight-week plan", while S5 rests on the ten-week horizon.
+- S12's notes put the 0.82 point "from about 2 to 3 percent", while notebook 07 cell 17 and the scorecards give 4.1 percent under another convention and a flat cost from 2 to 4 percent.
+- **In the room:** each is a small contradiction a learner could raise.
+
+---
+
+### Part 3: are the row's other columns honoured?
+
+- **Business scenario:** honoured in the lab. Anand's question appears word for word in notebook 08 cell 1, the lab note and the Kalpa board set. The live case is Flipkart, as the approved plan sets.
+- **Thinking:** honoured on S36, S40, S48 and S59.
+- **Learner outcome:** honoured in the notes' "What can you do after Friday?".
+- **Trainer agenda:** honoured with the plan's re-timing. The ticket's 10 minutes become S5 (2 minutes) plus S39 and S40 (7 minutes). The close drops from 20 minutes to 10.
+- **Trainer notes:** START FROM, COMES LATER and WHAT THE DATA REVEALS are honoured. GO AS FAR AS is met by the stall's note on S35, the Kalpa paragraph and the staffing note's prose in the lab. STOP BEFORE is finding 18 and CUT FIRST is finding 6.
+- **Client zero:** kept to TRAINER files. The row's two plants are named only after notebook 08's your-turn cell prints them. The pack's own month-aligned plant leaks (finding 7). No trainer file names the row's VERSION v5; the series is built by the day's script, which does not affect delivery.
+- **In-session exercises:** GUIDED is finding 4. UNGUIDED is the scoreboard set (unscheduled), the staffing note (S12, 10 minutes) and the Kalpa board set (lab). MID-SESSION is finding 15.
+- **After-class tasks:** honoured. BUILD is adapted to four of thirteen hidden weeks. READ is in the notes' reading path at the toolbox address checked 13 October 2026. PREP is in the pre-read.
+- **Kahoot plan:** honoured. The row's Q1 to Q5 and its return question map to quiz Q1 to Q6. Q7 and Q8 are added, and half two S17 lists every item by topic.
+- **Faculty column:** the sync block, half two S1, S16 and S18 and the fallback all carry "tentative", and every STUDENT mention says so. The content seam is finding 13.
+
+**Finding 13 (major). The faculty brief assumes work the room has not done.**
+- **Where:** the day sheet's sync block ("CONNECTS TO KALPA: ... Anand's six held-out months"); docs/faculty/Sessions.md, W4-4 ("24 months of revenue ... a six-month hold-out"); half two S16.
+- **What is wrong:**
+  - Before the block, this room has seen the stall's three hidden days and Flipkart's thirteen hidden weeks. Kalpa's 24 months run in the lab, which comes after the block.
+  - Nothing in the trainer files asks anyone to brief the faculty member about this.
+  - S16 also defines autocorrelation, smoothing and ARIMA in a table, although the day sheet says "Do not preview the block's content".
+- **In the room:** a faculty member who opens on "Anand's six held-out months" faces a room that has not opened Kalpa's data. The fix belongs in the faculty source, plus a briefing line in the day sheet.
+
+**Finding 14 (major). Saturday tests the plan share, which Friday teaches live only in the fallback hour.**
+- **Where:** content/W04/SAT/paper/C2_W04_SAT_recap_paper_STUDENT.md, Q39 "Set the plan share" (Hard, timed; 10 over 10 plus 5.42, about 0.65) and Q32 options b and d; the day sheet's "Comes later"; half two S8.
+- **What is wrong:**
+  - Friday teaches the share live only in fallback S10 to S13, which run only if W4-4 does not.
+  - If the faculty block runs, the share appears only in notebook 07 cells 15 to 19 and the transcripts' glossary. Neither the lab note nor the take-home assigns them.
+- **In the room:** the trainer parks the question on S8, as the notes instruct, and the room then sits a Hard Saturday item on a rule it never saw taught.
+
+**Finding 15 (minor). The row's two mid-session checks have no 15-minute slot.**
+- **What is wrong:** the row asks for two 15-minute mid-session checks. The three-series item sits only in practice set Q1, late in the lab. The three model pairs are c4 Q2, cued "aloud" for about 3 minutes at S34 or half two S8, while the c4 header and the day sheet put that item in the lab.
+- **In the room:** no 15-minute slot exists, and the day sheet does not say where these checks went.
+
+**Finding 16 (minor). The [D] interview question is asked live only in the fallback.**
+- **What is wrong:** [D] appears live only on fallback S17 and in transcript 2. The notes' interview table lists only [S], [F] and [F]. The day sheet says "the lab's interview room drills it", while the lab note's pairs ask only [S] and one follow-up. D1's title also drops the [S] tag.
+- **In the room:** if the faculty block runs, the room does not hear [D] on Friday.
+
+**Finding 17 (minor). A row resource is missing and the sources file claims a video that is not there.**
+- **What is wrong:** the row's Khan Academy trainer resource appears nowhere in the pack. No file carries a video link, although internal/C2_W04_D05_sources_INTERNAL.md says the notes carry IBM Technology's video. FPP3 5.2 and 5.8 are cited, with check dates.
+- **In the room:** a trainer looking for the row's resource or a video for the topic finds neither.
+
+**Finding 18 (minor). "Stop before any fitted model" sits beside chapter 4's fitted line.**
+- **What is wrong:** the day sheet's "Stop before" repeats the row's "any fitted model". Chapter 4 fits a least-squares line and an exact cubic (S31, S32, notebook 04 cell 4). The plan allows this curve, but the day sheet does not say so.
+- **In the room:** a learner asks "isn't that a fitted model?" and the trainer has nothing in the day sheet to answer with.
+
+---
+
+### Part 4: what would a trainer stumble on live?
+
+Every vote slide has its answer slide: S7, S15, S23, S31, S41, S43, S51, S53 and S55; half two S3; fallback S3, S8 and S10. Every transition names the next slide. Half two S15's "the handoff" skips the D slides on purpose. The pictures match their words except at S19.
+
+**Finding 19 (major). The good-enough call at Flipkart breaks chapter 4's rule.**
+- **Where:** half two S8; S34 and S36 rule 3; c4 solution Q2; notebook 04 cell 15.
+- **What is wrong:**
+  - Chapter 4 teaches the rule: stop improving when a better forecast would order the same.
+  - S8 shows that a forecast 100 shipments better moves a shift in 7 of the 8 weeks, then calls festival-aligned good enough anyway, using an unstated bar of "more than a shift a week".
+  - S8's own notes have the trainer ask c4 Q2. Its key says a 31-shipment gain "changes no shift booked", but by S8's own arithmetic it moves a shift in 2 of the 8 weeks (the weeks of 2 and 16 November).
+  - Notebook 04 cell 15 says a gain of 100 "gains less than one shift".
+- **In the room:** a learner points out that the slide breaks the rule just taught, and the trainer has no derivation to answer with.
+
+**Finding 20 (minor). S19 says 70 where its picture says 71.**
+- **What is wrong:** S19 says the copy leaves the stall "70 cups short". Its picture's panel title says "worst miss 71 cups", and the day sheet says "71 against 13". The notes write "40 cups on a day that sold 110, a worst miss of 71", but that day's miss is 70; the 71 falls on 1 November. The slide's sentence also attaches "when 44 sold" and "when 110 sold" to the 2024 source days, although both are 2025's sales.
+- **In the room:** the trainer reads 70 while the chart shows 71.
+
+**Finding 21 (minor). S9's notes argue against an answer that S12 then marks correct.**
+- **What is wrong:** S9's notes have the trainer argue that a week apart cannot show growth. S12's c1 key (d) and Kahoot Q8 then accept "the same day a week back" as a growth reading.
+- **In the room:** the trainer argues against an answer and minutes later marks it correct.
+
+**Finding 22 (minor). S10 names a product but gives an additive remainder.**
+- **What is wrong:** S10 names "trend times its seasons times a remainder", then gives the remainder as "about 4.7 cups either way", which is additive. The notes, the cheat sheet and explorer scene F1 show a sum.
+- **In the room:** a learner asks how a product can leave a remainder in cups.
+
+**Finding 23 (minor). S27 asks for a prediction with the answer on screen.**
+- **What is wrong:** S27's notes say "Predict before revealing the costs", but the slide body and the picture's panel titles already print Rs 120 and Rs 180.
+- **In the room:** the prediction is spent the moment the slide appears.
+
+**Finding 24 (minor). S43 plans a reveal that S42 has already given.**
+- **What is wrong:** S43's notes hold 308,900 "until the vote", but S42 prints 308,900 and so do the twelve printed rows.
+- **In the room:** the planned reveal cannot happen.
+
+**Finding 25 (minor). S44 and the fallback use growth measured after the weeks they forecast.**
+- **What is wrong:** S44 and fallback S7 to S9 forecast October 2025 with a 4 percent growth measured on weeks up to June 2026. That is the look-ahead chapter 3 (S24) forbids. Only half two S5 and notebook 07 cell 3 admit it.
+- **In the room:** a learner who has just learned chapter 3's rule asks how October 2025 could know 2026's growth.
+
+**Finding 26 (minor). S5 and S39 compare a late shipment with an idle shift.**
+- **What is wrong:** both slides say "a late shipment costs more than an idle shift", yet S39 itself prices a late shipment at Rs 25 and an idle shift at Rs 650. The comparison that holds is Rs 25 against Rs 5.42 a shipment.
+- **In the room:** reading the caveat next to the costs invites "Rs 25 is less than Rs 650".
+
+**Finding 27 (minor). S33's code gives a different number from the slide.**
+- **What is wrong:** S33's code slices `cups[:7]`, but S11 and S17 bound `cups` to the full 730-day series. Typed as shown, it averages 30 September to 6 October 2024: 93.7, not 97.6.
+- **In the room:** a learner typing along gets a different number from the slide.
+
+---
+
+### Coverage table
+
+| Subtopic (verbatim) | Chapter | Slides | Notebook | Exercise items | Kahoot | Notes section |
+|---|---|---|---|---|---|---|
+| Trend and seasonality, read before modelling | SECTION 1; applied in SECTION 5 and half two S6 | half one S6 to S13; applied S41, S42, S45, S46 | 01_trend_and_seasonality; applied in 05 | c1 Q1 to Q3; staffing note Q4; practice Q1 | Q8 | Trend and seasonality, read before modelling: what does a series tell you before any rule is chosen? |
+| Naive, seasonal naive and drift baselines | SECTION 2; applied in SECTION 5 and 6 | S14 to S21; applied S43, S44, S51, S52 | 02_naive_seasonal_naive_drift; applied in 05, 06 | c2 Q1 to Q3; guided Q1, Q3; practice Q2, Q5 | Q1 | Naive, seasonal naive and drift baselines: what does each copy, and when does the copy fail? |
+| Holding out; MAE and MAPE in the business's units | SECTION 3; applied in SECTION 6 and 7 | S22 to S29; applied S50 to S58, half two S5, S7 | 03_holdout_mae_mape; applied in 06 | c3 Q1 to Q4; guided Q2; scoreboard Q1, Q2; Kalpa board Q1; practice Q3, Q6 | Q2, Q5, Q7 | Holding out; MAE and MAPE in the business's units: how is a forecast scored honestly? |
+| Beating the baseline; the vendor curve tested | SECTION 4, first half (shared); applied in SECTION 6 | S30 to S33; applied S53, S54, S57 | 04_beating_the_baseline_good_enough, cells 3 to 6; applied in 06 cells 10 to 12 | c4 Q1, Q2; scoreboard Q3; Kalpa board Q2; practice Q4 | Q3 | Beating the baseline; the vendor curve tested: why is a close fit no proof? |
+| The good-enough call and the forecast note | SECTION 4, second half (shared); applied in SECTION 7 | S34 to S37; applied half two S8, S11 to S15 | 04, cells 7 to 13; applied in 07 cells 11 to 13 and 08 cell 12 | c4 Q2, Q3; staffing note Q1 to Q3 and the note; Kalpa board Q3 | Q4 | The good-enough call and the forecast note: when do you stop improving, and what do you send? |
+
+### Count by severity
+
+- **Stop:** 0. No subtopic is NOT FOUND, and no file prevents a block from running.
+- **Major:** 10 (findings 2, 3, 4, 5, 6, 7, 8, 13, 14 and 19).
+- **Minor:** 17 (findings 1, 9, 10, 11, 12, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26 and 27).
+
+---
+
+## What did the rebuild's fix pass change for each finding?
+
+One pass answered all three reads. A finding marked "left" has its reason in
+`internal/C2_W04_D05_sources_INTERNAL.md`.
+
+### Read 3, the fresh graduate
+
+| Finding | What changed |
+|---|---|
+| 1 | S3 says chapter 4 tests the nephew's curve at the stall (invented) first and the vendor's curve in chapter 6 |
+| 2 | S5's "Before and after" gives the latest week, 232,200, and 2025's busiest, 418,200 |
+| 3 | "A season apart" is explicit: a week apart shows a week's change, a year apart the year's growth (S6, S9's title, body and notes, S12 rule 3, notebook 01 cells 4, 5, 13 and 15, the notes, cheat sheet panel 2) |
+| 4 | The remainder: S10, notebook 01 cells 8 and 9, the notes and the cheat sheet give the sum and the product, and call 4.7 cups the typical size, the standard deviation, of a yearly copy's misses |
+| 5 | S13 names the August sale in place of a first-of-month season the data do not show |
+| 6 | The tournament and the house bot are defined at first use (S14, notebook 02 cells 0 and 14, notebook 05 cell 4, the notes) |
+| 7 | Drift takes the four days as the whole history (S16, S17, notebook 02 cell 2, the notes, the board work) |
+| 8 | S17's code names `last_sunday`; S33's names `march` |
+| 9 | S18 and notebook 02 cell 4 say naive is re-run daily, a one-step forecast chapter 3 will not accept as a hold-out score |
+| 10 | Festival-aligned at the stall adds no growth, said in S19, notebook 02 cell 8 and the notes; at Flipkart it adds growth only where the data can measure it |
+| 11 | S23 to S25 date the fortnight, 1 to 14 February 2025 |
+| 12 | S26 says "an ordinary day" |
+| 13 | The tags are defined at first use (S28, S36, notebook 04 cell 13, the notes, cheat sheet panel 7, the transcripts) |
+| 14 | Left |
+| 15 | S29 counts the horizon from the last week of data and shows Rs 650 / 120 |
+| 16 | The line's slope and start: 97 + 2.4 x 5 = 109 (S31, S32, notebook 04 cell 4, the notes) |
+| 17 | The difference table's new row, 28, 46, 58 and 168 (S32 and its notes, notebook 04 cells 3 and 4, the notes) |
+| 18 | The fit picture's curve stops at day 5 with a marker on 168 |
+| 19 | The three-rules picture labels each marker |
+| 20 | S34 states the can rule, the forecast over 40 rounded up |
+| 21 | S35 names both lines the staffing note adds |
+| 22 | S37 introduces Anand Iyer as Kalpa's finance controller |
+| 23 | "Invented" on S6, S9, S11, S14, the SECTION 3 opener, S16, S18, S19, S22 to S25, S27, S30, S32 to S35 |
+| 24 | One stall line on S45, S52, S53, S56 and half two S4 |
+| 25 | Half two S7's notes show 6,615 x Rs 650 / 120 |
+| 26 | "The first six hidden weeks" and "the last six, the middle week aside" (notebook 06, S57, the chapter 6 solution) |
+| 27 | S48 defines M5's weighted scaled error from the paper's section 3.4; S59 glosses Naive 2 with the PLOS ONE paper's section 3.3 words; the notes define DoPT; fallback S5 writes FPP3 in full |
+| 28 | The case notebooks' first cells are rebuilt unindented, and the build script now refuses indented prose |
+| 29 | Notebook 03 answers the question after its your-turn cell |
+| 30 | The plan quantile, the rolling origin and "one origin is one draw" are defined at first use (notebook 06 cells 13 and 15, half two S8, D1, S16, cheat sheet panel 6) |
+| 31 | "Beyond the row" is glossed as beyond today's five topics; "the spine's addition" is gone from learner files |
+| 32 | The set is renamed `ch6_scoreboard`, with its solution, the index, the day sheet and the matrix |
+| 33 | The index defines analytics, product-company and GCC screens |
+| 34 | The c3 set says a kilogram short costs the mess more than one thrown away |
+| 35 | The guided set's item 1 runs beside S43 and S44; its items 2 and 3 and the chapter 6 set run in the lab (index, day sheet, lab note) |
+| 36 | The leak-free 10,575 leads everywhere; S44 and notebook 05 forecast Diwali 2025's week with no growth, 296,900, 12,000 low; the fallback's rolling origin is redone with no growth, 13,040 a week |
+| 37 | Good enough is priced: chapter 4's rule (S34, S36, notebook 04, notes, cheat sheet) and Flipkart's call (half two S8, notebook 07 cells 10 to 12, the c4 solution): a rule whose MAE is 100 lower saves Rs 542 to Rs 2,500 a week and earns a place only if it costs less |
+| 38 | "The fallback hour" is "the fallback session" in every file |
+| 39 | D2 defines MASE, WAPE and "wrote down"; notebook 06 prints the MAPE column, 3.05 to 6.82 percent |
+| 40 | D3 defines token, latency, headroom, GPU and rate limits |
+| 41 | D4 states the replacement range, 6 to 10 years |
+| 42 | The transcripts' vocabulary adds bias as the lean |
+| 43 | Notebook 07's depth section prints the own-0.82 costs and 12,819, 291,183 and 3,082 |
+| 44 | Notebook 08's your-turn cells carry checks that confirm the setup without printing a plant; expected values left out |
+| 45 | The Kalpa set prints the two months to two places |
+| 46 | "Noise" and "overfitted" become "wobble" (practice Q1 and its solution, Kahoot Q3, fallback S8, the c1 solution) |
+| 47 | The notes separate the 30 October miss, 70, from the window's worst, 71 |
+| 48 | The maps label chapters, with chapter 4's second half named (notes, cheat sheet, board work, day sheet) |
+| 49 | Cheat sheet panel 2 reads "at the same point" |
+| 50 | The c2 solution says "when the festival came about a week earlier" |
+| 51 | The model note's title names the forecast, each fact carries its check, and the solution adds the item worth arguing about |
+| 52 | Fallback S2 says naive and drift move most and the copies of last year least |
+| 53 | "Invented" at each unit listed: notebooks 01, 03, 04, 05, 06 and 07, cheat sheet panels 4 and 5, the c1 to c4 items, the c4 solution |
+| 54 | The three deck titles are questions; transcript 1's heading ends on its question |
+
+### Read 4, the hiring interviewer
+
+| Finding | What changed |
+|---|---|
+| 1 | The scorecard quotes only lines the answers say: transcript 1 now says the priced typical miss and the 4.6; the [S] paradox line names the 4 percent as the gap; transcript 2 opens on a roadmap |
+| 2 | Transcript 1's structure follows the order it is spoken in, and its beyond-the-row line leaves the [S] answer; its length otherwise left |
+| 3 | Little's law named; the AI variant makes the staged rollout its hold-out, with each driver back-tested on the existing product's logs, and its scorecard row quotes that line; notebook 07's AI unit is requests and tokens; the notes' AI line no longer says the days hidden match the plan; headroom sizing and the households-or-vehicles route left |
+| 4 | As Read 3's 36 |
+| 5 | The error bar is a typical miss and a range (S40, half two S7, notebook 07 cell 9, notes, cheat sheet, the staffing note and its solution, the transcripts' follow-ups); the Kalpa key calls its Rs 21 lakh a scenario |
+| 6 | Step 4 and the overtime arithmetic are labelled beyond the row; half two S7 and S8 give the in-row reply, above the forecast, sized beyond the row |
+| 7 | As Read 3's 37 |
+| 8 | The cost-range check is printed in notebook 06 and said on S56, in the notes, cheat sheet, chapter 6 solution and transcripts: at Rs 15 festival-aligned costs Rs 9.0 lakh against the vendor's Rs 11.7 lakh, and the vendor is cheaper in 5 of 9 pairings |
+| 9 | MAPE's pull toward low forecasts is said on S26, in the notes, the cheat sheet and transcript 1's follow-up; the c3 solution names WAPE |
+| 10 | Drift's history, the seasonal naive's "h up to m", "ideally" in the test-length quote, the curve's docstring |
+| 11 | The sign convention is stated in the notes and cheat sheet panel 4 |
+| 12 | The 364-day copy's drift against dates is said (S11's notes, notebook 02 cell 6); FPP3's dummy variable for a moving holiday is cited from section 7.4, checked 13 October 2026 |
+| 13 | As Read 3's 27 |
+| 14 | The remainder wording says the 4.7 holds two years' remainder |
+| 15 | The vocabulary gives the Rs 30.42 scale and FPP3's doubling (section 5.9, checked 13 October 2026); the 4.1 percent reading gives way to the cost curve's 2.7 (notebook 07, transcripts, scorecards) |
+| 16 | S6 is "Plus 22 and plus 4, read against two windows" |
+| 17 | The bar to beat joins the second criterion; the typical answer's copy of last year is named its best idea; the weak answer's red flag is named; seven criteria kept |
+| 18 | c4 Q2 sets the bar at festival-aligned's 6,615 and retests team C; the solution is rewritten |
+| 19 | c4 Q1's key orders on naive's 110 until a rule beats it on unseen days |
+| 20 | The chapter 6 solution calls it the one-week-ahead naive and names the horizon mismatch |
+| 21 | Transcript 1 adds five deeper follow-ups with answers; true demand, within-week peaks and many centres left |
+| 22 | The [F] baseline question is answered in full (transcripts, notes, cheat sheet, S36, notebook 04, day sheet) |
+| 23 | The [F] vendor question is answered in three moves in the same places |
+| 24 | [D] has an in-row answer in the notes; the lab's second round asks it; the day sheet's claim is corrected |
+
+### Read 5, the trainer
+
+| Finding | What changed |
+|---|---|
+| 1 | Left |
+| 2 | The spoken question matches S3; the card's text and picture show the bot's busiest week, 5 October, and outline the rush, 19 October |
+| 3 | The role-play runs on half two S14, 4 minutes, one exchange each; S12 drops to 8 minutes; cards, tournament and day sheet agree |
+| 4 | As Read 3's 35 |
+| 5 | Notebook 06 cell 13 reads the vendor itself; groups' lines go inside cell 5, and cell 13 runs after S54 |
+| 6 | The cut list prices each cut and adds the row's order, drift then MAPE, keeping MAE; S17, S26, S47 and S58 carry the cue |
+| 7 | Notebook 08 no longer states the month or the swap, and blanks both the 12 and the month list |
+| 8 | As Read 3's 28 |
+| 9 | The day sheet gives the explorer's path and each scene's slides |
+| 10 | The concept sets run from item 2 to the end in the lab |
+| 11 | Card 2 says 91 weeks |
+| 12 | The fallback note says S2's chart and the ten-week horizon; S12's notes now agree with notebook 07 and the scorecards |
+| 13 | The day sheet briefs the faculty member; the faculty source is outside this folder |
+| 14 | The lab note points finished groups to notebook 07's depth section when the block runs; Saturday's paper is outside this folder |
+| 15 | The day sheet says where the row's two mid-session checks run |
+| 16 | D1 carries [S]; the notes add [D]; the lab asks [D] |
+| 17 | The day sheet lists the row's trainer resources with dates; the notes restore the video, checked 13 October 2026 |
+| 18 | The day sheet's "stop before" explains chapter 4's fitted line and curve |
+| 19 | As Read 3's 37 |
+| 20 | S19 separates the 30 October miss, 70, from the window's worst, 71, and puts 44 and 110 on 2025's days |
+| 21 | S9's notes call a week apart a fair season-apart reading that shows no visible change |
+| 22 | As Read 3's 4 |
+| 23 | The prediction moves to the end of S26's notes |
+| 24 | S43's notes no longer hold 308,900 back |
+| 25 | As Read 3's 36 |
+| 26 | S5 and S39 compare Rs 25 with Rs 5.42 a shipment |
+| 27 | As Read 3's 8 |
