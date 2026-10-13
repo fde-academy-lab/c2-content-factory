@@ -27,9 +27,11 @@ pipeline, palette and reference deck named further down this file:
   day's deck carries.
 - A day's decks run in two halves of chapters, each opened by `## SECTION n:`
   and paired one to one with a notebook of the same number and title. The
-  concept chapters come first, one per row subtopic, the title carrying the
-  subtopic as the row words it, each built on a simple relatable educational
-  example in the order teaching-styles.md gives for a concept chapter; then
+  concept chapters come first, one per row subtopic, each opener written
+  `## SECTION n: <subtopic>: <short question>?` with the subtopic as the row
+  words it and a short question the pills print, each built on a simple
+  relatable educational example in the order teaching-styles.md gives for a
+  concept chapter; then
   the case chapters, each naming the subtopics it applies, whose slides run
   the need and who asks, the options with their sizing and the best-fit call,
   the thinking as a picture, the build, the plausible wrong answer and why it

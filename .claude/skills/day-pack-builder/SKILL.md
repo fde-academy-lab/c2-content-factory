@@ -53,8 +53,9 @@ every chapter the order is the same: the problem on the example or the data, the
 any tool, and the technique built because the question needs it.
 
 In the pack that means: the cover names the topic, slide two is the week map, slide three the topics
-slide, slide four the concept map, slide five the ticket; each concept chapter's opener carries its subtopic as the row words it and
-its notebook carries the same name; each case chapter's opener names the subtopics it applies; the
+slide, slide four the concept map, slide five the ticket; each concept chapter's opener is written
+`## SECTION n: <subtopic>: <short question>?` with the subtopic as the row words it, and its notebook
+carries the same name; each case chapter's opener names the subtopics it applies; the
 exercises carry at least one item per subtopic and the Kahoot at least one; the trainer's day sheet
 prints the coverage matrix as its topic table; and the close is the sentence the learner would send
 the client, with the topics it used named beside it. Weeks 1 to 3 opened on a stakeholder's words

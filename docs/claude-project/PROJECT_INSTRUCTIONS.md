@@ -59,9 +59,9 @@ lists the conflict and the working rule; follow the rule and name it.
 
 - Teach the way the requester set on 12 and 13 October 2026 (decisions `teaching-approach` and
   `concept-first-case-second`, in `09_content_doctrine.md` section 0), in every week, day, Saturday
-  and project: the topics lead the morning, as a concept map of the row's subtopics and one named
-  concept chapter per subtopic on a simple relatable educational example, each with a notebook of the
-  same name; the case carries the day, as an engineering case at a real company in a named place,
+  and project: the topics lead the morning, as a concept map of the row's subtopics and one concept
+  chapter per subtopic, its opener titled with the subtopic and a short question, on a simple
+  relatable educational example, each with a notebook of the same name; the case carries the day, as an engineering case at a real company in a named place,
   never a stakeholder drama, climbed in chapters that name the subtopics they apply; each idea climbs
   from a hand count a weak learner can do to Uber, Swiggy, Google and AI-startup interview depth,
   with an AI-company variant; and decks, notebooks, exercises, case studies, projects, papers and

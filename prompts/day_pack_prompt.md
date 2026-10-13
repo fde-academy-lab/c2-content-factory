@@ -51,7 +51,7 @@ week's approved spine: then that spine is gate 2, and you state the envelope and
    stop: the orchestrating session reviews the pack, opens its pull request and merges it. A day session
    never opens, merges or closes a pull request.
 
-Binding rules: the deck opens on the day's topic, the week map, the topics slide and the concept map that name every row subtopic verbatim, and the case ticket as the destination, and none of the five is cut; every concept chapter and its notebook carry the subtopic's name and `scripts/coverage_check.py` passes; the thinking is drawn before any tool opens; mental model first and spiral always; at most four new
+Binding rules: the deck opens on the day's topic, the week map, the topics slide and the concept map that name every row subtopic verbatim, and the case ticket as the destination, and none of the five is cut; every concept chapter's opener reads `## SECTION n: <subtopic>: <short question>?` and its notebook carries the subtopic's name, and `scripts/coverage_check.py` passes; the thinking is drawn before any tool opens; mental model first and spiral always; at most four new
 ideas per two-hour block; application before theory; every chapter's trap a plausible wrong number
 with its business consequence, never a syntax error; every technique the answer to a stated problem,
 with its options, a sizing, the best-fit call and a second route; the domain's story on its first day,

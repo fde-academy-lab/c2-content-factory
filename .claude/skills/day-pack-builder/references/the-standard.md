@@ -33,8 +33,9 @@ built before it and keep their shape until they are rebuilt.
    order unless the week's spine records a reason to teach them in another. Slide five is the case
    ticket in one slide, as the destination the topics will be used on.
    Then the concept block: one chapter per subtopic, about 8 to 25 minutes each and 60 to 120 minutes
-   in all, each `## SECTION n:` title carrying the subtopic as the row words it and its italic promise
-   asking the chapter's question. A concept chapter teaches from zero on one simple, complete,
+   in all, each opener written `## SECTION n: <subtopic>: <short question>?`, with the subtopic as
+   the row words it, a short question of about 24 characters that the pills print, and an italic
+   promise saying what the chapter delivers. A concept chapter teaches from zero on one simple, complete,
    relatable educational example with invented numbers labelled invented (a canteen that pays per
    token, ten tea-stall orders, two coaching batches, four days of cups), in this order: the broken
    default or the misconception with a prediction, the hand count on the tiny numbers, the picture
@@ -245,7 +246,7 @@ through four to six smaller questions, each answered with a number before the ne
 | Level | The question | Where it is asked | Where it is answered |
 |---|---|---|---|
 | The day | The stakeholder's ask, as one question | The morning deck's cover, the day sheet's first line, the notes' title | The afternoon deck's close and the notes' last section |
-| A chapter | The chapter's topic in the `## SECTION n:` title and its pill (for a concept chapter, the row's subtopic as the row words it, about 48 characters at most so the pill prints, which `deck_check.py` measures; for a case chapter, the case step), with the question the previous answer raised as the italic promise in full | The `## SECTION n:` opener, the notebook's file name and first heading (`# Topic: question?`), the notes' chapter heading, the scenario set's title | The chapter's answer slide, the notebook's last markdown cell, the chapter's last paragraph in the notes |
+| A chapter | The `## SECTION n:` title written `<topic>: <short question>?`: the topic first (for a concept chapter, the row's subtopic as the row words it, which the coverage gate reads; for a case chapter, the case step with the subtopics it applies), then a short question that starts lower-case and runs to about 24 characters, since the pills, the footers and the cover's chapter strip print it (`deck_check.py` measures the built pill); the italic promise beneath says what the chapter delivers or asks the question the previous answer raised in full | The `## SECTION n:` opener, the notebook's file name and first heading (`# Topic: question?`), the notes' chapter heading, the scenario set's title | The chapter's answer slide, the notebook's last markdown cell, the chapter's last paragraph in the notes |
 | A step | One of the chapter's smaller questions: the decision at stake, the options and their sizes, each build step, the trap, the second route, the review | A body slide's italic subtitle, a notebook heading, a notes subheading, an exercise part heading, a board drawing's heading | The slide's action title, the notebook's **What happened.** cell, the paragraph under the subheading |
 
 A heading passes when it:
@@ -257,12 +258,14 @@ A heading passes when it:
 - uses no term the file has not yet explained, since a formal name arrives after the problem that
   needs it.
 
-A chapter opener is the one heading that carries a topic rather than a question, because its italic
-promise carries the question: the title is the learner's recall handle ("Leading against lagging
-indicators") and the promise is the chapter's question ("Which of the city's numbers moves before the
-north star, and which only confirms it later?"). The day's concept map slide prints every concept
-chapter's title, so a learner who reads only the map and the openers sees the day's topics in the
-row's order, and a learner who reads the promises sees the day's argument.
+A chapter opener is the one heading that leads with a topic. It is written
+`## SECTION n: <topic>: <short question>?`, so the topic is the learner's recall handle ("Leading
+against lagging indicators"), the short question is what the pills and footers print ("which one
+moves first?"), and the italic promise beneath says what the chapter delivers or asks the fuller
+question ("Which of the city's numbers moves before the north star, and which only confirms it
+later?"). A topic that has a colon of its own splits at the last colon. The day's concept map slide prints every concept chapter's
+topic, so a learner who reads only the map and the openers sees the day's topics in the row's order,
+and a learner who reads the short questions and the promises sees the day's argument.
 
 Under every chapter heading, and under a notes or dossier section heading, two short paragraphs
 follow. **Who needs the answer.** names the person, the decision the answer feeds and what a wrong
@@ -300,11 +303,12 @@ reading `scripts/brand.py`. `half1` is the morning deck and `half2` the afternoo
 - The morning deck opens on a cover that names the day's topic (the row's Day focus) and asks the
   day's question, then the week map with today lit, then the topics slide and the concept map (a
   mermaid map of every subtopic in the row's order, today's nodes lit, each node's text the subtopic
-  as the row words it), then the case ticket in one slide as the destination. Then comes one chapter per notebook: the
-  concept chapters, each opened by `## SECTION n:` whose title is the subtopic as the row words it
-  and whose italic promise is the chapter's question; then the case chapters, each opened by
-  `## SECTION n:` whose title is the case step and whose promise is the question with the decision
-  riding on it, its number and title matching the notebook's. The slide after each opener is the
+  as the row words it), then the case ticket in one slide as the destination. Then comes one chapter
+  per notebook: the concept chapters, each opened by `## SECTION n: <subtopic>: <short question>?`
+  with the subtopic as the row words it and an italic promise saying what the chapter delivers; then
+  the case chapters, each opened the same way with the case step and the subtopics it applies as its
+  topic and the decision riding on it in the promise, its number and title matching the notebook's.
+  The slide after each opener is the
   chapter's map: the subtopic verbatim, **Who needs the answer.** in a sentence, the chapter's smaller
   questions as a `timeline`, and, on a case chapter, the line "Applies: ..." naming the concept
   chapters it uses. In Weeks 1 to 3 the cover quotes the client (`Quote:` and `Who:`) and the chapter
