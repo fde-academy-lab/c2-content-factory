@@ -354,5 +354,5 @@ LIVE, 6 minutes. Read the sentence; it is the blanked sentence from the morning,
 strip: ask the room for the city's number on each of the six topics before reading its line. The
 pre-read for Tuesday ships tonight. Next comes the IITGN faculty block (tentative), or the metric
 clinic in its place; the TA lab then runs the same method on Kalpa Retail.
-Transition: the faculty block.
+Transition: the tentative faculty block, or the metric clinic in its place.
 ```

@@ -2,7 +2,8 @@
 
 **INTERNAL.** Two separate agents read the pack cold on 12 October 2026 and wrote findings only;
 neither edited a file. A third ran the rebuilt Kalpa lab cold as the TA on 13 October 2026, and its
-report and fix log are the last section. Their reports are kept below as they returned them, except that one ", but"
+report and fix log follow theirs. Three more read the concept-first rebuild cold the same day, and
+their reports and fix log are the last section. Their reports are kept below as they returned them, except that one ", but"
 in the first read's finding 89 is set as a semicolon so the style gate reads it. What changed for
 each finding, or the one-line reason it did not, is in the fix log at the end and in the sources
 list (`internal/C2_W04_D01_day_sources_INTERNAL.md`).
@@ -862,3 +863,505 @@ your-turn cell finds.
 | 26 | The solution's numerator line says a returned order was still delivered and counts, and the return-rate guardrail reads it. |
 | 27 | The lab note folds the lead-and-lag drill into the lab set as its problem 2, so no room sits it twice. |
 | 28 | The lab set's opening sentence says who needs the answer and why. |
+
+
+## The concept-first rebuild's cold reads, 13 October 2026
+
+Three fresh agents read the rebuilt pack cold on 13 October 2026 and wrote findings only; none edited
+a file. The trainer who did not write the day read with the curriculum row open and named where each
+subtopic is taught (T1 to T32); the fresh graduate read the STUDENT files (G1 to G54); the hiring
+interviewer scored the interview material and re-read every cited source (I1 to I31). Their reports
+follow as they returned them, with two changes of form: the trainer's level-two headings are set at
+level four so they sit under this section, and one ", but" in the graduate's G7 is set as a
+semicolon so the style gate reads it. The trainer's table has no "not found" cell, so no subtopic
+stopped the build. Slide numbers are the rebuilt pack's, S1 to S84 in the morning deck and S85 to
+S98 in the afternoon deck, and the fix log after the three reports gives each finding's outcome.
+
+### The trainer's read
+
+I've read the row and every file in the brief. One subtopic table follows, then 32 findings: T1 to T4 for (b), T5 to T24 for (c) and T25 to T32 for (d). The pack was being edited while I read it. The half1 markdown, the coverage matrix, the sources page, the day sheet, notebook 02 and four solution files were rewritten between 12:16 and 12:26 UTC, so I re-checked every finding against the files as they stood at 12:33 UTC. I edited nothing and did not run git.
+
+#### (a) Where each subtopic is taught
+
+| # | Subtopic, in the row's words | Slides | Notebook | Exercise items | Kahoot |
+|---|---|---|---|---|---|
+| 1 | What to measure and why; the proxy test | half1 SECTION 1 and S6 to S13 (instinct round S7 to S8, rule S10, Wells Fargo S13); applied S58 to S59, S62 to S63; recalled S91, S98 | 01 `C2_W04_D01_01_proxy_test_STUDENT.ipynb`; applied in 07 | Proxy test set Q1 (asked aloud at S12), Q2, Q3; lab set Q5 | Q5 |
+| 2 | North-star and guardrail metrics | SECTION 2 and S14 to S21 (rule S17); applied S75 to S76, S80 to S81, S84, S88 to S89 | 02 `..._02_north_star_guardrails_STUDENT.ipynb`; applied in 09 | North star set Q1 to Q3; guided Q4; redesign Q3; lead and lag Q3; lab set Q2, Q3; Kalpa set Q3 | Q1 |
+| 3 | Leading against lagging indicators | SECTION 3 and S22 to S29 (rule S25, case data S28); applied S80 | 03 `..._03_leading_lagging_STUDENT.ipynb`; 09's "Which number moved first?" | Leading and lagging set Q1 to Q3; lead and lag Q1, Q2; lab set Q4; Kalpa set Q4 | Q2 |
+| 4 | Definitions: numerator, denominator, window, exclusions | SECTION 4 and S30 to S37 (rule S33); applied S60 to S62, S68 to S70, S81 lines 1 to 4 | 04 `..._04_numerator_denominator_window_exclusions_STUDENT.ipynb`; applied in 07, 08 | Four lines set Q1 to Q3; guided Q1 to Q3; Kalpa set Q2, Q5; lab set Q1 | Q4, Q6 (Q8 rests on it) |
+| 5 | Gaming, and definitions that resist it | SECTION 5 and S38 to S45 (rule S41, four ways S42); applied S59, S71 to S72, S76, S81, S85 to S90 | 05 `..._05_gaming_resistant_definitions_STUDENT.ipynb`; applied in 08, 09 | Gaming set Q1 to Q3; redesign Q1, Q2, Q4 | Q3 |
+| 6 | The metric definition artifact | SECTION 6 and S46 to S53 (rule S50); applied S56, S81, S86, S98 | 06 `..._06_metric_definition_artifact_STUDENT.ipynb`; applied in 09 | Artifact set Q1 to Q3; Kalpa set Q1 and its template | Q7 |
+
+No cell is "not found". The table matches the coverage matrix and the day sheet's first table cell for cell. Two items are filed loosely:
+- **Kalpa set Q1** asks only for the numerator, which is a topic 4 line, yet it is the artifact topic's only item outside its own set.
+- **Redesign Q1** asks for 61 percent of Rs 1.9 crore. S79 and the redesign file's own facts table already state that number.
+
+#### (b) Can S3, S4 and the SECTION headings carry the day alone?
+
+Only partly. Together they give the six subtopics verbatim and in order, each concept chapter's minutes and notebook number, and (from the case headings, not from the map) the topics each case chapter applies. They do not give the shape of the day, and the map misleads about the case.
+
+**T1. half1 S3 (lines 81 to 101) hides the day's timing.**
+- **What I found:** The case is one row, "7 to 11 | 140 minutes | 07 to 09". The slide does not show:
+  - the 7-minute opening;
+  - the 10-minute break after S53;
+  - the lunch between chapters 9 and 10;
+  - the 20 minutes of Kahoot, handoff and close (S96 to S98);
+  - the tentative 120-minute faculty block;
+  - which case notebook goes with which chapter (chapters 10 and 11 have none, and nothing on the slide says why the lab notebook is 12).
+- Only S3's speaker note says chapters 10 and 11 run after lunch. Yet S84's note says "the afternoon's running order is on the topics slide, S3", and the day sheet (line 130) says "old S37 cut, since the topics slide carries the afternoon's order".
+- **What a trainer would do wrong:** run chapters 7 to 11 back to back. That is 7 + 63 + 10 + 140 = 220 minutes in a 180-minute morning, and the faculty handoff arrives with no time left for the Kahoot or the close.
+
+**T2. half1 S4 (lines 105 to 149) misleads about the case.** The same map is in the day sheet (lines 82 to 111) and the board work (lines 24 to 51).
+- **What I found:**
+  - The single node "Applied to: Uber, Hyderabad, chapters 7 to 11" hangs off chapter 6 alone. The map never says which case chapter applies which topic (per the matrix: 7 applies 1 and 4; 8 applies 4 and 5; 9 applies 2, 3, 5 and 6; 10 applies 5 and 6; 11 applies all).
+  - Chapter 6 gets arrows only from chapters 3 and 5. S46 says its last three lines come from chapters 2 and 5, and S21 (line 514) draws chapter 2 to chapter 6.
+  - The Uber node carries the amber `kalpa` style (`class U kalpa`, line 136), which is the colour S2 gives Kalpa's nodes (line 68).
+  - All six boxes are lit from the start, although S4's note and the board work (line 21) say each chapter lights its own box when it closes.
+- **What a trainer would do wrong:**
+  - teach the case as the use of chapter 6 only, and drop the recalls by name that carry it: S59's chapter 1 test on hours, S68 to S70's chapter 4 ratio of sums, S80's chapter 2 seesaw and chapter 3 inputs;
+  - call the amber case box Kalpa;
+  - draw a fully lit map, so the progress cue never happens.
+
+**T3. The SECTION headings miss parts of the day.** (half1 lines 176, 356, 532, 694, 872, 1039, 1215, 1492, 1728; half2 lines 9, 153.)
+- **What I found:**
+  - The six concept headings carry the row's subtopics verbatim.
+  - SECTION 9's title, "The redesign's north star, guardrails, leading inputs and seven-line page", leaves out gaming. S74's Applies line, the day sheet (line 70) and the matrix all give it gaming.
+  - No heading marks the opening (S1 to S5), the break, round 1 (S58), the guided definition (S81, 11 minutes), or the Kahoot, handoff and close. Those three slides sit under SECTION 11 with no heading.
+  - No heading carries minutes.
+- **What a trainer would do wrong:** budget SECTION 11 at its 15 minutes and lose the 20 minutes of S96 to S98, including the handoff line that must be read word for word. They would also teach chapter 9 without naming the gaming lines it applies.
+
+**T4. None of the three mentions the row's own scenario.**
+- **What I found:** S3, S4 and the headings never name Meera's growth plan, Marketing's orders per month, Operations' app sessions or Retail-Plus's reorders per member. Nor do they say the scenario moved to the TA lab; only S1's speaker note says so (lines 21 to 26). They also do not place the instinct round (S7), the eight-metric drill (S27) or round 1 (S58).
+- **What a trainer would do wrong:** with the row open, look for the Kalpa fight in the morning, not find it, and either improvise it inside the case's minutes or treat S27 as just a slide of rules.
+
+#### (c) Where the trainer files, decks, board work, notebooks and matrix disagree
+
+**The trainer's minutes add up.**
+- **Morning:**
+  - opening 7 (1 + 1 + 2 + 2 + 1);
+  - chapter 1: 13;
+  - chapters 2 to 6: 10 each;
+  - break: 10 (S53);
+  - chapter 7: 32 (12 + 20);
+  - chapter 8: 30;
+  - chapter 9: 38.
+  - Total 180.
+- **Afternoon:**
+  - chapter 10: 25;
+  - chapter 11: 15;
+  - S96 to S98: 20 (12 + 2 + 6).
+  - Total 60.
+- Every SECTION note's internal split matches its slides, and the war game's round 1 (12) and round 3 (25) tables match.
+
+The disagreements:
+
+**T5. Concept-set Q1: how long it takes, and whether the key is given.** Day sheet lines 63 to 64 and 244; S12, S19, S27, S35, S44 and S52; exercise index line 132.
+- **What I found:**
+  - The day sheet says each chapter "closes on its set's Q1 ... (two minutes inside the chapter's time)". The deck asks Q1 on the rules slide, which is "LIVE, 1 minute" for the rules, the interview line and Q1 together, and the chapter then closes on its map slide.
+  - The index says "the trainer says the key and one reason". S12 says "take letters; its solution opens after the lab".
+  - The day sheet's fallback if most miss Q1 is to "redo the hand count ... before the code glimpse", but Q1 comes after the code glimpse.
+- **What a trainer would do wrong:** overrun six chapters by a minute each, or hold back the keys until the evening.
+
+**T6. The concept notebooks and notebook 07 get no time.** Day sheet lines 192 to 199; the SECTION 1 to 7 notes.
+- **What I found:** The sheet and the notes say "Notebook 0n runs beside the chapter", but every minute of chapters 1 to 7 is assigned to slides. Notebooks 01 to 06 each have an empty your-turn cell (cells 13, 11, 13, 9, 11 and 13). No slide, no line of the day sheet and nothing in the lab note schedules them. Notebook 07 is never called for after S62.
+- **What a trainer would do wrong:** skip the notebooks, or open them and overrun a 10-minute chapter.
+
+**T7. The board order differs from the deck.** Board work lines 20, 57 and 229, against the S5, S55 and S57 notes.
+- **What I found:**
+  - The board file puts the topic map up "first" and the week map "second"; the deck shows the week (S2) before the topics (S3, S4).
+  - S5's note has the trainer write "What makes a number safe to pay for?" and the headline "peak online hours up 24 percent" before chapter 1. S55 then returns to that headline "still on the board".
+  - The board file has no such drawing, and says the four-questions board is "drawn after the break (S57), empty but for its anchor".
+- **What a trainer would do wrong:** draw from the board file, never write the headline, and reach S55 and S57 with nothing on the board to point at.
+
+**T8. The war game's ordering is off.** War game lines 6, 64 and 92; role cards lines 9 to 10; S58 note (line 1354).
+- **What I found:**
+  - Round 2 is to be named "at the start of chapter 7", which is where round 1 runs.
+  - Both files say round 3 "closes the trainer's time", yet chapter 11 and S96 to S98 (35 minutes) follow it.
+  - The round 1 stall move, "Point at drivers E and F on the twelve rows", points at S60, which the room has not yet seen.
+- **What a trainer would do wrong:** announce round 2 before round 1, plan to finish after round 3, and spend the E and F reveal before the hand count that must never be cut.
+
+**T9. Notebook 08's order differs from chapter 8's.** Notebook 08 cells 2 to 8, against S65 to S68 and day sheet line 154.
+- **What I found:** The notebook computes the city totals first, then demand, then the twelve weeks. The deck asks about demand first (S65), shows the twelve weeks (S67), then "run the notebook's totals cell" (S68).
+- **What a trainer would do wrong:** run the notebook top to bottom and reveal the totals before S65's demand question, or scroll back past three cells at S68.
+
+**T10. Notebook 09 gives away the afternoon's answer.** Notebook 09 cells 4 to 6 and 8 to 10, against the S79 note, S90, guided exercise line 156 and redesign Q2.
+- **What I found:**
+  - The notebook prints the saving (Rs 92.7 lakh and Rs 58.0 lakh) right after the top-up split, in the morning. S79 holds the saving for round 3, where redesign Q2 asks groups to choose it.
+  - The guided exercise tells learners to "Run notebook 09 top to bottom".
+  - The notebook's "Which number moved first?" section belongs to S28 and has no slide in chapter 9.
+- **What a trainer would do wrong:** run notebook 09 in chapter 9 and hand the room round 3's key before lunch.
+
+**T11. S96 misdescribes the Kahoot's trap item.** S96 note (line 298) says "The trap item uses numbers other than today's". The Kahoot's Q3 (line 53) uses S72's idle-tail numbers, 2.1 times the hours and 12 percent fewer trips.
+- **What a trainer would do wrong:** introduce Q3 as new numbers and be corrected by the room.
+
+**T12. The finance role card attacks a different number from S87.** Role cards line 55, against S87 (line 79).
+- **What I found:** The card attacks "the fall in bookings per hour". S87 answers with trips per hour, 1.88 to 1.64. Bookings per online hour is a different series (Rs 271.0 to Rs 259.1, S28).
+- **What a trainer would do wrong:** a learner reading the card attacks one number and the trainer answers another.
+
+**T13. S98's rule is loose and its transition skips the faculty block.** S98 lines 324 and 340.
+- **What I found:**
+  - S98 says "a cancelled trip counting as declined". S90, the day sheet (line 164) and the redesign set say an accepted trip that the driver then cancels.
+  - The note ends "The TA lab now runs ... Transition: the lab", but the faculty block or the clinic runs next for 120 minutes (S97, day sheet line 211, lab note line 9).
+- **What a trainer would do wrong:** tell the room that a rider's cancellation counts against the driver, and send the room to the lab when the faculty block is next.
+
+**T14. The faculty block's brief and the handoff point at different companies.** Day sheet line 12 against the handoff line (day sheet line 23, S97).
+- **What I found:** The rendered faculty brief "CONNECTS TO KALPA: one initiative on the growth plan's tree". The handoff, read word for word, says "design that test on this city", meaning Uber. Kalpa's growth plan is first written in the TA lab, which runs after the block.
+- **What a trainer would do wrong:** point the faculty and the room at Uber while the faculty's brief expects a Kalpa plan the room has not built yet.
+
+**T15. The cut list removes something the rest of the day relies on.** Day sheet lines 176 and 195.
+- **What I found:** The second item to cut is S37's Delhi Metro line. Delhi Metro then carries S66 ("as Delhi Metro's riders and line uses were in chapter 4"), the "unit moves the number" pitfall on S73 and S84, board work lines 327 and 403, and cheat-sheet panel 2.
+- **What a trainer would do wrong:** cut it as told, then point at a pitfall the room never heard.
+
+**T16. Case terms are used before the case defines them.** S21 (closing line) and S28.
+- **What I found:** Both use "share of offers accepted" and "bookings per online hour" before the break. S5 mentions neither, and an offer is first defined at S55.
+- **What a trainer would do wrong:** reach S28's one minute with a room that does not know what an offer is.
+
+**T17. The lab note drops 12 exercise items.** Day sheet line 212, the six concept sets and the index lines 26 to 31 and 132, against lab note lines 18 to 33.
+- **What I found:** The day sheet and the index put the concept sets' Q2 and Q3, and all six concept-set solutions, in the TA lab. The lab note's 120 minutes (40 + 25 + 45 + 10) never schedules those 12 items, nine of which are design items, and it opens only three solution files.
+- **What a TA would do wrong:** skip all 12, including leading and lagging Q2, which is the defence of two calls the row's drill asks for.
+
+**T18. The fallback clinic's slide minutes add to 109, not 120.** The fallback note gives sections 15 and 16 thirty and fifteen minutes. Their slide notes give S6 8 + S7 4 + S8 12 = 24, and S9 8 + S10 2 = 10.
+- **What a trainer would do wrong:** pacing by the notes, end the clinic 11 minutes early.
+
+**T19. The fallback deck gives the roles different numbers from the role cards.** Fallback S4 (lines 114 to 116).
+- **What I found:** In the clinic, finance owns "Completed peak trips" and marketing owns "Share of offers accepted". On the role cards and S58 they own "Top-up per completed trip" and "Enrolled drivers".
+- **What a trainer would do wrong:** run the clinic with role-readers whose printed cards contradict the slide.
+
+**T20. The fallback handout and its slide number the same eight items differently.** Fallback note line 29 offers `lead_lag_STUDENT.md` "as the handout" for S6.
+- **What I found:** The handout orders the eight numbers differently and uses different letters (its leading items are 2, 4, 6 and 8; S6's are 1 to 4).
+- **What a trainer would do wrong:** read S6's answer to a room holding the handout and mark right answers wrong. The lab then skips that file as "sat in the metric clinic", so its letters are never posted.
+
+**T21. Round 3's defend time differs by half a minute.** S86 (line 52) and board work line 431 say "Defend, 7 minutes". The SECTION 10 note and the war game give 6 minutes 30 seconds.
+- **Effect:** the room sees the slide's 7 while the trainer paces to 6.5.
+
+**T22. Notebook 07's title renders as code.** In cell 0, the title, the applies paragraph and "Who needs the answer" are indented eight spaces. Jupyter and GitHub therefore show them as a code block with the "#" and "**" visible.
+- **Effect:** the notebook's only statement of the subtopics it applies reads as raw text on the projector.
+
+**T23. The half1 .pptx is stale.** It was built at 12:18:56 UTC; the markdown changed at 12:25:51.
+- **What I found:** The built deck still puts SECTION 1's subtopic in quotation marks and carries the old SECTION 1 note. The day sheet (line 321) sends the trainer to the .pptx.
+- **What a trainer would do wrong:** project a deck that differs from the notes they prepared from.
+
+**T24. S3's notebook labels and one interview question are not the files' or the row's.**
+- **What I found:**
+  - S3 (lines 89, 91) calls notebook 04 "the four definition lines" and notebook 06 "the seven-line page". Those file names do not exist; the files are `..._04_numerator_denominator_window_exclusions_...` and `..._06_metric_definition_artifact_...`.
+  - S27 (line 644) and notebook 03's last cell add "and the leading input that moves first" to the row's [F] question.
+- **What a trainer would do wrong:** send the room looking for file names that do not exist, and quote a tagged interview question the row does not carry.
+
+#### (d) What the row asks for that the pack does not deliver, or delivers outside the trainer's 240 minutes
+
+The row's thinking is carried:
+- metric as decision instrument (S6);
+- the proxy test in the row's own words (S10 note);
+- north star and guardrails (S17);
+- leading and lagging (S25);
+- the four lines plus "what it deliberately does not reward" (S33, S48).
+
+The row's after-class tasks (build, prep, recap) are in the take-home.
+
+| Row agenda item (row minutes) | Delivered in the trainer's time | Trainer minutes | Kalpa part, and where it went |
+|---|---|---|---|
+| 1. Three proposed targets (15) | S7 to S8 on three invented teacher numbers; S58, round 1, on Uber's three roles | 4.5 + 5 | Not done anywhere (T25) |
+| 2. Decision instrument, proxy test, gaming (40) | Chapters 1 and 5, applied at S59 and S71 to S72 | 23, plus case time | None needed |
+| 3. North star against guardrails, leading against lagging, on Kalpa's tree (50) | Chapters 2 and 3; Uber's tree at S80 | 24 | Inside S27's 1 minute, and the TA lab |
+| 4. Definitions, computed on the customer table (45) | Chapter 4; chapter 8 on Uber's `driver_weeks` | 40 | TA lab, notebook 12 |
+| 5. Guided then unguided artifact for the growth plan (60) | Chapter 6; S81; round 3, all on Uber | 46 | TA lab, the Kalpa set |
+| 6. Kahoot and close (20) | S96 to S98 | 20 | Kalpa items replaced (T31) |
+
+**T25. Agenda item 1: the row's three targets are never attacked.**
+- **What I found:** No file asks how orders per month or app sessions could be hit while the business got worse. They appear only in the Kalpa set's preamble and as distractors (Kalpa Q2 c, Q3 b; item 8 of the leading and lagging set). Reorders per member is examined only in the lab.
+- **Effect:** "finding how is the exercise" is never done on the row's own table.
+
+**T26. Agenda items 3, 4 and 5, and "go as far as", are done on Uber, with Kalpa only in the lab.**
+- **What I found:**
+  - "Go as far as" ("everyone ships the growth-plan metric with two guardrails and a gaming note") is met only in the lab. In the trainer's time, each of nine groups, not each learner, ships Uber's page with three guardrails.
+  - The day sheet never maps the row's agenda: the words agenda, mid-session, Kalpa's tree, customer table, orders per month and app sessions do not appear in it.
+  - Moving Kalpa to the lab is by decision (S1 note; decision teaching-approach), but the day sheet does not say so.
+- **What a trainer would do wrong:** with the row open, fail to find where items 1, 3, 4 and 5 went.
+
+**T27. The row's unguided task and cut-first rule have no counterpart.**
+- **What I found:**
+  - "Define one guardrail solo, then swap and attack a partner's definition" appears nowhere. Round 3 is group work attacked by roles the trainer voices.
+  - The row's "cut first: the second unguided definition" matches nothing in the pack.
+  - "Never cut the gaming demonstration" is missing from the day sheet's never-cut list (line 176).
+
+**T28. Mid-session drill 1 (classify eight Kalpa metrics and defend two, 15 minutes) shrinks to about a minute.**
+- **What I found:**
+  - In the trainer's time it is the leading and lagging set's Q1, called aloud inside S27, a 1-minute slide (the day sheet says 2 minutes).
+  - Defending the two calls is that set's Q2, which the lab note never schedules.
+  - The full drill runs only in fallback section 15, on Uber's numbers rather than Kalpa's, only if the faculty block slips. It is the clinic's first cut.
+
+**T29. Mid-session drill 2 (name the guardrail for three proposed north stars, 15 minutes) is not in the trainer's 240 minutes at all.**
+- **What I found:** It exists only as lead and lag Q3 (on Uber's three north stars) in the lab, or fallback S8.
+- **Effect:** the row's own three proposed north stars never get a guardrail.
+
+**T30. The interview angle is uneven.**
+- **What I found:**
+  - **[S]** gets chapter 11.
+  - **The two [F] questions** are named on S19, S35 and S44 and answered only in the day sheet. No slide note has the trainer ask them aloud.
+  - **[D]** appears in the trainer's time only as a line on S52. Its transcript and scoring run only in fallback section 16 (scorecards lines 4 to 5).
+- **Effect:** if the faculty block runs, nobody answers [D] on Monday, even though the war game stages its exact situation.
+
+**T31. The Kalpa column and the Kahoot plan.**
+- **What I found:**
+  - The plant (reorders per member up 22 percent, revenue per member down 4 percent) appears only in the TA lab.
+  - The pack's 0.96 is booked value of placements in any status, not revenue. Per the lab note (lines 85 to 88), all 44 placements in the window were auto-reorders and none was delivered.
+  - No file names the v4 customer table.
+  - The row's Kahoot Q2 (five Kalpa metrics) and Q3 (the Kalpa trap) are replaced by Uber items. The Kalpa trap is never asked after the lab finds it.
+  - The Wells Fargo case is delivered (S13, S42, fallback section 13).
+- **What a trainer would do wrong:** repeat the row's "revenue per member falls 4 percent", which the lab's data does not show.
+
+**T32. The row's references are missing.**
+- **What I found:** The trainer resources (GeeksforGeeks, Interview Query, Exponent) and the student reference (Exponent) appear in no trainer or student file. Only the INTERNAL sources page explains why: Exponent now redirects to Aced, and Interview Query could not be verified.
+- **Effect:** a trainer looking in the day sheet for the row's question sources finds none.
+
+Count: 0 "not found" cells in (a); 32 findings: 4 in (b) (T1 to T4), 20 in (c) (T5 to T24) and 8 in (d) (T25 to T32).
+
+### The fresh graduate's read
+
+All files are under /home/user/c2-content-factory/content/W04/D1/. "Half one" means slides/C2_W04_D01_half1_STUDENT.md and "half two" means slides/C2_W04_D01_half2_STUDENT.md.
+
+G1. Half one, S1 timeline and S2 map: "The head of Retail-Plus's growth number" and the node "Kalpa: Retail-Plus". No file I read says what Retail-Plus is. The S1 notes add "Meera's growth plan after Kalpa Health", which is not explained either. One line naming Retail-Plus and Meera's role would let me picture who wants "reorders per member".
+
+G2. Half one and half two, the notes fences from S1 on. The notes speak to the trainer ("LIVE, 1 minute", "Transition:", "Styles: Brilliant ... Striver's ladder", "Explorer: scene M1", "each of the nine groups", "its scorer holds the proxy-test card"). They also point to files a learner cannot open: trainer/C2_W04_D01_war_game_TRAINER.md (S58, SECTION 10), the role cards, and the scorecard that S93's notes ask pairs to score on ("the scorecard's seven criteria"). I could not follow these instructions. Notes written for the learner, or student copies of the scorecard and role cards, would fix it.
+
+G3. Half one S3, Notebook column: "04, the four definition lines" and "06, the seven-line page". The files are named ..._04_numerator_denominator_window_exclusions_STUDENT.ipynb and ..._06_metric_definition_artifact_STUDENT.ipynb, so the names on the slide match nothing in notebooks/. Using the file names would fix it.
+
+G4. Half one S4, the study notes' map and cheat sheet panel 1: the box "Applied to: Uber, Hyderabad" uses the pale-yellow class that S2 uses only for Kalpa's nodes. Reading the maps in order, I took the Uber case for a Kalpa step. A different colour or a legend would fix it.
+
+G5. Half one S5: "an enrolled driver online through a whole peak window is guaranteed Rs 300 per peak online hour, and Uber tops up the gap". At S5 I could not picture what the gap is, who counts as enrolled, or how long a peak window lasts. S55 explains all three fifty slides later ("between the driver's trip earnings and that floor", "one signed up for the scheme", "two a day, three hours each"). Putting those three short explanations on S5 would make the destination slide readable.
+
+G6. Half one S9 and notebook 01 cells 3, 6 and 10: the owner "reads tomorrow's plates off today's tokens", yet the waste table books Rs 1,500 on day 6 itself and the chart is titled "Rs 7,500 thrown away by day 10". With a one-day lag, day 6's rice is cooked from day 5's 200 tokens, so inside the ten days only days 7 to 10 waste rice. That is Rs 6,000, and day 10's tokens waste rice on day 11. Either cook from today's count or shift the waste column by one day.
+
+G7. Half one S11, S18 and S26 titles: "Four lines of pandas", "Three lines of pandas", "Three lines of pandas". The code under them has five, five and four lines. Not counting the read_csv line makes S11 and S26 fit; S18 still has four. Titles that match the code would stop me recounting.
+
+G8. Half one S12 and every later "In the interview" line (S19, S27, S35, S44, S52): "[S]", "[F]", "[D]". The deck never says what the letters mean. Notebook 01's last cell explains them but leaves "GCC" unexpanded, and only the exercise index, read much later, says a GCC is a global capability centre. A one-line key on S12 would fix all three.
+
+G9. Half one S13, "a cross-sell number, accounts and products per household", and S42, "remittance accounts added, undisclosed" (both repeated in the gaming set and the study notes). I have never worked at a bank, so I could not picture what cross-selling is, why staff would open accounts nobody used, or what a remittance account is. The public example did not land. One plain sentence for each term would fix it.
+
+G10. Half one S13: "USD 185 million in penalties in 2016". The only 2016 source in the notes is a CFPB page whose address reads "fines-wells-fargo-100-million", so I could not reproduce 185 million from the page. Naming who levied the other 85 million, with a source, would let me check it.
+
+G11. Half one S17 and S18, notebook 02 cells 9, 10 and 14, north-star set Q1, then S80, S84 and cheat sheet panel 2. Chapter 2 names licences per enrolled learner (0.60 to 0.36) as the north star, but its guardrail, the share who took the test, is paired with the hoarding's pass rate: S18 "multiplies the hoarding's rate by its guardrail", seesaw(rate, guardrail) runs on the pass rate, and Q1 asks for a guardrail "beside" next year's pass rate. The named north star already fell on its own, so I could not see what gaming of it the guardrail catches. The later board's "seesaw: star up, guardrail down" also contradicts chapter 2, where the north star went down. Saying plainly that the pass rate was the number being chased, and pairing the guardrail with the same number everywhere, would fix it.
+
+G12. Half one S19 rule 3: "since a second growth count catches nothing" (repeated in notebook 06 cell 11, the study notes and cheat sheet panel 5). "Growth count" is never defined, so I could not tell which numbers are growth counts or why one can never catch gaming. A definition with one example would fix it.
+
+G13. Half one S20: "28% of MTUs ... in its first quarter, to 30 June 2025" and "NOV ... gross order value minus discounts, from its Q1 FY27 letter". MTU is defined only at S36. Gross order value and "Q1 FY27" are never explained, "its first quarter" could mean Maxxsaver's or Swiggy's, and nothing says why gross order value misleads, so I got nothing usable from the Eternal half. The study notes repeat the Maxxsaver line without saying what Maxxsaver is. Explaining MTU, GOV and the fiscal quarter, plus one sentence on what discounts do to GOV, would fix it.
+
+G14. Half one S21, S28 and S45: "the share of offers accepted". What an offer is waits until the S55 data line ("a declined request is offered again, so it counts offers") and only becomes clear at S66. Through chapters 2 to 5 I did not know that a driver is shown requests one at a time and may decline them. A one-line explanation at first use would fix it.
+
+G15. Half one S25 and S27 rule 3, notebook 03 cells 9 and 16: "Wickets in hand, 7 at over 10, are the guardrail the leading number is read with." Chapter 2 had just defined a guardrail as a number watched beside the north star so that hitting it does no hidden harm. Here it sits beside a leading number, and no harm is named. Saying what harm wickets in hand guard against, or calling it context instead of a guardrail, would fix it.
+
+G16. Half one S28, title "Acceptance moved first; bookings per hour followed" (echoed in notebook 03 cell 16, the study notes, S80, half two S98 and Kahoot Q2). The slide's own text has both lines falling in the launch week: acceptance to 0.729, and bookings per online hour to Rs 271.0, which the pre-read later shows is down from Rs 313.5. So acceptance did not move first; it reached its new level sooner, which is how notebook 09's last cell puts it. S28 prints no before values, and neither line is the north star. Adding the before values and changing the title to "settled first" would fix it.
+
+G17. Half one S31 and S32, notebook 04 cells 5 and 12: "four honest clerks compute ... How many different numbers come out?", answered "five numbers from one register". Four clerks can print at most four numbers. The four-definition-lines set instead says "Four honest clerks ... and a fifth ... reads 70.0". Making it five clerks everywhere would remove the contradiction.
+
+G18. Half one S32 row 4, notebook 04 cells 6 to 8, and the study notes' table: "Exclusions: medical leave counted present: 42 / 50". S30 defines exclusions as what leaves both counts, but this reading leaves nothing out and adds the two medical days to the numerator. Relabelling it as a numerator change, or explaining why it counts as an exclusion, would fix it.
+
+G19. Half one S10 ("the curriculum's rule"), S33 ("The row adds that a definition is complete only when..."), notebook 06 cell 11 ("The curriculum row sets the bar") and the exercise index. "The row" is never explained to a learner. Notebook 06's bar (numerator, denominator, window, what it does not reward) also leaves out the exclusions that every other file lists among the four lines that make a number computable. Plain wording and one consistent list would fix it.
+
+G20. Half one S36 and S53: the MTU row puts "per month" in the "Per what" column, and S53 says Uber's monthly active platform consumers give "a numerator with a receipt, a denominator and a window". Both are counts of users, so I could not find a denominator in either; "per month" is the window. S36 is titled "each line" but shows no exclusions. Saying which of the four lines each published count fills, and that a count has no denominator, would fix it.
+
+G21. Half one S40 row 4 against S49: "Within 30 minutes of the shop's bill ... 35 of 50" and "30 of the 40 within 30 minutes of the bill". Together these mean 5 of the 10 orders that were never handed over were "on time". Notebook 05 cell 3 confirms the bill clock ends at the boy's done press, so the system's clock still stops when he presses. Timing only OTP-confirmed orders, or ending the clock at the OTP, would let me picture it.
+
+G22. Half one S42: "schedulers typed a 'desired date'" and "used the wrong desired date, producing false zero-day waits". I did not know how a desired date enters a wait, so I could not see how typing it hid waiting. One sentence on which two dates the wait runs between, and what was typed, would fix it.
+
+G23. Half one S49 gaming note (also notebook 06 cell 8 and the artifact set): "Complaints catch gate-marking". Once the numerator counts only OTP-confirmed deliveries, a press at the gate no longer raises the number. So I could not see what gaming of the full page the complaints guardrail is there to catch. Naming a way of gaming that still works under the OTP rule would fix it.
+
+G24. Half one S54 timeline: "Two of the six sit in the idle tail." The term is defined only at S72, so at S54 I could not picture it. A short explanation at first use would fix it.
+
+G25. Half one S55 data line: "bookings as fares riders paid" sits beside the caveat "trip earnings are not in the data", followed by "a declined request is offered again, so it counts offers". The deck never says trip earnings are the driver's share of the fares (only notebook 07 cell 1 does), so I could not see why one is in the data and the other is not. I also could not read "so it counts offers" as "one request can appear as several offers". Both explanations on S55 would fix it.
+
+G26. Half one S56: the sentence has two guardrail blanks ("guarded by ____ and ____"), while line 6 under it says "two for riders, one for the budget". Half two S98 then fills the sentence without the budget guardrail. I could not tell whether top-up per trip belongs in the answer the city head gets. A third blank, or a note saying it is left out on purpose, would settle it.
+
+G27. Half one S58: "The proxy test, from chapter 1, three questions per number ... Who controls the count? What does the number deliberately not reward?" Chapter 1 taught the proxy test as one question; the other two come from chapters 5 and 6, so I thought I had missed part of chapter 1. The notes also point at "drivers E and F" two slides before S60 shows them. Tagging each question with its own chapter would fix it.
+
+G28. Half one S60, "E and F also keep shorter weeks than most drivers who idle like them", and S72, "E's and F's weeks are the small group at the bottom left, the most extreme of the 180", under a caption that says the idle tail "sits far right and low". I could not place E and F against the tail until cheat sheet panel 3 gave the tail's average of about 39 hours a week. The S60 notes say "offers down", but the table gives offers only for the after week, so the fall cannot be seen. Putting the 39-hour figure on S60, and saying why the most extreme members sit apart from the cluster, would fix it.
+
+G29. Half one S70: "The true fall is 0.32 ... the average shows 0.19 of it and hides 0.13, about two-fifths." The 0.19 subtracts the after-window average of rates (1.71) from the before-window ratio of sums (1.90). The before-window average of rates is never shown, so I could not check the comparison like for like. Printing that before figure would let me reproduce "two-fifths".
+
+G30. Half one S54 and S77: "if 'hours up 24 percent' is read as 'riders picked up faster' and it is not" and "the median wait barely moved, so riders were served no better". The deck's own numbers show waits falling from 4.8 to 4.6 minutes, unfulfilled requests from 0.11 to 0.10 and trips up 3 percent. Half two S93 adds outer-zone waits falling from 6.6 to 5.95 minutes. So I read it as riders being served slightly better at a high price, and "barely better, at about Rs 2,836 an extra trip" would match the numbers.
+
+G31. Half one S80 and S81: the north star is "completed peak trips per enrolled driver online at peak, per week". S55 gives the goal as "riders picked up faster", and the wait becomes only guardrail 2. No slide explains why, by chapter 2's test, trips per driver captures what riders get better than the wait does. S81 also gives a reading of 35.76 for the weeks before the launch, when nobody could yet be enrolled. One sentence on each point would fix it.
+
+G32. Half one S80 (and S29): the first leading input is "enrolled drivers online in the first peak hour". S83 says the data holds weekly totals, and notebook 07 cell 1 says the window-by-window record is not in the tables, so I could not see how the analyst would compute it. Saying the city must start collecting that data would fix it.
+
+G33. Half one S81: the table's window line is "The calendar week", but its notes say "The window's start is the rider's request, never a time a driver sets". S42 and the S84 board also use "window" for when a clock starts. Chapter 4 defined the window as the stretch of time the count covers, so I could not tell whether Uber's window is a week or a waiting interval. Calling the second meaning "the clock's start" everywhere would fix it.
+
+G34. Half one S83: "so the monsoon's end cannot explain the fall". The same slide's notes say the seasonal caveat "narrows and stays partly open", and half two S87 answers finance with "Partly". I could not tell which claim to repeat. Using one wording in all three places would settle it.
+
+G35. Half one S79 and S84 notes ("Round 3 this afternoon", "half two opens on round 3 of the war game"): S58 is round 1, and no file I read mentions a round 2. I could not tell whether I had missed a round. Naming round 2 or renumbering would settle it.
+
+G36. notebooks/C2_W04_D01_02_north_star_guardrails_STUDENT.ipynb cell 10, the figure "Each of the four instructors": B and C have identical values, so each panel shows three lines for four instructors, and no line is labelled. I could not find instructor D, the subject of the your-turn cell, on the chart. A letter at the end of each line would fix it.
+
+G37. notebooks/C2_W04_D01_04_numerator_denominator_window_exclusions_STUDENT.ipynb cell 8, "four lines, five readings": the x labels "exclusions: medical out of both" and "exclusions: medical counted present" run into each other. The "70.0" value and the "75 percent" text sit on the dashed line. Shorter labels and moving the 75 percent text would make the chart readable at a glance.
+
+G38. notebooks/C2_W04_D01_05_gaming_resistant_definitions_STUDENT.ipynb cell 4 and data/C2_W04_D01_kirana_deliveries_STUDENT.csv: in 12 of the 50 rows, the minutes from the boy's typed dispatch time are more than the minutes from the bill (K01 25 against 15, K32 28 against 21, K43 23 against 16). That puts his typed dispatch before the bill existed. The chapter says he types the dispatch time late so every order reads on time, so these rows contradict the story I am meant to find in the table. Regenerating the column so the typed dispatch never comes before the bill would fix it.
+
+G39. notebooks/C2_W04_D01_06_metric_definition_artifact_STUDENT.ipynb cell 11, the trap: "orders billed up ... is a second growth count, it catches no way of gaming the first". Yet the same page refuses to reward "a shrinking order count", and chapter 2's rule 4 says a rate can rise because its denominator shrank, so a guardrail on orders billed seems to catch exactly that. The artifact set's Q3 then turns on (a) "a guardrail on orders billed" against (d) "the count of orders billed, printed beside the rate", a difference nothing in the notebook explains. A sentence on why the printed count is enough and a guardrail is not would fix it.
+
+G40. Notebook 06 cell 13, the your-turn cell: the driving school's page needs exclusions, a does-not-reward line, guardrails and a gaming note for the north star "licences per learner who enrolled". Chapter 2 gave the school no exclusions and no guardrail that catches a way of gaming that north star. The missing_lines check also passes only if each gaming-note key repeats its guardrail string exactly, and the instructions do not say so. A hint for the exclusions line and a sentence on the matching key would let me fill it.
+
+G41. notebooks/C2_W04_D01_07_proxy_test_on_twelve_rows_STUDENT.ipynb cell 1: the title, the opening paragraph and the "Who needs the answer" and "questions on the way" blocks are indented eight spaces in the source. Jupyter and GitHub render indented markdown as code, so the notebook opens with no heading, and the # and ** marks show as text in grey boxes. Removing the indentation would fix it.
+
+G42. notebooks/C2_W04_D01_09_north_star_guardrails_cost_STUDENT.ipynb last cell (also the study notes' chapter 9 section, cheat sheet panel 6 and half two S90): "saves Rs 92.7 lakh ... if a fifth of the idle tail's top-up is still paid". The Rs 1.159 crore was split by driver-weeks that accepted fewer than half their offers, but the idle tail is defined as 180 drivers under one trip an hour. The arithmetic only works if the two groups received the same top-up, which no file says (half two S89 only implies it). One sentence saying the idle tail's weeks are exactly the weeks under half would fix it.
+
+G43. exercises/unguided/C2_W04_D01_leading_lagging_set_STUDENT.md, "The example, in short": "Kalpa's growth plan chases one north star: delivered orders per active customer per month". The deck's S3 puts "Kalpa Retail's reorders per member" in the lab, and the index lists a Kalpa set that asks which number the plan should chase. I could not tell whether Kalpa's north star is already settled, which of the two it is, or who counts as "active". One consistent statement would fix it.
+
+G44. Same file, Q3: "Yesterday's done presses with no OTP, delivery boy by delivery boy" and "Balaji Kirana (invented) judges its month". Chapters 5 and 6 give the shop one delivery boy and a page whose window is the calendar week, so both disagree with what I learned. Matching the shop's one boy and its weekly page would fix it.
+
+G45. exercises/C2_W04_D01_index_STUDENT.md: the last section's "one shape" is "Post exactly this shape: xxxx", while the concept sets ask for xxx and the Kalpa and lab sets for five letters. The index also mentions "section 15 of the metric clinic, the fallback session", and half two S97 says "the metric clinic runs in its place", but no file says what the clinic is or why it has a section 15. Stating the shape as one letter per item, and adding a line on the clinic, would fix both.
+
+G46. study-notes/C2_W04_D01_notes_STUDENT.md, line 3: "About 12 minutes to read, and 10 more for the self-check." The notes contain no self-check and link to none. A link, or the self-check itself, would fix it.
+
+G47. The study notes' chapter 9 section and closing answer, cheat sheet panel 6, half one S75, S76 and S84, half two S90 and S98: S75's answer and S84's crux say "Pay for completed peak trips" with an acceptance minimum. The priced rule instead keeps the Rs 300 per-hour floor and pays it only to driver-weeks that accept at least half their offers, and "a cancel counted as a decline" first appears in the cheat sheet. I could not tell whether the redesign pays per trip or still pays per hour once a driver-week passes an acceptance minimum. "Floor" also names both the Rs 300 earnings floor and the acceptance minimum ("The floor sits in the gap", S89); separating what the scheme is judged by from what it pays for, and giving the two floors different names, would fix it.
+
+G48. preread/C2_W04_D01_preread_STUDENT.md, Tuesday's topic 5: "The AI-free written business case". The word table explains claim, evidence, caveat, action and appendix, but not what "AI-free" means. One line would fix it.
+
+G49. Half two S85 and S87: "the three roles in the room who each lose something under it", with the finance partner's attack "The fall is the monsoon's end". The redesign saves finance Rs 58 to 92.7 lakh, and on S58 the same role wanted each rupee of top-up to buy a trip. So I could not see what finance loses, or why it now defends the hours scheme. A line on finance's stake would fix it.
+
+G50. Half two S94, second follow-up: "set it in the gap the data shows, above 0.46 and below 0.78". S89 says that counting an accepted-then-cancelled trip as a decline moves the edges to 0.43 and 0.67, and that is the rule S90 prices and S98 adopts. Under the adopted rule a floor of 0.70 would cut ordinary weeks. Quoting 0.43 and 0.67 would remove the clash.
+
+G51. Half two S92, S95 and S97 (and the study notes' chapter 11): "The test: zones as the unit", "A test with teams as the unit", "the unit you randomise". Nothing I read says what a test's unit is or why zones are chosen over drivers, so I could not picture the proposed test. One sentence would fix it.
+
+G52. Half two S93, row "Segment and zones": "where waits fell 6.6 to 5.95 minutes at about Rs 46,000 per extra trip". Neither number appears earlier, and I could not derive Rs 46,000 from anything on the page; the city-wide figure is Rs 2,836. Showing the outer zones' extra trips and top-up behind it would let me reproduce it.
+
+G53. Half two S95: "per developer with a seat" and "Build failures and reverts on suggested code; security findings". The slide explains commit and time to merge, but not a seat, a revert or a security finding. Three short explanations would fix it.
+
+G54. Half two S98, the six-topic strip, row 4: "The four lines | All trips over all hours". The page signed on S81 divides by enrolled drivers online at peak, so the strip gives the old rate as the result of the four lines. "Trips per enrolled driver online, per calendar week" would match the page.
+
+54 findings.
+
+### The hiring interviewer's read
+
+I re-read every source cited below on 13 October 2026 and recomputed every case figure from content/W04/D1/data. No repository file was touched; source PDFs were extracted to text in the session scratchpad only.
+
+**I1.** Place: half1 S80 and S81, read against S55 ("The goal: riders picked up faster"); half2 S89; the transcript's "What structure comes before any number?"; north_star_guardrails set Q2; Kahoot Q1. As written: S81 "the north star read 35.76 trips per online driver-week before and 35.89 after: hours rose 24 percent and the number the scheme exists for barely moved"; S89 "the shrinking count of drivers shows who left, while the north star would rise"; transcript "It does not say whether riders gained, and it would rise if drivers quit". Why: the scheme exists to get riders picked up faster. The pack demotes the rider's wait to guardrail 2 and chases a supply-productivity rate, and its own files admit that rate improves when drivers leave and riders wait longer. Kahoot Q1's key ("North star: the outcome the scheme is for") and set Q2's stem ("the people served are riders who ask for a trip at peak") both point to a rider outcome, so the pack contradicts itself. On the case data the chosen number mostly tracks demand per driver:
+- it rose from 35.14 to 36.32 over the six weeks before launch;
+- it fell from 37.06 to 34.20 over the weeks after, as requests fell from 43,878 to 41,161 and online drivers rose from 1,058 to 1,085;
+- so "barely moved" averages two opposite trends, and the scheme can reach the number only through fulfilment (0.890 to 0.900).
+
+Amplitude, cited for the definition, also asks that a north star sit "within product and marketing's sphere of influence". An interviewer's first follow-up is "what does your north star do if half the drivers log off?", and a number that rises fails it. Hire-grade: make the outcome the north star: the share of peak requests completed within a set number of minutes (or the request-weighted median and 90th-percentile pickup wait), read by zone. Trips per online hour, top-up per extra completed request (counted against what demand alone would give) and the acceptance and driver-cancel shares become its guardrails.
+
+**I2.** Place: half1 S76 and the S84 crux; half2 S90 ("The rule priced") and S98; the transcript's hire-grade decision. As written: S76 "Trips with an acceptance floor, a minimum share of offers accepted, pay for the service and catch the cherry-picking"; S90 "The Rs 300 floor stays, and a driver-week earns its top-up only if the driver accepted at least half the offers shown"; transcript "I would keep the Rs 300 floor only for driver-weeks that accept at least half their offers ... which gives every trip its value back". Why: the rule that gets priced still pays Rs 300 per online hour, with an acceptance gate added. Take a driver parked in Shamshabad who accepts the few offers a thin zone sends him (driver E saw 14 in a week). He clears a 50 percent gate and keeps drawing the floor with almost no trips. Below the floor, each extra trip still cuts his top-up rupee for rupee, the mechanism the same candidate states two sentences earlier, so "gives every trip its value back" is false. S76 and S84 say "pay for trips" while S90 prices an hourly guarantee, and an interviewer will notice the recommendation changed between slides. Hire-grade: pay a per-trip peak bonus, or keep an hourly guarantee only with a minimum of completed trips per online hour and only in zones whose requests per online hour clear a bar. That way the next trip always pays, and idling where riders are few never does.
+
+**I3.** Place: half1 S77 and S74; half2 S94 first follow-up; study notes, "So is the number the scheme pays for measuring what the city wants?". As written: S77 "the median wait barely moved, so riders were served no better"; S74 "keeps paying drivers to sit online in zones with no riders". Why: the case's own tables say riders were served better:
+- The share of peak requests fulfilled ran 0.888 to 0.893 in every week before launch and 0.897 to 0.903 in every week after.
+- Every one of the twelve zones averaged a lower weekly median wait after launch, by 0.05 to 0.67 minutes, most in the three outer zones (6.6 to 5.95 on S93).
+- The request-weighted wait fell from 4.94 to 4.72 minutes.
+- The gain passes the monsoon test S83 applies to trips per hour. In the three rainy weeks after launch the mean of zone medians was 4.88 to 5.02, against 5.16 to 5.29 in every week before.
+
+Trips per online hour measures how busy drivers are, and it falls by construction when supply hours are added. In ride-hailing some idle supply near demand is what produces short pickups. An Uber interviewer scores the candidate who names that trade-off, prices it, and says what cannot be attributed without a comparison group. Hire-grade: "Fulfilment rose a point and waits fell in every zone, most where the idle hours sat; with no comparison group and the season turning I cannot attribute it, so the question is what that gain cost against other levers."
+
+**I4.** Place: half2 S93, "Decision and cost"; the transcript's cost row, think-aloud and [D] answer. As written: transcript "Rs 1.9 crore bought 6,700 more peak trips, about Rs 2,836 each, 17 times the Rs 165 fare"; S93 "Hold it: Rs 2,836 per extra trip". Why: requests rose 1.8 percent (251,910 to 256,556), which the same answer checks a minute earlier. Netting that out:
+- The old fulfilment rate was 224,200 / 251,910 = 0.890.
+- At that rate the after window completes about 228,335 trips with no scheme.
+- So 4,135 of the 6,700 extra trips come from demand, and the scheme's increment is about 2,565 trips.
+- Rs 1.9 crore / 2,565 is about Rs 7,400 a trip, near 45 times the fare.
+
+The same answer applies exactly this method to the outer zones ("185 more trips than their old fulfilment rate would give"). So the interviewer hears two methods in one answer, and a headline cost understated about 2.6 times. Hire-grade: "Net out demand: at the old 0.89 fulfilment the extra is about 2,565 trips, roughly Rs 7,400 each before any seasonal adjustment, and only a test makes even that causal."
+
+**I5.** Place: half2 S92 (the diagram's "The test: zones as the unit"), S93 and S95; the transcript's "I would test any change with zones as the unit, since drivers in one zone compete for the same riders"; half1 S83. As written: those lines, and S83 "so the monsoon's end cannot explain the fall". Why: zones are a weak unit here:
+- The data holds twelve zones, three of them outer, so a zone-randomised test has a dozen units and little power.
+- Drivers roam between zones, which is the case's own finding (72 percent of the idle tail's new hours moved to the outer zones). A zone split shifts supply across arms and biases both.
+- A pay rule is a contract with a driver, who cannot sensibly hold two rules depending on where he parks.
+
+The hire-grade answer names no primary metric, no minimum detectable effect, no novelty period and no guardrail margin. The switchback appears only in a harder follow-up ("zones switched on and off by week"). S83 states as settled what its own notes say "stays partly open". A marketplace interviewer weights this part heavily. Hire-grade: "Randomise drivers to the new rule, or switch the whole city between rules by alternating peak windows to handle drivers sharing riders; fix fulfilment within N minutes as the primary metric with guardrail margins, size it from week-to-week variance, and run past the first two weeks of novelty."
+
+**I6.** Place: half1 S17 (named last) and its notes, S19 rule 3, S48 line 6; notebook 02's `seesaw` cell and last cell; study notes chapters 2 and 6. As written: S17 "a north star is ... licences per enrolled learner, 0.60 then 0.36. A guardrail is a number watched beside it so that hitting it does no hidden harm; the share who took the test, 1.00 then 0.40, catches this school's move", with the note "The two numbers multiply into the honest one: 0.90 x 0.40 = 0.36"; S19 "Choose a guardrail by the gaming it catches, since a second growth count catches nothing"; S48 "Two or three numbers that must not fall". Why:
+- The share who took the test is a factor of the north star, so the instructors' move already drags the north star down. The "guardrail" actually guards the hoarding's pass rate: `seesaw(year["pass_rate"], year["took_share"])` and set Q1 both guard the pass rate. The learner leaves unable to tell a decomposition from a guardrail.
+- A guardrail watches harm outside the north star's definition. For licences per enrolled learner, that means weak applicants turned away at enrolment, teaching to the test (S8's own move), or graduates who fail on the road.
+- The Spotify glossary the notes cite defines a guardrail by unintended harm and never mentions gaming. It names revenue and latency as typical guardrails (revenue is a growth count) and sets a non-inferiority margin. "Must not fall" with no margin trips on noise.
+- The north star is a calendar-year reading of a cohort outcome: the 60 who did not test in 2026 can test in 2027.
+
+Hire-grade: a guardrail is a metric outside the north star that must not degrade beyond a stated margin, chosen for the harm the push could do to customers, the other side of the market, cost or quality. The school chases licences within twelve months of enrolment by intake, and guards learners turned away and failures after licensing.
+
+**I7.** Place: half1 S22, S25, S27 rules 1 and 3, S28; notebook 03's `first_crossing` cell and its check; the leading_lagging set solution, "Where does a leading number show up at work?", and its Q3 key; study notes chapter 3. As written: S22 "A number that moves before the north star, while a team can still act on it, is leading"; S28 "Acceptance moved first; bookings per hour followed ... A city team watching acceptance would have seen the change in week one"; S27 "Read a leading number beside its guardrail: 10 an over with 7 wickets in hand". Why:
+- The definition is timing alone. A leading indicator has to predict the outcome, and the Amplitude article the notes cite for these words tells the reader to "Validate that it predicts retention and revenue in your own data".
+- The required rate is the scoreboard re-expressed as runs needed over overs left, a running reading of the result itself. The set's Q3 key (yesterday's done presses with no OTP) is the same move: the month's own north star read a day at a time.
+- The level of 10 is picked after the loss is known, and 100 off 10 overs with 7 wickets standing is a live T20 chase. S23's stem never gives the runs before over 10, so "first reach 10" cannot be determined.
+- In the case data, bookings per online hour fell from about Rs 313 to Rs 271.0 in the launch week, three-quarters of its whole fall, in the same week acceptance fell. Both respond to the launch at the same time. With the fare fixed at Rs 165 every week, bookings per hour is simply trips per hour times 165.
+- Wickets in hand is a state of the chase; calling it a guardrail misuses chapter 2's word. S80 labels its two inputs as leading with no lag shown.
+
+Hire-grade: a leading indicator moves before the outcome and predicts it with a known lead time, shown on history or past experiments, and the team can act on it. "I would check whether first-week acceptance predicted week-six trips per online hour across past incentive launches."
+
+**I8.** Place: half1 S80 guardrail 1 and S81 (guardrails, gaming note, exclusions); study notes case table; guided definition solution item 4. As written: S81 "For riders: accepted share at or above a floor the city sets" and "Guardrail 1 catches declining and cherry-picking"; guided solution "Declining the long trips lowers the accepted share in the same week, so a floor on it catches cherry-picking as it starts". Why: a driver who accepts the long trip and then cancels it keeps his accepted share up. The page also excludes "Trips cancelled by either side" from the count, so the cherry-pick vanishes from both lines. The ticket shows exactly this behaviour: the share of accepted trips the driver cancelled went from 0.04 to 0.09 at launch (0.037 to 0.089 week by week). S90, S98 and the transcript count a cancelled trip as declined, so the page the city signs and the rule it prices disagree. Hire-grade: guardrail 1 is offers accepted and completed over offers shown, with a driver cancel counting as a decline. The driver-cancel share of accepted trips is watched as its own guardrail.
+
+**I9.** Place: half1 S10 (named last) and S12 rules 2 and 3; notebook 01's `drifted` cell and last cell; study notes chapter 1 "In the interview"; Kahoot Q5; proxy_test set solution. As written: S10 "the proxy test asks whether a team could hit this number while the thing it stands for got worse or stayed the same"; S12 "nearly every number on a dashboard is one"; `drifted`: `return bool(paid.iloc[-1] > paid.iloc[0] and wanted.iloc[-1] <= wanted.iloc[0])`; notebook 01 "names a number that cannot rise while that thing gets worse". Why:
+- Together the two rules fail every proxy, since any proxy can be pushed while its goal sits still, so the test ranks nothing. The interviewer asks how cheaply, and by whom, the number moves without the goal, and whether it moves when the goal moves.
+- `drifted` compares only two endpoints. It passes a doubled token count if plates go from 200 to 201.
+- The other half of judging a proxy is never taught: checking that it moves in the same direction as the north star, and that it detects change sooner. That is the subject of the Chou paper S10 cites.
+- A number that "cannot rise" while the goal worsens does not exist, and the pack's own north star rises when drivers quit.
+- The solution's "A count passes when raising it needs the thing itself" ignores trips booked from a second rider account, which the transcript itself names.
+- The wording drifts from "got worse or stayed the same" (S10) to "got worse" (S12, Kahoot Q5, the notes' glossary).
+
+Hire-grade: a good proxy moved with the goal on past launches, moves sooner or more sensitively than the goal, and costs a lot to move without it. Every proxy can be gamed, so it ships with counter-metrics that catch the cheap ways.
+
+**I10.** Place: half1 S33 (named last), the S36 table and S53; Kahoot Q4; artifact set solution item 1 and its "published page" paragraph; guided definition solution, "Which item is worth arguing about?". As written: S33 "four lines make a number computable, its numerator, its denominator, its window and its exclusions"; artifact solution "d: with no denominator and no exclusions, the number is not computable"; S53 "a numerator with a receipt, a denominator and a window, written down"; S36 MTU row "per month" under "Per what". Why: counts are computable with no denominator: licences in a year, trips, gross bookings. Uber's 10-K defines MAPCs as unique consumers with a completed ride or delivery in a month, "averaged over each month in the quarter". That is a de-duplicated count with no denominator, and "per month" in the MTU row is the window. The guided solution also rules that "The denominator has to be set by something other than the outcome it divides". It then praises Swiggy's platform frequency, completed orders per transacting user, whose denominator exists only for users who ordered. Hire-grade: first say whether the metric is a count, a ratio or an average. A count needs its unit, de-duplication rule, window and filters; a ratio adds a denominator whose population is named and justified.
+
+**I11.** Place: half1 S32 table and S34; notebook 04 cells 5 and 7; study notes chapter 4 table; four_definition_lines set Q1 and its solution. As written: S32 "Denominator: calendar days | 40 | 60 days" and "Exclusions: medical leave counted present | 42 | 50"; S34 "an exclusion is a status left out of both"; solution "d: neither leaves a status out of both counts". Why: in the pack's own function the 66.7 reading is `bottom=("present", "absent", "medical", "holiday")`. So 80.0 and 66.7 differ only in whether "holiday" is a status left out of both counts, which S34 calls an exclusion. By the chapter's own definition option d is right, and Q1's key is arguable at best. "Medical leave counted present" moves a status into the numerator (`top=("present", "medical")`), so it is a numerator rule. An interviewer who asks for the numerator, denominator and exclusions of attendance would mark both labels wrong. Hire-grade: the school rule excludes holidays from the population, which sets the denominator at 50. Counting medical leave as present is a numerator rule. Removing medical leave from both counts is the exclusion.
+
+**I12.** Place: half1 S31 and S32; notebook 04 last cell. As written: S31 "four honest clerks compute the attendance percentage from the same register. How many different numbers come out?"; S32 "Answer: c, five numbers from one register"; notebook 04 "Four honest clerks can print five numbers from it". Why: four clerks cannot print five numbers. With nothing said about their choices, option d ("It cannot be told") is the literal answer, and the exercise set's own example has five clerks. Hire-grade: ask "how many different readings can one register honestly give?" and key it to the five definitions.
+
+**I13.** Place: half1 S46, S48, S49, S50 notes and S52 rule 2; notebook 06 last cell; study notes chapter 6. As written: S52 "The first four lines make it computable; the last three make it safe to pay for"; S50 notes "a US quality measure is specified on one written page with its numerator, denominator, exclusions and time interval"; S49 "What it does not reward | ... a shrinking order count". Why:
+- The page has no line for the decision it feeds, which S12's first rule puts first.
+- It also lacks the owner, the unit and de-duplication rule (Uber's MAPC definition carries one: "counted as only one MAPC"), the data source and event timestamps, the window's time zone or cohort basis, the baseline and decision threshold, and the guardrails' margins.
+- The CMS page cited lists 18 building blocks, among them target population, data sources, level of analysis and attribution model, and says nothing about one page.
+- On the shop, the full page swaps the son's growth count for a completion rate, which answers a different question.
+- Its "does not reward a shrinking order count" has no mechanism behind it. A rate over orders billed rises when hard orders are refused, and the pack forbids the count guardrail that would catch that.
+- A number becomes safe to pay on through guardrail thresholds someone watches and audits someone runs; the seven lines supply neither.
+
+Hire-grade: a metric spec states the decision and owner, the unit and de-duplication rule, numerator and denominator, the window with its time zone or cohort, filters and exclusions, the data source, the baseline and decision threshold, guardrails with margins, and known gaming. The shop chases OTP-confirmed deliveries and guards the confirmation rate and orders billed.
+
+**I14.** Place: half1 S38, S41, the S42 title, S44 rules and "In the interview"; the gaming set solution, "What does the set test about gaming?"; notebook 05 last cell. As written: S38 "Gaming is raising a number without doing what it stands for. It needs no dishonesty"; solution "A paid number is gamed in four ways"; S41 "a definition resists gaming when its numerator needs a receipt ..."; S44 "Start the clock at a time the system records, never at one the person timed types in"; "how do you write one that is not?". Why:
+- Every case the chapter uses is falsification. The boy marks undelivered parcels done, and the SEC order the pack cites says Wells Fargo's "gaming" took in "fraud, identity theft, and the falsification of bank records".
+- An interviewer wants false reporting told apart from behavioural gaming. False reporting is fixed with receipts, audits and logs that cannot be edited; behavioural gaming is fixed with pay design and counter-metrics.
+- The "four ways" omit selection and effort substitution, both shown earlier in the pack: the instructors booking only sure learners, drivers picking trips, and S8's "Teach only the questions the paper repeats". Timing games are missing too.
+- An OTP can be read out at the gate or over the phone.
+- The VA report the pack cites shows schedulers overwriting appointments so that "The create date of the appointment is effectively reset". That is a system-recorded time gamed by the person being timed.
+- No definition is ungameable, so the interview question's premise fails.
+
+Hire-grade: "Any metric can be gamed; I name the cheapest way to move this one without the goal, make it costly (receipts, a clock that starts at the first event and cannot be reset, audits) and visible (a counter-metric), and keep pay off any single number."
+
+**I15.** Place: half1 S40 table, S44 rule 2 and the S49 guardrail; notebook 05 `paid_deliveries`. As written: S40 "Within 30 minutes of the shop's bill | the shop's system | 35 of 50, 0.70"; `paid_deliveries(orders, receipt=True, clock="minutes_from_bill", limit=30)`. Why: the bill clock includes packing and the wait for the boy to get back, time he does not control, and it still stops at his own done press. The 0.70 divides by 50, counting the 10 parcels never delivered. The pay rule pays nothing for an OTP-confirmed delivery at minute 31 of a clock the boy did not start. A Swiggy interviewer expects the shop's leg and the delivery leg measured apart, with a system pickup scan starting the rider's clock and the OTP stopping it. Hire-grade: time the shop from bill to a system pickup scan and the rider from that scan to OTP entry, and count undelivered orders as late in the on-time denominator.
+
+**I16.** Place: half1 S13; proxy_test set solution, "Where does a number that fails the proxy test show up at work?"; study notes chapter 1. As written: "Wells Fargo paid staff on a cross-sell number, accounts and products per household, that counted accounts nobody used". Why: the cited sources do not say staff were paid on products per household. The CFPB release says employees opened accounts "to hit sales targets and receive bonuses". The SEC order (Release 34-88257) says "the number of products sold continued to be a significant criterion by which the performance of employees ... was evaluated" (paragraph 20) and "The compensation of certain Company executives was impacted by cross-sell growth" (paragraph 18). The cross-sell ratio was the figure reported to investors, and anyone who knows the case would correct a candidate who repeats the slide. Hire-grade: branch staff were pushed and paid on product sales goals. Those sales, many unused or unauthorised, inflated the cross-sell ratio reported to investors, and some executives' pay tracked its growth.
+
+**I17.** Place: half1 S42 last line; study notes chapter 5; gaming set solution. As written: "At its Phoenix facility, 30 of 79 Veterans Affairs staff interviewed said they used the wrong desired date, producing false zero-day waits." Why: the report's body (page 49) says the inspectors "asked 40 Primary Care schedulers and supervisors how they determined the veteran's desired date", and "The remaining 30 stated they based the desired date on the provider's availability or next available appointment date". The 79 is everyone interviewed about scheduling. The rate is 30 of 40, three-quarters, and the pack prints a 38 percent ratio on the day it teaches the denominator line. Hire-grade: 30 of the 40 primary-care schedulers and supervisors asked said they entered the next available slot as the desired date, which showed false 0-day waits (VA OIG report 14-02603-267, August 2014).
+
+**I18.** Place: half1 S20 (stats and paragraph); north_star_guardrails set solution, "Where does a north star that matches what a business is trying to do show up at work?"; study notes chapter 2. As written: S20 "28% | of MTUs, in Swiggy's words"; "Rs 612 ... up 16 percent on the quarter before, with slightly fewer orders per user"; "orders per user would have read the offer's success as a fall"; "NOV ... from its Q1 FY27 letter". Why:
+- The letter says "over 28% of our MTUs".
+- It credits the AOV rise to "our significantly expanded selection driving a higher non-grocery mix in our GOV, and the resounding success of Maxxsaver".
+- It credits the slower order growth to "Some cart-consolidation led by Maxxsaver and letting go of some low AOV orders and unprofitable users", a deliberate pruning of the user base the pack leaves out.
+- "A slightly lower number of orders by the same user" is a qualitative remark. Instamart orders per MTU in the letter's own table fell about 9 percent quarter on quarter (89 million orders on 9.8 million MTUs to 92 million on 11.1 million).
+- The letter says the Maxxsaver ramp-up "kept our absolute Contribution flat QoQ". That is the guardrail an interviewer asks for: AOV read alone would call a costly discount a success, just as orders per user would call it a failure.
+- The lead_lag solution paraphrases the same letter differently ("lowered order growth").
+- Eternal's "NOV = GOV minus discounts" is in the Q1 FY26 letter. The Q1 FY27 letter carries the GOV sunset, inside its food-delivery line.
+
+Hire-grade: Swiggy credited the AOV rise to a wider non-grocery selection and Maxxsaver, and the slower order growth to cart consolidation and dropping low-value orders and users. GOV or contribution per transacting user weighs both, and Swiggy said the ramp-up held contribution flat.
+
+**I19.** Place: half1 S27, S35 and S44; study notes chapters 3 to 5; notebooks 03 and 04 last cells. As written: S27 "[F] North-star against guardrail, with one example pair, and the leading input that moves first" (S19's question again); S35 "[F] What makes a metric gameable, and how do you write one that is not?" (S44's question word for word). The notes put that gaming question under chapter 4 and give chapters 3 and 5 none. Why: two of the six topics carry no question of their own, and a hard screen asks both most mechanically: "Define a daily active user, or a completed trip, line by line: what counts, over what window and time zone, with which exclusions and de-duplication?" and "Give a leading indicator of 90-day retention and show that it leads." Nothing in the pack asks how to set a target or a guardrail's tolerance either. Hire-grade: chapter 3 carries "[F] Name a leading indicator for X; how would you show it predicts X?" and chapter 4 carries "[S] Define DAU for this product line by line."
+
+**I20.** Place: north_star_guardrails set Q1 and solution item 1. As written: key c; solution "b: passes per instructor is the outcome counted again, and it cannot say why the rate rose". Why: passes per instructor fell from 60 / 4 = 15 to 36 / 4 = 9 while the hoarding's rate rose. So b also "would have caught the 2026 move", which is all the stem asks; explaining why is a different test. Hire-grade: either ask which guardrail shows why the rate rose, or replace b; as written, b and c both catch the move.
+
+**I21.** Place: artifact set Q3, solution item 3 and "Which item is worth arguing about?"; notebook 06 `missing_lines` cell. As written: solution "a: a growth count as a guardrail catches no way of gaming the north star"; notebook 06 "a guardrail that catches nothing named: orders billed up". Why: the north star is confirmed deliveries over orders billed, so refusing hard orders raises it. That is why the page lists "a shrinking order count" under what it does not reward. A guardrail on orders billed is the line that catches this, so option a is defensible and stronger than d, which prints the count with no threshold. The notebook flags the guardrail only because the gaming note does not name it, and reports that as "catches nothing". Hire-grade: key a, since a floor on orders billed catches the shrinking denominator the page says it will not reward, or accept both a and d.
+
+**I22.** Place: leading_lagging set Q1 (the eight-number table) and its key; Kahoot Q2. As written: key a "1, 3, 6 and 8"; Kahoot key "1, 3 and 5". Why: every keyed number carries "this week", and every lagging one says "for the quarter" or "for the month". In Kahoot the leading ones say "this week", "first peak hour" and "by zone", against "the month's" and "the quarter's". So the window words give the key away, while the solution itself says how often a number is read does not decide it. Returns booked this month (7) and customers lost (4) could plausibly lead next month's orders per active customer. Kahoot's (5), requests per online hour, moves in the same week as the north star. Hire-grade: put every number on the same window and make the call turn on what causes what (a booking precedes its delivery; a return precedes churn). Include one weekly number that still lags, such as this week's delivered revenue.
+
+**I23.** Place: Kahoot Q7. As written: key "What it does not reward: text accepted, then deleted". Why: a line saying the definition does not reward accept-then-delete cannot override a numerator that counts accepted suggestions. The deck's own S95 notes say the north star catches it, "since deleted text is not present at the next commit". The transcript says accepting and deleting "is mostly how a developer inspects a suggestion", and nobody is paid on acceptance at all. Hire-grade: the numerator line does the work. Counting only suggested text still present at the next commit is the receipt condition that keeps accept-then-delete out of the count.
+
+**I24.** Place: north_star_guardrails set solution, item 3 and "Which item is worth arguing about?". As written: "Top-up per completed trip rises only when money is paid for hours with no trips"; "it stays inside its design no matter how many paid hours serve no rider". Why: top-up per trip also rises when the fare per trip falls (shorter trips, surge ending), and it can fall while total spend runs away if trips grow. Top-up per online hour climbs toward the Rs 300 cap as idling grows, so option c moves too; a cap limits a number without freezing it. Hire-grade: top-up per completed trip moves with idle hours and with fare per trip. Read it beside total top-up against budget, and beside trips per online hour, to tell the two apart.
+
+**I25.** Place: gaming set Q3 and solution item 3. As written: key d "Doubts the student confirms resolved, over all doubts students raised"; solution "A definition resists gaming only when the people paid control neither line". Why: "all doubts students raised" is platform-wide, so one teacher's rate depends on what every other teacher took on. The pay rule has no way to attribute a doubt to a teacher, which the CMS page the pack cites lists as a building block ("Attribution model"). A student can also withhold the confirmation or be pressed for it. Hire-grade: route each doubt to one teacher and pay per student-confirmed resolution. Guard with the share of routed doubts declined or abandoned, and with doubts asked again within a week.
+
+**I26.** Place: half2 S95 table and notes; transcript, "How does the same question move to an AI coding assistant?". As written: north star "Suggested code still present at the next commit, per developer with a seat, per week", with "Read beside it | Time from first commit to merge", which the transcript calls "the number closest to the goal". Why: the unit is never stated (characters, lines or suggestions), and counting kept text rewards long boilerplate. Surviving to the next commit is a short horizon. The number the candidate calls closest to the goal is demoted to a side read, the same inversion as I1. The decision is renewal, so the outcome should lead. Hire-grade: judge renewal on time to merge and merged changes per active developer, in a test randomised by team. Kept suggested characters at 30 days is an input, with reverts and security findings as guardrails.
+
+**I27.** Place: half1 S70 notes and S73 crux; Kahoot Q6. As written: S73 "A rate is two sums divided once, with its denominator named"; Kahoot Q6 "Which goes on the slide?", keyed 1.58. Why: the right aggregate depends on the question. The city's trips per paid hour needs the ratio of sums; "how did the typical driver fare under the rule" needs the per-driver mean. Q6's own Tests line concedes the mean "answers a different question", yet the stem never says which question the slide answers. In an experiment where drivers are the unit, a ratio metric also needs delta-method variance, a standard follow-up at Uber and Google. Hire-grade: for the city's trips per paid hour, the ratio of sums, 1.58; for the typical driver-week, the mean, 1.71. The slide says which question it answers.
+
+**I28.** Place: half1 S37; notebook 04 last cell; study notes chapter 4. As written: "In 2018 Delhi Metro counted about 27 lakh riders a day, and its new 'line utilisation' count read 45,35,932 on 29 May 2018 ... one crowd, two units." Why: PTI's 27 lakh is February 2018's daily average ("nearly 27 lakh commuters taking the rapid transit network daily in February this year"). The 45,35,932 is one day, 29 May, when the 24.82 km Janakpuri West to Kalkaji Mandir section opened to passengers. The gap mixes a window change with the unit change, on the day the window line is taught. The same article says DMRC "did not share the daily average ridership figures" after the opening, and that ridership "had taken a hit after two fare hikes in 2017". That makes it a live example of chapter 5's quiet change of definition, and the pack tells it as neutral. Hire-grade: compare the same day's ridership with that day's line utilisation. Note that DMRC adopted the higher-reading count while withholding the old one after a fare-hike dip, which is why a definition change is dated beside the number.
+
+**I29.** Place: half1 S42 "In public" column; gaming set Q2 ("four public ways of gaming"); study notes chapter 5 table. As written: "Uber: an open app counts as online (chapter 7)". Why: by the pack's own label the Uber situation is synthetic. Listing it beside Wells Fargo and Veterans Affairs as a public case asserts a gaming problem at a real company with no source, and an Uber interviewer will ask for one. Hire-grade: label it "the illustrative case" in its own column, or cite a dated public instance.
+
+**I30.** Place: artifact set solution item 2; half2 S90; half1 S60 (E accepted 4 of 14 offers, F 3 of 12). As written: "a boy who confirms every order he carries reads the same rate in a quiet week as in a busy one"; "a driver-week earns its top-up only if the driver accepted at least half the offers shown". Why: in a quiet week of three orders, one miss moves the rate 33 points. A per-driver-week acceptance gate on a dozen offers is noisy and lands hardest on drivers in thin zones. Interviewers ask for a minimum volume before a rate decides pay. Hire-grade: apply the floor only above a minimum number of offers, or on a rolling four-week window, and print the count beside every rate.
+
+**I31.** Place: half1 S10 and the S13 notes. As written: "any target bends behaviour toward itself"; notes "Do not quote a firing count or Goodhart". Why: interviewers listen for the standard names: Goodhart's law and Campbell's law, counter-metric, proxy (surrogate) validation, input versus output metric, metric tree, non-inferiority margin, switchback. The pack teaches several of these ideas but none of the names candidates are scored on. Hire-grade: "This is Goodhart's law: once a measure becomes a target it stops being a good measure, so I pair the target with counter-metrics."
+
+31 findings.
