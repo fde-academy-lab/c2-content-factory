@@ -1001,6 +1001,19 @@ for win in ("before", "after"):
     fact(f"tph_split_0907_{win}", r2(late_city.loc[win, "peak_trips"] / late_city.loc[win, "peak_online_hours"]),
          "trips per peak online hour", f"the window flagged at 7 September, so the launch week counts as before; {win}",
          "the lab set's Parsons problem, option d")
+# Added for notebooks 10 and 11, the afternoon's case chapters: the log-off test on the redesign's north star
+# and the idle tail's own rate. Read from the same tables, so the data files are unchanged.
+idle_on = on_after["driver_id"].isin(set(slow.index))
+fact("idle_online_driver_weeks_after", int(idle_on.sum()), "driver-weeks",
+     "idle-tail driver-weeks with at least one peak online hour, after", "notebook 10, the log-off test")
+fact("online_driver_weeks_after_idle_off", int((~idle_on).sum()), "driver-weeks",
+     "6,434 online driver-weeks after, less the idle tail's 1,080", "notebook 10, the log-off test")
+fact("north_star_after_idle_off", r2(on_after.loc[~idle_on, "peak_trips"].sum() / (~idle_on).sum()),
+     "trips per online driver-week", "the north star after the launch with the idle tail's driver-weeks taken out",
+     "notebook 10, the log-off test; half2 S94, follow-up 3")
+for win in ("before", "after"):
+    fact(f"idle_tph_{win}", r2(idle.loc[win, "peak_trips"] / idle.loc[win, "peak_online_hours"]),
+         "trips per peak online hour", f"the idle tail, {win}", "notebook 10, driver operations' objection")
 
 toys = [
     {"id": "toy_two_drivers", "label": "invented",

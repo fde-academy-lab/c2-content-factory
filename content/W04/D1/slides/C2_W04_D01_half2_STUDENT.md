@@ -15,7 +15,10 @@ price (12), the attacks and the line that answers each (6 minutes 30 seconds), t
 scoring (1). Level 5: decide and
 cost it. Run sheet: trainer/C2_W04_D01_war_game_TRAINER.md; role cards:
 trainer/C2_W04_D01_role_cards_TRAINER.md; the unguided exercise:
-exercises/unguided/C2_W04_D01_redesign_STUDENT.md. Styles: the case method (roles with partly-right
+exercises/unguided/C2_W04_D01_redesign_STUDENT.md; the notebook:
+notebooks/C2_W04_D01_10_gaming_page_three_roles_STUDENT.ipynb, the page tested against each way of
+gaming it and each role's objection tested on the tables, open on screen only if a group disputes a
+card, and the room's self-study text after the day. Styles: the case method (roles with partly-right
 objections), Veritasium (predict which line answers which attack), Striver's ladder (the unguided
 items climb from a line to a cost). Transition: what the round applies.
 ```
@@ -157,7 +160,10 @@ Transition: the interview room.
 LIVE, 30 seconds. 15 minutes: the opener and the map (2), the question and the clarifiers (2), the
 transcript read in pairs and scored (4), the follow-ups (3), the AI-company variant (4). Level 6.
 The transcript: extras/C2_W04_D01_transcript_STUDENT.md; the scorecard:
-trainer/C2_W04_D01_interview_scorecards_TRAINER.md. Styles: the case method in the interview room,
+trainer/C2_W04_D01_interview_scorecards_TRAINER.md; the notebook:
+notebooks/C2_W04_D01_11_new_feature_definition_page_STUDENT.ipynb, which checks every number of the
+hire-grade answer on the data and drafts the coding assistant's page in its your-turn cell, the
+room's self-study text after the day. Styles: the case method in the interview room,
 Feynman (the first sentence a newcomer could repeat), Striver's ladder (the follow-ups climb).
 Transition: what the room applies.
 ```

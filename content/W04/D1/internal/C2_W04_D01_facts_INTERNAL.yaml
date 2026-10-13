@@ -1230,6 +1230,31 @@ numbers:
   unit: trips per peak online hour
   how: the window flagged at 7 September, so the launch week counts as before; after
   used_by: the lab set's Parsons problem, option d
+- id: idle_online_driver_weeks_after
+  value: 1080
+  unit: driver-weeks
+  how: idle-tail driver-weeks with at least one peak online hour, after
+  used_by: notebook 10, the log-off test
+- id: online_driver_weeks_after_idle_off
+  value: 5354
+  unit: driver-weeks
+  how: 6,434 online driver-weeks after, less the idle tail's 1,080
+  used_by: notebook 10, the log-off test
+- id: north_star_after_idle_off
+  value: 36.88
+  unit: trips per online driver-week
+  how: the north star after the launch with the idle tail's driver-weeks taken out
+  used_by: notebook 10, the log-off test; half2 S94, follow-up 3
+- id: idle_tph_before
+  value: 1.9
+  unit: trips per peak online hour
+  how: the idle tail, before
+  used_by: notebook 10, driver operations' objection
+- id: idle_tph_after
+  value: 0.8
+  unit: trips per peak online hour
+  how: the idle tail, after
+  used_by: notebook 10, driver operations' objection
 toys:
 - id: toy_two_drivers
   label: invented

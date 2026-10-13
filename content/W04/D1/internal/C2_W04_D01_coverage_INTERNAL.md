@@ -25,10 +25,12 @@ Monday envelope sets.
 | SECTION 7: Twelve driver-weeks by hand, with the proxy test and the four definition lines: what does an hour count? | 1, 4 | half1 S54 to S63 | notebooks/C2_W04_D01_07_proxy_test_on_twelve_rows_STUDENT.ipynb |
 | SECTION 8: All 12,860 driver-weeks, with the definition lines and gaming: where did the fall sit? | 4, 5 | half1 S64 to S73 | notebooks/C2_W04_D01_08_denominators_on_full_data_STUDENT.ipynb |
 | SECTION 9: The redesign's north star, guardrails, leading inputs and seven-line page: what should it pay for? | 2, 3, 5, 6 | half1 S74 to S84 | notebooks/C2_W04_D01_09_north_star_guardrails_cost_STUDENT.ipynb |
-| SECTION 10: The page under attack from three roles, with gaming and the seven lines: does it survive the roles? | 5, 6 | half2 S85 to S90 | none |
-| SECTION 11: The interview question on a new feature, with all six topics: what wins the interview? | all | half2 S91 to S95 | none |
+| SECTION 10: The page under attack from three roles, with gaming and the seven lines: does it survive the roles? | 5, 6 | half2 S85 to S90 | notebooks/C2_W04_D01_10_gaming_page_three_roles_STUDENT.ipynb |
+| SECTION 11: The interview question on a new feature, with all six topics: what wins the interview? | all | half2 S91 to S95 | notebooks/C2_W04_D01_11_new_feature_definition_page_STUDENT.ipynb |
 
-SECTIONs 10 and 11 have no notebook, as the spine's Monday section sets (round 3 runs on the
-redesign set and the role cards, the interview room on the transcript and the scorecard), so the
-gate's warning for each is expected. The Kalpa lab is notebook 12,
-`notebooks/C2_W04_D01_12_kalpa_lab_STUDENT.ipynb`, after the day's last SECTION.
+Every case chapter pairs with a notebook numbered as its SECTION. Notebook 10 holds round 3's
+material as data: the redesign's page, each line tested against the way of gaming it must resist,
+and each role's objection tested on the tables. Notebook 11 checks every number of the hire-grade
+answer on the data, and its your-turn cell drafts the coding assistant's page with notebook 06's
+`missing_lines`. The Kalpa lab is notebook 12, `notebooks/C2_W04_D01_12_kalpa_lab_STUDENT.ipynb`,
+after the day's last SECTION.

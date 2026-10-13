@@ -68,8 +68,8 @@ aloud (two minutes inside the chapter's time).
 | SECTION 7, what does an hour count? | Topics 1 and 4 | `half1` S54 to S63 | 07 `proxy_test_on_twelve_rows` | 32 (the full ticket and round 1, 12; the twelve rows by hand, 20) |
 | SECTION 8, where did the fall sit? | Topics 4 and 5 | `half1` S64 to S73 | 08 `denominators_on_full_data` | 30 |
 | SECTION 9, what should it pay for? | Topics 2, 3, 5 and 6 | `half1` S74 to S84 | 09 `north_star_guardrails_cost` | 38 |
-| SECTION 10, does it survive the roles? | Topics 5 and 6 | `half2` S85 to S90 | none; the redesign set | 25 |
-| SECTION 11, what wins the interview? | All six | `half2` S91 to S95, then S96 to S98 | none; the transcript | 15, then 20 for the Kahoot, the handoff and the close |
+| SECTION 10, does it survive the roles? | Topics 5 and 6 | `half2` S85 to S90 | 10 `gaming_page_three_roles`; the redesign set | 25 |
+| SECTION 11, what wins the interview? | All six | `half2` S91 to S95, then S96 to S98 | 11 `new_feature_definition_page`; the transcript | 15, then 20 for the Kahoot, the handoff and the close |
 | The TA-led lab | Topics 2 to 6 on Kalpa | none | 12 `kalpa_lab` | the lab's length |
 
 ---
@@ -204,8 +204,8 @@ flowchart LR
 
 | Part | Minutes | Slides (`half2`) | Beside it | What must land | If short of time |
 |---|---|---|---|---|---|
-| Chapter 10, round 3 | 25 | S85 to S90 | `exercises/unguided/C2_W04_D01_redesign_STUDENT.md`; role cards | Each group's definition answers every role or concedes in the open; the saving said as a range | S90 to the range alone |
-| Chapter 11, the interview room | 15 | S91 to S95 | `extras/C2_W04_D01_transcript_STUDENT.md`; the scorecard | The hire-grade answer clarifies, structures, sees the paradox and prices it | S95 to its table |
+| Chapter 10, round 3 | 25 | S85 to S90 | `exercises/unguided/C2_W04_D01_redesign_STUDENT.md`; role cards; notebook 10 for a disputed card | Each group's definition answers every role or concedes in the open; the saving said as a range | S90 to the range alone |
+| Chapter 11, the interview room | 15 | S91 to S95 | `extras/C2_W04_D01_transcript_STUDENT.md`; the scorecard; notebook 11 | The hire-grade answer clarifies, structures, sees the paradox and prices it | S95 to its table |
 | Kahoot, handoff and close | 20 | S96 to S98 | `kahoot/C2_W04_D01_quiz_STUDENT.md` | The most-missed item said again; the handoff line read; the six topics on one strip | Kahoot to six items |
 
 Then the tentative IITGN block, 120 minutes, or the metric clinic in its place. Then the TA-led
@@ -321,8 +321,8 @@ Every number below is in `internal/C2_W04_D01_facts_INTERNAL.yaml` under the id 
 | The morning | `slides/C2_W04_D01_half1_STUDENT.pptx` (source `.md`); concept notebooks 01 to 06, then case notebooks 07 to 09; the six concept sets in `exercises/unguided/` |
 | The war game | `trainer/C2_W04_D01_war_game_TRAINER.md`; `trainer/C2_W04_D01_role_cards_TRAINER.md` |
 | The guided definition | `exercises/guided/C2_W04_D01_definition_STUDENT.md` |
-| Round 3 | `exercises/unguided/C2_W04_D01_redesign_STUDENT.md` |
-| The interview room | `extras/C2_W04_D01_transcript_STUDENT.md`; `trainer/C2_W04_D01_interview_scorecards_TRAINER.md` |
+| Round 3 | `exercises/unguided/C2_W04_D01_redesign_STUDENT.md`; `notebooks/C2_W04_D01_10_gaming_page_three_roles_STUDENT.ipynb` |
+| The interview room | `extras/C2_W04_D01_transcript_STUDENT.md`; `trainer/C2_W04_D01_interview_scorecards_TRAINER.md`; `notebooks/C2_W04_D01_11_new_feature_definition_page_STUDENT.ipynb` |
 | The close | `kahoot/C2_W04_D01_quiz_STUDENT.md`; `slides/C2_W04_D01_half2_STUDENT.pptx` |
 | If the faculty block slips | `slides/C2_W04_D01_fallback_STUDENT.pptx`; `trainer/C2_W04_D01_fallback_note_TRAINER.md` |
 | The TA-led lab | `notebooks/C2_W04_D01_12_kalpa_lab_STUDENT.ipynb`; `exercises/unguided/C2_W04_D01_kalpa_north_star_STUDENT.md`; `exercises/unguided/C2_W04_D01_lead_lag_STUDENT.md`; `exercises/practice/C2_W04_D01_lab_set_STUDENT.md`; `trainer/C2_W04_D01_lab_note_TRAINER.md` |

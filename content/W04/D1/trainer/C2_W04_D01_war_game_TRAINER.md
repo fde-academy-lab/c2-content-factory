@@ -38,6 +38,7 @@ minutes before the day starts, and tell them their job is to be partly right.
 | The twelve-row table | Deck S60; panel 3 of `cheatsheets/C2_W04_D01_safe_to_pay_STUDENT.pdf`; notebook 07 |
 | The definition template | `exercises/guided/C2_W04_D01_definition_STUDENT.md`, printed or on screen |
 | Round 3's items | `exercises/unguided/C2_W04_D01_redesign_STUDENT.md` |
+| The numbers behind round 3's cards | `notebooks/C2_W04_D01_10_gaming_page_three_roles_STUDENT.ipynb`: each role's objection tested on the tables, for a group that disputes a card |
 
 ---
 

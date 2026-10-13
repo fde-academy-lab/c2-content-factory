@@ -1,6 +1,6 @@
 """Build the Week 4 Monday notebooks, one per chapter and numbered as its SECTION, each executed cold in its own folder.
 
-    python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py           01 to 09
+    python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py           01 to 11
     python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py 02 08     some of them
     python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py 12        the Kalpa lab
 
@@ -12,16 +12,20 @@ prints its table in full, asks for a prediction, counts by hand a line per step 
 check that the two agree, draws the picture, holds the rule as a short function, leaves a faded
 your-turn cell with a check that shows the reference only once the learner's answer exists, and ends
 on the rules and the case notebook that applies them (13 to 16 cells, three pictures, five checks or
-more). 07 to 09 are the Uber case chapters (07 the twelve rows by hand, 14 cells; 08 the full
+more). 07 to 11 are the Uber case chapters (07 the twelve rows by hand, 14 cells; 08 the full
 driver_weeks, the trap and the your-turn cell, 20 cells; 09 the page, the cost, the caveats and SQL,
-16 cells), each naming the subtopics it applies and the concept notebooks that taught them. 12 is the
-Kalpa lab, merged on 13 October 2026 and kept as it is: it is rebuilt only when asked for by number.
+16 cells; 10 the page tested against each way of gaming it and against the three roles' objections,
+20 cells; 11 the interview room's numbers checked on the data and the coding assistant's page drafted
+in the your-turn cell, 16 cells), each naming the subtopics it applies and the concept notebooks that
+taught them. 12 is the Kalpa lab, merged on 13 October 2026 and kept as it is: it is rebuilt only
+when asked for by number.
 Plain pandas, the standard library and matplotlib; each notebook defines its own three-line check. Every
 number a cell prints sits in internal/C2_W04_D01_facts_INTERNAL.yaml: the case's under their ids, the
 concept chapters' under toy_ ids, which need() compares with the numbers this script writes.
 """
 import pathlib
 import sys
+import textwrap
 
 import yaml
 
@@ -1416,7 +1420,7 @@ else:
 # ================================================================================ the case chapters
 def case07():
     build(NB / "C2_W04_D01_07_proxy_test_on_twelve_rows_STUDENT.ipynb", [
-        md(f'''
+        md(textwrap.dedent('''
         # Twelve driver-weeks by hand, with the proxy test and the four definition lines: what does an hour count?
 
         **Week 4, Monday, chapter 7 of 11, the first case chapter.** It applies two of the morning's
@@ -1426,7 +1430,7 @@ def case07():
         Level 1 of the case's six, which climb from a hand count (L1) to interview depth (L6): read the
         ticket, say what the number stands for, and count it by hand on twelve rows of the case's own
         data.
-        {TICKET}
+        ''') + TICKET + textwrap.dedent('''
         **Who needs the answer.** The Hyderabad city head decides on Friday whether the scheme is
         working and whether to extend it. If "hours up 24 percent" is read as "more riders served"
         and it is not, the same top-up goes to two more cities.
@@ -1438,7 +1442,7 @@ def case07():
         3. What is trips per peak online hour on those twelve rows, before and after?
         4. Which drivers moved it, and why do the six fall further than the city?
         5. How many of the offers shown did each driver accept?
-        '''),
+        ''')),
         md('''
         ## What does chapter 1's proxy test ask of peak online hours?
 
@@ -2118,6 +2122,712 @@ check("SQL and pandas agree on hours and trips", list(sql["hours"]) == [118000, 
     ])
 
 
+# The page of seven lines and the check from notebook 06, shared by notebooks 10 and 11.
+PAGE_CHECK = '''
+LINES = ["numerator", "denominator", "window", "exclusions", "does_not_reward", "guardrails", "gaming_note"]
+
+def written(value):
+    """A line counts as written when it holds something other than the ____ placeholder."""
+    return bool(value) and "____" not in str(value)
+
+def missing_lines(page):
+    """The page's blank lines, then every guardrail its gaming note does not say it catches."""
+    blank_lines = [line for line in LINES if not written(page.get(line))]
+    note = page.get("gaming_note") or {}
+    unnamed = [g for g in page.get("guardrails") or [] if not written(note.get(g))]
+    return blank_lines + [f"a guardrail that catches nothing named: {g}" for g in unnamed]
+
+uber = {"numerator": "trips completed inside the peak windows, one per paying rider",
+        "denominator": "enrolled drivers online at least one peak hour that week, the count printed beside the rate",
+        "window": "the calendar week",
+        "exclusions": "trips cancelled by either side, test accounts, trips outside the windows",
+        "does_not_reward": "hours online, offers declined, a shrinking enrolled base",
+        "guardrails": ["offers accepted over offers shown, at or above a floor",
+                       "median rider wait at peak, by zone", "top-up per completed trip"],
+        "gaming_note": {"offers accepted over offers shown, at or above a floor": "catches declining and cherry-picking",
+                        "median rider wait at peak, by zone": "catches supply that stops serving riders",
+                        "top-up per completed trip": "catches a top-up that runs away from the trips it pays for"}}
+'''
+
+
+def case10():
+    build(NB / "C2_W04_D01_10_gaming_page_three_roles_STUDENT.ipynb", [
+        md(f'''
+        # The page under attack from three roles, with gaming and the seven lines: does each line resist the gaming it must, and does the page answer all three roles?
+
+        **Week 4, Monday, chapter 10 of 11, the fourth case chapter.** It applies two of the morning's
+        topics: *Gaming, and definitions that resist it*, taught in
+        `C2_W04_D01_05_gaming_resistant_definitions_STUDENT.ipynb`, and *The metric definition
+        artifact*, taught in `C2_W04_D01_06_metric_definition_artifact_STUDENT.ipynb`. Level 5 of the
+        case's six: decide, cost the decision and defend it against the people it costs. Round 3 of
+        the war game runs beside it.
+
+        **The case.** Uber's Hyderabad city team launched a peak-hour earnings guarantee on Monday
+        31 August 2026: a floor of Rs 300 per peak online hour, with Uber paying the gap between a
+        driver's trip earnings and the floor as a top-up. Six weeks on, peak online hours are up 24
+        percent and completed peak trips 3 percent.
+
+        {LABEL}
+
+        Notebook 09 wrote the redesign's seven-line page, found Rs 1.159 crore of the top-up paid to
+        driver-weeks that accepted fewer than half their offers, and put the redesign's saving at
+        Rs 58 to 92.7 lakh under a stated assumption. This notebook puts the page under attack: first
+        from each way of gaming the scheme, then from the three people in the room who each lose
+        something under it.
+
+        **Who needs the answer.** The city head, who signs the page on Friday, and the three people
+        who each lose something under it: the driver-operations lead, the marketing lead and the
+        finance partner. A page that cannot answer them is dropped, and the city keeps paying for
+        hours.
+
+        **The questions on the way.**
+
+        1. Does the redesign's page hold all seven lines?
+        2. Does each line resist the gaming it must?
+        3. Driver operations: if drivers log off, what would riders lose, and which line shows it?
+        4. Marketing: does the floor stay for every driver who serves riders?
+        5. Finance: is the fall the monsoon's end?
+        6. Where does the floor sit if an accepted trip later cancelled counts as declined?
+        '''),
+        code(SETUP + STYLE + '''
+dw = pd.read_csv("../data/C2_W04_D01_driver_weeks_STUDENT.csv")
+zw = pd.read_csv("../data/C2_W04_D01_zone_weeks_STUDENT.csv")
+dw["window"] = dw["week_start"].lt("2026-08-31").map({True: "before", False: "after"})
+after = dw[dw["window"] == "after"]
+per_driver = after.groupby("driver_id")[["peak_trips", "peak_online_hours"]].sum()
+idle = set(per_driver.index[per_driver["peak_trips"] / per_driver["peak_online_hours"] < 1.0])
+
+def group(driver_id):
+    """The idle tail, the 140 who joined after the launch (ids above d_1060), or the other 880."""
+    if driver_id in idle:
+        return "idle tail"
+    return "joined after the launch" if driver_id > "d_1060" else "the other 880"
+
+dw["group"] = dw["driver_id"].map(group)
+on_after = dw[(dw["window"] == "after") & (dw["peak_online_hours"] > 0)]
+print(f"{len(idle)} drivers in the idle tail, found as notebook 08 found them; "
+      f"{len(on_after):,} driver-weeks online after the launch")
+'''),
+        md('''
+        ## Does the redesign's page hold all seven lines?
+
+        This cell writes notebook 09's page as a seven-key dictionary, the shape chapter 6 used for
+        Balaji Kirana (invented), and runs chapter 6's check, `missing_lines(page)`, copied here from
+        notebook 06 so this notebook stands alone. The check lists every blank line and every
+        guardrail the gaming note does not say it catches.
+        '''),
+        code(PAGE_CHECK + '''
+for line in LINES:
+    value = uber[line]
+    if isinstance(value, dict):
+        value = "; ".join(f"{g} {what}" for g, what in value.items())
+    elif isinstance(value, list):
+        value = "; ".join(value)
+    print(f"{line.replace('_', ' ')}: {value}")
+print("missing:", missing_lines(uber) or "nothing")
+'''),
+        md('''
+        ## Does each line resist the gaming it must?
+
+        Chapter 5 named the ways a number is gamed, and chapter 6 said a guardrail earns its place by
+        the gaming it catches. The page survives only if each way of gaming the scheme meets a line
+        that stops it. The redesign's north star is completed peak trips per enrolled driver online at
+        peak, per week: trips over the driver-weeks with at least one peak online hour.
+
+        **Predict before you run.** Suppose every idle-tail driver doubled the peak online hours of
+        every week after the launch, with the same trips. What would the north star read after the
+        launch?
+
+        a) 35.89, as it reads now.
+        b) Higher, about 41.
+        c) Lower, about 30.
+        d) Doubled, about 72.
+
+        This cell writes the north star as a function and reads it on the six weeks after the launch
+        three times: as the data stands, with the idle tail's hours doubled, and with the idle tail
+        logged off, its driver-weeks taken out.
+        '''),
+        code('''
+def north_star(d):
+    """Completed peak trips per driver-week with at least one peak online hour, and that count."""
+    online = d[d["peak_online_hours"] > 0]
+    return round(online["peak_trips"].sum() / len(online), 2), len(online)
+
+in_idle = after["driver_id"].isin(idle)
+doubled = after.assign(peak_online_hours=after["peak_online_hours"].where(~in_idle, 2 * after["peak_online_hours"]))
+moves = pd.DataFrame([("as the data stands", *north_star(after)),
+                      ("the idle tail doubles its hours", *north_star(doubled)),
+                      ("the idle tail logs off", *north_star(after[~in_idle]))],
+                     columns=["after the launch", "north_star", "online_driver_weeks"]).set_index("after the launch")
+moves
+'''),
+        md('''
+        **What happened.** The answer is a. Doubling the idle tail's hours leaves the north star at
+        35.89, because hours sit in neither its numerator (trips) nor its denominator (drivers online
+        at least one peak hour): logging in for longer cannot raise it. Logging off can. With the idle
+        tail's 1,080 driver-weeks taken out, the north star rises to 36.88, although the 33,440 trips
+        those drivers made are gone unless other drivers carry them. That is why the page prints the
+        count beside the rate (6,434 driver-weeks against 5,354), says it does not reward a shrinking
+        base, and guards the riders' side with the wait.
+
+        This cell draws each way of gaming the scheme against the lines of the page, with a filled
+        square where a line stops the move. The last move is one the redesign itself invites: a driver
+        parked in a thin zone who accepts the few offers shown there passes the acceptance floor, and
+        only top-up per completed trip shows what that week cost. The redesign has not run, so the data
+        cannot show that move yet.
+        '''),
+        code('''
+MOVES = ["log in\\nfor longer", "stay online\\nand decline", "accept,\\nthen cancel", "log off",
+         "accept a thin\\nzone's few offers"]
+ROWS = ["numerator", "denominator", "window", "exclusions", "does not reward", "guardrail 1: accepted share",
+        "guardrail 2: wait by zone", "guardrail 3: top-up per trip", "gaming note"]
+STOPS = {"numerator": [0], "denominator": [0, 3], "exclusions": [2], "does not reward": [0, 1, 3],
+         "guardrail 1: accepted share": [1, 2], "guardrail 2: wait by zone": [3],
+         "guardrail 3: top-up per trip": [4]}
+fig, ax = plt.subplots(figsize=(9.6, 4.8))
+for r, line in enumerate(ROWS):
+    y = len(ROWS) - 1 - r
+    ax.text(-0.6, y, line, ha="right", va="center", color=INK)
+    for c in range(len(MOVES)):
+        hit = c in STOPS.get(line, [])
+        ax.add_patch(plt.Rectangle((c - 0.4, y - 0.4), 0.8, 0.8, fc=VIOLET if hit else "white",
+                                   ec=VIOLET if hit else "#D8D4EA", lw=1.2))
+for c, move in enumerate(MOVES):
+    ax.text(c, len(ROWS) - 0.45, move, ha="center", va="bottom", color=INK, fontsize=9.5)
+ax.set_xlim(-3.9, len(MOVES) - 0.2)
+ax.set_ylim(-0.6, len(ROWS) + 0.8)
+ax.axis("off")
+ax.set_title("Each way of gaming the scheme, and the lines of the page that stop it", loc="left")
+plt.show()
+for c, move in enumerate(MOVES):
+    print(move.replace("\\n", " "), "is stopped by:", ", ".join(line for line, cols in STOPS.items() if c in cols))
+'''),
+        md('''
+        **What happened.** Every move meets at least one line. The window and the gaming note stop no
+        move of their own: the window makes the number computable, and the gaming note records which
+        move each guardrail catches. Logging off is the one move the north star itself rewards, so the
+        page meets it three times: the count printed beside the rate, the line on what it does not
+        reward, and the wait.
+
+        ## Driver operations: if drivers log off, what would riders lose, and which line shows it?
+
+        The driver-operations lead says drivers will log off once the floor asks that half their offers
+        be accepted. Part of that is true: the 180 drivers of the idle tail may well log off. The rest
+        is a question the data can answer: did the drivers who serve riders change how they drove?
+
+        This cell sums hours and trips by window for the idle tail and for the other 880 who joined
+        before the launch, leaving out the 140 who joined after it, and draws each group's weekly
+        trips per peak online hour.
+        '''),
+        code('''
+both = dw[dw["group"] != "joined after the launch"]
+groups = both.groupby(["group", "window"])[["peak_online_hours", "peak_trips"]].sum()
+groups["trips_per_hour"] = (groups["peak_trips"] / groups["peak_online_hours"]).round(2)
+groups = groups.loc[[("the other 880", "before"), ("the other 880", "after"), ("idle tail", "before"), ("idle tail", "after")]]
+weekly = both.groupby(["week_start", "group"])[["peak_trips", "peak_online_hours"]].sum()
+rate = (weekly["peak_trips"] / weekly["peak_online_hours"]).unstack()
+fig, ax = plt.subplots(figsize=(8.0, 3.6))
+ax.plot(range(12), rate["the other 880"], marker="o", color=VIOLET, label="the other 880")
+ax.plot(range(12), rate["idle tail"], marker="s", color=ROSE, label="the idle tail, 180 drivers")
+ax.axvline(5.5, color=MUTED, linestyle="--")
+ax.set_xticks(range(12), [w[5:] for w in rate.index], rotation=45)
+ax.set_ylim(0, 2.3)
+ax.set_ylabel("trips per peak online hour")
+ax.legend(frameon=False, loc="lower left")
+ax.set_title("The other 880 held their rate; the idle tail's fell at the launch", loc="left")
+plt.show()
+idle_trips = groups.loc[("idle tail", "after"), "peak_trips"]
+carry = int(round(idle_trips / 1.9))
+print(groups)
+print(f"if the idle tail logged off, its {idle_trips:,} trips would need about {carry:,} more peak online hours at 1.90 trips an hour")
+'''),
+        md('''
+        **What happened.** The other 880 made 1.90 trips per peak online hour before the launch and
+        1.90 after: the drivers who serve riders did not change. The idle tail fell from 1.90 to 0.80.
+        If the idle tail logged off, its 33,440 trips would need about 17,600 more peak online hours
+        from the others at 1.90 trips an hour. Whether riders would then wait longer is what guardrail
+        2 answers: the median rider wait at peak, read zone by zone, moves for riders when supply that
+        served them leaves, while the north star, as the cell above showed, would rise. The line that
+        answers driver operations is guardrail 2, and the count printed beside the rate shows who left.
+
+        ## Marketing: does the floor stay for every driver who serves riders?
+
+        The marketing lead says changing the terms looks like bait, since the floor was the promise.
+        The redesign keeps the Rs 300 floor for every driver-week that accepts at least half its
+        offers, so the question for the data is how many driver-weeks outside the idle tail would lose
+        it.
+
+        **Predict before you run.** Of the driver-weeks online after the launch outside the idle tail,
+        how many accepted fewer than half their offers? a) none; b) about 100; c) about 1,000; d) about
+        2,000.
+
+        This cell draws each driver-week's accepted share after the launch, the idle tail against every
+        other driver-week, with the floor at 0.5.
+        '''),
+        code('''
+share = on_after["peak_accepted"] / on_after["peak_offers"]
+in_tail = on_after["driver_id"].isin(idle)
+bins = [i / 40 for i in range(41)]
+fig, ax = plt.subplots(figsize=(8.0, 3.6))
+ax.hist(share[in_tail], bins=bins, color=ROSE, label="idle-tail driver-weeks")
+ax.hist(share[~in_tail], bins=bins, color=VIOLET, alpha=0.85, label="every other driver-week")
+ax.axvline(0.5, color=INK, linestyle="--")
+ax.text(0.51, 0.93, "the floor, 0.5", color=INK, transform=ax.get_xaxis_transform())
+ax.set_xlabel("offers accepted over offers shown, one driver-week after the launch")
+ax.set_ylabel("driver-weeks")
+ax.legend(frameon=False, loc="upper left")
+ax.set_title("No week outside the idle tail falls under the floor", loc="left")
+plt.show()
+edges = (round(share[in_tail].max(), 2), round(share[~in_tail].min(), 2))
+under = int((share[~in_tail] < 0.5).sum())
+print(f"the idle tail's highest week accepted {edges[0]}; every other week at least {edges[1]}; "
+      f"driver-weeks outside the idle tail under 0.5: {under}")
+'''),
+        md('''
+        **What happened.** The answer is a: no driver-week outside the idle tail accepted fewer than
+        half its offers. The idle tail's highest week accepted 0.46 and every other week at least 0.78,
+        so a floor at 0.5 takes the top-up from idle-tail weeks only, and every driver who serves
+        riders keeps the promise. The gap is this clean because the data is synthetic; on a real city
+        the two groups overlap, and where the floor sits becomes a trade-off the test measures. The
+        line that answers marketing is guardrail 1's floor, written into the payout rule.
+
+        ## Finance: is the fall the monsoon's end?
+
+        The finance partner says the fall in trips per hour is the season, since the monsoon ended
+        inside the after window. Part of that is true: the season moves rider requests. The question is
+        whether the rate moved with requests or with the launch.
+
+        This cell draws the city's weekly rider requests beside its weekly trips per peak online hour.
+        '''),
+        code('''
+weeks = dw.groupby("week_start")[["peak_trips", "peak_online_hours"]].sum()
+weeks["trips_per_hour"] = (weeks["peak_trips"] / weeks["peak_online_hours"]).round(2)
+weeks["requests"] = zw.groupby("week_start")["peak_requests"].sum()
+fig, (a1, a2) = plt.subplots(1, 2, figsize=(9.6, 3.4))
+a1.bar(range(12), weeks["requests"] / 1000, color=LAV)
+a1.set_ylim(0, 50)
+a1.set_title("Rider requests at peak, thousands", loc="left")
+a2.plot(range(12), weeks["trips_per_hour"], marker="o", color=ROSE)
+a2.set_ylim(0, 2.3)
+a2.set_title("Trips per peak online hour", loc="left")
+for a in (a1, a2):
+    a.axvline(5.5, color=MUTED, linestyle="--")
+    a.set_xticks([0, 6, 11], ["20 Jul", "31 Aug", "5 Oct"])
+plt.show()
+busiest = weeks["requests"].nlargest(3).index
+crest = round(weeks.loc[busiest, "peak_trips"].sum() / weeks.loc[busiest, "peak_online_hours"].sum(), 2)
+step = (weeks.loc["2026-08-24", "trips_per_hour"], weeks.loc["2026-08-31", "trips_per_hour"])
+print(f"weekly requests from {weeks['requests'].min():,} to {weeks['requests'].max():,}")
+print(f"trips per peak online hour, the week before the launch {step[0]:.2f}, the launch week {step[1]:.2f}")
+print(f"the three weeks with most requests ({', '.join(busiest)}) read {crest:.2f}")
+'''),
+        md('''
+        **What happened.** Weekly requests stayed between 41,155 and 43,878 across all twelve weeks,
+        while the rate stepped from 1.88 in the week before the launch to 1.64 in the launch week, and
+        the three weeks with the most requests, the first three after the launch and still in the
+        rains, read 1.60. The season moved requests within a narrow band; the rate fell in the week the
+        scheme began. The line that answers finance is the window: a calendar week shows the step that
+        six-week totals blur. The top-up budget is finance's own number, so finance watches guardrail 3,
+        top-up per completed trip, and decides what the floor may cost.
+
+        ### Your turn: where does the floor sit if an accepted trip later cancelled counts as declined?
+
+        The payout rule counts an accepted trip that the driver later cancelled as declined, so a
+        driver cannot pass the floor by accepting and cancelling. In this data every accepted trip
+        either became a completed trip or was cancelled by the driver, so the rule's share is trips
+        completed over offers shown. Fill the two blanks, then type and run the lines in the empty
+        cell below:
+
+        ```python
+        done = on_after["peak_trips"] / on_after["____"]
+        in_tail = on_after["driver_id"].isin(idle)
+        idle_edge = round(done[in_tail].max(), 2)
+        other_edge = round(done[~in_tail].____(), 2)
+        print(idle_edge, other_edge)
+        ```
+
+        The check under it compares your two edges with the reference and asks whether 0.5 still sits
+        between them.
+        '''),
+        empty(),
+        code('''
+mine = (globals().get("idle_edge"), globals().get("other_edge"))
+if None in mine:
+    print("Store idle_edge and other_edge in the empty cell above, then run this cell again.")
+else:
+    done = on_after["peak_trips"] / on_after["peak_offers"]
+    tail = on_after["driver_id"].isin(idle)
+    reference = (round(done[tail].max(), 2), round(done[~tail].min(), 2))
+    print("the reference edges:", reference)
+    check("your edges match the reference, and 0.5 still sits between them",
+          tuple(mine) == reference and reference[0] < 0.5 < reference[1])
+'''),
+        md('''
+        This cell checks the claims the chapter makes about its own numbers.
+        '''),
+        code('''
+check("the redesign's page holds all seven lines", missing_lines(uber) == [])
+check("doubling the idle tail's hours leaves the north star at 35.89",
+      moves["north_star"].tolist()[:2] == [35.89, 35.89])
+check("the idle tail logging off raises the north star to 36.88, on 5,354 driver-weeks against 6,434",
+      moves.loc["the idle tail logs off"].tolist() == [36.88, 5354]
+      and moves.loc["as the data stands", "online_driver_weeks"] == 6434)
+check("every way of gaming the scheme meets a line that stops it",
+      all(any(c in cols for cols in STOPS.values()) for c in range(len(MOVES))))
+check("the other 880 held 1.90 trips an hour in both windows; the idle tail fell from 1.90 to 0.80",
+      groups["trips_per_hour"].tolist() == [1.9, 1.9, 1.9, 0.8])
+check("the idle tail's 33,440 trips would need about 17,600 hours at 1.90", (idle_trips, carry) == (33440, 17600))
+check("idle-tail weeks accept at most 0.46, every other week at least 0.78, none of them under 0.5",
+      edges == (0.46, 0.78) and under == 0)
+check("the rate stepped from 1.88 to 1.64 in the launch week", step == (1.88, 1.64))
+check("weekly requests stayed between 41,155 and 43,878; the three busiest weeks read 1.60",
+      (weeks["requests"].min(), weeks["requests"].max()) == (41155, 43878) and crest == 1.6)
+'''),
+        md('''
+        ## What does chapter 10 answer?
+
+        1. The redesign's page holds all seven lines, and its gaming note says what each guardrail
+           catches.
+        2. Each way of gaming the scheme meets a line that stops it. Logging in for longer moves
+           neither the numerator nor the denominator, so the north star stays at 35.89. Logging off
+           raises it to 36.88, and the count beside the rate and the wait catch it. Declining and
+           accepting then cancelling meet the floor; a thin zone's few accepted offers meet top-up per
+           completed trip.
+        3. Driver operations is answered by guardrail 2: the other 880 held 1.90 trips an hour, and if
+           the idle tail logged off, its 33,440 trips would need about 17,600 hours from them.
+        4. Marketing is answered by the floor: no driver-week outside the idle tail accepted under half
+           its offers, so every driver who serves riders keeps the promise.
+        5. Finance is answered by the window: requests stayed between 41,155 and 43,878 a week while
+           the rate stepped from 1.88 to 1.64 in the launch week.
+        6. Your turn found where the floor's edges sit when an accepted trip later cancelled counts as
+           declined.
+
+        **The rules.**
+
+        - Test every line against the move it must resist, on the data, before anyone signs the page.
+        - Each role's objection is partly right: name the true part, then the line that answers the
+          rest.
+        - A number that rises when people leave needs its count printed beside it and a guardrail on
+          the people it serves.
+
+        **In the interview.** [D] Three departments each want their own target; how do you get to one,
+        and what do you say to the two who lose? One page, with each department's worry written as a
+        guardrail or a line, and each answer backed by its number. Notebook 11 takes the whole day into
+        the interview room.
+        '''),
+    ])
+
+
+def case11():
+    build(NB / "C2_W04_D01_11_new_feature_definition_page_STUDENT.ipynb", [
+        md(f'''
+        # The interview question on a new feature, with all six topics: what wins the interview, and does the same page hold for an AI coding assistant?
+
+        **Week 4, Monday, chapter 11 of 11, the last case chapter.** It applies all six of the
+        morning's topics, each taught in its own notebook: *What to measure and why; the proxy test*
+        (01), *North-star and guardrail metrics* (02), *Leading against lagging indicators* (03),
+        *Definitions: numerator, denominator, window, exclusions* (04), *Gaming, and definitions that
+        resist it* (05) and *The metric definition artifact* (06). Level 6 of the case's six: the
+        interview room, where the same case is asked cold.
+
+        **The case.** Uber's Hyderabad city team launched a peak-hour earnings guarantee on Monday
+        31 August 2026: a floor of Rs 300 per peak online hour, with Uber paying the gap between a
+        driver's trip earnings and the floor as a top-up.
+
+        {LABEL}
+
+        **Who needs the answer.** You, in a product or analytics screen, where the question below is
+        asked cold and a candidate who names one number and stops is screened out.
+
+        **The questions on the way.**
+
+        1. What does the interviewer ask, and what should a candidate clarify first?
+        2. Which numbers does a hire-grade answer carry, and does the data hold each one?
+        3. Where do the zones and the money take the answer?
+        4. Which line answers each follow-up?
+        5. Does the same page hold for an AI coding assistant, in your turn?
+        '''),
+        code(SETUP + STYLE + '''
+dw = pd.read_csv("../data/C2_W04_D01_driver_weeks_STUDENT.csv")
+zw = pd.read_csv("../data/C2_W04_D01_zone_weeks_STUDENT.csv")
+dw["window"] = dw["week_start"].lt("2026-08-31").map({True: "before", False: "after"})
+zw["window"] = zw["week_start"].lt("2026-08-31").map({True: "before", False: "after"})
+print(f"{len(dw):,} driver-weeks and {len(zw)} zone-weeks, the tables notebooks 07 to 10 read")
+'''),
+        md('''
+        ## What does the interviewer ask, and what should a candidate clarify first?
+
+        > "Uber launched a peak-hour earnings guarantee for drivers in one city six weeks ago. How would
+        > you measure whether it is a success?"
+
+        A strong candidate asks before naming any number. What was the scheme meant to change: more
+        drivers online, or riders picked up faster? Who is in it, and who pays? What would count as
+        harm? Which decision rides on the answer, and against which baseline?
+
+        **The trap the interviewer sets.** Peak online hours rose 24 percent. A candidate who names
+        that number and stops has measured the scheme by what it paid for, chapter 1's proxy test
+        failed in the first sentence.
+
+        A hire-grade answer runs five steps: the goal, one north star with its lines, the guardrails, a
+        leading input, and the test that would settle cause. This cell computes the number that fills
+        each step and draws the five steps with their numbers.
+        '''),
+        code('''
+online = dw[dw["peak_online_hours"] > 0]
+sums = dw.groupby("window")[["peak_trips", "peak_accepted", "peak_offers", "topup_rs"]].sum()
+board = pd.DataFrame({
+    "north_star": (online.groupby("window")["peak_trips"].sum() / online.groupby("window").size()).round(2),
+    "acceptance": (sums["peak_accepted"] / sums["peak_offers"]).round(3),
+    "median_wait": zw.groupby("window")["median_wait_min"].median().round(2),
+    "topup_per_trip_rs": (sums["topup_rs"] / sums["peak_trips"]).round(1),
+}).loc[["before", "after"]]
+wk = dw.groupby("week_start")[["peak_accepted", "peak_offers"]].sum()
+launch_acceptance = round(wk.loc["2026-08-31", "peak_accepted"] / wk.loc["2026-08-31", "peak_offers"], 3)
+b, a = board.loc["before"], board.loc["after"]
+STEPS = [("1. The goal", "riders picked up\\nfaster at peak"),
+         ("2. The north star", f"trips per online\\ndriver-week,\\n{b.north_star:.2f} to {a.north_star:.2f}"),
+         ("3. The guardrails", f"accepted {b.acceptance:.3f}\\nto {a.acceptance:.3f}; wait {b.median_wait}\\n"
+                               f"to {a.median_wait} minutes;\\ntop-up Rs {a.topup_per_trip_rs} a trip"),
+         ("4. The leading input", f"acceptance settled\\nin the launch week,\\nat {launch_acceptance:.3f}"),
+         ("5. The test", "zones as the unit,\\nold rule\\nagainst new")]
+fig, ax = plt.subplots(figsize=(11.6, 3.2))
+for i, (title, body) in enumerate(STEPS):
+    x = i * 2.3
+    lit = i == 0
+    ax.add_patch(plt.Rectangle((x, 0), 2.0, 2.0, fc=INK if lit else "#EEEAFB", ec=INK if lit else VIOLET, lw=1.5))
+    ax.text(x + 1.0, 1.72, title, ha="center", va="center", fontsize=10, fontweight="bold", color="white" if lit else INK)
+    ax.text(x + 1.0, 0.8, body, ha="center", va="center", fontsize=9.5, color="white" if lit else INK)
+    if i:
+        ax.annotate("", xy=(x, 1.0), xytext=(x - 0.3, 1.0), arrowprops={"arrowstyle": "-|>", "color": MUTED})
+ax.set_xlim(-0.1, 11.4)
+ax.set_ylim(-0.1, 2.15)
+ax.axis("off")
+ax.set_title("A hire-grade answer in five steps, each filled from the data", loc="left")
+plt.show()
+board.T
+'''),
+        md('''
+        **What happened.** The north star read 35.76 trips per online driver-week before and 35.89
+        after. Acceptance fell from 0.863 to 0.730 and settled at 0.729 in the launch week itself, the
+        median wait moved from 4.8 to 4.6 minutes, and the top-up cost Rs 82.3 per completed trip after
+        the launch, against nothing before.
+
+        ## Which numbers does a hire-grade answer carry, and does the data hold each one?
+
+        **Predict before you run.** Peak online hours rose 24 percent. What did the north star do
+        across the same two windows?
+
+        a) It rose with the hours, by about a quarter.
+        b) It rose with the trips, by about 3 percent.
+        c) It barely moved.
+        d) It fell with trips per hour, by about a sixth.
+
+        This cell sets the four numbers a weak answer and a hire-grade answer would read side by side,
+        each as after over before, with its two values written on its bar.
+        '''),
+        code('''
+hours = dw.groupby("window")["peak_online_hours"].sum()
+trips = dw.groupby("window")["peak_trips"].sum()
+tph = (trips / hours).round(2)
+reads = pd.DataFrame({
+    "peak online hours": [hours["before"], hours["after"], f"{hours['before']:,} to {hours['after']:,}"],
+    "completed peak trips": [trips["before"], trips["after"], f"{trips['before']:,} to {trips['after']:,}"],
+    "the north star": [b.north_star, a.north_star, f"{b.north_star:.2f} to {a.north_star:.2f}"],
+    "trips per peak online hour": [tph["before"], tph["after"], f"{tph['before']:.2f} to {tph['after']:.2f}"],
+}, index=["before", "after", "label"]).T
+ratio = (reads["after"].astype(float) / reads["before"].astype(float)).tolist()
+fig, ax = plt.subplots(figsize=(8.4, 3.4))
+y = list(range(len(reads)))[::-1]
+ax.barh(y, ratio, color=[MUTED, VIOLET, INK, ROSE])
+ax.axvline(1.0, color=INK, lw=1)
+for yy, r, label in zip(y, ratio, reads["label"]):
+    ax.text(max(r, 1.0) + 0.02, yy, label, va="center", color=INK)
+ax.set_yticks(y, reads.index)
+ax.set_xlim(0, 1.75)
+ax.set_xlabel("after the launch over before")
+ax.set_title("The weak answer reads the top bar; the hire-grade answer reads all four", loc="left")
+plt.show()
+reads[["before", "after"]]
+'''),
+        md('''
+        **What happened.** The answer is c: the north star moved from 35.76 to 35.89 while hours rose
+        from 118,000 to 146,300 and trips per peak online hour fell from 1.90 to 1.58. The weak answer
+        reads the top bar and says the scheme works; the hire-grade answer reads all four and says the
+        scheme bought hours while the number it exists for barely moved.
+
+        ## Where do the zones and the money take the answer?
+
+        A hire-grade answer then names who moved the number, where, and what each extra trip cost. This
+        cell finds the idle tail as notebook 08 did, reads the outer zones' wait in each window as the
+        middle of their 18 zone-week medians, and divides the top-up by the trips it bought: the idle
+        tail's outer-zone top-up over the extra trips the outer zones fulfilled, and the whole top-up
+        over the city's extra trips.
+        '''),
+        code('''
+OUTER = ["Shamshabad", "Rajendranagar", "Patancheru"]
+after = dw[dw["window"] == "after"]
+per_driver = after.groupby("driver_id")[["peak_trips", "peak_online_hours"]].sum()
+idle = set(per_driver.index[per_driver["peak_trips"] / per_driver["peak_online_hours"] < 1.0])
+outer = zw[zw["zone"].isin(OUTER)]
+outer_wait = outer.groupby("window")["median_wait_min"].median().round(2).loc[["before", "after"]]
+o = outer.groupby("window")[["peak_requests", "peak_fulfilled"]].sum()
+extra_outer = o.loc["after", "peak_fulfilled"] - o.loc["after", "peak_requests"] * o.loc["before", "peak_fulfilled"] / o.loc["before", "peak_requests"]
+idle_outer_topup = after.loc[after["driver_id"].isin(idle) & after["zone_mode"].isin(OUTER), "topup_rs"].sum()
+per_extra_outer = int(round(idle_outer_topup / extra_outer, -3))
+per_extra_trip = int(round(after["topup_rs"].sum() / (trips["after"] - trips["before"])))
+fig, ax = plt.subplots(figsize=(8.0, 3.6))
+for zone, colour in zip(OUTER, [VIOLET, ROSE, LAV]):
+    z = outer[outer["zone"] == zone].sort_values("week_start")
+    ax.plot(range(12), z["median_wait_min"], marker="o", color=colour, label=zone)
+for win, (x0, x1) in {"before": (0, 5), "after": (6, 11)}.items():
+    ax.hlines(outer_wait[win], x0 - 0.2, x1 + 0.2, color=INK, linestyle=":",
+              label="the middle of each\\nwindow's 18 waits" if win == "before" else None)
+ax.axvline(5.5, color=MUTED, linestyle="--")
+ax.set_xticks([0, 6, 11], ["20 Jul", "31 Aug", "5 Oct"])
+ax.set_ylim(5.2, 7.0)
+ax.set_ylabel("median rider wait at peak, minutes")
+ax.legend(frameon=False, loc="center left", bbox_to_anchor=(1.01, 0.5), fontsize=9.5)
+ax.set_title("The outer zones' wait fell a little after the launch", loc="left")
+plt.show()
+print(f"{len(idle)} drivers in the idle tail; the outer zones' wait {outer_wait['before']} to {outer_wait['after']} minutes")
+print(f"the idle tail's outer-zone top-up per extra outer trip: about Rs {per_extra_outer:,}")
+print(f"the whole top-up per extra trip across the city: Rs {per_extra_trip:,}, over {trips['after'] - trips['before']:,} extra trips")
+'''),
+        md('''
+        **What happened.** The 180 drivers of the idle tail added hours on fewer trips, most of the new
+        hours in the three outer zones. There the middle wait fell from 6.6 to 5.95 minutes, so riders
+        in the thin zones gained a little, and the idle tail's top-up in those zones came to about
+        Rs 46,000 for each extra trip they fulfilled. Across the city the Rs 1.9 crore came to Rs 2,836
+        for each of the 6,700 extra trips. That is the decision line: hold the scheme, keep the floor
+        only for weeks that accept at least half their offers, and test the redesign with zones as the
+        unit.
+
+        ## Which line answers each follow-up?
+
+        | The interviewer pushes | The hire-grade line, from the numbers above |
+        |---|---|
+        | "Online hours rose 24 percent; what do you check before you celebrate?" | Trips per online hour and the rider's wait: hours rose 24 percent and trips 3, so the rate fell from 1.90 to 1.58 and waits barely moved |
+        | "Which guardrail would driver operations fight, and why are they partly right?" | The acceptance floor: some declines are fair, so set it in the gap the data shows, above 0.46 and below 0.78, and test two levels, since on a real city the groups overlap |
+        | "The drivers control when they log in; what happens to your number?" | Logging in cannot raise it, since each trip needs a rider's request; logging off can, so print the driver count beside the rate |
+
+        Notebook 10 ran the third line on the data: doubling the idle tail's hours left the north star
+        at 35.89, and taking the idle tail's driver-weeks out raised it to 36.88.
+
+        ## Does the same page hold for an AI coding assistant?
+
+        The interviewer's last push moves the question to an AI company: how would you measure an AI
+        coding assistant without rewarding suggestions that were accepted and then deleted? The gamed
+        proxy there is suggestions accepted, the way peak online hours were Uber's: a developer can
+        accept a suggestion and delete it in the next edit. The answer runs on the same seven lines, so
+        the check is chapter 6's `missing_lines(page)`, copied here from notebook 06 so this notebook
+        stands alone. The variant is written for this programme and names no company and no figure.
+
+        This cell writes the weak answer and Uber's page as pages and draws both, line by line.
+        '''),
+        code(PAGE_CHECK + '''
+weak = {"numerator": "peak online hours", "window": "six weeks"}    # "hours are up 24 percent, so it works"
+SHORT = {"numerator": "trips completed", "denominator": "drivers online, count printed",
+         "window": "the calendar week", "exclusions": "cancelled, test, off-window",
+         "does_not_reward": "hours, declines, a smaller base", "guardrails": "acceptance; wait; top-up a trip",
+         "gaming_note": "what each one catches"}
+fig, ax = plt.subplots(figsize=(9.6, 4.4))
+for r, line in enumerate(LINES):
+    y = len(LINES) - 1 - r
+    ax.text(-0.15, y, line.replace("_", " "), ha="right", va="center", color=INK)
+    for c, (page, text) in enumerate(((weak, weak.get(line) or "blank"), (uber, SHORT[line]))):
+        filled = bool(page.get(line))
+        ax.add_patch(plt.Rectangle((c * 2.6, y - 0.4), 2.5, 0.8, fc=VIOLET if filled else "white",
+                                   ec=VIOLET if filled else ROSE, lw=1.4))
+        ax.text(c * 2.6 + 1.25, y, text, ha="center", va="center", color="white" if filled else ROSE)
+ax.text(1.25, 7.0, "the weak answer", ha="center", fontweight="bold", color=INK)
+ax.text(3.85, 7.0, "the hire-grade page", ha="center", fontweight="bold", color=INK)
+ax.set_xlim(-2.6, 5.2)
+ax.set_ylim(-0.6, 7.5)
+ax.axis("off")
+ax.set_title("The weak answer writes 2 of the 7 lines; the hire-grade page writes all 7", loc="left")
+plt.show()
+for name, page in (("the weak answer", weak), ("the hire-grade page", uber)):
+    print(f"{name}: {missing_lines(page) or 'nothing missing'}")
+'''),
+        md('''
+        ### Your turn: does your page for the AI coding assistant pass the check?
+
+        Write the coding assistant's page as seven lines. Its north star is the suggested code still
+        present at the next commit, per developer with a seat, per week; a commit is a saved change to
+        the code. Two lines are filled for you. Fill the other five, naming in the gaming note each
+        guardrail you list and the gaming it catches. In the empty cell below, edit and run:
+
+        ```python
+        ai_page = {"numerator": "suggested lines still present at the next commit",
+                   "denominator": "____",
+                   "window": "the calendar week",
+                   "exclusions": "____",
+                   "does_not_reward": "____",
+                   "guardrails": ["____"],
+                   "gaming_note": {"____": "____"}}
+        ```
+
+        The check under it runs `missing_lines` on your page and passes when nothing is missing. Then
+        say which of your lines catches a developer who accepts every suggestion and deletes it in the
+        next edit.
+        '''),
+        empty(),
+        code('''
+mine = globals().get("ai_page")
+if mine is None:
+    print("Store ai_page in the empty cell above, then run this cell again.")
+else:
+    gaps = missing_lines(mine)
+    print("nothing missing: the page holds all seven lines" if not gaps else f"not yet, still missing: {gaps}")
+'''),
+        md('''
+        This cell checks the claims the chapter makes about its own numbers.
+        '''),
+        code('''
+check("hours 118,000 to 146,300, trips 224,200 to 230,900, trips per hour 1.90 to 1.58",
+      (hours.tolist(), trips.tolist(), tph.tolist()) == ([146300, 118000], [230900, 224200], [1.58, 1.9]))
+check("the north star 35.76 to 35.89; acceptance 0.863 to 0.730; the wait 4.8 to 4.6 minutes",
+      board["north_star"].tolist() == [35.76, 35.89] and board["acceptance"].tolist() == [0.863, 0.73]
+      and board["median_wait"].tolist() == [4.8, 4.6])
+check("acceptance settled at 0.729 in the launch week; the top-up cost Rs 82.3 a trip after it",
+      launch_acceptance == 0.729 and a.topup_per_trip_rs == 82.3)
+check("180 drivers in the idle tail; the outer zones' wait 6.6 to 5.95 minutes",
+      len(idle) == 180 and outer_wait.tolist() == [6.6, 5.95])
+check("about Rs 46,000 per extra outer trip, and Rs 2,836 per extra trip across the city",
+      (per_extra_outer, per_extra_trip) == (46000, 2836))
+check("the weak answer writes 2 of the 7 lines, and the hire-grade page all seven",
+      len(missing_lines(weak)) == 5 and missing_lines(uber) == [])
+'''),
+        md(f'''
+        ## What does chapter 11 answer?
+
+        1. Clarify first: what the scheme is for, who is in it and who pays, what counts as harm, and
+           which decision rides on the answer against which baseline.
+        2. The hire-grade answer runs five steps, each filled from the data: riders picked up faster;
+           the north star at 35.76 then 35.89; acceptance 0.863 to 0.730, the wait 4.8 to 4.6 minutes
+           and Rs 82.3 of top-up a trip; acceptance settled in the launch week; a test by zone.
+        3. It reads all four bars: hours rose from 118,000 to 146,300 while trips per hour fell from
+           1.90 to 1.58 and the north star barely moved.
+        4. It names the segment and the money: 180 drivers, the outer zones' wait 6.6 to 5.95 minutes
+           at about Rs 46,000 per extra outer trip, and Rs 2,836 per extra trip across the city.
+        5. Each follow-up has a line from the data, and the coding assistant's page runs on the same
+           seven lines and the same check.
+
+        **The rules.**
+
+        - Clarify the goal before naming a number, then name the number the goal needs.
+        - Read the paid number beside the number it stands for, never alone.
+        - Close on a decision with its cost, and on the test that would settle cause.
+
+        **In the interview.** [S] How would you measure the success of a new feature? {TAGS} The six
+        topics are the skeleton of the answer: the proxy test on the obvious number, a north star with
+        its guardrails, the leading input, the four lines, the gaming each line resists, and the page
+        that holds them. The Kahoot follows, and the practice lab's notebook,
+        `C2_W04_D01_12_kalpa_lab_STUDENT.ipynb`, runs the same method on Kalpa Retail.
+        '''),
+    ])
+
+
 # ================================================================================ the Kalpa lab
 def lab12():
     """The lab as merged on 13 October 2026 (pull request 246), under its new number; rebuilt only on request."""
@@ -2305,7 +3015,7 @@ check("no warehouse order appears twice", reorders["order_id"].dropna().is_uniqu
 
 
 BUILDERS = {"01": c01, "02": c02, "03": c03, "04": c04, "05": c05, "06": c06,
-            "07": case07, "08": case08, "09": case09, "12": lab12}
+            "07": case07, "08": case08, "09": case09, "10": case10, "11": case11, "12": lab12}
 DEFAULT = [k for k in BUILDERS if k != "12"]   # the lab ships as merged unless asked for by number
 
 if __name__ == "__main__":
@@ -2315,13 +3025,16 @@ if __name__ == "__main__":
 
 # Test inputs and expected outcomes
 # python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py
-#     builds and executes notebooks 01 to 09, printing "built 01" to "built 09"; every check PASS,
+#     builds and executes notebooks 01 to 11, printing "built 01" to "built 11"; every check PASS,
 #     and the lab notebook 12 is left as merged
 # python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py 04
 #     rebuilds notebook 04 alone
 # python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py 12
 #     rebuilds the Kalpa lab from its cells as merged, under its new number
-# python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py 10
-#     stops with a KeyError, since chapters 10 and 11 have no notebook
+# python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py 10 11
+#     rebuilds the two afternoon notebooks; notebook 10's checks include the north star at 35.89 with the
+#     idle tail's hours doubled and 36.88 with the idle tail logged off
+# python3 content/W04/D1/internal/C2_W04_D01_build_notebooks_INTERNAL.py 13
+#     stops with a KeyError, since the day has no chapter 13
 # the same run after a toy number in the generator changes (say tokens after the pay rule become 450)
 #     stops before building, naming the toy_ id whose value differs from the number this script writes
