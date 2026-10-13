@@ -28,8 +28,9 @@ Hyderabad, launched on 31 August 2026.
 > rate fixed before the test starts. Across the enrolled drivers, Monday's arithmetic puts the saving
 > at Rs 58 lakh over six weeks if half of that Rs 1.16 crore is still paid to drivers who start
 > accepting, and Rs 92.7 lakh if a fifth is, and the rate can move it within that range or beyond it; you
-> sign the test, and we drop the change if completed trips per driver fall or any zone's median wait
-> over the six weeks rises above its six weeks before the launch.
+> sign the test, and we stop it if the test half completes fewer trips per driver than the other half
+> or any zone's median wait over the six weeks runs more than half a minute above its six weeks before
+> the launch.
 
 ## Why does it pass each rule?
 

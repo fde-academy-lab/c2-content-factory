@@ -2372,9 +2372,9 @@ print(segments.to_string(index=False))
 
         The hire-grade answer says an online hour brought in Rs 260 of fares, down from Rs 314, at the
         same Rs 165 fare, and meets the follow-up it expects: bookings per driver-week rose 0.8
-        percent on the 880 drivers outside the idle tail, who drove about 4 percent more hours at an
-        unchanged Rs 313.5 an hour, while the 180 who accept least doubled their online hours, to
-        about 39 a week, for 12 percent fewer trips.
+        percent: longer weeks, mostly the other 880 drivers there before the launch working about 4
+        percent more hours at an unchanged Rs 313.5 an hour, while the 180 who accept least doubled
+        their online hours, to about 39 a week, for 12 percent fewer trips.
 
         **Predict before you run.** The interviewer asks how per driver-week can rise while per hour
         falls. Which number answers it?
@@ -2429,7 +2429,7 @@ plt.show()
         **What happened.** The answer is b: 18.6 hours a driver-week before and 22.5 after, so per
         driver-week rose while per hour fell 17 percent, with the fare flat at Rs 165. Most of the
         extra hours were the idle tail's: its 180 drivers went from about 18.5 hours a week to about
-        39 while their trips fell 12 percent, so their weeks earned 12 percent less. The rise itself
+        39 while their trips fell 12 percent, so their weeks brought in 12 percent less in fares. The rise itself
         sits with the other 880, whose weeks rose 4 percent on 4 percent more hours at an unchanged
         rate per hour. The 140 joiners pulled the read down, which is why the answer says so before
         anyone asks.
@@ -2538,8 +2538,9 @@ recommend_hire = [("decision", "you are deciding whether to keep, end or change 
                   ("caveat", "the monsoon ended in the same weeks, and last year's weeks are missing"),
                   ("action", "test it on half the drivers for six weeks at a rate fixed first; it saves Rs 58 lakh "
                              "to Rs 92.7 lakh over six weeks across the enrolled drivers; you sign"),
-                  ("change my mind", "fewer completed trips per driver, or any zone's median wait above its level "
-                                     "before the launch, drops the change")]
+                  ("change my mind", "the test half completing fewer trips per driver than the other half, or any "
+                                     "zone's six-week median wait more than half a minute above its level before "
+                                     "the launch, stops the test")]
 recommend_weak = [("method", "so I looked at the dashboard"), ("evidence", "hours up, trips up, acceptance down"),
                   ("evidence", "bookings per driver-week is actually up"), ("action", "maybe pay per trip")]
 estimate_hire = [("clarify", "one moment of the weekday evening peak, one product, a median wait under five minutes"),

@@ -771,17 +771,17 @@ LIVE, 30 seconds. Transition: transcript 1.
 
 | A weak opening | A hire-grade opening |
 |---|---|
-| "So I looked at the dashboard. Online hours are up 24 percent, trips are up 3 percent, trips per hour went from 1.90 to 1.58, acceptance fell, and bookings per driver-week is actually up, so it is mixed." | "You are deciding whether to keep, end or change the guarantee. It is paying for online hours that carry no trips: an hour online brought in Rs 314 of fares and now brings in Rs 260 at the same fare, while the median wait barely moved, 4.8 to 4.6 minutes. Part of the fall may be the monsoon. Test paying per completed trip with an acceptance floor on half the drivers, picked at random, for six weeks, at a per-trip rate fixed first; across the enrolled drivers it saves Rs 58 lakh to Rs 92.7 lakh over six weeks if a half to a fifth of the idle top-up is still paid. You sign the test." |
+| "So I looked at the dashboard. Online hours are up 24 percent, trips are up 3 percent, trips per hour went from 1.90 to 1.58, acceptance fell, and bookings per driver-week is actually up, so it is mixed." | "You are deciding whether to keep, end or change the guarantee. It is paying for online hours that carry no trips: an hour online brought in Rs 314 of fares and now brings in Rs 260 at the same fare, while the median wait barely moved, 4.8 to 4.6 minutes. Part of the fall may be the monsoon. Test paying per completed trip with an acceptance floor on half the drivers, picked at random, for six weeks, at a per-trip rate fixed first; rolled out to every enrolled driver it saves Rs 58 lakh to Rs 92.7 lakh over six weeks if a half to a fifth of the idle top-up is still paid. You sign the test." |
 
 **The follow-ups:** which denominator did you choose, and what would make you choose another; test or rollout, and how do you stop drivers moving into the zones you treat; the finance partner says it is the monsoon, so answer in under a minute.
 
 ```notes
 LIVE, 8 minutes. In pairs, one reads the interviewer, one the candidate; then the candidate answers
 the three follow-ups without notes. The weak opening reads numbers and lets the per-driver-week rise
-blur the claim. The full hire-grade answer, with the per-driver-week line checked (it rose on the
-880 outside the idle tail, who drove about 4 percent more hours at an unchanged Rs 313.5 an hour,
-while the idle tail doubled its hours for 12 percent fewer trips and the 140 joiners pulled the read
-down), is in extras/C2_W04_D02_interview_room_STUDENT.md, and notebook 10 recomputes the numbers it
+blur the claim. The full hire-grade answer, with the per-driver-week line checked (longer weeks,
+mostly the other 880 drivers there before the launch working about 4 percent more hours at an
+unchanged Rs 313.5 an hour, while the idle tail doubled its hours and brought in 12 percent less in
+fares), is in extras/C2_W04_D02_interview_room_STUDENT.md, and notebook 10 recomputes the numbers it
 speaks.
 Transition: transcript 2.
 ```

@@ -1084,3 +1084,40 @@ The style sweep is clean across all text files, the build scripts and the notebo
 | New problem 8, the interview set's line 65 | Fixed: three transcripts, the third the AI-company variant |
 | A strong interviewer's rejections | Fixed: the stop line reads each zone's median wait over the test's six weeks against its six weeks before the launch, in transcript 1, follow-up 2, the model page, the scorecard and the studio solution; follow-up 1 quotes the 0.53 against 0.60 ratio, which needs no trip length, and says the 0.21 leans on the same guess; the interviewer's answer says the editor has logged survival for two years and counts each suggestion's characters still in the file, so an edited suggestion counts for the part that stays |
 | Transcript 2's trap point, which a strict marker could hold at 1 | Kept: the answer names the all-week ratio as a check on the ratio's size, never the count, and moves only as far as the two routes agree |
+
+---
+
+## Transcript 1, re-scored on 13 October 2026 after the check's fixes
+
+A fresh agent scored transcript 1's hire-grade answer on S90's first three criteria and recomputed
+its per-driver-week sentences. It wrote findings only. Its report is reproduced as written.
+
+I didn't edit, create or delete any file and ran no git commands. All figures were recomputed from the CSV and checked against Monday's driver_weeks and zone_weeks tables.
+
+**1. Scores on S90's first three criteria**
+- **Clarified the scope first: 1.** The candidate asks about the decision, the audience and the length of the slot, but never asks about the window; the answer only asserts it. The trainer key (/home/user/c2-content-factory/content/W04/D2/trainer/C2_W04_D02_interview_scorecards_TRAINER.md) gives a 2 without the window, which S90's 2 requires.
+- **Named the denominator and the window: 2.** Rs per peak online hour, six weeks either side of 31 August.
+- **Saw the trap: 2.** The answer names the 0.8% rise and breaks it down by group correctly.
+
+**2. The last three sentences (driver-weeks are 1,080, 5,280 and 140, confirmed in Monday's table)**
+- **Where the rise sits: holds.** The city went from Rs 5,816.5 to 5,861.3 a driver-week (+0.77%). The 880 add Rs 197 per pre-launch driver-week (their own +4.1%) and the idle tail takes away Rs 118. The joiners, at Rs 4,314 a driver-week, pull +1.4% down to +0.8%.
+- **Idle tail: holds.** Hours went from 20,000 to 42,000 (2.1x), or 38.9 a week. Trips fell 12.0%, and fares fell from Rs 5,806 to 5,109 a driver-week.
+- **Other 880: holds.** Hours rose 4.1% and the rate stayed at Rs 313.5 an hour in both windows.
+- **Small wording point:** the 140 joiners are also "outside the idle tail".
+
+**3. What a strong interviewer would still reject**
+- **Too long and too many numbers.** The answer runs 402 words (2.7 minutes at 150 words a minute) and carries 23 numerals for a non-technical leader, while its own structure promises one number. The group breakdown belongs in the Q&A.
+- **"Their weeks earned less" will be heard as pay.** The 180 took the whole Rs 1.159 crore of low-acceptance top-up: Rs 15,840 a driver-week against Rs 5,806 before. It should say "brought in less in fares".
+- **The stop rule fires on noise.** It trips on any of 12 zones with no margin, against a monsoon baseline. Madhapur's six-week median (4.80) already equals its pre-launch level, and weekly zone medians vary by 0.07 to 0.20 minutes (standard deviation). "Trips per driver falling" names nothing to compare against.
+- **Follow-up 3 skips the control already in hand.** In the same weeks the 880 held 1.90 trips an hour while the 180 fell to 0.80. The 180 were picked by post-launch trips per hour under 1.0 (/home/user/c2-content-factory/content/W04/D1/internal/C2_W04_D01_facts_INTERNAL.yaml), so the answer should say both groups ran 1.90 before the launch, or the split looks circular.
+
+### What became of each item
+
+| Re-score item | What became of it |
+|---|---|
+| Scope held at 1: the window never asked | Fixed: the clarifying table asks which weeks the city head compares, and the scorecard's 2 names it |
+| Too long and too many numbers | Fixed: the main answer runs 328 words with 15 numbers; the group breakdown moved to follow-up 1, and the trap stays named and checked in one sentence |
+| "Their weeks earned less" heard as pay | Fixed: every file says the idle tail's weeks brought in 12 percent less in fares |
+| The stop rule fires on noise | Fixed: the test stops if the test half completes fewer trips per driver than the other half, or if any zone's six-week median wait runs more than half a minute above its six weeks before the launch; the scorecard, follow-up 2, the model page, the studio solution and notebook 10 carry the same rule |
+| Follow-up 3 skips the control | Fixed: it says the 880 who kept accepting held 1.90 trips an hour while the 180 fell to 0.80, both at 1.90 before the launch, and that the 180 were picked by how they did after it |
+| The 140 joiners are also outside the idle tail | Fixed: the files say "the other 880 drivers there before the launch" |

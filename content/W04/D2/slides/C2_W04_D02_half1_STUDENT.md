@@ -1013,7 +1013,7 @@ Transition: the trap in that amber line.
 
 **The plausible wrong answer.** "Bookings per driver-week rose from Rs 5,817 to Rs 5,861, so the guarantee is working; keep it as it is." Every rupee in that sentence is right, and it would keep the city paying for idle hours.
 
-**Why it is wrong.** Bookings rose 3.0 percent and active driver-weeks 2.2 percent (6,360 to 6,500), so the ratio rose 0.8 percent (1.030 / 1.022 = 1.008). The rise was bought with hours: 21 percent more online hours a driver-week for 17 percent less per hour. The rise itself sits with the 880 drivers outside the idle tail, who drove about 4 percent more hours at an unchanged Rs 313.5 an hour; the idle tail doubled its hours for 12 percent fewer trips, so its weeks earned less. The 140 drivers who joined after the launch drove about one week each, at Rs 4,314 a driver-week, so they pulled the read down; for the drivers there before the launch, it rose 1.4 percent.
+**Why it is wrong.** Bookings rose 3.0 percent and active driver-weeks 2.2 percent (6,360 to 6,500), so the ratio rose 0.8 percent (1.030 / 1.022 = 1.008). The rise was bought with hours: 21 percent more online hours a driver-week for 17 percent less per hour. The rise itself sits with the other 880 drivers there before the launch, who drove about 4 percent more hours at an unchanged Rs 313.5 an hour; the idle tail doubled its hours for 12 percent fewer trips, so its weeks brought in less in fares. The 140 drivers who joined after the launch drove about one week each, at Rs 4,314 a driver-week, so they pulled the read down; for the drivers there before the launch, it rose 1.4 percent.
 
 **The fix.** The slide names the denominator the scheme pays for, the peak online hour, and the presenter says it aloud.
 

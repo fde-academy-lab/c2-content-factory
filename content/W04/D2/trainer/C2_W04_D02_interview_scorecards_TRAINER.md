@@ -18,11 +18,11 @@ reuses these questions.
 
 | Criterion | Weak | Hire-grade | What earns the 2 |
 |---|---|---|---|
-| Clarified the scope first | 0 | 2 | Asked which decision, who else hears it and how long the slot is, and opened the answer on the decision: S90's 2 for a presentation, where the audience stands in for the target |
+| Clarified the scope first | 0 | 2 | Asked which decision, who else hears it, how long the slot is and which weeks are compared, and opened the answer on the decision: S90's 2 for a presentation, where the audience stands in for the target |
 | Named the denominator and the window | 1 | 2 | "An hour a driver spends online at peak", six weeks after the launch on 31 August against six weeks before |
-| Saw the trap | 0 | 2 | Named the per-driver-week rise and checked it: it rose on the 880 outside the idle tail, who drove about 4 percent more hours at an unchanged Rs 313.5 an hour, while the idle tail doubled its hours for 12 percent fewer trips and the joiners pulled the average down |
+| Saw the trap | 0 | 2 | Named the per-driver-week rise and checked it in the answer: longer weeks, mostly drivers who already accept working about 4 percent more hours at the same rate per hour, while each hour earned 17 percent less; the group detail (the idle tail doubled its hours and brought in 12 percent less in fares) waits for follow-up 1 |
 | Sized it with a unit | 1 | 2 | Rs per peak online hour; Rs 2,836 of top-up per extra trip; Rs 58 lakh to Rs 92.7 lakh over six weeks with its assumption and the per-trip rate it waits on |
-| Said what would change their mind | 0 | 2 | "If it shows completed trips per driver falling, or any zone's median wait over the six weeks rising above its six weeks before the launch, I would drop the change" |
+| Said what would change their mind | 0 | 2 | "I would stop it if the test half completes fewer trips per driver than the other half, or if any zone's median wait over the six weeks runs more than half a minute above its six weeks before the launch" |
 | Tied it to a decision and its cost | 1 | 2 | A six-week test on half the drivers, picked at random, the city head signing it, and the saving in rupees |
 | Gave the structure before the number | 0 | 2 | The decision and the claim come before any number |
 | **Total** | **3 of 14** | **14 of 14** | |
@@ -64,7 +64,7 @@ sentence would earn the 2.
 | Transcript | The follow-up | What a weak candidate does | What a hire-grade candidate does |
 |---|---|---|---|
 | Present it | "Which denominator did you choose?" | Names none, or names per driver-week because it rose | Per peak online hour, the unit the scheme pays in; under a per-trip scheme, completed trips per enrolled driver and top-up per completed trip |
-| Present it | "The finance partner says it is the monsoon." | Quotes the six-week rise in requests, or drops the recommendation | The last three weeks: requests back inside the before range, trips per hour still 1.56 |
+| Present it | "The finance partner says it is the monsoon." | Quotes the six-week rise in requests, or drops the recommendation | The last three weeks: requests back inside the before range, trips per hour still 1.56; and the fall sits in the 180 (0.80) while the 880 held 1.90, both at 1.90 before, said with its limit, since the 180 were picked by how they did after the launch |
 | Drivers at the peak | "Your idle share is a guess. What in the data would catch it?" | Quotes hours with no trip as if they were idle at a moment | The ratio, which needs no guess: 0.53 driver-hours per trip before the launch, when the wait held at 4.8 minutes, against the chain's 0.60, about 5,000; the idle share of about 0.21 read from it leans on the same 25-minute trip |
 | Drivers at the peak | "The window is three hours. What does a four-hour window do?" | About 4,300 drivers, since the average hour fell | Nothing at the busiest moment: the buffer rises to about 1.53 and the answer stays about 5,700 |
 | AI variant | "Isn't retained code easy to game too?" | Points at build failures and revert rate, which padding passes | Concedes that boilerplate survives a week, so survival alone cannot catch padding; characters per accepted suggestion carries a ceiling, and a monthly sample read by engineers marks what survives as useful or boilerplate |

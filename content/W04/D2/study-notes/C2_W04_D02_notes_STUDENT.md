@@ -212,8 +212,9 @@ percent. Gross bookings (what riders paid) fell 17 percent per peak online hour,
 
 > **WATCH OUT** · "Bookings per driver-week rose, so the guarantee works." Hours per driver-week went
 > from 18.6 to 22.5 while each hour brought in 17 percent less: the scheme bought hours. The rise sits
-> with the 880 outside the idle tail, who drove about 4 percent more hours at an unchanged Rs 313.5 an
-> hour; the idle tail's 180 drivers doubled theirs while completing 12 percent fewer trips.
+> with the other 880 drivers there before the launch, who drove about 4 percent more hours at an
+> unchanged Rs 313.5 an hour; the idle tail's 180 drivers doubled theirs while completing 12 percent
+> fewer trips.
 
 74 percent of the idle money sat in the three outer zones, whose median wait fell furthest, from 6.6 to
 about 6 minutes, so the redesign watches the wait zone by zone. Across the enrolled drivers it saves Rs
