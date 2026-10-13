@@ -227,8 +227,8 @@ The exam fortnight that closes each semester lifts the stall to about 1.4 times 
 LIVE, 4 minutes. Show the picture, then name the parts. FPP3's words: a trend "exists when there is
 a long-term increase or decrease in the data"; seasonality "is always of a fixed and known period",
 and "one series can have more than one seasonal pattern"; a cycle shows "rises and falls that are
-not of a fixed frequency". Sources: https://otexts.com/fpp3/graphics.html#sec-tspatterns and
-https://otexts.com/fpp3/decomposition.html#sec-components (both checked 13 October 2026). The
+not of a fixed frequency". Sources: https://otexts.com/fpp3/graphics.html#sec-tspatterns (checked 13 October 2026) and
+https://otexts.com/fpp3/decomposition.html#sec-components (checked 13 October 2026). The
 stall's seasons grow with its level, since Sunday is always 0.6 of an ordinary day, which FPP3 calls
 a multiplicative decomposition. Transition: the same reading in code.
 ```
