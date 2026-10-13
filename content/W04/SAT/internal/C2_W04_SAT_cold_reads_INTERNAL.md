@@ -101,3 +101,210 @@ judgment, or a stem that no longer names the method. Q34 moved to Medium and Q9 
 and Q35 to Q38 moved to Easy. The paper holds 39 items at 118 minutes by the blueprint's pace: 8 easy,
 8 medium and 23 hard, 59 percent. No second read checked the hardened items; the fix pass rests on the
 two reads' own rewrites, and the proofs script recomputes every key on the rebuilt paper.
+
+## What did a blind second read of the fifteen rewritten items find?
+
+On 13 October 2026, after the fix pass above, the orchestrating session had a fresh reader sit the fifteen items the pass rewrote or relabelled (Q4, Q6, Q8, Q9, Q10, Q12, Q13, Q15, Q24, Q26, Q27, Q28, Q30, Q31 and Q33) from the STUDENT paper alone, answer each before opening the key, and then check each against the key. Findings only; the reader changed no file.
+
+Paper read: content/W04/SAT/paper/C2_W04_SAT_recap_paper_STUDENT.md (all 709 lines, every part opening, exhibit, situation and item). Key read only after Pass 1 was written down: content/W04/SAT/answer-key/C2_W04_SAT_answer_key_TRAINER.md. No repository file was changed.
+
+### Pass 1, blind (written before the key was opened)
+
+**Q4: a.** The six drivers go from 60 to 74 peak online hours and from 114 to 88 trips, so trips per hour fall from 1.90 to 1.19. Drivers E and F, the two outer-zone drivers, add 10 hours (20 to 30) and lose 30 trips (35 to 5) while their acceptance falls from about 0.85 to under 0.30, so the guarantee is paying for logged-in hours that carry no trips. The city head should hold the extension and the scheme should pay for completed trips; b repeats the city team's note, c is refuted by the accepted-offer collapse, and d's driver average is right (1.31) but a higher floor pays more for idle hours.
+
+**Q6: b.** 0.04 over 0.11 is 36 percent of the 2013 rise. What would have shown the change to investors is a record of the definition's own changes, dated, with the year's ratio also printed on the old definition; a guardrail on satisfaction (a) would not move when a category is added to the count, and a shorter window (c) does not reveal a change of what is counted.
+
+**Q8: c, d, b, a.** Leave out g (a claim, but the wrong one: bookings per driver-week rose 0.8 percent only because hours rose, and it says the scheme pays its way), e (a topic title, not a claim) and f (the gamed number as the headline). The slide reads claim title, evidence, caveat, action. The order of the caveat and the action is the only part I could not derive from the page: the page never prints Tuesday's template, so I took the order the line labels and the week's slide habit suggest (title, evidence, caveat, ask at the foot).
+
+**Q9: a and c.** The claim has two halves, what riders got and what it cost. Median wait moved only from 4.8 to 4.6 minutes (a), and the top-up bought 6,700 extra trips at Rs 2,836 each for a trip worth Rs 165 (c, 1.9 crore over 6,700). The 61 percent split (e) explains where the money went, which is the driver side, and b and d are driver-side numbers.
+
+**Q10: c.** The statement is false: the strongest reply grants the part of the objection that may be true and then answers it with the evidence that separates season from scheme. Requests in the last three weeks sit back inside the old weekly range while trips per online hour stay at 1.56 against 1.90, so demand is back and the per-hour fall persists. Option d's fare argument cannot rule out the season, because a constant fare says nothing about how many requests arrive.
+
+**Q12: b, d, e, a.** Clarify the question, write the formula, work it aloud (8,330 over 1.68 is about 4,960, plus 15 percent is about 5,700), then check in the same unit: the chain's 0.60 driver-hours per trip against the case's 0.53 (118,000 over 224,200) moves it to about 5,000 to 5,700. Step c is the spoiler: it checks trips against rider requests per hour, a different unit, and drags the answer to about 3,900.
+
+**Q13: a and c.** a: 24.07 billion over 30 days is 802 million a day, set against a payments-a-day estimate in the same unit. c: Rs 66,968 crore over the average of 415 and 500 stores (457.5) is about Rs 146 crore a store, the right denominator for a year in which stores were added. b takes a number from a web address and mixes concurrency with a per-minute count; d multiplies where it should divide (two million over four is 500,000 households); e sets an average day against a peak day, and September holds no Diwali.
+
+**Q15: b.** Milk's click-through is 1.2 percent before and after, and other items rise from 6.2 to 6.4 percent, so nobody clicks less: the fall is the mix, milk going from 2 to 50 percent of impressions (0.02 x 1.2 + 0.98 x 6.2 = 6.1; 0.5 x 1.2 + 0.5 x 6.4 = 3.8). Slot 1, 70 percent milk, drops from 7.5 to about 3.4, the largest fall; slot 3 drops only from about 4.7 to 4.05.
+
+**Q24: a.** May's blend is 41.0 percent (500 + 1,140 over 4,000) and June's is 41.0 percent (460 + 1,050 + 950 over 6,000). Both existing cohorts fell (50 to 46, 38 to 35), so without C June would read 37.75; the large new cohort at 47.5 holds the blend flat. Option d compares C's first month with A at an age the page does not give.
+
+**Q26: b.** Non-members on Android and members on iOS barely move while Android members fall from 58 to 44, and the fall sits in completing a started checkout (72.5 to 55), so the member path of the Android checkout is at fault. 22,841 sessions over 17 days is about 9,405 a week; 14 points of that is about 1,317 orders a week, Rs 4.0 to 6.6 lakh at Rs 300 to 500. Option a's 3,198 is the 17-day total labelled as a week.
+
+**Q27: a.** In the third quarter 4 users are active: 4 of the 10 who joined is 40 percent, 4 of the 5 who stayed is 80 percent. Before trusting a published cohort chart, ask what each cell divides by and whether it counts users, orders or spend.
+
+**Q28: c.** Blended retention cannot see a step, so it can neither close the ticket (a) nor prove harm (b). Checkout per cart fell to 7 of 11 (64 percent) against 10 of 12 (83 percent), about 2 checkouts short (11 x 10/12 = 9.2); on 11 carts that is a signal to check the step and read three more weeks, not a basis to rebuild checkout (d).
+
+**Q30 (working answer).** Seasonal naive: October 2026 = Rs 427.6 lakh and November 2026 = Rs 297.0 lakh (the same months of 2025). Diwali was in October in 2024 and 2025 but falls on 8 November in 2026, so the festival-aligned baseline takes 2026's November from October 2025 and 2026's October from November 2025, each times 1.04: October 2026 about Rs 308.9 lakh (297.0 x 1.04) and November 2026 about Rs 444.7 lakh (427.6 x 1.04), Rs 753.6 lakh for the two months. November carries the spike.
+
+**Q31: a.** A close fit to the weeks a curve was fitted on says nothing about weeks it never saw; on M5's unseen days the seasonal naive (0.847) beat both machine-learning benchmarks shown (0.977 and 1.010), and only 35.8 percent of teams beat it. The curve has to be scored against that baseline on the hidden weeks. Option c scores on hidden weeks but sets the bar at the curve's own in-sample fit with no baseline.
+
+**Q33: b.** Finance's rule and festival-aligned share the six-month total (Rs 19.69 crore) and the same 3.5 lakh average miss, but Exhibit 5A puts Diwali 2026 in November, so the board's monthly line must be festival-aligned with the spike in November. It is Rs 2.08 crore under the plan line (21.77 minus 19.69), and its average miss on six unseen months was about Rs 3.5 lakh a month.
+
+### How Pass 2 was done
+
+After Pass 1 was written down I opened the key. To check two cues I also measured option lengths in the STUDENT markdown and read Q8's paragraphs in the STUDENT Word paper, unzipped into the scratchpad. During Pass 1 the only tool use beyond reading the paper was arithmetic on numbers copied from it.
+
+### Pass 2, item by item
+
+#### Q4
+
+1. Blind a, key a: agree.
+2. Arguable: no. The arithmetic in b is right ("Hours went from 60 to 74, up 23 percent, close to the city's 24, and A to D kept about two trips an hour"), but it concludes the extension can go ahead while E and F made 5 trips in 30 hours. The 1.31 in d is right, and a higher floor per online hour pays more for the same idle hours. Option c is refuted by the accepted offers (E 4 of 14 and F 3 of 12 after, against 18 of 21 and 17 of 20 before) and by city requests rising from 251,910 to 256,556.
+3. Cues and leaks: yes, a mild one across parts. Part 2's opening says "The redesign pays per completed peak trip, with a floor on the share of offers a driver accepts", and Q8's line a says the same. Option a is the only one whose recommendation matches, so a candidate who has read ahead can pick it on that half alone. The stem quotes the city team's note in order to question it, and b restates the note. There is no length cue: b is the longest option at 167 characters and a has 159. Every option's numbers are correct, so arithmetic alone eliminates nothing.
+4. Arithmetic holds. Hours go from 60 to 74 (up 23.3 percent), trips from 114 to 88, and trips per hour from 1.90 to 1.189. E and F go from 20 to 30 hours and from 35 to 5 trips. A to D run 1.98 before and 1.89 after. The driver-by-driver average is 1.898 before and 1.311 after. City hours rise 24.0 percent.
+5. Level: hard. The candidate has to total six rows, see the total hide the idle tail and tie that to what the scheme pays for. Option b is the reading the city team actually wrote, and d is the mean-of-ratios slip. Read ahead, Part 2 settles the item.
+
+#### Q6
+
+1. Blind b, key b: agree.
+2. Arguable: no. A satisfaction guardrail (a) would not move when a category is added to the count, and Exhibit 1C's own row says staff "changed contact details so satisfaction surveys would not reach customers". Option d contradicts the exhibit's "giving 0.04 of that year's 0.11 rise".
+3. Cues and leaks: yes. Three of the four options open "About 36 percent, 0.04 of 0.11", so the share needs no division and the majority supplies it. The stem asks "what record kept beside the definition would have shown it to investors", and b is the only option that describes a record: a is a metric, c is a part of the definition and d denies the change. The exhibit's "without investors being told" points the same way. There is no length cue: a is the longest at 139 characters and b has 136.
+4. Arithmetic holds: 0.04 over 0.11 is 36.4 percent.
+5. Level: medium. The division is printed in three options, and the second half is a match between the stem's "record" and the one option that is a record.
+
+#### Q8
+
+1. Blind c, d, b, a, key c, d, b, a: agree.
+2. Arguable: yes, on the order of the last two lines. The choice of four lines is solid. The order rests on "the order Tuesday's one-slide template puts them", and the paper never prints that template. A candidate who learned the common layout, with the action under the evidence and the caveat as a footnote, would write c, d, a, b. The key gives no partial credit on ordering items, so that candidate scores zero. The key's tie-break ("the action closes the slide because its six-week test answers the caveat above it") can be worked out only by linking a's "tested on half the drivers for six weeks" to b's "there are no weeks from last year to compare with". Printing the template's four slots in the stem would close this.
+3. Cues and leaks: yes, a mild one. The line labels do much of the selecting. "The title, as a topic" refutes itself in a week that teaches claim titles, and "The headline number" names a slot the four-part template does not have, so two of the three lines to drop go on their labels alone. The real choice left is c against g.
+   There is also a layout defect. Line (g) is printed above a) to f). In the markdown it sits on the line after the stem with no blank line between them, so a Markdown renderer runs it into the stem's last sentence. In the Word paper it is a paragraph of its own labelled "(g)" above lines labelled "A." to "F.". A candidate counting the list finds six lines against the stem's "seven".
+4. Arithmetic holds. Line d: 1.90 times Rs 165 is Rs 313.5 and 1.578 times Rs 165 is Rs 260.4. Line g: 5,861 over 5,817 is a rise of 0.76 percent. Line f: hours rise 24.0 percent. The key's "about four more online hours" a driver-week follows from the page: Rs 5,817 over Rs 313.5 is 18.6 hours and Rs 5,861 over Rs 260.4 is 22.5 hours.
+5. Level: hard. The item combines the claim-title rule, the choice between two claims (g rests on a flattering denominator an analyst would really use), the rejection of the gamed number as evidence, and the template's order.
+
+#### Q9
+
+1. Blind a and c, key a and c: agree.
+2. Arguable: no, though e is the nearest alternative. "The top-up split: 61 percent to driver-weeks under half acceptance" could be read as carrying "for the Rs 1.9 crore", since most of the money paid for hours that served nobody. The key's line that e "supports a different claim" holds, because e says nothing about what riders got, while c prices each extra trip they received.
+3. Cues and leaks: no. The stem's word "riders" matches only a ("Median rider wait"), and "Mark both" fixes the count, but matching evidence to a claim is the skill being tested. The offers in b (269,773 and 347,583) and the 61 percent in e appear on no exhibit and cannot be checked. The key does not need them. There is no length cue: e is the longest option.
+4. Arithmetic holds. Rs 1.9 crore over 6,700 extra trips (230,900 minus 224,200) is Rs 2,835.8. The Rs 165 trip, the 4.8 and 4.6 minutes and the Rs 5,817 and Rs 5,861 all match the exhibits. The offers in b fit Exhibit 1A's acceptance ratios: 0.86 times 269,773 is 232,005 accepted and 0.73 times 347,583 is 253,736, each above the completed trips.
+5. Level: medium. This is one idea, which elements carry the claim's two halves. The count is given and only e tempts.
+
+#### Q10
+
+1. Blind c, key c: agree.
+2. Arguable: no. Part 2's description, "defend it without retreating", could pull a weak reader toward True. A strong candidate sees that c and d both concede the true part without retreating from the claim. The key's point against d holds: a steady fare cannot say whether the season cut the trips an hour carries.
+3. Cues and leaks: yes. The stem prints two facts, the weekly request ranges and trips per hour at 1.56, and only c uses them. Options c and d share "False: grant that part may be the season, then show", and a and b share "True". The key can therefore be pieced together: the False half from the c and d pair, then the option that uses the stem's numbers.
+4. Arithmetic holds. From Exhibit 1A, the weekly average was 41,985 before, inside the printed range, and 42,759 after. With the last three weeks at 42,602 or less, the first three averaged at least 42,917, so requests ran high just after launch and came back to the old range. That fits c. Trips per hour of 1.56 in the last three weeks sits under the six-week 1.578, which is consistent.
+5. Level: medium. The move is to concede, then pick the evidence that separates season from scheme. The stem hands over that evidence, and only c uses it.
+
+#### Q12
+
+1. Blind b, d, e, a, key b, d, e, a: agree.
+2. Arguable: no. The content fixes the order: a uses "the chain's 0.60", which comes from e's 1.68, and e works d's formula.
+3. Cues and leaks: yes, a mild one. Part 2's description promises "a check in the right unit", which tells the candidate that one of the two checks is in the wrong unit. The step labels ("Ask", "Write the formula", "Work it aloud", "Set the chain beside") spell out the order.
+4. Arithmetic holds. Step e: 8,330 over 1.68 is 4,958, and 15 percent more is 5,702. Step a: 1 over 1.68 is 0.595, and 118,000 over 224,200 is 0.526. The 0.53 is printed only in a but can be worked out from Exhibit 1A. At 0.526 the chain gives 4,384, or 5,042 with the buffer, so "about 5,000 to 5,700" holds. Step c: 8,330 over 2.13 is 3,911, without the buffer.
+5. Level: medium. One idea (rider requests per hour are the wrong unit for trips per hour) plus a standard order that the labels give away.
+
+#### Q13
+
+1. Blind a and c, key a and c: agree.
+2. Arguable: no, with two edges. Options a, b and e each say what their number is set against, while c never does. The key itself calls c "a rough check" because most of the year's new stores opened late, a fact the paper does not print. A candidate could also defend e by using an average day as a floor for a peak-day estimate, but "set against" reads as a like-for-like check, so the key holds.
+3. Cues and leaks: yes, a mild one. Options b and d refute themselves: b names its source as "the page's web address", and d prints eight million households for two million people. "Five checks on four numbers" tells the candidate one number appears twice, and a and e differ only in what 802 million is set against, which exposes e. Key c is the longest of the five options at 137 characters.
+4. Arithmetic holds. 24.07 billion over 30 days is 802.3 million. The average of 415 and 500 stores is 457.5, and Rs 66,968 crore over 457.5 is Rs 146.4 crore. Two million people over four a household is 500,000 households.
+5. Level: medium. These are five independent one-step judgements, and two of them refute themselves. The real work is e (an average day against a peak day) and c (an average store base). With no partial credit the item is harder to score, but the reasoning is no deeper.
+
+#### Q15
+
+1. Blind b, key b: agree.
+2. Arguable: no. Options a, c and d each fall on one cell of Exhibit 3B. The slots do not fall equally (4.1, 2.2 and 0.6 points). Slot 3 clicks lowest because of its position, before and after. Milk reads 1.2 percent before and after.
+3. Cues and leaks: yes, a mild one. Part 3's opening already tells the mechanism: "Toned milk is in 71 percent of Pune carts, so it now appears beside nearly everything, and the strip's click-through ... fell". Exhibit 3B's strip row then prints "50 percent, from 2 before", "1.2 percent, 1.2 before" and 6.2 to 6.4. The opening points at milk, b and d both blame milk, and the strip row separates them.
+4. Arithmetic holds. Before: 0.02 times 1.2 plus 0.98 times 6.2 is 6.10. After: 0.5 times 1.2 plus 0.5 times 6.4 is 3.80. Slot by slot, the before rates are 7.5, 6.1 and 4.68 (strip 6.09), and the after rates are 3.44, 3.95 and 4.05 (strip 3.81). The key's clicks lost per 100 impressions (4.76, 2.85 and 1.35) also recompute. Other items' strip rates rebuild to 6.19 and 6.43, and milk's to 1.20.
+5. Level: medium. One idea, a mix shift in which no rate fell, and the opening names it. Slot 1 losing most follows on sight from its 70 percent milk share.
+
+#### Q24
+
+1. Blind a, key a: agree.
+2. Arguable: no, but the key's reasoning has one gap. The key rejects d because "cohort A's 50 percent in May is A at an older age", which the Set 2 situation never states. If A was in its first month in May, d's "cohort C retains less than cohort A did in May" is a same-age comparison, and it is true (47.5 against 50). Option d still loses, because it does not explain the flat blend and "the new members are the weaker ones" ignores B. Option a's "strong first month" is also only strong against the blend, since C's 47.5 is below A's 50. Giving the cohorts' ages in the situation, or dropping the age claim from the key, would close the gap.
+3. Cues and leaks: no for Q24 itself. Q22 and Q23 compute both blends just before, so the arithmetic is done. Options a and d share "Both existing cohorts declined, and"; b ("improved") falls on the candidate's own Q22 and Q23, and c is the complacent reading.
+   Exhibit 4F, two pages on, reads "41 percent in July, August and September". That hands Q22's and Q23's answer to anyone who reads ahead. The key's option-edit note says a 41 percent was taken out of Q24's option c for this reason, but the same number survives in Exhibit 4F. There is no length cue: d is the longest at 123 characters and the key has 88.
+4. Arithmetic holds. May is 1,640 over 4,000, which is 41.0. June is 2,460 over 6,000, which is 41.0. June without C would be 37.75.
+5. Level: medium. With Q22 and Q23 answered, one idea separates a from d: a new cohort in its first month holds up a flat blend.
+
+#### Q26
+
+1. Blind b, key b: agree.
+2. Arguable: no. The key itself notes that taking iOS members as the comparison gives a 13-point fall, about 1,223 orders a week, and no option offers that figure. Option b says "against their old rate", so it is accurate as printed.
+3. Cues and leaks: yes. The key can be pieced together. Options a and b share the diagnosis ("The member path of the Android checkout"), b and c share the size ("about 1,317 orders a week ... Rs 4.0 to 6.6 lakh"), and b is the only option that shares a half with each of two others. The stem's own words ("non-members use the same checkout and held at 51 percent") refute c's "for every user".
+4. Arithmetic holds. 22,841 sessions over 17 days, times 7, is 9,405 a week. 14 points of that is 1,316.7 orders, worth Rs 3.95 lakh at Rs 300 and Rs 6.58 lakh at Rs 500. Option a's 3,198 (22,841 times 0.14) is the 17-day total, worth Rs 9.59 to Rs 15.99 lakh. The caption's rates rebuild to 58, 44, 57, 56, 52 and 51 percent, and 14 to 30 September is 17 days.
+5. Level: hard on content. The candidate has to find the fault by comparing groups, take the 14-point gap, turn 17 days into a week and price the range. Option a, the 17-day total called weekly, is a slip analysts really make. The piecing shape lets a test-wise candidate reach b without doing any of that.
+
+#### Q27
+
+1. Blind a, key a: agree.
+2. Arguable: no.
+3. Cues and leaks: yes. The item's heading is "Ask for the denominator", and the stem says the Swiggy table "states no denominator". Option a is the only option whose question is the denominator. Options a and b share the numbers, so a majority also supplies the number half, and b's "ask only" marks itself as wrong.
+4. Arithmetic holds. Four users are active in the third quarter: 4 of 10 is 40 percent and 4 of 5 is 80 percent. Option c's 60 percent is 3 of 5, the fourth quarter.
+5. Level: medium, close to easy. It takes two one-step divisions, and the heading names the question to ask.
+
+#### Q28
+
+1. Blind c, key c: agree.
+2. Arguable: no. A one-step exhibit cannot support d's "the largest move in the tier's funnel", and its "enough to act on" rests on 11 carts.
+3. Cues and leaks: yes, a mild one. Option c is the only one that names the exhibit's counts (7 of 11 against 10 of 12). Options a and b both rest on blended retention, the premise the stem gives to the app team, so they fall together. Option d overclaims with "Rebuild checkout now" and "enough to act on". The key, c, ties d as the longest option at 138 characters.
+4. Arithmetic holds. The rates are 82.4, 83.3 and 63.6 percent. At 10 in 12, eleven carts give 9.17 checkouts, so the window is 2.17 short. Option d's 19 points is 83 minus 64 on the printed figures, or 19.7 unrounded.
+5. Level: medium. It is one idea (a blend cannot see a step, and 11 carts are a reason to watch), reached by dropping a and b on their shared premise and d on its overreach.
+
+#### Q30
+
+1. Blind and key agree. My blind answer gave the seasonal naive (October Rs 427.6 lakh, November Rs 297.0 lakh), the festival-aligned figures (October about Rs 308.9 lakh, November about Rs 444.7 lakh) and November for the spike. The key line gives the same seasonal naive, November at Rs 444.7 lakh and November for the spike. Its reasoning accepts October at about Rs 309 lakh.
+2. Arguable: no on substance, but the marking scope has a gap. The stem says "Anand's board line needs October and November 2026" and asks for "a seasonal baseline ... that puts the festival in its own month", which reads as both months. The key line marks three numbers and leaves October's Rs 308.9 lakh in the reasoning, so a marker reading only the key line could mark a full answer inconsistently. The key line should carry October's figure too. The key already accepts an answer that lets part of the spike fall in late October.
+3. Cues and leaks: yes, a mild one, on the month half only. The month is a direct read of Exhibit 5A ("2026: Sun 8 Nov"), and Exhibit 5E's "Puts the spike in" column prints November for the festival-aligned forecast two pages later. No figure is given away.
+4. Arithmetic holds. 427.6 times 1.04 is 444.70 and 297.0 times 1.04 is 308.88. Either 4-percent copy totals Rs 753.6 lakh over the two months. The Octobers run 1.447 and 1.440 times their Novembers, which matches the key's "about 1.44".
+5. Level: hard. It takes several dependent steps: read the Diwali months, see that 2026 moves, swap the months and apply growth. The answer is written, so it cannot be guessed, and the tempting wrong answer (finance's rule, which keeps the spike in October) is one an analyst would really produce.
+
+#### Q31
+
+1. Blind a, key a: agree.
+2. Arguable: no. Option c is the strongest distractor: "Score the curve on the hidden weeks, and send it to the plan if its miss there stays inside its own 2 percent fit". It uses the right test with the wrong bar, and it never uses Exhibit 5C, which the stem names.
+3. Cues and leaks: yes. Option a is the only one that reads Exhibit 5C's benchmark rows, and the stem says "Using Exhibit 5C". Exhibit 6A labels Friday "a baseline that beats the fit", which is the key's rule in five words. The Part 5 opening says every forecast "was also scored on the thirteen weeks ... which it never saw", which rules out d. Option b opens with "Agree:", agreeing with a sponsor the stem sets up to be answered.
+4. Arithmetic holds. 1,972 of 5,507 is 35.8 percent, and 0.847 is below both 0.977 and 1.010. The key's 16,400 and 9,831 rebuild from Exhibit 5D, and 104 weeks minus 13 hidden weeks leaves 91 training weeks.
+5. Level: medium. It is one idea: a fit is no forecast, and the curve has to beat the baseline on unseen weeks. Options b and d fall at a glance.
+
+#### Q33
+
+1. Blind b, key b: agree.
+2. Arguable: no, but b's "how wrong" half has a gap. Option b reports "on six unseen months it missed by about Rs 3.5 lakh a month", and Exhibit 5E says none of those months held a Diwali. Finance's rule shows the same 3.5, so the figure says nothing about the spike month. The key's reasoning says the sentence should name that limit, and the printed b does not. No other option is better, so the key stands.
+3. Cues and leaks: yes. Option b is the only one that answers both halves of the stem ("which number" and "how wrong it could be") with an error on unseen months: a gives a fit, and c and d give none. Exhibit 5E prints each forecast's spike month, and Q30 has just asked which month carries the spike. Options b and d share "Rs 19.69 crore".
+4. Arithmetic holds. 21.77 minus 19.69 is 2.08. Over Rs 18.93 crore, the forecasts sit 4.0, 22.0 and 15.0 percent above. Option c's 21.39 is the midpoint of 19.69 and 23.09.
+5. Level: medium. Option d ("they agree on the six months, so either may go") is a real analyst's answer, but it gives no error. The key falls out once a (a fit, which Q31 has just refused), c (a midpoint) and d (incomplete) are dropped.
+
+### Points that run across the fifteen
+
+- **Agreement.** The key matches my blind answer on all fifteen items. Every number the items and their keys rely on recomputes from the page. None of them depends on a figure the page does not print, apart from the 0.53 in Q12's option a, which can be worked out from Exhibit 1A.
+- **Level.** The paper prints all fifteen as Hard. I read four as hard (Q4, Q8, Q26 and Q30) and eleven as medium. The paper's own table claims 23 hard items of 39, about 60 percent. If the eight Hard items outside this check (Q7, Q14, Q16, Q20, Q21, Q25, Q32 and Q39) hold their level, the paper carries 12 hard of 39, about 31 percent.
+- **Two leak shapes recur.**
+  - The key is the only option that uses the data the stem or its named exhibit prints (Q10, Q28, Q31, and Q33 on completeness).
+  - The key's halves are shared with other options, so it can be pieced together or found by majority: the number half in Q6 (three options) and Q27 (two), the "False" half in Q10, the first clause in Q24, and both halves in Q26.
+  
+  The rewrites made each distractor plausible in one half while leaving the other half unique to the key.
+- **Words elsewhere name the answer.**
+  - Q27's heading, "Ask for the denominator".
+  - Part 3's opening, which tells Q15's mechanism.
+  - Part 2's opening and Q8's line a, which give Q4's recommendation.
+  - Exhibit 6A's "a baseline that beats the fit" for Q31.
+  - Exhibit 5E's "Puts the spike in" column for Q30.
+  - Exhibit 4F's "41 percent" for Q22 and Q23, which feed Q24.
+- **Layout.** In Q8, the seventh line, (g), is printed above the six lettered lines. It runs into the stem's paragraph in the markdown and is labelled "(g)" against "A." to "F." in the Word paper.
+- **Option length and key position.** No single-answer key among these is the longest option on its own. Q28's key ties d at 138 characters, and in Q13 key c is the longest of five. Among the ten single-answer items here the key is a four times, b four times, c twice and d never. Across the whole paper's single-answer items the spread is wider (a 7, b 4, c 6, d 4), so this skew belongs to the rewritten set.
+
+### Summary
+
+| Item | Blind answer | Key | Agree | Arguable | Leak | Level (my read) |
+|---|---|---|---|---|---|---|
+| Q4 | a | a | yes | no | yes, mild (Part 2's opening and Q8 line a give the recommendation) | hard |
+| Q6 | b | b | yes | no | yes (share in three options; stem's "record" matches only b) | medium |
+| Q8 | c, d, b, a | c, d, b, a | yes | yes (order of b and a rests on an unprinted template) | yes, mild (labels drop e and f; line g misplaced) | hard |
+| Q9 | a, c | a, c | yes | no (e is the nearest alternative) | no | medium |
+| Q10 | c | c | yes | no | yes (only c uses the stem's numbers; False half shared with d) | medium |
+| Q12 | b, d, e, a | b, d, e, a | yes | no | yes, mild (Part 2 promises "a check in the right unit") | medium |
+| Q13 | a, c | a, c | yes | no | yes, mild (b and d refute themselves) | medium |
+| Q15 | b | b | yes | no | yes, mild (Part 3's opening tells the mechanism) | medium |
+| Q24 | a | a | yes | no (key's age claim for A is not on the page) | no | medium |
+| Q26 | b | b | yes | no | yes (key pieced from a's diagnosis and c's numbers) | hard |
+| Q27 | a | a | yes | no | yes (heading "Ask for the denominator") | medium |
+| Q28 | c | c | yes | no | yes, mild (only c names the counts; key ties for longest) | medium |
+| Q30 | naive Oct 427.6, Nov 297.0; aligned Oct 308.9, Nov 444.7; spike November | naive 427.6 and 297.0; Nov 444.7; spike November | yes | no (key line omits October's 308.9) | yes, mild (month printed in Exhibit 5E) | hard |
+| Q31 | a | a | yes | no | yes (only a reads Exhibit 5C; Exhibit 6A states the rule) | medium |
+| Q33 | b | b | yes | no | yes (only b answers "how wrong" on unseen months) | medium |
+
+Items I read as hard: 4 of 15 (Q4, Q8, Q26 and Q30). The other eleven read as medium.
