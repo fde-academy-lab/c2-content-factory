@@ -104,7 +104,7 @@ HOW = {
     "Applied maths": "Show the working, then the answer.",
     "Order the steps": "Write the letters in the right order.",
 }
-OPTION = re.compile(r"^\(([a-f])\)\s*(.+)$")
+OPTION = re.compile(r"^\(([a-g])\)\s*(.+)$")
 SET_START = re.compile(r"^SET (\d+)\. SITUATION:\s*(.+)$")
 SET_CONT = re.compile(r"^SET \d+, continued\.?$")
 TAGS = ["[S]", "[F]", "[SV]", "[D]"]
@@ -154,7 +154,7 @@ def read_bank(path=TRACKER):
 def letters_of(key):
     """'a, b, d' as ['a', 'b', 'd']; anything else as []."""
     k = str(key or "").strip().lower()
-    return sorted(x.strip() for x in k.split(",")) if re.fullmatch(r"[a-f](\s*,\s*[a-f])*", k) else []
+    return sorted(x.strip() for x in k.split(",")) if re.fullmatch(r"[a-g](\s*,\s*[a-g])*", k) else []
 
 
 def relabel(lines, order):
@@ -243,7 +243,7 @@ def apply_edits(bank, edits):
                 continue
             lines = item["text"].split("\n")
             changed, missing = False, []
-            order = re.sub(r"[^a-f]", "", str(edit.get("order") or "").lower())
+            order = re.sub(r"[^a-g]", "", str(edit.get("order") or "").lower())
             if order:
                 # An order is written against the tracker's key at the time; once the tracker
                 # carries the relabelling, laying it again would scramble the options.
@@ -253,7 +253,7 @@ def apply_edits(bank, edits):
                                                        "it was written against"))
                     continue
                 if now != was:
-                    folded = set(was) <= set(order) and now == sorted("abcdef"[order.index(x)] for x in was)
+                    folded = set(was) <= set(order) and now == sorted("abcdefg"[order.index(x)] for x in was)
                     notes.append((paper, no, "folded" if folded else "broken",
                                   "the tracker already carries this order" if folded else
                                   f"the tracker's key is now {', '.join(now)}, not the "
@@ -573,7 +573,7 @@ def guess_chance(item):
     return Fraction(0)
 
 
-MULTI = re.compile(r"^[a-f](\s*,\s*[a-f])+$")
+MULTI = re.compile(r"^[a-g](\s*,\s*[a-g])+$")
 
 
 def guessing_floor(printed):
@@ -1272,7 +1272,7 @@ def upper_key(key):
     """A letter key as the Word files print it: 'a, b, d' becomes 'A, B, D'. Words, numbers and
     true or false stay as the bank writes them."""
     k = str(key).strip()
-    return k.upper() if re.fullmatch(r"[a-fA-F](\s*,\s*[a-fA-F])*", k) else k
+    return k.upper() if re.fullmatch(r"[a-gA-G](\s*,\s*[a-gA-G])*", k) else k
 
 
 def tf_key(key):
@@ -1366,7 +1366,7 @@ def sheet_rows(printed, with_key=False):
                 row["key"] = upper_key(i["key"]) if kind in ("order", "bank", "match") else str(i["key"])
             written.append(row)
     width = max([r["count"] for r in letters] + [4])
-    return {"letters": letters, "tf": tf, "written": written, "letterColumns": list("ABCDEF"[:width])}
+    return {"letters": letters, "tf": tf, "written": written, "letterColumns": list("ABCDEFG"[:width])}
 
 
 def pacing(rows):
@@ -1974,3 +1974,6 @@ if __name__ == "__main__":
 #     items of their type, no levels printed, and no item-analysis workbook.
 # An exhibit whose mermaid fence has a syntax error, built with --docx
 #     The build stops: the room sits the Word paper, so an exhibit that cannot render is a failure.
+# An ordering addition with seven lines, (a) to (g), four of them keyed
+#     All seven print as options a) to g) in the markdown and A. to G. in the Word paper, in order,
+#     and the answer sheet gives the item seven boxes; an eighth line, (h), prints as stem text.

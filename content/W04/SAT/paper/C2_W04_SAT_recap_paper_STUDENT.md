@@ -33,19 +33,19 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 
 | Part | What it shows | Items | Minutes | Easy | Medium | Hard |
 |---|---|---|---|---|---|---|
-| 1. Which number should the plan chase, and which should a scheme pay for? | whether you can write a metric a team cannot hit while the outcome gets worse, and read what a gamed one did | Q1 to Q7 (7) | 19 | 2 | 2 | 3 |
-| 2. Can the number survive the room, and can you size a city from nothing? | whether you can put one claim on one slide, defend it without retreating, and size a number from nothing with a check in the right unit | Q8 to Q14 (7) | 23 | 1 | 0 | 6 |
-| 3. Which pairs beat chance, and what is a slot worth? | whether you can tell a pair that beats chance from one that rides a popular item, and put a slot's value in margin | Q15 to Q21 (7) | 21.5 | 0 | 3 | 4 |
-| 4. Where is the tier losing people? | whether you can separate a cohort problem from an everyone problem and find the step that changed, in the right unit | Q22 to Q28 (7) | 22.5 | 0 | 2 | 5 |
-| 5. Which forecast earns the plan's trust? | whether you can choose a forecast on weeks it never saw, place the festival in the right month and price a miss in each direction | Q29 to Q33 (5) | 20 | 1 | 0 | 4 |
-| 6. What changes when the method moves company? | whether you can carry the week's methods to another company and name what changed, the metric, the constraint and the cost of an error | Q34 to Q39 (6) | 12 | 4 | 1 | 1 |
-| Total | | 39 | 118 | 8 | 8 | 23 |
+| 1. Which number should the plan chase, and which should a scheme pay for? | whether you can choose the number a plan chases and a scheme pays for, and read what happened where one was gamed | Q1 to Q7 (7) | 19 | 2 | 2 | 3 |
+| 2. Can the number survive the room, and can you size a city from nothing? | whether you can put one claim on one slide, answer an objection to it, and size a number from nothing and check it | Q8 to Q14 (7) | 23.5 | 1 | 1 | 5 |
+| 3. Which pairs beat chance, and what is a slot worth? | whether you can choose the pairs a strip should show and put a rupee value on a slot | Q15 to Q21 (7) | 21.5 | 0 | 3 | 4 |
+| 4. Where is the tier losing people? | whether you can tell where a membership loses people and decide what to fix first | Q22 to Q28 (7) | 23 | 0 | 2 | 5 |
+| 5. Which forecast earns the plan's trust? | whether you can choose the forecast that goes to the plan and say how wrong it could be | Q29 to Q33 (5) | 19 | 1 | 0 | 4 |
+| 6. What changes when the method moves company? | whether you can carry the week's methods to another company and say what changes there | Q34 to Q39 (6) | 12 | 4 | 1 | 1 |
+| Total | | 39 | 118 | 8 | 9 | 22 |
 
 ---
 
 ## Part 1. Which number should the plan chase, and which should a scheme pay for? (Q1 to Q7)
 
-*What it shows: whether you can write a metric a team cannot hit while the outcome gets worse, and read what a gamed one did. 7 items, about 19 minutes.*
+*What it shows: whether you can choose the number a plan chases and a scheme pays for, and read what happened where one was gamed. 7 items, about 19 minutes.*
 
 On Monday 31 August 2026 Uber's Hyderabad city team launched a peak-hour earnings guarantee for enrolled drivers: a floor of Rs 300 per peak online hour, with Uber paying the gap between a driver's trip earnings in the peak window and the floor as a top-up. The launch note's goal was more drivers on the road at peak, so riders are picked up faster. Exhibit 1A sets the six weeks after the launch against the six weeks before. The city head must decide whether to extend the scheme to two more cities. Illustrative case: the company is real, the situation and the data are synthetic, built for this class. In the lab the same method ran on Kalpa Retail, where the head of Retail-Plus had proposed reorders per member as the growth plan's number.
 
@@ -120,12 +120,12 @@ d) False: a leading indicator moves in the same week as the north star, since bo
 
 #### Q4 · Hard · circle one letter · Read six drivers
 
-The city team's note to the city head reads: "Peak online hours up 24 percent: supply target met. We recommend extending the guarantee to two more cities." Using the six drivers in Exhibit 1B, what do the rows show, and what should the city head be told?
+The city team's note to the city head reads: "Peak online hours up 24 percent: supply target met. We recommend extending the guarantee to two more cities." What do the six drivers in Exhibit 1B show, and which number answers the note?
 
-a) Trips per hour fell from 1.90 to 1.19 as hours rose from 60 to 74; E and F added 10 hours and lost 30 trips, so hold the extension and pay for completed trips.
-b) Hours went from 60 to 74, up 23 percent, close to the city's 24, and A to D kept about two trips an hour, so the guarantee added supply and the extension can go ahead.
-c) Trips fell from 114 to 88 because riders asked for fewer trips after the monsoon, as E's and F's offers show, so the guarantee is not the cause of the fall.
-d) Averaged driver by driver, trips per hour went from 1.90 to 1.31, so the six fell less than the totals say, and the pay can stay per online hour with a higher floor.
+a) Averaged driver by driver, the six fell only to 1.31, less than the totals say, so the reply tells the city head the guarantee cut trips per hour 31 percent across the city.
+b) Summed, the six fell from 1.90 to 1.19 trips an hour, further than the city's 1.58 on Exhibit 1A, so the reply quotes 1.58 and shows E and F as where hours went.
+c) Summed, the six fell from 1.90 to 1.19 trips an hour, so the reply tells the city head the guarantee cut trips per hour 37 percent across the city.
+d) Averaged driver by driver, the six fell only to 1.31, less than the totals say though further than the city's 1.58, so the reply quotes 1.58 and shows E and F as where hours went.
 
 **Exhibit 1C.** Wells Fargo's cross-sell metric, as the SEC's order of February 2020 (Release 34-88257) describes it, checked 13 October 2026.
 
@@ -148,12 +148,12 @@ d) True: staff judged on products sold opened accounts nobody asked for, staged 
 
 #### Q6 · Hard · circle one letter · Size the silent change
 
-Exhibit 1C's last row is the 2013 change. What share of Wells Fargo's 2013 rise in the ratio came from the change of definition alone, and what record kept beside the definition would have shown it to investors?
+Exhibit 1C's last row is the 2013 change. What share of Wells Fargo's 2013 rise in the ratio came from the change of definition alone, and what, kept beside the definition, would have shown it to investors?
 
-a) About 36 percent, 0.04 of 0.11; a guardrail on customer satisfaction, which would have fallen as soon as the new accounts joined the count.
-b) About 36 percent, 0.04 of 0.11; a dated log of every change to what is counted, with the year's ratio printed on the old definition too.
-c) About 36 percent, 0.04 of 0.11; the window, since a ratio counted over a shorter period would have shown the new accounts sooner.
-d) None of it: remittance accounts are products a household holds, so the rise was real, and no line of the definition was breached.
+a) About 57 percent, 0.04 against the other 0.07; a dated log of each change to what is counted, with that year's ratio also on the old definition.
+b) About 36 percent, 0.04 of the 0.11 rise in the ratio; a dated log of each change to what is counted, with that year's ratio also on the old definition.
+c) About 36 percent, 0.04 of the 0.11 rise in the ratio; a guardrail on customer satisfaction, which falls when customers are sold accounts they did not ask for.
+d) About 57 percent, 0.04 against the other 0.07; a guardrail on customer satisfaction, which falls when customers are sold accounts they did not ask for.
 
 **Exhibit 1D.** Kalpa Retail's Retail-Plus tier, 120 members, as Monday's lab found it: 10 to 30 September 2026 against 20 August to 9 September 2026.
 
@@ -177,9 +177,9 @@ e) Leading input: add-to-cart events per active app member, which move before th
 
 ## Part 2. Can the number survive the room, and can you size a city from nothing? (Q8 to Q14)
 
-*What it shows: whether you can put one claim on one slide, defend it without retreating, and size a number from nothing with a check in the right unit. 7 items, about 23 minutes.*
+*What it shows: whether you can put one claim on one slide, answer an objection to it, and size a number from nothing and check it. 7 items, about 23.5 minutes.*
 
-On Tuesday the city head asked for Monday's redesign on one slide at Thursday's city review: five minutes, with the driver-operations lead, the marketing lead and the finance partner in the room, each of whom loses something under it. The redesign pays per completed peak trip, with a floor on the share of offers a driver accepts. The number the slide must explain is in Exhibit 2A. In the afternoon the city head asked a second question with no dataset: roughly how many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes. Illustrative case: the company is real, the situation and the data are synthetic, built for this class. In the lab each learner presented Kalpa's north star on one slide to a Kalpa head, then sized Anand's new-store question against DMart.
+On Tuesday the city head asked for Monday's answer on one slide at Thursday's city review: five minutes, with the driver-operations lead, the marketing lead and the finance partner in the room, each of whom loses something under Monday's redesign of the pay. The number the slide must explain is in Exhibit 2A. In the afternoon the city head asked a second question with no dataset: roughly how many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes. Illustrative case: the company is real, the situation and the data are synthetic, built for this class. In the lab each learner presented Kalpa's north star on one slide to a Kalpa head, then sized Anand's new-store question against DMart.
 
 **Exhibit 2A.** Who sits in Thursday's review, and the same peak bookings read three ways, Uber Hyderabad, the six weeks before the launch and the six weeks after.
 
@@ -199,15 +199,15 @@ flowchart LR
 
 #### Q8 · Hard · write the letters in order · Build the slide
 
-Four of these seven lines make the city head's slide, and three would spoil it. Leave those three out and write the other four in the order Tuesday's one-slide template puts them, from the top.
-(g) The title, as a claim: bookings per active driver-week rose 0.8 percent, so the scheme pays its way
+Tuesday's one-slide template has four slots, from the top: the claim, written as the title; the evidence; the caveat; and the action. Four of these seven lines fill the four slots and three would spoil the slide. Leave those three out and write the other four in slot order, from the top.
 
-a) The action: pay per completed peak trip with an acceptance floor, tested on half the drivers for six weeks, which the city head signs
-b) The caveat: the monsoon ended inside the six weeks after the launch, and there are no weeks from last year to compare with
-c) The title, as a claim: the guarantee is paying for online hours that carry no trips
-d) The evidence: bookings per peak online hour fell from Rs 314 to Rs 260 at the same Rs 165 fare
-e) The title, as a topic: "Peak-hour guarantee: six-week review"
-f) The headline number: peak online hours up 24 percent since the launch
+a) The action: move every driver in every zone to the redesigned pay from Monday, which the city head signs
+b) The evidence: bookings per peak online hour fell from Rs 314 to Rs 260 at the same Rs 165 fare
+c) The claim, as the title: bookings per active driver-week rose 0.8 percent, so the scheme pays its way
+d) The caveat: the monsoon ended inside the six weeks after the launch, and there are no weeks from last year to compare with
+e) The claim, as the title: the guarantee is paying for online hours that carry no trips
+f) The action: test the redesigned pay on half the drivers, picked at random, for six weeks, which the city head signs
+g) The evidence: bookings per active driver-week rose from Rs 5,817 to Rs 5,861 at the same Rs 165 fare
 
 Order: ____________________
 
@@ -216,19 +216,19 @@ Order: ____________________
 A second draft argues that riders got little for the Rs 1.9 crore of top-up. Which two elements carry that claim? Mark both; every other element moves to an appendix page headed by the question a named role will ask.
 
 a) Median rider wait at peak, 4.8 to 4.6 minutes
-b) Offers shown to drivers, 269,773 to 347,583
+b) Rider requests at peak, 251,910 to 256,556
 c) Top-up for each extra trip: Rs 2,836, for a trip worth Rs 165
-d) Bookings per active driver-week, Rs 5,817 to Rs 5,861
+d) Top-up for each completed trip: Rs 82, for a trip worth Rs 165
 e) The top-up split: 61 percent to driver-weeks under half acceptance
 
 #### Q10 · Hard · circle one letter · Judge the defence
 
 At the review the finance partner says: "The fall in bookings per hour is the monsoon's end, not your scheme." In the last three of the six weeks after the launch, weekly peak rider requests ran from 41,161 to 42,602, against 41,155 to 42,719 in the six weeks before, and trips per peak online hour ran at 1.56. Statement: the strongest reply concedes nothing, since any concession hands the objector the meeting. True or false, and why?
 
-a) True: a concession tells the room the claim is weak, so the analyst restates the Rs 314 to Rs 260 chart and moves straight on to the action.
-b) True: the per-hour chart already answers the season, since the fare held at Rs 165, so a concession could only add a doubt the chart has removed.
-c) False: grant that part may be the season, then show weekly requests back in their old range while trips per hour stayed at 1.56 against 1.90.
-d) False: grant that part may be the season, then show the fare held at Rs 165 a trip in both windows, so the season cannot explain the fall.
+a) True: concede nothing and answer from the stem: weekly requests came back inside their old range while trips per hour stayed at 1.56 against 1.90.
+b) True: concede nothing and answer from the stem: trips per hour kept sliding, to 1.56 in the last three weeks against 1.58 over all six.
+c) False: grant that part may be the season, then show weekly requests back inside their old range while trips per hour stayed at 1.56 against 1.90.
+d) False: grant that part may be the season, then show trips per hour kept sliding, to 1.56 in the last three weeks against 1.58 over all six.
 
 #### Q11 · Easy · circle one letter · Judge the memo
 
@@ -241,24 +241,25 @@ d) False: the ask is one slide in five minutes, and the letter itself says a gre
 
 #### Q12 · Hard · write the letters in order · Order the estimate
 
-The city head's afternoon ask is roughly how many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes. Four of these five steps make the estimate, and one would spoil it. Leave that one out and write the other four in the order they run.
+The city head's afternoon ask is roughly how many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes. Four of these six steps make the estimate, and two would spoil it. Leave those two out and write the other four in the order they run.
 
-a) Set the chain's 0.60 online driver-hours per completed trip beside the case's 0.53 before the launch, and move the answer to about 5,000 to 5,700
+a) Set the chain's 0.60 online driver-hours per completed trip beside the case's 0.53 before the launch, and move the answer down to about 5,000 to 5,700
 b) Ask whether it is drivers online at one moment or across the window, which window, which product, and the city's median or every zone's
 c) Set the chain against Exhibit 1A's 2.13 rider requests per peak online hour before the launch, and move the answer down to about 3,900
 d) Write the formula: drivers online equal trips to serve in an hour, over trips one online driver completes in an hour, times a buffer for the busiest half hour
 e) Work it aloud: about 8,330 evening trips an hour over 1.68 trips per online driver-hour is about 4,960, and 15 percent more for the busiest half hour is about 5,700
+f) Set the chain's 0.60 online driver-hours per completed trip beside the case's 0.53 before the launch, and move the answer up to about 6,450
 
 Order: ____________________
 
-#### Q13 · Hard · circle every correct letter · Check four sources
+#### Q13 · Medium · circle every correct letter · Check four sources
 
-Before the review, a colleague lines up five checks on four numbers: NPCI's UPI count as Outlook Money reported it, Flipkart Stories' post of 9 October 2026, Avenue Supermarts' FY26 release for DMart, and a city invented for a drill. Which checks are sound? Mark every correct option.
+Before the review, a colleague lines up five checks on four numbers. Three come from published sources: NPCI counted 24.07 billion UPI transactions in September 2026, "averaging 802 million daily transactions" (Outlook Money, 2 October 2026); "Flipkart recorded 6.3 million concurrent users in a minute" (Flipkart Stories, 9 October 2026); and DMart's FY26 total revenue was Rs 66,968 crore, with 85 stores added to reach 500 (Avenue Supermarts, 2 May 2026). The fourth is a city invented for a drill. Which checks are sound? Mark every correct option.
 
 a) UPI, September 2026: 24.07 billion transactions over the month's 30 days, 802 million a day, set against an estimate of payments a day
-b) Flipkart, 9 October 2026: 63 million concurrent users in a minute, as the page's web address reads, set against a capacity estimate
-c) DMart, FY26: Rs 66,968 crore of revenue over the average of 415 stores at the year's start and 500 at its end, about Rs 146 crore a store
-d) A city of two million people, invented for a drill, taken to hold eight million households at four people to a household
+b) Flipkart, 9 October 2026: 63 million concurrent users in a minute as the festive season opened, set against an estimate of users online at peak
+c) DMart, FY26: Rs 66,968 crore over the average of 415 stores at the year's start and 500 at its end, about Rs 146 crore a store, set against an estimate of revenue a store
+d) A city of two million people, invented for a drill: 5 lakh households at four people to a household, set against an estimate of the city's UPI users
 e) UPI, September 2026: the same 802 million a day, set against an estimate of the payments made on Diwali day itself
 
 **Exhibit 2B.** Delhi Metro's two published counts and how DMRC counts a journey, each in the words its source uses, checked 13 October 2026.
@@ -282,9 +283,9 @@ d) The check is sound, since DMRC's average day and its record day bracket the e
 
 ## Part 3. Which pairs beat chance, and what is a slot worth? (Q15 to Q21)
 
-*What it shows: whether you can tell a pair that beats chance from one that rides a popular item, and put a slot's value in margin. 7 items, about 21.5 minutes.*
+*What it shows: whether you can choose the pairs a strip should show and put a rupee value on a slot. 7 items, about 21.5 minutes.*
 
-Swiggy Instamart's cart page in Pune shows a strip of three suggested items under the cart. Until 6 September 2026 the strip was a curated list by category; from Monday 7 September it ranked items by how often they sit in the same cart as the items already in it, counted over the previous four weeks. Toned milk is in 71 percent of Pune carts, so it now appears beside nearly everything, and the strip's click-through, clicks over impressions, fell from 6.1 percent in the three weeks before the switch to 3.8 percent in the three weeks after. The category manager and the growth lead want the pairs the strip should show and a rupee value on a slot. Illustrative case: the company is real, the situation and the data are synthetic, built for this class. In the lab Kalpa Retail's merchandising team wanted every product paired with the Rs 199 phone charger, "because it is in 80 percent of baskets".
+Swiggy Instamart's cart page in Pune shows a strip of three suggested items under the cart. Until 6 September 2026 the strip was a curated list by category; from Monday 7 September it ranked items by how often they sit in the same cart as the items already in it, counted over the previous four weeks. The strip's click-through, clicks over impressions, fell from 6.1 percent in the three weeks before the switch to 3.8 percent in the three weeks after. The category manager and the growth lead want the pairs the strip should show and a rupee value on a slot. Illustrative case: the company is real, the situation and the data are synthetic, built for this class. In the lab Kalpa Retail's merchandising team wanted every product paired with the Rs 199 phone charger, "because it is in 80 percent of baskets".
 
 **Exhibit 3A.** Swiggy Instamart, Pune: the strip before and after the switch, and the ticket's headline numbers.
 
@@ -313,12 +314,12 @@ flowchart LR
 
 #### Q15 · Hard · circle one letter · Read the strip by slot
 
-The growth lead's draft for the category manager reads: "Shoppers clicked the strip less after the monsoon, so the strip needs a redesign." Using Exhibit 3B, which reading holds?
+The growth lead's draft for the category manager reads: "Shoppers clicked the strip less after the monsoon, so the strip needs a redesign." Using Exhibit 3B, which reading holds, and which slot is fixed first?
 
-a) Shoppers' habits changed after the monsoon: the strip's click-through fell from 6.1 to 3.8 percent, and every slot shows the same fall.
-b) Neither milk nor other items click less; the fall is milk's share of impressions, and slot 1, at 70 percent milk, loses most.
-c) Slot 3 is the weak slot: its click-through on other items is the lowest of the three, so the strip should drop to two slots.
-d) Milk's own click-through collapsed after the switch, so toned milk should leave the strip and the curated list should come back.
+a) Shoppers clicked less after the monsoon, and slot 1 fell furthest, from 7.5 percent, so slot 1's suggestions are redesigned first.
+b) Neither milk nor other items click less; milk went from 2 to 50 percent of impressions, so slot 1, at 70 percent milk, is re-ranked first.
+c) Neither milk nor other items click less; milk went from 2 to 50 percent of impressions, so slot 3, whose other items click least, is re-ranked first.
+d) Shoppers clicked less after the monsoon, and slot 3's other items click least of the three, so slot 3's suggestions are redesigned first.
 
 **Exhibit 3C.** Two pairs in September 2026's 40,000 Pune carts from 12,000 customers. The top tenth of customers, 1,200 of them, place 38 percent of all carts and 73 percent of the carts that hold chips and cold drink together.
 
@@ -327,7 +328,7 @@ d) Milk's own click-through collapsed after the switch, so toned milk should lea
 | Chips and cold drink | 4,800 | 4,920 | 2,000 | 2.48 | 1.95 |
 | Onions and tomatoes | 8,800 | 8,000 | 3,000 | 1.38 | 1.38 |
 
-#### Q16 · Hard · circle one letter · Allow for heavy buyers
+#### Q16 · Hard · circle one letter · Award the strip's slots
 
 The strip gives a slot only to a pair with a lift of at least 1.5, above a support floor of 1 percent of carts. Exhibit 3C holds two pairs' counts and their lifts recomputed for cart size and for heavy buyers. Which pairs keep a slot?
 
@@ -377,12 +378,12 @@ d) Promote it at a deeper discount, since the pairing is already the strongest o
 | Car phone mount and car charger | Kalpa Retail, the lab's consumer baskets | 2 baskets | 812 | 4.0 |
 | Ice cream and chocolate sauce | Swiggy Instamart, Pune, September | 100 carts | 40,000 | 4.6 |
 
-#### Q20 · Hard · circle one letter · Judge two thin pairs
+#### Q20 · Hard · circle one letter · Judge two high-lift pairs
 
 Statement: a pair with a lift of about 4 and a support of about 0.25 percent belongs on a watch list, to be counted again or tested, before it belongs in a campaign. Judge it on both pairs in Exhibit 3E. True or false, and why?
 
 a) True: Kalpa's lift rests on 2 baskets, so one basket moves it by half; Instamart's 100 carts beat chance but reach only carts holding ice cream.
-b) True: both pairs have the same support of 0.25 percent, so both are equally doubtful, and both should be dropped from the strip and from Kalpa's plan.
+b) True: both pairs sit at the same support of 0.25 percent, so both wait on the watch list for another quarter of carts before any test is run.
 c) False: a lift of 4 is four times what chance gives, and a lift that far above 1 earns a campaign slot whatever the pair's support turns out to be.
 d) False: Instamart's 100 carts are enough to act on, so its pair goes straight into the strip while Kalpa's pair waits for more baskets to arrive.
 
@@ -399,7 +400,7 @@ d) Rs 2,625: the 375 new adds at the Rs 7 left after the discount, paid on those
 
 ## Part 4. Where is the tier losing people? (Q22 to Q28)
 
-*What it shows: whether you can separate a cohort problem from an everyone problem and find the step that changed, in the right unit. 7 items, about 22.5 minutes.*
+*What it shows: whether you can tell where a membership loses people and decide what to fix first. 7 items, about 23 minutes.*
 
 Zomato Gold's membership dashboard for Chennai reports month-two retention flat at 38 percent in June, July, August and September 2026: of the members two or more months past their signup month, the share who ordered in the month. Exhibit 4A gives each signup month's own month-one rate. The August cohort was grown by a sale week on a discounted first month. On Monday 14 September 2026 a new checkout flow shipped on Android. The membership lead asks whether it is a cohort problem or an everyone problem, which step of the order flow owns the loss, and what should be fixed first. Illustrative case: the company is real, the situation and the data are synthetic, built for this class. In the lab the head of Retail-Plus put the same questions about Kalpa Retail's tier.
 
@@ -448,12 +449,12 @@ Answer: ____________________
 
 #### Q24 · Hard · circle one letter · Choose the honest headline
 
-What is the honest headline?
+What is the honest headline for June, and what would June's blend read without cohort C?
 
-a) Both existing cohorts declined, and a large new cohort in its strong first month hid it.
-b) Retention improved, because the newest cohort retains better than the two before it.
-c) Retention held steady from May to June, so the membership plan needs no change this quarter.
-d) Both existing cohorts declined, and cohort C retains less than cohort A did in May, so the new members are the weaker ones.
+a) Both existing cohorts fell and a large new cohort in its first month hid it; without C, June's blend reads about 37.8 percent.
+b) Both existing cohorts fell and a large new cohort in its first month hid it; without C, June's blend reads about 40.5 percent.
+c) The new members are the weaker ones, since C retains less than A did in May; without C, June's blend reads about 37.8 percent.
+d) The new members are the weaker ones, since C retains less than A did in May; without C, June's blend reads about 40.5 percent.
 
 **Exhibit 4C.** Zomato Gold members in Chennai, September 2026: the order flow counted in sessions and in members. The home carousel opens a restaurant's menu without a search.
 
@@ -488,10 +489,10 @@ d) Search is a step members can skip, since carousel menus need none, so that st
 
 The app team says the new Android checkout cannot be at fault, since non-members use the same checkout and held at 51 percent. Android members reached add-to-cart in 22,841 sessions from 14 to 30 September, 17 days. What is fixed first, and what does the loss cost a week, at Rs 300 to Rs 500 of order value an order?
 
-a) The member path of the Android checkout: Android members lose about 3,198 orders a week against their old rate, about Rs 9.6 to 16.0 lakh of order value.
-b) The member path of the Android checkout: Android members lose about 1,317 orders a week against their old rate, about Rs 4.0 to 6.6 lakh of order value.
-c) The whole Android checkout, for every user: Android orders fall about 1,317 a week against the old rate, Rs 4.0 to 6.6 lakh, so roll it back for all.
-d) The August sale cohort: members bought on a discount order less, and their 31 percent month one explains the fall in members' orders.
+a) The member path of the new Android checkout, from 14 September: about 3,198 orders a week lost against the old rate, about Rs 9.6 to 16.0 lakh of order value.
+b) The member path of the new Android checkout, from 14 September: about 1,317 orders a week lost against the old rate, about Rs 4.0 to 6.6 lakh of order value.
+c) The August sale cohort, with its 31 percent month one: about 1,317 orders a week lost against the old rate, about Rs 4.0 to 6.6 lakh of order value.
+d) The August sale cohort, with its 31 percent month one: about 3,198 orders a week lost against the old rate, about Rs 9.6 to 16.0 lakh of order value.
 
 **Exhibit 4E.** An invented cohort of ten users: how many were active in each quarter after joining, before and after its five weakest users were weaned away.
 
@@ -500,16 +501,16 @@ d) The August sale cohort: members bought on a discount order less, and their 31
 | All ten users, active | 7 | 5 | 4 | 3 |
 | The five kept after the weakest five are weaned away, active | 5 | 5 | 4 | 3 |
 
-#### Q27 · Hard · circle one letter · Ask for the denominator
+#### Q27 · Hard · circle one letter · Read the weaned cohort
 
-Swiggy's shareholder letter for July to September 2025 says it "weaned away certain users from the platform with low potential Lifetime values", and its table of Instamart cohort spend states no denominator. Exhibit 4E is invented. A deck shows this cohort's third quarter after the weakest five are weaned away and calls it strong retention. What does the third quarter read on each base, and what do you ask before trusting a published cohort chart?
+Swiggy's shareholder letter for July to September 2025 says it "weaned away certain users from the platform with low potential Lifetime values", and it prints a table of Instamart cohort spend indexed to one cohort's first quarter. Exhibit 4E is invented. A deck shows this cohort's third quarter after the weakest five are weaned away and calls it strong retention. What does the third quarter read on each base, and what do you ask before trusting a published cohort chart?
 
-a) 40 percent per user who joined, 80 per user who stayed; ask what the cells divide by and whether they count users, orders or spend.
-b) 40 percent per user who joined, 80 per user who stayed; ask only whether the cohort was acquired in a sale quarter, which explains it.
-c) 40 percent per user who joined and 60 per user who stayed; ask whether every cohort in the table is indexed to the same first quarter.
-d) 80 percent per user who joined and 40 per user who stayed; ask whether the weaned users were counted twice in the table's cells.
+a) 40 percent of the users who joined and 80 percent of those kept; ask what each cell divides by, users who joined or kept, and whether it counts users, orders or spend.
+b) 40 percent of the users who joined and 80 percent of those kept; ask whether the cohort was acquired in a sale quarter, which would explain a strong cohort.
+c) 40 percent of the users who joined and 60 percent of those kept; ask what each cell divides by, users who joined or kept, and whether it counts users, orders or spend.
+d) 40 percent of the users who joined and 60 percent of those kept; ask whether the cohort was acquired in a sale quarter, which would explain a strong cohort.
 
-**Exhibit 4F.** Kalpa Retail's Retail-Plus tier in the app, as Thursday's lab found it. Blended retention, the members who joined before the month and opened the app in it, read 41 percent in July, August and September 2026.
+**Exhibit 4F.** Kalpa Retail's Retail-Plus tier in the app, as Thursday's lab found it. Blended retention, the members who joined before the month and opened the app in it, held at the same rate in July, August and September 2026.
 
 | Stretch of 2026 | Carts | Checkouts | Add-to-cart to checkout |
 |---|---|---|---|
@@ -521,18 +522,18 @@ d) 80 percent per user who joined and 40 per user who stayed; ask whether the we
 
 The app team says the auto-reorder feature has been fixed and asks the head of Retail-Plus to close the ticket, since blended retention has not moved. Which reply holds on Exhibit 4F?
 
-a) Close it: blended retention held at 41 percent across the window, so the app lost no members and the step needs no further look.
-b) Keep it open: blended retention has not risen since the fix shipped, which shows the feature is still costing the tier its members.
-c) Keep it open: checkout per cart fell inside the window, 7 of 11 against 10 of 12, about 2 short; check the step and read three more weeks.
-d) Rebuild checkout now: a 19-point fall is the largest move in the tier's funnel, and a full three-week window of carts is enough to act on.
+a) Close it: 7 checkouts from 11 carts is only 3 fewer than the 10 from 12 before, the noise any three weeks of carts carry, so the step needs no further look.
+b) Keep it open: checkouts fell from 10 to 7 against the three weeks before, 30 percent fewer, which proves the feature still breaks the checkout step.
+c) Rebuild checkout now: 7 of 11 against 10 of 12 is a 19-point fall, the largest move in the tier's funnel, and a full three-week window is enough to act on.
+d) Keep it open: 7 of 11 carts checked out against 10 of 12 before, about 2 checkouts short at the old rate; flag the step and read the next three weeks.
 
 ---
 
 ## Part 5. Which forecast earns the plan's trust? (Q29 to Q33)
 
-*What it shows: whether you can choose a forecast on weeks it never saw, place the festival in the right month and price a miss in each direction. 5 items, about 20 minutes.*
+*What it shows: whether you can choose the forecast that goes to the plan and say how wrong it could be. 5 items, about 19 minutes.*
 
-Flipkart's Lucknow fulfilment centre has 104 weeks of outbound shipments, the weeks beginning 30 September 2024 to 21 September 2026. The planner must book packer shifts for the eight festive weeks beginning 12 October to 30 November 2026, and a packer packs about 120 shipments a shift. Finance's rule is the same weeks last year plus 4 percent; a vendor's curve promises 22 percent more. Every forecast was also scored on the thirteen weeks beginning 29 June to 21 September 2026, which it never saw. Diwali's dates are in Exhibit 5A. Illustrative case: the company is real, the situation and the data are synthetic, built for this class. In the lab Anand Iyer, Kalpa Retail's finance controller, had the same choice for the board: two forecasts eighteen points apart.
+Flipkart's Lucknow fulfilment centre has 104 weeks of outbound shipments, the weeks beginning 30 September 2024 to 21 September 2026. The planner must book packer shifts for the eight festive weeks beginning 12 October to 30 November 2026, and a packer packs about 120 shipments a shift. Finance's rule is the same weeks last year plus 4 percent; a vendor's curve promises 22 percent more. Diwali's dates are in Exhibit 5A. Illustrative case: the company is real, the situation and the data are synthetic, built for this class. In the lab Anand Iyer, Kalpa Retail's finance controller, had the same choice for the board: two forecasts eighteen points apart.
 
 **Exhibit 5A.** Diwali in the Government of India's holiday lists for 2024, 2025 and 2026 (DoPT, as reproduced by staffnews.in, checked 13 October 2026).
 
@@ -562,7 +563,7 @@ Answer: ____________________
 | October | 415.1 | 427.6 |
 | November | 286.8 | 297.0 |
 
-#### Q30 · Hard · show the working, then the answer · Move the spike
+#### Q30 · Hard · show the working, then the answer · Set October and November
 
 Anand's board line needs October and November 2026. Using Exhibits 5A and 5B, give the seasonal naive for both months, then a seasonal baseline with Friday's 4 percent growth that puts the festival in its own month, and say which month should carry the festival's spike.
 
@@ -584,12 +585,12 @@ Answer: ____________________
 
 The vendor's sponsor says: "Our curve fits two years of Lucknow's weeks within 2 percent, and machine learning won M5, so the curve should go to the plan." Using Exhibit 5C, which reply holds?
 
-a) A fit is no forecast: on M5's unseen days the seasonal naive beat both machine-learning benchmarks shown; score the curve against it on hidden weeks.
-b) Agree: the winning entries in M5 were machine learning, so a curve that fits two years of Lucknow's weeks this closely has earned its place in the plan.
-c) Score the curve on the hidden weeks, and send it to the plan if its miss there stays inside its own 2 percent fit to the two years.
-d) Score the curve on its fitted weeks with MAPE as well as MAE, and send it to the plan if both measures stay under 2 percent of the actual.
+a) A fit is no forecast: on M5's unseen days the seasonal naive, 0.847, beat both machine-learning benchmarks; the curve goes only if it beats it on weeks it never saw.
+b) The winning team's 0.520 beat the naive's 1.752 by far on M5; the curve goes if it beats the naive over the same two years, a far larger test than a few held-back weeks.
+c) A fit is no forecast: on M5's unseen days every other entry beat the naive, 1.752; the curve goes if it beats the naive on weeks it never saw.
+d) The winning team's 0.520 beat the seasonal naive's 0.847 on M5; the curve goes if it beats the seasonal naive over the same two years, a far larger test than a few held-back weeks.
 
-**Exhibit 5D.** Lucknow's thirteen hidden weeks, beginning 29 June to 21 September 2026. An idle packer-shift costs Rs 650 for 120 shipments, Rs 5.42 for each shipment planned and not shipped, and a late shipment costs Rs 25; both are assumptions.
+**Exhibit 5D.** Lucknow's thirteen hidden weeks, beginning 29 June to 21 September 2026, which every forecast was scored on and none was built from. An idle packer-shift costs Rs 650 for 120 shipments, Rs 5.42 for each shipment planned and not shipped, and a late shipment costs Rs 25; both are assumptions.
 
 | Forecast | Shipments forecast too high, summed | Shipments forecast too low, summed | Weeks too high, of 13 |
 |---|---|---|---|
@@ -601,47 +602,47 @@ d) Score the curve on its fitted weeks with MAPE as well as MAE, and send it to 
 
 What is each forecast's mean absolute error a week, which costs least on these weeks with its misses priced, and what follows for the plan?
 
-a) 6,615, 9,831 and 16,400 a week; festival-aligned costs least, about Rs 13.5 lakh, so the plan books its forecast with no cushion above it.
-b) 6,615, 9,831 and 16,400 a week; the vendor costs least, about Rs 11.9 lakh, so the plan books its curve at plus 22 percent for the festive weeks.
-c) About minus 346, minus 8,708 and 16,108 a week, the signed misses averaged; festival-aligned is nearly unbiased, so the plan sits at its forecast.
-d) 6,615, 9,831 and 16,400; the vendor costs least, Rs 11.9 lakh, only because it errs high, the cheap side; compare each at its own 0.82 point.
+a) 6,615, 9,831 and 16,400 a week; the vendor costs least, about Rs 11.9 lakh, so the plan books its curve at plus 22 percent for the festive weeks.
+b) About minus 346, minus 8,708 and 16,108 a week, the signed misses averaged; the vendor costs least, Rs 11.9 lakh, only because it errs high; compare each at its own 0.82 point.
+c) About minus 346, minus 8,708 and 16,108 a week, the signed misses averaged; the vendor costs least, about Rs 11.9 lakh, so the plan books its curve at plus 22 percent.
+d) 6,615, 9,831 and 16,400 a week; the vendor costs least, Rs 11.9 lakh, only because it errs high, the cheap side; compare each at its own 0.82 point.
 
-**Exhibit 5E.** Kalpa Retail's forecasts for October 2026 to March 2027, as Friday's lab found them. Each forecast's average miss is on April to September 2026, six months it never saw, none of them a Diwali month. October 2025 to March 2026, a year before the forecast months, booked Rs 18.93 crore.
+**Exhibit 5E.** Kalpa Retail's forecasts for October 2026 to March 2027, as Friday's lab found them. Each forecast's average miss is on April to September 2026, six months it never saw. October 2025 to March 2026, a year before the forecast months, booked Rs 18.93 crore.
 
-| Forecast | Six months, Rs crore | Against a year earlier | Average miss a month, Rs lakh | Puts the spike in |
-|---|---|---|---|---|
-| The same month last year | 18.93 | level | 11.7 | October |
-| Finance's rule, the same month last year plus 4 percent | 19.69 | 4 percent above | 3.5 | October |
-| Festival-aligned, matched by Diwali, plus 4 percent | 19.69 | 4 percent above | 3.5 | November |
-| The vendor's curve | 23.09 | 22 percent above | 38.8 | October |
-| The plan line | 21.77 | 15 percent above | not a forecast | not a forecast |
+| Forecast | Six months, Rs crore | Against a year earlier | Average miss a month, Rs lakh |
+|---|---|---|---|
+| The same month last year | 18.93 | level | 11.7 |
+| Finance's rule, the same month last year plus 4 percent | 19.69 | 4 percent above | 3.5 |
+| Festival-aligned, matched by Diwali, plus 4 percent | 19.69 | 4 percent above | 3.5 |
+| The vendor's curve | 23.09 | 22 percent above | 38.8 |
+| The plan line | 21.77 | 15 percent above | not a forecast |
 
 #### Q33 · Hard · circle one letter · Choose the board sentence
 
 Anand asks which number goes in front of the board for October 2026 to March 2027, and how wrong it could be. Using Exhibits 5A and 5E, which sentence answers him?
 
-a) "Rs 23.09 crore, the vendor's curve: it fits its 18 fitted months within 1.8 percent, the closest fit of any forecast on the table."
-b) "Rs 19.69 crore, festival-aligned, spike in November, Rs 2.08 crore under plan; on six unseen months it missed by about Rs 3.5 lakh a month."
-c) "Rs 21.39 crore, halfway between finance's 4 percent and the vendor's 22, so neither side's error carries the board's number on its own."
-d) "Rs 19.69 crore, finance's rule, spike in October: finance's rule and festival-aligned agree on the six months, so either may go to the board."
+a) "Rs 19.69 crore, finance's rule, spike in October, Rs 2.08 crore under plan; it missed by about Rs 3.5 lakh a month on six unseen months, none with a Diwali."
+b) "Rs 19.69 crore, festival-aligned, spike in November, Rs 2.08 crore under plan; it missed by about Rs 3.5 lakh a month on six unseen months, none with a Diwali."
+c) "Rs 19.69 crore, festival-aligned, spike in November, Rs 2.08 crore under plan; its miss of about Rs 3.5 lakh a month on unseen months holds for the festive months too."
+d) "Rs 19.69 crore, finance's rule, spike in October, Rs 2.08 crore under plan; its miss of about Rs 3.5 lakh a month on unseen months holds for the festive months too."
 
 ---
 
 ## Part 6. What changes when the method moves company? (Q34 to Q39)
 
-*What it shows: whether you can carry the week's methods to another company and name what changed, the metric, the constraint and the cost of an error. 6 items, about 12 minutes.*
+*What it shows: whether you can carry the week's methods to another company and say what changes there. 6 items, about 12 minutes.*
 
-This afternoon's spoken drill hands each pair of groups a one-paragraph brief, at another company the room uses or at one of Kalpa's other units, and every answer names the metric, the constraint and the cost of an error that changed, what stays, and what would change back on the Retail tables. This part puts the same move to you on paper. Kalpa Financial Services is Rohan Desai's payments and lending business; Kalpa Logistics moves parcels, and its head of operations is named by role; Kalpa Health, whose COO is Dr Priya Menon, runs laboratories and patient service centres that test US patients and bill US payers in dollars; and Kalpa Connect, whose COO is Ananya Bose, runs telecom and subscriptions. The briefs are illustrative.
+This afternoon's spoken drill hands each pair of groups a one-paragraph brief, at another company the room uses or at one of Kalpa's other units, and each answer says what carries over from the week and what does not. This part puts the same move to you on paper. Kalpa Financial Services is Rohan Desai's payments and lending business; Kalpa Logistics moves parcels, and its head of operations is named by role; Kalpa Health, whose COO is Dr Priya Menon, runs laboratories and patient service centres that test US patients and bill US payers in dollars; and Kalpa Connect, whose COO is Ananya Bose, runs telecom and subscriptions. The briefs are illustrative.
 
 **Exhibit 6A.** The week's five tickets, each found at one company, and the Kalpa units this part carries them to.
 
 ```mermaid
 flowchart TB
-  W["The week's five tickets"] --> M["Mon, Uber, Hyderabad:<br/>the number a scheme pays for"]
-  W --> T["Tue, the same case:<br/>one slide, a number from nothing"]
-  W --> X["Wed, Swiggy Instamart, Pune:<br/>pairs beyond chance, a slot in margin"]
-  W --> H["Thu, Zomato Gold, Chennai:<br/>cohorts against the blend"]
-  W --> F["Fri, Flipkart, Lucknow:<br/>a baseline that beats the fit"]
+  W["The week's five tickets"] --> M["Mon, Uber, Hyderabad:<br/>which number the scheme pays for"]
+  W --> T["Tue, the same case:<br/>the slide and the city sized from nothing"]
+  W --> X["Wed, Swiggy Instamart, Pune:<br/>which pairs the strip shows"]
+  W --> H["Thu, Zomato Gold, Chennai:<br/>where the tier loses people"]
+  W --> F["Fri, Flipkart, Lucknow:<br/>which forecast goes to the plan"]
   M --> K["Kalpa's other units: Financial Services,<br/>Logistics, Health and Connect"]
   T --> K
   X --> K
@@ -662,7 +663,7 @@ d) testing against a baseline before trusting a lift
 
 | Item | To match | Letter | Match |
 |---|---|---|---|
-| Q35 (Easy) | Kalpa Logistics' head of operations: the on-time delivery rate has risen since dispatchers were allowed to move a parcel's promised date once a delay was known. | a | a copy aligned to the festival, planned toward the costlier side |
+| Q35 (Easy) | Kalpa Logistics' head of operations: the on-time delivery rate has risen since dispatchers were allowed to move a parcel's promised date once a delay was known. | a | the second product most customers already hold |
 | Q36 (Easy) | Dr Priya Menon: which step between a test booked and a visit completed loses the most dollars, metro area by metro area? | b | cohorts by start month, each read at the same age |
 | Q37 (Easy) | Ananya Bose: blended monthly churn has held steady for four months while subscribers who joined since the spring seem to cancel sooner. | c | the average of each row's own rate across the table |
 | Q38 (Easy) | Rohan Desai: which second product should a customer be offered first, beyond what any customer takes up anyway? | d | a definition whose window the measured cannot move, with a guardrail |
@@ -675,10 +676,10 @@ Answers: Q35 ____    Q36 ____    Q37 ____    Q38 ____
 
 Amazon India, a fulfilment centre's festive packer plan (illustrative case: the company is real, and every number below except Amazon's own figure is hypothetical). Amazon says its Great Indian Festival 2025 drew over 276 crore customer visits, 70 percent of them from tier 2 and 3 cities. Suppose its centre in a tier 2 city pays Rs 650 for an idle packer-shift of 120 shipments, as Lucknow does, while a late shipment costs it Rs 10, against Lucknow's Rs 25. What share of weeks should its plan cover, and what carries over from Lucknow unchanged?
 
-a) About 0.65, the late cost over both costs; the festival-aligned copy, the held-out latest weeks and pricing both directions carry over.
-b) About 0.82, Lucknow's share, since an idle shift costs the same Rs 650 at both centres, and the cheaper late shipment moves only the forecast itself.
-c) About 0.35, the spare cost over the two costs together; the plan then sits below the forecast in most weeks, on the side the cheaper late shipment favours.
-d) About 0.65, the late cost over the two costs; and the copy of last year's calendar weeks carries over, since Amazon's sale dates follow the calendar month.
+a) About 0.82, Lucknow's share, as an idle shift costs Rs 650 at both centres; the festival-aligned copy, the held-out latest weeks and pricing both directions carry over.
+b) About 0.82, Lucknow's share, as an idle shift costs Rs 650 at both centres; and the copy of last year's calendar weeks carries over as the plainest baseline.
+c) About 0.65, the late cost over both costs; and the copy of last year's calendar weeks carries over as the plainest baseline.
+d) About 0.65, the late cost over both costs; the festival-aligned copy, the held-out latest weeks and pricing both directions carry over.
 
 ---
 
@@ -688,11 +689,11 @@ For anyone who finishes early. Nothing here is counted. Stretch 1 to 4 are the k
 
 ### Stretch 1
 
-In Hyderabad the 180 drivers in the idle tail completed 33,440 peak trips in the six weeks after the launch, about 31 trips and 39 peak online hours a driver a week, well above the single weeks Exhibit 1B prints for E and F. If the redesign drives all of them off the app, who carries those trips, and how many more peak online hours does that take at the other drivers' 1.90 trips an hour?
+In Hyderabad the 180 drivers in the idle tail completed 33,440 peak trips in the six weeks after the launch, about 31 trips and 39 peak online hours a driver a week. If the redesign drives all of them off the app, who carries those trips, and how many more peak online hours does that take at the other drivers' 1.90 trips an hour?
 
 ### Stretch 2
 
-Ice cream and chocolate sauce read a lift of 4.6 on 100 of 40,000 carts. Design the test that decides whether the pair takes a strip slot.
+A growth lead wants to test one suggestion: half the shoppers in two zones, picked at random, see a second item beside the first. Today 6.25 percent of carts holding the first item also hold the second, and a rise to 9.45 percent would pay for the slot. How many carts holding the first item does each half need, at 5 percent significance and 80 percent power, and what happens to that count if only half of the rise is new buying?
 
 ### Stretch 3
 
@@ -700,7 +701,7 @@ An AI writing assistant launched two months ago, and its weekly active users hit
 
 ### Stretch 4
 
-Lucknow's plan raises festival-aligned by a 2.6 percent cushion, read from the same thirteen hidden weeks the forecasts were scored on. Is that circular, and what would you do instead?
+A planner reads where the plan should sit, against the chosen forecast, from the same thirteen hidden weeks the forecasts were scored on. Is that circular, and what would you do instead?
 
 ### Stretch 5
 
