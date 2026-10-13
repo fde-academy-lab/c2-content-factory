@@ -1,7 +1,7 @@
 # TA lab note: cohorts and the funnel on Kalpa's Retail-Plus tier, then the practice set
 
 **TRAINER ONLY.** For the TA who runs the practice lab after the faculty block (tentative). The lab
-re-runs levels L1 to L3 on Kalpa Retail's Retail-Plus tier: a hand count first, then notebook 04, then
+re-runs levels L1 to L3, and the day's five topics, on Kalpa Retail's Retail-Plus tier: a hand count first, then notebook 12, then
 the Kalpa set's after-lab page, then the practice set. The programme's facts set no length for the
 lab, so the parts below run in this order and the practice set is cut from its end when time runs
 short. Never cut the hand count or the first three your-turn cells.
@@ -22,11 +22,11 @@ window is the stretch to check.
 | Order | Part | File |
 |---|---|---|
 | 1 | Seven members and one member's week, counted by hand on paper | The two tables below, printed one per group |
-| 2 | The tables loaded and checked against the warehouse | Notebook 04, cells 1 to 3 |
-| 3 | Your turn: the cohort table and blended retention | Notebook 04, cell 5, empty |
-| 4 | Your turn: add-to-cart to checkout in three stretches | Notebook 04, cell 7, empty |
-| 5 | Your turn: sessions with no search, and checkout in two units | Notebook 04, cell 9, empty |
-| 6 | Your turn: Kavya's second route, the blend rebuilt from the cohort rows | Notebook 04, cell 11, empty, the last |
+| 2 | The tables loaded and checked against the warehouse | Notebook 12, cells 1 to 3 |
+| 3 | Your turn: the cohort table and blended retention | Notebook 12, cell 5, empty |
+| 4 | Your turn: add-to-cart to checkout in three stretches | Notebook 12, cell 7, empty |
+| 5 | Your turn: sessions with no search, and checkout in two units | Notebook 12, cell 9, empty |
+| 6 | Your turn: Kavya's second route, the blend rebuilt from the cohort rows | Notebook 12, cell 11, empty, the last |
 | 7 | The three sentences to the TA, then items 2 to 4 of the Kalpa set and its second page | `exercises/unguided/C2_W04_D04_kalpa_retail_plus_STUDENT.md` |
 | 8 | The practice set | `exercises/practice/C2_W04_D04_lab_set_STUDENT.md` |
 

@@ -102,5 +102,6 @@ Written by `C2_W04_D04_generate_INTERNAL.py`; every line must read PASS.
 | PASS | the toy artefact and its fix sit five points from the case's 118 and 89 |  |  |
 | PASS | the toy skip shares (20 and 70 percent) sit five points from Kalpa's 31 percent with no search |  |  |
 | PASS | no toy blend echoes the Saturday bank or the Kahoot, and no toy funnel count echoes the bank's funnel |  |  |
+| PASS | the drills' distractors: X and Y alone read 218 of 500 in the second month, 43.6 percent; the plain mean of X and Y reads 50.0 in the first month |  |  |
 | PASS | the weekly cohorts sum to the members who joined 3 August to 13 September | 14892 |  |
 | PASS | the sale week's cohort is the sale-week members and that week's organic joiners |  |  |

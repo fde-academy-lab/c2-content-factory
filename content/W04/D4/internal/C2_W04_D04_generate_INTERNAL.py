@@ -1546,6 +1546,19 @@ check("no toy blend echoes the Saturday bank or the Kahoot, and no toy funnel co
       and not {c for *_, c in ADM} & {10000, 6000, 2400, 600})
 
 TOY_HOW = "invented for the concept chapter on "
+
+
+def over_last(row):
+    """Each age's visitors over the visitors the age before, the misreading a drill offers as a distractor."""
+    prev = [10] + list(row[:-1])
+    return [round(100 * b / a, 1) for a, b in zip(prev, row)]
+
+
+second_by_cohort = {c: [a for e, m, cc, n, a in DASH_TOY if e == "second gym" and cc == c] for c in ("X", "Y", "Z")}
+xy_second = sum(a for e, m, c, n, a in DASH_TOY if e == "second gym" and m == "second month" and c in ("X", "Y"))
+check("the drills' distractors: X and Y alone read 218 of 500 in the second month, 43.6 percent; the plain "
+      "mean of X and Y reads 50.0 in the first month",
+      xy_second == 218 and round(100 * xy_second / 500, 1) == 43.6 and round(100 * sum(s_one[2]) / 2, 1) == 50.0)
 toys += [
     {"id": "toy_gym_roster", "label": "invented, one branch of a neighbourhood gym",
      "how": TOY_HOW + "Cohort construction",
@@ -1556,8 +1569,10 @@ toys += [
                 "april_column": {"by_joining_month": [5, 5, 6], "together": "16 of 30", "percent": round(100 * 16 / 30, 1)},
                 "may_column": {"by_joining_month": [5, 3, 4], "together": "12 of 30, never printed as a blend"},
                 "june_column": {"by_joining_month": [5, 3, 3], "together": "11 of 30, never printed as a blend"},
-                "age_two_percent": [60, 50, 40], "age_one_percent": [80, 70, 60]},
-     "used_by": "SECTION 1 (half1 opener to its map node); notebook 01; drill c1; the notes' first topic; "
+                "age_two_percent": [60, 50, 40], "age_one_percent": [80, 70, 60],
+                "jan_over_last_month_percent": over_last(gym_age["2026-01"]),
+                "feb_over_last_month_percent": over_last(gym_age["2026-02"])},
+     "used_by": "SECTION 1 (half1 opener to its map node); notebook 01; drill c1 (unguided/C2_W04_D04_c1_cohort_construction); the notes' first topic; "
                 "the cheat sheet's topic panel; the board work"},
     {"id": "toy_gym_curves", "label": "invented, the same gym branch read as curves",
      "how": TOY_HOW + "Retention curves: shape and floor",
@@ -1567,22 +1582,26 @@ toys += [
                 "jan_churn_percent": [100 - 10 * a for a in gym_age["2026-01"]],
                 "jan_month_to_month_churn_percent": jan_m2m,
                 "predict_options": "under 10; about 25; 50; back up to 80", "feb_misread_floor": 50},
-     "used_by": "SECTION 2; notebook 02; drill c2; Kahoot Q4's stem; the notes; the cheat sheet"},
+     "used_by": "SECTION 2; notebook 02; drill c2 (unguided/C2_W04_D04_c2_retention_curves); the notes; the cheat sheet"},
     {"id": "toy_gym_dashboard", "label": "invented, the whole gym's dashboard, January and February 2026",
      "how": TOY_HOW + "Blended numbers against cohort truth",
      "values": {"file": f"data/{STEM}_toy_gym_dashboard_STUDENT.csv",
                 "january": {"older_members": 100, "visited": 50, "percent": 50.0},
                 "february": {"older_members": 100, "older_visited": 40, "january_joiners": 400,
                              "joiners_visited": 210, "joiners_percent": 52.5, "together": "250 of 500", "percent": 50.0},
-                "plain_mean_of_rates": 46.25, "same_numbers_as": "toy_blend (the explorer's Th2 batches A and B)"},
-     "used_by": "SECTION 3; notebook 03; drill c3; the notes; the cheat sheet; the board work"},
+                "plain_mean_of_rates": 46.25, "plain_mean_gap_points": 3.75,
+                "same_numbers_as": "toy_blend (the explorer's Th2 batches A and B)"},
+     "used_by": "SECTION 3; notebook 03; drill c3 (unguided/C2_W04_D04_c3_blended_vs_cohort); the notes; the cheat sheet; the board work"},
     {"id": "toy_second_gym", "label": "invented, three cohorts at a second gym",
      "how": TOY_HOW + "Blended numbers against cohort truth",
      "values": {"X": {"members": 200, "percent": [60, 55]}, "Y": {"members": 300, "percent": [40, 36]},
                 "Z": {"members": 500, "percent_month_one": 52, "joined": "in the first month"},
                 "blend_percent": [48.0, 47.8], "visited": [240, 478],
-                "plain_mean_second_month": round(100 * sum(s_two[2]) / 3, 1)},
-     "used_by": "SECTION 3's check question; notebook 03's faded example; drill c3 Q1"},
+                "plain_mean_second_month": round(100 * sum(s_two[2]) / 3, 1),
+                "plain_mean_first_month": round(100 * sum(s_one[2]) / 2, 1),
+                "visited_by_cohort": second_by_cohort,
+                "x_and_y_second_month": {"visited": xy_second, "members": 500, "percent": round(100 * xy_second / 500, 1)}},
+     "used_by": "SECTION 3's check question; notebook 03's faded example; drill c3 (unguided/C2_W04_D04_c3_blended_vs_cohort)"},
     {"id": "toy_college_funnel", "label": "invented, one college's admissions to one programme",
      "how": TOY_HOW + "Funnel stages, drop-off, denominators",
      "values": {"file": f"data/{STEM}_toy_admissions_STUDENT.csv",
@@ -1591,8 +1610,9 @@ toys += [
                            "2026": [1000, 800, 400, 300, 240]},
                 "step_percent": {"2026": [80, 50, 75, 80], "2025": [80, 50, 90, 80], "2024": [80, 50, 90, 80.1]},
                 "drop_off_percent_2026": [20, 50, 25, 20], "overall_percent": {"2026": 24.0, "2025": 28.8},
+                "over_the_top_percent_2026": [80, 40, 30, 24], "lost_overall_percent_2026": 76,
                 "no_show": "200 of 1,000 applications skip the test (20 percent), every cycle"},
-     "used_by": "SECTION 4; SECTION 8's opening; notebooks 04 and 08; drills c4 and c5; the notes; the cheat sheet"},
+     "used_by": "SECTION 4; SECTION 8's opening; notebooks 04 and 08; drills c4 and c5 (unguided/C2_W04_D04_c4_funnel_denominators, c5_fix_first_evidence); the notes; the cheat sheet"},
     {"id": "toy_college_applicants", "label": "invented, the same cycle counted per applicant",
      "how": TOY_HOW + "Funnel stages, drop-off, denominators",
      "values": {"applicants": 900, "applications": 1000, "counts": [900, 760, 390, 300, 240],

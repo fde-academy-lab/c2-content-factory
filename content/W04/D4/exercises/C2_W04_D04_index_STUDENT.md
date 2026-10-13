@@ -63,7 +63,7 @@ Kaapi and Co. drill come last and ask for letters only.
 
 ## How many items ask for a design call?
 
-Twenty-two of the 42 items are design calls: a best-fit comparison, a sizing, the fact that would
+Twenty-two of the forty-two items are design calls: a best-fit comparison, a sizing, the fact that would
 change the call, or a second route. Each is marked "a design call" beside its level.
 
 ## Where are the answers?

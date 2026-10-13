@@ -1953,8 +1953,19 @@ toys:
     - 80
     - 70
     - 60
-  used_by: SECTION 1 (half1 opener to its map node); notebook 01; drill c1; the notes' first topic; the
-    cheat sheet's topic panel; the board work
+    jan_over_last_month_percent:
+    - 80.0
+    - 75.0
+    - 83.3
+    - 100.0
+    - 100.0
+    feb_over_last_month_percent:
+    - 70.0
+    - 71.4
+    - 60.0
+    - 100.0
+  used_by: SECTION 1 (half1 opener to its map node); notebook 01; drill c1 (unguided/C2_W04_D04_c1_cohort_construction);
+    the notes' first topic; the cheat sheet's topic panel; the board work
 - id: toy_gym_curves
   label: invented, the same gym branch read as curves
   how: 'invented for the concept chapter on Retention curves: shape and floor'
@@ -1997,7 +2008,8 @@ toys:
     - 0.0
     predict_options: under 10; about 25; 50; back up to 80
     feb_misread_floor: 50
-  used_by: SECTION 2; notebook 02; drill c2; Kahoot Q4's stem; the notes; the cheat sheet
+  used_by: SECTION 2; notebook 02; drill c2 (unguided/C2_W04_D04_c2_retention_curves); the notes; the
+    cheat sheet
 - id: toy_gym_dashboard
   label: invented, the whole gym's dashboard, January and February 2026
   how: invented for the concept chapter on Blended numbers against cohort truth
@@ -2016,8 +2028,10 @@ toys:
       together: 250 of 500
       percent: 50.0
     plain_mean_of_rates: 46.25
+    plain_mean_gap_points: 3.75
     same_numbers_as: toy_blend (the explorer's Th2 batches A and B)
-  used_by: SECTION 3; notebook 03; drill c3; the notes; the cheat sheet; the board work
+  used_by: SECTION 3; notebook 03; drill c3 (unguided/C2_W04_D04_c3_blended_vs_cohort); the notes; the
+    cheat sheet; the board work
 - id: toy_second_gym
   label: invented, three cohorts at a second gym
   how: invented for the concept chapter on Blended numbers against cohort truth
@@ -2043,7 +2057,21 @@ toys:
     - 240
     - 478
     plain_mean_second_month: 47.7
-  used_by: SECTION 3's check question; notebook 03's faded example; drill c3 Q1
+    plain_mean_first_month: 50.0
+    visited_by_cohort:
+      X:
+      - 120
+      - 110
+      Y:
+      - 120
+      - 108
+      Z:
+      - 260
+    x_and_y_second_month:
+      visited: 218
+      members: 500
+      percent: 43.6
+  used_by: SECTION 3's check question; notebook 03's faded example; drill c3 (unguided/C2_W04_D04_c3_blended_vs_cohort)
 - id: toy_college_funnel
   label: invented, one college's admissions to one programme
   how: invented for the concept chapter on Funnel stages, drop-off, denominators
@@ -2093,9 +2121,15 @@ toys:
     overall_percent:
       '2026': 24.0
       '2025': 28.8
+    over_the_top_percent_2026:
+    - 80
+    - 40
+    - 30
+    - 24
+    lost_overall_percent_2026: 76
     no_show: 200 of 1,000 applications skip the test (20 percent), every cycle
-  used_by: SECTION 4; SECTION 8's opening; notebooks 04 and 08; drills c4 and c5; the notes; the cheat
-    sheet
+  used_by: SECTION 4; SECTION 8's opening; notebooks 04 and 08; drills c4 and c5 (unguided/C2_W04_D04_c4_funnel_denominators,
+    c5_fix_first_evidence); the notes; the cheat sheet
 - id: toy_college_applicants
   label: invented, the same cycle counted per applicant
   how: invented for the concept chapter on Funnel stages, drop-off, denominators

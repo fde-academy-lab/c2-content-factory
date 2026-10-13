@@ -60,11 +60,63 @@ says where.
 |---|---|---|
 | Graduate 37 | The three reveals stay in the STUDENT cards file, and the Kahoot file marks its keys | The deck's answer slides print every reveal's numbers, so the cards spoil nothing the deck does not; the model pack's Kahoot file marks its keys the same way, since it is the file loaded into Kahoot; the staff printing line moved to the trainer's run sheet |
 | Graduate 40, the posting place | No file names where letters are posted | The programme's facts name no posting channel, so the trainer names it in the room |
-| Graduate 32, the handoff line | S45 keeps "treats a member who has not left yet as if she were retained for ever" | It is the spine's handoff line, said word for word; S36 and the notes now say what the table does with young cohorts |
+| Graduate 32, the handoff line | S81 (S45 before the rebuild of 13 October 2026) keeps "treats a member who has not left yet as if she were retained for ever" | It is the spine's handoff line, said word for word; S64 (then S36) and the notes now say what the table does with young cohorts |
 | Graduate 75, Gold's price | The pack names Gold's free delivery and no price | No source checked in the session states a price; the benefit comes from Zomato's own letter |
-| Graduate 76, sections against chapters | Sections 4 to 6 stay sections | The spine sets three chapters for the morning; the section 4 subtitle now says the afternoon adds no new idea |
+| Graduate 76, sections against chapters | Superseded on 13 October 2026 | The concept-first rebuild numbers every chapter as a SECTION in deck order, and the afternoon now opens on the fifth topic, SECTION 8 |
 | Interviewer, sourcing 9 | The Eternal citation is the company's results page and the letter's copy it links | The exchange filing of the letter could not be found in the session; the quoted lines were re-read from that copy |
 | Interviewer, sourcing 7 | The DMRC unit rests on PTI's report of DMRC's definition and on the record's framing | No DMRC release was fetched in the session |
 | Interviewer 25, the supply-side cross-check | Named in the guesstimate, never computed | Train counts and capacities were not verified in the session, so no number is given |
 | Interviewer 14, cost per retained user | Named in the AI variant without a number | The variant is invented; a cost figure would be a fabricated fact |
 | Interviewer, round two, sourcing | No second copy of Swiggy's Q1 FY27 letter, and no DMRC post fetched directly | The NSE copy returned the full letter in this session; DMRC's post is quoted as Republic World carries it, and the "same count" reading is labelled the pack's inference |
+
+## What did the concept-first rebuild of 13 October 2026 lock, and what did it change?
+
+The requester's direction of 13 October 2026: teach the row's five subtopics first, as named concept
+chapters and notebooks, then the case. The plan is `docs/detailing/W04_concept_first/D4_plan.md`;
+where this pack departs from it, the departure is in the table of decisions below. Every link was
+fetched on 13 October 2026 in the build session.
+
+### Which written reference does each topic's rule or formula rest on?
+
+| Topic | The rule or formula as the pack states it | Reference, checked 13 October 2026 | What the fetch confirmed |
+|---|---|---|---|
+| Cohort construction | Rows by joining month, columns by age, a cohort compared down a column at the same age | Mixpanel, "Cohort analysis", https://mixpanel.com/blog/cohort-analysis/ (checked 13 October 2026; the page says it was last edited 15 June 2026) | Rows are when users started, columns the time since they started, and a column compares cohorts at the same age |
+| Cohort construction, in code | `melt` to one row per member per month, then one `pivot_table` with values, index and columns | pandas, "10 minutes to pandas", https://pandas.pydata.org/docs/user_guide/10min.html (checked 13 October 2026; the page documents pandas 3.0.6, and the session executed the notebooks on pandas 3.0.5) | `pivot_table` pivots by values, index and columns |
+| Retention curves: shape and floor | A curve's floor is the level it stops falling at, the users who kept the habit | The same Mixpanel page (checked 13 October 2026) | "A healthy product shows the curve flattening rather than falling to zero; that plateau is the group of users who found lasting value" |
+| Retention curves: the two-ages rule | A floor is called once two ages in a row read the same share | None: the programme's own rule of thumb, labelled so on S17, in notebook 02, the notes and drill c2 | Not a sourced claim |
+| Blended numbers against cohort truth | A rate over subgroups is their average weighted by each subgroup's share, and a total can run against its parts when the weights differ | Stanford Encyclopedia of Philosophy, "Simpson's Paradox", https://plato.stanford.edu/entries/paradox-simpson/ (checked 13 October 2026; first published 24 March 2021, substantive revision 6 June 2026); Wikipedia, "Weighted arithmetic mean", https://en.wikipedia.org/wiki/Weighted_arithmetic_mean (checked 13 October 2026) | The overall rate is a weighted average of the subpopulation rates; the weighted-mean formula, with a class example whose plain mean differs from its weighted mean |
+| Blended numbers: the origin | E. H. Simpson, 1951, Journal of the Royal Statistical Society, Series B | Crossref record, https://doi.org/10.1111/j.2517-6161.1951.tb00088.x (checked 13 October 2026); Wikipedia, "Simpson's paradox", https://en.wikipedia.org/wiki/Simpson%27s_paradox (checked 13 October 2026) | Volume 13, issue 2, pages 238 to 241, 1 July 1951; the paradox needs group sizes that differ |
+| Funnel stages, drop-off, denominators | Step rate over the step before; overall over the first step; drop-off 100 less the step rate | HockeyStack, "Funnels Reports", https://docs.hockeystack.com/documentation/funnels (checked 13 October 2026) | Step Conversion Rate from the previous step, Funnel Conversion Rate from the first step, Dropoff as 100 less the Step Conversion Rate |
+| Funnel stages: drop-off in practice | Where users drop off between steps | Amplitude, "What is funnel analysis?", https://amplitude.com/blog/funnel-analysis (checked 13 October 2026) | Drop-off language; the page gives no step formula, so the formula rests on HockeyStack |
+| The fix-first decision and its evidence | Rule out data issues first, segment, and keep fewer users apart from less use, before the call | Aced, https://www.aced.io/blog/top-data-analyst-interview-questions (checked 13 October 2026; the Exponent address the row names redirects there) | "Rule out data issues first"; segments by platform and geography; fewer users against fewer views per user; its cohort question has no worked answer |
+| The fix-first decision: the five-line page | Call, evidence, cost, objection, what would change it | None: the programme's own form, built on Week 1's claim, evidence, caveat and action and Tuesday's four moves | Not a sourced claim |
+| Videos | IBM Technology, panel data; root cause analysis | https://www.youtube.com/watch?v=LoMgvSfKp6Y, https://www.youtube.com/watch?v=7t3lTYEd_PM (each checked 13 October 2026 through oEmbed) | Titles "Understanding Data Structures: Time Series, Cross-Sectional, and Panel Data Explained" and "What is Root Cause Analysis (RCA)?", channel IBM Technology |
+| The row's interview resource | GeeksforGeeks' data analyst interview questions | The page (last updated 24 July 2026) carries no cohort or funnel item: not verified on 13 October 2026, so no learner file cites it | |
+
+### Which decisions did the rebuild make where the plan or the rules left a choice?
+
+| Decision | What the pack does | Why |
+|---|---|---|
+| Notebook numbers | Concept notebooks 01 to 04 and 08, case notebooks 05 to 07, the lab 12 | The build brief and the gate's rule that a notebook takes its chapter's SECTION number; the plan's 01 to 09 predates that rule |
+| The opening | S1 the day's topic, S2 the week map, S3 the five topics, S4 the concept map, S5 the ticket | The brief's order; the plan opened on the ticket |
+| Teaching order | Subtopics 1, 3, 4 and 2 in the morning, 5 opening the afternoon | The spine and the plan: cohorts before the curves and the blend read from them, then the funnel |
+| The toy guard | Read kind by kind: no toy blend within five points of a planted blend, no toy artefact near 118 and 89, no toy skip share near 31, no toy count equal to the bank's funnel | The plan fixes toy values (24, 80, 26.7) within five points of unrelated plants of another kind; the contract asserts each kind-wise guard |
+| The cost on the college | 48 joiners at an assumed Rs 1 to 1.5 lakh, Rs 48 to 72 lakh | Fees come from students who join; the plan's 60 acceptances at Rs 1.2 lakh counts students who would not have joined (facts `corrections`) |
+| Applicants | 900 | The plan's 850 gives 28.2 per applicant against the 26.7 its own line uses (facts `corrections`) |
+| The gym's dashboard months | January counts the older members only; February adds the January joiners at month one | The dashboard counts from the month after joining (facts `corrections`) |
+| The register | One row per member with a column per month, as a register is kept | The plan's long form is the notebook's first step, `melt`, so the file is kept wide (facts `corrections`) |
+| SECTIONs 9 to 11 | No notebook; the gate warns three times | SECTION 9 writes a page from notebooks 06 and 07, SECTION 10 is the interview room and SECTION 11 the Kahoot and close; the brief allows none |
+| The Week 1 callback | Names the reversal, never its numbers | Week 1 Thursday's finding is a plant; decision `plants-once-found` lets only that week's Saturday paper name it |
+| The cheat sheet's concept map | Five topics in two rows, cohort to curve to blend to the call, with the funnel feeding the call | S4's map prints its labels under five points on a sheet; this drawing keeps the same five topics and their order of use |
+| The cheat sheet's causes chain | A line of text in panel 5 | The sheet must fit one page with the concept map added |
+| Drill timing | Each concept drill sits inside its chapter, three to five minutes; a drill that does not fit moves to the lab | The plan; the chapters keep their minutes |
+
+### Which items stay open for the week read?
+
+- `content/W04/D1/demos/C2_W04_D01_week_explorer_STUDENT.html` draws Thursday's Th2 scene as "a
+  coaching centre's batches A and B" (100 at 50 then 40, and 400 at 52.5); Thursday's SECTION 3 now
+  teaches the same numbers on the gym's dashboard, and the explorer's day nodes do not yet name
+  Thursday's five topics. Both sit outside this folder.
+- No other day's file names a Thursday slide or notebook by number; a search of `content/W04` for
+  `C2_W04_D04_0` and `W04/D4` outside this folder found the Wednesday pre-read's link to Thursday's
+  data and the explorer's facts read, neither of which names a slide or a notebook number.
