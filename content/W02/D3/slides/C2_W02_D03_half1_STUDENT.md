@@ -31,49 +31,7 @@ label: Chapter 6 | title: Who does Marketing call? | body: The flag, checked bef
 ```notes
 LIVE, 2 minutes. Read the day's question, then the six chapter questions in order: each is the
 question the answer before it raises, and each chapter closes on its own answer with a number.
-Chapter 6 runs after lunch, before the afternoon's tentative IITGN block. Then the six topics the
-chapters teach.
-```
-
----
-
-## S1a. Today teaches SQL window functions in six topics
-*What will today teach?*
-
-| Topic, in the curriculum's words | Chapter | Minutes |
-|---|---|---|
-| ROW_NUMBER, RANK and DENSE_RANK, and what a tie does to each | 3 | 30 |
-| PARTITION BY; ORDER BY inside the window | 2, with ORDER BY from 1 | 30 each |
-| Top-N per group | 2 | the same 30 |
-| LAG and LEAD; month-on-month comparison per customer | 4, and 6 on the calendar | 30 each |
-| Running totals and determinism | 5 | 30 |
-| Filtering on a window via a CTE | 2, first used in 1 | 4 of chapter 2's 30 |
-
-```mermaid
-flowchart TD
-    MON["<b>Monday</b><br/>GROUP BY, run order,<br/>named steps"] --> WIN["<b>the window</b><br/>PARTITION BY,<br/>ORDER BY"]
-    TUE["<b>Tuesday</b><br/>a join's rows<br/>explained"]
-    WIN --> RK["<b>ranks</b><br/>ROW_NUMBER<br/>RANK, DENSE_RANK"]
-    WIN --> LAG["<b>LAG, LEAD</b><br/>month on month"]
-    WIN --> RUN["<b>running totals</b><br/>determinism"]
-    TUE --> RUN
-    RK --> TOP["<b>top-N per group</b>"]
-    TOP --> CTE["<b>filter via a CTE</b>"]
-    MON --> CTE
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class MON,TUE known
-    class WIN,RK,TOP,CTE,LAG,RUN bet
-```
-
-Monday's GROUP BY collapses the rows a window keeps, and WHERE runs before any window, so a filter on the place waits for a CTE; Tuesday's join check closes chapter 5's running total on the quarter.
-
-```notes
-LIVE, 1 minute. Read the six topics in the curriculum's words and the chapter that teaches each,
-then walk the map once: Monday's GROUP BY, run order and named steps at the top, the window under it
-with every topic hanging off it, and Tuesday's join rule closing chapter 5's loop on the quarter.
-Each topic arrives later as the answer to one of Marketing's asks, so name them here and teach none
-of them yet. If the ask runs long, cut S3 to its first two rows. Then who is asking.
+Chapter 6 runs after lunch, before the afternoon's tentative IITGN block. Then who is asking.
 ```
 
 ---
@@ -181,8 +139,46 @@ flowchart LR
 A window is written `function() OVER (PARTITION BY ... ORDER BY ...)`: the partition says whose rows belong together, and the order says which row comes before which.
 
 ```notes
-LIVE, 4 minutes. Name the functions only as the morning meets them: row_number, rank and
-dense_rank for the place, lag for the month before, sum for the total so far. Then chapter 1.
+LIVE, 3 minutes. Name the functions only as the morning meets them: row_number, rank and
+dense_rank for the place, lag for the month before, sum for the total so far. Then the six topics.
+```
+
+---
+
+## S6a. Today teaches SQL window functions in six topics
+*What will today teach?*
+
+| Topic, in the curriculum's words | Chapter | Minutes |
+|---|---|---|
+| ROW_NUMBER, RANK and DENSE_RANK, and what a tie does to each | 3 | 30 |
+| PARTITION BY; ORDER BY inside the window | 2, with ORDER BY from 1 | 30 each |
+| Top-N per group | 2 | within chapter 2's 30 |
+| LAG and LEAD; month-on-month comparison per customer | 4, then 6 against calendar months | 30 each |
+| Running totals and determinism | 5 | 30 |
+| Filtering on a window via a CTE | 2, first used in 1 | 3 of chapter 2's 30 |
+
+```mermaid
+flowchart TD
+    MON["<b>Monday</b><br/>GROUP BY, run order,<br/>named steps"] --> WIN["<b>the window</b><br/>PARTITION BY,<br/>ORDER BY"]
+    TUE["<b>Tuesday</b><br/>the joined,<br/>validated table"] --> WIN
+    WIN --> RK["<b>ranks</b><br/>ROW_NUMBER<br/>RANK, DENSE_RANK"]
+    WIN --> LAG["<b>LAG, LEAD</b><br/>month on month"]
+    WIN --> RUN["<b>running totals</b><br/>determinism"]
+    RK --> TOP["<b>top-N per group</b>"]
+    TOP --> CTE["<b>filter via a CTE</b>"]
+    MON --> CTE
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class MON,TUE known
+    class WIN,RK,TOP,CTE,LAG,RUN bet
+```
+
+```notes
+LIVE, 1 minute, the minute S6 gave up. Read the six topics in the curriculum's words and the chapter
+that teaches each, then walk the map once: Monday's GROUP BY, run order and named steps and
+Tuesday's joined table at the top, the window under them, and every topic hanging off it. Each topic
+arrives in its chapter as the answer to one of the asks on S2, so name them here and teach none of
+them yet. Then chapter 1.
 ```
 
 ---
@@ -765,12 +761,12 @@ SELECT member, place FROM ranked WHERE place <= 2;       -- step 2: A 1, B 2, D 
 -- ERROR:  window functions are not allowed in WHERE
 ```
 
-**Check yourself.** `SELECT member, row_number() OVER (ORDER BY spend DESC) AS place FROM toy WHERE spend > 550` runs in one step: does Postgres refuse it, and which places come back?
+**Check yourself.** With the same toy step in front, `SELECT member, row_number() OVER (ORDER BY spend DESC) AS place FROM toy WHERE spend > 550` runs in one step: does Postgres refuse it, and which places come back?
 
 ```notes
-LIVE, 2 minutes. The members and their spend are invented, small enough to count by eye. Read step
-1's five places first (A 1, B 2, C 3 in North; D 1, E 2 in South), then step 2's four rows. The
-check's answer: Postgres runs it, since spend is a column that exists before WHERE; C is dropped
+LIVE, 1 minute. The members and their spend are invented, small enough to count by eye. Read step
+1's five places (A 1, B 2, C 3 in North; D 1, E 2 in South), then step 2's four rows, and pose the
+check. Its answer: Postgres runs it, since spend is a column that exists before WHERE; C is dropped
 first and the four left are numbered A 1, D 2, B 3, E 4. A filter on a column runs before the
 window and changes what it numbers; a filter on the window's own value waits for the step outside.
 Writing WHERE place <= 2 in step 1 fails too, with ERROR: column "place" does not exist, because
@@ -1284,7 +1280,7 @@ LIVE, 2 minutes. The answer is b. Then LEAD, the row after.
 | lag 1, Rs | NULL | 7,980 | 3,170 | 1,320 | 4,260 | 4,770 |
 | lead 1, Rs | 3,170 | 1,320 | 4,260 | 4,770 | 4,520 | NULL |
 
-**The rule.** LAG looks back from a row and LEAD looks forward. Marketing's flag stands on September and looks back at August and July, so it reads LAG; a question about the month after a row, such as whether spend rose the month after an offer, reads LEAD.
+**The rule.** LAG looks back from a row and LEAD looks forward. Marketing's flag stands on September and looks back at the member's two rows before it, so it reads LAG; a question about the month after a row, such as whether spend rose the month after an offer, reads LEAD.
 
 **Check yourself.** Which of C-0040's months does `lead(spend, 2)` leave NULL?
 
@@ -1686,7 +1682,7 @@ that crosses. Then the same rule on four invented orders.
 ## S74a. A unique ORDER BY makes a window deterministic
 *What makes a window give every row the same figure on every run?*
 
-A query is deterministic when the same rows give every row the same figure on every run. Rows that share the window's ORDER BY value are peers, and nothing says which of them comes first. Four invented orders, two on 2 July:
+A query is deterministic when the same rows give every row the same figure on every run. Rows that share the window's ORDER BY value are peers: nothing says which of them comes first, and a running SUM adds all of a row's peers at once. Four invented orders, two on 2 July:
 
 | Order, date (invented) | Amount | ROW_NUMBER by date | SUM by date | SUM by date, order id |
 |---|---|---|---|---|
@@ -1695,12 +1691,12 @@ A query is deterministic when the same rows give every row the same figure on ev
 | A-3, 2 Jul | Rs 200 | 3 or 2 | Rs 600 | Rs 600 |
 | A-4, 3 Jul | Rs 400 | 4 | Rs 1,000 | Rs 1,000 |
 
-**The rule.** When each row needs its own figure, as ROW_NUMBER's places and a running total's steps do, add a column no two rows share to the window's ORDER BY, such as the customer id or the order id, and name that tiebreak in the report. RANK gives peers one place on purpose, so the head of Retail-Plus's rule takes no tiebreaker.
+**The rule.** When each row needs its own figure, as ROW_NUMBER's places and a running total's steps do, end the window's ORDER BY on a column no two rows share, such as the order id, after any business key, and name that tiebreak in the report. RANK gives peers one place on purpose, so the head of Retail-Plus's rule takes no tiebreaker.
 
 **Check yourself.** Which column can name the order that took the running total past Rs 500, and which order does it name?
 
 ```notes
-LIVE, 2 minutes. The orders are invented. ROW_NUMBER by date alone numbers the two 2 July orders in
+LIVE, 1 minute, taken from S75. The orders are invented. ROW_NUMBER by date alone numbers the two 2 July orders in
 whatever order the rows arrive: on Postgres 16, listing A-3 first gives A-3 the 2 and A-2 the 3.
 The SUM by date gives both peers the day's close, Rs 600, on every run, so it repeats and names no
 order. The check's answer: the SUM by date and order id, whose step from Rs 400 to Rs 600 is A-3's,
@@ -1727,7 +1723,7 @@ value: 6,006 | label: order reads | note: where the window read 462
 ```
 
 ```notes
-LIVE, 2 minutes. The plain sums share no code with the window or with the greatest() fix. Then the
+LIVE, 1 minute. The plain sums share no code with the window or with the greatest() fix. Then the
 chapter's answers.
 ```
 

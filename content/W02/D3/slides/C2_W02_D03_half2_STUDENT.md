@@ -28,9 +28,9 @@ the Kahoot (10). The tentative IITGN block follows. Then what the morning establ
 | 5. On track against plan? | Q2 closed Rs 10 ahead; Rs 1.58 crore ahead at mid-quarter, from one July week |
 
 ```notes
-LIVE, 1 minute. Read the five answers as one story. Q2 is July to September 2026; revenue is
-booked revenue, every order at its amount whatever its status, Rs 9,84,00,000 for the quarter.
-Then the day's six topics.
+LIVE, 1 minute, which S1a shares. Read the five answers as one story. Q2 is July to September
+2026; revenue is booked revenue, every order at its amount whatever its status, Rs 9,84,00,000
+for the quarter. Then the day's six topics.
 ```
 
 ---
@@ -42,19 +42,18 @@ Then the day's six topics.
 |---|---|---|
 | ROW_NUMBER, RANK and DENSE_RANK, and what a tie does to each | 3 | 30 |
 | PARTITION BY; ORDER BY inside the window | 2, with ORDER BY from 1 | 30 each |
-| Top-N per group | 2 | the same 30 |
-| LAG and LEAD; month-on-month comparison per customer | 4, and 6 on the calendar | 30 each |
+| Top-N per group | 2 | within chapter 2's 30 |
+| LAG and LEAD; month-on-month comparison per customer | 4, then 6 against calendar months | 30 each |
 | Running totals and determinism | 5 | 30 |
-| Filtering on a window via a CTE | 2, first used in 1 | 4 of chapter 2's 30 |
+| Filtering on a window via a CTE | 2, first used in 1 | 3 of chapter 2's 30 |
 
 ```mermaid
 flowchart TD
     MON["<b>Monday</b><br/>GROUP BY, run order,<br/>named steps"] --> WIN["<b>the window</b><br/>PARTITION BY,<br/>ORDER BY"]
-    TUE["<b>Tuesday</b><br/>a join's rows<br/>explained"]
+    TUE["<b>Tuesday</b><br/>the joined,<br/>validated table"] --> WIN
     WIN --> RK["<b>ranks</b><br/>ROW_NUMBER<br/>RANK, DENSE_RANK"]
     WIN --> LAG["<b>LAG, LEAD</b><br/>month on month"]
     WIN --> RUN["<b>running totals</b><br/>determinism"]
-    TUE --> RUN
     RK --> TOP["<b>top-N per group</b>"]
     TOP --> CTE["<b>filter via a CTE</b>"]
     MON --> CTE
@@ -64,12 +63,11 @@ flowchart TD
     class WIN,RK,TOP,CTE,LAG,RUN bet
 ```
 
-Monday's GROUP BY collapses the rows a window keeps, and WHERE runs before any window, so a filter on the place waits for a CTE; Tuesday's join check closes chapter 5's running total on the quarter.
-
 ```notes
-LIVE, under a minute. These are the six topics the morning opened on. Point at the fourth row:
-chapter 6 finishes the month-on-month comparison per customer by checking LAG's months against the
-calendar, and the escalated case then uses all six. Then chapter 6.
+LIVE, inside S1's minute. These are the six topics the morning listed before chapter 1. Point at
+the fourth row: chapter 6 finishes the month-on-month comparison per customer by checking LAG's
+months against the calendar, and the escalated case then puts the topics to work together. Then
+chapter 6.
 ```
 
 ---
