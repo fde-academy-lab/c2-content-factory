@@ -139,12 +139,14 @@ file states them before the lab; afterwards, only as decision `w4-finding-once-f
 
 | Plant | Value | Found in | If nobody finds it |
 |---|---|---|---|
-| Reorders placed per Retail-Plus member, 10 to 30 September over 20 August to 9 September | 1.22 | Notebook 04, first your-turn cell | Ask: "count the window's placements and the comparison's, each over 120 members; which is bigger?" |
-| Booked value of reorders per member, any status, the same two windows | 0.96 | Notebook 04, first your-turn cell | Ask: "now the rupees: did the value per member rise with the count?" |
-| No reorder in the window became a separate delivered order: every one was an auto-reorder, cancelled, merged into a later order or still pending | none delivered | Notebook 04, second your-turn cell | Ask: "group the window's placements by `auto` and `status`: how many were delivered?" |
+| Reorders placed per Retail-Plus member, the 107 who joined by 19 August, 10 to 30 September over 20 August to 9 September | 1.22 | Notebook 04, first your-turn cell | Ask: "count the window's placements and the comparison's for the 107 in `base`, each over 107; which is bigger?" |
+| Booked value of reorders per member, any status, the same 107 and the same two windows | 0.96 | Notebook 04, first your-turn cell | Ask: "now the rupees: did the value per member rise with the count?" |
+| No placement in the window became an order: every one was an auto-reorder, cancelled, merged into a basket the member already had open or still pending | none delivered | Notebook 04, second your-turn cell | Ask: "group the window's placements by `auto` and `status`, then count the ones with an `order_id`: how many became an order?" |
 
-The lab's hand count on seven members gives 1.35 and 0.88, at least 0.05 from each plant, so the
-full table still has a reason to be run. The seven rows are in the lab note.
+The per-member comparison counts the 107 members who had joined by 19 August, because a member who
+joined later had fewer of the comparison window's days to reorder in: one who joined on 25 August had
+16 of its 21. The lab's hand count on seven members gives 1.33 and 0.84, more than 0.10 from each
+plant, so the full table still has a reason to be run. The seven rows are in the lab note.
 
 ---
 
@@ -174,6 +176,7 @@ Every number below is in `internal/C2_W04_D01_facts_INTERNAL.yaml` under the id 
 | The fall under each cut | 1.58 without new drivers; 1.60 in the three weeks with most requests; core zones 1.90 to 1.79 | `tph_pre_launch_after`, `tph_crest_weeks_after`, `tph_core_zones_before`, `tph_core_zones_after` |
 | Acceptance and bookings per hour, weeks 7 to 9 | 0.729, 0.735, 0.729; Rs 271.0, 261.7, 259.1 | `acceptance_2026_08_31` and the next two; `rs_per_hour_2026_08_31` and the next two |
 | The twelve rows | 60 and 74 hours; 114 and 88 trips; 1.90 and 1.19 | `twelve_hours_before` and the rest of `twelve_*` |
+| The idle tail's week, against E and F | About 39 peak online hours a driver-week after the launch, against E's 16 and F's 14 | `idle_hours_per_driver_week_after` |
 | What the top-up bought | 6,700 more trips, about Rs 2,836 each, 17.2 fares | `extra_trips`, `topup_per_extra_trip_rs`, `topup_per_extra_trip_fares` |
 | The outer zones | Wait 6.6 to 5.95 minutes; about 185 extra trips; Rs 85.7 lakh to idle weeks there; about Rs 46,000 per extra trip | `outer_wait_before`, `outer_wait_after`, `outer_extra_trips`, `idle_outer_topup_rs`, `cost_per_extra_outer_trip_rs` |
 | Cancels after accepting | Others 0.037 to 0.077; idle tail 0.152 after | `cancel_share_other_before`, `cancel_share_other_after`, `cancel_share_idle_after` |

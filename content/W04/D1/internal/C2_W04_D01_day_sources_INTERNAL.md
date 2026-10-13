@@ -30,7 +30,12 @@ wording, the NHS examples.
 ## Where does the data come from?
 
 `python3 content/W04/D1/internal/C2_W04_D01_generate_INTERNAL.py`, seed 20261026, writes the five
-CSVs, the contract and the facts file; a second run is byte-identical. Tools: Python 3.13.16, pandas
+CSVs, the contract and the facts file; a second run is byte-identical. It reads Thursday's
+`data/C2_W04_D04_kalpa_memberships_STUDENT.csv` and v4's orders from
+`content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql`, and asserts the three case tables against
+their checksums on origin/main of 13 October 2026. The Kalpa rebuild of 13 October 2026 rebuilt the
+sheet and the morning deck with mermaid-cli 11.17.0 installed in the session, because this
+container's default 12.0.0 lays the sheet's anchor out at 744 by 646 and prints its labels at 2.5pt. Tools: Python 3.13.16, pandas
 3.0.5, matplotlib 3.11.2, numpy 2.5.3, nbclient 0.11.0, python-pptx 1.0.2, mermaid-cli 11.17.0,
 weasyprint 70.0, LibreOffice 24.2.7.2.
 
@@ -43,8 +48,14 @@ weasyprint 70.0, LibreOffice 24.2.7.2.
   again, which is why `zone_weeks` requests and `driver_weeks` offers differ.
 - The twelve rows keep the draft's 114 to 88 trips and 1.90 to 1.19 (the case file had 110 and
   1.49), on the orchestrator's instruction, with the reason said on the slide.
-- The Kalpa tables are held byte-identical to the draft: `RP-` member ids, booked value from
-  `app_reorders`, no manual reorders in the window, and no warehouse SQL file.
+- The Kalpa lab runs on Thursday's membership table (the requester's decision of 13 October 2026):
+  `kalpa_members` is a byte copy of Thursday's `kalpa_memberships`, v4's own ids C-0151 to C-0270, and
+  every placement in `app_reorders` that became an order is one of v4's ten Retail-Plus app orders of
+  20 August to 9 September, with v4's id in a new `order_id` column and v4's status; the rest of that
+  window is members' presses merged into an open basket, and 10 to 30 September holds only the app's
+  own placements. `product_id` is dropped, since a press re-places a past basket and Wednesday's
+  order items list several products per order. The per-member comparison counts the 107 who joined by
+  19 August. No warehouse SQL file is written; `order_id` joins to the Week 2 warehouse as it stands.
 - The cheat sheet's ticket sits in its top band and the concept board in panel one, since the spine
   asks for both in first position.
 - S19's invented pair is rebuilt (X at 2.0 trips an hour for 10 hours, Y at 0.5 for 40) so its

@@ -31,37 +31,50 @@ the evidence and a second way.
 ## What is on the seven-member sheet?
 
 Hand this out at the notebook's "What do seven members' rows say, counted by hand?" step. The seven
-are the first members whose placements rose and whose booked value fell; booked value counts every
-placement, whatever happened to it.
+are real members of the 107 who were in the tier for the whole of both windows, each with placements
+in both, chosen so their hand count leans the way the full table does while sitting at least 0.10
+from each of its two ratios; booked value counts every placement, whatever happened to it.
 
 | Member | Placements, 20 Aug to 9 Sep | Placements, 10 to 30 Sep | Booked value, 20 Aug to 9 Sep | Booked value, 10 to 30 Sep |
 |---|---|---|---|---|
-| RP-0002 | 4 | 6 | Rs 2,035 | Rs 1,914 |
-| RP-0012 | 4 | 5 | Rs 1,648 | Rs 1,369 |
-| RP-0014 | 3 | 4 | Rs 1,337 | Rs 1,097 |
-| RP-0021 | 5 | 6 | Rs 2,021 | Rs 1,672 |
-| RP-0023 | 4 | 6 | Rs 1,742 | Rs 1,606 |
-| RP-0031 | 4 | 5 | Rs 1,532 | Rs 1,390 |
-| RP-0040 | 2 | 3 | Rs 1,093 | Rs 1,045 |
-| The seven | 26 | 35 | Rs 11,408 | Rs 10,093 |
+| C-0152 | 2 | 2 | Rs 6,690 | Rs 2,950 |
+| C-0184 | 2 | 1 | Rs 7,620 | Rs 2,010 |
+| C-0211 | 1 | 3 | Rs 1,970 | Rs 5,110 |
+| C-0215 | 1 | 1 | Rs 1,940 | Rs 2,290 |
+| C-0224 | 1 | 3 | Rs 3,790 | Rs 6,660 |
+| C-0240 | 1 | 1 | Rs 4,350 | Rs 3,400 |
+| C-0264 | 1 | 1 | Rs 3,490 | Rs 2,690 |
+| The seven | 9 | 12 | Rs 29,850 | Rs 25,110 |
 
-The hand count: placements per member 35 / 26 = 1.35 times; booked value per member 10,093 / 11,408
-= 0.88 times. Both sit at least 0.05 from the full table's values, so the room still has a reason to
-run the code.
+The hand count: placements per member 12 / 9 = 1.33 times; booked value per member 25,110 / 29,850
+= 0.84 times. Both sit more than 0.10 from the full table's values, so the room still has a reason to
+run the code. Four of the seven placed an order in the comparison window that is in Kalpa's
+warehouse (C-0152, C-0184 and C-0224 delivered, C-0211 cancelled), which is why their comparison
+values run high.
 
 ---
 
 ## What should the room find, and what if nobody does?
 
+The comparison counts only the 107 members who had joined by 19 August, the monsoon sale's last day,
+because a member who joined later had fewer of the comparison window's days to reorder in: one who
+joined on 25 August had 16 of its 21.
+
 | What the room should find | Value | Where | The hint if nobody finds it |
 |---|---|---|---|
-| Reorders placed per member, window over comparison | 1.22 | First your-turn cell | "Count the window's placements and the comparison's, each over 120 members. Which is bigger, and by how much?" |
+| Reorders placed per member, window over comparison | 1.22 | First your-turn cell | "Count the window's placements and the comparison's for the 107 in `base`, each over 107. Which is bigger, and by how much?" |
 | Booked value per member, window over comparison | 0.96 | First your-turn cell | "Now the rupees. Did the value per member rise with the count?" |
-| What became of the window's placements | None became a separate delivered order: each was an auto-reorder, cancelled, merged into a later order or still pending | Second your-turn cell | "Group the window's placements by `auto` and `status`. How many say delivered?" |
+| What became of the window's placements | None became an order: each was an auto-reorder, cancelled, merged into a basket the member already had open or still pending, and none carries an `order_id` | Second your-turn cell | "Group the window's placements by `auto` and `status`, then count the ones with an `order_id`. How many became an order?" |
+
+The counts behind the three: in the comparison window 7 of the 107's 36 placements became orders in Kalpa's
+warehouse (4 delivered, 1 returned, 2 cancelled) and 29 merged into an open basket; in the
+auto-reorder window the app placed all 44, of which 22 were cancelled, 16 merged and 6 are pending. A
+placement in the window averages Rs 2,362 against Rs 3,008 in the comparison. The members' own
+checkouts in the window, 7 app orders in the Week 2 warehouse, are outside the table by design.
 
 The one sentence each learner should say to a neighbour: "Reorders per member rose about a fifth
-while the booked value per member fell, because the app placed low-value reorders on its own, and
-none of them became an order a member received."
+while the booked value per member fell, because the app placed reorders on its own that were worth
+less on average, and none of them became an order."
 
 ---
 
@@ -70,6 +83,7 @@ none of them became an order a member received."
 | Problem | Where learners stall | The one hint |
 |---|---|---|
 | The notebook's hand count | Dividing by seven before taking the ratio, or taking each member's own ratio and averaging | "Add the seven first, then divide once, the way the morning added hours and trips." |
+| The first your-turn cell | Leaving out `& reorders["customer_id"].isin(base)`, which prints 1.17 and 0.90 over all 120 members | "Who was a member for all 21 days of the comparison window?" |
 | The Kalpa set, Q2 | Choosing customers with an order that same month as the denominator | "If a customer stops ordering, are they still in your denominator?" |
 | The Kalpa set, Q3 | Choosing orders per member as the guardrail | "Can a number guard itself?" |
 | The lead-and-lag drill, Q3 | Giving the hours north star the guardrail "total peak online hours" | "What would that guardrail catch?" |
