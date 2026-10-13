@@ -62,6 +62,11 @@ flowchart LR
 
 ![Two festive seasons by weeks from Diwali: both peak two weeks before Diwali's week](../whiteboards/C2_W04_D05_festival_plot_STUDENT.png)
 
+| Shipments, weeks from Diwali's week | -3 | -2 | -1 | Diwali | +1 | +2 |
+|---|---|---|---|---|---|---|
+| 2024 | 312,900 | 401,000 | 356,200 | 296,900 | 180,600 | 212,700 |
+| 2025 | 331,200 | 418,200 | 369,000 | 308,900 | 188,600 | 227,900 |
+
 | On 13 hidden weeks | MAE | Misses priced |
 |---|---|---|
 | Festival-aligned | 6,615 | Rs 13.5 lakh |
