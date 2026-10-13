@@ -35,7 +35,7 @@ notices first wins the plan. A trainer who did not write the day can run it from
 | Round one, chapter 5 | 37 | S38 to S48 | Reads the twelve rows by hand, writes its own rule in one line, forecasts Diwali 2025's week with every rule |
 | Round two, chapter 6 | 30 | S49 to S59 | Votes on the scoreboard, watches its rule scored on the hidden weeks, prices the misses |
 | Lunch | | | The scoreboard stays up |
-| Round three, chapter 7 | 33 | Half two S2 to S11 | Votes on the bot's busiest week, turns the calendar card, back-tests 2025, hears the objections, books the plan |
+| Round three, chapter 7 | 33 | Half two S2 to S11 | Votes on the bot's busiest week, turns the calendar card, back-tests 2025, books the plan; the objections follow on S14 |
 
 ## What does the trainer say at each turn?
 
@@ -53,23 +53,27 @@ forecasts all thirteen from 22 June. Before the scores: which rule wins?" Take t
 the TA reads each group's score. After S54: "The vendor's curve fits two years within 2 percent. Is
 that a good forecast?" Wait for "score it on the weeks it never saw".
 
-**Round three.** Before turning the calendar card, say exactly: "Which week does the bot put Diwali in
-this year?" Take the vote on half two's S3, then turn the card on S4. The first group to place 2026's peak in
-the week of 19 October, two weeks before Diwali's week of 2 November, wins the plan, and its line
-goes first in the afternoon's staffing note. Then the trainer, as finance, and the TA, as the
-vendor's sponsor, object from the role cards, and each group answers one of them.
+**Round three.** Before turning the calendar card, say exactly the question on half two's S3: "Which
+week does the bot make 2026's busiest?" Take the vote, then turn the card on S4: the bot's busiest
+week is 5 October, a copy of 2025's peak, and the rush comes in the week of 19 October, two weeks
+before Diwali's week of 2 November. The first group to place 2026's peak on 19 October wins the plan,
+and its line goes first in the afternoon's staffing note. The objections come on half two's S14, in
+the staffing note's minutes: the trainer, as finance, and the TA, as the vendor's sponsor, each say
+their card's opening line, and one group answers each, 4 minutes in all.
 
 ## How does the TA score a group's own rule?
 
-In notebook 06, after cell 5 has built `rules`, add one line per group in a new cell, using only the
-names the notebook already has (`train`, `last_year`, `h`, `slope`):
+In notebook 06, add one line per group at the bottom of cell 5, after `rules` is built, so that no
+cell moves and the numbers below still point at the right cells. Use only the names the notebook
+already has (`train`, `last_year`, `h`, `slope`):
 
 ```python
 rules["group 1"] = (last_year * 1.03).round().astype(int)   # "last year plus 3 percent"
 ```
 
-Then run cell 7 for the MAE and cell 13 for the misses priced; both cover every column of `rules`.
-Read each group's MAE and cost aloud and write them on the wall. A rule that cannot be written in
+Run cells 5 and 7 for the MAE at S51 and S52. After the vendor's reveal on S54, run cell 13 for the
+misses priced at S55 and S56; it reads the vendor's numbers itself, and both cells cover every column
+of `rules`. Read each group's MAE, then its cost, aloud and write them on the wall. A rule that cannot be written in
 one line goes back to its group.
 
 ## What does the finished scoreboard read?

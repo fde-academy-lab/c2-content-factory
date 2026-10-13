@@ -1,7 +1,7 @@
 # TA lab note: the forecasting method on Kalpa's 24 months, then the practice set
 
 **TRAINER ONLY.** For the TA who runs the practice lab after the faculty block (tentative). The lab
-opens on the interview room in pairs, then the four concept sets' items 2 and 3, then re-runs the
+opens on the interview room in pairs, then the four concept sets from item 2 to the end, then re-runs the
 day's five topics on Kalpa Retail's monthly revenue in notebook 08, sits the Kalpa board set and works
 the practice set. The programme's facts set no length for the lab, so the parts below run in this
 order and the practice set is cut from its end when time runs short. Never cut the twelve rows or the
@@ -17,8 +17,8 @@ the board, and how wrong could it be?"
 
 | Order | Part | File |
 |---|---|---|
-| 1 | The interview room in pairs, 15 minutes: each learner asks the other the [S] question and one follow-up, then they swap | Half two's D1 to D4; `extras/C2_W04_D05_interview_transcripts_STUDENT.md`; `trainer/C2_W04_D05_interview_scorecards_TRAINER.md` |
-| 2 | The four concept sets' items 2 and 3, 20 minutes | `exercises/unguided/` c1 to c4 sets |
+| 1 | The interview room in pairs, 15 minutes: each learner asks the other the [S] question and one follow-up, then, in the second round, the [D] question; then they swap | Half two's D1 to D4; `extras/C2_W04_D05_interview_transcripts_STUDENT.md`; `trainer/C2_W04_D05_interview_scorecards_TRAINER.md` |
+| 2 | The four concept sets from item 2 to the end, 20 minutes, then the guided set's items 2 and 3 and the chapter 6 scoreboard set | `exercises/unguided/` c1 to c4 sets; `exercises/guided/`; `exercises/unguided/C2_W04_D05_ch6_scoreboard_STUDENT.md` |
 | 3 | The twelve rows read by hand on paper: which month is each winter's biggest? | The table below, printed one per group |
 | 4 | The 24 months loaded and drawn | Notebook 08, cells 2 to 4 |
 | 5 | Naive and drift scored on April to September 2026 | Notebook 08, cell 6 |
@@ -27,6 +27,7 @@ the board, and how wrong could it be?"
 | 8 | The growth and the plan line | Notebook 08, cell 11 |
 | 9 | The Kalpa board set, sat after the notebook | `exercises/unguided/C2_W04_D05_kalpa_board_STUDENT.md` |
 | 10 | The practice set, and the staffing note's prose | `exercises/practice/C2_W04_D05_lab_set_STUDENT.md`; the staffing note set |
+| 11 | If the faculty block ran, groups that finish read notebook 07's depth section, the plan share, which Saturday's paper tests | Notebook 07, its last section |
 
 ## What do the twelve rows hold, and what should the hand count give?
 

@@ -15,9 +15,12 @@ DOES NOT REPEAT: the hold-out and the error in rupees.
 <!-- /sync:faculty-day:W04/D5 -->
 
 Your row stops where the faculty block starts: the handoff line (half two, S16), the Kahoot (S17)
-and the close (S18) are the last things you run. Do not preview the block's content; when you
-mention it to the room, say it is tentative. If the block cannot run, the fallback deck fills its 120
-minutes (`trainer/C2_W04_D05_fallback_note_TRAINER.md`).
+and the close (S18) are the last things you run. Name the block's three methods only as S16's table
+does, one line each, and teach none of them; when you mention the block to the room, say it is
+tentative. Before the block, tell the faculty member what the room has met: hold-outs on the stall's
+three days and Flipkart's thirteen hidden weeks. Kalpa's 24 months run in the lab after the block, so
+"Anand's six held-out months" will be new to the room. If the block cannot run, the fallback deck
+fills its 120 minutes (`trainer/C2_W04_D05_fallback_note_TRAINER.md`).
 
 Built from the approved concept-first plan (`docs/detailing/W04_concept_first/D5_plan.md`), the Week
 4 spine (`docs/detailing/W04_analyst_craft_spine.md`), the Friday case in
@@ -41,8 +44,8 @@ them on the chai stall (invented); chapters 5 to 7 apply them to the case.
 | 5 | The good-enough call and the forecast note | Chapter 4, S34 to S37 | 10 of chapter 4's 20 | 04 | Chapter 7 and the staffing note | c4 set Q2, Q3; staffing note Q1 to Q3 and the note; Kalpa board Q3 | Q4 |
 
 Chapter 4 carries topics 4 and 5 together because both rest on one decision: a forecast earns trust by
-beating the baseline on periods it never saw, and it is good enough when a better one would change no
-order.
+beating the baseline on periods it never saw, and it is good enough when a better one would change the
+order by less than it costs.
 
 ## How do the topics connect?
 
@@ -52,10 +55,10 @@ first drawing.
 ```mermaid
 flowchart LR
     E["<b>Earlier</b><br/>W1: like with<br/>like; W2: LAG<br/>and the pivot;<br/>W4: beyond<br/>chance"] -.-> T1
-    T1["<b>1</b><br/>Trend and<br/>seasonality,<br/>read before<br/>modelling"] --> T2["<b>2</b><br/>Naive,<br/>seasonal naive<br/>and drift<br/>baselines"]
-    T2 --> T3["<b>3</b><br/>Holding out;<br/>MAE and MAPE<br/>in the<br/>business's<br/>units"]
-    T3 --> T4["<b>4</b><br/>Beating the<br/>baseline; the<br/>vendor curve<br/>tested"]
-    T4 --> T5["<b>5</b><br/>The<br/>good-enough<br/>call and the<br/>forecast note"]
+    T1["<b>Chapter 1</b><br/>Trend and<br/>seasonality,<br/>read before<br/>modelling"] --> T2["<b>Chapter 2</b><br/>Naive,<br/>seasonal naive<br/>and drift<br/>baselines"]
+    T2 --> T3["<b>Chapter 3</b><br/>Holding out;<br/>MAE and MAPE<br/>in the<br/>business's<br/>units"]
+    T3 --> T4["<b>Chapter 4</b><br/>Beating the<br/>baseline; the<br/>vendor curve<br/>tested"]
+    T4 --> T5["<b>Chapter 4,</b><br/><b>second half</b><br/>The<br/>good-enough<br/>call and the<br/>forecast note"]
     T5 --> C["<b>The case</b><br/>Flipkart,<br/>Lucknow;<br/>chapters 5,<br/>6 and 7"]
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
@@ -80,7 +83,7 @@ alignment.
 | The case's first part: the twelve weeks and the rules | 40 (round one) | 37 (chapter 5) |
 | The case's second part: the hidden weeks and the vendor | 45 (round two) | 30 (chapter 6) |
 | Break | 10 | 10 |
-| The case's third part: the festival placed and the plan | 75 (round three, with the cushion) | 33 (chapter 7, half two; the cushion moves to the fallback hour) |
+| The case's third part: the festival placed and the plan | 75 (round three, with the cushion) | 33 (chapter 7, half two; the cushion moves to the fallback session) |
 | The afternoon's opening board | 3 | 2 |
 | The staffing note in groups | 27 | 15 |
 | The interview room | 15 | 0 here; it moves to the lab in full |
@@ -96,7 +99,7 @@ The morning runs 180 (8 + 95 + 37 + 30 + 10) and the afternoon's first hour 60 (
 | Morning | 180 | The trainer, with the TA on the floor | The opening, concept chapters 1 to 4 on the stall, a 10-minute break after chapter 3, then case chapters 5 and 6 |
 | Afternoon, first hour | 60 | The trainer | Chapter 7, the staffing note in groups, the handoff, the Kahoot and the close |
 | IITGN block | 120 | IITGN faculty (tentative) | W4-4, or the fallback deck if it cannot run |
-| Practice lab | The lab's length | The TA | The interview room in pairs (15 minutes), the four concept sets' items 2 and 3 (20 minutes), notebook 08 on Kalpa, the Kalpa board set, the practice set, the staffing note's prose |
+| Practice lab | The lab's length | The TA | The interview room in pairs (15 minutes), the four concept sets from item 2 to the end (20 minutes), the guided set's items 2 and 3, the chapter 6 scoreboard set, notebook 08 on Kalpa, the Kalpa board set, the practice set, the staffing note's prose |
 
 ## Which questions does the day ask, in the order the trainer asks them?
 
@@ -115,7 +118,8 @@ that is hard to beat?** Ask each question before its answer is shown.
 
 **The day's answer, said at the close (half two, S18).** "Nothing books a shift until it beats a copy
 of last year on hidden weeks. Festival-aligned books 19,760 packer shifts, 3,625 in the week of 19
-October, with an error bar of 6,615 shipments a week, priced both ways."
+October, with a typical miss of 6,615 shipments a week, priced both ways, and a range at the peak
+of 3,413 to 3,906 shifts."
 
 ---
 
@@ -125,9 +129,9 @@ October, with an error bar of 6,615 shipments a week, priced both ways."
 |---|---|
 | **Start from** | Thursday's cohort table, which gave the week a time axis; today the axis runs forward. Open on the topic, the week map and the concept map, then the ticket in one slide as the destination. |
 | **Go as far as** | Every learner reads a series' trend and seasons, runs the three baselines by hand, scores a rule on hidden periods in the business's unit both ways, says why a fit proves nothing, writes the four-line note, and applies all five to the case's 19,760 shifts. |
-| **Stop before** | Exponential smoothing, ARIMA, autocorrelation and any fitted model, which the faculty block (tentative) owns; the rolling origin and the plan quantile, which only the fallback hour and notebook 07's depth section run, labelled beyond the row. |
-| **Comes later** | Saturday's paper tests the hold-out, the festival trap and the plan share; Week 5 turns the customer table into a model; the forecast returns in the capstone as the plan line. |
-| **Cut first** | From the case chapters only, never a concept chapter: S47 (Flipkart's capacity announcement) to one sentence, then S58 (the second route) to one sentence, then drift's row of S52's scoreboard, then S57's cards to one line. Never cut a concept chapter, the hold-out, the vendor against the baseline, the festival trap or the Kalpa lab. |
+| **Stop before** | Exponential smoothing, ARIMA, autocorrelation and any fitted model, which the faculty block (tentative) owns; chapter 4's line and curve are fitted only to show that fit is no proof, and no fitted model forecasts the plan. The rolling origin and the plan quantile run only in the fallback session and notebook 07's depth section, labelled beyond the row. |
+| **Comes later** | Saturday's paper tests the hold-out, the festival trap and the plan share. The plan share is taught live only in the fallback session, so when the block runs, point groups that finish the lab to notebook 07's depth section. Week 5 turns the customer table into a model; the forecast returns in the capstone as the plan line. |
+| **Cut first** | The case chapters first: S47 (Flipkart's capacity announcement) to one sentence, 2 minutes; S58 (the second route) to one sentence, 1; drift's row of S52's scoreboard, 1; S57's cards to one line, 1. A room still more than 5 minutes behind takes the row's own cut order inside the concept chapters, keeping each subtopic's name and rule: drift's hand count on S17 becomes its formula, 2 minutes, then S26's MAPE example becomes one sentence, keeping MAE, 3 minutes. The notes fences of S17, S26, S47 and S58 carry the same cue. Never cut a concept chapter's opener, vote or rules, the hold-out, the vendor against the baseline, the festival trap or the Kalpa lab. |
 
 ---
 
@@ -145,12 +149,12 @@ flowchart LR
 | Block | Minutes | Slides | Notebook | What must land | What to cut if late |
 |---|---|---|---|---|---|
 | Opening | 8 | Half one S1 to S5 | | The day's question; the five topics read aloud from S3; the map; the ticket in one slide | Nothing |
-| Chapter 1 | 22 | SECTION 1, S6 to S13 | 01 | Plus 67 percent is the beat; 10 percent a year read a season apart; seasons up and down; a remainder of 4.7 cups | Never cut |
-| Chapter 2 | 23 | SECTION 2, S14 to S21 | 02 | 103, 104.7 and 61 against 60 sold; the yearly copy needs growth; the moving festival's 71 against 13 | Never cut |
-| Chapter 3 | 30 | SECTION 3, S22 to S29 | 03 | Hide the latest three; MAE 5.0, MAPE 4.8 percent, lean -1.7, Rs 150; MAPE's 300 percent; Rs 120 against Rs 180 | Never cut |
+| Chapter 1 | 22 | SECTION 1, S6 to S13 | 01 | Plus 67 percent is the beat; 10 percent a year read a year apart; seasons up and down; a yearly copy's misses of typical size 4.7 cups | Never cut |
+| Chapter 2 | 23 | SECTION 2, S14 to S21 | 02 | 103, 104.7 and 61 against 60 sold; the yearly copy needs growth; the moving festival's 71 against 13 | Only S17's drift hand count, to its formula |
+| Chapter 3 | 30 | SECTION 3, S22 to S29 | 03 | Hide the latest three; MAE 5.0, MAPE 4.8 percent, lean -1.7, Rs 150; MAPE's 300 percent; Rs 120 against Rs 180 | Only S26's MAPE example, to one sentence |
 | Break | 10 | After S29 | | | |
 | Chapter 4 | 20 | SECTION 4, S30 to S37 | 04 | Fit 0, miss 66; 4.0 against 12.4; the same cans; the four-line note | Never cut |
-| Chapter 5 | 37 | SECTION 5, S38 to S48 | 05 | The full ticket; both peaks two weeks before Diwali's week; festival-aligned within 124; the calendar copy a week late | S47 to one sentence |
+| Chapter 5 | 37 | SECTION 5, S38 to S48 | 05 | The full ticket; both peaks two weeks before Diwali's week; festival-aligned 12,000 low with no growth, still the closest; the calendar copy a week late | S47 to one sentence |
 | Chapter 6 | 30 | SECTION 6, S49 to S59 | 06 | 6,615 against 9,831 against 16,400; the vendor's 1.4 percent fit; priced, the vendor costs least and still loses | S58, then drift's row, then S57 |
 
 ## How does the afternoon's first hour run?
@@ -158,8 +162,8 @@ flowchart LR
 | Block | Minutes | Slides | File beside them | What must land |
 |---|---|---|---|---|
 | The morning on one map | 2 | Half two S1 | | The five topics with the case's numbers on them |
-| Chapter 7 | 33 | SECTION 7, S2 to S11 | Notebook 07; the festival calendar card; the role cards | The bot's 2026 peak on 5 October; 58,250 against 4,034 on 2025's festival; plus 4 is 9.5 percent below the festival's weeks; 19,760 shifts, 3,625 at the peak; a better forecast must move a shift |
-| The staffing note in groups | 15 | S12 to S15 | `exercises/unguided/C2_W04_D05_staffing_note_STUDENT.md` | The lettered items in groups; the five-line note's prose finishes in the lab |
+| Chapter 7 | 33 | SECTION 7, S2 to S11 | Notebook 07; the festival calendar card | The bot's 2026 peak on 5 October; 58,250 against 10,575 on 2025's festival, with no growth; plus 4 is 9.5 percent below the festival's weeks; 19,760 shifts, 3,625 at the peak, a typical miss priced each way and a range of 3,413 to 3,906 shifts; a better forecast must pay for itself |
+| The staffing note in groups | 15 | S12 to S15 | `exercises/unguided/C2_W04_D05_staffing_note_STUDENT.md`; the role cards | The lettered items in groups on S12, 8 minutes; the role cards' one exchange each on S14, 4 minutes; the five-line note's prose finishes in the lab |
 | The handoff, the Kahoot, the close | 10 | S16 to S18 | `kahoot/C2_W04_D05_quiz_STUDENT.md` | The handoff line said as written; eight items; the day's answer |
 
 The interview room's slides (D1 to D4) stay in half two as self-study and run in the lab in pairs.
@@ -186,6 +190,10 @@ baseline on the thirteen held-out weeks."
 | Plus 4 on the wrong window | Finance's plus 4 read as "4 percent more than last festival" | A window 308,048 shipments short | Count last year's weeks from Diwali: 9.5 percent below | Half two S6 | 07 |
 | The month-aligned copy (lab) | Kalpa's October 2025 spike copied into October 2026 | A board number with Diwali in the wrong month | Diwali falls on 8 November 2026 | | 08, the second your-turn cell |
 
+The row's two 15-minute mid-session checks run as the concept chapters' live items and again in the
+lab: the three series of practice set Q1 after chapter 1's reading, and the three teams' models of the
+c4 set's Q2, which S8 of half two asks aloud if the room did not sit it before lunch.
+
 ## Where are the checkpoints?
 
 | After | The check | A room that is behind |
@@ -193,7 +201,7 @@ baseline on the thirteen held-out weeks."
 | Chapter 2 | Three learners say naive's, drift's and the seasonal naive's forecasts for next Sunday: 103, 104.7 and 61 | Redo the three lines on the board before chapter 3 |
 | Chapter 3 | Every notebook prints MAE 5.0 and MAPE 4.8 percent | Pair each stuck learner with a finished one for two minutes |
 | Chapter 4 | Every notebook prints 168 and 109 | Carry the differences down on the board: 4, -6, 12; -10, 18; 28 |
-| S44 | Three learners say the three rules' forecasts for Diwali 2025's week: 369,000, 356,200, 308,776 | Redo the hand count on the twelve rows before chapter 6 |
+| S44 | Three learners say the three rules' forecasts for Diwali 2025's week: 369,000, 356,200 and 296,900 | Redo the hand count on the twelve rows before chapter 6 |
 | S52 | Every notebook prints the scoreboard with festival-aligned and finance's rule at 6,615 | Pair each stuck learner with a finished one |
 | S54 | Every your-turn cell prints the vendor's 16,400 | The TA types the line on the projector |
 | Half two S7 | The room reads the week of 19 October aloud: 434,928, then 3,625 shifts | Walk 344,448 over 120, up to 2,871, on the board |
@@ -217,14 +225,14 @@ names any of them before a learner's own cell prints it.
 | Fit against forecast | 0 against a miss of 66; the line's 109 | toy_ch4_miss_curve, toy_ch4_line |
 | The baseline race and the cans | 4.0 against 12.4 cups; the same cans | toy_ch4_snaive_mae, toy_ch4_mean7_mae, toy_ch4_cans_differ_snaive |
 | The two forecasts | plus 22 and plus 4 percent, eighteen points apart | ticket.vendor_promise_pct, ticket.finance_rule_pct, ticket.points_apart |
-| Diwali 2025's week by hand | 308,900 shipped; 369,000, 356,200 and 308,776 forecast | hand_count.diwali25_actual, hand_count.naive, hand_count.bot, hand_count.aligned |
+| Diwali 2025's week by hand | 308,900 shipped; 369,000, 356,200 and 296,900 forecast; festival-aligned 12,000 low | hand_count.diwali25_actual, hand_count.naive, hand_count.bot, hand_count.aligned_source, hand_count.aligned_nogrowth_miss |
 | Hidden-week MAE | 6,615, 6,615, 9,831, 14,842, 14,923, 16,400 | holdout.aligned_mae, holdout.finance_mae, holdout.bot_mae, holdout.drift_mae, holdout.naive_mae, holdout.vendor_mae |
 | Priced misses | Rs 13.5, 30.5, 28.0, 28.8 and 11.9 lakh | holdout.aligned_cost_rs, holdout.bot_cost_rs, holdout.drift_cost_rs, holdout.naive_cost_rs, holdout.vendor_cost_rs |
-| 2025's festival | 58,250, 60,488 and 4,034 a week | backtest_2025.bot_mae, backtest_2025.finance_mae, backtest_2025.aligned_mae |
+| 2025's festival | 58,250 against 10,575 with no growth; 4,034 with the growth measured later | backtest_2025.bot_mae, backtest_2025.aligned_nogrowth_mae, backtest_2025.aligned_mae |
 | The two windows | 1,983,300 and 2,279,500 | window_2026.calendar_2025_total, window_2026.festival_2025_total |
 | The plan | 19,760 shifts; 3,625 at the peak | plan.base_shifts_total, plan_weeks.base_shifts_10_19 |
-| Good enough at Flipkart | 27 and 82 shifts a week; a rule 100 better moves one shift in 7 of 8 weeks | good_enough.bot_gap_shifts, good_enough.vendor_gap_shifts, good_enough.better_weeks_moved |
-| The error bar | 6,615 a week; about Rs 35,800 if it runs high, Rs 1.65 lakh if low | error_bar.week_shipments, error_bar.week_idle_rs, error_bar.week_late_rs |
+| Good enough at Flipkart | 27 and 82 shifts' worth a week; a rule whose MAE is 100 lower saves Rs 542 to Rs 2,500 a week | good_enough.bot_gap_shifts, good_enough.vendor_gap_shifts, good_enough.better_saves_low_rs, good_enough.better_saves_rs |
+| The error bar | A typical miss of 6,615 a week, about Rs 35,800 if it runs high, Rs 1.65 lakh if low; at the peak 3,413 to 3,906 shifts | error_bar.week_shipments, error_bar.week_idle_rs, error_bar.week_late_rs, interview.peak_low_shifts, interview.peak_high_shifts |
 | Beyond the row | 0.82; 2.6 percent; 20,275 shifts | ticket.plan_quantile, holdout.cushion_pct, plan.shifts_total |
 
 ## What are the interview answers, each in one breath?
@@ -232,16 +240,20 @@ names any of them before a learner's own cell prints it.
 - **[S] How do you evaluate a forecast?** Hold out the latest weeks, at least as many as the forecast
   must reach ahead (ten here), from one origin; score the misses in shipments and priced by direction
   against the seasonal naive: festival-aligned 6,615, the seasonal naive 9,831, the vendor 16,400.
-  The hidden weeks hold no festival, so back-test one: 4,034 against the bot's 58,250 on 2025's.
-- **[F] What baseline must any forecast beat, and why?** The seasonal naive, since on seasonal data it
-  is the plainest copy that respects the beat; on the stall it missed by 4.0 cups where the nephew's
+  The hidden weeks hold no festival, so back-test one with no growth, since none could be measured
+  in September 2025: 10,575 against the bot's 58,250 on 2025's.
+- **[F] What baseline must any forecast beat, and why?** Naive with no season, the seasonal naive
+  with one, plus the year's growth when it trends; a copy costs nothing, so a model that cannot beat
+  it adds cost for no accuracy. On the stall the seasonal naive missed by 4.0 cups where the nephew's
   mean missed by 12.4.
-- **[F] A vendor promises 22 percent growth; how do you test the claim?** Score its curve on weeks it
-  never saw against the seasonal naive (16,400 against 9,831, after a 1.4 percent fit), and read the
-  22 against the right window: on the calendar weeks festival-aligned is 19.5 percent up too.
+- **[F] A vendor promises 22 percent growth; how do you test the claim?** Restate it against the same
+  weeks (plus 22 on the calendar weeks is plus 6.1 counted from Diwali), score its curve on weeks it
+  never saw (16,400 against 9,831, after a 1.4 percent fit), and ask for its record on a festival it
+  did not see.
 - **[D] Finance and Marketing each want their forecast in front of the board?** Concede the true part
-  of each, then present the forecast that beat the baseline on hidden periods with its error bar in
-  rupees each way; the lab's interview room drills it.
+  of each, then present the forecast that beat the baseline on hidden periods with its typical miss
+  priced each way and its range at the peak; the lab's interview room asks it of each pair's second
+  round.
 - **The AI-company variant?** Size the peak from the ground up as requests open at once, check it
   against earlier launches by days from launch with the weekday kept, and set capacity to a latency
   target with headroom.
@@ -256,11 +268,18 @@ names any of them before a learner's own cell prints it.
 | The morning | `slides/C2_W04_D05_half1_STUDENT.pptx`; notebooks 01 to 06; `whiteboards/C2_W04_D05_board_work_STUDENT.md` |
 | The concept checks | `exercises/unguided/` c1 to c4 sets, item 1 of each live, items 2 and 3 in the lab |
 | The case's tournament | `trainer/C2_W04_D05_tournament_TRAINER.md`; `trainer/C2_W04_D05_role_cards_TRAINER.md`; `trainer/C2_W04_D05_festival_calendar_card_TRAINER.md` |
-| Chapter 5's drill | `exercises/guided/C2_W04_D05_same_week_rule_STUDENT.md` |
-| Chapter 6's drill | `exercises/unguided/C2_W04_D05_ch2_scoreboard_STUDENT.md` |
+| Chapter 5, item 1 live beside S43 and S44; items 2 and 3 in the lab | `exercises/guided/C2_W04_D05_same_week_rule_STUDENT.md` |
+| The lab, after the concept sets | `exercises/unguided/C2_W04_D05_ch6_scoreboard_STUDENT.md` |
+| The week's explorer, Monday's page | `content/W04/D1/demos/C2_W04_D01_week_explorer_STUDENT.html`: the home screen at half one S2; scene F1 at S4 and S8; F2 at S24 and S50; F3 at S19, S46 and half two S3; F4, beyond the row, at fallback S11 |
 | The afternoon | `slides/C2_W04_D05_half2_STUDENT.pptx`; notebook 07; the staffing note set |
 | The interview room, in the lab | `extras/C2_W04_D05_interview_transcripts_STUDENT.md`; `trainer/C2_W04_D05_interview_scorecards_TRAINER.md` |
 | The Kahoot | `kahoot/C2_W04_D05_quiz_STUDENT.md` |
 | The lab | Notebook 08; `trainer/C2_W04_D05_lab_note_TRAINER.md`; the Kalpa board set; the practice set |
 | Tonight | `takehome/`, `study-notes/`, `cheatsheets/`, `preread/` (Saturday's preview) |
 | A missing faculty block | `slides/C2_W04_D05_fallback_STUDENT.pptx`; `trainer/C2_W04_D05_fallback_note_TRAINER.md` |
+
+## Which resources does the row give the trainer?
+
+- Forecasting: Principles and Practice, section 5.2, some simple forecasting methods: https://otexts.com/fpp3/simple-methods.html (checked 13 October 2026; it now opens the chapter page at section 5.2)
+- The same book, section 5.8, evaluating point forecast accuracy: https://otexts.com/fpp3/accuracy.html (checked 13 October 2026)
+- Khan Academy, summarizing quantitative data, for the error measures' grounding: https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data (the row's link, verified 3 September 2026; on 13 October 2026 it answered behind a browser check, so its title was not verified)
