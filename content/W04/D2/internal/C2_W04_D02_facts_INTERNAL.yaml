@@ -841,6 +841,18 @@ numbers:
   unit: ''
   how: '66,968 / 85, dividing by the stores added: a wrong denominator'
   used_by: Kalpa exercise (distractor)
+- id: joiner_tph_after
+  value: 1.59
+  shown: '1.59'
+  unit: ''
+  how: '3,660 / 2,300: the 140 joiners'' trips per online hour after the launch'
+  used_by: notebook 05; notes
+- id: idle_tail_hours_share_after
+  value: 29
+  shown: 29 percent
+  unit: ''
+  how: '42,000 / 146,300: the idle tail''s share of the city''s peak online hours after the launch'
+  used_by: notebook 05
 monday_ids_reused:
 - id: launch_date
   value: '2026-08-31'
@@ -1385,16 +1397,17 @@ toys:
     claim_title: Rotis replace rice at Monday breakfast, so the kitchen moves two staff from the rice
       counter to the roti line
     staff_moved: 2
-  used_by: half1 S6; notes; sheet
+  used_by: half1 SECTION 1 (the first prediction); notes
 - id: toy_canteen_tea
   label: invented
   values:
-    students: 2000
-    share_who_buy_tea: 0.6
-    tea_buyers: 1200
+    students: 3000
+    share_who_buy_tea: 0.45
+    tea_buyers: 1350
     cups_each: 2
-    cups_a_day: 2400
-  used_by: half2 S6; guided exercise; notes
+    cups_a_day: 2700
+  used_by: half2 SECTION 6; guided exercise Q3's worked example; notes; every value also under its own
+    toy_canteen_ id in toy_numbers
 - id: toy_two_million_city
   label: invented
   values:
@@ -1402,7 +1415,7 @@ toys:
     wrong_households: 8000000
     people_per_household: 4
     right_households: 500000
-  used_by: half2 S14; Kahoot
+  used_by: half2, SECTION 8's three published traps; Kahoot Q5
 - id: toy_kahoot_q6
   label: invented
   values:
@@ -1417,7 +1430,7 @@ toys:
     days: 31
     per_day_billion: 1
     over_30_days_billion: 1.03
-  used_by: Kahoot Q8
+  used_by: exercises ch6 Q6 (moved from the Kahoot, whose Q8 now tests the written case)
 - id: toy_auto_driver
   label: invented
   values:
@@ -1430,7 +1443,7 @@ toys:
     tuesday_per_ride_rs: 100
     monday_per_hour_rs: 200
     tuesday_per_hour_rs: 150
-  used_by: half1 S14, the everyday analogy for L2; notes
+  used_by: notebook 01's your-turn cell, the faded second example; notes, chapter 1's second example
 - id: toy_payments_month
   label: invented
   values:
@@ -1439,7 +1452,7 @@ toys:
     per_day_million: 300
     over_31_days_million: 290
     gap_pct: -3.2
-  used_by: notebook cells 14 and 15, the per-day check on an invented network
+  used_by: notebook 08, the per-day check on an invented network
 - id: toy_food_stall
   label: invented
   values:
@@ -1908,6 +1921,782 @@ shared_constants:
   window_before: 2026-07-20 to 2026-08-30
   window_after: 2026-08-31 to 2026-10-11
   diwali_2026: '2026-11-08'
+toy_numbers:
+- id: toy_kirana_days_each_month
+  value: 28
+  shown: four weeks (28 days)
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: days
+    counted on each side of the change'
+  used_by: data/C2_W04_D02_kirana_days_STUDENT.csv; half1 SECTION 1; notebooks 01, 02; notes
+- id: toy_kirana_days
+  value: 56
+  shown: 56 days
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: the
+    four weeks either side, the table''s rows'
+  used_by: notebook 01
+- id: toy_kirana_hours_sep
+  value: 10
+  shown: 10 hours a day
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: hours
+    open each day in September'
+  used_by: half1 SECTION 1; notebooks 01, 07; exercises ch1; notes
+- id: toy_kirana_hours_oct
+  value: 12
+  shown: 12 hours a day
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: hours
+    open each day in October, two more'
+  used_by: half1 SECTION 1; notebooks 01, 07; exercises ch1; notes
+- id: toy_kirana_extra_hours
+  value: 2
+  shown: two more hours
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: the
+    change: 12 hours less 10'
+  used_by: half1 SECTION 1; notes
+- id: toy_kirana_customers_sep
+  value: 119
+  shown: 119 customers a day
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: 3,332
+    customers over 28 September days'
+  used_by: half1 SECTIONs 1, 2; notebooks 01, 02, 07; exercises ch1, ch2; notes
+- id: toy_kirana_customers_oct
+  value: 126
+  shown: 126 customers a day
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: 3,528
+    customers over 28 October days'
+  used_by: half1 SECTIONs 1, 2; notebooks 01, 02, 07; exercises ch1, ch2; notes
+- id: toy_kirana_customers_sep_total
+  value: 3332
+  shown: 3,332
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: the
+    September column''s sum'
+  used_by: notebook 01
+- id: toy_kirana_customers_oct_total
+  value: 3528
+  shown: 3,528
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: the
+    October column''s sum'
+  used_by: notebook 01
+- id: toy_kirana_sales_day_sep
+  value: 11900
+  shown: Rs 11,900 a day
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: Rs
+    3,33,200 over 28 September days'
+  used_by: half1 SECTIONs 1, 2; notebooks 01, 07; exercises ch1, ch7; Kahoot Q8; notes; sheet
+- id: toy_kirana_sales_day_oct
+  value: 12600
+  shown: Rs 12,600 a day
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: Rs
+    3,52,800 over 28 October days'
+  used_by: half1 SECTIONs 1, 2; notebooks 01, 07; exercises ch1, ch7; Kahoot Q8; notes; sheet
+- id: toy_kirana_sales_sep_total
+  value: 333200
+  shown: Rs 3.33 lakh
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: four
+    weeks of September sales, Rs 3,33,200'
+  used_by: half1 SECTION 2; notebook 02; notes
+- id: toy_kirana_sales_oct_total
+  value: 352800
+  shown: Rs 3.53 lakh
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: four
+    weeks of October sales, Rs 3,52,800'
+  used_by: half1 SECTION 2; notebook 02; notes
+- id: toy_kirana_rise_day
+  value: 700
+  shown: Rs 700 a day
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: 12,600
+    less 11,900, the son''s number'
+  used_by: half1 SECTIONs 1, 7; notebooks 01, 07; exercises ch1, ch7; Kahoot Q8; notes; sheet
+- id: toy_kirana_rise_day_pct
+  value: 5.9
+  shown: up 5.9 percent
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: 12,600
+    / 11,900 - 1'
+  used_by: half1 SECTION 1; notebook 01; notes; sheet
+- id: toy_kirana_per_hour_sep
+  value: 1190
+  shown: Rs 1,190 an hour
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: 11,900
+    / 10'
+  used_by: half1 SECTIONs 1, 2, 7; notebooks 01, 02, 07; exercises ch1, ch7; Kahoot Q8; notes; sheet
+- id: toy_kirana_per_hour_oct
+  value: 1050
+  shown: Rs 1,050 an hour
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: 12,600
+    / 12'
+  used_by: half1 SECTIONs 1, 2, 7; notebooks 01, 02, 07; exercises ch1, ch7; Kahoot Q8; notes; sheet
+- id: toy_kirana_per_hour_pct
+  value: -11.8
+  shown: down 11.8 percent
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: 1,050
+    / 1,190 - 1'
+  used_by: half1 SECTION 1; notebook 01; exercises ch1; notes; sheet
+- id: toy_kirana_per_customer
+  value: 100
+  shown: Rs 100 a customer
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: 11,900
+    / 119 and 12,600 / 126'
+  used_by: half1 SECTIONs 1, 2, 7; notebooks 01, 02, 07; exercises ch1; notes; sheet
+- id: toy_kirana_rain_sep
+  value: 5
+  shown: 5 rain days
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: September''s
+    days marked rain'
+  used_by: half1 SECTION 2; notebook 02
+- id: toy_kirana_rain_oct
+  value: 2
+  shown: 2 rain days
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: October''s
+    days marked rain'
+  used_by: half1 SECTION 2; notebook 02
+- id: toy_kirana_festival_days
+  value: 14
+  shown: 14 of October's 28 days
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: the
+    festival fortnight, October''s days 8 to 21'
+  used_by: half1 SECTIONs 1, 2, 7; notebooks 01, 02, 07; exercises ch2; notes
+- id: toy_kirana_helper_rate
+  value: 85
+  shown: Rs 85 an hour
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: the
+    helper''s wage for each extra hour'
+  used_by: half1 SECTIONs 1, 2; notebook 02; exercises ch1, ch2; notes
+- id: toy_kirana_helper_cost
+  value: 170
+  shown: Rs 170 a day
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: the
+    helper''s two extra hours, 2 x Rs 85'
+  used_by: half1 SECTIONs 1, 7; notebooks 01, 07; exercises ch1, ch7; notes; sheet
+- id: toy_kirana_son_hours_sep
+  value: 4
+  shown: 4 hours a day
+  unit: ''
+  how: 'invented for the concept chapter on What to leave out, and the appendix: the son''s hours at the
+    counter in September'
+  used_by: half1 SECTION 2; notebook 02; exercises ch2
+- id: toy_kirana_son_hours_oct
+  value: 6
+  shown: 6 hours a day
+  unit: ''
+  how: 'invented for the concept chapter on What to leave out, and the appendix: the son''s hours at the
+    counter in October, the two extra evening hours added'
+  used_by: half1 SECTION 2; notebook 02; exercises ch2
+- id: toy_kirana_hour_index_oct
+  value: 88
+  shown: index 88
+  unit: ''
+  how: 'invented for the concept chapter on The AI-free written business case: October''s sales per hour
+    over September''s, x 100 (1,050 / 1,190 x 100 = 88.2), the draft page''s method word'
+  used_by: notebook 07; exercises ch7
+- id: toy_kirana_days_to_decide
+  value: 30
+  shown: thirty days
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: the
+    month the action keeps the hours for'
+  used_by: half1 SECTIONs 1, 7; notebooks 01, 07; notes
+- id: toy_draft_elements
+  value: 8
+  shown: eight elements
+  unit: ''
+  how: 'invented for the concept chapter on What to leave out, and the appendix: elements on Ramesh''s
+    first draft of the slide'
+  used_by: half1 SECTION 2; notebook 02; exercises ch2; notes
+- id: toy_draft_stay
+  value: 3
+  shown: three stay
+  unit: ''
+  how: 'invented for the concept chapter on What to leave out, and the appendix: the two that carry the
+    claim and the caveat'
+  used_by: half1 SECTION 2; notebook 02; exercises ch2; notes
+- id: toy_draft_carry_claim
+  value: 2
+  shown: two carry the claim
+  unit: ''
+  how: 'invented for the concept chapter on What to leave out, and the appendix: the per-hour chart and
+    the per-customer line'
+  used_by: half1 SECTION 2; notebook 02; exercises ch2; notes
+- id: toy_draft_son_page
+  value: 2
+  shown: two go to the son's page
+  unit: ''
+  how: 'invented for the concept chapter on What to leave out, and the appendix: customers a day and the
+    son''s hours'
+  used_by: half1 SECTION 2; notebook 02; exercises ch2; notes
+- id: toy_draft_accounts_page
+  value: 2
+  shown: two go to the accounts page
+  unit: ''
+  how: 'invented for the concept chapter on What to leave out, and the appendix: four weeks'' sales and
+    the helper''s wage'
+  used_by: half1 SECTION 2; notebook 02; exercises ch2; notes
+- id: toy_draft_cut
+  value: 1
+  shown: one is cut
+  unit: ''
+  how: 'invented for the concept chapter on What to leave out, and the appendix: rain days, which nobody
+    will ask about'
+  used_by: half1 SECTION 2; notebook 02; exercises ch2; notes
+- id: toy_clutter_series
+  value: 6
+  shown: six series
+  unit: ''
+  how: 'invented for the concept chapter on What to leave out, and the appendix: lines on the cluttered
+    chart of the 56 days'
+  used_by: half1 SECTION 2; notebook 02; exercises ch2; notes
+- id: toy_clear_series
+  value: 1
+  shown: one line
+  unit: ''
+  how: 'invented for the concept chapter on What to leave out, and the appendix: lines on the clear chart'
+  used_by: half1 SECTION 2; notebook 02; exercises ch2; notes
+- id: toy_school_weeks
+  value: 8
+  shown: eight weeks
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: weeks counted in each year'
+  used_by: half1 SECTION 3; notebook 03; exercises ch3; notes
+- id: toy_school_change_week
+  value: 3
+  shown: from week 3
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: the week the new timetable began this year'
+  used_by: half1 SECTION 3; notebook 03; exercises ch3; notes
+- id: toy_school_last_w1
+  value: 76
+  shown: 76 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: last year''s attendance, week 1'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_last_w2
+  value: 77
+  shown: 77 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: last year''s attendance, week 2'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_last_w3
+  value: 76
+  shown: 76 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: last year''s attendance, week 3'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_last_w4
+  value: 77
+  shown: 77 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: last year''s attendance, week 4'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_last_w5
+  value: 77
+  shown: 77 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: last year''s attendance, week 5'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_last_w6
+  value: 85
+  shown: 85 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: last year''s attendance, week 6'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_last_w7
+  value: 85
+  shown: 85 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: last year''s attendance, week 7'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_last_w8
+  value: 85
+  shown: 85 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: last year''s attendance, week 8'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_this_w1
+  value: 77
+  shown: 77 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: this year''s attendance, week 1'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_this_w2
+  value: 76
+  shown: 76 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: this year''s attendance, week 2'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_this_w3
+  value: 81
+  shown: 81 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: this year''s attendance, week 3'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_this_w4
+  value: 82
+  shown: 82 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: this year''s attendance, week 4'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_this_w5
+  value: 81
+  shown: 81 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: this year''s attendance, week 5'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_this_w6
+  value: 89
+  shown: 89 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: this year''s attendance, week 6'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_this_w7
+  value: 90
+  shown: 90 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: this year''s attendance, week 7'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_this_w8
+  value: 89
+  shown: 89 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: this year''s attendance, week 8'
+  used_by: data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3
+- id: toy_school_start_mean
+  value: 76.5
+  shown: 76.5 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: weeks 1 and 2, the same in both years'
+  used_by: half1 SECTION 3; notebook 03; exercises ch3; notes; sheet
+- id: toy_school_lift_last
+  value: 8.3
+  shown: 8.3 points
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: last year''s weeks 6 to 8 over weeks 3 to 5'
+  used_by: half1 SECTION 3; notebook 03; exercises ch3; notes; sheet
+- id: toy_school_lift_this
+  value: 8.0
+  shown: 8.0 points
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: this year''s weeks 6 to 8 over weeks 3 to 5'
+  used_by: half1 SECTION 3; notebook 03; exercises ch3; notes; sheet
+- id: toy_school_pre_rise
+  value: 4.7
+  shown: 4.7 points
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: weeks 3 to 5, this year over last year'
+  used_by: half1 SECTION 3; notebook 03; exercises ch3; notes; sheet
+- id: toy_school_whole_rise
+  value: 12.8
+  shown: 12.8 points
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: this year''s weeks 6 to 8 over weeks 1 and 2'
+  used_by: half1 SECTION 3; notebook 03; exercises ch3; notes; sheet
+- id: toy_school_w35_last
+  value: 76.7
+  shown: 76.7 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: last year''s weeks 3 to 5'
+  used_by: half1 SECTION 3; notebook 03; exercises ch3; notes; sheet
+- id: toy_school_w35_this
+  value: 81.3
+  shown: 81.3 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: this year''s weeks 3 to 5'
+  used_by: half1 SECTION 3; notebook 03; exercises ch3; notes; sheet
+- id: toy_school_exam_last
+  value: 85.0
+  shown: 85.0 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: last year''s exam weeks'
+  used_by: half1 SECTION 3; notebook 03; exercises ch3; notes; sheet
+- id: toy_school_exam_this
+  value: 89.3
+  shown: 89.3 percent
+  unit: ''
+  how: 'invented for the concept chapter on Defending under challenge: restate, answer, concede, what
+    would change your mind: this year''s exam weeks'
+  used_by: half1 SECTION 3; notebook 03; exercises ch3; notes; sheet
+- id: toy_canteen_students
+  value: 3000
+  shown: 3,000 students
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: students
+    on campus, the central guess'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_students_low
+  value: 2700
+  shown: 2,700
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: students,
+    the low end'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_students_high
+  value: 3300
+  shown: 3,300
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: students,
+    the high end'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_share
+  value: 0.45
+  shown: 0.45 (45 percent)
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: share
+    who buy tea on a weekday, the central guess'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_share_low
+  value: 0.25
+  shown: '0.25'
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: the share,
+    the low end'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_share_high
+  value: 0.65
+  shown: '0.65'
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: the share,
+    the high end'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_cups_each
+  value: 2
+  shown: 2 cups
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: cups each
+    buyer drinks, the central guess'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_cups_each_low
+  value: 1.5
+  shown: '1.5'
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: cups each,
+    the low end'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_cups_each_high
+  value: 2.5
+  shown: '2.5'
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: cups each,
+    the high end'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_buyers
+  value: 1350
+  shown: 1,350 buyers
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 3,000
+    x 0.45'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_cups
+  value: 2700
+  shown: 2,700 cups
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 3,000
+    x 0.45 x 2'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_till_mean
+  value: 2340
+  shown: 2,340 cups
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: the till''s
+    five weekdays, averaged'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_gap_pct
+  value: 15.4
+  shown: 15.4 percent high
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 2,700
+    / 2,340 - 1'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_implied_share
+  value: 0.39
+  shown: '0.39'
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: the share
+    that lands on the till: 2,340 / (3,000 x 2)'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_swing_students_low
+  value: 2430
+  shown: 2,430
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 2,700
+    x 0.45 x 2'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_swing_students_high
+  value: 2970
+  shown: 2,970
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 3,300
+    x 0.45 x 2'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_swing_share_low
+  value: 1500
+  shown: 1,500
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 3,000
+    x 0.25 x 2'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_swing_share_high
+  value: 3900
+  shown: 3,900
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 3,000
+    x 0.65 x 2'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_swing_cups_low
+  value: 2025
+  shown: 2,025
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 3,000
+    x 0.45 x 1.5'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_swing_cups_high
+  value: 3375
+  shown: 3,375
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 3,000
+    x 0.45 x 2.5'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_candidate_b
+  value: 2350
+  shown: 2,350
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: the near
+    guess with no chain, in the prediction'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_canteen_till_monday
+  value: 2295
+  shown: 2,295
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: cups the
+    till counted on Monday'
+  used_by: data/C2_W04_D02_canteen_till_STUDENT.csv; notebook 06
+- id: toy_canteen_till_tuesday
+  value: 2380
+  shown: 2,380
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: cups the
+    till counted on Tuesday'
+  used_by: data/C2_W04_D02_canteen_till_STUDENT.csv; notebook 06
+- id: toy_canteen_till_wednesday
+  value: 2310
+  shown: 2,310
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: cups the
+    till counted on Wednesday'
+  used_by: data/C2_W04_D02_canteen_till_STUDENT.csv; notebook 06
+- id: toy_canteen_till_thursday
+  value: 2375
+  shown: 2,375
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: cups the
+    till counted on Thursday'
+  used_by: data/C2_W04_D02_canteen_till_STUDENT.csv; notebook 06
+- id: toy_canteen_till_friday
+  value: 2340
+  shown: 2,340
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: cups the
+    till counted on Friday'
+  used_by: data/C2_W04_D02_canteen_till_STUDENT.csv; notebook 06
+- id: toy_town_people
+  value: 24000
+  shown: 24,000 people
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: a town''s
+    people'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_town_per_household
+  value: 4
+  shown: about 4 to a household
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: people
+    to a household, a round guess'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_town_households
+  value: 6000
+  shown: about 6,000 households
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 24,000
+    / 4'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_town_wrong_households
+  value: 96000
+  shown: 96,000 households
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 24,000
+    x 4, the slip'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_town_wrong_ratio
+  value: 16
+  shown: 16 times too many
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 96,000
+    / 6,000'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_pack_gb_day
+  value: 1.5
+  shown: 1.5 GB a day
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: a phone
+    pack''s daily data'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_pack_days
+  value: 28
+  shown: 28 days
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: the pack''s
+    length'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_pack_gb_total
+  value: 42
+  shown: 42 GB
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 1.5 x
+    28'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_month_days
+  value: 30
+  shown: 30 days
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: a month
+    as the bill counts it'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_month_gb_total
+  value: 45
+  shown: 45 GB
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 1.5 x
+    30'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_exam_enrolled
+  value: 150
+  shown: 150 enrolled
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: Gulmohar''s
+    class 10 students enrolled'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_exam_sat
+  value: 135
+  shown: 135 sat
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: the students
+    who sat the board exam'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_exam_passed
+  value: 113
+  shown: 113 passed
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: the students
+    who passed'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_exam_pass_sat_pct
+  value: 83.7
+  shown: 83.7 percent
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 113 /
+    135'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_exam_pass_enrolled_pct
+  value: 75.3
+  shown: 75.3 percent
+  unit: ''
+  how: 'invented for the concept chapter on The guesstimate: clarify, map, calculate, validate: 113 /
+    150'
+  used_by: half2 SECTION 6; notebook 06; exercises ch6; notes; sheet
+- id: toy_page_sentences
+  value: 4
+  shown: four sentences
+  unit: ''
+  how: 'invented for the concept chapter on The AI-free written business case: the page''s sentences:
+    claim, evidence, caveat, action'
+  used_by: half2 SECTION 7; notebook 07; exercises ch7; notes
+- id: toy_page_draft_lines
+  value: 9
+  shown: nine lines
+  unit: ''
+  how: 'invented for the concept chapter on The AI-free written business case: the draft''s lines of numbers'
+  used_by: half2 SECTION 7; notebook 07; exercises ch7; notes
+- id: toy_page_draft_method_words
+  value: 4
+  shown: four method words
+  unit: ''
+  how: 'invented for the concept chapter on The AI-free written business case: north star, denominator,
+    index, guardrail'
+  used_by: half2 SECTION 7; notebook 07; exercises ch7; notes
+- id: toy_page_words
+  value: 108
+  shown: 108 words
+  unit: ''
+  how: 'invented for the concept chapter on The AI-free written business case: words on the four-sentence
+    page'
+  used_by: half2 SECTION 7; notebook 07; exercises ch7; notes
+- id: toy_page_draft_numbers
+  value: 13
+  shown: 13 numbers
+  unit: ''
+  how: 'invented for the concept chapter on The AI-free written business case: numbers printed on the
+    draft''s nine lines'
+  used_by: half2 SECTION 7; notebook 07; exercises ch7; notes
+- id: toy_page_numbers
+  value: 6
+  shown: 6 numbers
+  unit: ''
+  how: 'invented for the concept chapter on The AI-free written business case: numbers printed on the
+    page''s four sentences'
+  used_by: half2 SECTION 7; notebook 07; exercises ch7; notes
+- id: toy_page_ceiling
+  value: 250
+  shown: 250 words
+  unit: ''
+  how: 'invented for the concept chapter on The AI-free written business case: the pack''s own ceiling
+    for the page, labelled as the pack''s rule'
+  used_by: half2 SECTION 7; notebook 07; exercises ch7; notes
 programme:
   cohort_students: 35
   threes: 11

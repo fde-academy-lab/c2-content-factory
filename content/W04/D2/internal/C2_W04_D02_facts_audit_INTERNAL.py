@@ -5,8 +5,8 @@ Run from the repository root, after the generator:
 
 Reads the prose of every STUDENT markdown file (outside code and notes fences) and the markdown cells
 and printed outputs of the notebook. A number has a home when it equals a value anywhere in the facts
-file (a number, a Monday id, a public fact, an assumption or its range, a toy, a twelve-row or weekly
-value) at the precision it is printed, read as itself, a percent, a lakh, a crore, a million or a
+file (a number, a Monday id, a public fact, an assumption or its range, a toy or a toy_ number of
+the concept chapters' examples, a twelve-row or weekly value) at the precision it is printed, read as itself, a percent, a lakh, a crore, a million or a
 billion. Numbers that only count the material (slides, levels, items, chapters, minutes, dates, years,
 steps) are structural and are left out. Writes C2_W04_D02_facts_audit_INTERNAL.md and exits 1 when a
 number has no home.
@@ -64,7 +64,7 @@ def facts():
     data = yaml.safe_load(FACTS.read_text(encoding="utf-8"))
     out = []
     for section in ("numbers", "monday_ids_reused", "public_facts", "assumptions", "toys",
-                    "twelve_rows", "weekly_series", "kalpa", "programme"):
+                    "toy_numbers", "twelve_rows", "weekly_series", "kalpa", "programme"):
         walk(data.get(section), section, out)
     return out
 

@@ -1,0 +1,9 @@
+test,example,quantity,value,unit
+unit,a town,people,24000.0,people
+unit,a town,people to a household,4.0,people
+period,a phone pack,data a day,1.5,GB
+period,a phone pack,days in the pack,28.0,days
+period,a phone pack,days in a month,30.0,days
+definition,Gulmohar Secondary School's board exam,students enrolled,150.0,students
+definition,Gulmohar Secondary School's board exam,students who sat,135.0,students
+definition,Gulmohar Secondary School's board exam,students who passed,113.0,students

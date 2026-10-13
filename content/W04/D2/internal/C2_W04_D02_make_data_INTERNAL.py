@@ -14,11 +14,20 @@ Reads (never writes) Monday:
     content/W04/D1/data/C2_W04_D01_zone_weeks_STUDENT.csv
     content/W04/D1/internal/C2_W04_D01_facts_INTERNAL.yaml
 
-Writes Tuesday:
+Writes Tuesday's case tables, which match the merged pack's byte for byte (asserted against
+origin/main), the concept chapters' invented examples and the facts file:
     content/W04/D2/data/C2_W04_D02_twelve_rows_STUDENT.csv
     content/W04/D2/data/C2_W04_D02_twelve_weeks_STUDENT.csv
     content/W04/D2/data/C2_W04_D02_kalpa_dmart_anchor_STUDENT.csv
     content/W04/D2/data/C2_W04_D02_driver_groups_STUDENT.csv
+    content/W04/D2/data/C2_W04_D02_driver_segments_STUDENT.csv       (case, for notebook 05)
+    content/W04/D2/data/C2_W04_D02_kirana_days_STUDENT.csv           (invented, chapters 1 and 2)
+    content/W04/D2/data/C2_W04_D02_kirana_slide_elements_STUDENT.csv (invented, chapter 2)
+    content/W04/D2/data/C2_W04_D02_school_attendance_STUDENT.csv     (invented, chapter 3)
+    content/W04/D2/data/C2_W04_D02_canteen_ledger_STUDENT.csv        (invented, chapter 6)
+    content/W04/D2/data/C2_W04_D02_canteen_till_STUDENT.csv          (invented, chapter 6)
+    content/W04/D2/data/C2_W04_D02_sanity_tests_STUDENT.csv          (invented, chapter 6)
+    content/W04/D2/data/C2_W04_D02_kirana_page_STUDENT.txt           (invented, chapter 7)
     content/W04/D2/internal/C2_W04_D02_facts_INTERNAL.yaml
 
 No randomness is used, so two runs write byte-identical files. pandas and PyYAML only.
@@ -28,6 +37,8 @@ Run from the repository root:
 """
 import datetime as dt
 import pathlib
+import re
+import subprocess
 import sys
 
 import pandas as pd
@@ -798,30 +809,31 @@ facts["toys"] += [
      "values": {"topic_title": "Breakfast survey results",
                 "claim_title": "Rotis replace rice at Monday breakfast, so the kitchen moves two "
                                "staff from the rice counter to the roti line", "staff_moved": 2},
-     "used_by": "half1 S6; notes; sheet"},
+     "used_by": "half1 SECTION 1 (the first prediction); notes"},
     {"id": "toy_canteen_tea", "label": "invented",
-     "values": {"students": 2000, "share_who_buy_tea": 0.6, "tea_buyers": 1200, "cups_each": 2,
-                "cups_a_day": 2400},
-     "used_by": "half2 S6; guided exercise; notes"},
+     "values": {"students": 3000, "share_who_buy_tea": 0.45, "tea_buyers": 1350, "cups_each": 2,
+                "cups_a_day": 2700},
+     "used_by": "half2 SECTION 6; guided exercise Q3's worked example; notes; every value also under "
+                "its own toy_canteen_ id in toy_numbers"},
     {"id": "toy_two_million_city", "label": "invented",
      "values": {"people": 2_000_000, "wrong_households": 8_000_000, "people_per_household": 4,
                 "right_households": 500_000},
-     "used_by": "half2 S14; Kahoot"},
+     "used_by": "half2, SECTION 8's three published traps; Kahoot Q5"},
     {"id": "toy_kahoot_q6", "label": "invented",
      "values": {"trips_a_day": 100000, "trips_per_busy_hour": 2.5, "wrong_drivers": 40000},
      "used_by": "Kahoot Q6"},
     {"id": "toy_kahoot_q8", "label": "invented",
      "values": {"month_total_billion": 31, "days": 31, "per_day_billion": 1, "over_30_days_billion": 1.03},
-     "used_by": "Kahoot Q8"},
+     "used_by": "exercises ch6 Q6 (moved from the Kahoot, whose Q8 now tests the written case)"},
     {"id": "toy_auto_driver", "label": "invented",
      "values": {"day_rs": 1800, "monday_rides": 20, "monday_hours": 9, "tuesday_rides": 18,
                 "tuesday_hours": 12, "monday_per_ride_rs": 90, "tuesday_per_ride_rs": 100,
                 "monday_per_hour_rs": 200, "tuesday_per_hour_rs": 150},
-     "used_by": "half1 S14, the everyday analogy for L2; notes"},
+     "used_by": "notebook 01's your-turn cell, the faded second example; notes, chapter 1's second example"},
     {"id": "toy_payments_month", "label": "invented",
      "values": {"month_total_billion": 9, "days_in_month": 30, "per_day_million": 300,
                 "over_31_days_million": 290, "gap_pct": -3.2},
-     "used_by": "notebook cells 14 and 15, the per-day check on an invented network"},
+     "used_by": "notebook 08, the per-day check on an invented network"},
     {"id": "toy_food_stall", "label": "invented",
      "values": {"sales_rs": 12000, "orders": 240, "staff_hours": 40, "staff_days": 5,
                 "per_order_rs": 50, "per_staff_hour_rs": 300, "per_staff_day_rs": 2400},
@@ -837,6 +849,341 @@ facts["toys"] += [
 
 check("the auto driver's three reads: per day flat, per ride up, per hour down",
       (1800 / 20, 1800 / 18, 1800 / 9, 1800 / 12) == (90, 100, 200, 150))
+
+# ------------------------------------------------------------------ the concept chapters' examples
+# The five concept chapters teach the row's subtopics on invented everyday examples before Uber
+# applies them. Each example is written to data/ here, and every number a learner sees on it is
+# recorded under a toy_ id, with the chapter it was invented for and the files that use it. No
+# randomness: the tables are typed below and every total is asserted.
+S1 = "The one-slide answer: claim, evidence, caveat, action"
+S2 = "What to leave out, and the appendix"
+S3 = "Defending under challenge: restate, answer, concede, what would change your mind"
+S4 = "The guesstimate: clarify, map, calculate, validate"
+S5 = "The AI-free written business case"
+facts["toy_numbers"] = []
+
+
+def toy(tid, value, shown, subtopic, how, used_by, unit=""):
+    facts["toy_numbers"].append({"id": tid, "value": plain(value), "shown": shown, "unit": unit,
+                                 "how": f"invented for the concept chapter on {subtopic}: {how}",
+                                 "used_by": used_by})
+
+
+# Ramesh's kirana shop opens two more hours a day in October. Four weeks either side, 56 days.
+SEPT_CUSTOMERS = [119, 120, 106, 120, 122, 123, 125, 119, 105, 121, 120, 122, 124, 107,
+                  120, 121, 122, 121, 123, 104, 126, 120, 121, 122, 106, 123, 124, 126]
+OCT_CUSTOMERS = [120, 121, 122, 110, 124, 125, 127, 128, 129, 130, 129, 131, 132, 134,
+                 128, 129, 130, 129, 131, 132, 134, 121, 122, 123, 111, 124, 125, 127]
+SEPT_RAIN, OCT_RAIN, FESTIVAL = {3, 9, 14, 20, 25}, {4, 25}, set(range(8, 22))
+SPREAD = [120, -80, 40, -160, 60, 0, 20]      # a week's spread around Rs 100 a customer; sums to 0
+rows = []
+for month, hours, customers, rain in (("September", 10, SEPT_CUSTOMERS, SEPT_RAIN),
+                                      ("October", 12, OCT_CUSTOMERS, OCT_RAIN)):
+    for day, c in enumerate(customers, start=1):
+        rows.append({"month": month, "day": day, "hours_open": hours, "customers": c,
+                     "sales_rs": 100 * c + SPREAD[(day - 1) % 7],
+                     "rain_day": "yes" if day in rain else "no",
+                     "festival_day": "yes" if month == "October" and day in FESTIVAL else "no"})
+kirana = pd.DataFrame(rows)
+kirana.to_csv(DATA / f"{STEM}_kirana_days_STUDENT.csv", index=False)
+km = kirana.groupby("month", sort=False).agg(days=("day", "count"), hours=("hours_open", "mean"),
+                                             customers=("customers", "sum"), sales=("sales_rs", "sum"))
+sep, octo = km.loc["September"], km.loc["October"]
+per_day = (sep.sales / sep.days, octo.sales / octo.days)
+per_hour = (per_day[0] / sep.hours, per_day[1] / octo.hours)
+per_cust = (sep.sales / sep.customers, octo.sales / octo.customers)
+check("kirana: 28 days a month, 10 hours open in September and 12 in October",
+      (sep.days, octo.days, sep.hours, octo.hours) == (28, 28, 10, 12))
+check("kirana: 119 and 126 customers a day", (sep.customers / 28, octo.customers / 28) == (119, 126))
+check("kirana: Rs 11,900 and Rs 12,600 a day", per_day == (11900, 12600))
+check("kirana: Rs 1,190 and Rs 1,050 an hour", per_hour == (1190, 1050))
+check("kirana: Rs 100 a customer in both months", per_cust == (100, 100))
+check("kirana: per day up 5.9 percent, per hour down 11.8 percent",
+      (round((per_day[1] / per_day[0] - 1) * 100, 1), round((per_hour[1] / per_hour[0] - 1) * 100, 1))
+      == (5.9, -11.8))
+check("kirana: 5 rain days in September, 2 in October, 14 festival days",
+      (len(SEPT_RAIN), len(OCT_RAIN), len(FESTIVAL)) == (5, 2, 14))
+check("kirana: no number echoes the case (not 17 percent, 0.8 percent, Rs 165 or 5,700)",
+      not {5.9, 11.8, 119, 126, 11900, 12600, 1190, 1050} & {17, 0.8, 165, 5700})
+for tid, v, shown, how, used in [
+    ("toy_kirana_days_each_month", 28, "four weeks (28 days)", "days counted on each side of the change",
+     "data/C2_W04_D02_kirana_days_STUDENT.csv; half1 SECTION 1; notebooks 01, 02; notes"),
+    ("toy_kirana_days", 56, "56 days", "the four weeks either side, the table's rows", "notebook 01"),
+    ("toy_kirana_hours_sep", 10, "10 hours a day", "hours open each day in September",
+     "half1 SECTION 1; notebooks 01, 07; exercises ch1; notes"),
+    ("toy_kirana_hours_oct", 12, "12 hours a day", "hours open each day in October, two more",
+     "half1 SECTION 1; notebooks 01, 07; exercises ch1; notes"),
+    ("toy_kirana_extra_hours", 2, "two more hours", "the change: 12 hours less 10", "half1 SECTION 1; notes"),
+    ("toy_kirana_customers_sep", 119, "119 customers a day", "3,332 customers over 28 September days",
+     "half1 SECTIONs 1, 2; notebooks 01, 02, 07; exercises ch1, ch2; notes"),
+    ("toy_kirana_customers_oct", 126, "126 customers a day", "3,528 customers over 28 October days",
+     "half1 SECTIONs 1, 2; notebooks 01, 02, 07; exercises ch1, ch2; notes"),
+    ("toy_kirana_customers_sep_total", 3332, "3,332", "the September column's sum", "notebook 01"),
+    ("toy_kirana_customers_oct_total", 3528, "3,528", "the October column's sum", "notebook 01"),
+    ("toy_kirana_sales_day_sep", 11900, "Rs 11,900 a day", "Rs 3,33,200 over 28 September days",
+     "half1 SECTIONs 1, 2; notebooks 01, 07; exercises ch1, ch7; Kahoot Q8; notes; sheet"),
+    ("toy_kirana_sales_day_oct", 12600, "Rs 12,600 a day", "Rs 3,52,800 over 28 October days",
+     "half1 SECTIONs 1, 2; notebooks 01, 07; exercises ch1, ch7; Kahoot Q8; notes; sheet"),
+    ("toy_kirana_sales_sep_total", 333200, "Rs 3.33 lakh", "four weeks of September sales, Rs 3,33,200",
+     "half1 SECTION 2; notebook 02; notes", ),
+    ("toy_kirana_sales_oct_total", 352800, "Rs 3.53 lakh", "four weeks of October sales, Rs 3,52,800",
+     "half1 SECTION 2; notebook 02; notes"),
+    ("toy_kirana_rise_day", 700, "Rs 700 a day", "12,600 less 11,900, the son's number",
+     "half1 SECTIONs 1, 7; notebooks 01, 07; exercises ch1, ch7; Kahoot Q8; notes; sheet"),
+    ("toy_kirana_rise_day_pct", 5.9, "up 5.9 percent", "12,600 / 11,900 - 1",
+     "half1 SECTION 1; notebook 01; notes; sheet"),
+    ("toy_kirana_per_hour_sep", 1190, "Rs 1,190 an hour", "11,900 / 10",
+     "half1 SECTIONs 1, 2, 7; notebooks 01, 02, 07; exercises ch1, ch7; Kahoot Q8; notes; sheet"),
+    ("toy_kirana_per_hour_oct", 1050, "Rs 1,050 an hour", "12,600 / 12",
+     "half1 SECTIONs 1, 2, 7; notebooks 01, 02, 07; exercises ch1, ch7; Kahoot Q8; notes; sheet"),
+    ("toy_kirana_per_hour_pct", -11.8, "down 11.8 percent", "1,050 / 1,190 - 1",
+     "half1 SECTION 1; notebook 01; exercises ch1; notes; sheet"),
+    ("toy_kirana_per_customer", 100, "Rs 100 a customer", "11,900 / 119 and 12,600 / 126",
+     "half1 SECTIONs 1, 2, 7; notebooks 01, 02, 07; exercises ch1; notes; sheet"),
+    ("toy_kirana_rain_sep", 5, "5 rain days", "September's days marked rain", "half1 SECTION 2; notebook 02"),
+    ("toy_kirana_rain_oct", 2, "2 rain days", "October's days marked rain", "half1 SECTION 2; notebook 02"),
+    ("toy_kirana_festival_days", 14, "14 of October's 28 days", "the festival fortnight, October's days 8 to 21",
+     "half1 SECTIONs 1, 2, 7; notebooks 01, 02, 07; exercises ch2; notes"),
+]:
+    toy(tid, v, shown, S1, how, used)
+toy("toy_kirana_helper_rate", 85, "Rs 85 an hour", S1, "the helper's wage for each extra hour",
+    "half1 SECTIONs 1, 2; notebook 02; exercises ch1, ch2; notes")
+toy("toy_kirana_helper_cost", 170, "Rs 170 a day", S1, "the helper's two extra hours, 2 x Rs 85",
+    "half1 SECTIONs 1, 7; notebooks 01, 07; exercises ch1, ch7; notes; sheet")
+toy("toy_kirana_son_hours_sep", 4, "4 hours a day", S2, "the son's hours at the counter in September",
+    "half1 SECTION 2; notebook 02; exercises ch2")
+toy("toy_kirana_son_hours_oct", 6, "6 hours a day", S2, "the son's hours at the counter in October, "
+    "the two extra evening hours added", "half1 SECTION 2; notebook 02; exercises ch2")
+toy("toy_kirana_hour_index_oct", 88, "index 88", S5, "October's sales per hour over September's, x 100 "
+    "(1,050 / 1,190 x 100 = 88.2), the draft page's method word", "notebook 07; exercises ch7")
+toy("toy_kirana_days_to_decide", 30, "thirty days", S1, "the month the action keeps the hours for",
+    "half1 SECTIONs 1, 7; notebooks 01, 07; notes")
+check("the helper's two hours cost Rs 170", 2 * 85 == 170)
+check("October's per-hour index is 88", round(1050 / 1190 * 100) == 88)
+
+# The kirana draft slide's eight elements, routed by chapter 2's sort.
+elements = pd.DataFrame([
+    ("Chart: sales per hour, by day", "Rs 1,190 an hour in September, Rs 1,050 in October", "yes", "", "no"),
+    ("Total sales, four weeks", "Rs 3.33 lakh in September, Rs 3.53 lakh in October", "no", "the accountant", "no"),
+    ("Customers a day", "119 in September, 126 in October", "no", "the son", "no"),
+    ("Rain days", "5 in September, 2 in October", "no", "", "no"),
+    ("The son's hours at the counter", "4 a day in September, 6 in October", "no", "the son", "no"),
+    ("The helper's wage", "Rs 85 an hour; the two extra hours cost Rs 170 a day", "no", "the accountant", "no"),
+    ("The festival fortnight", "14 of October's 28 days", "no", "", "yes"),
+    ("Sales per customer", "Rs 100 in both months", "yes", "", "no"),
+], columns=["element", "what_it_shows", "supports_claim", "whose_question", "is_caveat"])
+elements.to_csv(DATA / f"{STEM}_kirana_slide_elements_STUDENT.csv", index=False)
+stay = elements[(elements.supports_claim == "yes") | (elements.is_caveat == "yes")]
+check("the draft's eight elements: three stay, two go to each page, one is cut",
+      (len(elements), len(stay), (elements.whose_question == "the son").sum(),
+       (elements.whose_question == "the accountant").sum()) == (8, 3, 2, 2))
+for tid, v, shown, how in [
+        ("toy_draft_elements", 8, "eight elements", "elements on Ramesh's first draft of the slide"),
+        ("toy_draft_stay", 3, "three stay", "the two that carry the claim and the caveat"),
+        ("toy_draft_carry_claim", 2, "two carry the claim", "the per-hour chart and the per-customer line"),
+        ("toy_draft_son_page", 2, "two go to the son's page", "customers a day and the son's hours"),
+        ("toy_draft_accounts_page", 2, "two go to the accounts page", "four weeks' sales and the helper's wage"),
+        ("toy_draft_cut", 1, "one is cut", "rain days, which nobody will ask about"),
+        ("toy_clutter_series", 6, "six series", "lines on the cluttered chart of the 56 days"),
+        ("toy_clear_series", 1, "one line", "lines on the clear chart")]:
+    toy(tid, v, shown, S2, how, "half1 SECTION 2; notebook 02; exercises ch2; notes")
+
+# A secondary school's attendance, this year and last, eight weeks each.
+ATT_LAST = [76, 77, 76, 77, 77, 85, 85, 85]
+ATT_THIS = [77, 76, 81, 82, 81, 89, 90, 89]
+school = pd.DataFrame([{"year": y, "week": w, "attendance_pct": v, "exam_week": "yes" if w >= 6 else "no",
+                        "timetable_changed": "yes" if y == "this year" and w >= 3 else "no"}
+                       for y, vals in (("last year", ATT_LAST), ("this year", ATT_THIS))
+                       for w, v in enumerate(vals, start=1)])
+school.to_csv(DATA / f"{STEM}_school_attendance_STUDENT.csv", index=False)
+
+
+def mean(xs):
+    return sum(xs) / len(xs)
+
+
+lift_last = mean(ATT_LAST[5:]) - mean(ATT_LAST[2:5])
+lift_this = mean(ATT_THIS[5:]) - mean(ATT_THIS[2:5])
+pre_rise = mean(ATT_THIS[2:5]) - mean(ATT_LAST[2:5])
+whole_rise = mean(ATT_THIS[5:]) - mean(ATT_THIS[:2])
+check("school: weeks 1 and 2 match in both years (76.5)", mean(ATT_LAST[:2]) == mean(ATT_THIS[:2]) == 76.5)
+check("school: the exam weeks lift about 8 points in both years (8.3 and 8.0)",
+      (round(lift_last, 1), round(lift_this, 1)) == (8.3, 8.0))
+check("school: weeks 3 to 5 sit 4 to 5 points above last year's (4.7 on average)",
+      round(pre_rise, 1) == 4.7 and [t - l for t, l in zip(ATT_THIS[2:5], ATT_LAST[2:5])] == [5, 5, 4])
+check("school: the whole rise is 12.8 points, more than the exams' 8",
+      round(whole_rise, 1) == 12.8 and whole_rise > max(lift_last, lift_this))
+toy("toy_school_weeks", 8, "eight weeks", S3, "weeks counted in each year",
+    "half1 SECTION 3; notebook 03; exercises ch3; notes")
+toy("toy_school_change_week", 3, "from week 3", S3, "the week the new timetable began this year",
+    "half1 SECTION 3; notebook 03; exercises ch3; notes")
+for i, v in enumerate(ATT_LAST, start=1):
+    toy(f"toy_school_last_w{i}", v, f"{v} percent", S3, f"last year's attendance, week {i}",
+        "data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3")
+for i, v in enumerate(ATT_THIS, start=1):
+    toy(f"toy_school_this_w{i}", v, f"{v} percent", S3, f"this year's attendance, week {i}",
+        "data/C2_W04_D02_school_attendance_STUDENT.csv; half1 SECTION 3; notebook 03; exercises ch3")
+for tid, v, shown, how in [
+        ("toy_school_start_mean", 76.5, "76.5 percent", "weeks 1 and 2, the same in both years"),
+        ("toy_school_lift_last", round(lift_last, 1), "8.3 points", "last year's weeks 6 to 8 over weeks 3 to 5"),
+        ("toy_school_lift_this", round(lift_this, 1), "8.0 points", "this year's weeks 6 to 8 over weeks 3 to 5"),
+        ("toy_school_pre_rise", round(pre_rise, 1), "4.7 points", "weeks 3 to 5, this year over last year"),
+        ("toy_school_whole_rise", round(whole_rise, 1), "12.8 points", "this year's weeks 6 to 8 over weeks 1 and 2"),
+        ("toy_school_w35_last", round(mean(ATT_LAST[2:5]), 1), "76.7 percent", "last year's weeks 3 to 5"),
+        ("toy_school_w35_this", round(mean(ATT_THIS[2:5]), 1), "81.3 percent", "this year's weeks 3 to 5"),
+        ("toy_school_exam_last", round(mean(ATT_LAST[5:]), 1), "85.0 percent", "last year's exam weeks"),
+        ("toy_school_exam_this", round(mean(ATT_THIS[5:]), 1), "89.3 percent", "this year's exam weeks")]:
+    toy(tid, v, shown, S3, how, "half1 SECTION 3; notebook 03; exercises ch3; notes; sheet")
+
+# The campus canteen's tea, sized from nothing, then checked against five weekdays of its till.
+ledger = pd.DataFrame([
+    ("students on campus", 3000, 2700, 3300, "students", "the campus head count, rounded"),
+    ("share who buy tea on a weekday", 0.45, 0.25, 0.65, "share of students", "a guess from the queue at the counter"),
+    ("cups each buyer drinks", 2, 1.5, 2.5, "cups a buyer", "one in the morning, one after lunch"),
+], columns=["factor", "central", "low", "high", "unit", "why"])
+ledger.to_csv(DATA / f"{STEM}_canteen_ledger_STUDENT.csv", index=False)
+TILL = [("Monday", 2295), ("Tuesday", 2380), ("Wednesday", 2310), ("Thursday", 2375), ("Friday", 2340)]
+pd.DataFrame(TILL, columns=["weekday", "cups_sold"]).to_csv(DATA / f"{STEM}_canteen_till_STUDENT.csv", index=False)
+cups = 3000 * 0.45 * 2
+till_mean = mean([c for _, c in TILL])
+implied_share = till_mean / (3000 * 2)
+swing_canteen = {"students on campus": (2700 * 0.45 * 2, 3300 * 0.45 * 2),
+                 "share who buy tea on a weekday": (3000 * 0.25 * 2, 3000 * 0.65 * 2),
+                 "cups each buyer drinks": (3000 * 0.45 * 1.5, 3000 * 0.45 * 2.5)}
+check("canteen: 3,000 x 0.45 x 2 = 2,700 cups, from 1,350 buyers", (cups, 3000 * 0.45) == (2700, 1350))
+check("canteen: the till averages 2,340 cups over five weekdays", till_mean == 2340)
+check("canteen: the chain runs 15.4 percent high, and a share of 0.39 lands on the till",
+      round((cups / till_mean - 1) * 100, 1) == 15.4 and round(implied_share, 2) == 0.39
+      and 3000 * 0.39 * 2 == till_mean)
+check("canteen: the share who buy sets the range (1,500 to 3,900, wider than the others)",
+      max(swing_canteen, key=lambda k: swing_canteen[k][1] - swing_canteen[k][0])
+      == "share who buy tea on a weekday" and swing_canteen["share who buy tea on a weekday"] == (1500, 3900))
+for tid, v, shown, how in [
+        ("toy_canteen_students", 3000, "3,000 students", "students on campus, the central guess"),
+        ("toy_canteen_students_low", 2700, "2,700", "students, the low end"),
+        ("toy_canteen_students_high", 3300, "3,300", "students, the high end"),
+        ("toy_canteen_share", 0.45, "0.45 (45 percent)", "share who buy tea on a weekday, the central guess"),
+        ("toy_canteen_share_low", 0.25, "0.25", "the share, the low end"),
+        ("toy_canteen_share_high", 0.65, "0.65", "the share, the high end"),
+        ("toy_canteen_cups_each", 2, "2 cups", "cups each buyer drinks, the central guess"),
+        ("toy_canteen_cups_each_low", 1.5, "1.5", "cups each, the low end"),
+        ("toy_canteen_cups_each_high", 2.5, "2.5", "cups each, the high end"),
+        ("toy_canteen_buyers", 1350, "1,350 buyers", "3,000 x 0.45"),
+        ("toy_canteen_cups", 2700, "2,700 cups", "3,000 x 0.45 x 2"),
+        ("toy_canteen_till_mean", 2340, "2,340 cups", "the till's five weekdays, averaged"),
+        ("toy_canteen_gap_pct", 15.4, "15.4 percent high", "2,700 / 2,340 - 1"),
+        ("toy_canteen_implied_share", 0.39, "0.39", "the share that lands on the till: 2,340 / (3,000 x 2)"),
+        ("toy_canteen_swing_students_low", 2430, "2,430", "2,700 x 0.45 x 2"),
+        ("toy_canteen_swing_students_high", 2970, "2,970", "3,300 x 0.45 x 2"),
+        ("toy_canteen_swing_share_low", 1500, "1,500", "3,000 x 0.25 x 2"),
+        ("toy_canteen_swing_share_high", 3900, "3,900", "3,000 x 0.65 x 2"),
+        ("toy_canteen_swing_cups_low", 2025, "2,025", "3,000 x 0.45 x 1.5"),
+        ("toy_canteen_swing_cups_high", 3375, "3,375", "3,000 x 0.45 x 2.5"),
+        ("toy_canteen_candidate_b", 2350, "2,350", "the near guess with no chain, in the prediction")]:
+    toy(tid, v, shown, S4, how, "half2 SECTION 6; notebook 06; exercises ch6; notes; sheet")
+for day, c in TILL:
+    toy(f"toy_canteen_till_{day.lower()}", c, f"{c:,}", S4, f"cups the till counted on {day}",
+        "data/C2_W04_D02_canteen_till_STUDENT.csv; notebook 06")
+
+# The three sanity tests, each on its own small example.
+sanity = pd.DataFrame([
+    ("unit", "a town", "people", 24000, "people"),
+    ("unit", "a town", "people to a household", 4, "people"),
+    ("period", "a phone pack", "data a day", 1.5, "GB"),
+    ("period", "a phone pack", "days in the pack", 28, "days"),
+    ("period", "a phone pack", "days in a month", 30, "days"),
+    ("definition", "Gulmohar Secondary School's board exam", "students enrolled", 150, "students"),
+    ("definition", "Gulmohar Secondary School's board exam", "students who sat", 135, "students"),
+    ("definition", "Gulmohar Secondary School's board exam", "students who passed", 113, "students"),
+], columns=["test", "example", "quantity", "value", "unit"])
+sanity.to_csv(DATA / f"{STEM}_sanity_tests_STUDENT.csv", index=False)
+check("unit: 24,000 people make about 6,000 households; multiplying gives 96,000, 16 times too many",
+      (24000 / 4, 24000 * 4, 24000 * 4 / (24000 / 4)) == (6000, 96000, 16))
+check("period: 1.5 GB a day is 42 GB a pack and 45 GB a month, 1.5 a day either way",
+      (1.5 * 28, 1.5 * 30) == (42, 45))
+check("definition: 113 passes are 83.7 percent of 135 who sat and 75.3 percent of 150 enrolled",
+      (round(113 / 135 * 100, 1), round(113 / 150 * 100, 1)) == (83.7, 75.3))
+for tid, v, shown, how in [
+        ("toy_town_people", 24000, "24,000 people", "a town's people"),
+        ("toy_town_per_household", 4, "about 4 to a household", "people to a household, a round guess"),
+        ("toy_town_households", 6000, "about 6,000 households", "24,000 / 4"),
+        ("toy_town_wrong_households", 96000, "96,000 households", "24,000 x 4, the slip"),
+        ("toy_town_wrong_ratio", 16, "16 times too many", "96,000 / 6,000"),
+        ("toy_pack_gb_day", 1.5, "1.5 GB a day", "a phone pack's daily data"),
+        ("toy_pack_days", 28, "28 days", "the pack's length"),
+        ("toy_pack_gb_total", 42, "42 GB", "1.5 x 28"),
+        ("toy_month_days", 30, "30 days", "a month as the bill counts it"),
+        ("toy_month_gb_total", 45, "45 GB", "1.5 x 30"),
+        ("toy_exam_enrolled", 150, "150 enrolled", "Gulmohar's class 10 students enrolled"),
+        ("toy_exam_sat", 135, "135 sat", "the students who sat the board exam"),
+        ("toy_exam_passed", 113, "113 passed", "the students who passed"),
+        ("toy_exam_pass_sat_pct", 83.7, "83.7 percent", "113 / 135"),
+        ("toy_exam_pass_enrolled_pct", 75.3, "75.3 percent", "113 / 150")]:
+    toy(tid, v, shown, S4, how, "half2 SECTION 6; notebook 06; exercises ch6; notes; sheet")
+
+# Ramesh's page, twice: the draft of number lines and the four sentences.
+PAGE_A = [
+    "- North star (sales a day): Rs 11,900 to Rs 12,600",
+    "- Denominator: hours open, 10 to 12",
+    "- Sales per hour index: 100 to 88",
+    "- Customers a day: 119 to 126",
+    "- Sales per customer: Rs 100 in both months",
+    "- Rain days: 5 and 2",
+    "- Festival days: none and 14",
+    "- Helper's extra cost: Rs 170 a day",
+    "- Guardrail: sales per customer held",
+]
+PAGE_B = [
+    "Keep the longer hours for one more month and count the evening's own sales, because the two extra "
+    "hours have brought Rs 700 a day while each hour of the day now earns less.",
+    "Sales per hour fell from Rs 1,190 in September to Rs 1,050 in October, and sales per customer held "
+    "at Rs 100.",
+    "A festival fortnight fell inside October, so part of the extra Rs 700 a day may be the season.",
+    "Keep the hours through November, write the evening's sales in a separate column each day, and decide "
+    "after thirty days; the helper's two extra hours cost Rs 170 a day, and Ramesh signs.",
+]
+(DATA / f"{STEM}_kirana_page_STUDENT.txt").write_text(
+    "VERSION A: THE DRAFT\n" + "\n".join(PAGE_A) + "\n=====\nVERSION B: THE PAGE\n" + "\n".join(PAGE_B) + "\n",
+    encoding="utf-8")
+METHOD_WORDS = ["denominator", "numerator", "index", "guardrail", "north star"]
+words_b = sum(len(s.split()) for s in PAGE_B)
+check("the page: four sentences, no method word, under the pack's 250-word ceiling",
+      len(PAGE_B) == 4 and words_b <= 250
+      and not any(w in " ".join(PAGE_B).lower() for w in METHOD_WORDS))
+check("the draft prints 13 numbers and the page 6", (len(re.findall(r"\d[\d,.]*", "\n".join(PAGE_A))),
+      len(re.findall(r"\d[\d,.]*", "\n".join(PAGE_B)))) == (13, 6))
+check("the draft: nine lines and four method words",
+      len(PAGE_A) == 9 and sum(w in " ".join(PAGE_A).lower() for w in METHOD_WORDS) == 4)
+for tid, v, shown, how in [
+        ("toy_page_sentences", 4, "four sentences", "the page's sentences: claim, evidence, caveat, action"),
+        ("toy_page_draft_lines", 9, "nine lines", "the draft's lines of numbers"),
+        ("toy_page_draft_method_words", 4, "four method words", "north star, denominator, index, guardrail"),
+        ("toy_page_words", words_b, f"{words_b} words", "words on the four-sentence page"),
+        ("toy_page_draft_numbers", 13, "13 numbers", "numbers printed on the draft's nine lines"),
+        ("toy_page_numbers", 6, "6 numbers", "numbers printed on the page's four sentences"),
+        ("toy_page_ceiling", 250, "250 words", "the pack's own ceiling for the page, labelled as the pack's rule")]:
+    toy(tid, v, shown, S5, how, "half2 SECTION 7; notebook 07; exercises ch7; notes")
+
+# For notebook 05 (a case notebook): the drivers by segment, each a Monday id already in this file.
+segments = pd.DataFrame([
+    ("the idle tail", "before", 180, M["idle_hours_before"], M["idle_trips_before"]),
+    ("the idle tail", "after", 180, M["idle_hours_after"], M["idle_trips_after"]),
+    ("the other drivers there before the launch", "before", 880, M["others_hours_before"], M["others_trips_before"]),
+    ("the other drivers there before the launch", "after", 880, M["others_hours_after"], M["others_trips_after"]),
+    ("the 140 joiners", "after", 140, join_a["hours"], join_a["trips"]),
+], columns=["segment", "window", "drivers", "peak_online_hours", "peak_trips"])
+segments.to_csv(DATA / f"{STEM}_driver_segments_STUDENT.csv", index=False)
+seg_tot = segments.groupby("window")[["peak_online_hours", "peak_trips"]].sum()
+check("the segments add up to the city: 118,000 and 146,300 hours, 224,200 and 230,900 trips",
+      (seg_tot.loc["before"].tolist(), seg_tot.loc["after"].tolist())
+      == ([M["hours_before"], M["trips_before"]], [M["hours_after"], M["trips_after"]]))
+check("the segments' drivers add up to 1,060 before and 1,200 after",
+      segments[segments.window == "before"].drivers.sum() == M["drivers_pre_launch"]
+      and segments[segments.window == "after"].drivers.sum() == M["drivers_total"])
+add("joiner_tph_after", round(join_a["trips"] / join_a["hours"], 2), "1.59",
+    "3,660 / 2,300: the 140 joiners' trips per online hour after the launch", "notebook 05; notes")
+add("idle_tail_hours_share_after", round(M["idle_hours_after"] / M["hours_after"] * 100), "29 percent",
+    "42,000 / 146,300: the idle tail's share of the city's peak online hours after the launch", "notebook 05")
 
 # ------------------------------------------------------------------ twelve rows into the facts
 for _, r in twelve.iterrows():
@@ -954,14 +1301,32 @@ check("Kalpa worked store: 1,000 sign-ups, Rs 72 crore, about half a mature DMar
 check("Kalpa v4 totals match the client-zero generator's constants",
       facts["kalpa"]["v4"]["q1_rs"] == 100_000_000 and facts["kalpa"]["v4"]["customers"] == 340)
 
+# ------------------------------------------------------------------ the case tables, unchanged
+# The concept-first rebuild of 13 October 2026 added the concept chapters' examples and moved no
+# case number, so every case table written above must match the merged pack's byte for byte.
+for name in ("twelve_rows", "twelve_weeks", "kalpa_dmart_anchor", "driver_groups"):
+    rel_path = f"content/W04/D2/data/{STEM}_{name}_STUDENT.csv"
+    try:
+        merged = subprocess.run(["git", "show", f"origin/main:{rel_path}"], capture_output=True,
+                                check=True, cwd=DAY.parent.parent.parent).stdout
+    except (OSError, subprocess.CalledProcessError):
+        print(f"SKIP  {rel_path}: origin/main cannot be read here, so the byte check did not run")
+        continue
+    check(f"{name} is byte-identical to origin/main's copy",
+          (DATA / f"{STEM}_{name}_STUDENT.csv").read_bytes() == merged)
+
 # ------------------------------------------------------------------ write and re-read
 out = HERE / f"{STEM}_facts_INTERNAL.yaml"
 out.write_text(yaml.safe_dump(facts, sort_keys=False, allow_unicode=True, width=100), encoding="utf-8")
 back = yaml.safe_load(out.read_text(encoding="utf-8"))
 check("facts file re-reads with every block", all(k in back for k in (
-    "numbers", "monday_ids_reused", "public_facts", "assumptions", "toys", "twelve_rows",
+    "numbers", "monday_ids_reused", "public_facts", "assumptions", "toys", "toy_numbers", "twelve_rows",
     "weekly_series", "cluttered_slides", "kalpa")))
 check("every Tuesday id is unique", len({n["id"] for n in back["numbers"]}) == len(back["numbers"]))
+check("every toy id is unique and starts toy_", len({n["id"] for n in back["toy_numbers"]})
+      == len(back["toy_numbers"]) and all(n["id"].startswith("toy_") for n in back["toy_numbers"]))
+check("every toy number says which concept chapter it was invented for", all(
+    n["how"].startswith("invented for the concept chapter on ") and n["used_by"] for n in back["toy_numbers"]))
 print(f"\nwrote {out.relative_to(DAY.parent.parent.parent)}: {len(back['numbers'])} numbers, "
       f"{len(back['monday_ids_reused'])} Monday ids, {len(back['public_facts'])} public facts, "
-      f"{len(back['assumptions'])} assumptions")
+      f"{len(back['assumptions'])} assumptions, {len(back['toy_numbers'])} toy numbers")
