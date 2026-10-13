@@ -106,12 +106,13 @@ def main():
     assert len(PRINTED) == 39, len(PRINTED)
     hard = sum(1 for i in PRINTED if i["level"] == "Hard")
     mins = sum(i["min"] for i in PRINTED)
-    assert hard == 18 and mins <= 119, (hard, mins)
-    # The levels after the raise of 13 October 2026: the eleven Hard items the blind check's rule left,
-    # and the seven rebuilt with a second idea on their own exhibit (Q6, Q8, Q10, Q12, Q14, Q31, Q33);
-    # the provenance's levels row carries the rule and the blind sitting's read of each.
-    assert sorted(i["q"] for i in PRINTED if i["level"] == "Hard") == [4, 6, 7, 8, 9, 10, 12, 14, 15, 20, 21,
-                                                                     25, 26, 30, 31, 32, 33, 39]
+    assert hard == 13 and mins <= 119, (hard, mins)
+    # The levels after the raise of 13 October 2026 and its blind sitting: of the seven items rebuilt with a
+    # second idea on their own exhibit, the sitting read Q8, Q10 and Q14 as hard and Q6, Q12, Q31 and Q33 as
+    # medium, and it read Q39, hard since the earlier build, as medium too; a label moves only with the read,
+    # so those five are Medium. The provenance's levels row carries the rule and the read of each.
+    assert sorted(i["q"] for i in PRINTED if i["level"] == "Hard") == [4, 7, 8, 9, 10, 14, 15, 20, 21, 25, 26,
+                                                                     30, 32]
     assert [i["q"] for i in PRINTED if i["level"] == "Easy"] == [1, 3, 5, 11, 29, 35, 36, 37, 38]
     print(f"PASS  shape: 39 items, {hard} hard ({hard / 39:.0%}), {mins:g} minutes at the blueprint's pace")
 
@@ -135,7 +136,11 @@ def main():
                  # and the lines the raise of 13 October 2026 took out: Q39 named Lucknow's held-back weeks
                  # as the latest, which is Q31's half; Stretch 1 gave the other drivers' 1.90, which picks
                  # Q12's check; Exhibit 5D's dates placed the hidden weeks last, which is Q31's half too
-                 "held-out latest weeks", "other drivers' 1.90", "beginning 29 June to 21 September"):
+                 "held-out latest weeks", "other drivers' 1.90", "beginning 29 June to 21 September",
+                 # and the lines the blind sitting of the same day named: Exhibit 5E printed "not a forecast"
+                 # against the plan line, which answers Q33's third question, and Exhibit 5D priced the spare
+                 # shipment, a step Q32 and Q39 ask for
+                 "not a forecast", "Rs 5.42", "planned and not shipped"):
         assert leak not in paper, ("a line names an answer again", leak)
     print("PASS  no part opening, caption, label, spare or stretch line names a timed item's answer")
 
@@ -206,9 +211,13 @@ def main():
     assert it["key"] == "c"
     keyed(it, "dated log", "unused for a year")
     ops = options(it)
-    assert "dated log" in ops["d"] and "closed during the year" in ops["d"]
+    # Both exclusion halves are read off the 2013 row: dropping the remittance accounts takes out the 0.04
+    # the stem asks to show, and leaves the inactive rest in.
+    assert "dated log" in ops["d"] and "remittance accounts added to the count that year" in ops["d"]
     assert "revenue per household" in ops["a"] and "unused for a year" in ops["a"]
-    assert "revenue per household" in ops["b"] and "closed during the year" in ops["b"]
+    assert "revenue per household" in ops["b"] and "remittance accounts added to the count that year" in ops["b"]
+    assert "Remittance accounts" in ex1c["The 2013 change"] and "closed" not in " ".join(ops.values())
+    assert "additions to the ratio's written definition" in it["text"]
     show(it, "the change log shows the 0.04, 36 percent; an exclusion on use keeps the inactive rest out")
 
     it = BY_ID["kalpa-sheet"]
@@ -348,6 +357,8 @@ def main():
     keyed(it, "average day", "38 lakh trips", "57 percent high")
     ops = options(it)
     assert "49 lakh" in ops["a"] and "6 percent low" in ops["c"] and "27 percent low" in ops["d"]
+    # Raised to the average day, 60 lakh moves 6.8 percent, so option c names the figure it moves to.
+    assert round((64.06 / 60 - 1) * 100, 1) == 6.8 and "raised to about 64 lakh" in ops["c"]
     show(it, "45,35,932 over 27 lakh is 1.68 a rider; 64.06 lakh is 38 lakh trips, the chain 57 percent high")
 
     # ---------------------------------------------------------------- Part 3
@@ -577,6 +588,9 @@ def main():
     assert got["Festival-aligned"] == (ho["aligned_over"], ho["aligned_under"], ho["aligned_high_weeks"])
     assert got["Same week last year"] == (ho["bot_over"], ho["bot_under"], ho["bot_high_weeks"])
     assert got["The vendor's curve"] == (ho["vendor_over"], ho["vendor_under"], ho["vendor_high_weeks"])
+    # The caption gives the shift and its size; the cost of one spare shipment is the room's division.
+    cap = it["exhibit"]["caption"]
+    assert "Rs 650" in cap and "120 shipments" in cap and "Rs 25" in cap and "5.42" not in cap
     over_rs = Fraction(650, 120)
     cost = {k: v[0] * over_rs + v[1] * 25 for k, v in got.items()}
     mae = {k: (v[0] + v[1]) / 13 for k, v in got.items()}
@@ -610,7 +624,11 @@ def main():
     assert rows["Festival-aligned, matched by Diwali, plus 4 percent"][1] == f"{kw['aligned_total'] / 1e7:.2f}" == "19.69"
     assert rows["Finance's rule, the same month last year plus 4 percent"][1] == f"{kw['finance_total'] / 1e7:.2f}"
     assert rows["The vendor's curve"][1] == f"{kw['vendor_total'] / 1e7:.2f}" == "23.09"
-    assert rows["The plan line"][1] == f"{kw['plan_total'] / 1e7:.2f}" == "21.77"
+    # The plan line is in the stem: a row on Exhibit 5E printed "not a forecast" beside it, which answered
+    # Anand's third question for the room.
+    assert "The plan line" not in rows
+    assert f"Rs {kw['plan_total'] / 1e7:.2f} crore" == "Rs 21.77 crore" and "Rs 21.77 crore" in it["text"]
+    assert round(kw["plan_total"] / kw["seasonal_naive_total"] - 1, 2) == 0.15 and "plus 15 percent" in it["text"]
     assert round(kx["seasonal_naive_mae_rs"] / 1e5, 1) == 11.7 and round(kx["vendor_mae_rs"] / 1e5, 1) == 38.8
     assert round(kx["aligned_mae_rs"] / 1e5, 1) == 3.5
     assert round((kw["plan_total"] - kw["aligned_total"]) / 1e7, 2) == 2.08
@@ -631,8 +649,10 @@ def main():
     assert "21.39" in ops["c"] and "21.39" in ops["d"] and "Rs 38 lakh" in ops["c"]
     rng = f"Rs {kw['seasonal_naive_total'] / 1e7:.2f} to {kw['vendor_total'] / 1e7:.2f} crore"
     assert "forecasts' range" in ops["a"] and "forecasts' range" in ops["d"] and rng in ops["a"] and rng in ops["d"]
-    # Every option answers all three of Anand's questions, so none falls for leaving one out.
-    assert all("3.5 lakh a month on six unseen months" in o for o in ops.values())
+    # Every option answers all three of Anand's questions and says what the error could not test, so none
+    # falls for leaving one out, and the key is not the only option with both of its qualifiers.
+    assert all("3.5 lakh a month on six unseen months, none with a Diwali" in o for o in ops.values())
+    assert "21 lakh if all six miss one way" in ops["c"] and "not a forecast" not in " ".join(ops.values())
     assert kw["seasonal_naive_total"] < kw["plan_total"] < kw["vendor_total"]
     show(it, "Rs 19.69 crore; 3.5 lakh a month is 21 lakh over six; the Rs 2.08 crore gap is ten times it")
 
@@ -702,7 +722,7 @@ if __name__ == "__main__":
 # The same run with Q32's option b given back "compare each at its own 0.82 point"
 #     The leak check fails on "0.82", since that number would tell a reader the share Q39 asks for.
 # The same run with Q13 labelled Hard in the source file
-#     The shape check fails: 19 hard items against the 18 the raise and its blind sitting leave.
+#     The shape check fails: 14 hard items against the 13 the raise and its blind sitting leave.
 # The same run with a cell of Exhibit 4C retyped, 52,948 to 52,984
 #     The funnel-units check fails against Thursday's facts file, sep_sessions_add_to_cart.
 # The same run with the margin item's discount raised to Rs 4 in its stem only

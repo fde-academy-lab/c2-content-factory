@@ -33,13 +33,13 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 
 | Part | What it shows | Items | Minutes | Easy | Medium | Hard |
 |---|---|---|---|---|---|---|
-| 1. Which number should the plan chase, and which should a scheme pay for? | whether you can choose the number a plan chases and a scheme pays for, and read what happened where one was gamed | Q1 to Q7 (7) | 19 | 3 | 1 | 3 |
-| 2. Can the number survive the room, and can you size a city from nothing? | whether you can put one claim on one slide, answer an objection to it, and size a number from nothing and check it | Q8 to Q14 (7) | 24.5 | 1 | 1 | 5 |
+| 1. Which number should the plan chase, and which should a scheme pay for? | whether you can choose the number a plan chases and a scheme pays for, and read what happened where one was gamed | Q1 to Q7 (7) | 19 | 3 | 2 | 2 |
+| 2. Can the number survive the room, and can you size a city from nothing? | whether you can put one claim on one slide, answer an objection to it, and size a number from nothing and check it | Q8 to Q14 (7) | 24.5 | 1 | 2 | 4 |
 | 3. Which pairs beat chance, and what is a slot worth? | whether you can choose the pairs a strip should show and put a rupee value on a slot | Q15 to Q21 (7) | 21.5 | 0 | 4 | 3 |
 | 4. Where is the tier losing people? | whether you can tell where a membership loses people and decide what to fix first | Q22 to Q28 (7) | 23 | 0 | 5 | 2 |
-| 5. Which forecast earns the plan's trust? | whether you can choose the forecast that goes to the plan and say how wrong it could be | Q29 to Q33 (5) | 19 | 1 | 0 | 4 |
-| 6. What changes when the method moves company? | whether you can carry the week's methods to another company and say what changes there | Q34 to Q39 (6) | 12 | 4 | 1 | 1 |
-| Total | | 39 | 119 | 9 | 12 | 18 |
+| 5. Which forecast earns the plan's trust? | whether you can choose the forecast that goes to the plan and say how wrong it could be | Q29 to Q33 (5) | 19 | 1 | 2 | 2 |
+| 6. What changes when the method moves company? | whether you can carry the week's methods to another company and say what changes there | Q34 to Q39 (6) | 12 | 4 | 2 | 0 |
+| Total | | 39 | 119 | 9 | 17 | 13 |
 
 ---
 
@@ -146,14 +146,14 @@ b) False: staff were paid on sales, so the cross-sell count moved only when the 
 c) True: the count rose because customers bought more products, and staff behaviour followed the customers' new demand for accounts.
 d) True: staff judged on products sold opened accounts nobody asked for, staged funding and dodged the surveys, each to move their count.
 
-#### Q6 · Hard · circle one letter · Choose two definition lines
+#### Q6 · Medium · circle one letter · Choose two additions
 
-Exhibit 1C's last row is the 2013 change. Which two lines of a complete metric definition would have shown investors the 0.04, and kept the rest of that year's rise out of the ratio?
+Exhibit 1C's last row is the 2013 change. Which two additions to the ratio's written definition would have shown investors the 0.04, and kept the rest of that year's rise out of the ratio?
 
 a) A guardrail on revenue per household, read beside the ratio every quarter on the same households; and an exclusion that drops any product unused for a year
-b) A guardrail on revenue per household, read beside the ratio every quarter on the same households; and an exclusion that drops accounts closed during the year
+b) A guardrail on revenue per household, read beside the ratio every quarter on the same households; and an exclusion that drops the remittance accounts added to the count that year
 c) A dated log of every change to what is counted, with that year's ratio also on the old definition; and an exclusion that drops any product unused for a year
-d) A dated log of every change to what is counted, with that year's ratio also on the old definition; and an exclusion that drops accounts closed during the year
+d) A dated log of every change to what is counted, with that year's ratio also on the old definition; and an exclusion that drops the remittance accounts added to the count that year
 
 **Exhibit 1D.** Kalpa Retail's Retail-Plus tier, 120 members, as Monday's lab found it: 10 to 30 September 2026 against 20 August to 9 September 2026.
 
@@ -186,7 +186,7 @@ On Tuesday the city head asked for Monday's answer on one slide at Thursday's ci
 ```mermaid
 flowchart LR
   S["One slide, five minutes,<br/>Thursday's city review"] --> CH["The city head decides:<br/>keep, end or change the scheme"]
-  D["Driver-operations lead"] --> CH
+  D["Driver operations lead"] --> CH
   M["Marketing lead"] --> CH
   F["Finance partner"] --> CH
 ```
@@ -256,7 +256,7 @@ b) True: a memo can carry all three appendix pages in its body, so no role's que
 c) False: the letter says Amazon reads its memos after the meeting has ended, so a memo would leave the room no time to argue at the review.
 d) False: the ask is one slide in five minutes, and the letter itself says a great memo probably takes a week or more to write.
 
-#### Q12 · Hard · write the letters in order · Order the estimate
+#### Q12 · Medium · write the letters in order · Order the estimate
 
 The city head's afternoon ask is roughly how many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes. The guesstimate runs clarify, map, calculate, validate: four of these six steps make it, and two would spoil it. Leave those two out and write the other four in the order they run.
 
@@ -294,7 +294,7 @@ A pair's chain puts Delhi Metro at about 60 lakh rider trips on a weekday, each 
 
 a) Converted at 2018's mix of line uses to riders, the record day's 82,44,903 passenger boardings are about 49 lakh trips, so the chain runs about 22 percent high and is checked down.
 b) Converted at 2018's mix of line uses to riders, the average day's 64.06 lakh journeys are about 38 lakh trips, so the chain runs about 57 percent high and is checked down.
-c) Set against the average day alone, since 17 September was a record during a strike, 64.06 lakh puts the chain 6 percent low, so it is raised by about 6 percent.
+c) Set against the average day alone, since 17 September was a record during a strike, 64.06 lakh puts the chain 6 percent low, so it is raised to about 64 lakh.
 d) Set against the record day, the busiest day the network has carried, 82,44,903 puts the chain 27 percent low, so it is raised toward 82 lakh.
 
 ---
@@ -599,7 +599,7 @@ Answer: ____________________
 | Random forest, a machine-learning benchmark | 1.010 |
 | Naive, the last day seen | 1.752 |
 
-#### Q31 · Hard · circle one letter · Answer the sponsor
+#### Q31 · Medium · circle one letter · Answer the sponsor
 
 The vendor's sponsor says: "Our curve fits two years of Lucknow's weeks within 2 percent, and machine learning won M5, so the curve should go to the plan." Using Exhibit 5C, which test must the curve pass before it goes to the plan?
 
@@ -608,7 +608,7 @@ b) Hold back thirteen weeks drawn at random from the two years, and send the cur
 c) Hold back the latest thirteen weeks, and send the curve to the plan only if it beats the naive on those weeks.
 d) Hold back thirteen weeks drawn at random from the two years, and send the curve to the plan only if it beats the naive on those weeks.
 
-**Exhibit 5D.** Lucknow's thirteen hidden weeks. An idle packer-shift costs Rs 650 for 120 shipments, Rs 5.42 for each shipment planned and not shipped, and a late shipment costs Rs 25; both are assumptions.
+**Exhibit 5D.** Lucknow's thirteen hidden weeks. A packer-shift is booked for 120 shipments and costs Rs 650 if it sits idle, and a late shipment costs Rs 25; both are assumptions.
 
 | Forecast | Shipments forecast too high, summed | Shipments forecast too low, summed | Weeks too high, of 13 |
 |---|---|---|---|
@@ -633,16 +633,15 @@ d) 6,615, 9,831 and 16,400 a week; the vendor costs least, about Rs 11.9 lakh, o
 | Finance's rule, the same month last year plus 4 percent | 19.69 | 4 percent above | 3.5 |
 | Festival-aligned, matched by Diwali, plus 4 percent | 19.69 | 4 percent above | 3.5 |
 | The vendor's curve | 23.09 | 22 percent above | 38.8 |
-| The plan line | 21.77 | 15 percent above | not a forecast |
 
-#### Q33 · Hard · circle one letter · Answer Anand's three questions
+#### Q33 · Medium · circle one letter · Answer Anand's three questions
 
-Anand asks which number goes in front of the board for October 2026 to March 2027, how wrong it could be, and whether the plan line can stand as the board's forecast. Using Exhibits 5A and 5E, which answer holds?
+The plan line for the same six months is Rs 21.77 crore, the months a year earlier plus 15 percent. Anand asks which number goes in front of the board for October 2026 to March 2027, how wrong it could be, and whether the plan line can stand as the board's forecast. Using Exhibits 5A and 5E, which answer holds?
 
 a) Rs 19.69 crore, festival-aligned, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali; the plan line stands as the board's forecast, since it sits inside the forecasts' range, Rs 18.93 to 23.09 crore.
-b) Rs 19.69 crore, festival-aligned, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali, about Rs 21 lakh if all six miss one way; the plan's Rs 2.08 crore gap is a target, not a forecast.
-c) Rs 21.39 crore, midway between finance's rule and the vendor's curve, off by about Rs 3.5 lakh a month on six unseen months, about Rs 21 lakh if all six miss one way; the plan, Rs 38 lakh above, is within two such errors.
-d) Rs 21.39 crore, midway between finance's rule and the vendor's curve, off by about Rs 3.5 lakh a month on six unseen months; the plan line stands as the board's forecast, since it sits inside the forecasts' range, Rs 18.93 to 23.09 crore.
+b) Rs 19.69 crore, festival-aligned, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali, about Rs 21 lakh if all six miss one way; the plan sits Rs 2.08 crore above, a target the forecast does not reach.
+c) Rs 21.39 crore, midway between finance's rule and the vendor's curve, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali, about Rs 21 lakh if all six miss one way; the plan sits Rs 38 lakh above, within two such errors.
+d) Rs 21.39 crore, midway between finance's rule and the vendor's curve, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali; the plan line stands as the board's forecast, since it sits inside the forecasts' range, Rs 18.93 to 23.09 crore.
 
 ---
 
@@ -690,14 +689,14 @@ d) testing against a baseline before trusting a lift
 
 Answers: Q35 ____    Q36 ____    Q37 ____    Q38 ____
 
-#### Q39 · Hard · circle one letter · Set the plan share
+#### Q39 · Medium · circle one letter · Set the plan share
 
 Amazon India, a fulfilment centre's festive packer plan (illustrative case: the company is real, and every number below except Amazon's own figure is hypothetical). Amazon says its Great Indian Festival 2025 drew over 276 crore customer visits, 70 percent of them from tier 2 and 3 cities. Suppose its centre in a tier 2 city pays Rs 650 for an idle packer-shift of 120 shipments, as Lucknow does, while a late shipment costs it Rs 10, against Lucknow's Rs 25. What share of weeks should its plan cover, and what carries over from Lucknow unchanged?
 
-a) About 0.35; the festival-aligned copy, the weeks held back from every forecast and pricing both directions carry over.
+a) About 0.35; the festival-aligned copy, held-back weeks and a price on each way of missing carry over.
 b) About 0.35; the copy of last year's calendar weeks carries over, the plainest baseline any plan has.
 c) About 0.65; the copy of last year's calendar weeks carries over, the plainest baseline any plan has.
-d) About 0.65; the festival-aligned copy, the weeks held back from every forecast and pricing both directions carry over.
+d) About 0.65; the festival-aligned copy, held-back weeks and a price on each way of missing carry over.
 
 ---
 

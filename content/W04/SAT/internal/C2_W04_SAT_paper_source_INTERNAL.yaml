@@ -115,7 +115,7 @@ parts:
         mermaid: |-
           flowchart LR
             S["One slide, five minutes,<br/>Thursday's city review"] --> CH["The city head decides:<br/>keep, end or change the scheme"]
-            D["Driver-operations lead"] --> CH
+            D["Driver operations lead"] --> CH
             M["Marketing lead"] --> CH
             F["Finance partner"] --> CH
         table:
@@ -706,8 +706,8 @@ additions:
       Wells Fargo is the case, and in the chapter on Gaming, and definitions that resist it.
     wrong:
       a: >-
-        The order describes the staff's behaviour moving with the target the bank paid on; a gap in
-        the rules is what any target finds, which is the statement's point.
+        The order describes the staff's behaviour moving with the target staff were judged against; a
+        gap in the rules is what any target finds, which is the statement's point.
       b: >-
         Staff sales credit rode on the same count, and the count moved with the accounts staff
         opened; the 2013 addition was a second, separate way it rose.
@@ -718,9 +718,9 @@ additions:
       People paid on a number move it the cheapest way open to them, so I write each definition
       asking how the people measured could raise it without the outcome moving.
   - id: wells-silent
-    label: "Choose two definition lines"
+    label: "Choose two additions"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 3.5
     tag: "[F]"
     roles: BA, FDE
@@ -729,25 +729,26 @@ additions:
     anchor: >-
       What makes a metric gameable, and how do you write one that is not?
     text: |-
-      Exhibit 1C's last row is the 2013 change. Which two lines of a complete metric definition would have shown investors the 0.04, and kept the rest of that year's rise out of the ratio?
+      Exhibit 1C's last row is the 2013 change. Which two additions to the ratio's written definition would have shown investors the 0.04, and kept the rest of that year's rise out of the ratio?
       (a) A guardrail on revenue per household, read beside the ratio every quarter on the same households; and an exclusion that drops any product unused for a year
-      (b) A guardrail on revenue per household, read beside the ratio every quarter on the same households; and an exclusion that drops accounts closed during the year
+      (b) A guardrail on revenue per household, read beside the ratio every quarter on the same households; and an exclusion that drops the remittance accounts added to the count that year
       (c) A dated log of every change to what is counted, with that year's ratio also on the old definition; and an exclusion that drops any product unused for a year
-      (d) A dated log of every change to what is counted, with that year's ratio also on the old definition; and an exclusion that drops accounts closed during the year
+      (d) A dated log of every change to what is counted, with that year's ratio also on the old definition; and an exclusion that drops the remittance accounts added to the count that year
     why: >-
-      Two different things raised the ratio in 2013, and each needs its own line. The 0.04, about 36
-      percent of the 0.11 rise, came from a change of what is counted: remittance accounts that
-      already existed joined the count. The line that shows a change of definition is the dated
+      Two different things raised the ratio in 2013, and each needs its own addition. The 0.04, about
+      36 percent of the 0.11 rise, came from a change of what is counted: remittance accounts that
+      already existed joined the count. The addition that shows a change of definition is a dated
       change log, with the year of the change printed on both definitions, so a reader sees a step
-      and never reads it as growth. A guardrail on revenue per household could not show it, since
+      and never reads it as growth; Monday's seven lines ask that each exclusion be dated if it
+      changes, and the log keeps that date for every change to what is counted. A guardrail on revenue per household could not show it, since
       accounts that already existed had already earned their revenue, so nothing beside the ratio
       would move when they joined the count; a guardrail is a second number and keeps nothing out of
       the ratio itself. The rest of the rise came from more accounts and products inactive for at
       least 365 days (the SEC's order, Release 34-88257, paragraph 42, checked 13 October 2026), and
       the count carried no condition on use, so an unused debit card could stay in it for up to four
-      years. An exclusion that drops any product unused for a year keeps that rest out. Dropping
-      accounts closed during the year removes nothing, since a closed account already leaves the
-      count and the inactive products were still open. The order says investors were never told of
+      years. An exclusion that drops any product unused for a year keeps that rest out. Dropping the
+      remittance accounts added that year takes out the 0.04 the log exists to show and leaves the
+      rest, the products unused for at least 365 days, in the ratio. The order says investors were never told of
       the 2013 addition, which is the breach the change log exists to prevent. Monday's deck teaches
       the four lines of a definition in the chapter on Definitions: numerator, denominator, window,
       exclusions, gaming in the chapter on Gaming, and definitions that resist it, and the page that
@@ -758,11 +759,11 @@ additions:
         household would not move when they joined the count; the 0.04 shows only in a dated log with
         the year's ratio also on the old definition.
       b: >-
-        A guardrail beside the ratio would not move when existing accounts joined the count, and a
-        closed account already leaves it; neither line reaches the 0.04 or the inactive products.
+        A guardrail beside the ratio would not move when existing accounts joined the count, and
+        dropping the remittance accounts takes out the 0.04 itself while the inactive products stay in.
       d: >-
-        A closed account already leaves the count; the rest of the rise came from products still open
-        and unused for at least 365 days, which only an exclusion on use drops.
+        The log shows the 0.04, and dropping the remittance accounts then takes that same 0.04 out, so
+        the rest of the rise, products unused for at least 365 days, stays in the ratio.
     answer: >-
       Every change to what a metric counts goes in a dated change log, with the old definition run
       beside the new for the year it changes, and every count carries an exclusion on use, so neither
@@ -961,11 +962,12 @@ additions:
       season shows. Over the six weeks requests rose 1.8 percent, but on Exhibit 2B the first three
       weeks after the launch ran 43,507 to 43,878, above every week before it, and then requests fell
       four weeks running from 7 September; the six-week total hides that fall, so it cannot answer an
-      objection that the season thinned demand. Even after the fall, the last
-      three weeks ran 41,161 to 42,602, inside the 41,155 to 42,719 of the six weeks before, while
-      trips per peak online hour held at 1.55 to 1.56 against 1.88 to 1.93: riders asked as often as
-      before the launch and each online hour still carried fewer trips, which a thinner season cannot
-      explain. What would change the analyst's mind is a city where the rains ended and no scheme
+      objection that the season thinned demand. Even after the fall, the last three weeks ran 41,161
+      to 42,602, inside the 41,155 to 42,719 of the six weeks before; the lowest sits only 6 requests
+      above that floor, so a learner who reads the last week as back at the floor of the old range has
+      read it right. Through those weeks trips per peak online hour held at 1.55 to 1.56 against 1.88
+      to 1.93: riders asked as often as before the launch and each online hour still carried fewer
+      trips, which a thinner season cannot explain. What would change the analyst's mind is a city where the rains ended and no scheme
       launched, with trips per hour falling as far. Tuesday's deck teaches the four moves in the
       chapter on Defending under challenge: restate, answer, concede, what would change your mind,
       and Monday's deck the window a comparison is read over, in the chapter on Definitions:
@@ -1027,7 +1029,7 @@ additions:
   - id: estimate-order
     label: "Order the estimate"
     type: Order the steps
-    level: Hard
+    level: Medium
     min: 4
     tag: "[S]"
     roles: BA, DS
@@ -1150,7 +1152,7 @@ additions:
       A pair's chain puts Delhi Metro at about 60 lakh rider trips on a weekday, each trip counted once from the gate where the rider enters to the gate where they leave (invented). They set it against Exhibit 2C, call their estimate 6 to 27 percent low, and raise it. Which reading of the check holds?
       (a) Converted at 2018's mix of line uses to riders, the record day's 82,44,903 passenger boardings are about 49 lakh trips, so the chain runs about 22 percent high and is checked down.
       (b) Converted at 2018's mix of line uses to riders, the average day's 64.06 lakh journeys are about 38 lakh trips, so the chain runs about 57 percent high and is checked down.
-      (c) Set against the average day alone, since 17 September was a record during a strike, 64.06 lakh puts the chain 6 percent low, so it is raised by about 6 percent.
+      (c) Set against the average day alone, since 17 September was a record during a strike, 64.06 lakh puts the chain 6 percent low, so it is raised to about 64 lakh.
       (d) Set against the record day, the busiest day the network has carried, 82,44,903 puts the chain 27 percent low, so it is raised toward 82 lakh.
     why: >-
       Two things are wrong with the pair's check, and both have to be fixed. DMRC's journeys count
@@ -1679,7 +1681,7 @@ additions:
   - id: m5
     label: "Answer the sponsor"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 4
     tag: "[F]"
     roles: BA, DS
@@ -1722,8 +1724,10 @@ additions:
       2026). The top entries that did win were machine learning, which is why the test is the same
       for any model. Friday's thirteen hidden weeks ran this test: the vendor's curve fitted its 91
       training weeks within 1.4 percent and missed the hidden weeks by 16,400 shipments a week
-      against the same-week copy's 9,831, almost all of it too high. Those weeks hold no festival, so
-      a rolling origin that takes in 2025's festival is the next test, which Friday's fallback runs.
+      against the same-week copy's 9,831, almost all of it too high. Those weeks, beginning 29 June to
+      21 September 2026, hold no festival; Exhibit 5D does not print their dates, so give them when the
+      room asks. A rolling origin that takes in 2025's festival is the next test, which Friday's
+      fallback runs.
       Friday's deck teaches the held-back latest weeks in SECTION 3, Holding out; MAE and MAPE in
       the business's units (half one, S22 to S29), the bar in SECTION 2, Naive, seasonal naive and
       drift baselines (S14 to S21), and the curve tested in SECTION 4 (S30 to S37) and SECTION 6 (S49
@@ -1755,9 +1759,8 @@ additions:
       How do you evaluate a forecast?
     exhibit:
       caption: >-
-        Lucknow's thirteen hidden weeks. An idle packer-shift costs Rs 650 for 120 shipments, Rs 5.42
-        for each shipment planned and not shipped, and a late shipment costs Rs 25; both are
-        assumptions.
+        Lucknow's thirteen hidden weeks. A packer-shift is booked for 120 shipments and costs Rs 650
+        if it sits idle, and a late shipment costs Rs 25; both are assumptions.
       table:
         head:
           - Forecast
@@ -1778,12 +1781,14 @@ additions:
       Mean absolute error adds the misses with their signs dropped and divides by the weeks: 85,996
       over 13 is 6,615 for festival-aligned, 127,800 over 13 is 9,831 for the copy of last year, and
       213,200 over 13 is 16,400 for the vendor, about 148 percent above festival-aligned. Priced, a
-      spare shipment costs Rs 5.42 and a late one Rs 25: the vendor's misses cost about Rs 11.9 lakh,
+      spare shipment costs Rs 650 over 120, about Rs 5.42, and a late one Rs 25: the vendor's misses
+      cost about Rs 11.9 lakh,
       festival-aligned's Rs 13.5 lakh and the copy's Rs 30.5 lakh, so the vendor is cheapest only
       because it errs high, the cheap side, by an amount nobody chose. The fair comparison sets each
       forecast at its plan share, its own 0.82 point, 25 over 25 plus 5.42: there festival-aligned and the copy cost
-      about Rs 8.8 lakh each and the vendor Rs 10.0 lakh. These weeks hold no festival, so only the
-      festival can separate festival-aligned from the copy, and the plan books festival-aligned raised
+      about Rs 8.8 lakh each and the vendor Rs 10.0 lakh. These weeks, beginning 29 June to 21
+      September 2026, hold no festival, and Exhibit 5D does not print their dates, so give them when
+      the room asks; only the festival can separate festival-aligned from the copy, and the plan books festival-aligned raised
       toward its 0.82 point, because a late shipment costs about 4.6 times a spare one.
       Friday's deck teaches the error in the business's units in SECTION 3, Holding out; MAE and
       MAPE in the business's units (half one, S25 to S27), prices the misses in SECTION 6 (S55 to
@@ -1808,7 +1813,7 @@ additions:
   - id: kalpa-board
     label: "Answer Anand's three questions"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 4
     tag: "[D]"
     roles: BA, FDE
@@ -1832,13 +1837,12 @@ additions:
           - ["Finance's rule, the same month last year plus 4 percent", "19.69", 4 percent above, "3.5"]
           - ["Festival-aligned, matched by Diwali, plus 4 percent", "19.69", 4 percent above, "3.5"]
           - [The vendor's curve, "23.09", 22 percent above, "38.8"]
-          - [The plan line, "21.77", 15 percent above, not a forecast]
     text: |-
-      Anand asks which number goes in front of the board for October 2026 to March 2027, how wrong it could be, and whether the plan line can stand as the board's forecast. Using Exhibits 5A and 5E, which answer holds?
+      The plan line for the same six months is Rs 21.77 crore, the months a year earlier plus 15 percent. Anand asks which number goes in front of the board for October 2026 to March 2027, how wrong it could be, and whether the plan line can stand as the board's forecast. Using Exhibits 5A and 5E, which answer holds?
       (a) Rs 19.69 crore, festival-aligned, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali; the plan line stands as the board's forecast, since it sits inside the forecasts' range, Rs 18.93 to 23.09 crore.
-      (b) Rs 19.69 crore, festival-aligned, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali, about Rs 21 lakh if all six miss one way; the plan's Rs 2.08 crore gap is a target, not a forecast.
-      (c) Rs 21.39 crore, midway between finance's rule and the vendor's curve, off by about Rs 3.5 lakh a month on six unseen months, about Rs 21 lakh if all six miss one way; the plan, Rs 38 lakh above, is within two such errors.
-      (d) Rs 21.39 crore, midway between finance's rule and the vendor's curve, off by about Rs 3.5 lakh a month on six unseen months; the plan line stands as the board's forecast, since it sits inside the forecasts' range, Rs 18.93 to 23.09 crore.
+      (b) Rs 19.69 crore, festival-aligned, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali, about Rs 21 lakh if all six miss one way; the plan sits Rs 2.08 crore above, a target the forecast does not reach.
+      (c) Rs 21.39 crore, midway between finance's rule and the vendor's curve, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali, about Rs 21 lakh if all six miss one way; the plan sits Rs 38 lakh above, within two such errors.
+      (d) Rs 21.39 crore, midway between finance's rule and the vendor's curve, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali; the plan line stands as the board's forecast, since it sits inside the forecasts' range, Rs 18.93 to 23.09 crore.
     why: >-
       Two choices decide the answer. The number is a forecast that was tested: festival-aligned
       matches last year's months by Diwali, books Rs 19.69 crore, and on April to September 2026, six
@@ -1974,7 +1978,7 @@ additions:
   - id: amazon
     label: "Set the plan share"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 3.5
     tag: "[D]"
     roles: BA, FDE
@@ -1984,10 +1988,10 @@ additions:
       Kalpa Financial Services asks 'which customers should we nudge first'; say what stays the same in your method and what changes.
     text: |-
       Amazon India, a fulfilment centre's festive packer plan (illustrative case: the company is real, and every number below except Amazon's own figure is hypothetical). Amazon says its Great Indian Festival 2025 drew over 276 crore customer visits, 70 percent of them from tier 2 and 3 cities. Suppose its centre in a tier 2 city pays Rs 650 for an idle packer-shift of 120 shipments, as Lucknow does, while a late shipment costs it Rs 10, against Lucknow's Rs 25. What share of weeks should its plan cover, and what carries over from Lucknow unchanged?
-      (a) About 0.35; the festival-aligned copy, the weeks held back from every forecast and pricing both directions carry over.
+      (a) About 0.35; the festival-aligned copy, held-back weeks and a price on each way of missing carry over.
       (b) About 0.35; the copy of last year's calendar weeks carries over, the plainest baseline any plan has.
       (c) About 0.65; the copy of last year's calendar weeks carries over, the plainest baseline any plan has.
-      (d) About 0.65; the festival-aligned copy, the weeks held back from every forecast and pricing both directions carry over.
+      (d) About 0.65; the festival-aligned copy, held-back weeks and a price on each way of missing carry over.
     why: >-
       A spare shipment costs Rs 650 over 120, about Rs 5.42, and a late one Rs 10 here, so the plan
       should cover 10 over 10 plus 5.42 of weeks, about 0.65, where Lucknow's Rs 25 gave about 0.82.
