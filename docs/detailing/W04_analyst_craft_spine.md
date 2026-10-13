@@ -497,24 +497,50 @@ case, as Monday's label says.
 
 | Block | Minutes | Level | What runs |
 |---|---|---|---|
-| Morning | 15 | L1 | The city head's terms; the room lists what each of the three roles loses under Monday's definition |
-| | 45 | L1, L2 | Studio 1, chapter 1: the title is the claim; the one-slide anatomy; a cluttered slide of nine Monday numbers rebuilt live; the twelve rows read three ways (per online hour, per driver-week, per trip) so the slide must say which denominator it uses |
-| | 50 | L3, L5 | Studio 1, chapter 2: defence has a shape; round one in threes with the three role cards, rotating |
+| Morning | 5 | | The topic, the week map, the topics slide and the concept map, the ticket as the destination |
+| | 72 | concept | The concept block's morning part: chapters 1 to 3, each on its educational example, each with its notebook (the table below) |
 | | 10 | | Break |
-| | 20 | L4 | Chapter 3: what leaves the slide and where it goes; the appendix kept for the question each role will ask; Amazon's six-page memo against the one slide (T1) |
-| | 40 | L5 | Studio 1, round two, roles swapped |
-| Afternoon | 10 | L1 | The dojo opens: cups of tea the campus canteen sells on a weekday, worked aloud (toy, R1) |
-| | 30 | L2, L3 | Chapter 4: the drivers-at-peak question sized together: clarify, map, calculate, validate; the validate step against the case's own `zone_weeks` (synthetic) and the published figure slot marked "to be found" |
-| | 25 | L5 | The paired guesstimate against the clock: UPI transactions per day, validated against 802 million a day (T3), with the sanity check required |
+| | 6 | L1 | What each of the three Uber roles loses under Monday's definition |
+| | 35 | L1, L2 | SECTION 6, Which number carries Uber's slide?: slide A rebuilt with the room, B and C by groups; the twelve rows read three ways (per online hour, per driver-week, per trip); the trap; the second route (applies the one-slide answer and what to leave out) |
+| | 40 | L3, L5 | SECTION 7, Which Uber objection is partly right?: the prediction, the true parts, the modelled defence, round one in threes with the three role cards, rotating (applies defending under challenge and what to leave out) |
+| | 12 | L4 | SECTION 7 continued: the appendix drawer with one page per role, and the cut-to-two drill |
+| Afternoon | 20 | L5 | Studio round two: two turns of seven minutes, six to rebuild |
+| | 40 | concept | The concept block's afternoon part: chapters 4 and 5 (the table below) |
+| | 25 | L2, L3 | SECTION 8, How many drivers does Uber's peak need?: clarify, map, calculate, the swing, validate against the case's own `zone_weeks`, the trap (applies the guesstimate) |
+| | 12 | L5 | UPI in pairs: seven minutes on the clock, checked against 802 million a day (T3), with the sanity check required |
 | | 10 | | Break |
-| | 40 | L5 | The AI-free written business case, individual, handed in: one page to the city head |
-| | 25 | L6 | The two transcripts read and scored in pairs; the AI-company variant |
-| | 15 | | Pain points and the makeover gallery: the room's rebuilt slides on the wall, voted |
-| | 25 | | Kahoot and close; Wednesday's pre-read ships tonight |
-| Lab | the lab's length | Kalpa | Every learner presents the Kalpa north-star slide to a TA playing one head; Anand's store sized against DMart (T3) |
+| | 35 | L5 | SECTION 9, What goes on the page to the city head?: the AI-free written business case, by hand, handed in (applies the written business case) |
+| | 12 | L6 | SECTION 10, transcript 1 read in pairs with its follow-ups; transcripts 2 and 3 and the AI-company variant assigned with the scorecard as the evening's reading |
+| | 20 | | The close: the Kahoot's eight items, the pain points in one line each, the day's sentence, the handoff; Wednesday's pre-read ships tonight |
+| | 6 | | Slack: three handed-in pages read aloud if the clock allows |
+| Lab | the lab's length | Kalpa | Every learner presents the Kalpa north-star slide to a TA playing one head; Anand's store sized against DMart (T3) in notebook 09 |
 
-The row's agenda is 240 minutes; the 120 added are round two with swapped roles, the memo-against-slide
-discussion, the transcripts, the gallery and the longer written case. Nothing new is taught in them.
+The row's agenda sums to 240 minutes, and the rebuilt day spends 112 of its 360 on the five concept
+chapters. The day plan pays for them with its own cuts, about 130 minutes in all: the gallery goes
+(the spine's first cut), round two falls from 40 to 20 minutes, the transcripts from 25 to 12, the
+paired UPI drill from 25 to 12, Uber's slide chapter from 45 to 35 and its defence from 50 to 40, the
+drawer from 20 to 12, the dojo from 65 to 37 and the opening from 15 to 11; the written case returns
+to the row's 35 minutes and the Kahoot and close to the row's 20.
+
+### The concept block
+
+| # | Subtopic (verbatim from the row) | Chapter title (`SECTION n:`) | The educational example (invented, labelled) | Minutes | Notebook | The case beat it absorbs |
+|---|---|---|---|---|---|---|
+| 1 | The one-slide answer: claim, evidence, caveat, action | SECTION 1: One-slide answer: claim, evidence, caveat, action | Ramesh's kirana shop opens two more hours a day from October: sales per day rise 8.3 percent (Rs 12,000 to Rs 13,000) while sales per hour fall 9.7 percent; two notices on a hostel board open the chapter as the prediction | 35 | `C2_W04_D02_01_one_slide_answer_STUDENT.ipynb` | The notice board, the four-part anatomy and the auto driver's denominator leave Uber's slide chapter, now SECTION 6, which falls from 45 to 35 minutes |
+| 2 | What to leave out, and the appendix | SECTION 2: What to leave out, and the appendix | The kirana draft sorted three ways: the per-hour chart and the per-customer line stay, the son's page and the accounts page take what each reader asks, and the rain days leave | 12 | `C2_W04_D02_02_leave_out_and_appendix_STUDENT.ipynb` | The appendix teaching leaves the drawer, which falls from 20 to 12 minutes inside SECTION 7 |
+| 3 | Defending under challenge: restate, answer, concede, what would change your mind | SECTION 3: Defending under challenge: the four moves | A secondary school's eight weeks of attendance against the same weeks last year: the exam weeks' true part is conceded, and weeks 3 to 5 answer the rest | 25 | `C2_W04_D02_03_defending_under_challenge_STUDENT.ipynb`, holding the chapter's example as data | The four moves leave Uber's defence chapter, now SECTION 7, which falls from 50 to 40 minutes |
+| 4 | The guesstimate: clarify, map, calculate, validate | SECTION 4: Guesstimate: clarify, map, calculate, validate | Cups of tea the campus canteen sells on a weekday, worked through the four steps; a town's households and a 28-day phone pack for two of the sanity tests | 30 | `C2_W04_D02_04_guesstimate_clarify_map_calculate_validate_STUDENT.ipynb` | The canteen's tea (S35), the four steps and the three sanity tests leave the dojo, which falls from 65 to 37 minutes (SECTION 8 and the UPI pairs) |
+| 5 | The AI-free written business case | SECTION 5: The AI-free written business case | Ramesh's one-page case for his extra hours, its four parts written as sentences | 10 | `C2_W04_D02_05_written_business_case_STUDENT.ipynb`, holding the chapter's example as data | Amazon's memo moves here from the drawer; the brief stays with SECTION 9, whose writing keeps the row's 35 minutes |
+
+The block's morning part runs after slide five and before the first case chapter; its afternoon part
+follows studio round two and comes before SECTION 8 and SECTION 9, which apply it, because the day
+plan keeps each toy beside the case step that applies it and the role-played studio inside one block.
+Its minutes come from the case beats named in the last column, and the day's total stays at the
+envelope's trainer minutes. The Names of chapters 1, 3 and 4 shorten the row's words to fit the pill,
+and chapter 3's map slide prints its bullet verbatim. Notebook 04 is the plan's `04_guesstimate`,
+renamed so its file name carries the Name's words; the case notebooks follow as
+`06_uber_slide_three_denominators`, `07_uber_defence_evidence` (new) and `08_uber_drivers_at_peak`,
+and the lab is `09_kalpa_store_estimate` (`D2_plan.md`, section 4).
 
 ### The shape: a studio and a dojo
 
@@ -615,8 +641,8 @@ No GIF on Tuesday; the makeover stills carry the lesson.
 
 | Family | What Tuesday ships |
 |---|---|
-| Decks | `half1` of at most 35 slides (the studio); `half2` of at most 30 (the dojo, the written case brief, the transcripts, the gallery, the Kahoot) |
-| Notebook | One, `01_makeover_and_ledger`: the cluttered chart and its makeover from the Monday facts file, and a guesstimate ledger (factors, the product, the anchor, the ratio), 12 to 15 cells; the lab's Kalpa slide template lives in `exercises/guided/` |
+| Decks | `half1` of at most 35 case slides plus the concept block's morning slides, 6 to 12 per chapter (the topic cover, the week map, the topics slide, the concept map, the ticket, concept chapters 1 to 3, then the studio's SECTION 6 and 7), about 48 in all; `half2` of at most 30 case slides plus chapters 4 and 5 (round two, the two concept chapters, the dojo, the written case brief, the transcripts, the Kahoot), about 38 in all |
+| Notebooks | One per chapter: five concept notebooks named by the row's subtopics (11 to 17 cells each, the educational example inline and labelled invented; the spoken and written chapters' notebooks hold their examples as data), then the case notebooks: 06 the twelve rows read three ways and the makeover, from the merged notebook's slide cells; 07 the defence's evidence lines computed (new, about 12 cells); 08 the guesstimate ledger, from the merged notebook's ledger cells. Plus the lab notebook `09_kalpa_store_estimate` (about 10 cells); the lab's Kalpa slide template lives in `exercises/guided/` |
 | Activity | The studio and the dojo with their run sheet, the scorer's card, the one-slide template; the three cluttered slides live in the deck |
 | Exercises | Guided: one cluttered slide rebuilt together; one guesstimate worked aloud. Unguided: the redesign slide; two rounds of defence; the paired guesstimate; the written case; the Kalpa slide in the lab. Mid-session: cut five slide elements to two; for four estimates, name the known number to check each against. About 12 items by level, at least four design items |
 | Take-home | The one-slide answer for the learner's Build 1 finding, and one guesstimate spoken aloud and recorded in under five minutes; the self-check lists the four parts and the four steps, plain words first |
@@ -652,16 +678,38 @@ synthetic, built for this class.
 
 | Block | Minutes | Level | What runs |
 |---|---|---|---|
-| Morning | 10 | L1 | The ticket; the room says why "in most carts" might be the wrong reason to show an item |
-| | 60 | L1 | Chapter 1, receipts on the table: the tea stall as ten dots (toy, 20 minutes), then the twelve carts counted by hand in groups (40); Amazon's own account of the trap (W1) |
-| | 50 | L2, L3 | Chapter 2: every cart in code; the pairs table; the milk trap found in the your-turn cell; the strip's click-through by suggested item |
+| Morning | 10 | | The topic, the week map, the topics slide and the concept map, the ticket as the destination; the room's first answer to "in most carts" |
+| | 60 | concept | The concept block's first part: chapters 1 to 4 on the canteen's twelve lunch orders (the table below) |
 | | 10 | | Break |
-| | 50 | L4, L5 | Chapter 3, part one: the action map (promote, watch, ignore, trap) sorted on the board; the support floor; the slot's value in rupees; the caveats, co-occurrence as no proof of cause first |
-| Afternoon, first 60 | 35 | L5 | Chapter 3, part two, unguided: one re-ranked strip with its rupee value per group; the category manager's role card answered |
-| | 10 | L6 | The transcript read in pairs; the AI-company variant; the handoff line |
-| | 15 | | Kahoot and close |
+| | 27 | concept | The concept block's second part: chapters 5 and 6 |
+| | 73 | L1 to L3 | SECTION 7, the case on twelve Instamart carts and then 40,000: the twelve-cart drill, the milk trap predicted and found, the same five lines on every cart, the fall in click-through split in the your-turn cell; Amazon's own account of the trap (W1) (applies support, confidence and lift, the confidence trap, basket analysis and the support floor) |
+| Afternoon, first 60 | 18 | concept | SECTION 8, the concept block's last chapter: cross-sell and upsell, and expected value in rupees, on the kirana's month |
+| | 14 | L4, L5 | SECTION 9, the strip ranked and priced: the action map and the watch list, the re-ranking cascade, the Rs 80,197 sales trap; the three doubts and the heavy tenth become D slides for self-study (applies the support floor and expected value) |
+| | 15 | L5 | Unguided: one re-ranked strip with its rupee value per group; the category manager's role card answered |
+| | 3 | L6 | The interview room's [S] answer on case numbers; the transcript, its follow-ups and the AI-company variant are read in pairs in the lab |
+| | 10 | | The handoff line, the Kahoot and the sentence for Friday |
 | IITGN block | 120 | | W4-2 (tentative): association rules as probability; independence; the Apriori principle |
-| Lab | the lab's length | Kalpa | The Rs 199 charger (the row's plants), TA-led |
+| Lab | the lab's length | Kalpa | The transcript read in pairs; the Rs 199 charger (the row's plants), TA-led, in notebook 11 |
+
+### The concept block
+
+| # | Subtopic (verbatim from the row) | Chapter title (`SECTION n:`) | The educational example (invented, labelled) | Minutes | Notebook | The case beat it absorbs |
+|---|---|---|---|---|---|---|
+| 1 | Support, confidence and lift, derived by counting | SECTION 1: Support; SECTION 2: Confidence; SECTION 3: Chance and lift | A hostel canteen's twelve lunch orders, 33 order lines: roti and sabzi sit in 4 orders each and together in 3, so support 0.25, confidence 0.75 both ways, expected 1.33 and lift 2.25; dal rice and papad share that support with confidence 0.50 one way and 0.60 the other; roti and chaas read lift exactly 1.00 | 12, 12 and 18 | `C2_W04_D03_01_support_by_counting_STUDENT.ipynb`; `C2_W04_D03_02_confidence_direction_STUDENT.ipynb`; `C2_W04_D03_03_chance_and_lift_STUDENT.ipynb` | The three-counts timeline, the tea stall's ten dots and the carry bag (S4 to S7) retire; the twelve-cart hand count becomes a drill inside SECTION 7 |
+| 2 | The confidence trap; lift near one | SECTION 4: The confidence trap; lift near one | Chaas sits in 9 of the 12 orders, so every item's confidence toward chaas reads 0.60 to 1.00 while every lift with chaas sits between 0.80 and 1.33 | 18 | `C2_W04_D03_04_confidence_trap_lift_near_one_STUDENT.ipynb` | The milk trap stays in SECTION 7 as the data's reveal, which the room now predicts |
+| 3 | Basket analysis on the order items | SECTION 5: Basket analysis on the order items | The canteen's 33 order lines become 30 pairs, each counted once per basket with sorted keys, in five lines of code | 15 | `C2_W04_D03_05_basket_analysis_pairs_table_STUDENT.ipynb` | The five lines of pandas (S17) are built here; SECTION 7 runs the same lines on 40,000 carts, so its code-along shortens |
+| 4 | The support floor and the watch list | SECTION 6: The support floor and the watch list | Gulab jamun and curd read lift 6.0 on one order; 600 invented orders in which no item depends on another show lifts above 6 on single orders and a band of about 0.8 to 1.25 for pairs on thirty or more | 12 | `C2_W04_D03_06_support_floor_watch_list_STUDENT.ipynb` | The watch-list teaching (S30) moves here; the action map and the watch list stay in SECTION 9 as the application |
+| 5 | Cross-sell and upsell reasoning; expected value in rupees | SECTION 8: Cross-sell and upsell; expected value in rupees | Sharma Kirana's month: 1,000 bills, tea in 600, rusk in 200, both in 150; a Rs 1-off combo card brings 18 incremental packs at Rs 12 margin, less Rs 168 of discount handed back and Rs 20 of printing, so Rs 28 a month | 18 | `C2_W04_D03_07_cross_sell_expected_value_STUDENT.ipynb` | The slot's value arithmetic (S31 to S33) is derived here first, so SECTION 9's re-ranking cascade runs shorter; upsell gets one definition, as the row's CUT FIRST allows |
+
+Subtopic 1 spans three chapters, so its Name is "Support, confidence and lift" and each of the three
+titles carries part of it (`.claude/skills/day-pack-builder/references/coverage-matrix.md`). Chapter
+8 opens `half2`, before SECTION 9 that applies it, so the morning keeps to four new ideas per two hours
+(`docs/detailing/W04_concept_first/README.md`); the morning's case chapter is SECTION 7. The notebooks
+keep the plan's names: `07` serves chapter 8, the case notebooks are
+`08_case_three_measures_twelve_carts` and `09_case_pairs_table_confidence_trap` for SECTION 7 and
+`10_case_floor_watchlist_expected_value` for SECTION 9, and the lab is
+`11_kalpa_basket_analysis_order_items` (`D3_plan.md`, section 4). The block's minutes come from the
+case beats named in the last column, and the day's total stays at the envelope's trainer minutes.
 
 **Handoff line.** "You counted lift on twelve carts and on forty thousand. The next 120 minutes show
 the same three numbers as probabilities: a lift near one is independence made visible, which is what

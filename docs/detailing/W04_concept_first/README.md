@@ -24,17 +24,20 @@ file, the cases' data and every number the cases print stand.
    other, to Weeks 1 to 3 and to the rest of the week. Then the case ticket in one slide, as the
    destination the topics will be used on.
 3. The concept chapters, at the front of `slides/C2_W04_D0{d}_half1_STUDENT.md`, right after the topics
-   slide, the map and the ticket slide. Each chapter's opener is headed `## SECTION n: <Name>`, where the
-   Name is the row's subtopic in the row's words (about 48 characters at most), and the italic promise
-   beneath it asks the chapter's question; where a plan titles a chapter as a question, the question
-   moves to the promise. The chapter is taught from zero and runs the misconception and a prediction, one
-   invented everyday example (labelled) carried through the chapter, the idea derived from tiny numbers,
-   a worked example and a check question, and it hands over to the case chapter that applies it. A
-   concept chapter that the four-ideas-per-two-hours rule moves to the afternoon opens `half2`, still
-   before the case chapter that applies it.
-4. The case chapters, after the concept block in the same decks, each opener titled by its case step
-   with the subtopics it applies, its question in the promise. The full ticket read opens them where the
-   plan moves it there.
+   slide, the map and the ticket slide. Each chapter's opener is headed
+   `## SECTION n: <Name>: <short question>?`. The Name is the row's subtopic in the row's words (about 48 characters at most), which
+   the coverage gate reads; the short question starts lower-case, ends in a question mark and runs to
+   about 24 characters, since the deck prints the Name over the question on the opener and the short
+   question alone in the chapter pills, whose room is about 22 characters; the italic promise beneath
+   says what the chapter delivers. Where a plan titles a chapter as a question, that question becomes the
+   promise. The chapter is taught from zero and runs the misconception and a prediction, one invented
+   everyday example (labelled) carried through the chapter, the idea derived from tiny numbers, a worked
+   example and a check question, and it hands over to the case chapter that applies it. A concept chapter
+   that the four-ideas-per-two-hours rule moves to the afternoon opens `half2`, still before the case
+   chapter that applies it.
+4. The case chapters, after the concept block in the same decks, each opener headed the same way with the
+   case step and the subtopics it applies as its topic. The full ticket read opens them where the plan
+   moves it there.
 5. The Kalpa lab last.
 
 The day's notebooks follow the same order: the concept notebooks first, one per concept chapter and named
