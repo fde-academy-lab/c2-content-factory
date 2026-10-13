@@ -74,7 +74,7 @@ Written by `C2_W04_D04_generate_INTERNAL.py`; every line must read PASS.
 | PASS | Kalpa lab rows: the hand counts sit at least five points from every planted rate | (0.571, 0.75) |  |
 | PASS | Kalpa lab rows: one member's week shows sessions with and without a search |  |  |
 | PASS | twelve rows: no hand-counted rate within five points of a Kalpa retention plant | 0.062 |  |
-| PASS | shared constants equal Monday's (the values Monday's branch writes (origin/w04-d1, commit 0f9cf0c)) |  |  |
+| PASS | shared constants equal Monday's (content/W04/D1/internal/C2_W04_D01_facts_INTERNAL.yaml) |  |  |
 | PASS | weekly rerun: the sale week's cohort is the largest, the highest in week one and the lowest in week two | {'2026-08-03': (1137, 0.29, 0.303), '2026-08-10': (1112, 0.376, 0.381), '2026-08-17': (9108, 0.531, 0.122), '2026-08-24': (1122, 0.325, 0.151), '2026-08-31': (1166, 0.267, 0.225), '2026-09-07': (1247, 0.338, 0.314)} |  |
 | PASS | counted over everyone, the series falls every month from June to September |  |  |
 | PASS | held fixed, iOS completion moves by under a point while Android's falls by more than 15 |  |  |

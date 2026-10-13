@@ -97,7 +97,7 @@ numbers:
 - id: aug_sale_members
   value: 8027
   unit: members
-  how: August members who joined in the sale week
+  how: August members who joined on the sale's discount, all in the sale week
   used_by: L4 selection
   printed: 8,027
 - id: aug_organic_members
