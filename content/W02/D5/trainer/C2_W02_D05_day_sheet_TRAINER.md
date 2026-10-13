@@ -42,6 +42,22 @@ freely; never type over a number."
 
 ---
 
+## Which curriculum topic does each chapter teach, on which slides, and which item tests it?
+
+The six subtopics are the row's, word for word, and S0 opens each deck with them, their chapters and
+the chapters' minutes. Each chapter opener names its topic before its question.
+
+| Subtopic | Chapter | Slides | Notebook | The exercise item that tests it |
+|---|---|---|---|---|
+| The customer table in Excel: structure, filters, freeze panes | 1 for structure and freeze panes, 6 for filters | Morning S8, S9, S9a and S17; afternoon S5 to S10 | 01, sections 1 and 5; 06, sections 2 and 3 and its second route | Chapter 1 set Q5 (the table's one date is a recency); chapter 6 set Q1 to Q3 (a filter under SUM, SUBTOTAL(9) and SUBTOTAL(109)); escalated case Q9; lab Q17. No item tests freeze panes: the guided sheet's step 1 practises it and S9a's check asks it |
+| Pivot tables: build, slice, refresh; what they cannot do | 1 and 2 | Morning S7, S10 to S16 and S18; S23 to S31 | 01, its options and sections 2 to 4; 02, sections 1 to 4 | Chapter 1 set Q1 (slicing), Q3 (an averaged leaf) and Q4 (Refresh against formulas); chapter 2 set Q1, Q2 and Q5 (a pivot on payment rows); escalated case Q1; lab Q12, Q13 and Q15; the guided sheet's steps 2 to 6 |
+| XLOOKUP: exact match, the not-found path, and the nearest-match trap | 3 | Morning S38 and S42 to S46, with S43a | 03, its options, sections 3 and 4, and its depth section | Chapter 3 set Q1 (the nearest id below), Q2 (the not-found path), Q3 (XLOOKUP's versions) and Q4 (a tier against an id); escalated case Q4; lab Q16 |
+| Presenting one number: denominator, period, comparison, the sentence beside it | 4 | Morning S50 to S58, with S57a | 04, its options, sections 1 to 4 and its depth section | Chapter 4 set Q1 (period), Q2 (denominator), Q3 (points against percent), Q5 (the sentence) and Q6 (comparison); escalated case Q5 and Q6; lab Q9 to Q11, Q14 and Q18 |
+| The tool operating rule: warehouse, pandas, Excel | 5 | Morning S61 to S69 | 05, its options and sections 1 to 4 | Chapter 5 set Q1 to Q4; lab Q1 to Q8 |
+| Keeping the sheet and the source from drifting | 5, 6 and the second case | Morning S70; afternoon S11 to S14 and S21 to S25 | 05, section 5; 06, sections 4 and 5; ex2 | Chapter 5 set Q5 (the drift check); chapter 6 set Q5 (a yellow input) and Q6 (a typed-over formula holds the workbook); escalated case Q7 and Q8; second case Q2 to Q4 |
+
+---
+
 ## What does the day start from, and where does it stop?
 
 | | |
@@ -65,13 +81,17 @@ flowchart LR
 
 | Part | Slides (morning deck) | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| The ask, 20 | Cover, S1 to S4 | The board's first drawing | The day's question and its six chapter questions (S1); three deliverables and the one hard condition (S2); the silent lies a sheet can tell, drawn and left up all day (S3, S4) | S2 to its table |
-| Chapter 1, 30 | SECTION 1, S5 to S19 | Notebook 1; `guided/C2_W02_D05_pivot_together_STUDENT.md` steps 1 to 3; Excel live | The map (S5); the stakes and Costco's paid tier (S6); the four options sized and the PivotTable call (S7); the grain before the pivot (S8, S9); Business at 99.1 percent (S11); the basket leaf (S13); the averaged leaf at Rs 11,66,786 and the multiply-back (S14 to S16); the table cannot split quarters (the predict on S16, the answer on S17); the close (S19) | S18 to one sentence |
+| The ask, 20 | Cover, S0 to S4 | The board's first drawing | The six curriculum topics and how they build on the week (S0); the day's question and its six chapter questions (S1); three deliverables and the one hard condition (S2); the silent lies a sheet can tell, drawn and left up all day (S3, S4) | S2 to its table |
+| Chapter 1, 30 | SECTION 1, S5 to S19 | Notebook 1; `guided/C2_W02_D05_pivot_together_STUDENT.md` steps 1 to 3; Excel live | The map (S5); the stakes and Costco's paid tier (S6); the four options sized and the PivotTable call (S7); the grain before the pivot (S8, S9); freeze panes at B2, so names and ids stay in view (S9a); Business at 99.1 percent (S11); the basket leaf (S13); the averaged leaf at Rs 11,66,786 and the multiply-back (S14 to S16); the table cannot split quarters (the predict on S16, the answer on S17); the close (S19) | S18 to one sentence |
 | Chapter 2, 30 | SECTION 2, S20 to S34 | Notebook 2; the guided sheet steps 4 to 6; Excel live | The options and the quarter-column call (S23); the quarter column (S24, S25); the room builds the pivot on the raw export and reads its own total before S27 is shown; rows against ids (S28); Remove Duplicates leaves the total (S29, S30); the first-row flag ties to the rupee (S31); Retail-Plus down 29.4 percent on frequency (S32); the warehouse's own quarters (S33) | S22 to its quote |
-| Chapter 3, 30 | SECTION 3, S35 to S47 | Notebook 3; the deck pack's Protect tab | The lookup options and the call (S38); the list and its cut-off (S39, S40); the your-turn tie (S41), five minutes, never cut, nothing confirmed or named; C-0195 returns C-0194's row (S42, S43); the exact match (S44); re-sorting (S45); the warehouse's own count as the second route (S46) | S37 to its quote |
+| Chapter 3, 30 | SECTION 3, S35 to S47 | Notebook 3; the deck pack's Protect tab | The lookup options and the call (S38); the list and its cut-off (S39, S40); the your-turn tie (S41), five minutes, never cut, nothing confirmed or named; C-0195 returns C-0194's row (S42, S43); the trap named, a nearest match, and the band it belongs to (S43a); the exact match (S44); re-sorting (S45); the warehouse's own count as the second route (S46) | S37 to its quote |
 | Break, 10 | After S47 | | | |
-| Chapter 4, 30 | SECTION 4, S48 to S59 | Notebook 4; the deck pack's FrontPage tab | DMart's headline (S50); the card options and the call (S51); the bare Rs 19.84 crore read as up 98.4 percent (S52, S53); the card (S54); 29.4 percent without its base, and 41.7 on the wrong base (S55, S56); the scope changed live (S57); the warehouse's change (S58) | S57 to its scope line |
+| Chapter 4, 30 | SECTION 4, S48 to S59 | Notebook 4; the deck pack's FrontPage tab | DMart's headline (S50); the card options and the call (S51); the bare Rs 19.84 crore read as up 98.4 percent (S52, S53); the card (S54); 29.4 percent without its base, and 41.7 on the wrong base (S55, S56); the scope changed live (S57); the denominator under each percentage (S57a); the warehouse's change (S58) | S57 to its scope line |
 | Chapter 5, 30 | SECTION 5, S60 to S72 | Notebook 5 | Collected against booked as the test case (S61); Public Health England (S62); the split (S63); Tuesday's join as the heaviest step (S64, S65); the lookup's Rs 8.00 crore "outstanding" (S66, S67); every payment added once, the gap equal to Tuesday's unpaid list (S68); the rule in three lines (S69); booked less unpaid as the second route, and the drift check (S70); the morning's answers (S72) | S62 to its numbers |
+
+S0, S9a, S43a and S57a add seven minutes to the morning, one in the ask and two in each of chapters
+1, 3 and 4, and the afternoon's S0 adds one. Take the last column's cuts for the ask and chapters 1
+to 4 from the start, which gives back about as much, and keep S62's cut in hand.
 
 Each chapter's set (`exercises/unguided/C2_W02_D05_ch{n}_*_STUDENT.md`) runs its items 1 and 2 live in
 the chapter's last three minutes; the remaining items are the practice lab's stretch or tonight's
@@ -98,7 +118,7 @@ flowchart LR
 
 | Part | Slides (afternoon deck) | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| Chapter 6, 30 | Cover, SECTION 6, S1 to S15 | Notebook 6; the deck pack's Protect and Checks tabs | The five things a director does (S2); Barclays and the hidden rows (S3); the protection options and the call (S4); the silent changes (S5, S6); SUM under the Mumbai filter, Rs 7,14,890 against Rs 1,56,790 (S7, S8); SUBTOTAL(109) and (103) (S9); SUMIFS on the city, which a row hidden by hand splits from the foot, Rs 1,56,790 against Rs 1,47,400 (S10); the voucher as a yellow input, Rs 5,500 (S11, S12); the Checks tab and its release (S13, S14) | S10 to one sentence |
+| Chapter 6, 30 | Cover, S0, SECTION 6, S1 to S15 | Notebook 6; the deck pack's Protect and Checks tabs | The two topics chapter 6 finishes (S0); the five things a director does (S2); Barclays and the hidden rows (S3); the protection options and the call (S4); the silent changes (S5, S6); SUM under the Mumbai filter, Rs 7,14,890 against Rs 1,56,790 (S7, S8); SUBTOTAL(109) and (103) (S9); SUMIFS on the city, which a row hidden by hand splits from the foot, Rs 1,56,790 against Rs 1,47,400 (S10); the voucher as a yellow input, Rs 5,500 (S11, S12); the Checks tab and its release (S13, S14) | S10 to one sentence |
 | Escalated case, 50 | SECTION 7, S16, D17 | `unguided/C2_W02_D05_escalated_STUDENT.md`; notebook ex1 | Alone, no hints: ten letters in five parts and two sentences to the chief of staff; the release holds the list on the learner's own TODO 7 | Nothing; start on time |
 | Debrief, 15 | SECTION 8, S18 to S20 | The room's own wrong numbers, collected during the case | The seven plausible numbers (S18); the release holds the protect list (S19, S20); now say what the room found, from the plant table below | S18 to the numbers the room actually produced |
 | Break, 10 | After S20 | | | |
