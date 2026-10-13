@@ -425,7 +425,8 @@ def main():
     assert rows["Random forest, a machine-learning benchmark"] == f"{pub['m5_rf']:.3f}"
     assert rows["Naive, the last day seen"] == f"{pub['m5_naive']:.3f}"
     assert close(pub["m5_beat_snaive_pct"], 0.358, 0.0001) and pub["m5_products"] == 3049
-    assert 1 - pub["m5_beat_snaive_pct"] > 0.5
+    assert 1 - pub["m5_beat_snaive_pct"] > 0.5 and round(1972 / 5507, 3) == 0.358
+    assert "1,972 of the 5,507 teams, 35.8 percent" in it["exhibit"]["caption"].replace("\n", " ")
     keyed(it, "A fit is no forecast", "most teams")
     show(it, "M5 scores from Friday's facts; 35.8 percent beat the seasonal naive, so most did not")
 

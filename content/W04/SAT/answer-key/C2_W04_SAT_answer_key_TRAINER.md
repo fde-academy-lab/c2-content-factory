@@ -113,7 +113,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q5, key d
 
-**Why it holds.** True. Staff measured on the cross-sell count changed what they did to move it, in ways the bank never meant: accounts customers had not asked for, money moved in so a new account counted as funded, and contact details changed so surveys missed the customers (SEC order, Release 34-88257, checked 13 October 2026). The same thing happened on a smaller scale in Hyderabad, where 180 drivers took their peak online hours to 2.1 times while their trips fell 12 percent. The CFPB's 2016 penalties came to USD 185 million and the 2020 settlement with the SEC and the Justice Department to USD 3 billion.
+**Why it holds.** True. Staff measured on the cross-sell count changed what they did to move it, in ways the bank never meant: accounts customers had not asked for, money moved in so a new account counted as funded, and contact details changed so surveys missed the customers (SEC order, Release 34-88257, checked 13 October 2026). The same thing happened on a smaller scale in Hyderabad, where 180 drivers took their peak online hours to 2.1 times while their trips fell 12 percent. The 2016 penalties, the CFPB's USD 100 million with the OCC's USD 35 million and Los Angeles's USD 50 million, came to USD 185 million (the CFPB's release of 8 September 2016, checked 13 October 2026), and the 2020 settlement with the SEC and the Justice Department to USD 3 billion.
 
 - (a) The order describes the staff's behaviour moving with the target the bank paid on; a gap in the rules is what any target finds, which is the statement's point.
 - (b) Staff sales credit rode on the same count, and the count moved with the accounts staff opened; the 2013 addition was a second, separate way it rose.
@@ -123,7 +123,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q6, key b
 
-**Why it holds.** 0.04 of the 0.11 rise is about 36 percent, and it came from counting a new kind of account, so that much of the year's rise reflected no change in what households held. The line that shows it is the dated change log: every change to what is counted carries a date and a note, and the year of the change prints the ratio on both definitions so a reader can see the step. The SEC's order (Release 34-88257, checked 13 October 2026) says investors were not told of the 2013 addition, which is the breach.
+**Why it holds.** 0.04 of the 0.11 rise is about 36 percent, and it came from counting a new kind of account, so that much of the year's rise reflected no change in what households held. The line that shows it is the dated change log: every change to what is counted carries a date and a note, and the year of the change prints the ratio on both definitions so a reader can see the step. The SEC's order (Release 34-88257, checked 13 October 2026) says investors were not told of the 2013 addition, which is the breach, and that the rest of the 0.11 came from accounts and products inactive for at least 365 days, so none of the year's rise was households using more.
 
 - (a) Satisfaction surveys measure the customers' view, and the order says staff changed contact details so the surveys missed them; a guardrail the measured can redirect guards nothing, and neither would catch a definition change.
 - (c) 0.04 is a change in the ratio, and its share of the 0.11 rise is 36 percent; the window decides the period counted and cannot show a new kind of account joining the count.
@@ -339,7 +339,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q31, key a
 
-**Why it holds.** M5 judged every entry on days it never saw, and on that test the seasonal naive, at 0.847, beat the perceptron's 0.977 and the random forest's 1.010, and only 35.8 percent of 1,972 teams beat it; the top entries that did win were machine learning, which is why the honest test is the same for any model. The vendor's curve fits its 91 training weeks within 1.4 percent, and on the thirteen hidden weeks it missed by 16,400 shipments a week against the seasonal naive's 9,831, almost all of it too high. Makridakis and colleagues (PLOS ONE, 2018) made the same point on 1,045 monthly series: the models that fitted best did not necessarily forecast best.
+**Why it holds.** M5 judged every entry on days it never saw, and on that test the seasonal naive, at 0.847, beat the perceptron's 0.977 and the random forest's 1.010, and only 1,972 of the 5,507 teams, 35.8 percent, beat it; the top entries that did win were machine learning, which is why the honest test is the same for any model. The vendor's curve fits its 91 training weeks within 1.4 percent, and on the thirteen hidden weeks it missed by 16,400 shipments a week against the seasonal naive's 9,831, almost all of it too high. Makridakis and colleagues (PLOS ONE, 2018) made the same point on 1,045 monthly series: the models that fitted best did not necessarily forecast best.
 
 - (b) M5's winners were machine learning that beat the seasonal naive on days they never saw; a fit to past weeks is a different test, and the sponsor's curve has not passed the forecast one.
 - (c) A curve tuned to its own past can fit within 2 percent and miss the next weeks widely; the vendor's missed by 16,400 a week.

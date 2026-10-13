@@ -533,7 +533,7 @@ Working:
 
 Answer: ____________________
 
-**Exhibit 5C.** The M5 forecasting competition, 2020: Walmart's daily unit sales of 3,049 products, every entry scored on 28 days it never saw; 35.8 percent of 1,972 teams beat the seasonal naive. From the official scores workbook and the accuracy paper, checked 13 October 2026.
+**Exhibit 5C.** The M5 forecasting competition, 2020: Walmart's daily unit sales of 3,049 products, every entry scored on 28 days it never saw; 1,972 of the 5,507 teams, 35.8 percent, beat the seasonal naive. From the official scores workbook and the accuracy paper, checked 13 October 2026.
 
 | Entry | Average error, lower is better |
 |---|---|

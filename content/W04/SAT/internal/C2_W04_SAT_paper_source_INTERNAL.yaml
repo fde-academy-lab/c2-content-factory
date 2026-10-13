@@ -642,8 +642,10 @@ additions:
       funded, and contact details changed so surveys missed the customers (SEC order, Release
       34-88257, checked 13 October 2026). The same thing happened on a smaller scale in Hyderabad,
       where 180 drivers took their peak online hours to 2.1 times while their trips fell 12 percent.
-      The CFPB's 2016 penalties came to USD 185 million and the 2020 settlement with the SEC and the
-      Justice Department to USD 3 billion.
+      The 2016 penalties, the CFPB's USD 100 million with the OCC's USD 35 million and Los Angeles's
+      USD 50 million, came to USD 185 million (the CFPB's release of 8 September 2016, checked 13
+      October 2026), and the 2020 settlement with the SEC and the Justice Department to USD 3
+      billion.
     wrong:
       a: >-
         The order describes the staff's behaviour moving with the target the bank paid on; a gap in
@@ -680,7 +682,8 @@ additions:
       it is the dated change log: every change to what is counted carries a date and a note, and the
       year of the change prints the ratio on both definitions so a reader can see the step. The SEC's
       order (Release 34-88257, checked 13 October 2026) says investors were not told of the 2013
-      addition, which is the breach.
+      addition, which is the breach, and that the rest of the 0.11 came from accounts and products
+      inactive for at least 365 days, so none of the year's rise was households using more.
     wrong:
       a: >-
         Satisfaction surveys measure the customers' view, and the order says staff changed contact
@@ -1465,8 +1468,9 @@ additions:
     exhibit:
       caption: >-
         The M5 forecasting competition, 2020: Walmart's daily unit sales of 3,049 products, every
-        entry scored on 28 days it never saw; 35.8 percent of 1,972 teams beat the seasonal naive.
-        From the official scores workbook and the accuracy paper, checked 13 October 2026.
+        entry scored on 28 days it never saw; 1,972 of the 5,507 teams, 35.8 percent, beat the
+        seasonal naive. From the official scores workbook and the accuracy paper, checked 13 October
+        2026.
       table:
         head:
           - Entry
@@ -1485,8 +1489,8 @@ additions:
       (d) Score the curve on its fitted weeks with MAPE as well as MAE, and send it to the plan if both measures stay under 2 percent of the actual.
     why: >-
       M5 judged every entry on days it never saw, and on that test the seasonal naive, at 0.847, beat
-      the perceptron's 0.977 and the random forest's 1.010, and only 35.8 percent of 1,972 teams beat
-      it; the top entries that did win were machine learning, which is why the honest test is the
+      the perceptron's 0.977 and the random forest's 1.010, and only 1,972 of the 5,507 teams, 35.8
+      percent, beat it; the top entries that did win were machine learning, which is why the honest test is the
       same for any model. The vendor's curve fits its 91 training weeks within 1.4 percent, and on
       the thirteen hidden weeks it missed by 16,400 shipments a week against the seasonal naive's
       9,831, almost all of it too high. Makridakis and colleagues (PLOS ONE, 2018) made the same
