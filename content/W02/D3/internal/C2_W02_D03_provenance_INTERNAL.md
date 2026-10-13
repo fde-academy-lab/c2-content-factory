@@ -338,3 +338,82 @@ Each ran on 1 October 2026 against commit 55d670e, on PostgreSQL 16.14, after th
 | The verify gate, every notebook cold-run | `python3 scripts/verify.py content/W02/D3 --execute` | RESULT: PASS (0 failures) and no warnings. The six chapter notebooks and the two case solutions cold-run clean, and the two TODO twins are covered by their solutions; 10 notebooks, 137 checks passing and 0 failing; 11 files of option sets audited with 0 failures; the companion page had 38 controls clicked, 0 inert and 0 console errors; 112 slides rendered with 0 overflowing boxes. |
 | The programme sync | `python3 scripts/sync_programme.py --check` | Every output is current: 102 days and 4 capstone weeks read, 30 faculty sessions, 0 of them confirmed. |
 | Every `.sql` file against Postgres | `psql -d kalpa -f` on the six chapter files and on `data/C2_W02_D03_takehome_STUDENT.sql` | The six chapter files hold 57 named blocks: 56 return their result sets, and `c2_where_error` stops with "window functions are not allowed in WHERE", the two-minute aside of decision 9. The take-home sample loads into its own schema with no error, and on it Q2 holds 454 orders and Rs 9,23,60,000 from 98 Retail-Core buyers, with a top twenty shipping 20, 21, 22 and 18 under ROW_NUMBER, RANK, DENSE_RANK and whole ties only, as the self-check says. |
+
+---
+
+## What changed on 13 October 2026, when the requester asked to see the day's topics by name?
+
+The requester read the merged packs on 13 October 2026 and found every chapter titled by a case
+question and never by the curriculum's topic, so a trainer could not see from the slides which topics
+the day teaches. The fix is light: no notebook, no number of the case and no exercise key changed.
+
+| File | What changed |
+|---|---|
+| `slides/C2_W02_D03_half1_STUDENT.md` and its `.pptx` | S1a, the row's six subtopics with their chapters, minutes and a concept map; the five chapter openers named topic first; S32a, S55a and S74a; the notes' transition lines on S1, S32, S55 and S74 |
+| `slides/C2_W02_D03_half2_STUDENT.md` and its `.pptx` | S1a; chapter 6's opener named topic first; S1's transition line |
+| `trainer/C2_W02_D03_day_sheet_TRAINER.md` | The coverage table of the six subtopics; stop before and cut first for LEAD's slide; the new slides in the block tables |
+| `study-notes/C2_W02_D03_notes_STUDENT.md` | The six chapter headings named topic first |
+| `scripts/build_deck.py` and `scripts/deck_layout.py` | A chapter named `Topic: question?` prints its topic over its question on the opener, and the pills, footers and cover strip keep the question |
+
+**Decisions that depart from the request or a source.**
+
+1. S1a asks "What will today teach?" in its italic subtitle and answers in its action title, since
+   `deck_md_check.py` fails a slide titled with a question unless an Answer slide follows it, and the
+   standard puts a body slide's question in its subtitle.
+2. Every new slide carries a letter (S1a, S32a, S55a, S74a), so no slide number that the day sheet,
+   the notes or the lab note cites has moved. S1a follows S1, the day's ladder of chapter questions,
+   in both decks, which places it after the cover and before the first chapter.
+3. A chapter that teaches part of a subtopic names that part in the row's words: chapter 1 "ORDER BY
+   inside the window", chapter 2 "PARTITION BY", chapter 4 "LAG and LEAD" and chapter 6
+   "Month-on-month comparison per customer". Chapter 3 keeps the row's order, "ROW_NUMBER, RANK and
+   DENSE_RANK", where the request's example ran "RANK, DENSE_RANK and ROW_NUMBER", since the request
+   also asked for the row's words. Sections 7 and 8, the case and the close, keep their names, since
+   no single subtopic is theirs.
+4. Chapter 2 owns "Filtering on a window via a CTE". The row ties the WHERE error to top-N per group,
+   and S32, S34's interview question and notebook 02's interview cell sit in chapter 2, although
+   chapter 1 builds the named step and the outer filter first (S11, S14).
+5. The map keeps short handles in its boxes beside the table of the row's words, with one caption line
+   for the links to Monday and Tuesday. Beside the table, a wide map printed its labels at 6.0 points
+   and fuller names at 7.5 to 8.9, under the 9-point floor, and long bold names broke mid-word.
+6. The builder change. A 55-character `Topic: question?` name at 40 points takes two lines and runs
+   into the promise, and five such names in every footer run past the slide number, so the opener
+   prints the topic in lavender at up to 20 points over the question, while the pills, the footers and
+   the cover strip keep the short question. No chapter name in any other deck in `content/` matches
+   the pattern, so every other deck builds as it did.
+7. Each teaching slide's check question is a "Check yourself." line answered in its notes, since a
+   `**Question.**` line makes `deck_md_check.py` demand an Answer slide, and the request asked for one
+   slide each.
+8. S32a follows S32's refusal and S55a follows S55, LAG on the same member. S74a follows S74, so the
+   room makes S73's prediction on 22 July before the toy shows why peers share a figure.
+9. S74a asks for a tiebreaker only where each row needs its own figure, ROW_NUMBER's places and a
+   running total's steps, and says RANK keeps peers on one place on purpose, so the rule cannot be
+   read against the head of Retail-Plus's rule.
+10. The day sheet's "LEAD is named once on S53 and never taught" became "LEAD gets one slide, S55a, on
+    C-0040's months, and no query uses it", and the row's cut order, LEAD first, now cuts S55a to its
+    rule line before S73 and S74. The notes' "LEAD was named and not used" and its glossary row
+    stand, since no query uses LEAD.
+11. S1a's minutes are the day sheet's chapter minutes; the CTE filter's 4 are S32's two and S32a's two.
+12. No lettered item tests LEAD, and none asks why WHERE refuses a window, which the interview drill
+    asks aloud. The coverage table says so, and no item was added, since the request kept every
+    exercise key.
+
+**Invented, and labelled invented on its slide.**
+
+13. S32a's five members: A, B and C in North on Rs 900, 700 and 500, and D and E in South on Rs 800
+    and 600.
+14. S74a's four orders: A-1 on 1 July for Rs 100, A-2 and A-3 on 2 July for Rs 300 and Rs 200, and A-4
+    on 3 July for Rs 400.
+
+**Where the new figures came from.** Every figure and error text on the new slides was run on 13
+October 2026 on PostgreSQL 16.15, with the v4 warehouse loaded by `.devcontainer/load_warehouse.sh`:
+C-0040's lag and lead rows (lead 1 from Rs 3,170 in April to NULL in September, lead 2 NULL on August
+and September); S32a's two-step query exactly as printed (A 1, B 2, D 1, E 2), its check query (A 1,
+D 2, B 3, E 4), "ERROR:  window functions are not allowed in WHERE" for the window written into WHERE
+and `column "place" does not exist` for the alias; S74a's ROW_NUMBER by date alone, which gave A-2
+the 2 when A-2 was listed first and A-3 the 2 when A-3 was, and its two sums, Rs 600 on both 2 July
+orders by date alone and Rs 400 and Rs 600 with the order id. One query computing all three of
+S74a's windows sorted once by date and order id and hid the swap, which S74a's notes tell the
+trainer. Both decks were rebuilt by `scripts/build_deck.py` on python-pptx 1.0.2 with mermaid-cli
+12.0.0, the container's version, so every diagram in both decks was redrawn under 12.0.0 where the
+1 October build used 11.17.0, and all 117 slides were rendered through LibreOffice 24.2.7.2 with
+Carlito and looked at.
