@@ -2,9 +2,9 @@
 
 Week 4, Day 1. Fallback for the tentative faculty block.
 
-Header: WEEK 4  ·  DAY 1  ·  THE METRIC CLINIC, IF THE TENTATIVE FACULTY BLOCK SLIPS
+Header: WEEK 4  ·  MONDAY  ·  THE METRIC CLINIC, IF THE TENTATIVE FACULTY BLOCK SLIPS
 
-## SECTION 6: Which line would have caught it?
+## SECTION 13: Which line would have caught it?
 *Which line of a complete definition does each of five facts in the SEC's Wells Fargo order breach, before the room writes its own definitions again?*
 
 ```notes
@@ -93,12 +93,12 @@ The denominator (b) was households throughout; the gaming sat in what was counte
 ```notes
 LIVE, 12 minutes. Take the most-argued fact first. Then the Uber parallel, one line each: an hour
 counted with no trip (fact 1), an online hour that starts when the driver chooses (fact 2's window,
-and VA's desired date from the morning), a definition change in Uber's own count (none in the case;
+and VA's desired date from chapter 5), a definition change in Uber's own count (none in the case;
 say so), a top-up for idling (fact 4), a check the drivers cannot touch (the rider's wait, fact 5).
 Transition: the city's three numbers, written out in full.
 ```
 
-## SECTION 7: Does each number survive its owner?
+## SECTION 14: Does each number survive its owner?
 *What happens when each of three proposed numbers is written as a complete definition and its owner attacks it?*
 
 ```notes
@@ -141,7 +141,7 @@ Score as in round 3: answered, conceded, or lost.
 Transition: which numbers move first.
 ```
 
-## SECTION 8: Which numbers lead, and which lag?
+## SECTION 15: Which numbers lead, and which lag?
 *Which of eight city numbers move before the north star and which confirm it later, and which guardrail does each north star need?*
 
 ```notes
@@ -213,7 +213,7 @@ gaming it catches. A guardrail that is another growth count gets the question: w
 Transition: the dispute, as an interviewer asks it.
 ```
 
-## SECTION 9: What do you say to the teams who lose?
+## SECTION 16: What do you say to the teams who lose?
 *How does a candidate get three teams who each want their own target to one number, and what do they say to the teams who lose?*
 
 ```notes
