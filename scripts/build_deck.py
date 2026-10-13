@@ -316,7 +316,7 @@ def chapter_name(title):
     return name[:1].upper() + name[1:].lower() if name.isupper() else name
 
 
-TOPIC_FIRST = re.compile(r"^(?P<topic>.+?):\s+(?P<question>[a-z].*\?)$")
+TOPIC_FIRST = re.compile(r"^(?P<topic>.+):\s+(?P<question>[a-z][^:]*\?)$")
 QUESTION_WORD = re.compile(r"^(?:who|whom|whose|what|which|when|where|why|how|can|could|does|do|"
                            r"did|is|are|was|were|will|would|should|has|have)\b", re.I)
 
@@ -328,6 +328,9 @@ def chapter_parts(name):
     strip, which have room for about 22 characters, and its opener prints the topic over the
     question. A name with no topic before a lower-case question comes back whole, as it always has,
     and so does a question that holds a colon itself, such as "Who asks: the lead or the CEO?".
+    The split falls at the last colon, so a topic with a colon of its own stays whole:
+    `Definitions: numerator, denominator, window, exclusions: which four lines define it?` becomes
+    ("Definitions: numerator, denominator, window, exclusions", "Which four lines define it?").
     """
     m = TOPIC_FIRST.match(name)
     if not m or QUESTION_WORD.match(m.group("topic")):
