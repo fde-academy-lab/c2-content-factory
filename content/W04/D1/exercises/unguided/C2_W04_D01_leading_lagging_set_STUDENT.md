@@ -43,9 +43,6 @@ customer and the average order value. The north star counts orders once they are
 | 7 | Returns booked this week |
 | 8 | App sessions per active customer this week |
 
-Every number reads the same week, so the window cannot decide a call: what decides it is whether the
-number counts something that happens before an order is delivered, or after.
-
 ### Q1. Which list holds every leading number among the eight, and nothing else?
 
 a) 1, 3, 6 and 8

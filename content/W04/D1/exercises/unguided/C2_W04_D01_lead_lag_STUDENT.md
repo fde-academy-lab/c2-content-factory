@@ -54,9 +54,6 @@ it can still change this week.
 | 7 | Rider complaints filed about this week's trips |
 | 8 | Rider requests per online hour this week, by zone |
 
-Every number reads the same week, so the window cannot decide a call: what decides it is whether the
-number moves before this week's trips are counted, or adds up trips already done.
-
 ### Q1. Which list holds every leading number among the eight, and nothing else?
 
 a) 2, 4, 6 and 8
