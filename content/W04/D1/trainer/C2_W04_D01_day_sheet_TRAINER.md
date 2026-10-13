@@ -143,9 +143,9 @@ file states them before the lab; afterwards, only as decision `w4-finding-once-f
 | Booked value of reorders per member, any status, the same 107 and the same two windows | 0.96 | Notebook 04, first your-turn cell | Ask: "now the rupees: did the value per member rise with the count?" |
 | No placement in the window became an order: every one was an auto-reorder, cancelled, merged into a basket the member already had open or still pending | none delivered | Notebook 04, second your-turn cell | Ask: "group the window's placements by `auto` and `status`, then count the ones with an `order_id`: how many became an order?" |
 
-The per-member comparison counts the 107 members who had joined by 19 August, because a member who
-joined later had fewer of the comparison window's days to reorder in: one who joined on 25 August had
-16 of its 21. The lab's hand count on seven members gives 1.33 and 0.84, more than 0.10 from each
+The per-member figures divide both windows by the same 107 members, the ones already in the tier
+when the comparison window opened on 20 August, because a member who joined later had fewer of its
+days to reorder in: one who joined on 25 August had 16 of its 21. The lab's hand count on seven members gives 1.33 and 0.84, more than 0.10 from each
 plant, so the full table still has a reason to be run. The seven rows are in the lab note.
 
 ---
