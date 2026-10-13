@@ -489,27 +489,32 @@ LIVE, 3 minutes. Read the two rows, naming numerator, denominator and window eac
 the habit: a filing that names its denominator cannot be misread, and the city's ticket names
 "per peak online hour" for the same reason. Source:
 https://www.bseindia.com/xml-data/corpfiling/AttachHis/2495f39b-e1d1-4018-8f69-6ff250345e98.pdf (checked 12 October 2026)
-Transition: one crowd, counted three ways.
+Transition: one network, counted in two units on two kinds of day.
 ```
 
-## S21. Delhi Metro counts its crowd in three units
-*How can one network's crowd give three numbers, none of them wrong?*
+## S21. Delhi Metro's numbers differ by unit and by day
+*How can four numbers for one network, from 27 lakh to over 82 lakh, all be right?*
 
 ```stats
-value: 27 lakh | label: riders a day, February 2018 | note: gate count: one entry and one exit, one rider
-value: 45,35,932 | label: line utilisation, 29 May 2018 | note: every line ridden counts: three lines, three
-value: 82,44,903 | label: boardings, 17 September 2026 | note: a record day, in a third unit
+value: 27 lakh | label: riders a day | note: February 2018: the old count took each rider once
+value: 45,35,932 | label: line uses | note: 29 May 2018: a rider on three lines counts three times
+value: 64.06 lakh | label: line uses, average day | note: 2026, reported as "journeys"
+value: 82,44,903 | label: line uses, record day | note: 17 September 2026, reported as "boardings"
 ```
 
-In 2018 the Delhi Metro Rail Corporation (DMRC) began counting "line utilisation": a rider from Noida City Centre to HUDA City Centre who changes across three lines counts three times, where the gate count counts one rider (PTI, the Press Trust of India). In 2026 the figures arrive as 64.06 lakh average daily "journeys" (The Tribune) and a record day of "boardings" (Republic World), each a different unit again; all checked 12 October 2026. A definition can move a number without moving the crowd.
+In 2018 the Delhi Metro Rail Corporation (DMRC) began counting "line utilisation": a rider who changes across three lines from Noida City Centre to HUDA City Centre counts three times (PTI, the Press Trust of India). So the 2018 pair is one crowd in two units. The 2026 pair is one unit on two kinds of day: an average day (The Tribune) and the record day, when a bus strike sent riders to the Metro (DMRC's post, as Republic World carries it). That "journeys" and "boardings" name the same count is our reading, since the boardings record beat the earlier record of more than 81 lakh "passenger journeys" on 8 August 2025 (The Tribune). All checked 12 October 2026. A definition can move a number without moving the crowd, and so can the choice of day.
 
 ```notes
 LIVE, 3 minutes. The parallel is on the board already: offers and requests are two units for the
-same riders, and offers rose 29 percent on requests that rose 1.8 percent.
+same riders, and offers rose 29 percent on requests that rose 1.8 percent. Read the 2018 pair as the
+unit lesson and the 2026 pair as the day lesson. If asked whether journeys and boardings are one
+count, say it is our reading of the two records and that DMRC's own definition says a journey counts
+each line used.
 Sources:
 https://www.latestly.com/agency-news/dmrc-uses-new-count-metric-on-traffic-flow-doesnt-share-ridership-190870.html/amp (checked 12 October 2026)
 https://www.tribuneindia.com/news/delhi/delhi-metro-records-99-95-train-punctuality-in-2026-dmrc/ (checked 12 October 2026)
 https://www.republicworld.com/india/delhi-metro-breaks-all-time-record-with-8244-lakh-footfall-as-dtc-strike-sends-rush-soaring-2026-09-18-137241 (checked 12 October 2026)
+https://www.deccanherald.com/india/delhi/delhi-metro-records-highest-ever-footfall-on-aug-29-2666561 (checked 12 October 2026)
 Transition: who is behind the fall.
 ```
 
