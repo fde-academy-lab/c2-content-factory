@@ -50,7 +50,7 @@ This comes up at work whenever a decision-maker asks for "a page on it" instead 
 
 Keep off the page the words a non-technical reader would not know: denominator, index, guardrail. Say
 what they mean instead. Chapter 7 taught these rules on Ramesh's page (invented), and once the page is
-handed in, notebook 07's `page_check` runs the same rules on a typed copy.
+handed in, notebook 09 runs the same rules on a typed copy and recounts the numbers this brief gives.
 
 ---
 

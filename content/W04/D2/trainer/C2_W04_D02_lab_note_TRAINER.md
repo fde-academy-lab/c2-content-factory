@@ -58,7 +58,7 @@ half of DMart's about Rs 146 crore a store on the average count) is in
 **Who needs the answer.** The TA with a learner who cannot start. **The questions on the way.** What is
 the entry, and what is the next step?
 
-The Parsons problem at the end of the lab set: four lines of notebook 04's second code cell,
+The Parsons problem at the end of the lab set: four lines adapted from notebook 04's second code cell,
 scrambled, put in the only order that runs (q s r p) before any line is typed. Then the learner
 presents the Kalpa slide with the TA's prompt for each part, one part at a time.
 

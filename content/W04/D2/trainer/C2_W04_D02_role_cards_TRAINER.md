@@ -43,7 +43,7 @@ evidence answers the rest, and what would change the presenter's mind?
 | Says | "Bookings per hour fell because the monsoon ended. The scheme had nothing to do with it." |
 | Loses | Its own number, top-up per trip (Rs 82.3), as the headline; it becomes a guardrail |
 | The true part | The monsoon ended inside the six weeks, and last year's weeks are not in the data |
-| What answers the rest | In the last three weeks after the launch, requests were back inside the before window's weekly range (41,161 to 42,602 against 41,155 to 42,719) and trips per online hour still ran at 1.56; drivers who joined before the launch fell from 1.90 to 1.58; the drop is a step in the launch week (the highest after week, Rs 271, sits below the lowest before week, Rs 310) |
+| What answers the rest | In the last three weeks after the launch, requests were back inside the before window's weekly range (41,161 to 42,602 against 41,155 to 42,719) and trips per online hour still ran at 1.56; drivers who joined before the launch fell from 1.90 to 1.58 as a group, all of it in the 180 of the idle tail, since the other 880 held at 1.90; the drop is a step in the launch week (the highest after week, Rs 271, sits below the lowest before week, Rs 310) |
 | Push once more with | "Requests fell four weeks running from 7 September. Then show me last year." |
 | A strong presenter's "what would change my mind" | Last year's same six weeks showing a fall of this size, a city where the rains ended without the scheme showing the same fall, or the test showing no change |
 

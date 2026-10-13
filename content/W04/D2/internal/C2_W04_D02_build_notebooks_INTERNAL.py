@@ -1,12 +1,12 @@
-"""Write Tuesday's nine notebooks and execute each cold in its own folder.
+"""Write Tuesday's eleven notebooks and execute each cold in its own folder.
 
 Notebooks 01, 02, 03, 06 and 07 teach the row's five subtopics on invented examples (Ramesh's kirana
-shop, Gulmohar Secondary School, a campus canteen's tea, Ramesh's page); 04, 05 and 08 apply them to
-the Uber case, one per case chapter with a notebook; 11 runs the guesstimate on Kalpa in the lab.
-Chapters 9 and 10 have no notebook: the page is written by hand and the interview room is spoken.
-A notebook's number is its chapter's SECTION number, and the lab takes the number after SECTION 10.
+shop, Gulmohar Secondary School, a campus canteen's tea, Ramesh's page); 04, 05, 08, 09 and 10 apply
+them to the Uber case, one per case chapter; 11 runs the guesstimate on Kalpa in the lab. Notebook 09
+is opened after the page is handed in, since the page itself is written by hand. A notebook's number
+is its chapter's SECTION number, and the lab takes the number after SECTION 10.
 
-    python3 content/W04/D2/internal/C2_W04_D02_build_notebooks_INTERNAL.py          # all nine
+    python3 content/W04/D2/internal/C2_W04_D02_build_notebooks_INTERNAL.py          # all eleven
     python3 content/W04/D2/internal/C2_W04_D02_build_notebooks_INTERNAL.py 01 06    # just these
 
 The markdown here is the notebooks' prose, so the humanizer's file-mode read runs on this script.
@@ -1767,8 +1767,9 @@ plt.show()
         minutes: the page, spoken.
 
         **Where it is used next.** Chapter 9 is the page to the city head, written by hand in 35
-        minutes with laptops closed, so it has no notebook; this notebook's `page_check` is the
-        check you run on it afterwards.
+        minutes with laptops closed; once it is handed in, chapter 9's notebook,
+        `C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb`, runs these rules on a typed
+        copy.
         """),
     ]
 
@@ -2045,6 +2046,553 @@ check("the per-day figure divides by the month's own days", round(per_day / 1e6)
     ]
 
 
+# ------------------------------------------------------------------ case notebook 09
+def nb09():
+    return [
+        md(f"""
+        # The page to the city head, an AI-free written business case: what goes on one page?
+
+        **Week 4, Tuesday, chapter 9, the case's fourth chapter.** It applies the AI-free written
+        business case (concept notebook 07) and the one-slide answer: claim, evidence, caveat, action
+        (concept notebook 01). Notebook 07 found that Ramesh's page (invented) carried the slide's
+        four parts as four sentences in 108 words, where the draft ran nine lines, 13 numbers and four
+        method words. Notebook 08 sized the evening peak at about 5,000 to 5,700 drivers.
+
+        **Open this notebook after your page is handed in.** The page is written by hand, in 35
+        minutes, with laptops closed, because it shows your own thinking. This notebook then checks
+        the numbers the brief gave you against the case's own table and runs notebook 07's rules on
+        a typed copy of your page.
+
+        **The ticket.** Uber, Hyderabad, the peak-hour earnings guarantee. The city head reads one
+        page, alone, before Thursday's city review, with the driver-operations lead, the marketing
+        lead and the finance partner reading over a shoulder.
+
+        {LABEL}
+
+        **Who needs the answer.** The city head, who signs or refuses the test on the strength of the
+        page; a page that misquotes its number hands the finance partner a reason to set it aside.
+
+        **The metric at stake.** Gross bookings per peak online hour, Rs 314 to Rs 260, and the
+        saving, Rs 58 lakh to Rs 92.7 lakh over six weeks.
+
+        **The questions on the way.**
+
+        1. Is the page's number right, counted from the case's table?
+        2. Where does the saving range come from, and what does each end assume?
+        3. Which opening does the city head act on?
+        4. Does your page pass the rules?
+        """),
+        code(SETUP + """
+weeks = pd.read_csv("../data/C2_W04_D02_twelve_weeks_STUDENT.csv")   # the city, week by week
+check("six weeks before the launch and six after", (weeks.window.value_counts() == 6).all())
+print(weeks[["week_start", "window", "peak_online_hours", "peak_trips", "peak_bookings_rs"]].to_string(index=False))
+"""),
+        md("""
+        ## Is the page's number right, counted from the case's table?
+
+        The brief gave Rs 314 to Rs 260 of fares per peak online hour. A number on a page read alone
+        has to survive a reader who recounts it.
+
+        **Predict before you run.** Which reading of the twelve weeks gives the page's number?
+
+        a) The last week after the launch against the first week before it
+        b) Each window's bookings summed, over its online hours summed
+        c) The best week before against the worst week after
+        d) The two windows' busiest weeks, side by side
+        """),
+        code("""
+w = weeks.groupby("window")[["peak_online_hours", "peak_trips", "peak_bookings_rs"]].sum().loc[["before", "after"]]
+per_hour = w.peak_bookings_rs / w.peak_online_hours                  # each window's rupees over its hours
+ends = weeks.rs_per_hour.iloc[[0, -1]].tolist()                      # the first week and the last
+mean_of_weeks = weeks.groupby("window").rs_per_hour.mean().loc[["before", "after"]]
+fare_route = (w.peak_bookings_rs / w.peak_trips) * (w.peak_trips / w.peak_online_hours)
+print(f"summed by window: Rs {per_hour['before']:.1f} before, Rs {per_hour['after']:.1f} after")
+print(f"the first and last weeks alone: Rs {ends[0]:.2f} and Rs {ends[1]:.2f}")
+check("summed by window: Rs 313.5 and Rs 260.4, printed Rs 314 and Rs 260",
+      per_hour.round(1).tolist() == [313.5, 260.4])
+check("the six weekly rates, averaged, land within a rupee of the sums", ((mean_of_weeks - per_hour).abs() < 1).all())
+check("a second route, the fare times trips per hour, agrees", ((fare_route - per_hour).abs() < 1e-9).all())
+
+x = range(len(weeks))
+fig, ax = plt.subplots(figsize=(9, 3.8))
+ax.plot(x, weeks.rs_per_hour, color=VIOLET, lw=2.5, marker="o")
+ax.hlines(per_hour["before"], -0.3, 5.3, color="gray", ls=":")
+ax.hlines(per_hour["after"], 5.7, 11.3, color="gray", ls=":")
+ax.axvline(5.5, color=ROSE, ls="--")
+ax.set_xticks(list(x)[::2], pd.to_datetime(weeks.week_start).dt.strftime("%d %b")[::2])
+ax.set_ylabel("gross bookings per peak online hour, Rs")
+ax.set_title("The page's one number, recounted: about Rs 314, then about Rs 260", loc="left")
+plt.show()
+"""),
+        md("""
+        **What happened.** The answer is b: Rs 313.5 before and Rs 260.4 after, printed Rs 314 and Rs
+        260, and two other routes agree. The first and last weeks alone would print other numbers, so
+        the page says which windows it compares: the six weeks either side of 31 August 2026.
+
+        ## Where does the saving range come from, and what does each end assume?
+
+        Monday's figure, typed here: Rs 1.16 crore (115.9 lakh, since 1 crore is 100 lakh) of the Rs
+        1.9 crore top-up went to driver-weeks that accepted fewer than half the requests offered to
+        them. The redesign stops paying it, except where those drivers start accepting and qualify.
+
+        **Predict before you run.** If a fifth of that money is still paid, against a half, the saving
+        is:
+
+        a) Smaller
+        b) Larger
+        c) The same, since the top-up is the same
+        d) Nothing, since drivers who accept are still paid
+        """),
+        code("""
+idle_lakh = 115.9                                     # Monday's top-up to low-acceptance driver-weeks
+still_paid = pd.Series({"a half still paid": 0.5, "a fifth still paid": 0.2})
+saved = (idle_lakh * (1 - still_paid)).round(1)
+print(saved.rename("saved over six weeks, Rs lakh").to_string())
+check("a half still paid saves Rs 58 lakh", saved.iloc[0] == 58.0)
+check("a fifth still paid saves Rs 92.7 lakh", saved.iloc[1] == 92.7)
+
+fig, ax = plt.subplots(figsize=(8, 3.4))
+ax.barh(still_paid.index, saved, color=VIOLET, label="saved")
+ax.barh(still_paid.index, idle_lakh - saved, left=saved, color=PALE, edgecolor=VIOLET, label="still paid")
+ax.set_xlabel("Rs lakh over six weeks")
+ax.set_title("The saving range: each end is an assumption about who starts accepting", loc="left")
+ax.legend(loc="lower right")
+plt.show()
+"""),
+        md("""
+        **What happened.** The answer is b: Rs 92.7 lakh if a fifth is still paid, Rs 58 lakh if a half
+        is. The page says the range with the assumption behind it, in its action sentence, so the
+        finance partner reads the same arithmetic.
+
+        ## Which opening does the city head act on?
+
+        Two openings from the interview room's first transcript. A page is read alone, so its first
+        sentence has to name the decision and what to do about it. The cell writes that test as a
+        function and runs notebook 07's page rules, restated here, on Ramesh's page (invented) to
+        prove them.
+
+        **Predict before you run.** Which opening gives the city head something to do?
+
+        a) The weak one, since it reports every number first
+        b) The hire-grade one, since it names the decision and recommends a test
+        c) Both, since each mentions paying per trip
+        d) Neither, since an opening should be a question
+        """),
+        code("""
+weak = "So I looked at the dashboard."
+hire = ("You are deciding whether to keep, end or change the guarantee, so my answer first: the scheme is paying "
+        "for online hours that carry no trips, and I recommend testing a change before the city pays for another six weeks.")
+
+def acts(sentence):
+    \"\"\"A first sentence a reader can act on names the decision and what to do.\"\"\"
+    return any(word in sentence.lower() for word in ("recommend", "keep", "end ", "change", "test"))
+
+METHOD = ["denominator", "index", "guardrail", "north star"]
+
+def page_check(text):
+    \"\"\"Notebook 07's rules, restated: what a reader checks in two minutes.\"\"\"
+    sentences = [s for s in text.splitlines() if s.strip() and not s.startswith("VERSION")]
+    return {"opens on a claim with its reason": "because" in sentences[0] or " so " in sentences[0],
+            "no method words": not any(w in text.lower() for w in METHOD),
+            "the action names a cost and who signs": "Rs" in sentences[-1] and "signs" in sentences[-1],
+            "one page, 250 words or fewer": len(text.split()) <= 250,
+            "four to six sentences": 4 <= len(sentences) <= 6}
+
+ramesh = open("../data/C2_W04_D02_kirana_page_STUDENT.txt", encoding="utf-8").read().split("=====")[1]
+print("the weak opening acts:", acts(weak), "   the hire-grade opening acts:", acts(hire))
+check("only the hire-grade opening names the decision", acts(hire) and not acts(weak))
+check("the page rules pass Ramesh's page (invented)", all(page_check(ramesh).values()))
+
+city_page = "\\n".join([                                        # the page's four lines, on the case's own numbers
+    "The scheme is paying for online hours that carry no trips, so I recommend testing a change before the city pays for another six weeks.",
+    f"An hour online at peak brought in Rs {per_hour['after']:.0f} of fares in the six weeks after the launch, down from Rs {per_hour['before']:.0f}, at the same Rs 165 fare.",
+    "The monsoon ended inside the same six weeks and last year's weeks are not in the data, so part of the fall may be the season.",
+    f"Test paying per completed peak trip, with an acceptance floor, on half the drivers for six weeks; city-wide the change saves Rs {saved.iloc[0]:.0f} lakh to Rs {saved.iloc[1]} lakh, and the city head signs."])
+print(city_page)
+check("a page built from the case's own numbers passes every rule", all(page_check(city_page).values()))
+
+fig, ax = plt.subplots(figsize=(10, 3.2))
+parts = [("claim", "the scheme pays for online\\nhours that carry no trips"),
+         ("evidence", "Rs 314 to Rs 260 per peak\\nonline hour, fare Rs 165"),
+         ("caveat", "the monsoon ended inside\\nthe six weeks"),
+         ("action", "test on half the drivers, six\\nweeks; Rs 58 to 92.7 lakh;\\nthe city head signs")]
+for i, (part, words) in enumerate(parts):
+    ax.text(i, 0.75, part, ha="center", weight="bold", color="white",
+            bbox=dict(boxstyle="round", fc=[INK, VIOLET, AMBER, VIOLET][i], ec="none"))
+    ax.text(i, 0.35, words, ha="center", va="center", fontsize=10, bbox=dict(boxstyle="round", fc=PALE, ec=VIOLET))
+ax.set_xlim(-0.6, 3.6)
+ax.set_ylim(0, 1)
+ax.axis("off")
+ax.set_title("The page's four sentences, and the brief's numbers each one carries", loc="left")
+plt.show()
+"""),
+        md("""
+        **What happened.** The answer is b. The weak opening reports what the analyst looked at; the
+        hire-grade one names the decision, the claim and the recommendation in one sentence. The four
+        lines printed above are the page on the case's own numbers, each recounted in this notebook,
+        and they pass every rule; the picture is the same page as its skeleton, with the brief's
+        numbers in the sentence that carries each.
+
+        **Your turn.** Type the page you handed in into `my_page`, one sentence a line, and run the
+        rules on it. The rules check the shape; your trainer reads the argument. Type the lines into
+        the empty cell below and run them:
+
+        ```python
+        my_page = \"\"\"
+        ___
+        \"\"\".strip()
+        mine = page_check(my_page)
+        print(pd.Series(mine).to_string())
+        check("my first sentence names the decision", acts(my_page.splitlines()[0]))
+        check("my page passes every rule", all(mine.values()))
+        ```
+        """),
+        empty(),
+        md("""
+        **The answers, one line each.**
+
+        1. Each window's bookings over its online hours give Rs 313.5 and Rs 260.4, printed Rs 314 and
+           Rs 260; two other routes agree.
+        2. The range is Rs 1.16 crore times one less the share still paid: a half gives Rs 58 lakh, a
+           fifth Rs 92.7 lakh.
+        3. The hire-grade opening names the decision and recommends a test; the weak one reports what
+           was looked at.
+        4. Your page passes when its first sentence names the decision and every rule holds.
+
+        ### What will an interviewer ask about this, and what does a strong answer do?
+
+        **[S] Present a recommendation to a non-technical stakeholder in two minutes.** The page,
+        spoken: the decision and the claim first, one number with what it is divided by and its
+        window, the caveat, then the action with its cost, its window and who signs.
+
+        **The AI-company variant.** The same page goes to a coding assistant's head of product: the
+        claim (judge the team on suggested code still in the file seven days after acceptance), one
+        number (32 percent of suggestions accepted, about 26 percent of those shown still there a
+        week later, invented), the caveat (customers see acceptance, so it stays in the sales deck as
+        a leading input), and the action (hold out a share of users for a quarter, keep whichever
+        number tracks seat renewals, and the head of product signs).
+        """),
+    ]
+
+
+# ------------------------------------------------------------------ case notebook 10
+def nb10():
+    return [
+        md(f"""
+        # The interview room, with the one-slide answer and the guesstimate spoken: what does it sound like?
+
+        **Week 4, Tuesday, chapter 10, the case's last chapter.** It applies the one-slide answer:
+        claim, evidence, caveat, action (concept notebook 01), defending under challenge: restate,
+        answer, concede, what would change your mind (concept notebook 03), and the guesstimate:
+        clarify, map, calculate, validate (concept notebook 06). Notebooks 04, 05 and 08 computed the
+        case's numbers; notebook 09 checked the page. This notebook recomputes every number a
+        hire-grade answer in `extras/C2_W04_D02_interview_room_STUDENT.md` says aloud, so you can say
+        each one under a follow-up, and draws your own score on the room's seven criteria.
+
+        {LABEL} The coding-assistant company in the third transcript is invented.
+
+        **Who needs the answer.** You, in a screen that asks for a two-minute recommendation or a
+        number from nothing, and the interviewer, who follows up on any number you cannot rebuild.
+
+        **The metric at stake.** The numbers a candidate speaks: Rs 314 to Rs 260 per peak online
+        hour, about 5,000 to 5,700 drivers at the evening peak, and a retained share of suggested
+        code.
+
+        **The questions on the way.**
+
+        1. Do transcript 1's numbers hold, recounted from the case's table?
+        2. Do transcript 2's numbers hold, and how far off is the weak answer?
+        3. Do transcript 2's follow-up numbers hold?
+        4. Does each hire-grade answer keep its structure?
+        5. What does the AI-company variant's arithmetic say?
+        """),
+        code(SETUP + """
+weeks = pd.read_csv("../data/C2_W04_D02_twelve_weeks_STUDENT.csv")     # the city, week by week
+groups = pd.read_csv("../data/C2_W04_D02_driver_groups_STUDENT.csv")   # drivers there before, and the 140 joiners
+check("twelve weeks and three driver groups", len(weeks) == 12 and len(groups) == 3)
+print(groups.to_string(index=False))
+"""),
+        md("""
+        ## Do transcript 1's numbers hold, recounted from the case's table?
+
+        The hire-grade answer says an online hour brought in Rs 260 of fares, down from Rs 314, at the
+        same Rs 165 fare, and meets the follow-up it expects: bookings per driver-week rose 0.8
+        percent because each driver stayed online about four more hours a week while each hour
+        earned 17 percent less.
+
+        **Predict before you run.** The interviewer asks how per driver-week can rise while per hour
+        falls. Which number answers it?
+
+        a) The fare, which rose after the launch
+        b) Hours per driver-week, which rose by about four
+        c) The 140 joiners, who earned more than the rest
+        d) The monsoon, which ended inside the window
+        """),
+        code("""
+w = weeks.groupby("window")[["peak_online_hours", "peak_trips", "peak_bookings_rs", "active_driver_weeks"]].sum()
+w = w.loc[["before", "after"]]
+w["rs_per_hour"] = w.peak_bookings_rs / w.peak_online_hours
+w["rs_per_driver_week"] = w.peak_bookings_rs / w.active_driver_weeks
+w["hours_per_driver_week"] = w.peak_online_hours / w.active_driver_weeks
+w["fare"] = w.peak_bookings_rs / w.peak_trips
+change = (w.loc["after"] / w.loc["before"] - 1) * 100
+print(w[["rs_per_hour", "fare", "rs_per_driver_week", "hours_per_driver_week"]].round(1).to_string())
+print(f"per hour {change.rs_per_hour:+.1f} percent; per driver-week {change.rs_per_driver_week:+.1f} percent")
+joiners = groups[groups.group == "the 140 joiners"].iloc[0]
+check("Rs 314 to Rs 260 at the same Rs 165 fare", w.rs_per_hour.round(0).tolist() == [314, 260] and w.fare.round(0).nunique() == 1)
+check("about four more hours a driver-week", round(w.hours_per_driver_week.diff().iloc[-1]) == 4)
+check("the joiners sit below the after average, so they pulled it down",
+      joiners.peak_bookings_rs / joiners.driver_weeks < w.loc["after", "rs_per_driver_week"])
+
+fig, axes = plt.subplots(1, 2, figsize=(10, 3.4))
+axes[0].bar(["before", "after"], w.rs_per_hour, color=[LILAC, VIOLET])
+axes[0].set_title("Rs per peak online hour", loc="left")
+axes[1].bar(["before", "after"], w.hours_per_driver_week, color=[LILAC, VIOLET])
+axes[1].set_title("Online hours per driver-week", loc="left")
+fig.suptitle("Less per hour, more hours: why per driver-week rose", x=0.02, ha="left")
+fig.tight_layout()
+plt.show()
+"""),
+        md("""
+        **What happened.** The answer is b: 18.6 hours a driver-week before and 22.5 after, so per
+        driver-week rose while per hour fell 17 percent, with the fare flat at Rs 165. The 140
+        joiners pulled the read down, which is why the answer says so before anyone asks.
+
+        ## Do transcript 2's numbers hold, and how far off is the weak answer?
+
+        The hire-grade answer: about 8,330 trips an hour, divided by 1.68 trips per online
+        driver-hour, times 1.15 for the busiest half hour, is about 5,700; like for like, 0.53 online
+        driver-hours per trip against the chain's 0.60 says about 5,000. The weak answer divides a
+        day's 1 lakh trips by 2.4 and says about 41,700.
+
+        **Predict before you run.** About how many times the hire-grade 5,700 is the weak 41,700?
+
+        a) About 2 times
+        b) About 4 times
+        c) About 7 times
+        d) About 20 times
+        """),
+        code("""
+trips_an_hour = 10_000_000 * 0.01 * 0.25 / 3
+per_driver = 2.4 * (1 - 0.30)
+chain = trips_an_hour / per_driver * 1.15
+weak = 10_000_000 * 0.01 / 2.4
+before = w.loc["before"]
+checked = trips_an_hour / (before.peak_trips / before.peak_online_hours) * 1.15
+print(f"the chain: {trips_an_hour:,.0f} / {per_driver:.2f} x 1.15 = about {round(chain, -2):,.0f}")
+print(f"checked at the case's {before.peak_trips / before.peak_online_hours:.2f} trips an hour: about {round(checked, -2):,.0f}")
+print(f"the weak answer: about {round(weak, -2):,.0f}, about {weak / chain:.0f} times the chain")
+check("about 5,700 by the chain", round(chain, -2) == 5700)
+check("about 5,000 checked like for like", round(checked, -2) == 5000)
+check("the weak answer is about seven times the chain", round(weak / chain) == 7)
+
+fig, ax = plt.subplots(figsize=(8, 3.4))
+ax.bar(["weak answer", "the chain", "checked"], [weak, chain, checked], color=[ROSE, LILAC, VIOLET])
+ax.set_ylabel("drivers online at the evening peak")
+ax.set_title("A day's trips over an hour's rate: about seven times too many", loc="left")
+plt.show()
+"""),
+        md("""
+        **What happened.** The answer is c: about 41,700 against about 5,700, seven times as many. The
+        chain checks out at about 5,700, and at the case's 1.90 trips an hour it gives about 5,000, so
+        the answer says 5,000 to 5,700.
+
+        ## Do transcript 2's follow-up numbers hold?
+
+        Two follow-ups carry numbers. The idle share, read like for like from the case's trips per
+        hour and a 25-minute trip, is about 0.21 before the launch and 0.34 after. A four-hour window
+        leaves the busiest half hour where it was: the average hour falls to about 6,250 trips, the
+        buffer rises to about 1.53, and the answer stays about 5,700. Each costs the evening money:
+        every thousand drivers held online for three hours with no trip costs up to Rs 9 lakh at the
+        Rs 300 floor.
+
+        **Predict before you run.** With a fourth hour that adds no trips, what happens to the drivers
+        needed at the busiest moment?
+
+        a) They fall by a quarter
+        b) They stay about the same
+        c) They rise by a third
+        d) They double
+        """),
+        code("""
+tph = (w.peak_trips / w.peak_online_hours)
+idle = (1 - tph / 2.4).round(2)                                   # the share of an online hour with no rider
+busiest = trips_an_hour * 1.15                                    # the busiest half hour's rate, unchanged
+avg_four = 10_000_000 * 0.01 * 0.25 / 4
+buffer_four = busiest / avg_four
+drivers_four = avg_four / per_driver * buffer_four
+cost_lakh = 1000 * 300 * 3 / 1e5
+print(f"idle share like for like: {idle['before']} before, {idle['after']} after")
+print(f"four hours: {avg_four:,.0f} trips an hour, buffer {buffer_four:.2f}, about {round(drivers_four, -2):,.0f} drivers")
+print(f"a thousand idle drivers for three hours at the floor: up to Rs {cost_lakh:.0f} lakh an evening")
+check("idle share about 0.21 before and 0.34 after", idle.tolist() == [0.21, 0.34])
+check("the four-hour window leaves the answer at about 5,700", round(drivers_four, -2) == 5700)
+check("Rs 9 lakh an evening for a thousand idle drivers", cost_lakh == 9)
+
+fig, ax = plt.subplots(figsize=(8, 3.4))
+ax.bar(["three-hour average", "four-hour average", "busiest half hour"], [trips_an_hour, avg_four, busiest],
+       color=[LILAC, PALE, VIOLET], edgecolor=VIOLET)
+ax.set_ylabel("trips an hour")
+ax.set_title("A longer window lowers the average, never the busiest half hour", loc="left")
+plt.show()
+"""),
+        md("""
+        **What happened.** The answer is b: the busiest half hour asks for the same trips an hour
+        whatever the window's length, so the buffer grows as the average shrinks and the answer stays
+        about 5,700.
+
+        ## Does each hire-grade answer keep its structure?
+
+        An interviewer hears the structure before the numbers. The cell holds each answer as data, one
+        part a line in the order it is spoken, and checks it with two functions: the one-slide
+        answer's order (claim, evidence, caveat, action) and the guesstimate's four steps (clarify,
+        map, calculate, validate).
+
+        **Predict before you run.** Which part does transcript 2's weak answer speak first?
+
+        a) Clarify
+        b) Map
+        c) Calculate
+        d) Validate
+        """),
+        code("""
+recommend_hire = [("decision", "you are deciding whether to keep, end or change the guarantee"),
+                  ("claim", "the scheme is paying for online hours that carry no trips"),
+                  ("evidence", "an online hour brought in Rs 260 of fares, down from Rs 314, at the same fare"),
+                  ("caveat", "the monsoon ended in the same weeks, and last year's weeks are missing"),
+                  ("action", "test it on half the drivers for six weeks; it saves Rs 58 lakh to Rs 92.7 lakh; you sign"),
+                  ("change my mind", "fewer completed trips per driver, or a longer wait in any zone, drops the change")]
+recommend_weak = [("method", "so I looked at the dashboard"), ("evidence", "hours up, trips up, acceptance down"),
+                  ("evidence", "bookings per driver-week is actually up"), ("action", "maybe pay per trip")]
+estimate_hire = [("clarify", "one moment of the weekday evening peak, one product, a median wait under five minutes"),
+                 ("map", "trips to serve an hour, over trips per online driver-hour, times a buffer"),
+                 ("calculate", "8,330 over 1.68, times 1.15: about 5,700"),
+                 ("range", "trips per person moves it from about 2,900 to 8,600"),
+                 ("validate", "0.53 against 0.60 driver-hours per trip: say 5,000 to 5,700"),
+                 ("decision", "the number sets the evening incentive")]
+estimate_weak = [("calculate", "1 crore x 1 percent, over 2.4: about 41,700")]
+
+def in_order(parts, wanted):
+    \"\"\"Every wanted part is spoken, in the wanted order.\"\"\"
+    names = [name for name, _ in parts]
+    places = [names.index(w) for w in wanted if w in names]
+    return len(places) == len(wanted) and places == sorted(places)
+
+def one_slide_spoken(parts):
+    action = dict(parts).get("action", "")
+    return in_order(parts, ["claim", "evidence", "caveat", "action"]) and "Rs" in action and "sign" in action
+
+def four_steps_spoken(parts):
+    return in_order(parts, ["clarify", "map", "calculate", "validate"])
+
+for label, parts, rule in [("transcript 1, hire-grade", recommend_hire, one_slide_spoken),
+                           ("transcript 1, weak", recommend_weak, one_slide_spoken),
+                           ("transcript 2, hire-grade", estimate_hire, four_steps_spoken),
+                           ("transcript 2, weak", estimate_weak, four_steps_spoken)]:
+    print(f"{label:>26}: {' > '.join(name for name, _ in parts)}  ->  {'keeps' if rule(parts) else 'breaks'} the structure")
+check("the hire-grade recommendation keeps the one-slide order, with a cost and a signer", one_slide_spoken(recommend_hire))
+check("the weak recommendation breaks it", not one_slide_spoken(recommend_weak))
+check("the hire-grade estimate runs the four steps in order", four_steps_spoken(estimate_hire))
+check("the weak estimate starts at the calculation", estimate_weak[0][0] == "calculate" and not four_steps_spoken(estimate_weak))
+
+colours = {"decision": INK, "claim": INK, "evidence": VIOLET, "caveat": AMBER, "action": VIOLET,
+           "change my mind": LILAC, "method": ROSE, "clarify": INK, "map": VIOLET, "calculate": VIOLET,
+           "range": LILAC, "validate": AMBER}
+fig, ax = plt.subplots(figsize=(10, 3.4))
+rows = [("recommend, hire-grade", recommend_hire), ("recommend, weak", recommend_weak),
+        ("estimate, hire-grade", estimate_hire), ("estimate, weak", estimate_weak)]
+for r, (label, parts) in enumerate(rows):
+    for k, (name, _) in enumerate(parts):
+        ax.barh(r, 1, left=k, color=colours[name], edgecolor="white")
+        ax.text(k + 0.5, r, name, ha="center", va="center", fontsize=8, color="white")
+ax.set_yticks(range(len(rows)), [label for label, _ in rows])
+ax.invert_yaxis()
+ax.set_xticks([])
+ax.set_title("Each answer as it is spoken, part by part", loc="left")
+plt.show()
+"""),
+        md("""
+        **What happened.** The answer is c: the weak estimate opens on a calculation, with no unit
+        clarified and no check, and the weak recommendation opens on method. Both hire-grade answers
+        speak their parts in the order the chapters taught, so the interviewer can follow each number
+        to the decision it serves.
+
+        ## What does the AI-company variant's arithmetic say?
+
+        The third transcript is set at an invented coding-assistant company. Its hire-grade answer
+        says that at 32 percent accepted, if a fifth of accepted characters are gone within a week,
+        only about 26 percent of what was shown survives.
+
+        **Predict before you run.** Of 100 suggestions shown, about how many survive a week?
+
+        a) 32
+        b) About 26
+        c) 20
+        d) About 6
+        """),
+        code("""
+shown, accepted_share, kept_share = 100, 0.32, 0.8               # invented numbers
+accepted = shown * accepted_share
+kept = accepted * kept_share
+print(f"of {shown} shown: {accepted:.0f} accepted, about {kept:.0f} still in the file a week later")
+check("about 26 of 100 survive a week", round(kept) == 26)
+check("a fifth of the accepted is lost", round(accepted - kept, 1) == round(accepted * 0.2, 1))
+
+fig, ax = plt.subplots(figsize=(8, 3.2))
+ax.barh(["shown", "accepted", "still there after a week"], [shown, accepted, kept], color=[PALE, LILAC, VIOLET],
+        edgecolor=VIOLET)
+ax.invert_yaxis()
+ax.set_xlabel("suggestions, of 100 shown (invented)")
+ax.set_title("Acceptance counts what is taken; the north star counts what stays", loc="left")
+plt.show()
+"""),
+        md("""
+        **What happened.** The answer is b: 32 accepted, about 26 still in the file a week later. The
+        answer keeps acceptance in the deck as a leading input and judges the team on what stays,
+        then names the holdout that would change the call.
+
+        **Your turn.** Score your own spoken answer to one of the three questions on the room's seven
+        criteria, each 0, 1 or 2, as the scorecard on slide S90 sets them, and draw it. Type the lines
+        into the empty cell below, with your own scores in the blanks:
+
+        ```python
+        mine = pd.Series({"Clarified the scope first": ___, "Named the denominator, or the unit, and the window": ___,
+                          "Saw the trap": ___, "Sized it with a unit": ___, "Said what would change their mind": ___,
+                          "Tied it to a decision and its cost": ___, "Gave the structure before the number": ___})
+        mine.plot.barh(color=VIOLET, xlim=(0, 2), title="My answer on the seven criteria")
+        plt.show()
+        check("every criterion scored 0, 1 or 2", mine.isin([0, 1, 2]).all())
+        print("the criterion to rehearse first:", mine.idxmin())
+        ```
+        """),
+        empty(),
+        md("""
+        **The answers, one line each.**
+
+        1. Rs 313.5 to Rs 260.4 at a Rs 165 fare, printed Rs 314 and Rs 260; 18.6 to 22.5 hours a
+           driver-week explains the 0.8 percent rise, and the joiners pulled it down.
+        2. The chain gives about 5,700, the like-for-like check about 5,000, and the weak answer about
+           41,700, seven times too many.
+        3. The idle share is about 0.21 before and 0.34 after; a four-hour window leaves about 5,700;
+           a thousand idle drivers cost up to Rs 9 lakh an evening.
+        4. Both hire-grade answers keep their structure: the recommendation runs claim, evidence,
+           caveat, action, and the estimate runs clarify, map, calculate, validate; both weak answers
+           break it.
+        5. Of 100 suggestions shown, 32 are accepted and about 26 survive a week (invented).
+
+        ### What will an interviewer ask about this, and what does a strong answer do?
+
+        **[S] A guesstimate: how many drivers must be online at the evening peak?** The structure
+        before the number, a unit beside every factor, the range with its driving factor, the check
+        like for like, and the cost of the decision the number sets.
+
+        **[D] The person who loses under your metric controls the meeting.** Concede their true part
+        first, keep their number in sight as a leading input, and agree before the meeting the test
+        and the result that decides it.
+        """),
+    ]
+
+
 # ------------------------------------------------------------------ lab notebook 11
 def nb11():
     return [
@@ -2231,6 +2779,8 @@ NOTEBOOKS = {
     "06": ("C2_W04_D02_06_guesstimate_clarify_map_calculate_validate_STUDENT.ipynb", nb06),
     "07": ("C2_W04_D02_07_written_business_case_STUDENT.ipynb", nb07),
     "08": ("C2_W04_D02_08_case_guesstimate_drivers_at_peak_STUDENT.ipynb", nb08),
+    "09": ("C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb", nb09),
+    "10": ("C2_W04_D02_10_case_interview_room_STUDENT.ipynb", nb10),
     "11": ("C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb", nb11),
 }
 
@@ -2248,9 +2798,9 @@ if __name__ == "__main__":
 # Test inputs and expected outcomes
 # ---------------------------------
 # python3 content/W04/D2/internal/C2_W04_D02_build_notebooks_INTERNAL.py
-#     writes and executes all nine notebooks, one "wrote and executed" line each; then
+#     writes and executes all eleven notebooks, one "wrote and executed" line each; then
 #     python3 scripts/nb_check.py content/W04/D2 passes every one.
 # python3 content/W04/D2/internal/C2_W04_D02_build_notebooks_INTERNAL.py 06
 #     rebuilds notebook 06 alone.
-# python3 content/W04/D2/internal/C2_W04_D02_build_notebooks_INTERNAL.py 09
-#     KeyError: '09', since chapter 9 has no notebook; nothing is written.
+# python3 content/W04/D2/internal/C2_W04_D02_build_notebooks_INTERNAL.py 12
+#     KeyError: '12', since no chapter or lab carries that number; nothing is written.

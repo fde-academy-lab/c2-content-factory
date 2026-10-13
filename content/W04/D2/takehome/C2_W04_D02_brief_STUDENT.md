@@ -59,3 +59,10 @@ and definition.
 Hand in the slide (one page, any tool), the appendix headings, the recording, and the two sentences with the
 source and its date, where and by when your TA says. The self-check page lists what each part needs,
 in plain words first.
+
+---
+
+## What do you read before Wednesday?
+
+Wednesday's pre-read, `preread/C2_W04_D02_preread_STUDENT.md`, about ten minutes: Wednesday's five
+topics in the curriculum's words, and the basket words support, confidence and lift, terms only.

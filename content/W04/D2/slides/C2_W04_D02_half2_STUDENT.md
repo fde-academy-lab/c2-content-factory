@@ -723,7 +723,8 @@ Transition: the thirty-five minutes.
 
 ```notes
 LIVE, 32 minutes of silent writing. Walk once early to answer scope questions and once near the
-end to signal the clock. No teaching inside the slot.
+end to signal the clock. No teaching inside the slot. Notebook 09 is for after the page is handed
+in: it recounts the brief's numbers and runs chapter 7's page rules on a typed copy.
 Transition: the transcripts.
 ```
 
@@ -734,7 +735,7 @@ Transition: the transcripts.
 
 ```notes
 LIVE, 30 seconds. The fifth case chapter, L6 of the ladder, 12 minutes: transcript 1 read in pairs
-and scored; transcripts 2 and 3 and the AI-company variant are the evening's reading, from
+and scored; transcript 2 and transcript 3, the AI-company variant, are the evening's reading, from
 extras/C2_W04_D02_interview_room_STUDENT.md with the scorecard. Style: interview rehearsal on
 annotated answers. Transition: what the chapter applies.
 ```
@@ -774,7 +775,7 @@ LIVE, 8 minutes. In pairs, one reads the interviewer, one the candidate; then th
 the three follow-ups without notes. The weak opening reads numbers and lets the per-driver-week rise
 blur the claim. The full hire-grade answer, with the per-driver-week line checked (each driver
 online four more hours a week at 17 percent less per hour; the 140 joiners pulled the read down), is
-in extras/C2_W04_D02_interview_room_STUDENT.md.
+in extras/C2_W04_D02_interview_room_STUDENT.md, and notebook 10 recomputes every number it speaks.
 Transition: transcript 2.
 ```
 
@@ -880,14 +881,15 @@ Transition: where the day ends.
 
 **The lines to keep.** A slide carries one claim, one number with its denominator, the caveat in sight and the action with its cost. Name the denominator before the number. Answer an objection in four moves. Size a number in four steps, give the factor that drives the range, and check it like for like. Check in the same unit, period and definition.
 
-**Tomorrow:** Swiggy Instamart's cart page in Pune, and a strip that suggests what goes with what.
+**Tomorrow:** five topics on counting what goes with what, then Swiggy Instamart's cart page in Pune and its strip of suggestions.
 
 ```notes
-LIVE, 5 minutes. Read the sentence once. Wednesday's pre-read ships tonight: the Instamart ticket's
-first lines and three terms, terms only. Then say the handoff line, as the day sheet has it: "You can
-now put a number in front of the people who lose under it and size one from nothing. Tomorrow's
-ticket is a counting problem: a strip that suggests what goes with what, and a click-through that
-fell when the strip began trusting counts. Read the three words tonight; we count them by hand first."
+LIVE, 5 minutes. Read the sentence once. Wednesday's pre-read ships tonight: its five topics, their
+words and the Instamart ticket's first lines, terms only. Then say the handoff line, as the day sheet has it: "You can
+now put a number in front of the people who lose under it and size one from nothing. Tomorrow opens
+on five topics about counting what goes with what, then a strip that suggests what goes with what,
+and a click-through that fell when the strip began trusting counts. Read the topics and their words
+tonight; we count them by hand first."
 With the 6 minutes of slack, read three handed-in pages aloud, one strong part each.
 Transition: close.
 ```

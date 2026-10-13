@@ -36,7 +36,7 @@ This is the coverage matrix's first table, from `internal/C2_W04_D02_coverage_IN
 | # | Subtopic (verbatim from the row) | Name in the chapter title and the notebook | Chapter | Slides | Notebook | Exercise items | Kahoot items | Minutes |
 |---|---|---|---|---|---|---|---|---|
 | 1 | The one-slide answer: claim, evidence, caveat, action | The one-slide answer: claim, evidence, caveat, action | SECTION 1: The one-slide answer: claim, evidence, caveat, action: what does a slide carry? | half1 S6 to S13 | notebooks/C2_W04_D02_01_one_slide_answer_STUDENT.ipynb | ch1_one_slide_answer Q1 to Q5; slide_and_estimate Q1, Q2; interview_rungs Q1 | Q1 | 35 |
-| 2 | What to leave out, and the appendix | What to leave out, and the appendix | SECTION 2: "What to leave out, and the appendix": where does the rest go? | half1 S14 to S19 | notebooks/C2_W04_D02_02_leave_out_and_appendix_STUDENT.ipynb | ch2_leave_out_appendix Q1 to Q3; mid_cut_to_two Q1, Q2 | Q2 | 12 |
+| 2 | What to leave out, and the appendix | What to leave out, and the appendix | SECTION 2: What to leave out, and the appendix: where does the rest go? | half1 S14 to S19 | notebooks/C2_W04_D02_02_leave_out_and_appendix_STUDENT.ipynb | ch2_leave_out_appendix Q1 to Q3; mid_cut_to_two Q1, Q2 | Q2 | 12 |
 | 3 | Defending under challenge: restate, answer, concede, what would change your mind | Defending under challenge: restate, answer, concede, what would change your mind | SECTION 3: Defending under challenge: restate, answer, concede, what would change your mind: how do you hold a claim? | half1 S20 to S27 | notebooks/C2_W04_D02_03_defending_under_challenge_STUDENT.ipynb | ch3_defending_under_challenge Q1 to Q4; studio_brief Q1; interview_rungs Q2 | Q3 | 25 |
 | 4 | The guesstimate: clarify, map, calculate, validate | The guesstimate: clarify, map, calculate, validate | SECTION 6: The guesstimate: clarify, map, calculate, validate: how big is an unknown? | half2 S56 to S63 | notebooks/C2_W04_D02_06_guesstimate_clarify_map_calculate_validate_STUDENT.ipynb | ch6_guesstimate Q1 to Q6; slide_and_estimate Q3; mid_check_against Q1 to Q4; kalpa_store Q1, Q2 | Q4, Q5, Q6 | 30 |
 | 5 | The AI-free written business case | The AI-free written business case | SECTION 7: The AI-free written business case: what must a page carry? | half2 S64 to S69 | notebooks/C2_W04_D02_07_written_business_case_STUDENT.ipynb | ch7_written_case Q1 to Q3 | Q8 | 10 |
@@ -48,11 +48,13 @@ The case chapters, and the topics each applies:
 | SECTION 4: Uber's slide, rebuilt with the one-slide answer and what to leave out: which number carries it? | 1, 2 | half1 S28 to S43 | notebooks/C2_W04_D02_04_case_one_slide_answer_three_denominators_STUDENT.ipynb |
 | SECTION 5: Uber's three objections, answered by defending under challenge and the appendix: which objection holds? | 2, 3 | half1 S44 to S54 | notebooks/C2_W04_D02_05_case_defending_under_challenge_evidence_STUDENT.ipynb |
 | SECTION 8: Drivers at Uber's evening peak, sized by the guesstimate: how many at the peak? | 4 | half2 S70 to S82 | notebooks/C2_W04_D02_08_case_guesstimate_drivers_at_peak_STUDENT.ipynb |
-| SECTION 9: The page to the city head, an AI-free written business case: what goes on one page? | 1, 5 | half2 S83 to S85 | none |
-| SECTION 10: The interview room, with the one-slide answer and the guesstimate spoken: what does it sound like? | 1, 3, 4 | half2 S86 to S93 | none |
+| SECTION 9: The page to the city head, an AI-free written business case: what goes on one page? | 1, 5 | half2 S83 to S85 | notebooks/C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb |
+| SECTION 10: The interview room, with the one-slide answer and the guesstimate spoken: what does it sound like? | 1, 3, 4 | half2 S86 to S90 | notebooks/C2_W04_D02_10_case_interview_room_STUDENT.ipynb |
 
-Chapters 9 and 10 have no notebook: the page is written by hand with laptops closed, and the interview
-room is spoken. The lab's notebook 11 applies topics 4 and 1 to Kalpa.
+Chapter 9's page is written by hand with laptops closed, so notebook 09 is opened only after the page
+is handed in, to recount the brief's numbers and run the page rules on a typed copy; notebook 10
+recomputes the numbers the transcripts say aloud and is the evening's companion to the interview
+room. The lab's notebook 11 applies topics 4 and 1 to Kalpa.
 
 ## How do the five topics join, and to what?
 
@@ -161,15 +163,15 @@ Which slide runs when, which file sits beside it, and what must land?
 | 12 | SECTION 2, S14 to S19 | Notebook 02; the chapter 2 set's Q1 | Three of eight stay; the caveat never leaves |
 | 25 | SECTION 3, S20 to S27 | Notebook 03; the chapter 3 set's Q1 | Concede the exams' 8 points, answer with the 4.7; the four moves named last |
 | 10 | Break | | |
-| 40 | SECTION 4, S28 to S43 | Monday's role cards (`content/W04/D1/trainer/C2_W04_D01_role_cards_TRAINER.md`); `exercises/guided/C2_W04_D02_slide_and_estimate_STUDENT.md`; notebook 04 | Each role's loss on the board; slide A rebuilt; the denominator named; the per-driver-week rise explained by hours |
+| 40 | SECTION 4, S28 to S43 | This day's role cards, `trainer/C2_W04_D02_role_cards_TRAINER.md`, with Monday's (`content/W04/D1/trainer/C2_W04_D01_role_cards_TRAINER.md`) for what each role argued then; `exercises/guided/C2_W04_D02_slide_and_estimate_STUDENT.md`; notebook 04 | Each role's loss on the board; slide A rebuilt; the denominator named; the per-driver-week rise explained by hours |
 | 53 | SECTION 5, S44 to S54 | `trainer/C2_W04_D02_studio_TRAINER.md`; scorer cards; `exercises/unguided/C2_W04_D02_mid_cut_to_two_STUDENT.md`; notebook 05 | Each objection's true part; the modelled defence; three turns in threes; one appendix page per role |
 | 20 | S55 | The studio run sheet | Round two with the seats swapped |
 | 30 | SECTION 6, S56 to S63 | Notebook 06; the chapter 6 set's Q1 | The four steps on the canteen; the range and its factor; the till check; unit, period, definition |
 | 10 | SECTION 7, S64 to S69 | Notebook 07; the chapter 7 set's Q1 | Four sentences; the caveat before the action; plain words |
 | 37 | SECTION 8, S70 to S82 | `trainer/C2_W04_D02_guesstimate_TRAINER.md`; `exercises/unguided/C2_W04_D02_paired_estimate_STUDENT.md`; notebook 08 | The chain aloud; the range and its factor; the like-for-like check, which moves the answer to 5,000 to 5,700 |
 | 10 | Break | | |
-| 35 | SECTION 9, S83 to S85 | `exercises/unguided/C2_W04_D02_written_case_STUDENT.md` | Silent writing, handed in |
-| 12 | SECTION 10, S86, S87, S90 | `extras/C2_W04_D02_interview_room_STUDENT.md`; `trainer/C2_W04_D02_interview_scorecards_TRAINER.md` | Weak against hire-grade, scored in pairs; D88 and D89 are the evening's reading |
+| 35 | SECTION 9, S83 to S85 | `exercises/unguided/C2_W04_D02_written_case_STUDENT.md`; notebook 09 after hand-in | Silent writing, handed in |
+| 12 | SECTION 10, S86, S87, S90 | `extras/C2_W04_D02_interview_room_STUDENT.md`; `trainer/C2_W04_D02_interview_scorecards_TRAINER.md`; notebook 10 for the evening | Weak against hire-grade, scored in pairs; D88 and D89 are the evening's reading |
 | 20 | S91 to S93 | `kahoot/C2_W04_D02_quiz_STUDENT.md` | Pain points; retrieval; the day's sentence; Wednesday's pre-read ships |
 | 6 | Slack | | The first cut when the day runs long |
 
@@ -219,7 +221,7 @@ way.** Which number, from which table?
 | Rs 1.9 crore; Rs 1.16 crore; 61 percent | The top-up; the part paid to driver-weeks accepting under half their offers |
 | Rs 58 lakh to Rs 92.7 lakh | Monday's saving: Rs 1.159 crore x (1 - a half) to x (1 - a fifth), depending on whether half or a fifth of it is still paid because idle drivers start accepting |
 | 180; 880; 1.90 | Idle-tail drivers; the other drivers who were there before the launch; their trips per online hour in both windows (Monday's `drivers_others`, `others_tph_before`, `others_tph_after`) |
-| 1.8 percent; 1.56; 1.58 | Rider requests' rise over six weeks; trips per hour in the last three after weeks, with requests back at the before level; drivers who joined before the launch |
+| 1.8 percent; 1.56; 1.58 | Rider requests' rise over six weeks; trips per hour in the last three after weeks, with requests back at the before level; drivers who joined before the launch, as a group, all of whose fall sits in the 180 of the idle tail (the other 880 held at 1.90) |
 | 4.8 to 4.6 minutes; Rs 2,836; 74 percent | What riders got; top-up for each extra trip; the share of the idle money in the three outer zones (waits 6.6 to about 6.0 minutes) |
 | About 5,700, from 2,900 to 8,600 | Drivers at the evening peak before the check; the range from trips per person, everything else held |
 | 0.53 and 0.63; 0.60; about 5,000 | Online driver-hours per completed trip before and after, in the case's zones; the chain's figure before its buffer; the chain re-run at the case's 1.90 trips an hour |

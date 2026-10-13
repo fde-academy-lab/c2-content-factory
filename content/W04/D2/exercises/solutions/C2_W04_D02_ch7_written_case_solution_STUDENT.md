@@ -37,4 +37,4 @@ the reader with nothing to sign, and it uses three method words a city head woul
 
 Every memo read when its author is not in the room, from a store owner's evening page to Amazon's
 six-page memos. Chapter 9 is yours: the morning's slide as one page to the city head, by hand, in 35
-minutes, and notebook 07's `page_check` runs on it afterwards.
+minutes, and notebook 09 runs the page rules on it afterwards.

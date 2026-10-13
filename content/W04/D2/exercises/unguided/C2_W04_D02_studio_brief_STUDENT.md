@@ -20,9 +20,9 @@ accurately after the meeting, even while disagreeing with it.
 - How do you answer in four moves?
 
 The studio runs in threes: a presenter, an objector reading one role's card, and a scorer. Each turn
-is seven minutes and the seats rotate after it, so in each round of three turns every member presents
-once, objects once and scores once; round two repeats it with the slide rebuilt after round one. One
-item at the end checks the moves. Post one letter:
+is seven minutes and the seats rotate after it, so in round one's three turns every member presents
+once, objects once and scores once. Round two, after lunch, runs two turns with the slide rebuilt after
+round one, then six minutes to rebuild it again. One item at the end checks the moves. Post one letter:
 
 ```
 Post exactly this shape: x

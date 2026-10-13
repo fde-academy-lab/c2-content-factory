@@ -73,9 +73,9 @@ Chapters 4 and 5 apply topics 1 to 3 to Uber's slide before lunch; chapters 8 to
 ```notes
 LIVE, 1 minute. Read the five topics down the second column once: these are the curriculum's
 words, so a learner can find each one again by name. Chapters 1 to 3 run now, each on an invented
-example; chapters 6 and 7 open the afternoon after the second studio round, each right before the
-Uber chapter that uses it, so the studio's two rounds stay together and each example sits beside
-its case step. A 10-minute break follows chapter 3. Transition: how the five topics join.
+example; chapters 6 and 7 open the afternoon after the second studio round, chapter 6 two chapters
+before chapter 8, which applies it, and chapter 7 two before chapter 9, so the studio's two rounds
+stay together and both afternoon topics are taught before the case uses them. A 10-minute break follows chapter 3. Transition: how the five topics join.
 ```
 
 ---
@@ -360,7 +360,7 @@ chapter 2, what leaves the slide.
 
 ---
 
-## SECTION 2: "What to leave out, and the appendix": where does the rest go?
+## SECTION 2: What to leave out, and the appendix: where does the rest go?
 *What to leave out, and the appendix, on Ramesh's first draft (invented): every element supports the claim, answers a named person's question on a page behind the slide, or leaves; the caveat never leaves.*
 
 ```notes
@@ -553,7 +553,7 @@ survives the objector being right about one part. Transition: the staff meeting.
 ## S21. Which reply wins the headmaster?
 *The teacher says the new timetable, from week 3, raised attendance. The sports teacher objects: "Attendance rose because the exams began." Which reply wins?*
 
-a) The numbers again, louder: attendance went from 77 percent in week 1 to 89 percent in week 8
+a) The numbers again, louder: attendance rose 12.8 points this term, from 76.5 to 89.3 percent
 
 b) Withdraw the claim until next term
 
@@ -675,7 +675,7 @@ Notebook 03 runs it and composes the four moves from the two numbers. Transition
 3. Concede the true part out loud; the claim survives it.
 4. Say the fact that would change your mind, so the claim can be tested.
 
-**In the interview.** [F] A stakeholder's objection is partly right; how do you answer it?
+**In the interview.** [F] A stakeholder's objection is partly right; how do you answer it? [D] The person who loses under your metric controls the meeting; how do you get it adopted anyway?
 
 ```mermaid
 flowchart LR
@@ -1147,7 +1147,7 @@ Transition: one full defence, modelled.
 
 **Restate.** "You are saying the fall in bookings per hour could be the season ending, and the scheme has not had a fair test."
 
-**Answer.** "Two lines of evidence point at the scheme: in the last three weeks after the launch, requests were back at the before window's level and trips per online hour still ran at 1.56; and the drivers who were there before the launch fell from 1.90 to 1.58, so the new drivers do not explain it."
+**Answer.** "Two lines of evidence point at the scheme: in the last three weeks after the launch, requests were back at the before window's level and trips per online hour still ran at 1.56; and the drivers who were there before the launch fell from 1.90 to 1.58 as a group, all of it in the 180 of the idle tail while the other 880 held at 1.90, so the new drivers do not explain it."
 
 **Concede.** "You are right that the monsoon ended inside the six weeks, and that last year's weeks are not in the data."
 
@@ -1239,7 +1239,7 @@ Transition: the drill.
 | Median rider wait at peak, 4.8 to 4.6 minutes | |
 | Top-up for each extra trip: Rs 2,836, for a trip worth Rs 165 | |
 | The top-up split: 61 percent to low acceptance | |
-| A pie of top-up by week | |
+| A table of acceptance share in each of the twelve zones, before and after | |
 
 **Your task.** Keep two, and for every element you move, write the role whose appendix page receives it.
 
