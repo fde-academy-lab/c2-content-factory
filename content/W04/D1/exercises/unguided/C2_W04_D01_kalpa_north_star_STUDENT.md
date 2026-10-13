@@ -14,7 +14,10 @@ lab's table, `kalpa_app_reorders`, holds one row per reorder placement: `reorder
 `placed_ts`, `value_rs` (the placement's booked value, whatever happened to it), `auto` (True when the
 app placed it on its own), `status`, which is one of delivered, returned, cancelled, merged into a
 basket the member already had open, or pending, and `order_id`, the order in Kalpa's warehouse that
-the placement became, blank if none.
+the placement became, blank if none. The lab's per-member figures divide both windows by the same 107
+members, the ones already in the tier when the comparison window opened on 20 August, because a
+member who joined later had fewer of its days to reorder in: one who joined on 25 August had 16 of its
+21.
 
 **Who needs the answer.** Meera, who takes one number to the board, and the three department heads,
 each of whom loses their own target under it. A north star the app can raise by itself would show
@@ -25,8 +28,8 @@ denominator? Which guardrail catches frequency bought with low-value orders? Whi
 first? Which comparison window keeps a sale out of the reading?
 
 You sit this set after the lab's notebook, `notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb`, using
-the seven-line template from the morning (numerator, denominator, window, exclusions, what it does
-not reward, guardrails, gaming note). Items marked **Design** ask for the best-fit approach, the fact
+the morning's template: the north star's name, its seven lines (numerator, denominator, window,
+exclusions, what it does not reward, guardrails, gaming note) and its leading inputs. Items marked **Design** ask for the best-fit approach, the fact
 that would switch it, or the second route that would confirm a number.
 
 ```
@@ -108,14 +111,12 @@ d) Delivered orders in the last month, and the quarter's gross revenue
 Every before-and-after comparison at a retailer is checked for a sale or a festival inside one window
 and not the other, because a sale moves orders by itself.
 
-The lab compared reorders in 10 to 30 September 2026 with 20 August to 9 September 2026. The
-monsoon sale's last day was 19 August 2026. The lab counted only the 107 members who had joined by
-19 August, because a member who joined later had fewer of the comparison window's days to reorder
-in: one who joined on 25 August had 16 of its 21.
+The lab compared reorders in 10 to 30 September 2026 with the three weeks before, 20 August to 9
+September 2026. The monsoon sale ran from 5 to 19 August 2026.
 
-### Q5. Design. Why does the comparison window start on 20 August rather than in July?
+### Q5. Design. Why does the comparison window start on 20 August rather than three weeks earlier, on 30 July?
 
-a) July holds more reorders, so a July window would make the comparison too large
+a) Those three weeks hold more reorders, so the comparison would come out too large
 
 b) Both windows then sit after the sale, so the sale's extra orders are in neither
 
@@ -127,9 +128,10 @@ d) Every one of the 120 members was then in the tier for the whole of both windo
 
 ## What does your definition look like on the template?
 
-Write the growth plan's definition on the seven lines below, using your five answers, the three
-guardrails Meera's team has proposed (revenue per active customer, discount share of booked revenue,
-and the return rate) and one gaming note per guardrail. Then post your five letters.
+Write the growth plan's definition on the template below, the seven lines between the north star's
+name and its leading inputs, using your five answers, the three guardrails Meera's team has proposed
+(revenue per active customer, discount share of booked revenue, and the return rate) and one gaming
+note per guardrail. Then post your five letters.
 
 | Line | Kalpa's growth plan |
 |---|---|

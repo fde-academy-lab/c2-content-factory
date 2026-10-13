@@ -9,9 +9,9 @@ completed peak trips 224,200 and then 230,900, trips per peak online hour 1.90 a
 head asks, by Friday, whether the scheme works, what it should pay for, and whether anyone is gaming
 it.
 
-**Who needs the answer.** You, before Tuesday, which rehearses the one-slide review the city head
-holds on Thursday and assumes every learner can compute the city's rate, sort a dashboard into what it pays for and what guards
-it, and write one definition from a blank page.
+**Who needs the answer.** You do, before Tuesday: Tuesday's session rehearses the one-slide review
+the city head holds on Thursday, and it assumes every learner can compute the city's rate, sort a
+dashboard into what it pays for and what guards it, and write one definition from a blank page.
 
 **The questions on the way.** Which lines, in which order, print the city's rate? Which numbers move
 first, and which guardrail does each north star need? What does a definition look like for a product
