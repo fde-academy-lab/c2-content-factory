@@ -11,18 +11,40 @@ and a deck carries each chapter in full depth. Form still follows
 `content/W01/D1`: its deck syntax, notebook helper and rhythm, companion build, workbook build and day
 sheet are the model, and its rebuild to this bar becomes the model for content too. Where a week has
 an approved spine in `docs/detailing/`, that spine sets each day's case, chapters and traps; this page
-sets the form. From Week 4 on, the teaching approach below replaces "The day", "Volume per teaching
-day", the per-step paragraphs of "The question ladder" and "The depth loop", the week's spine sets
-each day's shape and sizes, and this page then sets the form of each family the spine names. The
-mechanics stay in the skills and scripts it points to.
+sets the form. From Week 4 on, a day runs in the shape of "The teaching approach" below: the concept
+block (one chapter per row subtopic) and then the case chapters, each chapter paired with one
+notebook, with the week's spine setting the minutes and sizes; "Volume per teaching day" and the
+five-pass "depth loop" give way to the spine's sizes and the three cold reads, while "The day", "The
+question ladder" and every family's form stay in force as this page states them. The mechanics stay
+in the skills and scripts it points to.
 
 ## The teaching approach
 
 The requester set this on 12 October 2026 for every week, day, Saturday and build brief made from
-then on (decision `teaching-approach` in data/programme/facts.yaml). Weeks 1 to 3 were built before
-it and keep their shape until they are rebuilt.
+then on (decision `teaching-approach` in data/programme/facts.yaml), and on 13 October 2026 set how
+the concepts and the case share a day (decision `concept-first-case-second`). Weeks 1 to 3 were
+built before it and keep their shape until they are rebuilt.
 
-1. **The case leads.** Every day opens on an engineering case at a company the learners use (Uber,
+0. **The topics lead.** The deck opens on the day's topic (the row's Day focus column), the week map
+   with today lit, the topics slide (every bullet of the row's Subtopics column, verbatim and in the
+   row's order, each with the chapter that teaches it, its minutes and its notebook) and a concept
+   map: a mermaid map that names the same bullets, each node joined to the earlier and later ideas it
+   depends on, with today's nodes lit and the case's node beneath them. The chapters follow the row's
+   order unless the week's spine records a reason to teach them in another. Slide five is the case
+   ticket in one slide, as the destination the topics will be used on.
+   Then the concept block: one chapter per subtopic, about 8 to 25 minutes each and 60 to 120 minutes
+   in all, each `## SECTION n:` title carrying the subtopic as the row words it and its italic promise
+   asking the chapter's question. A concept chapter teaches from zero on one simple, complete,
+   relatable educational example with invented numbers labelled invented (a canteen that pays per
+   token, ten tea-stall orders, two coaching batches, four days of cups), in this order: the broken
+   default or the misconception with a prediction, the hand count on the tiny numbers, the picture
+   that makes the mechanism visible, the formula or rule named last, a glimpse of three to six lines
+   of code that reproduce the count, three to five one-sentence rules a learner photographs, and the
+   map node that links the idea to the previous one, the next one and the case chapter that applies
+   it. Each concept chapter pairs with one notebook of 8 to 18 cells carrying the same name. The row's
+   Subtopics column is the chapter list; a subtopic the spine adds carries "(added by the spine)" and
+   its reason, and a subtopic the row carries is never dropped.
+1. **The case carries the day.** After the concept block, the case: an engineering case at a company the learners use (Uber,
    Ola, Swiggy, Zomato, Blinkit, Zepto, Flipkart, Amazon India, PhonePe, Google, an AI startup and the
    like) in a named city, state or country: the product surface, the metric, its value before and
    after with dates, the data the analyst holds (tables and columns), the ask, and the caveats already
@@ -53,17 +75,30 @@ it and keep their shape until they are rebuilt.
    planted value and passes `scripts/html_sweep.py`.
 5. **Pictures are drawn by our own code**: mermaid for mechanisms and maps, matplotlib for data
    pictures placed by image lines, and short GIFs from our own data with a still beside each.
-6. **Volume follows the minutes.** A day runs in three or four chapters sized to the trainer's minutes,
-   with no item, slide or word quota beyond the sizes the week's spine gives. Review is one
-   fresh-graduate read, one interviewer read, one fix pass and verify.py.
+6. **Volume follows the minutes.** A day runs in the concept block (one chapter per row subtopic,
+   60 to 120 minutes in all) and three or four case chapters sized to the remaining trainer minutes,
+   with no item, slide or word quota beyond the sizes the week's spine gives; one notebook per chapter
+   in both halves, plus the lab notebook. Review is one fresh-graduate read, one hiring-interviewer
+   read, one trainer's read with the row open (where is each subtopic taught, or "not found"), one fix
+   pass and verify.py, which runs the coverage gate.
 7. **Every artefact family carries the approach**, and each may add moves of its own:
-   - *Decks* open on the case ticket; each chapter is one sub-problem with its level (L1 to L6) on the
-     opener; inside a chapter the misconception and a prediction come first, then the visual derivation
-     on tiny numbers, the formula last, a glimpse of the code, the trap shown exactly, and a map slide
-     that links the idea to earlier and later ones.
-   - *Notebooks* code along from the raw table: one plain sentence above each cell says what it is for;
-     the hand count is reproduced first, then the full-data step, the trap, the second route asserted
-     equal, and the AI-company variant at the end, in ponytail-small code.
+   - *Decks* open on the day's topic, the week map, the topics slide, the concept map and the ticket as
+     the destination;
+     the concept chapters follow, each named by its subtopic and built on its educational example in
+     the order item 0 gives; then the case chapters, each one sub-problem with its level (L1 to L6) and
+     the subtopics it applies on the opener; inside a case chapter the misconception and a prediction
+     come first, then the derivation on the twelve rows, the formula recalled by its concept chapter's
+     name, a glimpse of the code, the trap shown exactly, and a map slide that links the idea to
+     earlier and later ones.
+   - *Notebooks*, one per chapter, named as the chapter is: a concept notebook carries its subtopic in
+     its file name and its first heading (`C2_W04_D01_02_north_star_and_guardrails_STUDENT.ipynb`,
+     opening `# North-star and guardrail metrics: which number does the plan chase, and which must not
+     fall?`), builds the educational example inline, labelled invented and recorded in the facts file
+     under `toy_` ids, counts it by hand and by code and asserts the two agree, draws the picture, names
+     the formula last and ends on the rules; a case notebook codes along from the raw table, one plain
+     sentence above each cell, the hand count first, then the full-data step, the trap, the second
+     route asserted equal and the AI-company variant at the end, in ponytail-small code, and its first
+     cell names the subtopics it applies and the concept notebooks that taught them.
    - *Exercises* are a ladder from L1 to L6 in the takeUforward manner, each item tagged with its level
      and the kind of company whose screens ask it; worked examples fade (one fully worked, one half
      worked, then blank); at least a third are design items; one re-runs the method on Kalpa; and some
@@ -81,6 +116,14 @@ it and keep their shape until they are rebuilt.
    - *Across the week*, practice retrieves earlier days (the Kahoot's return questions and spaced recall
      items), interleaves topics once each is learned, and uses peer instruction where a question splits
      the room: predict, vote, discuss with a neighbour, vote again, then the reveal.
+8. **The coverage matrix is the day's contract with the row.** Every teaching day ships
+   `internal/C2_W{ww}_D{dd}_coverage_INTERNAL.md`, in the shape `references/coverage-matrix.md` sets:
+   each row subtopic, verbatim, against its chapter title, its slides, its notebook, its exercise
+   items, its Kahoot items and its minutes, then each case chapter against the subtopics it applies.
+   `scripts/coverage_check.py`, run by `verify.py`, fails the pack when a subtopic has no chapter or no
+   notebook carrying its name, when an entry names a slide, file or item that does not exist, or when
+   a case chapter applies no subtopic. The matrix is also the trainer's topic table: the day sheet
+   prints it, and the study notes' topic sections follow its order.
 
 ## The bar
 
@@ -90,11 +133,13 @@ it and keep their shape until they are rebuilt.
   business makes money, who decides what, its metrics as formulas, its language and its compliance,
   which real company Kalpa's unit is like, and why analytics, ML, NLP and agents are needed there.
   Every later chapter names the metric at stake, who asks for it and what a wrong number costs them.
-- **One case, climbed in chapters.** Each day is one Kalpa case climbed in about six chapters, each a
-  harder business question. A chapter is answered with a number, the number is read as a decision,
-  and the next chapter is the question that decision raises. Each chapter also names a real company
-  that faces the same question, and a public case study where one sharpens the point, every fact
-  checked against a source dated in the provenance.
+- **The topics first, then one case climbed in chapters.** Each day teaches the row's subtopics as
+  named concept chapters on educational examples, then climbs one case in three or four chapters,
+  each a harder business question. A case chapter is answered with a number, the number is read as a
+  decision, and the next chapter is the question that decision raises. In Weeks 1 to 3 each chapter
+  also names a real company that faces the same question; from Week 4 on a real company appears
+  where it brings a decision and what it cost, every fact checked against a source dated in the
+  sources list.
 - **The problem comes before the code.** Every technique arrives as the answer to a stated problem.
   A chapter lays out two to four ways a team could answer it, sizes them (rows, minutes, rupees,
   error), makes the best-fit call with its reason and names the fact that would change it; only then
@@ -139,9 +184,14 @@ Lesson material carries durations only.
 
 | Block | Minutes | What runs |
 |---|---|---|
-| Morning | 180 | The client's ask and the thinking drawn (20); chapters 1 to 5 of about 30 each; a break (10) before chapter 4 |
-| Afternoon | 180 | Chapter 6 (30); the escalated case, unguided (50); the debrief of the room's wrong answers (15); a break (10); the second case, in pairs (40); the interview drill aloud, the design question among it (20); the Kahoot and tomorrow's ask (15) |
+| Morning | 180 | The topic, the week map, the topics slide, the concept map and the ticket as the destination (10); the concept block, one chapter per row subtopic of about 8 to 25 minutes (60 to 120); a break (10); the first case chapters on the twelve rows and the full data (the rest) |
+| Afternoon | 180, or 60 before an IITGN block | The remaining case chapters (the trap, the caveats, the decision with its cost); the unguided round; the interview room; the Kahoot and tomorrow's ask (15); on a day with no block, the second case, the written case or the studio as the spine sets them |
 | After | The lab's length | The TA-led practice lab, run from the day's practice set |
+
+Where the trainer's minutes are tight (a faculty day leaves 240), the concept block takes its minutes
+from the beats the case chapters no longer need: a case chapter that once introduced an idea
+mid-climb now recalls it by its concept chapter's name in one line and goes straight to the data, and
+the week's spine shows, per day, which case beats moved into which concept chapter.
 
 On a domain's first day the domain story takes 45 minutes in place of the 20-minute ask, and chapter 5
 moves to the afternoon, whose case blocks give up the difference; the day sheet shows which minutes.
@@ -195,7 +245,7 @@ through four to six smaller questions, each answered with a number before the ne
 | Level | The question | Where it is asked | Where it is answered |
 |---|---|---|---|
 | The day | The stakeholder's ask, as one question | The morning deck's cover, the day sheet's first line, the notes' title | The afternoon deck's close and the notes' last section |
-| A chapter | The question the previous answer raised, in a short form of about 22 characters for the chapter opener and its pill, and in full everywhere else | The `## SECTION n:` title with the full question as its promise, the notebook's title and first cell, the notes' chapter heading, the scenario set's title | The chapter's answer slide, the notebook's last markdown cell, the chapter's last paragraph in the notes |
+| A chapter | The chapter's topic in the `## SECTION n:` title and its pill (for a concept chapter, the row's subtopic as the row words it, about 48 characters at most so the pill prints, which `deck_check.py` measures; for a case chapter, the case step), with the question the previous answer raised as the italic promise in full | The `## SECTION n:` opener, the notebook's file name and first heading (`# Topic: question?`), the notes' chapter heading, the scenario set's title | The chapter's answer slide, the notebook's last markdown cell, the chapter's last paragraph in the notes |
 | A step | One of the chapter's smaller questions: the decision at stake, the options and their sizes, each build step, the trap, the second route, the review | A body slide's italic subtitle, a notebook heading, a notes subheading, an exercise part heading, a board drawing's heading | The slide's action title, the notebook's **What happened.** cell, the paragraph under the subheading |
 
 A heading passes when it:
@@ -206,6 +256,13 @@ A heading passes when it:
 - is answered in the section under it, with a number where the answer is a number;
 - uses no term the file has not yet explained, since a formal name arrives after the problem that
   needs it.
+
+A chapter opener is the one heading that carries a topic rather than a question, because its italic
+promise carries the question: the title is the learner's recall handle ("Leading against lagging
+indicators") and the promise is the chapter's question ("Which of the city's numbers moves before the
+north star, and which only confirms it later?"). The day's concept map slide prints every concept
+chapter's title, so a learner who reads only the map and the openers sees the day's topics in the
+row's order, and a learner who reads the promises sees the day's argument.
 
 Under every chapter heading, and under a notes or dossier section heading, two short paragraphs
 follow. **Who needs the answer.** names the person, the decision the answer feeds and what a wrong
@@ -240,12 +297,18 @@ reading `scripts/brand.py`. `half1` is the morning deck and `half2` the afternoo
 
 - A deck teaches on its own. A learner who missed the class can follow every chapter from its slides
   and their notes, so no slide sends the reader to a notebook or the notes for something it needs.
-- The morning deck opens on a cover with the client's words (`Quote:` and `Who:`) and a slide that
-  asks the day's question and lists the chapter questions in order. Then comes one chapter per
-  notebook, each opened by `## SECTION n:` whose title is the chapter's short question and whose
-  italic promise is the full question with the decision riding on it, its number and title matching
-  the notebook's. The slide after each opener is the chapter's map: **Who needs the answer.** in a
-  sentence, and the chapter's smaller questions as a `timeline`.
+- The morning deck opens on a cover that names the day's topic (the row's Day focus) and asks the
+  day's question, then the week map with today lit, then the topics slide and the concept map (a
+  mermaid map of every subtopic in the row's order, today's nodes lit, each node's text the subtopic
+  as the row words it), then the case ticket in one slide as the destination. Then comes one chapter per notebook: the
+  concept chapters, each opened by `## SECTION n:` whose title is the subtopic as the row words it
+  and whose italic promise is the chapter's question; then the case chapters, each opened by
+  `## SECTION n:` whose title is the case step and whose promise is the question with the decision
+  riding on it, its number and title matching the notebook's. The slide after each opener is the
+  chapter's map: the subtopic verbatim, **Who needs the answer.** in a sentence, the chapter's smaller
+  questions as a `timeline`, and, on a case chapter, the line "Applies: ..." naming the concept
+  chapters it uses. In Weeks 1 to 3 the cover quotes the client (`Quote:` and `Who:`) and the chapter
+  titles are short questions, and those packs keep that until rebuilt.
 - A chapter's slides run the notebook's rhythm, about 10 to 14 of them: the need and who asks, the
   real company that faces it, the options with their sizing and the best-fit call, the thinking as a
   picture, and for each build step a predict slide, the logic or code in one short block, the result
@@ -271,10 +334,16 @@ The helper is `scripts/c2kit.py`, and `scripts/nb_make.py` assembles a notebook 
 in its own folder. `content/W01/D1/notebooks/` shows the rhythm; the chapter structure below is the bar.
 
 - One notebook per chapter, named and numbered as the deck's chapter, and each building on the one
-  before it: the first cell names the week, the day and the chapter, asks the chapter's question in
-  full, gives **Who needs the answer.** and **The questions on the way.**, names the metric at
-  stake, and says in a sentence or two what the previous notebook found, with its number, and what
-  this one adds.
+  before it. A concept notebook's file name carries its subtopic in snake case
+  (`C2_W04_D01_03_leading_against_lagging_STUDENT.ipynb`) and its first cell opens
+  `# <the subtopic as the row words it>: <the chapter's question>`, then **Who needs the answer.** and
+  **The questions on the way.**, then the educational example's table built inline and labelled
+  invented (the one place a notebook may hold records in a cell, since a learner must see all of
+  them; the numbers sit in the facts file under `toy_` ids). A case notebook's first cell names the
+  week, the day and the chapter, asks the chapter's question in full, gives **Who needs the answer.**
+  and **The questions on the way.**, names the metric at stake, names the subtopics it applies and
+  the concept notebooks that taught them, and says in a sentence or two what the previous notebook
+  found, with its number, and what this one adds.
 - A notebook stands on its own. Its setup cell loads its own data, it runs cold with nothing else
   open, and it recomputes or restates whatever it takes from an earlier notebook. Where the earlier
   finding is a plant, it restates the rule the room drew from it, never the planted record.
@@ -389,12 +458,18 @@ asked, what it found and what changed. A pass that finds nothing says so.
 A reviewer writes findings, never edits; the builder fixes and records the fix. Passes 4 and 5 run
 once each. A second round runs only when a fix changed a method, a key or a number other files
 repeat, and it checks only those changes; every other fix is confirmed by the builder's own proof
-run. The orchestrating session's review before merge is one read against this page, and its
-findings are fixed in one pass.
+run. From Week 4 on, passes 4 and 5 give way to three cold reads, each by a fresh agent on the Opus
+model who writes findings only: the fresh graduate (every word, step and output it could not
+picture), the hiring interviewer (every answer a strong screen would reject), and the trainer who did
+not write the day, with the row open (each subtopic and the slide, notebook and exercise where it is
+taught, or "not found", which is a stop). One fix pass follows. The orchestrating session's review
+before merge is one read against this page with the coverage matrix open, and its findings are fixed
+in one pass.
 
 ## Proof
 
-`python3 scripts/verify.py content/W{ww}/D{d}` runs every gate, and
+`python3 scripts/verify.py content/W{ww}/D{d}` runs every gate, `scripts/coverage_check.py` among them
+on a teaching day from Week 4 on, and
 `python3 scripts/build_companion.py content/W{ww}/D{d} --check` and
 `python3 scripts/sync_programme.py --check` follow it. A deck is also rendered through LibreOffice to
 PDF and looked at slide by slide, with the Carlito font installed (`fonts-crosextra-carlito`) so

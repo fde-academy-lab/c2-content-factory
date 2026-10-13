@@ -18,6 +18,10 @@ Read these before generating anything:
    the in-session exercises, the after-class tasks, the interview angle, the trainer resources, the
    student references, the Kahoot quiz plan. Weeks 2, 4, 5, 7, 8, 10 and 11 add a sixteenth, violet
    column: the IITGN faculty session, tentative.
+   The Subtopics column is the day's chapter list: copy its bullets verbatim and in order, run
+   `python3 scripts/coverage_check.py content/W{ww}/D{d} --matrix` to print the coverage matrix's
+   skeleton from them, and write that matrix to `internal/` before any other file, in the shape
+   `references/coverage-matrix.md` sets.
 2. The day's line in `docs/programme/calendar.md`: its date, its folder slot, the module it posts to and
    any faculty block. Dates come from here and never from memory; the calendar moved by a week on
    21 September 2026 and can move again.
@@ -37,17 +41,25 @@ no verified date. A pack built on a v2.3 dataset says "proposed for client zero 
 and INTERNAL files, because the lock may still change it. A plausible day generated around a gap
 is the failure this gate exists to stop. Say what is missing and stop.
 
-## The method: the business problem first, then the thinking, then the technique
+## The method: the topics first, then the case, and inside every chapter the problem before the code
 
-The day opens on a situation in a stakeholder's words and the questions they are asking. The second
-move is the thinking an analyst uses to break that question down, drawn before any tool is opened. The
-technique arrives third, because it exists to answer the question.
+From Week 4 on (decision `concept-first-case-second`), the day opens on its topic and a concept map
+that names every subtopic of the row, in the row's order, then shows the case ticket as the
+destination. The concept block teaches each subtopic from zero in its own named chapter on a simple,
+complete, relatable educational example with invented numbers, paired with a short notebook of the
+same name. The case chapters then apply those ideas to an engineering case at a company the learners
+use, each chapter naming the subtopics it applies, and the lab runs the same method on Kalpa. Inside
+every chapter the order is the same: the problem on the example or the data, the thinking drawn before
+any tool, and the technique built because the question needs it.
 
-In the pack that means: slide one is the scenario, the first drawing is the thinking, the notebook's
-first markdown cell is the same scenario, the exercises ask the stakeholder's question back, and the
-close is the sentence the learner would actually send. The canonical Week 1 case: Meera Raghavan asks
-what "sales" is made of before she signs a marketing budget, the room draws the revenue tree, and only
-then does Python arrive as the calculator.
+In the pack that means: the cover names the topic, slide two is the week map, slide three the topics
+slide, slide four the concept map, slide five the ticket; each concept chapter's opener carries its subtopic as the row words it and
+its notebook carries the same name; each case chapter's opener names the subtopics it applies; the
+exercises carry at least one item per subtopic and the Kahoot at least one; the trainer's day sheet
+prints the coverage matrix as its topic table; and the close is the sentence the learner would send
+the client, with the topics it used named beside it. Weeks 1 to 3 opened on a stakeholder's words
+(Meera Raghavan asks what "sales" is made of before she signs a marketing budget, the room draws the
+revenue tree, and only then does Python arrive) and keep that shape until they are rebuilt.
 
 **What is planted in the data is never named to a learner.** The client-zero column is TRAINER ONLY.
 The room finds the bulk order by sorting and the duplicates by reconciling. A slide that announces the
@@ -95,8 +107,8 @@ Binding rules while building:
 ## The gates
 
 1. **Envelope and continuity.** From the row: the business scenario in one line, what the room already knows, what today must not repeat, what comes later, and which thread of the three (Growth, Trust, Cost and risk) this day advances. One short block, stated to the requester.
-2. **The spine, for approval.** Where `docs/detailing/` holds an approved spine for the week, it is this gate for every day it covers: state the envelope, then build from it without stopping. Otherwise, one screen: the scenario and the thinking it trains, the domain beat (the story on a domain's first day, the metric at stake after it), the six or so chapters with each one's question, options, sizing and second route, the afternoon's two cases, section list per artifact, the day's mental-model arc in one sentence, the traps with their exact wrong numbers, the activity choice with its toggle, the take-home shape, and the interview questions the day equips. Stop and wait. Nothing downstream is built before the spine is approved.
-3. **Build passes**, one artifact family per pass, in this order: deck(s); notebooks; activity; exercises plus solutions; take-home plus self-check spine; Kahoot pack; study notes, cheat sheet and pre-read. Each pass is a separate generation because mixing them flattens all of them. Then the depth loop in `references/the-standard.md`: the domain pass and the problem-first pass by the builder, then the rigor pass and the pedagogy-and-language pass by fresh reviewer agents, each logged in the provenance.
+2. **The spine, for approval.** Where `docs/detailing/` holds an approved spine for the week, it is this gate for every day it covers: state the envelope, then build from it without stopping. Otherwise, one screen: the row's subtopics verbatim, each with its concept chapter title, its educational example, its minutes and its notebook name; the scenario and the thinking it trains; the domain beat (the story on a domain's first day, the metric at stake after it); the case chapters with each one's question, the subtopics it applies, its options, sizing and second route; the afternoon's cases; the day's minutes against its envelope; the day's mental-model arc in one sentence; the traps with their exact wrong numbers; the activity choice with its toggle; the take-home shape; and the interview questions the day equips. Stop and wait. Nothing downstream is built before the spine is approved.
+3. **Build passes**, one artifact family per pass, in this order: the coverage matrix (INTERNAL, from the row's subtopics); deck(s); notebooks; activity; exercises plus solutions; take-home plus self-check spine; Kahoot pack; study notes, cheat sheet and pre-read; the matrix filled in as each family lands. Each pass is a separate generation because mixing them flattens all of them. Then the review in `references/the-standard.md`: the domain pass and the problem-first pass by the builder, then the three cold reads (the fresh graduate, the hiring interviewer, the trainer with the row open) by fresh reviewer agents, each logged in the sources list, and one fix pass.
 4. **Verification.** Run the checklist at the end of this file and report results, including what failed and was fixed.
 5. **Ship.** Folders and file names per the naming rule below, audience tags mandatory, files presented together.
 
@@ -107,7 +119,8 @@ The full manifest with per-artifact specifications lives in `references/artifact
 | Artifact | Audience | Count per day |
 |---|---|---|
 | Deck | STUDENT-visible, trainer-driven | 2: the morning deck (half one) and the afternoon deck (half two) |
-| Chapter notebooks | STUDENT | About 6, one per deck chapter, each building on the one before, plus the two case notebooks |
+| Chapter notebooks | STUDENT | One per chapter: a concept notebook of 8 to 18 cells per row subtopic, named by the subtopic, and a case notebook per case chapter, each building on the one before, plus the lab notebook |
+| Coverage matrix | INTERNAL | 1, written first and filled as the families land, in the shape `references/coverage-matrix.md` sets; `scripts/coverage_check.py` reads it |
 | Domain dossier, card and story | STUDENT, and TRAINER for the story | On a domain's first day only |
 | Activity | STUDENT | 0 or 1 |
 | Guided + unguided exercises | STUDENT | few, think-heavy |
@@ -129,8 +142,13 @@ Orientation moved to Week 0 Monday on the 21 September calendar. The Programme H
 
 ## Verification checklist
 
-1. Slide one, and the notebook's first markdown cell, carry the day's business scenario in the
-   stakeholder's words. A pack that opens on a topic title fails here.
+1. The deck opens on the day's topic, the week map, the topics slide and the concept map naming every
+   row subtopic verbatim in the row's order with the chapter that teaches it, and the case ticket as
+   the destination; every concept chapter's
+   `## SECTION` title and its notebook's file name and first heading carry the subtopic as the row
+   words it; every case chapter's opener and its notebook's first cell name the subtopics it applies;
+   `python3 scripts/coverage_check.py content/W{ww}/D{d}` passes. A pack whose chapters cannot be
+   mapped to the row's subtopics fails here.
 2. The thinking from column 4 appears as a drawing the room makes before any tool is opened.
 3. No student-facing file names anything planted in the dataset. Grep the pack for the plant words from
    the row's client-zero column; every hit must be in a TRAINER or INTERNAL file.
@@ -151,8 +169,8 @@ Orientation moved to Week 0 Monday on the 21 September calendar. The Programme H
 16. No STUDENT file states a proposed or open fact, and a tentative one carries the word tentative.
 17. Every chapter lays out its options with a sizing and the best-fit call before its code, names the fact that would change the call, and closes on a second route; at least a third of the day's exercise items are design items.
 18. Every chapter names the metric at stake, who asks for it, what a wrong number costs and a real company that faces the same question, with each real fact sourced and dated; on a domain's first day the dossier, card and story ship.
-19. The provenance logs the five passes of the depth loop, the last two by fresh reviewers, and what each changed.
-17. The verify run's output is in the reply before the pack is called done.
+19. The sources list logs the builder's two passes and the three cold reads (the fresh graduate, the hiring interviewer, the trainer with the row open), each by a fresh reviewer, and what each changed; a "not found" from the trainer's read is resolved before the pack is called done.
+20. The verify run's output, the coverage gate's lines among it, is in the reply before the pack is called done.
 
 ## File naming
 
@@ -163,7 +181,7 @@ content/W{ww}/SAT/{folder}/C2_W{ww}_SAT_{topic}_{AUDIENCE}.{ext}
 
 Read `content/README.md` before pass 1: it names the subfolder each artifact belongs in, the different shapes a build day and a Saturday take, and the rule that no file sits loose at a day folder's root. The topic half of the name carries only what the folder and the extension do not already say.
 
-Examples: `slides/C2_W04_D03_half1_STUDENT.pptx`, `notebooks/C2_W04_D03_02_baskets_STUDENT.ipynb`, `takehome/C2_W04_D03_brief_STUDENT.md`, `trainer/C2_W04_D03_day_sheet_TRAINER.md`.
+Examples: `slides/C2_W04_D03_half1_STUDENT.pptx`, `notebooks/C2_W04_D03_01_support_confidence_and_lift_STUDENT.ipynb` (a concept notebook, named by its subtopic), `notebooks/C2_W04_D03_07_pairs_table_STUDENT.ipynb` (a case notebook, named by its step), `internal/C2_W04_D03_coverage_INTERNAL.md`, `takehome/C2_W04_D03_brief_STUDENT.md`, `trainer/C2_W04_D03_day_sheet_TRAINER.md`.
 
 ## The generation prompt
 
