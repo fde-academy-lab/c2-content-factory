@@ -13,6 +13,9 @@ allocates the five questions in 30 minutes, and each group translates its questi
 and 2 method in its own words until the 15-minute close. Nothing new is taught this week. The approved spine,
 `docs/detailing/W03_build1_spine.md`, sets the day.
 
+The deck opens on S0, which lists the row's five topics word for word, where the day carries each
+and its minutes. Read it in a minute inside the introduction's 60, before S1.
+
 ## Which questions does the room climb on Monday, in the order you ask them?
 
 Dr Menon's question is the week's: **which branch of Kalpa Health is short of the plan, and what
