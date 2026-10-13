@@ -19,7 +19,7 @@ on twelve real Instamart carts in chapter 7, and sorts pair cards on the wall's 
 |---|---|---|
 | The canteen's twelve order cards | `whiteboards/C2_W04_D03_canteen_cards_STUDENT.md`, the first table | Nine packs, one per group, cut one card per order |
 | Twelve cart cards | `whiteboards/C2_W04_D03_cart_cards_STUDENT.md`, the first table | Nine packs, one per group, cut one card per cart, held back until chapter 7 |
-| The 2 by 2 grid | The back of each pack | Fifty-four, six per group: four canteen pairs and the first two cart pairs, with a spare for the third cart pair |
+| The 2 by 2 grid | The back of each pack | Sixty-three, seven per group: four canteen pairs and three cart pairs |
 | The concept map | `whiteboards/C2_W04_D03_board_work_STUDENT.md`, the first drawing | Drawn on the left of the board before the room sits, left up all day |
 | The action-map board | The board work's action-map drawing: four regions, support across with the floor in the middle, lift up | One, on the wall or the whiteboard |
 | Pair cards | `whiteboards/C2_W04_D03_pair_cards_STUDENT.md` | Nine sets of nine, one per group, held back until notebook 10's first cells have run |

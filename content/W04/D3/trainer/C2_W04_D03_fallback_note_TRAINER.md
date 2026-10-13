@@ -23,6 +23,15 @@ independence, no Apriori and no algorithm that finds frequent itemsets.
 | The storm | A sale tied to an event needs a forecast with the event in it, which is Friday's question; a pattern seen twice is thin ground | "Is strawberry Pop-Tarts with a storm a pair, like chips with cold drink?" |
 | The transcript | The four moves, answered from the log: non-milk slots rose from 6.2 to 6.4, so whatever habits did, they did not lower those clicks; a layout earns its own test | A pair that dismisses the manager: "which part of their sentence is a test worth keeping?" |
 
+## What replaces the take-home when the slices run in class?
+
+When the slices part runs, three of the take-home's four slices have been done in the room. Tonight's
+take-home then keeps its brief and changes its slice: each learner takes the slice their group did not
+run in class, and a learner whose group ran all four takes Aundh in the evening
+(`zone == "Aundh"` and `time_band == "evening"`, 1,756 carts), which no part of the day touches. The self-check
+carries no numbers for that slice, so the paragraph is marked on its reasoning: the floor as a count,
+the pair it refuses and why, and one call.
+
 ## What do you say about the faculty session?
 
 Say only that the IITGN session is tentative and did not run today. Park every sample-size

@@ -14,6 +14,8 @@ each promotion is worth before any money is spent.
 
 | Order | Part | File |
 |---|---|---|
+| 0a | The guesstimate warm-up, 5 minutes: orders a dark store handles in a day | `trainer/C2_W04_D03_guesstimate_TRAINER.md` |
+| 0b | The self-study slide D69 (the heavy tenth), read aloud once (D68's doubts were read inside S70), then the interview transcript read in pairs and scored with the [S] scorecard, with its follow-ups and the AI-company variant, 15 minutes | `slides/C2_W04_D03_half2_STUDENT.pptx`; `extras/C2_W04_D03_interview_STUDENT.md`; `trainer/C2_W04_D03_interview_TRAINER.md` |
 | 1 | The twelve baskets counted by hand on paper | The table below, printed one per group |
 | 2 | The same twelve confirmed in code | Notebook 11, cell 4 |
 | 3 | Your turn: the charger's share and its lift with every product | Notebook 11, cell 6, empty |
@@ -43,8 +45,10 @@ bulk and are left out.
 | KR-00938 | Retail-Core | cable organiser, earphone case, phone charger 20W, phone grip, screen protector, wireless earphones |
 
 The hand count: the charger in 9 of 12 baskets, 0.75; screen protector to charger, 2 of 3, 0.67, and
-lift 0.89; wireless earphones with their case, 2 baskets where chance gives 0.75, lift 2.67. Every
-value sits at least 0.05 from the full-data plants below, so the hand count spends none of them.
+lift 0.89; pen set with phone grip, 4 baskets where chance gives 2.08, lift 1.92. Every value sits at
+least 0.05 from the full-data plants below, so the hand count spends none of them, and the third
+number points at no finding: on all 812 baskets pen set with phone grip reads 1.12, so the twelve
+flatter it, as the case's twelve carts flattered bread and milk.
 
 ## Which plants should the your-turn cells find, and what do you do if nobody finds one?
 
@@ -53,7 +57,7 @@ them (decision `w4-finding-once-found`).
 
 | Plant | What the full data says | If nobody finds it |
 |---|---|---|
-| The charger is everywhere | In 686 of the 812 consumer baskets, 84.5 percent, above merchandising's 80 | Ask "which orders are baskets?" A learner who keeps the 188 Business orders gets 69.6 percent, the wrong base |
+| The charger is everywhere | In 686 of the 812 consumer baskets, 84.5 percent, above merchandising's 80 | Ask "what share of the baskets hold it?" The notebook hands over the consumer filter, so the wrong base is no staged trap; a learner who rebuilds baskets from all 1,000 orders gets 69.6 percent, and "which orders are baskets?" fixes it |
 | The charger pairs with nothing | Screen protector to charger: confidence 0.82, lift 0.97; every product in at least 2 percent of baskets reads confidence 0.82 to 0.85 and lift 0.97 to 1.00 | Ask "what is the charger's own share?", then "divide the confidence by it" |
 | A real pair above the floor | Wireless earphones with their case: lift 3.1, support 6 percent, 49 baskets, 76 percent of them Retail-Plus | Ask "sort the pairs at or above 5 percent by lift; whose baskets are they?", and point at the join with `orders` |
 | A thin pair below the floor | Car phone mount with car charger: lift 4.0 on 2 baskets, support 0.25 percent | Ask "below the floor, which pair has the highest lift, and on how many baskets?" |
@@ -61,6 +65,12 @@ them (decision `w4-finding-once-found`).
 69 pairs clear the 5 percent floor. The three lines a group brings back: the charger's share and its
 lift with the products it would be bundled with; the earphones and case to promote for Retail-Plus,
 with support and lift; the car pair to watch, with its two baskets.
+
+**Merchandising defends the charger.** The row has merchandising argue back, so the TA plays the head
+of merchandising for two minutes after cell 8: "The charger is our best-seller and in most baskets;
+pairing everything with it is the safest bundle we have." A group answers with Tuesday's four moves:
+restate it, answer from its own share and lift, concede that the charger sells well alone, and say
+what count would change the call.
 
 ## Where do learners stall in the practice set, and which hint unlocks each item?
 
@@ -70,7 +80,7 @@ The practice set's keys are 1c, 2a, 3b, 4b, 5a and 6c.
 |---|---|---|
 | Q1, the lift of paint and brushes | Dividing 28 by 50 and calling 0.56 the lift | "What would chance put in the paint-and-brushes cell?" |
 | Q2, a lift of exactly one | Reading sandpaper to paint, 0.45, as a strong bundle | "Paint is in 45 percent of all bills anyway." |
-| Q3, the four pairs and the rule | Which support the floor refers to: it is the pair's, over all bills | "How many carts would the slot touch?" |
+| Q3, the four pairs and the rule | Which support the floor refers to: it is the pair's, over all bills | "Which pairs clear the floor first, before you read any lift?" |
 | Q4, a slot after the discount | Leaving the Rs 3 in, or pricing at Rs 30 | "Which number does the business keep from each add, after the bundle?" |
 | Q5, the scrambled counting cell | Starting from the lift line, or counting before the baskets exist | "Which line uses a name no earlier line has made?" |
 | Q6, three bundles | Choosing Z for its lift of 5.0 | "How many bills would Z's slot touch in a week?" |
