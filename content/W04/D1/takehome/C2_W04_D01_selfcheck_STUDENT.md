@@ -74,5 +74,5 @@ The seven lines, in plain words first, then the line's name:
 
 | # | Checkpoint | What you should see | If it does not hold |
 |---|---|---|---|
-| 15 | It asks the question | Could a team hit this number while the thing it stands for got worse? | A line that defines a proxy without the test cannot be applied |
+| 15 | It asks the question | Could a team hit this number while the thing it stands for got no better? | A line that defines a proxy without the test cannot be applied |
 | 16 | You applied it once | One sentence applying it to your product's number | If your number passes too easily, try the cheapest way to raise it |

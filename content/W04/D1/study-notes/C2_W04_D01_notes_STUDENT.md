@@ -13,7 +13,7 @@ synthetic, built for this class.
 
 ## What can you do after Monday?
 
-- You can test whether a team could raise a number while the goal got worse.
+- You can test whether a team could raise a number while the goal got no better.
 - You can pick one north star and the guardrails that catch the harmful ways of hitting it.
 - You can tell a number that warns from one that confirms.
 - You can write the four lines that make a number computable.
@@ -286,7 +286,7 @@ suggested text still in the code at the next commit is the outcome.
 | Metric | A number a person watches in order to decide something |
 | Target | A metric with a value somebody is asked to hit |
 | Proxy | A number that stands in for the thing wanted |
-| Proxy test | Could a team hit this number while the thing it stands for got worse? |
+| Proxy test | Could a team hit this number while the thing it stands for got no better? |
 | North star | The one number that best captures the value the people served get |
 | Guardrail | A number watched beside the number being chased, which must not get worse as it rises |
 | Acceptance floor | The least share of offers a driver-week must accept to earn the Rs 300 floor |

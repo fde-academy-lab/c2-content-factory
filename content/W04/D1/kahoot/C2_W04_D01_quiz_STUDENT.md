@@ -71,10 +71,10 @@ seconds, and an item most of the room misses is the call to say again before the
 ---
 
 ## Q5. What is the proxy test, in one line?
-*Tests: What to measure and why; the proxy test: a proxy has drifted when a team could hit it while the outcome got worse.*
+*Tests: What to measure and why; the proxy test: a proxy has drifted when a team could hit it while the outcome got no better.*
 
 - Does the number move a week before the outcome it stands for?
-- Could a team hit this number while what it stands for got worse?  <- correct
+- Could a team hit this number while its goal got no better?  <- correct
 - Does the number match the same metric at the nearest competitor?
 - Is the number written with its numerator, denominator and window?
 

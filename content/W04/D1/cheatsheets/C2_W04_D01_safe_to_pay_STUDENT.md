@@ -6,7 +6,7 @@ Monday teaches six topics first, on examples whose numbers are invented, then ap
 
 ```mermaid
 flowchart LR
-    C1["<b>1 What to measure and why;<br/>the proxy test</b><br/>could it rise while<br/>the goal got worse?"]
+    C1["<b>1 What to measure and why;<br/>the proxy test</b><br/>could it rise while<br/>the goal got no better?"]
     C2["<b>2 North-star and<br/>guardrail metrics</b><br/>one number to chase,<br/>others to guard it"]
     C3["<b>3 Leading against<br/>lagging indicators</b><br/>warns while you can act,<br/>or confirms afterwards"]
     C4["<b>4 Definitions: numerator,<br/>denominator, window,<br/>exclusions</b><br/>four lines make it computable"]
@@ -94,7 +94,7 @@ E and F keep shorter weeks than the idle tail's average of about 39 peak online 
 
 ## Panel 5: What is the proxy test?
 
-Could a team hit this number while the thing it stands for got worse?
+Could a team hit this number while the thing it stands for got no better?
 
 | Proposed number | How it rises badly | The guardrail |
 |---|---|---|

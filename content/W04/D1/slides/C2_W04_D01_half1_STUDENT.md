@@ -180,7 +180,7 @@ break and fills the board region by region. Transition: chapter 1.
 ---
 
 ## SECTION 1: What to measure and why; the proxy test: what is a number for?
-*Say what a number is for, and test whether a team could raise it while the thing it stands for got worse.*
+*Say what a number is for, and test whether a team could raise it while the thing it stands for got no better.*
 
 ```notes
 LIVE, 30 seconds. Concept 1 of 6, 13 minutes, the longest, because it opens on the instinct round
@@ -201,7 +201,7 @@ A **metric** is a number a person watches in order to decide something: how much
 label: The job | title: What is it for? | body: The decision it feeds, and who makes it.
 label: The pull | title: What did pay change? | body: The count the servers were paid on.
 label: The cost | title: What did it cost? | body: Rice cooked from the wrong count.
-label: The test | title: Is it safe to pay for? | body: Could a team raise it while the goal got worse? | tone: dark
+label: The test | title: Is it safe to pay for? | body: Could a team raise it while the goal got no better? | tone: dark
 ```
 
 ```notes
@@ -224,7 +224,7 @@ icon: layers | eyebrow: d | title: All three of them | body: Attendance, homewor
 
 ```notes
 LIVE, 3 minutes, the row's instinct round at small scale: three proposed targets, and the room says
-how each could be hit while the thing it stands for got worse. Letters on paper, a show of letters,
+how each could be hit while the thing it stands for got no better. Letters on paper, a show of letters,
 two minutes with a neighbour, a second vote. Most pick c, since an exam feels hard to fake. Write the
 room's ways of raising each number on the board before the answer goes up. Transition: the answer.
 ```
@@ -315,7 +315,7 @@ last two lines ask the proxy test of the two columns, first day against last. Tr
 
 1. Name the decision a number feeds before you count it.
 2. A proxy stands in for the thing wanted, and nearly every number on a dashboard is one.
-3. Before anyone is paid on a number, ask whether a team could raise it while the goal got worse.
+3. Before anyone is paid on a number, ask whether a team could raise it while the goal got no better.
 4. Any target bends behaviour toward itself, so read a paid number beside the thing it stands for.
 
 **In the interview.** [S] How would you measure the success of a new feature?

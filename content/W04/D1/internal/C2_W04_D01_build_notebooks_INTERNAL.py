@@ -361,7 +361,8 @@ else:
 
         - Name the decision a number feeds before you count it.
         - A proxy stands in for the thing wanted, and nearly every number on a dashboard is one.
-        - Before anyone is paid on a number, ask whether a team could raise it while the goal got worse.
+        - Before anyone is paid on a number, ask whether a team could raise it while the goal got no
+          better.
         - Any target bends behaviour toward itself, so read a paid number beside the thing it stands for.
 
         **In the interview.** [S] How would you measure the success of a new feature? {TAGS} A hire-grade
