@@ -182,7 +182,7 @@ decision named. Common wrong answer: "acceptance rate, and we would survey the d
 | M1 | Swiggy | The glossary: MTU, platform frequency, GOV with its denominators; platform frequency 4.53 in the quarter to 30 September 2024. L2's exhibit of a company that writes its denominators down | https://www.bseindia.com/xml-data/corpfiling/AttachHis/2495f39b-e1d1-4018-8f69-6ff250345e98.pdf |
 | M9, W4 | Swiggy Instamart | Maxxsaver: over 28 percent of MTUs, AOV up 16 percent to Rs 612, slightly fewer orders per user. L5 | https://www.swiggy.com/corporate/wp-content/uploads/2025/07/Q1-FY2026-Shareholder-letter.pdf |
 | M2 | Eternal | NOV = GOV minus discounts; GOV disclosure sunset. L5 | https://www.eternal.com/blog/q1fy27/ |
-| M6 | Delhi Metro | 27 lakh ridership against 45 lakh line utilisation in 2018; 64.06 lakh journeys against 82,44,903 boardings in 2026. L3 | https://www.latestly.com/agency-news/dmrc-uses-new-count-metric-on-traffic-flow-doesnt-share-ridership-190870.html/amp ; https://www.tribuneindia.com/news/delhi/delhi-metro-records-99-95-train-punctuality-in-2026-dmrc/ ; https://www.republicworld.com/india/delhi-metro-breaks-all-time-record-with-8244-lakh-footfall-as-dtc-strike-sends-rush-soaring-2026-09-18-137241 |
+| M6 | Delhi Metro | Two units in 2018: about 27 lakh riders a day (February) against 45,35,932 line uses (29 May). Two kinds of day in 2026, one unit: 64.06 lakh journeys on an average day against 82,44,903 boardings on the record day, 17 September, a bus-strike day, which beat the record of more than 81 lakh passenger journeys on 8 August 2025. A journey counts each line a rider uses (Deccan Herald, PTI, 30 August 2023); that journeys and boardings are one count is our reading of the two records. L3 | https://www.latestly.com/agency-news/dmrc-uses-new-count-metric-on-traffic-flow-doesnt-share-ridership-190870.html/amp ; https://www.tribuneindia.com/news/delhi/delhi-metro-records-99-95-train-punctuality-in-2026-dmrc/ ; https://www.republicworld.com/india/delhi-metro-breaks-all-time-record-with-8244-lakh-footfall-as-dtc-strike-sends-rush-soaring-2026-09-18-137241 ; https://www.deccanherald.com/india/delhi/delhi-metro-records-highest-ever-footfall-on-aug-29-2666561 |
 | M4 | Airbnb | Nights booked net of cancellations went to minus 4.1 million in March 2020. Notes only | https://www.sec.gov/Archives/edgar/data/1559720/000119312520294801/d81668ds1.htm |
 | M5 | Spotify | An MAU is an account with more than zero milliseconds of consumption in thirty days. Notes only | https://www.sec.gov/Archives/edgar/data/1639920/000162828026006874/ck0001639920-20251231.htm |
 | T2 | Aced | What interviewers score: structure, assumptions, scope first, the takeaway before the method. The scorecard | https://www.aced.io/blog/top-data-analyst-interview-questions |
@@ -290,7 +290,7 @@ may fill it with a dated primary source or leave it as a labelled hypothetical. 
 against the clock: UPI transactions a day, mapped as active users times payments a day, validated
 against 802 million a day in September 2026 (T3), with the catch that a 30-day month and a 31-day month
 move the monthly total. Traps: a city of two million people given nine million households (the row's
-Kahoot item); a validation in the wrong unit, Delhi Metro's boardings against journeys (M6); a
+Kahoot item); a validation on the wrong day, Delhi Metro's record day against its average day (M6); a
 published number misread by a decimal, Flipkart's 6.3 million concurrent users beside a URL that says
 63 million (T3). Interviewer listens for: scope pinned first, every assumption stated so it can be
 challenged, the sanity check in the right unit, the takeaway before the method (T2). Common wrong
@@ -313,7 +313,7 @@ repeat it accurately. Common wrong answer: method first, nine numbers.
 | T2 | Aced | What interviewers score in a guesstimate. L5 | https://www.aced.io/blog/top-data-analyst-interview-questions |
 | T3 | NPCI through Outlook Money | 802 million UPI transactions a day on average in September 2026; 24.07 billion in the month. L5's anchor | https://www.outlookmoney.com/banking/upi-processes-2407-billion-transactions-worth-rs-2937-lakh-crore-in-september |
 | T3 | Flipkart | 6.3 million concurrent users in a minute (9 October 2026) beside a URL slug that reads 63 million. L5's decimal trap | https://stories.flipkart.com/announcement/india-logs-on-for-the-big-billion-days-flipkart-records-63-million-concurrent-users-as-the-festive-season-opens |
-| M6 | Delhi Metro | Boardings against journeys. L5's unit trap | URLs in Monday's table |
+| M6 | Delhi Metro | A record day against an average day, both counted by line used. L5's period trap | URLs in Monday's table |
 | T3 | DMart | FY26 standalone revenue Rs 66,968 crore; 85 stores added to reach 500; about Rs 134 crore a store on the year-end count, about Rs 146 crore on the average count (our arithmetic in R2). The Kalpa lab's anchor | https://nsearchives.nseindia.com/corporate/DMART_02052026173007_ASLPressRelease02052026.pdf |
 
 Not to be used: the Think Insights and Management Consulted pages in the row (403 on 12 October 2026,
@@ -490,25 +490,31 @@ the thin pair on the watch list.
 
 ## Thursday: Zomato Gold, Chennai. Who is leaving, and at which step?
 
+Corrected at the build (pull request 238): the dashboard's definition, the member count, the twelve
+rows, the events table's user column, the funnel toy, the tracking check, the walk's source, the
+guesstimate's catch and Kalpa's retention basis. The text below carries the merged values; Thursday's
+facts file, `content/W04/D4/internal/C2_W04_D04_facts_INTERNAL.yaml`, gives each correction's
+arithmetic in its `corrections` block.
+
 ### The ticket
 
 **Zomato Gold, Chennai, the membership and the app's order flow (illustrative case: the company is
 real, the situation and the data are synthetic, built for this class).**
 
 The membership dashboard reports month-two retention for Chennai as flat at 38 percent for the
-reporting months June, July, August and September 2026 (blended: members active in the month over
-members who signed up before it). Each signup cohort's own curve falls with age, and each successive
+reporting months June, July, August and September 2026: members two or more months past their signup
+month who ordered in the reporting month, over all of them. Each signup cohort's own curve falls with age, and each successive
 cohort's month-one rate is lower than the one before: January 2026, 58 percent; April, 53; July, 49;
-August, 31 (targets). The August cohort was signed up in a sale week on a discounted first month and
-is 2.6 times the size of a normal month's cohort. On Monday 14 September 2026 a new checkout flow
+August, 31. The August cohort was grown by a sale week on a discounted first month (8,027 of its
+13,000 members joined that week) and is 2.6 times the 5,000 a month of January to July. On Monday 14 September 2026 a new checkout flow
 shipped on Android; since then members' add-to-cart to order conversion on Android fell from 58 to 44
 percent, iOS stayed at 57, and non-members on Android stayed at 52 (targets).
 
 | Measure | Value |
 |---|---|
-| Members signed up January to September 2026 | 60,000 |
-| Normal cohort size | about 5,000; August 13,000 |
-| Blended retention, June to September reporting months | 38 percent each month |
+| Members signed up January to September 2026 | 53,089 |
+| Cohort sizes | about 5,000 a month January to July; August 13,000; September 5,089 |
+| Month-two retention on the dashboard, June to September reporting months | 38 percent each month |
 | Month-one retention by cohort, January to August | 58, 56, 55, 53, 52, 50, 49, 31 |
 | Add-to-cart to order, members, Android, before and after 14 September | 58 to 44 percent |
 | The same, members, iOS | 57 to 56 percent |
@@ -520,9 +526,9 @@ percent, iOS stayed at 57, and non-members on Android stayed at 52 (targets).
 
 | Table | Columns | Rows |
 |---|---|---|
-| `members` | `member_id`, `signup_date`, `cohort_month`, `signup_channel` (organic, sale), `zone` | 60,000 |
+| `members` | `member_id`, `signup_date`, `cohort_month`, `signup_channel` (organic, sale), `zone` | 53,089 |
 | `member_months` | `member_id`, `month`, `orders` | one row per member per month since signup |
-| `events` | `member_id`, `session_id`, `event_ts`, `stage` (open, search, menu_view, add_to_cart, checkout_start, order_placed), `platform` (android, ios, web), `checkout_version` | September 2026 in full; August for comparison |
+| `events` | `user_id` (a member's is her `member_id`), `is_member`, `session_id`, `event_ts`, `stage` (open, search, menu_view, add_to_cart, checkout_start, order_placed), `platform` (android, ios, web), `checkout_version` (v1, v2) | August and September 2026; Gold members and a comparison sample of 4,000 non-members |
 
 **The ask, due Friday, to the membership lead.** Is it a cohort problem or an everyone problem?
 Which funnel stage owns the loss? What should be fixed first, with the evidence?
@@ -537,8 +543,8 @@ Android, which the app team has mapped.
 Twelve members from three signup months: four from May, three from June, five from the August sale
 cohort, each with an order flag for every month since signup to September. The shape to hit: May 3 of
 4 active in month one and 2 of 4 in month two; June 2 of 3 in month one and 1 of 3 in month two;
-August 2 of 5 in month one; the blend over all twelve in September at 6 of 12, 50 percent, at least
-five points from 38 and from Kalpa's 41 (targets on the rows).
+August 0 of 5 in month one; the twelve in September at 2 of 12. Six of 12 would need members to come
+back after leaving, which breaks every cohort falling, and 2 of 5 sits a point from Kalpa's 41.
 
 ### The sub-problems
 
@@ -549,19 +555,19 @@ month; now A is at 40 and new batch B of 400 at 52.5, so 250 of 500 is still 50 
 batch falls with age (toy, R1). Numbers: the twelve rows. Trap: none yet. Interviewer listens for: the
 entry moment fixed before any rate. Common wrong answer: "retention is 50 percent" with no cohort.
 
-**L2. What is every cohort's curve on 60,000 members, and what is the blend made of?** Concept: a
+**L2. What is every cohort's curve on 53,089 members, and what is the blend made of?** Concept: a
 cohort table is one `pivot_table`; the blend is a size-weighted average of cohort rates. Numbers: the
-month-one rates above; every cohort strictly falling across its observed ages; the blend for June to
-September at 38 percent, reproduced as the weighted average and asserted equal to the direct count
-(targets). The trap, exactly: "Blended retention is 38 percent and flat, so nothing changed" and the
+month-one rates above; every cohort strictly falling across its observed ages; the dashboard's month-two
+retention for June to September at 38 percent, reproduced as the weighted average and asserted
+equal to the direct count. The trap, exactly: "Retention is 38 percent and flat, so nothing changed" and the
 decision it misleads: the sale cohort gets no action and the dashboard stays. The check: decompose.
 Interviewer listens for: fewer users against less use per user, separated. Common wrong answer:
 "impossible".
 
 **L3. Which stage owns the loss, on which denominator, and for whom?** Concepts: stages and their
-denominators; the artefact; the unit. Toys: 100 visits, 40 searches, 20 add-to-carts, 10 checkouts,
-steps of 40, 50 and 50 percent, overall 10; checkout per session 10 of 50 against per member 10 of 20
-(R1). Numbers: search to menu view at 118 percent per session (the carousel skips search, the
+denominators; the artefact; the unit. Toys: 100 sessions, 40 with a search, 20 with an add-to-cart,
+10 with a checkout, steps of 40, 50 and 50 percent, overall 10; the same checkouts read 10 of 100
+sessions and 10 of 20 people (R1), every step in one unit. Numbers: search to menu view at 118 percent per session (the carousel skips search, the
 artefact); menu view to add-to-cart 34 percent per session and 61 percent per member; add-to-cart to
 order for members on Android 58 to 44 after 14 September, iOS flat, non-members flat (targets). The
 trap, exactly: "the drop is at add-to-cart to order for everyone": it sits in members on Android after
@@ -574,8 +580,9 @@ was bought on a discount; its curve beside an organic cohort of the same month, 
 August members retain like July's); censoring (the latest cohorts are young and a member who has not
 left is not retained for ever; named for the faculty block); seasonality (exam months in a
 student-heavy zone, a labelled hypothetical with the check by zone); the tracking change (the renamed
-event on Android; the check uses the app team's mapping and shifts the release date a week either way,
-target: the fall holds); sessions against members (the unit named on every chart); before-and-after is
+event on Android shipped with the release, so a logging fault would also start on 14 September; the
+check sets the order records against the event log, and moving the cut a week either way dates the
+fall); sessions against members (the unit named on every chart); before-and-after is
 not cause (Zomato Gold's 60 percent frequency rise after joining, Th4, as the self-selection
 question). Interviewer listens for: the denominator asked for before a chart is trusted (Th2). Common
 wrong answer: "members order more because Gold works".
@@ -590,9 +597,10 @@ sale members. Interviewer listens for: the stage, the cohort it hurts most, the 
 Common wrong answer: "fix retention" with no stage.
 
 **L6. Retention dropped; walk me through your investigation. And how do you separate novelty from
-habit in an AI app's cohorts?** Structure (Aced, T2): tracking first, then the definition, then
+habit in an AI app's cohorts?** Structure: define the metric, rule out a data issue, then
 segments by cohort, platform and region, then fewer users against less use per user, then the funnel
-stage. The AI-company variant (programme-written): a launch-week cohort whose day-1 numbers are
+stage. Aced's sample answer (T2) defines the metric first and says to rule out data issues first, and
+is cited for no more than its page says. The AI-company variant (programme-written): a launch-week cohort whose day-1 numbers are
 novelty, organic cohorts beside it, week-4 retention per cohort, the blended MAU that hides the decay.
 Interviewer listens for: the order, and the refusal to name a cause first. Common wrong answer: a
 cause in the first sentence.
@@ -607,7 +615,7 @@ cause in the first sentence.
 | Th3 | Swiggy | MTU up 27.4 percent while platform frequency fell 6.3 percent; over 4 million unprofitable users weaned; one-month retention 61 from 55 percent. L2 and L5 | the Swiggy Q1 FY27 URL in Wednesday's table |
 | Th5 | Amplitude | 7 percent day-7 retention as roughly top quartile; enterprise median 2.1 percent; vendor figures with a loose definition. L3's "what good means", with the caveat | https://www.amplitude.com/blog/7-percent-retention-rule |
 | M5 | Uber | Uber One at 46 million members. Notes only | the Uber 10-K URL in Monday's table |
-| T2 | Aced | Tracking first; segmentation before root cause; fewer users against less use. L6 | https://www.aced.io/blog/top-data-analyst-interview-questions |
+| T2 | Aced | On its sample metric drop: define the metric, rule out a data issue first, segment before a root cause; its commentary keeps fewer users apart from fewer views each. The page carries a relative update date only. L6 | https://www.aced.io/blog/top-data-analyst-interview-questions |
 
 Not to be used: current Zomato Gold or Swiggy One member counts (not in the 2026 letters, R2 "Not yet
 verified"); a public case of blended-flat-while-cohorts-decline (none verified, so the case stays
@@ -615,17 +623,19 @@ synthetic and says so).
 
 ### The guesstimate
 
-Riders on the Delhi Metro on a weekday: clarify (journeys, boardings or line use); map (lines times
+Riders on the Delhi Metro on a weekday: clarify (riders, trips or line uses); map (lines times
 trains times load, or population times the share using the metro); calculate; validate against 64.06
-lakh average daily passenger journeys in 2026 and the record of 82,44,903 boardings on 17 September
-2026 (M6, T3); the catch: journeys and boardings are different units, which is Thursday's whole lesson.
+lakh journeys on an average day in 2026, which count each line a rider uses, and the record of
+82,44,903 boardings on 17 September 2026, a bus-strike day, which beat the record of more than 81 lakh
+passenger journeys (M6); the catch: trips against line uses, of which journeys and boardings are two
+names (our reading), and a weekday against a record day.
 
 ### The Kalpa transfer
 
 The lab's case: the head of Retail-Plus's two questions (the row): is the fall everyone or the
-monsoon-sale members, and where is the loss. The Thursday generator writes `memberships`
+monsoon-sale members, and where is the loss. The Thursday generator writes `kalpa_memberships`
 (`customer_id`, `tier`, `member_since`: 120 Retail-Plus members with starts in January to August 2026,
-independent of order history, the August monsoon cohort the largest) and `events` (`customer_id`,
+independent of order history, the August monsoon cohort the largest) and `kalpa_events` (`customer_id`,
 `session_id`, `event_type`: visit, search, add_to_cart, checkout; `event_ts`) for Retail-Plus members
 over July to September 2026, every app-channel order with exactly one checkout event on its date and no
 checkout without an order. Plants (TRAINER until the lab): blended retention 41 percent for July,
@@ -635,8 +645,9 @@ checkout for members at least 15 points below the three weeks before inside Mond
 to 30 September) and within 5 points outside it; at least 20 percent of sessions skipping search;
 checkout per session and per member at least 10 points apart. The lab's twelve rows: seven members
 from the May and August cohorts tracked July to September, and one member's week of events showing
-the skippable stage. If orders-based retention cannot be shaped with v4 frozen, the fallback is app
-activity, recorded in the facts file. The unguided exercise: the fix-first call for Kalpa, which the
+the skippable stage. Orders-based retention could not be shaped with v4 frozen, since 37 of the 120
+Retail-Plus customers ordered in September, so retention is on app activity (at least one app session
+in the month), the fallback, recorded in the facts file. The unguided exercise: the fix-first call for Kalpa, which the
 bank's items 5, 12, 13, 20 to 22, 27, 33 to 35 and 42 test.
 
 ---

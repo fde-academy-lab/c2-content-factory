@@ -740,13 +740,13 @@ count on the carts, the milk trap or the Kalpa lab.
 dashboard reports month-two retention for the city as flat at 38 percent for the reporting months
 June to September 2026, while every signup cohort's own curve falls with age and each successive
 cohort's month-one rate is lower than the one before: the January 2026 cohort kept 58 percent of its
-members in month one, the July cohort 49 percent, and the August cohort, signed up in a sale week and
-2.6 times the size of a normal month, 31 percent (targets). On Monday 14 September 2026 a new checkout
+members in month one, the July cohort 49 percent, and the August cohort, grown by a sale week and
+2.6 times the 5,000 a month of January to July, 31 percent. On Monday 14 September 2026 a new checkout
 flow shipped on Android; since then members' add-to-cart to order conversion on Android fell from 58
 to 44 percent while iOS stayed at 57 and non-members on Android stayed at 52 (targets). Data: `members`
 (member, signup date, cohort month, signup channel, zone), `member_months` (member, month, orders),
-`events` (member, session, timestamp, stage: open, search, menu view, add to cart, checkout start,
-order placed; platform; checkout version), 60,000 members (target). The ask, due Friday: is it a
+`events` (user, member flag, session, timestamp, stage: open, search, menu view, add to cart,
+checkout start, order placed; platform; checkout version), 53,089 members. The ask, due Friday: is it a
 cohort problem or an everyone problem, which funnel stage owns the loss, and what should be fixed
 first. Caveats on the ticket: the home carousel lets a member reach a menu without searching; sessions
 and members are different units; the sale cohort was acquired on a discount. Illustrative case: the
@@ -761,7 +761,7 @@ number is 38 and never 41, so Kalpa's plant stays Kalpa's.
 |---|---|---|---|
 | Morning | 10 | L1 | The ticket; the hypothesis board opens: causes listed and ordered, with the test each needs, before any data (the Yammer habit, R1) |
 | | 50 | L1 | Chapter 1, reveal one: two coaching batches (toy), the twelve members' three cohorts and the blend by hand; Blinkit's and Swiggy's published cohorts (Th1, Th2) |
-| | 45 | L2, L3 | Chapter 2, reveal two: the cohort table on 60,000 members; the curves; the blend decomposed in the your-turn cell; the sale cohort found |
+| | 45 | L2, L3 | Chapter 2, reveal two: the cohort table on 53,089 members; the curves; the blend decomposed in the your-turn cell; the sale cohort found |
 | | 10 | | Break |
 | | 65 | L3, L4 | Chapter 3, reveal three: the funnel by stage with the right denominator; the skippable stage; the Android checkout drop by cohort, platform and date; the caveats; the app team disputes |
 | Afternoon, first 60 | 30 | L5 | Unguided: the fix-first call with its evidence and its cost; the app team's role card answered |
@@ -804,27 +804,28 @@ more month.
 
 | Level | The sub-problem | The concept, with its analogy | The step and its numbers | The trap, exactly | The real case (R2) |
 |---|---|---|---|---|---|
-| L1 | Who entered when on the twelve rows, and what happens to each group month by month? | Fix the entry moment; the triangle; the blend hides the decline. Two coaching batches of 10, June and July; 6 and 4 return in month two (toy, R1). Then the blend: batch A of 100 stood at 50 percent; now A is at 40 and new batch B of 400 at 52.5, so 250 of 500 is still 50 while each batch falls (toy, R1) | Twelve members from three signup months (May, June and the August sale), with an order flag per month: each cohort's rate falls with age while the blend over all twelve barely moves (targets on the rows; the card's blend sits at least five points from 38 and from 41) | None yet; the paradox is counted | Blinkit (Th1): Q4 retention averaged 46 percent across cohorts while NOV retention ran 150 percent; survivors spend more. Swiggy's triangle (Th2) with the denominator question |
-| L2 | What is every cohort's curve on 60,000 members, and what is the blend made of? | A cohort table is one `pivot_table`; the blend is a size-weighted average of cohort rates | Signup month against months since; retention curves; the blend as the size-weighted average, asserted equal to the direct count; month-one rates 58 to 49 to 31 (targets) | "Blended retention is 38 percent and flat, so nothing changed" (the decision it misleads: the sale cohort gets no action). The check: decompose | Swiggy's blend (Th3): MTU up 27.4 percent while platform frequency fell 6.3 percent, and the blend cannot say which |
-| L3 | Which stage owns the loss, on which denominator, and for whom? | Stages and their denominators; the artefact; the unit. 100 visits, 40 searches, 20 add-to-carts, 10 checkouts (toy, R1); per session against per member (toy) | The funnel on `events` with one denominator per step; search to menu view at 118 percent per session because the carousel skips search (target, the artefact); menu view to add-to-cart 34 percent per session and 61 percent per member (targets); add-to-cart to order for members on Android 58 to 44 after 14 September, iOS flat, non-members flat (targets) | "The drop is at add-to-cart to order for everyone": it sits in members on Android after one date, so the app team is partly right that the stage is fine elsewhere | Amplitude's 7 percent day-7 line (Th5) as what "good retention" means, with its vendor caveat |
-| L4 | What can the table not show? | Six caveats: the sale cohort was bought on a discount (selection); the latest cohorts are young (censoring, named for the block); seasonality (exam months in a student-heavy zone, labelled hypothetical); the tracking change with the new checkout; sessions against members; before-and-after is not cause | Each caveat as one check: the sale cohort's curve beside an organic cohort of the same month; the Android fall restated with the release date shifted a week either way | "Gold causes the rise in frequency": members choose to join when they expect to order more | Zomato Gold (Th4): frequency rose about 60 percent after joining, a self-selection question |
+| L1 | Who entered when on the twelve rows, and what happens to each group month by month? | Fix the entry moment; the triangle; the blend hides the decline. Two coaching batches of 10, June and July; 6 and 4 return in month two (toy, R1). Then the blend: batch A of 100 stood at 50 percent; now A is at 40 and new batch B of 400 at 52.5, so 250 of 500 is still 50 while each batch falls (toy, R1) | Twelve members from three signup months (May, June and the August sale), with an order flag per month: each cohort's rate falls with age (as built: May 3 of 4 in month one and 2 of 4 in month two, June 2 of 3 and 1 of 3, August 0 of 5), while the dashboard's way holds at 2 of 7 from August to September and the twelve in September read 2 of 12, far from 38 and from 41 | None yet; the paradox is counted | Blinkit (Th1): Q4 retention averaged 46 percent across cohorts while NOV retention ran 150 percent; survivors spend more. Swiggy's triangle (Th2) with the denominator question |
+| L2 | What is every cohort's curve on 53,089 members, and what is the blend made of? | A cohort table is one `pivot_table`; the blend is a size-weighted average of cohort rates | Signup month against months since; retention curves; the blend as the size-weighted average, asserted equal to the direct count; month-one rates 58 to 49 to 31 | "Retention is 38 percent and flat, so nothing changed" (the decision it misleads: the sale cohort gets no action). The check: decompose | Swiggy's blend (Th3): MTU up 27.4 percent while platform frequency fell 6.3 percent, and the blend cannot say which |
+| L3 | Which stage owns the loss, on which denominator, and for whom? | Stages and their denominators; the artefact; the unit. 100 sessions, 40 with a search, 20 with an add-to-cart, 10 with a checkout (toy, R1); the same checkouts as 10 of 100 sessions and 10 of 20 people (toy) | The funnel on `events` with one denominator per step; search to menu view at 118 percent per session because the carousel skips search (target, the artefact); menu view to add-to-cart 34 percent per session and 61 percent per member (targets); add-to-cart to order for members on Android 58 to 44 after 14 September, iOS flat, non-members flat (targets) | "The drop is at add-to-cart to order for everyone": it sits in members on Android after one date, so the app team is partly right that the stage is fine elsewhere | Amplitude's 7 percent day-7 line (Th5) as what "good retention" means, with its vendor caveat |
+| L4 | What can the table not show? | Six caveats: the sale cohort was bought on a discount (selection); the latest cohorts are young (censoring, named for the block); seasonality (exam months in a student-heavy zone, labelled hypothetical); the tracking change with the new checkout; sessions against members; before-and-after is not cause | Each caveat as one check: the sale cohort's curve beside an organic cohort of the same month; the order records set against the event log, and the cut moved a week either way to date the fall, since the renamed event shipped with the release | "Gold causes the rise in frequency": members choose to join when they expect to order more | Zomato Gold (Th4): frequency rose about 60 percent after joining, a self-selection question |
 | L5 | What is fixed first, what is the evidence, and what does the sale cohort cost? | The fix-first call with its cost; the dispute answered | The Android checkout first (the fall's size in orders a week, target, times the average member order value, a labelled assumption with a range); the sale cohort's lifetime orders against an organic cohort's; the app team's chart answered with the split by platform and date | Fixing the "loss" at the skippable stage; fixing retention by acquiring more sale members | Swiggy weaned away over 4 million unprofitable users and one-month retention rose to 61 percent from 55 (Th3): part of such a rise comes from the changed mix of who remains, separate from any change in how each cohort behaves |
-| L6 | Retention dropped; walk me through it. And how do you separate novelty from habit in an AI app's cohorts? | The transfer | The transcript ([S]) in Aced's order: tracking first, then the definition, then segments, then fewer users against less use per user, then the funnel stage; the AI-company variant: a launch-week cohort whose day-1 numbers are novelty, judged on week-4 retention per cohort rather than a blended MAU (programme-written) | The candidate jumps to a cause | Aced (T2); Swiggy (Th3) |
+| L6 | Retention dropped; walk me through it. And how do you separate novelty from habit in an AI app's cohorts? | The transfer | The transcript ([S]) in the hypothesis board's order: the definition, then a data issue ruled out, then segments, then fewer users against less use per user, then the funnel stage; the AI-company variant: a launch-week cohort whose day-1 numbers are novelty, judged on week-4 retention per cohort rather than a blended MAU (programme-written) | The candidate jumps to a cause | Aced (T2); Swiggy (Th3) |
 
 **Definitions fixed here (so the generator, the paper and the day agree).** A cohort is the set of
 members whose membership started in the same calendar month. A member is retained in month k when she
-placed at least one order in the k-th calendar month after her signup month. Blended retention for a
-reporting month is the share of members who signed up before that month who placed at least one order
-in it. A funnel step's rate divides those who reached the step by those who reached the step before,
-in one unit, sessions or members, named on the chart. The Kalpa transfer uses the same definitions on
-Retail-Plus members with orders of any status; if the orders-based version cannot be shaped with v4
-frozen, the fallback is app activity (at least one event in the month), recorded in the facts file.
+placed at least one order in the k-th calendar month after her signup month. Month-two retention, the
+dashboard's number, for a reporting month is the share of members two or more months past their
+signup month who placed at least one order in it; the everyone blend counts every member who signed
+up before the month. A funnel step's rate divides those who reached the step by those who reached the step before,
+in one unit, sessions or members, named on the chart. The Kalpa transfer uses the everyone blend on
+Retail-Plus members with app activity (at least one app session in the month), the fallback, since 37
+of the 120 Retail-Plus customers ordered in September in v4; the facts file records it.
 
 ### The Kalpa transfer (the lab and one unguided exercise)
 
 The lab re-runs L1 to L3 on Kalpa Retail's Retail-Plus tier: the Thursday generator writes
-`memberships` (120 Retail-Plus members, `member_since` in January to August 2026, the August monsoon
-cohort the largest) and `events` (visits, searches, add-to-cart, checkout for Retail-Plus members over
+`kalpa_memberships` (120 Retail-Plus members, `member_since` in January to August 2026, the August monsoon
+cohort the largest) and `kalpa_events` (visits, searches, add-to-cart, checkout for Retail-Plus members over
 July to September 2026, every app-channel order with exactly one checkout event, some sessions without
 search), with the row's plants: blended retention 41 percent for July, August and September; every
 cohort falling with age; the August cohort worst in month one; add-to-cart to checkout for members at
@@ -851,16 +852,17 @@ Retail-Plus's fix-first call, which is what the Saturday bank's items 5, 12, 13,
 
 ### The interview room
 
-- **Transcript.** [S] "Retention dropped; walk me through your investigation", with Aced's order, the
-  trap, the weak and hire-grade answers, three follow-ups ("blended retention is flat while every
+- **Transcript.** [S] "Retention dropped; walk me through your investigation", in the hypothesis
+  board's order (Aced's sample answer for its first steps), the trap, the weak and hire-grade answers, three follow-ups ("retention is flat while every
   cohort declines; how?", "the app team says your stage is fine; what do you bring?", "what denominator
   do you ask for before trusting a company's cohort chart?" (Th2)).
 - **The AI-company variant (extras, STUDENT).** Novelty against habit in an AI app's cohorts: the
   launch-week cohort, the organic cohorts, week-4 retention per cohort, the blended MAU that hides the
   decay; programme-written.
-- **Guesstimate of the day.** Riders on the Delhi Metro on a weekday, anchored to 64.06 lakh average
-  daily passenger journeys in 2026 and the record of 82,44,903 boardings on 17 September 2026 (M6, T3),
-  with the catch that journeys and boardings are different units.
+- **Guesstimate of the day.** Riders on the Delhi Metro on a weekday, anchored to 64.06 lakh journeys on
+  an average day in 2026 and the record of 82,44,903 boardings on 17 September 2026, a bus-strike day
+  (M6), with the catch that both count each line a rider uses (our reading for boardings), so a trip
+  estimate is checked against line uses only after the share who change lines.
 - **Pain points, each anchored.** A blend that cannot separate fewer users from less use per user
   (Th3); a cohort chart with a moving denominator (Th2); before-and-after read as cause (Th4); a stage
   counted in sessions beside a stage counted in members (the case); a universal "good retention"
