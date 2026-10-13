@@ -352,7 +352,7 @@ the day teaches. The fix is light: no notebook, no number of the case and no exe
 | `slides/C2_W02_D03_half1_STUDENT.md` and its `.pptx` | S1a, the row's six subtopics with their chapters, minutes and a concept map; the five chapter openers named topic first; S32a, S55a and S74a; the notes' transition lines on S1, S32, S55 and S74 |
 | `slides/C2_W02_D03_half2_STUDENT.md` and its `.pptx` | S1a; chapter 6's opener named topic first; S1's transition line |
 | `trainer/C2_W02_D03_day_sheet_TRAINER.md` | The coverage table of the six subtopics; stop before and cut first for LEAD's slide; the new slides in the block tables |
-| `study-notes/C2_W02_D03_notes_STUDENT.md` | The six chapter headings named topic first |
+| `study-notes/C2_W02_D03_notes_STUDENT.md` | The six chapter headings named topic first, and the two lines that called LEAD named and not used |
 | `scripts/build_deck.py` and `scripts/deck_layout.py` | A chapter named `Topic: question?` prints its topic over its question on the opener, and the pills, footers and cover strip keep the question |
 
 **Decisions that depart from the request or a source.**
@@ -390,8 +390,8 @@ the day teaches. The fix is light: no notebook, no number of the case and no exe
    read against the head of Retail-Plus's rule.
 10. The day sheet's "LEAD is named once on S53 and never taught" became "LEAD gets one slide, S55a, on
     C-0040's months, and no query uses it", and the row's cut order, LEAD first, now cuts S55a to its
-    rule line before S73 and S74. The notes' "LEAD was named and not used" and its glossary row
-    stand, since no query uses LEAD.
+    rule line before S73 and S74. The notes' "LEAD was named and not used" and its glossary row now
+    say LEAD was shown on C-0040's months and used in no query.
 11. S1a's minutes are the day sheet's chapter minutes; the CTE filter's 4 are S32's two and S32a's two.
 12. No lettered item tests LEAD, and none asks why WHERE refuses a window, which the interview drill
     asks aloud. The coverage table says so, and no item was added, since the request kept every

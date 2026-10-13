@@ -50,9 +50,9 @@ the marketing lead's member team, whose calls go to the members these measures p
 - How does today feed Thursday and the Saturday paper?
 
 **What the session covered.** Six chapters on one case, each with its options, its trap and a
-second route; LEAD was named and not used. The escalated case, Marketing's Monday package of lists,
-calls, revenue shares and a sentence for Meera, ran parts 1 and 2 in the afternoon, and parts 3 to 5 run
-in the TA-led practice lab. The second case, Retail-Core ranked by how often members ordered, is the
+second route; LEAD was shown on one member's months and used in no query. The escalated case,
+Marketing's Monday package of lists, calls, revenue shares and a sentence for Meera, ran parts 1 and
+2 in the afternoon, and parts 3 to 5 run in the TA-led practice lab. The second case, Retail-Core ranked by how often members ordered, is the
 take-home.
 
 **What the asks measure.** Q2 is July to September 2026, and Q2 revenue per member is booked revenue,
@@ -776,7 +776,7 @@ since each is defined here the way today used it.
 | Monthly spend | A member's booked revenue in one calendar month | Chapter 4 | C-0040, Rs 7,980 in April |
 | The falling flag | September below August, and August below July | Chapter 4 | 16 flagged, then 9 |
 | date_trunc | Cuts a date to the first day of its week or month | Chapter 4 | `date_trunc('month', order_date)` |
-| LEAD | Reads the next row, the mirror of LAG; named today and not used | Chapter 4 | Next month's spend |
+| LEAD | Reads the next row, the mirror of LAG; shown on C-0040's months and used in no query | Chapter 4 | Next month's spend |
 | Plan line | Kalpa's Q2 plan: 13 weeks from 6 July at Rs 75,69,230 each | Chapter 5 | Rs 9,83,99,990 in all |
 | To date | Every week up to and including the one on the row | Chapter 5 | Rs 6,87,36,590 at mid-quarter |
 | Mid-quarter | The end of the seventh plan week, the week of 17 August | Chapter 5 | Rs 1,57,51,980 ahead |
