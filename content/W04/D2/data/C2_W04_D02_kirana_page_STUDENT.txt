@@ -1,0 +1,16 @@
+VERSION A: THE DRAFT
+- North star (sales a day): Rs 11,900 to Rs 12,600
+- Denominator: hours open, 10 to 12
+- Sales per hour index: 100 to 88
+- Customers a day: 119 to 126
+- Sales per customer: Rs 100 in both months
+- Rain days: 2 and 2
+- Festival days: none and 14
+- Helper's extra cost: Rs 170 a day
+- Guardrail: sales per customer held
+=====
+VERSION B: THE PAGE
+Keep the longer hours for one more month and count the evening's own sales, because the two extra hours have brought Rs 700 a day while each hour of the day now earns less.
+Sales per hour fell from Rs 1,190 in September to Rs 1,050 in October, the two added hours selling at most Rs 350 each, and sales per customer held at Rs 100.
+A festival fortnight fell inside October, so part of the extra Rs 700 a day may be the season.
+Keep the hours through November, write the evening's sales in a separate column each day, and decide after thirty days; the helper's two extra hours cost Rs 170 a day, and Ramesh signs.

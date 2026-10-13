@@ -42,7 +42,7 @@ customers, so their totals describe the extract, never the whole company.
 
 ## How will you answer the head who objects?
 
-This comes up at work in the meeting itself: the slide is only as good as its owner's answer to the
+This comes up at work in the meeting itself: the room judges the slide by its owner's answer to the
 first objection.
 
 The TA reads one head's objection, which is partly right. Answer it in the four moves and the

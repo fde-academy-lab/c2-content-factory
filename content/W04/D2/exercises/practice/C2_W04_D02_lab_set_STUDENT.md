@@ -1,6 +1,6 @@
 # Can the day's slide and the day's estimate survive Kalpa's own questions?
 
-This is the TA-led practice lab, which runs after the afternoon block. The morning's studio and the afternoon's dojo run
+This is the TA-led practice lab, which runs after the afternoon block. The morning's studio and the afternoon's paired estimating drill run
 once more, on Kalpa Retail, the programme's client: first a three-minute slide to a TA who plays one of
 Kalpa's heads, then Anand Iyer's question about a new store, sized from nothing and checked. A short
 ladder of practice problems follows for anyone who finishes early or wants another climb.
@@ -59,7 +59,7 @@ and say which one a scheme that pays staff by the hour should read.
 
 **P3. Level L3.** Write the four moves for the driver-operations lead's objection to the Uber
 redesign, "drivers will log off and supply at peak will fall", using the numbers on the morning deck's
-S20.
+S46.
 
 **P4. Level L4.** A Kalpa slide draft carries six elements: the north-star chart, a table of all
 orders, the discount share, the return rate, a pie of orders by channel, and a paragraph on method.

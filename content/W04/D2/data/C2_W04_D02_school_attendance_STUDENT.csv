@@ -1,0 +1,17 @@
+year,week,attendance_pct,exam_week,timetable_changed
+last year,1,76,no,no
+last year,2,77,no,no
+last year,3,76,no,no
+last year,4,77,no,no
+last year,5,77,no,no
+last year,6,85,yes,no
+last year,7,85,yes,no
+last year,8,85,yes,no
+this year,1,77,no,no
+this year,2,76,no,no
+this year,3,81,no,yes
+this year,4,82,no,yes
+this year,5,81,no,yes
+this year,6,89,yes,yes
+this year,7,90,yes,yes
+this year,8,89,yes,yes

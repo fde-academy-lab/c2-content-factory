@@ -1,6 +1,6 @@
 # Guesstimate note, Week 4 Tuesday: what are the day's three estimates, their anchors and their catches?
 
-**TRAINER ONLY.** The worked versions of the day's estimates: drivers at the evening peak (worked with
+**TRAINER ONLY.** This page holds the worked versions of the day's estimates: drivers at the evening peak (worked with
 the room), UPI payments a day (in pairs), and Anand's new store (in the lab). Every value in a chain is
 an assumption said aloud with its range.
 
@@ -11,7 +11,7 @@ checks it, and what is the catch?
 
 ## How many drivers must be online at the weekday evening peak?
 
-**Who needs the answer.** The trainer at S37 to S42. **The questions on the way.** Which values, which
+**Who needs the answer.** The trainer at S73 to S78. **The questions on the way.** Which values, which
 range, which check?
 
 | Factor | Central | Range | Why |
@@ -37,11 +37,14 @@ at once the range is far wider; say which range you are giving.
 before the launch (118,000 hours over 224,200 trips, median wait 4.8 minutes) and 0.63 after. The chain
 puts 1 / 1.68 = 0.60 behind each trip before its buffer, about an eighth more than the window whose
 wait met the target, so it errs high; re-run at the case's 1.90 trips an hour it gives 8,330 / 1.90 x
-1.15 = about 5,000. Say 5,000 to 5,700. Per request the case reads 0.47, but that divides by requests,
+1.15 = about 5,000. Say about 5,000 to 5,700 where the two routes agree, inside the 2,900 to 8,600
+that trips per person sets. Per request the case reads 0.47, but that divides by requests,
 11 percent of which nobody served, while the chain counts trips: compare per trip. The idle share
 checks the same way: 1.90 trips x 25 minutes leaves about 0.21 idle before the launch, 0.34 after. The
 case pools both daily windows on all seven days (42 hours a week; 256,556 after-window requests are
-about 1,018 an hour), so it checks the ratio's size, never the city's count.
+about 1,018 an hour), so it checks the ratio's size, never the city's count. A learner who raises
+drivers on two apps is right to lean the idle share high: a driver on another app's trip is online on
+Uber with no Uber rider, so more drivers are needed and the answer goes up.
 
 **The four-hour window.** Nothing changes at the busiest moment: 25,000 trips over four hours is about
 6,250 an hour on average, the buffer for the same busiest half hour rises to about 1.53, and the answer
@@ -59,7 +62,7 @@ told so. The idle share is the one factor Monday's data shows moving.
 
 ## How many UPI payments happen in India on an average day?
 
-**Who needs the answer.** The trainer at S43 and S44. **The questions on the way.** Which worked chain,
+**Who needs the answer.** The trainer at S79 and S80. **The questions on the way.** Which worked chain,
 which anchor, which catch?
 
 | Factor | Central | Range |
@@ -109,8 +112,11 @@ half a mature store's sales passes; a first-year store above a mature store's sa
 of several sizes; its release gives stores two years and older their own growth figure, 10.8 percent in
 the last quarter of FY26. The year-end count gives about Rs 134 crore, about 9 percent lower.
 
-## Why does the canteen's tea open the dojo?
+## Why does the canteen's tea come before the city head's question?
 
-The warm-up is a toy, invented for this class: 2,000 students x 0.6 who buy tea x 2 cups = 2,400 cups,
-validated against the canteen's till or a count at the counter for one busy half hour. It shows the
-four steps on numbers nobody will argue with, before the city head's question.
+Chapter 6 teaches the four steps on a campus canteen invented for the class, so the method is learned
+on numbers nobody will argue with before the city head's question: 3,000 students x 0.45 who buy tea x
+2 cups = 2,700 cups a weekday; the share who buy, 0.25 to 0.65, moves it from 1,500 to 3,900 with the
+other guesses held; the till's five weekdays average 2,340, so the chain runs 15.4 percent high and
+the share that lands on the till is 0.39. The chapter's three tests, unit, period and definition,
+stay on the board for chapter 8, and notebook 06 runs every step.

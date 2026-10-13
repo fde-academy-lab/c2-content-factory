@@ -23,7 +23,7 @@ online at one moment.
 | Item | Key | The question in one line | Why the key holds | Why each other option fails |
 |---|---|---|---|---|
 | 1 | b | Which check fits UPI payments in the whole of September 2026? | NPCI's 24.07 billion is a count of payments for the same month. | a: 802 million is a per-day figure, another period. c: Rs 29.37 lakh crore is value in rupees, and the estimate counts payments. d: 802 million times 31 builds a month on the wrong number of days, since September has 30, and lands at 24.86 billion. |
-| 2 | c | Which check fits the trips people make on the Delhi Metro on a typical day this year? | DMRC's 64.06 lakh is an average day of the same year, so it matches the period and the kind of day. DMRC counts a journey for each line a rider uses (PTI, 30 August 2023), so the figure runs above the trips riders make by the share who change lines; allow for that before comparing, which is why it is the check and never the answer. | a: 82,44,903 was one record day, a bus-strike day standing in for a typical one. b: it counts by line used like c, and it is from 2018, eight years of growth away. d: three stations' gates are a sample of the network, with no total to compare. |
+| 2 | c | Which check fits the trips people make on the Delhi Metro on a typical day this year? | DMRC's 64.06 lakh is an average day of the same year, so it matches the period and the kind of day. DMRC counts a journey for each line a rider uses (PTI, 30 August 2023), so the figure runs above the trips riders make by the share who change lines; allow for that before comparing, which is why it is the check and never the answer. | a: 82,44,903 was one record day, set while a bus strike sent riders to the metro (Republic World, 18 September 2026), standing in for a typical one. b: it is from 2018, eight years of growth away, another period; it counts by line used, as c does, so that is no difference between them. d: three stations' gates are a sample of the network, with no total to compare. |
 | 3 | d | Which check fits what one mature large grocery store sells in a year? | Revenue over the average of 415 and 500 stores, about Rs 146 crore, divides the year's sales by the stores that were open across the year. | a: Rs 66,968 crore is the whole chain, 500 stores at once. b: 415 stores leaves out the 85 that opened and sold during the year, so it overstates, about Rs 161 crore. c: 10.8 percent is the growth rate of older stores and carries no rupees of sales. |
 | 4 | a | Which check fits Uber drivers online at one weekday evening peak in Hyderabad? | No published count has been found, so the honest check is the ratio the case data can confirm, online driver-hours per completed trip, while the city count's slot reads "to be found". | b: drivers signed up is a different definition from drivers online at one moment. c: 256,556 requests over six weeks in twelve zones is a different period and a slice of the city. d: Monday's 1,200 drivers are the case data's enrolled drivers, a slice of the city's supply. |
 
@@ -42,6 +42,6 @@ figure". The first question back is "in which unit, for which period, counted ho
 
 ## What does the deck confirm?
 
-The afternoon deck's S34 names the three tests, S41 shows the ratio check for drivers at the peak, and
-S45 shows a record day against an average day and Flipkart's 6.3 million against the 63 in its web
-address.
+The afternoon deck's S72 names the three tests, chapter 6's S61 draws them as a flow, S77 shows the
+ratio check for drivers at the peak, and S81 shows a record day against an average day and Flipkart's
+6.3 million against the 63 in its web address.

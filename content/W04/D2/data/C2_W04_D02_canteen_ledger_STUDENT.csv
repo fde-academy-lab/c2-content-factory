@@ -1,0 +1,4 @@
+factor,central,low,high,unit,why
+students on campus,3000.0,2700.0,3300.0,students,"the campus head count, rounded"
+share who buy tea on a weekday,0.45,0.25,0.65,share of students,a guess from the queue at the counter
+cups each buyer drinks,2.0,1.5,2.5,cups a buyer,"one in the morning, one after lunch"

@@ -11,6 +11,14 @@ so this script draws only pictures of data, and of the one slide the room rebuil
     C2_W04_D02_three_reads_STUDENT.png       the twelve weeks, each read indexed to its before window
     C2_W04_D02_guesstimate_swing_STUDENT.png how far each assumption moves the drivers-at-peak answer
 
+The concept chapters' pictures, drawn from the invented tables in data/:
+
+    C2_W04_D02_kirana_slide_STUDENT.png      Ramesh's slide in its four parts, with the clear chart
+    C2_W04_D02_kirana_makeover_STUDENT.png   the shop's 56 days drawn cluttered, then as one line
+    C2_W04_D02_school_two_years_STUDENT.png  Gulmohar's attendance, two years, exams and the change marked
+    C2_W04_D02_canteen_swing_STUDENT.png     how far each canteen guess moves the cups
+    C2_W04_D02_kirana_page_counts_STUDENT.png the draft against the page: lines, numbers, method words
+
 Every label is set at 12 points or more on a figure no wider than 10 inches, so it prints above
 9 points on a slide and above 5 on the sheet.
 
@@ -24,10 +32,12 @@ matplotlib.use("Agg")
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import matplotlib.ticker
+import pandas as pd
 import yaml
 
 HERE = pathlib.Path(__file__).resolve().parent
 BOARDS = HERE.parent / "whiteboards"
+DATA = HERE.parent / "data"
 STEM = "C2_W04_D02"
 
 INK, VIOLET, MUTED, ROSE = "#1A0F5C", "#5B3FD6", "#6B6690", "#D63A6A"
@@ -45,6 +55,7 @@ N = {n["id"]: n for n in facts["numbers"]}
 MON = {n["id"]: n for n in facts["monday_ids_reused"]}
 AS = {a["id"]: a for a in facts["assumptions"]}
 WEEKS = facts["weekly_series"]
+TOY = {n["id"]: n for n in facts["toy_numbers"]}
 LABELS = [str(int(w["week_start"][8:])) + " " + {"07": "Jul", "08": "Aug", "09": "Sep", "10": "Oct"}[w["week_start"][5:7]]
           for w in WEEKS]
 
@@ -122,7 +133,7 @@ def cleared_slide():
     lo, hi = MON["saving_low_rs"]["shown"], MON["saving_high_rs"]["shown"]
     top.text(6.1, 2.17, "4  Action, the city head signs", fontsize=13, weight="bold", color=GREEN)
     top.text(6.1, 1.9, f"Pay per completed peak trip with\nan acceptance floor, tested first\n"
-             f"on half the drivers at random:\n{lo} to {hi} saved\nover six weeks.",
+             f"on half the drivers at random.\nAll enrolled drivers: {lo} to\n{hi} saved over six weeks.",
              fontsize=13, color=INK, va="top")
     top.text(5.95, 0.28, "Appendix: one page per question a role will ask", fontsize=13,
              color=MUTED, style="italic", va="center")
@@ -218,7 +229,177 @@ def guesstimate_swing():
     return fig
 
 
+def kirana_per_hour():
+    """The shop's 56 invented days: sales per hour, day by day, and the x position of each day."""
+    days = pd.read_csv(DATA / f"{STEM}_kirana_days_STUDENT.csv")
+    days["x"] = range(1, len(days) + 1)
+    days["per_hour"] = days.sales_rs / days.hours_open
+    return days
+
+
+def kirana_clear(ax, title=True):
+    """One line of sales per hour, the change and the festival fortnight marked, a sentence title."""
+    d = kirana_per_hour()
+    ax.plot(d.x, d.per_hour, color=VIOLET, lw=2.6)
+    sep, octo = TOY["toy_kirana_per_hour_sep"]["value"], TOY["toy_kirana_per_hour_oct"]["value"]
+    fest = d[(d.month == "October") & (d.festival_day == "yes")].x
+    ax.axvspan(fest.min() - 0.5, fest.max() + 0.5, color=AMBER_TINT, zorder=0)
+    ax.text((fest.min() + fest.max()) / 2, 905, "festival\nfortnight", ha="center", fontsize=12,
+            color=AMBER)
+    ax.hlines(sep, 1, 28, color=MUTED, ls=":", lw=1.6)
+    ax.hlines(octo, 29, 56, color=MUTED, ls=":", lw=1.6)
+    ax.text(14.5, 965, f"Sep: Rs {sep:,.0f} an hour", ha="center", fontsize=12, color=INK)
+    ax.text(43, 1180, f"Oct: Rs {octo:,.0f}", ha="center", fontsize=12, color=INK)
+    ax.axvline(28.5, color=ROSE, ls="--", lw=1.4)
+    ax.text(27.8, 1345, "two more hours a day", ha="right", fontsize=12, color=ROSE)
+    ax.set_ylim(870, 1385)
+    ax.set_xticks([1, 15, 29, 43, 56], ["1 Sep", "15 Sep", "1 Oct", "15 Oct", "28 Oct"])
+    ax.set_yticks([900, 1000, 1100, 1200, 1300])
+    ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v:,.0f}"))
+    ax.set_ylabel("sales per hour, Rs")
+    if title:
+        ax.set_title("Each hour earns less since the shop opened longer", loc="left")
+
+
+def kirana_cluttered(ax):
+    """The same days as a dashboard would draw them: six series, mixed units, a legend, a grid."""
+    d = kirana_per_hour()
+    ax.plot(d.x, d.sales_rs / 10, marker="o", ms=3, label="sales / 10")
+    ax.plot(d.x, d.customers, marker="s", ms=3, label="customers")
+    ax.plot(d.x, d.hours_open * 100, marker="^", ms=3, label="hours x 100")
+    ax.plot(d.x, d.per_hour, marker="x", ms=3, label="per hour")
+    ax.plot(d.x, d.sales_rs / d.customers * 10, marker="d", ms=3, label="per customer x 10")
+    ax.bar(d.x, (d.rain_day == "yes") * 400, color="#BBBBBB", label="rain day")
+    ax.grid(True, color="#BBBBBB")
+    for side in ("top", "right"):
+        ax.spines[side].set_visible(True)
+    ax.set_ylabel("value (mixed units)")
+    ax.legend(loc="center", bbox_to_anchor=(0.5, 0.52), fontsize=12, ncol=2, framealpha=1)
+    ax.set_xticks([1, 15, 29, 43, 56])
+
+
+def kirana_makeover():
+    """Chapter 2's chart: the cluttered dashboard beside the one line that carries the claim."""
+    fig, (left, right) = plt.subplots(1, 2, figsize=(10, 4.4))
+    kirana_cluttered(left)
+    left.set_title("Before: six series, a legend, a grid", fontsize=14)
+    kirana_clear(right, title=False)
+    right.set_title("After: one line, the change marked", fontsize=14, loc="left")
+    fig.text(0.99, -0.02, "Ramesh's shop, 56 days; every number invented.", fontsize=12, color=MUTED,
+             ha="right")
+    fig.tight_layout()
+    return fig
+
+
+def kirana_slide():
+    """Ramesh's slide in its four parts, numbered where each sits on the page (all invented)."""
+    fig = plt.figure(figsize=(9.2, 4.6))
+    top = fig.add_axes([0, 0, 1, 1]); top.set_xlim(0, 10); top.set_ylim(0, 4.8); top.axis("off")
+    rise = TOY["toy_kirana_rise_day"]["value"]
+    top.text(0.12, 4.74, f"1  The longer hours add Rs {rise} a day but earn less per hour,\n"
+             "    so count the evening on its own before deciding",
+             fontsize=15, weight="bold", color=INK, va="top", linespacing=1.25)
+    chart = fig.add_axes([0.085, 0.2, 0.46, 0.5])
+    kirana_clear(chart, title=False)
+    chart.set_title("2  Sales per hour, each day", fontsize=13, loc="left", color=INK, weight="bold")
+    per_c = TOY["toy_kirana_per_customer"]["value"]
+    extra = TOY["toy_kirana_extra_hour_rs"]["value"]
+    top.text(0.12, 0.3, f"2  each added hour sold at most Rs {extra}; sales\n"
+             f"    per customer held at Rs {per_c} in both months", fontsize=13, color=INK, va="center")
+    box(top, 5.95, 2.5, 3.95, 1.4, AMBER, AMBER_TINT)
+    top.text(6.1, 3.68, "3  Caveat", fontsize=13, weight="bold", color=AMBER)
+    top.text(6.1, 3.42, "A festival fortnight fell inside\nOctober, so part of the extra\n"
+             f"Rs {rise} a day may be the season.", fontsize=13, color=INK, va="top")
+    box(top, 5.95, 0.62, 3.95, 1.72, GREEN, "white")
+    cost = TOY["toy_kirana_helper_cost"]["value"]
+    top.text(6.1, 2.12, "4  Action, Ramesh signs", fontsize=13, weight="bold", color=GREEN)
+    top.text(6.1, 1.86, "Keep the hours through November,\ncount the evening's sales apart,\n"
+             f"decide after thirty days; the\nhelper's two hours cost Rs {cost} a day.",
+             fontsize=13, color=INK, va="top")
+    top.text(9.9, 0.3, "Every number here is invented.", fontsize=12, color=MUTED, ha="right",
+             va="center")
+    return fig
+
+
+def school_two_years():
+    """Gulmohar Secondary School's attendance (invented), two years, the change and the exams marked."""
+    att = pd.read_csv(DATA / f"{STEM}_school_attendance_STUDENT.csv")
+    fig, ax = plt.subplots(figsize=(9, 4.6))
+    for year, colour in (("last year", MUTED), ("this year", VIOLET)):
+        sub = att[att.year == year]
+        ax.plot(sub.week, sub.attendance_pct, color=colour, lw=2.8, marker="o", ms=6)
+        ax.text(8.2, sub.attendance_pct.iloc[-1], year, color=colour, fontsize=13, va="center")
+    ax.axvspan(5.5, 8.5, color=AMBER_TINT, zorder=0)
+    ax.text(7, 92.6, "exam weeks, both years", ha="center", fontsize=12, color=AMBER)
+    ax.axvline(2.5, color=ROSE, ls="--", lw=1.4)
+    ax.text(2.6, 92.6, "new timetable,\nthis year only", fontsize=12, color=ROSE, va="top")
+    lift = TOY["toy_school_lift_this"]["value"]
+    pre = TOY["toy_school_pre_rise"]["value"]
+    ax.annotate(f"weeks 3 to 5: {pre} points\nabove last year", xy=(4, 81.7), xytext=(3.2, 86.6),
+                fontsize=12, color=INK, arrowprops=dict(arrowstyle="->", color=INK))
+    ax.text(5.6, 78.2, f"exams add about {lift:.0f} points\nin both years", fontsize=12, color=INK)
+    ax.set_xlim(0.6, 9.3), ax.set_ylim(74, 93.5)
+    ax.set_xticks(range(1, 9))
+    ax.set_xlabel("week of the term")
+    ax.set_ylabel("attendance, percent")
+    ax.set_title("The rise began in week 3, before any exam (invented)", loc="left")
+    return fig
+
+
+def canteen_swing():
+    """The canteen's three guesses, each moved to its low and high end with the others held."""
+    names = [("students", "students on campus"), ("cups", "cups each buyer drinks"),
+             ("share", "share who buy tea")]
+    central = TOY["toy_canteen_cups"]["value"]
+    fig, ax = plt.subplots(figsize=(9, 3.6))
+    for i, (key, label) in enumerate(names):
+        lo = TOY[f"toy_canteen_swing_{key}_low"]["value"]
+        hi = TOY[f"toy_canteen_swing_{key}_high"]["value"]
+        ax.barh(i, hi - lo, left=lo, color=VIOLET if key == "share" else "#B9AEF0", height=0.55)
+        ax.text(lo - 60, i, f"{lo:,}", ha="right", va="center", fontsize=12, color=INK)
+        ax.text(hi + 60, i, f"{hi:,}", ha="left", va="center", fontsize=12, color=INK)
+    ax.axvline(central, color=ROSE, lw=1.6)
+    ax.text(central + 40, -0.78, f"central: {central:,} cups", fontsize=12, color=ROSE)
+    ax.set_yticks(range(len(names)), [label for _, label in names])
+    ax.set_xlim(900, 4500), ax.set_ylim(-1.0, 2.5)
+    ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v:,.0f}"))
+    ax.set_xlabel("cups of tea on a weekday")
+    ax.set_title("Which guess moves the canteen's cups most? (invented)", loc="left")
+    return fig
+
+
+def kirana_page_counts():
+    """The draft and the page side by side: how many lines, numbers and method words each carries."""
+    text = (DATA / f"{STEM}_kirana_page_STUDENT.txt").read_text(encoding="utf-8")
+    draft, page = text.split("=====")
+    import re as _re
+    method = ["denominator", "numerator", "index", "guardrail", "north star"]
+    rows = []
+    for label, body in (("the draft", draft), ("the page", page)):
+        lines = [l for l in body.splitlines() if l.strip() and not l.startswith("VERSION")]
+        nums = _re.findall(r"\d[\d,.]*", body)
+        rows.append((label, len(lines), len(nums), sum(w in body.lower() for w in method)))
+    fig, ax = plt.subplots(figsize=(6.4, 3.4))
+    groups = ["lines", "numbers", "method words"]
+    width = 0.36
+    for k, (label, *vals) in enumerate(rows):
+        xs = [g + (k - 0.5) * width for g in range(3)]
+        ax.bar(xs, vals, width=width, color=MUTED if k == 0 else VIOLET, label=label)
+        for x, v in zip(xs, vals):
+            ax.text(x, v + 0.3, str(v), ha="center", fontsize=15, color=INK)
+    ax.set_ylim(0, max(max(r[1:]) for r in rows) * 1.3)
+    ax.set_xticks(range(3), groups, fontsize=15)
+    ax.set_yticks([])
+    ax.spines["left"].set_visible(False)
+    ax.legend(fontsize=14, frameon=False)
+    ax.set_title("The page says less and means more (invented)", loc="left", fontsize=16)
+    return fig
+
+
 for name, draw in [("cluttered_slide", cluttered_slide), ("cleared_slide", cleared_slide),
                    ("cluttered_chart", cluttered_chart), ("three_denominators", three_denominators),
-                   ("three_reads", three_reads), ("guesstimate_swing", guesstimate_swing)]:
+                   ("three_reads", three_reads), ("guesstimate_swing", guesstimate_swing),
+                   ("kirana_slide", kirana_slide), ("kirana_makeover", kirana_makeover),
+                   ("school_two_years", school_two_years), ("canteen_swing", canteen_swing),
+                   ("kirana_page_counts", kirana_page_counts)]:
     save(draw(), name)

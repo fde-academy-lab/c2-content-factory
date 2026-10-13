@@ -30,11 +30,12 @@ returns, without reading what it counts.
 
 | Source | What it published |
 |---|---|
-| NPCI, reported by Outlook Money, 2 October 2026 | An average of 802 million UPI transactions a day in September 2026; 24.07 billion in the month, worth Rs 29.37 lakh crore |
-| DMRC, reported by The Tribune, 9 August 2026 | An average of 64.06 lakh passenger journeys a day |
-| DMRC, reported by Republic World, 18 September 2026 | A record single day: 82,44,903 on 17 September 2026 |
-| DMRC, reported by PTI, 30 May 2018 | A line-utilisation count of 45,35,932 on 29 May 2018, which counts a trip across three lines three times |
-| Avenue Supermarts (DMart), 2 May 2026 | Standalone total revenue (Avenue Supermarts' own business, without its subsidiaries) of Rs 66,968 crore in FY26; 500 stores at year end, 85 of them added in the year, so 415 at the start; stores two years and older grew 10.8 percent in the last quarter |
+| NPCI (the National Payments Corporation of India, which runs UPI, India's phone-to-bank payment system), reported by Outlook Money, 2 October 2026 | An average of 802 million UPI transactions a day in September 2026; 24.07 billion in the month, worth Rs 29.37 lakh crore |
+| DMRC (the Delhi Metro Rail Corporation, which runs the Delhi Metro), reported by The Tribune, 9 August 2026 | An average of 64.06 lakh passenger journeys a day |
+| DMRC, reported by Republic World, 18 September 2026 | A record single day: 82,44,903 on 17 September 2026, while a strike by DTC, Delhi's city bus operator, sent riders to the metro |
+| DMRC, reported by PTI (the Press Trust of India, a news agency), 30 May 2018 | A line-utilisation count of 45,35,932 on 29 May 2018, which counts a trip across three lines three times |
+| DMRC, reported by PTI through Deccan Herald, 30 August 2023 | A passenger journey counts each line a rider uses, so a trip that changes lines counts more than once |
+| Avenue Supermarts (DMart), 2 May 2026 | Standalone total revenue (Avenue Supermarts' own business, without its subsidiaries) of Rs 66,968 crore in FY26, its financial year to 31 March 2026; 500 stores at year end, 85 of them added in the year, so 415 at the start; stores two years and older grew 10.8 percent in the last quarter |
 
 ---
 
@@ -81,8 +82,8 @@ d) The 1,200 drivers in Monday's driver table, counted as the city's supply
 
 ---
 
-**How do you check your letters against the deck?** The afternoon deck's S34 names the three tests
-(unit, period, definition), and S45 shows one trap for each.
+**How do you check your letters against the deck?** The afternoon deck's S72 names the three tests
+(unit, period, definition), chapter 6's S61 draws them as a flow, and S81 shows one trap for each.
 
 **In the interview.** [S] A guesstimate: how many drivers must be online at the evening peak, and
 how would you check it?

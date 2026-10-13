@@ -34,5 +34,5 @@ page each of the other seven moved to, the slide survives the meeting.
 
 ## What does the deck confirm?
 
-The morning deck's S29 keeps the wait and the cost per extra trip, and its S27 heads one appendix page
+The morning deck's S52 keeps the wait and the cost per extra trip, and its S51 heads one appendix page
 per role with that role's question.

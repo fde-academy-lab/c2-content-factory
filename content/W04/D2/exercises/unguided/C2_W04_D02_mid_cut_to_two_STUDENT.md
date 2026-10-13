@@ -58,7 +58,7 @@ turn to the page that does.
 
 ### Q2. Design. The table of acceptance share in each zone leaves the slide. Which page should hold it?
 
-*Level L4, a design call · tagged [F]: frequent in GCC and product-company screens.*
+*Level L4, a design call · tagged [F]: frequent in global capability centre (GCC) and product-company screens.*
 
 a) The driver-operations lead's page, since it shows where drivers still say yes to offers
 b) The marketing lead's page, since sign-ups are counted by zone
@@ -67,7 +67,7 @@ d) No page, since an element that leaves the slide is cut for good
 
 ---
 
-**How do you check your letters against the deck?** The morning deck's S29 runs this drill, and its
-S27 shows the appendix drawer with one page per role.
+**How do you check your letters against the deck?** The morning deck's S52 runs this drill, and its
+S51 shows the appendix drawer with one page per role; chapter 2's S16 draws the sort itself.
 
 **In the interview.** [F] What do you leave off the slide, and where does it go?

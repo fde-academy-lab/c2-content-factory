@@ -4,12 +4,14 @@ Run from the repository root, after the generator:
     python3 content/W04/D2/internal/C2_W04_D02_facts_audit_INTERNAL.py
 
 Reads the prose of every STUDENT markdown file (outside code and notes fences) and the markdown cells
-and printed outputs of the notebook. A number has a home when it equals a value anywhere in the facts
-file (a number, a Monday id, a public fact, an assumption or its range, a toy, a twelve-row or weekly
-value) at the precision it is printed, read as itself, a percent, a lakh, a crore, a million or a
+and printed outputs of the notebooks. A number has a home when it equals a value anywhere in the facts
+file (a number, a Monday id, a public fact, an assumption or its range, a toy or a toy_ number of
+the concept chapters' examples, a twelve-row or weekly value) at the precision it is printed, read as itself, a percent, a lakh, a crore, a million or a
 billion. Numbers that only count the material (slides, levels, items, chapters, minutes, dates, years,
-steps) are structural and are left out. Writes C2_W04_D02_facts_audit_INTERNAL.md and exits 1 when a
-number has no home.
+steps) are structural and are left out. A number a notebook prints from one of the day's own data
+tables, which the seeded generator wrote, has that table as its home, since a concept notebook prints
+its invented table in full; the same number in prose still needs a facts id. Writes
+C2_W04_D02_facts_audit_INTERNAL.md and exits 1 when a number has no home.
 """
 import json
 import re
@@ -64,8 +66,17 @@ def facts():
     data = yaml.safe_load(FACTS.read_text(encoding="utf-8"))
     out = []
     for section in ("numbers", "monday_ids_reused", "public_facts", "assumptions", "toys",
-                    "twelve_rows", "weekly_series", "kalpa", "programme"):
+                    "toy_numbers", "twelve_rows", "weekly_series", "kalpa", "programme"):
         walk(data.get(section), section, out)
+    return out
+
+
+def table_values():
+    """Every number in the day's data tables, by file, for the lines a notebook prints from them."""
+    out = []
+    for f in sorted((DAY / "data").glob("*.csv")):
+        for cell in re.findall(r"-?\d+(?:\.\d+)?", f.read_text(encoding="utf-8")):
+            out.append((f"data/{f.name}", float(cell)))
     return out
 
 
@@ -115,17 +126,17 @@ def texts():
                 if fence in ("notes", "python", "code", "mermaid"):
                     continue
                 if fence in ("cards", "stats", "timeline", "bar"):
-                    yield p, i, line
+                    yield p, i, line, False
                     continue
                 if fence:
                     continue
-                yield p, i, line
+                yield p, i, line, False
         else:
             nb = json.loads(p.read_text(encoding="utf-8"))
             for c_no, cell in enumerate(nb["cells"], start=1):
                 if cell["cell_type"] == "markdown":
                     for j, line in enumerate("".join(cell["source"]).splitlines(), start=1):
-                        yield p, f"cell {c_no}.{j}", line
+                        yield p, f"cell {c_no}.{j}", line, False
                 else:
                     for o in cell.get("outputs", []):
                         t = o.get("text") or o.get("data", {}).get("text/plain")
@@ -135,13 +146,14 @@ def texts():
                         if t.startswith("<Figure"):
                             continue
                         for j, line in enumerate(t.splitlines(), start=1):
-                            yield p, f"cell {c_no} out {j}", line
+                            yield p, f"cell {c_no} out {j}", line, True
 
 
 def main():
     F = facts()
+    T = table_values()
     rows, misses = [], []
-    for p, where, line in texts():
+    for p, where, line, printed in texts():
         if SKIP_LINE.search(line):
             continue
         clean = DATE.sub(" ", line)
@@ -158,6 +170,8 @@ def main():
             if re.match(r"^\s*(?:and|or|to)\s+\d", after) and not unit and float(token.replace(",", "")) < 7:
                 continue
             ids = [path for path, v in F if matches(token, unit, v)]
+            if not ids and printed:
+                ids = [path for path, v in T if abs(round(v, decimals(token)) - float(token.replace(",", ""))) < 1e-9]
             shown = (token + (" " + unit if unit else "")).strip()
             if ids:
                 rows.append((shown, p.name, where, ids[0]))

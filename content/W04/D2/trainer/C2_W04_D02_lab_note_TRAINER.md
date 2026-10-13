@@ -1,6 +1,6 @@
 # Lab note for the TA, Week 4 Tuesday: how do you run the Kalpa transfer and the practice set?
 
-**TRAINER ONLY.** The TA-led practice lab after the afternoon block. It re-runs the day's two moves on
+**TRAINER ONLY.** The TA-led practice lab runs after the afternoon block and re-runs the day's two moves on
 Kalpa Retail: the studio as a three-minute slide to a TA playing one Kalpa head, then the dojo on Anand
 Iyer's new-store question, checked against DMart. No plant today. The three Kalpa role cards and
 Anand's question are proposed for client zero v2.3 (the row, 21 September 2026, not yet locked).
@@ -18,7 +18,7 @@ which order?
 | Order | What runs | Learners hold |
 |---|---|---|
 | 1 | Each learner presents the Kalpa north-star slide in three minutes to the TA, who plays the marketing lead, Operations or the head of Retail-Plus and pushes once | `exercises/guided/C2_W04_D02_kalpa_slide_template_STUDENT.md`; the TA holds the Kalpa cards in `trainer/C2_W04_D02_role_cards_TRAINER.md` |
-| 2 | Anand's store question, sized in fifteen minutes, then checked against DMart | `exercises/practice/C2_W04_D02_lab_set_STUDENT.md`; `exercises/unguided/C2_W04_D02_kalpa_store_STUDENT.md` |
+| 2 | Anand's store question, sized in fifteen minutes with chapter 6's four steps, then checked against DMart | `notebooks/C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb`, which proves the chain and the swing on chapter 6's canteen and leaves the sizing to two empty cells; `exercises/practice/C2_W04_D02_lab_set_STUDENT.md`; `exercises/unguided/C2_W04_D02_kalpa_store_STUDENT.md` |
 | 3 | The ladder, P1 to P5, for anyone who finishes | The lab set |
 
 With 35 learners and three minutes each plus one minute of feedback, the presentations need about two
@@ -58,7 +58,7 @@ half of DMart's about Rs 146 crore a store on the average count) is in
 **Who needs the answer.** The TA with a learner who cannot start. **The questions on the way.** What is
 the entry, and what is the next step?
 
-The Parsons problem at the end of the lab set: four lines of the notebook's second code cell,
+The Parsons problem at the end of the lab set: four lines adapted from notebook 04's second code cell,
 scrambled, put in the only order that runs (q s r p) before any line is typed. Then the learner
 presents the Kalpa slide with the TA's prompt for each part, one part at a time.
 

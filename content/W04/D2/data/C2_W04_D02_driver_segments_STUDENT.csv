@@ -1,0 +1,6 @@
+segment,window,drivers,peak_online_hours,peak_trips
+the idle tail,before,180,20000,38000
+the idle tail,after,180,42000,33440
+the other drivers there before the launch,before,880,98000,186200
+the other drivers there before the launch,after,880,102000,193800
+the 140 joiners,after,140,2300,3660
