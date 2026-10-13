@@ -3,14 +3,14 @@
 #
 # The bank sets what is tested and this file sets the bar (decisions saturday-interview-grade,
 # saturday-real-cases and saturday-w4-shape in data/programme/facts.yaml). Six parts, named by the
-# questions of docs/detailing/W04_analyst_craft_spine.md section 10. Ten bank items print, four of
+# questions of docs/detailing/W04_analyst_craft_spine.md section 10. Ten bank items print, five of
 # them reworded through data/programme/paper_edits.yaml; thirty-two fold into deeper items, each
 # with its reason under `folded`; one moves to the stretch page. Twenty-nine new items carry the
 # rest, Part 2's seven among them, written by the content team and waiting for the tracker.
 #
 # Every case number is in a Week 4 day's facts file (content/W04/D{1..5}/internal); every Thursday
-# number is from the D4 facts file, and every Delhi Metro or Aced fact from Thursday's sources list,
-# never from the case file. Every Kalpa plant printed here was found in that day's TA lab, confirmed
+# number is from the D4 facts file, and every Delhi Metro or Aced fact from Thursday's sources list
+# or, for DMRC's 2018 counts, Tuesday's facts file, never from the case file. Every Kalpa plant printed here was found in that day's TA lab, confirmed
 # against its lab note (decision w4-finding-once-found). Every public fact was re-checked on
 # 13 October 2026; the URLs and quotes are in internal/C2_W04_SAT_sources_INTERNAL.md, and
 # internal/C2_W04_SAT_key_proofs_INTERNAL.py asserts every key that rests on arithmetic.
