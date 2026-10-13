@@ -12,7 +12,41 @@ runs the link and reads the chat aloud. Read Dr Menon's words once and leave the
 Kalpa Health, like every Kalpa company, is fictional, and that every record in the files is
 synthetic, so no real patient's information is anywhere in the programme. Then say: this is the question Meera Raghavan asked in Week 1, from a business none of you has
 worked in, and you already own the method that answers it.
-Transition: the seven questions that turn her ask into each group's plan.
+Transition: the five topics the day carries, then the seven questions that turn her ask into each
+group's plan.
+```
+
+---
+
+## S0. What does today cover? Five topics across the day
+*Which curriculum topic does each part of the day carry, and in how many minutes?*
+
+| The curriculum's topic | Where the day carries it | About how many minutes |
+|---|---|---|
+| Online project introduction by the Programme Head | Sections 1 to 7, online | 60 |
+| Five Kalpa Health sub-problems, three groups each | Sections 3 and 5, then the allocation after the story | 9 and 5, then 30 |
+| Domain translation: the Week 1 method in Kalpa Health vocabulary | Section 2 and the domain's story, section 4, then the translation worksheet in both blocks | 5 and 45, 7, then 35 and 75 |
+| The challenges log opened | Section 6, then entry one in block two | Part of section 6's 9, then 30 |
+| No new teaching content | Section 4, where every move is one you learnt in Weeks 1 and 2 | 7 |
+
+```mermaid
+flowchart LR
+    T1["<b>1 Introduction</b><br/>online, 60"] --> T2["<b>2 Five questions</b><br/>three groups<br/>each"]
+    T2 --> T3["<b>3 Translation</b><br/>the story and<br/>the worksheet"]
+    T5["<b>5 Nothing new</b><br/>Weeks 1 and 2"] --> T3
+    T3 --> T4["<b>4 Challenges log</b><br/>entry one today"]
+    T4 --> W["<b>Wednesday</b><br/>the headline claim"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class T1,T2,T3,T4,T5 known
+```
+
+```notes
+LIVE, the Programme Head, 1 minute, inside the introduction's 60. Read the five topics as the
+curriculum names them, then the map from left to right: the introduction leads to the five
+sub-problems, the translation puts each one into Kalpa Health's words with the moves the room
+already owns, and entry one in the challenges log closes the day's work. Say once that today teaches
+no new method.
+Transition: Dr Menon's question, and the seven questions that turn it into a plan.
 ```
 
 ---
