@@ -33,13 +33,13 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 
 | Part | What it shows | Items | Minutes | Easy | Medium | Hard |
 |---|---|---|---|---|---|---|
-| 1. Which number should the plan chase, and which should a scheme pay for? | whether you can choose the number a plan chases and a scheme pays for, and read what happened where one was gamed | Q1 to Q7 (7) | 19 | 3 | 2 | 2 |
-| 2. Can the number survive the room, and can you size a city from nothing? | whether you can put one claim on one slide, answer an objection to it, and size a number from nothing and check it | Q8 to Q14 (7) | 23.5 | 1 | 5 | 1 |
+| 1. Which number should the plan chase, and which should a scheme pay for? | whether you can choose the number a plan chases and a scheme pays for, and read what happened where one was gamed | Q1 to Q7 (7) | 19 | 3 | 1 | 3 |
+| 2. Can the number survive the room, and can you size a city from nothing? | whether you can put one claim on one slide, answer an objection to it, and size a number from nothing and check it | Q8 to Q14 (7) | 24.5 | 1 | 1 | 5 |
 | 3. Which pairs beat chance, and what is a slot worth? | whether you can choose the pairs a strip should show and put a rupee value on a slot | Q15 to Q21 (7) | 21.5 | 0 | 4 | 3 |
 | 4. Where is the tier losing people? | whether you can tell where a membership loses people and decide what to fix first | Q22 to Q28 (7) | 23 | 0 | 5 | 2 |
-| 5. Which forecast earns the plan's trust? | whether you can choose the forecast that goes to the plan and say how wrong it could be | Q29 to Q33 (5) | 19 | 1 | 2 | 2 |
+| 5. Which forecast earns the plan's trust? | whether you can choose the forecast that goes to the plan and say how wrong it could be | Q29 to Q33 (5) | 19 | 1 | 0 | 4 |
 | 6. What changes when the method moves company? | whether you can carry the week's methods to another company and say what changes there | Q34 to Q39 (6) | 12 | 4 | 1 | 1 |
-| Total | | 39 | 118 | 9 | 19 | 11 |
+| Total | | 39 | 119 | 9 | 12 | 18 |
 
 ---
 
@@ -135,7 +135,7 @@ d) Averaged driver by driver, the six fell only to 1.31, less than the totals sa
 | Use | No usage condition: an unused debit card, the largest product category, could stay in the count for up to four years |
 | How staff were judged | Against sales goals, with the number of products sold a significant criterion in their evaluations |
 | What staff did | Opened accounts customers had not asked for; moved customers' money into new accounts so they counted as funded; changed contact details so satisfaction surveys would not reach customers |
-| The 2013 change | Remittance accounts were added to the count without investors being told, giving 0.04 of that year's 0.11 rise in the ratio |
+| The 2013 change | Remittance accounts already open were added to the count without investors being told, giving 0.04 of that year's 0.11 rise in the ratio; the rest of the rise came from more accounts and products inactive for at least 365 days |
 
 #### Q5 · Easy · circle one letter · Judge the statement on a case
 
@@ -146,14 +146,14 @@ b) False: staff were paid on sales, so the cross-sell count moved only when the 
 c) True: the count rose because customers bought more products, and staff behaviour followed the customers' new demand for accounts.
 d) True: staff judged on products sold opened accounts nobody asked for, staged funding and dodged the surveys, each to move their count.
 
-#### Q6 · Medium · circle one letter · Size the 2013 change
+#### Q6 · Hard · circle one letter · Choose two definition lines
 
-Exhibit 1C's last row is the 2013 change. What share of Wells Fargo's 2013 rise in the ratio came from the change of definition alone, and what would have shown it to investors?
+Exhibit 1C's last row is the 2013 change. Which two lines of a complete metric definition would have shown investors the 0.04, and kept the rest of that year's rise out of the ratio?
 
-a) About 57 percent, 0.04 against the other 0.07; a dated log of each change to what is counted, with that year's ratio also on the old definition.
-b) About 36 percent, 0.04 of the 0.11 rise in the ratio; a dated log of each change to what is counted, with that year's ratio also on the old definition.
-c) About 36 percent, 0.04 of the 0.11 rise in the ratio; a guardrail on customer satisfaction, read from the surveys the bank sends to its retail customers.
-d) About 57 percent, 0.04 against the other 0.07; a guardrail on customer satisfaction, read from the surveys the bank sends to its retail customers.
+a) A guardrail on revenue per household, read beside the ratio every quarter on the same households; and an exclusion that drops any product unused for a year
+b) A guardrail on revenue per household, read beside the ratio every quarter on the same households; and an exclusion that drops accounts closed during the year
+c) A dated log of every change to what is counted, with that year's ratio also on the old definition; and an exclusion that drops any product unused for a year
+d) A dated log of every change to what is counted, with that year's ratio also on the old definition; and an exclusion that drops accounts closed during the year
 
 **Exhibit 1D.** Kalpa Retail's Retail-Plus tier, 120 members, as Monday's lab found it: 10 to 30 September 2026 against 20 August to 9 September 2026.
 
@@ -177,7 +177,7 @@ e) Leading input: add-to-cart events per active app member, counted each week fr
 
 ## Part 2. Can the number survive the room, and can you size a city from nothing? (Q8 to Q14)
 
-*What it shows: whether you can put one claim on one slide, answer an objection to it, and size a number from nothing and check it. 7 items, about 23.5 minutes.*
+*What it shows: whether you can put one claim on one slide, answer an objection to it, and size a number from nothing and check it. 7 items, about 24.5 minutes.*
 
 On Tuesday the city head asked for Monday's answer on one slide at Thursday's city review: five minutes, with the driver-operations lead, the marketing lead and the finance partner in the room, each of whom loses something under Monday's redesign of the pay. The number the slide must explain is in Exhibit 2A. In the afternoon the city head asked a second question with no dataset: roughly how many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes. Illustrative case: the company is real, the situation and the data are synthetic, built for this class. In the lab each learner presented Kalpa's north star on one slide to a Kalpa head, then sized Anand's new-store question against DMart.
 
@@ -197,17 +197,17 @@ flowchart LR
 | Bookings per active driver-week | Rs 5,817 | Rs 5,861 |
 | Bookings per completed trip | Rs 165 | Rs 165 |
 
-#### Q8 · Medium · write the letters in order · Build the slide
+#### Q8 · Hard · write the letters in order · Build the slide
 
-Tuesday's one-slide template has four slots, from the top: the claim, written as the title; the evidence; the caveat; and the action. Four of these seven lines fill the four slots and three would spoil the slide. Leave those three out and write the other four in slot order, from the top.
+The one-slide answer runs, from the top: the claim, written as the title; the evidence; the caveat; and the action. Four of these seven lines fill the four slots on Exhibit 2A's numbers, and three would spoil the slide. Leave those three out and write the other four in slot order, from the top.
 
-a) The action: move every driver in every zone to the redesigned pay from Monday, which the city head signs
-b) The evidence: bookings per peak online hour fell from Rs 314 to Rs 260 at the same Rs 165 fare
-c) The claim, as the title: bookings per active driver-week rose 0.8 percent, so the scheme pays its way
-d) The caveat: the monsoon ended inside the six weeks after the launch, and there are no weeks from last year to compare with
-e) The claim, as the title: the guarantee is paying for online hours that carry no trips
-f) The action: test the redesigned pay on half the drivers, picked at random, for six weeks, which the city head signs
-g) The evidence: bookings per active driver-week rose from Rs 5,817 to Rs 5,861 at the same Rs 165 fare
+a) Move every driver in every zone to the redesigned pay from Monday; the city head signs
+b) Bookings per peak online hour fell 17 percent, from Rs 314 to Rs 260, at the same Rs 165 a trip
+c) Bookings per active driver-week rose 0.8 percent, so the scheme is paying its way
+d) The monsoon ended inside the six weeks after the launch, and no weeks from last year are in the data
+e) The guarantee is paying for peak online hours in which drivers complete no trips
+f) Test the redesigned pay on half the drivers, picked at random, for six weeks; the city head signs
+g) Bookings per peak online hour fell 21 percent, from Rs 314 to Rs 260, at the same Rs 165 a trip
 
 Order: ____________________
 
@@ -221,14 +221,31 @@ c) Top-up for each extra trip: Rs 2,836, for a trip worth Rs 165
 d) Top-up for each completed trip: Rs 82, for a trip worth Rs 165
 e) The top-up split: 61 percent to driver-weeks under half acceptance
 
-#### Q10 · Medium · circle one letter · Judge the defence
+**Exhibit 2B.** Uber Hyderabad's peak weeks, the six before the launch on 31 August 2026 and the six after it: rider requests at peak and trips per peak online hour, week by week.
 
-At the review the finance partner says: "The monsoon ended inside your six weeks, so what your slide shows is the season, not your scheme." In the last three of the six weeks after the launch, weekly peak rider requests ran from 41,161 to 42,602, against 41,155 to 42,719 in the six weeks before, and trips per peak online hour ran at 1.56. Statement: the strongest reply concedes nothing, since any concession hands the objector the meeting. True or false, and why?
+| Week beginning | Window | Rider requests at peak | Trips per peak online hour |
+|---|---|---|---|
+| 20 July | before | 41,155 | 1.88 |
+| 27 July | before | 41,608 | 1.91 |
+| 3 August | before | 41,896 | 1.89 |
+| 10 August | before | 42,101 | 1.92 |
+| 17 August | before | 42,431 | 1.93 |
+| 24 August | before | 42,719 | 1.88 |
+| 31 August | after | 43,589 | 1.64 |
+| 7 September | after | 43,878 | 1.59 |
+| 14 September | after | 43,507 | 1.57 |
+| 21 September | after | 42,602 | 1.55 |
+| 28 September | after | 41,819 | 1.56 |
+| 5 October | after | 41,161 | 1.56 |
 
-a) True: concede nothing, and answer the objection from the stem: weekly requests came back inside their old range while trips per hour stayed at 1.56 against 1.90.
-b) True: concede nothing, and answer the objection from the stem: trips per hour kept sliding, to 1.56 in the last three weeks against 1.58 over all six.
-c) False: grant that the rains ended inside the window, then show weekly requests back inside their old range while trips per hour stayed at 1.56 against 1.90.
-d) False: grant that the rains ended inside the window, then show trips per hour kept sliding, to 1.56 in the last three weeks against 1.58 over all six.
+#### Q10 · Hard · circle one letter · Judge the defence
+
+At the review the finance partner says: "The monsoon ended inside your six weeks, so what your slide shows is the season, not your scheme." Statement: the strongest reply concedes nothing, since any concession hands the objector the meeting. Judge it on Exhibit 2B. True or false, and why?
+
+a) True: concede nothing, and show that peak requests rose 1.8 percent over the six weeks after the launch, from 251,910 to 256,556, while trips per peak online hour fell from 1.90 to 1.58.
+b) True: concede nothing, and show that in the last three weeks peak requests sat back inside their range before the launch while trips per peak online hour held near 1.56.
+c) False: grant that the rains ended inside the window, then show that in the last three weeks peak requests sat back inside their range before the launch while trips per peak online hour held near 1.56.
+d) False: grant that the rains ended inside the window, then show that peak requests rose 1.8 percent over the six weeks after the launch, from 251,910 to 256,556, while trips per peak online hour fell from 1.90 to 1.58.
 
 #### Q11 · Easy · circle one letter · Judge the memo
 
@@ -239,16 +256,16 @@ b) True: a memo can carry all three appendix pages in its body, so no role's que
 c) False: the letter says Amazon reads its memos after the meeting has ended, so a memo would leave the room no time to argue at the review.
 d) False: the ask is one slide in five minutes, and the letter itself says a great memo probably takes a week or more to write.
 
-#### Q12 · Medium · write the letters in order · Order the estimate
+#### Q12 · Hard · write the letters in order · Order the estimate
 
-The city head's afternoon ask is roughly how many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes. Four of these six steps make the estimate, and two would spoil it. Leave those two out and write the other four in the order they run.
+The city head's afternoon ask is roughly how many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes. The guesstimate runs clarify, map, calculate, validate: four of these six steps make it, and two would spoil it. Leave those two out and write the other four in the order they run.
 
-a) Set the chain's 0.60 online driver-hours per completed trip beside the case's 0.53 before the launch, and move the answer down to about 5,000 to 5,700
+a) Re-run the chain at Exhibit 1A's 1.90 trips per peak online hour before the launch, which gives about 5,000 drivers
 b) Ask whether it is drivers online at one moment or across the window, which window, which product, and the city's median or every zone's
-c) Set the chain against Exhibit 1A's 2.13 rider requests per peak online hour before the launch, and move the answer down to about 3,900
+c) Re-run the chain at Exhibit 1A's 2.13 rider requests per peak online hour before the launch, which gives about 4,500 drivers
 d) Write the formula: drivers online equal trips to serve in an hour, over trips one online driver completes in an hour, times a buffer for the busiest half hour
 e) Work it aloud: about 8,330 evening trips an hour over 1.68 trips per online driver-hour is about 4,960, and 15 percent more for the busiest half hour is about 5,700
-f) Set the chain's 0.60 online driver-hours per completed trip beside the case's 0.53 before the launch, and move the answer up to about 6,450
+f) Re-run the chain at Exhibit 1A's 1.58 trips per peak online hour after the launch, the latest weeks, which gives about 6,100 drivers
 
 Order: ____________________
 
@@ -262,22 +279,23 @@ c) DMart, FY26: Rs 66,968 crore over the year's average of 415 and 500 stores, a
 d) A city of two million people, invented for a drill: 5 lakh households at four people to a household, set against an estimate of the city's UPI users
 e) UPI, September 2026: the same 802 million a day, set against an estimate of the payments made on Diwali day itself
 
-**Exhibit 2B.** Delhi Metro's two published counts and how DMRC counts a journey, each in the words its source uses, checked 13 October 2026.
+**Exhibit 2C.** Delhi Metro's published counts and how DMRC counts a journey, each in the words its source uses, checked 13 October 2026.
 
 | Count | Value | When | Source |
 |---|---|---|---|
 | Average daily passenger journeys | 64.06 lakh | the current average, August 2026 | The Tribune, 9 August 2026, citing DMRC |
 | Passenger boardings | 82,44,903 | 17 September 2026, DMRC's highest-ever day, during a bus strike | Republic World, 18 September 2026, quoting DMRC |
 | How a journey is counted | One for each line, or corridor, a passenger uses to reach the destination | PTI's report of DMRC's method, 30 August 2023 | Deccan Herald, reporting PTI |
+| Line uses and riders when the line count began | 45,35,932 line uses on 29 May; nearly 27 lakh commuters a day on the network in February | 2018, PTI's report of 30 May 2018 | LatestLY, reporting PTI |
 
-#### Q14 · Medium · circle one letter · Read the metro counts
+#### Q14 · Hard · circle one letter · Read the metro counts
 
-A pair's chain puts Delhi Metro at about 60 lakh rider trips on a weekday, each trip counted once from the gate where the rider enters to the gate where they leave (invented). They set it against Exhibit 2B, call their estimate 6 to 27 percent low, and raise it. Which reading of the check is right?
+A pair's chain puts Delhi Metro at about 60 lakh rider trips on a weekday, each trip counted once from the gate where the rider enters to the gate where they leave (invented). They set it against Exhibit 2C, call their estimate 6 to 27 percent low, and raise it. Which reading of the check holds?
 
-a) Trips are set against line uses: DMRC counts a journey for each line a rider uses, so 64.06 lakh exceeds the trips, and 17 September was a record day.
-b) The estimate is 6 percent low on an ordinary day and 27 percent low at the city's true peak, so the pair should raise the whole chain by about a fifth.
-c) A boarding is one rider entering at one gate, so the 82,44,903 boardings are the count to set trips against, since journeys count each change of line.
-d) The check is sound, since DMRC's average day and its record day bracket the estimate between 64.06 lakh and 82.45 lakh trips.
+a) Converted at 2018's mix of line uses to riders, the record day's 82,44,903 passenger boardings are about 49 lakh trips, so the chain runs about 22 percent high and is checked down.
+b) Converted at 2018's mix of line uses to riders, the average day's 64.06 lakh journeys are about 38 lakh trips, so the chain runs about 57 percent high and is checked down.
+c) Set against the average day alone, since 17 September was a record during a strike, 64.06 lakh puts the chain 6 percent low, so it is raised by about 6 percent.
+d) Set against the record day, the busiest day the network has carried, 82,44,903 puts the chain 27 percent low, so it is raised toward 82 lakh.
 
 ---
 
@@ -581,16 +599,16 @@ Answer: ____________________
 | Random forest, a machine-learning benchmark | 1.010 |
 | Naive, the last day seen | 1.752 |
 
-#### Q31 · Medium · circle one letter · Answer the sponsor
+#### Q31 · Hard · circle one letter · Answer the sponsor
 
-The vendor's sponsor says: "Our curve fits two years of Lucknow's weeks within 2 percent, and machine learning won M5, so the curve should go to the plan." Using Exhibit 5C, which reply holds?
+The vendor's sponsor says: "Our curve fits two years of Lucknow's weeks within 2 percent, and machine learning won M5, so the curve should go to the plan." Using Exhibit 5C, which test must the curve pass before it goes to the plan?
 
-a) A fit is no forecast: on M5's unseen days the seasonal naive, 0.847, beat both machine-learning benchmarks; the curve goes only if it beats it on weeks it never saw.
-b) The winning team's 0.520 beat the naive's 1.752 by far on M5; the curve goes if it beats the naive over the same two years, a far larger test than a few held-back weeks.
-c) A fit is no forecast: on M5's unseen days every other entry beat the naive, 1.752; the curve goes if it beats the naive on weeks it never saw.
-d) The winning team's 0.520 beat the seasonal naive's 0.847 on M5; the curve goes if it beats the seasonal naive over the same two years, a far larger test than a few held-back weeks.
+a) Hold back the latest thirteen weeks, and send the curve to the plan only if it beats the seasonal naive on those weeks.
+b) Hold back thirteen weeks drawn at random from the two years, and send the curve to the plan only if it beats the seasonal naive on those weeks.
+c) Hold back the latest thirteen weeks, and send the curve to the plan only if it beats the naive on those weeks.
+d) Hold back thirteen weeks drawn at random from the two years, and send the curve to the plan only if it beats the naive on those weeks.
 
-**Exhibit 5D.** Lucknow's thirteen hidden weeks, beginning 29 June to 21 September 2026. An idle packer-shift costs Rs 650 for 120 shipments, Rs 5.42 for each shipment planned and not shipped, and a late shipment costs Rs 25; both are assumptions.
+**Exhibit 5D.** Lucknow's thirteen hidden weeks. An idle packer-shift costs Rs 650 for 120 shipments, Rs 5.42 for each shipment planned and not shipped, and a late shipment costs Rs 25; both are assumptions.
 
 | Forecast | Shipments forecast too high, summed | Shipments forecast too low, summed | Weeks too high, of 13 |
 |---|---|---|---|
@@ -617,14 +635,14 @@ d) 6,615, 9,831 and 16,400 a week; the vendor costs least, about Rs 11.9 lakh, o
 | The vendor's curve | 23.09 | 22 percent above | 38.8 |
 | The plan line | 21.77 | 15 percent above | not a forecast |
 
-#### Q33 · Medium · circle one letter · Choose the board sentence
+#### Q33 · Hard · circle one letter · Answer Anand's three questions
 
-Anand asks which number goes in front of the board for October 2026 to March 2027, and how wrong it could be. Using Exhibits 5A and 5E, which sentence answers him?
+Anand asks which number goes in front of the board for October 2026 to March 2027, how wrong it could be, and whether the plan line can stand as the board's forecast. Using Exhibits 5A and 5E, which answer holds?
 
-a) "Rs 19.69 crore, finance's rule, spike in October, Rs 2.08 crore under plan; it missed by about Rs 3.5 lakh a month on six unseen months, none with a Diwali."
-b) "Rs 19.69 crore, festival-aligned, spike in November, Rs 2.08 crore under plan; it missed by about Rs 3.5 lakh a month on six unseen months, none with a Diwali."
-c) "Rs 19.69 crore, festival-aligned, spike in November, Rs 2.08 crore under plan; its miss of about Rs 3.5 lakh a month on unseen months holds for the festive months too."
-d) "Rs 19.69 crore, finance's rule, spike in October, Rs 2.08 crore under plan; its miss of about Rs 3.5 lakh a month on unseen months holds for the festive months too."
+a) Rs 19.69 crore, festival-aligned, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali; the plan line stands as the board's forecast, since it sits inside the forecasts' range, Rs 18.93 to 23.09 crore.
+b) Rs 19.69 crore, festival-aligned, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali, about Rs 21 lakh if all six miss one way; the plan's Rs 2.08 crore gap is a target, not a forecast.
+c) Rs 21.39 crore, midway between finance's rule and the vendor's curve, off by about Rs 3.5 lakh a month on six unseen months, about Rs 21 lakh if all six miss one way; the plan, Rs 38 lakh above, is within two such errors.
+d) Rs 21.39 crore, midway between finance's rule and the vendor's curve, off by about Rs 3.5 lakh a month on six unseen months; the plan line stands as the board's forecast, since it sits inside the forecasts' range, Rs 18.93 to 23.09 crore.
 
 ---
 
@@ -676,10 +694,10 @@ Answers: Q35 ____    Q36 ____    Q37 ____    Q38 ____
 
 Amazon India, a fulfilment centre's festive packer plan (illustrative case: the company is real, and every number below except Amazon's own figure is hypothetical). Amazon says its Great Indian Festival 2025 drew over 276 crore customer visits, 70 percent of them from tier 2 and 3 cities. Suppose its centre in a tier 2 city pays Rs 650 for an idle packer-shift of 120 shipments, as Lucknow does, while a late shipment costs it Rs 10, against Lucknow's Rs 25. What share of weeks should its plan cover, and what carries over from Lucknow unchanged?
 
-a) About 0.35; the festival-aligned copy, the held-out latest weeks and pricing both directions carry over.
+a) About 0.35; the festival-aligned copy, the weeks held back from every forecast and pricing both directions carry over.
 b) About 0.35; the copy of last year's calendar weeks carries over, the plainest baseline any plan has.
 c) About 0.65; the copy of last year's calendar weeks carries over, the plainest baseline any plan has.
-d) About 0.65; the festival-aligned copy, the held-out latest weeks and pricing both directions carry over.
+d) About 0.65; the festival-aligned copy, the weeks held back from every forecast and pricing both directions carry over.
 
 ---
 
@@ -689,7 +707,7 @@ For anyone who finishes early. Nothing here is counted. Stretch 1 to 4 are the k
 
 ### Stretch 1
 
-In Hyderabad the 180 drivers in the idle tail completed 33,440 peak trips in the six weeks after the launch, about 31 trips and 39 peak online hours a driver a week. If the redesign drives all of them off the app, who carries those trips, and how many more peak online hours does that take at the other drivers' 1.90 trips an hour?
+In Hyderabad the 180 drivers in the idle tail completed 33,440 peak trips in the six weeks after the launch, about 31 trips and 39 peak online hours a driver a week. If the redesign drives all of them off the app, who carries those trips, how many more peak online hours does that take, and what do you watch in the first month?
 
 ### Stretch 2
 

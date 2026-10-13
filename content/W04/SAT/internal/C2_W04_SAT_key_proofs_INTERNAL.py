@@ -106,11 +106,12 @@ def main():
     assert len(PRINTED) == 39, len(PRINTED)
     hard = sum(1 for i in PRINTED if i["level"] == "Hard")
     mins = sum(i["min"] for i in PRINTED)
-    assert hard == 11 and mins <= 120, (hard, mins)
-    # The levels after the blind check of 13 October 2026: an item stays Hard where that check read it
-    # hard, or where its medium read rested on a cue this pass removed and the interviewer's cold read
-    # had read it hard; the provenance's levels row carries the rule.
-    assert sorted(i["q"] for i in PRINTED if i["level"] == "Hard") == [4, 7, 9, 15, 20, 21, 25, 26, 30, 32, 39]
+    assert hard == 18 and mins <= 119, (hard, mins)
+    # The levels after the raise of 13 October 2026: the eleven Hard items the blind check's rule left,
+    # and the seven rebuilt with a second idea on their own exhibit (Q6, Q8, Q10, Q12, Q14, Q31, Q33);
+    # the provenance's levels row carries the rule and the blind sitting's read of each.
+    assert sorted(i["q"] for i in PRINTED if i["level"] == "Hard") == [4, 6, 7, 8, 9, 10, 12, 14, 15, 20, 21,
+                                                                     25, 26, 30, 31, 32, 33, 39]
     assert [i["q"] for i in PRINTED if i["level"] == "Easy"] == [1, 3, 5, 11, 29, 35, 36, 37, 38]
     print(f"PASS  shape: 39 items, {hard} hard ({hard / 39:.0%}), {mins:g} minutes at the blueprint's pace")
 
@@ -130,7 +131,11 @@ def main():
                  "which tells the team early", "numerator, denominator and window", "whose window",
                  "valued in margin", "letter of the week's method", "support floor of 1 percent", "above the floor",
                  "carousel", "35.8 percent, beat the seasonal naive", "none was built from", "were scored on",
-                 "0.82", "over both costs", "6.25", "9.45", "on each base", "whose other items click least"):
+                 "0.82", "over both costs", "6.25", "9.45", "on each base", "whose other items click least",
+                 # and the lines the raise of 13 October 2026 took out: Q39 named Lucknow's held-back weeks
+                 # as the latest, which is Q31's half; Stretch 1 gave the other drivers' 1.90, which picks
+                 # Q12's check; Exhibit 5D's dates placed the hidden weeks last, which is Q31's half too
+                 "held-out latest weeks", "other drivers' 1.90", "beginning 29 June to 21 September"):
         assert leak not in paper, ("a line names an answer again", leak)
     print("PASS  no part opening, caption, label, spare or stretch line names a timed item's answer")
 
@@ -194,12 +199,17 @@ def main():
     it = BY_ID["wells-silent"]
     share = Fraction(4, 100) / Fraction(11, 100)
     assert round(float(share) * 100) == 36
-    part_over_part = Fraction(4, 100) / Fraction(7, 100)
-    assert round(float(part_over_part) * 100) == 57
+    ex1c = {r[0]: r[1] for r in BY_ID["tf-target"]["exhibit"]["table"]["rows"]}
+    # Exhibit 1C's 2013 row carries both causes of the rise in the SEC order's words (paragraph 42).
+    assert "0.04 of that year's 0.11 rise" in ex1c["The 2013 change"]
+    assert "inactive for at least 365 days" in ex1c["The 2013 change"] and "up to four years" in ex1c["Use"]
+    assert it["key"] == "c"
+    keyed(it, "dated log", "unused for a year")
     ops = options(it)
-    assert "57 percent" in ops["a"] and "57 percent" in ops["d"] and "36 percent" in ops["c"]
-    keyed(it, "36 percent", "0.04 of the 0.11", "dated log")
-    show(it, "0.04 of 0.11 is 36 percent, 0.04 over 0.07 is 57; the dated change log")
+    assert "dated log" in ops["d"] and "closed during the year" in ops["d"]
+    assert "revenue per household" in ops["a"] and "unused for a year" in ops["a"]
+    assert "revenue per household" in ops["b"] and "closed during the year" in ops["b"]
+    show(it, "the change log shows the 0.04, 36 percent; an exclusion on use keeps the inactive rest out")
 
     it = BY_ID["kalpa-sheet"]
     plants = {p["id"]: p["value"] for p in FACTS[1]["plants"]}
@@ -229,15 +239,20 @@ def main():
     assert it["key"] == "e, b, d, f"
     ops = options(it)
     assert len(ops) == 7 and sorted(ops) == list("abcdefg")
-    assert ops["e"].startswith("The claim") and ops["b"].startswith("The evidence")
-    assert ops["d"].startswith("The caveat") and ops["f"].startswith("The action")
-    assert "Rs 314 to Rs 260" in ops["b"] and "half the drivers, picked at random" in ops["f"]
+    # The lines carry no slot label, so each slot is a choice the reader makes.
+    assert not any(o.lower().startswith(("the claim", "the evidence", "the caveat", "the action")) for o in ops.values())
+    assert "Rs 314 to Rs 260" in ops["b"] and "Rs 314 to Rs 260" in ops["g"]
+    assert "half the drivers, picked at random" in ops["f"]
     stem = " ".join(bsp.parts(it)[0])
     for slot in ("the claim, written as the title", "the evidence", "the caveat", "the action"):
         assert slot in stem, ("the stem prints the template's four slots", slot)
+    fall = 314 - 260
+    assert round(fall / 314 * 100) == 17 and "17 percent" in ops["b"]        # measured from where it started
+    assert round(fall / 260 * 100) == 21 and "21 percent" in ops["g"]        # the wrong base
+    assert round((num(1, "rs_per_hour_before") - num(1, "rs_per_hour_after")) / num(1, "rs_per_hour_before") * 100) == 17
     assert round((num(1, "rs_per_driver_week_after") / num(1, "rs_per_driver_week_before") - 1) * 100, 1) == 0.8
-    assert "0.8 percent" in ops["c"] and "Rs 5,817 to Rs 5,861" in ops["g"]
-    show(it, "the template's four slots in the stem; per-hour claim and evidence, the test as the action")
+    assert "0.8 percent" in ops["c"]
+    show(it, "per-hour claim; Rs 54 of Rs 314 is 17 percent, 21 on the wrong base; the test as the action")
 
     it = BY_ID["keep-two"]
     d2 = {n["id"]: n["value"] for n in FACTS[2]["numbers"]}
@@ -249,18 +264,29 @@ def main():
     show(it, "the wait and Rs 2,836 an extra trip; Rs 82 a completed trip and the requests refused")
 
     it = BY_ID["concede"]
-    keyed(it, "False", "1.56 against 1.90", "old range")
+    assert it["key"] == "c"
+    keyed(it, "False", "last three weeks", "1.56")
     ops = options(it)
-    assert "1.58" in ops["b"] and "1.58" in ops["d"] and "old range" in ops["a"]
-    assert "rains ended inside the window" in ops["c"] and "rains ended inside the window" in ops["d"]
-    assert d2["tph_last_three_after"] < d2["tph_after_exact"]
-    stem = it["text"].split("\n")[0]
-    for n in ("41,161", "42,602", "41,155", "42,719", "1.56"):
-        assert n in stem, ("the stem must print what the keyed reply uses", n)
-    assert close(d2["tph_last_three_after"], 1.56)
-    assert d2["requests_last_three_low"] >= d2["requests_before_week_low"]
-    assert d2["requests_last_three_high"] <= d2["requests_before_week_high"]
-    show(it, "last three weeks' requests 41,161 to 42,602 inside 41,155 to 42,719; 1.56")
+    assert "1.8 percent over the six weeks" in ops["a"] and "1.8 percent over the six weeks" in ops["d"]
+    assert "last three weeks" in ops["b"] and "rains ended inside the window" in ops["d"]
+    rows = it["exhibit"]["table"]["rows"]
+    weeks = ["2026_07_20", "2026_07_27", "2026_08_03", "2026_08_10", "2026_08_17", "2026_08_24",
+             "2026_08_31", "2026_09_07", "2026_09_14", "2026_09_21", "2026_09_28", "2026_10_05"]
+    req = [int(r[2].replace(",", "")) for r in rows]
+    tph = [float(r[3]) for r in rows]
+    for w, r, h, row in zip(weeks, req, tph, rows):
+        assert r == num(1, f"requests_{w}") and close(h, num(1, f"tph_{w}")), (w, row)
+        assert row[1] == ("before" if w < "2026_08_31" else "after"), (w, row)
+    before, after = req[:6], req[6:]
+    assert sum(before) == num(1, "requests_before") and sum(after) == num(1, "requests_after")
+    assert round((sum(after) / sum(before) - 1) * 100, 1) == 1.8
+    assert min(after[:3]) > max(before)                                      # the first three, above every week before
+    assert after.index(max(after)) == 1 and all(a > b for a, b in zip(after[1:], after[2:]))  # four falls from 7 September
+    assert (min(after[3:]), max(after[3:]), min(before), max(before)) == (41161, 42602, 41155, 42719)
+    assert min(before) <= min(after[3:]) and max(after[3:]) <= max(before)   # the last three, inside the old range
+    last3 = sum(num(1, f"trips_{w}") for w in weeks[9:]) / sum(num(1, f"hours_{w}") for w in weeks[9:])
+    assert close(last3, 1.56) and close(d2["tph_last_three_after"], 1.56)
+    show(it, "six-week rise 1.8 percent from the first three weeks; the last three inside the old range at 1.56")
 
     it = BY_ID["memo"]
     keyed(it, "False", "one slide", "a week")
@@ -273,19 +299,21 @@ def main():
     assert round(trips_hour) == 8333 and round(per_driver, 2) == 1.68
     assert round(trips_hour / per_driver, -1) == 4960 and round(trips_hour / per_driver * 1.15, -2) == 5700
     assert d2["drivers_at_peak_central"] == 5704
-    # The spoiling step checks trips against requests: 8,333 trips an hour over 2.13 requests per
-    # online driver-hour is about 3,900, and requests ran above trips before the launch.
-    assert round(trips_hour / num(1, "requests_per_hour_before"), -2) == 3900
+    ops = options(it)
+
+    def rerun(rate):
+        """The chain re-run at one of Exhibit 1A's rates, with the same 15 percent buffer."""
+        return trips_hour / rate * 1.15
+    # Before the launch in trips (the key), before the launch in requests (the wrong unit), and after the
+    # launch in trips (the weeks the guarantee filled with idle hours).
+    assert round(rerun(num(1, "tph_before")), -2) == 5000 == d2["drivers_at_case_tph"]
+    assert "1.90" in ops["a"] and "5,000" in ops["a"]
+    assert round(rerun(num(1, "requests_per_hour_before")), -2) == 4500 and "2.13" in ops["c"] and "4,500" in ops["c"]
+    assert round(rerun(num(1, "tph_after")), -2) == 6100 and "1.58" in ops["f"] and "6,100" in ops["f"]
     assert num(1, "requests_before") > num(1, "trips_before")
-    assert "2.13" in options(it)["c"] and "3,900" in options(it)["c"]
-    assert close(d2["driver_hours_per_trip_before"], 0.53) and close(d2["driver_hours_per_request_chain"], 0.60)
-    # The check moves the answer down to the case's own rate; step f multiplies by the same ratio.
-    case_hours = num(1, "hours_before") / num(1, "trips_before")
-    down = trips_hour / (1 / case_hours) * 1.15
-    up = trips_hour / per_driver * 1.15 * ((1 / per_driver) / case_hours)
-    assert round(down, -2) == 5000 == d2["drivers_at_case_tph"] and round(up, -1) == 6450
-    assert "down to about 5,000 to 5,700" in options(it)["a"] and "up to about 6,450" in options(it)["f"]
-    show(it, "4,960 and 5,700; checked down to 5,000; 3,900 the wrong unit, 6,450 the wrong direction")
+    assert num(1, "median_wait_before") < 5 and round(num(1, "median_wait_before") - num(1, "median_wait_after"), 1) == 0.2
+    assert "1.19" not in it["text"], "Q12 prints no six-driver rate, which is Q4's"
+    show(it, "chain 5,700; at 1.90 it is 5,000; 2.13 requests gives 4,500 and 1.58 after the launch 6,100")
 
     it = BY_ID["four-checks"]
     assert it["key"] == "a, c"
@@ -305,10 +333,22 @@ def main():
     assert "82,44,903" in pf["M6"]["facts"]["record_boardings_2026_09_17"]
     assert "64.06 lakh" in pf["M6"]["facts"]["avg_daily_journeys_current"]
     assert round((64.06 - 60) / 64.06 * 100) == 6 and round((82.44903 - 60) / 82.44903 * 100) == 27
-    keyed(it, "line uses", "record day")
     assert rows[2][0] == "How a journey is counted" and "each line" in rows[2][1]
     assert "highest-ever day" in rows[1][2]
-    show(it, "6 and 27 percent from 60 lakh; DMRC's journeys count each line used (Thursday's sources)")
+    # The 2018 row, from Tuesday's facts: one day's line uses against commuters a day.
+    uses, riders = num(2, "dmrc_line_utilisation_2018"), num(2, "dmrc_ridership_2018")
+    assert "45,35,932" in rows[3][1] and "27 lakh" in rows[3][1] and (uses, riders) == (4535932, 2700000)
+    mix = uses / riders
+    assert round(mix, 2) == 1.68
+    avg_trips, record_trips = 64.06 / mix, 82.44903 / mix
+    assert round(avg_trips) == 38 and round(record_trips) == 49
+    assert round((60 / avg_trips - 1) * 100) == 57 and round((60 / record_trips - 1) * 100) == 22
+    assert round(64.06 / 60, 2) == 1.07                    # any mix above this puts the average day under 60 lakh
+    assert it["key"] == "b"
+    keyed(it, "average day", "38 lakh trips", "57 percent high")
+    ops = options(it)
+    assert "49 lakh" in ops["a"] and "6 percent low" in ops["c"] and "27 percent low" in ops["d"]
+    show(it, "45,35,932 over 27 lakh is 1.68 a rider; 64.06 lakh is 38 lakh trips, the chain 57 percent high")
 
     # ---------------------------------------------------------------- Part 3
     st = S(3, "strip")
@@ -516,10 +556,19 @@ def main():
     # The caption no longer names the bar; the key's reason keeps the 35.8 percent with its source.
     m5_why = next(a for a in SOURCE["additions"] if a["id"] == "m5")["why"]
     assert "35.8" not in it["exhibit"]["caption"] and "1,972 of the 5,507 teams, 35.8" in " ".join(m5_why.split())
-    keyed(it, "A fit is no forecast", "0.847", "weeks it never saw")
+    assert it["key"] == "a"
+    keyed(it, "latest thirteen weeks", "seasonal naive")
     ops = options(it)
-    assert "1.752" in ops["b"] and "1.752" in ops["c"] and "0.847" in ops["d"] and "same two years" in ops["d"]
-    show(it, "M5 scores from Friday's facts; 35.8 percent beat the seasonal naive, so most did not")
+    assert "at random" in ops["b"] and "seasonal naive" in ops["b"]
+    assert "latest thirteen weeks" in ops["c"] and "seasonal" not in ops["c"]
+    assert "at random" in ops["d"] and "seasonal" not in ops["d"]
+    # The bar is read off the exhibit: the seasonal naive beat both machine-learning benchmarks, and every
+    # other entry beat the naive.
+    assert pub["m5_seasonal_naive"] < min(pub["m5_mlp"], pub["m5_rf"])
+    assert pub["m5_naive"] > max(pub["m5_winner"], pub["m5_seasonal_naive"], pub["m5_mlp"], pub["m5_rf"])
+    # No caption places the hidden weeks last, which would answer the option set's first half.
+    assert "29 June" not in BY_ID["asym"]["exhibit"]["caption"]
+    show(it, "the latest weeks held back, against the seasonal naive's 0.847, which beat 0.977 and 1.010")
 
     it = BY_ID["asym"]
     ho = S(5, "holdout")
@@ -568,12 +617,24 @@ def main():
     mid = (kw["finance_total"] + kw["vendor_total"]) / 2
     assert round(mid / 1e7, 2) == 21.39 and round(kw["seasonal_naive_total"] * 1.13 / 1e7, 2) == 21.39
     assert round(kx["vendor_fit_max_pct"] * 100, 1) == 1.8
-    keyed(it, "19.69", "November", "2.08", "3.5 lakh", "none with a Diwali")
+    assert it["key"] == "b"
+    keyed(it, "19.69", "festival-aligned", "3.5 lakh", "none with a Diwali", "21 lakh", "2.08 crore")
     assert len(it["exhibit"]["table"]["head"]) == 4, "Exhibit 5E prints no spike column"
     assert not "2026-04" <= t5["diwali_2026"][:7] <= "2026-09", "the six unseen months hold no Diwali"
+    kex = S(5, "kalpa_exercise")
+    bar = kex["bar_six"]
+    assert close(bar, 6 * kx["aligned_mae_rs"], 1) and round(bar / 1e5) == 21
+    gap = kw["plan_total"] - kw["aligned_total"]
+    assert close(gap, kex["gap_to_plan"], 1) and round(gap / 1e7, 2) == 2.08 and round(gap / bar) == 10
+    assert round((kw["plan_total"] - mid) / 1e5) == 38 and kw["plan_total"] - mid < 2 * bar
     ops = options(it)
-    assert "October" in ops["a"] and "festive months too" in ops["c"] and "festive months too" in ops["d"]
-    show(it, "Rs 19.69 crore, Rs 2.08 crore under the plan line; misses 3.5, 11.7 and 38.8 lakh")
+    assert "21.39" in ops["c"] and "21.39" in ops["d"] and "Rs 38 lakh" in ops["c"]
+    rng = f"Rs {kw['seasonal_naive_total'] / 1e7:.2f} to {kw['vendor_total'] / 1e7:.2f} crore"
+    assert "forecasts' range" in ops["a"] and "forecasts' range" in ops["d"] and rng in ops["a"] and rng in ops["d"]
+    # Every option answers all three of Anand's questions, so none falls for leaving one out.
+    assert all("3.5 lakh a month on six unseen months" in o for o in ops.values())
+    assert kw["seasonal_naive_total"] < kw["plan_total"] < kw["vendor_total"]
+    show(it, "Rs 19.69 crore; 3.5 lakh a month is 21 lakh over six; the Rs 2.08 crore gap is ten times it")
 
     # ---------------------------------------------------------------- Part 6
     it = BY_NO[29]
@@ -597,10 +658,12 @@ def main():
     assert "0.82" not in " ".join(ops.values()), "Q39 prints no 0.82, which would read Q32's quantile"
     assert "calendar weeks" in ops["c"] and "0.65" in ops["c"]
     assert "over both costs" not in " ".join(ops.values()), "the share is worked, never printed as a formula"
+    assert "latest" not in " ".join(ops.values()), "Q39 names no held-back weeks as the latest, which is Q31's half"
     show(it, "10 over 10 plus 5.42 is 0.65; 0.35, the share upside down, and the calendar copy refused")
 
     # ---------------------------------------------------------------- the stretch page
     assert round(33440 / 1.90, -2) == 17600 == num(1, "hours_to_carry_idle_trips")
+    assert "1.90" not in SOURCE["stretch"][0]["text"], "Stretch 1 gives no rate, which would pick Q12's check"
     sv = S(3, "slot_value")
     assert sv["trial_n_full"] == 1105 and sv["trial_n_half"] == 4014
     # Wednesday's formula, (z for 5 percent two-sided plus z for 80 percent power) squared times the
@@ -638,8 +701,8 @@ if __name__ == "__main__":
 #     The leak check fails before any item is proved, naming the phrase, and the run exits 1.
 # The same run with Q32's option b given back "compare each at its own 0.82 point"
 #     The leak check fails on "0.82", since that number would tell a reader the share Q39 asks for.
-# The same run with Q6 labelled Hard again in the source file
-#     The shape check fails: 12 hard items against the 11 the blind check's rule leaves.
+# The same run with Q13 labelled Hard in the source file
+#     The shape check fails: 19 hard items against the 18 the raise and its blind sitting leave.
 # The same run with a cell of Exhibit 4C retyped, 52,948 to 52,984
 #     The funnel-units check fails against Thursday's facts file, sep_sessions_add_to_cart.
 # The same run with the margin item's discount raised to Rs 4 in its stem only
