@@ -1301,18 +1301,27 @@ Transition: where the morning ends.
 
 ---
 
-## S54. Three topics applied: claim, drawer, four moves
-*What can you do now that you could not do at the start of the morning?*
+## S54. Chapter 5 adds the defence and the drawer
+*What can you now say when the finance partner says "it is the monsoon"?*
 
-```cards
-icon: file-text | eyebrow: Chapters 1 and 4 | title: The claim and its denominator | body: The scheme pays for idle hours: Rs 314 to Rs 260 per peak online hour, the fare flat | tone: light
-icon: shield | eyebrow: Chapters 3 and 5 | title: The four moves | body: Restate, answer, concede, say what would change your mind | tone: light
-icon: archive | eyebrow: Chapters 2 and 5 | title: The appendix drawer | body: One page per question a role will ask; the caveat stays on the slide | tone: light
+```mermaid
+flowchart LR
+    M["<b>Mon</b><br/>pay for trips"] --> T4["<b>Tue, chapter 4</b><br/>it pays for idle hours<br/>Rs 314 to Rs 260 an hour"]
+    T4 --> T5["<b>chapter 5</b><br/>each objection's true part<br/>conceded; one page a role"]
+    T5 -.-> N["<b>chapter 8</b><br/>how many drivers<br/>at the peak?"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class M,T4 known
+    class T5 lit
+    class N unknown
 ```
+
+**Chapter 5 adds** the defence (restate, answer, concede, what would change your mind), one appendix page for each role's question, and the monsoon kept on the slide as the caveat. **Said plainly:** "Part of the fall may be the season; with rider requests back at their old level in the last three weeks, trips per hour stayed low, so a test has to settle it."
 
 **The afternoon opens on round two of the studio, then asks the second question on the ticket:** how many drivers the evening peak needs, sized without a dataset.
 
 ```notes
-LIVE, 1 minute. Read the three cards. Lunch.
+LIVE, 1 minute. Ask two learners to say the plain sentence aloud without the slide. Lunch.
 Transition: half two, round two of the studio, then the guesstimate.
 ```

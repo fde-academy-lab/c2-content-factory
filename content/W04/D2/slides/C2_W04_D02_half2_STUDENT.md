@@ -334,10 +334,11 @@ the draft carried that the page does not.
 | North star | the one number the team is judged on |
 
 ```notes
-LIVE, 1 minute. The counts come from the page itself: nine lines and 13 numbers on the draft, four
-sentences and 7 numbers on the page, four method words against none. Notebook 07 counts them in
-three lines and runs the five rules of S69 on both versions: the draft passes none of them.
-Transition: the rules.
+LIVE, 1 minute. Count one thing by hand first: how many method words does opening A on S65 carry?
+Three (north star, denominator, index), and the draft's last line adds a fourth, guardrail; the
+page carries none. Then the picture: nine lines and 13 numbers on the draft, four sentences and 7
+numbers on the page. Notebook 07 counts them in a short loop and runs the five rules of S69 on both
+versions: the draft passes none of them. Transition: the rules.
 ```
 
 ---
@@ -725,6 +726,19 @@ Transition: the thirty-five minutes.
 
 **At the end of the slot the page is handed in.** Three pages, chosen for one strong part each, are read aloud at the close if the clock allows.
 
+```mermaid
+flowchart LR
+    S["<b>chapters 4 and 5</b><br/>the slide, defended"] --> E["<b>chapter 8</b><br/>5,000 to 5,700 drivers"]
+    E --> P["<b>chapter 9</b><br/>the page, by hand,<br/>handed in"]
+    P -.-> I["<b>chapter 10</b><br/>both, said aloud<br/>and scored"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class S,E known
+    class P lit
+    class I unknown
+```
+
 ```notes
 LIVE, 32 minutes of silent writing; with the 3 minutes of the chapter's opener, S83 and S84 the
 chapter is the 35 the brief names. Walk once early to answer scope questions and once near the
@@ -839,6 +853,18 @@ Transition: scoring the transcripts.
 | Said what would change their mind | no | vaguely | a named fact |
 | Tied it to a decision and its cost | no | a decision | a decision and its rupees |
 | Gave the structure before the number | number first | mixed | structure first |
+
+```mermaid
+flowchart LR
+    P["<b>chapter 9</b><br/>the page"] --> I["<b>chapter 10</b><br/>the slide and the estimate,<br/>said aloud and scored"]
+    I -.-> W["<b>Wed</b><br/>what goes with what"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class P known
+    class I lit
+    class W unknown
+```
 
 ```notes
 LIVE, 3 minutes. Each pair scores both answers of one transcript on paper and compares with a

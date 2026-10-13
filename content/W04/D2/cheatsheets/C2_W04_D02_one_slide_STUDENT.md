@@ -84,11 +84,13 @@ flowchart LR
 
 ## Panel 7: What does Uber's city head take to Thursday?
 
-| Read | All driver-weeks |
-|---|---|
-| Per peak online hour | Rs 314 to Rs 260, down 17 percent |
-| Per active driver-week | Rs 5,817 to Rs 5,861, up 0.8 percent |
-| Per trip | Rs 165 both windows |
-| Drivers at the evening peak | About 5,000 to 5,700 where the chain and the check agree, inside 2,900 to 8,600 set by trips per person |
+| Read | The twelve rows: six drivers, two weeks | All driver-weeks |
+|---|---|---|
+| Per peak online hour | Rs 313.5 to Rs 196.2 | Rs 314 to Rs 260, down 17 percent |
+| Per active driver-week | Rs 3,135 to Rs 2,420 | Rs 5,817 to Rs 5,861, up 0.8 percent |
+| Per trip | Rs 165 both weeks | Rs 165 both windows |
+
+The city needs about 5,000 to 5,700 drivers online at the weekday evening peak where the chain and the
+check agree, inside the 2,900 to 8,600 that trips per person sets.
 
 **Crux:** The scheme pays per online hour, so the slide reads per online hour.
