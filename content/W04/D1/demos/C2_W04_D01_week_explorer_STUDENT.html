@@ -346,8 +346,7 @@ var W4 = {
     /* October, an estimate on the day's assumption (oct_sale_m2_assumed, oct_dashboard_estimate 0.329): every older
        cohort slides another 0.3 points, and the August cohort enters at 31 less July's 10.5-point fall
        (july_drop_m1_to_m2_points), 20.5 percent; the day's range for that rate is 17 to 24 */
-    octSlide: 0.3, augMonthTwo: 20.5, julyDrop: 10.5,
-    everyone: [40.9, 40.0, 39.5, 35.9],             /* everyone_jun to everyone_sep: everyone who joined before the month */
+    octSlide: 0.3, augMonthTwo: 20.5,
     months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October"],
     toyBatch: {a: 100, aLast: 0.5, aNow: 0.4, b: 400, bRate: 0.525},   /* Thu toys toy_blend: two coaching batches */
     /* Thu facts, September, Gold members: sep_sessions_open to sep_sessions_order_placed and sep_members_open to
@@ -1032,7 +1031,7 @@ var W4 = {
       <div class="reveal" hidden>
         <p class="check"></p>
         <p>Every row falls after month one, and each cohort starts lower than the one before: 58, 56, 55, 53, 52, 50 and 49 percent in month one, then the August cohort's 31. From month two every cohort sits near 38.5 percent and slides about 0.3 points a month. The dashboard reads 38.2, 38.0, 37.9 and 37.8 from June to September, because each month one more cohort of about 5,000 enters its count at about 38.5, just above the older cohorts' slide, and in September the August cohort, 13,000 members in their month one, sits outside it.</p>
-        <p>In October that cohort enters. If its 31 loses the 10.5 points July's lost, it enters at about 20.5 and the reading falls to about 33: (35,000 x 37.5 + 13,000 x 20.5) / 48,000. Any rate from 17 to 24 percent gives 32 to 34, and at a normal 5,000 members the same cohort would pull the reading only to about 35. Counted from each member's month one instead, everyone who joined before the month, June to September read 40.9, 40.0, 39.5 and 35.9, so the definition decides whether the dashboard ever looked flat: a blend holds while every part shrinks as long as new parts keep arriving and the weakest part has not been counted yet.</p>
+        <p>In October that cohort enters. If its 31 loses the 10.5 points July's lost, it enters at about 20.5 and the reading falls to about 33: (35,000 x 37.5 + 13,000 x 20.5) / 48,000. Any rate from 17 to 24 percent gives 32 to 34, and at a normal 5,000 members the same cohort would pull the reading only to about 35. Counted from each member's month one instead, everyone who joined before the month, September already reads 35.9, so the definition decides whether the dashboard ever looked flat: a blend holds while every part shrinks as long as new parts keep arriving and the weakest part has not been counted yet.</p>
         <p class="formula"><b>The formula, last</b>blend = sum of (cohort size x cohort rate) / sum of sizes, over the cohorts the dashboard counts</p>
       </div>
     </article>
