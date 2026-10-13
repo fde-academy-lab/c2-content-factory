@@ -1,6 +1,11 @@
 # Cold reads, W04 D2: what a fresh graduate could not follow and what a hiring interviewer would reject
 
-Two separate reviewers read the pack on 12 October 2026 and wrote findings only; neither edited a file. Read 1 read the STUDENT files in learner order; read 2 scored the transcripts' hire-grade answers on the S52 scorecard. Their findings are reproduced as written. What changed in answer, and the reason for each finding not fixed, are in `C2_W04_D02_sources_INTERNAL.md`.
+Two rounds of cold reads are kept here. Reads 1 and 2 read the merged pack on 12 October 2026. Reads 3
+to 5 read the concept-first rebuild on 13 October 2026: a trainer who did not write the day, with the
+row open; a fresh graduate reading the STUDENT files; and a hiring interviewer scoring the interview
+material. Every reviewer was a fresh agent that wrote findings only and edited no file. Each read is
+reproduced as written, and each rebuild read is followed by what became of every finding. The 12
+October fix pass and its reasons are in `C2_W04_D02_sources_INTERNAL.md`.
 
 ---
 
@@ -731,3 +736,230 @@ Sources fetched for this read, all on 12 October 2026: arXiv 2205.06537 (Ziegler
 Productivity" (10 July 2025); the Outlook Money UPI report (2 October 2026); Flipkart Stories (9
 October 2026); and the Aced guide. The Avenue Supermarts release at the NSE archive returned 503, so
 the DMart figures were not re-verified.
+
+---
+
+## Read 3, 13 October 2026: a trainer who did not write the day, with the row open
+
+Cold read of W04 D2 (Tue 27 Oct, Stakeholder communication). Every subtopic is taught, and I found no "not found" against the five subtopics. I found 15 numbered problems, listed below. I edited nothing.
+
+**Per-subtopic table** (notebook cells are numbered from 1 across all cells; "applied" means the case chapters)
+
+| # | Subtopic (row, verbatim) | Slides | Notebook, cells | Exercise items |
+|---|---|---|---|---|
+| 1 | The one-slide answer: claim, evidence, caveat, action | half1 S6-S13; applied in S28-S43, S83-S85, S87 | 01_one_slide_answer, cells 3-15 (code cells 4, 6, 8, 10, 12); applied in notebooks 04 and 11 | ch1_one_slide_answer Q1-Q5; slide_and_estimate Q1, Q2; interview_rungs Q1 |
+| 2 | What to leave out, and the appendix | half1 S14-S19; applied in S33-S37, S50-S53 | 02_leave_out_and_appendix, cells 3-13 (code cells 4, 6, 8, 10); applied in notebook 05, cells 11-12 | ch2_leave_out_appendix Q1-Q3; mid_cut_to_two Q1, Q2 |
+| 3 | Defending under challenge: restate, answer, concede, what would change your mind | half1 S20-S27; applied in S44-S49, S55 | 03_defending_under_challenge, cells 3-13 (code cells 4, 6, 8, 10); applied in notebook 05 | ch3_defending_under_challenge Q1-Q4; studio_brief Q1; interview_rungs Q2 |
+| 4 | The guesstimate: clarify, map, calculate, validate | half2 S56-S63; applied in S70-S82, D88 | 06_guesstimate_clarify_map_calculate_validate, cells 3-15 (code cells 4, 6, 8, 10, 12); applied in notebooks 08 and 11 | ch6_guesstimate Q1-Q6; slide_and_estimate Q3; mid_check_against Q1-Q4; kalpa_store Q1, Q2 |
+| 5 | The AI-free written business case | half2 S64-S69; applied in S83-S85 | 07_written_business_case, cells 3-11 (code cells 4, 6, 8) | ch7_written_case Q1-Q3; written_case (handed in, no lettered items) |
+
+I found these on my own first, then compared with internal/C2_W04_D02_coverage_INTERNAL.md. All five rows agree with it; the one disagreement is in its case-chapter table (item 7).
+
+**What passes**
+- Minutes: I summed every notes fence by chapter and each sum matches the day sheet's block. The morning is 5+35+12+25+10+40+53 = 180 and the afternoon is 20+30+10+37+10+35+12+20+6 = 180. The studio run sheet (16+23+12+2) and the dojo table (37) match the deck too.
+- Speaker notes: all 103 slides and section openers carry a notes fence giving LIVE minutes. The two exceptions are D88 and D89, marked SELF-STUDY (8 and 6 minutes), which S3 says D slides are.
+- Order and files: the chapter order is the same in the day sheet, the studio sheet and both decks. Every file named in the four trainer sheets exists.
+- Invented example first: concept chapters 1, 2, 3, 6 and 7 teach on the invented kirana, school and canteen examples, and no Uber number appears in them. Uber is named only as a forward pointer on S13, S19, S27, S63 and S69, and the same holds in notebooks 01, 02, 03, 06 and 07.
+- Kahoot and take-home: the Kahoot covers every subtopic (Q1, Q2, Q3, Q4-Q6, Q8). The take-home's BUILD and PRACTISE match the row.
+- Arithmetic: I spot-checked S9, S22, S38, S40, S41, S60, S61, S75, S80 and the guesstimate note; all hold.
+
+**Findings**
+
+1. mismatch: exercises/unguided/C2_W04_D02_mid_cut_to_two_STUDENT.md, line 41, against half1 S52. The file says S52 runs this drill, but its fifth element is a table of acceptance share by zone, while S52's fifth is a pie of top-up by week. Q2 then asks where the zone table goes, and the room never saw that table on screen.
+2. mismatch: studio_brief_STUDENT.md, line 24, says "round two repeats it", meaning three turns in which everyone presents again. half2 S55, the studio run sheet and the day sheet all run round two as two turns plus six minutes to rebuild.
+3. mismatch: the half2 S93 notes (lines 887-890) quote the handoff line "as the day sheet has it", but the day sheet's line (lines 255-258) is different: "five topics ... read the topics and their words" against the deck's "a counting problem ... read the three words". Wednesday's pre-read names five topics, so the deck's wording is the stale one.
+4. mismatch with the row's MID-SESSION column, which says 15 minutes each: Drill 1 gets 6 minutes (S52). Drill 2 (mid_check_against, the four estimates) has no slide and no minutes. The SECTION 8 opener (half2 line 383) sends it to the lab, and the day sheet's SECTION 8 row (line 169) leaves it out.
+5. mismatch: kahoot. Q5 (line 58) says "eight million households", where the row and the spine's L5 both say nine million. Q2 (line 28) asks the room to pick one of four for the last space on the slide, which is not the row's "keep or cut: six slide elements". Q7 asks for the guardrail on a pay-per-trip scheme rather than the row's cross-sell push; the spine (section 6) sanctions that change, so Q7 is not an error.
+6. not found on any slide: the [D] question, "The person who loses under your metric controls the meeting; how do you get it adopted anyway?". It appears only in S25's notes (line 642), and S25's body already states the answer. It does appear, tagged, in studio_brief line 87, ch3_defending Q4 and the study notes line 249. The other four tagged questions are on slides: S13, S19, S27 and S63.
+7. mismatch: day sheet line 52 and the coverage matrix give chapter 10 as "S86 to S93". The day sheet's own block table (lines 172-173) and the S91 note treat S91-S93 as the close, so chapter 10 is S86-S90.
+8. unclear: S21 option a (half1 line 556) puts the overclaim at 77 to 89 percent, 12 points. The day sheet (line 228), notebook 03 cells 7-8 and ch3_defending Q2 and Q4 all use "12.8 points" (76.5 to 89.3), which no slide shows.
+9. unclear: S46 (line 1108) says the 880 drivers who were there before the launch "held at 1.90". S48 (line 1150) says "the drivers who were there before the launch fell from 1.90 to 1.58". Both are true, because the 1,060 pre-launch drivers include the 180 in the idle tail, but no slide, note or role card says so. Role card 3 and day sheet line 222 repeat the 1.58 without the split, so a trainer answering finance could seem to contradict S46.
+10. unclear, needs a ruling: the row's client-zero column marks Anand's store question and the three Kalpa role cards as "proposed for v2.3 ... Trainer only". The TRAINER files mark them proposed. The STUDENT files kalpa_store, lab_set, kalpa_slide_template and notebook 11 state the question with no status. facts.yaml's v2.3 item list does not include these items. The Kalpa objections themselves stay TRAINER only, which is correct.
+11. unclear: the take-home brief and self-check leave out the row's READ item, Wednesday's pre-read on support, confidence and lift. The pre-read exists, but only S93's notes point to it.
+12. unclear: the day sheet never names this day's role cards, trainer/C2_W04_D02_role_cards_TRAINER.md. Line 164 points to Monday's D1 cards instead. The studio run sheet does name the right file.
+13. unclear: the SECTION 10 opener notes (half2 line 737) say "transcripts 2 and 3 and the AI-company variant", but S86 (line 754) calls transcript 3 the AI variant, and extras holds only three pieces.
+14. unclear: the S3 notes (half1 lines 76-77) say chapters 6 and 7 each sit "right before the Uber chapter that uses it". In fact chapter 7 falls between 6 and 8, and chapter 8 between 7 and 9.
+15. mismatch (minor): lab note line 61 calls the Parsons lines "four lines of notebook 04's second code cell". Line (p) (lab_set line 75) is not in that cell, whose print line differs. The key, q s r p, is correct.
+
+Not errors, for information. The spine sanctions these departures from the row: the case is Uber, Hyderabad, rather than Meera's Kalpa meeting; the written case uses an Uber brief, not "a short Kalpa brief"; Kalpa moves to the lab; a [S] drivers-at-peak interview question is added. One more departure the spine does not sanction: chapter 1's kirana numbers (Rs 11,900 to Rs 12,600) differ from the spine's (Rs 12,000 to Rs 13,000). The pack is consistent with itself.
+
+### What became of each finding
+
+| Trainer finding | What became of it |
+|---|---|
+| 1, S52 against the drill's fifth element | Fixed: S52's fifth element is now the table of acceptance share by zone, as the drill and its Q2 have it |
+| 2, round two in the studio brief | Fixed: the brief says round two runs two turns and six minutes to rebuild, as S55, the run sheet and the day sheet do |
+| 3, the handoff line | Fixed: S93's notes quote the day sheet's line, five topics first, and S93's "Tomorrow" line names them |
+| 4, the drills against the row's 15 minutes | Kept, with its reason in the sources list: the spine's section 6 sets drill 1 inside SECTION 5's 12 minutes and keeps drill 2 for the lab |
+| 5, Kahoot Q5 and Q2 against the row | Kept, with reasons in the sources list: the brief keeps eight million households; a Kahoot item carries four answers |
+| 6, the [D] question on no slide | Fixed: S27's interview line carries it beside the [F] question |
+| 7, chapter 10's span | Fixed: the matrix and the day sheet give half2 S86 to S90; S91 to S93 are the close |
+| 8, S21's 12 points against 12.8 | Fixed: option a now reads 12.8 points, from 76.5 to 89.3 percent |
+| 9, S46's 1.90 against S48's 1.58 | Fixed: S48, role card 3 and the day sheet say the drivers there before the launch fell to 1.58 as a group, all of it in the 180 of the idle tail, while the other 880 held at 1.90 |
+| 10, Anand's store question in STUDENT files | Left for the orchestrating session's ruling, recorded in the sources list: the merged pack states it the same way |
+| 11, the take-home's reading | Fixed: the take-home ends on Wednesday's pre-read |
+| 12, the day sheet's role cards | Fixed: SECTION 4's row names this day's role cards first |
+| 13, transcripts 2 and 3 | Fixed: the SECTION 10 opener reads "transcript 2 and transcript 3, the AI-company variant" |
+| 14, S3's notes on where chapters 6 and 7 sit | Fixed: the notes say each sits two chapters before the case chapter that applies it |
+| 15, the Parsons lines | Fixed: the lab note says the four lines are adapted from notebook 04's second code cell |
+| The kirana numbers against the spine's | Kept, with its reason in the sources list: the lab's food stall already takes Rs 12,000 a day |
+
+---
+
+## Read 4, 13 October 2026: the fresh graduate (no work experience, not strong in maths)
+
+Counts: 0 blockers, 10 confusing, 17 minor.
+
+All paths are under /home/user/c2-content-factory/content/W04/D2/. "h1" and "h2" mean slides/half1 and slides/half2. Notebook cells are counted from 0, with markdown cells included. I changed no files.
+
+The invented examples (Ramesh's shop, the auto driver, Gulmohar school, the canteen and Ramesh's page) give the same numbers in every file. The inconsistencies are in the Uber case and in the rules.
+
+**Confusing**
+
+1. Kirana per-hour logic. h1 S9 and S12, nb01 cells 10 to 12, and ch1 Q5 with its solution. I could not follow why a falling average per hour shows the two extra hours do not pay. They brought Rs 700 a day for Rs 170 of wage: Rs 350 an extra hour against Rs 85. No margin is ever given. nb02 cell 10 then has the accountant claim the hours "cost less than they bring". S8's own title says to count the evening separately. Which is the lesson?
+2. Top-up arithmetic. h1 S30 (body and notes), S36 and S37, and nb04 cell 0. The top-up is defined as "the gap" up to Rs 300 an hour. The idle tail's 42,000 hours at 0.80 trips x Rs 165 earned about Rs 131 an hour, so the gap is at most about Rs 71 lakh. The deck says Rs 1.16 crore, and S30's notes say "about Rs 276 an hour". The other 880 drivers averaged Rs 313.5 an hour, above the floor, yet "everyone else" got Rs 74 lakh. I could not redo either figure unless trip earnings are after a commission that no file states.
+3. Drivers there before the launch. h1 S46 says they "held at 1.90". S48, two slides on, says "the drivers who were there before the launch fell from 1.90 to 1.58". studio_brief_solution's table repeats both, in the driver-operations row and the finance row. Both are true only because one means 880 drivers and the other 1,060, and no file says so.
+4. "City-wide" against a slice of the city. The saving is called "city-wide" in h1 S29 and S39, h2 S87 and S93, nb04 cell 10, guided slide_and_estimate line 46, ch7 Q3a, written_case_solution and extras. h2 S72 and nb08 cell 8 call the case data "twelve zones, a slice of the city". The cleared_slide picture (S35) puts the full Rs 58 to 92.7 lakh beside "tested first on half the drivers". I expected that test to save about half.
+5. The check for the drivers estimate. h2 S71 option d is driver-hours per rider request, and S72 calls d the honest fallback. S77's notes say to divide by trips, "never its requests". nb08 cell 2 and mid_check Q4 say per completed trip. nb08 cell 3 marks d as "same period", but S77 says the case pools 42 hours a week over seven days.
+6. The rules for the written page disagree. h2 S69 has four rules. S84's notes and written_case's checklist have five checks. written_case's "three or more yes" passes a page that does not open on its claim. nb07 cell 7's page_check has five different rules: 250 words or fewer, four to six sentences, "because" or "so" in sentence one, and "Rs" and "signs" in the last sentence. nb07 cell 6 asks about "the five rules" before showing them. written_case line 52 says page_check runs "the same rules". written_case_solution says its model page passes all five checks. Typed one sentence a line, as nb07 cell 8 asks, it fails four of page_check's five: 274 words, 9 sentences, no "because" or "so" in sentence one, and no "Rs" or "signs" in the last.
+7. The slide title loses its action. h1 S8 picks title c, "...so count the evening on its own before deciding", and S13's rule 1 says a title says what to do. The slide built on S11 (kirana_slide.png) is titled "The longer hours add Rs 700 a day and earn less per hour", with no action half.
+8. nb02 cells 6 to 8. The trap sentence sends the festival "to the appendix with the rain days". But the rain days leave (cell 3 output), and the key is d, "out of every page". The trap's wording points to b or c.
+9. Facts that are never taught. These appear only in briefs, solutions or extras: "74 percent of it in the three outer zones" (written_case line 34); "riders still wait about six minutes" (extras, transcript 1); "the three outer zones get few requests" (studio_brief_solution, lab_set_solution P3); "a bus-strike day" and PTI 2023's "a journey for each line a rider uses" (mid_check_against_solution, item 2). The PTI line says the key, c, also counts by line, which is the flaw that makes b wrong in the exercise's own table.
+10. A learner who missed Monday. These terms come before S30 and S37 explain them: h1 S2: "the scheme", "pay for trips"; h1 S5: "redesign", topup_rs, driver_weeks, zone_weeks; h1 S29: "acceptance floor", "top-up", "idle drivers". "Twelve zones" first appears at h2 S72.
+
+**Minor**
+
+11. h1 S11 notes, nb02 cell 8 and ch2 solution item 2 say "the son will raise [the festival] first". The festival weakens his own Rs 700, so I could not see why he would.
+12. Terms that are never explained, or explained late: kirana; UPI; GCC outside h1 S3 (exercise index, ch1 Q4, notes, extras); NPCI, DMRC and PTI in mid_check_against; FY26, "standalone" and Avenue Supermarts in nb11 cell 1; holdout and seat renewals (h2 D89, nb05 cell 14, notes line 252, interview_rungs_solution); "dojo" (index, paired_estimate, guided, lab_set; never in the deck); "north star" at h2 S65, explained only at S68; levels L1 to L6 in the deck notes, before the index defines them; Rapoport (S24); "most offers" (S30 card, nb05 cell 0) against "at least half".
+13. Trainer language in the STUDENT notes: "Explorer scene T1/T2/T3" (h1 S33 to S40, h2 S74 and S76), with no path given; the explorer lives in W04/D1/demos. "Monday's L4 cut, from the facts file" (S48). "the studio run sheet's two-turn fallback" (S55). "research ledger" and "after the swap" (nb08 cells 4 and 10). "Styles: Brilliant, Veritasium..." in the chapter notes.
+14. h1 S52's fifth element is "a pie of top-up by week". mid_cut_to_two says "S52 runs this drill" but has "a table of acceptance share by zone".
+15. h2 S55 gives the second studio round two turns plus six minutes to rebuild. studio_brief line 24 says round two repeats all three turns.
+16. h1 S40's notes say the marketing lead quotes per driver-week. nb04 cell 4 says driver operations.
+17. nb04 cell 8 says "up 1.4 percent". By hand, 5,895 / 5,817 is 1.3 percent.
+18. h2 S93's notes promise a pre-read of "three terms". The pre-read defines six.
+19. extras line 4 says "two transcripts and one AI-company variant". Line 7 and h2 S86 call the variant "the third transcript", and SECTION 10's notes list "transcripts 2 and 3 and the AI-company variant".
+20. h2 S85 says thirty-five minutes. Its notes give 32 minutes of writing.
+21. ch1 exercise line 4 says the auto driver is one "you have not seen yet", but nb01 cell 12 already used it.
+22. h1 S18 says "one line and two labels stay". The right panel of the makeover picture has four labels.
+23. The notes (lines 187 to 188) and written_case line 51 list three method words. S68 and nb07 list four; north star is the one missing.
+24. Headings: h1's title is not a question. The SECTION 2 opener puts its topic in quotation marks. The cheat sheet uses "Panel n:" prefixes. Most S-slide headings are statements (S6, S9, S10 and others), with the question in the italic line beneath. The exercise index promises a section "Which work is written by hand and handed in?" and has none. board_work says its drawings follow the order they go up, then lists chapter 8's drawing before chapter 7's.
+25. Invented numbers without the word "invented": slides h1 S12, S21, S24 and S26. Five whiteboard pictures (kirana_slide, kirana_makeover, school_two_years, canteen_swing, kirana_page_counts) carry no label inside the image; only the alt text says it.
+26. Real sources quoted in concept material without a date: nb02 cell 10 (Storytelling with Data); nb03 cell 8 and notes line 125 (Rapoport and Dennett); nb06 cell 4 and notes line 159 (Think Insights); nb07 cell 4 (Amazon; it has the filing date but no check date).
+27. The notebooks run 01 to 08, then 11. nb07 cell 10 says why chapter 9 has no notebook; nothing says why chapter 10 has none.
+
+### What became of each finding
+
+| Graduate finding | What became of it |
+|---|---|
+| 1, the shop's per-hour logic | Fixed: chapter 1 divides by what the decision buys, so the two added hours sold at most Rs 350 each against Rs 1,190 in an old hour (S9, S12, notebook 01's trap, the notes, the sheet, the board work); sales are not profit and the shop's records hold no cost of goods, so "count the evening on its own" is the action; notebook 02's accountant now claims Rs 700 of sales for Rs 170 of wages, a fact, and no longer that the hours pay. New id `toy_kirana_extra_hour_rs` |
+| 2, the top-up arithmetic | Fixed: S30 states Monday's caveat that the top-up is the gap between the driver's share of the fares and the floor, window by window, and that neither is in the tables, so a week's top-up cannot be rebuilt from bookings; S30's notes explain the 880's Rs 74 lakh the same way; "about Rs 276 an hour" and its facts id are gone. The idle tail's Rs 1.159 crore against about Rs 131 an hour of fares implies a small driver share; that is Monday's data, reported to the orchestrating session |
+| 3, 880 against 1,060 | Fixed: S46, S48 and the studio solution name the 1,060 drivers there before the launch and the other 880 |
+| 4, "city-wide" | Fixed: the saving is across the enrolled drivers in every file, the cleared_slide picture says "All enrolled drivers", and S29's notes say a test on half of them saves about half while it runs |
+| 5, the drivers estimate's check | Fixed: S71 option d is driver-hours per completed trip, pooled over both daily peak windows; S72 and notebook 08 mark its period as wider than one evening |
+| 6, the page rules | Fixed: five rules in the same words on S69 and S84, in the brief's table and checklist (five yes), in notebooks 07 and 09's `page_check` (the 250-word and sentence-count checks are gone) and in the model page, which passes all five typed one part a line |
+| 7, the slide title's action | Fixed: the kirana_slide picture's title ends "so count the evening on its own before deciding" |
+| 8, notebook 02's trap wording | Fixed: the festival "is cut, as the rain days are cut", which points to key d |
+| 9, facts never taught | Fixed: the 74 percent and the outer zones' 6.6 to about 6 minutes are taught on S46 and in the notes; "riders still wait about six minutes" is gone; the bus strike is attributed to Republic World in the drill's solution; the PTI line's reason for b now says the shared line rule is no difference between b and c |
+| 10, a learner who missed Monday | Fixed: S5 defines the scheme, the top-up, the redesign and the acceptance floor; "twelve zones" stays on S72, where the zones first matter |
+| 11, who raises the festival | Fixed: Ramesh raises it first, as the reason the son's Rs 700 may not last (S11's notes, notebook 02, the chapter 2 solution) |
+| 12, terms never explained | Fixed: kirana on S6 and in the notes; UPI on S79 and in the two drills; GCC spelled out in every tag line; NPCI, DMRC and PTI in the check drill's table; FY26, standalone and Avenue Supermarts in notebook 11 and the drill; a seat on D89; the dojo in plain words in learner files; the levels on S3; Rapoport's rules on S24, in notebook 03 and the notes; the holdout is gone. Kept: "north star" stays undecoded at S65 on purpose, since the draft's method words are the problem that slide shows, and S66 and S68 define them |
+| 13, trainer language | Fixed: the explorer's path in both decks' first explorer notes; "Monday's L4 cut" and "the two-turn fallback" in plain words; "research ledger" and "after the swap" gone from notebook 08. Kept: the "Styles:" lines in SECTION notes, the house pattern of every Week 4 deck, Monday's included |
+| 14, S52 against the cut drill | Fixed in the trainer read's pass: S52's fifth element is the table of acceptance share by zone |
+| 15, round two | Fixed in the trainer read's pass: the brief runs round two as two turns |
+| 16, who quotes per driver-week | Fixed: S40's notes expect the driver-operations lead, as notebook 04's table has it |
+| 17, 1.4 percent by hand | Fixed: notebook 04 prints Rs 5,816.5 to Rs 5,895.4, so the hand division gives the printed rise |
+| 18, the pre-read's terms | Fixed in the trainer read's pass: S93's notes promise five topics and their words |
+| 19, two transcripts or three | Fixed: the extras file says three transcripts, the third the AI-company variant |
+| 20, 35 against 32 minutes | Fixed: S85's notes say the 32 minutes of writing and the 3 of S83 and S84 make the brief's 35 |
+| 21, the auto driver "not seen yet" | Fixed: the chapter 1 set names him as notebook 01's your-turn example |
+| 22, two labels | Fixed: S18 says one line stays with four short labels |
+| 23, three method words | Fixed: the notes and the brief list four, north star included |
+| 24, headings | Fixed: the index has its section on handed-in work, and the board work draws chapter 7 before chapter 8. Kept: the cover title is the row's Day focus by rule; "Panel n:" is the sheet builder's format; slide titles are claims with the question in the italic line, the house deck format; SECTION 2's quotes went in the earlier pass |
+| 25, invented labels | Fixed: S12, S21, S24 and S26 say invented in their italic lines, and the five pictures carry it inside the image |
+| 26, undated quoted sources | Fixed: notebooks 02, 03, 06 and 07 and the notes date each source, checked 13 October 2026 |
+| 27, notebooks 09 and 10 | Already resolved: both exist, numbered as their chapters |
+
+---
+
+## Read 5, 13 October 2026: the hiring interviewer (analyst screens at Uber, Swiggy, Google and an AI startup)
+
+Counts: reject 11, shallow 6, fact 1, minor 3.
+
+Every number in the hire-grade answers and their follow-ups matches the facts file. I recomputed the driver and zone splits from Monday's CSVs. The faults are in meaning, not arithmetic. Line numbers are as of commit 53bf705, which landed while I was reading.
+
+**Scores on S90's first three criteria (scope; denominator and window; trap)**
+
+1. [minor] Transcript 1, extras line 43: 2, 2, 2. It asked the decision, the audience and the slot length, and opened on the decision. It used per peak online hour over six weeks either side of 31 August, and broke down the per-driver-week rise. This matches the key. But S90's 2 for scope requires "unit, window and target pinned", so pairs reading S90 will give 1.
+2. [shallow] Transcript 2, extras line 78: 1, 2, 1 (key 2, 2, 2). Five sharp questions, then two answers dropped: zones ("say what you would do") get no sentence, and two-app drivers never enter the chain. Unit and window are clean. It named the day-versus-hour trap, but its "like for like" check is not like for like in period (item 9).
+3. [shallow] Transcript 3, extras line 114: 1, 1, 1 (key 2, 2, 2). It never asked who renews or how often, which its holdout rests on. Its denominator depends on usage and the 26 percent mixes units (items 13, 14). Its check of the trap cannot read renewals (item 16).
+
+**Transcript 1**
+
+4. [fact] extras line 43, notebook 10 cell 2: "each driver stayed online about four more hours a week" is an average. The 180 low-acceptance drivers went from 18.5 to 38.9 hours a week; the other 880 went from 18.6 to 19.3. The true line is stronger: the idle tail doubled its hours and completed 12 percent fewer trips.
+5. [reject] extras line 43: "the three outer zones, where riders still wait about six minutes" leaves out the before value. It was 6.6 minutes and is now 5.95. That is the city's largest gain, three times the median's 0.2, and it is where 74 percent of the idle money sat. The candidate's own "wait in any zone rising" guardrail is the one most likely to fire there.
+6. [reject] extras line 43; S87, S93, notebook 04 cell 10, ch7 Q3: "Rs 58 lakh to Rs 92.7 lakh if a half to a fifth is still paid" matches the facts. But scorecard line 76 concedes the real unknown is the per-trip rate: requests rose 1.8 percent, so newly accepting drivers take other drivers' trips. No rate is named, yet the range runs to a tenth of a lakh. "At what rate?" empties it.
+7. [reject] extras line 48: randomising drivers, "never zones", ignores interference.
+   - Both arms serve the same riders, so treated drivers who accept more take control drivers' trips, and completed trips per enrolled driver overstates the effect.
+   - Zone wait is shared by both arms, so it cannot separate them.
+   - "Any zone rising" across 12 zones has no threshold.
+   - One arm cannot "set" the rate.
+   An Uber interviewer expects a switchback or market-level design, or at least the bias named.
+8. [minor] S87 (half2 line 764): the opening that pairs score live drops the saving's period and its assumption, which costs it S90's window point.
+
+**Transcript 2**
+
+9. [shallow] extras lines 78 and 82: the case's 0.53 driver-hours per trip pools both daily peaks on all seven days. S77 says so; the transcript does not, so it fails S63 rule 4 on period. The same data shows about 1,018 requests and 581 drivers online in an average post-launch peak hour, against the chain's 8,330 and 5,000. The answer never says why that count cannot check the city.
+10. [reject] extras line 78: "5,000 to 5,700" comes right after "2,900 to 8,600" from trips per person alone. A 700-driver band after naming a threefold swing is false precision. S93 states the two ranges together; the transcript should too.
+11. [shallow] extras line 78: the factor that sets the range, "1 Uber trip per 100 people", is asserted with no build-up (who rides, how often, Uber's share against other apps, cars only). The 25-minute accept-to-drop at evening peak has no basis either.
+12. [reject] half2 line 451 (S73) and scorecard line 81 say "lean the idle share low" and "lean it low and the answer up". Drivers = trips / (2.4 x (1 - idle)) x 1.15, so a lower idle share lowers the answer. A driver busy on another app sits online without serving Uber, so the idle share should lean high, which pushes the answer up.
+
+**Transcript 3 and the AI variants**
+
+13. [reject] extras line 114, notebook 10 cells 10 to 12, notebook 05 cell 14: "32 percent accepted, a fifth of accepted characters gone, 26 percent of what we showed survives" multiplies a share of suggestions by a share of characters. Both notebooks then call it 26 of 100 suggestions. "26 percent of what?" ends the answer.
+14. [reject] extras line 114, scorecard line 51: "per developer who saw at least one suggestion that week" drops developers who switch the tool off. The north star holds steady while usage and renewals fall. Per paid seat would survive the follow-up.
+15. [reject] extras lines 118 to 119: the ratio guardrails fail the case follow-up 2 itself raises. Boilerplate that is never reverted survives, so retained characters per accepted character stay high and edits per suggestion stay low. Follow-up 1 also misreads the chain: padding shows in characters per accepted suggestion, not in suggestions shown.
+16. [reject] extras line 114, D89 (half2 line 804), notes line 252: "hold out a share of users for a quarter and keep whichever number tracks seat renewals better".
+   - Held out from what change?
+   - Which metric tracks renewals is a correlation across accounts, not a holdout question.
+   - Accounts buy seats, often yearly, so a user-level quarter sees few renewals.
+   - Notebook 05 cell 14 states a different decision rule.
+   - Nothing says how seven-day retention is measured where buyers block code telemetry.
+17. [shallow] extras line 120: METR timed whole tasks with AI tools, not completion acceptance, and the candidate adds that METR now calls the results out of date. "Then why cite it?" leaves only the perception gap.
+18. [reject] notebook 08 cell 10: the chatbot variant computes daily users x requests x evening share / seconds, which is the window's average with no peak buffer. It then checks this against "last month's peak second", which is a different period: the day's own trap. "Requests at one moment" is also concurrency, a different unit from requests a second (rate x latency).
+
+**Exercises**
+
+19. [reject] ch1 Q5 key b (unguided line 103, solution line 32) and notes self-check 1 (line 234) contradict ch7 Q1 key b (unguided line 38).
+   - ch1 marks "sales a day rose Rs 700, so the hours work" wrong. ch7's key opens the page with "because they have brought Rs 700 a day", which is S12's trap with the per-hour clause cut. Both keys cannot stand.
+   - ch1's reasoning is weak too. Whether two extra hours pay is a marginal question: Rs 700 a day net of the festival, at the shop's margin, against Rs 170. An hourly average falls whenever quieter hours are added.
+   - In ch1 Q2, a (flat Rs 1,800: three more hours earned nothing) is as defensible as d.
+20. [shallow] ch2 Q1 (unguided line 33): 5 rain days in September against 2 in October is a second seasonal confounder of the same Rs 700. The stem declares it irrelevant, and a strong candidate would argue for a over c.
+21. [minor] ch6 Q4 key a (unguided line 88): one weekday's till is the single-day check S91 warns about, while the notes use the five-weekday average of 2,340. The option should say "average weekday".
+
+The other keys hold.
+
+### What became of each finding
+
+| Interviewer finding | What became of it |
+|---|---|
+| 1, transcript 1's scope score | Fixed: S90's 2 for scope reads "what is decided or counted, the window, and the target or the audience pinned", which transcript 1's three questions earn; the scorecard says so |
+| 2, transcript 2's dropped answers | Fixed: the outer zones are sized on their own, two-app drivers lean the idle share up, and the check names its pooled period |
+| 3, transcript 3's scope | Fixed: it asks how often accounts renew and whether the editor can tell what survives |
+| 4, "four more hours" as an average | Fixed: transcript 1, S40, S87's notes, notebook 10, the notes, the solutions and the scorecard say the idle tail's 180 drivers doubled their hours, to about 39 a week, while completing 12 percent fewer trips; notebook 10 recomputes both from the segments table. New ids `idle_hours_per_week_before`, `idle_hours_per_week_after`, `idle_trips_fall_pct`, `others_hours_per_week_rise` |
+| 5, the outer zones' wait | Fixed: transcript 1 gives 6.6 to about 6 minutes, the largest fall, and makes it the wait to watch first |
+| 6, the saving's precision | Fixed: every spoken saving names the enrolled drivers, the six weeks, the half-to-a-fifth assumption and the per-trip rate that decides where it lands; the rate is fixed before the test. Kept: the figures stay Monday's Rs 58 lakh and Rs 92.7 lakh, so the two days agree |
+| 7, randomising drivers | Fixed: follow-up 2, the model page and the scorecard name the interference (both halves serve the same riders, so the gap flatters the change), read the city's totals beside it, offer a whole-city alternation week by week, say the zone waits guard the city rather than compare the halves, set the stop line at any zone's median above its level before the launch, and fix the rate before the start |
+| 8, S87's opening | Fixed: it carries the six weeks, the assumption and the rate fixed first |
+| 9, the check's period and the slice | Fixed: transcript 2 says the 0.53 pools both daily peaks on all seven days, and that Monday's slice, about 581 drivers online in an average peak hour, checks a ratio, never the city's count |
+| 10, false precision | Fixed: transcript 2, D88, the notes, the sheet, the board work and the trainer note say about 5,000 to 5,700 where the two routes agree, inside 2,900 to 8,600 |
+| 11, the 1 in 100 and the 25 minutes | Fixed: transcript 2 builds the 1 in 100 in words (most people take no app ride on a weekday, a rider goes out and back, an Uber car is one choice among several) and calls the 25-minute trip a guess to check first against the app's trip times |
+| 12, the idle share's direction | Fixed: S73, the scorecard and the guesstimate note lean it high for two-app drivers, which pushes the answer up |
+| 13, mixed units | Fixed: both shares are of suggestions, 32 of 100 accepted and a fifth of those deleted, so about 26 of 100 shown survive, in the transcript, D89, notebooks 05, 09 and 10 and the scorecard; notebook 10 says why they multiply |
+| 14, the denominator | Fixed: per paid seat a week everywhere |
+| 15, the ratio guardrails | Fixed: padding is caught by characters per accepted suggestion with a ceiling and by a monthly sample of surviving suggestions read by engineers; follow-up 1 reads padding in characters per accepted suggestion |
+| 16, the holdout | Fixed: a check across last year's renewals replaces it everywhere (D89, notebooks 05, 09 and 10, the notes, the scorecard, the interview set and its solution); the transcript says the editor reports survival as a yes or no without sending code, and accounts that block even that are reported apart |
+| 17, METR | Fixed: cited for the perception gap only, with whole tasks of about two hours and the page's out-of-date note, both re-checked on 13 October 2026 |
+| 18, the chatbot variant | Fixed: notebook 08 separates requests a second from requests in flight and the window's average second from its busiest minute, and validates each like for like |
+| 19, chapter 1 against chapter 7 | Fixed: ch1 Q5's key is the marginal reading, Q2's key is what the three added hours brought (nothing), and ch7 Q1's key carries both halves of the reason; the notes' self-check agrees |
+| 20, the rain days | Fixed: two rain days in each month (the generator moved three September rain days, totals unchanged), so they explain none of the change and leave |
+| 21, the canteen check | Fixed: ch6 Q4's key is the till's average weekday |
