@@ -184,6 +184,7 @@ Every one is recomputed by the proofs script from the facts files or the printed
 | 0.825 and 0.97 | Q17, Q18 | 165 over 200; 0.825 over 0.85 |
 | Rs 1,500 a day | Q21 | 375 new adds at Rs 10, less 750 adds at Rs 3 |
 | 41 and 41 percent | Q22, Q23 | 1,640 over 4,000; 2,460 over 6,000 |
+| 71 to 70 and 65 to 64 percent; 80 percent on every platform | Exhibit 4D | Thursday's events table, per session, 1 August to 13 September against 14 to 30 September: checkout start to order for iOS members 0.713 to 0.700 and for non-members on Android 0.650 to 0.637, and add-to-cart to checkout start 0.800 in every member and platform segment. Thursday's facts file carries only the Android members' rates, so these were recomputed from the table at the orchestrator's review |
 | 118, 34 and 61 percent | Q25 | Each step over the step before, per session and per member |
 | 3,198 orders over 17 days, 1,317 a week, Rs 4.0 to 6.6 lakh; 1,223 against iOS | Q26 and its key | 14 points of 22,841 carts; 7 of 17 days; at Rs 300 and Rs 500; 13 points with iOS members as the comparator |
 | 40 and 80 percent | Q27 | 4 of 10 and 4 of 5 |
