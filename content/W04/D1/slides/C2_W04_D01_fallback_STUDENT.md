@@ -120,7 +120,9 @@ Each set writes its number as a complete definition of seven lines: numerator, d
 
 ```notes
 LIVE, 5 minutes to set. The template is in exercises/guided/C2_W04_D01_definition_STUDENT.md. Twenty
-minutes to write.
+minutes to write. The finance and marketing readers argue different numbers here than on their round 1
+cards, on purpose: each defends a number it did not choose, so the room hears each attack from the
+other side.
 Transition: the attack each owner will mount.
 ```
 
@@ -173,7 +175,7 @@ c) 1 and 2 lead; the other six lag
 d) 3, 5 and 8 lead; the other five lag
 
 ```notes
-LIVE, 8 minutes. Letters first, then each group defends two of its calls aloud.
+LIVE, 12 minutes. Letters first, then each group defends two of its calls aloud.
 Transition: the answer.
 ```
 
@@ -193,7 +195,7 @@ flowchart LR
 **Answer: a.** The four inputs move before trips per driver do, and the city team can act on them this week; the four confirmations arrive after the trips have happened. On the case data acceptance settled in the launch week while bookings per online hour took three weeks.
 
 ```notes
-LIVE, 4 minutes. A dashboard of only lagging numbers lets a drift run for weeks before anyone sees
+LIVE, 6 minutes. A dashboard of only lagging numbers lets a drift run for weeks before anyone sees
 it; a dashboard of only leading numbers never says whether the outcome came.
 Transition: three north stars and the guardrail each needs.
 ```
@@ -203,13 +205,13 @@ Transition: three north stars and the guardrail each needs.
 
 | North star | How it could be hit badly | The guardrail |
 |---|---|---|
-| Completed peak trips per enrolled driver per week | Drivers accept short trips and decline the rest | Share of offers accepted, at or above a floor |
-| Peak online hours per enrolled driver | Drivers sit online in zones with no riders | Share of online hours with no completed trip (0.22 to 0.38 on the case) |
+| Completed peak trips per enrolled driver per week | Drivers accept short trips and decline the rest | Share of offers accepted, at or above an acceptance floor |
+| Peak online hours per enrolled driver | Drivers sit online in zones with few riders | Share of online hours with no completed trip (0.22 to 0.38 on the case) |
 | Enrolled drivers | Drivers sign up and never drive | Count only drivers online at least one peak hour that week |
 
 ```notes
 LIVE, 12 minutes. Each group writes one more guardrail for a north star of its choice and names the
-gaming it catches. A guardrail that is another growth count gets the question: what would it catch?
+gaming it catches. A growth target offered as a guardrail gets the question: what would it catch?
 Transition: the dispute, as an interviewer asks it.
 ```
 
@@ -217,7 +219,7 @@ Transition: the dispute, as an interviewer asks it.
 *How does a candidate get three teams who each want their own target to one number, and what do they say to the teams who lose?*
 
 ```notes
-LIVE, 15 minutes: the second transcript read in pairs (10), scored (5). The transcript is the [D]
+LIVE, 15 minutes: the second transcript read in pairs (8), scored (5), the close (2). The transcript is the [D]
 section of extras/C2_W04_D01_transcript_STUDENT.md.
 Transition: the two answers.
 ```
@@ -233,7 +235,8 @@ Transition: the two answers.
 | What would change it | Nothing | "If the wait by zone rose under the new rule, I would revisit the acceptance floor" |
 
 ```notes
-LIVE, 8 minutes. Score both on the scorecard (trainer/C2_W04_D01_interview_scorecards_TRAINER.md).
+LIVE, 13 minutes: read in pairs (8), then score both on the scorecard (5)
+(trainer/C2_W04_D01_interview_scorecards_TRAINER.md).
 Transition: the clinic's close.
 ```
 
