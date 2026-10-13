@@ -7,6 +7,11 @@ leaves unchanged, the row still carries: the Kalpa plants, the interview anchors
 the Kahoot plans. Where this page and `the-standard.md` differ, this page wins for Week 4 (section 13
 gives the wording that makes that so). Its companion is `W04_case_file.md`, which holds every case in
 full; this page says how the week is shaped and the case file says what each day is about.
+Revised again on 13 October 2026 after the requester read every Week 4 deck: section 2.0 adds the
+concept block that opens every day, each day section gains "The concept block" with the row's
+subtopics verbatim, and the acceptance test gains its coverage line (decision
+`concept-first-case-second`). Where this page and a curriculum row's Subtopics column differ, the row
+wins: every subtopic is taught in a chapter that carries its name.
 
 What changed from the morning draft, in one list: every day now opens on an engineering case at a
 real company the learners use, written as an analyst's ticket, and no stakeholder quote opens a day;
@@ -102,6 +107,32 @@ Saturday deck redraws the map with another company's words in the boxes, then Ka
 
 ## 2. The rule every Week 4 day follows: the ticket, then the ladder
 
+### 2.0 The concept block, the opening of every day
+
+Every day opens on its topic, as the row's Day focus words it, the week map with today lit (section
+1), the topics slide (every bullet of the row's Subtopics column verbatim and in the row's order, each
+with the chapter that teaches it, its minutes and its notebook) and the concept map: a mermaid map of
+the same bullets, today's nodes lit, each node joined to the earlier idea it rests on and the later
+one it feeds, and the day's case as a node beneath them labelled "applied to". Slide five is the
+ticket of section 2.1 in one slide, as the destination. Then the concept block runs, 60 to 120
+minutes: one chapter per subtopic of about 8 to 25 minutes, its `## SECTION n:` title the subtopic as
+the row words it (shortened only where a pill needs it, and never losing a word that names an idea),
+its italic promise the chapter's question. The chapters run in the row's order unless the day's
+section records a reason to teach them in another (Thursday's does), and they fill the morning, except
+that a chapter the day's section moves to the afternoon goes into `half2`, still before the case
+chapter that applies it. A concept chapter teaches from zero on one simple, complete, relatable
+educational example with invented numbers labelled invented, in the order teaching-styles.md gives
+for a concept chapter: the broken default, the misconception and a prediction, the hand count on the
+tiny numbers, the picture, the formula or rule named last, a glimpse of code, a faded second example,
+the rules and the map node naming the case chapter that applies it. Each pairs with one notebook of 8
+to 18 cells carrying the same name. The case chapters of sections 5 to 9 follow, renumbered after the
+concept chapters, the first of them opening on the full ticket read where the day plan moves it there,
+each opener gaining the line "Applies: ..." that names the concept chapters it uses, and each case
+beat that once introduced an idea mid-climb now recalls it by name in one line and goes to the data;
+each day's "The concept block" table says which beat moved where and which minutes it freed. Each
+day's plan in `docs/detailing/W04_concept_first/` holds its chapters slide by slide and its notebooks
+cell by cell.
+
 ### 2.1 The case ticket, the register of every opening
 
 Every day opens on a ticket, in an analyst's register and nothing more dramatic. The ticket has, in
@@ -156,10 +187,12 @@ Three Week 4 rules replace the-standard.md's grid for this week:
   and Kalpa alike, how it was computed in one line and where it is used. A public company fact is in
   the case file with its R2 id and check date, or is labelled a hypothetical in the sentence that
   carries it. A toy is labelled invented. An assumption is labelled with its range. Nothing else.
-- **The question ladder stays at the day and chapter level.** The day asks the ticket's question;
-  each chapter heading is the sub-problem's question, with **Who needs the answer.** and **The
-  questions on the way.** beneath it once; a step heading inside a chapter is a plain question with
-  nothing under it. The headings-only read still tells the day's story.
+- **The question ladder stays at the day and chapter level, and the chapter title carries the topic.**
+  The day asks the ticket's question; each chapter's `## SECTION` title carries its topic (the row's
+  subtopic for a concept chapter, the case step for a case chapter) and its italic promise asks the
+  chapter's question, with **Who needs the answer.** and **The questions on the way.** beneath on the
+  chapter's map slide; a step heading inside a chapter is a plain question with nothing under it. The
+  headings-only read tells the day's topics in the row's order and then the case's story.
 
 ### 2.4 Teaching styles: which style carries which move, and where it lands
 
@@ -262,16 +295,35 @@ know whether riders are better served.
 
 | Block | Minutes | Level | What runs |
 |---|---|---|---|
-| Morning | 15 | L1 | The ticket read aloud; the war game's round 1: the three city-team roles state their number from role cards and the room says, from instinct, how each could rise while riders waited longer |
-| | 40 | L1 | Chapter 1: the canteen token (toy), then the twelve driver-weeks counted by hand; Wells Fargo as the cost of a gamed number |
-| | 50 | L2, L3 | Chapter 2: the full `driver_weeks` in code; the trap found in the your-turn cell; the idle tail and the dead zones; Swiggy's Maxxsaver |
+| Morning | 7 | | The topic, the week map, the topics slide and the concept map, the ticket as the destination; the board's four questions |
+| | 63 | concept | The concept block: one chapter per row subtopic, each on its educational example, each with its notebook (the table below) |
 | | 10 | | Break |
-| | 65 | L3, L4 | Chapter 3: the metric tree for a city, the north star and its guardrails, leading against lagging, the complete definition built line by line (guided); the caveats named one by one with the fact that would settle each |
-| Afternoon, first 60 | 30 | L5 | War game round 3 (unguided): each group writes the redesigned scheme's metric with two guardrails and the gaming note, prices the top-up paid to idle hours, and answers the three roles |
-| | 15 | L6 | The interview transcript read in pairs and scored; the AI-company variant; the handoff line |
-| | 15 | | Kahoot and close |
+| | 12 | L1 | The full ticket read; the war game's round 1, the three city-team roles stating their numbers from role cards and the room attacking each with the proxy test now in hand; where today ends |
+| | 20 | L1 | SECTION 7, What does an hour count?: the twelve driver-weeks counted by hand (applies the proxy test and the four definition lines) |
+| | 30 | L2, L3 | SECTION 8, Where did the fall sit?: the full `driver_weeks` in code; the trap found in the your-turn cell; the idle tail and the dead zones (applies the definition lines and gaming) |
+| | 38 | L3, L4 | SECTION 9, What should it pay for?: the vote, the wrong memo and the cost; the Uber page filled line by line with the room (guided); the caveats named one by one with the fact that would settle each (applies the north star and guardrails, the leading inputs, the resistant lines and the artifact) |
+| Afternoon, first 60 | 25 | L5 | SECTION 10, war game round 3 (unguided): each group writes the redesigned scheme's metric with two guardrails and the gaming note, prices the top-up paid to idle hours, and answers the three roles |
+| | 15 | L6 | SECTION 11, the interview transcript read in pairs and scored; the AI-company variant |
+| | 20 | | Kahoot, the handoff line, and the close with the six ideas on one strip |
 | IITGN block | 120 | | W4-1 (tentative): designing the A/B test of the redesigned scheme |
 | Lab | the lab's length | L1 to L3 on Kalpa | The Kalpa transfer below, TA-led |
+
+### The concept block
+
+| # | Subtopic (verbatim from the row) | Chapter title (`SECTION n:`) | The educational example (invented, labelled) | Minutes | Notebook | The case beat it absorbs |
+|---|---|---|---|---|---|---|
+| 1 | What to measure and why; the proxy test | SECTION 1: What to measure and why; the proxy test | A school canteen pays its servers per token: plates stay at 200 a day for ten days while tokens go from 200 to 400 a day once pay follows tokens, so tokens per plate rise from 1.0 to 2.0 and rice cooked from tokens doubles; a principal's three numbers for judging teachers open the chapter as the instinct round | 13 | `C2_W04_D01_01_proxy_test_STUDENT.ipynb` | The canteen (S8) and Wells Fargo (S12) leave case chapter 1, now SECTION 7; round 1 gives up three minutes because the instinct round opens this chapter |
+| 2 | North-star and guardrail metrics | SECTION 2: North-star and guardrail metrics | A coaching centre of 100 enrolled: 60 of 100 pass in year 1; in year 2 only 40 sit and 36 pass, so the pass percentage rises from 60 to 90 while passes per enrolled fall from 60 to 36 percent | 10 | `C2_W04_D01_02_north_star_guardrails_STUDENT.ipynb` | The tree (S30) leaves case chapter 3, now SECTION 9, and returns there as the Uber instance in one slide; Maxxsaver and Eternal (`half2` S43) move here and leave a one-line callback |
+| 3 | Leading against lagging indicators | SECTION 3: Leading against lagging indicators | A T20 chase of 160: 60 for 3 after ten overs puts the required rate at 10.0 an over, ten overs before the scoreboard confirms the loss by 12; eight Kalpa metric names, with no values, classified as the row's drill | 10 | `C2_W04_D01_03_leading_lagging_STUDENT.ipynb` | Leading against lagging (S31) and its picture leave case chapter 3 |
+| 4 | Definitions: numerator, denominator, window, exclusions | SECTION 4: Numerator, denominator, window, exclusions | One student's 60-day register (50 working days; present 40, absent 8, medical 2) reads 80.0, 66.7, 83.3, 84.0 and 70.0 percent as each line changes | 10 | `C2_W04_D01_04_numerator_denominator_window_exclusions_STUDENT.ipynb` | Swiggy's glossary (S20) and Delhi Metro (S21) leave case chapter 2, now SECTION 8, as one-line callbacks |
+| 5 | Gaming, and definitions that resist it | SECTION 5: Gaming, and definitions that resist it | A kirana shop's month: 50 deliveries marked done and 40 confirmed by the customer's OTP, so pay reads Rs 1,000 against Rs 800; on-time reads 100 percent on the delivery boy's typed clock and 70 percent from the shop's bill time | 10 | `C2_W04_D01_05_gaming_resistant_definitions_STUDENT.ipynb` | The VA clock (S33) leaves case chapter 3 |
+| 6 | The metric definition artifact | SECTION 6: The metric definition artifact | The seven-line skeleton with placeholders, filled for the same kirana delivery, beside the weak page "Deliveries, monthly, plus 20 percent" | 10 | `C2_W04_D01_06_metric_definition_artifact_STUDENT.ipynb` | The skeleton leaves S32, which becomes the Uber instance the room fills; S37 (the afternoon's running order) is cut, since the topics slide carries it |
+
+The block runs after slide five and before the first case chapter; its minutes come from the case
+beats named in the last column, and the day's total stays at the envelope's trainer minutes. Notebook
+04 is the plan's `04_definition_lines`, renamed so its file name carries the Name's words; the case
+notebooks follow as `07_proxy_test_on_twelve_rows`, `08_denominators_on_full_data` and
+`09_north_star_guardrails_cost`, and the lab is `10_kalpa_lab` (`D1_plan.md`, section 4).
 
 **Handoff line, said by the trainer.** "You have a number the scheme should pay for and two
 guardrails that catch the ways of hitting it that hurt riders. You have not tested whether the
@@ -407,8 +459,8 @@ return rate), written to the same template as Uber's, so the Saturday bank's ite
 
 | Family | What Monday ships |
 |---|---|
-| Decks | `half1` of at most 40 slides (the ticket, the week map, "where today ends", the concept board, chapters 1 to 3); `half2` of at most 15 (round 3, the transcript and the AI variant, the Kahoot, the handoff); `fallback` of at most 20. Every body slide carries a notes fence with LIVE minutes |
-| Notebooks | Three, one per chapter, each building on the last: 01 the twelve rows counted (12 to 15 cells); 02 the full `driver_weeks`, the trap and the your-turn cell, the idle tail (18 to 22); 03 the definition computed with its guardrails in pandas and once more in SQL (15 to 18). Plus the lab notebook `04_kalpa_lab` with its empty your-turn cell (10 to 12) |
+| Decks | `half1` of at most 40 case slides plus the concept block's slides, 5 to 8 per subtopic (the topic cover, the week map, the topics slide, the concept map, the ticket, the six concept chapters, then the case chapters 1 to 3, now SECTION 7 to 9); `half2` of at most 15 (round 3, the transcript and the AI variant, the Kahoot, the handoff); `fallback` of at most 20. Every body slide carries a notes fence with LIVE minutes |
+| Notebooks | One per chapter: six concept notebooks named by the row's subtopics (8 to 18 cells each, the educational example inline and labelled invented), then the three case notebooks, each building on the last: the twelve rows counted (12 to 15 cells); the full `driver_weeks`, the trap and the your-turn cell, the idle tail (18 to 22); the definition computed with its guardrails in pandas and once more in SQL (15 to 18). Plus the lab notebook `kalpa_lab` with its empty your-turn cell (10 to 12) |
 | Activity | The war game: three role cards, the proxy-test card, the definition template, the run sheet (all TRAINER except the template) |
 | Exercises | Guided: the definition built together. Unguided: the redesigned scheme's guardrails and gaming note, swapped and attacked; the Kalpa north star on the same template. Mid-session: eight city metrics classified leading or lagging and two defended; the guardrail for three proposed north stars. About 14 items ordered by level, at least five design items |
 | Take-home | One metric definition with a gaming note for a product the learner uses daily, plus the one number they will carry to Tuesday's slide; the self-check lists the seven lines a complete definition has, plain words first |
