@@ -494,9 +494,9 @@ Transition: two companies whose headline number had to match what they were tryi
 *What happens when a north star counts the wrong thing for what the business is trying to do?*
 
 ```stats
-value: over 28% | label: of MTUs, in Swiggy's words | note: monthly transacting users who used Maxxsaver, Instamart's larger-basket offer, in the quarter to 30 June 2025
-value: Rs 612 | label: average order value | note: up 16 percent on the quarter, from wider non-grocery selection and Maxxsaver
-value: NOV | label: Eternal's headline | note: net order value: the value of orders before discounts (GOV), minus the discounts
+value: over 28% | label: of MTUs, in Swiggy's words | note: monthly transacting users on Maxxsaver, April to June 2025
+value: Rs 612 | label: average order value | note: up 16 percent on the quarter: selection and Maxxsaver
+value: NOV | label: Eternal's headline | note: net order value: gross order value minus discounts
 ```
 
 **Swiggy Instamart's Maxxsaver** unlocks extra discounts once a cart passes a threshold, so some users put more into fewer orders. Swiggy puts the slower order growth down to that and to letting go of some low-value orders and unprofitable users: orders per user alone would read the quarter as a fall, and the letter adds that the ramp-up kept contribution flat. **Eternal**, whose businesses include Zomato and Blinkit, stopped disclosing gross order value from its letter for the quarter to 30 June 2026, saying in its food delivery line that "NOV more accurately reflects underlying performance": a discount is value handed back to the customer, which gross order value still counts.
