@@ -70,7 +70,7 @@ This comes up in every stakeholder meeting and in every interview that asks how 
 
 ### Q1. The marketing lead objects that changing the guarantee six weeks in looks like bait. In move 4, which fact would rightly change the presenter's mind?
 
-*Level L3 · tagged [F] in this programme's calibration: frequent in GCC and product-company screens.*
+*Level L3 · tagged [F] in this programme's calibration: frequent in global capability centre (GCC) and product-company screens.*
 
 a) Last year's same six weeks showing a fall of this size
 b) The median rider wait at peak rising in the test zones above where it is now

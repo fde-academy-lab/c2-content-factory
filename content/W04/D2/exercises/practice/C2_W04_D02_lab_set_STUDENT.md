@@ -1,6 +1,6 @@
 # Can the day's slide and the day's estimate survive Kalpa's own questions?
 
-This is the TA-led practice lab, which runs after the afternoon block. The morning's studio and the afternoon's dojo run
+This is the TA-led practice lab, which runs after the afternoon block. The morning's studio and the afternoon's paired estimating drill run
 once more, on Kalpa Retail, the programme's client: first a three-minute slide to a TA who plays one of
 Kalpa's heads, then Anand Iyer's question about a new store, sized from nothing and checked. A short
 ladder of practice problems follows for anyone who finishes early or wants another climb.

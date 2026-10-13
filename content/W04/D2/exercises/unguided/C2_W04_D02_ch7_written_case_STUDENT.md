@@ -35,8 +35,8 @@ day in September and Rs 12,600 in October, and Rs 1,190 an hour against Rs 1,050
 *Level L1 · the chapter's closing check.*
 
 a) North star (sales a day): Rs 11,900 to Rs 12,600
-b) Keep the longer hours a month and count the evening's sales, because they have brought Rs 700 a day
-c) This page sets out every figure for September and October in full, before it gives any view of its own
+b) Keep the longer hours a month and count the evening's sales, as they add Rs 700 a day but less per hour
+c) This page sets out every figure for September and October in full, side by side, before it gives any view of its own
 d) Sales per hour index: 100 to 88, with sales per customer held
 
 ---
@@ -66,7 +66,7 @@ it.
 
 *Level L3, a design call · tagged [S] in this programme's calibration: a staple of analyst screens.*
 
-a) Test paying per completed peak trip, with an acceptance floor, on half the drivers for six weeks; city-wide the change saves Rs 58 lakh to Rs 92.7 lakh, and the city head signs
+a) Test paying per completed peak trip, with an acceptance floor, on half the drivers for six weeks, saving the scheme Rs 58 lakh to Rs 92.7 lakh; the city head signs
 b) Next steps: run further analysis of the guardrail metrics, the north star and the denominators with the data team, and only then decide anything at all about the scheme's future
 c) We recommend optimising the north star going forward
 d) Consider the denominator carefully before deciding

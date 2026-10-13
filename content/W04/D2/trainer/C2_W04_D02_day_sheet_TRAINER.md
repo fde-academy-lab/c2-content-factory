@@ -133,8 +133,9 @@ can I size a number from nothing and know it is sane?**
 
 **The day's answer, at the close.** The S93 sentence: "The scheme is paying for online hours that carry
 no trips: Rs 314 to Rs 260 per peak online hour at a flat Rs 165 fare. Part of it may be the monsoon.
-Test paying per completed peak trip with an acceptance floor: city-wide, it saves Rs 58 lakh to Rs 92.7
-lakh over six weeks if a half to a fifth of the idle drivers' top-up is still paid. At the evening peak
+Test paying per completed peak trip with an acceptance floor: across the enrolled drivers, it saves Rs
+58 lakh to Rs 92.7 lakh over six weeks if a half to a fifth of the idle drivers' top-up is still paid,
+and the per-trip rate decides where it lands. At the evening peak
 the city needs about 5,000 to 5,700 drivers online, and how often people ride could move that from
 2,900 to 8,600."
 
@@ -226,7 +227,7 @@ way.** Which number, from which table?
 | About 5,700, from 2,900 to 8,600 | Drivers at the evening peak before the check; the range from trips per person, everything else held |
 | 0.53 and 0.63; 0.60; about 5,000 | Online driver-hours per completed trip before and after, in the case's zones; the chain's figure before its buffer; the chain re-run at the case's 1.90 trips an hour |
 | 802 million; 24.07 billion | UPI transactions a day and in the month, September 2026 (NPCI via Outlook Money, checked 12 October 2026) |
-| Rs 11,900 to Rs 12,600 a day; Rs 1,190 to Rs 1,050 an hour; Rs 100 a customer (invented) | Ramesh's kirana shop, chapter 1: up 5.9 percent a day, down 11.8 percent an hour, flat per customer |
+| Rs 11,900 to Rs 12,600 a day; Rs 1,190 to Rs 1,050 an hour; Rs 100 a customer; at most Rs 350 in each added hour (invented) | Ramesh's kirana shop, chapter 1: up 5.9 percent a day, down 11.8 percent an hour, flat per customer; the two added hours' own rate is the evidence, and the goods' cost is not in the shop's records, so the action counts the evening apart |
 | 8.3 and 8.0 points; 4.7 points; 12.8 points (invented) | Gulmohar Secondary School, chapter 3: the exams' lift each year; weeks 3 to 5 against last year's; the overclaim |
 | 3,000 x 0.45 x 2 = 2,700 cups; 1,500 to 3,900; 2,340 (invented) | The campus canteen, chapter 6: the chain; the range set by the share who buy; the till, 15.4 percent below the chain |
 
@@ -237,8 +238,8 @@ Every number is in `internal/C2_W04_D02_facts_INTERNAL.yaml` with how it was com
 **Who needs the answer.** The trainer, when a learner asks "what would a good answer say?". **The
 questions on the way.** What does a good answer to each tagged question say?
 
-- **[S] Present a recommendation to a non-technical stakeholder in two minutes.** The decision first, then the claim ("the scheme is paying for online hours that carry no trips"), one number with its denominator (Rs 314 to Rs 260 per peak online hour), what riders got (a median wait of 4.8 to 4.6 minutes), the caveat (the monsoon), the action with its cost and signer (a six-week test on half the drivers, picked at random; city-wide Rs 58 lakh to Rs 92.7 lakh over six weeks; the city head signs the test), and the result that would stop it.
-- **[S] A guesstimate: how many drivers must be online at the evening peak?** Clarify the moment, the window, the product and the wait target; say the formula; trips per person, the evening share, trips per online driver-hour and a buffer, each with a range; about 5,700, with trips per person setting 2,900 to 8,600; check like for like (0.53 driver-hours per trip against the chain's 0.60) and move to 5,000 to 5,700; say what the number decides.
+- **[S] Present a recommendation to a non-technical stakeholder in two minutes.** The decision first, then the claim ("the scheme is paying for online hours that carry no trips"), one number with its denominator (Rs 314 to Rs 260 per peak online hour), what riders got (a median wait of 4.8 to 4.6 minutes), the caveat (the monsoon), the action with its cost and signer (a six-week test on half the drivers, picked at random, at a per-trip rate fixed first; across the enrolled drivers Rs 58 lakh to Rs 92.7 lakh over six weeks; the city head signs the test), and the result that would stop it.
+- **[S] A guesstimate: how many drivers must be online at the evening peak?** Clarify the moment, the window, the product and the wait target; say the formula; trips per person, the evening share, trips per online driver-hour and a buffer, each with a range; about 5,700, with trips per person setting 2,900 to 8,600; check like for like (0.53 driver-hours per trip, pooled over both daily peaks, against the chain's 0.60) and say about 5,000 to 5,700 inside the wider range; say what the number decides.
 - **[S] A guesstimate: how many customers could a new store sign up to a loyalty tier in its first year?** Clarify what a sign-up is; map households near the store x share who shop in year one x share who sign up; give the range and its factor, the sign-up share (400 to 1,600); check the store's implied sales against a mature store's (DMart, about Rs 146 crore a store on the average count; Avenue Supermarts, 2 May 2026, checked 12 October 2026) and say a first-year store sells less.
 - **[F] A stakeholder's objection is partly right; how do you answer it?** Restate until they agree, answer from a named line of evidence, concede the true part, say what would change your mind.
 - **[F] What do you leave off the slide, and where does it go?** Everything the claim does not need, to an appendix page headed by the question of the person who will ask; never the caveat.

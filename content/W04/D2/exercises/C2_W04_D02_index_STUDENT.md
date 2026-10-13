@@ -33,8 +33,8 @@ this class.
 | Chapter 7's close, then the evening | `unguided/C2_W04_D02_ch7_written_case_STUDENT.md` | 3 | L1 to L3 | The page's first sentence, its caveat's place, and a last sentence someone can sign |
 | Chapter 8, or the lab if time runs short | `unguided/C2_W04_D02_mid_check_against_STUDENT.md` | 4 | L5 | The known number each of four estimates is checked against |
 | Chapter 8, seven minutes in pairs | `unguided/C2_W04_D02_paired_estimate_STUDENT.md` | 0 | L5 | UPI payments a day, sized and checked |
-| Chapter 9, 35 minutes, handed in | `unguided/C2_W04_D02_written_case_STUDENT.md` | 0 | L5 | The redesign as one page, by hand, AI-free |
-| Chapter 10, in pairs | `unguided/C2_W04_D02_interview_rungs_STUDENT.md` | 2 | L6 | A hire-grade opening, and the same idea at an AI company |
+| Chapter 9, 35 minutes, handed in | `unguided/C2_W04_D02_written_case_STUDENT.md` | 0 | L5 | The redesign as one page, by hand, AI-free; notebook 09 checks it after hand-in |
+| Chapter 10, in pairs | `unguided/C2_W04_D02_interview_rungs_STUDENT.md` | 2 | L6 | A hire-grade opening, and the same idea at an AI company; notebook 10 recomputes the transcripts' numbers |
 | The lab | `unguided/C2_W04_D02_kalpa_store_STUDENT.md` | 2 | L5 | DMart's revenue per store, and what the check says about a new Kalpa store |
 | The lab | `guided/C2_W04_D02_kalpa_slide_template_STUDENT.md` and `practice/C2_W04_D02_lab_set_STUDENT.md` | 0 | L1 to L5 | Kalpa's north-star slide to a TA, Anand's store sized, and a ladder ending on a combined slide and estimate |
 
@@ -52,6 +52,14 @@ check that fits an estimate, the validate call on a store, and the last sentence
 | 4. The guesstimate: clarify, map, calculate, validate | ch6_guesstimate Q1 to Q6; slide_and_estimate Q3; mid_check_against Q1 to Q4; kalpa_store Q1, Q2 |
 | 5. The AI-free written business case | ch7_written_case Q1 to Q3; the written case, handed in |
 
+## Which work is written by hand and handed in?
+
+One piece: chapter 9's page to the city head, `unguided/C2_W04_D02_written_case_STUDENT.md`, written
+by hand in 35 minutes with laptops and phones closed and handed in at the end of the slot. It comes
+back with the five-question checklist ticked against chapter 7's five rules, and nothing is graded.
+Notebook 09 then runs the same five rules on a typed copy. The take-home is handed in too, made with
+any tool, as its brief sets out.
+
 ## What do the labels on the items mean?
 
 | Label | What it means |
@@ -59,7 +67,7 @@ check that fits an estimate, the validate call on a store, and the last sentence
 | L1 to L6 | The day's ladder, from a hand count anyone can do (L1) to the depth a hard interview asks (L6) |
 | Studio | The morning's practice: build a slide, present it, take an objection, get scored, rebuild |
 | Dojo | The afternoon's practice: a number estimated aloud from nothing, under a clock, then checked |
-| [S], [F], [D] | This programme's interview tags: [S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator that sets a strong candidate apart |
+| [S], [F], [D] | This programme's interview tags: [S] a staple asked everywhere, [F] frequent in global capability centre (GCC) and product screens, [D] a differentiator that sets a strong candidate apart |
 | A lettered set | A set whose items are answered with letters, posted as one line in item order |
 
 ## Where are the answers?
@@ -67,4 +75,4 @@ check that fits an estimate, the validate call on a store, and the last sentence
 Every set has a solutions file of the same name in `solutions/`, opened after the set is sat. Each
 lettered set's file opens on its answer letters, gives why each key holds and why each other letter
 fails, and names the item worth arguing about. The written case's file holds one model page and the
-checklist it passes.
+five rules it passes.

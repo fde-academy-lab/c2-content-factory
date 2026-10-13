@@ -47,7 +47,7 @@ This comes up at AI companies whenever a product metric shown to customers is ea
 The coding assistant's sales deck quotes acceptance rate, the share of suggestions developers accept.
 A suggestion accepted and then deleted soon after still counts as accepted. The analyst proposes a new
 north star, the one number the team is judged on: suggested code still in the file seven days after
-acceptance, per developer who saw a suggestion that week. A leading input is a number that moves
+acceptance, per paid seat a week. A leading input is a number that moves
 first and can be acted on this week; a guardrail is a number that must not get worse. The head of
 product objects: "Acceptance rate is what customers see in the deck."
 

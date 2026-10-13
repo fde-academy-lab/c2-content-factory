@@ -58,7 +58,7 @@ turn to the page that does.
 
 ### Q2. Design. The table of acceptance share in each zone leaves the slide. Which page should hold it?
 
-*Level L4, a design call · tagged [F]: frequent in GCC and product-company screens.*
+*Level L4, a design call · tagged [F]: frequent in global capability centre (GCC) and product-company screens.*
 
 a) The driver-operations lead's page, since it shows where drivers still say yes to offers
 b) The marketing lead's page, since sign-ups are counted by zone

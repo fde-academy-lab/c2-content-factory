@@ -1,7 +1,8 @@
 # The one-slide answer: claim, evidence, caveat, action: what goes in each of the four parts?
 
 This set practises chapter 1, the one-slide answer: claim, evidence, caveat, action, on two invented
-worlds: Ramesh's kirana shop from the chapter, and an auto driver's two days you have not seen yet.
+worlds: Ramesh's kirana shop from the chapter, and the auto driver's two days from notebook 01's
+your-turn cell.
 Every number in the set is invented. Item 1 doubles as the chapter's closing check; the rest are the
 evening's practice, or the lab's opening twenty minutes.
 
@@ -53,10 +54,10 @@ denominator, never the other way round.
 
 *Level L2, a design call · tagged [S] in this programme's calibration: a staple of analyst screens.*
 
-a) Rupees a day: Rs 1,800 on Monday and Rs 1,800 again on Tuesday
-b) Rupees a ride: Rs 90 on Monday, Rs 100 on Tuesday
-c) Rides a day: 20 on Monday, 18 on Tuesday
-d) Rupees an hour: Rs 200 on Monday, Rs 150 on Tuesday
+a) Rupees a ride: Rs 90 on Monday, Rs 100 on Tuesday
+b) Rides a day: 20 on Monday, 18 on Tuesday
+c) Rupees on Tuesday alone: Rs 1,800 from 18 rides in 12 hours, the day he would repeat
+d) What the three added hours brought: nothing, since both days earned Rs 1,800
 
 ---
 
@@ -87,7 +88,7 @@ This comes up at work at the end of every review: an action without its cost and
 
 ### Q4. Design. Which action line is complete enough for Ramesh to sign?
 
-*Level L3, a design call · tagged [F]: frequent in GCC and product-company screens.*
+*Level L3, a design call · tagged [F]: frequent in global capability centre (GCC) and product-company screens.*
 
 a) Keep the hours through November and decide after thirty days; the helper's two hours cost Rs 170 a day, and Ramesh signs
 b) Keep the longer hours, since sales a day are up
@@ -105,14 +106,14 @@ This comes up at work when a true number answers a different question from the o
 *Level L4, a design call · tagged [S].*
 
 a) Nothing: every number in it is right, so it can stand as the claim
-b) It prices an hours decision per day, and per hour the shop earns 11.8 percent less
+b) Rs 700 is sales before the goods' cost, some may be the festival, and each added hour sold at most Rs 350
 c) It should open on sales per customer, which held at Rs 100
-d) It needs a chart of all 56 days and a table of both months before the title can say anything at all
+d) It needs a chart of all 56 days and a table of both months before the title can say anything at all to Ramesh
 
 ---
 
 **What does the chapter add?** A slide carries one decision in four parts, in the order a reader needs
-them, and its evidence is read in the unit the decision buys. Chapter 4 runs the same three divisions
+them, and its evidence is divided by what the decision buys. Chapter 4 runs the same three divisions
 on Uber's twelve driver-weeks.
 
 **In the interview.** [S] Present a recommendation to a non-technical stakeholder in two minutes: open

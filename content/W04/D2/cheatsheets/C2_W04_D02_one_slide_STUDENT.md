@@ -32,11 +32,11 @@ flowchart LR
 | Part | Ramesh's shop (invented) |
 |---|---|
 | Claim, the title | The longer hours add Rs 700 a day but earn less per hour, so count the evening on its own |
-| Evidence, with its denominator | Sales per hour: Rs 1,190 in September, Rs 1,050 in October; per customer Rs 100 in both |
+| Evidence, with its denominator | Sales per hour: Rs 1,190 in September, Rs 1,050 in October; each added hour at most Rs 350 |
 | Caveat, beside it | A festival fortnight fell inside October |
 | Action, cost, who signs | Keep the hours through November, decide after thirty days; Rs 170 a day; Ramesh signs |
 
-**Crux:** The decision picks the denominator: an hours decision is read per hour.
+**Crux:** Divide by what the decision buys: two added hours, at most Rs 350 each against Rs 1,190.
 
 ## Panel 3: What to leave out, and the appendix: where does the rest go?
 
@@ -46,7 +46,7 @@ flowchart LR
 | Will a named person ask about it? | It goes to that person's page, headed by their question |
 | Is it the caveat? | It stays, whatever else leaves |
 
-**Crux:** Ramesh's eight elements: three stay, four go to two pages, one leaves.
+**Crux:** Ramesh's eight elements: three stay, four go to two pages, and the rain days, two each month, leave.
 
 ## Panel 4: Defending under challenge: how do you hold a claim?
 
@@ -78,8 +78,9 @@ flowchart LR
 | Second | One number, what it is divided by, its window |
 | Third | The caveat, before the action |
 | Last | The action, its cost in rupees and weeks, who signs |
+| Throughout | No method word: "divided by", never "denominator" |
 
-**Crux:** Plain words: "divided by", never "denominator".
+**Crux:** Five rules, one page, read alone in two minutes.
 
 ## Panel 7: What does Uber's city head take to Thursday?
 
@@ -88,6 +89,6 @@ flowchart LR
 | Per peak online hour | Rs 314 to Rs 260, down 17 percent |
 | Per active driver-week | Rs 5,817 to Rs 5,861, up 0.8 percent |
 | Per trip | Rs 165 both windows |
-| Drivers at the evening peak | About 5,700 by the chain; about 5,000 to 5,700 checked like for like |
+| Drivers at the evening peak | About 5,000 to 5,700 where the chain and the check agree, inside 2,900 to 8,600 set by trips per person |
 
 **Crux:** The scheme pays per online hour, so the slide reads per online hour.

@@ -4,8 +4,7 @@ Week 4, Tuesday. About 13 minutes to read, and 10 more for the self-check.
 
 Tuesday teaches five topics on invented examples small enough to count by hand: Ramesh's kirana shop,
 Gulmohar Secondary School and a campus canteen. Then Uber's Hyderabad city head uses all five: one
-slide for Thursday's city review, three objections from people who lose under it, a number sized from
-nothing, and one page written by hand. Illustrative case: the company is real, the situation and the
+slide, three objections, a number sized from nothing and one handwritten page. Illustrative case: the company is real, the situation and the
 data are synthetic, built for this class.
 
 ---
@@ -39,9 +38,9 @@ Each topic leans on the one before it: say the claim, cut to it, hold it, size i
 
 ## The one-slide answer: claim, evidence, caveat, action: what does a slide carry?
 
-**Who needs the answer.** Ramesh (invented), who opened his kirana shop two more hours a day from
-October and must decide whether the hours stay, and later the Uber city head, who has one slide and
-five minutes.
+**Who needs the answer.** Ramesh (invented), who opened his kirana shop, a neighbourhood grocery, two
+more hours a day from October and must decide whether they stay; later, the Uber city head, with one
+slide and five minutes.
 
 **The questions on the way.** What makes a title act? Which number is the evidence? Where do the
 caveat and the action sit?
@@ -52,23 +51,24 @@ kitchen moves two staff from the rice counter to the roti line" gets two staff m
 **claim** is that second kind of title: a sentence with a verb saying what is true and what to do.
 
 The evidence is one number with its **denominator**, what the total is divided by, and the decision
-picks it. Ramesh's shop (invented) sold Rs 11,900 a day at 10 hours in September and Rs 12,600 a day
-at 12 hours in October: per day up Rs 700, 5.9 percent, the son's sentence; per hour down from Rs 1,190
-to Rs 1,050, 11.8 percent, the father's; per customer flat at Rs 100. The decision is whether two extra
-hours pay, so it is priced per hour.
+picks it. Ramesh's shop (invented) sold Rs 11,900 a day in 10 hours in September and Rs 12,600 in 12
+hours in October: per day up Rs 700, 5.9 percent, the son's sentence; per hour down from Rs 1,190 to
+Rs 1,050, 11.8 percent, the father's; per customer flat at Rs 100. The decision buys two extra hours,
+so divide by them: they sold at most Rs 350 each, against Rs 1,190 in an old hour. Sales are not
+profit, and the shop's records hold no cost of goods, so whether the evening covers the helper's Rs 170
+a day is still open.
 
 ![Ramesh's slide in its four parts, every number invented](../whiteboards/C2_W04_D02_kirana_slide_STUDENT.png)
 
 The four parts, in the order a reader needs them: the **claim** as the title; the **evidence**, one
-number with its denominator and window, or one chart; the **caveat**, what the evidence cannot show
-yet, beside it (a festival fortnight fell inside October, so part of the Rs 700 may be the season);
-the **action**, with its cost in rupees and weeks and who signs (keep the hours through November,
-count the evening's sales apart, decide after thirty days; the helper's two hours cost Rs 170 a day;
-Ramesh signs). The test: the person who loses under the slide can repeat it accurately while
-disagreeing.
+number divided by what the decision buys, with its window, or one chart; the **caveat** beside it,
+what the evidence cannot show yet (a festival fortnight fell inside October); the **action**, with its
+cost and who signs (keep the hours through November, count the evening's sales apart, decide after
+thirty days; Rs 170 a day; Ramesh signs). The test: the person who loses under the slide can repeat it
+while disagreeing.
 
-> **WATCH OUT** · "Sales a day rose from Rs 11,900 to Rs 12,600, so the longer hours work" is true to
-> the rupee and prices an hours decision per day.
+> **WATCH OUT** · "Sales a day rose by Rs 700, so the longer hours work" reads Rs 700 of sales as if
+> the hours earned all of it and the shop kept all of it.
 
 **At Uber.** Chapter 4 reads the city's gross bookings the same three ways and puts Rs 314 to Rs 260
 per peak online hour on the slide.
@@ -84,17 +84,16 @@ for their own question behind the slide: his son and the shop's accountant.
 **The questions on the way.** How many elements stay? Where do the rest go? Can the caveat leave?
 
 Ask three questions of every element on the draft: does the claim need it; if not, will a named person
-ask about it; and is it the caveat, which stays whatever else happens. Ramesh's first draft (invented)
-carried eight elements. Three stay: the per-hour chart and sales per customer carry the claim, and the
-festival fortnight is the caveat. The son's page, headed "did my extra hours at the counter bring
-customers?", takes customers a day and his hours at the counter; the accountant's page, headed "what
-did the longer hours cost, and what did they bring?", takes the four weeks' totals and the helper's
-wage; the rain days leave, because nobody will ask. The **appendix** is those pages, shown only when
-someone asks.
+ask about it; and is it the caveat, which stays whatever else happens. Of Ramesh's eight elements
+(invented), three stay: the per-hour chart and sales per customer carry the claim, and the festival
+fortnight is the caveat. The son's page ("did my extra hours at the counter bring customers?") takes
+customers a day and his hours at the counter; the accountant's page ("what did the longer hours cost,
+and what did they bring?") takes the four weeks' totals and the helper's wage; the rain days, two in
+each month, leave. The **appendix** is those pages, shown only when someone asks.
 
-A chart obeys the same rule. Storytelling with Data's declutter post (4 January 2011) asks of every
-element, "Is it adding any informative value? If the answer is no, then take it out!" Six series, a
-legend and a grid become one line with two labels.
+A chart obeys the same rule. Storytelling with Data's declutter post (4 January 2011, checked 13
+October 2026) asks of every element, "Is it adding any informative value? If the answer is no, then
+take it out!" Six series, a legend and a grid become one line with a few short labels.
 
 > **WATCH OUT** · "The slide is crowded, so the caveat goes to the appendix." An owner who finds the
 > caveat in the drawer calls the slide dishonest; something else leaves instead.
@@ -122,8 +121,9 @@ and 2 sit at 76.5 in both years. The concession carries one number and the answe
 
 The four moves: **restate** the objection until its owner agrees with your version; **answer** from a
 named line of the evidence; **concede** the true part out loud; say **what would change your mind**,
-so the claim can be tested. Restating comes first, as in Rapoport's rules, which the philosopher
-Daniel Dennett set out. A defence fails two ways: overclaiming concedes nothing ("exams are
+so the claim can be tested. Restating comes first, as in Rapoport's rules, the philosopher Daniel
+Dennett's guide to criticising an argument fairly (The Marginalian, 6 October 2026, checked 13
+October 2026). A defence fails two ways: overclaiming concedes nothing ("exams are
 irrelevant"), and retreating concedes everything ("let us wait a term").
 
 **At Uber.** Chapter 5 finds each role's true part in the case's tables:
@@ -156,8 +156,8 @@ cups a weekday, so the chain runs 15.4 percent high and the share that lands on 
 A check counts only in the same **unit**, **period** and **definition**: a town of 24,000 people
 (invented) has about 6,000 households, never 96,000; a 28-day pack of 1.5 GB a day (42 GB) and a 30-day
 month (45 GB) match per day; Gulmohar's 113 passes are 83.7 percent of the 135 who sat and 75.3 percent
-of the 150 enrolled. Think Insights' guide says the interviewer is "interested in your thought process;
-not the final result".
+of the 150 enrolled. Think Insights' guide (3 December 2018, checked 13 October 2026) says the
+interviewer is "interested in your thought process; not the final result".
 
 > **WATCH OUT** · A careful chain that multiplies a unit it should divide. The tell: a factor whose
 > unit nobody wrote down.
@@ -176,17 +176,18 @@ head, reading the page each learner writes by hand in chapter 9.
 **The questions on the way.** Which opening does the reader act on? What goes on the page, in what
 order? Which words stay off it?
 
-A **business case** says what to do, why, what it costs and what could go wrong. It is one page because
+A **business case** says what to do, why, what it costs and what could go wrong, on one page because
 the reader has two minutes, and AI-free because it shows your own thinking. The son's draft (invented)
-ran nine lines, 13 numbers and four method words. The page runs four sentences: the claim with its
-reason, one number with what it is divided by, the caveat, then the action with its cost and who
-signs. The caveat comes before the action, so the reader meets the doubt before the cost.
+ran nine lines, 13 numbers and four method words; the page runs four sentences, checked by five rules:
+the claim first, with what to do and why; one number, what it is divided by and its window; the caveat
+before the action; the action with its cost in rupees and weeks and who signs; and no method word.
 
 ![The draft against the page, invented](../whiteboards/C2_W04_D02_kirana_page_counts_STUDENT.png)
 
-Method words stay off: "divided by" replaces denominator, "compared with the month before" replaces
-index, "a number that must not get worse" replaces guardrail. Amazon's 2017 letter to shareholders
-(filed 18 April 2018) says its meetings use no slides: a six-page memo is read in silence at the start.
+The plain words: "divided by" for denominator, "compared with the month before" for index, "a number
+that must not get worse" for guardrail, "the one number the team is judged on" for north star.
+Amazon's 2017 letter to shareholders (filed 18 April 2018, checked 13 October 2026) says its meetings
+use no slides: a six-page memo is read in silence at the start.
 
 **At Uber.** Chapter 9 is the page to the city head, by hand, in 35 minutes, handed in.
 
@@ -202,25 +203,29 @@ guarantee. **The questions on the way.** Which number carries the slide? Which o
 many drivers does the evening peak need?
 
 Since the launch on 31 August 2026, peak online hours rose 24 percent while completed peak trips rose 3
-percent. On all driver-weeks, gross bookings (what riders paid) fell 17 percent per peak online hour,
-Rs 314 to Rs 260, rose 0.8 percent per active driver-week and held at Rs 165 per trip. A second route
-splits the fall: Rs 165 x 1.90 trips an hour is Rs 313.5, and Rs 165 x 1.578 is Rs 260.4, so the
-whole fall is trips per hour.
+percent. Gross bookings (what riders paid) fell 17 percent per peak online hour, Rs 314 to Rs 260, rose
+0.8 percent per active driver-week and held at Rs 165 per trip, so the whole fall is trips per hour: Rs
+165 x 1.90 is Rs 313.5, and Rs 165 x 1.578 is Rs 260.4.
 
 ![Slide A rebuilt in its four parts](../whiteboards/C2_W04_D02_cleared_slide_STUDENT.png)
 
-> **WATCH OUT** · "Bookings per driver-week rose, so the guarantee works." Rupees per driver-week is
-> rupees per hour times hours per driver-week: hours went from 18.6 to 22.5 while each hour brought in
-> 17 percent less, so the scheme bought hours.
+> **WATCH OUT** · "Bookings per driver-week rose, so the guarantee works." Hours per driver-week went
+> from 18.6 to 22.5 while each hour brought in 17 percent less: the scheme bought hours, most of them
+> from the idle tail's 180 drivers, who doubled theirs while completing 12 percent fewer trips.
 
-The drivers estimate: 1 crore people x 1 weekday Uber trip per 100 people x a quarter of trips in the
-three evening hours is about 8,330 trips an hour; each online driver completes 2.4 x (1 - 0.30 idle) =
-1.68 an hour; 8,330 / 1.68 x 1.15 for the busiest half hour is about 5,700, from about 2,900 to 8,600
-by trips per person. Like for like, the case's 0.53 online driver-hours per trip against the chain's
-0.60 says the chain runs an eighth high: about 5,000 to 5,700. A day's trips over an hour's rate gives
-about 41,700. No published count of drivers online at Hyderabad's evening peak has been found. Units: 1
-lakh is 100,000; 1 crore is 10 million.
+74 percent of the idle money sat in the three outer zones, whose median wait fell furthest, from 6.6 to
+about 6 minutes, so the redesign watches the wait zone by zone. Across the enrolled drivers it saves Rs
+58 lakh to Rs 92.7 lakh over six weeks if a half to a fifth of that money is still paid; the per-trip
+rate, not yet set, decides where in that range.
 
+The drivers estimate: 1 crore people x 1 weekday Uber trip per 100 people x a quarter in the three
+evening hours is about 8,330 trips an hour; each online driver completes 2.4 x (1 - 0.30 idle) = 1.68
+an hour; 8,330 / 1.68 x 1.15 for the busiest half hour is about 5,700, and trips per person alone moves
+it from 2,900 to 8,600. The case's drivers are a slice, so they check a ratio, never the city's count:
+0.53 online driver-hours per trip, pooled over both daily peaks, against the chain's 0.60, so the chain
+runs an eighth high. Say about 5,000 to 5,700 inside that wider range. A day's trips over an hour's rate
+gives about 41,700. No published count of drivers online at Hyderabad's evening peak has been found.
+Units: 1 lakh is 100,000; 1 crore is 10 million.
 
 ## Can you answer these without notes?
 
@@ -231,14 +236,15 @@ lakh is 100,000; 1 crore is 10 million.
 5. Where on a one-page case does the caveat sit?
 6. From Monday: which guardrail catches drivers who accept only short trips?
 
-Key: 1, no: the decision is about hours, and per hour the shop earns 11.8 percent less. 2, no: the
-caveat stays and something else leaves. 3, the fourth, what would change your mind. 4, the till for one
-weekday: same unit, period and definition. 5, before the action. 6, the acceptance share.
+Key: 1, no: Rs 700 is sales, partly the festival, and the two added hours sold at most Rs 350 each
+against Rs 1,190 in an old hour, so count the evening first. 2, no: the caveat stays and something else
+leaves. 3, the fourth, what would change your mind. 4, the till's average weekday, 2,340 cups: same
+unit, period and definition. 5, before the action. 6, the acceptance share.
 
 ## Which interview questions does Tuesday prepare you for?
 
-The tags are this programme's: [S] a staple asked everywhere, [F] frequent in GCC and product screens,
-[D] a differentiator.
+The programme's tags: [S] a staple, [F] frequent in global capability centre (GCC) and product
+screens, [D] a differentiator.
 
 | Question | A strong answer | What makes it weak |
 |---|---|---|
@@ -249,8 +255,8 @@ The tags are this programme's: [S] a staple asked everywhere, [F] frequent in GC
 | [D] The person who loses under your claim controls the meeting | Concede their true part, keep their number on the page, and agree the deciding test beforehand | Fighting for a clean sweep |
 
 The AI-company variant: a coding assistant's deck quotes acceptance rate; keep it as a leading input,
-and make suggested code still in the file seven days after acceptance the north star once a holdout of
-users shows it tracks renewals.
+and judge the team on suggested code still in the file seven days after acceptance, per paid seat, once
+last year's renewals show that number tracks them better.
 
 ## Which words did Tuesday use?
 

@@ -70,7 +70,7 @@ This comes up at work when a presenter treats every objection as an attack, and 
 
 ### Q3. Which reply overclaims, conceding nothing?
 
-*Level L2 · tagged [F] in this programme's calibration: frequent in GCC and product-company screens.*
+*Level L2 · tagged [F] in this programme's calibration: frequent in global capability centre (GCC) and product-company screens.*
 
 a) "You may be right; let us wait a term before deciding anything."
 b) "Exams are irrelevant; the timetable did it."

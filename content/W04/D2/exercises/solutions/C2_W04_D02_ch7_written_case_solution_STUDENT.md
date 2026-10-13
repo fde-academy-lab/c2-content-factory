@@ -24,7 +24,7 @@ cost and who signs, in plain words.
 
 | Item | Key | The question in one line | Why the key holds | Why each other option fails |
 |---|---|---|---|---|
-| 1 | b | Which sentence opens Ramesh's page? | It says what to do and why, so Ramesh can act on it alone. | a and d open on method words a reader has to decode, with no claim. c promises figures and withholds the point. |
+| 1 | b | Which sentence opens Ramesh's page? | It says what to do and why, with both halves of the why: the hours add Rs 700 a day, and each hour now earns less, so the evening is counted before anyone decides. Ramesh can act on it alone. | a and d open on method words a reader has to decode, with no claim. c promises figures and withholds the point. |
 | 2 | c | Where does the caveat sit? | Before the action, so the reader meets the doubt before the cost. | a puts the doubt ahead of the claim, so the reader does not yet know what is doubted. b hides it after the decision. d moves it off the page, where nobody reads it. |
 | 3 | a | Which last sentence passes the rules? | It names the action, its length, its saving in rupees and who signs. | b defers the decision behind method words. c and d name no action, no cost and no owner. |
 

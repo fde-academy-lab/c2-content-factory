@@ -44,7 +44,7 @@ Drawn during chapter 1, from Ramesh's shop (invented): 10 hours a day in Septemb
 
 ```mermaid
 flowchart LR
-    A["<b>Sales a day</b><br/>Rs 11,900 to Rs 12,600:<br/>up 5.9 percent"] --> D["<b>Which unit does</b><br/><b>the decision buy?</b><br/>hours"]
+    A["<b>Sales a day</b><br/>Rs 11,900 to Rs 12,600:<br/>up 5.9 percent"] --> D["<b>What does the</b><br/><b>decision buy?</b><br/>two hours: Rs 700 / 2,<br/>at most Rs 350 each"]
     B["<b>Sales an hour</b><br/>Rs 1,190 to Rs 1,050:<br/>down 11.8 percent"] --> D
     C["<b>Sales a customer</b><br/>Rs 100 in both"] --> D
     D --> S["<b>The slide</b><br/>1 claim, 2 evidence,<br/>3 caveat, 4 action"]
@@ -133,13 +133,32 @@ flowchart LR
 
 ---
 
+## The AI-free written business case: what does a page carry, sentence by sentence?
+
+Drawn during chapter 7, on Ramesh's page (invented), and left up for chapter 9's page to the city
+head. The five boxes are S69's five rules.
+
+```mermaid
+flowchart LR
+    S1["<b>First</b><br/>the claim, with<br/>what to do and why"] --> S2["<b>Second</b><br/>one number, what it<br/>is divided by"]
+    S2 --> S3["<b>Third</b><br/>the caveat"]
+    S3 --> S4["<b>Last</b><br/>the action, its cost,<br/>who signs"]
+    S4 -.- M["<b>Throughout</b><br/>no method word"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class S1,S2,S3,M known
+    class S4 lit
+```
+
+---
+
 ## How many drivers must be online at Uber's evening peak?
 
 Drawn during chapter 8, leaf by leaf, each value said aloud with its range.
 
 ```mermaid
 flowchart TD
-    D["<b>Drivers online at the peak</b><br/>about 5,700; checked:<br/>about 5,000 to 5,700"]
+    D["<b>Drivers online at the peak</b><br/>about 5,700; checked:<br/>about 5,000 to 5,700,<br/>inside 2,900 to 8,600"]
     T["<b>Trips to serve an hour</b><br/>about 8,330"]
     P["<b>Trips per online driver-hour</b><br/>2.4 x (1 - 0.30) = 1.68"]
     B["<b>Buffer</b><br/>1.15"]
@@ -154,28 +173,10 @@ flowchart TD
 
 ---
 
-## The AI-free written business case: what does a page carry, sentence by sentence?
-
-Drawn during chapter 7, on Ramesh's page (invented), and left up for chapter 9's page to the city
-head.
-
-```mermaid
-flowchart LR
-    S1["<b>First</b><br/>the claim, with<br/>what to do and why"] --> S2["<b>Second</b><br/>one number, what it<br/>is divided by"]
-    S2 --> S3["<b>Third</b><br/>the caveat"]
-    S3 --> S4["<b>Last</b><br/>the action, its cost,<br/>who signs"]
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class S1,S2,S3 known
-    class S4 lit
-```
-
----
-
 ## What stays on the board when the day closes?
 
 The concept map with all five boxes lit, the four steps with unit, period and definition beneath them,
 and the day's sentence from S93: the scheme is paying for online hours that carry no trips, Rs 314 to
 Rs 260 per peak online hour at a flat Rs 165 fare; part of it may be the monsoon; test paying per
 completed peak trip with an acceptance floor; and at the evening peak the city needs about 5,000 to
-5,700 drivers online.
+5,700 drivers online, which how often people ride could move from 2,900 to 8,600.

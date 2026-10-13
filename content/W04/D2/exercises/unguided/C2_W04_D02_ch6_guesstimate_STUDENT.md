@@ -89,7 +89,7 @@ in the same unit, period and definition.
 
 *Level L3, a design call · tagged [S].*
 
-a) The till's count of cups of tea sold on one weekday
+a) The till's cups of tea on an average weekday
 b) The month's total takings in rupees, across tea, coffee and snacks
 c) The campus head count of 3,000 students
 d) The coffee count for the same weekday
@@ -103,7 +103,7 @@ way.
 
 ### Q5. Design. A classmate says a 28-day phone pack of 1.5 GB a day gives less data a day than a 30-day month at the same rate, since 42 GB is below 45 GB (invented). What is wrong?
 
-*Level L4, a design call · tagged [F]: frequent in GCC and product-company screens.*
+*Level L4, a design call · tagged [F]: frequent in global capability centre (GCC) and product-company screens.*
 
 a) Nothing: 42 GB is below 45 GB, so the pack gives less
 b) The unit: GB should have been turned into MB before comparing

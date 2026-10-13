@@ -37,11 +37,14 @@ at once the range is far wider; say which range you are giving.
 before the launch (118,000 hours over 224,200 trips, median wait 4.8 minutes) and 0.63 after. The chain
 puts 1 / 1.68 = 0.60 behind each trip before its buffer, about an eighth more than the window whose
 wait met the target, so it errs high; re-run at the case's 1.90 trips an hour it gives 8,330 / 1.90 x
-1.15 = about 5,000. Say 5,000 to 5,700. Per request the case reads 0.47, but that divides by requests,
+1.15 = about 5,000. Say about 5,000 to 5,700 where the two routes agree, inside the 2,900 to 8,600
+that trips per person sets. Per request the case reads 0.47, but that divides by requests,
 11 percent of which nobody served, while the chain counts trips: compare per trip. The idle share
 checks the same way: 1.90 trips x 25 minutes leaves about 0.21 idle before the launch, 0.34 after. The
 case pools both daily windows on all seven days (42 hours a week; 256,556 after-window requests are
-about 1,018 an hour), so it checks the ratio's size, never the city's count.
+about 1,018 an hour), so it checks the ratio's size, never the city's count. A learner who raises
+drivers on two apps is right to lean the idle share high: a driver on another app's trip is online on
+Uber with no Uber rider, so more drivers are needed and the answer goes up.
 
 **The four-hour window.** Nothing changes at the busiest moment: 25,000 trips over four hours is about
 6,250 an hour on average, the buffer for the same busiest half hour rises to about 1.53, and the answer

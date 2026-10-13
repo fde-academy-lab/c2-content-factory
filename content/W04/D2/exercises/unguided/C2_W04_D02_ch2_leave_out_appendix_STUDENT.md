@@ -26,15 +26,15 @@ Post exactly this shape: xxx
 This comes up at work whenever a draft is cut down before a review: an element earns its place by the
 claim or by a named reader's question.
 
-Ramesh's first draft (invented) carries eight elements, among them the rain days: 5 in September and
-2 in October. The claim does not need them, and neither his son nor the accountant will ask about
-them.
+Ramesh's first draft (invented) carries eight elements, among them the rain days: 2 in September and
+2 in October, so the weather dragged both months alike. The claim does not need them, and neither his
+son nor the accountant will ask about them.
 
 ### Q1. Where do the rain days go?
 
 *Level L1 · the chapter's closing check.*
 
-a) Onto the slide, beside the chart, since rain moves sales
+a) Onto the slide, beside the chart, since rain moves a shop's sales
 b) The son's page, since he worked the counter on rainy days
 c) Nowhere: they leave, since no claim needs them and nobody will ask
 d) The accountant's page, since every number the shop counts belongs in its accounts somewhere
@@ -48,8 +48,8 @@ thing to move.
 
 ### Q2. Design. The slide is crowded, and someone suggests moving the festival fortnight, the caveat, to the appendix. What do you do?
 
-*Level L3, a design call · tagged [F] in this programme's calibration: frequent in GCC and
-product-company screens.*
+*Level L3, a design call · tagged [F] in this programme's calibration: frequent in global capability centre
+(GCC) and product-company screens.*
 
 a) Move it, since a caveat is a detail the owner can find behind the slide
 b) Keep it on the slide and move another element off instead
