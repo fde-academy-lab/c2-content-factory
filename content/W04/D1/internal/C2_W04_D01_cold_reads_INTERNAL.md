@@ -1,7 +1,8 @@
-# What did the two cold reads find in the Week 4 Monday pack?
+# What did the cold reads find in the Week 4 Monday pack?
 
 **INTERNAL.** Two separate agents read the pack cold on 12 October 2026 and wrote findings only;
-neither edited a file. Their reports are kept below as they returned them, except that one ", but"
+neither edited a file. A third ran the rebuilt Kalpa lab cold as the TA on 13 October 2026, and its
+report and fix log are the last section. Their reports are kept below as they returned them, except that one ", but"
 in the first read's finding 89 is set as a semicolon so the style gate reads it. What changed for
 each finding, or the one-line reason it did not, is in the fix log at the end and in the sources
 list (`internal/C2_W04_D01_day_sources_INTERNAL.md`).
@@ -725,3 +726,139 @@ re-executed, and the cheat sheet reprinted on one page.
 the AI variant and 10 for [D]. The rewritten answers score 14, 12 and 14 on the scorecard's
 descriptors, with the variant's two 1s explained in the scorecards: it has no data to size with or
 to cost.
+
+## The TA's cold read of the rebuilt Kalpa lab
+
+**INTERNAL.** On 13 October 2026 the lab was rebuilt on Thursday's membership table: the generator,
+notebook 04, the Kalpa set and its solution, the lab note and the day sheet. One agent then ran it
+cold as the TA, from the lab note and the STUDENT notebook, opening only the files the note sends a
+TA to, and wrote findings without editing any file. Its report is kept below as it returned it,
+except that one ", but" in finding 22 is set as a semicolon so the style gate reads it, and what the
+fix pass did for each finding follows.
+
+### The TA's report
+
+I read the lab note and then the notebook top to bottom. Next I did the seven-member count on paper from the lab note's sheet:
+
+- Placements: 2+2+1+1+1+1+1 = 9 in the comparison window and 2+1+3+1+3+1+1 = 12 in the auto-reorder window.
+- Booked value: 6,690+7,620+1,970+1,940+3,790+4,350+3,490 = Rs 29,850, and 2,950+2,010+5,110+2,290+6,660+3,400+2,690 = Rs 25,110.
+- Ratios: 12 / 9 = 1.33 and 25,110 / 29,850 = 0.84. Both match the note, and every row matches the CSV.
+
+I then copied the notebook and its two CSVs to /tmp/coldread and ran it with python3 (pandas 3.0.5, matplotlib headless). That covered cells 2, 4 and 10 as shipped, plus every line the markdown tells learners to type, in order. Nothing raised an error, and every number the lab note tells the room to find came out:
+
+- 107 members in `base`, and the ratios 1.22 and 0.96.
+- In the window, 22 cancelled, 16 merged and 6 pending. In the comparison, 4 delivered, 1 returned, 2 cancelled and 29 merged.
+- 0 and 7 orders, average values Rs 2,362 and Rs 3,007.5, and the named stall's 1.17 and 0.9.
+
+The three saved charts and the printed outputs show neither ratio nor the statuses by window. The Kalpa set's facts also reproduce: 107 members, 13 of the 120 joining from 20 to 29 August, and the 25 August joiner having 16 of the 21 days.
+
+The note gives no durations. My estimate is two to two and a half hours: about 40 minutes for the notebook, 25 to 30 for the Kalpa set, 15 for the lead-and-lag drill, 35 for the lab set and 15 for the solutions and the close. Cells are counted from 1 at the top of the notebook.
+
+1. **Lab note, lines 3 to 4:** "L1 to L3 in the lab notebook, L5 in the Kalpa set, then the practice set." The L-levels are never defined and there is no L4. "The Kalpa set" is never tied to a file name, so I had to guess that the stall table means `kalpa_north_star`. **MINOR**
+
+2. **Lab note, order table (lines 18 to 23):** "| Part | File | What the room does |". No part has a duration, and nothing says how long the lab runs. A TA alone cannot pace four parts or decide what to cut. **SLOWS**
+
+3. **Lab note, lines 4 to 5, 33 and 47:** line 4 says "The seven-member sheet and the planted values below stay with the TA until the room has counted them", but line 33 says "Hand this out". The table it hands out includes the totals row "The seven | 9 | 12 | Rs 29,850 | Rs 25,110". Printed as it stands, the sheet does the room's adding for it. Nothing says to cut that row and the paragraph below, and no learner copy exists. **SLOWS**
+
+4. **Lab note, lines 51 to 53:** "Four of the seven placed an order ... which is why their comparison values run high." This is wrong, and a learner holding the sheet can show it:
+   - Booked value counts every placement, whatever became of it.
+   - C-0211 (Rs 1,970) and C-0224 (Rs 3,790) are below their own window values.
+   - The four warehouse orders average Rs 3,150, against Rs 3,450 for the seven's merged placements.
+
+   **SLOWS**
+
+5. **Lab note, line 85:** the stall "Dividing by seven before taking the ratio" and its hint "Add the seven first, then divide once" contradict notebook cell 5. That cell tells learners to "add up ... divide by seven, and write the two ratios", and says the seven cancels. A TA following the note would correct learners for doing what the page says, even though they get 1.33 and 0.84. Only averaging each member's own ratio goes wrong, giving 1.50 and 1.11. **SLOWS**
+
+6. **Lab note, line 86, with notebook cells 4 and 5:** the hint "Who was a member for all 21 days of the comparison window?" and the reason "a member who joined later had fewer of the comparison window's days" both let in C-0269. C-0269 joined on 20 August, the window's first day, and placed an order on 2 September. The third chart shows 108 members that day. A learner who writes `<= "2026-08-20"` gets 108 members and 1.19 and 0.92, and nothing on the page explains why the cut-off is 19 August. **SLOWS**
+
+7. **Lab note, line 88:** the Kalpa set Q3 hint "Can a number guard itself?" assumes learners see option d, "Orders per member per month", as the north star. The north star is delivered orders per active customer, so a learner who sees two different numbers gets nothing from the hint. **MINOR**
+
+8. **Lab note, line 90:** "Which number did the morning say the average hides two-fifths of?" depends on something said in the morning that neither the note nor the lab set records. I only decoded it by working out that the 1.71 average hides 0.13 of the 0.32 fall from 1.90 to 1.58. **SLOWS**
+
+9. **Lab note, line 98:** "On Uber the paid number was hours, and an open app raised it." "An open app" means nothing to a TA who missed the morning, and this is the line the TA is told to say aloud. **MINOR**
+
+10. **Lab note, line 25:** "Open the solutions at the end of the lab, after walking the notebook's two your-turn cells aloud." It names no solution file. It also leaves unclear whether the notebook's findings are confirmed before the Kalpa set, whose Q5 and template depend on them. **MINOR**
+
+11. **Notebook cell 1:** "From 10 September the app orders in the Week 2 warehouse are members' own orders through the normal checkout, and they are not in `kalpa_app_reorders`." Read before the second your-turn cell, this tells learners that no auto-reorder reached the warehouse, which is the planted "none became an order". "The Week 2 warehouse" is never explained. The lab note's "7 app orders in the Week 2 warehouse" (line 73) cannot be checked from the two CSVs. **SLOWS**
+
+12. **Notebook cell 1:** "If it can rise while the tier earns less, the review rewards the app for placing orders nobody receives." This is the planted result in conditional form, sitting above "Predict before you run". Most of the room will predict "rose, fell" from it. **MINOR**
+
+13. **Notebook cell 1:** "delivered, returned or cancelled, merged (...) or pending". Cancelled is grouped with the order outcomes and never explained. Both of the comparison's cancelled placements carry an `order_id`, and none of the window's 22 does, so "22 cancelled" next to "0" orders cannot be reconciled from the page. **SLOWS**
+
+14. **Notebook cell 1, and lab note lines 67 and 75 to 77:** merged means "its items joined a basket the member already had open". Nothing says whether that basket was then checked out and delivered. That makes "orders nobody receives" and "none of them became an order" go further than the data for the window's 16 merged placements. 29 of the comparison's 36 manual reorders merged too, and the TA has no answer when asked. **SLOWS**
+
+15. **Notebook cell 1:** `kalpa_members` is "the same table Thursday's lab reads". On a Monday, nobody can tell which Thursday this means. **MINOR**
+
+16. **Notebook cell 5:** the hand count and the first your-turn share one markdown cell and one empty code cell. "Type these two lines into the empty cell below first" points past the next heading. "Run it again" assumes a first run that learners with the sheet never made. **MINOR**
+
+17. **Notebook cell 5, the prediction:** 12 / 9 lands exactly on the line between c) "rose by up to a third" and d) "rose by more than a third". 0.96 could be a) "fell" or b) "held about level", while the lab note says "fell", and the note gives no expected prediction. **MINOR**
+
+18. **Notebook cell 5 and lab note line 59:** "The per-member comparison counts only the 107 members in `base`". "Comparison" means both the first window (and the variable) and the whole before-and-after. The reason given covers only the first window, so why the 13 late joiners are also dropped from the auto-reorder window is not explained until cell 11. The members table has no leaving date, so "in the tier for the whole of both windows" is assumed. **MINOR**
+
+19. **Notebook cells 5 and 11:** "write the two ratios ... on the sheet" and "Write on the TA's sheet: your two ratios ... the one sentence ... and which line ...". The lab note's sheet is a data table with no space for any of this. "The TA's sheet" is never defined, and the note never says to collect it. **SLOWS**
+
+20. **Notebook cell 7, fourth typed line:** `print(window["value_rs"].mean(), comparison["value_rs"].mean())` prints `2362.2727272727275 3007.5` unrounded, while the note expects "Rs 2,362 against Rs 3,008". **MINOR**
+
+21. **Notebook cell 11:** "a second way to the same answer (the hand count against the full table)". The lab note (lines 49 to 51) says the seven were picked to land more than 0.10 away. Learners get 1.33 against 1.22 and 0.84 against 0.96 and conclude they made a mistake. The Kalpa solution's "get to the same number a second way" repeats this, and the TA has no line explaining why a sample of seven differs. **SLOWS**
+
+22. **Notebook cell 11:** "which line of a complete definition would have stopped "reorders per member" being paid for that". Nothing says anyone is paid on the number. The Kalpa solution's table gives three lines that would each stop it (numerator, exclusions, what it does not reward); the TA's closing accepts only the numerator. **MINOR**
+
+23. **Kalpa set, lines 27 to 30 and 130 to 144:** it promises "the seven-line template" and "the seven lines below", but the table has nine rows (North star and Leading inputs are added). **MINOR**
+
+24. **Kalpa set Q4, key c:** "Add-to-cart events per active app member". The lab has just shown the app putting items into members' open baskets by itself (16 merged auto-reorders). A learner can fairly argue this is an input the app raises on its own, and the solution does not answer that. **MINOR**
+
+25. **Kalpa set Q5, lines 111 to 116:** "Why does the comparison window start on 20 August rather than in July?" No file gives the sale's first day, so key b only beats July if the sale ran through July. The table also starts on 20 August, so a July window cannot be computed. The preamble's "counted only the 107" rules out d before the question is asked. **MINOR**
+
+26. **Kalpa set Q1, and solution line 26 (exclusions):** the north star counts "delivered" orders, but the data has "returned" as a separate status. Neither file says whether a returned order counts, so a learner filtering on the status column would drop it. **MINOR**
+
+27. **Lab set, lines 61 to 64:** "Sit `exercises/unguided/C2_W04_D01_lead_lag_STUDENT.md`, three items, unless your group sat it in the metric clinic." The drill is also Part 3 in the lab note, so a room that has just done it is told to sit it again. **MINOR**
+
+28. **Lab set, lines 12 to 14:** "You, before Tuesday, which rehearses the one-slide review the city head holds on Thursday and assumes every learner can compute..." This reads as machine-made, and a learner cannot tell what "rehearses" or "assumes" refers to. **MINOR**
+
+**Counts:** 28 findings: 0 BLOCKS, 11 SLOWS, 17 MINOR.
+
+**The three I would most want fixed:**
+- **3:** the sheet to hand out carries the totals row, and the note contradicts itself on whether the sheet is handed out.
+- **11:** cell 1's "Week 2 warehouse" sentence gives away that none of the window's placements became an order.
+- **21:** cell 11 and Kavya's line call the hand count "the same answer" when it was built to differ.
+
+### What did the fix pass change?
+
+**Counts.** 28 findings (0 BLOCKS, 11 SLOWS, 17 MINOR): the fix pass changed the pack for all 28,
+one of them in part. Notebook 04 was rebuilt and executed cold, the generator reran byte-identical
+with four new facts (the averaged member ratios, the base cut on 20 August, the sale's dates from
+v4's campaigns table and the window three weeks earlier), and the distractor audit, the tic scan and
+`scripts/verify.py` were run again. The pass also took out the notebook's sentence that the
+auto-reorder feature placed the window's reorders, which said in advance part of what the second
+your-turn cell finds.
+
+| Finding | What changed |
+|---|---|
+| 1 | The lab note's opening names the first three rungs of the ladder and the fifth, and names the Kalpa set's file. |
+| 2 | The order table gains a minutes column (40, 25, 45 and 10 minutes) and a cut order that never cuts the notebook's two your-turn cells. |
+| 3 | The note hands out the seven member rows only, marks the totals row for the TA, lists the four blank lines the sheet carries and says to collect it. |
+| 4 | The wrong causal sentence is gone; the note says which four of the seven have an order in the warehouse and that their other placements merged. |
+| 5 | The stall row names averaging each member's own ratio, which gives 1.50 and 1.11, both now in the facts file. |
+| 6 | Every file states the base as the members already in the tier when the comparison window opened on 20 August; the hint asks who was a member then, and the stall row adds the 108 members and the 1.19 and 0.92 that a cut on 20 August gives. |
+| 7 | The Q3 hint says option d counts the north star's own orders. |
+| 8 | The lab set's problem 1 hint carries the numbers it needs: lines 5 and 6 print 1.71 against the city's 1.58. |
+| 9 | The closing line says the city paid for peak online hours, which a driver raised by keeping the app open with no rider. |
+| 10 | The note names the three solution files and says to walk the two your-turn cells before the Kalpa set. |
+| 11 | The notebook's data line says only that orders members place themselves through the normal checkout are not in the reorder log; the warehouse's 7 window orders, with the warehouse file's path, stay in the lab note. |
+| 12 | The stakes line no longer states the result's direction. |
+| 13 | The status line explains both kinds of cancelled and says `order_id` tells them apart. |
+| 14 | The notebook says a merged placement's items reach the member only if the member checks that basket out, the lab note gives the TA the answer when asked, and "orders nobody receives" is gone. |
+| 15 | The table names this week's Thursday lab. |
+| 16 | The hand count has its own empty cell, so each set of typed lines goes into the cell below it; the notebook has 13 cells. |
+| 17 | The options read fell, stayed exactly level, rose by a third or less, rose by more than a third, and the lab note gives the expected letters. |
+| 18 | The base line says the per-member figures divide both windows by the same 107, and the members table is described as recording no end date. |
+| 19 | The lab note defines the TA's sheet and says to collect it; the notebook calls it the TA's sheet. |
+| 20 | The typed line rounds both means, so it prints 2362 and 3008, as the note quotes them. |
+| 21 | The closing cell's second route is the ratio of the totals against the ratio of the per-member figures, and it says the seven's hand count lands elsewhere because seven members are a sample; the lab note gives the TA the same line. |
+| 22 | The notebook asks which line would have stopped the number rising, and the TA's closing names the numerator with the exclusions and the does-not-reward line behind it. |
+| 23 | The Kalpa set describes the template as the north star's name, its seven lines and its leading inputs. |
+| 24 | The solution's item 4 says the add-to-cart count is the members' own, so items the auto-reorder feature merged into a basket stay out of it. |
+| 25 (in part) | Q5 gives the sale's dates, 5 to 19 August from v4's campaigns table, and asks about the window three weeks earlier, from 30 July, which would hold the sale. The 107 line moved up to the table's paragraph, where it still answers option d: an exercise may be answerable from its own page, and the item tests where the window starts. |
+| 26 | The solution's numerator line says a returned order was still delivered and counts, and the return-rate guardrail reads it. |
+| 27 | The lab note folds the lead-and-lag drill into the lab set as its problem 2, so no room sits it twice. |
+| 28 | The lab set's opening sentence says who needs the answer and why. |
