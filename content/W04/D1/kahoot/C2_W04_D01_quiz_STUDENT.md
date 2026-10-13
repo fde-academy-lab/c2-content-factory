@@ -80,7 +80,7 @@ seconds, and an item most of the room misses is the call to say again before the
 
 ---
 
-## Q6. Averaging every driver-week's trips per hour after the launch gives 1.71; all trips over all hours gives 1.58. Which goes on the slide?
+## Q6. Averaging every driver-week's trips per hour after the launch gives 1.71; all trips over all hours gives 1.58. Which is the city's trips per online hour?
 *Tests: Definitions: numerator, denominator, window, exclusions, with Week 1's ratio of sums: the city's rate divides all trips by all hours; an average of each row's rate answers a different question, the typical driver-week.*
 
 - 1.58, every trip added up over every hour added up  <- correct

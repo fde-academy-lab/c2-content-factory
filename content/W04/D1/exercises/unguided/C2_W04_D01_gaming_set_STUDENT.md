@@ -75,7 +75,8 @@ d) 1 with G3, 2 with G4, 3 with G1, 4 with G2
 ## Which numerator and denominator resist a tuition app's gaming?
 
 A tuition app (invented) pays its teachers per doubt resolved, and a doubt counts as resolved when
-the teacher marks it so. Teachers can also choose which doubts to accept.
+the teacher marks it so. The app routes each doubt a student raises to one teacher, and teachers can
+also choose which of their routed doubts to accept.
 
 ### Q3. Design. Which numerator and denominator should the app pay on, so that neither can be raised without helping a student?
 
@@ -85,7 +86,7 @@ b) Doubts the student confirms resolved, over doubts the teacher accepts
 
 c) Doubts marked resolved on the same day, over the teacher's hours online
 
-d) Doubts the student confirms resolved, over all doubts students raised
+d) Doubts the student confirms resolved, over doubts routed to the teacher
 
 ---
 
