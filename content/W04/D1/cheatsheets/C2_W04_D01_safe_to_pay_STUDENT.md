@@ -47,6 +47,8 @@ flowchart LR
 | F, Rajendranagar | 10 then 14 | 17 then 2 |
 | All six | 60 then 74, up 23 percent | 114 then 88, down 23 percent |
 
+E and F keep shorter weeks than the idle tail's average of about 39 peak online hours a driver-week, which chapter 2's full data shows.
+
 **Crux:** 114 / 60 = 1.90 and 88 / 74 = 1.19: add, then divide once. Two of six are in the idle tail against 15 percent of the city, which falls only to 1.58.
 
 ## Panel 3: What are the seven lines of a complete definition?
