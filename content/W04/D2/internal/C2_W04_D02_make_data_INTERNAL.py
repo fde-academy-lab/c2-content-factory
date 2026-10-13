@@ -240,9 +240,6 @@ check("the 1,060 drivers before the launch and the 140 joiners make Monday's 1,2
 check("Monday's low-acceptance weeks are the idle tail's weeks: every idle week after accepted at most "
       "0.46, every other week at least 0.78", M["acceptance_max_idle_week_after"] < 0.5
       <= M["acceptance_min_other_week_after"])
-add("idle_topup_per_hour_rs", round(M["topup_low_acceptance_rs"] / M["idle_hours_after"]),
-    "about Rs 276 an hour", "11,590,000 / 42,000: the idle tail's top-up over its peak online hours "
-    "after the launch", "half1 S4; notes")
 add("tph_after_exact", round(M["trips_after"] / M["hours_after"], 3), "1.578",
     "230,900 / 146,300, the 1.58 before rounding", "half1 S17; notebook cells 7 and 8; notes")
 check("Rs 165 x 1.578 = Rs 260.4, so the second route lands on the first",
@@ -361,7 +358,7 @@ joiner_ids = set(drivers[drivers.joined_month == "2026-09"].driver_id)
 pre_a, join_a = three(A[~A.driver_id.isin(joiner_ids)]), three(A[A.driver_id.isin(joiner_ids)])
 check("the drivers who were there before the launch kept their 6,360 driver-weeks",
       pre_a["rows"] == fb["rows"] == 6360)
-add("pre_launch_rs_per_dw_after", round(pre_a["per_dw"]), "Rs 5,895",
+add("pre_launch_rs_per_dw_after", round(pre_a["per_dw"], 1), "Rs 5,895 (5,895.4)",
     "the 1,060 pre-launch drivers' bookings after / their 6,360 driver-weeks", "half1 S16; notes; extras")
 add("pre_launch_rs_per_dw_change_pct", round((pre_a["per_dw"] / fb["per_dw"] - 1) * 100, 1), "up 1.4 percent",
     "5,895.4 / 5,816.5 - 1", "half1 S16; notebook cell 8; notes; extras transcript 1")
@@ -430,6 +427,23 @@ add("idle_tph_after", round(M["idle_trips_after"] / M["idle_hours_after"], 1), "
     "33,440 / 42,000, the idle tail after the launch", "studio solution; notes")
 add("idle_tail_joiners", 0, "none of the 140", "joiners among the 180 idle-tail drivers",
     "half1 S20; role cards; exercises")
+# Transcript 1's per-driver-week line, by group: the hours rise sits in the idle tail.
+weeks_in_window = 6
+idle_wk_b = M["idle_hours_before"] / (M["idle_tail_drivers"] * weeks_in_window)
+others_wk_b = ob["hours"] / (M["drivers_others"] * weeks_in_window)
+others_wk_a = oa["hours"] / (M["drivers_others"] * weeks_in_window)
+add("idle_hours_per_week_before", round(idle_wk_b, 1), "about 18.5 hours a week",
+    "20,000 / (180 x 6), the idle tail before the launch", "extras transcript 1; notebook 10; scorecards")
+reuse("idle_hours_per_driver_week_after", "about 39 hours a week")
+add("idle_hours_per_week_after", round(M["idle_hours_after"] / (M["idle_tail_drivers"] * weeks_in_window), 1),
+    "38.9 hours a week", "42,000 / (180 x 6), the idle tail after the launch, as notebook 10 prints it",
+    "notebook 10")
+add("idle_trips_fall_pct", round((1 - M["idle_trips_after"] / M["idle_trips_before"]) * 100),
+    "12 percent fewer trips", "1 - 33,440 / 38,000, the idle tail", "extras transcript 1; notebook 10; scorecards")
+add("others_hours_per_week_rise", round(others_wk_a - others_wk_b, 2), "under one more hour a week",
+    "102,000 / 5,280 - 98,000 / 5,280, the other 880 drivers", "extras transcript 1; notebook 10")
+check("the idle tail doubled its weekly hours while the other 880 added under one",
+      round(M["idle_hours_after"] / M["idle_hours_before"], 1) == 2.1 and others_wk_a - others_wk_b < 1)
 
 # Where the idle money went and what riders got, for the defence and transcript 1
 zr = zw.groupby("zone").peak_requests.sum().sort_values()
@@ -870,11 +884,13 @@ def toy(tid, value, shown, subtopic, how, used_by, unit=""):
 
 
 # Ramesh's kirana shop opens two more hours a day in October. Four weeks either side, 56 days.
-SEPT_CUSTOMERS = [119, 120, 106, 120, 122, 123, 125, 119, 105, 121, 120, 122, 124, 107,
-                  120, 121, 122, 121, 123, 104, 126, 120, 121, 122, 106, 123, 124, 126]
+SEPT_CUSTOMERS = [117, 118, 121, 118, 120, 121, 123, 117, 105, 119, 118, 120, 122, 122,
+                  118, 119, 120, 119, 121, 104, 124, 118, 119, 120, 121, 121, 122, 125]
 OCT_CUSTOMERS = [120, 121, 122, 110, 124, 125, 127, 128, 129, 130, 129, 131, 132, 134,
                  128, 129, 130, 129, 131, 132, 134, 121, 122, 123, 111, 124, 125, 127]
-SEPT_RAIN, OCT_RAIN, FESTIVAL = {3, 9, 14, 20, 25}, {4, 25}, set(range(8, 22))
+# Two rain days in each month, so the weather drags both months alike and explains none of the
+# change; the festival fortnight is the one difference the slide has to carry as its caveat.
+SEPT_RAIN, OCT_RAIN, FESTIVAL = {9, 20}, {4, 25}, set(range(8, 22))
 SPREAD = [120, -80, 40, -160, 60, 0, 20]      # a week's spread around Rs 100 a customer; sums to 0
 rows = []
 for month, hours, customers, rain in (("September", 10, SEPT_CUSTOMERS, SEPT_RAIN),
@@ -901,8 +917,11 @@ check("kirana: Rs 100 a customer in both months", per_cust == (100, 100))
 check("kirana: per day up 5.9 percent, per hour down 11.8 percent",
       (round((per_day[1] / per_day[0] - 1) * 100, 1), round((per_hour[1] / per_hour[0] - 1) * 100, 1))
       == (5.9, -11.8))
-check("kirana: 5 rain days in September, 2 in October, 14 festival days",
-      (len(SEPT_RAIN), len(OCT_RAIN), len(FESTIVAL)) == (5, 2, 14))
+check("kirana: 2 rain days in each month, 14 festival days",
+      (len(SEPT_RAIN), len(OCT_RAIN), len(FESTIVAL)) == (2, 2, 14))
+check("kirana: every October day sells less an hour than every dry September day",
+      kirana[kirana.month == "October"].eval("sales_rs / hours_open").max()
+      < kirana[(kirana.month == "September") & (kirana.rain_day == "no")].eval("sales_rs / hours_open").min())
 check("kirana: no number echoes the case (not 17 percent, 0.8 percent, Rs 165 or 5,700)",
       not {5.9, 11.8, 119, 126, 11900, 12600, 1190, 1050} & {17, 0.8, 165, 5700})
 for tid, v, shown, how, used in [
@@ -940,12 +959,18 @@ for tid, v, shown, how, used in [
      "half1 SECTION 1; notebook 01; exercises ch1; notes; sheet"),
     ("toy_kirana_per_customer", 100, "Rs 100 a customer", "11,900 / 119 and 12,600 / 126",
      "half1 SECTIONs 1, 2, 7; notebooks 01, 02, 07; exercises ch1; notes; sheet"),
-    ("toy_kirana_rain_sep", 5, "5 rain days", "September's days marked rain", "half1 SECTION 2; notebook 02"),
-    ("toy_kirana_rain_oct", 2, "2 rain days", "October's days marked rain", "half1 SECTION 2; notebook 02"),
+    ("toy_kirana_rain_sep", 2, "2 rain days", "September's days marked rain, as many as October's",
+     "half1 SECTION 2; notebook 02; exercises ch2; notes"),
+    ("toy_kirana_rain_oct", 2, "2 rain days", "October's days marked rain, as many as September's",
+     "half1 SECTION 2; notebook 02; exercises ch2; notes"),
     ("toy_kirana_festival_days", 14, "14 of October's 28 days", "the festival fortnight, October's days 8 to 21",
      "half1 SECTIONs 1, 2, 7; notebooks 01, 02, 07; exercises ch2; notes"),
 ]:
     toy(tid, v, shown, S1, how, used)
+toy("toy_kirana_extra_hour_rs", 350, "Rs 350 an hour", S1, "the most each of the two added hours can have "
+    "sold: the Rs 700 rise over the 2 extra hours, if the old ten hours sold as they did in September",
+    "half1 SECTION 1; notebooks 01, 02; exercises ch1; notes; sheet; board work; day sheet")
+check("the two added hours sold at most Rs 350 each", (12600 - 11900) / (12 - 10) == 350)
 toy("toy_kirana_helper_rate", 85, "Rs 85 an hour", S1, "the helper's wage for each extra hour",
     "half1 SECTIONs 1, 2; notebook 02; exercises ch1, ch2; notes")
 toy("toy_kirana_helper_cost", 170, "Rs 170 a day", S1, "the helper's two extra hours, 2 x Rs 85",
@@ -966,7 +991,7 @@ elements = pd.DataFrame([
     ("Chart: sales per hour, by day", "Rs 1,190 an hour in September, Rs 1,050 in October", "yes", "", "no"),
     ("Total sales, four weeks", "Rs 3.33 lakh in September, Rs 3.53 lakh in October", "no", "the accountant", "no"),
     ("Customers a day", "119 in September, 126 in October", "no", "the son", "no"),
-    ("Rain days", "5 in September, 2 in October", "no", "", "no"),
+    ("Rain days", "2 in September, 2 in October", "no", "", "no"),
     ("The son's hours at the counter", "4 a day in September, 6 in October", "no", "the son", "no"),
     ("The helper's wage", "Rs 85 an hour; the two extra hours cost Rs 170 a day", "no", "the accountant", "no"),
     ("The festival fortnight", "14 of October's 28 days", "no", "", "yes"),
@@ -983,7 +1008,8 @@ for tid, v, shown, how in [
         ("toy_draft_carry_claim", 2, "two carry the claim", "the per-hour chart and the per-customer line"),
         ("toy_draft_son_page", 2, "two go to the son's page", "customers a day and the son's hours"),
         ("toy_draft_accounts_page", 2, "two go to the accounts page", "four weeks' sales and the helper's wage"),
-        ("toy_draft_cut", 1, "one is cut", "rain days, which nobody will ask about"),
+        ("toy_draft_cut", 1, "one is cut", "rain days, two in each month, which explain none of the change "
+         "and nobody will ask about"),
         ("toy_clutter_series", 6, "six series", "lines on the cluttered chart of the 56 days"),
         ("toy_clear_series", 1, "one line", "lines on the clear chart")]:
     toy(tid, v, shown, S2, how, "half1 SECTION 2; notebook 02; exercises ch2; notes")
@@ -1128,7 +1154,7 @@ PAGE_A = [
     "- Sales per hour index: 100 to 88",
     "- Customers a day: 119 to 126",
     "- Sales per customer: Rs 100 in both months",
-    "- Rain days: 5 and 2",
+    "- Rain days: 2 and 2",
     "- Festival days: none and 14",
     "- Helper's extra cost: Rs 170 a day",
     "- Guardrail: sales per customer held",
@@ -1161,7 +1187,9 @@ for tid, v, shown, how in [
         ("toy_page_words", words_b, f"{words_b} words", "words on the four-sentence page"),
         ("toy_page_draft_numbers", 13, "13 numbers", "numbers printed on the draft's nine lines"),
         ("toy_page_numbers", 6, "6 numbers", "numbers printed on the page's four sentences"),
-        ("toy_page_ceiling", 250, "250 words", "the pack's own ceiling for the page, labelled as the pack's rule")]:
+        ("toy_page_ceiling", 250, "250 words", "the pack's own ceiling for Ramesh's page, asserted by this "
+         "script; since the 13 October fix pass no learner file states it, and the page's five rules carry no word "
+         "count")]:
     toy(tid, v, shown, S5, how, "half2 SECTION 7; notebook 07; exercises ch7; notes")
 
 # For notebook 05 (a case notebook): the drivers by segment, each a Monday id already in this file.

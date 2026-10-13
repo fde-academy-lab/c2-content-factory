@@ -133,7 +133,7 @@ def cleared_slide():
     lo, hi = MON["saving_low_rs"]["shown"], MON["saving_high_rs"]["shown"]
     top.text(6.1, 2.17, "4  Action, the city head signs", fontsize=13, weight="bold", color=GREEN)
     top.text(6.1, 1.9, f"Pay per completed peak trip with\nan acceptance floor, tested first\n"
-             f"on half the drivers at random:\n{lo} to {hi} saved\nover six weeks.",
+             f"on half the drivers at random.\nAll enrolled drivers: {lo} to\n{hi} saved over six weeks.",
              fontsize=13, color=INK, va="top")
     top.text(5.95, 0.28, "Appendix: one page per question a role will ask", fontsize=13,
              color=MUTED, style="italic", va="center")
@@ -285,6 +285,8 @@ def kirana_makeover():
     left.set_title("Before: six series, a legend, a grid", fontsize=14)
     kirana_clear(right, title=False)
     right.set_title("After: one line, the change marked", fontsize=14, loc="left")
+    fig.text(0.99, -0.02, "Ramesh's shop, 56 days; every number invented.", fontsize=12, color=MUTED,
+             ha="right")
     fig.tight_layout()
     return fig
 
@@ -294,24 +296,27 @@ def kirana_slide():
     fig = plt.figure(figsize=(9.2, 4.6))
     top = fig.add_axes([0, 0, 1, 1]); top.set_xlim(0, 10); top.set_ylim(0, 4.8); top.axis("off")
     rise = TOY["toy_kirana_rise_day"]["value"]
-    top.text(0.12, 4.42, f"1  The longer hours add Rs {rise} a day and earn less per hour",
-             fontsize=17, weight="bold", color=INK)
-    chart = fig.add_axes([0.085, 0.22, 0.46, 0.56])
+    top.text(0.12, 4.74, f"1  The longer hours add Rs {rise} a day but earn less per hour,\n"
+             "    so count the evening on its own before deciding",
+             fontsize=15, weight="bold", color=INK, va="top", linespacing=1.25)
+    chart = fig.add_axes([0.085, 0.2, 0.46, 0.5])
     kirana_clear(chart, title=False)
     chart.set_title("2  Sales per hour, each day", fontsize=13, loc="left", color=INK, weight="bold")
     per_c = TOY["toy_kirana_per_customer"]["value"]
     top.text(0.12, 0.3, f"2  and sales per customer held at Rs {per_c} in both months",
              fontsize=13, color=INK, va="center")
-    box(top, 5.95, 2.55, 3.95, 1.55, AMBER, AMBER_TINT)
-    top.text(6.1, 3.85, "3  Caveat", fontsize=13, weight="bold", color=AMBER)
-    top.text(6.1, 3.58, "A festival fortnight fell inside\nOctober, so part of the extra\n"
+    box(top, 5.95, 2.5, 3.95, 1.4, AMBER, AMBER_TINT)
+    top.text(6.1, 3.68, "3  Caveat", fontsize=13, weight="bold", color=AMBER)
+    top.text(6.1, 3.42, "A festival fortnight fell inside\nOctober, so part of the extra\n"
              f"Rs {rise} a day may be the season.", fontsize=13, color=INK, va="top")
-    box(top, 5.95, 0.62, 3.95, 1.78, GREEN, "white")
+    box(top, 5.95, 0.62, 3.95, 1.72, GREEN, "white")
     cost = TOY["toy_kirana_helper_cost"]["value"]
-    top.text(6.1, 2.17, "4  Action, Ramesh signs", fontsize=13, weight="bold", color=GREEN)
-    top.text(6.1, 1.9, "Keep the hours through November,\ncount the evening's sales apart,\n"
+    top.text(6.1, 2.12, "4  Action, Ramesh signs", fontsize=13, weight="bold", color=GREEN)
+    top.text(6.1, 1.86, "Keep the hours through November,\ncount the evening's sales apart,\n"
              f"decide after thirty days; the\nhelper's two hours cost Rs {cost} a day.",
              fontsize=13, color=INK, va="top")
+    top.text(9.9, 0.3, "Every number here is invented.", fontsize=12, color=MUTED, ha="right",
+             va="center")
     return fig
 
 
@@ -336,7 +341,7 @@ def school_two_years():
     ax.set_xticks(range(1, 9))
     ax.set_xlabel("week of the term")
     ax.set_ylabel("attendance, percent")
-    ax.set_title("The rise began in week 3, before any exam", loc="left")
+    ax.set_title("The rise began in week 3, before any exam (invented)", loc="left")
     return fig
 
 
@@ -358,7 +363,7 @@ def canteen_swing():
     ax.set_xlim(900, 4500), ax.set_ylim(-1.0, 2.5)
     ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v:,.0f}"))
     ax.set_xlabel("cups of tea on a weekday")
-    ax.set_title("Which guess moves the canteen's cups most?", loc="left")
+    ax.set_title("Which guess moves the canteen's cups most? (invented)", loc="left")
     return fig
 
 
@@ -386,7 +391,7 @@ def kirana_page_counts():
     ax.set_yticks([])
     ax.spines["left"].set_visible(False)
     ax.legend(fontsize=14, frameon=False)
-    ax.set_title("The page says less and means more", loc="left", fontsize=16)
+    ax.set_title("The page says less and means more (invented)", loc="left", fontsize=16)
     return fig
 
 

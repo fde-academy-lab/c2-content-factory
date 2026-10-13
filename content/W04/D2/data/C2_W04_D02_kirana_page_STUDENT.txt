@@ -4,7 +4,7 @@ VERSION A: THE DRAFT
 - Sales per hour index: 100 to 88
 - Customers a day: 119 to 126
 - Sales per customer: Rs 100 in both months
-- Rain days: 5 and 2
+- Rain days: 2 and 2
 - Festival days: none and 14
 - Helper's extra cost: Rs 170 a day
 - Guardrail: sales per customer held

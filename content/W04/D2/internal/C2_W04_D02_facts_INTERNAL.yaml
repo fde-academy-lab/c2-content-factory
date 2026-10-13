@@ -35,12 +35,6 @@ corrections:
   should land on its anchor. The worked chain now uses round numbers a candidate would reach without the
   anchor and lands 13 percent below it.
 numbers:
-- id: idle_topup_per_hour_rs
-  value: 276
-  shown: about Rs 276 an hour
-  unit: ''
-  how: '11,590,000 / 42,000: the idle tail''s top-up over its peak online hours after the launch'
-  used_by: half1 S4; notes
 - id: tph_after_exact
   value: 1.578
   shown: '1.578'
@@ -228,8 +222,8 @@ numbers:
   how: 22.51 - 18.55
   used_by: half1 S16; notes; extras transcript 1
 - id: pre_launch_rs_per_dw_after
-  value: 5895
-  shown: Rs 5,895
+  value: 5895.4
+  shown: Rs 5,895 (5,895.4)
   unit: ''
   how: the 1,060 pre-launch drivers' bookings after / their 6,360 driver-weeks
   used_by: half1 S16; notes; extras
@@ -311,6 +305,30 @@ numbers:
   unit: ''
   how: joiners among the 180 idle-tail drivers
   used_by: half1 S20; role cards; exercises
+- id: idle_hours_per_week_before
+  value: 18.5
+  shown: about 18.5 hours a week
+  unit: ''
+  how: 20,000 / (180 x 6), the idle tail before the launch
+  used_by: extras transcript 1; notebook 10; scorecards
+- id: idle_hours_per_week_after
+  value: 38.9
+  shown: 38.9 hours a week
+  unit: ''
+  how: 42,000 / (180 x 6), the idle tail after the launch, as notebook 10 prints it
+  used_by: notebook 10
+- id: idle_trips_fall_pct
+  value: 12
+  shown: 12 percent fewer trips
+  unit: ''
+  how: 1 - 33,440 / 38,000, the idle tail
+  used_by: extras transcript 1; notebook 10; scorecards
+- id: others_hours_per_week_rise
+  value: 0.76
+  shown: under one more hour a week
+  unit: ''
+  how: 102,000 / 5,280 - 98,000 / 5,280, the other 880 drivers
+  used_by: extras transcript 1; notebook 10
 - id: idle_topup_outer_share
   value: 0.74
   shown: 74 percent
@@ -1153,6 +1171,10 @@ monday_ids_reused:
 - id: others_tph_after
   value: 1.9
   shown: '1.90'
+  source: D1 facts file
+- id: idle_hours_per_driver_week_after
+  value: 39
+  shown: about 39 hours a week
   source: D1 facts file
 - id: outer_wait_before
   value: 6.6
@@ -2056,19 +2078,19 @@ toy_numbers:
     / 119 and 12,600 / 126'
   used_by: half1 SECTIONs 1, 2, 7; notebooks 01, 02, 07; exercises ch1; notes; sheet
 - id: toy_kirana_rain_sep
-  value: 5
-  shown: 5 rain days
+  value: 2
+  shown: 2 rain days
   unit: ''
   how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: September''s
-    days marked rain'
-  used_by: half1 SECTION 2; notebook 02
+    days marked rain, as many as October''s'
+  used_by: half1 SECTION 2; notebook 02; exercises ch2; notes
 - id: toy_kirana_rain_oct
   value: 2
   shown: 2 rain days
   unit: ''
   how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: October''s
-    days marked rain'
-  used_by: half1 SECTION 2; notebook 02
+    days marked rain, as many as September''s'
+  used_by: half1 SECTION 2; notebook 02; exercises ch2; notes
 - id: toy_kirana_festival_days
   value: 14
   shown: 14 of October's 28 days
@@ -2076,6 +2098,14 @@ toy_numbers:
   how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: the
     festival fortnight, October''s days 8 to 21'
   used_by: half1 SECTIONs 1, 2, 7; notebooks 01, 02, 07; exercises ch2; notes
+- id: toy_kirana_extra_hour_rs
+  value: 350
+  shown: Rs 350 an hour
+  unit: ''
+  how: 'invented for the concept chapter on The one-slide answer: claim, evidence, caveat, action: the
+    most each of the two added hours can have sold: the Rs 700 rise over the 2 extra hours, if the old
+    ten hours sold as they did in September'
+  used_by: half1 SECTION 1; notebooks 01, 02; exercises ch1; notes; sheet; board work; day sheet
 - id: toy_kirana_helper_rate
   value: 85
   shown: Rs 85 an hour
@@ -2157,8 +2187,8 @@ toy_numbers:
   value: 1
   shown: one is cut
   unit: ''
-  how: 'invented for the concept chapter on What to leave out, and the appendix: rain days, which nobody
-    will ask about'
+  how: 'invented for the concept chapter on What to leave out, and the appendix: rain days, two in each
+    month, which explain none of the change and nobody will ask about'
   used_by: half1 SECTION 2; notebook 02; exercises ch2; notes
 - id: toy_clutter_series
   value: 6
@@ -2695,7 +2725,8 @@ toy_numbers:
   shown: 250 words
   unit: ''
   how: 'invented for the concept chapter on The AI-free written business case: the pack''s own ceiling
-    for the page, labelled as the pack''s rule'
+    for Ramesh''s page, asserted by this script; since the 13 October fix pass no learner file states
+    it, and the page''s five rules carry no word count'
   used_by: half2 SECTION 7; notebook 07; exercises ch7; notes
 programme:
   cohort_students: 35
