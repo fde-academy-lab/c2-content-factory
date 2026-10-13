@@ -29,6 +29,22 @@ without checking it?
 | 5. Which tool for which job? | Which tool should own each of Marketing's and Finance's recurring numbers, and which would you refuse for Finance? | Which of three tools computes Finance's revenue? Does speed separate them? How many rows does each move? Who owns which ask? Does the table reconcile with Finance? |
 | 6. Will Monday rebuild it? | Can the table rebuild itself every Monday and refuse to ship when something breaks? | Which of four ways runs the refresh? What must it be told? Who is on the 19 October list? Which guards fire? Do two runs agree? Does the warehouse agree? |
 
+## Which of the row's six topics does each chapter teach, on which slides, and which item tests each?
+
+Every chapter opener names its topic over its question, and the topics slide, S5a in the morning
+deck and S0 in the afternoon's, lists the six in the row's words with their chapters and minutes.
+Chapter 1 owns the second subtopic whole; chapter 6 owns the first and the fifth, which chapter 1
+meets first; chapters 4 and 5 split the sixth.
+
+| Subtopic, as the row writes it | Chapter | Slides | Notebook | Items that test it |
+|---|---|---|---|---|
+| read_sql from the warehouse into a DataFrame | 1, then 6 inside the refresh | Morning S9 and S11; afternoon S5 and S5a | 01 `customer_table`, section 2; 06 `monday_refresh`, section 2 | Chapter 1 set Q1 (where the three numbers are computed at 2 crore orders, and the rows each route moves); chapter 5 set Q1 (the rows each route moves at 50 lakh orders) and Q4 (the input pandas should read); chapter 6 set Q3 (the orders read for the table as of 31 August); the escalated case Q13 (the query step 1 reads at 5 crore orders) |
+| groupby and agg; named aggregations; the customer table (recency, frequency, monetary) | 1, with recency in days in 6 | Morning S6 to S19, with monetary value on S7a and S7b and named aggregation on S10a and S10b; afternoon S6 to S9 for recency | 01, sections 1, 3, 4 and 5; 06, section 3 | Chapter 1 set Q2 to Q5; chapter 6 set Q1 and Q2 (recency to the as-of date); the guided set's steps 1 to 3; the escalated case Q1, Q2, Q6, Q7 and Q13 (spend as `sum`, never `avg`); the practice lab Q1, Q2 and Q4 (a named aggregation's shape); Kahoot Q1 and Q2 |
+| merge with validate= and the count habit | 2, first used in 1 | Morning S17 in chapter 1; S20 to S32 in chapter 2 | 01, section 4; 02 `exposure_merge`, sections 1 to 6 | Chapter 2 set Q1 to Q5; chapter 1 set Q3 (the merge's left side); the escalated case Q3, Q4 and Q5; the practice lab Q9 and problem 4; Kahoot Q3 and Q6 |
+| Reshape: pivot_table and melt | 3 | Morning S33 to S46 | 03 `months_pivot`, sections 1 to 6 | Chapter 3 set Q1 to Q5; the escalated case Q10; the practice lab Q3 and problem 3's step 1; Kahoot Q4 and Q7 |
+| Chained transformations and dtype checks | 6, first met in 1 | Morning S11, S16 and S17 in chapter 1; afternoon S5, S5a and S5b | 01, sections 2 and 4, whose checks read each column's type; 06, section 2, `build_table()` | The escalated case Q2 (`fillna(0).astype("int64")`) and its step 3 check, which reads both flags' dtype; the practice lab problem 3, a chain from `pivot_table` through a validated merge and a fill to `idxmax`. No chapter-set item asks for a dtype, so S5a's check asks what ships without the cast |
+| The three-tool re-expression and the tool-choice note | 4 for the re-expression, 5 for the note, then the second case | Morning S47 to S59 and S60 to S70; afternoon S19 to S21 | 04 `three_tools`; 05 `tool_choice`; ex2 `second_case` | Chapter 4 set Q1 to Q5; chapter 5 set Q1 to Q5; the second case Q1 to Q6 and its note; the practice lab Q5 to Q9; Kahoot Q5 |
+
 ## Where does the day start, and where does it stop?
 
 | | |
@@ -63,8 +79,8 @@ flowchart LR
 
 | Part | Slides, half one | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| The ask and the thinking, 20 | S1 to S5 | The board's first drawing (S4), the three checks written up | The six chapter questions; one row is a customer on the list; the three checks as numbers: 340, Rs 19,84,00,000, 28 September | S2 read, not discussed |
-| Chapter 1, 30 | S6 to S19 | Notebook 01; guided set `guided/C2_W02_D04_first_moves_STUDENT.md` during S10 to S13; then `unguided/C2_W02_D04_ch1_customer_table_STUDENT.md` | 301 against 340; the filter that finds 0; NaN never equals 0; the fix gives 39; SQL agrees on all 340 | S8 to one sentence; the depth section self-study |
+| The ask and the thinking, 20 | S1 to S5, then S5a | The board's first drawing (S4), the three checks written up | The six chapter questions; one row is a customer on the list; the three checks as numbers: 340, Rs 19,84,00,000, 28 September; the six topics in the row's words, each with its chapter, and their map (S5a) | S2 read, not discussed |
+| Chapter 1, 30 | S6 to S19, with S7a, S7b, S10a and S10b | Notebook 01; guided set `guided/C2_W02_D04_first_moves_STUDENT.md` during S10 to S13; then `unguided/C2_W02_D04_ch1_customer_table_STUDENT.md` | Monetary value adds every order, so it answers how much and frequency how often (S7a, S7b); a named aggregation gives one column per keyword (S10a, S10b); 301 against 340; the filter that finds 0; NaN never equals 0; the fix gives 39; SQL agrees on all 340 | S8 to one sentence; S7b and S10b to a sentence each; the depth section self-study |
 | Chapter 2, 30 | S20 to S32 | Notebook 02 and its your-turn cell; `unguided/C2_W02_D04_ch2_exposure_STUDENT.md` | how= defaults to inner; the invented Rs 34,700 against Rs 26,100; `MergeError` read aloud; the room finding Kalpa's own feed in the empty cell; first touch keeps 340 rows | S24 read quickly; never cut S27 to S30 or the your-turn cell |
 | Chapter 3, 30 | S33 to S46 | Notebook 03 and its your-turn cell; `unguided/C2_W02_D04_ch3_months_STUDENT.md` | 266 member-months; 18 against 29.4 percent; the grand-total check; C-0152's June read aloud; Retail-Core's sign flips in the your-turn, summed -1.8 percent against averaged +1.5 | S43 to a sentence; S44 self-study |
 | Break, 10 | | | | |
@@ -74,6 +90,11 @@ flowchart LR
 Each chapter runs: the question and its map (2), the need and the real company (4), the options and
 the call (4), the build with each step predicted (10), the trap and its wrong number (5), the second
 route and Kavya's review (5).
+
+S5a, S7a with S7b, and S10a with S10b add five minutes to the morning: one in the ask, whose slides
+run to nineteen of its twenty with S5a, and four in chapter 1. Take S8 to one sentence and S44 to
+self-study from the start, as their rows allow, and read S7b and S10b in a sentence each if chapter
+1 still runs long, which together give back about as much.
 
 ---
 
@@ -88,13 +109,17 @@ flowchart LR
 
 | Part | Slides, half two | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| Chapter 6, 30 | S1 to S14 | Notebook 06; `unguided/C2_W02_D04_ch6_refresh_STUDENT.md` | Two inputs; 166 counted to 19 October against 111 counted to 28 September; the smallest recency is 0; the data's age, 21 days, reported beside the table; two guards on the warehouse and two on the table's shape, each made to fire; two runs equal; SQL counts 111 | S3 to a sentence; the depth section (the falling flag) self-study |
+| Chapter 6, 30 | S0, then S1 to S14 with S5a and S5b | Notebook 06; `unguided/C2_W02_D04_ch6_refresh_STUDENT.md` | The two topics chapter 6 owns (S0); a chain whose merge turns the count float64 without an error, and the dtype check at its end (S5a, S5b); two inputs; 166 counted to 19 October against 111 counted to 28 September; the smallest recency is 0; the data's age, 21 days, reported beside the table; two guards on the warehouse and two on the table's shape, each made to fire; two runs equal; SQL counts 111 | S3 to a sentence; S5b to a sentence; the depth section (the falling flag) self-study |
 | Escalated case, 50 | S15 to D16 | `unguided/C2_W02_D04_escalated_case_STUDENT.md`, `notebooks/C2_W02_D04_ex1_escalated_case_STUDENT.ipynb` | Thirteen letters and the four numbers: 340, Rs 19,84,00,000, 130, 111 | Part 5 (the guarded run) to the take-home |
 | Debrief, 15 | S17 to S18 | The room's wrong numbers, collected on the board during the case | Each wrong output traced to its check; the three counts for one dataset, 154, 166 and 111 | S18 to a sentence |
 | Break, 10 | | | | |
 | Second case, 40 | S19 to S21 | `unguided/C2_W02_D04_second_case_STUDENT.md`, `notebooks/C2_W02_D04_ex2_second_case_STUDENT.ipynb` | The room writes the SQL first; 2.363 to 1.842 in all three tools; rows moved 355, 2 and 1,000; the note with one refusal | The brief's extra items to the lab |
 | Interview drill, 20 | S22 to S23 | The answers in one breath, below | Two learners per question, answer and follow-up; a number in every answer | S23 to four follow-ups |
 | Kahoot and close, 15 | S24 to S26 | `kahoot/C2_W02_D04_quiz_STUDENT.md` | The sentence to the growth team; the five lines; Friday's question left open | Kahoot to six items; keep the Wednesday return question |
+
+The afternoon's S0 adds one minute and S5a with S5b two, all three in chapter 6. Take S3 to a
+sentence from the start, as its row allows, and read S5b in a sentence if chapter 6 still runs long;
+the drill's S23 to four follow-ups gives back the rest.
 
 ---
 

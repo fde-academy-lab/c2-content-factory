@@ -153,3 +153,65 @@ The practice lab adds nine lettered items and two build problems, and the Kahoot
 | 4. Rigor | A fresh reviewer agent, read-only, on 1 October 2026 at 9c1a72f | Do the notebooks run cold; is every number, key and source right; does any check or item pass a wrong answer; does anything teach a later day's trap or name a plant? | No wrong trap number and no plant or later trap in a student file. One blocker: escalated marker 3 had two right answers. Majors: 13 of the escalated case's 39 wrong letters passed every check, and the second case's last check passed any string; chapter 5 said the speed ranking changes from run to run, which 30 timed runs refuted; the recency answers hid the data's age and called every guard independent of the table; 13 of 20 design items were answered in one step; six items were cued; the lab's problem 4 compared counts on the wrong base. Minors on chapter 3's cell counts, chapter 4's rows moved, the int64 wording, GROUP BY rows at scale, NaN keys in a merge, strawmen and error-raising distractors, the take-home's claims and two unrecorded quotes | Marker 3 holds the whole call, and every case check now tests the learner's choice (all 39 and all 18 wrong letters fail, run on 1 October); speed stated as measured; the refresh reports the data's age and the guards are described as two against the warehouse and two on the table's shape, with the control totals read on every call; ten design items rebuilt in changed situations and the cues removed; problem 4 compares Q1 buyers, 33 of 44 against 34 of 47; every minor fixed, the quotes re-read and recorded |
 | 5. Pedagogy and language | A fresh reviewer agent, read-only, on 1 October 2026 at 9c1a72f | Does each deck section pair with its notebook; do the headings read as a ladder alone; does each file stand alone; do the decks carry each chapter in full; are the devices varied; is the language the house's? | Half one's .pptx was stale; two notebook charts and four more SVGs clipped; the speed slide's bar argued against its own answer; predicts sat only in speaker notes on six slides; chapters 1 and 6 ran over 14 slides and chapter 4 had no thinking picture; six map slides shared one title and subtitle; labels that did not match their text; humanizer patterns (staged closers, aphorisms, "made loud" six times, bold lead-ins, "It does" openings, fragment stems); the second case brief left terms and tables unnamed; the cheat sheet's foot cut two definitions | Both decks rebuilt and every changed slide rendered and read; every SVG measured inside its frame; every predict on its slide with its answer next; chapters run 14, 13, 14, 13, 11 and 14 slides; map slides name their stakeholder; labels, titles and the language list rewritten across notebooks, decks, notes, solutions and briefs; the brief names the tables and explains its terms; the glossary meanings fit the foot strip |
 | 6. Second round, narrow | A fresh reviewer agent, read-only, on 1 October 2026 at ae545a4, because passes 4 and 5 changed keys, methods and repeated numbers | Does each changed key hold, does every wrong letter fail, does any check or stem give a key away, and does any file still state an old number? | One blocker: the escalated solution saved pandas' full `MergeError` text, which lists five of the six repeated feed keys. Majors: two case check cells spelled out keys (the warehouse queries inline, a dtype test, two labels naming the tool), the notes kept 1,000 rows for plain Python, and the second case brief cited Week 1 Tuesday's raw 1.65 to 1.25. Minors: a step 1 gap in the second case, the falling flag's count in a solution, three cues, three defensible distractors, fragment options in the lab, two closers, the lab's old title in the index and a label over the wrong sentence. Its blind letters matched every key; every number recomputed | The raw-feed test keeps only the error's kind; the step 3 check reads chapter 6's queries from `sql/`, step 1 checks that every frequency is present and adds to the orders, and the second case's labels name no tool; the notes say 1,340; the brief cites the clean file's 1.449 to 1.246 and Retail-Plus's 1.82 to 1.18; the cues, distractors, lab options, closers, title and label fixed. Kept, with reasons: the Kahoot's options stay short clauses, since Kahoot caps an answer at 75 characters; the second case's misspelt label stays as 3b, since it runs and returns no rows, which the row-count check catches |
+
+## Naming the day's topics, 13 October 2026
+
+The requester read the merged pack and found every chapter titled by a case question and never by
+the curriculum's topic, so a trainer could not see from the slides which topics the day teaches. The
+change adds a topics slide to each deck, names each chapter's topic on its opener and in the study
+notes' chapter headings, gives the three thin subtopics a teaching slide and an answer slide each,
+and adds a coverage table to the day sheet, in the form Week 2 Wednesday and Friday already carry.
+No notebook, figure or exercise key changed.
+
+### Decisions
+
+| Decision | Why |
+|---|---|
+| The topics slide is S5a in the morning deck, after the ask's three checks, and S0 in the afternoon's, after the cover; the thin subtopics' slides are S7a with S7b, S10a with S10b, and the afternoon's S5a with S5b | No existing S number moves, so the day sheet, the lab note and the board still point at the right slides. S5a sits where Wednesday's S6a sits, after the ask, so the room answers S3 before any topic is named |
+| Both topics slides are titled "Today teaches groupby, merge and reshape in six topics", with the question in the subtitle | `deck_md_check.py` fails a title over 54 characters, and one ending in a question mark unless an Answer slide follows. With the row's day name, "pandas groupby, merge and reshape", the title runs to 61, so it drops "pandas" and runs to 54 |
+| Chapter 1 owns the second subtopic whole; chapter 6 owns the first and the fifth, which chapter 1 meets first (S9, S11, S16 and S17); chapters 4 and 5 split the sixth at its "and" | The opener prints its topic on one line, stepping from 20 points down to 14. read_sql beside the whole second subtopic runs to 132 characters, 14.08 inches at 14 points against the 11.67 the line holds (`deck_layout.tracked_width`), so the two cannot share chapter 1's opener. Chapter 1 builds the three numbers, so it keeps the second subtopic whole; chapter 6's refresh reads every input from the warehouse and runs the day's steps as one chain, so its opener names the first and the fifth. The house rule for Week 4 on reads the same way: two subtopics sharing a chapter carry both whole bullets, and a subtopic spanning chapters keeps an idea-word in each |
+| The second case's opener keeps its question title | It practises the sixth subtopic and teaches no new one, as Friday's second case does; the topics slide and the coverage table name it under the sixth |
+| Each thin subtopic gets a teaching slide whose check is posed on a **Question.** line, then an Answer slide naming what each wrong letter computed | The request asked for a check question with its answer slide, and `deck_md_check.py` pairs a **Question.** slide with the Answer slide after it |
+| Each teaching slide follows the slide where the room first meets what it names: S7a after S7's three numbers, S10a after S10's `agg` call, and the afternoon's S5a after S5's `build_table()` | The term arrives once the thing it names is on screen, and no predict is parted from its answer |
+| The keys of the three new checks are d, a and b | The deck's predicts lean on b and c; no key is the longest option |
+| The study notes gain three short passages besides their six headings: monetary value and named aggregation in chapter 1, and `build_table()` as a chained transformation with its dtype check in chapter 6 | A heading is answered in the section under it (`the-standard.md`), and the new headings name terms the notes' bodies did not use; Wednesday's review found the same gap for LEAD and closed it the same way |
+| The day sheet names the existing cuts that pay for the new slides | The new slides add five minutes to the morning, one in the ask, whose slides run to nineteen of its twenty, and four in chapter 1, and three minutes to chapter 6. S8 to a sentence, S44 to self-study, S3 to a sentence and S23 to four follow-ups are already in the sheet's last column |
+| No new exercise item | One would change a key; the coverage table says no chapter-set item asks for a dtype, and the afternoon's S5a asks it |
+
+### Invented for the new slides, and labelled so on them
+
+| What | Where |
+|---|---|
+| Customer A with orders of Rs 1,200, Rs 800 and Rs 500, and customer B with one of Rs 2,500 | S7a's table and the notes' chapter 1 |
+| Customer C with orders of Rs 3,000 and Rs 1,000, and customer D with four of Rs 900 | S7a's check and S7b |
+| Four orders in a frame named `toy`: A Rs 500, A Rs 300, B Rs 200 and A Rs 100 | S10a and S10b |
+| Customers A, B and C, A ordering twice, B once and C never | The afternoon's S5a |
+
+Every output the new slides print was run on pandas 3.0.6 on 13 October 2026: A and B's Rs 2,500
+each, A's average order of Rs 833; C's Rs 4,000 and D's Rs 3,600, with averages of Rs 2,000 and
+Rs 900 and largest orders of Rs 3,000 and Rs 900; the toy's two rows, A 3 and Rs 900 and B 1 and
+Rs 200, and the check's A 100 and 3 and B 200 and 1; `["amount"].agg(["min", "count"])` naming its
+columns min and count; and the three customers' count as int64, then float64 with C missing after
+the left merge, still float64 after `fillna(0)` and int64 after `astype("int64")`, run as printed
+with warnings raised as errors. The Kalpa figures on the afternoon's S5b (1,000 orders; 301 rows in
+int64; 340 rows in float64 with 39 missing; 340 in int64 after the cast) are notebook 01's saved
+outputs from its sections 2 and 4. The Shopify words in S7a's notes, "the total amount spent
+(monetary value)", are the pack's own quote, checked 1 October 2026; no new link entered the pack.
+
+### Tools and proofs
+
+mermaid-cli 11.17.0, installed in the session's scratch folder and first on `PATH`, since the
+container carries 12.0.0. With it the unchanged decks rebuilt part for part before any edit, 374 of
+374 parts in the morning deck and 185 of 185 in the afternoon's. LibreOffice 24.2.7.2 with Carlito
+drew every new and changed slide, and each was looked at: both topics slides, the six topic-first
+openers, S7a, S7b, S10a and S10b, and the afternoon's S5a and S5b. S10b's code first wrapped inside a
+string in the two-column layout the builder chose, so its call now runs over three short lines. A
+slide-by-slide comparison of the final builds against the pre-edit rebuild found every other slide's
+text, notes and pictures unchanged; the six openers gained their topic line and nothing else, and
+the slide before each new one gained or changed only the last sentence of its notes.
+
+| Proof | What it returned |
+|---|---|
+| `python3 scripts/verify.py content/W02/D4`, after the deck, day sheet and notes commits | PASS with 0 failures and no warning: 61 files in valid folders; nb_check 10 notebooks, 128 checks passing; distractor_audit 8 files; html_sweep 21 controls; deck_md_check both decks, 80 and 35 slides, 20 and 9 diagrams; coverage_check not applied before Week 4; deck_check 117 slides, no box overflowing |
+| The llm-tic-scrubber scanner on the four changed sources and both built decks | 6 of 6 clean |
+| The humanizer's read, in file mode, on every new sentence | S5a's three-part subtitle cut to two questions, S10b's labelled rows written as sentences, and a missing "into" restored in the notes; code, data, paths and links left as they were |
