@@ -168,3 +168,66 @@ afternoon.
 | The decks, built with `scripts/build_deck.py` and rendered through LibreOffice | All 116 slides were looked at before the round, and S68 and S30 again after it; nothing overflows or clips, and no slide prints mermaid source |
 | The cheat sheet, rebuilt in scratch with main's `scripts/build_cheatsheet.py` | Seven panels on one page, with every panel heading and vocabulary term printed; its text matches the committed PDF's except the date's format, so the committed sheet stands |
 | `.sql` files | The pack has none; every notebook's queries ran against PostgreSQL 16.14 in the cold runs |
+
+## Naming the day's topics, 13 October 2026
+
+The requester read the merged pack and found every chapter titled by a case question and never by
+the curriculum's topic, so a trainer could not see from the slides which topics the day teaches. The
+change adds a topics slide to each deck, names each chapter's topic on its opener and in the study
+notes' chapter headings, gives the three thin subtopics one teaching slide each, and adds a coverage
+table to the day sheet. No notebook, number or exercise key changed.
+
+### Decisions
+
+| Decision | Why |
+|---|---|
+| The topics slide is S0 in both decks, straight after the cover, and the teaching slides are S9a, S43a and S57a | No existing S number moves, so the day sheet, the lab note and the board still point at the right slides |
+| S0's title is "What will today teach? Six topics across six chapters" | `deck_md_check.py` fails a title that ends in a question mark unless an Answer slide follows, and the request was for one slide; the title asks the requester's question and answers it in the same line |
+| S0's minutes are the chapters' minutes from the day sheet | The day sheet sizes chapters, never subtopics, so a topic taught across two chapters shows both chapters' 30 minutes |
+| Chapters 1 to 6 take the row's six subtopics in the row's order: the customer table in Excel, pivot tables, XLOOKUP, presenting one number, the tool operating rule, and keeping the sheet and the source from drifting | Chapter 1 opens the table, states its grain and freezes its header before it pivots; chapter 2 carries Refresh and the double count a pivot cannot see; chapter 6 carries the Checks tab. Sections 7 to 11 (the two cases, the debrief, the drill and the close) teach no new subtopic and keep their headings |
+| The deck builder prints a chapter's topic only on its opener, through the Week 2 Wednesday session's commit bed7b90c, carried here unchanged | Built with the unchanged builder, names of up to 72 characters clipped the opener pills, ran the footer breadcrumb into the slide number and wrapped the opener title into its promise. This session wrote its own fix first; the Wednesday session had already pushed one, with the topic in lavender over a 40-point question and the short question kept in the cover strip, the pills and the footer, so this branch carries that commit as it stands: Wednesday and Friday look alike, and the two branches merge without a conflict in the scripts |
+| Each teaching slide follows the slide where the room first meets its problem: S9a after the grain answer, S43a after C-0195 returns C-0194, S57a after the scope answer | The formal term arrives once the problem is on the table, and no predict is parted from its answer (S56's predict is answered on S57) |
+| Each check question's answer sits in its slide's notes | One slide per thin subtopic was asked for, and the slide after each is an existing one |
+| The nearest-match slide prints no XLOOKUP output | Microsoft's page describes the -1 match mode, which the notes quote; Excel was not available to run XLOOKUP on the customer table |
+| The cover's notes and those of S9, S43 and S57 end on a new transition into the slide after them, and each new slide takes over the transition its predecessor had | The trainer's script keeps running from slide to slide |
+| The day sheet tells the trainer to take the existing cuts for the ask and chapters 1 to 4 from the start | The new slides add seven minutes to a morning budgeted at 180, one in the ask and two in each of chapters 1, 3 and 4, and the afternoon's S0 adds one |
+| The study notes change only their six chapter headings | The request named the headings; the notes still say base where S57a says denominator, and they neither teach freeze panes nor name the nearest-match trap |
+| Freeze panes has no exercise item in the coverage table | No item tests it; the guided sheet's step 1 practises it and S9a's check asks it, and adding an item would change a key |
+
+### Sources checked for the change
+
+| Source | Checked | Used for |
+|---|---|---|
+| Microsoft Support, Freeze panes to lock rows and columns: https://support.microsoft.com/en-us/office/freeze-panes-to-lock-rows-and-columns-dab2ffc9-020d-4026-8121-67dd25f2508f | checked 13 October 2026 | S9a: "Freeze Panes freezes the rows above and the columns left of the selected cell", and the steps, select the cell below and to the right, then View, Freeze Panes, Freeze Panes; the page lists Microsoft 365, Excel 2024, 2021, 2019 and 2016 |
+| Microsoft Support, MATCH function: https://support.microsoft.com/en-us/office/match-function-e8dffd45-c762-47d6-bf89-533f4a37673a | checked 13 October 2026 | S43a: "MATCH finds the largest value that is less than or equal to lookup_value", with the values in ascending order |
+| Microsoft Support, XLOOKUP function (the pack's link) | checked 13 October 2026 | S43a's notes: match mode -1 is "Exact match. If none found, return the next smaller item", and 0, an exact match, is the default |
+| Microsoft Support, VLOOKUP function (the pack's link) | checked 13 October 2026 | S43 and S45's quotes, "If you don't specify anything, the default value will always be TRUE or approximate match" and "If the first column isn't sorted, the return value might be something you don't expect", both still on the page |
+
+### Invented for the new slides, and labelled so on them
+
+| What | Where |
+|---|---|
+| A sheet with a title in row 1 and column names in row 2 | S9a's check |
+| Ids M-10, M-20, M-30 and M-40, with M-35 missing, and M-05 in the notes | S43a's check |
+| Rs 100 falling to Rs 80, and a city's revenue rising from Rs 80 to Rs 100 | S57a's opening paragraph and its check |
+| The tiers at Rs 0, Rs 1,000 and Rs 2,500 and the order of Rs 2,700, already invented for notebook 3 | S43a's table |
+
+S9a's row 250 is the customer table's own, C-0282, Business, Hyderabad, 11 orders, 6084000, read
+from `data/C2_W02_D05_customer_table_STUDENT.csv`. Not verified in Excel, which this session did not
+have: the freeze each of A2, B1, B2, A3, C1 and B3 gives, which follows Microsoft's sentence above.
+
+### Tools and proofs
+
+mermaid-cli 11.17.0 in the session's scratch folder, first on `PATH`, since the container's own is
+12.0.0; with it the unchanged decks rebuilt byte for byte before any edit, and again under the
+shared builder of bed7b90c. LibreOffice 24.2.7.2 drew
+every new and changed slide, and each was looked at: S0 in both decks, the six openers, S9a, S43a
+and S57a, the morning cover and a body slide's footer in each deck. Every untouched slide kept its
+text and its pictures.
+
+| Proof | What it returned |
+|---|---|
+| `python3 scripts/verify.py content/W02/D5`, after the deck and day sheet commits | PASS with 0 failures and no warning: 60 files in valid folders; nb_check 10 notebooks, 89 checks passing; distractor_audit 8 files; xlsx_recalc both workbooks; html_sweep 70 controls; deck_md_check both decks, 81 and 38 slides, 25 and 12 diagrams; deck_check 121 slides, no box overflowing |
+| `python3 scripts/sync_programme.py --check` | Every output is current |
+| The llm-tic-scrubber scanner on the nine changed files, both built decks among them | 9 of 9 clean |
+| The humanizer's read, in file mode, on every new sentence | One clipped tail on S43a rewritten as a full sentence; code, data, paths and links left as they were |
