@@ -366,8 +366,8 @@ else:
         - Any target bends behaviour toward itself, so read a paid number beside the thing it stands for.
 
         **In the interview.** [S] How would you measure the success of a new feature? {TAGS} A hire-grade
-        answer starts from what the feature is for and names a number that cannot rise while that thing
-        gets worse.
+        answer starts from what the feature is for and names a number that is hard to raise while that
+        thing gets no better.
 
         **Where it goes next.** Notebook 02 adds the second number that must not fall while the first
         rises. After the break, `C2_W04_D01_07_proxy_test_on_twelve_rows_STUDENT.ipynb` runs the same
@@ -886,7 +886,8 @@ check("five different readings, from 66.7 to 84.0, out of one register", len({ro
         Named last: four lines make a number computable. The **numerator** is what is counted on top;
         the **denominator**, what it is divided by; the **window**, the stretch of time the count
         covers; the **exclusions**, what leaves both counts, with the date of any change. With the four
-        written down, two clerks compute the same number.
+        written down, two clerks compute the same number. A count, such as licences in a year, has no
+        denominator; in its place it says what one unit is and how repeats are removed.
 
         ## Can one short function hold the four lines?
 
@@ -1626,8 +1627,8 @@ check("E accepted 4 of 14 offers and F 3 of 12 after the launch",
         thing it stands for moved (trips rose only 3 percent across the city).
 
         **In the interview.** [S] How would you measure the success of a new feature? {TAGS} A
-        hire-grade answer starts from what the feature is for and names a number that cannot rise while
-        that thing gets worse. Notebook 08 runs the same count on all 12,860 driver-weeks.
+        hire-grade answer starts from what the feature is for and names a number that is hard to raise
+        while that thing gets no better. Notebook 08 runs the same count on all 12,860 driver-weeks.
         '''),
     ])
 
@@ -1937,7 +1938,7 @@ def case09():
 
         **Who needs the answer.** The city head, who must say by Friday what the scheme pays for, and
         the finance partner, who holds the top-up budget. A scheme that keeps paying for hours keeps
-        paying drivers to sit online in zones with no riders.
+        paying drivers to sit online in zones with few riders.
 
         **The questions on the way.**
 

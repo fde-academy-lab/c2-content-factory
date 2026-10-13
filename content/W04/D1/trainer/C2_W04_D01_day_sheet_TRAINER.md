@@ -176,7 +176,7 @@ and the lab carries Kalpa.
 
 | The row's item | Its minutes | What delivers it in the built day | Minutes |
 |---|---|---|---|
-| 1. Three proposed targets; the room says how each could be hit while the business got worse | 15 | The instinct round on the principal's three numbers (S7 and S8, 4.5); the ticket and round 1 on the city team's three numbers (S54 to S58, 12); the row's own three, Marketing's orders per month, Operations' app sessions and Retail-Plus's reorders per member, reach the practice lab through the Kalpa set | 16.5 |
+| 1. Three proposed targets; the room says how each could be hit while the business got worse | 15 | The instinct round on the principal's three numbers (S7 and S8, 4.5); the ticket and round 1 on the city team's three numbers (S54 to S58, 12); the row's own three, Marketing's orders per month, Operations' app sessions and Retail-Plus's reorders per member, appear in the Kalpa set's preamble and options, and the lab's notebook tests reorders per member; no item asks how orders per month or app sessions could be hit while the business got worse | 16.5 |
 | 2. Metric as decision instrument; the proxy test; gaming and definitions that resist it | 40 | The rest of chapter 1 (8.5); chapter 5 (10); chapter 7's twelve rows (20) | 38.5 |
 | 3. North-star against guardrails; leading against lagging, on Kalpa's tree | 50 | Chapter 2 (10); chapter 3 with the eight Kalpa numbers at S27 (10); chapter 9's vote, memo, cost and tree (S74 to S80, 18); Kalpa's own tree in the lab's Kalpa set | 38 |
 | 4. Definitions, computed on the customer table | 45 | Chapter 4 (10); chapter 8 on `driver_weeks` (30); Kalpa's table in the lab notebook | 40 |

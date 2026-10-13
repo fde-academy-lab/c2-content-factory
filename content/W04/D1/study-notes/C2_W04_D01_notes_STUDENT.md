@@ -32,9 +32,9 @@ flowchart LR
     C5 --> C6
     C6 --> U["<b>The case</b><br/>Uber, Hyderabad;<br/>chapters 7 to 11"]
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    classDef kalpa fill:#FFF7E6,stroke:#C98A00,color:#5C3D00
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class C1,C2,C3,C4,C5,C6 lit
-    class U kalpa
+    class U known
 ```
 
 Chapters 1 to 3 choose the number; chapters 4 and 5 write it down so it cannot be gamed; chapter 6
@@ -60,12 +60,13 @@ kitchen cooks 60 kg for 30 kg eaten: Rs 1,500 thrown away a day at Rs 50 a kg.
 A **proxy** is a number that stands in for the thing wanted. The **proxy test** asks whether a team
 could hit the number while the thing it stands for got worse or stayed the same. Any target bends
 behaviour toward itself. Wells Fargo judged staff on products sold, through sales targets and
-bonuses, and showed investors a cross-sell number, products per household; both counted accounts
+bonuses, and showed investors a cross-sell number, products per household (cross-selling is selling
+an existing customer one more product); both counted accounts
 nobody used, and the bank paid USD 185 million in penalties in 2016 to two US regulators and Los
 Angeles (checked 13 October 2026).
 
 **In the interview.** [S] How would you measure the success of a new feature? Name a number that
-cannot rise while what the feature is for gets worse. Chapter 7 tests Uber's hours.
+is hard to raise while what the feature is for gets no better. Chapter 7 tests Uber's hours.
 
 ## North-star and guardrail metrics: which number to chase?
 
@@ -85,9 +86,11 @@ per enrolled learner. The hoarding chased the pass rate instead. A **guardrail**
 number being chased so that hitting it does no hidden harm: beside the pass rate, the share who took
 the test, 1.00 then 0.40, catches this move. A rate can rise because its denominator
 shrank, a **seesaw**, so print the count beside the rate. Swiggy's letter says Maxxsaver, Instamart's
-extra discount on bigger carts, sometimes brings "a slightly lower number of orders by the same user" while Instamart's average order value rose
-16 percent to Rs 612, which the letter credits to wider non-grocery selection and Maxxsaver (checked
-13 October 2026): orders per user alone would read that quarter as a fall.
+extra discount on bigger carts, sometimes brings "a slightly lower number of orders by the same user";
+it puts the slower order growth down to that and to letting go of some low-value orders and
+unprofitable users, credits the 16 percent rise in average order value, to Rs 612, to wider selection
+and Maxxsaver, and says the ramp-up kept contribution flat (checked 13 October 2026). Orders per user
+alone would read that quarter as a fall, and order value alone as a success.
 
 **In the interview.** [F] North-star against guardrail, with one example pair. Chapter 9 gives
 Uber's.
@@ -123,7 +126,8 @@ certificate, and two clerks who must compute it alike.
 
 Week 1 Monday wrote every rate as a **numerator** over a **denominator**. Two more lines finish the
 job: the **window**, the stretch of time the count covers, and the **exclusions**, what leaves both
-counts, with the date of any change. One student's 60-day term (invented) holds 10 holidays, so 50
+counts, with the date of any change. A count, such as licences in a year, has no denominator; in its
+place it says what one unit is and how repeats are removed. One student's 60-day term (invented) holds 10 holidays, so 50
 working days: present 40, absent 8, medical leave 2.
 
 | The line that changed | Reading |
@@ -137,8 +141,8 @@ working days: present 40, absent 8, medical leave 2.
 Every reading is honest, and only a written definition says which one the certificate means; with
 a scholarship (invented) set at 75 percent, the wrong line costs the student. Delhi Metro's "line
 utilisation" count read 45,35,932 on 29 May 2018 against nearly 27 lakh riders a day that February,
-since a rider changing across three lines counts three times: a new unit and a new window at once
-(checked 13 October 2026).
+since a rider changing across three lines counts three times: a new unit and a new window at once,
+and after the change Delhi Metro did not share the old daily figure (checked 13 October 2026).
 
 **In the interview.** [F] What makes a metric gameable, and how do you write one that is not?
 
@@ -273,10 +277,11 @@ fifth of the idle tail's top-up is still paid and Rs 58 lakh if half is, an assu
 settles.
 
 **Chapter 11, applying all six.** A hire-grade answer clarifies the goal and the decision, then
-gives a north star with its lines, three guardrails, a leading input and a test with zones as its
-unit. Weak: "hours are up 24 percent, so it works." Hire-grade: "trips per online hour fell from 1.90
-to 1.58, stepping down in the launch week; I would not extend it, and would test the Rs 300 floor kept
-only for weeks that accept most offers." For an AI coding assistant, suggestions accepted is the proxy, and
+gives a north star with its lines, three guardrails, a leading input and a test with its unit
+named: drivers cross zone lines, so the candidate switches the whole city between the old rule and the
+new one, window by window. Weak: "hours are up 24 percent, so it works." Hire-grade: "trips per online
+hour fell from 1.90 to 1.58, stepping down in the launch week; I would not extend it, and would test
+the Rs 300 floor kept only for weeks that accept at least half their offers." For an AI coding assistant, suggestions accepted is the proxy, and
 suggested text still in the code at the next commit is the outcome.
 
 ## Which words did Monday use?
@@ -301,8 +306,8 @@ suggested text still in the code at the next commit is the outcome.
 
 ## So is the number the scheme pays for measuring what the city wants?
 
-No. Hours rose 24 percent while trips per peak online hour fell from 1.90 to 1.58 and the wait barely
-moved, and Rs 1.159 crore of the Rs 1.9 crore top-up went to driver-weeks that declined most offers.
+No. Hours rose 24 percent while trips per peak online hour fell from 1.90 to 1.58 and the wait fell
+only from 4.8 to 4.6 minutes, and Rs 1.159 crore of the Rs 1.9 crore top-up went to driver-weeks that declined most offers.
 Judge the scheme by completed peak trips per enrolled driver online at peak, read with acceptance, the
 wait by zone and the top-up per trip, and keep the Rs 300 floor only for weeks that accept at least
 half their offers. Tuesday puts that on one slide.

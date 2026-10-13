@@ -48,7 +48,7 @@ d) A weekly phone call to every customer who ordered that week
 | # | How the count was raised |
 |---|---|
 | 1 | The illustrative Uber case: a driver keeps the app open in a zone with no riders, and every hour counts |
-| 2 | Wells Fargo: accounts that customers never used counted toward the bank's cross-sell figure |
+| 2 | Wells Fargo: accounts that customers never used counted toward the bank's cross-sell figure, the products it sold each household |
 | 3 | US Veterans Affairs: schedulers typed the next open slot as a patient's "desired date", so waits read zero |
 | 4 | Wells Fargo, 2013: accounts for sending money abroad joined the count without investors being told |
 

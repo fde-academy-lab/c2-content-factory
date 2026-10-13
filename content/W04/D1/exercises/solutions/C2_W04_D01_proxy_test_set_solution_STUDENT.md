@@ -14,7 +14,8 @@ proxy test.
 
 The proxy test asks whether a team could hit a number while the thing it stands for got worse or
 stayed the same. A count passes when raising it needs the thing itself: a plate used, a child handed
-over, a trip a rider asked for. A count fails when the people paid control it, as servers control
+over, a trip a rider asked for. It still ships with a guardrail, since even a trip can be booked from a
+second rider account. A count fails when the people paid control it, as servers control
 tokens, a driver controls kilometres, and a driver controls when the app is open.
 
 ## Why is each key right, and why does each other option fail?
@@ -35,8 +36,9 @@ definition that resists gaming.
 
 ## Where does a number that fails the proxy test show up at work?
 
-Wells Fargo paid staff on a cross-sell number, accounts and products per household, that counted
-accounts nobody used. In September 2016 the bank paid USD 185 million in penalties, USD 100 million
+Wells Fargo judged branch staff on products sold, through sales targets and bonuses, and showed
+investors a cross-sell number, accounts and products per household; both counted accounts nobody
+used. In September 2016 the bank paid USD 185 million in penalties, USD 100 million
 of it to the Consumer Financial Protection Bureau, and in 2020 it agreed a combined USD 3 billion
 settlement with the SEC and the Department of Justice (CFPB press release, 8 September 2016, and SEC
 press release 2020-38, both checked 13 October 2026).

@@ -42,7 +42,7 @@ flowchart LR
     S3["<b>The clock's start</b><br/>who starts it"]
     P1["<b>No usage condition</b><br/>Wells Fargo"]
     P2["<b>Units move numbers</b><br/>Delhi Metro"]
-    P3["<b>The measured set the start</b><br/>VA"]
+    P3["<b>Who sets the start?</b><br/>VA"]
     Q --> Q1
     Q --> Q2
     Q --> Q3

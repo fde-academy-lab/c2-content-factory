@@ -29,7 +29,8 @@ Post exactly this shape: xxx
 
 A number is computable once four lines are written: the **numerator**, what is counted on top; the
 **denominator**, what it is divided by; the **window**, the stretch of time the count covers; and
-the **exclusions**, what leaves both counts, with the date of any change.
+the **exclusions**, what leaves both counts, with the date of any change. A count, such as licences
+in a year, has no denominator; in its place it says what one unit is and how repeats are removed.
 
 ### Q1. Two clerks print 80.0 and 84.0 percent from the same register. Which line differs between their two definitions?
 

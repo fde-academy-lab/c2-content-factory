@@ -24,8 +24,8 @@ seconds, and an item most of the room misses is the call to say again before the
 - The idle tail's hours went to 2.1 times while its trips fell 12 percent; what happened?
 - Which four lines make a number computable?
 - What is the proxy test, in one line?
-- Which trips per hour goes on the slide, 1.71 or 1.58?
-- Which blank line of an AI coding assistant's one-page definition would refuse to pay for text accepted, then deleted?
+- Which is the city's trips per online hour, 1.71 or 1.58?
+- Which line of an AI coding assistant's one-page definition, rewritten, stops paying for text accepted, then deleted?
 - A pivot reads twice the city's peak online hours; where do you look first?
 
 ---

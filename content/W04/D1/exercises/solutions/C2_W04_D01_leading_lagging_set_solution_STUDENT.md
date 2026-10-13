@@ -4,7 +4,7 @@ Answers: 1a 2c 3b
 
 *Kalpa Retail is the programme's fictional client, and its numbers here are names with no values. Balaji Kirana and the chase are invented for chapter 3 and chapter 5, with every number in them.*
 
-Kalpa's growth plan chases delivered orders per active customer per month, and its dashboard holds
+Kalpa's growth plan proposes delivered orders per active customer per month as its north star, and its dashboard holds
 eight numbers from Week 1's revenue tree. Balaji Kirana (invented) judges each week on the share of
 orders billed that customers confirmed with their OTP. The set asks which numbers move before the
 north star and which confirm it afterwards.

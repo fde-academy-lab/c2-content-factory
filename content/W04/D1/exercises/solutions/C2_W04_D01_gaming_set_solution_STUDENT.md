@@ -11,7 +11,7 @@ gaming, and how a tuition app should write its pay rule.
 
 ## What does the set test about gaming?
 
-A paid number is gamed in four ways: the person paid controls the count, the count needs no receipt
+A paid number can be gamed in many ways, and the set takes four common ones: the person paid controls the count, the count needs no receipt
 or use, the person timed sets the clock's start, or the definition changes without notice. Each has a line
 that stops it: a count the person served confirms, a receipt in the numerator, a clock the system
 starts, and dated changes printed beside the number. A denominator the person paid can choose is a
@@ -30,16 +30,18 @@ fifth door, and it stays shut only when the people served set it.
 Item 3, option b. It fixes the numerator with a receipt and looks finished, which is why a hurried
 group stops there. The denominator is the second door: a teacher who accepts only easy doubts keeps
 a high rate while the hard doubts go unanswered. A definition resists gaming only when the people
-paid control neither line.
+paid control neither line, and even the right pair needs guardrails: a student can withhold a
+confirmation or be pressed for one, so the app reads the share of routed doubts left unconfirmed, and
+the doubts asked again within a week, beside the rate.
 
 ## Where did three of these ways happen in public?
 
 At Wells Fargo, the SEC's 2020 order found that the bank's cross-sell figure counted accounts and
 products with no requirement that customers use them, and that global remittance accounts, used to
 send money abroad, joined the count during 2013 without investors being told (SEC order, Release 34-88257, checked 13 October 2026). At
-the US Veterans Affairs facility in Phoenix, 30 of 79 staff interviewed by the inspector general said
-they used a wrong desired date; of the 40 primary-care schedulers and supervisors asked how they set
-it, 30 used the next open appointment or the provider's availability, so the wait read zero days (VA Office of Inspector General
+the US Veterans Affairs facility in Phoenix, the inspector general asked 40 primary-care schedulers
+and supervisors how they set a veteran's desired date, and 30 used the next open appointment or the
+provider's availability, so the wait read zero days (VA Office of Inspector General
 report 14-02603-267, checked 13 October 2026).
 
 ## What does notebook 05 confirm?

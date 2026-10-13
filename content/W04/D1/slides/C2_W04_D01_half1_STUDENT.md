@@ -21,7 +21,7 @@ label: In the lab | title: Kalpa Retail | body: The number the head of Retail-Pl
 LIVE, 1 minute, on screen as the room sits down. Read the subtitle: it is the row's Day focus, the
 number the growth plan chases and what stops it being gamed. Say the order of the day once: six
 topics on everyday examples, then the Uber case, then Kalpa in the TA lab. The row's own scenario,
-Meera's growth plan after Kalpa Health and the fight over which number the company chases, comes back
+the growth plan of Meera Raghavan, Kalpa Retail's CEO, back after Build 1's Kalpa Health week, and the fight over which number the company chases, comes back
 in the lab, where the head of Retail-Plus wants "reorders per member". Transition: where Monday sits
 in the week.
 ```
@@ -781,7 +781,7 @@ picture, and the rule.
 
 ![One student's register (invented): four lines, five readings from 66.7 to 84.0 percent](../whiteboards/C2_W04_D01_register_readings_STUDENT.png)
 
-The same register printed every figure from 66.7 to 84.0 percent as one line at a time changed. Named last: four lines make a number **computable**, its numerator, its denominator, its window and its exclusions, and with them written down two people compute the same number. The course outline adds that a definition is complete only when it also says what it deliberately does not reward, a line chapter 6's page carries.
+The same register printed every figure from 66.7 to 84.0 percent as one line at a time changed. Named last: four lines make a number **computable**, its numerator, its denominator, its window and its exclusions, and with them written down two people compute the same number. A count, such as licences in a year, has no denominator; in its place it says what one unit is and how repeats are removed. The course outline adds that a definition is complete only when it also says what it deliberately does not reward, a line chapter 6's page carries.
 
 ```notes
 LIVE, 1 minute 30 seconds. The same four lines in a public specification: the US Centers for
@@ -974,7 +974,7 @@ Transition: the four ways, side by side.
 
 ---
 
-## S42. Four ways to game a count, the line that stops each
+## S42. Four common ways to game a count, and their lines
 *How is each way done at the shop and in public, and which line catches it?*
 
 | How it is gamed | At Balaji Kirana (invented) | In public, or in the case | The line that stops it |
@@ -1020,7 +1020,7 @@ the 10 orders with no OTP. Transition: the rules.
 *Which rules does the chapter leave, and what does an interviewer ask?*
 
 1. Let the person served confirm the count, as an OTP does.
-2. Start the clock at a time the system records, never at one the person timed types in.
+2. Start the clock at a time the system records and the person timed cannot reset, never at one they type in.
 3. Date every change to what is counted, and print the change beside the number.
 4. Say in one line what the number deliberately does not reward.
 
@@ -1041,7 +1041,7 @@ reason. Transition: where the idea goes.
 flowchart LR
     A["<b>4. Definitions</b><br/>the four lines"] --> B
     B["<b>5. Gaming, and definitions<br/>that resist it</b><br/>50 marked, 40 confirmed"] --> C["<b>6. The metric definition<br/>artifact</b><br/>the page that holds the lines"]
-    B --> U["<b>Chapters 8 and 9</b><br/>Uber: an open app counts as<br/>online; pay for trips instead"]
+    B --> U["<b>Chapters 8 and 9</b><br/>Uber: an open app counts as<br/>online; judge by trips instead"]
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
@@ -1670,7 +1670,8 @@ The drivers are invented: Y's 40 slow hours count as one week, like X's 10, so t
 
 ```notes
 LIVE, 4 minutes. Work the invented pair aloud first, then return to 1.71 against 1.58. Week 1 met
-the same rule on Kalpa's orders: a rate is two sums divided once.
+the same rule on Kalpa's orders: the city's rate is two sums divided once, and the mean of the rows
+answers another question, the typical driver-week.
 Transition: who is behind the fall.
 ```
 
@@ -1980,7 +1981,7 @@ Transition: the finished board.
 
 ---
 
-## S84. Close: pay for trips, guarded three ways
+## S84. Close: judge by trips, guarded three ways
 *What does the finished board say?*
 
 ```mermaid

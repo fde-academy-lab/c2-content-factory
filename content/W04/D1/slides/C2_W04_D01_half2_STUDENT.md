@@ -236,7 +236,7 @@ Transition: two answers side by side.
 | Clarify | Starts on metrics at once | Asks what the scheme is for, what counts as harm, which decision rides on it and against what |
 | Structure | Lists hours, satisfaction, a survey | Goal, one north star with its lines, three guardrails, a leading input, the test with its unit |
 | The trap | "Hours are up 24 percent, so it works" | Trips per online hour fell from 1.90 to 1.58, stepping down in the launch week, and the north star barely moved |
-| Segment and zones | None | 180 drivers added hours on fewer trips, mostly in the outer zones, where waits fell 6.6 to 5.95 minutes at about Rs 46,000 per extra trip |
+| Segment and zones | None | 180 drivers added hours on fewer trips, mostly in the outer zones, where waits fell 6.6 to 5.95 minutes: Rs 85.7 lakh of top-up for about 185 extra trips, about Rs 46,000 each |
 | Decision and cost | "Roll it out to more cities" | Hold it: Rs 2,836 per extra trip, about Rs 7,400 net of the rise in requests; the Rs 300 floor only for weeks accepting half their offers; a test |
 
 ```notes
@@ -344,7 +344,7 @@ The rule: the Rs 300 floor stays only for driver-weeks that accept at least half
 | 2. North star, guardrails | Trips, with acceptance and the wait |
 | 3. Leading, lagging | Acceptance settled first |
 | 4. The four lines | Trips over drivers online, by week |
-| 5. Gaming | Pay for trips riders asked for |
+| 5. Gaming | Count only trips riders asked for |
 | 6. The page | Seven lines the city signs |
 
 **Tuesday's question.** Can this answer survive one slide, five minutes, in front of the three people who each lose something under it?

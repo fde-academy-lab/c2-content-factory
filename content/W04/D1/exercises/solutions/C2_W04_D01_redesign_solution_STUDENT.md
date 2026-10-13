@@ -45,9 +45,8 @@ accurately reflects underlying performance" (both checked 13 October 2026). The 
 Rs 300 floor stays, but hours alone stop earning it, and the city judges the scheme by completed trips per
 driver, with hours kept off the headline.
 
-## What does notebook 09 confirm?
+## What do notebooks 09 and 10 confirm?
 
-The first code cell after the setup prints 0.61 as the share of the top-up that went to driver-weeks
-under 0.5, and the next prints the saving at Rs 92.7 lakh when a fifth is still paid and Rs 58 lakh
-when a half is. The chart of the acceptance gap in the afternoon deck shows the two groups of weeks,
+Notebook 09 prints 0.61 as the share of the top-up that went to driver-weeks under 0.5, and notebook
+10 prints the saving at Rs 92.7 lakh when a fifth is still paid and Rs 58 lakh when a half is. The chart of the acceptance gap in the afternoon deck shows the two groups of weeks,
 with the highest idle week at 0.46 and the lowest other week at 0.78.
