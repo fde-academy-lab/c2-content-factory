@@ -107,6 +107,28 @@ the chapter 6 set said three checks where its items hold two, the rungs solution
 lead with a claim or a method where all four do, and notebook 08's trap question read as an hour's
 cost. The tic scanner then read all 53 files clean.
 
+### What did the acceptance test find at the end, and what changed?
+
+The spine's acceptance lines 0 to 17 were read against the pack after the house reads, and four
+lines needed a change before they held.
+
+- **Line 13.** Ten notebooks defined functions beside `check`; every one now defines only `check`, as
+  the decision above records, with 127 checks still passing.
+- **Line 11.** The cheat sheet had lost the twelve rows when its panels moved to the five topics;
+  panel 7 now reads them beside all driver-weeks, and the sheet still prints on one page.
+- **Line 12.** Chapters 5, 9 and 10 closed without a map node; S54, S85 and S90 now add theirs, as
+  every other chapter close does, with every diagram label at 9 points or more.
+- **Line 2.** Chapter 7 showed its counts as a picture; S68's notes now open on a hand count of the
+  draft's method words. The twelve rows' Rs 165 a trip matches the full data by the spine's own L1
+  and L2 design, since the fare is the ticket's stated constant.
+- **Line 14.** The second re-score gave transcript 1 a 2 on each of S90's first three criteria and
+  the check of the fix pass gave transcripts 2 and 3 the same; the second re-score's four
+  rejections are fixed, and a third read was started and then stopped unread at the orchestrating
+  session's request, so no read has followed those fixes.
+- **Merge of 13 October.** Monday's concept-first rebuild came in from main; Tuesday's generator
+  re-ran with its 108 checks passing and no data or facts changed, and Monday's kirana is Balaji
+  Kirana, apart from Ramesh's shop.
+
 ## Which public sources were fetched, and when?
 
 All fetched and read on 12 October 2026.
