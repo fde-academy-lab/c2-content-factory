@@ -1,12 +1,12 @@
 line,value,what_it_is
-bills,1000.0,bills rung up in the month
-bills_with_tea,600.0,bills holding a tea pack
-bills_with_rusk,200.0,bills holding a rusk pack
-bills_with_both,150.0,bills holding both
-rusk_price_rs,30.0,what a rusk pack sells for
-rusk_cost_rs,18.0,what a rusk pack costs the shop
-combo_discount_rs,1.0,taken off every bill that holds tea and rusk once the card is up
-card_printing_rs,20.0,printing the combo cards for the month
+bills,1000,bills rung up in the month
+bills_with_tea,600,bills holding a tea pack
+bills_with_rusk,200,bills holding a rusk pack
+bills_with_both,150,bills holding both
+rusk_price_rs,30,what a rusk pack sells for
+rusk_cost_rs,18,what a rusk pack costs the shop
+combo_discount_rs,1,taken off every bill that holds tea and rusk once the card is up
+card_printing_rs,20,printing the combo cards for the month
 response_low,0.02,"assumption, low end: share of tea bills without rusk that add a pack"
 response_mid,0.04,"assumption, middle: the same share"
 response_high,0.06,"assumption, high end: the same share"

@@ -1051,7 +1051,7 @@ def write_toys():
                              for item in order], columns=["order_id", "item"])
     month_df.to_csv(DATA / "C2_W04_D03_canteen_month_STUDENT.csv", index=False)
     kirana = pd.DataFrame([(k, v, KIRANA_NOTES[k]) for k, v in KIRANA.items()],
-                          columns=["line", "value", "what_it_is"])
+                          columns=["line", "value", "what_it_is"], dtype=object)
     kirana.to_csv(DATA / "C2_W04_D03_kirana_month_STUDENT.csv", index=False)
     return lines, month_df, kirana
 

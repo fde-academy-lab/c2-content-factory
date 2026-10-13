@@ -1954,27 +1954,27 @@ toy:
     how: "invented for the concept chapter on The support floor and the watch list: highest lift among them"
     used_by: "half1 SECTION 6, notebook 06, notes"
   - id: toy_kirana_bills
-    value: 1000.0
+    value: 1000
     shown: "1,000"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: Sharma Kirana's bills in one month"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_tea_bills
-    value: 600.0
+    value: 600
     shown: "600"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: bills holding tea"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_rusk_bills
-    value: 200.0
+    value: 200
     shown: "200"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: bills holding rusk"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_both_bills
-    value: 150.0
+    value: 150
     shown: "150"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: bills holding both"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_tea_only
-    value: 450.0
+    value: 450
     shown: "450"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: tea bills with no rusk, the ones a combo card could reach"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
@@ -2014,27 +2014,27 @@ toy:
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 150 over 120"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_rusk_price
-    value: 30.0
+    value: 30
     shown: "Rs 30"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: a rusk pack's price"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_rusk_cost
-    value: 18.0
+    value: 18
     shown: "Rs 18"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: a rusk pack's cost to the shop"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_margin
-    value: 12.0
+    value: 12
     shown: "Rs 12"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: Rs 30 less Rs 18"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_discount
-    value: 1.0
+    value: 1
     shown: "Rs 1"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the combo card's discount on a bill holding both"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_printing
-    value: 20.0
+    value: 20
     shown: "Rs 20"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: printing the cards for the month"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
@@ -2069,62 +2069,62 @@ toy:
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 450 x 6 percent"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_combos
-    value: 168.0
+    value: 168
     shown: "168"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 150 who bought both anyway plus the 18 new ones"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_incremental_margin
-    value: 216.0
+    value: 216
     shown: "Rs 216"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 18 packs x Rs 12"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_discount_back
-    value: 168.0
+    value: 168
     shown: "Rs 168"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: Rs 1 on each of 168 combo bills"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_ev
-    value: 28.0
+    value: 28
     shown: "Rs 28"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: Rs 216 less Rs 168 less Rs 20, the expected value a month"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_ev_low
-    value: -71.0
+    value: -71
     shown: "Rs -71"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the same at 2 percent: 9 x 12 less 159 less 20"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_ev_high
-    value: 127.0
+    value: 127
     shown: "Rs 127"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the same at 6 percent: 27 x 12 less 177 less 20"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_ev_rs2
-    value: -140.0
+    value: -140
     shown: "Rs -140"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the same card at Rs 2 off, response held at 4 percent"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_sales_wrong
-    value: 5040.0
+    value: 5040
     shown: "Rs 5,040"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the trap: 168 combo bills x Rs 30 of rusk sales"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_every_combo_wrong
-    value: 2016.0
+    value: 2016
     shown: "Rs 2,016"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: a distractor: every combo counted as incremental, 168 x Rs 12"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_no_discount_wrong
-    value: 196.0
+    value: 196
     shown: "Rs 196"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: a distractor: the discount forgotten, Rs 216 less Rs 20"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_before
-    value: 2400.0
+    value: 2400
     shown: "Rs 2,400"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: rusk margin before the card, 200 x Rs 12"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_after
-    value: 2428.0
+    value: 2428
     shown: "Rs 2,428"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: rusk margin after it, 218 x Rs 12 less Rs 168 less Rs 20"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
