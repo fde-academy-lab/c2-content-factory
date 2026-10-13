@@ -1,11 +1,16 @@
 # Can you run the pairs method on a store you have never seen?
 
 The practice set for the TA-led lab, after the Kalpa lab notebook. It moves the day's method to an
-invented store so the counts are small enough to do by hand: a Pune kirana shop's 200 bills from one
-week, and four pairs and three bundles from an invented quick-commerce strip. Every number on this
+invented store so the counts are small enough to do by hand: a Nagpur stationery shop's 200 bills
+from one week, and four pairs and three bundles from an invented quick-commerce strip. Every number on this
 page is invented for practice. The items climb from a hand count to a call a merchandiser, the person
 who decides which products are bundled and promoted, would pay for. Uplift, used in item 6, is the
 extra sales a promotion causes beyond what would have sold anyway.
+
+**Applies:** Support, confidence and lift, derived by counting (chapters 1 to 3, items 1 and 2); The
+confidence trap; lift near one (chapter 4, items 2 and 6); Basket analysis on the order items (chapter
+5, item 5); The support floor and the watch list (chapter 6, items 3 and 6); Cross-sell and upsell
+reasoning; expected value in rupees (chapter 9, items 4 and 6).
 
 **Who needs the answer.** You, before tomorrow: the same three counts and the same rupee line return
 on Saturday's paper and in every basket question an interviewer asks.
@@ -23,14 +28,14 @@ Three words, defined once. **Support** is the share of bills holding both items.
 A to B is the share of A's bills that also hold B. **Lift** is the bills seen holding both over the
 bills chance alone would give, which is the total times A's share times B's share.
 
-| The kirana shop's week, invented | Bills |
+| The stationery shop's week, invented | Bills |
 |---|---|
 | All bills | 200 |
-| Bills with tea | 120 |
-| Bills with rusk | 40 |
-| Bills with tea and rusk | 30 |
-| Bills with sugar | 80 |
-| Bills with sugar and tea | 48 |
+| Bills with notebooks | 90 |
+| Bills with pens | 50 |
+| Bills with notebooks and pens | 28 |
+| Bills with glue | 80 |
+| Bills with glue and notebooks | 36 |
 
 **What you post.** Six letters in item order, with no spaces, in this shape:
 
@@ -40,27 +45,27 @@ Post exactly this shape: xxxxxx
 
 ---
 
-## What do the counts say about tea, rusk and sugar?
+## What do the counts say about notebooks, pens and glue?
 
 This comes up at work in every first pass over a basket table: four counts, three numbers, one
 sentence.
 
-### Q1. What is the lift of tea and rusk?
+### Q1. What is the lift of notebooks and pens?
 
 *Level L1 · asked in every analytics interview.*
 
-a) 0.75
-b) 0.25
-c) 1.25
-d) 0.15
+a) 0.56
+b) 0.31
+c) 1.24
+d) 0.14
 
-### Q2. Sugar and tea read a lift of exactly 1.00: what does that say?
+### Q2. Glue and notebooks read a lift of exactly 1.00: what does that say?
 
 *Level L2 · asked in product-company interviews.*
 
-a) Sugar and tea turn up together exactly as often as chance would put them
-b) Sugar brings tea 60 percent of the time, which makes the pair a strong bundle
-c) Every bill with sugar also holds tea, so the pair cannot be separated
+a) Glue and notebooks turn up together exactly as often as chance would put them
+b) Glue brings notebooks 45 percent of the time, which makes the pair a strong bundle
+c) Every bill with glue also holds notebooks, so the pair cannot be separated
 d) The pair turns up less often than chance, so the two items compete
 
 ## Which pairs and bundles earn the strip's space?

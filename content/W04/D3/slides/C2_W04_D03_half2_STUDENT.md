@@ -11,9 +11,10 @@ Header: WEEK 4  ·  WEDNESDAY  ·  MARKET BASKET, LIFT AND CROSS-SELL
 
 ```notes
 LIVE, 30 seconds, on screen after lunch. Chapter 9, the last chapter of the concept block, on the
-topic "Cross-sell and upsell reasoning; expected value in rupees". It opens the afternoon so the
-morning carried four topics and this one gets fresh heads. Sharma Kirana's month sheet goes on
-every table. Transition: who needs the answer.
+topic "Cross-sell and upsell reasoning; expected value in rupees", 18 minutes with the second
+concept drill inside them. It opens the afternoon so the morning carried four topics and this one
+gets fresh heads. Sharma Kirana's month sheet goes on every table. Transition: who needs the
+answer.
 ```
 
 ---
@@ -33,7 +34,7 @@ label: Question 4 | title: What decides the sign? | body: The response assumed, 
 ```
 
 ```notes
-LIVE, 2 minutes. Define the two words with the shop's own items: cross-sell suggests an additional
+LIVE, 1 minute 30 seconds. Define the two words with the shop's own items: cross-sell suggests an additional
 product, upsell a more expensive item or an upgrade of the same one (Wikipedia's cross-selling and
 upselling pages, checked 13 October 2026). Callback to chapter 3: tea and rusk sit in 150 of 1,000
 bills where chance gives 120, so lift 1.25 on plenty of bills; the pair beats chance, and the
@@ -57,7 +58,7 @@ in the cart, which is cross-sell. Transition: the prediction.
 a) Rs 5,040, the rusk sold on every bill that will hold both. b) Rs 2,016, the rusk margin on every bill that will hold both. c) Rs 196, the margin on the new packs less the printing. d) Rs 28, the margin on the new packs less every rupee the card costs.
 
 ```notes
-LIVE, 3 minutes. The misconception first: a promotion is worth the sales it touches. Groups vote
+LIVE, 2 minutes. The misconception first: a promotion is worth the sales it touches. Groups vote
 with a letter card, argue with a neighbour for a minute, then vote again; the split is usually a
 against c. Send the room to the sheet: "which bills does the card change, and which does it only
 pay?" Transition: the reveal.
@@ -73,7 +74,7 @@ pay?" Transition: the reveal.
 Only the 450 tea bills without rusk can change: 4 percent of them, 18 bills, add a pack, and 18 x Rs 12 is Rs 216 of margin. The card hands Rs 1 back on all 168 bills that hold both, the 150 that held both anyway and the 18 new ones, and the cards cost Rs 20, so Rs 216 less Rs 168 less Rs 20 leaves Rs 28. Option a books rusk sales on all 168 bills, Rs 5,040, which is 180 times the gain.
 
 ```notes
-LIVE, 5 minutes. Build the bridge left to right on the board, one bar at a time (StatQuest). The
+LIVE, 3 minutes. Build the bridge left to right on the board, one bar at a time (StatQuest). The
 150 bills that held both before the card are the line most people forget: the card changes nothing
 on them except the rupee it hands back. The trap, exactly: Rs 5,040, rusk sales on every combo
 bill; the decision it misleads is a card printed as if it earned Rs 5,040; the check is "which
@@ -104,7 +105,7 @@ print(card_value(0.02, 1))   # -71
 ```
 
 ```notes
-LIVE, 6 minutes. Read the top panel first: each rupee off costs Rs 168 a month, so the card earns
+LIVE, 4 minutes. Read the top panel first: each rupee off costs Rs 168 a month, so the card earns
 nothing at about Rs 1.17 off and loses Rs 140 at Rs 2. Then the bottom panel: at 2 percent the card
 loses Rs 71 and at 6 percent it earns Rs 127, so the 4 percent is an assumption said with its
 range, and the answer travels with it. The formula comes after the counting, as its shorthand
@@ -140,10 +141,14 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 1 minute. Fill the concept map's last box: all five topics are now on the board. Check
-question before moving on: "A card reaches 2,000 bills, 5 percent add one pack at Rs 10 of margin,
-and the cards cost Rs 600: what is it worth?" 100 packs, Rs 1,000 of margin, less Rs 600, so Rs 400.
-Transition: chapter 10, the strip ranked and priced.
+LIVE, 7 minutes. One minute for the rules: fill the concept map's last box, so all five topics are
+now on the board. Check question before moving on: "A card reaches 2,000 bills, 5 percent add one
+pack at Rs 10 of margin, and the cards cost Rs 600: what is it worth?" 100 packs, Rs 1,000 of
+margin, less Rs 600, so Rs 400. Then the second concept drill, items 5 to 7 of
+`exercises/unguided/C2_W04_D03_canteen_concepts_STUDENT.md`, on paper, 6 minutes: pairs from one
+order, the floor on the canteen's month, and the kirana's forgotten cost line. Checkpoint: the room
+says the expected-value line in the topic's words, margin on the purchases a card changes less
+every rupee it hands back. Transition: chapter 10, the strip ranked and priced.
 ```
 
 ---
@@ -173,8 +178,8 @@ label: Question 4 | title: What can the counts not tell us? | body: The doubts, 
 ```
 
 ```notes
-LIVE, 1 minute. Read the four questions. Each is a morning topic used on the case: the floor and
-the watch list from chapter 6, the rupees from chapter 9. Transition: the problem first.
+LIVE, 30 seconds. Read the four questions. Each is a topic used on the case: the floor and the
+watch list from chapter 6, the rupees from chapter 9. Transition: the problem first.
 ```
 
 ---
@@ -190,9 +195,11 @@ icon: shopping-cart | eyebrow: d | title: Onions and tomatoes | body: Support 7.
 ```
 
 ```notes
-LIVE, 3 minutes. Vote, argue, vote again (Brilliant: the problem before the explanation). The split
-is usually b against c; a learner who drew chapter 6's canteen action map should call it at once.
-Transition: every pair on one picture.
+LIVE, 4 minutes. The prediction is sat as the unguided set
+`exercises/unguided/C2_W04_D03_ch3_four_pairs_STUDENT.md` on paper, four letters posted in four
+minutes; its first item is this slide's question under the stated rule (Brilliant: the problem
+before the explanation). The split is usually b against c; a learner who drew chapter 6's canteen
+action map should call it at once. Transition: every pair on one picture.
 ```
 
 ---
@@ -205,7 +212,7 @@ Transition: every pair on one picture.
 Above a floor of 1 percent of carts (400 carts), 246 pairs qualify and four reach lift 1.5 or more: chips and cold drink 3.39, coriander and green chillies 3.00, bread and butter 2.21, onions and tomatoes 1.70. The fifth reads 1.09. The strip has three slots, so onions and tomatoes waits as the first replacement. Each step right on the picture is ten times more carts.
 
 ```notes
-LIVE, 4 minutes. The same four regions chapter 6 drew for the canteen: promote above the floor and
+LIVE, 3 minutes. The same four regions chapter 6 drew for the canteen: promote above the floor and
 well above one; watch, high lift below the floor; ignore, near one, where milk's pairs sit. The
 floor is a decision: 0.5 percent admits more pairs on thinner ground, 2 percent fewer. Explorer:
 scene W5, the floor slider counts the pairs that survive. Transition: the thin pair.

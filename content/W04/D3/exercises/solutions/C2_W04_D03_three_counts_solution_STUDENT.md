@@ -2,6 +2,9 @@
 
 Answers: 1c 2b 3d
 
+**Applies:** Support, confidence and lift, derived by counting (chapters 1 to 3, items 1 and 2); The
+support floor and the watch list (chapter 6, item 3).
+
 The guided set counted two pairs on twelve real Instamart carts by hand. Bread and milk read support
 0.33, confidence from bread to milk 1.00 and lift 1.50, because all four bread carts held milk while
 milk sat in 8 of the 12 carts anyway. Chips and cold drink read lift 2.67. Ice cream and chocolate
@@ -45,4 +48,4 @@ Every "frequently bought together" strip, every bundle a category team proposes 
 recommendation an e-commerce company ships starts from these three counts. Amazon Science's history
 of the company's recommendation algorithm says counting how often buyers of one item bought another
 would make a few bestsellers the top recommendations for every customer, and that the fix compared
-what was seen with what chance predicts (Amazon Science, checked 12 October 2026).
+what was seen with what chance predicts (Amazon Science, checked 13 October 2026).

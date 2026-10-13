@@ -2,6 +2,10 @@
 
 Answers: 1d 2a 3b
 
+**Applies:** Cross-sell and upsell reasoning; expected value in rupees (chapter 9, items 1 and 2); The
+confidence trap; lift near one (chapter 4, item 2); The support floor and the watch list (chapter 6,
+item 3).
+
 The set costed merchandising's proposal to bundle every product with the Rs 199 phone charger. The
 charger lists at Rs 199 and costs Kalpa Rs 120, so a Rs 20 bundle discount leaves Rs 59 of margin on
 each charger. Items 2 and 3 rest on what the lab's counts found, and are read after the lab.
@@ -18,7 +22,7 @@ bundle budget wherever the numbers point.
 
 ## What does the set test?
 
-It tests the morning's last step moved to Kalpa: a discount's margin, a bundle costed against what it
+It tests chapter 10's last step moved to Kalpa: a discount's margin, a bundle costed against what it
 can buy, and a plan that treats a strong pair and a thin pair differently.
 
 ## Why is each key right, and each other letter wrong?

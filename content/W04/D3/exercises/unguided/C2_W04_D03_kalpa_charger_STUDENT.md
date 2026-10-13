@@ -9,9 +9,13 @@ April to September 2026, their order lines (order, product, quantity, unit price
 list with each product's unit cost. Uplift, used in item 3, is the extra sales a promotion causes
 beyond what would have sold anyway.
 
-This set re-runs the morning's last step on Kalpa: cost the proposal and decide. Item 1 can be sat at
+This set re-runs chapter 10's last step on Kalpa: cost the proposal and decide. Item 1 can be sat at
 any time. Items 2 and 3 sit on their own page and use what your lab notebook found, so sit them after
 the lab.
+
+**Applies:** Cross-sell and upsell reasoning; expected value in rupees (chapter 9, items 1 and 2); The
+confidence trap; lift near one (chapter 4, item 2); The support floor and the watch list (chapter 6,
+item 3).
 
 **Who needs the answer.** The head of merchandising, whose bundle budget goes wherever the numbers
 point, and who will defend the charger because it sells.

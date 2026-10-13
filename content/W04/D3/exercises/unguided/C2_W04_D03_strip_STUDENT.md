@@ -8,9 +8,13 @@ Friday: rank the pairs the strip should show, explain the fall, and put a rupee 
 Illustrative case: the company is real, the situation and the data are synthetic, built for this
 class.
 
-This is the afternoon's unguided set, run on notebook 03 in the same 35 minutes as each group's
+This is the afternoon's unguided set, run on notebook 10 in the same 15 minutes as each group's
 one-page strip: the page is what the group hands in, and these four items ask the same steps, so a
 group posts its four letters once its page is done.
+
+**Applies:** Cross-sell and upsell reasoning; expected value in rupees (chapter 9, item 1); The support
+floor and the watch list (chapter 6, item 1); The confidence trap; lift near one (chapter 4, items 3
+and 4); the case's doubts (chapter 10, item 2).
 
 **Who needs the answer.** The growth lead, who takes one strip and one rupee figure to Friday's
 review, where the category manager will argue for milk. A figure that overstates the gain spends the

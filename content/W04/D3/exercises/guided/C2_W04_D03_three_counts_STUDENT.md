@@ -6,8 +6,11 @@ Swiggy Instamart, Pune. The cart page shows a strip of three suggested items. On
 the pairs the strip should show. Illustrative case: the company is real, the situation and the data
 are synthetic, built for this class.
 
-The trainer builds this set with the room. The first item is fully worked, the second half worked,
-and the third is yours.
+The trainer builds this set with the room inside chapter 7, as the twelve-cart drill. The first item
+is fully worked, the second half worked, and the third is yours.
+
+**Applies:** Support, confidence and lift, derived by counting (chapters 1 to 3, items 1 and 2); The
+support floor and the watch list (chapter 6, item 3).
 
 **Who needs the answer.** The category manager, who picks what the strip may suggest. A pair read on
 the wrong count takes one of the three spaces under every cart.

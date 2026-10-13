@@ -3025,90 +3025,85 @@ exercise_numbers:
     used_in: "Kalpa exercise"
 
 practice_toy:
-  - id: kirana_bills
+  - id: stationery_bills
     value: 200
     shown: "200"
-    how: "invented: a Pune kirana store's bills in a week"
+    how: "invented: a Nagpur stationery shop's bills in a week"
     used_in: "practice lab set"
-  - id: kirana_tea
-    value: 120
-    shown: "120"
-    how: "invented: bills with tea"
+  - id: stationery_notebooks
+    value: 90
+    shown: "90"
+    how: "invented: bills with notebooks"
     used_in: "practice lab set"
-  - id: kirana_rusk
-    value: 40
-    shown: "40"
-    how: "invented: bills with rusk"
+  - id: stationery_pens
+    value: 50
+    shown: "50"
+    how: "invented: bills with pens"
     used_in: "practice lab set"
-  - id: kirana_tea_rusk
-    value: 30
-    shown: "30"
-    how: "invented: bills with both"
+  - id: stationery_both
+    value: 28
+    shown: "28"
+    how: "invented: bills with notebooks and pens"
     used_in: "practice lab set"
-  - id: kirana_tea_rusk_support
-    value: 0.15
-    shown: "0.15"
-    how: "30 of 200"
+  - id: stationery_support
+    value: 0.14
+    shown: "0.14"
+    how: "28 of 200"
     used_in: "practice lab set"
-  - id: kirana_rusk_tea_conf
-    value: 0.75
-    shown: "0.75"
-    how: "30 of 40"
+  - id: stationery_pens_conf
+    value: 0.56
+    shown: "0.56"
+    how: "28 of 50, from pens to notebooks"
     used_in: "practice lab set"
-  - id: kirana_tea_rusk_conf
-    value: 0.25
-    shown: "0.25"
-    how: "30 of 120"
+  - id: stationery_notebooks_conf
+    value: 0.3111
+    shown: "0.31"
+    how: "28 of 90, from notebooks to pens"
     used_in: "practice lab set"
-  - id: kirana_tea_rusk_expected
-    value: 24
-    shown: "24"
-    how: "200 x 120/200 x 40/200"
+  - id: stationery_expected
+    value: 22.5
+    shown: "22.5"
+    how: "200 x 90/200 x 50/200"
     used_in: "practice lab set"
-  - id: kirana_tea_rusk_lift
-    value: 1.25
-    shown: "1.25"
-    how: "30 over 24"
+  - id: stationery_lift
+    value: 1.2444
+    shown: "1.24"
+    how: "28 over 22.5"
     used_in: "practice lab set"
-  - id: kirana_sugar
+  - id: stationery_glue
     value: 80
     shown: "80"
-    how: "invented: bills with sugar"
+    how: "invented: bills with glue"
     used_in: "practice lab set"
-  - id: kirana_sugar_tea
-    value: 48
-    shown: "48"
-    how: "invented: bills with sugar and tea"
+  - id: stationery_glue_notebooks
+    value: 36
+    shown: "36"
+    how: "invented: bills with glue and notebooks"
     used_in: "practice lab set"
-  - id: kirana_sugar_tea_conf
-    value: 0.6
-    shown: "0.60"
-    how: "48 of 80"
+  - id: stationery_glue_conf
+    value: 0.45
+    shown: "0.45"
+    how: "36 of 80"
     used_in: "practice lab set"
-  - id: kirana_sugar_tea_expected
-    value: 48
-    shown: "48"
-    how: "200 x 80/200 x 120/200"
+  - id: stationery_glue_expected
+    value: 36
+    shown: "36"
+    how: "200 x 80/200 x 90/200"
     used_in: "practice lab set"
-  - id: kirana_sugar_tea_lift
+  - id: stationery_glue_lift
     value: 1.0
     shown: "1.00"
-    how: "48 over 48"
+    how: "36 over 36"
     used_in: "practice lab set"
-  - id: kirana_tea_share
-    value: 0.6
-    shown: "0.6"
-    how: "120 of 200"
+  - id: stationery_notebooks_share
+    value: 0.45
+    shown: "45 percent"
+    how: "90 of 200"
     used_in: "practice lab set"
-  - id: kirana_rusk_share
-    value: 0.2
-    shown: "0.2"
-    how: "40 of 200"
-    used_in: "practice lab set"
-  - id: kirana_sugar_no_tea
-    value: 32
-    shown: "32"
-    how: "80 less 48"
+  - id: stationery_glue_no_notebooks
+    value: 44
+    shown: "44"
+    how: "80 less 36"
     used_in: "practice lab set"
   - id: practice_clicks
     value: 1500

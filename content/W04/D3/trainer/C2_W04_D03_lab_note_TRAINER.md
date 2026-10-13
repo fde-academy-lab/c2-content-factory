@@ -68,8 +68,8 @@ The practice set's keys are 1c, 2a, 3b, 4b, 5a and 6c.
 
 | Item | Where learners stall | The one hint |
 |---|---|---|
-| Q1, the lift of tea and rusk | Dividing 30 by 40 and calling 0.75 the lift | "What would chance put in the tea-and-rusk cell?" |
-| Q2, a lift of exactly one | Reading sugar to tea, 0.60, as a strong bundle | "Tea is in 60 percent of all bills anyway." |
+| Q1, the lift of notebooks and pens | Dividing 28 by 50 and calling 0.56 the lift | "What would chance put in the notebooks-and-pens cell?" |
+| Q2, a lift of exactly one | Reading glue to notebooks, 0.45, as a strong bundle | "Notebooks are in 45 percent of all bills anyway." |
 | Q3, the four pairs and the rule | Which support the floor refers to: it is the pair's, over all bills | "How many carts would the slot touch?" |
 | Q4, a slot after the discount | Leaving the Rs 3 in, or pricing at Rs 30 | "Which number does the business keep from each add, after the bundle?" |
 | Q5, the scrambled counting cell | Starting from the lift line, or counting before the baskets exist | "Which line uses a name no earlier line has made?" |

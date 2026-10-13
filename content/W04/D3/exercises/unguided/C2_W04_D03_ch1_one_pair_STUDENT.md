@@ -6,7 +6,11 @@ Swiggy Instamart, Pune. The cart page's strip of three suggested items switched 
 the pairs the strip should show, from 40,000 carts placed from 1 to 28 September. Illustrative case:
 the company is real, the situation and the data are synthetic, built for this class.
 
-This is a fifteen-minute drill at the end of chapter 1, on paper, with no code.
+This is a five-minute paper check that opens chapter 8, before the 40,000 carts, on paper, with no
+code.
+
+**Applies:** Support, confidence and lift, derived by counting (chapters 1 to 3; item 2 is chapter 3's
+second route).
 
 **Who needs the answer.** The growth lead, who will put pairs in front of the category manager on
 Friday. A pair read on the wrong count either wastes a slot or loses one that would have paid.

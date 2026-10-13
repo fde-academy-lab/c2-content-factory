@@ -2,6 +2,10 @@
 
 Answers: 1b 2d 3b 4c
 
+**Applies:** Cross-sell and upsell reasoning; expected value in rupees (chapter 9, item 1); The support
+floor and the watch list (chapter 6, item 1); The confidence trap; lift near one (chapter 4, items 3
+and 4); the case's doubts (chapter 10, item 2).
+
 The afternoon priced the strip and defended it. One slot earns Rs 17,280 a day at 6.4 percent
 click-through and Rs 3,240 at 1.2 percent, a gap of Rs 14,040 a day or Rs 4.2 lakh a month per slot.
 Milk holds half of the three slots' impressions, 1.5 slots' worth, so re-ranking recovers Rs 6.3 lakh

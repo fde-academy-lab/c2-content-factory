@@ -282,7 +282,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 1 minute. The rules are the slide a learner photographs. Check question before moving on:
+LIVE, 1 minute 30 seconds. The rules are the slide a learner photographs. Check question before moving on:
 "Roti and sabzi and roti and chaas both read support 0.25. Does support tell the two pairs apart?"
 It does not, which is what chapters 2 and 3 are for. Fill the map's first box with 0.25.
 Transition: chapter 2, confidence.
@@ -333,7 +333,7 @@ icon: check | eyebrow: d | title: 1.00 | body: Every papad order holds dal rice.
 ```
 
 ```notes
-LIVE, 2 minutes. Put the common wrong answer to the room in its own words first: "confidence is
+LIVE, 3 minutes. Put the common wrong answer to the room in its own words first: "confidence is
 the chance the two go together, so it reads the same both ways". Vote, argue, vote again. Option c
 is support, which the room met in chapter 1. Transition: both directions, counted.
 ```
@@ -405,7 +405,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 1 minute. Rule 4 is the question chapter 3 answers: is a confidence of 1.00 special when
+LIVE, 1 minute 30 seconds. Rule 4 is the question chapter 3 answers: is a confidence of 1.00 special when
 chaas is in 9 of 12 orders anyway? Fill the map's second box with 0.60. Transition: chapter 3.
 ```
 
@@ -493,7 +493,8 @@ print((3 / 4) / (4 / 12))  # also 2.25
 ```
 
 ```notes
-LIVE, 4 minutes. Read the picture as two areas (3Blue1Brown): roti's band times sabzi's band is
+LIVE, 8 minutes, 4 on the picture and the formula and 4 in notebook 03, which runs the second
+route and the thirteen pairs' lifts. Read the picture as two areas (3Blue1Brown): roti's band times sabzi's band is
 the box chance gives; the seen box is taller. Show the cancelling step on the board:
 3 / (12 x 4/12 x 4/12) = 3 x 12 / (4 x 4). Explorer: scene W1, sliders for the two shares and the
 overlap. Check question: "Papad is in 5 orders, chaas in 9, both in 3. Chance? Lift?" 3.75 and
@@ -526,7 +527,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes. Rule 4 is this chapter's trap: the number is right and the sentence is wrong.
+LIVE, 2 minutes 30 seconds. Rule 4 is this chapter's trap: the number is right and the sentence is wrong.
 The test that would show cause is this week's Monday faculty session on A/B testing (tentative).
 Checkpoint: three learners say roti and sabzi's three numbers from the board, 0.25, 0.75 and 2.25.
 Fill the map's third box. Transition: chapter 4, the item in every order.
@@ -591,7 +592,7 @@ splits between a and c. Vote, two minutes with a neighbour, vote again. Transiti
 Chance alone puts chaas in 12 x 6/12 x 9/12 = 4.5 of dal rice's 6 orders; 6 are seen, so lift is 6 / 4.5 = 1.33, and 1.00 / 0.75 gives the same. Every item in four or more orders reads confidence 0.60 to 1.00 toward chaas, and every lift with chaas sits between 0.80 and 1.33.
 
 ```notes
-LIVE, 4 minutes. The trap, exactly: 1.00 read as a bundle; the decision it misleads is a combo
+LIVE, 3 minutes. The trap, exactly: 1.00 read as a bundle; the decision it misleads is a combo
 board filled with chaas beside everything, which changes nothing, since chaas was already in nine
 of twelve orders. The check: chaas's own share. The fix: read lift. On twelve orders anything
 from about 0.8 to 1.3 tells the same story, chance; chapter 6 shows why a few orders swing it.
@@ -617,7 +618,7 @@ for share in [0.2, 0.5, 0.9]:
 ```
 
 ```notes
-LIVE, 3 minutes. Explorer: scene W3, the slider that raises the popular item's share while lift
+LIVE, 2 minutes 30 seconds. Explorer: scene W3, the slider that raises the popular item's share while lift
 stays put. Check question: "An item is in 60 percent of a shop's bills. A partner reads confidence
 0.66 toward it. Bundle them?" Lift 1.10, near one: no, since the partner's buyers take it about
 as often as everyone does. Transition: the rules.
@@ -649,7 +650,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes. The Feynman line for the room to repeat: "the item in every basket is the worst
+LIVE, 8 minutes, 2 for the rules and 6 for the drill. The Feynman line for the room to repeat: "the item in every basket is the worst
 bundle partner, because it was going into the basket anyway". Where the room has met this: the
 "frequently bought together" strip on any shopping app. Then the first concept drill, items 1 to
 4 of `exercises/unguided/C2_W04_D03_canteen_concepts_STUDENT.md`, on paper, 6 minutes inside this
@@ -793,7 +794,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes. Check question: "A basket with four items adds how many pairs, and which line
+LIVE, 2 minutes 30 seconds. Check question: "A basket with four items adds how many pairs, and which line
 builds the baskets?" Six; the groupby line. Fill the map's fifth box. Transition: chapter 6.
 ```
 
@@ -914,7 +915,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 1 minute. Fill the map's sixth box. The concept block now pauses with five of six morning
+LIVE, 1 minute 30 seconds. Fill the map's sixth box. The concept block now pauses with five of six morning
 boxes filled; chapter 9 fills the last after lunch. Transition: the case, opened again.
 ```
 
@@ -945,7 +946,7 @@ label: How far? | title: What twelve cannot say | body: Whether a pull on four c
 ```
 
 ```notes
-LIVE, 1 minute. The room knows all three counts from the canteen; here they are a drill on the
+LIVE, 1 minute 30 seconds. The room knows all three counts from the canteen; here they are a drill on the
 case's own carts. Transition: where the case ends.
 ```
 
@@ -988,7 +989,7 @@ carts.
 | C036979 | curd, onions |
 
 ```notes
-LIVE, 12 minutes, the twelve-cart drill with the guided set
+LIVE, 16 minutes, the twelve-cart drill with the guided set
 `exercises/guided/C2_W04_D03_three_counts_STUDENT.md`. Each group holds these twelve as printed
 cards. Say: "sort the pack by whether it has bread, then count how many of those have milk; now
 count how many have milk at all." Counts are called out and written on the board: milk 8, bread 4,
@@ -1260,7 +1261,7 @@ icon: panel-top | eyebrow: d | title: The strip moved down | body: The strip sit
 ```
 
 ```notes
-LIVE, 2 minutes. Vote. A view count says nothing about a rate, which rules out b for anyone who
+LIVE, 1 minute 30 seconds. Vote. A view count says nothing about a rate, which rules out b for anyone who
 thinks it through; let the room find that. Transition: the split.
 ```
 

@@ -2,6 +2,9 @@
 
 Answers: 1c 2a 3b 4a
 
+**Applies:** The support floor and the watch list (chapter 6, items 1, 3 and 4), with lift from chapter
+3; The confidence trap; lift near one (chapter 4, item 2).
+
 The drill read four pairs from 40,000 Instamart carts. Under a floor of 1 percent of carts and a lift
 of at least 1.5, chips and cold drink (3.39) and onions and tomatoes (1.70) earn slots. Bread and milk
 sits at lift 1.04, which is chance. Ice cream and chocolate sauce reads 4.60 on 100 carts, below the

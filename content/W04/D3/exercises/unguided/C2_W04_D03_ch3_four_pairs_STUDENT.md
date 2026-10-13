@@ -6,7 +6,10 @@ shown) fell from 6.1 percent to 3.8 percent. The analyst has computed every pair
 September carts and must now say which pairs fill the strip. Illustrative case: the company is real,
 the situation and the data are synthetic, built for this class.
 
-This is a fifteen-minute drill in chapter 3, on paper, with no code.
+This is a four-minute paper check that opens chapter 10, sat as its first prediction, with no code.
+
+**Applies:** The support floor and the watch list (chapter 6, items 1, 3 and 4), with lift from chapter
+3; The confidence trap; lift near one (chapter 4, item 2).
 
 **Who needs the answer.** The growth lead, who will defend three slots at Friday's review against a
 category manager who wants milk in every one of them. A slot given to the wrong pair costs margin on
