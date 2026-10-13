@@ -7,7 +7,8 @@ Usage:
 The row's Subtopics column is the day's chapter list (decision concept-first-case-second). This
 reads the row, reads the pack's coverage matrix in internal/, and fails the pack when a subtopic
 has no chapter or no notebook carrying its name, when the matrix names a slide, file or item that
-does not exist, or when a case chapter applies no subtopic. Weeks before the decision's
+does not exist, when a case chapter applies no subtopic or comes before a concept chapter it
+applies, or when half1 opens on anything but a concept chapter. Weeks before the decision's
 applies_from_week, build weeks, Saturdays and Week 0 are skipped with an INFO line.
 
 The matrix's shape and every rule applied here are set out in
@@ -39,6 +40,8 @@ SLIDE = re.compile(r"^##\s+[SD](\d+)\.", re.M)
 QHEAD = re.compile(r"^#{2,3}\s+Q(\d+)\b", re.M)
 QREF = re.compile(r"\bQ(\d+)(?:\s*(?:to|-)\s*Q?(\d+))?")
 STEM = re.compile(r"^C2_W\d{2}_(?:D\d{2}|SAT)_(.+)_(?:STUDENT|TRAINER|INTERNAL)\.[A-Za-z0-9]+$")
+NB_NUMBER = re.compile(r"^C2_W\d{2}_D\d{2}_(\d{2})_")
+SECTION_NUMBER = re.compile(r"^SECTION\s*(\d+)")
 
 
 class Report:
@@ -219,13 +222,19 @@ def tables(text):
 
 
 def section_headings(day):
-    """Every '## SECTION' title of the half decks, whitespace collapsed, with its deck."""
+    """Every '## SECTION' title of the half decks, whitespace collapsed, with its deck and its place.
+
+    The place is (the half's number, the line), so half1's chapters come before half2's and a deck's
+    chapters keep the order they are taught in.
+    """
     found = {}
     for deck in sorted((day / "slides").glob("*half*_STUDENT.md")):
-        for line in deck.read_text(encoding="utf-8").splitlines():
-            m = SECTION.match(line)
-            if m:
-                found.setdefault(squash(m.group(1)), deck)
+        m = re.search(r"half(\d+)", deck.name)
+        half = int(m.group(1)) if m else 99
+        for i, line in enumerate(deck.read_text(encoding="utf-8").splitlines()):
+            h = SECTION.match(line)
+            if h:
+                found.setdefault(squash(h.group(1)), (deck, (half, i)))
     return found
 
 
@@ -364,6 +373,40 @@ def check_notebooks(cell, day, name, topics, where, out):
             out.fail(f"{where}: the notebooks' file names together miss {', '.join(miss)} of the Name")
 
 
+def check_numbers(chapters, cell, out):
+    """Warn where a notebook's number is not its chapter's SECTION number."""
+    paths = [p.strip().strip("`") for p in (cell or "").split(";") if p.strip()]
+    if not chapters or not paths or paths[0].lower() in ("none", TO_FILL):
+        return
+    pairs = list(zip(chapters, paths)) if len(chapters) > 1 else [(chapters[0], p) for p in paths]
+    for chapter, p in pairs:
+        n, s = NB_NUMBER.match(pathlib.Path(p).name), SECTION_NUMBER.match(chapter)
+        if n and s and int(n.group(1)) != int(s.group(1)):
+            out.line("WARN", f"{pathlib.Path(p).name} is numbered {n.group(1)} and its chapter is "
+                             f"SECTION {s.group(1)}; a notebook takes its chapter's SECTION number")
+
+
+def check_order(heads, concepts, of, cases, out):
+    """half1 opens on a concept chapter, and every case chapter comes after the concept chapters it applies."""
+    firsts = sorted((place, h) for h, (deck, place) in heads.items() if place[0] == 1)
+    if not firsts:
+        out.fail("slides/*half1*_STUDENT.md holds no '## SECTION' heading, so no concept chapter opens the day")
+    elif firsts[0][1] not in concepts:
+        out.fail(f"half1 opens on '{firsts[0][1]}', which is no subtopic's chapter; the concept block opens "
+                 f"the day")
+    late = 0
+    for chapter, applied in cases:
+        at = heads[chapter][1]
+        for n in applied:
+            for e in of.get(n, []):
+                if heads[e][1] > at:
+                    late += 1
+                    out.fail(f"case chapter '{chapter}' applies subtopic {n} before its concept chapter '{e}'")
+    if firsts and firsts[0][1] in concepts and not late:
+        out.line("PASS", "teaching order: half1 opens on a concept chapter, and every case chapter follows "
+                         "the concept chapters it applies")
+
+
 def check_pack(day, week, slot, bullets, out):
     stem = "SAT" if slot == "SAT" else f"D{int(slot[1:]):02d}"
     matrix = day / "internal" / f"C2_W{week:02d}_{stem}_coverage_INTERNAL.md"
@@ -397,7 +440,7 @@ def check_pack(day, week, slot, bullets, out):
     if len([r for r in added if squash(r["subtopic"]).endswith(ADDED)]) > 1:
         out.line("WARN", f"more than one subtopic is marked {ADDED}; the reference allows one a day")
 
-    named, minutes, uses = set(), 0, {}
+    named, minutes, uses, of, cases = set(), 0, {}, {}, []
     for r in rows:
         for e in re.split(r";\s*(?=(?:##\s*)?SECTION\b)", r["chapter"]):
             uses.setdefault(squash(e.strip().strip("`").lstrip("#")), []).append(r["#"])
@@ -407,7 +450,8 @@ def check_pack(day, week, slot, bullets, out):
             continue
         name = squash(r["name"]) or sub
         where = f"subtopic {num} '{sub}'"
-        sub_ideas, name_ideas = idea_words(sub.replace(ADDED, "")), idea_words(name)
+        bare = sub.replace(ADDED, "").strip()
+        sub_ideas, name_ideas = idea_words(bare), idea_words(name)
         kept = [w for w in sub_ideas if any(same(w, n) for n in name_ideas)]
         if len(kept) * 2 < len(sub_ideas):
             out.line("WARN", f"Name '{name}' keeps {len(kept)} of the subtopic's {len(sub_ideas)} words")
@@ -417,11 +461,15 @@ def check_pack(day, week, slot, bullets, out):
         else:
             entries = [squash(e.strip().strip("`").lstrip("#"))
                        for e in re.split(r";\s*(?=(?:##\s*)?SECTION\b)", r["chapter"])]
+            if len(entries) == 1 and words(name) != words(bare):
+                out.fail(f"{where}: its Name '{name}' is not the subtopic as the row words it; only a "
+                         f"subtopic that spans several chapters shortens its Name")
             for e in entries:
                 if e not in heads:
                     out.fail(f"{where}: '{e}' is no '## SECTION' heading of slides/*half*_STUDENT.md")
                     continue
                 named.add(e)
+                of.setdefault(num.strip(), []).append(e)
                 topic, question = split_title(e)
                 topics.append(topic)
                 if question is None:
@@ -442,6 +490,7 @@ def check_pack(day, week, slot, bullets, out):
                 if miss:
                     out.fail(f"{where}: its chapters together miss {', '.join(miss)} of the Name")
         check_notebooks(r["notebook"], day, name, topics, where, out)
+        check_numbers([e for e in of.get(num.strip(), [])], r["notebook"], out)
         check_slides(r["slides"], decks, where, out)
         items = check_items(r["exercise"], day, where, out)
         quiz = check_kahoot(r["kahoot"], day, where, out)
@@ -484,6 +533,7 @@ def check_pack(day, week, slot, bullets, out):
             bad = [n for n in applied if n not in numbers]
             if bad:
                 out.fail(f"case chapter '{chapter}' applies subtopic {', '.join(bad)}, which the first table lacks")
+            cases.append((chapter, [n for n in applied if n in numbers]))
             check_slides(r.get("slides", ""), decks, f"case chapter '{chapter}'", out)
             nb = (r.get("notebook") or "").strip()
             if not nb or nb.lower() == "none":
@@ -494,10 +544,12 @@ def check_pack(day, week, slot, bullets, out):
                 for p in [p.strip().strip("`") for p in nb.split(";") if p.strip()]:
                     if not (day / p).is_file():
                         out.fail(f"case chapter '{chapter}': notebook {p} does not exist")
-    for h, deck in heads.items():
+                check_numbers([chapter], nb, out)
+    for h, (deck, _) in heads.items():
         if h not in named and h not in in_second:
             out.fail(f"chapter '{h}' in {deck.name} is neither a subtopic's chapter nor a case chapter "
                      f"in the matrix")
+    check_order(heads, named, of, cases, out)
 
 
 def main(argv=None):
@@ -567,7 +619,8 @@ if __name__ == "__main__":
 # A row whose Name is "Guardrails" for "North-star and guardrail metrics", its chapter
 # "SECTION 2: North-star and guardrail metrics: which number to chase?"
 #     The chapter carries the Name (guardrail matches guardrails), and the run prints
-#     WARN  Name 'Guardrails' keeps 1 of the subtopic's 4 words.
+#     WARN  Name 'Guardrails' keeps 1 of the subtopic's 4 words, and, since one chapter teaches it,
+#     FAIL  ... its Name 'Guardrails' is not the subtopic as the row words it.
 # The same subtopic with the Name in full and the chapter "SECTION 2: Guardrails: which number to chase?"
 #     FAIL  ... chapter 'SECTION 2: Guardrails: which number to chase?' does not carry the Name.
 # A chapter "SECTION 4: Definitions: numerator, denominator, window, exclusions: which four lines?"
@@ -576,3 +629,21 @@ if __name__ == "__main__":
 #     FAIL: it carries 1 of the Name's words (definitions) in its file name; it needs 2.
 # data/programme/facts.yaml without decision concept-first-case-second
 #     FAIL naming the missing decision; exit 1 for every target.
+# Throwaway packs in a scratch folder whose path ends W04/D1, W04/D3 or W04/D5, each with the two half
+# decks, the notebooks, a guided set, a Kahoot and the matrix (run on 13 October 2026, then removed):
+#   Monday: SECTIONs 1 to 6 the concept chapters, 7 to 9 the case in half1, 10 and 11 in half2
+#     PASS  teaching order ...; RESULT: PASS (0 failures), with a WARN for each case chapter that
+#     names no notebook.
+#   The same with SECTION 6 moved after SECTION 7, which applies subtopics 1 and 6
+#     FAIL  case chapter 'SECTION 7: ...' applies subtopic 6 before its concept chapter 'SECTION 6: ...'.
+#   The same with SECTION 7, applying subtopics 1 and 4, first in half1
+#     FAIL  half1 opens on 'SECTION 7: ...', which is no subtopic's chapter, and a FAIL for each of
+#     subtopics 1 and 4 taught after it: RESULT: FAIL (3 failures).
+#   The same with SECTION 7's notebook named C2_W04_D01_10_proxy_test_on_twelve_rows_STUDENT.ipynb
+#     WARN  ... is numbered 10 and its chapter is SECTION 7; RESULT: PASS (0 failures).
+#   Wednesday: SECTION 9, the cross-sell concept chapter, opens half2 before SECTION 10 applies it
+#     RESULT: PASS (0 failures).
+#   The same with half1's SECTION 8 applying subtopics 1 to 5
+#     FAIL  case chapter 'SECTION 8: ...' applies subtopic 5 before its concept chapter 'SECTION 9: ...'.
+#   Friday: subtopics 4 and 5 share SECTION 4 and its notebook 04
+#     RESULT: PASS (0 failures).

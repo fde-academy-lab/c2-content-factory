@@ -6,16 +6,18 @@ Every specification below binds the build. Where this file and an older day-pack
 
 A teaching day ships two decks: the morning deck (half one), which carries the ask, the thinking and chapters 1 to 5, and the afternoon deck (half two), which carries chapter 6, the escalated case, the debrief of wrong answers, the second case, the interview drill and the close. Each chapter is opened by its own `## SECTION n:` and matches one notebook by number and title. Their sizes and a chapter's slide sequence are in `the-standard.md`.
 
-**The deck opens on the day's topic and its concept map**, which names every bullet of the row's
-Subtopics column verbatim and in order as the chapters the morning will teach, then shows the case
-ticket in one slide as the destination (from Week 4 on, decision `concept-first-case-second`; Weeks 1
-to 3 open on the scenario in the stakeholder's words and keep that until rebuilt). The concept chapters
-follow, one per subtopic, each on a simple relatable educational example with the thinking drawn
-before any tool; then the case chapters, each naming the subtopics it applies. The concept map and the
-ticket are never cut and never reordered: the September review found that a day opening on a technique
-teaches code rather than analysis, and the October review found that a day opening on a case alone
-hides the curriculum. The deck closes on the sentence the learner would actually send the stakeholder,
-with its caveat and the topics it used.
+**The deck opens on the day's topic, the week map, the topics slide and the concept map**, which name
+every bullet of the row's Subtopics column verbatim and in the row's order, each with the chapter that
+teaches it, then shows the case ticket in one slide as the destination (from Week 4 on, decision
+`concept-first-case-second`; Weeks 1 to 3 open on the scenario in the stakeholder's words and keep
+that until rebuilt). The concept chapters follow, one per subtopic, in the row's order unless the
+week's spine records a reason, each on a simple relatable educational example with the thinking drawn
+before any tool, and a concept chapter may open the afternoon, before the case chapter that applies
+it; then the case chapters, each naming the subtopics it applies. The topics slide, the concept map
+and the ticket are never cut and never reordered: the September review found that a day opening on a
+technique teaches code rather than analysis, and the October review found that a day opening on a case
+alone hides the curriculum. The deck closes on the sentence the learner would actually send the
+stakeholder, with its caveat and the topics it used.
 
 Deck behaviour: visual and thin, narration in the trainer notes, one idea per slide, the day's mental-model diagram repeated at each section boundary with the current part lit, a numbered step card closing every section, and the crux line on the final card. The deck teaches in the spiral order: everyday anchor, whole pipeline shallow, then the day's designated deep stops.
 

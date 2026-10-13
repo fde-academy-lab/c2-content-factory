@@ -32,11 +32,12 @@ each family lands. The trainer day sheet prints the first table as its topic tab
   spine adds that the row does not carry ends with "(added by the spine)" and has a reason in the
   sources list; one is allowed per day, and a row subtopic is never left out.
 - **Name**: the subtopic in the row's words, which the chapter opener's topic and the notebook carry.
-  It is the whole bullet, because the opener prints its topic in full and the pills print only its
-  short question. It shortens only where one subtopic spans several chapters or two subtopics share
-  one, and then it keeps every word that names an idea: Wednesday's "Support, confidence and lift,
-  derived by counting" spans three chapters under the Name "Support, confidence and lift", and it may
-  not shorten to "Support".
+  It is the whole bullet, because the opener prints the topic on its own line in a size that steps
+  down to fit, and the pills print only the short question. It shortens only where one subtopic spans
+  several chapters, and then it keeps every word that names an idea: Wednesday's "Support, confidence
+  and lift, derived by counting" spans three chapters under the Name "Support, confidence and lift",
+  and it may not shorten to "Support". Two subtopics that share a chapter each keep their whole bullet
+  as the Name.
 - **Chapter**: the `## SECTION n:` heading of a `slides/*half*_STUDENT.md` file, verbatim after
   whitespace is collapsed, written `SECTION n: <topic>: <short question>?`. The topic carries the
   Name; the short question starts lower-case, ends in a question mark and runs to about 24
@@ -53,15 +54,17 @@ each family lands. The trainer day sheet prints the first table as its topic tab
 - **Slides**: the deck and the slide numbers the chapter spans, `half1 S5 to S10` or a list such as
   `half1 S5, S7; half2 S40`; a number may name an `S` slide or a self-study `D` slide.
 - **Notebook**: the path of the concept notebook, or several with semicolons where the subtopic spans
-  several chapters, paired with the chapters in order. Its first markdown cell's first `# ` line starts
-  with the Name or with its chapter's topic. Its file name's topic half carries the Name's idea-words
-  in snake case: at least two of them (every one when the Name has fewer than three). A file-name
-  token matches a Name word when the two are equal, or when either is a prefix of the other and the
-  shorter has at least four letters (`guardrails` matches `guardrail`, `resistant` matches `resist`),
-  so `02_north_star_guardrails` passes for "North-star and guardrail metrics" and
-  `04_definition_lines` fails for "Definitions: numerator, denominator, window, exclusions", which
-  it matches on "definition" alone. Across a spanning set, each file carries at least one idea-word
-  and the set carries every one.
+  several chapters, paired with the chapters in order. Its number is its chapter's SECTION number,
+  since SECTION numbers run in deck order, `half1` then `half2`; the lab notebook, which the matrix
+  does not list, takes the number after the day's last SECTION. Its first markdown cell's first `# `
+  line starts with the Name or with its chapter's topic. Its file name's topic half carries the Name's
+  idea-words in snake case: at least two of them (every one when the Name has fewer than three). A
+  file-name token matches a Name word when the two are equal, or when either is a prefix of the other
+  and the shorter has at least four letters (`guardrails` matches `guardrail`, `resistant` matches
+  `resist`), so `02_north_star_guardrails` passes for "North-star and guardrail metrics" and
+  `04_definition_lines` fails for "Definitions: numerator, denominator, window, exclusions", which it
+  matches on "definition" alone. Across a spanning set, each file carries at least one idea-word and
+  the set carries every one.
 - **Exercise items**: at least one item, as `<file stem> Q<n>`, where the stem is any part of the
   file's path under `exercises/` (`guided`, `lab_set`, `proxy_test_set`), the file sits outside
   `solutions/`, and it holds a `## Q<n>` or `### Q<n>` heading; `Q1 to Q3` and `Q1, Q4` name several.
@@ -77,19 +80,24 @@ every case chapter pairs with one.
 ## What fails
 
 A subtopic with no matrix row; a matrix row whose Subtopic is neither a row bullet nor marked "(added
-by the spine)"; a matrix row with no chapter heading whose topic carries its Name, or no notebook
-whose file name and first heading carry it; a slide, file or item named that does not exist, or a
-cell still reading "to be filled"; a case chapter opener (any `## SECTION` of a half deck not named
-in the first table) absent from the second table or applying no subtopic; two subtopics sharing a
-chapter whose topic carries only one. The script also fails when it cannot find the row, the row's
-Subtopics section or the matrix itself.
+by the spine)"; a Name other than the subtopic's own words on a subtopic that one chapter teaches; a
+matrix row with no chapter heading whose topic carries its Name, or no notebook whose file name and
+first heading carry it; a slide, file or item named that does not exist, or a cell still reading "to
+be filled"; a case chapter opener (any `## SECTION` of a half deck not named in the first table)
+absent from the second table or applying no subtopic; two subtopics sharing a chapter whose topic
+carries only one. The teaching order fails too: `half1` must open on a concept chapter, and a case
+chapter must come after every concept chapter of each subtopic it applies, reading `half1` before
+`half2` and each deck from the top, so a concept chapter that opens `half2` passes when the case
+chapter that applies it follows it there. The script also fails when it cannot find the row, the
+row's Subtopics section or the matrix itself.
 
 ## What warns
 
-A Name that keeps fewer than half the subtopic's idea-words; an opener named in the matrix whose
-short question is missing or runs past about 24 characters; more than one subtopic marked "(added by
-the spine)"; a case chapter with no notebook. The warnings go to the trainer's cold read, which
-judges the quality of a name: the script proves presence by name and never edits a file.
+A Name that keeps fewer than half the subtopic's idea-words; an opener named in the matrix whose short
+question is missing or runs past about 24 characters; more than one subtopic marked "(added by the
+spine)"; a case chapter with no notebook; a notebook whose number is not its chapter's SECTION number.
+The warnings go to the trainer's cold read, which judges the quality of a name: the script proves
+presence by name and never edits a file.
 
 ## When the gate applies
 

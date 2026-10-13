@@ -182,7 +182,7 @@ content/W{ww}/SAT/{folder}/C2_W{ww}_SAT_{topic}_{AUDIENCE}.{ext}
 
 Read `content/README.md` before pass 1: it names the subfolder each artifact belongs in, the different shapes a build day and a Saturday take, and the rule that no file sits loose at a day folder's root. The topic half of the name carries only what the folder and the extension do not already say.
 
-Examples: `slides/C2_W04_D03_half1_STUDENT.pptx`, `notebooks/C2_W04_D03_01_support_confidence_and_lift_STUDENT.ipynb` (a concept notebook, named by its subtopic), `notebooks/C2_W04_D03_07_pairs_table_STUDENT.ipynb` (a case notebook, named by its step), `internal/C2_W04_D03_coverage_INTERNAL.md`, `takehome/C2_W04_D03_brief_STUDENT.md`, `trainer/C2_W04_D03_day_sheet_TRAINER.md`.
+Examples: `slides/C2_W04_D03_half1_STUDENT.pptx`, `notebooks/C2_W04_D03_01_support_by_counting_STUDENT.ipynb` (a concept notebook, named by its subtopic), `notebooks/C2_W04_D03_08_case_pairs_table_confidence_trap_STUDENT.ipynb` (a case notebook, named by its step and the subtopics it applies, numbered as its SECTION), `internal/C2_W04_D03_coverage_INTERNAL.md`, `takehome/C2_W04_D03_brief_STUDENT.md`, `trainer/C2_W04_D03_day_sheet_TRAINER.md`.
 
 ## The generation prompt
 

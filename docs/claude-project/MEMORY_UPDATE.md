@@ -20,11 +20,14 @@ Remember:
   week map, and the topics slide and the concept map, which name every subtopic of the curriculum row,
   verbatim and in the row's order, each with the chapter that teaches it; then the case ticket in one
   slide, as the destination. The concept block follows, 60 to 120 minutes: one chapter per subtopic,
-  its opener titled with the subtopic as the row words it and then a short question, taught from zero
-  on a simple, complete, relatable educational example with invented numbers (a canteen that pays per
-  token, ten tea-stall orders, two coaching batches, four days of cups), climbing from the
-  misconception and a prediction through the hand count and the picture to the formula or rule named
-  last, with three to five rules and a map node, and paired with one short notebook of the same name.
+  in the row's order unless the week's spine records a reason, its opener titled with the subtopic as
+  the row words it and then a short question, taught from zero on a simple, complete, relatable
+  educational example with invented numbers (a canteen that pays per token, a hostel canteen's twelve
+  lunch orders, two coaching batches, four days of cups), climbing from the misconception and a
+  prediction through the hand count and the picture to the formula or rule named last, with three to
+  five rules and a map node, and paired with one short notebook of the same name, which loads the
+  example's table from the day's data and prints it in full. A concept chapter may open the
+  afternoon, before the case chapter that applies it.
 - Then the case carries the day. An engineering case at a company the learners use, such as Uber,
   Ola, Swiggy, Zomato, Blinkit, Zepto, Flipkart, Amazon India, PhonePe, Google or an AI startup, in a
   named city, state or country, with the metric, its value before and after with dates, the data the

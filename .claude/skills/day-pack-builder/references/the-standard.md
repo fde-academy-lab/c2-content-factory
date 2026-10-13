@@ -30,21 +30,22 @@ built before it and keep their shape until they are rebuilt.
    row's order, each with the chapter that teaches it, its minutes and its notebook) and a concept
    map: a mermaid map that names the same bullets, each node joined to the earlier and later ideas it
    depends on, with today's nodes lit and the case's node beneath them. The chapters follow the row's
-   order unless the week's spine records a reason to teach them in another. Slide five is the case
-   ticket in one slide, as the destination the topics will be used on.
-   Then the concept block: one chapter per subtopic, about 8 to 25 minutes each and 60 to 120 minutes
-   in all, each opener written `## SECTION n: <subtopic>: <short question>?`, with the subtopic as
-   the row words it, a short question of about 24 characters that the pills print, and an italic
-   promise saying what the chapter delivers. A concept chapter teaches from zero on one simple, complete,
-   relatable educational example with invented numbers labelled invented (a canteen that pays per
-   token, ten tea-stall orders, two coaching batches, four days of cups), in this order: the broken
-   default or the misconception with a prediction, the hand count on the tiny numbers, the picture
-   that makes the mechanism visible, the formula or rule named last, a glimpse of three to six lines
-   of code that reproduce the count, three to five one-sentence rules a learner photographs, and the
-   map node that links the idea to the previous one, the next one and the case chapter that applies
-   it. Each concept chapter pairs with one notebook of 8 to 18 cells carrying the same name. The row's
-   Subtopics column is the chapter list; a subtopic the spine adds carries "(added by the spine)" and
-   its reason, and a subtopic the row carries is never dropped.
+   order unless the week's spine records a reason to teach them in another, and a concept chapter may
+   open the afternoon, before the case chapter that applies it. Slide five is the case ticket in one
+   slide, as the destination the topics will be used on. Then the concept block: one chapter per
+   subtopic, about 8 to 25 minutes each and 60 to 120 minutes in all, each opener written
+   `## SECTION n: <subtopic>: <short question>?`, with the subtopic as the row words it, a short
+   question of about 24 characters that the pills print, and an italic promise saying what the chapter
+   delivers. A concept chapter teaches from zero on one simple, complete, relatable educational
+   example with invented numbers labelled invented (a canteen that pays per token, a hostel canteen's
+   twelve lunch orders, two coaching batches, four days of cups), in this order: the broken default or
+   the misconception with a prediction, the hand count on the tiny numbers, the picture that makes the
+   mechanism visible, the formula or rule named last, a glimpse of three to six lines of code that
+   reproduce the count, three to five one-sentence rules a learner photographs, and the map node that
+   links the idea to the previous one, the next one and the case chapter that applies it. Each concept
+   chapter pairs with one notebook of 8 to 18 cells carrying the same name. The row's Subtopics column
+   is the chapter list; a subtopic the spine adds carries "(added by the spine)" and its reason, and a
+   subtopic the row carries is never dropped.
 1. **The case carries the day.** After the concept block, the case: an engineering case at a company the learners use (Uber,
    Ola, Swiggy, Zomato, Blinkit, Zepto, Flipkart, Amazon India, PhonePe, Google, an AI startup and the
    like) in a named city, state or country: the product surface, the metric, its value before and
@@ -91,15 +92,17 @@ built before it and keep their shape until they are rebuilt.
      come first, then the derivation on the twelve rows, the formula recalled by its concept chapter's
      name, a glimpse of the code, the trap shown exactly, and a map slide that links the idea to
      earlier and later ones.
-   - *Notebooks*, one per chapter, named as the chapter is: a concept notebook carries its subtopic in
-     its file name and its first heading (`C2_W04_D01_02_north_star_and_guardrails_STUDENT.ipynb`,
-     opening `# North-star and guardrail metrics: which number does the plan chase, and which must not
-     fall?`), builds the educational example inline, labelled invented and recorded in the facts file
-     under `toy_` ids, counts it by hand and by code and asserts the two agree, draws the picture, names
-     the formula last and ends on the rules; a case notebook codes along from the raw table, one plain
-     sentence above each cell, the hand count first, then the full-data step, the trap, the second
-     route asserted equal and the AI-company variant at the end, in ponytail-small code, and its first
-     cell names the subtopics it applies and the concept notebooks that taught them.
+   - *Notebooks*, one per chapter, named and numbered as the chapter is: a concept notebook carries
+     its subtopic in its file name and its first heading
+     (`C2_W04_D01_02_north_star_guardrails_STUDENT.ipynb`, opening
+     `# North-star and guardrail metrics: which number does the plan chase, and which must not fall?`),
+     loads its educational example, which the day's seeded generator writes to `data/` and the facts
+     file records under `toy_` ids, prints it in full in its first cells, labelled invented, counts it
+     by hand and by code and asserts the two agree, draws the picture, names the formula last and ends
+     on the rules; a case notebook codes along from the raw table, one plain sentence above each cell,
+     the hand count first, then the full-data step, the trap, the second route asserted equal and the
+     AI-company variant at the end, in ponytail-small code, and its first cell names the subtopics it
+     applies and the concept notebooks that taught them.
    - *Exercises* are a ladder from L1 to L6 in the takeUforward manner, each item tagged with its level
      and the kind of company whose screens ask it; worked examples fade (one fully worked, one half
      worked, then blank); at least a third are design items; one re-runs the method on Kalpa; and some
@@ -186,7 +189,7 @@ Lesson material carries durations only.
 | Block | Minutes | What runs |
 |---|---|---|
 | Morning | 180 | The topic, the week map, the topics slide, the concept map and the ticket as the destination (10); the concept block, one chapter per row subtopic of about 8 to 25 minutes (60 to 120); a break (10); the first case chapters on the twelve rows and the full data (the rest) |
-| Afternoon | 180, or 60 before an IITGN block | The remaining case chapters (the trap, the caveats, the decision with its cost); the unguided round; the interview room; the Kahoot and tomorrow's ask (15); on a day with no block, the second case, the written case or the studio as the spine sets them |
+| Afternoon | 180, or 60 before an IITGN block | A concept chapter the spine moves to the afternoon, before the case chapter that applies it; the remaining case chapters (the trap, the caveats, the decision with its cost); the unguided round; the interview room; the Kahoot and tomorrow's ask (15); on a day with no block, the second case, the written case or the studio as the spine sets them |
 | After | The lab's length | The TA-led practice lab, run from the day's practice set |
 
 Where the trainer's minutes are tight (a faculty day leaves 240), the concept block takes its minutes
@@ -263,9 +266,12 @@ A chapter opener is the one heading that leads with a topic. It is written
 against lagging indicators"), the short question is what the pills and footers print ("which one
 moves first?"), and the italic promise beneath says what the chapter delivers or asks the fuller
 question ("Which of the city's numbers moves before the north star, and which only confirms it
-later?"). A topic that has a colon of its own splits at the last colon. The day's concept map slide prints every concept chapter's
-topic, so a learner who reads only the map and the openers sees the day's topics in the row's order,
-and a learner who reads the short questions and the promises sees the day's argument.
+later?"). A topic that has a colon of its own splits at the last colon. The opener prints the topic
+on its own line in a size that steps down to fit, so a concept chapter's topic is the row's subtopic
+in full and is never shortened for the slide, and the pills print only the short question. The day's
+concept map slide prints every concept chapter's topic, so a learner who reads only the map and the
+openers sees the day's topics in the row's order, and a learner who reads the short questions and
+the promises sees the day's argument.
 
 Under every chapter heading, and under a notes or dossier section heading, two short paragraphs
 follow. **Who needs the answer.** names the person, the decision the answer feeds and what a wrong
@@ -305,14 +311,15 @@ reading `scripts/brand.py`. `half1` is the morning deck and `half2` the afternoo
   mermaid map of every subtopic in the row's order, today's nodes lit, each node's text the subtopic
   as the row words it), then the case ticket in one slide as the destination. Then comes one chapter
   per notebook: the concept chapters, each opened by `## SECTION n: <subtopic>: <short question>?`
-  with the subtopic as the row words it and an italic promise saying what the chapter delivers; then
-  the case chapters, each opened the same way with the case step and the subtopics it applies as its
-  topic and the decision riding on it in the promise, its number and title matching the notebook's.
-  The slide after each opener is the
-  chapter's map: the subtopic verbatim, **Who needs the answer.** in a sentence, the chapter's smaller
-  questions as a `timeline`, and, on a case chapter, the line "Applies: ..." naming the concept
-  chapters it uses. In Weeks 1 to 3 the cover quotes the client (`Quote:` and `Who:`) and the chapter
-  titles are short questions, and those packs keep that until rebuilt.
+  with the subtopic as the row words it and an italic promise saying what the chapter delivers (one
+  the spine moves to the afternoon opens `half2`, before the case chapter that applies it); then the
+  case chapters, each opened the same way with the case step and the subtopics it applies as its topic
+  and the decision riding on it in the promise, its number and title matching the notebook's. The
+  slide after each opener is the chapter's map: the subtopic verbatim, **Who needs the answer.** in a
+  sentence, the chapter's smaller questions as a `timeline`, and, on a case chapter, the line
+  "Applies: ..." naming the concept chapters it uses. In Weeks 1 to 3 the cover quotes the client
+  (`Quote:` and `Who:`) and the chapter titles are short questions, and those packs keep that until
+  rebuilt.
 - A chapter's slides run the notebook's rhythm, about 10 to 14 of them: the need and who asks, the
   real company that faces it, the options with their sizing and the best-fit call, the thinking as a
   picture, and for each build step a predict slide, the logic or code in one short block, the result
@@ -338,16 +345,19 @@ The helper is `scripts/c2kit.py`, and `scripts/nb_make.py` assembles a notebook 
 in its own folder. `content/W01/D1/notebooks/` shows the rhythm; the chapter structure below is the bar.
 
 - One notebook per chapter, named and numbered as the deck's chapter, and each building on the one
-  before it. A concept notebook's file name carries its subtopic in snake case
-  (`C2_W04_D01_03_leading_against_lagging_STUDENT.ipynb`) and its first cell opens
-  `# <the subtopic as the row words it>: <the chapter's question>`, then **Who needs the answer.** and
-  **The questions on the way.**, then the educational example's table built inline and labelled
-  invented (the one place a notebook may hold records in a cell, since a learner must see all of
-  them; the numbers sit in the facts file under `toy_` ids). A case notebook's first cell names the
-  week, the day and the chapter, asks the chapter's question in full, gives **Who needs the answer.**
-  and **The questions on the way.**, names the metric at stake, names the subtopics it applies and
-  the concept notebooks that taught them, and says in a sentence or two what the previous notebook
-  found, with its number, and what this one adds.
+  before it. SECTION numbers run in deck order, `half1` then `half2`, and a notebook's number is its
+  chapter's SECTION number, so the morning's concept notebooks come first and a concept chapter that
+  opens `half2` takes its place in that count; a chapter with no notebook leaves its number unused,
+  and the lab notebook takes the number after the day's last SECTION. A concept notebook's file name
+  carries its subtopic in snake case (`C2_W04_D01_03_leading_lagging_STUDENT.ipynb`) and its first
+  cell opens `# <the subtopic as the row words it>: <the chapter's question>`, then **Who needs the
+  answer.** and **The questions on the way.**, then the educational example, which the day's seeded
+  generator writes to `data/` and the facts file records under `toy_` ids: the notebook loads it and
+  prints it in full, labelled invented, since a learner must see every record. A case notebook's first
+  cell names the week, the day and the chapter, asks the chapter's question in full, gives **Who needs
+  the answer.** and **The questions on the way.**, names the metric at stake, names the subtopics it
+  applies and the concept notebooks that taught them, and says in a sentence or two what the previous
+  notebook found, with its number, and what this one adds.
 - A notebook stands on its own. Its setup cell loads its own data, it runs cold with nothing else
   open, and it recomputes or restates whatever it takes from an earlier notebook. Where the earlier
   finding is a plant, it restates the rule the room drew from it, never the planted record.

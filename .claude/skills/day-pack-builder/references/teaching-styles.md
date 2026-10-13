@@ -36,9 +36,11 @@ argument with a neighbour and a revote on any question that splits the room.
 ## How a concept chapter blends them
 
 A concept chapter teaches one row subtopic from zero on its educational example, and runs in this
-order, each beat naming its style. The example is simple, complete and relatable: a canteen, a tea
-stall, a coaching centre, a chai shop's Sundays, with invented numbers small enough to count on one
-hand and labelled invented wherever they appear.
+order, each beat naming its style. The example is simple, complete and relatable: a canteen's
+tokens, a hostel canteen's twelve lunch orders, a coaching centre, a chai stall's Sundays, with
+invented numbers small enough to count on one hand and labelled invented wherever they appear. The
+day's seeded generator writes its table to `data/` and the facts file records its numbers under
+`toy_` ids.
 
 1. The broken default: what goes wrong without this idea, in one line on the example (lesson-architecture's slot 3).
 2. The misconception said aloud and a prediction voted, on the example's numbers (Veritasium, peer instruction).
@@ -73,10 +75,11 @@ both (lesson-architecture's two-examples rule).
   slides, beat 3 on the board or a slide of tiny numbers, beat 5 as a short code glimpse, and beat 9
   as the chapter's closing line.
 - **Notebooks** come one per chapter. A concept notebook carries its chapter's beats 3 to 7: the
-  example built inline and labelled invented, the count by hand and by code asserted equal, the
-  picture, the formula as a function, the faded second example as a your-turn cell, and the rules. A
-  case notebook carries beats 3, 5 and 6: the twelve rows reproduced, the code-along with one sentence
-  above each cell, the your-turn cell where the trap is found, and the second route that agrees.
+  example loaded from `data/` and printed in full, labelled invented, the count by hand and by code
+  asserted equal, the picture, the formula as a function, the faded second example as a your-turn
+  cell, and the rules. A case notebook carries beats 3, 5 and 6: the twelve rows reproduced, the
+  code-along with one sentence above each cell, the your-turn cell where the trap is found, and the
+  second route that agrees.
 - **The explorer** carries beats 1, 2 and 4 as scenes: a question, a prediction, a moving picture, a
   number, then the formula.
 - **Exercises** carry beat 8 as a tagged ladder from L1 to L6, with fading worked examples and some
