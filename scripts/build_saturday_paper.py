@@ -104,7 +104,7 @@ HOW = {
     "Applied maths": "Show the working, then the answer.",
     "Order the steps": "Write the letters in the right order.",
 }
-OPTION = re.compile(r"^\(([a-f])\)\s*(.+)$")
+OPTION = re.compile(r"^\(([a-g])\)\s*(.+)$")
 SET_START = re.compile(r"^SET (\d+)\. SITUATION:\s*(.+)$")
 SET_CONT = re.compile(r"^SET \d+, continued\.?$")
 TAGS = ["[S]", "[F]", "[SV]", "[D]"]
@@ -154,7 +154,7 @@ def read_bank(path=TRACKER):
 def letters_of(key):
     """'a, b, d' as ['a', 'b', 'd']; anything else as []."""
     k = str(key or "").strip().lower()
-    return sorted(x.strip() for x in k.split(",")) if re.fullmatch(r"[a-f](\s*,\s*[a-f])*", k) else []
+    return sorted(x.strip() for x in k.split(",")) if re.fullmatch(r"[a-g](\s*,\s*[a-g])*", k) else []
 
 
 def relabel(lines, order):
@@ -243,7 +243,7 @@ def apply_edits(bank, edits):
                 continue
             lines = item["text"].split("\n")
             changed, missing = False, []
-            order = re.sub(r"[^a-f]", "", str(edit.get("order") or "").lower())
+            order = re.sub(r"[^a-g]", "", str(edit.get("order") or "").lower())
             if order:
                 # An order is written against the tracker's key at the time; once the tracker
                 # carries the relabelling, laying it again would scramble the options.
@@ -253,7 +253,7 @@ def apply_edits(bank, edits):
                                                        "it was written against"))
                     continue
                 if now != was:
-                    folded = set(was) <= set(order) and now == sorted("abcdef"[order.index(x)] for x in was)
+                    folded = set(was) <= set(order) and now == sorted("abcdefg"[order.index(x)] for x in was)
                     notes.append((paper, no, "folded" if folded else "broken",
                                   "the tracker already carries this order" if folded else
                                   f"the tracker's key is now {', '.join(now)}, not the "
@@ -573,7 +573,7 @@ def guess_chance(item):
     return Fraction(0)
 
 
-MULTI = re.compile(r"^[a-f](\s*,\s*[a-f])+$")
+MULTI = re.compile(r"^[a-g](\s*,\s*[a-g])+$")
 
 
 def guessing_floor(printed):
@@ -1272,7 +1272,7 @@ def upper_key(key):
     """A letter key as the Word files print it: 'a, b, d' becomes 'A, B, D'. Words, numbers and
     true or false stay as the bank writes them."""
     k = str(key).strip()
-    return k.upper() if re.fullmatch(r"[a-fA-F](\s*,\s*[a-fA-F])*", k) else k
+    return k.upper() if re.fullmatch(r"[a-gA-G](\s*,\s*[a-gA-G])*", k) else k
 
 
 def tf_key(key):
@@ -1361,12 +1361,15 @@ def sheet_rows(printed, with_key=False):
                 row["key"] = tf_key(i["key"])
             tf.append(row)
         else:
-            row = {"q": i["q"], "kind": kind, "kindLabel": KIND_SHEET[kind], "steps": len(options)}
+            # An ordering item that leaves lines out is answered in as many letters as its key holds,
+            # so the sheet gives it that many boxes, never one per line printed.
+            steps = len(letters_of(i["key"])) if kind == "order" else 0
+            row = {"q": i["q"], "kind": kind, "kindLabel": KIND_SHEET[kind], "steps": steps or len(options)}
             if with_key:
                 row["key"] = upper_key(i["key"]) if kind in ("order", "bank", "match") else str(i["key"])
             written.append(row)
     width = max([r["count"] for r in letters] + [4])
-    return {"letters": letters, "tf": tf, "written": written, "letterColumns": list("ABCDEF"[:width])}
+    return {"letters": letters, "tf": tf, "written": written, "letterColumns": list("ABCDEFG"[:width])}
 
 
 def pacing(rows):
@@ -1455,6 +1458,9 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
                 " | ungraded")
     timed = sum(i["min"] for i in printed)
     company = " ".join(str(source.get("company") or "").split())
+    # The line on reading code prints only where the paper carries code, in an exhibit or a stem.
+    has_code = any(b.get("code") or any(str(ln).lstrip().startswith("```") for ln in b.get("lines") or [])
+                   for s in sections for b in s["blocks"])
     rules = [
         ["Time", f"{minutes} minutes in one sitting for {count(n)}, which the blueprint paces at "
                  f"{timed:g} minutes. Each part gives its minutes as a guide; move on when an item is "
@@ -1467,8 +1473,8 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
         ["Levels", "Every item shows its level beside its number, easy, medium or hard. A hard item is "
                    "several steps on an exhibit, never an obscure fact."],
         ["Exhibits", "An exhibit is printed once, labelled by its part as Exhibit 2A, 2B, and every item "
-                     "that reads it follows it. Read code and queries as written: Python 3 and "
-                     "PostgreSQL unless the item says otherwise."],
+                     "that reads it follows it." + (" Read code and queries as written: Python 3 and "
+                                                   "PostgreSQL unless the item says otherwise." if has_code else "")],
         ["Afterwards", "Papers are swapped and marked against the key, then the discussion takes the "
                        "items the room missed most. The paper is ungraded and ranks nobody; the room's "
                        "rates by part and by tag set Monday's revision."],
@@ -1974,3 +1980,10 @@ if __name__ == "__main__":
 #     items of their type, no levels printed, and no item-analysis workbook.
 # An exhibit whose mermaid fence has a syntax error, built with --docx
 #     The build stops: the room sits the Word paper, so an exhibit that cannot render is a failure.
+# An ordering addition with seven lines, (a) to (g), four of them keyed
+#     All seven print as options a) to g) in the markdown and A. to G. in the Word paper, in order,
+#     and the answer sheet gives the item four boxes, one per letter of its key; an eighth line, (h),
+#     prints as stem text.
+# A paper with no code in any exhibit or stem, built with --docx
+#     The Word paper's Exhibits rule leaves out the line on reading Python 3 and PostgreSQL; a paper
+#     with a code exhibit or a fenced stem keeps it.
