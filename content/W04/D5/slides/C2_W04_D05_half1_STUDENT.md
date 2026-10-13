@@ -1,4 +1,4 @@
-# Forecasting basics: how much the plan delivers
+# Forecasting basics: how much does the plan deliver?
 
 Week 4, Day 5. Half one.
 
@@ -64,11 +64,14 @@ class. Explorer: the home screen, Friday lit. Transition: the five topics.
 | 5 to 7 | The case: Flipkart's Lucknow fulfilment centre | 102 minutes | 05 to 07, one per case chapter |
 | Lab | The same method on Kalpa Retail's revenue | the lab's length | 08 |
 
+Chapter 4 tests a curve at the stall (invented) first, the owner's nephew's; the vendor's curve meets the same test at Flipkart in chapter 6.
+
 ```notes
 LIVE, 2 minutes. Read the topic column aloud: these are the five subtopics of the curriculum row, in
 its order. Subtopics 4 and 5 share chapter 4 because both rest on one decision: a forecast earns
 trust by beating the baseline on periods it never saw, and it is good enough when a better one
-would change no decision. Say the minutes. The concept map follows. Transition: how the topics join.
+would change no decision worth its cost. Say each chapter's minutes from the table, then turn to the
+concept map. Transition: how the topics join.
 ```
 
 ---
@@ -112,11 +115,11 @@ Explorer: scene F1. Transition: the destination.
 | On the ticket | What it says |
 |---|---|
 | Company, city, surface | Flipkart's Lucknow fulfilment centre (FC), the warehouse where orders are packed and shipped: outbound shipments a week, and the packer shifts that pack them |
-| Before and after | An ordinary week in late 2024 shipped about 210,000; 104 weeks run from the week of 30 September 2024 to 21 September 2026, with a festive peak each year |
+| Before and after | Before: an ordinary week in late 2024 shipped about 210,000. After: the week of 21 September 2026, the latest, shipped 232,200, and 2025's busiest week 418,200; 104 weeks in all |
 | The two forecasts | A vendor's model: the eight festive weeks 22 percent above the same weeks last year; finance: those weeks plus 4 percent; eighteen percentage points apart |
 | The data | `weekly_shipments` (week_start, shipments, packer_shifts_worked, overtime_shifts); `vendor_forecast` (week_start, vendor_shipments, kind); `calendar` (week_start, diwali_week, sale_week); `costs` (item, rs, low, high) |
 | The ask, due Friday | Which forecast goes to the plan for the eight weeks beginning 12 October to 30 November 2026, how wrong could it be, and how many packer shifts a week |
-| Caveats | Diwali moves by weeks each year; a late shipment costs more than an idle shift |
+| Caveats | Diwali moves by weeks each year; a late shipment costs more than a spare one, Rs 25 against Rs 5.42 |
 
 Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
@@ -142,7 +145,7 @@ day's own generator wrote. Notebook 01 runs beside the chapter. Transition: who 
 ## S6. Four readings come before any forecasting rule
 *Who needs the reading, and which questions lead to it?*
 
-A **time series** is one number per equal period, in time order: cups a day here, shipments a week at Flipkart, revenue a month at Kalpa. A **forecast** is a number for a period nobody has seen yet.
+A **time series** is one number per equal period, in time order: cups a day at the stall (invented), shipments a week at Flipkart, revenue a month at Kalpa. A **forecast** is a number for a period nobody has seen yet.
 
 **Who needs the answer.** The stall's owner orders milk every evening for the next three days, and Flipkart's FC planner books packer shifts weeks ahead; a reading that takes a weekly dip for a fall, or a rise for growth, orders milk that sours and packers who stand idle.
 
@@ -150,7 +153,7 @@ A **time series** is one number per equal period, in time order: cups a day here
 
 ```timeline
 label: The beat | title: What repeats, how often? | body: A Sunday dip every 7 days.
-label: The climb | title: Is the stall growing? | body: The same day, a season apart.
+label: The climb | title: Is the stall growing? | body: The same day, a year apart.
 label: The year | title: What repeats yearly? | body: Exams up, Diwali week down.
 label: The rest | title: What is left over? | body: A wobble of a few cups. | tone: dark
 ```
@@ -187,7 +190,7 @@ first instinct; the next slide shows why fourteen days settle it. Transition: th
 
 ![The stall's first fourteen days, Sundays in red (invented numbers)](../whiteboards/C2_W04_D05_stall_first_fortnight_STUDENT.png)
 
-The answer is b. Both Sundays sold about 60 (60 and 61), every other day about 100. A repeat on a fixed beat is a **season**, and its **length** is the number of periods before it repeats: 7 days here, 52 weeks in Flipkart's year. **The plausible wrong number:** plus 67 percent, Monday over Sunday. **The decision it misleads:** two-thirds more milk, which sours. **The check:** Monday against the Monday before, 100 against 100. **The fix:** compare the same point a season apart.
+The answer is b. Both Sundays sold about 60 (60 and 61), every other day about 100. A repeat on a fixed beat is a **season**, and its **length** is the number of periods before it repeats: 7 days here, 52 weeks in Flipkart's year. **The plausible wrong number:** plus 67 percent, Monday over Sunday. **The decision it misleads:** two-thirds more milk, which sours. **The check:** Monday against the Monday before, 100 against 100. **The fix:** compare the same point a season apart, Monday against a Monday.
 
 ```notes
 LIVE, 3 minutes. 3Blue1Brown's move: the picture first, the word season after it. Count the bars
@@ -197,7 +200,7 @@ without the beat fooling you.
 
 ---
 
-## S9. Read growth a season apart: up 10 percent a year
+## S9. Read growth a year apart: up 10 percent a year
 *How is growth read without the weekly beat fooling you?*
 
 | The comparison, 52 weeks apart | 2024 | 2025 | Ratio |
@@ -206,12 +209,14 @@ without the beat fooling you.
 | Monday 7 October 2024 against Monday 6 October 2025 | 100 | 110 | 1.10 |
 | The fourteen days from 30 September 2024, against the fourteen from 29 September 2025 | 1,315 | 1,450 | 1.10 |
 
-Count it aloud: 110 over 100 is 1.10, up 10 percent in a year; 66 over 60 is 1.10 again; the two fortnights give 1,450 over 1,315, about 1.10. The **trend** is the slow climb, read by comparing the same point a season apart, and Sunday's share of an ordinary day stays 0.6 in both years, 60 over 100 and 66 over 110, while the level grows.
+Count it aloud, on the stall's invented cups: 110 over 100 is 1.10, up 10 percent in a year; 66 over 60 is 1.10 again; the two fortnights give 1,450 over 1,315, about 1.10. The **trend** is the slow climb. A week apart shows only a week's change, too small to see; a year apart, 364 days, shows the year's growth and clears the yearly seasons too. Sunday's share of an ordinary day stays 0.6 in both years, 60 over 100 and 66 over 110, while the level grows.
 
 ```notes
-LIVE, 4 minutes. StatQuest's move: tiny numbers, every step said aloud. Ask why this Monday against
-last Monday does not show the growth: a week's growth is too small to see under a wobble of a few
-cups, so a year apart is the comparison that shows it. Transition: a whole year at once.
+LIVE, 4 minutes. StatQuest's move: tiny numbers, every step said aloud. Monday against last Monday
+is a fair comparison, one weekly season apart, and it shows the week's change: nothing you can see,
+since a week's growth is tiny under a wobble of a few cups. A year apart shows the year's 10 percent.
+Both are season-apart readings, which is why the c1 set's first item keys both. Transition: a whole
+year at once.
 ```
 
 ---
@@ -221,7 +226,7 @@ cups, so a year apart is the comparison that shows it. Transition: a whole year 
 
 ![Two years of the stall's weeks laid over each other (invented numbers)](../whiteboards/C2_W04_D05_stall_two_years_STUDENT.png)
 
-The exam fortnight that closes each semester lifts the stall to about 1.4 times an ordinary fortnight in both years (1.39 and 1.41), and Diwali week drops it to about 0.4 (0.40 both years) as the hostel empties, a week earlier in 2025. Named last: a series is a **trend** times its **seasons** times a **remainder**, the wobble left over, about 4.7 cups either way. Forecasting: Principles and Practice writes it as a sum, y = T + S + R, when the seasons do not grow with the level. A **cycle**, a rise and fall with no fixed length, needs more than two years to see.
+The exam fortnight that closes each semester lifts the stall to about 1.4 times an ordinary fortnight in both years (1.39 and 1.41), and Diwali week drops it to about 0.4 (0.40 both years) as the hostel empties, a week earlier in 2025. Named last: a series is built from a **trend**, its **seasons** and a **remainder**, the wobble left over. Forecasting: Principles and Practice adds them, y = T + S + R, when the seasons keep their size as the level grows, and multiplies them, y = T x S x R, when they grow with it, as the stall's do. Read in cups, a yearly copy's misses hold the remainder of both years: a typical size, the standard deviation, of about 4.7 cups. A **cycle**, a rise and fall with no fixed length, needs more than two years to see.
 
 ```notes
 LIVE, 4 minutes. Show the picture, then name the parts. FPP3's words: a trend "exists when there is
@@ -248,12 +253,13 @@ growth = cups["2025-10-06"] / cups["2024-10-07"] - 1
 yearly = cups / cups.shift(364)
 ```
 
-`shift(364)` slides the whole series down 364 rows, so each day's row holds the same weekday 52 weeks earlier; Week 2 Wednesday's LAG did the same in SQL. Notebook 01 runs these lines on all 730 days and draws each picture.
+`shift(364)` slides the whole series down 364 rows, so each day's row holds the same weekday 52 weeks earlier; Week 2 Wednesday's LAG did the same in SQL. Notebook 01 runs these lines on all 730 of the stall's invented days and draws each picture.
 
 ```notes
-LIVE, 2 minutes. Krish Naik's move: one plain sentence for each line. Why 364 and never a calendar year of days: 364 is
-52 whole weeks, so a Monday lands on a Monday and the weekly beat stays in step. Transition: the
-rules.
+LIVE, 2 minutes. Krish Naik's move: one plain sentence for each line. Why 364: it is 52 whole weeks,
+so a Monday lands on a Monday and the weekly beat stays in step; anything tied to a date, the 1st of
+a month or 15 August, drifts a day a year under it, so each effect is copied by the calendar that
+drives it. Transition: the rules.
 ```
 
 ---
@@ -263,7 +269,7 @@ rules.
 
 1. Read the series' shape before choosing any rule that copies it.
 2. A season repeats on a fixed beat, up or down, so count its length before using it.
-3. Read growth by comparing the same point a season apart, never neighbours.
+3. Read growth at the same point a season apart, never neighbours: a week apart shows a week's change, a year apart the year's growth.
 4. What is left after the trend and the seasons is the remainder, and a cycle needs years to see.
 
 **In the interview.** "Before any model I plot the series and read its trend, its seasons with their lengths, and what is left, because the baseline I must beat depends on them."
@@ -292,7 +298,7 @@ flowchart LR
     class B,C unknown
 ```
 
-At Flipkart's Lucknow centre the same reading finds a level near 210,000 shipments a week, growth of about 4 percent a year, two seasons (the festive weeks, and the week that holds the first of the month) and a wobble of a few percent.
+At Flipkart's Lucknow centre the same reading finds a level near 210,000 shipments a week, growth of about 4 percent a year, a festive peak each year and a smaller one in the August sale's week, and a wobble of a few percent.
 
 ```notes
 LIVE, 1 minute. The idea joins the map. Transition: chapter 2, the rules that copy the past.
@@ -315,7 +321,7 @@ needs a rule that runs on paper.
 
 A **baseline** is the simplest rule that could be right, and its job is to be beaten: any cleverer forecast must do better than it.
 
-**Who needs the answer.** The stall's owner, who orders milk tonight with no spreadsheet open, and Flipkart's FC planner, whose tournament sends nothing to the plan that loses to a copy rule.
+**Who needs the answer.** The stall's owner (invented), who orders milk tonight with no spreadsheet open, and Flipkart's FC planner, whose tournament this afternoon, a contest that scores every rule on weeks it never saw, sends nothing to the plan that loses to a copy rule.
 
 **The questions on the way.** Four, in this order:
 
@@ -354,7 +360,7 @@ argue, vote again. Transition: the answer.
 
 ![The stall's week and three forecasts for next Sunday (invented numbers)](../whiteboards/C2_W04_D05_stall_three_rules_STUDENT.png)
 
-The answer is c. Next Sunday sold 60. **Naive**, the last value repeated, said 103 and missed by 43; **drift**, the last value plus the average step so far, said 104.7 and missed by 44.7; the **seasonal naive**, the value one season back, said 61 and missed by 1. When a beat is strong, the plainest copy that respects it wins.
+The answer is c. Next Sunday at the stall (invented) sold 60. **Naive**, the last value repeated, said 103 and missed by 43; **drift**, the line from the first of the four days to the last, extended, said 104.7 and missed by 44.7; the **seasonal naive**, the value one season back, said 61 and missed by 1. When a beat is strong, the plainest copy that respects it wins.
 
 ```notes
 LIVE, 3 minutes. Point at the three markers above next Sunday. Ask which rule a shift supervisor
@@ -369,20 +375,22 @@ could run in their head: all three, which is why they are baselines. Transition:
 | Rule | What it copies | Next Sunday, worked by hand |
 |---|---|---|
 | Naive | the last value | 103 |
-| Drift | the last value plus the average step so far | 103 + (103 - 98) / 3 = 104.7 |
+| Drift | the line from the first value to the last, extended, the four days as the whole history | 103 + (103 - 98) / 3 = 104.7 |
 | Seasonal naive | the value one season back, 7 days here | last Sunday's 61 |
 
 ```python
 four = [98, 104, 101, 103]                      # Wednesday to Saturday (invented)
+last_sunday = 61                                # one season, 7 days, back (invented)
 naive = four[-1]                                # 103
 drift = four[-1] + (four[-1] - four[0]) / 3     # 103 + 5 / 3 = 104.7
-seasonal_naive = cups.shift(7)                  # every day copies the same day a week back
+seasonal_naive = last_sunday                    # 61; on a whole series, cups.shift(7) copies every day so
 ```
 
 ```notes
 LIVE, 4 minutes. Work drift aloud: the step from the first day to the last is 5 cups over 3 steps,
 about 1.7 a day, added once. Notebook 02 counts each by hand and by code and checks that the two
-agree. Transition: a whole year, and a rule that needs one more thing.
+agree. If the room is more than 5 minutes behind after the case's own cuts, this is the row's first
+cut: give drift as its formula and skip the hand count, 2 minutes saved. Transition: a whole year, and a rule that needs one more thing.
 ```
 
 ---
@@ -392,7 +400,7 @@ agree. Transition: a whole year, and a rule that needs one more thing.
 
 ![The November 2025 exam fortnight under three rules (invented numbers)](../whiteboards/C2_W04_D05_stall_exam_rules_STUDENT.png)
 
-Around the November 2025 exams naive, yesterday's cups, misses by 20.6 cups a day; the yearly copy, the same weekday 364 days back, misses by 10.5, mostly the year's growth; times 1.10 it misses by 3.0. Named last, with T the last period a rule may see, h the periods ahead and m the season's length: **naive**, forecast(T + h) = y(T); **seasonal naive**, forecast(T + h) = y(T + h - m); **drift**, forecast(T + h) = y(T) + h x (y(T) - y(1)) / (T - 1), the line from the first value to the last, extended.
+Around the November 2025 exams at the stall (invented), naive, re-run each day from the day before, misses by 20.6 cups a day; the yearly copy, the same weekday 364 days back, misses by 10.5, mostly the year's growth; times 1.10 it misses by 3.0. Named last, with T the last period a rule may see, h the periods ahead and m the season's length: **naive**, forecast(T + h) = y(T); **seasonal naive**, forecast(T + h) = y(T + h - m), for h up to m; **drift**, forecast(T + h) = y(T) + h x (y(T) - y(1)) / (T - 1), the line from the first value to the last, extended.
 
 ```notes
 LIVE, 4 minutes. The worked day: on Wednesday 26 November 2025, the first exam day, the stall sold
@@ -400,8 +408,9 @@ LIVE, 4 minutes. The worked day: on Wednesday 26 November 2025, the first exam d
 140, and fell 14 short; 140 x 1.10 = 154. Finance's habit, last year plus 4 percent, is this same
 move: the seasonal naive times a growth factor. The formulas are FPP3's, section 5.2:
 https://otexts.com/fpp3/toolbox.html#sec-simple-methods (checked 13 October 2026), where the
-seasonal naive's general form reaches back whole seasons when h is longer than one. Transition: a
-festival that moves.
+seasonal naive's general form reaches back whole seasons when h is longer than one season. Naive
+here is re-run every day, a one-step forecast, which chapter 3 will not accept as a hold-out score.
+Transition: a festival that moves.
 ```
 
 ---
@@ -467,7 +476,7 @@ year, then the house bot. Transition: chapter 3, scoring a rule on days it never
 ---
 
 ## SECTION 3: Holding out; MAE and MAPE in the business's units: how is a forecast scored?
-*Hide the stall's latest days, score a rule on them in cups and in rupees, and say which way it leans.*
+*Hide the invented stall's latest days, score a rule on them in cups and in rupees, and say which way it leans.*
 
 ```notes
 LIVE, 1 minute. Concept 3 of 4, 30 minutes. Notebook 03 runs beside the chapter. Transition: who
@@ -479,7 +488,7 @@ needs the score.
 ## S22. Score a rule only on days it never saw
 *Who needs the score, and which questions lead to it?*
 
-**Who needs the answer.** The stall's owner, who wants to know how wrong the milk order could be before trusting a rule, and Flipkart's regional operations head, who must say yes or no to a vendor's curve before a shift is booked.
+**Who needs the answer.** The stall's owner (invented), who wants to know how wrong the milk order could be before trusting a rule, and Flipkart's regional operations head, who must say yes or no to a vendor's curve before a shift is booked.
 
 **The questions on the way.** Five, in this order:
 
@@ -488,7 +497,7 @@ label: Hide | title: Which days do we hide? | body: The latest, as many as the o
 label: Count | title: How is a miss counted? | body: In cups, signs dropped: MAE.
 label: Percent | title: When does a percent mislead? | body: On a day that sells almost nothing.
 label: Lean | title: Which way is it wrong? | body: Short and over cost differently.
-label: Price | title: What does it cost? | body: Rs 12 a cup short, Rs 6 unsold. | tone: dark
+label: Price | title: What does it cost? | body: Rs 12 a cup short, Rs 6 unsold, both invented. | tone: dark
 ```
 
 ```notes
@@ -499,7 +508,7 @@ loses about Rs 12 of margin; both are invented. Transition: the vote.
 ---
 
 ## S23. Which three days judge a three-day milk order?
-*The owner orders milk for the next three days. To judge a rule, which three of the last fourteen days do you hide?*
+*The stall's owner (invented) orders milk for the next three days. To judge a rule, which three of the fourteen days from 1 February 2025 do you hide?*
 
 ```cards
 icon: calendar | eyebrow: a | title: The last three | body: Days 12, 13 and 14. | tone: light
@@ -520,7 +529,7 @@ Vote, argue, vote again. Transition: the answer.
 
 ![Fourteen days with the last three hidden (invented numbers)](../whiteboards/C2_W04_D05_stall_hidden_days_STUDENT.png)
 
-The answer is a. Hide the latest days, at least as many as the forecast must reach ahead: three here. Day 11 is the **origin**, the last day the rule may see; three days is the **horizon**; days 1 to 11 are the **training** days and days 12 to 14 the **hidden** days, also called the hold-out or test set. Tomorrow looks most like the newest days, and a random hole would let a rule borrow days that come after the one it forecasts, which a real tomorrow never offers. The test set should be "at least as large as the maximum forecast horizon required" (Forecasting: Principles and Practice, section 5.8).
+The answer is a. Hide the latest days of the stall's invented fortnight, 1 to 14 February 2025, at least as many as the forecast must reach ahead: three here. Day 11 is the **origin**, the last day the rule may see; three days is the **horizon**; days 1 to 11 are the **training** days and days 12 to 14 the **hidden** days, also called the hold-out or test set. Tomorrow looks most like the newest days, and a random hole would let a rule borrow days that come after the one it forecasts, which a real tomorrow never offers. The test set should "ideally be at least as large as the maximum forecast horizon required" (Forecasting: Principles and Practice, section 5.8).
 
 ```notes
 LIVE, 4 minutes. Explorer: scene F2, the split slider. The FPP3 line is section 5.8:
@@ -534,7 +543,7 @@ score says nothing about an ordinary order. Transition: counting the misses.
 ## S25. MAE 5 cups, MAPE 4.8 percent, leaning 1.7 low
 *How is one score made from three misses, and which way does the rule lean?*
 
-| Hidden day | Naive said | Sold | Miss: said minus sold |
+| Hidden day, February 2025 (invented) | Naive said | Sold | Miss: said minus sold |
 |---|---|---|---|
 | 12 | 100 | 110 | -10, so 10 cups short |
 | 13 | 100 | 95 | +5, so 5 cups unsold |
@@ -562,14 +571,17 @@ flips the sign and leaves the size alone. Transition: when a percent misleads.
 
 ![The same 15-cup miss in cups and in percent (invented numbers)](../whiteboards/C2_W04_D05_stall_mape_STUDENT.png)
 
-Two invented days, apart from the stall's record, each miss by 15 cups: 15 over 85 is 17.6 percent of a busy day, and 15 over 5 is 300 percent of a rain day when the stall shut after an hour. Named last: **MAE**, the mean absolute error, is the mean of the misses with their signs dropped, in the unit the cost is in; **MAPE**, the mean absolute percentage error, is the mean of each miss over what sold, which compares stalls of different sizes and runs to extremes when a day sells close to zero.
+Two invented days, apart from the stall's record, each miss by 15 cups: 15 over 85 is 17.6 percent of an ordinary day, and 15 over 5 is 300 percent of a rain day when the stall shut after an hour. Named last: **MAE**, the mean absolute error, is the mean of the misses with their signs dropped, in the unit the cost is in; **MAPE**, the mean absolute percentage error, is the mean of each miss over what sold, which compares stalls of different sizes and runs to extremes when a day sells close to zero. A miss below what sold cannot pass 100 percent while one above has no ceiling, so a rule picked by MAPE runs low.
 
 ```notes
 LIVE, 5 minutes. FPP3, section 5.8: "Mean absolute error: MAE = mean(|e_t|)"; percentage errors have
 "the advantage of being unit-free", and the disadvantage of "being infinite or undefined if y_t = 0
 for any t in the period of interest, and having extreme values if any y_t is close to zero" (checked
 13 October 2026). The milkman hears cups and rupees; MAPE is for comparing this stall with one twice
-its size. Transition: two rules with the same score.
+its size. If the room is still behind after S17's cut, give this slide's example in one sentence and
+keep MAE, 3 minutes saved. Running low is the dear side here, a cup short at Rs 12 against Rs 6 unsold, so MAPE's pull
+costs money. Before advancing, ask: two rules both miss by 10 cups a day; does one cost more? Most
+rooms say they cost the same. Transition: two rules with the same score.
 ```
 
 ---
@@ -579,12 +591,12 @@ its size. Transition: two rules with the same score.
 
 ![Two rules with the same MAE and different costs (invented numbers)](../whiteboards/C2_W04_D05_stall_lean_STUDENT.png)
 
-**The plausible wrong number.** "Both rules score MAE 10, so they are equally good." **The decision it misleads:** the cheaper rule dropped for no reason. **The check:** the sign of each miss. Rule P runs 10 over on both days: 20 cups unsold at Rs 6, Rs 120. Rule Q runs 10 over, then 10 short: Rs 60 plus Rs 120, Rs 180. **The fix:** report the MAE and the lean together, and price each direction.
+**The plausible wrong number.** "Both rules score MAE 10, so they are equally good." **The decision it misleads:** the cheaper rule dropped for no reason. **The check:** the sign of each miss. Rule P runs 10 over on both days at the stall (invented): 20 cups unsold at Rs 6, Rs 120. Rule Q runs 10 over, then 10 short: Rs 60 plus Rs 120, Rs 180. **The fix:** report the MAE and the lean together, and price each direction.
 
 ```notes
-LIVE, 5 minutes. Predict before revealing the costs: which rule costs more? Most rooms say they cost
-the same. Flipkart's case meets this again in chapter 6, where a forecast with a worse MAE costs less
-once priced. Transition: the rules.
+LIVE, 5 minutes. The room predicted on S26, before this slide showed the costs. Flipkart's case meets
+this again in chapter 6, where a forecast with a worse MAE costs less once priced. Transition: the
+rules.
 ```
 
 ---
@@ -597,7 +609,7 @@ once priced. Transition: the rules.
 3. Keep MAPE for comparing series of different sizes, and never on periods that sell close to zero.
 4. Report which way a rule leans beside how far it misses, because a miss short and a miss over cost different amounts.
 
-**In the interview.** [S] "How do you evaluate a forecast?" "I hold out the latest periods, as many as the horizon, fix the error measure in the business's unit before scoring, compare with the naive and the seasonal naive, and price each direction."
+**In the interview.** [S], a staple asked everywhere: "How do you evaluate a forecast?" "I hold out the latest periods, as many as the horizon, fix the error measure in the business's unit before scoring, compare with the naive and the seasonal naive, and price each direction."
 
 ```notes
 LIVE, 3 minutes. Ask the c3 set's first item aloud: five hidden days missed by 12, -8, 5, -15 and 6
@@ -624,7 +636,7 @@ flowchart LR
     class V,S unknown
 ```
 
-At Flipkart the latest thirteen weeks, 29 June to 21 September 2026, are hidden, the origin is 22 June and the horizon ten weeks; a spare shipment costs Rs 5.42 and a late one Rs 25.
+At Flipkart the latest thirteen weeks, 29 June to 21 September 2026, are hidden and the origin is 22 June; the plan's horizon, counted from the last week of data to the plan's last week, is ten weeks. A spare shipment costs Rs 650 a shift over 120 shipments, Rs 5.42, and a late one Rs 25.
 
 ```notes
 LIVE, 2 minutes. Week 1 Monday showed that one giant miss moves a mean; Week 1 Tuesday compared like
@@ -647,7 +659,7 @@ verdict.
 ## S30. A forecast earns trust only on unseen days
 *Who needs the verdict, and which questions lead to it?*
 
-**Who needs the answer.** The stall's owner, offered a "model" by a nephew with a laptop, and Flipkart's regional operations head, offered a vendor's curve that fits history within 2 percent.
+**Who needs the answer.** The stall's owner (invented), offered a "model" by a nephew with a laptop, and Flipkart's regional operations head, offered a vendor's curve that fits history within 2 percent.
 
 **The questions on the way.** Four, in this order:
 
@@ -668,7 +680,7 @@ LIVE, 1 minute. Read the four questions. Transition: the vote.
 *The stall sold 100, 104, 98 and 110 cups on four days (invented). Which forecast for day 5 lands closest?*
 
 ```cards
-icon: trending-up | eyebrow: a | title: The straight line | body: The best line through the four days, about 109. | tone: light
+icon: trending-up | eyebrow: a | title: The straight line | body: The best line, 97 plus 2.4 a day: 109. | tone: light
 icon: spline | eyebrow: b | title: The exact curve | body: It passes through all four days exactly. | tone: light
 icon: list | eyebrow: c | title: Naive | body: Repeat the last day, 110. | tone: light
 icon: equal | eyebrow: d | title: All three | body: They land within five cups of each other. | tone: light
@@ -686,12 +698,13 @@ Transition: the answer.
 
 ![A perfect fit on four days and its forecast for day 5 (invented numbers)](../whiteboards/C2_W04_D05_stall_fit_forecast_STUDENT.png)
 
-The answer is a, with naive a cup behind. Day 5 sold 102. The curve through all four days fits them perfectly, with an error of 0, and said 168: a miss of 66. The straight line, about 3.1 cups from the four days on average, said 109 and missed by 7; naive said 110 and missed by 8. **Fit** is how close a rule sits to the days it was built on; **forecast error** is how far it misses days it never saw. An interviewer says in-sample and out-of-sample.
+The answer is a, with naive a cup behind. Day 5 sold 102 (invented). The curve fits all four days with an error of 0 and said 168, a miss of 66: its differences run 4, -6, 12; then -10, 18; then 28, held level, so 18 + 28 = 46, 12 + 46 = 58 and 110 + 58 = 168. The straight line, 97 + 2.4 a day, sits about 3.1 cups from the four days, said 109 and missed by 7; naive said 110 and missed by 8. **Fit** is how close a rule sits to the days it was built on; **forecast error** is how far it misses days it never saw.
 
 ```notes
-LIVE, 3 minutes. The curve's 168 needs no algebra: the four days' differences are 4, -6 and 12, their
-differences -10 and 18, and theirs 28; carry the 28 down and the curve climbs to 168. FPP3, section
-5.8: "A model which fits the training data well will not necessarily forecast well. A perfect fit
+LIVE, 3 minutes. Write the difference table on the board, one row under another: 4, -6, 12; -10, 18;
+28. A curve of degree three keeps its last row level, so the next row reads 28, then 46, then 58, and
+110 + 58 = 168. An interviewer says in-sample for fit and out-of-sample for forecast error. FPP3,
+section 5.8: "A model which fits the training data well will not necessarily forecast well. A perfect fit
 can always be obtained by using a model with enough parameters" (checked 13 October 2026).
 Transition: the nephew's next rule.
 ```
@@ -701,7 +714,7 @@ Transition: the nephew's next rule.
 ## S33. The nephew's mean loses to the seasonal naive
 *On seven hidden days, does the nephew's clever rule beat the baseline?*
 
-| Rule, on the seven hidden days, 10 to 16 March 2025 | MAE |
+| Rule, on the stall's seven hidden days, 10 to 16 March 2025 (invented) | MAE |
 |---|---|
 | The nephew's rule: the mean of the last seven days, 97.6 cups every day | 12.4 cups |
 | The seasonal naive: the same day last week, 100 on Monday to 63 on Sunday | 4.0 cups |
@@ -709,7 +722,8 @@ Transition: the nephew's next rule.
 The mean ignores the Sunday dip and misses that Sunday by 34.6 cups. Nothing goes to the milk order unless it beats the seasonal naive on days it never saw, by the measure fixed first.
 
 ```python
-seen, hidden = cups[:7], cups[7:]      # 3 to 9 March, 10 to 16 March
+march = days.cups.tolist()             # the stall's 3 to 16 March 2025 (invented), as notebook 04 loads them
+seen, hidden = march[:7], march[7:]    # 3 to 9 March, 10 to 16 March
 mean_rule = sum(seen) / 7              # 97.6 cups, every day
 mae_mean = sum(abs(mean_rule - h) for h in hidden) / 7      # 12.4
 mae_seasonal = sum(abs(s - h) for s, h in zip(seen, hidden)) / 7
@@ -727,7 +741,7 @@ either ran. Transition: is a better rule worth having?
 
 ![Cans ordered under three forecasts for the seven hidden days (invented numbers)](../whiteboards/C2_W04_D05_stall_cans_STUDENT.png)
 
-The seasonal naive orders 3 cans a weekday and 2 on Sunday, exactly what a forecast that knew the future would order, on all seven days; the nephew's mean orders a third can on Sunday, Rs 240 of milk that sours. Named last: **good enough** is a claim about the decision, never about the model. A better forecast is worth having only if it would change what gets ordered, so the owner stops improving here.
+Milk comes in cans of 40 cups (invented), so the owner orders the forecast over 40, rounded up: Monday's copy of 100 cups needs 3 cans, Sunday's 63 needs 2. The seasonal naive orders exactly what a forecast that knew the future would order, on all seven days; the nephew's mean orders a third can on Sunday, Rs 240 of milk that sours. Named last: **good enough** is a claim about the decision, never about the model. A better forecast is worth having only when what it changes in the order is worth more than the work of getting it; here it changes no can, so the owner stops improving.
 
 ```notes
 LIVE, 3 minutes. Ask the row's mid-session question in its short form: which of three model scores
@@ -740,14 +754,14 @@ Transition: the note.
 ## S35. The forecast note carries four lines
 *What does the owner send the milkman, and what goes in each line?*
 
-| Line | What it says, for the stall |
+| Line | What it says, for the stall (invented) |
 |---|---|
 | The number | 3 cans a day Monday to Saturday, 2 on Sunday |
 | The method | the same day last week, the seasonal naive, which beat the nephew's mean on seven hidden days |
 | The error bar | 4.0 cups a day on those days: about Rs 24 a day if it runs high, Rs 48 if it runs short |
 | What would make it wrong | exams starting early, or the hostel emptying for a holiday |
 
-Flipkart's staffing note in chapter 7 carries the same four lines and one more: a line each to finance and to the vendor's sponsor.
+Flipkart's staffing note in chapter 7 carries the same four lines, with the number and method merged into its title, and adds two: where the festival falls, and a reply each to finance and to the vendor's sponsor.
 
 ```notes
 LIVE, 3 minutes. Notebook 04 prints the note from its variables, so every number in it is the one
@@ -761,14 +775,15 @@ the notebook computed. Transition: the rules.
 
 1. Fit is measured on the days a rule was built on, and it proves nothing about tomorrow.
 2. Nothing goes to the order unless it beats the seasonal naive on hidden days, by the measure fixed first.
-3. Good enough is a claim about the decision: stop improving when a better forecast would order the same.
+3. Good enough is a claim about the decision: keep improving only while a better forecast would change the order by more than the work costs.
 4. The note carries the number, the method, the error bar in the unit and in rupees, and what would make it wrong.
 
-**In the interview.** [F] "What baseline must any forecast beat, and why?" [F] "A vendor promises 22 percent growth; how do you test the claim?" Each is answered with the hidden days and the seasonal naive, never with the fit.
+**In the interview.** [F], frequent in GCC and product screens: "What baseline must any forecast beat, and why?" Naive with no season, the seasonal naive with one, plus the growth when it trends, since a model that cannot beat a free copy adds cost for no accuracy. [F] "A vendor promises 22 percent growth; how do you test the claim?" Restate it against the same weeks, score the curve on weeks it never saw, and ask for its record on a festival it did not see.
 
 ```notes
 LIVE, 2 minutes. Ask the c4 set's first item aloud: the curve fits all four days and says 168, the
-line says 109; which do you trust, and why? Key b. Transition: where the verdict goes.
+line says 109; which do you trust tonight, and why? Key b: neither yet, order on naive's 110 until
+one of them beats it on unseen days. Transition: where the verdict goes.
 ```
 
 ---
@@ -782,7 +797,7 @@ flowchart LR
     V["<b>4. Beating the<br/>baseline; the vendor<br/>curve tested</b>"] --> G["<b>4. The good-enough<br/>call and the<br/>forecast note</b>"]
     V --> S6["<b>Chapter 6</b><br/>the vendor's fit<br/>against its forecast"]
     G --> S7["<b>Chapter 7</b><br/>the staffing note;<br/>a shift of 120 shipments"]
-    G --> K["<b>The lab</b><br/>Anand's board<br/>number"]
+    G --> K["<b>The lab</b><br/>Kalpa's board<br/>number"]
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
@@ -793,7 +808,7 @@ flowchart LR
     class K kalpa
 ```
 
-Chapter 6 tests the vendor's curve the same way, its fit on the weeks it was built on against its forecast on thirteen weeks it never saw, and chapter 7 sizes the plan in shifts of 120 shipments.
+Chapter 6 tests the vendor's curve the same way, its fit on the weeks it was built on against its forecast on thirteen weeks it never saw, and chapter 7 sizes the plan in shifts of 120 shipments. The lab hands the method to Anand Iyer, Kalpa's finance controller, who needs a board number.
 
 ```notes
 LIVE, 1 minute. Wednesday's lift asked for beyond chance and Thursday's cohorts for beyond the blend;
@@ -846,7 +861,7 @@ Transition: the ticket, read in full.
 | The data | `weekly_shipments` (week_start, shipments, packer_shifts_worked, overtime_shifts); `vendor_forecast` (week_start, vendor_shipments, kind: fitted for weeks the model was built on, holdout for its forecasts of the hidden weeks, forecast for the weeks ahead); `calendar` (week_start, diwali_week, sale_week); `costs` (item, rs, low, high) |
 | The costs, assumed | A packer packs about 120 shipments a shift; a packer-shift is one packer working one shift. A late shipment costs Rs 25 (range Rs 15 to 40). An idle packer-shift costs Rs 650 (range Rs 500 to 800), so a spare shipment, planned for and never shipped, costs Rs 650 / 120 = Rs 5.42 |
 | The ask, due Friday | Which forecast goes to the plan for the eight weeks beginning 12 October to 30 November 2026, how wrong could it be, and how many packer shifts a week |
-| Caveats | The festival moves by weeks each year and the sale weeks move with it; two years hold two festivals; a late shipment costs more than an idle shift; peak weeks are capped by the centre's own capacity |
+| Caveats | The festival moves by weeks each year and the sale weeks move with it; two years hold two festivals; a late shipment costs more than a spare one, Rs 25 against Rs 5.42; peak weeks are capped by the centre's own capacity |
 
 Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
@@ -864,7 +879,7 @@ what would make each forecast wrong from S5. Transition: where today ends.
 
 ```cards
 icon: badge-check | eyebrow: The plan | title: 19,760 packer shifts | body: Over the eight weeks, peaking at 3,625 in the week of 19 October, from a forecast that keeps each week's distance from Diwali. | tone: dark
-icon: ruler | eyebrow: The error bar: how wrong it could be | title: 6,615 shipments a week | body: The forecast's average miss on thirteen weeks it never saw: about Rs 35,800 of idle shifts when it runs that far high, Rs 1.65 lakh of late shipments when that far low. | tone: light
+icon: ruler | eyebrow: The error bar: a typical miss and a range | title: 6,615 shipments a week | body: The average miss on thirteen weeks it never saw, about Rs 35,800 high or Rs 1.65 lakh low; at the peak, 3,413 to 3,906 shifts. | tone: light
 icon: scale | eyebrow: The two forecasts | title: Neither carries the plan | body: The vendor loses to a copy of last year on hidden weeks; finance's rule copies the calendar, which round three tests. | tone: light
 ```
 
@@ -917,37 +932,39 @@ room voted a, ask what a customer does on Diwali itself. Transition: three rules
 ```cards
 icon: list | eyebrow: a | title: Naive | body: Repeat the week of 13 October 2025. | tone: light
 icon: list | eyebrow: b | title: Seasonal naive, the house bot | body: Copy the week of 21 October 2024, 52 weeks back. | tone: light
-icon: list | eyebrow: c | title: Festival-aligned | body: Copy Diwali 2024's own week, 28 October, and add 4 percent. | tone: light
+icon: list | eyebrow: c | title: Festival-aligned | body: Copy Diwali 2024's own week, 28 October. | tone: light
 icon: list | eyebrow: d | title: All three within 10,000 | body: One week ahead, every rule is close. | tone: light
 ```
 
-Festival-aligned is chapter 2's fix at Flipkart's scale: from five weeks before Diwali's week to four after, copy the week at the same distance from last year's Diwali, otherwise the same calendar week, then add 4 percent, the growth the training weeks show.
+Festival-aligned is chapter 2's fix at Flipkart's scale: from five weeks before Diwali's week to four after, copy the week at the same distance from last year's Diwali, otherwise the same calendar week, then add the year's growth where the data can measure it. In October 2025 they cannot: no week yet has a twin a year earlier outside the festival, so this forecast adds none.
 
 ```notes
 LIVE, 3 minutes. The textbook names first: seasonal naive, which the tournament calls the house bot
 and finance calls same week last year. Festival-aligned is this programme's construction. The 4
-percent is measured: notebook 06 sets the latest 39 training weeks against the same weeks a year
-earlier and gets 4.0 percent, the same figure finance uses. Groups work each rule on the twelve
-printed rows before voting; the actual that week was 308,900, held until the vote. Transition: the
-answer.
+percent comes later: notebook 06 measures it on training weeks up to June 2026, so a forecast made in
+October 2025 cannot use it; adding it here would borrow growth from the future, the leak chapter 3
+forbids. Groups work each rule on the twelve printed rows before voting; 308,900 is already on S42
+and on the rows, and the vote is on which rule lands nearest it. Transition: the answer.
 ```
 
 ---
 
-## S44. Answer: festival-aligned, within 124 shipments
+## S44. Answer: festival-aligned, 12,000 low, the closest
 *What did each rule forecast for the week of 20 October 2025, and by how much did it miss?*
 
 | Rule | The week it copies | Forecast | Miss |
 |---|---|---|---|
 | Naive | 13 October 2025 | 369,000 | 60,100 too high |
 | Seasonal naive, the house bot | 21 October 2024 | 356,200 | 47,300 too high |
-| Festival-aligned | 28 October 2024, plus 4 percent | 308,776 | 124 too low |
+| Festival-aligned | 28 October 2024 | 296,900 | 12,000 too low |
 
-308,900 shipped. The week 52 weeks back looks like "the same week", but in 2024 it was the week before Diwali, and the week before Diwali ships more than Diwali's own week.
+308,900 shipped. The week 52 weeks back looks like "the same week", but in 2024 it was the week before Diwali, and the week before Diwali ships more than Diwali's own week. Every rule here uses only weeks before 20 October 2025.
 
 ```notes
-LIVE, 4 minutes. Do the festival-aligned arithmetic aloud: 296,900 times 1.04 is 308,776. Ask
-which group's own rule came closest. Transition: the trap hidden in the copy.
+LIVE, 4 minutes. Festival-aligned copies 296,900 as it stands. The centre grew about 4 percent a
+year, which is most of its 12,000 miss, but nobody could measure that growth in October 2025. Ask
+which group's own rule came closest, and whether it used anything that week could not know.
+Transition: the trap hidden in the copy.
 ```
 
 ---
@@ -957,7 +974,7 @@ which group's own rule came closest. Transition: the trap hidden in the copy.
 
 ![Two years by date and by weeks from Diwali](../whiteboards/C2_W04_D05_festival_plot_STUDENT.png)
 
-**The plausible wrong number.** The copy books 401,000 for the week of 13 October 2025, its biggest week, while 369,000 shipped; the real peak, 418,200 on 6 October, gets 312,900. **The decision it misleads:** the most packers booked a week after the rush. **The check:** line the years up by weeks from Diwali, as on the right. **The fix:** festival-aligned.
+**The plausible wrong number.** The copy books 401,000 for the week of 13 October 2025, its biggest week, while 369,000 shipped; the real peak, 418,200 on 6 October, gets 312,900. **The decision it misleads:** the most packers booked a week after the rush. **The check:** line the years up by weeks from Diwali, as on the right. **The fix:** festival-aligned. The stall's calendar copy (invented) landed Diwali's dip a week late in chapter 2 the same way.
 
 ```notes
 LIVE, 5 minutes. Diwali's week came one week earlier in 2025, so every calendar copy is a week out;
@@ -993,7 +1010,8 @@ the Diwali slider. Transition: the real company.
 
 ```notes
 LIVE, 2 minutes. These are Flipkart's own published numbers; everything else today is this class's
-synthetic data. Read them as decisions already in motion. Transition: the chapter's answers.
+synthetic data. Read them as decisions already in motion. First cut if the room is late: one
+sentence, 2 minutes saved. Transition: the chapter's answers.
 ```
 
 ---
@@ -1004,7 +1022,7 @@ synthetic data. Read them as decisions already in motion. Transition: the chapte
 ```mermaid
 flowchart LR
     A["<b>The shape</b><br/>peak two weeks<br/>before Diwali"] --> B["<b>The rules</b><br/>one line each"]
-    B --> C["<b>One week</b><br/>aligned copy<br/>misses by 124"]
+    B --> C["<b>One week</b><br/>aligned copy<br/>12,000 low"]
     C --> D["<b>Hidden weeks</b><br/>which rule<br/>wins?"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
@@ -1012,7 +1030,7 @@ flowchart LR
     class D unknown
 ```
 
-One week cannot crown a rule. **Say it to a shift supervisor:** the computer copied last year's dates, and the festival moved, so its busiest week came at the wrong time. In the M5 forecasting competition, on Walmart's daily sales of 3,049 products, the seasonal naive (there, the same weekday a week earlier) scored 0.847 against 1.752 for naive on M5's weighted scaled error, lower being better, and only 35.8 percent of the competing teams beat it; the winner, a machine-learning method, reached 0.520 (M5 results workbook and accuracy paper, checked 12 October 2026).
+One week cannot crown a rule. **Say it to a shift supervisor:** the computer copied last year's dates, and the festival moved, so its busiest week came at the wrong time. In the M5 forecasting competition, on Walmart's daily sales of 3,049 products, the seasonal naive (there, the same weekday a week earlier) scored 0.847 against 1.752 for naive on M5's weighted scaled error, lower being better, and only 35.8 percent of the competing teams beat it; the winner, a machine-learning method, reached 0.520 (M5 results workbook and accuracy paper, checked 12 October 2026). M5's weighted scaled error divides each series' squared misses by those of a one-step naive copy on its own history, then weights each series by its dollar sales over the last 28 days (the accuracy paper, section 3.4, checked 13 October 2026).
 
 ```notes
 LIVE, 3 minutes. Read the map left to right; the dashed box is chapter 6. Transition: chapter 6, the
@@ -1089,7 +1107,7 @@ names the tie on purpose, and the next slide says why. Transition: the answer.
 
 ![Each rule against the actual on the hidden weeks, with its MAE](../whiteboards/C2_W04_D05_baselines_panel_STUDENT.png)
 
-Festival-aligned and finance's rule miss by 6,615 shipments a week, the house bot by 9,831, drift by 14,842 and naive by 14,923. The tie is honest: no hidden week falls between five weeks before a Diwali week and four after, so both rules copy the same week of 2025 and add the same 4 percent. They part only in the festive weeks, which this test does not hold.
+Festival-aligned and finance's rule miss by 6,615 shipments a week, the house bot by 9,831, drift by 14,842 and naive by 14,923. The tie is honest: no hidden week falls between five weeks before a Diwali week and four after, so both rules copy the same week of 2025 and add the same 4 percent. They part only in the festive weeks, which this test does not hold. At the stall (invented), the yearly copy without growth also lost to the copy times 1.10, by 10.5 cups a day to 3.0.
 
 ```notes
 LIVE, 5 minutes. The chart uses Tufte's small multiples, one rule per panel on the same axes. The bot
@@ -1109,6 +1127,8 @@ icon: list | eyebrow: c | title: No, it loses to the bot | body: A fit is drawn 
 icon: list | eyebrow: d | title: It ties festival-aligned | body: Both end near 6,615. | tone: light
 ```
 
+At the stall (invented), the nephew's curve fitted four days with an error of 0 and missed day 5 by 66.
+
 ```notes
 LIVE, 3 minutes. Vote first. Then every learner types the vendor's score into notebook 06's empty
 cell and reads the number aloud. Chapter 4's curve through four days is the same mistake at a
@@ -1126,7 +1146,9 @@ stall's size. Transition: the answer.
 
 ```notes
 LIVE, 4 minutes. Read the left of the chart, then the right. A fit is drawn through weeks the model
-has seen; a forecast is made for weeks it has not. Transition: which way each rule is wrong.
+has seen; a forecast is made for weeks it has not. The animated version,
+whiteboards/C2_W04_D05_holdout_reveal_STUDENT.gif, reveals the hidden weeks one at a time: the vendor
+leads in week 1, 3,700 to 12,300, and trails by week 13. Transition: which way each rule is wrong.
 ```
 
 ---
@@ -1154,12 +1176,13 @@ Transition: the answer.
 
 ![MAE beside the same misses priced in rupees](../whiteboards/C2_W04_D05_scoreboard_STUDENT.png)
 
-The vendor errs high on 12 of 13 weeks, and a spare shipment is the cheap kind of miss: Rs 11.9 lakh against Rs 13.5 lakh for festival-aligned, each added over the thirteen weeks. The house bot errs low on 11 of 13 weeks and costs Rs 30.5 lakh, more than naive's Rs 28.8 lakh, with a lower MAE. Priced, a forecast that errs high can cost less than one that misses less.
+The vendor errs high on 12 of 13 weeks, and a spare shipment is the cheap kind of miss: Rs 11.9 lakh against Rs 13.5 lakh for festival-aligned, each added over the thirteen weeks. The house bot errs low on 11 of 13 weeks and costs Rs 30.5 lakh, more than naive's Rs 28.8 lakh, with a lower MAE. Priced, a forecast that errs high can cost less than one that misses less, as the stall's rule P (invented) cost less than rule Q at the same MAE. The ranking rests on Rs 25 a late shipment: at Rs 15, the low end of the ticket's range, festival-aligned's misses cost Rs 9.0 lakh against the vendor's Rs 11.7 lakh, and across both cost ranges the vendor is cheaper in 5 of 9 pairings.
 
 ```notes
-LIVE, 3 minutes. Let the result stand; it is true of this data. The room should leave with the
-reason: a late shipment costs 4.6 times a spare one, the stall's Rs 12 against Rs 6 at Flipkart's
-scale. Transition: why the vendor still does not win.
+LIVE, 3 minutes. Let the result stand at the ticket's costs, then name what it rests on: the price
+of a late shipment. The room should leave with the reason: a late shipment costs 4.6 times a spare
+one, the stall's Rs 12 against Rs 6 at Flipkart's scale. Transition: why the vendor still does not
+win.
 ```
 
 ---
@@ -1169,7 +1192,7 @@ scale. Transition: why the vendor still does not win.
 
 ```cards
 icon: ruler | eyebrow: Unsized | title: Nobody chose how high it runs | body: So nobody knows how high it will run in October. | tone: light
-icon: trending-up | eyebrow: Growing | title: It climbs with the weeks ahead | body: 3.6 percent too high in hidden weeks 1 to 6, 11.5 percent in weeks 8 to 13. | tone: light
+icon: trending-up | eyebrow: Growing | title: It climbs with the weeks ahead | body: 3.6 percent too high in the first six hidden weeks, 11.5 percent in the last six. | tone: light
 icon: calendar-x | eyebrow: Untested | title: No festival in the test | body: In the festive weeks it copies 2025's calendar, the wrong weeks. | tone: light
 icon: badge-check | eyebrow: The fix | title: Send festival-aligned, priced | body: A forecast that beat the bot, with its error bar in rupees each way. | tone: dark
 ```
@@ -1177,8 +1200,8 @@ icon: badge-check | eyebrow: The fix | title: Send festival-aligned, priced | bo
 ```notes
 LIVE, 2 minutes. The plan's case rests on two things this hold-out cannot test: the festival's
 placement, which chapter 7 tests on 2025's festival, and how high to lean, which the plan quantile
-sizes beyond today's row (the fallback hour, and notebook 07's depth section). Transition: the same
-score a second way.
+sizes beyond the row, that is, beyond today's five topics (the fallback session, and notebook 07's
+depth section). Transition: the same score a second way.
 ```
 
 ---
@@ -1195,7 +1218,8 @@ value: 6,615 | label: per week | note: (40,748 + 45,248) / 13 = 85,996 / 13
 Notebook 06's last table prints the thirteen misses; added up, they give the same 6,615. The split also says the forecast errs neither way here: 6 weeks high, 7 low.
 
 ```notes
-LIVE, 1 minute. Notebook 06 prints the thirteen misses; the last cell adds them. Transition:
+LIVE, 1 minute. Notebook 06 prints the thirteen misses; the last cell adds them. Second cut if the
+room is late: one sentence. Transition:
 chapter 6's answers.
 ```
 
@@ -1215,7 +1239,7 @@ flowchart LR
     class D unknown
 ```
 
-On 1,045 monthly series, statistical methods beat the machine-learning ones at every horizon tested, and even Naive 2, a seasonal random walk, beat half of them one step ahead (Makridakis and colleagues, PLOS ONE, 2018); in the M5 competition machine learning took every top place. Either way the winner was decided on weeks the model never saw (both checked 12 October 2026). Chapter 4's **good enough** asks the afternoon's question: would a better forecast book different shifts?
+On 1,045 monthly series, statistical methods beat the machine-learning ones at every horizon tested, and even Naive 2, the naive rule run on the series with its seasons taken out, beat half of them one step ahead (Makridakis and colleagues, PLOS ONE, 2018, section 3.3: "a random walk model adjusted for seasonality", checked 13 October 2026); in the M5 competition machine learning took every top place. Either way the winner was decided on weeks the model never saw (both checked 12 October 2026). Chapter 4's **good enough** asks the afternoon's question: would a better forecast change the plan by more than it costs?
 
 ```notes
 LIVE, 1 minute. Lunch follows; the afternoon opens on chapter 7. Transition: lunch, then half two.

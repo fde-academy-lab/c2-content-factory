@@ -1,4 +1,4 @@
-# Forecasting basics: the fallback hour
+# Forecasting basics: what does the fallback session test?
 
 Week 4, Day 5. Fallback.
 
@@ -21,7 +21,7 @@ flowchart LR
     class B,C,D,E known
 ```
 
-This hour runs only if the IITGN faculty session W4-4 (tentative) does not run. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
+This session runs only if the IITGN faculty session W4-4 (tentative) does not run. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
 ```notes
 LIVE, 2 minutes, on screen only if the faculty session (tentative) slips. Nothing here teaches
@@ -38,10 +38,10 @@ part 1.
 
 ![MAE by rule on thirteen hidden weeks and on the last four](../whiteboards/C2_W04_D05_four_vs_thirteen_STUDENT.png)
 
-Festival-aligned and finance's rule still lead and the house bot stays next, while naive and drift fall below the vendor; every number moves a great deal. The four-week test rests on four misses and on one origin week.
+Festival-aligned and finance's rule still lead and the house bot stays next, while naive and drift fall below the vendor: naive and drift move most, the copies of last year least. The four-week test rests on four misses and on one origin week.
 
 ```notes
-LIVE, 8 minutes. Groups run notebook 06 with the split moved to 24 August 2026, or read this table.
+LIVE, 8 minutes. Groups run notebook 06 with the split moved to 24 August 2026, or read this chart.
 The vendor's four weeks are its old forecast, made from 22 June, so they are its farthest weeks
 ahead. Transition: why naive moved most.
 ```
@@ -84,10 +84,10 @@ because they copy last year's weeks and ignore the origin. Transition: the rule 
 ---
 
 ## S5. A test shorter than the horizon judges too little
-*Why must the hidden weeks reach at least as far ahead as the plan does, ten weeks?*
+*Why should the hidden weeks reach at least as far ahead as the plan does, ten weeks?*
 
 ```cards
-icon: ruler | eyebrow: The rule | title: At least as long as the horizon | body: The plan's last week is ten weeks past the data, so the test must reach ten weeks ahead; four cannot (FPP3, section 5.8, checked 13 October 2026). | tone: dark
+icon: ruler | eyebrow: The rule | title: At least as long as the horizon | body: The plan's last week is ten weeks past the data, so the test should ideally reach ten weeks ahead; four cannot (Forecasting: Principles and Practice, section 5.8, checked 13 October 2026). | tone: dark
 icon: trending-up | eyebrow: The vendor | title: Its gap grows with the weeks ahead | body: 148 percent worse than festival-aligned on thirteen weeks, 233 percent on its four farthest. | tone: light
 icon: shuffle | eyebrow: The luck | title: One origin can flatter or punish | body: A rule that looked fine from 22 June looks poor from 24 August. | tone: light
 ```
@@ -126,15 +126,17 @@ LIVE, 5 minutes. This is the rolling-origin picture of FPP3's section 5.10 (chec
 
 | Week forecast | Naive: the week before | Naive's miss | Festival-aligned | Its miss |
 |---|---|---|---|---|
-| 6 Oct 2025 | 331,200 | 87,000 too low | 417,040 | 1,160 too low |
-| 13 Oct 2025 | 418,200 | 49,200 too high | 370,448 | 1,448 too high |
-| 20 Oct 2025 | 369,000 | 60,100 too high | 308,776 | 124 too low |
-| 27 Oct 2025 | 308,900 | 120,300 too high | 187,824 | 776 too low |
-| 3 Nov 2025 | 188,600 | 39,300 too low | 221,208 | 6,692 too low |
+| 6 Oct 2025 | 331,200 | 87,000 too low | 401,000 | 17,200 too low |
+| 13 Oct 2025 | 418,200 | 49,200 too high | 356,200 | 12,800 too low |
+| 20 Oct 2025 | 369,000 | 60,100 too high | 296,900 | 12,000 too low |
+| 27 Oct 2025 | 308,900 | 120,300 too high | 180,600 | 8,000 too low |
+| 3 Nov 2025 | 188,600 | 39,300 too low | 212,700 | 15,200 too low |
 
 ```notes
 LIVE, 12 minutes. Each group takes one row and calls out its two misses. Festival-aligned copies
-2024's week at the same distance from Diwali, plus 4 percent. Transition: the vote.
+2024's week at the same distance from Diwali and adds no growth, since in October 2025 no week had a
+twin a year earlier outside the festival; every one of its misses is too low by about the year's
+growth. Transition: the vote.
 ```
 
 ---
@@ -143,9 +145,9 @@ LIVE, 12 minutes. Each group takes one row and calls out its two misses. Festiva
 *Over the five one-week forecasts, whose average miss is larger, and by how much?*
 
 ```cards
-icon: list | eyebrow: a | title: Naive, by about ten times | body: The week before is a poor guide when weeks change fast. | tone: light
-icon: list | eyebrow: b | title: Naive, by about thirty-five times | body: Every festive week differs sharply from the last. | tone: light
-icon: list | eyebrow: c | title: Festival-aligned, narrowly | body: Copying 2024 adds 2024's own noise. | tone: light
+icon: list | eyebrow: a | title: Naive, by about twice | body: The week before is a poor guide when weeks change fast. | tone: light
+icon: list | eyebrow: b | title: Naive, by about five times | body: Every festive week differs sharply from the last. | tone: light
+icon: list | eyebrow: c | title: Festival-aligned, narrowly | body: Copying 2024 adds 2024's own wobble. | tone: light
 icon: list | eyebrow: d | title: A tie: one week ahead, both are close | body: A week is short. | tone: light
 ```
 
@@ -155,16 +157,16 @@ LIVE, 5 minutes. Groups add their row's misses to the board first. Transition: t
 
 ---
 
-## S9. Answer: naive, by about thirty-five times
+## S9. Answer: naive, by about five times
 *What does the rolling origin say about naive near a festival?*
 
 ![Naive and festival-aligned, one week ahead from five origins](../whiteboards/C2_W04_D05_rolling_origin_STUDENT.png)
 
-Naive's five misses average 71,180 a week and festival-aligned's 2,040. Near a festival the week before is a poor guide, because the weeks change sharply; last year's week at the same distance from Diwali is a good one.
+Naive's five misses average 71,180 a week and festival-aligned's 13,040, with no growth added. Near a festival the week before is a poor guide, because the weeks change sharply; last year's week at the same distance from Diwali is a good one, low only by the growth nobody could yet measure.
 
 ```notes
-LIVE, 8 minutes. 71,180 over 2,040 is about thirty-five: b was the closest option. Transition:
-part 3, how far above the forecast the plan should sit.
+LIVE, 8 minutes. 71,180 over 13,040 is about 5.5: b was the closest option. Transition: part 3, how
+far above the forecast the plan should sit.
 ```
 
 ---
@@ -179,7 +181,7 @@ icon: list | eyebrow: c | title: Far enough to cover every week | body: Since a 
 icon: list | eyebrow: d | title: Below the forecast | body: Since spare shipments waste money. | tone: light
 ```
 
-This part goes beyond the five subtopics of Friday's curriculum row: it is the plan quantile, the spine's addition, taught only in this hour and in notebook 07's depth section.
+This part goes beyond the row, that is, beyond Friday's five topics: it is the plan quantile, taught only in this session and in notebook 07's depth section.
 
 ```notes
 LIVE, 4 minutes. Vote first. The day's plan, 19,760 shifts, books festival-aligned's forecast itself
@@ -314,7 +316,7 @@ in `extras/C2_W04_D05_interview_transcripts_STUDENT.md`. Transition: the close.
 ---
 
 ## S18. Close: the rule that holds without the session
-*What survives this hour, whether or not the faculty session (tentative) runs?*
+*What survives this session, whether or not the faculty session (tentative) runs?*
 
 ```cards
 icon: ruler | eyebrow: The test | title: As long as the plan | body: Hide at least as many weeks as the plan reaches ahead, from one origin. | tone: light

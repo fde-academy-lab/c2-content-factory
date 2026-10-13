@@ -1,4 +1,4 @@
-# Forecasting basics: the plan, its error bar and the note
+# Forecasting basics: what does the plan book, and how wrong could it be?
 
 Week 4, Day 5. Half two.
 
@@ -11,7 +11,7 @@ Header: WEEK 4  ·  FRIDAY  ·  FORECASTING BASICS  ·  FLIPKART, LUCKNOW
 
 ```mermaid
 flowchart LR
-    T1["<b>Chapter 1</b><br/>Trend and<br/>seasonality,<br/>read before<br/>modelling<br/><b>at Flipkart:</b><br/>peak two weeks<br/>before Diwali"] --> T2["<b>Chapter 2</b><br/>Naive,<br/>seasonal naive<br/>and drift<br/>baselines<br/><b>at Flipkart:</b><br/>aligned copy<br/>missed Diwali<br/>2025 by 124"]
+    T1["<b>Chapter 1</b><br/>Trend and<br/>seasonality,<br/>read before<br/>modelling<br/><b>at Flipkart:</b><br/>peak two weeks<br/>before Diwali"] --> T2["<b>Chapter 2</b><br/>Naive,<br/>seasonal naive<br/>and drift<br/>baselines<br/><b>at Flipkart:</b><br/>aligned copy<br/>12,000 low on<br/>Diwali 2025"]
     T2 --> T3["<b>Chapter 3</b><br/>Holding out;<br/>MAE and MAPE<br/>in the<br/>business's<br/>units<br/><b>at Flipkart:</b><br/>MAE 6,615<br/>against 9,831"]
     T3 --> T4["<b>Chapter 4</b><br/>Beating the<br/>baseline; the<br/>vendor curve<br/>tested<br/><b>at Flipkart:</b><br/>vendor misses<br/>by 16,400"]
     T4 --> T5["<b>Chapter 4,</b><br/><b>second half</b><br/>The<br/>good-enough<br/>call and the<br/>forecast note<br/><b>after lunch:</b><br/>the plan<br/>in shifts"]
@@ -28,7 +28,7 @@ LIVE, 2 minutes, on screen as the room comes back. Read the four filled boxes le
 a morning topic with the number it produced at Flipkart. The lit box is the afternoon: the
 good-enough call and the note. The first hour is the trainer's: chapter 7, the staffing note, the
 handoff, the Kahoot and the close; then the IITGN faculty session W4-4 (tentative) runs, or the
-fallback hour. Transition: chapter 7.
+fallback session. Transition: chapter 7.
 ```
 
 ---
@@ -56,7 +56,7 @@ label: Place | title: Where is this year's peak? | body: Which week each forecas
 label: Evidence | title: Did placement matter before? | body: 2025's festival, forecast a month ahead.
 label: Windows | title: Plus what, against what? | body: The 22 and the 4 against two windows.
 label: Plan | title: How many shifts? | body: Eight weeks, with the error bar priced.
-label: Enough | title: Is better worth having? | body: Only if it moves a shift. | tone: dark
+label: Enough | title: Is better worth having? | body: Only if it pays for itself. | tone: dark
 ```
 
 ```notes
@@ -88,7 +88,7 @@ Transition: the answer.
 
 ![Four forecasts for 28 September to 30 November 2026](../whiteboards/C2_W04_D05_window_2026_STUDENT.png)
 
-The house bot, finance's rule and the vendor all book their biggest week on 5 October (418,200, 434,928 and 497,900), because each copies 2025's calendar weeks. Festival-aligned books it on 19 October at 434,928, two weeks before Diwali's week of 2 November: finance's number, in the right week. Inside the window, which starts on 12 October, the calendar copies book the most for 12 October and far too little for 19 and 26 October.
+The house bot, finance's rule and the vendor all book their biggest week on 5 October (418,200, 434,928 and 497,900), because each copies 2025's calendar weeks. Festival-aligned books it on 19 October at 434,928, two weeks before Diwali's week of 2 November: finance's number, in the right week. Inside the window, which starts on 12 October, the calendar copies book the most for 12 October and far too little for 19 and 26 October. The stall's calendar copy (invented) put Diwali's dip a week late in chapter 2 the same way.
 
 ```notes
 LIVE, 4 minutes. Point at finance's 5 October and festival-aligned's 19 October: the same 418,200
@@ -104,11 +104,14 @@ matter last year?
 
 ![2025's festival against the copy of 2024 and the festival-aligned copy](../whiteboards/C2_W04_D05_backtest_2025_STUDENT.png)
 
-A **back-test** forecasts an earlier stretch as if the later weeks were unknown: chapter 3's hold-out, placed so that it holds a festival. Over 29 September to 17 November 2025 the house bot missed by 58,250 a week: Rs 79.8 lakh, Rs 69.6 lakh of it late shipments where the rush came before the copy expected it. Festival-aligned missed by 4,034 a week; without the 4 percent, measured only later, it missed by 10,575.
+A **back-test** forecasts an earlier stretch as if the later weeks were unknown: chapter 3's hold-out, placed so that it holds a festival. Over 29 September to 17 November 2025 the house bot missed by 58,250 a week: Rs 79.8 lakh, Rs 69.6 lakh of it late shipments where the rush came before the copy expected it. Festival-aligned, with no growth added, since September 2025 held no year of twins to measure growth on, missed by 10,575 a week and put the peak in the right week; with the 4 percent measured later it would have missed by 4,034.
 
 ```notes
 LIVE, 4 minutes. This back-test is the only festival the data can test the rules on, so it settles
-placement and leaves the size of the festive error open. The vendor has no festive forecast to
+placement and leaves the size of the festive error open. Quote 10,575, the number a planner in
+September 2025 could have had; 4,034 borrows growth from 2026. This course also set the stretch
+around Diwali to cover both festivals' busy weeks, so even this test has seen the shape it tests;
+the next festival is the clean one. The vendor has no festive forecast to
 score, only its fit. Predict before S6 appears: finance's eight weeks sit 4 percent above the same
 calendar weeks of 2025; against 2025's weeks counted from Diwali, are they above or below, and by
 roughly how much? Write the split on the board. Transition: what plus 22 and plus 4 measure.
@@ -116,7 +119,7 @@ roughly how much? Write the split on the board. Transition: what plus 22 and plu
 
 ---
 
-## S6. Plus 22 and plus 4 measure different windows
+## S6. Plus 22 and plus 4, read against two windows
 *How does each forecast compare with last year's eight weeks, counted two ways?*
 
 | 12 Oct to 30 Nov 2026 | Eight weeks | Against 13 Oct to 1 Dec 2025 | Against 29 Sep to 17 Nov 2025 |
@@ -152,34 +155,39 @@ Transition: the plan in shifts.
 | 23 Nov | 225,992 | 1,884 |
 | 30 Nov | 227,136 | 1,893 |
 
-**The error bar.** The forecast missed by 6,615 shipments a week on the hidden weeks, about 55 shifts: about Rs 35,800 of idle shifts when it runs that far high and Rs 1.65 lakh of late shipments when that far low, and on 2025's festival it missed by 4,034 a week.
+**The error bar.** A typical miss of 6,615 shipments a week on the hidden weeks, about 55 shifts: about Rs 35,800 of idle shifts if it runs that far high, Rs 1.65 lakh of late shipments if that far low. The range: the hidden weeks ran from 5.9 percent below the forecast to 7.8 percent above, so the week of 19 October could need 3,413 to 3,906 shifts against 3,625 booked.
 
 ```notes
 LIVE, 5 minutes. Walk the first two rows aloud: 344,448 over 120, rounded up, is 2,871 shifts, since
 a shipment that does not fill a shift still needs one. A packer-shift is one packer for one shift;
-how shifts become people depends on the roster, which the ticket does not give. The error bar is
-chapter 3's MAE in the business's unit, then priced each way. Transition: is a better forecast
-worth having?
+how shifts become people depends on the roster, which the ticket does not give. The typical miss is
+chapter 3's MAE in the business's unit, priced each way: 6,615 x Rs 650 / 120 is about Rs 35,800,
+worked from the shift's Rs 650 before it rounds to Rs 5.42. The range is how far the hidden weeks ran,
+applied to the peak week. Booked at the forecast, the range's ends cost about Rs 1.4 lakh of idle
+shifts or Rs 8.4 lakh of late shipments that week. If a learner asks where a margin would go: above
+the forecast, since short is the dear side; how far is the plan quantile, beyond the row.
+Transition: is a better forecast worth having?
 ```
 
 ---
 
-## S8. Good enough: a better forecast must move a shift
-*Would a forecast better than festival-aligned book different shifts?*
+## S8. Good enough: a better forecast must pay for itself
+*Would a forecast better than festival-aligned change the plan by more than it costs?*
 
 ```stats
 value: 27 shifts | label: a week, against the house bot | note: festival-aligned's MAE is 3,216 shipments a week lower: a real difference in packers
 value: 82 shifts | label: a week, against the vendor | note: 9,785 shipments a week lower
-value: 1 shift | label: at most, for a rule 100 better | note: it moves one shift in 7 of the 8 weeks, against 1,635 to 3,625 booked
+value: Rs 542 to 2,500 | label: a week, for a rule 100 better | note: 100 shipments spare at Rs 5.42, or late at Rs 25: Rs 4,300 to Rs 20,000 over the eight weeks
 ```
 
-Chapter 4's call at Flipkart's scale: the decision unit is a shift of 120 shipments, so festival-aligned is good enough, and the next model must earn its place by more than a shift a week. A late shipment costs 4.6 times a spare one, so any margin the planner adds goes above the forecast; how far is the plan quantile, which goes beyond today's curriculum row and runs in the fallback hour.
+Chapter 4's call at Flipkart's scale. A shift is 120 shipments, small beside a typical miss of 6,615, so any better forecast changes some shifts, and good enough becomes a question in rupees. Festival-aligned's leads over the bot and the vendor are worth real money every week; a rule whose MAE is 100 lower earns a place only if it costs less than Rs 542 to Rs 2,500 a week to build and run, and wins on a test that did not choose it. A late shipment costs 4.6 times a spare one, so any margin goes above the forecast; how far is the plan quantile, beyond the row, that is, beyond today's five topics, taught in the fallback session.
 
 ```notes
 LIVE, 4 minutes. Ask the c4 set's second item aloud if it was not sat before lunch: three teams'
-models against the house bot's 9,831. The plan quantile is the spine's addition beyond the row's five
-subtopics; the fallback deck's part 3 and notebook 07's depth section carry it, so park any "how far
-above?" question there by name. Transition: what the other forecasts would cost.
+models against festival-aligned's 6,615. The plan quantile goes beyond the row's five subtopics; the
+fallback deck's part 3 and notebook 07's depth section carry it, so answer "how far above?" with
+"above, since short is the dear side", and park the size there by name. Transition: what the other
+forecasts would cost.
 ```
 
 ---
@@ -208,7 +216,8 @@ Transition: what the data cannot tell us.
 | The doubt | What we have, and what would settle it |
 |---|---|
 | The festival moves, and the sale moves with it | One festival, the 2025 back-test; another festival would settle it |
-| The hidden weeks hold no festive week | The 2025 festival's 4,034 a week; a rolling origin through that festival would settle it |
+| The hidden weeks hold no festive week | The 2025 festival's 10,575 a week, with no growth; a rolling origin through the next festival would settle it |
+| This course chose the stretch around Diwali | It covers both festivals' busy weeks, so the 2025 back-test has seen the shape it tests; the next festival is the clean test |
 | Capacity caps the peak | Overtime reached 1,638 shifts in the week of 6 October 2025 against 5 in the week of 24 November 2025, so peak demand may have run above what shipped; orders that could not ship would settle it |
 
 ```notes
@@ -252,7 +261,7 @@ Transition: the note.
 ```cards
 icon: file-text | eyebrow: 1 | title: The claim as the title | body: How many shifts, which weeks, from which forecast, in one sentence. | tone: light
 icon: calendar | eyebrow: 2 | title: The festival placed | body: Which week is the peak and why: the distance from Diwali, never the calendar. | tone: light
-icon: ruler | eyebrow: 3 | title: The error bar in rupees | body: The miss a week in shipments, its cost if high and if low, and the rule's record on 2025's festival. | tone: light
+icon: ruler | eyebrow: 3 | title: The error bar in rupees | body: The typical miss, its cost high and low, the peak week's range, and 2025's honest record. | tone: light
 icon: circle-alert | eyebrow: 4 | title: What would make it wrong | body: Three facts that would move the number, each with its check. | tone: light
 icon: scale | eyebrow: 5 | title: The two answered | body: One line to finance, one to the vendor's sponsor, conceding the true part. | tone: dark
 ```
@@ -260,7 +269,7 @@ icon: scale | eyebrow: 5 | title: The two answered | body: One line to finance, 
 The set is `exercises/unguided/C2_W04_D05_staffing_note_STUDENT.md`: the note's decisions as lettered items, then the note itself, which is written in the lab.
 
 ```notes
-LIVE, 10 minutes, unguided, in groups of about four: the groups decide the lettered items now and
+LIVE, 8 minutes, unguided, in groups of about four: the groups decide the lettered items now and
 write the five lines in the lab. These are chapter 4's four lines with a fifth for the two
 stakeholders. TAs circulate with the scorer's card from Tuesday: claim as title, one piece of
 evidence with its denominator, the caveat in sight, the action with its cost. A group that splits
@@ -295,8 +304,10 @@ icon: trending-up | eyebrow: The vendor's sponsor | title: "The model fits every
 ```
 
 ```notes
-LIVE, 2 minutes. Concede the true half first, then answer from the evidence, then say what would
-change your mind: a vendor forecast scored on 2025's festival from data to September 2025.
+LIVE, 4 minutes: the role cards' one exchange each. The trainer, as finance, says card 1's opening
+line and one group answers; the TA, as the vendor's sponsor, says card 2's and another group
+answers. Each answer concedes the true half first, then answers from the evidence, then says what
+would change its mind: a vendor forecast scored on 2025's festival from data to September 2025.
 Transition: the picture every note should describe.
 ```
 
@@ -317,13 +328,13 @@ handoff.
 
 ---
 
-## D1. "How do you evaluate a forecast?" Two answers
+## D1. [S] "How do you evaluate a forecast?" Two answers
 *What separates a weak answer from a hire-grade one?*
 
 | Weak answer | Hire-grade answer |
 |---|---|
 | "We used a good model and the fit was within 2 percent." | "I hold out the latest weeks as a test set, at least as many as the forecast must reach ahead, and forecast them from one origin." |
-| Judges by the fit to history, or a random split | Scores only weeks after the origin, then rolls the origin |
+| Judges by the fit to history, or a random split | Scores only weeks after the origin, then moves the origin on and scores again |
 | One number for the error | The error in shipments, then the same misses priced each way |
 | Picks the model with the best story | Sends nothing that loses to a copy of last year |
 | Takes the calendar for granted | Checks where the festival falls this year |
@@ -340,9 +351,9 @@ it and score the hire-grade answer on the card. Transition: the follow-ups.
 *What does the interviewer ask next, and what does a strong candidate say?*
 
 ```timeline
-label: Follow-up 1 | title: MAE or MAPE, and when? | body: Shipments when the cost is per shipment; MASE or WAPE across centres. MAPE explodes near zero, and here it ranks the rules as MAE does.
+label: Follow-up 1 | title: MAE or MAPE, and when? | body: Shipments when the cost is per shipment. Across centres, MASE, the misses over a naive copy's, or WAPE, total misses over total shipped. MAPE explodes near zero and pulls forecasts low; here it ranks the rules as MAE does, 3.05 to 6.82 percent.
 label: Follow-up 2 | title: Suppose the festival moves three weeks: what breaks? | body: Every calendar copy, the seasonal naive and finance's rule; the festival-aligned copy moves with it.
-label: Follow-up 3 | title: What did a forecast cost Zillow? | body: Its margin guardrail was 2 percentage points either side of breakeven; price forecasts three to six months out missed both ways by more than Zillow had modelled, the margin swung about 12 percentage points, and Zillow wrote down about USD 304 million. | tone: dark
+label: Follow-up 3 | title: What did a forecast cost Zillow? | body: Its margin guardrail was 2 percentage points either side of breakeven; price forecasts three to six months out missed both ways by more than Zillow had modelled, the margin swung about 12 percentage points, and Zillow wrote down, that is, cut the book value of its homes by, about USD 304 million. | tone: dark
 ```
 
 ```notes
@@ -375,7 +386,7 @@ flowchart LR
     class C lit
 ```
 
-**Inference** is the computing a model does each time it answers a user. Size the peak from the ground up as requests open at once, with prompt and answer tokens kept apart; check it against earlier launches lined up by days from launch with the weekday kept; set capacity to the latency target with headroom. The two costs, per machine over the booking, decide how much to book ahead, and a staged rollout, on-demand capacity, rate limits and a waitlist cover the rest. Written for the programme; it quotes no company's figures.
+**Inference** is the computing a model does each time it answers a user; a **token** is a piece of a word the model reads or writes; **latency** is the wait for an answer; **headroom** is capacity kept spare above the forecast; a **GPU** is the chip that runs the model; **rate limits** cap how many requests a user may send. Size the peak from the ground up as requests open at once, with prompt and answer tokens kept apart; check it against earlier launches lined up by days from launch with the weekday kept; set capacity to the latency target with headroom. The two costs, per machine over the booking, decide how much to book ahead, and a staged rollout, on-demand capacity, rate limits and a waitlist cover the rest. Written for the programme; it quotes no company's figures.
 
 ```notes
 SELF-STUDY, in the lab. Which cost is the Rs 25 and which the Rs 5.42 here: the timeouts a GPU would
@@ -403,7 +414,7 @@ flowchart LR
     class V lit
 ```
 
-**The range and the catch.** The replacement years alone swing the answer from about 1.7 to 2.9 crore. October 2025's retail registrations were 31.5 lakh (FADA, the Federation of Automobile Dealers Associations), after a quiet September; times twelve that is about 3.78 crore, 74 percent above SIAM's year, a month of registrations set against a year of dealer sales: never annualise a peak month (both releases checked 12 October 2026).
+**The range and the catch.** Replacement every 6 to 10 years, the assumed range, alone swings the answer from about 1.7 to 2.9 crore. October 2025's retail registrations were 31.5 lakh (FADA, the Federation of Automobile Dealers Associations), after a quiet September; times twelve that is about 3.78 crore, 74 percent above SIAM's year, a month of registrations set against a year of dealer sales: never annualise a peak month (both releases checked 12 October 2026).
 
 ```notes
 SELF-STUDY, in the lab, in pairs against a three-minute clock. The scorer checks the structure and
@@ -415,7 +426,7 @@ handoff.
 ---
 
 ## S16. Handoff: the baseline is the bar to beat
-*What does the IITGN faculty session W4-4 pick up from here? It is tentative, and the fallback hour runs if it cannot.*
+*What does the IITGN faculty session W4-4 pick up from here? It is tentative, and the fallback session runs if it cannot.*
 
 **The handoff line.** Your baseline is hard to beat, and you now know what any model must beat and on which weeks. The next 120 minutes show how a series remembers itself, autocorrelation, and what a smoothing or ARIMA model would have to do to earn its place above the festival-aligned baseline on the thirteen held-out weeks.
 
@@ -425,11 +436,11 @@ handoff.
 | Autocorrelation | It measures how closely each week's shipments follow the week a fixed number of weeks earlier, one back or 52 back. |
 | Smoothing | It forecasts from an average of past weeks that gives the most recent weeks the most weight. |
 | ARIMA | It forecasts from the series' own past weeks and its own past misses, the pattern autocorrelation measures. |
-| Held-out weeks | The thirteen the handoff line names; since they also picked the rule, a new model that beats the baseline there is checked again on a rolling origin through 2025's festival. |
+| Held-out weeks | The thirteen the handoff line names; since they also picked the rule, a new model that beats the baseline there is checked again from many origins in turn, a rolling origin, through 2025's festival. |
 
 ```notes
 LIVE, 2 minutes. Read the handoff line as written, then point at the four words: the faculty
-session defines them properly, and this table only says what each one is for.
+session (tentative) defines them properly, and this table only says what each one is for.
 Park any "is the vendor's model an ARIMA" question for the faculty session (tentative).
 Transition: the Kahoot.
 ```
@@ -464,12 +475,12 @@ Saturday.
 ```cards
 icon: badge-check | eyebrow: The rule | title: Beat the bot on hidden weeks | body: In shipments, then rupees, against a copy of last year, before any model earns the plan. | tone: dark
 icon: calendar | eyebrow: The calendar | title: Copy by distance from Diwali | body: A calendar copy moved 2025's peak a week late and moves 2026's two weeks early. | tone: light
-icon: scale | eyebrow: The cost | title: Price the miss both ways | body: A late shipment costs 4.6 times a spare one, so the error bar of 6,615 a week reads Rs 1.65 lakh short or Rs 35,800 over. | tone: light
+icon: scale | eyebrow: The cost | title: Price the miss both ways | body: A late shipment costs 4.6 times a spare one, so a typical miss of 6,615 a week costs Rs 1.65 lakh short or Rs 35,800 over. | tone: light
 ```
 
 **Saturday** runs the recap paper and moves each day's method to another company: Friday's goes to Amazon India's festive staffing, then to Kalpa's four units. Tonight: the take-home and Saturday's preview.
 
 ```notes
-LIVE, 2 minutes. The three cards are the cheat sheet's crux lines, word for word. Transition: the
+LIVE, 2 minutes. The three cards restate the cheat sheet's crux lines. Transition: the
 faculty session (tentative) or the fallback.
 ```
