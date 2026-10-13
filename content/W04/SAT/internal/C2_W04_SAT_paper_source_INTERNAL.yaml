@@ -3,14 +3,14 @@
 #
 # The bank sets what is tested and this file sets the bar (decisions saturday-interview-grade,
 # saturday-real-cases and saturday-w4-shape in data/programme/facts.yaml). Six parts, named by the
-# questions of docs/detailing/W04_analyst_craft_spine.md section 10. Ten bank items print, four of
+# questions of docs/detailing/W04_analyst_craft_spine.md section 10. Ten bank items print, five of
 # them reworded through data/programme/paper_edits.yaml; thirty-two fold into deeper items, each
 # with its reason under `folded`; one moves to the stretch page. Twenty-nine new items carry the
 # rest, Part 2's seven among them, written by the content team and waiting for the tracker.
 #
 # Every case number is in a Week 4 day's facts file (content/W04/D{1..5}/internal); every Thursday
-# number is from the D4 facts file, and every Delhi Metro or Aced fact from Thursday's sources list,
-# never from the case file. Every Kalpa plant printed here was found in that day's TA lab, confirmed
+# number is from the D4 facts file, and every Delhi Metro or Aced fact from Thursday's sources list
+# or, for DMRC's 2018 counts, Tuesday's facts file, never from the case file. Every Kalpa plant printed here was found in that day's TA lab, confirmed
 # against its lab note (decision w4-finding-once-found). Every public fact was re-checked on
 # 13 October 2026; the URLs and quotes are in internal/C2_W04_SAT_sources_INTERNAL.md, and
 # internal/C2_W04_SAT_key_proofs_INTERNAL.py asserts every key that rests on arithmetic.
@@ -115,7 +115,7 @@ parts:
         mermaid: |-
           flowchart LR
             S["One slide, five minutes,<br/>Thursday's city review"] --> CH["The city head decides:<br/>keep, end or change the scheme"]
-            D["Driver-operations lead"] --> CH
+            D["Driver operations lead"] --> CH
             M["Marketing lead"] --> CH
             F["Finance partner"] --> CH
         table:
@@ -270,7 +270,7 @@ folded:
     why: The item asks for the seasonal naive by name and keys it as the same month a year earlier, which is the blank bank 6 fills.
   7:
     into: "new:kalpa-board"
-    why: The board sentence the item keys gives the error on six months the forecast never saw and says none of them held a Diwali, and two wrong options stretch that error to festive months it was never measured on.
+    why: The answer the item keys gives the error on six months the forecast never saw and says none of them held a Diwali, and two wrong options take the range of the forecasts, which no forecast was scored on, for an error.
   8:
     into: "new:tf-target"
     why: The printed item is bank 8's statement, judged with its reason on Wells Fargo's cross-sell count, so the room has to say what the staff did and not only mark it true.
@@ -291,7 +291,7 @@ folded:
     why: Option b divides every step by the sessions that opened the app, the single denominator bank 13 calls false, and its reason says why each step takes the step before as its base.
   14:
     into: "new:m5"
-    why: The sponsor's case is a curve that fits two years within 2 percent, and the key says a fit is no forecast, which is bank 14's false statement refused on the M5 scoreboard.
+    why: The sponsor's case is a curve that fits two years within 2 percent, and the key refuses the fit as evidence, scoring the curve on the latest weeks it never saw; options b and d, weeks drawn at random from the fitted years, score how well it fills gaps, which is bank 14's false statement refused on the M5 scoreboard.
   15:
     into: "new:kalpa-sheet"
     why: The exhibit is the lab's finding behind bank 15's reading, reorders per member up 1.22 times while their booked value per member fell to 0.96, and option a, the reorders north star, is wrong for the reason bank 15 keys.
@@ -318,7 +318,7 @@ folded:
     why: The reply the item keys is bank 22's evidence on Kalpa's own counts, the stage's conversion by date, with the fall inside the auto-reorder window.
   23:
     into: "new:m5"
-    why: The key is bank 23's honest test, scoring the curve against the seasonal naive on weeks it never saw.
+    why: The key is bank 23's honest test, holding back the latest weeks and scoring the curve against the seasonal naive on them.
   24:
     into: "new:asym"
     why: The plan follows from what each miss costs the decision, which is what bank 24 says good enough is about.
@@ -333,13 +333,13 @@ folded:
     why: The exhibit carries all three of bank 27's false losses at once, a step members can skip, a session base set beside a member base, and the temptation to divide every step by the opening count.
   28:
     into: "new:m5"
-    why: The scoreboard sets machine-learning entries against the naive and the seasonal naive, two of the honest baselines bank 28 keys, and the key refuses a vendor's curve as its own baseline.
+    why: The options set the naive against the seasonal naive, two of the honest baselines bank 28 keys, read off a scoreboard where the seasonal naive beat both machine-learning entries, and no option lets the vendor's curve be its own baseline.
   36:
     into: "new:asym"
     why: The item asks for each forecast's mean absolute error from its misses summed by direction, the arithmetic of bank 36 on the week's own thirteen weeks.
   37:
     into: "new:kalpa-board"
-    why: The board sentence the item keys is bank 37's answer to Anand on Kalpa's own months, the average miss on months the forecast had not seen.
+    why: The answer the item keys is bank 37's answer to Anand on Kalpa's own months, the average miss on months the forecast had not seen, set against the plan line's gap.
   39:
     into: "new:margin"
     why: The item is bank 39's expected value with the cost line most analysts forget, a discount paid on adds that would have happened anyway.
@@ -394,6 +394,7 @@ notes:
       per completed trip. Leading inputs move before the north star and proxies stand in for it, and
       neither catches harm. The singular words in the bank, window, baseline and target, do not fit
       the plural blank.
+      Monday's deck teaches it in the chapter on North-star and guardrail metrics.
     answer: >-
       The north star is the outcome the plan exists for, and each guardrail catches one cheap way of
       hitting it, so I name the cheap way beside each guardrail.
@@ -409,6 +410,8 @@ notes:
       compared with, and a target is what the plan hopes it reaches; neither is part of the
       definition. Guardrails sit beside a definition as numbers of their own, and each word in the
       bank is used once, so guardrails belongs to Q1.
+      Monday's deck teaches it in the chapter on Definitions: numerator, denominator, window,
+      exclusions.
     answer: >-
       A number is computable once its numerator, denominator, window and exclusions are written down,
       and it is safe to pay for once its guardrails are.
@@ -423,6 +426,10 @@ notes:
       rupee cost of a wrong nudge in each direction is the line Rohan Desai's version rewrites. On the
       Retail tables a wrong nudge cost a discount and some annoyance, so the same threshold would sit
       in a very different place.
+      Each method comes from its day: the definition and the guardrail from Monday's chapters on
+      Definitions: numerator, denominator, window, exclusions and North-star and guardrail metrics,
+      and the test against a baseline from Wednesday's SECTION 6 (half one, S31 to S35) and Friday's
+      SECTION 4 (half one, S30 to S37).
     wrong:
       c: >-
         The rupee cost of a wrong nudge is the line that changes most: in lending a wrong approval
@@ -437,6 +444,8 @@ notes:
       Confidence of case, then charger, counts the charger among the baskets that hold the case: 165
       of 200, 0.825. It answers how reliably a case basket holds a charger, and it says nothing yet
       about chance, which is the next item.
+      Wednesday's deck teaches it in SECTION 2, Confidence: how reliably together? (half one, S11 to
+      S15).
     answer: >-
       Confidence shrinks the world to the baskets that hold A and asks how often B is there too.
   31:
@@ -447,6 +456,8 @@ notes:
       the charger buyers' share of cases gives the same 0.97. Wednesday's lab found the same shape on
       Kalpa's own baskets: the charger in 84.5 percent of the 812 consumer baskets, and the screen
       protector toward it at a confidence of 0.82 and a lift of 0.97.
+      Wednesday's deck teaches it in SECTION 3, Chance and lift: more often than chance? (half one,
+      S16 to S20).
     answer: >-
       Lift is the pair's count over the count chance gives, so a partner that is in almost every
       basket reads a high confidence and a lift of about 1.
@@ -460,6 +471,8 @@ notes:
       baskets. The lab's three lines for merchandising were the same call on the lab's own counts:
       refuse the charger bundle, promote the wireless earphones with their case (lift 3.1 at a
       support of 6 percent, 49 baskets, three-quarters of them Retail-Plus) and watch the car pair.
+      Wednesday's deck teaches it in SECTION 4, The confidence trap; lift near one (half one, S21 to
+      S25), and the lab makes the same call on Kalpa's charger.
     wrong:
       a: >-
         More than 80 percent of case buyers take a charger because more than 80 percent of everyone
@@ -479,6 +492,8 @@ notes:
       May's blend weights each cohort by its size: 500 of A's 1,000 and 1,140 of B's 3,000 retain,
       1,640 of 4,000, 41 percent. Averaging the two rates without weights gives 44, which is the
       mean of ratios the week kept refusing.
+      Thursday's deck teaches it in SECTION 3, Blended numbers against cohort truth (half one, S20
+      to S26).
     answer: >-
       A blended rate is the cohorts' rates weighted by their sizes, so I add the members first and
       divide once.
@@ -489,6 +504,8 @@ notes:
       June adds cohort C: 460 of A, 1,050 of B and 950 of C's 2,000 retain, 2,460 of 6,000, 41
       percent again. Both old cohorts fell, A from 50 to 46 and B from 38 to 35, and the new cohort in
       its first month lands above the old blend, so the blend holds.
+      Thursday's deck teaches it in SECTION 3, Blended numbers against cohort truth (half one, S20
+      to S26).
     answer: >-
       A new cohort in its strong first month props up a blend while every old cohort falls, so I read
       each cohort at the same age before I read the blend.
@@ -505,6 +522,8 @@ notes:
       percent in January to 49 in July, and Kalpa's Retail-Plus tier held flat in July, August and
       September while every cohort fell, which Thursday's lab found. Fixing each member's entry month
       is what lets the decline show.
+      Thursday's deck teaches it in SECTION 3, Blended numbers against cohort truth (half one, S20
+      to S26), and reads Gold's flat 38 the same way in SECTION 6 (S45 to S54).
     wrong:
       b: >-
         40.5 averages A's 46 and B's 35 as if the two cohorts were the same size, and B is three
@@ -527,6 +546,8 @@ notes:
       copies the same month a year earlier, October 2024's Rs 3.2 crore, and both Octobers held
       Diwali, so the copy carries the festival into the right month. The next item asks what the same
       copy does when the festival moves.
+      Friday's deck teaches it in SECTION 2, Naive, seasonal naive and drift baselines (half one,
+      S14 to S21).
     answer: >-
       Every forecast must beat the naive and the seasonal naive on months it never saw, and the
       seasonal naive is the hard one wherever the season repeats on the calendar.
@@ -556,6 +577,7 @@ additions:
       are waiting before the week's completed trips are counted, so the city can send drivers there.
       It fell from 2.13 to 1.75 because the new online hours went where riders were few, while the
       north star barely moved, from 35.76 to 35.89 trips per online driver-week (Monday's case data).
+      Monday's deck teaches it in the chapter on Leading against lagging indicators.
     wrong:
       a: >-
         The north star barely moved, 35.76 to 35.89, so requests per online hour fell without the
@@ -623,6 +645,8 @@ additions:
       city's 1,200 drivers in the idle tail (Monday's case data). So the size goes to the city head
       as the city's own 1.90 to 1.58 from Exhibit 1A, about 17 percent, with E and F as where the new
       hours went. The note itself fails the proxy test: a number hit while the outcome got worse.
+      Monday's deck teaches the proxy test in the chapter on What to measure and why; the proxy
+      test, and runs it on the twelve rows in the first case chapter.
     wrong:
       a: >-
         1.31 averages the drivers' own rates and understates the six's fall, and a 31 percent fall
@@ -661,7 +685,7 @@ additions:
           - [Use, "No usage condition: an unused debit card, the largest product category, could stay in the count for up to four years"]
           - [How staff were judged, "Against sales goals, with the number of products sold a significant criterion in their evaluations"]
           - [What staff did, "Opened accounts customers had not asked for; moved customers' money into new accounts so they counted as funded; changed contact details so satisfaction surveys would not reach customers"]
-          - [The 2013 change, "Remittance accounts were added to the count without investors being told, giving 0.04 of that year's 0.11 rise in the ratio"]
+          - [The 2013 change, "Remittance accounts already open were added to the count without investors being told, giving 0.04 of that year's 0.11 rise in the ratio; the rest of the rise came from more accounts and products inactive for at least 365 days"]
     text: |-
       Statement: any target changes the behaviour of the people who are paid to hit it. Judge it on Exhibit 1C. True or false, and why?
       (a) False: a target changes behaviour only where its rules leave a gap, and the order describes rules that some staff broke, never the target itself.
@@ -678,10 +702,12 @@ additions:
       USD 50 million, came to USD 185 million between them by our sum (the CFPB's release of 8
       September 2016, checked 13 October 2026), and the 2020 settlement with the SEC and the Justice
       Department to USD 3 billion.
+      Monday's deck teaches it in the chapter on What to measure and why; the proxy test, where
+      Wells Fargo is the case, and in the chapter on Gaming, and definitions that resist it.
     wrong:
       a: >-
-        The order describes the staff's behaviour moving with the target the bank paid on; a gap in
-        the rules is what any target finds, which is the statement's point.
+        The order describes the staff's behaviour moving with the target staff were judged against; a
+        gap in the rules is what any target finds, which is the statement's point.
       b: >-
         Staff sales credit rode on the same count, and the count moved with the accounts staff
         opened; the 2013 addition was a second, separate way it rose.
@@ -692,47 +718,56 @@ additions:
       People paid on a number move it the cheapest way open to them, so I write each definition
       asking how the people measured could raise it without the outcome moving.
   - id: wells-silent
-    label: "Size the 2013 change"
+    label: "Choose two additions"
     type: One correct option
     level: Medium
     min: 3.5
     tag: "[F]"
     roles: BA, FDE
     day: Mon
-    key: b
+    key: c
     anchor: >-
       What makes a metric gameable, and how do you write one that is not?
     text: |-
-      Exhibit 1C's last row is the 2013 change. What share of Wells Fargo's 2013 rise in the ratio came from the change of definition alone, and what would have shown it to investors?
-      (a) About 57 percent, 0.04 against the other 0.07; a dated log of each change to what is counted, with that year's ratio also on the old definition.
-      (b) About 36 percent, 0.04 of the 0.11 rise in the ratio; a dated log of each change to what is counted, with that year's ratio also on the old definition.
-      (c) About 36 percent, 0.04 of the 0.11 rise in the ratio; a guardrail on customer satisfaction, read from the surveys the bank sends to its retail customers.
-      (d) About 57 percent, 0.04 against the other 0.07; a guardrail on customer satisfaction, read from the surveys the bank sends to its retail customers.
+      Exhibit 1C's last row is the 2013 change. Which two additions to the ratio's written definition would have shown investors the 0.04, and kept the rest of that year's rise out of the ratio?
+      (a) A guardrail on revenue per household, read beside the ratio every quarter on the same households; and an exclusion that drops any product unused for a year
+      (b) A guardrail on revenue per household, read beside the ratio every quarter on the same households; and an exclusion that drops the remittance accounts added to the count that year
+      (c) A dated log of every change to what is counted, with that year's ratio also on the old definition; and an exclusion that drops any product unused for a year
+      (d) A dated log of every change to what is counted, with that year's ratio also on the old definition; and an exclusion that drops the remittance accounts added to the count that year
     why: >-
-      0.04 of the 0.11 rise is about 36 percent, and it came from counting a new kind of account, so
-      that much of the year's rise reflected no change in what households held. 57 percent sets the
-      change against the rest of the rise, 0.04 over 0.07, a ratio of two parts and no share of the
-      whole. The record that shows a change of definition is the dated change log: every change to
-      what is counted carries a date and a note, and the year of the change prints the ratio on both
-      definitions so a reader can see the step. A satisfaction guardrail could not show it, since
-      counting existing remittance accounts changed nothing a customer saw. The SEC's order (Release
-      34-88257, checked 13 October 2026) says investors were not told of the 2013 addition, which is
-      the breach, and that the rest of the 0.11 came from accounts and products inactive for at least
-      365 days, so none of the year's rise was households using more.
+      Two different things raised the ratio in 2013, and each needs its own addition. The 0.04, about
+      36 percent of the 0.11 rise, came from a change of what is counted: remittance accounts that
+      already existed joined the count. The addition that shows a change of definition is a dated
+      change log, with the year of the change printed on both definitions, so a reader sees a step
+      and never reads it as growth; Monday's seven lines ask that each exclusion be dated if it
+      changes, and the log keeps that date for every change to what is counted. A guardrail on revenue per household could not show it, since
+      accounts that already existed had already earned their revenue, so nothing beside the ratio
+      would move when they joined the count; a guardrail is a second number and keeps nothing out of
+      the ratio itself. The rest of the rise came from more accounts and products inactive for at
+      least 365 days (the SEC's order, Release 34-88257, paragraph 42, checked 13 October 2026), and
+      the count carried no condition on use, so an unused debit card could stay in it for up to four
+      years. An exclusion that drops any product unused for a year keeps that rest out. Dropping the
+      remittance accounts added that year takes out the 0.04 the log exists to show and leaves the
+      rest, the products unused for at least 365 days, in the ratio. The order says investors were never told of
+      the 2013 addition, which is the breach the change log exists to prevent. Monday's deck teaches
+      the four lines of a definition in the chapter on Definitions: numerator, denominator, window,
+      exclusions, gaming in the chapter on Gaming, and definitions that resist it, and the page that
+      carries both in the chapter on The metric definition artifact.
     wrong:
       a: >-
-        0.04 over the remaining 0.07 sets one part of the rise against the other; the change's share
-        of the 0.11 rise is 0.04 over 0.11, about 36 percent.
-      c: >-
-        Counting existing remittance accounts changed nothing a customer saw, so satisfaction could
-        not move, and the order says staff changed contact details so the surveys missed customers
-        anyway.
+        Remittance accounts that already existed had already earned their revenue, so revenue per
+        household would not move when they joined the count; the 0.04 shows only in a dated log with
+        the year's ratio also on the old definition.
+      b: >-
+        A guardrail beside the ratio would not move when existing accounts joined the count, and
+        dropping the remittance accounts takes out the 0.04 itself while the inactive products stay in.
       d: >-
-        0.04 over 0.07 is a ratio of two parts, and no customer felt remittance accounts join the
-        count, so a satisfaction guardrail could not have shown the change.
+        The log shows the 0.04, and dropping the remittance accounts then takes that same 0.04 out, so
+        the rest of the rise, products unused for at least 365 days, stays in the ratio.
     answer: >-
       Every change to what a metric counts goes in a dated change log, with the old definition run
-      beside the new for the year it changes, so a step is never read as growth.
+      beside the new for the year it changes, and every count carries an exclusion on use, so neither
+      a step nor an unused product is ever read as growth.
   - id: kalpa-sheet
     label: "Mark the definition sheet"
     type: More than one correct
@@ -771,6 +806,9 @@ additions:
       events move before the month's delivered orders, while a team can act on them (e). The growth
       plan's north star, as the lab's exercise wrote it, is delivered orders per active customer per
       month.
+      Monday's deck teaches the sheet's lines in the chapters on North-star and guardrail metrics,
+      Leading against lagging indicators and The metric definition artifact, and the lab finds
+      Exhibit 1D.
     wrong:
       a: >-
         Reorders placed is the number the app raised on its own, up 1.22 times with none delivered,
@@ -785,7 +823,7 @@ additions:
   - id: slide-order
     label: "Build the slide"
     type: Order the steps
-    level: Medium
+    level: Hard
     min: 3.5
     tag: "[S]"
     roles: BA
@@ -794,26 +832,29 @@ additions:
     anchor: >-
       Present a recommendation to a non-technical stakeholder in two minutes.
     text: |-
-      Tuesday's one-slide template has four slots, from the top: the claim, written as the title; the evidence; the caveat; and the action. Four of these seven lines fill the four slots and three would spoil the slide. Leave those three out and write the other four in slot order, from the top.
-      (a) The action: move every driver in every zone to the redesigned pay from Monday, which the city head signs
-      (b) The evidence: bookings per peak online hour fell from Rs 314 to Rs 260 at the same Rs 165 fare
-      (c) The claim, as the title: bookings per active driver-week rose 0.8 percent, so the scheme pays its way
-      (d) The caveat: the monsoon ended inside the six weeks after the launch, and there are no weeks from last year to compare with
-      (e) The claim, as the title: the guarantee is paying for online hours that carry no trips
-      (f) The action: test the redesigned pay on half the drivers, picked at random, for six weeks, which the city head signs
-      (g) The evidence: bookings per active driver-week rose from Rs 5,817 to Rs 5,861 at the same Rs 165 fare
+      The one-slide answer runs, from the top: the claim, written as the title; the evidence; the caveat; and the action. Four of these seven lines fill the four slots on Exhibit 2A's numbers, and three would spoil the slide. Leave those three out and write the other four in slot order, from the top.
+      (a) Move every driver in every zone to the redesigned pay from Monday; the city head signs
+      (b) Bookings per peak online hour fell 17 percent, from Rs 314 to Rs 260, at the same Rs 165 a trip
+      (c) Bookings per active driver-week rose 0.8 percent, so the scheme is paying its way
+      (d) The monsoon ended inside the six weeks after the launch, and no weeks from last year are in the data
+      (e) The guarantee is paying for peak online hours in which drivers complete no trips
+      (f) Test the redesigned pay on half the drivers, picked at random, for six weeks; the city head signs
+      (g) Bookings per peak online hour fell 21 percent, from Rs 314 to Rs 260, at the same Rs 165 a trip
     why: >-
-      The template's slots fix the order, claim, evidence, caveat, action, so the item is which line
-      fills each slot. The claim reads the denominator the scheme pays for: the guarantee pays per
-      online hour, and bookings per peak online hour fell from Rs 314 to Rs 260 at the same Rs 165
-      fare, so each hour carried fewer trips (e, with b as its evidence). Bookings per active
-      driver-week rose 0.8 percent, Rs 5,817 to Rs 5,861, only because each driver-week carried about
-      four more online hours while each hour earned Rs 260 against Rs 314, so the claim and evidence
-      built on it (c and g) are the flattering denominator. The caveat leaves part of the fall to the
-      season, and the action answers it: a test on half the drivers, picked at random, runs the old
-      pay and the new in the same weeks, so the season falls on both halves and the difference is the
-      redesign's (f). Moving every driver at once (a) leaves nothing to compare with, so the season
-      and the redesign stay mixed. The template is the Week 1 four-part note on one slide.
+      The stem prints the slots' order, claim, evidence, caveat, action, so the item is which line
+      fills each slot, and three choices decide it. The claim reads the denominator the scheme pays
+      for: the guarantee pays per peak online hour, so the title is that it pays for hours that carry
+      no trips (e). Bookings per active driver-week rose 0.8 percent, Rs 5,817 to Rs 5,861, only
+      because each driver-week carried about four more online hours while each hour earned Rs 54
+      less, so a title built on it reads the flattering denominator (c). The evidence is the hour's
+      bookings, and a fall is measured against where it started: Rs 314 less Rs 260 is Rs 54, 17
+      percent of Rs 314 (b); 21 percent divides the same Rs 54 by the Rs 260 it fell to (g). The
+      caveat leaves part of the fall to the season, and the action answers it: a test on half the
+      drivers, picked at random, runs the old pay and the new in the same weeks, so the season falls
+      on both halves and the difference is the redesign's (f). Moving every driver at once (a) leaves
+      nothing to compare with, so the season and the redesign stay mixed. Tuesday's deck teaches the
+      four slots in the chapter on The one-slide answer: claim, evidence, caveat, action, and
+      Monday's deck the denominator the scheme pays for.
     wrong:
       a: >-
         A city-wide switch from Monday leaves no drivers on the old pay, so the season and the
@@ -821,14 +862,15 @@ additions:
         answers it.
       c: >-
         Bookings per active driver-week rose only because each driver-week carried about four more
-        online hours while each hour earned Rs 54 less, so the title reads the flattering
-        denominator.
+        online hours while each hour earned Rs 54 less; the scheme pays per online hour, so this
+        title reads the flattering denominator.
       g: >-
-        The same flattering denominator as evidence: it carries the scheme-pays-its-way title, and
-        the scheme pays per online hour, where bookings fell from Rs 314 to Rs 260.
+        Rs 54 over the Rs 260 the hour fell to is 21 percent; a fall is measured against where it
+        started, Rs 54 over Rs 314, 17 percent.
     answer: >-
-      Claim in the title, one number with its denominator, the caveat on the page, then the action
-      with its cost and who signs it, an action that answers the caveat.
+      Claim in the title, one number with its denominator and its change on the right base, the
+      caveat on the page, then the action with its cost and who signs it, an action that answers the
+      caveat.
   - id: keep-two
     label: "Keep two elements"
     type: More than one correct
@@ -857,6 +899,7 @@ additions:
       how little the money bought. Requests go to marketing's page, the Rs 82 to finance's and the 61 percent
       split to the page that answers where the money went; the caveat, which this draft does not
       list, would stay on the slide.
+      Tuesday's deck teaches it in the chapter on What to leave out, and the appendix.
     wrong:
       b: >-
         Requests count what riders asked for, and they rose 1.8 percent; what riders got is the wait,
@@ -874,45 +917,77 @@ additions:
   - id: concede
     label: "Judge the defence"
     type: True or false
-    level: Medium
-    min: 3.5
+    level: Hard
+    min: 4
     tag: "[F]"
     roles: BA, FDE
     day: Tue
     key: c
     anchor: >-
       A stakeholder's objection is partly right; how do you answer it?
+    exhibit:
+      caption: >-
+        Uber Hyderabad's peak weeks, the six before the launch on 31 August 2026 and the six after
+        it: rider requests at peak and trips per peak online hour, week by week.
+      table:
+        head:
+          - Week beginning
+          - Window
+          - Rider requests at peak
+          - Trips per peak online hour
+        rows:
+          - [20 July, before, "41,155", "1.88"]
+          - [27 July, before, "41,608", "1.91"]
+          - [3 August, before, "41,896", "1.89"]
+          - [10 August, before, "42,101", "1.92"]
+          - [17 August, before, "42,431", "1.93"]
+          - [24 August, before, "42,719", "1.88"]
+          - [31 August, after, "43,589", "1.64"]
+          - [7 September, after, "43,878", "1.59"]
+          - [14 September, after, "43,507", "1.57"]
+          - [21 September, after, "42,602", "1.55"]
+          - [28 September, after, "41,819", "1.56"]
+          - [5 October, after, "41,161", "1.56"]
     text: |-
-      At the review the finance partner says: "The monsoon ended inside your six weeks, so what your slide shows is the season, not your scheme." In the last three of the six weeks after the launch, weekly peak rider requests ran from 41,161 to 42,602, against 41,155 to 42,719 in the six weeks before, and trips per peak online hour ran at 1.56. Statement: the strongest reply concedes nothing, since any concession hands the objector the meeting. True or false, and why?
-      (a) True: concede nothing, and answer the objection from the stem: weekly requests came back inside their old range while trips per hour stayed at 1.56 against 1.90.
-      (b) True: concede nothing, and answer the objection from the stem: trips per hour kept sliding, to 1.56 in the last three weeks against 1.58 over all six.
-      (c) False: grant that the rains ended inside the window, then show weekly requests back inside their old range while trips per hour stayed at 1.56 against 1.90.
-      (d) False: grant that the rains ended inside the window, then show trips per hour kept sliding, to 1.56 in the last three weeks against 1.58 over all six.
+      At the review the finance partner says: "The monsoon ended inside your six weeks, so what your slide shows is the season, not your scheme." Statement: the strongest reply concedes nothing, since any concession hands the objector the meeting. Judge it on Exhibit 2B. True or false, and why?
+      (a) True: concede nothing, and show that peak requests rose 1.8 percent over the six weeks after the launch, from 251,910 to 256,556, while trips per peak online hour fell from 1.90 to 1.58.
+      (b) True: concede nothing, and show that in the last three weeks peak requests sat back inside their range before the launch while trips per peak online hour held near 1.56.
+      (c) False: grant that the rains ended inside the window, then show that in the last three weeks peak requests sat back inside their range before the launch while trips per peak online hour held near 1.56.
+      (d) False: grant that the rains ended inside the window, then show that peak requests rose 1.8 percent over the six weeks after the launch, from 251,910 to 256,556, while trips per peak online hour fell from 1.90 to 1.58.
     why: >-
       False. The defence has four moves: restate the objection until its owner agrees, answer from
       the evidence, concede what is true, and say what would change your mind. Finance is partly
-      right, since the monsoon ended inside the six weeks and there are no weeks from last year. The
-      evidence that separates the season from the scheme is demand: in the last three weeks after the
-      launch, weekly rider requests were back inside the range of the six weeks before (41,161 to
-      42,602 against 41,155 to 42,719), while trips per online hour ran at 1.56 against 1.90, so
-      riders asked as often as before and each online hour still carried fewer trips. A slide from
-      1.58 to 1.56 cannot answer finance, because a season that thinned demand would show the same
-      slide. What would change the analyst's mind is a city where the rains ended and no scheme
-      launched, with trips per hour falling as far.
+      right, since the rains ended inside the six weeks and no weeks from last year are in the data,
+      so the true part is conceded in the open. The evidence then has to answer the season where the
+      season shows. Over the six weeks requests rose 1.8 percent, but on Exhibit 2B the first three
+      weeks after the launch ran 43,507 to 43,878, above every week before it, and then requests fell
+      four weeks running from 7 September; the six-week total hides that fall, so it cannot answer an
+      objection that the season thinned demand. Even after the fall, the last three weeks ran 41,161
+      to 42,602, inside the 41,155 to 42,719 of the six weeks before; the lowest sits only 6 requests
+      above that floor, so a learner who reads the last week as back at the floor of the old range has
+      read it right. Through those weeks trips per peak online hour held at 1.55 to 1.56 against 1.88
+      to 1.93: riders asked as often as before the launch and each online hour still carried fewer
+      trips, which a thinner season cannot explain. What would change the analyst's mind is a city where the rains ended and no scheme
+      launched, with trips per hour falling as far. Tuesday's deck teaches the four moves in the
+      chapter on Defending under challenge: restate, answer, concede, what would change your mind,
+      and Monday's deck the window a comparison is read over, in the chapter on Definitions:
+      numerator, denominator, window, exclusions.
     wrong:
       a: >-
-        Conceding nothing leaves the true part, the monsoon and the missing weeks from last year,
-        unanswered in the room, and the claim loses the people who already believe it.
+        Conceding nothing leaves the true part, the rains and the missing weeks from last year,
+        unanswered in the room, and the six-week rise comes from the three weeks before requests
+        fell four weeks running.
       b: >-
-        Conceding nothing is the weak defence, and the slide from 1.58 to 1.56 is what finance's own
-        story predicts, since a season that thinned demand would show the same slide; only the
-        requests separate the two.
+        The evidence is the one that answers the season, and conceding nothing leaves the true part,
+        the rains ending inside the window and the missing weeks from last year, unanswered; the claim
+        loses the people who already believe it.
       d: >-
-        A slide from 1.58 to 1.56 fits the season as well as the scheme; only requests back in their
-        old range, with trips per hour still at 1.56 against 1.90, separate the two.
+        The six-week rise comes from the first three weeks after the launch, before requests fell
+        four weeks running from 7 September, so it cannot answer an objection about the season;
+        only the last three weeks, back at the old level of demand, can.
     answer: >-
-      I restate the objection, answer it from the evidence that separates the two causes, concede the
-      true part in the open, and say which fact would change my mind.
+      I restate the objection, concede the true part in the open, answer it from the weeks where the
+      other cause would show, and say which fact would change my mind.
   - id: memo
     label: "Judge the memo"
     type: True or false
@@ -936,6 +1011,8 @@ additions:
       filed 18 April 2018, checked 13 October 2026). A memo serves a reader with an hour and a writer
       with a week; the city head asked for five minutes. The afternoon's written case was the memo form
       of the same answer, for a reader with the time to read it.
+      Tuesday's deck teaches it in the chapter on The AI-free written business case, where Amazon's
+      memo sits.
     wrong:
       a: >-
         Full sentences are the memo's strength, and the format still has to fit the reader's slot; a
@@ -961,39 +1038,43 @@ additions:
     anchor: >-
       A guesstimate: how many drivers must be online at the evening peak?
     text: |-
-      The city head's afternoon ask is roughly how many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes. Four of these six steps make the estimate, and two would spoil it. Leave those two out and write the other four in the order they run.
-      (a) Set the chain's 0.60 online driver-hours per completed trip beside the case's 0.53 before the launch, and move the answer down to about 5,000 to 5,700
+      The city head's afternoon ask is roughly how many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes. The guesstimate runs clarify, map, calculate, validate: four of these six steps make it, and two would spoil it. Leave those two out and write the other four in the order they run.
+      (a) Re-run the chain at Exhibit 1A's 1.90 trips per peak online hour before the launch, which gives about 5,000 drivers
       (b) Ask whether it is drivers online at one moment or across the window, which window, which product, and the city's median or every zone's
-      (c) Set the chain against Exhibit 1A's 2.13 rider requests per peak online hour before the launch, and move the answer down to about 3,900
+      (c) Re-run the chain at Exhibit 1A's 2.13 rider requests per peak online hour before the launch, which gives about 4,500 drivers
       (d) Write the formula: drivers online equal trips to serve in an hour, over trips one online driver completes in an hour, times a buffer for the busiest half hour
       (e) Work it aloud: about 8,330 evening trips an hour over 1.68 trips per online driver-hour is about 4,960, and 15 percent more for the busiest half hour is about 5,700
-      (f) Set the chain's 0.60 online driver-hours per completed trip beside the case's 0.53 before the launch, and move the answer up to about 6,450
+      (f) Re-run the chain at Exhibit 1A's 1.58 trips per peak online hour after the launch, the latest weeks, which gives about 6,100 drivers
     why: >-
-      Clarify (b), map (d), calculate (e), validate (a): the dojo's four steps. The chain's numbers are
-      assumptions said aloud: about 1 crore people, 1 weekday Uber trip for every 100 people, a
-      quarter of the day's trips in the three evening hours, 2.4 trips an hour for a busy driver and
-      about 30 percent of online drivers idle at a moment, so 1.68 trips per online driver-hour, and a
-      buffer of 1.15. The check compares like with like, online driver-hours per completed trip, 0.60
-      in the chain against the case's 0.53: the city's drivers needed fewer hours for a trip than the
-      chain assumes, so the chain runs about an eighth high and the answer moves down, to about 5,000
-      at the case's own 1.90 trips an hour, 8,333 over 1.90 times 1.15. Step f moves the right
-      comparison the wrong way, multiplying by 0.60 over 0.53 where it should divide, which lands near
-      6,450. Step c checks in the wrong unit: 8,333 trips an hour over 2.13 rider requests per online
-      hour, about 3,900, divides trips served by riders asking, and requests ran above trips (251,910
-      against 224,200 before the launch), so it moves the answer the wrong way.
+      Clarify (b), map (d), calculate (e), validate (a). The chain's numbers are assumptions said
+      aloud: about 1 crore people, 1 weekday Uber trip for every 100 people, a quarter of the day's
+      trips in the three evening hours, 2.4 trips an hour for a busy driver with about 30 percent of
+      online drivers idle at a moment, so 1.68 trips per online driver-hour, and a buffer of 1.15. The
+      check sets the assumed 1.68 against a measured rate in the same unit, trips per peak online
+      hour, from weeks that met the goal without paying for idle hours: 1.90 before the launch, at a
+      4.8-minute median wait. Re-run there, 8,333 trips over 1.90 times 1.15 is about 5,040, so the
+      answer moves down to about 5,000. Two checks spoil it, each a mistake analysts make. Step c
+      re-runs the chain on rider requests per online hour, a different unit: requests ran above trips
+      (251,910 against 224,200 before the launch), so 2.13 overstates what an online hour completes
+      and the answer lands near 4,500. Step f takes the latest weeks, and Exhibit 1A shows why they
+      mislead: after the launch the guarantee paid for online hours that carried no trips, so 1.58
+      counts idle hours the wait did not need, and the extra hours bought 0.2 minutes, 4.8 to 4.6;
+      re-run at 1.58 the chain asks for about 6,100 drivers, the idle tail included. Tuesday's deck
+      teaches the four steps in the chapter on The guesstimate: clarify, map, calculate, validate,
+      and Monday's deck the idle hours the guarantee paid for.
     wrong:
       c: >-
-        Rider requests per online hour is the wrong unit for a chain that counts trips served, and
-        requests ran above trips before the launch, so the check pulls the answer down to about
-        3,900 for the wrong reason.
+        Rider requests per online hour is the wrong unit for a chain that counts trips served;
+        requests ran above trips before the launch, so the re-run lands near 4,500 for the wrong
+        reason.
       f: >-
-        0.53 hours a trip against the chain's 0.60 means each trip needed fewer driver-hours than the
-        chain assumed, so the answer falls toward 5,000; scaling up to 6,450 multiplies where it
-        should divide.
+        1.58 is the rate after the guarantee paid for online hours that carried no trips, so it
+        counts idle hours the wait did not need: the extra hours bought 0.2 minutes. The weeks
+        before the launch held the wait at 4.8 minutes at 1.90.
     answer: >-
       Clarify the moment and the window, say the formula, calculate aloud with a unit on every
-      factor, then check against a figure in the same unit and move the answer the way the check
-      points.
+      factor, then validate against a measured figure in the same unit, from a period that met the
+      goal without the distortion I am sizing.
   - id: four-checks
     label: "Check four sources"
     type: More than one correct
@@ -1023,6 +1104,9 @@ additions:
       users in a minute, and 63 is the number in the post's web address, a decimal point lost. The
       drill city's households are right at 5 lakh, and households are not users: a household of four
       holds several people who pay, so the check sets households against people.
+      Tuesday's deck teaches the validate step and its sanity tests in the chapter on The
+      guesstimate: clarify, map, calculate, validate, and the lab checks Anand's new store against
+      DMart.
     wrong:
       b: >-
         The post's own words, printed in the stem, say 6.3 million (Flipkart Stories, 9 October 2026,
@@ -1041,17 +1125,17 @@ additions:
   - id: metro
     label: "Read the metro counts"
     type: One correct option
-    level: Medium
-    min: 3.5
+    level: Hard
+    min: 4
     tag: "[S]"
     roles: BA, DS
     day: Tue
-    key: a
+    key: b
     anchor: >-
       A guesstimate: how many drivers must be online at the evening peak?
     exhibit:
       caption: >-
-        Delhi Metro's two published counts and how DMRC counts a journey, each in the words its source
+        Delhi Metro's published counts and how DMRC counts a journey, each in the words its source
         uses, checked 13 October 2026.
       table:
         head:
@@ -1063,36 +1147,43 @@ additions:
           - [Average daily passenger journeys, 64.06 lakh, "the current average, August 2026", "The Tribune, 9 August 2026, citing DMRC"]
           - [Passenger boardings, "82,44,903", "17 September 2026, DMRC's highest-ever day, during a bus strike", "Republic World, 18 September 2026, quoting DMRC"]
           - [How a journey is counted, "One for each line, or corridor, a passenger uses to reach the destination", "PTI's report of DMRC's method, 30 August 2023", "Deccan Herald, reporting PTI"]
+          - [Line uses and riders when the line count began, "45,35,932 line uses on 29 May; nearly 27 lakh commuters a day on the network in February", "2018, PTI's report of 30 May 2018", "LatestLY, reporting PTI"]
     text: |-
-      A pair's chain puts Delhi Metro at about 60 lakh rider trips on a weekday, each trip counted once from the gate where the rider enters to the gate where they leave (invented). They set it against Exhibit 2B, call their estimate 6 to 27 percent low, and raise it. Which reading of the check is right?
-      (a) Trips are set against line uses: DMRC counts a journey for each line a rider uses, so 64.06 lakh exceeds the trips, and 17 September was a record day.
-      (b) The estimate is 6 percent low on an ordinary day and 27 percent low at the city's true peak, so the pair should raise the whole chain by about a fifth.
-      (c) A boarding is one rider entering at one gate, so the 82,44,903 boardings are the count to set trips against, since journeys count each change of line.
-      (d) The check is sound, since DMRC's average day and its record day bracket the estimate between 64.06 lakh and 82.45 lakh trips.
+      A pair's chain puts Delhi Metro at about 60 lakh rider trips on a weekday, each trip counted once from the gate where the rider enters to the gate where they leave (invented). They set it against Exhibit 2C, call their estimate 6 to 27 percent low, and raise it. Which reading of the check holds?
+      (a) Converted at 2018's mix of line uses to riders, the record day's 82,44,903 passenger boardings are about 49 lakh trips, so the chain runs about 22 percent high and is checked down.
+      (b) Converted at 2018's mix of line uses to riders, the average day's 64.06 lakh journeys are about 38 lakh trips, so the chain runs about 57 percent high and is checked down.
+      (c) Set against the average day alone, since 17 September was a record during a strike, 64.06 lakh puts the chain 6 percent low, so it is raised to about 64 lakh.
+      (d) Set against the record day, the busiest day the network has carried, 82,44,903 puts the chain 27 percent low, so it is raised toward 82 lakh.
     why: >-
-      DMRC's journeys count each line a passenger uses to reach a destination, so a trip with one
-      change of line counts twice (Deccan Herald, reporting PTI, 30 August 2023, checked 13 October
-      2026). When DMRC first used the count, in May 2018, it read 45,35,932 line uses on one day
-      against gate ridership near 27 lakh a day earlier that year (PTI, 30 May 2018). So the 64.06
-      lakh average runs above the trips riders take, and an estimate of trips has to be compared with
-      trips, or converted. The 82,44,903 was one record day, during a bus strike, never an ordinary
-      weekday.
+      Two things are wrong with the pair's check, and both have to be fixed. DMRC's journeys count
+      each line a passenger uses to reach a destination, so a trip with one change of line counts
+      twice (Deccan Herald, reporting PTI, 30 August 2023, checked 13 October 2026), and the chain
+      counts trips gate to gate. When DMRC began counting lines, in 2018, it read 45,35,932 line uses
+      on 29 May against nearly 27 lakh commuters a day in February (PTI, 30 May 2018, via LatestLY,
+      checked 13 October 2026), about 1.68 line uses a rider. At that mix the average day's 64.06
+      lakh journeys are about 38 lakh trips, and the chain's 60 lakh runs about 57 percent high, so
+      its trips per person are checked and the answer moves down, never up. The conversion is rough,
+      two counts from different months of 2018, and the call does not hang on it: any mix above
+      about 1.07 line uses a rider puts the average day below 60 lakh trips. The check also needs an
+      ordinary day: 82,44,903 was one record day, during a bus strike, so it checks nothing about a
+      weekday. Tuesday's deck teaches the check in the chapter on The guesstimate: clarify, map,
+      calculate, validate, where a published number is read in its own unit before the answer
+      moves toward it, and Monday's deck uses Delhi Metro's count in the chapter on Definitions:
+      numerator, denominator, window, exclusions.
     wrong:
-      b: >-
-        Raising the chain trusts both checks, and both count something else: line uses, and one
-        record day.
+      a: >-
+        The unit is converted and the day is wrong: 17 September 2026 was a record during a bus
+        strike, so it cannot check an ordinary weekday, and on the average day the chain runs about
+        57 percent high.
       c: >-
-        Whatever a boarding counts, 17 September 2026 was one record day during a bus strike, so it
-        cannot check an ordinary weekday. DMRC also called it its highest-ever, above the earlier
-        record of more than 81 lakh passenger journeys on 8 August 2025 (The Tribune, 9 August 2026,
-        checked 13 October 2026), which reads boardings and journeys as one count; that reading is
-        ours, since neither source defines a boarding.
+        The record day is set aside and the unit is not: 64.06 lakh counts each line a rider uses, so
+        setting it against trips gate to gate makes a chain that runs high look low.
       d: >-
-        A bracket from two counts in another unit brackets nothing, since neither counts the trips
-        the chain estimates.
+        Both mistakes at once: a record strike day, counted by line, set against an ordinary
+        weekday's trips counted gate to gate.
     answer: >-
-      I validate in the unit the estimate counts and on an ordinary period, so I ask what each
-      published number counts before I move my answer toward it.
+      I validate in the unit the estimate counts and on an ordinary period, so I convert a published
+      count to my unit before I move my answer toward it, and I set a record day aside.
   # ---------------------------------------------------------------- Part 3, Wednesday
   - id: ctr-slot
     label: "Read the strip by slot"
@@ -1137,6 +1228,9 @@ additions:
       less 0.9), about 1.35 in slot 3. So slot 1 is re-ranked first, by lift above a support floor.
       Milk clicks least in slot 3, at 0.9 percent, and slot 3 still loses the fewest clicks to milk,
       since milk holds only 30 percent of its impressions.
+      Wednesday's deck teaches the popular partner in SECTION 4, The confidence trap; lift near one
+      (half one, S21 to S25), and finds the strip's fall in SECTION 8 (S52 to S55, with D54 on slot
+      1).
     wrong:
       a: >-
         Slot 1 did fall furthest, and the cause is milk's 70 percent share of its impressions; milk
@@ -1192,6 +1286,8 @@ additions:
       onions and tomatoes reads 1.38, below the 1.5 rule, and loses its slot. Amazon's team met the
       same problem and measured the increased likelihood of buying an item with any given purchase,
       which scales heavy buyers down (Amazon Science, checked 13 October 2026).
+      Wednesday's deck teaches the floor in SECTION 6, The support floor and the watch list (half
+      one, S31 to S35), and the heavy-buyer doubt in SECTION 10 (half two, D68 and D69).
     wrong:
       a: >-
         Both clear 1.5 only per cart; a lift inflated by heavy buyers and big carts is the number the
@@ -1245,6 +1341,8 @@ additions:
       the suggestion, with the decision rule fixed before it starts, and the strip would show it only
       beside ice cream, in 4 percent of carts. Wednesday's lab put the car pair on its watch list for
       the same reason.
+      Wednesday's deck teaches it in SECTION 6, The support floor and the watch list (half one, S31
+      to S35), and puts Instamart's pair on the watch list in SECTION 10 (half two, S64).
     wrong:
       b: >-
         The same support hides two different counts: Instamart's 100 carts already beat the 22 chance
@@ -1252,8 +1350,8 @@ additions:
         showing sauce sells sauce, sized for the 4 percent of carts that hold ice cream; only Kalpa's
         2 baskets need counting again.
       c: >-
-        A lift on a handful of baskets moves by luck, and a slot a pair cannot fill earns nothing
-        however high its lift.
+        A lift on a handful of baskets moves by luck, and a slot a pair cannot fill earns nothing,
+        whatever its lift.
       d: >-
         100 carts against the 22 chance gives show the pair is real; they cannot show that suggesting
         sauce sells sauce, which only a test of the suggestion can, and the pair reaches only the 4
@@ -1286,6 +1384,8 @@ additions:
       Swiggy's letter (checked 13 October 2026) describes Maxxsaver as returning part of the larger
       basket's margin to the user; the week's reading of it is that the discount is a cost line on
       every cart that takes it.
+      Wednesday's deck teaches it in SECTION 9, Cross-sell and upsell reasoning; expected value in
+      rupees (half two, S56 to S60), and prices the strip's slot in SECTION 10 (S65 to S67).
     wrong:
       a: >-
         Rs 22,500 is the till's sales, and a slot is worth the margin it adds, never the sales it
@@ -1339,6 +1439,9 @@ additions:
       and 61 per member, 28,351 over 46,477, because a member browses several menus across sessions
       before adding to one cart. A step's level says little about a loss; the loss is where a rate
       changed, for whom and since when, which the next item reads.
+      Thursday's deck teaches it in SECTION 4, Funnel stages, drop-off, denominators (half one, S27
+      to S34, with S31 on a step above 100 percent and S32 on the unit), and reads Gold's flow in
+      SECTION 7 (S55 to S60).
     wrong:
       a: >-
         34 percent is per session, and a member browses menus across several sessions; per member
@@ -1397,6 +1500,9 @@ additions:
       the option's 1,317 is against the members' own old rate, as it says, and no option offers the
       comparator figure. Fixing it ends a weekly loss, which is why it goes before the sale cohort's
       question.
+      Thursday's deck finds the Android break in SECTION 7 (half one, S61 to S65), teaches the call
+      in SECTION 8, The fix-first decision and its evidence (half two, S66 to S72), and makes it on
+      Gold in SECTION 9 (S73 to S77).
     wrong:
       a: >-
         3,198 is the loss over the 17 days, and a week is 7 of them, about 1,317 orders.
@@ -1449,6 +1555,9 @@ additions:
       Swiggy's letter (Q2 FY26, checked 13 October 2026) indexes each cohort's spend to the Q4 FY24
       cohort's first quarter and states no denominator; the question is fair to ask of it, and the
       invented cohort says nothing about Swiggy's own numbers.
+      Thursday's deck teaches the cohort table in SECTION 1, Cohort construction (half one, S6 to
+      S12), and the weaned users in the fallback's SECTION 12 (fallback S1 to S3), which runs if the
+      faculty block slips.
     wrong:
       b: >-
         A cell that doubles when weak users leave has to say what it divides by and what it counts
@@ -1502,6 +1611,9 @@ additions:
       counts and read the next three weeks before anyone rebuilds it. Blended retention counts
       members who opened the app at all, so it cannot see a step inside a session, and its flat line
       says nothing about the checkout.
+      Thursday's deck teaches a step's conversion by date in SECTION 4, Funnel stages, drop-off,
+      denominators (half one, S27 to S34), and the evidence a call carries in SECTION 8 (half two,
+      S66 to S72), and the lab finds Exhibit 4F.
     wrong:
       a: >-
         3 fewer counts checkouts across windows with different cart counts; at the old rate about 9
@@ -1560,6 +1672,9 @@ additions:
       the festival's lift sits in its run-up; an answer that gives November the Diwali week and says
       part of the run-up may land in late October 2026 has gone further and is right. Both Octobers
       in the exhibit are about 1.44 times their November, which is the festival.
+      Friday's deck teaches the moving festival in SECTION 2, Naive, seasonal naive and drift
+      baselines (half one, S19), and on Flipkart's weeks in SECTION 5 (S43 to S46), and the lab
+      finds Exhibit 5B's months.
     answer: >-
       A seasonal copy is the bar to beat only when the season repeats on the calendar; when the
       festival moves, I copy by distance from the festival.
@@ -1590,33 +1705,44 @@ additions:
           - ["Random forest, a machine-learning benchmark", "1.010"]
           - ["Naive, the last day seen", "1.752"]
     text: |-
-      The vendor's sponsor says: "Our curve fits two years of Lucknow's weeks within 2 percent, and machine learning won M5, so the curve should go to the plan." Using Exhibit 5C, which reply holds?
-      (a) A fit is no forecast: on M5's unseen days the seasonal naive, 0.847, beat both machine-learning benchmarks; the curve goes only if it beats it on weeks it never saw.
-      (b) The winning team's 0.520 beat the naive's 1.752 by far on M5; the curve goes if it beats the naive over the same two years, a far larger test than a few held-back weeks.
-      (c) A fit is no forecast: on M5's unseen days every other entry beat the naive, 1.752; the curve goes if it beats the naive on weeks it never saw.
-      (d) The winning team's 0.520 beat the seasonal naive's 0.847 on M5; the curve goes if it beats the seasonal naive over the same two years, a far larger test than a few held-back weeks.
+      The vendor's sponsor says: "Our curve fits two years of Lucknow's weeks within 2 percent, and machine learning won M5, so the curve should go to the plan." Using Exhibit 5C, which test must the curve pass before it goes to the plan?
+      (a) Hold back the latest thirteen weeks, and send the curve to the plan only if it beats the seasonal naive on those weeks.
+      (b) Hold back thirteen weeks drawn at random from the two years, and send the curve to the plan only if it beats the seasonal naive on those weeks.
+      (c) Hold back the latest thirteen weeks, and send the curve to the plan only if it beats the naive on those weeks.
+      (d) Hold back thirteen weeks drawn at random from the two years, and send the curve to the plan only if it beats the naive on those weeks.
     why: >-
-      M5 judged every entry on days it never saw, and on that test the seasonal naive, at 0.847, beat
-      the perceptron's 0.977 and the random forest's 1.010, and only 1,972 of the 5,507 teams, 35.8
-      percent, beat it; the top entries that did win were machine learning, which is why the honest
-      test is the same for any model. So the bar is the seasonal naive, on weeks the curve never saw.
-      The naive is an honest baseline and, on seasonal data, the easy one: every other entry on the
-      exhibit beat its 1.752, so beating it proves little. The two years the curve was fitted on
-      score its fit, however many weeks they hold. The vendor's curve fits its 91 training weeks
-      within 1.4 percent, and on the thirteen hidden weeks it missed by 16,400 shipments a week
-      against the seasonal naive's 9,831, almost all of it too high. Makridakis and colleagues (PLOS
-      ONE, 2018) made the same point on 1,045 monthly series: the models that fitted best did not
-      necessarily forecast best.
+      A fit is no forecast, so the curve is tested the way the plan will use it, and two choices
+      decide the test. Where: the plan books weeks after the data ends, so the curve is fitted on the
+      earlier weeks and scored on the latest weeks it never saw. Weeks drawn at random from the two
+      years sit between weeks the curve was fitted on, so scoring there measures how well it fills
+      gaps, close to its fit; Makridakis and colleagues found on 1,045 monthly series that the models
+      that fitted best did not necessarily forecast best (PLOS ONE, 2018, checked 13 October 2026).
+      Against what: on M5's unseen days the seasonal naive scored 0.847 and beat both
+      machine-learning benchmarks on Exhibit 5C, 0.977 and 1.010, while every other entry on the
+      exhibit beat the naive's 1.752, so on seasonal weeks beating the naive proves little; only 1,972 of the
+      5,507 teams, 35.8 percent, beat the seasonal naive (the M5 accuracy paper, checked 13 October
+      2026). The top entries that did win were machine learning, which is why the test is the same
+      for any model. Friday's thirteen hidden weeks ran this test: the vendor's curve fitted its 91
+      training weeks within 1.4 percent and missed the hidden weeks by 16,400 shipments a week
+      against the same-week copy's 9,831, almost all of it too high. Those weeks, beginning 29 June to
+      21 September 2026, hold no festival; Exhibit 5D does not print their dates, so give them when the
+      room asks. A rolling origin that takes in 2025's festival is the next test, which Friday's
+      fallback runs.
+      Friday's deck teaches the held-back latest weeks in SECTION 3, Holding out; MAE and MAPE in
+      the business's units (half one, S22 to S29), the bar in SECTION 2, Naive, seasonal naive and
+      drift baselines (S14 to S21), and the curve tested in SECTION 4 (S30 to S37) and SECTION 6 (S49
+      to S59).
     wrong:
       b: >-
-        The two years the curve was fitted on score its fit and never its forecast, and the naive is
-        the bar every other entry on the exhibit cleared.
+        Weeks drawn at random sit between weeks the curve was fitted on, so the score measures how
+        well it fills gaps, close to its fit; the plan needs the weeks after the data, so the latest
+        weeks are held back.
       c: >-
-        Every other entry on Exhibit 5C beat the naive's 1.752, while the seasonal naive's 0.847 beat
-        both machine-learning benchmarks, so on seasonal weeks the seasonal naive is the bar.
+        Every other entry on Exhibit 5C beat the naive's 1.752, while the seasonal naive's 0.847 beat both
+        machine-learning benchmarks, so on seasonal weeks the seasonal naive is the bar.
       d: >-
-        The curve was fitted on those two years, so any score there measures its fit; only weeks it
-        never saw score the forecast, however few they are.
+        Random weeks score a gap-filling fit, and the naive is the bar every other entry on Exhibit
+        5C cleared; the test is the latest weeks against the seasonal naive.
     answer: >-
       I score every model, of any family, on the latest periods it never saw, against the naive and
       the seasonal naive, before its fit counts for anything.
@@ -1633,8 +1759,8 @@ additions:
       How do you evaluate a forecast?
     exhibit:
       caption: >-
-        Lucknow's thirteen hidden weeks, beginning 29 June to 21 September 2026. An idle packer-shift costs Rs 650 for 120 shipments, Rs 5.42 for each shipment planned and not shipped, and a late
-        shipment costs Rs 25; both are assumptions.
+        Lucknow's thirteen hidden weeks. A packer-shift is booked for 120 shipments and costs Rs 650
+        if it sits idle, and a late shipment costs Rs 25; both are assumptions.
       table:
         head:
           - Forecast
@@ -1655,13 +1781,18 @@ additions:
       Mean absolute error adds the misses with their signs dropped and divides by the weeks: 85,996
       over 13 is 6,615 for festival-aligned, 127,800 over 13 is 9,831 for the copy of last year, and
       213,200 over 13 is 16,400 for the vendor, about 148 percent above festival-aligned. Priced, a
-      spare shipment costs Rs 5.42 and a late one Rs 25: the vendor's misses cost about Rs 11.9 lakh,
+      spare shipment costs Rs 650 over 120, about Rs 5.42, and a late one Rs 25: the vendor's misses
+      cost about Rs 11.9 lakh,
       festival-aligned's Rs 13.5 lakh and the copy's Rs 30.5 lakh, so the vendor is cheapest only
       because it errs high, the cheap side, by an amount nobody chose. The fair comparison sets each
       forecast at its plan share, its own 0.82 point, 25 over 25 plus 5.42: there festival-aligned and the copy cost
-      about Rs 8.8 lakh each and the vendor Rs 10.0 lakh. These weeks hold no festival, so only the
-      festival can separate festival-aligned from the copy, and the plan books festival-aligned raised
+      about Rs 8.8 lakh each and the vendor Rs 10.0 lakh. These weeks, beginning 29 June to 21
+      September 2026, hold no festival, and Exhibit 5D does not print their dates, so give them when
+      the room asks; only the festival can separate festival-aligned from the copy, and the plan books festival-aligned raised
       toward its 0.82 point, because a late shipment costs about 4.6 times a spare one.
+      Friday's deck teaches the error in the business's units in SECTION 3, Holding out; MAE and
+      MAPE in the business's units (half one, S25 to S27), prices the misses in SECTION 6 (S55 to
+      S58), and sets the plan share in its fallback (S10 to S13), beyond the row.
     wrong:
       a: >-
         The smallest error is not the smallest cost when a late shipment costs about 4.6 times a spare
@@ -1680,7 +1811,7 @@ additions:
       I fix the measure before scoring, in the business's unit, then price each direction of miss and
       compare forecasts at the quantile the two costs set, never at the raw error alone.
   - id: kalpa-board
-    label: "Choose the board sentence"
+    label: "Answer Anand's three questions"
     type: One correct option
     level: Medium
     min: 4
@@ -1706,37 +1837,46 @@ additions:
           - ["Finance's rule, the same month last year plus 4 percent", "19.69", 4 percent above, "3.5"]
           - ["Festival-aligned, matched by Diwali, plus 4 percent", "19.69", 4 percent above, "3.5"]
           - [The vendor's curve, "23.09", 22 percent above, "38.8"]
-          - [The plan line, "21.77", 15 percent above, not a forecast]
     text: |-
-      Anand asks which number goes in front of the board for October 2026 to March 2027, and how wrong it could be. Using Exhibits 5A and 5E, which sentence answers him?
-      (a) "Rs 19.69 crore, finance's rule, spike in October, Rs 2.08 crore under plan; it missed by about Rs 3.5 lakh a month on six unseen months, none with a Diwali."
-      (b) "Rs 19.69 crore, festival-aligned, spike in November, Rs 2.08 crore under plan; it missed by about Rs 3.5 lakh a month on six unseen months, none with a Diwali."
-      (c) "Rs 19.69 crore, festival-aligned, spike in November, Rs 2.08 crore under plan; its miss of about Rs 3.5 lakh a month on unseen months holds for the festive months too."
-      (d) "Rs 19.69 crore, finance's rule, spike in October, Rs 2.08 crore under plan; its miss of about Rs 3.5 lakh a month on unseen months holds for the festive months too."
+      The plan line for the same six months is Rs 21.77 crore, the months a year earlier plus 15 percent. Anand asks which number goes in front of the board for October 2026 to March 2027, how wrong it could be, and whether the plan line can stand as the board's forecast. Using Exhibits 5A and 5E, which answer holds?
+      (a) Rs 19.69 crore, festival-aligned, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali; the plan line stands as the board's forecast, since it sits inside the forecasts' range, Rs 18.93 to 23.09 crore.
+      (b) Rs 19.69 crore, festival-aligned, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali, about Rs 21 lakh if all six miss one way; the plan sits Rs 2.08 crore above, a target the forecast does not reach.
+      (c) Rs 21.39 crore, midway between finance's rule and the vendor's curve, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali, about Rs 21 lakh if all six miss one way; the plan sits Rs 38 lakh above, within two such errors.
+      (d) Rs 21.39 crore, midway between finance's rule and the vendor's curve, off by about Rs 3.5 lakh a month on six unseen months, none with a Diwali; the plan line stands as the board's forecast, since it sits inside the forecasts' range, Rs 18.93 to 23.09 crore.
     why: >-
-      Festival-aligned matches last year's months by Diwali, so it puts the spike in November,
-      Diwali's month this year (Exhibit 5A), and books Rs 19.69 crore, Rs 2.08 crore under the plan
-      line's Rs 21.77 crore. Finance's rule copies the same calendar month, so it carries October
-      2025's festival into an October 2026 with no Diwali; it books the same total with the same
-      miss, and the board plans stock and staff by month. The error bar is festival-aligned's own
-      miss on six months it never saw, about Rs 3.5 lakh a month, about Rs 21 lakh if all six missed
-      the same way. April to September holds no Diwali in any year on Exhibit 5A, so the spike month
-      itself is untested, and the sentence says so; a sentence that stretches the Rs 3.5 lakh to the
-      festive months claims an accuracy nobody measured. The vendor misses by Rs 38.8 lakh a month on
-      the same months and the copy without growth by Rs 11.7 lakh.
+      Two choices decide the answer. The number is a forecast that was tested: festival-aligned
+      matches last year's months by Diwali, books Rs 19.69 crore, and on April to September 2026, six
+      months it never saw and none with a Diwali (Exhibit 5A), it missed by about Rs 3.5 lakh a
+      month, so the six months could miss by about Rs 21 lakh if every month missed the same way.
+      Rs 21.39 crore splits the difference between finance's rule and the vendor's curve, was never
+      scored on unseen months and has no error of its own, so the Rs 3.5 lakh in options c and d is
+      festival-aligned's, borrowed. Then the plan line: Rs 21.77 crore sits Rs 2.08 crore above
+      festival-aligned, about ten times the Rs 21 lakh, so the plan is a target the forecast does not
+      reach, and the board hears both numbers apart. The range of the forecasts, Rs 18.93 to 23.09
+      crore, measures how far they disagree and is no error: its top end, the vendor's curve, missed
+      by Rs 38.8 lakh a month on the same unseen months. The spike month itself is untested, since
+      April to September holds no Diwali in any year on Exhibit 5A, and the board is told so;
+      finance's rule books the same total with the same miss and puts the spike in October, while
+      festival-aligned puts it in November, Diwali's month this year, and the board plans stock and
+      staff by month. Friday's deck teaches the error on unseen months in SECTION 3, Holding out;
+      MAE and MAPE in the business's units (half one, S22 to S29), and the forecast note's lines in
+      SECTION 4, Beating the baseline; the vendor curve tested; the good-enough call and the forecast
+      note (S34 to S37), applied to the staffing note in SECTION 7 (half two, S12 to S15).
     wrong:
       a: >-
-        Finance's rule copies October 2025's festival into an October 2026 with no Diwali, and the
-        board books stock month by month.
+        The range of the forecasts measures how far they disagree, and its top end missed by Rs 38.8
+        lakh a month; festival-aligned's own error, about Rs 21 lakh over six months, leaves the Rs
+        2.08 crore gap a target.
       c: >-
-        The Rs 3.5 lakh was measured on April to September, which held no Diwali, so it says nothing
-        about the festive months.
+        Rs 21.39 crore splits the difference between two forecasts and was never scored on unseen
+        months, so the Rs 3.5 lakh is festival-aligned's error, borrowed.
       d: >-
-        The festival sits in the wrong month, and the error bar is stretched to festive months it was
-        never measured on.
+        The midpoint tests neither forecast and borrows festival-aligned's Rs 3.5 lakh, and the range
+        of the forecasts measures how far they disagree, never an error.
     answer: >-
-      I give the board the forecast that beat the baseline on months it never saw, with the spike in
-      the festival's month, its error bar in rupees, and what the bar could not test.
+      I give the board the forecast that beat the baseline on months it never saw, its error bar in
+      rupees with what the bar could not test, and the plan's gap set against that error, so a
+      target is never read as a forecast.
   # ---------------------------------------------------------------- Part 6, the transfer
   - id: brief-logistics
     label: "Match: Kalpa Logistics"
@@ -1760,6 +1900,7 @@ additions:
       of promises moved. What changed from Uber: the people who
       move the number are dispatchers, and the cost of an error is a customer told a parcel was on
       time when it was not.
+      The method is Monday's chapter on Gaming, and definitions that resist it.
     answer: >-
       A metric whose window the measured can move measures their moves, so I fix the window at the
       order and guard it with the share of dates changed.
@@ -1782,6 +1923,8 @@ additions:
       here dollars of bookings, and split by metro area to find where it changed. What changed from
       Chennai: the unit is dollars, the steps run through a payer's approval, and a lost visit costs
       a test billed to a US payer.
+      The method is Thursday's SECTION 4, Funnel stages, drop-off, denominators (half one, S27 to
+      S34).
     answer: >-
       I read each step over the step before in one unit, split it by place and date, and name the
       step that changed before I name a cause.
@@ -1804,6 +1947,8 @@ additions:
       month they started and each group is read at the same age. What changed from Zomato Gold:
       churn counts the members who leave where retention counted those who stay, and a lost
       subscriber costs a monthly fee for every month after.
+      The method is Thursday's SECTION 1, Cohort construction (half one, S6 to S12), each cohort
+      read at the same age as SECTION 2 rules (S18).
     answer: >-
       I group subscribers by the month they started and read each group at the same age, so a mix of
       new and old cannot hide a decline.
@@ -1825,13 +1970,15 @@ additions:
       "Beyond what any customer takes up anyway" is the base rate, so the pair's lift above a support
       floor answers it, valued in margin. What changed from Pune: the products are a card, a loan and
       an account, and a wrong offer in lending can cost twenty times a missed good one.
+      The method is Wednesday's SECTION 3, Chance and lift (half one, S16 to S20), above SECTION 6's
+      floor (S31 to S35).
     answer: >-
       I rank second products by lift above a floor, never by how many customers hold them, and price
       each offer with the cost of the wrong one.
   - id: amazon
     label: "Set the plan share"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 3.5
     tag: "[D]"
     roles: BA, FDE
@@ -1841,10 +1988,10 @@ additions:
       Kalpa Financial Services asks 'which customers should we nudge first'; say what stays the same in your method and what changes.
     text: |-
       Amazon India, a fulfilment centre's festive packer plan (illustrative case: the company is real, and every number below except Amazon's own figure is hypothetical). Amazon says its Great Indian Festival 2025 drew over 276 crore customer visits, 70 percent of them from tier 2 and 3 cities. Suppose its centre in a tier 2 city pays Rs 650 for an idle packer-shift of 120 shipments, as Lucknow does, while a late shipment costs it Rs 10, against Lucknow's Rs 25. What share of weeks should its plan cover, and what carries over from Lucknow unchanged?
-      (a) About 0.35; the festival-aligned copy, the held-out latest weeks and pricing both directions carry over.
+      (a) About 0.35; the festival-aligned copy, held-back weeks and a price on each way of missing carry over.
       (b) About 0.35; the copy of last year's calendar weeks carries over, the plainest baseline any plan has.
       (c) About 0.65; the copy of last year's calendar weeks carries over, the plainest baseline any plan has.
-      (d) About 0.65; the festival-aligned copy, the held-out latest weeks and pricing both directions carry over.
+      (d) About 0.65; the festival-aligned copy, held-back weeks and a price on each way of missing carry over.
     why: >-
       A spare shipment costs Rs 650 over 120, about Rs 5.42, and a late one Rs 10 here, so the plan
       should cover 10 over 10 plus 5.42 of weeks, about 0.65, where Lucknow's Rs 25 gave about 0.82.
@@ -1852,6 +1999,8 @@ additions:
       latest weeks, copy last year by distance from the festival, price each direction of miss and
       set the share from the two costs. On Kalpa's Retail tables the same question would turn on the
       cost of an empty shelf against stock left over.
+      Friday's fallback sets the plan share from the two costs (S10 and S11, beyond the row), and
+      Friday's SECTION 5 (half one, S43 to S46) the festival-aligned copy.
     wrong:
       a: >-
         0.35 puts the cheap cost on top: the share to cover is the late cost over the sum, 10 over 10
@@ -1872,7 +2021,7 @@ additions:
 # asks after a first answer, and the mock-interview round draws on them.
 stretch:
   - text: |-
-      In Hyderabad the 180 drivers in the idle tail completed 33,440 peak trips in the six weeks after the launch, about 31 trips and 39 peak online hours a driver a week. If the redesign drives all of them off the app, who carries those trips, and how many more peak online hours does that take at the other drivers' 1.90 trips an hour?
+      In Hyderabad the 180 drivers in the idle tail completed 33,440 peak trips in the six weeks after the launch, about 31 trips and 39 peak online hours a driver a week. If the redesign drives all of them off the app, who carries those trips, how many more peak online hours does that take, and what do you watch in the first month?
     answer: >-
       About 17,600 more peak online hours from the drivers who already complete 1.90 trips an hour,
       33,440 over 1.90. For the first month watch the drivers online in the first peak hour and
