@@ -47,6 +47,11 @@ used.
 - **The Kalpa lab notebook** sets up the tools and the anchor and leaves the sizing to two empty cells, so the worked answer (about 1,000 sign-ups) stays in the TRAINER note and the lab set's solution.
 - **The DMart table** `data/C2_W04_D02_kalpa_dmart_anchor_STUDENT.csv` carries both per-store figures, which answer the Kalpa store set's Q1; it stays byte-identical to the merged pack, as the brief requires of the case tables, and notebook 11 prints only its first four rows.
 
+- **Ramesh's shop sells Rs 11,900 to Rs 12,600 a day** where the spine's table wrote Rs 12,000 to Rs 13,000: the lab set's food stall already takes Rs 12,000 in a day, so the shop's numbers moved to stay apart, and they were chosen so that sales per customer hold at Rs 100 and sales per hour land on Rs 1,190 and Rs 1,050.
+- **The two mid-session drills keep the spine's minutes**, which give way to the row's 15 each: drill 1 runs 6 minutes inside SECTION 5's 12 for the drawer (spine section 6), and drill 2, the four estimates, stays in `exercises/unguided/` for the lab when chapter 8 runs short.
+- **The Kahoot keeps two departures from the row.** Q5's city of two million holds eight million households, the merged pack's figure the brief keeps, where the row and the spine's L5 say nine; Q2's "keep or cut" offers four candidates, since a Kahoot item carries four answers, where the row lists six elements.
+- **Anand's store question in STUDENT files** (the Kalpa store set, the lab set, the slide template and notebook 11) carries no status, while the row marks it proposed for client zero v2.3 and trainer only; the merged pack stated it the same way, so the rebuild kept it and leaves the ruling to the orchestrating session.
+
 ### What did the rebuild invent, and where is it recorded?
 
 Ramesh's kirana shop (56 days, eight draft elements, the draft and the page), the auto driver's two
