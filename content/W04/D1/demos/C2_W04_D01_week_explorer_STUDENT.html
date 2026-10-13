@@ -332,27 +332,37 @@ var W4 = {
             ["ice cream + milk", 2.9, 1.03, "band"], ["chips + cold drink", 5.0, 3.4, "case"], ["ice cream + chocolate sauce", 0.25, 4.6, "case"]]
   },
   thu: {
-    monthOne: [58, 56, 55, 53, 52, 50, 49, 31],     /* case Thu ticket: month-one retention, January to August cohorts */
-    normal: 5000, saleTimes: 2.6,                   /* case Thu ticket: normal cohort about 5,000; August 2.6 times */
-    flat: 38,                                       /* case Thu ticket: the dashboard's month-two retention, June to September */
-    /* toy: later cells, ages 2 onward, built so the dashboard reads 38 from June to September */
-    /* toy: each cohort's cells from month two on, built so the reading holds within 0.15 of 38.0 from June to
-       September; the sale cohort's month-two 24.0 is a toy, used only in the toy month of October */
-    later: [[38.4, 38.3, 38.2, 38.1, 38.0, 37.9, 37.8, 37.7], [38.3, 38.2, 38.1, 38.0, 37.9, 37.8, 37.7],
-            [38.2, 38.1, 38.0, 37.9, 37.8, 37.7], [38.2, 38.1, 38.0, 37.9, 37.8], [38.1, 38.0, 37.9, 37.8],
-            [38.1, 38.0, 37.9], [38.0, 37.9], [24.0]],
+    /* Thu facts (content/W04/D4/internal/C2_W04_D04_facts_INTERNAL.yaml) by id, read from the day's member_months */
+    sizes: [4854, 5055, 5449, 4859, 4905, 4821, 5057, 13000],  /* cohort_size_jan to cohort_size_aug */
+    sepSize: 5089,                                  /* cohort_size_sep: in its month zero in September, in no count */
+    normal: 5000, saleTimes: 2.6,                   /* cohort_mean_jan_jul; aug_times_normal (13,000 / 5,000) */
+    monthOne: [57.99, 56, 55, 52.99, 52.01, 49.99, 49, 31],   /* m1_jan to m1_aug, percent, printed 58 to 49 and 31 */
+    /* tri_jan_m2 to tri_jul_m2: each cohort's share that ordered, from its month two on, percent */
+    later: [[38.69, 38.40, 38.09, 37.80, 37.49, 37.21, 36.90], [38.60, 38.30, 38.00, 37.71, 37.41, 37.09],
+            [38.65, 38.36, 38.04, 37.75, 37.46], [38.61, 38.30, 37.99, 37.70], [38.70, 38.41, 38.10],
+            [38.89, 38.60], [38.54], []],
+    /* October, an estimate on the day's assumption (oct_sale_m2_assumed, oct_dashboard_estimate 0.329): every older
+       cohort slides another 0.3 points, and the August cohort enters at 31 less July's 10.5-point fall
+       (july_drop_m1_to_m2_points), 20.5 percent; the day's range for that rate is 17 to 24 */
+    octSlide: 0.3, augMonthTwo: 20.5, julyDrop: 10.5,
+    everyone: [40.9, 40.0, 39.5, 35.9],             /* everyone_jun to everyone_sep: everyone who joined before the month */
     months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October"],
-    toyBatch: {a: 100, aLast: 0.5, aNow: 0.4, b: 400, bRate: 0.525},   /* toy R1: two coaching batches */
-    /* toy counts built to the case's rates: search to menu view 118 percent per session; menu view to add-to-cart
-       34 percent per session and 61 percent per member */
+    toyBatch: {a: 100, aLast: 0.5, aNow: 0.4, b: 400, bRate: 0.525},   /* Thu toys toy_blend: two coaching batches */
+    /* Thu facts, September, Gold members: sep_sessions_open to sep_sessions_order_placed and sep_members_open to
+       sep_members_order_placed. With the carousel's entries left out, the counts from menu view on keep only the
+       sessions with a search: 116,797 menu views is the facts' 89 percent of 131,974 (search_to_menu_searched_sep);
+       the later counts are derived from the day's events table by the same rule */
     stages: ["Open the app", "Search", "Menu view", "Add to cart", "Checkout start", "Order placed"],
     funnel: {
-      session: {with: [100000, 50000, 59000, 20060, 13040, 10430], without: [100000, 50000, 36000, 12240, 7960, 6370]},
-      member: {with: [30000, 20000, 24000, 14640, 9810, 7850], without: [30000, 20000, 17000, 10370, 6950, 5560]}
+      session: {with: [194211, 131974, 155729, 52948, 42358, 27212], without: [194211, 131974, 116797, 39766, 31748, 20477]},
+      member: {with: [49822, 45865, 46477, 28351, 25740, 21574], without: [49822, 45865, 43470, 24183, 21501, 17124]}
     },
-    /* toy, programme-written: an AI app's launch cohort against organic cohorts, weekly retention in percent */
-    launch: 100000, organic: 10000,
-    launchRate: [70, 46, 30, 24, 20, 18, 17, 16], organicRate: [50, 42, 38, 36, 35, 34, 34, 33]
+    carouselSessions: 38932,                        /* sep_menu_sessions_no_search */
+    /* toy, programme-written (Thu toys toy_ai_cohorts gives 24 and 36 at week four): an AI app's launch-week cohort
+       against the weekly cohorts that join after it, share active in percent; the weekly cohort's size is a toy set
+       so the blended count is back near its launch-week record two months on, as the day's transcript says */
+    launch: 100000, weekly: 20000,
+    launchRate: [70, 46, 30, 24, 20, 18, 17, 16], weeklyRate: [50, 42, 38, 36, 35, 34, 34, 33]
   },
   fri: {
     firstWeek: "2024-09-30",                        /* case Fri ticket: weeks beginning 30 September 2024 to 21 September 2026 */
@@ -960,8 +970,8 @@ var W4 = {
       <h2 class="q">Thursday, 29 October: who is leaving, and at which step?</h2>
       <div class="ticket">
         <p class="label-line">Illustrative case: the company is real, the situation and the data are synthetic, built for this class.</p>
-        <p>Zomato Gold, Chennai, the membership and the app's order flow. The membership dashboard reports month-two retention for the city as flat at 38 percent for June, July, August and September 2026, while every signup cohort's own curve falls with age and each new cohort starts lower: the January 2026 cohort kept 58 percent of its members in month one, the July cohort 49 percent, and the August cohort, signed up in a sale week and 2.6 times a normal month, 31 percent.</p>
-        <p>On Monday 14 September 2026 a new checkout flow shipped on Android. Since then members' add-to-cart to order conversion on Android fell from 58 to 44 percent, while iOS held at 57 and non-members on Android at 52. The ask, due Friday: is it a cohort problem or an everyone problem, which funnel stage owns the loss, and what should be fixed first. The known caveats: the home carousel opens a menu without a search, sessions and members are different units, and the sale cohort was bought on a discount.</p>
+        <p>Zomato Gold, Chennai: the app's paid membership, with free delivery, and its order flow. The membership dashboard reports month-two retention, the share of members two or more months past their signup month who ordered in the month, as flat at 38 percent for June, July, August and September 2026, while every signup cohort's own curve falls with age and each new cohort starts lower: the January 2026 cohort kept 58 percent of its members in month one, the July cohort 49 percent, and the August cohort, grown by a sale week to 13,000 members, 2.6 times a normal month, 31 percent.</p>
+        <p>On Monday 14 September 2026 a new checkout flow shipped on Android. Since then members' add-to-cart to order on Android fell from 58 to 44 percent, while members on iOS went from 57 to 56 and non-members on Android from 52 to 51. The data hold 53,089 members who joined from January to September, their orders month by month, and the app's events for August and September. The ask, due Friday: is it a cohort problem or an everyone problem, which funnel stage owns the loss, and what should be fixed first. The known caveats: the home carousel opens a menu without a search, sessions and members are different units, and the August cohort was bought on a discount.</p>
       </div>
       <p class="who"><b>Who needs the answer.</b> The membership lead, with the app team, who will say the stage is fine.</p>
       <p class="who"><b>The questions on the way.</b></p>
@@ -977,10 +987,10 @@ var W4 = {
       <div class="scene-head"><span class="sid">Th1</span><h3>How can every batch shrink while the average stays flat?</h3></div>
       <p class="myth"><b>The first answer most people give:</b> the dashboard reads 38 percent every month, so nothing has changed.</p>
       <div class="predict">
-        <p class="ask"><b>Predict before you step.</b> The August sale cohort, 2.6 times a normal month, enters the dashboard's count in October at a month-two rate of 24 percent, a toy. Where does October's reading land?</p>
+        <p class="ask"><b>Predict before you step.</b> In October the August cohort, 13,000 members, enters the dashboard's count. If it loses the 10.5 points July's cohort lost from month one to month two, it enters at about 20.5 percent. Where does October's reading land?</p>
         <div class="opts">
-          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. It falls to about 24.</button>
-          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. It falls to about 34.</button>
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. It falls to about 21.</button>
+          <button type="button" class="opt" data-predict="B" aria-pressed="false">B. It falls to about 33.</button>
           <button type="button" class="opt" data-predict="C" aria-pressed="false">C. It falls to about 36.</button>
           <button type="button" class="opt" data-predict="D" aria-pressed="false">D. It holds at 38.</button>
         </div>
@@ -988,12 +998,12 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Each row is a signup cohort, as tall as its number of members; each column is a reporting month, and a cell is the cohort's share that ordered that month. Month-one rates and cohort sizes are the case's; the later cells are a toy, built so the reading matches the case's flat 38 percent from June to September, and October is a toy month. This page reads the dashboard's month-two retention as counting each member from the second month after signup, so the dashed month-one cells sit outside the count.</figcaption>
+          <figcaption>Each row is a signup cohort, as tall as its number of members; each column is a reporting month, and a cell is the cohort's share that ordered that month. Every size and cell is the day's own, counted from Thursday's member_months table. The dashboard counts a member from her month two, the second calendar month after the month she joined, so the dashed month-one cells sit outside its count. October has not happened yet: its column, on amber, is an estimate on the day's assumption.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><button type="button" class="btn" data-ctl="next">Next month</button>
             <output data-out="next">Reporting month: February 2026</output></div>
-          <div class="ctl"><label for="th1-size">Size of the August sale cohort, times a normal month of 5,000</label>
+          <div class="ctl"><label for="th1-size">Size of the August cohort, times a normal month of 5,000</label>
             <input type="range" id="th1-size" min="1" max="3" step="0.1" value="2.6" data-ctl="size">
             <output data-out="size">August: 13,000 members, 2.6 times normal</output></div>
           <dl class="nums" data-nums></dl>
@@ -1002,8 +1012,8 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>Every row falls month by month, and each cohort starts lower than the one before: 58, 56, 55, 53, 52, 50 and 49 percent in month one, then the sale cohort's 31. The dashboard still reads 38 from June to September, because each month a new cohort enters its count near 38 while the older ones sag a tenth of a point, and in September the sale cohort is in its first month, outside the count. In October it enters with 13,000 members at 24 percent: (35,000 x 37.8 + 13,000 x 24) / 48,000, about 34. At a normal 5,000 members it would pull the reading only to 36.</p>
-        <p>Counted from each member's first month instead, the sale cohort's 31 percent would already pull September down to 36, so the definition decides whether the dashboard looked flat at all. A blend can stay flat while every part of it shrinks, as long as new parts keep arriving and the weakest part has not been counted yet; once it is counted, its size sets how far the blend falls.</p>
+        <p>Every row falls after month one, and each cohort starts lower than the one before: 58, 56, 55, 53, 52, 50 and 49 percent in month one, then the August cohort's 31. From month two every cohort sits near 38.5 percent and slides about 0.3 points a month. The dashboard reads 38.2, 38.0, 37.9 and 37.8 from June to September, because each month one more cohort of about 5,000 enters its count at about 38.5, just above the older cohorts' slide, and in September the August cohort, 13,000 members in their month one, sits outside it.</p>
+        <p>In October that cohort enters. If its 31 loses the 10.5 points July's lost, it enters at about 20.5 and the reading falls to about 33: (35,000 x 37.5 + 13,000 x 20.5) / 48,000. Any rate from 17 to 24 percent gives 32 to 34, and at a normal 5,000 members the same cohort would pull the reading only to about 35. Counted from each member's month one instead, everyone who joined before the month, June to September read 40.9, 40.0, 39.5 and 35.9, so the definition decides whether the dashboard ever looked flat: a blend holds while every part shrinks as long as new parts keep arriving and the weakest part has not been counted yet.</p>
         <p class="formula"><b>The formula, last</b>blend = sum of (cohort size x cohort rate) / sum of sizes, over the cohorts the dashboard counts</p>
       </div>
     </article>
@@ -1039,7 +1049,7 @@ var W4 = {
       <div class="reveal" hidden>
         <p class="check"></p>
         <p>Last month 50 of batch A's 100 were coming, 50 percent. This month A has 40 of 100 and B has 210 of 400, so 250 of 500 are coming: still 50 percent, while batch A fell from 50 to 40.</p>
-        <p>The blend is an average weighted by size, so a large young batch at a high early rate holds it up while every batch falls with age. Next month B ages too, and unless another large batch joins, the blend starts to fall.</p>
+        <p>The blend is an average weighted by size, so a large young batch at a high early rate holds it up while every batch falls with age. Next month B ages too, and unless another large batch joins, the blend starts to fall. On the Gold dashboard the prop is gentler: each month one new cohort of about 5,000 enters the count at about 38.5 percent, a little above the older cohorts' slow slide (scene Th1).</p>
         <p class="formula"><b>The formula, last</b>blend = (100 x 0.40 + 400 x 0.525) / (100 + 400) = (40 + 210) / 500 = 0.50</p>
       </div>
     </article>
@@ -1059,7 +1069,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>Gold members' order flow in September. Each bar's length is the count at that step, and each rate divides a step by the step before it. The counts are a toy: search to menu view and menu view to add-to-cart are built to the case's rates, and the other rates come from the toy counts.</figcaption>
+          <figcaption>Gold members' order flow in September, counted from the day's events table. Each bar's length is the count at that step, and each rate divides a step by the step before it. With the carousel's menu opens left out, the counts from menu view on keep only the sessions that included a search, and per member, only what members did in those sessions.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><button type="button" class="btn" data-ctl="unit" aria-pressed="false">Count per member</button>
@@ -1072,19 +1082,19 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>Counted per session with carousel entries in, menu views are 118 percent of searches, because the home carousel opens a menu without a search: search is a step members can skip, and the rate above 100 is an artefact of the count. Menu view to add-to-cart is 34 percent per session and 61 percent per member, the same people in two units. The loss on the ticket sits further on, at add-to-cart to order for members on Android after 14 September, 58 to 44 percent, while iOS and non-members held.</p>
-        <p>A rate above 100 percent says the two counts are not the same people in the same unit. Before blaming a step, name the unit on the chart and check that every member had to pass the step before.</p>
+        <p>Counted per session with the carousel's entries in, menu views are 118 percent of searches: 38,932 of September's 155,729 member sessions with a menu view opened it from the home carousel, with no search. Search is a step members can skip, so the 118 is an artefact of the count; among the sessions that searched it reads 89 percent. Per member it still reads 101: the skippable step pushes it past 100 in either unit. Menu view to add-to-cart reads 34 percent per session and 61 per member: per session asks how often a menu visit becomes a cart, per member how many members who browsed added to a cart that month.</p>
+        <p>Neither of those steps owns the ticket's loss, which sits inside the checkout: for members on Android from 14 September, checkout start to order fell from 72.5 to 55 percent while starting checkout held at 80, and members on iOS and non-members on Android held. A rate above 100 percent says the two counts are not the same people in the same unit; before blaming a step, name the unit on the chart, check that every member had to pass the step before, and find the step that changed before blaming the step that is low.</p>
         <p class="formula"><b>The formula, last</b>each step's rate divides by the step before, in one unit, and the chart names the unit</p>
       </div>
     </article>
 
     <article class="scene" id="scene-Th4" data-scene="Th4">
       <div class="scene-head"><span class="sid">Th4</span><h3>Is it novelty or habit?</h3></div>
-      <p class="myth"><b>The first answer most people give:</b> launch week brought the most users ever, so the AI app has found its market.</p>
+      <p class="myth"><b>The first answer most people give:</b> weekly actives hit a record in launch week and are still near it two months on, so the AI app has found its market.</p>
       <div class="predict">
-        <p class="ask"><b>Predict before you move the week.</b> Where will the launch-week cohort sit at week four, against a cohort that found the app on its own?</p>
+        <p class="ask"><b>Predict before you move the week.</b> Where will the launch-week cohort sit at week four, against a later weekly cohort of users who came looking for the app?</p>
         <div class="opts">
-          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Above the organic cohort.</button>
+          <button type="button" class="opt" data-predict="A" aria-pressed="false">A. Above the later cohort.</button>
           <button type="button" class="opt" data-predict="B" aria-pressed="false">B. Level with it.</button>
           <button type="button" class="opt" data-predict="C" aria-pressed="false">C. Well below it.</button>
           <button type="button" class="opt" data-predict="D" aria-pressed="false">D. At zero.</button>
@@ -1093,7 +1103,7 @@ var W4 = {
       </div>
       <div class="stage">
         <figure class="draw"><div class="holder" data-fig></div>
-          <figcaption>An AI app's two cohorts, written for this programme: every number here is a toy. A launch-week cohort of 100,000 and organic cohorts of 10,000 that join every week after the launch week; the blended line counts everyone active that week.</figcaption>
+          <figcaption>An AI writing assistant's cohorts, written for this programme: every number here is a toy. A user counts as active in a week when she keeps a draft, the core action. A launch-week cohort of 100,000, then a new cohort of 20,000 every week after it; the blended line counts everyone active that week.</figcaption>
         </figure>
         <div class="panel">
           <div class="ctl"><label for="th4-w">Week since joining</label>
@@ -1106,8 +1116,8 @@ var W4 = {
       <div class="reveal-row"><button type="button" class="btn primary" data-reveal aria-expanded="false">Reveal the answer</button></div>
       <div class="reveal" hidden>
         <p class="check"></p>
-        <p>At week four the launch cohort keeps 24 percent and the organic cohort 36 percent: the launch spike was novelty. The blended actives fall to 36,600 in week five and climb back to 42,900 by week eight, because organic cohorts keep joining, so a blended chart reads as recovery while the launch cohort keeps falling.</p>
-        <p>Between week one and week four the launch cohort loses 46 of every 100 who joined and an organic cohort loses 14, so a launch's first weeks measure novelty. Judge each cohort at week four or later, and read the blend only as a sum of cohorts.</p>
+        <p>At week four the launch cohort keeps 24 percent and a later weekly cohort 36 percent: much of the launch week's crowd came to try the app. The blended weekly actives set their record of 70,000 in launch week, dip to 48,400 in week three and are back at 69,800 by week eight, near the record, because a new cohort of 20,000 joins every week. The blended chart says the product is holding while the launch cohort slides to 16 percent.</p>
+        <p>Between week one and week four the launch cohort loses 46 of every 100 who joined and a later cohort loses 14, so a launch's first weeks measure novelty. Read each cohort by weeks since signup, at week four or later, which is the programme's rule of thumb, and read the blend only as a sum of cohorts: it still sizes load and spend.</p>
         <p class="formula"><b>The formula, last</b>judge each cohort at the age where habit shows; read the blend only as the sum of its cohorts</p>
       </div>
     </article>
@@ -2904,21 +2914,32 @@ var W4 = {
     return "rgb(" + lo.map(function (c, i) { return Math.round(c + (hi[i] - c) * t); }).join(",") + ")";
   }
   function cell(c, age) { return age === 1 ? THU.monthOne[c] : THU.later[c][age - 2]; }
-  function th1Blend(st, R) {
+  /* reporting month R counts 2 for February to 10 for October; October is the day's estimate: every older cohort
+     slides another 0.3 points from September, and the August cohort enters at its assumed month two */
+  function th1Cell(c, R, augRate) {
+    var age = R - (c + 1);
+    if (age < 1) return undefined;
+    if (R <= 9) return cell(c, age);
+    if (c === 7) return augRate === undefined ? THU.augMonthTwo : augRate;
+    var sep = cell(c, age - 1);
+    return sep === undefined ? undefined : sep - THU.octSlide;
+  }
+  function th1Size(st, c) { return c === 7 ? Math.round(st.aug * THU.normal) : THU.sizes[c]; }
+  function th1Blend(st, R, augRate) {
     var num = 0, den = 0;
     for (var c = 0; c < 8; c++) {
-      var age = R - (c + 1);
-      if (age >= 2 && cell(c, age) !== undefined) { num += st.sizes[c] * cell(c, age); den += st.sizes[c]; }
+      var v = th1Cell(c, R, augRate);
+      if (R - (c + 1) >= 2 && v !== undefined) { num += th1Size(st, c) * v; den += th1Size(st, c); }
     }
-    return den ? { v: num / den } : null;
+    return den ? { v: num / den, n: den } : null;
   }
   scene("Th1", {
     answer: "B",
-    start: function () { return { step: 2, sizes: [1, 1, 1, 1, 1, 1, 1, THU.saleTimes] }; },
+    start: function () { return { step: 2, aug: THU.saleTimes }; },
     init: function (st, art) {
       var self = this;
       on(art, "next", "click", function () { st.step = st.step >= 10 ? 2 : st.step + 1; self.render(st, art); });
-      on(art, "size", "input", function (e) { st.sizes[7] = Number(e.target.value); self.render(st, art); });
+      on(art, "size", "input", function (e) { st.aug = Number(e.target.value); self.render(st, art); });
     },
     render: function (st, art) {
       var svg = svgRoot(680, 500, "The cohort table filling month by month under the dashboard's line");
@@ -2932,7 +2953,7 @@ var W4 = {
       });
       if (st.step >= 10) {
         add(svg, "rect", { x: colX(10) - 3, y: 34, width: 60, height: 440, rx: 6, fill: AMBER_TINT });
-        txt(svg, colX(10) + 27, 48, "toy month", { size: 12.5, anchor: "middle", fill: AMBER_INK, weight: 700 });
+        txt(svg, colX(10) + 27, 48, "estimate", { size: 12.5, anchor: "middle", fill: AMBER_INK, weight: 700 });
       }
       var pts = [];
       for (var R = 3; R <= st.step; R++) {
@@ -2946,7 +2967,7 @@ var W4 = {
       if (oct && sep) add(svg, "line", { x1: sep[0], y1: sep[1], x2: oct[0], y2: oct[1], stroke: C.ink, "stroke-width": 2.6, "stroke-dasharray": "6 4" });
       pts.forEach(function (p) {
         add(svg, "circle", { cx: p[0], cy: p[1], r: 5, fill: C.ink, stroke: C.white, "stroke-width": 2 });
-        txt(svg, p[0], p[1] - 10, String(Math.round(p[2])), { size: 14, weight: 700, anchor: "middle" });
+        txt(svg, p[0], p[1] - 10, p[2].toFixed(1), { size: 14, weight: 700, anchor: "middle" }).setAttribute("class", "halo");
       });
       /* the staircase of cohorts */
       for (R = 2; R <= 10; R++) {
@@ -2955,37 +2976,42 @@ var W4 = {
       var y = top;
       for (var c = 0; c < 8; c++) {
         if (c + 2 > st.step) break;
-        var h = Math.round(22 * st.sizes[c]);
-        txt(svg, 16, y + Math.min(h, 22) / 2 + 5, THU.months[c].slice(0, 3) + ", " + group(Math.round(st.sizes[c] * THU.normal)), { size: 13, fill: C.night });
+        var h = Math.round(22 * th1Size(st, c) / THU.normal);
+        txt(svg, 16, y + Math.min(h, 22) / 2 + 5, THU.months[c].slice(0, 3) + ", " + group(th1Size(st, c)), { size: 13, fill: C.night });
         for (R = c + 2; R <= st.step; R++) {
-          var age = R - (c + 1), v = cell(c, age);
+          var age = R - (c + 1), v = th1Cell(c, R);
           if (v === undefined) continue;
           var r = add(svg, "rect", { x: colX(R), y: y, width: 54, height: h, rx: 3, fill: ramp(v) });
           if (age === 1) { r.setAttribute("stroke", C.ink); r.setAttribute("stroke-width", 1.6); r.setAttribute("stroke-dasharray", "4 3"); }
-          if (h >= 16) txt(svg, colX(R) + 27, y + Math.min(h, 22) / 2 + 5, age === 1 ? String(v) : v.toFixed(1),
+          if (h >= 16) txt(svg, colX(R) + 27, y + Math.min(h, 22) / 2 + 5, age === 1 ? String(Math.round(v)) : v.toFixed(1),
             { size: 12.5, anchor: "middle", weight: 700, fill: v >= 45 ? C.white : C.ink });
         }
         y += h + 3;
       }
       svg.setAttribute("viewBox", "0 0 680 " + Math.max(340, Math.ceil(y + 14)));
       put($("[data-fig]", art), svg);
-      var nb = th1Blend(st, st.step), outside = st.step - 2;
+      var nb = th1Blend(st, st.step), outside = st.step - 2, est = st.step === 10;
       $('[data-ctl="next"]', art).textContent = st.step >= 10 ? "Start again from February" : "Next month";
-      setOut(art, "next", "Reporting month: " + THU.months[st.step - 1] + " 2026" + (st.step === 10 ? ", a toy month" : "") + " (step " + (st.step - 1) + " of 9)");
-      $('[data-ctl="size"]', art).value = st.sizes[7];
-      setOut(art, "size", "August: " + group(Math.round(st.sizes[7] * THU.normal)) + " members, " + st.sizes[7].toFixed(1) +
-        " times normal");
-      var counted = 0, members = 0;
-      for (c = 0; c < 8; c++) if (st.step - (c + 1) >= 2) { counted++; members += st.sizes[c] * THU.normal; }
-      nums($("[data-nums]", art), [
-        ["The dashboard reads", nb ? Math.round(nb.v) + " percent" : "nothing yet"],
-        ["Unrounded", nb ? nb.v.toFixed(2) + " percent" : "no cohort in month two"],
-        ["Cohorts it counts", counted + ", " + group(Math.round(members)) + " members"],
-        { wide: "Outside the count, in month one: " + (outside < 8 ? THU.months[outside] + ", " + group(Math.round(st.sizes[outside] * THU.normal)) + " members." : "September's signups, which the table does not draw.") },
-        { wide: "The blend weights each counted cohort's cell by its size, so a cohort twice as big counts twice." }
-      ]);
+      setOut(art, "next", "Reporting month: " + THU.months[st.step - 1] + " 2026" + (est ? ", an estimate" : "") + " (step " + (st.step - 1) + " of 9)");
+      $('[data-ctl="size"]', art).value = st.aug;
+      setOut(art, "size", "August: " + group(th1Size(st, 7)) + " members, " + st.aug.toFixed(1) + " times normal");
+      var counted = 0;
+      for (c = 0; c < 8; c++) if (st.step - (c + 1) >= 2) counted++;
+      var rows = [
+        ["The dashboard reads", nb ? Math.round(nb.v) + " percent" + (est ? ", an estimate" : "") : "nothing yet"],
+        ["To one decimal", nb ? nb.v.toFixed(1) + " percent" : "no cohort in month two"],
+        ["Cohorts it counts", counted + ", " + (nb ? group(nb.n) : "0") + " members"],
+        { wide: "Outside the count, in month one: " + (outside < 8 ? THU.months[outside] + ", " + group(th1Size(st, outside)) + " members." :
+          "September's " + group(THU.sepSize) + " signups, which the table does not draw.") }
+      ];
+      if (est) {
+        rows.push({ wide: "October's estimate: each older cohort slides another 0.3 points, and the August cohort enters at 20.5 percent, its 31 less the 10.5 points July's cohort lost from month one to month two. Rates from 17 to 24 percent would put October at " +
+          th1Blend(st, 10, 17).v.toFixed(1) + " to " + th1Blend(st, 10, 24).v.toFixed(1) + " percent." });
+      }
+      rows.push({ wide: "The blend weights each counted cohort's cell by its size, so a cohort twice as big counts twice." });
+      nums($("[data-nums]", art), rows);
     },
-    final: function (st) { st.step = 10; st.sizes = [1, 1, 1, 1, 1, 1, 1, THU.saleTimes]; }
+    final: function (st) { st.step = 10; st.aug = THU.saleTimes; }
   });
 
   scene("Th2", {
@@ -3046,7 +3072,7 @@ var W4 = {
       var svg = svgRoot(680, 430, "The order flow as bars, each step's rate against the step before");
       var rows = [];
       THU.stages.forEach(function (name, i) {
-        var y = 24 + i * 66, w = 400 * counts[i] / counts[0];
+        var y = 24 + i * 66, w = 280 * counts[i] / counts[0];
         txt(svg, 16, y + 23, name, { size: 15, weight: 700 });
         add(svg, "rect", { x: 170, y: y, width: Math.max(2, w), height: 32, rx: 4, fill: i === 2 && st.carousel ? C.rose : C.violet, "fill-opacity": 0.85 });
         txt(svg, 178 + w, y + 22, group(counts[i]), { size: 14.5, weight: 700 });
@@ -3062,6 +3088,8 @@ var W4 = {
       setOut(art, "unit", st.member ? "Counting per member, each member once" : "Counting per session");
       setOut(art, "carousel", st.carousel ? "Carousel entries are counted" : "Carousel entries are left out");
       rows.push({ wide: "Each rate divides a step's count by the step before it, in " + (st.member ? "members" : "sessions") + "." });
+      rows.push({ wide: st.carousel ? "Counted in: " + group(THU.carouselSessions) + " member sessions in September opened a menu from the home carousel with no search." :
+        "Left out: the menus opened from the home carousel, so menu view and every step after it count only sessions that searched." });
       nums($("[data-nums]", art), rows);
     },
     final: function (st) { st.member = false; st.carousel = true; }
@@ -3069,7 +3097,7 @@ var W4 = {
 
   function th4Blend(w) {
     var n = THU.launch * THU.launchRate[w - 1] / 100;
-    for (var j = 1; j < w; j++) n += THU.organic * THU.organicRate[w - j - 1] / 100;
+    for (var j = 1; j < w; j++) n += THU.weekly * THU.weeklyRate[w - j - 1] / 100;
     return n;
   }
   scene("Th4", {
@@ -3089,7 +3117,7 @@ var W4 = {
         txt(svg, 64, Y(t) + 5, t + "%", { size: 12.5, anchor: "end", fill: C.muted });
       });
       for (var w = 1; w <= 8; w++) txt(svg, X(w), 282, "week " + w, { size: 12.5, anchor: "middle", fill: C.night });
-      [["launch-week cohort", THU.launchRate, C.rose], ["organic cohort", THU.organicRate, C.violet]].forEach(function (s) {
+      [["launch-week cohort", THU.launchRate, C.rose], ["a later cohort", THU.weeklyRate, C.violet]].forEach(function (s) {
         var pts = [];
         for (var w = 1; w <= k; w++) pts.push(X(w) + "," + Y(s[1][w - 1]).toFixed(1));
         add(svg, "polyline", { points: pts.join(" "), fill: "none", stroke: s[2], "stroke-width": 2.6 });
@@ -3112,9 +3140,12 @@ var W4 = {
       $('[data-ctl="blend"]', art).setAttribute("aria-pressed", String(st.blend));
       setOut(art, "week", "Week " + k + "");
       var rows = [["Launch-week cohort, week " + k, THU.launchRate[k - 1] + " percent"],
-                  ["Organic cohort, week " + k, THU.organicRate[k - 1] + " percent"]];
-      if (st.blend) rows.push(["Blended actives, week " + k, group(Math.round(th4Blend(k)))]);
-      rows.push({ wide: "The launch cohort is 100,000 people and each organic cohort 10,000, so the blend leans on the launch cohort early and on the organic cohorts later." });
+                  ["A later weekly cohort, week " + k, THU.weeklyRate[k - 1] + " percent"]];
+      if (st.blend) {
+        rows.push(["Blended actives, week " + k, group(Math.round(th4Blend(k)))]);
+        rows.push(["The launch week's record", group(Math.round(th4Blend(1)))]);
+      }
+      rows.push({ wide: "The launch cohort is 100,000 people and each later weekly cohort 20,000, so the blend leans on the launch cohort early and on the later cohorts as they pile up." });
       nums($("[data-nums]", art), rows);
     },
     final: function (st) { st.week = 8; st.blend = true; }
