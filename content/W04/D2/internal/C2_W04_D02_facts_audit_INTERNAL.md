@@ -2,7 +2,7 @@
 
 Written by C2_W04_D02_facts_audit_INTERNAL.py from the STUDENT files and C2_W04_D02_facts_INTERNAL.yaml. A number matches when it equals a value in the facts file at the precision printed, read as itself, a percent, a lakh, a crore, a million or a billion. Structural numbers (slide, level, item, chapter, minutes, dates, years) and the speaker notes are left out.
 
-Numbers traced: 2537. Numbers with no home: 0.
+Numbers traced: 2567. Numbers with no home: 0.
 
 | Number | File | Line | Facts id |
 |---|---|---|---|
@@ -408,6 +408,7 @@ Numbers traced: 2537. Numbers with no home: 0.
 | 58 lakh | C2_W04_D02_written_case_solution_STUDENT.md | 29 | numbers.saving_low_lakh.value |
 | 1.16 crore | C2_W04_D02_written_case_solution_STUDENT.md | 29 | monday_ids_reused.topup_low_acceptance_rs.value |
 | 92.7 lakh | C2_W04_D02_written_case_solution_STUDENT.md | 30 | numbers.saving_high_lakh.value |
+| 09 | C2_W04_D02_written_case_solution_STUDENT.md | 37 | numbers.dmart_denominator_gap_pct.value |
 | 09 | C2_W04_D02_written_case_solution_STUDENT.md | 37 | numbers.dmart_denominator_gap_pct.value |
 | 1 | C2_W04_D02_written_case_solution_STUDENT.md | 41 | numbers.full_rs_per_driver_week_change_pct.value |
 | 2 | C2_W04_D02_written_case_solution_STUDENT.md | 42 | numbers.tph_after_exact.value |
@@ -1039,8 +1040,7 @@ Numbers traced: 2537. Numbers with no home: 0.
 | 700 | C2_W04_D02_02_leave_out_and_appendix_STUDENT.ipynb | cell 9.2 | numbers.upi_estimate_millions.value |
 | 700 | C2_W04_D02_02_leave_out_and_appendix_STUDENT.ipynb | cell 11.9 | numbers.upi_estimate_millions.value |
 | 170 | C2_W04_D02_02_leave_out_and_appendix_STUDENT.ipynb | cell 11.9 | toy_numbers.toy_kirana_helper_cost.value |
-| 1 | C2_W04_D02_02_leave_out_and_appendix_STUDENT.ipynb | cell 11.19 | numbers.full_rs_per_driver_week_change_pct.value |
-| 3 | C2_W04_D02_02_leave_out_and_appendix_STUDENT.ipynb | cell 11.23 | numbers.full_bookings_change_pct.value |
+| 3 | C2_W04_D02_02_leave_out_and_appendix_STUDENT.ipynb | cell 11.25 | numbers.full_bookings_change_pct.value |
 | 5 | C2_W04_D02_03_defending_under_challenge_STUDENT.ipynb | cell 1.3 | monday_ids_reused.median_wait_before.value |
 | 8 | C2_W04_D02_03_defending_under_challenge_STUDENT.ipynb | cell 2 out 2 | numbers.rs_per_hour_per_ten.value |
 | 1 | C2_W04_D02_03_defending_under_challenge_STUDENT.ipynb | cell 2 out 5 | numbers.full_rs_per_driver_week_change_pct.value |
@@ -1477,7 +1477,8 @@ Numbers traced: 2537. Numbers with no home: 0.
 | 135 | C2_W04_D02_06_guesstimate_clarify_map_calculate_validate_STUDENT.ipynb | cell 11.6 | toy_numbers.toy_exam_sat.value |
 | 75.3 percent | C2_W04_D02_06_guesstimate_clarify_map_calculate_validate_STUDENT.ipynb | cell 11.6 | toy_numbers.toy_exam_pass_enrolled_pct.value |
 | 150 | C2_W04_D02_06_guesstimate_clarify_map_calculate_validate_STUDENT.ipynb | cell 11.6 | toys.toy_auto_driver.values.tuesday_per_hour_rs |
-| 15.4 % | C2_W04_D02_06_guesstimate_clarify_map_calculate_validate_STUDENT.ipynb | cell 12 out 1 | toy_numbers.toy_canteen_gap_pct.value |
+| 15.4 % | C2_W04_D02_06_guesstimate_clarify_map_calculate_validate_STUDENT.ipynb | cell 12 out 2 | toy_numbers.toy_canteen_gap_pct.value |
+| 15.4 percent | C2_W04_D02_06_guesstimate_clarify_map_calculate_validate_STUDENT.ipynb | cell 12 out 4 | toy_numbers.toy_canteen_gap_pct.value |
 | 1 | C2_W04_D02_06_guesstimate_clarify_map_calculate_validate_STUDENT.ipynb | cell 13.10 | numbers.full_rs_per_driver_week_change_pct.value |
 | 11 | C2_W04_D02_06_guesstimate_clarify_map_calculate_validate_STUDENT.ipynb | cell 15.15 | monday_ids_reused.unfulfilled_share_before.value |
 | 5 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 1.3 | monday_ids_reused.median_wait_before.value |
@@ -1525,7 +1526,16 @@ Numbers traced: 2537. Numbers with no home: 0.
 | 5 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 8 out 6 | monday_ids_reused.median_wait_before.value |
 | 118 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 8 out 7 | toy_numbers.toy_page_words.value |
 | 118 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 9.4 | toy_numbers.toy_page_words.value |
+| 1 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 9.24 | numbers.full_rs_per_driver_week_change_pct.value |
+| 1 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 9.24 | numbers.full_rs_per_driver_week_change_pct.value |
 | 1 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 9.25 | numbers.full_rs_per_driver_week_change_pct.value |
+| 0 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 9.25 | numbers.idle_tail_joiners.value |
+| 0 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 9.25 | numbers.idle_tail_joiners.value |
+| 2 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 9.26 | numbers.tph_after_exact.value |
+| 3 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 9.27 | numbers.full_bookings_change_pct.value |
+| 1 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 9.27 | numbers.full_rs_per_driver_week_change_pct.value |
+| 4 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 9.28 | numbers.hours_per_driver_week_extra.value |
+| 5 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 9.29 | monday_ids_reused.median_wait_before.value |
 | 35 | C2_W04_D02_07_written_business_case_STUDENT.ipynb | cell 11.12 | programme.cohort_students |
 | 06 | C2_W04_D02_08_case_guesstimate_drivers_at_peak_STUDENT.ipynb | cell 1.4 | numbers.twelve_driver_weeks.value |
 | 06 | C2_W04_D02_08_case_guesstimate_drivers_at_peak_STUDENT.ipynb | cell 1.5 | numbers.twelve_driver_weeks.value |
@@ -1722,12 +1732,27 @@ Numbers traced: 2537. Numbers with no home: 0.
 | 92.7 lakh | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 7.1 | numbers.saving_high_lakh.value |
 | 58 lakh | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 7.1 | numbers.saving_low_lakh.value |
 | 07 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 7.9 | numbers.wrong_unit_ratio.value |
-| 260 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 5 | monday_ids_reused.rs_per_hour_after.value |
-| 314 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 5 | numbers.twelve_rs_per_hour_before.value |
-| 165 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 5 | numbers.twelve_rs_per_trip.value |
-| 58 lakh | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 7 | numbers.saving_low_lakh.value |
-| 92.7 lakh | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 7 | numbers.saving_high_lakh.value |
+| 260 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 4 | monday_ids_reused.rs_per_hour_after.value |
+| 314 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 4 | numbers.twelve_rs_per_hour_before.value |
+| 165 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 4 | numbers.twelve_rs_per_trip.value |
+| 58 lakh | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 6 | numbers.saving_low_lakh.value |
+| 92.7 lakh | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 6 | numbers.saving_high_lakh.value |
+| 1 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 8 | numbers.full_rs_per_driver_week_change_pct.value |
+| 2 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 9 | numbers.tph_after_exact.value |
+| 3 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 10 | numbers.full_bookings_change_pct.value |
+| 4 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 11 | numbers.hours_per_driver_week_extra.value |
+| 5 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 8 out 12 | monday_ids_reused.median_wait_before.value |
+| 1 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 9.17 | numbers.full_rs_per_driver_week_change_pct.value |
+| 1 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 9.17 | numbers.full_rs_per_driver_week_change_pct.value |
 | 0 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 9.18 | numbers.idle_tail_joiners.value |
+| 1 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 9.19 | numbers.full_rs_per_driver_week_change_pct.value |
+| 0 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 9.19 | numbers.idle_tail_joiners.value |
+| 0 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 9.19 | numbers.idle_tail_joiners.value |
+| 2 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 9.20 | numbers.tph_after_exact.value |
+| 3 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 9.21 | numbers.full_bookings_change_pct.value |
+| 1 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 9.21 | numbers.full_rs_per_driver_week_change_pct.value |
+| 4 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 9.22 | numbers.hours_per_driver_week_extra.value |
+| 5 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 9.23 | monday_ids_reused.median_wait_before.value |
 | 260 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 11.4 | monday_ids_reused.rs_per_hour_after.value |
 | 92.7 lakh | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 11.6 | numbers.saving_high_lakh.value |
 | 100 | C2_W04_D02_09_case_written_business_case_page_STUDENT.ipynb | cell 11.19 | numbers.saving_low_lakh.value |
@@ -1913,10 +1938,15 @@ Numbers traced: 2537. Numbers with no home: 0.
 | 12 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 5.6 | numbers.idle_trips_fall_pct.value |
 | 06 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 5.10 | numbers.twelve_driver_weeks.value |
 | 06 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 5.11 | numbers.twelve_driver_weeks.value |
+| 2,700 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 6 out 1 | toys.toy_canteen_tea.values.cups_a_day |
+| 2430.0 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 6 out 3 | toy_numbers.toy_canteen_swing_students_low.value |
+| 2970.0 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 6 out 3 | toy_numbers.toy_canteen_swing_students_high.value |
+| 3375.0 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 6 out 4 | toy_numbers.toy_canteen_swing_cups_high.value |
+| 1500.0 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 6 out 5 | toy_numbers.toy_canteen_swing_share_low.value |
+| 3900.0 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 6 out 5 | toy_numbers.toy_canteen_swing_share_high.value |
 | 06 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 6 out 1 | numbers.twelve_driver_weeks.value |
 | 2,700 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 6 out 1 | toys.toy_canteen_tea.values.cups_a_day |
 | 3,900 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 6 out 2 | toy_numbers.toy_canteen_swing_share_high.value |
-| 0 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 7.13 | numbers.idle_tail_joiners.value |
 | 12 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 9.8 | numbers.idle_trips_fall_pct.value |
 | 01 | C2_W04_D02_11_kalpa_store_guesstimate_STUDENT.ipynb | cell 11.3 | numbers.full_rs_per_driver_week_change_pct.value |
 | 6.1 percent | C2_W04_D02_preread_STUDENT.md | 54 | public_facts.swiggy_instamart_ctr_before.value |
