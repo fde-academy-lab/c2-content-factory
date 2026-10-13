@@ -28,7 +28,8 @@ idle share of 0.38 it is 2.4 x 0.62 = about 1.49 trips per online driver-hour.
 
 Item 2. Some will argue for per active driver-week because it is close to what each driver takes home
 in a week. That read rose 0.8 percent because the average driver-week carried about four more online
-hours (18.6 to 22.5), most of them the idle tail's, while each hour brought in 17 percent less, so it would let the slide say "drivers earn
+hours (18.6 to 22.5) while each hour brought in 17 percent less; the rise sits with the 880 outside
+the idle tail, who drove more hours at an unchanged rate, so it would let the slide say "drivers earn
 more" while the scheme pays for hours that carry no trips. The slide names the unit the money is spent
 in; the other reads go in the appendix with a line each on what moved them.
 

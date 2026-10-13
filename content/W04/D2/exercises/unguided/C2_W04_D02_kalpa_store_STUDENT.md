@@ -27,8 +27,10 @@ published number is DMart's, a large grocery chain whose filings give revenue an
 | Stores added in FY26 | 85 |
 | Stores at 31 March 2025 | 415 (500 less the 85 added) |
 
-Source: Avenue Supermarts' press release of 2 May 2026 (checked 12 October 2026). The table is also
-in `data/C2_W04_D02_kalpa_dmart_anchor_STUDENT.csv`.
+Source: Avenue Supermarts' press release of 2 May 2026 (checked 12 October 2026). Avenue Supermarts
+is the company that runs DMart; standalone revenue is DMart's own business without its subsidiaries;
+FY26 is its financial year from 1 April 2025 to 31 March 2026. The table is also in
+`data/C2_W04_D02_kalpa_dmart_anchor_STUDENT.csv`.
 
 Post one line, two letters in item order, no spaces:
 

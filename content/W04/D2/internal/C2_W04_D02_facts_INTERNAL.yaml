@@ -2700,8 +2700,8 @@ toy_numbers:
     index, guardrail'
   used_by: half2 SECTION 7; notebook 07; exercises ch7; notes
 - id: toy_page_words
-  value: 108
-  shown: 108 words
+  value: 118
+  shown: 118 words
   unit: ''
   how: 'invented for the concept chapter on The AI-free written business case: words on the four-sentence
     page'
@@ -2714,8 +2714,8 @@ toy_numbers:
     draft''s nine lines'
   used_by: half2 SECTION 7; notebook 07; exercises ch7; notes
 - id: toy_page_numbers
-  value: 6
-  shown: 6 numbers
+  value: 7
+  shown: 7 numbers
   unit: ''
   how: 'invented for the concept chapter on The AI-free written business case: numbers printed on the
     page''s four sentences'

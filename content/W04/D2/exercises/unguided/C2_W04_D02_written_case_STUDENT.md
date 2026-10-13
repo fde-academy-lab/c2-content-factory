@@ -33,7 +33,7 @@ slot. You may not use a laptop, a phone or any notes beyond this brief, which ca
 | Fares per peak online hour | Rs 314 in the six weeks before the launch, Rs 260 in the six weeks after; the average fare Rs 165 in both |
 | What riders got | Median rider wait at peak, 4.8 minutes before and 4.6 after |
 | Where the top-up went | Rs 1.16 crore of the Rs 1.9 crore to driver-weeks that accepted fewer than half the rides offered, 74 percent of it in the three outer zones |
-| The saving, from Monday | The redesign stops paying that Rs 1.16 crore (115.9 lakh, since 1 crore is 100 lakh) except to drivers who start accepting and qualify: if half of it is still paid, 115.9 / 2 = Rs 58 lakh is saved over six weeks across the enrolled drivers; if a fifth, 115.9 x 4/5 = Rs 92.7 lakh. The per-trip rate is not set yet, and it decides where in that range, or outside it, the saving lands |
+| The saving, from Monday | The redesign stops paying that Rs 1.16 crore (115.9 lakh, since 1 crore is 100 lakh) except to drivers who start accepting and qualify: if half of it is still paid, 115.9 / 2 = Rs 58 lakh is saved over six weeks across the enrolled drivers; if a fifth, 115.9 x 4/5 = Rs 92.7 lakh. The per-trip rate is not set yet, and it can move the saving within that range or beyond it |
 | Who signs | The city head signs any test or change to the guarantee |
 
 ---

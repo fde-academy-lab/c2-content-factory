@@ -1162,8 +1162,8 @@ PAGE_A = [
 PAGE_B = [
     "Keep the longer hours for one more month and count the evening's own sales, because the two extra "
     "hours have brought Rs 700 a day while each hour of the day now earns less.",
-    "Sales per hour fell from Rs 1,190 in September to Rs 1,050 in October, and sales per customer held "
-    "at Rs 100.",
+    "Sales per hour fell from Rs 1,190 in September to Rs 1,050 in October, the two added hours selling "
+    "at most Rs 350 each, and sales per customer held at Rs 100.",
     "A festival fortnight fell inside October, so part of the extra Rs 700 a day may be the season.",
     "Keep the hours through November, write the evening's sales in a separate column each day, and decide "
     "after thirty days; the helper's two extra hours cost Rs 170 a day, and Ramesh signs.",
@@ -1176,8 +1176,9 @@ words_b = sum(len(s.split()) for s in PAGE_B)
 check("the page: four sentences, no method word, under the pack's 250-word ceiling",
       len(PAGE_B) == 4 and words_b <= 250
       and not any(w in " ".join(PAGE_B).lower() for w in METHOD_WORDS))
-check("the draft prints 13 numbers and the page 6", (len(re.findall(r"\d[\d,.]*", "\n".join(PAGE_A))),
-      len(re.findall(r"\d[\d,.]*", "\n".join(PAGE_B)))) == (13, 6))
+numbers_b = len(re.findall(r"\d[\d,.]*", "\n".join(PAGE_B)))
+check("the draft prints 13 numbers and the page 7", (len(re.findall(r"\d[\d,.]*", "\n".join(PAGE_A))),
+      numbers_b) == (13, 7))
 check("the draft: nine lines and four method words",
       len(PAGE_A) == 9 and sum(w in " ".join(PAGE_A).lower() for w in METHOD_WORDS) == 4)
 for tid, v, shown, how in [
@@ -1186,7 +1187,7 @@ for tid, v, shown, how in [
         ("toy_page_draft_method_words", 4, "four method words", "north star, denominator, index, guardrail"),
         ("toy_page_words", words_b, f"{words_b} words", "words on the four-sentence page"),
         ("toy_page_draft_numbers", 13, "13 numbers", "numbers printed on the draft's nine lines"),
-        ("toy_page_numbers", 6, "6 numbers", "numbers printed on the page's four sentences"),
+        ("toy_page_numbers", numbers_b, f"{numbers_b} numbers", "numbers printed on the page's four sentences"),
         ("toy_page_ceiling", 250, "250 words", "the pack's own ceiling for Ramesh's page, asserted by this "
          "script; since the 13 October fix pass no learner file states it, and the page's five rules carry no word "
          "count")]:

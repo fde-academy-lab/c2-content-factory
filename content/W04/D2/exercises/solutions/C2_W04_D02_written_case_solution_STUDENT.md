@@ -27,9 +27,9 @@ Hyderabad, launched on 31 August 2026.
 > driver accepts, first for half the enrolled drivers, picked at random, for six weeks, at a per-trip
 > rate fixed before the test starts. Across the enrolled drivers, Monday's arithmetic puts the saving
 > at Rs 58 lakh over six weeks if half of that Rs 1.16 crore is still paid to drivers who start
-> accepting, and Rs 92.7 lakh if a fifth is, and the rate decides where in that range it lands; you
-> sign the test, and we drop the change if completed trips per driver fall or the median wait in any
-> zone rises above its level before the launch.
+> accepting, and Rs 92.7 lakh if a fifth is, and the rate can move it within that range or beyond it; you
+> sign the test, and we drop the change if completed trips per driver fall or any zone's median wait
+> over the six weeks rises above its six weeks before the launch.
 
 ## Why does it pass each rule?
 
@@ -55,5 +55,6 @@ week, avoids the overlap at the cost of a longer run.
 
 The most common are a page that opens on method ("I analysed the dashboard"); a number with no denominator ("bookings
 fell 17 percent"); a caveat in a bracket at the end; a saving with no assumption behind it; and the
-per-driver-week rise quoted as good news, which the morning showed came from more online hours at 17
-percent less per hour, most of them in the idle tail, whose 180 drivers doubled their hours.
+per-driver-week rise quoted as good news, which the morning showed sits with the 880 outside the
+idle tail, who drove more hours at an unchanged rate, while the idle tail doubled its hours for fewer
+trips.

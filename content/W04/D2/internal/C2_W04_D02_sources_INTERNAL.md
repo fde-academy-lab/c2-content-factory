@@ -43,7 +43,7 @@ used.
 - **The written case runs 35 minutes**, as chapter 9 does; its brief had said forty.
 - **The facts audit** now homes a number a notebook prints from one of the day's own data tables, since a concept notebook prints its invented table in full; prose numbers still need a facts id.
 - **The facts file's `used_by` slide numbers predate the rebuild.** Most are the merged pack's numbers, which the slide map translates; 38 come from an older numbering that restarted in half2. The `toy_` ids added on 13 October name SECTIONs instead of slides.
-- **Sizes.** The decks run 59 and 44 slides against the artefact row's "about 48" and "about 38", inside its caps: half1 carries 30 case slides of at most 35, half2 28 of at most 30, and each concept chapter 7 to 9 slides with its opener, within 6 to 12. The notes run 2,898 words after the second fix pass (prose and tables, without image lines, table rules or URLs), under the acceptance line's 3,000 and above the row's "about 2,000"; the fix pass added about 300 and the same pass cut them back by tightening chapters 1, 2 and 7 and the case section.
+- **Sizes.** The decks run 59 and 44 slides against the artefact row's "about 48" and "about 38", inside its caps: half1 carries 30 case slides of at most 35, half2 28 of at most 30, and each concept chapter 7 to 9 slides with its opener, within 6 to 12. The notes run 2,942 words after the second fix pass and its check (prose and tables, without image lines, table rules or URLs), under the acceptance line's 3,000 and above the row's "about 2,000"; the fix pass added about 300 and the same pass cut them back by tightening chapters 1, 2 and 7 and the case section.
 - **The Kalpa lab notebook** sets up the tools and the anchor and leaves the sizing to two empty cells, so the worked answer (about 1,000 sign-ups) stays in the TRAINER note and the lab set's solution.
 - **The DMart table** `data/C2_W04_D02_kalpa_dmart_anchor_STUDENT.csv` carries both per-store figures, which answer the Kalpa store set's Q1; it stays byte-identical to the merged pack, as the brief requires of the case tables, and notebook 11 prints only its first four rows.
 
@@ -78,6 +78,18 @@ pass took these decisions.
 - **New and changed facts ids.** Added: `toy_kirana_extra_hour_rs`, `idle_hours_per_week_before`, `idle_hours_per_week_after`, `idle_trips_fall_pct`, `others_hours_per_week_rise`, and Monday's `idle_hours_per_driver_week_after` reused. Changed: `toy_kirana_rain_sep` from 5 to 2; `pre_launch_rs_per_dw_after` kept to one decimal (5,895.4) so notebook 04's hand division gives its printed 1.4 percent. Removed: `idle_topup_per_hour_rs` (about Rs 276 an hour), whose only use was the S30 note that cold read 4 could not reconcile.
 - **Kept, with reasons.** "North star" stays undecoded on S65, since the draft's method words are the problem the slide shows; the "Styles:" lines stay in SECTION notes, the pattern of every Week 4 deck; the cover title stays the row's Day focus; the sheet's "Panel n:" prefixes are its builder's format.
 - **For the orchestrating session, outside this day's files.** Monday's idle tail drew Rs 1.159 crore of top-up over 42,000 hours, about Rs 276 an hour, while its fares came to about Rs 131 an hour; under a floor of Rs 300 an hour checked window by window on the driver's share of the fares, the floor over 42,000 hours is Rs 1.26 crore, so the top-up can reach Rs 1.159 crore only if the driver keeps at most about 18 percent of the fare (Rs 1.26 crore less the share times Rs 55.2 lakh of fares), a share a sharp learner can question. Tuesday quotes Monday's caveat that the top-up cannot be rebuilt from bookings and no longer prints the per-hour figure; the data is Monday's to settle.
+
+### What did the check of the fix pass find, and what changed after it?
+
+A fresh agent checked the files against all 48 findings of the graduate's and the interviewer's
+reads: 38 resolved, 9 partly, none open, and 8 problems the pass had made. The largest was that the
+pass credited the per-driver-week rise to the idle tail, whose own weeks earned 12 percent less; the
+rise sits with the other 880, who drove about 4 percent more hours at an unchanged Rs 313.5 an hour.
+Every item it left open is fixed, as the cold reads file records item by item. Ramesh's page now
+carries the added hours' Rs 350 (118 words, 7 numbers); the saving's rate can move it within the range
+or beyond it, and its rule pays the drivers who already accept what the floor paid them; the zone stop
+line reads six weeks against six weeks; the drill's table carries the bus strike and the 2023 line
+rule from the sources recorded on 12 October 2026.
 
 ## Which public sources were fetched, and when?
 

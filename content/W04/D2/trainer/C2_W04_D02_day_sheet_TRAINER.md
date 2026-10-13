@@ -135,7 +135,7 @@ can I size a number from nothing and know it is sane?**
 no trips: Rs 314 to Rs 260 per peak online hour at a flat Rs 165 fare. Part of it may be the monsoon.
 Test paying per completed peak trip with an acceptance floor: across the enrolled drivers, it saves Rs
 58 lakh to Rs 92.7 lakh over six weeks if a half to a fifth of the idle drivers' top-up is still paid,
-and the per-trip rate decides where it lands. At the evening peak
+and the per-trip rate can move it within that range or beyond it. At the evening peak
 the city needs about 5,000 to 5,700 drivers online, and how often people ride could move that from
 2,900 to 8,600."
 

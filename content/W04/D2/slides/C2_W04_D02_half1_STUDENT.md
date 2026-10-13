@@ -10,7 +10,7 @@ Header: WEEK 4  ·  TUESDAY  ·  STAKEHOLDER COMMUNICATION  ·  UBER, HYDERABAD,
 *One slide, five minutes, three people paid to disagree: can the answer survive, and can a number be sized from nothing?*
 
 ```cards
-icon: store | eyebrow: The topics | title: Taught on invented examples | body: A kirana shop, a secondary school and a campus canteen carry the five topics, each counted by hand before any code. | tone: light
+icon: store | eyebrow: The topics | title: Taught on invented examples | body: A kirana shop (a neighbourhood grocery), a secondary school and a campus canteen carry the five topics, each counted by hand before any code. | tone: light
 icon: car | eyebrow: The case | title: Uber, Hyderabad, one day on | body: Monday's redesign of the peak-hour guarantee goes to Thursday's city review on one slide; then a number is sized from nothing. | tone: light
 icon: building-2 | eyebrow: The lab | title: Kalpa Retail | body: The north-star slide presented to a TA, and the sign-ups a new store could win in its first year. | tone: dark
 ```
@@ -122,7 +122,7 @@ chapter with that chapter's box filled. Transition: the case these topics will b
 ## S5. The ticket: one slide, five minutes, three objectors
 *What has the city head asked for, and which number will land first?*
 
-**Uber, Hyderabad, the driver app's peak-hour earnings guarantee, one day on.** The scheme promises each enrolled driver Rs 300 per peak online hour and pays any shortfall as a top-up; Monday's redesign pays for completed peak trips instead, to drivers who accept at least half the requests offered. Thursday's city review gets one slide, five minutes, and three people who each lose under the redesign. Gross bookings are what riders paid; an active driver-week is one driver with a row that week.
+**Uber, Hyderabad, the driver app's peak-hour earnings guarantee, one day on.** The scheme promises each enrolled driver Rs 300 per peak online hour and pays any shortfall as a top-up; Monday's redesign pays for completed peak trips instead, to drivers who accept at least half the requests offered, a rule called the acceptance floor; the idle tail is Monday's name for the 180 drivers who completed under one trip per online hour after the launch. Thursday's city review gets one slide, five minutes, and three people who each lose under the redesign. Gross bookings are what riders paid; an active driver-week is one driver with a row that week.
 
 | Six weeks each side | 20 Jul to 30 Aug | 31 Aug to 11 Oct |
 |---|---|---|
@@ -745,7 +745,7 @@ claim, evidence, caveat, action, the appendix. Transition: where today ends.
 ## S29. Where today ends: a slide its losers can repeat
 *What sentence will the city head be able to say on Thursday?*
 
-> "The scheme is paying for online hours that carry no trips: gross bookings per peak online hour fell from Rs 314 to Rs 260 while the fare held at Rs 165. The monsoon ended inside the six weeks, so part of the fall may be the season. Test paying per completed peak trip with an acceptance floor: across the enrolled drivers, Monday's arithmetic saves Rs 58 lakh to Rs 92.7 lakh over six weeks if a half to a fifth of the idle drivers' top-up is still paid, and the per-trip rate, not yet set, decides where it lands."
+> "The scheme is paying for online hours that carry no trips: gross bookings per peak online hour fell from Rs 314 to Rs 260 while the fare held at Rs 165. The monsoon ended inside the six weeks, so part of the fall may be the season. Test paying per completed peak trip with an acceptance floor: across the enrolled drivers, Monday's arithmetic saves Rs 58 lakh to Rs 92.7 lakh over six weeks if a half to a fifth of the idle drivers' top-up is still paid, and the per-trip rate, not yet set, can move it within that range or beyond it."
 
 **By the end of the afternoon** you will also have estimated how many drivers the evening peak needs, said every assumption aloud, given a range, and checked it against the case's own data.
 
@@ -756,7 +756,9 @@ Rs 1.16 crore went to driver-weeks that accepted under half their offers, and th
 half to a fifth of that is still paid because those drivers start accepting: half still paid saves
 Rs 58 lakh, a fifth saves Rs 92.7 lakh. The range runs to a tenth of a lakh only because it is
 arithmetic on Monday's total; the per-trip rate is the real unknown, since a rate set high pays back
-what the floor stops paying, so the sentence names it. The saving is the scheme's, across the 1,200
+what the floor stops paying and a rate set low saves more than the range, so the sentence names it,
+and the test fixes it first at a rate that pays the drivers who already accept what the floor paid
+them. The saving is the scheme's, across the 1,200
 enrolled drivers in Monday's data; a test on half of them saves about half of it while it runs. S30
 shows the working.
 Transition: what each role loses, chapter 1's loser test on real roles.
@@ -873,7 +875,9 @@ Transition: the rebuild.
 ```notes
 LIVE, 4 minutes. This is the worked example of the guided exercise: rebuild it with the room
 mirroring, part by part, the four parts of chapter 1. Point at 1, 2, 3, 4 in order: the chart names its denominator in its title,
-the caveat sits beside the evidence, and the action states the saving with the assumption behind it. The drop lands in the launch week: the
+the caveat sits beside the evidence, and the action states the saving for all enrolled drivers; its
+assumption, a half to a fifth of the idle top-up still paid, is said aloud, since the box has no room
+for it. The drop lands in the launch week: the
 highest after week, Rs 271, sits below the lowest before week, Rs 310, which is why the chart, not
 the bar pair, is the evidence. In explorer scene T1, untick the seven numbers that leave, one at a time,
 as each part is pointed at.
@@ -1009,7 +1013,7 @@ Transition: the trap in that amber line.
 
 **The plausible wrong answer.** "Bookings per driver-week rose from Rs 5,817 to Rs 5,861, so the guarantee is working; keep it as it is." Every rupee in that sentence is right, and it would keep the city paying for idle hours.
 
-**Why it is wrong.** Bookings rose 3.0 percent and active driver-weeks 2.2 percent (6,360 to 6,500), so the ratio rose 0.8 percent (1.030 / 1.022 = 1.008). The rise was bought with hours: 21 percent more online hours a driver-week for 17 percent less per hour, most of them the idle tail's. The 140 drivers who joined after the launch drove about one week each, at Rs 4,314 a driver-week, so they pulled the read down; for the drivers there before the launch, it rose 1.4 percent.
+**Why it is wrong.** Bookings rose 3.0 percent and active driver-weeks 2.2 percent (6,360 to 6,500), so the ratio rose 0.8 percent (1.030 / 1.022 = 1.008). The rise was bought with hours: 21 percent more online hours a driver-week for 17 percent less per hour. The rise itself sits with the 880 drivers outside the idle tail, who drove about 4 percent more hours at an unchanged Rs 313.5 an hour; the idle tail doubled its hours for 12 percent fewer trips, so its weeks earned less. The 140 drivers who joined after the launch drove about one week each, at Rs 4,314 a driver-week, so they pulled the read down; for the drivers there before the launch, it rose 1.4 percent.
 
 **The fix.** The slide names the denominator the scheme pays for, the peak online hour, and the presenter says it aloud.
 

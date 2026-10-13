@@ -309,7 +309,7 @@ afternoon's page is the memo form of the morning's slide. Transition: Ramesh's p
 | Part | Ramesh's page (invented) |
 |---|---|
 | Claim | Keep the longer hours for one more month and count the evening's own sales, because the two extra hours have brought Rs 700 a day while each hour of the day now earns less. |
-| Evidence | Sales per hour fell from Rs 1,190 in September to Rs 1,050 in October, and sales per customer held at Rs 100. |
+| Evidence | Sales per hour fell from Rs 1,190 in September to Rs 1,050 in October, the two added hours selling at most Rs 350 each, and sales per customer held at Rs 100. |
 | Caveat | A festival fortnight fell inside October, so part of the extra Rs 700 a day may be the season. |
 | Action | Keep the hours through November, write the evening's sales in a separate column each day, and decide after thirty days; the helper's two extra hours cost Rs 170 a day, and Ramesh signs. |
 
@@ -335,7 +335,7 @@ the draft carried that the page does not.
 
 ```notes
 LIVE, 1 minute. The counts come from the page itself: nine lines and 13 numbers on the draft, four
-sentences and 6 numbers on the page, four method words against none. Notebook 07 counts them in
+sentences and 7 numbers on the page, four method words against none. Notebook 07 counts them in
 three lines and runs the five rules of S69 on both versions: the draft passes none of them.
 Transition: the rules.
 ```
@@ -491,7 +491,7 @@ flowchart TD
     class R,T,X known
 ```
 
-**Drivers online = (trips to serve an hour / trips per online driver-hour) x buffer.** Each leaf is a guess said aloud with its range. Counting trips per 100 people, never riders, counts a commuter who rides both ways twice. A peak trip takes about 25 minutes from accepting to dropping, so a busy driver fits 2.4 an hour; the buffer covers the busiest half hour.
+**Drivers online = (trips to serve an hour / trips per online driver-hour) x buffer.** Each leaf is a guess said aloud with its range. Counting trips per 100 people, never riders, counts a commuter who rides both ways twice; one in a hundred is a guess (most people take no app ride on a weekday, a rider goes out and back, and Uber is one choice among several), so it gets the widest range. A peak trip takes about 25 minutes from accepting to dropping, a guess to check first against the app's trip times, so a busy driver fits 2.4 an hour; the buffer covers the busiest half hour.
 
 ```notes
 LIVE, 3 minutes 30 seconds. Build the tree on the board with the room, leaf by leaf, asking for each value and
@@ -550,7 +550,7 @@ value: 0.63 | label: driver-hours per completed trip, after | note: the same zon
 value: 0.60 | label: the chain, before its buffer | note: 1 / 1.68, about an eighth above 0.53
 ```
 
-**The chain needs about an eighth more driver time per trip than the before window, the one whose wait met the target, so it errs high.** Re-run at the case's 1.90 trips an hour: 8,330 / 1.90 x 1.15 = about 5,000, so say about 5,000 to 5,700. The case pools both daily windows on all seven days (42 hours a week), so it checks the ratio's size, never the city's count, and a published count of drivers online at Hyderabad's evening peak has not been found.
+**The chain needs about an eighth more driver time per trip than the before window, the one whose wait met the target, so it errs high.** Re-run at the case's 1.90 trips an hour: 8,330 / 1.90 x 1.15 = about 5,000, so say about 5,000 to 5,700 where the two routes agree, inside the 2,900 to 8,600 that trips per person sets. The case pools both daily windows on all seven days (42 hours a week), so it checks the ratio's size, never the city's count, and a published count of drivers online at Hyderabad's evening peak has not been found.
 
 ```notes
 LIVE, 3 minutes. Like for like means per completed trip on both sides: the chain counts trips, so
@@ -645,7 +645,7 @@ Transition: what chapter 8 adds to Tuesday's node.
 
 ```mermaid
 flowchart LR
-    M["<b>Mon</b><br/>pay for trips"] --> T["<b>Tue</b><br/>one slide, four moves<br/>5,000 to 5,700 drivers"]
+    M["<b>Mon</b><br/>pay for trips"] --> T["<b>Tue</b><br/>one slide, four moves<br/>5,000 to 5,700 drivers,<br/>inside 2,900 to 8,600"]
     T -.-> W["<b>Wed</b><br/>what goes with what"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -726,8 +726,8 @@ Transition: the thirty-five minutes.
 **At the end of the slot the page is handed in.** Three pages, chosen for one strong part each, are read aloud at the close if the clock allows.
 
 ```notes
-LIVE, 32 minutes of silent writing; with the 3 minutes of S83 and S84 the chapter is the 35 the
-brief names. Walk once early to answer scope questions and once near the
+LIVE, 32 minutes of silent writing; with the 3 minutes of the chapter's opener, S83 and S84 the
+chapter is the 35 the brief names. Walk once early to answer scope questions and once near the
 end to signal the clock. No teaching inside the slot. Notebook 09 is for after the page is handed
 in: it recounts the brief's numbers and runs chapter 7's page rules on a typed copy.
 Transition: the transcripts.
@@ -778,10 +778,11 @@ LIVE, 30 seconds. Transition: transcript 1.
 ```notes
 LIVE, 8 minutes. In pairs, one reads the interviewer, one the candidate; then the candidate answers
 the three follow-ups without notes. The weak opening reads numbers and lets the per-driver-week rise
-blur the claim. The full hire-grade answer, with the per-driver-week line checked (the idle tail's
-180 drivers doubled their online hours while each hour earned 17 percent less; the 140 joiners pulled
-the read down), is in extras/C2_W04_D02_interview_room_STUDENT.md, and notebook 10 recomputes the
-numbers it speaks.
+blur the claim. The full hire-grade answer, with the per-driver-week line checked (it rose on the
+880 outside the idle tail, who drove about 4 percent more hours at an unchanged Rs 313.5 an hour,
+while the idle tail doubled its hours for 12 percent fewer trips and the 140 joiners pulled the read
+down), is in extras/C2_W04_D02_interview_room_STUDENT.md, and notebook 10 recomputes the numbers it
+speaks.
 Transition: transcript 2.
 ```
 
@@ -885,7 +886,7 @@ Transition: where the day ends.
 ## S93. Where the day ends: a slide, a page and a range
 *What will the city head hear on Thursday, and what comes tomorrow?*
 
-> "The scheme is paying for online hours that carry no trips: Rs 314 to Rs 260 per peak online hour at a flat Rs 165 fare. Part of it may be the monsoon. Test paying per completed peak trip with an acceptance floor: across the enrolled drivers, it saves Rs 58 lakh to Rs 92.7 lakh over six weeks if a half to a fifth of the idle drivers' top-up is still paid, and the per-trip rate decides where it lands. At the evening peak the city needs about 5,000 to 5,700 drivers online, and how often people ride could move that from 2,900 to 8,600."
+> "The scheme is paying for online hours that carry no trips: Rs 314 to Rs 260 per peak online hour at a flat Rs 165 fare. Part of it may be the monsoon. Test paying per completed peak trip with an acceptance floor: across the enrolled drivers, it saves Rs 58 lakh to Rs 92.7 lakh over six weeks if a half to a fifth of the idle drivers' top-up is still paid, and the per-trip rate can move it within that range or beyond it. At the evening peak the city needs about 5,000 to 5,700 drivers online, and how often people ride could move that from 2,900 to 8,600."
 
 **The lines to keep.** A slide carries one claim, one number with its denominator, the caveat in sight and the action with its cost. Name the denominator before the number. Answer an objection in four moves. Size a number in four steps, give the factor that drives the range, and check it like for like. Check in the same unit, period and definition.
 

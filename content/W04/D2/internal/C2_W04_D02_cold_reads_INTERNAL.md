@@ -5,7 +5,9 @@ to 5 read the concept-first rebuild on 13 October 2026: a trainer who did not wr
 row open; a fresh graduate reading the STUDENT files; and a hiring interviewer scoring the interview
 material. Every reviewer was a fresh agent that wrote findings only and edited no file. Each read is
 reproduced as written, and each rebuild read is followed by what became of every finding. The 12
-October fix pass and its reasons are in `C2_W04_D02_sources_INTERNAL.md`.
+October fix pass and its reasons are in `C2_W04_D02_sources_INTERNAL.md`. One comma in read 4's
+finding 21 became a semicolon, so the house check on contrast constructions passes, and the check's
+report names the capitalised banned word by its first letter; no other word changed.
 
 ---
 
@@ -839,7 +841,7 @@ The invented examples (Ramesh's shop, the auto driver, Gulmohar school, the cant
 18. h2 S93's notes promise a pre-read of "three terms". The pre-read defines six.
 19. extras line 4 says "two transcripts and one AI-company variant". Line 7 and h2 S86 call the variant "the third transcript", and SECTION 10's notes list "transcripts 2 and 3 and the AI-company variant".
 20. h2 S85 says thirty-five minutes. Its notes give 32 minutes of writing.
-21. ch1 exercise line 4 says the auto driver is one "you have not seen yet", but nb01 cell 12 already used it.
+21. ch1 exercise line 4 says the auto driver is one "you have not seen yet"; nb01 cell 12 already used it.
 22. h1 S18 says "one line and two labels stay". The right panel of the makeover picture has four labels.
 23. The notes (lines 187 to 188) and written_case line 51 list three method words. S68 and nb07 list four; north star is the one missing.
 24. Headings: h1's title is not a question. The SECTION 2 opener puts its topic in quotation marks. The cheat sheet uses "Panel n:" prefixes. Most S-slide headings are statements (S6, S9, S10 and others), with the question in the italic line beneath. The exercise index promises a section "Which work is written by hand and handed in?" and has none. board_work says its drawings follow the order they go up, then lists chapter 8's drawing before chapter 7's.
@@ -963,3 +965,122 @@ The other keys hold.
 | 19, chapter 1 against chapter 7 | Fixed: ch1 Q5's key is the marginal reading, Q2's key is what the three added hours brought (nothing), and ch7 Q1's key carries both halves of the reason; the notes' self-check agrees |
 | 20, the rain days | Fixed: two rain days in each month (the generator moved three September rain days, totals unchanged), so they explain none of the change and leave |
 | 21, the canteen check | Fixed: ch6 Q4's key is the till's average weekday |
+
+---
+
+## The fix pass, checked on 13 October 2026: did the files resolve each finding?
+
+A fresh agent read the files after the fix pass against all 48 findings of reads 4 and 5, scored the
+three transcripts and named what the pass had broken. It wrote findings only. Its report is
+reproduced as written, followed by what became of each item it left open.
+
+**Counts:** 38 resolved, 9 partly, 0 open, 8 new problems (problems 1 to 4 are what keeps four of the "partly" items open).
+
+The fix pass was committed while I read it (HEAD 3f2c6d7), and every line number below is checked against HEAD. Paths are under content/W04/D2/. Short names: h1 and h2 are the two decks; ex is extras/C2_W04_D02_interview_room_STUDENT.md; sc is the trainer scorecards file; nbNN is a notebook, with cells counted from 1 and markdown cells included. I recomputed the case numbers from Monday's CSVs and re-ran `page_check` in my scratchpad. I edited nothing and did not run verify.py.
+
+**Part A, the hiring interviewer's findings**
+1. RESOLVED. S90 now gives 2 for "what is decided or counted, the window, and the target or the audience pinned" (h2:834). Transcript 1 asks the decision, the audience and the slot length, opens on the decision and names the six-week windows (ex:27-31, ex:43).
+2. RESOLVED. Transcript 2 now says "the three outer zones get few requests, so I would size them on their own" and "more if many run two apps, which would push the answer up". Its check names the period: "pooled over both daily peaks on all seven days" (ex:78).
+3. RESOLVED. The candidate asks how often accounts renew ("Seats, renewed by each customer account once a year", ex:101). The answer counts in suggestions (26 of 100 shown) and divides by the paid seat (ex:116).
+4. PARTLY. The numbers are right now: the 180 doubled their hours to about 39 a week and made 12 percent fewer trips (ex:43, nb10 cell 4). But ex:43, nb10 cells 3 and 15, h2:781 and sc:23 say the rise happened *because* of the 180. Their bookings per driver-week fell from Rs 5,806 to Rs 5,109. The rise came from the other 880 (Rs 5,819 to Rs 6,056), and "each hour earned 17 percent less" is the city's figure; the 180's own rupees per hour fell from Rs 313.5 to Rs 131.
+5. RESOLVED. "From 6.6 to about 6 minutes" appears at ex:43, h1:1130, sc:79 and notes:216-217. The data gives 6.6 falling to 5.95, the largest fall of any zone.
+6. PARTLY. The spoken versions name the enrolled drivers, the six weeks, the half-to-a-fifth assumption and the rate (h1:748, h2:888, ex:43, notes:218-219). Three places still fall short:
+   - ch7 Q3's key (unguided/ch7:69) gives the full range with no assumption and no rate.
+   - The cleared_slide picture's action box has no assumption, although S35's notes say it does (h1:876).
+   - The transcript says the rate "decides where in that range it lands", while the brief (unguided/written_case:36) says the rate can push the saving outside the range.
+7. RESOLVED. Follow-up 2 (ex:48) names the interference between the halves, says the zone waits "guard the city rather than compare the halves", gives a stop line at any zone's median above its level before the launch, and fixes the rate before the start. The same appears at sc:78 and in the written case solution (lines 46-52).
+8. RESOLVED. S87's opening now says "over six weeks if a half to a fifth of the idle top-up is still paid" (h2:774).
+9. RESOLVED. Transcript 2 now says Monday's slice is the enrolled drivers, "about 581 of them online in an average peak hour", so its count cannot check the city's, and that the 0.53 is "pooled over both daily peaks on all seven days" (ex:78).
+10. PARTLY. Fixed at ex:78, D88 (h2:795), h2:658, h2:888, notes:226, cheatsheet:92 and board work:161. It still stands alone right after 2,900 to 8,600 on S77 (h2:553), in S82's map node (h2:648), in nb08 cell 11, nb10 cell 7 and notes:166.
+11. PARTLY. The transcript builds "1 in 100" in words, with no figures, and only labels the 25-minute trip "a guess I would check first" (ex:78). S74 (h2:494) and nb08 cell 6's ledger still state both with no basis.
+12. RESOLVED. "Lean the idle share high, which pushes the answer up" appears at h2:454, ex:78, sc:83 and trainer guesstimate:46.
+13. RESOLVED. Both shares are shares of suggestions (32 of 100 accepted, about 26 survive) at h2:813, ex:116, nb05 cell 15 and nb10 cells 11-12. The units are explained in h2:819-821.
+14. RESOLVED. "Per paid seat a week ... a developer who switches the tool off still counts" appears at h2:813, ex:116, sc:51, interview_rungs:50 and notes:258.
+15. RESOLVED. The guardrails are characters per accepted suggestion with a ceiling plus an engineer-read sample, and boilerplate that survives is conceded (ex:116, ex:121, sc:70). Follow-up 1 reads padding in characters per accepted suggestion (ex:120).
+16. RESOLVED. A check against last year's renewals, with the same rule, appears at h2:815, ex:116, nb05 cell 15, nb10 cell 13, notes:257-259, sc:52-54 and interview_rungs solution:29-31. The no-telemetry case is answered at ex:102 and ex:116: the editor reports survival as a yes or no per suggestion, and accounts that block even that are reported apart.
+17. RESOLVED. METR is cited only for the perception gap, with whole tasks of about two hours and the page's out-of-date note (ex:122, sc:84); the link is dated 13 October 2026 (ex:128).
+18. RESOLVED. nb08 cell 11 separates requests a second from requests in flight and the average second from the busiest minute, and checks each against the matching serving log.
+19. RESOLVED. ch1 Q2 key d ("what the three added hours brought: nothing") and Q5 key b (each added hour at most Rs 350) are marginal (unguided/ch1:53-60, 104-111; solution:29, 32). ch7 Q1 now gives both halves of the reason (unguided/ch7:38), and the notes' self-check agrees (notes:239-240). See B1 for the page's evidence sentence.
+20. RESOLVED. Two rain days a month in the data (9 and 20 September, 4 and 25 October), in unguided/ch2:29-31, and on h1:410 and h1:463.
+21. RESOLVED. ch6 Q4's key is "the till's cups of tea on an average weekday" (unguided/ch6:92; solution:30).
+
+**Part B, the fresh graduate's findings**
+1. PARTLY. The accountant's line in nb02 cell 11 is now a plain fact (Rs 700 of sales for Rs 170 of wages), and h1:245, h1:317 and cheatsheet:35 give the marginal Rs 350. But S12's fix and nb01 cell 13 say the evidence carries Rs 350 beside Rs 1,190, while the built slide (kirana_slide.png on S11, and nb01 cell 10) and Ramesh's page (h2:312, data/kirana_page:14) carry only Rs 1,190 to Rs 1,050.
+2. RESOLVED. No "276" is left in any learner file. S30 (h1:776) says the trip earnings are the driver's share of the fares, which is not in Monday's tables, so a week's top-up cannot be rebuilt from bookings. One open data question remains: if earnings were spread evenly across windows, the idle tail's figures imply drivers keep only about 18 percent of the fare. The fix pass passed this to the orchestrating session.
+3. RESOLVED. Both 880 and 1,060 are named at h1:1126, h1:1168 and the studio solution (lines 27 and 29).
+4. PARTLY. "City-wide" is gone everywhere, and the cleared_slide picture says "All enrolled drivers". But ch7 Q3's key (unguided/ch7:69) now says a test "on half the drivers for six weeks, saving the scheme Rs 58 lakh to Rs 92.7 lakh". S29's notes (h1:759-760) say such a test saves about half while it runs, and nb09 cell 8's figure pairs the half-driver test with the full range.
+5. RESOLVED. Option d is per completed trip, pooled over both daily peaks, on S71 (h2:422), S72 (h2:435) and nb08 cells 3-4, matching S77 (h2:553).
+6. RESOLVED. The same five rules appear on S69, S84, the brief's table and its five-yes checklist (unguided/written_case:45-71), and in `page_check` in nb07 and nb09. I re-ran `page_check` on the model page typed one part a line with no greeting line, as the notebooks instruct: it passes all five.
+7. RESOLVED. The picture's title ends "so count the evening on its own before deciding".
+8. RESOLVED. The trap now reads "cut, as the rain days are cut" (nb02 cell 7), and the key is d (nb02 cell 9).
+9. PARTLY. The 74 percent and the outer-zone wait are now taught on S46 (h1:1130) and in the notes (216-217). The bus strike and PTI 2023's rule still first appear in the mid-check solution (line 26), now with sources but absent from the drill's source table (unguided/mid_check:33-37) and from S81.
+10. PARTLY. S5 (h1:125) defines the scheme, the top-up and the redesign, and states the "at least half" rule. But the term "acceptance floor" first appears in S29's quote (h1:748) and is defined only on S30 (h1:776); "idle drivers" on S29 is defined only at S37 (h1:926).
+11. RESOLVED. Ramesh raises the festival first (h1:304-305, nb02 cell 9, ch2 solution:29).
+12. PARTLY. Most terms are now defined (h1:167, h2:583, mid_check:33-37, nb11 cell 3, h2:813, index:67-69, h1:625). But the Kalpa store set prints "FY26 standalone total revenue" and "Avenue Supermarts" with no explanation (unguided/kalpa_store:25-30), and "kirana" appears on S1 (h1:13) before S6 explains it.
+13. RESOLVED. The explorer's path is in both decks' first explorer notes (h1:54, h2:384); S48's and S55's notes are in plain words (h1:1176, h2:17-18); and nb08 no longer says "research ledger" or "after the swap".
+14. RESOLVED. S52's fifth element is the zone table, as in the drill (h1:1261; mid_cut:39).
+15. RESOLVED. Round two is two turns plus six minutes to rebuild in both places (h2:12-14; studio_brief:26-28).
+16. RESOLVED. Both now name driver operations (h1:999-1000; nb04 cell 5).
+17. RESOLVED. nb04 cell 9 prints Rs 5,816.5 to Rs 5,895.4, which is 1.4 percent by hand.
+18. RESOLVED. S93's notes promise five topics, their words and the ticket's first lines, which the pre-read has (h2:895-896; preread:20-51).
+19. RESOLVED. The extras file says "three transcripts, the third an AI-company variant" (ex:3-4).
+20. RESOLVED. S85's notes reconcile the 32 minutes of writing with the 35 (h2:729-730).
+21. RESOLVED. The auto driver is introduced as "from notebook 01's your-turn cell" (unguided/ch1:3-5).
+22. RESOLVED. S18 says "one line stays, with four short labels" (h1:485), and the picture shows four.
+23. RESOLVED. Four method words, north star included, in notes:187-188 and unguided/written_case:53.
+24. RESOLVED. The index has its handed-in section (index:55-61), and the board work draws chapter 6, then 7, then 8 (board_work:119, 136, 155).
+25. RESOLVED. "Invented" appears on h1:313, h1:561, h1:616 and h1:658, and inside all five pictures.
+26. RESOLVED. Dates appear in nb02 cell 11, nb03 cell 9, nb06 cell 5, nb07 cell 5 and notes:94, 125, 159, 189. nb03 gives only the check date.
+
+**Scores on S90's first three criteria**
+- **Transcript 1 (ex:43): scope 2, denominator and window 2, trap 1.**
+  - Scope: it asks the decision, the audience and the slot, and opens on the decision.
+  - Denominator and window: per peak online hour, six weeks either side of 31 August.
+  - Trap: it is named only in the last sentence, and the check credits the 180, whose own bookings per driver-week fell.
+- **Transcript 2 (ex:78): scope 2, denominator and window 2, trap 2.**
+  - Scope: one moment, the three-hour weekday evening, one product, the median target, the outer zones apart.
+  - Denominator and window: trips an hour over trips per online driver-hour in the evening window.
+  - Trap: it names "an hour's trips over an hour's rate" and checks per completed trip with the pooled period stated. A strict marker could hold this at 1, because an all-week ratio still moves a weekday-evening answer.
+- **AI variant (ex:116): scope 2, denominator and window 2, trap 2.**
+  - Scope: it asks what the team is judged on, whether deleted suggestions count, who renews and how often, and what the editor can see.
+  - Denominator and window: characters per paid seat a week, seven days after acceptance.
+  - Trap: accept-then-delete is named first and sized at 26 of 100; the shrinking denominator and padding are named too.
+
+**What a strong interviewer would still reject**
+- The per-driver-week line in transcript 1 (Part A item 4).
+- "The rate decides where in that range it lands": no rate or break-even rate is given, so "at what rate?" still empties the range.
+- The zone stop line has no period or margin. 9 of the 72 zone-weeks after the launch already sit above their zone's pre-launch average (Hitech City was 5.0 against 4.77 in the week of 14 September), so a weekly reading stops the test on noise. The studio solution (line 27) stops on a different line: the city median above 4.6.
+- In transcript 2, follow-up 1's 0.21 idle share comes from the same 25-minute guess the chain uses, so it is not an independent check.
+- The renewals check assumes survival was logged last year, which the transcript never establishes. A yes or no per suggestion also cannot count the characters kept from a partly edited suggestion.
+
+**New problems the fix pass introduced**
+1. The per-driver-week rise is credited to the 180 drivers (ex:43, nb10 cells 3 and 15, h2:781, sc:23).
+2. ch7 Q3's key gives the half-driver test the scheme's full saving (unguided/ch7:69), against h1:759-760.
+3. The rate's bound disagrees: "or outside it" (unguided/written_case:36) against "where in that range" (ex:43, written case solution:30, notes:219).
+4. The evidence rule in h1:317 and nb01 cell 13 (Rs 350 beside Rs 1,190) is not on S11's picture, nb01 cell 10's slide or Ramesh's page (h2:312, data/kirana_page:14, nb07 cell 6); cheatsheet:35 carries both.
+5. nb02 cell 11 still says "one line and two labels stay", against h1:485's four.
+6. Transcript 2's 581 is the after-launch hourly average (146,300 hours over 252 peak hours), set beside the before-launch 0.53; the before-launch average is about 468.
+7. h2:729 credits "the 3 minutes of S83 and S84", but their notes add to 2.5 minutes; the section opener supplies the rest.
+8. interview_rungs:65 still says "two transcripts and the AI-company variant".
+
+The style sweep is clean across all text files, the build scripts and the notebook outputs: no em-dashes, no rupee glyph, no clock times, no banned words. The only hit is "however many" in nb07 and nb09, which the house check (case-sensitive, capital H) allows. Both .pptx decks and the cheat-sheet PDF are newer than their markdown and carry the fixed text.
+
+### What became of each item the check left open
+
+| Check item | What became of it |
+|---|---|
+| Interviewer 4 and new problem 1, where the per-driver-week rise sits | Fixed: transcript 1, S41, S87's notes, the notes, notebook 10 (with two new checks), the scorecard and three solutions say the rise sits with the 880 outside the idle tail, who drove about 4 percent more hours at an unchanged Rs 313.5 an hour, while the idle tail's weeks earned 12 percent less on doubled hours |
+| Interviewer 6 and new problems 2 and 3, the saving | Fixed: chapter 7's item 3 key says "rolled out" and carries the assumption; S35's notes say the assumption is said aloud, since the box has no room; every file now says the rate can move the saving within the range or beyond it; transcript 1 and the scorecard give the rate's rule, paying the drivers who already accept what the floor paid them |
+| Interviewer 10, the checked range alone | Fixed: S77, S82's node, notebooks 08 and 10 and the notes put 5,000 to 5,700 inside 2,900 to 8,600 |
+| Interviewer 11, the bases on S74 and in the ledger | Fixed: both give the 1-in-100 guess its reasons and call the 25-minute trip a guess to check first |
+| Graduate 1 and new problem 4, Rs 350 on the slide and the page | Fixed: S11's picture, notebook 01's slide and Ramesh's page carry each added hour's at most Rs 350; the page is now 118 words and 7 numbers, and S67, S68, notebooks 07 and 09 and the chapter 7 solution follow |
+| Graduate 4, the half-driver test | Fixed with the saving: chapter 7's item 3 and notebook 09's page and picture say "rolled out" |
+| Graduate 9, the bus strike and the 2023 line rule | Fixed: the drill's source table carries both, from Republic World and from PTI through Deccan Herald, as the sources list recorded them on 12 October 2026 |
+| Graduate 10, the acceptance floor and the idle tail | Fixed: S5 names both before S29 uses them |
+| Graduate 12, DMart's terms and kirana on S1 | Fixed: the Kalpa store set defines Avenue Supermarts, standalone and FY26; S1 says what a kirana shop is |
+| New problem 5, notebook 02's labels | Fixed: notebook 02 describes its own chart, one line labelled with the two months' averages |
+| New problem 6, the 581 | Fixed: transcript 2 and the notes say after the launch |
+| New problem 7, S85's minutes | Fixed: S85's notes count the chapter's opener with S83 and S84 |
+| New problem 8, the interview set's line 65 | Fixed: three transcripts, the third the AI-company variant |
+| A strong interviewer's rejections | Fixed: the stop line reads each zone's median wait over the test's six weeks against its six weeks before the launch, in transcript 1, follow-up 2, the model page, the scorecard and the studio solution; follow-up 1 quotes the 0.53 against 0.60 ratio, which needs no trip length, and says the 0.21 leans on the same guess; the interviewer's answer says the editor has logged survival for two years and counts each suggestion's characters still in the file, so an edited suggestion counts for the part that stays |
+| Transcript 2's trap point, which a strict marker could hold at 1 | Kept: the answer names the all-week ratio as a check on the ratio's size, never the count, and moves only as far as the two routes agree |

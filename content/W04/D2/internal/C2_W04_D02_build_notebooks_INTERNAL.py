@@ -210,9 +210,10 @@ def one_slide(claim, evidence, caveat, action):
         print(f"{part:>8}: {text}")
     return slide
 
+added = m.per_day.diff().iloc[-1] / m.hours.diff().iloc[-1]   # what each of the two added hours sold, at most
 slide = one_slide(
     claim="The longer hours add Rs 700 a day but earn less per hour, so count the evening on its own before deciding",
-    evidence=evidence_for("hour", m) + "; sales per customer held at Rs 100",
+    evidence=evidence_for("hour", m) + f"; each added hour at most Rs {added:,.0f}; sales per customer held at Rs 100",
     caveat="A festival fortnight fell inside October, so part of the extra Rs 700 a day may be the season",
     action="Keep the hours through November, count the evening's sales apart and decide after thirty days; "
            "the helper's two extra hours cost Rs 170 a day, and Ramesh signs")
@@ -224,12 +225,14 @@ ev.plot(days.x, days.per_hour, color=VIOLET, lw=2)
 ev.axvline(28.5, color="gray", ls="--")
 ev.set_xticks([1, 29, 56], ["1 Sep", "1 Oct", "28 Oct"])
 ev.set_title("2  Sales per hour open, each day, Rs", loc="left", fontsize=11)
+ev.text(42, 1230, f"each added hour: at most Rs {added:,.0f}", ha="center", fontsize=10, color=INK)
 fig.text(0.64, 0.70, "3  Caveat\\n" + textwrap.fill(slide["caveat"], 34), fontsize=10.5, va="top",
          bbox=dict(boxstyle="round", fc="#FFF7E6", ec=AMBER))
 fig.text(0.64, 0.36, "4  Action\\n" + textwrap.fill(slide["action"], 34), fontsize=10.5, va="top",
          bbox=dict(boxstyle="round", fc="white", ec=VIOLET))
 plt.show()
 check("the evidence names its denominator", " per " in slide["evidence"])
+check("the evidence carries the added hours' own rate", "Rs 350" in slide["evidence"])
 check("the action carries a cost in rupees and who signs", "Rs" in slide["action"] and "signs" in slide["action"])
 check("the son can repeat the title, since it carries his Rs 700", "Rs 700" in slide["claim"])
 '''),
@@ -493,7 +496,8 @@ check("one series of the six carries the claim", len(series) + 1 == 6 and len(ke
 '''),
         md("""
         **What happened.** The answer is a. Five of the six series leave, with the legend, the grid
-        and the border; one line and two labels stay, and the title says the claim. The test is the
+        and the border; one line stays, labelled with the two months' averages, and the title says
+        the claim. The test is the
         one the elements met: does the claim need this ink? Storytelling with Data's declutter post
         (4 January 2011, checked 13 October 2026) puts it as a question to ask of every element, "Is
         it adding any informative value?", and takes out whatever is not.
@@ -1012,7 +1016,7 @@ check("every after week sits below every before week: a step at the launch, not 
         the six weeks), and end on the action with its cost and signer (test paying per completed
         peak trip with an acceptance floor; across the enrolled drivers it saves Rs 58 lakh to Rs
         92.7 lakh over six weeks if a half to a fifth of the idle drivers' top-up is still paid, and
-        the per-trip rate decides where it lands; the city head signs the test).
+        the per-trip rate can move it within that range or beyond it; the city head signs the test).
 
         **The AI-company variant.** A coding assistant's dashboard reports suggestions accepted per
         developer-week. The same trap waits: accepted text can be deleted soon after, and a developer
@@ -1641,7 +1645,7 @@ table = pd.DataFrame({"the draft": counts(draft_text), "the page": counts(page_t
 print("Opening A:", " / ".join(draft[:3]))
 print("Opening B:", page[0])
 print(table.to_string())
-check("the draft carries 13 numbers and the page 6", table.loc["numbers"].tolist() == [13, 6])
+check("the draft carries 13 numbers and the page 7", table.loc["numbers"].tolist() == [13, 7])
 check("the page carries no method word", table.loc["method words", "the page"] == 0)
 
 ax = table.plot.bar(color=["gray", VIOLET], figsize=(8, 3.4), rot=0)
@@ -1654,7 +1658,7 @@ plt.show()
         **What happened.** The answer is b. A sentence has to carry its reasoning where a bullet can
         hide it, and opening B says what to do and why before any number. Opening A needs a reader
         who knows what a north star, a denominator and an index are. The draft runs to nine lines,
-        13 numbers and four method words; the page to four sentences, 6 numbers and none.
+        13 numbers and four method words; the page to four sentences, 7 numbers and none.
 
         Amazon's 2017 letter to shareholders, filed 18 April 2018 (checked 13 October 2026), says:
         "We don't do PowerPoint
@@ -1763,7 +1767,7 @@ plt.show()
         **Why it is wrong.** The answer is d: the draft passes none of the five. Thorough is
         measured by what the reader can act on in two minutes. The draft opens on a figure with no
         claim, its second line is a method word with no rate, it never states its doubt, its last
-        line names no cost or signer, and it needs four method words decoded; the page carries 108
+        line names no cost or signer, and it needs four method words decoded; the page carries 118
         words and passes all five.
         **The check:** read the first sentence alone: does it say what to do and why? **The fix:**
         the four parts as four sentences, in plain words.
@@ -1915,9 +1919,9 @@ check("only a published count of drivers online at one peak passes all three", c
 # The ledger: every guess with its range, then the chain run on every version of the ledger.
 ledger = pd.DataFrame([   # assumption: central, low, high, and why
     ("people in the city",               10_000_000, 9_000_000, 11_000_000, "the metro area, a round number"),
-    ("weekday Uber trips per person",    0.01,       0.005,     0.015,      "1 trip for every 100 people"),
+    ("weekday Uber trips per person",    0.01,       0.005,     0.015,      "a guess: most take no app ride; riders go out and back"),
     ("share of trips in the evening",    0.25,       0.20,      0.30,       "the evening commute"),
-    ("trips a busy driver fits an hour", 2.4,        2.0,       3.0,        "a peak trip takes about 25 minutes"),
+    ("trips a busy driver fits an hour", 2.4,        2.0,       3.0,        "a guessed 25-minute trip, to check first"),
     ("idle share",                       0.30,       0.22,      0.38,       "a guess, from a busy evening to a slack one"),
     ("buffer for the busiest half hour", 1.15,       1.10,      1.25,       "the peak inside the peak"),
 ], columns=["assumption", "central", "low", "high", "why"]).set_index("assumption")
@@ -2048,7 +2052,8 @@ check("the per-day figure divides by the month's own days", round(per_day / 1e6)
         per completed trip, with a median wait of 4.8 minutes; after it, 0.63. The chain puts 0.60
         behind each trip before its buffer, about an eighth more than the window whose wait met the
         target, so the chain errs high. Re-run at the case's 1.90 trips an hour it gives about
-        5,000 drivers, so the honest answer is about 5,000 to 5,700. The invented network shows the
+        5,000 drivers, so say about 5,000 to 5,700 where the two routes agree, inside the 2,900 to
+        8,600 that trips per person sets. The invented network shows the
         per-day check: 9 billion over its 30 days is 300 million a day, and dividing by 31 gives
         290 million, 3.2 percent low for no reason but the calendar. The afternoon's paired drill
         on UPI meets the published figure only after the pairs have swapped sheets and checked each
@@ -2062,7 +2067,7 @@ check("the per-day figure divides by the month's own days", round(per_day / 1e6)
            held, driven by trips per person.
         3. A day's trips over an hour's rate gives about 41,700, about seven times too many.
         4. Like for like, the chain's 0.60 driver-hours per trip runs an eighth above the case's
-           0.53, so say about 5,000 to 5,700.
+           0.53, so say about 5,000 to 5,700, inside 2,900 to 8,600.
 
         ### What will an interviewer ask about this, and what does a strong answer do?
 
@@ -2094,7 +2099,7 @@ def nb09():
         **Week 4, Tuesday, chapter 9, the case's fourth chapter.** It applies the AI-free written
         business case (concept notebook 07) and the one-slide answer: claim, evidence, caveat, action
         (concept notebook 01). Notebook 07 found that Ramesh's page (invented) carried the slide's
-        four parts as four sentences in 108 words, where the draft ran nine lines, 13 numbers and four
+        four parts as four sentences in 118 words, where the draft ran nine lines, 13 numbers and four
         method words. Notebook 08 sized the evening peak at about 5,000 to 5,700 drivers.
 
         **Open this notebook after your page is handed in.** The page is written by hand, in 35
@@ -2250,7 +2255,7 @@ city_page = "\\n".join([                                        # the page's fou
     "The scheme is paying for online hours that carry no trips, so I recommend testing a change before the city pays for another six weeks.",
     f"An hour online at peak brought in Rs {per_hour['after']:.0f} of fares in the six weeks after the launch, down from Rs {per_hour['before']:.0f}, at the same Rs 165 fare.",
     "The monsoon ended inside the same six weeks and last year's weeks are not in the data, so part of the fall may be the season.",
-    f"Test paying per completed peak trip, with an acceptance floor, on half the drivers for six weeks; across the enrolled drivers the change saves Rs {saved.iloc[0]:.0f} lakh to Rs {saved.iloc[1]} lakh over six weeks if a half to a fifth of the idle top-up is still paid, the per-trip rate decides where it lands, and the city head signs."])
+    f"Test paying per completed peak trip, with an acceptance floor, on half the drivers for six weeks; rolled out to every enrolled driver the change saves Rs {saved.iloc[0]:.0f} lakh to Rs {saved.iloc[1]} lakh over six weeks if a half to a fifth of the idle top-up is still paid, the per-trip rate can move that within the range or beyond it, and the city head signs."])
 print(city_page)
 check("a page built from the case's own numbers passes every rule", all(page_check(city_page).values()))
 
@@ -2258,7 +2263,7 @@ fig, ax = plt.subplots(figsize=(10, 3.2))
 parts = [("claim", "the scheme pays for online\\nhours that carry no trips"),
          ("evidence", "Rs 314 to Rs 260 per peak\\nonline hour, fare Rs 165"),
          ("caveat", "the monsoon ended inside\\nthe six weeks"),
-         ("action", "test on half the drivers, six\\nweeks; Rs 58 to 92.7 lakh;\\nthe city head signs")]
+         ("action", "test on half the drivers, six\\nweeks; rolled out, Rs 58 to\\n92.7 lakh; the city head signs")]
 for i, (part, words) in enumerate(parts):
     ax.text(i, 0.75, part, ha="center", weight="bold", color="white",
             bbox=dict(boxstyle="round", fc=[INK, VIOLET, AMBER, VIOLET][i], ec="none"))
@@ -2367,8 +2372,9 @@ print(segments.to_string(index=False))
 
         The hire-grade answer says an online hour brought in Rs 260 of fares, down from Rs 314, at the
         same Rs 165 fare, and meets the follow-up it expects: bookings per driver-week rose 0.8
-        percent because the 180 drivers who accept least doubled their online hours, to about 39 a
-        week, while completing 12 percent fewer trips, and each hour earned 17 percent less.
+        percent on the 880 drivers outside the idle tail, who drove about 4 percent more hours at an
+        unchanged Rs 313.5 an hour, while the 180 who accept least doubled their online hours, to
+        about 39 a week, for 12 percent fewer trips.
 
         **Predict before you run.** The interviewer asks how per driver-week can rise while per hour
         falls. Which number answers it?
@@ -2399,6 +2405,14 @@ print(f"the idle tail: {tail_week['before']:.1f} hours a week before, {tail_week
 check("the idle tail doubled its hours, to about 39 a week", round(tail_week["after"]) == 39
       and 2 < tail_week["after"] / tail_week["before"] < 2.2)
 check("and completed 12 percent fewer trips", round(tail_trips * 100) == -12)
+seg = segments.set_index(["segment", "window"])
+per_week = seg.peak_trips * 165 / (seg.drivers * 6)                   # bookings per driver-week, six weeks a window
+others = "the other drivers there before the launch"
+others_change = per_week[(others, "after")] / per_week[(others, "before")] - 1
+tail_change = per_week[("the idle tail", "after")] / per_week[("the idle tail", "before")] - 1
+print(f"bookings per driver-week: the other 880 {others_change:+.0%}, the idle tail {tail_change:+.0%}")
+check("the rise sits with the other 880, whose weeks rose 4 percent", round(others_change * 100) == 4)
+check("the idle tail's weeks earned 12 percent less", round(tail_change * 100) == -12)
 check("the joiners sit below the after average, so they pulled it down",
       joiners.peak_bookings_rs / joiners.driver_weeks < w.loc["after", "rs_per_driver_week"])
 
@@ -2415,8 +2429,10 @@ plt.show()
         **What happened.** The answer is b: 18.6 hours a driver-week before and 22.5 after, so per
         driver-week rose while per hour fell 17 percent, with the fare flat at Rs 165. Most of the
         extra hours were the idle tail's: its 180 drivers went from about 18.5 hours a week to about
-        39 while their trips fell 12 percent. The 140 joiners pulled the read down, which is why the
-        answer says so before anyone asks.
+        39 while their trips fell 12 percent, so their weeks earned 12 percent less. The rise itself
+        sits with the other 880, whose weeks rose 4 percent on 4 percent more hours at an unchanged
+        rate per hour. The 140 joiners pulled the read down, which is why the answer says so before
+        anyone asks.
 
         ## Do transcript 2's numbers hold, and how far off is the weak answer?
 
@@ -2455,7 +2471,7 @@ plt.show()
         md("""
         **What happened.** The answer is c: about 41,700 against about 5,700, seven times as many. The
         chain checks out at about 5,700, and at the case's 1.90 trips an hour it gives about 5,000, so
-        the answer says 5,000 to 5,700.
+        the answer says 5,000 to 5,700, inside the 2,900 to 8,600 that trips per person sets.
 
         ## Do transcript 2's follow-up numbers hold?
 
@@ -2633,9 +2649,10 @@ plt.show()
         md("""
         **The answers, one line each.**
 
-        1. Rs 313.5 to Rs 260.4 at a Rs 165 fare, printed Rs 314 and Rs 260; 18.6 to 22.5 hours a
-           driver-week explains the 0.8 percent rise, most of it the idle tail's doubled hours, and
-           the joiners pulled it down.
+        1. Rs 313.5 to Rs 260.4 at a Rs 165 fare, printed Rs 314 and Rs 260; the 0.8 percent rise
+           per driver-week sits with the 880 outside the idle tail, whose weeks rose 4 percent at an
+           unchanged rate, while the idle tail's fell 12 percent and the joiners pulled the average
+           down.
         2. The chain gives about 5,700, the like-for-like check about 5,000, and the weak answer about
            41,700, seven times too many.
         3. The idle share is about 0.21 before and 0.34 after; a four-hour window leaves about 5,700;

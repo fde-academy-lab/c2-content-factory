@@ -66,8 +66,8 @@ it.
 
 *Level L3, a design call · tagged [S] in this programme's calibration: a staple of analyst screens.*
 
-a) Test paying per completed peak trip, with an acceptance floor, on half the drivers for six weeks, saving the scheme Rs 58 lakh to Rs 92.7 lakh; the city head signs
-b) Next steps: run further analysis of the guardrail metrics, the north star and the denominators with the data team, and only then decide anything at all about the scheme's future
+a) Test per-trip pay with an acceptance floor on half the drivers for six weeks; rolled out, it saves Rs 58 lakh to Rs 92.7 lakh in six weeks if a half to a fifth of the idle top-up is still paid; the city head signs
+b) Next steps: run further analysis of the guardrail metrics, the north star and the denominators with the data team over the next few weeks of trading and reporting, and only then decide anything at all about the scheme's future
 c) We recommend optimising the north star going forward
 d) Consider the denominator carefully before deciding
 

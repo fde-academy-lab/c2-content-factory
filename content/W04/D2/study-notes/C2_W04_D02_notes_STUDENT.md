@@ -163,7 +163,8 @@ interviewer is "interested in your thought process; not the final result".
 > unit nobody wrote down.
 
 **At Uber.** Chapter 8 sizes drivers online at the weekday evening peak at about 5,700, checks the
-chain's driver-hours per trip against the case's own, and says about 5,000 to 5,700.
+chain's driver-hours per trip against the case's own, and says about 5,000 to 5,700, inside the 2,900
+to 8,600 that trips per person sets.
 
 Say it to a hostel warden: "Break the big number into small guesses you can defend, multiply, and check
 against something counted the same way."
@@ -210,18 +211,20 @@ percent. Gross bookings (what riders paid) fell 17 percent per peak online hour,
 ![Slide A rebuilt in its four parts](../whiteboards/C2_W04_D02_cleared_slide_STUDENT.png)
 
 > **WATCH OUT** · "Bookings per driver-week rose, so the guarantee works." Hours per driver-week went
-> from 18.6 to 22.5 while each hour brought in 17 percent less: the scheme bought hours, most of them
-> from the idle tail's 180 drivers, who doubled theirs while completing 12 percent fewer trips.
+> from 18.6 to 22.5 while each hour brought in 17 percent less: the scheme bought hours. The rise sits
+> with the 880 outside the idle tail, who drove about 4 percent more hours at an unchanged Rs 313.5 an
+> hour; the idle tail's 180 drivers doubled theirs while completing 12 percent fewer trips.
 
 74 percent of the idle money sat in the three outer zones, whose median wait fell furthest, from 6.6 to
 about 6 minutes, so the redesign watches the wait zone by zone. Across the enrolled drivers it saves Rs
 58 lakh to Rs 92.7 lakh over six weeks if a half to a fifth of that money is still paid; the per-trip
-rate, not yet set, decides where in that range.
+rate, not yet set, can move it within that range or beyond it.
 
 The drivers estimate: 1 crore people x 1 weekday Uber trip per 100 people x a quarter in the three
 evening hours is about 8,330 trips an hour; each online driver completes 2.4 x (1 - 0.30 idle) = 1.68
 an hour; 8,330 / 1.68 x 1.15 for the busiest half hour is about 5,700, and trips per person alone moves
-it from 2,900 to 8,600. The case's drivers are a slice, so they check a ratio, never the city's count:
+it from 2,900 to 8,600. The case's drivers are a slice, about 581 online in an average peak hour after
+the launch, so they check a ratio, never the city's count:
 0.53 online driver-hours per trip, pooled over both daily peaks, against the chain's 0.60, so the chain
 runs an eighth high. Say about 5,000 to 5,700 inside that wider range. A day's trips over an hour's rate
 gives about 41,700. No published count of drivers online at Hyderabad's evening peak has been found.

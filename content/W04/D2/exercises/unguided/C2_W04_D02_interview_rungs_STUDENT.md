@@ -62,7 +62,7 @@ d) Make retained text the north star, and keep acceptance rate as a leading inpu
 
 ---
 
-**How do you check your letters?** The afternoon deck's two transcripts and the AI-company variant
+**How do you check your letters?** The afternoon deck's three transcripts, the third the AI-company variant,
 put each opening and each plan beside a weak one, and `extras/C2_W04_D02_interview_room_STUDENT.md`
 gives them in full.
 

@@ -303,8 +303,9 @@ def kirana_slide():
     kirana_clear(chart, title=False)
     chart.set_title("2  Sales per hour, each day", fontsize=13, loc="left", color=INK, weight="bold")
     per_c = TOY["toy_kirana_per_customer"]["value"]
-    top.text(0.12, 0.3, f"2  and sales per customer held at Rs {per_c} in both months",
-             fontsize=13, color=INK, va="center")
+    extra = TOY["toy_kirana_extra_hour_rs"]["value"]
+    top.text(0.12, 0.3, f"2  each added hour sold at most Rs {extra}; sales\n"
+             f"    per customer held at Rs {per_c} in both months", fontsize=13, color=INK, va="center")
     box(top, 5.95, 2.5, 3.95, 1.4, AMBER, AMBER_TINT)
     top.text(6.1, 3.68, "3  Caveat", fontsize=13, weight="bold", color=AMBER)
     top.text(6.1, 3.42, "A festival fortnight fell inside\nOctober, so part of the extra\n"
