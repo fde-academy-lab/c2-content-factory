@@ -25,13 +25,19 @@ pipeline, palette and reference deck named further down this file:
 - The model decks are `content/W01/D1/slides/`, and
   `.claude/skills/day-pack-builder/references/the-standard.md` says what a
   day's deck carries.
-- A day's decks run in about six chapters, each opened by `## SECTION n:` and
-  paired one to one with a notebook of the same number and title. A chapter's
-  slides run the need and who asks, the real company that faces it, the
-  options with their sizing and the best-fit call, the thinking as a picture,
-  the build, the plausible wrong answer and why it is wrong, the fix, the
-  second route and Kavya's review. On a domain's first day the first chapter
-  is the domain story, told from the domain's dossier.
+- A day's decks run in two halves of chapters, each opened by `## SECTION n:`
+  and paired one to one with a notebook of the same number and title. The
+  concept chapters come first, one per row subtopic, the title carrying the
+  subtopic as the row words it, each built on a simple relatable educational
+  example in the order teaching-styles.md gives for a concept chapter; then
+  the case chapters, each naming the subtopics it applies, whose slides run
+  the need and who asks, the options with their sizing and the best-fit call,
+  the thinking as a picture, the build, the plausible wrong answer and why it
+  is wrong, the fix and the second route. Slide four, after the week map and
+  the topics slide, is the concept map, a mermaid map of the day's subtopics
+  with today's lit, repeated with the current chapter lit at each opener. On
+  a domain's first day the first chapter is the domain story, told from the
+  domain's dossier.
 - The gate is `python3 scripts/verify.py <day folder>`, which runs
   `deck_md_check.py` on the markdown and `deck_check.py` on a freshly built
   .pptx.

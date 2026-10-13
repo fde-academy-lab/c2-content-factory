@@ -113,8 +113,12 @@ flowchart TB
     A --> B --> C --> D
 ```
 
-**1. The scenario leads.** A day pack that opens on a technique has not been built from this row. If
-column 2 is empty, the row is not ready and the build stops.
+**1. The scenario leads the day's purpose, and the subtopics are its chapter list.** Column 2 gives
+the day its question and its destination; column 7 gives it its chapters, which a pack built from
+Week 4 on teaches first as named concept chapters before the case (decision
+`concept-first-case-second`). A day pack that opens on a technique with no question behind it, or
+whose chapters cannot be mapped to column 7, has not been built from this row. If column 2 or column 7
+is empty, the row is not ready and the build stops.
 
 **2. The thinking is the curriculum.** Column 4 is the part a learner keeps. The canonical Week 1
 example is the revenue tree: revenue is customers, times orders per customer, times items per order,
