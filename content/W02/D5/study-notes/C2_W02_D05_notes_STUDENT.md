@@ -94,7 +94,7 @@ tying every number back to the warehouse, and chapter 5 decides which step belon
 
 ---
 
-## Chapter 1. Which segment carries Kalpa's revenue, and which leaf of the tree separates the segments?
+## Chapter 1. The customer table in Excel: which segment carries Kalpa's revenue, and which leaf of the tree separates the segments?
 
 **Who needs the answer.** The chief of staff puts the tree on page two of the deck, where the
 directors decide which segment the growth plan talks about, and a tree that does not multiply back
@@ -156,7 +156,7 @@ Business carries 99.1 percent of the revenue, and the basket separates the consu
 
 ---
 
-## Chapter 2. How much did revenue fall from Q1 to Q2, and in which segment and which leaf?
+## Chapter 2. Pivot tables: how much did revenue fall from Q1 to Q2, and in which segment and which leaf?
 
 **Who needs the answer.** Meera decides from the tree for both quarters which branch the growth plan
 funds, and a pivot that counts orders twice puts nearly twice Finance's revenue in front of the
@@ -225,7 +225,7 @@ Retail-Plus, 29.4 percent, in orders per customer.
 
 ---
 
-## Chapter 3. Which fifty Retail-Plus members go on the protect list, and when the chief of staff types an id, does the sheet answer for that member?
+## Chapter 3. XLOOKUP: which fifty Retail-Plus members go on the protect list, and when the chief of staff types an id, does the sheet answer for that member?
 
 **Who needs the answer.** The head of Retail-Plus sends the fifty a retention offer, and the chief
 of staff reads a member's line aloud when a director names one, so a lookup that answers with the
@@ -291,7 +291,7 @@ member typed; the list ships once its source ties.
 
 ---
 
-## Chapter 4. What must sit beside the front-page number so a director reads it right in two minutes?
+## Chapter 4. Presenting one number: what must sit beside the front-page number so a director reads it right in two minutes?
 
 **Who needs the answer.** Meera and the directors read the front page first and may read nothing
 else, so a card without its period or its base sends the meeting after a boom or a crisis that never
@@ -356,7 +356,7 @@ Rs 10.00 crore, with rupees beside every percentage.
 
 ---
 
-## Chapter 5. Which of the week's steps belong in the workbook, which must never be done there, and how do the two stay in step?
+## Chapter 5. The tool operating rule: which of the week's steps belong in the workbook, which must never be done there, and how do the two stay in step?
 
 **Who needs the answer.** Kavya signs the team's operating rule, and Anand Iyer, the finance
 controller, has an analyst who audits every number Finance relies on; a join done in the wrong tool
@@ -427,7 +427,7 @@ tied to the control totals by a live check.
 
 ---
 
-## Chapter 6. When a director takes the workbook in the room, what can they break, and which checks catch it before anyone reads a wrong number?
+## Chapter 6. Keeping the sheet and the source from drifting: when a director takes the workbook in the room, what can they break, and which checks catch it before anyone reads a wrong number?
 
 **Who needs the answer.** The head of Retail-Plus sizes each city's retention budget from the list
 in the room, and a total that counts rows a filter has hidden sizes it on the whole list.
