@@ -12,6 +12,41 @@ question climbed in six chapters: what can a director open on Monday without a l
 room, and still trust. Five chapters this morning, the sixth after lunch, then the escalated case
 alone and the director's edit in pairs. Excel is the tool the room holds today; the notebooks are the
 second route to every number.
+Transition: which six curriculum topics does the day teach, and in which chapter?
+```
+
+---
+
+## S0. What will today teach? Six topics across six chapters
+*Which curriculum topic does each chapter teach, in how many minutes, and how do the six build on Monday to Thursday?*
+
+| The curriculum's topic | Chapter | The chapters' minutes |
+|---|---|---|
+| The customer table in Excel: structure, filters, freeze panes | 1, and 6 for filters | 30 and 30 |
+| Pivot tables: build, slice, refresh; what they cannot do | 1 and 2 | 30 each |
+| XLOOKUP: exact match, the not-found path, and the nearest-match trap | 3 | 30 |
+| Presenting one number: denominator, period, comparison, the sentence beside it | 4 | 30 |
+| The tool operating rule: warehouse, pandas, Excel | 5 | 30 |
+| Keeping the sheet and the source from drifting | 5, 6 and the second case | 30, 30 and 40 |
+
+```mermaid
+flowchart LR
+    T1["<b>1 Customer table</b><br/>Thursday's export"] --> T2["<b>2 Pivot tables</b><br/>Monday's quarters"]
+    T1 --> T3["<b>3 XLOOKUP</b><br/>Wednesday's fifty"]
+    T2 --> T4["<b>4 One number</b><br/>Q2 against Q1"]
+    T2 --> T5["<b>5 The tool rule</b><br/>Tuesday's join"]
+    T3 --> T5
+    T4 --> T5
+    T5 --> T6["<b>6 No drift</b><br/>Monday's control totals"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class T1,T2,T3,T4,T5,T6 known
+```
+
+```notes
+LIVE, 1 minute. Read the six topics as the curriculum names them, then the map from left to right:
+each topic builds on a day the room has already done, and each chapter opener names its topic before
+its question. Three topics get one slide of their own inside their chapter: freeze panes (S9a), the
+nearest-match trap (S43a) and the denominator (S57a).
 Transition: what can a director open on Monday without a login, change in the room, and still trust?
 ```
 
@@ -111,7 +146,7 @@ Transition: chapter 1, the first deliverable, from the table Marketing already h
 
 ---
 
-## SECTION 1: Which segment carries it?
+## SECTION 1: The customer table in Excel: which segment carries it?
 *Which segment carries Kalpa's revenue, and which leaf of the tree separates the segments? Page two of Monday's deck rides on it.*
 
 ```notes
@@ -232,6 +267,30 @@ The answer is b. Each row is one customer who ordered between April and Septembe
 ```notes
 LIVE, 2 minutes. In Excel: =COUNTA(A2:A301) and a distinct count beside it. The habit is what
 matters: the grain is said aloud before any pivot, because chapter 2's export will not be so kind.
+Transition: scrolled to row 250, which number on the screen is orders and which is revenue?
+```
+
+---
+
+## S9a. Freeze Panes at B2 keeps the names and ids in view
+*Scrolled to row 250, how do the column names and the ids stay on screen?*
+
+At row 250 the sheet shows C-0282, Business, Hyderabad, 11 and 6084000 under no column names, because a sheet scrolls as one piece. Freeze Panes "freezes the rows above and the columns left of the selected cell" (Microsoft Support, Freeze panes to lock rows and columns, checked 13 October 2026), so those stay put while the rest scrolls.
+
+| Select this cell, then View, Freeze Panes, Freeze Panes | What stays on screen while the rest scrolls |
+|---|---|
+| A2 | Row 1, the six column names |
+| B1 | Column A, the 300 customer ids |
+| B2 | Row 1 and column A together |
+
+**Check yourself.** On an invented sheet with a title in row 1 and column names in row 2, which cell freezes both rows and no column? a) B2; b) C1; c) A3; d) B3.
+
+```notes
+LIVE, 2 minutes. In Excel on the customer table, scroll to row 250 and read the row aloud: nobody can
+say which number is orders and which is revenue. Select B2, choose View, Freeze Panes, Freeze Panes,
+and scroll again. The check's answer is c, A3: rows 1 and 2 sit above it and no column sits left of
+it. B2 freezes row 1 and column A, C1 freezes columns A and B and no row, and B3 freezes two rows and
+column A.
 Transition: with segment in Rows and revenue in Values, whose bar is longest?
 ```
 
@@ -461,7 +520,7 @@ Transition: the chief of staff asked for both quarters, so the raw export.
 
 ---
 
-## SECTION 2: Where did Q2 fall?
+## SECTION 2: Pivot tables: where did Q2 fall?
 *How much did revenue fall from Q1 to Q2, and in which segment and which leaf? The growth plan funds the branch this answer names.*
 
 ```notes
@@ -823,7 +882,7 @@ Retail-Plus protect first?
 
 ---
 
-## SECTION 3: Find any member by id?
+## SECTION 3: XLOOKUP: find any member by id?
 *Which fifty Retail-Plus members go on the protect list, and when the chief of staff types an id, does the sheet answer for that member? Retention offers ride on it.*
 
 ```notes
@@ -1031,6 +1090,31 @@ The answer is c. Left out, the fourth argument "will always be TRUE or approxima
 ```notes
 LIVE, 4 minutes. Run it live. Nothing on screen turns red, which is why the trap works. Print the id
 returned beside the id asked for, so the neighbour shows.
+Transition: what is this trap called, and where does a lookup of this kind belong?
+```
+
+---
+
+## S43a. A nearest match answers a missing id with a neighbour
+*What is the nearest-match trap, and where does a nearest match belong?*
+
+A nearest match reads a column sorted from smallest and stops at the largest value that is not above the one typed: "MATCH finds the largest value that is less than or equal to lookup_value" (Microsoft Support, MATCH function, checked 13 October 2026). On a band that is the answer. On an id the table lacks it is the nearest-match trap: the lookup returns a neighbour's row, and nothing on the sheet turns red.
+
+| Typed into a nearest match | What the sorted column holds | What comes back |
+|---|---|---|
+| An order of Rs 2,700 | invented tiers from Rs 0, Rs 1,000 and Rs 2,500 | the Rs 2,500 tier, the right band |
+| C-0195, which has no row | ids up to C-0194, then C-0196 | C-0194's Rs 16,740, the wrong member |
+| C-0152, which has a row | C-0152 itself | its own Rs 25,840, so a test on it passes |
+
+**Check yourself.** Invented ids M-10, M-20, M-30 and M-40 sit sorted in column A, and M-35 has no row. What does a nearest match for M-35 return? a) #N/A; b) M-40's row; c) M-10's row; d) M-30's row.
+
+```notes
+LIVE, 2 minutes. Name the trap now that the room has watched it fire on C-0195. VLOOKUP with its
+fourth argument left out is a nearest match, and so is XLOOKUP with -1 as its fifth argument: "Exact
+match. If none found, return the next smaller item" (Microsoft Support, XLOOKUP function, checked 13
+October 2026). XLOOKUP with no fifth argument matches exactly. The check's answer is d, since M-30 is
+the largest id not above M-35. #N/A comes back only when nothing sorts at or below the id typed, such
+as M-05; M-40 is the nearest id above, and M-10 is the first in the column.
 Transition: what do C-0195, C-0152 and C-0194 return once the match is exact?
 ```
 
@@ -1120,7 +1204,7 @@ Transition: what must sit beside the front-page number so a director reads it ri
 
 ---
 
-## SECTION 4: Read right in two minutes?
+## SECTION 4: Presenting one number: read right in two minutes?
 *What must sit beside the front-page number so a director reads it right in two minutes? The meeting's first decision is made from it.*
 
 ```notes
@@ -1329,6 +1413,31 @@ The answer is b. The company line jumps in July to Rs 4.51 crore, 45 percent abo
 ```notes
 LIVE, 5 minutes. The notebook draws both lines; describe them here. Two directors asking for two scopes
 get two honest cards, and down 1.6 and down 17.3 percent are never compared as one number.
+Transition: what does each percentage on the card divide by?
+```
+
+---
+
+## S57a. Every percentage on the card names its denominator
+*What does each percentage on the card divide by, and what does the wrong one print?*
+
+A percentage is a fraction, and its denominator is the number it divides by: a change divides by the earlier period, its base, and a share divides by the whole it is part of. An invented Rs 100 that falls to Rs 80 is down Rs 20, which is 20 percent of Rs 100 and prints as 25 percent if the Rs 80 goes under the line instead.
+
+| On the Retail-Plus card | What it divides | Its denominator | It prints |
+|---|---|---|---|
+| The change | the Rs 1.72 lakh fall | Q1's Rs 5.86 lakh, the base | down 29.4% |
+| The slip | the same Rs 1.72 lakh | Q2's Rs 4.13 lakh | down 41.7% |
+| The share | Q2's Rs 4.13 lakh | the company's Rs 9.84 crore | 0.4% |
+
+**Check yourself.** An invented city's revenue rose from Rs 80 to Rs 100. What does its card print? a) up 20 percent; b) up 25 percent; c) up 22.2 percent, on the average of the two; d) up Rs 20, with no percentage.
+
+```notes
+LIVE, 2 minutes. The curriculum's word for the base is the denominator; say it once and read the
+table row by row. The same Rs 1.72 lakh prints 29.4 or 41.7 percent depending on what sits under it,
+which is the slip from the bare-percentage answer, and the share's denominator is the company's
+quarter. The check's answer is b: the change, Rs 20, over the earlier period's Rs 80. Up 20 percent
+divides by the later period, 22.2 percent divides by Rs 90, a base no card names, and Rs 20 alone
+says nothing about size.
 Transition: does the warehouse reach the same two changes by its own query?
 ```
 
@@ -1377,7 +1486,7 @@ Transition: which of the week's steps belong in the workbook, which must never b
 
 ---
 
-## SECTION 5: What must Excel never do?
+## SECTION 5: The tool operating rule: what must Excel never do?
 *Which of the week's steps belong in the workbook, which must never be done there, and how do the two stay in step? Every number Finance relies on depends on it.*
 
 ```notes
