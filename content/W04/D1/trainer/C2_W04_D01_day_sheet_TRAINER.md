@@ -37,7 +37,7 @@ six invented tables of the concept chapters to `data/`, and every number below t
 
 **The week's explorer** is `demos/C2_W04_D01_week_explorer_STUDENT.html`, built on its own branch and
 shipped with the week. Monday uses scene M1 (S10's notes and S67), M2 (S17's notes, S75 and S80), M3
-(S33's notes and S81) and M4 (S28); each slide's notes name its scene. If the file is not on the
+(S33's notes and S81) and M4 (S27, before S28 shows the turn); each slide's notes name its scene. If the file is not on the
 projector, every slide stands without it.
 
 **No guesstimate on Monday.** The spine and the case file start the daily guesstimate on Tuesday,

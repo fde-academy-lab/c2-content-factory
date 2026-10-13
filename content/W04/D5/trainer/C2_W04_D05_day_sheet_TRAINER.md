@@ -270,7 +270,7 @@ names any of them before a learner's own cell prints it.
 | The case's tournament | `trainer/C2_W04_D05_tournament_TRAINER.md`; `trainer/C2_W04_D05_role_cards_TRAINER.md`; `trainer/C2_W04_D05_festival_calendar_card_TRAINER.md` |
 | Chapter 5, item 1 live beside S43 and S44; items 2 and 3 in the lab | `exercises/guided/C2_W04_D05_same_week_rule_STUDENT.md` |
 | The lab, after the concept sets | `exercises/unguided/C2_W04_D05_ch6_scoreboard_STUDENT.md` |
-| The week's explorer, Monday's page | `content/W04/D1/demos/C2_W04_D01_week_explorer_STUDENT.html`: the home screen at half one S2; scene F1 at S4 and S8; F2 at S24 and S50; F3 at S19, S46 and half two S3; F4, beyond the row, at fallback S11 |
+| The week's explorer, Monday's page | `content/W04/D1/demos/C2_W04_D01_week_explorer_STUDENT.html`: the home screen at half one S2 and S4; scene F1 at S8; F3 at S18, before S19, and at half two S3, after the second vote; F2 at S24, and at S57 after S56; F4, beyond the row, at fallback S11 |
 | The afternoon | `slides/C2_W04_D05_half2_STUDENT.pptx`; notebook 07; the staffing note set |
 | The interview room, in the lab | `extras/C2_W04_D05_interview_transcripts_STUDENT.md`; `trainer/C2_W04_D05_interview_scorecards_TRAINER.md` |
 | The Kahoot | `kahoot/C2_W04_D05_quiz_STUDENT.md` |
