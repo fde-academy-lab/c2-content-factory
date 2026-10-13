@@ -939,7 +939,7 @@ for ym in MONTHS:
          "L2 cohort sizes; the blend decomposition", f"{SIZES[ym]:,}")
 fact("cohort_mean_jan_jul", NORMAL, "members", "mean of the January to July cohort sizes", TICKET, "5,000")
 fact("aug_times_normal", SALE_TIMES, "times", "13,000 / 5,000", TICKET, "2.6")
-fact("aug_sale_members", SIZES["2026-08"] - AUG_ORGANIC, "members", "August members who joined in the sale week",
+fact("aug_sale_members", SIZES["2026-08"] - AUG_ORGANIC, "members", "August members who joined on the sale's discount, all in the sale week",
      "L4 selection", f"{SIZES['2026-08'] - AUG_ORGANIC:,}")
 fact("aug_organic_members", AUG_ORGANIC, "members", "August members who joined outside the sale", "L4 selection",
      f"{AUG_ORGANIC:,}")

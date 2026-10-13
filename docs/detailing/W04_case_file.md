@@ -506,7 +506,8 @@ reporting months June, July, August and September 2026: members two or more mont
 month who ordered in the reporting month, over all of them. Each signup cohort's own curve falls with age, and each successive
 cohort's month-one rate is lower than the one before: January 2026, 58 percent; April, 53; July, 49;
 August, 31. The August cohort was grown by a sale week on a discounted first month (8,027 of its
-13,000 members joined that week) and is 2.6 times the 5,000 a month of January to July. On Monday 14 September 2026 a new checkout flow
+13,000 members joined on the discount; the sale week of 17 to 23 August brought 9,108 in all) and is
+2.6 times the 5,000 a month of January to July. On Monday 14 September 2026 a new checkout flow
 shipped on Android; since then members' add-to-cart to order conversion on Android fell from 58 to 44
 percent, iOS stayed at 57, and non-members on Android stayed at 52 (targets).
 
