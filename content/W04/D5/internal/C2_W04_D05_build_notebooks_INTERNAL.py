@@ -339,8 +339,8 @@ for name, f in forecasts.items():
     print(f"{name}: {round(f, 1)}, miss {round(f - actual, 1):+}")
 fig, ax = plt.subplots()
 ax.bar(range(8), week.cups, color=["lavender"] * 7 + ["white"], edgecolor="slateblue")
-for (name, f), mark, at in zip(forecasts.items(), ["o", "D", "s"], [6.8, 7.0, 7.2]):
-    ax.plot(at, f, marker=mark, ls="", markersize=9, label=f"{name}: {round(f, 1)}")
+for k, ((name, f), mark) in enumerate(zip(forecasts.items(), ["o", "D", "s"])):
+    ax.plot(7 + (k - 1) / 5, f, marker=mark, ls="", markersize=9, label=f"{name}: {round(f, 1)}")   # side by side
 ax.set_xticks(range(8), week.weekday + " " + week.date.str[8:])
 ax.set_ylim(0, 140)
 ax.set_ylabel("cups sold")

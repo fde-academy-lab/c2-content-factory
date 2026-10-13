@@ -1,9 +1,9 @@
 # Can you run Friday's whole method on shops and series you have never seen?
 
-This set is sat in the TA-led practice lab, after the Kalpa notebook. Every shop, series and cost below is invented, so
-the method is all that carries over from the morning: read the shape, apply the rules, hide weeks and
-score them, judge a pitch, and set a plan's cushion from two costs. The problems climb from a reading
-to a plan.
+This set is sat in the TA-led practice lab, after the Kalpa notebook. Every shop, series and cost
+below is invented, so the method is all that carries over from the morning: read the shape, apply the
+rules, hide weeks and score them, judge a pitch, and price a miss in each direction. The problems
+climb from a reading to a decision, one or more for each of the day's five topics.
 
 **Who needs the answer.** You, before Saturday's paper and before an interviewer asks you to forecast
 something on a whiteboard.
@@ -15,7 +15,7 @@ something on a whiteboard.
 - What is the MAE of five misses?
 - Which question does a vendor's pitch need first?
 - In which order do the lines of the house bot's code run?
-- What share of weeks should a plan cover, given two costs?
+- Do two rules with the same miss cost the same?
 
 **What you post,** in this set's thread in the cohort channel: six letters in problem order, with no spaces, in this shape:
 
@@ -27,7 +27,8 @@ Post exactly this shape: xxxxxx
 
 ## Can you read a shape and apply a rule?
 
-The first two problems are the morning's chapter 1, on new numbers.
+The first two problems apply chapters 1 and 2, trend and seasonality and the three baselines, on new
+numbers.
 
 ### Q1. Which line reads the three invented series right?
 
@@ -35,9 +36,9 @@ The first two problems are the morning's chapter 1, on new numbers.
 
 | Week | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
 |---|---|---|---|---|---|---|---|---|
-| X | 20 | 22 | 24 | 26 | 28 | 30 | 32 | 34 |
-| Y | 20 | 35 | 20 | 20 | 20 | 35 | 20 | 20 |
-| Z | 20 | 23 | 18 | 21 | 22 | 19 | 21 | 20 |
+| X | 50 | 53 | 56 | 59 | 62 | 65 | 68 | 71 |
+| Y | 50 | 50 | 70 | 50 | 50 | 50 | 70 | 50 |
+| Z | 50 | 54 | 47 | 52 | 49 | 53 | 48 | 51 |
 
 Which line is right?
 
@@ -59,16 +60,16 @@ d) 58, this year's week 3, two weeks back
 
 ## Can you score a forecast honestly?
 
-The next two problems are the morning's chapter 2, on a printed table.
+The next two problems apply chapters 3 and 4, holding out and beating the baseline.
 
-### Q3. Five hidden weeks missed by 12, -8, 5, -15 and 6: what is the MAE?
+### Q3. Five hidden weeks missed by 9, -6, 14, -3 and -4: what is the MAE?
 
 *Level L2 · asked in every analytics screen.*
 
-a) 9.2
-b) 0.0
-c) 46.0
-d) 15.0
+a) 7.2
+b) 2.0
+c) 36.0
+d) 14.0
 
 ### Q4. A vendor says its model fits the last two years within 1 percent and asks to run the plan from next week: which question comes first?
 
@@ -79,7 +80,7 @@ b) How fast does it retrain each week on new data?
 c) Can it fit three years of history within 1 percent?
 d) On which hidden weeks did it beat a copy of last year?
 
-## Can you put the code in order and set a plan's cushion?
+## Can you put the code in order and price a miss?
 
 The last two problems join the code to the decision.
 
@@ -102,11 +103,11 @@ b) 2, 4, 5, 1, 3
 c) 4, 2, 1, 5, 3
 d) 2, 1, 4, 5, 3
 
-### Q6. An idle shift costs Rs 600 and a late shipment Rs 30, and a packer packs 120 a shift: what share of weeks should the plan cover?
+### Q6. Two rules each miss a week by 1,000 shipments, one always high and one always low; a spare shipment costs Rs 5 and a late one Rs 30: which line is right?
 
 *Level L5, a design call · asked in operations analytics screens.* The numbers are invented.
 
-a) 0.50
-b) 0.14
-c) 0.95
-d) 0.86
+a) They cost the same, since both miss by 1,000 a week
+b) The high rule costs more: Rs 30,000 a week against Rs 5,000
+c) The low rule costs more: Rs 30,000 a week against Rs 5,000
+d) Neither can be priced until both are scored in MAPE
