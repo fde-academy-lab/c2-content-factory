@@ -168,3 +168,46 @@ each went.
 | I21 | PTI's copy, republished by LatestLY on 30 May 2018, reads "nearly 27 lakh commuters ... daily in February this year"; the page answered a plain fetch on 12 October 2026. |
 | I28, in part | "[S] a staple asked everywhere" in the exercise index is the curriculum schema's own tag definition (docs/05_Curriculum_Map_Schema.md). |
 | I30, in part | Kahoot Q7 follows the spine's AI variant, where kept text is the outcome. |
+
+## Which of the concept-first rebuild's cold-read findings carry a reason in place of a fix?
+
+T numbers are the trainer's findings, G the fresh graduate's and I the interviewer's, all of 13 October
+2026, in the last section of `internal/C2_W04_D01_cold_reads_INTERNAL.md`, whose fix log marks each
+finding fixed, fixed in part or not fixed. Slide numbers are the rebuilt pack's. Each finding below is
+one the fix log marks in part or not fixed.
+
+| Finding | Why it carries a reason in place of a fix |
+|---|---|
+| T3 | The coverage gate reads every `## SECTION` opener as a chapter and needs the row's subtopic or the case's step in it, so the opening, the break and the close cannot carry one; S3's table and the line under it give their minutes, and the day sheet gives every slide's. |
+| T4 | S3 and S4 are the row's topics and their map, as acceptance line 1 sets; the row's Kalpa scenario runs in the lab by decision `concept-first-case-second`, which S3's note and the day sheet's agenda table say. |
+| T9 | Notebook 08 runs in the analyst's order, the totals and then the demand check, which is the ladder's L2; S68's note tells the trainer where the totals cell is, and its numbers are the ticket's, so they spoil nothing before S65. |
+| T10 | Notebook 03 carries no case cell (the two-examples rule, in the rebuild's decisions above), so the case's "Which number settled first?" lives in notebook 09, where the lead-and-lag set sends the room to check its calls; S28 shows the same weeks as a picture. |
+| T14 | The faculty brief is a sync block rendered from `data/programme/facts.yaml`, outside this folder; the handoff names no company, and the day sheet tells the trainer the faculty's choice stands. |
+| T17 | The brief keeps the Kalpa lab as merged, its lab note included; the day sheet schedules the concept sets' Q2 and Q3 after the lab note's four parts and sends them home if the lab runs out. |
+| T19 | The clinic's finance and marketing readers argue numbers other than their round 1 cards on purpose, so the room hears each attack from the other side; S4's note says so. |
+| T25 | The row's three targets moved to the lab with its Kalpa scenario by decision `concept-first-case-second`, and the lab's minutes are the lab note's, which the brief keeps; S7 and S8 run the same attack on three invented targets, and round 1 on the city team's three. |
+| T26 | In the trainer's time groups write the redesign's page with three guardrails, as the spine's round 3 sets; the row's "every learner" page is the lab's Kalpa set, which the day sheet's "Go as far as" now says. |
+| T27 | The row's solo-then-swap runs as round 3, groups attacked by the three roles, as the spine's war game sets; the row's "cut first" names a second unguided definition the pack does not have. |
+| T28 | The concept block gives each chapter its minutes from the spine's section 2.0, so drill 1 runs as the set's Q1 with two defences inside chapter 3, its Q2 in the lab, and in full in the clinic's section 15 when the block slips. |
+| T29 | Drill 2 runs as the lead-and-lag file's Q3 in the lab or the clinic's S8; the trainer's 240 minutes are full, as the day sheet's minutes table shows. |
+| T30 | The [F] questions are printed on the rules slides, with each answer in one breath in the day sheet; asking them aloud costs minutes the concept block does not have, and [D] is read in the transcript and scored in the clinic's section 16. |
+| T31 | The lab notebook names its tables (`kalpa_members`, `kalpa_app_reorders`); the Kahoot's eight items are the city's, as the spine's artefact row sets, and the Kalpa finding stays in the lab and Saturday's paper (decisions `w4-finding-once-found` and `plants-once-found`). |
+| T32 | Exponent's page now redirects to Aced and Interview Query could not be verified on 13 October 2026, so no STUDENT file carries a link the check could not confirm; the day sheet lists each with what the check found. |
+| G2 | The notes fences are the house's speaker notes, which the deck builder keeps off the slide; a STUDENT deck's notes name the TRAINER files the trainer runs from. |
+| G43 | "Active" is written down by the Kalpa set's Q2 in the lab, customers with a delivered order in the three months before the month; reorders per member is the lab notebook's number, and the plan's north star is the spine's. |
+| I1 | The north star is the spine's fixed definition (section 5, "The definition the redesign adopts"), which Tuesday defends; S80 says why trips lead and the wait guards beside them, and the candidate owns the number's weakness aloud. |
+| I2 | The priced rule, the Rs 300 floor paid only to weeks that clear the acceptance floor, is the merged pack's L5 redesign, and its saving of Rs 58 to 92.7 lakh feeds round 3 and Saturday; a per-trip bonus would change those numbers, a spine-level call for the requester. The spine's L3 fix reads "pay for completed peak trips with an acceptance guardrail", which the pack now reads as what the scheme is judged by. |
+| I3 | The case's tables show the trade-off the finding names: outer-zone waits fell from 6.6 to 5.95 minutes at about Rs 46,000 per extra trip, which the interview room prices. |
+| I5 | Effect size, power and margins belong to the tentative faculty block that designs the test (the day sheet's stop-before line); the deck names the unit and leaves its choice to the block. |
+| I6 | The driving school is the approved plan's example, kept number for number; its guardrail now sits beside the pass rate the school chased, and the calendar-year reading is part of the invented example. |
+| I7 | The concept chapter's rule follows the spine's section 2.0; rule 1 now asks that a leading number predict, and wickets in hand are read beside the rate with their harm named. |
+| I9 | Showing that a proxy moved with its goal on past launches needs history the day's tables do not hold; the leading rule's "history shows it predicts" carries the idea, and `drifted` is the chapter's hand count written in code. |
+| I13 | The seven lines are the spine's page, which Tuesday and the week's other days reuse; line 6 holds a margin, and the decision, its owner and its deadline sit in the ticket's ask. |
+| I14 | The interview line is the row's tagged question, word for word; the chapter teaches two kinds of gaming and names four common ways among many. |
+| I15 | The kirana is chapter 5's invented example of who starts the clock, and its numbers are toy ids the deck, notebook and sets share; the page reads the on-time share beside the confirmed share, which counts undelivered orders against the shop. |
+| I19 | The row carries four tagged interview questions and the pack may not invent more; S27 and S35 print the row's questions where they apply. |
+| I22 | The spine's definition names requests per online hour by zone as a leading input, and the city team acts on it within the week by moving drivers. |
+| I26 | The AI variant's outcome, suggestion text kept at the next commit, is the spine's L6, programme-written with no company figure; time to merge is read beside it. |
+| I27 | The variance of a ratio metric belongs to the test the tentative faculty block designs, and Monday's stop-before line keeps sample size out. |
+| I30 | S90's rule is priced on the merged data, where every week under half belongs to the idle tail; S89's note puts a minimum offer count, or a four-week window, into the test. |
+| I31 | The case file's list of what is not to be used names Goodhart's wording (`docs/detailing/W04_case_file.md`), so the pack teaches the idea without the name. |

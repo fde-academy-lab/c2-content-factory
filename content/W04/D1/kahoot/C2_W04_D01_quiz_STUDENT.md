@@ -22,7 +22,7 @@ seconds, and an item most of the room misses is the call to say again before the
 - Which pair gives a north star and a guardrail one job each?
 - Of five city numbers, which ones lead?
 - The idle tail's hours went to 2.1 times while its trips fell 12 percent; what happened?
-- Which four lines make a number computable?
+- Which four lines make a rate computable?
 - What is the proxy test, in one line?
 - Which is the city's trips per online hour, 1.71 or 1.58?
 - Which line of an AI coding assistant's one-page definition, rewritten, stops paying for text accepted, then deleted?
@@ -60,7 +60,7 @@ seconds, and an item most of the room misses is the call to say again before the
 
 ---
 
-## Q4. Which four lines make a number computable, before the guardrails make it safe to pay for?
+## Q4. Which four lines make a rate computable, before the guardrails make it safe to pay for?
 *Tests: Definitions: numerator, denominator, window, exclusions: the four lines come before what it does not reward.*
 
 - Numerator, denominator, target and the team that owns it

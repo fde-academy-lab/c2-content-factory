@@ -1365,3 +1365,139 @@ Hire-grade: Swiggy credited the AOV rise to a wider non-grocery selection and Ma
 **I31.** Place: half1 S10 and the S13 notes. As written: "any target bends behaviour toward itself"; notes "Do not quote a firing count or Goodhart". Why: interviewers listen for the standard names: Goodhart's law and Campbell's law, counter-metric, proxy (surrogate) validation, input versus output metric, metric tree, non-inferiority margin, switchback. The pack teaches several of these ideas but none of the names candidates are scored on. Hire-grade: "This is Goodhart's law: once a measure becomes a target it stops being a good measure, so I pair the target with counter-metrics."
 
 31 findings.
+
+### What did the fix pass change for the rebuild's reads?
+
+**Counts.** The trainer filed 32 findings, the fresh graduate 54 and the interviewer 31, 117 in all,
+and the trainer's table has no "not found" cell. A fresh agent then checked every finding read-only
+against the committed files: 70 were fixed, 37 fixed in part and 10 open, and it listed eight defects
+the pass itself had introduced. A second round closed what the folder allowed. The final count is 84
+fixed, 23 fixed in part and 10 left as they are; each of the 33 has its reason in the sources list's
+last table (`internal/C2_W04_D01_day_sources_INTERNAL.md`). The eight introduced defects are fixed:
+the redesign solution sends the saving to notebook 10, Kahoot's question list matches Q6 and Q7, the
+gaming solution keeps one VA base, the leading-and-lagging solution says the plan proposes its north
+star, the notes name the test's unit, the cheat sheet's VA node reads "Who sets the start?", the day
+sheet no longer claims the Kalpa set attacks the row's three targets, and notebook 09 says "few
+riders". The render check found two more, both fixed or reported: S20's stat notes ran to two lines
+under the card rule and now fit one, and the morning deck's footer prints nine chapter names in a
+strip that holds about eight (reported, since the strip is drawn by `scripts/deck_layout.py`).
+
+| Id | Outcome | What changed, or where the reason is |
+|---|---|---|
+| T1 | Fixed | S3 splits the case into chapters 7 to 9 and 10 and 11 with minutes and notebooks, and names the opening, the break, the close and the faculty session |
+| T2 | Fixed | S4, the day sheet and the board work say which case chapter applies which topic, draw chapter 2 into chapter 6 and drop the Kalpa colour; the board draws the boxes unlit |
+| T3 | In part | SECTION 9 names its resistant lines, and S3 carries the opening, the break and the close; reason in the sources list |
+| T4 | In part | S3's note sends the row's Kalpa scenario to the lab, and the day sheet's agenda table places S7, S27 and S58; reason in the sources list |
+| T5 | Fixed | Each concept set's Q1 runs inside its rules slide's minute and a half, with the key and one reason said |
+| T6 | Fixed | The day sheet's "When does each notebook run?" names the cells each slide runs |
+| T7 | Fixed | The board work follows the deck's order, writes the question and the headline at S5 and grows the case board at S57 |
+| T8 | Fixed | Round 2 is named at S59, round 3 is the last round, and the stall move waits for S60 |
+| T9 | Not fixed | Reason in the sources list |
+| T10 | In part | Notebook 09 stops at the top-up split and notebook 10 prices the saving; reason for "Which number settled first?" in the sources list |
+| T11 | Fixed | S96's note says the trap item reuses chapter 8's idle-tail numbers |
+| T12 | Fixed | The finance card attacks trips per hour, the number S87 answers |
+| T13 | Fixed | S98 counts an accepted trip the driver later cancels, and its transition names the tentative faculty block or the clinic |
+| T14 | Not fixed | Reason in the sources list |
+| T15 | Fixed | The cut list keeps Delhi Metro, which S66, S73 and S84 recall |
+| T16 | Fixed | S21 defines an offer and S28 glosses bookings per online hour before the break |
+| T17 | In part | The day sheet schedules the concept sets' Q2 and Q3 after the lab note's four parts; reason in the sources list |
+| T18 | Fixed | The clinic's slide minutes add to 120 |
+| T19 | Not fixed | Reason in the sources list |
+| T20 | Fixed | The clinic's S6 prints the handout's Q1 in its order with its letters, so a room that sat it there skips it in the lab |
+| T21 | Fixed | Round 3's defence reads 6.5 minutes on S86 and the board |
+| T22 | Fixed | Notebook 07's first cell renders as markdown |
+| T23 | Fixed | All three decks are rebuilt after their markdown |
+| T24 | Fixed | S3's notebook column uses the files' numbers, and S27 carries the row's [F] question as the row words it |
+| T25 | Not fixed | The day sheet now says no item attacks the row's three targets; reason in the sources list |
+| T26 | In part | The day sheet's "Go as far as" says what groups write in the trainer's time and what every learner writes in the lab; reason in the sources list |
+| T27 | In part | The never-cut list keeps the gaming demonstration; reason in the sources list |
+| T28 | In part | S27 runs a minute and a half with two defences, and the lab takes Q2; reason in the sources list |
+| T29 | Not fixed | Reason in the sources list |
+| T30 | In part | S90 names the [D] question and the day sheet carries every answer in one breath; reason in the sources list |
+| T31 | In part | The day sheet forbids the row's 4 percent and keeps Kalpa items out of Monday's Kahoot; reason in the sources list |
+| T32 | In part | The day sheet lists the row's references with what each check found; reason in the sources list |
+| G1 | Fixed | S1's timeline names Retail-Plus as Kalpa's paid membership tier, and its note names Meera Raghavan, Kalpa Retail's CEO |
+| G2 | In part | S93's note sends pairs to the seven checks printed in the transcript; reason in the sources list |
+| G3 | Fixed | As T24 |
+| G4 | Fixed | S4, the cheat sheet and the notes' map show the case in the known colour |
+| G5 | Fixed | S5 defines enrolled, the peak window and the gap |
+| G6 | Fixed | The kitchen cooks for each token as it is handed out, so day 6's waste and the Rs 7,500 by day 10 follow |
+| G7 | Fixed | The code-glimpse titles count their own lines |
+| G8 | Fixed | S12 explains the tags, and the notebooks' tag line glosses GCC |
+| G9 | Fixed | S13, the notes and gaming Q2 gloss cross-selling |
+| G10 | Fixed | S13 names who levied each part of the USD 185 million |
+| G11 | Fixed | The guardrail sits beside the number being chased, the pass rate, in every file |
+| G12 | Fixed | "Growth target", with an example, replaces "growth count" in the deck, the notebooks, the notes, the sheet, S86's note and the self-check |
+| G13 | Fixed | S20 dates the quarter in months and spells out GOV and NOV |
+| G14 | Fixed | S21 defines an offer at first use |
+| G15 | Fixed | S25 names the harm wickets in hand guard against |
+| G16 | Fixed | S28 says acceptance settled first and prints the before values |
+| G17 | Fixed | Five clerks in every file |
+| G18 | Fixed | The medical row is labelled a numerator change |
+| G19 | Fixed | Learner files say the course outline; the trainer's notes keep the curriculum row |
+| G20 | Fixed | S36 and S53 say a count has no denominator |
+| G21 | Fixed | S40 says both clocks stop at the done press and the page times only confirmed orders |
+| G22 | Fixed | S42 says how the desired date entered the wait |
+| G23 | Fixed | Complaints catch an OTP asked for by phone before the goods arrive |
+| G24 | Fixed | S54 says what the two idle drivers did |
+| G25 | Fixed | S55 explains trip earnings and re-offered requests |
+| G26 | Fixed | S56 says the budget's guardrail sits on the page |
+| G27 | Fixed | S58 tags each question with its chapter |
+| G28 | Fixed | S60 and S72 give the tail's 39 hours and place E and F |
+| G29 | Fixed | S70 prints the before window's average of rates |
+| G30 | Fixed | S54 and S77 say the wait fell only from 4.8 to 4.6 minutes |
+| G31 | Fixed | S80 says why trips lead, and S81 why the weeks before count the same drivers |
+| G32 | Fixed | S80 says the city starts logging drivers online by peak hour |
+| G33 | Fixed | "The clock's start" names when a wait begins, and "window" keeps chapter 4's meaning |
+| G34 | Fixed | S83, its note and S87 say the season stays partly open |
+| G35 | Fixed | S58 names round 2 |
+| G36 | Fixed | Notebook 02 draws one labelled row per instructor |
+| G37 | Fixed | Notebook 04's labels and the 75 percent line no longer collide |
+| G38 | Fixed | No typed dispatch falls before its bill, and a contract line checks it |
+| G39 | Fixed | Notebook 06 and the artifact set call orders billed up 20 percent a growth target and show the count already on the page |
+| G40 | Fixed | Notebook 06's your-turn cell hints at the exclusions and says the gaming note's keys repeat a guardrail's words |
+| G41 | Fixed | As T22 |
+| G42 | Fixed | S90, the notes and the sheet say the weeks under half are exactly the idle tail's |
+| G43 | In part | The set and its solution say the plan proposes its north star; reason in the sources list |
+| G44 | Fixed | The set's Q3 matches the shop's weekly page and its one boy |
+| G45 | Fixed | The index states the answer shape and what the clinic is |
+| G46 | Fixed | The notes link the self-check |
+| G47 | Fixed | The scheme is judged by trips and the Rs 300 floor is paid under the acceptance floor in every file, S84's title, S98's strip and S45's node included |
+| G48 | Fixed | The pre-read defines AI-free |
+| G49 | Fixed | S85 gives finance's stake |
+| G50 | Fixed | S94 quotes 0.43 and 0.67 under the adopted rule |
+| G51 | Fixed | S92 defines a test's unit, and the notes and the transcript follow it |
+| G52 | Fixed | S93 shows the Rs 85.7 lakh and about 185 trips behind Rs 46,000 |
+| G53 | Fixed | S95 explains a seat, a revert and a security finding |
+| G54 | Fixed | S98's strip matches the signed page |
+| I1 | Not fixed | Reason in the sources list |
+| I2 | In part | "Gives every trip its value back" is gone, and the scheme is judged by trips; reason for the priced rule in the sources list |
+| I3 | In part | Every file says riders were served barely better, the wait falling from 4.8 to 4.6 minutes; reason in the sources list |
+| I4 | Fixed | The cost is also given net of the 1.8 percent rise in requests: about 2,565 trips, near Rs 7,400 each |
+| I5 | In part | The test's unit is named, and the transcript switches the whole city window by window; reason in the sources list |
+| I6 | In part | A guardrail is chosen by the harm or gaming it catches and holds a margin; reason in the sources list |
+| I7 | In part | A leading number must predict, S23 gives the runs before over 10, and S28 says both fell at the launch; reason in the sources list |
+| I8 | Fixed | The page, the guided solution and the gaming note read the cancel share beside guardrail 1 |
+| I9 | In part | The proxy test reads "got no better" in every file, and no file claims a number that cannot rise; reason in the sources list |
+| I10 | Fixed | S33, notebook 04, the notes, the four-lines set and Kahoot Q4 say what a count needs in place of a denominator, and the guided solution says platform frequency's base is set by ordering, its count printed beside it |
+| I11 | Fixed | The four-lines set's Q1 pairs 80.0 with 84.0, and the medical row is a numerator change |
+| I12 | Fixed | Five clerks |
+| I13 | In part | S50's note quotes CMS's building blocks as they stand, and line 6 holds a margin; reason in the sources list |
+| I14 | In part | Gaming has two kinds, the set takes four common ways, and S44's clock is one the person timed cannot reset; reason in the sources list |
+| I15 | Not fixed | Reason in the sources list |
+| I16 | Fixed | Every file says staff were judged on products sold while investors read the cross-sell number |
+| I17 | Fixed | Every file says 30 of the 40 schedulers and supervisors asked |
+| I18 | Fixed | Every file credits Swiggy's own causes and the flat contribution |
+| I19 | Not fixed | Reason in the sources list |
+| I20 | Fixed | The north-star set's option b no longer catches the move |
+| I21 | Fixed | The artifact set's option a is a growth target |
+| I22 | In part | Every leading-and-lagging item reads one week; reason for requests per online hour in the sources list |
+| I23 | Fixed | Kahoot Q7 keys the numerator's receipt condition |
+| I24 | Fixed | The north-star solution says top-up per online hour climbs to the cap and stops there |
+| I25 | Fixed | Doubts are routed to one teacher, and the solution reads unconfirmed and repeated doubts beside the rate |
+| I26 | Not fixed | Reason in the sources list |
+| I27 | In part | The city's rate is the ratio of sums and the mean answers the typical driver-week; reason in the sources list |
+| I28 | Fixed | Every file says the two Delhi Metro figures differ in window and that DMRC stopped sharing the old one |
+| I29 | Fixed | The Uber case is labelled illustrative wherever it sits beside public cases |
+| I30 | In part | The artifact solution prints the count beside a quiet week's rate, and S89 puts a minimum offer count into the test; reason in the sources list |
+| I31 | Not fixed | Reason in the sources list |
