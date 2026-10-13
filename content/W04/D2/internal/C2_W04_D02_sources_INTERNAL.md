@@ -87,9 +87,14 @@ pass credited the per-driver-week rise to the idle tail, whose own weeks earned 
 rise sits with the other 880, who drove about 4 percent more hours at an unchanged Rs 313.5 an hour.
 Every item it left open is fixed, as the cold reads file records item by item. Ramesh's page now
 carries the added hours' Rs 350 (118 words, 7 numbers); the saving's rate can move it within the range
-or beyond it, and its rule pays the drivers who already accept what the floor paid them; the zone stop
-line reads six weeks against six weeks; the drill's table carries the bus strike and the 2023 line
-rule from the sources recorded on 12 October 2026.
+or beyond it, and its rule pays the drivers who already accept what the floor paid them; the drill's
+table carries the bus strike and the 2023 line rule from the sources recorded on 12 October 2026.
+Two fresh re-scores of transcript 1 followed: the first held scope at 1 and asked for a shorter answer,
+a margin on the stop rule and the before-launch control in the monsoon answer; the second scored 2 on
+each of S90's first three criteria and asked for the rate to be priced. The answer now fixes the
+rate at what keeps the drivers who already accept whole, about Rs 38 a completed trip, at which the
+whole scheme costs at most about Rs 87 lakh over six weeks, and stops the test early only on a zone's
+median wait more than half a minute above its last six weeks' level, two weeks running.
 
 ## Which public sources were fetched, and when?
 

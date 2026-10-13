@@ -287,6 +287,18 @@ numbers:
   unit: ''
   how: Monday's driver_weeks split by joined_month, after the launch
   used_by: data/C2_W04_D02_driver_groups_STUDENT.csv; notebook cell 8
+- id: per_trip_rate_keep_whole_rs
+  value: 37.5
+  shown: about Rs 38 a completed trip
+  unit: ''
+  how: '7,410,000 / (193,800 + 3,660): the top-up the drivers outside the idle tail drew, over their trips'
+  used_by: extras transcript 1; scorecards
+- id: per_trip_cost_cap_rs
+  value: 8664889
+  shown: about Rs 87 lakh
+  unit: ''
+  how: '37.5 x 230,900: the six weeks'' cost if every completed trip qualified at that rate'
+  used_by: scorecards; extras transcript 1 follow-up
 - id: others_trips_change_pct
   value: 4.1
   shown: up 4 percent

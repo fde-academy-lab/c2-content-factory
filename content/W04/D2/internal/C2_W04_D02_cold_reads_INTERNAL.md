@@ -1121,3 +1121,38 @@ I didn't edit, create or delete any file and ran no git commands. All figures we
 | The stop rule fires on noise | Fixed: the test stops if the test half completes fewer trips per driver than the other half, or if any zone's six-week median wait runs more than half a minute above its six weeks before the launch; the scorecard, follow-up 2, the model page, the studio solution and notebook 10 carry the same rule |
 | Follow-up 3 skips the control | Fixed: it says the 880 who kept accepting held 1.90 trips an hour while the 180 fell to 0.80, both at 1.90 before the launch, and that the 180 were picked by how they did after it |
 | The 140 joiners are also outside the idle tail | Fixed: the files say "the other 880 drivers there before the launch" |
+
+---
+
+## Transcript 1, re-scored a second time on 13 October 2026
+
+A fresh agent scored transcript 1 again after the first re-score's fixes and recomputed every number
+it speaks. It wrote findings only. Its report is reproduced as written. It scores 2 on each of S90's
+first three criteria.
+
+**1. Scores**
+- Clarified the scope: **2**. Decision, audience, slot and window pinned; the answer opens on the decision.
+- Denominator or unit, and window: **2**. Rs of fares per peak online hour, six weeks from 31 August against six before.
+- Saw the trap: **2**. Names the 0.8 percent per-driver-week rise and checks it right: the 880 worked 4.1 percent more hours at an unchanged Rs 313.5.
+
+**2. Numbers**
+All recompute: Rs 313.5 to 260.4, Rs 1.9 crore, 4.8 to 4.6, Rs 1.159 crore, 74 percent outer, outer 6.6 to 5.95 (the largest zone fall), 0.77 percent, Rs 82.3, 1.56, 0.80. Two slips: Rs 58 to 92.7 lakh prices a different rule (below), and follow-up 1 mislabels Monday's north star, which counts only drivers online at peak.
+
+**3. Rejections**
+- The saving is Monday's arithmetic for withholding the hourly floor from low-acceptance weeks, everyone else's Rs 74 lakh unchanged. Per-trip pay re-prices all Rs 1.9 crore at a rate the answer never states, and "within that range or beyond it" empties Rs 92.7 lakh of meaning.
+- The trips-per-driver stop rule has no margin, so a change that does nothing trips it about half the time. Idle drivers who log off hand their riders to the other half, so the rule fires when the change works.
+- Read over all six weeks against the pre-launch level, the wait guardrail cannot fire before the test ends and lets each outer zone rise over a minute from today's 6.
+- Follow-up 2's weekly switchback cannot show drivers quitting for good, since the guarantee returns next week.
+
+Outside the brief: the trainer scorecard still credits "Rs 2,836 of top-up per extra trip", which the answer no longer says. No repository file was touched; my check scripts sit in the scratchpad.
+
+### What became of each item
+
+| Re-score item | What became of it |
+|---|---|
+| The saving prices a different rule, and the rate is never stated | Fixed: the answer says Monday's arithmetic keeps the other drivers' Rs 74 lakh as it is, that per-trip pay re-prices all of it, and fixes the rate at what keeps those drivers whole, about Rs 38 a completed trip (their Rs 74.1 lakh over their trips, new facts id `per_trip_rate_keep_whole_rs`); the scorecard's follow-up adds that at that rate the whole scheme costs at most about Rs 87 lakh over six weeks (`per_trip_cost_cap_rs`), so the saving would sit at or above the top of Monday's range |
+| Follow-up 1's north star | Fixed: completed peak trips per enrolled driver online at peak, per week, as Monday's notes define it |
+| The trips-per-driver stop rule | Fixed: it is no longer a stop rule; the decision waits for the six weeks, on completed peak trips per online driver-week in the two halves, with the bias between the halves named in follow-up 2 |
+| The wait guardrail cannot fire before the end, and its baseline leaves slack | Fixed: the test stops early if any zone's median wait runs more than half a minute above its level in the last six weeks for two weeks running, in the answer, follow-up 2, the scorecard, the model page, the studio solution and notebook 10 |
+| The switchback cannot show drivers quitting for good | Fixed: follow-up 2 says so and keeps the split by driver as the read on supply |
+| The scorecard's Rs 2,836 | Fixed: the unit row credits the rate the answer now prices |

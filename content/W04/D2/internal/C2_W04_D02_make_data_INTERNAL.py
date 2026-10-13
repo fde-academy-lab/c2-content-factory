@@ -421,6 +421,18 @@ for mid, shown in [("drivers_others", "880 drivers"), ("others_hours_before", "9
                    ("others_trips_after", "193,800 trips"), ("others_tph_before", "1.90"),
                    ("others_tph_after", "1.90")]:
     reuse(mid, shown)
+# Transcript 1's per-trip rate: the rate that pays the drivers who already accept what the floor paid
+# them (Monday's Rs 74.1 lakh over their completed trips), and what the whole scheme would cost at it
+# if every completed trip of the after window qualified. The candidate's own proposal, priced.
+keep_whole_rate = M["topup_high_acceptance_rs"] / (oa["trips"] + join_a["trips"])
+add("per_trip_rate_keep_whole_rs", round(keep_whole_rate, 1), "about Rs 38 a completed trip",
+    "7,410,000 / (193,800 + 3,660): the top-up the drivers outside the idle tail drew, over their trips",
+    "extras transcript 1; scorecards")
+add("per_trip_cost_cap_rs", round(keep_whole_rate * M["trips_after"]), "about Rs 87 lakh",
+    "37.5 x 230,900: the six weeks' cost if every completed trip qualified at that rate",
+    "scorecards; extras transcript 1 follow-up")
+check("at the keep-whole rate the scheme costs at most about Rs 87 lakh, under Monday's Rs 1.9 crore",
+      round(keep_whole_rate * M["trips_after"] / 1e5) == 87 and keep_whole_rate * M["trips_after"] < M["topup_after_rs"])
 add("others_trips_change_pct", round((oa["trips"] / ob["trips"] - 1) * 100, 1), "up 4 percent",
     "193,800 / 186,200 - 1, the other 880 drivers", "role cards; studio solution")
 add("idle_tph_after", round(M["idle_trips_after"] / M["idle_hours_after"], 1), "0.8 trips an hour",

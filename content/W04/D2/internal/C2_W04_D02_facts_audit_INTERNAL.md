@@ -2,7 +2,7 @@
 
 Written by C2_W04_D02_facts_audit_INTERNAL.py from the STUDENT files and C2_W04_D02_facts_INTERNAL.yaml. A number matches when it equals a value in the facts file at the precision printed, read as itself, a percent, a lakh, a crore, a million or a billion. Structural numbers (slide, level, item, chapter, minutes, dates, years) and the speaker notes are left out.
 
-Numbers traced: 2533. Numbers with no home: 0.
+Numbers traced: 2535. Numbers with no home: 0.
 
 | Number | File | Line | Facts id |
 |---|---|---|---|
@@ -650,6 +650,8 @@ Numbers traced: 2533. Numbers with no home: 0.
 | 6.6 | C2_W04_D02_interview_room_STUDENT.md | 44 | monday_ids_reused.outer_wait_before.value |
 | 58 lakh | C2_W04_D02_interview_room_STUDENT.md | 44 | numbers.saving_low_lakh.value |
 | 92.7 lakh | C2_W04_D02_interview_room_STUDENT.md | 44 | numbers.saving_high_lakh.value |
+| 74 lakh | C2_W04_D02_interview_room_STUDENT.md | 44 | numbers.twelve_hours_after.value |
+| 38 | C2_W04_D02_interview_room_STUDENT.md | 44 | numbers.per_trip_rate_keep_whole_rs.value |
 | 0.8 percent | C2_W04_D02_interview_room_STUDENT.md | 44 | numbers.full_rs_per_driver_week_change_pct.value |
 | 4 percent | C2_W04_D02_interview_room_STUDENT.md | 44 | numbers.hours_per_driver_week_extra.value |
 | 17 percent | C2_W04_D02_interview_room_STUDENT.md | 44 | numbers.full_rs_per_hour_change_pct.value |

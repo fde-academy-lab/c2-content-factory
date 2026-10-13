@@ -2538,9 +2538,8 @@ recommend_hire = [("decision", "you are deciding whether to keep, end or change 
                   ("caveat", "the monsoon ended in the same weeks, and last year's weeks are missing"),
                   ("action", "test it on half the drivers for six weeks at a rate fixed first; it saves Rs 58 lakh "
                              "to Rs 92.7 lakh over six weeks across the enrolled drivers; you sign"),
-                  ("change my mind", "the test half completing fewer trips per driver than the other half, or any "
-                                     "zone's six-week median wait more than half a minute above its level before "
-                                     "the launch, stops the test")]
+                  ("change my mind", "any zone's median wait more than half a minute above its level in the last "
+                                     "six weeks, for two weeks running, stops the test early")]
 recommend_weak = [("method", "so I looked at the dashboard"), ("evidence", "hours up, trips up, acceptance down"),
                   ("evidence", "bookings per driver-week is actually up"), ("action", "maybe pay per trip")]
 estimate_hire = [("clarify", "one moment of the weekday evening peak, one product, a median wait under five minutes"),
