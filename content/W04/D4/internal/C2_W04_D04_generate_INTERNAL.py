@@ -1771,23 +1771,23 @@ kalpa = {
 plants = [
     {"id": f"kalpa_blend_{NAMES[m].lower()}", "value": r4(K_BLEND[m][0]),
      "how": f"members who joined before {NAMES[m]} with an app session in it, {K_BLEND[m][2]} of {K_BLEND[m][1]}",
-     "found_in": "notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell"} for m in KMONTHS] + [
+     "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell"} for m in KMONTHS] + [
     {"id": "kalpa_every_cohort_falls", "value": True, "how": "each cohort's active share, July to September",
-     "found_in": "notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell"},
+     "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell"},
     {"id": "kalpa_aug_m1", "value": r4(m1_k["2026-08"][0] / m1_k["2026-08"][1]),
      "how": f"August members active in September, {m1_k['2026-08'][0]} of {m1_k['2026-08'][1]}, the lowest month one",
-     "found_in": "notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell"},
+     "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell"},
     {"id": "kalpa_cart_to_checkout_comparison", "value": r4(K_RATE["comparison"]),
      "how": "checkout sessions over add_to_cart sessions, 20 August to 9 September",
-     "found_in": "notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the second your-turn cell"},
+     "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the second your-turn cell"},
     {"id": "kalpa_cart_to_checkout_window", "value": r4(K_RATE["window"]),
-     "how": "the same, 10 to 30 September", "found_in": "notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the second your-turn cell"},
+     "how": "the same, 10 to 30 September", "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the second your-turn cell"},
     {"id": "kalpa_skip_search", "value": r4(skip), "how": "sessions with no search over all sessions",
-     "found_in": "notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell"},
+     "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell"},
     {"id": "kalpa_checkout_per_session_sep", "value": r4(k_per_sess), "how": "September sessions with a checkout",
-     "found_in": "notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell"},
+     "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell"},
     {"id": "kalpa_checkout_per_member_sep", "value": r4(k_per_member), "how": "September members with a checkout",
-     "found_in": "notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell"},
+     "found_in": "notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell"},
 ]
 public = [
     {"id": "simpson_1951", "source": "the paper's Crossref record; Wikipedia, Edward H. Simpson, for the name's date",

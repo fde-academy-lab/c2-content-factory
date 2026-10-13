@@ -2,7 +2,7 @@
 
 Every number in the day's STUDENT prose (deck slides, notebook markdown, exercise, note, sheet and pre-read files), traced to its home in `C2_W04_D04_facts_INTERNAL.yaml`: a `numbers` id, a toy, a twelve-row count, a public fact with its R2 id, a number copied from another day, or a calendar date the ticket fixes. Speaker notes, code and code output are left out: notes are the trainer's words and code prints what it computes from the data. Written by C2_W04_D04_facts_audit_INTERNAL.py.
 
-Numbers traced: 3376. Numbers with no home: 0.
+Numbers traced: 3460. Numbers with no home: 0.
 
 | Number | File | Line | Facts id |
 |---|---|---|---|
@@ -1904,26 +1904,110 @@ Numbers traced: 3376. Numbers with no home: 0.
 | 3 | notebooks/C2_W04_D04_08_fix_first_evidence_STUDENT.ipynb | cell 13 line 6 | aug_times_normal, everyone_fall_from_august_cohort_points, toy_weaned and more |
 | 4 | notebooks/C2_W04_D04_08_fix_first_evidence_STUDENT.ipynb | cell 13 line 8 | lost_value_per_week_low_rs, everyone_fall_aug_to_sep_points, weekly_orders_change_nonmember_android and more |
 | 5 | notebooks/C2_W04_D04_08_fix_first_evidence_STUDENT.ipynb | cell 13 line 9 | toy_weaned, toy_kahoot_blend, toy_gym_roster and more |
-| 5 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 6 | toy_weaned, toy_kahoot_blend, toy_gym_roster and more |
-| 9 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 6 | kalpa.window_at_comparison_rate, kalpa_cart_to_checkout_comparison, calendar.kalpa_windows |
-| 120 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 12 | orders_per_active_android_sep, toy_kaapi_funnel, toy_dabba_club and more |
-| 2026 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 16 | toy_gym_roster, friday_weeks, friday_window and more |
-| 20 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 26 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
-| 9 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 26 | kalpa.window_at_comparison_rate, kalpa_cart_to_checkout_comparison, calendar.kalpa_windows |
-| 10 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 27 | toy_two_batches, toy_funnel, toy_gym_roster and more |
-| 30 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 27 | weekly_cohort_2026-08-03_w2, toy_weaned, toy_gym_roster and more |
-| 1 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 36 | m1_jan, m1_feb, m1_mar and more |
-| 2 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 37 | noise_points_nonmember_android, toy_gym_roster, toy_gym_dashboard and more |
-| 3 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 38 | aug_times_normal, everyone_fall_from_august_cohort_points, toy_weaned and more |
-| 4 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 39 | lost_value_per_week_low_rs, everyone_fall_aug_to_sep_points, weekly_orders_change_nonmember_android and more |
-| 12 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 4 line 8 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
-| 20 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 6 line 3 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
-| 20 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 6 line 4 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
-| 9 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 6 line 4 | kalpa.window_at_comparison_rate, kalpa_cart_to_checkout_comparison, calendar.kalpa_windows |
-| 10 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 6 line 4 | toy_two_batches, toy_funnel, toy_gym_roster and more |
-| 30 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 6 line 4 | weekly_cohort_2026-08-03_w2, toy_weaned, toy_gym_roster and more |
-| 2 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 10 line 18 | noise_points_nonmember_android, toy_gym_roster, toy_gym_dashboard and more |
-| 4 | notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 10 line 18 | lost_value_per_week_low_rs, everyone_fall_aug_to_sep_points, weekly_orders_change_nonmember_android and more |
+| 38 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 5 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 13,000 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 6 | cohort_size_aug, aug_cohort_outside_dashboard |
+| 8,027 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 6 | aug_sale_members |
+| 20 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 6 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
+| 49 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 7 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 55 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 8 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 72.5 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 8 | android_members_checkout_to_order_before |
+| 19 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 17 | jan_drop_m1_to_m2_points, calendar.zomato_letter, calendar.kalpa_windows |
+| 2023 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 17 | M6, calendar.zomato_letter |
+| 12 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 17 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 2026 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 17 | toy_gym_roster, friday_weeks, friday_window and more |
+| 38 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 19 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 2026 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 19 | toy_gym_roster, friday_weeks, friday_window and more |
+| 58 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 22 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 53 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 22 | m1_apr, weekly_cohort_2026-08-17_w1, toy_gym_roster |
+| 49 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 22 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 13,000 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 23 | cohort_size_aug, aug_cohort_outside_dashboard |
+| 2.6 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 23 | aug_times_normal |
+| 5,000 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 23 | cohort_mean_jan_jul, toy_kaapi_funnel |
+| 14 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 24 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
+| 2026 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 24 | toy_gym_roster, friday_weeks, friday_window and more |
+| 58 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 25 | m1_jan, atc_to_order_member_android_before, android_members_week_2026-07-27 and more |
+| 44 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 25 | atc_to_order_member_android_after, android_members_week_2026-09-28, android_member_week_2026-09-28 and more |
+| 57 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 26 | atc_to_order_member_ios_before, kalpa.lab_hand_counts, twelve_rows.everyone_Jul |
+| 56 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 26 | m1_feb, atc_to_order_member_ios_after, shift_21_sep_before and more |
+| 52 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 26 | m1_may, atc_to_order_nonmember_android_before, toy_blend and more |
+| 1 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 37 | m1_jan, m1_feb, m1_mar and more |
+| 2 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 38 | noise_points_nonmember_android, toy_gym_roster, toy_gym_dashboard and more |
+| 3 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 39 | aug_times_normal, everyone_fall_from_august_cohort_points, toy_weaned and more |
+| 4 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 40 | lost_value_per_week_low_rs, everyone_fall_aug_to_sep_points, weekly_orders_change_nonmember_android and more |
+| 5 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 0 line 41 | toy_weaned, toy_kahoot_blend, toy_gym_roster and more |
+| 8,027 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 2 line 7 | aug_sale_members |
+| 14 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 2 line 13 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
+| 80 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 5 line 1 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 72.5 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 5 line 2 | android_members_checkout_to_order_before |
+| 55 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 5 line 2 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 72.5 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 5 line 3 | android_members_checkout_to_order_before |
+| 14 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 5 line 3 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
+| 71 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 5 line 4 | checkout_to_order_member_ios_before, android_share_cohort_high, toy_gym_roster and more |
+| 70 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 5 line 4 | checkout_to_order_member_ios_after, held_checkout_to_order_android_before, android_share_cohort_low and more |
+| 65 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 5 line 4 | checkout_to_order_nonmember_android_before |
+| 64 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 5 line 4 | sep_step_session_checkout_start_to_order_placed, checkout_to_order_nonmember_android_after, kalpa.cart_to_checkout and more |
+| 1,317 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 5 line 11 | lost_orders_per_week |
+| 6.6 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 5 line 11 | lost_value_per_week_high_rs |
+| 300 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 5 line 15 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
+| 500 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 5 line 15 | order_value_high_rs, toy_blend, toy_notes_blend and more |
+| 1,317 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 7 line 1 | lost_orders_per_week |
+| 18 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 7 line 3 | weekly_orders_change_member_android, friday_forecast_gap_points |
+| 7 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 7 line 3 | weekly_cohort_2026-08-17_w3, weekly_orders_change_member_ios, toy_weaned and more |
+| 4 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 7 line 3 | lost_value_per_week_low_rs, everyone_fall_aug_to_sep_points, weekly_orders_change_nonmember_android and more |
+| 1,266 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 7 line 4 | lost_orders_week_vs_ios |
+| 1,133 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 7 line 4 | lost_orders_week_vs_nonmember_android |
+| 5,064 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 7 line 4 | android_member_orders_week_before |
+| 1,133 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 7 line 5 | lost_orders_week_vs_nonmember_android |
+| 1,317 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 7 line 5 | lost_orders_per_week |
+| 3.4 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 7 line 6 | lost_value_per_week_floor_rs |
+| 6.6 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 7 line 6 | lost_value_per_week_high_rs |
+| 80 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 7 line 10 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 36.5 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 9 line 1 | retry_within_day_android_before |
+| 35.1 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 9 line 2 | retry_within_day_android_after |
+| 1,921 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 9 line 2 | failed_checkouts_week_android_before |
+| 3,386 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 9 line 3 | failed_checkouts_week_android_after |
+| 1,189 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 9 line 3 | recovered_within_day_week_android_after |
+| 701 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 9 line 3 | recovered_within_day_week_android_before |
+| 1 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 1 | m1_jan, m1_feb, m1_mar and more |
+| 14 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 2 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
+| 72.5 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 2 | android_members_checkout_to_order_before |
+| 55 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 2 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 20 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 3 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
+| 49 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 3 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 2 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 3 | noise_points_nonmember_android, toy_gym_roster, toy_gym_dashboard and more |
+| 1,317 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 4 | lost_orders_per_week |
+| 1,133 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 4 | lost_orders_week_vs_nonmember_android |
+| 1,266 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 4 | lost_orders_week_vs_ios |
+| 3.4 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 4 | lost_value_per_week_floor_rs |
+| 6.6 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 4 | lost_value_per_week_high_rs |
+| 300 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 5 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
+| 500 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 5 | order_value_high_rs, toy_blend, toy_notes_blend and more |
+| 3 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 5 | aug_times_normal, everyone_fall_from_august_cohort_points, toy_weaned and more |
+| 80 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 6 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 4 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 6 | lost_value_per_week_low_rs, everyone_fall_aug_to_sep_points, weekly_orders_change_nonmember_android and more |
+| 5 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 7 | toy_weaned, toy_kahoot_blend, toy_gym_roster and more |
+| 0.23 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 8 | aug_sale_orders_per_member_m1, toy_kaapi_funnel |
+| 0.61 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb | cell 13 line 8 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 |
+| 5 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 6 | toy_weaned, toy_kahoot_blend, toy_gym_roster and more |
+| 9 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 6 | kalpa.window_at_comparison_rate, kalpa_cart_to_checkout_comparison, calendar.kalpa_windows |
+| 120 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 12 | orders_per_active_android_sep, toy_kaapi_funnel, toy_dabba_club and more |
+| 2026 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 16 | toy_gym_roster, friday_weeks, friday_window and more |
+| 20 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 26 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
+| 9 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 26 | kalpa.window_at_comparison_rate, kalpa_cart_to_checkout_comparison, calendar.kalpa_windows |
+| 10 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 27 | toy_two_batches, toy_funnel, toy_gym_roster and more |
+| 30 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 27 | weekly_cohort_2026-08-03_w2, toy_weaned, toy_gym_roster and more |
+| 1 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 36 | m1_jan, m1_feb, m1_mar and more |
+| 2 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 37 | noise_points_nonmember_android, toy_gym_roster, toy_gym_dashboard and more |
+| 3 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 38 | aug_times_normal, everyone_fall_from_august_cohort_points, toy_weaned and more |
+| 4 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 0 line 39 | lost_value_per_week_low_rs, everyone_fall_aug_to_sep_points, weekly_orders_change_nonmember_android and more |
+| 12 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 4 line 8 | weekly_cohort_2026-08-03_w5, weekly_cohort_2026-08-10_w5, weekly_cohort_2026-08-17_w2 and more |
+| 20 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 6 line 3 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
+| 20 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 6 line 4 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
+| 9 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 6 line 4 | kalpa.window_at_comparison_rate, kalpa_cart_to_checkout_comparison, calendar.kalpa_windows |
+| 10 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 6 line 4 | toy_two_batches, toy_funnel, toy_gym_roster and more |
+| 30 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 6 line 4 | weekly_cohort_2026-08-03_w2, toy_weaned, toy_gym_roster and more |
+| 2 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 10 line 18 | noise_points_nonmember_android, toy_gym_roster, toy_gym_dashboard and more |
+| 4 | notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb | cell 10 line 18 | lost_value_per_week_low_rs, everyone_fall_aug_to_sep_points, weekly_orders_change_nonmember_android and more |
 | 104 | preread/C2_W04_D04_preread_STUDENT.md | 10 | bread_milk_lift, friday_weeks |
 | 30 | preread/C2_W04_D04_preread_STUDENT.md | 11 | weekly_cohort_2026-08-03_w2, toy_weaned, toy_gym_roster and more |
 | 2024 | preread/C2_W04_D04_preread_STUDENT.md | 11 | toy_college_funnel, friday_weeks |
@@ -2567,107 +2651,107 @@ Numbers traced: 3376. Numbers with no home: 0.
 | 500 | slides/C2_W04_D04_half1_STUDENT.md | 1586 | order_value_high_rs, toy_blend, toy_notes_blend and more |
 | 3.4 | slides/C2_W04_D04_half1_STUDENT.md | 1586 | lost_value_per_week_floor_rs |
 | 6.6 | slides/C2_W04_D04_half1_STUDENT.md | 1586 | lost_value_per_week_high_rs |
-| 200 | slides/C2_W04_D04_half2_STUDENT.md | 46 | toy_notes_blend, toy_second_gym, toy_college_funnel and more |
-| 1,000 | slides/C2_W04_D04_half2_STUDENT.md | 46 | toy_kaapi_funnel, toy_dabba_club, toy_kahoot_blend and more |
-| 20 | slides/C2_W04_D04_half2_STUDENT.md | 46 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
-| 90 | slides/C2_W04_D04_half2_STUDENT.md | 46 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
-| 75 | slides/C2_W04_D04_half2_STUDENT.md | 46 | toy_dabba_club, toy_gym_roster, toy_college_funnel and more |
-| 80 | slides/C2_W04_D04_half2_STUDENT.md | 50 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 80 | slides/C2_W04_D04_half2_STUDENT.md | 50 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 80 | slides/C2_W04_D04_half2_STUDENT.md | 50 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 90 | slides/C2_W04_D04_half2_STUDENT.md | 51 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
-| 90 | slides/C2_W04_D04_half2_STUDENT.md | 51 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
-| 75 | slides/C2_W04_D04_half2_STUDENT.md | 51 | toy_dabba_club, toy_gym_roster, toy_college_funnel and more |
-| 200 | slides/C2_W04_D04_half2_STUDENT.md | 55 | toy_notes_blend, toy_second_gym, toy_college_funnel and more |
-| 20 | slides/C2_W04_D04_half2_STUDENT.md | 73 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
-| 87 | slides/C2_W04_D04_half2_STUDENT.md | 73 | toy_college_by_group |
-| 50 | slides/C2_W04_D04_half2_STUDENT.md | 73 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
-| 21 | slides/C2_W04_D04_half2_STUDENT.md | 73 | toy_college_by_group, friday_weeks, kalpa.lab_week and more |
-| 7 | slides/C2_W04_D04_half2_STUDENT.md | 73 | weekly_cohort_2026-08-17_w3, weekly_orders_change_member_ios, toy_weaned and more |
-| 92 | slides/C2_W04_D04_half2_STUDENT.md | 73 | sep_step_member_open_to_search, toy_college_by_group, kalpa.month_one_percent |
-| 90 | slides/C2_W04_D04_half2_STUDENT.md | 73 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
-| 250 | slides/C2_W04_D04_half2_STUDENT.md | 88 | noise_points_nonmember_android, toy_blend, toy_gym_dashboard and more |
-| 150 | slides/C2_W04_D04_half2_STUDENT.md | 88 | toy_college_by_group, toy_college_fee, Th1 |
-| 400 | slides/C2_W04_D04_half2_STUDENT.md | 88 | order_value_assumed_rs, toy_blend, toy_dabba_club and more |
-| 230 | slides/C2_W04_D04_half2_STUDENT.md | 89 | toy_sister_programme, toy_college_by_group |
-| 130 | slides/C2_W04_D04_half2_STUDENT.md | 89 | toy_college_by_group |
-| 360 | slides/C2_W04_D04_half2_STUDENT.md | 89 | everyone_fall_aug_to_sep_points, toy_college_funnel, toy_college_by_group |
-| 225 | slides/C2_W04_D04_half2_STUDENT.md | 90 | toy_college_by_group |
-| 75 | slides/C2_W04_D04_half2_STUDENT.md | 90 | toy_dabba_club, toy_gym_roster, toy_college_funnel and more |
-| 300 | slides/C2_W04_D04_half2_STUDENT.md | 90 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
-| 5 | slides/C2_W04_D04_half2_STUDENT.md | 91 | toy_weaned, toy_kahoot_blend, toy_gym_roster and more |
-| 55 | slides/C2_W04_D04_half2_STUDENT.md | 91 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
-| 60 | slides/C2_W04_D04_half2_STUDENT.md | 91 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
-| 80 | slides/C2_W04_D04_half2_STUDENT.md | 93 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 60 | slides/C2_W04_D04_half2_STUDENT.md | 93 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
-| 48 | slides/C2_W04_D04_half2_STUDENT.md | 93 | toy_kaapi_funnel, toy_second_gym, toy_college_by_group and more |
-| 288 | slides/C2_W04_D04_half2_STUDENT.md | 93 | toy_college_funnel |
-| 240 | slides/C2_W04_D04_half2_STUDENT.md | 93 | toy_dabba_club, toy_second_gym, toy_college_funnel and more |
-| 1 | slides/C2_W04_D04_half2_STUDENT.md | 93 | m1_jan, m1_feb, m1_mar and more |
-| 1.5 | slides/C2_W04_D04_half2_STUDENT.md | 93 | held_july_orders_per_active_ios_sep, toy_college_fee |
-| 48 | slides/C2_W04_D04_half2_STUDENT.md | 93 | toy_kaapi_funnel, toy_second_gym, toy_college_by_group and more |
-| 72 | slides/C2_W04_D04_half2_STUDENT.md | 93 | android_members_checkout_to_order_before, toy_college_fee |
-| 57.6 | slides/C2_W04_D04_half2_STUDENT.md | 93 | android_members_week_2026-08-17, android_member_week_2026-08-17, toy_college_fee |
-| 1.2 | slides/C2_W04_D04_half2_STUDENT.md | 93 | search_to_menu_session_sep, sep_step_session_search_to_menu_view, orders_per_active_android_sep and more |
-| 200 | slides/C2_W04_D04_half2_STUDENT.md | 93 | toy_notes_blend, toy_second_gym, toy_college_funnel and more |
-| 30 | slides/C2_W04_D04_half2_STUDENT.md | 93 | weekly_cohort_2026-08-03_w2, toy_weaned, toy_gym_roster and more |
-| 48 | slides/C2_W04_D04_half2_STUDENT.md | 93 | toy_kaapi_funnel, toy_second_gym, toy_college_by_group and more |
-| 1 | slides/C2_W04_D04_half2_STUDENT.md | 135 | m1_jan, m1_feb, m1_mar and more |
-| 21 | slides/C2_W04_D04_half2_STUDENT.md | 135 | toy_college_by_group, friday_weeks, kalpa.lab_week and more |
-| 2 | slides/C2_W04_D04_half2_STUDENT.md | 136 | noise_points_nonmember_android, toy_gym_roster, toy_gym_dashboard and more |
-| 90 | slides/C2_W04_D04_half2_STUDENT.md | 136 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
-| 75 | slides/C2_W04_D04_half2_STUDENT.md | 136 | toy_dabba_club, toy_gym_roster, toy_college_funnel and more |
-| 87 | slides/C2_W04_D04_half2_STUDENT.md | 136 | toy_college_by_group |
-| 50 | slides/C2_W04_D04_half2_STUDENT.md | 136 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
-| 92 | slides/C2_W04_D04_half2_STUDENT.md | 136 | sep_step_member_open_to_search, toy_college_by_group, kalpa.month_one_percent |
-| 90 | slides/C2_W04_D04_half2_STUDENT.md | 136 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
+| 200 | slides/C2_W04_D04_half2_STUDENT.md | 47 | toy_notes_blend, toy_second_gym, toy_college_funnel and more |
+| 1,000 | slides/C2_W04_D04_half2_STUDENT.md | 47 | toy_kaapi_funnel, toy_dabba_club, toy_kahoot_blend and more |
+| 20 | slides/C2_W04_D04_half2_STUDENT.md | 47 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
+| 90 | slides/C2_W04_D04_half2_STUDENT.md | 47 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
+| 75 | slides/C2_W04_D04_half2_STUDENT.md | 47 | toy_dabba_club, toy_gym_roster, toy_college_funnel and more |
+| 80 | slides/C2_W04_D04_half2_STUDENT.md | 51 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 80 | slides/C2_W04_D04_half2_STUDENT.md | 51 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 80 | slides/C2_W04_D04_half2_STUDENT.md | 51 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 90 | slides/C2_W04_D04_half2_STUDENT.md | 52 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
+| 90 | slides/C2_W04_D04_half2_STUDENT.md | 52 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
+| 75 | slides/C2_W04_D04_half2_STUDENT.md | 52 | toy_dabba_club, toy_gym_roster, toy_college_funnel and more |
+| 200 | slides/C2_W04_D04_half2_STUDENT.md | 56 | toy_notes_blend, toy_second_gym, toy_college_funnel and more |
+| 20 | slides/C2_W04_D04_half2_STUDENT.md | 74 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
+| 87 | slides/C2_W04_D04_half2_STUDENT.md | 74 | toy_college_by_group |
+| 50 | slides/C2_W04_D04_half2_STUDENT.md | 74 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
+| 21 | slides/C2_W04_D04_half2_STUDENT.md | 74 | toy_college_by_group, friday_weeks, kalpa.lab_week and more |
+| 7 | slides/C2_W04_D04_half2_STUDENT.md | 74 | weekly_cohort_2026-08-17_w3, weekly_orders_change_member_ios, toy_weaned and more |
+| 92 | slides/C2_W04_D04_half2_STUDENT.md | 74 | sep_step_member_open_to_search, toy_college_by_group, kalpa.month_one_percent |
+| 90 | slides/C2_W04_D04_half2_STUDENT.md | 74 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
+| 250 | slides/C2_W04_D04_half2_STUDENT.md | 89 | noise_points_nonmember_android, toy_blend, toy_gym_dashboard and more |
+| 150 | slides/C2_W04_D04_half2_STUDENT.md | 89 | toy_college_by_group, toy_college_fee, Th1 |
+| 400 | slides/C2_W04_D04_half2_STUDENT.md | 89 | order_value_assumed_rs, toy_blend, toy_dabba_club and more |
+| 230 | slides/C2_W04_D04_half2_STUDENT.md | 90 | toy_sister_programme, toy_college_by_group |
+| 130 | slides/C2_W04_D04_half2_STUDENT.md | 90 | toy_college_by_group |
+| 360 | slides/C2_W04_D04_half2_STUDENT.md | 90 | everyone_fall_aug_to_sep_points, toy_college_funnel, toy_college_by_group |
+| 225 | slides/C2_W04_D04_half2_STUDENT.md | 91 | toy_college_by_group |
+| 75 | slides/C2_W04_D04_half2_STUDENT.md | 91 | toy_dabba_club, toy_gym_roster, toy_college_funnel and more |
+| 300 | slides/C2_W04_D04_half2_STUDENT.md | 91 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
+| 5 | slides/C2_W04_D04_half2_STUDENT.md | 92 | toy_weaned, toy_kahoot_blend, toy_gym_roster and more |
+| 55 | slides/C2_W04_D04_half2_STUDENT.md | 92 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 60 | slides/C2_W04_D04_half2_STUDENT.md | 92 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
+| 80 | slides/C2_W04_D04_half2_STUDENT.md | 94 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 60 | slides/C2_W04_D04_half2_STUDENT.md | 94 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
+| 48 | slides/C2_W04_D04_half2_STUDENT.md | 94 | toy_kaapi_funnel, toy_second_gym, toy_college_by_group and more |
+| 288 | slides/C2_W04_D04_half2_STUDENT.md | 94 | toy_college_funnel |
+| 240 | slides/C2_W04_D04_half2_STUDENT.md | 94 | toy_dabba_club, toy_second_gym, toy_college_funnel and more |
+| 1 | slides/C2_W04_D04_half2_STUDENT.md | 94 | m1_jan, m1_feb, m1_mar and more |
+| 1.5 | slides/C2_W04_D04_half2_STUDENT.md | 94 | held_july_orders_per_active_ios_sep, toy_college_fee |
+| 48 | slides/C2_W04_D04_half2_STUDENT.md | 94 | toy_kaapi_funnel, toy_second_gym, toy_college_by_group and more |
+| 72 | slides/C2_W04_D04_half2_STUDENT.md | 94 | android_members_checkout_to_order_before, toy_college_fee |
+| 57.6 | slides/C2_W04_D04_half2_STUDENT.md | 94 | android_members_week_2026-08-17, android_member_week_2026-08-17, toy_college_fee |
+| 1.2 | slides/C2_W04_D04_half2_STUDENT.md | 94 | search_to_menu_session_sep, sep_step_session_search_to_menu_view, orders_per_active_android_sep and more |
+| 200 | slides/C2_W04_D04_half2_STUDENT.md | 94 | toy_notes_blend, toy_second_gym, toy_college_funnel and more |
+| 30 | slides/C2_W04_D04_half2_STUDENT.md | 94 | weekly_cohort_2026-08-03_w2, toy_weaned, toy_gym_roster and more |
+| 48 | slides/C2_W04_D04_half2_STUDENT.md | 94 | toy_kaapi_funnel, toy_second_gym, toy_college_by_group and more |
+| 1 | slides/C2_W04_D04_half2_STUDENT.md | 136 | m1_jan, m1_feb, m1_mar and more |
 | 21 | slides/C2_W04_D04_half2_STUDENT.md | 136 | toy_college_by_group, friday_weeks, kalpa.lab_week and more |
-| 7 | slides/C2_W04_D04_half2_STUDENT.md | 136 | weekly_cohort_2026-08-17_w3, weekly_orders_change_member_ios, toy_weaned and more |
-| 3 | slides/C2_W04_D04_half2_STUDENT.md | 137 | aug_times_normal, everyone_fall_from_august_cohort_points, toy_weaned and more |
-| 60 | slides/C2_W04_D04_half2_STUDENT.md | 137 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
-| 48 | slides/C2_W04_D04_half2_STUDENT.md | 137 | toy_kaapi_funnel, toy_second_gym, toy_college_by_group and more |
-| 48 | slides/C2_W04_D04_half2_STUDENT.md | 137 | toy_kaapi_funnel, toy_second_gym, toy_college_by_group and more |
-| 72 | slides/C2_W04_D04_half2_STUDENT.md | 137 | android_members_checkout_to_order_before, toy_college_fee |
-| 1 | slides/C2_W04_D04_half2_STUDENT.md | 137 | m1_jan, m1_feb, m1_mar and more |
-| 1.5 | slides/C2_W04_D04_half2_STUDENT.md | 137 | held_july_orders_per_active_ios_sep, toy_college_fee |
-| 4 | slides/C2_W04_D04_half2_STUDENT.md | 138 | lost_value_per_week_low_rs, everyone_fall_aug_to_sep_points, weekly_orders_change_nonmember_android and more |
-| 5 | slides/C2_W04_D04_half2_STUDENT.md | 139 | toy_weaned, toy_kahoot_blend, toy_gym_roster and more |
-| 86 | slides/C2_W04_D04_half2_STUDENT.md | 139 | toy_college_by_group |
-| 87 | slides/C2_W04_D04_half2_STUDENT.md | 139 | toy_college_by_group |
-| 38 | slides/C2_W04_D04_half2_STUDENT.md | 181 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 80 | slides/C2_W04_D04_half2_STUDENT.md | 224 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 14 | slides/C2_W04_D04_half2_STUDENT.md | 224 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
-| 72.5 | slides/C2_W04_D04_half2_STUDENT.md | 224 | android_members_checkout_to_order_before |
-| 55 | slides/C2_W04_D04_half2_STUDENT.md | 224 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
-| 0.23 | slides/C2_W04_D04_half2_STUDENT.md | 274 | aug_sale_orders_per_member_m1, toy_kaapi_funnel |
-| 0.61 | slides/C2_W04_D04_half2_STUDENT.md | 274 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 |
-| 118 | slides/C2_W04_D04_half2_STUDENT.md | 274 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
-| 1,133 | slides/C2_W04_D04_half2_STUDENT.md | 291 | lost_orders_week_vs_nonmember_android |
-| 1,317 | slides/C2_W04_D04_half2_STUDENT.md | 291 | lost_orders_per_week |
-| 72.5 | slides/C2_W04_D04_half2_STUDENT.md | 291 | android_members_checkout_to_order_before |
-| 55 | slides/C2_W04_D04_half2_STUDENT.md | 291 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
-| 80 | slides/C2_W04_D04_half2_STUDENT.md | 291 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
-| 71 | slides/C2_W04_D04_half2_STUDENT.md | 291 | checkout_to_order_member_ios_before, android_share_cohort_high, toy_gym_roster and more |
-| 70 | slides/C2_W04_D04_half2_STUDENT.md | 291 | checkout_to_order_member_ios_after, held_checkout_to_order_android_before, android_share_cohort_low and more |
-| 65 | slides/C2_W04_D04_half2_STUDENT.md | 291 | checkout_to_order_nonmember_android_before |
-| 64 | slides/C2_W04_D04_half2_STUDENT.md | 291 | sep_step_session_checkout_start_to_order_placed, checkout_to_order_nonmember_android_after, kalpa.cart_to_checkout and more |
-| 3.4 | slides/C2_W04_D04_half2_STUDENT.md | 291 | lost_value_per_week_floor_rs |
-| 6.6 | slides/C2_W04_D04_half2_STUDENT.md | 291 | lost_value_per_week_high_rs |
-| 300 | slides/C2_W04_D04_half2_STUDENT.md | 291 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
-| 500 | slides/C2_W04_D04_half2_STUDENT.md | 291 | order_value_high_rs, toy_blend, toy_notes_blend and more |
-| 20 | slides/C2_W04_D04_half2_STUDENT.md | 291 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
-| 49 | slides/C2_W04_D04_half2_STUDENT.md | 291 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
-| 18 | slides/C2_W04_D04_half2_STUDENT.md | 291 | weekly_orders_change_member_android, friday_forecast_gap_points |
-| 7 | slides/C2_W04_D04_half2_STUDENT.md | 291 | weekly_cohort_2026-08-17_w3, weekly_orders_change_member_ios, toy_weaned and more |
-| 38 | slides/C2_W04_D04_half2_STUDENT.md | 351 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 3.2 | slides/C2_W04_D04_half2_STUDENT.md | 353 | everyone_fall_from_august_cohort_points |
-| 3.6 | slides/C2_W04_D04_half2_STUDENT.md | 353 | everyone_fall_aug_to_sep_points |
-| 1,133 | slides/C2_W04_D04_half2_STUDENT.md | 353 | lost_orders_week_vs_nonmember_android |
-| 1,317 | slides/C2_W04_D04_half2_STUDENT.md | 353 | lost_orders_per_week |
-| 33 | slides/C2_W04_D04_half2_STUDENT.md | 353 | oct_dashboard_estimate, weekly_cohort_2026-08-24_w1, toy_kaapi_funnel and more |
-| 24 | slides/C2_W04_D04_half2_STUDENT.md | 377 | toy_ai_cohorts, toy_college_funnel, toy_college_applicants and more |
-| 36 | slides/C2_W04_D04_half2_STUDENT.md | 377 | everyone_sep, retry_within_day_android_before, everyone_fall_ordinary_points and more |
-| 33 | slides/C2_W04_D04_half2_STUDENT.md | 466 | oct_dashboard_estimate, weekly_cohort_2026-08-24_w1, toy_kaapi_funnel and more |
+| 2 | slides/C2_W04_D04_half2_STUDENT.md | 137 | noise_points_nonmember_android, toy_gym_roster, toy_gym_dashboard and more |
+| 90 | slides/C2_W04_D04_half2_STUDENT.md | 137 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
+| 75 | slides/C2_W04_D04_half2_STUDENT.md | 137 | toy_dabba_club, toy_gym_roster, toy_college_funnel and more |
+| 87 | slides/C2_W04_D04_half2_STUDENT.md | 137 | toy_college_by_group |
+| 50 | slides/C2_W04_D04_half2_STUDENT.md | 137 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
+| 92 | slides/C2_W04_D04_half2_STUDENT.md | 137 | sep_step_member_open_to_search, toy_college_by_group, kalpa.month_one_percent |
+| 90 | slides/C2_W04_D04_half2_STUDENT.md | 137 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
+| 21 | slides/C2_W04_D04_half2_STUDENT.md | 137 | toy_college_by_group, friday_weeks, kalpa.lab_week and more |
+| 7 | slides/C2_W04_D04_half2_STUDENT.md | 137 | weekly_cohort_2026-08-17_w3, weekly_orders_change_member_ios, toy_weaned and more |
+| 3 | slides/C2_W04_D04_half2_STUDENT.md | 138 | aug_times_normal, everyone_fall_from_august_cohort_points, toy_weaned and more |
+| 60 | slides/C2_W04_D04_half2_STUDENT.md | 138 | toy_weaned, toy_kaapi_funnel, toy_dabba_club and more |
+| 48 | slides/C2_W04_D04_half2_STUDENT.md | 138 | toy_kaapi_funnel, toy_second_gym, toy_college_by_group and more |
+| 48 | slides/C2_W04_D04_half2_STUDENT.md | 138 | toy_kaapi_funnel, toy_second_gym, toy_college_by_group and more |
+| 72 | slides/C2_W04_D04_half2_STUDENT.md | 138 | android_members_checkout_to_order_before, toy_college_fee |
+| 1 | slides/C2_W04_D04_half2_STUDENT.md | 138 | m1_jan, m1_feb, m1_mar and more |
+| 1.5 | slides/C2_W04_D04_half2_STUDENT.md | 138 | held_july_orders_per_active_ios_sep, toy_college_fee |
+| 4 | slides/C2_W04_D04_half2_STUDENT.md | 139 | lost_value_per_week_low_rs, everyone_fall_aug_to_sep_points, weekly_orders_change_nonmember_android and more |
+| 5 | slides/C2_W04_D04_half2_STUDENT.md | 140 | toy_weaned, toy_kahoot_blend, toy_gym_roster and more |
+| 86 | slides/C2_W04_D04_half2_STUDENT.md | 140 | toy_college_by_group |
+| 87 | slides/C2_W04_D04_half2_STUDENT.md | 140 | toy_college_by_group |
+| 38 | slides/C2_W04_D04_half2_STUDENT.md | 182 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 80 | slides/C2_W04_D04_half2_STUDENT.md | 227 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 14 | slides/C2_W04_D04_half2_STUDENT.md | 227 | weekly_cohort_2026-08-03_w7, weekly_cohort_2026-08-10_w4, kalpa.cohort_sizes and more |
+| 72.5 | slides/C2_W04_D04_half2_STUDENT.md | 227 | android_members_checkout_to_order_before |
+| 55 | slides/C2_W04_D04_half2_STUDENT.md | 227 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 0.23 | slides/C2_W04_D04_half2_STUDENT.md | 277 | aug_sale_orders_per_member_m1, toy_kaapi_funnel |
+| 0.61 | slides/C2_W04_D04_half2_STUDENT.md | 277 | menu_to_cart_member_sep, sep_step_member_menu_view_to_add_to_cart, aug_organic_orders_per_member_m1 |
+| 118 | slides/C2_W04_D04_half2_STUDENT.md | 277 | search_to_menu_session_sep, sep_step_session_search_to_menu_view |
+| 1,133 | slides/C2_W04_D04_half2_STUDENT.md | 294 | lost_orders_week_vs_nonmember_android |
+| 1,317 | slides/C2_W04_D04_half2_STUDENT.md | 294 | lost_orders_per_week |
+| 72.5 | slides/C2_W04_D04_half2_STUDENT.md | 294 | android_members_checkout_to_order_before |
+| 55 | slides/C2_W04_D04_half2_STUDENT.md | 294 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
+| 80 | slides/C2_W04_D04_half2_STUDENT.md | 294 | sep_step_session_add_to_cart_to_checkout_start, android_members_cart_to_checkout_before, android_members_cart_to_checkout_after and more |
+| 71 | slides/C2_W04_D04_half2_STUDENT.md | 294 | checkout_to_order_member_ios_before, android_share_cohort_high, toy_gym_roster and more |
+| 70 | slides/C2_W04_D04_half2_STUDENT.md | 294 | checkout_to_order_member_ios_after, held_checkout_to_order_android_before, android_share_cohort_low and more |
+| 65 | slides/C2_W04_D04_half2_STUDENT.md | 294 | checkout_to_order_nonmember_android_before |
+| 64 | slides/C2_W04_D04_half2_STUDENT.md | 294 | sep_step_session_checkout_start_to_order_placed, checkout_to_order_nonmember_android_after, kalpa.cart_to_checkout and more |
+| 3.4 | slides/C2_W04_D04_half2_STUDENT.md | 294 | lost_value_per_week_floor_rs |
+| 6.6 | slides/C2_W04_D04_half2_STUDENT.md | 294 | lost_value_per_week_high_rs |
+| 300 | slides/C2_W04_D04_half2_STUDENT.md | 294 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
+| 500 | slides/C2_W04_D04_half2_STUDENT.md | 294 | order_value_high_rs, toy_blend, toy_notes_blend and more |
+| 20 | slides/C2_W04_D04_half2_STUDENT.md | 294 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
+| 49 | slides/C2_W04_D04_half2_STUDENT.md | 294 | m1_jul, aug_m1_organic, kalpa.sep_active_members and more |
+| 18 | slides/C2_W04_D04_half2_STUDENT.md | 294 | weekly_orders_change_member_android, friday_forecast_gap_points |
+| 7 | slides/C2_W04_D04_half2_STUDENT.md | 294 | weekly_cohort_2026-08-17_w3, weekly_orders_change_member_ios, toy_weaned and more |
+| 38 | slides/C2_W04_D04_half2_STUDENT.md | 346 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
+| 3.2 | slides/C2_W04_D04_half2_STUDENT.md | 348 | everyone_fall_from_august_cohort_points |
+| 3.6 | slides/C2_W04_D04_half2_STUDENT.md | 348 | everyone_fall_aug_to_sep_points |
+| 1,133 | slides/C2_W04_D04_half2_STUDENT.md | 348 | lost_orders_week_vs_nonmember_android |
+| 1,317 | slides/C2_W04_D04_half2_STUDENT.md | 348 | lost_orders_per_week |
+| 33 | slides/C2_W04_D04_half2_STUDENT.md | 348 | oct_dashboard_estimate, weekly_cohort_2026-08-24_w1, toy_kaapi_funnel and more |
+| 24 | slides/C2_W04_D04_half2_STUDENT.md | 372 | toy_ai_cohorts, toy_college_funnel, toy_college_applicants and more |
+| 36 | slides/C2_W04_D04_half2_STUDENT.md | 372 | everyone_sep, retry_within_day_android_before, everyone_fall_ordinary_points and more |
+| 33 | slides/C2_W04_D04_half2_STUDENT.md | 452 | oct_dashboard_estimate, weekly_cohort_2026-08-24_w1, toy_kaapi_funnel and more |
 | 10 | study-notes/C2_W04_D04_notes_STUDENT.md | 3 | toy_two_batches, toy_funnel, toy_gym_roster and more |
 | 38 | study-notes/C2_W04_D04_notes_STUDENT.md | 7 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
 | 2026 | study-notes/C2_W04_D04_notes_STUDENT.md | 7 | toy_gym_roster, friday_weeks, friday_window and more |

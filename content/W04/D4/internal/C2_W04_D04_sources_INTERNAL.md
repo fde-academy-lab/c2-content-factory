@@ -97,7 +97,7 @@ fetched on 13 October 2026 in the build session.
 
 | Decision | What the pack does | Why |
 |---|---|---|
-| Notebook numbers | Concept notebooks 01 to 04 and 08, case notebooks 05 to 07, the lab 12 | The build brief and the gate's rule that a notebook takes its chapter's SECTION number; the plan's 01 to 09 predates that rule |
+| Notebook numbers | Concept notebooks 01 to 04 and 08, case notebooks 05 to 07 and 09, the lab 10 | The gate's rule that a notebook takes its chapter's SECTION number, and the lab takes the number after the last SECTION; the plan's 01 to 09 predates that rule, and the lab moved from 12 to 10 when SECTIONs 10 and 11 folded into SECTION 9 (the row below) |
 | The opening | S1 the day's topic, S2 the week map, S3 the five topics, S4 the concept map, S5 the ticket | The brief's order; the plan opened on the ticket |
 | Teaching order | Subtopics 1, 3, 4 and 2 in the morning, 5 opening the afternoon | The spine and the plan: cohorts before the curves and the blend read from them, then the funnel |
 | The toy guard | Read kind by kind: no toy blend within five points of a planted blend, no toy artefact near 118 and 89, no toy skip share near 31, no toy count equal to the bank's funnel | The plan fixes toy values (24, 80, 26.7) within five points of unrelated plants of another kind; the contract asserts each kind-wise guard |
@@ -105,7 +105,7 @@ fetched on 13 October 2026 in the build session.
 | Applicants | 900 | The plan's 850 gives 28.2 per applicant against the 26.7 its own line uses (facts `corrections`) |
 | The gym's dashboard months | January counts the older members only; February adds the January joiners at month one | The dashboard counts from the month after joining (facts `corrections`) |
 | The register | One row per member with a column per month, as a register is kept | The plan's long form is the notebook's first step, `melt`, so the file is kept wide (facts `corrections`) |
-| SECTIONs 9 to 11 | No notebook; the gate warns three times | SECTION 9 writes a page from notebooks 06 and 07, SECTION 10 is the interview room and SECTION 11 the Kahoot and close; the brief allows none |
+| SECTION 9 and its close | SECTIONs 10 and 11 fold into SECTION 9's close, every slide and its number kept (S78 to S81 the interview walk, S82 to S84 the Kahoot and the close); SECTION 9 pairs with notebook 09, which computes the page's evidence, size, objection and what would change it from the case's own data | The orchestrating session's review of 13 October 2026 held the requester's rule of one notebook per chapter, which `coverage_check.py` warned about three times; the spine's section 8 and the plan still list SECTIONs 9 to 11 with no notebook and the lab as 12, and both sit outside this folder |
 | The Week 1 callback | Names the reversal, never its numbers | Week 1 Thursday's finding is a plant; decision `plants-once-found` lets only that week's Saturday paper name it |
 | The cheat sheet's concept map | Five topics in two rows, cohort to curve to blend to the call, with the funnel feeding the call | S4's map prints its labels under five points on a sheet; this drawing keeps the same five topics and their order of use |
 | The cheat sheet's causes chain | A line of text in panel 5 | The sheet must fit one page with the concept map added |
@@ -146,6 +146,9 @@ Each choice the fix pass made where the findings or the rules left one:
 - The spine's Thursday handoff line (`docs/detailing/W04_analyst_craft_spine.md`, section 8) still reads
   "treats a member who has not left yet as if she were retained for ever"; S81 and the day sheet
   carry the corrected line, and the spine sits outside this folder.
+- The spine's section 8 and `docs/detailing/W04_concept_first/D4_plan.md` still list SECTIONs 9 to 11
+  with no notebook and the lab as notebook 12; the pack runs SECTIONs 1 to 9, each with its notebook,
+  and the lab as notebook 10.
 - No other day's file names a Thursday slide or notebook by number; a search of `content/W04` for
   `C2_W04_D04_0` and `W04/D4` outside this folder found the Wednesday pre-read's link to Thursday's
   data and the explorer's facts read, neither of which names a slide or a notebook number.

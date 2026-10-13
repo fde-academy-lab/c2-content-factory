@@ -865,3 +865,8 @@ a finding left as it was carries its reason in `internal/C2_W04_D04_sources_INTE
 | 18 | Fixed: every SECTION opener's notes carry its hand-out and its cut |
 | 19 | Fixed: the fallback deck runs SECTIONs 12 to 15 in 120 minutes with no Kahoot line, and the note and the take-home say "item 2" |
 | 20 | Fixed: SECTION 11's opener, S82 and S41 reworded |
+
+**After the fix pass.** The orchestrating session's review of 13 October 2026 folded SECTIONs 10
+and 11 into SECTION 9's close, gave SECTION 9 notebook 09 and renumbered the lab notebook from 12 to
+10. Every slide number the reads cite is unchanged; where a read names SECTION 10 or 11, the slides
+are S78 to S81 and S82 to S84 of SECTION 9, and its notebook 12 is notebook 10.

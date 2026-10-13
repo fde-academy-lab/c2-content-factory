@@ -2718,43 +2718,43 @@ plants:
 - id: kalpa_blend_jul
   value: 0.4054
   how: members who joined before Jul with an app session in it, 30 of 74
-  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
+  found_in: notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_blend_aug
   value: 0.4091
   how: members who joined before Aug with an app session in it, 36 of 88
-  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
+  found_in: notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_blend_sep
   value: 0.4083
   how: members who joined before Sep with an app session in it, 49 of 120
-  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
+  found_in: notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_every_cohort_falls
   value: true
   how: each cohort's active share, July to September
-  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
+  found_in: notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_aug_m1
   value: 0.8125
   how: August members active in September, 26 of 32, the lowest month one
-  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
+  found_in: notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_cart_to_checkout_comparison
   value: 0.8333
   how: checkout sessions over add_to_cart sessions, 20 August to 9 September
-  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the second your-turn cell
+  found_in: notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the second your-turn cell
 - id: kalpa_cart_to_checkout_window
   value: 0.6364
   how: the same, 10 to 30 September
-  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the second your-turn cell
+  found_in: notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the second your-turn cell
 - id: kalpa_skip_search
   value: 0.3092
   how: sessions with no search over all sessions
-  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell
+  found_in: notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell
 - id: kalpa_checkout_per_session_sep
   value: 0.0784
   how: September sessions with a checkout
-  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell
+  found_in: notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell
 - id: kalpa_checkout_per_member_sep
   value: 0.2449
   how: September members with a checkout
-  found_in: notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell
+  found_in: notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb, the third your-turn cell
 shared_constants:
   kalpa_comparison_window:
   - '2026-08-20'
