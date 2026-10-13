@@ -520,7 +520,7 @@ Styles: Veritasium (the
 room predicts what a big new cohort does to the dashboard), 3Blue1Brown (the stacked bars, the
 formula named last), StatQuest (the weighted average on two numbers), ByteByteGo (the Week 1
 Thursday link). Explorer scene Th2 lets a learner slide the new cohort's size; it draws the
-same 100 and 400 as a coaching centre's batches A and B.
+same 100 and 400 as the neighbourhood gym's older members and January joiners.
 Transition: the chapter's questions.
 ```
 
@@ -1172,7 +1172,7 @@ June each reach a floor at month two, which erodes about 0.3 points a month; Jul
 month three. Members come back after a month with no order, so the floor is the share ordering in
 a typical month, and the 38 who order are not always the same 38. If the room wants the motion, open
 whiteboards/C2_W04_D04_cohort_fill_STUDENT.gif, which fills the triangle one month at a time with
-the dashboard drawn beside it, or explorer scene Th1, which adds a "next month" button.
+the dashboard drawn beside it.
 Transition: why the dashboard holds over the same months.
 ```
 
@@ -1277,6 +1277,8 @@ d) About 49 percent, the July cohort's month-one rate
 
 ```notes
 LIVE, 2 minutes. Vote. Remind the August cohort's month one is 31 percent, below the 38.
+Explorer scene Th1, which adds a "next month" button, once the vote is in: it asks where October
+lands before S53 prints the estimate, and its reveal also gives this slide's answer.
 Transition: the reveal.
 ```
 
@@ -1439,8 +1441,8 @@ Transition: the step above 100 percent.
 
 ```notes
 LIVE, 5 minutes. The artefact: a rate above 100 percent says the numerator holds people who never
-passed the denominator's step. Explorer scene Th3 toggles the carousel entries in and out. Strike
-on the hypothesis board: the funnel's first steps are not the loss.
+passed the denominator's step. Strike on the hypothesis board: the funnel's first steps are not
+the loss.
 Transition: the second unit.
 ```
 
@@ -1560,7 +1562,8 @@ LIVE, 2 minutes. Read three rows aloud: tracking, the mix inside the split, and 
 members; the other four are for self-study and the notebook. Strike the last lines of the
 hypothesis board: tracking is ruled out, the definition explained, a cohort problem confirmed,
 and an everyone-on-Android problem in one step. Name censoring for the faculty block (tentative)
-and park any "are these curves different by chance" question there.
+and park any "are these curves different by chance" question there. Explorer scene Th3 toggles the
+carousel entries in and out, and its unit toggle sits beside the sessions-against-members row.
 Transition: the chapter's close.
 ```
 
