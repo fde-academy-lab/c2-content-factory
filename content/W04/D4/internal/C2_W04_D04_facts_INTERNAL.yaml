@@ -2127,7 +2127,7 @@ toys:
     - 30
     - 24
     lost_overall_percent_2026: 76
-    no_show: 200 of 1,000 applications skip the test (20 percent), every cycle
+    no_show: 200 of 1,000 applications never sit the test (20 percent), every cycle; 190 of 950 in 2024
   used_by: SECTION 4; SECTION 8's opening; notebooks 04 and 08; drills c4 and c5 (unguided/C2_W04_D04_c4_funnel_denominators,
     c5_fix_first_evidence); the notes; the cheat sheet
 - id: toy_college_applicants
@@ -2213,6 +2213,9 @@ toys:
       other states: 55
     lost_joiners: 48
     joining_rate: 0.8
+    no_show_half_sat_joiners: 30
+    no_show_half_sat_how: 'half of the 200 who never sit the test, sitting it and passing on at this cycle''s
+      rates (an assumption): 100 x 0.5 x 0.75 x 0.8'
   used_by: SECTION 8; notebook 08; drill c5; the notes; the cheat sheet
 - id: toy_college_fee
   label: an assumption on the invented college
@@ -2229,6 +2232,31 @@ toys:
     counted_on: joiners, 48 a cycle
   used_by: SECTION 8's cost slide; notebook 08; drill c5
 derived:
+- id: dashboard_sep_june_cohorts_only
+  value: 37.3
+  how: September's dashboard counted over June's four cohorts only, January to April
+  used_by: S49's notes; notebook 06's answer cell
+- id: mix_prop_points_sep
+  value: 0.5
+  printed: about half a point
+  how: September's dashboard less the same count held to June's four cohorts
+  used_by: S49; notebook 06; the notes
+- id: everyone_sep_normal_august
+  value: 39.2
+  how: September counted for everyone, with August as 5,000 members at July's 49 percent in month one
+  used_by: S79's notes, the working behind the transcript's 3.2 of 3.6
+- id: everyone_fall_aug_to_sep_points
+  value: 3.6
+  how: everyone counted, August 39.5 less September 35.9
+  used_by: S79's notes
+- id: normal_august_fall_points
+  value: 0.4
+  how: August 39.5 less September with a normal August, 39.2
+  used_by: S79's notes
+- id: august_share_of_fall_points
+  value: 3.2
+  how: September with a normal August less September as it is
+  used_by: S79's notes
 - id: lost_orders_17_days
   value: 3198
   how: (58 less 44 percent) x 22,841 Android member carts

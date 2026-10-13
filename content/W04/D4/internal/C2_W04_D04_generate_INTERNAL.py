@@ -1611,7 +1611,7 @@ toys += [
                 "step_percent": {"2026": [80, 50, 75, 80], "2025": [80, 50, 90, 80], "2024": [80, 50, 90, 80.1]},
                 "drop_off_percent_2026": [20, 50, 25, 20], "overall_percent": {"2026": 24.0, "2025": 28.8},
                 "over_the_top_percent_2026": [80, 40, 30, 24], "lost_overall_percent_2026": 76,
-                "no_show": "200 of 1,000 applications skip the test (20 percent), every cycle"},
+                "no_show": "200 of 1,000 applications never sit the test (20 percent), every cycle; 190 of 950 in 2024"},
      "used_by": "SECTION 4; SECTION 8's opening; notebooks 04 and 08; drills c4 and c5 (unguided/C2_W04_D04_c4_funnel_denominators, c5_fix_first_evidence); the notes; the cheat sheet"},
     {"id": "toy_college_applicants", "label": "invented, the same cycle counted per applicant",
      "how": TOY_HOW + "Funnel stages, drop-off, denominators",
@@ -1634,7 +1634,10 @@ toys += [
                                        for cy in acc},
                 "groups": "in-state, other states", "fee_deadline_days": DEADLINE,
                 "offers_out_within_days": 2, "expected_2026_at_2025_rates": 360, "lost_acceptances": lost_acc,
-                "lost_joiners": lost_join, "joining_rate": 0.8},
+                "lost_joiners": lost_join, "joining_rate": 0.8,
+                "no_show_half_sat_joiners": round(100 * (400 / 800) * (300 / 400) * (240 / 300)),
+                "no_show_half_sat_how": "half of the 200 who never sit the test, sitting it and passing on at this cycle's "
+                                        "rates (an assumption): 100 x 0.5 x 0.75 x 0.8"},
      "used_by": "SECTION 8; notebook 08; drill c5; the notes; the cheat sheet"},
     {"id": "toy_college_fee", "label": "an assumption on the invented college",
      "how": TOY_HOW + "The fix-first decision and its evidence",
@@ -1656,7 +1659,38 @@ F_ = {n["id"]: n["value"] for n in numbers}
 lost_17 = (F_["atc_to_order_member_android_before"] - F_["atc_to_order_member_android_after"]) * F_["android_member_carts_after"]
 first_week = sorted(WEEKLY_SIZE.index)[2]
 sale_week_ids = set(m["member_id"] for m in members if D(2026, 8, 17) <= m["signup_date"] <= D(2026, 8, 23))
+# The cold reads of 13 October 2026 asked how much the cohorts entering each month prop the dashboard, and
+# what September would read counted with a normal-sized August; both come from the tables just written.
+_mem = pd.read_csv(DATA / f"{STEM}_members_STUDENT.csv")
+_mm = pd.read_csv(DATA / f"{STEM}_member_months_STUDENT.csv").merge(_mem[["member_id", "cohort_month"]], on="member_id")
+_mm["age"] = (_mm["month"].str[:4].astype(int) * 12 + _mm["month"].str[5:].astype(int)
+              - _mm["cohort_month"].str[:4].astype(int) * 12 - _mm["cohort_month"].str[5:].astype(int))
+_mm["active"] = _mm["orders"] > 0
+_june = sorted(_mm[(_mm["month"] == "2026-06") & (_mm["age"] >= 2)]["cohort_month"].unique())
+_sep_dash = _mm[(_mm["month"] == "2026-09") & (_mm["age"] >= 2)]
+_sep_june_only = _sep_dash[_sep_dash["cohort_month"].isin(_june)]["active"].mean()
+_prop = _sep_dash["active"].mean() - _sep_june_only
+_every = {m: _mm[(_mm["month"] == m) & (_mm["age"] >= 1)]["active"].mean() for m in ("2026-08", "2026-09")}
+_normal_aug = (_sep_dash["active"].sum() + 5000 * 0.49) / (len(_sep_dash) + 5000)
+check("held to June's four cohorts, September's dashboard reads 37.3, so the cohorts entering after June prop it by "
+      "about half a point; with a normal August, September counted for everyone reads 39.2",
+      round(100 * _sep_june_only, 1) == 37.3 and 0.4 <= 100 * _prop <= 0.6 and round(100 * _normal_aug, 1) == 39.2)
 derived = [
+    {"id": "dashboard_sep_june_cohorts_only", "value": round(float(100 * _sep_june_only), 1),
+     "how": "September's dashboard counted over June's four cohorts only, January to April",
+     "used_by": "S49's notes; notebook 06's answer cell"},
+    {"id": "mix_prop_points_sep", "value": round(float(100 * _prop), 1), "printed": "about half a point",
+     "how": "September's dashboard less the same count held to June's four cohorts",
+     "used_by": "S49; notebook 06; the notes"},
+    {"id": "everyone_sep_normal_august", "value": round(float(100 * _normal_aug), 1),
+     "how": "September counted for everyone, with August as 5,000 members at July's 49 percent in month one",
+     "used_by": "S79's notes, the working behind the transcript's 3.2 of 3.6"},
+    {"id": "everyone_fall_aug_to_sep_points", "value": round(float(100 * (_every["2026-08"] - _every["2026-09"])), 1),
+     "how": "everyone counted, August 39.5 less September 35.9", "used_by": "S79's notes"},
+    {"id": "normal_august_fall_points", "value": round(float(100 * (_every["2026-08"] - _normal_aug)), 1),
+     "how": "August 39.5 less September with a normal August, 39.2", "used_by": "S79's notes"},
+    {"id": "august_share_of_fall_points", "value": round(float(100 * (_normal_aug - _every["2026-09"])), 1),
+     "how": "September with a normal August less September as it is", "used_by": "S79's notes"},
     {"id": "lost_orders_17_days", "value": int(round(lost_17)), "how": "(58 less 44 percent) x 22,841 Android member carts",
      "used_by": "the fix-first set, a distractor and its solution"},
     {"id": "lost_orders_per_day", "value": int(round(lost_17 / 17)), "how": "the 17 days' loss over 17", "used_by": "the fix-first set, a distractor"},
