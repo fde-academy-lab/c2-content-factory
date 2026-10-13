@@ -196,7 +196,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 **Why it holds.** DMRC's journeys count each line a passenger uses to reach a destination, so a trip with one change of line counts twice (Deccan Herald, reporting PTI, 30 August 2023, checked 13 October 2026). When DMRC first used the count, in May 2018, it read 45,35,932 line uses on one day against gate ridership near 27 lakh a day earlier that year (PTI, 30 May 2018). So the 64.06 lakh average runs above the trips riders take, and an estimate of trips has to be compared with trips, or converted. The 82,44,903 was one record day, during a bus strike, never an ordinary weekday.
 
 - (b) Raising the chain trusts both checks, and both count something else: line uses, and one record day.
-- (c) The boardings record was reported as beating the earlier record of more than 81 lakh passenger journeys, so the two are reported as one count; and whatever a boarding counts, 17 September 2026 was a record day during a bus strike.
+- (c) Whatever a boarding counts, 17 September 2026 was one record day during a bus strike, so it cannot check an ordinary weekday. DMRC also called it its highest-ever, above the earlier record of more than 81 lakh passenger journeys on 8 August 2025 (The Tribune, 9 August 2026, checked 13 October 2026), which reads boardings and journeys as one count; that reading is ours, since neither source defines a boarding.
 - (d) A bracket from two counts in another unit brackets nothing, since neither counts the trips the chain estimates.
 
 **In the interview.** I validate in the unit the estimate counts and on an ordinary period, so I ask what each published number counts before I move my answer toward it.
@@ -371,13 +371,13 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** The method carries over: the metric written with its numerator, denominator and window; a guardrail the people measured cannot move; and a test against a baseline before any lift is trusted. What changes is the cost of an error, since a nudge toward a loan that defaults costs Kalpa Financial Services twenty times what it loses by passing over a good customer, so the rupee cost of a wrong nudge in each direction is the line Rohan Desai's version rewrites. On the Retail tables a wrong nudge cost a discount and some annoyance, so the same threshold would sit in a very different place.
 
-- (c) The rupee cost of a wrong nudge is the line that changes most: in lending one direction costs twenty times the other, where Retail's two errors cost about the same.
+- (c) The rupee cost of a wrong nudge is the line that changes most: in lending a wrong approval costs twenty times a wrongful rejection, while on the Retail tables a wasted nudge costs a small discount and some annoyance, so the threshold moves.
 
 **In the interview.** The definition, the guardrail and the baseline test travel with me; what I rewrite for lending is the price of each error, because a bad nudge there costs twenty times a missed good one.
 
 ### Q35, key d (a definition whose window the measured cannot move, with a guardrail)
 
-**Why it holds.** The rate's window ends at a promised date the measured dispatchers can move, the way Phoenix's wait times started at a "desired date" staff entered; the fix fixes the promise when the order is placed and guards it with the share of promises moved. What changed from Uber: the people who move the number are dispatchers, and the cost of an error is a customer told a parcel was on time when it was not.
+**Why it holds.** The rate's window ends at a promised date the measured dispatchers can move, the way the Phoenix VA's wait times ran from a "desired date" that 30 of 79 schedulers interviewed said they entered wrongly (VA Office of Inspector General, report 14-02603-267, 26 August 2014, checked 13 October 2026); the fix fixes the promise when the order is placed and guards it with the share of promises moved. What changed from Uber: the people who move the number are dispatchers, and the cost of an error is a customer told a parcel was on time when it was not.
 
 **In the interview.** A metric whose window the measured can move measures their moves, so I fix the window at the order and guard it with the share of dates changed.
 
@@ -405,7 +405,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 - (b) The share comes from both costs; with the late shipment at Rs 10 the costlier side weighs less, so the plan covers fewer weeks than Lucknow's.
 - (c) 0.35 puts the cheap cost on top; the share to cover is the late cost over the sum, about 0.65, and the plan still sits above the median.
-- (d) The share is right, and the calendar copy is the part that never carries over: Diwali moves, and the sale moves with it.
+- (d) The share is right, and the calendar copy is the part that never carries over: Diwali moves, from 20 October 2025 to 8 November 2026, so Lucknow's plan copied last year's weeks by their distance from the festival, and that alignment to the event that drives the peak is what carries over.
 
 **In the interview.** What stays is the method; what I rewrite is the cost of each error, and the plan's share of weeks follows from the two costs.
 
