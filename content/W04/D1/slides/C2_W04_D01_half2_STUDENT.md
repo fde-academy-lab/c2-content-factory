@@ -126,7 +126,8 @@ Transition: the answer.
 LIVE, 2 minutes 30 seconds. The acceptance floor is the city's call; the data says one anywhere between
 the two numbers stops the gaming without touching a driver who declines the odd bad trip. Say that
 the gap is this clean because the data is synthetic; on a real city the two groups overlap and where
-the acceptance floor sits is a trade-off the test measures.
+the acceptance floor sits is a trade-off the test measures. A gate on a dozen offers is noisy for a
+driver in a thin zone, so a minimum number of offers, or a four-week window, is part of that test.
 Transition: what the redesign would save, said honestly.
 ```
 
@@ -216,7 +217,7 @@ flowchart LR
 
 **The trap the interviewer sets.** Peak online hours rose 24 percent; a candidate who names that number and stops has measured the scheme by what it paid for.
 
-**A test's unit** is what gets the old rule or the new one. Here it is whole zones, so every driver and rider in a zone meets one rule and drivers in one zone cannot compare pay and switch.
+**A test's unit** is what gets the old rule or the new one: whole zones, single drivers, or the whole city switched between rules window by window. Drivers move between zones, so which unit fits is the question the tentative faculty block takes up.
 
 ```notes
 LIVE, 2 minutes. Pairs: one reads the interviewer, one answers cold for sixty seconds before
@@ -236,7 +237,7 @@ Transition: two answers side by side.
 | Structure | Lists hours, satisfaction, a survey | Goal, one north star with its lines, three guardrails, a leading input, the test by zone |
 | The trap | "Hours are up 24 percent, so it works" | Trips per online hour fell from 1.90 to 1.58, stepping down in the launch week, and the north star barely moved |
 | Segment and zones | None | 180 drivers added hours on fewer trips, mostly in the outer zones, where waits fell 6.6 to 5.95 minutes at about Rs 46,000 per extra trip |
-| Decision and cost | "Roll it out to more cities" | Hold it: Rs 2,836 per extra trip; floor only for weeks accepting half their offers; test by zone |
+| Decision and cost | "Roll it out to more cities" | Hold it: Rs 2,836 per extra trip, about Rs 7,400 net of the rise in requests; the Rs 300 floor only for weeks accepting half their offers; a test |
 
 ```notes
 LIVE, 4 minutes. Pairs tick both answers against the seven checks printed in the transcript file
@@ -254,7 +255,7 @@ Transition: the follow-ups an interviewer pushes on.
 
 | Follow-up | The hire-grade line |
 |---|---|
-| "Online hours rose 24 percent; what do you check before you celebrate?" | Trips per online hour and the rider's wait: hours rose 24 percent and trips 3, so the rate fell from 1.90 to 1.58 and waits barely moved |
+| "Online hours rose 24 percent; what do you check before you celebrate?" | Trips per online hour and the rider's wait: hours rose 24 percent and trips 3, so the rate fell from 1.90 to 1.58 and waits fell only from 4.8 to 4.6 minutes |
 | "Which guardrail would driver operations fight, and why are they partly right?" | The acceptance floor: some declines are fair, so set it in the gap the data shows, above 0.46 and below 0.78, or 0.43 and 0.67 once an accepted trip later cancelled counts as declined, and test two levels, since on a real city the groups overlap |
 | "The drivers control when they log in; what happens to your number?" | Logging in cannot raise it, since each trip needs a rider's request; logging off can, so print the driver count beside the rate |
 

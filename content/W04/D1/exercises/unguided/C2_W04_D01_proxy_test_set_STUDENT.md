@@ -4,7 +4,7 @@
 
 **The example, in short.** A school canteen (invented) serves 200 plates a day. From day 6 its
 servers are paid per token handed out, and tokens go from 200 a day to 400 while plates stay at 200,
-so the owner, who cooks tomorrow's rice from today's tokens, throws away Rs 1,500 of rice a day. The
+so the kitchen, which cooks rice to the token count, throws away Rs 1,500 of rice a day. The
 same school pays its bus driver per kilometre logged from day 6, and the kilometres go from 40 a day
 to 55 while 30 children are dropped home every day.
 

@@ -12,18 +12,19 @@ flowchart LR
     C4["<b>4 Definitions: numerator,<br/>denominator, window,<br/>exclusions</b><br/>four lines make it computable"]
     C5["<b>5 Gaming, and definitions<br/>that resist it</b><br/>a receipt, a system clock,<br/>dated changes"]
     C6["<b>6 The metric<br/>definition artifact</b><br/>seven lines, one page"]
-    U["<b>Uber, Hyderabad</b><br/>chapters 7 to 11<br/>apply all six"]
+    U["<b>Applied to: Uber</b><br/>chapter 7: topics 1, 4<br/>chapter 8: 4, 5<br/>chapter 9: 2, 3, 5, 6<br/>chapter 10: 5, 6<br/>chapter 11: all six"]
     C1 --> C2
     C2 --> C3
+    C2 --> C6
     C3 --> C6
     C1 --> C4
     C4 --> C5
     C5 --> C6
     C6 --> U
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    classDef kalpa fill:#FFF7E6,stroke:#C98A00,color:#5C3D00
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class C1,C2,C3,C4,C5,C6 lit
-    class U kalpa
+    class U known
 ```
 
 **Crux:** Chapters 1 to 3 choose the number, chapters 4 and 5 write it so it cannot be gamed, and chapter 6 puts both on one page: canteen tokens 1.0 to 2.0 a plate, a pass rate 0.60 to 0.90 as licences fell to 0.36, 10.0 an over needed at over 10, five readings of one register, 50 marked against 40 confirmed (all invented).
@@ -37,8 +38,8 @@ flowchart LR
     Q2["<b>Can it rise badly?</b><br/>idle hours, thin zones"]
     Q3["<b>What stops that?</b><br/>north star and guardrails"]
     S1["<b>The tree</b><br/>north star and inputs"]
-    S2["<b>The seesaw</b><br/>star up, guardrail down"]
-    S3["<b>The window's start</b><br/>who starts the clock"]
+    S2["<b>The seesaw</b><br/>paid number up,<br/>guardrail down"]
+    S3["<b>The clock's start</b><br/>who starts it"]
     P1["<b>No usage condition</b><br/>Wells Fargo"]
     P2["<b>Units move numbers</b><br/>Delhi Metro"]
     P3["<b>The measured set the start</b><br/>VA"]
@@ -86,7 +87,7 @@ E and F keep shorter weeks than the idle tail's average of about 39 peak online 
 | Window | The stretch of time | The calendar week |
 | Exclusions | Left out, with why | Cancelled trips, test accounts, off-window trips |
 | Does not reward | Behaviour paid nothing | Hours online, declines, a shrinking base |
-| Guardrails | Must not get worse | Riders: accepted share over a floor, the wait by zone. Budget: top-up per trip |
+| Guardrails | Must not get worse past a margin | Riders: accepted share over an acceptance floor, read with the cancel share; the wait by zone. Budget: top-up per trip |
 | Gaming note | What each guardrail catches | Declines and cancels; lost supply; a runaway top-up |
 
 **Crux:** The first four lines make a number computable; the last three make it hard to game. North star 35.76 to 35.89 trips per online driver-week.
@@ -98,13 +99,13 @@ Could a team hit this number while the thing it stands for got worse?
 | Proposed number | How it rises badly | The guardrail |
 |---|---|---|
 | Peak online hours | Online in empty zones | Hours with no trip: 0.22 to 0.38 |
-| Completed trips per driver | Short trips only | Offers accepted, over a floor |
+| Completed trips per driver | Short trips only | Offers accepted, over an acceptance floor |
 | Enrolled drivers | Sign up, never drive | Share online at peak |
 
-**Crux:** A guardrail is chosen by the gaming it catches; another growth count catches nothing.
+**Crux:** A guardrail is chosen by the harm or gaming it catches; a growth target catches nothing.
 
 ## Panel 6: What did hours cost, and what would the redesign save?
 
-Rs 1.9 crore bought 6,700 more trips, about Rs 2,836 each; **Rs 1.159 crore** of it went to weeks accepting under half their offers. Rule: the floor stays only for weeks accepting half, a cancel counted as a decline.
+Rs 1.9 crore bought 6,700 more trips, about Rs 2,836 each, or about Rs 7,400 each net of the rise in requests; **Rs 1.159 crore** went to weeks accepting under half their offers, all of them the idle tail's. Rule: the Rs 300 floor stays only for weeks accepting half, an accepted trip later cancelled counted as declined.
 
 **Crux:** Saving Rs 92.7 lakh if a fifth of the idle top-up is still paid, Rs 58 lakh if half is: an assumption with a range, settled by a test.

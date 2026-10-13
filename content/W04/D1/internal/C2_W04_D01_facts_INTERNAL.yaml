@@ -1180,6 +1180,26 @@ numbers:
   unit: Rs
   how: Rs 1.9 crore over the 6,700 extra trips
   used_by: the interview's sizing
+- id: fulfil_rate_before
+  value: 0.89
+  unit: share
+  how: completed peak trips over rider requests, before
+  used_by: the interview's sizing, net of demand
+- id: trips_expected_after_old_rate
+  value: 228335
+  unit: trips
+  how: 256,556 requests after, at the before window's fulfilment rate
+  used_by: the interview's sizing, net of demand
+- id: extra_trips_net_of_demand
+  value: 2565
+  unit: trips
+  how: 230,900 less the trips the old fulfilment rate gives on the new requests
+  used_by: the interview's sizing, net of demand
+- id: topup_per_net_extra_trip_rs
+  value: 7400
+  unit: Rs
+  how: Rs 1.9 crore over the extra trips net of demand, to the nearest hundred
+  used_by: the interview's sizing, net of demand
 - id: topup_per_extra_trip_fares
   value: 17.2
   unit: fares

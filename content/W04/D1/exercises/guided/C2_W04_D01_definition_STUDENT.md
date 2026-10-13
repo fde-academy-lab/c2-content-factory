@@ -117,7 +117,7 @@ way the main number can be hit badly.
 
 ### Q4. Design. Paid per completed trip, a driver accepts only short or nearby trips and declines the rest. Which guardrail catches it in the driver's own record, in the week it starts?
 
-a) Accepted share of offers, at or above a floor the city sets
+a) Accepted share of offers, at or above an acceptance floor
 
 b) Median rider wait at peak, read zone by zone each week
 

@@ -5,7 +5,7 @@ Answers: 1a 2c 3b
 *Kalpa Retail is the programme's fictional client, and its numbers here are names with no values. Balaji Kirana and the chase are invented for chapter 3 and chapter 5, with every number in them.*
 
 Kalpa's growth plan chases delivered orders per active customer per month, and its dashboard holds
-eight numbers from Week 1's revenue tree. Balaji Kirana (invented) judges its month on the share of
+eight numbers from Week 1's revenue tree. Balaji Kirana (invented) judges each week on the share of
 orders billed that customers confirmed with their OTP. The set asks which numbers move before the
 north star and which confirm it afterwards.
 
@@ -22,7 +22,7 @@ In the chase, the runs an over needed reached 10.0 after over 10 and the result 
 |---|---|---|---|---|
 | 1 | a | Which list holds every leading number among the eight? | Orders booked (1), items added to baskets (3), orders out for delivery on the day promised (6) and sessions per active customer (8) all move this week, before the month's delivered orders are counted, and the team can act on each. | b: it leaves out number 6, a delivery problem seen the day it happens. c: the quarter's delivered revenue (2) adds up deliveries already made. d: the quarter's delivered order value (5) is an average of finished orders. |
 | 2 | c | Which reason defends number 1 leading and number 2 lagging? | An order is booked days before it is delivered and counted in the north star, while the quarter's revenue sums deliveries that have already happened. | a: the kind of number does not decide when it moves; a returns count (7) is a count and it still arrives late. b: reading revenue every day would not move it earlier, since it still sums finished deliveries. d: a rise and a fall in one week say nothing about which number moved first. |
-| 3 | b | Which number should the owner read each morning? | A done press with no OTP is the shop's warning: it appears the day after the gate-marking and points at one delivery boy, while the month's confirmed share can still change. | a: the month's complaints arrive after the month, and chapter 5 found all 6 on the 10 orders with no OTP, too late to act. c: the month's revenue confirms sales after they happen. d: the phone list counts customers on a list, which says nothing about deliveries, and it is read once a month. |
+| 3 | b | Which number should the owner read each morning? | A done press with no OTP is the shop's warning: it appears the day after the gate-marking, while the week's confirmed share can still change. | a: the week's complaints arrive after the week, and chapter 5 found all 6 on the 10 orders with no OTP, too late to act. c: the week's revenue confirms sales after they happen. d: the phone list counts customers on a list, which says nothing about deliveries, and it is read once a week. |
 
 ## Which item is worth arguing about?
 

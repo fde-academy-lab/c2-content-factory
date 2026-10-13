@@ -95,11 +95,11 @@ proposes one is expected to name its guardrail in the same breath.
 |---|---|---|
 | 1 | Completed peak trips per enrolled driver per week | Drivers accept short trips and decline the rest |
 | 2 | Peak online hours per enrolled driver per week | Drivers sit online in zones with no riders |
-| 3 | Enrolled drivers | Drivers sign up for the floor and never drive |
+| 3 | Enrolled drivers | Drivers sign up for the Rs 300 floor and never drive |
 
 | Guardrail | What it reads |
 |---|---|
-| G1 | Share of offers accepted, at or above a floor the city sets |
+| G1 | Share of offers accepted, at or above an acceptance floor the city sets |
 | G2 | Share of online hours with no completed trip |
 | G3 | Share of enrolled drivers online at least one peak hour that week |
 | G4 | Total peak online hours across the city |
@@ -119,6 +119,6 @@ d) 1 with G1, 2 with G2, 3 with G3
 ## Where do you check your calls on the data?
 
 Open notebook 09, `notebooks/C2_W04_D01_09_north_star_guardrails_cost_STUDENT.ipynb`, and find the cell
-under "Which number moved first?". It prints the share of offers accepted and the bookings per online
+under "Which number settled first?". It prints the share of offers accepted and the bookings per online
 hour for the three weeks after the launch, which are the two numbers Q2 asks you to defend. Then post
 your three letters.

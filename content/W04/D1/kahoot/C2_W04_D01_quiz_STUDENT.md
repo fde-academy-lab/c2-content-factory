@@ -90,12 +90,12 @@ seconds, and an item most of the room misses is the call to say again before the
 
 ---
 
-## Q7. An AI coding assistant's one-page definition counts suggestions accepted, and developers accept text, then delete it. Which blank line would refuse to pay for that?
-*Tests: The metric definition artifact, in the AI-company variant: the line on what the number does not reward names the behaviour it refuses to pay for.*
+## Q7. An AI coding assistant's one-page definition counts suggestions accepted, and developers accept text, then delete it. Which line, rewritten, stops paying for that?
+*Tests: The metric definition artifact, in the AI-company variant: the numerator's receipt condition, text kept at the next commit, stops paying for accepted-then-deleted text; a line on what the number does not reward names the behaviour and cannot override a numerator that counts it.*
 
 - The window: accepted this week, set against last week
 - The guardrails: suggestions shown per developer per day
-- What it does not reward: text accepted, then deleted  <- correct
+- The numerator: suggested text kept at the next commit  <- correct
 - The target: a higher accepted share than last quarter
 
 ---

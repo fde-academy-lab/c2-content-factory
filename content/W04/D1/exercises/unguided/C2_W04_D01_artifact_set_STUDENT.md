@@ -7,8 +7,8 @@ deliveries confirmed with the customer's OTP. Denominator: orders billed that we
 beside the rate. Window: the calendar week. Exclusions: orders the customer cancelled before
 dispatch, each change dated. What it does not reward: a done press with no OTP, a dispatch time typed
 by hand, a shrinking order count. Guardrails: complaints per 100 orders billed, and the share of
-confirmed deliveries within 30 minutes of the bill. Gaming note: complaints catch gate-marking, and
-the bill clock catches a dispatch time typed late. Over four weeks it read 40 of 50, 0.80. The son's
+confirmed deliveries within 30 minutes of the bill. Gaming note: complaints catch an OTP asked for
+by phone before the goods arrive, and the bill clock catches a dispatch time typed late. Over four weeks it read 40 of 50, 0.80. The son's
 growth plan read "Deliveries, monthly, plus 20 percent".
 
 **Who needs the answer.** Three people who must sign one page: the owner, who wants the deliveries
@@ -70,7 +70,7 @@ deliveries, a number about the shop's growth.
 
 ### Q3. Design. What does the page offer the son, so that growth stays in view without becoming a second north star?
 
-a) A guardrail on orders billed, so growth is watched beside the rate
+a) A growth target, orders billed up 20 percent, read beside the rate
 
 b) A second north star for growth, read in alternate weeks
 

@@ -983,6 +983,16 @@ fact("cost_per_extra_outer_trip_rs", int(round(idle_outer_topup / extra_outer, -
 fact("extra_trips", int(A["peak_trips"] - B["peak_trips"]), "trips", "230,900 - 224,200", "the interview's sizing")
 fact("topup_per_extra_trip_rs", round(19000000 / (A["peak_trips"] - B["peak_trips"])), "Rs",
      "Rs 1.9 crore over the 6,700 extra trips", "the interview's sizing")
+city_fulfil_before = B["peak_trips"] / zones.loc["before", "requests"]
+trips_expected_after = zones.loc["after", "requests"] * city_fulfil_before
+fact("fulfil_rate_before", r3(city_fulfil_before), "share", "completed peak trips over rider requests, before",
+     "the interview's sizing, net of demand")
+fact("trips_expected_after_old_rate", int(round(trips_expected_after)), "trips",
+     "256,556 requests after, at the before window's fulfilment rate", "the interview's sizing, net of demand")
+fact("extra_trips_net_of_demand", int(round(A["peak_trips"] - trips_expected_after)), "trips",
+     "230,900 less the trips the old fulfilment rate gives on the new requests", "the interview's sizing, net of demand")
+fact("topup_per_net_extra_trip_rs", int(round(19000000 / (A["peak_trips"] - trips_expected_after), -2)), "Rs",
+     "Rs 1.9 crore over the extra trips net of demand, to the nearest hundred", "the interview's sizing, net of demand")
 fact("topup_per_extra_trip_fares", round(19000000 / (A["peak_trips"] - B["peak_trips"]) / FARE, 1), "fares",
      "Rs 2,836 over the Rs 165 average fare", "the interview's sizing")
 fact("hours_to_carry_idle_trips", int(round(idle.loc["after", "peak_trips"] / 1.9)), "hours",

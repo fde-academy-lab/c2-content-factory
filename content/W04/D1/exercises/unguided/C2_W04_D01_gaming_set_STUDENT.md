@@ -13,7 +13,7 @@ Uber's city head and finance partner, and every team that writes an incentive. A
 paid controls pays for parcels nobody received.
 
 **The questions on the way.** Which single change stops gate-marking at the lowest cost? Which line
-stops each of four public ways of gaming? Which numerator and denominator resist a tuition app's
+stops each of four ways of gaming, three of them public? Which numerator and denominator resist a tuition app's
 gaming?
 
 Q1 is called aloud at the end of chapter 5, with the trainer; Q2 and Q3 are sat in the practice lab.
@@ -43,14 +43,14 @@ d) A weekly phone call to every customer who ordered that week
 
 ---
 
-## Which line stops each of four public ways of gaming?
+## Which line stops each of four ways of gaming, three of them public?
 
 | # | How the count was raised |
 |---|---|
-| 1 | Uber's case: a driver keeps the app open in a zone with no riders, and every hour counts |
+| 1 | The illustrative Uber case: a driver keeps the app open in a zone with no riders, and every hour counts |
 | 2 | Wells Fargo: accounts that customers never used counted toward the bank's cross-sell figure |
-| 3 | US Veterans Affairs: schedulers typed a patient's "desired date", so waits read short |
-| 4 | Wells Fargo, 2013: remittance accounts joined the count without investors being told |
+| 3 | US Veterans Affairs: schedulers typed the next open slot as a patient's "desired date", so waits read zero |
+| 4 | Wells Fargo, 2013: accounts for sending money abroad joined the count without investors being told |
 
 | Line | What the definition says |
 |---|---|

@@ -29,14 +29,14 @@ Post exactly this shape: xxx
 
 ## Which guardrail would have caught the school's 2026 move?
 
-A guardrail is a number watched beside the north star so that hitting the north star does no hidden
+A guardrail is a number watched beside the number being chased, so that hitting it does no hidden
 harm. It earns its place by the harmful move it catches.
 
 ### Q1. The owner will print next year's pass rate on the hoarding again. Which guardrail beside it would have caught the 2026 move?
 
 a) Learners enrolled, since a larger intake shows families trust the school
 
-b) Passes per instructor, since it rewards the instructors who teach best
+b) The pass rate split by instructor, since it shows who teaches best
 
 c) The share of enrolled learners who took the licence test that year
 

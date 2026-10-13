@@ -564,7 +564,7 @@ else:
 
         - Chase one number: the one that best captures the value the people served get.
         - Read the number a plan chases beside a guardrail that catches a harmful way of hitting it.
-        - Choose a guardrail by the gaming it catches: a second growth target, such as "orders up 20
+        - Choose a guardrail by the harm or gaming it catches: a second growth target, such as "orders up 20
           percent", is one more number to chase and catches none.
         - A rate can rise because its denominator shrank, so print the count beside the rate.
 
@@ -764,7 +764,8 @@ else:
 
         **The rules.**
 
-        - A leading number moves before the north star, while the team can still act on it.
+        - A leading number moves before the north star, while the team can still act on it, and
+          history shows it predicts the north star.
         - A lagging number confirms the north star after the result is fixed.
         - Read a leading number beside its guardrail: 10 an over with 7 wickets in hand is a different
           chase from 10 an over with 2.
@@ -977,9 +978,10 @@ else:
 
         **The published form.** Swiggy's shareholder letters define a monthly transacting user as a
         unique user with at least one completed order in the month, averaged over the period, so a
-        reader cannot mistake it for registered users. In 2018 Delhi Metro counted about 27 lakh riders
-        a day while its new "line utilisation" count read 45,35,932 on 29 May 2018, because a rider who
-        changes across three lines counts three times: one crowd, two units.
+        reader cannot mistake it for registered users. In February 2018 Delhi Metro carried nearly 27
+        lakh riders a day; its new "line utilisation" count read 45,35,932 on 29 May 2018, because a
+        rider who changes across three lines counts three times: one crowd, two units, and two windows
+        too. After the change it did not share the daily ridership figure.
 
         **Where it goes next.** Notebook 05 asks what the four lines must resist. After the break,
         `C2_W04_D01_08_denominators_on_full_data_STUDENT.ipynb` writes the four lines for all 12,860
@@ -1012,8 +1014,10 @@ def c05():
         md('''
         ## What do the shop's four weeks of orders hold?
 
-        **Gaming** is raising a number without doing what it stands for. It needs no dishonesty: a paid
-        number pulls behaviour toward it, and people move with the pull. Balaji Kirana (invented), a
+        **Gaming** is raising a number without doing what it stands for. Some of it is false reporting,
+        a done press with nothing delivered, which a receipt and an audit stop; some is honest work
+        steered to the count, which pay design and a guardrail catch. Either way a paid number pulls
+        behaviour toward it. Balaji Kirana (invented), a
         corner shop in Hyderabad, delivers the orders it bills. For each order the table records whether
         the boy marked it done in the shop's app, whether the customer confirmed it with the OTP, the
         one-time code read out at the door, the minutes from the dispatch time the boy types to the done
@@ -1149,9 +1153,9 @@ check("the resistant rule counts 30 deliveries where the gamed one counts 50", (
         exclusions are dated, and it says what it does not reward. The four ways the shop shows, each
         with the public record where it happened and the line that stops it:
 
-        | How it is gamed | At Balaji Kirana (invented) | In public | The line that stops it |
+        | How it is gamed | At Balaji Kirana (invented) | In public, or in the case | The line that stops it |
         |---|---|---|---|
-        | The paid person controls the count | The boy presses done | Uber's case: an open app counts as online (chapter 7) | A count the person served confirms |
+        | The paid person controls the count | The boy presses done | The illustrative Uber case: an open app counts as online (chapter 7) | A count the person served confirms |
         | No receipt or use is needed | Done with no OTP | Wells Fargo counted accounts nobody used | A receipt condition in the numerator |
         | The person timed sets the clock's start | The boy types the dispatch time | At US Veterans Affairs the wait ran from a "desired date" the scheduler typed, and typing the next open slot made it read zero | A clock that starts at the system's time |
         | A quiet change of definition | The shop starts counting attempts | Wells Fargo added accounts for sending money abroad to its count in 2013 without telling investors | Exclusions and changes dated on the page |
@@ -1990,8 +1994,8 @@ print(f"share to driver-weeks under 0.5: {low / (low + high):.2f}")
         | Window | The calendar week |
         | Exclusions | Trips cancelled by either side, test accounts, trips outside the windows |
         | What it does not reward | Hours online; offers declined; a shrinking enrolled base, since fewer drivers in the count would raise the rate with no extra trip |
-        | Guardrails | For riders: offers accepted over offers shown, at or above an acceptance floor the city sets, and the median rider wait at peak. For the budget: top-up per completed trip |
-        | Gaming note | Guardrail 1 catches declining and cherry-picking; guardrail 2, supply that stops serving riders; guardrail 3, a top-up that runs away from the trips it pays for |
+        | Guardrails | For riders: offers accepted over offers shown, at or above an acceptance floor the city sets, read with the share of accepted trips the driver cancels, and the median rider wait at peak. For the budget: top-up per completed trip |
+        | Gaming note | Guardrail 1 catches declining and cherry-picking, and the cancel share beside it accepting then cancelling; guardrail 2, supply that stops serving riders; guardrail 3, a top-up that runs away from the trips it pays for |
 
         This cell computes the north star and the three guardrails for each window.
         '''),
@@ -2156,7 +2160,8 @@ uber = {"numerator": "trips completed inside the peak windows, one per paying ri
         "does_not_reward": "hours online, offers declined, a shrinking enrolled base",
         "guardrails": ["offers accepted over offers shown, at or above an acceptance floor",
                        "median rider wait at peak, by zone", "top-up per completed trip"],
-        "gaming_note": {"offers accepted over offers shown, at or above an acceptance floor": "catches declining and cherry-picking",
+        "gaming_note": {"offers accepted over offers shown, at or above an acceptance floor":
+                        "catches declining and cherry-picking; the cancel share read beside it catches accepting then cancelling",
                         "median rider wait at peak, by zone": "catches supply that stops serving riders",
                         "top-up per completed trip": "catches a top-up that runs away from the trips it pays for"}}
 '''
@@ -2638,7 +2643,7 @@ STEPS = [("1. The goal", "riders picked up\\nfaster at peak"),
          ("3. The guardrails", f"accepted {b.acceptance:.3f}\\nto {a.acceptance:.3f}; wait {b.median_wait}\\n"
                                f"to {a.median_wait} minutes;\\ntop-up Rs {a.topup_per_trip_rs} a trip"),
          ("4. The leading input", f"acceptance settled\\nin the launch week,\\nat {launch_acceptance:.3f}"),
-         ("5. The test", "zones as the unit,\\nold rule\\nagainst new")]
+         ("5. The test", "old rule against\\nnew, with its\\nunit named")]
 fig, ax = plt.subplots(figsize=(11.6, 3.2))
 for i, (title, body) in enumerate(STEPS):
     x = i * 2.3
@@ -2724,6 +2729,10 @@ extra_outer = o.loc["after", "peak_fulfilled"] - o.loc["after", "peak_requests"]
 idle_outer_topup = after.loc[after["driver_id"].isin(idle) & after["zone_mode"].isin(OUTER), "topup_rs"].sum()
 per_extra_outer = int(round(idle_outer_topup / extra_outer, -3))
 per_extra_trip = int(round(after["topup_rs"].sum() / (trips["after"] - trips["before"])))
+requests = zw.groupby("window")["peak_requests"].sum()
+fulfil_before = trips["before"] / requests["before"]                  # trips over requests before
+net_extra = int(round(trips["after"] - requests["after"] * fulfil_before))  # extra trips the scheme bought
+per_net_trip = int(round(after["topup_rs"].sum() / net_extra, -2))
 fig, ax = plt.subplots(figsize=(8.0, 3.6))
 for zone, colour in zip(OUTER, [VIOLET, ROSE, LAV]):
     z = outer[outer["zone"] == zone].sort_values("week_start")
@@ -2741,21 +2750,25 @@ plt.show()
 print(f"{len(idle)} drivers in the idle tail; the outer zones' wait {outer_wait['before']} to {outer_wait['after']} minutes")
 print(f"the idle tail's outer-zone top-up per extra outer trip: about Rs {per_extra_outer:,}")
 print(f"the whole top-up per extra trip across the city: Rs {per_extra_trip:,}, over {trips['after'] - trips['before']:,} extra trips")
+print(f"net of the rise in requests, at the old fulfilment rate of {fulfil_before:.2f}: {net_extra:,} extra trips, "
+      f"about Rs {per_net_trip:,} each")
 '''),
         md('''
         **What happened.** The 180 drivers of the idle tail added hours on fewer trips, most of the new
         hours in the three outer zones. There the middle wait fell from 6.6 to 5.95 minutes, so riders
         in the thin zones gained a little, and the idle tail's top-up in those zones came to about
         Rs 46,000 for each extra trip they fulfilled. Across the city the Rs 1.9 crore came to Rs 2,836
-        for each of the 6,700 extra trips. That is the decision line: hold the scheme, keep the Rs 300
-        floor only for weeks that accept at least half their offers, and test the redesign with zones as
-        the unit.
+        for each of the 6,700 extra trips, but requests rose 1.8 percent too: at the old fulfilment rate
+        of 0.89 the new requests alone give 228,335 trips, so about 2,565 extra trips came from the
+        scheme, near Rs 7,400 each, before any allowance for the season. That is the decision line: hold
+        the scheme, keep the Rs 300 floor only for weeks that accept at least half their offers, and test
+        the redesign, with the test's unit named.
 
         ## Which line answers each follow-up?
 
         | The interviewer pushes | The hire-grade line, from the numbers above |
         |---|---|
-        | "Online hours rose 24 percent; what do you check before you celebrate?" | Trips per online hour and the rider's wait: hours rose 24 percent and trips 3, so the rate fell from 1.90 to 1.58 and waits barely moved |
+        | "Online hours rose 24 percent; what do you check before you celebrate?" | Trips per online hour and the rider's wait: hours rose 24 percent and trips 3, so the rate fell from 1.90 to 1.58 and waits fell only from 4.8 to 4.6 minutes |
         | "Which guardrail would driver operations fight, and why are they partly right?" | The acceptance floor: some declines are fair, so set it in the gap the data shows, above 0.46 and below 0.78, or 0.43 and 0.67 once an accepted trip later cancelled counts as declined, and test two levels, since on a real city the groups overlap |
         | "The drivers control when they log in; what happens to your number?" | Logging in cannot raise it, since each trip needs a rider's request; logging off can, so print the driver count beside the rate |
 
@@ -2844,6 +2857,8 @@ check("180 drivers in the idle tail; the outer zones' wait 6.6 to 5.95 minutes",
       len(idle) == 180 and outer_wait.tolist() == [6.6, 5.95])
 check("about Rs 46,000 per extra outer trip, and Rs 2,836 per extra trip across the city",
       (per_extra_outer, per_extra_trip) == (46000, 2836))
+check("net of the rise in requests, about 2,565 extra trips at near Rs 7,400 each",
+      (round(fulfil_before, 2), round(requests["after"] * fulfil_before), net_extra, per_net_trip) == (0.89, 228335, 2565, 7400))
 check("the weak answer writes 2 of the 7 lines, and the hire-grade page all seven",
       len(missing_lines(weak)) == 5 and missing_lines(uber) == [])
 '''),
@@ -2854,11 +2869,13 @@ check("the weak answer writes 2 of the 7 lines, and the hire-grade page all seve
            which decision rides on the answer against which baseline.
         2. The hire-grade answer runs five steps, each filled from the data: riders picked up faster;
            the north star at 35.76 then 35.89; acceptance 0.863 to 0.730, the wait 4.8 to 4.6 minutes
-           and Rs 82.3 of top-up a trip; acceptance settled in the launch week; a test by zone.
+           and Rs 82.3 of top-up a trip; acceptance settled in the launch week; a test with its unit
+           named.
         3. It reads all four bars: hours rose from 118,000 to 146,300 while trips per hour fell from
            1.90 to 1.58 and the north star barely moved.
         4. It names the segment and the money: 180 drivers, the outer zones' wait 6.6 to 5.95 minutes
-           at about Rs 46,000 per extra outer trip, and Rs 2,836 per extra trip across the city.
+           at about Rs 46,000 per extra outer trip, and Rs 2,836 per extra trip across the city, near
+           Rs 7,400 once the rise in requests is netted out.
         5. Each follow-up has a line from the data, and the coding assistant's page runs on the same
            seven lines and the same check.
 

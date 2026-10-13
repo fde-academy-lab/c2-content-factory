@@ -13,7 +13,7 @@ numbers by when they move and pairs three proposed north stars with the guardrai
 
 A leading number moves before the north star and can still be acted on this week; a lagging number
 adds up what already happened. A guardrail is chosen by the gaming it catches: for each proposed north
-star, the question is how a driver could hit it while riders were served no better, and which number would
+star, the question is how a driver could hit it while riders gained little, and which number would
 move when that happens. The case shows the lead in time: acceptance settled at its new level, 0.729,
 in the launch week, while gross bookings per online hour took three weeks to fall from Rs 271 to
 Rs 259.1.
@@ -29,7 +29,7 @@ Rs 259.1.
 ## Which item is worth arguing about?
 
 Item 3, the spare guardrail. G4, total peak online hours, is the guardrail a hurried group writes
-for the hours north star, because it sounds like supply. It is another growth count: it rises with
+for the hours north star, because it sounds like supply. It is one more number to chase: it rises with
 the idling it is supposed to catch. The question to ask of any guardrail is what it would catch, and
 for G4 the answer is nothing.
 
@@ -44,6 +44,6 @@ guardrail on value, would have shown that change as a fall.
 
 ## What does notebook 09 confirm?
 
-The cell under "Which number moved first?" prints acceptance at 0.729, 0.735 and 0.729 for the three
+The cell under "Which number settled first?" prints acceptance at 0.729, 0.735 and 0.729 for the three
 weeks from 31 August, beside bookings per online hour of Rs 271, Rs 261.7 and Rs 259.1, and the
 chart above it shows acceptance flat from the launch week while bookings per hour kept falling.

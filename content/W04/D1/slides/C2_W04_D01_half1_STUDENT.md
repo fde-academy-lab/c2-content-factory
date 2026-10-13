@@ -348,11 +348,12 @@ flowchart LR
     class B,D,C unknown
 ```
 
-**The same test failed at a bank.** Cross-selling is selling an existing customer one more product, such as a credit card to someone with a savings account. Wells Fargo paid staff on a cross-sell number, accounts and products per household, that counted accounts customers never asked for or used: USD 185 million in penalties in 2016 (100 to the US consumer-finance regulator, 35 to a US bank regulator, 50 to Los Angeles) and a USD 3 billion settlement in 2020.
+**The same test failed at a bank.** Cross-selling is selling an existing customer one more product, such as a credit card to someone with a savings account. Wells Fargo judged branch staff on products sold, through sales targets and bonuses, and showed investors a cross-sell number, products per household; staff opened accounts customers never asked for or used, and both counts rose. It paid USD 185 million in penalties in 2016 (100 to the US consumer-finance regulator, 35 to a US bank regulator, 50 to Los Angeles) and USD 3 billion in 2020.
 
 ```notes
-LIVE, 1 minute. The idea joins the map. Then the bank, in order: the number (accounts per
-household), the missing condition (nobody had to use the account), what it cost (USD 185 million in
+LIVE, 1 minute. The idea joins the map. Then the bank, in order: the numbers (products sold, on
+which the CFPB says staff chased "sales targets" and "bonuses", and the cross-sell number, products
+per household, which investors read), the missing condition (nobody had to use the account), what it cost (USD 185 million in
 2016: the CFPB's USD 100 million, the OCC's USD 35 million and Los Angeles's USD 50 million, all named
 in the CFPB's release; USD 3 billion in 2020, and the bank dropped product sales goals). Do not quote a firing count or
 Goodhart; neither is verified in the week's sources. Sources:
@@ -476,7 +477,7 @@ equals passed over enrolled, which notebook 02 checks a second way. Transition: 
 
 1. Chase one number: the one that best captures the value the people served get.
 2. Read the number a plan chases beside a guardrail that catches a harmful way of hitting it.
-3. Choose a guardrail by the gaming it catches: a second growth target, such as "orders up 20 percent", is one more number to chase and catches none.
+3. Choose a guardrail by the harm or gaming it catches: a second growth target, such as "orders up 20 percent", is one more number to chase and catches none.
 4. A rate can rise because its denominator shrank, so print the count beside the rate.
 
 **In the interview.** [F] North-star against guardrail, with one example pair.
@@ -493,12 +494,12 @@ Transition: two companies whose headline number had to match what they were tryi
 *What happens when a north star counts the wrong thing for what the business is trying to do?*
 
 ```stats
-value: 28% | label: of MTUs, in Swiggy's words | note: monthly transacting users who used Maxxsaver, Instamart's larger-basket offer, in the quarter to 30 June 2025
-value: Rs 612 | label: average order value | note: up 16 percent on the quarter before, with slightly fewer orders per user
+value: over 28% | label: of MTUs, in Swiggy's words | note: monthly transacting users who used Maxxsaver, Instamart's larger-basket offer, in the quarter to 30 June 2025
+value: Rs 612 | label: average order value | note: up 16 percent on the quarter, from wider non-grocery selection and Maxxsaver
 value: NOV | label: Eternal's headline | note: net order value: the value of orders before discounts (GOV), minus the discounts
 ```
 
-**Swiggy Instamart's Maxxsaver** unlocks extra discounts once a cart passes a threshold, so some users put more into fewer orders: orders per user would have read the offer's success as a fall. **Eternal**, whose businesses include Zomato and Blinkit, stopped disclosing gross order value in its letter for the quarter to 30 June 2026 "as NOV more accurately reflects underlying performance": a discount is value handed back to the customer, which gross order value still counts.
+**Swiggy Instamart's Maxxsaver** unlocks extra discounts once a cart passes a threshold, so some users put more into fewer orders. Swiggy puts the slower order growth down to that and to letting go of some low-value orders and unprofitable users: orders per user alone would read the quarter as a fall, and the letter adds that the ramp-up kept contribution flat. **Eternal**, whose businesses include Zomato and Blinkit, stopped disclosing gross order value in its letter for the quarter to 30 June 2026 "as NOV more accurately reflects underlying performance": a discount is value handed back to the customer, which gross order value still counts.
 
 ```notes
 LIVE, 1 minute. Each company chose a headline number that matched what it was trying to do;
@@ -573,7 +574,7 @@ rate without being taught it, so the idea arrives on something they know. Transi
 ---
 
 ## S23. When does the chase first need 10 an over?
-*The other side made 159, so 160 wins in 20 overs (invented); after 10 overs the chase is 60 for 3. When does the runs-an-over needed first reach 10?*
+*The other side made 159, so 160 wins in 20 overs (invented); after 10 overs at six an over the chase is 60 for 3. When does the runs-an-over needed first reach 10?*
 
 ```cards
 icon: list | eyebrow: a | title: After over 5 | body: A third of the way in. | tone: light
@@ -648,7 +649,7 @@ column at over 19, where the result takes over. Transition: the rules.
 ## S27. Four rules for leading and lagging numbers
 *Which rules does the chapter leave, and what does an interviewer ask?*
 
-1. A leading number moves before the north star, while the team can still act on it.
+1. A leading number moves before the north star, while the team can still act on it, and history shows it predicts the north star.
 2. A lagging number confirms the north star after the result is fixed.
 3. Read a leading number beside its guardrail: 10 an over with 7 wickets in hand is a different chase from 10 an over with 2.
 4. A dashboard of lagging numbers alone lets a drift run for weeks before anyone sees it.
@@ -871,11 +872,14 @@ flowchart LR
     class C,U unknown
 ```
 
-**The unit moves the number too.** In 2018 Delhi Metro counted about 27 lakh riders a day, and its new "line utilisation" count read 45,35,932 on 29 May 2018, since a rider who changes across three lines counts three times: one crowd, two units.
+**The unit moves the number too.** In February 2018 Delhi Metro carried nearly 27 lakh riders a day; its new "line utilisation" count read 45,35,932 on 29 May 2018, since a rider who changes across three lines counts three times: one crowd, two units, and two windows too. After the change it did not share the daily ridership figure.
 
 ```notes
 LIVE, 30 seconds. The idea joins the map, then Delhi Metro in one breath; chapter 8 meets the same
-lesson in offers against rider requests. Sources:
+lesson in offers against rider requests. PTI's copy gives February's "nearly 27 lakh commuters ...
+daily", the 29 May line utilisation, and that DMRC "did not share the daily average ridership
+figures" after the new section opened, ridership having "taken a hit after two fare hikes in 2017":
+a new count printed without the old one beside it, which is why chapter 5 dates every change. Sources:
 https://www.latestly.com/agency-news/dmrc-uses-new-count-metric-on-traffic-flow-doesnt-share-ridership-190870.html/amp
 (PTI's copy, checked 13 October 2026);
 https://www.deccanherald.com/india/delhi/delhi-metro-records-highest-ever-footfall-on-aug-29-2666561
@@ -899,7 +903,7 @@ Transition: who needs the answer.
 ## S38. Gaming raises a number without the work
 *Who needs the answer, and which questions lead to it?*
 
-**Gaming** is raising a number without doing what it stands for. It needs no dishonesty: a paid number pulls behaviour toward it, and people move with the pull.
+**Gaming** is raising a number without doing what it stands for. Some of it is false reporting, a done press with nothing delivered, which a receipt and an audit stop; some is honest work steered to the count, such as booking only the surest learners, which pay design and a guardrail catch. Either way a paid number pulls behaviour toward it.
 
 **Who needs the answer.** The owner of Balaji Kirana (invented), who pays the delivery boy Rs 20 for each delivery marked done in the shop's app and promises customers delivery within 30 minutes: a count the boy controls pays him for parcels nobody received.
 
@@ -911,7 +915,8 @@ label: The rules | title: Did they change unannounced? | body: A new kind of cou
 ```
 
 ```notes
-LIVE, 1 minute. Read the definition: gaming is a pull, and the people in the stories are ordinary.
+LIVE, 1 minute. Read the definition and its two kinds, false reporting and steered work; the people
+in the stories are ordinary.
 An OTP is the one-time code the customer reads out at the door. Transition: the prediction.
 ```
 
@@ -972,14 +977,14 @@ Transition: the four ways, side by side.
 ## S42. Four ways to game a count, the line that stops each
 *How is each way done at the shop and in public, and which line catches it?*
 
-| How it is gamed | At Balaji Kirana (invented) | In public | The line that stops it |
+| How it is gamed | At Balaji Kirana (invented) | In public, or in the case | The line that stops it |
 |---|---|---|---|
-| The paid person controls the count | The boy presses done | Uber: an open app counts as online (chapter 7) | A count the person served confirms |
+| The paid person controls the count | The boy presses done | The illustrative Uber case: an open app counts as online (chapter 7) | A count the person served confirms |
 | No receipt or use is needed | Done with no OTP | Wells Fargo: accounts nobody used | A receipt condition in the numerator |
 | The person timed sets the clock's start | The boy types the dispatch time | US Veterans Affairs: the wait ran from a "desired date" the scheduler typed | A clock that starts at the system's time |
 | A quiet change of definition | The shop starts counting attempts | Wells Fargo, 2013: accounts for sending money abroad added to the count, unannounced | Exclusions and changes dated on the page |
 
-At its Phoenix facility, 30 of 79 Veterans Affairs staff interviewed said they used the wrong desired date: typing the next open appointment date as the veteran's desired date made a long wait read as zero days.
+At its Phoenix facility, 30 of the 40 primary-care schedulers and supervisors the inspectors asked said they set the desired date from the next open appointment or the provider's availability, so a long wait read as zero days.
 
 ```notes
 LIVE, 1 minute. Read across each row. Wells Fargo: in the SEC's order, global remittance
@@ -1109,7 +1114,7 @@ label: Line 2 | title: Denominator | body: Divided by what, count printed.
 label: Line 3 | title: Window | body: Over which period.
 label: Line 4 | title: Exclusions | body: Left out of both, each change dated.
 label: Line 5 | title: Not rewarded | body: Behaviour the number refuses to pay for.
-label: Line 6 | title: Guardrails | body: Two or three numbers that must not fall.
+label: Line 6 | title: Guardrails | body: Two or three numbers that must not fall past a margin.
 label: Line 7 | title: Gaming note | body: The way of gaming each guardrail catches. | tone: dark
 ```
 
@@ -1153,8 +1158,8 @@ watch for the move that is left: the OTP taken over the phone. Transition: the w
 Week by week the weak page reads 12 or 13 deliveries; the full page reads 10 confirmed of the orders billed. Named last: the **metric definition artifact** is the seven-line page a company adopts, four lines that make the number computable and three that make it safe to pay for.
 
 ```notes
-LIVE, 1 minute. The same shape in public: a US quality measure is specified on one
-written page with its numerator, denominator, exclusions and time interval (CMS Measures Management
+LIVE, 1 minute. The same lines in public: a US quality measure's specification lists its
+numerator, denominator, exclusions and time interval among its building blocks (CMS Measures Management
 System, https://mmshub.cms.gov/measure-lifecycle/measure-specification/develop-specification,
 checked 13 October 2026). The seven lines are assembled from the curriculum row's own words:
 numerator, denominator, window and exclusions, what it deliberately does not reward, the guardrails
@@ -1737,7 +1742,7 @@ flowchart LR
     class P1,P2 bad
 ```
 
-**The crux.** A rate is two sums divided once, with its denominator named; the city's 1.90 to 1.58 is real, demand rose, and 180 drivers sitting online in thin zones carry the fall.
+**The crux.** The city's rate is two sums divided once, with its denominator named; the city's 1.90 to 1.58 is real, demand rose, and 180 drivers sitting online in thin zones carry the fall.
 
 **The senior analyst's check.** Baseline (1.90), denominator (online hours), evidence from a second table (requests rose 1.8 percent), and the segment reached a second way (acceptance finds the same 180).
 
@@ -1766,7 +1771,7 @@ ByteByteGo (the finished board). Transition: what the chapter answers.
 
 **Applies:** North-star and guardrail metrics (chapter 2); Leading against lagging indicators (chapter 3); Gaming, and definitions that resist it (chapter 5); The metric definition artifact (chapter 6).
 
-**Who needs the answer.** The city head, who must say by Friday what the scheme pays for, and the finance partner, who holds the top-up budget: a scheme that keeps paying for hours keeps paying drivers to sit online in zones with no riders.
+**Who needs the answer.** The city head, who must say by Friday what the scheme pays for, and the finance partner, who holds the top-up budget: a scheme that keeps paying for hours keeps paying drivers to sit online in zones with few riders.
 
 ```timeline
 label: The rule | title: Which number to pay for? | body: Four rules, voted.
@@ -1920,8 +1925,8 @@ Transition: the definition, line by line.
 | Window | The calendar week |
 | Exclusions | Trips cancelled by either side, test accounts, trips outside the windows |
 | What it does not reward | Hours online; offers declined; a shrinking enrolled base, since fewer drivers in the count would raise the rate with no extra trip |
-| Guardrails | For riders: accepted share at or above an acceptance floor the city sets, and the median rider wait. For the budget: top-up per completed trip |
-| Gaming note | Guardrail 1 catches declining and cherry-picking; guardrail 2, supply that stops serving riders; guardrail 3, a top-up that runs away from the trips it pays for |
+| Guardrails | For riders: accepted share at or above an acceptance floor the city sets, read with the share of accepted trips the driver cancels, and the median rider wait. For the budget: top-up per completed trip |
+| Gaming note | Guardrail 1 catches declining and cherry-picking, and the cancel share beside it accepting then cancelling; guardrail 2, supply that stops serving riders; guardrail 3, a top-up that runs away from the trips it pays for |
 
 Chapter 6's page, filled for the city. On the data, the north star read 35.76 trips per online driver-week before and 35.89 after: hours rose 24 percent and the number the scheme exists for barely moved. Every driver in the table enrolled, so the weeks before the launch count the same drivers.
 

@@ -32,7 +32,7 @@ design call? When do the solutions open? What shape does every answer line take?
 | Chapter 9, with the trainer | `guided/C2_W04_D01_definition_STUDENT.md` | What does a complete definition of the number the scheme pays for say, line by line? | Four letters called aloud, and the template filled from notebook 09 |
 | Afternoon, round 3 of the war game, in your group | `unguided/C2_W04_D01_redesign_STUDENT.md` | Does the redesigned scheme survive the three roles, and what would it save? | Four letters and the group's sheet: the definition, the saving with its assumption |
 | The practice lab, after the Kalpa notebook | `unguided/C2_W04_D01_kalpa_north_star_STUDENT.md` | Which number should Kalpa's growth plan chase, and which lines stop the app from gaming it? | Five letters and Kalpa's definition on the template |
-| The practice lab, or section 15 of the metric clinic, the fallback session that runs if the tentative faculty block does not | `unguided/C2_W04_D01_lead_lag_STUDENT.md` | Which of the city's numbers move before the north star, and which guardrail does each proposed north star need? | Three letters |
+| The practice lab, or section 15 of the metric clinic: the 120-minute session the fallback deck runs if the tentative faculty block does not, numbered on from the day's chapters | `unguided/C2_W04_D01_lead_lag_STUDENT.md` | Which of the city's numbers move before the north star, and which guardrail does each proposed north star need? | Three letters |
 | The practice lab, last | `practice/C2_W04_D01_lab_set_STUDENT.md` | Can you rebuild the day's count, sort a dashboard and write a definition on your own? | Five letters and one definition for a product you use |
 | Tonight | `../takehome/C2_W04_D01_brief_STUDENT.md` | What number would you pay a team for in a product you use every day, and what stops it being gamed? | One page and one number for Tuesday |
 
@@ -40,9 +40,9 @@ design call? When do the solutions open? What shape does every answer line take?
 
 ## Which item tests which of the day's six topics?
 
-The morning teaches the curriculum row's six topics as chapters 1 to 6, each with its notebook; the
-case chapters 7 to 11 apply them to Uber. Every item below tests one topic, named as the curriculum
-words it.
+The morning teaches the course outline's six topics as chapters 1 to 6, each with its notebook; the
+case chapters 7 to 11 apply them to Uber. Every item below tests one topic, named as the course
+outline words it.
 
 | # | Topic, as the curriculum words it | Items that test it |
 |---|---|---|
@@ -72,7 +72,7 @@ runs), **[D]** a differentiator.
 | L1 | Proxy test set, Q1 | A school canteen (invented) | Which count could the servers not raise without serving a plate? | [S] How would you measure the success of a new feature? |
 | L1 | North star and guardrails set, Q1 | A driving school (invented) | Which guardrail would have caught the school's 2026 move? | [F] North-star against guardrail, with one example pair |
 | L1 | Leading and lagging set, Q1 | Kalpa's growth dashboard | Which of eight numbers move before the north star? | [F] North-star against guardrail, with one example pair |
-| L1 | Four definition lines set, Q1 | One student's register (invented) | Which line differs between 80.0 and 66.7? | [F] What makes a metric gameable, and how do you write one that is not? |
+| L1 | Four definition lines set, Q1 | One student's register (invented) | Which line differs between 80.0 and 84.0? | [F] What makes a metric gameable, and how do you write one that is not? |
 | L1 | Artifact set, Q1 | A driving school (invented) | How many lines does a page with a name, a window and a wish hold? | [D] Three departments each want their own target; how do you get to one? |
 | L2 | Proxy test set, Q2, design | A school bus (invented) | Which number should the school pay the driver on? | [S] How would you measure the success of a new feature? |
 | L2 | Leading and lagging set, Q2 | Kalpa's growth dashboard | Which reason defends two of the calls? | [F] North-star against guardrail, with one example pair |
@@ -140,9 +140,10 @@ lab notebook's two your-turn cells. The take-home is walked at the start of Tues
 
 ## What shape does every answer line take?
 
-Every letter line uses one shape: the letters in item order, no spaces, pasted as one line into the
-class chat.
+Every letter line uses one shape: one letter for each item, in item order, no spaces, pasted as one
+line into the class chat. A three-item set posts three letters, the guided definition and round 3
+four, the Kalpa set and the lab set five; each file prints its own shape above its first item.
 
 ```
-Post exactly this shape: xxxx
+Post exactly this shape: one letter per item
 ```

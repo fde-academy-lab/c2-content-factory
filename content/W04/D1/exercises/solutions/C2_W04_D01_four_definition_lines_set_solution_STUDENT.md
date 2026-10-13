@@ -1,6 +1,6 @@
 # Which letters name the line that moved each reading, and the window Uber's page carries?
 
-Answers: 1b 2c 3a
+Answers: 1a 2c 3a
 
 *The register and the scholarship are invented for chapter 4, with every number in them. Uber's case is illustrative: the company is real, the situation and the data are synthetic, built for this class.*
 
@@ -19,7 +19,7 @@ so the fix is to find the line and print the definition beside the number.
 
 | Item | Key | The question in one line | Why the key holds | Why each other option fails |
 |---|---|---|---|---|
-| 1 | b | Which line differs between 80.0 and 66.7? | Both count the 40 days present; 80.0 divides by the 50 working days and 66.7 by all 60 calendar days, holidays included. | a: the numerator is 40 in both. c: both read the whole term. d: neither leaves a status out of both counts; the medical days stay in both denominators. |
+| 1 | a | Which line differs between 80.0 and 84.0? | Both divide by the 50 working days; 84.0 also counts the 2 medical days as present on top, 42 over 50. | b: both divide by the same 50 working days. c: both read the whole term. d: neither leaves a status out of both counts; the 2 medical days stay in both denominators. |
 | 2 | c | What does the certificate print under the scholarship's rule? | Medical leave out of both counts leaves 40 present over 48 days, 83.3 percent, above 75, so the student qualifies. | a: 80.0 is the school's own rule, which keeps the medical days in the denominator. b: 66.7 divides by calendar days. d: 70.0 reads only the last 20 working days, a window the rule does not ask for. |
 | 3 | a | Which window should Uber's page carry? | Six whole weeks on each side of the launch hold every weekday's peak windows equally often, so neither side is lifted by a busier day of the week, and six weeks are long enough for a level to show it held. | b: one day each side lets one weekday or one rainy evening decide the comparison. c: one window over the year so far holds both sides at once, so it cannot set before against after. d: two single weeks far apart carry the season along with the scheme. |
 

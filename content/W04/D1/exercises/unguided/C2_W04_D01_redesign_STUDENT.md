@@ -33,13 +33,13 @@ Post exactly this shape: xxxx
 ## What does the redesign pay for?
 
 The redesign keeps the Rs 300 floor and changes what earns it: a driver-week earns its top-up only
-if the driver accepted at least the city's floor share of the offers shown, with an accepted trip the
-driver then cancels counted as declined. Under the old rule a driver below the floor earned nothing
-extra from the next trip, since the top-up shrank by whatever the trip paid, so declining cost
-nothing; under the new rule declining costs the week's top-up. The city judges the scheme by its
-north star, completed peak trips per enrolled driver online at peak, per week, read beside three
-guardrails: for riders, the share of offers accepted and the median rider wait at peak; for the
-budget, the top-up per completed trip.
+if the driver accepted at least the city's acceptance floor, a share of the offers shown, with an
+accepted trip the driver then cancels counted as declined. Under the old rule a driver below the Rs
+300 floor earned nothing extra from the next trip, since the top-up shrank by whatever the trip
+paid, so declining cost nothing; under the new rule declining costs the week's top-up. The city
+judges the scheme by its north star, completed peak trips per enrolled driver online at peak, per
+week, read beside three guardrails: for riders, the share of offers accepted and the median rider
+wait at peak; for the budget, the top-up per completed trip.
 
 Three facts from the case data:
 
@@ -97,11 +97,11 @@ d) Rs 58 lakh to Rs 92.7 lakh, as a half to a fifth is still paid
 Every floor, threshold or cut-off a team sets decides who is paid and who is not, so the team says
 which people the floor touches before it says the number.
 
-### Q3. Design. The finance partner proposes a floor of 0.86, the city's share of offers accepted before the launch. What does that floor do?
+### Q3. Design. The finance partner proposes an acceptance floor of 0.86, the city's share of offers accepted before the launch. What does that floor do?
 
 a) It also stops the top-up for honest driver-weeks between 0.78 and 0.86
 
-b) It pays every idle-tail week again, since the floor sits above 0.46
+b) It pays every idle-tail week again, since the acceptance floor sits above 0.46
 
 c) It changes nothing, since the city's share after the launch is 0.73
 

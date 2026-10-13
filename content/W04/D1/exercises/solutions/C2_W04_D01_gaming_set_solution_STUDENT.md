@@ -6,7 +6,7 @@ Answers: 1b 2a 3d
 
 Balaji Kirana (invented) paid its delivery boy Rs 20 for each delivery marked done: he marked 50,
 customers confirmed 40 with their OTP, and all 6 complaints sat on the 10 orders with no OTP. The set
-asks which change stops that at the lowest cost, which line stops each of four public ways of
+asks which change stops that at the lowest cost, which line stops each of four ways of
 gaming, and how a tuition app should write its pay rule.
 
 ## What does the set test about gaming?
@@ -32,13 +32,14 @@ group stops there. The denominator is the second door: a teacher who accepts onl
 a high rate while the hard doubts go unanswered. A definition resists gaming only when the people
 paid control neither line.
 
-## Where did these four ways happen in public?
+## Where did three of these ways happen in public?
 
 At Wells Fargo, the SEC's 2020 order found that the bank's cross-sell figure counted accounts and
-products with no requirement that customers use them, and that remittance accounts joined the count
-during 2013 without investors being told (SEC order, Release 34-88257, checked 13 October 2026). At
+products with no requirement that customers use them, and that global remittance accounts, used to
+send money abroad, joined the count during 2013 without investors being told (SEC order, Release 34-88257, checked 13 October 2026). At
 the US Veterans Affairs facility in Phoenix, 30 of 79 staff interviewed by the inspector general said
-they used a wrong desired date, producing false waits of zero days (VA Office of Inspector General
+they used a wrong desired date; of the 40 primary-care schedulers and supervisors asked how they set
+it, 30 used the next open appointment or the provider's availability, so the wait read zero days (VA Office of Inspector General
 report 14-02603-267, checked 13 October 2026).
 
 ## What does notebook 05 confirm?

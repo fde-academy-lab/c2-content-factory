@@ -6,7 +6,8 @@
 it stood at 60 for 3, so the runs an over needed had reached 10.0, ten overs before the scoreboard
 confirmed a loss by 12. A **leading** number moves before the north star while the team can still
 act on it; a **lagging** number confirms the north star after the result is fixed. Kalpa's growth
-plan chases one north star: delivered orders per active customer per month.
+plan proposes one north star, delivered orders per active customer per month, which the practice lab
+writes on chapter 6's page.
 
 **Who needs the answer.** Kalpa's growth team, who read a dashboard every Monday and act on it that
 week, and the owner of Balaji Kirana (invented), who can read one number every morning. A dashboard
@@ -73,19 +74,19 @@ d) Booked orders rose this week while revenue fell, and a rise leads a fall
 
 ## Which one number should the shop's owner read each morning?
 
-Balaji Kirana (invented) judges its month on one number, the share of orders billed that customers
+Balaji Kirana (invented) judges each week on one number, the share of orders billed that customers
 confirmed with their OTP, the one-time code read out at the door. Its delivery boy is paid Rs 20 for
 each delivery marked done.
 
-### Q3. Design. Which number, read every morning, lets the owner act before the month's confirmed share is fixed?
+### Q3. Design. Which number, read every morning, lets the owner act before the week's confirmed share is fixed?
 
-a) The month's complaints, added up on the last day of the month
+a) The week's complaints, added up on the last day of the week
 
-b) Yesterday's done presses with no OTP, delivery boy by delivery boy
+b) Yesterday's done presses that came with no customer's OTP
 
-c) The month's revenue from home deliveries, from the shop's bill book
+c) The week's revenue from home deliveries, from the shop's bill book
 
-d) Customers on the shop's phone list, counted on the first of the month
+d) Customers on the shop's phone list, counted on the first of the week
 
 ---
 
@@ -94,4 +95,4 @@ d) Customers on the shop's phone list, counted on the first of the month
 Notebook 03, `notebooks/C2_W04_D01_03_leading_lagging_STUDENT.ipynb`, finds the over at which the
 chase's warning number crossed 10 with `first_crossing(values, level)`. Notebook 09,
 `notebooks/C2_W04_D01_09_north_star_guardrails_cost_STUDENT.ipynb`, shows which of Uber's numbers
-moved first after the launch. Then post your three letters.
+settled first after the launch. Then post your three letters.
