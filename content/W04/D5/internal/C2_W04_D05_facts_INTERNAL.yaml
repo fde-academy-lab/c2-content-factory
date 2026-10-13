@@ -167,6 +167,11 @@ ticket:
   shown: '0.82'
   how: 25 / (25 + 5.42)
   used_in: chapter 3
+- id: quantile_scale_rs
+  value: 30.416667
+  shown: Rs 30.42
+  how: 'the two costs added: the priced miss is this times the pinball loss at 0.82'
+  used_in: transcripts
 - id: cost_sum
   value: 30.416667
   shown: '30.42'
@@ -3209,6 +3214,13 @@ kalpa_months:
   shown: Rs 264.4 lakh
   how: Kalpa revenue, 2026-09
   used_in: lab
+- id: nov_mar_two_places
+  value:
+  - 296.97
+  - 297.02
+  shown: 296.97 and 297.02
+  how: Nov 2025 and Mar 2026 in Rs lakh to two places, which one place prints alike
+  used_in: Kalpa board set
 - id: v4_2026_04
   value: 40792880
   shown: Rs 407.9 lakh
@@ -5515,3 +5527,14 @@ sensitivity:
   shown: 5 of 9
   how: cost pairs from the ticket's ranges at which the vendor's misses cost less
   used_in: half1 S56, transcripts
+- id: vendor_over_aligned_late15_idle650_rs
+  value: 273603.333333
+  shown: Rs 2.7 lakh
+  how: the vendor's hidden-week misses less festival-aligned's, at Rs 15 late and Rs 650 an idle shift
+  used_in: half1 S56, notebook 06, transcripts, ch6 solution
+- id: breakeven_late_idle650_rs
+  value: 21.311787
+  shown: about Rs 21
+  how: the late-shipment price at which festival-aligned's and the vendor's hidden-week misses cost the
+    same, at Rs 650 an idle shift
+  used_in: half1 S56, notebook 06, transcripts, ch6 solution

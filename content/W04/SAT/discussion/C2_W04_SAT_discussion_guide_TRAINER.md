@@ -150,7 +150,7 @@ under each anchor descend from it, and anchor 10 comes last because it opens the
 
 #### 1. [S] How would you measure the success of a new feature? Walk your metric design.
 
-*Items 3, 4 and 7. Taught in Monday's chapters on What to measure and why; the proxy test, North-star and guardrail metrics, and The metric definition artifact.*
+*Items 3, 4 and 7. Taught in Monday's SECTION 1, What to measure and why; the proxy test (half one, S6 to S13), SECTION 2, North-star and guardrail metrics (S14 to S21), and SECTION 6, The metric definition artifact (S46 to S53).*
 
 Start from the decision the feature exists to change, then write the outcome it should move as a
 definition nobody can argue with: numerator, denominator, window and exclusions. Add the leading
@@ -166,7 +166,7 @@ crossing its line, or the north star flat against the baseline.)
 
 #### 2. [F] North-star against guardrail, with one example pair.
 
-*Items 1, 3 and 7. Taught in Monday's chapters on North-star and guardrail metrics and Leading against lagging indicators, and in Monday's lab.*
+*Items 1, 3 and 7. Taught in Monday's SECTION 2, North-star and guardrail metrics (half one, S14 to S21), and SECTION 3, Leading against lagging indicators (S22 to S29), and in Monday's lab.*
 
 A north star names the outcome the plan exists to move, and a guardrail is a number that must not
 get worse while the north star rises, so each guardrail catches one cheap way of hitting it. The lab's
@@ -180,7 +180,7 @@ redirect guards nothing.
 
 #### 3. [S] Present a recommendation to a non-technical stakeholder in two minutes.
 
-*Items 8, 9 and 11. From Tuesday's row, taught in Tuesday's chapters on The one-slide answer: claim, evidence, caveat, action, What to leave out, and the appendix, and The AI-free written business case.*
+*Items 8, 9 and 11. From Tuesday's row, taught in Tuesday's SECTION 1, The one-slide answer: claim, evidence, caveat, action (half one, S6 to S13), SECTION 2, What to leave out, and the appendix (S14 to S19), and SECTION 7, The AI-free written business case (half two, S64 to S69).*
 
 Two minutes holds one claim. The title states it so the reader could act on the title alone: the
 guarantee is paying for online hours that carry no trips. One number with its denominator carries

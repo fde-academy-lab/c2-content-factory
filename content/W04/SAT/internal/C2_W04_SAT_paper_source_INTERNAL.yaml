@@ -394,7 +394,8 @@ notes:
       per completed trip. Leading inputs move before the north star and proxies stand in for it, and
       neither catches harm. The singular words in the bank, window, baseline and target, do not fit
       the plural blank.
-      Monday's deck teaches it in the chapter on North-star and guardrail metrics.
+      Monday's deck teaches it in SECTION 2, North-star and guardrail metrics (half one, S14 to
+      S21).
     answer: >-
       The north star is the outcome the plan exists for, and each guardrail catches one cheap way of
       hitting it, so I name the cheap way beside each guardrail.
@@ -410,8 +411,8 @@ notes:
       compared with, and a target is what the plan hopes it reaches; neither is part of the
       definition. Guardrails sit beside a definition as numbers of their own, and each word in the
       bank is used once, so guardrails belongs to Q1.
-      Monday's deck teaches it in the chapter on Definitions: numerator, denominator, window,
-      exclusions.
+      Monday's deck teaches it in SECTION 4, Definitions: numerator, denominator, window, exclusions
+      (half one, S30 to S37).
     answer: >-
       A number is computable once its numerator, denominator, window and exclusions are written down,
       and it is safe to pay for once its guardrails are.
@@ -426,8 +427,9 @@ notes:
       rupee cost of a wrong nudge in each direction is the line Rohan Desai's version rewrites. On the
       Retail tables a wrong nudge cost a discount and some annoyance, so the same threshold would sit
       in a very different place.
-      Each method comes from its day: the definition and the guardrail from Monday's chapters on
-      Definitions: numerator, denominator, window, exclusions and North-star and guardrail metrics,
+      Each method comes from its day: the definition and the guardrail from Monday's SECTION 4,
+      Definitions: numerator, denominator, window, exclusions (half one, S30 to S37), and SECTION 2,
+      North-star and guardrail metrics (S14 to S21),
       and the test against a baseline from Wednesday's SECTION 6 (half one, S31 to S35) and Friday's
       SECTION 4 (half one, S30 to S37).
     wrong:
@@ -577,7 +579,8 @@ additions:
       are waiting before the week's completed trips are counted, so the city can send drivers there.
       It fell from 2.13 to 1.75 because the new online hours went where riders were few, while the
       north star barely moved, from 35.76 to 35.89 trips per online driver-week (Monday's case data).
-      Monday's deck teaches it in the chapter on Leading against lagging indicators.
+      Monday's deck teaches it in SECTION 3, Leading against lagging indicators (half one, S22 to
+      S29).
     wrong:
       a: >-
         The north star barely moved, 35.76 to 35.89, so requests per online hour fell without the
@@ -645,8 +648,8 @@ additions:
       city's 1,200 drivers in the idle tail (Monday's case data). So the size goes to the city head
       as the city's own 1.90 to 1.58 from Exhibit 1A, about 17 percent, with E and F as where the new
       hours went. The note itself fails the proxy test: a number hit while the outcome got worse.
-      Monday's deck teaches the proxy test in the chapter on What to measure and why; the proxy
-      test, and runs it on the twelve rows in the first case chapter.
+      Monday's deck teaches the proxy test in SECTION 1, What to measure and why; the proxy test
+      (half one, S6 to S13), and runs it on the twelve rows in SECTION 7 (S54 to S63).
     wrong:
       a: >-
         1.31 averages the drivers' own rates and understates the six's fall, and a 31 percent fall
@@ -702,8 +705,9 @@ additions:
       USD 50 million, came to USD 185 million between them by our sum (the CFPB's release of 8
       September 2016, checked 13 October 2026), and the 2020 settlement with the SEC and the Justice
       Department to USD 3 billion.
-      Monday's deck teaches it in the chapter on What to measure and why; the proxy test, where
-      Wells Fargo is the case, and in the chapter on Gaming, and definitions that resist it.
+      Monday's deck teaches it in SECTION 1, What to measure and why; the proxy test (half one, S6
+      to S13, with Wells Fargo on S13), and in SECTION 5, Gaming, and definitions that resist it
+      (S38 to S45).
     wrong:
       a: >-
         The order describes the staff's behaviour moving with the target staff were judged against; a
@@ -750,9 +754,10 @@ additions:
       remittance accounts added that year takes out the 0.04 the log exists to show and leaves the
       rest, the products unused for at least 365 days, in the ratio. The order says investors were never told of
       the 2013 addition, which is the breach the change log exists to prevent. Monday's deck teaches
-      the four lines of a definition in the chapter on Definitions: numerator, denominator, window,
-      exclusions, gaming in the chapter on Gaming, and definitions that resist it, and the page that
-      carries both in the chapter on The metric definition artifact.
+      the four lines of a definition in SECTION 4, Definitions: numerator, denominator, window,
+      exclusions (half one, S30 to S37), gaming in SECTION 5, Gaming, and definitions that resist it
+      (S38 to S45), and the page that carries both in SECTION 6, The metric definition artifact (S46
+      to S53).
     wrong:
       a: >-
         Remittance accounts that already existed had already earned their revenue, so revenue per
@@ -806,9 +811,9 @@ additions:
       events move before the month's delivered orders, while a team can act on them (e). The growth
       plan's north star, as the lab's exercise wrote it, is delivered orders per active customer per
       month.
-      Monday's deck teaches the sheet's lines in the chapters on North-star and guardrail metrics,
-      Leading against lagging indicators and The metric definition artifact, and the lab finds
-      Exhibit 1D.
+      Monday's deck teaches the sheet's lines in SECTION 2, North-star and guardrail metrics (half
+      one, S14 to S21), SECTION 3, Leading against lagging indicators (S22 to S29), and SECTION 6,
+      The metric definition artifact (S46 to S53), and the lab finds Exhibit 1D.
     wrong:
       a: >-
         Reorders placed is the number the app raised on its own, up 1.22 times with none delivered,
@@ -853,8 +858,8 @@ additions:
       drivers, picked at random, runs the old pay and the new in the same weeks, so the season falls
       on both halves and the difference is the redesign's (f). Moving every driver at once (a) leaves
       nothing to compare with, so the season and the redesign stay mixed. Tuesday's deck teaches the
-      four slots in the chapter on The one-slide answer: claim, evidence, caveat, action, and
-      Monday's deck the denominator the scheme pays for.
+      four slots in SECTION 1, The one-slide answer: claim, evidence, caveat, action (half one, S6
+      to S13), and Monday's SECTION 9 (half one, S74 to S84) the denominator the scheme pays for.
     wrong:
       a: >-
         A city-wide switch from Monday leaves no drivers on the old pay, so the season and the
@@ -899,7 +904,8 @@ additions:
       how little the money bought. Requests go to marketing's page, the Rs 82 to finance's and the 61 percent
       split to the page that answers where the money went; the caveat, which this draft does not
       list, would stay on the slide.
-      Tuesday's deck teaches it in the chapter on What to leave out, and the appendix.
+      Tuesday's deck teaches it in SECTION 2, What to leave out, and the appendix (half one, S14 to
+      S19).
     wrong:
       b: >-
         Requests count what riders asked for, and they rose 1.8 percent; what riders got is the wait,
@@ -968,10 +974,10 @@ additions:
       read it right. Through those weeks trips per peak online hour held at 1.55 to 1.56 against 1.88
       to 1.93: riders asked as often as before the launch and each online hour still carried fewer
       trips, which a thinner season cannot explain. What would change the analyst's mind is a city where the rains ended and no scheme
-      launched, with trips per hour falling as far. Tuesday's deck teaches the four moves in the
-      chapter on Defending under challenge: restate, answer, concede, what would change your mind,
-      and Monday's deck the window a comparison is read over, in the chapter on Definitions:
-      numerator, denominator, window, exclusions.
+      launched, with trips per hour falling as far. Tuesday's deck teaches the four moves in SECTION
+      3, Defending under challenge: restate, answer, concede, what would change your mind (half one,
+      S20 to S27), and Monday's deck the window a comparison is read over, in SECTION 4,
+      Definitions: numerator, denominator, window, exclusions (half one, S30 to S37).
     wrong:
       a: >-
         Conceding nothing leaves the true part, the rains and the missing weeks from last year,
@@ -1011,8 +1017,8 @@ additions:
       filed 18 April 2018, checked 13 October 2026). A memo serves a reader with an hour and a writer
       with a week; the city head asked for five minutes. The afternoon's written case was the memo form
       of the same answer, for a reader with the time to read it.
-      Tuesday's deck teaches it in the chapter on The AI-free written business case, where Amazon's
-      memo sits.
+      Tuesday's deck teaches it in SECTION 7, The AI-free written business case (half two, S64 to
+      S69), where Amazon's memo sits on S66.
     wrong:
       a: >-
         Full sentences are the memo's strength, and the format still has to fit the reader's slot; a
@@ -1060,8 +1066,9 @@ additions:
       mislead: after the launch the guarantee paid for online hours that carried no trips, so 1.58
       counts idle hours the wait did not need, and the extra hours bought 0.2 minutes, 4.8 to 4.6;
       re-run at 1.58 the chain asks for about 6,100 drivers, the idle tail included. Tuesday's deck
-      teaches the four steps in the chapter on The guesstimate: clarify, map, calculate, validate,
-      and Monday's deck the idle hours the guarantee paid for.
+      teaches the four steps in SECTION 6, The guesstimate: clarify, map, calculate, validate (half
+      two, S56 to S63), and Monday's SECTION 8 (half one, S64 to S73) the idle hours the guarantee
+      paid for.
     wrong:
       c: >-
         Rider requests per online hour is the wrong unit for a chain that counts trips served;
@@ -1104,9 +1111,9 @@ additions:
       users in a minute, and 63 is the number in the post's web address, a decimal point lost. The
       drill city's households are right at 5 lakh, and households are not users: a household of four
       holds several people who pay, so the check sets households against people.
-      Tuesday's deck teaches the validate step and its sanity tests in the chapter on The
-      guesstimate: clarify, map, calculate, validate, and the lab checks Anand's new store against
-      DMart.
+      Tuesday's deck teaches the validate step and its sanity tests in SECTION 6, The guesstimate:
+      clarify, map, calculate, validate (half two, S56 to S63), and the lab checks Anand's new store
+      against DMart.
     wrong:
       b: >-
         The post's own words, printed in the stem, say 6.3 million (Flipkart Stories, 9 October 2026,
@@ -1166,10 +1173,11 @@ additions:
       two counts from different months of 2018, and the call does not hang on it: any mix above
       about 1.07 line uses a rider puts the average day below 60 lakh trips. The check also needs an
       ordinary day: 82,44,903 was one record day, during a bus strike, so it checks nothing about a
-      weekday. Tuesday's deck teaches the check in the chapter on The guesstimate: clarify, map,
-      calculate, validate, where a published number is read in its own unit before the answer
-      moves toward it, and Monday's deck uses Delhi Metro's count in the chapter on Definitions:
-      numerator, denominator, window, exclusions.
+      weekday. Tuesday's deck teaches the check in SECTION 6, The guesstimate: clarify, map,
+      calculate, validate (half two, S56 to S63), where a published number is read in its own unit
+      before the answer moves toward it, and reads DMRC's record day on S81; Monday's deck uses
+      Delhi Metro's count in SECTION 4, Definitions: numerator, denominator, window, exclusions
+      (half one, S37).
     wrong:
       a: >-
         The unit is converted and the day is wrong: 17 September 2026 was a record during a bus
@@ -1900,7 +1908,8 @@ additions:
       of promises moved. What changed from Uber: the people who
       move the number are dispatchers, and the cost of an error is a customer told a parcel was on
       time when it was not.
-      The method is Monday's chapter on Gaming, and definitions that resist it.
+      The method is Monday's SECTION 5, Gaming, and definitions that resist it (half one, S38 to
+      S45).
     answer: >-
       A metric whose window the measured can move measures their moves, so I fix the window at the
       order and guard it with the share of dates changed.

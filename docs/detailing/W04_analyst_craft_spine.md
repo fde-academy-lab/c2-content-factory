@@ -11,7 +11,9 @@ Revised again on 13 October 2026 after the requester read every Week 4 deck: sec
 concept block that opens every day, each day section gains "The concept block" with the row's
 subtopics verbatim, and the acceptance test gains its coverage line (decision
 `concept-first-case-second`). Where this page and a curriculum row's Subtopics column differ, the row
-wins: every subtopic is taught in a chapter that carries its name.
+wins: every subtopic is taught in a chapter that carries its name. Once the five days were built
+concept first, each day's envelope, concept block, notebook names, deck sizes and styles, and the
+explorer's scenes in section 11, were set to the built packs, so those parts record what was built.
 
 What changed from the morning draft, in one list: every day now opens on an engineering case at a
 real company the learners use, written as an analyst's ticket, and no stakeholder quote opens a day;
@@ -313,12 +315,11 @@ know whether riders are better served.
 | Morning | 7 | | The topic, the week map, the topics slide and the concept map, the ticket as the destination; the board's four questions |
 | | 63 | concept | The concept block: one chapter per row subtopic, each on its educational example, each with its notebook (the table below) |
 | | 10 | | Break |
-| | 12 | L1 | The full ticket read; the war game's round 1, the three city-team roles stating their numbers from role cards and the room attacking each with the proxy test now in hand; where today ends |
-| | 20 | L1 | SECTION 7 (what does an hour count?): the twelve driver-weeks counted by hand (applies the proxy test and the four definition lines) |
+| | 32 | L1 | SECTION 7 (what does an hour count?): the full ticket read; the war game's round 1, the three city-team roles stating their numbers from role cards and the room attacking each with the proxy test now in hand; where today ends; the twelve driver-weeks counted by hand (applies the proxy test and the four definition lines) |
 | | 30 | L2, L3 | SECTION 8 (where did the fall sit?): the full `driver_weeks` in code; the trap found in the your-turn cell; the idle tail and the dead zones (applies the definition lines and gaming) |
 | | 38 | L3, L4 | SECTION 9 (what should it pay for?): the vote, the wrong memo and the cost; the Uber page filled line by line with the room (guided); the caveats named one by one with the fact that would settle each (applies the north star and guardrails, the leading inputs, the resistant lines and the artifact) |
 | Afternoon, first 60 | 25 | L5 | SECTION 10 (does it survive the roles?): war game round 3, unguided: each group writes the redesigned scheme's metric with two guardrails and the gaming note, prices the top-up paid to idle hours, and answers the three roles |
-| | 15 | L6 | SECTION 11 (what does the interviewer hear?): the interview transcript read in pairs and scored; the AI-company variant |
+| | 15 | L6 | SECTION 11 (what wins the interview?): the interview transcript read in pairs and scored; the AI-company variant |
 | | 20 | | Kahoot, the handoff line, and the close with the six ideas on one strip |
 | IITGN block | 120 | | W4-1 (tentative): designing the A/B test of the redesigned scheme |
 | Lab | the lab's length | L1 to L3 on Kalpa | The Kalpa transfer below, TA-led |
@@ -328,7 +329,7 @@ know whether riders are better served.
 | # | Subtopic (verbatim from the row) | Chapter title (`SECTION n:`) | The educational example (invented, labelled) | Minutes | Notebook | The case beat it absorbs |
 |---|---|---|---|---|---|---|
 | 1 | What to measure and why; the proxy test | SECTION 1: What to measure and why; the proxy test: what is a number for? | A school canteen pays its servers per token: plates stay at 200 a day for ten days while tokens go from 200 to 400 a day once pay follows tokens, so tokens per plate rise from 1.0 to 2.0 and rice cooked from tokens doubles; a principal's three numbers for judging teachers open the chapter as the instinct round | 13 | `C2_W04_D01_01_proxy_test_STUDENT.ipynb` | The canteen (S8) and Wells Fargo (S12) leave case chapter 1, now SECTION 7; round 1 gives up three minutes because the instinct round opens this chapter |
-| 2 | North-star and guardrail metrics | SECTION 2: North-star and guardrail metrics: which number to chase? | A coaching centre of 100 enrolled: 60 of 100 pass in year 1; in year 2 only 40 sit and 36 pass, so the pass percentage rises from 60 to 90 while passes per enrolled fall from 60 to 36 percent | 10 | `C2_W04_D01_02_north_star_guardrails_STUDENT.ipynb` | The tree (S30) leaves case chapter 3, now SECTION 9, and returns there as the Uber instance in one slide; Maxxsaver and Eternal (`half2` S43) move here and leave a one-line callback |
+| 2 | North-star and guardrail metrics | SECTION 2: North-star and guardrail metrics: which number to chase? | A driving school of 100 enrolled learners: in 2025 all 100 take the licence test and 60 pass; in 2026 only 40 take it and 36 pass, so the hoarding's pass rate rises from 60 to 90 percent while licences per enrolled learner fall from 0.60 to 0.36 | 10 | `C2_W04_D01_02_north_star_guardrails_STUDENT.ipynb` | The tree (S30) leaves case chapter 3, now SECTION 9, and returns there as the Uber instance in one slide; Maxxsaver and Eternal (`half2` S43) move here and leave a one-line callback |
 | 3 | Leading against lagging indicators | SECTION 3: Leading against lagging indicators: which number warns? | A T20 chase of 160: 60 for 3 after ten overs puts the required rate at 10.0 an over, ten overs before the scoreboard confirms the loss by 12; eight Kalpa metric names, with no values, classified as the row's drill | 10 | `C2_W04_D01_03_leading_lagging_STUDENT.ipynb` | Leading against lagging (S31) and its picture leave case chapter 3 |
 | 4 | Definitions: numerator, denominator, window, exclusions | SECTION 4: Definitions: numerator, denominator, window, exclusions: which four lines? | One student's 60-day register (50 working days; present 40, absent 8, medical 2) reads 80.0, 66.7, 83.3, 84.0 and 70.0 percent as each line changes | 10 | `C2_W04_D01_04_numerator_denominator_window_exclusions_STUDENT.ipynb` | Swiggy's glossary (S20) and Delhi Metro (S21) leave case chapter 2, now SECTION 8, as one-line callbacks |
 | 5 | Gaming, and definitions that resist it | SECTION 5: Gaming, and definitions that resist it: how is a number gamed? | A kirana shop's month: 50 deliveries marked done and 40 confirmed by the customer's OTP, so pay reads Rs 1,000 against Rs 800; on-time reads 100 percent on the delivery boy's typed clock and 70 percent from the shop's bill time | 10 | `C2_W04_D01_05_gaming_resistant_definitions_STUDENT.ipynb` | The VA clock (S33) leaves case chapter 3 |
@@ -338,9 +339,9 @@ The block runs after slide five and before the first case chapter; its minutes c
 beats named in the last column, and the day's total stays at the envelope's trainer minutes. Every
 notebook carries its chapter's SECTION number. Notebook 04 is the plan's `04_definition_lines`, renamed
 so its file name carries the Name's words; the case notebooks are `07_proxy_test_on_twelve_rows`,
-`08_denominators_on_full_data` and `09_north_star_guardrails_cost`; SECTIONs 10 and 11 have none; and
-the lab is `12_kalpa_lab`, after the day's last SECTION (`D1_plan.md`, section 4, with the lab
-renumbered).
+`08_denominators_on_full_data` and `09_north_star_guardrails_cost`, then `10_gaming_page_three_roles`
+for SECTION 10 and `11_new_feature_definition_page` for SECTION 11; and the lab is `12_kalpa_lab`,
+after the day's last SECTION.
 
 **Handoff line, said by the trainer.** "You have a number the scheme should pay for and two
 guardrails that catch the ways of hitting it that hurt riders. You have not tested whether the
@@ -487,8 +488,8 @@ ground. The plant is named in no STUDENT file before the lab.
 
 | Family | What Monday ships |
 |---|---|
-| Decks | `half1` of at most 40 case slides plus the concept block's slides, 5 to 8 per subtopic (the topic cover, the week map, the topics slide, the concept map, the ticket, the six concept chapters, then the case chapters 1 to 3, now SECTION 7 to 9); `half2` of at most 15 (round 3, the transcript and the AI variant, the Kahoot, the handoff); `fallback` of at most 20. Every body slide carries a notes fence with LIVE minutes |
-| Notebooks | One per chapter: six concept notebooks named by the row's subtopics (8 to 18 cells each, each loading its educational example from `data/` and printing it in full, labelled invented), then the three case notebooks, each building on the last: the twelve rows counted (12 to 15 cells); the full `driver_weeks`, the trap and the your-turn cell, the idle tail (18 to 22); the definition computed with its guardrails in pandas and once more in SQL (15 to 18). Plus the lab notebook `12_kalpa_lab` with its empty your-turn cell (10 to 12) |
+| Decks | `half1` of 93 slides: the topic cover, the week map, the topics slide, the concept map and the ticket (S1 to S5), the six concept chapters of eight slides each (S6 to S53), then the case chapters, SECTION 7 to 9 (S54 to S84); `half2` of 16 (SECTION 10, round 3, S85 to S90; SECTION 11, the transcript and the AI variant, S91 to S95; the Kahoot, the handoff and the close, S96 to S98); `fallback` of 14. Every body slide carries a notes fence with LIVE minutes |
+| Notebooks | One per chapter: six concept notebooks named by the row's subtopics (8 to 18 cells each, each loading its educational example from `data/` and printing it in full, labelled invented), then the three case notebooks, each building on the last: the twelve rows counted (12 to 15 cells); the full `driver_weeks`, the trap and the your-turn cell, the idle tail (18 to 22); the definition computed with its guardrails in pandas and once more in SQL (15 to 18); then `10_gaming_page_three_roles`, the tests of each line and the saving for round 3, and `11_new_feature_definition_page`, the numbers behind the interview room's page. Plus the lab notebook `12_kalpa_lab` with its empty your-turn cell (10 to 12) |
 | Activity | The war game: three role cards, the proxy-test card, the definition template, the run sheet (all TRAINER except the template) |
 | Exercises | Guided: the definition built together. Unguided: the redesigned scheme's guardrails and gaming note, swapped and attacked; the Kalpa north star on the same template. Mid-session: eight city metrics classified leading or lagging and two defended; the guardrail for three proposed north stars. About 14 items ordered by level, at least five design items |
 | Take-home | One metric definition with a gaming note for a product the learner uses daily, plus the one number they will carry to Tuesday's slide; the self-check lists the seven lines a complete definition has, plain words first |
@@ -528,47 +529,45 @@ case, as Monday's label says.
 | Morning | 5 | | The topic, the week map, the topics slide and the concept map, the ticket as the destination |
 | | 72 | concept | The concept block's morning part: SECTIONs 1 to 3, each on its educational example, each with its notebook (the table below) |
 | | 10 | | Break |
-| | 6 | L1 | What each of the three Uber roles loses under Monday's definition |
-| | 35 | L1, L2 | SECTION 4 (which number carries the slide?): slide A rebuilt with the room, B and C by groups; the twelve rows read three ways (per online hour, per driver-week, per trip); the trap; the second route (applies the one-slide answer and what to leave out) |
-| | 40 | L3, L5 | SECTION 5 (which objection is partly right?): the prediction, the true parts, the modelled defence, round one in threes with the three role cards, rotating (applies defending under challenge and what to leave out) |
-| | 12 | L4 | SECTION 5 continued: the appendix drawer with one page per role, and the cut-to-two drill |
+| | 40 | L1, L2 | SECTION 4 (which number carries it?): what each of the three Uber roles loses under Monday's definition; slide A rebuilt with the room, B and C by groups; the twelve rows read three ways (per online hour, per driver-week, per trip); the trap; the second route (applies the one-slide answer and what to leave out) |
+| | 53 | L3 to L5 | SECTION 5 (which objection holds?): the prediction, the true parts, the modelled defence, round one in threes with the three role cards, rotating; then the appendix drawer with one page per role and the cut-to-two drill (applies defending under challenge and what to leave out) |
 | Afternoon | 20 | L5 | Studio round two: two turns of seven minutes, six to rebuild |
 | | 40 | concept | The concept block's afternoon part: SECTIONs 6 and 7, the guesstimate and the written business case (the table below) |
-| | 25 | L2, L3 | SECTION 8 (how many drivers at peak?): clarify, map, calculate, the swing, validate against the case's own `zone_weeks`, the trap (applies the guesstimate) |
-| | 12 | L5 | UPI in pairs: seven minutes on the clock, checked against 802 million a day (T3), with the sanity check required |
+| | 25 | L2, L3 | SECTION 8 (how many at the peak?): clarify, map the chain from the city's people to drivers online, calculate, the swing, validate like for like against the case's driver-hours per completed trip, the trap (applies the guesstimate) |
+| | 12 | L5 | SECTION 8 continued: UPI in pairs, seven minutes on the clock, checked against 802 million a day (T3), with the sanity check required |
 | | 10 | | Break |
-| | 35 | L5 | SECTION 9 (what goes on the page?): the AI-free written business case, by hand, handed in (applies the written business case) |
+| | 35 | L5 | SECTION 9 (what goes on one page?): the AI-free written business case, by hand, handed in (applies the written business case) |
 | | 12 | L6 | SECTION 10 (what does it sound like?): transcript 1 read in pairs with its follow-ups; transcripts 2 and 3 and the AI-company variant assigned with the scorecard as the evening's reading |
 | | 20 | | The close: the Kahoot's eight items, the pain points in one line each, the day's sentence, the handoff; Wednesday's pre-read ships tonight |
 | | 6 | | Slack: three handed-in pages read aloud if the clock allows |
 | Lab | the lab's length | Kalpa | Every learner presents the Kalpa north-star slide to a TA playing one head; Anand's store sized against DMart (T3) in notebook 11 |
 
 The row's agenda sums to 240 minutes, and the rebuilt day spends 112 of its 360 on the five concept
-chapters. The day plan pays for them with its own cuts, about 130 minutes in all: the gallery goes
-(the spine's first cut), round two falls from 40 to 20 minutes, the transcripts from 25 to 12, the
-paired UPI drill from 25 to 12, Uber's slide chapter from 45 to 35 and its defence from 50 to 40, the
-drawer from 20 to 12, the dojo from 65 to 37 and the opening from 15 to 11; the written case returns
-to the row's 35 minutes and the Kahoot and close to the row's 20.
+chapters. The day pays for them with its own cuts, 118 minutes in all, 6 of which return as slack: the
+opening falls from 15 to 5 minutes, Uber's slide from 45 to 40, its objections with the drawer from 70
+to 53, round two from 40 to 20, the drivers estimate with UPI from 65 to 37, the page to the city head
+from 40 to the row's 35, the interview room from 25 to 12, and the close, with the gallery cut, from 40
+to the row's 20.
 
 ### The concept block
 
 | # | Subtopic (verbatim from the row) | Chapter title (`SECTION n:`) | The educational example (invented, labelled) | Minutes | Notebook | The case beat it absorbs |
 |---|---|---|---|---|---|---|
-| 1 | The one-slide answer: claim, evidence, caveat, action | SECTION 1: The one-slide answer: claim, evidence, caveat, action: what is it made of? | Ramesh's kirana shop opens two more hours a day from October: sales per day rise 8.3 percent (Rs 12,000 to Rs 13,000) while sales per hour fall 9.7 percent; two notices on a hostel board open the chapter as the prediction | 35 | `C2_W04_D02_01_one_slide_answer_STUDENT.ipynb` | The notice board, the four-part anatomy and the auto driver's denominator leave Uber's slide chapter, now SECTION 4, which falls from 45 to 35 minutes |
-| 2 | What to leave out, and the appendix | SECTION 2: What to leave out, and the appendix: where does it go? | The kirana draft sorted three ways: the per-hour chart and the per-customer line stay, the son's page and the accounts page take what each reader asks, and the rain days leave | 12 | `C2_W04_D02_02_leave_out_and_appendix_STUDENT.ipynb` | The appendix teaching leaves the drawer, which falls from 20 to 12 minutes inside SECTION 5 |
-| 3 | Defending under challenge: restate, answer, concede, what would change your mind | SECTION 3: Defending under challenge: restate, answer, concede, what would change your mind: how do you defend it? | A secondary school's eight weeks of attendance against the same weeks last year: the exam weeks' true part is conceded, and weeks 3 to 5 answer the rest | 25 | `C2_W04_D02_03_defending_under_challenge_STUDENT.ipynb`, holding the chapter's example as data | The four moves leave Uber's defence chapter, now SECTION 5, which falls from 50 to 40 minutes |
-| 4 | The guesstimate: clarify, map, calculate, validate | SECTION 6: The guesstimate: clarify, map, calculate, validate: how does it run? | Cups of tea the campus canteen sells on a weekday, worked through the four steps; a town's households and a 28-day phone pack for two of the sanity tests | 30 | `C2_W04_D02_06_guesstimate_clarify_map_calculate_validate_STUDENT.ipynb` | The canteen's tea (S35), the four steps and the three sanity tests leave the dojo, which falls from 65 to 37 minutes (SECTION 8 and the UPI pairs) |
+| 1 | The one-slide answer: claim, evidence, caveat, action | SECTION 1: The one-slide answer: claim, evidence, caveat, action: what does a slide carry? | Ramesh's kirana shop opens two more hours a day from October: sales per day rise 8.3 percent (Rs 12,000 to Rs 13,000) while sales per hour fall 9.7 percent; two notices on a hostel board open the chapter as the prediction | 35 | `C2_W04_D02_01_one_slide_answer_STUDENT.ipynb` | The notice board, the four-part anatomy and the auto driver's denominator leave Uber's slide chapter, now SECTION 4, which falls from 45 to 40 minutes |
+| 2 | What to leave out, and the appendix | SECTION 2: What to leave out, and the appendix: where does the rest go? | The kirana draft sorted three ways: the per-hour chart and the per-customer line stay, the son's page and the accounts page take what each reader asks, and the rain days leave | 12 | `C2_W04_D02_02_leave_out_and_appendix_STUDENT.ipynb` | The appendix teaching leaves the drawer, which now runs inside SECTION 5 |
+| 3 | Defending under challenge: restate, answer, concede, what would change your mind | SECTION 3: Defending under challenge: restate, answer, concede, what would change your mind: how do you hold a claim? | A secondary school's eight weeks of attendance against the same weeks last year: the exam weeks' true part is conceded, and weeks 3 to 5 answer the rest | 25 | `C2_W04_D02_03_defending_under_challenge_STUDENT.ipynb`, holding the chapter's example as data | The four moves leave Uber's defence, now SECTION 5, which with the drawer falls from 70 to 53 minutes |
+| 4 | The guesstimate: clarify, map, calculate, validate | SECTION 6: The guesstimate: clarify, map, calculate, validate: how big is an unknown? | Cups of tea the campus canteen sells on a weekday, worked through the four steps; a town's households and a 28-day phone pack for two of the sanity tests | 30 | `C2_W04_D02_06_guesstimate_clarify_map_calculate_validate_STUDENT.ipynb` | The canteen's tea (S35), the four steps and the three sanity tests leave the dojo, which falls from 65 to 37 minutes (SECTION 8 and the UPI pairs) |
 | 5 | The AI-free written business case | SECTION 7: The AI-free written business case: what must a page carry? | Ramesh's one-page case for his extra hours, its four parts written as sentences | 10 | `C2_W04_D02_07_written_business_case_STUDENT.ipynb`, holding the chapter's example as data | Amazon's memo moves here from the drawer; the brief stays with SECTION 9, whose writing keeps the row's 35 minutes |
 
 The block's morning part runs after slide five and before the first case chapter; its afternoon
 part, SECTIONs 6 and 7, follows studio round two and comes before SECTION 8 and SECTION 9, which apply
 it, because the day plan keeps each toy beside the case step that applies it and the role-played studio
 inside one block. Its minutes come from the case beats named in the last column, and the day's total
-stays at the envelope's trainer minutes. Every notebook carries its chapter's SECTION number: notebook
-06 is the plan's `04_guesstimate`, renamed so its file name carries the Name's words, and notebook 07
-is the plan's `05_written_business_case`; the case notebooks are `04_uber_slide_three_denominators`,
-`05_uber_defence_evidence` (new) and `08_uber_drivers_at_peak`; SECTIONs 9 and 10 have none; and the
-lab is `11_kalpa_store_estimate`, after the day's last SECTION (`D2_plan.md`, section 4, renumbered).
+stays at the envelope's trainer minutes. Every notebook carries its chapter's SECTION number: notebook 06 is the plan's `04_guesstimate`, renamed so its file name carries the Name's words, and notebook
+07 is the plan's `05_written_business_case`; the case notebooks are
+`04_case_one_slide_answer_three_denominators`, `05_case_defending_under_challenge_evidence`,
+`08_case_guesstimate_drivers_at_peak`, `09_case_written_business_case_page` and
+`10_case_interview_room`; and the lab is `11_kalpa_store_guesstimate`, after the day's last SECTION.
 
 ### The shape: a studio and a dojo
 
@@ -591,12 +590,13 @@ which titles are claims a city head could act on (the SWD Big Idea test, R1).
 
 **Dojo run sheet (same file).** The four steps on the board as imperative headings (clarify, map,
 calculate, validate). The canteen's tea now runs first in SECTION 6, the guesstimate's concept
-chapter, so the dojo opens on drivers at the evening peak, worked together: peak requests an hour in
-the city, trips a driver completes in an hour, the share of online drivers who are idle at any moment,
-a buffer for the wait target; the validate step compares with the case's own `zone_weeks` (synthetic,
+chapter, so the dojo opens on drivers at the evening peak, worked together: the city's people, weekday Uber
+trips per 100 people and the share of them in the three evening hours give trips to serve an hour;
+trips a busy driver fits in an hour and the share of online drivers idle at any moment give trips per
+online driver-hour; a buffer covers the busiest half hour; each leaf is said aloud with its range. The
+validate step compares like for like with the case's own driver-hours per completed trip (synthetic,
 labelled) and names the published figure it would want, which R2 does not hold, so the slot reads "to
-be found" and the finishing session may fill it with a dated primary source or leave it as a labelled
-hypothetical. Then pairs, against a seven-minute clock, size UPI transactions a day and validate
+be found". Then pairs, against a seven-minute clock, size UPI transactions a day and validate
 against the published monthly volume divided by days (T3). The scorer marks structure and the sanity
 check and never the final number (Aced, T2).
 
@@ -608,7 +608,7 @@ check and never the final number (Aced, T2).
 | L2 | Which denominator does the slide use, and what does each of the other two say? | The denominator is a choice and the slide must say which | Rs 314 to Rs 260 per online hour; per driver-week up slightly, Rs 5,817 to Rs 5,861 (Monday's data); per trip Rs 165 flat; the same series drawn cluttered, then clear | Reading the per-driver-week rise as the scheme working | Delhi Metro (M6): boardings against journeys |
 | L3 | Which objection is partly right, and which part? | Defence has a shape: restate, answer, concede, what would change your mind | Driver operations: "drivers will log off" (true for the idle tail, false for the honest majority, target shares); marketing: "the guarantee is the acquisition story" (true, which is why the redesign keeps it for drivers who accept); finance: "the fall is the monsoon's end" (partly, which the L4 cuts on Monday bound) | Conceding nothing (the Kahoot's false statement); conceding everything | Amazon's 2017 letter (T1): the memo read in silence, a week to write |
 | L4 | What leaves the slide, and where does it go? | The appendix kept for a named question | Nine numbers cut to two; one appendix page per role with the question it answers | A caveat moved to the appendix, where its owner finds it and calls the slide dishonest | |
-| L5 | How many drivers must be online at the evening peak, and how do I know my number is sane? | A guesstimate is the same discipline without data: clarify, map, calculate, validate; a Fermi walk from a crowd to a count | Peak requests an hour, trips a driver completes an hour, the idle share, the buffer; the UPI pair: active users times payments a day, validated against 802 million (T3), with the 30-day against 31-day catch | A city of two million people given nine million households (the row's Kahoot item); a validation in the wrong unit (M6); a decimal slip: Flipkart's 6.3 million concurrent users beside a URL that says 63 million (T3) | DMRC (M6), Flipkart (T3), NPCI through Outlook Money (T3) |
+| L5 | How many drivers must be online at the evening peak, and how do I know my number is sane? | A guesstimate is the same discipline without data: clarify, map, calculate, validate; a Fermi walk from a crowd to a count | 1 crore people x 1 weekday trip per 100 people x a quarter in the evening, over 3 hours, is about 8,330 trips an hour; over 2.4 x (1 - 0.30) = 1.68 trips per online driver-hour, times a buffer of 1.15, about 5,700 drivers, from 2,900 to 8,600 as trips per 100 people run across their range; like for like, about 5,000 at the case's 1.90; the UPI pair: active users times payments a day, validated against 802 million (T3), with the 30-day against 31-day catch | A city of two million people given eight million households, as Tuesday's deck and Kahoot print it; a validation in the wrong unit (M6); a decimal slip: Flipkart's 6.3 million concurrent users beside a URL that says 63 million (T3) | DMRC (M6), Flipkart (T3), NPCI through Outlook Money (T3) |
 | L6 | Present the redesign to a non-technical leader in two minutes; present an AI assistant's metric change to a head of product who quotes acceptance rate in the sales deck | Structure before the number; the loser can repeat it | The two transcripts; the AI-company variant: the objection "acceptance rate is what the sales deck quotes" is partly right (it is what customers see) and the answer keeps it as a leading input under the retained-text north star | The candidate opens on method and nine numbers | Aced (T2); Minto (T1) |
 
 ### The Kalpa transfer (the lab)
@@ -670,8 +670,8 @@ No GIF on Tuesday; the makeover stills carry the lesson.
 
 | Family | What Tuesday ships |
 |---|---|
-| Decks | `half1` of at most 35 case slides plus the concept block's morning slides, 6 to 12 per chapter (the topic cover, the week map, the topics slide, the concept map, the ticket, concept chapters 1 to 3, then the studio's SECTION 4 and 5), about 48 in all; `half2` of at most 30 case slides plus SECTIONs 6 and 7 (round two, the two concept chapters, the dojo, the written case brief, the transcripts, the Kahoot), about 38 in all |
-| Notebooks | One per chapter, numbered as its SECTION: five concept notebooks named by the row's subtopics, 01 to 03 in the morning and 06 and 07 in the afternoon (11 to 17 cells each, each loading its educational example from `data/` and printing it in full, labelled invented; the spoken and written chapters' notebooks hold their examples as data), then the case notebooks: 04 the twelve rows read three ways and the makeover, from the merged notebook's slide cells; 05 the defence's evidence lines computed (new, about 12 cells); 08 the guesstimate ledger, from the merged notebook's ledger cells. Plus the lab notebook `11_kalpa_store_estimate` (about 10 cells); the lab's Kalpa slide template lives in `exercises/guided/` |
+| Decks | `half1` of 59 slides: the opening five, concept chapters 1 to 3 (S6 to S27), then the studio's SECTION 4 and 5 (S28 to S54); `half2` of 44: round two (S55), SECTIONs 6 and 7 (S56 to S69), the dojo's SECTION 8 (S70 to S82), the written case brief's SECTION 9 (S83 to S85), the interview room's SECTION 10 with two D slides (S86 to S90), and the close (S91 to S93) |
+| Notebooks | One per chapter, numbered as its SECTION: five concept notebooks named by the row's subtopics, 01 to 03 in the morning and 06 and 07 in the afternoon (11 to 17 cells each, each loading its educational example from `data/` and printing it in full, labelled invented; the spoken and written chapters' notebooks hold their examples as data), then the case notebooks: 04 the twelve rows read three ways and the makeover; 05 the defence's evidence lines computed; 08 the drivers' chain, its swing and its like-for-like check; 09 the numbers on the page to the city head, opened after hand-in; 10 the interview room's numbers. Plus the lab notebook `11_kalpa_store_guesstimate`; the lab's Kalpa slide template lives in `exercises/guided/` |
 | Activity | The studio and the dojo with their run sheet, the scorer's card, the one-slide template; the three cluttered slides live in the deck |
 | Exercises | Guided: one cluttered slide rebuilt together; one guesstimate worked aloud. Unguided: the redesign slide; two rounds of defence; the paired guesstimate; the written case; the Kalpa slide in the lab. Mid-session: cut five slide elements to two; for four estimates, name the known number to check each against. About 12 items by level, at least four design items |
 | Take-home | The one-slide answer for the learner's Build 1 finding, and one guesstimate spoken aloud and recorded in under five minutes; the self-check lists the four parts and the four steps, plain words first |
@@ -727,9 +727,9 @@ synthetic, built for this class.
 | # | Subtopic (verbatim from the row) | Chapter title (`SECTION n:`) | The educational example (invented, labelled) | Minutes | Notebook | The case beat it absorbs |
 |---|---|---|---|---|---|---|
 | 1 | Support, confidence and lift, derived by counting | SECTION 1: Support: how often together?; SECTION 2: Confidence: how reliably together?; SECTION 3: Chance and lift: more often than chance? | A hostel canteen's twelve lunch orders, 33 order lines: roti and sabzi sit in 4 orders each and together in 3, so support 0.25, confidence 0.75 both ways, expected 1.33 and lift 2.25; dal rice and papad share that support with confidence 0.50 one way and 0.60 the other; roti and chaas read lift exactly 1.00 | 12, 12 and 18 | `C2_W04_D03_01_support_by_counting_STUDENT.ipynb`; `C2_W04_D03_02_confidence_direction_STUDENT.ipynb`; `C2_W04_D03_03_chance_and_lift_STUDENT.ipynb` | The three-counts timeline, the tea stall's ten dots and the carry bag (S4 to S7) retire; the twelve-cart hand count becomes a drill inside SECTION 7 |
-| 2 | The confidence trap; lift near one | SECTION 4: The confidence trap; lift near one: who is the worst partner? | Chaas sits in 9 of the 12 orders, so every item's confidence toward chaas reads 0.60 to 1.00 while every lift with chaas sits between 0.80 and 1.33 | 18 | `C2_W04_D03_04_confidence_trap_lift_near_one_STUDENT.ipynb` | The milk trap stays in the case as the data's reveal, bread to milk at 1.00 in SECTION 7 and milk's lift near one in SECTION 8, which the room now predicts |
+| 2 | The confidence trap; lift near one | SECTION 4: The confidence trap; lift near one: does 1.00 mean a bundle? | Chaas sits in 9 of the 12 orders, so every item's confidence toward chaas reads 0.60 to 1.00 while every lift with chaas sits between 0.80 and 1.33 | 18 | `C2_W04_D03_04_confidence_trap_lift_near_one_STUDENT.ipynb` | The milk trap stays in the case as the data's reveal, bread to milk at 1.00 in SECTION 7 and milk's lift near one in SECTION 8, which the room now predicts |
 | 3 | Basket analysis on the order items | SECTION 5: Basket analysis on the order items: how do lines make pairs? | The canteen's 33 order lines become 30 pairs, each counted once per basket with sorted keys, in five lines of code | 15 | `C2_W04_D03_05_basket_analysis_pairs_table_STUDENT.ipynb` | The five lines of pandas (S17) are built here; SECTION 8 runs the same lines on 40,000 carts, so its code-along shortens |
-| 4 | The support floor and the watch list | SECTION 6: The support floor and the watch list: when is a pair too thin? | Gulab jamun and curd read lift 6.0 on one order; 600 invented orders in which no item depends on another show lifts above 6 on single orders and a band of about 0.8 to 1.25 for pairs on thirty or more | 12 | `C2_W04_D03_06_support_floor_watch_list_STUDENT.ipynb` | The watch-list teaching (S30) moves here; the action map and the watch list stay in SECTION 10 as the application |
+| 4 | The support floor and the watch list | SECTION 6: The support floor and the watch list: when is a pair too thin? | Gulab jamun and curd read lift 6.0 on one order; a month of 600 invented orders in which no item depends on another shows gulab jamun and jalebi at 8.57 on 2 orders and the ten pairs on thirty or more orders at 0.90 to 1.00, so the month's floor sits at 8 orders | 12 | `C2_W04_D03_06_support_floor_watch_list_STUDENT.ipynb` | The watch-list teaching (S30) moves here; the action map and the watch list stay in SECTION 10 as the application |
 | 5 | Cross-sell and upsell reasoning; expected value in rupees | SECTION 9: Cross-sell and upsell reasoning; expected value in rupees: what is a combo worth? | Sharma Kirana's month: 1,000 bills, tea in 600, rusk in 200, both in 150; a Rs 1-off combo card brings 18 incremental packs at Rs 12 margin, less Rs 168 of discount handed back and Rs 20 of printing, so Rs 28 a month | 18 | `C2_W04_D03_09_cross_sell_expected_value_STUDENT.ipynb` | The slot's value arithmetic (S31 to S33) is derived here first, so SECTION 10's re-ranking cascade runs shorter; upsell gets one definition, as the row's CUT FIRST allows |
 
 Subtopic 1 spans three chapters, so its Name is "Support, confidence and lift" and each of the three
@@ -815,7 +815,7 @@ before the lab.
 | Veritasium | SECTION 8 | The room commits to the pair it expects at the top of the strip before the pairs table runs, then sees milk's lift near one |
 | Krish Naik | Notebooks 08 and 10 | `Counter` over combinations line by line on 40,000 carts, the pairs table, the second route asserted equal, the rupee value computed, ending in the re-ranked strip |
 | Brilliant | SECTION 10's opening | "Which of these four pairs would you promote?" with lift and support shown, answered before the action map |
-| Explorable explanations | Explorer scenes W4 and W5 | The strip simulator toggles rank by count against rank by lift; the support floor slider counts the pairs that qualify |
+| Explorable explanations | Explorer scenes W4 and W5 | The strip simulator takes milk out of the strip and prices each slot; the support floor slider counts the pairs that qualify, on the canteen's orders and on the case's carts |
 | The case method | The category manager's role card | Milk is the top seller and anchors the cart: partly right, answered with the click-through by slot |
 | ByteByteGo | Chapter closes | Lift joins the map as "beyond chance", the idea Thursday reuses as "beyond the blend" and Friday as "beyond the baseline" |
 | Feynman | The notes | "Say to a shopkeeper why the item in every bag is the worst bundle partner" |
@@ -853,7 +853,7 @@ before the lab.
 
 | Family | What Wednesday ships |
 |---|---|
-| Decks | `half1` of at most 40 case slides plus the concept block's slides, 5 or 6 per chapter (the topic cover, the week map, the topics slide, the concept map, the ticket, concept chapters 1 to 6, then SECTION 7 and 8, the case on twelve carts and on 40,000); `half2` of at most 15 case slides plus SECTION 9's 6 (SECTION 9, then SECTION 10, the unguided strip, the interview room, the Kahoot); `fallback` of at most 20 |
+| Decks | `half1` of 63 slides: the opening five, concept chapters 1 to 6 (S6 to S35), then SECTION 7 and 8, the case on twelve carts and on 40,000 (S36 to S55, with D54 for self-study); `half2` of 21: SECTION 9 (S56 to S60), SECTION 10 (S61 to S67), the six doubts and the heavy tenth as D68 and D69, the unguided strip, the interview room's answer and the close (S70 to S74); `fallback` of 17 |
 | Notebooks | One per chapter, numbered as its SECTION: seven concept notebooks named by the row's subtopics, subtopic 1 across three of them, 01 to 06 in the morning and 09 in the afternoon (14 to 16 cells each, each loading its educational example from `data/` and printing it in full, labelled invented), then the case notebooks: 07 the twelve carts (about 11 cells) for SECTION 7, 08 every cart, the pairs table, the trap and the your-turn cell (18 to 22) for SECTION 8, and 10 the action map, the slot's value and the second route (15 to 18) for SECTION 10. Plus the lab notebook `11_kalpa_basket_analysis_order_items` with its empty your-turn cells (10 to 12) |
 | Activity | The carts and the action-map board with their run sheet; the pair cards; the category manager's role card (TRAINER) |
 | Exercises | Guided: the three measures for two pairs on the carts. Unguided: all pairs ranked with a support floor, the trap pair named, the strip re-ranked and valued; the Kalpa charger proposal costed and refused. Mid-session: one pair's three measures on paper; four pairs ranked for action from lift and support together. About 14 items by level, at least five design items |
@@ -905,10 +905,10 @@ number is 38 and never 41, so Kalpa's plant stays Kalpa's.
 | | 30 | L3, L4 | SECTION 7 (which stage owns the loss?): the funnel by stage with the right denominator; the 118 percent artefact; members against sessions; the Android checkout drop by release; three checks read aloud (applies the funnel's stages, drop-off and denominators) |
 | Afternoon, first 60 | 10 | concept | SECTION 8, the concept block's last chapter: the fix-first decision and its evidence, on the college |
 | | 25 | L5 | SECTION 9 (what is fixed first?): unguided, the fix-first call with its evidence and its cost; the app team's role card answered (applies the fix-first decision) |
-| | 10 | L6 | SECTION 10: the transcript's walk; the AI-company variant read aloud; the handoff line |
-| | 15 | | SECTION 11: Kahoot and close |
+| | 10 | L6 | SECTION 9 continued: the interview walk from S79's table in pairs; the AI-company variant read aloud; the handoff line |
+| | 15 | | SECTION 9 continued: the Kahoot and the close |
 | IITGN block | 120 | | W4-3 (tentative): survival curves, censoring and hazard |
-| Lab | the lab's length | Kalpa | The Retail-Plus tier (the row's plants), TA-led, in notebook 12; the Kaapi and Co. funnel drill joins the practice set |
+| Lab | the lab's length | Kalpa | The Retail-Plus tier (the row's plants), TA-led, in notebook 10; the Kaapi and Co. funnel drill joins the practice set |
 
 ### The concept block
 
@@ -926,14 +926,15 @@ three ways, the funnel brings a second world in a college's admissions, and the 
 decision pattern where the other four are techniques, opens `half2` right before the Zomato Gold call
 that applies it. The block's minutes come from the case beats named in the last column, and the day's
 total stays at the envelope's trainer minutes. Every notebook carries its chapter's SECTION number:
-the concept notebooks are 01 to 04 in the teaching order and `08_fix_first_evidence`; the case
-notebooks are `05_case_cohort_construction`, `06_case_retention_and_blend` and
-`07_case_funnel_denominators`; SECTIONs 9 to 11 have none; and the lab is
-`12_kalpa_lab_cohort_and_funnel`, after the day's last SECTION (`D4_plan.md`, section 4, renumbered).
+the concept notebooks are 01 to 04 in the teaching order and `08_fix_first_evidence`; the case notebooks
+are `05_case_cohort_construction`, `06_case_retention_and_blend`, `07_case_funnel_denominators` and
+`09_case_fix_first_decision`; and the lab is `10_kalpa_lab_cohort_and_funnel`, after the day's last
+SECTION.
 
-**Handoff line.** "Your cohort table treats a member who has not left yet as if she were retained for
-ever, and that flatters every curve. The next 120 minutes give that member a name, censored, and show
-when two curves really differ by more than chance."
+**Handoff line (S81).** "Your table leaves a young cohort's later ages empty, and a member who has not
+left yet has no end date. Treat her as retained for ever and every curve looks better than it is.
+After the close, the faculty session (tentative) gives that member a name, censored, and shows when
+two curves really differ by more than chance."
 
 **Fallback, 120 minutes: the weaned-users hour.** (1) Swiggy's weaned users, 35 minutes: a hand table
 showing how removing weak users lifts every later column of a cohort chart, then the denominator
@@ -1001,7 +1002,7 @@ Retail-Plus's fix-first call, which is what the Saturday bank's items 5, 12, 13,
 
 | Style | Artefact | The move |
 |---|---|---|
-| Veritasium | SECTION 3; explorer scene Th1 | The room predicts what the blend does when a large young cohort joins, then watches the triangle fill and the blend line stay flat |
+| Veritasium | SECTION 3 with explorer scene Th2; SECTION 6 with Th1 | The room predicts what the blend does when a large young group joins, then watches the gym's stacks hold at 50 percent, and later Gold's triangle fill while the dashboard's line stays flat |
 | 3Blue1Brown | Explorer scenes Th1 to Th3; the concept board | The triangle filling month by month; the blend as stacked areas; a funnel whose bar widths are the denominators |
 | StatQuest | SECTIONs 1 and 5; cheat sheet panel two | The gym's thirty joiners counted by age, then the twelve members, the blend summed aloud |
 | Krish Naik | Notebooks 06 and 07 | One `pivot_table` to the triangle, the curves drawn, the blend asserted equal to the weighted average; the funnel built stage by stage on `events` with its unit named per step |
@@ -1045,8 +1046,8 @@ Retail-Plus's fix-first call, which is what the Saturday bank's items 5, 12, 13,
 
 | Family | What Thursday ships |
 |---|---|
-| Decks | `half1` of at most 40 case slides plus the concept block's morning slides, 6 to 8 per chapter (the topic cover, the week map, the topics slide, the concept map, the ticket, concept chapters 1 to 4, then SECTION 5 to 7), about 58 live slides and 5 D slides in all; `half2` of at most 15 case slides plus chapter 8's 6 (SECTION 8 to 11), about 16 in all; `fallback` of at most 20 |
-| Notebooks | One per chapter, numbered as its SECTION: five concept notebooks named by the row's subtopics, 01 to 04 in the morning in the teaching order and 08 in the afternoon (about 14 to 16 cells each, each loading its educational example from `data/` and printing it in full, labelled invented), then the case notebooks: 05 the twelve members (at most 15 cells, its toy cells gone to notebooks 01 and 03); 06 the cohort table, curves and the blend decomposed, with the your-turn cell and the second route (18 to 22); 07 the funnel with its denominators, the artefact and the release split (15 to 18). Plus the lab notebook `12_kalpa_lab_cohort_and_funnel` with its empty your-turn cell (10 to 12) |
+| Decks | `half1` of 73 slides: the opening five, concept chapters 1 to 4 (S6 to S34), then SECTION 5 to 7 (S35 to S65, with one D slide, October's dashboard worked); `half2` of 21: SECTION 8 (S66 to S72) and SECTION 9, the call, the interview walk, the AI variant, the Kahoot and the close (S73 to S84); `fallback` of 14 |
+| Notebooks | One per chapter, numbered as its SECTION: five concept notebooks named by the row's subtopics, 01 to 04 in the morning in the teaching order and 08 in the afternoon (about 14 to 16 cells each, each loading its educational example from `data/` and printing it in full, labelled invented), then the case notebooks: 05 the twelve members (at most 15 cells, its toy cells gone to notebooks 01 and 03); 06 the cohort table, curves and the blend decomposed, with the your-turn cell and the second route (18 to 22); 07 the funnel with its denominators, the artefact and the release split (15 to 18); 09 the fix-first call on Zomato Gold with its evidence and cost. Plus the lab notebook `10_kalpa_lab_cohort_and_funnel` with its empty your-turn cell (10 to 12) |
 | Activity | The hypothesis board and the three reveals with their run sheet; the app team's role card; the answer-key page |
 | Exercises | Guided: one cohort's row built together; the funnel's first two stages with denominators. Unguided: the full cohort table, the full funnel, the fix-first call with evidence and cost; the Kalpa fix-first call in the lab. Mid-session: three retention curves read and the cohorts ranked; the denominator artefact found in a four-stage funnel. About 14 items by level, at least five design items |
 | Take-home | Rerun the cohort table weekly instead of monthly and say which story survives; the self-check names the cohorts and stages to compare, from the facts file, plain words first |
@@ -1088,13 +1089,14 @@ class; Flipkart's own festive-capacity statements (F6) are the only public facts
 
 | Block | Minutes | Level | What runs |
 |---|---|---|---|
-| Morning | 15 | | The topic, the week map, the topics slide and the concept map (5); then the ticket as the destination, read in full: two forecasts eighteen points apart, the tournament's rule, where today ends (10) |
+| Morning | 8 | | The topic, the week map, the topics slide and the concept map, and the ticket in one slide as the destination |
 | | 75 | concept | The concept block's first part: chapters 1 to 3 on the gate chai stall (the table below) |
 | | 10 | | Break |
 | | 20 | concept | The concept block's second part: chapter 4, which carries subtopics 4 and 5 |
-| | 30 | L1, L2 | SECTION 5 (what shape do the weeks have?): the twelve weeks around the two Diwalis by hand, the three rules for one week, the calendar trap (applies trend and seasonality and the three baselines) |
-| | 30 | L2, L3 | SECTION 6 (which rule wins on hidden weeks?): the thirteen hidden weeks, the scoreboard by MAE in shipments, the vendor's fit against its forecast, the misses priced (applies holding out and beating the baseline) |
-| Afternoon, first 60 | 35 | L3 to L5 | SECTION 7 (which forecast books the shifts?): the festival placed, the 2025 back-test, the two windows, the cushion for asymmetric costs, the plan; finance and the vendor's sponsor object in one exchange each (applies the good-enough call and the forecast note) |
+| | 37 | L1, L2 | SECTION 5 (where is the peak?): the ticket read in full, two forecasts eighteen points apart, the tournament's rule and where today ends; the twelve weeks around the two Diwalis by hand, the three rules for one week, the calendar trap (applies trend and seasonality and the three baselines) |
+| | 30 | L2, L3 | SECTION 6 (which rule wins?): the thirteen hidden weeks, the scoreboard by MAE in shipments, the vendor's fit against its forecast, the misses priced (applies holding out and beating the baseline) |
+| Afternoon, first 60 | 2 | | The morning on one map: the five topics with the case's numbers on them |
+| | 33 | L3 to L5 | SECTION 7 (how many shifts?): the festival placed, the 2025 back-test, the two windows, the cushion for asymmetric costs, the plan; finance and the vendor's sponsor object in one exchange each (applies the good-enough call and the forecast note) |
 | | 15 | L5 | The staffing note's lettered items decided in groups; the prose is written in the lab |
 | | 10 | | The handoff line, the Kahoot and the close; Saturday's preview |
 | IITGN block | 120 | | W4-4 (tentative): autocorrelation, stationarity, smoothing, ARIMA at recognition depth |
@@ -1185,14 +1187,14 @@ Anand's board number with its error bar, which is what the Saturday bank's items
 
 | Style | Artefact | The move |
 |---|---|---|
-| 3Blue1Brown | Explorer scenes F1 to F4; the concept board | A series assembled from trend, season and noise sliders; the hold-out window sliding; the festival marker moving from October to November while the bot's spike stays put; the cost curve's minimum moving as the under-cost rises |
+| 3Blue1Brown | Explorer scenes F1 to F3, and F4 in the fallback session; the concept board | A series multiplied from trend, season and wobble sliders; the hold-out window sliding; the festival marker moving from October to November while the bot's spike stays put; in the fallback session, the cost curve's minimum moving as the under-cost rises |
 | Veritasium | SECTION 7 | The room commits to which week the house bot puts Diwali in this year, then the calendar card reveals it two weeks early |
 | StatQuest | SECTION 5; cheat sheet panel two | Twelve weeks, three rules, one week forecast by hand, the errors written beside |
 | Krish Naik | Notebooks 06 and 07 | `shift(52)` and the festival-aligned shift line by line, the hold-out split, the MAE table, the costed errors, ending in the staffing note's number |
 | Tufte's small multiples (FPP3's habit) | SECTION 6 | One baseline per panel on the same axes, then the scoreboard |
 | Brilliant | SECTION 6's opening | "Which of these four methods will have the lowest error on the hidden weeks?" answered before the scoreboard |
 | The case method | The tournament; the two role cards | Finance's rule and the vendor's sponsor, each partly right |
-| Explorable explanations | Explorer scene F4 | Sliders for the two unit costs; the plan quantile reads off the curve |
+| Explorable explanations | Explorer scenes F2 and F3, and F4 in the fallback session | The split slider and the Diwali slider in the day; in the fallback deck's part 3, F4's sliders for the two unit costs, with the plan quantile read off the curve |
 | ByteByteGo | Chapter closes | The forecast joins the map as the promise the plan is held to; Thursday's time axis feeds it; Monday's guardrails bound it |
 | Feynman | The notes | "Say to a shift supervisor why the computer's forecast put Diwali in the wrong week" |
 
@@ -1231,7 +1233,7 @@ Anand's board number with its error bar, which is what the Saturday bank's items
 
 | Family | What Friday ships |
 |---|---|
-| Decks | `half1` of at most 40 case slides plus the concept block's slides, 9 to 11 per chapter (the topic cover, the week map, the topics slide, the concept map, the ticket, concept chapters 1 to 4, then SECTION 5 and 6), about 62 in all; `half2` of about 22 slides, four of them D slides (SECTION 7, the staffing note, the interview room for the lab, the handoff, the Kahoot); `fallback` of at most 20 |
+| Decks | `half1` of 65 slides: the opening five, concept chapters 1 to 4 (S6 to S37), then SECTION 5 and 6 (S38 to S59); `half2` of 23: the morning on one map (S1), SECTION 7 (S2 to S11), the staffing note (S12 to S15), the handoff, the Kahoot and the close (S16 to S18), and the interview room's four D slides for the lab; `fallback` of 18 |
 | Notebooks | One per chapter: four concept notebooks named by the row's subtopics, chapter 4's carrying two (16 to 18 cells each, notebook 03 kept to 18, each loading its educational example from `data/` and printing it in full, labelled invented), then the case notebooks: 05 the shape and the rules by hand on the twelve weeks (12 to 15 cells); 06 the hold-out and the scoreboard, with the your-turn cell for the vendor's score and the second route (18 to 22); 07 the festive window, the error bar, the festival alignment and the costed plan (15 to 18). Plus the lab notebook `08_kalpa_lab_forecast_note` with its empty your-turn cell (10 to 12) |
 | Activity | The tournament with its run sheet, scoreboard, the two role cards and the festival calendar card |
 | Exercises | Guided: the same-week-last-year rule built by hand, then held out and scored. Unguided: the vendor curve scored against the baselines, the pick, the staffing note with its error bar in rupees; the Kalpa board number in the lab. Mid-session: trend and seasonality read off three series; good enough or not on three baseline-against-model error pairs. About 14 items by level, at least five design items |
@@ -1325,7 +1327,7 @@ scorecard, 30 minutes), the Week 5 bridge, and the sources list (INTERNAL).
 
 **What it is.** One offline HTML file, no network, no build step, no external script or font, that
 the trainer projects and a learner reopens at home: a ByteByteGo-style mental map of the week on its
-home screen that lights day by day, and one section per day built in the spirit of 3Blue1Brown and
+home screen that lights day by day and carries each day's row subtopics, and one section per day built in the spirit of 3Blue1Brown and
 Veritasium: start from a question the eye can see, animate the mechanism, let the viewer move a
 slider and predict before revealing, then show the formula as the shorthand for what was just seen.
 It uses only the toy numbers and the case numbers this spine fixes, read from the five facts files by
@@ -1351,39 +1353,45 @@ before it reaches that day's controls. The file stays under 400 KB; the numbers 
 constants block at the top with their facts ids.
 
 **The home screen.** The map of section 1 drawn in SVG: the week's question in the centre, five
-spokes, each spoke's node carrying the company, the city, the metric and the method, Kalpa's unit
-beneath each. A day control (buttons Mon to Sat) lights the chosen day's node and every earlier
+spokes, each spoke's node carrying the day's question, its company and city, and the row's subtopics
+as numbered lines in the row's own words and order, with Kalpa's unit beneath each and a legend that
+says what each line means. A day control (buttons Mon to Sat) lights the chosen day's node and every earlier
 node, prints the earlier days' numbers on their nodes, dashes the later ones, and opens that day's
 section beneath. A "connections" toggle draws the arrows that show how each day's idea feeds the
 next (the north star bounds the forecast; the cohort axis feeds the forecast; lift's "beyond chance"
-returns as "beyond the blend" and "beyond the baseline"), with one line of text per arrow.
+returns as "beyond the blend" and "beyond the baseline"), with one line of text per arrow. Saturday's
+node says its topics are the row's nine interview anchors, which open, verbatim with their tags, in a
+list under the map.
 
 **The scenes.** Each scene has a title that is a question, an opening prediction, the drawing, its
-controls, and a reveal that prints the number and then the formula. Numbers are the spine's targets;
-where a scene uses a toy, the toy is labelled invented on the page.
+controls, and a reveal that prints the number and then the formula. Until a prediction is made, every
+control puts itself back and asks for it, and the reveal stays shut. A scene a deck calls from both a
+concept chapter and a case chapter carries two sets, chosen by a select at its top: the day's invented
+example, labelled invented, for the concept chapter, and the case for the case chapter. Every number
+comes from a day's facts file or data table, or is derived from them on the page.
 
 | Id | Question the eye can see | What is drawn and what moves | Controls | What the viewer predicts | The number, then the formula |
 |---|---|---|---|---|---|
-| M1 | Can online hours rise while riders wait as long? | A city as a 4 by 3 grid of zones, three outer cells shaded as low-request; 60 driver dots, each driving (moving between cells, green), idle online (still, amber) or offline (grey); as the guarantee rises, offline dots come online and a growing share of the new ones sit still in the outer cells | A slider, guarantee floor in Rs per hour, 0 to 400 in steps of 20; a toggle, show the rider wait | Before passing Rs 250: what trips per online hour will do | Online hours, trips, trips per online hour (1.9 to 1.6 at the case's floor), the top-up to idle hours; then "trips per online hour = trips / online hours" |
-| M2 | Which number should the scheme pay for? | A seesaw: the chosen north star on one side, the guardrails on the other; the same 60 dots re-behave under each choice | A select: online hours, completed trips, accepted share, trips with an acceptance floor | Which choice makes the most dots drive | Rider wait, top-up per trip, idle share under each choice; then the definition's lines |
-| M3 | What does one line of a definition change? | The twelve driver-weeks as a table; the metric recomputes as each line is chosen | Four selects: numerator, denominator, window, exclusions | Whether the number rises or falls when the denominator changes from online hours to enrolled drivers | The metric under each choice; then "a definition names numerator, denominator, window, exclusions, what it does not reward" |
-| M4 | Which number moved first? | Two lines over twelve weeks: acceptance share and bookings per online hour; the acceptance line turns two weeks before the bookings line | A week slider, 1 to 12 | In which week the bookings line will turn | The lead of two weeks; then "a leading indicator moves before the north star" |
-| T1 | What is left when the slide says one thing? | A slide with nine numbers and a topic title; each unticked element fades; a counter shows numbers left; the title rewrites as a claim when two remain | Nine checkboxes; a "warden test" button | Which two numbers carry the claim | The claim sentence; then the four parts: claim, evidence, caveat, action |
+| M1 | Can online hours rise while riders wait as long? | A city as a 4 by 3 grid of zones, three outer cells shaded as low-request; 60 driver dots, each driving (moving between cells, green), idle online (still, amber) or offline (grey); as the guarantee rises, offline dots come online and a growing share of the new ones sit still in the outer cells | A slider, guarantee floor in Rs per hour, 0 to 400 in steps of 20; a toggle, show the rider wait | Before passing Rs 250: what trips per online hour will do | Online hours, trips, trips per online hour (1.9 to 1.6 at the case's floor), the idle share and the top-up; then "trips per online hour = trips / online hours" |
+| M2 | Which number should the scheme pay for? | A seesaw: the chosen north star on one side, the guardrails on the other; the same 60 dots re-behave under each choice | A select: online hours, completed trips, trips with an acceptance floor, accepted share, the first three in the order of Monday's S75 | Which choice makes the most dots drive, in S75's letters with key c | Rider wait, top-up per trip, idle share under each choice; then the definition's lines in S80's and S81's words |
+| M3 | What does one line of a definition change? | The twelve driver-weeks as a table; the metric recomputes as each line is chosen | Four selects: numerator, denominator, window, exclusions | What happens to the move from the week before to the week after when the denominator changes from online hours to enrolled drivers online at least one peak hour | The metric under each choice, printed once the prediction is in, and S81's 35.76 to 35.89 on the full data; then "a definition names numerator, denominator, window, exclusions, what it does not reward" |
+| M4 | Which number moved first? | Two lines over twelve weeks: acceptance share and bookings per online hour, each week's ratio of totals from Monday's facts | A week slider, 1 to 12 | In which week the bookings line will turn | Both turn in the launch week, acceptance 0.862 to 0.729 and bookings per online hour Rs 310.3 to Rs 271.0, on to Rs 259.1 by the third week; then "a leading input is a number you can read, and act on, before the outcome is reported" |
+| T1 | What is left when the slide says one thing? | Slide A as Tuesday's S33 shows it, nine tiles under a topic title; each unticked tile fades; a counter shows numbers left; with only the claim's two numbers left, the slide rebuilds in S35's four parts | Nine checkboxes; a "warden test" button | S34's vote: which two numbers carry the claim, key b | "The scheme is paying for online hours that carry no trips"; then the four parts: claim, evidence, caveat, action |
 | T2 | Which denominator is the slide using? | The same rupees over three denominators drawn as three bars | A select: per online hour, per driver-week, per trip | Which bar rises while the other falls | Rs 314 to 260, per driver-week up, per trip flat; then "the denominator is a choice and the slide names it" |
-| T3 | How big is a number nobody has measured? | A guesstimate tree: factors as nodes, the product at the root; the anchor beside it with the ratio | A slider per factor (active users, payments a day); a select for the question (UPI a day, drivers at peak) | Within what range the product will land | The product, the anchor (802 million a day, T3; "to be found" for drivers at peak), the ratio; then "clarify, map, calculate, validate" |
-| W1 | Why is lift a ratio of two areas? | A unit square; P(A) as a vertical band, P(B) as a horizontal band, their overlap shaded as the expected co-occurrence; the observed overlap drawn beside it | Three sliders: P(A), P(B), observed joint share, each in steps of 0.01 | Whether lift will be above or below one when the bands widen | Expected area, observed area, lift as their ratio; then "lift = P(A and B) / (P(A) P(B))" |
-| W2 | What does confidence throw away? | 100 cart dots; a button greys every cart without A; a second greys every cart without B among those | Two buttons; a reset | How many dots will be left after the first button | Confidence as the count left over the count after the first button; then "confidence(A to B) = P(A and B) / P(A)" |
-| W3 | Why does the item in every cart look like the best partner? | The square of W1 with P(B) as milk's share; confidence toward milk rises with the share while lift stays near one | A slider, milk's share of carts, 0.10 to 0.90 | Whether confidence or lift will move as the share rises | Confidence toward milk and lift at the case's 0.71; then "confidence follows popularity; lift divides it out" |
-| W4 | What does a strip slot earn? | The three-slot strip; the items re-rank; a rupee counter per slot | A toggle, rank by count against rank by lift; three sliders: cart views a day, add rate, margin per add | Which ranking puts milk in a slot | Rs 17,280 against Rs 3,240 a day per slot at the case's rates; then "value = views x click-through x add rate x margin" |
-| W5 | Where should the support floor sit? | A scatter of the case's pairs, lift against support; the floor as a vertical line; pairs to its right counted | A slider, the floor in percent of carts, 0.1 to 5 in steps of 0.1 | How many pairs survive a floor of 1 percent | The count, the thin pair at 0.25 percent falling off; then "act above the floor, watch below it" |
+| T3 | How big is a number nobody has measured? | Tuesday's chapter 8 tree for drivers online at Uber's evening peak in Hyderabad (people, weekday trips per 100 people and the evening share give trips to serve an hour; trips a busy driver fits and the idle share give trips per online driver-hour; then the buffer), or the UPI drill's tree | A set select for the question; a slider per leaf across the range said aloud with its guess | Which leaf moves the drivers' answer most; where NPCI's daily average lands against the chain's 700 million | About 5,700 drivers, from 2,900 to 8,600 as trips per 100 people run across their range, about 5,000 like for like; 802 million UPI payments a day, the chain 13 percent below; then "clarify, map, calculate, validate" |
+| W1 | Why is lift a ratio of two areas? | A unit square; P(A) as a vertical band, P(B) as a horizontal band, their overlap shaded as the expected co-occurrence; the observed overlap drawn beside it | Two sets: the canteen's twelve orders, counted in orders, and the case's carts, in shares; three sliders for A, B and both | Where lift lands when B widens at a fixed overlap | Canteen: roti and sabzi 2.25, and 1.00 when B widens to chaas; case: 10,064 carts against 9,656 by chance, lift 1.04; then "lift = P(A and B) / (P(A) P(B))" |
+| W2 | What does confidence throw away? | The canteen's twelve orders, or the case's twelve carts, as cards; a button greys every card without A, a second every card without B among those | Two sets; two buttons; a reset | How many cards will be left after the first button | Canteen: papad to dal rice 0.60 one way and 0.50 the other; case: bread to milk 1.00 and lift 1.50 on twelve carts; then "confidence(A to B) = P(A and B) / P(A)" |
+| W3 | Why does the item in every order look like the best partner? | The square of W1 with B as the popular item's share; confidence toward it rises with the share while lift holds | Two sets; a slider, the popular item's share | Whether confidence or lift will move as the share rises | Canteen: roti to chaas 0.75 and 1.00, no partner past 1.33; case: bread to milk 0.74 and 1.04, the 50 common items 0.70 to 0.74 and 0.99 to 1.04; then "confidence follows popularity; lift divides it out" |
+| W4 | What does a strip slot earn? | The three-slot strip with milk's share of each slot's views, its click-through and its rupees a day | A toggle, rank by lift against rank by count, which takes milk out of the strip; three sliders across their stated ranges: cart views a day, add rate, margin per add | What taking milk out recovers in a month | Rs 17,280 against Rs 3,240 a day per slot, about Rs 4.2 lakh a slot a month, about Rs 6.3 lakh for milk's 1.5 slots; then "value = views x click-through x add rate x margin" |
+| W5 | Where should the support floor sit? | Lift against support for the canteen's thirteen pairs or the case's nine; the floor as a line; pairs to its right counted | Two sets; a guess slider and a lock; a slider, the floor | How many pairs survive the floor | Canteen: 6 of 13 at 3 orders, gulab jamun and curd watched; case: 8 of 9 at 1 percent, the thin pair at 0.25 percent watched; then "act above the floor, watch below it" |
 | Th1 | How can every batch shrink while the average stays flat? | The cohort triangle filling one month per step: a new row appears, every older row extends one cell, cells coloured by retention; a blended line drawn across the top stays flat | A "next month" button; a slider, the size of the new cohort | What the blend will do when a cohort 2.6 times the normal size joins | Each row's rate falling, the blend at the case's flat value; then "blend = sum of (cohort size x cohort rate) / sum of sizes" |
-| Th2 | What is the flat number made of? | The toy: batch A of 100 at 50 percent, then A at 40 and B of 400 at 52.5; stacked bars of size times rate | A slider, B's size; a slider, A's rate this month | Whether the blend rises, falls or holds | 250 of 500 still 50 percent; then the weighted average written out |
-| Th3 | Which stage owns the loss? | A funnel whose bar widths are the denominators; the skippable stage's rate passes 100 percent when counted per session | A toggle, per session against per member; a toggle, include carousel entries | Which stage will show a rate above 100 percent | Search to menu view at 118 percent per session; menu view to add-to-cart 34 per session and 61 per member; then "each step's rate divides by the step before, in one unit" |
+| Th2 | What is the flat number made of? | Thursday's chapter 3 gym: 100 older members at 50 percent in January, then 40 percent in February beside 400 January joiners at 52.5; stacked bars of size times rate | A slider, the joiners in February's count; a slider, the older members' rate | Whether the blend rises, falls or holds | 250 of 500 still 50 percent; then the weighted average written out |
+| Th3 | Which stage owns the loss? | A funnel whose bar widths are the denominators; the skippable stage's rate passes 100 percent when counted per session | A toggle, per session against per member; a toggle, include carousel entries | Which stage will show a rate above 100 percent | Search to menu view at 118 percent per session and 101 per member; then "each step's rate divides by the step before, in one unit" |
 | Th4 | Is it novelty or habit? | Two cohort curves, a launch-week cohort and an organic cohort, over eight weeks | A week slider; a toggle, blended MAU | Where the launch cohort sits at week four | Week-4 retention per cohort; then "judge a cohort at the age where habit shows, never the blend" |
-| F1 | What is a series made of? | Three stacked panels, trend, season and noise, summed into one series beneath | Three sliders: trend per week, season amplitude, noise | What the sum looks like when the season is doubled | The series; then "series = trend + season + noise" (toy, labelled) |
-| F2 | How wrong on the weeks it never saw? | The 104 weeks; the hold-out window shaded; the naive, same-week-last-year, festival-aligned and vendor lines on the hidden weeks; the error bars as vertical sticks | A slider, the split week; a select, the method | Which method's sticks will be shortest on the hidden weeks | MAE in shipments for each, the cost in Rs lakh with the two unit costs; then "MAE = mean of absolute errors on held-out weeks" |
-| F3 | Where does the house bot put Diwali this year? | The 2025 and 2026 festive weeks; the bot's copied spike and the festival-aligned spike; the festival marker | A slider, Diwali's week, from the week of 19 October to the week of 9 November | Whether the bot's spike will move with the marker | The bot two weeks early at the 2026 date; then "festival-aligned: copy the week at the same distance from the festival" |
-| F4 | Where should the plan sit when being short costs more? | A cost curve against the staffing level: idle-shift cost rising to the right, late-shipment cost rising to the left, their sum with its minimum marked | Two sliders: the idle cost per shipment, the late cost per shipment | Which way the minimum moves when the late cost rises | The plan quantile at the case's costs, about 0.82; then "plan quantile = under-cost / (under-cost + over-cost)" |
+| F1 | What is a series made of? | Friday's chai stall over eight weeks: a trend in cups, each day's share of a weekday and a wobble factor in three panels, multiplied into one line beneath | Three sliders: growth in percent a year, a Sunday's share of a weekday, the wobble in cups on a weekday | What the line does when the Sunday dip is doubled, a Sunday from 0.6 of a weekday to 0.2 | Each Sunday drops from about 60 to about 20 cups while the weekdays stay; then "series = trend x season x wobble", as S10 reads the stall |
+| F2 | How wrong on what it never saw? | Two sets: the stall's fourteen days with the hidden days shaded and each miss, or the 104 weeks with the hold-out window and each rule's misses on one scale | Stall: a slider, the last day naive may see; case: a slider, the split week, and a select, the rule | The stall's MAE on its three hidden days; which rule misses least on the hidden weeks, in S51's letters with key d | Stall: MAE 5.0 cups, a lean of 1.7 short, Rs 150; case: MAE in shipments for each rule and the misses priced; then "MAE = mean of absolute errors on held-out periods" |
+| F3 | Where does a yearly copy put Diwali? | Two sets: the stall's three weeks around Diwali 2025 against a copy some weeks back, or the 2025 and 2026 festive weeks with the bot's and festival-aligned's forecasts | Stall: a slider, how many weeks back the copy reaches; case: a slider, Diwali's 2026 week | Where the yearly copy puts the dip; which week of 2026 the bot books the most for, in half2 S3's letters with key a | Stall: a week late, 41.1 cups a day against 6.5 counted from the festival; case: the bot's 5 October two weeks before festival-aligned's 19 October, drawn only after the prediction; then "festival-aligned: copy at the same distance from the festival" |
+| F4 | Where should the plan sit when being short costs more? Beyond Friday's five topics, for the fallback session | A cost curve against the plan's distance above the forecast for the week of 19 October: idle shifts rising to the right, late shipments to the left, their sum with its lowest point ringed, the thirteen hidden-week misses beneath | Two sliders: an idle packer-shift in rupees, a late shipment in rupees | Which way the plan moves when the late cost rises | The 0.82 point, 2.6 percent above the forecast, 20,275 shifts over eight weeks; the curve's own low at 2.7; then "plan quantile = under-cost / (under-cost + over-cost)" |
 | S1 | Does the method survive a change of company? | The home map with its node labels | A select: Ola or Rapido, Blinkit or Zepto, Swiggy One, Amazon India, Kalpa Financial Services, Logistics, Health, Connect; a textarea for the learner's own line | What changes on the map for the chosen unit | The metric, the constraint and the error cost for the unit; then "what stays is the method" |
 
 **Acceptance for the explorer.** `python3 scripts/html_sweep.py content/W04/D1/demos/C2_W04_D01_week_explorer_STUDENT.html`

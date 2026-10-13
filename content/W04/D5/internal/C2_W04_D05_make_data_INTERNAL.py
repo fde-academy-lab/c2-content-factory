@@ -738,6 +738,17 @@ def stall_facts(F, stall, tables, y, ahead, S):
     wins = sum(S["vendor"]["under"] * late + S["vendor"]["over"] * idle / PER_SHIFT < S["aligned"]["under"] * late + S["aligned"]["over"] * idle / PER_SHIFT
                for late in (LATE_LOW, LATE_RS, LATE_HIGH) for idle in (IDLE_LOW, IDLE_SHIFT_RS, IDLE_HIGH))
     F.add("sensitivity", "vendor_cheaper_corners", wins, f"{wins} of 9", "cost pairs from the ticket's ranges at which the vendor's misses cost less", "half1 S56, transcripts")
+    # the Rs 15 line says how far apart the two sit and where they cross, since the vendor's own Rs 15 total
+    # equals Kalpa's planted seasonal-naive MAE, Rs 11.7 lakh, and is printed nowhere
+    at15 = {m: S[m]["under"] * LATE_LOW + S[m]["over"] * OVER_RS for m in ("aligned", "vendor")}
+    F.add("sensitivity", "vendor_over_aligned_late15_idle650_rs", at15["vendor"] - at15["aligned"], lakh(at15["vendor"] - at15["aligned"]),
+          "the vendor's hidden-week misses less festival-aligned's, at Rs 15 late and Rs 650 an idle shift",
+          "half1 S56, notebook 06, transcripts, ch6 solution")
+    even = (S["vendor"]["over"] - S["aligned"]["over"]) * OVER_RS / (S["aligned"]["under"] - S["vendor"]["under"])
+    assert LATE_LOW < even < LATE_RS, even
+    F.add("sensitivity", "breakeven_late_idle650_rs", even, f"about Rs {round(even)}",
+          "the late-shipment price at which festival-aligned's and the vendor's hidden-week misses cost the same, at Rs 650 an idle shift",
+          "half1 S56, notebook 06, transcripts, ch6 solution")
     F.add("good_enough", "better_shifts_moved", moved_w, ", ".join(map(str, moved_w)),
           "shifts such a rule would book differently in each window week, 12 Oct to 30 Nov 2026", "half2 SECTION 7, notebook 07")
     F.add("good_enough", "better_weeks_moved", sum(1 for m in moved_w if m), f"{sum(1 for m in moved_w if m)} of 8",

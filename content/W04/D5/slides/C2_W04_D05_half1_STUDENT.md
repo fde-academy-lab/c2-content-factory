@@ -1176,7 +1176,7 @@ Transition: the answer.
 
 ![MAE beside the same misses priced in rupees](../whiteboards/C2_W04_D05_scoreboard_STUDENT.png)
 
-The vendor errs high on 12 of 13 weeks, and a spare shipment is the cheap kind of miss: Rs 11.9 lakh against Rs 13.5 lakh for festival-aligned, each added over the thirteen weeks. The house bot errs low on 11 of 13 weeks and costs Rs 30.5 lakh, more than naive's Rs 28.8 lakh, with a lower MAE. Priced, a forecast that errs high can cost less than one that misses less, as the stall's rule P (invented) cost less than rule Q at the same MAE. The ranking rests on Rs 25 a late shipment: at Rs 15, the low end of the ticket's range, festival-aligned's misses cost Rs 9.0 lakh against the vendor's Rs 11.7 lakh, and across both cost ranges the vendor is cheaper in 5 of 9 pairings.
+The vendor errs high on 12 of 13 weeks, and a spare shipment is the cheap kind of miss: Rs 11.9 lakh against Rs 13.5 lakh for festival-aligned, each added over the thirteen weeks. The house bot errs low on 11 of 13 weeks and costs Rs 30.5 lakh, more than naive's Rs 28.8 lakh, with a lower MAE. Priced, a forecast that errs high can cost less than one that misses less, as the stall's rule P (invented) cost less than rule Q at the same MAE. The ranking rests on Rs 25 a late shipment: at Rs 15, the low end of the ticket's range, festival-aligned's misses cost Rs 2.7 lakh less than the vendor's, the two cost the same at about Rs 21, and across both cost ranges the vendor is cheaper in 5 of 9 pairings.
 
 ```notes
 LIVE, 3 minutes. Let the result stand at the ticket's costs, then name what it rests on: the price

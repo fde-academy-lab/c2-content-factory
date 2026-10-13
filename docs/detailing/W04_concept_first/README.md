@@ -7,6 +7,8 @@ and the real-company cases after them as applications, which stay. The requester
 go ahead directly. The five plans in this folder carry that rebuild day by day, and they amend the day
 shapes, sizes and acceptance lines of `../W04_analyst_craft_spine.md` wherever the two differ; the case
 file, the cases' data and every number the cases print stand.
+The built packs, and the spine's day sections that now record them, supersede the plans' chapter, slide
+and notebook numbering wherever the two differ.
 
 | Day | Row topic | Plan | Row subtopics, each taught by a concept chapter (a plan may split one subtopic or join two) |
 |---|---|---|---|
