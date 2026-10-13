@@ -780,7 +780,7 @@ a finding left as it was carries its reason in `internal/C2_W04_D04_sources_INTE
 | 3 | Fixed: S48 asks why the dashboard holds; S49, S51, notebook 06 and the notes size the prop at about half a point (37.3 held to June's four cohorts) and lead with the slow slide and the month-two start |
 | 4 | Fixed: S76 leaves the payback open until the discount and the margin sit beside the orders |
 | 5 | Fixed: S81 and the day sheet carry a line that is true for the table taught; the departure from the spine is in the sources |
-| 6 | Fixed: S79's notes work 39.5 to 35.9, and a normal August at 39.2, so about 3.2 of the 3.6 is the August cohort (three new derived facts) |
+| 6 | Fixed: S79's notes work 39.5 to 35.9, and a normal August at 39.2, so about 3.2 of the 3.6 is the August cohort (facts `everyone_fall_aug_to_sep_points`, `everyone_sep_normal_august`, `everyone_fall_ordinary_points` and `everyone_fall_from_august_cohort_points`, which the transcript already rested on) |
 | 7 | Fixed: the Kalpa set is sat whole after notebook 12 (its opening, the index, the lab note) |
 | 8 | Fixed: the c4 solution's paragraph sizes the no-show at about 30 joiners if half sat and drops "the biggest count" |
 | 9 | Fixed: "fell 20 points from age one to age two, then 10, then none" on S15, in notebook 02 and the notes |

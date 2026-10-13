@@ -2,7 +2,7 @@
 
 Every number in the day's STUDENT prose (deck slides, notebook markdown, exercise, note, sheet and pre-read files), traced to its home in `C2_W04_D04_facts_INTERNAL.yaml`: a `numbers` id, a toy, a twelve-row count, a public fact with its R2 id, a number copied from another day, or a calendar date the ticket fixes. Speaker notes, code and code output are left out: notes are the trainer's words and code prints what it computes from the data. Written by C2_W04_D04_facts_audit_INTERNAL.py.
 
-Numbers traced: 3379. Numbers with no home: 0.
+Numbers traced: 3380. Numbers with no home: 0.
 
 | Number | File | Line | Facts id |
 |---|---|---|---|
@@ -425,12 +425,12 @@ Numbers traced: 3379. Numbers with no home: 0.
 | 50 | exercises/solutions/C2_W04_D04_c4_funnel_denominators_solution_STUDENT.md | 35 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
 | 20 | exercises/solutions/C2_W04_D04_c4_funnel_denominators_solution_STUDENT.md | 35 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
 | 107 | exercises/solutions/C2_W04_D04_c4_funnel_denominators_solution_STUDENT.md | 36 | toy_sister_programme |
-| 320 | exercises/solutions/C2_W04_D04_c4_funnel_denominators_solution_STUDENT.md | 36 | toy_sister_programme, august_share_of_fall_points |
+| 320 | exercises/solutions/C2_W04_D04_c4_funnel_denominators_solution_STUDENT.md | 36 | toy_sister_programme |
 | 300 | exercises/solutions/C2_W04_D04_c4_funnel_denominators_solution_STUDENT.md | 36 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
 | 90 | exercises/solutions/C2_W04_D04_c4_funnel_denominators_solution_STUDENT.md | 36 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
 | 100 | exercises/solutions/C2_W04_D04_c4_funnel_denominators_solution_STUDENT.md | 36 | comparator_drift_points, android_v2_share_after, toy_blend and more |
 | 90 | exercises/solutions/C2_W04_D04_c4_funnel_denominators_solution_STUDENT.md | 36 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
-| 320 | exercises/solutions/C2_W04_D04_c4_funnel_denominators_solution_STUDENT.md | 36 | toy_sister_programme, august_share_of_fall_points |
+| 320 | exercises/solutions/C2_W04_D04_c4_funnel_denominators_solution_STUDENT.md | 36 | toy_sister_programme |
 | 300 | exercises/solutions/C2_W04_D04_c4_funnel_denominators_solution_STUDENT.md | 37 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
 | 230 | exercises/solutions/C2_W04_D04_c4_funnel_denominators_solution_STUDENT.md | 37 | toy_sister_programme, toy_college_by_group |
 | 200 | exercises/solutions/C2_W04_D04_c4_funnel_denominators_solution_STUDENT.md | 41 | toy_notes_blend, toy_second_gym, toy_college_funnel and more |
@@ -831,7 +831,7 @@ Numbers traced: 3379. Numbers with no home: 0.
 | 900 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 28 | toy_college_applicants |
 | 1,000 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 29 | toy_kaapi_funnel, toy_dabba_club, toy_kahoot_blend and more |
 | 300 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 29 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
-| 320 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 29 | toy_sister_programme, august_share_of_fall_points |
+| 320 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 29 | toy_sister_programme |
 | 230 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 30 | toy_sister_programme, toy_college_by_group |
 | 90 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 30 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
 | 800 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 47 | toy_college_funnel |
@@ -889,13 +889,13 @@ Numbers traced: 3379. Numbers with no home: 0.
 | 107 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 91 | toy_sister_programme |
 | 90 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 95 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
 | 100 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 96 | comparator_drift_points, android_v2_share_after, toy_blend and more |
-| 320 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 104 | toy_sister_programme, august_share_of_fall_points |
+| 320 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 104 | toy_sister_programme |
 | 300 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 104 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
 | 107 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 104 | toy_sister_programme |
 | 230 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 105 | toy_sister_programme, toy_college_by_group |
 | 300 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 105 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
 | 77 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 105 | toy_college_applicants, toy_sister_programme |
-| 320 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 106 | toy_sister_programme, august_share_of_fall_points |
+| 320 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 106 | toy_sister_programme |
 | 1,000 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 106 | toy_kaapi_funnel, toy_dabba_club, toy_kahoot_blend and more |
 | 32 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 106 | oct_dashboard_low, toy_sister_programme, kalpa.cohort_sizes and more |
 | 300 | exercises/unguided/C2_W04_D04_c4_funnel_denominators_STUDENT.md | 107 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
@@ -1168,7 +1168,7 @@ Numbers traced: 3379. Numbers with no home: 0.
 | 55 | extras/C2_W04_D04_interview_STUDENT.md | 82 | m1_mar, atc_to_order_member_web_before, atc_to_order_member_web_after and more |
 | 18,273 | extras/C2_W04_D04_interview_STUDENT.md | 82 | android_member_starts_after |
 | 3.6 | extras/C2_W04_D04_interview_STUDENT.md | 83 | everyone_fall_aug_to_sep_points |
-| 3.2 | extras/C2_W04_D04_interview_STUDENT.md | 83 | everyone_fall_from_august_cohort_points, august_share_of_fall_points |
+| 3.2 | extras/C2_W04_D04_interview_STUDENT.md | 83 | everyone_fall_from_august_cohort_points |
 | 13,000 | extras/C2_W04_D04_interview_STUDENT.md | 83 | cohort_size_aug, aug_cohort_outside_dashboard |
 | 31 | extras/C2_W04_D04_interview_STUDENT.md | 83 | m1_aug, weekly_cohort_2026-09-07_w2, kalpa.sessions_skip_search and more |
 | 20 | extras/C2_W04_D04_interview_STUDENT.md | 83 | aug_m1_sale, oct_sale_m2_assumed, weekly_cohort_2026-08-31_w3 and more |
@@ -1467,11 +1467,11 @@ Numbers traced: 3379. Numbers with no home: 0.
 | 100 | notebooks/C2_W04_D04_04_funnel_denominators_STUDENT.ipynb | cell 9 line 1 | comparator_drift_points, android_v2_share_after, toy_blend and more |
 | 1,000 | notebooks/C2_W04_D04_04_funnel_denominators_STUDENT.ipynb | cell 9 line 3 | toy_kaapi_funnel, toy_dabba_club, toy_kahoot_blend and more |
 | 300 | notebooks/C2_W04_D04_04_funnel_denominators_STUDENT.ipynb | cell 9 line 4 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
-| 320 | notebooks/C2_W04_D04_04_funnel_denominators_STUDENT.ipynb | cell 9 line 4 | toy_sister_programme, august_share_of_fall_points |
+| 320 | notebooks/C2_W04_D04_04_funnel_denominators_STUDENT.ipynb | cell 9 line 4 | toy_sister_programme |
 | 230 | notebooks/C2_W04_D04_04_funnel_denominators_STUDENT.ipynb | cell 9 line 4 | toy_sister_programme, toy_college_by_group |
 | 90 | notebooks/C2_W04_D04_04_funnel_denominators_STUDENT.ipynb | cell 9 line 4 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
 | 107 | notebooks/C2_W04_D04_04_funnel_denominators_STUDENT.ipynb | cell 9 line 5 | toy_sister_programme |
-| 320 | notebooks/C2_W04_D04_04_funnel_denominators_STUDENT.ipynb | cell 9 line 6 | toy_sister_programme, august_share_of_fall_points |
+| 320 | notebooks/C2_W04_D04_04_funnel_denominators_STUDENT.ipynb | cell 9 line 6 | toy_sister_programme |
 | 300 | notebooks/C2_W04_D04_04_funnel_denominators_STUDENT.ipynb | cell 9 line 6 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
 | 90 | notebooks/C2_W04_D04_04_funnel_denominators_STUDENT.ipynb | cell 9 line 6 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
 | 100 | notebooks/C2_W04_D04_04_funnel_denominators_STUDENT.ipynb | cell 9 line 6 | comparator_drift_points, android_v2_share_after, toy_blend and more |
@@ -2265,11 +2265,11 @@ Numbers traced: 3379. Numbers with no home: 0.
 | 107 | slides/C2_W04_D04_half1_STUDENT.md | 771 | toy_sister_programme |
 | 1,000 | slides/C2_W04_D04_half1_STUDENT.md | 775 | toy_kaapi_funnel, toy_dabba_club, toy_kahoot_blend and more |
 | 300 | slides/C2_W04_D04_half1_STUDENT.md | 776 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
-| 320 | slides/C2_W04_D04_half1_STUDENT.md | 777 | toy_sister_programme, august_share_of_fall_points |
+| 320 | slides/C2_W04_D04_half1_STUDENT.md | 777 | toy_sister_programme |
 | 230 | slides/C2_W04_D04_half1_STUDENT.md | 777 | toy_sister_programme, toy_college_by_group |
 | 90 | slides/C2_W04_D04_half1_STUDENT.md | 777 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
 | 107 | slides/C2_W04_D04_half1_STUDENT.md | 779 | toy_sister_programme |
-| 320 | slides/C2_W04_D04_half1_STUDENT.md | 779 | toy_sister_programme, august_share_of_fall_points |
+| 320 | slides/C2_W04_D04_half1_STUDENT.md | 779 | toy_sister_programme |
 | 300 | slides/C2_W04_D04_half1_STUDENT.md | 779 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
 | 90 | slides/C2_W04_D04_half1_STUDENT.md | 779 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
 | 100 | slides/C2_W04_D04_half1_STUDENT.md | 779 | comparator_drift_points, android_v2_share_after, toy_blend and more |
@@ -2410,6 +2410,7 @@ Numbers traced: 3379. Numbers with no home: 0.
 | 0.3 | slides/C2_W04_D04_half1_STUDENT.md | 1186 | m1_aug, oct_dashboard_estimate, oct_dashboard_low and more |
 | 38.5 | slides/C2_W04_D04_half1_STUDENT.md | 1186 | tri_jul_m2 |
 | 13,000 | slides/C2_W04_D04_half1_STUDENT.md | 1190 | cohort_size_aug, aug_cohort_outside_dashboard |
+| 38 | slides/C2_W04_D04_half1_STUDENT.md | 1202 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
 | 0.3 | slides/C2_W04_D04_half1_STUDENT.md | 1211 | m1_aug, oct_dashboard_estimate, oct_dashboard_low and more |
 | 38.5 | slides/C2_W04_D04_half1_STUDENT.md | 1211 | tri_jul_m2 |
 | 37.3 | slides/C2_W04_D04_half1_STUDENT.md | 1211 | dashboard_sep_june_cohorts_only |
@@ -2659,7 +2660,7 @@ Numbers traced: 3379. Numbers with no home: 0.
 | 18 | slides/C2_W04_D04_half2_STUDENT.md | 291 | weekly_orders_change_member_android, friday_forecast_gap_points |
 | 7 | slides/C2_W04_D04_half2_STUDENT.md | 291 | weekly_cohort_2026-08-17_w3, weekly_orders_change_member_ios, toy_weaned and more |
 | 38 | slides/C2_W04_D04_half2_STUDENT.md | 351 | tri_jan_m3, tri_jan_m4, tri_jan_m5 and more |
-| 3.2 | slides/C2_W04_D04_half2_STUDENT.md | 353 | everyone_fall_from_august_cohort_points, august_share_of_fall_points |
+| 3.2 | slides/C2_W04_D04_half2_STUDENT.md | 353 | everyone_fall_from_august_cohort_points |
 | 3.6 | slides/C2_W04_D04_half2_STUDENT.md | 353 | everyone_fall_aug_to_sep_points |
 | 1,133 | slides/C2_W04_D04_half2_STUDENT.md | 353 | lost_orders_week_vs_nonmember_android |
 | 1,317 | slides/C2_W04_D04_half2_STUDENT.md | 353 | lost_orders_per_week |
@@ -2823,7 +2824,7 @@ Numbers traced: 3379. Numbers with no home: 0.
 | 50 | study-notes/C2_W04_D04_notes_STUDENT.md | 262 | m1_jun, atc_to_order_nonmember_web_before, atc_to_order_nonmember_web_after and more |
 | 100 | study-notes/C2_W04_D04_notes_STUDENT.md | 266 | comparator_drift_points, android_v2_share_after, toy_blend and more |
 | 300 | study-notes/C2_W04_D04_notes_STUDENT.md | 266 | order_value_low_rs, toy_kahoot_blend, toy_notes_blend and more |
-| 320 | study-notes/C2_W04_D04_notes_STUDENT.md | 266 | toy_sister_programme, august_share_of_fall_points |
+| 320 | study-notes/C2_W04_D04_notes_STUDENT.md | 266 | toy_sister_programme |
 | 230 | study-notes/C2_W04_D04_notes_STUDENT.md | 267 | toy_sister_programme, toy_college_by_group |
 | 90 | study-notes/C2_W04_D04_notes_STUDENT.md | 267 | toy_notes_blend, toy_college_funnel, toy_sister_programme and more |
 | 107 | study-notes/C2_W04_D04_notes_STUDENT.md | 267 | toy_sister_programme |

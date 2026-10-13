@@ -1659,8 +1659,9 @@ F_ = {n["id"]: n["value"] for n in numbers}
 lost_17 = (F_["atc_to_order_member_android_before"] - F_["atc_to_order_member_android_after"]) * F_["android_member_carts_after"]
 first_week = sorted(WEEKLY_SIZE.index)[2]
 sale_week_ids = set(m["member_id"] for m in members if D(2026, 8, 17) <= m["signup_date"] <= D(2026, 8, 23))
-# The cold reads of 13 October 2026 asked how much the cohorts entering each month prop the dashboard, and
-# what September would read counted with a normal-sized August; both come from the tables just written.
+# The cold reads of 13 October 2026 asked how much the cohorts entering each month prop the dashboard; the
+# answer comes from the tables just written, and the check re-reads September with a normal-sized August,
+# which the facts already hold as everyone_sep_normal_august.
 _mem = pd.read_csv(DATA / f"{STEM}_members_STUDENT.csv")
 _mm = pd.read_csv(DATA / f"{STEM}_member_months_STUDENT.csv").merge(_mem[["member_id", "cohort_month"]], on="member_id")
 _mm["age"] = (_mm["month"].str[:4].astype(int) * 12 + _mm["month"].str[5:].astype(int)
@@ -1682,15 +1683,6 @@ derived = [
     {"id": "mix_prop_points_sep", "value": round(float(100 * _prop), 1), "printed": "about half a point",
      "how": "September's dashboard less the same count held to June's four cohorts",
      "used_by": "S49; notebook 06; the notes"},
-    {"id": "everyone_sep_normal_august", "value": round(float(100 * _normal_aug), 1),
-     "how": "September counted for everyone, with August as 5,000 members at July's 49 percent in month one",
-     "used_by": "S79's notes, the working behind the transcript's 3.2 of 3.6"},
-    {"id": "everyone_fall_aug_to_sep_points", "value": round(float(100 * (_every["2026-08"] - _every["2026-09"])), 1),
-     "how": "everyone counted, August 39.5 less September 35.9", "used_by": "S79's notes"},
-    {"id": "normal_august_fall_points", "value": round(float(100 * (_every["2026-08"] - _normal_aug)), 1),
-     "how": "August 39.5 less September with a normal August, 39.2", "used_by": "S79's notes"},
-    {"id": "august_share_of_fall_points", "value": round(float(100 * (_normal_aug - _every["2026-09"])), 1),
-     "how": "September with a normal August less September as it is", "used_by": "S79's notes"},
     {"id": "lost_orders_17_days", "value": int(round(lost_17)), "how": "(58 less 44 percent) x 22,841 Android member carts",
      "used_by": "the fix-first set, a distractor and its solution"},
     {"id": "lost_orders_per_day", "value": int(round(lost_17 / 17)), "how": "the 17 days' loss over 17", "used_by": "the fix-first set, a distractor"},

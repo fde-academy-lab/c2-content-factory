@@ -2241,22 +2241,6 @@ derived:
   printed: about half a point
   how: September's dashboard less the same count held to June's four cohorts
   used_by: S49; notebook 06; the notes
-- id: everyone_sep_normal_august
-  value: 39.2
-  how: September counted for everyone, with August as 5,000 members at July's 49 percent in month one
-  used_by: S79's notes, the working behind the transcript's 3.2 of 3.6
-- id: everyone_fall_aug_to_sep_points
-  value: 3.6
-  how: everyone counted, August 39.5 less September 35.9
-  used_by: S79's notes
-- id: normal_august_fall_points
-  value: 0.4
-  how: August 39.5 less September with a normal August, 39.2
-  used_by: S79's notes
-- id: august_share_of_fall_points
-  value: 3.2
-  how: September with a normal August less September as it is
-  used_by: S79's notes
 - id: lost_orders_17_days
   value: 3198
   how: (58 less 44 percent) x 22,841 Android member carts
