@@ -127,12 +127,53 @@ LIVE, 4 minutes. Write the three numbers on the board. Spend is the value of eve
 prices charged, whatever became of it, which the retail dossier calls GMV: Monday's warehouse queries
 totalled it for April to September. The as-of date is the last date the data covers. Each chapter
 adds a way the table can fail one of these checks; chapter 6 makes the refresh refuse to ship when
-one fails. Then chapter 1.
+one fails. Then the six topics.
 ```
 
 ---
 
-## SECTION 1: One row per customer?
+## S5a. Today teaches groupby, merge and reshape in six topics
+*Which chapter teaches each of today's six topics, and how do they build on Monday to Wednesday?*
+
+| Topic, in the curriculum's words | Chapter | Minutes |
+|---|---|---|
+| read_sql from the warehouse into a DataFrame | 1, then 6 inside the refresh | within chapters 1 and 6 |
+| groupby and agg; named aggregations; the customer table (recency, frequency, monetary) | 1, with recency in days in 6 | 30 |
+| merge with validate= and the count habit | 2, first used in 1 | 30 |
+| Reshape: pivot_table and melt | 3 | 30 |
+| Chained transformations and dtype checks | 6, first met in 1 | 30 |
+| The three-tool re-expression and the tool-choice note | 4, then 5, then the second case | 30, 30 and 40 |
+
+```mermaid
+flowchart LR
+    MON["<b>Monday</b><br/>the warehouse,<br/>GROUP BY"] --> RS["<b>read_sql</b><br/>warehouse to DataFrame"]
+    RS --> GB["<b>groupby and agg</b><br/>named aggregations,<br/>the customer table"]
+    MON --> GB
+    WED["<b>Wednesday</b><br/>each member's months"] --> RE["<b>reshape</b><br/>pivot_table and melt"]
+    GB --> RE
+    GB --> MG["<b>merge, validate=</b><br/>the count habit"]
+    TUE["<b>Tuesday</b><br/>joins, the row count"] --> MG
+    MG --> TT["<b>three-tool re-expression</b><br/>the tool-choice note"]
+    MG --> CH["<b>chained transformations</b><br/>dtype checks"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class MON,TUE,WED known
+    class RS,GB,MG,RE,TT,CH bet
+```
+
+```notes
+LIVE, 1 minute, inside the ask's twenty, whose slides run to eighteen. Read the six topics in the
+curriculum's words and the chapter that teaches each, then walk the map once from the left: Monday's
+warehouse and GROUP BY feed read_sql and groupby, Wednesday's months per member feed the reshape,
+Tuesday's joins and row count feed the merge, and the merge feeds both the three tools and the
+chained refresh. Chapter 1 reads the warehouse into pandas and builds the three numbers; chapter 6
+runs the whole build as one chain and checks what it made. Name the topics here and teach none of
+them yet. Then chapter 1.
+```
+
+---
+
+## SECTION 1: groupby and agg; named aggregations; the customer table (recency, frequency, monetary): one row per customer?
 *How recently, how often and how much has each of Kalpa's 340 customers bought, before any offer goes out?*
 
 ```notes
@@ -180,7 +221,50 @@ value: Rs 19,84,00,000 | label: spend | note: every order at the price charged
 ```notes
 LIVE, 2 minutes. Retailers call the three numbers RFM, for recency, frequency and monetary value. A
 wrong row costs an offer: a customer left out gets nothing, a customer counted wrongly gets the wrong
-code. Business is 40 accounts and 99.1 percent of spend, so spend must be read by segment.
+code. Business is 40 accounts and 99.1 percent of spend, so spend must be read by segment. Then the
+M of RFM.
+```
+
+---
+
+## S7a. Monetary value adds every order a customer placed
+*What does the M in RFM measure, and how does it differ from the average order?*
+
+Monetary value, the M in RFM, is what a customer spent in the window: the amount of every order at the price charged, added up. The table calls it spend. Because it is a total, it grows with how often a customer buys, and the average order is that total divided by the count of orders. Two invented customers:
+
+| Customer (invented) | Orders, Rs | Frequency | Monetary value | Average order |
+|---|---|---|---|---|
+| A | 1,200, 800 and 500 | 3 | Rs 2,500 | Rs 833 |
+| B | 2,500 | 1 | Rs 2,500 | Rs 2,500 |
+
+**Question.** Invented customer C placed two orders, Rs 3,000 and Rs 1,000, and D placed four of Rs 900 each. What is each one's monetary value, as a letter? a) C 2 and D 4; b) C Rs 2,000 and D Rs 900, the average order of each; c) C Rs 3,000 and D Rs 900; d) C Rs 4,000 and D Rs 3,600.
+
+```notes
+LIVE, 2 minutes with S7b. The customers are invented, small enough to add in the head. Shopify's
+RFM on S8 defines the M the same way, "the total amount spent (monetary value)". A and B tie on
+monetary value, Rs 2,500 each, one from three orders and one from a single order, which is why the
+table keeps frequency and spend as two columns. Letters in chat, then the answer.
+```
+
+---
+
+## S7b. Answer: C Rs 4,000 and D Rs 3,600, every order added
+*What did each wrong letter compute instead?*
+
+| Letter | C | D | What it computed |
+|---|---|---|---|
+| a) | 2 | 4 | Frequency, the count of orders |
+| b) | Rs 2,000 | Rs 900 | The average order, monetary value divided by frequency |
+| c) | Rs 3,000 | Rs 900 | The largest single order |
+| d) | Rs 4,000 | Rs 3,600 | Monetary value, every order added |
+
+**The rule.** Monetary value is a sum over a customer's orders, so it answers how much while frequency answers how often; C spends more from fewer orders, and only the two columns together show it.
+
+```notes
+LIVE, inside S7a's two minutes. The answer is d. C's two orders add to Rs 4,000 and D's four to
+Rs 3,600, so C leads on monetary value while D leads on frequency. In the table this chapter builds,
+spend is the monetary value and SQL writes it as sum(amount), as Monday did. Then Shopify, which
+scores all three numbers for every customer.
 ```
 
 ---
@@ -249,7 +333,60 @@ rfm = (orders.groupby("customer_id")
 LIVE, 3 minutes. This is Week 1's accumulator, written once: split the rows by a key, apply a
 calculation to each group, combine the results. Each name in agg becomes a column; each pair says
 which column to read and what to do with it. SQL says the same with GROUP BY customer_id and max,
-count, sum.
+count, sum. Then the name pandas gives that form.
+```
+
+---
+
+## S10a. Named aggregation: each keyword names a column
+*How does one agg call say what to read, what to run and what to call it?*
+
+pandas calls this form named aggregation. Inside `agg`, each keyword becomes a column of the answer, and the pair after it names the column to read and the function to run on each group, so `spend=("amount", "sum")` is SQL's `sum(amount) AS spend`. Four invented orders:
+
+```python
+toy = pd.DataFrame({"order": [1, 2, 3, 4], "customer": ["A", "A", "B", "A"],
+                    "amount": [500, 300, 200, 100]})                   # invented
+toy.groupby("customer").agg(orders=("order", "count"), spend=("amount", "sum"))
+#           orders  spend
+# A              3    900
+# B              1    200
+```
+
+**Question.** On the same four orders, what does `toy.groupby("customer").agg(smallest=("amount", "min"), orders=("amount", "count"))` return, as a letter? a) 2 rows with columns smallest and orders, A reading 100 and 3; b) 2 rows with columns min and count, A reading 100 and 3; c) 4 rows, one per order, with smallest and orders on each; d) 2 rows with columns smallest and orders, A reading 100 and 900.
+
+```notes
+LIVE, 2 minutes with S10b. The orders are invented, four rows a learner can add by eye. Point at
+each keyword in turn: orders and spend are names the analyst chose, and each pair says which column
+to read and what to run on it. Letters in chat, then the answer.
+```
+
+---
+
+## S10b. Answer: two rows, named smallest and orders
+*What did each wrong letter misread?*
+
+```python
+toy.groupby("customer").agg(
+    smallest=("amount", "min"),
+    orders=("amount", "count"))
+#           smallest  orders
+# A              100       3
+# B              200       1
+```
+
+| Letter | What it misread |
+|---|---|
+| b) | It names the columns after the functions, as `["amount"].agg(["min", "count"])` does with no keyword |
+| c) | It keeps a row per order, as Wednesday's window did; `agg` gives one row per group |
+| d) | It reads count as sum: 900 is A's spend, and count gives A's three orders |
+
+**The rule.** One `agg` call gives one row per group and one column per keyword, each written `name=("column", "function")`.
+
+```notes
+LIVE, inside S10a's two minutes. The answer is a. Read the printed table, then the three misreads: b
+is how a bare list of functions names its columns, c is a window function's shape, and d swaps count
+for sum. The table's own call names last_order, frequency and spend the same way. Then the frame's
+types: a date read as text cannot be subtracted, and an amount read as text cannot be summed.
 ```
 
 ---
@@ -440,7 +577,7 @@ once. Then chapter 2: the marketing lead wants the monsoon sale on these 340 row
 
 ---
 
-## SECTION 2: Who did the sale reach?
+## SECTION 2: merge with validate= and the count habit: who did the sale reach?
 *Which customers did the monsoon sale reach, and what did they spend, before the November budget is asked for?*
 
 ```notes
@@ -720,7 +857,7 @@ months.
 
 ---
 
-## SECTION 3: Is Retail-Plus slipping?
+## SECTION 3: Reshape: pivot_table and melt: is Retail-Plus slipping?
 *How far did Retail-Plus members' spend fall from Q1 to Q2, month by month, in the number the growth review hears?*
 
 ```notes
@@ -1013,7 +1150,7 @@ melt lengthens, folding columns back into rows. Then the break, ten minutes, bef
 
 ---
 
-## SECTION 4: Do three tools agree?
+## SECTION 4: The three-tool re-expression: do three tools agree?
 *Of the 130 customers the sale reached, how many bought, and do plain Python, SQL and pandas agree on it?*
 
 ```notes
@@ -1286,7 +1423,7 @@ which number?
 
 ---
 
-## SECTION 5: Which tool for which job?
+## SECTION 5: The tool-choice note: which tool for which job?
 *Which tool should own each of Marketing's and Finance's recurring numbers, and which would you refuse for Finance's?*
 
 ```notes
