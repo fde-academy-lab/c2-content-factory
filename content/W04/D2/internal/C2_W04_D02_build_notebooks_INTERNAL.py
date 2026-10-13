@@ -243,41 +243,53 @@ check("the son can repeat the title, since it carries his Rs 700", "Rs 700" in s
         **Predict before you run.** What bought the extra Rs 700 a day?
 
         a) More customers, each spending more
-        b) Two more hours a day, each hour earning less
+        b) Two more hours a day, each selling far less than an old hour
         c) Higher prices on the same goods
         d) The festival fortnight alone
         """),
         code('''
 hurried = m.per_day.diff().iloc[-1]                  # sales a day, October less September
 extra_hours = m.hours.diff().iloc[-1]
+added = hurried / extra_hours                        # the most each added hour can have sold
 print(f"the hurried read: Rs {hurried:,.0f} more a day, so keep the hours")
-print(f"what bought the rise: {extra_hours:.0f} more hours a day, each earning {abs(chg.per_hour):.1f} percent less")
+print(f"what bought the rise: {extra_hours:.0f} more hours a day, at most Rs {added:,.0f} of sales in each,")
+print(f"against Rs {m.per_hour.iloc[0]:,.0f} in each of September's ten hours")
 check("the hurried read is true to the rupee", hurried == 700)
 check("and it was bought with two more hours a day", extra_hours == 2)
+check("each added hour sold at most Rs 350, under a third of an old hour",
+      added == 350 and added < m.per_hour.iloc[0] / 3)
 '''),
         md("""
-        **Why it is wrong.** The answer is b: the rise was bought with two more hours a day, and the
-        decision is about those hours: per hour the shop earns 11.8 percent less. The sentence would keep
-        paying the helper Rs 170 a day without asking whether the evening earns it. **The check:**
-        name the unit the decision is priced in, here the hour, before reading any number. **The
-        fix:** the evidence is sales per hour, Rs 1,190 to Rs 1,050, with sales per customer beside
-        it.
+        **Why it is wrong.** The answer is b: the rise was bought with two more hours a day, and each
+        of them sold at most Rs 350, against Rs 1,190 in each of the old ten. It is the most they can
+        have sold, since the festival may have lifted the old hours too. Rs 700 is sales before the
+        cost of the goods, and the shop's records hold no figure for what the goods cost, so the
+        sentence would keep paying the helper Rs 170 a day without asking whether the evening earns
+        it. An average per hour falls whenever quieter hours join it; the Rs 350 says how much
+        quieter. **The check:** divide by what the decision buys, here the two extra hours, before
+        reading any number. **The fix:** the evidence is per hour, Rs 1,190 to Rs 1,050 with the
+        added hours' Rs 350 beside it, and the action counts the evening's sales on their own for a
+        month.
 
         **Your turn.** A second example of the same shape, also invented: an auto driver earned Rs
         1,800 on Monday from 20 rides in 9 hours, and Rs 1,800 on Tuesday from 18 rides in 12
-        hours. Read his two days per day, per ride and per hour, then say which denominator prices
-        his question, "should I drive the longer day again?". Fill the blanks, type the lines into
-        the empty cell below and run them; the checks print PASS when the reads are right.
+        hours. Read his two days per day, per ride and per hour, then divide by what his question
+        buys, "should I drive the longer day again?": the three added hours. Fill the blanks, type
+        the lines into the empty cell below and run them; the checks print PASS when the reads are
+        right.
 
         ```python
         auto = pd.DataFrame({"rs": [1800, 1800], "rides": [20, 18], "hours": [9, 12]},
                             index=["Monday", "Tuesday"])
         auto["per_ride"] = auto.rs / auto.___
         auto["per_hour"] = auto.rs / auto.___
+        added = auto.rs.diff().iloc[-1] / auto.hours.diff().iloc[-1]   # what each added hour brought
         print(auto)
+        print("each of the three added hours brought Rs", added)
         check("per day is flat", auto.rs.nunique() == 1)
         check("per ride rose while per hour fell",
               auto.per_ride.is_monotonic_increasing and auto.per_hour.is_monotonic_decreasing)
+        check("the three added hours brought nothing", added == 0)
         ```
         """),
         empty(),
@@ -285,8 +297,8 @@ check("and it was bought with two more hours a day", extra_hours == 2)
         ## Which rules does the chapter leave?
 
         1. The title is the claim: a sentence with a verb that says what is true and what to do.
-        2. The evidence is one number with its denominator and window, or one chart, chosen by the
-           decision it prices.
+        2. The evidence is one number divided by what the decision buys, with its window, or one
+           chart.
         3. The caveat sits beside the evidence, in plain sight.
         4. The action names what to do, its cost in rupees and weeks, and who signs.
 
@@ -313,7 +325,7 @@ def nb02():
         **Week 4, Tuesday, concept notebook 2 of 5, beside chapter 2 of the deck.** Ramesh's kirana
         shop returns from notebook 01 with the same invented numbers; only the question changes.
         Notebook 01 found that his decision is priced per hour: Rs 1,190 an hour in September and
-        Rs 1,050 in October.
+        Rs 1,050 in October, with each of the two added hours selling at most Rs 350.
 
         **Who needs the answer.** Ramesh (invented), who reads the slide in five minutes, and two
         readers who each look for their own question behind it: his son and the shop's accountant.
@@ -380,7 +392,8 @@ plt.show()
         **What happened.** The answer is b. Two elements carry the claim, the per-hour chart and
         sales per customer, and the festival fortnight stays as the caveat. The son's page takes
         customers a day and his hours at the counter; the accountant's page takes the four weeks'
-        totals and the helper's wage; rain days leave, because nobody will ask. Option a is the
+        totals and the helper's wage; rain days leave, since both months had two and nobody will
+        ask. Option a is the
         trap: the two that carry the claim are right, and the caveat is forgotten.
 
         ## Where does each of the rest go?
@@ -403,9 +416,9 @@ check("every page is headed by a question", all(q.endswith("?") for q in questio
         md("""
         ## Can the caveat leave when the slide is crowded?
 
-        **The plausible wrong answer.** "The slide is crowded, so the festival fortnight goes to the
-        appendix with the rain days; it is only a detail." A hurried sort that asks only the first
-        two questions puts it there.
+        **The plausible wrong answer.** "The slide is crowded, so the festival fortnight is cut, as
+        the rain days are cut; it is only a detail." A hurried sort that asks only the first two
+        questions puts it there.
 
         **Predict before you run.** Where does the hurried sort send the festival fortnight?
 
@@ -428,8 +441,9 @@ check("the hurried sort drops the caveat", hurried_route(festival) == "leaves")
 check("the rule keeps the caveat on the slide", route(festival) == "the slide")
 '''),
         md("""
-        **Why it is wrong.** The answer is d, and the son will raise the festival first: when he
-        finds it missing he calls the slide dishonest, after which Ramesh trusts nothing on it. **The check:** is the
+        **Why it is wrong.** The answer is d, and Ramesh will raise the festival first, since it is
+        the reason the son's Rs 700 may not last: when he finds it missing he calls the slide
+        dishonest, and trusts nothing else on it. **The check:** is the
         caveat on the slide itself? **The fix:** ask the caveat question first; when the slide is
         crowded, something else leaves instead.
 
@@ -480,12 +494,13 @@ check("one series of the six carries the claim", len(series) + 1 == 6 and len(ke
         md("""
         **What happened.** The answer is a. Five of the six series leave, with the legend, the grid
         and the border; one line and two labels stay, and the title says the claim. The test is the
-        one the elements met: does the claim need this ink? Storytelling with Data puts it as a
-        question to ask of every element, "Is it adding any informative value?", and takes out
-        whatever is not.
+        one the elements met: does the claim need this ink? Storytelling with Data's declutter post
+        (4 January 2011, checked 13 October 2026) puts it as a question to ask of every element, "Is
+        it adding any informative value?", and takes out whatever is not.
 
         **Your turn.** Ramesh's accountant presents the same eight elements to the bank, and her
-        claim is different: the helper's two extra hours cost less than they bring. Mark which
+        claim is different: the two extra hours bring in Rs 700 of sales a day for Rs 170 of the
+        helper's wages. Mark which
         elements her claim needs, run the same sort, and check that the caveat still stays. Fill
         the blank, type the lines into the empty cell below and run them:
 
@@ -678,7 +693,8 @@ plt.show()
         your version. **Answer** from a named line of the evidence. **Concede** the true part out
         loud. Say **what would change your mind**, so the claim can be tested. Restating comes
         first because the objector has to accept your version before any answer lands; Rapoport's
-        rules, as the philosopher Daniel Dennett set them out, open the same way. The function
+        rules, the philosopher Daniel Dennett's guide to criticising an argument fairly (as The
+        Marginalian quotes his Intuition Pumps, checked 13 October 2026), open the same way. The function
         builds the four moves from the two numbers the cells computed.
         """),
         code('''
@@ -881,7 +897,7 @@ plt.show()
         **What happened.** The answer is b: 18.6 hours a driver-week before the launch and 22.5
         after, up 21 percent. Per peak online hour the rupees fell from Rs 313.5 to Rs 260.4, down
         17 percent, and per active driver-week they rose from Rs 5,817 to Rs 5,861, up 0.8 percent,
-        because each driver-week carried about four more hours at 17 percent less per hour. Gross
+        because the average driver-week carried about four more hours at 17 percent less per hour. Gross
         bookings rose 3.0 percent and per trip held at Rs 165.
 
         **The call.** The slide carries bookings per peak online hour, because the scheme pays by
@@ -922,8 +938,8 @@ check("second route agrees with bookings / hours in both windows",
       ((second_route - w.rs_per_hour).abs() < 1e-9).all())
 '''),
         md("""
-        **What happened.** The drivers who were there before the launch rose from Rs 5,817 to Rs
-        5,895 a driver-week, up 1.4 percent, on 22.6 hours a week against 18.6. The 140 joiners
+        **What happened.** The 1,060 drivers who were there before the launch rose from Rs 5,816.5 to
+        Rs 5,895.4 a driver-week, up 1.4 percent, on 22.6 hours a week against 18.6. The 140 joiners
         drove about one week each at Rs 4,314, below the average, so they pulled the read down to
         0.8 percent. The fare held at Rs 165 in both windows, and trips per hour fell from 1.900 to
         1.578 (printed elsewhere as 1.58): Rs 165 x 1.578 is Rs 260.4, so the whole fall in rupees
@@ -981,8 +997,8 @@ check("every after week sits below every before week: a step at the launch, not 
            and 0 per trip, and E and F explain most of the fall.
         2. Over all driver-weeks, gross bookings rose 3.0 percent, per hour fell 17 percent, per
            active driver-week rose 0.8 percent and per trip held; the slide carries per hour.
-        3. Each driver-week carried about four more hours, and the 140 joiners pulled the read
-           down.
+        3. The average driver-week carried about four more hours, and the 140 joiners pulled the
+           read down.
         4. The fall is all trips: Rs 165 x 1.90 is Rs 313.5, and Rs 165 x 1.578 is Rs 260.4.
         5. The clear chart carries one series, a launch line and a sentence for a title; the drop
            is a step at the launch.
@@ -994,14 +1010,15 @@ check("every after week sits below every before week: a step at the launch, not 
         give one number with its denominator (Rs 314 to Rs 260 per peak online hour), say what
         riders got (a median wait of 4.8 to 4.6 minutes), say the caveat (the monsoon ended inside
         the six weeks), and end on the action with its cost and signer (test paying per completed
-        peak trip with an acceptance floor; city-wide it saves Rs 58 lakh to Rs 92.7 lakh over six
-        weeks if a half to a fifth of the idle drivers' top-up is still paid; the city head signs
-        the test).
+        peak trip with an acceptance floor; across the enrolled drivers it saves Rs 58 lakh to Rs
+        92.7 lakh over six weeks if a half to a fifth of the idle drivers' top-up is still paid, and
+        the per-trip rate decides where it lands; the city head signs the test).
 
         **The AI-company variant.** A coding assistant's dashboard reports suggestions accepted per
-        developer-week. The same trap waits: accepted text can be deleted soon after. A read that
-        matches what the product promises is suggested code still in the file seven days after
-        acceptance, per developer who saw a suggestion, with ratio guardrails against padding and
+        developer-week. The same trap waits: accepted text can be deleted soon after, and a developer
+        who gives up on the tool drops out of a per-developer read. A read that matches what the
+        customer pays for is suggested code still in the file seven days after acceptance, per paid
+        seat a week, with characters per accepted suggestion as the guardrail against padding and
         acceptance kept as a leading input.
         """),
     ]
@@ -1025,7 +1042,7 @@ def nb05():
         **The ticket.** Uber, Hyderabad, the driver app's peak-hour earnings guarantee: an enrolled
         driver online through a peak window is guaranteed Rs 300 per peak online hour, and Uber
         pays the gap as a top-up. Monday's redesign pays per completed peak trip, with a floor kept
-        for drivers who accept most offers. Three roles object at Thursday's review. Driver
+        for drivers who accept at least half their offers. Three roles object at Thursday's review. Driver
         operations: "Drivers will log off and supply at peak will fall." Marketing: "The guarantee is
         on every hoarding; changing it six weeks in looks like bait." Finance: "The fall in bookings
         per hour is the monsoon ending."
@@ -1282,11 +1299,12 @@ check("the second route agrees with the segments table", round(trips_880 / hours
 
         **The AI-company variant.** A head of product objects to replacing acceptance rate in the
         sales deck: "acceptance is what customers see." The true part: customers do quote it, and
-        it moves first. The answer, on invented numbers: of suggestions shown, 32 percent are
-        accepted, and about 26 percent are still in the file seven days later. The defence keeps
-        acceptance as a leading input and puts surviving code on the slide, with the fact that
-        would change the call: a holdout showing acceptance tracks seat renewals as well as
-        surviving code does.
+        it moves first. The answer, on invented numbers: of every 100 suggestions shown, 32 are
+        accepted, and if a fifth of those are deleted within a week, about 26 survive. The defence
+        keeps acceptance as a leading input and judges the team on surviving code per paid seat,
+        with the fact that would change the call: last year's renewals showing that acceptance
+        separates the accounts that renewed from those that cut seats as well as surviving code
+        does.
         """),
     ]
 
@@ -1366,9 +1384,10 @@ plt.show()
         md("""
         **What happened.** The answer is b. B lands nearer the till, and still scores lower: its
         2,350 cannot be checked, defended or improved, while A's 2,700 shows which guess to replace.
-        Think Insights' guide to guesstimates says the interviewer "is interested in your thought
-        process; not the final result", and that the best candidates "validate their results & try
-        to spot their own mistake before telling their interviewer they are done".
+        Think Insights' guide to guesstimates (3 December 2018, checked 13 October 2026) says the
+        interviewer "is interested in your thought process; not the final result", and that the
+        best candidates "validate their results & try to spot their own mistake before telling
+        their interviewer they are done".
 
         Units multiply as well as numbers: students x (buyers per student) x (cups per buyer) =
         cups. Writing the unit beside each factor is how the chain is checked before it is
@@ -1637,7 +1656,8 @@ plt.show()
         who knows what a north star, a denominator and an index are. The draft runs to nine lines,
         13 numbers and four method words; the page to four sentences, 6 numbers and none.
 
-        Amazon's 2017 letter to shareholders, filed 18 April 2018, says: "We don't do PowerPoint
+        Amazon's 2017 letter to shareholders, filed 18 April 2018 (checked 13 October 2026), says:
+        "We don't do PowerPoint
         (or any other slide-oriented) presentations at Amazon." The owner writes a six-page memo
         and the room reads it in silence at the start of the meeting. The afternoon's page is the
         memo form of the morning's slide, cut to one page.
@@ -1688,8 +1708,17 @@ plt.show()
         | North star | the one number the team is judged on |
 
         **The plausible wrong answer.** "The draft is the thorough version: it carries every
-        number, so it should go to Ramesh." The check below is the rule as a function, run on both
-        versions.
+        number, so it should go to Ramesh." The chapter's five rules are what a reader checks in two
+        minutes:
+
+        1. The first sentence is the claim, with what to do and why.
+        2. The second carries one number, what it is divided by and its window.
+        3. The caveat comes before the action, so the reader meets the doubt first.
+        4. The action names what to do, its cost in rupees and weeks, and who signs.
+        5. No method word stays on the page: write "divided by", never "denominator".
+
+        The cell below writes the five rules as one function and runs it on both versions, one part
+        a line.
 
         **Predict before you run.** Of the five rules, how many does the draft pass?
 
@@ -1699,22 +1728,24 @@ plt.show()
         d) None
         """),
         code('''
+DOUBT = ["may ", "might ", "cannot", "part of", "not in the data"]     # words a caveat is said in
+PER = r"\\bper\\b|an hour|a day|a week|a customer|divided by"           # what a number is divided by
+
 def page_check(text):
-    """The AI-free written business case, as checks a reader would make in two minutes."""
-    sentences = [s for s in text.splitlines() if s.strip() and not s.startswith("VERSION")]
-    words = len(text.split())
-    return {"opens on a claim with its reason": "because" in sentences[0] or " so " in sentences[0],
-            "no method words": not any(w in text.lower() for w in METHOD),
-            "the action names a cost and who signs": "Rs" in sentences[-1] and "signs" in sentences[-1],
-            "one page, 250 words or fewer": words <= 250,
-            "four to six sentences": 4 <= len(sentences) <= 6}
+    """Chapter 7's five rules, checked as a reader checks them; the page typed one part a line."""
+    parts = [l.strip() for l in text.splitlines() if l.strip() and not l.startswith("VERSION")]
+    second = parts[1].lower() if len(parts) > 1 else ""
+    return {"1 the claim first, with what to do and why": " because " in parts[0] or " so " in parts[0],
+            "2 one number, and what it is divided by": bool(re.search(r"\\d", second) and re.search(PER, second)),
+            "3 the caveat before the action": any(w in part.lower() for part in parts[1:-1] for w in DOUBT),
+            "4 the action, its cost in rupees and who signs": "Rs" in parts[-1] and "sign" in parts[-1],
+            "5 no method word": not any(w in text.lower() for w in METHOD)}
 
 grid = pd.DataFrame({"the draft": page_check(draft_text), "the page": page_check(page_text)})
 print(grid.to_string())
 print("words on the page:", sum(len(s.split()) for s in page))
-check("the page passes every rule", grid["the page"].all())
-check("the draft fails the claim and the method words", not grid.loc["opens on a claim with its reason", "the draft"]
-      and not grid.loc["no method words", "the draft"])
+check("the page passes all five rules", grid["the page"].all())
+check("the draft passes none of the five", not grid["the draft"].any())
 
 fig, ax = plt.subplots(figsize=(8, 3.2))
 from matplotlib.colors import ListedColormap
@@ -1729,10 +1760,11 @@ ax.set_title("The same rules, run on both versions (invented)", loc="left")
 plt.show()
 '''),
         md("""
-        **Why it is wrong.** The answer is c: the draft passes only the length rule. Thorough is
-        measured by what the reader can act on in two minutes. The draft opens on a list of figures
-        with no claim, needs four method words decoded, and puts
-        no cost or signer in its last line; the page carries 108 words and passes every rule.
+        **Why it is wrong.** The answer is d: the draft passes none of the five. Thorough is
+        measured by what the reader can act on in two minutes. The draft opens on a figure with no
+        claim, its second line is a method word with no rate, it never states its doubt, its last
+        line names no cost or signer, and it needs four method words decoded; the page carries 108
+        words and passes all five.
         **The check:** read the first sentence alone: does it say what to do and why? **The fix:**
         the four parts as four sentences, in plain words.
 
@@ -1741,8 +1773,10 @@ plt.show()
         your own words.
 
         **Your turn, after chapter 9.** Type the page you wrote by hand for the city head into
-        `my_page`, one sentence a line, and run the same rules on it. The rules check the shape;
-        your trainer reads the argument. Type the lines into the empty cell below and run them:
+        `my_page`, one part a line: the claim, the evidence, the caveat and the action, each on its
+        own line however many sentences it holds, with no greeting line. Run the same five rules on
+        it. The rules check the shape; your trainer reads the argument. Type the lines into the
+        empty cell below and run them:
 
         ```python
         my_page = \"\"\"
@@ -1750,8 +1784,8 @@ plt.show()
         \"\"\".strip()
         mine = page_check(my_page)
         print(pd.Series(mine).to_string())
-        check("my page opens on its claim", mine["opens on a claim with its reason"])
-        check("my page carries no method words", mine["no method words"])
+        check("my page opens on its claim", mine["1 the claim first, with what to do and why"])
+        check("my page passes all five rules", all(mine.values()))
         ```
         """),
         empty(),
@@ -1762,6 +1796,7 @@ plt.show()
         2. The second carries one number, what it is divided by and its window.
         3. The caveat comes before the action, so the reader meets the doubt first.
         4. The action names what to do, its cost in rupees and weeks, and who signs.
+        5. No method word stays on the page: write "divided by", never "denominator".
 
         **In the interview.** [S] Present a recommendation to a non-technical stakeholder in two
         minutes: the page, spoken.
@@ -1823,7 +1858,7 @@ print(weeks[["week_start", "window", "peak_online_hours", "peak_trips", "rider_r
         | a) Monday's rider requests, 256,556 over six weeks | requests, summed over six weeks, in the case's twelve zones |
         | b) A published count of Uber drivers signed up in Hyderabad | sign-ups, at any time |
         | c) A published count of Uber drivers online at one weekday evening peak in Hyderabad | drivers online at one moment |
-        | d) The online driver-hours behind each completed trip in the case's own data | a ratio inside the chain |
+        | d) The online driver-hours behind each completed trip in the case's own data, pooled over both daily peak windows | a ratio inside the chain, over a wider period than one evening |
 
         **Predict before you run.** Which candidate passes all three tests?
         """),
@@ -1834,7 +1869,7 @@ def is_check(same_unit, same_period, same_definition):
 
 candidates = pd.DataFrame({
     "same unit":       [False, True,  True,  False],
-    "same period":     [False, False, True,  True],
+    "same period":     [False, False, True,  False],
     "same definition": [False, False, True,  True],
 }, index=["a) requests over six weeks", "b) drivers signed up", "c) drivers online at one peak", "d) driver-hours per trip"])
 candidates["a check?"] = [is_check(*r) for r in candidates.values]
@@ -1843,13 +1878,13 @@ check("only a published count of drivers online at one peak passes all three", c
       and candidates["a check?"].iloc[2])
 '''),
         md("""
-        **What happened.** The answer is c, and nobody publishes it: no source in the research
-        ledger holds a count of Uber drivers online at Hyderabad's evening peak, so that slot stays
+        **What happened.** The answer is c, and nobody publishes it: no source checked for this
+        day holds a count of Uber drivers online at Hyderabad's evening peak, so that slot stays
         "to be found". a counts rider requests over six weeks in twelve zones: another unit, a longer
         period and a slice of the city. b counts sign-ups, a different definition from drivers
         online at one moment. d is not wrong: it checks one link of the chain, a ratio the case's
-        own data holds, and when the direct check does not exist that is the honest fallback the
-        afternoon uses.
+        own data holds over both daily peaks on all seven days, a wider period than one evening, and
+        when the direct check does not exist that is the honest fallback the afternoon uses.
 
         ## What does the chain give, and which assumption moves the answer most?
 
@@ -2016,7 +2051,8 @@ check("the per-day figure divides by the month's own days", round(per_day / 1e6)
         5,000 drivers, so the honest answer is about 5,000 to 5,700. The invented network shows the
         per-day check: 9 billion over its 30 days is 300 million a day, and dividing by 31 gives
         290 million, 3.2 percent low for no reason but the calendar. The afternoon's paired drill
-        on UPI meets the published figure only after the swap.
+        on UPI meets the published figure only after the pairs have swapped sheets and checked each
+        other's chain.
 
         **The answers, one line each.**
 
@@ -2037,11 +2073,14 @@ check("the per-day figure divides by the month's own days", round(per_day / 1e6)
         say what the number decides.
 
         **The AI-company variant.** The same four steps size an AI company's number: how many
-        requests a second a chatbot must serve at its evening peak. Clarify one product, one region
-        and requests at one moment; map daily users x requests per user x the evening's share,
-        divided by the seconds in the window; calculate each factor aloud with its range; and
-        validate against a number counted the same way, such as last month's peak second in the
-        serving logs.
+        requests a second a chatbot must serve at its evening peak. Clarify one product, one region,
+        and whether the number is requests a second or requests in flight at one moment, since
+        requests in flight are requests a second times the seconds each takes to answer. Map daily
+        users x requests per user x the evening's share, divided by the seconds in the window, which
+        gives the window's average second, then times a buffer for the busiest minute, which gives
+        the peak. Calculate each factor aloud with its range. Validate like for like: the average
+        against last month's average second over the same evening window in the serving logs, and
+        the peak against last month's busiest minute.
         """),
     ]
 
@@ -2179,6 +2218,7 @@ plt.show()
         d) Neither, since an opening should be a question
         """),
         code("""
+import re
 weak = "So I looked at the dashboard."
 hire = ("You are deciding whether to keep, end or change the guarantee, so my answer first: the scheme is paying "
         "for online hours that carry no trips, and I recommend testing a change before the city pays for another six weeks.")
@@ -2188,15 +2228,18 @@ def acts(sentence):
     return any(word in sentence.lower() for word in ("recommend", "keep", "end ", "change", "test"))
 
 METHOD = ["denominator", "index", "guardrail", "north star"]
+DOUBT = ["may ", "might ", "cannot", "part of", "not in the data"]
+PER = r"\\bper\\b|an hour|a day|a week|a customer|divided by"
 
 def page_check(text):
-    \"\"\"Notebook 07's rules, restated: what a reader checks in two minutes.\"\"\"
-    sentences = [s for s in text.splitlines() if s.strip() and not s.startswith("VERSION")]
-    return {"opens on a claim with its reason": "because" in sentences[0] or " so " in sentences[0],
-            "no method words": not any(w in text.lower() for w in METHOD),
-            "the action names a cost and who signs": "Rs" in sentences[-1] and "signs" in sentences[-1],
-            "one page, 250 words or fewer": len(text.split()) <= 250,
-            "four to six sentences": 4 <= len(sentences) <= 6}
+    \"\"\"Notebook 07's five rules, restated: what a reader checks in two minutes, one part a line.\"\"\"
+    parts = [l.strip() for l in text.splitlines() if l.strip() and not l.startswith("VERSION")]
+    second = parts[1].lower() if len(parts) > 1 else ""
+    return {"1 the claim first, with what to do and why": " because " in parts[0] or " so " in parts[0],
+            "2 one number, and what it is divided by": bool(re.search(r"\\d", second) and re.search(PER, second)),
+            "3 the caveat before the action": any(w in part.lower() for part in parts[1:-1] for w in DOUBT),
+            "4 the action, its cost in rupees and who signs": "Rs" in parts[-1] and "sign" in parts[-1],
+            "5 no method word": not any(w in text.lower() for w in METHOD)}
 
 ramesh = open("../data/C2_W04_D02_kirana_page_STUDENT.txt", encoding="utf-8").read().split("=====")[1]
 print("the weak opening acts:", acts(weak), "   the hire-grade opening acts:", acts(hire))
@@ -2207,7 +2250,7 @@ city_page = "\\n".join([                                        # the page's fou
     "The scheme is paying for online hours that carry no trips, so I recommend testing a change before the city pays for another six weeks.",
     f"An hour online at peak brought in Rs {per_hour['after']:.0f} of fares in the six weeks after the launch, down from Rs {per_hour['before']:.0f}, at the same Rs 165 fare.",
     "The monsoon ended inside the same six weeks and last year's weeks are not in the data, so part of the fall may be the season.",
-    f"Test paying per completed peak trip, with an acceptance floor, on half the drivers for six weeks; city-wide the change saves Rs {saved.iloc[0]:.0f} lakh to Rs {saved.iloc[1]} lakh, and the city head signs."])
+    f"Test paying per completed peak trip, with an acceptance floor, on half the drivers for six weeks; across the enrolled drivers the change saves Rs {saved.iloc[0]:.0f} lakh to Rs {saved.iloc[1]} lakh over six weeks if a half to a fifth of the idle top-up is still paid, the per-trip rate decides where it lands, and the city head signs."])
 print(city_page)
 check("a page built from the case's own numbers passes every rule", all(page_check(city_page).values()))
 
@@ -2233,9 +2276,10 @@ plt.show()
         and they pass every rule; the picture is the same page as its skeleton, with the brief's
         numbers in the sentence that carries each.
 
-        **Your turn.** Type the page you handed in into `my_page`, one sentence a line, and run the
-        rules on it. The rules check the shape; your trainer reads the argument. Type the lines into
-        the empty cell below and run them:
+        **Your turn.** Type the page you handed in into `my_page`, one part a line: the claim, the
+        evidence, the caveat and the action, each on its own line however many sentences it holds,
+        with no greeting line. Run the five rules on it. The rules check the shape; your trainer
+        reads the argument. Type the lines into the empty cell below and run them:
 
         ```python
         my_page = \"\"\"
@@ -2257,7 +2301,7 @@ plt.show()
            fifth Rs 92.7 lakh.
         3. The hire-grade opening names the decision and recommends a test; the weak one reports what
            was looked at.
-        4. Your page passes when its first sentence names the decision and every rule holds.
+        4. Your page passes when its first sentence names the decision and all five rules hold.
 
         ### What will an interviewer ask about this, and what does a strong answer do?
 
@@ -2266,11 +2310,11 @@ plt.show()
         window, the caveat, then the action with its cost, its window and who signs.
 
         **The AI-company variant.** The same page goes to a coding assistant's head of product: the
-        claim (judge the team on suggested code still in the file seven days after acceptance), one
-        number (32 percent of suggestions accepted, about 26 percent of those shown still there a
-        week later, invented), the caveat (customers see acceptance, so it stays in the sales deck as
-        a leading input), and the action (hold out a share of users for a quarter, keep whichever
-        number tracks seat renewals, and the head of product signs).
+        claim (judge the team on suggested code still in the file seven days after acceptance, per
+        paid seat a week), one number (of every 100 suggestions shown, 32 accepted and about 26 still
+        in the file a week later, invented), the caveat (customers see acceptance, so it stays in the
+        sales deck as a leading input), and the action (check the new number against last year's
+        renewals before anyone is judged on it, and the head of product signs).
         """),
     ]
 
@@ -2285,9 +2329,12 @@ def nb10():
         claim, evidence, caveat, action (concept notebook 01), defending under challenge: restate,
         answer, concede, what would change your mind (concept notebook 03), and the guesstimate:
         clarify, map, calculate, validate (concept notebook 06). Notebooks 04, 05 and 08 computed the
-        case's numbers; notebook 09 checked the page. This notebook recomputes every number a
-        hire-grade answer in `extras/C2_W04_D02_interview_room_STUDENT.md` says aloud, so you can say
-        each one under a follow-up, and draws your own score on the room's seven criteria.
+        case's numbers; notebook 09 checked the page. This notebook recomputes the numbers a
+        hire-grade answer in `extras/C2_W04_D02_interview_room_STUDENT.md` says aloud from the day's
+        tables, so you can say each one under a follow-up, and draws your own score on the room's
+        seven criteria. Two numbers come from Monday's zone tables, which this day does not copy: the
+        outer zones' share of the idle money (74 percent) and their median wait (6.6 minutes before,
+        about 6 after), recounted when the day's data was built.
 
         {LABEL} The coding-assistant company in the third transcript is invented.
 
@@ -2309,16 +2356,19 @@ def nb10():
         code(SETUP + """
 weeks = pd.read_csv("../data/C2_W04_D02_twelve_weeks_STUDENT.csv")     # the city, week by week
 groups = pd.read_csv("../data/C2_W04_D02_driver_groups_STUDENT.csv")   # drivers there before, and the 140 joiners
-check("twelve weeks and three driver groups", len(weeks) == 12 and len(groups) == 3)
+segments = pd.read_csv("../data/C2_W04_D02_driver_segments_STUDENT.csv")  # the idle tail, the other 880, the joiners
+check("twelve weeks, three driver groups and five segment rows", len(weeks) == 12 and len(groups) == 3
+      and len(segments) == 5)
 print(groups.to_string(index=False))
+print(segments.to_string(index=False))
 """),
         md("""
         ## Do transcript 1's numbers hold, recounted from the case's table?
 
         The hire-grade answer says an online hour brought in Rs 260 of fares, down from Rs 314, at the
         same Rs 165 fare, and meets the follow-up it expects: bookings per driver-week rose 0.8
-        percent because each driver stayed online about four more hours a week while each hour
-        earned 17 percent less.
+        percent because the 180 drivers who accept least doubled their online hours, to about 39 a
+        week, while completing 12 percent fewer trips, and each hour earned 17 percent less.
 
         **Predict before you run.** The interviewer asks how per driver-week can rise while per hour
         falls. Which number answers it?
@@ -2341,6 +2391,14 @@ print(f"per hour {change.rs_per_hour:+.1f} percent; per driver-week {change.rs_p
 joiners = groups[groups.group == "the 140 joiners"].iloc[0]
 check("Rs 314 to Rs 260 at the same Rs 165 fare", w.rs_per_hour.round(0).tolist() == [314, 260] and w.fare.round(0).nunique() == 1)
 check("about four more hours a driver-week", round(w.hours_per_driver_week.diff().iloc[-1]) == 4)
+tail = segments[segments.segment == "the idle tail"].set_index("window")
+tail_week = tail.peak_online_hours / (tail.drivers * 6)                # hours a driver a week, six weeks a window
+tail_trips = tail.peak_trips["after"] / tail.peak_trips["before"] - 1
+print(f"the idle tail: {tail_week['before']:.1f} hours a week before, {tail_week['after']:.1f} after; "
+      f"trips {tail_trips:+.0%}")
+check("the idle tail doubled its hours, to about 39 a week", round(tail_week["after"]) == 39
+      and 2 < tail_week["after"] / tail_week["before"] < 2.2)
+check("and completed 12 percent fewer trips", round(tail_trips * 100) == -12)
 check("the joiners sit below the after average, so they pulled it down",
       joiners.peak_bookings_rs / joiners.driver_weeks < w.loc["after", "rs_per_driver_week"])
 
@@ -2355,8 +2413,10 @@ plt.show()
 """),
         md("""
         **What happened.** The answer is b: 18.6 hours a driver-week before and 22.5 after, so per
-        driver-week rose while per hour fell 17 percent, with the fare flat at Rs 165. The 140
-        joiners pulled the read down, which is why the answer says so before anyone asks.
+        driver-week rose while per hour fell 17 percent, with the fare flat at Rs 165. Most of the
+        extra hours were the idle tail's: its 180 drivers went from about 18.5 hours a week to about
+        39 while their trips fell 12 percent. The 140 joiners pulled the read down, which is why the
+        answer says so before anyone asks.
 
         ## Do transcript 2's numbers hold, and how far off is the weak answer?
 
@@ -2460,15 +2520,18 @@ recommend_hire = [("decision", "you are deciding whether to keep, end or change 
                   ("claim", "the scheme is paying for online hours that carry no trips"),
                   ("evidence", "an online hour brought in Rs 260 of fares, down from Rs 314, at the same fare"),
                   ("caveat", "the monsoon ended in the same weeks, and last year's weeks are missing"),
-                  ("action", "test it on half the drivers for six weeks; it saves Rs 58 lakh to Rs 92.7 lakh; you sign"),
-                  ("change my mind", "fewer completed trips per driver, or a longer wait in any zone, drops the change")]
+                  ("action", "test it on half the drivers for six weeks at a rate fixed first; it saves Rs 58 lakh "
+                             "to Rs 92.7 lakh over six weeks across the enrolled drivers; you sign"),
+                  ("change my mind", "fewer completed trips per driver, or any zone's median wait above its level "
+                                     "before the launch, drops the change")]
 recommend_weak = [("method", "so I looked at the dashboard"), ("evidence", "hours up, trips up, acceptance down"),
                   ("evidence", "bookings per driver-week is actually up"), ("action", "maybe pay per trip")]
 estimate_hire = [("clarify", "one moment of the weekday evening peak, one product, a median wait under five minutes"),
                  ("map", "trips to serve an hour, over trips per online driver-hour, times a buffer"),
                  ("calculate", "8,330 over 1.68, times 1.15: about 5,700"),
                  ("range", "trips per person moves it from about 2,900 to 8,600"),
-                 ("validate", "0.53 against 0.60 driver-hours per trip: say 5,000 to 5,700"),
+                 ("validate", "0.53 against 0.60 driver-hours per trip, pooled over both peaks: about 5,000 to "
+                              "5,700, inside 2,900 to 8,600"),
                  ("decision", "the number sets the evening incentive")]
 estimate_weak = [("calculate", "1 crore x 1 percent, over 2.4: about 41,700")]
 
@@ -2520,8 +2583,9 @@ plt.show()
         ## What does the AI-company variant's arithmetic say?
 
         The third transcript is set at an invented coding-assistant company. Its hire-grade answer
-        says that at 32 percent accepted, if a fifth of accepted characters are gone within a week,
-        only about 26 percent of what was shown survives.
+        says that at 32 percent accepted, if a fifth of accepted suggestions are deleted within a
+        week, only about 26 of every 100 suggestions shown survive. Both shares are shares of
+        suggestions, so they multiply; a share of characters would not.
 
         **Predict before you run.** Of 100 suggestions shown, about how many survive a week?
 
@@ -2531,7 +2595,7 @@ plt.show()
         d) About 6
         """),
         code("""
-shown, accepted_share, kept_share = 100, 0.32, 0.8               # invented numbers
+shown, accepted_share, kept_share = 100, 0.32, 0.8   # invented: of suggestions shown, the share accepted; of those, the share kept a week
 accepted = shown * accepted_share
 kept = accepted * kept_share
 print(f"of {shown} shown: {accepted:.0f} accepted, about {kept:.0f} still in the file a week later")
@@ -2549,7 +2613,7 @@ plt.show()
         md("""
         **What happened.** The answer is b: 32 accepted, about 26 still in the file a week later. The
         answer keeps acceptance in the deck as a leading input and judges the team on what stays,
-        then names the holdout that would change the call.
+        per paid seat, then names the check against last year's renewals that would change the call.
 
         **Your turn.** Score your own spoken answer to one of the three questions on the room's seven
         criteria, each 0, 1 or 2, as the scorecard on slide S90 sets them, and draw it. Type the lines
@@ -2570,7 +2634,8 @@ plt.show()
         **The answers, one line each.**
 
         1. Rs 313.5 to Rs 260.4 at a Rs 165 fare, printed Rs 314 and Rs 260; 18.6 to 22.5 hours a
-           driver-week explains the 0.8 percent rise, and the joiners pulled it down.
+           driver-week explains the 0.8 percent rise, most of it the idle tail's doubled hours, and
+           the joiners pulled it down.
         2. The chain gives about 5,700, the like-for-like check about 5,000, and the weak answer about
            41,700, seven times too many.
         3. The idle share is about 0.21 before and 0.34 after; a four-hour window leaves about 5,700;
@@ -2632,8 +2697,11 @@ check("the opening count is the closing count less the stores added",
         ## Which store count turns DMart's revenue into a year per store?
 
         DMart, a large grocery chain, publishes its revenue and its store counts; nobody publishes
-        how many members a new store signs up. A year's revenue was earned by the stores open
-        across the year, and DMart opened 85 stores during FY26, so the count at the year's end
+        how many members a new store signs up. The table above comes from Avenue Supermarts, the
+        company that runs DMart: its standalone revenue is DMart's own business without its
+        subsidiaries, and FY26 is its financial year from 1 April 2025 to 31 March 2026. A year's
+        revenue was earned by the stores open across the year, and DMart opened 85 stores during
+        FY26, so the count at the year's end
         overstates the stores that sold all year. The fair count for a year is the average of the
         opening and closing counts.
         """),
